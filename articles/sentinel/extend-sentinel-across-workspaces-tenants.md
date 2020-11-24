@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: d13f401fab126f57d07d405ab5d6ce461c26e139
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 60e86c7c849bf09b3a5577453a6935466ab447f6
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658939"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95483908"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>跨工作區和租用戶擴充 Azure Sentinel
 
@@ -34,7 +34,7 @@ Azure Sentinel 是以 Log Analytics 工作區為基礎。 您將會注意到上�
 | 主權和法規合規性 | 工作區會繫結至特定區域。 如果資料需要保存在不同的 [Azure 地理](https://azure.microsoft.com/global-infrastructure/geographies/) 位置以滿足法規需求，則必須將其分割成不同的工作區。 |  |
 | 資料擁有權 | 資料擁有權的界限（例如，分公司或附屬公司）更能使用不同的工作區來描繪。 |  |
 | 多個 Azure 租使用者 | Azure Sentinel 僅支援在自己的 Azure Active Directory (Azure AD) 租使用者界限內，從 Microsoft 和 Azure SaaS 資源收集資料。 因此，每個 Azure AD 租用戶都需要個別的工作區。 |  |
-| 細微的資料存取控制 | 組織可能需要允許組織內部或外部的不同群組，以存取 Azure Sentinel 所收集的部分資料。 例如：<br><ul><li>資源擁有者對其資源相關資料的存取權</li><li>地區或子公司 SOCs 存取其組織部分的相關資料</li></ul> | 使用 [資源 rbac](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) 或 [資料表層級 rbac](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) |
+| 細微的資料存取控制 | 組織可能需要允許組織內部或外部的不同群組，以存取 Azure Sentinel 所收集的部分資料。 例如：<br><ul><li>資源擁有者對其資源相關資料的存取權</li><li>地區或子公司 SOCs 存取其組織部分的相關資料</li></ul> | 使用 [資源 AZURE rbac](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) 或 [資料表層級的 azure rbac](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) |
 | 細微保留設定 | 在過去，有多個工作區是針對不同的資料類型設定不同保留期限的唯一方式。 由於資料表層級保留設定的引入，在許多情況下，已不再需要這項功能。 | 使用 [資料表層級保留設定](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316) 或自動化 [資料刪除](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) |
 | 分割帳單 | 藉由將工作區放在不同的訂用帳戶中，就可以向不同的合作物件收費。 | 使用方式報告和交叉收費 |
 | 舊版架構 | 使用多個工作區可能源自于考慮限制的歷程記錄設計，或是不再成立的最佳作法。 也可能是任意設計選擇，可加以修改以更符合 Azure Sentinel。<br><br>範例包括：<br><ul><li>部署 Azure 資訊安全中心時使用每個訂用帳戶預設工作區</li><li>需要細微的存取控制或保留設定，這是相對較新的解決方案</li></ul> | 重新建構工作區 |

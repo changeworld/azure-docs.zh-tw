@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 657221a2acbf592a56cb4659ced2199023bc5e5b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a0a677342534cd92d5530199076e3d2e7084134d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658786"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95494772"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>在 Azure Sentinel 中找出使用者和實體行為分析 (UEBA) 的 advanced 威脅
 
@@ -155,7 +155,7 @@ Entity insights 是 Microsoft 安全性研究人員所定義的查詢，可協�
 
 ### <a name="behavior-analytics-table"></a>行為分析資料表
 
-| 欄位                     | 說明                                                         |
+| 欄位                     | 描述                                                         |
 |---------------------------|---------------------------------------------------------------------|
 | TenantId                  | 租使用者的唯一識別碼                                      |
 | SourceRecordId            | EBA 事件的唯一識別碼                                   |
@@ -205,7 +205,7 @@ Azure Sentinel 會根據使用者的 Azure AD 安全性群組成員資格、郵�
 
 許可權分析有助於判斷攻擊者危害組織資產的潛在影響。 這項影響也稱為資產的「群發半徑」。 安全性分析師可以使用此資訊來排列調查和事件處理的優先順序。
 
-Azure Sentinel 藉由評估使用者可以直接存取的 Azure 訂用帳戶，或透過群組或服務主體，來判斷指定使用者對 Azure 資源所持有的直接和可轉移存取權。 這項資訊以及使用者 Azure AD 安全性群組成員資格的完整清單會儲存在 **UserAccessAnalytics** 資料表中。 下列螢幕擷取畫面顯示 [使用者 Alex] Johnson 的 UserAccessAnalytics 資料表中的範例資料列。 **來源實體** 是使用者或服務主體帳戶，而 **目標實體** 是來源實體可存取的資源。 **存取層級** 和 **存取類型** 的值取決於目標實體的存取控制模型。 您可以看到 Alex 具有 Azure 訂用帳戶 *Contoso 旅館租* 使用者的參與者存取權。 訂用帳戶的存取控制模型是 RBAC。   
+Azure Sentinel 藉由評估使用者可以直接存取的 Azure 訂用帳戶，或透過群組或服務主體，來判斷指定使用者對 Azure 資源所持有的直接和可轉移存取權。 這項資訊以及使用者 Azure AD 安全性群組成員資格的完整清單會儲存在 **UserAccessAnalytics** 資料表中。 下列螢幕擷取畫面顯示 [使用者 Alex] Johnson 的 UserAccessAnalytics 資料表中的範例資料列。 **來源實體** 是使用者或服務主體帳戶，而 **目標實體** 是來源實體可存取的資源。 **存取層級** 和 **存取類型** 的值取決於目標實體的存取控制模型。 您可以看到 Alex 具有 Azure 訂用帳戶 *Contoso 旅館租* 使用者的參與者存取權。 訂用帳戶的存取控制模型是 Azure RBAC。   
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="使用者存取分析資料表的螢幕擷取畫面":::
 

@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 5a588195f2095b2d0cb261e1573eeb9ec881f2fd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f77c0fb09dddd884335d31d630904ea6aeafeaf5
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322842"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495197"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>部署 Azure Machine Learning Studio (傳統) web 服務
 
-**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用于：** ![這是一個核取記號，這表示本文適用于 Machine Learning Studio (傳統) 。 ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統) ![ 這是 X，這表示本文適用于 Azure Machine Learning。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Azure Machine Learning Studio (傳統) 可讓您建立和測試預測性分析解決方案。 您接著可以將解決方案部署為 Web 服務。
@@ -91,7 +91,7 @@ BES 的輸入就像 RRS 使用的資料輸入。 主要差異在於，BES 會從
 
 * **訓練** - 這些模組可用來訓練模型。 當您按一下 [設定 Web 服務] 時，這些模組都會取代為包含定型模型的單一模組。 這個新模組會儲存在模組調色盤的 [定型模型] 區段。
 
-* **評分** - 在此範例中， [分割資料][split]模組是用來將資料流分割成測試資料和訓練資料。 在預測實驗中，我們不會再進行訓練，因此可以移除[分割資料][split]。 同樣地，第二個[評分模型][score-model]模組和[評估模型][evaluate-model]模組會用來比較測試資料的結果，因此在預測實驗中不需要這些模組。 但其餘的[評分模型][score-model]模組需要透過 Web 服務傳回評分結果。
+* **評分** - 在此範例中，[分割資料][split]模組是用來將資料流分割成測試資料和訓練資料。 在預測實驗中，我們不會再進行訓練，因此可以移除[分割資料][split]。 同樣地，第二個[評分模型][score-model]模組和[評估模型][evaluate-model]模組會用來比較測試資料的結果，因此在預測實驗中不需要這些模組。 但其餘的[評分模型][score-model]模組需要透過 Web 服務傳回評分結果。
 
 以下是按一下 [設定 Web 服務] 之後，我們的範例外觀：
 
@@ -174,13 +174,13 @@ RRS 測試頁面會顯示輸入、輸出以及任何您已為實驗定義的全�
 
 ![從 Studio (傳統) 畫布下載您的資料集](./media/publish-a-machine-learning-web-service/figure-7-mls-download.png)
 
-按一下 [ **測試** ]。 批次執行作業的狀態會顯示在右邊的 [測試批次作業] 之下。
+按一下 [ **測試**]。 批次執行作業的狀態會顯示在右邊的 [測試批次作業] 之下。
 
 ![使用 web 服務入口網站測試批次執行作業](./media/publish-a-machine-learning-web-service/figure-6-test-batch-execution.png)
 
 <!--![Test the web service](./media/publish-a-machine-learning-web-service/figure-3.png)-->
 
-**在 [設定** ] 頁面上，您可以變更描述、標題、更新儲存體帳戶金鑰，以及啟用 web 服務的範例資料。
+**在 [設定**] 頁面上，您可以變更描述、標題、更新儲存體帳戶金鑰，以及啟用 web 服務的範例資料。
 
 ![設定您的 web 服務](./media/publish-a-machine-learning-web-service/figure-8-arm-configure.png)
 
@@ -212,7 +212,7 @@ RRS 測試頁面會顯示輸入、輸出以及任何您已為實驗定義的全�
 6. 從 [資源群組]  下拉式清單中，選取方案的資源群組。 如需資源群組的詳細資訊，請參閱 [Azure Resource Manager 概觀](../../azure-resource-manager/management/overview.md)。
 7. 在 [方案名稱]  中，輸入方案的名稱。
 8. 在 [方案選項] 下，按一下新方案的計費層級。
-9. 按一下頁面底部的 [新增]  。
+9. 按一下 [建立]。
 
 #### <a name="deploy-the-web-service-to-another-region"></a>將 Web 服務部署到另一個區域
 
@@ -250,7 +250,7 @@ RRS 測試頁面會顯示輸入、輸出以及任何您已為實驗定義的全�
 
 在 [組態] 索引標籤上，您可以變更服務的顯示名稱，並且給予描述。 名稱和描述會顯示在管理 Web 服務的 [Azure 入口網站](https://portal.azure.com/) 中。
 
-您可以為輸入資料、輸出資料及 web 服務參數提供描述，方法是在 [ **輸入架構** ]、[ **輸出架構** ] 和 [ **web 服務參數** ] 下的每個資料行輸入字串。 這些說明會用於為 Web 服務提供的範例程式碼文件。
+您可以為輸入資料、輸出資料及 web 服務參數提供描述，方法是在 [ **輸入架構**]、[ **輸出架構**] 和 [ **web 服務參數**] 下的每個資料行輸入字串。 這些說明會用於為 Web 服務提供的範例程式碼文件。
 
 您可以啟用記錄來診斷您在 Web 服務被存取時看到的任何錯誤。 如需詳細資訊，請參閱 [啟用 Machine Learning Studio (傳統) web 服務的記錄](web-services-logging.md)。
 

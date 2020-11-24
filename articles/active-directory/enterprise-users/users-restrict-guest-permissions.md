@@ -8,17 +8,16 @@ manager: daveba
 ms.date: 11/17/2020
 ms.topic: how-to
 ms.service: active-directory
-ms.subservice: enterprise-users
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e89793ed8404bf36f2857f228d94fdf2a8828d43
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: e51dc4ff61069bffadc4f95caee9e0f3c76d88ec
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984255"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95488465"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>在 Azure Active Directory 中限制來賓存取許可權 (預覽) 
 
@@ -163,7 +162,7 @@ Planner 和 Yammer 的已知相容性問題有哪些？ | <li>當權限設定為
 這些許可權預設會設定嗎？ | 否。 現有的預設許可權會維持不變。 您可以選擇性地將許可權設定為更嚴格的限制。
 這項功能是否有任何授權需求？ | 否，這項功能沒有新的授權需求。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 若要深入瞭解 Azure AD 中的現有來賓許可權，請參閱 [Azure Active Directory 中的預設使用者許可權為何？](../fundamentals/users-default-permissions.md)
 - 若要查看限制來賓存取的 Microsoft Graph API 方法，請參閱 [authorizationPolicy 資源類型](/graph/api/resources/authorizationpolicy)

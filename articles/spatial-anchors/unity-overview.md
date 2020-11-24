@@ -1,19 +1,19 @@
 ---
 title: Azure 空間錨點 Unity 總覽
 description: 瞭解如何在 Unity 應用程式內使用 Azure 空間錨點。 複習適用于 HoloLens 的 Unity、適用于 Android 的 unity，以及適用于 iOS 的 Unity 的快速入門。
-author: rgarcia
-ms.author: rgarcia
-manager: vriveras
+author: msftradford
+ms.author: parkerra
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.service: azure-spatial-anchors
-ms.date: 02/26/2020
+ms.date: 11/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: d55890fc97ff24bd4b77628791bdda60c5f54347
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 51df8ff31c6f86608b7cae53ca779a2a03068e57
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096142"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95487260"
 ---
 # <a name="building-in-unity-with-azure-spatial-anchors"></a>使用 Azure 空間錨點在 Unity 中建立
 

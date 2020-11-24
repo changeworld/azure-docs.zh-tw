@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: ac934f88d00521b13fd2b134c80f19656c63117b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79cf0ef059d96ac66f5918605e999d3936d589d2
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88718810"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95486512"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>備份和復原您的表單辨識器模型
 
@@ -41,7 +41,7 @@ ms.locfileid: "88718810"
 1. 您將使用來源資源認證來查詢進度 URL，直到作業成功為止。 您也可以查詢目標資源中的新模型識別碼，以取得新模型的狀態。
 
 > [!CAUTION]
-> 複製 API 目前不支援用來 [撰寫自訂模型](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/Compose)的模型識別碼。 模型撰寫是在 2.1-preview. 1 preview 中的預覽功能。 
+> 複製 API 目前不支援用來 [撰寫自訂模型](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/Compose)的模型識別碼。 模型撰寫是在 2.1-preview. 2 preview 中的預覽功能。 
 
 ## <a name="generate-copy-authorization-request"></a>產生複製授權要求
 
@@ -91,7 +91,7 @@ Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecog
 
 ### <a name="common-errors"></a>常見錯誤
 
-|錯誤|解決方案|
+|錯誤|解決方法|
 |:--|:--|
 | 400/不正確的要求 `"code:" "1002"` | 指出驗證錯誤或格式不正確的複製要求。 常見的問題包括：) 無效或已修改的承載 `copyAuthorization` 。 b) 權杖的過期值 `expirationDateTimeTicks` (承載 `copyAuhtorization` 的有效時間為24小時) 。 c) 無效或不受支援 `targetResourceRegion` 。 d) 無效或格式錯誤 `targetResourceId` 的字串。
 |
@@ -115,7 +115,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="common-errors"></a>常見錯誤
 
-|錯誤|解決方案|
+|錯誤|解決方法|
 |:--|:--|
 |「錯誤」： [{"code"： "AuthorizationError"，<br>"message"： "授權失敗，原因為 <br>授權宣告遺失或無效。」}]   | 當從 API 傳回的內容修改內容時，就會發生 `copyAuthorization` `copyAuthorization` 。 請確定承載與先前呼叫所傳回的內容完全相同 `copyAuthorization` 。|
 |「錯誤」： [{"code"： "AuthorizationError"，<br>"message"： "無法取出授權 <br>元。 如果此問題持續發生，請使用不同的 <br>要複製到其中的目標模型。」}] | 指出 `copyAuthorization` 正在使用複製要求來重複使用裝載。 成功的複製要求將不允許任何其他使用相同承載的要求 `copyAuthorization` 。 如果您引發個別的錯誤 (如下所述) ，然後再以相同的授權承載重試複製，則會引發此錯誤。 解決方法是產生新的承載 `copyAuthorization` ，然後重新發出複製要求。|

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 09bd82225fb7d8a6eefe84b5a70660e4553a3070
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: abcc2b60fd796a80342fe48c3c9027388660476a
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360780"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95488142"
 ---
 # <a name="update-management-overview"></a>更新管理概觀
 
@@ -20,7 +20,7 @@ ms.locfileid: "93360780"
 > 您無法使用以更新管理設定的機器，從 Azure 自動化中執行自訂指令碼。 這部機器只能執行 Microsoft 簽署的更新指令碼。
 
 > [!NOTE]
-> 目前並不支援直接從啟用 Arc 的伺服器啟用更新管理。 請參閱 [從您的自動化帳戶啟用更新管理](../../automation/update-management/enable-from-automation-account.md) ，以瞭解需求以及如何為您的伺服器啟用。
+> 目前不支援直接從已啟用 Arc 的伺服器啟用更新管理。 請參閱[從您的自動化帳戶啟用更新管理](../../automation/update-management/enable-from-automation-account.md)以了解需求，以及如何為您的伺服器啟用此功能。
 
 若要在 Azure VM 上自動下載並安裝可用的 *重大* 和 *安全性* 修補程式，請參閱 WINDOWS vm 的 [自動 VM 來賓修補](../../virtual-machines/windows/automatic-vm-guest-patching.md) 。
 
@@ -132,7 +132,7 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 
 當您啟用更新管理之後，任何直接連線到您 Log Analytics 工作區的 Windows 機器都會自動設定為混合式 Runbook 背景工作角色，以支援要支援更新管理的 Runbook。
 
-更新管理所管理的每部 Windows 機器都會列於混合式背景工作角色群組窗格中，以作為自動化帳戶的系統混合式背景工作角色群組。 這些群組會使用 `Hostname FQDN_GUID` 命名慣例。 您不能讓這些群組以您帳戶中的 Runbook 為目標。 如果您嘗試，則嘗試會失敗。 這些群組僅用於支援更新管理。 若要深入瞭解如何查看已設定為混合式 Runbook 背景工作角色的 Windows 機器清單，請參閱「 [查看混合式 runbook 背景工作角色](../automation-hybrid-runbook-worker.md#view-hybrid-runbook-workers)」。
+更新管理所管理的每部 Windows 機器都會列於混合式背景工作角色群組窗格中，以作為自動化帳戶的系統混合式背景工作角色群組。 這些群組會使用 `Hostname FQDN_GUID` 命名慣例。 您不能讓這些群組以您帳戶中的 Runbook 為目標。 如果您嘗試，則嘗試會失敗。 這些群組僅用於支援更新管理。 若要深入瞭解如何查看已設定為混合式 Runbook 背景工作角色的 Windows 機器清單，請參閱「 [查看混合式 runbook 背景工作角色](../automation-hybrid-runbook-worker.md#view-system-hybrid-runbook-workers)」。
 
 如果您針對更新管理和混合式 Runbook 背景工作角色群組成員資格使用相同的帳戶，則可將 Windows 機器新增到自動化帳戶中的混合式 Runbook 背景工作角色群組，以支援自動化 Runbook。 此功能已新增至混合式 Runbook 背景工作角色 7.2.12024.0 版。
 
@@ -185,7 +185,7 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 |`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
 |`*.azure-automation.net` | `*.azure-automation.us`|
 
-當您建立網路群組安全性規則或設定 Azure 防火牆以允許流量流向自動化服務和 Log Analytics 工作區時，請使用 [服務](../../virtual-network/service-tags-overview.md#available-service-tags)標籤 **GuestAndHybridManagement** 和 **AzureMonitor** 。 這可簡化網路安全性規則的持續管理。 若要安全且私下地從您的 Azure Vm 連接到自動化服務，請參閱 [使用 Azure Private Link](../how-to/private-link-security.md)。 若要取得目前的服務標籤和範圍資訊，以納入您的內部部署防火牆設定，請參閱 [可下載的 JSON](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)檔案。
+當您建立網路群組安全性規則或設定 Azure 防火牆以允許流量流向自動化服務和 Log Analytics 工作區時，請使用 [服務](../../virtual-network/service-tags-overview.md#available-service-tags)標籤 **GuestAndHybridManagement** 和 **AzureMonitor**。 這可簡化網路安全性規則的持續管理。 若要安全且私下地從您的 Azure Vm 連接到自動化服務，請參閱 [使用 Azure Private Link](../how-to/private-link-security.md)。 若要取得目前的服務標籤和範圍資訊，以納入您的內部部署防火牆設定，請參閱 [可下載的 JSON](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)檔案。
 
 對於 Windows 機器，您也必須允許流量傳送到 Windows Update 所需的任何端點。 您可以在[與 HTTP/Proxy 相關的問題](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)中，找到所需端點的更新清單。 如果您有本機 [Windows Update 伺服器](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)，也必須允許流量傳送到您 [WSUS 金鑰](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)中指定的伺服器。
 
@@ -252,7 +252,7 @@ sudo yum -q --security check-update
 
 - 使用 **AutomationSolution** [runbook](enable-from-runbook.md) 方法。
 
-- 針對 Azure 入口網站中 [ **虛擬機器** ] 頁面的 [選取 Azure VM](enable-from-vm.md) 。 此案例適用於 Linux 與 Windows VM。
+- 針對 Azure 入口網站中 [**虛擬機器**] 頁面的 [選取 Azure VM](enable-from-vm.md) 。 此案例適用於 Linux 與 Windows VM。
 
 - 針對 [多個 Azure vm](enable-from-portal.md) ，請從 Azure 入口網站中的 [ **虛擬機器** ] 頁面選取它們。
 

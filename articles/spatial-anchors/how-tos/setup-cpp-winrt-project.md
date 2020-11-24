@@ -1,25 +1,25 @@
 ---
 title: 安裝適用于 c + +/WinRT HoloLens 應用程式的 Azure 空間錨點
 description: 設定 c + +/WinRT HoloLens 專案以使用 Azure 空間錨點
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 02/24/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 43d5c1ae03c359dcbef21f8e7ba3205bc6ab0004
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 69134ef87d90fe69de2d9e4e9222e90f65edc785
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096108"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95507006"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-cwinrt-hololens-project"></a>在 c + +/WinRT HoloLens 專案中設定 Azure 空間錨點
 
 ## <a name="requirements"></a>需求
 
-* [Visual Studio 2019](https://www.visualstudio.com/downloads/) 安裝 **通用 Windows 平臺開發** 工作負載和 **Windows 10 SDK (10.0.18362.0 或更新版本的) ** 元件。
+* [Visual Studio 2019](https://www.visualstudio.com/downloads/) 安裝 **通用 Windows 平臺開發** 工作負載和 **Windows 10 SDK (10.0.18362.0 或更新版本的)** 元件。
 
 ## <a name="configuring-a-project"></a>設定專案
 

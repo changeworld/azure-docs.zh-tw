@@ -1,19 +1,19 @@
 ---
 title: 錨點關聯性和尋路
 description: 瞭解錨點關聯性背後的概念模型。 瞭解如何連接空間內的錨點，並使用附近的 API 來滿足尋找方法的案例。
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 02/24/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 13c85dff40e266287d893d9e45b32a66a33f027e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c321eae9451715077aa50d163b62b51ec88ce1a
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83006025"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95496880"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>錨點關聯性和方式-在 Azure 空間錨點中尋找
 
@@ -41,7 +41,7 @@ ms.locfileid: "83006025"
 3. **啟動使用者體驗**：使用者執行應用程式以找出錨點，該錨點可以位於任何選擇的位置。 您的整體設計應該決定使用者可進入體驗的位置。
 4. **尋找附近的錨點**：在使用者找到錨點之後，應用程式可以要求附近的錨點。 此程式會傳回裝置與這些錨點之間的姿勢。
 5. **引導使用者**：應用程式可以對每個錨點使用姿勢，以提供有關使用者一般方向和距離的指引。 例如，應用程式中的相機摘要可能會顯示圖示和箭號來代表每個可能的目的地，如下圖所示。
-6. **精簡指導**方針：當使用者進行時，應用程式可以定期計算裝置與目的地錨點之間的新姿勢。 應用程式會繼續調整指引提示，以協助使用者抵達目的地。
+6. **精簡指導** 方針：當使用者進行時，應用程式可以定期計算裝置與目的地錨點之間的新姿勢。 應用程式會繼續調整指引提示，以協助使用者抵達目的地。
 
     ![應用程式如何顯示方式的範例-尋找指引](./media/meeting-spot.png)
 

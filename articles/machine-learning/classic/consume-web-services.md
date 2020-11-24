@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-python, devx-track-js, devx-track-csharp
 ms.date: 05/29/2020
-ms.openlocfilehash: 9922ddf0859e4f28d5759108581f5ef538f0c294
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: eaf0131877e7a333fe2a6f157523da5ad7bcf07b
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305570"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95499994"
 ---
 # <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>如何使用 Machine Learning Studio (傳統) web 服務
 
-**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用于：** ![這是一個核取記號，這表示本文適用于 Machine Learning Studio (傳統) 。  ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (傳統)   ![ 這是 X，這表示本文適用于 Azure Machine Learning。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 將 Azure Machine Learning Studio (傳統) 預測模型部署為 Web 服務之後，您就可以使用 REST API 傳送資料並取得預測。 您可以即時或以批次模式傳送資料。
@@ -31,7 +31,7 @@ ms.locfileid: "93305570"
 
 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 使用 Azure Machine Learning Web 服務，外部應用程式會即時與機器學習服務工作流程計分模型通訊。 機器學習 Web 服務呼叫會將預測結果傳回外部應用程式。 若要進行機器學習 Web 服務呼叫，您可以傳遞部署預測時所建立的 API 金鑰。 機器學習服務 Web 服務以 REST 為基礎，這是一種常見的 Web 程式設計專案架構。
 
 Azure Machine Learning Studio (傳統) 有兩種類型的服務：
@@ -99,8 +99,8 @@ Azure Machine Learning Studio (傳統) 有兩種類型的服務：
 **在 Visual Studio 中安裝 WebApi 用戶端 NuGet**
 
 1. 發佈 Download dataset from UCI: Adult 2 class dataset 的 Web 服務。
-2. 按一下 [ **工具** ]  >  **NuGet 封裝管理員**  >  **封裝管理員主控台** 。
-3. 選擇 [ **Install-package Microsoft.AspNet.WebApi.Client** ]。
+2. 按一下 [**工具**]  >  **NuGet 封裝管理員**  >  **封裝管理員主控台**。
+3. 選擇 [ **Install-package Microsoft.AspNet.WebApi.Client**]。
 
 **執行程式碼範例**
 

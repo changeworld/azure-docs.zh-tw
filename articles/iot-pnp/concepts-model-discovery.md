@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: dda0e3d6739e94df4ce5910938c164e3db336bce
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5f82206a7c86c5ae1e6477419faee0dca88ef883
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445569"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495282"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>在 IoT 解決方案中使用 IoT 隨插即用模型
 
@@ -125,7 +125,7 @@ content-encoding:utf-8
 
 1. 您可以使用連線裝置的模型定義來列舉裝置的功能。
 
-1. 您可以使用裝置的列舉功能，讓使用者 [與裝置互動](quickstart-service-node.md)。
+1. 您可以使用裝置的列舉功能，讓使用者 [與裝置互動](quickstart-service.md)。
 
 ### <a name="custom-store"></a>自訂存放區
 
@@ -137,12 +137,12 @@ content-encoding:utf-8
 
 1. 您可以使用連線裝置的模型定義來列舉裝置的功能。 
 
-1. 您可以使用裝置的列舉功能，讓使用者 [與裝置互動](quickstart-service-node.md)。  
+1. 您可以使用裝置的列舉功能，讓使用者 [與裝置互動](quickstart-service.md)。  
 
 ## <a name="next-steps"></a>後續步驟
 
 現在您已瞭解如何在 IoT 解決方案中整合 IoT 隨插即用模型，接下來的一些建議步驟如下：
 
-- [從您的解決方案與裝置互動](quickstart-service-node.md)
+- [從您的解決方案與裝置互動](quickstart-service.md)
 - [IoT 數位對應項 REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT 總管](howto-use-iot-explorer.md)

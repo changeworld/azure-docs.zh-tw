@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 0704f076ef7c5d1a39af67d3ec6ec2baece1fda5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9c100ca82b751a050e74cce85e1794701a789288
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517296"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95498464"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel 中的權限 (機器翻譯)
 
@@ -54,7 +54,7 @@ Azure Sentinel 使用 [azure 角色型存取控制 (AZURE RBAC) ](../role-based-
 
 - 使用研究人員將威脅的回應自動化
 
-    Azure Sentinel 使用自動化威脅回應的 **手冊** 。 腳本是以 **Azure Logic Apps**為基礎，而且是個別的 Azure 資源。 您可能會想要指派給安全性作業小組的特定成員，以使用安全性協調流程、自動化和回應的 Logic Apps (SOAR) 作業。 您可以使用 [邏輯應用程式參與者](../role-based-access-control/built-in-roles.md#logic-app-contributor) 角色或 [邏輯應用程式操作員](../role-based-access-control/built-in-roles.md#logic-app-operator) 角色，來指派使用手冊的明確許可權。
+    Azure Sentinel 使用自動化威脅回應的 **手冊** 。 腳本是以 **Azure Logic Apps** 為基礎，而且是個別的 Azure 資源。 您可能會想要指派給安全性作業小組的特定成員，以使用安全性協調流程、自動化和回應的 Logic Apps (SOAR) 作業。 您可以使用 [邏輯應用程式參與者](../role-based-access-control/built-in-roles.md#logic-app-contributor) 角色或 [邏輯應用程式操作員](../role-based-access-control/built-in-roles.md#logic-app-operator) 角色，來指派使用手冊的明確許可權。
 
 - 將資料來源連接到 Azure Sentinel
 
@@ -80,7 +80,7 @@ Azure Sentinel 使用 [azure 角色型存取控制 (AZURE RBAC) ](../role-based-
 
 下表摘要說明 Azure Sentinel 中的角色和允許的動作。 
 
-| 角色 | 建立和執行劇本| 建立和編輯活頁簿、分析規則及其他 Azure Sentinel 資源 | 管理事件 (關閉、指派等 )  | 查看資料、事件、活頁簿和其他 Azure Sentinel 資源 |
+| [角色] | 建立和執行劇本| 建立和編輯活頁簿、分析規則及其他 Azure Sentinel 資源 | 管理事件 (關閉、指派等 )  | 查看資料、事件、活頁簿和其他 Azure Sentinel 資源 |
 |---|---|---|---|---|
 | Azure Sentinel 讀者 | -- | -- | -- | &#10003; |
 | Azure Sentinel 回應者 | -- | -- | &#10003; | &#10003; |
@@ -91,7 +91,7 @@ Azure Sentinel 使用 [azure 角色型存取控制 (AZURE RBAC) ](../role-based-
 
 - 除了使用 Azure 內建角色之外，您還可以建立適用于 Azure Sentinel 的 Azure 自訂角色，而不是使用 Azure 內建角色。 Azure Sentinel 的 azure 自訂角色的建立方式，與您根據 Azure Sentinel 和[Azure Log Analytics 資源](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights)的[特定許可權](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights)建立其他[azure 自訂角色](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)的方式相同。
 
-- 您可以在 Azure Sentinel 工作區中的資料上使用 Log Analytics advanced 角色型存取控制。 這包括以資料類型為基礎的 Azure RBAC 和以資源為中心的 Azure RBAC。 如需有關 Log Analytics 角色的詳細資訊，請參閱 [Azure 監視器中的記錄管理資料和工作區](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)。
+- 您可以在 Azure Sentinel 工作區中的資料上使用 Log Analytics advanced Azure 角色型存取控制。 這包括以資料類型為基礎的 Azure RBAC 和以資源為中心的 Azure RBAC。 如需有關 Log Analytics 角色的詳細資訊，請參閱 [Azure 監視器中的記錄管理資料和工作區](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)。
 
 ## <a name="next-steps"></a>後續步驟
 

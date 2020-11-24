@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 61bff59114d25b2f3167a34100ec2f742036bb90
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: d39d72a79d4b273918986d0d350df4706592c77d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663465"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95503187"
 ---
 # <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy-preview"></a>使用 Azure AD App Proxy (Preview 的內部部署應用程式以標頭為基礎的單一登入) 
 
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) 應用程式 Proxy 原本就支援使用標頭
 
 下表列出應用程式 Proxy 支援的標頭型驗證應用程式所需的一般功能。 
 
-|需求   |說明|
+|需求   |描述|
 |----------|-----------|
 |同盟 SSO |在預先驗證模式中，所有應用程式都會受到 Azure AD authentication 的保護，並讓使用者能夠使用單一登入。 |
 |遠端存取 |應用程式 Proxy 可讓您從遠端存取應用程式。 使用者可以在任何瀏覽器上使用外部 URL 從網際網路存取應用程式。 應用程式 Proxy 不適合公司存取用途。 |
@@ -85,7 +85,7 @@ Azure Active Directory (Azure AD) 應用程式 Proxy 原本就支援使用標頭
 ## <a name="test-your-app"></a>測試應用程式 
 
 當您完成所有這些步驟之後，您的應用程式應該會執行並可供使用。 若要測試應用程式： 
-1. 開啟瀏覽器並流覽至 [應用程式 Proxy] 設定中的 [ **外部 URL**]   。 
+1. 開啟新的瀏覽器或私用瀏覽器視窗，確認已清除先前快取的標頭。 然後，流覽至 [應用程式 Proxy] 設定中的 [ **外部 URL**]   。
 2. 使用您指派給應用程式的測試帳戶來登入。 如果您可以使用 SSO 載入並登入應用程式，那麼您就很好！ 
 
 

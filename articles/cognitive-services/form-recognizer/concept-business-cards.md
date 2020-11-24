@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 82182c24f87a82df5ee040b7853588f74dda449f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 76e19c36f0fa4096966c5dd23d2384b6b30f2271
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909942"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95498855"
 ---
 # <a name="business-card-concepts"></a>名片概念
 
@@ -52,15 +52,15 @@ Azure 表單辨識器可以使用其中一個預先建立的模型，分析和�
 
 ## <a name="the-analyze-business-card-operation"></a>分析名片操作
 
-「 [分析名片](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) 」會使用名片的影像或 PDF 作為輸入，並將感興趣的值解壓縮。 呼叫會傳回稱為的回應標頭欄位 `Operation-Location` 。 `Operation-Location`值是包含要在下一個步驟中使用之結果識別碼的 URL。
+「 [分析名片](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync) 」會使用名片的影像或 PDF 作為輸入，並將感興趣的值解壓縮。 呼叫會傳回稱為的回應標頭欄位 `Operation-Location` 。 `Operation-Location`值是包含要在下一個步驟中使用之結果識別碼的 URL。
 
 |回應標頭| 結果 URL |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
 ## <a name="the-get-analyze-business-card-result-operation"></a>「取得分析商務卡片」結果操作
 
-第二個步驟是呼叫「 [取得分析商務卡片」結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/GetAnalyzeBusinessCardResult) 作業。 這項作業會以「分析名片」作業所建立的結果識別碼作為輸入。 它會傳回 JSON 回應，其中包含具有下列可能值的 **狀態** 欄位。 您會反復呼叫此操作，直到它傳回 **成功** 的值為止。 使用3到5秒的間隔，以避免每秒超過要求 (RPS) 速率。
+第二個步驟是呼叫「 [取得分析商務卡片」結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeBusinessCardResult) 作業。 這項作業會以「分析名片」作業所建立的結果識別碼作為輸入。 它會傳回 JSON 回應，其中包含具有下列可能值的 **狀態** 欄位。 您會反復呼叫此操作，直到它傳回 **成功** 的值為止。 使用3到5秒的間隔，以避免每秒超過要求 (RPS) 速率。
 
 |欄位| 類型 | 可能值 |
 |:-----|:----:|:----|
@@ -387,11 +387,11 @@ Azure 表單辨識器可以使用其中一個預先建立的模型，分析和�
 
 名片 API 也會為 [>aibuilder 名片處理功能](/ai-builder/prebuilt-business-card)供電。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 遵循 [名片 API Python 快速入門](./quickstarts/python-business-cards.md) ，開始辨識名片。
 
 ## <a name="see-also"></a>請參閱
 
 * [什麼是表單辨識器？](./overview.md)
-* [REST API 參考檔](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)
+* [REST API 參考檔](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)

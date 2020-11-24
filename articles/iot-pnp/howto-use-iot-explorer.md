@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: contperfq2
-ms.openlocfilehash: 8482ba608ee5fcefb006234b339cd9b711a38020
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 55607527ced2e5d93a61cfd85477758482f18daa
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445297"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495418"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>安裝和使用 Azure IoT explorer
 
@@ -40,11 +40,11 @@ Azure IoT explorer 是與連線到 IoT 中樞的裝置互動的圖形化工具�
 
 ## <a name="use-azure-iot-explorer"></a>使用 Azure IoT explorer
 
-針對裝置，您可以連接您自己的裝置，或使用其中一個模擬裝置範例。 如需以不同語言撰寫的一些模擬裝置範例，請參閱將 [範例 IoT 隨插即用裝置應用程式連線至 IoT 中樞](quickstart-connect-device-node.md) 快速入門。
+針對裝置，您可以連接您自己的裝置，或使用其中一個模擬裝置範例。 如需以不同語言撰寫的一些模擬裝置範例，請參閱將 [範例 IoT 隨插即用裝置應用程式連線至 IoT 中樞](quickstart-connect-device.md) 快速入門。
 
 ### <a name="connect-to-your-hub"></a>連接到您的中樞
 
-當您第一次執行 Azure IoT explorer 時，系統會提示您輸入 IoT 中樞的連接字串。 加入連接字串之後，請選取 **[連接]** 。 您可以使用此工具的設定，藉由更新連接字串來切換至另一個 IoT 中樞。
+當您第一次執行 Azure IoT explorer 時，系統會提示您輸入 IoT 中樞的連接字串。 加入連接字串之後，請選取 **[連接]**。 您可以使用此工具的設定，藉由更新連接字串來切換至另一個 IoT 中樞。
 
 IoT 隨插即用裝置的模型定義會儲存在公用存放庫、連線的裝置或本機資料夾中。 根據預設，此工具會在公用存放庫和您的連線裝置中尋找您的模型定義。 您可以新增和移除來源，或在 **設定** 中設定來源的優先順序：
 
@@ -78,18 +78,18 @@ IoT 隨插即用裝置的模型定義會儲存在公用存放庫、連線的裝�
 
 ### <a name="device"></a>裝置
 
-本節包含裝置身分 **識別** 、  **裝置** 對應項、 **遙測** 、 **直接方法** 、 **雲端到裝置訊息** 、模組身分 **識別**  索引標籤。
+本節包含裝置身分 **識別**、  **裝置** 對應項、 **遙測**、 **直接方法**、 **雲端到裝置訊息**、模組身分 **識別**  索引標籤。
 
-- 您可以在 [ **裝置身分識別** ] 索引標籤上，查看並更新 [裝置身分識別](../iot-hub/iot-hub-devguide-identity-registry.md)資訊。
-- 您可以在 [ **裝置** 對應項] 索引標籤上存取 [裝置](../iot-hub/iot-hub-devguide-device-twins.md)對應項資訊。
-- 如果裝置已連線並主動傳送資料，您可以在 [ **遙測** ] 索引標籤上查看 [遙測](../iot-hub/iot-hub-devguide-messages-read-builtin.md)。
-- 您可以在 [ **直接方法** ] 索引標籤上的裝置上呼叫 [直接方法](../iot-hub/iot-hub-devguide-direct-methods.md)。
-- 您可以在 [ **雲端到裝置訊息** ] 索引標籤上傳送 [雲端到裝置訊息](../iot-hub/iot-hub-devguide-messages-c2d.md)。
+- 您可以在 [**裝置身分識別**] 索引標籤上，查看並更新 [裝置身分識別](../iot-hub/iot-hub-devguide-identity-registry.md)資訊。
+- 您可以在 [**裝置** 對應項] 索引標籤上存取 [裝置](../iot-hub/iot-hub-devguide-device-twins.md)對應項資訊。
+- 如果裝置已連線並主動傳送資料，您可以在 [**遙測**] 索引標籤上查看 [遙測](../iot-hub/iot-hub-devguide-messages-read-builtin.md)。
+- 您可以在 [**直接方法**] 索引標籤上的裝置上呼叫 [直接方法](../iot-hub/iot-hub-devguide-direct-methods.md)。
+- 您可以在 [**雲端到裝置訊息**] 索引標籤上傳送 [雲端到裝置訊息](../iot-hub/iot-hub-devguide-messages-c2d.md)。
 - 您可以存取 [模組](../iot-hub/iot-hub-devguide-module-twins.md) 對應項資訊。
 
 ### <a name="iot-plug-and-play-components"></a>IoT 隨插即用元件
 
-如果裝置使用 **模型識別碼** 連線到中樞，此工具會顯示 [ **IoT 隨插即用元件** ] 索引標籤，您可以在其中查看 **模型識別碼** 。
+如果裝置使用 **模型識別碼** 連線到中樞，此工具會顯示 [ **IoT 隨插即用元件** ] 索引標籤，您可以在其中查看 **模型識別碼**。
 
 如果 **模型識別碼** 可在其中一個已設定的來源（公用存放庫或本機資料夾）中使用，則會顯示元件清單。 選取元件會顯示可用的屬性、命令和遙測。
 
@@ -109,7 +109,7 @@ IoT 隨插即用裝置的模型定義會儲存在公用存放庫、連線的裝�
 1. 預覽要傳送至裝置的承載。
 1. 提交變更。
 
-提交變更之後，您可以追蹤更新狀態：「 **同步** 」、「 **成功** 」或「 **錯誤** 」。 當同步完成時，您會在 **報告的屬性** 資料行中看到新的屬性值。 如果您在同步完成之前流覽到其他頁面，此工具仍會在更新完成時通知您。 您也可以使用工具的通知中心來查看通知歷程記錄。
+提交變更之後，您可以追蹤更新狀態：「 **同步**」、「 **成功**」或「 **錯誤**」。 當同步完成時，您會在 **報告的屬性** 資料行中看到新的屬性值。 如果您在同步完成之前流覽到其他頁面，此工具仍會在更新完成時通知您。 您也可以使用工具的通知中心來查看通知歷程記錄。
 
 #### <a name="commands"></a>命令
 

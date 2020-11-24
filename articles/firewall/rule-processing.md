@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 04/10/2020
+ms.date: 11/18/2020
 ms.author: victorh
-ms.openlocfilehash: 84110e749dac9267e994385aa5f6d05e3ba224a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01f7aa61d3bfb3c712320bbf138160a7ff8197c7
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87087538"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95502190"
 ---
 # <a name="configure-azure-firewall-rules"></a>設定 Azure 防火牆規則
 您可以在 Azure 防火牆上設定 NAT 規則、網路規則和應用程式規則。 系統會根據規則類型依優先權順序來處理規則集合，將較低的數位從100到65000。 規則集合名稱只能有字母、數位、底線、句點或連字號。 它必須以字母或數位開頭，並以字母、數位或底線結尾。 最大名稱長度為80個字元。
@@ -26,7 +26,13 @@ ms.locfileid: "87087538"
 
 ### <a name="network-rules-and-applications-rules"></a>網路規則和應用程式規則
 
-如果您設定網路規則和應用程式規則，則會在應用程式規則之前依優先權順序套用網路規則。 之後規則就會終止。 因此，如果在網路規則中找到相符項，則不會處理其他規則。  如果沒有符合的網路規則，而且通訊協定為 HTTP、HTTPS 或 MSSQL，則會依優先順序將封包依應用程式規則進行評估。 如果仍然找不到相符項，則會根據 [基礎結構規則集合](infrastructure-fqdns.md)來評估封包。 如果仍然沒有相符項目，則封包預設會遭到拒絕。
+如果您設定網路規則和應用程式規則，則會在應用程式規則之前依優先權順序套用網路規則。 之後規則就會終止。 因此，如果在網路規則中找到相符項，則不會處理其他規則。  如果沒有符合的網路規則，而且通訊協定為 HTTP、HTTPS 或 MSSQL，則會依優先順序將封包依應用程式規則進行評估。 如果仍然找不到相符項，則會根據 [基礎結構規則集合](infrastructure-fqdns.md)來評估封包。 如果仍然沒有相符的，則預設會拒絕封包。
+
+#### <a name="network-rule-protocol"></a>網路規則通訊協定
+
+您可以設定 **TCP**、 **UDP**、 **ICMP** 或 **任何** IP 通訊協定的網路規則。 任何 IP 通訊協定都會包含網際網路指派的號碼授權單位中所定義的所有 IP 通訊協定 [ (IANA) 通訊協定編號](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) 檔。 如果已明確設定目的地埠，則會將規則轉譯為 TCP + UDP 規則。
+
+在2020年11月9日之前， **任何** 意思是 **TCP**、 **UDP** 或 **ICMP**。 因此，您可能已在該日期之前設定通訊協定 = Any 的規則，以及目的地埠 = ' * '。 如果您不想要允許目前定義的任何 IP 通訊協定，則請修改規則，以明確地設定您想要 (TCP、UDP 或 ICMP) ) 的通訊協定 (。
 
 ## <a name="inbound-connectivity"></a>輸入連線能力
 
@@ -57,7 +63,7 @@ ms.locfileid: "87087538"
 
 - 動作：拒絕
 
-|NAME  |來源類型  |來源  |通訊協定：埠|目標 Fqdn|
+|NAME  |來源類型  |來源  |通訊協定:連接埠|目標 Fqdn|
 |---------|---------|---------|---------|----------|----------|
 |拒絕-google     |IP 位址|*|HTTP：80、HTTPs：443|google.com
 
@@ -97,6 +103,6 @@ SSH 連線遭到拒絕，因為較高優先順序的網路規則集合會封鎖�
 
 如果您將規則變更為拒絕先前允許的流量，則會捨棄任何相關的現有會話。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何 [部署和設定 Azure 防火牆](tutorial-firewall-deploy-portal.md)。

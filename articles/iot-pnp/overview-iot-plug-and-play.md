@@ -9,20 +9,20 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 4fd7a24edffbfb63adc830ddb83b45997743ad42
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: d6cba4bcb76094ed156ef35b1ea76cea7001c372
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421629"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95486291"
 ---
 # <a name="what-is-iot-plug-and-play"></a>什麼是 IoT 隨插即用？
 
 IoT 隨插即用可讓解決方案建立器將智慧型裝置整合到解決方案中，而不需手動設定。 IoT 隨插即用的核心是裝置「型號」，裝置會使用此型號向已啟用 IoT 隨插即用的應用程式公告其功能。 此模型是結構化的一組元素，可定義：
 
-- 代表裝置或其他實體的唯讀或可寫入狀態的 _屬性_ 。 例如，裝置序號可能是唯讀屬性，而控溫器上的目標溫度可能是可寫入屬性。
-- 屬於裝置所發出之資料的 _遙測_ ，無論這項資料是感應器讀數的一般串流、偶爾發生的錯誤，還是資訊訊息。
-- 說明可在裝置上完成之函式或作業的 _命令_ 。 例如，命令可以重新啟動閘道或使用遠端相機拍照。
+- 代表裝置或其他實體的唯讀或可寫入狀態的 _屬性_。 例如，裝置序號可能是唯讀屬性，而控溫器上的目標溫度可能是可寫入屬性。
+- 屬於裝置所發出之資料的 _遙測_，無論這項資料是感應器讀數的一般串流、偶爾發生的錯誤，還是資訊訊息。
+- 說明可在裝置上完成之函式或作業的 _命令_。 例如，命令可以重新啟動閘道或使用遠端相機拍照。
 
 您可以將介面中的這些元素分組跨裝置重複使用，以簡化共同作業及加速開發工作。
 
@@ -72,5 +72,5 @@ IoT 隨插即用適用於兩種類型的開發人員：
 
 現在您已大致了解 IoT 隨插即用，建議執行的下一個步驟是嘗試進行其中一個快速入門：
 
-- [將裝置連線到 IoT 中樞 (C)](./quickstart-connect-device-c.md)
-- [從您的解決方案與裝置互動 (Node.js)](./quickstart-service-node.md)
+- [將裝置連線到 IoT 中樞](./quickstart-connect-device.md)
+- [從您的解決方案與裝置互動](./quickstart-service.md)

@@ -1,19 +1,19 @@
 ---
 title: 安裝適用于 Unity 的 Azure 空間錨點
 description: 設定 Unity 專案以使用 Azure 空間錨點
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 09/29/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: da983719dc66656aa28cab4aea0bae558c2a7162
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2330310b0bf4e165af71208477db128650a787cf
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530406"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95496933"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>在 Unity 專案中設定 Azure 空間錨點
 
@@ -55,7 +55,7 @@ Azure 空間錨點目前支援具有下列設定的 Unity 2019.4 (LTS) 。
 #### <a name="android-only-configure-the-maintemplategradle-file"></a>僅限 Android：設定 >maintemplate.json gradle 檔案
 
 1. 移至 [編輯] > [專案設定] > [播放器]。
-2. 在 [**播放程式設定**] 的 [偵測**器] 面板**中，選取 [ **Android** ] 圖示。
+2. 在 [**播放程式設定**] 的 [偵測 **器] 面板** 中，選取 [ **Android** ] 圖示。
 3. 在 [ **組建** ] 區段下，選取 [ **自訂主要 Gradle 範本** ] 核取方塊，以在上產生自訂 Gradle 範本 `Assets\Plugins\Android\mainTemplate.gradle` 。
 4. 在文字編輯器中開啟您的 `mainTemplate.gradle` 檔案。
 5. 在 `dependencies` 區段中，貼上下列相依性：

@@ -7,12 +7,12 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5f1c52b764634f8086763aca67dfc32b507d2edd
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 51bd073b6f84f3378b91091e04f2f278ea2f49b6
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042842"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495264"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>管理 IoT 隨插即用數位 twins
 
@@ -155,7 +155,7 @@ IoT 隨插即用裝置會執行 [數位 Twins 定義語言 v2 ](https://github.c
 
 ### <a name="rules-for-setting-the-desired-value-of-a-digital-twin-property"></a>設定數位對應項屬性所需值的規則
 
-**名稱**
+**Name**
 
 元件或屬性的名稱必須是有效的 DTDL v2 名稱。
 
@@ -193,6 +193,6 @@ IoT 隨插即用裝置會執行 [數位 Twins 定義語言 v2 ](https://github.c
 
 現在您已瞭解數位 twins，以下是一些額外的資源：
 
-- [從您的解決方案與裝置互動](quickstart-service-node.md)
+- [從您的解決方案與裝置互動](quickstart-service.md)
 - [IoT 數位對應項 REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT 總管](howto-use-iot-explorer.md)

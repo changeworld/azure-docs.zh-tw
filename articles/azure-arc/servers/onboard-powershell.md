@@ -3,12 +3,12 @@ title: 使用 PowerShell 將混合式機器連線至 Azure
 description: 在本文中，您將瞭解如何安裝代理程式，並使用 Azure Arc 啟用的伺服器將機器連線到 Azure。 您可以利用 PowerShell 來完成此作業。
 ms.date: 10/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: f85e2564b2e5b194d306ef4bad2269982331a7d4
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 0218235179e1a8a883360d0061e685c04079cbf4
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422768"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95492936"
 ---
 # <a name="connect-hybrid-machines-to-azure-by-using-powershell"></a>使用 PowerShell 將混合式機器連線至 Azure
 
@@ -45,16 +45,16 @@ Install-Module -Name Az.ConnectedMachine
     * 若要在可以直接與 Azure 通訊的目的電腦上安裝已連線的機器代理程式，請執行：
 
         ```azurepowershell
-        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region>
         ```
     
     * 若要在透過 proxy 伺服器進行通訊的目的電腦上安裝已連線的機器代理程式，請執行：
         
         ```azurepowershell
-        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e -proxy http://<proxyURL>:<proxyport>
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -Proxy http://<proxyURL>:<proxyport>
         ```
 
-如果此代理程式在安裝完成之後無法啟動，請檢查記錄以取得詳細的錯誤資訊。 在 Windows 上，檢查此檔案： *%ProgramData%\AzureConnectedMachineAgent\Log\himds.log* 。 在 Linux 上，檢查此檔案： */var/opt/azcmagent/log/himds.log* 。
+如果此代理程式在安裝完成之後無法啟動，請檢查記錄以取得詳細的錯誤資訊。 在 Windows 上，檢查此檔案： *%ProgramData%\AzureConnectedMachineAgent\Log\himds.log*。 在 Linux 上，檢查此檔案： */var/opt/azcmagent/log/himds.log*。
 
 ## <a name="install-and-connect-by-using-powershell-remoting"></a>使用 PowerShell 遠端進行安裝和連接
 
@@ -64,20 +64,20 @@ Install-Module -Name Az.ConnectedMachine
 
 2. 執行命令以登入 Azure `Connect-AzAccount` 。
 
-3. 若要安裝已連線的機器代理程式，請使用搭配 `Connect-AzConnectedMachine` `-Name` 、 `-ResourceGroupName` 和 `-Location` 參數。 使用 `-SubscriptionId` 參數來覆寫預設訂用帳戶，因為在登入之後建立的 Azure 內容會產生此結果。
+3. 若要安裝已連線的機器代理程式，請使用搭配 `Connect-AzConnectedMachine` `-ResourceGroupName` 、和 `-Location` 參數。 Azure 資源名稱會自動使用每部伺服器的主機名稱。 使用 `-SubscriptionId` 參數來覆寫預設訂用帳戶，因為在登入之後建立的 Azure 內容會產生此結果。
 
     * 若要在可以直接與 Azure 通訊的目的電腦上安裝已連線的機器代理程式，請執行下列命令：
     
         ```azurepowershell
-        $session = Connect-PSSession -ComputerName myMachineName
-        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -PSSession $session
+        $sessions = New-PSSession -ComputerName myMachineName
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Location <region> -PSSession $sessions
         ```
     
     * 若要同時在多部遠端電腦上安裝已連線的機器代理程式，請新增遠端電腦名稱稱的清單，每個名稱都以逗號分隔。
 
         ```azurepowershell
-        $session = Connect-PSSession -ComputerName myMachineName1, myMachineName2, myMachineName3
-        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -PSSession $session
+        $sessions = New-PSSession -ComputerName myMachineName1, myMachineName2, myMachineName3
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Location <region> -PSSession $sessions
         ```
 
     下列範例會顯示以單一電腦為目標之命令的結果：

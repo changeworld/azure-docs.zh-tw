@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: fc405c56538ab305d6e0b8a22c1095458cb1264e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: eacc7adae16785049022cd05f04904d97b0b3a6d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309880"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95486121"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>共用及探索 Azure AI 資源庫中的資源
 
-**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用于：** ![這是一個核取記號，這表示本文適用于 Machine Learning Studio (傳統) 。 ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統) ![ 這是 X，這表示本文適用于 Azure Machine Learning。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 
@@ -31,8 +31,8 @@ ms.locfileid: "93309880"
 Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表的不同資源。 它們包括：
 
 * **實驗** -資源庫包含各種已在 Azure Machine Learning Studio (傳統) 中開發的實驗。 小至示範特定機器學習服務技術的快速概念證明實驗，大至用於解決複雜機器學習服務問題的完整開發解決方案，都在這些實驗的涵蓋範圍內。
-* **教學課程** ：此資源中提供了許多教學課程來引導您了解機器學習服務的技術和概念，或說明用來解決各種機器學習服務問題的進階方法。
-* **集合** ：集合可讓您將用於處理特定解決方案或概念的實驗、API 和其他資源庫項目群組在一起。
+* **教學課程**：此資源中提供了許多教學課程來引導您了解機器學習服務的技術和概念，或說明用來解決各種機器學習服務問題的進階方法。
+* **集合**：集合可讓您將用於處理特定解決方案或概念的實驗、API 和其他資源庫項目群組在一起。
 * **自訂模組** -您可以將自訂模組下載到您的 Studio (傳統) 工作區，以在您自己的實驗中使用。
 
 ## <a name="discover-and-contribute"></a>探索及參與
@@ -48,12 +48,12 @@ Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表
 
 當您登入時，您將成為資源庫社群的成員。 您可以下載資源或發表自己的資源庫項目，以便其他人可以從您發現的解決方案中受益。
 
-您可以下載 **實驗** 、 **自訂模組** ，以用於開發您自己的分析解決方案。
-您可以將 **實驗** 、 **教學課程** 和 **集合** 發表至資源庫。
+您可以下載 **實驗**、 **自訂模組** ，以用於開發您自己的分析解決方案。
+您可以將 **實驗**、**教學課程** 和 **集合** 發表至資源庫。
 
 ## <a name="download-experiments-modules"></a>下載實驗、課程模組
 
-您可以將 **實驗** 、 **自訂模組** 下載到您自己的 Machine Learning Studio (傳統) 工作區，以用於開發您自己的解決方案。
+您可以將 **實驗**、 **自訂模組** 下載到您自己的 Machine Learning Studio (傳統) 工作區，以用於開發您自己的解決方案。
 
 若要下載中 AI 資源庫中的資源：
 
@@ -64,7 +64,7 @@ Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表
 
 若要從 Studio 內下載資源 (傳統) ：
 
-1. 在 [Studio (傳統) 中，選取 [ **新增** ]。
+1. 在 [Studio (傳統) 中，選取 [ **新增**]。
 1. 選取 [模組]、[實驗] 或 [Notebook]。
 1. 瀏覽或搜尋以尋找資源庫資源。
 1. 將滑鼠指向資源，然後選取 [在 Studio 中開啟]。
@@ -123,7 +123,7 @@ Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表
 
 * 實驗名稱
 * 摘要或描述
-* Tags
+* 標籤
 * 映像
 * 可視性設定 ([公開] 或 [未公開])
 
@@ -144,7 +144,7 @@ Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表
 
 ## <a name="contribute-tutorials-and-collections"></a>發表教學課程和集合
 
-您可以在資源庫中撰寫 **教學課程** ，以說明機器學習概念，或建立 **集合** ，將以特定解決方案為主的多個資源歸類在一起，藉此協助其他人。
+您可以在資源庫中撰寫 **教學課程**，以說明機器學習概念，或建立 **集合**，將以特定解決方案為主的多個資源歸類在一起，藉此協助其他人。
 
 1. 使用您的 Microsoft 帳戶登入資源庫。
 
@@ -202,6 +202,6 @@ Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表
 
 我們希望資源庫是由我們的使用者驅使，並且適合我們的使用者。 使用右側的笑臉符號告訴我們您喜歡或不喜歡資源庫。  
 
-![意見反應](./media/gallery-how-to-use-contribute-publish/feedback.png)
+![[意見反應] 視窗可讓您傳送笑臉、傳送苦臉或輸入文字。 有一個 [提交] 按鈕。](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
 **[前往 GALLERY >>](https://gallery.azure.ai)**
