@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 10f16118b37810ed888c0812a30ad276c49803f2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 39b5a812c5f9b8e148b5180569af110c72e2c75b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545781"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544593"
 ---
 # <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>快速入門：使用 Java v8 SDK 來管理 Blob
 
@@ -40,7 +40,7 @@ git clone https://github.com/Azure-Samples/storage-blobs-java-quickstart.git
 
 此命令會將存放庫複製到本機的 git 資料夾。 若要開啟專案，請啟動 Eclipse 並關閉歡迎畫面。 選取 [File] \(檔案\)，然後選取 [Open Projects from File System] \(從檔案系統中開啟專案\)。 請確定已核取 [Detect and configure project natures] \(偵測並設定專案性質\)。 選取 [Directory] \(目錄\)，然後瀏覽至您儲存複製存放庫的位置。 在複製的存放庫中選取 [blobAzureApp] 資料夾。 請確定 **blobAzureApp** 專案顯示為 Eclipse 專案，然後選取 [Finish] \(完成\)。
 
-當專案完成匯入之後，開啟 **AzureApp.java** (位於 **src/main/java** 內的 **blobQuickstart.blobAzureApp** )，並取代 `storageConnectionString` 字串內的 `accountname` 和 `accountkey`。 然後執行應用程式。 下列各節會說明可用來完成這些工作的特定指示。
+當專案完成匯入之後，開啟 **AzureApp.java** (位於 **src/main/java** 內的 **blobQuickstart.blobAzureApp**)，並取代 `storageConnectionString` 字串內的 `accountname` 和 `accountkey`。 然後執行應用程式。 下列各節會說明可用來完成這些工作的特定指示。
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -57,9 +57,9 @@ public static final String storageConnectionString =
 
 ## <a name="run-the-sample"></a>執行範例
 
-此應用程式範例會在您預設的目錄 (如果是 Windows 使用者，則是 *C:\Users\<user>\AppData\Local\Temp* ) 中建立測試檔案、將其上傳至 Blob 儲存體、列出容器中的 Blob，然後以新名稱下載該檔案，以便比較新舊檔案。
+此應用程式範例會在您預設的目錄 (如果是 Windows 使用者，則是 *C:\Users\<user>\AppData\Local\Temp*) 中建立測試檔案、將其上傳至 Blob 儲存體、列出容器中的 Blob，然後以新名稱下載該檔案，以便比較新舊檔案。
 
-在命令列上使用 Maven 執行範例。 開啟殼層，然後瀏覽至複製目錄內的 **blobAzureApp** 。 然後輸入 `mvn compile exec:java`。
+在命令列上使用 Maven 執行範例。 開啟殼層，然後瀏覽至複製目錄內的 **blobAzureApp**。 然後輸入 `mvn compile exec:java`。
 
 如果您是在 Windows 上執行應用程式，則下列範例會顯示輸出。
 
@@ -76,7 +76,7 @@ Deleting the container
 Deleting the source, and downloaded files
 ```
 
-在繼續之前，請先檢查預設目錄 (如果是 Windows 使用者，則是 *C:\Users\<user>\AppData\Local\Temp* ) 是否有範例檔案。 複製主控台視窗的 Blob URL，將它貼至瀏覽器以檢視 Blob 儲存體中的檔案內容。 如果您比較目錄中的範例檔案與 Blob 儲存體中儲存的內容，您會發現兩者相同。
+在繼續之前，請先檢查預設目錄 (如果是 Windows 使用者，則是 *C:\Users\<user>\AppData\Local\Temp*) 是否有範例檔案。 複製主控台視窗的 Blob URL，將它貼至瀏覽器以檢視 Blob 儲存體中的檔案內容。 如果您比較目錄中的範例檔案與 Blob 儲存體中儲存的內容，您會發現兩者相同。
 
   >[!NOTE]
   >您也可以使用 [Azure 儲存體總管](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 之類的工具來檢視 Blob 儲存體中的檔案。 Azure 儲存體總管是免費的跨平台工具，可讓您存取儲存體帳戶資訊。
@@ -97,20 +97,20 @@ Deleting the source, and downloaded files
 
 * 建立 **CloudBlobClient** 物件的執行個體，指向您儲存體帳戶中的 [Blob 服務](/java/api/com.microsoft.azure.storage.blob.cloudblobclient)。
 
-    **CloudBlobClient** 能為您提供 Blob 服務的存取點，可讓您以程式設計方式來設定和存取 Blob 儲存體屬性。 使用 **CloudBlobClient** ，您可以建立 **CloudBlobContainer** 物件的執行個體，這是建立容器的必要條件。
+    **CloudBlobClient** 能為您提供 Blob 服務的存取點，可讓您以程式設計方式來設定和存取 Blob 儲存體屬性。 使用 **CloudBlobClient**，您可以建立 **CloudBlobContainer** 物件的執行個體，這是建立容器的必要條件。
 
 * 建立 [CloudBlobContainer](/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer) 物件的執行個體，代表您要存取的容器。 請使用容器來組織 Blob，就像在電腦上用資料夾組織檔案一樣。
 
-    只要您有 **CloudBlobContainer** ，就可以建立 [CloudBlockBlob](/java/api/com.microsoft.azure.storage.blob.cloudblockblob) 物件的執行個體，指向您感興趣的特定 Blob 並執行上傳、下載、複製和其他作業。
+    只要您有 **CloudBlobContainer**，就可以建立 [CloudBlockBlob](/java/api/com.microsoft.azure.storage.blob.cloudblockblob) 物件的執行個體，指向您感興趣的特定 Blob 並執行上傳、下載、複製和其他作業。
 
 > [!IMPORTANT]
-> 容器名稱必須是小寫字母。 如需容器的詳細資訊，請參閱[命名和參考容器、Blob 及中繼資料](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
+> 容器名稱必須是小寫字母。 如需容器的詳細資訊，請參閱[命名和參考容器、Blob 及中繼資料](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
 ### <a name="create-a-container"></a>建立容器
 
-在本節中，您要建立物件的執行個體、建立新的容器，然後設定容器上的權限，以便公開 Blob 並使用 URL 即可存取。 容器名為 **quickstartcontainer** 。
+在本節中，您要建立物件的執行個體、建立新的容器，然後設定容器上的權限，以便公開 Blob 並使用 URL 即可存取。 容器名為 **quickstartcontainer**。
 
-因為我們需要在每次執行範例時建立新的容器，所以此範例會使用 [CreateIfNotExists](/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists)。 在整個應用程式都使用相同容器的生產環境中，最好只呼叫一次 **CreateIfNotExists** 。 或者，您可以事先建立容器，就不需要在程式碼中建立。
+因為我們需要在每次執行範例時建立新的容器，所以此範例會使用 [CreateIfNotExists](/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists)。 在整個應用程式都使用相同容器的生產環境中，最好只呼叫一次 **CreateIfNotExists**。 或者，您可以事先建立容器，就不需要在程式碼中建立。
 
 ```java
 // Parse the connection string and create a blob client to interact with Blob storage
@@ -125,9 +125,9 @@ container.createIfNotExists(BlobContainerPublicAccessType.CONTAINER, new BlobReq
 
 ### <a name="upload-blobs-to-the-container"></a>將 Blob 上傳到容器
 
-若要將檔案上傳至區塊 Blob，請取得目標容器中的 Blob 參考。 取得 Blob 參考之後，即可使用 [CloudBlockBlob.Upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblockblob.upload) 將資料上傳至 Blob。 如果沒有 Blob，此作業會建立 Blob，如已存在，則予以覆寫。
+若要將檔案上傳至區塊 Blob，請取得目標容器中的 Blob 參考。 取得 Blob 參考之後，即可使用 [CloudBlockBlob.Upload](/java/api/com.microsoft.azure.storage.blob.cloudblockblob.upload) 將資料上傳至 Blob。 如果沒有 Blob，此作業會建立 Blob，如已存在，則予以覆寫。
 
-範例程式碼會建立用於上傳和下載的本機檔案，將要上傳的檔案以 **blob** 中的 Blob 名稱儲存為 **source** 。 下列範例會將檔案上傳到名為 **quickstartcontainer** 的容器。
+範例程式碼會建立用於上傳和下載的本機檔案，將要上傳的檔案以 **blob** 中的 Blob 名稱儲存為 **source**。 下列範例會將檔案上傳到名為 **quickstartcontainer** 的容器。
 
 ```java
 //Creating a sample file
@@ -151,7 +151,7 @@ blob.uploadFromFile(sourceFile.getAbsolutePath());
 
 ### <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
 
-您可以使用 [CloudBlobContainer.ListBlobs](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.listblobs) 來取得容器中的檔案清單。 下列程式碼會擷取 Blob 的清單，透過它們執行迴圈，顯示找到的 Blob URI。 您可以複製命令視窗中的 URI，將它貼入至瀏覽器來檢視檔案。
+您可以使用 [CloudBlobContainer.ListBlobs](/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.listblobs) 來取得容器中的檔案清單。 下列程式碼會擷取 Blob 的清單，透過它們執行迴圈，顯示找到的 Blob URI。 您可以複製命令視窗中的 URI，將它貼入至瀏覽器來檢視檔案。
 
 ```java
 //Listing contents of container
@@ -162,7 +162,7 @@ for (ListBlobItem blobItem : container.listBlobs()) {
 
 ### <a name="download-blobs"></a>下載 Blob
 
-使用 [CloudBlob.DownloadToFile](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblob.downloadtofile) 將 Blob 下載到本機磁碟。
+使用 [CloudBlob.DownloadToFile](/java/api/com.microsoft.azure.storage.blob.cloudblob.downloadtofile) 將 Blob 下載到本機磁碟。
 
 下列程式碼會下載上一節中上傳的 Blob，將 "_DOWNLOADED" 尾碼新增至 Blob 名稱，以便您在本機磁碟上看到這兩個檔案。
 
@@ -177,7 +177,7 @@ blob.downloadToFile(downloadedFile.getAbsolutePath());
 
 ### <a name="clean-up-resources"></a>清除資源
 
-如果不再需要您所上傳的 Blob，您可以使用 [CloudBlobContainer.DeleteIfExists](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.deleteifexists) 刪除整個容器。 此方法也會刪除容器中的檔案。
+如果不再需要您所上傳的 Blob，您可以使用 [CloudBlobContainer.DeleteIfExists](/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.deleteifexists) 刪除整個容器。 此方法也會刪除容器中的檔案。
 
 ```java
 try {
@@ -201,5 +201,5 @@ sourceFile.deleteOnExit();
 在本文中，您已了解如何使用 Java 在本機磁碟和 Azure Blob 儲存體之間傳送檔案。 若要深入了解 Java 的用法，請繼續使用我們的 GitHub 開放原始碼存放庫。
 
 > [!div class="nextstepaction"]
-> [Java API 參考](https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy)
+> [Java API 參考](/java/api/overview/azure/storage?view=azure-java-legacy)
 > [Java 的程式碼範例](../common/storage-samples-java.md)

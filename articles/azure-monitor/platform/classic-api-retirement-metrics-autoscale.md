@@ -4,16 +4,16 @@ description: 計量與自動調整傳統 API 即將停用，此 API 亦稱為「
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 38a30f2adc0de7ccb9a9a3a4ba7ed53fd5fda3f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8900d238e7542864e3dc53f9d192e579e2c96d1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87317377"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536688"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure 監視器停用計量與自動調整的傳統部署模型 API
 
-Azure 監視器 (首次發行時名為 Azure Insights) 目前的工可建立與管理自動調整設定，並可從傳統虛擬機器與傳統雲端服務取用計量。 所有區域中的所有 Azure 公用雲端與私人雲端，將在 **2019 年 6 月 30 日後停用**以傳統部署模型為基礎的原始 API 集。   
+Azure 監視器 (首次發行時名為 Azure Insights) 目前的工可建立與管理自動調整設定，並可從傳統虛擬機器與傳統雲端服務取用計量。 所有區域中的所有 Azure 公用雲端與私人雲端，將在 **2019 年 6 月 30 日後停用** 以傳統部署模型為基礎的原始 API 集。   
 
 以 Azure Resource Manager 為基礎的 API 集已經支援相同的作業超過一年時間。 Azure 入口網站會在自動調整和計量上使用新的 REST API。 此外也會提供以這些 Resource Manager API 為基礎的新 SDK、PowerShell 和 CLI。 我們合作夥伴的監視服務會取用 Azure 監視器中以新 Resource Manager 為基礎的 REST API。  
 
@@ -27,11 +27,11 @@ Azure 監視器 (首次發行時名為 Azure Insights) 目前的工可建立與�
 
 如果您使用的是下列元件，這篇文章適合給您閱讀：
 
-- **傳統 Azure Insights SDK** - 如果您使用的是[傳統 Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/)，請改為使用 [.NET](https://github.com/azure/azure-libraries-for-net#download) 或 [JAVA](https://github.com/azure/azure-libraries-for-java#download) 適用的新 Azure 監視器 SDK。 下載 [Azure 監視器 SDK NuGet 封裝](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)。
+- **傳統 Azure Insights SDK** - 如果您使用的是 [傳統 Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/)，請改為使用 [.NET](https://github.com/azure/azure-libraries-for-net#download) 或 [JAVA](https://github.com/azure/azure-libraries-for-java#download) 適用的新 Azure 監視器 SDK。 下載 [Azure 監視器 SDK NuGet 封裝](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)。
 
-- **傳統自動調整** - 如果您是使用自訂的工具或[傳統 Azure Insights SDK 來](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/)呼叫[傳統自動調整設定 API](/previous-versions/azure/reference/mt348562(v=azure.100))，請改用 [Resource Manager Azure 監視器 REST API](/rest/api/monitor/autoscalesettings)。
+- **傳統自動調整** - 如果您是使用自訂的工具或 [傳統 Azure Insights SDK 來](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/)呼叫 [傳統自動調整設定 API](/previous-versions/azure/reference/mt348562(v=azure.100))，請改用 [Resource Manager Azure 監視器 REST API](/rest/api/monitor/autoscalesettings)。
 
-- **傳統計量** - 如果您是透過自訂的工具使用[傳統 REST API](/previous-versions/azure/reference/dn510374(v=azure.100)) 或[傳統 Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) 來取用計量，請改用 [Resource Manager Azure 監視器 REST API](/rest/api/monitor/autoscalesettings)。 
+- **傳統計量** - 如果您是透過自訂的工具使用 [傳統 REST API](/previous-versions/azure/reference/dn510374(v=azure.100)) 或 [傳統 Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) 來取用計量，請改用 [Resource Manager Azure 監視器 REST API](/rest/api/monitor/autoscalesettings)。 
 
 如果您不確定您的程式碼或自訂工具是否會呼叫傳統 API，請參閱下方：
 
@@ -53,7 +53,7 @@ Azure 監視器 (首次發行時名為 Azure Insights) 目前的工可建立與�
 
 自動調整和計量的所有現有功能會透過新的 API 繼續運作。  
 
-移轉到新版 API 後，可獲得以 Resource Manager 為基礎的功能，例如可在您所有的監視服務上，支援一致的角色型存取控制 (RBAC)。 您也會得到其他的計量功能： 
+遷移至較新的 Api 包含以 Resource Manager 為基礎的功能，例如支援一致的 Azure 角色型存取控制 (Azure RBAC) 所有的監視服務。 您也會得到其他的計量功能： 
 
 - 支援維度
 - 所有服務之間有一致的 1 分鐘計量細微性 

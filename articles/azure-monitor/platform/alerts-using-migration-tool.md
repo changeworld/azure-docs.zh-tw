@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: e49525018a3e23ecbbf92d7a8b3f7c50804432b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7bcf3e5c0b50d3d6eb8f71dc70f0ff064ff3465
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358656"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536025"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>使用自發的遷移工具來遷移傳統警示規則
 
@@ -83,7 +83,7 @@ ms.locfileid: "91358656"
 
 ### <a name="who-can-trigger-the-migration"></a>誰可以觸發遷移？
 
-在訂用帳戶層級指派「監視參與者」角色的使用者，可以觸發遷移。 [深入瞭解遷移程式的 Role-Based 存取控制](alerts-understand-migration.md#who-can-trigger-the-migration)。
+在訂用帳戶層級指派「監視參與者」角色的使用者，可以觸發遷移。 [深入瞭解 Azure 角色型存取控制的遷移程式](alerts-understand-migration.md#who-can-trigger-the-migration)。
 
 ### <a name="how-long-will-the-migration-take"></a>遷移需要多久的時間？
 

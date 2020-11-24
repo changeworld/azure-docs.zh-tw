@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 352c057a74d1be5f440041b9f13127e8730edf82
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 4252e3a7f8c3ff9d0ec782a2a9222553c063463c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698065"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95533271"
 ---
 # <a name="configure-an-aks-cluster"></a>設定 AKS 叢集
 
@@ -237,47 +237,28 @@ az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myR
 如果您想要建立一般 Gen1 節點集區，您可以省略自訂標籤來這麼做 `--aks-custom-headers` 。
 
 
-## <a name="ephemeral-os-preview"></a>暫時作業系統 (預覽) 
+## <a name="ephemeral-os"></a>暫時 OS
 
-根據預設，Azure 虛擬機器的作業系統磁片會自動複寫到 Azure 儲存體，以避免 VM 需要重新放置到另一部主機時遺失資料。 不過，因為容器不是設計成要保存本機狀態，所以此行為可提供有限的價值，並提供一些缺點，包括較慢的節點布建和更高的讀取/寫入延遲。
+根據預設，Azure 會自動將虛擬機器的作業系統磁片複寫到 Azure 儲存體，以避免 VM 需要重新放置至另一部主機時遺失資料。 不過，因為容器不是設計成要保存本機狀態，所以此行為可提供有限的價值，並提供一些缺點，包括較慢的節點布建和更高的讀取/寫入延遲。
 
 相反地，暫時作業系統磁片只會儲存在主機電腦上，就像暫存磁片一樣。 這可提供較低的讀取/寫入延遲，以及更快速的節點擴充和叢集升級。
 
 如同暫存磁片，虛擬機器的價格包含暫時性的 OS 磁片，因此不會產生額外的儲存體成本。
 
-註冊 `EnableEphemeralOSDiskPreview` 功能：
+> [!IMPORTANT]
+>當使用者未明確要求 OS 的受控磁片時，如果指定的 nodepool 設定可能的話，AKS 會預設為暫時 OS。
 
-```azurecli
-az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
-```
+使用暫時性 OS 時，OS 磁片必須符合 VM 快取的大小。 VM 快取的大小可在 [Azure 檔](../virtual-machines/dv3-dsv3-series.md) 中以括弧括住，在 IO 輸送量 ( 「GiB 中的快取大小」 ) 。
 
-可能需要幾分鐘的時間，狀態才會顯示為 [已註冊]。 您可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) 命令檢查註冊狀態：
+使用 AKS 預設 VM 大小 Standard_DS2_v2 預設 OS 磁片大小為100GB 作為範例，此 VM 大小支援暫時性 OS，但只有86GB 快取大小。 如果使用者未明確指定，此設定會預設為受控磁片。 如果使用者明確要求暫時 OS，則會收到驗證錯誤。
 
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"
-```
+如果使用者向 60GB OS 磁片要求相同的 Standard_DS2_v2，此設定會預設為暫時 OS：要求的60GB 大小小於86GB 的快取大小上限。
 
-當狀態顯示為已註冊時，請使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) 命令重新整理 `Microsoft.ContainerService` 資源提供者的註冊：
+使用 Standard_D8s_v3 搭配100GB 的 OS 磁片時，此 VM 大小可支援暫時性 OS，並200GB 快取空間。 如果使用者未指定 OS 磁片類型，則 nodepool 預設會收到暫時 OS。 
 
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```
+暫時 OS 至少需要 Azure CLI 的版本2.15.0。
 
-暫時 OS 至少需要 aks-preview CLI 擴充功能的版本0.4.63。
-
-若要安裝 aks-preview CLI 擴充功能，請使用下列 Azure CLI 命令：
-
-```azurecli
-az extension add --name aks-preview
-```
-
-若要更新 aks-preview CLI 擴充功能，請使用下列 Azure CLI 命令：
-
-```azurecli
-az extension update --name aks-preview
-```
-
-### <a name="use-ephemeral-os-on-new-clusters-preview"></a>在新的叢集上使用暫時 OS (Preview) 
+### <a name="use-ephemeral-os-on-new-clusters"></a>在新叢集上使用暫時 OS
 
 將叢集設定為在建立叢集時使用暫時作業系統磁片。 使用旗標將 `--node-osdisk-type` 暫時 OS 設定為新叢集的 os 磁片類型。
 
@@ -285,9 +266,9 @@ az extension update --name aks-preview
 az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --node-osdisk-type Ephemeral
 ```
 
-如果您想要使用網路連接的 OS 磁片來建立一般叢集，您可以省略自訂標籤 `--node-osdisk-type` 或指定來建立 `--node-osdisk-type=Managed` 。 您也可以選擇新增更多暫時 OS 節點集區，如下所示。
+如果您想要使用網路連接的 OS 磁片來建立一般叢集，您可以藉由指定來建立 `--node-osdisk-type=Managed` 。 您也可以選擇新增更多暫時 OS 節點集區，如下所示。
 
-### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>在現有的叢集上使用暫時作業系統 (預覽) 
+### <a name="use-ephemeral-os-on-existing-clusters"></a>在現有的叢集上使用暫時 OS
 將新的節點集區設定為使用暫時 OS 磁片。 使用 `--node-osdisk-type` 旗標，將 os 磁片類型設定為該節點集區的 os 磁片類型。
 
 ```azurecli
@@ -297,7 +278,7 @@ az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-grou
 > [!IMPORTANT]
 > 使用暫時性作業系統時，您可以將 VM 和實例映射部署到 VM 快取的大小。 在 AKS 案例中，預設節點 OS 磁片設定會使用100GiB，這表示您需要的 VM 大小必須大於 100 GiB 的快取。 預設 Standard_DS2_v2 的快取大小為 86 GiB，但不夠大。 Standard_DS3_v2 的快取大小為 172 GiB，夠大。 您也可以使用來減少 OS 磁片的預設大小 `--node-osdisk-size` 。 AKS 影像的大小下限為30GiB。 
 
-如果您想要使用網路連接的 OS 磁片來建立節點集區，您可以省略自訂標籤來建立節點集區 `--node-osdisk-type` 。
+如果您想要使用網路連接的 OS 磁片來建立節點集區，您可以指定來建立節點集區 `--node-osdisk-type Managed` 。
 
 ## <a name="custom-resource-group-name"></a>自訂資源群組名稱
 

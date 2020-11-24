@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2020
-ms.openlocfilehash: bab74a1db04bb557aa6604fe76c05ba3d087f8c0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d231de8e262194cd7dda2462a3f54d7d531eb63c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540785"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542077"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>監視 Azure machine learning 資料參考
 
@@ -77,9 +77,9 @@ ms.locfileid: "94540785"
 
 Azure Machine Learning 具有與其度量相關聯的下列維度。
 
-| 尺寸 | 描述 |
+| 維度 | 描述 |
 | ---- | ---- |
-| 叢集名稱 | 計算實例的名稱。 適用于所有配額度量。 |
+| 叢集名稱 | 計算叢集資源的名稱。 適用于所有配額度量。 |
 | Vm 系列名稱 | 叢集所使用的 VM 系列名稱。 適用于配額使用率百分比。 |
 | Vm 優先順序 | VM 的優先順序。 適用于配額使用率百分比。
 | CreatedTime | 僅適用于 CpuUtilization 和 GpuUtilization。 |
@@ -178,7 +178,7 @@ RunType 維度的有效值為：
 | MinimumNodeCount | 叢集的最小節點計數 |
 | MaximumNodeCount | 叢集的節點計數上限 |
 | NodeDeallocationOption | 節點應如何解除配置 |
-| Publisher | 叢集類型的發行者 |
+| 發行者 | 叢集類型的發行者 |
 | 供應項目 | 用來建立叢集的供應專案 |
 | SKU | 在叢集中建立之節點/VM 的 Sku |
 | 版本 | 建立節點/VM 時使用的映射版本 |
@@ -214,7 +214,7 @@ RunType 維度的有效值為：
 | VmSize | 節點的 Vm 大小 |
 | VmFamilyName | 節點所屬的 Vm 系列 |
 | VmPriority | 節點建立的專用/LowPriority 優先順序 |
-| Publisher | Vm 映射的發行者。 例如，microsoft dsvm |
+| 發行者 | Vm 映射的發行者。 例如，microsoft dsvm |
 | 供應項目 | 與 VM 建立相關聯的供應專案 |
 | SKU | 已建立之節點/VM 的 Sku |
 | 版本 | 建立節點/VM 時使用的映射版本 |

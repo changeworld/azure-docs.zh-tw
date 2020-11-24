@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 363281d064d4abe7475c034e6d6592d90af1f9b9
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: becaadda37cdc7cf25fb3881dda0961e8640ad12
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927935"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95538354"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Blob 儲存體的安全性建議
 
 本文包含適用于 Blob 儲存體的安全性建議。 依照我們的共同責任模型所述，執行這些建議有助於您履行安全性義務。 如需 Microsoft 如何履行服務提供者責任的詳細資訊，請參閱[雲端運算的共同責任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225366/1/Shared%20Responsibility%20for%20Cloud%20Computing-2019-10-25.pdf)。
 
-本文中包含的一些建議可由 Azure 資訊安全中心自動監視。 Azure 資訊安全中心是保護 Azure 中資源的第一道防線。 如需 Azure 資訊安全中心的詳細資訊，請參閱 [Azure 資訊安全中心是什麼？](../../security-center/security-center-intro.md)。
+本文中包含的一些建議可由 Azure 資訊安全中心自動監視。 Azure 資訊安全中心是保護 Azure 中資源的第一道防線。 如需 Azure 資訊安全中心的詳細資訊，請參閱 [Azure 資訊安全中心是什麼？](../../security-center/security-center-introduction.md)。
 
 Azure 資訊安全中心會定期分析 Azure 資源的安全性狀態，以找出潛在的安全性弱點。 接著，這會為您提供如何解決這些問題的建議。 如需 Azure 資訊安全中心建議的詳細資訊，請參閱 [Azure 資訊安全中心的安全性建議](../../security-center/security-center-recommendations.md)。
 
@@ -29,10 +29,10 @@ Azure 資訊安全中心會定期分析 Azure 資源的安全性狀態，以找�
 
 | 建議 | 註解 | 資訊安全中心 |
 |-|----|--|
-| 使用 Azure Resource Manager 部署模型 | 使用 Azure Resource Manager 部署模型來建立新的儲存體帳戶，以進行重要的安全性增強功能，包括絕佳的 Azure 角色型存取控制 (Azure RBAC) 和審核、Resource Manager 型部署和治理、受控識別的存取、秘密的 Azure Key Vault 存取，以及 Azure AD 資料和資源的存取 Azure 儲存體型驗證和授權。 可能的話，請將使用傳統部署模型的現有儲存體帳戶遷移為使用 Azure Resource Manager。 如需 Azure Resource Manager 的詳細資訊，請參閱 [Azure Resource Manager 總覽](/azure/azure-resource-manager/resource-group-overview)。 | - |
-| 為您的所有儲存體帳戶啟用 Azure Defender | 適用于 Azure 儲存體的 Azure Defender 提供額外一層的安全性情報，可偵測不尋常且可能有害的存取或惡意探索儲存體帳戶嘗試。 當活動中發生異常狀況，而且也透過電子郵件傳送給訂用帳戶管理員時，會在 Azure 資訊安全中心中觸發安全性警示，並提供可疑活動的詳細資料，以及如何調查和修復威脅的建議。 如需詳細資訊，請參閱 [設定 Azure Defender 的 Azure 儲存體](../common/azure-defender-storage-configure.md)。 | [是](../../security-center/security-center-sql-service-recommendations.md) |
-| 開啟 blob 資料的虛刪除 | 虛刪除可讓您復原已刪除的 blob 資料。 如需虛刪除的詳細資訊，請參閱 [Azure 儲存體 blob 的虛刪除](storage-blob-soft-delete.md)。 | - |
-| 鎖定儲存體帳戶以防止意外刪除 | 如果您是系統管理員，您可能需要鎖定訂用帳戶、資源群組或資源，以防止組織中的其他使用者不小心刪除或修改重要資源，請參閱 [鎖定資源以防止非預期的變更](/azure/azure-resource-manager/management/lock-resources)。
+| 使用 Azure Resource Manager 部署模型 | 使用 Azure Resource Manager 部署模型來建立新的儲存體帳戶，以進行重要的安全性增強功能，包括絕佳的 Azure 角色型存取控制 (Azure RBAC) 和審核、Resource Manager 型部署和治理、受控識別的存取、秘密的 Azure Key Vault 存取，以及 Azure AD 資料和資源的存取 Azure 儲存體型驗證和授權。 可能的話，請將使用傳統部署模型的現有儲存體帳戶遷移為使用 Azure Resource Manager。 如需 Azure Resource Manager 的詳細資訊，請參閱 [Azure Resource Manager 總覽](../../azure-resource-manager/management/overview.md)。 | - |
+| 為您的所有儲存體帳戶啟用 Azure Defender | 適用于 Azure 儲存體的 Azure Defender 提供額外一層的安全性情報，可偵測不尋常且可能有害的存取或惡意探索儲存體帳戶嘗試。 當活動中發生異常狀況，而且也透過電子郵件傳送給訂用帳戶管理員時，會在 Azure 資訊安全中心中觸發安全性警示，並提供可疑活動的詳細資料，以及如何調查和修復威脅的建議。 如需詳細資訊，請參閱 [設定 Azure Defender 的 Azure 儲存體](../common/azure-defender-storage-configure.md)。 | [是](../../security-center/security-center-remediate-recommendations.md) |
+| 開啟 blob 資料的虛刪除 | 虛刪除可讓您復原已刪除的 blob 資料。 如需虛刪除的詳細資訊，請參閱 [Azure 儲存體 blob 的虛刪除](./soft-delete-blob-overview.md)。 | - |
+| 鎖定儲存體帳戶以防止意外刪除 | 如果您是系統管理員，您可能需要鎖定訂用帳戶、資源群組或資源，以防止組織中的其他使用者不小心刪除或修改重要資源，請參閱 [鎖定資源以防止非預期的變更](../../azure-resource-manager/management/lock-resources.md)。
 | 在不可變的 blob 中儲存商務關鍵資料 | 設定合法保存和以時間為基礎的保留原則，將 blob 資料儲存在 WORM (寫入一次，讀取許多) 狀態。 Blob 儲存的, 可以讀取，但無法在保留間隔的持續期間內修改或刪除。 如需詳細資訊，請參閱 [使用不可變的儲存體儲存商務關鍵 blob 資料](storage-blob-immutable-storage.md)。 | - |
 | 將共用存取簽章 (SAS) 權杖限制為僅限 HTTPS 連接 | 當用戶端使用 SAS 權杖來存取 blob 資料時，需要 HTTPS 有助於將竊聽的風險降至最低。 如需詳細資訊，請參閱 [使用共用存取簽章將有限存取權授與 Azure 儲存體資源 (SAS) ](../common/storage-sas-overview.md)。 | - |
 
@@ -56,12 +56,12 @@ Azure 資訊安全中心會定期分析 Azure 資源的安全性狀態，以找�
 | 建議 | 註解 | 資訊安全中心 |
 |-|----|--|
 | 為儲存體帳戶設定傳輸層安全性 (TLS) 的最小必要版本。  | 要求用戶端使用更安全的 TLS 版本，藉由設定該帳戶的最小 TLS 版本來對 Azure 儲存體帳戶提出要求。 如需詳細資訊，請參閱為 [儲存體帳戶設定傳輸層安全性的最小必要版本 (TLS) ](../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)| - |
-| 在您所有的儲存體帳戶上啟用「 **需要安全傳輸** 」選項 | 當您啟用「 **需要安全傳輸** 」選項時，對儲存體帳戶提出的所有要求都必須透過安全連線進行。 透過 HTTP 提出的任何要求都會失敗。 如需詳細資訊，請參閱 [Azure 儲存體中的「需要安全傳輸](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」。 | [是](../../security-center/security-center-sql-service-recommendations.md) |
+| 在您所有的儲存體帳戶上啟用「 **需要安全傳輸** 」選項 | 當您啟用「 **需要安全傳輸** 」選項時，對儲存體帳戶提出的所有要求都必須透過安全連線進行。 透過 HTTP 提出的任何要求都會失敗。 如需詳細資訊，請參閱 [Azure 儲存體中的「需要安全傳輸](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」。 | [是](../../security-center/security-center-remediate-recommendations.md) |
 | 啟用防火牆規則 | 設定防火牆規則，以將您儲存體帳戶的存取限制為源自指定 IP 位址或範圍的要求，或從 Azure 虛擬網路中的子網清單 (VNet) 。 如需設定防火牆規則的詳細資訊，請參閱 [設定 Azure 儲存體防火牆和虛擬網路](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 | - |
 | 允許信任的 Microsoft 服務存取儲存體帳戶 | 開啟儲存體帳戶的防火牆規則會預設封鎖傳入的資料要求，除非要求源自 Azure 虛擬網路 (VNet) 內運作的服務或源自允許的公用 IP位址。 封鎖的要求包括來自其他 Azure 服務、Azure 入口網站及記錄與計量服務等等的要求。 您可以藉由新增例外狀況來允許受信任的 Microsoft 服務存取儲存體帳戶，以允許來自其他 Azure 服務的要求。 如需為信任的 Microsoft 服務新增例外狀況的詳細資訊，請參閱 [設定 Azure 儲存體防火牆和虛擬網路](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。| - |
-| 使用私人端點 | 私人端點會從您的 Azure 虛擬網路將私人 IP 位址指派給儲存體帳戶 (VNet) 。 它會透過私人連結保護您的 VNet 與儲存體帳戶之間的所有流量。 如需私人端點的詳細資訊，請參閱 [使用 Azure 私人端點私下連接至儲存體帳戶](../../private-link/create-private-endpoint-storage-portal.md)。 | - |
+| 使用私人端點 | 私人端點會從您的 Azure 虛擬網路將私人 IP 位址指派給儲存體帳戶 (VNet) 。 它會透過私人連結保護您的 VNet 與儲存體帳戶之間的所有流量。 如需私人端點的詳細資訊，請參閱 [使用 Azure 私人端點私下連接至儲存體帳戶](../../private-link/tutorial-private-endpoint-storage-portal.md)。 | - |
 | 使用 VNet 服務標記 | 服務標籤代表來自指定 Azure 服務的一組 IP 位址前置詞。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。 如需 Azure 儲存體所支援服務標籤的詳細資訊，請參閱 [Azure 服務標記總覽](../../virtual-network/service-tags-overview.md)。 如需示範如何使用服務標記來建立輸出網路規則的教學課程，請參閱 [限制對 PaaS 資源的存取](../../virtual-network/tutorial-restrict-network-access-to-resources.md)。 | - |
-| 限制對特定網路的網路存取 | 限制網路存取需要存取的用戶端需要存取，可減少您的資源暴露在網路攻擊的風險。 | [是](../../security-center/security-center-sql-service-recommendations.md) |
+| 限制對特定網路的網路存取 | 限制網路存取需要存取的用戶端需要存取，可減少您的資源暴露在網路攻擊的風險。 | [是](../../security-center/security-center-remediate-recommendations.md) |
 | 設定網路路由喜好設定 | 您可以設定 Azure 儲存體帳戶的網路路由喜好設定，以指定如何使用 Microsoft 全球網路或網際網路路由，透過網際網路從用戶端將網路流量路由傳送至您的帳戶，請參閱 [設定 Azure 儲存體的網路路由喜好設定](../common/network-routing-preference.md)。 | - |
 
 ## <a name="loggingmonitoring"></a>記錄/監視
@@ -69,9 +69,9 @@ Azure 資訊安全中心會定期分析 Azure 資源的安全性狀態，以找�
 | 建議 | 註解 | 資訊安全中心 |
 |-|----|--|
 | 追蹤要求的授權方式 | 啟用 Azure 儲存體記錄，以追蹤針對 Azure 儲存體所提出的每個要求如何獲得授權。 這些記錄會指出是以匿名方式、使用 OAuth 2.0 權杖、使用共用金鑰，或使用共用存取簽章 (SAS) 來進行要求。 如需詳細資訊，請參閱使用 [Azure 監視器的監視 Azure Blob 儲存體](monitor-blob-storage.md) ，或 [使用傳統監視 Azure 儲存體分析記錄](../common/storage-analytics-logging.md)。 | - |
-| 在 Azure 監視器中設定警示 | 記錄警示可讓使用者使用 Log Analytics 查詢來評估每個設定頻率的資源記錄，並根據結果引發警示，請參閱 [Azure 監視器中的記錄警示](/azure/azure-monitor/platform/alerts-unified-log)。 | - |
+| 在 Azure 監視器中設定警示 | 記錄警示可讓使用者使用 Log Analytics 查詢來評估每個設定頻率的資源記錄，並根據結果引發警示，請參閱 [Azure 監視器中的記錄警示](../../azure-monitor/platform/alerts-unified-log.md)。 | - |
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 安全性文件](https://docs.microsoft.com//azure/security/)
-- [安全開發檔](https://docs.microsoft.com/azure/security/develop/)。
+- [Azure 安全性文件](//azure/security/)
+- [安全開發檔](../../security/develop/index.yml)。

@@ -3,12 +3,12 @@ title: 如何設計 Application Insights 部署 (一或多個資源)？
 description: 將遙測導向開發、測試和生產戳記的不同資源。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 264cbe35e7af50577b345d686b639e47760f428d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49e9b8920af7333e0d95e23e6e5cf0828d448609
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88258715"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536348"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>我應該部署多少 Application Insights 資源
 
@@ -26,7 +26,7 @@ ms.locfileid: "88258715"
 
 -   適用於一起部署的應用程式元件。 通常由單一小組開發，並由相同一組 DevOps/ITOps 使用者所管理。
 -   如果在預設情況下彙總關鍵效能指標 (KPI) (例如，回應持續時間、儀表板中的失敗率等等) 很合理 (您可以選擇在計量瀏覽器體驗中，依角色名稱細分)。
--   如果不需要在應用程式元件之間以不同的方式管理角色型存取控制 (RBAC)。
+-   如果不需要管理 Azure 角色型存取控制 (Azure RBAC) 應用程式元件之間的不同。
 -   如果您不需要依元件而有所不同的計量警示準則。
 -   如果您不需要在元件之間以不同的方式管理連續匯出。
 -   如果您不需要在元件之間以不同的方式管理計費/配額。
@@ -35,7 +35,7 @@ ms.locfileid: "88258715"
 
 ### <a name="other-things-to-keep-in-mind"></a>要牢記在心的其他事項
 
--   您可能需要加入自訂程式碼，才能確保在 [Cloud_RoleName](./app-map.md?tabs=net#set-or-override-cloud-role-name) 屬性中設定有意義的值。 如果沒有為此屬性設定有意義的值，*任何*入口網站體驗都不會有任何作用。
+-   您可能需要加入自訂程式碼，才能確保在 [Cloud_RoleName](./app-map.md?tabs=net#set-or-override-cloud-role-name) 屬性中設定有意義的值。 如果沒有為此屬性設定有意義的值，*任何* 入口網站體驗都不會有任何作用。
 - SDK 會針對 Service Fabric 應用程式和傳統雲端服務，自動從 Azure 角色環境讀取並進行這些設定。 置於其他所有類型的應用程式，您可能需要明確地進行這個設定。
 -   即時計量體驗不支援依角色名稱分割。
 

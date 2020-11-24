@@ -1,5 +1,5 @@
 ---
-title: 建立連線監視器 (預覽) -ARM 範本
+title: 建立連線監視器-ARM 範本
 titleSuffix: Azure Network Watcher
 description: 瞭解如何使用 ARMClient 建立連線監視器。
 services: network-watcher
@@ -10,22 +10,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/30/2020
+ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: e1a0ecd85d07aa4fdf5482c5104c17eb4a068688
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: c3b228d2652d5f7dcf7c6596ee5425b3f5f9a4d8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984221"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543998"
 ---
 # <a name="create-a-connection-monitor-using-the-arm-template"></a>使用 ARM 範本建立連線監視
 
 瞭解如何建立連線監視器，以使用 ARMClient 監視資源之間的通訊。 它支援混合式和 Azure 雲端部署。
 
-> [!IMPORTANT]
-> 連接監視器目前處於公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="before-you-begin"></a>開始之前 
 
@@ -402,7 +399,7 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 * 每個連線監視的來源和目的地上限：100
 * 每個連線監視的測試設定上限： 20 via ARMClient
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解 [如何分析監視資料和設定警示](./connection-monitor-overview.md#analyze-monitoring-data-and-set-alerts)
 * 瞭解 [如何診斷網路中的問題](./connection-monitor-overview.md#diagnose-issues-in-your-network)

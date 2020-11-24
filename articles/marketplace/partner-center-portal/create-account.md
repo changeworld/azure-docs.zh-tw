@@ -8,12 +8,12 @@ ms.date: 11/02/2020
 author: parthpandyaMSFT
 ms.author: parthp
 ms.custom: contperfq2
-ms.openlocfilehash: e15937797077e3fa46a12e726a3ce690c3979cbd
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: ccdc87d03181bad1aba4dd362a651fa42381343a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628776"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542281"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>在合作夥伴中心中建立商業 marketplace 帳戶
 
@@ -60,14 +60,14 @@ ms.locfileid: "94628776"
 
 1. 建立發行者識別碼。 您的發行者識別碼可唯一識別您的公司和您在 Azure Marketplace 和 AppSource 的供應專案。
 
-1. 確認發行者設定檔資訊之後，請同意條款及條件，然後選取 [ **接受並繼續** ] 來建立您的合作夥伴中心帳戶。
+1. 確認發行者設定檔資訊之後，請同意條款及條件，然後選取 [ **接受並繼續**] 來建立您的合作夥伴中心帳戶。
 
     > [!IMPORTANT]
     > 若要接受這些條款，您必須獲得授權，代表您的公司採取行動。
 
     註冊之後，您會進入「商業市場」總覽頁面。 商業 marketplace 帳戶會顯示在左窗格中。
 
-1. 若要確認商用 marketplace 帳戶列為 [已註冊]，請在右上角選取 [ **設定** ] (齒輪圖示) > **開發人員設定**  >  **程式** ]。
+1. 若要確認商用 marketplace 帳戶列為 [已註冊]，請選取右上角的 [**設定**] (齒輪圖示) >**帳戶設定**  >  **程式**]。
 
 您現在已在合作夥伴中心中建立商用 marketplace 帳戶。 繼續 [將新的發行者新增至商用 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
 
@@ -91,7 +91,7 @@ ms.locfileid: "94628776"
 > 您必須擁有 **帳戶管理員** 或 **全域管理員** 角色，才能登入 Microsoft 合作夥伴網路。
 
 1. 使用您的 Microsoft 合作夥伴網路帳戶登入 [合作夥伴中心](https://partner.microsoft.com/dashboard/) 。
-1. 選取 [ **設定**  >  **開發人員設定**  >  **程式**  >  **開始** ]。
+1. 選取 [**設定**  >  **帳戶設定**  >  **程式**  >  **開始**]。
 
    Microsoft 合作夥伴網路會偵測您的訂用帳戶，並顯示 [ **發行者設定檔** ] 窗格。
 
@@ -103,7 +103,7 @@ ms.locfileid: "94628776"
 
     註冊之後，您會進入「商業市場」總覽頁面。 商業 marketplace 帳戶會顯示在左窗格中。
 
-1. 若要確認商用 marketplace 帳戶列為 [已註冊]，請選取 [ **設定**  >  **開發人員設定**  >  **程式** ]。
+1. 若要確認商用 marketplace 帳戶列為 [已註冊]，請選取 [**設定**  >  **帳戶設定**  >  **程式**]。
 
 您現在已在合作夥伴中心中建立商用 marketplace 帳戶。 繼續 [將新的發行者新增至商用 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
 
@@ -119,7 +119,7 @@ ms.locfileid: "94628776"
 當您使用與開發人員計畫相同的帳戶註冊商業 marketplace 方案時，您可以在合作夥伴中心的左窗格中看到所有現有的程式註冊。
 
 1. 使用您現有的帳戶登入 [合作夥伴中心](https://partner.microsoft.com/dashboard/) 。
-1. 選取 [ **設定**  >  **開發人員設定**  >  **程式** ]  >  **開始** ，然後輸入您的工作電子郵件地址。
+1. 選取 [**設定**  >  **帳戶設定**  >  **程式**]  >  **開始**，然後輸入您的工作電子郵件地址。
 1. 完成 **發行者設定檔** 頁面上的詳細資料。
 2. 閱讀 [Microsoft 發行者合約](https://go.microsoft.com/fwlink/?LinkID=699560)中的條款及條件，然後選取 [ **接受] 並繼續** 完成您的註冊。
 
@@ -128,7 +128,7 @@ ms.locfileid: "94628776"
 
     註冊之後，您會進入「商業市場」總覽頁面。 商業 marketplace 帳戶會顯示在左窗格中。
 
-1. 若要確認商用 marketplace 帳戶列為 [已註冊]，請選取 [ **設定**  >  **開發人員設定**  >  **程式** ]。
+1. 若要確認商用 marketplace 帳戶列為 [已註冊]，請選取 [**設定**  >  **帳戶設定**  >  **程式**]。
 
 您現在已在合作夥伴中心中建立商用 marketplace 帳戶。 如需新增發行者的協助，請繼續 [將新的發行者新增至商用 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
 
@@ -142,22 +142,22 @@ ms.locfileid: "94628776"
 
 ## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>將新的發行者新增至商用 marketplace 方案
 
-組織可以有多個與商業 marketplace 帳戶相關聯的發行者。 現有的使用者可以在登入合作夥伴中心之後，藉由選取 [ **設定**  >  **Developer settings**  >  **publisher**  >  **add publisher]** 來新增更多發行者。
+組織可以有多個與商業 marketplace 帳戶相關聯的發行者。 現有的使用者可以藉由選取 [**設定**  >  **帳戶設定**  >  **組織設定檔**  >  **識別碼**  >  **] 新增發行者**，在登入合作夥伴中心之後，新增更多發行者。
 
 >[!NOTE]
->在您加入新的「發行者」之前，請先登入合作夥伴中心並選取 **帳戶設定** 發行者，以檢查現有的發行者清單  >  **** 。
+>在您加入新的「發行者」之前，請先登入合作夥伴中心並選取 **帳戶設定** 發行者，以檢查現有的發行者清單  >  ****。
 
 相同 Azure Active Directory 租使用者中的其他使用者可以使用下列步驟來加入新的發行者。
 
 1. 在 [Microsoft 合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)開始註冊流程。
-2. 選取 [ **使用工作帳戶登入** ]，然後輸入您的工作電子郵件地址。
+2. 選取 [ **使用工作帳戶登入**]，然後輸入您的工作電子郵件地址。
 3. 選取 [ **加入發行者]** 按鈕。
 4. 選擇要與發行者相關聯的 MPN 識別碼。
 5. 更新表單上的 **發行者詳細資料** 。
 
-   * **發行者名稱** ：與供應專案在商業 marketplace 中顯示的名稱。  
-   * **PublisherID** ：合作夥伴中心用來唯一識別發行者的識別碼。 這個欄位的預設值會對應至系統中的現有和唯一發行者識別碼。 因為發行者識別碼無法重複使用，所以必須更新此欄位。  
-   * **連絡人資訊** ：必要時，更新連絡人資訊。
+   * **發行者名稱**：與供應專案在商業 marketplace 中顯示的名稱。  
+   * **PublisherID**：合作夥伴中心用來唯一識別發行者的識別碼。 這個欄位的預設值會對應至系統中的現有和唯一發行者識別碼。 因為發行者識別碼無法重複使用，所以必須更新此欄位。  
+   * **連絡人資訊**：必要時，更新連絡人資訊。
 
 完成此程式之後，請移至左側窗格中所列的商業 marketplace 帳戶，以管理新建立的發行者。 如果您沒有看到商用 marketplace 帳戶，請重新整理頁面。 「 **發行者」清單中** 會出現新的「發行者」。
 

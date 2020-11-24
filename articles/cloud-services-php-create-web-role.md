@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 1bf0ea35c51b063a7720a1542a23a49fbcdbc557
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b02662658b2199a13f117ad95c6402f9b2974f9
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88892978"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519841"
 ---
 # <a name="create-php-web-and-worker-roles"></a>建立 PHP Web 和背景工作角色
 
@@ -189,9 +189,9 @@ PS C:\MyProject> Stop-AzureEmulator
 如需詳細資訊，請參閱 [PHP 開發人員中心](https://azure.microsoft.com/develop/php/)。
 
 [install ps and emulators]: https://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
-[ ( 的服務定義) ]: https://msdn.microsoft.com/library/windowsazure/ee758711.aspx
-[服務設定 ( .cscfg) ]: https://msdn.microsoft.com/library/windowsazure/ee758710.aspx
+[ ( 的服務定義) ]: /previous-versions/azure/reference/ee758711(v=azure.100)
+[服務設定 ( .cscfg) ]: /previous-versions/azure/reference/ee758710(v=azure.100)
 [iis.net]: https://www.iis.net/
-[sql native client]: https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation
+[sql native client]: /sql/sql-server/sql-server-technical-documentation
 [sqlsrv drivers]: https://php.net/sqlsrv
 [sqlncli.msi x64 安裝程式]: https://go.microsoft.com/fwlink/?LinkID=239648

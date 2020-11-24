@@ -4,12 +4,12 @@ description: Azure 中的警示概觀。 警示、傳統警示和警示介面。
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: e71f048a0a96323552b426663a235ed66fa2ef87
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: b8d24eab79bdf16e4d883549be00431bd5372af8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108791"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536042"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警示概觀 
 
@@ -38,7 +38,7 @@ ms.locfileid: "92108791"
 
 針對某些資源 (例如虛擬機器) ，您可以將多個資源指定為警示規則的目標。
 
-由目標資源發出的**信號**。 信號可以是下列類型：度量、活動記錄、Application Insights 和記錄。
+由目標資源發出的 **信號**。 信號可以是下列類型：度量、活動記錄、Application Insights 和記錄。
 
 **準則** -套用於目標資源的信號和邏輯組合。 範例： 
 
@@ -82,7 +82,7 @@ ms.locfileid: "92108791"
 | 已認可 | 系統管理員已檢閱警示，且已開始處理。 |
 | 封閉式 | 已解決問題。 關閉警示之後，您可以將警示變更為另一個狀態以重新開啟它。 |
 
-*警示狀態*與*監視條件*不同且無關。 警示狀態是由使用者所設定的。 監視條檢是由系統所設定的。 當警示引發時，警示的監視條件會設定為「已 *引發*」，當引發警示的基礎條件清除時，監視條件會設定為「 *已解決*」。 
+*警示狀態* 與 *監視條件* 不同且無關。 警示狀態是由使用者所設定的。 監視條檢是由系統所設定的。 當警示引發時，警示的監視條件會設定為「已 *引發*」，當引發警示的基礎條件清除時，監視條件會設定為「 *已解決*」。 
 
 警示狀態需等到使用者變更它之後才會變更。 了解[如何變更警示與智慧群組的狀態](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)。
 
@@ -128,9 +128,9 @@ ms.locfileid: "92108791"
 
  
 以下說明如何建立新的警示規則：
-1. 挑選警示的_目標_。
-1. 從目標的可用訊號中選取_訊號_。
-1. 從訊號指定套用於資料的_邏輯_。
+1. 挑選警示的 _目標_。
+1. 從目標的可用訊號中選取 _訊號_。
+1. 從訊號指定套用於資料的 _邏輯_。
 
 這個簡化的編寫程序讓您不再需要先知道監視來源或支援的訊號，就能選取 Azure 資源。 可用訊號的清單會自動根據您選取的目標資源進行篩選。 此外，也會根據該目標，逐步引導您定義警示規則的邏輯。  
 
@@ -171,11 +171,11 @@ ms.locfileid: "92108791"
 |:---|:---|
 | 摘要 | 顯示警示的內容和其他重要資訊。 |
 | 歷程記錄 | 列出警示採取的每個動作，以及對警示所做的任何變更。 目前僅限於狀態變更。 |
-| 診斷 | 包含警示之智慧群組的相關資訊。 「警示計數」** 是指智慧群組中包含的警示數目。 在過去30天內建立的相同智慧群組中包含其他警示，警示清單頁面中的任何時間篩選準則。 選取警示以檢視其詳細資料。 |
+| 診斷 | 包含警示之智慧群組的相關資訊。 「警示計數」是指智慧群組中包含的警示數目。 在過去30天內建立的相同智慧群組中包含其他警示，警示清單頁面中的任何時間篩選準則。 選取警示以檢視其詳細資料。 |
 
-## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>針對您的警示實例 (RBAC) 的角色型存取控制
+## <a name="azure-role-based-access-control-azure-rbac-for-your-alert-instances"></a>Azure 角色型存取控制 (Azure RBAC) 適用于您的警示實例
 
-警示實例的耗用量和管理需要使用者擁有 [監視參與者](../../role-based-access-control/built-in-roles.md#monitoring-contributor) 或 [監視讀者](../../role-based-access-control/built-in-roles.md#monitoring-reader)的 Azure 內建角色。 任何 Azure Resource Manager 範圍都支援這些角色，從訂用帳戶層級到資源層級的細微指派。 例如，如果使用者只擁有虛擬機器的監視參與者存取權 `ContosoVM1` ，該使用者就只能取用和管理在上產生的警示 `ContosoVM1` 。
+警示實例的耗用量和管理需要使用者擁有 [監視參與者](../../role-based-access-control/built-in-roles.md#monitoring-contributor) 或 [監視讀者](../../role-based-access-control/built-in-roles.md#monitoring-reader)的 Azure 內建角色。 這些角色可在任何 Azure Resource Manager 範圍 (從訂用帳戶層級到資源層級的細微指派) 中受到支援。 例如，如果使用者只擁有虛擬機器的監視參與者存取權 `ContosoVM1` ，該使用者就只能取用和管理在上產生的警示 `ContosoVM1` 。
 
 ## <a name="manage-your-alert-instances-programmatically"></a>以程式設計方式管理您的警示實例
 

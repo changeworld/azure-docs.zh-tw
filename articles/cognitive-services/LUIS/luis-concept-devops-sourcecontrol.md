@@ -4,13 +4,13 @@ description: 如何在原始檔控制下維護 Language Understanding (LUIS) 應
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/28/2020
-ms.openlocfilehash: 9e322ac89d8ecad93c2002aa302c155f895911f4
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 11/18/2020
+ms.openlocfilehash: cf5c88df4e2ac6b95e99a3a78b1bf1e45bf534ed
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019189"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95535549"
 ---
 # <a name="devops-practices-for-luis"></a>適用於 LUIS 的 DevOps 實務
 
@@ -53,7 +53,7 @@ DevOps 成功所依據的關鍵因素之一是 [原始檔控制](/azure/devops/u
 - 或者：使用文字編輯器來建立 `.lu` LUIS 應用程式的檔案，並將它新增至您的原始檔控制存放庫
 
 > [!TIP]
-> 如果您正在使用 LUIS 應用程式的 JSON 匯出，您可以使用[BotBuilder 工具 LUIS CLI](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS)[將它轉換成 LUDown](https://github.com/microsoft/botframework-cli/tree/master/packages/luis#bf-luisconvert) 。 使用 `--sort` 選項可確保意圖和語句會依字母順序排序。  
+> 如果您正在使用 LUIS 應用程式的 JSON 匯出，則可以 [將它轉換成 LUDown](https://github.com/microsoft/botframework-cli/tree/master/packages/luis#bf-luisconvert)。  使用 `--sort` 選項可確保意圖和語句會依字母順序排序。  
 > 請 **注意，** 內建在 LUIS 入口網站中的 LU 匯出功能已將輸出排序。
 
 ### <a name="build-the-luis-app-from-source"></a>從來源組建 LUIS 應用程式
@@ -211,7 +211,7 @@ Master 分支的 LUIS 應用程式應該套用版本設定配置。 當您將 LU
 
 當您的 PR 中的變更合併到 master 時，也就是應該套用版本控制時，讓 master 的所有更新都能獨立進行版本設定。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解 [LUIS DevOps 的測試](luis-concept-devops-testing.md)
 * 瞭解如何 [使用 GitHub 執行 LUIS 的 DevOps](luis-how-to-devops-with-github.md)

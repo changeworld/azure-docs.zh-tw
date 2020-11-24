@@ -1,19 +1,19 @@
 ---
-title: 動態 Azure 地圖服務的 StylesObject
-description: 用於在動態 Azure 地圖服務中建立之 StylesObject 的 JSON 架構和語法參考指南。
+title: 動態 Azure 地圖服務的 StylesObject 架構參考指南
+description: Dynamic Azure 地圖服務 StylesObject 架構和語法的參考指南。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 06/19/2020
+ms.date: 11/20/2020
 ms.topic: reference
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4284956138002d209ab0934cdd052748ef8aab78
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f6bc4c62febf24dee790ac6136b1661426d4d619
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966270"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536943"
 ---
 # <a name="stylesobject-schema-reference-guide-for-dynamic-maps"></a>動態地圖的 StylesObject 架構參考指南
 
@@ -21,9 +21,15 @@ ms.locfileid: "94966270"
 
 ## <a name="styleobject"></a>StyleObject
 
-`StyleObject`可以是 [`BooleanTypeStyleRule`](#booleantypestylerule) 或 [`NumericTypeStyleRule`](#numerictypestylerule) 。
+`StyleObject`是下列其中一個樣式規則：
 
-以下 JSON 顯示名為 `BooleanTypeStyleRule` 的 `occupied` 和名為的 `NumericTypeStyleRule` `temperature` 。
+ * [`BooleanTypeStyleRule`](#booleantypestylerule)
+ * [`NumericTypeStyleRule`](#numerictypestylerule)
+ * [`StringTypeStyleRule`](#stringtypestylerule)
+
+以下 JSON 顯示這三種樣式類型的範例使用方式。  `BooleanTypeStyleRule`用來判斷 `occupied` 屬性為 true 和 false 之功能的動態樣式。  `NumericTypeStyleRule`用來判斷 `temperature` 屬性落在特定範圍內之功能的樣式。 最後， `StringTypeStyleRule` 會使用來比對特定樣式 `meetingType` 。
+
+
 
 ```json
  "styles": [
@@ -56,6 +62,18 @@ ms.locfileid: "94966270"
               "color": "#eba834"
             }
         ]
+    },
+    {
+      "keyname": "meetingType",
+      "type": "string",
+      "rules": [
+        {
+          "private": "#FF0000",
+          "confidential": "#FF00AA",
+          "allHands": "#00FF00",
+          "brownBag": "#964B00"
+        }
+      ]
     }
 ]
 ```
@@ -108,7 +126,7 @@ ms.locfileid: "94966270"
 
 ### <a name="rangeobject"></a>RangeObject
 
-會 `RangeObject` 定義的數值範圍值 [`NumberRuleObject`](#numberruleobject) 。 針對要落在範圍內的 *狀態值* ，所有定義的條件都必須保留 true。 
+會 `RangeObject` 定義的數值範圍值 [`NumberRuleObject`](#numberruleobject) 。 針對要落在範圍內的 *狀態值* ，所有定義的條件都必須保留 true。
 
 | 屬性 | 類型 | 描述 | 必要 |
 |-----------|----------|-------------|-------------|
@@ -144,13 +162,55 @@ ms.locfileid: "94966270"
 }
 ```
 
+## <a name="stringtypestylerule"></a>StringTypeStyleRule
+
+`StringTypeStyleRule`是 [`StyleObject`](#styleobject) ，其中包含下列屬性：
+
+| 屬性 | 類型 | 描述 | 必要 |
+|-----------|----------|-------------|-------------|
+| `keyName` | 字串 |  *狀態* 或動態屬性名稱。  在 `keyName` 陣列內應該是唯一的  `StyleObject` 。| 是 |
+| `type` | 字串 |值為 "string"。 | 是 |
+| `rules` | [`StringRuleObject`](#stringruleobject)[]| N 個 *狀態值* 的陣列。| 是 |
+
+### <a name="stringruleobject"></a>StringRuleObject
+
+是 `StringRuleObject` 由最多 N 個狀態值組成，也就是功能屬性可能的字串值。 如果功能的屬性值不符合任何定義的狀態值，該功能將不會有動態樣式。 如果指定了重複的狀態值，則會優先使用第一個值。
+
+比對字串值會區分大小寫。
+
+| 屬性 | 類型 | 描述 | 必要 |
+|-----------|----------|-------------|-------------|
+| `stateValue1` | 字串 | StateValue1 值字串時的色彩。 | 否 |
+| `stateValue2` | 字串 | StateValue 值字串時的色彩。 | 否 |
+| `stateValueN` | 字串 | StateValueN 值字串時的色彩。 | 否 |
+
+### <a name="example-of-stringtypestylerule"></a>StringTypeStyleRule 範例
+
+下列 JSON 說明 `StringTypeStyleRule` 定義與特定會議類型相關聯之樣式的。
+
+```json
+    {
+      "keyname": "meetingType",
+      "type": "string",
+      "rules": [
+        {
+          "private": "#FF0000",
+          "confidential": "#FF00AA",
+          "allHands": "#00FF00",
+          "brownBag": "#964B00"
+        }
+      ]
+    }
+
+```
+
 ## <a name="booleantypestylerule"></a>BooleanTypeStyleRule
 
 `BooleanTypeStyleRule`是 [`StyleObject`](#styleobject) ，其中包含下列屬性：
 
 | 屬性 | 類型 | 描述 | 必要 |
 |-----------|----------|-------------|-------------|
-| `keyName` | 字串 |  *狀態* 或動態屬性名稱。  在 `keyName` 樣式陣列中應該是唯一的。| 是 |
+| `keyName` | 字串 |  *狀態* 或動態屬性名稱。  在 `keyName` 陣列內應該是唯一的 `StyleObject`  。| 是 |
 | `type` | 字串 |值為「布林值」。 | 是 |
 | `rules` | [`BooleanRuleObject`](#booleanruleobject)單| 具有和狀態值色彩的布林 `true` `false` *state* 值組。| 是 |
 

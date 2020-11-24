@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 5c9d7faebe7fefdddbf194e3a9ad36b4644115e0
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8ca670049b49500e6b6310bca25cb78ded31a294
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746459"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537844"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>在 Azure 儲存體中裝載靜態網站
 
@@ -38,11 +38,11 @@ ms.locfileid: "92746459"
 
 4. 選取 [已啟用] 以啟用儲存體帳戶的靜態網站代管功能。
 
-5. 在 [索引文件名稱] 欄位中，指定預設的索引頁 (例如： *index.html* )。 
+5. 在 [索引文件名稱] 欄位中，指定預設的索引頁 (例如：*index.html*)。 
 
    當使用者瀏覽至您靜態網站的根目錄時，就會顯示此預設索引頁面。  
 
-6. 在 [錯誤文件路徑] 欄位中，指定預設的錯誤頁面 (例如： *404.html* )。 
+6. 在 [錯誤文件路徑] 欄位中，指定預設的錯誤頁面 (例如：*404.html*)。 
 
    當使用者嘗試瀏覽至您靜態網站中所沒有的網頁時，就會顯示此預設錯誤頁面。
 
@@ -54,9 +54,9 @@ ms.locfileid: "92746459"
 
 <a id="cli"></a>
 
-您可使用 [Azure 命令列介面 (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 來啟用靜態網站裝載。
+您可使用 [Azure 命令列介面 (CLI)](/cli/azure/?view=azure-cli-latest) 來啟用靜態網站裝載。
 
-1. 首先，開啟 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)，或若已在本機[安裝](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Azure CLI，請開啟 Windows PowerShell 等命令主控台應用程式。
+1. 首先，開啟 [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest)，或若已在本機[安裝](/cli/azure/install-azure-cli?view=azure-cli-latest) Azure CLI，請開啟 Windows PowerShell 等命令主控台應用程式。
 
 2. 若身分識別與多個訂用帳戶建立關聯，請將使用中訂用帳戶設為將裝載靜態網站儲存體帳戶的訂用帳戶。
 
@@ -136,7 +136,7 @@ ms.locfileid: "92746459"
 
 ### <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-這些指示會示範如何使用出現在 Azure 入口網站中的儲存體總管版本來上傳檔案。 但是，您也可以使用在 Azure 入口網站外部執行的[儲存體總管](https://azure.microsoft.com/features/storage-explorer/)版本。 您可使用 [AzCopy](../common/storage-use-azcopy-v10.md)、PowerShell、CLI 或任何可將檔案上傳到帳戶其 **$web** 容器的自訂應用程式。 如需使用 Visual Studio Code 上傳檔案的逐步教學課程，請參閱[教學課程：將靜態網站裝載於 Blob 儲存體上](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host).
+這些指示會示範如何使用出現在 Azure 入口網站中的儲存體總管版本來上傳檔案。 但是，您也可以使用在 Azure 入口網站外部執行的[儲存體總管](https://azure.microsoft.com/features/storage-explorer/)版本。 您可使用 [AzCopy](../common/storage-use-azcopy-v10.md)、PowerShell、CLI 或任何可將檔案上傳到帳戶其 **$web** 容器的自訂應用程式。 如需使用 Visual Studio Code 上傳檔案的逐步教學課程，請參閱[教學課程：將靜態網站裝載於 Blob 儲存體上](./storage-blob-static-website-host.md).
 
 1. 選取 [儲存體總管 (預覽)]。
 
@@ -173,7 +173,7 @@ az storage blob upload-batch -s <source-path> -d '$web' --account-name <storage-
 > [!NOTE]
 > 若正在使用 Azure CLI 的本機安裝，則可指向本機電腦上任何位置的路徑 (例如：`C:\myFolder`)。
 >
-> 若正在使用 Azure Cloud Shell，則將需要參考 Cloud Shell 可見的檔案共用。 此位置可以是雲端共用本身的檔案共用，或在 Cloud Shell 中掛接的現有檔案共用。 若要了解如何進行此操作，請參閱[在 Azure Cloud Shell 中保存檔案](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage) (機器翻譯)。
+> 若正在使用 Azure Cloud Shell，則將需要參考 Cloud Shell 可見的檔案共用。 此位置可以是雲端共用本身的檔案共用，或在 Cloud Shell 中掛接的現有檔案共用。 若要了解如何進行此操作，請參閱[在 Azure Cloud Shell 中保存檔案](../../cloud-shell/persisting-shell-storage.md) (機器翻譯)。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -279,4 +279,3 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 ## <a name="next-steps"></a>後續步驟
 
 * 了解如何設定靜態網站的自訂網域。 請參閱[將自訂網域對應至 Azure Blob 儲存體端點](storage-custom-domain-name.md)。
-

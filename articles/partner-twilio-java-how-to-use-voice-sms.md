@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.custom: devx-track-java
-ms.openlocfilehash: f2f30230418637b53826bd314e395e760db7087f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 053c120b7a1a6c50c16ff419a9e64666d83dc59a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87306009"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542485"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>如何在 Java 中透過 Twilio 使用語音和簡訊功能
 本指南示範如何在 Azure 上透過 Twilio API 服務執行常見的程式設計工作。 涵蓋的案例包括打電話和傳送簡訊 (SMS)。 如需在應用程式中 Twilio 及使用語音和 SMS 的詳細資訊，請參閱 [後續步驟](#NextSteps) 一節。
@@ -37,21 +37,21 @@ Twilio API 是一套為應用程式提供語音和簡訊功能的 RESTful API。
 Twilio API 的兩大重點是 Twilio 動詞和 Twilio 標記語言 (TwiML)。
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio 動詞
-API 會使用 Twilio 動詞;例如， ** &lt; 說 &gt; **動詞命令會指示 Twilio 語音在呼叫上傳遞訊息。
+API 會使用 Twilio 動詞;例如， **&lt; 說 &gt;** 動詞命令會指示 Twilio 語音在呼叫上傳遞訊息。
 
 以下是 Twilio 動詞清單。
 
-* ** &lt; 撥號 &gt; **：將呼叫端連接到另一個電話。
-* ** &lt; 收集 &gt; **：收集電話鍵盤上輸入的數位。
-* ** &lt; 掛斷 &gt; **：結束通話。
-* ** &lt; Play &gt; **：播放音訊檔案。
-* ** &lt; Queue &gt; **：將加入至呼叫端的佇列。
-* ** &lt; 暫停 &gt; **：以無訊息模式等候指定的秒數。
-* ** &lt; 記錄 &gt; **：記錄來電者的語音，並傳回包含錄製之檔案的 URL。
-* 重新** &lt; 導向 &gt; **：將呼叫或 SMS 的控制權傳送至 TwiML 的不同 URL。
-* ** &lt; 拒絕 &gt; **：拒絕 Twilio 號碼的來電而不計費。
-* ** &lt; 例如 &gt; **：將在呼叫上進行的文字轉換為語音。
-* ** &lt; Sms &gt; **：傳送 sms 訊息。
+* **&lt; 撥號 &gt;**：將呼叫端連接到另一個電話。
+* **&lt; 收集 &gt;**：收集電話鍵盤上輸入的數位。
+* **&lt; 掛斷 &gt;**：結束通話。
+* **&lt; Play &gt;**：播放音訊檔案。
+* **&lt; Queue &gt;**：將加入至呼叫端的佇列。
+* **&lt; 暫停 &gt;**：以無訊息模式等候指定的秒數。
+* **&lt; 記錄 &gt;**：記錄來電者的語音，並傳回包含錄製之檔案的 URL。
+* 重新 **&lt; 導向 &gt;**：將呼叫或 SMS 的控制權傳送至 TwiML 的不同 URL。
+* **&lt; 拒絕 &gt;**：拒絕 Twilio 號碼的來電而不計費。
+* **&lt; 例如 &gt;**：將在呼叫上進行的文字轉換為語音。
+* **&lt; Sms &gt;**：傳送 sms 訊息。
 
 ### <a name="twiml"></a><a id="TwiML"></a>TwiML
 TwiML 是以 Twilio 動詞為基礎的一組 XML 指令，可指示 Twilio 如何處理來電或簡訊。
@@ -76,7 +76,7 @@ TwiML 是以 Twilio 動詞為基礎的一組 XML 指令，可指示 Twilio 如�
 
 ## <a name="create-a-java-application"></a><a id="create_app"></a>建立 JAVA 應用程式
 1. 取得 Twilio JAR 並將它加到您的 Java 組建路徑和 WAR 部署組件。 在 [https://github.com/twilio/twilio-java][twilio_java] 中，您可以下載 GitHub 來源及建立自己的 jar，或下載預先建立的 jar (（具有或不含相依性) ）。
-2. 確定 JDK 的 **cacerts** 金鑰存放區包含 MD5 指紋為 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 (序號為 35:DE:F4:CF 且 SHA1 指紋為 D2:32:09:AD:23:D3:14:23:21:74:E4:0D:7F:9D:62:13:97:86:63:3A) 的 Equifax 安全憑證授權單位憑證。 這是服務 (CA) 憑證的憑證授權單位單位 [https://api.twilio.com][twilio_api_service] ，當您使用 Twilio api 時，會呼叫此憑證。 如需關於確定 JDK 的 **cacerts** 金鑰存放區包含正確 CA 憑證的詳細資訊，請參閱[新增憑證至 Java CA 憑證存放區][add_ca_cert]。
+2. 確定 JDK 的 **cacerts** 金鑰存放區包含 MD5 指紋為 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 (序號為 35:DE:F4:CF 且 SHA1 指紋為 D2:32:09:AD:23:D3:14:23:21:74:E4:0D:7F:9D:62:13:97:86:63:3A) 的 Equifax 安全憑證授權單位憑證。 這是服務 (CA) 憑證的憑證授權單位單位 [https://api.twilio.com][twilio_api_service] ，當您使用 Twilio api 時，會呼叫此憑證。 如需關於確定 JDK 的 **cacerts** 金鑰存放區包含正確 CA 憑證的詳細資訊，請參閱 [新增憑證至 Java CA 憑證存放區][add_ca_cert]。
 
 [如何從 Azure 中的 Java 應用程式使用 Twilio 撥打電話][howto_phonecall_java]中提供使用 Java 版 Twilio 用戶端程式庫的詳細指示。
 
@@ -157,7 +157,7 @@ TwiML 是以 Twilio 動詞為基礎的一組 XML 指令，可指示 Twilio 如�
 若想進一步了解傳入 **Message.creator** 方法中的參數，請參閱 [https://www.twilio.com/docs/api/rest/sending-sms][twilio_rest_sending_sms]。
 
 ## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>作法：從您自己的網站提供 TwiML 回應
-當您的應用程式呼叫 Twilio API 時 (例如透過 **CallCreator.create** 方法)，Twilio 將傳送您的要求到應該傳送 TwiML 回應的 URL。 上述範例使用 Twilio 提供的 URL [https://twimlets.com/message][twimlet_message_url] 。 (雖然 TwiML 是針對供 Web 服務使用而設計，但您可以在瀏覽器中檢視 TwiML。 例如，按一下 [https://twimlets.com/message][twimlet_message_url] 以查看空白的** &lt; 回應 &gt; **元素，另一個範例是按一下 [https://twimlets.com/message?Message%5B0%5D=Hello%20World%21][twimlet_message_url_hello_world] 以查看包含 contains ** &lt; &gt; ** ** &lt; &gt; **元素的 response 元素。 ) 
+當您的應用程式呼叫 Twilio API 時 (例如透過 **CallCreator.create** 方法)，Twilio 將傳送您的要求到應該傳送 TwiML 回應的 URL。 上述範例使用 Twilio 提供的 URL [https://twimlets.com/message][twimlet_message_url] 。 (雖然 TwiML 是針對供 Web 服務使用而設計，但您可以在瀏覽器中檢視 TwiML。 例如，按一下 [https://twimlets.com/message][twimlet_message_url] 以查看空白的 **&lt; 回應 &gt;** 元素，另一個範例是按一下 [https://twimlets.com/message?Message%5B0%5D=Hello%20World%21][twimlet_message_url_hello_world] 以查看包含 contains **&lt; &gt;** **&lt; &gt;** 元素的 response 元素。 ) 
 
 除了依賴 Twilio 提供的 URL，您也可以建立自己的 URL 網站來傳回 HTTP 回應。 您可以使用任何語言建立會傳回 HTTP 回應的網站；本主題假設您將該 URL 裝載在 JSP 頁面中。
 
@@ -184,7 +184,7 @@ TwiML 是以 Twilio 動詞為基礎的一組 XML 指令，可指示 Twilio 如�
     </Response>
 ```
 
-**ApiVersion** 參數會出現在 Twilio 語音要求 (而非 SMS 要求) 中。 若要查看 Twilio 語音和 SMS 要求的可用要求參數，請分別參閱 <https://www.twilio.com/docs/api/twiml/twilio_request> 和 <https://www.twilio.com/docs/api/twiml/sms/twilio_request>。 **RoleName** 環境參數會隨附在 Azure 部署中。 (如果您要新增自訂環境參數，以便可以從 **System.getenv** 選擇這些參數，請參閱[其他角色組態設定的環境變數][misc_role_config_settings]一節。)
+**ApiVersion** 參數會出現在 Twilio 語音要求 (而非 SMS 要求) 中。 若要查看 Twilio 語音和 SMS 要求的可用要求參數，請分別參閱 <https://www.twilio.com/docs/api/twiml/twilio_request> 和 <https://www.twilio.com/docs/api/twiml/sms/twilio_request>。 **RoleName** 環境參數會隨附在 Azure 部署中。 (如果您要新增自訂環境參數，以便可以從 **System.getenv** 選擇這些參數，請參閱 [其他角色組態設定的環境變數][misc_role_config_settings]一節。)
 
 設定 JSP 頁面來提供 TwiML 回應之後，請使用 JSP 頁面的 URL 作為傳遞到 **Call.creator** 方法的 URL。 例如，如果將名稱為 MyTwiML 的 Web 應用程式部署到 Azure 託管服務，而且 JSP 頁面的名稱是 mytwiml.jsp，則可以將 URL 傳遞到 **Call.creator**，如下所示：
 
@@ -217,9 +217,9 @@ TwiML 是以 Twilio 動詞為基礎的一組 XML 指令，可指示 Twilio 如�
 
 [twilio_java]: https://github.com/twilio/twilio-java
 [twilio_api_service]: https://api.twilio.com
-[add_ca_cert]: java-add-certificate-ca-store.md
+[add_ca_cert]: /azure/developer/java/sdk/java-sdk-add-certificate-ca-store
 [howto_phonecall_java]: partner-twilio-java-phone-call-example.md
-[misc_role_config_settings]: https://msdn.microsoft.com/library/windowsazure/hh690945.aspx
+[misc_role_config_settings]: /previous-versions/azure/hh690945(v=azure.100)
 [twimlet_message_url]: https://twimlets.com/message
 [twimlet_message_url_hello_world]: https://twimlets.com/message?Message%5B0%5D=Hello%20World%21
 [twilio_rest_making_calls]: https://www.twilio.com/docs/api/rest/making-calls

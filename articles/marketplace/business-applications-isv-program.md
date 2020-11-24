@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
-ms.date: 7/14/2020
-ms.openlocfilehash: 653e6aad7f57b4d683f2f71ed22e402ed5d1fca8
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.date: 11/19/2020
+ms.openlocfilehash: a20c495553dfe9a16c34a2972575d21cc95eef44
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630289"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537130"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications 獨立軟體廠商 (ISV) Connect 計畫上線指南
 
@@ -38,10 +38,10 @@ ms.locfileid: "94630289"
 > 此步驟需要合作夥伴中心中的「 *擁有* 者」或「 *管理員* 」角色，才能讓您的帳戶簽署法律合約。
 
 1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard)。
-1. 選取 [ **設定** ] (齒輪圖示) 然後選取 [ **開發人員設定** ]。
-1. 選取 [ **協定** ]。
+1. 選取 [ **設定** ] (齒輪圖示) > **帳戶設定**]。
+1. 選取 [ **協定**]。
 1. 選取 [版本] 連結並查看協定。
-1. 若要同意並接受合約，請選取 [ **接受合約** ]。
+1. 若要同意並接受合約，請選取 [ **接受合約**]。
 
 ## <a name="set-up-your-billing-information"></a>設定您的帳單資訊
 
@@ -51,12 +51,12 @@ ms.locfileid: "94630289"
 > 此步驟需要合作夥伴中心中的 *擁有**者或管理員* 角色，您的帳戶才能更新帳單資訊。
 
 1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard)。
-1. 選取 [ **設定** ] (齒輪圖示) 然後選取 [ **開發人員設定** ]。
-1. 在 [ **帳戶設定** ] 下，選取 [ **帳單設定檔** ]。
+1. 選取 [ **設定** ] (齒輪圖示) > **帳戶設定**]。
+1. 在 [ **組織設定檔**] 底下，選取 [ **帳單設定檔** ]，然後選取 [ **開發人員** ]
 1. 查看從您的法律實體填入的主要連絡人和帳單資訊。
-1. 若要進行變更，請選取 [ **更新** ]。
+1. 若要進行變更，請選取 [ **更新**]。
 1. 如果適用的話，請提供稅務識別碼/加值稅 識別碼設定。
-1. 若要儲存變更，請選取 [ **更新** ]。
+1. 若要儲存變更，請選取 [ **更新**]。
 
 > [!NOTE]
 > 您可以隨時更新您的帳單設定檔。 不過，您無法在稍後變更 *公司名稱* 和帳單位址的 *國家/地區* 。

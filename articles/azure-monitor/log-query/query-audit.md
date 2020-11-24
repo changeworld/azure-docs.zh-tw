@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/03/2020
-ms.openlocfilehash: 1c0247c5adfe60dc2436c832cf3d561882ae3a5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ce0aea6bb257f0a52a843ce53cc904ed0a775dd
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760156"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536195"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Azure 監視器記錄中的 Audit 查詢 (preview) 
 記錄查詢 audit 記錄檔提供有關在 Azure 監視器中執行之記錄查詢的遙測。 這包括執行查詢時、執行的物件、使用的工具、查詢文字，以及描述查詢執行的效能統計資料等資訊。
@@ -35,7 +35,7 @@ ms.locfileid: "91760156"
 您可以從 [Log Analytics 工作區的診斷設定](../samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-log-analytics-workspace)取得範例 Resource Manager 範本。
 
 ## <a name="audit-data"></a>稽核資料
-每次執行查詢時，就會建立一個審核記錄。 如果您將資料傳送至 Log Analytics 工作區，它會儲存在名為 *LAQueryLogs*的資料表中。 下表說明每個審核資料記錄中的屬性。
+每次執行查詢時，就會建立一個審核記錄。 如果您將資料傳送至 Log Analytics 工作區，它會儲存在名為 *LAQueryLogs* 的資料表中。 下表說明每個審核資料記錄中的屬性。
 
 | 欄位 | 描述 |
 |:---|:---|
@@ -66,7 +66,7 @@ ms.locfileid: "91760156"
 
 - 只有在使用者內容中執行查詢時，才會記錄查詢。 將不會記錄 Azure 內的服務對服務。 這項排除所包含的兩個主要查詢集合是計費計算和自動化的警示執行。 在警示的情況下，將不會記錄排程的警示查詢本身;警示建立畫面中的第一次執行警示是在使用者內容中執行，而且將可供進行審核。 
 - 來自 Azure 資料總管 proxy 的查詢無法使用效能統計資料。 這些查詢的所有其他資料仍會填入。
-- [混淆字串常](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals)值之字串的*h*提示不會影響查詢審核記錄。 查詢將會完全依照提交方式來捕捉，而不會將字串模糊化。 您應確定只有具有合規性許可權的使用者可以使用 Log Analytics 工作區中可用的各種 RBAC 模式來查看這項資料。
+- [混淆字串常](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals)值之字串的 *h* 提示不會影響查詢審核記錄。 查詢將會完全依照提交方式來捕捉，而不會將字串模糊化。 您應確定只有具有合規性許可權的使用者可以使用 Log Analytics 工作區中提供的各種 Kubernetes RBAC 或 Azure RBAC 模式來查看這項資料。
 - 對於包含多個工作區資料的查詢，只會在使用者具有存取權的工作區中捕捉查詢。
 
 ## <a name="costs"></a>費用  

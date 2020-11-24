@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a5d685e49d941d7b6febbc220cdbfbcb631c4496
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 17e01844463b6d18bd7d2c3b56ee86d938682b8e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94746358"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536314"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理動作群組
 動作群組是 Azure 訂用帳戶擁有者定義的通知喜好設定集合。 Azure 監視器和服務健康狀態警示使用動作群組來通知使用者警示已被觸發。 根據使用者的需求而定，不同的警示可能使用相同的動作群組或不同的動作群組。 一個訂用帳戶中最多可設定 2,000 個動作群組。
@@ -149,6 +149,10 @@ ITSM 動作需要 ITSM 連線。 了解如何建立 [ITSM 連線](./itsmc-overvi
 您在動作群組中可以有有限數量的邏輯應用程式動作。
 
 ### <a name="secure-webhook"></a>安全 Webhook
+
+> [!NOTE]
+> 使用 webhook 動作需要目標 webhook 端點不需要警示的詳細資料就能順利運作，或是可以剖析 POST 作業中提供的警示內容資訊。 如果 webhook 端點無法自行處理警示內容資訊，您可以使用類似 [邏輯應用程式動作](./action-groups-logic-app.md) 的解決方案來自訂警示內容資訊的操作，以符合 webhook 的預期資料格式。
+
 動作群組 Webhook 動作可讓您利用 Azure Active Directory 來保護您的動作群組與受保護 Web API (Webhook 端點) 之間的連線。 利用這項功能的整體工作流程說明如下。 如需 Azure AD 應用程式和服務主體的概觀，請參閱 [Microsoft 身分識別平台 (v2.0) 概觀](../../active-directory/develop/v2-overview.md)。
 
 1. 為受保護 Web API 建立 Azure AD 應用程式。 請參閱 [受保護的 WEB API：應用程式註冊](../../active-directory/develop/scenario-protected-web-api-app-registration.md)。
@@ -259,6 +263,10 @@ Write-Host $myApp.AppRoles
 支援的國家/區域定價會列在 [Azure 監視器定價頁面](https://azure.microsoft.com/pricing/details/monitor/)。
 
 ### <a name="webhook"></a>Webhook
+
+> [!NOTE]
+> 使用 webhook 動作需要目標 webhook 端點不需要警示的詳細資料就能順利運作，或是可以剖析 POST 作業中提供的警示內容資訊。 如果 webhook 端點無法自行處理警示內容資訊，您可以使用類似 [邏輯應用程式動作](./action-groups-logic-app.md) 的解決方案來自訂警示內容資訊的操作，以符合 webhook 的預期資料格式。
+
 Webhook 會使用下列規則來處理
 - 最多嘗試3次 webhook 呼叫。
 - 如果在超時期間內未收到回應，或傳回下列其中一個 HTTP 狀態碼，則會重試呼叫：408、429、503或504。

@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: a6bbb2abe24eba96fd2c55b7aaf15ccd8ae33530
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27dba675f82c4d34ec793cf492c18b293a6c8c77
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87760937"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544253"
 ---
 # <a name="what-is-azure-private-link-service"></a>什麼是 Azure Private Link 服務？
 
-Azure Private Link 服務是由 Azure Private Link 所支援的自有服務參考。 您可以針對在 [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md) 後方執行的服務啟用 Private Link 存取權，讓服務的取用者可以從自己的 vnet 私下進行存取。 您的客戶可以在其 VNet 內建立私人端點，並將其對應到此服務。 本文說明與服務提供者端相關的概念。 
+Azure Private Link 服務是由 Azure Private Link 所支援的自有服務參考。 您可以針對在 [Azure Standard Load Balancer](../load-balancer/load-balancer-overview.md) 後方執行的服務啟用 Private Link 存取權，讓服務的取用者可以從自己的 vnet 私下進行存取。 您的客戶可以在其 VNet 內建立私人端點，並將其對應到此服務。 本文說明與服務提供者端相關的概念。 
 
 :::image type="content" source="./media/private-link-service-overview/consumer-provider-endpoint.png" alt-text="Private link 服務工作流程" border="true":::
 
@@ -57,7 +57,7 @@ Private Link 服務會指定下列屬性：
 |---------|---------|
 |布建狀態 (provisioningState)   |唯讀屬性，會列出 Private Link 服務的目前布建狀態。 適用的布建狀態為：「正在刪除;沒有均正在更新」。 當布建狀態為「成功」時，您已成功布建您的 Private Link 服務。        |
 |別名 (別名)      | 別名是您服務的全域唯一隻讀字串。 它可協助您為服務遮罩客戶資料，同時為您的服務建立容易共用的名稱。 當您建立 Private Link 服務時，Azure 會為您的服務產生可與客戶共用的別名。 您的客戶可以使用此別名來要求您的服務連接。          |
-|可見度 (可見度)      | 可見度是控制 Private Link 服務之曝光設定的屬性。 服務提供者可以選擇使用角色型存取控制來限制服務對訂用帳戶的風險， (RBAC) 許可權、一組受限制的訂用帳戶或所有 Azure 訂用帳戶。          |
+|可見度 (可見度)      | 可見度是控制 Private Link 服務之曝光設定的屬性。 服務提供者可以選擇使用 Azure 角色型存取控制來限制其服務對訂用帳戶的風險， (Azure RBAC) 許可權、一組受限制的訂用帳戶或所有 Azure 訂用帳戶。          |
 |自動核准 (autoApproval)     |   自動核准會控制 Private Link 服務的自動存取。 當您從這些訂用帳戶中的私人端點要求連線時，自動核准清單中指定的訂閱會自動核准。          |
 |Load Balancer 前端 IP 設定 (loadBalancerFrontendIpConfigurations)     |    Private Link 服務會系結至 Standard Load Balancer 的前端 IP 位址。 所有以服務為目的地的流量都會到達 SLB 前端。 您可以設定 SLB 規則，將此流量導向至您的應用程式執行所在的適當後端集區。 負載平衡器前端 IP 設定與 NAT IP 配置不同。      |
 | (Ipconfiguration) 的 NAT IP 設定    |    此屬性是指 Private Link 服務) IP 設定的 NAT (網路位址轉譯。 您可以從服務提供者的虛擬網路中的任何子網中選擇 NAT IP。 Private Link 服務會在 Private Link 流量上執行目的地端的 NAT。 這可確保來源 (取用者端) 和目的地 (服務提供者) 位址空間之間沒有 IP 衝突。 在 (服務提供者端) 的目的地端，NAT IP 位址會顯示為服務所接收所有封包的來源 IP，以及服務所傳送之所有封包的目的地 IP。       |
@@ -76,7 +76,7 @@ Private Link 服務會指定下列屬性：
  
 - 您可以從屬於不同 Vnet、訂用帳戶和/或 Active Directory 租使用者的多個私人端點存取單一 Private Link 服務。 連接會透過連接工作流程建立。 
  
-- 您可以使用不同的前端 IP 設定，在相同的 Standard Load Balancer 上建立多個 Private Link 服務。 您可以針對每個 Standard Load Balancer 和每個訂用帳戶建立的 Private Link 服務數目有所限制。 如需詳細資訊，請參閱  [Azure 限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits) \(部分機器翻譯\)。
+- 您可以使用不同的前端 IP 設定，在相同的 Standard Load Balancer 上建立多個 Private Link 服務。 您可以針對每個 Standard Load Balancer 和每個訂用帳戶建立的 Private Link 服務數目有所限制。 如需詳細資訊，請參閱  [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) \(部分機器翻譯\)。
  
 - Private Link 服務可以有一個以上的 NAT IP 設定連結。 選擇一個以上的 NAT IP 設定可協助服務提供者調整規模。 目前，服務提供者可以針對每個 Private Link 服務指派最多8個 NAT IP 位址。 使用每個 NAT IP 位址，您可以為您的 TCP 連線指派更多埠，進而相應放大。將多個 NAT IP 位址新增至 Private Link 服務之後，您就無法刪除 NAT IP 位址。 這樣做的目的是為了確保在刪除 NAT IP 位址時，使用中的連線不會受到影響。
 
@@ -85,17 +85,17 @@ Private Link 服務會指定下列屬性：
 
 **別名** 是您服務的全域唯一名稱。 它可協助您為服務遮罩客戶資料，同時為您的服務建立容易共用的名稱。 當您建立 Private Link 服務時，Azure 會為您的服務產生一個別名，讓您可以與客戶共用。 您的客戶可以使用此別名來要求您的服務連接。
 
-別名是由三個部分所組成： *前置*詞。*GUID*。*尾碼*
+別名是由三個部分所組成： *前置* 詞。*GUID*。*尾碼*
 
 - 前置詞是服務名稱。 您可以選擇自己的前置詞。 建立「別名」之後，您就無法加以變更，因此請適當地選取您的首碼。  
 - 將由平臺提供 GUID。 這有助於讓名稱成為全域唯一的。 
-- 尾碼會附加*azure： privatelinkservice* 
+- 尾碼會附加 *azure： privatelinkservice* 
 
-完成別名：  *前置*詞。 {GUID}。* *privatelinkservice  
+完成別名：  *前置* 詞。 {GUID}。** privatelinkservice  
 
 ## <a name="control-service-exposure"></a>控制服務暴露
 
-Private Link 服務會提供選項，讓您透過「可見度」設定來控制服務的曝光。 您可以將服務設為私用，以便從您擁有的不同 Vnet 使用 (RBAC 許可權) 、限制僅限您信任的一組有限訂用帳戶，或將其設為公用，讓所有 Azure 訂用帳戶都能要求 Private Link 服務的連線。 您的可見度設定會決定取用者是否可以連接到您的服務。 
+Private Link 服務會提供選項，讓您透過「可見度」設定來控制服務的曝光。 您可以將服務設為私用，使其可從您所擁有的不同 Vnet 中取用 (僅) 的 Azure RBAC 許可權、限制暴露于您信任的有限訂用帳戶集，或將其設為公用，讓所有 Azure 訂用帳戶都能要求 Private Link 服務的連線。 您的可見度設定會決定取用者是否可以連接到您的服務。 
 
 ## <a name="control-service-access"></a>控制服務存取
 

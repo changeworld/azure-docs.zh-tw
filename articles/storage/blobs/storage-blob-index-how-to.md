@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2e3e16b71d52edd9ab4eaf55651567b95e334b84
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 411815ca2f947c47b8dfb0d2e5d61f8ea18f3545
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961782"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95541244"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>使用 blob 索引標記 (預覽) 來管理和尋找 Azure Blob 儲存體上的資料
 
@@ -23,7 +23,7 @@ Blob 索引標記會使用索引鍵/值標記屬性，將儲存體帳戶中的�
 > [!NOTE]
 > Blob 索引處於公開預覽狀態，可在 **加拿大中部**、 **加拿大東部**、 **法國中部** 和 **法國南部** 區域中使用。 若要深入瞭解這項功能以及已知問題和限制，請參閱 [使用 Blob 索引標記管理和尋找 Azure blob 資料 (預覽) ](storage-manage-find-blobs.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -38,7 +38,7 @@ Blob 索引標記會使用索引鍵/值標記屬性，將儲存體帳戶中的�
 
 2. 在 NuGet 封裝管理員中，尋找 **Azure** 12.7.0 套件，並將版本 **-preview. 1** 或更新版本安裝至您的專案。 您也可以執行 PowerShell 命令： `Install-Package Azure.Storage.Blobs -Version 12.7.0-preview.1`
 
-   若要了解作法，請參閱[尋找並安裝套件](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)。
+   若要了解作法，請參閱[尋找並安裝套件](/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)。
 
 3. 在程式碼檔案頂端新增以下 using 陳述式。
 
@@ -56,7 +56,7 @@ Blob 索引標記會使用索引鍵/值標記屬性，將儲存體帳戶中的�
 
 ## <a name="upload-a-new-blob-with-index-tags"></a>使用索引標記上傳新的 Blob
 
-這項工作可由 [儲存體 Blob 資料擁有](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) 者或透過 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` 自訂 azure 角色授與 [Azure 資源提供者](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) 作業許可權的安全性主體來執行。
+這項工作可由 [儲存體 Blob 資料擁有](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) 者或透過 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` 自訂 azure 角色授與 [Azure 資源提供者](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) 作業許可權的安全性主體來執行。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -114,9 +114,9 @@ static async Task BlobIndexTagsOnCreate()
 
 ## <a name="get-set-and-update-blob-index-tags"></a>取得、設定和更新 Blob 索引標記
 
-[儲存體 Blob 資料擁有](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)者或已透過 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` 自訂 azure 角色授與[Azure 資源提供者](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage)作業許可權的安全性主體，都可以執行 blob 索引標記。
+[儲存體 Blob 資料擁有](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)者或已透過 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` 自訂 azure 角色授與[Azure 資源提供者](../../role-based-access-control/resource-provider-operations.md#microsoftstorage)作業許可權的安全性主體，都可以執行 blob 索引標記。
 
-[儲存體 Blob 資料擁有](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)者或已透過 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` 自訂 azure 角色授與[Azure 資源提供者](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage)作業許可權的安全性主體，都可以執行設定和更新 blob 索引標記。
+[儲存體 Blob 資料擁有](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)者或已透過 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` 自訂 azure 角色授與[Azure 資源提供者](../../role-based-access-control/resource-provider-operations.md#microsoftstorage)作業許可權的安全性主體，都可以執行設定和更新 blob 索引標記。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -193,7 +193,7 @@ static async Task BlobIndexTagsExample()
 
 ## <a name="filter-and-find-data-with-blob-index-tags"></a>使用 blob 索引標記篩選和尋找資料
 
-這項工作可由 [儲存體 Blob 資料擁有](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) 者或透過 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` 自訂 azure 角色授與 [Azure 資源提供者](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) 作業許可權的安全性主體來執行。
+這項工作可由 [儲存體 Blob 資料擁有](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) 者或透過 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` 自訂 azure 角色授與 [Azure 資源提供者](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) 作業許可權的安全性主體來執行。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: 3236e0a95c6a4b4f57ac38ed067011c3d6848b5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 176f12a0a06a5bcae601463e30189bc139d3531f
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89670332"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543845"
 ---
 # <a name="move-resources-across-regions-in-powershell"></a>在 PowerShell 中跨區域移動資源
 
@@ -25,7 +25,7 @@ ms.locfileid: "89670332"
 
 ## <a name="before-you-start"></a>開始之前
 
-- 您的 Azure 訂用帳戶應該能夠存取資源移動器，而且您應該擁有訂用帳戶的 [擁有](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) 者或 [使用者存取系統管理員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) 許可權。
+- 您的 Azure 訂用帳戶應該能夠存取資源移動器，而且您應該擁有訂用帳戶的 [擁有](../role-based-access-control/built-in-roles.md#owner) 者或 [使用者存取系統管理員](../role-based-access-control/built-in-roles.md#user-access-administrator) 許可權。
 - 資源移動器不會追蹤變更和升級，因此在您開始移動資源之前，請先對資源進行任何必要的變更。
 - 當您使用 PowerShell 移動資源時，您目前無法編輯任何目的地區域設定。 直接在入口網站中修改這些設定。
 - 當您將資源新增至移動集合，以準備將其移至另一個區域時，有關移動的中繼資料會儲存在為目的而建立的資源群組中。 此資源群組目前可以位於美國東部2或北歐地區。 您可以使用其中一個區域的中繼資料，在任何公用區域之間移動 Azure 資源。
@@ -34,7 +34,7 @@ ms.locfileid: "89670332"
 
 我們在腳本範例中使用這些值：
 
-**設定** | **ReplTest1** 
+**設定** | **值** 
 --- | ---
 訂用帳戶識別碼 | subscription-id
 資源移動器服務位置 | 美國東部 2

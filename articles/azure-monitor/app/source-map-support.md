@@ -6,12 +6,12 @@ author: markwolff
 ms.author: marwolff
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 5b15492a36032a53ac81929eb55bce0bc70e040c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6403ecd534d17298a10ffcf8f089a2b010fa3a51
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335125"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536450"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>JavaScript 應用程式的來源對應支援
 
@@ -67,7 +67,7 @@ Application Insights 支援將來源對應上傳至您自己的儲存體帳戶 B
 
 ## <a name="troubleshooting"></a>疑難排解
 
-### <a name="required-role-based-access-control-rbac-settings-on-your-blob-container"></a>在 Blob 容器上 (RBAC) 設定的必要角色型存取控制
+### <a name="required-azure-role-based-access-control-azure-rbac-settings-on-your-blob-container"></a>必要的 Azure 角色型存取控制 (您 Blob 容器上的 Azure RBAC) 設定
 
 使用此功能的入口網站上的任何使用者都必須至少指派為 Blob 容器的 [儲存體 Blob 資料讀取器][storage blob data reader] 。 您必須將此角色指派給任何其他將透過這項功能使用來源對應的其他人。
 

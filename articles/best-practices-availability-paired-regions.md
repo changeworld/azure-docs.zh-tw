@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: barbkess
 ms.custom: references_regions
-ms.openlocfilehash: b720d9dd824018d885ccc9860ee9fd8a90a46051
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d42eabe3afeb738b0cbb011881678839fe0ba2d7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84194325"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95539051"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>業務持續性和災害復原 (BCDR)：Azure 配對的區域
 
@@ -43,7 +43,7 @@ Azure 地理位置會定義世界上至少包含一個 Azure 區域的區域。 
 
 ## <a name="must-i-use-azure-regional-pairs"></a>是否必須使用 Azure 區域配對？
 
-否。 客戶可以利用 Azure 服務來設計具復原能力的服務，而不需依賴 Azure 的區域配對。  不過，我們建議您設定商務持續性嚴重損壞修復 (BCDR) 跨區域配對，以受益于 [隔離](./security/fundamentals/isolation-choices.md) 和提高 [可用性](./availability-zones/az-overview.md)。 對於支援多個作用中區域的應用程式，我們建議儘可能同時使用相同區域組中的兩個區域。 這可確保應用程式的最佳可用性，並在發生損毀時將復原時間降至最低。 可能的話，請將您的應用程式設計為可獲得[最大的復原能力](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)和簡化嚴重損壞[修復](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery)
+否。 客戶可以利用 Azure 服務來設計具復原能力的服務，而不需依賴 Azure 的區域配對。  不過，我們建議您設定商務持續性嚴重損壞修復 (BCDR) 跨區域配對，以受益于 [隔離](./security/fundamentals/isolation-choices.md) 和提高 [可用性](./availability-zones/az-overview.md)。 對於支援多個作用中區域的應用程式，我們建議儘可能同時使用相同區域組中的兩個區域。 這可確保應用程式的最佳可用性，並在發生損毀時將復原時間降至最低。 可能的話，請將您的應用程式設計為可獲得[最大的復原能力](/azure/architecture/framework/resiliency/overview)和簡化嚴重損壞[修復](/azure/architecture/framework/resiliency/backup-and-recovery)
 
 ## <a name="azure-regional-pairs"></a>Azure 區域配對
 
@@ -56,7 +56,7 @@ Azure 地理位置會定義世界上至少包含一個 Azure 區域的區域。 
 | Canada |加拿大中部 |加拿大東部 |
 | 中國 |中國北部 |中國東部|
 | 中國 |中國北部 2 |中國東部 2|
-| 歐洲 |歐洲北部 (愛爾蘭)  |西歐 (荷蘭)  |
+| 歐洲 |北歐 (愛爾蘭) |西歐 (荷蘭) |
 | 法國 |法國中部|法國南部|
 | 德國 |德國中部 |德國東北部 |
 | 印度 |印度中部 |印度南部 |
@@ -92,11 +92,11 @@ Azure 地理位置會定義世界上至少包含一個 Azure 區域的區域。 
 ## <a name="cross-region-activities"></a>跨區域活動
 如圖 2 所示。
 
-1. **Azure 計算 (IaaS) ** –您必須事先布建額外的計算資源，以確保在發生嚴重損壞時可在另一個區域中使用資源。 如需詳細資訊，請參閱 [Azure 復原技術指導](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md)。 
+1. **Azure 計算 (IaaS)** –您必須事先布建額外的計算資源，以確保在發生嚴重損壞時可在另一個區域中使用資源。 如需詳細資訊，請參閱 [Azure 復原技術指導](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md)。 
 
-2. **Azure 儲存體** -如果您使用受控磁片，請瞭解 Azure 備份的 [跨區域備份](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) ，以及使用 Azure Site Recovery 將 [vm](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) 從一個區域複寫到另一個區域。 如果您使用的是儲存體帳戶，則在建立 Azure 儲存體帳戶時，預設會設定異地冗余儲存體 (GRS) 。 使用 GRS 時，系統會在主要區域內將您的資料自動複寫三次，並在配對區域中複寫三次。 如需詳細資訊，請參閱 [Azure 儲存體備援選項](storage/common/storage-redundancy.md)。
+2. **Azure 儲存體** -如果您使用受控磁片，請瞭解 Azure 備份的 [跨區域備份](/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) ，以及使用 Azure Site Recovery 將 [vm](./site-recovery/azure-to-azure-tutorial-enable-replication.md) 從一個區域複寫到另一個區域。 如果您使用的是儲存體帳戶，則在建立 Azure 儲存體帳戶時，預設會設定異地冗余儲存體 (GRS) 。 使用 GRS 時，系統會在主要區域內將您的資料自動複寫三次，並在配對區域中複寫三次。 如需詳細資訊，請參閱 [Azure 儲存體備援選項](storage/common/storage-redundancy.md)。
 
-3. **Azure SQL Database** –有了 Azure SQL Database 異地複寫，您就可以設定將交易非同步複寫至世界各地的任何區域;不過，建議您將這些資源部署在配對區域中，以進行大部分的嚴重損壞修復案例。 如需詳細資訊，請參閱 [Azure SQL Database 中的異地複寫](sql-database/sql-database-geo-replication-overview.md)。
+3. **Azure SQL Database** –有了 Azure SQL Database 異地複寫，您就可以設定將交易非同步複寫至世界各地的任何區域;不過，建議您將這些資源部署在配對區域中，以進行大部分的嚴重損壞修復案例。 如需詳細資訊，請參閱 [Azure SQL Database 中的異地複寫](./azure-sql/database/auto-failover-group-overview.md)。
 
 4. **Azure Resource Manager**：Resource Manager 原本就會提供跨區域的元件邏輯隔離。 這表示某個區域中的邏輯失敗不太可能會影響另一個區域。
 

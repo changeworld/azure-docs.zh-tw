@@ -9,12 +9,12 @@ ms.date: 11/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 906df01587201561fbbfea0661d0885864042925
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: ddd19c90c8c47016497e2c3b00e04595a94e7715
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701308"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543063"
 ---
 # <a name="list-blobs-with-net"></a>使用 .NET 列出 Blob
 
@@ -61,7 +61,7 @@ ms.locfileid: "94701308"
 
 您可以傳回包含結果的 blob 中繼資料。
 
-- 如果您使用的是 .NET v12 SDK，請指定 [BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits)列舉的 **中繼資料** 值。
+- 如果您使用的是 .NET v12 SDK，請指定 [BlobTraits](/dotnet/api/azure.storage.blobs.models.blobtraits)列舉的 **中繼資料** 值。
 
 - 如果您使用的是 .NET v11 SDK，請指定 [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails)列舉的 **中繼資料** 值。 Azure 儲存體會在每個傳回的 Blob 中包含中繼資料，因此不需要在此內容中呼叫其中一個 **FetchAttributes** 方法，即可擷取 Blob 中繼資料。
 

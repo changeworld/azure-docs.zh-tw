@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: b52cc38c40d8b6a39961ab28d9f0600ea7ee2201
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 391d9562bc73265a10976f485c78e3966aa4fe83
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841898"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536280"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 監視器常見問題集
 
@@ -412,7 +412,7 @@ WireData
 - 重新建立自訂儀表板和活頁簿。 
 - 重新建立或更新任何自訂記錄/計量警示的範圍。 
 - 重新建立可用性警示。
-- 重新建立任何自訂 Role-Based 存取控制， (您的使用者存取新資源所需的 RBAC) 設定。 
+- 重新建立任何自訂的 Azure 角色型存取控制， (您的使用者存取新資源所需的 Azure RBAC) 設定。 
 - 複寫牽涉到內嵌取樣、資料保留、每日上限和自訂計量的設定。 這些設定可透過 [ **使用量和估計成本** ] 窗格來控制。
 - 依賴 API 金鑰的任何整合，例如 [發行注釋](/azure/azure-monitor/app/annotations)、 [即時計量安全控制通道](app/live-stream.md#secure-the-control-channel) 等等。您將需要產生新的 API 金鑰，並更新相關聯的整合。 
 - 需要再次設定傳統資源中的連續匯出。
@@ -680,9 +680,9 @@ ContainerInventory 資料表包含已停止和執行中容器的相關資訊。 
 
 如果您收到 **缺少 Microsoft.OperationsManagement 的訂用帳戶註冊** 錯誤，您可以在定義工作區的訂用帳戶中註冊資源提供者 **Microsoft.OperationsManagement** 來解決此問題。 您可以在[這裡](../azure-resource-manager/templates/error-register-resource-provider.md)找到作法的相關文件。
 
-### <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>是否支援已啟用 RBAC 的 AKS 叢集？
+### <a name="is-there-support-for-kubernetes-rbac-enabled-aks-clusters"></a>是否支援 Kubernetes RBAC 啟用的 AKS 叢集？
 
-容器監視解決方案不支援 RBAC，但適用於容器的 Azure 監視器支援。 解決方案詳細資料頁面不會在顯示這些叢集資料的刀鋒視窗中顯示正確的資訊。
+容器監視解決方案不支援 Kubernetes RBAC，但支援容器 Azure 監視器。 解決方案詳細資料頁面不會在顯示這些叢集資料的刀鋒視窗中顯示正確的資訊。
 
 ### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>我如何透過 Helm 在 kube 系統命名空間中啟用容器的記錄檔收集？
 

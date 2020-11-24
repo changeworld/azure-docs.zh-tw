@@ -3,12 +3,12 @@ title: 變更 Azure Service Fabric 叢集設定
 description: 本文說明您可以自訂的網狀架構設定和網狀架構升級原則。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: a83d24b4badd78750756a3cb4564b1e53fd30593
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1f16e89dd1131f6aea64e5e72a342b3b737f3728
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648220"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542638"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自訂 Service Fabric 叢集設定
 本文說明您可以為 Service Fabric 叢集自訂的各種網狀架構設定。 針對裝載於 Azure 中的叢集，您可以透過 [Azure 入口網站](https://portal.azure.com)或使用 Azure Resource Manager 範本來自訂設定。 如需詳細資訊，請參閱[升級 Azure 叢集的設定](service-fabric-cluster-config-upgrade-azure.md)。 針對獨立叢集，您會透過更新 *ClusterConfig.json* 檔案並在叢集上執行設定升級來自訂設定。 如需詳細資訊，請參閱[升級獨立叢集的設定](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -141,6 +141,7 @@ ms.locfileid: "94648220"
 |IsEnabled|布林值，預設值為 FALSE|靜態|啟用/停用 DnsService。 預設為停用 DnsService，必須設定此組態才能加以啟用。 |
 |PartitionPrefix|字串，預設值為 "--"|靜態|控制分割服務 DNS 查詢中的分割前置詞字串值。 值： <ul><li>應該要符合 RFC 規範，因為它會包含在 DNS 查詢中。</li><li>不應包含點 '.'，因為點會干擾 DNS 後置詞的行為。</li><li>不得超過 5 個字元。</li><li>不能是空字串。</li><li>如果覆寫 PartitionPrefix 設定，則必須覆寫 PartitionSuffix，反之亦然。</li></ul>如需詳細資訊，請參閱 [Service Fabric DNS 服務](service-fabric-dnsservice.md)。|
 |PartitionSuffix|字串，預設值為 ""|靜態|控制分割服務 DNS 查詢中的分割後置詞字串值。值： <ul><li>應該要符合 RFC 規範，因為它會包含在 DNS 查詢中。</li><li>不應包含點 '.'，因為點會干擾 DNS 後置詞的行為。</li><li>不得超過 5 個字元。</li><li>如果覆寫 PartitionPrefix 設定，則必須覆寫 PartitionSuffix，反之亦然。</li></ul>如需詳細資訊，請參閱 [Service Fabric DNS 服務](service-fabric-dnsservice.md)。 |
+|RetryTransientFabricErrors|布林值，預設值為 true|靜態|此設定會控制從 DnsService 呼叫 Service Fabric Api 時的重試功能。 啟用時，如果發生暫時性錯誤，則會重試最多3次。|
 
 ## <a name="eventstoreservice"></a>EventStoreService
 
@@ -423,7 +424,7 @@ ms.locfileid: "94648220"
 |AzureStorageMaxConnections | 整數，預設值為 5000 |動態|Azure 儲存體的並行連線數目上限。 |
 |AzureStorageMaxWorkerThreads | 整數，預設值為 25 |動態|平行背景工作執行緒的數目上限。 |
 |AzureStorageOperationTimeout | 時間 (秒)，預設值為 6000 |動態|以秒為單位指定時間範圍。 可供 xstore 作業完成的逾時值。 |
-|CleanupApplicationPackageOnProvisionSuccess|布林值，預設值為 FALSE |動態|在成功佈建時，啟用或停用應用程式套件的自動清除。<br/> *最佳做法是使用 `true` 。*
+|CleanupApplicationPackageOnProvisionSuccess|bool，預設值為 true |動態|在成功佈建時，啟用或停用應用程式套件的自動清除。
 |CleanupUnusedApplicationTypes|布林值，預設值為 FALSE |動態|此組態若啟用，允許自動取消註冊未使用的應用程式類型版本，略過最新三個未使用的版本，藉以修剪映像存放區所佔用的磁碟空間。 自動清除將會在該特定應用程式類型的成功佈建結束時觸發，而且所有應用程式類型也會一天定期執行一次。 可使用參數 "MaxUnusedAppTypeVersionsToKeep" 設定要略過的未使用版本數目。 <br/> *最佳做法是使用 `true` 。*
 |DisableChecksumValidation | 布林值，預設值為 false |靜態| 此組態可讓我們在應用程式佈建期間啟用或停用總和檢查碼驗證。 |
 |DisableServerSideCopy | 布林值，預設值為 false |靜態|此組態會在應用程式佈建期間，啟用或停用 ImageStore 上應用程式套件的伺服器端複製作業。 |
@@ -520,6 +521,7 @@ ms.locfileid: "94648220"
 |AutoDetectAvailableResources|布林值，預設值為 TRUE|靜態|此組態會觸發自動偵測節點上可用資源 (CPU 和記憶體) 的作業。當此組態設定為 true 時，我們會讀取實際的容量，並在使用者指定的節點容量錯誤或完全未定義容量時加以更正。如果此組態設定為 false，我們會追蹤使用者指定的節點容量錯誤的警告，但不會加以更正，這表示使用者想要將容量指定為大於節點實際擁有的容量，如果並未定義容量，則會採用無限容量 |
 |BalancingDelayAfterNewNode | 時間 (秒)，預設值為 120 |動態|以秒為單位指定時間範圍。 在新增節點之後，不要在此期間啟動平衡活動。 |
 |BalancingDelayAfterNodeDown | 時間 (秒)，預設值為 120 |動態|以秒為單位指定時間範圍。 在節點關閉事件之後，不要在此期間啟動平衡活動。 |
+|BlockNodeInUpgradeConstraintPriority | 整數，預設值為 0 |動態|決定容量條件約束的優先順序：0：硬性;1：軟;負數：忽略  |
 |CapacityConstraintPriority | 整數，預設值為 0 | 動態|決定容量條件約束的優先順序︰0：硬式、1︰軟式、負數︰忽略。 |
 |ConsecutiveDroppedMovementsHealthReportLimit | 整數，預設值為 20 | 動態|定義在執行診斷和發出健康狀態警告之前，ResourceBalancer 所發出之移動遭到捨棄的連續次數。 負數︰不會在此狀況下發出任何警告。 |
 |ConstraintFixPartialDelayAfterNewNode | 時間 (秒)，預設值為 120 |動態| 以秒為單位指定時間範圍。 在新增節點之後，不要在此期間修正 FaultDomain 和 UpgradeDomain 條件約束違規。 |

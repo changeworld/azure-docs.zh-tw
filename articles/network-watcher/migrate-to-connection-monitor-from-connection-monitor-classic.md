@@ -1,5 +1,5 @@
 ---
-title: '從連線監視器遷移至連線監視器 (預覽版) '
+title: 從連線監視器遷移至連線監視器
 titleSuffix: Azure Network Watcher
 description: 瞭解如何從連線監視器遷移至連線監視器。
 services: network-watcher
@@ -10,22 +10,18 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/20/2020
+ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: d785ecd48816150cd33d8e2f5fcce2ff36f1603f
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: eed68ff7e6b002e7a5985b336686b646a1a9acee
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985785"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522941"
 ---
-# <a name="migrate-to-connection-monitor-preview-from-connection-monitor-classic"></a>從連線監視器遷移至連線監視器 (預覽版)  (傳統) 
+# <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>從連線監視器遷移至連線監視器 (傳統) 
 
-您可以將現有的連線監視器遷移至全新、改良的連線監視器 (預覽) 只需按幾下，就能完成零停機。 若要深入瞭解這些優點，請參閱 [連接監視器](./connection-monitor-overview.md)。
-
-> [!IMPORTANT]
-> 連接監視器目前處於公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+您可以只需按幾下，就能將現有的連線監視器遷移至新的已改善連線監視器，而不需要停機。 若要深入瞭解這些優點，請參閱 [連接監視器](./connection-monitor-overview.md)。
 
 ## <a name="key-points-to-note"></a>要注意的重點
 
@@ -33,7 +29,7 @@ ms.locfileid: "94985785"
 
 * 代理程式和防火牆設定的運作方式相同。 不需要任何變更。 
 * 現有的連接監視器會對應到連線監視器 > 測試群組 > 測試格式。 您可以藉由選取 [ **編輯**] 來查看和修改新連線監視器的內容、下載範本以變更連線監視器，以及透過 Azure Resource Manager 提交。 
-* 具有網路監看員擴充功能的 Azure 虛擬機器，會將資料傳送到工作區和計量。 連線監視器可讓您透過新計量來取得資料 (ChecksFailedPercent [預覽] 和 RoundTripTimeMs [預覽] ) ，而不是舊的計量 (ProbesFailedPercent 和 AverageRoundtripMs) 。 
+* 具有網路監看員擴充功能的 Azure 虛擬機器，會將資料傳送到工作區和計量。 連線監視器可讓您透過新的計量 (ChecksFailedPercent 和 RoundTripTimeMs) ，而不是舊的計量 (ProbesFailedPercent 和 AverageRoundtripMs) 提供資料。 
 * 資料監視：
    * **警示**：自動遷移至新的計量。
    * **儀表板和** 整合：需要手動編輯計量集。 
@@ -65,7 +61,7 @@ ms.locfileid: "94985785"
 * 已遷移的連線監視器不會再顯示為較舊的連線監視器解決方案。 它們現在僅適用于連線監視器。
 * 任何外部整合（例如 Power BI 和 Grafana 中的儀表板，以及與安全性資訊和事件管理)  (的整合，都必須以手動方式遷移）。 這是遷移安裝程式所需執行的唯一手動步驟。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解連接監視器，請參閱：
 * [從網路效能監控遷移至連線監視器](/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor)

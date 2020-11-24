@@ -7,12 +7,12 @@ ms.subservice: workloads
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 18f9f62ba28595289d37975200352c26788e69cc
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: c8afc4f15f421a7b60b95d09b954e7742c24c66e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040027"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519671"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>將第一個應用程式部署到 Microsoft Azure 上的 Cloud Foundry
 
@@ -41,14 +41,14 @@ cf login -a https://api.SYSTEMDOMAINURL --skip-ssl-validation
 
 系統會提示您登入 Cloud Controller。 使用您從市集部署步驟取得的管理員帳戶認證。
 
-Cloud Foundry 提供組織  和空間  作為命名空間，以隔離共用部署內的小組和環境。 PCF 市集部署包含預設系統  組織和建立以包含基礎元件的一組空間，例如自動調整服務和 Azure Service Broker。 目前，選擇系統  空間。
+Cloud Foundry 提供組織和空間 作為命名空間，以隔離共用部署內的小組和環境。 PCF 市集部署包含預設系統組織和建立以包含基礎元件的一組空間，例如自動調整服務和 Azure Service Broker。 目前，選擇系統空間。
 
 
 ## <a name="create-an-org-and-space"></a>建立組織和空間
 
 如果您輸入 `cf apps`，您會看到一組系統應用程式，已部署在系統組織內的系統空間。 
 
-您應該為系統應用程式保留系統  組織，因此請建立組織和空間以容納我們的範例應用程式。
+您應該為系統應用程式保留系統組織，因此請建立組織和空間以容納我們的範例應用程式。
 
 ```bash
 cf create-org myorg
@@ -64,7 +64,7 @@ cf target -o testorg -s dev
 現在，當您部署應用程式時，會自動在新的組織和空間中建立。 若要確認目前在新的組織/空間中沒有應用程式，請再次輸入 `cf apps`。
 
 > [!NOTE] 
-> 如需組織和空間以及它們如何用於角色型存取控制 (RBAC) 的詳細資訊，請參閱[Cloud Foundry 文件][cf-orgs-spaces-docs]。
+> 如需有關組織和空間的詳細資訊，以及如何將它們用於 Cloud Foundry 角色型存取控制 (Cloud Foundry RBAC) ，請參閱 [Cloud Foundry 檔][cf-orgs-spaces-docs]。
 
 ## <a name="deploy-an-application"></a>部署應用程式
 
@@ -95,7 +95,7 @@ mvn clean package
 cf push
 ```
 
-當您發送  應用程式時，Cloud Foundry 會偵測應用程式類型 (在此案例中為 Java 應用程式)，並且識別其相依性 (在此案例中為 Spring Framework)。 然後它會將執行程式碼所需的所有項目封裝至獨立容器映像，稱為 droplet  。 最後，Cloud Foundry 會在環境中其中一部可用的機器上排程應用程式，並且建立您可以在該位置取得它的 URL，該 URL 可以在命令的輸出中取得。
+當您發送應用程式時，Cloud Foundry 會偵測應用程式類型 (在此案例中為 Java 應用程式)，並且識別其相依性 (在此案例中為 Spring Framework)。 然後它會將執行程式碼所需的所有項目封裝至獨立容器映像，稱為 droplet。 最後，Cloud Foundry 會在環境中其中一部可用的機器上排程應用程式，並且建立您可以在該位置取得它的 URL，該 URL 可以在命令的輸出中取得。
 
 ![cf push 命令的輸出][cf-push-output]
 
@@ -114,7 +114,7 @@ cf push
 cf logs hello-spring-cloud
 ```
 
-根據預設，記錄命令會使用 tail  ，在寫入之後顯示新的記錄。 若要查看出現的新記錄，請在瀏覽器中重新整理 hello-spring-cloud 應用程式。
+根據預設，記錄命令會使用 tail，在寫入之後顯示新的記錄。 若要查看出現的新記錄，請在瀏覽器中重新整理 hello-spring-cloud 應用程式。
 
 若要檢視已寫入的記錄，請新增 `recent` 參數：
 

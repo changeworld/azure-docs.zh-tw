@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 11/02/2020
-ms.openlocfilehash: a9d2c10d665af6899ec79312353676467a623735
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 8b372cc0fc19c6bf163d9d4e61cde6ce74cb3f28
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628878"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95538373"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>在合作夥伴中心管理您的商業市集帳戶
 
@@ -34,21 +34,23 @@ ms.locfileid: "94628878"
 ## <a name="access-your-account-settings"></a>存取您的帳戶設定
 
 如果您尚未這麼做，您 (或您組織的系統管理員) 應該存取合作夥伴中心帳戶的[帳戶設定](https://partner.microsoft.com/dashboard/account/management)來執行下列動作：
-- 檢查您公司的帳戶驗證狀態
-- 確認您的 Symantec 識別碼、賣方識別碼、Microsoft 合作夥伴網路 (MPN) 識別碼、發行者識別碼，以及連絡人資訊 (包括公司核准者和賣方連絡人)
-- 為將在合作夥伴中心使用您商務帳戶的人，建立使用者帳戶
 
-### <a name="open-developer-settings"></a>開啟開發人員設定
+- 檢查貴公司的帳戶驗證狀態。
+- 確認您的 Symantec 識別碼、賣方識別碼、Microsoft 合作夥伴網路 (MPN) 識別碼、發行者識別碼和連絡人資訊，包括公司核准者和賣方連絡人。
+- 針對將在合作夥伴中心中使用您商務帳戶的任何人，建立使用者帳戶。
 
-在合作夥伴中心的 [ [商用 marketplace] 儀表板](https://partner.microsoft.com/dashboard/commercial-marketplace) 中，選取右上角的 [ **設定** ] (齒輪圖示) ，然後選取 [ **開發人員設定** ]。
+### <a name="open-account-settings"></a>開啟帳戶設定
+
+在合作夥伴中心的 [商用 marketplace 儀表板](https://partner.microsoft.com/dashboard/commercial-marketplace) 中，選取右上角的 [ **設定** ] (齒輪圖示) ，然後選取 [ **帳戶設定**]。
 
 ![合作夥伴中心的 [帳戶設定] 功能表](./media/dashboard-developer-settings.png)
 
 在 [ **帳戶設定** ] 中，您可以看到：
-- **帳戶詳細資料** ：帳戶類型和帳戶狀態
+
+- **帳戶詳細資料**：帳戶類型和帳戶狀態
 - **發行者** 識別碼：賣方識別碼、使用者識別碼、發行者識別碼、Azure AD 租使用者等等
-- **連絡人資訊** ：發行者顯示名稱、賣方連絡人名稱、電子郵件、電話和地址
-- **追蹤 GUID** ：與您的帳戶相關聯的任何追蹤 GUID
+- **連絡人資訊**：發行者顯示名稱、賣方連絡人名稱、電子郵件、電話和地址
+- **追蹤 GUID**：與您的帳戶相關聯的任何追蹤 GUID
 
 ### <a name="account-details"></a>帳戶詳細資料
 
@@ -70,8 +72,8 @@ ms.locfileid: "94628878"
 
 1. 請前往合作夥伴中心的[商業市集概觀頁面](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)。
 2. 在 [設定檔] 區段下的 [Payout Profile] \(支出設定檔\) 旁，選取 [更新]。
-3. **選擇付款方式** ：銀行帳戶或 PayPal。
-4. **新增付款資訊** ：這可能包括選擇帳戶類型 (支票或儲蓄)、輸入帳戶持有人姓名、帳號和匯款選路編號、帳單地址、電話號碼，或 PayPal 電子郵件地址。 *如需使用 PayPal 作為帳戶付款方式的詳細資訊，並想要了解您的市場區域是否支援該方式，請參閱 [PayPal 資訊](/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info)。
+3. **選擇付款方式**：銀行帳戶或 PayPal。
+4. **新增付款資訊**：這可能包括選擇帳戶類型 (支票或儲蓄)、輸入帳戶持有人姓名、帳號和匯款選路編號、帳單地址、電話號碼，或 PayPal 電子郵件地址。 *如需使用 PayPal 作為帳戶付款方式的詳細資訊，並想要了解您的市場區域是否支援該方式，請參閱 [PayPal 資訊](/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info)。
 
 > [!IMPORTANT]
 > 變更您的付款帳戶會延遲您的付款最多一次付款週期。 會發生此延遲是因為我們必須確認帳戶變更，就像我們在第一次設定支出帳戶時所做的一樣。 您仍然會在帳戶確認之後收到全額款項。當期付款週期未付的款項會新增至下一期。  
@@ -134,7 +136,7 @@ ms.locfileid: "94628878"
 
 ## <a name="create-a-billing-profile"></a>建立帳單設定檔
 
-如果您要發行 [Dynamics 365 for Customer Engagement & Power Apps](./create-new-customer-engagement-offer.md) 或 [Dynamics 365 for Operations](./create-new-operations-offer.md) 供應項目，您需要完成 **帳單設定檔** 。
+如果您要發行 [Dynamics 365 for Customer Engagement & Power Apps](./create-new-customer-engagement-offer.md) 或 [Dynamics 365 for Operations](./create-new-operations-offer.md) 供應項目，您需要完成 **帳單設定檔**。
 
 系統會預先填入您法律實體的帳單地址，稍後可以更新此地址。 [稅金] 和 [加值稅識別碼] 欄位為選擇性。  無法編輯國家/地區名稱和公司名稱。
 
@@ -175,7 +177,7 @@ ms.locfileid: "94628878"
 1. 移至 [使用者] (在 [帳戶設定] 下)，選取 [新增使用者]，然後選擇 [建立新的使用者]。
 1. 輸入每個新使用者的名字、姓氏和使用者名稱。 
 1. 如果您想要讓新使用者擁有您組織目錄中的全域管理員帳戶，請核取標示為 [Make this user a Global administrator in your Azure AD, with full control over all directory resources] \(將此使用者設為 Azure AD 中可完整控制所有目錄資源的全域管理員\) 的方塊。 這可讓使用者完整存取您公司 Azure AD 中的所有系統管理功能。 他們將能夠在您組織的公司帳戶 (Azure AD 租用戶) 中新增和管理使用者，但無法在合作夥伴中心進行，除非您將適當的角色/權限授與該帳戶。
-1. 如果您核取 [Make this user a Global administrator] \(將此使用者設為全域管理員\) 方塊，您就必須提供 **密碼復原電子郵件** ，以便使用者能夠在必要時復原其密碼。
+1. 如果您核取 [Make this user a Global administrator] \(將此使用者設為全域管理員\) 方塊，您就必須提供 **密碼復原電子郵件**，以便使用者能夠在必要時復原其密碼。
 1. 在 [群組成員資格] 區段中，選取新使用者所屬的任意群組。
 1. 在 [角色] 區段中，指定使用者的角色或自訂權限。
 1. 選取 [儲存]。
@@ -204,7 +206,7 @@ ms.locfileid: "94628878"
 
 ### <a name="change-a-user-password"></a>變更使用者密碼
 
-如果有使用者需要變更其密碼，而且您在建立使用者帳戶時已提供 **密碼復原電子郵件** ，則該使用者可以自行執行這項操作。 您也可以依照下列步驟來更新使用者的密碼。 若要變更您公司帳戶 (Azure AD 租用戶) 的使用者密碼，您必須使用 [**全域管理員**](../../active-directory/roles/permissions-reference.md)權限登入帳戶。 這會變更您 Azure AD 租使用者中的使用者密碼，以及他們用來存取合作夥伴中心的密碼。
+如果有使用者需要變更其密碼，而且您在建立使用者帳戶時已提供 **密碼復原電子郵件**，則該使用者可以自行執行這項操作。 您也可以依照下列步驟來更新使用者的密碼。 若要變更您公司帳戶 (Azure AD 租用戶) 的使用者密碼，您必須使用 [**全域管理員**](../../active-directory/roles/permissions-reference.md)權限登入帳戶。 這會變更您 Azure AD 租使用者中的使用者密碼，以及他們用來存取合作夥伴中心的密碼。
 
 1. 從 [使用者] 頁面 (在 [帳戶設定] 下)，選取您要編輯的使用者帳戶名稱。
 2. 選取頁面底部的 [重設密碼] 按鈕。
@@ -237,7 +239,7 @@ ms.locfileid: "94628878"
 4. 指定群組的角色或自訂權限。 群組的所有成員都能以您在這裡套用的權限，存取您的合作夥伴中心帳戶，而不論與其個別帳戶相關聯的角色/權限為何。
 5. 從顯示的清單中選取新群組的使用者。 您可以使用搜尋方塊來搜尋特定使用者。
 6. 當您完成選取使用者時，請選取 [新增 **選取** 專案] 將其新增至新群組。
-7. 選取 [儲存]  。
+7. 選取 [儲存]。
 
 這個新群組也會在您組織的工作帳戶中建立 (Azure AD 租使用者) ，而不只是在您的合作夥伴中心帳戶中。
 
@@ -326,9 +328,9 @@ Azure Active Directory (AD) 租用戶 (在此文件中也稱為您的「公司�
 
 1. 從 [租用戶] 頁面 (在 [帳戶設定] 下)，選取 [建立新的 Azure AD 租用戶]。
 2. 輸入新 Azure AD 的目錄資訊：
-    - **網域名稱** ：我們將用於 Azure AD 網域的唯一名稱，後面接著 "onmicrosoft.com"。 例如，如果您輸入 "example"，您的 Azure AD 網域會是 "example.onmicrosoft.com"。
-    - **連絡人電子郵件** ：我們可以在必要時就帳戶相關問題連絡您的電子郵件地址。
-    - **全域管理員使用者帳戶資訊** ：您想要用於新全域管理員帳戶的名字、姓氏、使用者名稱和密碼。
+    - **網域名稱**：我們將用於 Azure AD 網域的唯一名稱，後面接著 "onmicrosoft.com"。 例如，如果您輸入 "example"，您的 Azure AD 網域會是 "example.onmicrosoft.com"。
+    - **連絡人電子郵件**：我們可以在必要時就帳戶相關問題連絡您的電子郵件地址。
+    - **全域管理員使用者帳戶資訊**：您想要用於新全域管理員帳戶的名字、姓氏、使用者名稱和密碼。
 3. 選取 [建立]，確認新的網域和帳戶資訊。
 4. 使用新的 Azure AD 全域管理員使用者名稱和密碼登入，開始[新增和管理使用者](#manage-users)。
 
@@ -345,6 +347,6 @@ Azure Active Directory (AD) 租用戶 (在此文件中也稱為您的「公司�
 
 ## <a name="agreements"></a>合約
 
-[ **帳戶) 設定** ] 下合作夥伴中心 (的 [ **協定** ] 區段可讓您查看已授權的發行合約清單。 這些合約會根據名稱和版本號碼列出，包括接受日期和接受合約的使用者名稱。
+[**帳戶) 設定**] 下合作夥伴中心 (的 [**協定**] 區段可讓您查看已授權的發行合約清單。 這些合約會根據名稱和版本號碼列出，包括接受日期和接受合約的使用者名稱。
 
 如果有需要注意的合約更新，此頁面頂端可能會出現 [需要採取動作]。 若要接受更新的合約，請先閱讀連結的合約版本，再選取 [接受合約]。

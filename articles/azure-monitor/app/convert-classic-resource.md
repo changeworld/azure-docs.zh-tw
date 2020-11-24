@@ -3,18 +3,18 @@ title: 將 Azure 監視器 Application Insights 傳統資源遷移到以工作�
 description: 瞭解將 Azure 監視器 Application Insights 傳統資源升級至新的工作區架構模型所需的步驟。
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 0d2c7d1b9ee57e6d201205c04557e1b5f5623eb0
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 709cff1326bb6393a14c594ea434a6c16fb80860
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930572"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536518"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>遷移至以工作區為基礎的 Application Insights 資源
 
 本指南將逐步引導您完成將傳統 Application Insights 資源遷移至以工作區為基礎之資源的程式。 工作區型的資源支援 Application Insights 與 Log Analytics 之間的完整整合。 以工作區為基礎的資源會將 Application Insights 遙測傳送至一般 Log Analytics 工作區，可讓您存取 [Azure 監視器的最新功能](#new-capabilities) ，同時將應用程式、基礎結構和平臺記錄保留在單一合併位置。
 
-以工作區為基礎的資源可以在您的資源中 (RBAC) 的一般 Role-Based 存取控制，並免除跨應用程式/工作區查詢的需求。
+以工作區為基礎的資源可在您的資源中 (Azure RBAC) 的常見 Azure 角色型存取控制，並免除跨應用程式/工作區查詢的需求。
 
 **以工作區為基礎的資源目前適用于所有商業區域和 Azure 美國政府**
 
@@ -51,7 +51,7 @@ ms.locfileid: "91930572"
 - 以工作區為基礎的資源不支援連續匯出，且必須停用。
 完成遷移後，您可以使用 [診斷設定](../platform/diagnostic-settings.md) 來設定儲存體帳戶的資料封存，或串流至 Azure 事件中樞。  
 
-- 請在**General**  >  您的 Log Analytics 工作區中，檢查目前的保留設定，以瞭解一般**使用量和預估成本**  >  **資料保留期**。 這項設定會影響您在遷移 Application Insights 資源之後，儲存任何新內嵌資料的時間長度。 如果您目前儲存 Application Insights 的資料超過預設的90天，而且想要保留此較長的保留期間，您可能需要調整您的工作區保留設定。
+- 請在 **General**  >  您的 Log Analytics 工作區中，檢查目前的保留設定，以瞭解一般 **使用量和預估成本**  >  **資料保留期**。 這項設定會影響您在遷移 Application Insights 資源之後，儲存任何新內嵌資料的時間長度。 如果您目前儲存 Application Insights 的資料超過預設的90天，而且想要保留此較長的保留期間，您可能需要調整您的工作區保留設定。
 
 ## <a name="migrate-your-resource"></a>遷移您的資源
 
@@ -223,13 +223,13 @@ az monitor app-insights component update --app your-app-insights-resource-name -
 
     ![連續匯出功能表項目](./media/convert-classic-resource/continuous-export.png)
 
-2. 選取 [停用]****。
+2. 選取 [停用]。
 
     ![連續匯出停用按鈕](./media/convert-classic-resource/disable.png)
 
 - 選取 [停用] 之後，您可以流覽回到遷移 UI。 如果 [編輯連續匯出] 頁面提示您的設定不會儲存，您可以在此提示中選取 [確定]，因為它與停用/啟用連續匯出無關。
 
-- 當您成功將 Application Insights 資源遷移至以工作區為基礎的之後，您可以使用診斷設定來取代連續匯出用來提供的功能。 從您的 Application Insights 資源中選取 [**診斷**設定]，以  >  **新增診斷設定**。 您可以選取所有資料表或其中一些資料，封存至儲存體帳戶，或串流至 Azure 事件中樞。 如需診斷設定的詳細指引，請參閱 [Azure 監視器診斷設定指引](../platform/diagnostic-settings.md)。
+- 當您成功將 Application Insights 資源遷移至以工作區為基礎的之後，您可以使用診斷設定來取代連續匯出用來提供的功能。 從您的 Application Insights 資源中選取 [**診斷** 設定]，以  >  **新增診斷設定**。 您可以選取所有資料表或其中一些資料，封存至儲存體帳戶，或串流至 Azure 事件中樞。 如需診斷設定的詳細指引，請參閱 [Azure 監視器診斷設定指引](../platform/diagnostic-settings.md)。
 
 ### <a name="retention-settings"></a>保留設定
 
@@ -237,7 +237,7 @@ az monitor app-insights component update --app your-app-insights-resource-name -
 
 在遷移之前，您不需要進行任何變更，但這則訊息是提醒您目前的 Application Insights 保留設定未設定為預設的90天保留期限。 此警告訊息表示您可能會想要先修改 Log Analytics 工作區的保留設定，再進行遷移和開始內嵌新資料。 
 
-您可以在 log analytics UI 中，檢查您目前的 log analytics 保留設定是否符合**一般**  >  **使用量和預估成本**  >  **資料保留期**。 這項設定會影響您在遷移 Application Insights 資源之後，儲存任何新內嵌資料的時間長度。
+您可以在 log analytics UI 中，檢查您目前的 log analytics 保留設定是否符合 **一般**  >  **使用量和預估成本**  >  **資料保留期**。 這項設定會影響您在遷移 Application Insights 資源之後，儲存任何新內嵌資料的時間長度。
 
 ## <a name="next-steps"></a>後續步驟
 

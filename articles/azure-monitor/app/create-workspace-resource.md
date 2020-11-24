@@ -3,18 +3,18 @@ title: 建立新的 Azure 監視器 Application Insights 以工作區為基礎�
 description: 瞭解啟用新的 Azure 監視器 Application Insights 以工作區為基礎的資源所需的步驟。
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.openlocfilehash: 9b91e5065729bee6af3f8018c36930e132eb1a15
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: ecbac02bcb4d9b4f0db36eab854a91366c774d6c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945408"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536909"
 ---
 # <a name="workspace-based-application-insights-resources"></a>工作區型 Application Insights 資源
 
 工作區型的資源支援 Application Insights 與 Log Analytics 之間的完整整合。 您現在可以選擇將您的 Application Insights 遙測傳送到通用 Log Analytics 工作區，讓您能夠完整存取 Log Analytics 的所有功能，同時將應用程式、基礎結構、平台記錄保留在合併的單一位置。
 
-這麼做也能夠在您的各資源上進行一般角色型存取控制 (RBAC)，而不需要跨應用程式/工作區查詢。
+這也可讓您在資源中 (Azure RBAC) 的常見 Azure 角色型存取控制，並免除跨應用程式/工作區查詢的需求。
 
 > [!NOTE]
 > 工作區型 Application Insights 資源的資料內嵌和保留會透過資料所在的 Log Analytics 工作區來計費。 [深入瞭解]( ./pricing.md#workspace-based-application-insights)工作區型 Application Insights 資源的計費。
@@ -46,7 +46,7 @@ ms.locfileid: "91945408"
 按一下藍色連結文字會帶您前往相關聯的 Log Analytics 工作區，您可以在其中利用新的整合工作區查詢環境。
 
 > [!NOTE]
-> 我們仍然會針對 Application Insights 體驗中的 Application Insights 傳統資源查詢、活頁簿、記錄型警示，提供完整的回溯相容性。 若要針對[新的工作區型資料表結構/結構描述](apm-tables.md)進行查詢/檢視，您必須先瀏覽至您的 Log Analytics 工作區。 從 Application Insights 窗格中選取 **記錄 (分析) ** 可讓您存取傳統 Application Insights 查詢體驗。
+> 我們仍然會針對 Application Insights 體驗中的 Application Insights 傳統資源查詢、活頁簿、記錄型警示，提供完整的回溯相容性。 若要針對[新的工作區型資料表結構/結構描述](apm-tables.md)進行查詢/檢視，您必須先瀏覽至您的 Log Analytics 工作區。 從 Application Insights 窗格中選取 **記錄 (分析)** 可讓您存取傳統 Application Insights 查詢體驗。
 
 ## <a name="copy-the-connection-string"></a>複製連接字串
 
@@ -207,7 +207,7 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 
 > [!NOTE]
 > 遙測匯出目前沒有額外的費用。 這項功能的定價資訊將于 [Azure 監視器定價] 頁面](https://azure.microsoft.com/pricing/details/monitor/)上提供。  在開始計費之前，將會傳送通知。 如果您選擇在 <feature name> 通知期間之後繼續使用，則會以適用的費率向您收費。 
- 
+ 
 
 ## <a name="next-steps"></a>後續步驟
 

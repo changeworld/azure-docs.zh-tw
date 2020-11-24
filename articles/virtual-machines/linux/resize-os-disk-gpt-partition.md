@@ -1,6 +1,6 @@
 ---
-title: 調整具有 GPT 分割區的 OS 磁碟大小 |Microsoft Docs
-description: 本文提供調整具有 GPT 分割區的 OS 磁碟大小的指示。
+title: 調整具有 GPT 分割區的 OS 磁碟大小
+description: 本文提供的指示說明如何調整在 Linux 中有 GUID 磁碟分割表格 (GPT) 磁碟分割的 OS 磁片大小。
 services: virtual-machines-linux
 documentationcenter: ''
 author: kailashmsft
@@ -14,17 +14,17 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: 99b723322ce7636edce3ae5b59a69b96e288ca24
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 3565b165c669af3566667d9bdfa401d15fcce101
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392685"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544151"
 ---
 # <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>調整具有 GPT 分割區的 OS 磁碟大小
 
 > [!NOTE]
-> 此案例僅適用於具有 GUID 磁碟分割表格 (GPT) 分割區的 OS 磁碟。
+> 本文僅適用于具有 GUID 磁碟分割表格 (GPT) 磁碟分割的 OS 磁片。
 
 本文說明如何在 Linux 中增加具有 GPT 分割區的 OS 磁碟大小。 
 
@@ -34,7 +34,7 @@ ms.locfileid: "93392685"
 
 ### <a name="mbr-partition"></a>MBR 磁碟分割
 
-在下列輸出中， **Partition Table** 顯示 **msdos.sys** 值。 此值表示 MBR 磁碟分割。
+在下列輸出中，**Partition Table** 顯示 **msdos.sys** 值。 此值表示 MBR 磁碟分割。
 
 ```
 [user@myvm ~]# parted -l /dev/sda
@@ -50,7 +50,7 @@ Number  Start   End     Size    Type     File system  Flags
 
 ### <a name="gpt-partition"></a>GPT 磁碟分割
 
-在下列輸出中， **Partition Table** 顯示 **gpt** 值。 此值表示 GPT 磁碟分割。
+在下列輸出中，**Partition Table** 顯示 **gpt** 值。 此值表示 GPT 磁碟分割。
 
 ```
 [user@myvm ~]# parted -l /dev/sda
@@ -78,14 +78,14 @@ Number  Start   End     Size    File system  Name                  Flags
 
 ### <a name="ubuntu"></a>Ubuntu
 
-增加 Ubuntu 16. x 和 18. x 中的 OS 磁碟大小：
+若要增加 Ubuntu 16 中 OS 磁片的大小。*x* 和18。*x*：
 
 1. 停止 VM。
 1. 從入口網站增加 OS 磁碟的大小。
-1. 重新開機 VM，然後以 **根** 使用者的身分登入 VM。
+1. 重新開機 VM，然後以 **根** 使用者的身份登入 vm。
 1. 確認 OS 磁碟現在顯示增加的檔案系統大小。
 
-如下列範例所示，已從入口網站將 OS 磁碟調整為 100 GB。 / 上掛接的 **/dev/sda1** 檔案系統現在顯示 97 GB。
+在下列範例中，OS 磁片已從入口網站調整為 100 GB。 / 上掛接的 **/dev/sda1** 檔案系統現在顯示 97 GB。
 
 ```
 user@myvm:~# df -Th
@@ -110,21 +110,21 @@ user@myvm:~#
 1. 從入口網站增加 OS 磁碟的大小。
 1. 重新啟動 VM。
 
-當 VM 重新開機後，執行下列步驟：
+當 VM 重新開機時，請完成下列步驟：
 
-1. 使用下列命令，以 **根** 使用者身分存取您的 VM：
+1. 使用下列命令，以 **根** 使用者的身份存取您的 VM：
 
    ```
    # sudo -i
    ```
 
-1. 使用下列命令來安裝 **growpart** 套件，此封裝將用來調整磁碟分割的大小：
+1. 使用下列命令來安裝 **growpart** 套件，您將使用此封裝來調整磁碟分割的大小：
 
    ```
    # zypper install growpart
    ```
 
-1. 使用 `lsblk` 命令來尋找在檔案系統的根目錄上掛接的磁碟分割 ( "/" ) 。 在此情況下，我們看到裝置 sda 的磁碟分割4掛接于/：
+1. 您 `lsblk` 可以使用命令來尋找裝載于檔案系統根目錄的磁碟分割 (**/**) 。 在此情況下，我們會看到裝置 **sda** 的磁碟分割4掛接在 **/** ：
 
    ```
    # lsblk
@@ -138,7 +138,7 @@ user@myvm:~#
    └─sdb1   8:17   0    4G  0 part /mnt/resource
    ```
 
-1. 使用在 `growpart` 上一個步驟中找到的資料分割編號，使用命令來調整所需的資料分割大小。
+1. 使用 `growpart` 上一個步驟中所決定的命令和資料分割編號，調整所需的磁碟分割大小：
 
    ```
    # growpart /dev/sda 4
@@ -177,7 +177,7 @@ user@myvm:~#
 
 1. 根據檔案系統類型，使用適當的命令來調整檔案系統的大小。
    
-   針對 **xfs** ，使用下列命令：
+   若為 **xfs**，請使用此命令：
    
    ```
    #xfs_growfs /
@@ -200,13 +200,13 @@ user@myvm:~#
    data blocks changed from 7470331 to 12188923
    ```
    
-   針對 **ext4** ，使用下列命令：
+   若為 **ext4**，請使用此命令：
    
    ```
    #resize2fs /dev/sda4
    ```
    
-1. 使用下列命令，確認 **df -Th** 增加的檔案系統大小：
+1. 使用下列命令，確認已增加 **df** 的檔案系統大小：
    
    ```
    #df -Thl
@@ -233,13 +233,13 @@ user@myvm:~#
 
 ### <a name="rhel-with-lvm"></a>RHEL 與 LVM
 
-1. 使用下列命令，以 **根** 使用者身分存取您的 VM：
+1. 使用下列命令，以 **根** 使用者的身份存取您的 VM：
 
    ```bash
    [root@dd-rhel7vm ~]# sudo -i
    ```
 
-1. 使用 `lsblk` 命令來尋找 (LV 的邏輯磁片區) 裝載于檔案系統 ( "/" ) 的根目錄。 在此情況下，我們會看到 **_rootvg-rootlv_*_ 掛接于 _* / 上** 。  如果需要另一個檔案系統，請使用此檔中的 LV 和掛接點來取代。
+1. 使用 `lsblk` 命令來判斷 (LV) 裝載在檔案系統 () 的根目錄上的邏輯磁片區 **/** 。 在此情況下，我們會看到 **rootvg-rootlv** 已掛接在上 **/** 。 如果您想要其他檔案系統，請在本文中取代 LV 和掛接點。
 
    ```shell
    [root@dd-rhel7vm ~]# lsblk -f
@@ -258,7 +258,7 @@ user@myvm:~#
       └─rootvg-rootlv     xfs                 4f3e6f40-61bf-4866-a7ae-5c6a94675193   /
    ```
 
-1. 檢查是否有包含根磁碟分割之 LVM 磁片區群組中的可用空間。  如果有可用空間，請跳至步驟 **12**
+1. 檢查 LVM 磁片區群組中是否有可用空間 (VG 包含根磁碟分割的) 。 如果有可用空間，請跳至步驟12。
 
    ```bash
    [root@dd-rhel7vm ~]# vgdisplay rootvg
@@ -284,17 +284,15 @@ user@myvm:~#
    VG UUID               lPUfnV-3aYT-zDJJ-JaPX-L2d7-n8sL-A9AgJb
    ```
 
-   在此範例中，line **FREE PE/Size** 指出磁片區群組中有 38.02 gb 可用。  在磁片區群組中新增空間之前，不需要調整磁片大小
+   在此範例中，line **FREE PE/Size** 顯示磁片區群組中有 38.02 GB 可用。 在磁片區群組中新增空間之前，您不需要調整磁片的大小。
 
-1. 使用 LVM 增加 RHEL 7.x 中的 OS 磁碟大小：
+1. 在 RHEL 7 中增加作業系統磁片的大小。*x* 與 LVM：
 
    1. 停止 VM。
    1. 從入口網站增加 OS 磁碟的大小。
    1. 啟動 VM。
 
-1. 當 VM 重新開機後，執行下列步驟：
-
-   1. 安裝 **公用程式 growpart** 套件以提供 **growpart** 命令，這是增加 OS 磁片大小的必要命令。
+1. 當 VM 重新開機時，請安裝 **雲端公用程式-growpart** 套件以取得 `growpart` 命令，您需要增加 OS 磁片的大小。
 
       此套件已預先安裝在大部分的 Azure Marketplace 映射上。
 
@@ -302,14 +300,14 @@ user@myvm:~#
       [root@dd-rhel7vm ~]# yum install cloud-utils-growpart
       ```
 
-1. 使用 **pvscan** 命令，判斷哪個磁片和磁碟分割將 LVM 實體磁片區保存在磁片區群組中的 (s)  (PV)  (VG) 名為 rootvg。  記下括弧 **[]** 之間列出的大小和可用空間。
+1. 使用命令，判斷哪個磁片和磁碟分割保存 LVM 實體磁片區或磁片區 (PV) 在名為 **rootvg** 的磁片區群組中 `pvscan` 。 請注意括弧 (**[** and **]**) 之間所列的大小和可用空間。
 
    ```bash
    [root@dd-rhel7vm ~]# pvscan
      PV /dev/sda4   VG rootvg          lvm2 [<63.02 GiB / <38.02 GiB free]
    ```
 
-1. 使用 **lsblk** 確認磁碟分割的大小。  查看 
+1. 使用確認磁碟分割的大小 `lsblk` 。 
 
    ```bash
    [root@dd-rhel7vm ~]# lsblk /dev/sda4
@@ -323,14 +321,14 @@ user@myvm:~#
    └─rootvg-rootlv 253:6    0   2G  0 lvm  /
    ```
 
-1. 使用 **growpart** 、裝置名稱和資料分割編號，展開包含此 PV 的資料分割。  這會展開指定的磁碟分割，以使用裝置上的所有可用連續空白空間。
+1. 使用 `growpart` 、裝置名稱和資料分割編號，展開包含這個 PV 的資料分割。 這麼做會擴充指定的磁碟分割，以使用裝置上的所有可用連續空間。
 
    ```bash
    [root@dd-rhel7vm ~]# growpart /dev/sda 4
    CHANGED: partition=4 start=2054144 old: size=132161536 end=134215680 new: size=199272414 end=201326558
    ```
 
-1. 使用 **lsblk** 命令再次確認磁碟分割已調整大小為預期的大小。  請注意，在範例 sda4 中，已從63G 變更為95G。
+1. 再次使用命令，確認磁碟分割的大小已調整為預期的大小 `lsblk` 。 請注意，在範例 **sda4** 中，已從 63 gb 變更為 95 gb。
 
    ```bash
    [root@dd-rhel7vm ~]# lsblk /dev/sda4
@@ -344,7 +342,7 @@ user@myvm:~#
    └─rootvg-rootlv 253:6    0   2G  0 lvm  /
    ```
 
-1. 展開 PV 以使用新展開之資料分割的其餘部分
+1. 展開 PV 以使用新展開之資料分割的其餘部分：
 
    ```bash
    [root@dd-rhel7vm ~]# pvresize /dev/sda4
@@ -352,14 +350,14 @@ user@myvm:~#
    1 physical volume(s) resized or updated / 0 physical volume(s) not resized
    ```
 
-1. 確認新的 PV 大小是預期的大小，與原始 **[大小/免費]** 值的比較。
+1. 確認 PV 的新大小是預期的大小，並將它與原始 **[大小/免費]** 值進行比較：
 
    ```bash
    [root@dd-rhel7vm ~]# pvscan
    PV /dev/sda4   VG rootvg          lvm2 [<95.02 GiB / <70.02 GiB free]
    ```
 
-1. 展開所需的邏輯磁片區 (lv) 所需的數量，而不需要是磁片區群組中的所有可用空間。  在下列範例中，會使用下列命令將 **/dev/mapper/rootvg-rootlv** 的大小從 2 GB 調整到 12 GB (增加 10 GB)。 此命令也會調整檔案系統的大小。
+1. 依您想要的數量，展開 (LV) 所需的邏輯磁片區。 數量不需要是磁片區群組中的所有可用空間。 在下列範例中， **/dev/mapper/rootvg-rootlv** 會調整大小為 2 gb 到 12 gb (增加 10 gb 的) 。 此命令也會調整檔案系統的大小。
 
    ```bash
    [root@dd-rhel7vm ~]# lvresize -r -L +10G /dev/mapper/rootvg-rootlv
@@ -383,7 +381,7 @@ user@myvm:~#
    data blocks changed from 524288 to 3145728
    ```
 
-1. Lvresize 命令會自動為 LV 中的檔案系統呼叫適當的調整大小命令。 使用下列命令，確認裝載于的 **/dev/mapper/rootvg-rootlv** 是否 **/** 具有增加的檔案系統大小：
+1. 此 `lvresize` 命令會自動針對 LV 呼叫檔案系統的適當調整大小命令。 使用下列命令，檢查裝載于的 **/dev/mapper/rootvg-rootlv** 是否 **/** 具有增加的檔案系統大小：
 
    ```shell
    [root@dd-rhel7vm ~]# df -Th /
@@ -399,26 +397,27 @@ user@myvm:~#
    ```
 
 > [!NOTE]
-> 若要使用相同的程式來調整任何其他邏輯磁片區的大小，請變更步驟 **12** 中的 **lv** 名稱。
+> 若要使用相同的程式來調整任何其他邏輯磁片區的大小，請變更步驟12中的 LV 名稱。
 
 ### <a name="rhel-raw"></a>RHEL RAW
 >[!NOTE]
 >請一律先建立 VM 的快照集，再增加 OS 磁片大小。
 
-若要使用原始磁碟分割增加 RHEL 中的 OS 磁片大小：
+若要增加 RHEL 原始磁碟分割中的 OS 磁片大小：
 
-停止 VM。
-從入口網站增加 OS 磁碟的大小。
-啟動 VM。
-當 VM 重新開機後，執行下列步驟：
+1. 停止 VM。
+1. 從入口網站增加 OS 磁碟的大小。
+1. 啟動 VM。
 
-1. 使用下列命令，以 **根** 使用者身分存取您的 VM：
+當 VM 重新開機時，請完成下列步驟：
+
+1. 使用下列命令，以 **根** 使用者的身份存取您的 VM：
  
    ```
    sudo su
    ```
 
-1. 安裝 **gptfdisk** 套件，這是增加 OS 磁碟大小所需的套件。
+1. 安裝 **gptfdisk** 套件，您需要增加作業系統磁片的大小：
 
    ```
    yum install gdisk -y
@@ -429,70 +428,71 @@ user@myvm:~#
     gdisk -l /dev/sda
     ```
 
-1. 您將會看到通知資料分割類型的詳細資料。 確定它是 GPT。 識別根磁碟分割。 請勿變更或刪除開機磁碟分割 (BIOS 開機磁碟分割) 和系統磁碟分割 ( 「EFI 系統磁碟分割」 ) 
+1. 您將會看到通知資料分割類型的詳細資料。 請確定它是 GPT。 識別根磁碟分割。 請勿變更或刪除開機磁碟分割 (BIOS 開機磁碟分割) 或系統磁碟分割 (EFI 系統磁碟分割) 。
 
-1. 使用下列命令，以在第一次啟動資料分割。 
+1. 您可以使用此命令來啟動第一次的資料分割： 
     ```
     gdisk /dev/sda
     ```
 
-1. 現在您會看到一則訊息，要求下一個命令 ( ' Command：？ 如需協助，請 ) 。 
+1. 您會看到一則訊息，提示您輸入下一個命令： `Command: ? for help` 。 選取 **w** 鍵：
 
    ```
    w
    ```
 
-1. 您會收到一則警告，指出「警告！ 磁片上的次要標頭太早放置了！ 您要更正這個問題嗎？  (Y/N) ： "。 您必須按 ' Y '
+1. 您將會收到下列訊息： `Warning! Secondary header is placed too early on the disk! Do you want to
+correct this problem? (Y/N)` 。 選取 **Y** 鍵： 
 
    ```
    Y
    ```
 
-1. 您應該會看到一則訊息，告知最後的檢查已完成並要求確認。 按 ' Y '
+1. 您應該會看到一則訊息，指出最後的檢查已完成，並提示確認。 選取 **Y** 鍵：
 
    ```
    Y
    ```
 
-1. 使用 partprobe 命令檢查所有專案是否都正確發生
+1. 使用 `partprobe` 命令來檢查所有專案是否都正確發生：
 
    ```
    partprobe
    ```
 
-1. 上述步驟確保將次要 GPT 標頭放置於結尾。 下一步是使用 gdisk 工具再次開始調整大小的程式。 使用下列命令。
+1. 您已完成先前的步驟，以確保次要 GPT 標頭放置於結尾。 接下來，使用工具再次開始調整大小的程式 `gdisk` 。 使用下列命令：
 
    ```
    gdisk /dev/sda
    ```
-1. 在命令功能表中，按 ' p ' 以查看磁碟分割清單。 識別步驟中 (的根磁碟分割，sda2 會被視為根磁碟分割) 和步驟中 (的開機分割區，並將 sda3 視為開機磁碟分割)  
+1. 在 [命令] 功能表中，選取 **p** 按鍵以查看分割區清單。 識別根磁碟分割。  (在這些步驟中， **sda2** 會被視為根磁碟分割。 ) 識別開機磁碟分割。  (在這些步驟中， **sda3** 會被視為開機分割區。 )  
 
    ```
    p
    ```
-    ![根磁碟分割和開機磁碟分割](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
+    ![顯示根磁碟分割和開機磁碟分割的螢幕擷取畫面。](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
 
-1. 按 [刪除] 以刪除分割區，並選取指派給開機 (的分割區編號，在此範例中為 ' 3 ' ) 
+1. 選取 **d** 鍵以刪除分割區。 然後選取指派給開機磁碟分割的資料分割編號。  (在此範例中為 **3**. ) 
    ```
    d
    3
    ```
-1. 按 [刪除] 以刪除分割區，並選取指派給開機 (的資料分割編號。在此範例中為 ' 2 ' ) 
+1. 選取 **d** 鍵以刪除分割區。 選取指派給開機磁碟分割的資料分割編號。  (在此範例中為 **2**. ) 
    ```
    d
    2
    ```
-    ![刪除根磁碟分割和開機磁碟分割](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
+    ![顯示刪除根和開機磁碟分割之步驟的螢幕擷取畫面。](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
 
-1. 若要重新建立具有增加大小的根磁碟分割，請按 [n]，輸入您先前為此) 範例中的根 ( ' 2 ' 所刪除的分割區編號，然後選擇第一個磁區為「預設值」、最後一個磁區為「最後磁區值-開機大小磁區」 ( ' 4096 在此案例中對應到2MB 的開機) 8300，
+1. 若要重新建立具有增加大小的根磁碟分割，請選取 [ **n** ] 機碼，然後輸入您先前為此範例中的根 (**2** 刪除的分割區編號) 。 選擇 `Default Value` 第一個磁區。 選擇 `Last sector value -  boot size sector` 此案例中的最後一個磁區 (`4096` ，對應至 2 MB 開機) 。 選擇 `8300` 十六進位碼。
    ```
    n
    2
    (Enter default)
-   (Calculateed value of Last sector value - 4096)
+   (Calculated value of Last sector value - 4096)
    8300
    ```
-1. 若要重新建立開機磁碟分割，請按 [n]，輸入您先前在此範例中為開機 ( ' 3 ' 所刪除的分割區編號) 然後選擇第一個磁區為 [預設值]、最後一個磁區為 [預設值]，並將 [十六進位碼] 設為 [EF02]
+1. 若要重新建立開機磁碟分割，請選取 [ **n** ] 機碼，然後輸入您先前在此範例中針對開機 (**3** 所刪除的磁碟分割編號) 。 選擇 `Default Value` 第一個磁區和最後一個磁區。 選擇 `EF02` 十六進位碼。
    ```
    n
    3
@@ -501,28 +501,28 @@ user@myvm:~#
    EF02
    ```
 
-1. 使用 ' w ' 命令寫入變更，然後按 ' Y ' 以確認
+1. 使用命令寫入變更 `w` ，然後選取 `Y` 以確認變更：
    ```
    w
    Y
    ```
-1. 執行 ' partprobe ' 命令以檢查磁片穩定性
+1. 執行 `partprobe` 命令以檢查磁片穩定性：
    ```
    partprobe
    ```
-1. 重新開機 VM，根磁碟分割大小會增加
+1. 重新啟動 VM。 應增加根磁碟分割的大小。
    ```
    reboot
    ```
 
-   ![新的根磁碟分割和開機磁碟分割](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
+   ![顯示重新建立開機磁碟分割之步驟的螢幕擷取畫面。](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
 
-1. 在磁碟分割上執行 xfs_growfs 命令以調整其大小
+1. `xfs_growfs`在磁碟分割上執行命令以調整其大小：
    ```
    xfs_growfs /dev/sda2
    ```
 
-   ![XFS 成長 FS](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
+   ![顯示執行 xfs_growfs 之結果的螢幕擷取畫面。](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
 
 ## <a name="next-steps"></a>後續步驟
 

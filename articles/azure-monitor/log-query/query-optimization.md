@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 7e1deb11eb8ae754198cae5be7ecf7150262a61e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: a817c12a367d7c14f693389920e49b368a35cc06
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411383"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522867"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>優化 Azure 監視器中的記錄查詢
 Azure 監視器記錄使用 [Azure 資料總管 (ADX) ](/azure/data-explorer/) 儲存記錄資料，並執行查詢來分析該資料。 它會為您建立、管理和維護 ADX 叢集，並針對您的記錄分析工作負載進行優化。 當您執行查詢時，它會進行優化，並路由傳送至儲存工作區資料的適當 ADX 叢集。 Azure 監視器記錄和 Azure 資料總管都會使用許多自動查詢優化機制。 雖然自動優化提供大幅提升，但在某些情況下，您可以大幅提升查詢效能。 本文說明效能考慮，以及用來修正這些問題的幾項技術。
@@ -133,7 +133,7 @@ SecurityEvent
 
 [加入](/azure/kusto/query/joinoperator?pivots=azuremonitor) 和 [摘要](/azure/kusto/query/summarizeoperator) 命令可能會在處理大型資料集時造成高 CPU 使用率。 它們的複雜性與使用做為 *cardinality* `by` 摘要或聯結屬性之資料行的可能值數目（稱為基數）直接相關。 如需聯結和摘要的說明和優化，請參閱其檔文章和優化提示。
 
-例如，下列查詢會產生完全相同的結果，因為 **CounterPath** 一律是一對一對應到 **CounterName** 和 **ObjectName** 。 第二個比較有效率，因為匯總維度較小：
+例如，下列查詢會產生完全相同的結果，因為 **CounterPath** 一律是一對一對應到 **CounterName** 和 **ObjectName**。 第二個比較有效率，因為匯總維度較小：
 
 ```Kusto
 //less efficient
@@ -463,7 +463,7 @@ Azure 監視器記錄會使用 Azure 資料總管的大型叢集來執行查詢�
 - 使用序列化和視窗函式，例如 [序列化運算子](/azure/kusto/query/serializeoperator)、 [下一個 ( # B1 ](/azure/kusto/query/nextfunction)、 [上一個 ( # B3 ](/azure/kusto/query/prevfunction)和 [row](/azure/kusto/query/rowcumsumfunction) 函數。 時間序列和使用者分析函數可用於某些情況下。 如果不在查詢的結尾處使用下列運算子，也可能會發生效率不佳的序列化： [range](/azure/kusto/query/rangeoperator)、 [sort](/azure/kusto/query/sortoperator)、 [order](/azure/kusto/query/orderoperator)、 [top](/azure/kusto/query/topoperator)、 [top-hitters](/azure/kusto/query/tophittersoperator)、 [getschema](/azure/kusto/query/getschemaoperator)。
 -    使用 [dcount ( # B1 ](/azure/kusto/query/dcount-aggfunction) 彙總函式會強制系統擁有相異值的中央複本。 當資料的小數位數很高時，請考慮使用 dcount 函數的選擇性參數來降低精確度。
 -    在許多情況下， [聯結](/azure/kusto/query/joinoperator?pivots=azuremonitor) 運算子會降低整體的平行處理原則。 當效能有問題時，請檢查「隨機聯結」作為替代方案。
--    在資源範圍查詢中，預先執行的 RBAC 檢查可能會在有大量 Azure 角色指派的情況下逗留。 這可能會導致較長的檢查，進而導致較低的平行處理原則。 例如，查詢會在有上千個資源的訂用帳戶上執行，而且每個資源在資源層級中有許多角色指派，而不是在訂用帳戶或資源群組上。
+-    在資源範圍查詢中，預先執行 Kubernetes RBAC 或 Azure RBAC 檢查可能會在有大量 Azure 角色指派的情況下逗留。 這可能會導致較長的檢查，進而導致較低的平行處理原則。 例如，查詢會在有上千個資源的訂用帳戶上執行，而且每個資源在資源層級中有許多角色指派，而不是在訂用帳戶或資源群組上。
 -    如果查詢處理的資料區塊較小，其平行處理原則將會很低，因為系統不會將其分散到多個計算節點。
 
 

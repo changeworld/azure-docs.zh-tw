@@ -7,18 +7,20 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 989115224489ff8fff360a34b27c338ea3e33058
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: d587c4dbdd8f46d6e098ff96f464d456fffc9ccf
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145815"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95529975"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>適用於容器登錄的 Azure Defender 簡介
 
 Azure Container Registry (ACR) 是受控的私人 Docker 登錄服務，可在中央登錄中儲存及管理您 Azure 部署的容器映像。 此服務以開放原始碼的 Docker Registry 2.0 為基礎。
 
-若要保護您訂用帳戶中所有以 Azure Resource Manager 為基礎的登錄，請在訂用帳戶層級上啟用 **適用於容器登錄的 Azure Defender** 。 資訊安全中心接著將會掃描推送至登錄的映像、匯入登錄中的映像，或過去 30 天內提取的任何映像。 這項功能會按映像收費。
+若要保護您訂用帳戶中所有以 Azure Resource Manager 為基礎的登錄，請在訂用帳戶層級上啟用 **適用於容器登錄的 Azure Defender**。 資訊安全中心接著將會掃描推送至登錄的映像、匯入登錄中的映像，或過去 30 天內提取的任何映像。 這項功能會按映像收費。
+
+[!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-container-registries"></a>適用於容器登錄的 Azure Defender 有哪些優點？
 
@@ -45,7 +47,7 @@ Azure Container Registry (ACR) 是受控的私人 Docker 登錄服務，可在�
 
 - **推送時** - 每當映像推送至您的登錄時，資訊安全中心就會自動掃描該映像。 若要觸發映像的掃描，請將其推送至您的存放庫。
 
-- **最近提取的** - 由於每天都會發現新的弱點， **適用於容器登錄的 Azure Defender** 也會掃描過去 30 天內提取的任何映像。 重新掃描不會額外收費；如前所述，您需按映像付費。
+- **最近提取的** - 由於每天都會發現新的弱點，**適用於容器登錄的 Azure Defender** 也會掃描過去 30 天內提取的任何映像。 重新掃描不會額外收費；如前所述，您需按映像付費。
 
 - **匯入時** - Azure Container Registry 具有匯入工具，可將映像從 Docker Hub、Microsoft Container Registry 或另一個 Azure Container Registry 導入您的登錄中。 **適用於容器登錄的 Azure Defender** 會掃描您匯入的任何支援映像。 深入了解如何[將容器映像匯入至容器登錄](../container-registry/container-registry-import-images.md)。
  

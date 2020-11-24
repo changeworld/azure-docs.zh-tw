@@ -1,5 +1,5 @@
 ---
-title: Azure 中的連線監視器 (預覽) |Microsoft Docs
+title: Azure 中的連線監視器 |Microsoft Docs
 description: 瞭解如何使用連線監視器來監視分散式環境中的網路通訊。
 services: network-watcher
 documentationcenter: na
@@ -12,24 +12,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/27/2020
+ms.date: 11/23/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: cb24cc55844d7c42d68e75d6f6ef947b1315a306
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: c5c3f8dedad47a819ce3648a0b81ffa3e65a1a1e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984357"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544882"
 ---
-# <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>使用連線監視器 (預覽) 的網路連線能力監視
+# <a name="network-connectivity-monitoring-with-connection-monitor"></a>使用連線監視器進行網路連線監視
 
 連線監視器可在 Azure 網路監看員中提供整合的端對端連線監視。 連線監視器功能支援混合式和 Azure 雲端部署。 網路監看員提供工具來監視、診斷和查看 Azure 部署的連線相關計量。
 
-> [!IMPORTANT]
-> 連接監視器目前處於公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-> 以下是連線監視器的一些使用案例：
+以下是連線監視器的一些使用案例：
 
 - 您的前端網頁伺服器 VM 會與多層式應用程式中的資料庫伺服器 VM 進行通訊。 您想要檢查兩部 Vm 之間的網路連線能力。
 - 您想要讓美國東部區域中的 Vm 偵測美國中部區域中的 Vm，而您想要比較跨區域網路延遲。
@@ -274,7 +271,7 @@ Azure 監視器計量也提供監視資料。 您可以使用 Log Analytics 來�
 
 當您使用計量時，請將資源類型設為 Microsoft. Network/networkWatchers/connectionMonitors
 
-| 計量 | 顯示名稱 | 單位 | 彙總類型 | Description | 維度 |
+| 計量 | 顯示名稱 | 單位 | 彙總類型 | 描述 | 維度 |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | 失敗的探查百分比 | 百分比 | Average | 連線能力監視探查的百分比失敗。 | 無維度 |
 | AverageRoundtripMs | Avg.來回時間 (毫秒) | 毫秒 | Average | 在來源與目的地之間傳送之連線能力監視探查的平均網路 RTT。 |             無維度 |

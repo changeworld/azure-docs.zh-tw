@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: fcc482e6231bbd925fd500a37989052765dede58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f861f9efa6ecc1886647ed6c460b6718ff97e8a1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77538529"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522323"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>針對 Azure 私人端點連線問題進行疑難排解
 
@@ -56,7 +56,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全的方式�
     
        ![虛擬網路和 DNS 設定](./media/private-endpoint-tsg/vnet-dns-configuration.png)
     
-1. 使用 [Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/overview) 查看資料是否流動。
+1. 使用 [Azure 監視器](../azure-monitor/overview.md) 查看資料是否流動。
 
     a. 在私人端點資源上，選取 [ **監視**]。
      - 選取 [ **資料傳入** ] 或 [ **資料輸出**]。 
@@ -93,7 +93,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全的方式�
        - 查看私人 DNS 區域記錄是否存在。 如果不存在，請加以建立。
      - 如果您使用自訂 DNS：
        - 請檢查您的自訂 DNS 設定，並驗證 DNS 設定是否正確。
-       如需指引，請參閱 [私人端點總覽： DNS](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)設定。
+       如需指引，請參閱 [私人端點總覽： DNS](./private-endpoint-overview.md#dns-configuration)設定。
 
     b. 如果連線因為網路安全性群組而失敗 (Nsg) 或使用者定義的路由：
      - 請檢查 NSG 輸出規則，並建立適當的輸出規則以允許流量。
@@ -107,5 +107,5 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全的方式�
 
 ## <a name="next-steps"></a>後續步驟
 
- * [在更新的子網上建立私人端點 (Azure 入口網站) ](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)
+ * [在更新的子網上建立私人端點 (Azure 入口網站) ](./create-private-endpoint-portal.md)
  * [Azure Private Link 疑難排解指南](troubleshoot-private-link-connectivity.md)

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: 297595c6c4a9c82c3d0293f2cea2db66ea9ca54a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0de8d8d5ff0f14d0268dbcca743f4d06ed877903
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89180400"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544389"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>如何使用 Blobfuse 將 Blob 儲存體掛接為檔案系統
 
@@ -23,12 +23,12 @@ ms.locfileid: "89180400"
 本指南示範如何使用 Blobfuse，以及如何在 Linux 上掛接 Blob 儲存體容器並存取資料。 若要深入了解 Blobfuse，請閱讀 [Blobfuse 存放庫](https://github.com/Azure/azure-storage-fuse)中的詳細資料。
 
 > [!WARNING]
-> Blobfuse 不保證 100% 合乎 POSIX 的規範，因為它只是將要求轉譯成 [Blob REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) \(英文\)。 例如，重新命名作業在 POSIX 中不可部分完成，不過在 Blobfuse 中並非如此。
+> Blobfuse 不保證 100% 合乎 POSIX 的規範，因為它只是將要求轉譯成 [Blob REST API](/rest/api/storageservices/blob-service-rest-api) \(英文\)。 例如，重新命名作業在 POSIX 中不可部分完成，不過在 Blobfuse 中並非如此。
 > 如需原生檔案系統與 Blobfuse 之間差異的完整清單，請造訪 [Blobfuse 原始程式碼存放庫](https://github.com/azure/azure-storage-fuse)。
 > 
 
 ## <a name="install-blobfuse-on-linux"></a>在 Linux 上安裝 Blobfuse
-在 [Microsoft 的 Linux 軟體存放庫](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)可取得適用於 Ubuntu 和 RHEL 散發套件的 Blobfuse 二進位檔案。 若要在這些發行版本上安裝 Blobfuse，請設定清單中的任一個存放庫。 如果您的發行版本沒有可用的二進位檔，您也可以遵循 [Azure 儲存體安裝步驟](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) \(英文\)，從原始程式碼建置二進位檔。
+在 [Microsoft 的 Linux 軟體存放庫](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)可取得適用於 Ubuntu 和 RHEL 散發套件的 Blobfuse 二進位檔案。 若要在這些發行版本上安裝 Blobfuse，請設定清單中的任一個存放庫。 如果您的發行版本沒有可用的二進位檔，您也可以遵循 [Azure 儲存體安裝步驟](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) \(英文\)，從原始程式碼建置二進位檔。
 
 Blobfuse 支援在 Ubuntu 14.04、16.04 和18.04 上安裝。 執行此命令以確定您已部署其中一個版本：
 ```
@@ -36,7 +36,7 @@ lsb_release -a
 ```
 
 ### <a name="configure-the-microsoft-package-repository"></a>設定 Microsoft 封裝存放庫
-設定 [Microsoft 產品的 Linux 封裝存放庫](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)。
+設定 [Microsoft 產品的 Linux 封裝存放庫](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)。
 
 以 Enterprise Linux 6 發行版為例：
 ```bash
@@ -144,5 +144,4 @@ echo "hello world" > test/blob.txt
 ## <a name="next-steps"></a>後續步驟
 
 * [Blobfuse 首頁](https://github.com/Azure/azure-storage-fuse#blobfuse)
-* [回報 Blobfuse 問題](https://github.com/Azure/azure-storage-fuse/issues) 
-
+* [回報 Blobfuse 問題](https://github.com/Azure/azure-storage-fuse/issues)

@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: 92ac1887aca8f30c551419ef9149073d79f333a5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7d3bc13dc373cda510153099859cf4cd61b3dd69
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143830"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95534529"
 ---
 # <a name="access-control"></a>存取控制
 
@@ -32,7 +32,7 @@ ms.locfileid: "92143830"
 「活頁簿參與者」會將「活頁簿/寫入」許可權加入至物件，以儲存共用的活頁簿。
 使用者不需要特殊許可權，就能儲存只能看見的私人活頁簿。
 
-針對自訂角色型存取控制：
+自訂角色：
 
 加入 `microsoft.insights/workbooks/write` 以儲存共用的活頁簿。 如需詳細資訊，請參閱活頁 [簿參與者](../../role-based-access-control/built-in-roles.md#monitoring-contributor) 角色。
 

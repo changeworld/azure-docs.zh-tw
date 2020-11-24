@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 1e5253d617c87d5869cebc817da6d265ebfdfa7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45a7a146dd929408b50a0045fe2598726ee05505
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77539462"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544304"
 ---
 # <a name="troubleshoot-azure-private-link-connectivity-problems"></a>針對 Azure Private Link 連線能力的問題進行疑難排解
 
@@ -37,7 +37,7 @@ ms.locfileid: "77539462"
 
 ## <a name="deployment-troubleshooting"></a>部署疑難排解
 
-如果您無法從您選擇的私人連結服務的子網中選取來源 IP 位址，請參閱在 [私用連結服務上停用網路原則](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy) 的相關資訊，以進行疑難排解。
+如果您無法從您選擇的私人連結服務的子網中選取來源 IP 位址，請參閱在 [私用連結服務上停用網路原則](./disable-private-link-service-network-policy.md) 的相關資訊，以進行疑難排解。
 
 請確定您要從中選取來源 IP 位址的子網已停用設定 **privateLinkServiceNetworkPolicies** 。
 
@@ -59,7 +59,7 @@ ms.locfileid: "77539462"
 
     d. 檢查私人端點連接。
      - 確定您要進行連線的私人端點會以 **已核准** 的連接狀態列出。
-     - 如果狀態為 **暫**止，請選取它並加以核准。
+     - 如果狀態為 **暫** 止，請選取它並加以核准。
 
        ![私人端點連接](./media/private-link-tsg/pls-private-endpoint-connections.png)
 
@@ -69,26 +69,26 @@ ms.locfileid: "77539462"
 
      - 雙方都經過核准後，請再次嘗試連接。
 
-    e. **[內容] 索引**標籤上的 [**總覽**] 索引標籤和**資源識別碼**的審核**別名**。
-     - 請確定**別名**和**資源識別碼**資訊符合您用來建立此服務私人端點的**別名**和**資源識別碼。**
+    e. **[內容] 索引** 標籤上的 [**總覽**] 索引標籤和 **資源識別碼** 的審核 **別名**。
+     - 請確定 **別名** 和 **資源識別碼** 資訊符合您用來建立此服務私人端點的 **別名** 和 **資源識別碼。**
 
        ![確認別名資訊](./media/private-link-tsg/pls-overview-pane-alias.png)
 
        ![確認資源識別碼資訊](./media/private-link-tsg/pls-properties-pane-resourceid.png)
 
-    f. 查看 [**總覽**] 索引標籤上的**可見度**資訊。
+    f. 查看 [**總覽**] 索引標籤上的 **可見度** 資訊。
      - 請確定您的訂用帳戶落在 **可見度** 範圍內。
 
        ![確認可見度資訊](./media/private-link-tsg/pls-overview-pane-visibility.png)
 
-    g. 請參閱 [**總覽**] 索引標籤上的**負載平衡器**資訊。
+    g. 請參閱 [**總覽**] 索引標籤上的 **負載平衡器** 資訊。
      - 您可以選取負載平衡器連結來移至負載平衡器。
 
        ![確認負載平衡器資訊](./media/private-link-tsg/pls-overview-pane-ilb.png)
 
      - 確定已根據您的預期設定負載平衡器設定。
-       - 檢查 **前端 IP**設定。
-       - 檢查 **後端**集區。
+       - 檢查 **前端 IP** 設定。
+       - 檢查 **後端** 集區。
        - 檢查 **負載平衡規則**。
 
        ![確認負載平衡器屬性](./media/private-link-tsg/pls-ilb-properties.png)
@@ -99,7 +99,7 @@ ms.locfileid: "77539462"
        - 如果連線將它設為每個負載平衡規則的後端集區，則您的負載平衡器可正常運作。
        - 您也可以透過 Azure 監視器查看負載平衡器度量，以查看資料是否流經負載平衡器。
 
-1. 使用 [Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/overview) 查看資料是否流動。
+1. 使用 [Azure 監視器](../azure-monitor/overview.md) 查看資料是否流動。
 
     a. 在私人連結服務資源上，選取 [ **計量**]。
      - 選取 [ **位元組** ] 或 [ **位元組輸出**]。
@@ -111,5 +111,5 @@ ms.locfileid: "77539462"
 
 ## <a name="next-steps"></a>後續步驟
 
- * [ (CLI) 建立 private link 服務 ](https://docs.microsoft.com/azure/private-link/create-private-link-service-cli)
+ * [ (CLI) 建立 private link 服務 ](./create-private-link-service-cli.md)
  * [Azure 私人端點疑難排解指南](troubleshoot-private-endpoint-connectivity.md)

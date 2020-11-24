@@ -3,12 +3,12 @@ title: 工作執行階段環境變數
 description: Azure Batch 分析的工作執行階段環境變數指引與參考。
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 6b8ade312146802ede6e12181a082a8fcd3842fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2cab5011eb04586dc361bf1cec9c1f162d70117
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85960906"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95538524"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Azure Batch 執行階段環境變數
 
@@ -18,21 +18,21 @@ ms.locfileid: "85960906"
 
 ## <a name="environment-variable-visibility"></a>環境變數可見性
 
-這些環境變數僅適用於**工作使用者**的內容中，也就是工作執行所在節點上的使用者帳戶。 如果您透過遠端桌面通訊協定 (RDP) 或安全殼層 (SSH) [遠端連線](./error-handling.md#connect-to-compute-nodes)到計算節點，並列出環境變數，您將*不會*看見這些環境變數。 這是因為用於遠端連線的使用者帳戶與工作所用的帳戶不同。
+這些環境變數僅適用於 **工作使用者** 的內容中，也就是工作執行所在節點上的使用者帳戶。 如果您透過遠端桌面通訊協定 (RDP) 或安全殼層 (SSH) [遠端連線](./error-handling.md#connect-to-compute-nodes)到計算節點，並列出環境變數，您將 *不會* 看見這些環境變數。 這是因為用於遠端連線的使用者帳戶與工作所用的帳戶不同。
 
 若要取得環境變數的目前值，請在 Windows 計算節點上啟動 `cmd.exe`，或在 Linux 節點上啟動 `/bin/sh`：
 
 `cmd /c set <ENV_VARIABLE_NAME>`
 
-`/bin/sh printenv <ENV_VARIABLE_NAME>`
+`/bin/sh -c "printenv <ENV_VARIABLE_NAME>"`
 
 ## <a name="command-line-expansion-of-environment-variables"></a>環境變數的命令列擴充功能
 
-工作在計算節點上執行的命令列不會在殼層下執行。 因此，這些命令列無法以原生方式利用如環境變數擴充功能等殼層功能 (這包括 `PATH`)。 若要利用這類功能，您必須在命令列中**叫用殼層**。 例如，在 Windows 計算節點上啟動 `cmd.exe`，或在 Linux 節點上啟動 `/bin/sh`：
+工作在計算節點上執行的命令列不會在殼層下執行。 因此，這些命令列無法以原生方式利用如環境變數擴充功能等殼層功能 (這包括 `PATH`)。 若要利用這類功能，您必須在命令列中 **叫用殼層**。 例如，在 Windows 計算節點上啟動 `cmd.exe`，或在 Linux 節點上啟動 `/bin/sh`：
 
 `cmd /c MyTaskApplication.exe %MY_ENV_VAR%`
 
-`/bin/sh -c MyTaskApplication $MY_ENV_VAR`
+`/bin/sh -c "MyTaskApplication $MY_ENV_VAR"`
 
 ## <a name="environment-variables"></a>環境變數
 

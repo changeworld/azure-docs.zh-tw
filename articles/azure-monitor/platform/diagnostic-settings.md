@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 517de5c4003655c5fea2f2e7949fb513b1a3c381
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 950fcdc5cd6a5bbf3fa61ebd5e23be89691c4370
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842425"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95535787"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>建立診斷設定以將平台記錄和計量傳送至不同目的地
 Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記錄和資源記錄，可針對 azure 資源及其相依的 azure 平臺提供詳細的診斷和審核資訊。 預設會收集[平臺計量](data-platform-metrics.md)，並通常儲存在 Azure 監視器計量資料庫中。 本文提供有關建立及設定診斷設定，以將平臺計量和平臺記錄傳送至不同目的地的詳細資料。
@@ -52,9 +52,9 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
 
 ### <a name="destination-requirements"></a>目的地需求
 
-在建立診斷設定之前，必須先建立診斷設定的任何目的地。 只要進行設定的使用者有這兩個訂用帳戶的適當 RBAC 存取權，就不一定要將目的地與傳送記錄的資源位於相同的訂用帳戶中。 下表提供每個目的地的獨特需求，包括任何區域限制。
+在建立診斷設定之前，必須先建立診斷設定的任何目的地。 只要進行設定的使用者具有適用于這兩個訂用帳戶的適當 Azure RBAC 存取權，就不一定要將目的地與傳送記錄的資源位於相同的訂用帳戶中。 下表提供每個目的地的獨特需求，包括任何區域限制。
 
-| Destination | 規格需求 |
+| Destination | 需求 |
 |:---|:---|
 | Log Analytics 工作區 | 工作區不一定要與受監視的資源位於相同的區域中。|
 | 事件中樞 | 命名空間的共用存取原則會定義串流機制擁有的許可權。 串流至事件中樞需要管理、傳送和接聽的許可權。 若要更新診斷設定以包含串流，您必須具有該事件中樞授權規則的 ListKey 許可權。<br><br>如果資源是區域，事件中樞命名空間必須位於與所監視資源相同的區域中。 |
@@ -130,7 +130,7 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
         >
         > 例如，如果您將 *WorkflowRuntime* 的保留原則設定為180天，然後將其設定為365天，則在這前24小時內儲存的記錄將會在180天后自動刪除，而該類型的所有後續記錄將會在365天后自動刪除。 稍後變更保留原則時，不會讓前24小時的記錄保留大約365天。
 
-6. 按一下 **[儲存]** 。
+6. 按一下 [儲存]。
 
 經過幾分鐘之後，新的設定就會出現在此資源的設定清單中，並在產生新的事件資料時，將記錄串流處理至指定的目的地。 當事件發出和 [記錄在 Log Analytics 工作區中出現](data-ingestion-time.md)時，最多可能需要15分鐘的時間。
 

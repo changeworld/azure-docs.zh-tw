@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: 3174dbd36d9bb39ce606ec12f88397f795e91526
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4f84c3c2f6fc671a8cb6ac70313361540e3dd815
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832427"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95523275"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>使用 Blob 索引標記管理及尋找 Azure Blob 資料 (預覽) 
 
@@ -51,7 +51,7 @@ Blob 索引標記可讓您：
 Blob 索引標記是索引鍵/值屬性，可套用至儲存體帳戶內的新或現有物件。 您可以使用 [Put blob](/rest/api/storageservices/put-blob)、 [put Block List](/rest/api/storageservices/put-block-list)或 [Copy blob](/rest/api/storageservices/copy-blob) 作業和選擇性標頭，在上傳過程中指定索引卷 `x-ms-tags` 標。 如果您的儲存體帳戶中已經有 blob，請呼叫 [Set Blob 標記](/rest/api/storageservices/set-blob-tags) ，並在要求本文中傳遞具有索引標記的格式化 XML 檔。
 
 > [!IMPORTANT]
-> [儲存體 Blob 資料擁有](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)者以及具有共用存取簽章的任何人都可以執行設定 blob 索引標籤，該簽章具有存取 blob 標記的許可權， (`t` SAS 許可權) 。
+> [儲存體 Blob 資料擁有](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)者以及具有共用存取簽章的任何人都可以執行設定 blob 索引標籤，該簽章具有存取 blob 標記的許可權， (`t` SAS 許可權) 。
 >
 > 此外，具有許可權的 RBAC 使用者 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` 可以執行這項操作。
 
@@ -87,7 +87,7 @@ Blob 索引標記是索引鍵/值屬性，可套用至儲存體帳戶內的新�
 Blob 索引標記會連同 blob 資料一起儲存為 subresource，而且可以獨立于基礎 blob 資料內容中進行取出。 您可以使用「 [取得 Blob 標記](/rest/api/storageservices/get-blob-tags) 」作業來抓取單一 blob 的 blob 索引標記。 具有參數的 [清單 blob](/rest/api/storageservices/list-blobs) 作業 `include:tags` 也會傳回容器內的所有 blob 及其 blob 索引標記。
 
 > [!IMPORTANT]
-> [儲存體 Blob 資料擁有](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)者以及具有共用存取簽章的任何人，都可以執行「取得和列出 blob 索引標記」，其具有存取 blob 標記的許可權， (`t` SAS 許可權) 。
+> [儲存體 Blob 資料擁有](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)者以及具有共用存取簽章的任何人，都可以執行「取得和列出 blob 索引標記」，其具有存取 blob 標記的許可權， (`t` SAS 許可權) 。
 >
 > 此外，具有許可權的 RBAC 使用者 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` 可以執行這項操作。
 
@@ -100,7 +100,7 @@ Blob 索引標記會連同 blob 資料一起儲存為 subresource，而且可以
 [ [依標記尋找 blob](/rest/api/storageservices/find-blobs-by-tags) ] 作業可讓您取得一組已篩選的 blob，其索引標記符合指定的查詢運算式。 `Find Blobs by Tags` 支援在儲存體帳戶內的所有容器之間進行篩選，或您可以將篩選範圍限定為單一容器。 由於所有索引標記索引鍵和值都是字串，因此關聯式運算子會使用詞典編纂排序。
 
 > [!IMPORTANT]
-> [儲存體 Blob 資料擁有](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)者和具有共用存取簽章的任何人都可以執行使用 blob 索引標記來尋找資料，而該簽章具有可依標記尋找 blob 的許可權 `f`)  (SAS 許可權。
+> [儲存體 Blob 資料擁有](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)者和具有共用存取簽章的任何人都可以執行使用 blob 索引標記來尋找資料，而該簽章具有可依標記尋找 blob 的許可權 `f`)  (SAS 許可權。
 >
 > 此外，具有許可權的 RBAC 使用者 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` 可以執行這項操作。
 
@@ -115,7 +115,7 @@ Blob 索引標記會連同 blob 資料一起儲存為 subresource，而且可以
 
 下表顯示適用于的所有有效運算子 `Find Blobs by Tags` ：
 
-|  運算子  |  說明  | 範例 |
+|  運算子  |  描述  | 範例 |
 |------------|---------------|---------|
 |     =      |     等於     | `"Status" = 'In Progress'` |
 |     >      |  大於 | `"Date" > '2018-06-18'` |
@@ -140,7 +140,7 @@ Blob 索引標記會連同 blob 資料一起儲存為 subresource，而且可以
 
 下表顯示條件式作業的有效運算子：
 
-|  運算子  |  說明  | 範例 |
+|  運算子  |  描述  | 範例 |
 |------------|---------------|---------|
 |     =      |     等於     | `"Status" = 'In Progress'` |
 |     <>     |   不等於   | `"Status" <> 'Done'` |
@@ -149,7 +149,7 @@ Blob 索引標記會連同 blob 資料一起儲存為 subresource，而且可以
 |     <      |  小於   | `"Age" < '32'` |
 |     <=     |  小於或等於  | `"Company" <= 'Contoso'` |
 |    AND     |  邏輯 and  | `"Rank" >= '010' AND "Rank" < '100'` |
-|     或者     | 邏輯 or   | `"Status" = 'Done' OR "Priority" >= '05'` |
+|     OR     | 邏輯 or   | `"Status" = 'Done' OR "Priority" >= '05'` |
 
 > [!NOTE]
 > Blob 作業的條件式標頭中允許有兩個額外的運算子，不等於和邏輯 or， `x-ms-if-tags` 但不存在於作業中 `Find Blobs by Tags` 。
@@ -235,7 +235,7 @@ Blob 索引標記是 blob 資料的 subresource。 具有許可權的使用者�
 | [取得 Blob 標記](/rest/api/storageservices/get-blob-tags)           | Microsoft. Storage/storageAccounts/blobServices/container/blob/tag/read     |
 | [依標記尋找 Blob](/rest/api/storageservices/find-blobs-by-tags) | Microsoft. 儲存體/storageAccounts/blobServices/容器/blob/篩選/動作 |
 
-索引標記作業需要額外的許可權，與基礎 blob 資料分開。 [儲存體 Blob 資料擁有](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)者角色會被授與所有三個 Blob 索引標記作業的許可權。 [儲存體 Blob 資料讀取器](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)只會獲得 `Find Blobs by Tags` 和作業的許可權 `Get Blob Tags` 。
+索引標記作業需要額外的許可權，與基礎 blob 資料分開。 [儲存體 Blob 資料擁有](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)者角色會被授與所有三個 Blob 索引標記作業的許可權。 [儲存體 Blob 資料讀取器](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)只會獲得 `Find Blobs by Tags` 和作業的許可權 `Get Blob Tags` 。
 
 ### <a name="sas-permissions"></a>SAS 許可權
 
@@ -277,7 +277,7 @@ Blob 索引標記和中繼資料都提供將任意使用者定義的索引鍵/�
 | **權限**  | Blob 資料的讀取或寫入權限延伸至中繼資料 | 需要其他許可權才能讀取、篩選或寫入索引標記 |
 | **命名** | 中繼資料名稱必須遵守 c # 識別碼的命名規則 | Blob 索引標記支援更廣泛的英數位元字元 |
 
-## <a name="pricing"></a>定價
+## <a name="pricing"></a>價格
 
 Blob 索引定價處於公開預覽狀態，可能會變更為正式運作。 您需支付儲存體帳戶內每月平均索引標籤數目的費用。 編制索引引擎不會產生任何費用。 對 `Set Blob Tags` 、和的要求 `Get Blob Tags` `Find Blobs by Tags` 會根據其各自的作業類型來收費。 [若要深入瞭解，請參閱封鎖 Blob 定價](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 

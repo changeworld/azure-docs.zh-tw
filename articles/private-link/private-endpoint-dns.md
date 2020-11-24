@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: bb1f4b5e37cecc33cef115f26c44ad6375c7e327
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: d682495cb7add446adf1634de6e9ed6756d1468e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734373"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544372"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure 私人端點 DNS 設定
 
@@ -125,7 +125,7 @@ DNS 是一個重要元件，可成功解析私人端點 IP 位址，讓應用程
 > [!IMPORTANT]
 > 如果您是在不同訂用帳戶的中樞和輪輻模型中使用私人端點，請在中樞上重複使用相同的私人 DNS 區域。
 
-在此案例中，有一個 [中樞和輪輻](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) 網路拓撲，內含可共用共同私人端點的輪輻網路，而且所有輪輻虛擬網路都會連結到相同的私人 DNS 區域。 
+在此案例中，有一個 [中樞和輪輻](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) 網路拓撲，內含可共用共同私人端點的輪輻網路，而且所有輪輻虛擬網路都會連結到相同的私人 DNS 區域。 
 
 :::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="具有 Azure 提供之 DNS 的中樞與輪輻":::
 
@@ -141,7 +141,7 @@ DNS 是一個重要元件，可成功解析私人端點 IP 位址，讓應用程
 若要正確設定，您需要下列資源：
 
 - 內部部署網路
-- [連線到內部部署的](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)虛擬網路
+- [連線到內部部署的](/azure/architecture/reference-architectures/hybrid-networking/)虛擬網路
 - 部署在 Azure 中的 DNS 轉寄站 
 - 具有[類型 A 記錄的](../dns/dns-zones-records.md#record-types)私人 DNS 區域[privatelink.database.windows.net](../dns/private-dns-privatednszone.md)
 - 私人端點資訊 (FQDN 記錄名稱和私人 IP 位址) 
@@ -158,7 +158,7 @@ DNS 是一個重要元件，可成功解析私人端點 IP 位址，讓應用程
 若要正確設定，您需要下列資源：
 
 - 具備自訂 DNS 解決方案的內部部署網路 
-- [連線到內部部署的](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)虛擬網路
+- [連線到內部部署的](/azure/architecture/reference-architectures/hybrid-networking/)虛擬網路
 - 部署在 Azure 中的 DNS 轉寄站
 - 具有[類型 A 記錄的](../dns/dns-zones-records.md#record-types)私人 DNS 區域[privatelink.database.windows.net](../dns/private-dns-privatednszone.md)
 - 私人端點資訊 (FQDN 記錄名稱和私人 IP 位址) 
@@ -187,7 +187,7 @@ DNS 是一個重要元件，可成功解析私人端點 IP 位址，讓應用程
 若要正確設定，您需要下列資源：
 
 - 內部部署網路
-- [連線到內部部署的](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)虛擬網路
+- [連線到內部部署的](/azure/architecture/reference-architectures/hybrid-networking/)虛擬網路
 - [對等互連虛擬網路](../virtual-network/virtual-network-peering-overview.md) 
 - 部署在 Azure 中的 DNS 轉寄站
 - 具有[類型 A 記錄的](../dns/dns-zones-records.md#record-types)私人 DNS 區域[privatelink.database.windows.net](../dns/private-dns-privatednszone.md)
