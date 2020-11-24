@@ -5,18 +5,18 @@ description: Microsoft 身分識別平臺強制執行的重新導向 URI (回復
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 10/29/2020
+ms.date: 11/23/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: a2838e40844b83d1e90789439ce286f2738e22c4
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 30ea74b249937544a0bf9811cad60f02c1ca45c7
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331850"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95752776"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>重新導向 URI (回復 URL) 限制和限制
 
@@ -51,25 +51,32 @@ Azure Active Directory (Azure AD) 應用程式模型目前支援在任何組織�
 
 根據 [RFC 8252 區段 8.3](https://tools.ietf.org/html/rfc8252#section-8.3) 和 [7.3](https://tools.ietf.org/html/rfc8252#section-7.3)、「回送」或「Localhost」重新導向 uri 有兩個特殊考慮：
 
-1. `http` URI 配置是可接受的，因為重新導向永遠不會離開裝置。 如此一來，這兩個都是可接受的：
-    - `http://127.0.0.1/myApp`
-    - `https://127.0.0.1/myApp`
-1. 由於原生應用程式通常需要暫時的埠範圍，因此 (的埠元件， `:5001` 或為了 `:443` 比對重新導向 URI 的目的，會忽略) 。 如此一來，所有這些專案都會被視為相同：
-    - `http://127.0.0.1/MyApp`
-    - `http://127.0.0.1:1234/MyApp`
-    - `http://127.0.0.1:5000/MyApp`
-    - `http://127.0.0.1:8080/MyApp`
+1. `http` URI 配置是可接受的，因為重新導向永遠不會離開裝置。 因此，這兩個 Uri 都是可接受的：
+    - `http://localhost/myApp`
+    - `https://localhost/myApp`
+1. 由於原生應用程式通常需要暫時的埠範圍，因此 (的埠元件， `:5001` 或為了 `:443` 比對重新導向 URI 的目的，會忽略) 。 因此，所有這些 Uri 都會視為相同：
+    - `http://localhost/MyApp`
+    - `http://localhost:1234/MyApp`
+    - `http://localhost:5000/MyApp`
+    - `http://localhost:8080/MyApp`
 
 從開發的觀點來看，這表示有幾件事：
 
 * 請勿在埠不同的情況下註冊多個重新導向 Uri。 登入伺服器會任意挑選一個，並使用與該重新導向 URI 相關聯的行為 (例如，是否為 `web` -、 `native` -或類型的重新 `spa` 導向) 。
 
     當您想要在相同的應用程式註冊中使用不同的驗證流程時（例如授權碼授與和隱含流程），這點特別重要。 若要將正確的回應行為與每個重新導向 URI 建立關聯，登入伺服器必須能夠區分重新導向 Uri，而且只有在埠不同時才能這麼做。
-* 如果您需要在 localhost 上註冊多個重新導向 Uri，以在開發期間測試不同的流程，請使用 URI 的 *路徑* 元件來區分它們。 例如， `http://127.0.0.1/MyWebApp` 不符合 `http://127.0.0.1/MyNativeApp` 。
+* 如果您需要在 localhost 上註冊多個重新導向 Uri，以在開發期間測試不同的流程，請使用 URI 的 *路徑* 元件來區分它們。 例如， `http://localhost/MyWebApp` 不符合 `http://localhost/MyNativeApp` 。
 * 目前不支援 IPv6 回送位址 (`[::1]`) 。
-* 若要防止您的應用程式因防火牆設定錯誤或重新命名網路介面而中斷，請在您的重新導向 URI 中使用 IP 常值回送位址， `127.0.0.1` 而不是 `localhost` 。
 
-    若要使用 `http` 配置搭配 IP 常值回送位址 `127.0.0.1` ，您目前必須修改[應用程式資訊清單](reference-app-manifest.md)中的[replyUrlsWithType](reference-app-manifest.md#replyurlswithtype-attribute)屬性。
+#### <a name="prefer-127001-over-localhost"></a>在 localhost 上偏好127.0.0。1
+
+若要防止您的應用程式因防火牆設定錯誤或重新命名網路介面而中斷，請在您的重新導向 URI 中使用 IP 常值回送位址， `127.0.0.1` 而不是 `localhost` 。 例如： `https://127.0.0.1` 。
+
+不過，您無法使用 Azure 入口網站中的 [重新 **導向 uri** ] 文字方塊，來新增使用配置的回送型重新導向 uri `http` ：
+
+:::image type="content" source="media/reply-url/portal-01-no-http-loopback-redirect-uri.png" alt-text="Azure 入口網站顯示不允許的 HTTP 型回導向重新導向 URI 的錯誤對話方塊":::
+
+若要加入使用配置搭配回送位址的重新導向 URI `http` `127.0.0.1` ，您目前必須修改[應用程式資訊清單](reference-app-manifest.md)中的[replyUrlsWithType](reference-app-manifest.md#replyurlswithtype-attribute)屬性。
 
 ## <a name="restrictions-on-wildcards-in-redirect-uris"></a>重新導向 Uri 中的萬用字元限制
 

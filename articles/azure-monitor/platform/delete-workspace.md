@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 2ce048ea8c9a4414b1c9f049569251c39d931c9a
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 0858d448cf768dbe6ea48f07247725fac30da860
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174168"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95758881"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>刪除和復原 Azure Log Analytics 工作區
 
@@ -41,14 +41,16 @@ ms.locfileid: "92174168"
 > [!NOTE] 
 > 在刪除時，已安裝的解決方案和連結的服務 (例如 Azure 自動化帳戶) 會從工作區中永久移除，且無法復原。 在進行復原作業後應重新設定這些項目，才能讓工作區進入其先前設定的狀態。
 
-您可以使用 [PowerShell](/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0)、[REST API](/rest/api/loganalytics/workspaces/delete) 或 [Azure 入口網站](https://portal.azure.com)來刪除工作區。
+您可以使用 [PowerShell](/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0&preserve-view=true)、[REST API](/rest/api/loganalytics/workspaces/delete) 或 [Azure 入口網站](https://portal.azure.com)來刪除工作區。
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 2. 在 Azure 入口網站中，選取 [所有服務]。 在資源清單中輸入 **Log Analytics**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics 工作區]。
 3. 在 Log Analytics 工作區的清單中選取某個工作區，然後從中間窗格的頂端按一下 [刪除]。
-4. 此時會出現確認頁面，並顯示過去一週擷取到工作區的資料。 輸入工作區的名稱來進行確認，然後按一下 [刪除]。
+4. 此時會出現確認頁面，並顯示過去一週擷取到工作區的資料。 
+5. 如果您想要永久刪除工作區，移除稍後要復原的選項，請選取 [ **永久刪除工作區** ] 核取方塊。
+6. 輸入工作區的名稱來進行確認，然後按一下 [刪除]。
 
    ![確認刪除工作區](media/delete-workspace/workspace-delete.png)
 
@@ -60,11 +62,12 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 ## <a name="permanent-workspace-delete"></a>永久刪除工作區
 虛刪除方法可能無法適合某些情況，例如在開發和測試時，您需要重複地使用相同設定和工作區名稱來進行部署。 在這類情況下，您可以永久刪除工作區，並「覆寫」虛刪除期間。 永久刪除工作區的作業會釋出工作區名稱，然後您就可以使用相同名稱來建立新的工作區。
 
-
 > [!IMPORTANT]
 > 請小心使用永久刪除工作區作業，此作業無法復原，而且您將無法復原工作區和其資料。
 
-新增 '-ForceDelete ' 標記以永久刪除您的工作區。 '-ForceDelete ' 選項目前可搭配 Az. OperationalInsights 2.3.0 或更高版本使用。 
+若要使用 Azure 入口網站永久刪除工作區，請選取 [ **永久刪除工作區** ] 核取方塊，然後按一下 [ **刪除** ] 按鈕。
+
+若要使用 PowerShell 永久刪除工作區，請新增 '-ForceDelete ' 標記以永久刪除您的工作區。 '-ForceDelete ' 選項目前可搭配 Az. OperationalInsights 2.3.0 或更高版本使用。 
 
 ```powershell
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name" -ForceDelete
@@ -108,7 +111,7 @@ PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-nam
 
 您至少必須擁有「Log Analytics 參與者」權限才能刪除工作區。
 
-* 如果您不確定已刪除的工作區處於虛刪除狀態且可以復原，請按一下 [在*Log Analytics 工作區*中[復原](#recover-workspace)] 頁面，以查看每個訂用帳戶的虛刪除工作區清單。 清單中不包含永久刪除的工作區。
+* 如果您不確定已刪除的工作區處於虛刪除狀態且可以復原，請按一下 [在 *Log Analytics 工作區* 中 [復原](#recover-workspace)] 頁面，以查看每個訂用帳戶的虛刪除工作區清單。 清單中不包含永久刪除的工作區。
 * 如果您在建立工作區時收到錯誤訊息「此工作區名稱已在使用中」或「衝突」，可能是因為：
   * 工作區名稱無法使用，組織中的某人或其他客戶正在使用中。
   * 工作區已在最近 14 天內刪除，而其名稱已針對虛刪除期間保留起來。 若要覆寫虛刪除並永久刪除工作區以使用相同名稱建立新的工作區，請遵循下列步驟先復原工作區，然後執行永久刪除：<br>
