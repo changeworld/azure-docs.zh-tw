@@ -1,4 +1,4 @@
-- name: Azure Synapse (SQL DW)
+- name: Azure Synapse (先前為 SQL DW)
   href: index.yml
 - name: 切換至 Azure Synapse (工作區預覽)
   href: ../overview-what-is.md

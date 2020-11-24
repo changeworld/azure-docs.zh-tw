@@ -603,8 +603,14 @@
           href: reference-hyperscale-metadata.md
     - name: 操作指南
       items:
-        - name: 擴縮伺服器群組
-          href: howto-hyperscale-scaling.md
+        - name: 伺服器群組大小
+          items:
+            - name: 挑選初始大小
+              href: howto-hyperscale-scale-initial.md
+            - name: 調整伺服器群組
+              href: howto-hyperscale-scale-grow.md
+            - name: 重新平衡分區
+              href: howto-hyperscale-scale-rebalance.md
         - name: 防火牆規則
           items:
             - name: Azure 入口網站

@@ -95,8 +95,10 @@
           href: public-ip-security-baseline.md
     - name: 安全性
       items:
-        - name: 安全性基準
+        - name: 虛擬網路安全性基準
           href: security-baseline.md
+        - name: 虛擬網路 NAT 安全性基準
+          href: nat-security-baseline.md
         - name: 網路安全性群組
           items:
             - name: 概觀
@@ -463,7 +465,7 @@
       href: 'https://azure.microsoft.com/pricing/details/virtual-network'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-network'
     - name: 常見問題集
       href: virtual-networks-faq.md

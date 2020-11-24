@@ -1,5 +1,5 @@
 - name: Azure Synapse (工作區預覽)
-  href: sql-data-warehouse/index.yml
+  href: overview-what-is.md
 - name: 切換至 Azure Synapse Analytics (先前為 SQL DW)
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
 - name: 概觀
@@ -7,10 +7,8 @@
     - name: 什麼是 Azure Synapse？
       href: overview-what-is.md
       displayName: overview
-    - name: 功能提要
-      href: overview-cheat-sheet.md
-    - name: 常見問題集
-      href: overview-faq.md
+    - name: 術語
+      href: overview-terminology.md
     - name: 版本資訊
       href: release-notes.md
 - name: 快速入門
@@ -117,12 +115,10 @@
             - name: 存取控制
               items:
                 - name: 概觀
-                  href: ../sql-database/sql-database-control-access.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                  href: ./security/access-control.md
+                  displayname: 'access, control'
                 - name: Synapse 工作區的受控識別
                   href: ./security/synapse-workspace-managed-identity.md
-                - name: SQL 集區
-                  href: ./sql/access-control.md
-                  displayname: 'access, control'
         - name: 工具整合 (AI、ETL、BI)
           items:
             - name: 針對 Synapse Studio 進行疑難排解
@@ -306,6 +302,8 @@
               href: ./sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: 安全性
           items:
+            - name: 資料庫存取控制
+              href: ../sql-database/sql-database-control-access.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 資料安全性
               items:
                 - name: 資料行層級安全性

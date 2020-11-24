@@ -67,6 +67,8 @@
           href: ./ag/application-gateway-waf-faq.md
     - name: Front Door
       items:
+        - name: 調整
+          href: ./afds/waf-front-door-tuning.md
         - name: 自訂規則
           href: ./afds/waf-front-door-custom-rules.md
         - name: 排除清單

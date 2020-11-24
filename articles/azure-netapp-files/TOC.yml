@@ -97,13 +97,13 @@
       href: dynamic-change-volume-service-level.md
     - name: 管理跨區域複寫
       items:
-        - name: 建立複寫對等互連
+        - name: 建立磁碟區複寫
           href: cross-region-replication-create-peering.md
         - name: 顯示複寫關聯性的健全狀態
           href: cross-region-replication-display-health-status.md
         - name: 管理災害復原
           href: cross-region-replication-manage-disaster-recovery.md
-        - name: 刪除複寫
+        - name: 刪除磁碟區複寫或磁碟區
           href: cross-region-replication-delete.md
     - name: 開發
       items:

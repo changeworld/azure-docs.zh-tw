@@ -139,7 +139,7 @@
           href: understand-spark-code-concepts.md
     - name: U-SQL 作業疑難排解
       items:
-        - name: U-SQL 執行階段失敗疑難排解
+        - name: 針對 U-SQL 執行階段失敗和已知問題進行疑難排解
           href: runtime-troubleshoot.md
         - name: .NET 升級疑難排解
           href: dotnet-upgrade-troubleshoot.md

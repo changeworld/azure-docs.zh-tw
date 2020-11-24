@@ -51,6 +51,8 @@
       href: /samples/azure-samples/mxchip-iot-devkit-pnp-get-started/sample/
     - name: 連線裝置模組
       href: tutorial-migrate-device-to-module.md
+    - name: 預覽 - 使用時間序列深入解析 Gen2 連線和分析資料
+      href: tutorial-configure-tsi.md
 - name: 概念
   items:
     - name: 架構
