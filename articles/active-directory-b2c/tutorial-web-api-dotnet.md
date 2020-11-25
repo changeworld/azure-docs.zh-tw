@@ -11,12 +11,12 @@ ms.custom: devx-track-csharp, mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: bfa8943af16fe62015a4736f561875235e205fc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ada4226500437e7733605a29988ee7cacae40761
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88163878"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994299"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>教學課程：使用 Azure Active Directory B2C 授與存取 ASP.NET Web API 的權限
 
@@ -40,7 +40,7 @@ ms.locfileid: "88163878"
 
 Web API 資源必須先在您的租用戶中註冊，才能接受及回應受到用戶端應用程式保護而提供存取權杖的資源要求。
 
-若要在您的 Azure AD B2C 租用戶中註冊應用程式，您可以使用我們新的整合**應用程式註冊**體驗，或使用舊版**應用程式 (舊版)** 體驗。 [深入了解新的體驗](https://aka.ms/b2cappregtraining)。
+若要在您的 Azure AD B2C 租用戶中註冊應用程式，您可以使用我們新的整合 **應用程式註冊** 體驗，或使用舊版 **應用程式 (舊版)** 體驗。 [深入了解新的體驗](./app-registrations-training-guide.md)。
 
 #### <a name="app-registrations"></a>[應用程式註冊](#tab/app-reg-ga/)
 
@@ -61,8 +61,8 @@ Web API 資源必須先在您的租用戶中註冊，才能接受及回應受到
 4. 選取 [應用程式 (舊版)]，然後選取 [新增]。
 5. 輸入應用程式的名稱。 例如，*webapi1*。
 6. 針對 [包含 Web 應用程式/Web API]，選取 [是]。
-7. 針對**回覆 URL**，請輸入 Azure AD B2C 應傳回您的應用程式所要求任何權杖的端點。 在本教學課程中，範例會在本機執行並在 `https://localhost:44332` 接聽。
-8. 針對**應用程式識別碼 URI**，請輸入您的 Web API 所使用的識別碼。 系統會為您產生包含網域的完整識別碼 URI。 例如： `https://contosotenant.onmicrosoft.com/api` 。
+7. 針對 **回覆 URL**，請輸入 Azure AD B2C 應傳回您的應用程式所要求任何權杖的端點。 在本教學課程中，範例會在本機執行並在 `https://localhost:44332` 接聽。
+8. 針對 **應用程式識別碼 URI**，請輸入您的 Web API 所使用的識別碼。 系統會為您產生包含網域的完整識別碼 URI。 例如： `https://contosotenant.onmicrosoft.com/api` 。
 9. 按一下 [建立]。
 10. 在 [屬性] 頁面上，記錄您會在設定 Web 應用程式時使用的應用程式識別碼。
 
@@ -88,7 +88,7 @@ Web API 資源必須先在您的租用戶中註冊，才能接受及回應受到
 
 範例方案中有兩個專案：
 
-* **TaskWebApp** - 建立和編輯工作清單。 此範例會使用**註冊或登入**使用者流程來註冊或登入使用者。
+* **TaskWebApp** - 建立和編輯工作清單。 此範例會使用 **註冊或登入** 使用者流程來註冊或登入使用者。
 * **TaskService** - 支援建立、讀取、更新和刪除工作清單功能。 此 API 會受到 Azure AD B2C 的保護，且由 TaskWebApp 呼叫。
 
 ### <a name="configure-the-web-application"></a>設定 Web 應用程式

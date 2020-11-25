@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
 ms.openlocfilehash: ceed62d466627d6a23554229bd6f4b96c674c7e9
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148753"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993664"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>在 Azure CDN 中壓縮檔案以改善效能
 檔案壓縮是簡單且有效的方法，可提升檔案傳輸速度，並且在檔案從伺服器傳送出去之前先減少其大小，以增加頁面載入效能。 檔案壓縮可降低頻寬成本，並提供回應速度更快的體驗給使用者。
@@ -31,9 +31,9 @@ ms.locfileid: "92148753"
 
 > [!IMPORTANT]
 > Azure CDN 組態變更會需要一些時間才能傳播至整個網路： 
-> - 若為**來自 Microsoft 的標準 Azure CDN** 設定檔，通常會在 10 分鐘內完成傳播。 
-> - 若為**來自 Akamai 的標準 Azure CDN** 設定檔，通常會在一分鐘內完成傳播。 
-> - 若為**來自 Verizon 的標準 Azure CDN** 和**來自 Verizon 的進階 Azure CDN** 設定檔，通常會在 10 分鐘內完成傳播。 
+> - 若為 **來自 Microsoft 的標準 Azure CDN** 設定檔，通常會在 10 分鐘內完成傳播。 
+> - 若為 **來自 Akamai 的標準 Azure CDN** 設定檔，通常會在一分鐘內完成傳播。 
+> - 若為 **來自 Verizon 的標準 Azure CDN** 和 **來自 Verizon 的進階 Azure CDN** 設定檔，通常會在 10 分鐘內完成傳播。 
 > 
 > 如果這是您第一次設定 CDN 端點壓縮，請先等候 1-2 小時再進行疑難排解，確定壓縮設定已傳播至 POP。
 
@@ -42,7 +42,7 @@ ms.locfileid: "92148753"
 
 ### <a name="standard-cdn-profiles"></a>標準 CDN 設定檔 
 > [!NOTE]
-> 本節適用於**來自 Microsoft 的標準 Azure CDN**、**來自 Verizon 的標準 Azure CDN** 及**來自 Akamai 的標準 Azure CDN** 設定檔。
+> 本節適用於 **來自 Microsoft 的標準 Azure CDN**、**來自 Verizon 的標準 Azure CDN** 及 **來自 Akamai 的標準 Azure CDN** 設定檔。
 > 
 > 
 
@@ -51,12 +51,12 @@ ms.locfileid: "92148753"
     ![CDN 設定檔端點](./media/cdn-file-compression/cdn-endpoints.png)
 
     隨即開啟 [CDN 端點] 頁面。
-2. 選取 [壓縮]****。
+2. 選取 [壓縮]。
 
     ![螢幕擷取畫面顯示已從入口網站功能表選取壓縮的端點。](./media/cdn-file-compression/cdn-compress-select-std.png)
 
     壓縮頁面隨即開啟。
-3. 選取 [開啟]**** 以開啟壓縮。
+3. 選取 [開啟] 以開啟壓縮。
 
     ![螢幕擷取畫面顯示開啟壓縮。](./media/cdn-file-compression/cdn-compress-standard.png)
 4. 請使用預設的 MIME 類型，或是新增或移除 MIME 類型以修改清單。
@@ -69,11 +69,11 @@ ms.locfileid: "92148753"
    > 目前不支援在 Microsoft 提供的 Azure CDN 標準中修改 MIME 類型的預設清單。
    > 
 
-5. 完成變更之後，請選取 [儲存]****。
+5. 完成變更之後，請選取 [儲存]。
 
 ### <a name="premium-cdn-profiles"></a>進階 CDN 設定檔
 > [!NOTE]
-> 本節僅適用於**來自 Verizon 的 Azure CDN 進階**設定檔。
+> 本節僅適用於 **來自 Verizon 的 Azure CDN 進階** 設定檔。
 > 
 
 1. 從 [CDN 設定檔] 頁面中，選取 [ **管理**]。
@@ -81,26 +81,26 @@ ms.locfileid: "92148753"
     ![CDN 管理選取](./media/cdn-file-compression/cdn-manage-btn.png)
 
     隨即開啟 CDN 管理入口網站。
-2. 將滑鼠移至 [HTTP 大型]**** 索引標籤上，然後將滑鼠移至 [快取設定]**** 飛出視窗上。 選取 [壓縮]****。
+2. 將滑鼠移至 [HTTP 大型] 索引標籤上，然後將滑鼠移至 [快取設定] 飛出視窗上。 選取 [壓縮]。
 
     ![CDN 壓縮選取項目](./media/cdn-file-compression/cdn-compress-select.png)
 
     壓縮選項隨即顯示。
 
     ![CDN 檔案壓縮選項](./media/cdn-file-compression/cdn-compress-files.png)
-3. 選取 [啟用壓縮]**** 以啟用壓縮。 在 [檔案類型]**** 方塊中，輸入您想要壓縮成逗號分隔清單 (無空格) 的 MIME 類型。
+3. 選取 [啟用壓縮] 以啟用壓縮。 在 [檔案類型] 方塊中，輸入您想要壓縮成逗號分隔清單 (無空格) 的 MIME 類型。
 
    > [!TIP]
    > 即使可行，我們依然不建議對壓縮格式套用壓縮。 例如，ZIP、MP3、MP4 或 JPG。
    > 
 
-4. 完成變更之後，請選取 [更新]****。
+4. 完成變更之後，請選取 [更新]。
 
 ## <a name="compression-rules"></a>壓縮規則
 
 ### <a name="azure-cdn-standard-from-microsoft-profiles"></a>來自 Microsoft 的標準 Azure CDN
 
-如果是**來自 Microsoft 的標準 Azure CDN** 設定檔，只會壓縮符合資格的檔案。 若要符合壓縮，檔案必須︰
+如果是 **來自 Microsoft 的標準 Azure CDN** 設定檔，只會壓縮符合資格的檔案。 若要符合壓縮，檔案必須︰
 - 屬於已 [設定壓縮](#enabling-compression)的 MIME 類型。
 - 大於 1 KB
 - 小於 8 MB
@@ -117,7 +117,7 @@ ms.locfileid: "92148753"
 
 ### <a name="azure-cdn-from-verizon-profiles"></a>來自 Verizon 的 Azure CDN 設定檔
 
-若為**來自 Verizon 的標準 Azure CDN** 和**來自 Verizon 的進階 Azure CDN** 設定檔，只會壓縮合格的檔案。 若要符合壓縮，檔案必須︰
+若為 **來自 Verizon 的標準 Azure CDN** 和 **來自 Verizon 的進階 Azure CDN** 設定檔，只會壓縮合格的檔案。 若要符合壓縮，檔案必須︰
 - 超過 128 個位元組
 - 小於 3 MB
 
@@ -133,7 +133,7 @@ ms.locfileid: "92148753"
 
 ### <a name="azure-cdn-standard-from-akamai-profiles"></a>來自 Akamai 的標準 Azure CDN 設定檔
 
-若為**來自 Akamai 的標準 Azure CDN** 設定檔，所有檔案都符合壓縮資格。 然而，檔案必須為已[設定壓縮](#enabling-compression)的 MIME 類型。
+若為 **來自 Akamai 的標準 Azure CDN** 設定檔，所有檔案都符合壓縮資格。 然而，檔案必須為已[設定壓縮](#enabling-compression)的 MIME 類型。
 
 這些設定檔只支援 gzip 壓縮編碼。 當設定檔端點要求 gzip 編碼檔案時，一律都是要求來自原點的檔案，不論用戶端是否提出要求。 
 
@@ -151,7 +151,7 @@ ms.locfileid: "92148753"
 | 未壓縮 |不快取 |未壓縮 | |
 
 ### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>已啟用壓縮且檔案適合進行壓縮
-| 用戶端要求的格式 (透過 Accept-Encoding 標頭) | 快取的檔案格式 | CDN 對用戶端的回應 | 備註 |
+| 用戶端要求的格式 (透過 Accept-Encoding 標頭) | 快取的檔案格式 | CDN 對用戶端的回應 | 注意 |
 | --- | --- | --- | --- |
 | Compressed |Compressed |Compressed |支援格式之間的 CDN 轉碼。 |
 | Compressed |未壓縮 |Compressed |CDN 執行壓縮。 |

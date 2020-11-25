@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
 ms.openlocfilehash: fd0e6f893d152259c46ff06e9ec20af54395c5e6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545305"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994378"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>在與 Azure Cache for Redis 搭配使用時移除 TLS 1.0 和 1.1
 
@@ -48,7 +48,7 @@ ms.locfileid: "92545305"
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>檢查您的應用程式是否已符合規範
 
-若要瞭解您的應用程式是否能使用 TLS 1.2，最簡單的方式就是在測試或暫存快取上將 **最小的 tls 版本** 值設定為 tls 1.2，然後執行測試。 **最低 TLS 版本** 設定位於 Azure 入口網站中快取執行個體的 [ [進階設定](cache-configure.md#advanced-settings)] 中。  如果應用程式在此變更之後仍繼續如預期般運作，則其可能符合規範。 您可能需要設定應用程式所使用的 Redis 用戶端程式庫，以啟用 TLS 1.2，以便連線到 Azure Cache for Redis。
+若要瞭解您的應用程式是否能使用 TLS 1.2，最簡單的方式就是在測試或暫存快取上將 **最小的 tls 版本** 值設定為 tls 1.2，然後執行測試。 **最低 TLS 版本** 設定位於 Azure 入口網站中快取執行個體的 [[進階設定](cache-configure.md#advanced-settings)] 中。  如果應用程式在此變更之後仍繼續如預期般運作，則其可能符合規範。 您可能需要設定應用程式所使用的 Redis 用戶端程式庫，以啟用 TLS 1.2，以便連線到 Azure Cache for Redis。
 
 ## <a name="configure-your-application-to-use-tls-12"></a>設定應用程式以使用 TLS 1.2
 

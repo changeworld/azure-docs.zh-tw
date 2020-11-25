@@ -5,11 +5,11 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: seodec18
 ms.openlocfilehash: cb5cda16cd9405f0cbe91a3f88be7dc3f582d21b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86142765"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993411"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>在虛擬網路中建立 Azure Batch 集區
 
@@ -35,14 +35,14 @@ ms.locfileid: "86142765"
 
 ## <a name="create-a-pool-with-a-vnet-in-the-azure-portal"></a>在 Azure 入口網站中建立具有 VNet 的集區
 
-在建立了 VNet 並為其指派子網路後，您可以建立具有該 VNet 的 Batch 集區。 請遵循下列步驟，從 Azure 入口網站建立集區： 
+在建立了 VNet 並為其指派子網路後，您可以建立具有該 VNet 的 Batch 集區。 請遵循下列步驟，從 Azure 入口網站建立集區： 
 
 1. 在 Azure 入口網站中瀏覽至您的 Batch 帳戶。 此帳戶必須位於與您要使用之 VNet 所在的資源群組相同的訂用帳戶和區域中。
 2. 在左側的 [設定] 視窗中，選取 [集區] 功能表項目。
-3. **在 [集**區] 視窗中，選取 [**新增**]。
+3. **在 [集** 區] 視窗中，選取 [**新增**]。
 4. 在 [新增集區] 視窗上，從 [映像類型] 下拉式清單選取您要使用的選項。
-5. 依據您的自訂映像選取正確的**發行者/提供項目/SKU**。
-6. 指定其餘的必要設定，包括**節點大小**、**目標專用的節點**和**低優先權的節點**，以及所需的任何選擇性設定。
+5. 依據您的自訂映像選取正確的 **發行者/提供項目/SKU**。
+6. 指定其餘的必要設定，包括 **節點大小**、**目標專用的節點** 和 **低優先權的節點**，以及所需的任何選擇性設定。
 7. 在 [虛擬網路] 中，選取您想要使用的虛擬網路和子網路。
 
    ![新增具有虛擬網路的集區](./media/batch-virtual-network/add-vnet-pool.png)
@@ -66,5 +66,5 @@ ms.locfileid: "86142765"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解 [Batch 服務工作流程和主要資源](batch-service-workflow-features.md)，例如集區、節點、作業和工作。
+- 深入了解 [Batch 服務工作流程和主要資源](batch-service-workflow-features.md)，例如集區、節點、作業和工作。
 - 瞭解如何 [在 Azure 入口網站中建立使用者定義的路由](../virtual-network/tutorial-create-route-table-portal.md)。

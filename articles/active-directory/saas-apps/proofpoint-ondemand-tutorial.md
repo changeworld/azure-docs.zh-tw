@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.openlocfilehash: 673856800ccb05a2b4b52511777a9a24769bcd6f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516625"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993596"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proofpoint-on-demand"></a>教學課程：Azure Active Directory 與 Proofpoint on Demand 整合
 
@@ -64,7 +64,7 @@ Proofpoint on Demand 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Proofpoint on Demand**，從結果面板中選取 [Proofpoint on Demand]，然後按一下 [新增] 按鈕以新增應用程式。
 
      ![結果清單中的 Proofpoint on Demand](common/search-new-app.png)
 
@@ -88,7 +88,7 @@ Proofpoint on Demand 與 Azure AD 整合提供下列優點：
 
 若要使用 Proofpoint on Demand 設定 Azure AD 單一登入，請執行下列步驟：
 
-1. 在  應用程式整合頁面上，選取 [單一登入]  。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Proofpoint on Demand] 應用程式整合頁面上，選取 [單一登入]。
 
     ![設定單一登入連結](common/select-sso.png)
 
@@ -117,7 +117,7 @@ Proofpoint on Demand 與 Azure AD 整合提供下列優點：
 
     ![憑證下載連結](common/certificatebase64.png)
 
-6. 在 [設定 Proofpoint on Demand]  區段上，依據您的需求複製適當的 URL。
+6. 在 [設定 Proofpoint on Demand] 區段上，依據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -147,7 +147,7 @@ Proofpoint on Demand 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱] 欄位中，輸入 **BrittaSimon** 。
+    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
   
     b. 在 [使用者名稱] 欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -160,11 +160,11 @@ Proofpoint on Demand 與 Azure AD 整合提供下列優點：
 
 在本節中，您會將 Proofpoint on Demand 的存取權授與 Britta Simon，讓 Britta Simon 能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]  、[所有應用程式]  及 [Proofpoint on Demand]  。
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]、[所有應用程式] 及 [Proofpoint on Demand]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [Proofpoint on Demand]  。
+2. 在應用程式清單中，選取 [Proofpoint on Demand]。
 
     ![應用程式清單中的 [Proofpoint on Demand] 連結](common/all-applications.png)
 

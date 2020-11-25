@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.date: 06/16/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 3e4bca058f554f60dfa5c237633d1fecf06dfea7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4f17fbfad1e7e550b3a1e95c93e4b061d0f1c3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87507311"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993412"
 ---
 ### <a name="general-requirements"></a>一般需求
 
@@ -36,7 +36,7 @@ ms.locfileid: "87507311"
 
 **支援的 Vnet** - 僅限以 Azure Resource Manager 為基礎的 Vnet
 
-**子網路識別碼** - 使用 Batch API 指定子網路時，請使用子網路的*資源識別碼*。 子網路識別碼的格式為：
+**子網路識別碼** - 使用 Batch API 指定子網路時，請使用子網路的 *資源識別碼*。 子網路識別碼的格式為：
 
 `/subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/virtualNetworks/{network}/subnets/{subnet}`
 
@@ -69,7 +69,7 @@ ms.locfileid: "87507311"
 
 | 來源 IP 位址 | 來源服務標籤 | 來源連接埠 | Destination | 目的地連接埠 | 通訊協定 | 動作 |
 | --- | --- | --- | --- | --- | --- | --- |
-| N/A | `BatchNodeManagement` [服務標籤](../articles/virtual-network/security-overview.md#service-tags) (如果在與 Batch 帳戶相同的區域中使用地區變體) | * | 任意 | 29876-29877 | TCP | Allow |
+| N/A | `BatchNodeManagement` [服務標籤](../articles/virtual-network/network-security-groups-overview.md#service-tags) (如果在與 Batch 帳戶相同的區域中使用地區變體) | * | 任意 | 29876-29877 | TCP | Allow |
 | 使用者來源 IP，用於遠端存取 Linux 多執行個體工作的計算節點和/或計算節點子網路 (如有需要)。 | N/A | * | 任意 | 3389 (Windows)、22 (Linux) | TCP | Allow |
 
 > [!WARNING]
@@ -79,13 +79,13 @@ ms.locfileid: "87507311"
 
 | 來源 | 來源連接埠 | Destination | 目的地服務標記 | 目的地連接埠 | 通訊協定 | 動作 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 任意 | * | [服務標記](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (如果在與 Batch 帳戶相同的區域中使用地區變體) | 443 | TCP | Allow |
+| 任意 | * | [服務標記](../articles/virtual-network/network-security-groups-overview.md#service-tags) | `Storage` (如果在與 Batch 帳戶相同的區域中使用地區變體) | 443 | TCP | Allow |
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>雲端服務組態中的集區
 
 **支援的 VNet** - 僅限傳統 VNet
 
-**子網路識別碼** - 使用 Batch API 指定子網路時，請使用子網路的*資源識別碼*。 子網路識別碼的格式為：
+**子網路識別碼** - 使用 Batch API 指定子網路時，請使用子網路的 *資源識別碼*。 子網路識別碼的格式為：
 
 `/subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicNetwork /virtualNetworks/{network}/subnets/{subnet}`
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 9e7386e21442b5a76aae656a36e2858b52ecef65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 895a81df858e51a266cd87c96a161695a4bf2cc1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87102522"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95992909"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
 
@@ -34,7 +34,7 @@ Install-Module -Name Az -AllowClobber -Scope CurrentUser
 
 一旦安裝之後，請使用來登入您的 PowerShell 會話 `Connect-AzAccount` 。
 
-若要建立具有 Azure PowerShell 的累加式快照集，請使用 [AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) 搭配參數設定設定， `-Incremental` 然後透過參數將其作為變數傳遞至 [>new-azsnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) `-Snapshot` 。
+若要建立具有 Azure PowerShell 的累加式快照集，請使用 [AzSnapShotConfig](/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) 搭配參數設定設定， `-Incremental` 然後透過參數將其作為變數傳遞至 [>new-azsnapshot](/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) `-Snapshot` 。
 
 ```PowerShell
 $diskName = "yourDiskNameHere>"
@@ -105,6 +105,6 @@ $incrementalSnapshots
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您想要查看使用 .NET 來示範增量快照差異功能的範例程式碼，請參閱 [將 Azure 受控磁碟備份複製到具有增量快照差異功能的另一個區域](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)。

@@ -7,11 +7,11 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
 ms.openlocfilehash: 2f298f240d8aa7a38b42a8c78ee3c90fe3423d10
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91630546"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993545"
 ---
 # <a name="tutorial-create-and-publish-a-product"></a>教學課程：建立和發行產品  
 
@@ -38,7 +38,7 @@ ms.locfileid: "91630546"
 1. 在左側導覽中，選取 [產品]  >  [+ 新增]。
 1.  在 [新增產品] 視窗中，輸入下表所述的值，以建立您的產品。
 
-    :::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-01.png" alt-text="入口網站中的 API 管理產品":::
+    :::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-01.png" alt-text="在入口網站中新增產品":::
 
     | 名稱                     | 說明                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -80,7 +80,7 @@ ms.locfileid: "91630546"
 1. 選取 [+ 新增] 。
 1. 選取一或多個 API，然後選取 [選取]。
 
-:::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-02.png" alt-text="入口網站中的 API 管理產品":::
+:::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-02.png" alt-text="將 API 新增至現有的產品":::
 
 > [!TIP]
 > 您可以透過 [REST API](/rest/api/apimanagement/2019-12-01/subscription/createorupdate) 或 PowerShell 命令，使用自訂的訂用帳戶金鑰建立或更新使用者的產品訂用帳戶。

@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.openlocfilehash: d7a5d160fa8a0209478fe81d2880e8956828350d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92504706"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993494"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Shopify Plus 整合
 
@@ -51,7 +51,7 @@ ms.locfileid: "92504706"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Shopify Plus** 。
+1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Shopify Plus**。
 1. 從結果面板中選取 [Shopify Plus]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -73,7 +73,7 @@ ms.locfileid: "92504706"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Shopify Plus] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -100,7 +100,7 @@ ms.locfileid: "92504706"
     | 電子郵件 | user.mail |
 
 1. 將 [名稱識別碼] 格式變更為 [持續性]。 選取 [唯一使用者識別碼 (名稱識別碼)] 選項，然後選取 [名稱識別碼] 格式。 為這個選項選取 [持續性]。 儲存您的變更。
-1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，選取 [複製] 按鈕以複製 **應用程式同盟中繼資料 URL** ，並儲存在您的電腦上。
+1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，選取 [複製] 按鈕以複製 **應用程式同盟中繼資料 URL**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/copy-metadataurl.png)
 
@@ -138,7 +138,7 @@ ms.locfileid: "92504706"
 
 若要檢視完整步驟，請參閱[有關設定 SAML 整合的 Shopify 文件](https://help.shopify.com/en/manual/shopify-plus/saml)。
 
-若要在 **Shopify Plus** 端上設定單一登入，請從 Azure Active Directory 複製 **應用程式同盟中繼資料 URL** 。 然後，登入[組織管理](https://shopify.plus)，並移至 [使用者] > [安全性]。 選取 [設定組態]，然後在 [識別提供者中繼資料 URL] 區段中貼上您的應用程式同盟中繼資料 URL。 選取 [新增] 以完成這個步驟。
+若要在 **Shopify Plus** 端上設定單一登入，請從 Azure Active Directory 複製 **應用程式同盟中繼資料 URL**。 然後，登入[組織管理](https://shopify.plus)，並移至 [使用者] > [安全性]。 選取 [設定組態]，然後在 [識別提供者中繼資料 URL] 區段中貼上您的應用程式同盟中繼資料 URL。 選取 [新增] 以完成這個步驟。
 
 ### <a name="create-shopify-plus-test-user"></a>建立 Shopify Plus 測試使用者
 

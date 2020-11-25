@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.openlocfilehash: 748566cf5b25157fcb8a2938a3f4bd307c930874
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895122"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993203"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>教學課程：Azure Active Directory 與 SAP HANA 整合
 
@@ -72,7 +72,7 @@ SAP HANA 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **SAP HANA** ，從結果面板中選取 [SAP HANA]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **SAP HANA**，從結果面板中選取 [SAP HANA]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 SAP HANA](common/search-new-app.png)
 
@@ -125,7 +125,7 @@ SAP HANA 與 Azure AD 整合提供下列優點：
 
 6. 在 [使用者屬性與宣告] 對話方塊的 [使用者屬性] 區段中，執行下列步驟：
  
-    a. 按一下 [ **編輯** ] 圖示以開啟 [ **管理使用者宣告** ] 對話方塊。
+    a. 按一下 [**編輯**] 圖示以開啟 [**管理使用者宣告**] 對話方塊。
 
     ![顯示 [使用者屬性和宣告] 對話方塊的螢幕擷取畫面，其中已選取 [編輯] 圖示。](./media/saphana-tutorial/tutorial_usermail.png)
 
@@ -137,13 +137,13 @@ SAP HANA 與 Azure AD 整合提供下列優點：
 
     d. 按一下 [檔案]  。
 
-7. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
+7. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
 ### <a name="configure-sap-hana-single-sign-on"></a>設定 SAP HANA 單一登入
 
-1. 若要在 SAP Hana 端設定單一登入，請瀏覽至個別的 HTTPS 端點以登入您的 **HANA XSA Web 主控台** 。
+1. 若要在 SAP Hana 端設定單一登入，請瀏覽至個別的 HTTPS 端點以登入您的 **HANA XSA Web 主控台**。
 
     > [!NOTE]
     > 在預設組態中，URL 會將要求重新導向至登入畫面，這需要已通過驗證之 SAP Hana 資料庫使用者的認證。 登入的使用者必須擁有執行 SAML 管理工作的權限。
@@ -169,7 +169,7 @@ SAP HANA 與 Azure AD 整合提供下列優點：
 
     ![[儲存] 按鈕](./media/saphana-tutorial/sap4.png)
 
-4. 在 HANA Studio 之 [設定]  索引標籤的系統屬性中，依 **saml** 篩選設定。 然後將 **assertion_timeout** 從 **10 秒** 調整為 **120 秒** 。
+4. 在 HANA Studio 之 [設定]  索引標籤的系統屬性中，依 **saml** 篩選設定。 然後將 **assertion_timeout** 從 **10 秒** 調整為 **120 秒**。
 
     ![assertion_timeout 設定](./media/saphana-tutorial/sap7.png)
 
@@ -189,7 +189,7 @@ SAP HANA 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com

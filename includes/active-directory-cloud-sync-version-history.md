@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 46c27fa2073ea1178fdf01ea3cbf96fe86954a6a
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 3fc2475569765116d46a175629f25d9d49634942
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95255101"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993939"
 ---
 本文列出已發行 Azure Active Directory Connect 布建代理程式的版本和功能。 Azure AD 團隊會定期以新的特性和功能更新布建代理程式。 發行新版本時，會自動更新布建代理程式。 
 
@@ -14,12 +14,12 @@ Microsoft 提供最新代理程式版本的直接支援，以及之前的一個�
 
 ### <a name="release-status"></a>發行狀態
 
-2020年11月 XX 日：已發行以供下載
+2020年11月23日：已發行以供下載
 
 ### <a name="new-features-and-improvements"></a>新功能和改進
 
 * 對[gMSA](../articles/active-directory/cloud-provisioning/how-to-prerequisites.md#group-managed-service-accounts)的支援
-* 在差異同步處理期間，最大可支援1500個成員的群組 () 
+* 在增量或差異同步處理週期期間，最多可支援群組大小小於1500的成員。 這適用于使用群組範圍篩選器時
 * 支援成員大小高達15K 的大型群組
 * 初始同步改進
 * Advanced verbose 記錄

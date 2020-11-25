@@ -16,11 +16,11 @@ ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: devx-track-js
 ms.openlocfilehash: f5d5c7a6e1f6993b19f38db2ae846b213a1d553e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316747"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993368"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>開始使用 Azure CDN 開發
 > [!div class="op_single_selector"]
@@ -49,18 +49,18 @@ ms.locfileid: "91316747"
 npm init
 ```
 
-然後您會看到一系列用來初始化專案的問題。  本教學課程使用 app.js **** 做為 *進入點*。  您可以在下列範例中看到我的其他選擇。
+然後您會看到一系列用來初始化專案的問題。  本教學課程使用 app.js 做為 *進入點*。  您可以在下列範例中看到我的其他選擇。
 
 ![NPM init 輸出](./media/cdn-app-dev-node/cdn-npm-init.png)
 
-我們的專案現在會使用 packages.json ** 檔案加以初始化。  我們的專案將使用 NPM 封裝內含的一些 Azure 程式庫。  我們將會針對 Node.js (ms-rest-azure) 使用 Azure 用戶端執行階段，針對 Node.js (azure-arm-cd) 使用 Azure CDN 用戶端程式庫。  讓我們將它們新增至專案做為相依性。
+我們的專案現在會使用 packages.json  檔案加以初始化。  我們的專案將使用 NPM 封裝內含的一些 Azure 程式庫。  我們將會針對 Node.js (ms-rest-azure) 使用 Azure 用戶端執行階段，針對 Node.js (azure-arm-cd) 使用 Azure CDN 用戶端程式庫。  讓我們將它們新增至專案做為相依性。
 
 ```console
 npm install --save ms-rest-azure
 npm install --save azure-arm-cdn
 ```
 
-封裝完成安裝後，package.json ** 檔案看起來應該類似此範例 (版本號碼可能不同)：
+封裝完成安裝後，package.json  檔案看起來應該類似此範例 (版本號碼可能不同)：
 
 ``` json
 {
@@ -80,10 +80,10 @@ npm install --save azure-arm-cdn
 }
 ```
 
-最後，使用文字編輯器來建立空白文字檔，並將它儲存為專案資料夾根目錄中的 app.js **。  我們現在可以開始撰寫程式碼了。
+最後，使用文字編輯器來建立空白文字檔，並將它儲存為專案資料夾根目錄中的 app.js 。  我們現在可以開始撰寫程式碼了。
 
 ## <a name="requires-constants-authentication-and-structure"></a>必要項目、常數、驗證和結構
-在編輯器中開啟 app.js ** ，開始撰寫程式的基本結構。
+在編輯器中開啟 app.js  ，開始撰寫程式的基本結構。
 
 1. 使用下列內容在頂端為我們的 NPM 封裝新增「必要項目」︰
    
@@ -124,7 +124,7 @@ npm install --save azure-arm-cdn
     var cdnClient = new cdnManagementClient(credentials, subscriptionId);
     ```
    
-    請務必將** &lt; 角括弧 &gt; **中的專案取代為正確的資訊。  對於 `<redirect URI>`，請使用您在 Azure AD 中註冊應用程式時所輸入的重新導向 URI。
+    請務必將 **&lt; 角括弧 &gt;** 中的專案取代為正確的資訊。  對於 `<redirect URI>`，請使用您在 Azure AD 中註冊應用程式時所輸入的重新導向 URI。
 4. 我們的 Node.js 主控台應用程式將會採用一些命令列參數。  讓我們驗證看看是否已至少傳遞一個參數。
    
    ```javascript

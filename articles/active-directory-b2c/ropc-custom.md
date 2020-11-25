@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bf8fe68c28457fd01704762e537fe259a96a6bce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d6fb23d7325347a1b27165d3e9bc3bf33797682
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87116235"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95994346"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>在 Azure Active Directory B2C 中使用自訂原則來設定資源擁有者密碼認證流程
 
@@ -247,7 +247,7 @@ ms.locfileid: "87116235"
 
 使用您最慣用的 API 開發應用程式產生 API 呼叫，並檢視回應以對您的原則偵錯。 請使用下列資訊作為 POST 要求的本文，以建構與此範例類似的呼叫：
 
-`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_ROPC_Auth/oauth2/v2.0/token`
 
 - 將 `<tenant-name>` 取代為您的 Azure AD B2C 租用戶名稱。
 - 以您資源擁有者密碼認證原則的完整名稱取代 `B2C_1A_ROPC_Auth`。
@@ -269,7 +269,7 @@ ms.locfileid: "87116235"
 實際的 POST 要求與以下範例類似：
 
 ```https
-POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
+POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?B2C_1A_ROPC_Auth HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -292,7 +292,7 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 
 建構一個如以下所示的 POST 呼叫。 使用下表中的資訊作為要求的本文：
 
-`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_ROPC_Auth/oauth2/v2.0/token`
 
 - 將 `<tenant-name>` 取代為您的 Azure AD B2C 租用戶名稱。
 - 以您資源擁有者密碼認證原則的完整名稱取代 `B2C_1A_ROPC_Auth`。

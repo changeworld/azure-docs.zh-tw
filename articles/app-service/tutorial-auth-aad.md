@@ -8,11 +8,11 @@ ms.date: 04/29/2020
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: 8620d6bc403882cb308405e8ffb4412917d0c6f1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743823"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993449"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>教學課程：在 Azure App Service 中對使用者進行端對端驗證和授權
 
@@ -158,7 +158,7 @@ http://<front-end-app-name>.azurewebsites.net
 
 ### <a name="modify-front-end-code"></a>修改前端程式碼
 
-在本機存放庫中，開啟 _Controllers/TodoController.cs_ 。 在 `TodoController` 類別的開頭處加上以下幾行，並將 _\<back-end-app-name>_ 取代為後端應用程式的名稱：
+在本機存放庫中，開啟 _Controllers/TodoController.cs_。 在 `TodoController` 類別的開頭處加上以下幾行，並將 _\<back-end-app-name>_ 取代為後端應用程式的名稱：
 
 ```cs
 private static readonly HttpClient _client = new HttpClient();
@@ -327,7 +327,7 @@ git push frontend master
 > [!NOTE]
 > 在所有支援的語言中都會插入這些標頭。 您可以使用個別語言的標準模式存取這些標頭。
 
-在本機存放庫中，再次開啟 _Controllers/TodoController.cs_ 。 在 `TodoController(TodoContext context)` 建構函式下，新增下列程式碼：
+在本機存放庫中，再次開啟 _Controllers/TodoController.cs_。 在 `TodoController(TodoContext context)` 建構函式下，新增下列程式碼：
 
 ```cs
 public override void OnActionExecuting(ActionExecutingContext context)
@@ -382,7 +382,7 @@ az webapp cors add --resource-group myAuthResourceGroup --name <back-end-app-nam
 
 在第 51 行中，將 `apiEndpoint` 變數設為後端應用程式的 HTTPS URL (`https://<back-end-app-name>.azurewebsites.net`)。 以您在 App Service 中的應用程式名稱取代 _\<back-end-app-name>_ 。
 
-在本機存放庫中開啟 _wwwroot/app/scripts/todoListSvc.js_ ，並確認所有 API 呼叫前面都加上了 `apiEndpoint`。 您的 Angular.js 應用程式現在會呼叫後端 API。 
+在本機存放庫中開啟 _wwwroot/app/scripts/todoListSvc.js_，並確認所有 API 呼叫前面都加上了 `apiEndpoint`。 您的 Angular.js 應用程式現在會呼叫後端 API。 
 
 ### <a name="add-access-token-to-api-calls"></a>將存取權杖新增至 API 呼叫
 
@@ -396,7 +396,7 @@ setAuth: function (token) {
 
 呼叫此函式可設定含有存取權杖的預設 `Authorization` 標頭。 您將在下一個步驟中加以呼叫。
 
-在本機存放庫中開啟 _wwwroot/app/scripts/app.js_ ，並尋找下列程式碼：
+在本機存放庫中開啟 _wwwroot/app/scripts/app.js_，並尋找下列程式碼：
 
 ```javascript
 $routeProvider.when("/Home", {

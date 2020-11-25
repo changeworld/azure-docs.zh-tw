@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8fa1c2627917bfe386c488470f6a78db4c51f2ec
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363669"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994259"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>運作方式：Azure AD 自助式密碼重設
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者�
 
 * 根據預設，瀏覽器地區設定會用來以適當的語言顯示 SSPR。 密碼重設體驗會當地語系化成 [Microsoft 365 支援](https://support.microsoft.com/office/what-languages-is-office-available-in-26d30382-9fba-45dd-bf55-02ab03e2a7ec)的相同語言。
 * 如果您想要以特定的當地語系化語言連結到 SSPR，請附加 `?mkt=` 至密碼重設 URL 的結尾，以及所需的地區設定。
-    * 例如，若要指定西班牙文的*es*地區設定，請使用 `?mkt=es-us`  -  [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us) 。
+    * 例如，若要指定西班牙文的 *es* 地區設定，請使用 `?mkt=es-us`  -  [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us) 。
 
 在 SSPR 入口網站以所需的語言顯示之後，系統會提示使用者輸入使用者識別碼並通過 captcha。 Azure AD 現在會執行下列檢查，以驗證使用者是否能夠使用 SSPR：
 
@@ -154,9 +154,9 @@ Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者�
 
 | 已註冊的方法數 | 所需的方法數 | 結果 |
 | :---: | :---: | :---: |
-| 1 或多個 | 1 | **能夠**重設或解除鎖定 |
-| 1 | 2 | **無法**重設或解除鎖定 |
-| 2 以上 | 2 | **能夠**重設或解除鎖定 |
+| 1 或多個 | 1 | **能夠** 重設或解除鎖定 |
+| 1 | 2 | **無法** 重設或解除鎖定 |
+| 2 以上 | 2 | **能夠** 重設或解除鎖定 |
 
 變更可用的驗證方法也可能會造成使用者的問題。 如果您變更使用者可使用的驗證方法類型，可能會不小心導致使用者在沒有最基本可用資料量時無法使用 SSPR。
 
@@ -182,7 +182,7 @@ Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者�
 
 * 環境中有四個系統管理員。
 * 系統管理員 *A* 會使用 SSPR 重設其密碼。
-* 系統管理員 *B*、 *C*和 *D* 收到一封電子郵件，警示他們密碼重設。
+* 系統管理員 *B*、 *C* 和 *D* 收到一封電子郵件，警示他們密碼重設。
 
 ## <a name="on-premises-integration"></a>內部部署整合
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: af387b063a3c07d8b6b6c544814565e2a5ebdd46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87495721"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993766"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V 至 Azure 的災害復原架構
 
@@ -83,7 +83,7 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 
 ### <a name="enable-protection"></a>啟用保護。
 
-1. 您在 Azure 入口網站或內部部署針對 Hyper-V VM 啟用保護之後，**啟用保護**隨即啟動。
+1. 您在 Azure 入口網站或內部部署針對 Hyper-V VM 啟用保護之後，**啟用保護** 隨即啟動。
 2. 作業會檢查符合必要條件的機器，然後叫用 [CreateReplicationRelationship](/windows/win32/hyperv_v2/createreplicationrelationship-msvm-replicationservice) 方法，以使用您進行的設定來設定複寫。
 3. 作業會啟動初始複寫，方法是叫用 [StartReplication](/windows/win32/hyperv_v2/startreplication-msvm-replicationservice) 方法，以初始化完整的 VM 複寫，並且將 VM 的虛擬磁碟傳送至 Azure。
 4. 您可以在 [**工作**] 索引標籤中監視作業。     ![[工作] 索引標籤中 [作業] 清單的螢幕擷取畫面。 ](media/hyper-v-azure-architecture/image1.png)![啟用保護畫面的螢幕擷取畫面，其中包含更多詳細資料。](media/hyper-v-azure-architecture/image2.png)
@@ -100,7 +100,7 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 
 ### <a name="finalize-protection-process"></a>完成保護程序
 
-1. 當初始複寫完成之後，就會執行 [完成虛擬機器上的保護]**** 作業。 這會設定網路和其他複寫後設定，讓 VM 受到保護。
+1. 當初始複寫完成之後，就會執行 [完成虛擬機器上的保護] 作業。 這會設定網路和其他複寫後設定，讓 VM 受到保護。
 2. 在這個階段，您可以檢查 VM 設定以確定它已準備好進行容錯移轉。 您可以執行 VM 的災害復原演練 (測試容錯移轉)，以檢查它是否如預期般容錯移轉。 
 
 
@@ -121,7 +121,7 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
     - 它會使用固定區塊的區塊處理演算法，將來源和目標檔案分成固定區塊。
     - 系統會產生每個區塊的總和檢查碼。 這些總和檢查碼會相互比較，以決定來源中的哪些區塊必須套用至目標。
 2. 重新同步處理完成之後，應會繼續進行正常的差異複寫。
-3. 如果您不想等候預設外部重新同步處理時數，您可以手動重新同步處理 VM。 例如，如果發生中斷。 若要這樣做，請在入口網站中選取 VM > [重新同步處理]****。
+3. 如果您不想等候預設外部重新同步處理時數，您可以手動重新同步處理 VM。 例如，如果發生中斷。 若要這樣做，請在入口網站中選取 VM > [重新同步處理]。
 
     ![顯示 [重新同步處理] 選項的螢幕擷取畫面。](./media/hyper-v-azure-architecture/image4-site.png)
 
@@ -132,7 +132,7 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 
 **類別** | **詳細資料**
 --- | ---
-**無法復原的錯誤** | 不嘗試重試。 VM 狀態為**重大**，需要管理員介入處理。<br/><br/> 這些錯誤的範例包括中斷 VHD 鏈結、複本 VM 的狀態無效、網路驗證錯誤、授權錯誤，以及找不到 VM 錯誤 (適用於獨立 Hyper-V 伺服器)。
+**無法復原的錯誤** | 不嘗試重試。 VM 狀態為 **重大**，需要管理員介入處理。<br/><br/> 這些錯誤的範例包括中斷 VHD 鏈結、複本 VM 的狀態無效、網路驗證錯誤、授權錯誤，以及找不到 VM 錯誤 (適用於獨立 Hyper-V 伺服器)。
 **可復原的錯誤** | 在每個複寫間隔中進行重試，並採用指數倒退法，從第一次嘗試開始增加重試間隔 (1、2、4、8、10 分鐘)。 如果錯誤持續發生，會每隔 30 分鐘重試一次。 範例包括網路錯誤、磁碟空間不足錯誤，以及記憶體不足情況。
 
 
@@ -157,7 +157,7 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 
 遵循[此教學課程](tutorial-prepare-azure.md)以開始使用 Hyper-V 至 Azure 的複寫。

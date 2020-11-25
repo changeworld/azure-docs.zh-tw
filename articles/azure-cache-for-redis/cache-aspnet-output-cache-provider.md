@@ -8,11 +8,11 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 04/22/2018
 ms.openlocfilehash: 6d711b07a10e04dcdf31259f3e53c9687af28e28
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544625"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993397"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>適用於 Azure Redis 快取的 ASP.NET 輸出快取提供者
 
@@ -22,7 +22,7 @@ Redis 輸出快取提供者為輸出快取資料的程序外儲存體機制。 �
 
 ## <a name="store-aspnet-page-output-in-the-cache"></a>將 ASP.NET 頁面輸出儲存在快取中
 
-若要在 Visual Studio 中使用「Azure Cache for Redis 工作階段狀態」NuGet 套件來設定用戶端應用程式，請從 [工具]  功能表中，依序按一下 [NuGet 套件管理員]  和 [套件管理員主控台]  。
+若要在 Visual Studio 中使用「Azure Cache for Redis 工作階段狀態」NuGet 套件來設定用戶端應用程式，請從 [工具] 功能表中，依序按一下 [NuGet 套件管理員] 和 [套件管理員主控台]。
 
 從 `Package Manager Console` 視窗執行下列命令。
 
@@ -61,12 +61,12 @@ NuGet 封裝會下載和加入必要的組件參考，並將下列區段加入�
 | *databaseIdNumber* | 正整數 | 0 | *這個屬性只能透過 web.config 或 AppSettings 來指定。*<br/><br/>指定要使用的 Redis 資料庫。 |
 | *connectionTimeoutInMilliseconds* | 正整數 | 由 >stackexchange.redis Redis 提供。 | 用來在建立 >stackexchange.redis. Redis. ConnectionMultiplexer 時設定 *ConnectTimeout* 。 |
 | *operationTimeoutInMilliseconds* | 正整數 | 由 >stackexchange.redis Redis 提供。 | 用來在建立 >stackexchange.redis. Redis. ConnectionMultiplexer 時設定 *SyncTimeout* 。 |
-| *connectionString* (有效的 >stackexchange.redis. Redis 連接字串)  | 字串 | *n/a* | AppSettings 或 web.config 的參數參考，或其他有效的 >stackexchange.redis. Redis 連接字串。 這個屬性可以提供 *host* 、 *port* 、 *AccessKey* 、 *ssl* 和其他 >stackexchange.redis Redis 屬性的值。 若要深入瞭解 *connectionString* ，請參閱 [屬性附注](#attribute-notes)一節中的 [設定 connectionString](#setting-connectionstring) 。 |
-| *settingsClassName*<br/>*settingsMethodName* | 字串<br/>字串 | *n/a* | *這些屬性只能透過 web.config 或 AppSettings 來指定。*<br/><br/>使用這些屬性來提供連接字串。 *settingsClassName* 應該是元件限定的類別名稱，其中包含 *settingsMethodName* 所指定的方法。<br/><br/>*SettingsMethodName* 所指定的方法應該是 public、static 和 void (不採用任何) 的參數，其傳回型別為 **string** 。 這個方法會傳回實際的連接字串。 |
+| *connectionString* (有效的 >stackexchange.redis. Redis 連接字串)  | 字串 | *n/a* | AppSettings 或 web.config 的參數參考，或其他有效的 >stackexchange.redis. Redis 連接字串。 這個屬性可以提供 *host*、 *port*、 *AccessKey*、 *ssl* 和其他 >stackexchange.redis Redis 屬性的值。 若要深入瞭解 *connectionString*，請參閱 [屬性附注](#attribute-notes)一節中的 [設定 connectionString](#setting-connectionstring) 。 |
+| *settingsClassName*<br/>*settingsMethodName* | 字串<br/>字串 | *n/a* | *這些屬性只能透過 web.config 或 AppSettings 來指定。*<br/><br/>使用這些屬性來提供連接字串。 *settingsClassName* 應該是元件限定的類別名稱，其中包含 *settingsMethodName* 所指定的方法。<br/><br/>*SettingsMethodName* 所指定的方法應該是 public、static 和 void (不採用任何) 的參數，其傳回型別為 **string**。 這個方法會傳回實際的連接字串。 |
 | *loggingClassName*<br/>*loggingMethodName* | 字串<br/>字串 | *n/a* | *這些屬性只能透過 web.config 或 AppSettings 來指定。*<br/><br/>藉由提供會話狀態/輸出快取的記錄以及 >stackexchange.redis. Redis 的記錄，即可使用這些屬性來對應用程式進行偵錯工具。 *loggingClassName* 應該是元件限定的類別名稱，其中包含 *loggingMethodName* 所指定的方法。<br/><br/>LoggingMethodName 所指定的方法應該是 public、static 和 void (不會採用任何) 的參數，且傳回型別 **為** *loggingMethodName* 。 |
 | *applicationName* | 字串 | 目前進程的模組名稱，或 "/" | *僅限 SessionStateProvider*<br/>*這個屬性只能透過 web.config 或 AppSettings 來指定。*<br/><br/>要在 Redis 快取中使用的應用程式名稱前置詞。 客戶可使用相同的 Redis 快取來進行不同的用途。 為確保工作階段金鑰不會衝突，可以在前面加上應用程式名稱。 |
-| *throwOnError* | boolean | true | *僅限 SessionStateProvider*<br/>*這個屬性只能透過 web.config 或 AppSettings 來指定。*<br/><br/>發生錯誤時，是否擲回例外狀況。<br/><br/>如需 *throwOnError* 的詳細資訊，請參閱 [屬性附注](#attribute-notes)一節中 [ *throwOnError* 的附注](#notes-on-throwonerror)。 |>*Redis. >redissessionstateprovider. LastException* 。 |
-| *retryTimeoutInMilliseconds* | 正整數 | 5000 | *僅限 SessionStateProvider*<br/>*這個屬性只能透過 web.config 或 AppSettings 來指定。*<br/><br/>作業失敗時要重試的時間長度。 如果這個值小於 *operationTimeoutInMilliseconds* ，提供者將不會重試。<br/><br/>如需 *retryTimeoutInMilliseconds* 的詳細資訊，請參閱 [屬性附注](#attribute-notes)一節中 [ *retryTimeoutInMilliseconds* 的附注](#notes-on-retrytimeoutinmilliseconds)。 |
+| *throwOnError* | boolean | true | *僅限 SessionStateProvider*<br/>*這個屬性只能透過 web.config 或 AppSettings 來指定。*<br/><br/>發生錯誤時，是否擲回例外狀況。<br/><br/>如需 *throwOnError* 的詳細資訊，請參閱 [屬性附注](#attribute-notes)一節中 [ *throwOnError* 的附注](#notes-on-throwonerror)。 |>*Redis. >redissessionstateprovider. LastException*。 |
+| *retryTimeoutInMilliseconds* | 正整數 | 5000 | *僅限 SessionStateProvider*<br/>*這個屬性只能透過 web.config 或 AppSettings 來指定。*<br/><br/>作業失敗時要重試的時間長度。 如果這個值小於 *operationTimeoutInMilliseconds*，提供者將不會重試。<br/><br/>如需 *retryTimeoutInMilliseconds* 的詳細資訊，請參閱 [屬性附注](#attribute-notes)一節中 [ *retryTimeoutInMilliseconds* 的附注](#notes-on-retrytimeoutinmilliseconds)。 |
 | *redisSerializerType* | 字串 | *n/a* | 指定 Redis 之類別的元件限定型別名稱。 ISerializer，其中包含要序列化和還原序列化值的自訂邏輯。 如需詳細資訊，請參閱 [屬性附注](#attribute-notes)一節中的 [關於 *redisSerializerType*](#about-redisserializertype) 。 |
 
 ## <a name="attribute-notes"></a>屬性附注
@@ -135,7 +135,7 @@ NuGet 封裝會下載和加入必要的組件參考，並將下列區段加入�
 
 此行為已經過修改，可支援現有 ASP.NET 會話狀態提供者使用者的期望，同時也提供在需要時處理例外狀況的能力。 當發生錯誤時，預設行為仍然會擲回例外狀況，與其他 ASP.NET 會話狀態提供者一致;現有程式碼的運作方式應該與之前相同。
 
-如果您將 *throwOnError* 設定為 **false** ，則不會在錯誤發生時擲回例外狀況，而是會無訊息地失敗。 若要查看是否有錯誤，如果有，請探索例外狀況，並檢查 Redis 的靜態屬性。 *>redissessionstateprovider. LastException* 。
+如果您將 *throwOnError* 設定為 **false**，則不會在錯誤發生時擲回例外狀況，而是會無訊息地失敗。 若要查看是否有錯誤，如果有，請探索例外狀況，並檢查 Redis 的靜態屬性。 *>redissessionstateprovider. LastException*。
 
 ### <a name="notes-on-retrytimeoutinmilliseconds"></a>*RetryTimeoutInMilliseconds* 上的注意事項
 
@@ -204,6 +204,6 @@ namespace MyCompany.Redis
 * [Apache Ignite](https://apacheignite-net.readme.io/docs/aspnet-output-caching)
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 請參閱[適用於 Azure Redis 快取的 ASP.NET 工作階段狀態提供者](cache-aspnet-session-state-provider.md)。

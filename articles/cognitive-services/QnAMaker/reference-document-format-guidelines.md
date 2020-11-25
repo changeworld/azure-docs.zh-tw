@@ -6,11 +6,11 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 04/06/2020
 ms.openlocfilehash: d35ea57a68e500deffa99033b83114ec518dd5e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776726"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993800"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>匯入檔和 Url 的格式指導方針
 
@@ -70,9 +70,9 @@ Answer2
 
  ![知識庫的結構化 QnA 文件範例](./media/qnamaker-concepts-datasources/structured-qna-doc.png)
 
-## <a name="structured-txt-tsv-and-xls-files"></a>結構化的 TXT**、TSV** 和 XLS** 檔案
+## <a name="structured-txt-tsv-and-xls-files"></a>結構化的 TXT、TSV 和 XLS 檔案
 
-採用結構化 .txt**、.tsv** 或 .xls** 檔案形式的 QnA 也可上傳至 QnA Maker，以便建立或擴大知識庫。  這些檔案可以是純文字，也可以具有 RTF 或 HTML 的內容。
+採用結構化 .txt、.tsv 或 .xls 檔案形式的 QnA 也可上傳至 QnA Maker，以便建立或擴大知識庫。  這些檔案可以是純文字，也可以具有 RTF 或 HTML 的內容。
 
 | 問題  | Answer  | 中繼資料 (1 索引鍵：1值)  |
 |-----------|---------|-------------------------|
@@ -83,7 +83,7 @@ Answer2
 
 ### <a name="example-of-structured-excel-file"></a>結構化 Excel 檔案的範例
 
-以下是具有 HTML 內容的結構化 QnA .xls** 檔案範例：
+以下是具有 HTML 內容的結構化 QnA .xls 檔案範例：
 
  ![知識庫的結構化 QnA Excel 範例](./media/qnamaker-concepts-datasources/structured-qna-xls.png)
 

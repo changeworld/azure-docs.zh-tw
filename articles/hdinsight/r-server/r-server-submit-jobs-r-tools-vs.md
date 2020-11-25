@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.openlocfilehash: 08426c74b26c18b15466578d9921520da1e9c923
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536227"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993783"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>從 Visual Studio R 工具提交作業
 
@@ -27,7 +27,7 @@ RTVS 會增強您的 R 工作流程，方法是提供例如 [R 互動視窗](/vi
 
     ![在 Visual Studio 2017 中安裝 RTVS](./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png)
 
-2. 選取 *資料科學和分析應用程式* 工作負載，然後選取 **R 語言支援** 、 **R 開發的執行階段支援** 和 **Microsoft R 用戶端** 選項。
+2. 選取 *資料科學和分析應用程式* 工作負載，然後選取 **R 語言支援**、**R 開發的執行階段支援** 和 **Microsoft R 用戶端** 選項。
 
 3. 您需要有公開和私密金鑰以進行 SSH 驗證。
    <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
@@ -37,14 +37,14 @@ RTVS 會增強您的 R 工作流程，方法是提供例如 [R 互動視窗](/vi
 5. 安裝 [PuTTY](https://www.putty.org/) 以提供計算內容，從您的本機用戶端將 `RevoScaleR` 函式執行至 HDInsight 叢集。
 
 6. 您可以選擇將資料科學設定套用至 Visual Studio 環境，它為您的 R 工具工作區提供新的版面配置。
-   1. 若要儲存目前的 Visual Studio 設定，使用 [工具] > [匯入和匯出設定]  命令，然後選取 [匯出選取的環境設定]  並且指定檔案名稱。 若要還原這些設定，請使用相同的命令並選取 [匯入選取的環境設定]  。
+   1. 若要儲存目前的 Visual Studio 設定，使用 [工具] > [匯入和匯出設定] 命令，然後選取 [匯出選取的環境設定] 並且指定檔案名稱。 若要還原這些設定，請使用相同的命令並選取 [匯入選取的環境設定]。
 
-   2. 移至 [R 工具]  功能表項目，然後選取 [資料科學設定...]  .
+   2. 移至 [R 工具] 功能表項目，然後選取 [資料科學設定...].
 
        ![Visual Studio 資料科學設定](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
       > [!NOTE]  
-      > 使用步驟 1 中的方法，您也可以儲存和還原您的個人化資料科學家版面配置，而不用重複 [資料科學設定]  命令。
+      > 使用步驟 1 中的方法，您也可以儲存和還原您的個人化資料科學家版面配置，而不用重複 [資料科學設定] 命令。
 
 ## <a name="execute-local-r-methods"></a>執行本機 R 方法
 
@@ -111,17 +111,17 @@ RTVS 會增強您的 R 工作流程，方法是提供例如 [R 互動視窗](/vi
     ![成功的 rx 命令執行 ](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png) a
 1. 確認 `rxHadoopCopy` 成功將 `people.json` 檔案從範例資料資料夾複製到新建立的 `/user/RevoShare/newUser` 資料夾：
 
-    1. 從 Azure 中的 HDInsight ML 服務叢集窗格，選取左側功能表的 [儲存體帳戶]  。
+    1. 從 Azure 中的 HDInsight ML 服務叢集窗格，選取左側功能表的 [儲存體帳戶]。
 
         ![Azure HDInsight 儲存體帳戶](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
 
     2. 選取叢集的預設儲存體帳戶，記下容器/目錄名稱。
 
-    3. 從儲存體帳戶窗格的左側功能表選取 [容器]  。
+    3. 從儲存體帳戶窗格的左側功能表選取 [容器]。
 
         ![Azure HDInsight 儲存體容器](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
-    4. 選取叢集的容器名稱，瀏覽至  )，然後依序選取 [RevoShare]  、[newUser]  。 `people.json` 檔案應該會顯示在 `newUser` 資料夾中。
+    4. 選取叢集的容器名稱，瀏覽至 **user** 資料夾 (您可能必須按一下清單底部的 [載入更多])，然後依序選取 [RevoShare]、[newUser]。 `people.json` 檔案應該會顯示在 `newUser` 資料夾中。
 
         ![HDInsight 複製的檔案資料夾位置](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 
@@ -131,7 +131,7 @@ RTVS 會增強您的 R 工作流程，方法是提供例如 [R 互動視窗](/vi
     rxStopEngine(mySparkCluster)
     ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [在 HDInsight 上計算 ML 服務的內容選項](r-server-compute-contexts.md)
 * [結合 ScaleR 和 SparkR](../hdinsight-hadoop-r-scaler-sparkr.md)提供航班延誤預測的範例。

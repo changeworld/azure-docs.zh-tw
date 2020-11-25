@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d7ac494edfb9b1deeceafcac523ac58bccde96b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2144945647dc6b2e31e5593de3b6c8c0bf99a606
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85365220"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993241"
 ---
 本節將說明如何使用 [Azure 入口網站](https://portal.azure.com)建立 IoT 中樞。
 
@@ -50,7 +50,7 @@ ms.locfileid: "85365220"
     - **IoT 中樞單位**：每天每單位允許的訊息數目取決於您的中樞定價層。 例如，如果您想要中樞支援 700,000 封訊息的輸入，您可以選擇 2 個 S1 層單位。
     如需有關其他層級選項的詳細資料，請參閱[選擇適合的 IoT 中樞層](../articles/iot-hub/iot-hub-scaling.md)。
 
-    - **Azure 資訊安全中心**：開啟此功能可為 IoT 和您的裝置新增額外的威脅防護層。 免費層中的中樞無法使用此功能選項。 如需詳細資訊，請參閱[適用於 IoT 的 Azure 資訊安全中心](https://docs.microsoft.com/azure/asc-for-iot/)。
+    - **Azure 資訊安全中心**：開啟此功能可為 IoT 和您的裝置新增額外的威脅防護層。 免費層中的中樞無法使用此功能選項。 如需詳細資訊，請參閱[適用於 IoT 的 Azure 資訊安全中心](/azure/asc-for-iot/)。
 
     - **進階設定** > **裝置到雲端的分割區**：此屬性會將裝置到雲端的訊息數與同時閱讀訊息的讀者數產生關聯。 大部分的中樞只需要四個分割區。
 

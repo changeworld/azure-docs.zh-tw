@@ -9,16 +9,16 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: c8cbfb619c9eed325161503f705bf5c4c0746265
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82612328"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95992938"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>在 Azure Logic Apps 中建立和管理交易夥伴協議
 
 [交易夥伴](../logic-apps/logic-apps-enterprise-integration-partners.md)  
- *協定*可協助組織和企業彼此緊密通訊，方法是定義在將企業對企業 (B2B) 訊息交換時所要使用的特定產業標準通訊協定。 合約提供了常見的優點，例如：
+ *協定* 可協助組織和企業彼此緊密通訊，方法是定義在將企業對企業 (B2B) 訊息交換時所要使用的特定產業標準通訊協定。 合約提供了常見的優點，例如：
 
 * 讓組織可以使用已知的格式來交換資訊。
 * 改善執行 B2B 交易時的效率。
@@ -41,7 +41,7 @@ ms.locfileid: "82612328"
 ## <a name="create-agreements"></a>建立合約
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-在主要 Azure 功能表上，選取 [所有服務]****。 在搜尋方塊中，輸入「整合」作為篩選準則。 從結果中，選取 [此資源：**整合帳戶**]
+在主要 Azure 功能表上，選取 [所有服務]。 在搜尋方塊中，輸入「整合」作為篩選準則。 從結果中，選取 [此資源：**整合帳戶**]
 
    ![尋找您的整合帳戶](./media/logic-apps-enterprise-integration-agreements/find-integration-accounts.png)
 
@@ -53,14 +53,14 @@ ms.locfileid: "82612328"
 
    ![選擇 [合約]](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
 
-1. 在 [合約]**** 之下，選擇 [新增]****。 在 [ **新增** ] 窗格中，提供合約的相關資訊，例如：
+1. 在 [合約] 之下，選擇 [新增]。 在 [ **新增** ] 窗格中，提供合約的相關資訊，例如：
 
    ![選擇 [新增]](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
 
-   | 屬性 | 必要 | 值 | 說明 |
+   | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
    | **名稱** | 是 | <*合約-名稱*> | 合約的名稱 |
-   | **合約類型** | 是 | **AS2**、 **X12**或 **EDIFACT** | 合約的通訊協定類型。 當您建立合約檔案時，該檔案中的內容必須與合約類型相符。 | |  
+   | **合約類型** | 是 | **AS2**、 **X12** 或 **EDIFACT** | 合約的通訊協定類型。 當您建立合約檔案時，該檔案中的內容必須與合約類型相符。 | |  
    | **主控夥伴** | 是 | <*主機夥伴名稱*> | 主機夥伴代表指定合約的組織 |
    | **主控身分識別** | 是 | <*主機夥伴識別碼*> | 主機夥伴的識別碼 |
    | **來賓夥伴** | 是 | <*來賓-夥伴名稱*> | 來賓合作夥伴代表與主機合作夥伴有生意往來的組織 |
@@ -109,7 +109,7 @@ ms.locfileid: "82612328"
 
 1. 確認您要刪除選取的合約。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [交換 AS2 訊息](logic-apps-enterprise-integration-as2.md)
 * [交換 EDIFACT 訊息](logic-apps-enterprise-integration-edifact.md)

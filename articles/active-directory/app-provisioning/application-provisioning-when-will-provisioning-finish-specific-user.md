@@ -12,11 +12,11 @@ ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 307a97b71fe453c89617a86a88063e60fcf28fa3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235055"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994004"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>檢查使用者布建的狀態
 
@@ -31,11 +31,11 @@ Azure AD 布建服務會對來源系統和目標系統執行初始布建週期�
 - 顯示已完成之布建週期百分比的 **進度** 列。 百分比會反映布建的頁面計數。 請注意，每個頁面可能包含多個使用者或群組，因此百分比不會直接與布建的使用者、群組或角色數目相互關聯。
 - 您可以使用 [重新整理 **] 按鈕來** 保持視圖的更新。
 - 連接器資料存放區中的 **使用者** 和 **群組** 數目。 當物件加入至布建的範圍時，計數就會增加。 如果使用者已虛刪除或遭到刪除，此計數將不會關閉，因為這不會將物件從連接器資料存放區中移除。 [重設](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)cd 之後，會重新計算第一次同步處理的計數 
-- **View Audit Logs** link 會開啟 Azure AD 布建記錄檔，以取得使用者布建服務所執行之所有作業的詳細資料，包括個別使用者的布建狀態 (請參閱以下) 的 [使用布建[記錄](#use-provisioning-logs-to-check-a-users-provisioning-status)] 區段。
+- **View Audit Logs** link 會開啟 Azure AD 布建記錄檔，以取得使用者布建服務所執行之所有作業的詳細資料，包括個別使用者的布建狀態 (請參閱以下) 的 [使用布建 [記錄](#use-provisioning-logs-to-check-a-users-provisioning-status)] 區段。
 
-布建週期完成後，[ **至今的統計資料]** 區段會顯示已布建到日期的使用者和群組累計數目，以及最後一個週期的完成日期和持續時間。 **活動識別碼**可唯一識別最新的布建週期。 **作業**識別碼是布建作業的唯一識別碼，而且是租使用者中應用程式專用的識別碼。
+布建週期完成後，[ **至今的統計資料]** 區段會顯示已布建到日期的使用者和群組累計數目，以及最後一個週期的完成日期和持續時間。 **活動識別碼** 可唯一識別最新的布建週期。 **作業** 識別碼是布建作業的唯一識別碼，而且是租使用者中應用程式專用的識別碼。
 
-布建進度可在 Azure 入口網站的 [ **Azure Active Directory &gt; 企業應用 &gt; \[ 程式名稱 \] &gt; ** 布建] 索引標籤中看到。
+布建進度可在 Azure 入口網站的 [ **Azure Active Directory &gt; 企業應用 &gt; \[ 程式名稱 \] &gt;** 布建] 索引標籤中看到。
 
 ![布建頁面進度列](./media/application-provisioning-when-will-provisioning-finish-specific-user/provisioning-progress-bar-section.png)
 
@@ -43,7 +43,7 @@ Azure AD 布建服務會對來源系統和目標系統執行初始布建週期�
 
 若要查看所選使用者的布建狀態，請參閱 Azure AD 中的布建 [記錄 (預覽) ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 。 使用者布建服務所執行的所有作業都會記錄在 Azure AD 布建記錄檔中。 這包括對來源和目標系統進行的所有讀取和寫入作業，以及在每個作業期間讀取或寫入的使用者資料。
 
-您可以在 [活動] 區段中選取 [ **Azure Active Directory** &gt; **企業應用程式**布建 &gt; **記錄] (預覽) ** **Activity** ，以存取 Azure 入口網站中的布建記錄。 您可以根據使用者的名稱或來源系統或目標系統中的識別碼來搜尋布建資料。 如需詳細資訊，請參閱 [ (預覽版布建記錄) ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。 
+您可以在 [活動] 區段中選取 [ **Azure Active Directory** &gt; **企業應用程式** 布建 &gt; **記錄] (預覽)** **Activity** ，以存取 Azure 入口網站中的布建記錄。 您可以根據使用者的名稱或來源系統或目標系統中的識別碼來搜尋布建資料。 如需詳細資訊，請參閱 [ (預覽版布建記錄) ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。 
 
 布建記錄會記錄布建服務所執行的所有作業，包括：
 
@@ -82,7 +82,7 @@ Azure AD 布建服務會對來源系統和目標系統執行初始布建週期�
 - 最小分鐘數 = 0.01 x [指派的使用者、群組和群組成員數目]
 - 最大分鐘數 = 0.08 x [指派的使用者、群組和群組成員數目]
 
-影響完成 **初始週期**所需時間的因素摘要：
+影響完成 **初始週期** 所需時間的因素摘要：
 
 - 佈建範圍中的使用者和群組總數。
 

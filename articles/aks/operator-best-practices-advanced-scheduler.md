@@ -6,11 +6,11 @@ services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: c0c1f587b4e52607e9466300f976a52874c9e5ad
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125626"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993698"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) 中進階排程器功能的最佳做法
 
@@ -36,7 +36,7 @@ Kubernetes 排程器可以使用污點和容差來限制可以在節點上執行
 * **污點** 會套用至節點，該節點指示僅可以在其上排程特定的 pod。
 * 然後 **容差** 會套用至容器，允許它們 *容許* 節點的污點。
 
-將 pod 部署至 AKS 叢集時，Kubernetes 只會在容差與污點對齊之節點上排程 pod。 例如，假設您的 AKS 叢集中有一個節點集區，適用于具有 GPU 支援的節點。 您可以定義名稱，例如 *gpu* ，然後定義排程的值。 如果將此值設定為 *NoSchedule* ，則如果 pod 未定義適當的容差，則 Kubernetes 排程器無法在節點上排程 pod。
+將 pod 部署至 AKS 叢集時，Kubernetes 只會在容差與污點對齊之節點上排程 pod。 例如，假設您的 AKS 叢集中有一個節點集區，適用于具有 GPU 支援的節點。 您可以定義名稱，例如 *gpu*，然後定義排程的值。 如果將此值設定為 *NoSchedule*，則如果 pod 未定義適當的容差，則 Kubernetes 排程器無法在節點上排程 pod。
 
 ```console
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
@@ -79,15 +79,15 @@ spec:
 
 - **使用虛擬機器擴展集的預設叢集**
   - 您可以從 AKS API [污點 nodepool][taint-node-pool] ，讓新的相應放大節點能接收 API 指定的 node 污點。
-  - 讓我們假設您有一個雙節點叢集-節點 *1* 和節點 *2* 。 您將升級節點集區。
-  - 系統會建立兩個額外的節點： *node3* 和 *node4* ，而污點會分別傳遞。
+  - 讓我們假設您有一個雙節點叢集-節點 *1* 和節點 *2*。 您將升級節點集區。
+  - 系統會建立兩個額外的節點： *node3* 和 *node4*，而污點會分別傳遞。
   - 系統會刪除原始 *節點 1* 和 *節點 2* 。
 
 - **不支援虛擬機器擴展集的叢集**
-  - 同樣地，讓我們假設您有兩個節點的叢集-節點 *1* 和節點 *2* 。 當您升級時，會建立額外的節點 ( *node3* ) 。
-  - *節點 1* 的污點會套用至 *node3* ，然後會刪除 *節點 1* 。
-  - 因為先前的節點 *1* 刪除) ， *而節點節點污點會* 套用至新的 *節點1，* 所以會建立另一個新節點 (命名節點 *1* 。 然後，會刪除 *節點 2* 。
-  - 基本上 *節點 1* 會 *變成 node3* ，而 *節點節點* 會變成 *節點 1* 。
+  - 同樣地，讓我們假設您有兩個節點的叢集-節點 *1* 和節點 *2*。 當您升級時，會建立額外的節點 (*node3*) 。
+  - *節點 1* 的污點會套用至 *node3*，然後會刪除 *節點 1* 。
+  - 因為先前的節點 *1* 刪除) ，*而節點節點污點會* 套用至新的 *節點1，* 所以會建立另一個新節點 (命名節點 *1*。 然後，會刪除 *節點 2* 。
+  - 基本上 *節點 1* 會 *變成 node3*，而 *節點節點* 會變成 *節點 1*。
 
 當您在 AKS 中調整節點集區時，污點和容差不會透過設計來執行。
 
@@ -133,7 +133,7 @@ spec:
 
 節點選取器是將 pod 指派給指定節點的基本方法。 使用 *節點親和性* 可以獲得更多的彈性。 使用節點親和性，您可以定義如果pod無法與節點匹配會發生什麼事。 您可以 *要求* Kubernetes 排程器與加上標籤的主機的 pod 相符。 或者，您可以 *偏好* 相符項目，但如果沒有相符項目，則允許在其他主機上排程 pod。
 
-下列範例將節點親和性設定為 *requiredDuringSchedulingIgnoredDuringExecution* 。 此親和性要求Kubernetes計劃使用具有匹配標籤的節點。 如果沒有可用節點，則 pod 必須等候排程以繼續。 若要允許在不同的節點上排程 pod，您可以改為將值設定為 *preferredDuringSchedulingIgnoreDuringExecution* ：
+下列範例將節點親和性設定為 *requiredDuringSchedulingIgnoredDuringExecution*。 此親和性要求Kubernetes計劃使用具有匹配標籤的節點。 如果沒有可用節點，則 pod 必須等候排程以繼續。 若要允許在不同的節點上排程 pod，您可以改為將值設定為 *preferredDuringSchedulingIgnoreDuringExecution*：
 
 ```yaml
 kind: Pod
@@ -167,7 +167,7 @@ spec:
 
 ### <a name="inter-pod-affinity-and-anti-affinity"></a>Inter-pod 親和性和反親和性
 
-Kubernetes 排程器以邏輯方式隔離工作負載的最後一種方法，是使用 inter-pod 親和性或反親和性。 這些設定定義「不應該」  在具有現有相符 pod 的節點上排程 pod，或者「應該」  排程。 根據預設，Kubernetes 排程器會嘗試跨節點在複本集中排程多個 pod。 您可以圍繞此行為定義更特定的規則。
+Kubernetes 排程器以邏輯方式隔離工作負載的最後一種方法，是使用 inter-pod 親和性或反親和性。 這些設定定義「不應該」在具有現有相符 pod 的節點上排程 pod，或者「應該」排程。 根據預設，Kubernetes 排程器會嘗試跨節點在複本集中排程多個 pod。 您可以圍繞此行為定義更特定的規則。
 
 也會使用 Azure Cache for Redis 的 Web 應用程式是一個很好的例子。 您可以使用 pod 反親和性的規則來要求 Kubernetes 排程器跨節點散發複本。 然後，您可以使用相似性規則來確定每個 web 應用程式元件都排定在與對應快取相同的主機上。 跨節點的 pod 散發如下例所示：
 

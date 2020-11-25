@@ -4,11 +4,11 @@ description: 在 Application Insights 中對計量瀏覽器新增部署或建置
 ms.topic: conceptual
 ms.date: 08/14/2020
 ms.openlocfilehash: 58f6603687838713fafbf4cd5cc3f100e22b7401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758178"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993715"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights 中度量圖表上的註解
 
@@ -42,7 +42,7 @@ ms.locfileid: "91758178"
 
 1. 在另一個瀏覽器視窗中，開啟或建立管理您的 Azure Pipelines 部署的發行範本。
    
-1. 選取 [ **新增**工作]，然後從功能表中選取 [ **Application Insights 發行注釋** ] 工作。
+1. 選取 [ **新增** 工作]，然後從功能表中選取 [ **Application Insights 發行注釋** ] 工作。
    
    ![選取 [新增工作]，然後選取 Application Insights 版本注釋。](./media/annotations/3-add-task.png)
 
