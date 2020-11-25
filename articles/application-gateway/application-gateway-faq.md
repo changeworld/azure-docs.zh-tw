@@ -9,11 +9,11 @@ ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
 ms.openlocfilehash: 8df24b44d648343c46532eed443717f444bd0058
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397785"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95975627"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>應用程式閘道相關的常見問題集
 
@@ -138,7 +138,7 @@ Set-AzPublicIpAddress -PublicIpAddress $publicIP
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>應用程式閘道親和性 Cookie 是否支援 SameSite 屬性？
 是，[Chromium 瀏覽器](https://www.chromium.org/Home) [v80 更新](https://chromiumdash.appspot.com/schedule)強制規定不含 SameSite 屬性的 HTTP Cookie 視同 SameSite=Lax。 這表示在協力廠商環境下，瀏覽器不會傳送應用程式閘道親和性 Cookie。 
 
-為了支援這種情況，除了現有的 *ApplicationGatewayAffinity* Cookie，應用程式閘道還會插入另一個名為 *ApplicationGatewayAffinityCORS* 的 Cookie。  這些 Cookie 很類似，但 *ApplicationGatewayAffinityCORS* Cookie 多增加兩個屬性： *SameSite=None; Secure* 。 即使是跨原始來源要求，這些屬性仍然會維護黏性工作階段。 如需詳細資訊，請參閱[以 Cookie 為基礎的親和性](configuration-http-settings.md#cookie-based-affinity)一節。
+為了支援這種情況，除了現有的 *ApplicationGatewayAffinity* Cookie，應用程式閘道還會插入另一個名為 *ApplicationGatewayAffinityCORS* 的 Cookie。  這些 Cookie 很類似，但 *ApplicationGatewayAffinityCORS* Cookie 多增加兩個屬性：*SameSite=None; Secure*。 即使是跨原始來源要求，這些屬性仍然會維護黏性工作階段。 如需詳細資訊，請參閱[以 Cookie 為基礎的親和性](configuration-http-settings.md#cookie-based-affinity)一節。
 
 ## <a name="performance"></a>效能
 
@@ -249,7 +249,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 2. 請不要為公用前端 IP 位址建立任何接聽程式。 如果沒有為公用 IP 位址建立接聽程式，應用程式閘道就不會此位址上接聽任何流量。
 3. 依優先順序使用下列設定，針對應用程式閘道子網路建立並附加[網路安全性群組](../virtual-network/network-security-groups-overview.md)：
     
-    a. 允許來源為 **GatewayManager** 服務標記、目的地為 **Any** 、目的地連接埠為 **65200-65535** 的流量。 Azure 基礎結構通訊需要此連接埠範圍。 這些連接埠由憑證驗證保護 (鎖定)。 如果沒有適當的憑證，外部實體 (包括閘道使用者管理員) 無法變更這些端點
+    a. 允許來源為 **GatewayManager** 服務標記、目的地為 **Any**、目的地連接埠為 **65200-65535** 的流量。 Azure 基礎結構通訊需要此連接埠範圍。 這些連接埠由憑證驗證保護 (鎖定)。 如果沒有適當的憑證，外部實體 (包括閘道使用者管理員) 無法變更這些端點
     
     b. 允許來源為 **AzureLoadBalancer** 服務標記、目的地和目的地連接埠為 **Any** 的流量
     
@@ -350,7 +350,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 * [Bug 1649951](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)
 * [Bug 1650910](https://bugzilla.mozilla.org/show_bug.cgi?id=1650910)
 
-根據產業的合規性需求，CA 廠商會開始撤銷不符合規範的 Ca，併發行符合規範的 Ca，要求客戶重新發出其憑證。Microsoft 與這些廠商密切合作，以將潛在的影響降至最低， **但您在「攜帶您自己的憑證」中使用的自我簽發憑證或憑證 (BYOC) 案例仍有意外撤銷的風險** 。
+根據產業的合規性需求，CA 廠商會開始撤銷不符合規範的 Ca，併發行符合規範的 Ca，要求客戶重新發出其憑證。Microsoft 與這些廠商密切合作，以將潛在的影響降至最低， **但您在「攜帶您自己的憑證」中使用的自我簽發憑證或憑證 (BYOC) 案例仍有意外撤銷的風險**。
 
 若要檢查您的應用程式所使用的憑證是否已撤銷參考 [DigiCert 的公告](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement) 和 [憑證撤銷追蹤](https://misissued.com/#revoked)程式。 如果您的憑證已被撤銷或將遭到撤銷，您將需要向您的應用程式中使用的 CA 廠商要求新憑證。 若要避免應用程式的可用性因為未預期地撤銷憑證而中斷，或要更新已撤銷的憑證，請參閱我們的 Azure 更新文章，以取得支援 BYOC 的各種 Azure 服務的補救連結： https://azure.microsoft.com/updates/certificateauthorityrevocation/
 
@@ -434,9 +434,9 @@ AGIC 會嘗試自動建立路由表資源與應用程式閘道子網的關聯性
 
 應用程式閘道提供三個記錄： 
 
-* **ApplicationGatewayAccessLog** ：存取記錄包含提交給應用程式閘道前端的每個要求。 資料包括呼叫者的 IP、所要求的 URL、回應延遲、傳回碼，以及輸入和輸出位元組。其中，每個應用程式閘道各一筆記錄。
-* **ApplicationGatewayPerformanceLog** ：效能記錄擷取每個應用程式閘道的效能資訊。 資訊包括輸送量 (以位元組為單位)、已處理的要求總數、失敗要求計數，以及狀況良好和不良的後端執行個體計數。
-* **ApplicationGatewayFirewallLog** ：對於您以 WAF 設定的應用程式閘道，防火牆記錄包含透過偵測模式或預防模式所記錄的要求。
+* **ApplicationGatewayAccessLog**：存取記錄包含提交給應用程式閘道前端的每個要求。 資料包括呼叫者的 IP、所要求的 URL、回應延遲、傳回碼，以及輸入和輸出位元組。其中，每個應用程式閘道各一筆記錄。
+* **ApplicationGatewayPerformanceLog**：效能記錄擷取每個應用程式閘道的效能資訊。 資訊包括輸送量 (以位元組為單位)、已處理的要求總數、失敗要求計數，以及狀況良好和不良的後端執行個體計數。
+* **ApplicationGatewayFirewallLog**：對於您以 WAF 設定的應用程式閘道，防火牆記錄包含透過偵測模式或預防模式所記錄的要求。
 
 所有記錄每 60 秒收集一次。 如需詳細資訊，請參閱[應用程式閘道的後端健康情況、診斷記錄和計量](application-gateway-diagnostics.md)。
 

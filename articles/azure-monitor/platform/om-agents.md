@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
 ms.openlocfilehash: 2a4f24da51b9e9e78c3df3e7d1437a380306e300
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318346"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95975562"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>將 Operations Manager 連接到 Azure 監視器
 
@@ -95,7 +95,7 @@ ms.locfileid: "87318346"
 
 ### <a name="tls-12-protocol"></a>TLS 1.2 通訊協定
 
-為了確保 Azure 監視器傳輸中資料的安全性，強烈建議您將代理程式和管理群組設定為至少使用傳輸層安全性 (TLS) 1.2。 我們已發現較舊版本的 TLS/安全通訊端層 (SSL) 較易受到攻擊，而且在其目前的運作中仍允許回溯相容性，因此並**不建議使用**這些版本。 如需其它資訊，請檢閱[使用 TLS 1.2 安全地傳送](./data-security.md#sending-data-securely-using-tls-12)。
+為了確保 Azure 監視器傳輸中資料的安全性，強烈建議您將代理程式和管理群組設定為至少使用傳輸層安全性 (TLS) 1.2。 我們已發現較舊版本的 TLS/安全通訊端層 (SSL) 較易受到攻擊，而且在其目前的運作中仍允許回溯相容性，因此並 **不建議使用** 這些版本。 如需其它資訊，請檢閱[使用 TLS 1.2 安全地傳送](./data-security.md#sending-data-securely-using-tls-12)。
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>將 Operations Manager 連接到 Azure 監視器
 
@@ -104,7 +104,7 @@ ms.locfileid: "87318346"
 在 Operations Manager 管理群組第一次向 Log Analytics 工作區進行登錄期間，在 Operations 主控台中為管理群組指定 Proxy 設定的選項無法使用。  必須先向服務成功登錄該管理群組，之後此選項才可供使用。  若要因應此問題，您需要在執行 Operations 主控台的系統上使用 Netsh 更新系統 Proxy 設定，以在管理群組中設定整合，以及所有管理伺服器。  
 
 1. 開啟提升權限的命令提示字元。
-   a. 移至 [開始]**** 並輸入 **cmd**。
+   a. 移至 [開始] 並輸入 **cmd**。
    b. 以滑鼠右鍵按一下 [ **命令提示** 字元]，然後選取 [以系統管理員身分執行]。
 1. 輸入下列命令並按 **Enter** 鍵：
 
@@ -112,59 +112,59 @@ ms.locfileid: "87318346"
 
 完成下列步驟以與 Azure 監視器整合之後，您可以藉由執行來移除 `netsh winhttp reset proxy` 設定，然後使用 Operations 主控台中的 [ **設定 proxy 伺服器** ] 選項來指定 Proxy 或 Log Analytics 閘道伺服器。
 
-1. 在 Operations Manager 主控台中，選取 [管理] **** 工作區。
-1. 展開 Operations Management Suite 節點，然後按一下 [連接] ****。
-1. 按一下 [註冊到 Operations Management Suite] **** 連結。
-1. 在 [Operations Management Suite 登入精靈：驗證]**** 頁面上，輸入與 OMS 訂用帳戶相關聯之系統管理員帳戶的電子郵件地址或電話號碼和密碼，然後按一下 [登入]****。
+1. 在 Operations Manager 主控台中，選取 [管理]  工作區。
+1. 展開 Operations Management Suite 節點，然後按一下 [連接] 。
+1. 按一下 [註冊到 Operations Management Suite]  連結。
+1. 在 [Operations Management Suite 登入精靈：驗證] 頁面上，輸入與 OMS 訂用帳戶相關聯之系統管理員帳戶的電子郵件地址或電話號碼和密碼，然後按一下 [登入]。
 
    >[!NOTE]
    >Operations Management Suite 名稱已淘汰。
 
-1. 成功通過驗證之後，在 [Operations Management Suite 登入精靈: 選取工作區]**** 頁面上，系統會提示您選取 Azure 租用戶、訂用帳戶與 Log Analytics 工作區。 如果您有多個工作區，請從下拉式清單中選取您想要向 Operations Manager 管理群組註冊的工作區，然後按 [下一步] ****。
+1. 成功通過驗證之後，在 [Operations Management Suite 登入精靈: 選取工作區] 頁面上，系統會提示您選取 Azure 租用戶、訂用帳戶與 Log Analytics 工作區。 如果您有多個工作區，請從下拉式清單中選取您想要向 Operations Manager 管理群組註冊的工作區，然後按 [下一步] 。
 
    > [!NOTE]
    > Operations Manager 一次只支援一個 Log Analytics 工作區。 系統會從 Azure 監視器中移除與先前的工作區 Azure 監視器註冊的連接和電腦。
    >
    >
-1. 在 [Operations Management Suite 登入精靈：摘要]**** 頁面上，確認您的設定，如果正確無誤，請按一下 [建立]****。
-1. 在 [Operations Management Suite 登入精靈：完成]**** 頁面上，按一下 [關閉]****。
+1. 在 [Operations Management Suite 登入精靈：摘要] 頁面上，確認您的設定，如果正確無誤，請按一下 [建立]。
+1. 在 [Operations Management Suite 登入精靈：完成] 頁面上，按一下 [關閉]。
 
 ### <a name="add-agent-managed-computers"></a>加入代理程式的受控電腦
 
 設定與 Log Analytics 工作區的整合之後，只會建立與 Log Analytics 的連線，並不會從向管理群組回報的代理程式收集任何資料。 除非您設定哪些特定代理程式管理的電腦收集 Azure 監視器的記錄資料，否則不會發生這種情況。 您可以個別選取電腦物件，也可以選取包含 Windows 電腦物件的群組。 您無法選取包含另一個類別之執行個體 (例如邏輯磁碟或 SQL 資料庫) 的群組。
 
-1. 開啟 Operations Manager 主控台，然後選取 [管理]**** 工作區。
-1. 展開 Operations Management Suite 節點，然後按一下 [連接] ****。
-1. 按一下窗格右側之 [執行] 標題下方的 [加入電腦/群組] **** 連結。
-1. 在 [電腦搜尋]**** 對話方塊中，您可以搜尋 Operations Manager 監視的電腦或群組。 選取包含要上架 Azure 監視器的 Operations Manager 管理伺服器的電腦或群組，按一下 [ **新增**]，然後按一下 **[確定]**。
+1. 開啟 Operations Manager 主控台，然後選取 [管理] 工作區。
+1. 展開 Operations Management Suite 節點，然後按一下 [連接] 。
+1. 按一下窗格右側之 [執行] 標題下方的 [加入電腦/群組]  連結。
+1. 在 [電腦搜尋] 對話方塊中，您可以搜尋 Operations Manager 監視的電腦或群組。 選取包含要上架 Azure 監視器的 Operations Manager 管理伺服器的電腦或群組，按一下 [ **新增**]，然後按一下 **[確定]**。
 
-在 Operations 主控台的 [管理] **** 工作區中，您可以檢視電腦和群組，這些電腦和群組設定成收集來自 Operations Management Suite 下方之 [受控電腦] 節點的資料。 您可以視需要在這裡新增或移除電腦和群組。
+在 Operations 主控台的 [管理]  工作區中，您可以檢視電腦和群組，這些電腦和群組設定成收集來自 Operations Management Suite 下方之 [受控電腦] 節點的資料。 您可以視需要在這裡新增或移除電腦和群組。
 
 ### <a name="configure-proxy-settings-in-the-operations-console"></a>在 Operations 主控台中設定 Proxy 設定
 
 如果內部 proxy 伺服器位於管理群組和 Azure 監視器之間，請執行下列步驟。 這些設定是從管理群組集中管理，並散發至包含在範圍內的代理程式管理系統，以收集 Azure 監視器的記錄資料。  特定解決方案略過管理伺服器並將資料直接傳送給服務時，這十分有幫助。
 
-1. 開啟 Operations Manager 主控台，然後選取 [管理]**** 工作區。
-1. 展開 Operations Management Suite，然後按一下 [連接] ****。
-1. 在 [OMS 連線] 檢視中，按一下 [設定 Proxy 伺服器] ****。
-1. 在 [Operations Management Suite 精靈：Proxy 伺服器]**** 頁面上，選取 [使用 Proxy 伺服器來存取 Operations Management Suite]****，然後輸入具有連接埠號碼的 URL (例如， http://corpproxy:80 )，然後按一下 [完成]****。
+1. 開啟 Operations Manager 主控台，然後選取 [管理] 工作區。
+1. 展開 Operations Management Suite，然後按一下 [連接] 。
+1. 在 [OMS 連線] 檢視中，按一下 [設定 Proxy 伺服器] 。
+1. 在 [Operations Management Suite 精靈：Proxy 伺服器] 頁面上，選取 [使用 Proxy 伺服器來存取 Operations Management Suite]，然後輸入具有連接埠號碼的 URL (例如， http://corpproxy:80 )，然後按一下 [完成]。
 
 如果您的 proxy 伺服器需要驗證，請執行下列步驟來設定認證和設定，這些認證和設定需要傳播到管理群組中 Azure 監視器的受管理電腦。
 
-1. 開啟 Operations Manager 主控台，然後選取 [管理]**** 工作區。
-1. 在 [RunAs 設定]**** 下，選取 [設定檔]****。
+1. 開啟 Operations Manager 主控台，然後選取 [管理] 工作區。
+1. 在 [RunAs 設定] 下，選取 [設定檔]。
 1. 開啟 [ **System Center Advisor 執行身份設定檔 Proxy** ] 設定檔。
 1. 在 [執行身分設定檔精靈] 中，按一下 [加入] 使用執行身分帳戶。 您可以建立[執行身分帳戶](/previous-versions/system-center/system-center-2012-R2/hh321655(v=sc.12))，或使用現有的帳戶。 此帳戶必須有足夠的權限，才能通過 Proxy 伺服器。
-1. 若要設定帳戶來管理，請選擇 [選取的類別、群組或物件]****，按一下 [選取…]**** 然後按一下 [群組…]**** 開啟 [群組搜尋]**** 方塊。
-1. 搜尋，然後選取 [Microsoft System Center Advisor 監控伺服器群組] ****。 選取群組之後，按一下 [確定]**** 關閉 [群組搜尋]**** 方塊。
-1. 按一下 [確定]**** 以關閉 [新增執行身分帳戶]**** 方塊。
-1. 按一下 [儲存] **** 完成精靈並儲存變更。
+1. 若要設定帳戶來管理，請選擇 [選取的類別、群組或物件]，按一下 [選取…] 然後按一下 [群組…] 開啟 [群組搜尋] 方塊。
+1. 搜尋，然後選取 [Microsoft System Center Advisor 監控伺服器群組] 。 選取群組之後，按一下 [確定] 關閉 [群組搜尋] 方塊。
+1. 按一下 [確定] 以關閉 [新增執行身分帳戶] 方塊。
+1. 按一下 [儲存]  完成精靈並儲存變更。
 
 建立連線並設定要收集哪些代理程式並將記錄資料回報給 Azure 監視器之後，管理群組中就會套用下列設定，而不一定順序：
 
-* 建立執行身分帳戶 **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate** 。 它是與執行身分設定檔 **Microsoft System Center Advisor Run As Profile Blob** 相關聯，而且將目標設為兩個類別：[收集伺服器]**** 和 [Operations Manager 管理群組]****。
+* 建立執行身分帳戶 **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate** 。 它是與執行身分設定檔 **Microsoft System Center Advisor Run As Profile Blob** 相關聯，而且將目標設為兩個類別：[收集伺服器] 和 [Operations Manager 管理群組]。
 * 會建立兩個連接器。  第一個名為 **Microsoft.SysTemCenter DataConnector** ，並且會自動設定訂用帳戶，以將從管理群組中所有類別的實例產生的所有警示轉送到 Azure 監視器。 第二個連接器是 **Advisor 連接器**，負責與 Azure 監視器和共用資料進行通訊。
-* 您在管理群組中已選擇來收集資料的代理程式和群組，將會新增至 [Microsoft System Center Advisor 監控伺服器群組]****。
+* 您在管理群組中已選擇來收集資料的代理程式和群組，將會新增至 [Microsoft System Center Advisor 監控伺服器群組]。
 
 ## <a name="management-pack-updates"></a>管理組件更新
 
@@ -173,21 +173,21 @@ ms.locfileid: "87318346"
 * **Microsoft.SysTemCenter MPUpdate** -更新基底 Azure 監視器管理套件。 預設會每 12 小時執行一次。
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** - 更新工作區中所啟用的解決方案管理組件。 預設會每五 (5) 分鐘執行一次。
 
-您可以覆寫這兩個規則以防止自動下載，方法是停用它們，或修改管理伺服器與 Azure 監視器同步處理的頻率，以判斷是否有新的管理元件可供使用且應該加以下載。 遵循[如何覆寫規則或監視器](/previous-versions/system-center/system-center-2012-R2/hh212869(v=sc.12))步驟，使用值 (秒) 修改 [頻率]**** 參數來變更同步處理排程，或修改 [已啟用]**** 參數來停用規則。 將目標設為覆寫 [Operations Manager 管理群組] 類別的所有物件。
+您可以覆寫這兩個規則以防止自動下載，方法是停用它們，或修改管理伺服器與 Azure 監視器同步處理的頻率，以判斷是否有新的管理元件可供使用且應該加以下載。 遵循[如何覆寫規則或監視器](/previous-versions/system-center/system-center-2012-R2/hh212869(v=sc.12))步驟，使用值 (秒) 修改 [頻率] 參數來變更同步處理排程，或修改 [已啟用] 參數來停用規則。 將目標設為覆寫 [Operations Manager 管理群組] 類別的所有物件。
 
 若要繼續遵循現有的變更控制程序來控制生產管理群組中的管理組件發行版本，則可以停用規則，並在允許更新時於特定期間啟用它們。 如果您的環境中有開發或 QA 管理群組，而且該管理群組連接到網際網路，則可以設定該管理群組與 Log Analytics 工作區，以支援此案例。 這可讓您在將 Azure 監視器管理元件發行到生產管理群組之前，先檢查和評估這些管理元件的反復發行。
 
 ## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>將 Operations Manager 群組切換到新的 Log Analytics 工作區
 
 1. 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
-1. 在 Azure 入口網站中，按一下左下角的 [更多服務]。 在資源清單中輸入 **Log Analytics**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics]****，然後建立工作區。  
-1. 使用身為 Operations Manager 系統管理員角色成員的帳戶開啟 Operations Manager 主控台，然後選取 [管理] **** 工作區。
-1. 展開 Log Analytics，然後選取 [連線]****。
-1. 選取窗格中間的 [重新設定 Operation Management Suite] **** 連結。
-1. 遵循 [Log Analytics 上架精靈]****，然後輸入與新的 Log Analytics 工作區相關聯之系統管理員帳戶的電子郵件地址或電話號碼和密碼。
+1. 在 Azure 入口網站中，按一下左下角的 [更多服務]。 在資源清單中輸入 **Log Analytics**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics]，然後建立工作區。  
+1. 使用身為 Operations Manager 系統管理員角色成員的帳戶開啟 Operations Manager 主控台，然後選取 [管理]  工作區。
+1. 展開 Log Analytics，然後選取 [連線]。
+1. 選取窗格中間的 [重新設定 Operation Management Suite]  連結。
+1. 遵循 [Log Analytics 上架精靈]，然後輸入與新的 Log Analytics 工作區相關聯之系統管理員帳戶的電子郵件地址或電話號碼和密碼。
 
    > [!NOTE]
-   > [Operations Management Suite 登入精靈：選取工作區]**** 頁面會顯示使用中的現有工作區。
+   > [Operations Management Suite 登入精靈：選取工作區] 頁面會顯示使用中的現有工作區。
    >
    >
 
@@ -224,20 +224,20 @@ union *
     >  
 
 1. 使用身為 Operations Manager 系統管理員角色成員的帳戶開啟 Operations Manager Operations 主控台。
-1. 在 [管理]**** 下，選取 [管理組件]**** 節點，然後在 [尋找:]**** 方塊中輸入 **Advisor**，並確認下列管理組件仍匯入到管理群組中︰
+1. 在 [管理] 下，選取 [管理組件] 節點，然後在 [尋找:] 方塊中輸入 **Advisor**，並確認下列管理組件仍匯入到管理群組中︰
 
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor Internal
 
-1. 在 Azure 入口網站中，按一下 [設定]**** 圖格。
+1. 在 Azure 入口網站中，按一下 [設定] 圖格。
 1. 選取 [ **連線的來源**]。
-1. 在 [System Center Operations Manager] 區段下方的表格中，您應該會看到想要從工作區移除的管理群組名稱。 在 [最後一筆資料]**** 資料行之下，按一下 [移除]****。  
+1. 在 [System Center Operations Manager] 區段下方的表格中，您應該會看到想要從工作區移除的管理群組名稱。 在 [最後一筆資料] 資料行之下，按一下 [移除]。  
 
     > [!NOTE]
-    > 在偵測到已連線的管理群組有 14 天沒有任何活動之後，[移除]**** 連結才能使用。  
+    > 在偵測到已連線的管理群組有 14 天沒有任何活動之後，[移除] 連結才能使用。  
     >
 
-1. 將出現視窗，要求您確認想要繼續移除。  按一下 [是]**** 繼續進行。
+1. 將出現視窗，要求您確認想要繼續移除。  按一下 [是] 繼續進行。
 
 若要刪除兩個連接器 - Microsoft.SystemCenter.Advisor.DataConnector 和 Advisor 連接器，請將以下 PowerShell 指令碼儲存至您的電腦，並使用下列範例來執行：
 
@@ -342,7 +342,7 @@ union *
 * 在 System Center 2016 - Operations Manager 或更新版本的 `\ManagementPacks` 資料夾下方的來源媒體上。
 * 從套用到您管理群組的最新更新彙總。 針對 Operations Manager 2012，源資料夾是 `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` 和 2012 R2，位於中 `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要加入功能和收集資料，請參閱 [從方案庫新增 Azure 監視器的解決方案](../insights/solutions.md)。
 
