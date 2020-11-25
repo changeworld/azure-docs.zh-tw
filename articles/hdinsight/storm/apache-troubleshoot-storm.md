@@ -10,11 +10,11 @@ ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: fc08adb2f71c49fad3c8574e9cfd5315f13d7f44
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532759"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95982257"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>使用 Azure HDInsight 為 Apache Storm 進行疑難排解
 
@@ -27,8 +27,8 @@ ms.locfileid: "92532759"
 ### <a name="apache-ambari-ui"></a>Apache Ambari UI
 
 1. 移至 Ambari 儀表板。
-2. 在服務清單中，選取 [Storm]  。
-3. 在 [快速連結]  功能表中，選取 [Storm UI]  。
+2. 在服務清單中，選取 [Storm]。
+3. 在 [快速連結] 功能表中，選取 [Storm UI]。
 
 ### <a name="direct-link"></a>直接連結
 
@@ -174,7 +174,7 @@ Storm 背景工作節點執行下列服務：
 
 提交拓撲時，使用者可能會收到類似下列的錯誤訊息： `Topology submission exception, cause not a leader, the current leader is NimbusInfo` 。
 
-若要解決這個問題，使用者可能需要提出票證，讓節點重新開機/重新開機。 如需詳細資訊，請參閱 [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html)。
+若要解決這個問題，使用者可能需要提出票證，讓節點重新開機/重新開機。 如需詳細資訊，請參閱 [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html) \(英文\)。
 
 ---
 
