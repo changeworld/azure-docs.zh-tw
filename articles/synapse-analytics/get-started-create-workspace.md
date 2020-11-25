@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 10/07/2020
-ms.openlocfilehash: f7b96bcebb2106e52c62426ca2b64f9305e09141
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 862d2a93058c63dbfad1db49346edcbfe3c02ad1
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515403"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592442"
 ---
 # <a name="creating-a-synapse-workspace"></a>建立 Synapse 工作區
 
@@ -47,35 +47,23 @@ ms.locfileid: "94515403"
 ## <a name="create-a-dedicated-sql-pool"></a>建立專用 SQL 集區
 
 1. 在 Synapse Studio 的左側窗格中，選取 [管理] > [SQL 集區]。
-1. 選取 [新增]，然後輸入下列設定：
-
-    |設定 | 建議的值 | 
-    |---|---|---|
-    |**SQL 集區名稱**| **SQLDB1**|
-    |**效能等級**|**DW100C**|
-    |||
-
-1. 選取 [檢閱+建立] > [建立]。 您的專用 SQL 集區將會在幾分鐘內就緒。 您的專用 SQL 集區會與專用 SQL 集區資料庫 (也稱為 **SQLDB1**) 相關聯。
+1. 選取 [新增]
+1. 針對 [SQL 集區名稱]，選取 **SQLPOOL1**
+1. 針對 [效能層級]，選擇 **DW100C**
+1. 選取 [檢閱+建立] > [建立]。 您的專用 SQL 集區將會在幾分鐘內就緒。 您的專用 SQL 集區會與專用 SQL 集區資料庫 (也稱為 **SQLPOOL1**) 相關聯。
 
 專用 SQL 集區只要在作用中，就會取用計費的資源。 您可於稍後暫停集區，以降低成本。
 
 ## <a name="create-a-serverless-apache-spark-pool"></a>建立無伺服器 Apache Spark 集區
 
 1. 在 Synapse Studio 的左側窗格中，選取 [管理] > [Apache Spark 集區]。
-1. 選取 [新增]，然後輸入下列設定：
-
-    |設定 | 建議的值 | 
-    |---|---|---|
-    |**Apache Spark 集區名稱**|**Spark1**
-    |**節點大小**| **小型**|
-    |**節點數目**| 將最小值設定為 3，以及最大值設定為 3|
-
+1. 選取 [新增] 
+1. 針對 [Apache Spark 集區名稱]，輸入 **Spark1**。
+1. 針對 [節點大小]，輸入 **Small**。
+1. 針對 [節點數目]，將最小值和最大值都設定為 3
 1. 選取 [檢閱+建立] > [建立]。 您的 Apache Spark 集區會在幾秒內準備就緒。
 
-當您在 Azure Synapse 中執行 Spark 活動時，需指定要使用的 Spark 集區。 集區會通知 Azure Synapse 要使用多少 Spark 資源。 您只需就您使用的資源付費。 當您主動停止使用集區時，資源將會自動逾時並予以回收。
-
-> [!NOTE]
-> 會從 Spark 集區獨立建立 Spark 資料庫。 工作區一律會有一個名為 **default** 的 Spark 資料庫。 您可以建立其他 Spark 資料庫。
+Spark 集區會通知 Azure Synapse 要使用多少 Spark 資源。 您只需就您使用的資源付費。 當您主動停止使用集區時，資源將會自動逾時並予以回收。
 
 ## <a name="the-serverless-sql-pool"></a>無伺服器 SQL 集區
 

@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 10/13/2020
+ms.date: 11/11/2020
 ms.author: sngun
-ms.openlocfilehash: c1af35b754362a230e77c7a3326de8ddb8a09d62
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a149f0b331a77462aa53b948fedf25dd1331969e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93082992"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683619"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support-and-compatibility-with-tinkerpop-features"></a>Azure Cosmos DB Gremlin 圖形對於 TinkerPop 功能的支援和相容性
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -32,6 +32,7 @@ Azure Cosmos DB 圖形引擎會密切遵循 [Apache TinkerPop](https://tinkerpop
 | [Node.js](https://www.npmjs.com/package/gremlin) | [GitHub 上的 Gremlin-JavaScript](https://github.com/apache/tinkerpop/tree/master/gremlin-javascript) | [使用 Node.js 建立圖表](create-graph-nodejs.md) | 3.3.4+ |
 | [Python](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [GitHub 上的 Gremlin-Python](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [使用 Python 建立圖表](create-graph-python.md) | 3.2.7 |
 | [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [GitHub 上的 Gremlin-PHP](https://github.com/PommeVerte/gremlin-php) | [使用 PHP 建立圖表](create-graph-php.md) | 3.1.0 |
+| [Go Lang](https://github.com/supplyon/gremcos/) | [Go Lang](https://github.com/supplyon/gremcos/) | | 此程式庫是由外部參與者所建立。 Azure Cosmos DB 小組不會提供任何支援或維護該程式庫。 |
 | [Gremlin 主控台](https://tinkerpop.apache.org/downloads.html) | [TinkerPop 文件](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [使用 Gremlin 主控台建立圖表](create-graph-gremlin-console.md) | 3.2.0 + |
 
 ## <a name="supported-graph-objects"></a>支援的圖形物件
@@ -168,7 +169,7 @@ JSON 格式用於頂點的屬性說明如下︰
 
 ## <a name="behavior-differences"></a>行為差異
 
-* Azure Cosmos DB 圖形引擎會執行* **廣度優先** _的周遊，而 TinkerPop Gremlin 則是深度優先。 在可水平調整的系統 (例如 Cosmos DB) 中，此行為可實現更好的效能。
+* Azure Cosmos DB 圖形引擎會執行***廣度優先** _的周遊，而 TinkerPop Gremlin 則是深度優先。 在可水平調整的系統 (例如 Cosmos DB) 中，此行為可實現更好的效能。
 
 ## <a name="unsupported-features"></a>不支援的功能
 
@@ -178,21 +179,21 @@ _ * **[Gremlin 位元組程式碼](https://tinkerpop.apache.org/docs/current/tut
 
 目前無法使用 _* **`match()` 步驟** _。 此步驟可提供宣告式查詢功能。
 
-頂點或邊緣上不支援_ * **以物件作為屬性** _。 屬性只能是基本類型或陣列。
+頂點或邊緣上不支援_ ***以物件作為屬性** _。 屬性只能是基本類型或陣列。
 
-不支援_ * **依據陣列屬性** _ `order().by(<array property>)` 排序。 僅支援依據基本類型排序。
+不支援_ ***依據陣列屬性** _ `order().by(<array property>)` 排序。 僅支援依據基本類型排序。
 
-不支援_ * **非基本 JSON 類型** _。 請使用 `string`、`number` 或 `true`/`false` 類型。 不支援 `null` 值。 
+不支援_ ***非基本 JSON 類型** _。 請使用 `string`、`number` 或 `true`/`false` 類型。 不支援 `null` 值。 
 
-目前不支援 _ * **GraphSONv3** _ 序列化程式。 在連線設定中，請使用 `GraphSONv2` 序列化程式、讀取器和寫入器類別。 Azure Cosmos DB Gremlin API 所傳回結果的格式會與 GraphSON 格式不同。 
+目前不支援 _ ***GraphSONv3** _ 序列化程式。 在連線設定中，請使用 `GraphSONv2` 序列化程式、讀取器和寫入器類別。 Azure Cosmos DB Gremlin API 所傳回結果的格式會與 GraphSON 格式不同。 
 
-目前不支援 _ **Lambda 運算式和函式** 。 這包括 `.map{<expression>}`、`.by{<expression>}` 和 `.filter{<expression>}` 函式。 若要深入了解，並了解如何使用 Gremlin 步驟來重寫這些函式，請參閱 [Lambda 的注意事項](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas)。
+目前不支援 _ **Lambda 運算式和函式**。 這包括 `.map{<expression>}`、`.by{<expression>}` 和 `.filter{<expression>}` 函式。 若要深入了解，並了解如何使用 Gremlin 步驟來重寫這些函式，請參閱 [Lambda 的注意事項](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas)。
 
 * 因為系統的分散式本質，所以不支援***交易** _。  在 Gremlin 帳戶上設定適當的一致性模型以「「讀取自己的寫入」，並使用開放式同步存取來解決衝突的寫入。
 
 ## <a name="known-limitations"></a>已知的限制
 
-_ **使用 mid-traversal `.V()` 步驟所進行的 Gremlin 查詢索引使用率** ：目前只有周遊的第一個 `.V()` 呼叫會使用索引來解析其附加的任何篩選或述詞。 後續的呼叫則不會查閱索引，這可能會增加查詢的延遲和成本。
+_ **使用 mid-traversal `.V()` 步驟所進行的 Gremlin 查詢索引使用率**：目前只有周遊的第一個 `.V()` 呼叫會使用索引來解析其附加的任何篩選或述詞。 後續的呼叫則不會查閱索引，這可能會增加查詢的延遲和成本。
     
     Assuming default indexing, a typical read Gremlin query that starts with the `.V()` step would use parameters in its attached filtering steps, such as `.has()` or `.where()` to optimize the cost and performance of the query. For example:
 

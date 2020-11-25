@@ -16,11 +16,11 @@ ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
 ms.custom: devx-track-java, devx-track-csharp
 ms.openlocfilehash: 13b05c17cc621660576913c08a1fdbc389365a53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89003961"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009093"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>透過百度開始使用通知中樞
 
@@ -30,7 +30,7 @@ ms.locfileid: "89003961"
 
 由於中國無法使用 Google Play 和 FCM (Firebase Cloud Messaging)，因此必須使用不同的應用程式市集和推送服務。 百度是其中一種方法，且目前由通知中樞所使用。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程需要：
 
@@ -49,7 +49,7 @@ ms.locfileid: "89003961"
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-&emsp;&emsp;6. 在您的通知中樞中，選取 [通知服務]****，然後選取 [百度 (Android 中國)]****。
+&emsp;&emsp;6. 在您的通知中樞中，選取 [通知服務]，然後選取 [百度 (Android 中國)]。
 
 &emsp;&emsp;&emsp;&emsp;![Azure 通知中樞 - 百度](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
 
@@ -57,7 +57,7 @@ ms.locfileid: "89003961"
 
 &emsp;&emsp;&emsp;&emsp;![Azure 通知中樞 - 百度秘密](./media/notification-hubs-baidu-get-started/NotificationHubBaiduConfigure.png)
 
-您的通知中樞現在已設定成使用百度。 您也有**連接字串**可用來註冊應用程式，以傳送和接收推播通知。
+您的通知中樞現在已設定成使用百度。 您也有 **連接字串** 可用來註冊應用程式，以傳送和接收推播通知。
 
 記下 [存取連線資訊] 視窗中的 `DefaultListenSharedAccessSignature` 和 `DefaultFullSharedAccessSignature`。
 
@@ -113,7 +113,7 @@ ms.locfileid: "89003961"
 
     ![Azure 通知中樞 - 百度 SDK 程式庫](./media/notification-hubs-baidu-get-started/BaiduSDKLib.png)
 
-7. 在專案的 `libs` 資料夾中，以滑鼠右鍵按一下 `pushervice-x.y.z.jar` 檔案，選取 [新增為程式庫]**** 以在專案中包含此程式庫。
+7. 在專案的 `libs` 資料夾中，以滑鼠右鍵按一下 `pushervice-x.y.z.jar` 檔案，選取 [新增為程式庫] 以在專案中包含此程式庫。
 
     ![Azure 通知中樞 - 百度新增為程式庫](./media/notification-hubs-baidu-get-started/BaiduAddAsALib.jpg)
 
@@ -138,7 +138,7 @@ ms.locfileid: "89003961"
 
     ```
 
-9. 在應用程式元素內，於 `.MainActivity` 活動元素之後新增下列組態，並取代 yourprojectname** (例如 `com.example.BaiduTest`)：
+9. 在應用程式元素內，於 `.MainActivity` 活動元素之後新增下列組態，並取代 yourprojectname (例如 `com.example.BaiduTest`)：
 
     ```xml
     <activity
@@ -414,7 +414,7 @@ ms.locfileid: "89003961"
 
 ## <a name="send-notifications-to-your-app"></a>將通知傳送至您的應用程式
 
-您可以在 [Azure 入口網站]中快速測試通知的接收：使用通知中樞設定畫面中的 [傳送]**** 按鈕 (如下列畫面所示)︰
+您可以在 [Azure 入口網站]中快速測試通知的接收：使用通知中樞設定畫面中的 [傳送] 按鈕 (如下列畫面所示)︰
 
 ![Azure 入口網站的螢幕擷取畫面，其中包含以紅色標示的測試傳送選項，以及指向它的紅色箭號。 ](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
  ![Azure 入口網站中百度測試傳送頁面的螢幕擷取畫面。](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
@@ -428,7 +428,7 @@ ms.locfileid: "89003961"
 * **Rest 介面**：您可以在使用 [rest 介面](/previous-versions/azure/reference/dn223264(v=azure.100))的任何後端平臺上支援通知。
 * **Microsoft Azure 通知中樞 .NET SDK**：在適用于 Visual Studio 的 Nuget 封裝管理員中，執行 [NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 * **Node.js**：[如何從 Node.js 使用通知中樞](notification-hubs-nodejs-push-notification-tutorial.md)。
-* **Mobile Apps**：如需如何從已與通知中樞整合的 Azure App Service Mobile Apps 傳送通知的範例，請參閱[將推播通知新增至行動應用程式](/previous-versions/azure/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push)。
+* **Mobile Apps**：如需如何從已與通知中樞整合的 Azure App Service Mobile Apps 傳送通知的範例，請參閱 [將推播通知新增至行動應用程式](/previous-versions/azure/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push)。
 * **Java/PHP**︰如需使用 REST API 傳送通知的範例，請參閱＜如何從 Java/PHP 使用通知中樞＞([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md))。
 
 ## <a name="optional-send-notifications-from-a-net-console-app"></a>(選擇性) 從 .NET 主控台應用程式傳送通知。
@@ -439,7 +439,7 @@ ms.locfileid: "89003961"
 
     ![[新增專案] 對話方塊的螢幕擷取畫面，其中反白顯示 [主控台應用程式 Visual c #] 選項。](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
 
-2. 在 [套件管理員主控台] 視窗中，將 [預設專案] **** 設為新的主控台應用程式專案，然後在主控台視窗中執行下列命令：
+2. 在 [套件管理員主控台] 視窗中，將 [預設專案]  設為新的主控台應用程式專案，然後在主控台視窗中執行下列命令：
 
     ```shell
     Install-Package Microsoft.Azure.NotificationHubs
@@ -477,7 +477,7 @@ ms.locfileid: "89003961"
 
 若要使用真正的手機來測試應用程式，您只需要使用 USB 纜線將其連接到電腦即可。 此動作會將應用程式載入連結的手機。
 
-若要使用模擬器測試此應用程式，請按一下 Android Studio 頂端工具列上的 [執行]****，然後選取您的應用程式︰這會啟動模擬器、載入和執行應用程式。
+若要使用模擬器測試此應用程式，請按一下 Android Studio 頂端工具列上的 [執行]，然後選取您的應用程式︰這會啟動模擬器、載入和執行應用程式。
 
 應用程式會從百度推播通知服務中擷取 `userId` 和 `channelId`，並向通知中樞註冊。
 

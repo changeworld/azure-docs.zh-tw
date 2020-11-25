@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
 ms.openlocfilehash: dd0617536147787f436e5817f3f2367a19ba6aa4
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696178"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009274"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>升級 Azure 公用 Load Balancer
 [Azure Standard Load Balancer](load-balancer-overview.md) 透過區域冗余提供一組豐富的功能和高可用性。 若要深入瞭解 Load Balancer SKU，請參閱 [比較表](./skus.md#skus)。
@@ -120,7 +120,7 @@ ms.locfileid: "94696178"
 
 ### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>將設定從 v1 遷移至 v2 的 Azure PowerShell 腳本是否有任何限制？
 
-可以。 請參閱 [警告/限制](#caveatslimitations)。
+是。 請參閱 [警告/限制](#caveatslimitations)。
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell 腳本是否也會將基本 Load Balancer 的流量切換至新建立的 Standard Load Balancer？
 

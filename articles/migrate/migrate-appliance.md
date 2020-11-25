@@ -4,11 +4,11 @@ description: 提供 Azure Migrate 設備支援的摘要。
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: ac3c90f1c09d290d5112a0e0d7abc5218788caf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450047"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008696"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 設備
 
@@ -69,8 +69,8 @@ ms.locfileid: "91450047"
 **探索限制** | 設備可以探索最多 5000 部 Hyper-V VM。<br/> 設備最多可以連線到 300 部 Hyper-V 主機。
 **VHD 範本** | 包含 VHD 的 ZIP 資料夾。 從入口網站或從 [這裡](https://go.microsoft.com/fwlink/?linkid=2140422)下載。<br/><br/> 下載大小為 8.91 GB。<br/><br/> 下載的設備範本隨附 Windows Server 2016 評估授權，其有效期為 180 天。 如果評估期接近到期日，建議您下載並部署新的設備，或啟用設備 VM 的作業系統授權。
 **PowerShell 指令碼** | 請參閱這 [篇文章](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)。<br/><br/> 
-**軟體/硬體***   |  設備應該在具有 Windows Server 2016、16 GB RAM、8個 vcpu、大約 80 GB 磁片儲存體和外部虛擬交換器的電腦上執行。<br/> 設備需要靜態或動態 IP 位址，且需要存取網際網路 (直接或透過 Proxy)。<br/><br/> 如果您執行設備作為 Hyper-v VM，您需要 Hyper-v 主機上的足夠資源來配置硬體需求。<br/><br/> 如果您在實體機器上執行設備，請確定其正在執行 Windows Server 2016，且符合硬體需求。 
-**Hyper-V 需求** | 部署如果您使用 VHD 範本來部署設備，Azure Migrate 提供的設備 VM 就是 Hyper-V VM 5.0 版。<br/><br/> Hyper-V 主機必須執行 Windows Server 2012 R2 或更新版本。 
+**軟體/硬體** _   |  設備應該在具有 Windows Server 2016、16 GB RAM、8個 vcpu、大約 80 GB 磁片儲存體和外部虛擬交換器的電腦上執行。<br/> 設備需要靜態或動態 IP 位址，且需要存取網際網路 (直接或透過 Proxy)。<br/><br/> 如果您執行設備作為 Hyper-v VM，您需要 Hyper-v 主機上的足夠資源來配置硬體需求。<br/><br/> 如果您在實體機器上執行設備，請確定其正在執行 Windows Server 2016，且符合硬體需求。 
+_ *Hyper-v 需求** | 部署如果您使用 VHD 範本來部署設備，Azure Migrate 提供的設備 VM 就是 Hyper-V VM 5.0 版。<br/><br/> Hyper-V 主機必須執行 Windows Server 2012 R2 或更新版本。 
 **雜湊值 VHD** | [確認](tutorial-discover-hyper-v.md#verify-security) VHD 範本雜湊值。
 **雜湊值 PowerShell 指令碼** | [驗證](deploy-appliance-script.md#verify-file-security) PowerShell 指令碼雜湊值。
 
@@ -219,7 +219,7 @@ NIC 寫入輸送量 (MB 每秒) | net.transmitted.average  |VM 大小的計算
 --- | --- | ---
 應用程式名稱  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
 版本  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
-提供者  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | 發行者
+提供者  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Publisher
 
 #### <a name="windows-vm-features-data"></a>Windows VM 功能資料
 
@@ -229,7 +229,7 @@ NIC 寫入輸送量 (MB 每秒) | net.transmitted.average  |VM 大小的計算
 --- | --- | ---
 名稱  | Get-WindowsFeature  | 名稱
 特徵類型 | Get-WindowsFeature  | FeatureType
-父系  | Get-WindowsFeature  | 父系
+父代  | Get-WindowsFeature  | 父代
 
 #### <a name="windows-vm-sql-server-metadata"></a>Windows VM SQL Server 中繼資料
 
@@ -256,7 +256,7 @@ Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceN
 
 以下是設備從每個啟用應用程式探索的 VM 收集到的已安裝應用程式資料。 根據 VM 的作業系統，會執行一或多個命令。 此資料會傳送至 Azure。
 
-資料  | Command
+資料  | 命令
 --- | --- 
 名稱 | rpm、dpkg-查詢、貼齊
 版本 | rpm、dpkg-查詢、貼齊
@@ -268,7 +268,7 @@ Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceN
 
 **Data**  | **命令** 
 --- | --- | ---
-名稱 <br/> version | 從下列一或多個檔案收集：<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+名稱 <br/> 版本 | 從下列一或多個檔案收集：<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
 架構 | uname
 
 

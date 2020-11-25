@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 826e475eb71563b52d687903aeac4ec936e267f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092995"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009495"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>如何以 Webjob 的形式執行 Durable Functions
 
@@ -31,13 +31,13 @@ ms.locfileid: "87092995"
 
 若要完成本文中的步驟：
 
-* 透過 **Azure 開發**工作負載[安裝 Visual Studio 2019](/visualstudio/install/)。
+* 透過 **Azure 開發** 工作負載 [安裝 Visual Studio 2019](/visualstudio/install/)。
 
   如果您已經有 Visual Studio，但沒有該工作負載，請選取 [**工具**  >  **取得工具和功能**] 來新增工作負載。
 
   (您可以改為使用 [Visual Studio Code](https://code.visualstudio.com/)，但某些指示是 Visual Studio 特有的。)
 
-* 安裝並執行 [Azure 儲存體模擬器](../../storage/common/storage-use-emulator.md) 5.2 版或更新版本。 替代方法是使用 Azure 儲存體連接字串來更新 App.config** 檔案。
+* 安裝並執行 [Azure 儲存體模擬器](../../storage/common/storage-use-emulator.md) 5.2 版或更新版本。 替代方法是使用 Azure 儲存體連接字串來更新 App.config 檔案。
 
 ## <a name="webjobs-sdk-versions"></a>WebJobs SDK 版本
 
@@ -47,9 +47,9 @@ ms.locfileid: "87092995"
 
 若要以 Webjob 的形式執行 Durable Functions，您必須先建立主控台應用程式。 WebJobs SDK 專案只是安裝了適當 NuGet 套件的主控台應用程式專案。
 
-在 Visual Studio**新增專案**] 對話方塊中，選取 [ **Windows 傳統桌面**  >  **主控台應用程式] ( .NET Framework) **。 在專案檔中，`TargetFrameworkVersion` 應該是 `v4.6.1`。
+在 Visual Studio **新增專案**] 對話方塊中，選取 [ **Windows 傳統桌面**  >  **主控台應用程式] ( .NET Framework)**。 在專案檔中，`TargetFrameworkVersion` 應該是 `v4.6.1`。
 
-Visual Studio 也有 WebJob 專案範本，您可以選取 [**雲端**  >  **Azure WebJob] ( .NET Framework) **來使用此範本。 此範本會安裝許多套件，但您可能不需要其中的某些套件。
+Visual Studio 也有 WebJob 專案範本，您可以選取 [**雲端**  >  **Azure WebJob] ( .NET Framework)** 來使用此範本。 此範本會安裝許多套件，但您可能不需要其中的某些套件。
 
 ## <a name="install-nuget-packages"></a>安裝 NuGet 套件
 
@@ -194,7 +194,7 @@ while (true)
 
     a. 建立 Application Insights 資源，並使用它的 **一般** 應用程式類型。
 
-    b. 將檢測金鑰儲存在 App.config** 檔案。
+    b. 將檢測金鑰儲存在 App.config 檔案。
 
 1. 執行專案。
 
@@ -216,7 +216,7 @@ while (true)
 
 引進的主要變更是使用 .NET Core，而不是 .NET Framework。 若要建立 Webjob SDK 3.x 專案，指示相同，但有下列例外狀況：
 
-1. 建立 .NET Core 主控台應用程式。 在 Visual Studio**新增專案**] 對話方塊中，選取 [.net **core**  >  **主控台應用程式] ( .net core) **。 專案檔會將 `TargetFramework` 指定為 `netcoreapp2.x`。
+1. 建立 .NET Core 主控台應用程式。 在 Visual Studio **新增專案**] 對話方塊中，選取 [.net **core**  >  **主控台應用程式] ( .net core)**。 專案檔會將 `TargetFramework` 指定為 `netcoreapp2.x`。
 
 1. 選擇下列套件的發行版本 Webjob SDK 3.x：
 
@@ -224,7 +224,7 @@ while (true)
     * `Microsoft.Azure.WebJobs.Extensions.Storage`
     * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
 
-1. 使用 .NET Core 設定架構，在檔案的 *appsettings.js* 中設定儲存體連接字串和 Application Insights 檢測金鑰。 以下為範例：
+1. 使用 .NET Core 設定架構，在檔案的 *appsettings.js* 中設定儲存體連接字串和 Application Insights 檢測金鑰。 以下是範例：
 
     ```json
         {

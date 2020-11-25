@@ -7,15 +7,15 @@ ms.reviewer: arthii, divswa, logicappspm
 ms.topic: article
 ms.date: 08/18/2020
 ms.openlocfilehash: 2dd086ccc45458299cf6b8a7ad83d023055c96ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88661192"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009243"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>從 Azure Logic Apps 連線到內部部署資料來源
 
-在[本機電腦上安裝內部*部署資料閘道*](../logic-apps/logic-apps-gateway-install.md) ，而且在您可以從邏輯應用程式存取內部部署資料來源之前，您需要在 Azure 中建立閘道資源，以便進行閘道安裝。 然後，您可以在您想要用於 Azure Logic Apps 中可用的 [內部部署連接器](../connectors/apis-list.md#on-premises-connectors) 的觸發程式和動作中，選取此閘道資源。 Azure Logic Apps 支援透過資料閘道進行的讀取和寫入作業。 不過，這些作業的[承載大小有限制](/data-integration/gateway/service-gateway-onprem#considerations)。
+在 [本機電腦上安裝內部 *部署資料閘道*](../logic-apps/logic-apps-gateway-install.md) ，而且在您可以從邏輯應用程式存取內部部署資料來源之前，您需要在 Azure 中建立閘道資源，以便進行閘道安裝。 然後，您可以在您想要用於 Azure Logic Apps 中可用的 [內部部署連接器](../connectors/apis-list.md#on-premises-connectors) 的觸發程式和動作中，選取此閘道資源。 Azure Logic Apps 支援透過資料閘道進行的讀取和寫入作業。 不過，這些作業的[承載大小有限制](/data-integration/gateway/service-gateway-onprem#considerations)。
 
 本文說明如何 [在本機電腦上為先前安裝的閘道](../logic-apps/logic-apps-gateway-install.md)建立 Azure 閘道資源。 如需閘道的詳細資訊，請參閱 [閘道的運作方式](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)。
 
@@ -68,7 +68,7 @@ ms.locfileid: "88661192"
 
 1. 以用來安裝閘道的相同 Azure 帳戶登入 [Azure 入口網站](https://portal.azure.com) 。
 
-1. 在 Azure 入口網站搜尋方塊中，輸入「內部部署資料閘道」，然後選取 [內部 **部署**資料閘道]。
+1. 在 Azure 入口網站搜尋方塊中，輸入「內部部署資料閘道」，然後選取 [內部 **部署** 資料閘道]。
 
    ![尋找 [內部部署資料閘道]](./media/logic-apps-gateway-connection/search-for-on-premises-data-gateway.png)
 
@@ -76,7 +76,7 @@ ms.locfileid: "88661192"
 
    ![新增適用于資料閘道的 Azure 資源](./media/logic-apps-gateway-connection/add-azure-data-gateway-resource.png)
 
-1. 在 [ **建立連線閘道**] 下，為您的閘道資源提供此資訊。 當您完成時，選取 [建立]。
+1. 在 [ **建立連線閘道**] 下，為您的閘道資源提供此資訊。 當您完成時，選取 [建立]  。
 
    | 屬性 | 描述 |
    |----------|-------------|
@@ -120,7 +120,7 @@ ms.locfileid: "88661192"
 
    ![建立邏輯應用程式與資料閘道之間的連線](./media/logic-apps-gateway-connection/logic-app-gateway-connection.png)
 
-1. 當您完成時，選取 [建立]。
+1. 當您完成時，選取 [建立]  。
 
 您的閘道連線現已可供邏輯應用程式使用。
 
@@ -132,7 +132,7 @@ ms.locfileid: "88661192"
 
    ![在邏輯應用程式功能表上，選取 [API 連接]](./media/logic-apps-gateway-connection/logic-app-api-connections.png)
 
-1. 選取您要的閘道連線，然後選取 [ **編輯 API**連線]。
+1. 選取您要的閘道連線，然後選取 [ **編輯 API** 連線]。
 
    > [!TIP]
    > 如果您的更新未生效，請嘗試 [停止並重新啟動閘道 Windows 服務帳戶](../logic-apps/logic-apps-gateway-install.md#restart-gateway) 以進行閘道安裝。
@@ -150,7 +150,7 @@ ms.locfileid: "88661192"
 
 1. 從 [Azure 入口網站] 功能表中，選取 [ **所有資源**]，或從任何頁面搜尋並選取 **所有資源** 。 尋找並選取您的閘道資源。
 
-1. 如果尚未選取，請在您的閘道資源功能表上選取 [內部部署資料閘道]****。 在 [閘道資源] 工具列上，選取 [ **刪除**]。
+1. 如果尚未選取，請在您的閘道資源功能表上選取 [內部部署資料閘道]。 在 [閘道資源] 工具列上，選取 [ **刪除**]。
 
    例如：
 
@@ -171,11 +171,11 @@ ms.locfileid: "88661192"
 
 * 您的閘道安裝已經與另一個閘道資源相關聯。 每個閘道資源只能連結到一個閘道安裝，只能連結到一個 Azure 帳戶和訂用帳戶。 因此，您無法選取已與另一個閘道資源相關聯的閘道安裝。 這些安裝不會出現在 [ **安裝名稱** ] 清單中。
 
-  若要在 Azure 入口網站中檢查閘道註冊，請在*所有*azure 訂用帳戶中尋找所有具有內部**部署資料閘道**資源類型的 Azure 資源。 若要取消閘道安裝與其他閘道資源的連結，請參閱 [刪除閘道資源](#change-delete-gateway-resource)。
+  若要在 Azure 入口網站中檢查閘道註冊，請在 *所有* azure 訂用帳戶中尋找所有具有內部 **部署資料閘道** 資源類型的 Azure 資源。 若要取消閘道安裝與其他閘道資源的連結，請參閱 [刪除閘道資源](#change-delete-gateway-resource)。
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [保護邏輯應用程式](./logic-apps-securing-a-logic-app.md)
 * [Logic Apps 範例和常見案例](./logic-apps-examples-and-scenarios.md)

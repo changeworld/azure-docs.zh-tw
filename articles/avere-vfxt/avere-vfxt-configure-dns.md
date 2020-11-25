@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.openlocfilehash: 81b53904f85e2ac936195b1e39d7586fd1d47524
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76153780"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009019"
 ---
 # <a name="avere-cluster-dns-configuration"></a>Avere 叢集 DNS 組態
 
 本節說明設定 DNS 系統以便為 Avere vFXT 叢集進行負載平衡的基本概念。
 
-本文件*不包含*在 Azure 環境中設定和管理 DNS 伺服器的指示。
+本文件 *不包含* 在 Azure 環境中設定和管理 DNS 伺服器的指示。
 
 請考慮使用手動方法，在裝載 IP 位址時，於用戶端之間平均指派 IP 位址，而不是使用循環配置資源 DNS，為 Azure 中的 vFXT 叢集進行負載平衡。 在[裝載 Avere 叢集](avere-vfxt-mount-clients.md)中描述數種方法。
 
@@ -74,7 +74,7 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ## <a name="cluster-dns-settings"></a>叢集 DNS 設定
 
-**在 [叢集**  >  **管理網路**設定] 頁面中指定 vFXT 叢集所使用的 DNS 伺服器。 該頁面上的設定包括：
+**在 [叢集**  >  **管理網路** 設定] 頁面中指定 vFXT 叢集所使用的 DNS 伺服器。 該頁面上的設定包括：
 
 * DNS 伺服器位址
 * DNS 網域名稱

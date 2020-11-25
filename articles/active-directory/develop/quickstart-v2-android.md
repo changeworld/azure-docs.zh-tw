@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: e8f60a3f39e770c1b09668a6d76e025b07ebbd6d
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: e0f3cd034838d5a9ccb1a5ccdc2567933b2e1dd6
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893504"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562197"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入門：從 Android 應用程式登入使用者並呼叫 Microsoft Graph API
 
-此快速入門將使用程式碼範例示範 Android 應用程式如何使用 Microsoft 身分識別平台來登入個人、公司或學校帳戶，然後取得存取權杖並呼叫 Microsoft Graph API。 (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
+在本快速入門中，您會下載並執行程式碼範例，該範例會示範 Android 應用程式如何登入使用者，並取得存取權杖來呼叫 Microsoft Graph API。 
+
+如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。
 
 應用程式必須以 Azure Active Directory 中的應用程式物件表示，讓 Microsoft 身分識別平台能夠為您的應用程式提供權杖。
 
@@ -73,7 +75,7 @@ ms.locfileid: "91893504"
 >
 > ## <a name="step-2-run-the-sample-app"></a>步驟 2:執行範例應用程式
 >
-> 從 Android Studio 的**可用裝置**下拉式清單中選取您的模擬器或實體裝置，然後執行應用程式。
+> 從 Android Studio 的 **可用裝置** 下拉式清單中選取您的模擬器或實體裝置，然後執行應用程式。
 >
 > 範例應用程式會在 [單一帳戶模式]  畫面上啟動。 依預設會提供預設範圍 **user.read**，這是在 Microsoft Graph API 呼叫期間讀取您自己的設定檔資料時所使用的範圍。 依預設會提供 Microsoft Graph API 呼叫的 URL。 您可以視需要變更這兩項設定。
 >

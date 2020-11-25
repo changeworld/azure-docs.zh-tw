@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
 ms.openlocfilehash: be43d04672dcefe368eb4052b4d1a929e25327ab
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366854"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009853"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-container-instances"></a>將文字分析容器部署至 Azure 容器實例
 
 瞭解如何將認知服務 [文字分析][install-and-run-containers] 容器部署至 Azure [容器實例][container-instances]。 此程式會」舉例說明建立文字分析資源、建立相關聯的情感分析映射，以及從瀏覽器中執行這兩項協調流程的能力。 使用容器可以將開發人員的注意力轉移到管理基礎結構之外，改為專注于應用程式開發。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* 使用 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services)。
+* 使用 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services)，再開始進行。
 
 [!INCLUDE [Create a Cognitive Services Text Analytics resource](../includes/create-text-analytics-resource.md)]
 

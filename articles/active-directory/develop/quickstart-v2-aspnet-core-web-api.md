@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: dc0cdca2355403bc8f5409d9a6ca7f4ae89caf25
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aa0a001f9c35202939eeb4a7752803b998a3acf7
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943823"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562010"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>快速入門：以 Microsoft 身分識別平台保護 ASP.NET Core Web API
 
-在本快速入門中，您將使用範例程式碼來瞭解如何保護 ASP.NET Core Web API，使其只能被授權的帳戶存取。 帳戶可以是個人帳戶(hotmail.com、outlook.com 等)，以及任何 Azure Active Directory (Azure AD) 執行個體中的公司和學校帳戶。
+在本快速入門中，您會下載 ASP.NET Core Web API 程式碼範例，並檢閱其將資源的存取設定為僅限授權帳戶的程式碼。 此範例支援個人 Microsoft 帳戶和任何 Azure Active Directory (Azure AD) 組織中帳戶的授權。
 
 > [!div renderon="docs"]
 > ## <a name="prerequisites"></a>必要條件
@@ -36,7 +36,7 @@ ms.locfileid: "90943823"
 > 首先，請在您的 Azure AD 租用戶中註冊 Web API，並遵循下列步驟來新增範圍：
 >
 > 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-> 1. 如果您有多個租用的存取權，請使用頂端功能表中的**目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
+> 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
 > 1. 搜尋並選取 [Azure Active Directory]  。
 > 1. 在 [管理]下選取 [應用程式註冊]，再選取 [新增註冊]。
 > 1. 輸入應用程式的 [名稱]，例如 `AspNetCoreWebApi-Quickstart`。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
@@ -72,9 +72,9 @@ ms.locfileid: "90943823"
 >    "TenantId": "Enter_the_Tenant_Info_Here"
 >    ```
 >
->    - 將 `Enter_the_Application_Id_here` 取代為您在 Azure 入口網站中註冊的應用程式的**應用程式 (用戶端) 識別碼**。 您可以在應用程式的 [概觀] 頁面中找到**應用程式 (用戶端) 識別碼**。
+>    - 將 `Enter_the_Application_Id_here` 取代為您在 Azure 入口網站中註冊的應用程式的 **應用程式 (用戶端) 識別碼**。 您可以在應用程式的 [概觀] 頁面中找到 **應用程式 (用戶端) 識別碼**。
 >    - 將 `Enter_the_Tenant_Info_Here` 取代為下列其中一項：
->       - 如果您的應用程式支援 [僅此組織目錄中的帳戶]，請將此值取代為**目錄 (租用戶) 識別碼** (即 GUID) 或**租用戶名稱** (例如 `contoso.onmicrosoft.com`)。 您可以在應用程式的 [概觀] 頁面上找到**目錄 (租用戶) 識別碼**。
+>       - 如果您的應用程式支援 [僅此組織目錄中的帳戶]，請將此值取代為 **目錄 (租用戶) 識別碼** (即 GUID) 或 **租用戶名稱** (例如 `contoso.onmicrosoft.com`)。 您可以在應用程式的 [概觀] 頁面上找到 **目錄 (租用戶) 識別碼**。
 >       - 如果您的應用程式支援 [任何組織目錄中的帳戶]，請將此值取代為 `organizations`
 >       - 如果您的應用程式支援 [所有 Microsoft 帳戶使用者]，請讓此值保持為 `common`
 >
@@ -102,7 +102,7 @@ Web API 會從用戶端應用程式接收權杖，而 Web API 中的程式碼會
 
 | *appsettings.json* 金鑰 | 描述                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `ClientId`             | 於 Azure 入口網站中註冊的應用程式的**應用程式 (用戶端) 識別碼**。                                                                                       |
+| `ClientId`             | 於 Azure 入口網站中註冊的應用程式的 **應用程式 (用戶端) 識別碼**。                                                                                       |
 | `Instance`             | 使用者進行驗證的 Security Token Service (STS) 端點。 此值通常為 `https://login.microsoftonline.com/`，代表 Azure 公用雲端。 |
 | `TenantId`             | 租用戶名稱或其租用戶識別碼 (即 GUID)，或 *common* (使用公司或學校帳戶或 Microsoft 個人帳戶來登入使用者)。                             |
 

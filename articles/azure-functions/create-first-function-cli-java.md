@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 - devx-track-azurecli
-ms.openlocfilehash: 449f0a59cc8428ce8e19535d5cf0417bf4cf7ad0
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 5c8993bdf892ceb7d9886d0d2b97063dedec720c
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424677"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635546"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>快速入門：從命令列在 Azure 中建立 Java 函式
 
@@ -163,11 +163,23 @@ Function.java 包含 `run` 方法，會接收 `request` 變數中的要求資料
 > [!TIP]
 > 若要建立在 Linux 上執行而不是在 Windows 上執行的函式應用程式，請將 pom.xml 檔案中的 `runtime.os` 元素從 `windows` 變更為 `linux`。 [這些區域](https://github.com/Azure/azure-functions-host/wiki/Linux-Consumption-Regions)支援以耗用量方案執行 Linux。 您的應用程式不能在相同的資源群組中在 Linux 和 Windows 上執行。
 
-1. 請先使用 [az login](/cli/azure/authenticate-azure-cli) Azure CLI 命令登入您的 Azure 訂用帳戶，才可部署。 
+1. 您必須先使用 Azure CLI 或 Azure PowerShell 登入 Azure 訂用帳戶，才能進行部署。 
 
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
     ```azurecli
     az login
     ```
+
+    [az login](/cli/azure/reference-index#az-login) 命令會將您登入您的 Azure 帳戶。
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
+    ```azurepowershell
+    Connect-AzAccount
+    ```
+
+    [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet 會將您登入您的 Azure 帳戶。
+
+    ---
 
 1. 使用下列命令，將您的專案部署至新的函式應用程式。
 

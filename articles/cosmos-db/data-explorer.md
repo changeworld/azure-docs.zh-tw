@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: dech
 ms.openlocfilehash: 691a2e56230d312416aed3d68bffd361f1d63558
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637110"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008577"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>使用 Azure Cosmos 總管處理資料 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -34,11 +34,11 @@ Azure Cosmos DB 總管是一個獨立的 Web 介面，可讓您檢視和管理 A
 
    如果您想要為其他使用者提供您 Azure Cosmos DB 帳戶的暫時存取權，則可使用讀寫和讀取存取 URL 來達成此目的。 
 
-4. 開啟 [資料總管] 刀鋒視窗，然後選取 [開啟全螢幕]。 從快顯對話方塊中，您可以檢視兩個存取 URL： **讀寫** 和 **讀取** 。 這些 URL 可讓您與其他使用者暫時共用您的 Azure Cosmos DB 帳戶。 帳戶的存取權將在 24 小時之後到期，在那之後，您可以使用新的存取 URL 或連接字串重新連線。 
+4. 開啟 [資料總管] 刀鋒視窗，然後選取 [開啟全螢幕]。 從快顯對話方塊中，您可以檢視兩個存取 URL：**讀寫** 和 **讀取**。 這些 URL 可讓您與其他使用者暫時共用您的 Azure Cosmos DB 帳戶。 帳戶的存取權將在 24 小時之後到期，在那之後，您可以使用新的存取 URL 或連接字串重新連線。 
 
-   **讀寫** ：當您與其他使用者共用讀寫 URL 時，他們可以檢視和修改資料庫、集合、查詢，以及與該特定帳戶相關聯的其他資源。
+   **讀寫**：當您與其他使用者共用讀寫 URL 時，他們可以檢視和修改資料庫、集合、查詢，以及與該特定帳戶相關聯的其他資源。
 
-   **讀取** ：當您與其他使用者共用唯讀 URL 時，他們可以檢視資料庫、集合、查詢，以及與該特定帳戶相關聯的其他資源。 例如，如果您想要與不具 Azure 入口網站或您 Azure Cosmos DB 帳戶存取權的小組成員共用查詢結果，您可以為他們提供此 URL。
+   **讀取**：當您與其他使用者共用唯讀 URL 時，他們可以檢視資料庫、集合、查詢，以及與該特定帳戶相關聯的其他資源。 例如，如果您想要與不具 Azure 入口網站或您 Azure Cosmos DB 帳戶存取權的小組成員共用查詢結果，您可以為他們提供此 URL。
 
    選擇您想要用來開啟帳戶的存取權類型，然後按一下 [開啟]。 當您開啟總管之後，體驗會與您在 Azure 入口網站中使用 [資料總管] 索引標籤的體驗相同。
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: 88c34be45a832f8944217630568927bc7d52fd88
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 572c657dd44db73b1401c72f0750fe8e000985ac
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660197"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734348"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>將您的非 Azure 機器連線至資訊安全中心
 
@@ -21,7 +21,7 @@ ms.locfileid: "94660197"
 
 您可以透過下列任何方式連線非 Azure 電腦：
 
-- 使用 [已啟用 Azure Arc 的伺服器] (**建議**)
+- 使用已啟用 Azure Arc 的伺服器 (**建議**)
 - 從資訊安全中心在 Azure 入口網站中的頁面 ([開始使用] 和 [清查])
 
 本頁面會說明上述各方式。

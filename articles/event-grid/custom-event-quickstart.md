@@ -4,12 +4,12 @@ description: 使用 Azure 事件方格和 Azure CLI 發佈自訂主題，以及�
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 46341a9cd4f7880333cb2653691328f4969f1fb4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e83c9193ef3beaed2a5a65afe964a1687a2d2505
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87497370"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566328"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>快速入門：使用 Azure CLI 和事件方格將自訂事件路由傳送至 Web 端點
 
@@ -23,11 +23,9 @@ Azure Event Grid 是一項雲端事件服務。 在本文中，您可使用 Azur
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-如果您選擇在本機安裝和使用 CLI，本文會要求您執行最新版的 Azure CLI (2.0.70 或更新版本)。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
-
-如果您未使用 Cloud Shell，必須先使用 `az login` 登入。
+- 本文需要 2.0.70 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -35,7 +33,7 @@ Event Grid 為 Azure 資源，必須放入 Azure 資源群組中。 資源群組
 
 使用 [az group create](/cli/azure/group#az-group-create) 命令來建立資源群組。 
 
-下列範例會在 westus2  位置建立名為 gridResourceGroup  的資源群組。
+下列範例會在 westus2 位置建立名為 gridResourceGroup 的資源群組。
 
 ```azurecli-interactive
 az group create --name gridResourceGroup --location westus2

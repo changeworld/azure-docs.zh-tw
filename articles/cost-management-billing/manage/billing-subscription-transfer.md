@@ -8,15 +8,15 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 11/11/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 1ce461f50a6775bf7884fedc4cfa4dc7cb41bb8c
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: ab71a7fa3d3f92ecf3e1f73835e41fa7170130e6
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408137"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636600"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>將 Azure 訂用帳戶的帳單擁有權轉移給另一個帳戶
 
@@ -24,7 +24,7 @@ ms.locfileid: "94408137"
 
 如果您想要保留帳單擁有權，但變更訂用帳戶類型，請參閱[將 Azure 訂用帳戶切換為其他供應項目](switch-azure-offer.md)。 若要控制誰可以存取訂用帳戶中的資源，請參閱 [Azure 內建角色](../../role-based-access-control/built-in-roles.md)。
 
-如果您是 Enterprise 合約 (EA) 客戶，您的企業系統管理員可以在帳戶之間轉移訂用帳戶的帳單擁有權。 如需詳細資訊，請參閱[變更帳戶擁有者](ea-portal-administration.md#change-account-owner)。
+如果您是 Enterprise 合約 (EA) 客戶，您的企業系統管理員可以在帳戶之間轉移訂用帳戶的帳單擁有權。 如需詳細資訊，請[變更 Azure 訂用帳戶或帳戶擁有權](ea-portal-administration.md#change-azure-subscription-or-account-ownership)。
 
 只有帳戶的計費管理員可以轉移訂用帳戶的擁有權。
 

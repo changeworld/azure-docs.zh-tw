@@ -9,30 +9,22 @@ ms.subservice: general
 ms.topic: quickstart
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f3b9758d52c4be8e4d85c398f5ef1d0b3fae7e86
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d84f500560031322cff32005b537037dc897919e
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87541799"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516759"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-cli"></a>快速入門：使用 Azure CLI 來建立金鑰保存庫
 
 Azure Key Vault 是一項雲端服務，可為[金鑰](../keys/index.yml)、[祕密](../secrets/index.yml)和[憑證](../certificates/index.yml)提供安全的存放區。 如需有關 Key Vault 的詳細資訊，請參閱[關於 Azure Key Vault](overview.md)；如需可以儲存在金鑰保存庫中項目的詳細資訊，請參閱[關於金鑰、祕密和憑證](about-keys-secrets-certificates.md)。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-在本快速入門中，您會使用 [Azure CLI](/cli/azure/) 來建立金鑰保存庫。 Azure CLI 可供使用命令列或指令碼來建立和管理 Azure 資源。  如果您選擇在本機安裝和使用 CLI，本快速入門需要有 Azure CLI 2.0.4 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
-
-若要使用 CLI 登入 Azure，您可以輸入：
-
-```azurecli
-az login
-```
-
-若要進一步了解透過 CLI 的登入選項，請參閱[使用 Azure CLI 進行登入](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
+ - 本快速入門需要 2.0.4 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 

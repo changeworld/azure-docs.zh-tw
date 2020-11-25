@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 08/02/2020
-ms.openlocfilehash: 1745a2bf83cb704c8cc73e9d3bf0eba8245329b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/18/2020
+ms.openlocfilehash: 6af9b8f97d622ae10cfdbcaa8ca50abb42ec7332
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88924260"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94889045"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>使用 REST 和 Postman 建立知識存放區
 
@@ -84,7 +84,7 @@ ms.locfileid: "88924260"
 | `index-name` | 保留為 **hotel-reviews-ix**。 | 
 | `search-service-name` | Azure 認知搜尋服務的名稱。 URL 為 `https://{{search-service-name}}.search.windows.net`。 | 
 | `skillset-name` | 保留為 **hotel-reviews-ss**。 | 
-| `storage-account-name` | 儲存體帳戶名稱。 | 
+| `storage-account-name` | Azure 儲存體帳戶名稱。 | 
 | `storage-connection-string` | 在儲存體帳戶的 [存取金鑰] 索引標籤上，選取 [key1] > [連接字串]。 | 
 | `storage-container-name` | 保留為 **hotel-reviews**。 | 
 

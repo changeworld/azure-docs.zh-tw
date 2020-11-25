@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1f89e23d7bb279e7cce5c104060cc7898517f8b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73889186"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009359"
 ---
 # <a name="use-an-existing-iot-hub-with-the-device-simulation-solution-accelerator"></a>使用現有的 IoT 中樞搭配裝置模擬解決方案加速器
 
@@ -25,9 +25,9 @@ ms.locfileid: "73889186"
 
 若要使用預先存在的 IoT 中樞，您需要 **iothubowner** 共用存取原則的連接字串。 您可以從 [Azure 入口網站](https://portal.azure.com)取得此連接字串：
 
-1. 在入口網站中的中樞設定頁面上，按一下 [共用存取原則]****。
+1. 在入口網站中的中樞設定頁面上，按一下 [共用存取原則]。
 
-1. 按一下 [iothubowner]****。
+1. 按一下 [iothubowner]。
 
 1. 複製主要連接字串或次要連接字串。
 

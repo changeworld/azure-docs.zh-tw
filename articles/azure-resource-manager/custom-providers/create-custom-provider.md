@@ -5,12 +5,12 @@ author: MSEvanhi
 ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: evanhi
-ms.openlocfilehash: 541d140716e52b4fe1db4bc999682914a380a5f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23ae69f49d37a210dd9fa1bfeedeca6c1b461e20
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85368102"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888856"
 ---
 # <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>快速入門：建立自訂提供者並部署自訂資源
 
@@ -23,8 +23,11 @@ ms.locfileid: "85368102"
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-- [custom-providers](/cli/azure/ext/custom-providers/custom-providers/resource-provider) 命令需要擴充功能。 如需詳細資訊，請參閱[使用 Azure CLI 擴充功能](/cli/azure/azure-cli-extensions-overview)。
-- Azure CLI 範例會針對 `REST` 要求使用 `az rest`。 如需詳細資訊，請參閱 [az rest](/cli/azure/reference-index#az-rest)。
+備妥環境以使用 Azure CLI。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Azure CLI 範例會針對 `REST` 要求使用 `az rest`。 如需詳細資訊，請參閱 [az rest](/cli/azure/reference-index#az-rest)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -33,8 +36,6 @@ ms.locfileid: "85368102"
 - 安裝 **ARMClient** 之後，您可以輸入：`armclient.exe`，從 PowerShell 命令提示字元顯示使用方式資訊。 或者，移至 [ARMClient wiki](https://github.com/projectkudu/ARMClient/wiki)。
 
 ---
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="deploy-custom-provider"></a>部署自訂提供者
 

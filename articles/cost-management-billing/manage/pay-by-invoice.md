@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/26/2020
+ms.date: 11/16/2020
 ms.author: banders
 ms.custom: contentperfq2
-ms.openlocfilehash: df95305d1b014579ca6294a9015ac7879d8ce0b3
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 9311a22575c328e0412398f6b63af84c35ac3c32
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670454"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652904"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>按發票支付 Azure 訂閱費
 
@@ -72,7 +72,7 @@ ms.locfileid: "92670454"
 
 6. 確認您的連絡資訊和慣用的連絡方法，然後選取 [建立]。
 
-如果我們因您所需要的信用額度而必須進行信用查核，我們會將信用查核應用程式傳送給您。
+如果我們因您所需要的信用額度而必須進行信用查核，我們會將信用查核應用程式傳送給您。 我們可能會要求您提供已通過稽核的公司財務報表。 如果未提供任何財務資訊或資訊強度不夠，而無法支援所需的信用額度，我們可能會要求您提供押金或擔保信用狀 (Standby Letter of Credit)，以核准您的信用額度檢查要求。
 
 ## <a name="switch-to-invoice-pay-checkwire-transfer"></a>切換為發票付款 (支票/電匯)
 
@@ -89,7 +89,7 @@ ms.locfileid: "92670454"
     ![顯示在 Azure 入口網站中搜尋 [成本管理和計費] 的螢幕擷取畫面。](./media/pay-by-invoice/search.png)
 
 1. 選取您要切換至發票付款的訂用帳戶。
-1. 選取 [ **付款方式** ]。
+1. 選取 [**付款方式**]。
 1. 在命令列中，選取 [按發票付款] 按鈕。
 
     ![按發票付款按鈕、付款方法、Microsoft Azure 入口網站](./media/pay-by-invoice/pay-by-invoice.png)

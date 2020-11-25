@@ -11,17 +11,17 @@ ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
 ms.openlocfilehash: bdc03e8c136606ab7768705b0c8dbcc97782966f
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "87088388"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008883"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>從 Visual Studio 將 ASP.NET Web 應用程式發行到 Azure VM
 
 本檔說明如何使用 Visual Studio 2019 中的 **Microsoft Azure 虛擬機器** 發行功能，將 ASP.NET web 應用程式發佈至 Azure 虛擬機器 (VM) 。  
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 若要使用 Visual Studio 將 ASP.NET 專案發行到 Azure VM，必須正確設定 VM。
 
 - 電腦必須設定為執行 ASP.NET web 應用程式，並已安裝 WebDeploy。 如需詳細資訊，請參閱 [使用 WebDeploy 建立 ASP.NET VM](https://github.com/aspnet/Tooling/blob/AspNetVMs/docs/create-asp-net-vm-with-webdeploy.md)。
@@ -101,7 +101,7 @@ ms.locfileid: "87088388"
 
 #### <a name="deploy-to-clean-web-server"></a>部署到乾淨的 Web 伺服器
 
-- 如果您想要確保網頁伺服器在每次上傳之後都有 web 應用程式的全新複本，而且沒有其他檔案從先前的部署中留下，您可以在 [ **設定** ] 索引標籤中選取 [ **在目的地移除其他** 檔案] 核取方塊。
+- 如果您想要確保網頁伺服器在每次上傳之後都有 web 應用程式的全新複本，而且沒有其他檔案從先前的部署中留下，您可以在 [**設定**] 索引標籤中選取 [**在目的地移除其他** 檔案] 核取方塊。
 
 - 警告：以這項設定發行會刪除位於 Web 伺服器 (wwwroot 目錄) 上的所有檔案。 請確定您知道啟用這個選項下，發行前的電腦狀態。 
 

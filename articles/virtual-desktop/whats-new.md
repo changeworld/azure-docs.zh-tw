@@ -3,17 +3,17 @@ title: Windows 虛擬桌面的新增功能？ - Azure
 description: Windows 虛擬桌面的新功能和產品更新。
 author: Heidilohr
 ms.topic: overview
-ms.date: 10/01/2020
+ms.date: 11/11/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: 0191d6ad74a9b6349f5d1724f9483607dce2d926
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c82312b40955b392243bf616ee991c0108a13fb5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91630008"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537385"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows 虛擬桌面的新增功能？
 
@@ -25,6 +25,48 @@ Windows 虛擬桌面會定期更新。 本文可讓您了解：
 - 錯誤修正
 
 本文每月更新。 務必經常回到這裡查看，以掌握新的更新。
+
+## <a name="october-2020"></a>2020 年 10 月
+
+以下是 2020 年 10 月的變更：
+
+### <a name="improved-performance"></a>提升效能
+
+- 我們已藉由減少下列 Azure 地理位置中的連線延遲來最佳化效能：
+    - 瑞士
+    - 加拿大
+
+您現在可以使用[體驗估算器](https://azure.microsoft.com/services/virtual-desktop/assessment/)，來估算這些區域中的使用者體驗品質。
+
+### <a name="azure-government-cloud-availability"></a>Azure Government 雲端可用性
+
+Azure Government 雲端現已正式推出。 若要深入了解，請參閱[我們的部落格文章](https://azure.microsoft.com/updates/windows-virtual-desktop-is-now-generally-available-in-the-azure-government-cloud/)。
+
+### <a name="windows-virtual-desktop-azure-portal-updates"></a>Windows 虛擬桌面 Azure 入口網站更新
+
+我們對 Windows 虛擬桌面 Azure 入口網站進行了一些更新：
+
+- 已修正導致使用者無法開啟 [工作階段] 索引標籤的 resourceID 錯誤。
+- 已簡化 [工作階段主機] 索引標籤上的 UI。
+- 已修正 RDP 屬性底下的 [預設值]、[可用性] 和 [還原預設值] 設定。
+- 使所有索引標籤上的「移除」和「刪除」功能趨於一致。
+- 現在，入口網站會驗證「新增應用程式」工作流程中的應用程式名稱。
+- 已修正工作階段主機匯出資料在資料行中未對齊的問題。
+- 已修正入口網站無法擷取使用者工作階段的問題。
+- 已修正在不同資源群組中建立虛擬機器時發生的工作階段主機擷取問題。
+- 已更新 [工作階段主機] 索引標籤，使其同時列出作用中和已中斷連線的工作階段。
+- [應用程式] 索引標籤現已有頁面。
+- 已修正在 [應用程式清單] 索引標籤中未正確顯示「需要命令列」文字的問題。
+- 已修正入口網站在使用德文版的共用映像庫時無法部署主機集區或虛擬機器的問題。
+
+### <a name="client-updates-for-october-2020"></a>2020 年 10 月的用戶端更新
+
+我們發行了新版本的用戶端。 若要深入了解，請參閱下列文章：
+
+- [Windows](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew)
+- [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
+
+如需其他用戶端的詳細資訊，請參閱[用戶端更新](#client-updates)。
 
 ## <a name="september-2020"></a>2020 年 9 月
 
@@ -68,7 +110,7 @@ Windows 虛擬桌面會定期更新。 本文可讓您了解：
 
 - Azure Advisor 現在屬於 Windows 虛擬桌面的一部分。 當您透過 Azure 入口網站存取 Windows 虛擬桌面時，您可以看到最佳化 Windows 虛擬桌面環境的建議。 深入了解 [Azure Advisor](azure-advisor.md)。
 
-- Azure CLI 現在支援 Windows 虛擬桌面 (`az desktopvirtualization`)，協助您將 Windows 虛擬桌面部署自動化。 如需擴充命令的清單，請參閱 [desktopvirtualization](/cli/azure/ext/desktopvirtualization/?view=azure-cli-latest)。
+- Azure CLI 現在支援 Windows 虛擬桌面 (`az desktopvirtualization`)，協助您將 Windows 虛擬桌面部署自動化。 如需擴充命令的清單，請參閱 [desktopvirtualization](/cli/azure/ext/desktopvirtualization/?view=azure-cli-latest&preserve-view=true)。
 
 - 我們已更新部署範本，使其與 Windows 虛擬桌面 Azure Resource Manager 介面完全相容。 您可以在 [GitHub](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates) 上找到範本。
 
@@ -140,7 +182,7 @@ Windows 虛擬桌面現在整合至 Azure Resource Manager。 在最新的更新
 
 若要安裝模組，請遵循[設定適用於 Windows 虛擬桌面的 PowerShell 模組](powershell-module.md)中的指示。
 
-您也可以在 [AzWvd PowerShell 參考](/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization)中查看可用命令的清單。
+您也可以在 [AzWvd PowerShell 參考](/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization&preserve-view=true)中查看可用命令的清單。
 
 如需有關新功能的詳細資訊，請參閱[我們的部落格文章](https://techcommunity.microsoft.com/t5/itops-talk-blog/windows-virtual-desktop-spring-update-enters-public-preview/ba-p/1340245)。
 

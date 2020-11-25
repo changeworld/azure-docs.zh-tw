@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: glenga
 ms.openlocfilehash: a525d1e14e642a64235c263ba29bf7a181bf9e30
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420983"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008151"
 ---
 ## <a name="publish-the-project-to-azure"></a>將專案發佈到 Azure
 
@@ -25,15 +25,15 @@ ms.locfileid: "93420983"
 
 1. 依照提示提供下列資訊：
 
-    - **選取資料夾** ：從您的工作區選擇資料夾，或瀏覽至其中一個包含您函式應用程式的資料夾。 如果您已經開啟有效的函式應用程式，您就不會看到此提示。
+    - **選取資料夾**：從您的工作區選擇資料夾，或瀏覽至其中一個包含您函式應用程式的資料夾。 如果您已經開啟有效的函式應用程式，您就不會看到此提示。
 
-    - **選取訂用帳戶** ：選擇要使用的訂用帳戶。 如果您只有一個訂用帳戶，就不會看見此選項。
+    - **選取訂用帳戶**：選擇要使用的訂用帳戶。 如果您只有一個訂用帳戶，就不會看見此選項。
 
-    - **在 Azure 中選取函式應用程式** ：選擇 `- Create new Function App`。 (請勿選擇本文中未涵蓋的 `Advanced` 選項)。
+    - **在 Azure 中選取函式應用程式**：選擇 `- Create new Function App`。 (請勿選擇本文中未涵蓋的 `Advanced` 選項)。
       
-    - **輸入函式應用程式的全域唯一名稱** ：輸入在 URL 路徑中有效的名稱。 您輸入的名稱會進行驗證，以確定該名稱在 Azure Functions 中是唯一的。
+    - **輸入函式應用程式的全域唯一名稱**：輸入在 URL 路徑中有效的名稱。 您輸入的名稱會進行驗證，以確定該名稱在 Azure Functions 中是唯一的。
     
-    - **選取新資源的位置** ：若要獲得較佳的效能，請選擇您附近的 [區域](https://azure.microsoft.com/regions/)。 
+    - **選取新資源的位置**：若要獲得較佳的效能，請選擇您附近的 [區域](https://azure.microsoft.com/regions/)。 
     
 1.  完成時，系統會依您的函式應用程式名稱，在訂用帳戶中建立下列 Azure 資源：
     

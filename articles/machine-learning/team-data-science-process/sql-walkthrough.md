@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 580181aaaea975ee07bcec8108297079c5373b92
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320419"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007404"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Team Data Science Process 實務：使用 SQL Server
 在這個教學課程中，您將遵循逐步解說，使用 SQL Server 和可公開取得的資料集 ([NYC Taxi Trips (NYC 計程車車程)](https://www.andresmh.com/nyctaxitrips/) 資料集)，完成建置和部署機器學習服務模型的程序。 程序會遵循標準的資料科學工作流程︰包括擷取和瀏覽資料，以及設計功能以加快學習，接著建置和部署模型。
@@ -114,9 +114,9 @@ NYC 計程車行程資料大約有 20 GB 的壓縮 CSV 檔案 (~ 48 GB 的未壓
 4. 將下載的檔案解壓縮。 請注意未壓縮檔案所在的資料夾。 此資料夾將稱為 <path\_to\_data\_files\>。
 
 ## <a name="bulk-import-data-into-sql-server-database"></a><a name="dbload"></a>將資料大量匯入到 SQL Server 資料庫
-您可以使用資料 *分割資料表和視圖* ，來改善將大量資料載入/傳輸到 SQL Database 和後續查詢的效能。 在本節中，我們將遵循「 [使用 SQL 資料分割資料表平行大量資料匯入](parallel-load-sql-partitioned-tables.md) 」中所述的指示建立新的資料庫，並將資料平行載入資料分割資料表。
+您可以使用資料 *分割資料表和視圖*，來改善將大量資料載入/傳輸到 SQL Database 和後續查詢的效能。 在本節中，我們將遵循「 [使用 SQL 資料分割資料表平行大量資料匯入](parallel-load-sql-partitioned-tables.md) 」中所述的指示建立新的資料庫，並將資料平行載入資料分割資料表。
 
-1. 登入 VM 之後，請啟動 **SQL Server Management Studio** 。
+1. 登入 VM 之後，請啟動 **SQL Server Management Studio**。
 2. 使用 Windows 驗證進行連接。
    
     ![SSMS 連線][12]
@@ -125,19 +125,19 @@ NYC 計程車行程資料大約有 20 GB 的壓縮 CSV 檔案 (~ 48 GB 的未壓
     ![執行指令碼][13]
 4. 驗證和 (或) 變更 SQL Server 預設資料庫和記錄檔資料夾，以確保新建立的資料庫會儲存於資料磁碟中。 針對資料倉儲負載進行優化的 SQL Server VM 映射已預先設定資料和記錄磁片。 如果您的 VM 不含資料磁碟，而您在 VM 安裝過程中加入新的虛擬硬碟，則需變更預設資料夾，如下所示：
    
-   * 以滑鼠右鍵按一下左面板中的 SQL Server 名稱，然後按一下 [ **屬性** ]。
+   * 以滑鼠右鍵按一下左面板中的 SQL Server 名稱，然後按一下 [ **屬性**]。
      
        ![SQL Server 屬性][14]
    * 在左邊的 [選取頁面] 清單中，選取 [資料庫設定]。
-   * 確認 **資料庫預設位置** ，和 (或) 將其變更為您選擇的 **資料磁碟** 位置。 如果以預設設定建立新的資料庫，這個位置就是新資料庫所在的位置。
+   * 確認 **資料庫預設位置**，和 (或) 將其變更為您選擇的 **資料磁碟** 位置。 如果以預設設定建立新的資料庫，這個位置就是新資料庫所在的位置。
      
        ![SQL Database 的預設值][15]  
-5. 若要建立新資料庫與一組檔案群組來保留資料分割資料表，請開啟指令碼範例 **create\_db\_default.sql** 。 指令碼將會在預設資料位置中建立名為 **TaxiNYC** 的新資料庫和 12 個檔案群組。 每個檔案群組都將保留一個月內的 trip\_data 和 trip\_fare 資料。 視需要修改資料庫名稱。 按一下 [ **執行** ] 以執行腳本。
-6. 接下來，建立兩個資料分割資料表，一個用於 trip\_，另一個用於 trip\_fare。 開啟指令碼範例 **create\_partitioned\_table.sql** ，其功用如下：
+5. 若要建立新資料庫與一組檔案群組來保留資料分割資料表，請開啟指令碼範例 **create\_db\_default.sql**。 指令碼將會在預設資料位置中建立名為 **TaxiNYC** 的新資料庫和 12 個檔案群組。 每個檔案群組都將保留一個月內的 trip\_data 和 trip\_fare 資料。 視需要修改資料庫名稱。 按一下 [ **執行** ] 以執行腳本。
+6. 接下來，建立兩個資料分割資料表，一個用於 trip\_，另一個用於 trip\_fare。 開啟指令碼範例 **create\_partitioned\_table.sql**，其功用如下：
    
    * 建立資料分割函式，以依月份分割資料。
    * 建立資料分割配置，將每個月的資料對應至不同的檔案群組。
-   * 建立兩個對應至資料分割配置的資料分割資料表： **nyctaxi\_trip** 會保留 trip\_data， **nyctaxi\_fare** 則會保留 trip\_fare 資料。
+   * 建立兩個對應至資料分割配置的資料分割資料表：**nyctaxi\_trip** 會保留 trip\_data，**nyctaxi\_fare** 則會保留 trip\_fare 資料。
      
      按一下 [ **執行** ] 以執行腳本並建立資料分割資料表。
 7. [ **指令碼範例** ] 資料夾提供兩個 PowerShell 指令碼範例，可用來示範將資料平行大量匯入 SQL Server 資料表的方式。
@@ -150,8 +150,8 @@ NYC 計程車行程資料大約有 20 GB 的壓縮 CSV 檔案 (~ 48 GB 的未壓
    
     您也可以選取驗證模式，預設值是 Windows 驗證。 按一下工具列中的綠色箭頭來執行。 指令碼將平行啟動 24 個大量匯入作業，針對每個資料分割資料表啟動 12 個作業。 您可以藉由開啟 SQL Server 預設資料資料夾 (如上述所設定)，來監視資料匯入進度。
 9. PowerShell 指令碼會報告開始和結束時間。 完成所有大量匯入時，即會報告結束時間。 檢查目標記錄檔資料夾，以確認大量匯入成功，也就是目標記錄檔資料夾中未報告任何錯誤。
-10. 您的資料庫已準備好進行探索、功能工程，以及所需的其他作業。 因為資料表是根據 [ **收取 \_ 日期時間** ] 欄位來分割，所以在 **WHERE** 子句中包含 **取貨 \_ datetime** 條件的查詢將受益于資料分割配置。
-11. 在 **SQL Server Management Studio** 中，探索當中提供的指令碼範例 **sample\_queries.sql** 。 若要執行任何範例查詢，請反白顯示查詢行，然後按一下工具列中的 [ **執行** ]。
+10. 您的資料庫已準備好進行探索、功能工程，以及所需的其他作業。 因為資料表是根據 [**收取 \_ 日期時間**] 欄位來分割，所以在 **WHERE** 子句中包含 **取貨 \_ datetime** 條件的查詢將受益于資料分割配置。
+11. 在 **SQL Server Management Studio** 中，探索當中提供的指令碼範例 **sample\_queries.sql**。 若要執行任何範例查詢，請反白顯示查詢行，然後按一下工具列中的 [ **執行** ]。
 12. 「NYC 計程車車程」資料會載入兩個不同的資料表。 若要改善聯結作業，強烈建議您為資料表編製索引。 指令碼範例 **create\_partitioned\_index.sql** 會在複合聯結索引鍵 **medallion、hack\_license 和 pickup\_datetime** 上建立資料分割索引。
 
 ## <a name="data-exploration-and-feature-engineering-in-sql-server"></a><a name="dbexplore"></a>SQL Server 中的資料探索和功能工程
@@ -258,10 +258,10 @@ AND   pickup_longitude != '0' AND dropoff_longitude != '0'
 ```
 
 #### <a name="feature-engineering-in-sql-queries"></a>SQL 查詢中的功能工程
-標籤產生和地理位置轉換探索查詢也可藉由移除計數組件，用來產生標籤或功能。 ＜ [IPython Notebook 中的資料探索和功能工程](#ipnb) ＞一節中提供了其他的功能工程 SQL 範例。 在完整資料集上執行功能產生查詢，或使用直接在 SQL Server 資料庫實例上執行的 SQL 查詢，在整個資料集上執行功能產生查詢會更有效率。 查詢可能會在 **SQL Server Management Studio** 、IPython 筆記本或可在本機或遠端存取資料庫的任何開發工具或環境中執行。
+標籤產生和地理位置轉換探索查詢也可藉由移除計數組件，用來產生標籤或功能。 ＜ [IPython Notebook 中的資料探索和功能工程](#ipnb) ＞一節中提供了其他的功能工程 SQL 範例。 在完整資料集上執行功能產生查詢，或使用直接在 SQL Server 資料庫實例上執行的 SQL 查詢，在整個資料集上執行功能產生查詢會更有效率。 查詢可能會在 **SQL Server Management Studio**、IPython 筆記本或可在本機或遠端存取資料庫的任何開發工具或環境中執行。
 
 #### <a name="preparing-data-for-model-building"></a>準備資料以進行模型建置
-下列查詢可聯結 **nyctaxi\_trip** 和 **nyctaxi\_fare** 資料表、產生二進位分類標籤 **tipped** 、多類別分類標籤 **tip\_class** ，以及從完整聯結的資料集中擷取 1% 的隨機取樣。 您可以複製此查詢並直接貼到 [Azure Machine Learning Studio 的](https://studio.azureml.net) [匯入資料][import-data]模組，以便從 Azure 中的 SQL Server 資料庫執行個體直接擷取資料。 查詢會排除含有不正確 (0, 0) 座標的記錄。
+下列查詢可聯結 **nyctaxi\_trip** 和 **nyctaxi\_fare** 資料表、產生二進位分類標籤 **tipped**、多類別分類標籤 **tip\_class**，以及從完整聯結的資料集中擷取 1% 的隨機取樣。 您可以複製此查詢並直接貼到 [Azure Machine Learning Studio 的](https://studio.azureml.net) [匯入資料][import-data]模組，以便從 Azure 中的 SQL Server 資料庫執行個體直接擷取資料。 查詢會排除含有不正確 (0, 0) 座標的記錄。
 
 ```sql
 SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
@@ -432,12 +432,12 @@ plt.scatter(df1['passenger_count'], df1['trip_distance'])
 ![圖 #8][8]
 
 ### <a name="sub-sampling-the-data-in-sql"></a>針對 SQL 中的資料進行次取樣
-準備在 [Azure Machine Learning Studio](https://studio.azureml.net) 中建置模型所需的資料時，您可以決定 **要直接在「匯入資料」模組中使用的 SQL 查詢** ，或將工程設計和取樣資料保存在新的資料表中，您只要利用簡單的 **SELECT * FROM <your\_new\_tablename>** ，即可在 [匯入資料\_][import-data]模組中使用此資料表。
+準備在 [Azure Machine Learning Studio](https://studio.azureml.net) 中建置模型所需的資料時，您可以決定 **要直接在「匯入資料」模組中使用的 SQL 查詢**，或將工程設計和取樣資料保存在新的資料表中，您只要利用簡單的 **SELECT * FROM <your\_new\_tablename>**，即可在 [匯入資料\_][import-data]模組中使用此資料表。
 
 在本節中，我們將建立新的資料表來保存取樣和工程資料。 ＜ [SQL Server 中的資料探索和功能工程](#dbexplore) ＞一節中提供了可用來建置模型的直接 SQL 查詢範例。
 
 #### <a name="create-a-sample-table-and-populate-with-1-of-the-joined-tables-drop-table-first-if-it-exists"></a>建立取樣資料表並使用 1% 的聯結資料表來填入。 如果資料表存在，請先卸除它。
-在本節中，我們會聯結資料表 **nyctaxi\_trip** 和 **nyctaxi\_fare** 、擷取 1% 的隨機取樣，然後將取樣的資料保存在名為 **nyctaxi\_one\_percent** 的新資料表中：
+在本節中，我們會聯結資料表 **nyctaxi\_trip** 和 **nyctaxi\_fare**、擷取 1% 的隨機取樣，然後將取樣的資料保存在名為 **nyctaxi\_one\_percent** 的新資料表中：
 
 ```sql
 cursor = conn.cursor()
@@ -661,7 +661,7 @@ pd.read_sql(query,conn)
 ![Azure Machine Learning 訓練][10]
 
 > [!IMPORTANT]
-> 在前幾節中提供的模型化資料擷取和取樣查詢範例中， **這三個模型化練習的所有標籤都包含於此查詢中** 。 每一個模型化練習的重要 (必要) 步驟都是針對其他兩個問題 **排除** 不需要的標籤，以及任何其他的 **目標流失** 。 例如，使用二進位分類時，請用 **tipped** 標籤，並排除 **tip\_class** 、 **tip\_amount** 和 **total\_amount** 欄位。 後者為目標流失，因為它們意指支付的小費。
+> 在前幾節中提供的模型化資料擷取和取樣查詢範例中， **這三個模型化練習的所有標籤都包含於此查詢中**。 每一個模型化練習的重要 (必要) 步驟都是針對其他兩個問題 **排除** 不需要的標籤，以及任何其他的 **目標流失**。 例如，使用二進位分類時，請用 **tipped** 標籤，並排除 **tip\_class**、**tip\_amount** 和 **total\_amount** 欄位。 後者為目標流失，因為它們意指支付的小費。
 > 
 > 若要排除不必要的資料行和 (或) 目標流失，您可以使用[選取資料集中的資料行][select-columns]模組或[編輯中繼資料][edit-metadata]。 如需詳細資訊，請參閱[選取資料集中的資料行][select-columns]和[編輯中繼資料][edit-metadata]參考頁面。
 > 
@@ -696,7 +696,7 @@ Azure Machine Learning 將根據訓練實驗的元件來建立計分實驗。 �
 ### <a name="license-information"></a>授權資訊
 此逐步解說範例及其隨附的指令碼和 IPython Notebook 是在 MIT 授權下由 Microsoft 所共用。 請查看 GitHub 上範例程式碼目錄中的 LICENSE.txt 檔案，以取得詳細資料。
 
-### <a name="references"></a>參考
+### <a name="references"></a>參考資料
 •    [Andrés Monroy NYC 計程車車程下載頁面](https://www.andresmh.com/nyctaxitrips/) \(英文\)  
 •    [Chris Whong 識破強奪 NYC 的計程車行程資料](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 •    [NYC 計程車和禮車委員會研究和統計資料](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)

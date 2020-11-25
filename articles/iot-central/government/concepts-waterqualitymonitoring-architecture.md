@@ -7,18 +7,18 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 2afe53ade9106fa5e1ebb9ec43492a86bd9fc213
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1c4cc7f5440aca27be085c238179cd0ab20b226a
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127313"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874044"
 ---
 # <a name="water-quality-monitoring-reference-architecture"></a>水質監視參考架構 
 
 
 
-您可以使用 **Azure IoT Central 應用程式範本**作為入門 IoT 應用程式來建立水質監視解決方案。 本文提供建置端對端解決方案的高階參考架構指引。 
+您可以使用 **Azure IoT Central 應用程式範本** 作為入門 IoT 應用程式來建立水質監視解決方案。 本文提供建置端對端解決方案的高階參考架構指引。 
 
 
 ![水質監視架構](./media/concepts-waterqualitymonitoring-architecture/concepts-waterqualitymonitoring-architecture1.png)
@@ -41,10 +41,10 @@ ms.locfileid: "92127313"
 Azure IoT Central 是 IoT 應用程式平台，可讓您快速啟動並在 IoT 解決方案上執行。 您可以使用第三方服務來建立品牌、自訂及整合您的解決方案。
 將您的智慧型水資源裝置連線到 IoT Central 之後，您就可以取得裝置命令和控制、監視和警示、具有內建 RBAC 的使用者介面、可設定的深入解析儀表板，以及擴充性選項。 
 
-## <a name="extensibility-and-integrations"></a>擴充性與整合 
+## <a name="extensibility-and-integrations"></a>擴充性與整合
 您可以在 IoT Central 中擴充 IoT 應用程式，並選擇性地執行下列動作：
 * 透過從 IoT Central 應用程式的連續資料匯出，轉換和整合您的 IoT 資料，以進行進階分析，例如訓練機器學習模型
-* 使用 Microsoft Flow 或來自 IoT Central 應用程式的 Webhook 觸發動作，將其他系統中的工作流程自動化
+* 使用 Power Automate 或來自 IoT Central 應用程式的 Webhook 觸發動作，將其他系統中的工作流程自動化
 * 透過 IoT Central API 在 IoT Central 中以程式設計方式存取您的 IoT 應用程式
 
 ## <a name="business-applications"></a>商務應用程式 

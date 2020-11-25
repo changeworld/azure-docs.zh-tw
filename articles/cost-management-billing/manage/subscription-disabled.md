@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 11/17/2020
 ms.author: banders
-ms.openlocfilehash: 550be6c10402398b62af307281660b93981a0df3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cad3082981bcfc699bc230badf44e2ffc2e1bed3
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91308957"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94744420"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>重新啟用已停用的 Azure 訂用帳戶
 
@@ -54,6 +54,10 @@ ms.locfileid: "91308957"
     ![顯示右窗格中重新啟用連結的螢幕擷取畫面](./media/subscription-disabled/reactivate-sub.png)
 
 對於其他訂用帳戶類型，請[連絡支援人員](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以將您的訂用帳戶重新啟動。
+
+## <a name="after-reactivation"></a>重新啟用之後
+
+重新啟動訂用帳戶之後，建立或管理資源可能會有所延遲。 如果延遲超過 30 分鐘，請洽詢 [Azure 計費支援](https://go.microsoft.com/fwlink/?linkid=2083458)來取得協助。 大部分的 Azure 資源會自動繼續，且不需要任何動作。 不過，我們建議您檢查 Azure 服務資源，並重新啟動任何未自動恢復的資源。
 
 ## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 

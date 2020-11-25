@@ -12,15 +12,18 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperfq1
-ms.openlocfilehash: e621d50280adcccb8dbd82f4ceb0de7956e98e4b
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: d356674819304897aef353d161ddf236e19db1f5
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91576960"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592238"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>快速入門：將 Microsoft 身分識別平台登入新增至 ASP.NET Web 應用程式
-在本快速入門中，您將利用程式碼範例了解 ASP.NET Web 應用程式如何從任何 Azure Active Directory (Azure AD) 執行個體登入個人帳戶 (hotmail.com、outlook.com 等) 與公司和學校帳戶。  (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
+
+在本快速入門中，您會下載並執行程式碼範例，該範例會示範 ASP.NET Web 應用程式如何從任何 Azure Active Directory (Azure AD) 組織登入使用者。 
+
+如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。
 > [!div renderon="docs"]
 > ## <a name="prerequisites"></a>必要條件
 >
@@ -69,9 +72,9 @@ ms.locfileid: "91576960"
 > [!div renderon="docs"]
 > [下載 Visual Studio 2019 解決方案](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
-> [!div renderon="portal"]
+> [!div renderon="portal" class="sxs-lookup"]
 > 使用 Visual Studio 2019 執行專案。
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [下載程式碼範例](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -101,7 +104,7 @@ ms.locfileid: "91576960"
 >
 > > [!TIP]
 > > - 若要尋找 [應用程式識別碼]、[目錄 (租用戶) 識別碼] 和 [支援的帳戶類型]，請移至 [概觀] 頁面
-> > - 確定 **Web.config** 中的 `redirectUri` 值對應至針對 AzureAD 中的應用程式註冊所定義的**重新導向 URI** (如果不是，請瀏覽至應用程式註冊的 [驗證] 功能表，並更新 [重新導向 URI] 以使兩者相符)
+> > - 確定 **Web.config** 中的 `redirectUri` 值對應至針對 AzureAD 中的應用程式註冊所定義的 **重新導向 URI** (如果不是，請瀏覽至應用程式註冊的 [驗證] 功能表，並更新 [重新導向 URI] 以使兩者相符)
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
@@ -126,7 +129,7 @@ Install-Package Microsoft.Owin.Host.SystemWeb
 
 ### <a name="owin-startup-class"></a>OWIN 啟動類別
 
-OWIN 中介軟體使用*啟動類別*，此類別會在裝載處理序初始時執行。 在本快速入門中，*startup.cs* 檔案位於根資料夾中。 以下程式碼顯示本快速入門所使用的參數：
+OWIN 中介軟體使用 *啟動類別*，此類別會在裝載處理序初始時執行。 在本快速入門中，*startup.cs* 檔案位於根資料夾中。 以下程式碼顯示本快速入門所使用的參數：
 
 ```csharp
 public void Configuration(IAppBuilder app)
@@ -200,7 +203,7 @@ public void SignIn()
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>保護控制器或控制器的方法
 
-您可以使用 `[Authorize]` 屬性來保護控制器或控制器動作。 此屬性會透過只允許已驗證的使用者存取控制器中的動作，來限制對控制器或動作的存取；這表示當*未驗證*的使用者嘗試存取具有 `[Authorize]` 屬性的其中一個動作或控制器時，系統將會自動執行驗證挑戰。
+您可以使用 `[Authorize]` 屬性來保護控制器或控制器動作。 此屬性會透過只允許已驗證的使用者存取控制器中的動作，來限制對控制器或動作的存取；這表示當 *未驗證* 的使用者嘗試存取具有 `[Authorize]` 屬性的其中一個動作或控制器時，系統將會自動執行驗證挑戰。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

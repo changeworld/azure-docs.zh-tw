@@ -1,22 +1,22 @@
 ---
 title: Azure Security Benchmark 的法規合規性詳細資料
 description: Azure Security Benchmark 法規合規性內建方案的詳細資料。 每個控制措施都會對應至一或多個可協助評量的 Azure 原則定義。
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: c4f009b24889f3c855e9cb612fed7bdc1342e313
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 1f5a81f430b536155626dfff1b74167146fdbbe5
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311468"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699420"
 ---
 # <a name="details-of-the-azure-security-benchmark-regulatory-compliance-built-in-initiative"></a>Azure Security Benchmark 法規合規性內建方案的詳細資料
 
-下列文章詳細說明 Azure 原則法規合規性內建方案定義如何對應至 Azure Security Benchmark 中的 **合規性領域** 與 **控制項** 。
+下列文章詳細說明 Azure 原則法規合規性內建方案定義如何對應至 Azure Security Benchmark 中的 **合規性領域** 與 **控制項**。
 如需此合規性標準的詳細資訊，請參閱 [Azure Security Benchmark](../../../security/benchmarks/overview.md)。 若要了解「擁有權」，請參閱 [Azure 原則原則定義](../concepts/definition-structure.md#type)與[雲端中共同承擔的責任](../../../security/fundamentals/shared-responsibility.md)。
 
-以下是 **Azure 安全性效能評定** 控制項的對應。 使用右側的導覽區可直接跳到特定的 **合規性領域** 。 許多控制措施都是以 [Azure 原則](../overview.md)方案定義實作的。 若要檢閱完整方案定義，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。
+以下是 **Azure 安全性效能評定** 控制項的對應。 使用右側的導覽區可直接跳到特定的 **合規性領域**。 許多控制措施都是以 [Azure 原則](../overview.md)方案定義實作的。 若要檢閱完整方案定義，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。
 然後，尋找並選取 **Azure Security Benchmark** 法規合規性內建方案的定義。
 
 此內建方案會部署為 [Azure Security Benchmark 藍圖範例](../../blueprints/samples/azure-security-benchmark.md)的一部分。
@@ -29,7 +29,7 @@ ms.locfileid: "92311468"
 
 ### <a name="protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>在虛擬網路上使用網路安全性群組或 Azure 防火牆來保護資源
 
-**識別碼** ：Azure Security Benchmark 1.1 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 1.1 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -58,7 +58,7 @@ ms.locfileid: "92311468"
 
 ### <a name="monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>監視和記錄 VNet、子網路與 NIC 的設定和流量
 
-**識別碼** ：Azure Security Benchmark 1.2 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 1.2 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -66,7 +66,7 @@ ms.locfileid: "92311468"
 
 ### <a name="protect-critical-web-applications"></a>保護重要的 Web 應用程式
 
-**識別碼** ：Azure Security Benchmark 1.3 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 1.3 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -80,7 +80,7 @@ ms.locfileid: "92311468"
 
 ### <a name="deny-communications-with-known-malicious-ip-addresses"></a>拒絕與已知惡意 IP 位址通訊
 
-**識別碼** ：Azure Security Benchmark 1.4 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 1.4 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -91,7 +91,7 @@ ms.locfileid: "92311468"
 
 ### <a name="record-network-packets-and-flow-logs"></a>記錄網路封包和流量記錄
 
-**識別碼** ：Azure Security Benchmark 1.5 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 1.5 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -99,7 +99,7 @@ ms.locfileid: "92311468"
 
 ### <a name="use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>使用自動化工具來監視網路資源設定並偵測變更
 
-**識別碼** ：Azure Security Benchmark 1.11 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 1.11 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -115,7 +115,7 @@ ms.locfileid: "92311468"
 
 ### <a name="configure-central-security-log-management"></a>設定中央安全性記錄管理
 
-**識別碼** ：Azure Security Benchmark 2.2 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 2.2 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -128,7 +128,7 @@ ms.locfileid: "92311468"
 
 ### <a name="enable-audit-logging-for-azure-resources"></a>啟用 Azure 資源的稽核記錄
 
-**識別碼** ：Azure Security Benchmark 2.3 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 2.3 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -150,7 +150,7 @@ ms.locfileid: "92311468"
 
 ### <a name="collect-security-logs-from-operating-systems"></a>從作業系統收集安全性記錄
 
-**識別碼** ：Azure Security Benchmark 2.4 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 2.4 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -161,7 +161,7 @@ ms.locfileid: "92311468"
 
 ### <a name="configure-security-log-storage-retention"></a>設定安全性記錄儲存體保留期
 
-**識別碼** ：Azure Security Benchmark 2.5 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 2.5 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -169,7 +169,7 @@ ms.locfileid: "92311468"
 
 ### <a name="enable-alerts-for-anomalous-activity"></a>啟用異常活動的警示
 
-**識別碼** ：Azure Security Benchmark 2.7 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 2.7 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -178,7 +178,7 @@ ms.locfileid: "92311468"
 
 ### <a name="centralize-anti-malware-logging"></a>集中化反惡意程式碼記錄
 
-**識別碼** ：Azure Security Benchmark 2.8 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 2.8 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -190,7 +190,7 @@ ms.locfileid: "92311468"
 
 ### <a name="maintain-an-inventory-of-administrative-accounts"></a>維護系統管理帳戶的清查
 
-**識別碼** ：Azure Security Benchmark 3.1 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 3.1 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -201,7 +201,7 @@ ms.locfileid: "92311468"
 
 ### <a name="use-dedicated-administrative-accounts"></a>使用專用的系統管理帳戶
 
-**識別碼** ：Azure Security Benchmark 3.3 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 3.3 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -213,7 +213,7 @@ ms.locfileid: "92311468"
 
 ### <a name="use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>針對所有以 Azure Active Directory 為基礎的存取使用多重要素驗證
 
-**識別碼** ：Azure Security Benchmark 3.5 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 3.5 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -223,7 +223,7 @@ ms.locfileid: "92311468"
 
 ### <a name="use-azure-active-directory"></a>使用 Azure Active Directory
 
-**識別碼** ：Azure Security Benchmark 3.9 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 3.9 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -232,7 +232,7 @@ ms.locfileid: "92311468"
 
 ### <a name="regularly-review-and-reconcile-user-access"></a>定期檢閱並協調使用者存取
 
-**識別碼** ：Azure Security Benchmark 3.10 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 3.10 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -246,7 +246,7 @@ ms.locfileid: "92311468"
 
 ### <a name="maintain-an-inventory-of-sensitive-information"></a>維護敏感性資訊的清查
 
-**識別碼** ：Azure Security Benchmark 4.1 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 4.1 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -254,7 +254,7 @@ ms.locfileid: "92311468"
 
 ### <a name="encrypt-all-sensitive-information-in-transit"></a>加密傳輸中的所有敏感性資訊
 
-**識別碼** ：Azure Security Benchmark 4.4 **擁有權** ：共用
+**識別碼**：Azure Security Benchmark 4.4 **擁有權**：共用
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -274,7 +274,7 @@ ms.locfileid: "92311468"
 
 ### <a name="use-an-active-discovery-tool-to-identify-sensitive-data"></a>使用作用中探索工具來識別敏感性資料
 
-**識別碼** ：Azure Security Benchmark 4.5 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 4.5 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -284,7 +284,7 @@ ms.locfileid: "92311468"
 
 ### <a name="use-azure-rbac-to-control-access-to-resources"></a>使用 Azure RBAC 來控制資源的存取權
 
-**識別碼** ：Azure Security Benchmark 4.6 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 4.6 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -293,7 +293,7 @@ ms.locfileid: "92311468"
 
 ### <a name="encrypt-sensitive-information-at-rest"></a>加密待用的敏感性資訊
 
-**識別碼** ：Azure Security Benchmark 4.8 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 4.8 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -307,7 +307,7 @@ ms.locfileid: "92311468"
 
 ### <a name="log-and-alert-on-changes-to-critical-azure-resources"></a>針對重要 Azure 資源的變更留下記錄和發出警示
 
-**識別碼** ：Azure Security Benchmark 4.9 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 4.9 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -317,7 +317,7 @@ ms.locfileid: "92311468"
 
 ### <a name="run-automated-vulnerability-scanning-tools"></a>執行自動化弱點掃描工具
 
-**識別碼** ：Azure Security Benchmark 5.1 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 5.1 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -327,7 +327,7 @@ ms.locfileid: "92311468"
 
 ### <a name="deploy-automated-operating-system-patch-management-solution"></a>部署自動化的作業系統修補程式管理解決方案
 
-**識別碼** ：Azure Security Benchmark 5.2 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 5.2 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -336,7 +336,7 @@ ms.locfileid: "92311468"
 
 ### <a name="deploy-automated-third-party-software-patch-management-solution"></a>部署自動化的第三方軟體修補程式管理解決方案
 
-**識別碼** ：Azure Security Benchmark 5.3 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 5.3 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -352,21 +352,21 @@ ms.locfileid: "92311468"
 
 ### <a name="use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>使用風險評等程序來排定所發現弱點的補救優先順序
 
-**識別碼** ：Azure Security Benchmark 5.5 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 5.5 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[應補救容器安全性設定中的弱點](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe8cbc669-f12d-49eb-93e7-9273119e9933) |在已安裝 Docker 且在 Azure 資訊安全中心顯示為建議的電腦上，稽核安全性設定中的弱點。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ContainerBenchmark_Audit.json) |
 |[您應在機器上修復安全性組態的弱點](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe1e5fd5d-3e4c-4ce1-8661-7d1873ae6b15) |Azure 資訊安全中心會依建議監視不符合設定基準的伺服器 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_OSVulnerabilities_Audit.json) |
 |[應修復虛擬機器擴展集上安全性組態的弱點](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3c735d8a-a4ba-4a3a-b7cf-db7754cf57f4) |稽核虛擬機器擴展集上的 OS 弱點，以免其遭受攻擊。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VmssOSVulnerabilities_Audit.json) |
-|[應修復 SQL 資料庫的弱點](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffeedbf84-6b99-488c-acc2-71c829aa5ffc) |監視弱點評定掃描結果及如何補救資料庫弱點的建議。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_SQLDbVulnerabilities_Audit.json) |
+|[應修復 SQL 資料庫的弱點](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffeedbf84-6b99-488c-acc2-71c829aa5ffc) |監視弱點評定掃描結果及如何補救資料庫弱點的建議。 |AuditIfNotExists, Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_SQLDbVulnerabilities_Audit.json) |
 |[弱點評量解決方案應修復弱點](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F760a85ff-6162-42b3-8d70-698e268f648c) |Azure 資訊安全中心會依建議監視弱點評定解決方案偵測到的弱點，以及不具弱點評定解決方案的 VM。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VMVulnerabilities_Audit.json) |
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
 ### <a name="use-only-approved-applications"></a>僅使用已核准的應用程式
 
-**識別碼** ：Azure Security Benchmark 6.8 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 6.8 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -374,7 +374,7 @@ ms.locfileid: "92311468"
 
 ### <a name="use-only-approved-azure-services"></a>僅使用已核准的 Azure 服務
 
-**識別碼** ：Azure Security Benchmark 6.9 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 6.9 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -383,7 +383,7 @@ ms.locfileid: "92311468"
 
 ### <a name="implement-approved-application-list"></a>實作已核准的應用程式清單
 
-**識別碼** ：Azure Security Benchmark 6.10 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 6.10 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -393,7 +393,7 @@ ms.locfileid: "92311468"
 
 ### <a name="maintain-secure-operating-system-configurations"></a>維護安全的作業系統設定
 
-**識別碼** ：Azure Security Benchmark 7.4 **擁有權** ：共用
+**識別碼**：Azure Security Benchmark 7.4 **擁有權**：共用
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -403,7 +403,7 @@ ms.locfileid: "92311468"
 
 ### <a name="implement-automated-configuration-monitoring-for-operating-systems"></a>為作業系統實作自動化的設定監視
 
-**識別碼** ：Azure Security Benchmark 7.10 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 7.10 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -413,15 +413,15 @@ ms.locfileid: "92311468"
 
 ### <a name="manage-azure-secrets-securely"></a>安全地管理 Azure 祕密
 
-**識別碼** ：Azure Security Benchmark 7.11 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 7.11 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Key Vault 物件應該要可復原](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |此原則會稽核金鑰保存庫物件是否無法復原。 虛刪除功能可在即使已完成刪除作業後，仍有效地保留資源達指定保留期間 (90天)，並同時提供已刪除物件的外觀。 「清除保護」開啟時，必須等到 90 天的保留期間過後，才能清除處於已刪除狀態的保存庫或物件。 這些保存庫和物件仍可復原，使客戶確信系統會遵循保留原則。 |Audit, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
+|[金鑰保存庫應啟用清除保護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |惡意刪除金鑰保存庫可能會導致永久的資料遺失。 您組織中可能有惡意的內部人員能夠取得刪除和清除金鑰保存庫的存取權。 清除保護可對虛刪除的金鑰保存庫強制執行必要的保留期間，以保護您免於遭受內部攻擊。 您的組織內部人員或 Microsoft 在虛刪除保留期間內都無法清除您的金鑰保存庫。 |Audit, Deny, Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
 
 ### <a name="manage-identities-securely-and-automatically"></a>安全且自動地管理身分識別 
 
-**識別碼** ：Azure Security Benchmark 7.12 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 7.12 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -433,7 +433,7 @@ ms.locfileid: "92311468"
 
 ### <a name="use-centrally-managed-anti-malware-software"></a>使用集中管理的反惡意程式碼軟體
 
-**識別碼** ：Azure Security Benchmark 8.1 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 8.1 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -442,7 +442,7 @@ ms.locfileid: "92311468"
 
 ### <a name="ensure-anti-malware-software-and-signatures-are-updated"></a>確保更新反惡意程式碼軟體和簽章
 
-**識別碼** ：Azure Security Benchmark 8.3 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 8.3 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -452,7 +452,7 @@ ms.locfileid: "92311468"
 
 ### <a name="ensure-regular-automated-back-ups"></a>確保會定期自動備份
 
-**識別碼** ：Azure Security Benchmark 9.1 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 9.1 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -464,7 +464,7 @@ ms.locfileid: "92311468"
 
 ### <a name="perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>執行完整的系統備份，並備份客戶管理的任何金鑰
 
-**識別碼** ：Azure Security Benchmark 9.2 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 9.2 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -476,17 +476,17 @@ ms.locfileid: "92311468"
 
 ### <a name="ensure-protection-of-backups-and-customer-managed-keys"></a>確保備份和客戶管理的金鑰受到保護
 
-**識別碼** ：Azure Security Benchmark 9.4 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 9.4 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Key Vault 物件應該要可復原](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |此原則會稽核金鑰保存庫物件是否無法復原。 虛刪除功能可在即使已完成刪除作業後，仍有效地保留資源達指定保留期間 (90天)，並同時提供已刪除物件的外觀。 「清除保護」開啟時，必須等到 90 天的保留期間過後，才能清除處於已刪除狀態的保存庫或物件。 這些保存庫和物件仍可復原，使客戶確信系統會遵循保留原則。 |Audit, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
+|[金鑰保存庫應啟用清除保護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |惡意刪除金鑰保存庫可能會導致永久的資料遺失。 您組織中可能有惡意的內部人員能夠取得刪除和清除金鑰保存庫的存取權。 清除保護可對虛刪除的金鑰保存庫強制執行必要的保留期間，以保護您免於遭受內部攻擊。 您的組織內部人員或 Microsoft 在虛刪除保留期間內都無法清除您的金鑰保存庫。 |Audit, Deny, Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
 
 ## <a name="incident-response"></a>事件回應
 
 ### <a name="provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>提供安全性事件連絡人詳細資料，並設定安全性事件的警示通知
 
-**識別碼** ：Azure Security Benchmark 10.4 **擁有權** ：客戶
+**識別碼**：Azure Security Benchmark 10.4 **擁有權**：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|

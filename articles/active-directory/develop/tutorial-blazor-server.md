@@ -8,16 +8,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: 429d0b9c3a118061d713484a7db3aca376a24d04
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: aaf716b4ac4c49f1d852e917ba818a10ecb541c4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873178"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628028"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>教學課程：建立使用 Microsoft 身分識別平台進行驗證的 Blazor Server 應用程式
 
-Blazor Server 提供在 ASP.NET Core 應用程式中將 Razor 元件裝載在伺服器上的支援。 在本教學課程中，您將了解如何使用 Microsoft 身分識別平台，從 Blazor Server 應用程式中的 Microsoft Graph 實作驗證和擷取資料。
+Blazor Server 提供在 ASP.NET Core 應用程式中將 Razor 元件裝載在伺服器上的支援。 在本教學課程中，您將了解如何使用 Microsoft 身分識別平台並且在 Azure Active Directory (Azure AD) 中註冊應用程式，藉以從 Blazor Server 應用程式中的 Microsoft Graph 實作驗證和擷取資料。
+
+我們也提供 [Blazor WASM](tutorial-blazor-webassembly.md) 的教學課程。
 
 在本教學課程中，您會了解如何：
 

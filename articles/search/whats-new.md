@@ -6,23 +6,28 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 11/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7f71cacee86edd5b3f054f0996893c2148c626eb
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4c1284c13d1516ac4061319287adb64ab7e14ff5
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422666"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579465"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 認知搜尋的新功能
 
 了解該服務的新功能。 將此頁面加入書籤，以掌握服務的最新狀態。
 
+## <a name="november-2020"></a>2020 年 11 月
+
+|功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
+|------------------------------|----------|-------------|---------------|
+|[索引子、資料來源和技能集上的客戶自控金鑰加密](search-security-manage-encryption-keys.md) | 安全性 | 這項新增功能會將客戶自控加密延伸到搜尋服務所建立和管理的完整資產範圍。 您應該還記得，CMK 支援會在 Microsoft 所執行及管理的基礎加密上新增額外的加密層。 | 使用 REST api-version=2020-06-30 正式推出 |  
+
 ## <a name="september-2020"></a>2020 年 9 月
 
 在 Azure Active Directory 中建立搜尋服務的身分識別，然後使用 Azure RBAC 權限將身分識別唯讀權限授與 Azure 資料來源。 如果 IP 規則不是選項，可以選擇性地選擇[信任的服務例外狀況](search-indexer-howto-access-trusted-service-exception.md)功能。
-
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
 |------------------------------|----------|-------------|---------------|

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: b3505f8bf31c2e700ce1cc57e106c33a13e0aa9b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: fc44dd6cf91d687f47afadf1c3378956d838bc9d
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737178"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579499"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>教學課程：使用受控識別將 Key Vault 連線至 Azure Spring Cloud 應用程式
 
@@ -77,6 +77,8 @@ export SERVICE_IDENTITY=$(az spring-cloud app show --name "springapp" -s "myspri
 ```azurecli
 az keyvault set-policy --name "<your-keyvault-name>" --object-id ${SERVICE_IDENTITY} --secret-permissions set get list
 ```
+> [!NOTE]
+> 在系統指派的受控識別停用後，請使用 `az keyvault delete-policy --name "<your-keyvault-name>" --object-id ${SERVICE_IDENTITY}` 移除對應用程式的存取。
 
 ## <a name="build-a-sample-spring-boot-app-with-spring-boot-starter"></a>使用 Spring Boot Starter 建立 Spring Boot 應用程式範例
 此應用程式將具有從 Azure Key Vault 取得祕密的存取權。 使用 Starter 應用程式：[Azure Key Vault 祕密的 Spring Boot Starter](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter-keyvault-secrets)。  Azure Key Vault 會新增為 Spring **PropertySource** 的執行個體。  儲存在 Azure Key Vault 中的祕密可方便存取和使用，且用法與任何外部化設定屬性一樣 (例如檔案中的屬性)。 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b08e834233e1ce12392d940cb0ccc0bef7e96158
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 20003a91726e5ccee7f73d85b7c9a9389801e0ad
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337741"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701750"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>如何在 Azure Synapse Analytics 中使用無伺服器 SQL 集區 (預覽) 使用 OPENROWSET
 
@@ -84,7 +84,7 @@ OPENROWSET
     FORMAT = 'CSV'
     [ <bulk_options> ] }  
 )  
-WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })  
+WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })  
 [AS] table_alias(column_alias,...n)
  
 <bulk_options> ::=  
@@ -156,7 +156,7 @@ WITH 子句可讓您指定要從檔案讀取的資料行。
     > Parquet 檔中的資料行名稱會區分大小寫。 如果您指定的資料行名稱大小寫與 Parquet 檔中資料行名稱的大小寫不同，則會針對該資料行傳回 Null 值。
 
 
-column_name = 輸出資料行的名稱。 如果有提供，此名稱會覆寫來源檔案中的資料行名稱。
+column_name = 輸出資料行的名稱。 如果有提供，此名稱會覆寫來源檔案中的資料行名稱，以及 JSON 路徑中提供的資料行名稱 (如果有的話)。 如果未提供 json_path，則會自動新增為 '$.column_name'。 檢查行為的 json_path 引數。
 
 column_type = 輸出資料行的資料類型。 隱含的資料類型轉換將會在此進行。
 
@@ -170,6 +170,11 @@ WITH (
     --[population] bigint
 )
 ```
+
+json_path = 資料行或巢狀屬性的 [JSON 路徑運算式](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15)。 預設[路徑模式](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15#PATHMODE)為 lax 模式。
+
+> [!NOTE]
+> 在 strict 模式中，如果提供的路徑不存在，則查詢會失敗。 在 lax 模式中，查詢將會成功，而且 JSON 路徑運算式會評估為 Null。
 
 **\<bulk_options>**
 
@@ -359,6 +364,32 @@ WITH (
     [stateName] VARCHAR (50),
     [population] bigint
 ) AS [r]
+```
+
+### <a name="specify-columns-using-json-paths"></a>使用 JSON 路徑指定資料行
+
+下列範例示範如何在 WITH 子句中使用 [JSON 路徑運算式](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15)，並示範 strict 和 lax 路徑模式之間的差異： 
+
+```sql
+SELECT 
+    TOP 1 *
+FROM  
+    OPENROWSET(
+        BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        FORMAT='PARQUET'
+    )
+WITH (
+    --lax path mode samples
+    [stateName] VARCHAR (50), -- this one works as column name casing is valid - it targets the same column as the next one
+    [stateName_explicit_path] VARCHAR (50) '$.stateName', -- this one works as column name casing is valid
+    [COUNTYNAME] VARCHAR (50), -- STATEname column will contain NULLs only because of wrong casing - it targets the same column as the next one
+    [countyName_explicit_path] VARCHAR (50) '$.COUNTYNAME', -- STATEname column will contain NULLS only because of wrong casing and default path mode being lax
+
+    --strict path mode samples
+    [population] bigint 'strict $.population' -- this one works as column name casing is valid
+    --,[population2] bigint 'strict $.POPULATION' -- this one fails because of wrong casing and strict path mode
+)
+AS [r]
 ```
 
 ## <a name="next-steps"></a>後續步驟

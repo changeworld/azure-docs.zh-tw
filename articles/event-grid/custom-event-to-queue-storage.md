@@ -4,12 +4,12 @@ description: 快速入門：使用 Azure 事件格線和 Azure CLI 來發佈主�
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e2c017b95493000b3c206aa7b2398bbf7ef464ee
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4de7aa1c111b5b21a27b155474ae10f78feba083
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87497336"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566311"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>快速入門：使用 Azure CLI 和事件方格將自訂事件路由至 Azure 佇列
 
@@ -17,12 +17,11 @@ Azure Event Grid 是一項雲端事件服務。 Azure 佇列儲存體是其中�
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-如果您在本機電腦上使用 Azure CLI 或 Azure PowerShell，而不是在 Azure 入口網站中使用 Cloud Shell，請確定您有下列版本的 Azure CLI 和 Azure PowerShell。 
+- 本文需要 2.0.56 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
-- Azure CLI 2.0.56 版或更新版本。 如需有關如何安裝最新版 Azure CLI 的指示，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 
-- Azure PowerShell 1.1.0 版或更新版本。 在 Windows 電腦上從 [Azure 下載 - 命令列工具](https://azure.microsoft.com/downloads/)下載最新版的 Azure PowerShell。 
+- 如果您在本機電腦上使用 Azure PowerShell，而不是在 Azure 入口網站中使用 Cloud Shell，請確定您有 Azure PowerShell 1.1.0 版或更高版本。 在 Windows 電腦上從 [Azure 下載 - 命令列工具](https://azure.microsoft.com/downloads/)下載最新版的 Azure PowerShell。 
 
 本文提供給您使用 Azure CLI 的命令。 
 
@@ -32,7 +31,7 @@ Event Grid 為 Azure 資源，必須放入 Azure 資源群組中。 資源群組
 
 使用 [az group create](/cli/azure/group#az-group-create) 命令來建立資源群組。 
 
-下列範例會在 westus2  位置建立名為 gridResourceGroup  的資源群組。
+下列範例會在 westus2 位置建立名為 gridResourceGroup 的資源群組。
 
 ```azurecli-interactive
 az group create --name gridResourceGroup --location westus2

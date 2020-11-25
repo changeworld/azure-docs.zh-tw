@@ -3,12 +3,12 @@ title: 規劃 Azure VMware 解決方案部署
 description: 本文概述 Azure VMware 解決方案部署工作流程。  最終結果是準備好用於建立和移轉虛擬機器 (VM) 的環境。
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 9b6d04e1e7a60bf812ca2b1e370c5075d306c432
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 08a15e6f8cad4068415cec3353544829f2218fb0
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287046"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888975"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>規劃 Azure VMware 解決方案部署
 
@@ -38,6 +38,9 @@ ms.locfileid: "93287046"
 ## <a name="resource-name"></a>資源名稱
 
 定義您將在部署期間使用的資源名稱。  資源名稱是易記且描述性的名稱，您可以在其中為您的 Azure VMware 解決方案私人雲端做為標題。
+
+>[!IMPORTANT]
+>名稱長度不可超過 40 個字元。 如果名稱超過此限制，您將無法建立公用 IP 位址以用於私人雲端。 
 
 ## <a name="size-hosts"></a>主機大小
 
@@ -89,14 +92,6 @@ Azure VMware 解決方案、您現有的 Azure 環境，以及內部部署環境
 
 - 如果您打算從內部部署環境延伸網路，這些網路必須連線到內部部署 VMware 環境中的 [vSphere 分散式交換器 (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html)。  
 - 如果您打算延伸的網路在 [vSphere 標準交換器](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html)上為即時網路，則無法進行延伸。
-
-## <a name="expressroute-global-reach-peering-network"></a>ExpressRoute Global Reach 對等互連網路
-
-識別 ExpressRoute Global Reach 對等互連所需的 `/29` CIDR 網路位址區塊。 請記住，在您的 Azure VMware 解決方案和內部部署磁碟使用量中，任何建立的 IP 區段都必須是唯一的。 此區段中的 IP 會用於 ExpressRoute Global Reach 的每一端，以將 Azure VMware 解決方案 ExpressRoute 電路與內部部署 ExpressRoute 電路連線。 
-
-**範例︰** 10.1.0.0/29
-
-:::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="識別 - ExpressRoute Global Reach 對等互連網路" border="false":::
 
 ## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Azure 虛擬網路以附加 Azure VMware 解決方案
 

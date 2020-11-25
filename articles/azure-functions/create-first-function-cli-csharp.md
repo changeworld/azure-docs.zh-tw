@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-csharp
 - devx-track-azurecli
-ms.openlocfilehash: 036629bd72f8219c2d7b1877dd1672291ed3d98a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: b87408669dbb9268d6e3cd47b410b888ef1a19c2
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424678"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637144"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>快速入門：從命令列在 Azure 中建立 C# 函式
 
@@ -28,6 +28,8 @@ ms.locfileid: "93424678"
 開始之前，您必須具備下列條件：
 
 + 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+
++ [.NET Core SDK 3.1](https://www.microsoft.com/net/download)
 
 + [Azure Functions Core Tools](functions-run-local.md#v2) 3.x 版。
 
@@ -49,6 +51,8 @@ ms.locfileid: "93424678"
 
 + 執行 `az login` 以登入 Azure 並驗證有效訂用帳戶。
 
++ 執行 `dotnet --list-sdks` 以確認已安裝 .NET Core SDK 3.1.x 版
+
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 + 在終端機或命令視窗中執行 `func --version`，以確認 Azure Functions Core Tools 為 3.x 版。
@@ -56,6 +60,8 @@ ms.locfileid: "93424678"
 + 執行 `(Get-Module -ListAvailable Az).Version` 並確認為 5.0 版或更新版本。 
 
 + 執行 `Connect-AzAccount` 以登入 Azure 並驗證有效訂用帳戶。
+
++ 執行 `dotnet --list-sdks` 以確認已安裝 .NET Core SDK 3.1.x 版
 
 ---
 

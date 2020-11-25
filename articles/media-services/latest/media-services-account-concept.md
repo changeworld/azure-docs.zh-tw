@@ -2,27 +2,28 @@
 title: 管理 Azure 媒體服務 v3 帳戶 |Microsoft Docs
 description: 若要在 Azure 中開始管理、加密、編碼、分析和串流處理媒體內容，您需要建立媒體服務帳戶。 本文說明如何管理 Azure 媒體服務 v3 帳戶。
 services: media-services
-documentationcenter: ''
 author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 11/05/2020
 ms.author: inhenkel
-ms.openlocfilehash: 7c2cbaaf4866edc20f9745abe6759861db7834c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77453aa2d8989a0542beffb1c88ebe7ee53d1506
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291325"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "96008322"
 ---
 # <a name="manage-azure-media-services-v3-accounts"></a>管理 Azure 媒體服務 v3 帳戶
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 若要在 Azure 中開始管理、加密、編碼、分析和串流處理媒體內容，您需要建立媒體服務帳戶。 建立媒體服務帳戶時，您需要提供 Azure 儲存體帳戶資源的名稱。 指定的儲存體帳戶會附加到您的媒體服務帳戶。 媒體服務帳戶和所有相關聯的儲存體帳戶必須位於相同的 Azure 訂用帳戶中。 如需詳細資訊，請參閱 [儲存體帳戶](storage-account-concept.md)。
+
+[!INCLUDE [account creation note](./includes/note-2020-05-01-account-creation.md)]
 
 ## <a name="moving-a-media-services-account-between-subscriptions"></a>在訂用帳戶之間移動媒體服務帳戶 
 
@@ -39,7 +40,7 @@ ms.locfileid: "89291325"
 > [!IMPORTANT]
 > 除非移動成功完成，否則請勿啟動串流端點。
 
-### <a name="troubleshoot"></a>疑難排解 
+### <a name="troubleshoot"></a>疑難排解
 
 如果媒體服務帳戶或相關聯的 Azure 儲存體帳戶在資源群組移動之後變成「已中斷連線」，請嘗試輪替儲存體帳戶金鑰。 如果輪替儲存體帳戶金鑰無法解析媒體服務帳戶的「已中斷連線」狀態，請從媒體服務帳戶中的 [支援 + 疑難排解] 功能表提出新的支援要求。  
 

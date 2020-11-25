@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: overview
-ms.date: 1/10/2020
+ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc9a5e604e6ac52eb0e853725123272ca924fa36
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 4a341d33c957af8fe7423bda80f1d34a7f59cdd6
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362225"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737994"
 ---
 # <a name="what-is-the-team-data-science-process"></a>什麼是 Team Data Science Process？
 
@@ -28,10 +28,10 @@ Team Data Science Process (TDSP) 是一種敏捷式反覆資料科學方法，�
 
 TDSP 具有下列主要元件：
 
-- **資料科學生命週期**定義
+- **資料科學生命週期** 定義
 - **標準化專案結構**
-- 針對資料科學專案建議的**基礎結構和資源**
-- 針對專案執行建議的**工具和公用程式**
+- 針對資料科學專案建議的 **基礎結構和資源**
+- 針對專案執行建議的 **工具和公用程式**
 
 
 ## <a name="data-science-lifecycle"></a>資料科學生命週期
@@ -49,7 +49,7 @@ Team Data Science Process (TDSP) 會提供建構資料科學專案開發的生�
 * **模型化**
 * **部署**
 
-以下是 **Team Data Science Process 生命週期**的視覺化呈現。 
+以下是 **Team Data Science Process 生命週期** 的視覺化呈現。 
 
 ![此圖表顯示資料科學生命週期，包括商務理解、資料取得/理解、模型化和部署。](./media/overview/tdsp-lifecycle2.png) 
 
@@ -100,7 +100,7 @@ TDSP 提供管理共用分析和儲存體基礎結構的建議，例如：
 
 ## <a name="tools-and-utilities-for-project-execution"></a>專案執行的工具和公用程式
 
-在大部分的組織中引進流程是相當有挑戰性。 對於實作資料科學流程和生命週期所提供的工具有助於降低採用的障礙，並提升採用的一致性。 TDSP 提供一組初始的工具和指令碼，可供團隊快速採用 TDSP。 這也有助於資料科學開發週期中部分常見的工作自動進行，例如資料探索和基準模型。 提供妥善定義的結構，以供個人將共用的工具和公用程式貢獻到小組共用的程式碼存放庫。 小組或組織內的其他專案接著即可使用這些資源。 TDSP 也計畫向整個社群貢獻工具和公用程式。 您可以從 [GitHub](https://github.com/Azure/Azure-TDSP-Utilities) 複製 TDSP 公用程式。
+在大部分的組織中引進流程是相當有挑戰性。 對於實作資料科學流程和生命週期所提供的工具有助於降低採用的障礙，並提升採用的一致性。 TDSP 提供一組初始的工具和指令碼，可供團隊快速採用 TDSP。 這也有助於資料科學開發週期中部分常見的工作自動進行，例如資料探索和基準模型。 提供妥善定義的結構，以供個人將共用的工具和公用程式貢獻到小組共用的程式碼存放庫。 小組或組織內的其他專案接著即可使用這些資源。  Microsoft 在 [Azure Machine Learning](../index.yml)可同時支援開放原始碼 (Python、R、ONNX 和常見的深度學習架構) 及 Microsoft 自己的工具 (AutoML)。
 
 
 ## <a name="next-steps"></a>後續步驟

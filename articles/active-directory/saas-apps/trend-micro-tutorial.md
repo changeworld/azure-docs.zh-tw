@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.openlocfilehash: b76c41787d7a35fb3024fa18c0122bc966243bbc
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514532"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008390"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Trend Micro Web Security (TMWS) 整合
 
@@ -71,7 +71,7 @@ ms.locfileid: "92514532"
 完成下列步驟，在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Trend Micro Web Security (TMWS)]  應用程式整合頁面上，於 [管理]  區段選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，選取 [基本 SAML 組態]  的畫筆按鈕，以編輯設定：
 
    ![編輯 [基本 SAML 組態] 設定](common/edit-urls.png)
@@ -116,7 +116,7 @@ ms.locfileid: "92514532"
 1. 在畫面頂端選取 [新增使用者]  。
 1. 在 [使用者]  屬性中，執行下列步驟：
    1. 在 [名稱]  方塊中，輸入 `B.Simon`。  
-   1. 在 [使用者名稱] 方塊中，輸入 * *_username_@* companydomain *.* extension***。 例如： `B.Simon@contoso.com` 。
+   1. 在 [使用者名稱] 方塊中，輸入 **_username_@* companydomain *.* extension***。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼]  ，然後記下 [密碼]  方塊中顯示的值。
    1. 選取 [建立]  。
 
@@ -177,7 +177,7 @@ ms.locfileid: "92514532"
 
 1. 登入 TMWS 管理主控台，然後移至 [系統管理]   > [使用者與驗證]   > [目錄服務]  。
 
-1. 選取畫面上方區域中的 **這裡** 。
+1. 選取畫面上方區域中的 **這裡**。
 
 1. 在 [驗證方法]  頁面上，選取 [Azure AD]  。
 
@@ -224,7 +224,7 @@ ms.locfileid: "92514532"
 
 1. 造訪任何網際網路網站。 TMWS 會將您導向至 TMWS 網頁驗證入口。
 
-1. 指定 Active Directory 帳戶 (格式： *domain*\\*sAMAccountName* or *sAMAccountName*@*domain* )、電子郵件地址或 UPN，然後選取 [登入]  。 TMWS 會將您傳送至 [Azure AD 登入] 視窗。
+1. 指定 Active Directory 帳戶 (格式：*domain*\\*sAMAccountName* or *sAMAccountName*@*domain*)、電子郵件地址或 UPN，然後選取 [登入]  。 TMWS 會將您傳送至 [Azure AD 登入] 視窗。
 
 1. 在 [Azure AD 登入] 視窗中，輸入您的 Azure AD 帳號認證。 您現在應已登入 TMWS。
 

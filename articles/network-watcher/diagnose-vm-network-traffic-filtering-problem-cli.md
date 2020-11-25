@@ -18,22 +18,24 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 871c4fc69daac9d5f515fdf3e4ec0ca1de6fbe08
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0a483bc6097c4dd76ed67e93e4313ad8c25cbc08
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91295952"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542349"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>快速入門：診斷虛擬機器網路流量篩選問題 - Azure CLI
 
 本快速入門中，您可部署虛擬機器 (VM)，然後檢查送至 IP 位址和 URL 以及來自 IP 位址的通訊。 您可判斷通訊失敗的原因及其解決方式。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-如果您選擇在本機安裝和使用 Azure CLI，本快速入門會要求您執行 Azure CLI 2.0.28 版或更新版本。 若要尋找已安裝的版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 驗證 Azure CLI 版本之後，請執行 `az login` 以建立與 Azure 的連線。 本快速入門的 Azure CLI 命令會經過格式化以在 Bash 殼層中執行。
+- 本快速入門需要 2.0 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。 
+
+- 本快速入門的 Azure CLI 命令會經過格式化以在 Bash 殼層中執行。
 
 ## <a name="create-a-vm"></a>建立 VM
 
@@ -132,9 +134,9 @@ az network nic list-effective-nsg \
   --name myVmVMNic
 ```
 
-對於在[使用 IP 流量驗證](#use-ip-flow-verify) 底下的先前步驟中允許對外存取 www.bing.com 的 **AllowInternetOutbound** 規則，傳回的輸出包含下列文字：
+對於在 [使用 IP 流量驗證](#use-ip-flow-verify) 底下的先前步驟中允許對外存取 www.bing.com 的 **AllowInternetOutbound** 規則，傳回的輸出包含下列文字：
 
-```
+```console
 {
  "access": "Allow",
  "additionalProperties": {},
@@ -173,9 +175,9 @@ az network nic list-effective-nsg \
 
 您可以在先前的輸出中看到 **destinationAddressPrefix** 為 **Internet**。 雖然並不清楚 13.107.21.200 與 **Internet** 有何關連。 您會看到有幾個位址首碼列在 **expandedDestinationAddressPrefix** 底下。 清單中有一個前置詞是 **12.0.0.0/6**，其中包含 IP 位址的 12.0.0.1-15.255.255.254 範圍。 因為 13.107.21.200 在該位址範圍內，所以 **AllowInternetOutBound** 規則允許輸出流量。 此外，先前的輸出中並未顯示任何會覆寫此規則的較高優先順序 (數字較小) 規則。 若要拒絕輸出至某個 IP 位址的通訊，您可以新增具有較高優先順序的安全性規則，以拒絕連接埠 80 輸出至此 IP 位址。
 
-當您在[使用 IP 流量驗證](#use-ip-flow-verify)中執行 `az network watcher test-ip-flow` 命令來測試輸出至 172.131.0.100 的通訊時，輸出會告知您 **DefaultOutboundDenyAll** 規則拒絕通訊。 **DefaultOutboundDenyAll** 規則等同於 `az network nic list-effective-nsg` 命令的下列輸出中所列的 **DenyAllOutBound** 規則：
+當您在 [使用 IP 流量驗證](#use-ip-flow-verify)中執行 `az network watcher test-ip-flow` 命令來測試輸出至 172.131.0.100 的通訊時，輸出會告知您 **DefaultOutboundDenyAll** 規則拒絕通訊。 **DefaultOutboundDenyAll** 規則等同於 `az network nic list-effective-nsg` 命令的下列輸出中所列的 **DenyAllOutBound** 規則：
 
-```
+```console
 {
  "access": "Deny",
  "additionalProperties": {},
@@ -206,9 +208,9 @@ az network nic list-effective-nsg \
 
 此規則列出 **0.0.0.0/0** 作為 **destinationAddressPrefix**。 此規則會拒絕輸出至 172.131.0.100 的通訊，因為此位址不在 `az network nic list-effective-nsg` 命令輸出中任何其他輸出規則的 **destinationAddressPrefix** 內。 若要允許輸出通訊，您可以新增較高優先順序的安全性規則，以允許輸出至位於 172.131.0.100 之通訊埠 80 的流量。
 
-當您在[使用 IP 流量驗證](#use-ip-flow-verify)中執行 `az network watcher test-ip-flow` 命令來測試從 172.131.0.100 輸入的通訊時，輸出會告知您 **DefaultInboundDenyAll** 規則拒絕通訊。 **DefaultInboundDenyAll** 規則等同於 `az network nic list-effective-nsg` 命令的下列輸出中所列的 **DenyAllInBound** 規則：
+當您在 [使用 IP 流量驗證](#use-ip-flow-verify)中執行 `az network watcher test-ip-flow` 命令來測試從 172.131.0.100 輸入的通訊時，輸出會告知您 **DefaultInboundDenyAll** 規則拒絕通訊。 **DefaultInboundDenyAll** 規則等同於 `az network nic list-effective-nsg` 命令的下列輸出中所列的 **DenyAllInBound** 規則：
 
-```
+```console
 {
  "access": "Deny",
  "additionalProperties": {},

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: be98ff2a31e3216088fb9197fab477d9b1088f26
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 54dea3ba7bbc3339b7b044b476c321fd95138ac2
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634091"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566413"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>使用 PowerShell 以累加方式將 SQL Server 中多個資料表的資料載入到 Azure SQL Database
 
@@ -42,15 +42,15 @@ ms.locfileid: "92634091"
 ## <a name="overview"></a>概觀
 以下是建立此解決方案的重要步驟： 
 
-1. **選取水位線資料行** 。
+1. **選取水位線資料行**。
 
     為來源資料存放區中的每個資料表各選取一個資料行，以便您在每次執行時識別新增或更新的記錄。 一般來說，當建立或更新資料列時，這個選取的資料行 (例如，last_modify_time 或 ID) 中的資料會持續增加。 此資料行中的最大值就作為水位線。
 
-2. **準備資料存放區來儲存水位線值** 。
+2. **準備資料存放區來儲存水位線值**。
 
     在本教學課程中，您會將水位線值儲存在 SQL 資料庫中。
 
-3. **使用下列活動建立管線** ：
+3. **使用下列活動建立管線**：
     
     a. 建立 ForEach 活動，逐一查看以參數形式傳遞到管線的來源資料表名稱清單。 此活動會針對每個來源資料表叫用下列活動，以對該資料表執行差異載入。
 
@@ -69,8 +69,8 @@ ms.locfileid: "92634091"
 
 ## <a name="prerequisites"></a>必要條件
 
-* **SQL Server** 。 在本教學課程中，您將使用 SQL Server 資料庫作為來源資料存放區。 
-* **Azure SQL Database** 。 您會使用 Azure SQL Database 中的資料庫作為接收資料存放區。 如果您沒有 SQL 資料庫，請參閱[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)，按照步驟來建立 SQL 資料庫。 
+* **SQL Server**。 在本教學課程中，您將使用 SQL Server 資料庫作為來源資料存放區。 
+* **Azure SQL Database**。 您會使用 Azure SQL Database 中的資料庫作為接收資料存放區。 如果您沒有 SQL 資料庫，請參閱[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)，按照步驟來建立 SQL 資料庫。 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>在 SQL Server 資料庫中建立來源資料表
 
@@ -543,9 +543,9 @@ END
 
 2. 使用 **查閱活動** 擷取新的水位線值 (來源資料表中水位線資料行的最大值)。
 
-3. 使用 **複製活動** ，在來源資料庫到目的地資料庫的這兩個水位線值之間複製資料。
+3. 使用 **複製活動**，在來源資料庫到目的地資料庫的這兩個水位線值之間複製資料。
 
-4. 使用 **StoredProcedure 活動** ，更新要在下一個反覆項目的第一個步驟中使用的舊水位線值。 
+4. 使用 **StoredProcedure 活動**，更新要在下一個反覆項目的第一個步驟中使用的舊水位線值。 
 
 ### <a name="create-the-pipeline"></a>建立管線
 
@@ -934,7 +934,7 @@ PersonID    Name    LastModifytime
 5           Anny    2017-09-05 08:06:00.000
 ```
 
-請注意， **PersonID** 為 3 的 **Name** 和 **LastModifytime** 的新值。 
+請注意，**PersonID** 為 3 的 **Name** 和 **LastModifytime** 的新值。 
 
 **查詢**
 

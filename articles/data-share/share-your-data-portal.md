@@ -5,22 +5,29 @@ author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: quickstart
-ms.date: 08/19/2020
-ms.openlocfilehash: 41598c04af78d4366435259357d8f897ac178942
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/30/2020
+ms.openlocfilehash: 1442720fdf48aaa7da76e181b168a04306ff3e33
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89489930"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577493"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中使用 Azure Data Share 來共用資料
 
-在本快速入門中，您將了解如何使用 Azure 入口網站來設定新的 Azure Data Share。
+在本快速入門中，您將了解如何使用 Azure 入口網站設定新的 Azure Data Share，以從儲存體帳戶共用資料。
 
 ## <a name="prerequisites"></a>先決條件
 
-Azure 訂用帳戶：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+* Azure 訂用帳戶：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+* 您收件者的 Azure 登入電子郵件地址 (不能使用其電子郵件別名)。
+* 如果來源 Azure 資料存放區位於與您將用來建立資料共用資源的不同 Azure 訂用帳戶中，請在 Azure 資料存放區所在的訂用帳戶中註冊 [Microsoft.DataShare 資源提供者](concepts-roles-permissions.md#resource-provider-registration)。 
 
+### <a name="share-from-a-storage-account"></a>從儲存體帳戶共用
+
+* Azure 儲存體帳戶：如果您還沒有此帳戶，則可以建立 [Azure 儲存體帳戶](../storage/common/storage-account-create.md)
+* 寫入儲存體帳戶的權限，存在於 Microsoft.Storage/storageAccounts/write  中。 此權限存在於 **參與者** 角色中。
+* 將角色指派新增至儲存體帳戶的權限，存在於 Microsoft.Authorization/role assignments/write  中。 此權限存在於 **擁有者** 角色中。 
 
 ## <a name="create-a-data-share-account"></a>建立 Data Share 帳戶
 
@@ -30,7 +37,7 @@ Azure 訂用帳戶：如果您沒有 Azure 訂用帳戶，請在開始前建立[
 
 1. 選取入口網站左上角的 [建立資源] 按鈕 (+)。
 
-1. 搜尋「Data Share」**。
+1. 搜尋「Data Share」。
 
 1. 選取 [Data Share]，然後選取 [建立]。
 
@@ -67,7 +74,7 @@ Azure 訂用帳戶：如果您沒有 Azure 訂用帳戶，請在開始前建立[
 
    ![將資料集新增至共用](./media/datasets.png "資料集")
 
-1. 選取您想要新增的資料集類型。 根據您在先前的步驟中選取的共用類型 (快照集或就地)，您將看到不同的資料集類型清單。 如果從 Azure SQL Database 或 Azure Synapse Analytics 共用，系統會提示您提供一些 SQL 認證。 使用您建立為必要條件的使用者進行驗證。
+1. 選取您想要新增的資料集類型。 根據您在先前的步驟中選取的共用類型 (快照集或就地)，您將看到不同的資料集類型清單。 
 
    ![AddDatasets](./media/add-datasets.png "新增資料集")    
 

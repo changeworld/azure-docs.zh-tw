@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 2a22174fb23a4f0f7bebd58e276a6778e986ce9e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: fabfdce72202f79e2ac5bad08d124df7ce2de542
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322923"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592578"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>分析儲存體帳戶中的資料
 
@@ -36,16 +36,16 @@ ms.locfileid: "93322923"
 %%pyspark
 df = spark.sql("SELECT * FROM nyctaxi.passengercountstats")
 df = df.repartition(1) # This ensure we'll get a single file during write()
-df.write.mode("overwrite").csv("/NYCTaxi/PassengerCountStats.csv")
-df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
+df.write.mode("overwrite").csv("/NYCTaxi/PassengerCountStats_csvformat")
+df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats_parquetformat")
 ```
 
 ### <a name="analyze-data-in-a-storage-account"></a>分析儲存體帳戶中的資料
 
 1. 在 Synapse Studio 中，移至 [資料] 中樞，然後選取 [連結的項目]。
 1. 移至 [儲存體帳戶] > [myworkspace (主要 - contosolake)]。
-1. 選取 [使用者 (主要)]。 您應該會看到 [NYCTaxi] 資料夾。 在其中，您應該會看到名為 **PassengerCountStats.csv** 和 **PassengerCountStats.parquet** 的資料夾。
-1. 開啟 [PassengerCountStats.parquet] 資料夾。 您將在其中看到名稱像是 `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` 的 parquet 檔案。
+1. 選取 [使用者 (主要)]。 您應該會看到 [NYCTaxi] 資料夾。 在其中，您應該會看到兩個名為 **PassengerCountStats_csvformat** 和 **PassengerCountStats_parquetformat** 的資料夾。
+1. 開啟 **PassengerCountStats_parquetformat** 資料夾。 您將在其中看到名稱像是 `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` 的 parquet 檔案。
 1. 在 **.parquet** 上按一下滑鼠右鍵，然後選取 [新增筆記本]。 其會建立具有資料格的筆記本，如下所示：
 
     ```py

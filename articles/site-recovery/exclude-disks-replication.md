@@ -4,11 +4,11 @@ description: 如何使用 Azure Site Recovery 從 Azure 的複寫排除磁碟。
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 15989fbfd65f758eb777c5170c217aba8707e0be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333659"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008254"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>從災害復原排除磁碟
 
@@ -56,13 +56,13 @@ ms.locfileid: "91333659"
 
 ## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>範例 1：排除 SQL Server tempdb 磁碟
 
-讓我們看一下如何處理磁碟排除、容錯移轉和來源 SQL Server Windows VM **SalesDB*** (想要為其排除 tempdb 的 VM) 的容錯移轉。 
+讓我們來看看如何處理 Windows VM **SalesDB** _ 來源 SQL Server 的磁片排除、容錯移轉和容錯移轉，我們想要排除 tempdb。 
 
 ### <a name="exclude-disks-from-replication"></a>從複寫排除磁碟
 
 我們在來源 Windows VM SalesDB 上有這些磁碟。
 
-**磁碟名稱** | **客體 OS 磁碟** | **磁碟機代號** | **磁碟資料類型**
+_ *磁片名稱** | **客體 OS 磁碟** | **磁碟機代號** | **磁碟資料類型**
 --- | --- | --- | ---
 DB-Disk0-OS | Disk0 | C:\ | 作業系統磁碟。
 DB-Disk1| Disk1 | D:\ | SQL 系統資料庫和使用者資料庫 1。

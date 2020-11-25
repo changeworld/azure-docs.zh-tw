@@ -1,6 +1,6 @@
 ---
 title: 什麼是 Azure Machine Learning？
-description: Azure Machine Learning 概觀 - 整合的端對端資料科學解決方案，可供專業資料科學家進行雲端規模的開發、實驗及部署先進的分析應用程式。
+description: Azure Machine Learning 是資料科學家和 MLops 的整合式資料科學解決方案，可讓您以雲端規模來將 ML 應用程式模型化並加以部署。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 4dcc1d755f4fe11dda69f84466d3e958ca981ddf
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: af38f68a9709b21989ba787fb5b2c623e07dc440
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316289"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541278"
 ---
 # <a name="what-is-azure-machine-learning"></a>什麼是 Azure Machine Learning？
 
@@ -111,15 +111,15 @@ Azure Machine Learning 為開發人員和資料科學家提供其機器學習工
 
 Azure Machine Learning 可與 Azure 平台上的其他服務搭配運作，也可以與 Git 和 MLFlow 等開放原始碼工具整合。
 
-+ 計算目標，例如 __Azure Kubernetes Service__ 、 __Azure 容器執行個體__ 、 __Azure Databricks__ 、 __Azure Data Lake Analytics__ 和 __Azure HDInsight__ 。 如需計算目標的詳細資訊，請參閱[什麼是計算目標？](concept-compute-target.md)。
-+ __Azure 事件方格__ 。 如需詳細資訊，請參閱[取用 Azure Machine Learning 事件](./how-to-use-event-grid.md)。
-+ __Azure 監視器__ 。 如需詳細資訊，請參閱[監視 Azure Machine Learning](monitor-azure-machine-learning.md)。
-+ 資料存放區，例如 __Azure 儲存體帳戶__ 、 __Azure Data Lake Storage__ 、 __Azure SQL Database__ 、 __適用於 PostgreSQL 的 Azure 資料庫__ 和 __Azure 開放資料集__ 。 如需詳細資訊，請參閱[存取 Azure 儲存體服務中的資料](how-to-access-data.md)和[使用 Azure 開放資料集來建立資料集](how-to-create-register-datasets.md)。
-+ __Azure 虛擬網路__ 。 如需詳細資訊，請參閱[虛擬網路隔離和隱私權概觀](how-to-network-security-overview.md)。
-+ __Azure Pipelines__ 。 如需詳細資訊，請參閱[定型和部署機器學習服務模型](/azure/devops/pipelines/targets/azure-machine-learning)。
-+ __Git 存放庫記錄__ 。 如需詳細資訊，請參閱 [Git 整合](concept-train-model-git-integration.md)。
-+ __MLflow__ 。 如需詳細資訊，請參閱[使用 MLflow 追蹤計量和部署模型](how-to-use-mlflow.md) 
-+ __Kubeflow__ 。 如需詳細資訊，請參閱[建置端對端工作流程管線](https://www.kubeflow.org/docs/azure/)。
++ 計算目標，例如 __Azure Kubernetes Service__、__Azure 容器執行個體__、__Azure Databricks__、__Azure Data Lake Analytics__ 和 __Azure HDInsight__。 如需計算目標的詳細資訊，請參閱[什麼是計算目標？](concept-compute-target.md)。
++ __Azure 事件方格__。 如需詳細資訊，請參閱[取用 Azure Machine Learning 事件](./how-to-use-event-grid.md)。
++ __Azure 監視器__。 如需詳細資訊，請參閱[監視 Azure Machine Learning](monitor-azure-machine-learning.md)。
++ 資料存放區，例如 __Azure 儲存體帳戶__、__Azure Data Lake Storage__、__Azure SQL Database__、__適用於 PostgreSQL 的 Azure 資料庫__ 和 __Azure 開放資料集__。 如需詳細資訊，請參閱[存取 Azure 儲存體服務中的資料](how-to-access-data.md)和[使用 Azure 開放資料集來建立資料集](how-to-create-register-datasets.md)。
++ __Azure 虛擬網路__。 如需詳細資訊，請參閱[虛擬網路隔離和隱私權概觀](how-to-network-security-overview.md)。
++ __Azure Pipelines__。 如需詳細資訊，請參閱[定型和部署機器學習服務模型](/azure/devops/pipelines/targets/azure-machine-learning)。
++ __Git 存放庫記錄__。 如需詳細資訊，請參閱 [Git 整合](concept-train-model-git-integration.md)。
++ __MLflow__。 如需詳細資訊，請參閱[使用 MLflow 追蹤計量和部署模型](how-to-use-mlflow.md) 
++ __Kubeflow__。 如需詳細資訊，請參閱[建置端對端工作流程管線](https://www.kubeflow.org/docs/azure/)。
 
 ### <a name="secure-communications"></a>安全通訊
 

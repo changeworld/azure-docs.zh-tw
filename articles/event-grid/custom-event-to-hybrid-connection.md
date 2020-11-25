@@ -4,12 +4,12 @@ description: 教學課程：使用 Azure 事件格線和 Azure CLI 來發佈主�
 ms.date: 07/07/2020
 ms.topic: tutorial
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 77633a717478ff143c3b084adc0b69019abb203f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c709d77827551860cc917c3c84c5a849d9fdc512
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87832088"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566821"
 ---
 # <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>教學課程：使用 Azure CLI 和事件方格將自訂事件路由至 Azure 轉送混合式連線
 
@@ -17,12 +17,11 @@ Azure Event Grid 是一項雲端事件服務。 Azure 轉送混合式連線是�
 
 ## <a name="prerequisites"></a>Prerequisites
 
-本文假設您已經有混合式連線和接聽項應用程式。 若要開始使用混合式連線，請參閱[開始使用轉送混合式連線 - .NET](../azure-relay/relay-hybrid-connections-dotnet-get-started.md) (英文)，或[開始使用轉送混合式連線 - 節點](../azure-relay/relay-hybrid-connections-node-get-started.md) (英文)。
+- 本文假設您已經有混合式連線和接聽項應用程式。 若要開始使用混合式連線，請參閱[開始使用轉送混合式連線 - .NET](../azure-relay/relay-hybrid-connections-dotnet-get-started.md) (英文)，或[開始使用轉送混合式連線 - 節點](../azure-relay/relay-hybrid-connections-node-get-started.md) (英文)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-> [!NOTE]
-> 如果您在本機電腦上使用 Azure CLI，請使用 Azure CLI 2.0.56 版或更新版本。 如需有關如何安裝最新版 Azure CLI 的指示，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+- 本文需要 2.0.56 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 

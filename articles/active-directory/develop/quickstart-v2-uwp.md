@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 297b34fd9981308ece52545ac5878eaa144f4829
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 28d912153b52580727e0fb5086e0a7ae55e8b545
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824409"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560922"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>快速入門：自通用 Windows 平台 (UWP) 應用程式呼叫 Microsoft Graph API
 
-此快速入門使用程式碼範例，示範通用 Windows 平台 (UWP) 應用程式如何登入個人帳戶或公司與學校帳戶的使用者、取得存取權杖，以及呼叫 Microsoft Graph API。 如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。
+在本快速入門中，您會下載並執行程式碼範例，該範例會示範通用 Windows 平台 (UWP) 應用程式如何登入使用者，並取得存取權杖來呼叫 Microsoft Graph API。 
+
+如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。
 
 > [!div renderon="docs"]
 > ## <a name="prerequisites"></a>必要條件

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2230784eedd044acd95b3087793ba664b544f76a
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: b558e34d3f5d224515eee669dfa7b8f2c6bbb3cd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505065"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541006"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-preview-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立專用 SQL 集區 (預覽)
 
@@ -73,7 +73,6 @@ Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、�
 
 8. 佈建完成之後，瀏覽回工作區時會顯示新建立的專用 SQL 集區項目。
  ![SQL 集區建立流程 - 資源佈建。](media/quickstart-create-sql-pool/create-sql-pool-studio-27.png)
-
 
 
 建立專用 SQL 集區之後，就可以在工作區中用該集區來載入資料、處理資料流、從資料湖讀取等。

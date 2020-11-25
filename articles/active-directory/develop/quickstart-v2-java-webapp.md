@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: f00a935815b64f7c2c06dd33130c1a950582e5c3
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: e93c0c6bb689980cab1b41e529c491cdf3920260
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743483"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591711"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 Java Web 應用程式
 
-在本快速入門中，您將了解如何整合 Java Web 應用程式與 Microsoft 身分識別平台。 您的應用程式會讓使用者登入、取得存取權杖來呼叫 Microsoft Graph API，以及對 Microsoft Graph API 提出要求。
+在本快速入門中，您會下載並執行程式碼範例，該範例會示範 Java Web 應用程式如何登入使用者並呼叫 Microsoft Graph API。 來自任何 Azure Active Directory (Azure AD) 組織的使用者都可以登入應用程式。
 
-完成本快速入門後，您的應用程式會接受使用個人Microsoft 帳戶 (包括 outlook.com、live.com 和其他帳戶)，以及採用 Azure Active Directory 的公司或組織所提供的公司或學校帳戶登入。 (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
+ 如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -57,7 +57,7 @@ ms.locfileid: "91743483"
 >    - 選取 [註冊]。
 > 1. 在 [概觀] 頁面上，尋找應用程式的 [應用程式 (用戶端) 識別碼] 和 [目錄 (租用戶) 識別碼] 值。 請複製這些值以供後續使用。
 > 1. 從功能表中選取 [驗證]，然後新增下列資訊：
->    - 新增 **Web** 平台組態。  將這些 `https://localhost:8443/msal4jsample/secure/aad` 和 `https://localhost:8443/msal4jsample/graph/me` 新增為**重新導向 URI**。
+>    - 新增 **Web** 平台組態。  將這些 `https://localhost:8443/msal4jsample/secure/aad` 和 `https://localhost:8443/msal4jsample/graph/me` 新增為 **重新導向 URI**。
 >    - 選取 [儲存]。
 > 1. 從功能表中選取 [憑證和秘密]，然後在 [用戶端密碼] 區段中，按一下 [新增用戶端密碼]：
 >
@@ -99,7 +99,7 @@ ms.locfileid: "91743483"
 >   ```
 >   將產生的金鑰儲存區檔案放在「資源」資料夾中。
 
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [下載程式碼範例](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]

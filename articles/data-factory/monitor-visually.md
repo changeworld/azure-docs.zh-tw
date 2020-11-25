@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: ecb066c7269217af3f8cc84e0f59ab29b4b39a9e
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 45ebd793d96ed8cf0edf88d5631353fb6cd6a982
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331446"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96008764"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>以視覺化方式監視 Azure Data Factory
 
@@ -40,7 +40,7 @@ ms.locfileid: "94331446"
 | 執行結束 | 管線執行的結束日期和時間 (MM/DD/YYYY，HH： MM： SS AM/PM)  |
 | Duration | 回合持續時間 (HH:MM:SS) |
 | 觸發方式 | 啟動管線的觸發程序名稱 |
-| 狀態 | **失敗** 、 **成功** 、 **進行中** 、 **已取消** 或 **已排入佇列** |
+| 狀態 | **失敗**、**成功**、**進行中**、**已取消** 或 **已排入佇列** |
 | 註解 | 與管線相關聯的可篩選標籤  |
 | 參數 | 管線回合的參數 (名稱/值組) |
 | 錯誤 | 如果管線失敗，則回合錯誤 |
@@ -62,16 +62,16 @@ ms.locfileid: "94331446"
 
 清單檢視會顯示對應至每個管線回合的活動回合。 將滑鼠停留在特定活動執行上，以取得執行特定的資訊，例如 JSON 輸入、JSON 輸出和詳細的活動特定監視體驗。
 
-![用於監視活動回合的清單檢視](media/monitor-visually/activity-runs.png)
+![有 SalesAnalyticsMLPipeline 的相關資訊，後面接著活動執行清單。](media/monitor-visually/activity-runs.png)
 
 | **資料行名稱** | **說明** |
 | --- | --- |
 | 活動名稱 | 管線內的活動名稱 |
-| 活動類型 | 活動的類型，例如 **Copy** 、 **ExecuteDataFlow** 或 **AzureMLExecutePipeline** |
+| 活動類型 | 活動的類型，例如 **Copy**、**ExecuteDataFlow** 或 **AzureMLExecutePipeline** |
 | 動作 | 圖示，可讓您查看 JSON 輸入資訊、JSON 輸出資訊，或詳細的活動特定監視體驗 | 
 | 回合開始 | 活動回合的開始日期和時間 (MM/DD/YYYY，HH:MM:SS AM/PM) |
 | Duration | 回合持續時間 (HH:MM:SS) |
-| 狀態 | **失敗** 、 **成功** 、 **進行中** 或 **已取消** |
+| 狀態 | **失敗**、**成功**、**進行中** 或 **已取消** |
 | 整合執行階段 | 活動是在哪個 Integration Runtime 上執行 |
 | 使用者屬性 | 活動的使用者定義屬性 |
 | 錯誤 | 如果活動失敗，則回合錯誤 |
@@ -79,7 +79,7 @@ ms.locfileid: "94331446"
 
 如果活動失敗，您可以按一下 [錯誤] 資料行中的圖示，以查看詳細的錯誤訊息。 
 
-![用於監視活動回合的清單檢視](media/monitor-visually/activity-run-error.png)
+![出現的通知會顯示錯誤詳細資料，包括錯誤碼、失敗類型和錯誤詳細資料。](media/monitor-visually/activity-run-error.png)
 
 ### <a name="promote-user-properties-to-monitor"></a>將使用者屬性升階以便監視
 

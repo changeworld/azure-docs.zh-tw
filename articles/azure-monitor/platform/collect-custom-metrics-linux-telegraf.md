@@ -8,11 +8,11 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: b80f27e490dd3b1890eab7740fb4650ba4280abb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88207806"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008985"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>使用 InfluxData Telegraf 代理程式收集 Linux VM 的自訂計量
 
@@ -39,22 +39,22 @@ ms.locfileid: "88207806"
 建立新的 Linux VM： 
 
 1. 從左側導覽窗格中選取 [ **建立資源** ] 選項。 
-1. 搜尋 [虛擬機器]****。  
-1. 選取 [Ubuntu 16.04 LTS]****，然後選取 [建立]****。 
+1. 搜尋 [虛擬機器]。  
+1. 選取 [Ubuntu 16.04 LTS]，然後選取 [建立]。 
 1. 提供 VM 名稱，例如 **MyTelegrafVM**。  
 1. 讓磁碟類型保持為 **SSD**。 然後提供使用者 **名稱**（例如 **>azureuser**）。 
 1. 針對 [ **驗證類型**]，選取 [ **密碼**]。 然後輸入密碼，以便稍後用來透過 SSH 連線到此 VM。 
-1. 選擇 **建立新的資源群組**。 然後提供名稱，例如 **myResourceGroup**。 選擇您的 **位置**。 然後選取 [確定]。 
+1. 選擇 **建立新的資源群組**。 然後提供名稱，例如 **myResourceGroup**。 選擇您的 **位置**。 然後選取 [確定]  。 
 
     ![建立 Ubuntu VM](./media/collect-custom-metrics-linux-telegraf/create-vm.png)
 
-1. 選取 VM 的大小。 您可以依 [計算類型]**** 或 [磁碟類型]**** 進行篩選 (舉例而言)。 
+1. 選取 VM 的大小。 您可以依 [計算類型] 或 [磁碟類型] 進行篩選 (舉例而言)。 
 
     ![虛擬機器大小 Telegraf 代理程式概觀](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
 
-1. 在 [**網路**網路安全性群組] 的 [**設定**] 頁面上  >  **Network Security Group**  >  **，選取 [公用輸入埠**]，選取 [ **HTTP**和**SSH (22) **。 保留其餘的預設值，然後選取 [確定]  。 
+1. 在 [**網路** 網路安全性群組] 的 [**設定**] 頁面上  >  **Network Security Group**  >  **，選取 [公用輸入埠**]，選取 [ **HTTP** 和 **SSH (22)**。 保留其餘的預設值，然後選取 [確定]  。 
 
-1. 在 [摘要] 頁面上選取 [建立]****，以開始進行 VM 部署。 
+1. 在 [摘要] 頁面上選取 [建立]，以開始進行 VM 部署。 
 
 1. VM 會釘選到 Azure 入口網站儀表板。 完成部署後，VM 摘要就會自動開啟。 
 
@@ -68,7 +68,7 @@ ms.locfileid: "88207806"
 
 ![Telegraf VM 概觀頁面](./media/collect-custom-metrics-linux-telegraf/connect-VM-button2.png)
 
-在 [連線至虛擬機器]**** 頁面中，保留以 DNS 名稱透過連接埠 22 進行連線的預設選項。 在 **[使用 VM 本機帳戶登**入] 中，會顯示連線命令。 選取按鈕以複製該命令。 下列範例說明 SSH 連線命令的內容： 
+在 [連線至虛擬機器] 頁面中，保留以 DNS 名稱透過連接埠 22 進行連線的預設選項。 在 **[使用 VM 本機帳戶登** 入] 中，會顯示連線命令。 選取按鈕以複製該命令。 下列範例說明 SSH 連線命令的內容： 
 
 ```cmd
 ssh azureuser@XXXX.XX.XXX 
@@ -97,7 +97,7 @@ sudo cp azm-telegraf.conf /etc/telegraf/telegraf.conf
 ```
 
 > [!NOTE]  
-> 上述程式碼只能啟用兩個輸入外掛程式：**cpu** 和 **mem**。 視您電腦上執行的工作負載而定，您可以新增更多輸入外掛程式。 範例包括 Docker、MySQL 和 NGINX。 如需輸入外掛程式的完整清單，請參閱**其他設定**一節。 
+> 上述程式碼只能啟用兩個輸入外掛程式：**cpu** 和 **mem**。 視您電腦上執行的工作負載而定，您可以新增更多輸入外掛程式。 範例包括 Docker、MySQL 和 NGINX。 如需輸入外掛程式的完整清單，請參閱 **其他設定** 一節。 
 
 最後，執行下列命令強制停止並啟動代理程式，讓代理程式使用新設定來啟動： 
 

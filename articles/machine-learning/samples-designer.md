@@ -1,7 +1,7 @@
 ---
 title: 設計工具的範例管線和資料集
 titleSuffix: Azure Machine Learning
-description: 在 Azure Machine Learning 設計工具中使用範例，以快速了解您的機器學習管線。
+description: 了解如何在 Azure Machine Learning 設計工具中使用範例，以快速了解您的機器學習管線。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/14/2020
 ms.custom: designer
-ms.openlocfilehash: ecdb011310d8aa5bd63e9b9e9679bb525cb4f7b3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: a27e18d9b6f6307f1cc8ed48ca897dd4d1f0f1f3
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074595"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555493"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Azure Machine Learning 設計工具的範例管線和資料集
 
@@ -113,7 +113,7 @@ ms.locfileid: "92074595"
 
 在 Azure Machine Learning 設計工具中建立新的管線時，預設會包含一些範例資料集。 這些範例資料集是由設計工具首頁中的範例管線所使用。 
 
-範例資料集可在**資料集**-**範例**類別目錄下取得。 您可以在設計工具的畫布面板左側的模組選擇區中找到此項目。 您可以將資料集拖曳到您的畫布面板上，在自己的管線中使用任一資料集。
+範例資料集可在 **資料集**-**範例** 類別目錄下取得。 您可以在設計工具的畫布面板左側的模組選擇區中找到此項目。 您可以將資料集拖曳到您的畫布面板上，在自己的管線中使用任一資料集。
 
 | 資料集&nbsp;名稱&nbsp;&nbsp;&nbsp;&nbsp;| 資料集說明 |
 |-------------|:--------------------|

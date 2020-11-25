@@ -3,12 +3,12 @@ title: 功能概觀 - Azure 事件中樞 | Microsoft Docs
 description: 本文將詳細說明 Azure 事件中樞的相關功能與術語。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 43ebf4e928cadfc87f52fc10b27f9c8419d11a8f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: db7c0244fd4e9e04f9cfbcbba8748ec8190fc5c5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369636"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96007423"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中樞的功能與術語
 
@@ -29,7 +29,7 @@ ms.locfileid: "92369636"
 
 ## <a name="event-publishers"></a>事件發佈者
 
-任何將資料傳送至事件中樞的實體就稱為「事件產生者」或「事件發佈者」**。 事件發佈者可以使用 HTTPS、AMQP 1.0 或 Kafka 1.0 版和更新版本來發佈事件。 事件發佈者使用共用存取簽章 (SAS) 權杖向事件中樞辨識自己的身分，而且可以擁有唯一的身分識別，或使用一般 SAS 權杖。
+任何將資料傳送至事件中樞的實體就稱為「事件產生者」或「事件發佈者」。 事件發佈者可以使用 HTTPS、AMQP 1.0 或 Kafka 1.0 版和更新版本來發佈事件。 事件發佈者使用共用存取簽章 (SAS) 權杖向事件中樞辨識自己的身分，而且可以擁有唯一的身分識別，或使用一般 SAS 權杖。
 
 ### <a name="publishing-an-event"></a>發佈事件
 
@@ -45,7 +45,7 @@ ms.locfileid: "92369636"
 
 ### <a name="publisher-policy"></a>發佈者原則
 
-事件中樞可讓您透過發佈者 ** 原則更精確地控制事件發佈者。 發佈者原則是為了協助大量獨立事件發佈者而設計的執行階段功能。 有了發佈者原則，當每位發佈者使用下列機制將事件發佈到事件中樞時，都能使用自己的唯一識別碼：
+事件中樞可讓您透過發佈者 原則更精確地控制事件發佈者。 發佈者原則是為了協助大量獨立事件發佈者而設計的執行階段功能。 有了發佈者原則，當每位發佈者使用下列機制將事件發佈到事件中樞時，都能使用自己的唯一識別碼：
 
 ```http
 //<my namespace>.servicebus.windows.net/<event hub name>/publishers/<my publisher name>
@@ -63,7 +63,7 @@ ms.locfileid: "92369636"
 
 ## <a name="sas-tokens"></a>SAS 權杖
 
-事件中樞會使用 *共用存取*簽章，可在命名空間和事件中樞層級使用。 SAS 權杖可自 SAS 金鑰產生，它是經過特定格式編碼的 URL SHA 雜湊。 事件中樞可以使用金鑰 (原則) 的名稱和權杖來重新產生雜湊，藉此驗證傳送者。 一般情況下，會建立事件發行者的 SAS 權杖，而且只會在特定事件中樞上建立「 **傳送** 」許可權。 此 SAS 權杖 URL 機制是導入發佈者原則之發佈者識別的基礎。 如需使用 SAS 的詳細資訊，請參閱[使用服務匯流排的共用存取簽章驗證](../service-bus-messaging/service-bus-sas.md)。
+事件中樞會使用 *共用存取* 簽章，可在命名空間和事件中樞層級使用。 SAS 權杖可自 SAS 金鑰產生，它是經過特定格式編碼的 URL SHA 雜湊。 事件中樞可以使用金鑰 (原則) 的名稱和權杖來重新產生雜湊，藉此驗證傳送者。 一般情況下，會建立事件發行者的 SAS 權杖，而且只會在特定事件中樞上建立「 **傳送** 」許可權。 此 SAS 權杖 URL 機制是導入發佈者原則之發佈者識別的基礎。 如需使用 SAS 的詳細資訊，請參閱[使用服務匯流排的共用存取簽章驗證](../service-bus-messaging/service-bus-sas.md)。
 
 ## <a name="event-consumers"></a>事件取用者
 
@@ -71,7 +71,7 @@ ms.locfileid: "92369636"
 
 ### <a name="consumer-groups"></a>用戶群組
 
-事件中心的發佈/訂閱機制是透過「取用者群組」** 啟用。 取用者群組是檢視整個事件中樞 (狀態、位置或位移) 的窗口。 取用者群組能讓多個取用應用程式擁有自己的事件串流檢視，以及按照自己的步調及運用自己的位移自行讀取串流。
+事件中心的發佈/訂閱機制是透過「取用者群組」啟用。 取用者群組是檢視整個事件中樞 (狀態、位置或位移) 的窗口。 取用者群組能讓多個取用應用程式擁有自己的事件串流檢視，以及按照自己的步調及運用自己的位移自行讀取串流。
 
 在串流處理架構中，每個下游應用程式等同於一個取用者群組。 如果您想要將事件資料寫入長期存放區，該存放裝置寫入器應用程式即是取用者群組。 複雜的事件處理可以由另一個獨立的取用者群組來執行。 您只能透過取用者群組來存取資料分割。 每個事件中樞永遠有一個預設的取用者群組，而您可以為標準層事件中樞建立最多 20 個取用者群組。
 
@@ -92,7 +92,7 @@ Azure Sdk 所提供的部分用戶端是智慧型取用者代理程式，可自�
 
 ### <a name="stream-offsets"></a>串流位移
 
-「位移」** 是事件在資料分割內的位置。 您可以將位移視為用戶端指標。 位移是事件的位元組編號。 此位移可讓事件取用者 (讀取器) 在事件串流中指定某個點，以便從該點開始讀取事件。 您可以指定時間戳記或位移值等形式的位移。 取用者需負責將自己的位移值儲存在事件中樞服務之外。 在資料分割內，每個事件都含有一個位移。
+「位移」是事件在資料分割內的位置。 您可以將位移視為用戶端指標。 位移是事件的位元組編號。 此位移可讓事件取用者 (讀取器) 在事件串流中指定某個點，以便從該點開始讀取事件。 您可以指定時間戳記或位移值等形式的位移。 取用者需負責將自己的位移值儲存在事件中樞服務之外。 在資料分割內，每個事件都含有一個位移。
 
 ![資料分割位移](./media/event-hubs-features/partition_offset.png)
 
@@ -104,7 +104,7 @@ Azure Sdk 所提供的部分用戶端是智慧型取用者代理程式，可自�
 
 > [!NOTE]
 > 如果您在支援不同于 Azure 上的儲存體 Blob SDK 版本的環境中使用 Azure Blob 儲存體作為檢查點存放區，您必須使用程式碼將儲存體服務 API 版本變更為該環境所支援的特定版本。 例如，如果您是 [在 Azure Stack Hub 2002 版上執行事件中樞](/azure-stack/user/event-hubs-overview)，則儲存體服務的最高可用版本是2017-11-09 版。 在此情況下，您必須使用程式碼將儲存體服務 API 版本的目標設為2017-11-09。 如需如何以特定儲存體 API 版本為目標的範例，請參閱 GitHub 上的下列範例： 
-> - [.Net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)。 
+> - [.Net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/)。 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
 > - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) 或  [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/)
@@ -129,7 +129,7 @@ Azure Sdk 所提供的部分用戶端是智慧型取用者代理程式，可自�
 事件資料︰
 * Offset
 * 序號
-* body
+* 主體
 * 使用者屬性
 * 系統屬性
 

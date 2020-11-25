@@ -12,11 +12,11 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: 511166e156591562b2120b58cc420f3fccd1d8c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84804910"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008920"
 ---
 # <a name="client-side-encryption-with-python"></a>使用 Python 的用戶端加密
 
@@ -54,7 +54,7 @@ ms.locfileid: "84804910"
 儲存體用戶端程式庫會使用 [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 來加密使用者資料。 具體來說，就是 [加密區塊鏈結 (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) 模式搭配 AES。 每個服務的運作方式稍有不同，我們將在這裡討論每個服務。
 
 ### <a name="blobs"></a>Blob
-用戶端程式庫目前僅支援整個 Blob 的加密。 明確地說，加密會在使用者使用 **create*** 方法時受到支援。 針對下載項目同時支援完整與範圍下載，也提供上傳與下載的平行處理。
+用戶端程式庫目前僅支援整個 Blob 的加密。 具體而言，當使用者使用 **create** _ 方法時，就會支援加密。 針對下載項目同時支援完整與範圍下載，也提供上傳與下載的平行處理。
 
 在加密期間，用戶端程式庫會產生 16 位元組的隨機初始化向量 (IV)，以及 32 位元組的隨機內容加密金鑰 (CEK)，並使用這項資訊執行 blob 資料的信封加密。 然後，已包裝的 CEK 和一些其他加密中繼資料會儲存為 blob 中繼資料，並連同加密的 blob 一起儲存在服務上。
 
@@ -63,9 +63,9 @@ ms.locfileid: "84804910"
 > 
 > 
 
-下載加密的 Blob 牽涉到使用 **get*** 便利性方法擷取整個 Blob 內容。 包裝的 CEK 會解除包裝，並與 IV (在此情況下儲存為 blob 中繼資料) 一起用來傳回解密的資料給使用者。
+下載加密的 blob 牽涉到使用 _*取得* *_ 便利方法來抓取整個 blob 的內容。 包裝的 CEK 會解除包裝，並與 IV (在此情況下儲存為 blob 中繼資料) 一起用來傳回解密的資料給使用者。
 
-在加密的 Blob 中下載任意範圍 (包含傳入的範圍參數的**get*** 方法)，牽涉到調整使用者所提供的範圍，以藉此取得少量額外的資料以便用來成功解密所要求的範圍。
+下載任意範圍 (_*取得* *_ 加密 blob 中) 傳入之範圍參數的方法，牽涉到調整使用者所提供的範圍，以便取得可用於成功解密所要求範圍的少量額外資料。
 
 區塊 Blob 和分頁 Blob 只可以使用這種配置加密/解密。 目前不支援加密附加 Blob。
 
@@ -114,7 +114,7 @@ ms.locfileid: "84804910"
 > [!IMPORTANT]
 > 使用用戶端加密時，請留意以下重點：
 > 
-> * 讀取或寫入加密的 Blob 時，使用整個 Blob 上傳命令及範圍/整個 Blob 下載命令。 避免使用通訊協定作業寫入加密的 Blob，例如放置區塊、放置區塊清單、撰寫頁面或清除頁面；否則您可能會損毀加密的 Blob，並使它無法讀取。
+> _ 讀取或寫入加密的 blob 時，請使用完整的 blob 上傳命令和範圍/整個 blob 下載命令。 避免使用通訊協定作業寫入加密的 Blob，例如放置區塊、放置區塊清單、撰寫頁面或清除頁面；否則您可能會損毀加密的 Blob，並使它無法讀取。
 > * 對於資料表，存在類似的條件約束。 請小心在未更新加密中繼資料時即更新加密的內容。
 > * 如果您在加密 Blob 上設定中繼資料，您可能會覆寫加密所需的加密相關中繼資料，因為設定中繼資料不是加總解密。 快照集也是如此。在為加密的 Blob 建立快照集時，請避免指定中繼資料。 如果必須設定中繼資料，請務必先呼叫 **get_blob_metadata** 方法，以取得目前的加密中繼資料，並避免在設定中繼資料時並行寫入。
 > * 針對僅能使用加密資料的使用者，請在服務物件上啟用 **require_encryption** 旗標。 如需詳細資訊請參閱下方內容。
@@ -244,6 +244,6 @@ encrypted_property_1 = EntityProperty(EdmType.STRING, value, encrypt=True)
 ## <a name="encryption-and-performance"></a>加密和效能
 請注意，加密您的儲存體資料會造成額外的效能負擔。 必須產生內容金鑰和 IV，內容本身必須經過加密，而且其他中繼資料必須格式化並上傳。 這個額外負荷會因所加密的資料數量而有所不同。 我們建議客戶一定要在開發期間測試其應用程式的效能。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 下載 [適用於 Java PyPi 封裝的 Azure 儲存體用戶端程式庫](https://pypi.python.org/pypi/azure-storage)
 * 從 GitHub 下載 [適用於 Python 的 Azure 儲存體用戶端程式庫來源程式碼](https://github.com/Azure/azure-storage-python)

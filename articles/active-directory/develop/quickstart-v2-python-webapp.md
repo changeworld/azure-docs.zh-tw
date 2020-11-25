@@ -12,20 +12,20 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 63abbc739849a201275995c81a28ede9f9c84b5a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eaac8bdf828d2dd9a8e2dfae0b1b2b5985d1951d
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613334"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592697"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 Python Web 應用程式
 
-在本快速入門中，您將了解如何整合 Python Web 應用程式與 Microsoft 身分識別平台。 您的應用程式會讓使用者登入、取得存取權杖來呼叫 Microsoft Graph API，以及對 Microsoft Graph API 提出要求。
+在本快速入門中，您會下載並執行程式碼範例，該範例會示範 Python Web 應用程式如何登入使用者，並取得存取權杖來呼叫 Microsoft Graph API。 具有個人 Microsoft 帳戶或任何 Azure Active Directory (Azure AD) 組織中帳戶的使用者都可以登入應用程式。
 
-完成本指南後，您的應用程式會接受使用個人Microsoft 帳戶 (包括 outlook.com、live.com 和其他帳戶)，以及採用 Azure Active Directory 的公司或組織所提供的公司或學校帳戶登入。 (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
+如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Python 2.7+](https://www.python.org/downloads/release/python-2713) 或 [Python 3+](https://www.python.org/downloads/release/python-364/)
@@ -60,7 +60,7 @@ ms.locfileid: "91613334"
 >      - 選取 [註冊]。
 >      - 在應用程式 [概觀]  頁面上，記下 [應用程式 (用戶端) 識別碼]  值以供稍後使用。
 > 1. 從功能表中選取 [驗證]  ，然後新增下列資訊：
->    - 新增 **Web** 平台組態。 將 `http://localhost:5000/getAToken` 新增為**重新導向 URI**。
+>    - 新增 **Web** 平台組態。 將 `http://localhost:5000/getAToken` 新增為 **重新導向 URI**。
 >    - 選取 [儲存]  。
 > 1. 在左側功能表上，選擇 [憑證與祕密]  ，然後在 [用戶端密碼]  區段中，按一下 [新增用戶端密碼]  ：
 >

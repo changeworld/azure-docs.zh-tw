@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli
 ms.date: 09/02/2020
 ms.openlocfilehash: 35c3901e9a48523a10c1a6aacbc52e6c165e278f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748699"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009784"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>使用指令碼動作來自訂 Azure HDInsight 叢集
 
@@ -25,8 +25,8 @@ Azure HDInsight 提供稱為 **腳本動作** 的設定方法，可叫用自訂�
 
 針對已加入網域的 HDInsight 叢集，當您對叢集使用指令碼動作時，必須有兩個 Apache Ambari 權限︰
 
-* **AMBARI。執行 \_ 自訂 \_ 命令** 。 依預設，Ambari 系統管理員角色會具有此權限。
-* **群集。執行 \_ 自訂 \_ 命令** 。 依預設，HDInsight 叢集系統管理員和 Ambari 系統管理員會具有此權限。
+* **AMBARI。執行 \_ 自訂 \_ 命令**。 依預設，Ambari 系統管理員角色會具有此權限。
+* **群集。執行 \_ 自訂 \_ 命令**。 依預設，HDInsight 叢集系統管理員和 Ambari 系統管理員會具有此權限。
 
 如需有關使用已加入網域之 HDInsight 的權限詳細資訊，請參閱[使用企業安全性套件管理 HDInsight 叢集](./domain-joined/apache-domain-joined-manage.md)。
 
@@ -110,7 +110,7 @@ Azure HDInsight 提供稱為 **腳本動作** 的設定方法，可叫用自訂�
 
 指令碼動作會以根權限執行。 請先確定您瞭解腳本的作用，再將它套用至您的叢集。
 
-當您將指令碼套用至叢集時，叢集狀態會從 [正在執行]  變更為 [已接受]  。 然後，它會變更為 [HDInsight 設定]  ，最後，如果指令碼成功，就會再變更回 [正在執行]  。 指令碼狀態會記錄在指令碼動作歷程記錄中。 此資訊會告訴您指令碼成功還是失敗。 例如，`Get-AzHDInsightScriptActionHistory` PowerShell Cmdlet 會顯示指令碼的狀態。 它會傳回類似以下文字的資訊：
+當您將指令碼套用至叢集時，叢集狀態會從 [正在執行] 變更為 [已接受]。 然後，它會變更為 [HDInsight 設定]，最後，如果指令碼成功，就會再變更回 [正在執行]。 指令碼狀態會記錄在指令碼動作歷程記錄中。 此資訊會告訴您指令碼成功還是失敗。 例如，`Get-AzHDInsightScriptActionHistory` PowerShell Cmdlet 會顯示指令碼的狀態。 它會傳回類似以下文字的資訊：
 
 ```output
 ScriptExecutionId : 635918532516474303
@@ -145,11 +145,11 @@ HDInsight 提供一些指令碼以在 HDInsight 叢集上安裝下列元件：
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>在建立叢集期間從 Azure 入口網站使用指令碼動作
 
-1. 依照 [使用 Azure 入口網站在 HDInsight 中建立以 Linux 為基礎](hdinsight-hadoop-create-linux-clusters-portal.md)的叢集所述，開始建立叢集。 從 [設定 **+ 定價** ] 索引標籤中，選取 [ **+ 新增腳本動作** ]。
+1. 依照 [使用 Azure 入口網站在 HDInsight 中建立以 Linux 為基礎](hdinsight-hadoop-create-linux-clusters-portal.md)的叢集所述，開始建立叢集。 從 [設定 **+ 定價** ] 索引標籤中，選取 [ **+ 新增腳本動作**]。
 
     ![Azure 入口網站 cluster 腳本動作](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-configuration-scriptaction.png)
 
-1. 使用 [選取指令碼]  項目來選取預先製作的指令碼。 若要使用自訂指令碼，請選取 [自訂]  。 然後為您的指令碼提供 [名稱]  和 [Bash 指令碼 URI]  。
+1. 使用 [選取指令碼] 項目來選取預先製作的指令碼。 若要使用自訂指令碼，請選取 [自訂]。 然後為您的指令碼提供 [名稱] 和 [Bash 指令碼 URI]。
 
     ![在選取指令碼表單中加入指令碼](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
@@ -157,15 +157,15 @@ HDInsight 提供一些指令碼以在 HDInsight 叢集上安裝下列元件：
 
     | 屬性 | 值 |
     | --- | --- |
-    | 選取指令碼 | 若要使用自己的指令碼，請選取 [自訂]  。 或是選取其中一個提供的指令碼。 |
+    | 選取指令碼 | 若要使用自己的指令碼，請選取 [自訂]。 或是選取其中一個提供的指令碼。 |
     | 名稱 |指定指令碼動作的名稱。 |
     | Bash 指令碼 URI |指定指令碼的 URI。 |
-    | Head/Worker/ZooKeeper |指定執行腳本的節點： **Head** 、 **Worker** 或 **ZooKeeper** 。 |
+    | Head/Worker/ZooKeeper |指定執行腳本的節點： **Head**、 **Worker** 或 **ZooKeeper**。 |
     | 參數 |如果指令碼要求，請指定參數。 |
 
-    請使用 [保存此指令碼動作]  項目，以確保在執行規模調整作業期間會套用此指令碼。
+    請使用 [保存此指令碼動作] 項目，以確保在執行規模調整作業期間會套用此指令碼。
 
-1. 選取 [Create] \(建立\)  以儲存指令碼。 接著，您可以使用 [+ 送出新的]  來新增另一個指令碼。
+1. 選取 [Create] \(建立\) 以儲存指令碼。 接著，您可以使用 [+ 送出新的] 來新增另一個指令碼。
 
     ![HDInsight 多個腳本動作](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
 
@@ -217,13 +217,13 @@ HDInsight .NET SDK 提供用戶端程式庫，可讓您更輕鬆地從 .NET 應�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com) 並找出您的叢集。
 
-1. 從預設檢視的 [設定]  底下，選取 [指令碼動作]  。
+1. 從預設檢視的 [設定] 底下，選取 [指令碼動作]。
 
-1. 從 [指令碼動作]  頁面上方，選取 [+ 送出新的]  。
+1. 從 [指令碼動作] 頁面上方，選取 [+ 送出新的]。
 
     ![將指令碼加入執行中的叢集](./media/hdinsight-hadoop-customize-cluster-linux/add-script-running-cluster.png)
 
-1. 使用 [選取指令碼]  項目來選取預先製作的指令碼。 若要使用自訂指令碼，請選取 [自訂]  。 然後為您的指令碼提供 [名稱]  和 [Bash 指令碼 URI]  。
+1. 使用 [選取指令碼] 項目來選取預先製作的指令碼。 若要使用自訂指令碼，請選取 [自訂]。 然後為您的指令碼提供 [名稱] 和 [Bash 指令碼 URI]。
 
     ![在選取指令碼表單中加入指令碼](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
@@ -231,15 +231,15 @@ HDInsight .NET SDK 提供用戶端程式庫，可讓您更輕鬆地從 .NET 應�
 
     | 屬性 | 值 |
     | --- | --- |
-    | 選取指令碼 | 若要使用您自己的腳本，請選取 [ __自訂__ ]。 否則，請選取提供的指令碼。 |
+    | 選取指令碼 | 若要使用您自己的腳本，請選取 [ __自訂__]。 否則，請選取提供的指令碼。 |
     | 名稱 |指定指令碼動作的名稱。 |
     | Bash 指令碼 URI |指定指令碼的 URI。 |
-    | Head/Worker/Zookeeper |指定執行腳本的節點： **Head** 、 **Worker** 或 **ZooKeeper** 。 |
+    | Head/Worker/Zookeeper |指定執行腳本的節點： **Head**、 **Worker** 或 **ZooKeeper**。 |
     | 參數 |如果指令碼要求，請指定參數。 |
 
-    使用 [保存此指令碼動作]  項目，可確保在執行規模調整作業時套用此指令碼。
+    使用 [保存此指令碼動作] 項目，可確保在執行規模調整作業時套用此指令碼。
 
-1. 最後，選取 [建立]  按鈕以將指令碼套用至叢集。
+1. 最後，選取 [建立] 按鈕以將指令碼套用至叢集。
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-azure-powershell"></a>從 Azure PowerShell 將指令碼動作套用到執行中的叢集
 
@@ -292,17 +292,17 @@ NodeTypes       : {HeadNode, WorkerNode}
 
 1. 登入 [Azure 入口網站](https://portal.azure.com) 並找出您的叢集。
 
-1. 從預設檢視的 [設定]  底下，選取 [指令碼動作]  。
+1. 從預設檢視的 [設定] 底下，選取 [指令碼動作]。
 
 1. 此叢集的指令碼歷程記錄會顯示在 [指令碼動作] 區段上。 此資訊包含持續性指令碼清單。 以下螢幕擷取畫面顯示 Solr 指令碼已在此叢集上執行。 此螢幕擷取畫面未顯示任何持續性指令碼。
 
     ![入口網站腳本動作提交歷程記錄](./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png)
 
-1. 從歷程記錄中選取指令碼，以顯示此指令碼的 [屬性]  區段。 從視窗的頂端，您可以重新執行指令碼或將其升階。
+1. 從歷程記錄中選取指令碼，以顯示此指令碼的 [屬性] 區段。 從視窗的頂端，您可以重新執行指令碼或將其升階。
 
     ![腳本動作屬性升級](./media/hdinsight-hadoop-customize-cluster-linux/promote-script-actions.png)
 
-1. 您也可以選取 [腳本動作] 區段上專案右邊的省略號（ **...** ）來執行動作。
+1. 您也可以選取 [腳本動作] 區段上專案右邊的省略號（ **...**）來執行動作。
 
     ![刪除保存的腳本動作](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
 
@@ -321,7 +321,7 @@ NodeTypes       : {HeadNode, WorkerNode}
 
 ### <a name="azure-cli"></a>Azure CLI
 
-| Command | 描述 |
+| 命令 | 描述 |
 | --- | --- |
 | [`az hdinsight script-action delete`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-delete) |刪除叢集的指定持續性腳本動作。 此命令不會復原腳本所執行的動作，只會移除已保存的旗標。|
 |[`az hdinsight script-action execute`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-execute)|在指定的 HDInsight 叢集上執行指令碼動作。|

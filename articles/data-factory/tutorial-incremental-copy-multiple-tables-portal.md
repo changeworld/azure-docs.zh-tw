@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: b07c53d048d60b555c33cacf42557f5da26552cc
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/09/2020
+ms.openlocfilehash: 065cfe6695d7651d3cda49ad32428127633b834c
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637474"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555425"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>使用 Azure 入口網站，以累加方式將 SQL Server 中多個資料表的資料載入至 Azure SQL Database 中的資料庫
 
@@ -42,15 +42,15 @@ ms.locfileid: "92637474"
 ## <a name="overview"></a>概觀
 以下是建立此解決方案的重要步驟： 
 
-1. **選取水位線資料行** 。
+1. **選取水位線資料行**。
     
     針對來源資料存放區中的每個資料表各選取一個資料行，以便用於識別每次執行時新增或更新的記錄。 一般來說，當建立或更新資料列時，這個選取的資料行 (例如，last_modify_time 或 ID) 中的資料會持續增加。 此資料行中的最大值就作為水位線。
 
-1. **準備資料存放區來儲存水位線值** 。   
+1. **準備資料存放區來儲存水位線值**。   
     
     在本教學課程中，您會將水位線值儲存在 SQL 資料庫中。
 
-1. **使用下列活動建立管線** ： 
+1. **使用下列活動建立管線**： 
     
     a. 建立 ForEach 活動，逐一查看以參數形式傳遞到管線的來源資料表名稱清單。 此活動會針對每個來源資料表叫用下列活動，以對該資料表執行差異載入。
 
@@ -68,8 +68,8 @@ ms.locfileid: "92637474"
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必要條件
-* **SQL Server** 。 在本教學課程中，您將使用 SQL Server 資料庫作為來源資料存放區。 
-* **Azure SQL Database** 。 您會使用 Azure SQL Database 中的資料庫作為接收資料存放區。 如果您在 SQL Database 中沒有資料庫，請參閱[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)，按照步驟來建立資料庫。 
+* **SQL Server**。 在本教學課程中，您將使用 SQL Server 資料庫作為來源資料存放區。 
+* **Azure SQL Database**。 您會使用 Azure SQL Database 中的資料庫作為接收資料存放區。 如果您在 SQL Database 中沒有資料庫，請參閱[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)，按照步驟來建立資料庫。 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>在 SQL Server 資料庫中建立來源資料表
 
@@ -236,17 +236,17 @@ END
 ## <a name="create-a-data-factory"></a>建立 Data Factory
 
 1. 啟動 **Microsoft Edge** 或 **Google Chrome** 網頁瀏覽器。 目前，只有 Microsoft Edge 和 Google Chrome 網頁瀏覽器支援 Data Factory UI。
-2. 在左側功能表上，選取 [建立資源] > [分析] > [資料處理站]： 
+2. 在左側功能表上，選取 [建立資源] > [整合] > [Data Factory]： 
    
    ![在 [新增] 窗格中選取資料處理站](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 3. 在 [新增資料處理站] 頁面中，輸入 **ADFMultiIncCopyTutorialDF** 作為 [名稱]。 
  
-   Azure Data Factory 的名稱必須是 **全域唯一的** 。 如果您看到有以下錯誤的紅色驚嘆號，請變更 Data Factory 名稱 (例如 yournameADFTutorialDataFactory)，然後試著重新建立。 請參閱 [Data Factory - 命名規則](naming-rules.md)一文，以了解 Data Factory 成品的命名規則。
+   Azure Data Factory 的名稱必須是 **全域唯一的**。 如果您看到有以下錯誤的紅色驚嘆號，請變更 Data Factory 名稱 (例如 yournameADFTutorialDataFactory)，然後試著重新建立。 請參閱 [Data Factory - 命名規則](naming-rules.md)一文，以了解 Data Factory 成品的命名規則。
   
    `Data factory name "ADFIncCopyTutorialDF" is not available`
 
-4. 選取您要在其中建立資料處理站的 Azure **訂用帳戶** 。 
+4. 選取您要在其中建立資料處理站的 Azure **訂用帳戶**。 
 5. 針對 [資源群組]，請執行下列其中一個步驟︰
      
     - 選取 [使用現有的] ，然後從下拉式清單選取現有的資源群組。 
@@ -285,7 +285,7 @@ END
 1. 在網頁瀏覽器的 [整合執行階段安裝] 視窗中，按一下 [完成]。 
 
  
-1. 確認您在整合執行階段的清單中看到 **MySelfHostedIR** 。
+1. 確認您在整合執行階段的清單中看到 **MySelfHostedIR**。
 
 ## <a name="create-linked-services"></a>建立連結的服務
 您在資料處理站中建立的連結服務會將您的資料存放區和計算服務連結到資料處理站。 在本節中，您將對 SQL Server 資料庫與 Azure SQL Database 中的資料庫建立連結服務。 
@@ -304,9 +304,9 @@ END
     1. 在 [透過整合執行階段連線] 選取 [MySelfHostedIR]。 這是 **重要** 步驟。 預設整合執行階段無法連線到內部部署資料存放區。 請使用您先前建立的自我裝載整合執行階段。 
     1. 針對 [伺服器名稱]，輸入具有 SQL Server 資料庫的電腦名稱。
     1. 針對 [資料庫名稱]，輸入 SQL Server 中具有來源資料的資料庫名稱。 您已建立資料表，並在此資料庫中插入資料，作為必要條件的一部分。 
-    1. 針對 [驗證類型]，選取您連線到資料庫時所要使用的 **驗證類型** 。 
+    1. 針對 [驗證類型]，選取您連線到資料庫時所要使用的 **驗證類型**。 
     1. 針對 [使用者名稱]，輸入可存取 SQL Server 資料庫的使用者名稱。 如果您需要在使用者帳戶或伺服器名稱中使用斜線字元 (`\`)，請使用逸出字元 (`\`)。 例如 `mydomain\\myuser`。
-    1. 針對 [密碼]，輸入使用者的 **密碼** 。 
+    1. 針對 [密碼]，輸入使用者的 **密碼**。 
     1. 若要測試 Data Factory 是否可連線到 SQL Server 資料庫，請按一下 [測試連線]。 修正任何錯誤，直到連線成功。 
     1. 若要儲存連結服務，按一下 [完成]。
 
@@ -321,7 +321,7 @@ END
     1. 對於 [伺服器名稱]，請從下拉式清單中選取您伺服器的名稱。 
     1. 針對 [資料庫名稱]，選取您在其中建立 customer_table 和 project_table 作為必要條件一部分的資料庫。 
     1. 針對 [使用者名稱]，輸入可存取資料庫的使用者名稱。 
-    1. 針對 [密碼]，輸入使用者的 **密碼** 。 
+    1. 針對 [密碼]，輸入使用者的 **密碼**。 
     1. 若要測試 Data Factory 是否可連線到 SQL Server 資料庫，請按一下 [測試連線]。 修正任何錯誤，直到連線成功。 
     1. 若要儲存連結服務，按一下 [完成]。
 
@@ -340,7 +340,7 @@ END
 
 1. 您會看到網頁瀏覽器中開啟了用來設定資料集的新索引標籤。 你也會在樹狀檢視中看到資料集。 在底部 [屬性] 視窗的 [一般] 索引標籤中，輸入 **SourceDataset** 作為 [名稱]。 
 
-1. 在 [屬性] 視窗中切換至 [連線] 索引標籤，然後針對 [連結服務] 選取 **SqlServerLinkedService** 。 您在此處不會選取資料表。 管線中的複製活動會使用 SQL 查詢來載入資料，而不會載入整個資料表。
+1. 在 [屬性] 視窗中切換至 [連線] 索引標籤，然後針對 [連結服務] 選取 **SqlServerLinkedService**。 您在此處不會選取資料表。 管線中的複製活動會使用 SQL 查詢來載入資料，而不會載入整個資料表。
 
    ![來源資料集 - 連線](./media/tutorial-incremental-copy-multiple-tables-portal/source-dataset-connection.png)
 
@@ -355,10 +355,10 @@ END
 1. 在 [屬性] 視窗中切換至 [參數] 索引標籤，並執行下列步驟： 
 
     1. 按一下 [建立/更新參數] 區段中的 [新增]。 
-    1. 輸入 **SinkTableName** 作為 **名稱** ，並輸入 **String** 作為 **類型** 。 此資料集採用 **SinkTableName** 作為參數。 SinkTableName 參數是由管線在執行階段動態設定的。 管線中的 ForEach 活動會逐一查看資料表名稱清單，並將資料表名稱傳遞至每個反覆項目中的這個資料集。
+    1. 輸入 **SinkTableName** 作為 **名稱**，並輸入 **String** 作為 **類型**。 此資料集採用 **SinkTableName** 作為參數。 SinkTableName 參數是由管線在執行階段動態設定的。 管線中的 ForEach 活動會逐一查看資料表名稱清單，並將資料表名稱傳遞至每個反覆項目中的這個資料集。
    
         ![接收資料集 - 屬性](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
-1. 在 [屬性] 視窗中切換至 [連線] 索引標籤，然後針對 [連結服務] 選取 **AzureSqlDatabaseLinkedService** 。 針對 [資料表] 屬性，按一下 [新增動態內容]。   
+1. 在 [屬性] 視窗中切換至 [連線] 索引標籤，然後針對 [連結服務] 選取 **AzureSqlDatabaseLinkedService**。 針對 [資料表] 屬性，按一下 [新增動態內容]。   
     
 1. 在 [新增動態內容] 視窗中，選取 [參數] 區段中的 [SinkTableName]。 
  
@@ -396,15 +396,15 @@ END
 
 1. 按一下左窗格中的 [+] (加號)，然後按一下 [管線]。
 
-1. 在 [屬性] 下的 [一般] 面板中，為 [名稱] 指定 **IncrementalCopyPipeline** 。 然後按一下右上角的屬性圖示摺疊面板。  
+1. 在 [屬性] 下的 [一般] 面板中，為 [名稱] 指定 **IncrementalCopyPipeline**。 然後按一下右上角的屬性圖示摺疊面板。  
 
 1. 在 [參數] 索引標籤中執行下列步驟： 
 
     1. 按一下 [+ 新增]。 
     1. 輸入 **tableList** 作為參數的 [名稱]。 
-    1. 選取 [陣列] 作為參數 **類型** 。
+    1. 選取 [陣列] 作為參數 **類型**。
 
-1. 在 [活動] 工具箱中展開 [反覆項目與條件]，並將 [ForEach] 活動拖放至管線設計工具介面。 在 [屬性] 視窗的 [一般] 索引標籤中，輸入 **IterateSQLTables** 。 
+1. 在 [活動] 工具箱中展開 [反覆項目與條件]，並將 [ForEach] 活動拖放至管線設計工具介面。 在 [屬性] 視窗的 [一般] 索引標籤中，輸入 **IterateSQLTables**。 
 
 1. 切換到 [設定] 索引標籤，然後為 [項目] 輸入 `@pipeline().parameters.tableList`。 ForEach 活動會逐一查看資料表清單，並執行累加式複製作業。 
 
@@ -641,7 +641,7 @@ PersonID    Name    LastModifytime
 5           Anny    2017-09-05 08:06:00.000
 ```
 
-請注意， **PersonID** 為 3 的 **Name** 和 **LastModifytime** 的新值。 
+請注意，**PersonID** 為 3 的 **Name** 和 **LastModifytime** 的新值。 
 
 **查詢**
 

@@ -11,16 +11,18 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5af55c16ae17b30d2079b332c236c325f3bed4df
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 25c5e6445bb5d673db1cfb755f320302a9e9c5b5
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613266"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561857"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>快速入門：取得權杖，並從 Windows 傳統型應用程式呼叫 Microsoft Graph API
 
-在此快速入門中，您將了解如何撰寫可登入個人、公司與學校帳戶、取得存取權杖以及呼叫 Microsoft Graph API 的 Windows Desktop .NET (WPF) 應用程式。 (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
+在本快速入門中，您會下載並執行程式碼範例，該範例會示範 Windows 桌面 .NET (WPF) 應用程式如何登入使用者，並取得存取權杖來呼叫 Microsoft Graph API。 
+
+如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。
 
 > [!div renderon="docs"]
 > ## <a name="prerequisites"></a>必要條件
@@ -70,7 +72,7 @@ ms.locfileid: "91613266"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > 使用 Visual Studio 2019 執行專案。
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [下載程式碼範例](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -93,7 +95,7 @@ ms.locfileid: "91613266"
 >    ```
 >
 > 其中：
-> - `Enter_the_Application_Id_here` - 是您註冊的應用程式所具備的**應用程式 (用戶端) 識別碼**。
+> - `Enter_the_Application_Id_here` - 是您註冊的應用程式所具備的 **應用程式 (用戶端) 識別碼**。
 > - `Enter_the_Tenant_Info_Here` - 會設為下列其中一個選項：
 >   - 如果您的應用程式支援 [此組織目錄中的帳戶]，請將此值取代為 [租用戶識別碼] 或 [租用戶名稱] (例如 contoso.microsoft.com)
 >   - 如果您的應用程式支援 [任何組織目錄中的帳戶]，請將此值取代為 `organizations`
@@ -134,7 +136,7 @@ PublicClientApplicationBuilder.Create(ClientId)
 
 > |其中： | 描述 |
 > |---------|---------|
-> | `ClientId` | 是註冊於 Azure 入口網站中的應用程式所具備的**應用程式 (用戶端) 識別碼**。 您可以在 Azure 入口網站的應用程式 [概觀] 頁面中找到此值。 |
+> | `ClientId` | 是註冊於 Azure 入口網站中的應用程式所具備的 **應用程式 (用戶端) 識別碼**。 您可以在 Azure 入口網站的應用程式 [概觀] 頁面中找到此值。 |
 
 ### <a name="requesting-tokens"></a>要求權杖
 

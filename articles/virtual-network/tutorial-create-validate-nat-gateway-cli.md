@@ -15,24 +15,22 @@ ms.workload: infrastructure-services
 ms.date: 06/11/2020
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7d4467e557105100fc32940c05fa349722689867
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ec054d55432ad2680314b4ff91a067d37b629d4
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88054352"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734322"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>教學課程：使用 Azure CLI 建立 NAT 閘道並測試 NAT 服務
 
 在本教學課程中，您將建立 NAT 閘道，為 Azure 中的虛擬機器提供輸出連線能力。 若要測試 NAT 閘道，請部署來源和目的地虛擬機器。 您將會藉由對公用 IP 位址進行輸出連線，來測試 NAT 閘道。 這些連線會從來源虛擬機器連結到目的地虛擬機器。 僅為了簡單起見，本教學課程會將來源和目的地部署在相同資源群組中的兩個不同虛擬網路中。
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-您可以使用 Azure Cloud Shell 完成本教學課程，或在本機執行個別命令。  如果您尚未使用 Azure Cloud Shell，應該[立即登入](https://shell.azure.com)。
-
-如果您選擇在本機執行這些命令，則必須安裝 CLI。  在本教學課程中，您必須執行 Azure CLI 2.0.71 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
-
+- 本文需要 2.0.71 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -157,7 +155,7 @@ ms.locfileid: "88054352"
 
 ### <a name="expose-ssh-endpoint-on-source-vm"></a>公開來源 VM 上的 SSH 端點
 
-我們會在 NSG 中建立規則，以供對來源 VM 進行 SSH 存取。 使用 [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) 建立名為 **ssh**的 NSG 規則。 此規則將會在 **myResourceGroupNAT** 資源群組中建立於名為 **myNSGsource** 的 NSG 中。
+我們會在 NSG 中建立規則，以供對來源 VM 進行 SSH 存取。 使用 [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) 建立名為 **ssh** 的 NSG 規則。 此規則將會在 **myResourceGroupNAT** 資源群組中建立於名為 **myNSGsource** 的 NSG 中。
 
 ```azurecli-interactive
   az network nsg rule create \
@@ -250,7 +248,7 @@ ms.locfileid: "88054352"
 
 ### <a name="expose-ssh-endpoint-on-destination-vm"></a>公開目的地 VM 上的 SSH 端點
 
-我們會在 NSG 中建立規則，以供對目的地 VM 進行 SSH 存取。 使用 [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) 建立名為 **ssh**的 NSG 規則。 此規則將會在 **myResourceGroupNAT** 資源群組中建立於名為 **myNSGdestination** 的 NSG 中。
+我們會在 NSG 中建立規則，以供對目的地 VM 進行 SSH 存取。 使用 [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) 建立名為 **ssh** 的 NSG 規則。 此規則將會在 **myResourceGroupNAT** 資源群組中建立於名為 **myNSGdestination** 的 NSG 中。
 
 ```azurecli-interactive
     az network nsg rule create \
@@ -286,7 +284,7 @@ ms.locfileid: "88054352"
 
 ### <a name="create-nic-for-destination-vm"></a>建立目的地 VM 的 NIC
 
-使用 [az network nic create](/cli/azure/network/nic#az-network-nic-create) 建立網路介面，並使其與公用 IP 位址 **myPublicIPdestinationVM**和網路安全性群組 **myNSGdestination**產生關聯。 
+使用 [az network nic create](/cli/azure/network/nic#az-network-nic-create) 建立網路介面，並使其與公用 IP 位址 **myPublicIPdestinationVM** 和網路安全性群組 **myNSGdestination** 產生關聯。 
 
 ```azurecli-interactive
     az network nic create \

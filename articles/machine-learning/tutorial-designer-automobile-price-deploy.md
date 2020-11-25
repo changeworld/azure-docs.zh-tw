@@ -1,21 +1,21 @@
 ---
 title: 教學課程：使用設計工具部署 ML 模型
 titleSuffix: Azure Machine Learning
-description: 本教學課程說明如何在 Azure Machine Learning 設計工具中建置預測性分析解決方案。 使用拖放模組進行機器學習模型的定型、評分和部署。
+description: 在 Azure Machine Learning 設計工具中建置預測性分析解決方案。 使用拖放模組進行機器學習模型的訓練、評分和部署。
 author: peterclu
 ms.author: peterlu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 06/28/2020
+ms.date: 11/13/2020
 ms.custom: designer
-ms.openlocfilehash: 95e5b3ac568cfa370fd1e49fad990b681aef46d9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 5a5d166e36b2870ceb081c1c6d2635e01ab43a4d
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311523"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592544"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>教學課程：透過設計工具部署機器學習模型
 
@@ -51,12 +51,12 @@ ms.locfileid: "92311523"
     當您選取 [建立推斷管線] 時，會發生若干情況：
     
     * 定型的模型會儲存為模組選擇區中的 **資料集** 模組。 您可以在 [我的資料集] 下方找到該項目。
-    * 訓練模組 (例如 **訓練模型** 和 **分割資料** ) 會被移除。
+    * 訓練模組 (例如 **訓練模型** 和 **分割資料**) 會被移除。
     * 儲存的定型模型會加回管線中。
     * 會新增 **Web 服務輸入** 和 **Web 服務輸出** 模組。 這些模組會顯示使用者資料將在何處進入管線，以及資料會在何處傳回。
 
     > [!NOTE]
-    > 根據預設， **Web 服務輸入** 會預期與用來建立預測管線的訓練資料相同的資料結構描述。 在此情況下，價格會包含在結構描述中。 不過，在預測期間並不會以價格作為因素。
+    > 根據預設，**Web 服務輸入** 會預期與用來建立預測管線的訓練資料相同的資料結構描述。 在此情況下，價格會包含在結構描述中。 不過，在預測期間並不會以價格作為因素。
     >
 
 1. 選取 [提交]，並使用您在第一部分中使用的相同計算目標和實驗。
@@ -77,9 +77,9 @@ ms.locfileid: "92311523"
    
 1. 在推斷叢集窗格中，設定新的 Kubernetes 服務。
 
-1. 輸入 aks-compute 作為 **計算名稱** 。
+1. 輸入 aks-compute 作為 **計算名稱**。
     
-1. 選取附近的適用區域作為 **區域** 。
+1. 選取附近的適用區域作為 **區域**。
 
 1. 選取 [建立]。
 
@@ -99,7 +99,7 @@ ms.locfileid: "92311523"
 
 1. 選取 [部署]。
     
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="顯示要在哪裡尋找建立管線按鈕的螢幕擷取畫面":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="顯示如何設定新即時端點的螢幕擷取畫面":::
 
     完成部署之後，畫布上方會出現成功通知。 這可能需要幾分鐘的時間。
 
@@ -112,6 +112,8 @@ ms.locfileid: "92311523"
 1. 在 [詳細資料] 索引標籤中，您可以查看更多資訊，例如 REST URI、狀態和標記。
 
 1. 在 [取用] 索引標籤中，您可找到安全性金鑰及設定驗證方法。
+
+1. 在 [部署記錄] 索引標籤中，您可以找到即時端點的詳細部署記錄。 
 
 如需取用 Web 服務的詳細資訊，請參閱[取用部署為 Web 服務的模型](how-to-consume-web-service.md)
 

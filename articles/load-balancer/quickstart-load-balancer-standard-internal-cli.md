@@ -15,33 +15,30 @@ ms.workload: infrastructure-services
 ms.date: 10/23/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 75e37c91b9b3161d7396d94fb086c4dc567a18c1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 834b5c3651a7fff085dc53096f66d5e3f4bf27b4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546988"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700404"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>快速入門：使用 Azure CLI 來建立內部負載平衡器以平衡 VM 的負載
 
 使用 Azure CLI 建立公用負載平衡器和三部虛擬機器，以開始使用 Azure Load Balancer。
 
-## <a name="prerequisites"></a>Prerequisites
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- 已在本機安裝 Azure CLI 或 Azure Cloud Shell
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)] 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
-
-如果您選擇在本機安裝和使用 CLI，本快速入門需要有 Azure CLI 2.0.28 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
+- 本快速入門需要 2.0.28 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
-使用 [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) 來建立資源群組：
+使用 [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) 來建立資源群組：
 
-* 名為 **CreateIntLBQS-rg** 。 
+* 名為 **CreateIntLBQS-rg**。 
 * 在 **eastus** 位置中。
 
 ```azurecli-interactive
@@ -62,10 +59,10 @@ Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
 ### <a name="create-a-virtual-network"></a>建立虛擬網路
 
-使用 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt) 建立虛擬網路：
+使用 [az network vnet create](/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt) 建立虛擬網路：
 
-* 具名 **myVNet** 。
-* 位址前置詞 **10.1.0.0/16** 。
+* 具名 **myVNet**。
+* 位址前置詞 **10.1.0.0/16**。
 * 名為 **MyBackendSubnet** 的子網路。
 * **10.1.0.0/24** 的子網路前置詞。
 * 位於 **CreateIntLBQS-rg** 資源群組中。
@@ -84,9 +81,9 @@ Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
 如果是標準負載平衡器，後端位址中的 VM 都需要有屬於網路安全性群組的網路介面。 
 
-使用 [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) 建立網路安全性群組：
+使用 [az network nsg create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) 建立網路安全性群組：
 
-* 具名 **myNSG** 。
+* 具名 **myNSG**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
 
 ```azurecli-interactive
@@ -97,18 +94,18 @@ Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
 ### <a name="create-a-network-security-group-rule"></a>建立網路安全性群組規則
 
-使用 [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) 建立網路安全性群組規則：
+使用 [az network nsg rule create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) 建立網路安全性群組規則：
 
-* 具名 **myNSGRuleHTTP** 。
+* 具名 **myNSGRuleHTTP**。
 * 在上一個步驟中建立的網路安全性群組 **myNSG** 中。
 * 在資源群組 **CreateIntLBQS-rg** 中。
 * 通訊協定 **(*)** 。
-* 方向 **輸入** 。
+* 方向 **輸入**。
 * 來源 **(*)** 。
 * 目的地 **(*)** 。
-* 目的地連接埠 **連接埠 80** 。
-* 存取 **允許** 。
-* 優先順序 **200** 。
+* 目的地連接埠 **連接埠 80**。
+* 存取 **允許**。
+* 優先順序 **200**。
 
 ```azurecli-interactive
   az network nsg rule create \
@@ -125,13 +122,21 @@ Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
     --priority 200
 ```
 
+## <a name="create-backend-servers"></a>建立後端伺服器
+
+在這個小節中，您會建立：
+
+* 後端伺服器的網路介面。
+* 名為 **cloud-init.txt** 的雲端設定檔，可供伺服器設定之用。
+* 兩個虛擬機器，作為負載平衡器的後端伺服器。
+
 ### <a name="create-network-interfaces-for-the-virtual-machines"></a>建立虛擬機器的網路介面
 
-使用 [az network nic create](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) 建立兩個網路介面：
+使用 [az network nic create](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) 建立兩個網路介面：
 
 #### <a name="vm1"></a>VM1
 
-* 具名 **myNicVM1** 。
+* 具名 **myNicVM1**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
 * 在虛擬網路 **MyVNet** 中。
 * 在子網路 **MyBackendSubnet** 中。
@@ -147,7 +152,7 @@ Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 ```
 #### <a name="vm2"></a>VM2
 
-* 具名 **myNicVM2** 。
+* 具名 **myNicVM2**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
 * 在虛擬網路 **MyVNet** 中。
 * 在子網路 **MyBackendSubnet** 中。
@@ -161,13 +166,6 @@ Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
     --subnet myBackEndSubnet \
     --network-security-group myNSG
 ```
-
-## <a name="create-backend-servers"></a>建立後端伺服器
-
-在這個小節中，您會建立：
-
-* 名為 **cloud-init.txt** 的雲端設定檔，可供伺服器設定之用。
-* 兩個虛擬機器，作為負載平衡器的後端伺服器。
 
 ### <a name="create-cloud-init-configuration-file"></a>建立 Cloud-init 組態檔
 
@@ -218,14 +216,14 @@ runcmd:
 ```
 ### <a name="create-virtual-machines"></a>建立虛擬機器
 
-使用 [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) 建立虛擬機器：
+使用 [az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create) 建立虛擬機器：
 
 #### <a name="vm1"></a>VM1
-* 具名 **myVM1** 。
+* 具名 **myVM1**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
-* 連結到網路介面 **myNicVM1** 。
-* 虛擬機器映像 **UbuntuLTS** 。
-* 您在上述步驟中建立的組態檔 **cloud-init.txt** 。
+* 連結到網路介面 **myNicVM1**。
+* 虛擬機器映像 **UbuntuLTS**。
+* 您在上述步驟中建立的組態檔 **cloud-init.txt**。
 * 在 **區域 1** 中。
 
 ```azurecli-interactive
@@ -242,11 +240,11 @@ runcmd:
     
 ```
 #### <a name="vm2"></a>VM2
-* 具名 **myVM2** 。
+* 具名 **myVM2**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
-* 連結到網路介面 **myNicVM2** 。
-* 虛擬機器映像 **UbuntuLTS** 。
-* 您在上述步驟中建立的組態檔 **cloud-init.txt** 。
+* 連結到網路介面 **myNicVM2**。
+* 虛擬機器映像 **UbuntuLTS**。
+* 您在上述步驟中建立的組態檔 **cloud-init.txt**。
 * 在 **區域 2** 中。
 
 ```azurecli-interactive
@@ -275,9 +273,9 @@ runcmd:
 
 ### <a name="create-the-load-balancer-resource"></a>建立負載平衡器資源
 
-使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create) 建立公用負載平衡器：
+使用 [az network lb create](/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create) 建立公用負載平衡器：
 
-* 具名 **myLoadBalancer** 。
+* 具名 **myLoadBalancer**。
 * 名為 **myFrontEnd** 的前端集區。
 * 名為 **myBackEndPool** 的後端集區。
 * 與虛擬網路 **myVNet** 相關聯。
@@ -300,12 +298,12 @@ runcmd:
 
 已從負載平衡器移除具有失敗探查檢查的虛擬機器。 解決失敗情況之後，系統會將虛擬機器新增回負載平衡器。
 
-使用 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create) 建立健康狀態探查：
+使用 [az network lb probe create](/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create) 建立健康狀態探查：
 
 * 監視虛擬機器的健康情況。
-* 具名 **myHealthProbe** 。
-* 通訊協定 **TCP** 。
-* 監視 **連接埠 80** 。
+* 具名 **myHealthProbe**。
+* 通訊協定 **TCP**。
+* 監視 **連接埠 80**。
 
 ```azurecli-interactive
   az network lb probe create \
@@ -324,14 +322,14 @@ runcmd:
 * 接收流量的後端 IP 集區。
 * 所需的來源和目的地連接埠。 
 
-使用 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) 建立負載平衡器規則：
+使用 [az network lb rule create](/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) 建立負載平衡器規則：
 
 * 已命名為 **myHTTPRule**
-* 接聽前端集區 **myFrontEnd** 中的 **連接埠 80** 。
-* 使用 **連接埠 80** 將負載平衡的網路流量傳送到後端位址集區 **myBackEndPool** 。 
-* 使用健康情況探查 **MyHealthProbe** 。
-* 通訊協定 **TCP** 。
-* 閒置逾時時間為 **15 分鐘** 。
+* 接聽前端集區 **myFrontEnd** 中的 **連接埠 80**。
+* 使用 **連接埠 80** 將負載平衡的網路流量傳送到後端位址集區 **myBackEndPool**。 
+* 使用健康情況探查 **MyHealthProbe**。
+* 通訊協定 **TCP**。
+* 閒置逾時時間為 **15 分鐘**。
 * 啟用 TCP 重設。
 
 ```azurecli-interactive
@@ -350,11 +348,11 @@ runcmd:
     --enable-tcp-reset true
 ```
 >[!NOTE]
->後端集區中的虛擬機器將不會有使用此設定的輸出網際網路連線。 </br> 如需有關提供輸出連線的詳細資訊，請參閱： </br> **[Azure 中的輸出連線](load-balancer-outbound-connections.md)**</br> 提供連線的選項： </br> **[僅輸出負載平衡器組態](egress-only.md)** </br> **[什麼是虛擬網路 NAT？](https://docs.microsoft.com/azure/virtual-network/nat-overview)**
+>後端集區中的虛擬機器將不會有使用此設定的輸出網際網路連線。 </br> 如需有關提供輸出連線的詳細資訊，請參閱： </br> **[Azure 中的輸出連線](load-balancer-outbound-connections.md)**</br> 提供連線的選項： </br> **[僅輸出負載平衡器組態](egress-only.md)** </br> **[什麼是虛擬網路 NAT？](../virtual-network/nat-overview.md)**
 
 ### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>將虛擬機器新增至負載平衡器後端集區
 
-使用 [az network nic ip-config address-pool add](https://docs.microsoft.com/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add) 將虛擬機器新增至後端集區：
+使用 [az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add) 將虛擬機器新增至後端集區：
 
 
 #### <a name="vm1"></a>VM1
@@ -398,10 +396,10 @@ runcmd:
 
 ### <a name="create-a-virtual-network"></a>建立虛擬網路
 
-使用 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt) 建立虛擬網路：
+使用 [az network vnet create](/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt) 建立虛擬網路：
 
-* 具名 **myVNet** 。
-* 位址前置詞 **10.1.0.0/16** 。
+* 具名 **myVNet**。
+* 位址前置詞 **10.1.0.0/16**。
 * 名為 **MyBackendSubnet** 的子網路。
 * **10.1.0.0/24** 的子網路前置詞。
 * 位於 **CreateIntLBQS-rg** 資源群組中。
@@ -420,9 +418,9 @@ runcmd:
 
 如果是標準負載平衡器，後端位址中的 VM 都需要有屬於網路安全性群組的網路介面。 
 
-使用 [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) 建立網路安全性群組：
+使用 [az network nsg create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) 建立網路安全性群組：
 
-* 具名 **myNSG** 。
+* 具名 **myNSG**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
 
 ```azurecli-interactive
@@ -433,18 +431,18 @@ runcmd:
 
 ### <a name="create-a-network-security-group-rule"></a>建立網路安全性群組規則
 
-使用 [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) 建立網路安全性群組規則：
+使用 [az network nsg rule create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) 建立網路安全性群組規則：
 
-* 具名 **myNSGRuleHTTP** 。
+* 具名 **myNSGRuleHTTP**。
 * 在上一個步驟中建立的網路安全性群組 **myNSG** 中。
 * 在資源群組 **CreateIntLBQS-rg** 中。
 * 通訊協定 **(*)** 。
-* 方向 **輸入** 。
+* 方向 **輸入**。
 * 來源 **(*)** 。
 * 目的地 **(*)** 。
-* 目的地連接埠 **連接埠 80** 。
-* 存取 **允許** 。
-* 優先順序 **200** 。
+* 目的地連接埠 **連接埠 80**。
+* 存取 **允許**。
+* 優先順序 **200**。
 
 ```azurecli-interactive
   az network nsg rule create \
@@ -463,11 +461,11 @@ runcmd:
 
 ### <a name="create-network-interfaces-for-the-virtual-machines"></a>建立虛擬機器的網路介面
 
-使用 [az network nic create](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) 建立兩個網路介面：
+使用 [az network nic create](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) 建立兩個網路介面：
 
 #### <a name="vm1"></a>VM1
 
-* 具名 **myNicVM1** 。
+* 具名 **myNicVM1**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
 * 在虛擬網路 **MyVNet** 中。
 * 在子網路 **MyBackendSubnet** 中。
@@ -484,7 +482,7 @@ runcmd:
 ```
 #### <a name="vm2"></a>VM2
 
-* 具名 **myNicVM2** 。
+* 具名 **myNicVM2**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
 * 在虛擬網路 **MyVNet** 中。
 * 在子網路 **MyBackendSubnet** 中。
@@ -558,11 +556,11 @@ runcmd:
 
 ### <a name="create-availability-set-for-virtual-machines"></a>建立虛擬機器的可用性設定組
 
-使用 [az vm availability-set create](https://docs.microsoft.com/cli/azure/vm/availability-set?view=azure-cli-latest#az-vm-availability-set-create) 建立可用性設定組：
+使用 [az vm availability-set create](/cli/azure/vm/availability-set?view=azure-cli-latest#az-vm-availability-set-create) 建立可用性設定組：
 
-* 具名 **myAvSet** 。
+* 具名 **myAvSet**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
-* 位置 **eastus** 。
+* 位置 **eastus**。
 
 ```azurecli-interactive
   az vm availability-set create \
@@ -574,14 +572,14 @@ runcmd:
 
 ### <a name="create-virtual-machines"></a>建立虛擬機器
 
-使用 [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) 建立虛擬機器：
+使用 [az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create) 建立虛擬機器：
 
 #### <a name="vm1"></a>VM1
-* 具名 **myVM1** 。
+* 具名 **myVM1**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
-* 連結到網路介面 **myNicVM1** 。
-* 虛擬機器映像 **UbuntuLTS** 。
-* 您在上述步驟中建立的組態檔 **cloud-init.txt** 。
+* 連結到網路介面 **myNicVM1**。
+* 虛擬機器映像 **UbuntuLTS**。
+* 您在上述步驟中建立的組態檔 **cloud-init.txt**。
 * 在可用性設定組 **myAvSet** 中。
 
 ```azurecli-interactive
@@ -598,11 +596,11 @@ runcmd:
     
 ```
 #### <a name="vm2"></a>VM2
-* 具名 **myVM2** 。
+* 具名 **myVM2**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
-* 連結到網路介面 **myNicVM2** 。
-* 虛擬機器映像 **UbuntuLTS** 。
-* 您在上述步驟中建立的組態檔 **cloud-init.txt** 。
+* 連結到網路介面 **myNicVM2**。
+* 虛擬機器映像 **UbuntuLTS**。
+* 您在上述步驟中建立的組態檔 **cloud-init.txt**。
 * 在 **區域 2** 中。
 
 ```azurecli-interactive
@@ -631,9 +629,9 @@ runcmd:
 
 ### <a name="create-the-load-balancer-resource"></a>建立負載平衡器資源
 
-使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create) 建立公用負載平衡器：
+使用 [az network lb create](/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create) 建立公用負載平衡器：
 
-* 具名 **myLoadBalancer** 。
+* 具名 **myLoadBalancer**。
 * 名為 **myFrontEnd** 的前端集區。
 * 名為 **myBackEndPool** 的後端集區。
 * 與虛擬網路 **myVNet** 相關聯。
@@ -656,12 +654,12 @@ runcmd:
 
 已從負載平衡器移除具有失敗探查檢查的虛擬機器。 解決失敗情況之後，系統會將虛擬機器新增回負載平衡器。
 
-使用 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create) 建立健康狀態探查：
+使用 [az network lb probe create](/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create) 建立健康狀態探查：
 
 * 監視虛擬機器的健康情況。
-* 具名 **myHealthProbe** 。
-* 通訊協定 **TCP** 。
-* 監視 **連接埠 80** 。
+* 具名 **myHealthProbe**。
+* 通訊協定 **TCP**。
+* 監視 **連接埠 80**。
 
 ```azurecli-interactive
   az network lb probe create \
@@ -680,14 +678,14 @@ runcmd:
 * 接收流量的後端 IP 集區。
 * 所需的來源和目的地連接埠。 
 
-使用 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) 建立負載平衡器規則：
+使用 [az network lb rule create](/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) 建立負載平衡器規則：
 
 * 已命名為 **myHTTPRule**
-* 接聽前端集區 **myFrontEnd** 中的 **連接埠 80** 。
-* 使用 **連接埠 80** 將負載平衡的網路流量傳送到後端位址集區 **myBackEndPool** 。 
-* 使用健康情況探查 **MyHealthProbe** 。
-* 通訊協定 **TCP** 。
-* 閒置逾時時間為 **15 分鐘** 。
+* 接聽前端集區 **myFrontEnd** 中的 **連接埠 80**。
+* 使用 **連接埠 80** 將負載平衡的網路流量傳送到後端位址集區 **myBackEndPool**。 
+* 使用健康情況探查 **MyHealthProbe**。
+* 通訊協定 **TCP**。
+* 閒置逾時時間為 **15 分鐘**。
 
 ```azurecli-interactive
   az network lb rule create \
@@ -704,7 +702,7 @@ runcmd:
 ```
 ### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>將虛擬機器新增至負載平衡器後端集區
 
-使用 [az network nic ip-config address-pool add](https://docs.microsoft.com/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add) 將虛擬機器新增至後端集區：
+使用 [az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add) 將虛擬機器新增至後端集區：
 
 
 #### <a name="vm1"></a>VM1
@@ -743,7 +741,7 @@ runcmd:
 
 ### <a name="create-azure-bastion-public-ip"></a>建立 Azure Bastion 公用 IP
 
-使用 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) 建立堡壘主機的公用 IP 位址：
+使用 [az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) 建立堡壘主機的公用 IP 位址：
 
 * 建立名為 **myBastionIP** 的標準區域備援公用 IP 位址。
 * 位於 **CreateIntLBQS-rg** 中。
@@ -757,10 +755,10 @@ runcmd:
 
 ### <a name="create-azure-bastion-subnet"></a>建立 Azure Bastion 子網路
 
-使用 [az network vnet subnet create](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-create) 建立子網路：
+使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-create) 建立子網路：
 
-* 命名為 **AzureBastionSubnet** 。
-* 位址前置詞 **10.1.1.0/24** 。
+* 命名為 **AzureBastionSubnet**。
+* 位址前置詞 **10.1.1.0/24**。
 * 在虛擬網路 **MyVNet** 中。
 * 在資源群組 **CreateIntLBQS-rg** 中。
 
@@ -773,7 +771,7 @@ runcmd:
 ```
 
 ### <a name="create-azure-bastion-host"></a>建立 Azure Bastion 主機
-使用 [az network bastion create](https://docs.microsoft.com/cli/azure/network/bastion?view=azure-cli-latest#az-network-bastion-create) 建立堡壘主機：
+使用 [az network bastion create](/cli/azure/network/bastion?view=azure-cli-latest#az-network-bastion-create) 建立堡壘主機：
 
 * 命名為 **myBastionHost**
 * 位於 **CreateIntLBQS-rg** 中
@@ -793,9 +791,9 @@ runcmd:
 
 ### <a name="create-test-virtual-machine"></a>建立測試虛擬機器
 
-使用 [az network nic create](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) 建立網路介面：
+使用 [az network nic create](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) 建立網路介面：
 
-* 命名為 **myNicTestVM** 。
+* 命名為 **myNicTestVM**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
 * 在虛擬網路 **MyVNet** 中。
 * 在子網路 **MyBackendSubnet** 中。
@@ -809,12 +807,12 @@ runcmd:
     --subnet myBackEndSubnet \
     --network-security-group myNSG
 ```
-使用 [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) 建立虛擬機器：
+使用 [az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create) 建立虛擬機器：
 
-* 命名為 **myTestVM** 。
+* 命名為 **myTestVM**。
 * 在資源群組 **CreateIntLBQS-rg** 中。
-* 已連結至網路介面 **myNicTestVM** 。
-* 虛擬機器映像 **Win2019Datacenter** 。
+* 已連結至網路介面 **myNicTestVM**。
+* 虛擬機器映像 **Win2019Datacenter**。
 * 選擇 **\<adminpass>** 和 **\<adminuser>** 的值。
   
 
@@ -844,7 +842,7 @@ runcmd:
 
 6. 輸入在 VM 建立期間輸入的使用者名稱和密碼。
 
-7. 在 **myTestVM** 上開啟 **Internet Explorer** 。
+7. 在 **myTestVM** 上開啟 **Internet Explorer**。
 
 8. 在瀏覽器的網址列中，輸入上一個步驟中的 IP 位址。 IIS Web 伺服器的預設頁面會顯示在瀏覽器上。
 
@@ -854,7 +852,7 @@ runcmd:
 
 ## <a name="clean-up-resources"></a>清除資源
 
-若不再需要，使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令來移除資源群組、負載平衡器和所有相關資源。
+若不再需要，使用 [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令來移除資源群組、負載平衡器和所有相關資源。
 
 ```azurecli-interactive
   az group delete \

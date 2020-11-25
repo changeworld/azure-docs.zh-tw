@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 4751f3cf213098873b0c53b15df82f57d155787a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 766837cacb4ef2acf874c2872b347b6d35633faa
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313296"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700992"
 ---
 # <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的原始檔控制整合
 
@@ -85,7 +85,7 @@ ms.locfileid: "93313296"
 
    ![Verify](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "驗證變更")
 
-4. ( **選用** ) 使用 [結構描述比較]，並使用 SSDT 更新目標資料倉儲的變更，以確保 Azure Repo 存放庫和本機存放庫中的物件定義會反映您的資料倉儲。
+4. (**選用**) 使用 [結構描述比較]，並使用 SSDT 更新目標資料倉儲的變更，以確保 Azure Repo 存放庫和本機存放庫中的物件定義會反映您的資料倉儲。
 
 ## <a name="next-steps"></a>後續步驟
 

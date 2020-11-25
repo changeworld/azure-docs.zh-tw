@@ -6,15 +6,15 @@ ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 11/11/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 3222c934998febe79c36121ca816f949b78d374e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: dc725839d018c281dc784f5f83b256e62d70884d
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411553"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635410"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise 傳輸
 
@@ -98,9 +98,9 @@ Azure 預付款無法在註冊之間轉移。 Azure 預付款餘額會依約繫�
 
 若要將企業訂用帳戶轉移至採隨用隨付費率的個別訂用帳戶，您必須在 Azure 企業版入口網站中建立新的支援要求。 若要建立支援要求，請選取 [說明及支援] 區域中的 [+ 新增支援要求]。
 
-## <a name="change-account-owner"></a>變更帳戶擁有者
+## <a name="change-azure-subscription-or-account-ownership"></a>變更 Azure 訂用帳戶或帳戶擁有權
 
-Azure EA 入口網站可以將訂用帳戶從一個帳戶擁有者轉移至另一個帳戶擁有者。 如需詳細資訊，請參閱[變更帳戶擁有者](ea-portal-administration.md#change-account-owner)。
+Azure EA 入口網站可以將訂用帳戶從一個帳戶擁有者轉移至另一個帳戶擁有者。 如需詳細資訊，請參閱[變更 Azure 訂用帳戶或帳戶擁有權](ea-portal-administration.md#change-azure-subscription-or-account-ownership)。
 
 ## <a name="subscription-transfer-effects"></a>訂用帳戶轉移效果
 
@@ -108,7 +108,7 @@ Azure EA 入口網站可以將訂用帳戶從一個帳戶擁有者轉移至另�
 
 若要檢視訂用帳戶上具有 RBAC 存取權的使用者：
 
-1. 在 Azure 入口網站中，開啟 **訂用帳戶** 。
+1. 在 Azure 入口網站中，開啟 **訂用帳戶**。
 2. 選取要檢視的訂用帳戶，然後選取 [存取控制 (IAM)]。
 3. 選取 [角色指派]。 [角色指派] 頁面會列出在訂用帳戶上具有 RBAC 存取權的所有使用者。
 

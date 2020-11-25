@@ -3,12 +3,12 @@ title: 什麼是 Azure 事件方格？
 description: 使用 Azure 事件方格，將事件資料從來源傳送至處理常式。 建置事件型應用程式，並與 Azure 服務整合。
 ms.topic: overview
 ms.date: 09/24/2020
-ms.openlocfilehash: 73d218058c5f95d8c2d2324f1a0e1e77b24f1364
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a4f614a22fdfa7d2272c70751f56f19145a10fa6
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326488"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576677"
 ---
 # <a name="what-is-azure-event-grid"></a>什麼是 Azure 事件方格？
 
@@ -78,7 +78,7 @@ Azure Event Grid 中有五個概念可讓您開始進行：
 * **展開傳送** - 讓數個端點訂閱相同的事件，以便將事件的複本傳送到所需的多個位置。
 * **可靠性** - 24 小時的指數輪詢重試，可確保事件能夠傳遞出去。
 * **依事件支付** - 只需就您使用的 Event Grid 數量來付費。
-* **高輸送量** - 在每秒支援數百萬個事件的 Event Grid 上建置大量的工作負載。
+* **高輸送量** - 在事件方格上建立大量的工作負載。
 * **內建事件** - 利用資源定義的內建事件來快速地啟動並執行。
 * **自訂事件** - 使用事件方格來路由傳送、篩選並在應用程式中可靠地傳遞自訂事件。
 

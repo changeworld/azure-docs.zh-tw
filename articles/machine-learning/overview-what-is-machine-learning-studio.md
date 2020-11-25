@@ -1,6 +1,6 @@
 ---
 title: 什麼是 Azure Machine Learning Studio？
-description: Azure Machine Learning Studio 是 Azure Machine Learning 工作區的入口網站。 Studio 結合無程式碼和程式碼優先體驗建立了包容性資料科學平台。
+description: 此 Studio 是 Azure Machine Learning 工作區的入口網站。 Studio 在包容性資料科學平台中結合無程式碼和程式碼優先體驗。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 345c925d3b1350dfc2ea69d65d8d14688c6930b9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 018a0e3a244d1f0e36ce638d646ab05861c10e38
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310162"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565903"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什麼是 Azure Machine Learning Studio？
 
@@ -74,7 +74,7 @@ ms.locfileid: "93310162"
 
 **Azure Machine Learning Studio** 是 Azure Machine Learning 中的 Web 入口網站，包含用於專案撰寫和資產管理的低程式碼和無程式碼選項。 
 
-我們建議新的使用者選擇 **Azure Machine Learning** ，而不是 ML Studio (傳統版)，以取得最新的資料科學工具。
+我們建議新的使用者選擇 **Azure Machine Learning**，而不是 ML Studio (傳統版)，以取得最新的資料科學工具。
 
 ### <a name="feature-comparison"></a>功能比較
 
@@ -103,3 +103,4 @@ ms.locfileid: "93310162"
   + [在計算執行個體上使用 Jupyter Notebook 來定型並部署模型](tutorial-1st-experiment-sdk-setup.md)
   + [使用自動化機器學習來定型和部署模型](tutorial-first-experiment-automated-ml.md)  
   + [使用設計工具來定型和部署模型](tutorial-designer-automobile-price-train-score.md)
+  + [在安全的虛擬網路中使用 Studio](how-to-enable-studio-virtual-network.md)

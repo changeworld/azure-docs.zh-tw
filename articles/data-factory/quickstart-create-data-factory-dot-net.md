@@ -1,6 +1,6 @@
 ---
 title: 使用 .NET SDK 建立 Azure Data Factory
-description: 使用 .NET SDK 建立 Azure 資料處理站及管線，以將資料從 Azure Blob 儲存體中的某個位置複製到另一個位置。
+description: 使用 .NET SDK 建立 Azure Data Factory 及管線，以將資料從 Azure Blob 儲存體中的某個位置複製到另一個位置。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: e8da3dff39f94d6639471a2d1d96691c9cde614d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d564b96807574dd7a275d6959aea085ad16e9e2e
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322847"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565937"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>快速入門：使用 .NET SDK 建立資料處理站和管線
 
@@ -28,7 +28,7 @@ ms.locfileid: "91322847"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-本快速入門說明如何使用 .NET SDK 來建立 Azure 資料處理站。 在此資料處理站中建立的管線會將資料從 Azure Blob 儲存體中的一個資料夾**複製**到其他資料夾。 如需如何使用 Azure Data Factory **轉換**資料的教學課程，請參閱[教學課程︰使用 Spark 轉換資料](tutorial-transform-data-spark-portal.md)。
+本快速入門說明如何使用 .NET SDK 來建立 Azure Data Factory。 在此資料處理站中建立的管線會將資料從 Azure Blob 儲存體中的一個資料夾 **複製** 到其他資料夾。 如需如何使用 Azure Data Factory **轉換** 資料的教學課程，請參閱 [教學課程︰使用 Spark 轉換資料](tutorial-transform-data-spark-portal.md)。
 
 > [!NOTE]
 > 本文不提供 Data Factory 服務的詳細簡介。 如需 Azure Data Factory 服務簡介，請參閱 [Azure Data Factory 簡介](introduction.md)。
@@ -45,12 +45,12 @@ ms.locfileid: "91322847"
 
 ## <a name="create-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中建立應用程式
 
-從*操作說明：使用入口網站來建立可存取資源的 Azure AD 應用程式和服務主體*中的小節，遵循其中的指示以執行下列工作：
+從 *操作說明：使用入口網站來建立可存取資源的 Azure AD 應用程式和服務主體* 中的小節，遵循其中的指示以執行下列工作：
 
 1. 在[建立 Azure Active Directory 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)中，建立代表您要在本教學課程中建立之 .NET 應用程式的應用程式。 針對登入 URL，您可以提供虛擬 URL，如文章中所示 (`https://contoso.org/exampleapp`)。
-2. 在[取得值以便登入](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)中，取得**應用程式識別碼**和**租用戶識別碼**，並記下這些值以稍後在本教學課程中使用。 
-3. 在[憑證和祕密](../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)中，取得**驗證金鑰**，並記下此值以稍後在本教學課程中使用。
-4. 在[指派角色給應用程式](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)中，將應用程式指派給訂用帳戶層級的**參與者**角色，讓應用程式可以在訂用帳戶中建立資料處理站。
+2. 在 [取得值以便登入](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)中，取得 **應用程式識別碼** 和 **租用戶識別碼**，並記下這些值以稍後在本教學課程中使用。 
+3. 在 [憑證和祕密](../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)中，取得 **驗證金鑰**，並記下此值以稍後在本教學課程中使用。
+4. 在 [指派角色給應用程式](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)中，將應用程式指派給訂用帳戶層級的 **參與者** 角色，讓應用程式可以在訂用帳戶中建立資料處理站。
 
 ## <a name="create-a-visual-studio-project"></a>建立 Visual Studio 專案
 
@@ -130,7 +130,7 @@ ms.locfileid: "91322847"
 
 ## <a name="create-a-data-factory"></a>建立 Data Factory
 
-將下列程式碼新增至 **Main** 方法，以建立**資料處理站**。 
+將下列程式碼新增至 **Main** 方法，以建立 **資料處理站**。 
 
 ```csharp
 // Create a data factory
@@ -206,7 +206,7 @@ Console.WriteLine(
 
 ## <a name="create-a-pipeline"></a>建立管線
 
-將下列程式碼新增至 **Main** 方法，以建立**具有複製活動的管線**。
+將下列程式碼新增至 **Main** 方法，以建立 **具有複製活動的管線**。
 
 在此範例中，此管線包含一個活動，並使用兩個參數：輸入 Blob 路徑和輸出 Blob 路徑。 這些參數的值是在觸發/執行管線時設定。 複製活動指的是在前一個步驟中建立作為輸入和輸出的同一 Blob 資料集。 將該資料集用作輸入資料集時，即會指定輸入路徑。 並且，將該資料集用作輸出資料集時，即會指定輸出路徑。 
 
@@ -258,7 +258,7 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(pipeline, client.Serialization
 
 ## <a name="create-a-pipeline-run"></a>建立管線執行
 
-將下列程式碼新增至 **Main** 方法，以**觸發管線執行**。
+將下列程式碼新增至 **Main** 方法，以 **觸發管線執行**。
 
 此程式碼也會以來源和接收 Blob 路徑的實際值，設定在管線中指定的 **inputPath** 和 **outputPath** 參數的值。
 
@@ -432,7 +432,7 @@ Press any key to exit...
 
 管道會自動在 **adftutorial** Blob 容器中建立輸出資料夾。 然後，它會將 **emp.txt** 檔案從輸入資料夾複製到輸出資料夾。 
 
-1. 在 Azure 入口網站中，於您在上述[為 Blob 容器新增輸入資料夾和檔案](#add-an-input-folder-and-file-for-the-blob-container)一節中停止時所位於的 **adftutorial** 容器頁面上，選取 [重新整理]  以查看輸出資料夾。 
+1. 在 Azure 入口網站中，於您在上述 [為 Blob 容器新增輸入資料夾和檔案](#add-an-input-folder-and-file-for-the-blob-container)一節中停止時所位於的 **adftutorial** 容器頁面上，選取 [重新整理]  以查看輸出資料夾。 
 2. 在資料夾清單中，選取 [輸出]  。
 3. 確認 **emp.txt** 已複製到輸出資料夾。 
 

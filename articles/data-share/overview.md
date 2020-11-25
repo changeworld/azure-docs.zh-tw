@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: overview
-ms.date: 07/30/2020
-ms.openlocfilehash: e80ea37409f7b5beb48ba7b8e96aeeda9a5836e5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/30/2020
+ms.openlocfilehash: b9fb5d6537d2c8dffef397c56128dd4891c939b7
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89433427"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578122"
 ---
 # <a name="what-is-azure-data-share"></a>什麼是 Azure Data Share？
 
@@ -45,7 +45,7 @@ Azure Data Share 目前提供以快照集為基礎的共用和就地共用。
 
 ![資料共用流程](media/data-share-flow.png)
 
-資料取用者接受資料共用時，才可以在所選資料儲存區中接收資料。 例如，如果資料提供者使用 Azure Blob 儲存體共用資料，則資料取用者可以在 Azure Data Lake Store 中接收這項資料。 同樣地，如果資料提供者共用 Azure Synapse Analytics (前稱 SQL 資料倉儲) 的資料，資料取用者可以選擇要將資料接收到 Azure Data Lake Store、Azure SQL Database 還是 Azure Synapse Analytics。 在從 SQL 型來源共用的情況下，資料取用者也可以選擇是否要在 parquet 或 csv 中接收資料。 
+資料取用者接受資料共用時，才可以在所選資料儲存區中接收資料。 例如，如果資料提供者使用 Azure Blob 儲存體共用資料，則資料取用者可以在 Azure Data Lake Store 中接收這項資料。 同樣地，如果資料提供者共用 Azure Synapse Analytics 的資料，資料取用者可以選擇要將資料接收到 Azure Data Lake Store、Azure SQL Database 還是 Azure Synapse Analytics。 在從 SQL 型來源共用的情況下，資料取用者也可以選擇是否要在 parquet 或 csv 中接收資料。 
 
 使用就地共用時，資料提供者可直接在資料的所在位置共用資料，而無須加以複製。 透過邀請流程建立共用關聯性之後，將會在資料提供者的來源資料存放區與資料取用者的目標資料存放區之間建立符號連結。 資料取用者可以使用其本身的資料存放區，即時讀取和查詢資料。 對來源資料存放區所做的變更會立即提供給資料取用者。 Azure 資料總管的就地共用目前處於預覽狀態。
 
@@ -73,9 +73,7 @@ Azure Data Share 可讓資料取用者：
 
 * 將與您共用的資料接受到[支援資料存放區](supported-data-stores.md)。
 
-* 觸發某個組織與您共用的完整或累加 Data Share 快照集
-
-* 訂閱資料共用以透過累加快照集接收最新的資料複本
+* 就地存取資料或觸發共用資料的完整或增量快照集
 
 上述所有重要功能均透過 Azure 入口網站或透過 REST API 來支援。 如需如何透過 REST API 來使用 Azure Data Share 的詳細資訊，請參閱我們的參考文件。 
 

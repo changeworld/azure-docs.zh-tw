@@ -8,11 +8,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 878cef39ade0487c03dba83c9e3631fe3c72088f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962378"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008614"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>App Service 環境 v1 簡介
 
@@ -60,7 +60,7 @@ App Service Environment 是由前端計算資源集區，以及一到三個背�
 
 ## <a name="virtual-network-support"></a>虛擬網路支援
 
-App Service Environment 可以在 Azure Resource Manager 虛擬網路或者**** 傳統式部署模型虛擬網路其中之一中**** 建立 ([更多有關虛擬網路的資訊][MoreInfoOnVirtualNetworks])。  因為 App Service Environment 一律存在於虛擬網路中，而且更精確來說是在虛擬網路的子網路內，所以您可以運用虛擬網路的安全性功能來控制傳入和傳出網路通訊。  
+App Service Environment 可以在 Azure Resource Manager 虛擬網路或者傳統式部署模型虛擬網路其中之一中建立 ([更多有關虛擬網路的資訊][MoreInfoOnVirtualNetworks])。  因為 App Service Environment 一律存在於虛擬網路中，而且更精確來說是在虛擬網路的子網路內，所以您可以運用虛擬網路的安全性功能來控制傳入和傳出網路通訊。  
 
 App Service Environment 可以是具有公用 IP 位址的網際網路對向，或只具有 Azure 內部負載平衡器 (ILB) 位址的內部對向。
 

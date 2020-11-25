@@ -7,11 +7,11 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/06/2020
 ms.openlocfilehash: 4070f373175f3497156ced011a57e2ed7bd6e770
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364253"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009767"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>總覽：使用 Azure Resource Manager 範本將 Azure Logic Apps 的部署自動化
 
@@ -63,7 +63,7 @@ ms.locfileid: "94364253"
 
 針對邏輯應用程式範本，您主要會使用這些範本物件：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |-----------|-------------|
 | `parameters` | 宣告 [範本參數](../azure-resource-manager/templates/template-syntax.md#parameters) ，以在 Azure 中建立和自訂用於部署的資源時，接受要使用的值。 例如，這些參數會接受邏輯應用程式的名稱和位置、連線，以及部署所需的其他資源的值。 您可以將這些參數值儲存在 [參數](#template-parameter-files)檔案中，如本主題稍後所述。 如需一般詳細資訊，請參閱 [參數-Resource Manager 範本結構和語法](../azure-resource-manager/templates/template-syntax.md#parameters)。 |
 | `resources` | 定義要建立或更新和部署至 Azure 資源群組的 [資源](../azure-resource-manager/templates/template-syntax.md#resources) ，例如您的邏輯應用程式、連線、Azure 儲存體帳戶等等。 如需一般詳細資訊，請參閱 [資源-Resource Manager 範本結構和語法](../azure-resource-manager/templates/template-syntax.md#resources)。 |
@@ -187,8 +187,8 @@ ms.locfileid: "94364253"
 
 若要提供範本參數的值，請將這些值儲存在 [參數](../azure-resource-manager/templates/parameter-files.md)檔案中。 如此一來，您就可以根據您的部署需求使用不同的參數檔案。 以下是要使用的檔案名格式：
 
-* 邏輯應用程式範本檔案名： **< *邏輯應用程式名稱* # C0.js于**
-* 參數檔案名： **< *邏輯-應用程式名稱* # C0.parameters.js于**
+* 邏輯應用程式範本檔案名： **< *邏輯應用程式名稱*# C0.js于**
+* 參數檔案名： **< *邏輯-應用程式名稱*# C0.parameters.js于**
 
 以下是參數檔案內的結構，其中包含 [用來傳遞安全參數值與 Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)的金鑰保存庫參考：
 
@@ -686,7 +686,7 @@ ms.locfileid: "94364253"
 
 * 在您的工作流程定義內，物件會宣告 `parameters` `$connections` 要在邏輯應用程式執行時間使用之連接值的參數。 此外，建立連接的觸發程式或動作會使用傳遞此參數的對應值 `$connections` 。
 
-* 在您的工作流程定義 *外部* ，但仍在邏輯應用程式的資源定義 *內* ，另一個物件會藉 `parameters` `$connections` 由參考對應的範本參數，設定要在執行時間針對參數使用的值。 這些值會使用範本運算式來參考資源，以安全地將連接的中繼資料儲存在您的邏輯應用程式中。
+* 在您的工作流程定義 *外部*，但仍在邏輯應用程式的資源定義 *內*，另一個物件會藉 `parameters` `$connections` 由參考對應的範本參數，設定要在執行時間針對參數使用的值。 這些值會使用範本運算式來參考資源，以安全地將連接的中繼資料儲存在您的邏輯應用程式中。
 
   例如，中繼資料可以包含連接字串和存取權杖，您可以將其儲存在 [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)中。 若要將這些值傳遞至您的範本參數，您可以在部署時範本所使用的 [參數](#template-parameter-files) 檔案中參考該金鑰保存庫。 如需參考參數差異的詳細資訊，請參閱本主題稍後的 [參數參考](#parameter-references) 。
 
@@ -972,7 +972,7 @@ ms.locfileid: "94364253"
 }
 ```
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |-----------|-------------|
 | `token:clientId` | 與您的服務主體相關聯的應用程式或用戶端識別碼 |
 | `token:clientSecret` | 與您的服務主體相關聯的索引鍵值 |
@@ -1047,11 +1047,11 @@ ms.locfileid: "94364253"
 
 ## <a name="references-to-parameters"></a>參數的參考
 
-若要參考範本參數，您可以使用範本運算式搭配 [範本](../azure-resource-manager/templates/template-functions.md)函式，這些函式會在部署時進行評估。 範本運算式使用方括弧 ( **[]** ) ：
+若要參考範本參數，您可以使用範本運算式搭配 [範本](../azure-resource-manager/templates/template-functions.md)函式，這些函式會在部署時進行評估。 範本運算式使用方括弧 (**[]**) ：
 
 `"<attribute-name>": "[parameters('<template-parameter-name>')]"`
 
-若要參考工作流程定義參數，請使用在執行時間評估的 [工作流程定義語言運算式和](../logic-apps/workflow-definition-language-functions-reference.md)函式。 您可能會注意到某些範本函式和工作流程定義函式具有相同的名稱。 工作流程定義運算式的開頭是 "at" 符號 ( **@** ) ：
+若要參考工作流程定義參數，請使用在執行時間評估的 [工作流程定義語言運算式和](../logic-apps/workflow-definition-language-functions-reference.md)函式。 您可能會注意到某些範本函式和工作流程定義函式具有相同的名稱。 工作流程定義運算式的開頭是 "at" 符號 (**@**) ：
 
 `"<attribute-name>": "@parameters('<workflow-definition-parameter-name>')"`
 

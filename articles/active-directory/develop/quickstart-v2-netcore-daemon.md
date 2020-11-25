@@ -13,16 +13,18 @@ ms.date: 10/05/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: b6b02348f9d77348976f6b814c982c5250dab7aa
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d50a953c9593c9ae78889be336697686e59d965f
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896509"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592731"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>快速入門：使用主控台應用程式的身分識別來取得權杖並呼叫 Microsoft Graph API
 
-在本快速入門中，您將了解如何撰寫 .NET Core 應用程式，以使用應用程式本身的身分識別取得存取權杖，然後呼叫 Microsoft Graph API 以顯示目錄中[使用者的清單](/graph/api/user-list)。 此案例適用於無周邊的自動作業或 Windows 服務需要使用應用程式身分識別 (而非使用者的身分識別) 才能執行的情況。 (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
+在本快速入門中，您會下載並執行程式碼範例，該範例會示範 .NET Core 主控台應用程式如何取得存取權杖來呼叫 Microsoft Graph API，以及顯示目錄中的[使用者清單](/graph/api/user-list)。 此程式碼範例也會示範作業或 Windows 服務如何使用應用程式識別來執行，而不是以使用者的身分識別執行。 
+
+如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -49,7 +51,7 @@ ms.locfileid: "92896509"
 >
 > 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
 > 1. 如果您的帳戶可讓您存取多個租用戶，請在右上角選取帳戶，然後將您的入口網站工作階段設定為想要的 Azure AD 租用戶。
-> 1. 藉由在 Azure 入口網站搜尋列中搜尋 **應用程式註冊** ，瀏覽至開發人員 [應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面的 Microsoft 身分識別平台。
+> 1. 藉由在 Azure 入口網站搜尋列中搜尋 **應用程式註冊**，瀏覽至開發人員 [應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面的 Microsoft 身分識別平台。
 > 1. 選取 [新增註冊]。
 > 1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊。
 > 1. 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱 (例如，`Daemon-console`)，然後選取 [註冊] 以建立應用程式。
@@ -90,9 +92,9 @@ ms.locfileid: "92896509"
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-visual-studio-project"></a>步驟 3：設定您的 Visual Studio 專案
 >
-> 1. 將 Zip 檔案解壓縮至磁碟根目錄附近的本機資料夾，例如 **C:\Azure-Samples** 。
+> 1. 將 Zip 檔案解壓縮至磁碟根目錄附近的本機資料夾，例如 **C:\Azure-Samples**。
 > 1. 在 Visual Studio 中開啟解決方案 - **1-Call-MSGraph\daemon-console.sln** (選擇性)。
-> 1. 編輯 **appsettings.json** ，並將欄位 `ClientId`、`Tenant` 和 `ClientSecret` 的值取代為下列值：
+> 1. 編輯 **appsettings.json**，並將欄位 `ClientId`、`Tenant` 和 `ClientSecret` 的值取代為下列值：
 >
 >    ```json
 >    "Tenant": "Enter_the_Tenant_Id_Here",
@@ -100,7 +102,7 @@ ms.locfileid: "92896509"
 >    "ClientSecret": "Enter_the_Client_Secret_Here"
 >    ```
 >   其中：
->   - `Enter_the_Application_Id_Here` - 是您註冊的應用程式所具備的 **應用程式 (用戶端) 識別碼** 。
+>   - `Enter_the_Application_Id_Here` - 是您註冊的應用程式所具備的 **應用程式 (用戶端) 識別碼**。
 >   - `Enter_the_Tenant_Id_Here` - 請將此值取代為 [租用戶識別碼] 或 [租用戶名稱] (例如 contoso.microsoft.com)
 >   - `Enter_the_Client_Secret_Here` - 請將此值取代為步驟 1 所建立的用戶端密碼。
 
@@ -137,7 +139,7 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 > [!div renderon="docs"]
 >> 其中：
 >> * `Enter_the_Tenant_Id_Here` - 請將此值取代為 [租用戶識別碼] 或 [租用戶名稱] (例如 contoso.microsoft.com)
->> * `Enter_the_Application_Id_Here` - 是您註冊的應用程式所具備的 **應用程式 (用戶端) 識別碼** 。
+>> * `Enter_the_Application_Id_Here` - 是您註冊的應用程式所具備的 **應用程式 (用戶端) 識別碼**。
 
 > [!NOTE]
 > 使用上述 URL 對應用程式授與同意之後，您可能會看到錯誤「AADSTS50011：未針對應用程式註冊任何回覆地址」。 之所以發生此錯誤，是因為此應用程式和 URL 沒有重新導向 URI - 請忽略此錯誤。
@@ -199,7 +201,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 > | 其中： | 描述 |
 > |---------|---------|
 > | `config.ClientSecret` | 在 Azure 入口網站中為應用程式建立的用戶端密碼。 |
-> | `config.ClientId` | 是註冊於 Azure 入口網站中的應用程式所具備的 **應用程式 (用戶端) 識別碼** 。 您可以在 Azure 入口網站的應用程式 [概觀] 頁面中找到此值。 |
+> | `config.ClientId` | 是註冊於 Azure 入口網站中的應用程式所具備的 **應用程式 (用戶端) 識別碼**。 您可以在 Azure 入口網站的應用程式 [概觀] 頁面中找到此值。 |
 > | `config.Authority`    | (選擇性) 供使用者用於驗證的 STS 端點。 若為公用雲端，通常是 `https://login.microsoftonline.com/{tenant}`，其中 {tenant} 是租用戶的名稱或租用戶識別碼。|
 
 如需詳細資訊，請參閱[下列項目的參考文件：`ConfidentialClientApplication`](/dotnet/api/microsoft.identity.client.iconfidentialclientapplication)

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 34baa054104a6cf2c78864cc2827b16c1eedb084
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5cde4b539262c9e20bbcf2e7dd8c8e9de38035c3
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613300"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594244"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>快速入門：將使用 OpenID Connect 的登入新增至 Node.js Web 應用程式
 
-在本快速入門中，您將了解如何在使用 Node.js 與 Express 所建置的 Web 應用程式中設定 OpenID Connect 驗證。 此範例已設計為可在任何平台上執行。
+在本快速入門中，您會下載並執行程式碼範例，該範例會示範如何在使用 Node.js 與 Express 所建置的 Web 應用程式中設定 OpenID Connect 驗證。 此範例已設計為可在任何平台上執行。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -31,7 +31,7 @@ ms.locfileid: "91613300"
 ## <a name="register-your-application"></a>註冊您的應用程式
 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com/)。
 1. 如果您的帳戶出現在多個 Azure AD 租用戶中：
-    - 從頁面右上角的功能表中選取您的設定檔，然後**切換目錄**。
+    - 從頁面右上角的功能表中選取您的設定檔，然後 **切換目錄**。
     - 將工作階段變更為要在其中建立應用程式的 Azure AD 租用戶。
 
 1. 瀏覽至 [[Azure Active Directory] > [應用程式註冊]](https://go.microsoft.com/fwlink/?linkid=2083908) 來註冊您的應用程式。

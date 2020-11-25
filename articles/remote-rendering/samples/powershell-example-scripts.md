@@ -7,11 +7,11 @@ ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: cb8cc98a020cb382a6941c1e410eab4543594629
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279008"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009750"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell 指令碼範例
 
@@ -26,7 +26,7 @@ Azure 遠端轉譯提供下列兩個 REST API：
 > 還有一個[稱為 ARRT 的 UI 型工具](azure-remote-rendering-asset-tool.md)可與服務互動，這是使用指令碼的便利替代方案。 ![ARRT](./media/azure-remote-rendering-asset-tool.png "ARRT 螢幕擷取畫面")
 
 > [!CAUTION]
-> 太過頻繁呼叫 REST API 函式，最後會導致伺服器節流並傳回失敗。 在此情況下，HTTP 失敗代碼識別碼為 429 (「要求過多」)。 根據經驗法則， **後續的呼叫之間應該會有 5-10 秒** 的延遲。
+> 太過頻繁呼叫 REST API 函式，最後會導致伺服器節流並傳回失敗。 在此情況下，HTTP 失敗代碼識別碼為 429 (「要求過多」)。 根據經驗法則，**後續的呼叫之間應該會有 5-10 秒** 的延遲。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -93,14 +93,14 @@ Azure 遠端轉譯提供下列兩個 REST API：
 
 ### <a name="renderingsessionsettings"></a>renderingSessionSettings
 
-如果您想要執行 **RenderingSession.ps1** ，就必須填妥此結構：
+如果您想要執行 **RenderingSession.ps1**，就必須填妥此結構：
 
 - **vmSize：** 選取虛擬機器的大小。 選取[標準](../reference/vm-sizes.md)或[進階](../reference/vm-sizes.md)。 當您不再需要轉譯工作階段時，請將其關閉。
 - **maxLeaseTime：** 您要租用 VM 的持續時間。 當租用到期時，工作階段就會關閉。 稍後可以延長的租用時間 (請參閱下文)。
 
 ### <a name="assetconversionsettings"></a>assetConversionSettings
 
-如果您想要執行 **Conversion.ps1** ，就必須填妥此結構。
+如果您想要執行 **Conversion.ps1**，就必須填妥此結構。
 
 如需詳細資訊，請參閱[準備 Azure 儲存體帳戶](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts)。
 
@@ -119,7 +119,7 @@ Azure 遠端轉譯提供下列兩個 REST API：
 .\RenderingSession.ps1
 ```
 
-此指令碼將會呼叫[工作階段管理 REST API](../how-tos/session-rest-api.md)，以使用指定的設定來加速轉譯 VM。 成功時，其會取得 *sessionId* 。 然後，其會輪詢工作階段屬性，直到工作階段準備就緒或發生錯誤為止。
+此指令碼將會呼叫[工作階段管理 REST API](../how-tos/session-rest-api.md)，以使用指定的設定來加速轉譯 VM。 成功時，其會取得 *sessionId*。 然後，其會輪詢工作階段屬性，直到工作階段準備就緒或發生錯誤為止。
 
 若要使用 **替代組態** 檔案：
 
@@ -127,13 +127,13 @@ Azure 遠端轉譯提供下列兩個 REST API：
 .\RenderingSession.ps1 -ConfigFile D:\arr\myotherconfigFile.json
 ```
 
-您可以 **覆寫組態檔中的個別設定檔** ：
+您可以 **覆寫組態檔中的個別設定檔**：
 
 ```PowerShell
 .\RenderingSession.ps1 -Region <region> -VmSize <vmsize> -MaxLeaseTime <hh:mm:ss>
 ```
 
-若只要 **啟動工作階段但不輪詢** ，您可使用：
+若只要 **啟動工作階段但不輪詢**，您可使用：
 
 ```PowerShell
 .\RenderingSession.ps1 -CreateSession
@@ -225,13 +225,13 @@ Azure 遠端轉譯提供下列兩個 REST API：
 .\Conversion.ps1 -ConfigFile D:\arr\myotherconfigFile.json
 ```
 
-若只要 **啟動模型轉換但不輪詢** ，您可使用：
+若只要 **啟動模型轉換但不輪詢**，您可使用：
 
 ```PowerShell
 .\Conversion.ps1 -ConvertAsset
 ```
 
-您可使用下列命令列參數， **覆寫組態檔中的個別設定** ：
+您可使用下列命令列參數，**覆寫組態檔中的個別設定**：
 
 * **Id：** 搭配 GetConversionStatus 使用的 ConversionId
 * **ArrAccountId：** accountSettings 的 arrAccountId
@@ -262,7 +262,7 @@ Azure 遠端轉譯提供下列兩個 REST API：
 .\Conversion.ps1 -Upload
 ```
 
-只啟動已上傳至 Blob 儲存體的模型轉換程序 (不要執行上傳，不要輪詢轉換狀態)。指令碼會傳回 *conversionId* 。
+只啟動已上傳至 Blob 儲存體的模型轉換程序 (不要執行上傳，不要輪詢轉換狀態)。指令碼會傳回 *conversionId*。
 
 ```PowerShell
 .\Conversion.ps1 -ConvertAsset

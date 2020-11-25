@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: dd816ebcf2a40e6a0b7febcc3fe5c1006dac20bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e35c408d2e0ec2954ffdcbbce47f98ac49b16b8
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88209937"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554694"
 ---
 # <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>教學課程：在 Azure 應用程式組態中管理功能旗標
 
-您可以將所有功能旗標儲存在 Azure 應用程式組態中，並從單一位置進行管理。 應用程式組態具有名為**功能管理員**的入口網站 UI，專供功能旗標使用。 應用程式組態也原生支援 .NET Core 功能旗標的資料結構描述。
+您可以將所有功能旗標儲存在 Azure 應用程式組態中，並從單一位置進行管理。 應用程式組態具有名為 **功能管理員** 的入口網站 UI，專供功能旗標使用。 應用程式組態也原生支援 .NET Core 功能旗標的資料結構描述。
 
 在本教學課程中，您會了解如何：
 
@@ -56,6 +56,7 @@ ms.locfileid: "88209937"
     |---|---|
     | Microsoft.Percentage | {"Value":0-100 percent} |
     | Microsoft.TimeWindow | {"Start":UTC time, "End":UTC time} |
+    | Microsoft.Targeting | { "Audience":定義使用者、群組和推出百分比的 JSON Blob。 請在[此設定檔](https://github.com/microsoft/FeatureManagement-Dotnet/blob/master/examples/FeatureFlagDemo/appsettings.json)的 `EnabledFor` 元素底下參閱範例
 
     ![功能旗標篩選條件](./media/azure-app-configuration-feature-flag-filter.png)
 
@@ -63,9 +64,9 @@ ms.locfileid: "88209937"
 
 若要變更功能旗標的狀態值：
 
-1. 選取 [功能管理員]  。
+1. 選取 [功能管理員]。
 
-1. 在您要修改的功能旗標右側選取省略符號 ( **...** )，然後選取 [編輯]  。
+1. 在您要修改的功能旗標右側選取省略符號 (**...**)，然後選取 [編輯]。
 
 1. 為功能旗標設定新狀態。
 

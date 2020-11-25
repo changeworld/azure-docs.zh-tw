@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 0ec70963dd7f464ae4e72c3bf79e06ebfb5238fc
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 5e2f323f705a891f06cee1d25779351d02a91572
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616173"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695260"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>教學課程 - 建置 SCIM 端點並設定使用 Azure AD 的使用者佈建
 
@@ -45,7 +45,7 @@ SCIM 是兩個端點的標準化定義：/Users 端點和 /Groups 端點。 它�
 
 ## <a name="step-1-design-your-user-and-group-schema"></a>步驟 1:設計您的使用者和群組結構描述
 
-每個應用程式分別需要不同的屬性來建立使用者或群組。 藉由識別應用程式所需的物件 (使用者、群組) 和屬性 (名稱、管理員、職稱等) 開始進行整合。 SCIM 標準定義了用來管理使用者和群組的結構描述。 核心使用者結構描述只需要三個屬性： **id** (服務提供者定義的識別碼)、 **externalId** (用戶端定義的識別碼)，以及 **meta** (服務提供者維護的唯讀中繼資料)。 其他所有屬性都是選擇性的。 除了核心使用者結構描述以外，SCIM 標準也會定義企業使用者延伸模組，以及用來擴充使用者結構描述以符合應用程式需求的模型。 例如，如果您的應用程式需要使用者的管理員，您可以使用企業使用者結構描述來收集使用者的管理員，並使用核心結構描述來收集使用者的電子郵件。 若要設計您的結構描述，請遵循下列步驟：
+每個應用程式分別需要不同的屬性來建立使用者或群組。 藉由識別應用程式所需的物件 (使用者、群組) 和屬性 (名稱、管理員、職稱等) 開始進行整合。 SCIM 標準定義了用來管理使用者和群組的結構描述。 核心使用者結構描述只需要三個屬性：**id** (服務提供者定義的識別碼)、**externalId** (用戶端定義的識別碼)，以及 **meta** (服務提供者維護的唯讀中繼資料)。 其他所有屬性都是選擇性的。 除了核心使用者結構描述以外，SCIM 標準也會定義企業使用者延伸模組，以及用來擴充使用者結構描述以符合應用程式需求的模型。 例如，如果您的應用程式需要使用者的管理員，您可以使用企業使用者結構描述來收集使用者的管理員，並使用核心結構描述來收集使用者的電子郵件。 若要設計您的結構描述，請遵循下列步驟：
   1. 列出您的應用程式所需的屬性。 將您的需求細分為驗證所需的屬性 (例如 loginName 和 email)、管理使用者的生命週期所需的屬性 (例如狀態/作用中)，以及特定應用程式運作所需的其他屬性 (例如管理員、標籤)，可能會有幫助。
   2. 檢查這些屬性是否已定義於核心使用者結構描述或企業使用者結構描述中。 若有任何您需要但未涵蓋於核心或企業使用者結構描述中的屬性，您就必須定義使用者結構描述的延伸模組以涵蓋您所需的屬性。 在下列範例中，我們為使用者新增了延伸模組，以允許佈建使用者的「標籤」。 建議您先從核心和企業使用者結構描述開始著手，然後再擴充至其他自訂結構描述。  
   3. 將 SCIM 屬性對應至 Azure AD 中的使用者屬性。 如果您在 SCIM 端點中定義的某個屬性在 Azure AD 使用者結構描述上沒有明確的對應項目，則資料很有可能完全不會儲存在大部分租用戶的使用者物件上。 請考量此屬性在建立使用者時是否可以是選擇性的。 如果此屬性對於應用程式的運作至關重要，請引導租用戶管理員擴充其結構描述或使用延伸模組屬性，如以下所示的「標籤」屬性。
@@ -154,6 +154,7 @@ SCIM RFC 中定義了數個端點。 您可以從 /User 端點開始著手，然
 * 支援根據 [SCIM 通訊協定 3.4.2 小節](https://tools.ietf.org/html/rfc7644#section-3.4.2)查詢使用者或群組的作業。  依預設會按 `id` 擷取使用者，並按 `username` 和 `externalId` 加以查詢，以及按 `displayName` 查詢群組。  
 * 支援根據 SCIM 通訊協定 3.4.2 小節，依識別碼和管理員查詢使用者的作業。  
 * 支援根據 SCIM 通訊協定 3.4.2 小節，依識別碼和成員查詢群組的作業。  
+* 支援在查詢群組資源時篩選 [excludedAttributes=members](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#get-group)，如 SCIM 通訊協定的 3.4.2.5 節所述。
 * 接受以單一持有人權杖對應用程式進行 Azure AD 的驗證和授權。
 * 支援虛刪除使用者 `active=false` 和還原使用者 `active=true` (不論使用者是否為作用中，都應該在要求中傳回使用者物件)。 只在從應用程式中將使用者實刪除時，才不應傳回該使用者。 
 
@@ -556,7 +557,7 @@ SCIM RFC 中定義了數個端點。 您可以從 /User 端點開始著手，然
 
 * 群組應一律以空的成員清單建立。
 * 可依 `displayName` 屬性來查詢群組。
-* 群組 PATCH 要求的更新應會在回應中產生 *HTTP 204 沒有內容* 。 不建議傳回列出所有成員的本文。
+* 群組 PATCH 要求的更新應會在回應中產生 *HTTP 204 沒有內容*。 不建議傳回列出所有成員的本文。
 * 不需要支援傳回群組的所有成員。
 
 #### <a name="create-group"></a>建立群組
@@ -760,7 +761,7 @@ Azure AD 佈建服務目前可在 AzureActiveDirectory 的 IP 範圍下運作，
    > [!Note]
    > 參考程式碼以「原狀」提供，目的是要協助您開始建置 SCIM 端點。 歡迎社群供稿，以協助建置和維護程式碼。
 
-解決方案是由兩個專案所組成： _Microsoft.SCIM_ 和 _Microsoft.SCIM.WebHostSample_ 。
+解決方案是由兩個專案所組成：_Microsoft.SCIM_ 和 _Microsoft.SCIM.WebHostSample_。
 
 _Microsoft.SCIM_ 專案是一個程式庫，會定義符合 SCIM 規格的 Web 服務元件。 此專案會宣告 _Microsoft.SCIM.IProvider_ 介面，要求會轉譯為對提供者方法的呼叫，而這些方法會設計為程式在身分識別存放區上運作。
 
@@ -811,7 +812,7 @@ SCIM 服務必須具有 HTTP 位址，而其伺服器驗證憑證的根憑證授
 
 在權杖中，會用 iss 宣告來識別簽發者，例如 `"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"`。 在此範例中，宣告值的基礎位址 `https://sts.windows.net` 會將 Azure Active Directory 識別為簽發者，而相對位址區段 _cbb1a5ac-f33b-45fa-9bf5-f37db0fed422_ 則是獲得權杖的 Azure Active Directory 租用戶的唯一識別碼。
 
-權杖的適用對象是應用程式在資源庫中的應用程式範本識別碼，在單一租用戶中註冊的每個應用程式，可能會收到與 SCIM 要求相同的 `iss` 宣告。 所有自訂應用程式的應用程式範本識別碼都是 _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_ 。 Azure AD 佈建服務所產生的權杖僅供測試之用。 請勿在生產環境中加以使用。
+權杖的適用對象是應用程式在資源庫中的應用程式範本識別碼，在單一租用戶中註冊的每個應用程式，可能會收到與 SCIM 要求相同的 `iss` 宣告。 所有自訂應用程式的應用程式範本識別碼都是 _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_。 Azure AD 佈建服務所產生的權杖僅供測試之用。 請勿在生產環境中加以使用。
 
 在範例程式碼中，會使用 Microsoft.AspNetCore.Authentication.JwtBearer 套件來驗證要求。 下列程式碼會強制使用 Azure Active Directory 針對指定的租用戶發出的持有人權杖，對任何服務端點的要求進行驗證：
 
@@ -885,7 +886,7 @@ https://docs.microsoft.com/aspnet/core/fundamentals/environments)
         ...
 ```
 
-請將 GET 要求傳送至權杖控制器以取得有效的持有人權杖， _GenerateJSONWebToken_ 方法會負責建立與針對開發而設定的參數相符的權杖：
+請將 GET 要求傳送至權杖控制器以取得有效的持有人權杖，_GenerateJSONWebToken_ 方法會負責建立與針對開發而設定的參數相符的權杖：
 
 ```csharp
         private string GenerateJSONWebToken()
@@ -1148,7 +1149,7 @@ Azure AD 可設定為將已指派的使用者和群組自動佈建至實作 [SCI
 7. 在 [租用戶 URL] 欄位中，輸入應用程式 SCIM 端點的 URL。 範例： `https://api.contoso.com/scim/`
 8. 如果 SCIM 端點需要來自非 Azure AD 簽發者的 OAuth 持有人權杖，那麼便將所需的 OAuth 持有人權杖複製到選擇性 [祕密權杖] 欄位。 如果將此欄位保留空白，則 Azure AD 會在每個要求包含從 Azure AD 簽發的 OAuth 持有人權杖。 應用程式若使用 Azure AD 作為識別提供者，便可以驗證此 Azure AD 簽發的權杖。 
    > [!NOTE]
-   > * *_不_* _建議將此欄位保留空白並使用 Azure AD 所產生的權杖。 此選項主要供測試之用。
+   > **_不_* _建議將此欄位保留空白並使用 Azure AD 所產生的權杖。 此選項主要供測試之用。
 9. 選取 [測試連線]*，讓 Azure Active Directory 嘗試連線至 SCIM 端點。 如果嘗試失敗，將會顯示錯誤資訊。  
 
     > [!NOTE]

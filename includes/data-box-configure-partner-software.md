@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 11/20/2018
 ms.author: alkohli
-ms.openlocfilehash: cbf6d01925e1924bc5f3c7f1e99840d479fef296
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb1390a32abfe9ccf31002fc569936d39e4e5428
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67174645"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553146"
 ---
 設定合作夥伴軟體以連線至用戶端。 若要連線至合作夥伴軟體，您通常需要下列資訊 (可能會有所不同)，這些資訊是您從上一個步驟中本機 Web UI 的 [連線並複製]  頁面所收集的：
 
@@ -23,8 +23,8 @@ ms.locfileid: "67174645"
 
 1. 從頂端命令列，移至 [編輯] > [目標 Azure Stack]  。
 
-    ![資料箱儀表板](media/data-box-configure-partner-software/data-box-connect-via-rest-6.png)
+    ![螢幕擷取畫面顯示從 [編輯] 功能表選取的 [目標 Azure Stack]。](media/data-box-configure-partner-software/data-box-connect-via-rest-6.png)
 
 2. 重新啟動「儲存體總管」以讓變更生效。
 
-    ![資料箱儀表板](media/data-box-configure-partner-software/data-box-connect-via-rest-7.png)
+    ![螢幕擷取畫面顯示 [立即重新啟動] 按鈕。](media/data-box-configure-partner-software/data-box-connect-via-rest-7.png)

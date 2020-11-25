@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: sample
 ms.date: 11/23/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 70a5a29a251590580ac787efe8460caf07598898
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 714dd8d886f567bcdf07c93803662ef4b2c635f3
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87498271"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565155"
 ---
 # <a name="create-a-function-app-in-a-premium-plan---azure-cli"></a>在進階方案中建立函式應用程式 - Azure CLI
 
@@ -18,9 +18,9 @@ ms.locfileid: "87498271"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-如果您選擇在本機安裝和使用 CLI，本文需要 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。 
+ - 本教學課程需要 2.0 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="sample-script"></a>範例指令碼
 

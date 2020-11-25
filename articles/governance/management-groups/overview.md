@@ -1,15 +1,15 @@
 ---
 title: 使用管理群組來組織資源 - Azure Governance
 description: 了解管理群組及權限如何運作，以及如何使用。
-ms.date: 09/22/2020
+ms.date: 11/17/2020
 ms.topic: overview
 ms.custom: contperfq1
-ms.openlocfilehash: be3369369f28930fd1ecad295a4dad4d14e75cd3
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: c48361e7f3d67c6d3eec40d5acb47917f7835db5
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951871"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699588"
 ---
 # <a name="what-are-azure-management-groups"></a>什麼是 Azure 管理群組？
 
@@ -45,7 +45,7 @@ ms.locfileid: "91951871"
 
 ### <a name="important-facts-about-the-root-management-group"></a>關於根管理群組的重要事實
 
-- 依預設，根管理群組的顯示名稱為**租用戶根群組**。 識別碼則是 Azure Active Directory 識別碼。
+- 依預設，根管理群組的顯示名稱為 **租用戶根群組**。 識別碼則是 Azure Active Directory 識別碼。
 - 若要變更顯示名稱，必須在根管理群組中指派帳戶擁有者或參與者角色。 請參閱[變更管理群組的名稱](manage.md#change-the-name-of-a-management-group)，以更新管理群組的名稱。
 - 根管理群組不同於其他管理群組，無法移動或刪除。  
 - 所有的訂用帳戶和管理群組可摺疊到目錄內的一個根管理群組中。
@@ -58,7 +58,7 @@ ms.locfileid: "91951871"
 - 在 SDK 中，根管理群組或「租用戶根目錄」會作為管理群組來運作。
 
 > [!IMPORTANT]
-> 根管理群組上的任何使用者存取權指派或原則指派，都會**套用至目錄中的所有資源**。 因此，所有客戶都應評估是否需要在此範圍內定義項目。 在這個範圍內，只應指派「必要」的使用者存取權和原則  
+> 根管理群組上的任何使用者存取權指派或原則指派，都會 **套用至目錄中的所有資源**。 因此，所有客戶都應評估是否需要在此範圍內定義項目。 在這個範圍內，只應指派「必要」的使用者存取權和原則  
 > 。
 
 ## <a name="initial-setup-of-management-groups"></a>管理群組的初始設定
@@ -150,7 +150,7 @@ Azure 管理群組支援對所有的資源存取和角色定義使用 [Azure 角
 
 例如，讓我們查看一小部分的視覺效果階層。
 
-:::image type="complex" source="./media/subtree.png" alt-text="管理群組階層範例的圖表。" border="false":::
+:::image type="complex" source="./media/subtree.png" alt-text="管理群組階層範例的子集圖表。" border="false":::
    此圖表著重於具有子系 I T 和行銷管理群組的根管理群組。 I T 管理群組具有名為「生產」的單一子管理群組，而行銷管理群組則有兩個免費試用的子訂用帳戶。
 :::image-end:::
 
@@ -171,7 +171,11 @@ Azure 管理群組支援對所有的資源存取和角色定義使用 [Azure 角
  - 您只能在新角色的可指派範圍中定義一個管理群組。 這項限制是為了減少角色定義和角色指派中斷連線的情況。 當具有角色指派的訂用帳戶或管理群組移至沒有角色定義的不同父系時，就會發生這種情況。  
  - 無法在管理群組自訂角色中定義資源提供者資料平面動作。 有這項限制是因為更新資料平面資源提供者時會發生延遲問題。
    此延遲問題正在處理中，而且將從角色定義停用這些動作，以降低任何風險。
- - Azure Resource Manager 不會驗證角色定義的可指派範圍中是否存在管理群組。 如果有錯字或列出了不正確的管理群組識別碼，則仍會建立角色定義。  
+ - Azure Resource Manager 不會驗證角色定義的可指派範圍中是否存在管理群組。 如果有錯字或列出了不正確的管理群組識別碼，則仍會建立角色定義。
+
+> [!IMPORTANT]
+> 將管理群組新增至 `AssignableScopes` 的服務目前為預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。
+> 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="moving-management-groups-and-subscriptions"></a>移動管理群組和訂用帳戶 
 
@@ -180,7 +184,7 @@ Azure 管理群組支援對所有的資源存取和角色定義使用 [Azure 角
 如果您要執行移動動作，您需要： 
 
 - 子訂用帳戶或管理群組上的管理群組寫入和角色指派寫入權限。
-  - 內建角色範例**擁有者**
+  - 內建角色範例 **擁有者**
 - 目標父管理群組上的管理群組寫入權限。
   - 內建角色範例：**擁有者**、**參與者**、**管理群組參與者**
 - 現有父管理群組上的管理群組寫入權限。
@@ -194,7 +198,7 @@ Azure 管理群組支援對所有的資源存取和角色定義使用 [Azure 角
 
 [Azure 活動記錄](../../azure-monitor/platform/platform-logs-overview.md)中支援管理群組。 在與其他 Azure 資源位於相同中央位置的管理群組中，您可以搜尋其中發生的所有事件。 例如，您可以看到對特定的管理群組的所有角色指派或原則指派變更。
 
-:::image type="content" source="./media/al-mg.png" alt-text="管理群組階層範例的圖表。" border="false":::
+:::image type="content" source="./media/al-mg.png" alt-text="與所選管理群組相關的活動記錄和作業螢幕擷取畫面。" border="false":::
 
 在 Azure 入口網站外部查詢管理群組時，管理群組的目標範圍像是 **"/providers/Microsoft.Management/managementGroups/{yourMgID}"** 。
 

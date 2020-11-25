@@ -7,11 +7,11 @@ ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
 ms.openlocfilehash: d5b6ecc12cee983cee0772da8b6f8f26a3b5a8ae
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890270"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008153"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>使用 C\# 建立第一個耐久函式
 
@@ -136,7 +136,7 @@ Azure Functions Core Tools 可讓您在本機開發電腦上執行 Azure Functio
     }
     ```
 
-1. 若要停止偵錯，請在 VS Code 中按 **Shift + F5** 。
+1. 若要停止偵錯，請在 VS Code 中按 **Shift + F5**。
 
 確認函式在本機電腦上正確執行之後，就可以將專案發佈到 Azure。
 
@@ -261,7 +261,7 @@ Azure Functions Core Tools 可讓您在本機開發電腦上執行 Azure Functio
     }
     ```
 
-5. 若要停止偵錯，請按 **Shift + F5** 。
+5. 若要停止偵錯，請按 **Shift + F5**。
 
 確認函式在本機電腦上正確執行之後，就可以將專案發佈到 Azure。
 

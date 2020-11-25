@@ -1,7 +1,7 @@
 ---
 title: 教學課程：使用設計工具預測汽車價格
 titleSuffix: Azure Machine Learning
-description: 了解如何使用拖放介面進行機器學習模型的定型、評分和部署。 本教學課程是使用線性迴歸預測汽車價格相關系列的第一部分 (共兩個部分)。
+description: 使用線性迴歸訓練機器學習模型以預測汽車價格。 本教學課程是兩部分系列的第一部分。
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: d9422cfb9bd8e5539f1a9b43d6fb7b137778f3d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0475e7a7b9bb40e77fe23362ff098350037bdd30
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404913"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555251"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>教學課程：使用設計工具預測汽車價格
 
@@ -60,13 +60,13 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 1. 選取 [易於使用的預建模組]。
 
-1. 在畫布頂端選取預設管線名稱 **Pipeline-Created-on**。 請將其重新命名為*汽車價格預測*。 此名稱不必是唯一的。
+1. 在畫布頂端選取預設管線名稱 **Pipeline-Created-on**。 請將其重新命名為 *汽車價格預測*。 此名稱不必是唯一的。
 
 ## <a name="set-the-default-compute-target"></a>設定預設計算目標
 
 對計算目標執行管線，此目標為連結至工作區的計算資源。 建立計算目標之後，您可以將其重複用於未來的執行。
 
-您可以為整個管線設定**預設計算目標**，這將會告訴每個模組依預設使用相同的計算目標。 不過，您也可以針對每個模組指定計算目標。
+您可以為整個管線設定 **預設計算目標**，這將會告訴每個模組依預設使用相同的計算目標。 不過，您也可以針對每個模組指定計算目標。
 
 1. 在管線名稱旁邊，選取畫布頂端的 **齒輪圖示** ![齒輪圖示螢幕擷取畫面](./media/tutorial-designer-automobile-price-train-score/gear-icon.png)，即可開啟 [設定] 窗格。
 
@@ -88,11 +88,11 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 ## <a name="import-data"></a>匯入資料
 
-設計工具中包含數個範例資料集，可供您在實驗時使用。 在本教學課程中，使用**汽車價格資料 (未經處理)** 。 
+設計工具中包含數個範例資料集，可供您在實驗時使用。 在本教學課程中，使用 **汽車價格資料 (未經處理)** 。 
 
 1. 管線畫布左側是資料集和模組的選擇區。 選取 [範例資料集] 以查看可用的範例資料集。
 
-1. 選取資料集**汽車價格資料 (原始)** ，並將其拖曳到畫布上。
+1. 選取資料集 **汽車價格資料 (原始)** ，並將其拖曳到畫布上。
 
    ![將資料拖曳到畫布](./media/tutorial-designer-automobile-price-train-score/drag-data.gif)
 
@@ -112,13 +112,13 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 ### <a name="remove-a-column"></a>移除資料行
 
-當您定型模型時，您必須對遺漏的資料採取某些動作。 在此資料集中，**自負虧損**資料行遺漏了許多值，因此您會將該資料行完全排除於模型外。
+當您定型模型時，您必須對遺漏的資料採取某些動作。 在此資料集中，**自負虧損** 資料行遺漏了許多值，因此您會將該資料行完全排除於模型外。
 
 1. 在畫布左側的模組選擇區中，展開 [資料轉換] 區段，然後尋找 [選取資料集中的資料行] 模組。
 
-1. 將**選取資料集中的資料行**模組拖曳到畫布上。 將模組放在資料集模組下。
+1. 將 **選取資料集中的資料行** 模組拖曳到畫布上。 將模組放在資料集模組下。
 
-1. 將**汽車價格資料 (未經處理)** 資料集連線至**選取資料集中的資料行**模組。 從資料集的輸出連接埠 (即畫布上位於資料集底部的小圓圈) 拖曳到**選取資料集中的資料行**的輸入連接埠 (即模組頂端的小圓圈)。
+1. 將 **汽車價格資料 (未經處理)** 資料集連線至 **選取資料集中的資料行** 模組。 從資料集的輸出連接埠 (即畫布上位於資料集底部的小圓圈) 拖曳到 **選取資料集中的資料行** 的輸入連接埠 (即模組頂端的小圓圈)。
 
     > [!TIP]
     > 將某個模組的輸出連接埠連線至另一個模組的輸入連接埠時，您會透過管線建立資料流程。
@@ -126,7 +126,7 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
     ![連線模組](./media/tutorial-designer-automobile-price-train-score/connect-modules.gif)
 
-1. 選取**選取資料集中的資料行**模組。
+1. 選取 **選取資料集中的資料行** 模組。
 
 1. 在畫布右側的 [模組詳細資料] 窗格中，選取 [編輯資料行]。
 
@@ -136,13 +136,13 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 1. 從下拉式功能表中，選取 [排除] 和 [資料行名稱]。
     
-1. 在文字方塊中輸入*自負虧損*。
+1. 在文字方塊中輸入 *自負虧損*。
 
 1. 在右下方選取 [儲存] 按鈕，以關閉資料行選取器。
 
     ![排除資料行](./media/tutorial-designer-automobile-price-train-score/exclude-column.png)
 
-1. 選取**選取資料集中的資料行**模組。 
+1. 選取 **選取資料集中的資料行** 模組。 
 
 1. 在畫布右側的 [模組詳細資料] 窗格中，選取 [註解] 文字方塊，然後輸入「排除自負虧損」。
 
@@ -150,14 +150,14 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 ### <a name="clean-missing-data"></a>清除遺漏的資料
 
-移除**自負虧損**資料行之後，您的資料集仍有遺漏值。 您可以使用**清除遺漏的資料**模組來移除其餘遺漏的資料。
+移除 **自負虧損** 資料行之後，您的資料集仍有遺漏值。 您可以使用 **清除遺漏的資料** 模組來移除其餘遺漏的資料。
 
 > [!TIP]
 > 在使用設計工具中大部分的模組時，都必須從輸入資料中清除遺漏值。
 
 1. 在畫布左側的模組選擇區中，展開 [資料轉換] 區段，然後尋找 [清除遺漏資料] 模組。
 
-1. 將**清除遺漏的資料**模組拖曳至管線畫布上。 將其連線至**選取資料集中的資料行**模組。 
+1. 將 **清除遺漏的資料** 模組拖曳至管線畫布上。 將其連線至 **選取資料集中的資料行** 模組。 
 
 1. 選取 [清除遺漏資料] 模組。
 
@@ -189,12 +189,12 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 1. 將 [分割資料] 模組拖曳到管線畫布上。
 
-1. 將**清除遺漏的資料**模組左側的連接埠連線至**分割資料**模組。
+1. 將 **清除遺漏的資料** 模組左側的連接埠連線至 **分割資料** 模組。
 
     > [!IMPORTANT]
-    > 請確實將**清除遺漏的資料**的左側輸出連接埠連線至**分割資料**。 左側連接埠包含已清除的資料。 右側連接埠包含已捨棄的資料。
+    > 請確實將 **清除遺漏的資料** 的左側輸出連接埠連線至 **分割資料**。 左側連接埠包含已清除的資料。 右側連接埠包含已捨棄的資料。
 
-1. 選取**分割資料**模組。
+1. 選取 **分割資料** 模組。
 
 1. 在畫布右側的 [模組詳細資料] 窗格中，將 [第一個輸出資料集中的資料列比例] 設定為 0.7。
 
@@ -216,12 +216,12 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 1. 將 [線性迴歸] 模組的輸出連接到 [訓練模型] 模組的左側輸入。
 
-1. 將**分割資料**模組的訓練資料輸出 (左側連接埠) 連接到**訓練模型**模組的右側輸入。
+1. 將 **分割資料** 模組的訓練資料輸出 (左側連接埠) 連接到 **訓練模型** 模組的右側輸入。
     
     > [!IMPORTANT]
-    > 請確實將**分割資料**的左側輸出連接埠連線至**定型模型**。 左側連接埠包含定型集。 右側連接埠包含測試集。
+    > 請確實將 **分割資料** 的左側輸出連接埠連線至 **定型模型**。 左側連接埠包含定型集。 右側連接埠包含測試集。
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Select-column":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="此螢幕擷取畫面顯示「訓練模型」模組的正確組態。「線性迴歸」模組連線至「訓練模型」模組的左側連接埠，「分割資料」模組連線至「訓練模型」的右側連接埠。":::
 
 1. 選取 **訓練模型** 模組。
 
@@ -229,34 +229,34 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 1. 在 [標籤資料行] 對話方塊中，展開下拉式功能表，然後選取 [資料行名稱]。 
 
-1. 在文字方塊中輸入*價格*，以指定您的模型要預測的值。
+1. 在文字方塊中輸入 *價格*，以指定您的模型要預測的值。
 
     >[!IMPORTANT]
     > 請確定您輸入的資料行名稱完全相符。 **price** 的首字母請勿使用大寫。 
 
     您的管線應會顯示如下：
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="Select-column":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="此螢幕擷取畫面顯示管線在新增「訓練模型」模組之後的正確組態。":::
 
 ### <a name="add-the-score-model-module"></a>新增評分模型模組
 
 使用 70% 的資料來定型模型後，您即可將該模型用來為其他 30% 的資料評分，以了解模型的運作是否理想。
 
-1. 在搜尋方塊中輸入*評分模型*以尋找**評分模型**模組。 將此模組拖曳到管線畫布上。 
+1. 在搜尋方塊中輸入 *評分模型* 以尋找 **評分模型** 模組。 將此模組拖曳到管線畫布上。 
 
-1. 將**訓練模型**模組的輸出連線至**評分模型**的左側輸入連接埠。 將**分割資料**模組的測試資料輸出 (右側連接埠) 連線至**評分模型**的右側輸入連接埠。
+1. 將 **訓練模型** 模組的輸出連線至 **評分模型** 的左側輸入連接埠。 將 **分割資料** 模組的測試資料輸出 (右側連接埠) 連線至 **評分模型** 的右側輸入連接埠。
 
 ### <a name="add-the-evaluate-model-module"></a>新增評估模型模組
 
-使用**評估模型**模組，評估您的模型在測試資料集下的評分。
+使用 **評估模型** 模組，評估您的模型在測試資料集下的評分。
 
-1. 在搜尋方塊中輸入*評估*，以尋找**評估模型**模組。 將此模組拖曳到管線畫布上。 
+1. 在搜尋方塊中輸入 *評估*，以尋找 **評估模型** 模組。 將此模組拖曳到管線畫布上。 
 
-1. 將**評分模型**模組的輸出連線至**評估模型**的左側輸入。 
+1. 將 **評分模型** 模組的輸出連線至 **評估模型** 的左側輸入。 
 
     最終的管線應會顯示如下：
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="Select-column":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="此螢幕擷取畫面顯示管線的正確組態。":::
 
 ## <a name="submit-the-pipeline"></a>提交管線
 
@@ -269,7 +269,7 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
     > [!NOTE]
     > 實驗群組的類似管線會一起執行。 如果您多次執行某個管線，您可以選取相同的實驗進行後續執行。
 
-    1. 輸入**新實驗名稱**的描述性名稱。
+    1. 輸入 **新實驗名稱** 的描述性名稱。
 
     1. 選取 [提交]。
     
@@ -285,11 +285,11 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
     您可以在這裡看到測試資料中的預測價格和實際價格。
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Select-column":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="此螢幕擷取畫面將「評分標籤」資料行醒目提示的輸出視覺效果":::
 
 ### <a name="evaluate-models"></a>評估模型
 
-使用**評估模型**，查看定型模型對測試資料集的執行效果。
+使用 **評估模型**，查看定型模型對測試資料集的執行效果。
 
 1. 以滑鼠右鍵按一下 [評估模型] 模組，然後選取 [視覺化] 以檢視輸出結果。
 

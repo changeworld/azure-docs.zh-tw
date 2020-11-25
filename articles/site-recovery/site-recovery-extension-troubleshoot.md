@@ -6,11 +6,11 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.openlocfilehash: c1915d108bf9465d3e5b8d6a55053b583ee4f580
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88184613"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009699"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>對 Azure VM 延伸模組的問題進行疑難排解
 
@@ -45,7 +45,7 @@ ms.locfileid: "88184613"
 
 如果虛擬機器中的 Azure 來賓代理程式未處於就緒狀態，則會發生此錯誤。
 
-您可以在 [Azure 入口網站](https://portal.azure.com/)中檢查 Azure 來賓代理程式的狀態。 移至您嘗試保護的虛擬機器，並檢查**VM**  >  **設定**  >  **屬性**  >  **代理程式狀態**中的狀態。 在大部分的情況下，在重新開機虛擬機器之後，代理程式的狀態即已就緒。 但是，如果您無法重新開機或仍遇到此問題，請完成下列疑難排解步驟：
+您可以在 [Azure 入口網站](https://portal.azure.com/)中檢查 Azure 來賓代理程式的狀態。 移至您嘗試保護的虛擬機器，並檢查 **VM**  >  **設定**  >  **屬性**  >  **代理程式狀態** 中的狀態。 在大部分的情況下，在重新開機虛擬機器之後，代理程式的狀態即已就緒。 但是，如果您無法重新開機或仍遇到此問題，請完成下列疑難排解步驟：
 
 - [代理程式已安裝在 VM 中，但沒有回應 (適用於 Windows VM)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
 - [VM 中安裝的代理程式已過時 (適用於 Linux VM)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
@@ -67,7 +67,7 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 
 1. 判斷 Windows Azure 客體代理程式服務是否在 VM 服務 (services.msc) 中執行。 重新開機 Windows Azure 來賓代理程式服務。    
 1. 如果 [服務] 中看不到 Windows Azure 來賓代理程式服務，請開啟主控台。 移至 [ **程式和功能** ] 以查看是否已安裝 Windows 來賓代理程式服務。
-1. 如果 Windows Azure 客體代理程式顯示在 [程式和功能]**** 中，請將 Windows Azure 客體代理程式解除安裝。
+1. 如果 Windows Azure 客體代理程式顯示在 [程式和功能] 中，請將 Windows Azure 客體代理程式解除安裝。
 1. 下載並安裝[最新版的代理程式 MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 您需要系統管理員許可權才能完成安裝。
 1. 確認 Windows Azure 來賓代理程式服務出現在 [服務] 中。
 1. 重新啟動保護作業。
@@ -82,7 +82,7 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 1. 請遵循[更新 Linux VM 代理程式](../virtual-machines/extensions/update-linux-agent.md)的指示。
 
    > [!NOTE]
-   > 我們強烈建議** 您只透過散發套件存放庫更新代理程式。 我們不建議直接從 GitHub 下載代理程式程式碼並加以更新。 如果您散發的最新代理程式無法使用，請聯絡散發套件支援以取得如何安裝的相關指示。 若要檢查最新的代理程式，請移至 GitHub 儲存機制中的 [Microsoft Azure Linux 代理程式 (英文)](https://github.com/Azure/WALinuxAgent/releases) 頁面。
+   > 我們強烈建議您只透過散發套件存放庫更新代理程式。 我們不建議直接從 GitHub 下載代理程式程式碼並加以更新。 如果您散發的最新代理程式無法使用，請聯絡散發套件支援以取得如何安裝的相關指示。 若要檢查最新的代理程式，請移至 GitHub 儲存機制中的 [Microsoft Azure Linux 代理程式 (英文)](https://github.com/Azure/WALinuxAgent/releases) 頁面。
 
 1. 執行下列命令，確定 Azure 代理程式正在 VM 上執行：`ps -e`
 
@@ -106,8 +106,8 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，移至遇到備份失敗的 VM。
 1. 選取 [設定]  。
-1. 選取 [擴充功能]  。
-1. 選取 [Site Recovery 延伸模組]****。
+1. 選取 [擴充功能]。
+1. 選取 [Site Recovery 延伸模組]。
 1. 選取 [解除安裝]。
 
 針對 Linux VM，如果 VMSnapshot 延伸模組未顯示在 Azure 入口網站中，請 [更新 Azure Linux 代理程式](../virtual-machines/extensions/update-linux-agent.md)。 然後執行保護。

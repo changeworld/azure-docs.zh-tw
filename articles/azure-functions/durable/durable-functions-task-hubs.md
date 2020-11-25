@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: azfuncdf
 ms.openlocfilehash: 26234039c77601bc1d29beeebd3fcb8461d6d6c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87432698"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009512"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 中的工作中樞
 
-[Durable Functions](durable-functions-overview.md) 中的「工作中樞」** 是協調流程所使用之 Azure 儲存體資源的邏輯容器。 協調器和活動函式必須屬於相同的工作中樞，才能彼此互動。
+[Durable Functions](durable-functions-overview.md) 中的「工作中樞」是協調流程所使用之 Azure 儲存體資源的邏輯容器。 協調器和活動函式必須屬於相同的工作中樞，才能彼此互動。
 
-如果多個函式應用程式共用儲存體帳戶，則每個函式應用程式「必須」** 設有個別的工作中樞名稱。 儲存體帳戶可以包含多個工作中樞。 下圖說明每個函式應用程式在共用和專用儲存體帳戶中的一個工作中樞。
+如果多個函式應用程式共用儲存體帳戶，則每個函式應用程式「必須」設有個別的工作中樞名稱。 儲存體帳戶可以包含多個工作中樞。 下圖說明每個函式應用程式在共用和專用儲存體帳戶中的一個工作中樞。
 
 ![顯示共用和專用儲存體帳戶的圖表。](./media/durable-functions-task-hubs/task-hubs-storage.png)
 
@@ -159,15 +159,15 @@ public static async Task<HttpResponseMessage> Run(
 
 | 持久延伸模組版本 | 預設工作中樞名稱 |
 | - | - |
-| 2.x | 在 Azure 中部署時，工作中樞名稱會衍生自函式 _應用程式_的名稱。 在 Azure 外部執行時，預設的工作中樞名稱為 `TestHubName` 。 |
+| 2.x | 在 Azure 中部署時，工作中樞名稱會衍生自函式 _應用程式_ 的名稱。 在 Azure 外部執行時，預設的工作中樞名稱為 `TestHubName` 。 |
 | 1.x | 所有環境的預設工作中樞名稱為 `DurableFunctionsHub` 。 |
 
 如需擴充功能版本之間差異的詳細資訊，請參閱 [Durable Functions 版本](durable-functions-versions.md) 文章。
 
 > [!NOTE]
-> 當共用儲存體帳戶中有多個工作中樞時，可透過名稱來區分各個工作中樞。 如果您有多個函式應用程式共用了共用儲存體帳戶，您必須明確地在 host.json** 檔案中為每個工作中樞設定不同的名稱。 否則，多個函式應用程式會互相競爭訊息，這可能會導致未定義的行為，包括在或狀態下處于非預期狀態的協調流程 `Pending` `Running` 。
+> 當共用儲存體帳戶中有多個工作中樞時，可透過名稱來區分各個工作中樞。 如果您有多個函式應用程式共用了共用儲存體帳戶，您必須明確地在 host.json 檔案中為每個工作中樞設定不同的名稱。 否則，多個函式應用程式會互相競爭訊息，這可能會導致未定義的行為，包括在或狀態下處于非預期狀態的協調流程 `Pending` `Running` 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [瞭解如何處理協調流程版本控制](durable-functions-versioning.md)

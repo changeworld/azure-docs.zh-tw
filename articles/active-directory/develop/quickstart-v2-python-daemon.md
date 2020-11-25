@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 2c280b8241819155f32942a399caa7f916db3827
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6503955c69b8ca64678efbc0c01cea7f78509f8d
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257736"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592714"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>快速入門：使用應用程式的身分識別取得權杖，並從 Python 主控台應用程式呼叫 Microsoft Graph API
 
-在本快速入門中，您將撰寫 Python 應用程式，以使用應用程式的身分識別取得存取權杖，然後呼叫 Microsoft Graph API 以顯示目錄中的[使用者清單](/graph/api/user-list)。 此案例適用於無周邊的自動作業或 Windows 服務需要使用應用程式身分識別 (而非使用者的身分識別) 才能執行的情況。
+在本快速入門中，您會下載並執行程式碼範例，該範例會示範 Python 應用程式如何使用應用程式的身分識別來取得存取權杖，以呼叫 Microsoft Graph API 及顯示目錄中的[使用者清單](/graph/api/user-list)。 此程式碼範例會示範自動作業或 Windows 服務如何使用應用程式識別來執行，而不是以使用者的身分識別執行。 
 
 > [!div renderon="docs"]
 > ![說明本快速入門所產生之範例應用程式的運作方式](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
@@ -80,7 +80,7 @@ ms.locfileid: "91257736"
 > [!div renderon="docs"]
 > [下載 Python 精靈專案](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
 
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [下載程式碼範例](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -101,7 +101,7 @@ ms.locfileid: "91257736"
 >    "secret": "Enter_the_Client_Secret_Here"
 >    ```
 >    其中：
->    - `Enter_the_Application_Id_Here` - 是您註冊的應用程式所具備的**應用程式 (用戶端) 識別碼**。
+>    - `Enter_the_Application_Id_Here` - 是您註冊的應用程式所具備的 **應用程式 (用戶端) 識別碼**。
 >    - `Enter_the_Tenant_Id_Here` - 請將此值取代為 [租用戶識別碼] 或 [租用戶名稱] (例如 contoso.microsoft.com)
 >    - `Enter_the_Client_Secret_Here` - 請將此值取代為步驟 1 所建立的用戶端密碼。
 >
@@ -137,7 +137,7 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 > [!div renderon="docs"]
 >> 其中：
 >> * `Enter_the_Tenant_Id_Here` - 請將此值取代為 [租用戶識別碼] 或 [租用戶名稱] (例如 contoso.microsoft.com)
->> * `Enter_the_Application_Id_Here` - 是您註冊的應用程式所具備的**應用程式 (用戶端) 識別碼**。
+>> * `Enter_the_Application_Id_Here` - 是您註冊的應用程式所具備的 **應用程式 (用戶端) 識別碼**。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-4-run-the-application"></a>步驟 4：執行應用程式
@@ -160,7 +160,7 @@ python confidential_client_secret_sample.py parameters.json
 您應該會在主控台輸出中看到一些 JSON 片段，代表您 Azure AD 目錄中的使用者清單。
 
 > [!IMPORTANT]
-> 此快速入門應用程式會使用用戶端密碼，將自己識別為機密用戶端。 由於用戶端密碼會以純文字形式新增至您的專案檔，因此，基於安全考量，在考慮將應用程式當作生產應用程式之前，建議您使用憑證，而非用戶端密碼。 如需關於如何使用憑證的詳細資訊，請在相同的 GitHub 存放庫 (但位於第二個資料夾 **2-Call-MsGraph-WithCertificate**) 中參閱此範例的[這些指示](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/README.md)
+> 此快速入門應用程式會使用用戶端密碼，將自己識別為機密用戶端。 由於用戶端密碼會以純文字形式新增至您的專案檔，因此，基於安全考量，在考慮將應用程式當作生產應用程式之前，建議您使用憑證，而非用戶端密碼。 如需關於如何使用憑證的詳細資訊，請在相同的 GitHub 存放庫 (但位於第二個資料夾 **2-Call-MsGraph-WithCertificate**) 中參閱此範例的 [這些指示](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/README.md)
 
 ## <a name="more-information"></a>詳細資訊
 
@@ -193,7 +193,7 @@ app = msal.ConfidentialClientApplication(
 > | 其中： |描述 |
 > |---------|---------|
 > | `config["secret"]` | 在 Azure 入口網站中為應用程式建立的用戶端密碼。 |
-> | `config["client_id"]` | 是註冊於 Azure 入口網站中的應用程式所具備的**應用程式 (用戶端) 識別碼**。 您可以在 Azure 入口網站的應用程式 [概觀] 頁面中找到此值。 |
+> | `config["client_id"]` | 是註冊於 Azure 入口網站中的應用程式所具備的 **應用程式 (用戶端) 識別碼**。 您可以在 Azure 入口網站的應用程式 [概觀] 頁面中找到此值。 |
 > | `config["authority"]`    | 供使用者用於驗證的 STS 端點。 若為公用雲端，通常是 `https://login.microsoftonline.com/{tenant}`，其中 {tenant} 是租用戶的名稱或租用戶識別碼。|
 
 如需詳細資訊，請參閱[下列項目的參考文件：`ConfidentialClientApplication`](https://msal-python.readthedocs.io/en/latest/#confidentialclientapplication)

@@ -5,17 +5,72 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 07/08/2020
-ms.openlocfilehash: 6ed00931e8cca1febac0b9b72b53eeb7e81042ea
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.date: 11/11/2020
+ms.openlocfilehash: 18222573956f5ff3e9c617602902374b114328da
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94487987"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555612"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure 監視器文件的最新動向
 
 本文提供新增或已大幅更新的 Azure 監視器文章清單。 該清單會在每個月的第一週重新整理，以納入上個月的文章更新。
+
+## <a name="october-2020"></a>2020 年 10 月
+
+### <a name="general"></a>一般
+- [Azure 監視器 API 淘汰](platform/operationalinsights-api-retirement.md) - 新文章。
+
+### <a name="agents"></a>代理程式
+- [Azure 監視器監視的項目為何](monitor-reference.md) - 新增有關代理程式的區段。
+
+### <a name="alerts"></a>警示
+- [在 Azure 入口網站中建立和管理動作群組](platform/action-groups.md) - 新增有關服務標籤的區段。
+- [計量警示的 Resource Manager 範本範例](samples/resource-manager-alerts-metric.md) - 新增內容比對參數和測試位置。
+- [針對 Azure 計量警示進行疑難排解](platform/alerts-troubleshoot-metric.md) - 新增規則設定的最佳做法。
+
+### <a name="application-insights"></a>Application Insights
+- [適用於 Application Insights JavaScript SDK 的 Angular 外掛程式](app/javascript-angular-plugin.md) - 新文章。
+- [適用於 ASP.NET Core 應用程式的 Azure Application Insights](app/asp-net-core.md) - 新增關於 ILogger 記錄的常見問題集。
+- [使用 Azure Application Insights 設定 ASP.NET 的監視功能](app/asp-net.md) - 已重新編寫文章。
+- [Azure Application Insights 中記錄型和預先彙總的計量](app/pre-aggregated-metrics-log-metrics.md) - 新增包含預先彙總計量的資料表。
+- [監視任何網站的可用性和回應性](app/monitor-web-app-availability.md) - 新增有關區域母體標籤的區段。
+- [監視任何位置的 Java 應用程式 - Azure 監視器 Application Insights](app/java-standalone-config.md) - 新增設定範例。
+- [監視任何位置的 Java 應用程式 - Azure 監視器 Application Insights](app/java-standalone-telemetry-processors.md) - 新文章。
+- [在 Azure 監視器中使用應用程式變更分析來尋找 Web 應用程式問題](app/change-analysis.md) - 新增有關虛擬機器和活動記錄的區段。
+  
+### <a name="autoscale"></a>Autoscale
+- [開始使用 Azure 中的自動調整](platform/autoscale-get-started.md) - 新增有關如何將自動調整移至不同區域的區段。
+
+### <a name="containers"></a>容器
+- [使用適用於容器的 Azure 監視器來設定 PV 監視](insights/container-insights-persistent-volumes.md) - 新文章。
+- [如何管理適用於容器代理程式的 Azure 監視器](insights/container-insights-manage-agent.md) - 新增已啟用 Azure Arc 的 Kubernetes 叢集支援。
+- [Azure 監視器中適用於容器的計量警示](insights/container-insights-metric-alerts.md) - 新增已啟用 Azure Arc 的 Kubernetes 叢集支援。
+
+### <a name="insights-and-solutions"></a>見解和解決方案
+- [IT 服務管理連接器 - Azure 監視器中的安全匯出](platform/it-service-management-connector-secure-webhook-connections.md) - 新增有關 ServiceNow 的區段。
+
+### <a name="logs"></a>記錄
+- [使用邏輯應用程式將資料從 Log Analytics 工作區封存至 Azure 儲存體](platform/logs-export-logic-app.md) - 新文章。
+- [Azure 監視器中的 Log Analytics 工作區資料匯出 (預覽)](platform/logs-data-export.md) - 新增事件中樞 REST 要求的範例主體。
+- [管理 Azure 監視器記錄的使用量和成本](platform/manage-cost-storage.md) - 新增 Azure 監視器記錄與 Azure 資訊安全中心計費之間的關聯性資訊。 新增節點計數的查詢 (如果使用「每個節點」定價層)。 
+- [在 Azure 監視器中監視 Log Analytics 工作區的健康情況](platform/monitor-workspace.md) - 新文章。
+- [使用 Azure 資料總管來查詢 Azure 監視器中的資料 (預覽)](platform/azure-data-explorer-monitor-proxy.md) - 新文章。
+- [使用 Azure 資料總管來查詢從 Azure 監視器匯出的資料 (預覽)](platform/azure-data-explorer-query-storage.md) - 新文章。
+
+### <a name="networks"></a>網路
+- [Azure 網路監視器預覽版](insights/network-insights-overview.md) - 新增疑難排解區段。 新增有關連線的區段。
+
+### <a name="platform-logs"></a>平台記錄
+- [Azure 活動記錄事件結構描述](platform/activity-log-schema.md) - 新增嚴重性層級的描述。
+
+### <a name="virtual-machines"></a>虛擬機器
+- [適用於 VM 的 Azure 監視器中的變更分析](insights/vminsights-change-analysis.md) - 新文章。
+- [啟用適用於 VM 的 Azure 監視器概觀](insights/vminsights-enable-overview.md) - 新增支援區域。
+- [如何更新適用於容器的 Azure 監視器以取得計量](insights/container-insights-update-metrics.md) - 新增已啟用 Azure Arc 的 Kubernetes 叢集支援。
+
+
 
 ## <a name="september-2020"></a>2020 年 9 月
 

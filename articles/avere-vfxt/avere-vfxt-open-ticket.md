@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 8159d83624cdd474d91030d5376a3db447beffe1
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342343"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008424"
 ---
 # <a name="get-help-with-your-system"></a>取得有關系統的協助
 
 如需 Avere vFXT for Azure 系統的協助，以下是取得支援的方法：
 
-* **Avere vFXT 問題** - 使用 Azure 入口網站，為 Avere vFXT 開立支援票證，如[下方](#open-a-support-ticket-for-your-avere-vfxt)所述。
-* **配額** - 如果您有與配額相關的問題，請[要求增加配額](#request-a-quota-increase)
-* **文件和範例** - 如果您發現本文件或範例中有任何問題，請捲動到存在問題的頁面底部，並使用 [意見反應]**** 區段搜尋現有的問題，如果需要，提出一個新問題。
+* **Avere vFXT 問題** - 使用 Azure 入口網站，為 Avere vFXT 開立支援票證，如 [下方](#open-a-support-ticket-for-your-avere-vfxt)所述。
+* **配額** - 如果您有與配額相關的問題，請 [要求增加配額](#request-a-quota-increase)
+* **文件和範例** - 如果您發現本文件或範例中有任何問題，請捲動到存在問題的頁面底部，並使用 [意見反應] 區段搜尋現有的問題，如果需要，提出一個新問題。
 
 ## <a name="open-a-support-ticket-for-your-avere-vfxt"></a>為 Avere vFXT 開立支援票證
 
@@ -31,7 +31,7 @@ ms.locfileid: "92342343"
 
     ![Azure 入口網站資源群組「概觀」面板的螢幕擷取畫面，其中圈出特定的 VM](media/avere-vfxt-ticket-vm.png)
 
-1. 在 [VM] 頁面中，向下捲動至左側面板下方，然後按一下 [新增支援要求]****。
+1. 在 [VM] 頁面中，向下捲動至左側面板下方，然後按一下 [新增支援要求]。
 
     ![上一個螢幕擷取畫面中 VM 的 Azure 入口網站 VM 頁面的螢幕擷取畫面。 左側功能表會向下滾動，而 [新增支援要求] 則會被圈下。](media/avere-vfxt-ticket-request.png)
 

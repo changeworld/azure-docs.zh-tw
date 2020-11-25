@@ -4,11 +4,11 @@ description: Application Insights 所需的伺服器防火牆例外狀況
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.openlocfilehash: bf81cc863ab795ce9be5a9166d7dc68aeb3caeed
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565835"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009954"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights 和 Log Analytics 使用的 IP 位址
 [Azure Application Insights](./app-insights-overview.md) 服務會使用一些 IP 位址。 如果您所監視的應用程式裝載於防火牆後面，您可能需要知道這些位址。
@@ -49,7 +49,7 @@ ms.locfileid: "94565835"
 
 ### <a name="service-tag"></a>服務標籤
 
-如果您使用 Azure 網路安全性群組，只需新增 **輸入連接埠規則** ，即可允許來自 Application Insights 可用性測試的流量，方法是選取 [服務標籤] 做為 [來源]，並選取 [ApplicationInsightsAvailability] 做為 [來源服務標籤]。
+如果您使用 Azure 網路安全性群組，只需新增 **輸入連接埠規則**，即可允許來自 Application Insights 可用性測試的流量，方法是選取 [服務標籤] 做為 [來源]，並選取 [ApplicationInsightsAvailability] 做為 [來源服務標籤]。
 
 >[!div class="mx-imgBorder"]
 >![在 [設定] 下，選取 [輸入安全性規則]，然後選取索引標籤頂端的 [新增]](./media/ip-addresses/add-inbound-security-rule.png)

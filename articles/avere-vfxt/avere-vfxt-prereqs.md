@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
 ms.openlocfilehash: d87f57873a4bb84b20df3da3880017d9ef2484a5
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342105"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008407"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>準備建立 Avere vFXT
 
@@ -24,7 +24,7 @@ ms.locfileid: "92342105"
 若要在 Azure 入口網站中建立新的 Azure 訂用帳戶：
 
 1. 瀏覽至 [訂用帳戶](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) 刀鋒視窗
-1. 按一下位於頂端的 [+ 新增]**** 按鈕
+1. 按一下位於頂端的 [+ 新增] 按鈕
 1. 在出現提示時登入
 1. 選取供應項目，並逐步執行新建訂用帳戶的步驟
 
@@ -34,7 +34,7 @@ ms.locfileid: "92342105"
 
 有一些因應措施可讓非擁有者建立 Avere vFXT for Azure 叢集。 這些案例牽涉到限制資源，以及為建立者指派其他 Azure 角色。 在上述所有情況下，訂用帳戶擁有者也必須事先 [接受 Avere vFXT 軟體條款](#accept-software-terms) 。
 
-| 案例 | 限制 | 建立 Avere vFXT 叢集所需的存取角色 |
+| 狀況 | 限制 | 建立 Avere vFXT 叢集所需的存取角色 |
 |----------|--------|-------|
 | 資源群組系統管理員會建立 vFXT | 您必須在資源群組中建立虛擬網路、叢集控制器和叢集節點。 | [使用者存取系統管理員](../role-based-access-control/built-in-roles.md#user-access-administrator) 和 [參與者](../role-based-access-control/built-in-roles.md#contributor) 角色，範圍設定為目標資源群組。 |
 | 使用現有的外部虛擬網路 | 叢集控制器和叢集節點會建立在 vFXT 的資源群組內，但會使用不同資源群組中的現有虛擬網路。 |  (1) vFXT 資源群組範圍的 [使用者存取系統管理員](../role-based-access-control/built-in-roles.md#user-access-administrator) 和 [參與者](../role-based-access-control/built-in-roles.md#contributor) 角色;和 (2) [虛擬機器參與者](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)、 [使用者存取系統管理員](../role-based-access-control/built-in-roles.md#user-access-administrator)，以及範圍設定為虛擬網路資源群組的 [Avere 參與者](../role-based-access-control/built-in-roles.md#avere-contributor) 角色。 |
@@ -97,10 +97,10 @@ ms.locfileid: "92342105"
 1. 在入口網站中，開啟您的虛擬網路清單。
 1. 選取叢集的虛擬網路。
 1. 按一下左側功能表中的 [ **服務端點** ]。
-1. 按一下頂端的 [新增]****。
+1. 按一下頂端的 [新增]。
 1. 選擇服務 ``Microsoft.Storage`` 。
 1. 選取叢集的子網。
-1. 在底部按一下 [新增]****。
+1. 在底部按一下 [新增]。
 
    ![含有建立服務端點之註解的 Azure 入口網站螢幕擷取畫面](media/avere-vfxt-service-endpoint.png)
 

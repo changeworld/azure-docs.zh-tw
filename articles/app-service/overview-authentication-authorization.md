@@ -7,11 +7,11 @@ ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
 ms.openlocfilehash: 09460e4e38ea1842d58ecf3a9b3cd00a072c271e
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286898"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008441"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service 和 Azure Functions 中的驗證和授權
 
@@ -140,7 +140,7 @@ App Service 使用[同盟身分識別](https://en.wikipedia.org/wiki/Federated_i
 
 ### <a name="allow-only-authenticated-requests"></a>僅允許已驗證的要求
 
-此選項會 **使用 \<provider> 登入** 。 App Service 會將所有匿名要求重新導向至您所選提供者的 `/.auth/login/<provider>`。 如果匿名要求來自原生行動應用程式，則傳回的回應是 `HTTP 401 Unauthorized`。
+此選項會 **使用 \<provider> 登入**。 App Service 會將所有匿名要求重新導向至您所選提供者的 `/.auth/login/<provider>`。 如果匿名要求來自原生行動應用程式，則傳回的回應是 `HTTP 401 Unauthorized`。
 
 使用此選項時，您不需要在應用程式中撰寫任何驗證程式碼。 您可以藉由檢查使用者的宣告來處理更精細的授權 (例如特定角色授權，請參閱[存取使用者宣告](app-service-authentication-how-to.md#access-user-claims))。
 

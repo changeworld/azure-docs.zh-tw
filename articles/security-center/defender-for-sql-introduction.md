@@ -3,17 +3,17 @@ title: 適用於 SQL 的 Azure Defender - 優點和功能
 description: 了解適用於 SQL 的 Azure Defender 的優點和功能。
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 11/17/2020
 ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 220f9fffd6c0f9b959230964a9ec79f4e209bd54
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: b4f046339c027a5ae66f7f7510d8d2b311abd6df
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372521"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693455"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>適用於 SQL 的 Azure Defender 簡介
 
@@ -25,7 +25,7 @@ ms.locfileid: "94372521"
 |----|:----|
 |版本狀態：|**適用於 Azure SQL 資料庫伺服器的 Azure Defender** - 正式發行 (GA)<br>**適用於機器上的 SQL 伺服器的 Azure Defender** - 預覽<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |定價：|構成 **適用於 SQL 的 Azure Defender** 的兩個方案，會依照 [定價頁面](security-center-pricing.md)顯示的方式計費|
-|受保護的 SQL 版本：|Azure SQL Database <br>Azure SQL 受控執行個體<br>Azure Synapse Analytics (先前為 SQL DW)<br>SQL Server (所有支援的版本)|
+|受保護的 SQL 版本：|Azure SQL Database <br>Azure SQL 受控執行個體<br>Azure Synapse 中的專用 SQL 集區 (先前為 SQL DW)<br>SQL Server (所有支援的版本)|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov、其他 Gov|
 |||
 
@@ -36,7 +36,7 @@ ms.locfileid: "94372521"
 - **適用於 Azure SQL 資料庫伺服器的 Azure Defender** 可保護：
   - [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md)
   - [Azure SQL 受控執行個體](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)
-  - [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+  - [Azure Synapse 中的專用 SQL 集區](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse)
 
 - **適用於機器上的 SQL 伺服器的 Azure Defender (預覽)** 可擴充 Azure 原生 SQL Server 的保護，以完整支援混合式環境，並保護裝載於 Azure、其他雲端環境，甚至是內部部署機器的 SQL 伺服器 (所有支援的版本)
 

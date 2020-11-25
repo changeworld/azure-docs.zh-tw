@@ -12,12 +12,12 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 67e90667df2b62ec2c37d865fe431a2be6f81b9e
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 9c75ccaa05457f13697d1a26dbc8fd2f6720a751
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876561"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517847"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>快速入門：設定通知中樞中的推播通知
 
@@ -67,11 +67,11 @@ Azure 通知中樞提供易於使用並可相應放大的推播引擎。使用�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+您需要 Google Firebase 雲端通訊 (FCM) 專案的 [API 金鑰]。
 
-- 通知中樞需要 Azure CLI 的 2.0.67 版或更新版本。 執行 [az version](/cli/azure/reference-index?#az_version) 以尋找已安裝的版本和相依程式庫。 若要升級至最新版本，請執行 [az upgrade](/cli/azure/reference-index?#az_upgrade)。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
 
-- 您需要 Google Firebase 雲端通訊 (FCM) 專案的 [API 金鑰]。
+- 本文需要 2.0.67 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ### <a name="set-up-push-notifications-for-google-fcm"></a>設定 Google FCM 的推播通知
 
@@ -135,7 +135,7 @@ Azure 通知中樞提供易於使用並可相應放大的推播引擎。使用�
       * 在工具列上選取 [上傳憑證]。
       * 選取檔案圖示，然後選取憑證檔案。
       * 輸入憑證的密碼。
-      * 選取 [確定]  。
+      * 選取 [確定]。
       * 在 [Windows Phone (MPNS)] 頁面上，選取 [儲存]。
 
 如需詳細資訊，請參閱[使用通知中樞將通知推播至 Windows Phone 應用程式](notification-hubs-windows-mobile-push-notifications-mpns.md)。
@@ -146,7 +146,7 @@ Azure 通知中樞提供易於使用並可相應放大的推播引擎。使用�
 
 1. 在 Azure 入口網站中的 [通知中樞] 頁面上，從左側功能表中選取 [百度 (Android China)]。
 2. 在百度雲推送專案中，輸入從百度主控台取得的 **API 金鑰**。
-3. 在百度雲推送專案中，輸入從百度主控台取得的**祕密金鑰**。
+3. 在百度雲推送專案中，輸入從百度主控台取得的 **祕密金鑰**。
 4. 選取 [儲存]。
 
     ![顯示推播通知的百度 (Android China) 設定的通知中樞螢幕擷取畫面](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)

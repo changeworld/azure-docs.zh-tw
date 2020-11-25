@@ -13,12 +13,12 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fcb6d4da3d9b044cf722c6333f61a0f8d38f1956
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a4c8f0c636e254c4afc2d6cd83a744939096233a
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91598018"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553619"
 ---
 # <a name="quickstart-create-sql-server-on-a-windows-virtual-machine-with-azure-powershell"></a>快速入門：在 Windows 虛擬機器上使用 Azure PowerShell 建立 SQL Server
 
@@ -150,9 +150,9 @@ ms.locfileid: "91598018"
 
 ## <a name="register-with-sql-vm-rp"></a>使用 SQL VM RP 進行註冊 
 
-若要取得入口網站整合與 SQL VM 功能，您必須先註冊 [SQL VM 資源提供者](sql-vm-resource-provider-register.md)。
+若要取得入口網站整合與 SQL VM 功能，您必須透過 [SQL IaaS 代理程式擴充功能](sql-agent-extension-manually-register-single-vm.md)進行註冊。
 
-若要取得完整的功能，您必須以完整模式註冊資源提供者。 不過，這麼做會重新啟動 SQL Server 服務，因此建議您以輕量模式註冊，然後在維護期間升級為完整模式。 
+若要取得完整功能，您必須以完整模式透過此擴充功能進行註冊。 不過，這麼做會重新啟動 SQL Server 服務，因此建議您以輕量模式註冊，然後在維護期間升級為完整模式。 
 
 首先，以輕量模式註冊 SQL Server VM： 
 
@@ -171,7 +171,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 # Get the existing Compute VM
 $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
       
-# Register with SQL VM resource provider in full mode
+# Register with SQL IaaS Agent extension in full mode
 Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
 ```
 

@@ -4,11 +4,11 @@ description: 瞭解 Azure Migrate 中 VMware VM 遷移的支援。
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: 7a7713021683c394e609a302a1aa6fcb282484e5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544200"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008288"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 遷移的支援矩陣
 
@@ -19,7 +19,7 @@ ms.locfileid: "92544200"
 
 您可以透過幾種方式來遷移 VMware Vm：
 
-- **使用無代理程式遷移** ：遷移 vm，而不需要在其上安裝任何專案。 您部署 [Azure Migrate 設備](migrate-appliance.md) 以進行無代理程式的遷移。
+- **使用無代理程式遷移**：遷移 vm，而不需要在其上安裝任何專案。 您部署 [Azure Migrate 設備](migrate-appliance.md) 以進行無代理程式的遷移。
 - **使用以代理** 程式為基礎的遷移：在 VM 上安裝代理程式以進行複寫。 針對以代理程式為基礎的遷移，您可以部署複寫 [設備](migrate-replication-appliance.md)。
 
 請參閱 [這篇文章](server-migrate-overview.md) ，以找出您想要使用的方法。
@@ -41,7 +41,7 @@ ms.locfileid: "92544200"
 --- | ---
 **VMware vCenter Server** | 版本5.5、6.0、6.5、6.7、7.0。
 **VMware vSphere ESXI 主機** | 版本5.5、6.0、6.5、6.7、7.0。
-**vCenter Server 許可權** | 無代理程式遷移使用 [遷移設備](migrate-appliance.md)。 設備需要 vCenter Server 中的這些許可權：<br/><br/> - **資料存放區。流覽** ：允許流覽 VM 記錄檔，以針對快照建立和刪除進行疑難排解。<br/><br/> - **資料存放區. FileManagement** ：允許資料存放區瀏覽器中的讀取/寫入/刪除/重新命名作業，以疑難排解快照集的建立和刪除。<br/><br/> - **VirtualMachine.Config。變更追蹤** ：允許啟用或停用 VM 磁片的變更追蹤，以提取快照之間變更的資料區塊。<br/><br/> - **VirtualMachine.Config。DiskLease** ：允許 VM 的磁片租用作業，使用 VMware vSphere 的虛擬磁片開發工具組 (VDDK) 來讀取磁片。<br/><br/> - **VirtualMachine DiskAccess** ：特別針對 vSphere 6.0 和更新版本 () 允許在 VM 上開啟磁片，以在使用 VDDK 的磁片上進行隨機讀取存取。<br/><br/> - **VirtualMachine： DiskRandomRead** ：允許在 VM 上開啟磁片，以使用 VDDK 來讀取磁片。<br/><br/> - **VirtualMachine： DiskRandomAccess** ：允許在 VM 上開啟磁片，以使用 VDDK 來讀取磁片。<br/><br/> - **VirtualMachine. GetVmFiles** ：允許在與 VM 相關聯的檔案上進行讀取作業，以下載記錄，並在發生失敗時進行疑難排解。<br/><br/> - **VirtualMachine。 \**_：允許建立和管理 VM 快照集以進行複寫。 <br/> <br/>-_* VirtualMachine。關機** ：允許在遷移至 Azure 期間關閉 VM 的電源。
+**vCenter Server 許可權** | 無代理程式遷移使用 [遷移設備](migrate-appliance.md)。 設備需要 vCenter Server 中的這些許可權：<br/><br/> - **資料存放區。流覽**：允許流覽 VM 記錄檔，以針對快照建立和刪除進行疑難排解。<br/><br/> - **資料存放區. FileManagement**：允許資料存放區瀏覽器中的讀取/寫入/刪除/重新命名作業，以疑難排解快照集的建立和刪除。<br/><br/> - **VirtualMachine.Config。變更追蹤**：允許啟用或停用 VM 磁片的變更追蹤，以提取快照之間變更的資料區塊。<br/><br/> - **VirtualMachine.Config。DiskLease**：允許 VM 的磁片租用作業，使用 VMware vSphere 的虛擬磁片開發工具組 (VDDK) 來讀取磁片。<br/><br/> - **VirtualMachine DiskAccess**：特別針對 vSphere 6.0 和更新版本 () 允許在 VM 上開啟磁片，以在使用 VDDK 的磁片上進行隨機讀取存取。<br/><br/> - **VirtualMachine： DiskRandomRead**：允許在 VM 上開啟磁片，以使用 VDDK 來讀取磁片。<br/><br/> - **VirtualMachine： DiskRandomAccess**：允許在 VM 上開啟磁片，以使用 VDDK 來讀取磁片。<br/><br/> - **VirtualMachine. GetVmFiles**：允許在與 VM 相關聯的檔案上進行讀取作業，以下載記錄，並在發生失敗時進行疑難排解。<br/><br/> - **VirtualMachine。 \**_：允許建立和管理 VM 快照集以進行複寫。 <br/> <br/>-_* VirtualMachine。關機**：允許在遷移至 Azure 期間關閉 VM 的電源。
 
 
 
@@ -169,10 +169,10 @@ VM | 在 Vm 上執行的行動服務會與內部部署複寫設備通訊， (設
 FC 磁碟 | 不支援。 
 BitLocker | 不支援。<br/><br/> 在您遷移電腦之前，必須先停用 BitLocker。
 VM 名稱 | 從 1 到 63 個字元。<br/><br/> 只能使用字母、數字和連字號。<br/><br/> 電腦名稱必須以字母或數字為開頭或結尾。 
-在遷移後連接-Windows | 若要在遷移之後連線到執行 Windows 的 Azure Vm：<br/><br/> -在遷移之前，請在內部部署 VM 上啟用 RDP。<br/><br/> 確定已針對 [公用]  設定檔新增 TCP 和 UDP 規則，且在 [Windows 防火牆]  > [允許的應用程式]  中已針對所有設定檔允許 RDP。<br/><br/> 針對站對站 VPN 存取，請啟用 rdp，並允許 **Windows 防火牆** 中的 rdp 允許  ->  **網域和專用** 網的 **應用程式和功能** 。<br/><br/> 此外，請確定作業系統的 SAN 原則設定為 **OnlineAll** 。 [深入了解](prepare-for-migration.md)。
+在遷移後連接-Windows | 若要在遷移之後連線到執行 Windows 的 Azure Vm：<br/><br/> -在遷移之前，請在內部部署 VM 上啟用 RDP。<br/><br/> 確定已針對 [公用] 設定檔新增 TCP 和 UDP 規則，且在 [Windows 防火牆] > [允許的應用程式] 中已針對所有設定檔允許 RDP。<br/><br/> 針對站對站 VPN 存取，請啟用 rdp，並允許 **Windows 防火牆** 中的 rdp 允許  ->  **網域和專用** 網的 **應用程式和功能**。<br/><br/> 此外，請確定作業系統的 SAN 原則設定為 **OnlineAll**。 [深入了解](prepare-for-migration.md)。
 在遷移後連接-Linux | 使用 SSH 進行遷移之後，使用 SSH 連線到 Azure Vm：<br/><br/> 在遷移之前，請在內部部署機器上，確認安全殼層服務是否設定為 [啟動]，且防火牆規則允許 SSH 連線。<br/><br/> 在容錯移轉之後，在 Azure VM 上，允許 SSH 埠的連入連線連線到已容錯移轉的 VM 上的網路安全性群組規則，以及其所連接的 Azure 子網。<br/><br/> 此外，新增 VM 的公用 IP 位址。  
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [選取](server-migrate-overview.md) VMware 遷移選項。

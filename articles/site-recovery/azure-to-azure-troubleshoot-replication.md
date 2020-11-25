@@ -6,11 +6,11 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
 ms.openlocfilehash: dc14334668b76ee8cbb81e48abfe1eecf17fa138
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86130395"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007353"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>針對 Azure VM 嚴重損壞修復中的複寫進行疑難排解
 
@@ -28,14 +28,14 @@ Error ID: 153007
 
 ## <a name="high-data-change-rate-on-the-source-virtual-machine"></a>來源虛擬機器上的高資料變更率
 
-如果來源虛擬機器上的資料變更率高於支援的限制，Azure Site Recovery 會建立事件。 若要查看問題是否因為高變換而造成，請移至複寫的**專案**  >  **VM**  >  **事件-過去72小時**。
+如果來源虛擬機器上的資料變更率高於支援的限制，Azure Site Recovery 會建立事件。 若要查看問題是否因為高變換而造成，請移至複寫的 **專案**  >  **VM**  >  **事件-過去72小時**。
 您應該會看到事件 **資料變更率超過支援的限制**：
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event.png" alt-text="顯示高資料變更率太高的 Azure Site Recovery 頁面。":::
 
 如果您選取此事件，應會看到確切的磁碟資訊：
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event2.png" alt-text="顯示高資料變更率太高的 Azure Site Recovery 頁面。":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event2.png" alt-text="顯示資料變更率事件詳細資料的頁面。":::
 
 ### <a name="azure-site-recovery-limits"></a>Azure Site Recovery 限制
 
@@ -54,11 +54,11 @@ Error ID: 153007
 
 ### <a name="solution"></a>解決方法
 
-根據磁片類型而定，Azure Site Recovery 有資料變更率的限制。 若要查看此問題是週期性或暫時性的，請找出受影響虛擬機器的資料變更率。 移至來源虛擬機器，在 [監視]**** 底下尋找計量，並新增如此螢幕擷取畫面所示的計量：
+根據磁片類型而定，Azure Site Recovery 有資料變更率的限制。 若要查看此問題是週期性或暫時性的，請找出受影響虛擬機器的資料變更率。 移至來源虛擬機器，在 [監視] 底下尋找計量，並新增如此螢幕擷取畫面所示的計量：
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/churn.png" alt-text="顯示高資料變更率太高的 Azure Site Recovery 頁面。":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/churn.png" alt-text="頁面，顯示尋找資料變更率的三步驟程式。":::
 
-1. 選取 [新增計量]****，然後新增 [OS 磁碟寫入位元組/秒]**** 和 [資料磁碟寫入位元組/秒]****。
+1. 選取 [新增計量]，然後新增 [OS 磁碟寫入位元組/秒] 和 [資料磁碟寫入位元組/秒]。
 1. 監視如螢幕擷取畫面所示的激增。
 1. 檢視發生於 OS 磁碟和所有資料磁碟的整體寫入作業。 這些計量可能不會提供給您每個磁碟層級的資訊，但表示資料變換率的整體模式。
 
@@ -116,7 +116,7 @@ Site Recovery 會將複寫的資料傳送到快取儲存體帳戶。 如果從�
 
 `C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log`
 
-若要找出錯誤，請在文字編輯器中開啟 _vacp.exe_ 檔案，以搜尋 **vacpError**的字串。
+若要找出錯誤，請在文字編輯器中開啟 _vacp.exe_ 檔案，以搜尋 **vacpError** 的字串。
 
 ```plaintext
 Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
@@ -130,7 +130,7 @@ Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRI
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>已停用 VSS 寫入器 - 錯誤　2147943458
 
-**如何修正**：若要產生應用程式一致性標記，Azure Site Recovery 會使用 VSS。 Site Recovery 會安裝 VSS 提供者，以取得應用程式一致性快照集的作業。 此 VSS 提供者會安裝為服務。 如果您未啟用 VSS 提供者服務，應用程式一致性快照集建立將會失敗。 它會顯示錯誤： **指定的服務已停用，且無法 (0x80070422) 啟動 **。
+**如何修正**：若要產生應用程式一致性標記，Azure Site Recovery 會使用 VSS。 Site Recovery 會安裝 VSS 提供者，以取得應用程式一致性快照集的作業。 此 VSS 提供者會安裝為服務。 如果您未啟用 VSS 提供者服務，應用程式一致性快照集建立將會失敗。 它會顯示錯誤： **指定的服務已停用，且無法 (0x80070422) 啟動**。
 
 如果 VSS 已停用：
 

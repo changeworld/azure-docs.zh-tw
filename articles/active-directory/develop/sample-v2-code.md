@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: sample
 ms.workload: identity
-ms.date: 10/21/2020
+ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e56748df2fb69ace4e9b8d9f6908bc8013176a19
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: b3ea370a686e272a1d8ea201dd953fc09c1098ee
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287813"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628181"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft 身分識別平台程式碼範例 (v2.0 端點)
 
@@ -60,6 +60,8 @@ ms.locfileid: "93287813"
 | ![此圖顯示 ASP.NET Framework 標誌](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET 快速入門](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2) (英文)  |  [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) (英文) </p> |[msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 | ![此圖顯示 Java 標誌](media/sample-v2-code/logo_java.png)  |                   | [ms-identity-java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
 | ![此圖顯示 Python 標誌](media/sample-v2-code/logo_python.png)  | [ms-identity-python-flask-webapp-authentication](https://github.com/Azure-Samples/ms-identity-python-flask-webapp-authentication) | [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp) |
+| ![此圖顯示 Python 標誌](media/sample-v2-code/logo_python.png)  | [Python Flask Web 應用程式](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md)登入使用者教學課程                   | [Python Flask Web 應用程式](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md)登入使用者和呼叫歷程圖教學課程 |
+| ![此圖顯示 Python 標誌](media/sample-v2-code/logo_python.png)  | [Python Flask Web 應用程式](https://github.com/Azure-Samples/ms-identity-b2c-python-flask-webapp-authentication/blob/main/README.md)使用 B2C 登入使用者                    |  |
 | ![此圖顯示 Ruby 標誌](media/sample-v2-code/logo_ruby.png) |                   | [msgraph-training-rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp) |
 
 ## <a name="desktop-and-mobile-public-client-apps"></a>桌上型與行動裝置公開用戶端應用程式

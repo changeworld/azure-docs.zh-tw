@@ -9,22 +9,22 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: b44196d62b964e46f5b9dda9076e265c1c819723
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 995ca98a21e5ec392182bb48932765cca35acf3a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88960440"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562452"
 ---
-# <a name="monitor-an-app-service-appwith-web-server-logs-using-azure-cli"></a>使用 Azure CLI 透過 Web 伺服器記錄監視 App Service 應用程式
+# <a name="monitor-an-app-service-app-with-web-server-logs-using-azure-cli"></a>使用 Azure CLI 透過 Web 伺服器記錄監視 App Service 應用程式
 
 此範例指令碼會建立資源群組、App Service 方案及應用程式，並設定應用程式來啟用 Web 伺服器記錄。 然後下載記錄檔來進行檢閱。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-如果您選擇在本機安裝和使用 CLI，需要 Azure CLI 2.0 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
+ - 本教學課程需要 2.0 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="sample-script"></a>範例指令碼
 

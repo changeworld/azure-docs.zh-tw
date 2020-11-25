@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 866f1c404df2de87c2b3ce58b791ceb5257fca1b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 88481346f22176b8e307b53774b42d753838f90b
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074442"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554815"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>快速入門：將功能旗標新增至 ASP.NET Core 應用程式
 
@@ -34,7 +34,7 @@ ms.locfileid: "92074442"
     > [!div class="mx-imgBorder"]
     > ![啟用名為 Beta 的功能旗標](media/add-beta-feature-flag.png)
 
-    立即將**標籤**保留為空白。 選取 [套用]  以儲存新的功能旗標。
+    立即將 **標籤** 保留為空白。 選取 [套用]  以儲存新的功能旗標。
 
 ## <a name="create-an-aspnet-core-web-app"></a>建立 ASP.NET Core Web 應用程式
 
@@ -66,7 +66,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
     dotnet user-secrets set ConnectionStrings:AppConfig "<your_connection_string>"
     ```
 
-    祕密管理員僅可用於在本機測試 Web 應用程式。 當應用程式部署至 [Azure App Service](https://azure.microsoft.com/services/app-service/web) 時，請使用 App Service 中的**連接字串**應用程式設定 (而不是秘密管理員) 來儲存連接字串。
+    祕密管理員僅可用於在本機測試 Web 應用程式。 當應用程式部署至 [Azure App Service](https://azure.microsoft.com/services/app-service/web) 時，請使用 App Service 中的 **連接字串** 應用程式設定 (而不是秘密管理員) 來儲存連接字串。
 
     使用 .NET Core 組態 API 來存取此秘密。 在所有支援的平台上，組態 API 的組態名稱中都適用冒號 (`:`)。 如需詳細資訊，請參閱[組態金鑰和值](/aspnet/core/fundamentals/configuration#configuration-keys-and-values)。
 
@@ -106,7 +106,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     ---
 
-    透過先前的變更，[應用程式組態的組態提供者](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)已向 .NET Core 組態 API 註冊。
+    透過先前的變更，[應用程式組態的組態提供者](https://go.microsoft.com/fwlink/?linkid=2074664)已向 .NET Core 組態 API 註冊。
 
 1. 在 *Startup.cs* 中，將參考新增至 .NET Core 功能管理員：
 
@@ -181,36 +181,9 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     上述程式碼可讓 `<feature>` 標籤協助程式用於專案的 *. cshtml* 檔案中。
 
-1. 在 *Views/Shared/_Layout. cshtml* 中，將 `<body>` > `<header>` 底下的 `<nav>` 條碼取代為下列標記：
+1. 在 *Views*\\*Shared* 目錄中，開啟 _Layout.cshtml。 找出 `<body>` > `<header>` 底下的 `<nav>` 條碼。 在 [首頁] 與 [隱私權] 導覽列項目之間插入新的 `<feature>` 標籤，如下列醒目提示的這幾行。
 
-    ```cshtml
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TestFeatureFlags</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <feature name="Beta">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Beta" asp-action="Index">Beta</a>
-                    </li>
-                    </feature>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    ```
-
-    在上述標記中，請注意 *Beta* 清單項目周圍的 `<feature>` 標籤協助程式。
+    :::code language="html" source="../../includes/azure-app-configuration-navbar.md" range="15-38" highlight="13-17":::
 
 1. 建立 *Views/Beta* 目錄和 *Index. cshtml* 檔案，其中包含下列標記：
 
@@ -246,13 +219,15 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [所有資源]  ，然後選取您在快速入門中建立的應用程式組態存放區執行個體。
 
-1. 選取 [功能管理員]，然後將 *Beta* 金鑰的狀態變更為 [開啟]。
+1. 選取 [功能管理員]。 
+
+1. 選取 [啟用] 底下的核取方塊，以啟用 [Beta] 旗標。
 
 1. 回到命令殼層。 按 <kbd>Ctrl + C</kbd>，取消執行中的 `dotnet` 程序。 使用 `dotnet run` 重新啟動您的應用程式。
 
 1. 重新整理瀏覽器頁面，以查看新的組態設定。
 
-    :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-after.png" alt-text="變更前的本機快速入門應用程式" border="true":::
+    :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-after.png" alt-text="變更後的本機快速入門應用程式" border="true":::
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -260,7 +235,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已建立新的應用程式組態存放區，並透過[功能管理程式庫](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)用它來管理 ASP.NET Core Web 應用程式中的功能。
+在本快速入門中，您已建立新的應用程式組態存放區，並透過[功能管理程式庫](https://go.microsoft.com/fwlink/?linkid=2074664)用它來管理 ASP.NET Core Web 應用程式中的功能。
 
 * 深入了解[功能管理](./concept-feature-management.md)。
 * [管理功能旗標](./manage-feature-flags.md)。

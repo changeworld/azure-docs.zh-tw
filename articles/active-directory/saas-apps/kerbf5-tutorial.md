@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 161348f7566ff64858d563f34ad8f3f4c7511adf
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459094"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009155"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 F5 整合
 
@@ -117,7 +117,7 @@ ms.locfileid: "92459094"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **F5** 。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **F5**。
 1. 從結果面板選取 [F5]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>設定及測試 F5 的 Azure AD 單一登入
@@ -138,7 +138,7 @@ ms.locfileid: "92459094"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [F5] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -239,7 +239,7 @@ ms.locfileid: "92459094"
 
     ![顯示 [虛擬伺服器屬性] 頁面的螢幕擷取畫面，其中已反白顯示 [目的地位址] 文字方塊，並已選取 [儲存並繼續下一步] 按鈕。](./media/kerbf5-tutorial/configure06.png)
 
-1. 在 [選取設定 IdP 連接器的方法] 底下指定中繼資料，按一下 [選擇檔案]，然後上傳先前從 Azure AD 下載的中繼資料 XML 檔案。 為 SAML IDP 連接器指定唯一的 **名稱** 。 選擇先前上傳的 [中繼資料簽署憑證]。 按一下 [儲存並繼續下一步]。
+1. 在 [選取設定 IdP 連接器的方法] 底下指定中繼資料，按一下 [選擇檔案]，然後上傳先前從 Azure AD 下載的中繼資料 XML 檔案。 為 SAML IDP 連接器指定唯一的 **名稱**。 選擇先前上傳的 [中繼資料簽署憑證]。 按一下 [儲存並繼續下一步]。
 
     ![顯示 [外部識別提供者連接器設定] 頁面的螢幕擷取畫面，其中已反白顯示 [名稱] 文字方塊，並已選取 [儲存並繼續下一步] 按鈕。](./media/kerbf5-tutorial/configure07.png)  
 
@@ -365,9 +365,9 @@ ms.locfileid: "92459094"
     >[!Note]
     > 您將需要建立和指定 Kerberos 委派帳戶。 請參閱 KCD 一節 (參閱「變數參考」的附錄)
 
-    * **使用者名稱來源** ：session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
+    * **使用者名稱來源**：session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
 
-    * **使用者領域來源** ：session.logon.last.domain
+    * **使用者領域來源**：session.logon.last.domain
 
         ![顯示 [單一登入 - 屬性] 頁面的螢幕擷取畫面，其中已反白顯示 [使用者名稱來源] 和 [使用者領域來源] 文字方塊。](./media/kerbf5-tutorial/configure29.png)
 
@@ -452,9 +452,9 @@ ms.locfileid: "92459094"
 *  **步驟 1：** 建立委派帳戶
 
     **範例︰**
-    * 網域名稱： **superdemo.live**
+    * 網域名稱：**superdemo.live**
 
-    * SAM 帳戶名稱： **big-ipuser**
+    * SAM 帳戶名稱：**big-ipuser**
 
     * New-ADUser -Name "APM Delegation Account" -UserPrincipalName host/big-ipuser.superdemo.live@superdemo.live -SamAccountName "big-ipuser" -PasswordNeverExpires $true -Enabled $true -AccountPassword (Read-Host -AsSecureString "Password!1234")
 

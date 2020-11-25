@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7d02095bbe3326209cff6b4e99858b2598c7a914
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 1929cd512d18d7fd234aff1f55814c423455e63b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282228"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561364"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>快速入門：使用 Azure CLI 建立 Azure DNS 區域和記錄
 
@@ -24,14 +24,11 @@ DNS 區域用來裝載特定網域的 DNS 記錄。 若要開始將網域裝載�
 
 Azure DNS 也支援私人 DNS 區域。 若要深入了解私人 DNS 區域，請參閱[使用 Azure DNS 私人網域](private-dns-overview.md)。 如需如何建立私人 DNS 區域的範例，請參閱[利用 CLI 開始使用 Azure DNS 私人區域](./private-dns-getstarted-cli.md)。
 
-## <a name="prerequisites"></a>必要條件
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [Azure CLI 2.0.4 版或更新版本](/cli/azure/install-azure-cli) (如果您在本機執行 Azure CLI)。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 本文需要 2.0.4 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-the-resource-group"></a>建立資源群組
 

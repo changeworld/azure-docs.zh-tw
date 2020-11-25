@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 1f5281ead3c0487b6052859df3b33fa6ddaaf45a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f2a01c4e4d364494d271fa676bca5bfac2677395
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613317"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592742"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入門：登入使用者並取得 JavaScript SPA 中的存取權杖
 
-在本快速入門中，您會使用程式碼範例了解 JavaScript 單頁應用程式 (SPA) 如何讓使用者登入個人帳戶、公司帳戶和學校帳戶。 JavaScript SPA 也可以取得呼叫 Microsoft Graph API 或任何 Web API 的存取權杖。 如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。
+在本快速入門中，您會下載並執行程式碼範例，該範例會示範 JavaScript 單頁應用程式 (SPA) 如何登入使用者並呼叫 Microsoft Graph。 此程式碼範例也會示範如何取得存取權杖來呼叫 Microsoft Graph API 或任何 Web API。
+
+如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -74,10 +76,10 @@ ms.locfileid: "91613317"
 > [!div renderon="docs"]
 > 若要使用 Node.js 搭配網頁伺服器來執行專案，請[下載核心專案檔](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)。
 
-> [!div renderon="portal"]
+> [!div renderon="portal" class="sxs-lookup"]
 > 使用 Node.js 以網頁伺服器執行專案
 
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [下載程式碼範例](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)
 
 > [!div renderon="docs"]
@@ -102,7 +104,7 @@ ms.locfileid: "91613317"
 >
 >```
 
-> [!div renderon="portal"]
+> [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
 
@@ -110,7 +112,7 @@ ms.locfileid: "91613317"
 >
 > 其中：
 > - *\<Enter_the_Application_Id_Here>* 是您註冊之應用程式的 **應用程式 (用戶端) 識別碼**。
-> - *\<Enter_the_Cloud_Instance_Id_Here>* 是 Azure 雲端的執行個體。 針對主要或全域 Azure 雲端，只要輸入 *https://login.microsoftonline.com* 即可。 針對**國家**雲端 (例如中國)，請參閱[國家雲端](./authentication-national-cloud.md)。
+> - *\<Enter_the_Cloud_Instance_Id_Here>* 是 Azure 雲端的執行個體。 針對主要或全域 Azure 雲端，只要輸入 *https://login.microsoftonline.com* 即可。 針對 **國家** 雲端 (例如中國)，請參閱 [國家雲端](./authentication-national-cloud.md)。
 > - *\<Enter_the_Tenant_info_here>* 設定為下列其中一個選項：
 >    - 如果您的應用程式支援「此組織目錄中的帳戶」，請將此值取代為 [租用戶識別碼] 或 [租用戶名稱] \(例如 *contoso.microsoft.com*\)。
 >    - 如果您的應用程式支援「任何組織目錄中的帳戶」，請將此值取代為 [組織]。

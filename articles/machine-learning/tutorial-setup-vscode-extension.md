@@ -1,20 +1,20 @@
 ---
 title: 教學課程：設定 Visual Studio Code 擴充功能 (預覽)
 titleSuffix: Azure Machine Learning
-description: 了解如何設定 Visual Studio Code Azure Machine Learning 擴充功能。
+description: 了解如何使用 Azure Machine Learning Visual Studio Code 擴充功能來安裝和執行訓練指令碼。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 07/09/2020
-ms.openlocfilehash: 48fb2ce3672634af202500ccb256e7730933fff8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/16/2020
+ms.openlocfilehash: f485c12bf82dde798a77175a3fab4d76488150c3
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86199765"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701196"
 ---
 # <a name="set-up-azure-machine-learning-visual-studio-code-extension-preview"></a>設定 Azure Machine Learning Visual Studio Code 擴充功能 (預覽)
 
@@ -46,7 +46,7 @@ ms.locfileid: "86199765"
 > [!NOTE]
 > 或者，您可以[直接下載安裝程式](https://aka.ms/vscodetoolsforai)，以透過 Visual Studio Marketplace 安裝 Azure Machine Learning 擴充功能。 
 
-本教學課程中的其餘步驟都已使用 **0.6.8 版**的擴充功能進行測試。
+本教學課程中的其餘步驟都已使用 **0.6.8 版** 的擴充功能進行測試。
 
 ## <a name="sign-in-to-your-azure-account"></a>登入您的 Azure 帳戶
 

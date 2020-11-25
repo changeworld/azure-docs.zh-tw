@@ -12,16 +12,16 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 4179807b349504d1ac0932f8d0816603f83afae4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 643e3bcd50258e2b5e7f52646f231485f950d677
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613419"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515540"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>快速入門：讓使用者登入並取得 Angular 單頁應用程式中的存取權杖
 
-在本快速入門中，您會使用程式碼範例了解 Angular 單頁應用程式 (SPA) 如何讓具有個人 Microsoft 帳戶、公司帳戶或學校帳戶的使用者登入。 Angular SPA 也可以取得呼叫 Microsoft Graph API 或任何 Web API 的存取權杖。
+在本快速入門中，您會下載並執行程式碼範例，該範例會示範 Angular 單頁應用程式 (SPA) 如何登入使用者並呼叫 Microsoft Graph。 此程式碼範例會示範如何取得存取權杖來呼叫 Microsoft Graph API 或任何 Web API。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -98,7 +98,7 @@ ms.locfileid: "91613419"
 >
 >|值名稱|描述|
 >|---------|---------|
->|Enter_the_Application_Id_Here|在應用程式註冊的 [概觀] 頁面中，這是您的**應用程式 (用戶端) 識別碼**值。 |
+>|Enter_the_Application_Id_Here|在應用程式註冊的 [概觀] 頁面中，這是您的 **應用程式 (用戶端) 識別碼** 值。 |
 >|Enter_the_Cloud_Instance_Id_Here|這是 Azure 雲端的執行個體。 針對主要或全域 Azure 雲端，請輸入 **https://login.microsoftonline.com** 。 針對國家端 (例如中國)，請參閱[國家雲端](./authentication-national-cloud.md)。|
 >|Enter_the_Tenant_Info_Here| 設為下列其中一個選項：如果您的應用程式支援「此組織目錄中的帳戶」，請將此值取代為目錄 (租用戶) 識別碼或租用戶名稱 (例如 **contoso.microsoft.com**)。 如果您的應用程式支援「任何組織目錄中的帳戶」，請將此值取代為 [組織]。 如果您的應用程式支援「任何組織目錄中的帳戶及個人的 Microsoft 帳戶」，請將此值取代為 [通用]。 若要將支援範圍限制為「僅限個人 Microsoft 帳戶」，請將此值取代為 [取用者]。 |
 >|Enter_the_Redirect_Uri_Here|以 **http://localhost:4200** 取代。|

@@ -1,15 +1,15 @@
 ---
-title: 教學課程 - 使用 CLI 在 Azure 上備份 SAP Hana DB
+title: 教學課程 - 使用 Azure CLI 在 Azure 上備份 SAP Hana DB
 description: 在本教學課程中，您將了解如何使用 Azure CLI 將執行於 Azure VM 上的 SAP Hana 資料庫備份至 Azure 備份復原服務保存庫。
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f11e01c6af18cac956d58b9c692d7b57c8fe653a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41869ac4dfc0d3964fb48463e5f142b8391e2d94
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324955"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579247"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教學課程：使用 Azure CLI 在 Azure VM 中備份 SAP Hana 資料庫
 
@@ -26,9 +26,9 @@ Azure CLI 可用來從命令列或透過指令碼建立和管理 Azure 資源。
 
 請查看[我們目前支援的 SAP Hana 案例](./sap-hana-backup-support-matrix.md#scenario-support)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-若要在本機安裝和使用 CLI，您必須執行 Azure CLI xx.xxx.x 版或更新版本。 若要知道 CLI 版本，執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+ - 本教學課程需要 2.0.30 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-recovery-services-vault"></a>建立復原服務保存庫
 

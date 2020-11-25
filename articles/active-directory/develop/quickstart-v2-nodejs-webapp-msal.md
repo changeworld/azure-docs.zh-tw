@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: amikuma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: e223b5ae072a323ad56ed396c06580fea9b8b7ab
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 52e6c70b76b83c73059dc887eaefe8403befac13
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335242"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594227"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>快速入門：使用授權碼流程讓使用者登入並取得 Node Web 應用程式中的存取權杖
 
-在本快速入門中，您會執行程式碼範例，該範例會示範 Node Web 應用程式如何使用授權碼流程讓使用者登入個人帳戶、公司帳戶和學校帳戶。 此程式碼範例也會示範如何取得存取權杖來呼叫 Web API (在此案例中為 Microsoft Graph API)。 如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。
+在本快速入門中，您會下載並執行程式碼範例，該範例會示範 Node.js Web 應用程式如何使用授權碼流程登入使用者。 此程式碼範例也會示範如何取得存取權杖以呼叫 Microsoft Graph API。 
+
+如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。
 
 本快速入門會使用適用於 Node.js 的 Microsoft 驗證程式庫 (MSAL Node) 與授權碼流程。
 
@@ -49,7 +51,7 @@ ms.locfileid: "94335242"
 > 1. 選取 [註冊]。 
 > 1. 在應用程式 [概觀] 頁面上，記下 [應用程式 (用戶端) 識別碼] 值以供稍後使用。
 > 1. 在 **憑證與祕密** 下，選取 [新增用戶端密碼]。  將描述和預設到期日留白，然後按一下 [新增]。
-> 1. 請注意 **用戶端密碼** 的 **值** ，以供稍後使用。
+> 1. 請注意 **用戶端密碼** 的 **值**，以供稍後使用。
 
 #### <a name="step-2-download-the-project"></a>步驟 2:下載專案
 
@@ -92,8 +94,8 @@ ms.locfileid: "94335242"
 >
 > 修改 `config` 區段中的值，如下所述：
 >
-> - `Enter_the_Application_Id_Here` 是您註冊的應用程式所具備的 **應用程式 (用戶端) 識別碼** 。
-> - `Enter_the_Client_Secret_Here` 是您註冊的應用程式之 **用戶端密碼** 的 **值** 。
+> - `Enter_the_Application_Id_Here` 是您註冊的應用程式所具備的 **應用程式 (用戶端) 識別碼**。
+> - `Enter_the_Client_Secret_Here` 是您註冊的應用程式之 **用戶端密碼** 的 **值**。
 >
 > 預設 `authority` 值代表主要 (全域) Azure 雲端：
 >
@@ -102,7 +104,7 @@ ms.locfileid: "94335242"
 > ```
 >
 > > [!TIP]
-> > 若要尋找 **應用程式 (用戶端) 識別碼** 的值，請在 Azure 入口網站中移至應用程式註冊的 **概觀** 頁面。 前往 **憑證與祕密** 下取得或產生新的 **用戶端密碼** 。
+> > 若要尋找 **應用程式 (用戶端) 識別碼** 的值，請在 Azure 入口網站中移至應用程式註冊的 **概觀** 頁面。 前往 **憑證與祕密** 下取得或產生新的 **用戶端密碼**。
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步驟 3：您的應用程式已設定並準備好執行

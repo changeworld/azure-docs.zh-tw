@@ -7,19 +7,19 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 07/29/2020
-ms.openlocfilehash: 852708470af00aebdb5f1ff3e8be965ba157a251
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 492246b5dfb19664ea54ce8b5462c7d77f8d951b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098258"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562707"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-gremlin-api-database-and-graph-using-azure-cli"></a>使用 Azure CLI 建立 Azure Cosmos Gremlin API 資料庫與圖表的資源鎖定
 [!INCLUDE[appliesto-gremlin-api](../../../includes/appliesto-gremlin-api.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../../../includes/azure-cli-prepare-your-environment.md)]
 
-若選擇在本機安裝及使用 CLI，此主題需要您執行 Azure CLI 2.9.1 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+- 本文需要 2.9.1 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 > [!IMPORTANT]
 > 除非先啟用 `disableKeyBasedMetadataWriteAccess` 屬性鎖定 Cosmos DB 帳戶，否則資源鎖定對使用任何 Gremlin SDK 或 Azure 入口網站進行連線之使用者所做的變更無效。 若要深入了解如何啟用此屬性，請參閱[防止來自 SDK 的變更](../../../role-based-access-control.md#prevent-sdk-changes) (機器翻譯)。
@@ -41,8 +41,8 @@ ms.locfileid: "93098258"
 
 ## <a name="next-steps"></a>後續步驟
 
--[鎖定資源以防止非預期的變更](../../../../azure-resource-manager/management/lock-resources.md)
+- [鎖定資源以防止非預期的變更](../../../../azure-resource-manager/management/lock-resources.md)
 
--[Azure Cosmos DB CLI 文件](/cli/azure/cosmosdb)。
+- [Azure Cosmos DB CLI 文件](/cli/azure/cosmosdb)。
 
--[Azure Cosmos DB CLI GitHub 存放庫](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)。
+- [Azure Cosmos DB CLI GitHub 存放庫](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)。

@@ -7,11 +7,11 @@ ms.date: 11/21/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter , devx-track-azurecli
 ms.openlocfilehash: 00addbe992bc113c67df08f73414107d51b3bce5
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748213"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007387"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>在 Service Fabric Mesh 應用程式中裝載以檔案儲存體為基礎的磁碟區 
 
@@ -19,7 +19,7 @@ ms.locfileid: "92748213"
 
 若要在服務中裝載磁碟區，請在 Service Fabric Mesh 應用程式中建立磁碟區資源，然後在服務中參考該磁碟區。  您可以在[以 YAML 為基礎的資源檔](#declare-a-volume-resource-and-update-the-service-resource-yaml)或[以 JSON 為基礎的部署範本](#declare-a-volume-resource-and-update-the-service-resource-json)中，宣告磁碟區資源並在服務資源中加以參考。 在裝載磁碟區之前，請先建立 Azure 儲存體帳戶和[檔案儲存體中的檔案共用](../storage/files/storage-how-to-create-file-share.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 > [!NOTE]
 > **WINDOWS RS5 開發電腦上的部署已知問題：** Powershell Cmdlet 的 open bug New-SmbGlobalMapping 在防止掛接 Azurefile 磁片區的 RS5 Windows 電腦上。 以下是以 AzureFile 為基礎的磁片區掛接在本機開發機器時所遇到的範例錯誤。
 ```

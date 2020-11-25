@@ -11,11 +11,11 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.openlocfilehash: 3dc6fb64f6e8695d84e292322293998e2f4cb0a3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324775"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009223"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>在資料科學虛擬機器上設定通用身分識別
 
@@ -39,7 +39,7 @@ Azure AD DS 可透過在 Azure 上提供完全受控的服務，讓您輕鬆地�
     
    1. 選取 [Azure Active Directory]，然後選取 [使用者和群組]。
     
-   1. 在 [ **使用者和群組** ] 中，選取 [ **所有使用者** ]，然後選取 [ **新增使用者** ]。
+   1. 在 [ **使用者和群組**] 中，選取 [ **所有使用者**]，然後選取 [ **新增使用者**]。
    
         [ **使用者** ] 窗格隨即開啟：
       
@@ -51,7 +51,7 @@ Azure AD DS 可透過在 Azure 上提供完全受控的服務，讓您輕鬆地�
     
    1. (選擇性) 您可以開啟使用者的 [設定檔]、[群組] 或 [目錄角色]，然後在其中填入資訊。 
     
-   1. 在 [ **使用者** ] 底下，選取 [ **建立** ]。
+   1. 在 [ **使用者**] 底下，選取 [ **建立**]。
     
    1. 將產生的密碼安全地散發給新的使用者，讓他們可以登入。
 

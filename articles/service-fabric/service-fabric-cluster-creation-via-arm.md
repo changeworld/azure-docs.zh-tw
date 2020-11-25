@@ -4,11 +4,11 @@ description: 了解如何使用 Azure Resource Manager 在 Azure 中設定安全
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: fd2c472d24f305e42f1706e5fc49168ccde2a580
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258746"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008662"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>使用 Azure Resource Manager 來建立 Service Fabric 叢集 
 > [!div class="op_single_selector"]
@@ -60,7 +60,7 @@ az account set --subscription $subscriptionId
 
 您可以在[Azure Service Fabric 範本範例： windows 範本](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG)和[Ubuntu 範本](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)上取得所使用的範本
 
-下列命令可以建立 Windows 或 Linux 叢集，您需要指定適用的作業系統。 PowerShell/CLI 命令也會在指定的 CertificateOutputFolder** 中輸出憑證，但是請確定已建立憑證資料夾。 此命令也需要其他參數如 VM SKU。
+下列命令可以建立 Windows 或 Linux 叢集，您需要指定適用的作業系統。 PowerShell/CLI 命令也會在指定的 CertificateOutputFolder 中輸出憑證，但是請確定已建立憑證資料夾。 此命令也需要其他參數如 VM SKU。
 
 > [!NOTE]
 > 下列 PowerShell 命令僅適用于 Azure PowerShell `Az` 模組。 若要檢查 Azure Resource Manager PowerShell 版本的目前版本，請執行下列 PowerShell 命令 "Get-help Az"。 遵循[此連結](/powershell/azure/install-Az-ps)即可升級 Azure Resource Manager PowerShell 版本。 
@@ -159,7 +159,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 如果您有想要用來保護叢集的憑證，請使用下列命令建立叢集。
 
-如果這是 CA 簽署的憑證，而您最後會將其用於其他用途，建議您特別針對金鑰保存庫提供不同的資源群組。 建議您將 Key Vault 放入其自己的資源群組中。 此動作可讓您移除計算和儲存體資源群組 (包括含有 Service Fabric 叢集的資源群組)，而不會遺失您的金鑰和密碼。 **含有您金鑰保存庫的資源群組*必須與正在使用它的叢集位於相同區域*。**
+如果這是 CA 簽署的憑證，而您最後會將其用於其他用途，建議您特別針對金鑰保存庫提供不同的資源群組。 建議您將 Key Vault 放入其自己的資源群組中。 此動作可讓您移除計算和儲存體資源群組 (包括含有 Service Fabric 叢集的資源群組)，而不會遺失您的金鑰和密碼。 **含有您金鑰保存庫的資源群組 *必須與正在使用它的叢集位於相同區域*。**
 
 ### <a name="use-the-default-five-node-one-node-type-template-that-ships-in-the-module"></a>使用預設 5 節點 (模組中隨附的節點類型範本)
 您可以從[Azure 範例： Windows 範本](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG)和[Ubuntu 範本](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)取得所使用的範本
@@ -278,7 +278,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
     --template-file $templateFilePath --parameter-file $parameterFilePath 
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 此時，Azure 中已有安全的叢集在執行。 接下來，請[連線到您的叢集](service-fabric-connect-to-secure-cluster.md)並了解如何[管理應用程式密碼](service-fabric-application-secret-management.md)。
 
 如需使用範本的 JSON 語法和屬性，請參閱[叢集範本參考](/azure/templates/microsoft.servicefabric/clusters)。

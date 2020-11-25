@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: 6567651f76ff19a8105158b243de7582256e0375
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 6dba148f0cde81905bc66f7750ff5e04edc948aa
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320909"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566383"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>使用 Azure 入口網站以累加方式將資料從 Azure SQL Database 載入至 Azure Blob 儲存體
 
@@ -153,13 +153,13 @@ END
 ## <a name="create-a-data-factory"></a>建立 Data Factory
 
 1. 啟動 **Microsoft Edge** 或 **Google Chrome** 網頁瀏覽器。 目前，只有 Microsoft Edge 和 Google Chrome 網頁瀏覽器支援 Data Factory UI。
-2. 在左側功能表上，選取 [建立資源] > [分析] > [資料處理站]：
+2. 在左側功能表上，選取 [建立資源] > [整合] > [Data Factory]：
 
    ![在 [新增] 窗格中選取資料處理站](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 3. 在 [新增 Data Factory] 頁面中，輸入 [ADFTutorialOnPremDF] 作為 [名稱]。
 
-   Azure Data Factory 的名稱必須是 **全域唯一的**。 如果您看到有以下錯誤的紅色驚嘆號，請變更 Data Factory 名稱 (例如 yournameADFTutorialDataFactory)，然後試著重新建立。 請參閱 [Data Factory - 命名規則](naming-rules.md)一文，以了解 Data Factory 成品的命名規則。
+   Azure Data Factory 的名稱必須是「全域唯一的」。 如果您看到有以下錯誤的紅色驚嘆號，請變更 Data Factory 名稱 (例如 yournameADFTutorialDataFactory)，然後試著重新建立。 請參閱 [Data Factory - 命名規則](naming-rules.md)一文，以了解 Data Factory 成品的命名規則。
 
     *Data factory 名稱 "ADFIncCopyTutorialDF" 無法使用*
 4. 選取您要在其中建立資料處理站的 Azure **訂用帳戶**。
@@ -188,7 +188,7 @@ END
 4. 讓我們新增第一個查閱活動來取得舊的浮水印值。 在 [活動] 工具箱中展開 [一般]，並將 [查閱] 活動拖放至管線設計工具介面。 將活動名稱變更為 **LookupOldWaterMarkActivity**。
 
    ![第一個查閱活動 - 名稱](./media/tutorial-incremental-copy-portal/first-lookup-name.png)
-5. 切換至 [設定] 索引標籤，然後按一下 [+ 新增] 以新增**來源資料集**。 在此步驟中，您會建立資料集來代表**浮水印資料表**中的資料。 此資料表包含先前複製作業中所使用的舊浮水印。
+5. 切換至 [設定] 索引標籤，然後按一下 [+ 新增] 以新增 **來源資料集**。 在此步驟中，您會建立資料集來代表 **浮水印資料表** 中的資料。 此資料表包含先前複製作業中所使用的舊浮水印。
 
 6. 在 [新增資料集] 視窗中選取 [Azure SQL Database]，然後按一下 [繼續]。 您會看到系統為該資料集開啟新視窗。
 
@@ -197,9 +197,9 @@ END
 8. 在 [已連結的服務] 視窗中，選取 [新增]，然後執行下列步驟：
 
     1. 輸入 **AzureSqlDatabaseLinkedService** 作為 [名稱]。
-    2. 選取要供**伺服器名稱**使用的伺服器。
-    3. 從下拉式清單中選取您的**資料庫名稱**。
-    4. 輸入您的**使用者名稱** & **密碼**。
+    2. 選取要供 **伺服器名稱** 使用的伺服器。
+    3. 從下拉式清單中選取您的 **資料庫名稱**。
+    4. 輸入您的 **使用者名稱** & **密碼**。
     5. 若要測試您的 SQL 資料庫連線，請按一下 [測試連線]。
     6. 按一下 [完成] 。
     7. 確認已為 [已連結的服務] 選取 [AzureSqlDatabaseLinkedService]。
@@ -229,7 +229,7 @@ END
     ![第二個查閱活動 - 查詢](./media/tutorial-incremental-copy-portal/query-for-new-watermark.png)
 19. 在 [活動] 工具箱中，展開 [移動和轉換]，並從 [活動] 工具箱中拖放 [複製] 活動，以及將名稱設定為 **IncrementalCopyActivity**。
 
-20. 透過將 [查閱] 活動所附加的**綠色按鈕**拖曳至 [複製] 活動 **，即可將兩個 [查閱] 活動同時連線至 [複製] 活動**。 當您看到 [複製] 活動的框線顏色變為藍色時即鬆開滑鼠按鈕。
+20. 透過將 [查閱] 活動所附加的 **綠色按鈕** 拖曳至 [複製] 活動 **，即可將兩個 [查閱] 活動同時連線至 [複製] 活動**。 當您看到 [複製] 活動的框線顏色變為藍色時即鬆開滑鼠按鈕。
 
     ![將 [查閱] 活動連線至 [複製] 活動](./media/tutorial-incremental-copy-portal/connection-lookups-to-copy.png)
 21. 選取 [複製] 活動並確認您在 [屬性] 視窗中看到活動的屬性。
@@ -249,7 +249,7 @@ END
 
 24. 在本教學課程中，接收資料存放區是 Azure Blob 儲存體類型。 因此，選取 [Azure Blob 儲存體]，然後按一下 [新增資料集] 視窗中的 [繼續]。
 25. 在 [選取格式] 視窗中，選取您資料的格式類型，然後按一下 [繼續]。
-25. 在 [設定屬性] 視窗中，輸入 **SinkDataset** 作為 [名稱]。 為 [已連結的服務] 選取 [+ 新增]。 在此步驟中，您將建立與 **Azure Blob 儲存體**的連線 (連結的服務)。
+25. 在 [設定屬性] 視窗中，輸入 **SinkDataset** 作為 [名稱]。 為 [已連結的服務] 選取 [+ 新增]。 在此步驟中，您將建立與 **Azure Blob 儲存體** 的連線 (連結的服務)。
 26. 在 [新增連結服務 (Azure Blob 儲存體)] 視窗中，執行下列步驟：
 
     1. 輸入 **AzureStorageLinkedService** 作為 [名稱]。
@@ -258,11 +258,11 @@ END
 
 27. 在 [設定屬性] 視窗中，確認已為 [已連結的服務] 選取 [AzureStorageLinkedService]。 然後選取 [完成]。
 28. 移至 SinkDataset 的 [連線] 索引標籤，然後執行下列步驟：
-    1. 在 [檔案路徑] 欄位中，輸入 **adftutorial/incrementalcopy**。 **adftutorial** 是 blob 容器名稱而 **incrementalcopy** 是資料夾名稱。 此程式碼片段假設您在 Blob 儲存體中有一個名為 adftutorial 的 Blob 容器。 建立容器 (若不存在)，或設為現有容器的名稱。 如果輸出資料夾 **incrementalcopy** 不存在，Azure Data Factory 將會自動建立。 您也可以對**檔案路徑**使用 [瀏覽] 按鈕來瀏覽至 blob 容器中的資料夾。
+    1. 在 [檔案路徑] 欄位中，輸入 **adftutorial/incrementalcopy**。 **adftutorial** 是 blob 容器名稱而 **incrementalcopy** 是資料夾名稱。 此程式碼片段假設您在 Blob 儲存體中有一個名為 adftutorial 的 Blob 容器。 建立容器 (若不存在)，或設為現有容器的名稱。 如果輸出資料夾 **incrementalcopy** 不存在，Azure Data Factory 將會自動建立。 您也可以對 **檔案路徑** 使用 [瀏覽] 按鈕來瀏覽至 blob 容器中的資料夾。
     2. 為 [檔案路徑] 欄位的 [檔案] 部分選取 [新增動態內容 [Alt+P]]，然後在開啟的視窗中輸入 `@CONCAT('Incremental-', pipeline().RunId, '.txt')`。 然後選取 [完成]。 系統會使用運算式來動態產生此檔案名稱。 每個管線執行都有唯一的識別碼。 複製活動會使用執行識別碼來產生檔案名稱。
 
-28. 按一下頂端的 [管線] 索引標籤或左側樹狀檢視中的管線名稱，即可切換到**管線**編輯器。
-29. 在 [活動] 工具箱中展開 [一般]，並將 [預存程序] 活動從 [活動] 工具箱拖放至管線設計工具介面。 將 [複製] 活動的綠色 (成功) 輸出**連線**至 [預存程序] 活動。
+28. 按一下頂端的 [管線] 索引標籤或左側樹狀檢視中的管線名稱，即可切換到 **管線** 編輯器。
+29. 在 [活動] 工具箱中展開 [一般]，並將 [預存程序] 活動從 [活動] 工具箱拖放至管線設計工具介面。 將 [複製] 活動的綠色 (成功) 輸出 **連線** 至 [預存程序] 活動。
 
 24. 選取管線設計工具中的 [預存程序活動]，將其名稱變更為 **StoredProceduretoWriteWatermarkActivity**。
 

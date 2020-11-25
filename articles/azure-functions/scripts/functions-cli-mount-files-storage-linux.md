@@ -4,12 +4,12 @@ description: 建立無伺服器 Python 函式應用程式，並使用 Azure CLI 
 ms.topic: sample
 ms.date: 03/01/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 63ab9ba3219dc600187e73bbf124d62d3f51317a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bdcaeaca7c063f0532167077bba63f7e52a3d491
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87498203"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565053"
 ---
 # <a name="mount-a-file-share-to-a-python-function-app-using-azure-cli"></a>使用 Azure CLI 將檔案共用掛接至 Python 函式應用程式
 
@@ -20,9 +20,9 @@ ms.locfileid: "87498203"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。 範例是針對 Bash 殼層所撰寫，而且必須修改成在 Windows 命令提示字元中執行。 
+ - 本教學課程需要 2.0 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。 
 
 ## <a name="sample-script"></a>範例指令碼
 

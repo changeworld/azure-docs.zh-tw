@@ -4,11 +4,11 @@ description: 瞭解應用程式容器映射的基底映射，以及基底映射�
 ms.topic: article
 ms.date: 01/22/2019
 ms.openlocfilehash: 74e5fb81e3ef6f75b5ee2872ee44b99aae096fd8
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025760"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009818"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>關於 ACR 工作的基底映射更新
 
@@ -16,7 +16,7 @@ ms.locfileid: "93025760"
 
 ## <a name="what-are-base-images"></a>什麼是基底映射？
 
-定義大部分容器映射的 dockerfile 會指定映射所依據的父映射，通常稱為其 *基底映射* 。 基底映像通常包含會套用容器其餘各層的作業系統，例如 [Alpine Linux][base-alpine] 或 [Windows Nano Server][base-windows]。 此外也可能包含應用程式架構，例如 [Node.js][base-node] 或 [.NET Core][base-dotnet]。 這些基底映射本身通常是以公用上游映射為基礎。 您有數個應用程式映像可能會共用一個通用基底映像。
+定義大部分容器映射的 dockerfile 會指定映射所依據的父映射，通常稱為其 *基底映射*。 基底映像通常包含會套用容器其餘各層的作業系統，例如 [Alpine Linux][base-alpine] 或 [Windows Nano Server][base-windows]。 此外也可能包含應用程式架構，例如 [Node.js][base-node] 或 [.NET Core][base-dotnet]。 這些基底映射本身通常是以公用上游映射為基礎。 您有數個應用程式映像可能會共用一個通用基底映像。
 
 基底映像常會由映像維護程式進行更新，以在映像中納入作業系統或架構的新功能或增強功能。 安全性修補程式是基底映像進行更新的另一個常見原因。 當這些上游更新發生時，您也必須更新您的基底映射以納入重大修正。 接著，還必須重建每個應用程式映像，以包含現在包含在基底映像中的這些上游修正。
 
@@ -52,7 +52,7 @@ ACR 工作會在建立容器映射時，動態地探索基底映射的相依性�
 
 ## <a name="additional-considerations"></a>其他考量
 
-* **應用程式映射的基底映射** -目前，ACR 工作只會追蹤應用程式 ( *運行* 時間) 映射的基底映射更新。 不會針對用於多階段 Dockerfile 的中繼 (建置階段  ) 映像追蹤基底映像更新。  
+* **應用程式映射的基底映射** -目前，ACR 工作只會追蹤應用程式 (*運行* 時間) 映射的基底映射更新。 不會針對用於多階段 Dockerfile 的中繼 (建置階段) 映像追蹤基底映像更新。  
 
 * **預設為啟用** -當您使用 [az ACR task CREATE][az-acr-task-create] 命令建立 ACR 工作時，根據預設，基底映射更新會 *啟用* 此工作的觸發程式。 也就是 `base-image-trigger-enabled` 屬性設定為 True。 如果您想要在工作中停用此行為，請將屬性更新為 False。 例如，執行以下 [az acr task update][az-acr-task-update] 命令：
 
@@ -60,7 +60,7 @@ ACR 工作會在建立容器映射時，動態地探索基底映射的相依性�
   az acr task update --myregistry --name mytask --base-image-trigger-enabled False
   ```
 
-* 用 **來追蹤** 相依性的觸發程式-若要讓 ACR 工作能夠判斷和追蹤容器映射的相依性（包括其基底映射），您必須先觸發工作至少建立映射 **一次** 。 例如，使用 [az acr task run][az-acr-task-run] 命令以手動觸發工作。
+* 用 **來追蹤** 相依性的觸發程式-若要讓 ACR 工作能夠判斷和追蹤容器映射的相依性（包括其基底映射），您必須先觸發工作至少建立映射 **一次**。 例如，使用 [az acr task run][az-acr-task-run] 命令以手動觸發工作。
 
 * **基底映射的穩定** 標籤-若要在基底映射更新時觸發工作，基底映射必須有 *穩定* 的標記，例如 `node:9-alpine` 。 這個標籤通常適用於隨著 OS 和架構修補程式更新到最新穩定版本的基底映像。 如果基底映像是隨著新版本標籤更新，它就不會觸發工作。 如需有關映像標籤的詳細資訊，請參閱[最佳做法指引](container-registry-image-tag-version.md)。 
 

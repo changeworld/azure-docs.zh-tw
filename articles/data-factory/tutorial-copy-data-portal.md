@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 05/28/2020
+ms.date: 11/11/2020
 ms.author: jingwang
-ms.openlocfilehash: becebf5e56840b8430dd8d4a7714229503e677da
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: ef9ac29735289d5c7a60ff0fca3b9e9f360f6e08
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637117"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555391"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料從 Azure Blob 儲存體複製到 Azure SQL Database 中的資料庫
 
@@ -39,9 +39,9 @@ ms.locfileid: "92637117"
 > * 監視管線和活動執行。
 
 ## <a name="prerequisites"></a>必要條件
-* **Azure 訂用帳戶** 。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
-* **Azure 儲存體帳戶** 。 您會使用 Blob 儲存體作為 *來源* 資料存放區。 如果您沒有儲存體帳戶，請參閱[建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md)，按照步驟建立此帳戶。
-* **Azure SQL Database** 。 您會使用資料庫作為 *接收* 資料存放區。 如果您在 Azure SQL Database 中沒有資料庫，請參閱[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)，按照步驟建立資料庫。
+* **Azure 訂用帳戶**。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
+* **Azure 儲存體帳戶**。 您會使用 Blob 儲存體作為 *來源* 資料存放區。 如果您沒有儲存體帳戶，請參閱[建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md)，按照步驟建立此帳戶。
+* **Azure SQL Database**。 您會使用資料庫作為 *接收* 資料存放區。 如果您在 Azure SQL Database 中沒有資料庫，請參閱[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)，按照步驟建立資料庫。
 
 ### <a name="create-a-blob-and-a-sql-table"></a>建立 Blob 和 SQL 資料表
 
@@ -75,19 +75,19 @@ ms.locfileid: "92637117"
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-1. 允許 Azure 服務存取 SQL Server。 確定 SQL Server 的 [允許存取 Azure 服務] 已 **開啟** ，讓 Data Factory 能夠將資料寫入至您的 SQL Server。 若要確認並開啟此設定，請前往邏輯 SQL 伺服器 > [概觀] > [設定伺服器防火牆] > 將 [允許存取 Azure 服務] 選項設定為 [開啟]。
+1. 允許 Azure 服務存取 SQL Server。 確定 SQL Server 的 [允許存取 Azure 服務] 已 **開啟**，讓 Data Factory 能夠將資料寫入至您的 SQL Server。 若要確認並開啟此設定，請前往邏輯 SQL 伺服器 > [概觀] > [設定伺服器防火牆] > 將 [允許存取 Azure 服務] 選項設定為 [開啟]。
 
 ## <a name="create-a-data-factory"></a>建立 Data Factory
 在此步驟中，您可以建立資料處理站，並啟動 Data Factory 使用者介面，在資料處理站中建立管線。
 
-1. 開啟 **Microsoft Edge** 或 **Google Chrome** 。 目前，只有 Microsoft Edge 和 Google Chrome 網頁瀏覽器支援 Data Factory UI。
-2. 在左側功能表上，選取 [建立資源] > [分析] > [資料處理站]。
-3. 在 [新增資料處理站] 頁面的 [名稱] 下，輸入 **ADFTutorialDataFactory** 。
+1. 開啟 **Microsoft Edge** 或 **Google Chrome**。 目前，只有 Microsoft Edge 和 Google Chrome 網頁瀏覽器支援 Data Factory UI。
+2. 在左側功能表上，選取 [建立資源] > [整合] > [Data Factory]。
+3. 在 [新增資料處理站] 頁面的 [名稱] 下，輸入 **ADFTutorialDataFactory**。
 
-   Azure Data Factory 的名稱必須是 *全域唯一的* 。 如果您收到有關名稱值的錯誤訊息，請輸入不同的資料處理站名稱。 (例如，使用 yournameADFTutorialDataFactory)。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](naming-rules.md)。
+   Azure Data Factory 的名稱必須是「全域唯一的」。 如果您收到有關名稱值的錯誤訊息，請輸入不同的資料處理站名稱。 (例如，使用 yournameADFTutorialDataFactory)。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](naming-rules.md)。
 
      ![新增 Data Factory](./media/doc-common-process/name-not-available-error.png)
-4. 選取您要在其中建立資料處理站的 Azure **訂用帳戶** 。
+4. 選取您要在其中建立資料處理站的 Azure **訂用帳戶**。
 5. 針對 [資源群組]，採取下列其中一個步驟︰
 
     a. 選取 [使用現有的] ，然後從下拉式清單選取現有的資源群組。
@@ -115,7 +115,7 @@ ms.locfileid: "92637117"
 
    ![建立管線](./media/doc-common-process/get-started-page.png)
 
-1. 1. 在 [一般] 面板中的 [屬性] 下，針對 [名稱] 指定 **CopyPipeline** 。 然後按一下右上角的 [屬性] 圖示來摺疊面板。
+1. 1. 在 [一般] 面板中的 [屬性] 下，針對 [名稱] 指定 **CopyPipeline**。 然後按一下右上角的 [屬性] 圖示來摺疊面板。
 
 1. 在 [活動] 工具箱中展開 [移動和轉換] 類別，並將 [複製資料] 活動從工具箱中拖放至管線設計工具介面。 指定 **CopyFromBlobToSql** 作為 [名稱]。
 
@@ -158,7 +158,7 @@ ms.locfileid: "92637117"
 
 1. 在 [新增連結服務 (Azure SQL Database)] 對話方塊中，執行下列步驟：
 
-    a. 在 [名稱] 下，輸入 **AzureSqlDatabaseLinkedService** 。
+    a. 在 [名稱] 下，輸入 **AzureSqlDatabaseLinkedService**。
 
     b. 在 [伺服器名稱] 下，選取您的 SQL Server 執行個體。
 
@@ -176,7 +176,7 @@ ms.locfileid: "92637117"
 
 1. 這會自動導覽至 [設定屬性] 對話方塊。 在 [資料表] 中，選取 **[dbo].[emp]** 。 然後選取 [確定]。
 
-1. 移至含有管線的索引標籤，然後在 [接收資料集] 中確認已選取 **OutputSqlDataset** 。
+1. 移至含有管線的索引標籤，然後在 [接收資料集] 中確認已選取 **OutputSqlDataset**。
 
     ![管線索引標籤](./media/tutorial-copy-data-portal/pipeline-tab-2.png)       
 
@@ -222,21 +222,19 @@ ms.locfileid: "92637117"
 
 1. 在 [新增觸發程序] 視窗中，採取下列步驟：
 
-    a. 在 [名稱] 下，輸入 **RunEveryMinute** 。
+    a. 在 [名稱] 下，輸入 **RunEveryMinute**。
 
-    b. 在 [結束] 下，選取 [日期]。
+    b. 更新觸發程序的 **開始日期**。 如果該日期早於目前的日期時間，觸發程序將會在發佈變更後開始生效。 
 
-    c. 在 [結束日期] 下，選取下拉式清單。
+    c. 在 [時區] 底下，選取下拉式清單。
 
-    d. 選取 [當天日期] 選項。 根據預設，結束日期會設為次日。
+    d. 將 [週期] 設定為 [每隔 1 分鐘]。
 
-    e. 將 **結束時間** 部分更新為當天日期時間的數分鐘之後。 在您發佈變更之後，才會啟動觸發程序。 如果您將其設為短短幾分鐘之後，且您未在那之前發佈變更，則不會看到觸發程序執行。
+    e. 選取 [指定結束日期] 核取方塊，並將 [結束日期] 更新為目前日期時間的幾分鐘之後。 在您發佈變更之後，才會啟動觸發程序。 如果您將其設為短短幾分鐘之後，且您未在那之前發佈變更，則不會看到觸發程序執行。
 
-    f. 選取 [確定]。
+    f. 針對 [已啟用] 選項，選取 [是]。
 
-    g. 針對 [已啟用] 選項，選取 [是]。
-
-    h. 選取 [確定]。
+    g. 選取 [確定]。
 
     > [!IMPORTANT]
     > 每次執行管線都會產生相關成本，因此請適當設定結束日期。

@@ -1,23 +1,23 @@
 ---
-title: Azure 串流分析概觀
-description: 了解串流分析，這是可協助您即時分析物聯網 (IoT) 資料流的受控服務。
+title: Azure Stream Analytics 介紹
+description: 了解 Azure 串流分析，這是可協助您即時分析物聯網 (IoT) 資料流的受控服務。
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc, contperfq2
-ms.date: 11/03/2020
-ms.openlocfilehash: d81858db3f4d09b834a9199804a6f2631828496b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 11/12/2020
+ms.openlocfilehash: 0022e19e23b7808cd78da988fd3fdef2d537acf5
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342227"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579431"
 ---
-# <a name="what-is-azure-stream-analytics"></a>Azure 串流分析是什麼？
+# <a name="welcome-to-azure-stream-analytics"></a>歡迎使用 Azure 串流分析
 
-Azure 串流分析是即時分析與處理複雜事件的引擎，用來同時分析和處理多個來源的大量快速串流資料。 它可以從多個輸入來源 (包括裝置、感應器、點選流、社交媒體摘要和應用程式) 中擷取的資訊，識別模式和關聯性。 這些模式可以用來觸發動作並啟動工作流程，例如建立警示、將資訊提供給報告工具，或是儲存轉換資料以供之後使用。 此外，Azure IoT Edge 執行階段也提供串流分析，能夠處理 IoT 裝置上的資料。 
+Azure 串流分析是即時分析與處理複雜事件的引擎，用來同時分析和處理多個來源的大量快速串流資料。 它可以從多個輸入來源 (包括裝置、感應器、點選流、社交媒體摘要和應用程式) 中擷取的資訊，識別模式和關聯性。 這些模式可以用來觸發動作並啟動工作流程，例如建立警示、將資訊提供給報告工具，或是儲存轉換資料以供之後使用。 此外，Azure IoT Edge 執行階段也提供串流分析，能夠處理 IoT 裝置上的資料。
 
 下列案例是您何時可以使用 Azure 串流分析的範例：
 
@@ -26,6 +26,11 @@ Azure 串流分析是即時分析與處理複雜事件的引擎，用來同時�
 * 車隊管理和自駕車的地理空間分析
 * 高價值資產的遠端監視和預測性維護
 * 即時分析銷售點資料以控制庫存和偵測異常
+
+您可以使用免費的 Azure 訂用帳戶來試用 Azure 串流分析。
+
+> [!div class="nextstepaction"]
+> [試用 Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)
 
 ## <a name="how-does-stream-analytics-work"></a>串流分析如何運作？
 
@@ -102,7 +107,7 @@ Azure 串流分析會遵循如 [Azure 合規性概觀](https://gallery.technet.m
 
 您現在已大致了解 Azure 串流分析。 接下來，您可以深入了解並建立您的第一個串流分析作業：
 
-* [使用 Azure 入口網站建立串流分析作業](stream-analytics-quick-create-portal.md)。
-* [使用 Azure PowerShell 建立串流分析作業](stream-analytics-quick-create-powershell.md)。
-* [使用 Visual Studio 建立串流分析作業](stream-analytics-quick-create-vs.md)。
-* [使用 Visual Studio Code 建立串流分析作業](quick-create-visual-studio-code.md)。
+* [使用 Azure 入口網站建立串流分析作業](stream-analytics-quick-create-portal.md)
+* [使用 Azure PowerShell 建立串流分析作業](stream-analytics-quick-create-powershell.md)
+* [使用 Visual Studio 建立串流分析作業](stream-analytics-quick-create-vs.md)
+* [使用 Visual Studio Code 建立串流分析作業](quick-create-visual-studio-code.md)

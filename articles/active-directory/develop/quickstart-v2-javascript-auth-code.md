@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 45a6843c5ce55dca7ff72731752f3c1f24a5db6b
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 40929a165e7a3afbbc92a472c352172723745040
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216652"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533186"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>快速入門：使用授權碼流程讓使用者登入並取得 JavaScript SPA 中的存取權杖
 
-在本快速入門中，您會執行程式碼範例，該範例會示範 JavaScript 單頁應用程式 (SPA) 如何使用授權碼流程讓使用者登入個人帳戶、公司帳戶和學校帳戶。 此程式碼範例也會示範如何取得存取權杖來呼叫 Web API (在此案例中為 Microsoft Graph API)。 如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。
+在本快速入門中，您會下載並執行程式碼範例，該範例會示範 JavaScript 單頁應用程式 (SPA) 如何使用授權碼流程登入使用者並呼叫 Microsoft Graph。 此程式碼範例會示範如何取得存取權杖來呼叫 Microsoft Graph API 或任何 Web API。 
+
+如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。
 
 本快速入門會使用 MSAL.js 2.0 搭配授權碼流程。 如需搭配使用 MSAL.js 1.0 與隱含流程的類似快速入門，請參閱[快速入門：在 JavaScript 單頁應用程式中讓使用者登入](./quickstart-v2-javascript.md)。
 
@@ -109,8 +111,8 @@ ms.locfileid: "92216652"
 >
 > 修改 `msalConfig` 區段中的值，如下所述：
 >
-> - `Enter_the_Application_Id_Here` 是您註冊的應用程式所具備的**應用程式 (用戶端) 識別碼**。
-> - `Enter_the_Cloud_Instance_Id_Here` 是 Azure 雲端的執行個體。 針對主要或全域 Azure 雲端，請輸入 `https://login.microsoftonline.com/`。 針對**國家**雲端 (例如中國)，請參閱[國家雲端](authentication-national-cloud.md)。
+> - `Enter_the_Application_Id_Here` 是您註冊的應用程式所具備的 **應用程式 (用戶端) 識別碼**。
+> - `Enter_the_Cloud_Instance_Id_Here` 是 Azure 雲端的執行個體。 針對主要或全域 Azure 雲端，請輸入 `https://login.microsoftonline.com/`。 針對 **國家** 雲端 (例如中國)，請參閱 [國家雲端](authentication-national-cloud.md)。
 > - `Enter_the_Tenant_info_here` 會設定為下列其中一項：
 >   - 如果您的應用程式支援 [此組織目錄中的帳戶]，請將此值取代為 [租用戶識別碼] 或 [租用戶名稱]。 例如： `contoso.microsoft.com` 。
 >   - 如果您的應用程式支援 [任何組織目錄中的帳戶]，請將此值取代為 `organizations`。
@@ -200,4 +202,4 @@ npm install @azure/msal-browser
 如需如何建置本快速入門所用應用程式的詳細逐步指南，請參閱下列教學課程：
 
 > [!div class="nextstepaction"]
-> [登入和呼叫 MS Graph 的教學課程 >](./tutorial-v2-javascript-auth-code.md)
+> [登入和呼叫 MS Graph 的教學課程](./tutorial-v2-javascript-auth-code.md)

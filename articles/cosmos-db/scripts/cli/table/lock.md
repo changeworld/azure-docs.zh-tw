@@ -7,19 +7,19 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 07/29/2020
-ms.openlocfilehash: e3f6af81b43844448463c9430c1ab9dd52f5703f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6df5f3842ba08b04dd82910d3762472f4ff4febd
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075869"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566804"
 ---
 # <a name="create-resource-lock-for-a-azure-cosmos-db-table-api-table-using-azure-cli"></a>使用 Azure CLI 建立 Azure Cosmos DB 資料表 API 資料表的資源鎖定
 [!INCLUDE[appliesto-table-api](../../../includes/appliesto-table-api.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../../../includes/azure-cli-prepare-your-environment.md)]
 
-若選擇在本機安裝及使用 CLI，此主題需要您執行 Azure CLI 2.9.1 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+- 本文需要 2.9.1 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 > [!IMPORTANT]
 > 除非先啟用 `disableKeyBasedMetadataWriteAccess` 屬性以鎖定 Cosmos DB 帳戶，否則只要使用者連線至 Cosmos DB 資料表 SDK、Azure 儲存體資料表 SDK、透過帳戶金鑰連線的任何工具或 Azure 入口網站，其所做的變更都無法用於資源鎖定。 若要深入了解如何啟用此屬性，請參閱[防止來自 SDK 的變更](../../../role-based-access-control.md#prevent-sdk-changes) (機器翻譯)。
@@ -41,8 +41,8 @@ ms.locfileid: "93075869"
 
 ## <a name="next-steps"></a>後續步驟
 
--[鎖定資源以防止非預期的變更](../../../../azure-resource-manager/management/lock-resources.md)
+- [鎖定資源以防止非預期的變更](../../../../azure-resource-manager/management/lock-resources.md)
 
--[Azure Cosmos DB CLI 文件](/cli/azure/cosmosdb)。
+- [Azure Cosmos DB CLI 文件](/cli/azure/cosmosdb)。
 
--[Azure Cosmos DB CLI GitHub 存放庫](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)。
+- [Azure Cosmos DB CLI GitHub 存放庫](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)。

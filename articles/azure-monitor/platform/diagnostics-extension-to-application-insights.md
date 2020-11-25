@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
 ms.openlocfilehash: 5af0eb20f9766369caa7351719b63b213c394e5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87305800"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008832"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>將雲端服務、虛擬機器或 Service Fabric 診斷資料傳送至 Application Insights
 雲端服務、虛擬機器、虛擬機器擴展集和 Service Fabric 全都使用 Azure 診斷擴充功能來收集資料。  Azure 診斷會將資料傳送至 Azure 儲存體資料表。  不過，您也可以使用 Azure 診斷擴充功能 1.5 或更新版本，將所有資料或一部分資料傳送至其他位置。
@@ -56,19 +56,19 @@ Application Insights 的接收器組態範例：
     ]
 }
 ```
-- **Sink name** ** 屬性是可唯一識別接收器的字串值。
+- **Sink name**  屬性是可唯一識別接收器的字串值。
 
 - **ApplicationInsights** 元素指定 Azure 診斷資料送出的 Application Insights 資源的檢測金鑰。
     - 如果您沒有現有的 Application Insights 資源，請參閱[建立新的 Application Insights 資源](../app/create-new-resource.md)，以取得建立資源及取得檢測金鑰的詳細資訊。
     - 如果您以 Azure SDK 2.8 和更新版本開發雲端服務，則會自動填入此檢測金鑰。 這個值是根據封裝雲端服務專案時的 **APPINSIGHTS_INSTRUMENTATIONKEY** 服務組態設定。 請參閱[使用含雲端服務的 Application Insights](../app/cloudservices.md)。
 
 - **Channels** 元素包含一個或多個 **Channel** 元素。
-    - name** 屬性可唯一參考該通道。
-    - loglevel ** 屬性可讓您指定通道允許的記錄等級。 可用的記錄等級從最多到最少資訊依序為：
+    - name屬性可唯一參考該通道。
+    - loglevel  屬性可讓您指定通道允許的記錄等級。 可用的記錄等級從最多到最少資訊依序為：
         - 「詳細資訊」
         - 資訊
         - 警告
-        - 錯誤
+        - Error
         - 重大
 
 通道就像篩選條件，可讓您選取要傳送至目標接收器的特定記錄等級。 例如，您可以收集詳細記錄，將它們傳送至儲存體，但只將「錯誤」傳送至接收器。

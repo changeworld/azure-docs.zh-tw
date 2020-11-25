@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e3407a1da469bf4f31e5d54d83ee837bddbafffc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2610d0ee448e274b9bdeb7396393ce47e27e65ef
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87494752"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565750"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>在 Azure 應用程式設定存放區中搭配使用索引鍵/值
 
@@ -27,10 +27,9 @@ ms.locfileid: "87494752"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-本文需要使用 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 
-
+ - 本教學課程需要 2.0 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 ## <a name="sample-script"></a>範例指令碼
 
 ```azurecli-interactive

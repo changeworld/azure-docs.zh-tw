@@ -13,18 +13,18 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: b171688fa4dbff8d05b3ba03e4e4bd29028983be
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 1b15330d368a93ac4ba176df129df212a259f3e2
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016139"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561891"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入門：從 iOS 或 macOS 應用程式登入使用者並呼叫 Microsoft Graph API
 
-本快速入門包含的程式碼範例，會示範原生 iOS 或 macOS 應用程式如何使用 Microsoft 身分識別平台來登入個人、公司與學校帳戶、取得存取權杖，以及呼叫 Microsoft Graph API。
+在本快速入門中，您會下載並執行程式碼範例，該範例會示範原生 iOS 或 macOS 應用程式如何登入使用者，並取得存取權杖來呼叫 Microsoft Graph API。
 
-本快速入門適用於 iOS 和 macOS 應用程式。 只有 iOS 應用程式才需要某些步驟。 這些步驟會標注其僅適用於 iOS。
+此快速入門適用於 iOS 和 macOS 應用程式。 某些步驟僅適用於 iOS 應用程式，而這些步驟會有所標示。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -62,7 +62,7 @@ ms.locfileid: "92016139"
 >      - 略過此頁面上的其他設定。
 >      - 選取 `Register`。
 > 1. 在 [管理] 區段中，選取 `Authentication` > `Add Platform` > `iOS`。
->      - 為您的應用程式輸入***套件組合識別碼***。 套件組合識別碼只是可唯一識別應用程式的唯一字串，例如 `com.<yourname>.identitysample.MSALMacOS`。 記下您所使用的值。
+>      - 為您的應用程式輸入「套件組合識別碼」。 套件組合識別碼只是可唯一識別應用程式的唯一字串，例如 `com.<yourname>.identitysample.MSALMacOS`。 記下您所使用的值。
 >      - 請注意，iOS 組態也適用於 macOS 應用程式。
 > 1. 選取 `Configure` 並儲存 [MSAL 組態] 詳細資料，以供稍後在本快速入門中使用。
 > [!div renderon="portal" class="sxs-lookup"]
@@ -101,7 +101,7 @@ ms.locfileid: "92016139"
 >#### <a name="step-4-configure-your-project"></a>步驟 4：設定您的專案
 > 如果您已選取上面的選項 1，則可以略過這些步驟。
 > 1. 將 ZIP 檔案解壓縮並在 XCode 中開啟專案。
-> 1. 編輯 **ViewController.swift**，並使用下列程式碼片段來取代開頭為 'let kClientID' 的那一行。 請記得使用您在本快速入門中稍早於入口網站註冊應用程式時所儲存的用戶端識別碼來更新 `kClientID` 的值：
+> 1. 編輯 ViewController.swift，並使用下列程式碼片段來取代開頭為 'let kClientID' 的那一行。 請記得使用您在本快速入門中稍早於入口網站註冊應用程式時所儲存的用戶端識別碼來更新 `kClientID` 的值：
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
@@ -179,7 +179,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 
 > |其中： | 描述 |
 > |---------|---------|
-> | `clientId` | 來自在 *portal.azure.com* 中註冊之應用程式的應用程式識別碼 |
+> | `clientId` | portal.azure.com 中所註冊應用程式的應用程式識別碼 |
 > | `authority` | Microsoft 身分識別平台端點。 在大多數情況下，這會是 `https://login.microsoftonline.com/common` |
 > | `redirectUri` | 應用程式的重新導向 URI。 您可以傳遞 'nil' 來使用預設值或您自訂的重新導向 URI。 |
 
@@ -213,7 +213,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
     }
  ```
 
-最後，您的應用程式在 ***Info.plist*** 中的 `CFBundleURLTypes` 旁邊必須有 `LSApplicationQueriesSchemes` 項目。 此範例會包含此項目。
+最後，您的應用程式在 **Info.plist** 中的 `CFBundleURLTypes` 旁邊必須有 `LSApplicationQueriesSchemes` 項目。 此範例會包含此項目。
 
    ```xml
    <key>LSApplicationQueriesSchemes</key>
@@ -231,7 +231,7 @@ MSAL 有兩種取得權杖的方法：`acquireToken` 與 `acquireTokenSilent`。
 
 某些情況需要使用者與 Microsoft 身分識別平台互動。 在這些情況下，終端使用者可能需要選取自己的帳戶、輸入認證，或同意您應用程式的權限。 例如，
 
-* 使用者首次登入應用程式
+使用者首次登入應用程式
 * 如果使用者重設自己的密碼，就必須輸入自己的認證
 * 您的應用程式第一次要求存取資源時
 * 需要 MFA 或其他條件式存取原則時
@@ -274,4 +274,3 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 
 > [!div class="nextstepaction"]
 > [教學課程：從 iOS 或 macOS 應用程式登入使用者並呼叫 Microsoft Graph](tutorial-v2-ios.md)
-
