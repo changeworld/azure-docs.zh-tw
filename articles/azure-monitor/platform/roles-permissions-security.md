@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 7d92cbc25411f5cc2d528ccf6ecec4539494d380
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84ae5f6adfe2a02f62b5d4b1e776d8b5ac1d731b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533269"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95975340"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure 監視器中的角色、權限與安全性
 
@@ -68,7 +68,7 @@ Azure 監視器的內建角色是專為協助限制存取訂用帳戶中的資�
 > 
 
 ## <a name="monitoring-permissions-and-azure-custom-roles"></a>監視許可權和 Azure 自訂角色
-如果上述內建角色不符合您小組的確切需求，您可以建立具有更細微許可權的 [Azure 自訂角色](../../role-based-access-control/custom-roles.md) 。 以下是一般 Azure 監視器 RBAC 作業及其說明。
+如果上述內建角色不符合您小組的確切需求，您可以建立具有更細微許可權的 [Azure 自訂角色](../../role-based-access-control/custom-roles.md) 。 以下是 Azure 監視器的常見 Azure RBAC 作業及其說明。
 
 | 作業 | 描述 |
 | --- | --- |
@@ -135,7 +135,7 @@ $token = New-AzStorageAccountSASToken -ResourceType Service -Service Blob -Permi
 
 接著，您可將權杖提供給需要從該儲存體帳戶進行讀取的實體，且它可以從該儲存體帳戶中的所有 blob 進行列出並讀取。
 
-或者，如果您需要使用 RBAC 控制此權限，可以在該特定儲存體帳戶上對該實體授與 Microsoft.Storage/storageAccounts/listkeys/action 權限。 對於需要設定診斷設定或記錄檔設定檔以封存至儲存體帳戶的使用者而言，這是必要的。 例如，您可以針對只需要從一個儲存體帳戶讀取的使用者或應用程式，建立下列 Azure 自訂角色：
+或者，如果您需要使用 Azure RBAC 來控制此許可權，您可以為該實體授與該特定儲存體帳戶的 Microsoft. Storage/storageAccounts/listkeys/action 許可權。 對於需要設定診斷設定或記錄檔設定檔以封存至儲存體帳戶的使用者而言，這是必要的。 例如，您可以針對只需要從一個儲存體帳戶讀取的使用者或應用程式，建立下列 Azure 自訂角色：
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
@@ -159,7 +159,7 @@ New-AzRoleDefinition -Role $role
 可以使用事件中樞採用類似的模式，但您必須先建立專用的接聽授權規則。 如果您要對僅需要接聽監視相關事件中樞的應用程式授與存取權，請執行下列作業︰
 
 1. 在針對只有接聽宣告的串流監視資料所建立的事件中樞上建立共用存取原則。 這可以在入口網站中完成。 例如，您可能會將它稱為 “monitoringReadOnly”。 可能的話，您會直接將該金鑰提供給取用者，並略過下一個步驟。
-2. 如果取用者需要能夠取得隨選金鑰，請對使用者授與該事件中樞的 ListKeys 動作。 對於需要設定診斷設定或記錄檔設定檔以串流至事件中樞的使用者而言，這也是必要的。 例如，您可能會建立 RBAC 規則︰
+2. 如果取用者需要能夠取得隨選金鑰，請對使用者授與該事件中樞的 ListKeys 動作。 對於需要設定診斷設定或記錄檔設定檔以串流至事件中樞的使用者而言，這也是必要的。 例如，您可以建立 Azure RBAC 規則：
    
    ```powershell
    $role = Get-AzRoleDefinition "Reader"
@@ -187,6 +187,6 @@ Azure 監視器需要存取您的 Azure 資源，才能提供您啟用的服務�
 如需詳細資訊，請參閱[網路安全性與 Azure 儲存體](../../storage/common/storage-network-security.md)
 
 ## <a name="next-steps"></a>後續步驟
-* [深入了解 RBAC 和 Resource Manager 中的權限](../../role-based-access-control/overview.md)
+* [閱讀 Resource Manager 中的 Azure RBAC 和許可權](../../role-based-access-control/overview.md)
 * [閱讀 Azure 中的監視概觀](../overview.md)
 

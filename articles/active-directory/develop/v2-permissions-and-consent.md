@@ -13,11 +13,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperfq1, identityplatformtop40
 ms.openlocfilehash: 9c8a911bef5fb92f5bf9aa447e9e810a85317208
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365845"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95974148"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 身分識別平台端點中的權限和同意
 
@@ -25,7 +25,7 @@ ms.locfileid: "92365845"
 
 ## <a name="scopes-and-permissions"></a>範圍和權限
 
-Microsoft 身分識別平台會實作 [OAuth 2.0](active-directory-v2-protocols.md) 授權通訊協定。 OAuth 2.0 是一種可讓協力廠商應用程式代表使用者存取 Web 主控資源的方法。 任何與 Microsoft 身分識別平台整合的 Web 主控資源都具有資源識別碼 (或稱為「應用程式識別碼 URI」**)。 例如，Microsoft 的 Web 主控資源包括：
+Microsoft 身分識別平台會實作 [OAuth 2.0](active-directory-v2-protocols.md) 授權通訊協定。 OAuth 2.0 是一種可讓協力廠商應用程式代表使用者存取 Web 主控資源的方法。 任何與 Microsoft 身分識別平台整合的 Web 主控資源都具有資源識別碼 (或稱為「應用程式識別碼 URI」)。 例如，Microsoft 的 Web 主控資源包括：
 
 * Microsoft Graph：`https://graph.microsoft.com`
 * Microsoft 365 Mail API： `https://outlook.office.com`
@@ -42,7 +42,7 @@ Microsoft 身分識別平台會實作 [OAuth 2.0](active-directory-v2-protocols.
 
 藉由定義這些類型的權限，資源可以更精細地掌控其資料及 API 功能的公開方式。 第三方應用程式可向使用者和系統管理員要求這些權限，且必須在他們核准要求後，應用程式才可存取資料或代表使用者執行動作。 透過將資源的功能切割成較小的權限集，便可將協力廠商應用程式建置成只要求它們執行其功能所需的特定權限。 使用者和系統管理員可以確切地知道應用程式可存取的資料，而且可以更確信它不是在惡意意圖上運作。 開發人員應一律遵守最低權限的概念，而僅就其應用程式運作所需的程度要求權限。
 
-在 OAuth 2.0 中，這些類型的權限也稱為「範圍」**。 它們也經常稱為 *許可權*。 權限在 Microsoft 身分識別平台中會以字串值表示。 繼續討論 Microsoft Graph 範例，每個權限的字串值如下：
+在 OAuth 2.0 中，這些類型的權限也稱為「範圍」。 它們也經常稱為 *許可權*。 權限在 Microsoft 身分識別平台中會以字串值表示。 繼續討論 Microsoft Graph 範例，每個權限的字串值如下：
 
 * 使用 `Calendars.Read` 來讀取使用者的行事曆
 * 使用 `Calendars.ReadWrite` 來寫入使用者的行事曆
@@ -52,11 +52,11 @@ Microsoft 身分識別平台會實作 [OAuth 2.0](active-directory-v2-protocols.
 
 ## <a name="permission-types"></a>權限類型
 
-Microsoft 身分識別平台支援兩種類型的權限：**委派權限**和**應用程式權限**。
+Microsoft 身分識別平台支援兩種類型的權限：**委派權限** 和 **應用程式權限**。
 
-* **委派權限**供已有登入使用者的應用程式使用。 針對這些應用程式，使用者或系統管理員會同意應用程式所要求的許可權，而應用程式會委派許可權，以在呼叫目標資源時作為已登入的使用者。 有些委派權限可由非系統管理使用者同意，但有些較高的特定權限則需要[系統管理員的同意](#admin-restricted-permissions)。 若要了解哪些系統管理員角色可同意委派權限，請參閱 [Azure AD 中的系統管理員角色權限](../roles/permissions-reference.md)。
+* **委派權限** 供已有登入使用者的應用程式使用。 針對這些應用程式，使用者或系統管理員會同意應用程式所要求的許可權，而應用程式會委派許可權，以在呼叫目標資源時作為已登入的使用者。 有些委派權限可由非系統管理使用者同意，但有些較高的特定權限則需要[系統管理員的同意](#admin-restricted-permissions)。 若要了解哪些系統管理員角色可同意委派權限，請參閱 [Azure AD 中的系統管理員角色權限](../roles/permissions-reference.md)。
 
-* **應用程式權限**供沒有登入使用者的應用程式在執行時使用；例如，當作背景服務或精靈來執行的應用程式。  應用程式權限只能[由系統管理員同意](#requesting-consent-for-an-entire-tenant)。
+* **應用程式權限** 供沒有登入使用者的應用程式在執行時使用；例如，當作背景服務或精靈來執行的應用程式。  應用程式權限只能[由系統管理員同意](#requesting-consent-for-an-entire-tenant)。
 
 _有效權限_ 是應用程式向目標資源提出要求時所將具備的權限。 請務必瞭解您的應用程式被授與的委派和應用程式許可權之間的差異，以及對目標資源進行呼叫時的有效許可權。
 
@@ -113,7 +113,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 `scope` 參數是應用程式所要求的委派權限清單 (以空格分隔)。 藉由將權限值附加至資源的識別碼 (應用程式識別碼 URI)，即可指出每個權限。 在要求範例中，應用程式需要權限來讀取使用者的行事曆，以及以使用者身分傳送郵件。
 
-在使用者輸入其認證之後，Microsoft 身分識別平臺端點會檢查是否有相符的 *使用者同意*記錄。 如果使用者未在過去同意任何要求的許可權，也沒有系統管理員代表整個組織同意這些許可權，Microsoft 身分識別平臺端點會要求使用者授與所要求的許可權。
+在使用者輸入其認證之後，Microsoft 身分識別平臺端點會檢查是否有相符的 *使用者同意* 記錄。 如果使用者未在過去同意任何要求的許可權，也沒有系統管理員代表整個組織同意這些許可權，Microsoft 身分識別平臺端點會要求使用者授與所要求的許可權。
 
 > [!NOTE]
 >此時，`offline_access` (「維持存取您可存取的資料」) 和 `user.read` (「將您登入並讀取您的設定檔」) 權限會自動包含在應用程式的初始同意中。  通常需要這些權限，才能獲得適當的應用程式功能 - `offline_access` 可供應用程式存取重新整理權杖 (對原生和 Web 應用程式都很重要)，而 `user.read` 可供存取 `sub` 宣告，讓用戶端或應用程式能正確地隨著時間識別使用者及存取基本使用者資訊。
@@ -132,7 +132,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 ## <a name="admin-restricted-permissions"></a>受管理員限制的權限
 
-Microsoft 生態系統中的某些高特權權限可以設定為「受系統管理員限制」**。 這類權限的範例包括：
+Microsoft 生態系統中的某些高特權權限可以設定為「受系統管理員限制」。 這類權限的範例包括：
 
 * 使用 `User.Read.All` 讀取所有使用者的完整設定檔
 * 使用 `Directory.ReadWrite.All` 將資料寫入組織的目錄
@@ -144,7 +144,7 @@ Microsoft 生態系統中的某些高特權權限可以設定為「受系統管�
 
 如果應用程式要求高權限的委派權限，且系統管理員透過管理員同意端點授與了這些權限，則會為租用戶中的所有使用者授與同意。
 
-如果應用程式要求應用程式許可權，且系統管理員透過管理員同意端點授與這些許可權，則不會代表任何特定使用者來執行此授與。 此時會*直接*為用戶端應用程式授與權限。 這些類型的許可權只會由 daemon 服務和在背景中執行的其他非互動式應用程式使用。
+如果應用程式要求應用程式許可權，且系統管理員透過管理員同意端點授與這些許可權，則不會代表任何特定使用者來執行此授與。 此時會 *直接* 為用戶端應用程式授與權限。 這些類型的許可權只會由 daemon 服務和在背景中執行的其他非互動式應用程式使用。
 
 ## <a name="using-the-admin-consent-endpoint"></a>使用系統管理員同意端點
 
@@ -169,7 +169,7 @@ Microsoft 生態系統中的某些高特權權限可以設定為「受系統管�
 1. 在 Azure 入口網站中，移至您的應用程式 [-應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908) 體驗，或 [建立應用](quickstart-register-app.md) 程式（如果尚未這麼做）。
 2. 找出 [ **Api 許可權** ] 區段，然後在 [api 許可權] 內按一下 [新增許可權]。
 3. 從可用的 Api 清單中選取 **Microsoft Graph** ，然後新增您應用程式所需的許可權。
-3. [儲存]**** 應用程式註冊。
+3. [儲存] 應用程式註冊。
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>建議：將使用者登入您的應用程式
 
@@ -196,7 +196,7 @@ https://graph.microsoft.com/mail.send
 | 參數        | 條件        | 描述                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
 | `tenant` | 必要 | 您想要要求權限的目錄租用戶。 可以用 GUID 或易記名稱格式提供，或是與組織一般參考，如範例中所示。 請勿使用「一般」，因為個人帳戶無法在租使用者的內容中提供系統管理員同意。 若要確保與管理租使用者的個人帳戶具有最佳相容性，請盡可能使用租使用者識別碼。 |
-| `client_id` | 必要 | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的**應用程式 (用戶端) 識別碼**。 |
+| `client_id` | 必要 | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的 **應用程式 (用戶端) 識別碼**。 |
 | `redirect_uri` | 必要 |您想要傳送回應以供應用程式處理的重新導向 URI。 它必須與您在應用程式註冊入口網站中註冊的其中一個重新導向 URI 完全相符。 |
 | `state` | 建議 | 包含在要求中的值，也會在權杖回應中傳回。 它可以是您想要的任何內容的字串。 請在驗證要求出現之前，先使用此狀態在應用程式中將使用者狀態的相關資訊 (例如他們之前所在的網頁或檢視) 編碼。 |
 |`scope`        | 必要        | 定義應用程式所要求的許可權集合。 這可以是使用 [`/.default`](#the-default-scope)) 或動態範圍的靜態 (。  這可以包括 OIDC 範圍 (`openid` 、 `profile` `email`) 。 如果您需要應用程式許可權，您必須使用 `/.default` 來要求靜態設定的許可權清單。  |
@@ -308,7 +308,7 @@ response_type=token            //code or a hybrid flow is also possible here
 
 若要建立 web API)  (角色的應用程式許可權，請參閱 [如何：在應用程式中新增](howto-add-app-roles-in-azure-ad-apps.md)應用程式角色。
 
-用戶端應用程式中的用戶端認證要求 **必須** 包含 `scope={resource}/.default` ，其中 `{resource}` 是您的應用程式要呼叫的 web API。 **不**支援使用個別應用程式許可權來發出用戶端認證要求 (角色) 。 已授與該 web API 的所有應用程式許可權 (角色) 將會包含在傳回的存取權杖中。
+用戶端應用程式中的用戶端認證要求 **必須** 包含 `scope={resource}/.default` ，其中 `{resource}` 是您的應用程式要呼叫的 web API。 **不** 支援使用個別應用程式許可權來發出用戶端認證要求 (角色) 。 已授與該 web API 的所有應用程式許可權 (角色) 將會包含在傳回的存取權杖中。
 
 若要授與您所定義之應用程式許可權的存取權，包括授與應用程式的系統管理員同意，請參閱 [快速入門：設定用戶端應用程式以存取 WEB API](quickstart-configure-app-access-web-apis.md)。
 

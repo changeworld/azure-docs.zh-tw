@@ -14,11 +14,11 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3e4533334204a3a1cfd46ff27b04ff0c05350dfc
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371846"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973910"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>使用 Azure Active Directory 建立基本群組並新增成員
 您可以使用 Azure Active Directory (Azure AD) 入口網站建立基本群組。 基於此文章的目的，一個基本的群組會由資源擁有者 (系統管理員) 新增到單一資源，並包含需要存取該資源的特定成員 (員工)。 如需更複雜的案例，包括動態成員資格和規則建立，請參閱[Azure Active Directory 使用者管理文件](../enterprise-users/index.yml)。
@@ -43,35 +43,35 @@ ms.locfileid: "92371846"
 
 1. 使用目錄的全域系統管理員帳戶登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 搜尋並選取 [Azure Active Directory]****。
+1. 搜尋並選取 [Azure Active Directory]。
 
-1. 在 [Active Directory]**** 上，選取 [群組]****，然後選取 [新增群組]****。
+1. 在 [Active Directory] 上，選取 [群組]，然後選取 [新增群組]。
 
     ![顯示 [群組] 的 Azure AD 頁面](media/active-directory-groups-create-azure-portal/group-full-screen.png)
 
-1. [新群組]**** 窗格隨即出現，而且您必須填寫必要資訊。
+1. [新群組] 窗格隨即出現，而且您必須填寫必要資訊。
 
     ![已填入範例資訊的 [新增群組] 頁面](media/active-directory-groups-create-azure-portal/new-group-blade.png)
 
-1. 選取預先定義的 [群組類型]****。 如需群組類型的詳細資訊，請參閱[群組與成員資格類型](#group-types)。
+1. 選取預先定義的 [群組類型]。 如需群組類型的詳細資訊，請參閱[群組與成員資格類型](#group-types)。
 
-1. 建立並新增 [群組名稱]****。 選擇您將記住且對群組而言合理的名稱。 系統會執行檢查，以判斷名稱是否已用於其他群組。 如果名稱已在使用中，為了避免重複命名，系統會要求您變更群組名稱。
+1. 建立並新增 [群組名稱]。 選擇您將記住且對群組而言合理的名稱。 系統會執行檢查，以判斷名稱是否已用於其他群組。 如果名稱已在使用中，為了避免重複命名，系統會要求您變更群組名稱。
 
-1. 新增群組的**群組電子郵件地址**，或保留自動填入的電子郵件地址。
+1. 新增群組的 **群組電子郵件地址**，或保留自動填入的電子郵件地址。
 
 1. **群組描述。** 為群組新增選擇性的描述。
 
-1. 選取預先定義的 [成員資格類型 (必要)]****。 如需有關成員資格類型的詳細資訊，請參閱[群組與成員資格類型](#membership-types)。
+1. 選取預先定義的 [成員資格類型 (必要)]。 如需有關成員資格類型的詳細資訊，請參閱[群組與成員資格類型](#membership-types)。
 
-1. 選取 [建立]****。 您的群組已建立，並已可以新增成員。
+1. 選取 [建立]。 您的群組已建立，並已可以新增成員。
 
-1. 選取 [群組]**** 頁面中的 [成員]**** 區域，然後從 [選取成員]**** 頁面開始搜尋要新增至群組的成員。
+1. 選取 [群組] 頁面中的 [成員] 區域，然後從 [選取成員] 頁面開始搜尋要新增至群組的成員。
 
     ![在群組建立程序期間選取群組成員](media/active-directory-groups-create-azure-portal/select-members-create-group.png)
 
-1. 完成新增成員之後，請選擇 [選取]****。
+1. 完成新增成員之後，請選擇 [選取]。
 
-    [群組概觀]**** 頁面會更新，以顯示已新增至群組的成員數目。
+    [群組概觀] 頁面會更新，以顯示已新增至群組的成員數目。
 
     ![醒目提示成員數目的 [群組概觀] 頁面](media/active-directory-groups-create-azure-portal/group-overview-blade-number-highlight.png)
 

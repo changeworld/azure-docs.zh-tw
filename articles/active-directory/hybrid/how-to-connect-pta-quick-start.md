@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8bdfb1ca21860f1dc338f85a82caf643f9f7be6d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678163"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973196"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory 傳遞驗證：快速入門
 
@@ -72,9 +72,9 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
      | **8080** (選擇性) | 如果無法使用連接埠 443，則驗證代理程式會透過連接埠 8080 每隔十分鐘報告其狀態。 此狀態會顯示在 Azure 入口網站上。 連接埠 8080 「不」會用於使用者登入。 |
      
      如果您的防火牆會根據原始使用者強制執行規則，請開啟這些連接埠，讓來自以網路服務形式執行之 Windows 服務的流量得以通行。
-   - 如果您的防火牆或 proxy 允許 DNS 允許清單，請將連接新增至 **\* msappproxy.net** 和 **\* . servicebus.windows.net** 。 如果不允許建立，請允許存取每週更新的 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。
+   - 如果您的防火牆或 proxy 允許 DNS 允許清單，請將連接新增至 **\* msappproxy.net** 和 **\* . servicebus.windows.net**。 如果不允許建立，請允許存取每週更新的 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。
    - 您的驗證代理程式必須存取 **login.windows.net** 與 **login.microsoftonline.com** 才能進行初始註冊， 因此也請針對這些 URL 開啟您的防火牆。
-    - 針對憑證驗證，請將下列 Url 解除封鎖： **crl3.digicert.com:80** 、 **crl4.digicert.com:80** 、 **ocsp.digicert.com:80** 、 **www \. d-trust.net:80** 、 **root-c3-ca2-2009.ocsp.d-trust.net:80** 、 **crl.microsoft.com:80** 、 **oneocsp.microsoft.com:80** 和 **ocsp.msocsp.com:80** 。 由於這些 URL 會用於其他 Microsoft 產品的憑證驗證，因此您可能已將這些 URL 解除封鎖。
+    - 針對憑證驗證，請將下列 Url 解除封鎖： **crl3.digicert.com:80**、 **crl4.digicert.com:80**、 **ocsp.digicert.com:80**、 **www \. d-trust.net:80**、 **root-c3-ca2-2009.ocsp.d-trust.net:80**、 **crl.microsoft.com:80**、 **oneocsp.microsoft.com:80** 和 **ocsp.msocsp.com:80**。 由於這些 URL 會用於其他 Microsoft 產品的憑證驗證，因此您可能已將這些 URL 解除封鎖。
 
 ### <a name="azure-government-cloud-prerequisite"></a>Azure Government 雲端先決條件
 在步驟2的 Azure AD Connect 啟用傳遞驗證之前，請從 Azure 入口網站下載最新版本的 PTA 代理程式。  您必須確定您的代理程式是 **1.5.1742.0 版。** 或更新版本。  若要確認您的代理程式，請參閱[升級驗證代理](how-to-connect-pta-upgrade-preview-authentication-agents.md)程式
@@ -159,7 +159,7 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
   $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
   $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $SecurePassword
   ```
-3. 移至 **C:\Program Files\Microsoft Azure AD Connect 驗證代理程式** ，然後使用您建立的 `$cred` 物件來執行下列指令碼：
+3. 移至 **C:\Program Files\Microsoft Azure AD Connect 驗證代理程式**，然後使用您建立的 `$cred` 物件來執行下列指令碼：
 
   ```powershell
   RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "PassthroughAuthPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
@@ -172,7 +172,7 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
 
 智慧型鎖定可協助鎖定不良的動作專案，而這些動作專案試圖猜測使用者的密碼或使用暴力密碼破解方法來進入。 藉由在內部部署 Active Directory 的 Azure AD 和/或適當的鎖定設定中設定智慧鎖定設定，就可以在使用者到達 Active Directory 之前，先篩選出攻擊。 請 [閱讀本文](../authentication/howto-password-smart-lockout.md) ，以深入瞭解如何在您的租使用者上設定智慧鎖定設定，以保護您的使用者帳戶。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - [從 AD FS 遷移到傳遞驗證](https://aka.ms/adfstoptadp) \(英文\) - 從 AD FS (或其他同盟技術) 遷移到傳遞驗證的詳細指南。
 - [智慧鎖定](../authentication/howto-password-smart-lockout.md)：了解如何在租用戶中設定智慧鎖定功能以保護使用者帳戶。
 - [目前的限制](how-to-connect-pta-current-limitations.md)：了解傳遞驗證支援的情節和不支援的情節。

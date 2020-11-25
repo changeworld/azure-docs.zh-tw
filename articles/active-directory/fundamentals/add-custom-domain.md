@@ -14,15 +14,15 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28847ece3c08e93d14d381b35fc93fb16dad95a1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370860"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973893"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>使用 Azure Active Directory 入口網站新增自訂網域名稱
 
-每個新的 Azure AD 租使用者都會隨附初始功能變數名稱* \<domainname> onmicrosoft.com*。 您無法變更或刪除初始功能變數名稱，但您可以新增組織的名稱。 新增自訂功能變數名稱可協助您建立使用者熟悉的使用者名稱，例如 *alain \@ contoso.com*。
+每個新的 Azure AD 租使用者都會隨附初始功能變數名稱 *\<domainname> onmicrosoft.com*。 您無法變更或刪除初始功能變數名稱，但您可以新增組織的名稱。 新增自訂功能變數名稱可協助您建立使用者熟悉的使用者名稱，例如 *alain \@ contoso.com*。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -59,7 +59,7 @@ ms.locfileid: "92370860"
     ![具有新增自訂網域頁面的自訂功能變數名稱頁面](media/add-custom-domain/add-custom-domain-blade.png)
 
     >[!IMPORTANT]
-    >您必須包含 *.com*、 *.net*或任何其他最上層延伸模組，才能正常運作。
+    >您必須包含 *.com*、 *.net* 或任何其他最上層延伸模組，才能正常運作。
 
     已新增未驗證的網域。 [ **Contoso.com** ] 頁面隨即出現，其中顯示您的 DNS 資訊。 請儲存此資訊。 您稍後需要用它來建立 TXT 記錄來設定 DNS。
 

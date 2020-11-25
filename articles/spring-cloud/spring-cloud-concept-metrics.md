@@ -8,11 +8,11 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: 015aadb791172f5033bf0198caad567c9bc03221
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965046"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95974658"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>瞭解 Azure 春季雲端的計量
 
@@ -87,7 +87,7 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 
 下表顯示可用的計量和詳細資料。
 
-### <a name="error"></a>錯誤
+### <a name="error"></a>Error
 >[!div class="mx-tdCol2BreakAll"]
 >| 名稱 | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
 >|----|----|----|------------|

@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: 8d11eaa76f2133b9fdc66ba4e6bc91e2cc38c51c
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379531"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972856"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>適用于 JAVA SDK 的 Application Insights 疑難排解和問與答
 
@@ -192,7 +192,7 @@ Application insights 會使用 `org.apache.http`。 這會重新配置在 Applic
 * [撰寫程式碼以追蹤應用程式使用狀況][track]
 * [擷取診斷記錄][javalogs]
 
-## <a name="get-help"></a>取得說明
+## <a name="get-help"></a>取得協助
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * [在 GitHub 上提出問題](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 

@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dfbd5e6f190e0600c31aa17e9b1a75f08e213df4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537657"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973570"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中核准或拒絕存取要求
 
@@ -53,9 +53,9 @@ ms.locfileid: "94537657"
 
 1. 流覽至我的存取權中的 [ **核准** ] 索引標籤。
 
-1. 移至您想要核准的要求，然後按一下 [ **詳細資料** ]。 如果您已準備好進行決策，您也可以按一下 [ **核准** ] 或 [ **拒絕** ]。
+1. 移至您想要核准的要求，然後按一下 [ **詳細資料**]。 如果您已準備好進行決策，您也可以按一下 [ **核准** ] 或 [ **拒絕** ]。
 
-1. 按一下 [ **要求詳細資料** ]。
+1. 按一下 [ **要求詳細資料**]。
 
      ![我的存取權入口網站-存取要求-按一下要求詳細資料](./media/entitlement-management-request-approve/requestor-information-request-details.png)
 
@@ -77,7 +77,7 @@ ms.locfileid: "94537657"
 
     這些詳細資料包括使用者的名稱、組織、存取開始和結束日期（如有提供）、商務理由、提交要求的時間，以及要求將到期的時間。
 
-1. 按一下 [ **核准** ] 或 [ **拒絕** ]。
+1. 按一下 [ **核准** ] 或 [ **拒絕**]。
 
 1. 如有必要，請輸入原因。
 

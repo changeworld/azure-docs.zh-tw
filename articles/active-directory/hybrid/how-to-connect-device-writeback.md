@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d526394ac89e2d29b2002004736e8480bb15b954
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279256"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973417"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect：啟用裝置回寫
 > [!NOTE]
@@ -44,20 +44,20 @@ ms.locfileid: "89279256"
 使用自訂或快速設定安裝 Azure AD Connect。 Microsoft 建議您在啟用裝置回寫之前，首先讓所有使用者和群組成功完成同步處理。
 
 ## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>第 2 部分：在 Azure AD Connect 中啟用裝置回寫功能
-1. 再次執行安裝精靈。 選取 [其他工作] 頁面中的 [設定裝置選項]****，然後按 [下一步]****。 
+1. 再次執行安裝精靈。 選取 [其他工作] 頁面中的 [設定裝置選項]，然後按 [下一步]。 
 
     ![設定裝置選項](./media/how-to-connect-device-writeback/deviceoptions.png)
 
     >[!NOTE]
     > 新的設定裝置選項僅適用於 1.1.819.0 版和更新版本。
 
-2. 在裝置選項頁面上，選取 [設定裝置回寫]****。 直到啟用裝置回寫以後，才可使用 [停用裝置回寫]**** 選項。 按 [下一步]**** 移至精靈的下一頁。
+2. 在裝置選項頁面上，選取 [設定裝置回寫]。 直到啟用裝置回寫以後，才可使用 [停用裝置回寫] 選項。 按 [下一步] 移至精靈的下一頁。
     ![選擇裝置作業](./media/how-to-connect-device-writeback/configuredevicewriteback1.png)
 
 3. 在 [回寫] 頁面中，您會看到提供的網域已成為預設的裝置回寫樹系。
    ![自訂安全裝置回寫樹系](./media/how-to-connect-device-writeback/writebackforest.png)
 
-4. [裝置容器]**** 頁面使用下列其中一個可用選項來提供準備 Active Directory 的選項：
+4. [裝置容器] 頁面使用下列其中一個可用選項來提供準備 Active Directory 的選項：
 
     a. **提供企業系統管理員認證**：如果針對裝置需要回寫的樹系提供企業系統管理員認證，則 Azure AD Connect 會在裝置回寫的設定期間自動準備樹系。
 
@@ -94,11 +94,11 @@ ms.locfileid: "89279256"
 * 存有裝置的樹系必須將樹系結構描述升級到 Windows 2012 R2 層級，以便讓裝置物件和相關聯的屬性存在。
 * 如果安裝精靈已經在執行中，則將不會偵測到任何變更。 在此情況下，請先完成安裝精靈，然後再執行一次。
 * 確定您在初始化指令碼中提供的帳戶是 Active Directory 連接器實際使用的正確使用者。 若要確認，請依照下列步驟執行：
-  * 從 [開始] 功能表開啟 [同步處理服務] ****。
-  * 開啟 [連接器] **** 索引標籤。
+  * 從 [開始] 功能表開啟 [同步處理服務] 。
+  * 開啟 [連接器]  索引標籤。
   * 尋找類型為 Active Directory 網域服務的連接器並加以選取。
   * 在 [ **動作**] 底下，選取 [ **屬性**]。
-  * 前往 [連線至 Active Directory 樹系] ****。 請確認此畫面上所指定的網域和使用者名稱，與提供給指令碼的帳戶相符。
+  * 前往 [連線至 Active Directory 樹系] 。 請確認此畫面上所指定的網域和使用者名稱，與提供給指令碼的帳戶相符。
     ![Sync Service Manager 中的連接器帳戶](./media/how-to-connect-device-writeback/connectoraccount.png)
 
 確認 Active Directory 中的組態：

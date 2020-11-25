@@ -18,21 +18,21 @@ ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: b680c275b92340cc7efba187769cb17602b08b45
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873432"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973281"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理程式安裝
 
 在本文中，您將瞭解如何安裝及設定 Azure Active Directory (Azure AD) Connect Health 代理程式。 若要下載代理程式，請參閱 [這些指示](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent)。
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 下表列出使用 Azure AD Connect Health 的需求。
 
-| 需求 | 說明 |
+| 需求 | 描述 |
 | --- | --- |
 | 已安裝 Azure AD Premium。 |Azure AD Connect Health 是 Azure AD Premium 的功能。 如需詳細資訊，請參閱 [註冊 Azure AD Premium](../fundamentals/active-directory-get-started-premium.md)。 <br /><br />若要開始30天的免費試用版，請參閱 [開始試用](https://azure.microsoft.com/trial/get-started-active-directory/)。 |
 | 您是 Azure AD 中的全域管理員。 |依預設，只有全域系統管理員可以安裝和設定健康情況代理程式、存取入口網站，以及在 Azure AD Connect Health 內進行任何作業。 如需詳細資訊，請參閱[管理您的 Azure AD 目錄](../fundamentals/active-directory-whatis.md)。 <br /><br /> 藉由使用 Azure 角色型存取控制 (Azure RBAC) ，您可以讓組織中的其他使用者存取 Azure AD Connect Health。 如需詳細資訊，請參閱 [適用于 Azure AD Connect Health 的 AZURE RBAC](how-to-connect-health-operations.md#manage-access-with-azure-rbac)。 <br /><br />**重要**：使用工作或學校帳戶來安裝代理程式。 您無法使用 Microsoft 帳戶。 如需詳細資訊，請參閱 [以組織方式註冊 Azure](../fundamentals/sign-up-organization.md)。 |
@@ -314,7 +314,7 @@ PowerShell 視窗隨即開啟，以啟動代理程式註冊程式。 當系統�
 * 清除現有的 proxy 設定。
 
 > [!NOTE]
-> 若要更新 proxy 設定，您必須重新開機所有 Azure AD Connect Health 代理程式服務。 執行下列命令：
+> 若要更新 proxy 設定，您必須重新開機所有 Azure AD Connect Health 代理程式服務。 執行以下命令：
 >
 > `Restart-Service AzureADConnectHealth*`
 

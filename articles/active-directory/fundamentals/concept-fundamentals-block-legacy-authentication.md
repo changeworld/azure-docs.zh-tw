@@ -13,11 +13,11 @@ ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: b50c942d2e05d7f5234a17f1cf36137309c7ce97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89320948"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973706"
 ---
 # <a name="blocking-legacy-authentication"></a>封鎖舊版驗證
  
@@ -33,9 +33,9 @@ ms.locfileid: "89320948"
 首先需要先了解您的使用者是否有應用程式在使用舊式驗證，以及舊式驗證會對您的整體目錄產生何種影響，如此才能在目錄中封鎖舊式驗證。 可以使用 Azure AD 登入記錄來確認是否在使用舊式驗證。
 
 1. 瀏覽至 [Azure 入口網站]  >  [Azure Active Directory]  >  [登入]。
-1. 如果未顯示 [**用戶端應用程式**] 資料行，請按一下 [資料 **行**   >  **用戶端應用程式**]。
+1. 如果未顯示 [**用戶端應用程式**] 資料行，請按一下 [資料  **行**   >  **用戶端應用程式**]。
 1. 依 **用戶端應用程式** 篩選 > 檢查顯示的所有 **舊版驗證用戶端** 選項。
-1. 依**狀態**  >  **成功**篩選。 
+1. 依 **狀態**  >  **成功** 篩選。 
 1. 如有必要，請使用 **日期** 篩選來展開您的日期範圍。
 
 篩選只會顯示所選舊版驗證通訊協定所做的成功登入嘗試。 按一下各項登入嘗試，即會顯示更多詳細資料。 選取個別資料列之後，[基本資訊] 索引標籤下的 [用戶端應用程式] 資料行或 [用戶端應用程式] 欄位，將會指出使用的是舊版驗證通訊協定 這些記錄會顯示哪些使用者仍依賴舊式驗證，以及哪些應用程式目前會使用舊式通訊協定提出驗證要求。 針對未出現在這些記錄中且已確認不使用舊版驗證的使用者，請執行條件式存取原則或啟用基準原則：僅封鎖這些使用者的舊版驗證。
