@@ -9,12 +9,12 @@ ms.author: chpalm
 ms.date: 10/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a7e2240e3f74f82186827ec82bb1aa39a5b93f6c
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 028e7f9764cbf75263736471f434e04bc6daca0f
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123829"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886816"
 ---
 # <a name="teams-interoperability"></a>小組互通性
 
@@ -35,9 +35,9 @@ Azure 通訊服務可用來建置能與 Microsoft Teams 互動的自訂會議體
 
 雖然某些 Teams 會議功能 (例如舉手的人、一起模式和分組討論室) 僅適用於 Teams 使用者，但您的自訂應用程式將可存取會議的核心音訊、影片和螢幕共用功能。
 
-當通訊服務使用者加入 Teams 會議時，系統會向 Teams 使用者顯示透過通話用戶端程式庫所提供的顯示名稱。 否則，系統會將通訊服務使用者視為 Teams 中的匿名使用者。 您的自訂應用程式應該考慮採用使用者驗證和其他安全性措施，以保護 Teams 會議。 請留意讓匿名使用者加入會議的安全性含意，並使用 [Teams 安全性指南](https://docs.microsoft.com/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings)來設定匿名使用者可用的功能。
+當通訊服務使用者加入 Teams 會議時，系統會向 Teams 使用者顯示透過通話用戶端程式庫所提供的顯示名稱。 否則，系統會將通訊服務使用者視為 Teams 中的匿名使用者。 您的自訂應用程式應該考慮採用使用者驗證和其他安全性措施，以保護 Teams 會議。 請留意讓匿名使用者加入會議的安全性含意，並使用 [Teams 安全性指南](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings)來設定匿名使用者可用的功能。
 
-只要在[會議設定](https://docs.microsoft.com/microsoftteams/meeting-settings-in-teams)中啟用匿名加入，通訊服務使用者就可以加入已排程的 Teams 會議。
+只要在[會議設定](/microsoftteams/meeting-settings-in-teams)中啟用匿名加入，通訊服務使用者就可以加入已排程的 Teams 會議。
 
 
 

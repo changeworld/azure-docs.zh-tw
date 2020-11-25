@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f33d7efd1c136619767c3eadd93740442ae7239a
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: f0e69e3f62d3b9e4debb5761d877dcdfdd246f60
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762037"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886017"
 ---
 # <a name="chat-concepts"></a>聊天概念
 
@@ -44,7 +44,7 @@ ms.locfileid: "91762037"
     
 ## <a name="message-types"></a>訊息類型
 
-通訊服務聊天會共用使用者及系統產生的訊息，這稱為**對話活動**。 當聊天對話更新時，就會產生對話活動。 當您在聊天對話上呼叫 `List Messages` 或 `Get Messages` 時，結果會包含使用者產生的文字訊息及系統訊息 (依時間順序排列)。 這可協助您識別何時新增或移除成員，或何時更新了聊天對話主題。 支援的訊息類型為：  
+通訊服務聊天會共用使用者及系統產生的訊息，這稱為 **對話活動**。 當聊天對話更新時，就會產生對話活動。 當您在聊天對話上呼叫 `List Messages` 或 `Get Messages` 時，結果會包含使用者產生的文字訊息及系統訊息 (依時間順序排列)。 這可協助您識別何時新增或移除成員，或何時更新了聊天對話主題。 支援的訊息類型為：  
 
  - `Text`:使用者在聊天對話中撰寫及傳送的實際訊息。 
  - `ThreadActivity/AddMember`:指出已將一個或多個成員新增至聊天對話的系統訊息。 例如：
@@ -120,7 +120,7 @@ ms.locfileid: "91762037"
 
 ## <a name="using-cognitive-services-with-chat-client-library-to-enable-intelligent-features"></a>使用認知服務與聊天用戶端程式庫來啟用智慧型功能
 
-您可以使用 [Azure 認知 API](https://docs.microsoft.com/azure/cognitive-services/) 與聊天用戶端程式庫，將智慧型功能新增至您的應用程式。 例如，您可以：
+您可以使用 [Azure 認知 API](../../../cognitive-services/index.yml) 與聊天用戶端程式庫，將智慧型功能新增至您的應用程式。 例如，您可以：
 
 - 讓使用者能夠以不同的語言互相聊天。 
 - 藉由偵測客戶所傳入問題的負面情緒，協助支援專員安排票證的優先順序。
@@ -128,9 +128,9 @@ ms.locfileid: "91762037"
 
 達成此目標的其中一種方式是讓信任的服務作為聊天對話的成員。 假設您想要啟用語言翻譯。 這項服務會負責接聽其他成員 [1] 所交換的訊息、呼叫認知 API 以將內容翻譯為所需的語言 [2、3]，並以訊息的形式將翻譯的結果傳送到聊天對話中 [4]。 
 
-如此一來，訊息記錄就會同時包含原始和翻譯的訊息。 在用戶端應用程式中，您可以新增邏輯來顯示原始或翻譯的訊息。 請參閱[本快速入門](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translator)，了解如何使用認知 API，將文字翻譯成不同的語言。 
+如此一來，訊息記錄就會同時包含原始和翻譯的訊息。 在用戶端應用程式中，您可以新增邏輯來顯示原始或翻譯的訊息。 請參閱[本快速入門](../../../cognitive-services/translator/quickstart-translator.md)，了解如何使用認知 API，將文字翻譯成不同的語言。 
 
-:::image type="content" source="../media/chat/cognitive-services.png" alt-text="顯示通訊服務聊天架構的圖表。":::
+:::image type="content" source="../media/chat/cognitive-services.png" alt-text="顯示認知服務如何與通訊服務互動的圖表。":::
 
 ## <a name="next-steps"></a>下一步
 

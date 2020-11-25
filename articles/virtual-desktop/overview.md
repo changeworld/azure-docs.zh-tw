@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 03566dccbb453aa06a2b5f86bd02b86d85d61b28
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0fe9b3ddaee41802ced30e1898b46cefa2566771
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322048"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023185"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什麼是 Windows 虛擬桌面？
 
@@ -71,7 +71,7 @@ Windows 虛擬桌面是可以在雲端執行的桌面與應用程式虛擬化服
 
 您的基礎結構需要下列項目才能支援 Windows 虛擬桌面：
 
-* [Azure Active Directory](/azure/active-directory/)。
+* [Azure Active Directory](../active-directory/index.yml)。
 * 與 Azure Active Directory 同步的 Windows Server Active Directory。 您可以使用 Azure AD Connect (適用於混合式組織) 或 Azure AD Domain Services (適用於混合式或雲端組織) 來進行設定。
   * 與 Azure Active Directory 同步的 Windows Server AD。 使用者來自 Windows Server AD，而 Windows 虛擬桌面 VM 會加入到 Windows Server AD 網域。
   * 與 Azure Active Directory 同步的 Windows Server AD。 使用者來自 Windows Server AD，而 Windows 虛擬桌面 VM 會加入到 Azure AD Domain Services 網域。
@@ -85,7 +85,7 @@ Windows 虛擬桌面是可以在雲端執行的桌面與應用程式虛擬化服
 
 您為 Windows 虛擬桌面建立的 Azure 虛擬機器必須：
 
-* [已加入標準網域](../active-directory-domain-services/active-directory-ds-comparison.md)或[已加入混合式 AD](../active-directory/devices/hybrid-azuread-join-plan.md)。 虛擬機器無法加入 Azure AD。
+* [已加入標準網域](../active-directory-domain-services/compare-identity-solutions.md)或[已加入混合式 AD](../active-directory/devices/hybrid-azuread-join-plan.md)。 虛擬機器無法加入 Azure AD。
 * 執行下列其中一個[支援的 OS 映像](#supported-virtual-machine-os-images)。
 
 >[!NOTE]
@@ -101,7 +101,7 @@ Windows 虛擬桌面包含您交付給使用者的 Windows 桌面與應用程式
 * 當裝載桌面和應用程式的 VM 連線至管理服務時，網路流量可能會送到國家/地區以外。
 * 若要將網路效能最佳化，我們建議讓工作階段主機的 VM 共置在與管理服務相同的 Azure 區域中。
 
-您可以在我們的[架構文件](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)中，看到企業 Windows 虛擬桌面的一般架構設定。
+您可以在我們的[架構文件](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)中，看到企業 Windows 虛擬桌面的一般架構設定。
 
 ## <a name="supported-remote-desktop-clients"></a>支援的遠端桌面用戶端
 

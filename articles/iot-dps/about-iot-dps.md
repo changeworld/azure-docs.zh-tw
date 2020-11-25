@@ -11,12 +11,12 @@ manager: eliotgra
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e3fce15cdeb1792749224299167b52fc2311d04e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6b33b866a10ad4a44cef14f3c86d8ca1f40c4750
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318267"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965369"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中樞裝置佈建服務來佈建裝置
 Microsoft Azure 提供一組豐富的整合式公用雲端服務，可滿足所有的 IoT 方案需求。 IoT 中樞裝置佈建服務 (DPS) 是 IoT 中樞的一項協助程式服務，可對正確的 IoT 中樞進行自動 Just-in-Time 佈建，完全無須人為介入。 DPS 可讓您以安全且可擴充的方式佈建數百萬個裝置。
@@ -49,7 +49,7 @@ Microsoft Azure 提供一組豐富的整合式公用雲端服務，可滿足所�
 ## <a name="provisioning-process"></a>佈建程序
 裝置的部署程序中有兩個不同的步驟，DPS 會參與其中，並能夠獨立完成：
 
-* 建立裝置及出廠時準備的**製造步驟**，和
+* 建立裝置及出廠時準備的 **製造步驟**，和
 * **雲端安裝步驟**，可在其中設定裝置佈建服務以進行自動佈建。
 
 這兩個步驟能順暢地符合現有的製造和部署程序。 DPS 甚至可簡化某些部署程序，這些程序需要手動工作才能取得裝置的連線資訊。
@@ -79,13 +79,13 @@ DPS 不會在製造過程中導入新的步驟；相反地，它所繫結的現�
 ## <a name="features-of-the-device-provisioning-service"></a>裝置佈建服務的功能
 DPS 有許多功能，因此適合用來佈建裝置。
 
-* **安全證明**支援 X.509 與 TPM 型身分識別。
-* **註冊清單**包含可能在某處註冊的完整裝置記錄/裝置群組。 一旦註冊後，註冊清單就會包含裝置所需設定的相關資訊，並可以在任何時間進行更新。
-* **多個配置原則**可控制 DPS 將裝置指派給 IoT 中樞的方式，從而支援您的案例：透過註冊清單控制最低延遲、權重相等的分佈 (預設值) 和靜態設定。 延遲會使用與[流量管理員](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance)相同的方法來決定。
-* **監視和診斷記錄**並確定一切運作正常。
-* **多重中樞支援**可讓 DPS 將裝置指派給一個以上的 IoT 中樞。 DPS 可跨多個 Azure 訂用帳戶與中樞通訊。
-* **跨區域支援**可讓 DPS 將裝置指派給其他區域的 IoT 中樞。
-* **待用資料加密**允許使用 256 位元的 AES 加密 (可用的最強區塊編碼器之一)，以透明方式加密及解密 DPS 中的資料，而且符合 FIPS 140-2 規範。
+* **安全證明** 支援 X.509 與 TPM 型身分識別。
+* **註冊清單** 包含可能在某處註冊的完整裝置記錄/裝置群組。 一旦註冊後，註冊清單就會包含裝置所需設定的相關資訊，並可以在任何時間進行更新。
+* **多個配置原則** 可控制 DPS 將裝置指派給 IoT 中樞的方式，從而支援您的案例：透過註冊清單控制最低延遲、權重相等的分佈 (預設值) 和靜態設定。 延遲會使用與[流量管理員](../traffic-manager/traffic-manager-routing-methods.md#performance)相同的方法來決定。
+* **監視和診斷記錄** 並確定一切運作正常。
+* **多重中樞支援** 可讓 DPS 將裝置指派給一個以上的 IoT 中樞。 DPS 可跨多個 Azure 訂用帳戶與中樞通訊。
+* **跨區域支援** 可讓 DPS 將裝置指派給其他區域的 IoT 中樞。
+* **待用資料加密** 允許使用 256 位元的 AES 加密 (可用的最強區塊編碼器之一)，以透明方式加密及解密 DPS 中的資料，而且符合 FIPS 140-2 規範。
 
 
 您可以深入了解涉及裝置佈建的概念和功能，方法為檢閱 [DPS 術語](concepts-service.md)主題，以及同一章節中的其他概念性主題。
@@ -119,7 +119,7 @@ DPS 有 99.9% 的服務等級協定，且您可以[閱讀 SLA](https://azure.mic
 * [Azure 訂用帳戶服務限制](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 ## <a name="related-azure-components"></a>相關的 Azure 元件
-DPS 可使用 Azure IoT 中樞將裝置佈建自動化。 深入了解 [IoT 中樞](https://docs.microsoft.com/azure/iot-hub/)。
+DPS 可使用 Azure IoT 中樞將裝置佈建自動化。 深入了解 [IoT 中樞](../iot-hub/index.yml)。
 
 ## <a name="next-steps"></a>後續步驟
 現在您已了解 Azure 中 IoT 裝置的概觀。 下一個步驟是嘗試端對端 IoT 情節。

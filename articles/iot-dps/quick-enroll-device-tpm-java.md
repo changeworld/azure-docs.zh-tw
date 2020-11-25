@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 6c6282f487d6a20de4654118df94c8bfac8a441d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: cda36539e4a24bbb017873dafd2c12356a785e55
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075920"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966593"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>快速入門：使用 Java 服務 SDK 向 IoT 中樞裝置佈建服務註冊 TPM 裝置
 
@@ -35,7 +35,7 @@ ms.locfileid: "93075920"
 
 ## <a name="prepare-the-development-environment"></a>準備開發環境 
 
-1. 請確定您已在電腦上安裝 [Java SE 開發套件 8](https://aka.ms/azure-jdks)。 
+1. 請確定您已在電腦上安裝 [Java SE 開發套件 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)。 
 
 2. 設定您 Java 安裝的環境變數。 `PATH` 變數應該包含 jdk1.8.x\bin  目錄的完整路徑。 如果這是您第一次在電腦上安裝 Java，請建立名為 `JAVA_HOME` 的新環境變數，並加以指向 jdk1.8.x  目錄的完整路徑。 在 Windows 電腦上，此目錄位於 C:\\Program Files\\Java\\  資料夾，您可以在 Windows 電腦的 [控制台]  上搜尋 [編輯系統環境變數]  來建立或編輯環境變數。 
 
@@ -77,7 +77,7 @@ ms.locfileid: "93075920"
 
            ![從入口網站取得佈建連接字串](./media/quick-enroll-device-tpm-java/provisioning-string.png)  
 
-       4. 在範例程式碼檔案 _ServiceEnrollmentSample.java_  中，將 `[Provisioning Connection String]` 取代為 **主索引鍵連接字串** 。
+       4. 在範例程式碼檔案 _ServiceEnrollmentSample.java_  中，將 `[Provisioning Connection String]` 取代為 **主索引鍵連接字串**。
     
            ```Java
            private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";

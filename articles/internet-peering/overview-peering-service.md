@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: overview
 ms.date: 5/22/2020
 ms.author: derekol
-ms.openlocfilehash: 3ffef24d459a2864ffd3f2271e6bca9e4bc638cc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 717a8c87c6a1c22d3f75cd4e3054bfdf0c4b5f9a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83849377"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023440"
 ---
 # <a name="internet-peering-vs-peering-service"></a>網際網路對等互連與對等互連服務
 
@@ -53,5 +53,5 @@ ms.locfileid: "83849377"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入了解[對等互連服務](https://docs.microsoft.com/azure/peering-service/)的客戶權益。
+* 深入了解[對等互連服務](../peering-service/index.yml)的客戶權益。
 * 透過[對等互連服務夥伴逐步解說](walkthrough-peering-service-all.md)，深入了解為直接對等互連啟用對等互連服務的步驟。

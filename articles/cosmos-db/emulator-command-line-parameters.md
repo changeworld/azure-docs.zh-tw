@@ -7,17 +7,17 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
 ms.custom: contperfq1
-ms.openlocfilehash: cb6d1cb684f4c2e3f563d5690c804d64c97ff70c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 67abcea1b5d7657ffcd342d4cddb9a96bdd8c63a
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096728"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030878"
 ---
 # <a name="command-line-and-powershell-reference-for-azure-cosmos-db-emulator"></a>Azure Cosmos DB 模擬器的命令列和 PowerShell 參考
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos 模擬器提供一個模擬 Azure Cosmos DB 服務的本機環境，以供本機開發之用。 [安裝模擬器](local-emulator.md)之後，您可以使用命令列和 PowerShell 命令來控制模擬器。 本文說明如何使用命令列和 PowerShell 命令來啟動和停止模擬器、設定選項，以及執行其他作業。 您必須從安裝位置執行命令。
+Azure Cosmos DB 模擬器會提供一個模擬 Azure Cosmos DB 服務的本機環境，以供本機開發之用。 [安裝模擬器](local-emulator.md)之後，您可以使用命令列和 PowerShell 命令來控制模擬器。 本文說明如何使用命令列和 PowerShell 命令來啟動和停止模擬器、設定選項，以及執行其他作業。 您必須從安裝位置執行命令。
 
 ##  <a name="manage-the-emulator-with-command-line-syntax"></a><a id="command-line"></a>使用命令列語法管理模擬器
 
@@ -29,10 +29,10 @@ Microsoft.Azure.Cosmos.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort]
 
 |**選項** | **說明** | **命令**| **引數**|
 |---|---|---|---|
-|[無引數] | 使用預設設定啟動 Azure Cosmos 模擬器。 |Microsoft.Azure.Cosmos.Emulator.exe| |
+|[無引數] | 使用預設設定啟動 Azure Cosmos DB 模擬器。 |Microsoft.Azure.Cosmos.Emulator.exe| |
 |[說明] |顯示支援的命令列引數清單。|Microsoft.Azure.Cosmos.Emulator.exe /? | |
-| GetStatus |取得 Azure Cosmos 模擬器的狀態。 狀態會以結束代碼表示：1 = 啟動，2 = 執行中，3 = 已停止。 負數的結束代碼表示發生錯誤。 不會產生其他輸出。 | Microsoft.Azure.Cosmos.Emulator.exe /GetStatus| |
-| Shutdown| 關閉 Azure Cosmos 模擬器。| Microsoft.Azure.Cosmos.Emulator.exe /Shutdown | |
+| GetStatus |取得 Azure Cosmos DB 模擬器的狀態。 狀態會以結束代碼表示：1 = 啟動，2 = 執行中，3 = 已停止。 負數的結束代碼表示發生錯誤。 不會產生其他輸出。 | Microsoft.Azure.Cosmos.Emulator.exe /GetStatus| |
+| Shutdown| 關閉 Azure Cosmos DB 模擬器。| Microsoft.Azure.Cosmos.Emulator.exe /Shutdown | |
 |資料路徑 | 指定用來儲存資料檔案的路徑。 預設值為 %LocalAppdata%\CosmosDBEmulator。 | Microsoft.Azure.Cosmos.Emulator.exe /DataPath=\<datapath\> | \<datapath\>:可存取的路徑 |
 |連接埠 | 指定用於模擬器的連接埠號碼。 預設值為 8081。 |Microsoft.Azure.Cosmos.Emulator.exe /Port=\<port\> | \<port\>:單一連接埠號碼 |
 | ComputePort | 指定用於計算 Interop 閘道服務的連接埠號碼。 閘道 HTTP 端點探查連接埠的計算方式為 ComputePort + 79。 因此，ComputePort 和 ComputePort + 79 必須開啟且可供使用。 預設值為 8900。 | Microsoft.Azure.Cosmos.Emulator.exe /ComputePort=\<computeport\> | \<computeport\>:單一連接埠號碼 |
@@ -127,26 +127,26 @@ Cmdlet 可確保在解除安裝之前停止模擬器。
 
 ## <a name="change-the-number-of-default-containers"></a><a id="set-partitioncount"></a>變更預設容器的數目
 
-根據預設，您最多可以建立 25 個固定大小的容器 (僅支援使用 Azure Cosmos DB SDK)，或者，使用 Azure Cosmos 模擬器來建立 5 個無限制的容器。 藉由修改 **PartitionCount** 值，您最多可以建立 250 個固定大小的容器、50 個無限制的容器，或兩者不超過 250 個固定大小容器的任意組合 (其中一個無限制的容器 = 5 個固定大小的容器)。 但是，不建議將模擬器設定為搭配超過 200 個固定大小的容器來執行。 由於它對磁碟 IO 作業新增了額外負荷，因此，會在使用端點 API 時導致無法預期的逾時。
+根據預設，您最多可以建立25個固定大小的容器 (僅支援使用 Azure Cosmos DB Sdk) ，或使用 Azure Cosmos DB 模擬器的5個無限制的容器。 藉由修改 **PartitionCount** 值，您最多可以建立 250 個固定大小的容器、50 個無限制的容器，或兩者不超過 250 個固定大小容器的任意組合 (其中一個無限制的容器 = 5 個固定大小的容器)。 但是，不建議將模擬器設定為搭配超過 200 個固定大小的容器來執行。 由於它對磁碟 IO 作業新增了額外負荷，因此，會在使用端點 API 時導致無法預期的逾時。
 
 如果您在超過目前分割區計數之後嘗試建立容器，模擬器就會擲回 ServiceUnavailable 例外狀況，並隨附下列訊息。
 
 > 抱歉，我們目前在此區域中遇到高需求，且目前無法完成您的要求。 我們正持續努力讓越來越多容量上線，並建議您再試一次。
 > ActivityId：12345678-1234-1234-1234-123456789abc
 
-若要變更 Azure Cosmos 模擬器中可用的容器數目，請執行下列步驟：
+若要變更 Azure Cosmos DB 模擬器中可用的容器數目，請執行下列步驟：
 
-1. 以滑鼠右鍵按一下系統匣上的 **Azure Cosmos DB 模擬器** ] 圖示，然後按一下 [ **重設資料** ]，以刪除所有本機 Azure Cosmos 模擬器資料 .。。
+1. 刪除所有的本機 Azure Cosmos DB 模擬器資料，方法是以滑鼠右鍵按一下系統匣上的 [Azure Cosmos DB 模擬器] 圖示，然後按一下 [重設資料...]。
 
 1. 刪除此資料夾 `%LOCALAPPDATA%\CosmosDBEmulator` 中的所有模擬器資料。
 
 1. 結束所有開啟的執行個體，方法是以滑鼠右鍵按一下系統匣上的 [Azure Cosmos DB 模擬器] 圖示，然後按一下 [結束]。 結束所有執行個體可能需要數分鐘的時間。
 
-1. 安裝最新版的 [Azure Cosmos 模擬器](https://aka.ms/cosmosdb-emulator)。
+1. 安裝最新版的 [Azure Cosmos DB Emulator 模擬器](https://aka.ms/cosmosdb-emulator)。
 
 1. 啟動具有 PartitionCount 旗標的模擬器，方法是設定值 <= 250。 例如： `C:\Program Files\Azure Cosmos DB Emulator> Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=100` 。
  
 ## <a name="next-steps"></a>後續步驟
 
-* [匯出 Azure Cosmos 模擬器憑證以與 JAVA、Python 和 Node.js apps 搭配使用](local-emulator-export-ssl-certificates.md)
+* [匯出 Azure Cosmos DB 模擬器憑證以與 JAVA、Python 和 Node.js 應用程式搭配使用](local-emulator-export-ssl-certificates.md)
 * [模擬器的偵錯工具問題](troubleshoot-local-emulator.md)

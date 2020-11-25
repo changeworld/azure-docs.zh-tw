@@ -10,17 +10,17 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 69b3e900973b1be484b76764847767b9e74d9998
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: edf48bc75817b3510264d852eb9cc717ed022f33
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94816943"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94915528"
 ---
 ## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true) 第 8 版或更新版本。
+- [Java Development Kit (JDK)](/java/azure/jdk/?preserve-view=true&view=azure-java-stable) 第 8 版或更新版本。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
 - 已部署的 Azure 通訊服務資源和連接字串。 [建立通訊服務資源](../../create-communication-resource.md)。
 - [使用者存取權杖](../../access-tokens.md)。 請務必將範圍設定為 "chat"，並記下 token 字串和 userId 字串。

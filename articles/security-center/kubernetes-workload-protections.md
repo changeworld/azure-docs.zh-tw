@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: ed9c3c86336a7b0a2fe989cbe9bd0dd825c5575b
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 08bcb74fd50be0eeb7a73c0743db2c4f3a57be32
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372620"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030844"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>保護 Kubernetes 工作負載
 
@@ -47,18 +47,27 @@ ms.locfileid: "94372620"
 
 Azure 資訊安全中心包含安裝 **適用于 Kubernetes 的 Azure 原則附加** 元件時可用的建議組合。
 
-1. 若要設定建議，您必須先安裝 [加入]：
+### <a name="step-1-deploy-the-add-on"></a>步驟1：部署附加元件
 
-    1. 在 [建議] 頁面中，搜尋名為 Azure 原則 Kubernetes 附加元件的建議，並在您的叢集 **上安裝和啟用** 。
+若要設定建議，請安裝  **適用于 Kubernetes 的 Azure 原則附加** 元件。 
+
+- 您可以自動部署此附加元件，如 [啟用自動](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions)布建延伸模組中所述。 當附加元件的自動布建設定為 [開啟] 時，預設會在所有符合附加元件安裝需求的現有和未來叢集 (中啟用擴充功能) 。
+
+- 若要手動部署附加元件：
+
+    1. 在 [建議] 頁面中，搜尋「**應在您的叢集上安裝並啟用 Kubernetes 的 Azure 原則附加** 元件」的建議。 
 
         :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes.png" alt-text="建議 * * 應在您的叢集上安裝並啟用 Kubernetes 的 Azure 原則附加元件 * *":::
 
         > [!TIP]
         > 這項建議包含在五個不同的安全性控制項中，而您在下一個步驟中所選取的是什麼。
 
-    1. 從任何安全性控制項中，選取建議以查看您可以在其上安裝新增的資源，然後選取 [ **修復** ]。 
+    1. 從任何安全性控制項中，選取建議以查看您可以在其上安裝附加的資源。
+    1. 選取相關的叢集，並進行 **補救**。
 
         :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="您應在您的叢集上安裝並啟用適用于 Kubernetes 的 Azure 原則附加元件的 [建議詳細資料] 頁面 * *":::
+
+### <a name="step-2-view-and-configure-the-bundle-of-13-recommendations"></a>步驟2：查看並設定13個建議的組合
 
 1. 附加元件安裝完成後約30分鐘，資訊安全中心會針對下列建議顯示叢集的健全狀況狀態，每個都出現在相關的安全性控制中，如下所示：
 
@@ -82,13 +91,14 @@ Azure 資訊安全中心包含安裝 **適用于 Kubernetes 的 Azure 原則附�
     | 應限制主機網路與連接埠的使用方式                     | 限制未經授權的網路存取     | **是**                |
     | 應限制容器 AppArmor 設定檔的覆寫或停用 | 修復安全性設定        | **是**                |
     | 容器映射只應從信任的登錄部署            | 補救弱點                | **是**                |
+    |||
 
 
 1. 對於必須自訂參數的建議，請設定參數：
 
-    1. 從 [安全性中心] 功能表中，選取 [ **安全性原則** ]。
+    1. 從 [安全性中心] 功能表中，選取 [ **安全性原則**]。
     1. 選取相關的訂用帳戶。
-    1. 從 [ **安全性中心預設原則** ] 區段中，選取 [ **查看有效原則** ]。
+    1. 從 [ **安全性中心預設原則** ] 區段中，選取 [ **查看有效原則**]。
     1. 選取 [ASC 預設值]。
     1. 開啟 [ **參數** ] 索引標籤，並視需要修改值。
     1. 選取 [檢閱 + 儲存]。
@@ -97,21 +107,21 @@ Azure 資訊安全中心包含安裝 **適用于 Kubernetes 的 Azure 原則附�
 
 1. 若要強制執行任何建議， 
 
-    1. 開啟 [建議詳細資料] 頁面，然後選取 [ **拒絕** ：
+    1. 開啟 [建議詳細資料] 頁面，然後選取 [ **拒絕**：
 
         :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Azure 原則參數的 Deny 選項":::
 
         這會開啟您設定範圍的窗格。 
 
-    1. 設定領域之後，請選取 [ **變更為拒絕** ]。
+    1. 設定領域之後，請選取 [ **變更為拒絕**]。
 
 1. 若要查看哪些建議適用于您的叢集：
 
-    1. 開啟 [安全性中心的 [資產清查](asset-inventory.md) ] 頁面，並使用資源類型篩選器來 **Kubernetes 服務** 。
+    1. 開啟 [安全性中心的 [資產清查](asset-inventory.md) ] 頁面，並使用資源類型篩選器來 **Kubernetes 服務**。
 
     1. 選取要調查的叢集，並查看可用的建議。 
 
-1. 從工作負載保護集查看建議時，您會看到受影響的 pod 數目 ( 「Kubernetes 元件」 ) 與叢集一起列出。 如需特定 pod 的清單，請選取叢集，然後選取 [ **採取動作** ]。
+1. 從工作負載保護集查看建議時，您會看到受影響的 pod 數目 ( 「Kubernetes 元件」 ) 與叢集一起列出。 如需特定 pod 的清單，請選取叢集，然後選取 [ **採取動作**]。
 
     :::image type="content" source="./media/defender-for-kubernetes-usage/view-affected-pods-for-recommendation.gif" alt-text="查看受影響的 pod 以取得 K8s 建議"::: 
 

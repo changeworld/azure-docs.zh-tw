@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: b74987e225314112c84280e18af523bc5c3804a4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 51ad2654b285138dbdff211d5dc497a4beb48449
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296020"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957838"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>快速入門：診斷虛擬機器網路流量篩選問題 - Azure PowerShell
 
@@ -142,7 +142,7 @@ Get-AzEffectiveNetworkSecurityGroup `
   -ResourceGroupName myResourceGroup
 ```
 
-對於在[使用 IP 流量驗證](#use-ip-flow-verify) 中允許對外存取 www.bing.com 的 **AllowInternetOutbound** 規則，傳回的輸出包含下列文字：
+對於在 [使用 IP 流量驗證](#use-ip-flow-verify) 中允許對外存取 www.bing.com 的 **AllowInternetOutbound** 規則，傳回的輸出包含下列文字：
 
 ```powershell
 {
@@ -177,9 +177,9 @@ Get-AzEffectiveNetworkSecurityGroup `
   },
 ```
 
-您可以在輸出中看到 **DestinationAddressPrefix** 為 **Internet**。 雖然並不清楚 13.107.21.200 (您在[使用 IP 流量驗證](#use-ip-flow-verify)中測試的位址) 與 **Internet** 有何關連。 您會看到有幾個位址首碼列在 **ExpandedDestinationAddressPrefix** 底下。 清單中有一個前置詞是 **12.0.0.0/6**，其中包含 IP 位址的 12.0.0.1-15.255.255.254 範圍。 因為 13.107.21.200 在該位址範圍內，所以 **AllowInternetOutBound** 規則允許輸出流量。 此外，`Get-AzEffectiveNetworkSecurityGroup` 所傳回的輸出中並未列出任何會覆寫此規則的較高**優先順序** (數字較小) 規則。 若要拒絕送至 13.107.21.200 的輸出通訊，您可以新增具有較高優先順序的安全性規則，以拒絕連接埠 80 輸出至此 IP 位址。
+您可以在輸出中看到 **DestinationAddressPrefix** 為 **Internet**。 雖然並不清楚 13.107.21.200 (您在 [使用 IP 流量驗證](#use-ip-flow-verify)中測試的位址) 與 **Internet** 有何關連。 您會看到有幾個位址首碼列在 **ExpandedDestinationAddressPrefix** 底下。 清單中有一個前置詞是 **12.0.0.0/6**，其中包含 IP 位址的 12.0.0.1-15.255.255.254 範圍。 因為 13.107.21.200 在該位址範圍內，所以 **AllowInternetOutBound** 規則允許輸出流量。 此外，`Get-AzEffectiveNetworkSecurityGroup` 所傳回的輸出中並未列出任何會覆寫此規則的較高 **優先順序** (數字較小) 規則。 若要拒絕送至 13.107.21.200 的輸出通訊，您可以新增具有較高優先順序的安全性規則，以拒絕連接埠 80 輸出至此 IP 位址。
 
-當您在[使用 IP 流量驗證](#use-ip-flow-verify)中執行 `Test-AzNetworkWatcherIPFlow` 命令來測試輸出至 172.131.0.100 的通訊時，輸出會告知您 **DefaultOutboundDenyAll** 規則拒絕通訊。 **DefaultOutboundDenyAll** 規則等同於 `Get-AzEffectiveNetworkSecurityGroup` 命令的下列輸出中所列的 **DenyAllOutBound** 規則：
+當您在 [使用 IP 流量驗證](#use-ip-flow-verify)中執行 `Test-AzNetworkWatcherIPFlow` 命令來測試輸出至 172.131.0.100 的通訊時，輸出會告知您 **DefaultOutboundDenyAll** 規則拒絕通訊。 **DefaultOutboundDenyAll** 規則等同於 `Get-AzEffectiveNetworkSecurityGroup` 命令的下列輸出中所列的 **DenyAllOutBound** 規則：
 
 ```powershell
 {
@@ -207,7 +207,7 @@ Get-AzEffectiveNetworkSecurityGroup `
 
 此規則列出 **0.0.0.0/0** 作為 **DestinationAddressPrefix**。 此規則會拒絕輸出至 172.131.0.100 的通訊，因為此位址不在 `Get-AzEffectiveNetworkSecurityGroup` 命令輸出中任何其他輸出規則的 **DestinationAddressPrefix** 內。 若要允許輸出通訊，您可以新增較高優先順序的安全性規則，以允許輸出至位於 172.131.0.100 之通訊埠 80 的流量。
 
-當您在[使用 IP 流量驗證](#use-ip-flow-verify)中執行 `Test-AzNetworkWatcherIPFlow` 命令來測試從 172.131.0.100 輸入的通訊時，輸出會告知您 **DefaultInboundDenyAll** 規則拒絕通訊。 **DefaultInboundDenyAll** 規則等同於 `Get-AzEffectiveNetworkSecurityGroup` 命令的下列輸出中所列的 **DenyAllInBound** 規則：
+當您在 [使用 IP 流量驗證](#use-ip-flow-verify)中執行 `Test-AzNetworkWatcherIPFlow` 命令來測試從 172.131.0.100 輸入的通訊時，輸出會告知您 **DefaultInboundDenyAll** 規則拒絕通訊。 **DefaultInboundDenyAll** 規則等同於 `Get-AzEffectiveNetworkSecurityGroup` 命令的下列輸出中所列的 **DenyAllInBound** 規則：
 
 ```powershell
 {
@@ -247,6 +247,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已建立 VM 並診斷出輸入和輸出網路流量篩選條件。 您已了解網路安全性群組規則允許或拒絕 VM 的雙向流量。 深入了解[安全性規則](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)以及如何[建立安全性規則](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule)。
+在本快速入門中，您已建立 VM 並診斷出輸入和輸出網路流量篩選條件。 您已了解網路安全性群組規則允許或拒絕 VM 的雙向流量。 深入了解[安全性規則](../virtual-network/network-security-groups-overview.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json)以及如何[建立安全性規則](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule)。
 
 即使採用適當的網路流量篩選條件，VM 的通訊仍可能因為路由組態而失敗。 若要了解如何診斷 VM 網路路由問題，請參閱[診斷 VM 路由問題](diagnose-vm-network-routing-problem-powershell.md)，或若要透過一項工具來診斷輸出路由、延遲和流量篩選問題，請參閱[連線疑難排解](network-watcher-connectivity-powershell.md)。

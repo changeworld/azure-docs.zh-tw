@@ -4,18 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 258908ed1118b0463e8c824cd8c699fb460dfff2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9a9f8fdda1bc853057f3eb858e85b938357397cd
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943932"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886091"
 ---
 ## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/dotnet/)。
 - 適用於您的作業系統的最新版本 [.NET Core 用戶端程式庫](https://dotnet.microsoft.com/download/dotnet-core)。
-- 取得最新版本的 [.NET Identity 用戶端程式庫](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet)。
+- 取得最新版本的 [.NET Identity 用戶端程式庫](/dotnet/api/azure.identity?view=azure-dotnet)。
 - 取得最新版本的 [.NET Management 用戶端程式庫](../../concepts/sdk-options.md)。
 
 ## <a name="installing-the-client-library"></a>安裝用戶端程式庫
@@ -44,13 +44,13 @@ using Azure.ResourceManager.Communication;
 
 ### <a name="option-1-managed-identity"></a>選項 1：受控識別
 
-如果您的程式碼在 Azure 中是以服務的形式執行，則驗證的最簡單方式是從 Azure 取得受控識別。 深入了解[受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
+如果您的程式碼在 Azure 中是以服務的形式執行，則驗證的最簡單方式是從 Azure 取得受控識別。 深入了解[受控識別](../../../active-directory/managed-identities-azure-resources/overview.md)。
 
-[支援受控識別的 Azure 服務](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)
+[支援受控識別的 Azure 服務](../../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
-[如何使用 App Service 和 Azure Functions 的受控身分識別](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet)
+[如何使用 App Service 和 Azure Functions 的受控身分識別](../../../app-service/overview-managed-identity.md?tabs=dotnet)
 
-#### <a name="system-assigned-managed-identity"></a>[系統指派的受控識別](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)
+#### <a name="system-assigned-managed-identity"></a>[系統指派的受控識別](../../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)
 
 ```csharp
 using Azure.Identity;
@@ -62,7 +62,7 @@ var subscriptionId = "AZURE_SUBSCRIPTION_ID";
 var acsClient = new CommunicationManagementClient(subscriptionId, new ManagedIdentityCredential());
 ```
 
-#### <a name="user-assigned-managed-identity"></a>[使用者指派的受控識別](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity)
+#### <a name="user-assigned-managed-identity"></a>[使用者指派的受控識別](../../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-user-assigned-identity)
 
 您所建立受控識別的 ClientId 必須明確地傳遞給 `ManagedIdentityCredential`。
 
@@ -79,7 +79,7 @@ var acsClient = new CommunicationManagementClient(subscriptionId, managedIdentit
 
 ### <a name="option-2-service-principal"></a>選項 2：服務主體
 
-您可能會想要使用自己管理的服務主體來向 Azure 進行驗證，而不是使用受控識別。 若要深入了解，請參閱[在 Azure Active Directory 中建立和管理服務主體](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)上的文件。
+您可能會想要使用自己管理的服務主體來向 Azure 進行驗證，而不是使用受控識別。 若要深入了解，請參閱[在 Azure Active Directory 中建立和管理服務主體](../../../active-directory/develop/howto-create-service-principal-portal.md)上的文件。
 
 建立服務主體之後，您必須從 Azure 入口網站收集下列相關資訊：
 
@@ -121,7 +121,7 @@ var communicationServiceClient = new CommunicationManagementClient(subscriptionI
 
 針對下列每個範例，我們會將我們的通訊服務資源指派給現有的資源群組。
 
-如果您需要建立資源群組，您可以使用 [Azure 入口網站](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal)或 [Azure Resource Manager 用戶端程式庫](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md)來執行此動作。
+如果您需要建立資源群組，您可以使用 [Azure 入口網站](../../../azure-resource-manager/management/manage-resource-groups-portal.md)或 [Azure Resource Manager 用戶端程式庫](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md)來執行此動作。
 
 ### <a name="create-and-manage-a-communication-services-resource"></a>建立和管理通訊服務資源
 

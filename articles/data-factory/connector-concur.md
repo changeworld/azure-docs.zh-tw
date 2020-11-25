@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 11/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 6699178e514f4d25666305f3251e8eaf9d28e6dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6d6c830eec8e711e700733a90611c353b68439d
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417447"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030793"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>使用 Azure Data Factory 從 Concur 複製資料 (預覽)
 
@@ -36,8 +36,6 @@ ms.locfileid: "81417447"
 
 您可以將資料從 Concur 複製到任何支援的接收資料存放區。 如需複製活動所支援作為來源/接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
 
-Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此連接器您不需要手動安裝任何驅動程式。
-
 > [!NOTE]
 > 目前不支援夥伴帳戶。
 
@@ -54,14 +52,53 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | type 屬性必須設定為：**Concur** | 是 |
-| clientId | Concur 應用程式管理所提供的應用程式 client_id。  | 是 |
-| username | 您用來存取 Concur 服務的使用者名稱。  | 是 |
+| connectionProperties | 定義如何連接到 Concur 的一組屬性。 | 是 |
+| **_在 `connectionProperties` ：_* _ | | |
+| authenticationType | 允許的值為 `OAuth_2.0_Bearer` 和 `OAuth_2.0` (舊版) 。 OAuth 2.0 驗證選項可與舊版 Concur API 搭配使用，此 API 自2017年2月起淘汰。 | 是 |
+| 主機 | Concur 伺服器的端點，例如 `implementation.concursolutions.com` 。  | 是 |
+| baseUrl | Concur 授權 URL 的基底 URL。 | 是進行 `OAuth_2.0_Bearer` 驗證 |
+| clientId | Concur 應用程式管理提供的應用程式用戶端識別碼。  | 是 |
+| clientSecret | 對應至用戶端識別碼的用戶端密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是進行 `OAuth_2.0_Bearer` 驗證 |
+| username | 您用來存取 Concur 服務的使用者名稱。 | 是 |
 | 密碼 | 對應至您在 [使用者名稱] 欄位中提供之使用者名稱的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 來加密資料來源端點。 預設值為 true。  | 否 |
 | useHostVerification | 指定在透過 TLS 連線時，是否要求伺服器憑證中的主機名稱符合伺服器的主機名稱。 預設值為 true。  | 否 |
 | usePeerVerification | 指定是否要在透過 TLS 連接時驗證服務器的身分識別。 預設值為 true。  | 否 |
 
-**範例︰**
+_ *範例：**
+
+```json
+{ 
+    "name": "ConcurLinkedService", 
+    "properties": {
+        "type": "Concur",
+        "typeProperties": {
+            "connectionProperties": {
+                "host":"<host e.g. implementation.concursolutions.com>",
+                "baseUrl": "<base URL for authorization e.g. us-impl.api.concursolutions.com>",
+                "authenticationType": "OAuth_2.0_Bearer",
+                "clientId": "<client id>",
+                "clientSecret": {
+                    "type": "SecureString",
+                    "value": "<client secret>"
+                },
+                "username": "fakeUserName",
+                "password": {
+                    "type": "SecureString",
+                    "value": "<password>"
+                },
+                "useEncryptedEndpoints": true,
+                "useHostVerification": true,
+                "usePeerVerification": true
+            }
+        }
+    }
+} 
+```
+
+**(舊版) 範例：**
+
+請注意，下列是沒有和使用驗證的舊版連結服務模型 `connectionProperties` `OAuth_2.0` 。
 
 ```json
 {

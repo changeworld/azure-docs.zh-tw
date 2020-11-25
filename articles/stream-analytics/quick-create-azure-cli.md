@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: fa7919f54663387ddef811d02137da6d3ffb9d9b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 4e50560d2f090c99d1f354ebbc11ab2357dd61e8
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646622"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874724"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>快速入門：使用 Azure CLI 建立 Azure 串流分析作業
 
@@ -155,7 +155,7 @@ az stream-analytics job create \
 接下來，執行 `az stream-analytics input create` Cmdlet。 請務必將 `datasource` 變數的值取代為您已儲存作業輸入定義 JSON 檔案的路徑，並將 `serialization` 變數的值取代為儲存序列化 JSON 檔案的路徑。
 
 ```azurecli
-az stream-analytics input create 
+az stream-analytics input create \
     --resource-group streamanalyticsrg 
     --job-name streamanalyticsjob \
     --name asaiotinput \
@@ -191,7 +191,7 @@ az stream-analytics input create
 接下來，執行 `az stream-analytics output` Cmdlet。 請務必將 `datasource` 變數的值取代為您已儲存作業輸出定義 JSON 檔案的路徑，並將 `serialization` 變數的值取代為儲存序列化 JSON 檔案的路徑。
 
 ```azurecli
-az stream-analytics output create 
+az stream-analytics output create \
     --resource-group streamanalyticsrg \
     --job-name streamanalyticsjob \
     --name asabloboutput \
@@ -206,7 +206,7 @@ az stream-analytics output create
 執行 `az stream-analytics transformation create` Cmdlet。
 
 ```azurecli
-az stream-analytics transformation create 
+az stream-analytics transformation create \
     --resource-group streamanalyticsrg \
     --job-name streamanalyticsjob \
     --name Transformation \
@@ -230,7 +230,7 @@ az stream-analytics transformation create
 執行下列 Cmdlet 後，如果作業啟動，它會在輸出中傳回 `True`。 在儲存體容器中，建立的輸出資料夾包含已轉換的資料。
 
 ```azurecli
-az stream-analytics job start 
+az stream-analytics job start \
     --resource-group streamanalyticsrg \
     --name streamanalyticsjob \
     --output-start-mode JobStartTime

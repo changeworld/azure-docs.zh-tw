@@ -7,18 +7,24 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/19/2020
+ms.date: 11/24/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 81bcfdf5e63d49280fb798773559310cbd912a26
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4390291eb96c11b8fb7fdb48eb92abaf802b80c0
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013576"
+ms.locfileid: "96030776"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>建立建議工具，以在查詢中啟用自動完成和建議的結果
 
-在 Azure 認知搜尋中，您可以透過新增至 [搜尋索引](search-what-is-an-index.md)的 **建議工具** 結構來啟用「搜尋即輸入」。 建議工具支援兩種體驗： *自動* 完成（完成整個詞彙查詢的部分輸入），以及邀請點擊以符合特定比對的 *建議* 。 自動完成會產生查詢。 建議產生相符的檔。
+在 Azure 認知搜尋中，會透過 *建議工具* 啟用「搜尋即輸入」。 建議工具是包含 fields 集合的內部資料結構。 這些欄位會進行額外的 token 化，產生前置詞序列以支援部分詞彙的相符專案。
+
+例如，如果建議工具組含 City 欄位，就會針對「西雅圖」一詞建立「海洋」、「座位」、「seatt」和「seattl」的前置片語合。 前置詞會儲存在反向索引中，建議工具 fields 集合中指定的每個欄位都會有一個前置詞。
+
+## <a name="typeahead-experiences-in-cognitive-search"></a>認知搜尋中的自動提示體驗
+
+建議工具支援兩種體驗： *自動* 完成（完成整個詞彙查詢的部分輸入），以及邀請點擊以符合特定比對的 *建議* 。 自動完成會產生查詢。 建議產生相符的檔。
 
 下列 [以 c # 建立第一個應用程式](tutorial-csharp-type-ahead-and-suggestions.md) 的螢幕擷取畫面說明這兩者。 自動完成會預見可能的詞彙，以 "in" 完成「臺灣」。 建議是迷你搜尋結果，其中的欄位（例如旅館名稱）表示來自索引的相符旅館搜尋檔。 建議您可以呈現任何提供描述性資訊的欄位。
 
@@ -31,10 +37,6 @@ ms.locfileid: "96013576"
 + 使用 [下面所列](#how-to-use-a-suggester)的其中一個 api，以建議要求或自動完成要求的形式呼叫啟用建議工具的查詢。
 
 針對字串欄位，以每個欄位為基礎啟用搜尋即輸入支援。 如果您想要類似螢幕擷取畫面所示的體驗，您可以在同一個搜尋解決方案中執行這兩個自動提示行為。 這兩個要求都會以特定索引的 *檔* 集合為目標，而且在使用者至少提供三個字元輸入字串之後，就會傳迴響應。
-
-## <a name="what-is-a-suggester"></a>什麼是建議工具？
-
-建議工具是一種內部資料結構，它會儲存前置詞來比對部分查詢，以支援搜尋型別行為。 如同 token 化詞彙一樣，前置詞會儲存在反向索引中，建議工具 fields 集合中指定的每個欄位都會有一個首碼。
 
 ## <a name="how-to-create-a-suggester"></a>如何建立建議工具
 
