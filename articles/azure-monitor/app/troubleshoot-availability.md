@@ -7,11 +7,11 @@ ms.author: lagayhar
 ms.date: 04/28/2020
 ms.reviewer: sdash
 ms.openlocfilehash: 0ac8dd189bee1c1d4f5a7a4d0f7de68b085fbc56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318142"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015327"
 ---
 # <a name="troubleshooting"></a>疑難排解
 
@@ -121,16 +121,16 @@ ms.locfileid: "87318142"
 
 * 我們建議針對傳統警示通知使用特定的收件者。
 
-* 如果是有關 Y 個位置之中有 X 個失敗的警示，[大量/群組]**** 核取方塊選項 (如已啟用) 就會傳送給具有管理員/共同管理員角色的使用者。  基本上，「訂用帳戶」__ 的「所有」__ 管理員都將收到通知。
+* 如果是有關 Y 個位置之中有 X 個失敗的警示，[大量/群組] 核取方塊選項 (如已啟用) 就會傳送給具有管理員/共同管理員角色的使用者。  基本上，「訂用帳戶」的「所有」管理員都將收到通知。
 
-* 如需可用性計量的警示，請在 [ **大量/群組** ] 核取方塊選項啟用時，傳送給訂用帳戶中具有擁有者、參與者或讀者角色的使用者。 實際上，「所有」__ 有權存取 Application Insights 資源訂用帳戶的使用者都在涵蓋範圍內，而且將會收到通知。 
+* 如需可用性計量的警示，請在 [ **大量/群組** ] 核取方塊選項啟用時，傳送給訂用帳戶中具有擁有者、參與者或讀者角色的使用者。 實際上，「所有」有權存取 Application Insights 資源訂用帳戶的使用者都在涵蓋範圍內，而且將會收到通知。 
 
 > [!NOTE]
-> 如果您目前使用 [大量/群組]**** 核取方塊選項並停用它，您將無法還原變更。
+> 如果您目前使用 [大量/群組] 核取方塊選項並停用它，您將無法還原變更。
 
 如果您需要根據使用者的角色來通知他們，請使用新警示體驗/近乎即時警示。 使用[動作群組](../platform/action-groups.md)，您可以為具有任一個參與者/擁有者/讀者角色 (不會結合來作為單一選項) 的使用者設定電子郵件通知。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [多步驟 web 測試](availability-multistep.md)
 * [URL ping 測試](monitor-web-app-availability.md)

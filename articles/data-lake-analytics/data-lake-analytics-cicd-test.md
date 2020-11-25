@@ -8,11 +8,11 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 08/30/2019
 ms.openlocfilehash: 7310c67ef20a4134d4f613ea969c96802958bf62
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219202"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015225"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>測試 Azure Data Lake Analytics 程式碼
 
@@ -26,7 +26,7 @@ Azure Data Lake 提供了 [U SQL](data-lake-analytics-u-sql-get-started.md) 語�
 
 Azure Data Lake Tools for Visual Studio 可讓您建立 U-SQL 指令碼測試案例。
 
-1. 在 [方案總管] 中以滑鼠右鍵按一下 U-SQL 指令碼，然後選取 [建立單元測試]****。
+1. 在 [方案總管] 中以滑鼠右鍵按一下 U-SQL 指令碼，然後選取 [建立單元測試]。
 
 1. 建立新的測試專案，或將測試案例插入現有的測試專案中。
 
@@ -34,7 +34,7 @@ Azure Data Lake Tools for Visual Studio 可讓您建立 U-SQL 指令碼測試案
 
 ### <a name="manage-the-test-data-source"></a>管理測試資料來源
 
-測試 U-SQL 指令碼時，您需要測試輸入檔案。 若要管理測試資料，請在 [ **方案總管**中，以滑鼠右鍵按一下 [U SQL] 專案，然後選取 [ **屬性**]。 您可以在 [ **測試資料來源**] 中輸入來源。
+測試 U-SQL 指令碼時，您需要測試輸入檔案。 若要管理測試資料，請在 [ **方案總管** 中，以滑鼠右鍵按一下 [U SQL] 專案，然後選取 [ **屬性**]。 您可以在 [ **測試資料來源**] 中輸入來源。
 
 ![Data Lake Tools for Visual Studio -- 設定專案測試資料來源](./media/data-lake-analytics-cicd-test/data-lake-tools-configure-project-test-data-source.png)
 
@@ -52,7 +52,7 @@ Azure Data Lake Tools for Visual Studio 可讓您建立 U-SQL 指令碼測試案
 
 ### <a name="run-test-cases-in-visual-studio"></a>在 Visual Studio 中執行測試案例
 
-U-SQL 指令碼測試專案建置於 C# 單元測試架構之上。 在您建立專案之後，請選取 [**測試**  >  **Windows**  >  **test Explorer**]。 您可以從 **Test Explorer**執行測試案例。 或者，以滑鼠右鍵按一下單元測試中的 .cs 檔案，然後選取 [ **執行測試**]。
+U-SQL 指令碼測試專案建置於 C# 單元測試架構之上。 在您建立專案之後，請選取 [**測試**  >  **Windows**  >  **test Explorer**]。 您可以從 **Test Explorer** 執行測試案例。 或者，以滑鼠右鍵按一下單元測試中的 .cs 檔案，然後選取 [ **執行測試**]。
 
 ## <a name="test-c-udos"></a>測試 C# UDO
 
@@ -105,11 +105,11 @@ U-SQL 指令碼測試專案建置於 C# 單元測試架構之上。 在您建立
 
 ### <a name="run-test-cases-in-visual-studio"></a>在 Visual Studio 中執行測試案例
 
-在您建立專案之後，請選取 [**測試**  >  **Windows**  >  **test Explorer**]。 您可以從 **Test Explorer**執行測試案例。 或者，以滑鼠右鍵按一下單元測試中的 .cs 檔案，然後選取 [ **執行測試**]。
+在您建立專案之後，請選取 [**測試**  >  **Windows**  >  **test Explorer**]。 您可以從 **Test Explorer** 執行測試案例。 或者，以滑鼠右鍵按一下單元測試中的 .cs 檔案，然後選取 [ **執行測試**]。
 
 ## <a name="run-test-cases-in-azure-pipelines"></a>在 Azure Pipelines 中執行測試案例<a name="run-test-cases-in-azure-devops"></a>
 
-**U-SQL 指令碼測試專案**和 **C# UDO 測試專案**皆會繼承 C# 單元測試專案。 Azure Pipelines 中的 [Visual Studio 測試](/azure/devops/pipelines/test/getting-started-with-continuous-testing) 工作可以執行這些測試案例。
+**U-SQL 指令碼測試專案** 和 **C# UDO 測試專案** 皆會繼承 C# 單元測試專案。 Azure Pipelines 中的 [Visual Studio 測試](/azure/devops/pipelines/test/getting-started-with-continuous-testing) 工作可以執行這些測試案例。
 
 ### <a name="run-u-sql-test-cases-in-azure-pipelines"></a>在 Azure Pipelines 中執行 U SQL 測試案例
 

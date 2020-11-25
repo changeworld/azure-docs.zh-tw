@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: jingwang
 ms.openlocfilehash: a96b04df56dc7d5ea26463073d673275b8a4a8c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324292"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015072"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>使用 Azure Data Factory 中的複製活動保留中繼資料和 Acl
 
@@ -35,7 +35,7 @@ ms.locfileid: "91324292"
 
 **處理中繼資料的差異：** Amazon S3 和 Azure 儲存體允許客戶所指定中繼資料的索引鍵中有不同組字元。 當您選擇使用複製活動保留中繼資料時，ADF 會自動以 ' _ ' 取代不正確字元。
 
-當您從 Amazon S3/Azure Data Lake Storage Gen2/azure blob/azure 檔案儲存體依原樣將檔案複製到具有二進位格式的 Azure Data Lake Storage Gen2/azure blob/azure 檔案儲存體時，您可以在活動撰寫的 [**複製活動**設定] 索引標籤**Preserve**  >  **Settings**或資料複製工具中的 [**設定**] 頁面上找到 [保留] 選項。
+當您從 Amazon S3/Azure Data Lake Storage Gen2/azure blob/azure 檔案儲存體依原樣將檔案複製到具有二進位格式的 Azure Data Lake Storage Gen2/azure blob/azure 檔案儲存體時，您可以在活動撰寫的 [**複製活動** 設定] 索引標籤 **Preserve**  >  **Settings** 或資料複製工具中的 [**設定**] 頁面上找到 [保留] 選項。
 
 ![複製活動保留中繼資料](./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png)
 
@@ -87,7 +87,7 @@ ms.locfileid: "91324292"
 複製活動支援在資料複製期間保留下列類型的 Acl。 您可以選取一或多個類型：
 
 - **ACL**：複製及保留檔案和目錄上的 POSIX 存取控制清單。 它會將完整的現有 Acl 從來源複製到接收。 
-- **擁有**者：複製並保留檔案和目錄的擁有使用者。 需要超級使用者的接收 Data Lake Storage Gen2 存取權。
+- **擁有** 者：複製並保留檔案和目錄的擁有使用者。 需要超級使用者的接收 Data Lake Storage Gen2 存取權。
 - **群組**：複製並保留檔案和目錄的擁有群組。 如果擁有使用者也是目標群組) 的成員，則超級使用者對接收 Data Lake Storage Gen2 或擁有使用者 (的存取權。
 
 如果您指定從資料夾複製，則如果設為 true，Data Factory 會複寫該指定資料夾的 Acl 和其下的檔案和目錄 `recursive` 。 如果您指定要從單一檔案複製，則會複製該檔案上的 Acl。

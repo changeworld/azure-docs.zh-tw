@@ -16,11 +16,11 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: 12ab5a9598cc0222f5a3e64985be2e2ea9e7e2fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85564296"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014851"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>更換 StorSimple 8000 系列裝置上的硬體元件
 
@@ -34,7 +34,7 @@ ms.locfileid: "85564296"
 
 下表說明本教學課程中使用的安全性圖示。 當您瀏覽取下並更換裝置元件的步驟時，請密切注意這些安全性圖示。
 
-| 圖示 | Text | 其他資訊 |
+| 圖示 | 文字 | 其他資訊 |
 |:--- |:--- |:--- |
 | ![警告圖示](./media/storsimple-hardware-component-replacement/Warning.png) |**危險！** |指出危險的情況，如果無法避免，將會導致死亡或嚴重傷害。 此訊號文字僅限用於最極端的情況。 |
 | ![警告圖示](./media/storsimple-hardware-component-replacement/Warning.png) |**警告！** |指出危險的情況，如果無法避免，可能會導致死亡或嚴重傷害。 |
@@ -65,7 +65,7 @@ ms.locfileid: "85564296"
 
 StoreSimple 8000 系列裝置由主要和/或 EBOD 機箱的數個外掛程式模組所組成。 8100 具有單一主要機箱，而 8600 是具有主要機箱與 EBOD 機箱的雙重機箱裝置。
 
-下表彙總裝置中的主要硬體元件。 按一下 [更換程序] **** 資料行中的連結，即可移到相關聯的教學課程。
+下表彙總裝置中的主要硬體元件。 按一下 [更換程序]  資料行中的連結，即可移到相關聯的教學課程。
 
 | 元件 | # Present | 外掛程式模組？ | 更換程序 |
 |:--- |:--- |:--- |:--- |
@@ -137,6 +137,6 @@ StoreSimple 8000 系列裝置由主要和/或 EBOD 機箱的數個外掛程式�
 
 請[連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md)，以訂購其中任何更換裝置。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請先閱讀所有 [安全資訊](storsimple-8000-safety.md) ，再嘗試更換 StorSimple 硬體元件。

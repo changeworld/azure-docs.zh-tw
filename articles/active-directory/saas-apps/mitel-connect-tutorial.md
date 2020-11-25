@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
 ms.openlocfilehash: b89ae74a1f4ead568a5454c9494d4a82b0eeea3e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521330"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015174"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>教學課程：Azure Active Directory 與 Mitel MiCloud Connect 或 CloudLink Platform 整合
 
@@ -166,7 +166,7 @@ ms.locfileid: "92521330"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    1. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
+    1. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
   
     1. 在 [使用者名稱] 欄位中，輸入 brittasimon@\<yourcompanydomain\>.\<extension\>。  例如： BrittaSimon@contoso.com 。
 
@@ -321,7 +321,7 @@ ms.locfileid: "92521330"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    1. 在 [名稱] 欄位中，輸入 **BrittaSimon** 。
+    1. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
   
     1. 在 [使用者名稱] 欄位中，輸入 brittasimon@\<yourcompanydomain\>.\<extension\>。  例如： BrittaSimon@contoso.com 。
 
@@ -359,7 +359,7 @@ ms.locfileid: "92521330"
 
 本節說明如何在 CloudLink Platform 上建立名為 **_Britta Simon_** 的測試使用者。 您必須先建立並啟動使用者，然後使用者才能使用單一登入。
 
-如需如何在 CloudLink 帳戶入口網站中新增使用者的詳細資訊，請參閱 [CloudLink 帳戶文件](https://www.mitel.com/document-center/technology/cloudlink/all-releases/en/cloudlink-accounts-html)中的 **_管理使用者_** 。
+如需如何在 CloudLink 帳戶入口網站中新增使用者的詳細資訊，請參閱 [CloudLink 帳戶文件](https://www.mitel.com/document-center/technology/cloudlink/all-releases/en/cloudlink-accounts-html)中的 **_管理使用者_**。
 
 在 CloudLink 帳戶入口網站上使用下列詳細資料建立使用者：
 

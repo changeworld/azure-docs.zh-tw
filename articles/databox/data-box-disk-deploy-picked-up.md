@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/21/2020
+ms.date: 11/03/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 638ab84658c36536966ef990570684a047521ee6
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 0aace1041eba771a26bed4c85361ea2551c71ba6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257450"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659415"
 ---
 ::: zone target="docs"
 
@@ -66,18 +66,18 @@ ms.locfileid: "88257450"
     - 若未提供追蹤號碼，UPS 將在取貨期間要求您支付額外的費用。
     - 除了排定取貨時間，您也可以在最接近的托運地點托運該資料箱磁碟。
 
-### <a name="europe"></a>[歐洲](#tab/in-europe)
 
-如果在歐洲退回裝置，請執行下列步驟。
+### <a name="europe-or-uk"></a>[歐洲或英國](#tab/in-europe-or-uk)
+
+如果在歐洲或英國退回裝置，請執行下列步驟。
 
 1. 使用黏貼在外盒上，透明塑膠套裡面的退貨標籤。 如果標籤受損或遺失：
     - 移至 [概觀] > [下載出貨標籤]，然後下載寄回的出貨標籤。
     - 將標籤黏貼在裝置上。
 
 2. 將包裹密封，並確定退貨標籤清楚可見。
-3. 如果是在歐洲經由 DHL 辦理裝置退貨，請造訪 DHL 的網站並且指定空運提單號碼，要求他們取貨。
-4. 移至該國家/地區的 DHL Express 網站，然後選擇 [Book a Courier Collection > eReturn Shipment] \(預約快遞收貨 > eReturn 出貨\)。
-5. 指定運貨單號碼，然後按一下 [Schedule Pickup] (排程取貨) 以安排取貨。
+3. 移至國家/地區 DHL Express 網站，然後選取 [安排取貨]。 在 [是否需要出貨標籤] 底下，選取 [否] > [我有 DHL 運貨單號碼]。
+4. 指定運貨單號碼，然後按一下 [安排取貨] 以安排取貨。
 
 ### <a name="australia"></a>[澳大利亞](#tab/in-australia)
 
@@ -160,7 +160,7 @@ ms.locfileid: "88257450"
 
 如果在南非送回裝置，請執行下列步驟。
 
-1. 在箱子上貼上所提供的出貨標籤。 此標籤包含追蹤號碼。 如果出貨標籤遺失，您可以從 **概觀 > 下載出貨標籤**下載。
+1. 在箱子上貼上所提供的出貨標籤。 此標籤包含追蹤號碼。 如果出貨標籤遺失，您可以從 **概觀 > 下載出貨標籤** 下載。
 
 2. 將包裹密封，並確定退貨標籤清楚可見。
 
@@ -186,7 +186,7 @@ ms.locfileid: "88257450"
 
 如果在中國退回裝置，請執行下列步驟。
 
-1. 使用提供的出貨標籤，並貼到盒子上。 此標籤包含追蹤號碼。 如果出貨標籤遺失，您可以從 **概觀 > 下載出貨標籤**下載。
+1. 使用提供的出貨標籤，並貼到盒子上。 此標籤包含追蹤號碼。 如果出貨標籤遺失，您可以從 **概觀 > 下載出貨標籤** 下載。
 
 2. 傳送電子郵件給 FedEx Premier Customer Care，並使用下列電子郵件範本提供追蹤號碼 (出貨參考號碼) 安排取貨：  
 

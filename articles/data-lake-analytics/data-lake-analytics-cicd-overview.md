@@ -8,11 +8,11 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 09/14/2018
 ms.openlocfilehash: 95b638b85e0746d2995488f2a28a5fb2512b1063
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219321"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015259"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>如何設定 Azure Data Lake Analytics 的 CI/CD 管線  
 
@@ -47,7 +47,7 @@ Azure Data Lake Tools for Visual Studio 提供 U-SQL 專案類型，有助於編
 
 MSBuild 並未內建對 U-SQL 專案的支援。 若要獲得這項支援，您需要為解決方案新增對於 [Microsoft.Azure.DataLake.USQL.SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) NuGet 套件的參考，以新增所需的語言服務。
 
-若要新增 NuGet 套件參考，請在 Visual Studio 方案總管中以滑鼠右鍵按一下解決方案，然後選擇 [管理 NuGet 套件]****。 您也可以在解決方案資料夾內新增名為 `packages.config` 的檔案，然後於檔案中新增以下內容：
+若要新增 NuGet 套件參考，請在 Visual Studio 方案總管中以滑鼠右鍵按一下解決方案，然後選擇 [管理 NuGet 套件]。 您也可以在解決方案資料夾內新增名為 `packages.config` 的檔案，然後於檔案中新增以下內容：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -430,7 +430,7 @@ U-SQL 資料庫專案的建置輸出，是一個名稱加上 `.usqldbpack` 尾�
    copy USQLSDK\build\runtime\*.* $DBDeploymentTool
    ```
 
-2. 在組建或發行管線中新增**命令列工作**，然後藉由呼叫 `PackageDeploymentTool.exe` 來填入指令碼。 `PackageDeploymentTool.exe` 位於所定義的 **$DBDeploymentTool** 資料夾底下。 範例指令碼如下所示︰ 
+2. 在組建或發行管線中新增 **命令列工作**，然後藉由呼叫 `PackageDeploymentTool.exe` 來填入指令碼。 `PackageDeploymentTool.exe` 位於所定義的 **$DBDeploymentTool** 資料夾底下。 範例指令碼如下所示︰ 
 
    - 本機部署 U-SQL 資料庫：
 
@@ -444,7 +444,7 @@ U-SQL 資料庫專案的建置輸出，是一個名稱加上 `.usqldbpack` 尾�
       PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -AzureSDKPath <azure sdk path> -Interactive
       ```
 
-   - 使用**祕密**驗證將 U-SQL 資料庫部署到 Azure Data Lake Analytics 帳戶：
+   - 使用 **祕密** 驗證將 U-SQL 資料庫部署到 Azure Data Lake Analytics 帳戶：
 
       ```cmd
       PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secrete <secrete>

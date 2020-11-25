@@ -7,11 +7,11 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 10/30/2018
 ms.openlocfilehash: e88616f45c69d33234aa35333e0d82ad8cc59bb6
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219355"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015276"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>管理 CI/CD 管線中 U-SQL 組件的最佳做法
 
@@ -31,13 +31,13 @@ U-SQL 資料庫專案可以參考「類別庫 (適用於 U-SQL 應用程式)」�
 
 請依照下列步驟來建立專案及新增參考。
 
-1. **選取 [** 檔案  >  **新增**  >  **專案**]，以建立適用于 U SQL 應用程式) 專案的類別庫 (。 該專案位於 [Azure Data Lake] > [U-SQL]**** 節點底下。
+1. **選取 [** 檔案  >  **新增**  >  **專案**]，以建立適用于 U SQL 應用程式) 專案的類別庫 (。 該專案位於 [Azure Data Lake] > [U-SQL] 節點底下。
 
    ![Data Lake Tools for Visual Studio--建立 C# 類別庫專案](./media/data-lake-analytics-cicd-manage-assemblies/create-c-sharp-class-library-project.png)
 
 1. 將您的使用者定義 C# 程式碼新增到「類別庫 (適用於 U-SQL 應用程式)」專案中。
 
-1. **選取 [** 檔案  >  **新增**  >  **專案**] 以建立 U SQL 專案。 專案位於**Azure Data Lake**的  >  **U-SQL**節點下。
+1. **選取 [** 檔案  >  **新增**  >  **專案**] 以建立 U SQL 專案。 專案位於 **Azure Data Lake** 的  >  **U-SQL** 節點下。
 
    ![Data Lake Tools for Visual Studio--建立 U-SQL 資料庫專案](media/data-lake-analytics-cicd-manage-assemblies/create-u-sql-database-project.png)
 
@@ -47,17 +47,17 @@ U-SQL 資料庫專案可以參考「類別庫 (適用於 U-SQL 應用程式)」�
 
    ![適用于 Visual Studio 的 Data Lake 工具-新增 U-SQL database 專案參考](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-add-project-reference-wizard.png)
 
-1. 以滑鼠右鍵按一下 U-SQL 資料庫專案並選取 [新增項目]****，在該專案中建立組件指令碼。
+1. 以滑鼠右鍵按一下 U-SQL 資料庫專案並選取 [新增項目]，在該專案中建立組件指令碼。
 
    ![Data Lake Tools for Visual Studio--新增組件指令碼](media/data-lake-analytics-cicd-manage-assemblies/add-assembly-script.png)
 
-1. 在組件設計檢視中開啟組件指令碼。 在 [從參考建立組件]**** 下拉式功能表中選取參考組件。
+1. 在組件設計檢視中開啟組件指令碼。 在 [從參考建立組件] 下拉式功能表中選取參考組件。
 
    ![Data Lake Tools for Visual Studio--從參考建立組件](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-create-assembly-from-reference.png)
 
-1. 新增 [受控相依性]**** 和 [其他檔案]**** \(若有的話)。 在新增其他檔案時，工具會使用相對路徑來確保能在本機電腦和稍後的組建電腦上找到組件。
+1. 新增 [受控相依性] 和 [其他檔案]\(若有的話)。 在新增其他檔案時，工具會使用相對路徑來確保能在本機電腦和稍後的組建電腦上找到組件。
 
-在 [編輯器] 視窗中的** \@ _DeployTempDirectory**是預先定義的變數，可將工具指向組建輸出檔案夾。 在建置輸出資料夾中，每個組件都具有以組件名稱命名的子資料夾。 所有 Dll 和其他檔案都在該子資料夾中。
+在 [編輯器] 視窗中的 **\@ _DeployTempDirectory** 是預先定義的變數，可將工具指向組建輸出檔案夾。 在建置輸出資料夾中，每個組件都具有以組件名稱命名的子資料夾。 所有 Dll 和其他檔案都在該子資料夾中。
 
 ## <a name="build-a-u-sql-database-project"></a>建置 U-SQL 資料庫專案
 
@@ -73,15 +73,15 @@ U-SQL 資料庫專案的建置輸出是一個 U-SQL 資料庫部署套件。 其
 
 #### <a name="deploy-by-using-a-u-sql-database-project"></a>使用 U-SQL 資料庫專案部署
 
-1. 以滑鼠右鍵按一下 U-SQL 資料庫專案，然後選取 [部署]****。
+1. 以滑鼠右鍵按一下 U-SQL 資料庫專案，然後選取 [部署]。
 
-1. 在 [部署 U-SQL 資料庫]**** 精靈中，選擇要部署資料庫的目的地 [ADLA 帳戶]****。 本機帳戶和 ADLA 帳戶兩者均可支援。
+1. 在 [部署 U-SQL 資料庫] 精靈中，選擇要部署資料庫的目的地 [ADLA 帳戶]。 本機帳戶和 ADLA 帳戶兩者均可支援。
 
-1. 系統會自動填入 [資料庫來源]****。 它會指向專案建置輸出資料夾中的 .usqldbpack 套件。
+1. 系統會自動填入 [資料庫來源]。 它會指向專案建置輸出資料夾中的 .usqldbpack 套件。
 
-1. 在 [資料庫名稱]**** 中輸入名稱，以建立資料庫。 如果目標 Azure Data Lake Analytics 帳戶已有相同名稱的資料庫，在資料庫專案中定義的所有物件均會建立，但不會重新建立資料庫。
+1. 在 [資料庫名稱] 中輸入名稱，以建立資料庫。 如果目標 Azure Data Lake Analytics 帳戶已有相同名稱的資料庫，在資料庫專案中定義的所有物件均會建立，但不會重新建立資料庫。
 
-1. 若要部署 U-SQL 資料庫，請按一下 [提交]****。 所有資源 (例如組件和其他檔案) 都已上傳。 已提交包含所有 DDL 陳述式的 U-SQL 作業。
+1. 若要部署 U-SQL 資料庫，請按一下 [提交]。 所有資源 (例如組件和其他檔案) 都已上傳。 已提交包含所有 DDL 陳述式的 U-SQL 作業。
 
    ![Data Lake Tools for Visual Studio--部署 U-SQL 資料庫專案](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-deploy-usql-database-project.png)
 

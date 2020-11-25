@@ -1,18 +1,18 @@
 ---
 title: Azure 虛擬網路的內建原則定義
 description: 列出適用於 Azure 虛擬網路的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.topic: reference
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 269749ae517c8207357ae3a073285fd0db026730
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 17a434b071a7aa4e48c511257a2fef93f33312e5
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734482"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "96014800"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-virtual-network"></a>適用於 Azure 虛擬網路的 Azure 原則內建定義
 

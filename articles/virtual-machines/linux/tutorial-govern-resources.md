@@ -1,6 +1,6 @@
 ---
 title: 教學課程 - 使用 CLI 管理虛擬機器
-description: 在此教學課程中，您將了解如何使用 Azure CLI，透過套用 RBAC、原則、鎖定與標籤來管理 Azure 虛擬機器。
+description: 在此教學課程中，您將了解如何使用 Azure CLI，透過套用 Azure RBAC、原則、鎖定與標籤來管理 Azure 虛擬機器。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 867349a321f2909d8e568be7e482a5517ddb50b9
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 565315ad78a2994f44973c4fdcd4519ab9e03ea8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517949"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831765"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>教學課程：了解如何使用 Azure CLI 管理 Linux 虛擬機器
 
@@ -41,7 +41,7 @@ az group create --name myResourceGroup --location "East US"
 
 目前資源群組是空的。
 
-## <a name="role-based-access-control"></a>角色型存取控制
+## <a name="azure-role-based-access-control"></a>Azure 角色型存取控制
 
 您想要確定組織中的使用者具有這些資源的正確存取權等級。 您不想要授與不受限制的存取權給使用者，但是您又必須確定他們可以執行其工作。 [Azure 角色型存取控制 (Azure RBAC)](../../role-based-access-control/overview.md) 可讓您管理哪些使用者具有權限可以在一個範圍內完成特定動作。
 

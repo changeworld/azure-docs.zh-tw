@@ -9,11 +9,11 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
 ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87066118"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015191"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在採用 Enterprise Integration Pack 的 Azure Logic Apps 中交換適用於 B2B 企業整合的 X12 訊息
 
@@ -41,7 +41,7 @@ ms.locfileid: "87066118"
 
 1. 在 [新增] 之下，選取 [接收設定]。
 
-1. 根據您與其交換訊息之夥伴所簽署的合約，設定這些屬性。 **接收設定**會整理為下列各區段：
+1. 根據您與其交換訊息之夥伴所簽署的合約，設定這些屬性。 **接收設定** 會整理為下列各區段：
 
    * [識別碼](#inbound-identifiers)
    * [通知](#inbound-acknowledgement)
@@ -165,7 +165,7 @@ ms.locfileid: "87066118"
 
 1. 根據您與其交換訊息之夥伴所簽署的合約，設定這些屬性。 如需屬性說明，請參閱本節中的資料表。
 
-   **傳送設定**會整理為下列各區段：
+   **傳送設定** 會整理為下列各區段：
 
    * [識別碼](#outbound-identifiers)
    * [通知](#outbound-acknowledgement)

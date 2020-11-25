@@ -11,11 +11,11 @@ ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
 ms.openlocfilehash: 0000e7690ab92f469a7417e82cb375c524e0b343
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90016838"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014757"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>將 Rigado 串聯500閘道裝置連線到您的 Azure IoT Central 應用程式
 
@@ -29,7 +29,7 @@ ms.locfileid: "90016838"
 
 串聯500經預先認證，適用于 Azure IoT 隨插即用 (preview) 讓解決方案產生器輕鬆地將裝置上線至其端對端解決方案。 串聯網關可讓您以無線方式連線到與閘道裝置相近的各種狀況監控感應器。 您可以透過閘道裝置將這些感應器上線至 IoT Central。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要逐步執行本作法指南，您需要下列資源：
 
 * Rigado 500 級的裝置。 如需詳細資訊，請造訪 [Rigado](https://www.rigado.com/)。
@@ -41,20 +41,20 @@ ms.locfileid: "90016838"
 
 新增 Cascade 500 裝置範本： 
 
-1. 流覽至左窗格中的 [ ***裝置範本*** ] 索引標籤，選取 [ **+ 新增**： ![ 建立新的裝置範本]](./media/howto-connect-rigado-cascade-500/device-template-new.png)
-1. 此頁面可讓您選擇 ***建立自訂範本*** ，或 ***使用預先設定的裝置範本***
+1. 流覽至左窗格中的 [**裝置範本**] 索引標籤，選取 [_ * + 新增 * *： ![ 建立新的裝置範本]](./media/howto-connect-rigado-cascade-500/device-template-new.png)
+1. 此頁面可讓您選擇 **_建立自訂範本_*，或 _*_使用預先設定的裝置範本_*_
 1. 從預先設定的裝置範本清單中選取 C500 裝置範本，如下所示： ![ 選取 C500 裝置範本](./media/howto-connect-rigado-cascade-500/device-template-preconfigured.png)
-1. 選取 ***[下一步：自訂]*** 繼續進行下一個步驟。 
-1. 在下一個畫面中，選取 [ ***建立*** ] 以將 C500 裝置範本上線至 IoT Central 應用程式。
+1. 選取 _*_[下一步：自訂]_*_ 繼續進行下一個步驟。 
+1. 在下一個畫面中，選取 [ _*_建立_*_ ] 以將 C500 裝置範本上線至 IoT Central 應用程式。
 
 ## <a name="retrieve-application-connection-details"></a>取出應用程式連接詳細資料
 
-您現在需要取出 Azure IoT Central 應用程式的 **範圍識別碼** 和 **主要金鑰** ，才能連接串聯500裝置。 
+您現在需要取出 Azure IoT Central 應用程式的 _ *範圍識別碼** 和 **主要金鑰** ，才能連接串聯500裝置。 
 
-1. 流覽至左窗格中的 [系統 **管理**  ]，然後按一下 [ **裝置**連線]。 
+1. 流覽至左窗格中的 [系統 **管理**  ]，然後按一下 [ **裝置** 連線]。 
 2. 記下您的 IoT Central 應用程式的 **範圍識別碼** 。
 ![應用程式範圍識別碼](./media/howto-connect-rigado-cascade-500/app-scope-id.png)
-3. 現在，按一下 [**視圖鍵**] 並記下**主鍵** 
+3. 現在，按一下 [**視圖鍵**] 並記下 **主鍵** 
  ![ 主要金鑰](./media/howto-connect-rigado-cascade-500/primary-key-sas.png)  
 
 ## <a name="contact-rigado-to-connect-the-gateway"></a>聯絡 Rigado 以連接閘道 

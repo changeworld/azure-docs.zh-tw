@@ -4,11 +4,11 @@ description: 描述利用 Azure 事件格線提供給媒體服務事件的屬性
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: c1c5953cae7364131eefcec97d3375404c85e963
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86105926"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015208"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>以事件方格來源 Azure 媒體服務
 
@@ -16,7 +16,7 @@ ms.locfileid: "86105926"
 
 ## <a name="job-related-event-types"></a>作業相關的事件類型
 
-媒體服務會發出如下所述的 [作業]**** 相關事件類型。 [作業]**** 相關事件有兩種類別：「監視工作狀態變更」和「監視作業輸出的狀態變更」。 
+媒體服務會發出如下所述的 [作業] 相關事件類型。 [作業] 相關事件有兩種類別：「監視工作狀態變更」和「監視作業輸出的狀態變更」。 
 
 您可以訂閱 JobStateChange 事件來註冊所有事件。 或者，您可以只訂閱特定事件 (例如，JobErrored、JobFinished 和 JobCanceled 等最終狀態)。   
 
@@ -64,7 +64,7 @@ ms.locfileid: "86105926"
 
 ## <a name="live-event-types"></a>即時事件類型
 
-媒體服務也會發出如下所述的 [即時]**** 事件類型。 **即時**事件有兩種類別：資料流層級事件和資料軌層級事件。 
+媒體服務也會發出如下所述的 [即時] 事件類型。 **即時** 事件有兩種類別：資料流層級事件和資料軌層級事件。 
 
 ### <a name="stream-level-events"></a>串流層級事件
 
@@ -124,15 +124,15 @@ ms.locfileid: "86105926"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | previousState | 字串 | 工作在該事件之前的狀態。 |
-| 狀態 | 字串 | 在此事件中，被通知的工作新狀態。 例如，「已排程：作業已準備好開始」或「已完成：作業已完成」。|
+| state | 字串 | 在此事件中，被通知的工作新狀態。 例如，「已排程：作業已準備好開始」或「已完成：作業已完成」。|
 
 工作狀態可以是以下其中一個值：*已排入佇列*、*已排程*、*處理中*、*已完成*、*錯誤*、*已取消*、*取消中*
 
 > [!NOTE]
-> 「已排入佇列」** 只會存在於 **previousState** 屬性中，但是不會在 **state** 屬性中。
+> 「已排入佇列」 只會存在於 **previousState** 屬性中，但是不會在 **state** 屬性中。
 
 ### <a name="jobscheduled-jobprocessing-jobcanceling"></a>JobScheduled、JobProcessing、JobCanceling
 
@@ -194,7 +194,7 @@ ms.locfileid: "86105926"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | 輸出 | Array | 取得作業輸出。|
 
@@ -310,7 +310,7 @@ ms.locfileid: "86105926"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | streamId | 字串 | 資料流或連線的識別碼。 編碼器或客戶要負責在內嵌 URL 中新增此識別碼。 |  
 | ingestUrl | 字串 | 即時事件所提供的內嵌 URL。 |  
@@ -346,7 +346,7 @@ ms.locfileid: "86105926"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | streamId | 字串 | 資料流或連線的識別碼。 編碼器或客戶要負責在內嵌 URL 中提供此識別碼。 |
 | ingestUrl | 字串 | 即時事件所提供的內嵌 URL。 |
@@ -380,7 +380,7 @@ ms.locfileid: "86105926"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | streamId | 字串 | 資料流或連線的識別碼。 編碼器或客戶要負責在內嵌 URL 中新增此識別碼。 |  
 | ingestUrl | 字串 | 即時事件所提供的內嵌 URL。 |  
@@ -430,11 +430,11 @@ ms.locfileid: "86105926"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | trackType | 字串 | 資料軌的類型 (音訊/視訊)。 |
 | trackName | 字串 | 資料軌的名稱。 |
-| bitrate | 整數 | 資料軌的位元速率。 |
+| bitrate | integer | 資料軌的位元速率。 |
 | timestamp | 字串 | 資料區塊的卸除時間戳記。 |
 | timescale | 字串 | 時間戳記的時幅。 |
 | ResultCode | 字串 | 資料區塊卸除的原因。 **FragmentDrop_OverlapTimestamp** 或 **FragmentDrop_NonIncreasingTimestamp**。 |
@@ -470,11 +470,11 @@ ms.locfileid: "86105926"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | trackType | 字串 | 資料軌的類型 (音訊/視訊)。 |
-| trackName | 字串 | 資料軌的名稱 (由編碼器提供，在 RTMP 的案例中，伺服器會以 TrackType_Bitrate** 格式產生)。 |
-| bitrate | 整數 | 資料軌的位元速率。 |
+| trackName | 字串 | 資料軌的名稱 (由編碼器提供，在 RTMP 的案例中，伺服器會以 TrackType_Bitrate 格式產生)。 |
+| bitrate | integer | 資料軌的位元速率。 |
 | ingestUrl | 字串 | 即時事件所提供的內嵌 URL。 |
 | encoderIp | 字串  | 編碼器的 IP。 |
 | encoderPort | 字串 | 此資料流來源編碼器的連接埠。 |
@@ -509,7 +509,7 @@ ms.locfileid: "86105926"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | minLastTimestamp | 字串 | 所有資料軌 (音訊或視訊) 最後一個時間戳記之間的最小值。 |
 | typeOfTrackWithMinLastTimestamp | 字串 | 最後一個時間戳記為最小值的資料軌 (音訊或視訊) 類型。 |
@@ -545,7 +545,7 @@ ms.locfileid: "86105926"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | firstTimestamp | 字串 | 其中一個視訊類型資料軌/品質層級所收到的時間戳記。 |
 | firstDuration | 字串 | 具有第一個時間戳記的資料區塊持續時間。 |
@@ -587,19 +587,19 @@ ms.locfileid: "86105926"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | trackType | 字串 | 資料軌的類型 (音訊/視訊)。 |
-| trackName | 字串 | 資料軌的名稱 (由編碼器提供，在 RTMP 的案例中，伺服器會以 TrackType_Bitrate** 格式產生)。 |
-| bitrate | 整數 | 資料軌的位元速率。 |
-| incomingBitrate | 整數 | 根據來自編碼器的資料區塊所計算出的位元速率。 |
+| trackName | 字串 | 資料軌的名稱 (由編碼器提供，在 RTMP 的案例中，伺服器會以 TrackType_Bitrate 格式產生)。 |
+| bitrate | integer | 資料軌的位元速率。 |
+| incomingBitrate | integer | 根據來自編碼器的資料區塊所計算出的位元速率。 |
 | lastTimestamp | 字串 | 資料軌在過去 20 秒所收到的最新時間戳記。 |
 | timescale | 字串 | 用來表示時間戳記的時幅。 |
-| overlapCount | 整數 | 在過去 20 秒有重疊時間戳記的資料區塊數目。 |
-| discontinuityCount | 整數 | 在過去 20 秒所觀察到的中斷次數。 |
-| nonIncreasingCount | 整數 | 在過去 20 秒所收到有過去時間戳記的資料區塊數目。 |
+| overlapCount | integer | 在過去 20 秒有重疊時間戳記的資料區塊數目。 |
+| discontinuityCount | integer | 在過去 20 秒所觀察到的中斷次數。 |
+| nonIncreasingCount | integer | 在過去 20 秒所收到有過去時間戳記的資料區塊數目。 |
 | unexpectedBitrate | bool | 在過去 20 秒內，預期和實際的位元速率差異是否超過允許的限制。 只有在「incomingBitrate >= 2* 位元速率」或「incomingBitrate <= 位元速率/2」或「IncomingBitrate = 0」時，才會是 true。 |
-| 狀態 | 字串 | 即時事件的狀態。 |
+| state | 字串 | 即時事件的狀態。 |
 | healthy | bool | 根據計數和旗標來指出內嵌是否狀況良好。 如果 overlapCount = 0 && discontinuityCount = 0 && nonIncreasingCount = 0 && unexpectedBitrate = false，則健康情況為 true。 |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
@@ -631,11 +631,11 @@ ms.locfileid: "86105926"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | trackType | 字串 | 資料軌的類型 (音訊/視訊)。 |
-| trackName | 字串 | 資料軌的名稱 (由編碼器提供，在 RTMP 的案例中，伺服器會以 TrackType_Bitrate** 格式產生)。 |
-| bitrate | 整數 | 資料軌的位元速率。 |
+| trackName | 字串 | 資料軌的名稱 (由編碼器提供，在 RTMP 的案例中，伺服器會以 TrackType_Bitrate 格式產生)。 |
+| bitrate | integer | 資料軌的位元速率。 |
 | previousTimestamp | 字串 | 上一個片段的時間戳記。 |
 | newTimestamp | 字串 | 當前片段的時間戳記。 |
 | discontinuityGap | 字串 | 上述兩個時間戳記之間的間距。 |
@@ -656,7 +656,7 @@ ms.locfileid: "86105926"
 | dataVersion | 字串 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
 | metadataVersion | 字串 | 事件中繼資料的結構描述版本。 「事件方格」會定義最上層屬性的結構描述。 「事件方格」提供此值。 |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [登記工作狀態變更事件](../media-services/latest/job-state-events-cli-how-to.md)
 

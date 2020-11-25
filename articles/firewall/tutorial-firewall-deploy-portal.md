@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/15/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: d6f72231e84650a17850932979b43c21dd045f30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e73f11ec178c067941ee33e02f37c96605460ee0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069318"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658582"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站部署和設定 Azure 防火牆
 
@@ -28,7 +28,7 @@ ms.locfileid: "89069318"
 
 在本教學課程中，您會建立包含二個子網路的簡易單一 VNet，以進行簡單的部署。
 
-對於生產環境部署，建議您使用[中樞和支點模型](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)，其中防火牆會位於自己的 VNet 中。 工作負載伺服器位於相同區域中的對等互連 VNet，其中包含一個或多個子網路。
+對於生產環境部署，建議您使用[中樞和支點模型](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)，其中防火牆會位於自己的 VNet 中。 工作負載伺服器位於相同區域中的對等互連 VNet，其中包含一個或多個子網路。
 
 * **AzureFirewallSubnet** - 防火牆位於此子網路。
 * **Workload-SN** - 工作負載伺服器位於此子網路。 此子網路的網路流量會通過防火牆。
@@ -83,7 +83,7 @@ ms.locfileid: "89069318"
 6. 完成時，選取 下一步:**IP 位址**。
 7. 針對 [IPv4 位址空間]，輸入 **10.0.0.0/16**。
 8. 在 [子網路] 下，選取 [預設]。
-9. 針對 [子網路名稱]，輸入 **AzureFirewallSubnet**。 防火牆會在此子網路中，且子網路名稱**必須**是 AzureFirewallSubnet。
+9. 針對 [子網路名稱]，輸入 **AzureFirewallSubnet**。 防火牆會在此子網路中，且子網路名稱 **必須** 是 AzureFirewallSubnet。
 10. 在 [位址範圍] 中，輸入 **10.0.1.0/26**。
 11. 選取 [儲存]。
 
@@ -226,7 +226,7 @@ Azure 防火牆包含內建的規則集合，適用於依預設允許的基礎�
 5. 在 [規則] 下的 [名稱] 中，輸入 **rdp-nat**。
 6. 在 [通訊協定] 中，選取 [TCP]。
 7. 針對 [來源類型]，選取 [IP 位址]。
-8. 針對 [來源]，輸入 **\*** 。
+8. 針對 [來源]，輸入 \*。
 9. 在 [目的地位址] 中，輸入防火牆的公用 IP 位址。
 10. 在 [目的地連接埠] 中，輸入 **3389**。
 11. 在 [轉譯的位址] 中，輸入 **Srv-work** 私人 IP 位址。
@@ -272,4 +272,4 @@ Azure 防火牆包含內建的規則集合，適用於依預設允許的基礎�
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [教學課程：監視 Azure 防火牆記錄](./tutorial-diagnostics.md)
+> [教學課程：監視 Azure 防火牆記錄](./firewall-diagnostics.md)
