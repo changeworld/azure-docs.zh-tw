@@ -35,6 +35,8 @@
           href: claim-sets.md
     - name: 工作流程
       href: workflow.md
+    - name: 檢視稽核記錄
+      href: audit-logs.md
 - name: 參考資料
   items:
     - name: 常見問題集

@@ -125,12 +125,12 @@
       items:
         - name: 規劃 Azure 容器供應項目
           href: marketplace-containers.md
+        - name: 預備技術資產
+          href: create-azure-container-technical-assets.md
         - name: 建立及發佈 Azure 容器供應項目
           items:
-            - name: 預備技術資產
-              href: partner-center-portal/create-azure-container-technical-assets.md
             - name: 建立 Azure 容器供應項目
-              href: partner-center-portal/create-azure-container-offer.md
+              href: create-azure-container-offer.md
     - name: Azure 虛擬機器供應項目
       items:
         - name: 規劃 VM 供應項目

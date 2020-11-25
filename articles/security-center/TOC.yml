@@ -278,8 +278,6 @@
       items:
         - name: 一般問題
           href: faq-general.md
-        - name: 計費問題
-          href: faq-billing.md
         - name: 權限問題
           href: faq-permissions.md
         - name: 資料收集和代理程式問題
