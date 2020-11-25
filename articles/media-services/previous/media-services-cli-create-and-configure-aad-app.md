@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
 ms.openlocfilehash: 12d6beac446f8a15a41daf0dfe8ca1783c95c775
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427244"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021107"
 ---
 # <a name="use-azure-cli-to-create-an-azure-ad-app-and-configure-it-to-access-media-services-api"></a>使用 Azure CLI 來建立 Azure AD 應用程式，並設定它以存取媒體服務 API
 
@@ -31,7 +31,7 @@ ms.locfileid: "92427244"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- Azure 帳戶。 如需詳細資訊，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
+- 一個 Azure 帳戶。 如需詳細資訊，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
 - 媒體服務帳戶。 如需詳細資訊，請參閱[使用 Azure 入口網站建立 Azure 媒體服務帳戶](media-services-portal-create-account.md)。
 
 ## <a name="use-the-azure-cloud-shell"></a>使用 Azure Cloud Shell
@@ -61,9 +61,9 @@ az role assignment create --assignee a3e068fa-f739-44e5-ba4d-ad57866e25a1 --role
 
 例如，它可以是下列層級之一：
  
-* **訂用帳戶**層級。
-* **資源群組**層級。
-* **資源**層級 (例如，媒體帳戶)。
+* **訂用帳戶** 層級。
+* **資源群組** 層級。
+* **資源** 層級 (例如，媒體帳戶)。
 
 如需詳細資訊，請參閱[使用 Azure CLI 來建立 Azure 服務主體](/cli/azure/create-an-azure-service-principal-azure-cli)
 

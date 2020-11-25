@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: f2417389de98f9998c189e7cbbbcdae77fbb8840
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075054"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020699"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>如何設定和執行雲端服務的啟動工作
 您可以利用啟動工作，在角色啟動之前執行作業。 您可能想要執行的作業包括安裝元件、註冊 COM 元件、設定登錄機碼，或啟動長時間執行的處理序。
@@ -27,7 +27,7 @@ ms.locfileid: "92075054"
 
 環境變數可將資訊傳入啟動工作，而本機存放區可以用來傳遞來自啟動工作的資訊。 例如，環境變數可以指定您想要安裝的程式路徑，以及可以將哪些檔案寫入本機存放區，以便日後供您的角色讀取。
 
-啟動工作可以將資訊和錯誤記錄到 **TEMP** 環境變數所指定的目錄中。 啟動工作期間，如果在雲端上執行，**TEMP** 環境變數會解析成 C:\\Resources\\temp\\[guid].[rolename]\\RoleTemp** 目錄。
+啟動工作可以將資訊和錯誤記錄到 **TEMP** 環境變數所指定的目錄中。 啟動工作期間，如果在雲端上執行，**TEMP** 環境變數會解析成 C:\\Resources\\temp\\[guid].[rolename]\\RoleTemp 目錄。
 
 啟動工作也可以在重新開機之間執行數次。 例如，每次角色回收時，都會執行啟動工作，但每次角色回收不一定會重新開機。 啟動工作的撰寫方式，應該要可讓它們順利執行多次。
 
@@ -76,7 +76,7 @@ EXIT /B 0
 ```
 
 > [!NOTE]
-> 在 Visual Studio 中，啟動批次檔的 [複製到輸出目錄]**** 屬性應該設為 [永遠複製]****，才能確保將啟動批次檔正確部署至您在 Azure 上的專案 (Web 角色為 **approot\\bin**，背景工作角色為 **approot**)。
+> 在 Visual Studio 中，啟動批次檔的 [複製到輸出目錄]屬性應該設為 [永遠複製]，才能確保將啟動批次檔正確部署至您在 Azure 上的專案 (Web 角色為 **approot\\bin**，背景工作角色為 **approot**)。
 > 
 > 
 

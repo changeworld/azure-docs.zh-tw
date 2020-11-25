@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: pafarley
 ms.openlocfilehash: 874d76bebdfd3bd0daba1f83cb1f06c093f192ec
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89411775"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021243"
 ---
 ## <a name="get-the-training-and-prediction-keys"></a>取得定型與預測金鑰
 
@@ -20,5 +20,5 @@ ms.locfileid: "89411775"
 
 ![金鑰 UI 的影像](../media/csharp-tutorial/training-prediction-keys.png)
 
-或者，您可以在 [Azure 入口網站](https://www.portal.azure.com)中，藉由檢視您的自訂視覺訓練和預測資源，然後瀏覽至 [金鑰] 索引標籤來取得這些金鑰和識別碼。在那裡，您會找到您的訓練金鑰和預測金鑰。 瀏覽至您預測資源的 [屬性]____ 索引標籤以取得您的預測資源識別碼。
+或者，您可以在 [Azure 入口網站](https://www.portal.azure.com)中，藉由檢視您的自訂視覺訓練和預測資源，然後瀏覽至 [金鑰] 索引標籤來取得這些金鑰和識別碼。在那裡，您會找到您的訓練金鑰和預測金鑰。 瀏覽至您預測資源的 [屬性] 索引標籤以取得您的預測資源識別碼。
 

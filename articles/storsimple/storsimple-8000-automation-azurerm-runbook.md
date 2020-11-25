@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 10/23/2017
 ms.author: alkohli
 ms.openlocfilehash: b5f2a86fb7c776436ea707ef293a66c033014c33
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966321"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021073"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>使用 Azure 自動化 Runbook 管理 StorSimple 裝置
 
@@ -182,7 +182,7 @@ ms.locfileid: "94966321"
    3. 建立新的資源群組，或從現有的資源群組中選取。
    4. 選取 [位置] \(如果可能，請選取服務執行所在位置)。
    5. 保持選取預設值 [建立執行身分帳戶] 選項。
-   6. 或者勾選 [釘選到儀表板]。 按一下 [建立]  。
+   6. 或者勾選 [釘選到儀表板]。 按一下 [建立]。
 
        ![螢幕擷取畫面顯示 [新增自動化帳戶] 窗格，其中包含訂用帳戶的值、建立 Azure 執行帳戶，以及建立2](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
 
@@ -198,7 +198,7 @@ ms.locfileid: "94966321"
 
     ![螢幕擷取畫面顯示 [新增模組] 窗格，其中包含上傳檔案值和 [確定]](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 
-6. 移至 [程序自動化] > [Runbook]**，然後按一下 [+ 新增 Runbook]**。 在 [新增 Runbook] 刀鋒視窗中，按一下 [匯入現有 Runbook]。 指向 **Runbook 檔案** 的 Windows PowerShell 指令碼檔案。 會自動選取 Runbook 類型。 提供 Runbook 的名稱和選擇性描述。 按一下 [建立]  。
+6. 移至 [程序自動化] > [Runbook]**，然後按一下 [+ 新增 Runbook]**。 在 [新增 Runbook] 刀鋒視窗中，按一下 [匯入現有 Runbook]。 指向 **Runbook 檔案** 的 Windows PowerShell 指令碼檔案。 會自動選取 Runbook 類型。 提供 Runbook 的名稱和選擇性描述。 按一下 [建立]。
 
     ![add-module](./media/storsimple-8000-automation-azurerm-runbook/import-runbook.png)
 

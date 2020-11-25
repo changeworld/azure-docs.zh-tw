@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 08/07/2020
 ms.author: glenga
 ms.openlocfilehash: a4f03223b5067d18f5d6e747b3bb630a86031b8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88689541"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020332"
 ---
 如果您無法使用延伸模組套件組合，可以在本機使用 Azure Functions Core Tools 安裝專案所需的特定擴充套件。
 
 > [!IMPORTANT]
-> 您無法在使用擴充套件組合的函式應用程式中明確安裝擴充功能。 `extensionBundle`明確安裝擴充功能之前，請先移除*host.js*中的區段。
+> 您無法在使用擴充套件組合的函式應用程式中明確安裝擴充功能。 `extensionBundle`明確安裝擴充功能之前，請先移除 *host.js* 中的區段。
 
 下列專案說明您可能需要手動安裝擴充功能的一些原因：
 
@@ -36,7 +36,7 @@ ms.locfileid: "88689541"
 ```dotnetcli
 func extensions install
 ```
-此命令會讀取檔案 * 上的function.js* ，以查看您需要的套件、安裝它們，以及重建擴充功能專案 (副檔名 .csproj) 。 它會在目前版本中新增任何新繫結，但不會更新現有的繫結。 在安裝新的繫結時，使用 `--force` 選項將現有繫結更新為最新版本。
+此命令會讀取檔案 *上的function.js* ，以查看您需要的套件、安裝它們，以及重建擴充功能專案 (副檔名 .csproj) 。 它會在目前版本中新增任何新繫結，但不會更新現有的繫結。 在安裝新的繫結時，使用 `--force` 選項將現有繫結更新為最新版本。
 
 如果您的函式應用程式使用 Core Tools 無法辨識的系結，您必須手動安裝特定的擴充功能。
 

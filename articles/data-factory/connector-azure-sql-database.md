@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/12/2020
 ms.openlocfilehash: 2e5c04087a9874a01498c70eb3834606069cef13
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843466"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021889"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure SQL Database 中複製和轉換資料
 
@@ -63,7 +63,7 @@ ms.locfileid: "94843466"
 
 以下是支援 Azure SQL Database 已連結服務的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | **Type** 屬性必須設為 **AzureSqlDatabase**。 | 是 |
 | connectionString | 指定連接到 **connectionString** 屬性 Azure SQL Database 實例所需的資訊。 <br/>您也可以在 Azure Key Vault 中放置密碼或服務主體金鑰。 如果是 SQL 驗證，請 `password` 從連接字串中提取設定。 如需詳細資訊，請參閱下表中的 JSON 範例，並 [將認證儲存在 Azure Key Vault 中](store-credentials-in-key-vault.md)。 | 是 |
@@ -224,7 +224,7 @@ ms.locfileid: "94843466"
 
 以下是針對 Azure SQL Database 資料集支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的 **type** 屬性必須設為 **AzureSqlTable**。 | 是 |
 | 結構描述 | 結構描述的名稱。 |否 (來源)；是 (接收)  |
@@ -263,7 +263,7 @@ ms.locfileid: "94843466"
 
 若要從 Azure SQL Database 複製資料，[複製活動 **來源** ] 區段支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 **type** 屬性必須設為 **AzureSqlSource**。 仍支援 ">sqlsource" 類型以提供回溯相容性。 | 是 |
 | sqlReaderQuery | 此屬性使用自訂 SQL 查詢來讀取資料。 例如 `select * from MyTable`。 | 否 |
@@ -376,7 +376,7 @@ GO
 
 若要將資料複製到 Azure SQL Database，「複製活動 **接收** 」區段支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動接收的 **type** 屬性必須設為 **AzureSqlSink**。 仍支援 "SqlSink" 類型以提供回溯相容性。 | 是 |
 | preCopyScript | 針對要在將資料寫入 Azure SQL Database 之前執行的複製活動，指定 SQL 查詢。 每一複製回合只會叫用此查詢一次。 使用此屬性來清除預先載入的資料。 | 否 |
@@ -738,14 +738,14 @@ ADF 將會在後續的 update、upsert、delete 中使用您選擇做為金鑰�
 | SMALLINT |Int16 |
 | SMALLMONEY |Decimal |
 | sql_variant |Object |
-| 文字 |String, Char[] |
+| text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | TINYINT |Byte |
 | UNIQUEIDENTIFIER |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
-| xml |字串 |
+| xml |String |
 
 >[!NOTE]
 > 針對對應至 Decimal 過渡型別的資料類型，目前的複製活動最多可支援28個精確度。 如果您有有效位數大於28的資料，請考慮在 SQL 查詢中轉換成字串。

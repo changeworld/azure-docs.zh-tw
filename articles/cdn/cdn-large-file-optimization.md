@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: ed5768e89482d32bb140e9ba7064de2d20809892
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148712"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020716"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>使用 Azure CDN 的大型檔案下載最佳化
 
@@ -83,11 +83,11 @@ CDN 會在收到任何區塊時即予以快取。 不必快取 CDN 快取上的�
 
 您可以設定 **Azure CDN Standard from Akamai** 端點，以透過 Azure 入口網站將大型檔案的傳遞最佳化。 使用 REST API 或任何用戶端 SDK 也都能達到相同目的。 下列步驟示範 **Azure CDN Standard from Akamai** 設定檔透過 Azure 入口網站執行的程序：
 
-1. 若要新增端點，請在 Akamai 的 [CDN 設定檔]**** 頁面上選取 [端點]****。
+1. 若要新增端點，請在 Akamai 的 [CDN 設定檔] 頁面上選取 [端點]。
 
     ![新增端點](./media/cdn-large-file-optimization/cdn-new-akamai-endpoint.png)    
  
-2. 在 [最佳化對象]**** 下拉式清單中，選取 [下載大型檔案]****。
+2. 在 [最佳化對象] 下拉式清單中，選取 [下載大型檔案]。
 
     ![已選取大型檔案最佳化](./media/cdn-large-file-optimization/cdn-large-file-select.png)
 
@@ -110,7 +110,7 @@ CDN 會在收到任何區塊時即予以快取。 不必快取 CDN 快取上的�
 | Caching  | 一般 Web | 大型檔案最佳化 
 --- | --- | --- 
 快取：正向 <br> HTTP 200、203、300、 <br> 301、302 和 410 | 7 天 |1 日  
-快取：負向 <br> HTTP 204、305、404 <br> 和 405 | 無 | 1 秒 
+快取：負向 <br> HTTP 204、305、404 <br> 和 405 | None | 1 秒 
 
 ### <a name="deal-with-origin-failure"></a>處理原始伺服器失敗
 

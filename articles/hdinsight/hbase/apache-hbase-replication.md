@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: cf080f2a6173651fce8f306619dba60347067e0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fc5ba2280b5ad68a40f4992adc170408e80e5a6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085606"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021787"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>設定 Azure 虛擬網路中的 Apache HBase 叢集複寫
 
@@ -58,7 +58,7 @@ ms.locfileid: "86085606"
 
 ### <a name="set-up-two-virtual-networks-in-two-different-regions"></a>在兩個不同區域中設定兩個虛擬網路
 
-若要使用會兩不同區域建立兩個虛擬網路，並在 VNet 之間建立 VPN 連線的範本，請選取下列 [部署至 Azure]**** 按鈕。 範本定義會儲存於[公用 Blob 儲存體](https://hditutorialdata.blob.core.windows.net/hbaseha/azuredeploy.json)。
+若要使用會兩不同區域建立兩個虛擬網路，並在 VNet 之間建立 VPN 連線的範本，請選取下列 [部署至 Azure] 按鈕。 範本定義會儲存於[公用 Blob 儲存體](https://hditutorialdata.blob.core.windows.net/hbaseha/azuredeploy.json)。
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
@@ -78,7 +78,7 @@ ms.locfileid: "86085606"
 | 閘道名稱 | vnet1gw |
 | 閘道類型 | Vpn |
 | 閘道 VPN 類型 | RouteBased |
-| 閘道 SKU | 基本 |
+| 閘道 SKU | Basic |
 | 閘道 IP | vnet1gwip |
 
 **VNet 2**
@@ -95,7 +95,7 @@ ms.locfileid: "86085606"
 | 閘道名稱 | vnet2gw |
 | 閘道類型 | Vpn |
 | 閘道 VPN 類型 | RouteBased |
-| 閘道 SKU | 基本 |
+| 閘道 SKU | Basic |
 | 閘道 IP | vnet1gwip |
 
 ## <a name="setup-dns"></a>設定 DNS
@@ -105,14 +105,14 @@ ms.locfileid: "86085606"
 為了安裝 Bind，您需要尋找兩個 DNS 虛擬機器的公用 IP 位址。
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com)。
-2. 選取 [資源群組] > [資源群組名稱] > [vnet1DNS]**** 來開啟 DNS 虛擬機器。  資源群組名稱是您在上一個程序中所建立的名稱。 預設 DNS 虛擬機器名稱是 vnet1DNS** 和 vnet2NDS**。
-3. 選取 [屬性]**** 以開啟虛擬網路的屬性頁面。
-4. 記下 [公用 IP 位址]****，並另外確認 [私人 IP 位址]****。  私人 IP 位址應該是 **10.1.0.4** (如果是 vnet1DNS) 和 **10.2.0.4** (如果是 vnet2DNS)。  
+2. 選取 [資源群組] > [資源群組名稱] > [vnet1DNS] 來開啟 DNS 虛擬機器。  資源群組名稱是您在上一個程序中所建立的名稱。 預設 DNS 虛擬機器名稱是 vnet1DNS 和 vnet2NDS。
+3. 選取 [屬性] 以開啟虛擬網路的屬性頁面。
+4. 記下 [公用 IP 位址]，並另外確認 [私人 IP 位址]。  私人 IP 位址應該是 **10.1.0.4** (如果是 vnet1DNS) 和 **10.2.0.4** (如果是 vnet2DNS)。  
 5. 變更兩個虛擬網路的 DNS 伺服器，使用預設 (Azure 提供) 的 DNS 伺服器，以允許對內及對外存取，在下列步驟中下載套件來安裝 Bind。
 
 若要安裝 Bind，請使用下列程序：
 
-1. 使用 SSH 連線至 DNS 虛擬機器的__公用 IP 位址__。 下列範例會連線到 40.68.254.142 的虛擬機器：
+1. 使用 SSH 連線至 DNS 虛擬機器的 __公用 IP 位址__。 下列範例會連線到 40.68.254.142 的虛擬機器：
 
     ```bash
     ssh sshuser@40.68.254.142
@@ -124,7 +124,7 @@ ms.locfileid: "86085606"
     > 有多種方式可取得 `ssh` 公用程式。 在 Linux、Unix 及 macOS 上，它會提供作為作業系統的一部分。 如果您是使用 Windows，請考慮下列選項的其中之一：
     >
     > * [Azure Cloud Shell](../../cloud-shell/quickstart.md)
-    > * [在 Windows 10 上 Ubuntu 上的 Bash](https://msdn.microsoft.com/commandline/wsl/about)
+    > * [在 Windows 10 上 Ubuntu 上的 Bash](/windows/wsl/about)
     > * [Git (https://git-scm.com/)](https://git-scm.com/)
     > * [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
@@ -225,7 +225,7 @@ ms.locfileid: "86085606"
     > [!IMPORTANT]  
     > 將 `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` 取代為另一個網路中 DNS 虛擬機器的完整網域名稱 (FQDN)。
     >
-    > 將 `10.2.0.4` 取代為另一個虛擬網路中自訂 DNS 伺服器的__內部 IP 位址__。
+    > 將 `10.2.0.4` 取代為另一個虛擬網路中自訂 DNS 伺服器的 __內部 IP 位址__。
 
     回應看起來類似下列文字：
 
@@ -244,11 +244,11 @@ ms.locfileid: "86085606"
 
 若要將虛擬網路設定為使用自訂的 DNS 伺服器，而不使用 Azure 遞迴解析程式，請使用下列步驟：
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，選取虛擬網路，然後選取 [DNS 伺服器]____。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，選取虛擬網路，然後選取 [DNS 伺服器]。
 
-2. 選取 [自訂]____，並輸入自訂 DNS 伺服器的__內部 IP 位址__。 最後，選取 [儲存]____。
+2. 選取 [自訂]，並輸入自訂 DNS 伺服器的 __內部 IP 位址__。 最後，選取 [儲存]。
 
-6. 在 vnet1 中開啟 DNS 伺服器虛擬機器，然後按一下 [重新啟動]****。  您必須重新啟動虛擬網路中的所有虛擬機器，才能讓 DNS 組態生效。
+6. 在 vnet1 中開啟 DNS 伺服器虛擬機器，然後按一下 [重新啟動]。  您必須重新啟動虛擬網路中的所有虛擬機器，才能讓 DNS 組態生效。
 7. 重複步驟，為 vnet2 設定自訂 DNS 伺服器。
 
 若要測試 DNS 組態，您可以使用 SSH 連線至兩個 DNS 虛擬機器，然後使用另一個虛擬網路的 DNS 伺服器主機名稱對該 DNS 伺服器執行 ping。 如果沒有作用，請使用下列命令來檢查 DNS 狀態：
@@ -262,9 +262,9 @@ sudo service bind9 status
 使用下列組態在兩個虛擬網路中各建立一個 [Apache HBase](https://hbase.apache.org/) 叢集：
 
 - **資源群組名稱**︰使用和您在虛擬網路中所建立的名稱相同的資源群組名稱。
-- 叢集**類型**： HBase
+- 叢集 **類型**： HBase
 - **版本**：HBase 1.1.2 (HDI 3.6)
-- **位置**：使用與虛擬網路相同的位置。  根據預設，vnet1 是「美國西部」**，vnet2 是「美國東部」**。
+- **位置**：使用與虛擬網路相同的位置。  根據預設，vnet1 是「美國西部」，vnet2 是「美國東部」。
 - **儲存體**︰為叢集建立新的儲存體帳戶。
 - **虛擬網路** (從入口網站上的 [進階] 設定)：選取您在上一個程序中所建立的 vnet1。
 - **子網路**：範本中所使用的預設名稱為 **subnet1**。
@@ -275,7 +275,7 @@ sudo service bind9 status
 
 當您複寫叢集時，您必須指定要複寫的資料表。 在本節中，您會把部分資料載入到來源叢集中。 在下一節中，您將會啟用兩個叢集之間的複寫。
 
-若要建立一個**連絡人**資料表，並在此資料表中插入一些資料，請依照 [Apache HBase 教學課程：開始使用 HDInsight 中的 Apache HBase](apache-hbase-tutorial-get-started-linux.md) 中的指示進行操作。
+若要建立一個 **連絡人** 資料表，並在此資料表中插入一些資料，請依照 [Apache HBase 教學課程：開始使用 HDInsight 中的 Apache HBase](apache-hbase-tutorial-get-started-linux.md) 中的指示進行操作。
 
 > [!NOTE]
 > 如果您想要從自訂命名空間複寫資料表，您也必須確定已在目的地叢集上定義適當的自訂命名空間。
@@ -289,11 +289,11 @@ sudo service bind9 status
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 開啟來源 HBase 叢集。
-3. 從 [叢集] 功能表中，選擇 [指令碼動作]****。
-4. 在頁面的頂端，選取 [提交新項目] ****。
+3. 從 [叢集] 功能表中，選擇 [指令碼動作]。
+4. 在頁面的頂端，選取 [提交新項目] 。
 5. 選取或輸入下列資訊︰
 
-   1. **名稱**：輸入「啟用複寫」****。
+   1. **名稱**：輸入「啟用複寫」。
    2. **Bash 指令碼 URL**：輸入 **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**。
    3. **前端**：務必選取此項目。 清除其他節點類型。
    4. **參數**：下列範例參數會針對所有現有的資料表啟用複寫，然後將來源叢集的所有資料複製到目的地叢集：
@@ -305,11 +305,11 @@ sudo service bind9 status
       >
       > 本逐步解說假設 hn1 為作用中前端節點。 請檢查您的叢集，以識別作用中的前端節點。
 
-6. 選取 [建立]****。 指令碼執行需要花費一些時間，特別是在使用 **-copydata** 引數的情況下。
+6. 選取 [建立]。 指令碼執行需要花費一些時間，特別是在使用 **-copydata** 引數的情況下。
 
 必要的引數︰
 
-|名稱|說明|
+|名稱|描述|
 |----|-----------|
 |-s, --src-cluster | 指定來源 HBase 叢集的 DNS 名稱。 例如：-s hbsrccluster, --src-cluster=hbsrccluster |
 |-d, --dst-cluster | 指定目的地 (複本) HBase 叢集的 DNS 名稱。 例如：-s dsthbcluster, --src-cluster=dsthbcluster |
@@ -318,7 +318,7 @@ sudo service bind9 status
 
 選擇性的引數︰
 
-|名稱|說明|
+|名稱|描述|
 |----|-----------|
 |-su, --src-ambari-user | 指定來源 HBase 叢集上 Ambari 的管理員使用者名稱。 預設值為 **admin**。 |
 |-du, --dst-ambari-user | 指定目的地 HBase 叢集上 Ambari 的管理員使用者名稱。 預設值為 **admin**。 |
@@ -406,11 +406,10 @@ sudo service bind9 status
 > 如果您想要刪除目的地叢集，請務必將它從來源叢集的對等清單中移除。 這可以藉由在來源叢集上的 hbase shell 上執行命令 remove_peer ' 1 ' 來完成。 失敗，來源叢集可能無法正常運作。
 >
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解如何在虛擬網路內或兩個虛擬網路之間設定 Apache HBase 複寫。 若要深入了解 HDInsight 與 Apache HBase，請參閱下列文章：
 
 * [開始使用 HDInsight 中的 Apache HBase](./apache-hbase-tutorial-get-started-linux.md)
 * [HDInsight Apache HBase 概觀](./apache-hbase-overview.md)
 * [在 Azure 虛擬網路中建立 Apache HBase 叢集](./apache-hbase-provision-vnet.md)
-

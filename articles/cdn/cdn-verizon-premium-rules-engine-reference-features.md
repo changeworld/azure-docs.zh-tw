@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 06/02/2020
 ms.author: allensu
 ms.openlocfilehash: 0ea4f167b992ccfbc4156ac06c8f636d2ef4a355
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84343195"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020410"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>來自 Verizon Premium 的 Azure CDN 規則引擎功能
 
@@ -35,7 +35,7 @@ ms.locfileid: "84343195"
 * [URL](#url)
 * [Web 應用程式防火牆](#waf)
 
-### <a name="access"></a><a name="access"></a>存取
+### <a name="access"></a><a name="access"></a>Access
 
 這些功能是設計來控制內容的存取權。
 
@@ -49,7 +49,7 @@ ms.locfileid: "84343195"
 
 **[回到頂端](#top)**
 
-### <a name="caching"></a><a name="caching"></a>快取
+### <a name="caching"></a><a name="caching"></a>Caching
 
 這些功能是設計來自訂快取內容的時機和方法。
 
@@ -59,7 +59,7 @@ ms.locfileid: "84343195"
 | [頻寬節流設定](https://docs.vdms.com/cdn/Content/HRE/F/Bandwidth-Throttling.htm) | 針對我們的 Edge Server 所提供的回應進行頻寬節流設定。 |
 | [略過快取](https://docs.vdms.com/cdn/Content/HRE/F/Bypass-Cache.htm) | 判斷要求是否可以利用我們的快取技術。 |
 | [Cache-Control 標頭處理](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Control-Header-Treatment.htm) |  當 [外部最大壽命] 功能為作用中時，透過 Edge Server 來控制 Cache-Control 標頭的產生。 |
-| [快取索引鍵查詢字串](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Query-String.htm) | 判斷快取索引 **鍵*** 是否會包含或排除與要求相關聯的查詢字串參數。 <br> _* 針對快取目的唯一識別資產的相對路徑。 我們的 edge server 會在檢查快取的內容時使用這個相對路徑。 根據預設，快取索引鍵不會包含查詢字串參數。_ |
+| [快取索引鍵查詢字串](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Query-String.htm) | 判斷快取索引 **鍵** _ 是否會包含或排除與要求相關聯的查詢字串參數。 <br> __ 針對快取目的唯一識別資產的相對路徑。  我們的 edge server 會在檢查快取的內容時使用這個相對路徑。  根據預設，快取索引鍵不會包含查詢字串 parameters。_ |
 | [快取索引鍵重寫](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Rewrite.htm) | 重寫與要求相關聯的快取索引鍵。 |
 | [完成快取填滿](https://docs.vdms.com/cdn/Content/HRE/F/Complete-Cache-Fill.htm) | 判斷在要求於 Edge Server 上產生部分快取遺失時會發生什麼事。 |
 | [壓縮檔案類型](https://docs.vdms.com/cdn/Content/HRE/F/Compress-File-Types.htm) | 定義將在伺服器上壓縮的檔案格式。 | 
@@ -88,7 +88,7 @@ ms.locfileid: "84343195"
 
 **[回到頂端](#top)**
 
-### <a name="headers"></a><a name="headers"></a>headers
+### <a name="headers"></a><a name="headers"></a>標題
 
 這些功能是設計來新增、修改或刪除要求或回應的標頭。
 

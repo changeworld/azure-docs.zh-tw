@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: jingwang
 ms.openlocfilehash: db0808edae2baf3aec3f524bcbe92bb544925dfe
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925725"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019934"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Azure Data Factory 中的分隔文字格式
 
@@ -30,17 +30,17 @@ ms.locfileid: "92925725"
 
 | 屬性         | 描述                                                  | 必要 |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | 資料集的 type 屬性必須設為 **DelimitedText** 。 | 是      |
+| type             | 資料集的 type 屬性必須設為 **DelimitedText**。 | 是      |
 | location         | 檔案 (s) 的位置設定。 每個以檔案為基礎的連接器都有自己的位置類型和支援的屬性 `location` 。  | 是      |
-| columnDelimiter  |  (s 的字元) 用來分隔檔案中的資料行。 <br>預設值為 **逗號 `,`** 。 當資料行分隔符號定義為空字串時（亦即沒有分隔符號），會將整行當作單一資料行來取得。<br>目前，只支援對應資料流程，而不支援將資料行分隔符號作為空白字串或多字元的複製活動。  | 否       |
+| columnDelimiter  |  (s 的字元) 用來分隔檔案中的資料行。 <br>預設值為 **逗號 `,`**。 當資料行分隔符號定義為空字串時（亦即沒有分隔符號），會將整行當作單一資料行來取得。<br>目前，只支援對應資料流程，而不支援將資料行分隔符號作為空白字串或多字元的複製活動。  | 否       |
 | rowDelimiter     | 單一字元或 "\r\n" 用來分隔檔案中的資料列。 <br>預設值是讀取時的下列任何值 **： ["\r\n"、"\r"、"\n"]** 和 **"\n" 或 "\r\n"** （依對應的資料流程和複製活動）。 <br>當資料列分隔符號設定為沒有分隔符號 (空白字串) 時，也必須將資料行分隔符號設為空字串)  (空白字串，這表示將整個內容視為單一值。<br>目前，僅支援對應資料流程，但不支援將資料列分隔符號作為空白字串。 | 否       |
 | quoteChar        | 如果資料行的值包含資料行分隔符號，則為其引號的單一字元。 <br>預設值為 **雙引號** `"` 。 <br>當 `quoteChar` 定義為空字串時，這表示沒有引號字元，而且資料行值未加上引號，而且 `escapeChar` 會用來將資料行分隔符號和本身換行。 | 否       |
-| escapeChar       | 要在加上引號的值內換用引號的單一字元。<br>預設值為 **反斜線 `\`** 。 <br>當 `escapeChar` 定義為空字串時， `quoteChar` 也必須將設為空字串，在此情況下，請確定所有資料行值都不包含分隔符號。 | 否       |
+| escapeChar       | 要在加上引號的值內換用引號的單一字元。<br>預設值為 **反斜線 `\`**。 <br>當 `escapeChar` 定義為空字串時， `quoteChar` 也必須將設為空字串，在此情況下，請確定所有資料行值都不包含分隔符號。 | 否       |
 | firstRowAsHeader | 指定是否將第一個資料列視為具有資料行名稱的標頭行。<br>允許的值為 **true** 和 **false** (預設) 。<br>當第一個資料列做為標頭時，請注意 UI 資料預覽和查閱活動輸出會自動產生資料行名稱做為 Prop_ {n} (從 0) 開始，複製活動需要從來源到接收的 [明確對應](copy-activity-schema-and-type-mapping.md#explicit-mapping) ，並依 (序數從 1) 開始找出資料行，並從 1 Column_ 開始找出名稱為 ({n}) 的資料行。  | 否       |
-| nullValue        | 指定 null 值的字串表示。 <br>預設值為 **空字串** 。 | 否       |
+| nullValue        | 指定 null 值的字串表示。 <br>預設值為 **空字串**。 | 否       |
 | encodingName     | 用來讀取/寫入測試檔的編碼類型。 <br>允許的值如下：「UTF-8」、「UTF-16」、「UTF-16BE」、「32 UTF-8」、「UTF-32BE」、「美國-ASCII」、「UTF-7」、「BIG5」、「EUC-JP」、「EUC-KR」、」 GB2312 "、" GB18030 "、" JOHAB "、" SHIFT-JIS "、" CP875 "、" CP866 "、" IBM00858 "、" IBM037 "、" IBM273 "、" IBM437 "、" IBM500 "、" IBM737 "、" IBM775 "、" IBM850 "、" IBM852 "、" IBM855 "、" IBM857 "、" IBM860 "和" IBM861 "、" IBM863 "、" IBM864 "、" IBM865 "、" IBM869 "、" IBM870 "、" IBM01140 "、" IBM01141 "、" IBM01142 "、" IBM01143 "、" IBM01144 "、" IBM01145 "、" IBM01146 "、" IBM01147 "、" IBM01148 "、" IBM01149 "、" ISO-2022-JP "，" ISO-2022-KR "，" ISO-8859-1 "，" ISO-8859-2 "，" ISO-8859-3 "，" ISO-8859-4 "，" ISO-8859-5 "，" ISO-8859-6 "，" ISO-8859-7 "，" iso-8859-8 "，" ISO-8859-9 "，" iso-8859-13 "，"ISO-8859-15"、"WINDOWS-874"、"WINDOWS-1250"、"WINDOWS-1251"、"WINDOWS-1252"、"WINDOWS-1253"、"WINDOWS-1254"、"WINDOWS-1255"、"WINDOWS-1256"、"WINDOWS-1257"、"WINDOWS-1258"。<br>注意：對應資料流程不支援 UTF-7 編碼。 | 否       |
-| compressionCodec | 用來讀取/寫入文字檔的壓縮編解碼器。 <br>允許的值為 **bzip2** 、 **gzip** 、 **deflate** 、 **ZipDeflate** 、 **TarGzip** 、 **Tar** 、 **snappy** 或 **lz4** 。 預設值不會壓縮。 <br>**注意：** 目前的複製活動不支援 "snappy" & "lz4"，而且對應資料流程不支援 "ZipDeflate"、"TarGzip" 和 "Tar"。 <br>**請注意** ，使用「複製活動」將 **ZipDeflate** / **TarGzip** /)  ( **Tar** 檔案解壓縮，並將其寫入檔案型接收資料存放區時，根據預設，檔案會解壓縮到資料夾： `<path specified in dataset>/<folder named as source compressed file>/` ，請 `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` 在 [複製活動來源](#delimited-text-as-source)上使用，以控制是否要將壓縮檔案的名稱保留為資料夾結構 () 。 | 否       |
-| compressionLevel | 壓縮比例。 <br>允許的值為 **最佳** 或 **最快速** 。<br>- **最快：** 即使產生的檔案未以最佳方式壓縮，壓縮作業也應該儘快完成。<br>- **最佳** ：即使作業需要較長的時間才能完成，壓縮作業也應以最佳方式壓縮。 如需詳細資訊，請參閱 [壓縮層級](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) 主題。 | 否       |
+| compressionCodec | 用來讀取/寫入文字檔的壓縮編解碼器。 <br>允許的值為 **bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**、 **TarGzip**、 **Tar**、 **snappy** 或 **lz4**。 預設值不會壓縮。 <br>**注意：** 目前的複製活動不支援 "snappy" & "lz4"，而且對應資料流程不支援 "ZipDeflate"、"TarGzip" 和 "Tar"。 <br>**請注意**，使用「複製活動」將 **ZipDeflate** / **TarGzip** /)  (**Tar** 檔案解壓縮，並將其寫入檔案型接收資料存放區時，根據預設，檔案會解壓縮到資料夾： `<path specified in dataset>/<folder named as source compressed file>/` ，請 `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` 在 [複製活動來源](#delimited-text-as-source)上使用，以控制是否要將壓縮檔案的名稱保留為資料夾結構 () 。 | 否       |
+| compressionLevel | 壓縮比例。 <br>允許的值為 **最佳** 或 **最快速**。<br>- **最快：** 即使產生的檔案未以最佳方式壓縮，壓縮作業也應該儘快完成。<br>- **最佳**：即使作業需要較長的時間才能完成，壓縮作業也應以最佳方式壓縮。 如需詳細資訊，請參閱 [壓縮層級](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) 主題。 | 否       |
 
 以下是 Azure Blob 儲存體上的分隔文字資料集範例：
 
@@ -76,11 +76,11 @@ ms.locfileid: "92925725"
 
 ### <a name="delimited-text-as-source"></a>分隔文字作為來源 
 
-複製活動 **_ \_ 來源 \*** * 區段支援下列屬性。
+複製活動 **_ \_ 來源 \**** 區段支援下列屬性。
 
 | 屬性       | 描述                                                  | 必要 |
 | -------------- | ------------------------------------------------------------ | -------- |
-| type           | 複製活動來源的 type 屬性必須設為 **DelimitedTextSource** 。 | 是      |
+| type           | 複製活動來源的 type 屬性必須設為 **DelimitedTextSource**。 | 是      |
 | formatSettings | 屬性的群組。 請參閱下方的 **分隔文字讀取設定** 表格。 |  否       |
 | storeSettings  | 一組屬性，說明如何從資料存放區讀取資料。 每個以檔案為基礎的連接器在下都有自己支援的讀取設定 `storeSettings` 。 | 否       |
 
@@ -88,11 +88,11 @@ ms.locfileid: "92925725"
 
 | 屬性      | 描述                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | FormatSettings 的類型必須設定為 **DelimitedTextReadSettings** 。 | 是      |
+| type          | FormatSettings 的類型必須設定為 **DelimitedTextReadSettings**。 | 是      |
 | skipLineCount | 指出從輸入檔讀取資料時，要略過的 **非空白** 資料列數。 <br>如果同時指定 skipLineCount 和 firstRowAsHeader，則會先略過行，然後從輸入檔讀取標頭資訊。 | 否       |
 | compressionProperties | 一組屬性，說明如何將指定壓縮編解碼器的資料解壓縮。 | 否       |
-| preserveZipFileNameAsFolder<br> ( *下 `compressionProperties` -> `type` 的 `ZipDeflateReadSettings`* )  |  適用于設定 **ZipDeflate** 壓縮的輸入資料集時。 指出複製期間是否要將來源 ZIP 檔案名保留為資料夾結構。<br>-當設定為 **true (預設)** 時，Data Factory 會將解壓縮的檔案寫入 `<path specified in dataset>/<folder named as source zip file>/` 。<br>-當設定為 **false** 時，Data Factory 會將解壓縮的檔案直接寫入至 `<path specified in dataset>` 。 請確定您在不同的來源 zip 檔案中沒有重複的檔案名，以避免發生賽車或非預期的行為。  | 否 |
-| preserveCompressionFileNameAsFolder<br> ( *下 `compressionProperties` -> `type` 的 `TarGZipReadSettings` 或 `TarReadSettings`* )   | 適用于使用 **TarGzip** / **Tar** 壓縮設定輸入資料集時。 指出複製期間是否要將來源壓縮檔案名稱保留為資料夾結構。<br>-當設定為 **true (預設)** 時，Data Factory 會將解壓縮檔案寫入至 `<path specified in dataset>/<folder named as source compressed file>/` 。 <br>-當設定為 **false** 時，Data Factory 會將解壓縮的檔案直接寫入至 `<path specified in dataset>` 。 請確定您在不同的來源檔案中沒有重複的檔案名，以避免發生賽車或非預期的行為。 | 否 |
+| preserveZipFileNameAsFolder<br> (*下 `compressionProperties` -> `type` 的 `ZipDeflateReadSettings`*)  |  適用于設定 **ZipDeflate** 壓縮的輸入資料集時。 指出複製期間是否要將來源 ZIP 檔案名保留為資料夾結構。<br>-當設定為 **true (預設)** 時，Data Factory 會將解壓縮的檔案寫入 `<path specified in dataset>/<folder named as source zip file>/` 。<br>-當設定為 **false** 時，Data Factory 會將解壓縮的檔案直接寫入至 `<path specified in dataset>` 。 請確定您在不同的來源 zip 檔案中沒有重複的檔案名，以避免發生賽車或非預期的行為。  | 否 |
+| preserveCompressionFileNameAsFolder<br> (*下 `compressionProperties` -> `type` 的 `TarGZipReadSettings` 或 `TarReadSettings`*)   | 適用于使用 **TarGzip** / **Tar** 壓縮設定輸入資料集時。 指出複製期間是否要將來源壓縮檔案名稱保留為資料夾結構。<br>-當設定為 **true (預設)** 時，Data Factory 會將解壓縮檔案寫入至 `<path specified in dataset>/<folder named as source compressed file>/` 。 <br>-當設定為 **false** 時，Data Factory 會將解壓縮的檔案直接寫入至 `<path specified in dataset>` 。 請確定您在不同的來源檔案中沒有重複的檔案名，以避免發生賽車或非預期的行為。 | 否 |
 
 ```json
 "activities": [
@@ -124,11 +124,11 @@ ms.locfileid: "92925725"
 
 ### <a name="delimited-text-as-sink"></a>分隔的文字作為接收器
 
-複製活動 **_ \_ 接收 \*** * 區段支援下列屬性。
+複製活動 **_ \_ 接收 \**** 區段支援下列屬性。
 
 | 屬性       | 描述                                                  | 必要 |
 | -------------- | ------------------------------------------------------------ | -------- |
-| type           | 複製活動來源的 type 屬性必須設為 **DelimitedTextSink** 。 | 是      |
+| type           | 複製活動來源的 type 屬性必須設為 **DelimitedTextSink**。 | 是      |
 | formatSettings | 屬性的群組。 請參閱下面的 **分隔文字寫入設定** 表格。 |    否      |
 | storeSettings  | 一組屬性，說明如何將資料寫入資料存放區。 每個以檔案為基礎的連接器在下都有自己支援的寫入設定 `storeSettings` 。  | 否       |
 
@@ -136,7 +136,7 @@ ms.locfileid: "92925725"
 
 | 屬性      | 描述                                                  | 必要                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| type          | FormatSettings 的類型必須設定為 **DelimitedTextWriteSettings** 。 | 是                                                   |
+| type          | FormatSettings 的類型必須設定為 **DelimitedTextWriteSettings**。 | 是                                                   |
 | fileExtension | 用來命名輸出檔的副檔名，例如， `.csv` `.txt` 。 當在 `fileName` Output DelimitedText 資料集中未指定時，必須指定此資料集。 在輸出資料集中設定檔案名時，將會使用此名稱做為接收檔案名，而且會忽略副檔名設定。  | 如果未在輸出資料集中指定檔案名，則為 Yes |
 | maxRowsPerFile | 將資料寫入資料夾時，您可以選擇寫入多個檔案，並指定每個檔案的最大資料列數。  | 否 |
 | fileNamePrefix | 適用于 `maxRowsPerFile` 設定時。<br> 將資料寫入多個檔案時，請指定檔案名前置詞，而導致此模式： `<fileNamePrefix>_00000.<fileExtension>` 。 如果未指定，則會自動產生檔案名前置詞。 當來源是以檔案為基礎的存放區或分割區 [選項的資料存放區](copy-activity-performance-features.md)時，此屬性不適用。  | 否 |

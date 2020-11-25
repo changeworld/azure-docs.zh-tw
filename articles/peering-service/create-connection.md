@@ -9,11 +9,11 @@ ms.date: 05/2/2020
 ms.author: derekol
 Customer intent: With Azure Peering service enhancing the customer connectivity to Microsoft cloud services .
 ms.openlocfilehash: f8f0ee71a8dd00498d868bb6dc11b3fa083df766
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530206"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021090"
 ---
 # <a name="tutorial-create-a-peering-service-connection"></a>教學課程：建立對等互連服務連線
 
@@ -30,7 +30,7 @@ ms.locfileid: "91530206"
 
     ![註冊對等互連服務基本索引標籤](./media/peering-service-portal/peering-servicebasics.png)
 
-4. 輸入應註冊對等互連服務執行個體的**名稱**。
+4. 輸入應註冊對等互連服務執行個體的 **名稱**。
 
 5. 現在，選取頁面底部的 [下一步: 設定] 按鈕。 [設定] 頁面隨即出現。
 ## <a name="configure-the-peering-service-connection"></a>設定對等互連服務連線

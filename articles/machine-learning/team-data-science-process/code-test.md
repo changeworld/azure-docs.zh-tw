@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
 ms.openlocfilehash: bcebc568db4a0d2b4b287045ba0a67c88d9b8c92
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312690"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020597"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>使用 Team Data Science Process 和 Azure DevOps Services，在 Azure 上進行資料科學程式碼測試
 本文提供在資料科學工作流程中測試程式碼的初步指導方針。 這類測試可提供資料科學家一個系統化且有效率的方式，來檢查其程式碼的品質和預期的結果。 我們會使用 Team Data Science Process (TDSP) [專案 (使用先前發佈的 UCI 成人收入資料集)](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) 來示範如何進行程式碼測試。 
@@ -134,7 +134,7 @@ ms.locfileid: "93312690"
 
     f. 在 PowerShell 詳細資料中，填入必要的資訊，例如 PowerShell 的名稱和版本。 選擇 [內嵌指令碼] 作為類型。 
     
-    在 [內嵌指令碼] 底下的方塊中，您可以輸入 **python test1.py** 。 請確定已為 Python 正確設定環境變數。 如果您需要不同的 Python 版本或核心，可以明確指定路徑，如下圖所示： 
+    在 [內嵌指令碼] 底下的方塊中，您可以輸入 **python test1.py**。 請確定已為 Python 正確設定環境變數。 如果您需要不同的 Python 版本或核心，可以明確指定路徑，如下圖所示： 
     
     ![PowerShell 詳細資料](./media/code-test/powershell_scripts.PNG)
 
@@ -154,7 +154,7 @@ ms.locfileid: "93312690"
 * 如需資料科學案例的具體單元測試範例，請參閱 [UCI 收入預測存放庫](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) \(英文\)。
 * 在您自己的資料科學專案中，依照上述來自 UCI 收入預測案例的概述和範例進行操作。
 
-## <a name="references"></a>參考
+## <a name="references"></a>參考資料
 * [Team Data Science Process](./index.yml)
 * [Visual Studio 測試工具](https://www.visualstudio.com/vs/features/testing-tools/)
 * [Azure DevOps 測試資源](https://www.visualstudio.com/team-services/)

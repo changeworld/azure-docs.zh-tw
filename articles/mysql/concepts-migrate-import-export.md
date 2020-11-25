@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/30/2020
 ms.openlocfilehash: af9f0f65e01a786d478fac0adde6174b8f03b2fd
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537895"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019886"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>使用匯入和匯出移轉您的 MySQL 資料庫
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
@@ -47,7 +47,7 @@ ms.locfileid: "94537895"
 - 當您從 MySQL 資料庫以外的外部資料來源移轉資料時，建立一般檔案，並且使用 [mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html) 來匯入它們。
 
 > [!Important]
-> 單一伺服器和彈性的伺服器 **僅支援 InnoDB 儲存引擎** 。 將資料載入至適用於 MySQL 的 Azure 資料庫時，請確定資料庫中的所有資料表都使用 InnoDB 儲存引擎。
+> 單一伺服器和彈性的伺服器 **僅支援 InnoDB 儲存引擎**。 將資料載入至適用於 MySQL 的 Azure 資料庫時，請確定資料庫中的所有資料表都使用 InnoDB 儲存引擎。
 > 如果您的源資料庫使用其他儲存引擎，請在遷移資料庫之前轉換成 InnoDB 引擎。 例如，如果您有使用 MyISAM 引擎的 WordPress 或 Web 應用程式，先將資料移轉至 InnoDB 資料表來轉換資料表。 使用子句 `ENGINE=INNODB` 以設定引擎來建立資料表，然後在移轉之前將資料傳送到相容的資料表。
 
    ```sql

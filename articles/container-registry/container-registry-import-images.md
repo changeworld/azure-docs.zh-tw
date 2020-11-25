@@ -4,11 +4,11 @@ description: 藉由使用 Azure API 將容器映像匯入到 Azure 容器登錄�
 ms.topic: article
 ms.date: 09/18/2020
 ms.openlocfilehash: 3950b9fb24b80db4d9654a615521c0eb82914499
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695600"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019968"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>將容器映像匯入到容器登錄
 
@@ -36,7 +36,7 @@ Azure Container Registry 會處理一些從現有登錄複製映像的常見案�
 > 如果您需要將相同的容器映像散佈到多個 Azure 區域，Azure Container Registry 也支援[異地複寫](container-registry-geo-replication.md)。 藉由異地複寫登錄 (Premium 服務層級) ，您可以使用單一登入的相同映射和標籤名稱來提供多個區域。
 >
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您還沒有 Azure 容器登錄，請建立登錄。 如需相關步驟，請參閱 [快速入門：使用 Azure CLI 建立私用容器](container-registry-get-started-azure-cli.md)登錄。
 

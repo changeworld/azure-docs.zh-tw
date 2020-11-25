@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 12/10/2019
 ms.openlocfilehash: 3ce104e9340c3e93d64b68dcab6f5bd6d2f62493
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748732"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020617"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>使用 Azure REST API 建立 Apache Hadoop 叢集
 
@@ -205,7 +205,7 @@ Azure Resource Manager 範本是描述 **資源群組** 的 JSON 檔，以及其
    }
    ```
 
-本文件中的步驟引用此範例。 使用您叢集的值來取代  。
+本文件中的步驟引用此範例。 使用您叢集的值來取代 **Parameters** 區段中的範例值。
 
 > [!IMPORTANT]  
 > 本範本使用 HDInsight 叢集的背景工作節點預設數目 (4)。 如果您規劃 32 個以上的背景工作節點，則必須選取具有至少 8 個核心和 14 GB RAM 的前端節點大小。
@@ -240,7 +240,7 @@ Azure Resource Manager 範本是描述 **資源群組** 的 JSON 檔，以及其
    > [!NOTE]  
    > `--home-page` 和 `--identifier-uris` 值不需參考裝載於網際網路上的實際網頁。 它們必須是唯一的 URI。
 
-   此命令傳回的值是新應用程式的 __App ID__ 。 儲存這個值。
+   此命令傳回的值是新應用程式的 __App ID__。 儲存這個值。
 
 3. 使用下列命令以 **App ID** 建立服務主體。
 
@@ -248,7 +248,7 @@ Azure Resource Manager 範本是描述 **資源群組** 的 JSON 檔，以及其
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
-     此命令傳回的值是 __Object ID__ 。 儲存這個值。
+     此命令傳回的值是 __Object ID__。 儲存這個值。
 
 4. 使用 **Object ID** 值將 **Owner** 角色指派給服務主體。 使用稍早取得的 **訂用帳戶 ID** 。
 

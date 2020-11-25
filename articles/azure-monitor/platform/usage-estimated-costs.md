@@ -9,11 +9,11 @@ ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
 ms.openlocfilehash: eb96537f67c61fb31759da020068f784d0e89993
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323395"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020189"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>在 Azure 監視器中監視使用量和估計成本
 
@@ -65,12 +65,12 @@ Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quic
 
 ![Azure 成本管理螢幕擷取畫面](./media/usage-estimated-costs/010.png)
 
-從這裡開始，您可以向下切入累積的成本摘要，以取得 [依資源的成本] 的詳細資料。 在目前的定價層中，Azure 記錄資料是以一組相同的計量計費，不論是來自 Log Analytics 或 Application Insights。 若要將成本與 Log Analytics 或 Application Insights 使用量分開，您可以在 **資源類型**上新增篩選。 若要查看所有 Application Insights 成本，請將資源類型篩選為 "microsoft. Insights/components"，並針對 Log Analytics 成本將資源類型篩選為 "operationalinsights/workspace"。 
+從這裡開始，您可以向下切入累積的成本摘要，以取得 [依資源的成本] 的詳細資料。 在目前的定價層中，Azure 記錄資料是以一組相同的計量計費，不論是來自 Log Analytics 或 Application Insights。 若要將成本與 Log Analytics 或 Application Insights 使用量分開，您可以在 **資源類型** 上新增篩選。 若要查看所有 Application Insights 成本，請將資源類型篩選為 "microsoft. Insights/components"，並針對 Log Analytics 成本將資源類型篩選為 "operationalinsights/workspace"。 
 
 您可以 [從 Azure 入口網站下載您的使用量](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)，以取得更多使用量的詳細資料。 在下載的試算表中，您可以看到每天每個 Azure 資源的使用量。 在此 Excel 試算表中，您可以藉由先篩選「計量類別」資料行來顯示「Application Insights」和「Log Analytics」，然後在「包含 microsoft.insights/components」的「執行個體識別碼」資料行上新增篩選條件，來找到您的 Application Insights 資源使用量。  由於所有 Azure 監視器元件都有單一記錄後端，因此，大部分 Application Insights 使用量都會以 Log Analytics 計量類別的計量報告。  只有舊版定價層和多重步驟 Web 測試的 Application Insights 資源，會以 Application Insights 的計量類別來報告。  使用量會顯示在 [已取用的數量] 資料行，每個項目的單位則會顯示在 [測量單位] 資料行。  有更多詳細資料可協助您[了解 Microsoft Azure 帳單](../../cost-management-billing/understand/review-individual-bill.md)。 
 
 > [!NOTE]
-> 使用**Azure 成本管理 + 計費**中樞的**成本管理**是廣泛瞭解監視成本的慣用方法。  [Log Analytics](./manage-cost-storage.md#understand-your-usage-and-estimate-costs)和[Application Insights](../app/pricing.md#understand-your-usage-and-estimate-costs)的**使用量和估計成本**體驗，可為 Azure 監視器的每個部分提供更深入的見解。
+> 使用 **Azure 成本管理 + 計費** 中樞的 **成本管理** 是廣泛瞭解監視成本的慣用方法。  [Log Analytics](./manage-cost-storage.md#understand-your-usage-and-estimate-costs)和 [Application Insights](../app/pricing.md#understand-your-usage-and-estimate-costs)的 **使用量和估計成本** 體驗，可為 Azure 監視器的每個部分提供更深入的見解。
 
 另一個用來查看您的 Azure 監視器使用量的選項，就是監視中樞的 [ **使用量和估計成本** ] 頁面。 這會顯示核心監視功能的使用方式，例如 [警示、計量、通知](https://azure.microsoft.com/pricing/details/monitor/)、 [Azure Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)和 [Azure 應用程式見解](https://azure.microsoft.com/pricing/details/application-insights/)。 客戶若是採用在 2018 年 4 月前提供的定價方案，則也會提供透過深入解析與分析供應項目購買的 Log Analytics 使用量。
 

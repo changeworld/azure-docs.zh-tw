@@ -4,14 +4,14 @@ description: 在命名空間上啟用自動擴充，以自動相應增加輸送�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1be564472011622b71b3066495748dfdbe6cc791
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86537236"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020801"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>自動相應增加 Azure 事件中樞輸送量單位
-Azure 事件中樞為可高度擴充的資料串流平台。 因此，事件中樞使用量通常會在開始使用服務之後增加。 這類使用量需要增加預先決定的[輸送量單位](event-hubs-scalability.md#throughput-units)，以調整事件中樞並處理較大的傳輸速率。 「事件中樞」的「自動擴充」**** 功能會自動增加輸送量單位數以進行相應增加，進而符合使用量需求。 增加輸送量單位可避免發生節流情況，其中：
+Azure 事件中樞為可高度擴充的資料串流平台。 因此，事件中樞使用量通常會在開始使用服務之後增加。 這類使用量需要增加預先決定的[輸送量單位](event-hubs-scalability.md#throughput-units)，以調整事件中樞並處理較大的傳輸速率。 「事件中樞」的「自動擴充」功能會自動增加輸送量單位數以進行相應增加，進而符合使用量需求。 增加輸送量單位可避免發生節流情況，其中：
 
 * 資料輸入速率會超出所設定的輸送量單位。
 * 資料輸出要求速率會超出所設定的輸送量單位。
@@ -40,7 +40,7 @@ Azure 事件中樞為可高度擴充的資料串流平台。 因此，事件中�
 
 
 #### <a name="enable-at-the-time-of-creation"></a>在建立時啟用 
-您可以**在建立事件中樞命名空間時**，啟用「自動擴充」功能：
+您可以 **在建立事件中樞命名空間時**，啟用「自動擴充」功能：
  
 ![在建立事件中樞命名空間時啟用自動擴充功能](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
 
@@ -49,18 +49,18 @@ Azure 事件中樞為可高度擴充的資料串流平台。 因此，事件中�
 #### <a name="enable-auto-inflate-for-an-existing-event-hub"></a>為現有的事件中樞啟用自動擴充功能
 您也可以依據下列指示，啟用「自動擴充」功能並修改其設定： 
  
-1. 在 [事件中樞命名空間]**** 頁面上，於 [自動擴充輸送量單位]**** 底下選取 [已停用]****。  
+1. 在 [事件中樞命名空間] 頁面上，於 [自動擴充輸送量單位] 底下選取 [已停用]。  
 
     ![在 [事件中樞命名空間] 頁面上選取輸送量單位](./media/event-hubs-auto-inflate/select-throughput-units.png)
-2. 在 [調整規模設定]**** 頁面中，選取 [啟用]**** 的核取方塊 (如果未啟用自動調整規模功能)。
+2. 在 [調整規模設定] 頁面中，選取 [啟用] 的核取方塊 (如果未啟用自動調整規模功能)。
 
     ![選取 [啟用]](./media/event-hubs-auto-inflate/scale-settings.png)
-3. 輸入輸送量單位數目**上限**，或使用捲軸來設定值。 
-4. (選擇性) 更新此頁面上半部的輸送量單位數目**下限**。 
+3. 輸入輸送量單位數目 **上限**，或使用捲軸來設定值。 
+4. (選擇性) 更新此頁面上半部的輸送量單位數目 **下限**。 
 
 
 > [!NOTE]
-> 當您套用自動擴充設定以增加輸送量單位時，「事件中樞」服務會發出診斷記錄，您可以為其提供有關輸送量增加原因與時間的相關資訊。 若要為事件中樞啟用診斷記錄，請在 Azure 入口網站中 [事件中樞] 頁面左側功能表上選取 [診斷設定]****。 如需詳細資訊，請參閱[ Azure 事件中樞設定診斷記錄](event-hubs-diagnostic-logs.md)。 
+> 當您套用自動擴充設定以增加輸送量單位時，「事件中樞」服務會發出診斷記錄，您可以為其提供有關輸送量增加原因與時間的相關資訊。 若要為事件中樞啟用診斷記錄，請在 Azure 入口網站中 [事件中樞] 頁面左側功能表上選取 [診斷設定]。 如需詳細資訊，請參閱[ Azure 事件中樞設定診斷記錄](event-hubs-diagnostic-logs.md)。 
 
 ### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本啟用自動擴充
 

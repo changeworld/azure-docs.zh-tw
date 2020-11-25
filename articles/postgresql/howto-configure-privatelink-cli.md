@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: b8aaebdd37f835201ef549e3f97e0c0b657e4fe9
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636192"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020121"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>使用 CLI 建立和管理適用於 PostgreSQL 的 Azure 資料庫單一伺服器的 Private Link
 
@@ -138,7 +138,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 1. 選取 [連線]  按鈕。 選取 [連線] 按鈕之後，隨即會開啟 [連線至虛擬機器]。
 
-1. 選取 [下載 RDP 檔案]。 Azure 會建立一個「遠端桌面通訊協定」( *.rdp* ) 檔案，並下載至您的電腦。
+1. 選取 [下載 RDP 檔案]。 Azure 會建立一個「遠端桌面通訊協定」( *.rdp*) 檔案，並下載至您的電腦。
 
 1. 開啟 *downloaded.rdp* 檔案。
 
@@ -173,15 +173,15 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 3. 使用任何可用的用戶端來測試于 postgresql 伺服器的私人連結連線。 下列範例會使用 [Azure Data studio](/sql/azure-data-studio/download?view=sql-server-ver15&preserve-view=true) 來執行操作。
 
-4. 在 [ **新增連接** ] 中，輸入或選取這項資訊：
+4. 在 [ **新增連接**] 中，輸入或選取這項資訊：
 
    | 設定 | 值 |
    | ------- | ----- |
-   | 伺服器類型| 選取 [ **于 postgresql** ]。|
+   | 伺服器類型| 選取 [ **于 postgresql**]。|
    | 伺服器名稱| 選取 *mydemopostgresserver.privatelink.postgres.database.azure.com* |
    | 使用者名稱 | 輸入 username@servername 在於 postgresql 伺服器建立期間提供的使用者名稱。 |
    |密碼 |輸入在於 postgresql 伺服器建立期間提供的密碼。 |
-   |SSL|選取 [ **必要** ]。|
+   |SSL|選取 [ **必要**]。|
    ||
 
 5. 選取 [連線]。

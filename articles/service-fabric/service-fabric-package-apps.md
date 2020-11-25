@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 11a3fdd5dbaef53af321342952f786ed8119689c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012393"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021056"
 ---
 # <a name="package-an-application"></a>封裝應用程式
 
 本文說明如何對 Service Fabric 應用程式進行封裝，並使其準備好進行部署。
 
-## <a name="package-layout"></a>封裝版面配置
+## <a name="package-layout"></a>封裝配置
 
 應用程式資訊清單、一或多個服務資訊清單及其他必要的封裝檔案必須以特定的配置組織後，才能部署到 Service Fabric 叢集。 在本文中的範例資訊清單必須組織成下列目錄結構：
 
@@ -49,7 +49,7 @@ D:\TEMP\MYAPPLICATIONTYPE
 * 設定及初始化服務可執行檔需要的環境變數。 這不僅限於透過 Service Fabric 程式設計模型撰寫的可執行檔。 例如，npm.exe 部署 node.js 應用程式，需要設定某些環境變數。
 * 透過安裝安全性憑證設定存取控制。
 
-如需有關如何設定 **SetupEntryPoint**的詳細資訊，請參閱 [設定服務安裝程式進入點的原則](service-fabric-application-runas-security.md)
+如需有關如何設定 **SetupEntryPoint** 的詳細資訊，請參閱 [設定服務安裝程式進入點的原則](service-fabric-application-runas-security.md)
 
 <a id="Package-App"></a>
 
@@ -63,7 +63,7 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ![使用 Visual Studio 封裝應用程式][vs-package-command]
 
-封裝完成時，您會在 [輸出] **** 視窗中找到封裝的位置。 當您在 Visual Studio 中部署或偵錯應用程式時，封裝步驟會自動執行。
+封裝完成時，您會在 [輸出]  視窗中找到封裝的位置。 當您在 Visual Studio 中部署或偵錯應用程式時，封裝步驟會自動執行。
 
 ### <a name="build-a-package-by-command-line"></a>透過命令列建置封裝
 

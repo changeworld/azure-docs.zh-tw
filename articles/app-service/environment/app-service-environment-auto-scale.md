@@ -8,11 +8,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 4f071c0d09fc2fa97eeea45bd82228b7eb8434a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74687288"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021651"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>自動調整和 App Service 環境 v1
 
@@ -20,14 +20,14 @@ ms.locfileid: "74687288"
 > 這篇文章是關於 App Service 環境 v1。  有較新版本的 App Service 環境，更易於使用，並且可以在功能更強大的基礎結構上執行。 若要深入瞭解新版本，請從 [App Service 環境簡介](intro.md)開始著手。
 > 
 
-Azure App Service 環境支援「自動調整」 **。 您可以根據度量或排程自動調整個別的背景工作集區。
+Azure App Service 環境支援「自動調整」 。 您可以根據度量或排程自動調整個別的背景工作集區。
 
 ![背景工作集區的自動調整選項。][intro]
 
 自動調整可將您的資源使用量最佳化，方法是透過自動增加或縮減 App Service 環境以符合您的預算和或負載設定檔。
 
 ## <a name="configure-worker-pool-autoscale"></a>設定背景工作集區自動調整
-您可以從 [背景工作集區] **** 的 [設定] 索引標籤存取自動調整功能。
+您可以從 [背景工作集區]  的 [設定] 索引標籤存取自動調整功能。
 
 ![背景工作集區的 [設定] 索引標籤。][settings-scale]
 
@@ -104,7 +104,7 @@ Frank 非常熟悉應用程式。 他們知道負載的尖峰時間是介於 9:0
 ### <a name="app-service-plan-inflation-rate"></a>App Service 方案擴大率
 設定為自動調整的 App Service 方案，就會以每小時最大的速率進行。 此速率可以根據自動調整規則上提供的值計算。
 
-了解及計算「App Service 方案擴大率」 ** 對 App Service 環境自動調整來說很重要，因為背景工作集區的調整變更並非瞬間完成。
+了解及計算「App Service 方案擴大率」  對 App Service 環境自動調整來說很重要，因為背景工作集區的調整變更並非瞬間完成。
 
 App Service 方案擴大率的計算方式如下：
 
@@ -130,7 +130,7 @@ App Service 方案擴大率的計算方式如下：
 
 生產 App Service 方案能在週間以每小時 8 個執行個體，以及在週末期間以每小時 4 個執行個體的最大速率成長。 它能夠在週間以每小時 4 個執行個體，以及在週末期間以每小時 6 個執行個體的最大速率釋出執行個體。
 
-如果在背景工作集區中裝載多個 App Service 方案，則必須將「總擴大率」 ** 計算為裝載在該背景工作集區中的所有 App Service 方案的擴大率總和。
+如果在背景工作集區中裝載多個 App Service 方案，則必須將「總擴大率」  計算為裝載在該背景工作集區中的所有 App Service 方案的擴大率總和。
 
 ![裝載於背景工作集區中的多個 App Service 方案的總擴大率計算。][ASP-Total-Inflation]
 

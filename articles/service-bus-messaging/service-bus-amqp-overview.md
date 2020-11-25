@@ -3,12 +3,12 @@ title: Azure 服務匯流排中的 AMQP 1.0 總覽
 description: 瞭解 Azure 服務匯流排如何 (AMQP) （開放式標準通訊協定）支援先進訊息佇列通訊協定。
 ms.topic: article
 ms.date: 11/20/2020
-ms.openlocfilehash: a643869d7d89b287e899b1eab89c5b9ec11856e5
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: 85943344fd8f20cf3a73af5d637b65676584f93f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95396802"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96022164"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>服務匯流排中的 AMQP 1.0 支援
 Azure 服務匯流排的雲端服務會使用 [Advanced Message 佇列通訊協定 (AMQP) 1.0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) 作為其主要的通訊方式。 Microsoft 已與產業、客戶和競爭訊息代理人的廠商合作，在過去十年來開發及發展 AMQP，並在 [OASIS AMQP 技術委員會](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)中開發新的延伸模組。 AMQP 1.0 是 ISO 和 IEC 標準 ([iso 19464:20149](https://www.iso.org/standard/64955.html)) 。 
@@ -70,20 +70,11 @@ Azure 服務匯流排中的 AMQP 1.0 支援表示您可以使用有效率的二�
 - [適用于 JavaScript 和 TypeScript 的 Azure 服務匯流排模組](https://docs.microsoft.com/javascript/api/overview/azure/service-bus?view=azure-node-latest&preserve-view=true)
 - [適用于 Python 的 Azure 服務匯流排程式庫](https://docs.microsoft.com/python/api/overview/azure/servicebus?view=azure-python&preserve-view=true)
 
+[!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
+
 此外，您可以從任何 AMQP 1.0 相容的通訊協定堆疊使用服務匯流排：
 
-| Language | 程式庫 |
-| --- | --- |
-| Java | [Apache Qpid Proton-J](https://qpid.apache.org/proton/index.html) |
-| C/C++ |[Azure UAMQP C](https://github.com/azure/azure-uamqp-c/)、 [Apache Qpid Proton-C](https://qpid.apache.org/proton/index.html) |
-| Python |[適用于 python 的 Azure uAMQP](https://github.com/azure/azure-uamqp-python/)、 [Apache Qpid Proton python](https://qpid.apache.org/releases/qpid-proton-0.32.0/proton/python/docs/overview.html) |
-| PHP | [適用于 PHP 的 Azure uAMQP](https://github.com/vsouz4/azure-uamqp-php/) |
-| Ruby | [Apache Qpid Proton Ruby](https://github.com/apache/qpid-proton/tree/master/ruby) |
-| Go | [Azure GO AMQP](https://github.com/Azure/go-amqp)， [Apache Qpid Proton Go](https://github.com/apache/qpid-proton/tree/master/go/examples)
-| C #/F #/VB | [AMQP .Net Lite](https://github.com/Azure/amqpnetlite)、 [Apache NMS AMQP](https://github.com/apache/activemq-nms-amqp)|
-| JavaScript/節點 | [瑞亞](https://github.com/grs/rhea) |
-
-**圖 2：AMQP 1.0 用戶端程式庫的資料表**
+[!INCLUDE [messaging-oss-amqp-stacks.md](../../includes/messaging-oss-amqp-stacks.md)]
 
 ## <a name="summary"></a>摘要
 * AMQP 1.0 是一個既開放又可靠的訊息通訊協定，可以用來建置跨平台的混合應用程式。 AMQP 1.0 是一項 OASIS 標準。

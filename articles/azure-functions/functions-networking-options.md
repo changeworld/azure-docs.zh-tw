@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
 ms.openlocfilehash: bed76a6f3a17332f9a1e411ff1d4efb52703f3e1
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636464"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020977"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 網路選項
 
@@ -128,7 +128,7 @@ Azure Functions 中的虛擬網路整合會使用共用基礎結構搭配 App Se
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>具有虛擬網路觸發程序的進階方案
 
-當您執行進階方案時，可以將非 HTTP 觸發程序函式連線到在虛擬網路中執行的服務。 若要這麼做，您必須啟用函式應用程式的虛擬網路觸發程序支援。 **執行時間調整監視** 設定 **可在 [** [Azure portal](https://portal.azure.com)  >  **設定函數執行時間設定** ] 下的 [Azure 入口網站] 中找到。
+當您執行進階方案時，可以將非 HTTP 觸發程序函式連線到在虛擬網路中執行的服務。 若要這麼做，您必須啟用函式應用程式的虛擬網路觸發程序支援。 **執行時間調整監視** 設定 **可在 [** [Azure portal](https://portal.azure.com)  >  **設定函數執行時間設定**] 下的 [Azure 入口網站] 中找到。
 
 :::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 
@@ -180,8 +180,8 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 ## <a name="automation"></a>自動化
 下列 Api 可讓您以程式設計方式管理區域虛擬網路整合：
 
-+ **Azure CLI** ：使用 [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) 命令來新增、列出或移除區域虛擬網路整合。  
-+ **ARM 範本** ：您可以使用 Azure Resource Manager 範本來啟用區域虛擬網路整合。 如需完整範例，請參閱 [此函數快速入門範本](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/)。
++ **Azure CLI**：使用 [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) 命令來新增、列出或移除區域虛擬網路整合。  
++ **ARM 範本**：您可以使用 Azure Resource Manager 範本來啟用區域虛擬網路整合。 如需完整範例，請參閱 [此函數快速入門範本](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/)。
 
 ## <a name="troubleshooting"></a>疑難排解
 

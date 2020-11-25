@@ -9,11 +9,11 @@ ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
 ms.openlocfilehash: 1f567b3d083853f9bb342bfad462e8545caa6480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67174412"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020229"
 ---
 ## <a name="download-the-source-code"></a>下載原始程式碼
 
@@ -62,7 +62,7 @@ git submodule foreach git pull origin master
      此指令碼也會將一組有前置詞 **PCS** 的環境變數新增到您的本機電腦。 這些環境變數會提供遠端監視的詳細資料，讓您能夠從 Azure Key Vault 資源讀取。 此 Key Vault 資源可讓遠端監視從中讀取其設定值。
 
      > [!TIP]
-     > 當腳本完成時，它也會將環境變數儲存至稱為** \<your home folder\> \\ \\ \<solution name\> env**的檔案。 您可以將這些環境變數用於未來的解決方案加速器部署。 請注意，當您執行 **docker-compose** 時，您本機電腦上設定的任何環境變數會覆寫 **services\\scripts\\local\\.env** 檔案中的值。
+     > 當腳本完成時，它也會將環境變數儲存至稱為 **\<your home folder\> \\ \\ \<solution name\> env** 的檔案。 您可以將這些環境變數用於未來的解決方案加速器部署。 請注意，當您執行 **docker-compose** 時，您本機電腦上設定的任何環境變數會覆寫 **services\\scripts\\local\\.env** 檔案中的值。
 
 1. 退出命令列環境。
 
@@ -74,6 +74,6 @@ git submodule foreach git pull origin master
 * **PCS_AAD_APPID** -AAD 應用程式識別碼
 * **PCS_AAD_APPSECRET** -AAD 應用程式密碼
 
-將會從此 Azure Key Vault 資源讀取設定值。 這些環境變數可能會儲存在部署的** \<your home folder\> \\ 電腦 \\ \<solution name\> . env**檔案中。 請注意，當您執行 **docker-compose** 時，您本機電腦上設定的環境變數會覆寫 **services\\scripts\\local\\.env** 檔案中的值。
+將會從此 Azure Key Vault 資源讀取設定值。 這些環境變數可能會儲存在部署的 **\<your home folder\> \\ 電腦 \\ \<solution name\> . env** 檔案中。 請注意，當您執行 **docker-compose** 時，您本機電腦上設定的環境變數會覆寫 **services\\scripts\\local\\.env** 檔案中的值。
 
 微服務所需的部分設定會儲存在初始部署時建立的 **Key Vault** 實例中。 Keyvault 中的對應變數應該視需要進行修改。

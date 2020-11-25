@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: kumud
 ms.openlocfilehash: 5fc565ecc1b501f52e934784695594dcfef2a83a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87047293"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020461"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>使用影片索引器 API 自訂品牌模型
 
@@ -30,7 +30,7 @@ ms.locfileid: "87047293"
 [建立品牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand)API 會建立新的自訂品牌，並將其新增至指定帳戶的自訂品牌模型。
 
 > [!NOTE]
-> 將 `enabled` 主體中的 (設定) 為 true，就會將品牌放置於影片索引子的 *包含* 清單中以進行偵測。 `enabled`如果設定為 false，就會將品牌放在*排除*清單中，因此影片索引子將不會偵測到它。
+> 將 `enabled` 主體中的 (設定) 為 true，就會將品牌放置於影片索引子的 *包含* 清單中以進行偵測。 `enabled`如果設定為 false，就會將品牌放在 *排除* 清單中，因此影片索引子將不會偵測到它。
 
 您可以在主體中設定的一些其他參數：
 
@@ -61,7 +61,7 @@ ms.locfileid: "87047293"
 
 ## <a name="delete-a-brand"></a>刪除品牌
 
-「 [刪除品牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?) API」會從指定之帳戶的自訂品牌模型中移除品牌。 此帳戶是在參數中指定 `accountId` 。 一旦呼叫成功之後，該品牌將不再位於 [包含]** 或 [排除]** 品牌清單中。
+「 [刪除品牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?) API」會從指定之帳戶的自訂品牌模型中移除品牌。 此帳戶是在參數中指定 `accountId` 。 一旦呼叫成功之後，該品牌將不再位於 [包含] 或 [排除] 品牌清單中。
 
 ### <a name="response"></a>回應
 
@@ -190,6 +190,6 @@ ms.locfileid: "87047293"
 
 成功更新品牌模型設定時，不會傳回任何內容。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [使用網站自訂品牌模型](customize-brands-model-with-website.md)

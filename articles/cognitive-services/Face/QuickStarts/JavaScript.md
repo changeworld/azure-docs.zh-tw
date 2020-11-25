@@ -9,20 +9,20 @@ ms.custom: devx-track-js
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 06aa840c3cf33c9d1b70b800d45b9b455c4d61ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f302000529e0dbf7ecce69ac9bebe77af59561ee
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858331"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96020835"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>快速入門：使用 REST API 和 JavaScript 偵測影像中的人臉
 
 在本快速入門中，您將使用 Azure Face REST API 搭配 JavaScript 來偵測影像中的人臉。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 * 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="建立 Face 資源"  target="_blank">建立 Face 資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
@@ -32,7 +32,7 @@ ms.locfileid: "91858331"
 
 ## <a name="initialize-the-html-file"></a>初始化 HTML 檔案
 
-建立新的 HTML 檔案 (detectFaces.html)**，並新增下列程式碼。
+建立新的 HTML 檔案 (detectFaces.html)，並新增下列程式碼。
 
 ```html
 <!DOCTYPE html>
@@ -45,7 +45,7 @@ ms.locfileid: "91858331"
 </html>
 ```
 
-然後，在文件的 `body` 元素內新增下列程式碼。 此程式碼會設定基本的使用者介面，內有 URL 欄位、[分析臉部]**** 按鈕、[回應] 窗格和 [影像顯示] 窗格。
+然後，在文件的 `body` 元素內新增下列程式碼。 此程式碼會設定基本的使用者介面，內有 URL 欄位、[分析臉部] 按鈕、[回應] 窗格和 [影像顯示] 窗格。
 
 :::code language="html" source="~/cognitive-services-quickstart-code/javascript/web/face/rest/detect.html" id="html_include":::
 
@@ -61,7 +61,7 @@ ms.locfileid: "91858331"
 
 ## <a name="run-the-script"></a>執行指令碼
 
-在瀏覽器中開啟 detectFaces.html**。 當您按一下 [分析臉部]**** 按鈕時，應用程式應該會顯示來自指定 URL 的影像，並印出臉部資料的 JSON 字串。
+在瀏覽器中開啟 detectFaces.html。 當您按一下 [分析臉部] 按鈕時，應用程式應該會顯示來自指定 URL 的影像，並印出臉部資料的 JSON 字串。
 
 ![GettingStartCSharpScreenshot](../Images/face-detect-javascript.png)
 

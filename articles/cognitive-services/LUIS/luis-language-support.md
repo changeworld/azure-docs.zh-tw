@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.openlocfilehash: e377f910e1c1ddda864ea312b40fe3608c166376
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1da43d0ef208d61ced6c8ca8dbc7603e0ef51155
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541385"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96021566"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 支援的語言與區域
 
@@ -28,7 +28,7 @@ LUIS 在服務內有各種不同的功能。 並非所有功能都有相同的�
 
 LUIS 可理解下列語言的語句：
 
-| Language |地區設定  |  預建網域 | 預建實體 | 片語清單建議 | **[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(情感和<br>關鍵字)|
+| Language |地區設定  |  預建網域 | 預建實體 | 片語清單建議 | **[文字分析](../text-analytics/language-support.md)<br>(情感和<br>關鍵字)|
 |--|--|:--:|:--:|:--:|:--:|
 | 英文 (美國) |`en-US` | ✔ | ✔  |✔|✔|
 | 阿拉伯文 (preview-新式標準阿拉伯文)  |`ar-AR`|-|-|-|-|
@@ -69,7 +69,7 @@ LUIS 可理解下列語言的語句：
 請參閱語音[支援的語言](../speech-service/speech-to-text.md)，以取得語音聽寫模式語言。
 
 ### <a name="bing-spell-check-supported-languages"></a>Bing 拼字檢查支援的語言
-如需支援的語言清單和狀態，請參閱 Bing 拼字檢查[支援的語言](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages)。
+如需支援的語言清單和狀態，請參閱 Bing 拼字檢查[支援的語言](../bing-spell-check/language-support.md)。
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>應用程式中的罕見或外來字
 在 `en-us` 文化特性中，LUIS 會學習辨識大部分的英文字，包括俚語。 在 `zh-cn` 文化特性中，LUIS 會學習辨識大部分的中文字元。 如果您使用 `en-us` 中的罕見字組或 `zh-cn` 中的字元，而且您發現 LUIS 似乎無法辨識該字組或字元，您可以將該字組或字元新增到[片語清單功能](luis-how-to-add-features.md)。 例如，應用程式文化特性外部的字組 (也就是外來字組) 應新增至片語清單功能。

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: ad26fe0d869a2e892a419b1732727c3ff1d1e9a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9356cbb6eb210d6745d90e8ad001917e73592cd3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88870709"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96021976"
 ---
 # <a name="about-the-speech-sdk"></a>關於語音 SDK
 
@@ -29,7 +29,7 @@ ms.locfileid: "88870709"
 
 ### <a name="speech-to-text"></a>語音轉文字
 
-[語音轉換文字](speech-to-text.md) (也稱為 *語音辨識*) 將音訊串流轉譯至您的應用程式、工具或裝置可以取用或顯示的文字。 若搭配 [Language Understanding (LUIS)](../luis/index.yml) 使用語音轉文字，即可從轉譯的語音衍生使用者意圖，以及根據語音命令執行動作。 使用 [語音翻譯](speech-translation.md) 透過單一呼叫，將語音輸入翻譯成不同的語言。 如需詳細資訊，請參閱 [語音轉換文字基本概念](speech-to-text-basics.md)。
+[語音轉換文字](speech-to-text.md) (也稱為 *語音辨識*) 將音訊串流轉譯至您的應用程式、工具或裝置可以取用或顯示的文字。 若搭配 [Language Understanding (LUIS)](../luis/index.yml) 使用語音轉文字，即可從轉譯的語音衍生使用者意圖，以及根據語音命令執行動作。 使用 [語音翻譯](speech-translation.md) 透過單一呼叫，將語音輸入翻譯成不同的語言。 如需詳細資訊，請參閱 [語音轉換文字基本概念](./get-started-speech-to-text.md)。
 
 **語音辨識 (SR) 、片語清單、意圖、轉譯和內部部署容器** 可在下列平臺上取得：
 
@@ -46,7 +46,7 @@ ms.locfileid: "88870709"
 
 [文字轉換語音](text-to-speech.md) (也稱為 *語音合成*) 將文字轉換成類似人類的合成語音。 輸入文字可以是字串常值，或使用 [語音合成標記語言 (SSML) ](speech-synthesis-markup.md)。 如需有關標準或神經語音的詳細資訊，請參閱 [文字轉換語音語言和語音支援](language-support.md#text-to-speech)。
 
-**文字轉換語音 (TTS) ** 適用于下列平臺：
+**文字轉換語音 (TTS)** 適用于下列平臺：
 
   - C + +/Windows & Linux
   - & UWP & Unity 的 c #/Windows
@@ -68,9 +68,9 @@ ms.locfileid: "88870709"
 
 #### <a name="keyword-spotting"></a>關鍵字找出
 
-語音 SDK 支援 [關鍵字找出](speech-devices-sdk-create-kws.md) 的概念。 關鍵字找出是在語音中識別關鍵字的動作，接著是在聽到關鍵字時的動作。 例如，"嗨 Cortana" 會啟用 Cortana 助理。
+語音 SDK 支援 [關鍵字找出](./custom-keyword-basics.md) 的概念。 關鍵字找出是在語音中識別關鍵字的動作，接著是在聽到關鍵字時的動作。 例如，"嗨 Cortana" 會啟用 Cortana 助理。
 
-**關鍵字找出 (KWS) ** 適用于下列平臺：
+**關鍵字找出 (KWS)** 適用于下列平臺：
 
   - C + +/Windows & Linux
   - C #/Windows & Linux
@@ -96,7 +96,7 @@ ms.locfileid: "88870709"
 
 使用 [多裝置對話](multi-device-conversation.md)時，可連接對話中的多個裝置或用戶端，以傳送以語音或文字為基礎的訊息，並輕鬆支援轉譯和轉譯。
 
-您可以在下列平臺上取得**多裝置對話**：
+您可以在下列平臺上取得 **多裝置對話**：
 
   - C + +/Windows
   - C # (Framework & .NET Core) /Windows
@@ -177,7 +177,7 @@ ms.locfileid: "88870709"
 
 [!INCLUDE [Sample source code](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [建立 Azure 免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
-* [了解如何以 C# 辨識語音](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet) (英文)
+* [了解如何以 C# 辨識語音](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet) (英文)

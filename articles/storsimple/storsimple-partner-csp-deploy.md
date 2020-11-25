@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: dc0cf718ee51e23fb749bdf57d5344977de009d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88182216"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021855"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>部署適用於雲端解決方案提供者方案的 StorSimple Virtual Array
 
@@ -29,7 +29,7 @@ ms.locfileid: "88182216"
 
 本文說明 CSP 合作夥伴如何新增客戶，或將新的訂用帳戶新增至現有的客戶，然後建立服務在 CSP 中部署 StorSimple Virtual Array。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請確定︰
 
@@ -44,15 +44,15 @@ ms.locfileid: "88182216"
 
      ![合作夥伴中心的儀表板](./media/storsimple-partner-csp-deploy/image1.png)
                               
-2. 在左窗格中，按一下 [客戶]****。 在右窗格中，按一下 [新增客戶]****。 輸入客戶的詳細資料。 按 [下一步︰訂用帳戶]**** 建立客戶訂用帳戶。
+2. 在左窗格中，按一下 [客戶]。 在右窗格中，按一下 [新增客戶]。 輸入客戶的詳細資料。 按 [下一步︰訂用帳戶] 建立客戶訂用帳戶。
 
     ![新增客戶](./media/storsimple-partner-csp-deploy/image2.png)
 
-3.  選取 [Microsoft Azure]**** 供應項目。 捲動到頁面底部，按一下 [檢閱]****。
+3.  選取 [Microsoft Azure] 供應項目。 捲動到頁面底部，按一下 [檢閱]。
 
     ![檢視訂用帳戶資訊](./media/storsimple-partner-csp-deploy/image3.png)
                               
-4. 檢閱資訊，然後按一下 [提交]****。
+4. 檢閱資訊，然後按一下 [提交]。
 
     ![提交訂用帳戶](./media/storsimple-partner-csp-deploy/image4.png)
 
@@ -60,15 +60,15 @@ ms.locfileid: "88182216"
 
     ![儲存確認](./media/storsimple-partner-csp-deploy/image5.png)
 
-6. 尋找或瀏覽至您剛才新增的客戶。 按一下 [公司名稱]**** 向下鑽研詳細資料。
+6. 尋找或瀏覽至您剛才新增的客戶。 按一下 [公司名稱] 向下鑽研詳細資料。
 
     ![搜尋客戶](./media/storsimple-partner-csp-deploy/image6.png)  
 
-7. 在左窗格中，選取 [服務管理]****。 在右窗格中的 [管理服務]**** 下，按一下 [Microsoft Azure 管理入口網站]****，以 Azure 系統管理員身分代表客戶登入。
+7. 在左窗格中，選取 [服務管理]。 在右窗格中的 [管理服務] 下，按一下 [Microsoft Azure 管理入口網站]，以 Azure 系統管理員身分代表客戶登入。
 
     ![登入 Azure 入口網站](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. 若要建立 StorSimple 裝置管理員，請按一下 [+ 新增]****，然後搜尋或瀏覽至 **StorSimple 虛擬裝置系列**。 如需詳細資訊，請移至[部署 StorSimple 裝置管理員服務](storsimple-virtual-array-manage-service.md)。
+8. 若要建立 StorSimple 裝置管理員，請按一下 [+ 新增]，然後搜尋或瀏覽至 **StorSimple 虛擬裝置系列**。 如需詳細資訊，請移至[部署 StorSimple 裝置管理員服務](storsimple-virtual-array-manage-service.md)。
 
     ![建立 StorSimple 裝置管理員服務](./media/storsimple-partner-csp-deploy/image8.png)
 
@@ -81,23 +81,23 @@ ms.locfileid: "88182216"
 
      ![合作夥伴中心的儀表板](./media/storsimple-partner-csp-deploy/image1.png)
                               
-2. 在左窗格中，按一下 [客戶]****。 尋找或瀏覽至客戶您想要新增訂用帳戶的客戶。 按一下 ![展開核取圖示](./media/storsimple-partner-csp-deploy/expand_pane_icon.png) 圖示，展開客戶公司名稱的資料列。 在詳細資料中，按一下 [新增訂用帳戶]****。
+2. 在左窗格中，按一下 [客戶]。 尋找或瀏覽至客戶您想要新增訂用帳戶的客戶。 按一下 ![展開核取圖示](./media/storsimple-partner-csp-deploy/expand_pane_icon.png) 圖示，展開客戶公司名稱的資料列。 在詳細資料中，按一下 [新增訂用帳戶]。
 
     ![客戶](./media/storsimple-partner-csp-deploy/image10.png)
 
-3. 在訂用帳戶中，檢查 **Microsoft Azure** 提供的**熱門供應項目**，然後按一下 [提交]****。 這樣會建立新的訂用帳戶。
+3. 在訂用帳戶中，檢查 **Microsoft Azure** 提供的 **熱門供應項目**，然後按一下 [提交]。 這樣會建立新的訂用帳戶。
 
     ![新增訂用帳戶](./media/storsimple-partner-csp-deploy/image11.png)
 
-6. 建立新的訂用帳戶之後，在左窗格中按一下 [<-- 客戶]****，以返回 [客戶]**** 頁面。 搜尋您剛建立訂用帳戶的客戶。 按一下 [公司名稱]**** 向下鑽研詳細資料。
+6. 建立新的訂用帳戶之後，在左窗格中按一下 [<-- 客戶]，以返回 [客戶] 頁面。 搜尋您剛建立訂用帳戶的客戶。 按一下 [公司名稱] 向下鑽研詳細資料。
 
     ![搜尋客戶](./media/storsimple-partner-csp-deploy/image6.png)  
 
-7. 在左窗格中，選取 [服務管理]****。 在右窗格中的 [管理服務]**** 下，按一下 [Microsoft Azure 管理入口網站]****，以 Azure 系統管理員身分代表客戶登入。
+7. 在左窗格中，選取 [服務管理]。 在右窗格中的 [管理服務] 下，按一下 [Microsoft Azure 管理入口網站]，以 Azure 系統管理員身分代表客戶登入。
 
     ![登入 Azure 入口網站](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. 若要建立 StorSimple 裝置管理員，請按一下 [+ 新增]****，然後搜尋或瀏覽至 **StorSimple 虛擬裝置系列**。 如需詳細資訊，請移至[部署 StorSimple 裝置管理員服務](storsimple-virtual-array-manage-service.md)。
+8. 若要建立 StorSimple 裝置管理員，請按一下 [+ 新增]，然後搜尋或瀏覽至 **StorSimple 虛擬裝置系列**。 如需詳細資訊，請移至[部署 StorSimple 裝置管理員服務](storsimple-virtual-array-manage-service.md)。
 
     ![建立 StorSimple 裝置管理員服務](./media/storsimple-partner-csp-deploy/image8.png)
 

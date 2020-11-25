@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 6c27c78bf8e3f3b8af342a14a38c9be3821d781a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758658"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020920"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>使用 Application Insights 無程式碼附加在執行時間檢測 web 應用程式
 
@@ -151,7 +151,7 @@ Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-0
 ### <a name="insufficient-permissions"></a>權限不足
   
 * 如果您在伺服器上看到有關「權限不足」的訊息，請嘗試下列操作：
-  * 在 IIS 管理員中，選取應用程式集區，開啟 [進階設定]****，並記下 [處理序模型]**** 下的身分識別。
+  * 在 IIS 管理員中，選取應用程式集區，開啟 [進階設定]，並記下 [處理序模型] 下的身分識別。
   * 在電腦的管理控制台中，將此身分識別加入至效能監試器使用者群組。
 
 ### <a name="conflict-with-systems-center-operations-manager"></a>與 Systems Center Operations Manager 衝突

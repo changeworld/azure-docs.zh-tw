@@ -12,11 +12,11 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: cba8837fc738884fc187b13083487c2ab62d25f0
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392572"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020087"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>將非 Microsoft 帳戶新增至 Microsoft Authenticator 應用程式
 
@@ -50,7 +50,7 @@ ms.locfileid: "93392572"
 
 ### <a name="add-your-google-account-to-the-app"></a>將您的 Google 帳戶新增至應用程式
 
-1. 在您電腦上的 [Google 帳戶安全性] 頁面上 (https://myaccount.google.com/security) ，移至 [ **新增更多步驟來確認它是您的** ] 區段，選擇 [從 **驗證器應用程式****設定** ] 區段。
+1. 在您電腦上的 [Google 帳戶安全性] 頁面上 (https://myaccount.google.com/security) ，移至 [**新增更多步驟來確認它是您的**] 區段，選擇 [從 **驗證器應用程式****設定**] 區段。
 
 2. 在 [從 Authenticator 應用程式取得驗證碼] 頁面上，根據您的電話類型選取 [Android] 或 [iPhone]，然後選取 [下一步]。
 
@@ -142,7 +142,7 @@ ms.locfileid: "93392572"
 
     Microsoft Authenticator 應用程式無法掃描 QR 代碼，因此您必須以手動方式輸入代碼。
 
-5. 輸入 **帳戶名稱** (例如 GitHub)，並輸入步驟 4 中的 **祕密金鑰** ，然後選取 [完成]。
+5. 輸入 **帳戶名稱** (例如 GitHub)，並輸入步驟 4 中的 **祕密金鑰**，然後選取 [完成]。
 
 6. 在電腦的 [雙因素 Authenticator] 頁面上，為您的 GitHub 帳戶輸入應用程式提供的六位數驗證碼，然後選取 [啟用]。
 

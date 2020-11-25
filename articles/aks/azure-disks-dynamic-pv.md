@@ -6,11 +6,11 @@ services: container-service
 ms.topic: article
 ms.date: 09/21/2020
 ms.openlocfilehash: ad51bfdf8c494e763921de880926b839cdb7be62
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900757"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021634"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中以動態方式建立和使用 Azure 磁碟的永續性磁碟區
 
@@ -78,7 +78,7 @@ spec:
 ```
 
 > [!TIP]
-> 若要建立使用標準儲存體的磁碟，請使用 `storageClassName: default` 而非 *managed-premium* 。
+> 若要建立使用標準儲存體的磁碟，請使用 `storageClassName: default` 而非 *managed-premium*。
 
 使用 [kubectl apply][kubectl-apply] 命令來建立並指定您的 *azure-premium.yaml* 檔案：
 
@@ -90,7 +90,7 @@ persistentvolumeclaim/azure-managed-disk created
 
 ## <a name="use-the-persistent-volume"></a>使用永續性磁碟區
 
-建立永續性磁碟區宣告，並成功佈建磁碟之後，就能建立可存取磁碟的 Pod。 下列資訊清單所建立的基本 NGINX Pod，會使用名為 *azure-managed-disk* 的永續性磁碟區宣告，在 `/mnt/azure` 路徑上掛接 Azure 磁碟。 對於 Windows Server 容器，請採用 Windows 路徑慣例來指定 *mountPath* ，例如 *'D:'* 。
+建立永續性磁碟區宣告，並成功佈建磁碟之後，就能建立可存取磁碟的 Pod。 下列資訊清單所建立的基本 NGINX Pod，會使用名為 *azure-managed-disk* 的永續性磁碟區宣告，在 `/mnt/azure` 路徑上掛接 Azure 磁碟。 對於 Windows Server 容器，請採用 Windows 路徑慣例來指定 *mountPath*，例如 *'D:'* 。
 
 建立名為 `azure-pvc-disk.yaml` 的檔案，然後將下列資訊清單複製進來。
 
@@ -176,7 +176,7 @@ $ az disk list --query '[].id | [?contains(@,`pvc-faf0f176-8b8d-11e8-923b-deb28c
 /subscriptions/<guid>/resourceGroups/MC_MYRESOURCEGROUP_MYAKSCLUSTER_EASTUS/providers/MicrosoftCompute/disks/kubernetes-dynamic-pvc-faf0f176-8b8d-11e8-923b-deb28c58d242
 ```
 
-使用磁碟識別碼，利用 [az snapshot create][az-snapshot-create] 來建立快照集磁碟。 下列範例會在與 AKS 叢集相同的資源群組 ( *MC_myResourceGroup_myAKSCluster_eastus* ) 中，建立名為 *pvcSnapshot* 的快照集。 如果您在 AKS 叢集沒有存取權的資源群組中建立快照集並還原磁碟，則您可能會遇到權限問題。
+使用磁碟識別碼，利用 [az snapshot create][az-snapshot-create] 來建立快照集磁碟。 下列範例會在與 AKS 叢集相同的資源群組 (*MC_myResourceGroup_myAKSCluster_eastus*) 中，建立名為 *pvcSnapshot* 的快照集。 如果您在 AKS 叢集沒有存取權的資源群組中建立快照集並還原磁碟，則您可能會遇到權限問題。
 
 ```azurecli-interactive
 $ az snapshot create \

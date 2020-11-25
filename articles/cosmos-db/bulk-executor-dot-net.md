@@ -10,18 +10,18 @@ ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7b97d702fffa7e65e24b8367892599b7bde5b669
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6f6994717ff4c730fb27bd26c40d199fb198e528
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092614"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96019951"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>使用大量執行程式 .NET 程式庫，在 Azure Cosmos DB 中執行大量作業
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!NOTE]
-> 本文所描述的大量執行程式程式庫是針對使用 .NET SDK 2.x 版的應用程式所維護。 針對新的應用程式，您可以使用 [.NET SDK 3.x 版](tutorial-sql-api-dotnet-bulk-import.md)直接提供的 **大量支援** ，而不需要任何外部程式庫。 
+> 本文所描述的大量執行程式程式庫是針對使用 .NET SDK 2.x 版的應用程式所維護。 針對新的應用程式，您可以使用 [.NET SDK 3.x 版](tutorial-sql-api-dotnet-bulk-import.md)直接提供的 **大量支援**，而不需要任何外部程式庫。 
 
 > 如果您目前使用大量執行程式程式庫，並打算遷移至較新 SDK 上的大量支援，請使用「 [遷移指南](how-to-migrate-from-bulk-executor-library.md) 」中的步驟來遷移您的應用程式。
 
@@ -33,7 +33,7 @@ ms.locfileid: "93092614"
 
 * 如果您還沒有安裝 Visual Studio 2019，可以下載並使用 [Visual Studio 2019 社區版](https://www.visualstudio.com/downloads/)。 請確定您在 Visual Studio 設定期間啟用「Azure 開發」。
 
-* 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+* 如果您沒有 Azure 訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)，再開始進行。
 
 * 您可以[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，無須 Azure 訂用帳戶，也無須任何費用和約定付款。 或者，您可以使用 [Azure Cosmos DB 模擬器](./local-emulator.md) 搭配 `https://localhost:8081` 端點。 [驗證要求](local-emulator.md#authenticate-requests)中會提供主索引鍵。
 
@@ -203,6 +203,6 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
   </system.diagnostics>
   ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 若要瞭解 NuGet 套件詳細資料和版本資訊，請參閱 [大量執行程式 SDK 詳細資料](sql-api-sdk-bulk-executor-dot-net.md)。

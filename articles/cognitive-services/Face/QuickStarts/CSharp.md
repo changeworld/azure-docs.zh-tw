@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 1b8bcaf283e612b3ebe6d6b7bb5660e8b3179ad3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f15fbc340aafa325f772a1fd50a2129fa5044c47
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858365"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96020869"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>快速入門：使用 Face REST API 和 C# 偵測影像中的臉部
 
@@ -23,7 +23,7 @@ ms.locfileid: "91858365"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 * 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="建立 Face 資源"  target="_blank">建立 Face 資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
@@ -33,12 +33,12 @@ ms.locfileid: "91858365"
 
 ## <a name="create-the-visual-studio-project"></a>建立 Visual Studio 專案
 
-1. 在 Visual Studio 中建立新的**主控台應用程式 (.NET Framework)** 專案，並將其命名為 **FaceDetection**。
+1. 在 Visual Studio 中建立新的 **主控台應用程式 (.NET Framework)** 專案，並將其命名為 **FaceDetection**。
 1. 如果您的解決方案中有其他專案，請選取此專案作為單一啟始專案。
 
 ## <a name="add-face-detection-code"></a>新增臉部偵測程式碼
 
-開啟新專案的 Program.cs** 檔案。 在這裡，您將新增載入影像及偵測臉部所需的程式碼。
+開啟新專案的 Program.cs 檔案。 在這裡，您將新增載入影像及偵測臉部所需的程式碼。
 
 ### <a name="include-namespaces"></a>包含命名空間
 

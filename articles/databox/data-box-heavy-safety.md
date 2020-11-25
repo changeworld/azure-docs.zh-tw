@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: alkohli
 ms.openlocfilehash: d2c7f729f4accf7c9ca212c6e4b4b5d565c3114c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563772"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021532"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box-heavy"></a>安全地安裝和操作您的 Azure Data Box Heavy
 
@@ -55,7 +55,7 @@ ms.locfileid: "90563772"
 
 ![警告圖示 ](./media/data-box-heavy-safety/warning-icon.png) ![ 電擊圖示 ](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png)![ 沒有使用者的維修零件圖示 ](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png) **警告！** 
 
-* 檢查「已接收」** 的裝置是否受損。 如果裝置主機殼已損毀，請聯絡 [Microsoft 支援服務](data-box-disk-contact-microsoft-support.md) 以取得更換。 請勿嘗試操作裝置。 
+* 檢查「已接收」的裝置是否受損。 如果裝置主機殼已損毀，請聯絡 [Microsoft 支援服務](data-box-disk-contact-microsoft-support.md) 以取得更換。 請勿嘗試操作裝置。 
 * 裝置配有防篡改螺絲。 如果您懷疑裝置無法正常運作， [Microsoft 支援服務](data-box-disk-contact-microsoft-support.md) 取得更換。 請勿嘗試維修裝置。 
 * 裝置不含使用者可自行維修的零件。 內含具危險性的電壓、電流和能階。 請勿開啟。 請將裝置寄回給 Microsoft 進行維修。
 

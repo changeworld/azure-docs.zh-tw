@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: 32b47d9d6d45ff471961f55f8159dbe85eae2dce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73888827"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020228"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>本機部署遠端監視解決方案加速器 - Docker
 
@@ -23,7 +23,7 @@ ms.locfileid: "73888827"
 
 如果您想要在本機電腦上執行 IDE 中的遠端監視解決方案加速器，請參閱[本機部署遠端監視解決方案加速器 - Visual Studio](iot-accelerators-remote-monitoring-deploy-local.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要部署遠端監視解決方案加速器所使用的 Azure 服務，您需要一個有效的 Azure 訂用帳戶。
 
@@ -90,9 +90,9 @@ docker rmi <list_of_images>
 請遵循下列步驟以啟動串流分析作業：
 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
-1. 瀏覽至為解決方案建立的**資源群組**。 當您執行 **start.cmd** 指令碼時為解決方案選擇的名稱，就是資源群組的名稱。
-1. 在資源清單中，按一下 [串流分析作業]****。
-1. 在串流分析作業 [概觀]**** 頁面上，按一下 [啟動]**** 按鈕。 接著，按一下 [啟動]**** 以立即啟動作業。
+1. 瀏覽至為解決方案建立的 **資源群組**。 當您執行 **start.cmd** 指令碼時為解決方案選擇的名稱，就是資源群組的名稱。
+1. 在資源清單中，按一下 [串流分析作業]。
+1. 在串流分析作業 [概觀] 頁面上，按一下 [啟動] 按鈕。 接著，按一下 [啟動] 以立即啟動作業。
 
 ### <a name="connect-to-the-dashboard"></a>連線至儀表板
 

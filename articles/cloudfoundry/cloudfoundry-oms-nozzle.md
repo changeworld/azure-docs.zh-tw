@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
 ms.openlocfilehash: fde0afcd37cd464b0b87e5ccd257d4a7a684eeb0
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040767"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021583"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>部署適用於 Cloud Foundry 系統監控的 Azure Log Analytics Nozzle
 
@@ -61,11 +61,11 @@ Nozzle 也需要 Loggregator Firehose 和 Cloud Controller 的存取權限。 �
 1. 在 Azure 入口網站中，搜尋 Azure Marketplace 中的服務清單，然後選取 [Log Analytics 工作區]。
 2. 選取 [建立]，然後選取下列項目的選項：
 
-   * **Log Analytics 工作區** ：輸入您工作區的名稱。
-   * **訂用帳戶** ：如果您擁有多個訂用帳戶，請選擇與 CF 部署相同的訂用帳戶。
-   * **資源群組** ：您可以建立新的資源群組，或使用與 CF 部署相同的資源群組。
-   * **位置** ：輸入位置。
-   *  以完成。
+   * **Log Analytics 工作區**：輸入您工作區的名稱。
+   * **訂用帳戶**：如果您擁有多個訂用帳戶，請選擇與 CF 部署相同的訂用帳戶。
+   * **資源群組**：您可以建立新的資源群組，或使用與 CF 部署相同的資源群組。
+   * **位置**：輸入位置。
+   * **定價層**：選取 [確定] 以完成。
 
 如需詳細資訊，請參閱[開始使用 Azure 監視器記錄](../azure-monitor/overview.md)。
 
@@ -76,13 +76,13 @@ Nozzle 也需要 Loggregator Firehose 和 Cloud Controller 的存取權限。 �
 1. 在搜尋視窗中輸入 "Cloud Foundry"，選取 [Cloud Foundry Monitoring Solution]。
 1. 這會載入 Cloud Foundry 監視解決方案範本首頁，按一下 [建立] 以啟動範本刀鋒視窗。
 1. 輸入必要參數：
-    * **訂用帳戶** ：選取 Log Analytics 工作區的 Azure 訂用帳戶，通常與 Cloud Foundry 部署相同。
-    * **資源群組** ：選取現有的資源群組，或為 Log Analytics 工作區建立一個新的資源群組。
-    * **資源群組位置** ：選取資源群組的位置。
-    * **OMS_Workspace_Name** ：如果工作區不存在，請輸入工作區名稱，範本會建立新的工作區。
-    * **OMS_Workspace_Region** ：選取工作區的位置。
-    * **OMS_Workspace_Pricing_Tier** ：選取 Log Analytics 工作區 SKU。 如需參考，請參閱[定價指引](https://azure.microsoft.com/pricing/details/log-analytics/)。
-    * **法律條款** ：按一下 [法律條款]，然後按一下 [建立] 以接受法律條款。
+    * **訂用帳戶**：選取 Log Analytics 工作區的 Azure 訂用帳戶，通常與 Cloud Foundry 部署相同。
+    * **資源群組**：選取現有的資源群組，或為 Log Analytics 工作區建立一個新的資源群組。
+    * **資源群組位置**：選取資源群組的位置。
+    * **OMS_Workspace_Name**：如果工作區不存在，請輸入工作區名稱，範本會建立新的工作區。
+    * **OMS_Workspace_Region**：選取工作區的位置。
+    * **OMS_Workspace_Pricing_Tier**：選取 Log Analytics 工作區 SKU。 如需參考，請參閱[定價指引](https://azure.microsoft.com/pricing/details/log-analytics/)。
+    * **法律條款**：按一下 [法律條款]，然後按一下 [建立] 以接受法律條款。
 1. 指定所有參數之後，按一下 [建立] 以部署範本。 部署完成時，會在 [通知] 索引標籤中顯示狀態。
 
 
@@ -100,7 +100,7 @@ Nozzle 也需要 Loggregator Firehose 和 Cloud Controller 的存取權限。 �
 
 #### <a name="sign-in-to-your-cf-deployment-as-an-admin-through-cf-cli"></a>透過 CF CLI 以管理員身分登入 CF 部署
 
-執行下列命令：
+執行以下命令：
 ```
 cf login -a https://api.${SYSTEM_DOMAIN} -u ${CF_USER} --skip-ssl-validation
 ```
@@ -124,7 +124,7 @@ uaac member add doppler.firehose ${FIREHOSE_USER}
 
 #### <a name="download-the-latest-log-analytics-nozzle-release"></a>下載最新版本的 Log Analytics Nozzle
 
-執行下列命令：
+執行以下命令：
 ```
 git clone https://github.com/Azure/oms-log-analytics-firehose-nozzle.git
 cd oms-log-analytics-firehose-nozzle
@@ -155,7 +155,7 @@ LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to Azur
 
 ### <a name="push-the-application-from-your-development-computer"></a>從開發電腦推送應用程式
 
-確認您在 oms-log-analytics-firehose-nozzle 資料夾下。 執行下列命令：
+確認您在 oms-log-analytics-firehose-nozzle 資料夾下。 執行以下命令：
 ```
 cf push
 ```
@@ -183,7 +183,7 @@ cf apps
 
 ### <a name="1-import-the-oms-view"></a>1. 匯入 OMS 視圖
 
-從 OMS 入口網站，流覽至 **View Designer** 匯  >  **入**  >  **流覽** ，然後選取其中一個 omsview 檔案。 例如，選取 Cloud Foundry.omsview  ，然後儲存檢視。 圖格隨即會顯示在 [概觀]  頁面上。 選取以查看視覺化的計量。
+從 OMS 入口網站，流覽至 **View Designer** 匯  >  **入**  >  **流覽**，然後選取其中一個 omsview 檔案。 例如，選取 Cloud Foundry.omsview，然後儲存檢視。 圖格隨即會顯示在 [概觀] 頁面上。 選取以查看視覺化的計量。
 
 您可以透過 **檢視設計工具** 來自訂這些檢視或建立新檢視。
 

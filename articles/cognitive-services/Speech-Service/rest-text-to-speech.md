@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: c7c43e02e6bdf75c9551ccdbb9dd8f75bf37a806
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77a8321ba8bac0ecaf577bce6c3c05d10508128e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534976"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96020155"
 ---
 # <a name="text-to-speech-rest-api"></a>文字轉換語音 REST API
 
@@ -34,7 +34,7 @@ ms.locfileid: "91534976"
 * 文字轉語音 REST API 需要授權標頭。 這表示需要完成權杖交換，才能存取服務。 如需詳細資訊，請參閱[驗證](#authentication)。
 
 > [!TIP]
-> 請參閱政府雲端的 Azure 政府 [檔](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure) (FairFax) 端點。
+> 請參閱政府雲端的 Azure 政府 [檔](../../azure-government/compare-azure-government-global-azure.md) (FairFax) 端點。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -58,7 +58,7 @@ ms.locfileid: "91534976"
 | 日本東部 | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 南韓中部 | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美國中北部 | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| 北歐 | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 歐洲北部 | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美國中南部 | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 東南亞 | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 英國南部 | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -222,9 +222,9 @@ Authorization: Bearer [Base64 access_token]
 
 請參閱我們的語言特定範例快速入門：
 
-* [.NET Core，C#](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)
-* [Python](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-python)
-* [Node.js](quickstart-nodejs-text-to-speech.md)
+* [.NET Core，C#](./get-started-text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)
+* [Python](./get-started-text-to-speech.md?pivots=programming-language-python)
+* [Node.js](./get-started-text-to-speech.md)
 
 ### <a name="http-status-codes"></a>HTTP 狀態碼
 
@@ -245,5 +245,5 @@ Authorization: Bearer [Base64 access_token]
 ## <a name="next-steps"></a>後續步驟
 
 - [建立 Azure 免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
-- [適用于長格式音訊的非同步合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [適用于長格式音訊的非同步合成](./long-audio-api.md)
 - [開始使用自訂語音](how-to-custom-voice.md)

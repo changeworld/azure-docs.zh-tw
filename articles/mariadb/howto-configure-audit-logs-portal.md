@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/24/2020
 ms.openlocfilehash: f1f3cda4ed9cdac6f6e03e88601b0a35d5c53faf
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533441"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021158"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>設定及存取 Azure 入口網站中的 audit 記錄
 
@@ -34,7 +34,7 @@ ms.locfileid: "94533441"
 
 1. 選取適用於 MariaDB 的 Azure 資料庫伺服器。
 
-1. 在 [ **設定** ] 區段的側邊欄中，選取 [ **伺服器參數** ]。
+1. 在 [ **設定** ] 區段的側邊欄中，選取 [ **伺服器參數**]。
     ![伺服器參數](./media/howto-configure-audit-logs-portal/server-parameters.png)
 
 1. 將 **audit_log_enabled** 參數更新為 ON。
@@ -51,7 +51,7 @@ ms.locfileid: "94533441"
 
 ## <a name="set-up-diagnostic-logs"></a>設定診斷記錄
 
-1. 在提要欄位的 [ **監視** ] 區段下，選取 [ **診斷設定** ]。
+1. 在提要欄位的 [ **監視** ] 區段下，選取 [ **診斷設定**]。
 
 1. 按一下 [+ 新增診斷設定] ![ 新增診斷設定](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
 
@@ -62,7 +62,7 @@ ms.locfileid: "94533441"
 1. 選取 "MySqlAuditLogs" 作為記錄類型。
 ![設定診斷設定](./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png)
 
-1. 當您設定好將審核記錄傳送至的資料接收器之後，您可以按一下 [ **儲存** ]。
+1. 當您設定好將審核記錄傳送至的資料接收器之後，您可以按一下 [ **儲存**]。
 ![儲存診斷設定](./media/howto-configure-audit-logs-portal/save-diagnostic-setting.png)
 
 1. 藉由在您設定的資料接收器中探索來存取審核記錄。 最多可能需要10分鐘的時間才會顯示記錄。

@@ -4,11 +4,11 @@ description: 本文說明如何管理和監視在 Azure VM 上執行的 SQL Serv
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: b0df22002521c8148cac1200e79aeb0ae5a60546
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89146516"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021498"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>管理和監視備份的 SQL Server 資料庫
 
@@ -36,11 +36,11 @@ Azure 備份會在入口網站中顯示 **備份作業** 下的所有已排程�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 在保存庫儀表板上，選取 [警示與事件]****。
+2. 在保存庫儀表板上，選取 [警示與事件]。
 
    ![選取 [警示和事件]](./media/backup-azure-sql-database/vault-menu-alerts-events.png)
 
-3. 在 [警示和事件]**** 中，選取 [備份警示]****。
+3. 在 [警示和事件] 中，選取 [備份警示]。
 
    ![選取 [備份警示]](./media/backup-azure-sql-database/backup-alerts-dashboard.png)
 
@@ -126,11 +126,11 @@ Azure 備份會在入口網站中顯示 **備份作業** 下的所有已排程�
 
   ![修改備份原則](./media/backup-azure-sql-database/modify-backup-policy-impact.png)
 
-修改原則會影響所有相關聯的備份項目，並觸發對應的**設定保護**作業。
+修改原則會影響所有相關聯的備份項目，並觸發對應的 **設定保護** 作業。
 
 ### <a name="inconsistent-policy"></a>不一致的原則
 
-有時候，修改原則作業可能會導致某些備份專案的原則版本 **不一致** 。 在觸發修改原則作業之後，針對備份項目的對應**設定保護**作業失敗時，就會發生這種情況。 這會在備份項目檢視中顯示如下：
+有時候，修改原則作業可能會導致某些備份專案的原則版本 **不一致** 。 在觸發修改原則作業之後，針對備份項目的對應 **設定保護** 作業失敗時，就會發生這種情況。 這會在備份項目檢視中顯示如下：
 
   ![不一致的原則](./media/backup-azure-sql-database/inconsistent-policy.png)
 
@@ -146,11 +146,11 @@ Azure 備份會在入口網站中顯示 **備份作業** 下的所有已排程�
 
    ![選取 [備份基礎結構]](./media/backup-azure-sql-database/backup-infrastructure-button.png)
 
-2. 在 [管理伺服器]**** 底下，選取 [受保護的伺服器]****。
+2. 在 [管理伺服器] 底下，選取 [受保護的伺服器]。
 
    ![選取 [受保護的伺服器]](./media/backup-azure-sql-database/protected-servers.png)
 
-3. 在 [受保護的伺服器]**** 中，選取要取消註冊的伺服器。 若要刪除保存庫，您必須將所有伺服器取消註冊。
+3. 在 [受保護的伺服器] 中，選取要取消註冊的伺服器。 若要刪除保存庫，您必須將所有伺服器取消註冊。
 
 4. 在受保護的伺服器上按一下滑鼠右鍵，然後選取 [ **取消註冊**]。
 
@@ -158,7 +158,7 @@ Azure 備份會在入口網站中顯示 **備份作業** 下的所有已排程�
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>在 SQL Server VM 上重新註冊擴充功能
 
-有時候，VM 上的工作負載延伸可能會因為一個原因或另一個原因而受到影響。 在這種情況下，VM 上觸發的所有作業將會開始失敗。 接著，您可能需要在 VM 上重新註冊此延伸模組。 **重新註冊**作業會重新安裝 VM 上的工作負載備份擴充功能，以繼續執行作業。 您可以在復原服務保存庫中的 [ **備份基礎結構** ] 下找到此選項。
+有時候，VM 上的工作負載延伸可能會因為一個原因或另一個原因而受到影響。 在這種情況下，VM 上觸發的所有作業將會開始失敗。 接著，您可能需要在 VM 上重新註冊此延伸模組。 **重新註冊** 作業會重新安裝 VM 上的工作負載備份擴充功能，以繼續執行作業。 您可以在復原服務保存庫中的 [ **備份基礎結構** ] 下找到此選項。
 
 ![備份基礎結構下受保護的伺服器](./media/backup-azure-sql-database/protected-servers-backup-infrastructure.png)
 

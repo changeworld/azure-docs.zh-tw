@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
 ms.openlocfilehash: c05db2d9ba184da89665a236994c851355cc2644
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127428"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019849"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>使用 Azure 串流分析 CI/CD NuGet 套件進行整合和開發 
 本文說明如何使用 Azure 串流分析 CI/CD NuGet 套件來設定持續整合和部署程式。
@@ -26,7 +26,7 @@ Nuget 套件可供使用：[Microsoft.Azure.Stream Analytics.CICD](https://www.n
 如需詳細資訊，請參閱[適用於 Visual Studio 的串流分析工具](./stream-analytics-quick-create-vs.md)。
 
 ## <a name="msbuild"></a>MSBuild
-與標準 Visual Studio MSBuild 體驗類似，若要建置專案，您有兩個選項。 您可以使用滑鼠右鍵按一下專案，然後選擇 [建置]  。 您也可以從命令列中使用 NuGet 套件中的 **MSBuild** 。
+與標準 Visual Studio MSBuild 體驗類似，若要建置專案，您有兩個選項。 您可以使用滑鼠右鍵按一下專案，然後選擇 [建置]。 您也可以從命令列中使用 NuGet 套件中的 **MSBuild**。
 ```
 ./build/msbuild /t:build [Your Project Full Path] /p:CompilerTaskAssemblyFile=Microsoft.WindowsAzure.StreamAnalytics.Common.CompileService.dll  /p:ASATargetsFilePath="[NuGet Package Local Path]\build\StreamAnalytics.targets"
 
@@ -45,7 +45,7 @@ Nuget 套件可供使用：[Microsoft.Azure.Stream Analytics.CICD](https://www.n
 parameters.json 檔案中的預設參數來自 Visual Studio 專案中的設定。 如果您想要部署到其他環境，請據以取代參數。
 
 > [!NOTE]
-> 對於所有認證，預設值都會設為 null。 部署至雲端之前，「必須」  設定這些值。
+> 對於所有認證，預設值都會設為 null。 部署至雲端之前，「必須」設定這些值。
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {

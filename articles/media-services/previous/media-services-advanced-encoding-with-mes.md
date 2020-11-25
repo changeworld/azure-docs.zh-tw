@@ -16,11 +16,11 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4288e2e955f8205f3b6551c83a5c883eecf02501
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264805"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021141"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>自訂 MES 預設值來執行進階編碼
 
@@ -264,7 +264,7 @@ ms.locfileid: "89264805"
 ## <a name="trim-a-video-clipping"></a><a id="trim_video"></a>修剪視訊 (裁剪)
 本節說明修改編碼器預設值，以裁剪或修剪其輸入為所謂的夾層檔或隨選檔的輸入視訊。 編碼器也可以用來裁剪或修剪從即時串流擷取或封存的資產 - [此部落格](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)提供詳細資料。
 
-若要修剪您的影片，您可以使用[此](media-services-mes-presets-overview.md)節記載的任何 MES 預設值，並修改 **Sources** 元素 (如下所示)。 StartTime 值必須符合輸入視訊的絕對時間戳記。 例如，如果輸入視訊的第一個畫面有 12:00:10.000 的時間戳記，則 StartTime 至少應該為 12:00:10.000 以上。 在下列範例中，我們假設輸入視訊的開始時間戳記為零。 **Sources** 應該位於預設值開頭。
+若要修剪您的影片，您可以使用 [此](media-services-mes-presets-overview.md)節記載的任何 MES 預設值，並修改 **Sources** 元素 (如下所示)。 StartTime 值必須符合輸入視訊的絕對時間戳記。 例如，如果輸入視訊的第一個畫面有 12:00:10.000 的時間戳記，則 StartTime 至少應該為 12:00:10.000 以上。 在下列範例中，我們假設輸入視訊的開始時間戳記為零。 **Sources** 應該位於預設值開頭。
 
 ### <a name="json-preset"></a><a id="json"></a>JSON 預設值
 
@@ -512,7 +512,7 @@ ms.locfileid: "89264805"
 
 Media Encoder Standard 可讓您在現有影片上疊加影像。 目前支援下列格式：png、jpg、gif 及 bmp。 下面定義的預設值為視訊疊加層的基本範例。
 
-除了定義預設檔案之外，您還必須讓媒體服務知道資產中哪個檔案是疊加影像，以及哪個檔案是您要在上面疊加影像的來源影片。 視訊檔案必須是「主要」 **** 檔案。
+除了定義預設檔案之外，您還必須讓媒體服務知道資產中哪個檔案是疊加影像，以及哪個檔案是您要在上面疊加影像的來源影片。 視訊檔案必須是「主要」  檔案。
 
 如果您使用 .NET，請將下列兩個函式加入到[此](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet)主題中定義的 .NET 範例。 **UploadMediaFilesFromFolder** 函式會上傳資料夾中的檔案 (例如，BigBuckBunny.mp4 和 Image001.png)，並將 mp4 檔案設定為資產中的主要檔案。 **EncodeWithOverlay** 函式會使用傳遞給它的自訂預設值檔案 (例如後續的預設值) 建立編碼工作。
 
@@ -1053,7 +1053,7 @@ job.GetExecutionProgressTask(CancellationToken.None).Wait();
 ```
 
 ## <a name="rotate-a-video"></a><a id="rotate_video"></a>旋轉視訊
-[媒體編碼器標準](media-services-dotnet-encode-with-media-encoder-standard.md)支援 0/90/180/270 度的旋轉角度。 預設行為是「自動」，此時它會嘗試偵測內送之視訊檔案的旋轉中繼資料並加以補償。 將以下 **Sources** 元素包含至[此](media-services-mes-presets-overview.md)節所定義的其中一個預設項目：
+[媒體編碼器標準](media-services-dotnet-encode-with-media-encoder-standard.md)支援 0/90/180/270 度的旋轉角度。 預設行為是「自動」，此時它會嘗試偵測內送之視訊檔案的旋轉中繼資料並加以補償。 將以下 **Sources** 元素包含至 [此](media-services-mes-presets-overview.md)節所定義的其中一個預設項目：
 
 ### <a name="json-preset"></a>JSON 預設值
 

@@ -4,11 +4,11 @@ description: 在本文中，您將探索如何還原在 Azure 虛擬機器上執
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.openlocfilehash: c502b7741acd343baefe5e2bf8b95cfc02e46688
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986116"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021668"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>在 Azure Vm 上還原 SAP Hana 資料庫
 
@@ -24,7 +24,7 @@ Azure 備份可以還原在 Azure VM 上執行的 SAP HANA 資料庫，如下所
 
 * 還原至特定的完整或差異備份以還原至特定復原點。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在還原資料庫之前，請注意下列事項：
 
@@ -60,8 +60,8 @@ Azure 備份可以還原在 Azure VM 上執行的 SAP HANA 資料庫，如下所
 
 若要還原，您需要下列許可權：
 
-* 您正在進行還原之保存庫中的**備份操作員**許可權。
-* 來源 VM (已備份) 的**參與者 (寫入)** 存取權。
+* 您正在進行還原之保存庫中的 **備份操作員** 許可權。
+* 來源 VM (已備份) 的 **參與者 (寫入)** 存取權。
 * **參與者 (** 將) 存取權寫入目標 VM：
   * 如果您要還原至相同的 VM，這是來源 VM。
   * 如果您要還原至替代位置，這是新的目標 VM。
@@ -90,7 +90,7 @@ Azure 備份可以還原在 Azure VM 上執行的 SAP HANA 資料庫，如下所
 
 1. 選取 **還原資料庫**
 
-1. 在 [ **還原**設定] 下，指定 (或如何) 還原資料的位置：
+1. 在 [ **還原** 設定] 下，指定 (或如何) 還原資料的位置：
 
     * **替代位置**：將資料庫還原到替代位置，並保留原始源資料庫。
 
@@ -106,31 +106,31 @@ Azure 備份可以還原在 Azure VM 上執行的 SAP HANA 資料庫，如下所
 
 1. 選取您要用來還原資料庫的 SAP Hana 主控制項名稱和實例名稱。
 1. 確認目標 SAP Hana 實例是否已準備好進行還原，方法是確保其 **備份準備就緒。** 如需詳細資訊，請參閱 [必要條件一節](#prerequisites) 。
-1. 在 [還原的 DB 名稱]**** 方塊中，輸入目標資料庫的名稱。
+1. 在 [還原的 DB 名稱] 方塊中，輸入目標資料庫的名稱。
 
     > [!NOTE]
     > 單一資料庫容器 (SDC) 還原必須遵循這些 [檢查](backup-azure-sap-hana-database-troubleshoot.md#single-container-database-sdc-restore)。
 
 1. 如果 **有相同名稱的資料庫已經存在於所選的 HANA 實例上**，請選取 [覆寫]。
-1. 選取 [確定]  。
+1. 選取 [確定]。
 
     ![還原設定-最終畫面](media/sap-hana-db-restore/restore-configuration-last.png)
 
-1. 在 [ **選取還原點**] 中，選取 [ **記錄] (時間點) ** [還原至特定時間點](#restore-to-a-specific-point-in-time)。 或者，選取 [ **Full & 差異** ] 以 [還原至特定復原點](#restore-to-a-specific-recovery-point)。
+1. 在 [ **選取還原點**] 中，選取 [ **記錄] (時間點)** [還原至特定時間點](#restore-to-a-specific-point-in-time)。 或者，選取 [ **Full & 差異** ] 以 [還原至特定復原點](#restore-to-a-specific-recovery-point)。
 
 ### <a name="restore-and-overwrite"></a>還原並覆寫資料庫
 
-1. 在 [**還原**設定] 功能表的 [**要還原的位置**] 下，選取 [**覆寫 DB**  >  **確定]**。
+1. 在 [**還原** 設定] 功能表的 [**要還原的位置**] 下，選取 [**覆寫 DB**  >  **確定]**。
 
     ![覆寫 DB](media/sap-hana-db-restore/overwrite-db.png)
 
-1. 在 [ **選取還原點**] 中，選取 [ **記錄] (時間點) ** [還原至特定時間點](#restore-to-a-specific-point-in-time)。 或者，選取 [ **Full & 差異** ] 以 [還原至特定復原點](#restore-to-a-specific-recovery-point)。
+1. 在 [ **選取還原點**] 中，選取 [ **記錄] (時間點)** [還原至特定時間點](#restore-to-a-specific-point-in-time)。 或者，選取 [ **Full & 差異** ] 以 [還原至特定復原點](#restore-to-a-specific-recovery-point)。
 
 ### <a name="restore-as-files"></a>還原為檔案
 
-若要將備份資料還原為檔案，而不是資料庫，請選擇 [ **還原為**檔案]。 一旦檔案傾印到指定的路徑，您就可以將這些檔案放到任何 SAP Hana 機器上，並在其中將檔案還原為資料庫。 因為您可以將這些檔案移至任何機器，所以您現在可以在訂用帳戶和區域之間還原資料。
+若要將備份資料還原為檔案，而不是資料庫，請選擇 [ **還原為** 檔案]。 一旦檔案傾印到指定的路徑，您就可以將這些檔案放到任何 SAP Hana 機器上，並在其中將檔案還原為資料庫。 因為您可以將這些檔案移至任何機器，所以您現在可以在訂用帳戶和區域之間還原資料。
 
-1. 在 [ **還原** 設定] 功能表中，在 [ **要還原的位置和方式**] 下，選取 [ **還原為**檔案]。
+1. 在 [ **還原** 設定] 功能表中，在 [ **要還原的位置和方式**] 下，選取 [ **還原為** 檔案]。
 1. 選取您要用來還原備份檔案的 **主機** /HANA 伺服器名稱。
 1. 在伺服器的 [ **目的地路徑**] 中，輸入在步驟2中選取之伺服器上的資料夾路徑。 這是服務將用來傾印所有必要備份檔案的位置。
 
@@ -152,7 +152,7 @@ Azure 備份可以還原在 Azure VM 上執行的 SAP HANA 資料庫，如下所
     ![選取還原點](media/sap-hana-db-restore/select-restore-point.png)
 
 1. 與所選還原點相關聯的所有備份檔案都會傾印到目的地路徑。
-1. 根據選擇的還原點類型 (**時間點**或**完整和差異**)，您會看到目的地路徑中建立一個或多個資料夾。 其中一個名為 `Data_<date and time of restore>` 的資料夾會包含完整和差異備份，而另一個名為 `Log` 的資料夾則會包含記錄備份。
+1. 根據選擇的還原點類型 (**時間點** 或 **完整和差異**)，您會看到目的地路徑中建立一個或多個資料夾。 其中一個名為 `Data_<date and time of restore>` 的資料夾會包含完整和差異備份，而另一個名為 `Log` 的資料夾則會包含記錄備份。
 1. 將這些還原的檔案移至您要在其中將檔案還原為資料庫的 SAP Hana 伺服器。
 1. 接著，依照下列步驟執行：
     1. 使用下列命令，在儲存備份檔案的資料夾/目錄上設定權限：
@@ -193,11 +193,11 @@ Azure 備份可以還原在 Azure VM 上執行的 SAP HANA 資料庫，如下所
 
         * `<DatabaseName>` - 您想要還原的新資料庫名稱或現有資料庫名稱
         * `<Timestamp>` - 時間點還原的確切時間戳記
-        * `<DatabaseName@HostName>` - 用其備份來進行還原的資料庫名稱，以及此資料庫所在的**主機**/SAP Hana 伺服器名稱。 `USING SOURCE <DatabaseName@HostName>` 選項會指定資料備份 (用於還原) 源自 SID 或名稱與目標 SAP Hana 機器不同的資料庫。 因此，它不需要針對在進行備份的相同 HANA 伺服器上進行的還原進行指定。
-        * `<PathToGeneratedCatalogInStep3>`-**步驟 C**中所產生之類別目錄檔案的路徑
+        * `<DatabaseName@HostName>` - 用其備份來進行還原的資料庫名稱，以及此資料庫所在的 **主機**/SAP Hana 伺服器名稱。 `USING SOURCE <DatabaseName@HostName>` 選項會指定資料備份 (用於還原) 源自 SID 或名稱與目標 SAP Hana 機器不同的資料庫。 因此，它不需要針對在進行備份的相同 HANA 伺服器上進行的還原進行指定。
+        * `<PathToGeneratedCatalogInStep3>`-**步驟 C** 中所產生之類別目錄檔案的路徑
         * `<DataFileDir>` - 包含完整備份的資料夾
         * `<LogFilesDir>` - 包含記錄備份的資料夾
-        * `<BackupIdFromJsonFile>`-在**步驟 C**中解壓縮的**BackupId**
+        * `<BackupIdFromJsonFile>`-在 **步驟 C** 中解壓縮的 **BackupId**
 
     * 若要還原至特定的完整或差異備份：
 
@@ -209,21 +209,21 @@ Azure 備份可以還原在 Azure VM 上執行的 SAP HANA 資料庫，如下所
 
         * `<DatabaseName>` - 您想要還原的新資料庫或現有資料庫的名稱
         * `<Timestamp>` - 時間點還原的確切時間戳記
-        * `<DatabaseName@HostName>` - 用其備份來進行還原的資料庫名稱，以及此資料庫所在的**主機**/SAP Hana 伺服器名稱。 `USING SOURCE <DatabaseName@HostName>` 選項會指定資料備份 (用於還原) 源自 SID 或名稱與目標 SAP Hana 機器不同的資料庫。 因此，您不需要針對相同 HANA 伺服器 (備份會從中建立) 上執行的還原加以指定。
-        * `<PathToGeneratedCatalogInStep3>`-**步驟 C**中所產生之類別目錄檔案的路徑
+        * `<DatabaseName@HostName>` - 用其備份來進行還原的資料庫名稱，以及此資料庫所在的 **主機**/SAP Hana 伺服器名稱。 `USING SOURCE <DatabaseName@HostName>` 選項會指定資料備份 (用於還原) 源自 SID 或名稱與目標 SAP Hana 機器不同的資料庫。 因此，您不需要針對相同 HANA 伺服器 (備份會從中建立) 上執行的還原加以指定。
+        * `<PathToGeneratedCatalogInStep3>`-**步驟 C** 中所產生之類別目錄檔案的路徑
         * `<DataFileDir>` - 包含完整備份的資料夾
         * `<LogFilesDir>` - 包含記錄備份的資料夾
-        * `<BackupIdFromJsonFile>`-在**步驟 C**中解壓縮的**BackupId**
+        * `<BackupIdFromJsonFile>`-在 **步驟 C** 中解壓縮的 **BackupId**
 
 ### <a name="restore-to-a-specific-point-in-time"></a>還原至特定時間點
 
-如果您已選取 [記錄 (時間點)]**** 作為還原類型，請執行下列動作：
+如果您已選取 [記錄 (時間點)] 作為還原類型，請執行下列動作：
 
 1. 從記錄圖形中選取復原點，然後選取 **[確定]** 以選擇還原時間點。
 
     ![還原點](media/sap-hana-db-restore/restore-point.png)
 
-1. 在 [還原]**** 功能表上，選取 [還原]**** 以啟動還原作業。
+1. 在 [還原] 功能表上，選取 [還原] 以啟動還原作業。
 
     ![選取還原](media/sap-hana-db-restore/restore-restore.png)
 
@@ -233,13 +233,13 @@ Azure 備份可以還原在 Azure VM 上執行的 SAP HANA 資料庫，如下所
 
 ### <a name="restore-to-a-specific-recovery-point"></a>還原至特定復原點
 
-如果您已選取 [完整和差異]**** 作為還原類型，請執行下列動作：
+如果您已選取 [完整和差異] 作為還原類型，請執行下列動作：
 
 1. 從清單中選取復原點，然後選取 **[確定]** 以選擇還原時間點。
 
     ![還原特定復原點](media/sap-hana-db-restore/specific-recovery-point.png)
 
-1. 在 [還原]**** 功能表上，選取 [還原]**** 以啟動還原作業。
+1. 在 [還原] 功能表上，選取 [還原] 以啟動還原作業。
 
     ![啟動還原作業](media/sap-hana-db-restore/restore-specific.png)
 
@@ -262,7 +262,7 @@ Azure 備份可以還原在 Azure VM 上執行的 SAP HANA 資料庫，如下所
 
 如果已啟用 CRR，您可以在次要區域中查看備份專案。
 
-1. 從入口網站移至 [復原**服務保存庫**  >  **備份專案**]。
+1. 從入口網站移至 [復原 **服務保存庫**  >  **備份專案**]。
 1. 選取 **次要區域** 以查看次要區域中的專案。
 
 >[!NOTE]
@@ -290,7 +290,7 @@ Azure 備份可以還原在 Azure VM 上執行的 SAP HANA 資料庫，如下所
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>監視次要區域還原作業
 
-1. 從入口網站移至復原**服務保存庫**  >  **備份作業**
+1. 從入口網站移至復原 **服務保存庫**  >  **備份作業**
 1. 選取 **次要區域** 以查看次要區域中的專案。
 
     ![已篩選的備份作業](./media/sap-hana-db-restore/backup-jobs-secondary-region.png)

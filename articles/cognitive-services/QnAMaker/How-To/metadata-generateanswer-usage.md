@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 85abefc8437936ffaedc4811bdd9bed0be32786f
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375496"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020682"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>使用 GenerateAnswer API 和中繼資料取得答案
 
@@ -46,15 +46,15 @@ QnA Maker 可讓您將中繼資料（以索引鍵和值組的形式）新增至�
 
 若要取得端點詳細資料：
 1. 登入 [https://www.qnamaker.ai](https://www.qnamaker.ai)。
-1. 在 [ **我的知識庫** ] 中，選取您知識庫的 [視圖程式 **代碼** ]。
+1. 在 [ **我的知識庫**] 中，選取您知識庫的 [視圖程式 **代碼** ]。
     ![我的知識庫螢幕擷取畫面](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
 1. 取得 GenerateAnswer 端點詳細資料。
 
-    # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
+    # <a name="qna-maker-ga-stable-release"></a>[QnA Maker 正式發行 (穩定版本)](#tab/v1)
 
     ![端點詳細資料的螢幕擷取畫面](../media/qnamaker-how-to-metadata-usage/view-code.png)
 
-    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
+    # <a name="qna-maker-managed-preview-release"></a>[受控 QnA Maker (預覽版本)](#tab/v2)
 
     ![受控端點詳細資料的螢幕擷取畫面](../media/qnamaker-how-to-metadata-usage/view-code-managed.png)
 

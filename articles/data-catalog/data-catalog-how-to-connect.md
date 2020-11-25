@@ -7,11 +7,11 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 5c8c545f01eb0df53ce9677b7db6f931b4d21af9
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151898"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021923"
 ---
 # <a name="how-to-connect-to-data-sources"></a>如何連接到資料來源
 ## <a name="introduction"></a>簡介
@@ -21,7 +21,7 @@ ms.locfileid: "92151898"
 資料來源在註冊期間， **Azure 資料目錄** 會收到有關資料來源的中繼資料。 此中繼資料包含資料來源位置的詳細資料。 位置的詳細資料會因資料來源而異，但永遠會包含連接所需的資訊。 例如，SQL Server 資料表的位置包含伺服器名稱、資料庫名稱、結構描述名稱和資料表名稱，而 SQL Server Reporting Services 報表的位置包含伺服器名稱和報表的路徑。 其他資料來源類型的位置，則會反映結構與來源系統的功能。
 
 ## <a name="integrated-client-tools"></a>整合式用戶端工具
-若要連接到資料來源，最簡單的方式就是使用 [開啟於...] 功能表 (位於 **Azure 資料目錄**入口網站)。 這個功能表會顯示一份選項清單，可供您連接到所選取的資料資產。
+若要連接到資料來源，最簡單的方式就是使用 [開啟於...] 功能表 (位於 **Azure 資料目錄** 入口網站)。 這個功能表會顯示一份選項清單，可供您連接到所選取的資料資產。
 使用預設的並排顯示檢視時，此功能表位於每個磚上。
 
  ![從資料資產磚以 Excel 開啟 SQL Server 資料表](./media/data-catalog-how-to-connect/data-catalog-how-to-connect1.png)
@@ -43,11 +43,11 @@ ms.locfileid: "92151898"
 | 報表管理員 |http:// |請參閱 [SQL Server Reporting Services 的瀏覽器需求](/sql/reporting-services/browser-support-for-reporting-services-and-power-view) |
 
 ## <a name="your-data-your-tools"></a>您的資料與工具
-功能表中可用的選項取決於目前選取的資料資產的類型。 當然，並非所有可能的工具都將包含於 [開啟於...] 功能表中，但仍能使用任何用戶端工具輕鬆連接至資料來源。 在 **Azure 資料目錄**入口網站中選取資料資產時，完整的位置會顯示於屬性窗格中。
+功能表中可用的選項取決於目前選取的資料資產的類型。 當然，並非所有可能的工具都將包含於 [開啟於...] 功能表中，但仍能使用任何用戶端工具輕鬆連接至資料來源。 在 **Azure 資料目錄** 入口網站中選取資料資產時，完整的位置會顯示於屬性窗格中。
 
  ![SQL Server 資料表的連接資訊](./media/data-catalog-how-to-connect/data-catalog-how-to-connect3.png)
 
-連接資訊的詳細資料會因資料來源的類型而異，但是入口網站中所包含的資訊提供您所需的一切，讓您可以使用任何用戶端工具連接到資料來源。 使用者可以複製他們使用 **Azure 資料目錄**所找到之資料來源的連接詳細資料，讓他們能夠使用他們選擇的工具來處理資料。
+連接資訊的詳細資料會因資料來源的類型而異，但是入口網站中所包含的資訊提供您所需的一切，讓您可以使用任何用戶端工具連接到資料來源。 使用者可以複製他們使用 **Azure 資料目錄** 所找到之資料來源的連接詳細資料，讓他們能夠使用他們選擇的工具來處理資料。
 
 ## <a name="connecting-and-data-source-permissions"></a>連接和資料來源的權限
 雖然 **Azure 資料目錄** 可讓資料來源變成可探索，資料本身的存取權仍受到資料來源擁有者或系統管理員的控制。 在 **Azure 資料目錄** 中探索資料來源，並不會提供使用者任何權限以存取資料來源本身。
@@ -57,7 +57,7 @@ ms.locfileid: "92151898"
  ![具有所提供之要求存取指示的連接資訊](./media/data-catalog-how-to-connect/data-catalog-how-to-connect4.png)
 
 ## <a name="summary"></a>摘要
-使用 **Azure 資料目錄**註冊資料來源，即可藉由將資料來源的結構性和描述性中繼資料複製到目錄服務內，使其變成可探索的資料。 資料來源一經註冊且變成可探索之後，使用者就能從 **Azure 資料目錄**入口網站的 [開啟於...] 功能表，或使用他們選擇的資料工具，連接到資料來源。
+使用 **Azure 資料目錄** 註冊資料來源，即可藉由將資料來源的結構性和描述性中繼資料複製到目錄服務內，使其變成可探索的資料。 資料來源一經註冊且變成可探索之後，使用者就能從 **Azure 資料目錄** 入口網站的 [開啟於...] 功能表，或使用他們選擇的資料工具，連接到資料來源。
 
 ## <a name="see-also"></a>另請參閱
 * [開始使用 Azure 資料目錄](data-catalog-get-started.md) 教學課程，取得如何連線至資料來源的逐步詳細資料。
