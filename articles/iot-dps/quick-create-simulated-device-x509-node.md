@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: f4d2a5e10db77e9ec9d06e3bcc73552bda280152
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fe5279725a3d01001b44074eca8656e88d778cab
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323935"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968157"
 ---
 # <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入門：使用適用於 IoT 中樞裝置佈建服務的 Node.js 裝置 SDK 來建立及佈建 X.509 模擬裝置
 
@@ -44,7 +44,7 @@ ms.locfileid: "91323935"
 4. 確定 [OpenSSL](https://www.openssl.org/) 已安裝在電腦上，並已新增至命令視窗可存取的環境變數。 此程式庫可從來源建置並安裝，或從[第三方](https://wiki.openssl.org/index.php/Binaries) (例如[這個](https://sourceforge.net/projects/openssl/)) 下載並安裝。 
 
     > [!NOTE]
-    > 如果您已建立_根_、_中繼_和 (或) _分葉_ X.509 憑證，您可以略過此步驟和後續有關於憑證產生的所有步驟。
+    > 如果您已建立 _根_、_中繼_ 和 (或) _分葉_ X.509 憑證，您可以略過此步驟和後續有關於憑證產生的所有步驟。
     >
 
 ## <a name="create-a-self-signed-x509-device-certificate-and-individual-enrollment-entry"></a>建立自我簽署的 X.509 裝置憑證和個別的註冊項目
@@ -76,7 +76,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
     npm install
     ```
 
-3. 使用您自己的_憑證名稱_執行指令碼，以建立_分葉_ X.509 憑證。 分葉憑證的通用名稱會成為[註冊識別碼](https://docs.microsoft.com/azure/iot-dps/concepts-device#registration-id)，因此請務必一律使用小寫英數字元與連字號。
+3. 使用您自己的 _憑證名稱_ 執行指令碼，以建立 _分葉_ X.509 憑證。 分葉憑證的通用名稱會成為[註冊識別碼](./concepts-service.md#registration-id)，因此請務必一律使用小寫英數字元與連字號。
 
     ```cmd/sh
     node create_test_cert.js device {certificate-name}
@@ -92,7 +92,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
    - 您可以選擇性地提供下列資訊：
      - 選取與您的佈建服務連結的 IoT 中樞。
      - 輸入唯一的裝置識別碼。 替您的裝置命名時，務必避免使用敏感性資料。 
-     - 使用裝置所需的初始組態更新**初始裝置對應項狀態**。
+     - 使用裝置所需的初始組態更新 **初始裝置對應項狀態**。
      - 完成後，按 [儲存]  按鈕。 
 
      [![在入口網站中新增 X.509 證明的個別註冊](./media/quick-create-simulated-device-x509-node/device-enrollment.png)](./media/quick-create-simulated-device-x509-node/device-enrollment.png#lightbox)
@@ -101,13 +101,13 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 
 ## <a name="simulate-the-device"></a>模擬裝置
 
-[Azure IoT 中樞 Node.js 裝置 SDK](https://github.com/Azure/azure-iot-sdk-node) 可讓您輕鬆模擬裝置。 如需詳細資訊，請參閱[裝置概念](https://docs.microsoft.com/azure/iot-dps/concepts-device)。
+[Azure IoT 中樞 Node.js 裝置 SDK](https://github.com/Azure/azure-iot-sdk-node) 可讓您輕鬆模擬裝置。 如需詳細資訊，請參閱[裝置概念](./concepts-service.md)。
 
 1. 在 Azure 入口網站中，選取裝置佈建服務的 [概觀]  刀鋒視窗，並記下 [全域裝置端點]  和 [識別碼範圍]  值。
 
     ![從入口網站刀鋒視窗擷取裝置佈建服務端點資訊](./media/quick-create-simulated-device-x509-node/extract-dps-endpoints.png) 
 
-2. 將您的_憑證_和_金鑰_複製到範例資料夾。
+2. 將您的 _憑證_ 和 _金鑰_ 複製到範例資料夾。
 
     ```cmd/sh
     copy .\{certificate-name}_cert.pem ..\device\samples\{certificate-name}_cert.pem
@@ -137,7 +137,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 
     ![已向 IoT 中樞註冊裝置](./media/quick-create-simulated-device-x509-node/hubregistration.png) 
 
-    如果您在裝置的註冊項目中變更了*初始裝置對應項狀態* (變更自預設值)，它即可從中樞提取所需的對應項狀態並採取適當的動作。 如需詳細資訊，請參閱[了解和使用 Azure IoT 中樞的裝置對應項](../iot-hub/iot-hub-devguide-device-twins.md)。
+    如果您在裝置的註冊項目中變更了 *初始裝置對應項狀態* (變更自預設值)，它即可從中樞提取所需的對應項狀態並採取適當的動作。 如需詳細資訊，請參閱[了解和使用 Azure IoT 中樞的裝置對應項](../iot-hub/iot-hub-devguide-device-twins.md)。
 
 
 ## <a name="clean-up-resources"></a>清除資源

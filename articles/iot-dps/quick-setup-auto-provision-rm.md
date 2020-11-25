@@ -8,22 +8,22 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 91e4e7de73d820c345b2973896d07d3479e49f9e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 59b68730710de189d690c367e2c04e3a433c9af2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748086"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964740"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本設定 IoT 中樞裝置佈建服務
 
-您可以使用 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)，以程式設計方式設定佈建裝置所需的 Azure 雲端資源。 下列步驟說明如何使用 Azure Resource Manager 範本來建立 IoT 中樞和新的 IoT 中樞裝置佈建服務，以及將這兩項服務連結在一起。 本快速入門使用 [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) 來執行建立資源群組及部署範本所需的程式設計步驟，但您可以輕鬆使用 [Azure 入口網站](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)、.NET、Ruby 或其他程式設計語言來執行這些步驟及部署您的範本。 
+您可以使用 [Azure Resource Manager](../azure-resource-manager/management/overview.md)，以程式設計方式設定佈建裝置所需的 Azure 雲端資源。 下列步驟說明如何使用 Azure Resource Manager 範本來建立 IoT 中樞和新的 IoT 中樞裝置佈建服務，以及將這兩項服務連結在一起。 本快速入門使用 [Azure CLI](../azure-resource-manager/templates/deploy-cli.md) 來執行建立資源群組及部署範本所需的程式設計步驟，但您可以輕鬆使用 [Azure 入口網站](../azure-resource-manager/templates/deploy-portal.md)、[PowerShell](../azure-resource-manager/templates/deploy-powershell.md)、.NET、Ruby 或其他程式設計語言來執行這些步驟及部署您的範本。 
 
 
 ## <a name="prerequisites"></a>Prerequisites
 
 - 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- 此快速入門需要您在本機執行 Azure CLI。 您必須安裝 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級 CLI，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+- 此快速入門需要您在本機執行 Azure CLI。 您必須安裝 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級 CLI，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 
 ## <a name="sign-in-to-azure-and-create-a-resource-group"></a>登入 Azure 並建立資源群組
@@ -113,7 +113,7 @@ ms.locfileid: "92748086"
 
    ```
 
-4. 若要建立 IoT 中樞，請將下列幾行新增至 **resources** 集合。 JSON 會指定建立 IoT 中樞所需的最小屬性。 **name** 和 **location** 值會以參數的形式從另一個檔案傳入。 若要深入了解您可以針對範本中的 IoT 中樞指定的屬性，請參閱 [Microsoft.Devices/IotHubs 範本參考](https://docs.microsoft.com/azure/templates/microsoft.devices/iothubs)。
+4. 若要建立 IoT 中樞，請將下列幾行新增至 **resources** 集合。 JSON 會指定建立 IoT 中樞所需的最小屬性。 **name** 和 **location** 值會以參數的形式從另一個檔案傳入。 若要深入了解您可以針對範本中的 IoT 中樞指定的屬性，請參閱 [Microsoft.Devices/IotHubs 範本參考](/azure/templates/microsoft.devices/iothubs)。
 
    ```json
         {
@@ -133,9 +133,9 @@ ms.locfileid: "92748086"
 
    ``` 
 
-5. 若要建立佈建服務，請將下列幾行新增至 **resources** 集合中的 IoT 中樞規格之後。 佈建服務的 **name** 和 **location** 會以參數的形式傳入。 **iotHubs** 集合會指定要連結至佈建服務的 IoT 中樞。 您至少必須指定每個已連結 IoT 中樞的 **connectionString** 和 **location** 屬性。 您也可以設定每個 IoT 中樞的屬性 (例如 **allocationWeight** 和 **applyAllocationPolicy** )，以及佈建服務本身的屬性 (例如 **allocationPolicy** 和 **authorizationPolicies** )。 若要深入了解，請參閱 [Microsoft.Devices/provisioningServices 範本參考](https://docs.microsoft.com/azure/templates/microsoft.devices/provisioningservices)。
+5. 若要建立佈建服務，請將下列幾行新增至 **resources** 集合中的 IoT 中樞規格之後。 佈建服務的 **name** 和 **location** 會以參數的形式傳入。 **iotHubs** 集合會指定要連結至佈建服務的 IoT 中樞。 您至少必須指定每個已連結 IoT 中樞的 **connectionString** 和 **location** 屬性。 您也可以設定每個 IoT 中樞的屬性 (例如 **allocationWeight** 和 **applyAllocationPolicy**)，以及佈建服務本身的屬性 (例如 **allocationPolicy** 和 **authorizationPolicies**)。 若要深入了解，請參閱 [Microsoft.Devices/provisioningServices 範本參考](/azure/templates/microsoft.devices/provisioningservices)。
 
-   **dependsOn** 屬性用來確保 Resource Manager 會先建立 IoT 中樞，再建立佈建服務。 此範本需要 IoT 中樞的連接字串，以指定其與佈建服務的連結，因此必須先建立中樞與其索引鍵。 此範本會使用 **concat** 和 **listkeys** 之類的函式，從參數化變數建立連接字串。 若要深入了解，請參閱 [Azure Resource Manager 範本函式](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions)。
+   **dependsOn** 屬性用來確保 Resource Manager 會先建立 IoT 中樞，再建立佈建服務。 此範本需要 IoT 中樞的連接字串，以指定其與佈建服務的連結，因此必須先建立中樞與其索引鍵。 此範本會使用 **concat** 和 **listkeys** 之類的函式，從參數化變數建立連接字串。 若要深入了解，請參閱 [Azure Resource Manager 範本函式](../azure-resource-manager/templates/template-functions.md)。
 
    ```json
         {
@@ -300,7 +300,7 @@ ms.locfileid: "92748086"
 
 請使用下列 Azure CLI 命令來部署您的範本，並確認部署。
 
-1. 若要部署您的範本，請瀏覽至包含範本和參數檔案的資料夾，然後執行下列[命令開始進行部署](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create&preserve-view=true)：
+1. 若要部署您的範本，請瀏覽至包含範本和參數檔案的資料夾，然後執行下列[命令開始進行部署](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create&preserve-view=true)：
     
     ```azurecli
      az group deployment create -g {your resource group name} --template-file template.json --parameters @parameters.json
@@ -311,7 +311,7 @@ ms.locfileid: "92748086"
    ![佈建輸出](./media/quick-setup-auto-provision-rm/output.png) 
 
 
-2. 若要確認您的部署，請執行下列[命令以列出資源](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list&preserve-view=true)，並在輸出中尋找新的佈建服務和 IoT 中樞：
+2. 若要確認您的部署，請執行下列[命令以列出資源](/cli/azure/resource?view=azure-cli-latest#az-resource-list&preserve-view=true)，並在輸出中尋找新的佈建服務和 IoT 中樞：
 
     ```azurecli
      az resource list -g {your resource group name}
@@ -351,13 +351,13 @@ az group delete --name {your resource group name}
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-[lnk-CLI-install]: https://docs.microsoft.com/cli/azure/install-az-cli2
-[lnk-login-command]: https://docs.microsoft.com/cli/azure/get-started-with-az-cli2
-[lnk-az-account-command]: https://docs.microsoft.com/cli/azure/account
-[lnk-az-register-command]: https://docs.microsoft.com/cli/azure/provider
-[lnk-az-addcomponent-command]: https://docs.microsoft.com/cli/azure/component
-[lnk-az-resource-command]: https://docs.microsoft.com/cli/azure/resource
-[lnk-az-iot-command]: https://docs.microsoft.com/cli/azure/iot
+[lnk-CLI-install]: /cli/azure/install-az-cli2
+[lnk-login-command]: /cli/azure/get-started-with-az-cli2
+[lnk-az-account-command]: /cli/azure/account
+[lnk-az-register-command]: /cli/azure/provider
+[lnk-az-addcomponent-command]: /cli/azure/component
+[lnk-az-resource-command]: /cli/azure/resource
+[lnk-az-iot-command]: /cli/azure/iot
 [lnk-iot-pricing]: https://azure.microsoft.com/pricing/details/iot-hub/
 [lnk-devguide]: iot-hub-devguide.md
-[lnk-portal]: iot-hub-create-through-portal.md 
+[lnk-portal]: iot-hub-create-through-portal.md

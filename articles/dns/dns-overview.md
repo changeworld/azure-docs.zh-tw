@@ -6,18 +6,18 @@ ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
 ms.author: rohink
-ms.openlocfilehash: d59f166897674e9dcff8086b8f5c906605155ee3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5df2c2f686a1993dcd25d5391d5b553f2b42d937
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87924269"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965641"
 ---
 # <a name="what-is-azure-dns"></a>什麼是 Azure DNS？
 
 Azure DNS 是 DNS 網域的主機服務，採用 Microsoft Azure 基礎結構來提供名稱解析。 只要將您的網域裝載於 Azure，就可以像管理其他 Azure 服務一樣，使用相同的認證、API、工具和計費方式來管理 DNS 記錄。
 
-您無法使用 Azure DNS 來購買網域名稱。 如果支付年費，則可以使用 [App Service 網域](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain#buy-the-domain)或第三方網域名稱註冊機構來購買網域名稱。 然後，便可以在 Azure DNS 中裝載您的網域以管理記錄。 如需詳細資訊，請參閱[將網域委派給 Azure DNS](dns-domain-delegation.md)。
+您無法使用 Azure DNS 來購買網域名稱。 如果支付年費，則可以使用 [App Service 網域](../app-service/manage-custom-dns-buy-domain.md#buy-the-domain)或第三方網域名稱註冊機構來購買網域名稱。 然後，便可以在 Azure DNS 中裝載您的網域以管理記錄。 如需詳細資訊，請參閱[將網域委派給 Azure DNS](dns-domain-delegation.md)。
 
 Azure DNS 包含下列功能。
 
@@ -29,11 +29,11 @@ Azure DNS 中的 DNS 網域裝載於 Azure 的 DNS 名稱伺服器全球網路�
 
  Azure DNS 以 Azure Resource Manager 為基礎，可提供下功能：
 
-* [Azure 角色型存取控制 (Azure RBAC)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)，用以控制哪些人能存取組織的特定動作。
+* [Azure 角色型存取控制 (Azure RBAC)](../azure-resource-manager/management/overview.md)，用以控制哪些人能存取組織的特定動作。
 
-* [活動記錄](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)，用以監視組織中的使用者修改資源的情形，或在進行疑難排解時找出錯誤。
+* [活動記錄](../azure-resource-manager/management/overview.md)，用以監視組織中的使用者修改資源的情形，或在進行疑難排解時找出錯誤。
 
-* [資源鎖定](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)，用以鎖定訂用帳戶、資源群組或資源。 鎖定可避免組織中的其他使用者不小心刪除或修改重要資源。
+* [資源鎖定](../azure-resource-manager/management/lock-resources.md)，用以鎖定訂用帳戶、資源群組或資源。 鎖定可避免組織中的其他使用者不小心刪除或修改重要資源。
 
 如需詳細資訊，請參閱[如何保護 DNS 區域和記錄](dns-protect-zones-recordsets.md)。 
 
@@ -67,6 +67,6 @@ Azure DNS 支援別名記錄集。 您可以使用別名記錄集以參考 Azure
 
 * 若要了解 DNS 區域和記錄，請參閱[DNS 區域和記錄概觀](dns-zones-records.md)。
 
-* 若要了解如何在 Azure DNS 中建立區域，請參閱[建立 DNS 區域](./dns-getstarted-create-dnszone-portal.md)。
+* 若要了解如何在 Azure DNS 中建立區域，請參閱[建立 DNS 區域](./dns-getstarted-portal.md)。
 
 * 如需有關 Azure DNS 的常見問題集，請參閱 [Azure DNS 常見問題集](dns-faq.md)。

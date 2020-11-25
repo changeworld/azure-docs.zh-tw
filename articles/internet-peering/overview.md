@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: overview
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 576bc3e37711851acd7d6c7ac811a10e40080710
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 34d340881e4f612544f4b3d68d3c1f3da598cab3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "75908923"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023423"
 ---
 # <a name="internet-peering-overview"></a>網際網路對等互連概觀
 
@@ -41,7 +41,7 @@ ms.locfileid: "75908923"
 * 可追蹤您所有連線的狀態和頻寬資料。
 * 您可以使用相同的訂用帳戶來存取您的 Azure 雲端服務。
 
-如果您已建立與 Microsoft 的對等互連，則稱為**舊版對等互連**。 您可以選擇以 Azure 資源的形式管理這類對等互連，以充分發揮上述優勢。 若要提交新的對等互連要求，或將舊版對等互連轉換成 Azure 資源，請參考下方的**後續步驟**一節中的連結。
+如果您已建立與 Microsoft 的對等互連，則稱為 **舊版對等互連**。 您可以選擇以 Azure 資源的形式管理這類對等互連，以充分發揮上述優勢。 若要提交新的對等互連要求，或將舊版對等互連轉換成 Azure 資源，請參考下方的 **後續步驟** 一節中的連結。
 
 ## <a name="peering-policy"></a>對等互連原則
 Microsoft 具有選擇性、但通常會開啟的對等互連原則。 對等的選擇會以效能、功能，以及可互蒙其利為原則，並且受限於特定技術、商業和法律需求。 如需詳細資訊，請參閱[對等互連原則](policy.md)。
@@ -53,4 +53,4 @@ Microsoft 具有選擇性、但通常會開啟的對等互連原則。 對等的
 
 * 若要了解與 Microsoft 的直接對等互連的設定步驟，請遵循[直接對等互連逐步解說](walkthrough-direct-all.md)
 * 若要了解與 Microsoft 的交換對等互連的設定步驟，請遵循[交換對等互連逐步解說](walkthrough-exchange-all.md)
-* 了解 Azure 的一些其他重要[網路功能](https://docs.microsoft.com/azure/networking/networking-overview)。
+* 了解 Azure 的一些其他重要[網路功能](../networking/networking-overview.md)。

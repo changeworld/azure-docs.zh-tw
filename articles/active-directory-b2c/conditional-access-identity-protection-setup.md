@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb585e2ccf8c8ed071b5156961adf48d4e4b108d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2472183673e5f06f5664a306a69d14c2eaf5f82d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309778"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949763"
 ---
 # <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>在 Azure AD B2C 中設定 Identity Protection 和條件式存取
 
@@ -26,7 +26,7 @@ Identity Protection 可為 Azure AD B2C 租用戶提供持續的風險偵測。 
 ## <a name="prerequisites"></a>先決條件
 
 - 您的 Azure AD B2C 租用戶必須[連結至 Azure AD 訂用帳戶](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription)。
-- 需要有 Azure AD B2C Premium P2，才能使用登入和以使用者風險為基礎的條件式存取。 如有必要，[將 Azure AD B2C 定價層變更為 Premium P2](https://aka.ms/exid-pricing-tier)。 
+- 需要有 Azure AD B2C Premium P2，才能使用登入和以使用者風險為基礎的條件式存取。 如有必要，[將 Azure AD B2C 定價層變更為 Premium P2](./billing.md)。 
 - 若要在 B2C 租用戶中管理 Identity Protection 和條件式存取，您需要已獲派全域管理員角色或安全性管理員角色的帳戶。
 - 若要在租用戶中使用這些功能，您必須先切換至 Azure AD B2C Premium P2 定價層。
 
@@ -136,8 +136,8 @@ Azure AD B2C 目前支援下列風險偵測：
 
 6. 檢閱過去 7 天的稽核活動。 包含下列活動類型：
 
-   - **評估條件式存取原則** ：此稽核記錄項目表示在驗證期間執行了條件式存取評估。
-   - **補救使用者** ：此項目表示使用者符合條件式存取原則的授與或需求，而此活動已向風險引擎回報，以降低 (緩和) 使用者的風險。
+   - **評估條件式存取原則**：此稽核記錄項目表示在驗證期間執行了條件式存取評估。
+   - **補救使用者**：此項目表示使用者符合條件式存取原則的授與或需求，而此活動已向風險引擎回報，以降低 (緩和) 使用者的風險。
 
 7. 在清單中選取 [評估條件式存取原則] 記錄項目，以開啟 [活動詳細資料：稽核記錄] 頁面，其中顯示稽核記錄識別碼，以及 [其他詳細資料] 區段中的這項資訊：
 

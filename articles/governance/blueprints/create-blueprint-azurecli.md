@@ -3,12 +3,12 @@ title: 快速入門：使用 Azure CLI 建立藍圖
 description: 在此快速入門中，您將在 Azure CLI 中使用 Azure 藍圖建立、定義及部署成品。
 ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 790e23897a24ea06565572163b8226af88e0bb7c
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 88ccd3fe6271a79d201007954e7997b68d2dc69b
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057955"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920554"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>快速入門：使用 Azure CLI 定義及指派 Azure 藍圖
 
@@ -49,9 +49,9 @@ ms.locfileid: "92057955"
 定義合規性標準模式的第一個步驟，即是以可用的資源規劃藍圖。 我們將建立名為 'MyBlueprint' 的藍圖，以設定訂用帳戶的角色和原則指派。 然後，我們將新增資源群組、ARM 範本，以及資源群組的角色指派。
 
 > [!NOTE]
-> 使用 Azure CLI 時，會先建立「藍圖」物件。 對於要新增的具有參數的每個_成品_，需要在初始_藍圖_上預先定義參數。
+> 使用 Azure CLI 時，會先建立「藍圖」物件。 對於要新增的具有參數的每個 _成品_，需要在初始 _藍圖_ 上預先定義參數。
 
-1. 建立初始_藍圖_物件。 **parameters** 參數會接受一個 JSON 檔案，其中包含所有藍圖層級參數。 這些參數會在指派期間設定，並且供後續步驟中新增的成品使用。
+1. 建立初始 _藍圖_ 物件。 **parameters** 參數會接受一個 JSON 檔案，其中包含所有藍圖層級參數。 這些參數會在指派期間設定，並且供後續步驟中新增的成品使用。
 
    - JSON 檔案 - blueprintparms.json
 
@@ -116,7 +116,7 @@ ms.locfileid: "92057955"
 
      > [!NOTE]
      > 匯入藍圖定義時，請使用檔案名稱 _blueprint.json_。
-     > 呼叫 [az blueprint import](/cli/azure/ext/blueprint/blueprint#ext-blueprint-az-blueprint-import) 時，會使用這個檔案名稱。
+     > 呼叫 [az blueprint import](/cli/azure/ext/blueprint/blueprint#ext_blueprint_az_blueprint_import) 時，會使用這個檔案名稱。
 
      根據預設，藍圖物件會建立在預設訂用帳戶中。 若要指定管理群組，請使用參數 **managementgroup**。 若要指定訂用帳戶，請使用參數 **subscription**。
 
@@ -129,7 +129,7 @@ ms.locfileid: "92057955"
       --description 'Contains the resource template deployment and a role assignment.'
    ```
 
-1. 在訂用帳戶中新增角色指派。 在下列範例中，授與指定角色的主體身分識別是設定給藍圖指派期間設定的參數。 此範例使用 GUID 為 `b24988ac-6180-42a0-ab88-20f7382dd24c` 的_參與者_內建角色。
+1. 在訂用帳戶中新增角色指派。 在下列範例中，授與指定角色的主體身分識別是設定給藍圖指派期間設定的參數。 此範例使用 GUID 為 `b24988ac-6180-42a0-ab88-20f7382dd24c` 的 _參與者_ 內建角色。
 
    ```azurecli-interactive
    az blueprint artifact role create \
@@ -276,7 +276,7 @@ ms.locfileid: "92057955"
         --resource-group-art 'storageRG'
      ```
 
-1. 在資源群組下新增角色指派。 類似於先前的角色指派項目，下列範例為**擁有者**角色使用定義識別碼，並為它提供藍圖的不同參數。 此範例使用 GUID 為 `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` 的_擁有者_內建角色。
+1. 在資源群組下新增角色指派。 類似於先前的角色指派項目，下列範例為 **擁有者** 角色使用定義識別碼，並為它提供藍圖的不同參數。 此範例使用 GUID 為 `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` 的 _擁有者_ 內建角色。
 
    ```azurecli-interactive
    az blueprint artifact role create \
@@ -356,7 +356,7 @@ az blueprint publish --blueprint-name 'MyBlueprint' --version '{BlueprintVersion
         --parameters blueprintAssignment.json
      ```
 
-     **使用者指派的受控識別**可位於使用者指派藍圖具有權限的任何訂用帳戶和資源群組中。
+     **使用者指派的受控識別** 可位於使用者指派藍圖具有權限的任何訂用帳戶和資源群組中。
 
      > [!IMPORTANT]
      > Azure 藍圖不會管理使用者指派的受控識別。 使用者需負責指派足夠的角色和權限，否則藍圖指派將會失敗。

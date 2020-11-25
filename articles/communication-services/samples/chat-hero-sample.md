@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8349654650ff0c85fb7c9c1af6ab5dabc4f5c3ac
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: fc757e1310369c48de24c0cc9253c668ca27495c
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677416"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888567"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>開始使用群組聊天 Hero 範例
 
@@ -36,7 +36,7 @@ Azure 通訊服務的 **群組聊天 Hero 範例** 會示範如何使用通訊�
 
 ## <a name="overview"></a>概觀
 
-此範例同時包含用戶端應用程式和伺服器端應用程式。 **用戶端應用程式** 是使用 Microsoft Fluent UI 架構的 React/Redux Web 應用程式。 此應用程式會將要求傳送至 ASP.NET Core 的 **伺服器端應用程式** ，以協助用戶端應用程式連線至 Azure。 
+此範例同時包含用戶端應用程式和伺服器端應用程式。 **用戶端應用程式** 是使用 Microsoft Fluent UI 架構的 React/Redux Web 應用程式。 此應用程式會將要求傳送至 ASP.NET Core 的 **伺服器端應用程式**，以協助用戶端應用程式連線至 Azure。 
 
 範例如下所示：
 
@@ -52,9 +52,9 @@ Azure 通訊服務的 **群組聊天 Hero 範例** 會示範如何使用通訊�
 
 主要聊天畫面的元件：
 
-- **主要聊天區域** ：這是使用者可以傳送和接收訊息的核心聊天體驗。 若要傳送訊息，您可以使用輸入區域，然後按 Enter 鍵 (或使用 [傳送] 按鈕)。 接收的核心訊息會依具有正確名稱和表情的寄件者分類。 您會在聊天區域中看到兩種類型的通知：1) 當使用者輸入時輸入通知，2) 傳送及讀取訊息的通知。
-- **標頭** ：使用者會在這個位置看到聊天對話標題，以及用來切換參與者和設定側邊欄的控制項，還有一個用來結束聊天工作階段的離開按鈕。
-- **側邊欄** ：使用標頭中的控制項進行切換時，會在此處顯示參與者和設定資訊。 參與者側邊欄包含聊天中的參與者清單，以及邀請參與者加入聊天工作階段的連結。 設定側邊欄可讓您設定聊天對話標題。 
+- **主要聊天區域**：這是使用者可以傳送和接收訊息的核心聊天體驗。 若要傳送訊息，您可以使用輸入區域，然後按 Enter 鍵 (或使用 [傳送] 按鈕)。 接收的核心訊息會依具有正確名稱和表情的寄件者分類。 您會在聊天區域中看到兩種類型的通知：1) 當使用者輸入時輸入通知，2) 傳送及讀取訊息的通知。
+- **標頭**：使用者會在這個位置看到聊天對話標題，以及用來切換參與者和設定側邊欄的控制項，還有一個用來結束聊天工作階段的離開按鈕。
+- **側邊欄**：使用標頭中的控制項進行切換時，會在此處顯示參與者和設定資訊。 參與者側邊欄包含聊天中的參與者清單，以及邀請參與者加入聊天工作階段的連結。 設定側邊欄可讓您設定聊天對話標題。 
 
 您可以在下面找到有關設定範例的必要條件及步驟的詳細資訊。
 
@@ -64,7 +64,7 @@ Azure 通訊服務的 **群組聊天 Hero 範例** 會示範如何使用通訊�
 - [Node.js (8.11.2 及更新版本)](https://nodejs.org/en/download/)
 - [Visual Studio (2017 及更新版本)](https://visualstudio.microsoft.com/vs/)
 - [.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (請務必安裝與您 Visual Studio 執行個體 (32 與 64 位元) 對應的版本)
-- 建立 Azure 通訊服務資源。 如需詳細資訊，請參閱[建立 Azure 通訊資源](../quickstarts/create-communication-resource.md)。 您必須在本快速入門中記錄您的資源 **連接字串** 。
+- 建立 Azure 通訊服務資源。 如需詳細資訊，請參閱[建立 Azure 通訊資源](../quickstarts/create-communication-resource.md)。 您必須在本快速入門中記錄您的資源 **連接字串**。
 
 ## <a name="locally-deploying-the-service--client-app"></a>在本機部署服務與用戶端應用程式
 
@@ -118,4 +118,4 @@ Azure 通訊服務的 **群組聊天 Hero 範例** 會示範如何使用通訊�
 - [Redux](https://redux.js.org/) - 用戶端狀態管理
 - [FluentUI](https://aka.ms/fluent-ui) - Microsoft 支援的 UI 程式庫
 - [React](https://reactjs.org/) - 用來建置使用者介面的程式庫
-- [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true) - 用來建置 Web 應用程式的架構
+- [ASP.NET Core](/aspnet/core/introduction-to-aspnet-core?preserve-view=true&view=aspnetcore-3.1) - 用來建置 Web 應用程式的架構

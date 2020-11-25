@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 872d1f43f1e9dc180e41a2bf625ca18b74522b40
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 14f17c6716fe98a11d03e8d1021bcdb1058fe671
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409505"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968106"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>快速入門：使用 C# 服務 SDK 向 IoT 中樞裝置佈建服務註冊 TPM 裝置
 
@@ -47,7 +47,7 @@ ms.locfileid: "91409505"
 
 ## <a name="create-the-individual-enrollment-sample"></a>建立個別註冊範例
 
-本節將說明如何建立 .NET Core 主控台應用程式，以將 TPM 裝置的個別註冊新增至您的佈建服務。 進行一些修改後，您也可以遵循下列步驟來建立 [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) 主控台應用程式以新增個別註冊。 若要深入了解如何使用 IoT Core 進行開發，請參閱 [Windows IoT Core 開發人員文件](https://docs.microsoft.com/windows/iot-core/)。
+本節將說明如何建立 .NET Core 主控台應用程式，以將 TPM 裝置的個別註冊新增至您的佈建服務。 進行一些修改後，您也可以遵循下列步驟來建立 [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) 主控台應用程式以新增個別註冊。 若要深入了解如何使用 IoT Core 進行開發，請參閱 [Windows IoT Core 開發人員文件](/windows/iot-core/)。
 
 1. 開啟 Visual Studio，然後選取 [建立新專案]  。 在 [建立新專案]  中，針對 C# 選擇 [主控台應用程式 (.NET Core)]  專案範本，然後選取 [下一步]  。
 

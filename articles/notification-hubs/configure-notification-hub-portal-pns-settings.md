@@ -12,12 +12,12 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9c75ccaa05457f13697d1a26dbc8fd2f6720a751
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 5dd1044895ba55d1fbc6be7f4f4a2d7f615daa16
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517847"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887258"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>快速入門：設定通知中樞中的推播通知
 
@@ -107,6 +107,8 @@ Azure 通知中樞提供易於使用並可相應放大的推播引擎。使用�
 使用 [az notification-hub credential](/cli/azure/ext/notification-hub/notification-hub/credential) 命令取得其他平台的 Azure CLI 參考。
 
 如需將通知傳送至 Android 應用程式的詳細資訊，請參閱[使用 Firebase 將推播通知傳送至 Android 裝置](notification-hubs-android-push-notification-google-fcm-get-started.md)。
+
+---
 
 ## <a name="windows-push-notification-service"></a>Windows 推播通知服務
 

@@ -5,20 +5,18 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c7d41d889692856a9818aacd265e67b0c2d3d1ad
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 6d0d559579e841553e04c26bf4dcc78934de3e95
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422856"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920197"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>使用命令列工具將 Azure Functions 連線到 Azure 儲存體
 
 在本文中，您將整合 Azure 儲存體佇列與您在上一篇快速入門文章中建立的函式和儲存體帳戶。 您可以使用 *輸出繫結* 將 HTTP 要求中的資料寫入至佇列中的訊息，以完成這項整合。 完成本文的作業，並不會在先前的快速入門收取的幾美分以外產生額外的費用。 若要深入了解繫結，請參閱 [Azure Functions 觸發程序和繫結概念](functions-triggers-bindings.md)。
 
 ## <a name="configure-your-local-environment"></a>設定您的本機環境
-
-開始之前，您必須先完成[快速入門：從命令列建立 Azure Functions 專案][previous-quickstart]。 如果您已在該文章結束時清除資源，請重新執行這些步驟以在 Azure 中重新建立函式應用程式和相關資源。
 
 ::: zone pivot="programming-language-csharp"  
 開始之前，您必須先完成[快速入門：從命令列建立 Azure Functions 專案](create-first-function-cli-csharp.md)。 如果您已在該文章結束時清除資源，請重新執行這些步驟以在 Azure 中重新建立函式應用程式和相關資源。  

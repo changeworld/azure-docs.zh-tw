@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 799c46ad2715e1edd3d2fba24a8350fd2608d3d8
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: c872c2a2799eee3ae9e39653b0046b70ca5d7e8b
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233928"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887530"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>開始使用群組通話 Hero 範例
 
@@ -34,7 +34,7 @@ Azure 通訊服務的 **群組通話 Hero 範例** 會示範如何使用通訊�
 
 ## <a name="overview"></a>概觀
 
-此範例同時包含用戶端應用程式和伺服器端應用程式。 **用戶端應用程式** 是使用 Microsoft Fluent UI 架構的 React/Redux Web 應用程式。 此應用程式會將要求傳送至 ASP.NET Core 的 **伺服器端應用程式** ，以協助用戶端應用程式連線至 Azure。 
+此範例同時包含用戶端應用程式和伺服器端應用程式。 **用戶端應用程式** 是使用 Microsoft Fluent UI 架構的 React/Redux Web 應用程式。 此應用程式會將要求傳送至 ASP.NET Core 的 **伺服器端應用程式**，以協助用戶端應用程式連線至 Azure。 
 
 範例如下所示：
 
@@ -50,9 +50,9 @@ Azure 通訊服務的 **群組通話 Hero 範例** 會示範如何使用通訊�
 
 主要通話畫面的元件：
 
-1. **媒體庫** ：顯示參與者的主要階段。 如果參與者已啟用其相機，此處會顯示其影片摘要。 每個參與者都有個別圖格，其中顯示他們的顯示名稱和影片串流 (如果有的話)
-2. **標頭** ：這是主要通話控制項所在的位置，可切換設定和參與者側邊欄、開啟/關閉影片和混合功能、共用畫面及離開通話。
-3. **側邊欄** ：使用標頭上的控制項進行切換時，此處會顯示參與者和設定資訊。 您可以使用右上角的 [X] 來關閉該元件。 參與者側邊欄會顯示參與者清單，以及邀請更多使用者加入聊天的連結。 [設定] 側邊欄可讓您設定麥克風和相機設定。
+1. **媒體庫**：顯示參與者的主要階段。 如果參與者已啟用其相機，此處會顯示其影片摘要。 每個參與者都有個別圖格，其中顯示他們的顯示名稱和影片串流 (如果有的話)
+2. **標頭**：這是主要通話控制項所在的位置，可切換設定和參與者側邊欄、開啟/關閉影片和混合功能、共用畫面及離開通話。
+3. **側邊欄**：使用標頭上的控制項進行切換時，此處會顯示參與者和設定資訊。 您可以使用右上角的 [X] 來關閉該元件。 參與者側邊欄會顯示參與者清單，以及邀請更多使用者加入聊天的連結。 [設定] 側邊欄可讓您設定麥克風和相機設定。
 
 您可以在下面找到有關設定範例的必要條件及步驟的詳細資訊。
 
@@ -62,7 +62,7 @@ Azure 通訊服務的 **群組通話 Hero 範例** 會示範如何使用通訊�
 - [Node.js (12.18.4 及更新版本)](https://nodejs.org/en/download/)
 - [Visual Studio (2019 及更新版本)](https://visualstudio.microsoft.com/vs/)
 - [.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (請務必安裝與您 Visual Studio 執行個體 (32 與 64 位元) 對應的版本)
-- 建立 Azure 通訊服務資源。 如需詳細資訊，請參閱[建立 Azure 通訊資源](../quickstarts/create-communication-resource.md)。 您必須在本快速入門中記錄您的資源 **連接字串** 。
+- 建立 Azure 通訊服務資源。 如需詳細資訊，請參閱[建立 Azure 通訊資源](../quickstarts/create-communication-resource.md)。 您必須在本快速入門中記錄您的資源 **連接字串**。
 
 ## <a name="locally-deploy-the-service--client-applications"></a>在本機部署服務與用戶端應用程式
 
@@ -116,4 +116,4 @@ Azure 通訊服務的 **群組通話 Hero 範例** 會示範如何使用通訊�
 - [Redux](https://redux.js.org/) - 用戶端狀態管理
 - [FluentUI](https://aka.ms/fluent-ui) - Microsoft 支援的 UI 程式庫
 - [React](https://reactjs.org/) - 用來建置使用者介面的程式庫
-- [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true) - 用來建置 Web 應用程式的架構
+- [ASP.NET Core](/aspnet/core/introduction-to-aspnet-core?preserve-view=true&view=aspnetcore-3.1) - 用來建置 Web 應用程式的架構

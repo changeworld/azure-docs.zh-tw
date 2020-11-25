@@ -8,12 +8,12 @@ ms.author: dademath
 ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: d4ef8baa123f805d380b14fa24abff65903cb41d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: daf2d675bbbee324769b6e1e8d8d34587d37c72f
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943655"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886614"
 ---
 ## <a name="prerequisites"></a>必要條件
 
@@ -37,7 +37,7 @@ ms.locfileid: "90943655"
 
 ### <a name="azure-functions-set-up"></a>設定 Azure Functions
 
-首先，我們要設定 Azure 函式的基本結構。 您可以在這裡找到設定的逐步指示：[使用 Visual Studio Code 建立函式](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript)
+首先，我們要設定 Azure 函式的基本結構。 您可以在這裡找到設定的逐步指示：[使用 Visual Studio Code 建立函式](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript)
 
 我們的 Azure 函式需要下列設定：
 
@@ -46,7 +46,7 @@ ms.locfileid: "90943655"
 - 授權層級：匿名 (如果您偏好使用不同的授權模型，可於稍後切換)
 - 函式名稱：使用者定義
 
-依照上述設定的 [Azure Functions 指示](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript)操作後，您在 Visual Studio Code 中應該會有 Azure 函式的專案，且有包含函式本身的 `index.js` 檔案。 此檔案內的程式碼應如下所示：
+依照上述設定的 [Azure Functions 指示](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript)操作後，您在 Visual Studio Code 中應該會有 Azure 函式的專案，且有包含函式本身的 `index.js` 檔案。 此檔案內的程式碼應如下所示：
 
 ```javascript
 
@@ -128,15 +128,15 @@ module.exports = async function (context, req) {
 
 ## <a name="test-the-azure-function"></a>測試 Azure 函式
 
-使用 `F5` 在本機執行 Azure 函式。 這會在本機初始化 Azure 函式，並使其可透過下列方式存取：`http://localhost:7071/api/FUNCTION_NAME`。 查看關於[在本機執行](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript#run-the-function-locally)的其他文件
+使用 `F5` 在本機執行 Azure 函式。 這會在本機初始化 Azure 函式，並使其可透過下列方式存取：`http://localhost:7071/api/FUNCTION_NAME`。 查看關於[在本機執行](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#run-the-function-locally)的其他文件
 
 在您的瀏覽器上開啟 URL，您應該會看到回應本文，以及通訊使用者識別碼、權杖，和權杖的到期日。
 
-:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="信任的服務架構圖":::
+:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="此螢幕擷取畫面顯示已建立 Azure 函式的回應範例。":::
 
 ## <a name="deploy-the-function-to-azure"></a>將函式部署至 Azure
 
-若要部署您的 Azure 函式，您可以依照[逐步指示](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript#sign-in-to-azure)操作
+若要部署您的 Azure 函式，您可以依照[逐步指示](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#sign-in-to-azure)操作
 
 一般而言，您將需要：
 1. 從 Visual Studio 登入 Azure
@@ -151,4 +151,4 @@ module.exports = async function (context, req) {
 
 以滑鼠右鍵按一下 Visual Studio Code 上的函式，並複製函式 URL，以找出 URL。
 
-如需[執行 Azure 函式](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript#run-the-function-in-azure)的詳細資訊
+如需[執行 Azure 函式](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#run-the-function-in-azure)的詳細資訊

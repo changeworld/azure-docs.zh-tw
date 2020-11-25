@@ -1,15 +1,15 @@
 ---
 title: 快速入門：使用 JavaScript 建立管理群組
 description: 在本快速入門中，您會使用 JavaScript 來建立管理群組，以將您的資源組織成資源階層。
-ms.date: 09/30/2020
+ms.date: 11/18/2020
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 965e4b8f81a26cab8f6e34cab3e51d6a97f5a6a6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c1b800f150cebacf8d17785feb1bded5189f1574
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676235"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886595"
 ---
 # <a name="quickstart-create-a-management-group-with-javascript"></a>快速入門：使用 JavaScript 建立管理群組
 
@@ -71,7 +71,7 @@ ms.locfileid: "92676235"
        const createMG = async () => {
           const credentials = await authenticator.interactiveLogin();
           const client = new managementGroups.ManagementGroupsAPI(credentials);
-          const result = await client.createOrUpdate(
+          const result = await client.managementGroups.createOrUpdate(
              groupId: argv.groupID,
              {
                  displayName: argv.displayName
@@ -90,7 +90,7 @@ ms.locfileid: "92676235"
    node index.js --groupID "<NEW_MG_GROUP_ID>" --displayName "<NEW_MG_FRIENDLY_NAME>"
    ```
 
-   請務必將每個權杖 `<>` 預留位置分別取代為您的 _管理群組識別碼_ 和 _管理群組易記名稱_ 。
+   請務必將每個權杖 `<>` 預留位置分別取代為您的 _管理群組識別碼_ 和 _管理群組易記名稱_。
 
    當指令碼嘗試進行驗證時，終端機中會顯示類似下列訊息的訊息：
 

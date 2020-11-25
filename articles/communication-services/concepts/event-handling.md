@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 67c701946eedf85176b3d14b09d3e723c4c74285
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: e661b99e3c5028f40ea69ddedc22c7ee2895acec
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072113"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888720"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Azure 通訊服務中的事件處理
 
@@ -22,13 +22,13 @@ ms.locfileid: "92072113"
 
 Azure 通訊服務與 [Azure 事件方格](https://azure.microsoft.com/services/event-grid/)整合，以可靠、可擴充且安全的方式傳遞即時事件通知。 本文的目的是要協助您設定應用程式來接聽通訊服務事件。 例如，您可能想要更新資料庫、建立工作項目，並在每次由與您的通訊服務資源相關聯的電話號碼收到 SMS 訊息時傳遞推播通知。
 
-Azure 事件方格是一個完全受控的事件路由服務，使用發佈-訂閱模型。 事件方格內建 Azure 服務的支援，例如 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) 和 [Azure Logic Apps](https://docs.microsoft.com/azure/azure-functions/functions-overview)。 可以使用 Webhook 將事件警示傳遞至非 Azure 服務。 如需事件方格所支援的事件處理常式完整清單，請參閱 [Azure 事件方格簡介](https://docs.microsoft.com/azure/event-grid/overview)。
+Azure 事件方格是一個完全受控的事件路由服務，使用發佈-訂閱模型。 事件方格內建 Azure 服務的支援，例如 [Azure Functions](../../azure-functions/functions-overview.md) 和 [Azure Logic Apps](../../azure-functions/functions-overview.md)。 可以使用 Webhook 將事件警示傳遞至非 Azure 服務。 如需事件方格所支援的事件處理常式完整清單，請參閱 [Azure 事件方格簡介](../../event-grid/overview.md)。
 
 :::image type="content" source="https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png" alt-text="顯示 Azure 事件方格事件模型的圖表。":::
 
 ## <a name="events-types"></a>事件類型
 
-Event Grid 使用[事件訂閱](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions)將事件訊息路由至訂閱者。 
+Event Grid 使用[事件訂閱](../../event-grid/concepts.md#event-subscriptions)將事件訊息路由至訂閱者。 
 
 Azure 通訊服務會發出下列事件類型：
 
@@ -50,7 +50,7 @@ Azure 通訊服務會發出下列事件類型：
 
 ## <a name="event-subjects"></a>事件主旨
 
-所有通訊服務事件的 `subject` 欄位都會識別該事件的目標使用者、電話號碼或實體。 常見的前置詞是用來允許簡單[事件方格篩選](https://docs.microsoft.com/azure/event-grid/event-filtering)。
+所有通訊服務事件的 `subject` 欄位都會識別該事件的目標使用者、電話號碼或實體。 常見的前置詞是用來允許簡單[事件方格篩選](../../event-grid/event-filtering.md)。
 
 | 主旨前置詞                              | 通訊服務實體 |
 | ------------------------------------------- | ---------------------------- |
@@ -351,6 +351,6 @@ Azure 通訊服務會發出下列事件類型：
 
 ## <a name="next-steps"></a>下一步
 
-* 如需 Azure Event Grid 的簡介，請參閱[什麼是 Event Grid？](https://docs.microsoft.com/azure/event-grid/overview)
-* 如需 Azure 事件方格概念的簡介，請參閱[事件方格中的概念？](https://docs.microsoft.com/azure/event-grid/concepts)
-* 如需 Azure 事件方格系統主題的簡介，請參閱 [Azure 事件方格中的系統主題？](https://docs.microsoft.com/azure/event-grid/system-topics)
+* 如需 Azure Event Grid 的簡介，請參閱[什麼是 Event Grid？](../../event-grid/overview.md)
+* 如需 Azure 事件方格概念的簡介，請參閱[事件方格中的概念？](../../event-grid/concepts.md)
+* 如需 Azure 事件方格系統主題的簡介，請參閱 [Azure 事件方格中的系統主題？](../../event-grid/system-topics.md)

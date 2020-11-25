@@ -3,12 +3,12 @@ title: 快速入門：使用 Azure CLI 建立共用查詢
 description: 在本快速入門中，您會依照步驟為 Azure CLI 啟用 Resource Graph 延伸模組，並建立共用查詢。
 ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: daaa0dc4039c37094330148f839fadf7b4013276
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 93df1c858ac6238a0192bcdedac8286f2cf75007
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057156"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919704"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>快速入門：使用 Azure CLI 建立 Resource Graph 共用查詢
 
@@ -28,14 +28,14 @@ ms.locfileid: "92057156"
 
 1. 確認已安裝最新的 Azure CLI (至少 **2.8.0**)。 如果尚未安裝，請依照[這些指示](/cli/azure/install-azure-cli-windows)操作。
 
-1. 在您選擇的 Azure CLI 環境中，使用 [az extension add](/cli/azure/extension#az-extension-add)，透過下列命令匯入 Resource Graph 延伸模組：
+1. 在您選擇的 Azure CLI 環境中，使用 [az extension add](/cli/azure/extension#az_extension_add)，透過下列命令匯入 Resource Graph 延伸模組：
 
    ```azurecli-interactive
    # Add the Resource Graph extension to the Azure CLI environment
    az extension add --name resource-graph
    ```
 
-1. 使用 [az extension list](/cli/azure/extension#az-extension-list)，驗證延伸模組已安裝，且為預期的版本 (至少為 **1.1.0**)：
+1. 使用 [az extension list](/cli/azure/extension#az_extension_list)，驗證延伸模組已安裝，且為預期的版本 (至少為 **1.1.0**)：
 
    ```azurecli-interactive
    # Check the extension list (note that you may have other extensions installed)
@@ -47,9 +47,9 @@ ms.locfileid: "92057156"
 
 ## <a name="create-a-resource-graph-shared-query"></a>建立 Resource Graph 共用查詢
 
-在 Azure CLI 延伸模組已新增至您選擇的環境之後，現在可以試試看 Resource Graph 共用查詢。 共用查詢是 Azure Resource Manager 物件，您可以在 Azure Resource Graph Explorer 中授與權限或執行。 此查詢會摘要列出依_位置_分組的所有資源計數。
+在 Azure CLI 延伸模組已新增至您選擇的環境之後，現在可以試試看 Resource Graph 共用查詢。 共用查詢是 Azure Resource Manager 物件，您可以在 Azure Resource Graph Explorer 中授與權限或執行。 此查詢會摘要列出依 _位置_ 分組的所有資源計數。
 
-1. 使用 [az group create](/cli/azure/group#az-group-create) 建立資源群組，以儲存 Azure Resource Graph 共用查詢。 此資源群組的名稱為 `resource-graph-queries`，位置為 `westus2`。
+1. 使用 [az group create](/cli/azure/group#az_group_create) 建立資源群組，以儲存 Azure Resource Graph 共用查詢。 此資源群組的名稱為 `resource-graph-queries`，位置為 `westus2`。
 
    ```azurecli-interactive
    # Login first with az login if not using Cloud Shell
@@ -58,7 +58,7 @@ ms.locfileid: "92057156"
    az group create --name 'resource-graph-queries' --location 'westus2'
    ```
 
-1. 使用 `graph` 延伸模組和 [az graph shared-query create](/cli/azure/ext/resource-graph/graph/shared-query#ext-resource-graph-az-graph-shared-query-create) 命令，建立 Azure Resource Graph 共用查詢：
+1. 使用 `graph` 延伸模組和 [az graph shared-query create](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_create) 命令，建立 Azure Resource Graph 共用查詢：
 
    ```azurecli-interactive
    # Create the Azure Resource Graph shared query
@@ -68,14 +68,14 @@ ms.locfileid: "92057156"
       --resource-group 'resource-graph-queries'
    ```
 
-1. 列出新資源群組中的共用查詢。 [az graph shared-query list](/cli/azure/ext/resource-graph/graph/shared-query#ext-resource-graph-az-graph-shared-query-list) 命令會傳回值的陣列。
+1. 列出新資源群組中的共用查詢。 [az graph shared-query list](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_list) 命令會傳回值的陣列。
 
    ```azurecli-interactive
    # List all the Azure Resource Graph shared queries in a resource group
    az graph shared-query list --resource-group 'resource-graph-queries'
    ```
 
-1. 若只要取得單一的共用查詢結果，請使用 [az graph shared-query show](/cli/azure/ext/resource-graph/graph/shared-query#ext-resource-graph-az-graph-shared-query-show) 命令。
+1. 若只要取得單一的共用查詢結果，請使用 [az graph shared-query show](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_show) 命令。
 
    ```azurecli-interactive
    # Show a specific Azure Resource Graph shared query
@@ -83,7 +83,7 @@ ms.locfileid: "92057156"
       --name 'Summarize resources by location'
    ```
 
-1. 使用 [az graph query](/cli/azure/ext/resource-graph/graph#ext-resource-graph-az-graph-query) 命令中的 `{{shared-query-uri}}` 語法，在 Azure CLI 中執行共用查詢。
+1. 使用 [az graph query](/cli/azure/ext/resource-graph/graph#ext_resource_graph_az_graph_query) 命令中的 `{{shared-query-uri}}` 語法，在 Azure CLI 中執行共用查詢。
    首先，從前一個 `show` 命令的結果複製 `id` 欄位。 以 `id` 欄位中的值取代範例中的 `shared-query-uri` 文字，但是保留周圍的 `{{` 和 `}}` 字元。
 
    ```azurecli-interactive
@@ -92,7 +92,7 @@ ms.locfileid: "92057156"
    ```
 
    > [!NOTE]
-   > `{{shared-query-uri}}` 語法是**預覽**功能。
+   > `{{shared-query-uri}}` 語法是 **預覽** 功能。
 
 另一個尋找 Resource Graph 共用查詢的方法是透過 Azure 入口網站。 在入口網站中，使用搜尋列搜尋「Resource Graph 查詢」。 選取共用查詢。 在 [概觀] 頁面上，[查詢] 索引標籤會顯示已儲存的查詢。 [編輯] 按鈕會在 [Resource Graph Explorer](./first-query-portal.md) 中將其開啟。
 
@@ -100,9 +100,9 @@ ms.locfileid: "92057156"
 
 如果您想要從 Azure CLI 環境中移除 Resource Graph 共用查詢、資源群組和延伸模組，則可以使用下列命令：
 
-- [az graph shared-query delete](/cli/azure/ext/resource-graph/graph/shared-query#ext-resource-graph-az-graph-shared-query-delete)
-- [az group delete](/cli/azure/group#az-group-delete)
-- [az extension remove](/cli/azure/extension#az-extension-remove)
+- [az graph shared-query delete](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_delete)
+- [az group delete](/cli/azure/group#az_group_delete)
+- [az extension remove](/cli/azure/extension#az_extension_remove)
 
 ```azurecli-interactive
 # Delete the Azure Resource Graph shared query

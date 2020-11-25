@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: fb577947942ffce640f91daf0050f6796f93222b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d4b6fc296ae41667d271e243e9aca9b594e4a5b6
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91311626"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886697"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>快速入門：使用 Azure 應用程式閘道引導網路流量 - Azure CLI
 
@@ -24,14 +24,11 @@ ms.locfileid: "91311626"
 
 您也可以使用 [Azure PowerShell](quick-create-powershell.md) 或 [Azure 入口網站](quick-create-portal.md)完成本快速入門。
 
-## <a name="prerequisites"></a>Prerequisites
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [Azure CLI 2.0.4 版或更新版本](/cli/azure/install-azure-cli) (如果您在本機執行 Azure CLI)。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-
+- 本文需要 2.0.4 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-resource-group"></a>建立資源群組
 

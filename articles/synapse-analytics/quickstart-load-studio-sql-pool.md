@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/16/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3b32e7a1df0dbbf4d43a73f1e3e409a904ab88a3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 8d70a45b89142f6f9c6990fdbb4b79751c82275f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660078"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237471"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>快速入門：使用 Synapse SQL 進行大量載入
 
@@ -39,7 +39,8 @@ ms.locfileid: "94660078"
 
 ### <a name="steps"></a>步驟
 
-1. 在 [來源儲存位置] 面板中，選取儲存體帳戶和您要載入的檔案或資料夾。 精靈會自動嘗試偵測 Parquet 檔案。 如果無法確認 Parquet 檔案類型，則依預設會使用分隔符號文字 (CSV)。 
+1. 在 [來源儲存位置] 面板中，選取儲存體帳戶和您要載入的檔案或資料夾。 精靈會自動嘗試偵測 Parquet 檔案。 如果無法確認 Parquet 檔案類型，則依預設會使用分隔符號文字 (CSV)。
+
    ![選取來源位置](./sql/media/bulk-load/bulk-load-source-location.png)
 
 2. 選取檔案格式設定，包括想要在其中寫入遭拒絕資料列 (錯誤檔案) 的儲存體帳戶。 目前僅支援 CSV 和 Parquet 檔案。

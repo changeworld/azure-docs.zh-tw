@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: f8b7e55d95c08a31a20503e329e64b9e65e3b723
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6e7e986f658570553763001afdd58d7bb1880f94
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323918"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968174"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入門：使用適用於 IoT 中樞裝置佈建服務的 Node.js 裝置 SDK 來建立及佈建模擬 TPM 裝置
 
@@ -39,7 +39,7 @@ ms.locfileid: "91323918"
 
 1. 請確定您在電腦上已安裝 [Node.js 4.0 或更新版本](https://nodejs.org)。
 
-1. 確定 `git` 已安裝在電腦上，並已新增至命令視窗可存取的環境變數。 請參閱[軟體自由保護協會的 Git 用戶端工具](https://git-scm.com/download/)以取得所要安裝的最新版 `git` 工具，其中包括 **Git Bash** (您可用來與本機 Git 存放庫互動的命令列應用程式)。 
+1. 確定 `git` 已安裝在電腦上，並已新增至命令視窗可存取的環境變數。 請參閱 [軟體自由保護協會的 Git 用戶端工具](https://git-scm.com/download/)以取得所要安裝的最新版 `git` 工具，其中包括 **Git Bash** (您可用來與本機 Git 存放庫互動的命令列應用程式)。 
 
 
 ## <a name="simulate-a-tpm-device"></a>模擬 TPM 裝置
@@ -50,7 +50,7 @@ ms.locfileid: "91323918"
     git clone https://github.com/Azure/azure-utpm-c.git --recursive
     ```
 
-1. 瀏覽至 GitHub 根資料夾，並執行 [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) 模擬器，使其成為模擬裝置的 [HSM](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)。 它會透過連接埠 2321年和 2322 上的通訊端接聽。 請勿關閉此命令視窗；您必須讓此模擬器保持執行，直到此快速入門指南結束： 
+1. 瀏覽至 GitHub 根資料夾，並執行 [TPM](/windows/device-security/tpm/trusted-platform-module-overview) 模擬器，使其成為模擬裝置的 [HSM](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)。 它會透過連接埠 2321年和 2322 上的通訊端接聽。 請勿關閉此命令視窗；您必須讓此模擬器保持執行，直到此快速入門指南結束： 
 
     ```cmd/sh
     .\azure-utpm-c\tools\tpm_simulator\Simulator.exe
@@ -156,7 +156,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
    - 選取與您的佈建服務連結的 IoT 中樞。
    - 您可以選擇性地提供下列資訊：
        - 輸入唯一的 [裝置識別碼]  。 替您的裝置命名時，務必避免使用敏感性資料。 如果您選擇不提供名稱，則會改用註冊識別碼來識別裝置。
-       - 使用裝置所需的初始組態更新**初始裝置對應項狀態**。
+       - 使用裝置所需的初始組態更新 **初始裝置對應項狀態**。
    - 完成後，按 [儲存]  按鈕。 
 
      ![在入口網站刀鋒視窗中輸入裝置註冊資訊](./media/quick-create-simulated-device/enter-device-enrollment.png)  
@@ -189,7 +189,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
     > **Azure IoT SDK for Node.js** 支援額外的通訊協定，像是 _AMQP_、_AMQP WS_ 和 _MQTT WS_。  如需詳細資訊，請參閱[適用於 Node.js 的裝置佈建服務 SDK 範例](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/device/samples)。
     > 
 
-1. 新增 **globalDeviceEndpoint** 和 **idScope** 變數，並用來建立 **ProvisioningDeviceClient** 執行個體。 使用**步驟 1** 的 [全域裝置端點]  和 [識別碼範圍]  值，取代 **{globalDeviceEndpoint}** 和 **{idScope}** ：
+1. 新增 **globalDeviceEndpoint** 和 **idScope** 變數，並用來建立 **ProvisioningDeviceClient** 執行個體。 使用 **步驟 1** 的 [全域裝置端點]  和 [識別碼範圍]  值，取代 **{globalDeviceEndpoint}** 和 **{idScope}** ：
    
     ```
     var provisioningHost = '{globalDeviceEndpoint}';
@@ -249,7 +249,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 
     ![已向 IoT 中樞註冊裝置](./media/quick-create-simulated-device/hub-registration.png) 
 
-    如果您在裝置的註冊項目中變更了*初始裝置對應項狀態* (變更自預設值)，它即可從中樞提取所需的對應項狀態並採取適當的動作。 如需詳細資訊，請參閱[了解和使用 Azure IoT 中樞的裝置對應項](../iot-hub/iot-hub-devguide-device-twins.md)
+    如果您在裝置的註冊項目中變更了 *初始裝置對應項狀態* (變更自預設值)，它即可從中樞提取所需的對應項狀態並採取適當的動作。 如需詳細資訊，請參閱[了解和使用 Azure IoT 中樞的裝置對應項](../iot-hub/iot-hub-devguide-device-twins.md)
 
 
 ## <a name="clean-up-resources"></a>清除資源

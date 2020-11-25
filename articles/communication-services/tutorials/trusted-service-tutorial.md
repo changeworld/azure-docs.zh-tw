@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/28/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: cffe2ef77f2b832c55ef17823163cd6580f31504
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d4fdef6406bfa2e64456f14778cc136735070656
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943671"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886615"
 ---
 # <a name="build-a-trusted-authentication-service-using-azure-functions"></a>使用 Azure Functions 來組建受信任的驗證服務
 
@@ -24,7 +24,7 @@ ms.locfileid: "90943671"
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果您想要清除和移除通訊服務訂閱，則可以刪除資源或資源群組。 刪除資源群組也會刪除其關聯的任何其他資源。 您可以深入了解[清除 Azure 通訊服務資源](../quickstarts/create-communication-resource.md#clean-up-resources)和[清除 Azure 函式資源](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?#clean-up-resources)。
+如果您想要清除和移除通訊服務訂閱，則可以刪除資源或資源群組。 刪除資源群組也會刪除其關聯的任何其他資源。 您可以深入了解[清除 Azure 通訊服務資源](../quickstarts/create-communication-resource.md#clean-up-resources)和[清除 Azure 函式資源](../../azure-functions/create-first-function-vs-code-csharp.md#clean-up-resources)。
 
 ## <a name="next-steps"></a>下一步
 

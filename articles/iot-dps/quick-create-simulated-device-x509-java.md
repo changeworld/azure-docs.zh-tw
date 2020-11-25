@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 0198a32800f364f921a2b9f64048166c48a14f7e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2ed458ee0267a65bb7551940fc522509dc310311
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323884"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966610"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入門：使用適用於 IoT 中樞裝置佈建服務的 Java 裝置 SDK 來建立及佈建模擬 X.509 裝置
 
@@ -27,17 +27,17 @@ ms.locfileid: "91323884"
 - 熟悉[佈建](about-iot-dps.md#provisioning-process)概念。
 - 完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)。
 - 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- [Java SE 開發套件 8](https://aka.ms/azure-jdks)。
+- [Java SE 開發套件 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
 - [Maven](https://maven.apache.org/install.html).
 - [Git](https://git-scm.com/download/)。
 
 ## <a name="prepare-the-environment"></a>準備環境 
 
-1. 請確定您已在電腦上安裝 [Java SE 開發套件 8](https://aka.ms/azure-jdks)。
+1. 請確定您已在電腦上安裝 [Java SE 開發套件 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
 
 2. 下載並安裝 [Maven](https://maven.apache.org/install.html)。
 
-3. 確定 Git 已安裝在機器上，並已新增至命令視窗可存取的環境變數。 請參閱[軟體自由保護協會的 Git 用戶端工具](https://git-scm.com/download/)以取得所要安裝的最新版 `git` 工具，其中包括 **Git Bash** (您可用來與本機 Git 存放庫互動的命令列應用程式)。 
+3. 確定 Git 已安裝在機器上，並已新增至命令視窗可存取的環境變數。 請參閱 [軟體自由保護協會的 Git 用戶端工具](https://git-scm.com/download/)以取得所要安裝的最新版 `git` 工具，其中包括 **Git Bash** (您可用來與本機 Git 存放庫互動的命令列應用程式)。 
 
 4. 開啟命令提示字元。 複製裝置模擬程式碼範例的 GitHub 存放庫：
     
@@ -80,13 +80,13 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
     java -jar ./provisioning-x509-cert-generator-{version}-with-deps.jar
     ```
 
-2. 針對_您是否要輸入一般名稱_，輸入 **N**。 將從 ---BEGIN CERTIFICATE---  開始到 *-----END CERTIFICATE-----* 的 `Client Cert` 輸出複製到剪貼簿。
+2. 針對 _您是否要輸入一般名稱_，輸入 **N**。 將從 ---BEGIN CERTIFICATE---  開始到 *-----END CERTIFICATE-----* 的 `Client Cert` 輸出複製到剪貼簿。
 
    ![個別憑證產生器](./media/java-quick-create-simulated-device-x509/individual.png)
 
 3. 在 Windows 電腦上建立名為 _X509individual.pem_  的檔案，在您選擇的編輯器中開啟該檔案，並將剪貼簿內容複製到這個檔案。 儲存檔案並關閉編輯器。
 
-4. 在命令提示字元中，針對_您是否要輸入驗證碼_，輸入 **N**，並保持程式輸出開啟，以供稍後在快速入門中參考。 稍後您需複製 `Client Cert` 和 `Client Cert Private Key` 值，以便在下一節中使用。
+4. 在命令提示字元中，針對 _您是否要輸入驗證碼_，輸入 **N**，並保持程式輸出開啟，以供稍後在快速入門中參考。 稍後您需複製 `Client Cert` 和 `Client Cert Private Key` 值，以便在下一節中使用。
 
 5. 登入 [Azure 入口網站](https://portal.azure.com)，選取左側功能表上的 [所有資源]  按鈕，然後開啟您的裝置佈建服務執行個體。
 
@@ -98,7 +98,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
    - 您可以選擇性地提供下列資訊：
      - 選取與您的佈建服務連結的 IoT 中樞。
      - 輸入唯一的裝置識別碼。 替您的裝置命名時，務必避免使用敏感性資料。 
-     - 使用裝置所需的初始組態更新**初始裝置對應項狀態**。
+     - 使用裝置所需的初始組態更新 **初始裝置對應項狀態**。
      - 完成後，按 [儲存]  按鈕。 
 
      [![在入口網站中新增 X.509 證明的個別註冊](./media/java-quick-create-simulated-device-x509/device-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
@@ -121,7 +121,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 
 3. 在程式碼中輸入佈建服務和 X.509 身分識別資訊。 這會在為模擬裝置的證明進行自動佈建時使用 (進行裝置註冊之前)：
 
-   - 編輯 `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java` 檔案，使其包含您前面記下的_識別碼範圍_和_佈建服務全域端點_。 另外如上一節所述，也要包含_用戶端憑證_和_用戶端憑證私密金鑰_。
+   - 編輯 `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java` 檔案，使其包含您前面記下的 _識別碼範圍_ 和 _佈建服務全域端點_。 另外如上一節所述，也要包含 _用戶端憑證_ 和 _用戶端憑證私密金鑰_。
 
       ```java
       private static final String idScope = "[Your ID scope here]";
@@ -161,7 +161,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
     ![已向 IoT 中樞註冊裝置](./media/java-quick-create-simulated-device-x509/hubregistration.png) 
 
 > [!NOTE]
-> 如果您在裝置的註冊項目中變更了*初始裝置對應項狀態* (變更自預設值)，它即可從中樞提取所需的對應項狀態並採取適當的動作。 如需詳細資訊，請參閱[了解和使用 Azure IoT 中樞的裝置對應項](../iot-hub/iot-hub-devguide-device-twins.md)。
+> 如果您在裝置的註冊項目中變更了 *初始裝置對應項狀態* (變更自預設值)，它即可從中樞提取所需的對應項狀態並採取適當的動作。 如需詳細資訊，請參閱[了解和使用 Azure IoT 中樞的裝置對應項](../iot-hub/iot-hub-devguide-device-twins.md)。
 >
 
 
