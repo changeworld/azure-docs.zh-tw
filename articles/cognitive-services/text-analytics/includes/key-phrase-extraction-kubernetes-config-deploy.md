@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 27c78566877f27e80ae5ae27c5250f228c7ae676
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779337"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017838"
 ---
 ### <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>將關鍵片語擷取容器部署到 AKS 叢集
 
@@ -49,7 +49,7 @@ ms.locfileid: "91779337"
     code .
     ```
 
-1. 在文字編輯器中，建立名為 *keyphrase*的新檔案，並在其中貼上下列 yaml。 請務必將和取代為 `billing/value` `apikey/value` 您自己的資訊。
+1. 在文字編輯器中，建立名為 *keyphrase* 的新檔案，並在其中貼上下列 yaml。 請務必將和取代為 `billing/value` `apikey/value` 您自己的資訊。
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -96,7 +96,7 @@ ms.locfileid: "91779337"
     ```
 
 1. 儲存檔案，然後關閉文字編輯器。
-1. `apply`使用*keyphrase yaml*檔案作為其目標來執行 Kubernetes 命令：
+1. `apply`使用 *keyphrase yaml* 檔案作為其目標來執行 Kubernetes 命令：
 
     ```console
     kubectl apply -f keyphrase.yaml

@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: ca8d4d725ff25687d1005ddab1964316a147c730
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779127"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017837"
 ---
 ### <a name="deploy-the-sentiment-analysis-container-to-an-aks-cluster"></a>將情感分析容器部署到 AKS 叢集
 
@@ -49,7 +49,7 @@ ms.locfileid: "91779127"
     code .
     ```
 
-1. 在文字編輯器中，建立名為 *情感*的新檔案，並在其中貼上下列 yaml。 請務必將和取代為 `billing/value` `apikey/value` 您自己的資訊。
+1. 在文字編輯器中，建立名為 *情感* 的新檔案，並在其中貼上下列 yaml。 請務必將和取代為 `billing/value` `apikey/value` 您自己的資訊。
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -96,7 +96,7 @@ ms.locfileid: "91779127"
     ```
 
 1. 儲存檔案，然後關閉文字編輯器。
-1. `apply`使用*情感 yaml*檔案作為其目標來執行 Kubernetes 命令：
+1. `apply`使用 *情感 yaml* 檔案作為其目標來執行 Kubernetes 命令：
 
     ```console
     kubectl apply -f sentiment.yaml

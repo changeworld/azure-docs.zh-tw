@@ -10,17 +10,17 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: e7f5b6f3685a94b5497784360f8f12b22fb95012
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87298747"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017835"
 ---
 ## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>建立 Azure Kubernetes Service 叢集資源
 
 1. 移至 [Azure Kubernetes Service](https://ms.portal.azure.com/#create/microsoft.aks)，然後選取 [ **建立**]。
 
-1. 在 [基本]**** 索引標籤上，輸入下列資訊：
+1. 在 [基本] 索引標籤上，輸入下列資訊：
 
     |設定|值|
     |--|--|
@@ -28,7 +28,7 @@ ms.locfileid: "87298747"
     |資源群組|選取可用的資源群組。|
     |Kubernetes 叢集名稱|輸入 (小寫) 的名稱。|
     |區域|選取附近的位置。|
-    |Kubernetes 版本|任何值會標示為 ** (預設) **。|
+    |Kubernetes 版本|任何值會標示為 **(預設)**。|
     |DNS 名稱前置詞|自動建立，但您可以覆寫。|
     |節點大小|標準 DS2 v2：<br>`2 vCPUs`, `7 GB`|
     |節點計數|將滑杆保留為預設值。|
@@ -40,7 +40,7 @@ ms.locfileid: "87298747"
     |設定|值|
     |--|--|
     |HTTP 應用程式路由|否|
-    |網路設定|基本|
+    |網路設定|Basic|
 
 1. **在 [整合**] 索引標籤上，確定 [**容器監視**] 設定為 [**已啟用**]，並將 [ **Log Analytics 工作區**] 保留為預設值。
 1. 在 [ **標記** ] 索引標籤上，將名稱/值組保留為空白。

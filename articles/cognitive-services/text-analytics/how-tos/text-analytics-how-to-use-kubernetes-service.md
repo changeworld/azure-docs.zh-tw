@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 744be742d9f638df14f9d6720c9dad9678685af0
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366888"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017836"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>將文字分析容器部署到 Azure Kubernetes Service
 
 瞭解如何將 Azure 認知服務 [文字分析](./text-analytics-how-to-install-containers.md) 容器映射部署至 AZURE KUBERNETES SERVICE (AKS) 。 此程式示範如何建立文字分析資源、如何建立相關聯的情感分析影像，以及如何在瀏覽器中執行這兩個的協調流程。 使用容器可讓您的注意力遠離管理基礎結構，而改為專注于應用程式開發。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 此程序需要必須安裝並在本機執行的多個工具。 請勿使用 Azure Cloud Shell。 您需要下列項目：
 
