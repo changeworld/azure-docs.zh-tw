@@ -10,13 +10,13 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
-ms.date: 06/09/2020
-ms.openlocfilehash: 80c837e640ef0d1739c329fb463e173e6c40be31
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.date: 11/25/2020
+ms.openlocfilehash: 22155083a71a9cbf615293a4f86a179aaefce2a9
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331428"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96023343"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>建立和設定自我裝載整合執行階段
 
@@ -64,12 +64,12 @@ ms.locfileid: "94331428"
 
    ![建立整合執行階段](media/doc-common-process/manage-new-integration-runtime.png)
 
-1. 在 [ **整合執行時間設定** ] 頁面上，選取 [ **Azure]、[自我** 裝載]，然後選取 [ **繼續** ]。 
+1. 在 [ **整合執行時間設定** ] 頁面上，選取 [ **Azure]、[自我** 裝載]，然後選取 [ **繼續**]。 
 
-1. 在下列頁面上，選取 [ **自我** 裝載] 以建立 Self-Hosted IR，然後選取 [ **繼續** ]。
+1. 在下列頁面上，選取 [ **自我** 裝載] 以建立 Self-Hosted IR，然後選取 [ **繼續**]。
    ![建立 selfhosted IR](media/create-self-hosted-integration-runtime/new-selfhosted-integration-runtime.png)
 
-1. 輸入 IR 的名稱，然後選取 [ **建立** ]。
+1. 輸入 IR 的名稱，然後選取 [ **建立**]。
 
 1. 在 [ **整合執行時間設定** ] 頁面上，選取 **選項 1** 底下的連結，以開啟電腦上的快速安裝。 或依照 **選項 2** 下的步驟手動設定。 下列指示以手動設定為基礎：
 
@@ -79,7 +79,7 @@ ms.locfileid: "94331428"
 
     1. 在本機 Windows 電腦上下載自我裝載的整合執行階段。 執行安裝程式。
 
-    1. 在 [ **註冊 Integration Runtime (自我裝載)** ] 頁面上，貼上您稍早儲存的金鑰，然後選取 [ **註冊** ]。
+    1. 在 [ **註冊 Integration Runtime (自我裝載)** ] 頁面上，貼上您稍早儲存的金鑰，然後選取 [ **註冊**]。
     
        ![註冊整合執行階段](media/create-self-hosted-integration-runtime/register-integration-runtime.png)
 
@@ -150,9 +150,9 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 - 使用自我裝載整合執行時間支援 Azure 虛擬網路內的資料整合。
 - 即使您使用 Azure ExpressRoute，也應該將資料來源視為在防火牆後的內部部署資料來源。 使用自我裝載整合執行時間，將服務連接到資料來源。
 - 即使資料存放區位於 Azure 基礎結構即服務 (IaaS) 虛擬機器的雲端中，仍請使用自我裝載整合執行時間。
-- 在已啟用 FIPS 相容加密的 Windows server 上安裝的自我裝載整合執行時間中，工作可能會失敗。 若要解決此問題，您有兩個選項：在 Azure Key Vault 中儲存認證/密碼值，或在伺服器上停用符合 FIPS 規範的加密。 若要停用符合 FIPS 規範的加密，請將下列登錄子機碼值從 1 (已啟用) 變更為 0 (停用) ： `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` 。
+- 在已啟用 FIPS 相容加密的 Windows server 上安裝的自我裝載整合執行時間中，工作可能會失敗。 若要解決此問題，您有兩個選項：在 Azure Key Vault 中儲存認證/密碼值，或在伺服器上停用符合 FIPS 規範的加密。 若要停用符合 FIPS 規範的加密，請將下列登錄子機碼值從 1 (已啟用) 變更為 0 (停用) ： `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` 。 如果您使用 [自我裝載整合執行時間作為 SSIS 整合執行時間的 proxy](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)，則可啟用 FIPS 相容的加密，並在將資料從內部部署移至 Azure Blob 儲存體作為臨時區域時使用。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 支援的 Windows 版本為：
   + Windows 7 Service Pack 1
@@ -185,12 +185,12 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 ## <a name="install-and-register-a-self-hosted-ir-from-microsoft-download-center"></a>從 Microsoft 下載中心安裝和註冊自我裝載 IR
 
 1. 瀏覽至 [Microsoft 整合執行階段下載頁面](https://www.microsoft.com/download/details.aspx?id=39717)。
-1. 選取 [ **下載** ]，選取64位版本，然後選取 **[下一步]** 。 不支援32位版本。
+1. 選取 [ **下載**]，選取64位版本，然後選取 **[下一步]**。 不支援32位版本。
 1. 直接執行受控識別檔案，或將它儲存至硬碟並加以執行。
-1. 在 [ **歡迎使用** ] 視窗中選取語言，然後選取 **[下一步** ]。
+1. 在 [ **歡迎使用** ] 視窗中選取語言，然後選取 **[下一步**]。
 1. 接受「Microsoft 軟體授權條款」，然後選取 [下一步]。
 1. 選取 [資料夾] 來安裝自我裝載整合執行階段，接著按一下 [下一步]。
-1. 在 [ **安裝準備就緒** ] 頁面上，選取 [ **安裝** ]。
+1. 在 [ **安裝準備就緒** ] 頁面上，選取 [ **安裝**]。
 1. 選取 **[完成]** 以完成安裝。
 1. 使用 PowerShell 取得驗證金鑰。 擷取驗證金鑰的 PowerShell 範例：
 
@@ -239,7 +239,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 - 憑證必須是受信任的 X509 v3 公開憑證。 建議您使用由公用夥伴憑證授權單位單位所發行的憑證 (CA) 。
 - 每個整合執行階段節點都必須信任此憑證。
-- 我們不建議 (SAN) 憑證的主體別名，因為只會使用最後一個 SAN 專案。 系統會忽略所有其他 SAN 專案。 例如，如果您有 SAN 憑證，其 San 為 **node1.domain.contoso.com** 和 **node2.domain.contoso.com** ，則只能在其完整功能變數名稱 (FQDN) 為 **node2.domain.contoso.com** 的電腦上使用此憑證。
+- 我們不建議 (SAN) 憑證的主體別名，因為只會使用最後一個 SAN 專案。 系統會忽略所有其他 SAN 專案。 例如，如果您有 SAN 憑證，其 San 為 **node1.domain.contoso.com** 和 **node2.domain.contoso.com**，則只能在其完整功能變數名稱 (FQDN) 為 **node2.domain.contoso.com** 的電腦上使用此憑證。
 - 憑證可以針對 TLS/SSL 憑證使用 Windows Server 2012 R2 所支援的任何金鑰大小。
 - 不支援使用 CNG 金鑰的憑證。  
 
@@ -264,8 +264,8 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 ### <a name="terminology"></a>術語
 
-- **共用 ir** ：在實體基礎結構上執行的原始自我裝載 ir。  
-- **連結的 ir** ：參考另一個共用 IR 的 ir。 連結的 IR 是邏輯 IR，並使用另一個共用自我裝載 IR 的基礎結構。
+- **共用 ir**：在實體基礎結構上執行的原始自我裝載 ir。  
+- **連結的 ir**：參考另一個共用 IR 的 ir。 連結的 IR 是邏輯 IR，並使用另一個共用自我裝載 IR 的基礎結構。
 
 ### <a name="methods-to-share-a-self-hosted-integration-runtime"></a>共用自我裝載整合執行時間的方法
 
@@ -351,9 +351,9 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 有三個組態選項：
 
-- **請勿使用 proxy** ：自我裝載整合執行時間不會明確地使用任何 proxy 來連線到雲端服務。
-- **使用系統 proxy** ：自我裝載整合執行時間會使用 diahost.exe.config 和 diawp.exe.config 中所設定的 proxy 設定。如果這些檔案未指定 proxy 設定，自我裝載整合執行時間會直接連接到雲端服務，而不會通過 proxy。
-- **使用自訂 proxy** ：設定要用於自我裝載整合執行時間的 HTTP proxy 設定，而不是使用 diahost.exe.config 和 diawp.exe.config 中的設定。需要 **位址** 和 **埠** 值。 **使用者名稱** 和 **密碼** 值是選擇性的，視您的 proxy 驗證設定而定。 自我裝載整合執行階段上的所有設定都會使用 Windows DPAPI 加密，並儲存在本機電腦上。
+- **請勿使用 proxy**：自我裝載整合執行時間不會明確地使用任何 proxy 來連線到雲端服務。
+- **使用系統 proxy**：自我裝載整合執行時間會使用 diahost.exe.config 和 diawp.exe.config 中所設定的 proxy 設定。如果這些檔案未指定 proxy 設定，自我裝載整合執行時間會直接連接到雲端服務，而不會通過 proxy。
+- **使用自訂 proxy**：設定要用於自我裝載整合執行時間的 HTTP proxy 設定，而不是使用 diahost.exe.config 和 diawp.exe.config 中的設定。需要 **位址** 和 **埠** 值。 **使用者名稱** 和 **密碼** 值是選擇性的，視您的 proxy 驗證設定而定。 自我裝載整合執行階段上的所有設定都會使用 Windows DPAPI 加密，並儲存在本機電腦上。
 
 當您儲存更新的 proxy 設定之後，integration runtime 主機服務會自動重新開機。
 
@@ -361,7 +361,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 1. 開啟 [Microsoft Integration Runtime 管理員]。
 1. 選取 [Settings] \(設定\) 索引標籤。
-1. 在 [ **Http proxy** ] 底下，選取 [ **變更** ] 連結以開啟 [ **設定 HTTP proxy** ] 對話方塊。
+1. 在 [ **Http proxy**] 底下，選取 [ **變更** ] 連結以開啟 [ **設定 HTTP proxy** ] 對話方塊。
 1. 選取 [下一步]。 接著，您會看到一則警告，要求您儲存 proxy 設定並重新啟動 integration runtime 主機服務的許可權。
 
 您可以使用 configuration manager 工具來查看和更新 HTTP proxy。
@@ -416,7 +416,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 如果您看到類似下列的錯誤訊息，可能是因為防火牆或 proxy 伺服器的設定不正確。 這類設定可防止自我裝載的整合執行時間連接到 Data Factory，以驗證自己的身分。 請參閱上一節，以確保您的防火牆和 Proxy 伺服器的設定皆正確。
 
 * 當您嘗試註冊自我裝載整合執行時間時，您會收到下列錯誤訊息：「無法註冊此 Integration Runtime 節點！ 請確認驗證金鑰有效，且 integration service 主機服務正在這部電腦上執行。
-* 當您開啟「Integration Runtime 組態管理員」時，您會看到「已中斷連線」或「正在連線」狀態。 當您在 [ **事件檢視器** 應用程式和服務記錄檔] Microsoft Integration Runtime 下查看 Windows 事件記錄檔時  >  **Application and Services Logs**  >  **** ，您會看到如下的錯誤訊息：
+* 當您開啟「Integration Runtime 組態管理員」時，您會看到「已中斷連線」或「正在連線」狀態。 當您在 [**事件檢視器** 應用程式和服務記錄檔] Microsoft Integration Runtime 下查看 Windows 事件記錄檔時  >  **Application and Services Logs**  >  ****，您會看到如下的錯誤訊息：
 
     ```
     Unable to connect to the remote server
@@ -425,7 +425,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 ### <a name="enable-remote-access-from-an-intranet"></a>啟用來自內部網路的遠端存取
 
-如果您使用 PowerShell 從網路電腦加密認證，而不是安裝自我裝載整合執行時間，您可以啟用從內部網路進行 **遠端存取** 選項。 如果您在安裝自我裝載整合執行時間的電腦上執行 PowerShell 來加密認證，則無法啟用 **從內部網路進行遠端存取** 。
+如果您使用 PowerShell 從網路電腦加密認證，而不是安裝自我裝載整合執行時間，您可以啟用從內部網路進行 **遠端存取** 選項。 如果您在安裝自我裝載整合執行時間的電腦上執行 PowerShell 來加密認證，則無法啟用 **從內部網路進行遠端存取**。
 
 在您新增其他節點以獲得高可用性和擴充性之前，請先啟用內部網路的 **遠端存取** 。  
 

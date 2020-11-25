@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
 ms.openlocfilehash: f5b332415f1abf7d4c1002bdd4f3bfcef12f1267
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135639"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023243"
 ---
 ## <a name="configure-the-sample-project"></a>設定範例專案
 
@@ -18,7 +18,7 @@ ms.locfileid: "93135639"
 
 在您的機器上瀏覽至先前從 [*Azure Digital Twins 端對端範例*](/samples/azure-samples/digital-twins-samples/digital-twins-samples)下載的檔案 (如果尚未解壓縮，請將其解壓縮)。
 
-在資料夾內，瀏覽至 _AdtSampleApp_ 。 在 Visual Studio 2019 中開啟 _**AdtE2ESample.sln**_ 。 
+在資料夾內，瀏覽至 _AdtSampleApp_。 在 Visual Studio 2019 中開啟 _**AdtE2ESample.sln**_。 
 
 在 Visual Studio 中，選取 [SampleClientApp] > [appsettings] 檔案，以在編輯視窗中加以開啟。 這會作為預先設定的 JSON 檔案，其中具備執行專案所需的設定變數。
 

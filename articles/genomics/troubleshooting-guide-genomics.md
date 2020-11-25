@@ -11,11 +11,11 @@ ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82100901"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023818"
 ---
 # <a name="troubleshooting-guide"></a>疑難排解指南
 
@@ -42,7 +42,7 @@ msgen status -u URL -k KEY -w ID
 
 * URL - API 的基底 URI
 * KEY - Genomics 帳戶的存取金鑰
-    * 若要尋找您的 URL 和 KEY，請前往 Azure 入口網站，然後開啟您的 Microsoft Genomics 帳戶頁面。 在 [管理]**** 標題之下，選擇 [存取金鑰]****。 您可以看到 API URL 以及存取金鑰。
+    * 若要尋找您的 URL 和 KEY，請前往 Azure 入口網站，然後開啟您的 Microsoft Genomics 帳戶頁面。 在 [管理] 標題之下，選擇 [存取金鑰]。 您可以看到 API URL 以及存取金鑰。
 
   
 * ID - 工作流程識別碼
@@ -140,6 +140,6 @@ Microsoft Genomics 服務 (msgen) 可能擲出下列兩種錯誤：
 
 如果持續發生作業失敗，或是有任何其他問題，請從 Azure 入口網站連絡 Microsoft Genomics 支援服務。 您可以在[此處](file-support-ticket-genomics.md)找到如何提交支援要求的其他資訊。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已學會如何對 Microsoft Genomics 服務的常見問題進行疑難排解並嘗試解決。 如需詳細資訊和更多一般常見問題集，請參閱[常見問題](frequently-asked-questions-genomics.md)。 

@@ -6,11 +6,11 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
 ms.openlocfilehash: 8313243bf680ea1a1d63f2719b647149a04935a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88893081"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024039"
 ---
 # <a name="material-mapping-for-model-formats"></a>模型格式的材質對應
 
@@ -20,7 +20,7 @@ ms.locfileid: "88893081"
 
 ## <a name="gltf"></a>glTF
 
-GlTF 2.0 規格中幾乎所有的專案都支援在 Azure 遠端轉譯中， *EmissiveFactor* 和 *EmissiveTexture*除外。
+GlTF 2.0 規格中幾乎所有的專案都支援在 Azure 遠端轉譯中， *EmissiveFactor* 和 *EmissiveTexture* 除外。
 
 下表顯示對應：
 
@@ -47,7 +47,7 @@ GlTF 中的每個材質都可以有一個 `texCoord` 值，Azure 遠端轉譯的
 
 ### <a name="embedded-textures"></a>內嵌紋理
 
-支援內嵌于* \* bin*或* \* glb*檔案中的材質。
+支援內嵌于 *\* bin* 或 *\* glb* 檔案中的材質。
 
 ### <a name="supported-gltf-extension"></a>支援的 glTF 延伸模組
 
@@ -101,7 +101,7 @@ FBX 材質使用漫射 SpecularLevel 概念，因此若要從擴散材質轉換�
 以下是一些使用的定義：
 
 * `Specular` =  `SpecularColor` * `SpecularFactor`
-* `SpecularIntensity` = `Specular`.Red ∗ 0.2125 +  `Specular` 。綠色∗ 0.7154 + `Specular` 。藍色∗0.0721
+* `SpecularIntensity` = `Specular`。 Red ∗ 0.2125 +  `Specular` 。綠色∗ 0.7154 + `Specular` 。藍色∗0.0721
 * `DiffuseBrightness` = 0.299 * `Diffuse` 。紅色<sup>2</sup> + 0.587 * `Diffuse` 。綠色<sup>2</sup> + 0.114 * `Diffuse` 。藍色<sup>2</sup>
 * `SpecularBrightness` = 0.299 * `Specular` 。紅色<sup>2</sup> + 0.587 * `Specular` 。綠色<sup>2</sup> + 0.114 * `Specular` 。藍色<sup>2</sup>
 * `SpecularStrength` = 最大 (`Specular` 。紅色， `Specular` 。綠色 `Specular` 。藍色) 

@@ -9,11 +9,11 @@ ms.date: 05/18/2020
 ms.author: derekol
 Customer intent: Customer wants to measure their connection telemetry per prefix to Microsoft services with Azure Peering Service.
 ms.openlocfilehash: abbe69ebbaed56ed416f85fafa7b77a1740fabe7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84870549"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022491"
 ---
 # <a name="tutorial-measure-peering-service-connection-telemetry"></a>教學課程：測量對等互連服務連線遙測
 
@@ -28,7 +28,7 @@ ms.locfileid: "84870549"
 
 若要檢視特定對等互連服務連線的延遲報告，請遵循下列步驟。
 
-1. 在左窗格中選取 [所有資源]****，然後選取對等互連服務連線。 然後選取 [字首]**** 下的 [開啟]****。 
+1. 在左窗格中選取 [所有資源]，然後選取對等互連服務連線。 然後選取 [字首] 下的 [開啟]。 
 
    ![選取對等互連服務連線](./media/peering-service-measure/peering-service-measure-menu.png)
 
@@ -36,14 +36,14 @@ ms.locfileid: "84870549"
 
       ![延遲報告頁面](./media/peering-service-measure/peering-service-latency-report.png)
 
-3. 根據預設，針對此頁面上顯示的報告，報告會每小時更新一次。 若要檢視不同時間軸的報告，請從 [顯示資料，始於過去]**** 選擇適當的選項。 
+3. 根據預設，針對此頁面上顯示的報告，報告會每小時更新一次。 若要檢視不同時間軸的報告，請從 [顯示資料，始於過去] 選擇適當的選項。 
 
-4. 若要檢視特定字首的事件，請選取字首名稱，然後在左窗格中選取 [字首事件]****。 已擷取的事件隨即顯示。
+4. 若要檢視特定字首的事件，請選取字首名稱，然後在左窗格中選取 [字首事件]。 已擷取的事件隨即顯示。
 
 
    ![字首事件](./media/peering-service-measure/peering-service-prefix-event.png)
 
- 在 [字首事件]**** 清單中所擷取到的部分可能事件如下所示。
+ 在 [字首事件] 清單中所擷取到的部分可能事件如下所示。
 
 | **字首事件** | **事件類型**|**理由**|
 |-----------|---------|---------|

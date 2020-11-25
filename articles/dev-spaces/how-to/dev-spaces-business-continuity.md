@@ -9,11 +9,11 @@ description: 瞭解如何使用 Azure Dev Spaces 和 Azure Kubernetes Services �
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
 manager: gwallace
 ms.openlocfilehash: 824eb1e65e7da5736080e47509aa163a868d8ec9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973132"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023324"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Azure Dev Space 的商務持續性和災害復原
 
@@ -39,7 +39,7 @@ az aks use-dev-spaces -g <resource group name> -n <cluster name>
 
 ## <a name="deploy-your-teams-baseline-to-each-cluster"></a>將小組的基準部署到每個叢集
 
-在使用 Dev Spaces 時，您通常會將整個應用程式部署到 Kubernetes 叢集上的父開發人員空間。 依預設會使用 `default` 空間。 在初始部署會包含所有服務，以及這些服務所依賴的外部資源，例如資料庫或佇列。 這就是所謂的*基準*。 在父開發人員空間中設定基準之後，您就可以在子開發人員空間內逐一查看並偵錯個別的服務。
+在使用 Dev Spaces 時，您通常會將整個應用程式部署到 Kubernetes 叢集上的父開發人員空間。 依預設會使用 `default` 空間。 在初始部署會包含所有服務，以及這些服務所依賴的外部資源，例如資料庫或佇列。 這就是所謂的 *基準*。 在父開發人員空間中設定基準之後，您就可以在子開發人員空間內逐一查看並偵錯個別的服務。
 
 您應將最新版本的服務基準集部署到多個區域中的叢集。 以這種方式更新您的基準服務，可確保您在遇到 Azure 區域失敗的狀況時將可繼續使用 Dev Spaces。 例如，如果您透過 CI/CD 管線部署基準，請修改管線，使其部署到不同區域的多個叢集。
 
@@ -70,11 +70,11 @@ azds space select -n <space name>
 如果您使用 Visual Studio，您可以透過下列步驟來切換現有專案所使用的叢集：
 
 1. 在 Visual Studio 中，開啟您的專案。
-1. 在 [方案總管] 中，以滑鼠右鍵按一下專案名稱，然後按一下 [屬性]****
-1. 在左側窗格中按一下 [偵錯]****
-1. 在 [偵錯屬性] 頁面上按一下 [設定檔]**** 下拉式清單，然後選擇 [Azure Dev Spaces]****。
+1. 在 [方案總管] 中，以滑鼠右鍵按一下專案名稱，然後按一下 [屬性]
+1. 在左側窗格中按一下 [偵錯]
+1. 在 [偵錯屬性] 頁面上按一下 [設定檔] 下拉式清單，然後選擇 [Azure Dev Spaces]。
 1. 按一下 **[變更]** 按鈕。
-1. 在顯示的對話方塊中，選取您要使用的 AAS 叢集。 如有需要，請選擇不同的開發人員空間來使用，從 [空間]**** 下拉式清單中選取適當的選項，以建立新的開發人員空間。
+1. 在顯示的對話方塊中，選取您要使用的 AAS 叢集。 如有需要，請選擇不同的開發人員空間來使用，從 [空間] 下拉式清單中選取適當的選項，以建立新的開發人員空間。
 
 選取正確的叢集和空間後，您可以按 F5 在 Dev Spaces 中執行服務。
 

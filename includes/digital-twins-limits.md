@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: fe3c737e0cbf6831e3abc37443e27926ed5e62b8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 183d12b5e9d32c777c8acf01177c8cbbe1b6ca00
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091766"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025723"
 ---
 ### <a name="functional-limits"></a>功能限制
 
@@ -29,7 +29,7 @@ ms.locfileid: "93091766"
 | 模型 | 單一 Azure 數位 Twins 實例內的模型數目 | 10,000 | 是 |
 | 模型 | 可在單一 API 呼叫中上傳的模型數目 | 250 | 否 |
 | 模型 | 在單一頁面中傳回的專案數 | 100 | 否 |
-| 查詢 | 在單一頁面中傳回的專案數 | 100 | 否 |
+| 查詢 | 在單一頁面中傳回的專案數 | 100 | 是 |
 | 查詢 | `AND`  /  `OR` 查詢中的運算式數目 | 50 | 是 |
 | 查詢 | 子句中的陣列專案數目 `IN`  /  `NOT IN` | 50 | 是 |
 | 查詢 | 查詢中的字元數 | 8,000 | 是 |

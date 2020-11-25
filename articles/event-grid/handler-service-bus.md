@@ -3,15 +3,15 @@ title: 作為 Azure 事件方格事件之事件處理常式的服務匯流排佇
 description: 說明如何使用作為 Azure 事件方格事件之事件處理常式的服務匯流排佇列和主題。
 ms.topic: conceptual
 ms.date: 09/03/2020
-ms.openlocfilehash: ab219f0dc6009dc01d5915995fc04094e72a88cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b18009f8fb31f1a5f057c7395781f63f182847f
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629500"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "96024209"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>作為 Azure 事件方格事件之事件處理常式的服務匯流排佇列和主題
-事件處理常式是傳送事件的位置。 處理常式會採取一些進一步的動作來處理事件。 有幾項 Azure 服務已自動設定為會處理事件，**Azure 服務匯流排**是其中之一。 
+事件處理常式是傳送事件的位置。 處理常式會採取一些進一步的動作來處理事件。 有幾項 Azure 服務已自動設定為會處理事件，**Azure 服務匯流排** 是其中之一。 
 
 您可以使用服務佇列或主題作為事件方格中事件的處理常式。 
 
@@ -50,18 +50,8 @@ az eventgrid event-subscription create \
     --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ns1/topics/topic1
 ```
 
-## <a name="message-properties"></a>訊息屬性
-如果您使用 **服務匯流排主題或佇列** 作為事件方格事件的事件處理常式，這些是您在訊息標頭中收到的屬性： 
+[!INCLUDE [event-grid-message-headers](../../includes/event-grid-message-headers.md)]
 
-| 屬性名稱 | 描述 |
-| ------------- | ----------- | 
-| aeg-subscription-name | 事件訂閱名稱。 |
-| aeg-delivery-count | <p>對事件進行的嘗試次數。</p> <p>範例：「1」</p> |
-| aeg-event-type | <p>事件類型。</p><p> 範例："Microsoft.Storage.blobCreated"</p> | 
-| aeg-metadata-version | <p>事件的中繼資料版本。</p> <p>範例："1"。</p><p> 針對**事件方格事件結構描述**，此屬性代表中繼資料版本；而針對**雲端事件結構描述**，其代表**規格版本**。 </p>|
-| aeg-data-version | <p>事件的資料版本。</p><p>範例："1"。</p><p>針對**事件方格事件結構描述**，此屬性代表資料版本；而針對**雲端事件結構描述**，則不會套用。</p> |
-
-## <a name="message-headers"></a>郵件標題
 將事件傳送至服務匯流排佇列或主題作為代理訊息時，代理訊息的 `messageid` 會是內部系統識別碼。
 
 訊息的內部系統識別碼會跨事件的日後再次傳遞進行維護，如此您就可以在服務匯流排實體上開啟 **重複偵測** ，以避免重複的傳遞。 建議您在服務匯流排實體上啟用重複偵測的持續時間，使其成為事件的存留時間 (TTL) 或最大重試持續時間 (以較長者為準)。

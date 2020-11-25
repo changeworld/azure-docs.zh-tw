@@ -12,11 +12,11 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: fecb78b240f5c983580d4bdb34535a879ffe3e2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289271"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022542"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>將資料行存放區索引效能的資料列群組品質最大化
 
@@ -87,7 +87,7 @@ trim_reason_desc 會告知是否已修剪資料列群組 (trim_reason_desc = NO_
 > [!NOTE]
 > 其中簡短字串資料行使用 <= 32 位元組和長字串資料行的字串資料類型時，會使用 > 32 位元組的字串資料類型。
 
-會使用專為壓縮文字的壓縮方法來壓縮長字串。 這個壓縮方法會使用字典** 來儲存文字模式。 字典的大小上限為 16 MB。 資料列群組中的每一個長字串資料行只有一個字典。
+會使用專為壓縮文字的壓縮方法來壓縮長字串。 這個壓縮方法會使用字典來儲存文字模式。 字典的大小上限為 16 MB。 資料列群組中的每一個長字串資料行只有一個字典。
 
 如需資料行存放區記憶體需求的深入討論，請參閱影片 [SYNAPSE SQL 調整：設定和指引](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)。
 

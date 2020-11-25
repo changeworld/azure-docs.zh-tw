@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/17/2020
-ms.openlocfilehash: d45f5d5d1d61372ed959334519aa865c22d70748
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: fa048473f0f285b793dad88c7defdb6189ca1ccd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832478"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023001"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>對應資料流程中的接收轉換
 
@@ -107,6 +107,10 @@ Azure Data Factory 可以存取90以上的 [原生連接器](connector-overview.
 ## <a name="error-row-handling"></a>處理資料列時發生錯誤
 
 寫入資料庫時，某些資料列可能會因為目的地所設定的限制而失敗。 根據預設，資料流程執行會在其取得的第一個錯誤時失敗。 在某些連接器中，您可以選擇 **在發生錯誤時繼續** 進行，即使個別的資料列發生錯誤，也會允許您的資料流程完成。 目前，這項功能僅適用于 Azure SQL Database。 如需詳細資訊，請參閱 [AZURE SQL DB 中的錯誤資料列處理](connector-azure-sql-database.md#error-row-handling)。
+
+以下是如何在接收轉換中自動使用資料庫錯誤資料列處理的影片教學課程。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4IWne]
 
 ## <a name="data-preview-in-sink"></a>接收中的資料預覽
 

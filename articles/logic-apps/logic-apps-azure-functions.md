@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.custom: devx-track-js
 ms.openlocfilehash: 75693c57a8d120aad53a15d03ae4054bac8262af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269296"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023052"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>從 Azure Logic Apps 呼叫 Azure 函式
 
@@ -39,7 +39,7 @@ ms.locfileid: "91269296"
 
   * 新的函數應用程式必須使用 .NET 或 JavaScript 作為執行階段堆疊。 當您將新的函式新增至現有的函數應用程式時，您可以選取 C# 或 JavaScript。
 
-  * 您的函式會使用 **HTTP 觸發程序**範本。
+  * 您的函式會使用 **HTTP 觸發程序** 範本。
 
     HTTP 觸發程序範本可以接受內容中有來自邏輯應用程式的 `application/json` 類型。 當您將 Azure 函式新增至邏輯應用程式時，邏輯應用程式設計工具會顯示 Azure 訂用帳戶內從這個範本建立的自訂函式。
 
@@ -132,7 +132,7 @@ function convertToDateString(request, response){
 
    ![定義函式](./media/logic-apps-azure-functions/add-code-function-definition.png)
 
-   在範本的程式碼中，`context` 物件代表邏輯應用程式透過**要求本文** (位於後面的步驟中) 欄位傳送的訊息。 若要從您的函式內存取 `context` 物件的屬性，請使用此語法：
+   在範本的程式碼中，`context` 物件代表邏輯應用程式透過 **要求本文** (位於後面的步驟中) 欄位傳送的訊息。 若要從您的函式內存取 `context` 物件的屬性，請使用此語法：
 
    `context.body.<property-name>`
 
@@ -143,15 +143,15 @@ function convertToDateString(request, response){
    範本程式碼也包含 `input` 變數，其中儲存著來自 `data` 參數的值，因此函式可以根據該值執行作業。 在 JavaScript 函數中，`data` 變數也是 `context.body` 的捷徑。
 
    > [!NOTE]
-   > 這裡的 `body` 屬性適用於 `context` 物件，與動作輸出中可能也會傳遞給函式的**本文**權杖不同。
+   > 這裡的 `body` 屬性適用於 `context` 物件，與動作輸出中可能也會傳遞給函式的 **本文** 權杖不同。
 
 1. 在 [要求本文] 方塊中，提供函式的輸入 (必須以 JavaScript 物件標記法 (JSON) 物件進行格式化)。
 
-   此輸入是邏輯應用程式傳送給函式的「內容物件」或訊息。 當您在 [要求本文] 欄位內按一下時，動態內容清單會隨即出現，讓您可以選取前面步驟中的輸出權杖。 此範例指定內容承載包含名為 `content` 的屬性，而此屬性具有電子郵件觸發程序中的**寄件者**權杖值。
+   此輸入是邏輯應用程式傳送給函式的「內容物件」或訊息。 當您在 [要求本文] 欄位內按一下時，動態內容清單會隨即出現，讓您可以選取前面步驟中的輸出權杖。 此範例指定內容承載包含名為 `content` 的屬性，而此屬性具有電子郵件觸發程序中的 **寄件者** 權杖值。
 
    ![「要求本文」範例 - 內容物件承載](./media/logic-apps-azure-functions/function-request-body-example.png)
 
-   在此處，內容物件不會轉換為字串，所以物件內容會直接新增至 JSON 承載。 不過，如果內容物件不是傳遞字串、JSON 物件或 JSON 陣列的 JSON 權杖，您就會收到錯誤。 因此，如果此範例改為使用**接收時間**權仗，則您可以將內容物件加上雙引號，以轉換為字串。
+   在此處，內容物件不會轉換為字串，所以物件內容會直接新增至 JSON 承載。 不過，如果內容物件不是傳遞字串、JSON 物件或 JSON 陣列的 JSON 權杖，您就會收到錯誤。 因此，如果此範例改為使用 **接收時間** 權仗，則您可以將內容物件加上雙引號，以轉換為字串。
 
    ![將物件轉換為字串](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
@@ -181,11 +181,11 @@ function convertToDateString(request, response){
 
 1. 在 [要求本文] 方塊中，提供函式的輸入 (必須以 JavaScript 物件標記法 (JSON) 物件進行格式化)。
 
-   此輸入是邏輯應用程式傳送給函式的「內容物件」或訊息。 當您按一下 [要求本文] 欄位時，動態內容清單隨即出現，讓您選取先前步驟中的輸出權杖。 此範例指定內容承載包含名為 `content` 的屬性，而此屬性具有電子郵件觸發程序中的**寄件者**權杖值。
+   此輸入是邏輯應用程式傳送給函式的「內容物件」或訊息。 當您按一下 [要求本文] 欄位時，動態內容清單隨即出現，讓您選取先前步驟中的輸出權杖。 此範例指定內容承載包含名為 `content` 的屬性，而此屬性具有電子郵件觸發程序中的 **寄件者** 權杖值。
 
    ![「要求本文」範例 - 內容物件承載](./media/logic-apps-azure-functions/function-request-body-example.png)
 
-   在此處，內容物件不會轉換為字串，所以物件內容會直接新增至 JSON 承載。 不過，如果內容物件不是傳遞字串、JSON 物件或 JSON 陣列的 JSON 權杖，您就會收到錯誤。 因此，如果此範例改為使用**接收時間**權仗，則您可以在內容物件上加上雙引號，將內容物件轉換為字串：
+   在此處，內容物件不會轉換為字串，所以物件內容會直接新增至 JSON 承載。 不過，如果內容物件不是傳遞字串、JSON 物件或 JSON 陣列的 JSON 權杖，您就會收到錯誤。 因此，如果此範例改為使用 **接收時間** 權仗，則您可以在內容物件上加上雙引號，將內容物件轉換為字串：
 
    ![將物件轉換為字串](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
@@ -195,7 +195,7 @@ function convertToDateString(request, response){
 
 ## <a name="call-logic-apps-from-azure-functions"></a>從 Azure 函式呼叫邏輯應用程式
 
-若要從 Azure 函式內觸發邏輯應用程式，該邏輯應用程式必須以能提供可呼叫端點的觸發程序作為開頭。 例如，您可以使用 **HTTP**、**要求**、**Azure 佇列**或**事件方格**觸發程序來起始邏輯應用程式。 在函式內部，將 HTTP POST 要求傳送給該觸發程序的 URL，並包含您想要讓該邏輯應用程式處理的承載。 如需詳細資訊，請參閱[呼叫、觸發或巢狀邏輯應用程式](../logic-apps/logic-apps-http-endpoint.md)。
+若要從 Azure 函式內觸發邏輯應用程式，該邏輯應用程式必須以能提供可呼叫端點的觸發程序作為開頭。 例如，您可以使用 **HTTP**、**要求**、**Azure 佇列** 或 **事件方格** 觸發程序來起始邏輯應用程式。 在函式內部，將 HTTP POST 要求傳送給該觸發程序的 URL，並包含您想要讓該邏輯應用程式處理的承載。 如需詳細資訊，請參閱[呼叫、觸發或巢狀邏輯應用程式](../logic-apps/logic-apps-http-endpoint.md)。
 
 <a name="enable-authentication-functions"></a>
 

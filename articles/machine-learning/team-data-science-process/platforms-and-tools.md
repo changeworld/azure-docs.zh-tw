@@ -11,11 +11,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d3f6a48815519499ddc39dcc12cafe0fe95e70e0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320226"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023800"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>資料科學專案的平台和工具
 
@@ -45,7 +45,7 @@ Microsoft 對於 Windows 和 Linux 所提供的資料科學虛擬機器，包含
 - 適用於 Windows 的 Power BI desktop
 - Windows / Postgres on Linux 上的 SQL Server 2016 Developer Edition
 
-其也包含 **ML 和 AI 工具** ，例如 xgboost、mxnet 和 Vowpal Wabbit。
+其也包含 **ML 和 AI 工具**，例如 xgboost、mxnet 和 Vowpal Wabbit。
 
 目前 DSVM 可用於 **Windows** 和 **Linux CentOS** 作業系統。 根據您規劃在上面執行之資料科學專案的需要，選擇 DSVM 的大小(CPU 核心數目和記憶體數量)。 
 
@@ -101,14 +101,14 @@ R Services (資料庫內) 提供用於開發和部署智慧型應用程式的平
 
 R Services (資料庫內) 支援開放原始碼 R 語言與一組完整的 SQL Server 工具和技術。 它們提供更優異的效能、安全性、可靠性及管理能力。 您可以使用方便且熟悉的工具來部署 R 解決方案。 生產應用程式可以使用 Transact-SQL 呼叫 R 執行階段，並且擷取預測和視覺效果。 您也可以使用 ScaleR 程式庫來改善 R 解決方案的規模和效能。 如需詳細資訊，請參閱 [SQL Server R Services](/sql/advanced-analytics/r/sql-server-r-services)。
 
-Microsoft 的 TDSP 小組已發佈兩個端對端逐步解說，示範如何在 SQL Server 2016 R Services 中建置資料科學解決方案：一個適用於 R 程式設計人員，另一個適用於 SQL 開發人員。 若是 **R 程式設計人員** ，請參閱 [資料科學端對端逐步解說](/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)。 若是 **SQL 開發人員** ，請參閱 [適用於 SQL 開發人員的資料庫內進階分析 (教學課程)](/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)。
+Microsoft 的 TDSP 小組已發佈兩個端對端逐步解說，示範如何在 SQL Server 2016 R Services 中建置資料科學解決方案：一個適用於 R 程式設計人員，另一個適用於 SQL 開發人員。 若是 **R 程式設計人員**，請參閱 [資料科學端對端逐步解說](/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)。 若是 **SQL 開發人員**，請參閱 [適用於 SQL 開發人員的資料庫內進階分析 (教學課程)](/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)。
 
 
 ## <a name="appendix-tools-to-set-up-data-science-projects"></a><a name="appendix"></a>附錄：用來設定資料科學專案的工具
 
 ### <a name="install-git-credential-manager-on-windows"></a>在 Windows 上安裝 Git 認證管理員
 
-如果您遵照 **Windows** 上的 TDSP，您需要安裝 **Git 認證管理員 (GCM)** ，以與 Git 存放庫通訊。 若要安裝 GCM，您必須先安裝 **Chocolaty** 。 若要安裝 Chocolaty 和 GCM，以 **系統管理員** 身分在 Windows PowerShell 中執行下列命令：  
+如果您遵照 **Windows** 上的 TDSP，您需要安裝 **Git 認證管理員 (GCM)** ，以與 Git 存放庫通訊。 若要安裝 GCM，您必須先安裝 **Chocolaty**。 若要安裝 Chocolaty 和 GCM，以 **系統管理員** 身分在 Windows PowerShell 中執行下列命令：  
 
 ```powershell
 iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex

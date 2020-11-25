@@ -4,16 +4,16 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 467e09f9bd46df6d888d82f2961c5aed9cca4ab5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4a1891eadf2e36bcb94b9f605d91f227fa83a3f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67173780"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025761"
 ---
-這個範例牽涉到使用 [Twilio](https://www.twilio.com/) 服務來將 SMS 訊息傳送至行動電話。 Azure Functions 已透過 [Twilio 繫結](https://docs.microsoft.com/azure/azure-functions/functions-bindings-twilio)支援 Twilio，範例會使用該功能。
+這個範例牽涉到使用 [Twilio](https://www.twilio.com/) 服務來將 SMS 訊息傳送至行動電話。 Azure Functions 已透過 [Twilio 繫結](../articles/azure-functions/functions-bindings-twilio.md)支援 Twilio，範例會使用該功能。
 
-首先您需要的是 Twilio 帳戶。 您可以在 https://www.twilio.com/try-twilio 免費建立一個帳戶。 一旦您擁有帳戶，將下列三個**應用程式設定**新增至您的函式應用程式。
+首先您需要的是 Twilio 帳戶。 您可以在 https://www.twilio.com/try-twilio 免費建立一個帳戶。 一旦您擁有帳戶，將下列三個 **應用程式設定** 新增至您的函式應用程式。
 
 | 應用程式設定名稱 | 值說明 |
 | - | - |

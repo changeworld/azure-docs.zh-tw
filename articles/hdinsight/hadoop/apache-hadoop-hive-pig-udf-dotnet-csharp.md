@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
 ms.openlocfilehash: e99d68d31f1da4dcb3ef1086a2bbd90f0ab30410
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488991"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023120"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>搭配使用 c # 使用者定義函式與 HDInsight 中 Apache Hadoop 上的 Apache Hive 和 Apache Pig
 
@@ -22,9 +22,9 @@ ms.locfileid: "92488991"
 > [!IMPORTANT]
 > 本檔中的步驟適用于以 Linux 為基礎的 HDInsight 叢集。 Linux 是唯一使用於 HDInsight 3.4 版或更新版本的作業系統。 如需詳細資訊，請參閱 [HDInsight 元件版本設定](../hdinsight-component-versioning.md)。
 
-Hive 和 Pig 都可以將資料傳遞至外部應用程式進行處理。 這個程序稱為_串流處理_。 使用 .NET 應用程式時，資料會在 STDIN 上傳遞至應用程式，而應用程式會在 STDOUT 上傳回結果。 為了在 STDIN 和 STDOUT 讀取和寫入，您可以從主控台應用程式使用 `Console.ReadLine()` 和 `Console.WriteLine()`。
+Hive 和 Pig 都可以將資料傳遞至外部應用程式進行處理。 這個程序稱為 _串流處理_。 使用 .NET 應用程式時，資料會在 STDIN 上傳遞至應用程式，而應用程式會在 STDOUT 上傳回結果。 為了在 STDIN 和 STDOUT 讀取和寫入，您可以從主控台應用程式使用 `Console.ReadLine()` 和 `Console.WriteLine()`。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 熟悉如何撰寫和建置以 .NET Framework 4.5 為目標的 C# 程式碼。
 
@@ -54,11 +54,11 @@ Hive 和 Pig 都可以將資料傳遞至外部應用程式進行處理。 這個
 
 1. 啟動 Visual Studio。
 
-2. 選取 [建立新專案]****。
+2. 選取 [建立新專案]。
 
-3. 在 [ **建立新專案** ] 視窗中，選擇 [ **主控台應用程式 ( .NET Framework]) ** 範本 (c # 版本) 。 然後選取 [下一步]  。
+3. 在 [ **建立新專案** ] 視窗中，選擇 [ **主控台應用程式 ( .NET Framework])** 範本 (c # 版本) 。 然後選取 [下一步]  。
 
-4. 在 [**設定您的新專案**] 視窗中，輸入*hivecsharp.exe*的**專案名稱**，然後流覽至或建立儲存新專案的**位置**。 然後選取 [建立]。
+4. 在 [**設定您的新專案**] 視窗中，輸入 *hivecsharp.exe* 的 **專案名稱**，然後流覽至或建立儲存新專案的 **位置**。 然後選取 [建立]。
 
 5. 在 Visual Studio IDE 中，以下列程式碼取代 *Program.cs* 的內容：
 
@@ -123,9 +123,9 @@ Hive 和 Pig 都可以將資料傳遞至外部應用程式進行處理。 這個
 
 2. 在 [開始] 視窗中，選取 [建立新專案]。
 
-3. 在 [ **建立新專案** ] 視窗中，選擇 [ **主控台應用程式 ( .NET Framework]) ** 範本 (c # 版本) 。 然後選取 [下一步]  。
+3. 在 [ **建立新專案** ] 視窗中，選擇 [ **主控台應用程式 ( .NET Framework])** 範本 (c # 版本) 。 然後選取 [下一步]  。
 
-4. 在 [**設定您的新專案**] 視窗中，輸入*為 pigudf.exe*的**專案名稱**，然後移至或建立儲存新專案的**位置**。 然後選取 [建立]。
+4. 在 [**設定您的新專案**] 視窗中，輸入 *為 pigudf.exe* 的 **專案名稱**，然後移至或建立儲存新專案的 **位置**。 然後選取 [建立]。
 
 5. 在 Visual Studio IDE 中，以下列程式碼取代 *Program.cs* 的內容：
 
@@ -168,17 +168,17 @@ Hive 和 Pig 都可以將資料傳遞至外部應用程式進行處理。 這個
 
 接下來，將 Hive 和 Pig UDF 應用程式上傳至 HDInsight 叢集上的儲存體。
 
-1. 在 Visual Studio 中，流覽至**View**  >  **伺服器總管**。
+1. 在 Visual Studio 中，流覽至 **View**  >  **伺服器總管**。
 
-1. 在 **伺服器總管**中，以滑鼠右鍵按一下 [ **Azure**]，選取 **[連線到 Microsoft Azure 訂**用帳戶]，然後完成登入程式。
+1. 在 **伺服器總管** 中，以滑鼠右鍵按一下 [ **Azure**]，選取 **[連線到 Microsoft Azure 訂** 用帳戶]，然後完成登入程式。
 
 1. 展開您要部署此應用程式的 HDInsight 叢集。 就會列出含有文字 **(預設儲存體帳戶)** 的項目。
 
     ![預設儲存體帳戶、HDInsight 叢集伺服器總管](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png)
 
-    * 如果可以展開此專案，您就會使用 **Azure 儲存體帳戶** 作為叢集的預設儲存體。 若要檢視叢集之預設儲存體上的檔案，請展開項目，然後按兩下 [(預設容器)]****。
+    * 如果可以展開此專案，您就會使用 **Azure 儲存體帳戶** 作為叢集的預設儲存體。 若要檢視叢集之預設儲存體上的檔案，請展開項目，然後按兩下 [(預設容器)]。
 
-    * 如果無法展開此專案，您就會使用 **Azure Data Lake Storage** 作為叢集的預設儲存體。 若要檢視叢集之預設儲存體上的檔案，請按兩下 [(預設儲存體帳戶)]**** 項目。
+    * 如果無法展開此專案，您就會使用 **Azure Data Lake Storage** 作為叢集的預設儲存體。 若要檢視叢集之預設儲存體上的檔案，請按兩下 [(預設儲存體帳戶)] 項目。
 
 1. 若要上傳 .exe 檔案，請使用下列其中一種方法：
 
@@ -186,7 +186,7 @@ Hive 和 Pig 都可以將資料傳遞至外部應用程式進行處理。 這個
 
         ![新專案的 HDInsight 上傳圖示](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
 
-        在 [ **上傳新** 檔案] 對話方塊的 [ **檔案名**] 底下，選取 **[流覽]**。 在 [**上傳 Blob** ] 對話方塊中，移至*hivecsharp.exe*專案的*bin\debug*資料夾，然後選擇*HiveCSharp.exe*檔。 最後，選取 [ **開啟** ]，然後按一下 **[確定]** 以完成上傳。
+        在 [ **上傳新** 檔案] 對話方塊的 [ **檔案名**] 底下，選取 **[流覽]**。 在 [**上傳 Blob** ] 對話方塊中，移至 *hivecsharp.exe* 專案的 *bin\debug* 資料夾，然後選擇 *HiveCSharp.exe* 檔。 最後，選取 [ **開啟** ]，然後按一下 **[確定]** 以完成上傳。
 
     * 如果您是使用 **Azure Data Lake Storage**，請在檔案清單中的空白區域上按一下滑鼠右鍵，然後選取 **[上傳**]。 最後，選擇 *HiveCSharp.exe* 檔案，然後選取 [ **開啟**]。
 
@@ -196,11 +196,11 @@ Hive 和 Pig 都可以將資料傳遞至外部應用程式進行處理。 這個
 
 現在您可以執行使用 Hive UDF 應用程式的 Hive 查詢。
 
-1. 在 Visual Studio 中，流覽至**View**  >  **伺服器總管**。
+1. 在 Visual Studio 中，流覽至 **View**  >  **伺服器總管**。
 
-2. 展開 [Azure]****，然後展開 [HDInsight]****。
+2. 展開 [Azure]，然後展開 [HDInsight]。
 
-3. 以滑鼠右鍵按一下部署 *HiveCSharp* 應用程式的叢集，然後選取 [撰寫 Hive 查詢]****。
+3. 以滑鼠右鍵按一下部署 *HiveCSharp* 應用程式的叢集，然後選取 [撰寫 Hive 查詢]。
 
 4. 在 Hive 查詢中使用下列文字：
 
@@ -224,9 +224,9 @@ Hive 和 Pig 都可以將資料傳遞至外部應用程式進行處理。 這個
 
     此查詢 `clientid` `devicemake` 會從選取、和 `devicemodel` 欄位 `hivesampletable` ，然後將這些欄位傳遞至 *HiveCSharp.exe* 應用程式。 此查詢預期應用程式會傳回儲存為 `clientid`、`phoneLabel` 和 `phoneHash` 的三個欄位。 查詢也預期會在預設儲存體容器的根目錄中尋找 *HiveCSharp.exe* 。
 
-5. 將預設的 **互動** 切換為 [ **批次**]，然後選取 [ **提交** ] 以將作業提交至 HDInsight 叢集。 [Hive 作業摘要]**** 視窗隨即開啟。
+5. 將預設的 **互動** 切換為 [ **批次**]，然後選取 [ **提交** ] 以將作業提交至 HDInsight 叢集。 [Hive 作業摘要] 視窗隨即開啟。
 
-6. 選取 [重新整理] 以重新整理**摘要，直到****作業狀態**變更為 [**已完成**]。 若要查看作業輸出，請選取 [ **工作輸出**]。
+6. 選取 [重新整理] 以重新整理 **摘要，直到****作業狀態** 變更為 [**已完成**]。 若要查看作業輸出，請選取 [ **工作輸出**]。
 
 ## <a name="run-an-apache-pig-job"></a>執行 Apache Pig 工作
 
@@ -252,7 +252,7 @@ Hive 和 Pig 都可以將資料傳遞至外部應用程式進行處理。 這個
     DUMP DETAILS;
     ```
 
-    `DEFINE`語句 `streamer` 會建立*PigUDF.exe*應用程式的別名，並從叢集的 `CACHE` 預設儲存體載入它。 稍後， `streamer` 會搭配運算子使用， `STREAM` 以處理包含在中的單行 `LOG` ，並將資料當做一系列的資料行傳回。
+    `DEFINE`語句 `streamer` 會建立 *PigUDF.exe* 應用程式的別名，並從叢集的 `CACHE` 預設儲存體載入它。 稍後， `streamer` 會搭配運算子使用， `STREAM` 以處理包含在中的單行 `LOG` ，並將資料當做一系列的資料行傳回。
 
     > [!NOTE]
     > 用於串流處理的應用程式名稱必須在 \` 別名時以 (倒引號) 字元括住，並在搭配使用時，以 ' (單引號) 字元括住 `SHIP` 。

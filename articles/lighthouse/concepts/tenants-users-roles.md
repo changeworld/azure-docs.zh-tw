@@ -4,11 +4,11 @@ description: 了解 Azure Active Directory 租用戶、使用者和角色的概�
 ms.date: 10/29/2020
 ms.topic: conceptual
 ms.openlocfilehash: 411b9bae19166e1875011360aa011c05d590b237
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043049"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023937"
 ---
 # <a name="tenants-users-and-roles-in-azure-lighthouse-scenarios"></a>Azure Lighthouse 案例中的租使用者、使用者和角色
 
@@ -18,7 +18,7 @@ ms.locfileid: "93043049"
 
 若要達到此邏輯投射，必須將訂用帳戶 (或客戶租使用者中) 訂用帳戶內的一或多個資源群組 *上線* 至 Azure Lighthouse。 此上線程序可以[透過 Azure Resource Manager 範本](../how-to/onboard-customer.md)，或藉由[將公用或私用供應項目發佈至 Azure Marketplace](../how-to/publish-managed-services-offers.md) 來完成。
 
-無論您選擇哪一種上線方法，都必須定義 *授權* 。 每個授權都會在管理租用戶中指定一個可存取委派資源的使用者帳戶，以及一個可設定每個使用者對這些資源所擁有之權限的內建角色。
+無論您選擇哪一種上線方法，都必須定義 *授權*。 每個授權都會在管理租用戶中指定一個可存取委派資源的使用者帳戶，以及一個可設定每個使用者對這些資源所擁有之權限的內建角色。
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>定義使用者和角色的最佳做法
 
@@ -30,7 +30,7 @@ ms.locfileid: "93043049"
 - 請確定需要[在 Azure 入口網站檢視 [我的客戶] 頁面](../how-to/view-manage-customers.md)的任何使用者都具有[讀取者](../../role-based-access-control/built-in-roles.md#reader)角色 (或包含讀取者存取權的其他內建角色)。
 
 > [!IMPORTANT]
-> 為了新增 Azure AD 群組的許可權， **群組類型** 必須設定為 [ **安全性** ]。 建立群組時，會選取此選項。 如需詳細資訊，請參閱[使用 Azure Active Directory 建立基本群組並新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
+> 為了新增 Azure AD 群組的許可權， **群組類型** 必須設定為 [ **安全性**]。 建立群組時，會選取此選項。 如需詳細資訊，請參閱[使用 Azure Active Directory 建立基本群組並新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
 ## <a name="role-support-for-azure-lighthouse"></a>Azure Lighthouse 的角色支援
 

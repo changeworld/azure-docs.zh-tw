@@ -10,21 +10,21 @@ ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
 ms.openlocfilehash: bb9c206a17a11f0cf710ac4ee3ac7ccae0fa9eb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87848021"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023290"
 ---
 # <a name="write-azure-web-application-to-read-fhir-data"></a>撰寫 Azure Web 應用程式以讀取 FHIR 資料
 既然您可以連線到 FHIR 伺服器並張貼資料，就可以開始撰寫可讀取 FHIR 資料的 Web 應用程式。 在此教學課程的最後一個步驟中，我們將逐步解說如何撰寫和存取 Web 應用程式。
 
 ## <a name="create-web-application"></a>建立 Web 應用程式
-在 Azure 中，選取 [建立資源]****，然後選取 [Web 應用程式]****。 務必將您的 Web 應用程式命名為您在重新導向 URI 中為用戶端應用程式指定的任何內容，或返回並將重新導向 URI 更新為新的名稱。 
+在 Azure 中，選取 [建立資源]，然後選取 [Web 應用程式]。 務必將您的 Web 應用程式命名為您在重新導向 URI 中為用戶端應用程式指定的任何內容，或返回並將重新導向 URI 更新為新的名稱。 
 
 ![建立 Web 應用程式](media/tutorial-web-app/create-web-app.png)
 
-Web 應用程式可供使用之後，請**移至資源**。 選取右側開發工具底下的 [App Service 編輯器 (預覽)]****，然後選取 [執行]****。 選取 [執行] 將開啟 App Service 編輯器。 以滑鼠右鍵按一下 [瀏覽]** 底下的灰色空間，然後建立名為 **index.html** 的新檔案。
+Web 應用程式可供使用之後，請 **移至資源**。 選取右側開發工具底下的 [App Service 編輯器 (預覽)]，然後選取 [執行]。 選取 [執行] 將開啟 App Service 編輯器。 以滑鼠右鍵按一下 [瀏覽] 底下的灰色空間，然後建立名為 **index.html** 的新檔案。
 
 以下是您可以輸入 **index.html** 的程式碼。 您將需要更新下列項目：
 * **clientId** - 以您的用戶端應用程式識別碼更新。 此識別碼會是您在提取權杖時所擷取的相同識別碼

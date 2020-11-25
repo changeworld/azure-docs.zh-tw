@@ -9,11 +9,11 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
 ms.openlocfilehash: 6c07ab4b18c017bd29723d2640129b8e67374e3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87837375"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023647"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>將您的應用程式和解決方案從 BizTalk 服務遷移至 Azure Logic Apps
 
@@ -75,7 +75,7 @@ BizTalk 服務連接器可協助橋接器傳送及接收資料，包括啟用 HT
 
 ### <a name="message-processing-decoding-and-encoding"></a>訊息處理、解碼和編碼
 
-在 BizTalk 服務中，您可以接收不同類型的 XML 訊息，並判斷所收到訊息的結構描述是否相符。 這項工作會在接收處理管線的「訊息類型」** 階段中執行。 然後，解碼階段會使用偵測到的訊息類型，並搭配提供的結構描述來將訊息解碼。 如果結構描述是一般檔案結構描述，這個階段會將傳入的一般檔案轉換成 XML。 
+在 BizTalk 服務中，您可以接收不同類型的 XML 訊息，並判斷所收到訊息的結構描述是否相符。 這項工作會在接收處理管線的「訊息類型」階段中執行。 然後，解碼階段會使用偵測到的訊息類型，並搭配提供的結構描述來將訊息解碼。 如果結構描述是一般檔案結構描述，這個階段會將傳入的一般檔案轉換成 XML。 
 
 Logic Apps 提供類似的功能。 您可以使用不同的連接器觸發程序 (檔案系統、FTP、HTTP 等)，透過不同的通訊協定來接收一般檔案，然後使用[一般檔案解碼](../logic-apps/logic-apps-enterprise-integration-flatfile.md)動作將傳入資料轉換成 XML。 您可以將現有的一般檔案結構描述直接移至 Logic Apps，而不需要進行任何變更，再將結構描述上傳至您的整合帳戶。
 
@@ -93,7 +93,7 @@ BizTalk 服務會做出由哪一個端點或連接器來傳送傳入訊息或資
 
 ![顯示路由篩選選項的螢幕擷取畫面。](media/logic-apps-move-from-mabs/route-filter.png)
 
-在 BizTalk 服務中，如果只有兩個選項，使用「條件」** 會是在 BizTalk 服務中轉換路由篩選的最佳方法。 如果有兩個以上的選項，則使用 **switch**。
+在 BizTalk 服務中，如果只有兩個選項，使用「條件」會是在 BizTalk 服務中轉換路由篩選的最佳方法。 如果有兩個以上的選項，則使用 **switch**。
 
 Logic Apps 提供複雜的邏輯功能，以及具有[條件式陳述式](../logic-apps/logic-apps-control-flow-conditional-statement.md)和[參數陳述式](../logic-apps/logic-apps-control-flow-switch-statement.md)的進階控制流程和路由。
 

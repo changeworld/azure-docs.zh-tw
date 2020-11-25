@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: b8dc63030c6791779ad90500747e4e2f5c4ffeef
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288972"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022661"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>使用 Azure HDInsight 針對 Apache Hadoop YARN 問題進行疑難排解
 
@@ -24,7 +24,7 @@ ms.locfileid: "93288972"
 
 在 Ambari 使用下列步驟建立新的 YARN 佇列，然後平衡所有佇列之間的容量配置。
 
-在本例中，兩個現有的佇列 ( **預設** 和 **thriftsvr** ) 都從 50% 的容量變更為 25% 的容量，讓新的佇列 (spark) 有 50% 的容量。
+在本例中，兩個現有的佇列 (**預設** 和 **thriftsvr**) 都從 50% 的容量變更為 25% 的容量，讓新的佇列 (spark) 有 50% 的容量。
 
 | 佇列 | Capacity | 最大容量 |
 | --- | --- | --- |
@@ -129,7 +129,7 @@ ms.locfileid: "93288972"
 
     此命令會建立名為 containerlogs.txt 的記錄檔。
 
-### <a name="additional-reading"></a><a name="additional-reading-2"></a>延伸閱讀
+### <a name="additional-reading"></a><a name="additional-reading-2"></a>其他閱讀
 
 - [使用 SSH 連線到 HDInsight (Apache Hadoop)](./hdinsight-hadoop-linux-use-ssh-unix.md)
 - [Apache Hadoop YARN 概念與應用程式](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)

@@ -9,11 +9,11 @@ ms.date: 09/30/2020
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: ef9efe389894af7c792e980922ca422e9d05929b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95560823"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025879"
 ---
 下表說明 Azure 一般用途 v1、v2、Blob 儲存體及區塊 Blob 儲存體帳戶的預設限制。 「輸入」限制是指傳送至某個儲存體帳戶的所有資料。 「輸出」限制是指從儲存體帳戶收到的所有資料。
 

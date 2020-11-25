@@ -4,19 +4,19 @@ description: 描述 Azure Event Grid blob 儲存體事件的屬性
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: a914edbb6f624617766c77b277d7ee8e6ad08bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87458938"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023954"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>以事件方格來源 Azure Blob 儲存體
 
-本文提供 blob 儲存體事件的屬性與結構描述。如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。 它也提供快速入門和教學課程的清單，讓您使用 Azure Blob 儲存體作為事件來源。
+本文提供 blob 儲存體事件的屬性與結構描述。 如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。 它也提供快速入門和教學課程的清單，讓您使用 Azure Blob 儲存體作為事件來源。
 
 
 >[!NOTE]
-> 只有 StorageV2 類型的儲存體帳戶 ** (一般用途 v2) **、 **BlockBlobStorage**和 **BlobStorage** 支援事件整合。 **儲存體 (一般用途 v1) ** 不 *支援與* 事件方格整合。
+> 只有 StorageV2 類型的儲存體帳戶 **(一般用途 v2)**、 **BlockBlobStorage** 和 **BlobStorage** 支援事件整合。 **儲存體 (一般用途 v1)** 不 *支援與* 事件方格整合。
 
 ## <a name="event-grid-event-schema"></a>Event Grid 事件結構描述
 
@@ -304,25 +304,25 @@ ms.locfileid: "87458938"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | api | 字串 | 觸發事件的作業。 |
 | clientRequestId | 字串 | 用戶端提供的儲存體 API 作業要求識別碼。 您可以使用此識別碼，在記錄檔中使用 "client-request-id" 欄位將 Azure 儲存體診斷記錄相互關聯，並可在用戶端要求中使用 "x------------------------- 請參閱[記錄格式](/rest/api/storageservices/storage-analytics-log-format)。 |
 | requestId | 字串 | 儲存體 API 作業由服務產生的要求識別碼。 可用於利用記錄中的 "request-id-header" 欄位與 Azure 儲存體診斷記錄建立關聯，並從 'x-ms-request-id' 標頭中的 API 呼叫初始化傳回。 請參閱[記錄格式](/rest/api/storageservices/storage-analytics-log-format)。 |
 | etag | 字串 | 此值可讓您依條件執行作業。 |
 | ContentType | 字串 | 為 blob 指定內容類型。 |
-| contentLength | 整數 | Blob 大小 (以位元組為單位)。 |
+| contentLength | integer | Blob 大小 (以位元組為單位)。 |
 | blobType | 字串 | Blob 的類型。 有效值為 "BlockBlob" 或 "PageBlob"。 |
-| contentOffset | 數字 | 寫入作業的位移（以位元組為單位），在事件觸發應用程式完成寫入檔案的時間點。 <br>只顯示在具有階層命名空間的 blob 儲存體帳戶上觸發的事件。|
+| contentOffset | 數目 | 寫入作業的位移（以位元組為單位），在事件觸發應用程式完成寫入檔案的時間點。 <br>只顯示在具有階層命名空間的 blob 儲存體帳戶上觸發的事件。|
 | destinationUrl |字串 | 作業完成後將存在之檔案的 url。 例如，如果重新命名檔案， `destinationUrl` 屬性會包含新檔案名的 url。 <br>只顯示在具有階層命名空間的 blob 儲存體帳戶上觸發的事件。|
 | sourceUrl |字串 | 在作業之前存在之檔案的 url。 例如，如果重新命名檔案，在 `sourceUrl` 重新命名作業之前，會包含原始檔案名稱的 url。 <br>只顯示在具有階層命名空間的 blob 儲存體帳戶上觸發的事件。 |
-| url | 字串 | blob 的路徑。 <br>如果用戶端使用 Blob REST API，則 url 會有下列結構： * \<storage-account-name\> . blob.core.windows.net/ \<container-name\> / \<file-name\> *。 <br>如果用戶端使用 Data Lake Storage REST API，則 url 會有下列結構： * \<storage-account-name\> . dfs.core.windows.net/ \<file-system-name\> / \<file-name\> *。 |
+| url | 字串 | blob 的路徑。 <br>如果用戶端使用 Blob REST API，則 url 會有下列結構： *\<storage-account-name\> . blob.core.windows.net/ \<container-name\> / \<file-name\>*。 <br>如果用戶端使用 Data Lake Storage REST API，則 url 會有下列結構： *\<storage-account-name\> . dfs.core.windows.net/ \<file-system-name\> / \<file-name\>*。 |
 | 遞迴 | 字串 | `True` 若要對所有子目錄執行此作業，否則為 `False` 。 <br>只顯示在具有階層命名空間的 blob 儲存體帳戶上觸發的事件。 |
 | 排序器 | 字串 | 不透明的字串值表示任何特定 Blob 名稱之事件的邏輯順序。  使用者可使用標準字串比較，以了解 Blob 名稱相同之兩個事件的相對順序。 |
 | storageDiagnostics | 物件 (object) | Azure 儲存體服務偶爾包含診斷資料。 出現時，事件消費者應該予以忽略。 |
 
 ## <a name="tutorials-and-how-tos"></a>教學課程和操作說明
-|標題  |說明  |
+|標題  |描述  |
 |---------|---------|
 | [快速入門：使用 Azure CLI 將 Blob 儲存體事件路由至自訂的 Web 端點](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 示範如何使用 Azure CLI 將 Blob 儲存體事件傳送至 WebHook。 |
 | [快速入門：使用 PowerShell 將 Blob 儲存體事件路由至自訂的 Web 端點](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 示範如何使用 Azure PowerShell 將 Blob 儲存體事件傳送至 WebHook。 |

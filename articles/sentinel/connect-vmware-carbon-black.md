@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
 ms.openlocfilehash: e13b251c9bd95a5b52d63d8ea1bbf265c9c46fd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87096305"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023869"
 ---
 # <a name="connect-your-vmware-carbon-black-cloud-endpoint-standard-to-azure-sentinel-with-azure-function"></a>將您的 VMware 碳黑色雲端端點標準連接至使用 Azure Function Azure Sentinel
 
@@ -50,7 +50,7 @@ Azure Functions 可以直接從 VMware 碳黑色雲端端點標準整合和提�
 可能需要20分鐘的時間，記錄才會開始出現在 Log Analytics 中。 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 在本檔中，您已瞭解如何使用 Azure 函數應用程式，將 VMware 碳黑色雲端端點標準連接至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。

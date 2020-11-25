@@ -12,11 +12,11 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: bc615322c11a456699d2364cf44cad40e086e851
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517881"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022474"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>使用 Azure Functions 管理 Azure Synapse Analytics SQL 集區中的計算資源
 
@@ -64,7 +64,7 @@ ms.locfileid: "94517881"
    {second} {minute} {hour} {day} {month} {day-of-week}
    ```
 
-   例如， *"0 30 9 * * 1-5"* 會反映在每個工作日上午 9:30 執行的觸發程序。 如需詳細資訊，請瀏覽 Azure Functions [排程範例](../../azure-functions/functions-bindings-timer.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#example)。
+   例如，*"0 30 9 * * 1-5"* 會反映在每個工作日上午 9:30 執行的觸發程序。 如需詳細資訊，請瀏覽 Azure Functions [排程範例](../../azure-functions/functions-bindings-timer.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#example)。
 
 ## <a name="change-the-time-of-the-scale-operation"></a>變更調整規模作業的時間
 
@@ -99,7 +99,7 @@ ms.locfileid: "94517881"
 
    ![顯示 [函數應用程式] 功能表的螢幕擷取畫面，其中已選取 [函式] 旁的 [加號] 圖示。](./media/manage-compute-with-azure-functions/create-new-function.png)
 
-2. 從 [語言] 中，選取 [ *JavaScript* ]，然後選取 [ *TimerTrigger* ]。
+2. 從 [語言] 中，選取 [ *JavaScript*]，然後選取 [ *TimerTrigger*]。
 
    ![建立新的函式](./media/manage-compute-with-azure-functions/timertrigger-js.png)
 

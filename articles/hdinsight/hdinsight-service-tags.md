@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
 ms.openlocfilehash: 1a90bc6636dcb3aa81f09b0489850c1a95b3256d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535241"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022746"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight 的 NSG 服務標記
 
@@ -36,11 +36,11 @@ HDInsight 服務會管理這些服務標記。 您無法建立自己的服務標
 
 1. 在 [ [Azure 入口網站](https://portal.azure.com/)中，選取您的網路安全性群組。
 
-1. 在 [ **設定** ] 底下，選取 [ **輸入安全性規則** ]，然後選取 [ **+ 新增** ]。
+1. 在 [ **設定**] 底下，選取 [ **輸入安全性規則**]，然後選取 [ **+ 新增**]。
 
-1. 從 [ **來源** ] 下拉式清單中，選取 [ **服務標記** ]。
+1. 從 [ **來源** ] 下拉式清單中，選取 [ **服務標記**]。
 
-1. 從 [ **來源服務標記** ] 下拉式清單中，選取 [ **HDInsight** ]。
+1. 從 [ **來源服務標記** ] 下拉式清單中，選取 [ **HDInsight**]。
 
     ![從 Azure 入口網站新增服務標記](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
 
@@ -56,7 +56,7 @@ HDInsight 服務會管理這些服務標記。 您無法建立自己的服務標
 
 如果您的叢集位於下表所列的區域中，您只需要將單一區域服務標籤新增至您的 NSG。
 
-| Country | Region | 服務標籤 |
+| Country | 區域 | 服務標籤 |
 | ---- | ---- | ---- |
 | 澳大利亞 | 澳大利亞東部 | AustraliaEast |
 | &nbsp; | 澳大利亞東南部 | AustraliaSoutheast |
@@ -96,7 +96,7 @@ HDInsight 服務會管理這些服務標記。 您無法建立自己的服務標
 - `HDInsight.WestUS`
 - `HDInsight.EastUS`
 
-| Country | Region | 服務標籤 |
+| Country | 區域 | 服務標籤 |
 | ---- | ---- | ---- |
 | 美國 | 美國東部 2 | EastUS2 |
 | &nbsp; | 美國中部 | CentralUS |
@@ -123,7 +123,7 @@ HDInsight 服務會管理這些服務標記。 您無法建立自己的服務標
 
 *德國中部* 和 *德國東北部* 區域中的叢集必須允許兩個服務標記： `HDInsight.GermanyCentral` 和 `HDInsight.GermanyNortheast` 。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [網路安全性群組：服務標記](../virtual-network/network-security-groups-overview.md#security-rules)
 - [建立 Azure HDInsight 叢集的虛擬網路](hdinsight-create-virtual-network.md)

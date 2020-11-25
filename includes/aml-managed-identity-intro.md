@@ -10,11 +10,11 @@ ms.custom: include file
 ms.topic: include
 ms.date: 08/24/2020
 ms.openlocfilehash: 70b636b7bb508b71475a7464983b091d5d10e0e1
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95560877"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025440"
 ---
  Azure Machine Learning 計算叢集也支援 [受控](../articles/active-directory/managed-identities-azure-resources/overview.md) 識別，以驗證對 Azure 資源的存取，而不在您的程式碼中包含認證。 受控身分識別有兩種：
 

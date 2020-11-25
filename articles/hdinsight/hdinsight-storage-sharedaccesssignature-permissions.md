@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/28/2020
 ms.openlocfilehash: eb8201ea888b98250d452e0b0e1c48f30cbb1efc
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742047"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022729"
 ---
 # <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure Blob 儲存體共用存取簽章來限制對 HDInsight 中資料的存取
 
@@ -207,7 +207,7 @@ Set-AzStorageblobcontent `
 
 1. 在 Visual Studio 中開啟解決方案。
 
-2. 在方案總管中，以滑鼠右鍵按一下 **SASExample** 專案，然後選取 [ **屬性** ]。
+2. 在方案總管中，以滑鼠右鍵按一下 **SASExample** 專案，然後選取 [ **屬性**]。
 
 3. 選取 [設定]  ，並新增下列項目的值：
 
@@ -353,29 +353,29 @@ Remove-AzResourceGroup `
 
 1. 開啟叢集的 Ambari Web UI。 此頁面的位址是 `https://YOURCLUSTERNAME.azurehdinsight.net`。 出現提示時，使用您建立叢集時所使用的 admin 名稱 (admin) 和密碼來驗證叢集。
 
-1. 流覽至 **HDFS**  >  **Configs**  >  **Advanced**  >  **預先定義的自訂核心網站** 。
+1. 流覽至 **HDFS**  >  **Configs**  >  **Advanced**  >  **預先定義的自訂核心網站**。
 
-1. 展開 [ **自訂核心網站** ] 區段，並將它滾動至結尾，然後選取 [ **新增屬性 ...** ]。使用下列值作為索引 **鍵** 和 **值** ：
+1. 展開 [ **自訂核心網站** ] 區段，並將它滾動至結尾，然後選取 [ **新增屬性 ...**]。使用下列值作為索引 **鍵** 和 **值**：
 
-    * 機 **碼** ：`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
-    * **值** ：稍早執行的其中一個方法所傳回的 SAS。
+    * 機 **碼**：`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **值**：稍早執行的其中一個方法所傳回的 SAS。
 
     取代 `CONTAINERNAME` 為您搭配 c # 或 SAS 應用程式使用的容器名稱。 `STORAGEACCOUNTNAME`以您使用的儲存體帳戶名稱取代。
 
     選取 [ **新增** ] 以儲存此索引鍵和值
 
-1. 選取 [ **儲存** ] 按鈕以儲存設定變更。 出現提示時，請新增變更的描述 ( [新增 SAS 儲存體存取權]，例如) 然後選取 [ **儲存** ]。
+1. 選取 [ **儲存** ] 按鈕以儲存設定變更。 出現提示時，請新增變更的描述 ( [新增 SAS 儲存體存取權]，例如) 然後選取 [ **儲存**]。
 
     當變更完成時，請選取 **[確定]** 。
 
    > [!IMPORTANT]  
    > 您必須重新啟動數個服務，變更才會生效。
 
-1. [ **重新開機** ] 下拉式清單隨即出現。 從下拉式清單中選取 [ **重新開機所有受影響** 的]，然後 __確認 [全部重新開機__ ]。
+1. [ **重新開機** ] 下拉式清單隨即出現。 從下拉式清單中選取 [ **重新開機所有受影響** 的]，然後 __確認 [全部重新開機__]。
 
     針對 **MapReduce2** 和 **YARN** 重複此程式。
 
-1. 這些項目重新啟動之後，選取每一個項目，並從 [服務動作]  下拉式清單停用維護模式。
+1. 這些項目重新啟動之後，選取每一個項目，並從 [服務動作] 下拉式清單停用維護模式。
 
 ## <a name="test-restricted-access"></a>測試限制的存取
 
@@ -411,7 +411,7 @@ Remove-AzResourceGroup `
     hdfs dfs -get wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log testfile.txt
     ```
 
-    此命令會將檔案下載到本機檔案，名為 **testfile.txt** 。
+    此命令會將檔案下載到本機檔案，名為 **testfile.txt**。
 
 5. 使用下列命令將本機檔案上傳至 SAS 儲存體上的新檔案，名為 **testupload.txt** ：
 

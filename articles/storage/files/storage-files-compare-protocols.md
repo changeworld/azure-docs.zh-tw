@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 961ba457136d20fbb63ae3315fe8143cffb56be2
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: c4cbbc437b633232ea65dd202b7531a1a5ac2c58
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629303"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "96022578"
 ---
 # <a name="azure-file-share-protocols"></a>Azure 檔案共用通訊協定
 
@@ -26,7 +26,7 @@ Azure 檔案儲存體提供兩種通訊協定來連線及掛接您的 Azure 檔�
 |存取通訊協定     |NFS 4。1         |SMB 2.1、SMB 3。0         |
 |支援的 OS     |Linux 核心4.3 版 +         |Windows 2008 R2 +、Linux 核心版本 4.11 +         |
 |[可用層](storage-files-planning.md#storage-tiers)     |進階儲存體         |Premium 儲存體、交易優化、經常性存取、非經常性存取         |
-|[備援](storage-files-planning.md#redundancy)     |LRS         |LRS、ZRS、GRS         |
+|[備援](storage-files-planning.md#redundancy)     |LRS、ZRS         |LRS、ZRS、GRS         |
 |驗證     |僅限以主機為基礎的驗證        |以身分識別為基礎的驗證，以使用者為基礎的驗證         |
 |權限     |UNIX 樣式許可權         |NTFS 樣式許可權         |
 |檔案系統語義     |POSIX 相容         |不符合 POSIX 規範         |
@@ -74,7 +74,7 @@ Azure 檔案儲存體提供兩種通訊協定來連線及掛接您的 Azure 檔�
 
 使用 SMB 掛接的 Azure 檔案共用提供更 Azure 檔案儲存體的功能，且沒有 Azure 檔案儲存體功能限制，因為它已正式推出。
 
-### <a name="features"></a>特性
+### <a name="features"></a>功能
 
 - Azure 檔案同步
 - 以身分識別為基礎的驗證

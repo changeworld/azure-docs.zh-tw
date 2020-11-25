@@ -10,11 +10,11 @@ ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
 ms.openlocfilehash: 1c64468a2e420734ca51a5b9308bb52e13712c51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852917"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023307"
 ---
 # <a name="testing-the-fhir-api"></a>測試 FHIR API
 在前兩個步驟中，您已部署 Azure API for FHIR 並註冊您的用戶端應用程式。 您現在已準備好要測試您的 Azure API for FHIR 是否已設定使用您的用戶端應用程式。 
@@ -32,9 +32,9 @@ ms.locfileid: "87852917"
 ![失敗的病患](media/tutorial-web-app/postman-patient-authorization-failed.png)
 
 若要取得存取權，您需要有存取權杖。
-1. 在 Postman 中，選取 [授權]**** 並將類型設定為 **OAuth 2.0**
-1. 選取 [取得新的存取權杖]****
-1. 填寫欄位並選取 [要求權杖]****。 您可以在以下看到此教學課程中每個欄位的值。
+1. 在 Postman 中，選取 [授權] 並將類型設定為 **OAuth 2.0**
+1. 選取 [取得新的存取權杖]
+1. 填寫欄位並選取 [要求權杖]。 您可以在以下看到此教學課程中每個欄位的值。
 
 |欄位                |值                                                               |
 |---------------------|--------------------------------------------------------------------|
@@ -49,12 +49,12 @@ ms.locfileid: "87852917"
 |State                |1234                                                                |
 |用戶端驗證|在主體中傳送用戶端認證                                     |
 
-4. 使用您的認證登入，並選取 [接受]****
-1. 在結果上向下滾動，並選取 [使用權杖]****
-1. 再次選取頂端的 [傳送]****，這次您應該會取得結果 ![成功病患](media/tutorial-web-app/postman-patient-authorization-success.png)
+4. 使用您的認證登入，並選取 [接受]
+1. 在結果上向下滾動，並選取 [使用權杖]
+1. 再次選取頂端的 [傳送]，這次您應該會取得結果 ![成功病患](media/tutorial-web-app/postman-patient-authorization-success.png)
 
 ## <a name="post-patient-into-fhir-server"></a>將病患發佈至 FHIR 伺服器
-既然您具有存取權，您便可以建立新病患。 以下是您可以新增至 FHIR 伺服器之簡單病患的範例。 在 Postman 的 [主體]**** 區段中，輸入下列程式碼。
+既然您具有存取權，您便可以建立新病患。 以下是您可以新增至 FHIR 伺服器之簡單病患的範例。 在 Postman 的 [主體] 區段中，輸入下列程式碼。
 
 ``` json
     {

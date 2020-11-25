@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
-ms.openlocfilehash: ac0192da3afa76c3c21056f218f2b249c44d1c36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78b93c05621754ae499e4ae8ca6b66c5bbfaad1b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87133796"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025501"
 ---
 認知服務提供兩種自然語言處理服務， [Language Understanding](../luis/what-is-luis.md) 和 [QnA Maker](../qnamaker/overview/overview.md)，各有不同的用途。 瞭解每個服務的使用時機，以及它們彼此如何補充。
 
@@ -33,7 +33,7 @@ Language Understanding (LUIS) 和 QnA Maker 解決不同的問題。 LUIS 會決
 |服務|用戶端應用程式決定|
 |--|--|
 |LUIS|**判斷使用者** 對文字的意圖-服務不會傳回問題的答案。 例如，此文字會分類為符合 `FindLocation` 意圖。<br>|
-|QnA Maker|從自訂知識庫傳回**問題的答案**。 例如，這項文字是由的靜態文字解答所組成的問題  `Get on the #9 bus and get off at Franklin street` 。|
+|QnA Maker|從自訂知識庫傳回 **問題的答案**。 例如，這項文字是由的靜態文字解答所組成的問題  `Get on the #9 bus and get off at Franklin street` 。|
 |||
 
 > [!div class="mx-imgBorder"]
@@ -71,9 +71,9 @@ Language Understanding (LUIS) 和 QnA Maker 解決不同的問題。 LUIS 會決
 
 如果聊天機器人所需的資訊超過任一項服務所提供的資訊，則若要繼續進行決策樹，請使用這兩個服務，並在用戶端應用程式中處理兩個回應。
 
-使用 Bot framework **[分派 CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** 工具來協助建立處理這兩項服務的程式。 此工具會建立意圖的熱門 LUIS 應用程式，以在 LUIS 和 QnA Maker 之間分派為子應用程式。 [深入瞭解](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=cs) 如何整合 LUIS、QnA Maker 和 Bot framework。
+使用 Bot framework **[分派 CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** 工具來協助建立處理這兩項服務的程式。 此工具會建立意圖的熱門 LUIS 應用程式，以在 LUIS 和 QnA Maker 之間分派為子應用程式。 [深入瞭解](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0) 如何整合 LUIS、QnA Maker 和 Bot framework。
 
-使用 Bot builder 範例（以[c #](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch)或[Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)中**的分派 NLP**）來執行這種類型的聊天機器人。
+使用 Bot builder 範例（以 [c #](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch)或 [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)中 **的分派 NLP**）來執行這種類型的聊天機器人。
 
 ## <a name="best-practices"></a>最佳作法
 
@@ -88,6 +88,6 @@ Language Understanding (LUIS) 和 QnA Maker 解決不同的問題。 LUIS 會決
 * [QnA Maker](../qnamaker/overview/overview.md)
 * [分派 CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
 * [Bot framework 範例](https://github.com/Microsoft/BotBuilder-Samples)
-* [Azure bot 服務](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
+* [Azure bot 服務](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
 * [Azure bot 模擬器](https://github.com/Microsoft/BotFramework-Emulator)
 * [Bot framework 網路聊天](https://github.com/microsoft/BotFramework-WebChat)

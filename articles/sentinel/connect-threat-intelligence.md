@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
 ms.openlocfilehash: 223f3e45f25e3aed3ed6fa15e5b9ea04b17f6c59
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655318"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023903"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>連接威脅情報提供者的資料
 
@@ -59,7 +59,7 @@ Azure Sentinel 可讓您匯入組織所使用的威脅指標，進而增強您�
 
 ## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>將 Azure Sentinel 連接到您的威脅情報平臺
 
-### <a name="prerequisites"></a>先決條件  
+### <a name="prerequisites"></a>Prerequisites  
 
 - 全域管理員或安全性系統管理員的 Azure AD 角色，以將許可權授與使用與 Microsoft Graph 安全性 tiIndicators API 直接整合的提示產品或自訂應用程式。
 
@@ -89,7 +89,7 @@ Azure Sentinel 可讓您匯入組織所使用的威脅指標，進而增強您�
 
 ## <a name="connect-azure-sentinel-to-taxii-servers"></a>將 Azure Sentinel 連線到 TAXII 伺服器
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>Prerequisites
 
 - Azure Sentinel 工作區的讀取和寫入權限，以儲存您的威脅指標。
 

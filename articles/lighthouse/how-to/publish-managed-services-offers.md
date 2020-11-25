@@ -4,11 +4,11 @@ description: 瞭解如何將將上線客戶的受控服務供應專案發佈至 
 ms.date: 08/18/2020
 ms.topic: how-to
 ms.openlocfilehash: 033003d7e782ca0e99b1fc908c5261b6e31bf613
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974357"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023920"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>將受控服務供應專案發佈至 Azure Marketplace
 
@@ -49,13 +49,13 @@ ms.locfileid: "91974357"
 
 ## <a name="publish-your-offer"></a>發佈您的供應項目
 
-完成所有區段之後，下一步是將供應項目發佈至 Azure Marketplace。 選取 [發行]**** 按鈕來起始供應項目上線程序。 如需此程式的詳細資訊，請參閱 [這裡](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#publish)。 
+完成所有區段之後，下一步是將供應項目發佈至 Azure Marketplace。 選取 [發行] 按鈕來起始供應項目上線程序。 如需此程式的詳細資訊，請參閱 [這裡](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#publish)。 
 
 您可以隨時[發佈供應項目的更新版本](../..//marketplace/partner-center-portal/update-existing-offer.md)。 例如，您可能會想要將新的角色定義新增至先前發佈的供應項目。 當您這麼做時，已新增供應項目的客戶會在 Azure 入口網站的 [[服務提供者](view-manage-service-providers.md)] 頁面中看到一個圖示，讓他們知道有可用的更新。 每個客戶都可以 [檢查變更](view-manage-service-providers.md#update-service-provider-offers) ，並決定是否要更新為新版本。 
 
 ## <a name="the-customer-onboarding-process"></a>客戶上線程序
 
-當客戶新增您的供應專案之後，他們將能夠 [委派一或多個特定訂用帳戶或資源群組](view-manage-service-providers.md#delegate-resources)，然後上線至 Azure Lighthouse。 如果客戶已接受供應項目，但未委派任何資源，則他們會在 Azure 入口網站中[**服務提供者**](view-manage-service-providers.md)頁面上的 [提供者供應項目]**** 區段頂端看到一個備註。
+當客戶新增您的供應專案之後，他們將能夠 [委派一或多個特定訂用帳戶或資源群組](view-manage-service-providers.md#delegate-resources)，然後上線至 Azure Lighthouse。 如果客戶已接受供應項目，但未委派任何資源，則他們會在 Azure 入口網站中 [**服務提供者**](view-manage-service-providers.md)頁面上的 [提供者供應項目] 區段頂端看到一個備註。
 
 > [!IMPORTANT]
 > 委派必須由客戶租使用者中的非來賓帳戶完成，該帳戶具有 (上線之訂用帳戶的 [擁有者內建角色](../../role-based-access-control/built-in-roles.md#owner) ，或包含要上線) 的資源群組。 若要查看可委派訂用帳戶的所有使用者，客戶租用戶中的使用者可以在 Azure 入口網站中選取訂用帳戶並開啟 [存取控制 (IAM)]，然後[查看所有具有「擁有者」角色的使用者](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)。

@@ -6,11 +6,11 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 26ac1714330bba06c01d33b47105f04c600c7729
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555102"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024090"
 ---
 # <a name="color-materials"></a>色彩材質
 
@@ -22,7 +22,7 @@ ms.locfileid: "94555102"
 
 這些屬性通用於所有材質：
 
-* **albedoColor：** 此色彩會乘以其他色彩，例如 *albedoMap* 或 *:::no-loc text="vertex"::: 色彩* 。 如果在材質上啟用 *透明度* ，則會使用 Alpha 色板來調整不透明度，其 `1` 意義完全不透明，而且 `0` 意義完全透明。 預設值為白色。
+* **albedoColor：** 此色彩會乘以其他色彩，例如 *albedoMap* 或 *:::no-loc text="vertex"::: 色彩*。 如果在材質上啟用 *透明度* ，則會使用 Alpha 色板來調整不透明度，其 `1` 意義完全不透明，而且 `0` 意義完全透明。 預設值為白色。
 
   > [!NOTE]
   > 由於色材質不會反映環境，因此完全透明的色彩材質會變成不可見。 這與 [.pbr 材質](pbr-materials.md)不同。
@@ -33,7 +33,7 @@ ms.locfileid: "94555102"
 
 * **textureCoordinateScale** 和 **textureCoordinateOffset：** 尺規會乘以 UV 材質座標，並將位移加入其中。 可以用來延展和移出紋理。 預設小數位數為 (1，1) ，位移為 (0，0) 。
 
-* **useVertexColor：** 如果網格包含 :::no-loc text="vertex"::: 色彩，且已啟用此選項，網格的 :::no-loc text="vertex"::: 色彩會乘以 *albedoColor* 和 *albedoMap* 。 預設會停用 *useVertexColor* 。
+* **useVertexColor：** 如果網格包含 :::no-loc text="vertex"::: 色彩，且已啟用此選項，網格的 :::no-loc text="vertex"::: 色彩會乘以 *albedoColor* 和 *albedoMap*。 預設會停用 *useVertexColor* 。
 
 * **isDoubleSided：** 如果雙 sidedness 是設定為 true，則即使攝影機正在查看其背面的臉部，也會轉譯具有此材質的三角形。 預設會停用此選項。 另請參閱[ :::no-loc text="Single-sided"::: 呈現](single-sided-rendering.md)。
 

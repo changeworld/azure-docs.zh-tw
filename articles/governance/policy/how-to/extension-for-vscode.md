@@ -4,11 +4,11 @@ description: 瞭解如何使用 Visual Studio Code 的 Azure 原則擴充功能�
 ms.date: 10/20/2020
 ms.topic: how-to
 ms.openlocfilehash: 233c9158c30d6c373dd6147090894dc83b83da3d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317621"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022423"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>使用 Visual Studio Code 的 Azure 原則擴充功能
 
@@ -34,7 +34,7 @@ Visual Studio Code 的 Azure 原則擴充功能可以安裝在 Visual Studio Cod
 
 1. 開啟 Visual Studio Code。
 
-1. 從功能表列，移至 [**查看**  >  **延伸**模組]。
+1. 從功能表列，移至 [**查看**  >  **延伸** 模組]。
 
 1. 在搜尋方塊中，輸入 **Azure 原則**。
 
@@ -64,13 +64,13 @@ Visual Studio Code 的 Azure 原則擴充功能可以安裝在 Visual Studio Cod
 
      從 Azure 原則擴充功能中，選取 [登 **入 Azure**]。
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="針對 Visual Studio Code 選取全國 Azure 雲端登入的螢幕擷取畫面。" border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Visual Studio Code 的螢幕擷取畫面，以及 Azure 原則延伸模組的圖示。" border="false":::
 
    - 命令選擇區
 
-     從功能表列，移至 [ **View**  >  **命令**選擇區]，然後輸入**Azure： Sign In**。
+     從功能表列，移至 [ **View**  >  **命令** 選擇區]，然後輸入 **Azure： Sign In**。
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="針對 Visual Studio Code 選取全國 Azure 雲端登入的螢幕擷取畫面。" border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="從命令選擇區進行 Visual Studio Code 的 Azure 雲端登入選項螢幕擷取畫面。" border="false":::
 
 1. 遵循登入指示以登入 Azure。 連線之後，您的 Azure 帳戶名稱會顯示在 [Visual Studio Code] 視窗底部的狀態列上。
 
@@ -82,11 +82,11 @@ Visual Studio Code 的 Azure 原則擴充功能可以安裝在 Visual Studio Cod
 
    - 命令選擇區： 
 
-     從功能表列，移至 [ **View** > **命令**選擇區]，然後輸入 **Azure： Select**訂用帳戶。
+     從功能表列，移至 [ **View** > **命令** 選擇區]，然後輸入 **Azure： Select** 訂用帳戶。
 
    - 視窗尾
 
-     在畫面底部的視窗頁尾中，選取符合 Azure 的區段 **： \<your account\> **。
+     在畫面底部的視窗頁尾中，選取符合 Azure 的區段 **： \<your account\>**。
 
 1. 使用 [篩選] 方塊可依名稱快速尋找訂閱。 然後，檢查或移除每個訂用帳戶的檢查，以設定 Azure 原則延伸模組所顯示的訂閱。 新增或移除要顯示的訂閱之後，請選取 **[確定]**。
 
@@ -99,7 +99,7 @@ Azure 原則擴充功能會依資源提供者和 **資源窗格中的資源** �
 - **資源群組**
   - 依資源群組的資源群組所擁有的所有資源
 
-根據預設，擴充功能會依現有資源和具有原則別名的資源來篩選「資源提供者」部分。 在 [**設定**延伸 Azure 原則] 中變更此行為  >  **Extensions**  >  **Azure Policy** ，以查看所有資源提供者，而不進行篩選。
+根據預設，擴充功能會依現有資源和具有原則別名的資源來篩選「資源提供者」部分。 在 [**設定** 延伸 Azure 原則] 中變更此行為  >  **Extensions**  >  **Azure Policy** ，以查看所有資源提供者，而不進行篩選。
 
 在單一訂用帳戶中擁有數百或數千個資源的客戶，可能會偏好以可搜尋的方式找出其資源。 Azure 原則擴充功能可讓您使用下列步驟搜尋特定資源：
 
@@ -111,7 +111,7 @@ Azure 原則擴充功能會依資源提供者和 **資源窗格中的資源** �
 
    - 命令選擇區：
 
-     從功能表列，移至 [ **View** > **命令**選擇區]，然後輸入 **資源：搜尋資源**。
+     從功能表列，移至 [ **View** > **命令** 選擇區]，然後輸入 **資源：搜尋資源**。
 
 1. 如果選取了多個訂用帳戶以供顯示，請使用篩選器來選取要搜尋的訂用帳戶。
 
@@ -125,7 +125,7 @@ Azure 原則擴充功能會依資源提供者和 **資源窗格中的資源** �
 
 開啟資源之後，將滑鼠停留在 Resource Manager 的屬性名稱或值，就會顯示 Azure 原則別名（如果有的話）。 在此範例中，資源是一 `Microsoft.Compute/virtualMachines` 種資源類型，而且 **StorageProfile. imageReference 供應** 專案屬性會停留在上方。 停留會顯示相符的別名。
 
-:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="針對 Visual Studio Code 選取全國 Azure 雲端登入的螢幕擷取畫面。" border="false":::
+:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Visual Studio Code 的 Azure 原則擴充功能的螢幕擷取畫面，可讓您將屬性暫留在顯示別名名稱的上方。" border="false":::
 
 > [!NOTE]
 > VS Code 擴充功能只會公開 Resource Manager 模式屬性，而不會顯示任何[資源提供者模式](../concepts/definition-structure.md#mode)屬性。
@@ -142,7 +142,7 @@ Azure 原則擴充功能會針對選取要顯示在 [ **原則** ] 窗格中的�
 
    - 命令選擇區：
 
-     從功能表列，移至 [ **View** > **命令**選擇區]，然後輸入 **原則：搜尋原則**。
+     從功能表列，移至 [ **View** > **命令** 選擇區]，然後輸入 **原則：搜尋原則**。
 
 1. 如果選取了多個訂用帳戶以供顯示，請使用篩選器來選取要搜尋的訂用帳戶。
 
@@ -165,7 +165,7 @@ Azure 原則擴充功能會針對選取要顯示在 [ **原則** ] 窗格中的�
   - 原則指派
   - 內建原則定義
   - 自訂原則定義
-  - 計畫
+  - 方案
 
 ## <a name="on-demand-evaluation-scan"></a>隨選評估掃描
 
@@ -199,7 +199,7 @@ Azure 原則擴充功能會針對選取要顯示在 [ **原則** ] 窗格中的�
 
 ## <a name="sign-out"></a>登出
 
-從功能表列，移至 [ **View**]  >  **命令**選擇區，然後輸入**Azure：登出**。
+從功能表列，移至 [ **View**]  >  **命令** 選擇區，然後輸入 **Azure：登出**。
 
 ## <a name="next-steps"></a>後續步驟
 

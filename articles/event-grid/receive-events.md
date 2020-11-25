@@ -2,23 +2,23 @@
 title: 從 Azure 事件格線接收 HTTP 端點的事件
 description: 描述如何驗證 HTTP 端點，然後從 Azure 事件格線接收和還原序列化事件
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 11/19/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 42cf237f0c2fbe091307625fde70613ab9173b0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75c80fb85d39298f1130537971bc700897c039d0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326468"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96023702"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>接收 HTTP 端點的事件
 
 本文說明如何[驗證 HTTP 端點](webhook-event-delivery.md)以從事件訂閱接收事件，然後接收和還原序列化事件。 本文針對示範用途使用 Azure Function，但是不論應用程式裝載的位置都適用相同概念。
 
 > [!NOTE]
-> **強烈**建議您在使用事件格線觸發 Azure Function 時使用[事件格線觸發程序](../azure-functions/functions-bindings-event-grid.md)。 這裡使用的泛型 WebHook 觸發程序是示範。
+> **強烈** 建議您在使用事件格線觸發 Azure Function 時使用 [事件格線觸發程序](../azure-functions/functions-bindings-event-grid.md)。 這裡使用的泛型 WebHook 觸發程序是示範。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您需要具有 HTTP 觸發函式的函數應用程式。
 
@@ -140,9 +140,11 @@ module.exports = function (context, req) {
 }]
 ```
 
-當您按一下 [執行] 時，在主體中輸出應該是「200 OK」和 `{"ValidationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}`：
+當您按一下 [執行] 時，在主體中輸出應該是「200 OK」和 `{"validationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}`：
 
-![驗證回應](./media/receive-events/validation-response.png)
+:::image type="content" source="./media/receive-events/validation-request.png" alt-text="驗證要求":::
+
+:::image type="content" source="./media/receive-events/validation-output.png" alt-text="驗證輸出":::
 
 ## <a name="handle-blob-storage-events"></a>處理 Blob 儲存體事件
 
@@ -394,6 +396,8 @@ module.exports = function (context, req) {
 ```
 
 您也可以即時測試此功能，方法是 [從入口網站傳送自訂事件與 CURL](./custom-event-quickstart-portal.md)，或使用可以張貼到端點的任何服務或應用程式 (例如 [Postman](https://www.getpostman.com/)) [張貼到自訂主題](./post-to-custom-topic.md)。 在端點設為函式 URL 時建立自訂主題和事件訂閱。
+
+[!INCLUDE [event-grid-message-headers](../../includes/event-grid-message-headers.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

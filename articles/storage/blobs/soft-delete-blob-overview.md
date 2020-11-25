@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: a6fc1d6b831ae794907c59ab1af3328902f3a70a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb90c5776e67c1ba8fecdbf394a8098e96ca0652
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230104"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96022372"
 ---
 # <a name="soft-delete-for-blobs"></a>Blob 的虛刪除
 
 Blob 的虛刪除可保護您的資料免于不慎或錯誤地修改或刪除。 針對儲存體帳戶啟用 blob 的虛刪除時，該儲存體帳戶中的 blob、blob 版本和快照集，在您指定的保留期限內可能會復原。
 
-如果您的資料有可能意外遭到應用程式或其他儲存體帳戶使用者修改或刪除，Microsoft 建議您開啟虛刪除。 如需啟用虛刪除的詳細資訊，請參閱 [啟用和管理 blob 的虛刪除](soft-delete-enable.md)。
+如果您的資料有可能意外遭到應用程式或其他儲存體帳戶使用者修改或刪除，Microsoft 建議您開啟虛刪除。 如需啟用虛刪除的詳細資訊，請參閱 [啟用和管理 blob 的虛刪除](./soft-delete-blob-enable.md)。
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -34,7 +34,7 @@ Blob 的虛刪除可保護您的資料免于不慎或錯誤地修改或刪除。
 
 虛刪除的物件是不可見的，除非明確列出。
 
-Blob 虛刪除具有回溯相容性，因此您不需要對應用程式進行任何變更，就能利用這項功能提供的保護。 不過，[資料復原](#recovery)導入了新的**取消刪除 Blob** API。
+Blob 虛刪除具有回溯相容性，因此您不需要對應用程式進行任何變更，就能利用這項功能提供的保護。 不過，[資料復原](#recovery)導入了新的 **取消刪除 Blob** API。
 
 Blob 虛刪除適用于新的和現有的一般用途 v2、一般用途 v1 和 Blob 儲存體帳戶。 支援標準和 premium 帳戶類型。 Blob 虛刪除適用于所有儲存層，包括經常性存取、非經常性存取和封存。 虛刪除適用于非受控磁片，也就是分頁 blob，但不適用於受控磁片。
 
@@ -52,7 +52,7 @@ Blob 虛刪除適用于新的和現有的一般用途 v2、一般用途 v1 和 B
 
 虛刪除會在刪除或覆寫物件的許多情況下保存您的資料。
 
-使用 **Put blob**、 **put Block List**或 **Copy blob**覆寫 blob 時，系統會自動產生寫入作業之前的 blob 狀態版本或快照集。 除非明確列出虛刪除的物件，否則不會顯示此物件。 請參閱[復原](#recovery)一節，以了解如何列出虛刪除的物件。
+使用 **Put blob**、 **put Block List** 或 **Copy blob** 覆寫 blob 時，系統會自動產生寫入作業之前的 blob 狀態版本或快照集。 除非明確列出虛刪除的物件，否則不會顯示此物件。 請參閱[復原](#recovery)一節，以了解如何列出虛刪除的物件。
 
 ![此圖顯示 blob 快照集在使用 Put Blob、Put 區塊清單或複製 Blob 覆寫時如何儲存。](media/soft-delete-blob-overview/storage-blob-soft-delete-overwrite.png)
 
@@ -64,13 +64,13 @@ Blob 虛刪除適用于新的和現有的一般用途 v2、一般用途 v1 和 B
 > [!NOTE]  
 > 虛刪除不會為封存層中的 Blob 提供覆寫保護。 如果以任何層中的新 Blob 覆寫已封存的 Blob，被覆寫的 Blob 將會永久過期。
 
-對快照集呼叫**刪除 Blob** 時，該快照集將會標示為已虛刪除。 此時不會產生新的快照集。
+對快照集呼叫 **刪除 Blob** 時，該快照集將會標示為已虛刪除。 此時不會產生新的快照集。
 
 ![此圖顯示使用刪除 Blob 時如何虛刪除 blob 快照集。](media/soft-delete-blob-overview/storage-blob-soft-delete-explicit-delete-snapshot.png)
 
 *虛刪除的資料是灰色的，而作用中的資料則是藍色。最近寫入的資料會出現在較舊資料的下方。呼叫 **快照集 Blob** 時，B0 會變成快照集，而 B1 是 Blob 的作用中狀態。當刪除 B0 快照集時，它會標示為已虛刪除。*
 
-對基底 Blob (本身不是快照集的任何 Blob) 呼叫**刪除 Blob** 時，該 Blob 將會標示為已虛刪除。 與先前的行為一致，對具有作用中快照集的 Blob 呼叫**刪除 Blob**，將會傳回錯誤。 對具有虛刪除快照集的 Blob 呼叫**刪除 Blob**，則不會傳回錯誤。 在虛刪除開啟時，您仍可在單一作業中刪除 Blob 及其所有的快照集。 執行此動作會將基底 Blob 和快照集標示為已虛刪除。
+對基底 Blob (本身不是快照集的任何 Blob) 呼叫 **刪除 Blob** 時，該 Blob 將會標示為已虛刪除。 與先前的行為一致，對具有作用中快照集的 Blob 呼叫 **刪除 Blob**，將會傳回錯誤。 對具有虛刪除快照集的 Blob 呼叫 **刪除 Blob**，則不會傳回錯誤。 在虛刪除開啟時，您仍可在單一作業中刪除 Blob 及其所有的快照集。 執行此動作會將基底 Blob 和快照集標示為已虛刪除。
 
 ![此圖顯示在基底 blob 上呼叫刪除 Blog 時所發生的情況。](media/soft-delete-blob-overview/storage-blob-soft-delete-explicit-include.png)
 
@@ -109,7 +109,7 @@ Blob 虛刪除適用于新的和現有的一般用途 v2、一般用途 v1 和 B
 
 *虛刪除的資料是灰色的，而作用中的資料則是藍色。最近寫入的資料會出現在較舊資料的下方。在這裡，會在 blob B 上呼叫取消 **刪除 blob** ，藉此將基底 Blob、B1 和所有相關聯的快照集（在此只是 B0）還原為使用中。在第二個步驟中，會將 B0 複製到基底 blob 上。這項複製作業會產生 B1 的虛刪除快照集。*
 
-若要檢視已虛刪除的 Blob 和 Blob 快照集，您可以選擇在**清單 Blob** 中包含已刪除的資料。 您可以選擇僅檢視已虛刪除的基底 Blob，或是也包含已虛刪除的 Blob 快照集。 對於所有已虛刪除的資料，您可以檢視資料的刪除時間，以及資料將永久失效之前的天數。
+若要檢視已虛刪除的 Blob 和 Blob 快照集，您可以選擇在 **清單 Blob** 中包含已刪除的資料。 您可以選擇僅檢視已虛刪除的基底 Blob，或是也包含已虛刪除的 Blob 快照集。 對於所有已虛刪除的資料，您可以檢視資料的刪除時間，以及資料將永久失效之前的天數。
 
 ### <a name="example"></a>範例
 
@@ -149,7 +149,7 @@ Copy a snapshot over the base blob:
 
 ## <a name="pricing-and-billing"></a>價格和計費
 
-所有虛刪除的資料都會比照作用中資料的相同費率計費。 對於在設定的保留期限之後永久刪除的資料，您將不需要付費。 若要深入瞭解快照集，以及它們如何產生費用，請參閱 [瞭解快照集如何產生費用](storage-blob-snapshots.md)。
+所有虛刪除的資料都會比照作用中資料的相同費率計費。 對於在設定的保留期限之後永久刪除的資料，您將不需要付費。 若要深入瞭解快照集，以及它們如何產生費用，請參閱 [瞭解快照集如何產生費用](./snapshots-overview.md)。
 
 與自動產生快照集有關的交易不會計費。 您將會以寫入作業的速率來收取 **刪除 Blob** 交易的費用。
 
@@ -183,9 +183,9 @@ Copy a snapshot over the base blob:
 
 ### <a name="is-soft-delete-available-for-virtual-machine-disks"></a>虛刪除是否適用於虛擬機器磁碟？  
 
-虛刪除適用于 premium 和 standard 非受控磁片，也就是分頁 blob。 虛刪除只會協助您復原 **刪除 blob**、 **放置 Blob**、 **放置區塊清單**和 **複製 blob** 作業所刪除的資料。 藉由呼叫**放置頁面**而覆寫的資料無法復原。
+虛刪除適用于 premium 和 standard 非受控磁片，也就是分頁 blob。 虛刪除只會協助您復原 **刪除 blob**、 **放置 Blob**、 **放置區塊清單** 和 **複製 blob** 作業所刪除的資料。 藉由呼叫 **放置頁面** 而覆寫的資料無法復原。
 
-Azure 虛擬機器使用 **Put 頁面**的呼叫寫入非受控磁片，因此不支援使用虛刪除來復原從 Azure VM 到非受控磁片的寫入。
+Azure 虛擬機器使用 **Put 頁面** 的呼叫寫入非受控磁片，因此不支援使用虛刪除來復原從 Azure VM 到非受控磁片的寫入。
 
 ### <a name="do-i-need-to-change-my-existing-applications-to-use-soft-delete"></a>是否需要變更現有的應用程式才能使用虛刪除？
 
@@ -193,5 +193,5 @@ Azure 虛擬機器使用 **Put 頁面**的呼叫寫入非受控磁片，因此�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [啟用 Blob 的虛刪除](soft-delete-enable.md)
+- [啟用 Blob 的虛刪除](./soft-delete-blob-enable.md)
 - [Blob 版本設定](versioning-overview.md)

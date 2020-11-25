@@ -7,11 +7,11 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: 650fb7f0877a98ef53ed3868550f9c084ecb5885
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84710196"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023545"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>在容錯轉移期間保留 IP 位址
 
@@ -46,7 +46,7 @@ ms.locfileid: "84710196"
             - **子網 2**： 10.1.2.0/24
             - **子網路 3**：10.1.3.0/24
     - 次要 (目標) 區域是 Azure 東南亞
-        - 東南亞有一個復原 VNet (**復原 VNet**) 與**來源 VNet** 相同。
+        - 東南亞有一個復原 VNet (**復原 VNet**) 與 **來源 VNet** 相同。
         - 東南亞有一個額外的 VNet (**Azure VNet**)，位址空間為 10.2.0.0/16。
         - **Azure VNet** 包含子網路 (**子網路 4**)，位址空間為 10.2.4.0/24。
         - SQL Server Always On、網域控制站等的複本節點位於 **子網 4**。
@@ -60,7 +60,7 @@ ms.locfileid: "84710196"
 
 如果發生來源區域性中斷，則公司 A 可以將其所有資源容錯移轉至目標區域。
 
-- 如果在容錯移轉之前已有目標 IP 位址，則公司 A 可以協調容錯移轉，並在**復原 VNet** 和 **Azure VNet** 之間進行容錯移轉之後自動建立連線。 下圖提供相關說明.
+- 如果在容錯移轉之前已有目標 IP 位址，則公司 A 可以協調容錯移轉，並在 **復原 VNet** 和 **Azure VNet** 之間進行容錯移轉之後自動建立連線。 下圖提供相關說明.
 - 根據應用程式需求，可在容錯移轉之前、期間 (作為中繼步驟) 或之後於目標區域上建立兩個 VNet 之間 (**復原 VNet** 和 **Azure VNet**) 的連線。
   - 公司可以使用[復原計劃](site-recovery-create-recovery-plans.md)來指定何時建立連線。
   - 他們可以使用 VNet 對等互連或站對站 VPN 在 VNet 之間進行連線。
@@ -89,16 +89,16 @@ ms.locfileid: "84710196"
     - **App2** VM 位於 VNet **來源 VNet 2**：10.2.0.0/16。
     - **來源 VNet 1** 有兩個子網路。
     - **來源 VNet 2** 有兩個子網路。
-- 次要 (目標) 區域是 Azure 東南亞 - 東南亞有與 **來源 VNet 1** 和**來源 VNet 2** 相同的復原 VNet (**復原 VNet 1** 和**復原 VNet 2**)。
-        - **復原 VNet 1** 和**復原 VNet 2**都有兩個與**來源 VNet 1** 和**來源 VNet 2** 中的子網路相符的子網路 - 東南亞有一個額外的 VNet (**Azure VNet**)，位址空間為 10.3.0.0/16。
+- 次要 (目標) 區域是 Azure 東南亞 - 東南亞有與 **來源 VNet 1** 和 **來源 VNet 2** 相同的復原 VNet (**復原 VNet 1** 和 **復原 VNet 2**)。
+        - **復原 VNet 1** 和 **復原 VNet 2** 都有兩個與 **來源 VNet 1** 和 **來源 VNet 2** 中的子網路相符的子網路 - 東南亞有一個額外的 VNet (**Azure VNet**)，位址空間為 10.3.0.0/16。
         - **Azure VNet** 包含一個子網路 (**子網路 4**)，位址空間為 10.3.4.0/24。
         -SQL Server Always On、網域控制站等的複本節點位於 **子網 4**。
 - 有許多站對站 VPN 連線： 
     - **來源 VNet 1** 和 **Azure VNet**
     - **來源 VNet 2** 和 **Azure VNet**
-    - **來源 VNet 1** 和**來源 VNet 2** 與 VPN 站對站連線
-- **復原 VNet 1** 和**復原 VNet 2** 未連線到任何其他 VNet。
-- **公司 A** 在**復原 VNet 1** 和**復原 VNet 2** 上設定 VPN 閘道，以縮短 RTO。  
+    - **來源 VNet 1** 和 **來源 VNet 2** 與 VPN 站對站連線
+- **復原 VNet 1** 和 **復原 VNet 2** 未連線到任何其他 VNet。
+- **公司 A** 在 **復原 VNet 1** 和 **復原 VNet 2** 上設定 VPN 閘道，以縮短 RTO。  
 - **Recovery VNet1** 和 **Recovery VNet2** 並未與任何其他虛擬網路連線。
 - 為了降低復原時間目標 (RTO)，會在容錯移轉之前在 **Recovery VNet1** 和 **Recovery VNet2** 上設定 VPN 閘道。
 
@@ -109,9 +109,9 @@ ms.locfileid: "84710196"
 如果發生影響單一應用程式的中斷情況或問題 (在我們的範例中為 **Source VNet 2)，公司 A 可以復原受影響的應用程式，如下所示：
 
 
-- 中斷**來源 VNet1** 和**來源 VNet2** 之間的 VPN 連線，以及**來源 VNet2** 和 **Azure VNet** 之間的 VPN 連線。
-- 於**來源 VNet1** 和**復原 VNet2** 之間，以及**復原 VNet2** 和 **Azure VNet** 之間建立 VPN 連線。
-- 容錯移轉**來源 VNet2** 中的 VM 到**復原 VNet2**。
+- 中斷 **來源 VNet1** 和 **來源 VNet2** 之間的 VPN 連線，以及 **來源 VNet2** 和 **Azure VNet** 之間的 VPN 連線。
+- 於 **來源 VNet1** 和 **復原 VNet2** 之間，以及 **復原 VNet2** 和 **Azure VNet** 之間建立 VPN 連線。
+- 容錯移轉 **來源 VNet2** 中的 VM 到 **復原 VNet2**。
 
 ![Azure 應用程式容錯移轉中的資源](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-after-failover2.png)
 
@@ -129,12 +129,12 @@ ms.locfileid: "84710196"
 
 - 應用程式 VM 裝載於 Azure 東亞。
 - 東亞有一個 VNet (**來源 VNet**)，位址空間為 10.1.0.0/16。
-  - 東亞的工作負載分為**來源 VNet** 中的三個子網路：
+  - 東亞的工作負載分為 **來源 VNet** 中的三個子網路：
     - **子網路 1**：10.1.1.0/24
     - **子網 2**： 10.1.2.0/24
-    - **子網 3**： 10.1.3.0/24，利用具有位址空間 10.1.0.0/16 的 Azure 虛擬網路。 此虛擬網路稱為**來源 VNet**
+    - **子網 3**： 10.1.3.0/24，利用具有位址空間 10.1.0.0/16 的 Azure 虛擬網路。 此虛擬網路稱為 **來源 VNet**
       - 次要 (目標) 區域是 Azure 東南亞：
-  - 東南亞有一個復原 VNet (**復原 VNet**) 與**來源 VNet** 相同。
+  - 東南亞有一個復原 VNet (**復原 VNet**) 與 **來源 VNet** 相同。
 - 東亞中的 Vm 會透過 Azure ExpressRoute 或站對站 VPN 連線到內部部署資料中心。
 - 為了降低 RTO，公司 B 在容錯移轉之前於 Azure 東南亞的復原 VNet 上佈建閘道。
 - 公司 B 會針對已複寫的 VM 指派/驗證目標 IP 位址。 每個 VM 的目標 IP 皆等同於來源 IP 位址。
@@ -147,7 +147,7 @@ ms.locfileid: "84710196"
 
 如果發生來源區域性中斷，則公司 B 可以將其所有資源容錯移轉至目標區域。
 
-- 在容錯移轉之前已有目標 IP 位址，公司 B 可以協調容錯移轉，並在**復原 VNet** 和 **Azure VNet** 之間進行容錯移轉之後自動建立連線。
+- 在容錯移轉之前已有目標 IP 位址，公司 B 可以協調容錯移轉，並在 **復原 VNet** 和 **Azure VNet** 之間進行容錯移轉之後自動建立連線。
 - 根據應用程式需求，可在容錯移轉之前、期間 (作為中繼步驟) 或之後於目標區域上建立兩個 VNet 之間 (**復原 VNet** 和 **Azure VNet**) 的連線。 公司可以使用[復原計劃](site-recovery-create-recovery-plans.md)來指定何時建立連線。
 - 介於 Azure 東亞與內部部署資料中心之間的原始連線，應該要在建立 Azure 東南亞與內部部署資料中心之間的連線前先中斷連線。
 - 內部部署路由會在容錯移轉之後，重新設定為指向目標區域和閘道。
@@ -161,6 +161,6 @@ ms.locfileid: "84710196"
  - 針對應用程式復原，公司 B 需要將每個應用程式放在其自己專用的 Azure VNet 中。
  - 將每個應用程式放在不同的 VNet 中，公司 B 可以對獨立的應用程式進行容錯移轉，並將來源連線路由傳送至目標區域。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入了解[復原方案](site-recovery-create-recovery-plans.md)。

@@ -5,19 +5,19 @@ ms.topic: article
 ms.date: 10/28/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9162b8578fe4f48cc3740b38d9d84ffaa2f260de
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927782"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023596"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>服務匯流排交易處理概觀
 
-本文討論 Microsoft Azure 服務匯流排的交易功能。 [使用服務匯流排範例的 AMQP 交易](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia)會說明大部分的討論。 本文只包含交易處理概觀以及服務匯流排中的「傳送方式」  功能，而「不可部分完成交易」範例的範圍更廣且更複雜。
+本文討論 Microsoft Azure 服務匯流排的交易功能。 [使用服務匯流排範例的 AMQP 交易](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia)會說明大部分的討論。 本文只包含交易處理概觀以及服務匯流排中的「傳送方式」功能，而「不可部分完成交易」範例的範圍更廣且更複雜。
 
 ## <a name="transactions-in-service-bus"></a>服務匯流排中的交易
 
-*交易* 會將兩個以上的作業一起分組到 *執行範圍* 。 本質上，這類交易必須確定屬於指定作業群組的所有作業都一起成功或失敗。 在這部分，所有交易都會當成一個單位，通常稱為「不可部分完成性」  。
+*交易* 會將兩個以上的作業一起分組到 *執行範圍*。 本質上，這類交易必須確定屬於指定作業群組的所有作業都一起成功或失敗。 在這部分，所有交易都會當成一個單位，通常稱為「不可部分完成性」。
 
 服務匯流排是交易訊息代理人，並確保其訊息存放區之所有內部作業的交易完整性。 服務匯流排內的所有訊息傳輸 (例如，將訊息移至[寄不出的信件佇列](service-bus-dead-letter-queues.md)，或[自動轉寄](service-bus-auto-forwarding.md)實體之間的訊息) 為交易式。 這麼一來，如果服務匯流排接受訊息，表示訊息已經儲存並標上序號。 從那時開始，服務匯流排內的任何訊息傳輸都是跨實體的協調作業，並且不會導致訊息遺失 (來源成功，但目標失敗) 或重複 (來源失敗，但目標成功)。
 
@@ -27,8 +27,8 @@ ms.locfileid: "92927782"
 
 可在交易範圍內執行的作業如下︰
 
-* **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient)、 [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender)、 [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)** ： `Send` 、 `SendAsync` 、 `SendBatch` 、`SendBatchAsync`
-* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)** ： `Complete` 、 `CompleteAsync` 、、、、、、、 `Abandon` `AbandonAsync` `Deadletter` `DeadletterAsync` `Defer` `DeferAsync` `RenewLock` 、、 `RenewLockAsync` 
+* **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient)、 [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender)、 [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)**： `Send` 、 `SendAsync` 、 `SendBatch` 、`SendBatchAsync`
+* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**： `Complete` 、 `CompleteAsync` 、、、、、、、 `Abandon` `AbandonAsync` `Deadletter` `DeadletterAsync` `Defer` `DeferAsync` `RenewLock` 、、 `RenewLockAsync` 
 
 不包括接收作業，因為假設應用程式使用 [ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) 模式、在一些接收迴圈內或使用 [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) 回呼來取得訊息，然後只會開啟交易範圍來處理訊息。
 
@@ -36,7 +36,7 @@ ms.locfileid: "92927782"
 
 ## <a name="transfers-and-send-via"></a>傳輸和「傳送方式」
 
-若要啟用將資料從佇列或主題的交易式轉送到處理器，然後再到另一個佇列或主題，服務匯流排支援 *傳輸* 。 在傳送作業中，寄件者會先將訊息 *傳送至傳送佇列或主題* ，而傳送佇列或主題則會使用 autoforward 功能所依賴的相同健全傳輸執行，立即將訊息移至預定的目的地佇列或主題。 訊息永遠不會認可到傳送佇列或主題的記錄，讓傳送佇列或主題的取用者可以看到它。
+若要啟用將資料從佇列或主題的交易式轉送到處理器，然後再到另一個佇列或主題，服務匯流排支援 *傳輸*。 在傳送作業中，寄件者會先將訊息 *傳送至傳送佇列或主題*，而傳送佇列或主題則會使用 autoforward 功能所依賴的相同健全傳輸執行，立即將訊息移至預定的目的地佇列或主題。 訊息永遠不會認可到傳送佇列或主題的記錄，讓傳送佇列或主題的取用者可以看到它。
 
 當傳送佇列或主題本身是傳送者輸入訊息的來源時，此交易功能的威力就變得很明顯。 換句話說，服務匯流排可以將訊息傳送至目的地佇列或主題「via」傳送佇列或主題，同時對輸入訊息執行完整的 (或延遲或寄不出的信件) 作業，全都在一個不可部分完成的作業中。 
 

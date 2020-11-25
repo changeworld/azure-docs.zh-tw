@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: d979a68f4e3aa0071fb7654647610af1fbf95e90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86078811"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023971"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>使用 HDInsight Spark 叢集來讀取資料，並將其寫入 Azure SQL Database
 
@@ -36,7 +36,7 @@ ms.locfileid: "86078811"
 首先，建立與 Spark 叢集相關聯的 Jupyter Notebook。 您可以使用此 Notebook 執行本文中使用的程式碼片段。
 
 1. 從 [Azure 入口網站](https://portal.azure.com/)，開啟您的叢集。
-1. 在右側選取 [叢集儀表板]**** 下方的 **Jupyter Notebook**。  如果您沒有看到 [叢集 **儀表板**]，請從左側功能表中選取 **[總覽** ]。 出現提示時，輸入叢集的系統管理員認證。
+1. 在右側選取 [叢集儀表板] 下方的 **Jupyter Notebook**。  如果您沒有看到 [叢集 **儀表板**]，請從左側功能表中選取 **[總覽** ]。 出現提示時，輸入叢集的系統管理員認證。
 
     ![Apache Spark 上的 Jupyter 筆記本](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark 上的 Jupyter 筆記本")
 
@@ -45,7 +45,7 @@ ms.locfileid: "86078811"
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-1. 在 Jupyter Notebook 中，按一下右上角的 [新增]****，然後按一下 [Spark]**** 以建立 Scala Notebook。 HDInsight Spark 叢集上的 Jupyter Notebook 也會提供適用於 Python2 應用程式的 **PySpark** 核心，以及適用於 Python3 應用程式的 **PySpark3** 核心。 在本文中，我們會建立 Scala Notebook。
+1. 在 Jupyter Notebook 中，按一下右上角的 [新增]，然後按一下 [Spark] 以建立 Scala Notebook。 HDInsight Spark 叢集上的 Jupyter Notebook 也會提供適用於 Python2 應用程式的 **PySpark** 核心，以及適用於 Python3 應用程式的 **PySpark3** 核心。 在本文中，我們會建立 Scala Notebook。
 
     ![Spark 上 Jupyter 筆記本的核心](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Spark 上 Jupyter 筆記本的核心")
 
@@ -172,7 +172,7 @@ ms.locfileid: "86078811"
 
     ![使用 SSMS1 連接到 SQL Database](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "使用 SSMS1 連接到 SQL Database")
 
-    b. 從 **物件總管**中，展開資料庫和資料表節點以查看建立的 **dbo. >hvactable** 。
+    b. 從 **物件總管** 中，展開資料庫和資料表節點以查看建立的 **dbo. >hvactable** 。
 
     ![使用 SSMS2 連接到 SQL Database](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "使用 SSMS2 連接到 SQL Database")
 
@@ -263,7 +263,7 @@ ms.locfileid: "86078811"
     SELECT COUNT(*) FROM hvactable
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [使用 HDInsight Spark 叢集分析 Data Lake Storage 中的資料](apache-spark-use-with-data-lake-store.md)
 * [在 Azure HDInsight 中的 Apache Spark 叢集上載入資料和執行查詢](apache-spark-load-data-run-query.md)

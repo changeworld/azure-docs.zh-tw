@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: 3d4d1e65c2200aee178abefb46d3e330acbd3108
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85563642"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023681"
 ---
 # <a name="tutorial-secure-your-hub-virtual-network-using-azure-firewall-manager"></a>教學課程：使用 Azure 防火牆管理員來保護您的中樞虛擬網路
 
@@ -76,7 +76,7 @@ ms.locfileid: "85563642"
    ![防火牆原則](media/tutorial-hybrid-portal/firewall-manager-policy.png)
 
 1. 選取 [建立 Azure 防火牆原則]。
-1. 選取您的訂用帳戶，然後針對 [資源群組]，選取 [新建] 並建立名為 **FW-Hybrid-Test**的資源群組。
+1. 選取您的訂用帳戶，然後針對 [資源群組]，選取 [新建] 並建立名為 **FW-Hybrid-Test** 的資源群組。
 2. 針對 [原則名稱]，輸入 **Pol-Net01**。
 3. 針對 [區域]，選取 [美國東部]。
 4. 選取 [下一步: 規則]。
@@ -116,7 +116,7 @@ ms.locfileid: "85563642"
 6. 在 [訂用帳戶] 中，選取您的訂用帳戶。
 7. 在 [資源群組] 中，選取 **FW-Hybrid-Test**。
 8. 在 [位置] 中，選取 [美國東部]。
-9. 在 [子網路] 底下的 [名稱] 中，鍵入 **AzureFirewallSubnet**。 防火牆會在此子網路中，且子網路名稱**必須**是 AzureFirewallSubnet。
+9. 在 [子網路] 底下的 [名稱] 中，鍵入 **AzureFirewallSubnet**。 防火牆會在此子網路中，且子網路名稱 **必須** 是 AzureFirewallSubnet。
 10. 在 [位址範圍] 中，輸入 **10.5.0.0/26**。 
 11. 接受其他預設設定，然後選取 [建立]。
 
@@ -159,7 +159,7 @@ ms.locfileid: "85563642"
 這是用於內部部署閘道的公用 IP 位址。
 
 1. 從 Azure 入口網站首頁，選取 [建立資源]。
-2. 在搜尋文字方塊中，輸入**公用 IP 位址**，然後按 **Enter**。
+2. 在搜尋文字方塊中，輸入 **公用 IP 位址**，然後按 **Enter**。
 3. 選取 [公用 IP 位址]，然後選取 [建立]。
 4. 在 [名稱] 中，輸入 **VNet-Onprem-GW-pip**。
 5. 在 [資源群組] 中，輸入 **FW-Hybrid-Test**。
@@ -194,7 +194,7 @@ ms.locfileid: "85563642"
 現在建立中樞虛擬網路的 VPN 閘道。 網路對網路組態需要 RouteBased VpnType。 建立 VPN 閘道通常可能需要 45 分鐘或更久，視選取的 VPN 閘道 SKU 而定。
 
 1. 從 Azure 入口網站首頁，選取 [建立資源]。
-2. 在搜尋文字方塊中，輸入**輸入虛擬網路閘道**，然後按 **Enter**。
+2. 在搜尋文字方塊中，輸入 **輸入虛擬網路閘道**，然後按 **Enter**。
 3. 選取 [虛擬網路閘道]，然後選取 [建立]。
 4. 在 [名稱] 中，輸入 **GW-hub**。
 5. 針對 [區域]，選取 [(美國) 美國東部]。
@@ -211,7 +211,7 @@ ms.locfileid: "85563642"
 現在建立虛擬網路的 VPN 內部部署閘道。 網路對網路組態需要 RouteBased VpnType。 建立 VPN 閘道通常可能需要 45 分鐘或更久，視選取的 VPN 閘道 SKU 而定。
 
 1. 從 Azure 入口網站首頁，選取 [建立資源]。
-2. 在搜尋文字方塊中，輸入**輸入虛擬網路閘道**，然後按 **Enter**。
+2. 在搜尋文字方塊中，輸入 **輸入虛擬網路閘道**，然後按 **Enter**。
 3. 選取 [虛擬網路閘道]，然後選取 [建立]。
 4. 在 [名稱] 中，輸入 **GW-Onprem**。
 5. 針對 [區域]，選取 [(美國) 美國東部]。
@@ -219,7 +219,7 @@ ms.locfileid: "85563642"
 7. 在 [VPN 類型] 中，選取 [路由式]。
 8. 在 [SKU]中，選取 [基本]。
 9. 在 [虛擬網路] 中，選取 [VNet-Onprem]。
-10. 針對 [公用 IP 位址]，選取 [使用現有]，然後選取 **VNet-Onprem-GW-pip**作為名稱。
+10. 針對 [公用 IP 位址]，選取 [使用現有]，然後選取 **VNet-Onprem-GW-pip** 作為名稱。
 11. 接受其餘的預設值，然後選取 [檢閱 + 建立]。
 12. 檢閱設定，然後選取 [建立]。
 
@@ -287,11 +287,11 @@ ms.locfileid: "85563642"
 - 透過防火牆 IP 位址，從輪輻子網路開始的預設路由
 
 1. 從 Azure 入口網站首頁，選取 [建立資源]。
-2. 在搜尋文字方塊中，輸入**路由表**，然後按 **Enter**。
+2. 在搜尋文字方塊中，輸入 **路由表**，然後按 **Enter**。
 3. 選取 [路由表]。
 4. 選取 [建立]。
 5. 在 [名稱] 中，輸入 **UDR-Hub-Spoke**。
-6. 選取 **FW-Hybrid-Test**作為資源群組。
+6. 選取 **FW-Hybrid-Test** 作為資源群組。
 8. 針對 [位置]，選取 [(美國) 美國東部]。
 9. 選取 [建立]。
 10. 建立路由表之後，請將其選取，以開啟 [路由表] 頁面。
@@ -314,11 +314,11 @@ ms.locfileid: "85563642"
 現在，從輪輻子網路中建立預設路由。
 
 1. 從 Azure 入口網站首頁，選取 [建立資源]。
-2. 在搜尋文字方塊中，輸入**路由表**，然後按 **Enter**。
+2. 在搜尋文字方塊中，輸入 **路由表**，然後按 **Enter**。
 3. 選取 [路由表]。
 5. 選取 [建立]。
 6. 在 [名稱] 中，輸入 **UDR-DG**。
-7. 選取 **FW-Hybrid-Test**作為資源群組。
+7. 選取 **FW-Hybrid-Test** 作為資源群組。
 8. 針對 [位置]，選取 [(美國) 美國東部]。
 4. 在 [虛擬網路閘道路由傳播] 中，選取 [停用]。
 1. 選取 [建立]。
@@ -413,7 +413,7 @@ ms.locfileid: "85563642"
    You should get a reply.--->
 3. 在 **VM-Onprem** 上開啟網頁瀏覽器，並瀏覽至 http://\<VM-spoke-01 private IP\>。
 
-   您應該會看到 **VM-spoke-01**網頁：![VM-Spoke-01 網頁](media/secure-hybrid-network/vm-spoke-01-web.png)
+   您應該會看到 **VM-spoke-01** 網頁：![VM-Spoke-01 網頁](media/secure-hybrid-network/vm-spoke-01-web.png)
 
 4. 從 **VM-Onprem** 虛擬機器中，針對位於私人 IP 位址的 **VM-spoke-01** 開啟遠端桌面。
 

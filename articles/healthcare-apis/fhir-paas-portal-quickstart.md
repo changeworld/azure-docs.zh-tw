@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 03/15/2020
 ms.author: cavoeg
 ms.openlocfilehash: cabacd5204f4a9ac5c17c7bd66924482b5bf688a
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339283"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023460"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-portal"></a>快速入門：使用 Azure 入口網站部署 Azure API for FHIR
 

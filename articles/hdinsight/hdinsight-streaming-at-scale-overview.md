@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: a04ce77c7e81a3a73b87eaf5790b383dece35d86
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535224"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022712"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>HDInsight 中的大規模串流
 
@@ -61,7 +61,7 @@ Apache Spark 可根據應用程式需求，使用下列三個主要參數來設�
 
 您可以在叢集層級針對在叢集上執行的所有應用程式設定這三個組態參數，也可以針對每個個別應用程式指定這些參數。 如需詳細資訊，請參閱[管理 Apache Spark 的資源](spark/apache-spark-resource-manager.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [建立和監視 Azure HDInsight 中的 Apache Storm 拓撲](storm/apache-storm-quickstart.md)
 * [Apache Storm on HDInsight 的範例拓撲](storm/apache-storm-example-topology.md)
