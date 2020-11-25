@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
 ms.openlocfilehash: 32ad92b333eda8cd429303177dba160f0b58af54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445537"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95985793"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>使用適用於 VM 的 Azure 監視器的地圖功能來瞭解應用程式元件
 在適用於 VM 的 Azure 監視器中，您可以在 Windows 和 Linux 虛擬機器上，查看在 Azure 或您的環境中執行 (Vm) 上探索到的應用程式元件。 您可以透過兩種方式來觀察 Vm。 直接從 VM 查看對應，或從 Azure 監視器查看地圖，以查看跨 Vm 群組的元件。 本文將協助您瞭解這兩種視圖方法，以及如何使用地圖功能。 
@@ -89,7 +89,7 @@ ms.locfileid: "91445537"
 
 1. 在 Azure 入口網站中，選取 [虛擬機器]。 
 2. 從清單中選擇 VM。 在 [ **監視** ] 區段中，選擇 [ **見解**]。  
-3. 選取 [對應]**** 索引標籤。
+3. 選取 [對應] 索引標籤。
 
 地圖會藉由探索在指定時間範圍內有作用中網路連線的執行中進程群組和進程，以視覺化方式呈現 VM 的相依性。  
 
@@ -103,7 +103,7 @@ ms.locfileid: "91445537"
 
 1. 在 Azure 入口網站中，選取 [虛擬機器擴展集]。
 2. 從清單中選擇 VM。 然後，在 [ **監視** ] 區段中，選擇 [ **見解**]。  
-3. 選取 [對應]**** 索引標籤。
+3. 選取 [對應] 索引標籤。
 
 地圖會將擴展集中的所有實例視覺化為群組節點，以及群組的相依性。 展開的節點會列出擴展集中的實例。 您可以一次滾動這些實例10。 
 
@@ -122,13 +122,13 @@ ms.locfileid: "91445537"
 
 1. 在 Azure 入口網站中，選取 [監視]。 
 2. 在 [ **見解** ] 區段中，選擇 [ **虛擬機器**]。
-3. 選取 [對應]**** 索引標籤。
+3. 選取 [對應] 索引標籤。
 
    ![Azure 監視器多個 Vm 的總覽圖](./media/vminsights-maps/map-multivm-azure-monitor-01.png)
 
 使用頁面頂端的 **工作區** 選取器，選擇工作區。 如果您有多個 Log Analytics 工作區，請選擇已啟用解決方案的工作區，並為其報告 Vm。 
 
-**群組**選取器會傳回與選取的工作區相關的訂用帳戶、資源群組、[電腦群組](../platform/computer-groups.md)，以及電腦的虛擬機器擴展集。 您的選取專案只適用于地圖功能，不會延續到效能或健全狀況。
+**群組** 選取器會傳回與選取的工作區相關的訂用帳戶、資源群組、[電腦群組](../platform/computer-groups.md)，以及電腦的虛擬機器擴展集。 您的選取專案只適用于地圖功能，不會延續到效能或健全狀況。
 
 根據預設，對應會顯示過去 30 分鐘。 如果您想要查看相依性在過去的樣子，可以查詢最多一小時的歷程記錄時間範圍。 若要執行查詢，請使用 **TimeRange** 選取器。 例如，您可以在事件期間執行查詢，或在變更前查看狀態。  
 
