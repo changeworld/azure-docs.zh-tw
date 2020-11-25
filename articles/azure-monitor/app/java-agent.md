@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: e91e0252ac2af02157c30fe025e75b6cfee7de6e
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378477"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002012"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>在 JAVA web 應用程式中監視相依性、攔截到例外狀況和方法執行時間
 
@@ -20,7 +20,7 @@ ms.locfileid: "93378477"
 
 * **相依性** ：您的應用程式對其他元件呼叫的相關資料，包括：
   * 透過 Apache HttpClient、OkHttp 和發出的連 **出 HTTP 呼叫** `java.net.HttpURLConnection` 會被捕捉。
-  * 系統會捕捉透過 Jedis 用戶端所提出的 **Redis 呼叫** 。
+  * 系統會捕捉透過 Jedis 用戶端所提出的 **Redis 呼叫**。
   * **JDBC 查詢** -針對 MySQL 和于 postgresql，如果呼叫花費的時間超過10秒，則代理程式會報告查詢計劃。
 
 * **應用程式記錄：** 使用 HTTP 要求和其他遙測來捕捉您的應用程式記錄並使其相互關聯
@@ -92,7 +92,7 @@ ms.locfileid: "93378477"
 如需最新版本的 JAVA 代理程式，請參閱 [這裡](https://github.com/Microsoft/ApplicationInsights-Java/releases
 )的版本。 
 
-代理程式必須封裝為專案中的資源，使其最後位於 D：/home/site/wwwroot/目錄中。 您可以前往 [ **開發工具** ] 的 [  >  **Advanced tools** ]  >  **偵錯主控台** 和檢查網站目錄的內容，確認您的代理程式位於正確的 App Service 目錄。    
+代理程式必須封裝為專案中的資源，使其最後位於 D：/home/site/wwwroot/目錄中。 您可以前往 [**開發工具**] 的 [  >  **Advanced tools**]  >  **偵錯主控台** 和檢查網站目錄的內容，確認您的代理程式位於正確的 App Service 目錄。    
 
 * 儲存設定並重新啟動您的應用程式。  (這些步驟僅適用于在 Windows 上執行的應用程式服務。 ) 
 

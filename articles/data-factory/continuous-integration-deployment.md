@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: b31931af7b8d1442a66333622a23d017ab7fb5a9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 93aeb088f82cae6dde215792e399997b592a5c14
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658684"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96003968"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory 中的持續整合和傳遞
 
@@ -636,6 +636,14 @@ ms.locfileid: "94658684"
 請參閱下面的影片，以深入瞭解如何針對您的環境進行熱修正。 
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4I7fi]
+
+## <a name="exposure-control-and-feature-flags"></a>公開控制和功能旗標
+
+當您在小組中工作時，您可以在某些情況下合併變更，但不希望它們在提高許可權的環境中執行，例如生產和 QA。 為了處理此案例，ADF 團隊建議 [使用功能旗標的 DevOps 概念](https://docs.microsoft.com/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops)。 在 ADF 中，您可以結合 [全域參數](author-global-parameters.md) 和 [if 條件活動](control-flow-if-condition-activity.md) ，根據這些環境旗標隱藏邏輯集。
+
+若要瞭解如何設定功能旗標，請參閱下列影片教學課程：
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4IxdW]
 
 ## <a name="best-practices-for-cicd"></a>CI/CD 的最佳做法
 

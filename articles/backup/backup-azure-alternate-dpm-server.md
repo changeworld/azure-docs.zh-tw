@@ -4,11 +4,11 @@ description: 從登錄至復原服務保存庫的任何 Azure 備份伺服器，
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.openlocfilehash: 0cce45fbaaedad4cfcee0cda768aae2fa294312b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378061"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002965"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>從 Azure 備份伺服器復原資料
 
@@ -24,7 +24,7 @@ ms.locfileid: "89378061"
 1. 從 Azure 備份伺服器管理 **主控台的 [復原] 索引** 標籤中，選取畫面左上方的 [ **新增外部 DPM** ] () 。
 
     ![新增外部 DPM](./media/backup-azure-alternate-dpm-server/add-external-dpm.png)
-2. 從與要復原資料的 **Azure 備份伺服器**關聯的保存庫下載新的**保存庫認證**、從已向復原服務保存庫登錄的 Azure 備份伺服器清單中選擇 Azure 備份伺服器，並提供與要復原資料的伺服器關聯的**加密複雜密碼**。
+2. 從與要復原資料的 **Azure 備份伺服器** 關聯的保存庫下載新的 **保存庫認證**、從已向復原服務保存庫登錄的 Azure 備份伺服器清單中選擇 Azure 備份伺服器，並提供與要復原資料的伺服器關聯的 **加密複雜密碼**。
 
     ![外部 DPM 認證](./media/backup-azure-alternate-dpm-server/external-dpm-credentials.png)
 
@@ -33,11 +33,11 @@ ms.locfileid: "89378061"
    >
    >
 
-    順利新增外部 Azure 備份伺服器之後，您就可以從 [復原]**** 索引標籤瀏覽外部伺服器和本機 Azure 備份伺服器的資料。
+    順利新增外部 Azure 備份伺服器之後，您就可以從 [復原] 索引標籤瀏覽外部伺服器和本機 Azure 備份伺服器的資料。
 3. 瀏覽由外部 Azure 備份伺服器保護的實際執行伺服器可用清單，並選取適當的資料來源。
 
     ![瀏覽外部 DPM 伺服器](./media/backup-azure-alternate-dpm-server/browse-external-dpm.png)
-4. 從 [復原點]**** 下拉式清單中選取「月份和年份」****，選取代表復原點何時建立的必要 [復原日期]****，並選取 [復原時間]****。
+4. 從 [復原點] 下拉式清單中選取「月份和年份」，選取代表復原點何時建立的必要 [復原日期]，並選取 [復原時間]。
 
     檔案和資料夾清單會出現在底部窗格中，方便您瀏覽並復原到任何位置。
 
@@ -45,34 +45,34 @@ ms.locfileid: "89378061"
 5. 以滑鼠右鍵按一下適當的專案，然後選取 [ **復原**]。
 
     ![外部 DPM 復原](./media/backup-azure-alternate-dpm-server/recover.png)
-6. 檢閱「復原選取項目」 ****。 請確認要復原之備份複本的資料和時間，以及建立備份複本的來源。 如果選取專案不正確，請選取 [ **取消** ] 以流覽回 [復原] 索引標籤，以選取適當的復原點。 如果選取的是正確的，請選取 **[下一步]**。
+6. 檢閱「復原選取項目」 。 請確認要復原之備份複本的資料和時間，以及建立備份複本的來源。 如果選取專案不正確，請選取 [ **取消** ] 以流覽回 [復原] 索引標籤，以選取適當的復原點。 如果選取的是正確的，請選取 **[下一步]**。
 
     ![外部 DPM 復原摘要](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-summary.png)
-7. 選取 [復原到替代位置] ****。 **** 到正確的復原位置。
+7. 選取 [復原到替代位置] 。  到正確的復原位置。
 
     ![外部 DPM 復原替代位置](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-alternate-location.png)
-8. 選擇與 [建立複本]****、[略過]**** 或 [覆寫]**** 相關的選項。
+8. 選擇與 [建立複本]、[略過] 或 [覆寫] 相關的選項。
 
    * **建立複本** -如果發生名稱衝突，則建立檔案的複本。
    * **略過** -如果有名稱衝突，它就不會復原檔案，該檔案會離開原始檔案。
    * **覆寫** -如果有名稱衝突，則會覆寫現有的檔案複本。
 
-     請選擇適當的選項來「還原安全性」 ****。 您可以在建立復原點時，針對將資料復原至其中的目的地電腦，套用其安全性設定，或是套用適用於產品的安全性設定。
+     請選擇適當的選項來「還原安全性」 。 您可以在建立復原點時，針對將資料復原至其中的目的地電腦，套用其安全性設定，或是套用適用於產品的安全性設定。
 
-     確認是否要在復原成功完成後，傳送「通知」****。
+     確認是否要在復原成功完成後，傳送「通知」。
 
      ![外部 DPM 復原通知](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-notifications.png)
-9. [摘要] **** 畫面會列出到目前為止已選擇的選項。 一旦您選取 [ **復原**]，資料就會復原到適當的內部部署位置。
+9. [摘要]  畫面會列出到目前為止已選擇的選項。 一旦您選取 [ **復原**]，資料就會復原到適當的內部部署位置。
 
     ![外部 DPM 復原選項摘要](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-options-summary.png)
 
    > [!NOTE]
-   > 您可以在 Azure 備份伺服器的 [監視]**** 索引標籤中監視復原作業。
+   > 您可以在 Azure 備份伺服器的 [監視] 索引標籤中監視復原作業。
    >
    >
 
     ![監視復原](./media/backup-azure-alternate-dpm-server/monitoring-recovery.png)
-10. 您可以在 DPM**伺服器的 [復原] 索引**標籤上選取 [**清除外部 dpm** ]，以移除外部 dpm 伺服器的觀點。
+10. 您可以在 DPM **伺服器的 [復原] 索引** 標籤上選取 [**清除外部 dpm** ]，以移除外部 dpm 伺服器的觀點。
 
     ![清除外部 DPM](./media/backup-azure-alternate-dpm-server/clear-external-dpm.png)
 

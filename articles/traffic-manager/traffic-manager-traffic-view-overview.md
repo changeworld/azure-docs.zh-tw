@@ -13,11 +13,11 @@ ms.date: 03/16/2018
 ms.author: duau
 ms.custom: ''
 ms.openlocfilehash: f1a3cc5ccb326d6a198895f9f459e661f7805b1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401532"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003832"
 ---
 # <a name="traffic-manager-traffic-view"></a>流量管理員流量檢視
 
@@ -43,7 +43,7 @@ ms.locfileid: "89401532"
 
 ## <a name="visual-overview"></a>視覺效果概觀
 
-當您瀏覽至流量管理員頁面中的 [流量檢視]**** 區段時，您會看到覆蓋流量檢視深入分析的地理區域地圖。 地圖會提供流量管理員設定檔的使用者群體和端點相關資訊。
+當您瀏覽至流量管理員頁面中的 [流量檢視] 區段時，您會看到覆蓋流量檢視深入分析的地理區域地圖。 地圖會提供流量管理員設定檔的使用者群體和端點相關資訊。
 
 ![流量管理員流量視圖地理位置視圖][1]
 

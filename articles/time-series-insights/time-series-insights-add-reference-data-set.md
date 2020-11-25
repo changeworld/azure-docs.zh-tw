@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
 ms.openlocfilehash: d80d97a609aa3a464b9b114439fe7f4058e287c3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020141"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001825"
 ---
 # <a name="create-a-reference-data-set-for-your-azure-time-series-insights-gen1-environment-using-the-azure-portal"></a>使用 Azure 入口網站為您的 Azure 時間序列深入解析 Gen1 環境建立參考資料集
 
@@ -117,7 +117,7 @@ ms.locfileid: "95020141"
    > [!NOTE]
    > 新增的資料列不需要是 *矩形*，它們可能會有較少、更大或不同的資料行，而 **不** 是參考資料集中的其他專案。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 以程式設計的方式[管理參考資料](time-series-insights-manage-reference-data-csharp.md)。
 

@@ -7,11 +7,11 @@ ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: devx-track-csharp, seodec18
 ms.openlocfilehash: 524df7805207ce517c7ae805fb17de1b041a2248
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876034"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002100"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>適用於 Azure Functions 1.x 的 Azure Cosmos DB 繫結
 
@@ -78,7 +78,7 @@ namespace CosmosDBSamplesV1
 
 # <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-下列範例示範 function.json** 檔案中的 Cosmos DB 觸發程序繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。 修改 Cosmos DB 記錄時，函式會寫入記錄訊息。
+下列範例示範 function.json 檔案中的 Cosmos DB 觸發程序繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。 修改 Cosmos DB 記錄時，函式會寫入記錄訊息。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -114,7 +114,7 @@ namespace CosmosDBSamplesV1
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-下列範例示範的是使用繫結之 function.json** 檔案，以及 [JavaScript 函式](functions-reference-node.md)中的 Cosmos DB 觸發程序繫結。 修改 Cosmos DB 記錄時，函式會寫入記錄訊息。
+下列範例示範的是使用繫結之 function.json 檔案，以及 [JavaScript 函式](functions-reference-node.md)中的 Cosmos DB 觸發程序繫結。 修改 Cosmos DB 記錄時，函式會寫入記錄訊息。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -204,7 +204,7 @@ JavaScript 不支援屬性。
 
 ## <a name="trigger---usage"></a>觸發程序 - 使用方式
 
-觸發程序需要第二個集合，用來在分割區上儲存「租用」__。 要監視的集合和包含租用的集合必須可供觸發程序用來運作。
+觸發程序需要第二個集合，用來在分割區上儲存「租用」。 要監視的集合和包含租用的集合必須可供觸發程序用來運作。
 
 >[!IMPORTANT]
 > 如果針對同一個集合設定多個函式使用 Cosmos DB 觸發程序，則每個函式都應該使用專用的租用集合，或為每個函式指定不同的 `LeaseCollectionPrefix`。 否則，將只會觸發其中一個函式。 如需前置詞的相關資訊，請參閱[組態區段](#trigger---configuration)。
@@ -553,7 +553,7 @@ namespace CosmosDBSamplesV1
 
 ### <a name="queue-trigger-look-up-id-from-string"></a>佇列觸發程序，從字串中查閱識別碼
 
-下列範例示範 function.json** 檔案中的 Cosmos DB 輸入繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。 函式會讀取單一文件，並更新文件的文字值。
+下列範例示範 function.json 檔案中的 Cosmos DB 輸入繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。 函式會讀取單一文件，並更新文件的文字值。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -897,7 +897,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 
 ### <a name="queue-trigger-look-up-id-from-json"></a>佇列觸發程序，從 JSON 中查閱識別碼
 
-下列範例示範 function.json** 檔案中的 Cosmos DB 輸入繫結，以及使用此繫結的 [JavaScript 指令碼函式](functions-reference-node.md)。 函式會讀取單一文件，並更新文件的文字值。
+下列範例示範 function.json 檔案中的 Cosmos DB 輸入繫結，以及使用此繫結的 [JavaScript 指令碼函式](functions-reference-node.md)。 函式會讀取單一文件，並更新文件的文字值。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -1367,7 +1367,7 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-下列範例顯示 function.json** 檔案中的 Azure Cosmos DB 輸出繫結，以及使用此繫結的 [JavaScript 函式](functions-reference-node.md)。 此函式會使用可接收 JSON 佇列的佇列輸入繫結，其格式如下︰
+下列範例顯示 function.json 檔案中的 Azure Cosmos DB 輸出繫結，以及使用此繫結的 [JavaScript 函式](functions-reference-node.md)。 此函式會使用可接收 JSON 佇列的佇列輸入繫結，其格式如下︰
 
 ```json
 {
@@ -1463,7 +1463,7 @@ JavaScript 不支援屬性。
 |**name**     | n/a | 代表函式中之文件的繫結參數名稱。  |
 |**databaseName** | **DatabaseName**|包含其中將建立文件之集合的資料庫。     |
 |**collectionName** |**CollectionName**  | 包含其中將建立文件之集合的名稱。 |
-|**>createifnotexists**  |**CreateIfNotExists**    | 一個布林值，用來指出當集合不存在時，是否要建立集合。 預設是 false**，因為會使用保留的輸送量來建立新集合，可能會涉及成本。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/documentdb/)。  |
+|**>createifnotexists**  |**CreateIfNotExists**    | 一個布林值，用來指出當集合不存在時，是否要建立集合。 預設是 false，因為會使用保留的輸送量來建立新集合，可能會涉及成本。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/documentdb/)。  |
 |**partitionKey**|**PartitionKey** |當 `CreateIfNotExists` 為 true 時，定義所建立集合的分割區索引鍵路徑。|
 |**collectionThroughput**|**CollectionThroughput**| 當 `CreateIfNotExists` 為 true 時，定義所建立集合的[輸送量](../cosmos-db/set-throughput.md)。|
 |**connection**    |**ConnectionStringSetting** |包含 Azure Cosmos DB 連接字串的應用程式設定名稱。        |

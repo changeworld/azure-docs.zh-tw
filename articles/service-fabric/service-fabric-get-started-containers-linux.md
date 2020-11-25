@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: d085f8704850cdbb03e21b15b3cca7c8998b96fb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092937"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004223"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>在 Linux 建立第一個 Service Fabric 容器應用程式
 > [!div class="op_single_selector"]
@@ -88,7 +88,7 @@ if __name__ == "__main__":
 ```
 
 ## <a name="build-the-image"></a>建立映像
-執行 `docker build` 命令來建立可執行 Web 應用程式的映像。 開啟 PowerShell 視窗並瀏覽至 *c:\temp\helloworldapp* 。 執行下列命令：
+執行 `docker build` 命令來建立可執行 Web 應用程式的映像。 開啟 PowerShell 視窗並瀏覽至 *c:\temp\helloworldapp*。 執行以下命令：
 
 ```bash
 docker build -t helloworldapp .
@@ -209,9 +209,9 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 
 ## <a name="configure-docker-healthcheck"></a>設定 Docker HEALTHCHECK 
 
-從 6.1 版開始，Service Fabric 會自動將 [Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) 事件整合至其系統健康情況報告。 這表示，如果您的容器已啟用 **HEALTHCHECK** ，每當 Docker 報告容器的健康情況狀態發生變更時，Service Fabric 就會報告健康情況。 如果 health_status 為「狀況良好」，則 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 中的健康情況報告會顯示 **OK (正常)** ，如果 health_status 為「狀況不良」，則顯示 **WARNING (警告)** 。 
+從 6.1 版開始，Service Fabric 會自動將 [Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) 事件整合至其系統健康情況報告。 這表示，如果您的容器已啟用 **HEALTHCHECK**，每當 Docker 報告容器的健康情況狀態發生變更時，Service Fabric 就會報告健康情況。 如果 health_status 為「狀況良好」，則 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 中的健康情況報告會顯示 **OK (正常)**，如果 health_status 為「狀況不良」，則顯示 **WARNING (警告)**。 
 
-從6.4 的最新重新整理版本開始，您可以選擇是否要將 docker HEALTHCHECK 評估報告為錯誤。 如果啟用此選項，當 *health_status* 狀況 *良好* 時，即會出現 **[確定** 健康情況] 報告，當 *health_status* 狀況 *不良* 時，將會出現 **錯誤** 。
+從6.4 的最新重新整理版本開始，您可以選擇是否要將 docker HEALTHCHECK 評估報告為錯誤。 如果啟用此選項，當 *health_status* 狀況 *良好* 時，即會出現 **[確定** 健康情況] 報告，當 *health_status* 狀況 *不良* 時，將會出現 **錯誤**。
 
 **HEALTHCHECK** 指令指向針對監視容器健康情況所執行的實際檢查，必須存在於產生容器映射時所使用的 Dockerfile 中。
 
@@ -235,13 +235,13 @@ docker push myregistry.azurecr.io/samples/helloworldapp
     </Policies>
 </ServiceManifestImport>
 ```
-依預設， *IncludeDockerHealthStatusInSystemHealthReport* 設為 **true** ， *>restartcontaineronunhealthydockerhealthstatus* 設定為 **false** ，而 *TreatContainerUnhealthyStatusAsError* 設定為 **false** 。 
+依預設， *IncludeDockerHealthStatusInSystemHealthReport* 設為 **true**， *>restartcontaineronunhealthydockerhealthstatus* 設定為 **false**，而 *TreatContainerUnhealthyStatusAsError* 設定為 **false**。 
 
-如果 *RestartContainerOnUnhealthyDockerHealthStatus* 設為 **true** ，則報告中重複出現狀況不良的容器就會重新啟動 (可能在其他節點上重新啟動)。
+如果 *RestartContainerOnUnhealthyDockerHealthStatus* 設為 **true**，則報告中重複出現狀況不良的容器就會重新啟動 (可能在其他節點上重新啟動)。
 
-如果 *TreatContainerUnhealthyStatusAsError* 設定為 **true** ，當容器的 *health_status* 狀況 *不良* 時，將會出現 **錯誤** 健康情況報告。
+如果 *TreatContainerUnhealthyStatusAsError* 設定為 **true**，當容器的 *health_status* 狀況 *不良* 時，將會出現 **錯誤** 健康情況報告。
 
-如果您需要停用整個 Service Fabric 叢集的 **HEALTHCHECK** 整合，就必須將 [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) 設為 **false** 。
+如果您需要停用整個 Service Fabric 叢集的 **HEALTHCHECK** 整合，就必須將 [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) 設為 **false**。
 
 ## <a name="deploy-the-application"></a>部署應用程式
 建置應用程式後，可以使用 Service Fabric CLI 將它部署到本機叢集。
@@ -468,7 +468,7 @@ Service Fabric 執行階段會配置 20 分鐘來下載及擷取容器映像，�
 
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * 深入了解如何[在 Service Fabric 上執行容器](service-fabric-containers-overview.md)。
 * 閱讀[在容器中部署 .NET 應用程式](service-fabric-host-app-in-a-container.md)教學課程。
 * 深入了解 Service Fabric [應用程式生命週期](service-fabric-application-lifecycle.md)。

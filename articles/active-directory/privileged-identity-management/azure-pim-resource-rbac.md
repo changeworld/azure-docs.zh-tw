@@ -15,11 +15,11 @@ ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 45144f64789a19390984c3f9f6a660e3c3300215
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84743145"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002488"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中查看 Azure 資源角色的活動和審核歷程記錄
 
@@ -86,11 +86,11 @@ ms.locfileid: "84743145"
 
     [![具有篩選的資源審核清單](media/azure-pim-resource-rbac/rbac-resource-audit.png "具有篩選的資源審核清單")](media/azure-pim-resource-rbac/rbac-resource-audit.png)
 
-1. 在 [稽核類型]**** 中，選取 [啟動 (已指派 + 已啟動)]****。
+1. 在 [稽核類型] 中，選取 [啟動 (已指派 + 已啟動)]。
 
     [![依啟用審核類型篩選的資源審核清單](media/azure-pim-resource-rbac/rbac-audit-activity.png "依啟用篩選的資源審核清單")](media/azure-pim-resource-rbac/rbac-audit-activity.png) ![依啟用審核類型篩選的資源審核清單](media/azure-pim-resource-rbac/rbac-audit-activity.png)
 
-1. 在 [動作]**** 底下，按一下使用者的 [(活動)]**** 以查看該使用者在 Azure 資源中的活動詳細資料。
+1. 在 [動作] 底下，按一下使用者的 [(活動)] 以查看該使用者在 Azure 資源中的活動詳細資料。
 
     ![特定動作的使用者活動詳細資料](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
 
@@ -128,7 +128,7 @@ ms.locfileid: "84743145"
   
     [![檢查 audit 事件的票證號碼](media/azure-pim-resource-rbac/audit-event-ticket-number.png "檢查 audit 事件的票證號碼")](media/azure-pim-resource-rbac/audit-event-ticket-number.png)]
 
-1. 您可以在 audit 事件的**詳細資料**窗格的 [**目標**] 索引標籤上，查看要求者 (啟用角色) 。 有三種適用于 Azure 資源角色的目標型別：
+1. 您可以在 audit 事件的 **詳細資料** 窗格的 [**目標**] 索引標籤上，查看要求者 (啟用角色) 。 有三種適用于 Azure 資源角色的目標型別：
 
     - Role (**Type** = role) 
     - 要求者 (**類型** = 其他) 
@@ -136,9 +136,9 @@ ms.locfileid: "84743145"
 
     [![檢查目標型別](media/azure-pim-resource-rbac/audit-event-target-type.png "檢查目標型別")](media/azure-pim-resource-rbac/audit-event-target-type.png)
 
-一般來說，在核准事件上方的記錄事件是「將成員新增至角色已完成」的事件，其中 ** (** 動作專案) 是要求者。 在大多數情況下，您不需要從審核的觀點來尋找核准要求中的要求者。
+一般來說，在核准事件上方的記錄事件是「將成員新增至角色已完成」的事件，其中 **(** 動作專案) 是要求者。 在大多數情況下，您不需要從審核的觀點來尋找核准要求中的要求者。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [在 Privileged Identity Management 中指派 Azure 資源角色](pim-resource-roles-assign-roles.md)
 - [在 Privileged Identity Management 中核准或拒絕 Azure 資源角色的要求](pim-resource-roles-approval-workflow.md)

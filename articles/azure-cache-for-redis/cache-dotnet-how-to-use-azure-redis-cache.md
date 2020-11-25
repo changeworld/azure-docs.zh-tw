@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp, mvc
 ms.date: 06/18/2020
 ms.openlocfilehash: 762fdf0aab0077cfbf8beceeb432dc85695e4176
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077059"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002443"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-net-framework"></a>快速入門：在 .NET Framework 中使用 Azure Cache for Redis
 
@@ -49,7 +49,7 @@ ms.locfileid: "93077059"
 
 在 Visual Studio 中，按一下 [檔案]   > [新增]   > [專案]  。
 
-選取 [主控台應用程式 (.NET Framework)]  ，然後選取 [下一步]  來設定您的應用程式。 輸入 **專案名稱** ，然後按一下 [建立]  以建立新的主控台應用程式。
+選取 [主控台應用程式 (.NET Framework)]  ，然後選取 [下一步]  來設定您的應用程式。 輸入 **專案名稱**，然後按一下 [建立]  以建立新的主控台應用程式。
 
 <a name="configure-the-cache-clients"></a>
 
@@ -63,7 +63,7 @@ ms.locfileid: "93077059"
 Install-Package StackExchange.Redis
 ```
 
-安裝完成後， *StackExchange.Redis* 快取用戶端即可與專案搭配使用。
+安裝完成後，*StackExchange.Redis* 快取用戶端即可與專案搭配使用。
 
 
 ## <a name="connect-to-the-cache"></a>連接到快取

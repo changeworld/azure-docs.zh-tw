@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
 ms.openlocfilehash: 3c363d13933e6554a6eefbeaf02d87dc6b382628
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578768"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002375"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# 開發人員參考
 
@@ -39,7 +39,7 @@ Azure Functions 支援 C# 和 C# 指令碼程式設計語言。 如果您需要[
 
 ## <a name="functions-class-library-project"></a>Functions 類別庫專案
 
-在 Visual Studio 中， **Azure Functions** 專案範本可建立 C# 類別庫專案，其中包含下列檔案：
+在 Visual Studio 中，**Azure Functions** 專案範本可建立 C# 類別庫專案，其中包含下列檔案：
 
 * [host.json](functions-host-json.md) - 儲存會影響在本機或 Azure 中執行之專案中所有函式的組態設定。
 * [local.settings.json](functions-run-local.md#local-settings-file) - 儲存在本機執行時所使用的應用程式設定和連接字串。 此檔案包含密碼，不會發佈至 Azure 中的函數應用程式。 相反地，請 [將應用程式設定新增至函數應用程式](functions-develop-vs.md#function-app-settings)。

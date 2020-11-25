@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 48078ed06e36a33b10ee2d761a249159d14c6220
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e2d74519b9adf9a74e5af180a3da28918a9a8dab
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444498"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96001876"
 ---
 # <a name="blob-versioning"></a>Blob 版本設定
 
@@ -128,7 +128,7 @@ Blob 的所有版本都必須是相同的 blob 類型。 如果 blob 有舊版�
 
 ## <a name="blob-versioning-and-soft-delete"></a>Blob 版本設定和虛刪除
 
-Blob 版本設定和 blob 虛刪除會一起運作，以提供您最佳的資料保護。 當您啟用虛刪除時，您會指定 Azure 儲存體應保留虛刪除 blob 的時間長度。 任何虛刪除的 blob 版本都會保留在系統中，並可在虛刪除保留期限內取消刪除。 如需有關 blob 虛刪除的詳細資訊，請參閱 [Azure 儲存體 blob 的虛刪除](storage-blob-soft-delete.md)。
+Blob 版本設定和 blob 虛刪除會一起運作，以提供您最佳的資料保護。 當您啟用虛刪除時，您會指定 Azure 儲存體應保留虛刪除 blob 的時間長度。 任何虛刪除的 blob 版本都會保留在系統中，並可在虛刪除保留期限內取消刪除。 如需有關 blob 虛刪除的詳細資訊，請參閱 [Azure 儲存體 blob 的虛刪除](./soft-delete-blob-overview.md)。
 
 ### <a name="deleting-a-blob-or-version"></a>刪除 blob 或版本
 
@@ -187,7 +187,7 @@ Blob 版本設定的設計是為了保護您的資料免于遭到意外或惡意
 
 下表顯示哪些 Azure RBAC 動作支援刪除 blob 或 blob 版本。
 
-| 說明 | Blob 服務作業 | 需要 Azure RBAC 資料動作 | Azure 內建角色支援 |
+| 描述 | Blob 服務作業 | 需要 Azure RBAC 資料動作 | Azure 內建角色支援 |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | 正在刪除 blob 的目前版本 | 刪除 Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete** | 儲存體 Blob 資料參與者 |
 | 刪除版本 | 刪除 Blob | **Microsoft. Storage/storageAccounts/blobServices/container/blob/deleteBlobVersion/action** | 儲存體 Blob 資料擁有者 |
@@ -293,8 +293,8 @@ Blob 儲存體沒有方法可判斷兩個區塊是否包含相同的資料。 �
 | 如果同時啟用 blob 虛刪除和版本控制 | 所有具有完整內容長度的現有版本（不論層級為何）。 |
 | 如果已啟用 blob 虛刪除，但停用版本設定 | 所有現有的虛刪除快照集，不論層級為何，都有完整的內容長度。 |
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [啟用和管理 Blob 版本設定](versioning-enable.md)
 - [建立 blob 的快照集](/rest/api/storageservices/creating-a-snapshot-of-a-blob)
-- [Azure 儲存體 Blob 的虛刪除](storage-blob-soft-delete.md)
+- [Azure 儲存體 Blob 的虛刪除](./soft-delete-blob-overview.md)

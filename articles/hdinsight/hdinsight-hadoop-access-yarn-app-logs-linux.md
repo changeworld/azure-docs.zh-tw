@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 726cf362e62f0ef914dfaea090a08c224bd5d8d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82192496"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001944"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>在以 Linux 為基礎的 HDInsight 上存取 Apache Hadoop YARN 應用程式記錄
 
@@ -23,7 +23,7 @@ ms.locfileid: "82192496"
 
 YARN 藉由將資源管理與應用程式排程/監視分離，支援多種程式設計模型 (Apache Hadoop MapReduce 是其中一個) 。 YARN 使用全域 *`ResourceManager`* (RM) 、每一背景工作節點 *[Nodemanagers* (NMs) ，以及每個應用程式 *>resourcemanager* (AMs) 。 每一應用程式 AM 會與 RM 交涉用來執行您應用程式的資源 (CPU、記憶體、磁碟、網路)。 RM 會與 NM 合作來授與這些資源 (以「 *容器*」的形式授與)。 AM 則是負責追蹤 RM 指派給它之容器的進度。 視應用程式的本質而定，一個應用程式可能會需要許多容器。
 
-每個應用程式都可能包含多個「應用程式嘗試」**。 如果應用程式失敗，系統可能會以新的嘗試來重試它。 每個嘗試都在容器中執行。 就某個方面來說，容器會提供 YARN 應用程式所完成之基本工作單位的內容。 在容器內容中完成的所有工作，都是在提供容器的單一背景工作節點上完成。 如需進一步參考，請參閱 [Hadoop：撰寫 YARN 應用程式](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html)或 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 。
+每個應用程式都可能包含多個「應用程式嘗試」。 如果應用程式失敗，系統可能會以新的嘗試來重試它。 每個嘗試都在容器中執行。 就某個方面來說，容器會提供 YARN 應用程式所完成之基本工作單位的內容。 在容器內容中完成的所有工作，都是在提供容器的單一背景工作節點上完成。 如需進一步參考，請參閱 [Hadoop：撰寫 YARN 應用程式](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html)或 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 。
 
 若要調整您的叢集以支援更高的處理輸送量，您可以使用[幾種不同的語言](hdinsight-scaling-best-practices.md#utilities-to-scale-clusters)，以手動方式使用[自動](hdinsight-autoscale-clusters.md)調整或調整叢集規模。
 
@@ -58,7 +58,7 @@ YARN Timeline Server 包含下列類型的資料：
 
 1. 從網頁瀏覽器瀏覽至 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是叢集的名稱。
 
-1. 從 Ambari UI 中，流覽至**MapReduce2**  >  **Configs**  >  **Advanced Advanced**  >  **Custom mapred-site**。
+1. 從 Ambari UI 中，流覽至 **MapReduce2**  >  **Configs**  >  **Advanced Advanced**  >  **Custom mapred-site**。
 
 1. 新增下列 *其中一* 組屬性：
 
@@ -163,7 +163,7 @@ YARN UI 是在叢集前端 `ResourceManager` 節點上執行。 它是透過 Amb
 
     您會看到 YARN 記錄的連結清單。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [HDInsight 上的 Apache Hadoop 架構](hdinsight-hadoop-architecture.md)
 * [使用 Azure HDInsight 針對 Apache Hadoop YARN 問題進行疑難排解](hdinsight-troubleshoot-yarn.md)

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 02/19/2020
 ms.author: cynthn
 ms.openlocfilehash: 7e70b8c789dbabb9075cd9d69c44bbfed916f153
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77911778"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002543"
 ---
 > [!IMPORTANT]
 > 傳統 VM 將於 2023 年 3 月 1 日淘汰。

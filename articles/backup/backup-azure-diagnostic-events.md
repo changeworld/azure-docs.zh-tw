@@ -4,11 +4,11 @@ description: 本文描述如何針對 Azure 備份使用舊的和新的診斷事
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.openlocfilehash: 3d10053bae5148f33dba6d1207a81bdb16c37577
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89182593"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002880"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>使用復原服務保存庫的診斷設定
 
@@ -33,7 +33,7 @@ Azure 備份提供下列診斷事件。 每個事件都會提供一組特定備�
 
 如需詳細資訊，請參閱 [Azure 備份診斷事件的資料模型](./backup-azure-reports-data-model.md)。
 
-這些事件的資料可以傳送至儲存體帳戶、Log Analytics 工作區或事件中樞。 如果您要將此資料傳送至 Log Analytics 工作區，請選取 [**診斷設定**] 畫面上的**資源特定**切換。 如需詳細資訊，請參閱下列幾節。
+這些事件的資料可以傳送至儲存體帳戶、Log Analytics 工作區或事件中樞。 如果您要將此資料傳送至 Log Analytics 工作區，請選取 [**診斷設定**] 畫面上的 **資源特定** 切換。 如需詳細資訊，請參閱下列幾節。
 
 ## <a name="use-diagnostics-settings-with-log-analytics"></a>使用 Log Analytics 的診斷設定
 
@@ -44,8 +44,8 @@ Azure 備份提供下列診斷事件。 每個事件都會提供一組特定備�
 1. 移至您的保存庫，然後選取 [ **診斷設定**]。 選取 [ **+ 新增診斷設定**]。
 1. 提供診斷設定的名稱。
 1. 選取 [ **傳送至 Log analytics** ] 核取方塊，然後選取 Log analytics 工作區。
-1. 選取切換中 **特定的資源** ，然後選取下列六個事件： **CoreAzureBackup**、 **AddonAzureBackupJobs**、 **AddonAzureBackupAlerts**、 **AddonAzureBackupPolicy**、 **AddonAzureBackupStorage**和 **AddonAzureBackupProtectedInstance**。
-1. 選取 [儲存]****。
+1. 選取切換中 **特定的資源** ，然後選取下列六個事件： **CoreAzureBackup**、 **AddonAzureBackupJobs**、 **AddonAzureBackupAlerts**、 **AddonAzureBackupPolicy**、 **AddonAzureBackupStorage** 和 **AddonAzureBackupProtectedInstance**。
+1. 選取 [儲存]。
 
    ![資源特定模式](./media/backup-azure-diagnostics-events/resource-specific-blade.png)
 
@@ -58,7 +58,7 @@ Azure 備份提供下列診斷事件。 每個事件都會提供一組特定備�
 
 傳統上，保存庫的所有備份相關診斷資料都包含在名為 AzureBackupReport 的單一事件中。 此處所述的六個事件其實是 AzureBackupReport 中包含的所有資料的分解。
 
-目前，在使用者對此事件具有現有自訂查詢的情況下，我們會繼續支援 AzureBackupReport 事件以提供回溯相容性。 範例包括自訂記錄警示和自訂視覺效果。 *建議您儘早移至新的[事件](#diagnostics-events-available-for-azure-backup-users)*。 新的事件：
+目前，在使用者對此事件具有現有自訂查詢的情況下，我們會繼續支援 AzureBackupReport 事件以提供回溯相容性。 範例包括自訂記錄警示和自訂視覺效果。 *建議您儘早移至新的 [事件](#diagnostics-events-available-for-azure-backup-users)*。 新的事件：
 
 * 讓資料更容易在記錄查詢中使用。
 * 提供架構及其結構的更佳探索能力。
@@ -110,11 +110,11 @@ Azure 備份提供下列診斷事件。 每個事件都會提供一組特定備�
 > 只有在 Azure 診斷模式下 *才* 支援 AzureBackupReport 事件。 *如果您嘗試在資源特定模式下傳送此事件的資料，則不會有任何資料流程向 Log Analytics 工作區。*
 
 > [!NOTE]
-> 只有當使用者選取 [**傳送至 Log Analytics**] 時，才會顯示**Azure 診斷**或**特定資源**的切換。 若要將資料傳送至儲存體帳戶或事件中樞，使用者可以選取所需的目的地，然後選取任何所需事件的核取方塊，而不需要任何額外的輸入。 同樣地，建議您不要選擇舊版事件 AzureBackupReport 繼續進行。
+> 只有當使用者選取 [**傳送至 Log Analytics**] 時，才會顯示 **Azure 診斷** 或 **特定資源** 的切換。 若要將資料傳送至儲存體帳戶或事件中樞，使用者可以選取所需的目的地，然後選取任何所需事件的核取方塊，而不需要任何額外的輸入。 同樣地，建議您不要選擇舊版事件 AzureBackupReport 繼續進行。
 
 ## <a name="send-azure-site-recovery-events-to-log-analytics"></a>將 Azure Site Recovery 事件傳送至 Log Analytics
 
-系統會從相同的復原服務保存庫傳送 Azure 備份和 Azure Site Recovery 事件。 資源特定資料表目前無法使用 Azure Site Recovery。 想要將 Azure Site Recovery 事件傳送至 Log Analytics 的使用者， *只*會導向使用 Azure 診斷模式，如下圖所示。 *選擇 Azure Site Recovery 事件的資源特定模式，會導致無法將所需的資料傳送至 Log Analytics 工作區*。
+系統會從相同的復原服務保存庫傳送 Azure 備份和 Azure Site Recovery 事件。 資源特定資料表目前無法使用 Azure Site Recovery。 想要將 Azure Site Recovery 事件傳送至 Log Analytics 的使用者， *只* 會導向使用 Azure 診斷模式，如下圖所示。 *選擇 Azure Site Recovery 事件的資源特定模式，會導致無法將所需的資料傳送至 Log Analytics 工作區*。
 
 ![Site Recovery 事件](./media/backup-azure-diagnostics-events/site-recovery-settings.png)
 

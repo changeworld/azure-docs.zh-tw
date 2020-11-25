@@ -6,11 +6,11 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 2e9af5dcc00d8cadd0528d56ee73bc6aeba149d7
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747724"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002029"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>教學課程：在 Azure Kubernetes Service (AKS) 中升級 Kubernetes
 
@@ -37,7 +37,7 @@ ms.locfileid: "92747724"
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-在下列範例中，目前版本是 1.15.11  ，可用版本則顯示在 [升級]  之下。
+在下列範例中，目前版本是 1.15.11，可用版本則顯示在 [升級] 之下。
 
 ```json
 {
@@ -80,9 +80,9 @@ az aks upgrade \
 ```
 
 > [!NOTE]
-> 您一次只能升級一個次要版本。 例如，您可以從 1.14.x  升級至 1.15.x  ，但無法直接從 1.14.x  升級至 1.16.x  。 若要從 1.14.x  升級至 1.16.x  ，必須先從 1.14.x  升級至 1.15.x  ，然後再執行從 1.15.x  到 1.16.x  的升級。
+> 您一次只能升級一個次要版本。 例如，您可以從 1.14.x 升級至 1.15.x，但無法直接從 1.14.x 升級至 1.16.x。 若要從 1.14.x 升級至 1.16.x，必須先從 1.14.x 升級至 1.15.x，然後再執行從 1.15.x 到 1.16.x 的升級。
 
-下列扼要的範例輸出顯示升級至 *1.16.8* 的結果。 請注意， *kubernetesVersion* 現在回報 *1.16.8* ：
+下列扼要的範例輸出顯示升級至 *1.16.8* 的結果。 請注意，*kubernetesVersion* 現在回報 *1.16.8*：
 
 ```json
 {
@@ -115,7 +115,7 @@ az aks upgrade \
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-下列範例輸出顯示 AKS 叢集執行的是 KubernetesVersion 1.16.8  ：
+下列範例輸出顯示 AKS 叢集執行的是 KubernetesVersion 1.16.8：
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn

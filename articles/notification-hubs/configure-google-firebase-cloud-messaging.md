@@ -12,17 +12,17 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/25/2019
 ms.openlocfilehash: 0da103c11e2412108535ca322917632f5d95559d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87760833"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003560"
 ---
 # <a name="configure-google-firebase-settings-for-a-notification-hub-in-the-azure-portal"></a>在 Azure 入口網站中設定通知中樞的 Google Firebase 設定
 
 本文說明如何使用 Azure 入口網站，為 Azure 通知中樞設定 Google Firebase 雲端通訊 (FCM) 設定。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您尚未建立通知中樞，立即建立一個。 如需詳細資訊，請參閱[在 Azure 入口網站中建立 Azure 通知中樞](create-notification-hub-portal.md)。
 
@@ -30,7 +30,7 @@ ms.locfileid: "87760833"
 
 下列程式說明為通知中樞設定 Google Firebase 雲端通訊 (FCM) 設定的步驟：
 
-1. 在 Azure 入口網站的 [ **通知中樞** ] 頁面上，選取左側功能表上的 [ **Google (GCM/FCM) ** 。
+1. 在 Azure 入口網站的 [ **通知中樞** ] 頁面上，選取左側功能表上的 [ **Google (GCM/FCM)** 。
 2. 針對您稍早儲存的 FCM 專案，貼上 **API 金鑰**。
 3. 選取 [儲存]。
 

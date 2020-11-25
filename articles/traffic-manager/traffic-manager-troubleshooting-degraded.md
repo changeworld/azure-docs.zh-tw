@@ -13,19 +13,19 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: duau
 ms.openlocfilehash: 83dc432a1f88b443d500bf9a977abfed69211156
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401549"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003849"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>疑難排解 Azure 流量管理員上的已降級狀態
 
-本文說明如何針對顯示降級狀態的 Azure 流量管理員設定檔進行疑難排解。 針對 Azure 流量管理員降級狀態進行疑難排解的第一個步驟是啟用記錄。  如需詳細資訊，請參閱 [啟用資源記錄](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) 檔。 在此案例中，假設您已設定流量管理員設定檔來指向您的一些 cloudapp.net 託管服務。 如果流量管理員的健康情況顯示 [降級]**** 狀態，則可能有一或多個端點的狀態是 [降級]****：
+本文說明如何針對顯示降級狀態的 Azure 流量管理員設定檔進行疑難排解。 針對 Azure 流量管理員降級狀態進行疑難排解的第一個步驟是啟用記錄。  如需詳細資訊，請參閱 [啟用資源記錄](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) 檔。 在此案例中，假設您已設定流量管理員設定檔來指向您的一些 cloudapp.net 託管服務。 如果流量管理員的健康情況顯示 [降級] 狀態，則可能有一或多個端點的狀態是 [降級]：
 
 ![降級端點狀態](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
-如果流量管理員的健康情況顯示 [非使用中]**** 狀態，則可能有一或多個端點的狀態是 [非使用中]****：
+如果流量管理員的健康情況顯示 [非使用中] 狀態，則可能有一或多個端點的狀態是 [非使用中]：
 
 ![非使用中流量管理員狀態](./media/traffic-manager-troubleshooting-degraded/traffic-manager-inactive.png)
 

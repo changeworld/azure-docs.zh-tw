@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 11/23/2020
 ms.author: alkohli
-ms.openlocfilehash: ad8a5a23361e721fd5d8d55d3555f51def94e768
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: b132368982e0013bfe6f3ffd52e7aacb7b1274eb
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442016"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96003131"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>教學課程：建立 Azure 資料箱 (Preview 的匯出順序) 
 
@@ -30,7 +30,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
 [!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 訂購裝置之前，請先完成下列資料箱服務和裝置的設定必要條件。
 
@@ -68,7 +68,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
     |設定  |值  |
     |---------|---------|
-    |傳輸類型     | 選取 [ **匯出至 Azure** ]。        |
+    |傳輸類型     | 選取 [ **匯出至 Azure**]。        |
     |訂用帳戶     | 為資料箱服務選取 EA、CSP 或 Azure 贊助訂用帳戶。 <br> 訂用帳戶會連結到您的帳單帳戶。       |
     |資源群組     |    選取現有的資源群組。 <br> 資源群組是適用於資源而可一併管理或部署的邏輯容器：         |
     |來源 Azure 區域    |    選取您的資料目前所在的 Azure 區域。         |
@@ -80,7 +80,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
    ![選取資料箱容量](media/data-box-deploy-export-ordered/azure-data-box-export-order-capacity.png)
 
-6. 依 **序** 指定 **基本** 訂單詳細資料。 輸入或選取下列資訊，然後選取 [下一步]。
+6. 依 **序** 指定 **基本** 訂單詳細資料。 輸入或選取下列資訊。
 
     |設定  |值  |
     |---------|---------|
@@ -88,21 +88,21 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
     |資源群組 | 您先前選取的資源群組。 |
     |匯出順序名稱     |  提供用來追蹤訂單的易記名稱。 <br> 名稱長度可介於 3 到 24 個字元之間，且可以是字母、數字和連字號。 <br> 名稱必須以字母或數字為開頭或結尾。      |
 
-    ![匯出順序基本概念](media/data-box-deploy-export-ordered/azure-data-box-export-order-storage-account-export-type.png)
+    ![匯出順序基本概念](media/data-box-deploy-export-ordered/azure-data-box-export-order-basics-order-name.png)
 
     選取 **[下一步]：要繼續的資料選取範圍** 。
 
-7. 在 [ **資料選取範圍** ] 中，選取 [ **新增儲存體帳戶] 和 [匯出類型** ]。
+7. 在 [ **資料選取範圍**] 中，選取 [ **新增儲存體帳戶] 和 [匯出類型**]。
 
-    ![新增儲存體帳戶和匯出類型](media/data-box-deploy-export-ordered/azure-data-box-export-order-basics.png)
+    ![新增儲存體帳戶和匯出類型](media/data-box-deploy-export-ordered/azure-data-box-export-order-basics-add-storage.png)
 
-8. 在 [ **選取匯出選項** ] 中，指定匯出選項的詳細資料。 輸入或選取下列資訊，然後選取 [ **新增** ]。
+8. 在 [ **選取匯出選項**] 中，指定匯出選項的詳細資料。 輸入或選取下列資訊，然後選取 [ **新增**]。
 
     |設定  |值  |
     |---------|---------|
     |儲存體帳戶     | 您要從中匯出資料的 Azure 儲存體帳戶。 |
     |匯出類型     | 指定要從 **所有物件** 匯出的資料類型，並 **使用 XML** 檔案。<ul><li> **所有物件** -指定作業會根據您的 **傳送選項選項** 來匯出所有資料。</li><li> **使用 xml** 檔案-指定 xml 檔案，其中包含要從儲存體帳戶匯出之 blob 和/或檔案的一組路徑和首碼。 XML 檔案必須位於所選儲存體帳戶的容器中，而且目前不支援從檔案共用選取。 檔案必須是非空白 .xml 檔案。</li></ul>        |
-    |傳送選項     |  從 [全 **選** ]、[ **所有 blob** ] 和 [ **所有** 檔案] 指定資料傳輸選項。 <ul><li> **全選** -指定匯出所有 blob 和 Azure 檔案儲存體。 如果您使用僅支援 blob (Blob 儲存體帳戶) 的儲存體帳戶，將無法選取 [ **所有** 檔案] 選項。</li><li> **所有 blob** -指定只匯出區塊和分頁 blob。</li><li> **所有** 檔案-指定匯出所有檔案，但不包括 blob。 您 (GPv1 和 GPv2、premium 儲存體或 blob 儲存體) 的儲存體帳戶類型，會決定您可以匯出的資料類型。 如需詳細資訊，請參閱 [支援的儲存體帳戶以進行匯出](../storage/common/storage-import-export-requirements.md#supported-storage-types)。</li></ul>         |
+    |傳送選項     |  從 [全 **選**]、[ **所有 blob**] 和 [ **所有** 檔案] 指定資料傳輸選項。 <ul><li> **全選** -指定匯出所有 blob 和 Azure 檔案儲存體。 如果您使用僅支援 blob (Blob 儲存體帳戶) 的儲存體帳戶，將無法選取 [ **所有** 檔案] 選項。</li><li> **所有 blob** -指定只匯出區塊和分頁 blob。</li><li> **所有** 檔案-指定匯出所有檔案，但不包括 blob。 您 (GPv1 和 GPv2、premium 儲存體或 blob 儲存體) 的儲存體帳戶類型，會決定您可以匯出的資料類型。 如需詳細資訊，請參閱 [支援的儲存體帳戶以進行匯出](../storage/common/storage-import-export-requirements.md#supported-storage-types)。</li></ul>         |
     |包含詳細資訊記錄     | 指出您是否想要包含已成功匯出之所有檔案清單的詳細資訊記錄檔。        |
 
     > [!NOTE]
@@ -115,15 +115,88 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
    若要查看 xml 輸入的範例，請參閱 [範例 xml 輸入](data-box-deploy-export-ordered.md#sample-xml-file)
 
-9. 在 [ **資料選擇** ] 中，檢查您的設定，然後選取 **[下一步：安全性>** 。
+9. 在 [ **資料選擇**] 中，檢查您的設定，然後選取 **[下一步：安全性>]** 以繼續。
 
    ![匯出順序，資料選取](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-selection.png)
 
-10. 在 [安全性] 中，如果您想要啟用以軟體為基礎的雙重加密，請選取 [為訂單啟用雙重加密]。 
+    [ **安全性** ] 畫面可讓您使用自己的加密金鑰，並選擇使用雙重加密。
+
+    [安全性] 畫面上的所有設定都是選擇性的。 如果您未變更任何設定，將會套用預設設定。
+
+    ![資料箱匯入訂單精靈的安全性畫面](media/data-box-deploy-export-ordered/data-box-export-security-01.png)
+
+10. 如果您想要使用自己的客戶管理金鑰來保護新資源的解除鎖定密碼，請展開 [ **加密類型**]。
+
+    為您的 Azure 資料箱設定客戶管理的金鑰是選擇性的。 根據預設，資料箱會使用 Microsoft 管理的金鑰來保護解除鎖定密碼。
+
+    客戶管理的金鑰不會影響裝置上的資料加密方式。 金鑰只能用來加密裝置解除鎖定密碼。
+
+    如果您不想要使用客戶管理的金鑰，請跳至步驟16。
+
+    ![顯示加密類型設定的安全性畫面](./media/data-box-deploy-export-ordered/customer-managed-key-01.png)
+
+11. 選取 [ **客戶管理的金鑰** ] 做為金鑰類型。 然後選取 [ **選取金鑰保存庫與金鑰**]。
+   
+    ![安全性畫面，客戶管理的金鑰的設定](./media/data-box-deploy-export-ordered/customer-managed-key-02.png)
+
+12. 在 [ **從 Azure Key Vault 選取金鑰** ] 畫面上，會自動填入訂用帳戶。
+
+    - 針對 **金鑰保存庫**，您可以從下拉式清單中選取現有的金鑰保存庫。
+
+      ![從 Azure Key Vault 畫面選取金鑰](./media/data-box-deploy-export-ordered/customer-managed-key-03.png)
+
+    - 您也可以選取 [ **建立新** 的] 來建立新的金鑰保存庫。 在 [ **建立金鑰保存庫** ] 畫面上，輸入資源群組和金鑰保存庫名稱。 確定已啟用虛 **刪除** 和 **清除保護** 。 接受所有其他預設值，然後選取 [ **審核 + 建立**]。
+
+      ![建立新的 Azure Key Vault 設定](./media/data-box-deploy-export-ordered/customer-managed-key-04.png)
+
+      檢查金鑰保存庫的資訊，然後選取 [ **建立**]。 等候幾分鐘的時間來完成金鑰保存庫的建立。
+
+      ![新的 Azure Key Vault 審核畫面](./media/data-box-deploy-export-ordered/customer-managed-key-05.png)
+
+13. 在 [ **從 Azure Key Vault 選取金鑰** ] 畫面上，您可以選取金鑰保存庫中的現有金鑰。
+
+    ![從 Azure Key Vault 選取現有的金鑰](./media/data-box-deploy-export-ordered/customer-managed-key-06.png)
+
+    如果您想要建立新的金鑰，請選取 [ **建立新** 的]。 您必須使用 RSA 金鑰。 大小可以是2048或更大。 輸入新金鑰的名稱、接受其他預設值，然後選取 [ **建立**]。
+
+      ![建立新的金鑰選項](./media/data-box-deploy-export-ordered/customer-managed-key-07.png)
+
+      在金鑰保存庫中建立金鑰時，系統會通知您。
+
+14. 選取要使用的金鑰 **版本** ，然後選擇 [ **選取**]。
+
+      ![在 key vault 中建立的新金鑰](./media/data-box-deploy-export-ordered/customer-managed-key-08.png)
+
+    如果您想要建立新的金鑰版本，請選取 [ **建立新** 的]。
+
+    ![開啟對話方塊來建立新的金鑰版本](./media/data-box-deploy-export-ordered/customer-managed-key-08-a.png)
+
+    在 [ **建立新的金鑰** ] 畫面上，選擇新金鑰版本的 [設定]，然後選取 [ **建立**]。
+
+    ![建立新的金鑰版本](./media/data-box-deploy-export-ordered/customer-managed-key-08-b.png)
+
+    [**安全性**] 畫面上的 [**加密類型**] 設定會顯示您的金鑰保存庫和金鑰。
+
+    ![客戶管理金鑰的金鑰和金鑰保存庫](./media/data-box-deploy-export-ordered/customer-managed-key-09.png)
+
+15. 選取您將用來管理此資源存取權的使用者身分識別。 選擇 [ **選取使用者識別**]。 在右側面板中，選取要使用的訂用帳戶和受控識別。 然後選擇 [選取]  。
+
+    使用者指派的受控識別是一種獨立的 Azure 資源，可用來管理多個資源。 如需詳細資訊，請參閱 [受控識別類型](/azure/active-directory/managed-identities-azure-resources/overview)。  
+
+    如果您需要建立新的受控識別，請依照 [使用 Azure 入口網站建立、列出、刪除或指派角色給使用者指派的受控識別](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)中的指導方針。
+    
+    ![選取使用者身分識別](./media/data-box-deploy-export-ordered/customer-managed-key-10.png)
+
+    使用者身分識別會顯示在 [ **加密類型** 設定] 中。
+
+    您現在可以折迭 **加密類型** 設定。
+
+    ![在 [加密類型設定] 中顯示所選的使用者身分識別](./media/data-box-deploy-export-ordered/customer-managed-key-11.png)
+
+16. 如果您想要啟用以軟體為基礎的雙重加密，請 **針對高安全性環境) 展開 [雙重加密 (**]，然後選取 **[啟用順序的雙重加密**]。 
 
     除了資料箱上的 AES-256 位元加密以外，也會執行以軟體為基礎的加密。
 
-   
     > [!NOTE]
     > 啟用此選項可能會進行訂單處理，且資料複製會花費較長的時間。 建立訂單之後，您就無法變更此選項。
 
@@ -131,11 +204,11 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
     完成時，選取 [下一步:連絡人詳細資料] 以繼續進行。
 
-11. 在 [ **連絡人詳細資料** ] 中，選取 [ **+ 新增寄送位址** ]，輸入您的寄送資訊。
+11. 在 [ **連絡人詳細資料**] 中，選取 [ **+ 新增寄送位址** ]，輸入您的寄送資訊。
 
     ![新增交貨位址](media/data-box-deploy-export-ordered/azure-data-box-export-order-add-shipping-address.png)
 
-12. 在 [ **新增交貨位址** ] 中，提供您的姓名、公司名稱和郵件標籤，以及有效的電話號碼。 選取 [驗證]。 服務會驗證交貨地址以確認服務可用性。 如果服務可提供至指定的交貨地址，您將會收到該項通知。
+12. 在 [ **新增交貨位址**] 中，提供您的姓名、公司名稱和郵件標籤，以及有效的電話號碼。 選取 [驗證]。 服務會驗證交貨地址以確認服務可用性。 如果服務可提供至指定的交貨地址，您將會收到該項通知。
 
     ![驗證交貨位址](media/data-box-deploy-export-ordered/azure-data-box-export-order-validate-shipping-address.png)
 
@@ -143,13 +216,13 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
 13. 若已成功驗證出貨詳細資料，請選取 [ **新增交貨位址** ]。
 
-14. 在 [ **連絡人詳細資料** ] 中，檢查您的寄送位址和電子郵件地址。 服務會將關於任何訂單狀態更新的電子郵件通知傳送至指定的電子郵件地址。
+14. 在 [ **連絡人詳細資料**] 中，檢查您的寄送位址和電子郵件地址。 服務會將關於任何訂單狀態更新的電子郵件通知傳送至指定的電子郵件地址。
 
     建議您使用群組電子郵件，以便在群組中的管理員離開時繼續接收通知。
 
     ![連絡人詳細資料](media/data-box-deploy-export-ordered/azure-data-box-export-order-contact-details.png)
 
-15. 選取 **[下一步：檢查 + 訂單>]** 。 您必須接受條款及條件，才能繼續建立訂單。
+15. 選取 **[下一步：檢查 + 訂單>]**。 您必須接受條款及條件，才能繼續建立訂單。
 
 16. 選取 [訂單]。 建立訂單需要幾分鐘的時間。
 
@@ -159,7 +232,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
 如果您選取 [ **使用 XML** 檔案]，可以指定特定的容器和 blob (頁面和您想要匯出的區塊) 。 您必須遵循 [範例 xml 檔表格](#sample-xml-file) 規格來格式化 XML。 下列步驟示範如何使用 XML 檔案來匯出資料：
 
-1. 針對 [ **匯出類型** ]，選取 [ **使用 XML** 檔案]。 這是您的 XML 檔案，可指定您想要匯出的特定 blob 和 Azure 檔案。 若要加入 XML 檔案，請選取 [ **按一下這裡選取 xml** 檔案]。
+1. 針對 [ **匯出類型**]，選取 [ **使用 XML** 檔案]。 這是您的 XML 檔案，可指定您想要匯出的特定 blob 和 Azure 檔案。 若要加入 XML 檔案，請選取 [ **按一下這裡選取 xml** 檔案]。
 
      ![選取匯出選項，XML](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-select-xml-option.png)
 
@@ -207,7 +280,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
 * 系統會針對與裝置相關聯的每個儲存體帳戶建立 SMB 共用。
 * 針對每個共用，會產生例如使用者名稱和密碼的存取認證。
-* 裝置已鎖定，而且只能使用裝置解除鎖定密碼來存取。 若要取出密碼，您需要登入 Azure 入口網站帳戶，然後選取 [ **裝置詳細資料** ]。
+* 裝置已鎖定，而且只能使用裝置解除鎖定密碼來存取。 若要取出密碼，您需要登入 Azure 入口網站帳戶，然後選取 [ **裝置詳細資料**]。
 
 接著，Microsoft 會透過區域貨運公司準備並分派您的裝置。 在裝置送達後，您會收到追蹤號碼。 入口網站會顯示訂單處於 [已分派] 狀態。
 
@@ -259,7 +332,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
 下表顯示有效 Blob 路徑範例：
 
-   | 選取器 | Blob 路徑 | 說明 |
+   | 選取器 | Blob 路徑 | 描述 |
    | --- | --- | --- |
    | 開始於 |/ |匯出儲存體帳戶中的所有 Blob |
    | 開始於 |/$root/ |匯出根容器中的所有 Blob |

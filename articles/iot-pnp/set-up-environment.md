@@ -7,20 +7,20 @@ ms.date: 08/11/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 3b7c9b51bad45bb348f70c8b0e433404b49b5aac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e6c090c02798103a30cc68f2ca28e8c4f7f2f17
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761357"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96004257"
 ---
 # <a name="set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>針對 IoT 隨插即用快速入門和教學課程設定您的環境
 
 在您可以完成任何 IoT 隨插即用快速入門和教學課程之前，您必須先在 Azure 訂用帳戶中設定 IoT 中樞和裝置布建服務 (DPS) 。 您也需要範例應用程式和 Azure IoT explorer 工具所使用之模型檔案的本機複本。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您沒有 Azure 訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始進行。
 
-若要避免在本機安裝 Azure CLI 的需求，您可以使用 Azure Cloud Shell 來設定雲端服務。
+若要避免必須在本機安裝 Azure CLI，您可以使用 Azure Cloud Shell 來設定雲端服務。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -128,7 +128,7 @@ set IOTHUB_DEVICE_ID=my-pnp-device
 
 設定工具以使用您先前下載的模型檔案。 從工具的 [首頁] 中，選取 [ **IoT 隨插即用設定**]，然後按一下 [ **+ 新增 > 本機資料夾**]。 選取您先前建立的 *模型* 資料夾。 然後選取 [ **儲存** ] 以儲存設定。
 
-若要深入瞭解，請參閱 [安裝和使用 Azure IoT explorer](howto-use-iot-explorer.md)。
+如需詳細資訊，請參閱[安裝和使用 Azure IoT 總管](howto-use-iot-explorer.md)。
 
 ## <a name="remove-the-resources"></a>移除資源
 
@@ -143,4 +143,4 @@ az group delete --name my-pnp-resourcegroup
 現在您已設定環境，您可以嘗試下列其中一個快速入門或教學課程，例如：
 
 > [!div class="nextstepaction"]
-> [將範例 IoT 隨插即用裝置應用程式連線至 IoT 中樞 ( # A0) ](quickstart-connect-device-node.md)
+> [將範例 IoT 隨插即用裝置應用程式連線至 IoT 中樞](quickstart-connect-device.md)

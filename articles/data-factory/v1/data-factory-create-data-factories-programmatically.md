@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c9dce90b0dc563fb0fa7ecaaa0882167eef444a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019890"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003628"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>使用 Azure Data Factory .NET SDK 來建立、監視及管理 Azure Data Factory
 > [!NOTE]
@@ -29,7 +29,7 @@ ms.locfileid: "89019890"
 > [!NOTE]
 > 這篇文章並未涵蓋所有的 Data Factory .NET API。 如需適用於 Data Factory 之 .NET API 的完整文件，請參閱 [Data Factory .NET API 參考](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1)。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -138,8 +138,8 @@ ms.locfileid: "89019890"
         </appSettings>
     </configuration>
     ```
-5. 在 App.Config 檔案中，以您自己的值更新** &lt; 應用程式 &gt; 識別碼**、 ** &lt; 密碼 &gt; **、訂用帳戶** &lt; 識別碼 &gt; **和租使用者** &lt; 識別碼 &gt; **的值。
-6. 將下列 **using** 陳述式新增至專案的 **Program.cs**檔案。
+5. 在 App.Config 檔案中，以您自己的值更新 **&lt; 應用程式 &gt; 識別碼**、 **&lt; 密碼 &gt;**、訂用帳戶 **&lt; 識別碼 &gt;** 和租使用者 **&lt; 識別碼 &gt;** 的值。
+6. 將下列 **using** 陳述式新增至專案的 **Program.cs** 檔案。
 
     ```csharp
     using System.Configuration;
@@ -197,7 +197,7 @@ ms.locfileid: "89019890"
         }
     );
     ```
-8. 將下列會建立 **Azure 儲存體**的程式碼新增至 **Main** 方法中。
+8. 將下列會建立 **Azure 儲存體** 的程式碼新增至 **Main** 方法中。
 
    > [!IMPORTANT]
    > 以 Azure 儲存體帳戶的名稱和金鑰取代 **storageaccountname** 和 **accountkey**。
@@ -219,7 +219,7 @@ ms.locfileid: "89019890"
         }
     );
     ```
-9. 將下列會建立**輸入和輸出資料集**的程式碼新增至 **Main** 方法中。
+9. 將下列會建立 **輸入和輸出資料集** 的程式碼新增至 **Main** 方法中。
 
     輸入 Blob 的 **FolderPath** 是設定為 **adftutorial/**，其中的 **adftutorial** 是 Blob 儲存體中容器的名稱。 如果 Azure Blob 儲存體中沒有此容器，請以下列名稱建立容器： **adftutorial** ，並將文字檔上傳至容器。
 
@@ -299,7 +299,7 @@ ms.locfileid: "89019890"
         }
     });
     ```
-10. 將下列會**建立並啟用管線**的程式碼新增至 **Main** 方法中。 此管線有一個 **CopyActivity**，它以 **BlobSource** 為來源，**BlobSink** 為接收器。
+10. 將下列會 **建立並啟用管線** 的程式碼新增至 **Main** 方法中。 此管線有一個 **CopyActivity**，它以 **BlobSource** 為來源，**BlobSink** 為接收器。
 
     複製活動會在 Azure Data Factory 中執行資料移動。 此活動是由全域可用的服務所提供，可以使用安全、可靠及可調整的方式，在各種不同的資料存放區之間複製資料。 如需複製活動的詳細資訊，請參閱 [資料移動活動](data-factory-data-movement-activities.md) 文章。
 
@@ -426,7 +426,7 @@ ms.locfileid: "89019890"
     Console.WriteLine("\nPress any key to exit.");
     Console.ReadKey();
     ```
-14. 將 **Main** 方法所使用的下列 Helper 方法新增至 **Program** 類別中。 此方法會顯示一個對話方塊，讓您提供用來登入 Azure 入口網站的**使用者名稱**和**密碼**。
+14. 將 **Main** 方法所使用的下列 Helper 方法新增至 **Program** 類別中。 此方法會顯示一個對話方塊，讓您提供用來登入 Azure 入口網站的 **使用者名稱** 和 **密碼**。
 
     ```csharp
     public static async Task<string> GetAuthorizationHeader()
@@ -446,7 +446,7 @@ ms.locfileid: "89019890"
     }
     ```
 
-15. 在方案總管中，展開 [專案： **>datafactoryapitestapp**]，以滑鼠右鍵按一下 [ **參考**]，然後按一下 [ **加入參考**]。 選取 `System.Configuration` 組件的核取方塊，然後按一下 [確定]****。
+15. 在方案總管中，展開 [專案： **>datafactoryapitestapp**]，以滑鼠右鍵按一下 [ **參考**]，然後按一下 [ **加入參考**]。 選取 `System.Configuration` 組件的核取方塊，然後按一下 [確定]。
 15. 建置主控台應用程式。 按一下功能表上的 [建置]，再按一下 [建置方案]。
 16. 確認您 Azure Blob 儲存體之 adftutorial 容器中至少有一個檔案。 如果沒有，請在「記事本」中以下列內容建立 Emp.txt 檔案，然後將它上傳至 adftutorial 容器。
 
@@ -459,7 +459,7 @@ ms.locfileid: "89019890"
     * 連結服務：**AzureStorageLinkedService**
     * 資料集：**DatasetBlobSource** 和 **DatasetBlobDestination**。
     * 管線：**PipelineBlobSample**
-19. 確認已在**adftutorial**容器的 **>apifactoryoutput**資料夾中建立輸出檔。
+19. 確認已在 **adftutorial** 容器的 **>apifactoryoutput** 資料夾中建立輸出檔。
 
 ## <a name="get-a-list-of-failed-data-slices"></a>取得失敗資料配量的清單 
 

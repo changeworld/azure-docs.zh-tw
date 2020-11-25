@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 37917e0ed663675677f1d0452b5796120ca2694e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75466586"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001712"
 ---
 ### <a name="azure-storage-linked-service"></a>Azure 儲存體連結服務
-「Azure 儲存體連結服務」**** 可讓您使用**帳戶金鑰**將 Azure 儲存體帳戶連結至 Azure Data Factory，而帳戶金鑰可將 Azure 儲存體的全域存取權提供給資料處理站。 下表提供 Azure 儲存體連結服務專屬 JSON 元素的描述。
+「Azure 儲存體連結服務」可讓您使用 **帳戶金鑰** 將 Azure 儲存體帳戶連結至 Azure Data Factory，而帳戶金鑰可將 Azure 儲存體的全域存取權提供給資料處理站。 下表提供 Azure 儲存體連結服務專屬 JSON 元素的描述。
 
 | 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
@@ -66,9 +66,9 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 }
 ```
 
-建立 **SAS URI**時，請考慮下列事項：  
+建立 **SAS URI** 時，請考慮下列事項：  
 
-* 根據連結的服務 (讀取、寫入、讀取/寫入) 在資料處理站中的使用方式，在物件上設定適當的讀取/寫入**權限**。
+* 根據連結的服務 (讀取、寫入、讀取/寫入) 在資料處理站中的使用方式，在物件上設定適當的讀取/寫入 **權限**。
 * 設定適當的 [過期時間]。 請確定 Azure 儲存體物件的存取權不會在管線的作用中期間內過期。
 * URI 應根據需要在正確的容器/Blob 或資料表層級建立。 Azure Blob 的 SAS URI 可允許 Data Factory 服務存取該特定的 Blob。 Azure Blob 容器的 SAS URI 可允許 Data Factory 服務逐一查看該容器中的 Blob。 如果您稍後需要提供更多/較少物件的存取權，或需要更新 SAS URI，請記得使用新的 URI 更新連結的服務。   
 

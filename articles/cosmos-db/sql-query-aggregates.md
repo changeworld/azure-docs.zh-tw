@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 11/23/2020
 ms.author: tisande
-ms.openlocfilehash: 7c988f379e94bf2f69854c90d45af42fe2a7ec4f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: f04590e78b5f1ea9d5e00c9f3d42c2fc32bebc5f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93332775"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96001774"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Azure Cosmos DB 中的彙總函式
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -20,6 +20,8 @@ ms.locfileid: "93332775"
 彙總函式會對子句中的一組值執行計算 `SELECT` ，並傳回單一值。 例如，下列查詢會傳回容器內的專案計數 `Families` ：
 
 ## <a name="examples"></a>範例
+
+使用時 `COUNT()` ，您可以使用任何有效的純量運算式（例如 `1` ）做為輸入。
 
 ```sql
     SELECT COUNT(1)
@@ -71,7 +73,7 @@ SQL API 支援下列彙總函式。 `SUM` 以及 `AVG` 處理數值、 `COUNT` `
 | SUM   | 以運算式傳回所有值的總和。 |
 | 最小值   | 傳回運算式中的最小值。 |
 | 最大值   | 傳回運算式中的最大值。 |
-| AVG   | 以運算式傳回值的平均。 |
+| 平均   | 以運算式傳回值的平均。 |
 
 您也可以對陣列反覆運算的結果進行匯總。
 

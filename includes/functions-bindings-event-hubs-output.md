@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 78836ca4e51875be4237267b3bb9256cc4541fe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11ad3bdcaa40c479c9358fd623edf0e6fdafa0d6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81791679"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002065"
 ---
 使用事件中樞輸出繫結將事件寫入事件串流。 您必須具備事件中樞的傳送權限，才能將事件寫入其中。
 
@@ -53,7 +53,7 @@ public static async Task Run(
 
 # <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-下列範例示範 function.json** 檔案中的事件中樞觸發程序繫結，以及使用此繫結的 [C# 指令碼函式](../articles/azure-functions/functions-reference-csharp.md)。 此函式會將訊息寫入事件中樞。
+下列範例示範 function.json 檔案中的事件中樞觸發程序繫結，以及使用此繫結的 [C# 指令碼函式](../articles/azure-functions/functions-reference-csharp.md)。 此函式會將訊息寫入事件中樞。
 
 下列範例顯示 *function.json* 檔案中的事件中樞繫結資料。 第一個範例是針對 Functions 2.x 和更高版本，而第二個範例則是針對 Functions 1.x。 
 
@@ -105,7 +105,7 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-下列範例示範 function.json** 檔案中的事件中樞觸發程序繫結，以及使用此繫結的 [JavaScript 函式](../articles/azure-functions/functions-reference-node.md)。 此函式會將訊息寫入事件中樞。
+下列範例示範 function.json 檔案中的事件中樞觸發程序繫結，以及使用此繫結的 [JavaScript 函式](../articles/azure-functions/functions-reference-node.md)。 此函式會將訊息寫入事件中樞。
 
 下列範例顯示 *function.json* 檔案中的事件中樞繫結資料。 第一個範例是針對 Functions 2.x 和更高版本，而第二個範例則是針對 Functions 1.x。 
 
@@ -157,7 +157,7 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下列範例示範 function.json** 檔案中的事件中樞觸發程序繫結，以及使用此繫結的 [Python 函式](../articles/azure-functions/functions-reference-python.md)。 此函式會將訊息寫入事件中樞。
+下列範例示範 function.json 檔案中的事件中樞觸發程序繫結，以及使用此繫結的 [Python 函式](../articles/azure-functions/functions-reference-python.md)。 此函式會將訊息寫入事件中樞。
 
 下列範例顯示 *function.json* 檔案中的事件中樞繫結資料。
 
@@ -235,7 +235,7 @@ Python 指令碼不支援屬性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-在 [Java 函式執行階段程式庫](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，對其值要發佈至事件中樞的參數使用 [EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) 註釋。 參數的類型應為 `OutputBinding<T>`，其中 `T` 是 POJO 或任何原生 Java 類型。
+在 [Java 函式執行階段程式庫](/java/api/overview/azure/functions/runtime)中，對其值要發佈至事件中樞的參數使用 [EventHubOutput](/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) 註釋。 參數的類型應為 `OutputBinding<T>`，其中 `T` 是 POJO 或任何原生 Java 類型。
 
 ---
 
@@ -250,7 +250,7 @@ Python 指令碼不支援屬性。
 |**name** | n/a | 函式程式碼中所使用的變數名稱，代表事件。 |
 |**path** |**EventHubName** | 僅限 Functions 1.x。 事件中樞的名稱。 當事件中樞名稱也呈現於連接字串時，該值會在執行階段覆寫這個屬性。 |
 |**eventHubName** |**EventHubName** | Functions 2.x 和更新版本。 事件中樞的名稱。 當事件中樞名稱也呈現於連接字串時，該值會在執行階段覆寫這個屬性。 |
-|**connection** |**[連接]** | 應用程式設定的名稱，其中包含事件中樞命名空間的連接字串。 按一下*命名空間*的 [連接資訊] 按鈕 (而不是事件中樞本身)，來複製此連接字串。 此連接字串必須具有傳送權限，才能將訊息傳送至事件資料流。|
+|**connection** |**[連接]** | 應用程式設定的名稱，其中包含事件中樞命名空間的連接字串。 按一下 *命名空間* 的 [連接資訊] 按鈕 (而不是事件中樞本身)，來複製此連接字串。 此連接字串必須具有傳送權限，才能將訊息傳送至事件資料流。|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
@@ -274,15 +274,15 @@ Python 指令碼不支援屬性。
 
 - **傳回值**：將 function.json 中的 `name` 屬性設定為 `$return`。 使用此組態，函式的傳回值會保存為事件中樞訊息。
 
-- **命令式**：將值傳遞至宣告為 [Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) 類型之參數的 [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) 方法。 傳遞至 `set` 的值會保存為事件中樞訊息。
+- **命令式**：將值傳遞至宣告為 [Out](/python/api/azure-functions/azure.functions.out?view=azure-python) 類型之參數的 [set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) 方法。 傳遞至 `set` 的值會保存為事件中樞訊息。
 
 # <a name="java"></a>[Java](#tab/java)
 
-有兩個選項可使用 [EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) 注釋，從函式輸出事件中樞訊息：
+有兩個選項可使用 [EventHubOutput](/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) 注釋，從函式輸出事件中樞訊息：
 
 - **傳回值**：將注釋套用至函式本身，函式的傳回值就會保存為事件中樞訊息。
 
-- **命令式**：若要明確設定訊息值，請將注釋套用至 [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) 類型的特定參數，其中 `T` 是 POJO 或任何原生 Java 類型。 使用此組態，將值傳遞至 `setValue` 方法，就會將此值保存為事件中樞訊息。
+- **命令式**：若要明確設定訊息值，請將注釋套用至 [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.OutputBinding) 類型的特定參數，其中 `T` 是 POJO 或任何原生 Java 類型。 使用此組態，將值傳遞至 `setValue` 方法，就會將此值保存為事件中樞訊息。
 
 ---
 
@@ -290,4 +290,4 @@ Python 指令碼不支援屬性。
 
 | 繫結 | 參考 |
 |---|---|
-| 事件中樞 | [操作指南](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) \(英文\) |
+| 事件中樞 | [操作指南](/rest/api/eventhub/publisher-policy-operations) \(英文\) |

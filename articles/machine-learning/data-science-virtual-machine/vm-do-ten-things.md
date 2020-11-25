@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: 766da55f2589e2a8eb09e0f1b1c9a0a5027c8c3c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320952"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002760"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>使用 Windows 資料科學虛擬機器的資料科學
 
@@ -40,7 +40,7 @@ DSVM 可與 Azure 服務緊密搭配運作。 它可以讀取和處理已儲存�
 > 
 > 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 您需要 Azure 訂用帳戶。 您可以 [註冊免費試用](https://azure.microsoft.com/free/)。
 * 在 Azure 入口網站上布建資料科學虛擬機器的指示可用於 [建立虛擬機器](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016)。
@@ -52,13 +52,13 @@ DSVM 可與 Azure 服務緊密搭配運作。 它可以讀取和處理已儲存�
 ## <a name="use-jupyter-notebooks"></a>使用 Jupyter Notebook
 Jupyter Notebook 針對資料探索和模型化提供以瀏覽器為基礎的 IDE。 您可以在 Jupyter 筆記本中使用 Python 2、Python 3 或 R (開放原始碼和 Microsoft R Server) 。
 
-若要啟動 Jupyter Notebook，請選取 [ **開始** ] 功能表或桌面上的 [ **Jupyter Notebook** ] 圖示。 在 DSVM 命令提示字元中，您也可以 ```jupyter notebook``` 從已有筆記本的目錄或您要在其中建立新筆記本的目錄執行命令。  
+若要啟動 Jupyter Notebook，請選取 [**開始**] 功能表或桌面上的 [ **Jupyter Notebook** ] 圖示。 在 DSVM 命令提示字元中，您也可以 ```jupyter notebook``` 從已有筆記本的目錄或您要在其中建立新筆記本的目錄執行命令。  
 
 開始 Jupyter 之後，請流覽至 `/notebooks` 已預先封裝至 DSVM 的範例筆記本目錄。 現在您可以：
 
 * 選取筆記本以查看程式碼。
 * 選取 Shift + Enter 來執行每個儲存格。
-* 選取 [資料 **格** 執行] 來執行整個筆記本  >  **** 。
+* 選取 [資料 **格** 執行] 來執行整個筆記本  >  ****。
 * 若要建立新的筆記本，請選取 Jupyter 圖示 (左上角) ，選取右邊的 [ **新增** ] 按鈕，然後選擇 [筆記本語言] (也稱為 [核心) ]。   
 
 > [!NOTE]
@@ -75,13 +75,13 @@ Jupyter Notebook 針對資料探索和模型化提供以瀏覽器為基礎的 ID
 
 針對 Python，您可以使用 Visual Studio Community Edition 這類已預先安裝「適用於 Visual Studio 的 Python 工具」(PTVS) 延伸模組的 IDE。 依預設，只會在 PTVS 上設定 Python 3.6 （根 Conda 環境）。 若要啟用 Anaconda Python 2.7，請執行下列步驟：
 
-1. 若要為每個版本建立自訂環境，請前往 [ **工具**  >  **python 工具**  >  **python 環境** ]，然後在 Visual Studio Community 版本中選取 [ **+ 自訂** ]。
+1. 若要為每個版本建立自訂環境，請前往 [**工具**  >  **python 工具**  >  **python 環境**]，然後在 Visual Studio Community 版本中選取 [ **+ 自訂**]。
 1. 提供描述，並將環境首碼路徑設定為 Anaconda Python 2.7 的 **c:\anaconda\envs\python2** 。
-1. 選取 [ **自動偵測套用** ]  >  **Apply** 以儲存環境。
+1. 選取 [**自動偵測套用**]  >  **Apply** 以儲存環境。
 
 如需如何建立 Python 環境的詳細資訊，請參閱 [PTVS 檔](/visualstudio/python/) 。
 
-現在您已設定建立新的 Python 專案。 移至 **File**  >  [ **新增**  >  **專案**  >  **python** ]，然後選取您要建立的 python 應用程式類型。 您可以用滑鼠右鍵按一下 [ **python 環境** ]，然後選取 [ **新增/移除 python 環境** ]，將目前專案的 python 環境設定為所需的版本 (python 2.7 或 3.6) 。 您可以在 [產品檔](/visualstudio/python/)中找到有關使用 PTVS 的詳細資訊。
+現在您已設定建立新的 Python 專案。 移至 **File**  >  [**新增**  >  **專案**  >  **python** ]，然後選取您要建立的 python 應用程式類型。 您可以用滑鼠右鍵按一下 [ **python 環境** ]，然後選取 [ **新增/移除 python 環境**]，將目前專案的 python 環境設定為所需的版本 (python 2.7 或 3.6) 。 您可以在 [產品檔](/visualstudio/python/)中找到有關使用 PTVS 的詳細資訊。
 
 
 
@@ -156,7 +156,7 @@ git clone https://github.com/Azure/DataScienceVM.git
 ### <a name="azure-blob-storage"></a>Azure Blob 儲存體
 Azure Blob 儲存體是可靠、經濟實惠的雲端儲存體服務，適用于資料的規模和小型儲存體服務。 本節說明如何將資料移至 Blob 儲存體，以及存取儲存在 Azure blob 中的資料。
 
-#### <a name="prerequisites"></a>必要條件
+#### <a name="prerequisites"></a>Prerequisites
 
 * 從 [Azure 入口網站](https://portal.azure.com)建立您的 Azure Blob 儲存體帳戶。
 
@@ -197,7 +197,7 @@ AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.ne
 您也可以使用 Azure 儲存體總管，從 VM 中的本機檔案上傳資料：
 
 * 若要將資料上傳至容器，請選取目標容器，然後選取 [ **上傳** ] 按鈕。 ![Azure 儲存體總管中 [上傳] 按鈕的螢幕擷取畫面](./media/vm-do-ten-things/storage-accounts.png)
-* 選取 **[檔案** ] 方塊右邊的省略號 ( **...** ) ，從檔案系統中選取一或多個要上傳的檔案，然後選取 **[上傳** ] 以開始上傳檔案。 ![[上傳檔案] 對話方塊的螢幕擷取畫面](./media/vm-do-ten-things/upload-files-to-blob.png)
+* 選取 **[檔案**] 方塊右邊的省略號 (**...**) ，從檔案系統中選取一或多個要上傳的檔案，然後選取 **[上傳**] 以開始上傳檔案。 ![[上傳檔案] 對話方塊的螢幕擷取畫面](./media/vm-do-ten-things/upload-files-to-blob.png)
 
 #### <a name="read-data-from-an-azure-blob-python-odbc"></a>從 Azure blob 讀取資料： Python ODBC
 
@@ -279,7 +279,7 @@ Azure Cosmos DB 是雲端中的一種 NoSQL 資料庫。 您可以使用它來�
 4. 選取展開 (箭號) 圖示來展開資料行。
 5. 請注意，此位置是 **記錄** 欄位。 展開記錄，然後只選取座標。 **座標** 是清單資料行。
 6. 加入新的資料行，將清單座標資料行轉換成以逗號分隔的 **LatLong** 資料行。 使用公式來串連座標清單欄位中的兩個元素 ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})``` 。
-7. 將 [提高 **許可權** ] 資料行轉換成小數， **然後選取** [ **關閉** ] 和 [套用] 按鈕。
+7. 將 [提高 **許可權**] 資料行轉換成小數，**然後選取**[**關閉**] 和 [套用] 按鈕。
 
 您可以貼上下列程式碼，而不是先前的步驟。 它會編寫進階編輯器中所使用的步驟腳本，Power BI 以查詢語言撰寫資料轉換。
 
@@ -315,7 +315,7 @@ in
 ## <a name="add-more-tools"></a>新增其他工具
 預建在 DSVM 中的工具可解決許多常見的資料分析需求。 這可節省您的時間，因為您不需要逐一安裝和設定您的環境。 因為您只需支付所使用的資源，所以也能為您節省成本。
 
-您可以使用本文中所述的其他 Azure 資料和分析服務來增強您的分析環境。 在某些情況下，您可能需要額外的工具，包括一些專屬的合作夥伴工具。 您可以在虛擬機器上擁有完整的系統管理存取權，以安裝所需的新工具。 您也可以在 Python 和 R 中安裝其他未預先安裝的封裝。 針對 Python，您可以使用 ```conda``` 或 ```pip``` 。 針對 r，您可以 ```install.packages()``` 在 r 主控台中使用，或使用 IDE 並選取 **封裝**  >  **安裝套件** 。
+您可以使用本文中所述的其他 Azure 資料和分析服務來增強您的分析環境。 在某些情況下，您可能需要額外的工具，包括一些專屬的合作夥伴工具。 您可以在虛擬機器上擁有完整的系統管理存取權，以安裝所需的新工具。 您也可以在 Python 和 R 中安裝其他未預先安裝的封裝。 針對 Python，您可以使用 ```conda``` 或 ```pip``` 。 針對 r，您可以 ```install.packages()``` 在 r 主控台中使用，或使用 IDE 並選取 **封裝**  >  **安裝套件**。
 
 ## <a name="deep-learning"></a>深入學習
 
@@ -330,5 +330,5 @@ in
 
 - [文字檔的分類](https://github.com/anargyri/lstm_han)：本逐步解說示範如何建立和定型兩個類神經網路架構：階層式網路和長期記憶體 (LSTM) 網路。 這些類神經網路會使用深入學習的 Keras API 將文字文件分類。 
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 本文說明一些您可以在 Microsoft 資料科學虛擬機器上做的事情。 您還可以做更多工作，讓 DSVM 成為有效的分析環境。

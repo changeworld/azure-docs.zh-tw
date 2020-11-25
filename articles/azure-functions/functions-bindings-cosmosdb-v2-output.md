@@ -7,11 +7,11 @@ ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 6a75b0c5b30f60afe51eebc395d21b7c05e8af7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212751"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002148"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>Azure Cosmos DB Azure Functions 2.x 和更新版本的輸出系結
 
@@ -250,7 +250,7 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-下列範例顯示 function.json** 檔案中的 Azure Cosmos DB 輸出繫結，以及使用此繫結的 [JavaScript 函式](functions-reference-node.md)。 此函式會使用可接收 JSON 佇列的佇列輸入繫結，其格式如下︰
+下列範例顯示 function.json 檔案中的 Azure Cosmos DB 輸出繫結，以及使用此繫結的 [JavaScript 函式](functions-reference-node.md)。 此函式會使用可接收 JSON 佇列的佇列輸入繫結，其格式如下︰
 
 ```json
 {
@@ -571,7 +571,7 @@ Python 指令碼不支援屬性。
 |**name**     | n/a | 代表函式中之文件的繫結參數名稱。  |
 |**databaseName** | **DatabaseName**|包含其中將建立文件之集合的資料庫。     |
 |**collectionName** |**CollectionName**  | 包含其中將建立文件之集合的名稱。 |
-|**>createifnotexists**  |**CreateIfNotExists**    | 一個布林值，用來指出當集合不存在時，是否要建立集合。 預設是 false**，因為會使用保留的輸送量來建立新集合，可能會涉及成本。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)。  |
+|**>createifnotexists**  |**CreateIfNotExists**    | 一個布林值，用來指出當集合不存在時，是否要建立集合。 預設是 false，因為會使用保留的輸送量來建立新集合，可能會涉及成本。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)。  |
 |**partitionKey**|**PartitionKey** |當 `CreateIfNotExists` 為 true 時，它會定義所建立集合的資料分割索引鍵路徑。|
 |**collectionThroughput**|**CollectionThroughput**| 當 `CreateIfNotExists` 為 true 時，它會定義所建立集合的 [輸送量](../cosmos-db/set-throughput.md) 。|
 |**connectionStringSetting**    |**ConnectionStringSetting** |包含 Azure Cosmos DB 連接字串的應用程式設定名稱。        |
@@ -580,7 +580,7 @@ Python 指令碼不支援屬性。
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="usage"></a>使用量
+## <a name="usage"></a>使用方式
 
 根據預設，當您在函式中寫入輸出參數時，會在資料庫中建立文件。 這份文件已自動產生 GUID 作為文件識別碼。 您可以藉由在傳遞至輸出參數的 JSON 物件中指定 `id` 屬性，來指定輸出文件的文件識別碼。
 

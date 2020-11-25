@@ -10,11 +10,11 @@ ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperfq2
 ms.date: 10/30/2020
 ms.openlocfilehash: 4c0d12e4c37476b9ae71962251105ef92aa39120
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94845198"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004274"
 ---
 # <a name="configure-hdinsight-clusters-for-active-directory-integration-with-enterprise-security-package"></a>設定 HDInsight 叢集以 Active Directory 與企業安全性套件整合
 
@@ -29,7 +29,7 @@ ms.locfileid: "94845198"
 > [!NOTE]  
 > ESP 已在 HDInsight 3.6 和4.0 中正式推出，適用于下列叢集類型： Apache Spark、互動式、Hadoop 和 HBase。 Apache Kafka 叢集類型的 ESP 處於預覽狀態，僅提供最佳支援。 在 ESP GA 日期之前建立的 ESP 叢集 (2018 年10月1日) 不受支援。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須先完成幾個必要條件，才能建立已啟用 ESP 的 HDInsight 叢集：
 

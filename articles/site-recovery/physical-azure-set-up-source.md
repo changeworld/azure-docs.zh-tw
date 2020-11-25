@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ramamill
 ms.openlocfilehash: 327e995a8fe2f66903548fba054804768d2538ab
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534289"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001540"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>為組態伺服器設定從實體伺服器至 Azure 的災害復原
 
 這篇文章說明如何設定內部部署環境，開始將執行 Windows 或 Linux 的實體伺服器複寫至 Azure。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您已經有：
 - [Azure 入口網站](https://portal.azure.com "Azure 入口網站")中的復原服務保存庫。
@@ -35,25 +35,25 @@ ms.locfileid: "92534289"
 
 ## <a name="choose-your-protection-goals"></a>選擇您的保護目標
 
-1. 在 Azure 入口網站中，移至 [復原服務]  保存庫刀鋒視窗，然後選取您的保存庫。
-2. 在保存庫的 [ **資源** ] 功能表中，按一下 [ **Getting Started**  >  **Site Recovery**  >  **步驟1：準備基礎結構**  >  **保護目標** ] 消費者入門 Site Recovery。
+1. 在 Azure 入口網站中，移至 [復原服務] 保存庫刀鋒視窗，然後選取您的保存庫。
+2. 在保存庫的 [**資源**] 功能表中，按一下 [ **Getting Started**  >  **Site Recovery**  >  **步驟1：準備基礎結構**  >  **保護目標**] 消費者入門 Site Recovery。
 
     ![顯示要在哪裡選取保護目標的螢幕擷取畫面。](./media/physical-azure-set-up-source/choose-goals.png)
-3. 在 [保護目標]  中選取 [至 Azure]  和 [未虛擬化/其他]  ，然後按一下 [確定]  。
+3. 在 [保護目標] 中選取 [至 Azure] 和 [未虛擬化/其他]，然後按一下 [確定]。
 
     ![選擇目標](./media/physical-azure-set-up-source/physical-protection-goal.png)
 
 ## <a name="set-up-the-source-environment"></a>設定來源環境
 
-1. 在 [ **準備來源** ] 中，如果您沒有設定伺服器，請按一下 [ **+ 設定伺服器** ] 新增一個。
+1. 在 [ **準備來源**] 中，如果您沒有設定伺服器，請按一下 [ **+ 設定伺服器** ] 新增一個。
 
    ![顯示如何選取設定伺服器的螢幕擷取畫面。](./media/physical-azure-set-up-source/plus-config-srv.png)
-2. 在 [ **新增伺服器** ] 分頁中，檢查設定 **伺服器** 是否出現在 [ **伺服器類型** ] 中。
+2. 在 [ **新增伺服器** ] 分頁中，檢查設定 **伺服器** 是否出現在 [ **伺服器類型**] 中。
 4. 下載 Site Recovery 統一安裝的安裝檔案。
 5. 下載保存庫註冊金鑰。 執行「整合安裝」時，您需要該註冊金鑰。 該金鑰在產生後會維持 5 天有效。
 
     ![設定來源](./media/physical-azure-set-up-source/set-source2.png)
-6. 在作為組態伺服器的電腦上，執行「Azure Site Recovery 整合安裝」  ，以安裝組態伺服器、處理伺服器和主要目標伺服器。
+6. 在作為組態伺服器的電腦上，執行「Azure Site Recovery 整合安裝」，以安裝組態伺服器、處理伺服器和主要目標伺服器。
 
 #### <a name="run-azure-site-recovery-unified-setup"></a>執行 Azure Site Recovery 統一安裝
 
@@ -71,6 +71,6 @@ ms.locfileid: "92534289"
 [!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 下一個步驟是在 Azure 中[設定目標環境](physical-azure-set-up-target.md)。

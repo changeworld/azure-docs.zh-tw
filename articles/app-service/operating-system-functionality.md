@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
 ms.openlocfilehash: 949e408544e25cb55622cf2a1b1d2dddb92350a6
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150156"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001502"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service 上的作業系統功能
 本文說明在 [Azure App Service](./overview.md)上執行的所有 Windows 應用程式可用的一般基礎作業系統功能。 此功能包含檔案、網路、登錄存取、診斷記錄和事件。 
@@ -22,7 +22,7 @@ ms.locfileid: "92150156"
 <a id="tiers"></a>
 
 ## <a name="app-service-plan-tiers"></a>App Service 計劃層
-App Service 會在多租用戶裝載環境中執行客戶應用程式。 部署在「免費」**** 和「共用」**** 層的應用程式，會在共用虛擬機器的背景工作角色處理序中執行，而部署在「標準」**** 和「Premium」**** 層的應用程式，則會在與單一客戶應用程式相關聯的專用虛擬機器上執行。
+App Service 會在多租用戶裝載環境中執行客戶應用程式。 部署在「免費」和「共用」層的應用程式，會在共用虛擬機器的背景工作角色處理序中執行，而部署在「標準」和「Premium」層的應用程式，則會在與單一客戶應用程式相關聯的專用虛擬機器上執行。
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -123,6 +123,6 @@ App Service 中的每個應用程式都會以隨機唯一的低許可權背景�
 
 App Service 並未提供對 VM 執行個體的遠端桌面存取。
 
-## <a name="more-information"></a>詳細資訊
+## <a name="more-information"></a>其他資訊
 
 [Azure App Service 沙箱](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) - 有關 App Service 執行環境的最新資訊。 本頁面由 App Service 開發團隊直接維護。

@@ -3,12 +3,12 @@ title: 管理及監視 Azure VM 備份
 description: 瞭解如何使用 Azure 備份服務來管理及監視 Azure VM 備份。
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 2052d80428af89862b5348943b446f1b800ab36f
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: a56f13afa23a81b9cd2b34d34e1ca302c0c667f0
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174084"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "96002899"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>使用 Azure 備份服務管理 Azure VM 備份
 
@@ -105,7 +105,7 @@ ms.locfileid: "92174084"
 
     ![[立即備份] 選項](./media/backup-azure-manage-vms/backup-now-button.png)
 
-2. 從 [ **備份管理類型**] 中，選取 [ **Azure 虛擬機器**]。 ** (Azure 虛擬機器) ** ] 窗格中的 [備份專案] 隨即出現。
+2. 從 [ **備份管理類型**] 中，選取 [ **Azure 虛擬機器**]。 **(Azure 虛擬機器)** ] 窗格中的 [備份專案] 隨即出現。
 3. 選取 VM，然後選取 [ **立即備份** ] 以建立隨選備份。 [ **立即備份** ] 窗格隨即出現。
 4. 在 [ **保留備份** 到] 欄位中，指定要保留備份的日期。
 
@@ -144,7 +144,7 @@ ms.locfileid: "92174084"
 1. 在保存 [庫專案的儀表板](#view-vms-on-the-dashboard)上，選取 [ **停止備份**]。
 2. 選擇 [ **刪除備份資料**]，並視需要確認您的選擇。 輸入備份專案的名稱，並視需要新增批註。
 
-    ![刪除備份資料](./media/backup-azure-manage-vms/delete-backup-data1.png)
+    ![刪除備份資料](./media/backup-azure-manage-vms/delete-backup-data.png)
 
 > [!NOTE]
 > 完成刪除操作之後，備份的資料將會保留14天的虛 [刪除狀態](./soft-delete-virtual-machines.md)。 <br>此外，您也可以 [啟用或停](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)用虛刪除。
@@ -177,7 +177,7 @@ ms.locfileid: "92174084"
   * 在保存 [庫專案儀表板](#view-vms-on-the-dashboard)上，選取 [ **刪除備份資料**]。
   * 輸入備份專案的名稱，以確認您想要刪除復原點。
 
-    ![刪除備份資料](./media/backup-azure-manage-vms/delete-backup-data1.png)
+    ![刪除備份資料](./media/backup-azure-manage-vms/delete-backup-data.png)
 
   * 若要刪除專案的備份資料，請選取 [ **刪除**]。 通知訊息可讓您知道備份資料已刪除。
 
@@ -190,7 +190,7 @@ Azure 備份包含虛刪除功能，以保護您的資料。 使用虛刪除時�
 
 * 如果針對 Azure 備份設定的 Azure Vm 未停止保護而遭到刪除或移動，則排程的備份作業和隨選 (臨機操作) 備份作業將會失敗，並出現錯誤 UserErrorVmNotFoundV2。 備份前置檢查只會顯示為失敗的隨選備份作業 (失敗的排程作業不會顯示) 。
 * 這些備份專案會在系統中保持作用中狀態，並遵守使用者所設定的備份和保留原則。 根據保留原則，將會保留這些 Azure Vm 的備份資料。 過期的復原點 (除了最新的復原點) 會根據備份原則中設定的保留範圍進行清除。
-* 建議您刪除主要資料來源不存在的備份專案，以避免產生任何額外的費用。如果不再需要刪除資源的備份專案/資料，而是將最新的復原點永久保留，且使用者是根據適用的備份定價收費。
+* 若要避免任何額外的費用，建議您刪除主要資料來源已不存在的備份專案。 這種情況是因為已刪除資源的備份專案/資料不再需要，因為最新的復原點會永久保留，而您會根據適用的備份定價向您收費。
 
 ## <a name="next-steps"></a>後續步驟
 

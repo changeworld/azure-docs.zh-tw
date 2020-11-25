@@ -12,11 +12,11 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/25/2019
 ms.openlocfilehash: 759e35ba353f470ea3abc5f5d4182fa2b2ea0e73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71212512"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003577"
 ---
 # <a name="deprecated-configure-baidu-cloud-push-settings-for-a-notification-hub-in-the-azure-portal"></a>已淘汰：為 Azure 入口網站中的通知中樞設定百度雲端推播設定
 
@@ -25,15 +25,15 @@ ms.locfileid: "71212512"
 > [!IMPORTANT]
 > 本教學課程已淘汰。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 如果您尚未建立通知中樞，立即建立一個。 如需詳細資訊，請參閱[在 Azure 入口網站中建立 Azure 通知中樞](create-notification-hub-portal.md)。 
 
 ## <a name="configure-baidu-cloud-push"></a>設定百度雲端推播
 下列程式提供設定通知中樞百度雲端推播設定的步驟：
 
-1. 在 Azure 入口網站的 [ **通知中樞** ] 頁面上，選取左側功能表上的 [ **百度 (Android China) ** ]。 
+1. 在 Azure 入口網站的 [ **通知中樞** ] 頁面上，選取左側功能表上的 [ **百度 (Android China)** ]。 
 2. 在百度雲推送專案中，輸入從百度主控台取得的 **API 金鑰**。 
-3. 在百度雲推送專案中，輸入從百度主控台取得的**祕密金鑰**。 
+3. 在百度雲推送專案中，輸入從百度主控台取得的 **祕密金鑰**。 
 4. 選取 [儲存]。 
 
     ![顯示推播通知的百度 (Android China) 設定的通知中樞螢幕擷取畫面](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)

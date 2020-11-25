@@ -12,11 +12,11 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 0538777cadf7935a6684932a17fadc10849518d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89490083"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001621"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>資料管理閘道的版本資訊
 > [!NOTE]
@@ -102,7 +102,7 @@ ms.locfileid: "89490083"
 *  支援使用「閘道組態管理員」來設定閘道的 HTTP Proxy。 如果有設定，就會透過 HTTP Proxy 來存取 Azure Blob、「Azure 資料表」、Azure Data Lake 及 DocumentDB。
 *  從 Azure Blob、Azure Data Lake Store、內部部署「檔案系統」及內部部署 HDFS 複製資料，或將資料複製到這些位置時，支援處理 TextFormat 的標頭。
 *  除了已支援的「區塊 Blob」之外，也支援從「附加 Blob」和「分頁 Blob」複製資料。
-*  導入新的閘道狀態「線上 (受限)」 ****，此狀態代表除了對「複製精靈」的互動式操作支援之外，閘道的主要功能都可運作。
+*  導入新的閘道狀態「線上 (受限)」 ，此狀態代表除了對「複製精靈」的互動式操作支援之外，閘道的主要功能都可運作。
 *  使用註冊金鑰增強閘道註冊的健全度。
 
 ## <a name="216040"></a>2.1.6040.
@@ -128,13 +128,13 @@ ms.locfileid: "89490083"
     *  您可以使用[無程式碼複製工具](data-factory-copy-data-wizard-tutorial.md)儲存體中的資料。 如需此功能的一般詳細資料，請參閱 [分段複製](data-factory-copy-activity-performance.md#staged-copy) 。
 *  您可以使用資料管理閘道，直接從 SQL Server 資料庫將資料輸入 Azure Machine Learning。
 
-*  效能改善
+*  效能改進
 
     * 在無程式碼複製工具中，改進 SQL Server 檢視結構描述或預覽的效能。
 
 ## <a name="11259531"></a>1.12.5953.1
 
-*  錯誤修正
+*  Bug 修正
 
 ## <a name="11159181"></a>1.11.5918.1
 
@@ -144,17 +144,17 @@ ms.locfileid: "89490083"
 
 *  如果自動更新失敗，閘道安裝程式最多會重試自動更新 3 次。
 
-*  效能改善
+*  效能改進
 
     * 改善無程式碼複製案例中從內部部署伺服器載入大型資料表的效能。
 
-*  錯誤修正
+*  Bug 修正
 
 ## <a name="11058921"></a>1.10.5892.1
 
-*  效能改善
+*  效能改進
 
-*  錯誤修正
+*  Bug 修正
 
 ## <a name="1958652"></a>1.9.5865.2
 
@@ -164,35 +164,35 @@ ms.locfileid: "89490083"
 *  能夠設定更新排程時間
 *  用來開啟/關閉自動更新的 PowerShell 指令碼
 *  JSON 格式支援  
-*  效能改善
-*  錯誤修正
+*  效能改進
+*  Bug 修正
 
 ## <a name="1858221"></a>1.8.5822.1
 
 *  改善疑難排解體驗
-*  效能改善
-*  錯誤修正
+*  效能改進
+*  Bug 修正
 
 ### <a name="1757951"></a>1.7.5795.1
 
-*  效能改善
-*  錯誤修正
+*  效能改進
+*  Bug 修正
 
 ### <a name="1757641"></a>1.7.5764.1
 
-*  效能改善
-*  錯誤修正
+*  效能改進
+*  Bug 修正
 
 ### <a name="1657351"></a>1.6.5735.1
 
 *  支援內部部署 HDFS 來源/接收器
-*  效能改善
-*  錯誤修正
+*  效能改進
+*  Bug 修正
 
 ### <a name="1656961"></a>1.6.5696.1
 
-*  效能改善
-*  錯誤修正
+*  效能改進
+*  Bug 修正
 
 ### <a name="1656761"></a>1.6.5676.1
 
@@ -203,40 +203,40 @@ ms.locfileid: "89490083"
 *  針對 Azure Data Factory 支援 BlobSink 和 FileSink 中與「二進位複製」相關的 CopyBehavior - MergeFiles、PreserveHierarchy 及 FlattenHierarchy
 *  針對 Azure Data Factory 支援複製活動報告進度
 *  針對 Azure Data Factory 支援資料來源連線驗證
-*  錯誤修正
+*  Bug 修正
 
 ### <a name="1656721"></a>1.6.5672.1
 
 *  針對 Azure Data Factory 支援 ODBC 資料來源的資料表名稱
-*  效能改善
-*  錯誤修正
+*  效能改進
+*  Bug 修正
 
 ### <a name="1656581"></a>1.6.5658.1
 
 *  針對 Azure Data Factory 支援檔案接收
 *  針對 Azure Data Factory 在二進位複製中支援保留階層
 *  針對 Azure Data Factory 支援複製活動等冪性
-*  錯誤修正
+*  Bug 修正
 
 ### <a name="1656401"></a>1.6.5640.1
 
 *  針對 Azure Data Factory 另外支援 3 種資料來源 (ODBC、OData、HDFS)
 *  針對 Azure Data Factory 在 csv 剖析器中支援引號字元
 *  壓縮支援 (BZip2)
-*  錯誤修正
+*  Bug 修正
 
 ### <a name="1556121"></a>1.5.5612.1
 
 *  針對 Azure Data Factory 支援 5 種關聯式資料庫 (MySQL、PostgreSQL、DB2、Teradata 和 Sybase)
 *  壓縮支援 (Gzip 和 Deflate)
-*  效能改善
-*  錯誤修正
+*  效能改進
+*  Bug 修正
 
 ### <a name="1455491"></a>1.4.5549.1
 
 *  針對 Azure Data Factory 新增 Oracle 資料來源支援
-*  效能改善
-*  錯誤修正
+*  效能改進
+*  Bug 修正
 
 ### <a name="1454921"></a>1.4.5492.1
 

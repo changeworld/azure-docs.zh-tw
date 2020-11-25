@@ -12,11 +12,11 @@ ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: bc3352dd57a76cbb0b38455adfa11987ec93781a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654128"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003016"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>使用 Azure AD 應用程式 Proxy 來為遠端使用者發佈內部部署應用程式
 

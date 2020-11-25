@@ -14,11 +14,11 @@ ms.date: 04/24/2015
 ms.author: gwallace
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 104f969f5e27ef36ad43eb10e19176a4bcfd6648
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021131"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003749"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>如何透過 Twilio 來使用 Azure 的語音和簡訊功能
 本指南示範如何在 Azure 上透過 Twilio API 服務執行常見的程式設計工作。 涵蓋的案例包括打電話和傳送簡訊 (SMS)。 如需有關如何在應用程式中使用 Twilio 語音和 SMS 的詳細資訊，請參閱[後續步驟](#NextSteps)一節。
@@ -26,7 +26,7 @@ ms.locfileid: "89021131"
 ## <a name="what-is-twilio"></a><a id="WhatIs"></a>什麼是 Twilio？
 Twilio 正在形塑商業環境的未來，可讓開發人員將語音、VoIP 和訊息傳送內嵌到應用程式中。 它們將雲端、全球化環境中所需的整個基礎結構虛擬化，透過 Twilio 通訊 API 平台來揭露基礎結構。 輕鬆就可建立和擴充應用程式。 享受隨用隨付定價的彈性和雲端可靠性的好處。
 
-**Twilio 語音** 可讓應用程式撥打和接聽電話。 **Twilio 簡訊**可讓應用程式收發簡訊。 **Twilio 用戶端**可讓您從任何電話、平板電腦或瀏覽器撥打 VoIP 電話，且支援 WebRTC。
+**Twilio 語音** 可讓應用程式撥打和接聽電話。 **Twilio 簡訊** 可讓應用程式收發簡訊。 **Twilio 用戶端** 可讓您從任何電話、平板電腦或瀏覽器撥打 VoIP 電話，且支援 WebRTC。
 
 ## <a name="twilio-pricing-and-special-offers"></a><a id="Pricing"></a>Twilio 定價和特別供應項目
 升級 Twilio 帳戶的 Azure 客戶，可 [特別獲贈](https://www.twilio.com/azure)價值 $10 的 Twilio 點數。 此 Twilio 點數可用來折抵任何 Twilio 使用量 ($10 點數相當於最多傳送 1,000 則簡訊，或最多接收 1000 分鐘的撥入語音，視電話號碼所在地點或通話目的地而定)。 兌換此 Twilio 點數，並從 [twilio.com/azure](https://twilio.com/azure)開始著手。
@@ -39,7 +39,7 @@ Twilio API 是一套為應用程式提供語音和簡訊功能的 RESTful API。
 Twilio API 的兩大重點是 Twilio 動詞和 Twilio 標記語言 (TwiML)。
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio 動詞
-API 會使用 Twilio 動詞;例如， ** &lt; 說 &gt; **動詞命令會指示 Twilio 語音在呼叫上傳遞訊息。
+API 會使用 Twilio 動詞;例如， **&lt; 說 &gt;** 動詞命令會指示 Twilio 語音在呼叫上傳遞訊息。
 
 以下是 Twilio 動詞清單。  如需了解其他動詞和功能，請參閱 [Twilio 標記語言文件](https://www.twilio.com/docs/api/twiml)。
 
@@ -110,9 +110,9 @@ Twilio 為 .NET 開發人員提供五套程式庫：
 1. 在 Visual Studio 中開啟方案。
 2. 以滑鼠右鍵按一下 **[參考]**。
 3. 按一下 [管理 NuGet 套件...]
-4. 按一下 [線上] ****。
-5. 在搜尋線上方塊中，輸入 twilio**。
-6. 在 Twilio 套件上按一下 [安裝] **** 。
+4. 按一下 [線上] 。
+5. 在搜尋線上方塊中，輸入 twilio。
+6. 在 Twilio 套件上按一下 [安裝]  。
 
 ## <a name="how-to-make-an-outgoing-call"></a><a id="howto_make_call"></a>作法：撥出電話
 以下顯示如何使用 **CallResource** 類別撥出電話。 此程式碼也使用 Twilio 提供的網站來傳回 Twilio 標記語言 (TwiML) 回應。 請將 **to** 和 **from** 電話號碼換成您的值，在執行程式碼之前，請記得先驗證 Twilio 帳戶的 **from** 電話號碼。

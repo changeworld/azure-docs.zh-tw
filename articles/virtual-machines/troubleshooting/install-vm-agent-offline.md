@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/06/2020
 ms.author: genli
 ms.openlocfilehash: 456aa225fa8eed47ca794c54e61b77a30c93fa9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85983213"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002607"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>在離線模式安裝 Azure 虛擬機器代理程式 
 
@@ -47,13 +47,13 @@ Azure 虛擬機器代理程式 (VM 代理程式) 提供有用的功能，例如�
 
 2.  在疑難排解員 VM 中，流覽至您連接的 OS 磁片，開啟 \windows\system32\config 資料夾。 複製此資料夾中的所有檔案作為備份，以在需要復原時使用。
 
-3.  啟動 [登錄編輯器]**** (regedit.exe)。
+3.  啟動 [登錄編輯器] (regedit.exe)。
 
-4.  選取 [HKEY_LOCAL_MACHINE]**** 機碼。 在功能表上 **，選取 [** 檔案  >  **載入 Hive**：
+4.  選取 [HKEY_LOCAL_MACHINE] 機碼。 在功能表上 **，選取 [** 檔案  >  **載入 Hive**：
 
     ![載入 Hive](./media/install-vm-agent-offline/load-hive.png)
 
-5.  在您連接的 OS 磁碟上，瀏覽至 \windows\system32\config\SYSTEM 資料夾。 針對 Hive 的名稱，輸入 **BROKENSYSTEM**。 新的 Hive 會顯示在 [HKEY_LOCAL_MACHINE]**** 機碼下方。
+5.  在您連接的 OS 磁碟上，瀏覽至 \windows\system32\config\SYSTEM 資料夾。 針對 Hive 的名稱，輸入 **BROKENSYSTEM**。 新的 Hive 會顯示在 [HKEY_LOCAL_MACHINE] 機碼下方。
 
 6.  在您連接的 OS 磁碟上，瀏覽至 \windows\system32\config\SOFTWARE 資料夾。 針對 Hive 軟體的名稱，輸入 **BROKENSOFTWARE**。
 
@@ -65,7 +65,7 @@ Azure 虛擬機器代理程式 (VM 代理程式) 提供有用的功能，例如�
         - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
         - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\RdAgent
 
-8.  使用疑難排解 VM 上現有的檔案作為 VM 代理程式安裝的儲存機制。 完成下列步驟：
+8.  使用疑難排解 VM 上現有的檔案作為 VM 代理程式安裝的儲存機制。 完成以下步驟：
 
     1. 從疑難排解 VM 中，以登錄格式 (.reg) 匯出下列子機碼： 
         - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
@@ -91,9 +91,9 @@ Azure 虛擬機器代理程式 (VM 代理程式) 提供有用的功能，例如�
 
              ![複製 GuestAgent 資料夾](./media/install-vm-agent-offline/copy-files.png)
 
-9.  選取 [BROKENSYSTEM]****。 從**功能表選取**  >  **[** 檔案卸載 Hive]。
+9.  選取 [BROKENSYSTEM]。 從 **功能表選取**  >  **[** 檔案卸載 Hive]。
 
-10.  選取 [BROKENSOFTWARE]****。 從**功能表選取**  >  **[** 檔案卸載 Hive]。
+10.  選取 [BROKENSOFTWARE]。 從 **功能表選取**  >  **[** 檔案卸載 Hive]。
 
 11.  卸離 OS 磁片，然後 [變更受影響 VM 的 os 磁片](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm)。 針對傳統 VM，請使用已修復的 OS 磁片來建立新的 VM。
 
@@ -122,7 +122,7 @@ Azure 虛擬機器代理程式 (VM 代理程式) 提供有用的功能，例如�
    GuestAgentStatus:Microsoft.WindowsAzure.Commands.ServiceManagement.Model.PersistentVMModel.GuestAgentStatus
    ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [Azure 虛擬機器代理程式概觀](../extensions/agent-windows.md)
 - [適用於 Windows 的虛擬機器擴充功能和功能](../extensions/features-windows.md)

@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
 ms.openlocfilehash: a37808548ec58977b7d6af16c75b94b7b5efe446
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271591"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002931"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>使用 REST API 建立 Azure 復原服務保存庫
 
@@ -40,8 +40,8 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 |名稱  |必要  |類型  |描述  |
 |---------|---------|---------|---------|
-|etag     |         |   字串      |  選擇性 eTag       |
-|location     |  true       |字串         |   資源位置      |
+|etag     |         |   String      |  選擇性 eTag       |
+|location     |  true       |String         |   資源位置      |
 |properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  保存庫的屬性       |
 |sku     |         |  [Sku](/rest/api/recoveryservices/vaults/createorupdate#sku)       |    識別每個 Azure 資源的唯一系統識別碼     |
 |tags     |         | Object        |     資源標籤    |

@@ -6,17 +6,17 @@ ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
 ms.openlocfilehash: 897f2b728dc068b09849d4f48f899b8630a87a51
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913157"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003988"
 ---
 移至 Azure 入口網站，並<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title="建立新的表單辨識器資源" target="_blank">建立新的表單辨識器資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>。 在 [建立] 窗格中，提供下列資訊：
 
 |    |    |
 |--|--|
-| **名稱** | 資源的描述性名稱。 建議您使用描述性名稱，例如 *MyNameFormRecognizer* 。 |
+| **名稱** | 資源的描述性名稱。 建議您使用描述性名稱，例如 *MyNameFormRecognizer*。 |
 | **訂用帳戶** | 選取已獲存取權的 Azure 訂用帳戶。 |
 | **位置** | 您的認知服務執行個體的位置。 位置不同可能會造成延遲，但不會影響您資源執行階段的可用性。 |
 | **定價層** | 資源的成本取決於您選擇的定價層和您的使用量。 如需詳細資訊，請參閱 API [定價詳細資料](https://azure.microsoft.com/pricing/details/cognitive-services/)。

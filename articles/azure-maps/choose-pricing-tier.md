@@ -9,11 +9,11 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 3603a4f5d103987b25bd5f976b89f943f98565a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88163980"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003679"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>在 Azure 地圖服務中選擇正確的定價層
 
@@ -21,7 +21,7 @@ Azure 地圖服務提供兩個定價層： S0 和 S1。 本文旨在協助您根
 
 ## <a name="how-many-concurrent-users-do-i-plan-to-support"></a>我打算支援多少並行使用者人數？
 
-S0 和 S1 定價層會處理不同的資料輸送量。 S0 定價層最多可處理**每秒 50 筆查詢**。 而 S1 層會處理 **每秒超過50個查詢**。
+S0 和 S1 定價層會處理不同的資料輸送量。 S0 定價層最多可處理 **每秒 50 筆查詢**。 而 S1 層會處理 **每秒超過50個查詢**。
 
 ## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>我打算使用哪些地理空間功能？
 
@@ -56,7 +56,7 @@ S0 和 S1 定價層會處理不同的資料輸送量。 S0 定價層最多可處
 
 ### <a name="pricing-tier-targeted-customers"></a>定價層的目標客戶
 
-請參閱**定價層的目標客戶**表，以深入了解 S0 和 S1 定價層。 如需詳細資訊，請參閱 [Azure 地圖服務定價](https://azure.microsoft.com/pricing/details/azure-maps/)。 
+請參閱 **定價層的目標客戶** 表，以深入了解 S0 和 S1 定價層。 如需詳細資訊，請參閱 [Azure 地圖服務定價](https://azure.microsoft.com/pricing/details/azure-maps/)。 
 
 | 定價層  |     目標客戶                                                                |
 |-----------------|:-----------------------------------------------------------------------------------------|

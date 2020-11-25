@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
 ms.openlocfilehash: c74f2ef9eed25719e722970671406c850b6a59b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361852"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002590"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>針對傳統儲存體資源刪除錯誤進行疑難排解
 本文章提供疑難排解指引，協助您排解在嘗試刪除 Azure 傳統儲存體帳戶、容器或 *.vhd 分頁 Blob 檔案時發生的以下任一錯誤。 
@@ -35,7 +35,7 @@ ms.locfileid: "91361852"
 
 
 1. 刪除傳統虛擬機器。
-2. 如果已選取 [磁碟] 核取方塊，則與分頁 Blob *.vhd 相關聯的**磁碟租用** (如上圖所示) 已中斷。 實際分頁 Blob *.vhd 檔案仍會存在於儲存體帳戶中。
+2. 如果已選取 [磁碟] 核取方塊，則與分頁 Blob *.vhd 相關聯的 **磁碟租用** (如上圖所示) 已中斷。 實際分頁 Blob *.vhd 檔案仍會存在於儲存體帳戶中。
 ![螢幕擷取畫面顯示確認刪除虛擬機器的對話方塊。](./media/storage-classic-cannot-delete-storage-account-container-vhd/steps_while_deleting_classic_vm.jpg) 
 
 3. 磁碟租用中斷之後，就可以刪除分頁 Blobb 本身。 在刪除儲存體帳戶或容器上的所有「磁碟」資源之後，即可刪除儲存體帳戶或容器。
@@ -48,7 +48,7 @@ ms.locfileid: "91361852"
 當使用者嘗試刪除不再需要的傳統儲存體帳戶時，使用者可能會看到下列行為。
 
 #### <a name="azure-portal"></a>Azure 入口網站 
-使用者導覽至 [Azure 入口網站](https://portal.azure.com)上的傳統儲存體帳戶，然後按一下 [刪除]****，使用者會看到下列訊息： 
+使用者導覽至 [Azure 入口網站](https://portal.azure.com)上的傳統儲存體帳戶，然後按一下 [刪除]，使用者會看到下列訊息： 
 
 使用「附加」到虛擬機器的磁碟
 

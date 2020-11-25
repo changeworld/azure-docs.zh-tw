@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: e015c6761b920ef37af2bbfd67ced5fc3218d532
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91290682"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002233"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>設定連線的處理站解決方案加速器
 
@@ -88,7 +88,7 @@ ms.locfileid: "91290682"
 }
 ```
 
- `<global_configuration>`、`<factory_configuration>`、`<production_line_configuration>` 和 `<station_configuration>` 的通用屬性是：
+`<global_configuration>`、`<factory_configuration>`、`<production_line_configuration>` 和 `<station_configuration>` 的通用屬性是：
 
 * **Name** (字串類型)
 
@@ -257,7 +257,7 @@ ms.locfileid: "91290682"
 
   定義可當作最大值警示回應所採取的一組動作。
 
-在站台層級中，您也會看到**模擬**物件。 這些物件只能用於設定連線的處理站模擬，不應用於設定實際拓撲。
+在站台層級中，您也會看到 **模擬** 物件。 這些物件只能用於設定連線的處理站模擬，不應用於設定實際拓撲。
 
 ## <a name="how-the-configuration-data-is-used-at-runtime"></a>設定資料在執行階段的使用方式
 

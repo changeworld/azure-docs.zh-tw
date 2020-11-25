@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 10/28/2020
-ms.openlocfilehash: 753d72b31e4f813d0e7abbbd223e050fd3390411
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.date: 11/24/2020
+ms.openlocfilehash: c436d75384c527ba7666cd2e6e780b9d8a93eae2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910758"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003936"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory 中的資料流程活動
 
@@ -37,6 +37,7 @@ ms.locfileid: "92910758"
          "coreCount": 8,
          "computeType": "General"
       },
+      "traceLevel": "Fine",
       "staging": {
           "linkedService": {
               "referenceName": "MyStagingLinkedService",
@@ -62,6 +63,7 @@ compute. coreCount | Spark 叢集中使用的核心數目。 只有在使用自�
 compute. computeType | Spark 叢集中使用的計算類型。 只有在使用自動解析 Azure Integration runtime 時才能指定 | "General"、"ComputeOptimized"、"MemoryOptimized" | 否
 暫存. linkedService | 如果您使用 Azure Synapse Analytics 來源或接收，請指定用於 PolyBase 暫存的儲存體帳戶。<br/><br/>如果您的 Azure 儲存體設定了 VNet 服務端點，您必須使用在儲存體帳戶上啟用「允許信任的 Microsoft 服務」的受控識別驗證，請參閱 [使用 VNet 服務端點搭配 Azure 儲存體的影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 此外，也會分別瞭解 [Azure Blob](connector-azure-blob-storage.md#managed-identity) 和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) 所需的設定。<br/> | LinkedServiceReference | 只有當資料流程讀取或寫入 Azure Synapse Analytics
 暫存. folderPath | 如果您使用 Azure Synapse Analytics 來源或接收器，則為用於 PolyBase 暫存的 blob 儲存體帳戶中的資料夾路徑 | String | 只有當資料流程讀取或寫入 Azure Synapse Analytics
+traceLevel | 設定資料流程活動執行的記錄層級 | 精細、粗略、無 | 否
 
 ![執行資料流程](media/data-flow/activity-data-flow.png "執行資料流程")
 
@@ -87,6 +89,12 @@ compute. computeType | Spark 叢集中使用的計算類型。 只有在使用�
 ### <a name="polybase"></a>PolyBase
 
 如果您使用 Azure Synapse Analytics (先前的 SQL 資料倉儲) 作為接收或來源，則必須為您的 PolyBase 批次負載選擇預備位置。 PolyBase 允許大量載入批次，而不是逐列載入資料。 PolyBase 大幅減少了 Azure Synapse Analytics 的載入時間。
+
+## <a name="logging-level"></a>記錄層級
+
+如果您不需要每次執行資料流程活動的管線來完整記錄所有詳細資訊遙測記錄檔，您可以選擇性地將記錄層級設定為「基本」或「無」。 在 [詳細資訊] 模式中執行您的資料流程時 (預設) ，您會要求 ADF 在資料轉換期間，在每個個別的資料分割層級上完整記錄活動。 這可能是相當昂貴的作業，所以在進行疑難排解時只啟用詳細資訊，可以改善整體的資料流程和管線效能。 「基本」模式只會記錄轉換持續時間，而「無」只會提供持續時間的摘要。
+
+![記錄層級](media/data-flow/logging.png "設定記錄層級")
 
 ## <a name="parameterizing-data-flows"></a>參數化資料流程
 
@@ -116,7 +124,7 @@ Debug 管線會針對使用中的 debug 叢集執行，而不是針對資料流�
 
 ## <a name="monitoring-the-data-flow-activity"></a>監視資料流程活動
 
-資料流程活動具有特殊的監視體驗，您可以在其中查看分割、階段時間和資料歷程資訊。 在 [ **動作** ] 底下，透過眼鏡圖示開啟 [監視] 窗格。 如需詳細資訊，請參閱 [監視資料流程](concepts-data-flow-monitoring.md)。
+資料流程活動具有特殊的監視體驗，您可以在其中查看分割、階段時間和資料歷程資訊。 在 [ **動作**] 底下，透過眼鏡圖示開啟 [監視] 窗格。 如需詳細資訊，請參閱 [監視資料流程](concepts-data-flow-monitoring.md)。
 
 ### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>在後續活動中使用資料流程活動結果
 
@@ -155,7 +163,7 @@ Debug 管線會針對使用中的 debug 叢集執行，而不是針對資料流�
 > [!NOTE]
 > 如果接收的資料列數為零，則不會顯示在計量中。 您可以使用函式來驗證是否存在 `contains` 。 例如， `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` 會檢查是否有任何資料列寫入 sink1。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 請參閱 Data Factory 支援的控制流程活動： 
 

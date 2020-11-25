@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: f49ae5139dc92ec1448e5dea05be8c8c216ef91e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361342"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002658"
 ---
 # <a name="how-to-use-perfinsights-in-azure"></a>如何在 Azure 中使用 PerfInsights
 
@@ -82,7 +82,7 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
 | IO 大小      | Avg. Bytes/Data 要求       |
 |              | 平均Bytes/Read               |
 |              | 平均Bytes/Write              |
-| Throughput   | 資料位元組/秒                |
+| 輸送量   | 資料位元組/秒                |
 |              | 讀取位元組/秒                |
 |              | 寫入位元組/秒               |
 | 佇列長度 | 平均讀取佇列長度        |
@@ -123,10 +123,10 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
 | XPerf 追蹤                       |                            |                                    |                          |                      | 是                  |
 | StorPort 追蹤                    |                            |                                    |                          |                      | 是                  |
 | 網路追蹤                     |                            |                                    |                          | 是                  | 是                  |
-| Diskspd 基準追蹤 ***       |                            | 是                                |                          |                      |                      |
+| Diskspd 基準追蹤 * * _       |                            | 是                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
-### <a name="performance-diagnostics-trace-"></a>效能診斷追蹤 (*)
+### <a name="performance-diagnostics-trace-_"></a>效能診斷追蹤 (_) 
 
 在背景中執行規則引擎來收集資料並診斷進行中的效能問題。 目前支援下列規則：
 
@@ -154,7 +154,7 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
 #### <a name="for-azure-files"></a>Azure 檔案
 \SMB 用戶端共用
 
-### <a name="diskspd-benchmark-trace-"></a>Diskspd 基準追蹤 (***)
+### <a name="diskspd-benchmark-trace-_"></a>Diskspd 基準追蹤 ( * * _) 
 Diskspd I/O 工作負載測試 (OS 磁碟 [寫入] 和集區磁碟 [讀取/寫入])
 
 ## <a name="run-the-perfinsights-tool-on-your-vm"></a>在 VM 上執行 PerfInsights 工具
@@ -165,8 +165,7 @@ Diskspd I/O 工作負載測試 (OS 磁碟 [寫入] 和集區磁碟 [讀取/寫�
 
 -  此工具必須在發生效能問題的 VM 上執行。 
 
--  以下為支援的作業系統：
-   * Windows Server 2019
+-  支援下列作業系統： _ Windows Server 2019
    * Windows Server 2016
    * Windows Server 2012 R2
    * Windows Server 2012
@@ -198,7 +197,7 @@ Diskspd I/O 工作負載測試 (OS 磁碟 [寫入] 和集區磁碟 [讀取/寫�
 
 1. 下載 [PerfInsights.zip](https://aka.ms/perfinsightsdownload)。
 
-2. 解除封鎖 PerfInsights.zip 檔案。 若要這樣做，請以滑鼠右鍵按一下 PerfInsights.zip 檔案，然後選取 [屬性]****。 在 [一般]**** 索引標籤上，選取 [解除封鎖]****，然後選取 [確定]****。 如此可確保工具執行時不會出現任何額外的安全性提示。  
+2. 解除封鎖 PerfInsights.zip 檔案。 若要這樣做，請以滑鼠右鍵按一下 PerfInsights.zip 檔案，然後選取 [屬性]。 在 [一般] 索引標籤上，選取 [解除封鎖]，然後選取 [確定]。 如此可確保工具執行時不會出現任何額外的安全性提示。  
 
     ![PerfInsights 屬性的螢幕擷取畫面 (已醒目提示 [解除封鎖])](media/how-to-use-perfInsights/pi-unlock-file.png)
 
@@ -257,7 +256,7 @@ Diskspd I/O 工作負載測試 (OS 磁碟 [寫入] 和集區磁碟 [讀取/寫�
 
 在 **PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.zip** 檔案內，您可以找到詳細說明 PerfInsights 結果的 HTML 報告。 若要檢閱報告，請展開 **PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.zip** 檔案，然後開啟 **PerfInsights Report.html** 檔案。
 
-選取 [Findings] \(結果)**** 索引標籤。
+選取 [Findings] \(結果) 索引標籤。
 
 ![PerfInsights 報表之 [總覽] 索引標籤的螢幕擷取畫面。 ](media/how-to-use-perfInsights/pi-finding-tab.png)
  ![PerfInsights 報表的 [儲存體] 索引標籤螢幕擷取畫面。](media/how-to-use-perfInsights/pi-findings.png)
@@ -269,15 +268,15 @@ Diskspd I/O 工作負載測試 (OS 磁碟 [寫入] 和集區磁碟 [讀取/寫�
 
 ### <a name="storage-tab"></a>[儲存體] 索引標籤
 
-**結果**區段會顯示有關儲存體的各種結果與建議。
+**結果** 區段會顯示有關儲存體的各種結果與建議。
 
-[DiskMap]**** 和 [VolumeMap]**** 區段說明邏輯磁碟區和實體磁碟如何彼此相關。
+[DiskMap] 和 [VolumeMap] 區段說明邏輯磁碟區和實體磁碟如何彼此相關。
 
 在實體磁碟檢視方塊 (磁碟對應) 中，資料表會顯示在磁碟上執行的所有邏輯磁碟區。 在下列範例中， **PhysicalDrive2** 會在多個磁碟分割上執行兩個建立的邏輯磁片區 (J 和 H) ：
 
 ![磁碟索引標籤的螢幕擷取畫面](media/how-to-use-perfInsights/pi-disk-tab.png)
 
-在磁碟區檢視方塊中 (磁碟區對應)，資料表會顯示每個邏輯磁碟區下的所有實體磁碟。 請注意，對於 RAID/動態磁碟，您可能會在多個實體磁碟上執行邏輯磁碟區。 在下列範例中，*C:\\mount* 是在實體磁碟 2 和 3 上設定為 SpannedDisk** 的掛接點：
+在磁碟區檢視方塊中 (磁碟區對應)，資料表會顯示每個邏輯磁碟區下的所有實體磁碟。 請注意，對於 RAID/動態磁碟，您可能會在多個實體磁碟上執行邏輯磁碟區。 在下列範例中，*C:\\mount* 是在實體磁碟 2 和 3 上設定為 SpannedDisk 的掛接點：
 
 ![磁碟區索引標籤的螢幕擷取畫面](media/how-to-use-perfInsights/pi-volume-tab.png)
 
@@ -287,7 +286,7 @@ Diskspd I/O 工作負載測試 (OS 磁碟 [寫入] 和集區磁碟 [讀取/寫�
 
 ![SQL 索引標籤的螢幕擷取畫面](media/how-to-use-perfInsights/pi-sql-tab.png)
 
-本區段包含 [結果]**** 索引標籤，以及裝載在虛擬機器上的每個 SQL Server 執行個體的其他索引標籤。
+本區段包含 [結果] 索引標籤，以及裝載在虛擬機器上的每個 SQL Server 執行個體的其他索引標籤。
 
 [ **結果** ] 索引標籤包含所有發現的 SQL 相關效能問題清單以及建議。
 
@@ -298,7 +297,7 @@ Diskspd I/O 工作負載測試 (OS 磁碟 [寫入] 和集區磁碟 [讀取/寫�
 SQL Server 的特定執行個體索引標籤包含一般區段，其中顯示所選執行個體的基本資訊。 這些索引標籤也包含進階資訊的其他區段，包括設定、組態和使用者選項。
 
 ### <a name="diagnostic-tab"></a>[診斷] 索引標籤
-[診斷]**** 索引標籤包含 PerfInsights 執行期間電腦上的最上層 CPU、磁碟和記憶體取用相關資訊。 您也可以找到以下相關資訊：可能缺少系統的重大修補程式、工作清單和重要系統事件。 
+[診斷] 索引標籤包含 PerfInsights 執行期間電腦上的最上層 CPU、磁碟和記憶體取用相關資訊。 您也可以找到以下相關資訊：可能缺少系統的重大修補程式、工作清單和重要系統事件。 
 
 ## <a name="references-to-the-external-tools-used"></a>所用外部工具的參考
 

@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: ef74c4b799c3a24636f88a8e704bf726104b034f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674321"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001587"
 ---
 # <a name="sensor-partner-integration"></a>感應器合作夥伴整合
 
@@ -126,10 +126,10 @@ JSON 是一種與語言無關的通用資料格式，可提供任意資料結構
 
 FarmBeats Datahub 具有下列 API，其可讓裝置合作夥伴建立和管理裝置或感應器中繼資料。
 
-- /**DeviceModel** ：DeviceModel 會對應至裝置的中繼資料，例如製造商和裝置類型 (閘道或節點)。
-- /**Device** ：Device 會對應至存在於伺服器陣列上的實體裝置。
-- /**SensorModel** ：SensorModel 會對應至感應器的中繼資料，例如製造商、感應器類型 (類比或數位)，以及感應器量值 (例如環境溫度和壓力)。
-- /**Sensor** ：Sensor 會對應至記錄值的實體感應器。 感應器通常會使用裝置識別碼連線到裝置。
+- /**DeviceModel**：DeviceModel 會對應至裝置的中繼資料，例如製造商和裝置類型 (閘道或節點)。
+- /**Device**：Device 會對應至存在於伺服器陣列上的實體裝置。
+- /**SensorModel**：SensorModel 會對應至感應器的中繼資料，例如製造商、感應器類型 (類比或數位)，以及感應器量值 (例如環境溫度和壓力)。
+- /**Sensor**：Sensor 會對應至記錄值的實體感應器。 感應器通常會使用裝置識別碼連線到裝置。
 
   DeviceModel | 描述 |
   --- | ---
@@ -140,7 +140,7 @@ FarmBeats Datahub 具有下列 API，其可讓裝置合作夥伴建立和管理�
   名稱  | 用於識別資源的名稱。 例如，型號名稱或產品名稱。 |
   描述  | 提供有意義的型號描述。 |
   屬性  | 製造商的其他屬性。 |
-  **裝置** | **說明** |
+  **裝置** | **描述** |
   DeviceModelId  |相關裝置型號的識別碼。 |
   HardwareId   |裝置的唯一識別碼，例如 MAC 位址。  |
   ReportingInterval |報告間隔 (秒)。 |
@@ -149,7 +149,7 @@ FarmBeats Datahub 具有下列 API，其可讓裝置合作夥伴建立和管理�
   名稱  | 用於識別資源的名稱。 裝置合作夥伴必須傳送與裝置合作夥伴端其裝置名稱一致的名稱。 如果裝置名稱是裝置合作夥伴端的使用者定義名稱，則應該將相同的使用者定義名稱傳播至 FarmBeats。  |
   描述  | 提供有意義的描述。  |
   屬性  |製造商的其他屬性。  |
-  **SensorModel** | **說明** |
+  **SensorModel** | **描述** |
   Type (Analog、Digital)  |提及類比或數位感應器。|
   製造商  | 製造商的名稱。 |
   ProductCode  | 產品代碼，或型號名稱或號碼。 例如，RS-CO2-N01。  |
@@ -163,7 +163,7 @@ FarmBeats Datahub 具有下列 API，其可讓裝置合作夥伴建立和管理�
   名稱  | 用於識別資源的名稱。 例如，型號名稱或產品名稱。
   描述  | 提供有意義的型號描述。
   屬性  | 製造商的其他屬性。
-  **Sensor**  | **說明** |
+  **Sensor**  | **描述** |
   HardwareId  | 製造商所設定感應器的唯一識別碼。
   SensorModelId  | 相關感應器型號的識別碼。
   Location  | 感應器緯度 (-90 到 +90)、經度 (-180 到 180) 和高度 (公尺)。

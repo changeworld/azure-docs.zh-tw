@@ -7,11 +7,11 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 5c62f10d67345d68cde27af7d0a7663b22d978a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207191"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002420"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>復原和災害復原
 
@@ -68,15 +68,15 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 ### <a name="backup-manually-using-the-export-function"></a>使用 Export 函數手動備份
 
-您可以使用應用程式組態中的**匯出**函式，隨需將主要存放區中的資料複製到次要存放區。 此函式可透過 Azure 入口網站和 CLI 來執行。
+您可以使用應用程式組態中的 **匯出** 函式，隨需將主要存放區中的資料複製到次要存放區。 此函式可透過 Azure 入口網站和 CLI 來執行。
 
 在 Azure 入口網站中，您可以依照下列步驟，將變更推送至另一個組態存放區。
 
-1. 移至 [匯入/匯出]**** 索引標籤，然後選取 [匯出]**** > [應用程式組態]**** > [目標]**** > [選取資源]****。
+1. 移至 [匯入/匯出] 索引標籤，然後選取 [匯出] > [應用程式組態] > [目標] > [選取資源]。
 
 1. 在開啟的新分頁中，指定次要存放區的訂用帳戶、資源群組和資源名稱， **然後選取 [** 套用]。
 
-1. UI 會更新，供您選擇要匯出至次要存放區的組態資料。 您可以保留預設的時間值，並將其 **從標籤** 和 **標籤** 設定為相同的值。 選取 [套用]。 針對主要存放區中的所有標籤重複此步驟。
+1. UI 會更新，供您選擇要匯出至次要存放區的組態資料。 您可以保留預設的時間值，並將其 **從標籤** 和 **標籤** 設定為相同的值。 選取 [ **套用**]。 針對主要存放區中的所有標籤重複此步驟。
 
 1. 每當您的設定變更時，請重複上述步驟。
 
@@ -90,6 +90,6 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 您可以使用 Azure Functions 來自動進行備份程式。 它會在應用程式設定中利用與 Azure 事件方格的整合。 設定完成後，應用程式設定會將事件發佈至事件方格，以針對設定存放區中的索引鍵/值所做的任何變更。 因此，Azure Functions 的應用程式可以接聽這些事件並據以備份資料。 如需詳細資訊，請參閱 [如何自動備份應用程式](./howto-backup-config-store.md)設定存放區的教學課程。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已了解如何擴充應用程式，以達到應用程式組態在執行階段的異地復原能力。 您也可以在建置或部署時內嵌應用程式組態中的組態資料。 如需詳細資訊，請參閱[與 CI/CD 管線整合](./integrate-ci-cd-pipeline.md)。

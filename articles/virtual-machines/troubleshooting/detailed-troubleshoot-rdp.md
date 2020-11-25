@@ -16,11 +16,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 91f15e32866cca008553286f7585247909d9a4ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87009861"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002675"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Azure 中 Windows VM 之遠端桌面連線問題的詳細疑難排解步驟
 本文章提供診斷和修正複雜的以 Windows 為基礎的 Azure 虛擬機器的遠端桌面錯誤的詳細疑難排解步驟。
@@ -31,7 +31,7 @@ ms.locfileid: "87009861"
 您可能會遇到不像 [基本遠端桌面疑難排解指南](troubleshoot-rdp-connection.md)所涵蓋之任何特定錯誤訊息的「遠端桌面」錯誤訊息。 請依照下列步驟來判斷「遠端桌面」(RDP) 用戶端為何無法連線至 Azure VM 上的 RDP 服務。
 
 
-如果在本文章中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您也可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後按一下 [取得支援]****。 如需使用 Azure 支援的相關資訊，請參閱 [Microsoft Azure 支援常見問題](https://azure.microsoft.com/support/faq/)。
+如果在本文章中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您也可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後按一下 [取得支援]。 如需使用 Azure 支援的相關資訊，請參閱 [Microsoft Azure 支援常見問題](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="components-of-a-remote-desktop-connection"></a>遠端桌面連線的元件
 以下是 RDP 連線相關的元件：
@@ -40,7 +40,7 @@ ms.locfileid: "87009861"
 
 在繼續之前，在心裡檢閱最後一個成功的遠端桌面連線至 VM 以來的變更可能有幫助。 例如：
 
-* VM 或包含 VM 之雲端服務的公用 IP 位址 (也稱為虛擬 IP 位址 [VIP](https://en.wikipedia.org/wiki/Virtual_IP_address)) 已變更。 RDP 失敗的原因可能是 DNS 用戶端快取仍然有針對該 DNS 名稱註冊的「舊 IP 位址」 ** 。 請清除 DNS 用戶端快取並嘗試再次連接 VM。 或嘗試直接與新的 VIP 連接。
+* VM 或包含 VM 之雲端服務的公用 IP 位址 (也稱為虛擬 IP 位址 [VIP](https://en.wikipedia.org/wiki/Virtual_IP_address)) 已變更。 RDP 失敗的原因可能是 DNS 用戶端快取仍然有針對該 DNS 名稱註冊的「舊 IP 位址」  。 請清除 DNS 用戶端快取並嘗試再次連接 VM。 或嘗試直接與新的 VIP 連接。
 * 您使用協力廠商應用程式來管理「遠端桌面」連線，而不是使用 Azure 入口網站所產生的連線。 請確認應用程式組態包含正確的「遠端桌面」流量 TCP 連接埠。 您可以在 [Azure 入口網站](https://portal.azure.com)中查看傳統虛擬機器的這個連接埠，方法是按一下該 VM 的 [設定] > [端點]。
 
 ## <a name="preliminary-steps"></a>預備步驟
@@ -148,7 +148,7 @@ $vmName="<Name of the target virtual machine>"
 
 您可以從 **Get-AzureSubscription** 命令顯示畫面中的 *SubscriptionName* 屬性，取得正確的訂用帳戶名稱。 您可以從 **Get-AzureVM** 命令顯示畫面中的 *ServiceName* 欄，取得虛擬機器的雲端服務名稱。
 
-請檢查您是否擁有新憑證。 開啟目前使用者的 [憑證] 嵌入式管理單元，然後查看 [受信任的根憑證授權單位\憑證]**** 資料夾。 您應該在 Issued To 資料行中查看具有您的雲端服務之 DNS 名稱的憑證 (範例：cloudservice4testing.cloudapp.net)。
+請檢查您是否擁有新憑證。 開啟目前使用者的 [憑證] 嵌入式管理單元，然後查看 [受信任的根憑證授權單位\憑證] 資料夾。 您應該在 Issued To 資料行中查看具有您的雲端服務之 DNS 名稱的憑證 (範例：cloudservice4testing.cloudapp.net)。
 
 接下來，使用這些命令起始遠端 Azure PowerShell 工作階段。
 

@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: c17d3c7cd2cf6fe5bca725cf94344b2d2cb50bf2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88271136"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001519"
 ---
 # <a name="configure-storage"></a>設定儲存體
 
@@ -45,9 +45,9 @@ NAS 核心檔案管理工具可以是內部部署 NetApp 或 Isilon 設備，也
 
 遵循下列步驟來新增 NAS 核心檔案管理工具：
 
-1. 從「Avere 控制台」中，按一下頂端的 [Settings] \(設定\)**** 索引標籤。
+1. 從「Avere 控制台」中，按一下頂端的 [Settings] \(設定\) 索引標籤。
 
-1. 按一下左邊的 [**核心**檔案管理工具]  >  **管理核心檔案管理**工具。
+1. 按一下左邊的 [**核心** 檔案管理工具]  >  **管理核心檔案管理** 工具。
 
 1. 按一下 [建立]。
 
@@ -57,12 +57,12 @@ NAS 核心檔案管理工具可以是內部部署 NetApp 或 Isilon 設備，也
 
    * 為核心檔案管理工具命名。
    * 提供完整網域名稱 (FQDN) (如果有的話)。 否則，請提供解析成您核心檔案管理工具的 IP 位址或主機名稱。
-   * 從清單中選擇您的檔案管理工具類別。 如果不確定，請選擇 [Other] \(其他\)****。
+   * 從清單中選擇您的檔案管理工具類別。 如果不確定，請選擇 [Other] \(其他\)。
 
      ![含有核心檔案管理工具名稱及其完整網域名稱的 [Add new core filer] \(新增核心檔案管理工具\) 頁面螢幕擷取畫面](media/avere-vfxt-add-core-filer.png)
   
-   * 按 [Next] \(下一步\)****，然後選擇快取原則。
-   * 按一下 [Add Filer] \(新增檔案管理工具\)****。
+   * 按 [Next] \(下一步\)，然後選擇快取原則。
+   * 按一下 [Add Filer] \(新增檔案管理工具\)。
    * 如需更多詳細資訊，請參閱 Avere 叢集設定指南中的[新增 NAS 核心檔案管理工具](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_nas.html) \(英文\)。
 
 接著，繼續進行[建立連接點](#create-a-junction)。  
@@ -111,7 +111,7 @@ NAS 核心檔案管理工具可以是內部部署 NetApp 或 Isilon 設備，也
 
    ![Azure 入口網站中的新儲存體帳戶](media/avere-vfxt-new-storage-acct.png)
 
-1. 建立新的 Blob 容器：按一下 [總覽] 頁面上的 [ **容器** ]，然後按一下 [ **+ 容器**]。 使用任何容器名稱，並請務必將存取權設定為 [私用]****。
+1. 建立新的 Blob 容器：按一下 [總覽] 頁面上的 [ **容器** ]，然後按一下 [ **+ 容器**]。 使用任何容器名稱，並請務必將存取權設定為 [私用]。
 
    ![顯示 [+ 容器] 按鈕的 [儲存體 blob] 頁面，並在快顯頁面中建立新的容器](media/avere-vfxt-new-blob.png)
 
@@ -119,7 +119,7 @@ NAS 核心檔案管理工具可以是內部部署 NetApp 或 Isilon 設備，也
 
    ![用於複製金鑰的 Azure 入口網站 GUI](media/avere-vfxt-copy-storage-key.png)
 
-1. 開啟您叢集的「Avere 控制台」。 按一下 [Settings] \(設定\)****，然後開啟左側導覽窗格上的 [Cluster] \(叢集\)**** > [Cloud Credentials] \(雲端認證\)****。 在 [Cloud Credentials] \(雲端認證\) 頁面上，按一下 [Add Credential] \(新增認證\)****。
+1. 開啟您叢集的「Avere 控制台」。 按一下 [Settings] \(設定\)，然後開啟左側導覽窗格上的 [Cluster] \(叢集\) > [Cloud Credentials] \(雲端認證\)。 在 [Cloud Credentials] \(雲端認證\) 頁面上，按一下 [Add Credential] \(新增認證\)。
 
    ![按一下 [Cloud Credentials] \(雲端認證\) 設定頁面上的 [Add Credential] \(新增認證\) 按鈕](media/avere-vfxt-new-credential-button.png)
 
@@ -137,24 +137,24 @@ NAS 核心檔案管理工具可以是內部部署 NetApp 或 Isilon 設備，也
 
    ![「Avere 控制台」中已完成的雲端認證表單](media/avere-vfxt-new-credential-submit.png)
 
-1. 接著，建立核心檔案管理工具。 在 Avere 主控台的左側，按一下 [核心檔案**Core Filer**  >   **管理工具管理核心檔案管理**工具]。
+1. 接著，建立核心檔案管理工具。 在 Avere 主控台的左側，按一下 [核心檔案 **Core Filer**  >   **管理工具管理核心檔案管理** 工具]。
 
-1. 按一下 [Manage Core Filers] \(管理核心檔案管理工具\)**** 設定頁面上的 [Create] \(建立\)****。
+1. 按一下 [Manage Core Filers] \(管理核心檔案管理工具\) 設定頁面上的 [Create] \(建立\)。
 
 1. 填寫精靈欄位：
 
-   * 選取 [Cloud] \(雲端\)**** 檔案管理工具類型。
-   * 為新的核心檔案管理工具命名，然後按 [Next] \(下一步\)****。
+   * 選取 [Cloud] \(雲端\) 檔案管理工具類型。
+   * 為新的核心檔案管理工具命名，然後按 [Next] \(下一步\)。
    * 接受預設的快取原則，然後繼續進行第三頁。
-   * 在 [Service type] \(服務類型\)**** 中，選擇 [Azure storage] \(Azure 儲存體)\****。
+   * 在 [Service type] \(服務類型\) 中，選擇 [Azure storage] \(Azure 儲存體)\。
    * 選擇稍早建立的認證。
-   * 將 [Bucket contents] \(貯體內容\)**** 設定為 [Empty] \(空白\)****
-   * 將 [Certificate verification] \(憑證驗證\)**** 變更為 [Disabled] \(已停用\)****
-   * 將 [Compression mode] \(壓縮模式\)**** 變更為 [None] \(無\)****
-   * 按一下 [下一步]。
-   * 在第四頁上，於 [Bucket name] \(貯體名稱\)**** 中將容器名稱輸入為 *storage_account_name*/*container_name*。
-   * 視需要將 [Encryption type] \(加密類型\)**** 設定為 [None] \(無\)****。  「Azure 儲存體」預設會經過加密。
-   * 按一下 [Add Filer] \(新增檔案管理工具\)****。
+   * 將 [Bucket contents] \(貯體內容\) 設定為 [Empty] \(空白\)
+   * 將 [Certificate verification] \(憑證驗證\) 變更為 [Disabled] \(已停用\)
+   * 將 [Compression mode] \(壓縮模式\) 變更為 [None] \(無\)
+   * 按 [下一步] 。
+   * 在第四頁上，於 [Bucket name] \(貯體名稱\) 中將容器名稱輸入為 *storage_account_name*/*container_name*。
+   * 視需要將 [Encryption type] \(加密類型\) 設定為 [None] \(無\)。  「Azure 儲存體」預設會經過加密。
+   * 按一下 [Add Filer] \(新增檔案管理工具\)。
 
    如需更多詳細資訊，請參閱 Avere 叢集設定指南中的[新增雲端核心檔案管理工具](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>) \(英文\)。
 
@@ -176,7 +176,7 @@ NAS 核心檔案管理工具可以是內部部署 NetApp 或 Isilon 設備，也
 * 提供以 / (斜線) 開頭的命名空間路徑，例如 ``/vfxt/data``。
 * 選擇您的核心檔案管理工具。
 * 選擇核心檔案管理工具匯出項。
-* 按一下 [下一步]。
+* 按 [下一步] 。
 
   ![已完成連接點、核心檔案管理工具及匯出項欄位的 [Add new junction] \(新增連接點\) 頁面螢幕擷取畫面](media/avere-vfxt-add-junction.png)
 

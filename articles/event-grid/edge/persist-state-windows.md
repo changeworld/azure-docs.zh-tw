@@ -8,11 +8,11 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: f38e23a3af1e2c81ee012a4f3c268cbff3fc1bee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86171460"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002812"
 ---
 # <a name="persist-state-in-windows"></a>在 Windows 中保存狀態
 
@@ -69,7 +69,7 @@ ms.locfileid: "86171460"
    ```
 1. 將 **Users** 群組新增至 **裝入** 點指向的值，如下所示：
     1. 啟動檔案總管。
-    1. 流覽至 **裝入**點指向的資料夾。
+    1. 流覽至 **裝入** 點指向的資料夾。
     1. 以滑鼠右鍵按一下，然後選取 [ **屬性**]。
     1. 選取 [安全性]。
     1. 在 [群組或使用者名稱] 底下，選取 [ **編輯**]。

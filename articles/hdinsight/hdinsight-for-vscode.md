@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 302f1a081ca44cf6436f2c318b03e227f6640489
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543078"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001961"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>使用 Spark & Hive Tools for Visual Studio Code
 
@@ -29,7 +29,7 @@ ms.locfileid: "92543078"
 - [Visual Studio Code](https://code.visualstudio.com/) \(英文\)。
 - [Mono](https://www.mono-project.com/docs/getting-started/install/) \(英文\)。 只有 Linux 和 macOS 才需要 Mono。
 - [Visual Studio Code 的 PySpark 互動式環境](set-up-pyspark-interactive-environment.md)。
-- 本機目錄。 此文章使用 **C:\HD\HDexample** 。
+- 本機目錄。 此文章使用 **C:\HD\HDexample**。
 
 ## <a name="install-spark--hive-tools"></a>安裝 Spark & Hive Tools
 
@@ -39,7 +39,7 @@ ms.locfileid: "92543078"
 
 2. 從功能表列，瀏覽至 [檢視] > [擴充功能]。
 
-3. 在搜尋方塊中，輸入 **Spark & Hive** 。
+3. 在搜尋方塊中，輸入 **Spark & Hive**。
 
 4. 從搜尋結果中選取 [Spark & Hive Tools]，然後選取 [安裝]：
 
@@ -51,20 +51,20 @@ ms.locfileid: "92543078"
 
 若要在 Visual Studio Code 中開啟工作資料夾並建立檔案，請執行下列步驟：
 
-1. 從功能表列， **流覽至 [** 檔案  >  **開啟資料夾**  >  ]。 **C:\HD\HDexample** ，然後選取 [ **選取資料夾** ] 按鈕。 該資料夾會出現在左側的 [檔案總管]  檢視中。
+1. 從功能表列，**流覽至 [** 檔案  >  **開啟資料夾**  >  ]。**C:\HD\HDexample**，然後選取 [**選取資料夾**] 按鈕。 該資料夾會出現在左側的 [檔案總管] 檢視中。
 
 2. 在 **Explorer** 視圖中，選取 [ **先前 >hdexample** ] 資料夾，然後選取工作資料夾旁的 [ **新增** 檔案] 圖示：
 
    ![Visual Studio Code 的新增檔案圖示](./media/hdinsight-for-vscode/visual-studio-code-new-file.png)
 
-3. 使用 `.hql` (Hive 查詢) 或 `.py` (Spark 腳本) 副檔名來為新檔案命名。 這個範例使用 **HelloWorld.hql** 。
+3. 使用 `.hql` (Hive 查詢) 或 `.py` (Spark 腳本) 副檔名來為新檔案命名。 這個範例使用 **HelloWorld.hql**。
 
 ## <a name="set-the-azure-environment"></a>設定 Azure 環境
 
 針對國家雲端使用者，請遵循下列步驟來先設定 Azure 環境，然後使用 **azure：登入** 命令來登入 azure：
 
-1. 流覽至 **[** 檔案  >  **喜好**  >  **設定** ]。
-2. 搜尋下列字串： **Azure：雲端** 。
+1. 流覽至 **[** 檔案  >  **喜好**  >  **設定**]。
+2. 搜尋下列字串： **Azure：雲端**。
 3. 從清單中選取國家/地區雲端：
 
    ![設定預設的登入項目組態](./media/hdinsight-for-vscode/set-default-login-entry-configuration.png)
@@ -73,7 +73,7 @@ ms.locfileid: "92543078"
 
 您可以從 Visual Studio Code 將腳本提交至叢集之前，使用者可以登入 Azure 訂用帳戶，或 [連結 HDInsight](#link-a-cluster)叢集。 針對 ESP 叢集使用 Ambari 使用者名稱/密碼或加入網域的認證，以連線到您的 HDInsight 叢集。 依照下列步驟連線至 Azure：
 
-1. 從功能表列中，瀏覽至 [檢視] >  [命令選擇區...]，然後輸入 **Azure:Sign In** ：
+1. 從功能表列中，瀏覽至 [檢視] >  [命令選擇區...]，然後輸入 **Azure:Sign In**：
 
    ![Spark & Hive Tools for Visual Studio Code 登入](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
@@ -85,15 +85,15 @@ ms.locfileid: "92543078"
 
 您可以使用 [Apache Ambari](https://ambari.apache.org/)管理的使用者名稱來連結一般叢集，也可以使用網域使用者 (名稱（例如：) ）來連結企業安全性套件保護 Hadoop 叢集 `user1@contoso.com` 。
 
-1. 從功能表列，流覽至 [ **View**  >  **命令** 選擇區]，然後輸入 **Spark/Hive： Link a Cluster** 。
+1. 從功能表列，流覽至 [ **View**  >  **命令** 選擇區]，然後輸入 **Spark/Hive： Link a Cluster**。
 
    ![命令選擇區連結叢集命令](./media/hdinsight-for-vscode/link-cluster-command.png)
 
-2. 選取連結的叢集類型 **Azure HDInsight** 。
+2. 選取連結的叢集類型 **Azure HDInsight**。
 
 3. 輸入 HDInsight 叢集 URL。
 
-4. 輸入您的 Ambari 使用者名稱;預設值為 **admin** 。
+4. 輸入您的 Ambari 使用者名稱;預設值為 **admin**。
 
 5. 輸入您的 Ambari 密碼。
 
@@ -101,34 +101,34 @@ ms.locfileid: "92543078"
 
 7. 設定叢集的顯示名稱 (選擇性) 。
 
-8. 檢閱 [輸出]  檢視以確認。
+8. 檢閱 [輸出] 檢視以確認。
 
    > [!NOTE]  
    > 如果叢集已登入 Azure 訂用帳戶並連結叢集，則會使用連結的使用者名稱和密碼。  
 
 ### <a name="link-generic-livy-endpoint"></a>連結：泛型 Livy 端點
 
-1. 從功能表列，流覽至 [ **View**  >  **命令** 選擇區]，然後輸入 **Spark/Hive： Link a Cluster** 。
+1. 從功能表列，流覽至 [ **View**  >  **命令** 選擇區]，然後輸入 **Spark/Hive： Link a Cluster**。
 
-2. 選取連結的叢集類型 [泛型 Livy 端點]  。
+2. 選取連結的叢集類型 [泛型 Livy 端點]。
 
 3. 輸入泛型 Livy 端點。 例如： HTTP \: //10.172.41.42：18080。
 
-4. 選取授權類型 [基本]  或 [無]  。  如果您選取 [ **基本** ]：  
+4. 選取授權類型 [基本] 或 [無]。  如果您選取 [ **基本**]：  
    
-   1. 輸入您的 Ambari 使用者名稱;預設值為 **admin** 。  
+   1. 輸入您的 Ambari 使用者名稱;預設值為 **admin**。  
 
    2. 輸入您的 Ambari 密碼。
 
-5. 檢閱 [輸出]  檢視以確認。
+5. 檢閱 [輸出] 檢視以確認。
 
 ## <a name="list-clusters"></a>列出叢集
 
-1. 從功能表列，流覽至 [ **View**  >  **命令** 選擇區]，然後輸入 **Spark/Hive： List Cluster** 。
+1. 從功能表列，流覽至 [ **View**  >  **命令** 選擇區]，然後輸入 **Spark/Hive： List Cluster**。
 
 2. 選取您要的訂用帳戶。
 
-3. 檢閱 [輸出]  檢視。 此視圖會顯示您的連結叢集 (或叢集) 和您 Azure 訂用帳戶下的所有叢集：
+3. 檢閱 [輸出] 檢視。 此視圖會顯示您的連結叢集 (或叢集) 和您 Azure 訂用帳戶下的所有叢集：
 
    ![設定預設叢集設定](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
@@ -181,7 +181,7 @@ ms.locfileid: "92543078"
 
 1. 如果已關閉，請重新開啟稍 [早](#open-a-work-folder)所討論的 **先前 >hdexample** 資料夾。  
 
-2. 依照 [先前的](#open-a-work-folder)步驟建立新檔案 **HelloWorld.py** 。
+2. 依照 [先前的](#open-a-work-folder)步驟建立新檔案 **HelloWorld.py**。
 
 3. 將下列程式碼複製並貼到該指令檔：
 
@@ -203,7 +203,7 @@ ms.locfileid: "92543078"
 
    ![螢幕擷取畫面顯示略過 PySpark 安裝的選項。](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
 
-5. 如果您稍後需要安裝它，您可以 **流覽至檔案**  >  **喜好**  >  **設定** ，然後取消核取 [設定] 中的 [ **HDInsight：啟用 Skip Pyspark 安裝** ]。 
+5. 如果您稍後需要安裝它，您可以 **流覽至檔案**  >  **喜好**  >  **設定**，然後取消核取 [設定] 中的 [ **HDInsight：啟用 Skip Pyspark 安裝**]。 
     
     ![螢幕擷取畫面顯示啟用 Skip Pyspark 安裝的選項。](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
 
@@ -211,7 +211,7 @@ ms.locfileid: "92543078"
 
    ![已成功安裝 pyspark](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
 
-7. 從功能表列中瀏覽至 [檢視] > [命令選擇區...]，或使用 **Shift + Ctrl + P** 鍵盤快速鍵，然後輸入 **Python:Select Interpreter to start Jupyter Server** 。
+7. 從功能表列中瀏覽至 [檢視] > [命令選擇區...]，或使用 **Shift + Ctrl + P** 鍵盤快速鍵，然後輸入 **Python:Select Interpreter to start Jupyter Server**。
 
    ![選取解譯器以啟動 Jupyter 伺服器](./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png)
 
@@ -229,11 +229,11 @@ ms.locfileid: "92543078"
 
     ![[PySpark 互動式] 內容功能表](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-12. 如果您尚未指定預設叢集，請選取叢集。 經過幾分鐘之後， **Python 互動式** 結果會出現在新的索引標籤中。按一下 [PySpark] 將核心切換到 **PySpark/Synapse PySpark** ，程式碼將會成功執行。 如果您想要切換到 Synapse Pyspark 核心，建議您在 Azure 入口網站中停用自動設定。 否則，喚醒叢集並設定 Synapse 核心以供首次使用，可能需要很長的時間。 如果工具也可讓您使用內容功能表來提交程式碼區塊，而非整個腳本檔案：
+12. 如果您尚未指定預設叢集，請選取叢集。 經過幾分鐘之後， **Python 互動式** 結果會出現在新的索引標籤中。按一下 [PySpark] 將核心切換到 **PySpark/Synapse PySpark**，程式碼將會成功執行。 如果您想要切換到 Synapse Pyspark 核心，建議您在 Azure 入口網站中停用自動設定。 否則，喚醒叢集並設定 Synapse 核心以供首次使用，可能需要很長的時間。 如果工具也可讓您使用內容功能表來提交程式碼區塊，而非整個腳本檔案：
 
     ![PySpark 互動式 Python 互動式視窗](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
-13. 輸入 **%% info** ，然後按 Shift + Enter 以查看作業資訊 (選擇性) ：
+13. 輸入 **%% info**，然後按 Shift + Enter 以查看作業資訊 (選擇性) ：
 
     ![pyspark 互動視圖作業資訊](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 
@@ -260,7 +260,7 @@ ms.locfileid: "92543078"
 
    ![設定預設 Spark 集區並重新載入](./media/hdinsight-for-vscode/set-the-default-spark-pool-and-reload.png)
 
-3. 按一下 [PySpark] 以將核心切換到 **PySpark/Synapse PySpark** ，然後按一下 [ **執行資料格** ]，然後在一段時間後顯示結果。
+3. 按一下 [PySpark] 以將核心切換到 **PySpark/Synapse PySpark**，然後按一下 [ **執行資料格**]，然後在一段時間後顯示結果。
 
    ![執行 ipynb 結果](./media/hdinsight-for-vscode/run-ipynb-file-results.png)
 
@@ -272,7 +272,7 @@ ms.locfileid: "92543078"
 
 1. 如果已關閉，請重新開啟您稍 [早](#open-a-work-folder)所討論的 **先前 >hdexample** 資料夾。  
 
-2. 依照 [先前](#open-a-work-folder)的步驟建立新檔案 **BatchFile.py** 。
+2. 依照 [先前](#open-a-work-folder)的步驟建立新檔案 **BatchFile.py**。
 
 3. 將下列程式碼複製並貼到該指令檔：
 
@@ -299,13 +299,13 @@ ms.locfileid: "92543078"
 
 4. [連接](#connect-to-an-azure-account) 到您的 Azure 帳戶，或連結叢集（如果您尚未這樣做）。
 
-5. 以滑鼠右鍵按一下腳本編輯器，然後選取 [ **Spark： PySpark 批次** ] 或 [ **Synapse： PySpark batch** _]。
+5. 以滑鼠右鍵按一下腳本編輯器，然後選取 [ **Spark： PySpark 批次**] 或 [ **Synapse： PySpark batch** _]。
 
 6. 選取要提交 PySpark 作業的叢集/spark 集區：
 
    ![提交 Python 作業結果輸出](./media/hdinsight-for-vscode/submit-pythonjob-result.png)
 
-提交 Python 作業之後，提交記錄會出現在 Visual Studio Code 的 [_ *輸出* ] 視窗中。 此外也會顯示 Spark UI URL 和 Yarn UI URL。 如果您將批次作業提交至 Apache Spark 集區，則也會顯示 Spark 歷程記錄 UI URL 和 Spark 作業應用程式 UI URL。 您可以在網頁瀏覽器中開啟該 URL 來追蹤作業狀態。
+提交 Python 作業之後，提交記錄會出現在 Visual Studio Code 的 [_ *輸出*] 視窗中。 此外也會顯示 Spark UI URL 和 Yarn UI URL。 如果您將批次作業提交至 Apache Spark 集區，則也會顯示 Spark 歷程記錄 UI URL 和 Spark 作業應用程式 UI URL。 您可以在網頁瀏覽器中開啟該 URL 來追蹤作業狀態。
 
 ## <a name="integrate-with-hdinsight-identity-broker-hib"></a>與 HDInsight Identity Broker (HIB) 整合
 
@@ -329,13 +329,13 @@ ms.locfileid: "92543078"
 
 ### <a name="method-1"></a>方法 1  
 
-1. 從功能表列， **流覽至 [** 檔案  >  **喜好**  >  **設定** ]。
-2. 在 [ **搜尋設定** ] 方塊中，輸入 **HDInsight 作業提交： Livy 會議** 。  
-3. 選取 [在 settings.json 中編輯]  以取得相關的搜尋結果。
+1. 從功能表列，**流覽至 [** 檔案  >  **喜好**  >  **設定**]。
+2. 在 [ **搜尋設定** ] 方塊中，輸入 **HDInsight 作業提交： Livy 會議**。  
+3. 選取 [在 settings.json 中編輯] 以取得相關的搜尋結果。
 
 ### <a name="method-2"></a>方法 2
 
-提交檔案，並注意 `.vscode` 資料夾會自動新增至工作資料夾。 您可以選取 [ **開啟.vscode\settings.js** ] 來查看 Livy 設定。
+提交檔案，並注意 `.vscode` 資料夾會自動新增至工作資料夾。 您可以選取 [ **開啟.vscode\settings.js**] 來查看 Livy 設定。
 
 - 專案設定：
 
@@ -365,19 +365,19 @@ ms.locfileid: "92543078"
   | executorCores | 要用於每個執行程式的核心數目 | Int |
   | numExecutors | 要針對此工作階段啟動的執行程式數目 | Int |
   | archives | 要用於此工作階段的封存 | 字串清單 |
-  | queue | 要提交的 YARN 佇列名稱| String |
-  | name | 此會話的名稱 | String |
+  | queue | 要提交的 YARN 佇列名稱| 字串 |
+  | NAME | 此會話的名稱 | String |
   | conf | Spark 設定屬性 | key=val 的對應 |
 
   **回應主體** 建立的批次物件。
 
   | 名稱 | description | 類型 |
   | --- | ---| --- |
-  | ID | 工作階段識別碼 | Int |
+  | 識別碼 | 工作階段識別碼 | Int |
   | appId | 此會話的應用程式識別碼 | String |
   | appInfo | 詳細的應用程式資訊 | key=val 的對應 |
   | log | 記錄行 | 字串清單 |
-  | 狀態 |批次狀態 | String |
+  | state |批次狀態 | String |
 
   > [!NOTE]
   > 當您提交腳本時，[輸出] 窗格中會顯示指派的 Livy 設定。
@@ -390,11 +390,11 @@ ms.locfileid: "92543078"
 
 2. 從最左邊的資料行中選取 **Azure** 圖示。
 
-3. 從左窗格中，展開 [ **AZURE： HDINSIGHT** ]。 系統會列出可用的訂用帳戶和叢集。
+3. 從左窗格中，展開 [ **AZURE： HDINSIGHT**]。 系統會列出可用的訂用帳戶和叢集。
 
 4. 展開叢集以查看 Hive 中繼資料資料庫和資料表架構。
 
-5. 以滑鼠右鍵按一下 Hive 資料表。 例如： **hivesampletable** 。 選取 [預覽]  。
+5. 以滑鼠右鍵按一下 Hive 資料表。 例如： **hivesampletable**。 選取 [預覽]  。
 
    ![適用于 Visual Studio Code preview hive 資料表的 Spark & Hive](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-hive-table.png)
 
@@ -422,12 +422,12 @@ ms.locfileid: "92543078"
 
 適用于 Visual Studio Code 的 Spark & Hive 也支援下列功能：
 
-- **IntelliSense 自動完成** 。 針對關鍵字、方法、變數和其他程式設計項目的建議。 不同圖示代表不同類型的物件：
+- **IntelliSense 自動完成**。 針對關鍵字、方法、變數和其他程式設計項目的建議。 不同圖示代表不同類型的物件：
 
     ![Spark & Hive Tools for Visual Studio Code IntelliSense 物件](./media/hdinsight-for-vscode/hdinsight-for-vscode-auto-complete-objects.png)
 
-- **IntelliSense 錯誤標記** 。 語言服務會將 Hive 腳本中的編輯錯誤加上底線。     
-- **語法醒目顯示** 。 語言服務會使用不同的色彩來區分變數、關鍵字、資料類型、函式和其他程式設計項目：
+- **IntelliSense 錯誤標記**。 語言服務會將 Hive 腳本中的編輯錯誤加上底線。     
+- **語法醒目顯示**。 語言服務會使用不同的色彩來區分變數、關鍵字、資料類型、函式和其他程式設計項目：
 
     ![適用於 Visual Studio Code 的 Spark & Hive Tools 語法醒目提示](./media/hdinsight-for-vscode/hdinsight-for-vscode-syntax-highlights.png)
 
@@ -484,7 +484,7 @@ ms.locfileid: "92543078"
 
 ## <a name="sign-out"></a>登出  
 
-從功能表列，移至 [ **View** ]  >  **命令** 選擇區，然後輸入 **Azure：登出** 。
+從功能表列，移至 [ **View**]  >  **命令** 選擇區，然後輸入 **Azure：登出**。
 
 ## <a name="known-issues"></a>已知問題
 

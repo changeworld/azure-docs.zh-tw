@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: aahi
-ms.openlocfilehash: 277a3c1c53564d7c5dff6a87381680a7f41606de
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c3791a9049a3eab3ddd6fc70073629c38830dbc7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131593"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96002256"
 ---
 # <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>使用語音服務容器搭配 Kubernetes 和 Helm
 
@@ -27,11 +27,11 @@ ms.locfileid: "93131593"
 
 | 必要 | 目的 |
 |----------|---------|
-| Azure 帳戶 | 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶][free-azure-account]。 |
+| Azure 帳戶 | 如果您沒有 Azure 訂用帳戶，請先建立[免費帳戶][free-azure-account]，再開始進行。 |
 | Container Registry 存取 | 為了讓 Kubernetes 將 docker 映射提取到叢集中，它需要容器登錄的存取權。 |
 | Kubernetes CLI | 需要 [KUBERNETES CLI][kubernetes-cli] 才能管理容器登錄中的共用認證。 Helm 之前也需要 Kubernetes，也就是 Kubernetes 套件管理員。 |
 | Helm CLI | 安裝 [HELM CLI][helm-install]，這是用來安裝 Helm 圖表 (容器套件定義) 。 |
-|語音資源 |若要使用這些容器，您必須具備：<br><br>用以取得相關聯帳單金鑰和計費端點 URI 的 _語音_ Azure 資源。 這兩個值都可在 Azure 入口網站的 [ **語音** 總覽] 和 [金鑰] 頁面上取得，而且必須要有這些值才能啟動容器。<br><br>**{API_KEY}** ：資源金鑰<br><br>**{ENDPOINT_URI}** ：端點 URI 範例為： `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+|語音資源 |若要使用這些容器，您必須具備：<br><br>用以取得相關聯帳單金鑰和計費端點 URI 的 _語音_ Azure 資源。 這兩個值都可在 Azure 入口網站的 [ **語音** 總覽] 和 [金鑰] 頁面上取得，而且必須要有這些值才能啟動容器。<br><br>**{API_KEY}**：資源金鑰<br><br>**{ENDPOINT_URI}**：端點 URI 範例為： `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 ## <a name="the-recommended-host-computer-configuration"></a>建議的主機電腦設定
 
@@ -48,7 +48,7 @@ ms.locfileid: "93131593"
 
 ## <a name="configure-helm-chart-values-for-deployment"></a>設定部署的 Helm 圖表值
 
-請造訪 [Microsoft Helm Hub][ms-helm-hub] ，以取得 microsoft 所提供的所有公開可用 Helm 圖表。 您可以從 Microsoft Helm Hub 找到 **認知服務語音內部部署圖表** 。 **認知服務語音內部部署** 是我們將安裝的圖表，但我們必須先建立具有明確設定的檔案 `config-values.yaml` 。 讓我們從將 Microsoft 存放庫新增至 Helm 實例開始。
+請造訪 [Microsoft Helm Hub][ms-helm-hub] ，以取得 microsoft 所提供的所有公開可用 Helm 圖表。 您可以從 Microsoft Helm Hub 找到 **認知服務語音內部部署圖表**。 **認知服務語音內部部署** 是我們將安裝的圖表，但我們必須先建立具有明確設定的檔案 `config-values.yaml` 。 讓我們從將 Microsoft 存放庫新增至 Helm 實例開始。
 
 ```console
 helm repo add microsoft https://microsoft.github.io/charts/repo
@@ -189,7 +189,7 @@ horizontalpodautoscaler.autoscaling/text-to-speech-autoscaler   Deployment/text-
 
 ### <a name="verify-helm-deployment-with-helm-tests"></a>使用 Helm 測試驗證 Helm 部署
 
-已安裝的 Helm 圖會定義 *Helm 測試* ，以作為驗證的便利性。 這些測試會驗證服務是否就緒。 為了確認 **語音轉換文字** 和 **文字轉換語音** 服務，我們會執行 [Helm test][helm-test] 命令。
+已安裝的 Helm 圖會定義 *Helm 測試*，以作為驗證的便利性。 這些測試會驗證服務是否就緒。 為了確認 **語音轉換文字** 和 **文字轉換語音** 服務，我們會執行 [Helm test][helm-test] 命令。
 
 ```console
 helm test onprem-speech
@@ -229,7 +229,7 @@ Helm 圖為階層式。 階層式允許圖表繼承，它也會已經考慮到�
 <!-- LINKS - external -->
 [free-azure-account]: https://azure.microsoft.com/free
 [git-download]: https://git-scm.com/downloads
-[azure-cli]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [docker-engine]: https://www.docker.com/products/docker-engine
 [kubernetes-cli]: https://kubernetes.io/docs/tasks/tools/install-kubectl
 [helm-install]: https://helm.sh/docs/intro/install/

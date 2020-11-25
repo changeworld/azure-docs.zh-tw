@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: a6f53d6ce41085b2348857ccb5b45c06132d6a99
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655454"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001978"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>建立依排程執行管線的觸發程序
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -349,7 +349,7 @@ ms.locfileid: "94655454"
 ### <a name="schema-overview"></a>結構描述概觀
 下表提供與觸發程序之週期和排程相關的主要結構描述元素概觀：
 
-| JSON 屬性 | 說明 |
+| JSON 屬性 | 描述 |
 |:--- |:--- |
 | **startTime** | 日期時間值。 在簡易排程中，**startTime** 屬性的值會套用至第一個發生項目。 在複雜的排程中，觸發程序會在到了指定的 **startTime** 值才啟動。 <br> 針對 UTC 時區，格式為 `'yyyy-MM-ddTHH:mm:ssZ'` ，其他時區的格式為 `'yyyy-MM-ddTHH:mm:ss'` 。 |
 | **endTime** | 觸發程序的結束日期和時間。 觸發程序在指定的結束日期和時間之後便不再執行。 此屬性的值不可以是過去的時間。 這是選用屬性。  <br> 針對 UTC 時區，格式為 `'yyyy-MM-ddTHH:mm:ssZ'` ，其他時區的格式為 `'yyyy-MM-ddTHH:mm:ss'` 。 |
@@ -371,7 +371,7 @@ ms.locfileid: "94655454"
 | **startTime** | String | 是 | None | ISO 8601 日期時間 | UTC 時區 `"startTime" : "2013-01-09T09:30:00-08:00Z"` <br> 針對其他時區 `"2013-01-09T09:30:00-08:00"` |
 | **時區** | String | 是 | None | [時區值](#time-zone-option)  | `"UTC"` |
 | **復發** | Object | 是 | None | Recurrence 物件 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **區間** | Number | 否 | 1 | 1 到 1,000 | `"interval":10` |
+| **區間** | 數字 | 否 | 1 | 1 到 1,000 | `"interval":10` |
 | **endTime** | String | 是 | None | 代表未來時間的日期時間值。 | UTC 時區 `"endTime" : "2013-02-09T09:30:00-08:00Z"` <br> 針對其他時區 `"endTime" : "2013-02-09T09:30:00-08:00"`|
 | **附表** | Object | 否 | None | Schedule 物件 | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
@@ -418,7 +418,7 @@ ms.locfileid: "94655454"
 下表詳細說明 **schedule** 元素：
 
 
-| JSON 元素 | 說明 | 有效值 |
+| JSON 元素 | 描述 | 有效值 |
 |:--- |:--- |:--- |
 | **分鐘** | 一小時內觸發程序執行的分鐘數。 | <ul><li>整數</li><li>一連串整數</li></ul>
 | **小時** | 一天內觸發程序執行的小時數。 | <ul><li>整數</li><li>一連串整數</li></ul> |

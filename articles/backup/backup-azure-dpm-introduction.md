@@ -4,11 +4,11 @@ description: 在本文中，您將瞭解如何使用 Azure 備份服務來準備
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.openlocfilehash: 0089c3d86eb36b82287570ecdfd6e8c782e6fb8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975456"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002849"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>準備使用 System Center DPM 將工作負載備份到 Azure
 
@@ -26,7 +26,7 @@ ms.locfileid: "90975456"
 
 [System CENTER DPM](/system-center/dpm/dpm-overview) 會備份檔案和應用程式資料。 DPM 與 Azure 備份的互動方式如下：
 
-- 在**實體伺服器或內部部署 VM 上執行的 DPM** -除了磁片和磁帶備份之外，您還可以將資料備份到 Azure 中的備份保存庫。
+- 在 **實體伺服器或內部部署 VM 上執行的 DPM** -除了磁片和磁帶備份之外，您還可以將資料備份到 Azure 中的備份保存庫。
 - **在 AZURE vm 上執行的 DPM** -從 System Center 2012 R2 Update 3 或更新版本，您可以在 azure vm 上部署 dpm。 您可以將資料備份到連結至 VM 的 Azure 磁碟，或使用 Azure 備份將資料備份到備份保存庫。
 
 將 DPM 伺服器備份至 Azure 的商業優勢包括：
@@ -70,7 +70,7 @@ Azure 備份代理程式 | 如果 DPM 執行於 System Center 2012 SP1 上，請
 
 2. 在 [ **管理**] 中，選取 [ **備份基礎結構**]。
 
-3. 在 [備份組態]**** 功能表中，選取保存庫的儲存體選項。
+3. 在 [備份組態] 功能表中，選取保存庫的儲存體選項。
 
     ![備份保存庫的清單](./media/backup-azure-dpm-introduction/choose-storage-configuration-rs-vault.png)
 
@@ -117,7 +117,7 @@ Azure 備份所備份的每部電腦都必須安裝備份代理程式，也就�
 2. 在 [ **設定**] 中，選取 [ **屬性**]。
 
     ![開啟保存庫設定](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
-3. 在 [屬性]**** 頁面上，下載 Azure 備份代理程式。
+3. 在 [屬性] 頁面上，下載 Azure 備份代理程式。
 
     ![下載](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
 
@@ -125,25 +125,25 @@ Azure 備份所備份的每部電腦都必須安裝備份代理程式，也就�
 5. 選取代理程式的安裝資料夾和快取資料夾。 快取位置的可用空間至少必須是備份資料的 5%。
 6. 若您使用 Proxy 伺服器連接至網際網路，請在 [ **Proxy 組態** ] 畫面上，輸入 Proxy 伺服器詳細資料。 若您使用已驗證的 Proxy，請在此畫面中輸入使用者名稱和密碼的詳細資料。
 7. Azure 備份代理程式會安裝 .NET Framework 4.5 和 Windows PowerShell (若尚未安裝) 以完成安裝。
-8. 安裝代理程式之後，請**關閉**視窗。
+8. 安裝代理程式之後，請 **關閉** 視窗。
 
     ![關閉](../../includes/media/backup-install-agent/dpm_FinishInstallation.png)
 
 ## <a name="register-the-dpm-server-in-the-vault"></a>在保存庫中註冊 DPM 伺服器
 
 1. 在 [DPM 系統管理員主控台] > **管理**] 中，選取 [ **線上**]。 選取 [註冊]。 [註冊伺服器精靈] 隨即開啟。
-2. 在 [Proxy 組態]**** 中，視需要指定 Proxy 設定。
+2. 在 [Proxy 組態] 中，視需要指定 Proxy 設定。
 
     ![Proxy 組態](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Proxy.png)
-3. 在 [備份保存庫]**** 中，瀏覽至您已下載的保存庫認證檔，並加以選取。
+3. 在 [備份保存庫] 中，瀏覽至您已下載的保存庫認證檔，並加以選取。
 
     ![保存庫認證](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Credentials.jpg)
 
-4. 在 [節流設定]**** 中，您可以選擇性地為備份啟用頻寬節流。 您可以為指定的工作時數和天數設定速度限制。
+4. 在 [節流設定] 中，您可以選擇性地為備份啟用頻寬節流。 您可以為指定的工作時數和天數設定速度限制。
 
     ![節流設定](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Throttling.png)
 
-5. 在 [復原資料夾設定]**** 中，指定在資料復原期間可使用的位置。
+5. 在 [復原資料夾設定] 中，指定在資料復原期間可使用的位置。
 
     - Azure 備份會使用此位置作為復原資料的暫存區域。
     - 完成資料復原後，Azure 備份會清除此區域中的資料。
@@ -151,7 +151,7 @@ Azure 備份所備份的每部電腦都必須安裝備份代理程式，也就�
 
     ![復原資料夾設定](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_RecoveryFolder.png)
 
-6. 在 [ **加密] 設定**中，產生或提供複雜密碼。
+6. 在 [ **加密] 設定** 中，產生或提供複雜密碼。
 
     - 複雜密碼可用來加密雲端的備份。
     - 指定最少 16 個字元。
