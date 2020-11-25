@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
 ms.openlocfilehash: e1a77fc1b40faca0a339c5e1aaceb71dec8de8bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327033"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004631"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure 監視器自動調整的常用度量
 
@@ -24,7 +24,7 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 
 您可以使用 `Get MetricDefinitions` API/PoSH/CLI 來檢視 VMSS 資源的可用度量。
 
-如果您使用 VM 擴展集，而且發現特定度量沒有列出來，可能是您的診斷擴充功能已「停用」** 它。
+如果您使用 VM 擴展集，而且發現特定度量沒有列出來，可能是您的診斷擴充功能已「停用」它。
 
 如果特定度量沒有取樣或以您想要的頻率傳輸，您可以更新診斷的組態設定。
 
@@ -47,15 +47,15 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 您可以建立下列度量的警示：
 
-| 標準名稱 | Unit |
+| 標準名稱 | 單位 |
 | --- | --- |
 | \Processor(_Total)\% Processor Time |百分比 |
 | \Processor(_Total)\% Privileged Time |百分比 |
 | \Processor(_Total)\% User Time |百分比 |
-| \Processor Information(_Total)\Processor Frequency |Count |
-| \System\Processes |Count |
-| \Process(_Total)\Thread Count |Count |
-| \Process(_Total)\Handle Count |Count |
+| \Processor Information(_Total)\Processor Frequency |計數 |
+| \System\Processes |計數 |
+| \Process(_Total)\Thread Count |計數 |
+| \Process(_Total)\Handle Count |計數 |
 | \Memory\% Committed Bytes In Use |百分比 |
 | \Memory\Available Bytes |位元組 |
 | \Memory\Committed Bytes |位元組 |
@@ -71,11 +71,11 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk(_Total)\Disk Bytes/sec |每秒位元組 |
 | \PhysicalDisk(_Total)\Disk Read Bytes/sec |每秒位元組 |
 | \PhysicalDisk(_Total)\Disk Write Bytes/sec |每秒位元組 |
-| \PhysicalDisk (_Total) \Avg. 磁片佇列長度 |Count |
-| \PhysicalDisk (_Total) \Avg. 磁片讀取佇列長度 |Count |
-| \PhysicalDisk (_Total) \Avg. 磁片寫入佇列長度 |Count |
+| \PhysicalDisk (_Total) \Avg. 磁片佇列長度 |計數 |
+| \PhysicalDisk (_Total) \Avg. 磁片讀取佇列長度 |計數 |
+| \PhysicalDisk (_Total) \Avg. 磁片寫入佇列長度 |計數 |
 | \LogicalDisk(_Total)\% Free Space |百分比 |
-| \LogicalDisk(_Total)\Free Megabytes |Count |
+| \LogicalDisk(_Total)\Free Megabytes |計數 |
 
 ### <a name="guest-os-metrics-linux-vms"></a>客體 OS 度量 Linux VM
 當您在 Azure 中建立 VM 時，根據預設會使用診斷擴充來啟用診斷。
@@ -88,7 +88,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
  您可以建立下列度量的警示：
 
-| 標準名稱 | Unit |
+| 標準名稱 | 單位 |
 | --- | --- |
 | \Memory\AvailableMemory |位元組 |
 | \Memory\PercentAvailableMemory |百分比 |
@@ -119,15 +119,15 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk\AverageReadTime |秒 |
 | \PhysicalDisk\AverageWriteTime |秒 |
 | \PhysicalDisk\AverageTransferTime |秒 |
-| \PhysicalDisk\AverageDiskQueueLength |Count |
+| \PhysicalDisk\AverageDiskQueueLength |計數 |
 | \NetworkInterface\BytesTransmitted |位元組 |
 | \NetworkInterface\BytesReceived |位元組 |
-| \NetworkInterface\PacketsTransmitted |Count |
-| \NetworkInterface\PacketsReceived |Count |
+| \NetworkInterface\PacketsTransmitted |計數 |
+| \NetworkInterface\PacketsReceived |計數 |
 | \NetworkInterface\BytesTotal |位元組 |
-| \NetworkInterface\TotalRxErrors |Count |
-| \NetworkInterface\TotalTxErrors |Count |
-| \NetworkInterface\TotalCollisions |Count |
+| \NetworkInterface\TotalRxErrors |計數 |
+| \NetworkInterface\TotalTxErrors |計數 |
+| \NetworkInterface\TotalCollisions |計數 |
 
 ## <a name="commonly-used-app-service-server-farm-metrics"></a>常用 App Service (Server Farm) 計量
 您也可以根據常用的 Web 伺服器度量 (如 Http 佇列長度) 執行自動調整。 它的度量名稱是 **HttpQueueLength**。  下一節列出可用的伺服器陣列 (App Service) 計量。
@@ -141,19 +141,19 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 您可以針對這些度量發出警示通知或以其為調整依據。
 
-| 標準名稱 | Unit |
+| 標準名稱 | 單位 |
 | --- | --- |
 | CpuPercentage |百分比 |
 | MemoryPercentage |百分比 |
-| DiskQueueLength |Count |
-| HttpQueueLength |Count |
+| DiskQueueLength |計數 |
+| HttpQueueLength |計數 |
 | BytesReceived |位元組 |
 | BytesSent |位元組 |
 
 ## <a name="commonly-used-storage-metrics"></a>常用的儲存體度量
 您可以「儲存體佇列長度」做為調整依據，它是儲存體佇列中的訊息數目。 儲存體佇列長度是特殊度量，臨界值是每個執行個體的訊息數。 比方說，如果有兩個執行個體，且臨界值設定為 100，當佇列中的訊息總數為 200 時，將會進行調整。 可能每個執行個體有 100 個訊息、120 和 80 個訊息，或合計最多 200 個或更多訊息的其他任何組合。
 
-在 Azure 入口網站的 [設定]**** 刀鋒視窗中進行此設定。 若使用 VM 擴展集，您可以更新 Resource Manager 範本中的自動調整設定，改為使用 metricName** 作為 ApproximateMessageCount**，並傳遞儲存體佇列的識別碼作為 *metricResourceUri*。
+在 Azure 入口網站的 [設定] 刀鋒視窗中進行此設定。 若使用 VM 擴展集，您可以更新 Resource Manager 範本中的自動調整設定，改為使用 metricName 作為 ApproximateMessageCount，並傳遞儲存體佇列的識別碼作為 *metricResourceUri*。
 
 例如，使用傳統儲存體帳戶時，自動調整設定 metricTrigger 會包含：
 
@@ -174,7 +174,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 ## <a name="commonly-used-service-bus-metrics"></a>常用的服務匯流排衡量標準
 您可以依服務匯流排佇列長度做為調整依據，它是服務匯流排佇列中的訊息數目。 服務匯流排長度是特殊度量，臨界值是每個執行個體的訊息數。 比方說，如果有兩個執行個體，且臨界值設定為 100，當佇列中的訊息總數為 200 時，將會進行調整。 可能每個執行個體有 100 個訊息、120 和 80 個訊息，或合計最多 200 個或更多訊息的其他任何組合。
 
-若使用 VM 擴展集，您可以更新 Resource Manager 範本中的自動調整設定，改為使用 metricName** 作為 ApproximateMessageCount**，並傳遞儲存體佇列的識別碼作為 *metricResourceUri*。
+若使用 VM 擴展集，您可以更新 Resource Manager 範本中的自動調整設定，改為使用 metricName 作為 ApproximateMessageCount，並傳遞儲存體佇列的識別碼作為 *metricResourceUri*。
 
 ```
 "metricName": "ApproximateMessageCount",

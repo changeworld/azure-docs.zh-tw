@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: f98021d1e94b3796b2aeb6ba2e883e4e1380b8ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504327"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004818"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Phoenix
 
@@ -37,11 +37,11 @@ HBase 有單一索引，依辭典編纂順序儲存在主要資料列索引鍵�
 CREATE INDEX ix_purchasetype on SALTEDWEBLOGS (purchasetype, transactiondate) INCLUDE (bookname, quantity);
 ```
 
-相較於執行單一索引查詢，這種方法可以產生顯著的效能提升。 這種類型的次要索引是**涵蓋索引**，包含查詢中所含的所有資料行。 因此，不需要資料表查閱，索引也會滿足整個查詢。
+相較於執行單一索引查詢，這種方法可以產生顯著的效能提升。 這種類型的次要索引是 **涵蓋索引**，包含查詢中所含的所有資料行。 因此，不需要資料表查閱，索引也會滿足整個查詢。
 
 ### <a name="views"></a>檢視
 
-Phoenix 檢視提供克服 HBase 限制的方法，此限制是當您建立超過約 100 個實體資料表時，效能就會開始降低。 Phoenix 檢視可以讓多個虛擬資料表** 共用一個基礎實體 HBase 資料表。
+Phoenix 檢視提供克服 HBase 限制的方法，此限制是當您建立超過約 100 個實體資料表時，效能就會開始降低。 Phoenix 檢視可以讓多個虛擬資料表共用一個基礎實體 HBase 資料表。
 
 建立 Phoenix 檢視類似於使用標準的 SQL 檢視語法。 其中一個差異是除了從其基底資料表繼承的資料行以外，您還可以針對檢視定義資料行。 您也可以新增 `KeyValue` 資料行。
 
@@ -97,9 +97,9 @@ ALTER TABLE my_other_table SET TRANSACTIONAL=true;
 
 ### <a name="salted-tables"></a>以 Salt 處理的資料表
 
-將具有連續索引鍵的記錄寫入至 HBase 時，可能會發生*區域伺服器作用區*。 雖然您在叢集中可能有多個區域伺服器，但是您的寫入只會在其中一個伺服器中發生。 此集中情形會產生作用區問題，其中您的寫入工作負載並非分散到所有可用的區域伺服器，而是只有一個伺服器會處理負載。 因為每個區域都有預先定義的大小上限，當區域達到該大小限制時，它會分割成兩個社區域。 發生這種情況時，其中一個新區域會採用所有新的記錄，變成新的作用區。
+將具有連續索引鍵的記錄寫入至 HBase 時，可能會發生 *區域伺服器作用區*。 雖然您在叢集中可能有多個區域伺服器，但是您的寫入只會在其中一個伺服器中發生。 此集中情形會產生作用區問題，其中您的寫入工作負載並非分散到所有可用的區域伺服器，而是只有一個伺服器會處理負載。 因為每個區域都有預先定義的大小上限，當區域達到該大小限制時，它會分割成兩個社區域。 發生這種情況時，其中一個新區域會採用所有新的記錄，變成新的作用區。
 
-若要減輕這個問題並達到更佳的效能，請預先分割資料表，讓所有區域伺服器的使用都相等。 Phoenix 提供以 Salt 處理的資料表**，明確地將已 Salt 處理的位元組新增至特定資料表的資料列索引鍵。 資料表是在 Salt 位元組界限上預先分割，以確保在資料表初始階段期間，區域伺服器之間的負載分配相等。 這種方法會將寫入工作負載散佈到所有可用的區域伺服器，改善寫入和讀取效能。 若要以 Salt 處理資料表，在建立資料表時指定 `SALT_BUCKETS` 資料表屬性：
+若要減輕這個問題並達到更佳的效能，請預先分割資料表，讓所有區域伺服器的使用都相等。 Phoenix 提供以 Salt 處理的資料表，明確地將已 Salt 處理的位元組新增至特定資料表的資料列索引鍵。 資料表是在 Salt 位元組界限上預先分割，以確保在資料表初始階段期間，區域伺服器之間的負載分配相等。 這種方法會將寫入工作負載散佈到所有可用的區域伺服器，改善寫入和讀取效能。 若要以 Salt 處理資料表，在建立資料表時指定 `SALT_BUCKETS` 資料表屬性：
 
 ```sql
 CREATE TABLE Saltedweblogs (
@@ -126,7 +126,7 @@ HDInsight HBase 叢集包括 [Ambari UI](hdinsight-hadoop-manage-ambari.md)，�
 
 1. 若要啟用或停用 Phoenix，並且控制 Phoenix 的查詢逾時設定，使用您的 Hadoop 使用者認證登入 Ambari Web UI (`https://YOUR_CLUSTER_NAME.azurehdinsight.net`)。
 
-2. 從左側功能表中的服務清單選取 [HBase]****，然後選取 [設定]**** 索引標籤。
+2. 從左側功能表中的服務清單選取 [HBase]，然後選取 [設定] 索引標籤。
 
     ![Apache Ambari HBase 設定](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config1.png)
 

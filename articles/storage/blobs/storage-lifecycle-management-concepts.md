@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 85577a428f803e31aa33468496d7efca77933835
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 1b568687ffe646a91544c1bb75d26d552a23f49c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579306"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96005277"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>藉由自動化 Azure Blob 儲存體存取層來將成本優化
 
@@ -39,7 +39,7 @@ ms.locfileid: "94579306"
 
 生命週期管理功能適用于一般用途 v2 的所有 Azure 區域 (GPv2) 帳戶、blob 儲存體帳戶、高階區塊 Blob 儲存體帳戶，以及 Azure Data Lake Storage Gen2 帳戶。 在 Azure 入口網站中，您可以將現有的一般用途 (GPv1) 帳戶升級至 GPv2 帳戶。 如需有關儲存體帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../common/storage-account-overview.md)。
 
-生命週期管理功能是免費的。 客戶需支付 [設定 Blob 層](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API 呼叫的一般操作成本。 刪除作業是免費的。 如需定價的詳細資訊，請參閱[區塊 Blob 價格](https://azure.microsoft.com/pricing/details/storage/blobs/)。
+生命週期管理功能是免費的。 客戶需支付 [設定 Blob 層](/rest/api/storageservices/set-blob-tier) API 呼叫的一般操作成本。 刪除作業是免費的。 如需定價的詳細資訊，請參閱[區塊 Blob 價格](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
 ## <a name="add-or-remove-a-policy"></a>新增或移除原則
 
@@ -47,13 +47,13 @@ ms.locfileid: "94579306"
 
 * [Azure 入口網站](https://portal.azure.com)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
-* [REST API](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
+* [Azure CLI](/cli/azure/install-azure-cli)
+* [REST API](/rest/api/storagerp/managementpolicies)
 
 原則可以完整讀取或寫入。 不支援部分更新。 
 
 > [!NOTE]
-> 如果您啟用儲存體帳戶的防火牆規則，可能會封鎖生命週期管理要求。 您可以提供受信任 Microsoft 服務的例外狀況，以解除封鎖這些要求。 如需詳細資訊，請參閱[設定防火牆和虛擬網路](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)中的＜例外狀況＞一節。
+> 如果您啟用儲存體帳戶的防火牆規則，可能會封鎖生命週期管理要求。 您可以提供受信任 Microsoft 服務的例外狀況，以解除封鎖這些要求。 如需詳細資訊，請參閱[設定防火牆和虛擬網路](../common/storage-network-security.md#exceptions)中的＜例外狀況＞一節。
 
 本文說明如何使用入口網站和 PowerShell 方法來管理原則。
 
@@ -70,11 +70,11 @@ ms.locfileid: "94579306"
 
 1. 在 Azure 入口網站中，搜尋並選取您的儲存體帳戶。 
 
-1. 在 [ **Blob 服務** ] 底下，選取 [ **生命週期管理** ] 以查看或變更您的規則。
+1. 在 [ **Blob 服務**] 底下，選取 [ **生命週期管理** ] 以查看或變更您的規則。
 
 1. 選取 [ **清單視圖** ] 索引標籤。
 
-1. 選取 [ **新增規則** ]，然後在 [ **詳細資料** ] 表單上命名您的規則。 您也可以設定 **規則範圍** 、 **Blob 類型** 和 **blob 子類型** 值。 下列範例會將範圍設定為篩選 blob。 這會導致加入 [ **篩選] 設定** 索引標籤。
+1. 選取 [ **新增規則** ]，然後在 [ **詳細資料** ] 表單上命名您的規則。 您也可以設定 **規則範圍**、 **Blob 類型** 和 **blob 子類型** 值。 下列範例會將範圍設定為篩選 blob。 這會導致加入 [ **篩選] 設定** 索引標籤。
 
    :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-details.png" alt-text="生命週期管理在 Azure 入口網站中新增規則詳細資料頁面":::
 
@@ -91,9 +91,9 @@ ms.locfileid: "94579306"
    > [!IMPORTANT]
    > 上次存取時間追蹤預覽僅供非生產環境使用。 生產環境的服務等級協定 (SLA) 目前無法使用。
    
-   若要使用 [ **上次存取** ] 選項，請在 Azure 入口網站的 [ **生命週期管理** ] 頁面上選取 [ **啟用存取追蹤** ]。 如需 **上次存取** 選項的詳細資訊，請參閱 [依據上次存取日期移動資料 (預覽)](#move-data-based-on-last-accessed-date-preview)。
+   若要使用 [**上次存取**] 選項，請在 Azure 入口網站的 [**生命週期管理**] 頁面上選取 [**啟用存取追蹤**]。 如需 **上次存取** 選項的詳細資訊，請參閱 [依據上次存取日期移動資料 (預覽)](#move-data-based-on-last-accessed-date-preview)。
 
-1. 如果您在 [ **詳細資料** ] 頁面上選取 [ **使用篩選準則限制 blob** ]，請選取 [ **篩選設定** ] 以新增選擇性篩選。 下列範例會篩選以 "log" 開頭的 *mylifecyclecontainer* 容器中的 blob。
+1. 如果您在 [**詳細資料**] 頁面上選取 [**使用篩選準則限制 blob** ]，請選取 [**篩選設定**] 以新增選擇性篩選。 下列範例會篩選以 "log" 開頭的 *mylifecyclecontainer* 容器中的 blob。
 
    :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-filter-set.png" alt-text="Azure 入口網站中的生命週期管理篩選器集合頁面":::
 
@@ -104,7 +104,7 @@ ms.locfileid: "94579306"
 
 1. 在 Azure 入口網站中，搜尋並選取您的儲存體帳戶。
 
-1. 在 [ **Blob 服務** ] 底下，選取 [ **生命週期管理** ] 以查看或變更您的原則。
+1. 在 [ **Blob 服務**] 底下，選取 [ **生命週期管理** ] 以查看或變更您的原則。
 
 1. 下列 JSON 是可貼到 [程式 **代碼** ] 索引標籤中的原則範例。
 
@@ -239,18 +239,18 @@ Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountN
 
 原則是規則的集合：
 
-| 參數名稱 | 參數類型 | 備註 |
+| 參數名稱 | 參數類型 | 注意 |
 |----------------|----------------|-------|
 | `rules`        | 規則物件的陣列 | 原則中至少需要一個規則。 您可以在原則中定義最多100個規則。|
 
 原則中的每個規則都有數個參數：
 
-| 參數名稱 | 參數類型 | 備註 | 必要 |
+| 參數名稱 | 參數類型 | 注意 | 必要 |
 |----------------|----------------|-------|----------|
-| `name`         | String |規則名稱最多可包含256個英數位元。 規則名稱會區分大小寫。 它在原則內必須是唯一的。 | 是 |
-| `enabled`      | 布林值 | 選擇性的布林值，允許暫時停用規則。 如果未設定，預設值為 true。 | 否 | 
-| `type`         | 列舉值 | 目前有效的型別為 `Lifecycle` 。 | 是 |
-| `definition`   | 定義生命週期規則的物件 | 每個定義是由篩選集和動作集組成。 | 是 |
+| `name`         | String |規則名稱最多可包含256個英數位元。 規則名稱會區分大小寫。 它在原則內必須是唯一的。 | True |
+| `enabled`      | Boolean | 選擇性的布林值，允許暫時停用規則。 如果未設定，預設值為 true。 | False | 
+| `type`         | 列舉值 | 目前有效的型別為 `Lifecycle` 。 | True |
+| `definition`   | 定義生命週期規則的物件 | 每個定義是由篩選集和動作集組成。 | True |
 
 ## <a name="rules"></a>規則
 
@@ -315,14 +315,14 @@ Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountN
 
 篩選器包括：
 
-| 篩選名稱 | 篩選類型 | 備註 | 必要 |
+| 篩選名稱 | 篩選類型 | 注意 | 必要 |
 |-------------|-------------|-------|-------------|
 | blobTypes   | 預先定義的列舉值陣列。 | 目前的版本支援 `blockBlob` 和 `appendBlob` 。 僅支援刪除 `appendBlob` ，不支援設定層。 | 是 |
 | prefixMatch | 要比對之前置詞的字串陣列。 每個規則最多可以定義10個前置詞。 前置詞字串必須以容器名稱開頭。 例如，如果您想要比對規則下的所有 blob `https://myaccount.blob.core.windows.net/container1/foo/...` ，則 prefixMatch 為 `container1/foo` 。 | 如果您未定義 prefixMatch，規則會套用至儲存體帳戶內的所有 blob。 | 否 |
 | blobIndexMatch | 字典值的陣列，其中包含要比對的 Blob 索引標記索引鍵和值條件。 每個規則最多可以定義10個 Blob 索引標記條件。 例如，如果您想要讓規則的所有 blob `Project = Contoso` 符合 `https://myaccount.blob.core.windows.net/` ，blobIndexMatch 為 `{"name": "Project","op": "==","value": "Contoso"}` 。 | 如果您未定義 blobIndexMatch，規則會套用至儲存體帳戶內的所有 blob。 | 否 |
 
 > [!NOTE]
-> Blob 索引處於公開預覽狀態，可在 **加拿大中部** 、 **加拿大東部** 、 **法國中部** 和 **法國南部** 區域中使用。 若要深入了解這項功能以及已知的問題和限制，請參閱[使用 Blob 索引 (預覽) 來管理和尋找 Azure Blob 儲存體上的資料](storage-manage-find-blobs.md)。
+> Blob 索引處於公開預覽狀態，可在 **加拿大中部**、 **加拿大東部**、 **法國中部** 和 **法國南部** 區域中使用。 若要深入了解這項功能以及已知的問題和限制，請參閱[使用 Blob 索引 (預覽) 來管理和尋找 Azure Blob 儲存體上的資料](storage-manage-find-blobs.md)。
 
 ### <a name="rule-actions"></a>規則動作
 
@@ -393,7 +393,7 @@ Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountN
 > [!IMPORTANT]
 > 上次存取時間追蹤預覽僅供非生產環境使用。 生產環境的服務等級協定 (SLA) 目前無法使用。
 
-若要使用 [ **上次存取** ] 選項，請在 Azure 入口網站的 [ **生命週期管理** ] 頁面上選取 [ **啟用存取追蹤** ]。
+若要使用 [**上次存取**] 選項，請在 Azure 入口網站的 [**生命週期管理**] 頁面上選取 [**啟用存取追蹤**]。
 
 #### <a name="how-last-access-time-tracking-works"></a>上次存取時間追蹤的運作方式
 
@@ -450,7 +450,7 @@ Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountN
 有些資料在雲端維持閒置狀態，而且儲存後就很少存取。 下列生命週期原則設定為在內嵌之後立即封存資料。 此範例會將容器內儲存體帳戶中的區塊 blob 轉換 `archivecontainer` 成封存層。 轉換的完成方式是在 blob 于上次修改時間後的0天採取行動：
 
 > [!NOTE] 
-> 建議您直接將封存層上傳至您的 blob，以提高效率。 您可以使用適用于 [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) 或 [PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list) 的 x-ms 存取層標頭搭配 REST 2018-11-09 版和更新版本或最新的 blob 儲存體用戶端程式庫。 
+> 建議您直接將封存層上傳至您的 blob，以提高效率。 您可以使用適用于 [PutBlob](/rest/api/storageservices/put-blob) 或 [PutBlockList](/rest/api/storageservices/put-block-list) 的 x-ms 存取層標頭搭配 REST 2018-11-09 版和更新版本或最新的 blob 儲存體用戶端程式庫。 
 
 ```json
 {
@@ -592,7 +592,7 @@ Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountN
 
 了解如何復原意外刪除的資料：
 
-- [Azure 儲存體 Blob 的虛刪除](../blobs/storage-blob-soft-delete.md)
+- [Azure 儲存體 Blob 的虛刪除](./soft-delete-blob-overview.md)
 
 瞭解如何使用 Blob 索引來管理和尋找資料：
 

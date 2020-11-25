@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/19/2020
-ms.openlocfilehash: a9636e7227671cd5a8ed31904e6bc27782d3bd6a
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.date: 11/22/2020
+ms.openlocfilehash: 9ca5ea5cdebe297af5081ae6e219935c56ba942e
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025828"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96004856"
 ---
 # <a name="monitor-data-flows"></a>監視資料流程
 
@@ -81,6 +81,16 @@ ms.locfileid: "93025828"
 
 當您在對應中選取 [接收轉換] 圖示時，右邊的滑入面板會在底部顯示稱為「後續處理時間」的其他資料點。 這是在您的資料載入、轉換和寫入 *之後* ，在 Spark 叢集上執行作業所花費的時間量。 這段時間可能包括關閉連接集區、驅動程式關閉、刪除檔案、聯合檔案等等。當您在流程中執行動作（例如「移動檔案」和「輸出至單一檔案」）時，您可能會看到 post 處理時間值增加。
   
+## <a name="error-rows"></a>錯誤資料列
+
+在您的資料流程接收中啟用錯誤資料列處理，將會反映在監視輸出中。 當您將接收設定為「回報發生錯誤時的成功」時，監視輸出將會顯示當您按一下 [接收監視] 節點時的成功和失敗的資料列數目。
+
+![螢幕擷取畫面顯示錯誤資料列。](media/data-flow/error-row-2.png "錯誤資料列監視成功")
+
+當您選取 [發生錯誤時回報失敗] 時，將只會在活動監控輸出文字中顯示相同的輸出。 這是因為「資料流程」活動會傳回執行失敗，而且詳細的監視視圖將無法使用。
+
+![螢幕擷取畫面：顯示活動中的錯誤資料列。](media/data-flow/error-rows-4.png "錯誤資料列監視失敗")
+
 ## <a name="monitor-icons"></a>監視器圖示
 
 此圖示表示已在叢集上快取轉換資料，所以時間和執行路徑已將該點納入考量：

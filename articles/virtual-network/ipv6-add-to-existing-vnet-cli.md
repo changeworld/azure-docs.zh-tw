@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 2f33369c013e2ff56b7fb745ddb0fc959793f12a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: de8d63fb5181e324738e082cbb36a40ee59e36b0
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016151"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "96005243"
 ---
 # <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli"></a>將 IPv6 新增至 Azure 虛擬網路中的 IPv4 應用程式-Azure CLI
 
 本文說明如何將 IPv6 位址新增至使用 Azure 虛擬網路中的 IPv4 公用 IP 位址的應用程式，以使用 Azure CLI 的 Standard Load Balancer。 就地升級包含虛擬網路和子網、具有 IPv4 + IPV6 前端設定的 Standard Load Balancer、具有 IPv4 + IPv6 設定的 Vm、網路安全性群組和公用 Ip 的。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 本文假設您已部署 Standard Load Balancer，如 [快速入門：建立 Standard Load Balancer Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md)中所述。
 
@@ -93,13 +93,13 @@ az network lb rule create \
 az network vnet update \
 --name myVnet  \
 --resource-group MyResourceGroupSLB \
---address-prefixes  "10.0.0.0/16"  "2001:db8:deca::/48"
+--address-prefixes  "10.0.0.0/16"  "fd00:db8:deca::/48"
 
 az network vnet subnet update \
 --vnet-name myVnet \
 --name mySubnet \
 --resource-group MyResourceGroupSLB \
---address-prefixes  "10.0.0.0/24"  "2001:db8:deca:deed::/64"  
+--address-prefixes  "10.0.0.0/24"  "fd00:db8:deca:deed::/64"  
 ```
 
 ## <a name="add-ipv6-configuration-to-nics"></a>將 IPv6 設定新增至 Nic

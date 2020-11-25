@@ -7,11 +7,11 @@ ms.date: 03/20/2020
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: b7730558e2a660b0cf00a5b6962d1e2275dd472c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984396"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004330"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>持續部署至 Azure App Service
 
@@ -66,19 +66,19 @@ ms.locfileid: "90984396"
    
 1. 在 [ **設定** ] 頁面上：
    
-   - 針對 GitHub，請下拉式清單並選取您想要持續部署的 **組織**、存放 **庫**與 **分支** 。
+   - 針對 GitHub，請下拉式清單並選取您想要持續部署的 **組織**、存放 **庫** 與 **分支** 。
      
      > [!NOTE]
-     > 如果您沒有看到任何存放庫，您可能需要授權 GitHub 中的 Azure App Service。 流覽至您的 GitHub 存放庫，並移至**設定**  >  **應用程式**  >  **授權的 OAuth 應用**程式。 選取 **Azure App Service**，然後選取 **[授**與]。 針對組織存放庫，您必須是組織的擁有者，才能授與權限。
+     > 如果您沒有看到任何存放庫，您可能需要授權 GitHub 中的 Azure App Service。 流覽至您的 GitHub 存放庫，並移至 **設定**  >  **應用程式**  >  **授權的 OAuth 應用** 程式。 選取 **Azure App Service**，然後選取 **[授** 與]。 針對組織存放庫，您必須是組織的擁有者，才能授與權限。
      
-   - 針對 Bitbucket，請選取您想要持續部署的 Bitbucket **小組**、 **儲存**機制和 **分支** 。
+   - 針對 Bitbucket，請選取您想要持續部署的 Bitbucket **小組**、 **儲存** 機制和 **分支** 。
      
-   - 針對 Azure Repos，請選取您想要持續部署的 **Azure DevOps 組織**、 **專案**、存放 **庫**和 **分支** 。
+   - 針對 Azure Repos，請選取您想要持續部署的 **Azure DevOps 組織**、 **專案**、存放 **庫** 和 **分支** 。
      
      > [!NOTE]
      > 如果未列出您的 Azure DevOps 組織，請確定其已連結到您的 Azure 訂用帳戶。 如需詳細資訊，請參閱 [設定 Azure DevOps Services 帳戶，使其可以部署至 web 應用程式](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops&preserve-view=true)。
      
-1. 選取 [繼續]。
+1. 選取 [繼續]  。
    
    ![填入存放庫資訊，然後選取 [繼續]。](media/app-service-continuous-deployment/configure-kudu.png)
    
@@ -92,7 +92,7 @@ ms.locfileid: "90984396"
 
 如果您的帳戶具有必要的許可權，您可以設定從 GitHub 或 Azure Repos 持續部署 Azure Pipelines。 如需透過 Azure Pipelines 部署的詳細資訊，請參閱 [將 web 應用程式部署到 Azure App 服務](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps)。
 
-#### <a name="prerequisites"></a>必要條件
+#### <a name="prerequisites"></a>Prerequisites
 
 針對 Azure App Service 使用 Azure Pipelines 來建立持續傳遞，您的 Azure DevOps 組織應該具有下列許可權： 
 
@@ -112,22 +112,22 @@ ms.locfileid: "90984396"
 
     :::image type="content" source="media/app-service-continuous-deployment/deployment-center-src-control.png" alt-text="App Service Deployment Center 頁面的螢幕擷取畫面。":::
    
-1. 在 [ **組建提供者** ] 頁面上，選取 [ **Azure Pipelines (Preview) **]，然後選取 [ **繼續**]。
+1. 在 [ **組建提供者** ] 頁面上，選取 [ **Azure Pipelines (Preview)**]，然後選取 [ **繼續**]。
 
-    :::image type="content" source="media/app-service-continuous-deployment/select-build-provider.png" alt-text="App Service Deployment Center 頁面的螢幕擷取畫面。":::
+    :::image type="content" source="media/app-service-continuous-deployment/select-build-provider.png" alt-text="螢幕擷取畫面，顯示已選取 Azure Pipelines (Preview) 的 [部署中心] 頁面。":::
    
-1. 在 [ **設定** ] 頁面的 [程式 **代碼** ] 區段中，選取您要持續部署的 **組織**、存放 **庫**和 **分支** ，然後選取 [ **繼續**]。
+1. 在 [ **設定** ] 頁面的 [程式 **代碼** ] 區段中，選取您要持續部署的 **組織**、存放 **庫** 和 **分支** ，然後選取 [ **繼續**]。
      
      > [!NOTE]
-     > 如果您沒有看到任何存放庫，您可能需要授權 GitHub 中的 Azure App Service。 流覽至您的 GitHub 存放庫，並移至**設定**  >  **應用程式**  >  **授權的 OAuth 應用**程式。 選取 **Azure App Service**，然後選取 **[授**與]。 針對組織存放庫，您必須是組織的擁有者，才能授與權限。
+     > 如果您沒有看到任何存放庫，您可能需要授權 GitHub 中的 Azure App Service。 流覽至您的 GitHub 存放庫，並移至 **設定**  >  **應用程式**  >  **授權的 OAuth 應用** 程式。 選取 **Azure App Service**，然後選取 **[授** 與]。 針對組織存放庫，您必須是組織的擁有者，才能授與權限。
        
     在 [ **組建** ] 區段中，指定 Azure Pipelines 應用來執行組建工作的 Azure DevOps 組織、專案、語言架構，然後選取 [ **繼續**]。
 
-   :::image type="content" source="media/app-service-continuous-deployment/build-configure.png" alt-text="App Service Deployment Center 頁面的螢幕擷取畫面。":::
+   :::image type="content" source="media/app-service-continuous-deployment/build-configure.png" alt-text="[組建] 區段的螢幕擷取畫面，其中包含欄位中的範例文字。":::
 
 1. 設定組建提供者之後，請檢查 [ **摘要** ] 頁面上的設定，然後選取 **[完成]**。
 
-   :::image type="content" source="media/app-service-continuous-deployment/summary.png" alt-text="App Service Deployment Center 頁面的螢幕擷取畫面。":::
+   :::image type="content" source="media/app-service-continuous-deployment/summary.png" alt-text="[部署中心] 頁面的螢幕擷取畫面，其中顯示已醒目提示 [重新整理] 按鈕的認可和部署。":::
    
 1. 選取的存放庫和分支中的新認可，現在會持續部署到您的 App Service。 您可以在 [部署中心] 頁面上追蹤認可和部署。
    
@@ -141,24 +141,24 @@ ms.locfileid: "90984396"
 
 1. 選取 [**部署中心**] 頁面上的 [ **Azure Repos** ] 作為原始檔控制提供者，然後選取 [**繼續**]。
 
-    :::image type="content" source="media/app-service-continuous-deployment/deployment-center-src-control.png" alt-text="App Service Deployment Center 頁面的螢幕擷取畫面。":::
+    :::image type="content" source="media/app-service-continuous-deployment/deployment-center-src-control.png" alt-text="[部署中心] 頁面的螢幕擷取畫面，其中顯示持續部署 (CI/CD) 選項。":::
 
-1. 在 [ **組建提供者** ] 頁面上，選取 [ **Azure Pipelines (Preview) **]，然後選取 [ **繼續**]。
+1. 在 [ **組建提供者** ] 頁面上，選取 [ **Azure Pipelines (Preview)**]，然後選取 [ **繼續**]。
 
-    :::image type="content" source="media/app-service-continuous-deployment/azure-pipelines.png" alt-text="App Service Deployment Center 頁面的螢幕擷取畫面。":::
+    :::image type="content" source="media/app-service-continuous-deployment/azure-pipelines.png" alt-text="顯示 Azure Pipelines (Preview) 的 [部署中心] 螢幕擷取畫面。":::
 
-1. 在 [ **設定** ] 頁面的 [程式 **代碼** ] 區段中，選取您要持續部署的 **組織**、存放 **庫**和 **分支** ，然後選取 [ **繼續**]。
+1. 在 [ **設定** ] 頁面的 [程式 **代碼** ] 區段中，選取您要持續部署的 **組織**、存放 **庫** 和 **分支** ，然後選取 [ **繼續**]。
 
    > [!NOTE]
    > 如果未列出您現有的 Azure DevOps 組織，您可能需要將它連結至您的 Azure 訂用帳戶。 如需詳細資訊，請參閱 [定義您的 CD 發行管線](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps#cd)。
 
    在 [ **組建** ] 區段中，指定 Azure Pipelines 應用來執行組建工作的 Azure DevOps 組織、專案、語言架構，然後選取 [ **繼續**]。
 
-   :::image type="content" source="media/app-service-continuous-deployment/build-configure.png" alt-text="App Service Deployment Center 頁面的螢幕擷取畫面。":::
+   :::image type="content" source="media/app-service-continuous-deployment/build-configure.png" alt-text="[組建] 區段的螢幕擷取畫面，其中顯示已填入範例的 Azure DevOps 組織和專案欄位。":::
 
 1. 設定組建提供者之後，請檢查 [ **摘要** ] 頁面上的設定，然後選取 **[完成]**。  
      
-   :::image type="content" source="media/app-service-continuous-deployment/summary-azure-pipelines.png" alt-text="App Service Deployment Center 頁面的螢幕擷取畫面。":::
+   :::image type="content" source="media/app-service-continuous-deployment/summary-azure-pipelines.png" alt-text="顯示 [摘要] 頁面上所選設定的螢幕擷取畫面。":::
 
 1. 選取的存放庫和分支中的新認可，現在會持續部署到您的 App Service。 您可以在 [部署中心] 頁面上追蹤認可和部署。
 

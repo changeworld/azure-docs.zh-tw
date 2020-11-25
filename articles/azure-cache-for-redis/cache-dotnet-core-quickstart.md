@@ -9,11 +9,11 @@ ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.openlocfilehash: 945d4a3d2bba84bf8f5973fd8dec092c66794c11
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077076"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004291"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-net-core"></a>快速入門：在 .NET Core 中使用 Azure Cache for Redis
 
@@ -49,7 +49,7 @@ dotnet new console -o Redistest
 
 在本節中，您會將[祕密管理員工具](/aspnet/core/security/app-secrets) \(機器翻譯\) 新增至您的專案。 祕密管理員工具能儲存專案樹狀結構外開發工作的敏感性資料。 此作法能協助避免於原始程式碼內意外共用應用程式祕密。
 
-開啟您的 *Redistest.csproj* 檔案。 新增 `DotNetCliToolReference` 元素以包含 *Microsoft.Extensions.SecretManager.Tools* 。 同時也新增 `UserSecretsId` 元素 (如下所示)，然後儲存檔案。
+開啟您的 *Redistest.csproj* 檔案。 新增 `DotNetCliToolReference` 元素以包含 *Microsoft.Extensions.SecretManager.Tools*。 同時也新增 `UserSecretsId` 元素 (如下所示)，然後儲存檔案。
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -82,7 +82,7 @@ dotnet restore
 dotnet user-secrets set CacheConnection "<cache name>.redis.cache.windows.net,abortConnect=false,ssl=true,password=<primary-access-key>"
 ```
 
-將下列 `using` 陳述式新增至 *Program.cs* ：
+將下列 `using` 陳述式新增至 *Program.cs*：
 
 ```csharp
 using Microsoft.Extensions.Configuration;
@@ -113,12 +113,12 @@ private static void InitializeConfiguration()
 dotnet add package StackExchange.Redis
 ```
 
-安裝完成後， *StackExchange.Redis* 快取用戶端即可與專案搭配使用。
+安裝完成後，*StackExchange.Redis* 快取用戶端即可與專案搭配使用。
 
 
 ## <a name="connect-to-the-cache"></a>連接到快取
 
-將下列 `using` 陳述式新增至 *Program.cs* ：
+將下列 `using` 陳述式新增至 *Program.cs*：
 
 ```csharp
 using StackExchange.Redis;
@@ -191,7 +191,7 @@ static void Main(string[] args)
 }
 ```
 
-儲存 *Program.cs* 。
+儲存 *Program.cs*。
 
 Azure Cache for Redis 具有可用來以邏輯方式區隔 Azure Cache for Redis 內資料的可設定資料庫數目 (預設值為 16 個)。 該程式碼會連線至預設資料庫 (DB 0)。 如需詳細資訊，請參閱 [Redis 資料庫是什麼？](cache-development-faq.md#what-are-redis-databases)和[預設 Redis 伺服器組態](cache-configure.md#default-redis-server-configuration)。
 
@@ -268,7 +268,7 @@ class Employee
     Console.WriteLine("\tEmployee.Age  : " + e007FromCache.Age + "\n");
 ```
 
-儲存 *Program.cs* ，並使用下列命令重建應用程式：
+儲存 *Program.cs*，並使用下列命令重建應用程式：
 
 ```
 dotnet build

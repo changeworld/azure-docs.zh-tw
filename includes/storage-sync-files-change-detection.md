@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.openlocfilehash: 1387933dc82c07e73b7715d6593238ea8c993e93
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95559671"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005301"
 ---
 不會立即偵測及複寫使用 Azure 入口網站或 SMB 對 Azure 檔案共用所做的變更，和伺服器端點的變更不一樣。 Azure 檔案還沒有變更通知或日誌功能，因此無法在檔案變更時自動啟動同步工作階段。 在 Windows Server 上，Azure 檔案同步會使用 [Windows USN 日誌](/windows/win32/fileio/change-journals)，在檔案變更時自動啟動同步工作階段。
 

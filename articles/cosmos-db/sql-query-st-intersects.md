@@ -5,20 +5,20 @@ author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 11/23/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8e440d9e1be8508908336a5e9f90394e310c8562
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 2fca6e94f61ff4d21886bf81a56afa032c8773c1
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93335170"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96004444"
 ---
 # <a name="st_intersects-azure-cosmos-db"></a>ST_INTERSECTS (Azure Cosmos DB) 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
- 傳回布林運算式，指出第一個引數交集中指定的 GeoJSON 物件 (Point、Polygon 或 LineString) 是否位在第二個引數中的 GeoJSON (Point、Polygon 或 LineString) 內。  
+ 傳回布林運算式，指出第一個引數中指定的 GeoJSON 物件 (Point、多邊形、MultiPolygon 或 LineString) 是否與第二個引數中的 GeoJSON (點、多邊形、MultiPolygon 或 LineString) 相交。  
   
 ## <a name="syntax"></a>語法
   

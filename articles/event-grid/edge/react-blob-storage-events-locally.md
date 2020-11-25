@@ -8,11 +8,11 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 230e158a970f8c815b1575403c013e30749124c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87462015"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005056"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>教學課程：在 IoT Edge (Preview 上回應 Blob 儲存體事件) 
 本文說明如何在 IoT 模組上部署 Azure Blob 儲存體，其可作為事件方格發行者，以將 Blob 的建立和刪除的事件傳送至事件方格。  
@@ -45,7 +45,7 @@ ms.locfileid: "87462015"
 
 ### <a name="configure-a-deployment-manifest"></a>設定部署資訊清單
 
-部署資訊清單為 JSON 文件，說明應部署的模組、資料如何在模組之間流動，以及想要的模組對應項需要的屬性。 此 Azure 入口網站有一個嚮導，可逐步引導您建立部署資訊清單，而不是手動建立 JSON 檔。  它有三個步驟：**新增模組**、**指定路由**和**檢閱部署**。
+部署資訊清單為 JSON 文件，說明應部署的模組、資料如何在模組之間流動，以及想要的模組對應項需要的屬性。 此 Azure 入口網站有一個嚮導，可逐步引導您建立部署資訊清單，而不是手動建立 JSON 檔。  它有三個步驟：**新增模組**、**指定路由** 和 **檢閱部署**。
 
 ### <a name="add-modules"></a>新增模組
 
@@ -75,7 +75,7 @@ ms.locfileid: "87462015"
         }
     ```    
 
- 1. 按一下 [儲存]
+ 1. 按一下 [儲存] 
  1. 繼續進行下一節，以新增 Azure Event Grid 訂閱者模組，然後將其部署在一起。
 
     >[!IMPORTANT]
@@ -95,7 +95,7 @@ ms.locfileid: "87462015"
    * **名稱**：訂閱者
    * **映射 URI**： `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
    * **容器建立選項**：無
-1. 按一下 [儲存]
+1. 按一下 [儲存] 
 1. 繼續進行下一節以新增 Azure Blob 儲存體模組
 
 ## <a name="deploy-azure-blob-storage-module"></a>部署 Azure Blob 儲存體模組
@@ -146,7 +146,7 @@ ms.locfileid: "87462015"
      - 針對 Linux 容器， **我的磁片區：/blobroot**
      - 針對 Windows 容器，**我的磁片區： C：/BlobRoot**
 
-5. 按一下 [儲存]
+5. 按一下 [儲存] 
 6. 按 **[下一步]** 繼續前往 [路由] 區段
 
     > [!NOTE]
@@ -159,7 +159,7 @@ ms.locfileid: "87462015"
 ### <a name="review-deployment"></a>檢閱部署
 
 1. [審核] 區段會顯示根據您在上一節中所做選擇所建立的 JSON 部署資訊清單。 確認您看到下列四個模組： **$edgeAgent**、 **$edgeHub**、 **eventgridmodule**、 **訂閱者** 和 **azureblobstorageoniotedge** 都已部署。
-2. 檢閱您的部署資訊，然後選取 [提交]****。
+2. 檢閱您的部署資訊，然後選取 [提交]。
 
 ## <a name="verify-your-deployment"></a>驗證您的部署
 
@@ -213,7 +213,7 @@ ms.locfileid: "87462015"
        ```
 
        >[!NOTE]
-       > **EndpointType**屬性會指定訂閱者為**Webhook**。  **EndpointUrl**會指定訂閱者接聽事件的 URL。 此 URL 會對應至您稍早部署的 Azure Function 範例。
+       > **EndpointType** 屬性會指定訂閱者為 **Webhook**。  **EndpointUrl** 會指定訂閱者接聽事件的 URL。 此 URL 會對應至您稍早部署的 Azure Function 範例。
 
     2. 執行下列命令來建立主題的訂用帳戶。 確認您看到 HTTP 狀態碼為 `200 OK` 。
 
@@ -337,19 +337,19 @@ ms.locfileid: "87462015"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | api | 字串 | 觸發事件的作業。 它可能是下列其中一個值： <ul><li>BlobCreated-允許的值為： `PutBlob` 和 `PutBlockList`</li><li>BlobDeleted-允許的值為 `DeleteBlob` 、 `DeleteAfterUpload` 和 `AutoDelete` 。 <p>`DeleteAfterUpload`當 blob 因為 deleteAfterUpload 所需屬性設定為 true 而自動刪除時，就會產生此事件。 </p><p>`AutoDelete` 當 blob 因為 deleteAfterMinutes 所需屬性值過期而自動刪除時，就會產生事件。</p></li></ul>|
 | clientRequestId | 字串 | 用戶端提供的儲存體 API 作業要求識別碼。 您可以使用此識別碼，在記錄檔中使用 "client-request-id" 欄位將 Azure 儲存體診斷記錄相互關聯，並可在用戶端要求中使用 "x------------------------- 如需詳細資訊，請參閱 [記錄檔格式](/rest/api/storageservices/storage-analytics-log-format)。 |
 | requestId | 字串 | 服務產生的儲存體 API 作業要求識別碼。 可用於利用記錄中的 "request-id-header" 欄位與 Azure 儲存體診斷記錄建立關聯，並從 'x-ms-request-id' 標頭中的 API 呼叫初始化傳回。 請參閱[記錄格式](/rest/api/storageservices/storage-analytics-log-format)。 |
 | etag | 字串 | 此值可讓您依條件執行作業。 |
 | ContentType | 字串 | 為 blob 指定內容類型。 |
-| contentLength | 整數 | Blob 大小 (以位元組為單位)。 |
+| contentLength | integer | Blob 大小 (以位元組為單位)。 |
 | blobType | 字串 | Blob 的類型。 有效值為 "BlockBlob" 或 "PageBlob"。 |
-| url | 字串 | blob 的路徑。 <br>如果用戶端使用 Blob REST API，則 url 會有下列結構： * \<storage-account-name\> . blob.core.windows.net/ \<container-name\> / \<file-name\> *。 <br>如果用戶端使用 Data Lake Storage REST API，則 url 會有下列結構： * \<storage-account-name\> . dfs.core.windows.net/ \<file-system-name\> / \<file-name\> *。 |
+| url | 字串 | blob 的路徑。 <br>如果用戶端使用 Blob REST API，則 url 會有下列結構： *\<storage-account-name\> . blob.core.windows.net/ \<container-name\> / \<file-name\>*。 <br>如果用戶端使用 Data Lake Storage REST API，則 url 會有下列結構： *\<storage-account-name\> . dfs.core.windows.net/ \<file-system-name\> / \<file-name\>*。 |
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請參閱下列 Blob 儲存體檔中的文章：
 

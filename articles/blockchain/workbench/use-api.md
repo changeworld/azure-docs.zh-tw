@@ -5,11 +5,11 @@ ms.date: 03/05/2020
 ms.topic: how-to
 ms.reviewer: brendal
 ms.openlocfilehash: 696f1f2f96034f7a044f6a39182774c02804518f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87003061"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004835"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>使用 Azure Blockchain Workbench Preview REST API
 
@@ -22,9 +22,9 @@ Blockchain Workbench Api 可透過部署的端點來存取。 若要取得部署
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在左側流覽窗格中，選取 [ **資源群組**]。
 1. 選擇您已部署 Blockchain Workbench 的資源組名。
-1. 選取 [類型]**** 資料行標題，依類型按字母順序來排序清單。
-1. 有兩項屬於 **App Service** 類型的資源。 *使用*"-api" 尾碼來選取**App Service**類型的資源。
-1. 在 App Service **總覽**中，將 **url** 值（代表 API 端點 url）複製到您部署的 Blockchain Workbench。
+1. 選取 [類型] 資料行標題，依類型按字母順序來排序清單。
+1. 有兩項屬於 **App Service** 類型的資源。 *使用*"-api" 尾碼來選取 **App Service** 類型的資源。
+1. 在 App Service **總覽** 中，將 **url** 值（代表 API 端點 url）複製到您部署的 Blockchain Workbench。
 
     ![App service API 端點 URL](media/use-api/app-service-api.png)
 
@@ -475,6 +475,6 @@ HTTP/1.1 200 OK
 Content-type: application/json
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需 Blockchain Workbench Api 的參考資訊，請參閱 [Azure Blockchain Workbench REST API 參考](/rest/api/azure-blockchain-workbench)。

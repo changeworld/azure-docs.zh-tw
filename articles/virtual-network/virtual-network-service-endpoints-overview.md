@@ -14,17 +14,17 @@ ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
 ms.openlocfilehash: 7d937542201792c0d1c0be69df9bd1c2b34edea3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89434464"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004937"
 ---
 # <a name="virtual-network-service-endpoints"></a>虛擬網路服務端點
 
 虛擬網路 (VNet) 服務端點可透過 Azure 骨幹網路上的優化路由，為 Azure 服務提供安全且直接的連線能力。 端點可讓您將重要的 Azure 服務資源只放到您的虛擬網路保護。 服務端點可讓 VNet 中的私人 IP 位址連接到 Azure 服務的端點，而不需要 VNet 上的公用 IP 位址。
 
-這項功能適用于下列 Azure 服務和區域。 *Microsoft. \* *資源是以括弧括住。 設定服務的服務端點時，請從子網啟用此資源：
+這項功能適用于下列 Azure 服務和區域。 *Microsoft. \** 資源是以括弧括住。 設定服務的服務端點時，請從子網啟用此資源：
 
 **正式推出**
 
@@ -77,7 +77,7 @@ ms.locfileid: "89434464"
 
   根據預設，無法從內部部署網路連線到虛擬網路保護的 Azure 服務資源。 如果需要允許來自內部部署的流量，您也必須允許內部部署或 ExpressRoute 中的公用 (通常是 NAT) IP 位址。 您可以透過 Azure 服務資源的 IP 防火牆設定來新增這些 IP 位址。
 
-  ExpressRoute：如果您使用 [expressroute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 進行公用對等互連，或從您的內部部署使用 Microsoft 對等互連，您必須識別您所使用的 NAT IP 位址。 針對公用對等互連，每個 ExpressRoute 線路預設都會使用兩個 NAT IP 位址，在流量進入 Microsoft Azure 網路骨幹時套用至 Azure 服務流量。 針對 Microsoft 對等互連，NAT IP 位址為客戶提供或由服務提供者提供。若要允許存取您的服務資源，就必須在資源 IP 防火牆設定中允許這些公用 IP 位址。若要尋找您的公用對等互連 ExpressRoute 線路 IP 位址，請透過 Azure 入口網站[開啟有 ExpressRoute 的支援票證](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 如需有關適用于 ExpressRoute 的 NAT 公用和 Microsoft 對等互連的詳細資訊，請參閱 [EXPRESSROUTE NAT 需求](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering)。
+  ExpressRoute：如果您使用 [expressroute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 進行公用對等互連，或從您的內部部署使用 Microsoft 對等互連，您必須識別您所使用的 NAT IP 位址。 針對公用對等互連，每個 ExpressRoute 線路預設都會使用兩個 NAT IP 位址，在流量進入 Microsoft Azure 網路骨幹時套用至 Azure 服務流量。 針對 Microsoft 對等互連，NAT IP 位址為客戶提供或由服務提供者提供。 若要允許存取您的服務資源，就必須在資源 IP 防火牆設定中允許這些公用 IP 位址。 若要尋找您的公用對等互連 ExpressRoute 線路 IP 位址，請透過 Azure 入口網站[開啟有 ExpressRoute 的支援票證](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 如需有關適用于 ExpressRoute 的 NAT 公用和 Microsoft 對等互連的詳細資訊，請參閱 [EXPRESSROUTE NAT 需求](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering)。
 
 ![將 Azure 服務放到虛擬網路保護](./media/virtual-network-service-endpoints-overview/VNet_Service_Endpoints_Overview.png)
 

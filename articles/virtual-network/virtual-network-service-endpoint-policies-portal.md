@@ -13,11 +13,11 @@ ms.workload: infrastructure
 ms.date: 02/21/2020
 ms.author: rdhillon
 ms.openlocfilehash: bdf0e87c92a55d0dbb5bbe34334a6de4580cb350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84708173"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004954"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>使用 Azure 入口網站建立、變更或刪除服務端點原則
 
@@ -39,12 +39,12 @@ ms.locfileid: "84708173"
 
 ## <a name="create-a-service-endpoint-policy"></a>建立服務端點原則
 
-1. 選取 Azure 入口網站左上角的 [+ 建立資源]****。
+1. 選取 Azure 入口網站左上角的 [+ 建立資源]  。
 2. 在 [搜尋] 窗格中，輸入「服務端點原則」，並選取 [ **服務端點** 原則]，然後選取 [ **建立**]。
 
 ![建立服務端點原則](./media/virtual-network-service-endpoint-policies-portal/create-sep-resource.png)
 
-3. 從 [基本]**** 中，輸入或選取以下資訊 
+3. 從 [基本] 中，輸入或選取以下資訊 
 
    - 訂用帳戶：選取您的訂用帳戶以進行原則
    - 資源群組：選取 [ **建立新** 的] 並輸入 *myResourceGroup*
@@ -55,7 +55,7 @@ ms.locfileid: "84708173"
 
 4. 在 [**資源**] 底下選取 [ **+ 新增**]，然後在 [**新增資源**] 窗格中輸入或選取下列資訊
 
-   - 服務：服務端點原則只可使用**Microsoft 儲存體**
+   - 服務：服務端點原則只可使用 **Microsoft 儲存體**
    - 範圍：選取其中一個 **帳戶**、 **訂用帳戶中的所有帳戶** ，以及 **資源群組中的所有帳戶**
    - 訂用帳戶：為儲存體帳戶選取訂用帳戶。 原則和儲存體帳戶可以位於不同的訂用帳戶中。
    - 資源群組：選取您的資源群組。 如果範圍設為「資源群組中的所有帳戶」或「單一帳戶」，則為必要項目。  
@@ -66,27 +66,27 @@ ms.locfileid: "84708173"
 
    - 視需要重複上述步驟來新增更多資源
 
-5. 選擇性：在 **標記**中輸入或選取下列資訊：
+5. 選擇性：在 **標記** 中輸入或選取下列資訊：
    
    - 索引鍵：為您的原則選取索引鍵。 例如：部門     
    - 值：為索引建輸入值組。 例如：財務
 
-6. 選取 [檢閱 + 建立]  。 驗證資訊，然後按一下 [建立]****。 若要進一步編輯，請按一下 [上一步]****。 
+6. 選取 [檢閱 + 建立]。 驗證資訊，然後按一下 [建立]。 若要進一步編輯，請按一下 [上一步]。 
 
    ![建立服務端點原則定義最終驗證](./media/virtual-network-service-endpoint-policies-portal/create-sep-review-create.png)
   
 ## <a name="view-endpoint-policies"></a>檢視端點原則 
 
-1. 在入口網站的 [所有服務]** 方塊中，開始輸入*服務端點原則*。 選取 [ **服務端點原則**]。
-2. 在 [訂用帳戶]**** 下，選取您的訂用帳戶與資源群組，如下圖所示
+1. 在入口網站的 [所有服務] 方塊中，開始輸入 *服務端點原則*。 選取 [ **服務端點原則**]。
+2. 在 [訂用帳戶] 下，選取您的訂用帳戶與資源群組，如下圖所示
 
    ![顯示原則](./media/virtual-network-service-endpoint-policies-portal/sep-view.png)
        
-3. 選取原則，然後按一下 [原則定義]****，以檢視或新增更多原則定義。
+3. 選取原則，然後按一下 [原則定義]，以檢視或新增更多原則定義。
 
    ![顯示原則定義](./media/virtual-network-service-endpoint-policies-portal/sep-policy-definition.png)
 
-4. 選取 [相關聯的子網路]**** 以檢視與原則相關聯的子網路。 如果尚未關聯任何子網，請遵循下一個步驟中的指示。
+4. 選取 [相關聯的子網路] 以檢視與原則相關聯的子網路。 如果尚未關聯任何子網，請遵循下一個步驟中的指示。
 
    ![相關聯的子網](./media/virtual-network-service-endpoint-policies-portal/sep-associated-subnets.png)
  
@@ -112,5 +112,5 @@ ms.locfileid: "84708173"
 >[!WARNING] 
 >存取所有區域中的 Azure 儲存體資源，將會受限於此子網的每個服務端點原則。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 在本教學課程中，您已建立服務端點原則，並將其與子網路產生關聯。 若要深入了解服務端點原則，請參閱[服務端點原則概觀](virtual-network-service-endpoint-policies-overview.md)。

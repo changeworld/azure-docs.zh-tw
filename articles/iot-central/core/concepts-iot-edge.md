@@ -11,11 +11,11 @@ ms.custom:
 - device-developer
 - iot-edge
 ms.openlocfilehash: 4c4248246be845aa8608aac8b8a3ce761ea1ef86
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987043"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004767"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>將 Azure IoT Edge 裝置連線至 Azure IoT Central 應用程式
 
@@ -75,6 +75,6 @@ IoT Central 模型 IoT Edge 裝置，如下所示：
 
 如果您選取 IoT Edge 裝置作為閘道裝置，則可以將下游關聯性新增至您要連線到閘道裝置的裝置型號。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如果您是裝置開發人員，建議的下一個步驟是瞭解 [IoT Central 中的閘道裝置類型](./tutorial-define-gateway-device-type.md)。

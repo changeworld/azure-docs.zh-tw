@@ -4,11 +4,11 @@ description: 了解當登錄存放庫發生推送或提取動作時，如何使�
 ms.topic: article
 ms.date: 05/24/2019
 ms.openlocfilehash: 1db1098da81e6cf9ecb262c99f705b77af2efd26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253389"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004478"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>使用 Azure Container Registry Webhook
 

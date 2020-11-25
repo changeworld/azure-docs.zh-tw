@@ -10,11 +10,11 @@ ms.date: 10/10/2019
 ms.subservice: tables
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 71b1f3cfa1df86b417c468d56f67cd7fe8d71d73
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316192"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004699"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>表格儲存體的效能和延展性檢查清單
 
@@ -275,8 +275,8 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 您應盡可能地使用資料表 **Upsert** 作業。 **Upsert** 有兩種類型，這兩種類型都會比傳統的 **Insert** 和 **Update** 作業還要有效率：  
 
-- **InsertOrMerge** ：當您想要上傳實體屬性的子集，但不確定此實體是否已存在時，請使用此作業。 如果實體已存在，則此呼叫會更新包含在 **Upsert** 作業的屬性，並將所有現有的屬性保留不變，如果實體不存在，則此呼叫會插入新的實體。 這類似於在查詢中使用投射，在此情況下，您只需要上傳正在變更的屬性。
-- **InsertOrReplace** ：當您想要上傳全新的實體，但不確定此實體是否已存在時，請使用此作業。 當您知道此全新上傳的實體完全正確時，請使用此作業，因為它會完全覆寫舊的實體。 例如，您想要更新儲存使用者目前位置的實體，而不管應用程式先前是否已儲存使用者的位置資料；新的位置實體已完成，而且您無需任何先前實體的任何資訊。
+- **InsertOrMerge**：當您想要上傳實體屬性的子集，但不確定此實體是否已存在時，請使用此作業。 如果實體已存在，則此呼叫會更新包含在 **Upsert** 作業的屬性，並將所有現有的屬性保留不變，如果實體不存在，則此呼叫會插入新的實體。 這類似於在查詢中使用投射，在此情況下，您只需要上傳正在變更的屬性。
+- **InsertOrReplace**：當您想要上傳全新的實體，但不確定此實體是否已存在時，請使用此作業。 當您知道此全新上傳的實體完全正確時，請使用此作業，因為它會完全覆寫舊的實體。 例如，您想要更新儲存使用者目前位置的實體，而不管應用程式先前是否已儲存使用者的位置資料；新的位置實體已完成，而且您無需任何先前實體的任何資訊。
 
 #### <a name="storing-data-series-in-a-single-entity"></a>在單一實體中儲存資料序列
 

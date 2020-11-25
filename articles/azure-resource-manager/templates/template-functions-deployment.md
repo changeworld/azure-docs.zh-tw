@@ -2,13 +2,13 @@
 title: 範本函式-部署
 description: 描述 Azure Resource Manager 範本中用來擷取部署資訊的函式。
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: e8240c05cba82d5563c4b327ecbc65a9c358720f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/18/2020
+ms.openlocfilehash: 9d6a1783bcd6d84c181edae84063ed7c0964c3d8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84677809"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96004563"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM 範本的部署功能
 
@@ -20,6 +20,8 @@ Resource Manager 提供下列函式來取得與目前部署 Azure Resource Manag
 * [變數](#variables)
 
 若要從資源、資源群組或訂用帳戶中取得值，請參閱 [資源函式](template-functions-resource.md)。
+
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 ## <a name="deployment"></a>部署
 
@@ -38,22 +40,21 @@ Resource Manager 提供下列函式來取得與目前部署 Azure Resource Manag
 
 ```json
 {
-    "name": "",
-    "properties": {
-        "template": {
-            "$schema": "",
-            "contentVersion": "",
-            "parameters": {},
-            "variables": {},
-            "resources": [
-            ],
-            "outputs": {}
-        },
-        "templateHash": "",
-        "parameters": {},
-        "mode": "",
-        "provisioningState": ""
-    }
+  "name": "",
+  "properties": {
+    "template": {
+      "$schema": "",
+      "contentVersion": "",
+      "parameters": {},
+      "variables": {},
+      "resources": [],
+      "outputs": {}
+    },
+    "templateHash": "",
+    "parameters": {},
+    "mode": "",
+    "provisioningState": ""
+  }
 }
 ```
 
@@ -61,24 +62,24 @@ Resource Manager 提供下列函式來取得與目前部署 Azure Resource Manag
 
 ```json
 {
-    "name": "",
-    "properties": {
-        "templateLink": {
-            "uri": ""
-        },
-        "template": {
-            "$schema": "",
-            "contentVersion": "",
-            "parameters": {},
-            "variables": {},
-            "resources": [],
-            "outputs": {}
-        },
-        "templateHash": "",
-        "parameters": {},
-        "mode": "",
-        "provisioningState": ""
-    }
+  "name": "",
+  "properties": {
+    "templateLink": {
+      "uri": ""
+    },
+    "template": {
+      "$schema": "",
+      "contentVersion": "",
+      "parameters": {},
+      "variables": {},
+      "resources": [],
+      "outputs": {}
+    },
+    "templateHash": "",
+    "parameters": {},
+    "mode": "",
+    "provisioningState": ""
+  }
 }
 ```
 
@@ -86,20 +87,20 @@ Resource Manager 提供下列函式來取得與目前部署 Azure Resource Manag
 
 ```json
 {
-    "name": "",
-    "location": "",
-    "properties": {
-        "template": {
-            "$schema": "",
-            "contentVersion": "",
-            "resources": [],
-            "outputs": {}
-        },
-        "templateHash": "",
-        "parameters": {},
-        "mode": "",
-        "provisioningState": ""
-    }
+  "name": "",
+  "location": "",
+  "properties": {
+    "template": {
+      "$schema": "",
+      "contentVersion": "",
+      "resources": [],
+      "outputs": {}
+    },
+    "templateHash": "",
+    "parameters": {},
+    "mode": "",
+    "provisioningState": ""
+  }
 }
 ```
 
@@ -107,11 +108,21 @@ Resource Manager 提供下列函式來取得與目前部署 Azure Resource Manag
 
 您可以上層範本的 URI 作為基礎，使用部署() 連結至另一個範本。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 "variables": {
-    "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
+  "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var sharedTemplateUrl = uri(deployment().prperties.templateLink.uri, 'shared-resources.json')
+```
+
+---
 
 如果您在入口網站中重新部署部署歷程記錄中的範本，此範本會部署為本機檔案。 `templateLink` 屬性不會在部署函式中傳回。 如果您的範本依賴 `templateLink` 來建構另一個範本的連結，請勿使用入口網站來重新部署。 請改用您原先用來部署範本的命令。
 
@@ -119,19 +130,29 @@ Resource Manager 提供下列函式來取得與目前部署 Azure Resource Manag
 
 下列[範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json)會傳回部署物件︰
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "deploymentOutput": {
-            "value": "[deployment()]",
-            "type" : "object"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "deploymentOutput": {
+      "type": "object",
+      "value": "[deployment()]"
     }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output deploymentOutput object = deployment()
+```
+
+---
 
 上述範例會傳回下列物件︰
 
@@ -206,19 +227,29 @@ Resource Manager 提供下列函式來取得與目前部署 Azure Resource Manag
 
 下列範例範本會傳回環境物件。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "environmentOutput": {
-            "value": "[environment()]",
-            "type" : "object"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "environmentOutput": {
+      "type": "object",
+      "value": "[environment()]"
     }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output environmentOutput object = environment()
+```
+
+---
 
 上述範例會在部署到全域 Azure 時傳回下列物件：
 
@@ -276,78 +307,122 @@ Resource Manager 提供下列函式來取得與目前部署 Azure Resource Manag
 
 一般而言，您可以使用參數來設定資源的值。 下列範例會將網站的名稱設定為部署期間所傳入的參數值。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 "parameters": {
   "siteName": {
-      "type": "string"
+    "type": "string"
   }
-},
-"resources": [
-   {
-      "apiVersion": "2016-08-01",
-      "name": "[parameters('siteName')]",
-      "type": "Microsoft.Web/Sites",
-      ...
-   }
+}, "resources": [
+  {
+    "type": "Microsoft.Web/Sites",
+    "apiVersion": "2016-08-01",
+    "name": "[parameters('siteName')]",
+    ...
+  }
 ]
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param siteName string
+
+resource mySite 'Microsoft.Web/Sites@2016-08-01' = {
+  name: siteName
+  ...
+}
+```
+
+---
 
 ### <a name="example"></a>範例
 
 下列[範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json)顯示 parameters 函式的簡化用法。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "stringParameter": {
-            "type" : "string",
-            "defaultValue": "option 1"
-        },
-        "intParameter": {
-            "type": "int",
-            "defaultValue": 1
-        },
-        "objectParameter": {
-            "type": "object",
-            "defaultValue": {"one": "a", "two": "b"}
-        },
-        "arrayParameter": {
-            "type": "array",
-            "defaultValue": [1, 2, 3]
-        },
-        "crossParameter": {
-            "type": "string",
-            "defaultValue": "[parameters('stringParameter')]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "stringParameter": {
+      "type": "string",
+      "defaultValue": "option 1"
     },
-    "variables": {},
-    "resources": [],
-    "outputs": {
-        "stringOutput": {
-            "value": "[parameters('stringParameter')]",
-            "type" : "string"
-        },
-        "intOutput": {
-            "value": "[parameters('intParameter')]",
-            "type" : "int"
-        },
-        "objectOutput": {
-            "value": "[parameters('objectParameter')]",
-            "type" : "object"
-        },
-        "arrayOutput": {
-            "value": "[parameters('arrayParameter')]",
-            "type" : "array"
-        },
-        "crossOutput": {
-            "value": "[parameters('crossParameter')]",
-            "type" : "string"
-        }
+    "intParameter": {
+      "type": "int",
+      "defaultValue": 1
+    },
+    "objectParameter": {
+      "type": "object",
+      "defaultValue": {
+        "one": "a",
+        "two": "b"
+      }
+    },
+    "arrayParameter": {
+      "type": "array",
+      "defaultValue": [ 1, 2, 3 ]
+    },
+    "crossParameter": {
+      "type": "string",
+      "defaultValue": "[parameters('stringParameter')]"
     }
+  },
+  "variables": {},
+  "resources": [],
+  "outputs": {
+    "stringOutput": {
+      "value": "[parameters('stringParameter')]",
+      "type": "string"
+    },
+    "intOutput": {
+      "value": "[parameters('intParameter')]",
+      "type": "int"
+    },
+    "objectOutput": {
+      "value": "[parameters('objectParameter')]",
+      "type": "object"
+    },
+    "arrayOutput": {
+      "value": "[parameters('arrayParameter')]",
+      "type": "array"
+    },
+    "crossOutput": {
+      "value": "[parameters('crossParameter')]",
+      "type": "string"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param stringParameter string = 'option 1'
+param intParameter int = 1
+param objectParameter object = {
+  'one': 'a'
+  'two': 'b'
+}
+param arrayParameter array = [
+  1
+  2
+  3
+]
+param crossParameter string = stringParameter
+
+output stringOutput string = stringParameter
+output intOutput int = intParameter
+output objectOutput object = objectParameter
+output arrayOutput array = arrayParameter
+output crossOutput string = crossParameter
+```
+
+---
 
 上述範例中具有預設值的輸出如下：
 
@@ -369,7 +444,7 @@ Resource Manager 提供下列函式來取得與目前部署 Azure Resource Manag
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | variableName |是 |String |要傳回的變數名稱。 |
 
@@ -381,65 +456,111 @@ Resource Manager 提供下列函式來取得與目前部署 Azure Resource Manag
 
 一般而言，您可以使用變數將範本簡化，方法是僅建構一次複雜的值。 下列範例會建構儲存體帳戶的唯一名稱。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 "variables": {
-    "storageName": "[concat('storage', uniqueString(resourceGroup().id))]"
+  "storageName": "[concat('storage', uniqueString(resourceGroup().id))]"
 },
 "resources": [
-    {
-        "type": "Microsoft.Storage/storageAccounts",
-        "name": "[variables('storageName')]",
-        ...
-    },
-    {
-        "type": "Microsoft.Compute/virtualMachines",
-        "dependsOn": [
-            "[variables('storageName')]"
-        ],
-        ...
-    }
+  {
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[variables('storageName')]",
+    ...
+  },
+  {
+    "type": "Microsoft.Compute/virtualMachines",
+    "dependsOn": [
+      "[variables('storageName')]"
+    ],
+    ...
+  }
 ],
+
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var storageName = concat('storage', uniqueString(resourceGroup().id))
+
+resource myStorage 'Microsoft.Storage/storageAccounts@2019-06-01' = {
+  name: storageName
+  ...
+}
+
+resource myVm 'Microsoft.Compute/virtualMachines@2020-06-01' = {
+  ...
+}
+```
+
+---
 
 ### <a name="example"></a>範例
 
 下列[範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json)會傳回不同的變數值。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {},
-    "variables": {
-        "var1": "myVariable",
-        "var2": [ 1,2,3,4 ],
-        "var3": "[ variables('var1') ]",
-        "var4": {
-            "property1": "value1",
-            "property2": "value2"
-          }
-    },
-    "resources": [],
-    "outputs": {
-        "exampleOutput1": {
-            "value": "[variables('var1')]",
-            "type" : "string"
-        },
-        "exampleOutput2": {
-            "value": "[variables('var2')]",
-            "type" : "array"
-        },
-        "exampleOutput3": {
-            "value": "[variables('var3')]",
-            "type" : "string"
-        },
-        "exampleOutput4": {
-            "value": "[variables('var4')]",
-            "type" : "object"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "variables": {
+    "var1": "myVariable",
+    "var2": [ 1, 2, 3, 4 ],
+    "var3": "[ variables('var1') ]",
+    "var4": {
+      "property1": "value1",
+      "property2": "value2"
     }
+  },
+  "resources": [],
+  "outputs": {
+    "exampleOutput1": {
+      "value": "[variables('var1')]",
+      "type": "string"
+    },
+    "exampleOutput2": {
+      "value": "[variables('var2')]",
+      "type": "array"
+    },
+    "exampleOutput3": {
+      "value": "[variables('var3')]",
+      "type": "string"
+    },
+    "exampleOutput4": {
+      "value": "[variables('var4')]",
+      "type": "object"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var var1 = 'myVariable'
+var var2 = [
+  1
+  2
+  3
+  4
+]
+var var3 = var1
+var var4 = {
+  'property1': 'value1'
+  'property2': 'value2'
+}
+
+output exampleOutput1 string = var1
+output exampleOutput2 array = var2
+output exampleOutput3 string = var3
+output exampleOutput4 object = var4
+```
+
+---
 
 上述範例中具有預設值的輸出如下：
 
@@ -452,6 +573,6 @@ Resource Manager 提供下列函式來取得與目前部署 Azure Resource Manag
 
 如需使用變數的詳細資訊，請參閱 [Azure Resource Manager 範本中的變數](template-variables.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 如需 Azure Resource Manager 範本中各區段的說明，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。

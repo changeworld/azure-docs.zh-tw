@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
 ms.openlocfilehash: 61617777efa8241c93b2b5ffe42fc1d914b6ebcf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531865"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004971"
 ---
 # <a name="virtual-network-peering"></a>虛擬網路對等互連
 
@@ -78,7 +78,7 @@ Azure 支援下列類型的對等互連：
 
 ## <a name="troubleshoot"></a>疑難排解
 
-若要確認虛擬網路已對等互連，您可以檢查有效路由。 檢查虛擬網路中任何子網的網路介面路由。 如果虛擬網路對等互連存在，則虛擬網路內的所有子網路都具有下一個躍點類型為「VNet 對等互連」** 的路由 (對每個對等互連的虛擬網路中的每個位址空間而言)。 如需詳細資訊，請參閱 [診斷虛擬機器路由問題](diagnose-network-routing-problem.md)。
+若要確認虛擬網路已對等互連，您可以檢查有效路由。 檢查虛擬網路中任何子網的網路介面路由。 如果虛擬網路對等互連存在，則虛擬網路內的所有子網路都具有下一個躍點類型為「VNet 對等互連」的路由 (對每個對等互連的虛擬網路中的每個位址空間而言)。 如需詳細資訊，請參閱 [診斷虛擬機器路由問題](diagnose-network-routing-problem.md)。
 
 您也可以使用 Azure 網路監看員，針對對等互連虛擬網路中的虛擬機器連線能力進行疑難排解。 連線能力檢查可讓您查看如何將流量從來源虛擬機器的網路介面路由傳送至目的地虛擬機器的網路介面。 如需詳細資訊，請參閱 [使用 Azure 入口網站使用 Azure 網路](../network-watcher/network-watcher-connectivity-portal.md#check-connectivity-to-a-virtual-machine)監看員進行連線疑難排解。
 
