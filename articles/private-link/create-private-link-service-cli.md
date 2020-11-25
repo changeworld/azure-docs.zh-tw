@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: e0b9ac3f16a170bb14925b555e8894cb10080488
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: cfffafaab2e2d4ef6b165ef03beb827342c94608
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026177"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96018047"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>使用 Azure CLI 建立 Private Link 服務
 本文說明如何使用 Azure CLI 在 Azure 中建立 Private Link 服務。
@@ -50,7 +50,7 @@ az network lb create --resource-group myResourceGroup --name myILB --sku standar
 
 ### <a name="create-a-load-balancer-health-probe"></a>建立負載平衡器健全狀況探查
 
-健全狀況探查會檢查所有虛擬機器執行個體，確認它們可以接收網路流量。 探查檢查失敗的虛擬機器執行個體會從負載平衡器上移除，直到其恢復正常運作且探查判斷其健全狀況良好為止。 使用 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) 建立健康狀態探查，以檢視虛擬機器的健康狀態。 
+健全狀況探查會檢查所有虛擬機器執行個體，確認它們可以接收網路流量。 探查檢查失敗的虛擬機器執行個體會從負載平衡器上移除，直到其恢復正常運作且探查判斷其健全狀況良好為止。 使用 [az network lb probe create](/cli/azure/network/lb/probe?view=azure-cli-latest) 建立健康狀態探查，以檢視虛擬機器的健康狀態。 
 
 ```azurecli-interactive
   az network lb probe create \
@@ -63,7 +63,7 @@ az network lb create --resource-group myResourceGroup --name myILB --sku standar
 
 ### <a name="create-a-load-balancer-rule"></a>建立負載平衡器規則
 
-負載平衡器規則可定義連入流量的前端 IP 組態及接收流量的後端 IP 集區，以及所需的來源和目的地連接埠。 使用 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) 建立負載平衡器規則 myHTTPRule，用來接聽前端集區 myFrontEnd 中的連接埠 80，以及用來將負載平衡的網路流量傳送到後端位址集區 myBackEndPool (也是使用連接埠 80)。 
+負載平衡器規則可定義連入流量的前端 IP 組態及接收流量的後端 IP 集區，以及所需的來源和目的地連接埠。 使用 [az network lb rule create](/cli/azure/network/lb/rule?view=azure-cli-latest) 建立負載平衡器規則 myHTTPRule，用來接聽前端集區 myFrontEnd 中的連接埠 80，以及用來將負載平衡的網路流量傳送到後端位址集區 myBackEndPool (也是使用連接埠 80)。 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -79,7 +79,7 @@ az network lb create --resource-group myResourceGroup --name myILB --sku standar
 ```
 ### <a name="create-backend-servers"></a>建立後端伺服器
 
-在此範例中，我們不會涵蓋虛擬機器的建立。 您可以遵循快速入門中的步驟 [：使用 Azure CLI 建立內部負載平衡器來平衡 vm 的負載](/azure/load-balancer/quickstart-load-balancer-standard-internal-cli) ，以建立兩個虛擬機器，作為負載平衡器的後端伺服器使用。 
+在此範例中，我們不會涵蓋虛擬機器的建立。 您可以遵循快速入門中的步驟 [：使用 Azure CLI 建立內部負載平衡器來平衡 vm 的負載](../load-balancer/quickstart-load-balancer-standard-internal-cli.md) ，以建立兩個虛擬機器，作為負載平衡器的後端伺服器使用。 
 
 
 ### <a name="disable-private-link-service-network-policies-on-subnet"></a>在子網上停用 Private Link 服務網路原則 
@@ -161,6 +161,5 @@ az network private-endpoint create \
 ```azurecli-interactive 
 az network private-link-service show --resource-group myResourceGroup --name myPLS 
 ```
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 深入瞭解 [Azure Private Link 服務](private-link-service-overview.md)
- 

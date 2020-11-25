@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
 ms.openlocfilehash: aa2f00a732a3978524fc017481285859c9535387
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779164"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018676"
 ---
 # <a name="understanding-azure-cdn-billing"></a>了解 Azure CDN 計費
 
@@ -48,7 +48,7 @@ Azure CDN 計費區域的判定，取決於將內容傳遞給終端使用者的�
 例如，假設位在墨西哥的使用者發出要求，然而因對等互連或流量等情況，該要求由位在美國 POP 的伺服器提供服務，則計費區域將會是美國。
 
 ## <a name="what-is-a-billable-azure-cdn-transaction"></a>什麼是可計費的 Azure CDN 交易？
-所有在 CDN 終止的 HTTP(S) 要求都算是可計費事件，包括所有回應類型：成功、失敗或其他。 然而，不同的回應可能會產生不同的流量。 例如，「304 未修改」  和其他只含標頭的回應只會產生少量流量，因為它們是小型的標頭回應。同樣地，錯誤回應 (如「404 找不到」  ) 雖然可計費，不過因為回應承載很小，只會產生少量費用。
+所有在 CDN 終止的 HTTP(S) 要求都算是可計費事件，包括所有回應類型：成功、失敗或其他。 然而，不同的回應可能會產生不同的流量。 例如，「304 未修改」和其他只含標頭的回應只會產生少量流量，因為它們是小型的標頭回應。同樣地，錯誤回應 (如「404 找不到」) 雖然可計費，不過因為回應承載很小，只會產生少量費用。
 
 ## <a name="what-other-azure-costs-are-associated-with-azure-cdn-use"></a>使用 Azure CDN 會產生其他哪些相關聯的 Azure 成本？
 使用 Azure CDN 時，用來當做物件來源的服務也會產生一些使用量費用。 這些成本通常只佔整體 CDN 使用量成本的一小部分。
@@ -66,7 +66,7 @@ Azure CDN 計費區域的判定，取決於將內容傳遞給終端使用者的�
 
 如需 Azure 儲存體計費的詳細資訊，請參閱[了解 Azure 儲存體計費 - 頻寬、交易和容量](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/)。
 
-如果您使用 *託管服務傳遞* ，可能會產生以下費用：
+如果您使用 *託管服務傳遞*，可能會產生以下費用：
 
 - Azure 計算時間：當做來源的計算執行個體。
 

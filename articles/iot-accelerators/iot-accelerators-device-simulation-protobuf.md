@@ -10,11 +10,11 @@ ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: 12aa18c966745b450b3c9aa55e87e576b0c3f99b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075955"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018523"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>使用 Protocol Buffers 將遙測資料序列化
 
@@ -32,7 +32,7 @@ Protocol Buffers (Protobuf) 是結構化資料的二進位序列化格式。 Pr
 1. 產生 Protobuf 類別
 1. 本機測試
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要遵循本操作指南中的步驟，您需要：
 
@@ -61,26 +61,26 @@ Protocol Buffers (Protobuf) 是結構化資料的二進位序列化格式。 Pr
 
 ### <a name="run-the-storage-adapter-microservice"></a>執行儲存體配接器微服務
 
-在 Visual Studio Code 中，開啟 **remote-monitoring-services-dotnet-master\storage-adapter** 資料夾。 按一下任何 [還原]**** 按鈕，以修正無法解決的相依性。
+在 Visual Studio Code 中，開啟 **remote-monitoring-services-dotnet-master\storage-adapter** 資料夾。 按一下任何 [還原] 按鈕，以修正無法解決的相依性。
 
-開啟檔案的 **vscode/launch.js** ，並將您的 Cosmos DB 連接字串指派給 ** \_ >storageadapter \_ DOCUMENTDB \_ CONNSTRING** 環境變數的電腦。
+開啟檔案的 **vscode/launch.js** ，並將您的 Cosmos DB 連接字串指派給 **\_ >storageadapter \_ DOCUMENTDB \_ CONNSTRING** 環境變數的電腦。
 
 > [!NOTE]
 > 當您在本機電腦上執行微服務時，仍需要 Azure 中的 Cosmos DB 執行個體才能正常運作。
 
-若要在本機執行儲存體配接器微服務，請按一下 [偵錯] \> [開始偵錯]****。
+若要在本機執行儲存體配接器微服務，請按一下 [偵錯] \> [開始偵錯]。
 
-Visual Studio Code 中的 [終端機]**** 視窗會顯示執行中微服務的輸出，包括 Web 服務健康情況檢查的 URL：<http://127.0.0.1:9022/v1/status>。 當您瀏覽至此位址時，狀態應該是「正確: 運作良好」。
+Visual Studio Code 中的 [終端機] 視窗會顯示執行中微服務的輸出，包括 Web 服務健康情況檢查的 URL：<http://127.0.0.1:9022/v1/status>。 當您瀏覽至此位址時，狀態應該是「正確: 運作良好」。
 
 完成下列步驟後，請讓儲存體配接器微服務繼續在 Visual Studio Code 的這個執行個體中執行。
 
 ## <a name="define-your-device-model"></a>定義裝置型號
 
-在 Visual Studio Code 的新執行個體中，開啟您從 GitHub 下載的 **device-simulation-dotnet-master** 資料夾。 按一下任何 [還原]**** 按鈕，以修正任何無法解決的相依性。
+在 Visual Studio Code 的新執行個體中，開啟您從 GitHub 下載的 **device-simulation-dotnet-master** 資料夾。 按一下任何 [還原] 按鈕，以修正任何無法解決的相依性。
 
 在此操作指南中，您可以為資產追蹤器建立新的裝置型號：
 
-1. 在 **Services\data\devicemodels**資料夾中，建立稱為**assettracker 01.json** 的新裝置型號檔案。
+1. 在 **Services\data\devicemodels** 資料夾中，建立稱為 **assettracker 01.json** 的新裝置型號檔案。
 
 1. 定義裝置型號 **assettracker 01.json** 檔案中的裝置功能。 Protobuf 裝置型號的遙測區段必須：
 
@@ -149,7 +149,7 @@ Visual Studio Code 中的 [終端機]**** 視窗會顯示執行中微服務的�
 * 每個資料結構要序列化的訊息。
 * 訊息中每個欄位的名稱與類型。
 
-1. 在 **Services\Models\Protobuf\proto**資料夾中，建立稱為 **assettracker.proto** 的新檔案。
+1. 在 **Services\Models\Protobuf\proto** 資料夾中，建立稱為 **assettracker.proto** 的新檔案。
 
 1. 在 **proto** 檔案中，定義語法、命名空間以及訊息結構描述，如下所示：
 
@@ -174,7 +174,7 @@ Visual Studio Code 中的 [終端機]**** 視窗會顯示執行中微服務的�
 
 1. [從 GitHub 下載 Protobuf 編譯器](https://github.com/protocolbuffers/protobuf/releases/download/v3.4.0/protoc-3.4.0-win32.zip)
 
-1. 執行編譯器，指定來源目錄、目的地目錄，以及 **proto** 檔案的名稱。 例如︰
+1. 執行編譯器，指定來源目錄、目的地目錄，以及 **proto** 檔案的名稱。 例如：
 
     ```cmd
     protoc -I c:\temp\device-simulation-dotnet-master\Services\Models\Protobuf\proto --csharp_out=C:\temp\device-simulation-dotnet-master\Services\Models\Protobuf assettracker.proto
@@ -206,7 +206,7 @@ Visual Studio Code 中的 [終端機]**** 視窗會顯示執行中微服務的�
 
 根據預設，您的新裝置模型 JSON 和 JS 檔案不會複製到建立的方案中。 您需要明確地包含在內。
 
-針對您要包含的每個檔案在 **services\services.csproj** 檔案中新增一個項目。 例如︰
+針對您要包含的每個檔案在 **services\services.csproj** 檔案中新增一個項目。 例如：
 
 ```xml
 <None Update="data\devicemodels\assettracker-01.json">
@@ -217,9 +217,9 @@ Visual Studio Code 中的 [終端機]**** 視窗會顯示執行中微服務的�
 </None>
 ```
 
-若要在本機執行微服務，請按一下 [偵錯] \> [開始偵錯]****。
+若要在本機執行微服務，請按一下 [偵錯] \> [開始偵錯]。
 
-Visual Studio Code 中的 [終端機]**** 視窗會顯示執行中微服務的輸出。
+Visual Studio Code 中的 [終端機] 視窗會顯示執行中微服務的輸出。
 
 在完成後續步驟時，請讓裝置模擬微服務繼續在 Visual Studio Code 的這個執行個體中執行。
 
@@ -247,27 +247,27 @@ az iot hub monitor-events --hub-name device-simulation-test
 
 1. 在本機電腦上開啟 Postman。
 
-1. 按一下 [檔案] \> [匯入]****。 然後按一下 [選擇檔案]****。
+1. 按一下 [檔案] \> [匯入]。 然後按一下 [選擇檔案]。
 
-1. 選取 [Azure IoT Device Simulation solution accelerator.postman\_collection]**** 和 [Azure IoT Device Simulation solution accelerator.postman\_environment]****，然後按一下 [開啟]****。
+1. 選取 [Azure IoT Device Simulation solution accelerator.postman\_collection] 和 [Azure IoT Device Simulation solution accelerator.postman\_environment]，然後按一下 [開啟]。
 
 1. 將 **Azure IoT Device Simulation solution accelerator** 展開以檢視您可以傳送的要求。
 
-1. 按一下 [無環境]****，然後選取 [Azure IoT Device Simulation solution accelerator]****。
+1. 按一下 [無環境]，然後選取 [Azure IoT Device Simulation solution accelerator]。
 
 現在，您已在 Postman 工作區中載入集合和環境，以供用來與裝置模擬微服務互動。
 
 若要設定和執行模擬：
 
-1. 在 Postman 集合中，選取 [建立資產追蹤器模擬]****，然後按一下 [傳送]****。 此要求會針對模擬的資產追蹤器裝置類型建立四個執行個體。
+1. 在 Postman 集合中，選取 [建立資產追蹤器模擬]，然後按一下 [傳送]。 此要求會針對模擬的資產追蹤器裝置類型建立四個執行個體。
 
 1. Azure CLI 視窗中的事件監視器輸出會顯示模擬裝置的遙測資料。
 
-若要停止模擬，請在 Postman 中選取 [停止模擬]**** 要求，然後按一下 [傳送]****。
+若要停止模擬，請在 Postman 中選取 [停止模擬] 要求，然後按一下 [傳送]。
 
 ### <a name="clean-up-resources"></a>清除資源
 
-您可以停止兩個在其 Visual Studio Code 執行個體中本機執行的微服務 ([偵錯] \> [停止偵錯]****)。
+您可以停止兩個在其 Visual Studio Code 執行個體中本機執行的微服務 ([偵錯] \> [停止偵錯])。
 
 如果您不再需要 IoT 中樞和 Cosmos DB 執行個體，請從 Azure 訂用帳戶中加以刪除，以避免產生任何不必要的費用。
 

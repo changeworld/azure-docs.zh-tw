@@ -6,11 +6,11 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: ffbaa2e40d5924ba61e548398e63295cf7dba2b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91303721"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019730"
 ---
 # <a name="label-machine-learning-entity-in-an-example-utterance"></a>在範例語句中標示機器學習實體
 
@@ -37,9 +37,9 @@ ms.locfileid: "91303721"
 
 ## <a name="label-with-the-entity-palette-visible"></a>顯示實體調色板的標籤
 
-在您 [使用實體規劃您的架構](luis-how-plan-your-app.md)之後，請在標記時讓 **實體調色板** 保持可見。 **實體**選擇區會提醒您計畫要解壓縮哪些實體。
+在您 [使用實體規劃您的架構](luis-how-plan-your-app.md)之後，請在標記時讓 **實體調色板** 保持可見。 **實體** 選擇區會提醒您計畫要解壓縮哪些實體。
 
-若要存取 **實體**選擇區，請 **@** 在範例語句清單上方的內容工具列中選取符號。
+若要存取 **實體** 選擇區，請 **@** 在範例語句清單上方的內容工具列中選取符號。
 
 > [!div class="mx-imgBorder"]
 > ![意圖詳細資料頁面上實體選擇區的螢幕擷取畫面。](media/label-utterances/entity-palette-from-tool-bar.png)
@@ -52,7 +52,7 @@ ms.locfileid: "91303721"
 
 2. 從您要加上標籤的調色板中選取實體。 此動作會以視覺化方式顯示新的資料指標。 當您在 LUIS 入口網站中移動時，游標會在滑鼠之後。
 
-3. 在範例語句中，使用資料指標_繪製_實體。
+3. 在範例語句中，使用資料指標 _繪製_ 實體。
 
     > [!div class="mx-imgBorder"]
     > ![螢幕擷取畫面顯示以游標繪製的實體。](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
@@ -66,9 +66,9 @@ ms.locfileid: "91303721"
 
 ## <a name="labeling-entity-roles"></a>標記實體角色
 
-實體角色會使用 **實體**選擇區來標記。
+實體角色會使用 **實體** 選擇區來標記。
 
-1. 在 [意圖詳細資料] 頁面中，從操作工具列中選取 [實體選擇區]****。
+1. 在 [意圖詳細資料] 頁面中，從操作工具列中選取 [實體選擇區]。
 1. 開啟實體選擇區之後，請從實體清單中選取實體。
 1. 在實體清單下方，選取現有的角色。
 1. 在範例語句文字中，以實體角色標記文字。

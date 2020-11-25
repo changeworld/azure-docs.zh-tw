@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84195987"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019679"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>利用資料管理閘道在內部部署來源和雲端之間移動資料
 > [!NOTE]
@@ -46,17 +46,17 @@ ms.locfileid: "84195987"
 開始進行本逐步解說之前，您必須具備下列必要條件：
 
 * **Azure 訂用帳戶**。  如果您沒有訂用帳戶，則只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [免費試用](https://azure.microsoft.com/pricing/free-trial/) 一文。
-* **Azure 儲存體帳戶**。 在本教學課程中，您會使用 Blob 儲存體作為**目的地/接收**資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱 [建立儲存體帳戶](../../storage/common/storage-account-create.md) 一文，以取得建立帳戶的步驟。
+* **Azure 儲存體帳戶**。 在本教學課程中，您會使用 Blob 儲存體作為 **目的地/接收** 資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱 [建立儲存體帳戶](../../storage/common/storage-account-create.md) 一文，以取得建立帳戶的步驟。
 * **SQL Server**。 在本教學課程中，您會使用 SQL Server 資料庫作為 **源** 資料存放區。
 
 ## <a name="create-data-factory"></a>建立資料處理站
-在此步驟中，您將使用 Azure 入口網站來建立名為 **ADFTutorialOnPremDF**的 Azure Data Factory 執行個體。
+在此步驟中，您將使用 Azure 入口網站來建立名為 **ADFTutorialOnPremDF** 的 Azure Data Factory 執行個體。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 依序按一下 [建立資源]****、[智慧 + 分析]**** 及 [Data Factory]****。
+2. 依序按一下 [建立資源]、[智慧 + 分析] 及 [Data Factory]。
 
    ![新增->DataFactory](./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png)  
-3. 在 [新增 Data Factory]**** 頁面中，輸入 **ADFTutorialOnPremDF** 作為 [名稱]。
+3. 在 [新增 Data Factory] 頁面中，輸入 **ADFTutorialOnPremDF** 作為 [名稱]。
 
     ![新增至儀表板](./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png)
 
@@ -66,47 +66,47 @@ ms.locfileid: "84195987"
    > Data factory 的名稱未來可能會註冊為 **DNS** 名稱，因此會公開顯示。
    >
    >
-4. 選取您想要建立 Data Factory 的 [Azure 訂用帳戶] **** 。
+4. 選取您想要建立 Data Factory 的 [Azure 訂用帳戶]  。
 5. 請選取現有的 **資源群組** ，或建立資源群組。 在教學課程中，建立名稱如下的資源群組：**ADFTutorialResourceGroup**。
-6. 按一下 [新增 Data Factory]**** 頁面上的 [建立]****。
+6. 按一下 [新增 Data Factory] 頁面上的 [建立]。
 
    > [!IMPORTANT]
    > 若要建立 Data Factory 執行個體，您必須是訂用帳戶/資源群組層級的 [Data Factory 參與者](../../role-based-access-control/built-in-roles.md#data-factory-contributor) 角色成員。
    >
    >
-7. 建立完成之後，您會看到 [Data Factory]**** 頁面，如下圖所示：
+7. 建立完成之後，您會看到 [Data Factory] 頁面，如下圖所示：
 
    ![Data Factory 首頁](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDataFactoryHomePage.png)
 
 ## <a name="create-gateway"></a>建立閘道
-1. 在 [Data Factory]**** 頁面中，按一下 [製作和部署]**** 圖格來啟動 Data Factory 的 [編輯器]****。
+1. 在 [Data Factory] 頁面中，按一下 [製作和部署] 圖格來啟動 Data Factory 的 [編輯器]。
 
     ![[製作和部署] 磚](./media/data-factory-move-data-between-onprem-and-cloud/author-deploy-tile.png)
-2. 在 [Data Factory 編輯器] 中，按一下工具列的 [... 更多]****，選取 [新增資料閘道]****。 或者，您也可以在樹狀檢視中，以滑鼠右鍵按一下 [資料閘道]****，再按一下 [新增資料閘道]****。
+2. 在 [Data Factory 編輯器] 中，按一下工具列的 [... 更多]，選取 [新增資料閘道]。 或者，您也可以在樹狀檢視中，以滑鼠右鍵按一下 [資料閘道]，再按一下 [新增資料閘道]。
 
    ![工具列上的 [新增資料閘道]](./media/data-factory-move-data-between-onprem-and-cloud/NewDataGateway.png)
-3. 在 [建立]**** 頁面上，輸入 **adftutorialgateway** 作為 [名稱]****，然後按一下 [確定]****。     
+3. 在 [建立] 頁面上，輸入 **adftutorialgateway** 作為 [名稱]，然後按一下 [確定]。     
 
     ![[建立閘道] 頁面](./media/data-factory-move-data-between-onprem-and-cloud/OnPremCreateGatewayBlade.png)
 
     > [!NOTE]
     > 在本逐步解說中，您會建立只具有一個節點的邏輯閘道 (內部部署 Windows 機器)。 您可以將多個內部部署機器關聯到閘道以相應放大資料管理閘道。 您可以增加可在節點上同時執行的資料移動作業數目來進行相應增加。 這項功能也適用於具有單一節點的邏輯閘道。 如需得詳細資料，請參閱[在 Azure Data Factory 中調整資料管理閘道](data-factory-data-management-gateway-high-availability-scalability.md)一文。  
-4. 在 [設定]**** 頁面中，按一下 [直接安裝在此電腦上]****。 此動作會下載閘道的安裝套件、在電腦上安裝、設定和註冊閘道。  
+4. 在 [設定] 頁面中，按一下 [直接安裝在此電腦上]。 此動作會下載閘道的安裝套件、在電腦上安裝、設定和註冊閘道。  
 
    > [!NOTE]
    > 使用 Internet Explorer 或 Microsoft ClickOnce 相容的 Web 瀏覽器。
    >
    > 如果您使用的是 Chrome，請移至 [chrome web 存放區](https://chrome.google.com/webstore/)，使用 "ClickOnce" 關鍵字進行搜尋，選擇其中一個 ClickOnce 延伸模組，然後加以安裝。
    >
-   > 針對 Firefox 進行相同的操作 (安裝附加元件)。 按一下工具列上的 [ **開啟功能表** ] 按鈕 (右上角的 **三條水平線**) 、按一下 [ **附加**元件]、使用 "ClickOnce" 關鍵字搜尋、選擇其中一個 ClickOnce 延伸模組，然後加以安裝。    
+   > 針對 Firefox 進行相同的操作 (安裝附加元件)。 按一下工具列上的 [ **開啟功能表** ] 按鈕 (右上角的 **三條水平線**) 、按一下 [ **附加** 元件]、使用 "ClickOnce" 關鍵字搜尋、選擇其中一個 ClickOnce 延伸模組，然後加以安裝。    
    >
    >
 
     ![閘道 - [設定] 頁面](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
-    這是最簡單的方式 (一鍵)，透過單一步驟即可下載、安裝、設定和註冊閘道。 您可以看到 **Microsoft 資料管理閘道組態管理員**應用程式已安裝在電腦上。 您也可以在下列資料夾中找到可執行檔 **ConfigManager.exe** **C:\Program Files\Microsoft 資料管理 Gateway\2.0\Shared**。
+    這是最簡單的方式 (一鍵)，透過單一步驟即可下載、安裝、設定和註冊閘道。 您可以看到 **Microsoft 資料管理閘道組態管理員** 應用程式已安裝在電腦上。 您也可以在下列資料夾中找到可執行檔 **ConfigManager.exe** **C:\Program Files\Microsoft 資料管理 Gateway\2.0\Shared**。
 
-    您也可以使用此頁面中的連結手動下載與安裝閘道器，並使用 [新金鑰] **** 文字方塊中顯示的金鑰來加以註冊。
+    您也可以使用此頁面中的連結手動下載與安裝閘道器，並使用 [新金鑰]  文字方塊中顯示的金鑰來加以註冊。
 
     如需閘道的所有詳細資料，請參閱 [資料管理閘道](data-factory-data-management-gateway.md) 一文。
 
@@ -117,70 +117,70 @@ ms.locfileid: "84195987"
 5. 等候幾分鐘，或等候直到您看見下列通知訊息︰
 
     ![閘道安裝成功](./media/data-factory-move-data-between-onprem-and-cloud/gateway-install-success.png)
-6. 在電腦上啟動**資料管理閘道組態管理員**應用程式。 在 [搜尋]**** 視窗中，輸入**資料管理閘道**以存取這個公用程式。 您也可以在 **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared** 資料夾中找到執行檔 **ConfigManager.exe**
+6. 在電腦上啟動 **資料管理閘道組態管理員** 應用程式。 在 [搜尋] 視窗中，輸入 **資料管理閘道** 以存取這個公用程式。 您也可以在 **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared** 資料夾中找到執行檔 **ConfigManager.exe**
 
     ![閘道器組態管理員](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDMGConfigurationManager.png)
-7. 確認您有看到 `adftutorialgateway is connected to the cloud service` 訊息。 底部的狀態列會顯示 [已連接到雲端服務]**** 和一個**綠色的核取記號**。
+7. 確認您有看到 `adftutorialgateway is connected to the cloud service` 訊息。 底部的狀態列會顯示 [已連接到雲端服務] 和一個 **綠色的核取記號**。
 
-    在 [首頁]**** 索引標籤上，您也可以執行下列作業︰
+    在 [首頁] 索引標籤上，您也可以執行下列作業︰
 
-   * 從 Azure 入口網站中使用 [註冊] 按鈕，以金鑰**註冊**閘道。
-   * **停止**在閘道電腦上執行的資料管理閘道主機服務。
-   * 將更新安裝作業**排程**在一天當中的指定時間。
-   * 檢視閘道的 **上次更新**時間。
+   * 從 Azure 入口網站中使用 [註冊] 按鈕，以金鑰 **註冊** 閘道。
+   * **停止** 在閘道電腦上執行的資料管理閘道主機服務。
+   * 將更新安裝作業 **排程** 在一天當中的指定時間。
+   * 檢視閘道的 **上次更新** 時間。
    * 指定可以安裝閘道更新的時間。
-8. 切換至 [ **設定** ] 索引標籤。在 **[憑證] 區段中** 指定的憑證會用來加密/解密您在入口網站上指定的內部部署資料存放區的認證。 按一下 [變更] **** 以改用您自己的憑證。 根據預設，閘道器會使用由 Data Factory 服務自動產生的憑證。
+8. 切換至 [ **設定** ] 索引標籤。在 **[憑證] 區段中** 指定的憑證會用來加密/解密您在入口網站上指定的內部部署資料存放區的認證。 按一下 [變更]  以改用您自己的憑證。 根據預設，閘道器會使用由 Data Factory 服務自動產生的憑證。
 
     ![閘道器憑證組態](./media/data-factory-move-data-between-onprem-and-cloud/gateway-certificate.png)
 
-    您也可以在 [設定]**** 索引標籤上執行下列動作︰
+    您也可以在 [設定] 索引標籤上執行下列動作︰
 
    * 檢視或匯出閘道所使用的憑證。
    * 變更閘道使用的 HTTPS 端點。    
    * 設定閘道要使用的 HTTP Proxy。     
-9. (選擇性) 切換到 [診斷]**** 索引標籤，如果您想啟用詳細資訊記錄功能，以便對閘道的任何問題進行疑難排解，請勾選 [啟用詳細資訊記錄]**** 選項。 在 [應用程式及服務記錄檔]**** ->  [資料管理閘道]**** 節點之下的 [事件檢視器]**** 中可找到記錄資訊。
+9. (選擇性) 切換到 [診斷] 索引標籤，如果您想啟用詳細資訊記錄功能，以便對閘道的任何問題進行疑難排解，請勾選 [啟用詳細資訊記錄] 選項。 在 [應用程式及服務記錄檔] ->  [資料管理閘道] 節點之下的 [事件檢視器] 中可找到記錄資訊。
 
     ![診斷索引標籤](./media/data-factory-move-data-between-onprem-and-cloud/diagnostics-tab.png)
 
-    您也可以在 [診斷] **** 索引標籤上執行以下動作：
+    您也可以在 [診斷]  索引標籤上執行以下動作：
 
    * 使用 **測試連線** 一節來對使用閘道器的內部部署資料來源。
-   * 按一下 [檢視記錄]**** 以查看 [事件檢視器] 視窗中的資料管理閘道記錄。
-   * 按一下 [傳送記錄] **** 將含有過去七天記錄的 zip 檔案上傳到 Microsoft，以幫助針對問題進行疑難排解。
-10. 在 [診斷]**** 索引標籤的 [測試連接]**** 區段中，選取 [SqlServer]**** 做為資料存放區的類型，輸入資料庫伺服器名稱和資料庫名稱，指定驗證類型，輸入使用者名稱和密碼，然後按一下 [測試]**** 來測試閘道是否可連線到資料庫。
-11. 切換到網頁瀏覽器，然後在 **Azure 入口網站**中，依序在 [設定]**** 頁面和 [新增資料閘道]**** 頁面中，按一下 [確定]****。
-12. 左側的樹狀檢視中，[資料閘道]**** 下方應該會顯示 **adftutorialgateway**。  如果按一下，應該會看到相關聯的 JSON。
+   * 按一下 [檢視記錄] 以查看 [事件檢視器] 視窗中的資料管理閘道記錄。
+   * 按一下 [傳送記錄]  將含有過去七天記錄的 zip 檔案上傳到 Microsoft，以幫助針對問題進行疑難排解。
+10. 在 [診斷] 索引標籤的 [測試連接] 區段中，選取 [SqlServer] 做為資料存放區的類型，輸入資料庫伺服器名稱和資料庫名稱，指定驗證類型，輸入使用者名稱和密碼，然後按一下 [測試] 來測試閘道是否可連線到資料庫。
+11. 切換到網頁瀏覽器，然後在 **Azure 入口網站** 中，依序在 [設定] 頁面和 [新增資料閘道] 頁面中，按一下 [確定]。
+12. 左側的樹狀檢視中，[資料閘道] 下方應該會顯示 **adftutorialgateway**。  如果按一下，應該會看到相關聯的 JSON。
 
 ## <a name="create-linked-services"></a>建立連結的服務
-在此步驟中，您會建立兩個連結服務：**AzureStorageLinkedService** 和 **SqlServerLinkedService**。 **SqlServerLinkedService**會連結 SQL Server 的資料庫，而 **>azurestoragelinkedservice**連結服務會將 Azure blob 存放區連結至 data factory。 您稍後會在本逐步解說中建立管線，以將資料從 SQL Server 資料庫複製到 Azure blob 存放區。
+在此步驟中，您會建立兩個連結服務：**AzureStorageLinkedService** 和 **SqlServerLinkedService**。 **SqlServerLinkedService** 會連結 SQL Server 的資料庫，而 **>azurestoragelinkedservice** 連結服務會將 Azure blob 存放區連結至 data factory。 您稍後會在本逐步解說中建立管線，以將資料從 SQL Server 資料庫複製到 Azure blob 存放區。
 
 #### <a name="add-a-linked-service-to-a-sql-server-database"></a>將連結服務新增至 SQL Server 資料庫
-1. 在 [Data Factory 編輯器]**** 中，按一下工具列上的 [新增資料存放區]****，然後選取 [SQL Server]****。
+1. 在 [Data Factory 編輯器] 中，按一下工具列上的 [新增資料存放區]，然後選取 [SQL Server]。
 
    ![新增 SQL Server 連結服務](./media/data-factory-move-data-between-onprem-and-cloud/NewSQLServer.png)
-2. 在右邊的 [JSON 編輯器]**** 中，執行下列步驟：
+2. 在右邊的 [JSON 編輯器] 中，執行下列步驟：
 
    1. 將 **gatewayName** 指定為 **adftutorialgateway**。    
-   2. 在 [connectionString]**** 中，執行下列步驟：    
+   2. 在 [connectionString] 中，執行下列步驟：    
 
       1. 針對 **servername**，輸入裝載 SQL Server 資料庫的伺服器名稱。
       2. 針對 **databasename**，輸入資料庫的名稱。
-      3. 按一下工具列上的 [加密]**** 按鈕。 您會看到認證管理員應用程式。
+      3. 按一下工具列上的 [加密] 按鈕。 您會看到認證管理員應用程式。
 
          ![認證管理員應用程式](./media/data-factory-move-data-between-onprem-and-cloud/credentials-manager-application.png)
-      4. 在 [設定認證]**** 對話方塊中，指定驗證類型、使用者名稱和密碼，然後按一下 [確定]****。 如果連線成功，加密的認證會儲存在 JSON 中，並關閉對話方塊。
+      4. 在 [設定認證] 對話方塊中，指定驗證類型、使用者名稱和密碼，然後按一下 [確定]。 如果連線成功，加密的認證會儲存在 JSON 中，並關閉對話方塊。
       5. 請關閉啟動對話方塊的空白瀏覽器索引標籤 (如果未自動關閉)，然後返回具有 Azure 入口網站的索引標籤。
 
-         在閘道電腦上，這些認證會以 Data Factory 服務所擁有的憑證**加密** 。 如果您想要改用與「資料管理閘道」關聯的憑證，請參閱「安全地設定認證」。    
-   3. 按一下命令列上的 [部署] **** ，部署 SQL Server 連結服務。 您應該會在樹狀檢視中看到連結服務。
+         在閘道電腦上，這些認證會以 Data Factory 服務所擁有的憑證 **加密** 。 如果您想要改用與「資料管理閘道」關聯的憑證，請參閱「安全地設定認證」。    
+   3. 按一下命令列上的 [部署]  ，部署 SQL Server 連結服務。 您應該會在樹狀檢視中看到連結服務。
 
       ![樹狀檢視中的 SQL Server 連結服務](./media/data-factory-move-data-between-onprem-and-cloud/sql-linked-service-in-tree-view.png)    
 
 #### <a name="add-a-linked-service-for-an-azure-storage-account"></a>新增 Azure 儲存體帳戶的連結服務
-1. 在 [Data Factory 編輯器]**** 中，按一下命令列上的 [新增資料存放區]****，然後按一下 [Azure 儲存體]****。
-2. 在 [帳戶名稱] **** 中輸入您的 Azure 儲存體帳戶名稱。
-3. 在 [帳戶金鑰] **** 中輸入您的 Azure 儲存體帳戶金鑰。
-4. 按一下 [部署]**** 以部署 **AzureStorageLinkedService**。
+1. 在 [Data Factory 編輯器] 中，按一下命令列上的 [新增資料存放區]，然後按一下 [Azure 儲存體]。
+2. 在 [帳戶名稱] 中輸入您的 Azure 儲存體帳戶名稱。
+3. 在 [帳戶金鑰] 中輸入您的 Azure 儲存體帳戶金鑰。
+4. 按一下 [部署] 以部署 **AzureStorageLinkedService**。
 
 ## <a name="create-datasets"></a>建立資料集
 在此步驟中，您會建立代表複製作業的輸入和輸出資料的輸入和輸出資料集 (內部部署 SQL Server 資料庫 => Azure Blob 儲存體)。 建立資料集之前，請執行下列步驟 (詳細步驟隨附於清單後)：
@@ -210,7 +210,7 @@ ms.locfileid: "84195987"
 
 ### <a name="create-input-dataset"></a>建立輸入資料集
 
-1. 在 [Data Factory 編輯器]**** 中，按一下 [... 更多]****，按一下命令列上的 [新增資料集]****，然後按一下 [SQL Server 資料表]****。
+1. 在 [Data Factory 編輯器] 中，按一下 [... 更多]，按一下命令列上的 [新增資料集]，然後按一下 [SQL Server 資料表]。
 2. 使用下列文字取代右窗格中的 JSON：
 
     ```JSON   
@@ -245,11 +245,11 @@ ms.locfileid: "84195987"
    * 針對並非由 Azure Data Factory 中另一個管線所產生的輸入資料集，您必須將 **external** 設定為 **true**。 它代表輸入資料產生於 Azure Data Factory 服務外部。 您可以使用 **Policy** 區段中的 **externalData** 元素，選擇性地指定任何外部資料原則。    
 
    如需 JSON 屬性的詳細資訊，請參閱[在 SQL Server 來回移動資料](data-factory-sqlserver-connector.md)。
-3. 按一下命令列上的 [部署] **** 來部署資料集。  
+3. 按一下命令列上的 [部署]  來部署資料集。  
 
 ### <a name="create-output-dataset"></a>建立輸出資料集
 
-1. 在 [Data Factory 編輯器]**** 中，按一下命令列的 [新增資料集]****，然後按一下 [Azure Blob 儲存體]****。
+1. 在 [Data Factory 編輯器] 中，按一下命令列的 [新增資料集]，然後按一下 [Azure Blob 儲存體]。
 2. 使用下列文字取代右窗格中的 JSON：
 
     ```JSON   
@@ -277,9 +277,9 @@ ms.locfileid: "84195987"
    * **type** 設定為 **AzureBlob**。
    * **linkedServiceName** 設定為 **AzureStorageLinkedService** (您已在步驟 2 中建立此連結服務)。
    * **folderPath** 設定為 **adftutorial/outfromonpremdf**，其中 outfromonpremdf 是 adftutorial 容器中的資料夾。 建立 **adftutorial** 容器 (如果尚未存在)。
-   * **可用性**設定為**每小時** (**頻率**設定為 [**小時**]，並將 [**間隔**] 設定為**1**) 。  Data Factory 服務會每隔一小時在 Azure SQL Database 的 **emp** 資料表中產生輸出資料配量。
+   * **可用性** 設定為 **每小時** (**頻率** 設定為 [**小時**]，並將 [**間隔**] 設定為 **1**) 。  Data Factory 服務會每隔一小時在 Azure SQL Database 的 **emp** 資料表中產生輸出資料配量。
 
-   如果您未指定**輸出資料表**的**檔案名**， **folderPath**中產生的檔案會以下列格式命名： `Data.<Guid>.txt` (例如：： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. ) 。
+   如果您未指定 **輸出資料表** 的 **檔案名**， **folderPath** 中產生的檔案會以下列格式命名： `Data.<Guid>.txt` (例如：： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. ) 。
 
    若要根據 **SliceStart** 時間動態設定 **folderPath** 和 **fileName**，請使用 partitionedBy 屬性。 在下列範例中，folderPath 使用 SliceStart (所處理配量的開始時間) 中的年、月和日，fileName 使用 SliceStart 中的小時。 例如，如果配量產生於 2014-10-20T08:00:00，folderName 設定為 wikidatagateway/wikisampledataout/2014/10/20，而 fileName 設定為 08.csv。
 
@@ -297,10 +297,10 @@ ms.locfileid: "84195987"
     ```
 
     如需 JSON 屬性的詳細資訊，請參閱[在 Azure Blob 儲存體來回移動資料](data-factory-azure-blob-connector.md)。
-3. 按一下命令列上的 [部署] **** 來部署資料集。 確認您已在樹狀檢視中看到這兩個資料集。  
+3. 按一下命令列上的 [部署]  來部署資料集。 確認您已在樹狀檢視中看到這兩個資料集。  
 
 ## <a name="create-pipeline"></a>建立管線
-在此步驟中，您會建立一個**管線**，其中包含一個使用 **EmpOnPremSQLTable** 做為輸入和 **OutputBlobTable** 做為輸出的**複製活動**。
+在此步驟中，您會建立一個 **管線**，其中包含一個使用 **EmpOnPremSQLTable** 做為輸入和 **OutputBlobTable** 做為輸出的 **複製活動**。
 
 1. 在 Data Factory 編輯器中，按一下 **.。。更多**]，然後按一下 [ **新增管線**]。
 2. 使用下列文字取代右窗格中的 JSON：    
@@ -350,14 +350,14 @@ ms.locfileid: "84195987"
      }
     ```   
    > [!IMPORTANT]
-   > 將 **start** 屬性的值替換為目前日期，並將 **end**值替換為隔天的日期。
+   > 將 **start** 屬性的值替換為目前日期，並將 **end** 值替換為隔天的日期。
    >
    >
 
    請注意下列幾點：
 
    * 在 activities 區段中，只會有 **type** 設定為 **Copy** 的活動。
-   * 活動的**輸入**設定為 **EmpOnPremSQLTable**，活動的**輸出**則設定為 **OutputBlobTable**。
+   * 活動的 **輸入** 設定為 **EmpOnPremSQLTable**，活動的 **輸出** 則設定為 **OutputBlobTable**。
    * 在 **>typeproperties** 區段中， **>sqlsource** 是指定為 **來源類型** ，而 **BlobSink** 指定為 **接收類型**。
    * **SqlSource** 的 **sqlReaderQuery** 屬性指定為 SQL 查詢 `select * from emp`。
 
@@ -368,13 +368,13 @@ ms.locfileid: "84195987"
    您定義會根據為每個 Azure Data Factory 資料集定義的 **Availability** 屬性來處理資料配量的持續時間。
 
    在此範例中，由於每小時即產生一個資料配量，共會有 24 個資料配量。        
-3. 按一下命令列的 [部署] **** ，以部署資料集 (資料表是矩形的資料集)。 確認管線顯示在樹狀檢視的**管線**節點底下。  
-4. 現在，按兩下 [X]**** 關閉頁面，以回到 **ADFTutorialOnPremDF** 的 [Data Factory]**** 頁面。
+3. 按一下命令列的 [部署]  ，以部署資料集 (資料表是矩形的資料集)。 確認管線顯示在樹狀檢視的 **管線** 節點底下。  
+4. 現在，按兩下 [X] 關閉頁面，以回到 **ADFTutorialOnPremDF** 的 [Data Factory] 頁面。
 
 **恭喜！** 您已成功建立 Azure Data Factory、連結服務、資料集和管線，以及排定的管線。
 
 #### <a name="view-the-data-factory-in-a-diagram-view"></a>在圖表檢視中檢視 Data Factory
-1. 在 **Azure 入口網站**中，按一下 [ADFTutorialOnPremDF]**** Data Factory 首頁上的 [圖表]**** 圖格。 :
+1. 在 **Azure 入口網站** 中，按一下 [ADFTutorialOnPremDF] Data Factory 首頁上的 [圖表] 圖格。 :
 
     ![圖表連結](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDiagramLink.png)
 2. 您應該會看到如下圖所示的圖表：
@@ -389,27 +389,27 @@ ms.locfileid: "84195987"
 1. 在圖中按兩下 **EmpOnPremSQLTable**。  
 
     ![EmpOnPremSQLTable 配量](./media/data-factory-move-data-between-onprem-and-cloud/OnPremSQLTableSlicesBlade.png)
-2. 請注意，上面的所有資料配量都是**就緒**狀態，因為管線持續期間 (開始時間到結束時間) 是過去的時間。 這也是因為您已將資料插入 SQL Server 資料庫中，而資料一直留存於其中。 確認下方的 [問題配量] **** 區段中沒有顯示任何配量。 若要檢視所有配量，請按一下配量清單底部的 [更多資訊]****。
-3. 現在，在 [資料集]**** 頁面中，按一下 [OutputBlobTable]****。
+2. 請注意，上面的所有資料配量都是 **就緒** 狀態，因為管線持續期間 (開始時間到結束時間) 是過去的時間。 這也是因為您已將資料插入 SQL Server 資料庫中，而資料一直留存於其中。 確認下方的 [問題配量]  區段中沒有顯示任何配量。 若要檢視所有配量，請按一下配量清單底部的 [更多資訊]。
+3. 現在，在 [資料集] 頁面中，按一下 [OutputBlobTable]。
 
     ![OputputBlobTable 配量](./media/data-factory-move-data-between-onprem-and-cloud/OutputBlobTableSlicesBlade.png)
-4. 按一下清單中的任何資料配量，您應該會看到 [資料配量]**** 頁面。 您會看到該配量的活動執行。 您通常只會看到一個活動執行。  
+4. 按一下清單中的任何資料配量，您應該會看到 [資料配量] 頁面。 您會看到該配量的活動執行。 您通常只會看到一個活動執行。  
 
     ![資料配量刀鋒視窗](./media/data-factory-move-data-between-onprem-and-cloud/DataSlice.png)
 
-    若配量不是處於 [就緒]**** 狀態，您可以在 [未就緒的上游配量]**** 清單中看到未就緒且阻礙目前配量執行的上游配量。
-5. 按一下底部清單中的 [活動執行]****，可查看 [活動執行詳細資料]****。
+    若配量不是處於 [就緒] 狀態，您可以在 [未就緒的上游配量] 清單中看到未就緒且阻礙目前配量執行的上游配量。
+5. 按一下底部清單中的 [活動執行]，可查看 [活動執行詳細資料]。
 
    ![[活動執行詳細資料] 頁面](./media/data-factory-move-data-between-onprem-and-cloud/ActivityRunDetailsBlade.png)
 
    您會看到輸送量、持續時間和用來傳輸資料的閘道等資訊。
-6. 按一下 [X]**** 關閉所有頁面，直到您
+6. 按一下 [X] 關閉所有頁面，直到您
 7. 回到 **ADFTutorialOnPremDF** 的首頁為止。
-8. (選擇性) 依序按一下 [管線]**** 及 [ADFTutorialOnPremDF]****，然後深入檢視輸入資料表 (**已使用**) 或輸出資料集 (**已產生**)。
+8. (選擇性) 依序按一下 [管線] 及 [ADFTutorialOnPremDF]，然後深入檢視輸入資料表 (**已使用**) 或輸出資料集 (**已產生**)。
 9. 使用 [Microsoft 儲存體總管](https://storageexplorer.com/)等工具來確認每個小時會建立一個 Blob/檔案。
 
    ![Azure 儲存體總管](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 如需資料管理閘道的所有詳細資料，請參閱 [資料管理閘道](data-factory-data-management-gateway.md) 一文。
 * 若要了解如何使用複製活動將資料從來源資料存放區移動到接收資料存放區，請參閱 [從 Azure Blob 複製資料到 Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 。

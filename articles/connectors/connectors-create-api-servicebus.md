@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/22/2020
 tags: connectors
 ms.openlocfilehash: b6276ff940d8b156a671cb5386ce53ede30dd879
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426642"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019699"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure Logic Apps 和 Azure 服務匯流排在雲端中交換訊息
 
@@ -47,7 +47,7 @@ ms.locfileid: "92426642"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，使用您的 Azure 帳戶登入。
 
-1. 移至您的服務匯流排「命名空間」**。 在命名空間頁面的 [設定]**** 之下，選取 [共用存取原則]****。 在 [ **宣告**] 下，檢查您是否有該命名空間的 [ **管理** ] 許可權。
+1. 移至您的服務匯流排「命名空間」。 在命名空間頁面的 [設定] 之下，選取 [共用存取原則]。 在 [ **宣告**] 下，檢查您是否有該命名空間的 [ **管理** ] 許可權。
 
    ![管理服務匯流排命名空間的許可權](./media/connectors-create-api-azure-service-bus/azure-service-bus-namespace.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "92426642"
 
 1. 在入口網站的搜尋方塊中，輸入 `azure service bus` 。 從顯示的觸發程式清單中，選取您要的觸發程式。
 
-   例如，若要在新專案傳送至「服務匯流排」佇列時觸發邏輯應用程式，請選取 [在 **佇列中收到訊息時] (自動完成) ** 觸發程式。
+   例如，若要在新專案傳送至「服務匯流排」佇列時觸發邏輯應用程式，請選取 [在 **佇列中收到訊息時] (自動完成)** 觸發程式。
 
    ![選取服務匯流排觸發程序](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
@@ -78,7 +78,7 @@ ms.locfileid: "92426642"
 
    * 所有服務匯流排觸發程式都是 *長時間輪詢觸發程式* 。 這項描述表示當觸發程式引發時，觸發程式會處理所有訊息，然後等候30秒讓佇列或主題訂閱中出現更多訊息。 如果在 30 秒內未出現任何訊息，就會略過觸發程序執行。 如果有，觸發程序會繼續讀取訊息，直到佇列或主題訂閱是空的。 下一次的觸發程序輪詢，會根據觸發程序的屬性指定的循環間隔。
 
-   * 某些觸發程式，例如， **當一或多個訊息抵達佇列 (自動完成) 觸發程式時 ** ，可能會傳回一或多個訊息。 當這些觸發程式引發時，它們會在觸發程式的 [ **最大訊息計數** ] 屬性指定的訊息數目之間傳回。
+   * 某些觸發程式，例如， **當一或多個訊息抵達佇列 (自動完成) 觸發程式時** ，可能會傳回一或多個訊息。 當這些觸發程式引發時，它們會在觸發程式的 [ **最大訊息計數** ] 屬性指定的訊息數目之間傳回。
 
      > [!NOTE]
      > 自動完成的觸發程式會自動完成訊息，但是只會在下一次呼叫服務匯流排時才會完成。 此行為可能會影響您的邏輯應用程式設計。 例如，請避免變更自動完成觸發程式上的平行存取，因為如果您的邏輯應用程式進入節流狀態，這項變更可能會導致重複的訊息。 變更並行存取控制會建立下列條件：使用程式碼略過節流觸發程式 `WorkflowRunInProgress` 、完成作業不會發生，而且下一個觸發程式執行會在輪詢間隔之後進行。 您必須將服務匯流排鎖定持續時間設定為超過輪詢間隔的值。 不過，儘管這項設定，如果您的邏輯應用程式在下一個輪詢間隔處於節流狀態，仍可能無法完成訊息。
@@ -157,13 +157,13 @@ ms.locfileid: "92426642"
 
    例如，您可以新增動作來傳送電子郵件，以確認已傳送您的郵件。
 
-1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]。
+1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]  。
 
 <a name="sequential-convoy"></a>
 
 ## <a name="send-correlated-messages-in-order"></a>依序傳送相互關聯的訊息
 
-當您需要以特定順序傳送相關訊息時，可以使用[Azure 服務匯流排連接器](../connectors/connectors-create-api-servicebus.md)來使用[*連續*](/azure/architecture/patterns/sequential-convoy)的群組模式。 相互關聯的訊息具有屬性，可定義這些訊息之間的關聯性，例如服務匯流排中 [會話](../service-bus-messaging/message-sessions.md) 的識別碼。
+當您需要以特定順序傳送相關訊息時，可以使用 [Azure 服務匯流排連接器](../connectors/connectors-create-api-servicebus.md)來使用 [*連續*](/azure/architecture/patterns/sequential-convoy)的群組模式。 相互關聯的訊息具有屬性，可定義這些訊息之間的關聯性，例如服務匯流排中 [會話](../service-bus-messaging/message-sessions.md) 的識別碼。
 
 當您建立邏輯應用程式時，您可以 **使用服務匯流排會話** 範本來選取相互關聯的依序傳遞，以實行連續的群組模式。 如需詳細資訊，請參閱依 [序傳送相關訊息](../logic-apps/send-related-messages-sequential-convoy.md)。
 

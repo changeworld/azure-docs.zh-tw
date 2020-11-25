@@ -15,18 +15,18 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: f7edf790e526329dd285d03a31137a26220e52ee
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778926"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018642"
 ---
 # <a name="using-azure-cdn-with-cors"></a>搭配 CORS 使用 Azure CDN
 ## <a name="what-is-cors"></a>什麼是 CORS？
 CORS (Cross Origin Resource Sharing；跨來源資源共用) 是一項 HTTP 功能，可讓在某個網域下執行的 Web 應用程式存取其他網域中的資源。 為了減少跨網站指令碼攻擊的可能性，所有現代網頁瀏覽器都實作稱為 [Same-Origin Policy (同源原則)](https://www.w3.org/Security/wiki/Same_Origin_Policy)的安全性限制。  這樣可以防止網頁呼叫其他網域中的 API。  CORS 提供安全的方式來允許從一個來源 (來源網域) 呼叫其他來源中的 API。
 
 ## <a name="how-it-works"></a>運作方式
-CORS 要求有兩種類型， *簡單要求* 和 *複雜要求* 。
+CORS 要求有兩種類型，*簡單要求* 和 *複雜要求*。
 
 ### <a name="for-simple-requests"></a>對於簡單要求︰
 
@@ -69,7 +69,7 @@ CORS 要求有兩種類型， *簡單要求* 和 *複雜要求* 。
 ![使用標準規則引擎的規則範例](./media/cdn-cors/cdn-standard-cors.png)
 
 > [!TIP]
-> 您可以將其他動作新增至規則，以修改額外的回應標頭，例如 **存取控制-允許的方法** 。
+> 您可以將其他動作新增至規則，以修改額外的回應標頭，例如 **存取控制-允許的方法**。
 > 
 
 在 **來自 Akamai 的 AZURE CDN 標準** 上，唯一允許多個來源的機制（不使用萬用字元來源）是使用 [查詢字串](cdn-query-string.md)快取。 啟用 CDN 端點的查詢字串設定，然後針對來自每個允許之網域的查詢使用唯一的查詢字串。 這麼做將使 CDN 針對每個唯一的查詢字串快取個別物件。 但是這不是最理想的方法，因為它會導致在 CDN 上快取同一個檔案的多個複本。  
@@ -91,7 +91,7 @@ https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.co
 > 
 > 
 
-如果規則運算式相符，您的規則會將來自來源的 **Access-Control-Allow-Origin** 標頭 (如果有) 取代為傳送該要求的來源。  您也可以加入額外的 CORS 標頭，例如 **Access-Control-Allow-Methods** 。
+如果規則運算式相符，您的規則會將來自來源的 **Access-Control-Allow-Origin** 標頭 (如果有) 取代為傳送該要求的來源。  您也可以加入額外的 CORS 標頭，例如 **Access-Control-Allow-Methods**。
 
 ![包含規則運算式的規則範例](./media/cdn-cors/cdn-cors-regex.png)
 

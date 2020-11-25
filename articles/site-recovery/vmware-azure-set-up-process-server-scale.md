@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
 ms.openlocfilehash: 40f912122e6ffb9cccbd32a747f6f0d46fd6c330
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292811"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019123"
 ---
 # <a name="scale-with-additional-process-servers"></a>使用額外的進程伺服器進行調整
 
@@ -52,8 +52,8 @@ ms.locfileid: "87292811"
 依照下列指示下載處理序伺服器的安裝檔案：
 
 1. 登入 Azure 入口網站，然後流覽至您的復原服務保存庫。
-2. 針對 vmware & 實體機器) ，開啟**Site Recovery 基礎結構**  >  **VMware 和實體機器**設定  >  **伺服器** (。
-3. 選取設定伺服器以切入伺服器的詳細資料。 接著按一下** [+ 處理序伺服器]**。
+2. 針對 vmware & 實體機器) ，開啟 **Site Recovery 基礎結構**  >  **VMware 和實體機器** 設定  >  **伺服器** (。
+3. 選取設定伺服器以切入伺服器的詳細資料。 接著按一下 **[+ 處理序伺服器]**。
 4. 在 [**新增進程伺服器**] 中  >   ，**選擇您要部署進程伺服器的位置**，然後選取 [**在內部部署部署相應放大進程伺服器**]。
 
    ![新增伺服器頁面](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
@@ -101,5 +101,5 @@ UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "PS" /InstallLocation "D:\" /
 * ProxyPassword="Password"
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 深入了解[管理處理序伺服器設定](vmware-azure-manage-process-server.md)

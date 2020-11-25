@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 11/18/2020
 ms.author: baanders
 ms.openlocfilehash: 261c5fa47cddcc527e7c0a18fbd18aad9320ed4b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95561499"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018951"
 ---
 | 篩選名稱 | 描述 | 篩選文字架構 | 支援的值 | 
 | --- | --- | --- | --- |
@@ -47,7 +47,7 @@ ms.locfileid: "95561499"
 
 定義路由篩選時支援下列運算子：
 
-|系列|操作員|範例|
+|系列|運算子|範例|
 |-|-|-|
 |邏輯|和、或 ( ) |`(type != 'microsoft.iot.telemetry' OR datacontenttype = 'application/json') OR (specversion != '1.0')`|
 |比較|<、<=、>、>=、=、！ =|`$body.temperature <= 5.5`

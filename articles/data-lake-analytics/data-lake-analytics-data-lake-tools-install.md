@@ -6,11 +6,11 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 08/30/2019
 ms.openlocfilehash: cb0183ae229c328588a31c2c0549e7e93fd19b78
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221038"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018999"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>安裝 Data Lake Tools for Visual Studio
 
@@ -26,17 +26,17 @@ ms.locfileid: "92221038"
   * Visual Studio 2013
 
 * **Microsoft Azure SDK for .NET** 2.7.1 版或更新版本。 使用 [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx) 來進行安裝。
-* **Data Lake Analytics**帳戶。 如需建立帳戶，請參閱[使用 Azure 入口網站開始使用 Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md)。
+* **Data Lake Analytics** 帳戶。 如需建立帳戶，請參閱[使用 Azure 入口網站開始使用 Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md)。
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio-2017-or-visual-studio-2019"></a>安裝 Azure Data Lake Tools for Visual Studio 2017 或 Visual Studio 2019
 
 Visual Studio 2017 15.3 或更新版本中支援 Azure Data Lake Tools for Visual Studio。 此工具是 **資料儲存和處理** 和 **Azure 開發** 工作負載的一部分。 安裝 Visual Studio 時，請啟用其中一個工作負載。
 
-啟用**資料儲存和處理**工作負載，如下所示：
+啟用 **資料儲存和處理** 工作負載，如下所示：
 
 ![啟用資料儲存和處理工作負載](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2019-install-01.png)
 
-啟用 **Azure 開發**工作負載，如下所示：
+啟用 **Azure 開發** 工作負載，如下所示：
 
 ![選取 Azure 開發工作負載](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2019-install-02.png)
 
@@ -44,8 +44,8 @@ Visual Studio 2017 15.3 或更新版本中支援 Azure Data Lake Tools for Visua
 
 下載並安裝 [適用于 Visual Studio 的 Microsoft Azure Data Lake 和串流分析工具 ](https://aka.ms/adltoolsvs)。 安裝之後，Visual Studio 會有下列變更：
 
-* **伺服器總管**  >  **Azure**節點包含**Data Lake Analytics**節點。
-* [工具]**** 功能表包含 [Data Lake]**** 項目。
+* **伺服器總管**  >  **Azure** 節點包含 **Data Lake Analytics** 節點。
+* [工具] 功能表包含 [Data Lake] 項目。
 
 ## <a name="next-steps"></a>後續步驟
 

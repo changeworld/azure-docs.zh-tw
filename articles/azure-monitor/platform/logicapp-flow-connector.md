@@ -8,11 +8,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
 ms.openlocfilehash: d06501abe69ce9b06656cfa8949c42bb53a03983
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439250"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019033"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>適用于 Logic Apps 和 Power Automate 的 Azure 監視器記錄連接器
 [Azure Logic Apps](../../logic-apps/index.yml) 和 [Power Automate](https://flow.microsoft.com) 可讓您針對各種服務使用數百個動作來建立自動化工作流程。 Azure 監視器 Logs connector 可讓您建立工作流程，以從 Log Analytics 工作區或 Azure 監視器中的 Application Insights 應用程式取出資料。 本文說明連接器所包含的動作，並提供使用此資料來建立工作流程的逐步解說。
@@ -46,15 +46,15 @@ Azure 監視器記錄連接器有下列限制：
 
 ### <a name="create-a-logic-app"></a>建立邏輯應用程式
 
-移至 Azure 入口網站中的 **Logic Apps** ，然後按一下 [ **新增**]。 選取 **訂**用帳戶、 **資源群組**和 **區域** 以儲存新的邏輯應用程式，然後為其指定唯一的名稱。 您可以開啟 **Log Analytics** 設定，以收集有關執行時間資料和事件的資訊，如 [設定 Azure 監視器記錄和收集診斷資料以供 Azure Logic Apps](../../logic-apps/monitor-logic-apps-log-analytics.md)所述。 使用 Azure 監視器記錄連接器不需要此設定。
+移至 Azure 入口網站中的 **Logic Apps** ，然後按一下 [ **新增**]。 選取 **訂** 用帳戶、 **資源群組** 和 **區域** 以儲存新的邏輯應用程式，然後為其指定唯一的名稱。 您可以開啟 **Log Analytics** 設定，以收集有關執行時間資料和事件的資訊，如 [設定 Azure 監視器記錄和收集診斷資料以供 Azure Logic Apps](../../logic-apps/monitor-logic-apps-log-analytics.md)所述。 使用 Azure 監視器記錄連接器不需要此設定。
 
 ![建立邏輯應用程式](media/logicapp-flow-connector/create-logic-app.png)
 
 
-按一下 [ **審核 + 建立** ]，然後 **建立**。 當部署完成時，按一下 [ **移至資源** ] 以開啟 **Logic Apps 設計**工具。
+按一下 [ **審核 + 建立** ]，然後 **建立**。 當部署完成時，按一下 [ **移至資源** ] 以開啟 **Logic Apps 設計** 工具。
 
 ### <a name="create-a-trigger-for-the-logic-app"></a>建立邏輯應用程式的觸發程式
-在 [ **開始使用一般觸發**程式] 下，選取 **[週期**]。 這會建立可定期自動執行的邏輯應用程式。 在動作的 [ **頻率** ] 方塊中，選取 [ **天** ]，然後在 [ **間隔** ] 方塊中輸入 **1** ，每天執行一次工作流程。
+在 [ **開始使用一般觸發** 程式] 下，選取 **[週期**]。 這會建立可定期自動執行的邏輯應用程式。 在動作的 [ **頻率** ] 方塊中，選取 [ **天** ]，然後在 [ **間隔** ] 方塊中輸入 **1** ，每天執行一次工作流程。
 
 ![週期動作](media/logicapp-flow-connector/recurrence-action.png)
 
@@ -66,16 +66,16 @@ Azure 監視器記錄連接器有下列限制：
 
 ![Azure 監視器記錄檔動作](media/logicapp-flow-connector/select-azure-monitor-connector.png)
 
-按一下 [Azure Log Analytics – Run query and visualize results] \(Azure Log Analytics – 執行查詢，並將結果視覺化) ****。
+按一下 [Azure Log Analytics – Run query and visualize results] \(Azure Log Analytics – 執行查詢，並將結果視覺化) 。
 
 ![在邏輯應用程式設計工具的步驟中新增動作的螢幕擷取畫面。 在 [選擇動作] 下，會反白顯示 Azure 監視器記錄。](media/logicapp-flow-connector/select-query-action-visualize.png)
 
 
 ### <a name="add-azure-monitor-logs-action"></a>新增 Azure 監視器記錄檔動作
 
-選取 Log Analytics 工作區的 **訂** 用帳戶和 **資源群組** 。 選取**資源類型**的*Log Analytics 工作區*，然後在 [**資源名稱**] 底下選取工作區的名稱。
+選取 Log Analytics 工作區的 **訂** 用帳戶和 **資源群組** 。 選取 **資源類型** 的 *Log Analytics 工作區*，然後在 [**資源名稱**] 底下選取工作區的名稱。
 
-在 [查詢]**** 視窗新增下列記錄查詢。  
+在 [查詢] 視窗新增下列記錄查詢。  
 
 ```Kusto
 Event
@@ -85,7 +85,7 @@ Event
 | sort by Computer asc   
 ```
 
-針對**圖表類型**，選取 [*在查詢中設定***時間範圍**] 和 [ **HTML] 資料表**。
+針對 **圖表類型**，選取 [*在查詢中設定***時間範圍**] 和 [ **HTML] 資料表**。
    
 ![新 Azure 監視器記錄檔的設定的螢幕擷取畫面，名為 [執行查詢]，並以視覺化方式呈現結果。](media/logicapp-flow-connector/run-query-visualize-action.png)
 
@@ -97,7 +97,7 @@ Event
 
 ![選取 Outlook 連接器](media/logicapp-flow-connector/select-outlook-connector.png)
 
-選取 [ **傳送電子郵件 (V2) **。
+選取 [ **傳送電子郵件 (V2)**。
 
 ![Office 365 Outlook 選取視窗](media/logicapp-flow-connector/select-mail-action.png)
 
@@ -105,7 +105,7 @@ Event
 
 ![選取內文](media/logicapp-flow-connector/select-body.png)
 
-在 [收件者]**** 視窗中指定收件者的電子郵件地址，並在 [主旨]**** 指定電子郵件的主旨。 
+在 [收件者] 視窗中指定收件者的電子郵件地址，並在 [主旨] 指定電子郵件的主旨。 
 
 ![郵件動作](media/logicapp-flow-connector/mail-action.png)
 

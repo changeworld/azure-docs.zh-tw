@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
 ms.openlocfilehash: 0842efe304faa9a0d94fbf71075f1bc16ff34014
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217553"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018200"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure 監視器來建立、檢視及管理記錄警示
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 記錄警示可讓使用者使用 [Log Analytics](../log-query/get-started-portal.md) 查詢來評估每個設定頻率的資源記錄，並根據結果引發警示。 規則可以使用 [動作群組](./action-groups.md)觸發一或多個動作。 [深入瞭解記錄警示的功能和術語](alerts-unified-log.md)。
 
@@ -55,7 +55,7 @@ ms.locfileid: "92217553"
 
 1. 記錄警示可以根據兩種類型的 [**量值**](alerts-unified-log.md#measure)：
     1. **結果數目** -查詢所傳回的記錄計數。
-    1. **度量測量**  - 使用 [摘要] 來計算的匯總*值*會依所選運算式分組，並選取 [ [bin] ( # B1](/azure/kusto/query/binfunction) 。 例如：
+    1. **度量測量**  - 使用 [摘要] 來計算的匯總 *值* 會依所選運算式分組，並選取 [ [bin] ( # B1](/azure/kusto/query/binfunction) 。 例如：
 
     ```Kusto
     // Reported errors
@@ -65,7 +65,7 @@ ms.locfileid: "92217553"
     | summarize AggregatedValue = count() by Computer, bin(TimeGenerated, 15m)
     ```
 
-1. 針對計量測量警示邏輯，您可以選擇性地指定如何使用 [**匯總依據**] 選項來[分割依維度的警示](alerts-unified-log.md#split-by-alert-dimensions)。 資料列群組運算式必須是唯一的且已排序。
+1. 針對計量測量警示邏輯，您可以選擇性地指定如何使用 [**匯總依據**] 選項來 [分割依維度的警示](alerts-unified-log.md#split-by-alert-dimensions)。 資料列群組運算式必須是唯一的且已排序。
 
     > [!NOTE]
     > 由於 [bin ( # B1 ](/azure/kusto/query/binfunction) 可能會導致時間間隔不平均，因此警示服務會自動將 [Bin ( # B3 ](/azure/kusto/query/binfunction) 函式自動轉換成在執行時間使用適當的時間 [bin_at ( # B5 ](/azure/kusto/query/binatfunction) 函式，以確保具有固定點的結果。
@@ -77,7 +77,7 @@ ms.locfileid: "92217553"
 
 1. 接下來，根據預覽資料設定 [**運算子**、 **臨界值**](alerts-unified-log.md#threshold-and-operator)和 [**頻率**](alerts-unified-log.md#frequency)。
 
-1. 您也可以選擇性地使用**總計或連續缺口**[來設定觸發警示的違規次數](alerts-unified-log.md#number-of-violations-to-trigger-alert)。
+1. 您也可以選擇性地使用 **總計或連續缺口**[來設定觸發警示的違規次數](alerts-unified-log.md#number-of-violations-to-trigger-alert)。
 
 1. 選取 [完成]。 
 
@@ -94,8 +94,8 @@ ms.locfileid: "92217553"
 
 1. 您可以選擇性地自訂記錄警示規則中的動作：
 
-    - **自訂電子郵件**主旨：覆寫電子郵件動作的 *電子郵件* 主旨。 您無法修改郵件的本文，而且此欄位 **不是電子郵件地址**。
-    - **包含自訂 Json**承載：會覆寫動作群組（假設動作群組包含 webhook 動作）所使用的 webhook Json。 深入瞭解 [記錄警示的 webhook 動作](./alerts-log-webhook.md)。
+    - **自訂電子郵件** 主旨：覆寫電子郵件動作的 *電子郵件* 主旨。 您無法修改郵件的本文，而且此欄位 **不是電子郵件地址**。
+    - **包含自訂 Json** 承載：會覆寫動作群組（假設動作群組包含 webhook 動作）所使用的 webhook Json。 深入瞭解 [記錄警示的 webhook 動作](./alerts-log-webhook.md)。
 
     ![記錄警示的動作覆寫](media/alerts-log/AlertsPreviewOverrideLog.png)
 
@@ -126,7 +126,7 @@ ms.locfileid: "92217553"
 
     ![建立規則](media/alerts-log/AlertsPreviewAdd.png)
 
-1. 按下 [ **選取資源** ] 按鈕。 選擇 *訂*用帳戶、 *資源類型*，然後選取資源來進行篩選。 確定資源具有可用的記錄。
+1. 按下 [ **選取資源** ] 按鈕。 選擇 *訂* 用帳戶、 *資源類型*，然後選取資源來進行篩選。 確定資源具有可用的記錄。
 
    ![選取資源](media/alerts-log/Alert-SelectResourceLog.png)
 
@@ -160,7 +160,7 @@ ms.locfileid: "92217553"
     
         ![選取匯總參數和分割](media/alerts-log/select-aggregation-parameters-and-splitting.png)
 
-    1. **預覽**圖表會顯示一段時間的查詢評估結果。 您可以變更圖表期間，或選取因維度唯一的警示分割所產生的不同時間序列。
+    1. **預覽** 圖表會顯示一段時間的查詢評估結果。 您可以變更圖表期間，或選取因維度唯一的警示分割所產生的不同時間序列。
 
         ![預覽圖表](media/alerts-log/preview-chart.png)
 
@@ -168,7 +168,7 @@ ms.locfileid: "92217553"
 
         ![具有臨界值和警示邏輯的預覽圖表](media/alerts-log/chart-and-alert-logic.png)
 
-    1. 您可以選擇性地在 [ **Advanced options** ] 區段中設定[**觸發警示的違規次數**](alerts-unified-log.md#number-of-violations-to-trigger-alert)。
+    1. 您可以選擇性地在 [ **Advanced options** ] 區段中設定 [**觸發警示的違規次數**](alerts-unified-log.md#number-of-violations-to-trigger-alert)。
     
         ![進階選項](media/alerts-log/advanced-options.png)
 
@@ -176,7 +176,7 @@ ms.locfileid: "92217553"
 
     ![[動作] 索引標籤](media/alerts-log/actions-tab.png)
 
-1. 在 [ **詳細資料** ] 索引標籤中，定義 **警示規則詳細資料**和 **專案詳細資料**。 您可以選擇性地設定是否要 **立即開始**執行，或在警示規則引發之後的期間將 [**動作靜音**](alerts-unified-log.md#state-and-resolving-alerts) 。
+1. 在 [ **詳細資料** ] 索引標籤中，定義 **警示規則詳細資料** 和 **專案詳細資料**。 您可以選擇性地設定是否要 **立即開始** 執行，或在警示規則引發之後的期間將 [**動作靜音**](alerts-unified-log.md#state-and-resolving-alerts) 。
 
     > [!NOTE]
     > 記錄警示規則目前是無狀態的，而且會在每次建立警示時引發動作，除非已定義靜音。

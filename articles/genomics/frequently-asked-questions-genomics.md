@@ -10,11 +10,11 @@ ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
 ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76986031"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018319"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics：常見問題
 
@@ -48,10 +48,10 @@ Microsoft Genomics 是根據每個工作流程所處理的 Gb 數來計費。 �
  |`cancel`             |傳送要求以取消 `--workflow-id` 所指定的工作流程處理。 請參閱 `msgen help cancel`。 |
 
 ## <a name="where-do-i-get-the-value-for---api-url-base"></a>哪裡可取得 `--api-url-base` 的值？
-移至 Azure 入口網站，然後開啟您的 Genomics 帳戶頁面。 在 [管理]**** 標題之下，選擇 [存取金鑰]****。 您可以看到 API URL 以及存取金鑰。
+移至 Azure 入口網站，然後開啟您的 Genomics 帳戶頁面。 在 [管理] 標題之下，選擇 [存取金鑰]。 您可以看到 API URL 以及存取金鑰。
 
 ## <a name="where-do-i-get-the-value-for---access-key"></a>哪裡可取得 `--access-key` 的值？
-移至 Azure 入口網站，然後開啟您的 Genomics 帳戶頁面。 在 [管理]**** 標題之下，選擇 [存取金鑰]****。 您可以看到 API URL 以及存取金鑰。
+移至 Azure 入口網站，然後開啟您的 Genomics 帳戶頁面。 在 [管理] 標題之下，選擇 [存取金鑰]。 您可以看到 API URL 以及存取金鑰。
 
 ## <a name="why-do-i-need-two-access-keys"></a>為什麼需要兩個存取金鑰？
 如果您想要在不中斷服務使用的情況下更新 (重新產生) 存取金鑰，您就需要兩個存取金鑰。 例如，如果您想要更新的第一個金鑰，則您所有的新工作流程就應使用第二個金鑰。 然後，等到所有使用第一個金鑰的工作流程都完成之後，再更新第一個金鑰。

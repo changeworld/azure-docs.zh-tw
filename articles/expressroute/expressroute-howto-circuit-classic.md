@@ -9,11 +9,11 @@ ms.date: 11/05/2019
 ms.author: duau
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: be45d49d3f445810c7ac6a38e3e12abe178a4bed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89396279"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018141"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>使用 PowerShell 修改 ExpressRoute 線路 (傳統)
 
@@ -94,7 +94,7 @@ get-help get-azurededicatedcircuit -detailed
 * 啟用或停用 ExpressRoute 線路的 ExpressRoute 進階附加元件。
 * 只要連接埠有可用的容量，就增加 ExpressRoute 線路的頻寬。 不支援將線路的頻寬降級。
 * 將計量方案從 [計量付費] 變更為 [無限制]。 不支援將計量方案從 [無限制資料] 變更為 [已計量資料]。
-* 您可以啟用和停用 [允許傳統作業] **。
+* 您可以啟用和停用 [允許傳統作業] 。
 
 如需限制的詳細資訊，請參閱 [ExpressRoute 常見問題集](expressroute-faqs.md) 。
 
@@ -196,7 +196,7 @@ At line:1 char:1
 
 * 您必須取消連結 ExpressRoute 線路的所有虛擬網路，此作業才會成功。 如果此作業失敗，請檢查您是否有任何虛擬網路連結至線路。
 * 如果 ExpressRoute 線路服務提供者佈建狀態為 **Provisioning** 或 **Provisioned**，您就必須與服務提供者一起合作，取消佈建他們那邊的線路。 我們會繼續保留資源並向您收取費用，直到線路服務提供者完成取消佈建並通知我們。
-* 若服務提供者已取消佈建線路 (服務提供者佈建狀態設定為 [未佈建]****)，您便可以刪除線路。 這樣會停止針對線路計費。
+* 若服務提供者已取消佈建線路 (服務提供者佈建狀態設定為 [未佈建])，您便可以刪除線路。 這樣會停止針對線路計費。
 
 #### <a name="delete-a-circuit"></a>刪除電路
 

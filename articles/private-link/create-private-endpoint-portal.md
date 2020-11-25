@@ -8,11 +8,11 @@ ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: allensu
 ms.openlocfilehash: 395912ae70c5a01bd7de9a80cf8a507dd516028e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895196"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018064"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立私人端點
 
@@ -52,7 +52,7 @@ ms.locfileid: "92895196"
     | 名稱             | 輸入 **myVNet**                                    |
     | 區域           | 選取 [西歐]。|
 
-3. 選取 [IP 位址] 索引標籤，或選取頁面底部的 [下一步：IP 位置] 按鈕。
+3. 選取 [IP 位址]  索引標籤，或選取頁面底部的 [下一步：  IP 位置] 按鈕。
 
 4. 在 [IP 位址] 索引標籤中，輸入這項資訊：
 
@@ -71,7 +71,7 @@ ms.locfileid: "92895196"
 
 7. 選取 [儲存]。
 
-8. 選取 [安全性]  索引標籤。
+8. 選取 [安全性] 索引標籤。
 
 9. 在 [BastionHost] 底下，選取 [啟用]。 輸入此資訊：
 
@@ -132,7 +132,7 @@ ms.locfileid: "92895196"
 
 在本節中，您將為您在必要條件一節中建立的 Web 應用程式建立私人端點。
 
-1. 在入口網站的畫面左上角，選取 [建立資源] > [網路] > [Private Link]，或在搜尋方塊中輸入 **Private Link** 。
+1. 在入口網站的畫面左上角，選取 [建立資源] > [網路] > [Private Link]，或在搜尋方塊中輸入 **Private Link**。
 
 2. 選取 [建立]。
 
@@ -190,7 +190,7 @@ ms.locfileid: "92895196"
 
 2. 選取 [CreatePrivateEndpointQS-rg]。
 
-3. 選取 [myVM]  。
+3. 選取 [myVM]。
 
 4. 在 **myVM** 的 [概觀] 頁面上，選取 [連線] 然後 [堡壘]。
 
@@ -216,7 +216,7 @@ ms.locfileid: "92895196"
 
 11. 在與 **myVM** 的堡壘連線中，開啟 Internet Explorer。
 
-12. 輸入 Web 應用程式的 URL： **https://\<your-webapp-name>.azurewebsites.net** .。
+12. 輸入 Web 應用程式的 URL：**https://\<your-webapp-name>.azurewebsites.net**.。
 
 13. 如果您尚未部署應用程式，則會收到預設的 Web 應用程式頁面：
 
@@ -234,7 +234,7 @@ ms.locfileid: "92895196"
 
 3. 選取 [刪除資源群組]。
 
-4. 在 [輸入資源群組名稱] 中，輸入 **CreatePrivateEndpointQS-rg** 。
+4. 在 [輸入資源群組名稱] 中，輸入 **CreatePrivateEndpointQS-rg**。
 
 5. 選取 [刪除]。
 

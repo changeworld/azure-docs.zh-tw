@@ -12,16 +12,16 @@ ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: 6d3c9f0df0d834ffe75d0b56e3c80a432c27ea38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81419012"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018540"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>執行 Databricks Notebook 來轉換資料
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-[Data Factory 管線](concepts-pipelines-activities.md)中的 Azure Databricks 筆記本活動會在 Azure Databricks 工作區中執行 Databricks 筆記本。 本文是以「 [資料轉換活動](transform-data.md)」一   文為基礎，其中提供資料轉換和支援的轉換活動的一般總覽。Azure Databricks 是用於執行 Apache Spark 的受控平台。
+[Data Factory 管線](concepts-pipelines-activities.md)中的 Azure Databricks 筆記本活動會在 Azure Databricks 工作區中執行 Databricks 筆記本。 本文是根據 [資料轉換活動](transform-data.md) 一文，它呈現資料轉換和支援的轉換活動的一般概觀。 Azure Databricks 是用於執行 Apache Spark 的受控平台。
 
 ## <a name="databricks-notebook-activity-definition"></a>Databricks Notebook 活動定義
 
@@ -62,7 +62,7 @@ ms.locfileid: "81419012"
 |NAME|管線中的活動名稱。|是|
 |description|說明活動用途的文字。|否|
 |type|若是 Databricks Notebook 活動，則活動類型是 DatabricksNotebook。|是|
-|linkedServiceName|Databricks Notebook 執行所在之 Databricks 連結服務的名稱。 若要深入瞭解此連結服務，請參閱 [計算連結服務](compute-linked-services.md)   文章。|是|
+|linkedServiceName|Databricks Notebook 執行所在之 Databricks 連結服務的名稱。 若要深入了解此已連結的服務，請參閱[計算已連結的服務](compute-linked-services.md)一文。|是|
 |notebookPath|要在 Databricks 工作區中執行之 Notebook 的絕對路徑。 此路徑必須以斜線開頭。|是|
 |baseParameters|機碼值組的陣列。 基礎映像參數可以用於每個活動執行。 如果 Notebook 採用未指定的參數，則系統會使用 Notebook 的預設值。 在 [Databricks Notebook](https://docs.databricks.com/api/latest/jobs.html#jobsparampair) 中尋找更多參數的相關資料。|否|
 |程式庫|要在負責執行工作的叢集上，即將安裝的程式庫清單。 它可以是的陣列 \<string, object> 。|否|
@@ -131,7 +131,7 @@ ms.locfileid: "81419012"
 
 若要取得利用 UI 新增之程式庫的 dbfs 路徑，您可以使用 [Databricks CLI (安裝)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli) \(英文\)。 
 
-使用 UI 時，Jar 程式庫通常會儲存在 dbfs: FileStore/jar。 您可以透過 CLI 來列出所有 Jar 程式庫：databricks fs ls dbfs:/FileStore/jars**。
+使用 UI 時，Jar 程式庫通常會儲存在 dbfs: FileStore/jar。 您可以透過 CLI 來列出所有 Jar 程式庫：databricks fs ls dbfs:/FileStore/jars。
 
 
 

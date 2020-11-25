@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
 ms.openlocfilehash: 50e047325ad17710794b1640715ab1938373fe85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542167"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019458"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>使用 Azure 的應用程式傳遞套件進行負載平衡
 
@@ -25,7 +25,7 @@ Microsoft Azure 提供各種全域和區域服務來管理網路流量的分散�
 
 * 應用程式閘道
 * Front Door 
-* 負載平衡器  
+* Load Balancer  
 * 流量管理員
 
 除了 Azure 的許多區域和區域性架構之外，一起使用這些服務可以讓您建立強大、可擴充且高效能的應用程式。
@@ -39,7 +39,7 @@ Microsoft Azure 提供各種全域和區域服務來管理網路流量的分散�
 當您結合這些全域和區域服務時，您的應用程式將受益于從您的終端使用者傳送至 IaaS、PaaS 或內部部署服務的可靠且安全的端對端流量。 在下一節中，我們會逐一描述這些服務。
 
 ## <a name="global-load-balancing"></a>全域負載平衡
-**流量管理員**提供全域 DNS 負載平衡。 它會查看傳入的 DNS 要求，並遵循客戶所選取的路由原則，以狀況良好的後端回應。 路由方法的選項如下︰
+**流量管理員** 提供全域 DNS 負載平衡。 它會查看傳入的 DNS 要求，並遵循客戶所選取的路由原則，以狀況良好的後端回應。 路由方法的選項如下︰
 - * * 效能路由將要求傳送至最接近延遲的最接近後端。
 - **優先順序路由** 將所有流量導向至後端，並將其他後端作為備份。
 - **加權迴圈** 配置資源路由會根據指派給每個後端的加權來分配流量。
@@ -82,7 +82,7 @@ Front Door 會於 Microsoft 網路的邊緣終止 HTTP 要求，並主動探查�
 
 下圖顯示此案例的架構︰
 
-:::image type="content" source="./media/front-door-lb-with-azure-app-delivery-suite/application-delivery-figure2.png" alt-text="應用程式傳遞套件":::
+:::image type="content" source="./media/front-door-lb-with-azure-app-delivery-suite/application-delivery-figure2.png" alt-text="應用程式傳遞套件詳細架構":::
 
 > [!NOTE]
 > 這個範例只是 Azure 所提供的許多可能的負載平衡服務設定的其中一個。 您可以混合搭配使用流量管理員、Front Door、應用程式閘道與負載平衡器，以滿足您的負載平衡需求。 例如，如果不需要 TLS/SSL 卸載或第7層處理，Load Balancer 可以用來取代應用程式閘道。

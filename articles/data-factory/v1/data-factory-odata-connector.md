@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85847560"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019645"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>使用 Azure Data Factory 從 OData 來源移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -37,19 +37,19 @@ ms.locfileid: "85847560"
 
 支援下列驗證類型：
 
-* 若要存取**雲端** OData 摘要，您可以使用匿名、基本 (使用者名稱和密碼) 或 Azure Active Directory 架構的 OAuth 驗證。
-* 若要存取**內部部署** OData 摘要，您可以使用匿名、基本 (使用者名稱和密碼) 或 Windows 驗證。
+* 若要存取 **雲端** OData 摘要，您可以使用匿名、基本 (使用者名稱和密碼) 或 Azure Active Directory 架構的 OAuth 驗證。
+* 若要存取 **內部部署** OData 摘要，您可以使用匿名、基本 (使用者名稱和密碼) 或 Windows 驗證。
 
 ## <a name="getting-started"></a>開始使用
 您可以藉由使用不同的工具/API，建立內含複製活動的管線，以從 OData 來源移動資料。
 
 若要建立管線，最簡單的方式就是使用「 **複製嚮導**」。 如需使用複製資料精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md) 。
 
-您也可以使用下列工具來建立管線： **Visual Studio**、 **Azure PowerShell**、 **Azure Resource Manager 範本**、 **.net API**和 **REST API**。 請參閱「 [複製活動」教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 課程，以取得使用複製活動建立管線的逐步指示。
+您也可以使用下列工具來建立管線： **Visual Studio**、 **Azure PowerShell**、 **Azure Resource Manager 範本**、 **.net API** 和 **REST API**。 請參閱「 [複製活動」教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 課程，以取得使用複製活動建立管線的逐步指示。
 
 不論您是使用工具還是 API，都需執行下列步驟來建立將資料從來源資料存放區移到接收資料存放區的管線：
 
-1. 建立**連結服務**，將輸入和輸出資料存放區連結到資料處理站。
+1. 建立 **連結服務**，將輸入和輸出資料存放區連結到資料處理站。
 2. 建立 **資料集** 以代表複製作業的輸入和輸出資料。
 3. 建立具有複製活動的 **管線** ，該活動會採用資料集做為輸入，並使用資料集做為輸出。
 
@@ -60,14 +60,14 @@ ms.locfileid: "85847560"
 ## <a name="linked-service-properties"></a>已連結的服務屬性
 下表提供 OData 連結服務專屬 JSON 元素的說明。
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
 | type |Type 屬性必須設定為： **OData** |是 |
 | url |OData 服務的 URL。 |是 |
 | authenticationType |用來連線到 OData 來源的驗證類型。 <br/><br/> 若為雲端 OData，可能的值為 Anonymous、Basic 和 OAuth (請注意，Azure Data Factory 目前僅支援 Azure Active Directory 架構的 OAuth)。 <br/><br/> 若為內部部署 OData，可能的值為 Anonymous、Basic 和 Windows。 |是 |
 | username |如果您要使用 Basic 驗證，請指定使用者名稱。 |是 (只在您使用基本驗證時) |
 | 密碼 |指定您為使用者名稱所指定之使用者帳戶的密碼。 |是 (只在您使用基本驗證時) |
-| authorizedCredential |如果您使用 OAuth，按一下 Data Factory 複製精靈或編輯器中的 [授權]**** 按鈕，然後輸入您的認證，接著將會自動產生這個屬性的值。 |是 (只有在您使用 OAuth 驗證時) |
+| authorizedCredential |如果您使用 OAuth，按一下 Data Factory 複製精靈或編輯器中的 [授權] 按鈕，然後輸入您的認證，接著將會自動產生這個屬性的值。 |是 (只有在您使用 OAuth 驗證時) |
 | gatewayName |Data Factory 服務應該用來連接到內部部署 OData 服務的閘道器名稱。 只有當您從內部部署 OData 來源複製資料時才指定。 |否 |
 
 ### <a name="using-basic-authentication"></a>使用基本驗證
@@ -145,9 +145,9 @@ ms.locfileid: "85847560"
 
 每個資料集類型的 **>typeproperties** 區段都不同，並提供資料存放區中資料位置的相關資訊。 **ODataResource** (包含 OData 資料集) 類型資料集的 typeProperties 區段有下列屬性
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| path |OData 資源的路徑 |否 |
+| 路徑 |OData 資源的路徑 |否 |
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 如需定義活動的區段和屬性完整清單，請參閱[建立管線](data-factory-create-pipelines.md)一文。 屬性 (例如名稱、描述、輸入和輸出資料表，以及原則) 適用於所有類型的活動。
@@ -156,7 +156,7 @@ ms.locfileid: "85847560"
 
 如果來源類型為 **RelationalSource** (包含 OData)，則 typeProperties 區段可使用下列屬性：
 
-| 屬性 | 說明 | 範例 | 必要 |
+| 屬性 | 描述 | 範例 | 必要 |
 | --- | --- | --- | --- |
 | 查詢 |使用自訂查詢來讀取資料。 |「?$select=Name, Description&$top=5」 |否 |
 

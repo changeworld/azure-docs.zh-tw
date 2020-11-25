@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/16/2020
 ms.openlocfilehash: feeb709f67a0e75f5980ec0520b95feb7edd5960
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124402"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018812"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>使用 Azure Machine Learning Studio (傳統版) 函式調整串流分析作業
 
@@ -52,7 +52,7 @@ ms.locfileid: "93124402"
 
 ![使用 Studio (傳統) 函式調整串流分析兩個作業範例](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "使用 Studio (傳統) 函式調整串流分析兩個作業範例")
 
-一般情況下，* *_B_* _ 針對批次大小， _*_L_*_ 在批次大小 B 的 web 服務延遲（以毫秒為單位），具有 _*_N_*_ 個 su 的串流分析作業的輸送量為：
+一般情況下，**_B_* _ 針對批次大小， _*_L_*_ 在批次大小 B 的 web 服務延遲（以毫秒為單位），具有 _*_N_*_ 個 su 的串流分析作業的輸送量為：
 
 ![使用 Studio (傳統) 函數公式調整串流分析](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "使用 Studio (傳統) 函數公式調整串流分析")
 
@@ -63,7 +63,7 @@ ms.locfileid: "93124402"
 ## <a name="example--sentiment-analysis"></a>範例 – 情感分析
 下列範例包含情感 analysis Studio (傳統) 函數的串流分析作業，如 [串流分析 Machine Learning Studio (傳統) 整合教學](stream-analytics-machine-learning-integration-tutorial.md)課程中所述。
 
-此查詢是一個簡單的完整資料分割查詢，後面接著 _ *情感* * 函數，如下列範例所示：
+此查詢是一個簡單的完整資料分割查詢，後面接著 _ *情感** 函數，如下列範例所示：
 
 ```SQL
     WITH subquery AS (
@@ -86,9 +86,9 @@ ms.locfileid: "93124402"
 1. 增加批次大小。
 2. 分割輸入串流以平行處理事件。
 
-使用第一個選項時，會增加作業 **延遲** 。
+使用第一個選項時，會增加作業 **延遲**。
 
-使用第二個選項時，您必須布建更多 su，才能讓相同的並行 Studio (傳統) web 服務要求。 這個較大量的 SU 會增加作業 **成本** 。
+使用第二個選項時，您必須布建更多 su，才能讓相同的並行 Studio (傳統) web 服務要求。 這個較大量的 SU 會增加作業 **成本**。
 
 讓我們看看以下各種批次大小與延遲測量值的變化：
 
@@ -99,7 +99,7 @@ ms.locfileid: "93124402"
 | 300 毫秒 | 一批次 10,000 個事件 |
 | 500 毫秒 | 一批次 25,000 個事件 |
 
-1. 使用第一個選項 ( **不要** 佈建更多 SU)。 批次大小可以增加到 **25,000** 。 以這種方式增加批次大小，可讓工作處理具有20個同時連接到 Studio (傳統) web 服務 (的1000000事件，) 的延遲為500毫秒。 因此，串流分析作業的額外延遲是因為對 Studio 的情感函式要求 (傳統) web 服務要求會從 **200 毫秒** 增加到 **500 毫秒** 。 不過，批次大小 **無法** 無限增加，因為 Studio (傳統) web 服務需要要求的承載大小為 4 MB 或更小，而 web 服務要求會在100秒的作業後超時。
+1. 使用第一個選項 (**不要** 佈建更多 SU)。 批次大小可以增加到 **25,000**。 以這種方式增加批次大小，可讓工作處理具有20個同時連接到 Studio (傳統) web 服務 (的1000000事件，) 的延遲為500毫秒。 因此，串流分析作業的額外延遲是因為對 Studio 的情感函式要求 (傳統) web 服務要求會從 **200 毫秒** 增加到 **500 毫秒**。 不過，批次大小 **無法** 無限增加，因為 Studio (傳統) web 服務需要要求的承載大小為 4 MB 或更小，而 web 服務要求會在100秒的作業後超時。
 1. 使用第二個選項，批次大小會保留為 1000、Web 服務延遲為 200 毫秒，則每 20 個對 Web 服務的同時連線就能夠處理 1000 * 20 * 5 個事件 = 每秒 100,000。 因此若要每秒處理 1,000,000 個事件，作業會需要 60 SU。 相較於第一個選項，串流分析作業會產生更多 Web 服務批次要求，進而使成本提高。
 
 下表是不同 SU 和批次大小的串流分析作業輸送量 (以每秒的事件數目表示)。
@@ -126,11 +126,11 @@ ms.locfileid: "93124402"
 
 其定義如下：
 
-**函式要求** ：函式要求的數目。
+**函式要求**：函式要求的數目。
 
-**函式事件** ：函式要求中的事件數目。
+**函式事件**：函式要求中的事件數目。
 
-**失敗的函式要求** ：失敗的函式要求數目。
+**失敗的函式要求**：失敗的函式要求數目。
 
 ## <a name="key-takeaways"></a>重要心得
 

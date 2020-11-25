@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
 ms.openlocfilehash: c7e7509f18e7511cd60099a70785b4e2c890afad
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171628"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019288"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>建立和設定復原服務保存庫
 
@@ -26,14 +26,14 @@ Azure 備份會自動處理保存庫的儲存體。 您必須指定該儲存體�
 >- 如果您已設定備份，且必須從 GRS 移至 LRS，請 [參閱這些](#how-to-change-from-grs-to-lrs-after-configuring-backup)因應措施。
 
 1. 從 [復原 **服務保存庫** ] 窗格中，選取新的保存庫。 在 [ **設定** ] 區段下，選取 [  **屬性**]。
-1. 在 [ **屬性**] 中的 [ **備份**設定] 下，選取 [ **更新**]。
+1. 在 [ **屬性**] 中的 [ **備份** 設定] 下，選取 [ **更新**]。
 
 1. 選取儲存體複寫類型，然後選取 [**儲存]。**
 
      ![為新保存庫設定儲存體組態](./media/backup-create-rs-vault/recovery-services-vault-backup-configuration.png)
 
    - 如果您使用 Azure 作為主要的備份儲存體端點，建議您繼續使用預設的 **地理區域冗余** 設定。
-   - 如果您未使用 Azure 做為主要的備份儲存體端點，則選擇 [本地備援]****，以減少 Azure 儲存體成本。
+   - 如果您未使用 Azure 做為主要的備份儲存體端點，則選擇 [本地備援]，以減少 Azure 儲存體成本。
    - 深入瞭解 [地理](../storage/common/storage-redundancy.md#geo-redundant-storage) 和 [本機](../storage/common/storage-redundancy.md#locally-redundant-storage) 冗余。
    - 如果您需要在區域中沒有停機的資料可用性，請保證資料存放區，然後選擇 [區域多餘的儲存體](../storage/common/storage-redundancy.md#zone-redundant-storage)。
 
@@ -42,7 +42,7 @@ Azure 備份會自動處理保存庫的儲存體。 您必須指定該儲存體�
 
 ## <a name="set-cross-region-restore"></a>設定跨區域還原
 
-還原選項 **跨區域還原 (CRR) ** 可讓您在次要的 [Azure 配對區域](../best-practices-availability-paired-regions.md)中還原資料。
+還原選項 **跨區域還原 (CRR)** 可讓您在次要的 [Azure 配對區域](../best-practices-availability-paired-regions.md)中還原資料。
 
 它支援下列資料來源：
 
@@ -57,7 +57,7 @@ Azure 備份會自動處理保存庫的儲存體。 您必須指定該儲存體�
 
 還原 VM 時，您可以還原 VM 或其磁片。 如果您要從裝載于 Azure Vm 上的 SQL/SAP Hana 資料庫還原，則可以還原資料庫或其檔案。
 
-若要選擇這項功能，請選取 [**備份**設定] 窗格中的 [**啟用跨區域還原**]。
+若要選擇這項功能，請選取 [**備份** 設定] 窗格中的 [**啟用跨區域還原**]。
 
 因為此程式位於儲存體層級，所以會 [影響價格](https://azure.microsoft.com/pricing/details/backup/)。
 
@@ -110,11 +110,11 @@ Azure 備份會自動處理保存庫的儲存體。 您必須指定該儲存體�
 
 強烈建議您先檢閱 [儲存體複寫類型] 和 [安全性設定] 的預設設定，再於保存庫中設定備份。
 
-- 依預設，**儲存體複寫類型**會設定為**異地冗余** (GRS) 。 設定備份之後，[修改] 選項就會停用。
+- 依預設，**儲存體複寫類型** 會設定為 **異地冗余** (GRS) 。 設定備份之後，[修改] 選項就會停用。
   - 如果您還沒有設定備份，請 [遵循下列步驟](#set-storage-redundancy) 來檢查和修改設定。
   - 如果您已設定備份，且必須從 GRS 移至 LRS，請 [參閱這些](#how-to-change-from-grs-to-lrs-after-configuring-backup)因應措施。
 
-- 預設會在新建立的保存庫上**啟用**虛**刪除**，以防止備份資料遭到意外或惡意刪除。 [請遵循下列步驟](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete) 來檢查和修改設定。
+- 預設會在新建立的保存庫上 **啟用** 虛 **刪除**，以防止備份資料遭到意外或惡意刪除。 [請遵循下列步驟](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete) 來檢查和修改設定。
 
 ### <a name="how-to-change-from-grs-to-lrs-after-configuring-backup"></a>設定備份之後如何從 GRS 變更為 LRS
 

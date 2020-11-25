@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
 ms.openlocfilehash: f597e58c70d6ac9daff753f5c0a54199c2383c42
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746175"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019495"
 ---
 # <a name="manage-your-function-app"></a>管理您的函數應用程式 
 
@@ -29,11 +29,11 @@ ms.locfileid: "92746175"
 
 1. 若要開始，請移至 [Azure 入口網站]，然後登入您的 Azure 帳戶。 在入口網站頂端的搜尋列中，輸入函數應用程式的名稱，然後從清單中選取它。 
 
-2. 在左窗格的 [設定] 底下 **，選取 [****設定** ]。
+2. 在左窗格的 [設定] 底下 **，選取 [****設定**]。
 
     :::image type="content" source="./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png" alt-text="Azure 入口網站中的函數應用程式概觀":::
 
-您可以從 [總覽] 頁面流覽至管理函數應用程式所需的所有專案，特別是 **[應用程式設定](#settings)** 和 **[平臺功能](#platform-features)** 。
+您可以從 [總覽] 頁面流覽至管理函數應用程式所需的所有專案，特別是 **[應用程式設定](#settings)** 和 **[平臺功能](#platform-features)**。
 
 ## <a name="application-settings"></a><a name="settings"></a>應用程式設定
 

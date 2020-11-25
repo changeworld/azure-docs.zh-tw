@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: sethm
 ms.openlocfilehash: fb3c95b74128f1da7b29a290e17fefe21987dd76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089935"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019409"
 ---
 ## <a name="webapi-project"></a>WebAPI 專案
 
-1. 在 Visual Studio 中，開啟您在 [通知使用者] **** 教學課程中所建立的 **AppBackend** 專案。
+1. 在 Visual Studio 中，開啟您在 [通知使用者]  教學課程中所建立的 **AppBackend** 專案。
 2. 在 Notifications.cs 中，將整個 **通知** 類別取代為下列程式碼。 請確定使用通知中樞的連接字串 (包含完整存取權) 和中樞名稱來取代預留位置。 您可以從 [Azure 入口網站](https://portal.azure.com)取得這些值。 此模組現會顯示即將傳送的不同安全通知。 在完整的實作中，通知會儲存在資料庫中。為了本案例的方便起見，我們會將通知儲存在記憶體中。
 
    ```csharp
@@ -94,5 +94,5 @@ ms.locfileid: "90089935"
 
 請注意 `Post` 方法目前不會傳送快顯通知。 它會傳送只包含通知 ID 且非任何敏感內容的原始通知。 另外，針對您未在通知中樞上設定其認證的平台，請務必為傳送作業加上註解，因為他們將會導致錯誤。
 
-1. 為了可以從所有裝置存取此應用程式，我們現在可以將它重新部署到 Azure 網站。 以滑鼠右鍵按一下 **AppBackend** 專案，然後選取 [發佈]****。
-2. 選取 Azure 網站作為您的發行目標。 使用您的 Azure 帳戶登入，並選取現有或新的網站，並在 [**連接**] 索引標籤中記下 [**目的地 URL** ] 屬性。我們稍後會在本教學課程中將此 URL 參考為您的*後端端點*。 按一下 [發佈] 。
+1. 為了可以從所有裝置存取此應用程式，我們現在可以將它重新部署到 Azure 網站。 以滑鼠右鍵按一下 **AppBackend** 專案，然後選取 [發佈]。
+2. 選取 Azure 網站作為您的發行目標。 使用您的 Azure 帳戶登入，並選取現有或新的網站，並在 [**連接**] 索引標籤中記下 [**目的地 URL** ] 屬性。我們稍後會在本教學課程中將此 URL 參考為您的 *後端端點*。 按一下 [發佈] 。

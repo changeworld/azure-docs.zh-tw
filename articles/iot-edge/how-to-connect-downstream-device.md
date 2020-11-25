@@ -13,11 +13,11 @@ ms.custom:
 - mqtt
 - devx-track-js
 ms.openlocfilehash: 78600b7b57a7c30fc609434a700f13fa21e079ce
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659636"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019254"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>將下游裝置連線到 Azure IoT Edge 閘道
 
@@ -37,7 +37,7 @@ ms.locfileid: "94659636"
 
 在本文中，*閘道* 和 *IoT Edge 閘道* 這兩個詞是指設定為透明閘道的 IoT Edge 裝置。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 在設定 IoT Edge 裝置時，擁有用來產生裝置 CA 憑證的根 CA 憑證檔案，作為下游裝置上可用 [的透明閘道](how-to-create-transparent-gateway.md) 。 下游裝置會使用此憑證來驗證閘道裝置的身分識別。 如果您使用了示範憑證，根 CA 憑證就稱為 **azure-iot-test-only.root.ca.cert.pem**。
 * 具有指向閘道裝置的已修改連接字串，如 [驗證下游裝置以 Azure IoT 中樞](how-to-authenticate-downstream-device.md)所述。
@@ -127,7 +127,7 @@ import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorel
 
 * 您複製並儲存在下游裝置上某個位置之根 CA 憑證的完整路徑。
 
-    例如 `<path>/azure-iot-test-only.root.ca.cert.pem`。
+    例如： `<path>/azure-iot-test-only.root.ca.cert.pem` 。
 
 ### <a name="nodejs"></a>NodeJS
 

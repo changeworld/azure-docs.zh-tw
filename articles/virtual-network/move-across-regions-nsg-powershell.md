@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 08/31/2019
 ms.author: allensu
 ms.openlocfilehash: 04abc051cec8a6fb38ce6aa8f5347ae06cb8bd1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84688444"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019747"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-azure-powershell"></a>使用 Azure PowerShell 將 Azure 網路安全性群組 (NSG) 移至另一個區域
 
@@ -106,9 +106,9 @@ Azure 安全性群組無法從一個區域移至另一個區域。 不過，您�
     Get-AzLocation | format-table
     
     ```
-8. 您也可以視需要變更** \<resource-group-name> json**中的其他參數，並選擇性地視您的需求而定：
+8. 您也可以視需要變更 **\<resource-group-name> json** 中的其他參數，並選擇性地視您的需求而定：
 
-    * **安全性規則**-您可以藉由在** \<resource-group-name> json**檔案的**securityRules**區段中新增或移除規則，來編輯要部署到目標 NSG 的規則：
+    * **安全性規則**-您可以藉由在 **\<resource-group-name> json** 檔案的 **securityRules** 區段中新增或移除規則，來編輯要部署到目標 NSG 的規則：
 
         ```json
            "resources": [
@@ -144,7 +144,7 @@ Azure 安全性群組無法從一個區域移至另一個區域。 不過，您�
             
         ```
 
-        若要完成新增或移除目標 NSG 中的規則，您也必須以下列範例的格式，在** \<resource-group-name> json**檔案的結尾編輯自訂規則類型：
+        若要完成新增或移除目標 NSG 中的規則，您也必須以下列範例的格式，在 **\<resource-group-name> json** 檔案的結尾編輯自訂規則類型：
 
         ```json
            {
@@ -227,7 +227,7 @@ Remove-AzNetworkSecurityGroup -Name <source-nsg-name> -ResourceGroupName <source
 
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本教學課程中，您已將 Azure 網路安全性群組從一個區域移至另一個區域，並清除了來源資源。  若要深入了解如何在 Azure 中的區域之間移動資源和災害復原，請參閱：
 

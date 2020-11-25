@@ -7,11 +7,11 @@ ms.date: 09/17/2018
 ms.author: masnider
 ms.custom: sfrev
 ms.openlocfilehash: 7b2f1a170a792e0b4d069258264407c121dab3ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260238"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018829"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric 術語概觀
 
@@ -21,7 +21,7 @@ Azure Service Fabric 是分散式系統平台，可讓您輕鬆封裝、部署�
 
 **叢集**：由虛擬或實體機器連結組成的網路，微服務可於其中部署和管理。  叢集可擴充至數千部機器。
 
-**節點**：屬於叢集一部分的電腦或 VM 都稱為節點**。 每個節點都會被指派一個節點名稱 (字串) 。 節點具有各種特性，如 placement 屬性。 每個電腦或 VM 皆有自動啟動的 Windows 服務 `FabricHost.exe`，該服務會在開機時開始執行，然後啟動兩個執行檔：`Fabric.exe` 和 `FabricGateway.exe`。 這兩個執行檔構成節點。 在測試案例中，您可以藉由執行 `Fabric.exe` 和 `FabricGateway.exe` 的多個執行個體，在單一電腦或 VM 上裝載多個節點。
+**節點**：屬於叢集一部分的電腦或 VM 都稱為節點。 每個節點都會被指派一個節點名稱 (字串) 。 節點具有各種特性，如 placement 屬性。 每個電腦或 VM 皆有自動啟動的 Windows 服務 `FabricHost.exe`，該服務會在開機時開始執行，然後啟動兩個執行檔：`Fabric.exe` 和 `FabricGateway.exe`。 這兩個執行檔構成節點。 在測試案例中，您可以藉由執行 `Fabric.exe` 和 `FabricGateway.exe` 的多個執行個體，在單一電腦或 VM 上裝載多個節點。
 
 ## <a name="application-and-service-concepts"></a>應用程式和服務概念
 
@@ -69,20 +69,20 @@ Azure Service Fabric 是分散式系統平台，可讓您輕鬆封裝、部署�
 服務分為兩種：
 
 * **無狀態**：當服務的持續狀態儲存在外部儲存體服務（例如 Azure 儲存體、Azure SQL Database 或 Azure Cosmos DB）時，請使用無狀態服務。 當服務沒有持續性儲存體時，請使用無狀態服務。 以計算機服務為例，首先要傳遞值給服務，服務用這些值執行計算，然後傳回結果。
-* 具**狀態**：當您想要 Service Fabric 透過其可靠的集合或 Reliable Actors 程式設計模型來管理您的服務狀態時，請使用具狀態服務。 當您在建立具名服務時，指定想要讓狀態分散到多少個資料分割 (提供延展性)。 也請指定跨節點覆寫狀態的次數 (提供可靠性)。 每個具名服務都有一個主要複本和多個次要複本。 您可以在寫入主要複本時修改具名服務的狀態。 Service Fabric 接著會將此狀態複寫至所有次要複本，以保持狀態同步。Service Fabric 會在主要複本失敗時自動偵測，並將現有的次要複本升級為主要複本。 然後 Service Fabric 會建立新的次要複本。  
+* 具 **狀態**：當您想要 Service Fabric 透過其可靠的集合或 Reliable Actors 程式設計模型來管理您的服務狀態時，請使用具狀態服務。 當您在建立具名服務時，指定想要讓狀態分散到多少個資料分割 (提供延展性)。 也請指定跨節點覆寫狀態的次數 (提供可靠性)。 每個具名服務都有一個主要複本和多個次要複本。 您可以在寫入主要複本時修改具名服務的狀態。 Service Fabric 接著會將此狀態複寫至所有次要複本，以保持狀態同步。Service Fabric 會在主要複本失敗時自動偵測，並將現有的次要複本升級為主要複本。 然後 Service Fabric 會建立新的次要複本。  
 
-**複本和執行個體**會參照正在部署與執行之服務的程式碼 (及具狀態服務的狀態)。 請參閱[複本和執行個體](service-fabric-concepts-replica-lifecycle.md)。
+**複本和執行個體** 會參照正在部署與執行之服務的程式碼 (及具狀態服務的狀態)。 請參閱[複本和執行個體](service-fabric-concepts-replica-lifecycle.md)。
 
-**重新設定**是指在服務複本集中進行任何變更的流程。 請參閱[重新設定](service-fabric-concepts-reconfiguration.md)。
+**重新設定** 是指在服務複本集中進行任何變更的流程。 請參閱[重新設定](service-fabric-concepts-reconfiguration.md)。
 
 **服務封裝**：磁碟目錄，其中包含服務類型的檔案 `ServiceManifest.xml` 。 這個檔案會參考此服務類型的程式碼、靜態資料和組態封裝。 此應用程式類型的 `ApplicationManifest.xml` 檔會參考此服務封裝目錄中的檔案。 例如，服務套件可能會參考構成資料庫服務的程式碼、靜態資料和設定套件。
 
 **具名服務**：建立具名應用程式之後，可以在叢集內建立應用程式其中一種服務類型的執行個體。 您可以使用它的名稱/版本以指定服務類型。 需為每個服務類型執行個體指派一個 URI (名稱範圍需在其具名應用程式的 URI 之下)。 例如，如果您在具名應用程式 MyNamedApp 內建立 MyDatabase 具名服務，URI 看起來就像這樣： `"fabric:/MyNamedApp/MyDatabase"`。 在具名應用程式中，可以建立數個具名服務。 每個具名服務可以有自己的分割配置和執行個體或複本計數。
 
-程式**代碼封裝**：磁碟目錄，其中包含服務類型的可執行檔，通常是 EXE/DLL 檔案。 此服務類型的 `ServiceManifest.xml` 檔會參考此程式碼封裝目錄中的檔案。 當您建立具名服務時，會將程式碼套件複製到選取用來執行具名服務的一或多個節點。 然後程式碼會開始執行。 程式碼封裝執行檔分成兩種：
+程式 **代碼封裝**：磁碟目錄，其中包含服務類型的可執行檔，通常是 EXE/DLL 檔案。 此服務類型的 `ServiceManifest.xml` 檔會參考此程式碼封裝目錄中的檔案。 當您建立具名服務時，會將程式碼套件複製到選取用來執行具名服務的一或多個節點。 然後程式碼會開始執行。 程式碼封裝執行檔分成兩種：
 
 * **來賓執行檔**：在主機作業系統 (Windows 或 Linux) 上以原樣執行的執行檔。 這些可執行檔未連結至或參考任何 Service Fabric 執行階段檔案作業，因此不會使用任何 Service Fabric 程式設計模型。 這些可執行檔無法使用某些 Service Fabric 功能，例如端點探索的命名服務。 來賓可執行檔無法報告每個服務執行個體特定的負載計量。
-* **服務主機可執行**檔：使用 Service Fabric 程式設計模型的可執行檔，方法是連結至 Service Fabric 執行時間檔案，以啟用 Service Fabric 功能。 例如，具名服務執行個體可以在 Service Fabric 命名服務註冊端點，也可以報告負載度量。
+* **服務主機可執行** 檔：使用 Service Fabric 程式設計模型的可執行檔，方法是連結至 Service Fabric 執行時間檔案，以啟用 Service Fabric 功能。 例如，具名服務執行個體可以在 Service Fabric 命名服務註冊端點，也可以報告負載度量。
 
 **資料套件**：磁碟目錄，包含此服務類型的靜態唯讀資料檔，通常是相片、音訊和視訊檔。 此服務類型的 `ServiceManifest.xml` 檔會參考此資料封裝目錄中的檔案。 當您建立具名服務時，會將資料套件複製到選取用來執行具名服務的一或多個節點。 程式碼會開始執行，此時即可存取資料檔案。
 
@@ -139,7 +139,7 @@ Service Fabric 資源是可個別部署至 Service Fabric 的任何項目，包�
 
 您也可以在 Service Fabric 上執行現有的應用程式：
 
-****：Service Fabric 支援將 Docker 容器部署至 Linux，也支援將 Windows Server 容器部署至 Windows Server 2016，並支援 Hyper-V 隔離模式。 在 Service Fabric [應用程式模型](service-fabric-application-model.md)中，容器代表放置多個服務複本的應用程式主機。 Service Fabric 可以執行任何容器，其案例類似於來賓可執行檔案例，可讓您封裝容器中的現有應用程式。 此外，您也可以在 [容器內執行 Service Fabric 服務](service-fabric-services-inside-containers.md) 。
+：Service Fabric 支援將 Docker 容器部署至 Linux，也支援將 Windows Server 容器部署至 Windows Server 2016，並支援 Hyper-V 隔離模式。 在 Service Fabric [應用程式模型](service-fabric-application-model.md)中，容器代表放置多個服務複本的應用程式主機。 Service Fabric 可以執行任何容器，其案例類似於來賓可執行檔案例，可讓您封裝容器中的現有應用程式。 此外，您也可以在 [容器內執行 Service Fabric 服務](service-fabric-services-inside-containers.md) 。
 
 **來賓可執行檔**：您可以在 Azure Service Fabric 即服務中執行任何類型的程式碼，例如 Node.js、Python、JAVA 或 c + +。 Service Fabric 將這些類型的服務稱為來賓可執行檔，並且視為無狀態服務。 在 Service Fabric 叢集中執行來賓可執行檔的 優點包括高可用性、健康情況監控、應用程式生命週期管理、高密度及可搜尋性。
 
@@ -164,17 +164,17 @@ Service Fabric 是一項開放原始碼平台技術，有數個不同的服務�
 
 | 應用程式類型 | 描述依據 | Azure Service Fabric Mesh | Azure Service Fabric 叢集 (任何 OS)| 本機叢集 | 獨立叢集 |
 |---|---|---|---|---|---|
-| Service Fabric Mesh 應用程式 | 資源模型 (YAML & JSON) | 支援 |不支援 | Windows - 支援，Linux 和 Mac - 不支援 | Windows - 不支援 |
+| Service Fabric Mesh 應用程式 | 資源模型 (YAML & JSON) | 支援 |不受支援 | Windows - 支援，Linux 和 Mac - 不支援 | Windows - 不支援 |
 |Service Fabric 原生應用程式 | 原生應用程式模型 (XML) | 不支援| 支援|支援|Windows - 支援|
 
 下表針對 Service Fabric 描述不同的應用程式模型以及對應存在的工具。
 
 | 應用程式類型 | 描述依據 | Visual Studio | Eclipse | SFCTL | AZ CLI | PowerShell|
 |---|---|---|---|---|---|---|
-| Service Fabric Mesh 應用程式 | 資源模型 (YAML & JSON) | VS 2017 |不支援 |不支援 | 支援 - 僅限 Mesh 環境 | 不支援|
+| Service Fabric Mesh 應用程式 | 資源模型 (YAML & JSON) | VS 2017 |不受支援 |不受支援 | 支援 - 僅限 Mesh 環境 | 不支援|
 |Service Fabric 原生應用程式 | 原生應用程式模型 (XML) | VS 2017 和 VS 2015| 支援|支援|支援|支援|
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解 Service Fabric：
 

@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 2f585dd80219afac7c67eebabd72cb41dce0b673
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874503"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018693"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>使用現有的應用程式閘道 (AGIC) 安裝應用程式閘道輸入控制器
 
@@ -27,7 +27,7 @@ AGIC 會 [監視 Kubernetes 輸入](https://kubernetes.io/docs/concepts/services
 - [使用 Helm 安裝輸入控制器](#install-ingress-controller-as-a-helm-chart)
 - [多叢集/共用應用程式閘道](#multi-cluster--shared-application-gateway)：在環境中安裝 AGIC，其中的應用程式閘道會在一或多個 AKS 叢集和/或其他 Azure 元件之間共用。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 本檔假設您已安裝下列工具和基礎結構：
 - 已啟用[Advanced 網路](../aks/configure-azure-cni.md)的[AKS](https://azure.microsoft.com/services/kubernetes-service/)
 - 與 AKS 位於相同虛擬網路中的[應用程式閘道 v2](./tutorial-autoscale-ps.md)

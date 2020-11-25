@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: 70edf224494fdf1395d59d1c591d0369b9b20557
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93332979"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018081"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-powershell"></a>教學課程：使用 PowerShell 設計適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
 
@@ -66,7 +66,7 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 
 使用 `New-AzPostgreSqlServer` Cmdlet 建立適用於 PostgreSQL 的 Azure 資料庫伺服器。 一部伺服器可以管理多個資料庫。 一般而言，每個專案或每個使用者會使用個別的資料庫。
 
-下列範例會在 **美國西部** 區域中建立名為 **mydemoserver** 的 PostgreSQL 伺服器，其位於 **myresourcegroup** 資源群組中，且伺服器系統管理員登入為 **myadmin** 。 這是一般用途定價層中的 Gen 5 伺服器，已啟用 2 個虛擬核心和異地備援備份。 記錄範例第一行中使用的密碼，因為這是 PostgreSQL 伺服器系統管理員帳戶的密碼。
+下列範例會在 **美國西部** 區域中建立名為 **mydemoserver** 的 PostgreSQL 伺服器，其位於 **myresourcegroup** 資源群組中，且伺服器系統管理員登入為 **myadmin**。 這是一般用途定價層中的 Gen 5 伺服器，已啟用 2 個虛擬核心和異地備援備份。 記錄範例第一行中使用的密碼，因為這是 PostgreSQL 伺服器系統管理員帳戶的密碼。
 
 > [!TIP]
 > 伺服器名稱會對應至 DNS 名稱，而且在 Azure 中必須是全域唯一的。
@@ -76,7 +76,7 @@ $Password = Read-Host -Prompt 'Please enter your password' -AsSecureString
 New-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup -Sku GP_Gen5_2 -GeoRedundantBackup Enabled -Location westus -AdministratorUsername myadmin -AdministratorLoginPassword $Password
 ```
 
-**Sku** 參數值會遵循慣例 **pricing-tier\_compute-generation\_vCores** ，如下列範例所示。
+**Sku** 參數值會遵循慣例 **pricing-tier\_compute-generation\_vCores**，如下列範例所示。
 
 - `-Sku B_Gen5_1` 對應於基本、第 5 代和 1 個虛擬核心。 此選項是最小的可用 SKU。
 - `-Sku GP_Gen5_32` 對應於一般用途、第 5 代和 32 個 vCore。
@@ -142,7 +142,7 @@ mydemoserver.postgresql.database.azure.com       myadmin
    CREATE DATABASE mypgsqldb;
    ```
 
-1. 在提示字元，執行下列命令以將連線切換到新建立的資料庫 **mypgsqldb** ：
+1. 在提示字元，執行下列命令以將連線切換到新建立的資料庫 **mypgsqldb**：
 
    ```sql
    \c mypgsqldb

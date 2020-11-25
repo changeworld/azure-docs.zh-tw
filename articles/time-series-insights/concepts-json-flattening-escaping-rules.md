@@ -10,11 +10,11 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.openlocfilehash: 0839d2c734418824952f37cb177490e56e1133c5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023304"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017962"
 ---
 # <a name="json-flattening-escaping-and-array-handling"></a>JSON 壓平合併、逸出和陣列處理
 
@@ -182,6 +182,6 @@ ms.locfileid: "95023304"
 | ---- | ---- | ---- |
 | `2020-11-01T10:00:00.000Z` | `800500054755`| ``[{"value": 120},{"value":124}]`` |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解您環境的 [輸送量限制](./concepts-streaming-ingress-throughput-limits.md)

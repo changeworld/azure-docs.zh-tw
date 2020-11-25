@@ -4,11 +4,11 @@ description: 使用 Kudu 部署服務的 .zip 檔案部署工具來發佈 Azure 
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.openlocfilehash: e104661dcdf1f6c6fd6dd5eb1024748980e7931f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85833047"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018413"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions 的 ZIP 部署
 
@@ -46,7 +46,7 @@ Azure Functions 擁有 Azure App Service 所提供的全套持續部署與整合
 
   1. 登入 [Azure 入口網站](https://portal.azure.com)，然後移至您的函式應用程式。
 
-  2. 在 [概觀]**** 索引標籤上，選取 [下載應用程式內容]****。 選取下載選項，然後選取 [下載]****。
+  2. 在 [概觀] 索引標籤上，選取 [下載應用程式內容]。 選取下載選項，然後選取 [下載]。
 
       ![下載函式應用程式專案](./media/deployment-zip-push/download-project.png)
 
@@ -89,7 +89,7 @@ ZIP 部署會與這項功能整合，藉由將函式應用程式的設定 `WEBSI
 
 [!INCLUDE [app-service-deploy-zip-push-custom](../../includes/app-service-deploy-zip-push-custom.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [Azure Functions 的持續部署](functions-continuous-deployment.md)

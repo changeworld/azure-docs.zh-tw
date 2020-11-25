@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: 6288a10e111e42629abf5e09b84a6a7791dcfe95
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095929"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018217"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>在 Azure API 管理中使用外部 Redis 相容的快取
 
@@ -65,35 +65,35 @@ ms.locfileid: "93095929"
 > [!NOTE]
 > [ **使用來源** ] 設定會指定要使用已設定快取的 Azure 區域或自我裝載的閘道位置。 設定為 **預設** 值的快取會由具有特定相符區域或位置值的快取覆寫。
 >
-> 例如，如果 API 管理裝載於美國東部、東南亞和西歐區域，而而且已設定兩個快取，一個用於 [預設]  ，另一個用於 [東南亞]  ，則 [東南亞]  的 API 管理會使用自己的快取，而其他兩個區域則會使用 [預設]  快取項目。
+> 例如，如果 API 管理裝載於美國東部、東南亞和西歐區域，而而且已設定兩個快取，一個用於 [預設]，另一個用於 [東南亞]，則 [東南亞] 的 API 管理會使用自己的快取，而其他兩個區域則會使用 [預設] 快取項目。
 
 ### <a name="add-an-azure-cache-for-redis-from-the-same-subscription"></a>從相同的訂用帳戶新增 Azure Redis 快取
 
 1. 在 Azure 入口網站中瀏覽至您的 API 管理執行個體。
-2. 從左側功能表中選取 [外部快取]  索引標籤。
-3. 按一下 [+新增]  按鈕。
-4. 在 [快取執行個體]  下拉式欄位中選取您的快取。
+2. 從左側功能表中選取 [外部快取] 索引標籤。
+3. 按一下 [+新增] 按鈕。
+4. 在 [快取執行個體] 下拉式欄位中選取您的快取。
 5. 選取 [ **預設值** ]，或在 [ **使用來源** ] 下拉式欄位中指定所需的區域。
 6. 按一下 [儲存]。
 
 ### <a name="add-an-azure-cache-for-redis-hosted-outside-of-the-current-azure-subscription-or-azure-in-general"></a>新增裝載於目前 Azure 訂用帳戶或整體 Azure 外的 Azure Redis 快取
 
 1. 在 Azure 入口網站中瀏覽至您的 API 管理執行個體。
-2. 從左側功能表中選取 [外部快取]  索引標籤。
-3. 按一下 [+新增]  按鈕。
-4. 在 [快取執行個體]  下拉式欄位中選取 [自訂]  。
+2. 從左側功能表中選取 [外部快取] 索引標籤。
+3. 按一下 [+新增] 按鈕。
+4. 在 [快取執行個體] 下拉式欄位中選取 [自訂]。
 5. 選取 [ **預設值** ]，或在 [ **使用來源** ] 下拉式欄位中指定所需的區域。
-6. 在 [連接字串]  欄位中提供您的「Azure Redis 快取」連接字串。
+6. 在 [連接字串] 欄位中提供您的「Azure Redis 快取」連接字串。
 7. 按一下 [儲存]。
 
 ### <a name="add-a-redis-cache-to-a-self-hosted-gateway"></a>將 Redis 快取新增至自我裝載的閘道
 
 1. 在 Azure 入口網站中瀏覽至您的 API 管理執行個體。
-2. 從左側功能表中選取 [外部快取]  索引標籤。
-3. 按一下 [+新增]  按鈕。
-4. 在 [快取執行個體]  下拉式欄位中選取 [自訂]  。
-5. 在 [ **使用來源** ] 下拉式欄位中指定所需的自我裝載閘道位置或 **預設值** 。
-6. 在 [連接字串]  欄位中提供您的 Redis 快取連接字串。
+2. 從左側功能表中選取 [外部快取] 索引標籤。
+3. 按一下 [+新增] 按鈕。
+4. 在 [快取執行個體] 下拉式欄位中選取 [自訂]。
+5. 在 [**使用來源**] 下拉式欄位中指定所需的自我裝載閘道位置或 **預設值**。
+6. 在 [連接字串] 欄位中提供您的 Redis 快取連接字串。
 7. 按一下 [儲存]。
 
 ## <a name="use-the-external-cache"></a>使用外部快取

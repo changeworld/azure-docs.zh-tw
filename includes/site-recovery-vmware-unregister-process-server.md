@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 04/28/2019
 ms.author: ramamill
 ms.openlocfilehash: bff9457220efbb6a6b318550a5b2dd9af4ae230f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361379"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019173"
 ---
 針對您的特定情況，請遵循這些步驟。
 
@@ -17,7 +17,7 @@ ms.locfileid: "91361379"
 
 1. 以系統管理員身分建立處理序伺服器的遠端連線。
 2. 在 [控制台] 中開啟 [程式集] > [解除安裝程式]。
-3. 解除安裝 **Microsoft Azure Site Recovery 行動服務/主要目標伺服器**程式。
+3. 解除安裝 **Microsoft Azure Site Recovery 行動服務/主要目標伺服器** 程式。
 4. 解除安裝 **Microsoft Azure Site Recovery Configuration/Process Server** 程式。
 5. 將步驟 3 和 4 的程式解除安裝之後，您就可以解除安裝 **Microsoft Azure Site Recovery Configuration/Process Server 相依項目**。
 

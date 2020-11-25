@@ -9,19 +9,19 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotga
 ms.openlocfilehash: b9fc37c6589cdd0bc6a5cdce7b7ebebe2c6e9a85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531605"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019441"
 ---
 # <a name="iot-hub-device-provisioning-service-dps-terminology"></a>IoT 中樞裝置布建服務 (DPS) 術語
 
 IoT 中樞裝置佈建服務是 IoT 中樞適用的協助程式服務，用於設定在指定 IoT 中樞上的全自動佈建裝置作業。 您可以使用裝置布建服務，以安全且可擴充的方式布[建數百萬部裝置。](about-iot-dps.md#provisioning-process)
 
-裝置佈建程序分為兩個部分。 第一個部分是藉由 *註冊* 裝置，在裝置與 IoT 解決方案之間建立初始連線。 第二個部分是根據解決方案的特定需求套用正確的*設定*。 這兩個步驟都完成之後，就已完整「佈建」** 該裝置。 裝置佈建服務會自動進行這兩個步驟，以提供順暢的裝置佈建體驗。
+裝置佈建程序分為兩個部分。 第一個部分是藉由 *註冊* 裝置，在裝置與 IoT 解決方案之間建立初始連線。 第二個部分是根據解決方案的特定需求套用正確的 *設定*。 這兩個步驟都完成之後，就已完整「佈建」該裝置。 裝置佈建服務會自動進行這兩個步驟，以提供順暢的裝置佈建體驗。
 
-本文說明最適用於管理*服務*的佈建概念概觀。 本文與為裝置進行[雲端設定步驟](about-iot-dps.md#cloud-setup-step)，也就是部署準備工作的角色相關。
+本文說明最適用於管理 *服務* 的佈建概念概觀。 本文與為裝置進行[雲端設定步驟](about-iot-dps.md#cloud-setup-step)，也就是部署準備工作的角色相關。
 
 ## <a name="service-operations-endpoint"></a>服務作業端點
 
@@ -46,7 +46,7 @@ IoT 中樞裝置佈建服務是 IoT 中樞適用的協助程式服務，用於�
 
 * **透過申請清單進行靜態設定**：您在申請清單中指定的所需 IoT 中樞，其優先順序高於服務等級的配置原則。
 
-* **自訂 (使用 Azure Function) **：自訂配置原則可讓您更充分掌控裝置指派給 IoT 中樞的方式。 此作業可藉由在 Azure 函式中使用自訂程式碼將裝置指派給 IoT 中樞來完成。 裝置布建服務會呼叫您的 Azure 函式程式碼，以提供裝置的所有相關資訊和您的程式碼註冊。 您的函式程式碼會執行並傳回用來佈建裝置的 IoT 中樞資訊。
+* **自訂 (使用 Azure Function)**：自訂配置原則可讓您更充分掌控裝置指派給 IoT 中樞的方式。 此作業可藉由在 Azure 函式中使用自訂程式碼將裝置指派給 IoT 中樞來完成。 裝置布建服務會呼叫您的 Azure 函式程式碼，以提供裝置的所有相關資訊和您的程式碼註冊。 您的函式程式碼會執行並傳回用來佈建裝置的 IoT 中樞資訊。
 
 ## <a name="enrollment"></a>註冊
 
@@ -83,7 +83,7 @@ IoT 中樞裝置佈建服務是 IoT 中樞適用的協助程式服務，用於�
 裝置佈建服務支援下列形式的證明：
 * 以標準 X.509 憑證驗證流程為基礎的 **X.509 憑證**。 如需詳細資訊，請參閱 [x.509 證明](concepts-x509-attestation.md)。
 * **信賴平台模組 (TPM)** 是以 nonce 挑戰為基礎，使用金鑰的 TPM 標準，提供已簽署的共用存取簽章 (SAS) 權杖。 這不需要裝置上的實體 TPM，但服務預期會使用每個 [TPM 規格](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)的簽署金鑰進行證明。如需詳細資訊，請參閱 [TPM 證明](concepts-tpm-attestation.md)。
-* 以共用存取簽章為基礎的**對稱金鑰** (SAS) [安全性權杖](../iot-hub/iot-hub-devguide-security.md#security-tokens)，其包含雜湊簽章和內嵌到期日。 如需詳細資訊，請參閱[對稱金鑰證明](concepts-symmetric-key-attestation.md)。
+* 以共用存取簽章為基礎的 **對稱金鑰** (SAS) [安全性權杖](../iot-hub/iot-hub-devguide-security.md#security-tokens)，其包含雜湊簽章和內嵌到期日。 如需詳細資訊，請參閱[對稱金鑰證明](concepts-symmetric-key-attestation.md)。
 
 
 ## <a name="hardware-security-module"></a>硬體安全模組

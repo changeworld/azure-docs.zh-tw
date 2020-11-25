@@ -4,11 +4,11 @@ description: 瞭解如何在 Azure 實驗室服務中使用適用于教室實驗
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 3834e6910faea38e87489d1ad0075d4bd9b8c6c6
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376947"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018302"
 ---
 # <a name="dashboard-for-classroom-labs"></a>教室實驗室的儀表板
 本文說明 Azure 實驗室服務中的教室實驗室儀表板視圖。 

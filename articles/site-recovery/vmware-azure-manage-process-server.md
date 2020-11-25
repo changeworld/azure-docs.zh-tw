@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
 ms.openlocfilehash: a547a874c42d06d8453b154847561d8b5f0dabb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361378"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019174"
 ---
 # <a name="manage-process-servers"></a>管理處理序伺服器
 
@@ -48,7 +48,7 @@ ms.locfileid: "91361378"
     ![螢幕擷取畫面顯示已選取 [選取目標進程伺服器] 的 [負載平衡] 窗格。](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
 2. 按一下 [ **選取電腦**]，然後選擇您想要從目前的電腦移至目標進程伺服器的電腦。 系統會針對每個虛擬機器顯示平均資料變更的詳細資料。 然後按一下 [確定] 。 
-3. 在保存庫中，監視**Monitoring**  >  **Site Recovery 作業**監視下的作業進度。
+3. 在保存庫中，監視 **Monitoring**  >  **Site Recovery 作業** 監視下的作業進度。
 
 需要大約15分鐘的時間，變更才會反映在入口網站中。 如需更快速的效果，請重新整理設定 [伺服器](vmware-azure-manage-configuration-server.md#refresh-configuration-server)。
 
@@ -63,7 +63,7 @@ ms.locfileid: "91361378"
 
     ![螢幕擷取畫面：顯示 [選取目標進程伺服器] 窗格。](media/vmware-azure-manage-process-server/Switch.PNG)
 
-5. 在保存庫中，監視**Monitoring**  >  **Site Recovery 作業**監視下的作業進度。
+5. 在保存庫中，監視 **Monitoring**  >  **Site Recovery 作業** 監視下的作業進度。
 
 需要大約15分鐘的時間，變更才會反映在入口網站中。 如需更快速的效果，請重新整理設定 [伺服器](vmware-azure-manage-configuration-server.md#refresh-configuration-server)。
 

@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 06/11/2018
 ms.author: allensu
 ms.openlocfilehash: a799309b6e5d00db3b6c206187eec7097c9dc11a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887264"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018591"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>使用查詢字串來控制 Azure CDN 快取行為 - 進階層
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "84887264"
 使用 Azure 內容傳遞網路 (CDN)，可以控制 Web 要求內含查詢字串時的檔案快取方式。 在包含查詢字串的 Web 要求中，查詢字串是要求中問號 (?) 之後的部分。 查詢字串可以包含一或多個索引鍵/值組，其中的欄位名稱與其值是以等號 (=) 分隔。 每個索引鍵/值組是以 & 符號分隔。 例如 http:\//www.contoso.com/content.mov?field1=value1&field2=value2。 如果要求的查詢字串中有不止一個索引鍵/值組，其順序無關緊要。 
 
 > [!IMPORTANT]
-> 「標準」與「進階」CDN 產品提供相同的查詢字串快取功能，但兩者的使用者介面不同。 本文描述**來自 Verizon 的進階 Azure CDN** 介面。 如需了解使用 Azure CDN 標準產品進行的查詢字串快取，請參閱[使用查詢字串控制 Azure CDN 快取行為 - 標準層](cdn-query-string.md)。
+> 「標準」與「進階」CDN 產品提供相同的查詢字串快取功能，但兩者的使用者介面不同。 本文描述 **來自 Verizon 的進階 Azure CDN** 介面。 如需了解使用 Azure CDN 標準產品進行的查詢字串快取，請參閱[使用查詢字串控制 Azure CDN 快取行為 - 標準層](cdn-query-string.md)。
 >
 
 
@@ -50,17 +50,17 @@ ms.locfileid: "84887264"
     > 當查詢字串包含會隨著每個要求變更的參數 (例如工作階段識別碼或使用者名稱) 時，請勿使用此模式，因為這會造成快取命中率偏低。
 
 ## <a name="changing-query-string-caching-settings-for-premium-cdn-profiles"></a>變更進階 CDN 設定檔的查詢字串快取設定
-1. 開啟 CDN 設定檔，然後按一下 [管理]****。
+1. 開啟 CDN 設定檔，然後按一下 [管理]。
    
     ![CDN 設定檔 [管理] 按鈕](./media/cdn-query-string-premium/cdn-manage-btn.png)
    
     隨即開啟 CDN 管理入口網站。
-2. 將滑鼠移至 [HTTP 大型]**** 索引標籤上，然後將滑鼠移至 [快取設定]**** 飛出功能表上。 按一下 [查詢字串快取]****。
+2. 將滑鼠移至 [HTTP 大型] 索引標籤上，然後將滑鼠移至 [快取設定] 飛出功能表上。 按一下 [查詢字串快取]。
    
     查詢字串快取選項隨即顯示。
    
     ![CDN 查詢字串快取選項](./media/cdn-query-string-premium/cdn-query-string.png)
-3. 選取查詢字串模式，然後按一下 [更新]****。
+3. 選取查詢字串模式，然後按一下 [更新]。
 
 > [!IMPORTANT]
 > 因為註冊資訊需要一段時間才能傳遍 CDN，快取字串設定的變更可能無法立即看見。 傳播通常會在 10 分鐘內完成。
