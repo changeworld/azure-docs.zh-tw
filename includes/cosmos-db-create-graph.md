@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 837231ca07abcfdbd6ce932bb24bd890d91506a8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3693f46a602929f9d6e2f4e29083b071ae6a9e9e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "69541444"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972411"
 ---
 您現在可以在 Azure 入口網站中使用 [資料總管] 工具，建立圖形資料庫。 
 
@@ -30,6 +30,6 @@ ms.locfileid: "69541444"
     資料庫識別碼|sample-database|輸入 *sample-database* 作為新資料庫的名稱。 資料庫名稱的長度必須介於 1 到 255 個字元，且不能包含 `/ \ # ?` 或尾端空格。
     Throughput|400 RU|將輸送量變更為每秒 400 個要求單位 (RU/秒)。 如果您想要降低延遲，稍後可以擴大輸送量。
     圖形識別碼|sample-graph|輸入 *sample-graph* 作為新集合的名稱。 圖形名稱與資料庫識別碼具有相同的字元需求。
-    資料分割索引鍵| /pk |所有 Cosmos DB 帳戶都需要分割索引鍵，才能進行水準調整。 了解如何在[圖表資料分割](https://docs.microsoft.com/azure/cosmos-db/graph-partitioning)一文中選取適當的分割區索引鍵。
+    資料分割索引鍵| /pk |所有 Cosmos DB 帳戶都需要分割索引鍵，才能進行水準調整。 了解如何在[圖表資料分割](../articles/cosmos-db/graph-partitioning.md)一文中選取適當的分割區索引鍵。
 
 3. 填妥表單後，選取 [確定]  。

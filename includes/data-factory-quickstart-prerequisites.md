@@ -9,11 +9,11 @@ ms.topic: include
 ms.custom: include file
 ms.date: 06/27/2019
 ms.openlocfilehash: a979cd0a4c2ee6466edebadf61e8a98b8f17c9f3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86544859"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013344"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -27,8 +27,8 @@ ms.locfileid: "86544859"
 
 若要建立及管理 Data factory 的子資源 (包括資料集、連結服務、管線、觸發程序和整合執行階段)，必須要符合下列需求：
 
-- 若要在 Azure 入口網站中建立及管理子資源，您必須屬於資源群組層級或更高層級的 **Data Factory 參與者**角色。
-- 若要使用 PowerShell 或 SDK 來建立及管理子資源，具備資源層級或更高層級的**參與者**角色即已足夠。
+- 若要在 Azure 入口網站中建立及管理子資源，您必須屬於資源群組層級或更高層級的 **Data Factory 參與者** 角色。
+- 若要使用 PowerShell 或 SDK 來建立及管理子資源，具備資源層級或更高層級的 **參與者** 角色即已足夠。
 
 如需將使用者新增至角色的範例指示，請參閱[新增角色](../articles/cost-management-billing/manage/add-change-subscription-administrator.md)一文。
 

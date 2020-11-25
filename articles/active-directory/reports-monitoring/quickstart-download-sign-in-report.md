@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86bc72f69903134afa3750ad6b72486a713b6cc0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "68989664"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011909"
 ---
 # <a name="quickstart-download-a-sign-in-report-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站下載登入報告
 
@@ -33,7 +33,7 @@ ms.locfileid: "68989664"
 您需要：
 
 * 一個 Azure Active Directory 租用戶，而且您必須具有進階版授權以顯示登入活動報告。 請參閱[開始使用 Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) 來升級 Azure Active Directory 版本。 請注意，如果您在升級前沒有任何活動資料，則在升級至進階授權之後，報告需要幾天的時間才會顯示出資料。
-* 所擔任的租用戶角色為**安全性系統管理員**、**安全性讀取者**、**報告讀取者**或**全域系統管理員**的使用者。 此外，租用戶中的任何使用者都可以存取自己的登入資訊。
+* 所擔任的租用戶角色為 **安全性系統管理員**、**安全性讀取者**、**報告讀取者** 或 **全域系統管理員** 的使用者。 此外，租用戶中的任何使用者都可以存取自己的登入資訊。
 
 ## <a name="quickstart-download-a-sign-in-report"></a>快速入門：下載登入報告
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 434093df3465e363d95fb79342d1854b99583d08
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: effb193e54be7331c9dc2874a4a34ef55442ed30
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091418"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96021736"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>快速入門：適用於 .NET 的 Azure Blob 儲存體用戶端程式庫 v11
 
@@ -33,7 +33,7 @@ ms.locfileid: "92091418"
 
 其他資源：
 
-* [API 參考文件](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
+* [API 參考文件](/dotnet/api/overview/azure/storage)
 * [程式庫原始程式碼](https://github.com/Azure/azure-storage-net/tree/master/Blob)
 * [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
 * [範例](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
@@ -43,7 +43,7 @@ ms.locfileid: "92091418"
 ## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
-* Azure 儲存體帳戶 - [建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure 儲存體帳戶 - [建立儲存體帳戶](../common/storage-account-create.md)
 * 適用於您作業系統的 [NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) \(英文\) 目前版本。 請務必取得 SDK，而不是執行階段。
 
 ## <a name="setting-up"></a>設定
@@ -248,7 +248,7 @@ else
 在此情況下，程式碼會呼叫 [CreateAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync) 方法來建立容器。 容器名稱會附加 GUID 值，以確保它是唯一的。 在生產環境中，通常偏好使用 [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync) 方法來建立容器 (僅限容器不存在時)。
 
 > [!IMPORTANT]
-> 容器名稱必須是小寫字母。 如需為容器和 Blob 命名的詳細資訊，請參閱[命名和參考容器、Blob 及中繼資料](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
+> 容器名稱必須是小寫字母。 如需為容器和 Blob 命名的詳細資訊，請參閱[命名和參考容器、Blob 及中繼資料](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
 ```csharp
 // Create the CloudBlobClient that represents the 

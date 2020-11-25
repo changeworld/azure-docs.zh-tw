@@ -9,11 +9,11 @@ ms.date: 01/27/2020
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 736ab630b035ae1a668332eb5ab5aa9530ef0e88
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94503994"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972407"
 ---
 1. 在新的瀏覽器視窗中，登入 [Azure 入口網站](https://portal.azure.com/)。
 
@@ -43,7 +43,7 @@ ms.locfileid: "94503994"
 
     ![Azure Cosmos DB 的新帳戶頁面](./media/cosmos-db-create-dbaccount-graph/azure-cosmos-db-create-new-account.png)
 
-4. 建立帳戶需要幾分鐘。 等候入口網站顯示 [恭喜! **已建立您的 Azure Cosmos DB 帳戶]** 頁面。
+4. 建立帳戶需要幾分鐘。 等候入口網站顯示 [恭喜!**已建立您的 Azure Cosmos DB 帳戶]** 頁面。
    
    ![已建立 Azure Cosmos DB 帳戶的頁面](./media/cosmos-db-create-dbaccount-graph/azure-cosmos-db-graph-created.png)
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 11/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 454bdaeb83e329ae059d6450b928d1286cd9552a
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 9d3c3dc3b9a83973e41bf5d7dd204316508c2cb4
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555731"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96013389"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>快速入門：使用 Azure Data Factory UI 建立資料處理站 
 
@@ -156,6 +156,7 @@ ms.locfileid: "94555731"
 1. 在 [屬性] 底下的 [一般] 面板中，針對 [名稱] 指定 **CopyPipeline**。 然後按一下右上角的屬性圖示來摺疊面板。
 
 1. 在 [活動] 工具箱中，展開 [移動和轉換]。 將 [活動] 工具箱中的 [資料複製] 活動拖到管線設計工具介面。 您也可以在 [活動] 工具箱中搜尋活動。 指定 **CopyFromBlobToBlob** 作為 [名稱]。
+
    ![建立複製資料活動](./media/quickstart-create-data-factory-portal/copy-activity.png)
 
 1. 在複製活動設定中切換至 [來源] 索引標籤，然後選取 **InputDataset** 作為 [來源資料集]。
@@ -163,6 +164,7 @@ ms.locfileid: "94555731"
 1. 在複製活動設定中切換至 [接收] 索引標籤，然後選取 **OutputDataset** 作為 [接收資料集]。
 
 1. 在畫布上方的管線設定上按一下 [驗證]，以驗證管線設定。 確認管線已驗證成功。 若要關閉驗證輸出，請選取 **>>** (向右箭號) 按鈕。 
+
    ![驗證管線](./media/quickstart-create-data-factory-portal/pipeline-validate.png)
 
 ## <a name="debug-the-pipeline"></a>偵錯管線
@@ -180,6 +182,7 @@ ms.locfileid: "94555731"
 在此程序中，您會將實體 (連結服務、資料集和管線) 部署至 Azure Data Factory。 然後，您會手動觸發管線執行。 
 
 1. 觸發管線之前，您必須將實體發佈至 Data Factory。 若要發佈，請選取頂端的 [全部發佈]。 
+
     ![全部發佈](./media/quickstart-create-data-factory-portal/publish-all.png)
 
 1. 若要手動觸發管線，請選取管線工具列上的 [新增觸發程序]，然後選取 [立即觸發]。 在 [管線執行] 頁面上，選取 [完成]。

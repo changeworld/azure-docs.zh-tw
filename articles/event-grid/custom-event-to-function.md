@@ -4,11 +4,11 @@ description: 快速入門：使用 Azure 事件方格和 Azure CLI 或入口網�
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.openlocfilehash: aea52bcaa94d6f288e86e44e1a0f294796d8e4a3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324381"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996335"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>快速入門：使用事件方格將自訂事件路由至 Azure 函式
 
@@ -20,13 +20,13 @@ Azure Event Grid 是一項雲端事件服務。 Azure Functions 是其中一個�
 在訂閱自訂主題之前，請先建立一個函式來處理事件。 
 
 1. 使用[建立函式應用程式](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)中的指示，建立函式應用程式。
-2. 使用**事件方格觸發程序**建立函式。 如果這是您第一次使用此觸發程序，您可能必須按一下 [安裝] 以安裝延伸模組。
+2. 使用 **事件方格觸發程序** 建立函式。 如果這是您第一次使用此觸發程序，您可能必須按一下 [安裝] 以安裝延伸模組。
     1. 在 [函式應用程式] 頁面上，選取左側功能表上的 [函式]、在範本中搜尋 [事件方格]，然後選取 [Azure Event Grid 觸發程序]。 
 
         :::image type="content" source="./media/custom-event-to-function/function-event-grid-trigger.png" alt-text="選取事件方格觸發程序":::
 3. 在 [新增函式] 頁面上，輸入函式的名稱，然後選取 [建立函式]。
 
-    :::image type="content" source="./media/custom-event-to-function/new-function-page.png" alt-text="選取事件方格觸發程序":::
+    :::image type="content" source="./media/custom-event-to-function/new-function-page.png" alt-text="新增函式應用程式":::
 4. 使用 [程式碼 + 測試] 頁面，來查看函式的現有程式碼並將其更新。 
 
 [!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
@@ -36,7 +36,7 @@ Azure Event Grid 是一項雲端事件服務。 Azure Functions 是其中一個�
 Event Grid 主題會提供使用者定義的端點，作為您發佈事件的目的地。 
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 選取左導覽功能表中的 [所有服務]  ，搜尋**事件方格**，然後選取 [事件方格主題]  。 
+2. 選取左導覽功能表中的 [所有服務]  ，搜尋 **事件方格**，然後選取 [事件方格主題]  。 
 
     ![選取事件方格主題](./media/custom-event-to-function/select-event-grid-topics.png)
 3. 在 [事件方格主題]  頁面上，選取工具列上的 [+ 新增]  。 
@@ -88,7 +88,7 @@ Event Grid 主題會提供使用者定義的端點，作為您發佈事件的目
     
         批次可以提供高輸送量。 針對 [每個批次的事件數上限]，請設定訂用帳戶將包含在批次中的事件數上限。 偏好的批次大小會設定批次大小的偏好上限 (KB)，但如果單一事件大於此臨界值，則可能會超過此限制。
     
-        :::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="選取事件方格觸發程序":::
+        :::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="啟用批次":::
     6. 在 [建立事件訂閱] 頁面上，選取 [建立]。
 
 ## <a name="send-an-event-to-your-topic"></a>將事件傳送至主題
@@ -102,12 +102,12 @@ Event Grid 主題會提供使用者定義的端點，作為您發佈事件的目
 1. 在 Azure 入口網站中選取 [Cloud Shell]  。 在 Cloud Shell 視窗的左上角，選取 [Bash]  。 
 
     ![Cloud Shell - Bash](./media/custom-event-quickstart-portal/cloud-shell-bash.png)
-1. 執行下列命令以取得主題的**端點**：在您複製並貼上命令之後，請先更新 [主題名稱]  和 [資源群組名稱]  ，再執行命令。 
+1. 執行下列命令以取得主題的 **端點**：在您複製並貼上命令之後，請先更新 [主題名稱]  和 [資源群組名稱]  ，再執行命令。 
 
     ```azurecli
     endpoint=$(az eventgrid topic show --name <topic name> -g <resource group name> --query "endpoint" --output tsv)
     ```
-2. 執行下列命令以取得主題的**索引鍵**：在您複製並貼上命令之後，請先更新 [主題名稱]  和 [資源群組名稱]  ，再執行命令。 
+2. 執行下列命令以取得主題的 **索引鍵**：在您複製並貼上命令之後，請先更新 [主題名稱]  和 [資源群組名稱]  ，再執行命令。 
 
     ```azurecli
     key=$(az eventgrid topic key list --name <topic name> -g <resource group name> --query "key1" --output tsv)
@@ -133,7 +133,7 @@ Event Grid 主題會提供使用者定義的端點，作為您發佈事件的目
     $resourceGroupName = <resource group name>
     $topicName = <topic name>
     ```
-3. 執行下列命令以取得主題的**端點**和**金鑰**：
+3. 執行下列命令以取得主題的 **端點** 和 **金鑰**：
 
     ```powershell
     $endpoint = (Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName).Endpoint

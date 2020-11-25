@@ -9,11 +9,11 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/28/2020
 ms.openlocfilehash: db94a82112f2670facd4d89178f11653c5316c36
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93331772"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998935"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入門：使用 Python 來連線和查詢適用於 PostgreSQL 的 Azure 資料庫中的資料 - 單一伺服器
 
@@ -45,7 +45,7 @@ ms.locfileid: "93331772"
 連線到適用於 PostgreSQL 的 Azure 資料庫需要完整的伺服器名稱和登入認證。 您可以從 Azure 入口網站中取得此資訊。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，搜尋並選取適用於 PostgreSQL 的 Azure 資料庫伺服器名稱。
-1. 在伺服器的 [概觀] 頁面上，複製完整的 **伺服器名稱** 和 **管理使用者名稱** 。 完整的 **伺服器名稱** 的格式一律是 *\<my-server-name>. postgres.database.azure.com* ，而 **管理員使用者名稱** 的格式一律是 *\<my-admin-username>@\<my-server-name>* 。
+1. 在伺服器的 [概觀] 頁面上，複製完整的 **伺服器名稱** 和 **管理使用者名稱**。 完整的 **伺服器名稱** 的格式一律是 *\<my-server-name>. postgres.database.azure.com*，而 **管理員使用者名稱** 的格式一律是 *\<my-admin-username>@\<my-server-name>* 。
 
    也需要您的管理員密碼。 如果您忘記密碼，可以在此頁面中重設密碼。
 

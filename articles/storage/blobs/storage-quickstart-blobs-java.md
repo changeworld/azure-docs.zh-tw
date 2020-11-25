@@ -8,12 +8,12 @@ ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: e6f731a72308db98309d40bceb95f6108abab4eb
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: dc8df24c1ad20aa3380009fe4c0abb29e31823e8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017042"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021719"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>快速入門：使用 Java v12 SDK 來管理 Blob
 
@@ -24,7 +24,7 @@ ms.locfileid: "90017042"
 * [API 參考文件](/java/api/overview/azure/storage-blob-readme)
 * [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob)
 * [套件 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob) \(英文\)
-* [範例](/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [範例](../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>先決條件：
 

@@ -7,12 +7,12 @@ ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 8c24c5f043d17b5f0e54ca1c2c6cf41a0d3fe9bc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0bde1b7be15d49d82818f26d07c2ec633dc4526c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "68726360"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95523258"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>快速入門：使用 Ruby 上傳、下載及列出 Blob
 
@@ -25,7 +25,7 @@ ms.locfileid: "68726360"
 請確定您已安裝下列額外的必要條件：
 
 * [Ruby](https://www.ruby-lang.org/en/downloads/)
-* 使用 rubygem 套件，安裝[適用於 Ruby 的 Azure 儲存體程式庫](https://docs.microsoft.com/azure/storage/blobs/storage-ruby-how-to-use-blob-storage)： 
+* 使用 rubygem 套件，安裝[適用於 Ruby 的 Azure 儲存體程式庫]()： 
 
     ```
     gem install azure-storage-blob
@@ -87,10 +87,10 @@ Downloading blob to C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-9
 * 建立 Azure 儲存體 **BlobService** 物件的執行個體來設定連線認證。 
 * 建立 **Container** 物件，它代表您要存取的容器。 容器是用來組織 Blob，就像在電腦上用資料夾組織檔案一樣。
 
-一旦有了雲端 Blob 容器，您就可以建立**區塊** Blob 物件，指向您感興趣的特定 Blob，並執行上傳、下載和複製等作業。
+一旦有了雲端 Blob 容器，您就可以建立 **區塊** Blob 物件，指向您感興趣的特定 Blob，並執行上傳、下載和複製等作業。
 
 > [!IMPORTANT]
-> 容器名稱必須是小寫字母。 如需有關容器和 Blob 名稱的詳細資訊，請參閱[命名和參考容器、Blob 及中繼資料](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
+> 容器名稱必須是小寫字母。 如需有關容器和 Blob 名稱的詳細資訊，請參閱[命名和參考容器、Blob 及中繼資料](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
 在本節中，您可以設定 Azure 儲存體用戶端的執行個體、具現化 blob 服務物件、建立新的容器，然後設定容器上的權限，以便這些 Blob 為公用 Blob。 容器名為 **quickstartblobs**。 
 
@@ -189,7 +189,7 @@ File.delete(full_path_to_file2)
 在此快速入門中，您已了解如何使用 Ruby 在本機磁碟和 Azure Blob 儲存體之間傳送檔案。 若要深入了解 Blob 儲存體的用法，請繼續閱讀 Blob 儲存體操作說明。
 
 > [!div class="nextstepaction"]
-> [Blob 儲存體作業操作說明](./storage-ruby-how-to-use-blob-storage.md)
+> [Blob 儲存體作業操作說明]()
 
 
 如需儲存體總管和 Blob 的詳細資訊，請參閱[使用儲存體總管管理 Azure Blob 儲存體資源](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。

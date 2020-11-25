@@ -10,11 +10,11 @@ ms.date: 01/22/2019
 ms.author: chrande
 ms.custom: devx-track-python
 ms.openlocfilehash: 91b04b05b810b2b0fc221943a73e81c49f7119dc
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360185"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972412"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>快速入門：使用 Python 和 Azure 入口網站在 Azure Cosmos DB 中建立圖形資料庫
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -171,7 +171,7 @@ ms.locfileid: "93360185"
 
 在插入頂點和邊緣之後，您現在可以移回 [資料總管] 並查看已新增到圖行的頂點，然後新增額外的資料點。
 
-1. 在 Azure 入口網站您的 Azure Cosmos DB 帳戶中，選取 [資料總管]，展開 **sample-graph** ，選取 [圖形]，然後選取 [套用篩選條件]。 
+1. 在 Azure 入口網站您的 Azure Cosmos DB 帳戶中，選取 [資料總管]，展開 **sample-graph**，選取 [圖形]，然後選取 [套用篩選條件]。 
 
    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png" alt-text="顯示從 A P I 選取的 Graph 螢幕擷取畫面，以及 [套用篩選器] 的選項。":::
 
@@ -218,7 +218,7 @@ ms.locfileid: "93360185"
 
     隨著您新增更多的資料，您可以使用篩選條件來限制您的結果。 依預設，[資料總管] 會使用 `g.V()` 擷取圖形中的所有頂點。 您可將其變更為不同的[圖形查詢](tutorial-query-graph.md) (例如 `g.V().count()`)，以使用 JSON 格式傳回圖形中所有頂點的計數。 若您變更篩選條件，請將篩選條件變更回 `g.V()`，然後選取 [套用篩選條件]，即可再次顯示所有的結果。
 
-12. 現在我們可以連線 rakesh 和 ashley。 請確定已在 [結果] 清單中選取 **ashley** ，然後選取右下方 [目標] 旁邊的編輯按鈕。 您可能需要加寬視窗，才可看到 [屬性] 區域。
+12. 現在我們可以連線 rakesh 和 ashley。 請確定已在 [結果] 清單中選取 **ashley**，然後選取右下方 [目標] 旁邊的編輯按鈕。 您可能需要加寬視窗，才可看到 [屬性] 區域。
 
     :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png" alt-text="變更圖形中頂點的目標":::
 

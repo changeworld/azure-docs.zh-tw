@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fa37db7a5c63f7a5e8a84d98afbb81e007904974
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8cb8c193e09e841a8401cbb0a6ac78ce87afa01c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89001428"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021702"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>快速入門：適用於 .NET 的 Azure Blob 儲存體用戶端程式庫 v12
 
@@ -32,14 +32,14 @@ ms.locfileid: "89001428"
 * [API 參考文件](/dotnet/api/azure.storage.blobs)
 * [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
 * [套件 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
-* [範例](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [範例](../common/storage-samples-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
-* Azure 儲存體帳戶 - [建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure 儲存體帳戶 - [建立儲存體帳戶](../common/storage-account-create.md)
 * 適用於您作業系統的 [NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) \(英文\) 目前版本。 請務必取得 SDK，而不是執行階段。
 
 ## <a name="setting-up"></a>設定

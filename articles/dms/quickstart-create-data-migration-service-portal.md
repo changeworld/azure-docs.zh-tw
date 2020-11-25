@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 07/21/2020
-ms.openlocfilehash: 0dd150909a56aafdd2005f2d68a12d32a1e8fae4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f0f352e2c803eb1f0638f2f517b97a931ebcc889
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87087776"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996928"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立 Azure 資料庫移轉服務的執行個體
 
@@ -50,19 +50,19 @@ ms.locfileid: "87087776"
 
 1. 選取 [+ 建立資源]，以建立 Azure 資料庫移轉服務的執行個體。
 
-2. 搜尋適合「移轉」的市集，選取 [Azure 資料庫移轉服務]，並在 **Azure 資料庫移轉服務**畫面中，選取 [建立]。
+2. 搜尋適合「移轉」的市集，選取 [Azure 資料庫移轉服務]，並在 **Azure 資料庫移轉服務** 畫面中，選取 [建立]。
 
 3. 在 [建立移轉服務] 畫面上：
 
-    - 選擇易記又獨特的**服務名稱**，以識別您的 Azure 資料庫移轉服務執行個體。
+    - 選擇易記又獨特的 **服務名稱**，以識別您的 Azure 資料庫移轉服務執行個體。
     - 選取您要建立執行個體的 Azure **訂用帳戶**。
     - 選取現有的 [資源群組] 或建立新群組。
-    - 選擇最接近您的來源或目標伺服器的**位置**。
-    - 選取現有的**虛擬網路**或建立一個。
+    - 選擇最接近您的來源或目標伺服器的 **位置**。
+    - 選取現有的 **虛擬網路** 或建立一個。
 
         虛擬網路會為 Azure 資料庫移轉服務提供來源資料庫和目標環境的存取權。
 
-        如需如何在 Azure 入口網站中建立虛擬網路的詳細資訊，請參閱[使用 Azure 入口網站建立虛擬網路](https://aka.ms/vnet)一文。
+        如需如何在 Azure 入口網站中建立虛擬網路的詳細資訊，請參閱[使用 Azure 入口網站建立虛擬網路](../virtual-network/quick-create-portal.md)一文。
 
     - 選取 [基本:1 個 vCore] 作為 [定價層]。
 
@@ -76,7 +76,7 @@ ms.locfileid: "87087776"
 
 ## <a name="clean-up-resources"></a>清除資源
 
-您可以刪除 [Azure 資源群組](../azure-resource-manager/management/overview.md)，清除您在快速入門中建立的資源。 若要刪除資源群組，請瀏覽至您建立的 Azure 資料庫移轉服務執行個體。 選取**資源群組**名稱，然後選取 [刪除資源群組]。 這個動作會刪除資源群組中的所有資產，以及群組本身。
+您可以刪除 [Azure 資源群組](../azure-resource-manager/management/overview.md)，清除您在快速入門中建立的資源。 若要刪除資源群組，請瀏覽至您建立的 Azure 資料庫移轉服務執行個體。 選取 **資源群組** 名稱，然後選取 [刪除資源群組]。 這個動作會刪除資源群組中的所有資產，以及群組本身。
 
 ## <a name="next-steps"></a>後續步驟
 

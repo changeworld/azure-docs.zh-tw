@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/12/2020
 ms.author: spelluru
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 178f990e46801cd51e9feb88bbd20181842e4400
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8cf024735c66e6bae9d334e3d8ce8d0a0eed1426
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89077682"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95799096"
 ---
 # <a name="use-azure-powershell-to-create-a-service-bus-namespace-and-a-queue"></a>使用 Azure PowerShell 建立服務匯流排命名空間和佇列
 本快速入門會說明如何使用 Azure PowerShell 來建立服務匯流排命名空間和佇列。 同時也會示範如何取得授權認證，讓用戶端應用程式用來將訊息傳送至佇列，或從佇列接收訊息。 
@@ -34,7 +34,7 @@ ms.locfileid: "89077682"
     :::image type="content" source="./media/service-bus-quickstart-powershell/launch-cloud-shell.png" alt-text="啟動 Cloud Shell":::
 3. 在 Cloud Shell 視窗底部，從 **Bash** 切換至 **PowerShell**。 
 
-    :::image type="content" source="./media/service-bus-quickstart-powershell/cloud-power-shell.png" alt-text="啟動 Cloud Shell":::    
+    :::image type="content" source="./media/service-bus-quickstart-powershell/cloud-power-shell.png" alt-text="切換為 PowerShell 模式":::    
 4. 執行下列命令以建立 Azure 資源群組。 您可以視需要更新資源群組名稱和位置。 
 
     ```azurepowershell-interactive
@@ -60,11 +60,11 @@ ms.locfileid: "89077682"
 
 
 ## <a name="next-steps"></a>後續步驟
-在本文中，您已建立服務匯流排命名空間和命名空間中的佇列。 若要了解如何將訊息傳送至佇列，或從佇列接收訊息，請參閱**傳送和接收訊息**一節中下列其中一個快速入門。 
+在本文中，您已建立服務匯流排命名空間和命名空間中的佇列。 若要了解如何將訊息傳送至佇列，或從佇列接收訊息，請參閱 **傳送和接收訊息** 一節中下列其中一個快速入門。 
 
 - [.NET](service-bus-dotnet-get-started-with-queues.md)
 - [Java](service-bus-java-how-to-use-queues.md)
-- [JavaScript](service-bus-nodejs-how-to-use-queues-new-package.md)
+- [JavaScript](service-bus-nodejs-how-to-use-queues.md)
 - [Python](service-bus-python-how-to-use-queues.md)
 - [PHP](service-bus-php-how-to-use-queues.md)
 - [Ruby](service-bus-ruby-how-to-use-queues.md)

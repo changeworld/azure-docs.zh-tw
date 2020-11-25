@@ -7,12 +7,12 @@ ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: a19ff153ea0625a14401770de690dcfddeb74d88
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: af35927abfa491891dffe2c2397d6daf8c1ccde2
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87835743"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543113"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>使用 PHP 在 Azure Blob 儲存體之間傳送物件
 在本快速入門中，您會了解如何使用 PHP 在 Azure Blob 儲存體容器中上傳、下載及列出區塊 Blob。 
@@ -91,7 +91,7 @@ This is the content of the blob uploaded: Hello Azure!
 一旦有了 **blobClient** 容器物件，您就可以建立 **Block** Blob 物件，以指向您感興趣的特定 Blob。 您可接著執行上傳、下載和複製等作業。
 
 > [!IMPORTANT]
-> 容器名稱必須是小寫字母。 如需有關容器和 Blob 名稱的詳細資訊，請參閱[命名和參考容器、Blob 及中繼資料](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
+> 容器名稱必須是小寫字母。 如需有關容器和 Blob 名稱的詳細資訊，請參閱[命名和參考容器、Blob 及中繼資料](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
 在本節中，您可以設定 Azure 儲存體用戶端的執行個體、具現化 blob 服務物件、建立新的容器，以及設定容器上的權限，以便這些 Blob 為公用 Blob。 容器名為 **quickstartblobs**。 
 

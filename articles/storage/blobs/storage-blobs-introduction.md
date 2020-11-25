@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 06/24/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 55059f4edea19a1e559ea1ad99d9e7e60756cc96
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1e289d094bba8d4336b83a7970e281247e9f4131
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87836372"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007287"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob 儲存體簡介
 
@@ -25,7 +25,7 @@ ms.locfileid: "87836372"
 Blob 儲存體提供三種類型資源：
 
 - **儲存體帳戶**
-- 儲存體帳戶中的**容器**
+- 儲存體帳戶中的 **容器**
 - 容器中的 **Blob**
 
 下圖顯示資源之間的關係。
@@ -66,13 +66,13 @@ Azure 儲存體支援三種 blob 類型：
 目前已有幾個解決方案，可將現有資料移轉至 Blob 儲存體：
 
 - **AzCopy** 是一個簡單易用的命令列工具，可供 Windows 和 Linux 跨容器或跨儲存體帳戶，將資料複製到 Blob 儲存體或從該處複製資料。 如需 AzCopy 的相關詳細資訊，請參閱[使用 AzCopy v10 傳輸資料](../common/storage-use-azcopy-v10.md)。
-- **Azure 儲存體資料移動程式庫**是用於在 Azure 儲存體服務之間移動資料的 .NET 程式庫。 AzCopy 公用程式已內建資料移動程式庫。 如需詳細資訊，請參閱資料移動程式庫的[參考文件](/dotnet/api/microsoft.azure.storage.datamovement)。
-- **Azure Data Factory**支援使用「帳戶金鑰」、「共用存取簽章」、「服務主體」或「Azure 資源的受控識別」來複製資料至 Blob 儲存體，或從該處複製資料。 如需詳細資訊，請參閱[使用 Azure Data Factory 將資料複製到 Azure Blob 或從該處複製資料](../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+- **Azure 儲存體資料移動程式庫** 是用於在 Azure 儲存體服務之間移動資料的 .NET 程式庫。 AzCopy 公用程式已內建資料移動程式庫。 如需詳細資訊，請參閱資料移動程式庫的[參考文件](/dotnet/api/microsoft.azure.storage.datamovement)。
+- **Azure Data Factory** 支援使用「帳戶金鑰」、「共用存取簽章」、「服務主體」或「Azure 資源的受控識別」來複製資料至 Blob 儲存體，或從該處複製資料。 如需詳細資訊，請參閱[使用 Azure Data Factory 將資料複製到 Azure Blob 或從該處複製資料](../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 - **Blobfuse** 是 Azure Blob 儲存體的虛擬檔案系統驅動程式。 您可以使用 Blobfuse 透過 Linux 檔案系統存取您儲存體帳戶中現有的區塊 Blob 資料。 如何詳細資訊，請參閱[如何使用 Blobfuse 將 Blob 儲存體掛接為檔案系統](storage-how-to-mount-container-linux.md)。
-- **Azure 資料箱**服務可在因為要上傳大型資料集，或因網路限制而難以透過網路上傳資料時，將內部部署資料傳輸至 Blob 儲存體。 根據您的資料大小，您可以向 Microsoft 要求 [Azure 資料箱磁碟](../../databox/data-box-disk-overview.md)、[Azure 資料箱](../../databox/data-box-overview.md)或 [Azure Data Box Heavy](../../databox/data-box-heavy-overview.md)。 接著，您可以將資料複製到這些裝置，並將其寄回給 Microsoft，以上傳至 Blob 儲存體。
-- **Azure 匯入/匯出服務**提供一種方便的方式，可讓您使用自行提供的硬碟在儲存體帳戶中匯入或匯出大量資料。 如需詳細資訊，請參閱[使用 Microsoft Azure 匯入/匯出服務將資料移轉至 Blob 儲存體](../common/storage-import-export-service.md)。
+- **Azure 資料箱** 服務可在因為要上傳大型資料集，或因網路限制而難以透過網路上傳資料時，將內部部署資料傳輸至 Blob 儲存體。 根據您的資料大小，您可以向 Microsoft 要求 [Azure 資料箱磁碟](../../databox/data-box-disk-overview.md)、[Azure 資料箱](../../databox/data-box-overview.md)或 [Azure Data Box Heavy](../../databox/data-box-heavy-overview.md)。 接著，您可以將資料複製到這些裝置，並將其寄回給 Microsoft，以上傳至 Blob 儲存體。
+- **Azure 匯入/匯出服務** 提供一種方便的方式，可讓您使用自行提供的硬碟在儲存體帳戶中匯入或匯出大量資料。 如需詳細資訊，請參閱[使用 Microsoft Azure 匯入/匯出服務將資料移轉至 Blob 儲存體](../common/storage-import-export-service.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [建立儲存體帳戶](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [建立儲存體帳戶](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [Blob 儲存體的延展性和效能目標](scalability-targets.md)

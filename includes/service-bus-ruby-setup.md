@@ -4,15 +4,15 @@ ms.service: service-bus
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
-ms.openlocfilehash: aec13c6beb8dbfcdd5f38e7f96b86bf03e42fa37
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5c2959a1bf6225c164f8538c3c437e464d834b96
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "80986688"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028430"
 ---
 ## <a name="create-a-ruby-application"></a>建立 Ruby 應用程式
-如需指示，請參閱[在 Azure 上建立 Ruby 應用程式](../articles/virtual-machines/linux/classic/ruby-rails-web-app.md)。
+如需指示，請參閱[在 Azure 上建立 Ruby 應用程式](/previous-versions/azure/virtual-machines/linux/classic/ruby-rails-web-app)。
 
 ## <a name="configure-your-application-to-use-service-bus"></a>設定應用程式以使用服務匯流排
 若要使用服務匯流排，請下載並使用 Azure Ruby 套件，其中包含一組能與儲存體 REST 服務通訊的便利程式庫。

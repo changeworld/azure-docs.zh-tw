@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 54bf6265a5b440e5c450d21b192acc2f7024f938
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ed3a88dbca1788a5c5a265fe91bdd5e88ae1fe36
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91307529"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012760"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>快速入門：使用 Node.js 中的 JavaScript v12 SDK 來管理 Blob
 
@@ -24,7 +24,7 @@ ms.locfileid: "91307529"
 * [API 參考文件](/javascript/api/@azure/storage-blob)
 * [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
 * [套件 (節點套件管理員)](https://www.npmjs.com/package/@azure/storage-blob)
-* [範例](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [範例](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -240,7 +240,7 @@ console.log('\nDownloaded blob content...');
 console.log('\t', await streamToString(downloadBlockBlobResponse.readableStreamBody));
 ```
 
-在 `main` 函式*後面*，加入此 helper 函式：
+在 `main` 函式 *後面*，加入此 helper 函式：
 
 ```javascript
 // A helper function used to read a Node.js readable stream into a string
@@ -314,6 +314,6 @@ Done
 > [!div class="nextstepaction"]
 > [Azure for JavaScript 開發人員中心](/azure/developer/javascript/)
 
-* 若要了解如何部署使用 Azure Blob 儲存體的 Web 應用程式，請參閱[教學課程：使用 Azure 儲存體在雲端中上傳影像資料](/azure/storage/blobs/storage-upload-process-images?tabs=javascript&preserve-view=true)
+* 若要了解如何部署使用 Azure Blob 儲存體的 Web 應用程式，請參閱[教學課程：使用 Azure 儲存體在雲端中上傳影像資料](./storage-upload-process-images.md?preserve-view=true&tabs=javascript)
 * 若要查看 Blob 儲存體範例應用程式，請繼續執行 [Azure Blob 儲存體用戶端程式庫 v12 JavaScript 範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)。
 * 若要深入了解，請參閱[適用於 JavaScript 的 Azure Blob 儲存體用戶端程式庫](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)。

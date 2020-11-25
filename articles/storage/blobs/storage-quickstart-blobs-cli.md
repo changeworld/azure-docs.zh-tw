@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c9797024315a8fdc744d08863a42fba0b0b16420
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: fa502f5ca95b1726da7f00f987b35be362ae865a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660333"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021753"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>快速入門：使用 Azure CLI 上傳、下載及列出 Blob
 
@@ -35,7 +35,7 @@ Azure CLI 是管理 Azure 資源的 Azure 命令列體驗。 您可以在瀏覽�
 
 您可以使用 Azure AD 認證或使用儲存體帳戶存取金鑰，來授權從 Azure CLI 存取 Blob 儲存體。 建議您使用 Azure AD 認證。 本文說明如何使用 Azure AD 來授權 Blob 儲存體作業。
 
-針對 Blob 儲存體的資料作業 Azure CLI 命令可支援 `--auth-mode` 參數，這可讓您指定如何授權指定的作業。 將 `--auth-mode` 參數設定為 `login`，以使用 Azure AD 認證進行授權。 如需詳細資訊，請參閱[使用 Azure CLI 授與 Blob 或佇列資料的存取權](../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+針對 Blob 儲存體的資料作業 Azure CLI 命令可支援 `--auth-mode` 參數，這可讓您指定如何授權指定的作業。 將 `--auth-mode` 參數設定為 `login`，以使用 Azure AD 認證進行授權。 如需詳細資訊，請參閱[使用 Azure CLI 授與 Blob 或佇列資料的存取權](./authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 只有 Blob 儲存體資料作業可支援 `--auth-mode` 參數。 管理作業 (例如建立資源群組或儲存體帳戶) 會自動使用 Azure AD 認證來進行授權。
 
@@ -89,7 +89,7 @@ az storage container create \
 > [!IMPORTANT]
 > Azure 角色指派可能需要數分鐘的時間傳播。
 
-您也可以使用儲存體帳戶金鑰來授權作業以建立容器。 如需有關藉由 Azure CLI 授權資料作業的詳細資訊，請參閱 [藉由 Azure CLI 來授權 Blob 或佇列資料的存取權](../common/authorize-data-operations-cli.md?toc=/azure/storage/blobs/toc.json)。
+您也可以使用儲存體帳戶金鑰來授權作業以建立容器。 如需有關藉由 Azure CLI 授權資料作業的詳細資訊，請參閱 [藉由 Azure CLI 來授權 Blob 或佇列資料的存取權](./authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 ## <a name="upload-a-blob"></a>上傳 Blob
 
@@ -169,4 +169,4 @@ az group delete \
 在本快速入門中，您已經了解如何在本機檔案系統和 Azure Blob 儲存體中的容器之間傳輸檔案。 若要深入了解如何透過 Azure CLI 來使用 Blob 儲存體，請探索 Blob 儲存體的 Azure CLI 範例。
 
 > [!div class="nextstepaction"]
-> [適用於 Blob 儲存體的 Azure CLI 範例](/azure/storage/blobs/storage-samples-blobs-cli?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+> [適用於 Blob 儲存體的 Azure CLI 範例](./storage-samples-blobs-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

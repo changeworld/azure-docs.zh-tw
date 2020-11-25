@@ -8,11 +8,11 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 ms.openlocfilehash: 5ad261064adf34945a600983296cb3e0ceaa5247
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90901078"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006656"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立串流分析作業
 
@@ -45,7 +45,7 @@ ms.locfileid: "90901078"
 
 4. 完成時，選取 [下一步:  設定大小與級別]。
 
-5. 選擇您的**定價與級別層**。 在本快速入門中，選取 [F1-免費]  層 (如果仍可用於您的訂用帳戶)。 如需詳細資訊，請參閱 [IoT 中樞定價](https://azure.microsoft.com/pricing/details/iot-hub/)。
+5. 選擇您的 **定價與級別層**。 在本快速入門中，選取 [F1-免費]  層 (如果仍可用於您的訂用帳戶)。 如需詳細資訊，請參閱 [IoT 中樞定價](https://azure.microsoft.com/pricing/details/iot-hub/)。
 
    ![調整 IoT 中樞的大小與級別](./media/stream-analytics-quick-create-portal/iot-hub-size-and-scale.png)
 
@@ -96,9 +96,9 @@ ms.locfileid: "90901078"
 
    ![建立作業](./media/stream-analytics-quick-create-portal/create-asa-job.png)
 
-5. 核取 [釘選至儀表板]**** 方塊，以將作業放在您的儀表板上，然後選取 [建立]****。  
+5. 核取 [釘選至儀表板] 方塊，以將作業放在您的儀表板上，然後選取 [建立]。  
 
-6. 您應會看到「部署進行中...」** 通知顯示在瀏覽器視窗的右上方。 
+6. 您應會看到「部署進行中...」通知顯示在瀏覽器視窗的右上方。 
 
 ## <a name="configure-job-input"></a>設定作業輸入
 
@@ -108,7 +108,7 @@ ms.locfileid: "90901078"
 
 2. 選取 [輸入] > [新增串流輸入] > [IoT 中樞]。  
 
-3. 使用下列值填寫 [IoT 中樞]**** 頁面：
+3. 使用下列值填寫 [IoT 中樞] 頁面：
 
    |**設定**  |**建議的值**  |**說明**  |
    |---------|---------|---------|
@@ -126,7 +126,7 @@ ms.locfileid: "90901078"
 
 2. 選取 [輸出] > [新增] > [Blob 儲存體]。  
 
-3. 使用下列值填寫 [Blob 儲存體]**** 頁面：
+3. 使用下列值填寫 [Blob 儲存體] 頁面：
 
    |**設定**  |**建議的值**  |**說明**  |
    |---------|---------|---------|
@@ -143,7 +143,7 @@ ms.locfileid: "90901078"
 
 1. 瀏覽至您先前建立的串流分析作業。  
 
-2. 選取 [查詢]**** 並更新查詢，如下所示：  
+2. 選取 [查詢]並更新查詢，如下所示：  
 
    ```sql
    SELECT *
@@ -168,9 +168,9 @@ ms.locfileid: "90901078"
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>啟動串流分析工作並查看輸出
 
-1. 回到作業概觀頁面，然後選取 [啟動]****。
+1. 回到作業概觀頁面，然後選取 [啟動]。
 
-2. 在 [啟動作業]**** 之下，針對 [作業輸出開始時間] **** 欄位，選取 [現在]****。 然後，選取 [啟動]**** 以啟動作業。
+2. 在 [啟動作業] 之下，針對 [作業輸出開始時間]  欄位，選取 [現在]。 然後，選取 [啟動] 以啟動作業。
 
 3. 幾分鐘後，在入口網站中尋找您設定為作業輸出的儲存體帳戶和容器。 您現在可以在容器中看到輸出檔。 第一次啟動作業需要幾分鐘的時間，作業一旦啟動後，即會在資料送達時繼續執行。  
 

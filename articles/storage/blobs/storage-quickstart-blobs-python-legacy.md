@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: a01b6e644ce3afda451d94d3e00eda278a645adf
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 34205caf03d2f2d7255f75ea6203c5572c4c429b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87851319"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95523294"
 ---
 # <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>快速入門：使用 Python v2.1 SDK 來管理 Blob
 
@@ -137,7 +137,7 @@ block_blob_service.set_container_acl(
 有了雲端 Blob 容器之後，請具現化 **CloudBlockBlob** 物件，指向您感興趣的特定 Blob。 接著，您可以視需要上傳、下載及複製 Blob。
 
 > [!IMPORTANT]
-> 容器名稱必須是小寫字母。 如需關於容器和 Blob 名稱的詳細資訊，請參閱[命名和參考容器、Blob 及中繼資料](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
+> 容器名稱必須是小寫字母。 如需關於容器和 Blob 名稱的詳細資訊，請參閱[命名和參考容器、Blob 及中繼資料](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
 ### <a name="upload-blobs-to-the-container"></a>將 Blob 上傳到容器
 
@@ -216,7 +216,7 @@ os.remove(full_path_to_file2)
 
 ### <a name="client-library-reference-and-samples"></a>用戶端程式庫參考和範例
 
-- 如需 Python 用戶端程式庫的詳細資訊，請參閱[適用於 Python 的 Azure 儲存體程式庫](https://docs.microsoft.com/python/api/overview/azure/storage)。
+- 如需 Python 用戶端程式庫的詳細資訊，請參閱[適用於 Python 的 Azure 儲存體程式庫](/python/api/overview/azure/storage)。
 - 探索使用 Python 用戶端程式庫所撰寫的 [Blob 儲存體範例](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=python&term=blob)。
 
 ## <a name="next-steps"></a>後續步驟

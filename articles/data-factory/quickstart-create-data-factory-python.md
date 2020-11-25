@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019, devx-track-python
 ms.openlocfilehash: e511b8b5505f1fa8713d81d0ce959df32ef28503
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89439107"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013321"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>快速入門：使用 Python 建立資料處理站和管線
 
@@ -44,7 +44,7 @@ Azure Data Factory 是雲端式資料整合服務，可讓您建立資料驅動�
 
 * [Azure 儲存體總管](https://storageexplorer.com/) (選擇性)。
 
-* [Azure Active Directory 中的應用程式](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 記下這些值，以便在後續步驟中使用到：**應用程式識別碼**、**驗證金鑰**和**租用戶識別碼**。 依照同一篇文章中的指示，將應用程式指派給「參與者」  角色。
+* [Azure Active Directory 中的應用程式](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 記下這些值，以便在後續步驟中使用到：**應用程式識別碼**、**驗證金鑰** 和 **租用戶識別碼**。 依照同一篇文章中的指示，將應用程式指派給「參與者」  角色。
 
 ## <a name="create-and-upload-an-input-file"></a>建立及上傳輸入檔案
 
@@ -58,7 +58,7 @@ Azure Data Factory 是雲端式資料整合服務，可讓您建立資料驅動�
 
 ## <a name="install-the-python-package"></a>安裝 Python 封裝
 
-1. 以系統管理員權限開啟終端機或命令提示字元。 
+1. 以系統管理員權限開啟終端機或命令提示字元。 
 2. 首先，針對 Azure 管理資源安裝 Python 套件：
 
     ```python
@@ -141,7 +141,7 @@ Azure Data Factory 是雲端式資料整合服務，可讓您建立資料驅動�
 
 ## <a name="create-a-data-factory"></a>建立 Data Factory
 
-將下列程式碼新增至 **Main** 方法，以建立**資料處理站**。 如果您的資源群組已經存在，請將第一個 `create_or_update` 陳述式變成註解。
+將下列程式碼新增至 **Main** 方法，以建立 **資料處理站**。 如果您的資源群組已經存在，請將第一個 `create_or_update` 陳述式變成註解。
 
 ```python
     # create the resource group
@@ -212,7 +212,7 @@ Azure Data Factory 是雲端式資料整合服務，可讓您建立資料驅動�
 
 ## <a name="create-a-pipeline"></a>建立管線
 
-將下列程式碼新增至 **Main** 方法，以建立**具有複製活動的管線**。
+將下列程式碼新增至 **Main** 方法，以建立 **具有複製活動的管線**。
 
 ```python
     # Create a copy activity
@@ -233,7 +233,7 @@ Azure Data Factory 是雲端式資料整合服務，可讓您建立資料驅動�
 
 ## <a name="create-a-pipeline-run"></a>建立管線執行
 
-將下列程式碼新增至 **Main** 方法，以**觸發管線執行**。
+將下列程式碼新增至 **Main** 方法，以 **觸發管線執行**。
 
 ```python
     #Create a pipeline run.

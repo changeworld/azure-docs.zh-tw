@@ -1,19 +1,18 @@
 ---
-ms.openlocfilehash: 475a468977a976e2e7399c14df9329b31446d404
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c400856546142353a7294a03fce6bbff1c258cc0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93134917"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95562981"
 ---
-
-在 Azure Active Directory (Azure AD) 中， **應用程式佈建** 一詞是指在使用者需要存取的雲端 ( [SaaS](https://azure.microsoft.com/overview/what-is-saas/)) 應用程式中，自動建立使用者身分識別和角色。 除了建立使用者身分識別以外，自動佈建還包括隨著狀態或角色變更，維護和移除使用者身分識別。 常見的案例包括將 Azure AD 使用者佈建到 [Dropbox](../articles/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial.md)、[Salesforce](../articles/active-directory/saas-apps/salesforce-provisioning-tutorial.md)、[ServiceNow](../articles/active-directory/saas-apps/servicenow-provisioning-tutorial.md)等應用程式。
+在 Azure Active Directory (Azure AD) 中，**應用程式佈建** 一詞是指在使用者需要存取的雲端 ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) 應用程式中，自動建立使用者身分識別和角色。 除了建立使用者身分識別以外，自動佈建還包括隨著狀態或角色變更，維護和移除使用者身分識別。 常見的案例包括將 Azure AD 使用者佈建到 [Dropbox](../articles/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial.md)、[Salesforce](../articles/active-directory/saas-apps/salesforce-provisioning-tutorial.md)、[ServiceNow](../articles/active-directory/saas-apps/servicenow-provisioning-tutorial.md)等應用程式。
 
 ![佈建概觀圖](./media/active-directory-app-provisioning/provisioning-overview.png)
 
 此功能可讓您：
 
-- **自動化佈建** ：當人員加入您的小組或組織時，在正確的系統中為新的人員自動建立新帳戶。
+- **自動化佈建**：當人員加入您的小組或組織時，在正確的系統中為新的人員自動建立新帳戶。
 - **自動化取消佈建：** 當人員離開小組或組織時，在正確的系統中自動停用帳戶。
 - **在系統之間同步資料：** 確保您的應用程式和系統中的身分識別，可根據目錄或您人力資源系統中的變更保持在最新狀態。
 - **佈建群組：** 將群組佈建至加以支援的應用程式。
@@ -46,9 +45,9 @@ Azure AD 的特色是可為多種熱門 SaaS 應用程式和人力資源系統�
 
    ![Salesforce 標誌](./media/active-directory-app-provisioning/gallery-app-logos.png)
 
-   如果您想要求對新的應用程式進行佈建，您可以[要求應用程式與我們的應用程式庫進行整合](../articles/active-directory/azuread-dev/howto-app-gallery-listing.md)。 針對使用者佈建要求，我們要求應用程式必須具有符合 SCIM 規範的端點。 請要求應用程式廠商遵循 SCIM 標準，以便我們能將應用程式快速上線至我們的平台。
+   如果您想要求對新的應用程式進行佈建，您可以[要求應用程式與我們的應用程式庫進行整合](../articles/active-directory/develop/v2-howto-app-gallery-listing.md)。 針對使用者佈建要求，我們要求應用程式必須具有符合 SCIM 規範的端點。 請要求應用程式廠商遵循 SCIM 標準，以便我們能將應用程式快速上線至我們的平台。
 
-* **支援 SCIM 2.0 的應用程式** 。 若要了解如何以一般方式連接可實作 SCIM 2.0 型使用者管理 API 的應用程式，請參閱[建置 SCIM 端點和設定使用者佈建](../articles/active-directory/app-provisioning/use-scim-to-provision-users-and-groups.md)。
+* **支援 SCIM 2.0 的應用程式**。 若要了解如何以一般方式連接可實作 SCIM 2.0 型使用者管理 API 的應用程式，請參閱[建置 SCIM 端點和設定使用者佈建](../articles/active-directory/app-provisioning/use-scim-to-provision-users-and-groups.md)。
 
 ## <a name="what-is-system-for-cross-domain-identity-management-scim"></a>什麼是跨網域身分識別管理系統 (SCIM)？
 
