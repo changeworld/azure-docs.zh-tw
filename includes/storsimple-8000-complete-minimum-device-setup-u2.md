@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 05719d9633429c4b8ee6fee79833f594c94ab23d
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 867cdc97ff91d5932230b733dee4d7660d499c39
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376128"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027373"
 ---
 #### <a name="to-complete-the-minimum-storsimple-device-setup"></a>完成最小的 StorSimple 裝置安裝
 
@@ -36,9 +36,9 @@ ms.locfileid: "93376128"
 
             ![Test-HcsmConnection 顯示可路由傳送 IP](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig3.png)
 
-1. 按一下 [確定]  。 裝置設定隨即啟動。 完成裝置設定時，您會收到通知。 [裝置] 刀鋒視窗中的裝置狀態會變更為 [上線]。
+1. 按一下 [確定]。 裝置設定隨即啟動。 完成裝置設定時，您會收到通知。 [裝置] 刀鋒視窗中的裝置狀態會變更為 [上線]。
 
     ![StorSimple 最小裝置設定網路介面3](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig4.png)
 
 <!--Link reference-->
-[Test]: https://technet.microsoft.com/library/dn715782(v=wps.630).aspx
+[Test]: /previous-versions/windows/powershell-scripting/dn715782(v=wps.630)

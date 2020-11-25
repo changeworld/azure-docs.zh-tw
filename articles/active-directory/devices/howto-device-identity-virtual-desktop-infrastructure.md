@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9020e364a5c8d7a59dad5549e88036dc9edaad7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c30ad26f079e6353dc4763b9ae968c33882d8ab6
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089661"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029342"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>裝置身分識別和桌面虛擬化
 
@@ -56,19 +56,18 @@ ms.locfileid: "90089661"
 |   |   | 舊版 Windows | 非持續性 | 是<sup>6</sup> |
 | 已聯結的 Azure AD | 同盟 | Windows 目前 | 持續性 | 否 |
 |   |   |   | 非持續性 | 否 |
-|   | 受管理 | Windows 目前 | 持續性 | 否 |
+|   | 受控 | Windows 目前 | 持續性 | 否 |
 |   |   |   | 非持續性 | 否 |
-| 已註冊的 Azure AD | 同盟/受管理 | Windows 目前/舊版 windows | 持續/非持續性 | 不適用 |
+| 已註冊 Azure AD | 同盟/受管理 | Windows 目前/舊版 windows | 持續/非持續性 | 不適用 |
 
-<sup>1</sup>個 **Windows 目前** 的裝置代表 Windows 10、Windows Server 2016 和 windows server 2019。
-
+<sup>1</sup>個 **Windows 目前** 的裝置代表 Windows 10、windows server 2016 v1803 或更高版本，以及 windows server 2019。
 <sup>2</sup> **個舊版 Windows** 裝置代表 windows 7、Windows 8.1、windows Server 2008 r2、Windows Server 2012 和 windows server 2012 R2。 如需 Windows 7 的支援資訊，請參閱 [windows 7 的支援即將結束](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support)。 如需 Windows Server 2008 R2 的支援資訊，請參閱 [為 Windows server 2008 終止支援做好準備](https://www.microsoft.com/cloud-platform/windows-server-2008)。
 
 <sup>3</sup> 同盟 **身分識別基礎** 結構環境代表具有身分識別提供者（例如 AD FS 或其他協力廠商 IDP）的環境。
 
-<sup>4</sup> **受控** 識別基礎結構環境代表一個環境，其 Azure AD 為使用 [密碼雜湊同步 (PHS) ](../hybrid/whatis-phs.md) 或 [傳遞驗證 (](../hybrid/how-to-connect-pta.md) 使用 [無縫單一登入](../hybrid/how-to-connect-sso.md)PTA) 的身分識別提供者。
+<sup>4</sup> **受控** 識別基礎結構環境代表一個環境，其 Azure AD 為使用 [密碼雜湊同步 (PHS)](../hybrid/whatis-phs.md) 或 [傳遞驗證 (](../hybrid/how-to-connect-pta.md) 使用 [無縫單一登入](../hybrid/how-to-connect-sso.md)PTA) 的身分識別提供者。
 
-<sup>5</sup> **適用于 Windows 最新的5個非持續性支援**需要其他考慮，如下列指引一節所述。 此案例需要 Windows 10 1803、Windows Server 2019 或 Windows Server (半年通道) 起始1803版
+<sup>5</sup> **適用于 Windows 最新的5個非持續性支援** 需要其他考慮，如下列指引一節所述。 此案例需要 Windows 10 1803、Windows Server 2019 或 Windows Server (半年通道) 起始1803版
 
 <sup>6</sup> **針對舊版 Windows 的非持續性支援** 需要其他考慮，如下列指引一節所述。
 

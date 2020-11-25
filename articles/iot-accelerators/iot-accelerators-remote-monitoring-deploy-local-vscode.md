@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8f1d20e9a6a78d99a23fe4b98aeb4f3eb8359da7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73890948"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024175"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>本機部署遠端監視解決方案加速器 - Visual Studio Code
 
@@ -21,7 +21,7 @@ ms.locfileid: "73890948"
 
 本文會示範如何將遠端監視解決方案加速器部署到本機電腦，以進行測試和開發。 您可了解如何在 Visual Studio Code 中執行微服務。 本機微服務部署會使用下列雲端服務： IoT 中樞、Cosmos DB、Azure 串流分析和 Azure 時間序列深入解析。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要部署遠端監視解決方案加速器所使用的 Azure 服務，您需要一個有效的 Azure 訂用帳戶。
 
@@ -35,7 +35,7 @@ ms.locfileid: "73890948"
 * [.NET Core](https://dotnet.microsoft.com/download)
 * [Docker](https://www.docker.com)
 * [Nginx](https://nginx.org/en/download.html)
-* [Visual Studio Code](https://code.visualstudio.com/) \(英文\)
+* [Visual Studio Code](https://code.visualstudio.com/)
 * [VS Code 的 C# 擴充功能](https://code.visualstudio.com/docs/languages/csharp)
 * [Node.js v8](https://nodejs.org/) - 此軟體是指令碼用來建立 Azure 資源之 PCS CLI 的先決條件。 不要使用 Node.js v10
 
@@ -89,7 +89,7 @@ npm start
 * 將 **webui\scripts\localhost** 資料夾中的 **nginx.conf** 檔案複製到 **nginx\conf** 安裝目錄。
 * 執行 **nginx**。
 
-如需執行 **nginx** 的詳細資訊，請參閱[適用於 Windows 的 nginx](https://nginx.org/en/docs/windows.html) \(英文\)。
+如需執行 **nginx** 的詳細資訊，請參閱 [適用於 Windows 的 nginx](https://nginx.org/en/docs/windows.html) \(英文\)。
 
 ### <a name="connect-to-the-dashboard"></a>連線至儀表板
 

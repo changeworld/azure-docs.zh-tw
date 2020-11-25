@@ -10,11 +10,11 @@ ms.date: 12/19/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
 ms.openlocfilehash: be26c6fe03dac9b9ff9dbff4a2bdce391ec0837e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147869"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024158"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>使用 IoT DevKit AZ3166 搭配 Azure Functions 和認知服務製作語言翻譯工具
 
@@ -33,12 +33,12 @@ ms.locfileid: "92147869"
 1. 在 [Azure 入口網站中，按一下 [ **建立資源** ] 並搜尋 **語音**。 填寫表單以建立語音服務。
   ![語音服務](media/iot-hub-arduino-iot-devkit-az3166-translator/speech-service.png)
 
-1. 移至您剛剛建立的語音服務，按一下 [金鑰]**** 區段以複製並記下 **Key1**，供 DevKit 加以存取。
+1. 移至您剛剛建立的語音服務，按一下 [金鑰] 區段以複製並記下 **Key1**，供 DevKit 加以存取。
   ![複製金鑰](media/iot-hub-arduino-iot-devkit-az3166-translator/copy-keys.png)
 
 ## <a name="open-sample-project"></a>開啟範例專案
 
-1. 確定 IoT DevKit **未**連線至您的電腦。 先啟動 VS Code，然後將 DevKit 連線至您的電腦。
+1. 確定 IoT DevKit **未** 連線至您的電腦。 先啟動 VS Code，然後將 DevKit 連線至您的電腦。
 
 1. 按一下 `F1` 以開啟命令選擇區，輸入並選取 [Azure IoT Device Workbench：**開啟範例...]** 。然後選取 [IoT DevKit] 作為面板。
 
@@ -72,7 +72,7 @@ ms.locfileid: "92147869"
 1. 確認部署成功。
    ![部署成功](media/iot-hub-arduino-iot-devkit-az3166-translator/deploy-success.png)
 
-1. 在 Azure 入口網站中移至 [函式應用程式]**** 區段，找出剛才建立的 Azure 函式應用程式。 按一下 `devkit_translator`，然後按一下 [</> 取得函式 URL]**** 以複製 URL。
+1. 在 Azure 入口網站中移至 [函式應用程式] 區段，找出剛才建立的 Azure 函式應用程式。 按一下 `devkit_translator`，然後按一下 [</> 取得函式 URL] 以複製 URL。
    ![複製函式 URL](media/iot-hub-arduino-iot-devkit-az3166-translator/get-function-url.png)
 
 1. 將 URL 貼到 `azure_config.h` 檔案中。
@@ -83,15 +83,15 @@ ms.locfileid: "92147869"
 
 ## <a name="build-and-upload-device-code"></a>建置並上傳裝置程式碼
 
-1. 藉由下列動作將 DevKit 切換為 [組態模式]****：
+1. 藉由下列動作將 DevKit 切換為 [組態模式]：
    * 按住 **A** 按鈕。
-   * 按下再放開 [重設]**** 按鈕。
+   * 按下再放開 [重設] 按鈕。
 
-   您會看到畫面顯示 DevKit 識別碼和 [組態]****。
+   您會看到畫面顯示 DevKit 識別碼和 [組態]。
 
    ![DevKit 組態模式](media/iot-hub-arduino-iot-devkit-az3166-translator/devkit-configuration-mode.png)
 
-1. 按一下 `F1` ，輸入並選取 [ **Azure IoT 裝置工作臺：設定裝置設定 ...] > Config 裝置連接字串**。 選取 [選取 IoT 中樞裝置連接字串]****，以將其設定為 DevKit。
+1. 按一下 `F1` ，輸入並選取 [ **Azure IoT 裝置工作臺：設定裝置設定 ...] > Config 裝置連接字串**。 選取 [選取 IoT 中樞裝置連接字串]，以將其設定為 DevKit。
    ![設定連接字串](media/iot-hub-arduino-iot-devkit-az3166-translator/configure-connection-string.png)
 
 1. 作業順利完成後，您會看到通知。

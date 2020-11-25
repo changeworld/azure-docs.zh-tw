@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 7/17/2020
 ms.author: baanders
 ms.openlocfilehash: c1d1efce656bea02385cb20ac11ab90ca5664e60
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95559842"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027920"
 ---
 若要在開啟的 [Azure Cloud Shell](https://shell.azure.com) 視窗中開始使用 Azure Digital Twins，您要做的第一件事就是登入，並針對此工作階段來設定訂用帳戶的殼層內容。 在您的 Cloud Shell 中執行下列命令：
 

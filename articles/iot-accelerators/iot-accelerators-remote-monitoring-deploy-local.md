@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: a1eba1fceb959bd475d205176c2c53f6409fdc77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73890896"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024141"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>本機部署遠端監視解決方案加速器 - Visual Studio
 
@@ -23,7 +23,7 @@ ms.locfileid: "73890896"
 
 如果您想要在本機電腦上執行 Docker 中的遠端監視解決方案加速器，請參閱[本機部署遠端監視解決方案加速器 - Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要部署遠端監視解決方案加速器所使用的 Azure 服務，您需要一個有效的 Azure 訂用帳戶。
 
@@ -64,17 +64,17 @@ ms.locfileid: "73890896"
 
 1. 啟動 Visual Studio。
 1. 開啟 **remote-monitoring.sln** 解決方案 (位於存放庫本機複本的 **services** 資料夾中)。
-1. 以滑鼠右鍵按一下 [方案總管]**** 中的方案，然後按一下 [屬性]****。
-1. 選取 [通用屬性] > [啟始專案]****。
-1. 選取 [多個啟始專案]****，然後將下列專案的 [動作]**** 設定為 [啟動]****：
+1. 以滑鼠右鍵按一下 [方案總管] 中的方案，然後按一下 [屬性]。
+1. 選取 [通用屬性] > [啟始專案]。
+1. 選取 [多個啟始專案]，然後將下列專案的 [動作] 設定為 [啟動]：
     * WebService (asa-manager\WebService)
     * WebService (auth\WebService)
     * WebService (config\WebService)
     * WebService (device-telemetry\WebService)
     * WebService (iothub-manager\WebService)
     * WebService (storage-adapter\WebService)
-1. 按一下 [確定] **** 儲存您的選擇。
-1. 按一下 [偵錯] > [開始偵錯]****，以在本機電腦上建置並執行 Web 服務。
+1. 按一下 [確定]  儲存您的選擇。
+1. 按一下 [偵錯] > [開始偵錯]，以在本機電腦上建置並執行 Web 服務。
 
 每個 Web 服務都會開啟一個命令提示字元和 Web 瀏覽器視窗。 您可以在命令提示字元中看到執行中服務的輸出，還有瀏覽器視窗可讓您監視狀態。 請不要關閉命令提示字元或網頁，這個動作會停止 Web 服務。
 
@@ -83,9 +83,9 @@ ms.locfileid: "73890896"
 請遵循下列步驟以啟動串流分析作業：
 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
-1. 瀏覽至為解決方案建立的**資源群組**。 當您執行 **start.cmd** 指令碼時為解決方案選擇的名稱，就是資源群組的名稱。
-1. 在資源清單中，按一下 [串流分析作業]****。
-1. 在串流分析作業 [概觀]**** 頁面上，按一下 [啟動]**** 按鈕。 接著，按一下 [啟動]**** 以立即啟動作業。
+1. 瀏覽至為解決方案建立的 **資源群組**。 當您執行 **start.cmd** 指令碼時為解決方案選擇的名稱，就是資源群組的名稱。
+1. 在資源清單中，按一下 [串流分析作業]。
+1. 在串流分析作業 [概觀] 頁面上，按一下 [啟動] 按鈕。 接著，按一下 [啟動] 以立即啟動作業。
 
 ### <a name="run-the-web-ui"></a>執行 Web UI
 
@@ -105,7 +105,7 @@ npm start
 * 將 **nginx.conf** 檔案從存放庫本機複本中的 **webui\scripts\localhost** 資料夾複製到 **nginx\conf** 安裝目錄。
 * 執行 **nginx**。
 
-如需執行 **nginx** 的詳細資訊，請參閱[適用於 Windows 的 nginx](https://nginx.org/en/docs/windows.html) \(英文\)。
+如需執行 **nginx** 的詳細資訊，請參閱 [適用於 Windows 的 nginx](https://nginx.org/en/docs/windows.html) \(英文\)。
 
 ### <a name="connect-to-the-dashboard"></a>連線至儀表板
 

@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: ecbafe0d3f39b1bd6f7c494695ea17e067f0c79e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 6c7536e38a0d2cf7d4e906947aff645c74e459c0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129268"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028576"
 ---
 ## <a name="generalize-the-image"></a>一般化映像
 
@@ -41,12 +41,12 @@ Windows 作業系統磁片會以 [sysprep](/windows-hardware/manufacture/desktop
 ### <a name="take-a-snapshot-of-the-vm-disk"></a>製作 VM 磁片的快照集
 
 1. 登入 [Azure 入口網站](https://ms.portal.azure.com/)。
-2. 從左上方開始，選取 [ **建立資源** ]，然後搜尋並選取 [ **快照** 集]。
-3. 在 [快照集] 分頁中，選取 [  **建立** ]。
-4. 輸入快照集的 [名稱]  。
+2. 從左上方開始，選取 [ **建立資源**]，然後搜尋並選取 [ **快照** 集]。
+3. 在 [快照集] 分頁中，選取 [  **建立**]。
+4. 輸入快照集的 [名稱]。
 5. 選取現有的資源群組，或輸入新的資源群組的名稱。
-6. 在 [來源磁碟]  中，選取要建立快照集的受控磁碟。
-7. 選取用來儲存快照集的 [帳戶類型]  。 除非需要存放在高效能的 SSD 上，否則請使用 [標準 HDD]  。
+6. 在 [來源磁碟] 中，選取要建立快照集的受控磁碟。
+7. 選取用來儲存快照集的 [帳戶類型]。 除非需要存放在高效能的 SSD 上，否則請使用 [標準 HDD]。
 8. 選取 [建立]。
 
 #### <a name="extract-the-vhd"></a>將 VHD 解壓縮
@@ -81,7 +81,7 @@ destinationVHDFileName=myvhdfilename.vhd
 
 az account set --subscription $subscriptionId
 
-sas=$(az snapshot grant-access --resource-group $resourceGroupName --name $ snapshotName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
+sas=$(az snapshot grant-access --resource-group $resourceGroupName --name $snapshotName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
 
 az storage blob copy start --destination-blob $destinationVHDFileName --destination-container $storageContainerName --account-name $storageAccountName --account-key $storageAccountKey --source-uri $sas
 ```

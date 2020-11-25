@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/07/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: fbf45ff2268c81a45bbbe844ffe8a7a2069793cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 797d52b43d5e18c29e68311e68bea0d0ccce3b83
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86230954"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028069"
 ---
 目前僅適用于下欄區域：
 
@@ -22,5 +22,9 @@ ms.locfileid: "86230954"
 - 美國東部
 - 美國東部 2
 - 美國中南部
+- 加拿大中部 
+- 加拿大東部
+- 法國中部
+- 日本東部
 - US Gov 維吉尼亞州
 - US Gov 亞利桑那州

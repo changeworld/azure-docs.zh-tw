@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 06/24/2020
 ms.author: alkohli
 ms.openlocfilehash: 2868e5a53686cfa94dc206c1aab65fe866d19b6d
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95556474"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028570"
 ---
 以下是複製到儲存體帳戶中的資料在大小方面的限制。 請確定您上傳的資料符合這些限制。 如需這些限制的最新資訊，請參閱 [Blob 儲存體的擴充性和效能目標](../articles/storage/blobs/scalability-targets.md) ，以及 Azure 檔案儲存體的擴充 [性和效能目標](../articles/storage/files/storage-files-scale-targets.md)。
 

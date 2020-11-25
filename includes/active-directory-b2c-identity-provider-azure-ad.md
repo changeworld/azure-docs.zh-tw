@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 04/07/2020
 ms.author: mimart
-ms.openlocfilehash: 818f33abfdb0655d96c0a8873a43903ee972b3bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb2ecd9ab63345954356d18164a2afe94a5aae24
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82925402"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026877"
 ---
 ## <a name="register-an-azure-ad-app"></a>註冊 Azure AD 應用程式
 
@@ -20,7 +20,7 @@ ms.locfileid: "82925402"
 1. 請確定您使用的目錄包含您組織 Azure AD 租使用者 (例如 contoso.com) 。 在頂端功能表中選取 [ **目錄 + 訂** 用帳戶] 篩選，然後選擇包含您 Azure AD 租使用者的目錄。
 1. 選擇 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [應用程式註冊]。
 1. 選取 [新增註冊]。
-1. 輸入應用程式的**名稱**。 例如： `Azure AD B2C App` 。
+1. 輸入應用程式的 **名稱**。 例如： `Azure AD B2C App` 。
 1. 只針對此應用程式接受 **此組織目錄中帳戶** 的預設選項。
 1. 針對 [重新 **導向 URI**]，接受 [ **Web**] 的值，並以所有小寫字母輸入下列 URL，其中以 `your-B2C-tenant-name` 您 Azure AD B2C 租使用者的名稱取代。
 
@@ -36,7 +36,7 @@ ms.locfileid: "82925402"
 
 ### <a name="configuring-optional-claims"></a>設定選擇性宣告
 
-如果您想要從 Azure AD 取得 `family_name` 和 `given_name` 宣告，您可以在 Azure 入口網站 UI 或應用程式資訊清單中設定應用程式的選擇性宣告。 如需詳細資訊，請參閱[如何為 Azure AD 應用程式提供選擇性宣告](/azure/active-directory/develop/active-directory-optional-claims)。
+如果您想要從 Azure AD 取得 `family_name` 和 `given_name` 宣告，您可以在 Azure 入口網站 UI 或應用程式資訊清單中設定應用程式的選擇性宣告。 如需詳細資訊，請參閱[如何為 Azure AD 應用程式提供選擇性宣告](../articles/active-directory/develop/active-directory-optional-claims.md)。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 搜尋並選取 [Azure Active Directory]。
 1. 從 [管理] 區段中，選取 [應用程式註冊]。

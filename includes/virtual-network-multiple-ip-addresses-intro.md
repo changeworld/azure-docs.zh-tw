@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: c63160d7514dccb0d2a9c2879db6d3fd614e1a96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68ce927c05f7179cca0aa2833460b9550f0a82d2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75646378"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026894"
 ---
 > [!div class="op_single_selector"]
 > * [Azure 入口網站](../articles/virtual-network/virtual-network-multiple-ip-addresses-portal.md)
@@ -27,6 +27,6 @@ Azure 虛擬機器 (VM) 可連接一或多個網路介面 (NIC)。 任何 NIC �
 * 做為網路虛擬設備，例如防火牆或負載平衡器。
 * 能夠將任何 NIC 的任何私人 IP 位址新增到 Azure Load Balancer 後端集區。 在過去，只能將主要 NIC 的主要 IP 位址新增到後端集區。 若要深入了解如何負載平衡多個 IP 設定，請參閱[負載平衡多個 IP 組態](../articles/load-balancer/load-balancer-multiple-ip.md?toc=%2fazure%2fvirtual-network%2ftoc.json)文章。
 
-連接到 VM 的每個 NIC 皆有一或多個 IP 組態與其相關聯。 每個組態會獲派一個靜態或動態私人 IP 位址。 每個組態可能也會有一個關聯的公用 IP 位址資源。 公用 IP 位址資源具有任一動態或靜態 IP 位址指派給它。 若要深入了解 Azure 中的 IP 位址，請閱讀 [Azure 中的 IP 位址](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md)文章。 
+連接到 VM 的每個 NIC 皆有一或多個 IP 組態與其相關聯。 每個組態會獲派一個靜態或動態私人 IP 位址。 每個組態可能也會有一個關聯的公用 IP 位址資源。 公用 IP 位址資源具有任一動態或靜態 IP 位址指派給它。 若要深入了解 Azure 中的 IP 位址，請閱讀 [Azure 中的 IP 位址](../articles/virtual-network/public-ip-addresses.md)文章。 
 
 可以指派給一個 NIC 的私人 IP 位址數目有所限制。 Azure 訂用帳戶中可以使用的公用 IP 位址數目也有限制。 請參閱 [Azure 限制](../articles/azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)一文以取得詳細資料。

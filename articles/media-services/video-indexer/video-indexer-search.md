@@ -8,54 +8,55 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 11/23/2019
 ms.author: juliako
-ms.openlocfilehash: 1c3326456fefbbef9228cf26b5821f306cd21601
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1ca7c677e5f1eb55d74cca45e757676674f303c
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80127917"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030498"
 ---
 # <a name="search-for-exact-moments-in-videos-with-video-indexer"></a>使用影片索引子在影片中搜尋確切的時刻
 
-本主題將說明可讓您在影片中搜尋確切時間的搜尋選項。
+本主題說明如何使用影片索引子網站，在影片中搜尋確切的時間。
 
 1. 移至 [影片索引子](https://www.videoindexer.ai/) 網站並登入。
-2. 搜尋您帳戶中的所有影片。
+1. 指定搜尋關鍵字，搜尋會在您帳戶文件庫中的所有影片之間執行。 
 
-    在下列範例中，我們會搜尋與安全性相關的所有影片，以及顯示 Satya 的影片。
+    您可以選取 **篩選** 條件來篩選搜尋。 在下列範例中，我們會搜尋顯示為螢幕上文字 (OCR) 的 "Microsoft"。
 
-    ![在影片索引子中搜尋影片](./media/video-indexer-search/video-indexer-search01.png)
+    :::image type="content" source="./media/video-indexer-search/filter.png" alt-text="篩選，僅限文字":::
+1. 按 [ **搜尋** ] 以查看結果。
 
-3. 搜尋影片的深入解析摘要。
+    :::image type="content" source="./media/video-indexer-search/results.png" alt-text="影片搜尋結果":::
 
-    然後，您可以選取影片上的 [ **播放** ] 來搜尋影片。 然後，您可以藉由選取 [ **搜尋] 索引** 標籤，在影片中搜尋確切的時刻。
+    如果您選取其中一個結果，播放程式會將您帶入影片中的確切時間。
+1. 按一下影片上的 [ **播放** ]，或選取您的其中一個原始搜尋結果，以查看並搜尋影片的摘要見解。 
 
-    在下列範例中，我們會在所選影片內搜尋「安全」。
+    您可以查看、搜尋、編輯 **見解**。 當您選取其中一個見解時，播放程式會將您帶入影片中的確切時間。  
 
-    ![使用影片索引子在影片中搜尋](./media/video-indexer-search/video-indexer-search02.png)
+    :::image type="content" source="./media/video-indexer-search/insights.png" alt-text="查看、搜尋和編輯影片的見解":::
 
-    如果您選取其中一個結果，播放程式會將您帶入影片中的確切時間。 您可以在應用程式中完成播放程式/見解視圖與同步處理。 如需詳細資訊，請參閱 [將影片索引子小工具內嵌至您的應用程式](video-indexer-embed-widgets.md)。
+    如果您透過影片索引子小工具內嵌影片，您可以在應用程式中完成播放程式/見解視圖和同步處理。 如需詳細資訊，請參閱 [將影片索引子小工具內嵌至您的應用程式](video-indexer-embed-widgets.md)。
+1. 您可以按一下 [ **時程表** ] 索引標籤來查看、搜尋和編輯文字記錄。 
 
-4. 搜尋影片的明細。
+    :::image type="content" source="./media/video-indexer-search/timeline.png" alt-text="查看、搜尋和編輯影片的文字記錄":::
 
-    如果您想要根據您找到的影片建立自己的剪輯，請選取 [ **編輯** ] 按鈕。 此頁面會顯示影片及其見解作為篩選準則。 如需詳細資訊，請參閱[檢視和編輯影片索引器的深入解析](video-indexer-view-edit.md)。
+    若要編輯文字，請選取右上角的 [ **編輯** ]，並依需要變更文字。 
 
-    您可以在影片中搜尋確切的時間，只顯示您感興趣的行。 使用側邊見解來篩選您想要看到的部分。 當您完成時，您可以預覽剪輯並選取 [ **發佈** ]，以建立顯示在資源庫中的新剪輯。
+    您也可以從右上角選取適當的選項，以轉譯和下載文字記錄。 
 
-    在下列範例中，我們搜尋了「mixed reality」文字。 我們也套用了其他篩選，如下列畫面所示。
+## <a name="embed-download-create-projects"></a>內嵌、下載、建立專案
 
-    ![在影片索引子中搜尋確切的時間](./media/video-indexer-search/video-indexer-search03.png)
+您可以藉由選取 **</>內嵌** 在您的影片下方，來內嵌您的影片。 如需詳細資訊，請參閱 [在您的應用程式中內嵌視覺](video-indexer-embed-widgets.md)widget。
+
+您可以按一下影片底下的 [ **下載** ]，以下載來源影片、影片的見解、文字記錄。
+
+您可以按一下 [ **在編輯器中開啟**]，以根據您的特定線和時間的影片建立剪輯。 然後編輯影片，並儲存專案。 如需詳細資訊，請參閱 [使用您的影片深度見解](use-editor-create-project.md)。
+
+:::image type="content" source="./media/video-indexer-search/embed-download-create-projects.png" alt-text="內嵌、下載、建立影片的專案":::
 
 ## <a name="next-steps"></a>後續步驟
 
-一旦您找到想要使用的影片中的確切時間，就可以繼續處理影片。 如需詳細資訊，請參閱下列主題：
-
-- [使用您的影片深度見解](use-editor-create-project.md)
-- [使用影片索引子處理內容 REST API](video-indexer-use-apis.md)
-- [在您的應用程式中內嵌視覺小工具](video-indexer-embed-widgets.md)
-
-## <a name="see-also"></a>另請參閱
-
-[影片索引子概觀](video-indexer-overview.md)
+[使用影片索引子處理內容 REST API](video-indexer-use-apis.md)

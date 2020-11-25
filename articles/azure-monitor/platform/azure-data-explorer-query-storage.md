@@ -7,12 +7,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 8710e0cdd6c930338009fb2b7f3bd98fafcfad3e
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: 18ece47187e3f83277d7d925ad958d2ede7cb337
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95411558"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030011"
 ---
 # <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer-preview"></a>使用 Azure 資料總管 (preview 從 Azure 監視器查詢匯出的資料) 
 將資料從 Azure 監視器匯出至 Azure 儲存體帳戶可提供低成本的保留，以及將記錄重新配置到不同區域的能力。 使用 Azure 資料總管來查詢從 Log Analytics 工作區匯出的資料。 一旦設定之後，從您的工作區傳送到 Azure 儲存體帳戶的支援資料表將可作為 Azure 資料總管的資料來源。
@@ -122,7 +122,7 @@ Write-Host -ForegroundColor Green $createMapping
 
 >[!TIP]
 >* 複製、貼上，然後在 Azure 資料總管用戶端工具中執行腳本的輸出，以建立資料表和對應。
->* 如果您想要使用容器內的所有資料，您可以修改腳本，並將 URL 變更為 ' https://your.blob.core.windows.net/containername ;SecKey'
+>* 若要使用容器內的所有資料，請修改腳本，並將 URL 變更為 ' https://your.blob.core.windows.net/containername ;SecKey'
 
 ## <a name="query-the-exported-data-from-azure-data-explorer"></a>從 Azure 資料總管查詢匯出的資料 
 

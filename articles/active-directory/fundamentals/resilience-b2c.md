@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fda9378a41e0d98276957a6fad75db2c20e6e4e9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ba7b8ff2555fd7014cf16f66745721c6425ff868
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919462"
+ms.locfileid: "96029518"
 ---
 # <a name="build-resilience-in-your-customer-identity-and-access-management-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 在您的客戶身分識別和存取管理中打造復原能力
 
@@ -46,10 +46,6 @@ ms.locfileid: "95919462"
 
 - [監視和分析](resilience-with-monitoring-alerting.md)：透過警示來監視關鍵指標並偵測失敗和效能中斷，以評估服務的健全狀況。
 
-- Azure AD B2C 開發人員的復原能力資源
-  - [復原的終端使用者體驗](resilient-end-user-experience.md)
-  - [具有外部進程的復原介面](resilient-external-processes.md)
-  - [透過開發人員最佳作法的復原能力](resilience-b2c-developer-best-practices.md)
-  - [透過監視及分析的復原能力](resilience-with-monitoring-alerting.md)
 - [在您的驗證基礎結構中建立恢復功能](resilience-in-infrastructure.md)
+
 - [提高應用程式中驗證和授權的復原能力](resilience-app-development-overview.md)

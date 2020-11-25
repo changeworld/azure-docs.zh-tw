@@ -1,19 +1,19 @@
 ---
-title: 適用于網路預覽的 Azure 監視器
+title: 適用於網路的 Azure 監視器
 description: 網路的 Azure 監視器總覽，可針對所有已部署的網路資源全面查看健康情況和計量，而不需要任何設定。
 ms.subservice: ''
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
-ms.date: 09/24/2020
-ms.openlocfilehash: e2a43c4d0423b286984631fda75e5ff806ae9a57
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+author: KumudD
+ms.author: kumud
+ms.date: 11/25/2020
+ms.openlocfilehash: 52ca879d5a680d0e62cc469e768236eac11f3719
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102756"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030148"
 ---
-# <a name="azure-monitor-for-networks-preview"></a>適用于網路預覽的 Azure 監視器
+# <a name="azure-monitor-for-networks"></a>適用於網路的 Azure 監視器
 適用于網路的 Azure 監視器可針對所有已部署的網路資源全面查看 [健康](../../service-health/resource-health-checks-resource-types.md) 情況和計量，而不需要任何 [設定](../platform/metrics-supported.md) 。 它也可讓您存取網路監視功能，例如連線 [監視器](../../network-watcher/connection-monitor-preview.md)、 [網路安全性群組的流量記錄 (nsg) ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)和使用 [分析](../../network-watcher/traffic-analytics.md)。 它還提供其他網路 [診斷](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) 功能。
 
 網路的 Azure 監視器是以監視的這些主要元件為結構：
@@ -26,14 +26,14 @@ ms.locfileid: "92102756"
 
 [網路的 Azure 監視器 **總覽** ] 頁面提供簡單的方式來視覺化網路資源的清查，以及資源健康狀態和警示。 它分成四個主要功能區域：搜尋和篩選、資源健康狀態和度量、警示和相依性視圖。
 
-![顯示 [總覽] 頁面的螢幕擷取畫面。](media/network-insights-overview/overview.png)
+[ ![ 顯示 [總覽] 頁面 #lightbox) 的螢幕擷取畫面](media/network-insights-overview/overview.png)](media/network-insights-overview/overview.png)
 
 ### <a name="search-and-filtering"></a>搜尋和篩選
-您可以使用 **訂**用帳戶、 **資源群組**和 **類型**等篩選準則來自訂資源健康狀態和警示的觀點。
+您可以使用 **訂** 用帳戶、 **資源群組** 和 **類型** 等篩選準則來自訂資源健康狀態和警示的觀點。
 
 您可以使用 [搜尋] 方塊來搜尋資源和其相關聯的資源。 例如，公用 IP 會與應用程式閘道相關聯。 搜尋公用 IP 的 DNS 名稱將會傳回公用 IP 和相關聯的應用程式閘道：
 
-![顯示網路搜尋結果 Azure 監視器的螢幕擷取畫面。](media/network-insights-overview/search.png)
+[![顯示網路搜尋結果 Azure 監視器的螢幕擷取畫面。](media/network-insights-overview/search.png)](media/network-insights-overview/search.png#lightbox)
 
 
 ### <a name="resource-health-and-metrics"></a>資源健康狀態和計量
@@ -57,7 +57,7 @@ ms.locfileid: "92102756"
 
 應用程式閘道的相依性視圖可簡化前端 Ip 連接至接聽程式、規則和後端集區的方式。 連接線會以色彩標示，並根據後端集區健康情況提供其他詳細資料。 此視圖也會提供應用程式閘道計量的詳細觀點，以及所有相關後端集區的度量，例如虛擬機器擴展集和 VM 實例。
 
-![顯示網路 Azure 監視器中相依性觀點的螢幕擷取畫面。](media/network-insights-overview/dependency-view.png)
+[![顯示網路 Azure 監視器中相依性觀點的螢幕擷取畫面。](media/network-insights-overview/dependency-view.png)](media/network-insights-overview/dependency-view.png#lightbox)
 
 相依性圖形可讓您輕鬆地導覽至設定。 以滑鼠右鍵按一下後端集區，以存取其他資訊。 例如，如果後端集區是 VM，您可以直接存取 VM 深入解析和 Azure 網路監看員連線疑難排解，以找出連線問題：
 
@@ -67,39 +67,39 @@ ms.locfileid: "92102756"
 
 ![顯示 Azure 監視器網路搜尋範例的螢幕擷取畫面。](media/network-insights-overview/search-example.png)
 
-各種篩選器可協助您縮小為特定的路徑和狀態。 例如，從 [**健全狀況狀態**] 清單中選取 [僅狀況**不良**]，以顯示狀態為狀況不良的所有邊緣。
+各種篩選器可協助您縮小為特定的路徑和狀態。 例如，從 [**健全狀況狀態**] 清單中選取 [僅狀況 **不良**]，以顯示狀態為狀況不良的所有邊緣。
 
 選取 [ **View 詳細計量** ] 來開啟預先設定的活頁簿，以提供應用程式閘道、所有後端集區資源和前端 ip 的詳細計量。 
 
 ## <a name="connectivity"></a><a name="connectivity"></a>連線能力
 
-[連線 **能力** ] 索引標籤可讓您輕鬆地將所有透過連線監視器和連線監視器設定的測試視覺化，以針對選取的訂用帳戶集 [ (預覽) ](../../network-watcher/connection-monitor-preview.md) 。
+[連線 **能力** ] 索引標籤提供簡單的方式，讓您透過連線 [監視器](../../network-watcher/connection-monitor-overview.md) 和連線監視器將設定的所有測試視覺化， (選取的訂用帳戶集的傳統) 。
 
 ![顯示 Azure 監視器中網路的 [連線能力] 索引標籤的螢幕擷取畫面。](media/network-insights-overview/azure-monitor-for-networks-connectivity-tab.png)
 
 測試依 **來源** 和 **目的地** 磚分組，並顯示每個測試的可連線性狀態。 可連線的設定可讓您根據檢查失敗 (% ) 和 RTT (ms) ，輕鬆存取可存取性準則的設定。 設定值之後，每個測試的狀態都會根據選取準則來更新。
 
-![顯示 Azure 監視器中網路連線能力測試的螢幕擷取畫面。](media/network-insights-overview/azure-monitor-for-networks-connectivity-tests.png)
+[![顯示 Azure 監視器中網路連線能力測試的螢幕擷取畫面。](media/network-insights-overview/azure-monitor-for-networks-connectivity-tests.png)](media/network-insights-overview/azure-monitor-for-networks-connectivity-tests.png#lightbox)
 
 您可以選取任何來源或目的地磚來開啟度量視圖：
 
-![顯示網路中 Azure 監視器連接計量的螢幕擷取畫面。](media/network-insights-overview/azure-monitor-for-networks-connectivity-metrics.png)
+[![顯示網路中 Azure 監視器連接計量的螢幕擷取畫面。](media/network-insights-overview/azure-monitor-for-networks-connectivity-metrics.png)](media/network-insights-overview/azure-monitor-for-networks-connectivity-metrics.png#lightbox)
 
 
-您可以在格線視圖中選取任何專案。 選取 [可連線] **資料行中** 的圖示，以移至 [連線監視器] 入口網站頁面，並查看會影響所識別問題的逐一躍點拓撲和連線能力。 選取 [ **警示** ] 資料行中的值，以移至 [警示]。 選取 [ **檢查失敗百分比** ] 和 [ **來回行程時間] (ms) ** 資料行中的圖表，以移至所選連線監視器的 [計量] 頁面。
+您可以在格線視圖中選取任何專案。 選取 [可連線] **資料行中** 的圖示，以移至 [連線監視器] 入口網站頁面，並查看會影響所識別問題的逐一躍點拓撲和連線能力。 選取 [ **警示** ] 資料行中的值，以移至 [警示]。 選取 [ **檢查失敗百分比** ] 和 [ **來回行程時間] (ms)** 資料行中的圖表，以移至所選連線監視器的 [計量] 頁面。
 
 頁面右側的 **警示** 方塊提供針對所有訂用帳戶上設定的連線測試所產生的所有警示的查看。 選取警示計數以移至詳細警示頁面。
 
 ## <a name="traffic"></a><a name="traffic"></a>交通流量
 [ **流量** ] 索引標籤可讓您存取所選訂用帳戶集合（依位置分組）的 [NSG 流量記錄](../../network-watcher/network-watcher-nsg-flow-logging-overview.md) 和使用 [分析](../../network-watcher/traffic-analytics.md) 所設定的所有 nsg。 此索引標籤上提供的搜尋功能可讓您識別針對搜尋的 IP 位址所設定的 Nsg。 您可以在您的環境中搜尋任何 IP 位址。 並排顯示的區域視圖會顯示所有 Nsg，以及 NSG 流量記錄和流量分析設定狀態。
 
-![顯示 Azure 監視器中網路的 [流量] 索引標籤的螢幕擷取畫面。](media/network-insights-overview/azure-monitor-for-networks-traffic-view.png)
+[![顯示 Azure 監視器中網路的 [流量] 索引標籤的螢幕擷取畫面。](media/network-insights-overview/azure-monitor-for-networks-traffic-view.png)](media/network-insights-overview/azure-monitor-for-networks-traffic-view.png#lightbox)
 
 如果您選取任何區域圖格，則會出現格線視圖。 此方格可讓您輕鬆閱讀並設定 NSG 流程記錄和流量分析的觀點：  
 
-![螢幕擷取畫面，顯示網路中 Azure 監視器的流量區域查看。](media/network-insights-overview/azure-monitor-for-networks-traffic-region-view.png)
+[![螢幕擷取畫面，顯示網路中 Azure 監視器的流量區域查看。](media/network-insights-overview/azure-monitor-for-networks-traffic-region-view.png)](media/network-insights-overview/azure-monitor-for-networks-traffic-region-view.png#lightbox)
 
-您可以在格線視圖中選取任何專案。 選取 [ **Flowlog 設定狀態** ] 資料行中的圖示，以編輯 NSG 流量記錄和流量分析設定。 選取 [ **警示** ] 資料行中的值，以移至針對所選取 NSG 所設定的流量警示。 同樣地，您可以藉由選取 [使用 **分析] 工作區**來移至 [流量分析] 的觀點。  
+您可以在格線視圖中選取任何專案。 選取 [ **Flowlog 設定狀態** ] 資料行中的圖示，以編輯 NSG 流量記錄和流量分析設定。 選取 [ **警示** ] 資料行中的值，以移至針對所選取 NSG 所設定的流量警示。 同樣地，您可以藉由選取 [使用 **分析] 工作區** 來移至 [流量分析] 的觀點。  
 
 頁面右側的 **警示** 方塊可讓您查看所有訂用帳戶的所有流量分析以工作區為基礎的警示。 選取警示計數以移至詳細警示頁面。
 

@@ -7,23 +7,23 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 11/24/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 1bf0a4a86ccc36960f218fabebda5bc82eb29019
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 5b498b8f49f2f0636b010e3c4d86f13ad44ac090
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426165"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029008"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>將自動完成和建議新增至用戶端應用程式
 
-搜尋即您類型是改善使用者起始查詢生產力的常見技術。 在 Azure 認知搜尋中，您可以透過 *自動完成* 來支援此體驗，這項功能會根據部分輸入完成詞彙或片語， (以「microsoft」 ) 完成「微」。 另一種形式是 *建議* ：相符檔的簡短清單 (以識別碼傳回書籍標題，以便您可以連結到詳細資料頁面) 。 自動完成和建議都會針對索引中的相符前提。 服務不會提供傳回零結果的查詢。
+搜尋即您類型是改善使用者起始查詢生產力的常見技術。 在 Azure 認知搜尋中，您可以透過 *自動完成* 來支援此體驗，這項功能會根據部分輸入完成詞彙或片語， (以「microsoft」 ) 完成「微」。 第二個使用者體驗是 *建議*，或比對檔的簡短清單 (以識別碼傳回書籍標題，以便您可以連結到該書籍) 的詳細資料頁面。 自動完成和建議都會針對索引中的相符前提。 服務不會提供傳回零結果的查詢。
 
 若要在 Azure 認知搜尋中執行這些體驗，您將需要：
 
-+ 後端上的 *建議工具* 。
-+ 在要求上指定 [自動完成](/rest/api/searchservice/autocomplete)或 [建議](/rest/api/searchservice/suggestions)API 的 *查詢* 。
++ 內嵌在索引架構中的 *建議工具* 定義。
++ 在要求上指定 [自動完成](/rest/api/searchservice/autocomplete)或 [建議](/rest/api/searchservice/suggestions)API 的 *查詢*。
 + 用來處理用戶端應用程式中搜尋型別互動的 *UI 控制項* 。 基於此目的，我們建議使用現有的 JavaScript 程式庫。
 
 在 Azure 認知搜尋中，autocompleted 查詢和建議的結果會從搜尋索引中，從您向建議工具註冊的選取欄位中取出。 建議工具是索引的一部分，而且它會指定哪些欄位將提供完成查詢的內容、建議結果，或兩者都有。 建立並載入索引時，會在內部建立建議工具資料結構，以儲存用於比對部分查詢的前置詞。 若要取得建議，請選擇唯一的適當欄位，或至少不重複的欄位，這對體驗而言是不可或缺的。 如需詳細資訊，請參閱 [建立建議工具](index-add-suggesters.md)。
@@ -67,7 +67,7 @@ Api 不會對部分查詢強加最小長度需求;它可以只是一個字元。
 
 針對建議，您應該進一步精簡回應以避免重複，或看似不相關的結果。 若要控制結果，請在要求中包含更多參數。 下列參數適用于自動完成和建議，但可能更是建議的必要項，特別是在建議工具組含多個欄位時。
 
-| 參數 | 使用量 |
+| 參數 | 使用方式 |
 |-----------|-------|
 | **$select** | 如果您在建議工具中有多個 **sourceFields** ，請使用 **$select** 選擇 () 中提供值的欄位 `$select=GameTitle` 。 |
 | **searchFields** | 將查詢限制為特定欄位。 |
@@ -179,7 +179,7 @@ SuggestAsync 函式會採用兩個參數，以決定是否要傳回搜尋結果�
 
 ## <a name="autocomplete"></a>自動完成
 
-到目前為止，搜尋 UX 程式碼已集中于建議。 下一個程式碼區塊會使用 >xdsoft jQuery UI 自動完成函式來顯示自動完成，並在要求中傳遞 Azure 認知搜尋自動完成的功能。 如同建議，在 c # 應用程式中，支援使用者互動的程式碼會進入 **索引. cshtml** 。
+到目前為止，搜尋 UX 程式碼已集中于建議。 下一個程式碼區塊會使用 >xdsoft jQuery UI 自動完成函式來顯示自動完成，並在要求中傳遞 Azure 認知搜尋自動完成的功能。 如同建議，在 c # 應用程式中，支援使用者互動的程式碼會進入 **索引. cshtml**。
 
 ```javascript
 $(function () {

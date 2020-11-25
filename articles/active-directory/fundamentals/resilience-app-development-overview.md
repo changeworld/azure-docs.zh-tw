@@ -11,18 +11,16 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: f6078ed96106d6a53b55195ee950e2165334221d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c2c2f9d0ad7bfa50f543b57326b9fc8dab0069c6
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919467"
+ms.locfileid: "96029297"
 ---
 # <a name="increase-resilience-of-authentication-and-authorization-applications-you-develop"></a>提高您開發的驗證和授權應用程式的復原能力
 
 Microsoft 身分識別會使用新式、權杖型驗證和授權。 這表示應用程式會從身分識別提供者取得權杖，以驗證使用者，以及授權應用程式呼叫受保護的 Api。
-
-![呼叫 Microsoft 身分識別的應用程式影像](media/resilience-app-development-overview/app-overview.png)
 
 權杖的有效時間長度為特定時間長度，應用程式必須取得新的時間長度。 很少的情況下，取得權杖的呼叫可能會因為網路或基礎結構失敗或驗證服務中斷等問題而失敗。 在本檔中，我們將概述開發人員在權杖取得失敗時，可採取的步驟來提高應用程式的復原能力。
 

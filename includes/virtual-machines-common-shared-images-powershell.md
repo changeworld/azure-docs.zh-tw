@@ -9,11 +9,11 @@ ms.date: 03/18/2020
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 807cbd283cf7971bf4256451028ffa16a0911266
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95554743"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027659"
 ---
 ## <a name="create-an-image-gallery"></a>建立映像資源庫 
 

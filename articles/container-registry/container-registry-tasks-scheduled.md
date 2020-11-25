@@ -2,17 +2,17 @@
 title: 教學課程-排程 ACR 工作
 description: 在本教學課程中，您將瞭解如何藉由設定一或多個計時器觸發程式，以定義的排程執行 Azure Container Registry 工作
 ms.topic: article
-ms.date: 06/27/2019
-ms.openlocfilehash: 3202b5d8c426165d81129f1affa69b3a3d515ce9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/24/2020
+ms.openlocfilehash: 13a4ccac4ea97538583c1c063a6dc61e4d25686a
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78402873"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030606"
 ---
-# <a name="run-an-acr-task-on-a-defined-schedule"></a>依定義的排程執行 ACR 工作
+# <a name="tutorial-run-an-acr-task-on-a-defined-schedule"></a>教學課程：依定義的排程執行 ACR 工作
 
-本教學課程說明如何依排程執行 [ACR](container-registry-tasks-overview.md) 工作。 藉由設定一或多個 *計時器觸發*程式來排程工作。 計時器觸發程式可以單獨使用，也可以與其他工作觸發程式搭配使用。
+本教學課程說明如何依排程執行 [ACR](container-registry-tasks-overview.md) 工作。 藉由設定一或多個 *計時器觸發* 程式來排程工作。 計時器觸發程式可以單獨使用，也可以與其他工作觸發程式搭配使用。
 
 在本教學課程中，您將瞭解排程工作和：
 
@@ -25,8 +25,7 @@ ms.locfileid: "78402873"
 * 執行排程維護作業的容器工作負載。 例如，執行容器化應用程式以從登錄中移除不必要的映射。
 * 在 workday 期間于生產映射上執行一組測試，做為即時網站監視的一部分。
 
-您可以使用 Azure CLI 的 Azure Cloud Shell 或本機安裝來執行本文中的範例。 如果您想要在本機使用，則需要版本 >2.0.68 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
-
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="about-scheduling-a-task"></a>關於排程工作
 
@@ -37,19 +36,29 @@ ms.locfileid: "78402873"
     * 當您建立工作時，請指定多個計時器觸發程式，或稍後再新增。
     * 選擇性地命名觸發程式以方便管理，或 ACR 工作會提供預設的觸發程式名稱。
     * 如果計時器排程一次重迭，ACR 工作會在排程的時間針對每個計時器觸發工作。
-* **其他工作觸發** 程式-在計時器觸發的工作中，您也可以根據 [原始程式碼認可](container-registry-tutorial-build-task.md) 或 [基底映射更新](container-registry-tutorial-base-image-update.md)來啟用觸發程式。 如同其他 ACR 工作，您也可以 [手動觸發][az-acr-task-run] 已排程的工作。
+* **其他工作觸發** 程式-在計時器觸發的工作中，您也可以根據 [原始程式碼認可](container-registry-tutorial-build-task.md) 或 [基底映射更新](container-registry-tutorial-base-image-update.md)來啟用觸發程式。 如同其他 ACR 工作，您也可以 [手動執行][az-acr-task-run] 排程工作。
 
 ## <a name="create-a-task-with-a-timer-trigger"></a>建立具有計時器觸發程式的工作
 
+### <a name="task-command"></a>工作命令
+
+首先，使用適合您環境的值填入下列 shell 環境變數。 此步驟並不是必要動作，但可簡化在本教學課程中執行多行 Azure CLI 命令的作業。 如果您未填入環境變數，則必須手動將每個值取代為範例命令中的任何位置。
+
+[![內嵌啟動](https://shell.azure.com/images/launchcloudshell.png "啟動 Azure Cloud Shell")](https://shell.azure.com)
+
+```console
+ACR_NAME=<registry-name>        # The name of your Azure container registry
+```
+
 當您使用 [az acr task create][az-acr-task-create] 命令來建立工作時，您可以選擇性地新增計時器觸發程式。 加入 `--schedule` 參數，並傳遞計時器的 cron 運算式。
 
-簡單的範例中，下列命令會觸發在每天 `hello-world` 21:00 UTC 的 Docker Hub 執行映射。 工作會在沒有原始程式碼內容的情況下執行。
+簡單的範例中，下列工作會 `hello-world` 從每日 21:00 UTC 開始觸發 Microsoft Container Registry 的映射。 工作會在沒有原始程式碼內容的情況下執行。
 
 ```azurecli
 az acr task create \
-  --name mytask \
-  --registry myregistry \
-  --cmd hello-world \
+  --name timertask \
+  --registry $ACR_NAME \
+  --cmd mcr.microsoft.com/hello-world \
   --schedule "0 21 * * *" \
   --context /dev/null
 ```
@@ -57,30 +66,32 @@ az acr task create \
 執行 [az acr task show][az-acr-task-show] 命令來查看計時器觸發程序是否已設定。 根據預設，基底映射更新觸發程式也會啟用。
 
 ```azurecli
-az acr task show --name mytask --registry registry --output table
+az acr task show --name timertask --registry $ACR_NAME --output table
 ```
 
 ```output
 NAME      PLATFORM    STATUS    SOURCE REPOSITORY       TRIGGERS
 --------  ----------  --------  -------------------     -----------------
-mytask    linux       Enabled                           BASE_IMAGE, TIMER
+timertask linux       Enabled                           BASE_IMAGE, TIMER
 ```
+
+## <a name="trigger-the-task"></a>觸發工作
 
 使用 [az acr task run][az-acr-task-run] 手動觸發工作，以確保其已正確設定：
 
 ```azurecli
-az acr task run --name mytask --registry myregistry
+az acr task run --name timertask --registry $ACR_NAME
 ```
 
-如果容器成功執行，則輸出如下所示：
+如果容器成功執行，則輸出如下所示。 輸出會扼要地顯示關鍵步驟
 
 ```output
 Queued a run with ID: cf2a
 Waiting for an agent...
-2019/06/28 21:03:36 Using acb_vol_2ca23c46-a9ac-4224-b0c6-9fde44eb42d2 as the home volume
-2019/06/28 21:03:36 Creating Docker network: acb_default_network, driver: 'bridge'
+2020/11/20 21:03:36 Using acb_vol_2ca23c46-a9ac-4224-b0c6-9fde44eb42d2 as the home volume
+2020/11/20 21:03:36 Creating Docker network: acb_default_network, driver: 'bridge'
 [...]
-2019/06/28 21:03:38 Launching container with name: acb_step_0
+2020/11/20 21:03:38 Launching container with name: acb_step_0
 
 Hello from Docker!
 This message shows that your installation appears to be working correctly.
@@ -90,17 +101,16 @@ This message shows that your installation appears to be working correctly.
 在排程的時間之後，執行 [az acr task list-][az-acr-task-list-runs] run 命令，確認計時器是否如預期般觸發工作：
 
 ```azurecli
-az acr task list-runs --name mytask --registry myregistry --output table
+az acr task list-runs --name timertask --registry $ACR_NAME --output table
 ```
 
 當計時器成功時，輸出如下所示：
 
 ```output
-RUN ID    TASK     PLATFORM    STATUS     TRIGGER    STARTED               DURATION
---------  -------- ----------  ---------  ---------  --------------------  ----------
-[...]
-cf2b      mytask   linux       Succeeded  Timer      2019-06-28T21:00:23Z  00:00:06
-cf2a      mytask   linux       Succeeded  Manual     2019-06-28T20:53:23Z  00:00:06
+RUN ID    TASK       PLATFORM    STATUS     TRIGGER    STARTED               DURATION
+--------  ---------  ----------  ---------  ---------  --------------------  ----------
+ca15      timertask  linux       Succeeded  Timer      2020-11-20T21:00:23Z  00:00:06
+ca14      timertask  linux       Succeeded  Manual     2020-11-20T20:53:35Z  00:00:06
 ```
 
 ## <a name="manage-timer-triggers"></a>管理計時器觸發程式
@@ -109,12 +119,12 @@ cf2a      mytask   linux       Succeeded  Manual     2019-06-28T20:53:23Z  00:00
 
 ### <a name="add-or-update-a-timer-trigger"></a>新增或更新計時器觸發程式
 
-建立工作之後，您可以選擇性地使用 [az acr task timer add][az-acr-task-timer-add] 命令新增計時器觸發程式。 下列範例會將計時器觸發程式名稱 *timer2* 新增至先前建立的 *mytask* 。 此計時器每天會以 10:30 UTC 觸發工作。
+建立工作之後，您可以選擇性地使用 [az acr task timer add][az-acr-task-timer-add] 命令新增計時器觸發程式。 下列範例會將計時器觸發程式名稱 *timer2* 新增至先前建立的 *timertask* 。 此計時器每天會以 10:30 UTC 觸發工作。
 
 ```azurecli
 az acr task timer add \
-  --name mytask \
-  --registry myregistry \
+  --name timertask \
+  --registry $ACR_NAME \
   --timer-name timer2 \
   --schedule "30 10 * * *"
 ```
@@ -123,8 +133,8 @@ az acr task timer add \
 
 ```azurecli
 az acr task timer update \
-  --name mytask \
-  --registry myregistry \
+  --name timertask \
+  --registry $ACR_NAME \
   --timer-name timer2 \
   --schedule "30 11 * * *"
 ```
@@ -134,7 +144,7 @@ az acr task timer update \
 [Az acr task timer list][az-acr-task-timer-list]命令會顯示為工作設定的計時器觸發程式：
 
 ```azurecli
-az acr task timer list --name mytask --registry myregistry
+az acr task timer list --name timertask --registry $ACR_NAME
 ```
 
 範例輸出︰
@@ -156,12 +166,12 @@ az acr task timer list --name mytask --registry myregistry
 
 ### <a name="remove-a-timer-trigger"></a>移除計時器觸發程式
 
-使用 [az acr task timer remove][az-acr-task-timer-remove] 命令移除工作中的計時器觸發程式。 下列範例會從*mytask*中移除*timer2*觸發程式：
+使用 [az acr task timer remove][az-acr-task-timer-remove] 命令移除工作中的計時器觸發程式。 下列範例會從 *timertask* 中移除 *timer2* 觸發程式：
 
 ```azurecli
 az acr task timer remove \
-  --name mytask \
-  --registry myregistry \
+  --name timertask \
+  --registry $ACR_NAME \
   --timer-name timer2
 ```
 

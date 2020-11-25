@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: d47cf21e25c89c20a8baa31a80b867b74ada93df
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 746198f87e23cd7aca2a3177c23974917cb4b12a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360666"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027560"
 ---
 #### <a name="to-create-a-new-service"></a>建立新服務
 
@@ -19,7 +19,7 @@ ms.locfileid: "93360666"
 
     ![建立 StorSimple 裝置管理員](./media/storsimple-8000-create-new-service/createssdevman1.png)
 
-    搜尋 [StorSimple 實體]。 選取並按一下 [StorSimple 實體裝置系列]，然後按一下 [建立]。 或者，在 Azure 入口網站按一下， **+** 然後在 [ **存儲** 設備] 下，按一下 [ **StorSimple 實體裝置系列** ]。
+    搜尋 [StorSimple 實體]。 選取並按一下 [StorSimple 實體裝置系列]，然後按一下 [建立]。 或者，在 Azure 入口網站按一下， **+** 然後在 [ **存儲** 設備] 下，按一下 [ **StorSimple 實體裝置系列**]。
 
     ![建立 StorSimple 裝置管理員2](./media/storsimple-8000-create-new-service/createssdevman11.png)
 
@@ -29,7 +29,7 @@ ms.locfileid: "93360666"
 
    2. 從下拉式清單中選擇 [訂閱]。 訂用帳戶會連結到您的帳單帳戶。 如果您只擁有一個訂用帳戶，則此欄位不存在。
 
-   3. 針對 **資源群組** ， **使用現有群組** 或 **建立新的群組** 。 如需詳細資訊，請參閱 [Azure 資源群組](/azure/azure-resource-manager/management/manage-resource-groups-portal)。
+   3. 針對 **資源群組**，**使用現有群組** 或 **建立新的群組**。 如需詳細資訊，請參閱 [Azure 資源群組](../articles/azure-resource-manager/management/manage-resource-groups-portal.md)。
 
    4. 提供服務的 [位置]。 一般而言，請選擇最接近您想要部署裝置之地理區域的位置。 您可能也需要計入下列考量因素：
 

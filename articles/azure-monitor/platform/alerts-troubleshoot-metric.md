@@ -4,14 +4,14 @@ description: Azure 監視器計量警示和可能解決方案的常見問題。
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 10/05/2020
+ms.date: 11/25/2020
 ms.subservice: alerts
-ms.openlocfilehash: 2e68a780890b8ddf857bf8f52a0ecf9a4c24b36c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 5a57e8b7f3bf2c3e820a3befee0ee69c48a2afa9
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342122"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029871"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>針對 Azure 監視器計量警示中的問題進行疑難排解 
 
@@ -23,14 +23,14 @@ ms.locfileid: "92342122"
 
 如果您認為計量警示應已引發但未引發，而且在 Azure 入口網站中找不到，請嘗試下列步驟：
 
-1. 設定 **-檢查**計量警示規則設定，以確定其已正確設定：
-    - 檢查 **匯總類型**、 **匯總細微性 (期間) **，以及 **臨界值** 或 **敏感度** 是否已如預期般設定
+1. 設定 **-檢查** 計量警示規則設定，以確定其已正確設定：
+    - 檢查 **匯總類型**、 **匯總細微性 (期間)**，以及 **臨界值** 或 **敏感度** 是否已如預期般設定
     - 若為使用動態閾值的警示規則，請檢查是否已設定 [advanced] 設定，因為 **違規次數** 可能會篩選警示，並 **忽略資料，才** 會影響閾值的計算方式。
 
        > [!NOTE] 
        > 動態閾值需要至少3天和30個度量樣本，才能變成作用中。
 
-2. 已**引發但沒有通知**-請檢查[引發的警示清單](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2)，以查看是否可以找到引發的警示。 如果您可以在清單中看到警示，但有一些動作或通知有問題，請參閱 [這裡](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected)的詳細資訊。
+2. 已 **引發但沒有通知**-請檢查 [引發的警示清單](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2)，以查看是否可以找到引發的警示。 如果您可以在清單中看到警示，但有一些動作或通知有問題，請參閱 [這裡](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected)的詳細資訊。
 
 3. **已** 在使用中-檢查您預期要取得警示的計量時間序列上是否已引發警示。 計量警示是可設定狀態的，這表示在特定計量時間序列上引發警示後，將不會引發該時間序列上的其他警示，直到不再觀察到問題為止。 此設計選擇可減少雜訊。 當三個連續評估的警示條件不符合時，就會自動解決警示。
 
@@ -38,13 +38,13 @@ ms.locfileid: "92342122"
 
 5. **匯總和時間細微性** -如果您要使用 [計量圖表](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/metrics)來視覺化度量，請確定：
     * 度量圖表中選取的 **匯總** 與警示規則中的 **匯總類型** 相同
-    * 選取的 **時間資料細微性** 與您的警示規則中 **)  (期間的匯總細微性 ** 相同 (且未設定為「自動」 ) 
+    * 選取的 **時間資料細微性** 與您的警示規則中 **)  (期間的匯總細微性** 相同 (且未設定為「自動」 ) 
 
 ## <a name="metric-alert-fired-when-it-shouldnt-have"></a>計量警示不應出現時引發
 
 如果您認為您的計量警示不應該引發，但已執行，則下列步驟可能有助於解決此問題。
 
-1. 檢查 [引發的警示清單](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2) 以找出引發的警示，然後按一下以查看其詳細資料。 請檢查 **此警示引發的原因** 所提供的資訊，以查看觸發警示時的度量圖表、計量 **值**和 **臨界值** 。
+1. 檢查 [引發的警示清單](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2) 以找出引發的警示，然後按一下以查看其詳細資料。 請檢查 **此警示引發的原因** 所提供的資訊，以查看觸發警示時的度量圖表、計量 **值** 和 **臨界值** 。
 
     > [!NOTE] 
     > 如果您使用動態閾值條件類型，而且認為使用的閾值不正確，請使用苦臉圖示提供意見反應。 這項意見反應會影響機器學習演算法研究，並協助改善未來的偵測結果。
@@ -52,7 +52,7 @@ ms.locfileid: "92342122"
 2. 如果您已針對計量選取多個維度值，當 **任何** 計量時間序列 (如維度值組合所定義) 違反閾值時，就會觸發警示。 如需在計量警示中使用維度的詳細資訊，請參閱[此處](./alerts-metric-overview.md#using-dimensions)。
 
 3. 請檢查警示規則設定，以確定其已正確設定：
-    - 檢查 **匯總類型**、 **匯總細微性 (期間) **，以及 **臨界值** 或 **敏感度** 是否已如預期般設定
+    - 檢查 **匯總類型**、 **匯總細微性 (期間)**，以及 **臨界值** 或 **敏感度** 是否已如預期般設定
     - 若為使用動態閾值的警示規則，請檢查是否已設定 [advanced] 設定，因為 **違規次數** 可能會篩選警示，並 **忽略資料，才** 會影響閾值的計算方式。
 
    > [!NOTE]
@@ -60,7 +60,7 @@ ms.locfileid: "92342122"
 
 4. 如果您要使用 [計量圖表](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/metrics)來視覺化度量，請確定：
     - 度量圖表中選取的 **匯總** 與警示規則中的 **匯總類型** 相同
-    - 選取的 **時間資料細微性** 與您的警示規則中 **)  (期間的匯總細微性 ** 相同 (且未設定為「自動」 ) 
+    - 選取的 **時間資料細微性** 與您的警示規則中 **)  (期間的匯總細微性** 相同 (且未設定為「自動」 ) 
 
 5. 如果在已引發警示的情況下引發警示，但監視的相同準則 (未解決) ，請檢查是否已將 *autoMitigate* 屬性設定為 **false** (此屬性只能透過 REST/PowerShell/CLI 進行設定，因此請檢查用來部署警示規則) 的腳本。 在這種情況下，警示規則不會自動解析引發的警示，而且不需要先解決引發的警示，就能再次引發。
 
@@ -156,7 +156,7 @@ ms.locfileid: "92342122"
 3. 如果您需要增加配額限制，請開啟支援要求，並提供下列資訊：
 
     - 需要增加配額限制的訂用帳戶識別碼 (s) 
-    - 配額增加的資源類型：計量**警示**或** (傳統) **的計量警示
+    - 配額增加的資源類型：計量 **警示** 或 **(傳統)** 的計量警示
     - 要求的配額限制
 
 ## <a name="check-total-number-of-metric-alert-rules"></a>檢查計量警示規則的總數
@@ -241,6 +241,8 @@ ms.locfileid: "92342122"
 - 計量警示規則名稱不能包含下列字元： * # & +：  < > ？ @ % { } \ / 
 - 計量警示規則名稱不能以空格或句號結尾
 
+> [!NOTE] 
+> 如果警示規則名稱包含的字元不是字母或數位 (例如：空格、標點符號或符號) ，則這些字元可能會在特定用戶端抓取時進行 URL 編碼。
 
 ## <a name="restrictions-when-using-dimensions-in-a-metric-alert-rule-with-multiple-conditions"></a>在具有多個條件的度量警示規則中使用維度時的限制
 
@@ -252,14 +254,14 @@ ms.locfileid: "92342122"
 - 當在不同條件下設定的度量支援相同的維度時，您必須以相同的方式，針對) 相關條件 (的所有計量明確設定所設定的維度值。
 例如：
     - 請考慮在儲存體帳戶上定義的度量警示規則，並監視兩個條件：
-        * **交易**總數 > 5
+        * **交易** 總數 > 5
         * 平均 **successe2elatency 時間** > 250 毫秒
-    - 我想要更新第一個條件，只監視**ApiName**維度等於 *"GetBlob"* 的交易
-    - 由於**交易**和**successe2elatency 時間**計量都支援**ApiName**維度，因此我必須同時更新這兩個條件，而且兩者都必須使用 *"GetBlob"* 值來指定**ApiName**維度。
+    - 我想要更新第一個條件，只監視 **ApiName** 維度等於 *"GetBlob"* 的交易
+    - 由於 **交易** 和 **successe2elatency 時間** 計量都支援 **ApiName** 維度，因此我必須同時更新這兩個條件，而且兩者都必須使用 *"GetBlob"* 值來指定 **ApiName** 維度。
 
 ## <a name="setting-the-alert-rules-period-and-frequency"></a>設定警示規則的期間和頻率
 
-我們建議您選擇大於*評估頻率*的*匯總資料細微性 (期間) * ，以降低在下列情況下遺漏新增時間序列第一次評估的可能性：
+我們建議您選擇大於 *評估頻率* 的 *匯總資料細微性 (期間)* ，以降低在下列情況下遺漏新增時間序列第一次評估的可能性：
 -   監視多個維度的度量警示規則-新增維度值組合時
 -   監視多個資源的計量警示規則-將新資源新增至範圍時
 -   計量警示規則，可監視未持續發出 (稀疏計量) 的計量–當計量在一段時間超過24小時未發出時發出時

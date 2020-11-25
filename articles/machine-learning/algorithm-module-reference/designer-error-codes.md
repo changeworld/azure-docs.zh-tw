@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
-ms.date: 04/16/2020
-ms.openlocfilehash: 569cf130b464d97e0ac10904ffd86365b57610a5
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 11/25/2020
+ms.openlocfilehash: af7ac49fd6c1a31a8363c4ba0bf925787613ecc2
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420830"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030402"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>設計工具的例外狀況和錯誤碼
 
@@ -187,9 +187,9 @@ ms.locfileid: "93420830"
 
 Azure Machine Learning 不支援某些較新的帳戶類型。 例如，新的「經常性存取」或「冷」儲存體類型無法用於機器學習。 傳統儲存體帳戶和建立為「一般用途」的儲存體帳戶都可正常運作。
 
-如果指定了 Blob 的完整路徑，請確認路徑指定為 **container/blobname** ，且容器和 Blob 都存在於帳戶中。  
+如果指定了 Blob 的完整路徑，請確認路徑指定為 **container/blobname**，且容器和 Blob 都存在於帳戶中。  
 
- 路徑不應包含前置斜線。 例如， **/container/blob** 並不正確，而應輸入為 **container/blob** 。  
+ 路徑不應包含前置斜線。 例如， **/container/blob** 並不正確，而應輸入為 **container/blob**。  
 
 
 |例外狀況訊息|
@@ -281,11 +281,18 @@ Azure Machine Learning 不支援某些較新的帳戶類型。 例如，新的�
 
  當資料行包含太多唯一值時，就會發生此錯誤。  例如，如果您指定要將資料行當作類別資料來處理，但資料行中有太多唯一值而無法完成處理，就可能會出現此錯誤。 如果兩個輸入中的唯一值數目不相符，也可能會出現此錯誤。   
 
+如果符合下列 **兩個** 條件，唯一值的錯誤就會大於允許的值：
+
+- 一個資料行有97% 以上的實例是唯一值，這表示幾乎所有類別都與彼此不同。
+- 一個資料行的唯一值超過1000個。
+
 **解決方案：**
 
 開啟產生錯誤的模組，並識別作為輸入的資料行。 對於某些模組，您可以用滑鼠右鍵按一下資料集輸入，然後選取 [視覺化] 以取得個別資料行的統計資料，包括唯一值的數目及其分布。
 
 對於您想要用於分組或分類的資料行，請採取相關步驟以減少資料行中的唯一值數目。 有多種方式可以減少此數目，視資料行的資料類型而定。 
+
+通常在這種情況下，發生錯誤的資料行會成為定型模型的功能。 因此，您可以使用 [ [編輯中繼資料](../algorithm-module-reference/edit-metadata.md) ] 將該資料行標示為 [ **清除] 功能** ，而不會在定型模型時使用。 
 <!--
 + For text data, you might be able to use [Preprocess Text](preprocess-text.md) to collapse similar entries. 
 + For numeric data, you can create a smaller number of bins using [Group Data into Bins](group-data-into-bins.md), remove or truncate values using [Clip Values](clip-values.md), or use machine learning methods such as [Principal Component Analysis](principal-component-analysis.md) or [Learning with Counts](data-transformation-learning-with-counts.md) to reduce the dimensionality of the data.  
@@ -372,7 +379,7 @@ Azure Machine Learning 不支援某些較新的帳戶類型。 例如，新的�
 
  若要確認需求和資料可能的屬性，請檢閱將使用資料集作為輸入的模組適用的說明主題。  
 
- <!--We also recommend that you use [Summarize Data](summarize-data.md) or [Compute Elementary Statistics](compute-elementary-statistics.md) to profile your data, and use these modules to fix metadata and clean values: [Edit Metadata](edit-metadata.md) and [Clean Missing Data](clean-missing-data.md), [Clip Values](clip-values.md)-->。  
+ <!--We also recommend that you use [Summarize Data](summarize-data.md) or [Compute Elementary Statistics](compute-elementary-statistics.md) to profile your data, and use these modules to fix metadata and clean values: [Edit Metadata](edit-metadata.md) and [Clean Missing Data](clean-missing-data.md), [Clip Values](clip-values.md)-->.  
 
 |例外狀況訊息|
 |------------------------|
@@ -604,7 +611,7 @@ Azure Machine Learning 不支援某些較新的帳戶類型。 例如，新的�
 
  如果選取的資料行數目少於所需，就會在 Azure Machine Learning 中發生此錯誤。  如果未選取所需的最小資料行數目，您就會看到此錯誤。  
 
-**解決方案：** 使用 **資料行選取器** ，在資料行選取中新增更多資料行。  
+**解決方案：** 使用 **資料行選取器**，在資料行選取中新增更多資料行。  
 
 |例外狀況訊息|
 |------------------------|
@@ -1027,7 +1034,7 @@ For general information about how the Matchbox recommendation algorithm works, a
   
 -   SAS URI 未包含有效 Blob 的名稱。  
 
-**解決方案：** 重新瀏覽擲回例外狀況的模組。 請確認指定的 Blob 確實存在於儲存體帳戶的容器中，且您具有查看 Blob 的權限。 如果您具有使用編碼格式的 Excel 或 CSV，請確認輸入的格式為 **containername/filename** 。 確認 SAS URI 包含有效 Blob 的名稱。  
+**解決方案：** 重新瀏覽擲回例外狀況的模組。 請確認指定的 Blob 確實存在於儲存體帳戶的容器中，且您具有查看 Blob 的權限。 如果您具有使用編碼格式的 Excel 或 CSV，請確認輸入的格式為 **containername/filename**。 確認 SAS URI 包含有效 Blob 的名稱。  
 
 |例外狀況訊息|
 |------------------------|
@@ -1106,8 +1113,8 @@ For general information about how the Matchbox recommendation algorithm works, a
  直接登入資料庫伺服器並執行查詢，藉以確認查詢可在 Azure ML 外部正常運作。  
 
  如果模組例外狀況回報了 SQL 產生的訊息，請根據回報的錯誤採取動作。 例如，錯誤訊息有時會對可能的錯誤提供特定指引：
-+ *沒有這類資料行或遺失的資料庫* ，表示您可能輸入了不正確的資料行名稱。 如果您確定資料行名稱正確無誤，請嘗試使用方括弧或引號括住資料行識別碼。
-+ *SQL 邏輯錯誤附近 \<SQL keyword\>* ，表示在指定的關鍵字之前可能會有語法錯誤
++ *沒有這類資料行或遺失的資料庫*，表示您可能輸入了不正確的資料行名稱。 如果您確定資料行名稱正確無誤，請嘗試使用方括弧或引號括住資料行識別碼。
++ *SQL 邏輯錯誤附近 \<SQL keyword\>*，表示在指定的關鍵字之前可能會有語法錯誤
 
   
 |例外狀況訊息|
@@ -1201,7 +1208,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
  如果未正確指定 Azure 儲存體容器名稱，就會在 Azure Machine Learning 中發生此錯誤。 如果您在寫入 Azure Blob 儲存體時未使用 **以容器開頭的 Blob 路徑** 來指定容器和 Blob (檔案) 名稱，您就會看到此錯誤。  
 
-**解決方案：** 重新瀏覽 [匯出資料](export-data.md)模組，並確認 Blob 的指定路徑包含容器和檔案名稱，格式為 **container/filename** 。  
+**解決方案：** 重新瀏覽 [匯出資料](export-data.md)模組，並確認 Blob 的指定路徑包含容器和檔案名稱，格式為 **container/filename**。  
 
 |例外狀況訊息|
 |------------------------|

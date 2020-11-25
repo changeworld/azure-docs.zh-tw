@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 744bcfe196629f76c5505f36ef9c8c224fefe601
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d013af82a862f1bc6b5324e7523aeea5593a4f94
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95909062"
+ms.locfileid: "96030657"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Azure API for FHIR 的常見問題
 
@@ -122,7 +122,7 @@ $export 是 FHIR 規格的一部分： https://hl7.org/fhir/uv/bulkdata/export/i
 
 ### <a name="where-can-i-see-an-example-of-connecting-a-web-application-to-azure-api-for-fhir"></a>我可以在哪裡看到將 web 應用程式連接到 Azure API for FHIR 的範例？
 
-我們有一個包含範例應用程式和案例的 [健康情況架構 GitHub 頁面](https://github.com/microsoft/health-architectures) 。 它說明如何將 web 應用程式連線至 Azure API for FHIR。  
+我們有一個包含範例應用程式和案例的 [健康情況架構 GitHub 頁面](https://aka.ms/health-architectures) 。 它說明如何將 web 應用程式連線至 Azure API for FHIR。  
 
 ## <a name="azure-api-for-fhir-features-and-services"></a>Azure API for FHIR 的功能與服務 
 

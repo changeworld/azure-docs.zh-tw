@@ -9,11 +9,11 @@ ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
 ms.openlocfilehash: daed8dc62fdfd86ecf785a0bfd83b2b6c0b4cc03
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95559022"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026949"
 ---
 將 Vm 放入單一區域可減少實例之間的實體距離。 將它們放在單一可用性區域內，也會讓它們彼此緊密地結合在一起。 不過，當 Azure 使用量增加時，單一可用性區域可能橫跨多個實體資料中心，這可能會導致網路延遲影響您的應用程式。 
 

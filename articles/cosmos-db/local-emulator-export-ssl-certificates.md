@@ -7,12 +7,12 @@ ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
 ms.custom: devx-track-python, devx-track-java, contperfq1
-ms.openlocfilehash: 23d9c6730857cf4ed7f8b8062d5529bedd8e2740
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 1825dd34855b356367722eefbfb5eb6dd9c78ae3
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95997166"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029178"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>匯出 Azure Cosmos DB 模擬器憑證以與 JAVA、Python 和 Node.js 應用程式搭配使用
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -67,7 +67,7 @@ Azure Cosmos DB 模擬器提供一個模擬 Azure Cosmos DB 服務的本機環�
 
 執行 JAVA 應用程式或使用以 JAVA 為基礎的用戶端應用程式時，將憑證安裝到 JAVA 預設憑證存放區比傳遞 `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` 旗標更容易。 例如，包含的 JAVA 示範應用程式 (`https://localhost:8081/_explorer/index.html`) 取決於預設的憑證存放區。
 
-遵循將 [憑證新增至 JAVA 憑證存放區](/azure/developer/java/sdk/java-sdk-add-certificate-ca-store) 中的指示，將 x.509 憑證匯入至預設的 java 憑證存放區。 請記住，當您執行 keytool 時，將會在 *% JAVA_HOME%* 目錄中工作。 將憑證匯入憑證存放區之後，適用于 MongoDB 的 SQL 和 Azure Cosmos DB 的 API 用戶端將能夠連線至 Azure Cosmos 模擬器。
+遵循將 [憑證新增至 JAVA 憑證存放區](/azure/developer/java/sdk/java-sdk-add-certificate-ca-store) 中的指示，將 x.509 憑證匯入至預設的 java 憑證存放區。 請記住，當您執行 keytool 時，將會在 *% JAVA_HOME%* 目錄中工作。 將憑證匯入憑證存放區之後，適用于 MongoDB 的 SQL 和 Azure Cosmos DB 的 API 的用戶端將能夠連接到 Azure Cosmos DB 模擬器。
 
 或者，您可以執行下列 bash 腳本來匯入憑證：
 

@@ -2,13 +2,13 @@
 title: 在 Azure Migrate 伺服器評量中設定代理程式相依性分析
 description: 本文說明如何在 Azure Migrate 伺服器評量中設定代理程式相依性分析。
 ms.topic: how-to
-ms.date: 6/09/2020
-ms.openlocfilehash: c5c019ec995f59b61fb96917bed50bd8ba3f61d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/25/2020
+ms.openlocfilehash: 17c6e3e24596727350b11946bdf6896e22d41529
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022372"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028957"
 ---
 # <a name="set-up-dependency-visualization"></a>設定相依性視覺效果
 
@@ -40,7 +40,7 @@ ms.locfileid: "89022372"
 
 1. 在探索要評量的機器之後，在 [**伺服器**  >  **Azure Migrate：伺服器評估**] 中，按一下 **[總覽**]。  
 2. 在 [ **Azure Migrate：伺服器評估**] 中，按一下 [ **基本**]。
-3. 在 [ **OMS 工作區**] 中，按一下 [ **需要**設定]。
+3. 在 [ **OMS 工作區**] 中，按一下 [ **需要** 設定]。
 
      ![設定 Log Analytics 工作區](./media/how-to-create-group-machine-dependencies/oms-workspace-select.png)   
 
@@ -83,7 +83,7 @@ ms.locfileid: "89022372"
 
 您可以從命令列或使用自動化方法（例如 Configuration Manager 或 [>intigua](https://www.intigua.com/intigua-for-azure-migration)）安裝代理程式。
 - [了解更多](../azure-monitor/platform/log-analytics-agent.md#installation-options)有關如何使用這些方法來安裝 MMA 代理程式。
-- MMA 代理程式也可以使用此[指令碼](https://go.microsoft.com/fwlink/?linkid=2104394)來安裝。
+- MMA 代理程式也可以使用此[指令碼](https://github.com/brianbar-MSFT/Install-MMA)來安裝。
 - [深入瞭解](../azure-monitor/platform/agents-overview.md#supported-operating-systems) MMA 支援的 Windows 作業系統。
 
 ### <a name="install-mma-on-a-linux-machine"></a>在 Linux 機器上安裝 MMA

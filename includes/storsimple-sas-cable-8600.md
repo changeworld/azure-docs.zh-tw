@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f08a6b3f7abfc79bff6baff2a339053905612535
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67174013"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027785"
 ---
 #### <a name="to-attach-the-sas-cables"></a>連接 SAS 纜線
 1. 識別主要機箱與 EBOD 機箱。 可以藉由查看個別後擋板來識別兩個機箱。 如需指引，請參閱下圖。 
@@ -22,7 +22,7 @@ ms.locfileid: "67174013"
    |:--- |:--- |
    | 1 |主要機箱 |
    | 2 |EBOD 機箱 |
-2. 找出主要機箱與 EBOD 機箱的序號。 序號貼紙貼在每個機箱的背後。 兩個機箱上的序號必須相同。 [連絡 Microsoft 支援服務](../articles/storsimple/storsimple-contact-microsoft-support.md) 。 請參閱下圖以協助您尋找序號。
+2. 找出主要機箱與 EBOD 機箱的序號。 序號貼紙貼在每個機箱的背後。 兩個機箱上的序號必須相同。 [連絡 Microsoft 支援服務](../articles/storsimple/storsimple-8000-contact-microsoft-support.md) 。 請參閱下圖以協助您尋找序號。
    
     ![顯示序號的機箱後方檢視](./media/storsimple-sas-cable-8600/HCSRearviewofenclosureindicatinglocationofserialnumbersticker.png)
    
@@ -51,4 +51,3 @@ ms.locfileid: "67174013"
       | 4 |EBOD 控制器 1 |
       | 5, 6 |主要機箱上的 SAS 連接埠 (標示為 EBOD) |
       | 7、8 |EBOD 機箱上的 SAS 連接埠 (連接埠 A) |
-

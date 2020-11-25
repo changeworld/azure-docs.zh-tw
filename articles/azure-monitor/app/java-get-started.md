@@ -5,25 +5,25 @@ ms.topic: conceptual
 author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
-ms.date: 05/24/2019
-ms.openlocfilehash: 12497d3ac86888ed861e8d5f655f45c8cbe4b6e3
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.date: 11/22/2020
+ms.openlocfilehash: 1a68cea423678dd8582d65b839d57076e84de940
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996151"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029535"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>快速入門：開始使用 JAVA Web 專案中的 Application Insights
 
 
-> [!IMPORTANT]
-> 監視 JAVA 應用程式的建議方法是使用自動檢測，而不需要變更程式碼。 請遵循 [Application Insights JAVA 3.0 代理程式](./java-in-process-agent.md)的指導方針。
+> [!CAUTION]
+> 自2020年11月起，為了監視 JAVA 應用程式，我們建議使用 Azure 監視器 Application Insights 3.0 代理程式進行自動檢測。 如需如何開始使用的詳細資訊，請參閱 [Application Insights JAVA 3.0 代理程式](./java-in-process-agent.md)。
 
 在本快速入門中，您會使用 Application Insights SDK 來檢測要求、追蹤相依性，以及收集效能計數器、診斷效能問題和例外狀況，以及撰寫程式碼來追蹤使用者對應用程式執行的動作。
 
 Application Insights 是一項 Web 開發人員可延伸的分析服務，可幫助您了解即時應用程式的效能和使用情形。 Application Insights 支援 Linux、Unix 或 Windows 上執行的 Java 應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 * 運作正常的 JAVA 應用程式。
@@ -85,7 +85,7 @@ Application Insights 是一項 Web 開發人員可延伸的分析服務，可幫
   * `applicationinsights-web` 也提供追蹤 HTTP servlet 要求計數和回應時間的計量，但需要在您的應用程式中手動註冊 Application Insights servlet 篩選器。
   * `applicationinsights-core` 僅提供您的裸機 API，例如，如果您的應用程式不是以 servlet 為基礎。
   
-* 如果將 SDK 升級為最新版本？**
+* 如果將 SDK 升級為最新版本？
   * 如果您使用的是 Gradle 或 Maven .。。
     * 更新您的組建檔案，以指定最新版本。
   * 如果您要手動管理相依專案 .。。
@@ -123,7 +123,7 @@ Application Insights 是一項 Web 開發人員可延伸的分析服務，可幫
 </ApplicationInsights>
 ```
 
-（選擇性）設定檔可位於您的應用程式可存取的任何位置。  System 屬性 `-Dapplicationinsights.configurationDirectory` 指定包含 *ApplicationInsights.xml*的目錄。 例如，位於 `E:\myconfigs\appinsights\ApplicationInsights.xml` 的組態檔是使用屬性 `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` 來設定。
+（選擇性）設定檔可位於您的應用程式可存取的任何位置。  System 屬性 `-Dapplicationinsights.configurationDirectory` 指定包含 *ApplicationInsights.xml* 的目錄。 例如，位於 `E:\myconfigs\appinsights\ApplicationInsights.xml` 的組態檔是使用屬性 `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` 來設定。
 
 * 檢測金鑰會隨著遙測的每個項目傳送，並告知 Application Insights 在您的資源中顯示它。
 * HTTP 要求元件是選用的。 它會自動將要求和回應時間的遙測傳送到入口網站。
@@ -296,7 +296,7 @@ Application Insights 可讓您定期測試網站，以檢查網站運作中且�
 ## <a name="questions-problems"></a>有問題嗎？ 有問題嗎？
 [疑難排解 Java](java-troubleshoot.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [監視相依性呼叫](java-agent.md)
 * [監視 Unix 效能計數器](java-collectd.md)
 * 新增[對網頁的監視](javascript.md)，以監視頁面載入時間、AJAX 呼叫、瀏覽器例外狀況。
