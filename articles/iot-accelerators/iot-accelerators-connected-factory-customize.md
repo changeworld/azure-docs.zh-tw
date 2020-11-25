@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
 ms.openlocfilehash: a092859517ee6ac41e62e55fe95f72b8bfdf87d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91290717"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011195"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>自訂連線處理站解決方案顯示 OPC UA 伺服器資料的方式
 
@@ -23,11 +23,11 @@ ms.locfileid: "91290717"
 
 連線的處理站解決方案會彙總並顯示連線到解決方案的 OPC UA 伺服器資料。 您可以瀏覽並傳送命令至解決方案的 OPC UA 伺服器。 如需 OPC UA 的詳細資訊，請參閱連線處理站 [常見問題](iot-accelerators-faq-cf.md)。
 
-解決方案中的彙總資料範例包括「整體設備效率 (OEE)」和「關鍵效能指標 (KPI)」，您可以在儀表板的工廠、生產線與工作站層級分別檢視這些資料。 下列螢幕擷取畫面顯示 [Munich (慕尼黑)]**** 工廠的 [Production line 1 (生產線 1)]**** 的 [Assembly (組件)]**** 工作站的 OEE 和 KPI 值：
+解決方案中的彙總資料範例包括「整體設備效率 (OEE)」和「關鍵效能指標 (KPI)」，您可以在儀表板的工廠、生產線與工作站層級分別檢視這些資料。 下列螢幕擷取畫面顯示 [Munich (慕尼黑)] 工廠的 [Production line 1 (生產線 1)] 的 [Assembly (組件)] 工作站的 OEE 和 KPI 值：
 
 ![解決方案中的 OEE 和 KPI 值範例][img-oee-kpi]
 
-解決方案可讓您檢視 OPC UA 伺服器 (稱為「工作站」**) 中特定資料項目的詳細資訊。 下列螢幕擷取畫面顯示特定工作站製造的項目數的繪圖︰
+解決方案可讓您檢視 OPC UA 伺服器 (稱為「工作站」) 中特定資料項目的詳細資訊。 下列螢幕擷取畫面顯示特定工作站製造的項目數的繪圖︰
 
 ![製造項目數的繪圖][img-manufactured-items]
 
@@ -46,11 +46,11 @@ ms.locfileid: "91290717"
 
 您可以在儀表板中瀏覽連線的 OPC UA 伺服器可傳送至您的解決方案的資料項目︰
 
-1. 選取 [瀏覽器]**** 以瀏覽至 [選取 OPC UA 伺服器]**** 檢視︰
+1. 選取 [瀏覽器] 以瀏覽至 [選取 OPC UA 伺服器] 檢視︰
 
     ![瀏覽至 [Select an OPC UA server (選取 OPC UA 伺服器)] 檢視][img-select-server]
 
-1. 選取伺服器，然後按一下 [Connect (連線)]****。 出現安全性警告時，按一下 [Proceed (繼續)]****。
+1. 選取伺服器，然後按一下 [Connect (連線)]。 出現安全性警告時，按一下 [Proceed (繼續)]。
 
     > [!NOTE]
     > 這個警告每台伺服器只會出現一次，是建立解決方案儀表板和伺服器之間的信任關係。

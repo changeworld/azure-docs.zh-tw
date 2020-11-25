@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
 ms.openlocfilehash: c851f5284b87f224932b027fd10ce720327639c2
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167894"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010445"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio Code 來開發 Azure Functions
 
@@ -39,7 +39,7 @@ Azure Functions 擴充功能提供下列優點：
 > [!IMPORTANT]
 > 請勿混合單一函式應用程式的本機開發和入口網站開發。 當您從本機專案發佈至函式應用程式時，部署程序將會覆寫您在入口網站開發的任何函式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在安裝並執行 Visual Studio Code 的[Azure Functions 擴充]功能[Azure Functions 擴充]功能之前，您必須符合下列需求：
 
@@ -181,7 +181,7 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
 
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
-Visual Studio Code 可讓您遵循一組便利的提示，將系結新增至檔案中的 function.js。 若要建立系結，請在 macOS 上按一下滑鼠 (右鍵，然後按一下 []) 您函式資料夾中的檔案 **function.js** ，然後選取 [ **新增**系結]：
+Visual Studio Code 可讓您遵循一組便利的提示，將系結新增至檔案中的 function.js。 若要建立系結，請在 macOS 上按一下滑鼠 (右鍵，然後按一下 []) 您函式資料夾中的檔案 **function.js** ，然後選取 [ **新增** 系結]：
 
 ![將系結新增至現有的 JavaScript 函式 ](media/functions-develop-vs-code/function-add-binding.png)
 
@@ -191,7 +191,7 @@ Visual Studio Code 可讓您遵循一組便利的提示，將系結新增至檔�
 | -------- | ----- | ----------- |
 | **選取繫結方向** | `out` | 此繫結為輸出繫結。 |
 | **選取具有方向的系結** | `Azure Queue Storage` | 此繫結是 Azure 儲存體佇列繫結。 |
-| **用來在程式碼中識別此繫結的名稱** | `msg` | 識別您的程式碼中參考之繫結參數的名稱。 |
+| **用來在程式碼中識別此系結的名稱** | `msg` | 識別您的程式碼中參考之繫結參數的名稱。 |
 | **要接收訊息的佇列** | `outqueue` | 作為繫結寫入目標的佇列名稱。 當 *queueName* 不存在，繫結會在第一次使用時加以建立。 |
 | **選取 [local.settings.js開啟] 的設定** | `MyStorageConnection` | 包含儲存體帳戶連接字串之應用程式設定的名稱。 此 `AzureWebJobsStorage` 設定包含您使用函式應用程式所建立之儲存體帳戶的連接字串。 |
 
@@ -245,7 +245,7 @@ Visual Studio Code 可讓您將函式專案直接發行至 Azure。 在這過程
 
     ![函數應用程式設定](./media/functions-develop-vs-code/function-app-publish-project.png)
 
-1. 如果您尚未登入，系統會提示您**登入 Azure**。 您也可以 **建立免費的 Azure 帳戶**。 從瀏覽器登入之後，請回到 Visual Studio Code。
+1. 如果您尚未登入，系統會提示您 **登入 Azure**。 您也可以 **建立免費的 Azure 帳戶**。 從瀏覽器登入之後，請回到 Visual Studio Code。
 
 1. 如果您有多個訂用帳戶，請選取函數應用程式的 **訂用** 帳戶，然後選取 [ **+ 在 Azure 中建立新的函數應用程式 ...] _Advanced_**。 這個 _Advanced_ 選項可讓您更充分掌控您在 Azure 中建立的資源。 
 
@@ -276,7 +276,7 @@ Visual Studio Code 可讓您將函式專案直接發行至 Azure。 在這過程
 
 若要呼叫 HTTP 觸發的函式，您需要函式在部署到函數應用程式時的 URL。 此 URL 包含任何必要的函式 [金鑰](functions-bindings-http-webhook-trigger.md#authorization-keys)。 您可以使用擴充功能來取得已部署函式的這些 Url。
 
-1. 選取 F1 以開啟命令選擇區，然後搜尋並執行命令 **Azure Functions：複製**函式 URL。
+1. 選取 F1 以開啟命令選擇區，然後搜尋並執行命令 **Azure Functions：複製** 函式 URL。
 
 1. 遵循提示，在 Azure 中選取您的函數應用程式，然後選取您想要叫用的特定 HTTP 觸發程式。
 
@@ -294,7 +294,7 @@ Azure Functions 擴充功能可讓您在本機開發電腦上執行函式專案�
 
 * 安裝所選語言的特定需求：
 
-    | 語言 | 需求 |
+    | Language | 需求 |
     | -------- | --------- |
     | **C#** | [C# 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)<br/>[.NET Core CLI 工具](/dotnet/core/tools/?tabs=netcore2x)   |
     | **Java** | [JAVA 延伸模組的偵錯工具](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)<br/>[Maven 3 或更新版本](https://maven.apache.org/) |
@@ -311,11 +311,11 @@ Azure Functions 擴充功能可讓您在本機開發電腦上執行函式專案�
 
 設定儲存體帳戶連接字串：
 
-1. 在 Visual Studio 中，開啟**Cloud Explorer**，展開 [**儲存體**帳戶] 儲存體  >  **帳戶**，然後選取 [**屬性**]，並複製**主要連接字串**值。
+1. 在 Visual Studio 中，開啟 **Cloud Explorer**，展開 [**儲存體** 帳戶] 儲存體  >  **帳戶**，然後選取 [**屬性**]，並複製 **主要連接字串** 值。
 
 2. 在您的專案中，開啟 local.settings.json 檔案並將 **AzureWebJobsStorage** 機碼的值設定為您所複製的連接字串。
 
-3. 重複上一步，針對函數所需的其他任何連接，將唯一機碼新增至 [值]**** 陣列。
+3. 重複上一步，針對函數所需的其他任何連接，將唯一機碼新增至 [值] 陣列。
 
 如需詳細資訊，請參閱 [本機設定檔](#local-settings-file)。
 
@@ -359,7 +359,7 @@ HTTP 觸發程式的要求 URL 會顯示在終端機的輸出中。 當專案在
 
 如果本機檔案已加密，則會進行解密、發佈及加密。 如果兩個位置中的設定有衝突的值，系統會提示您選擇如何繼續。
 
-展開您的訂用帳戶、函式應用程式和**應用程式設定**，以在 [ **Azure：** 函式] 區域中查看現有的應用程式設定。
+展開您的訂用帳戶、函式應用程式和 **應用程式設定**，以在 [ **Azure：** 函式] 區域中查看現有的應用程式設定。
 
 ![Visual Studio Code 中的 View 函數應用程式設定](./media/functions-develop-vs-code/view-app-settings.png)
 
@@ -398,9 +398,9 @@ HTTP 觸發程式的要求 URL 會顯示在終端機的輸出中。 當專案在
 
 1. 選取 **[** 檔案  >  **喜好**  >  **設定**]。
 
-1. 移至 [**使用者設定**  >  **延伸**模組]  >  **Azure Functions**。
+1. 移至 [**使用者設定**  >  **延伸** 模組]  >  **Azure Functions**。
 
-1. 從**Azure Function： Project Language**選取**C # 腳本**。
+1. 從 **Azure Function： Project Language** 選取 **C # 腳本**。
 
 完成這些步驟之後，對基礎核心工具的呼叫會包含 `--csx` 選項，此選項會產生 c # 腳本 ( .csx) 專案檔。 當您指定此預設語言時，您建立的所有專案都會預設為 c # 腳本專案。 設定預設值時，系統不會提示您選擇專案語言。 若要建立其他語言的專案，您必須變更這項設定，或將它從使用者 settings.js檔案中移除。 移除此設定之後，當您建立專案時，系統會再次提示您選擇語言。
 

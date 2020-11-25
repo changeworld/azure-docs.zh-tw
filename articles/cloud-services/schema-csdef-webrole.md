@@ -14,11 +14,11 @@ caps.latest.revision: 60
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: 4368bb38a280461fdd77348de60a0e5793ee9582
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79535675"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011314"
 ---
 # <a name="azure-cloud-services-definition-webrole-schema"></a>Azure 雲端服務定義 WebRole 結構描述
 Azure Web 角色是專為 IIS 7 所支援之 Web 應用程式的程式設計 (例如，ASP.NET、PHP、Windows Communication Foundation 及 FastCGI) 所自訂的角色。
@@ -167,7 +167,7 @@ Azure Web 角色是專為 IIS 7 所支援之 Web 應用程式的程式設計 (�
 | --------- | ---- | ----------- |  
 |NAME|字串|必要。 Web 角色的名稱。 角色的名稱必須是唯一的。|  
 |enableNativeCodeExecution|boolean|選擇性。 預設值是 `true`；預設會啟用機器碼執行和完全信任。 將此屬性設為 `false` 會停用 Web 角色的機器碼執行，並改用 Azure 部分信任。|  
-|vmsize|字串|選擇性。 設定此值可變更對角色所配置的虛擬機器大小。 預設值為 `Small`。 如需詳細資訊，請參閱[雲端服務的虛擬機器大小](cloud-services-sizes-specs.md)。|  
+|vmsize|字串|選擇性。 設定此值可變更對角色所配置的虛擬機器大小。 預設值是 `Small`。 如需詳細資訊，請參閱[雲端服務的虛擬機器大小](cloud-services-sizes-specs.md)。|  
 
 ##  <a name="configurationsettings"></a><a name="ConfigurationSettings"></a> ConfigurationSettings  
 `ConfigurationSettings` 元素會說明 Web 角色之組態設定的集合。 此元素是 `Setting` 元素的父代。
@@ -224,7 +224,7 @@ Azure Web 角色是專為 IIS 7 所支援之 Web 應用程式的程式設計 (�
 |連接埠|int|必要。 外部端點的連接埠。 您可以指定所選擇的任何通訊埠編號，但服務中每個角色指定的連接埠號碼必須是唯一的。<br /><br /> 可能的值範圍介於 1 到 65535 (含) (Azure SDK 1.7 版或更高版本)。|  
 |憑證 (certificate)|字串|HTTPS 端點的必要項。 `Certificate` 元素所定義的憑證名稱。|  
 |localPort|int|選擇性。 指定用於端點上內部連線的通訊埠。 `localPort` 屬性會將端點上的外部連接埠對應至角色上的內部連接埠。 這對於一個角色必須與不同於對外連接埠之連接埠上的內部元件通訊的情節很有用。<br /><br /> 如果未指定，`localPort` 的值會與 `port` 屬性相同。 將 `localPort` 的值設定為 “*”，可使用執行階段 API 自動指派可探索的未配置連接埠。<br /><br /> 可能的值範圍介於 1 到 65535 (含) (Azure SDK 1.7 版或更高版本)。<br /><br /> 在使用 Azure SDK 1.3 版或更新版本時，才能使用 `localPort` 屬性。|  
-|ignoreRoleInstanceStatus|boolean|選擇性。 當這個屬性的值設定為 `true` 時，就會忽略服務的狀態，且負載平衡器不會移除端點。 將此值設定為 `true` 適用於服務的偵錯忙碌執行個體。 預設值為 `false`。 **注意：**  即使角色不是處於就緒狀態，端點仍可以接收流量。|  
+|ignoreRoleInstanceStatus|boolean|選擇性。 當這個屬性的值設定為 `true` 時，就會忽略服務的狀態，且負載平衡器不會移除端點。 將此值設定為 `true` 適用於服務的偵錯忙碌執行個體。 預設值是 `false`。 **注意：**  即使角色不是處於就緒狀態，端點仍可以接收流量。|  
 |loadBalancerProbe|字串|選擇性。 與輸入端點相關聯之負載平衡器探查的名稱。 如需詳細資訊，請參閱 [LoadBalancerProbe 結構描述](schema-csdef-loadbalancerprobe.md)。|  
 
 ##  <a name="internalendpoint"></a><a name="InternalEndpoint"></a> InternalEndpoint  
@@ -295,7 +295,7 @@ Azure Web 角色是專為 IIS 7 所支援之 Web 應用程式的程式設計 (�
 |NAME|字串|必要。 此憑證的名稱，當與 HTTPS `InputEndpoint` 元素相關聯時，會用來參考它。|  
 |storeLocation|字串|必要。 可在本機電腦上找到此憑證的憑證存放區位置。 可能的值是 `CurrentUser` 和 `LocalMachine`。|  
 |storeName|字串|必要。 可在本機電腦上找到此憑證的憑證存放區名稱。 可能的值包括內建存放區名稱 `My`、`Root`、`CA`、`Trust`、`Disallowed`、`TrustedPeople`、`TrustedPublisher`、`AuthRoot`、`AddressBook` 或任何自訂存放區名稱。 如果指定自訂存放區名稱，則會自動建立該存放區。|  
-|permissionLevel|字串|選擇性。 指定提供給角色處理序的存取權限。 如果您希望只有提升權限的處理序能夠存取私密金鑰，則請指定 `elevated` 權限。 `limitedOrElevated` 權限可讓所有角色處理序存取私密金鑰。 可能的值為 `limitedOrElevated` 或 `elevated`。 預設值為 `limitedOrElevated`。|  
+|permissionLevel|字串|選擇性。 指定提供給角色處理序的存取權限。 如果您希望只有提升權限的處理序能夠存取私密金鑰，則請指定 `elevated` 權限。 `limitedOrElevated` 權限可讓所有角色處理序存取私密金鑰。 可能的值為 `limitedOrElevated` 或 `elevated`。 預設值是 `limitedOrElevated`。|  
 
 ##  <a name="imports"></a><a name="Imports"></a> 進口  
 `Imports` 元素會說明在客體作業系統中新增元件之 Web 角色的匯入模組集合。 此元素是 `Import` 元素的父代。 這是選用元素，一個角色只能有一個匯入區塊。 
@@ -363,7 +363,7 @@ Azure Web 角色是專為 IIS 7 所支援之 Web 應用程式的程式設計 (�
 
 | 屬性 | 類型 | 描述 |  
 | --------- | ---- | ----------- |  
-|assemblyName|字串|必要。 包含進入點之組件的路徑和檔案名稱。 路徑是相對於資料夾** \\ %ROLEROOT%\Approot** (請勿在中指定** \\ %ROLEROOT%\Approot** ，而 `commandLine` 是假設為) 。 **%ROLEROOT%** 是由 Azure 維護的環境變數，而它代表的是您角色的根資料夾位置。 ** \\ %ROLEROOT%\Approot**資料夾代表角色的應用程式資料夾。<br /><br /> 針對 HWC 角色，路徑一律相對於** \\ %ROLEROOT%\Approot\bin**資料夾。<br /><br /> 若為完整 IIS 和 IIS Express web 角色，如果找不到相對於** \\ %ROLEROOT%\Approot**資料夾的元件，則會搜尋** \\ %ROLEROOT%\Approot\bin** 。<br /><br /> 完整 IIS 的這種回復行為並非建議的最佳作法，未來的版本可能會將其移除。|  
+|assemblyName|字串|必要。 包含進入點之組件的路徑和檔案名稱。 路徑是相對於資料夾 **\\ %ROLEROOT%\Approot** (請勿在中指定 **\\ %ROLEROOT%\Approot** ，而 `commandLine` 是假設為) 。 **%ROLEROOT%** 是由 Azure 維護的環境變數，而它代表的是您角色的根資料夾位置。 **\\ %ROLEROOT%\Approot** 資料夾代表角色的應用程式資料夾。<br /><br /> 針對 HWC 角色，路徑一律相對於 **\\ %ROLEROOT%\Approot\bin** 資料夾。<br /><br /> 若為完整 IIS 和 IIS Express web 角色，如果找不到相對於 **\\ %ROLEROOT%\Approot** 資料夾的元件，則會搜尋 **\\ %ROLEROOT%\Approot\bin** 。<br /><br /> 完整 IIS 的這種回復行為並非建議的最佳作法，未來的版本可能會將其移除。|  
 |targetFrameworkVersion|字串|必要。 用以建置組件的 .NET Framework 版本。 例如： `targetFrameworkVersion="v4.0"` 。|  
 
 ##  <a name="sites"></a><a name="Sites"></a> 網站  

@@ -4,11 +4,11 @@ description: 本文說明如何設定私人端點的存取權
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.openlocfilehash: 9503fc26c22d7dbff13c5754288f577b7bb3242f
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331306"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010991"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Azure 事件中樞的網路安全性 
 本文說明如何搭配 Azure 事件中樞使用下列安全性功能： 
@@ -22,7 +22,7 @@ ms.locfileid: "92331306"
 ## <a name="service-tags"></a>服務標籤
 服務標籤代表來自指定 Azure 服務的一組 IP 位址前置詞。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤，而盡可能簡化網路安全性規則頻繁的更新。 如需服務標籤的詳細資訊，請參閱 [服務標記總覽](../virtual-network/service-tags-overview.md)。
 
-您可以使用服務標記來定義 [網路安全性群組](../virtual-network/network-security-groups-overview.md#security-rules) 或 [Azure 防火牆](../firewall/service-tags.md)上的網路存取控制。 建立安全性規則時，請以服務標籤取代特定的 IP 位址。 藉由指定服務標籤名稱 (例如，在規則的適當*來源*或*目的地*欄位中指定**EventHub**) ，您可以允許或拒絕對應服務的流量。
+您可以使用服務標記來定義 [網路安全性群組](../virtual-network/network-security-groups-overview.md#security-rules) 或 [Azure 防火牆](../firewall/service-tags.md)上的網路存取控制。 建立安全性規則時，請以服務標籤取代特定的 IP 位址。 藉由指定服務標籤名稱 (例如，在規則的適當 *來源* 或 *目的地* 欄位中指定 **EventHub**) ，您可以允許或拒絕對應服務的流量。
 
 | 服務標籤 | 目的 | 可以使用輸入還是輸出？ | 是否可為區域性？ | 是否可與 Azure 防火牆搭配使用？ |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -32,7 +32,7 @@ ms.locfileid: "92331306"
 ## <a name="ip-firewall"></a>IP 防火牆 
 根據預設，只要要求具備有效的驗證和授權，便可以從網際網路存取事件中樞命名空間。 透過 IP 防火牆，您可以將其進一步限制為僅允許一組 IPv4 位址，或是使用 [CIDR (無類別網域間路由)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 標記法來設定 IPv4 位址範圍。
 
-此功能在只應該從特定知名網站存取 Azure 事件中樞的情況下會很有幫助。 防火牆規則可讓您設定規則以接受源自特定 IPv4 位址的流量。 例如，如果您搭配 [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) 使用事件中樞，您可以建立**防火牆規則**以僅允許來自您內部部署基礎結構 IP 位址的流量。 
+此功能在只應該從特定知名網站存取 Azure 事件中樞的情況下會很有幫助。 防火牆規則可讓您設定規則以接受源自特定 IPv4 位址的流量。 例如，如果您搭配 [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) 使用事件中樞，您可以建立 **防火牆規則** 以僅允許來自您內部部署基礎結構 IP 位址的流量。 
 
 IP 防火牆規則會在事件中樞命名空間層級套用。 因此，規則會套用至來自用戶端的所有連接 (使用任何受支援的通訊協定)。 任何來自某個 IP 位址的連線嘗試，只要不符合「事件中樞」命名空間上的允許 IP 規則，系統就會將其視為未經授權而予以拒絕。 回應則不涉及 IP 規則。 IP 篩選器規則會依序套用，而且第一個符合 IP 位址的規則會決定接受或拒絕動作。
 
@@ -46,7 +46,7 @@ IP 防火牆規則會在事件中樞命名空間層級套用。 因此，規則�
 最終這會在繫結至子網路的工作負載與各自的事件中樞命名空間之間，建立私人且隔離的關係，儘管傳訊服務端點顯示的網路位址位於公用 IP 範圍中。 此行為有例外狀況。 啟用服務端點時，根據預設，會啟用 `denyall` 與虛擬網路相關聯之 [IP 防火牆](event-hubs-ip-filtering.md) 中的規則。 您可以在 IP 防火牆中新增特定 IP 位址，以啟用事件中樞公用端點的存取。 
 
 > [!IMPORTANT]
-> 事件中樞的**標準**和**專用**層級支援虛擬網路。 **基本**層中不支援此功能。
+> 事件中樞的 **標準** 和 **專用** 層級支援虛擬網路。 **基本** 層中不支援此功能。
 
 ### <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>VNet 整合所實現的進階安全性案例 
 
@@ -58,9 +58,9 @@ IP 防火牆規則會在事件中樞命名空間層級套用。 因此，規則�
 
 ### <a name="bind-event-hubs-to-virtual-networks"></a>將事件中樞系結至虛擬網路
 
-「虛擬網路規則」**** 是防火牆安全性功能，可控制 Azure 事件中樞命名空間是否接受來自特定虛擬網路子網路的連線。
+「虛擬網路規則」是防火牆安全性功能，可控制 Azure 事件中樞命名空間是否接受來自特定虛擬網路子網路的連線。
 
-將事件中樞命名空間繫結至虛擬網路是一個雙步驟程序。 您必須先在虛擬網路的子網上建立虛擬網路服務端點，並將其啟用為適用于**Microsoft**的**虛擬網路服務端點**，如[服務端點總覽](../virtual-network/virtual-network-service-endpoints-overview.md)文章中所述。 一旦您新增服務端點，便會使用**虛擬網路規則**將事件中樞命名空間與其繫結。
+將事件中樞命名空間繫結至虛擬網路是一個雙步驟程序。 您必須先在虛擬網路的子網上建立虛擬網路服務端點，並將其啟用為適用于 **Microsoft** 的 **虛擬網路服務端點**，如 [服務端點總覽](../virtual-network/virtual-network-service-endpoints-overview.md)文章中所述。 一旦您新增服務端點，便會使用 **虛擬網路規則** 將事件中樞命名空間與其繫結。
 
 虛擬網路規則是「事件中樞」命名空間與虛擬網路子網路的關聯。 此規則存在時，繫結至該子網路的所有工作負載都會獲得事件中樞命名空間的存取權。 事件中樞本身永遠不會建立輸出連線，也不需要取得存取權，因此不會藉由啟用此規則來授與您子網的存取權。
 
@@ -73,7 +73,7 @@ IP 防火牆規則會在事件中樞命名空間層級套用。 因此，規則�
 私人端點是一種網路介面，其可以私人且安全的方式連線至 Azure Private Link 所支援服務。 私人端點會使用您 VNet 中的私人 IP 位址，有效地將服務帶入您的 VNet 中。 服務的所有流量都可以透過私人端點路由傳送，因此不需要閘道、NAT 裝置、ExpressRoute 或 VPN 連線或公用 IP 位址。 虛擬網路和服務間的流量會在通過 Microsoft 骨幹網路時隨之減少，降低資料在網際網路中公開的風險。 您可連線到 Azure 資源的執行個體，以取得最高層級的存取控制細微性。
 
 > [!IMPORTANT]
-> **標準**層和**專用**層都支援這項功能。 **基本**層中不支援此功能。
+> **標準** 層和 **專用** 層都支援這項功能。 **基本** 層中不支援此功能。
 
 如需詳細資訊，請參閱 [如何設定事件中樞的私人端點。](private-link-service.md)
 

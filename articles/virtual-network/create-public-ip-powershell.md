@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 10de2a4a00b716656626082a24ecbd56d0fcc3a4
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 99e79e4d094fe6e93510d139d2f4d08f260102df
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127296"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010039"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立公用 IP 位址
 
 本文說明如何使用 Azure PowerShell 建立公用 IP 位址資源。 如需有關這可以關聯哪些資源的詳細資訊，基本和標準 SKU 之間的差異，以及其他相關資訊，請參閱 [公用 IP 位址](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses)。  在此範例中，我們只會將焦點放在 IPv4 位址;如需 IPv6 位址的詳細資訊，請參閱 [Azure VNet 的 ipv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 已在本機安裝 Azure PowerShell 或 Azure Cloud Shell
 
@@ -36,7 +36,7 @@ ms.locfileid: "92127296"
 
 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
-在**eastus2**位置中，使用名為**MyResourceGroup**的[新 >new-azresourcegroup](/powershell/module/az.resources/new-azresourcegroup)來建立資源群組。
+在 **eastus2** 位置中，使用名為 **MyResourceGroup** 的 [新 >new-azresourcegroup](/powershell/module/az.resources/new-azresourcegroup)來建立資源群組。
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -45,13 +45,15 @@ $loc = 'eastus2'
 
 New-AzResourceGroup -Name $rg -Location $loc
 ```
+## <a name="create-public-ip"></a>建立公用 IP
+
 ---
 # <a name="standard-sku---using-zones"></a>[**標準 SKU-使用區域**](#tab/option-create-public-ip-standard-zones)
 
 >[!NOTE]
 >下列命令適用于 API 2020-08-01 版或更新版本。  如需目前所使用的 API 版本的詳細資訊，請參閱 [資源提供者和類型](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)。
 
-使用[>get-azpublicipaddress](/powershell/module/az.network/new-azpublicipaddress) ，在**myResourceGroup**中建立名為**myStandardZRPublicIP**的標準區域冗余公用 IP 位址。
+使用 [>get-azpublicipaddress](/powershell/module/az.network/new-azpublicipaddress) ，在 **myResourceGroup** 中建立名為 **myStandardZRPublicIP** 的標準區域冗余公用 IP 位址。
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -68,7 +70,7 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -Alloca
 > 針對早于2020-08-01 的 API 版本，請執行上述命令，而不指定區域參數來建立區域冗余 IP 位址。 
 >
 
-若要在**myResourceGroup**中建立名為**myStandardZonalPublicIP**區域2的標準區域性公用 IP 位址，請使用下列命令：
+若要在 **myResourceGroup** 中建立名為 **myStandardZonalPublicIP** 區域2的標準區域性公用 IP 位址，請使用下列命令：
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -89,7 +91,7 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -Alloca
 >[!NOTE]
 >下列命令適用于 API 2020-08-01 版或更新版本。  如需目前所使用的 API 版本的詳細資訊，請參閱 [資源提供者和類型](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)。
 
-使用[>get-azpublicipaddress](/powershell/module/az.network/new-azpublicipaddress)建立標準公用 IP 位址，作為**myResourceGroup**中名為**myStandardPublicIP**的非區域性資源。
+使用 [>get-azpublicipaddress](/powershell/module/az.network/new-azpublicipaddress)建立標準公用 IP 位址，作為 **myResourceGroup** 中名為 **myStandardPublicIP** 的非區域性資源。
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -106,7 +108,7 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -Alloca
 
 # <a name="basic-sku"></a>[**基本 SKU**](#tab/option-create-public-ip-basic)
 
-使用[>get-azpublicipaddress](/powershell/module/az.network/new-azpublicipaddress) ，在**myResourceGroup**中建立名為**MYBASICPUBLICIP**的基本靜態公用 IP 位址。  基本公用 Ip 沒有可用性區域的概念。
+使用 [>get-azpublicipaddress](/powershell/module/az.network/new-azpublicipaddress) ，在 **myResourceGroup** 中建立名為 **MYBASICPUBLICIP** 的基本靜態公用 IP 位址。  基本公用 Ip 沒有可用性區域的概念。
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -126,7 +128,7 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -Alloca
 
 如需上列個別變數的詳細資訊，請參閱 [管理公用 IP 位址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#create-a-public-ip-address)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 將[公用 IP 位址與虛擬機器](https://docs.microsoft.com/azure/virtual-network/associate-public-ip-address-vm#azure-portal)產生關聯
 - 深入了解 Azure 中的[公用 IP 位址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。
 - 深入了解所有[公用 IP 位址設定](virtual-network-public-ip-address.md#create-a-public-ip-address)。

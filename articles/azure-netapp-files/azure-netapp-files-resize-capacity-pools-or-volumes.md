@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: b-juche
 ms.openlocfilehash: 62bf154c1dbf1a0d3f12e2cef916b37059ce985b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325499"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012471"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>調整容量集區或磁碟區的大小
 您可以視需要變更容量集區或磁碟區的大小。 
@@ -36,7 +36,7 @@ ms.locfileid: "91325499"
 
 您可以視需要變更磁碟區的大小。 磁碟區的容量耗用量是根據其集區的佈建容量進行計算。
 
-1. 在 [管理 NetApp 帳戶] 刀鋒視窗中，按一下 [磁碟區]****。 
+1. 在 [管理 NetApp 帳戶] 刀鋒視窗中，按一下 [磁碟區]。 
 2. 以滑鼠右鍵按一下要調整大小的磁碟區名稱，或按一下磁碟區資料列結尾處的 ["..."] 圖示，以顯示內容功能表。
 3. 使用內容功能表選項來調整大小，或刪除磁碟區。
 

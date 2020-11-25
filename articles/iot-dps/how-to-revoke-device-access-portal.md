@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: 120446472038076e34f62b47ba79348e5de8b972
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951072"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010923"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>如何從 Azure IoT 中樞裝置佈建服務中取消註冊裝置
 

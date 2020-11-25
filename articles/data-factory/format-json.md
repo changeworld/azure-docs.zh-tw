@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: jingwang
 ms.openlocfilehash: e0d8d5c833460838c28c7bc20b3ab764ed3ae659
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927000"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011620"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure Data Factory 中的 JSON 格式
 
@@ -30,12 +30,12 @@ ms.locfileid: "92927000"
 
 | 屬性         | 描述                                                  | 必要 |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | 資料集的 type 屬性必須設定為 **Json** 。 | 是      |
-| location         | 檔案 (s) 的位置設定。 每個以檔案為基礎的連接器都有自己的位置類型和支援的屬性 `location` 。 **請參閱連接器文章中的詳細資料-> 資料集屬性一節** 。 | 是      |
+| type             | 資料集的 type 屬性必須設定為 **Json**。 | 是      |
+| location         | 檔案 (s) 的位置設定。 每個以檔案為基礎的連接器都有自己的位置類型和支援的屬性 `location` 。 **請參閱連接器文章中的詳細資料-> 資料集屬性一節**。 | 是      |
 | encodingName     | 用來讀取/寫入測試檔的編碼類型。 <br>允許的值如下：「UTF-8」、「UTF-16」、「UTF-16BE」、「32 UTF-8」、「UTF-32BE」、「美國-ASCII」、「UTF-7」、「BIG5」、「EUC-JP」、「EUC-KR」、」 GB2312 "、" GB18030 "、" JOHAB "、" SHIFT-JIS "、" CP875 "、" CP866 "、" IBM00858 "、" IBM037 "、" IBM273 "、" IBM437 "、" IBM500 "、" IBM737 "、" IBM775 "、" IBM850 "、" IBM852 "、" IBM855 "、" IBM857 "、" IBM860 "和" IBM861 "、" IBM863 "、" IBM864 "、" IBM865 "、" IBM869 "、" IBM870 "、" IBM01140 "、" IBM01141 "、" IBM01142 "、" IBM01143 "、" IBM01144 "、" IBM01145 "、" IBM01146 "、" IBM01147 "、" IBM01148 "、" IBM01149 "、" ISO-2022-JP "，" ISO-2022-KR "，" ISO-8859-1 "，" ISO-8859-2 "，" ISO-8859-3 "，" ISO-8859-4 "，" ISO-8859-5 "，" ISO-8859-6 "，" ISO-8859-7 "，" iso-8859-8 "，" ISO-8859-9 "，" iso-8859-13 "，"ISO-8859-15"、"WINDOWS-874"、"WINDOWS-1250"、"WINDOWS-1251"、"WINDOWS-1252"、"WINDOWS-1253"、"WINDOWS-1254"、"WINDOWS-1255"、"WINDOWS-1256"、"WINDOWS-1257"、"WINDOWS-1258"。| 否       |
 | compression | 用來設定檔案壓縮的屬性群組。 當您想要在活動執行期間執行壓縮/解壓縮時，請設定此區段。 | 否 |
-| type<br/>) *下 `compression`* 的 ( | 用來讀取/寫入 JSON 檔案的壓縮編解碼器。 <br>允許的值為 **bzip2** 、 **gzip** 、 **deflate** 、 **ZipDeflate** 、 **TarGzip** 、 **Tar** 、 **snappy** 或 **lz4** 。 預設值不會壓縮。<br>**注意：** 目前的複製活動不支援 "snappy" & "lz4"，而且對應資料流程不支援 "ZipDeflate" "、" TarGzip "和" Tar "。<br>**請注意** ，使用「複製活動」將 **ZipDeflate** / **TarGzip** /)  ( **Tar** 檔案解壓縮，並將其寫入檔案型接收資料存放區時，根據預設，檔案會解壓縮到資料夾： `<path specified in dataset>/<folder named as source compressed file>/` ，請 `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` 在 [複製活動來源](#json-as-source)上使用，以控制是否要將壓縮檔案的名稱保留為資料夾結構 () 。| 否。  |
-| 等級<br/>) *下 `compression`* 的 ( | 壓縮比例。 <br>允許的值為 **最佳** 或 **最快速** 。<br>- **最快：** 即使產生的檔案未以最佳方式壓縮，壓縮作業也應該儘快完成。<br>- **最佳** ：即使作業需要較長的時間才能完成，壓縮作業也應以最佳方式壓縮。 如需詳細資訊，請參閱 [壓縮層級](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) 主題。 | 否       |
+| type<br/>) *下 `compression`* 的 ( | 用來讀取/寫入 JSON 檔案的壓縮編解碼器。 <br>允許的值為 **bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**、 **TarGzip**、 **Tar**、 **snappy** 或 **lz4**。 預設值不會壓縮。<br>**注意：** 目前的複製活動不支援 "snappy" & "lz4"，而且對應資料流程不支援 "ZipDeflate" "、" TarGzip "和" Tar "。<br>**請注意**，使用「複製活動」將 **ZipDeflate** / **TarGzip** /)  (**Tar** 檔案解壓縮，並將其寫入檔案型接收資料存放區時，根據預設，檔案會解壓縮到資料夾： `<path specified in dataset>/<folder named as source compressed file>/` ，請 `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` 在 [複製活動來源](#json-as-source)上使用，以控制是否要將壓縮檔案的名稱保留為資料夾結構 () 。| 否。  |
+| 等級<br/>) *下 `compression`* 的 ( | 壓縮比例。 <br>允許的值為 **最佳** 或 **最快速**。<br>- **最快：** 即使產生的檔案未以最佳方式壓縮，壓縮作業也應該儘快完成。<br>- **最佳**：即使作業需要較長的時間才能完成，壓縮作業也應以最佳方式壓縮。 如需詳細資訊，請參閱 [壓縮層級](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) 主題。 | 否       |
 
 以下是 Azure Blob 儲存體上的 JSON 資料集範例：
 
@@ -71,39 +71,39 @@ ms.locfileid: "92927000"
 
 ### <a name="json-as-source"></a>JSON 作為來源
 
-複製活動 **_ \_ 來源 \*** * 區段支援下列屬性。
+複製活動 **_ \_ 來源 \**** 區段支援下列屬性。
 
 | 屬性      | 描述                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | 複製活動來源的 type 屬性必須設為 **JSONSource** 。 | 是      |
+| type          | 複製活動來源的 type 屬性必須設為 **JSONSource**。 | 是      |
 | formatSettings | 屬性的群組。 請參閱下方的 **JSON 讀取設定** 表格。 | 否       |
-| storeSettings | 一組屬性，說明如何從資料存放區讀取資料。 每個以檔案為基礎的連接器在下都有自己支援的讀取設定 `storeSettings` 。 **請參閱連接器文章中的詳細資料-> 複製活動屬性一節** 。 | 否       |
+| storeSettings | 一組屬性，說明如何從資料存放區讀取資料。 每個以檔案為基礎的連接器在下都有自己支援的讀取設定 `storeSettings` 。 **請參閱連接器文章中的詳細資料-> 複製活動屬性一節**。 | 否       |
 
 支援的 **JSON 讀取設定** `formatSettings` ：
 
 | 屬性      | 描述                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | FormatSettings 的類型必須設定為 **JsonReadSettings** 。 | 是      |
+| type          | FormatSettings 的類型必須設定為 **JsonReadSettings**。 | 是      |
 | compressionProperties | 一組屬性，說明如何將指定壓縮編解碼器的資料解壓縮。 | 否       |
-| preserveZipFileNameAsFolder<br> ( *下 `compressionProperties` -> `type` 的 `ZipDeflateReadSettings`* )   | 適用于設定 **ZipDeflate** 壓縮的輸入資料集時。 指出複製期間是否要將來源 ZIP 檔案名保留為資料夾結構。<br>-當設定為 **true (預設)** 時，Data Factory 會將解壓縮的檔案寫入 `<path specified in dataset>/<folder named as source zip file>/` 。<br>-當設定為 **false** 時，Data Factory 會將解壓縮的檔案直接寫入至 `<path specified in dataset>` 。 請確定您在不同的來源 zip 檔案中沒有重複的檔案名，以避免發生賽車或非預期的行為。  | 否 |
-| preserveCompressionFileNameAsFolder<br> ( *下 `compressionProperties` -> `type` 的 `TarGZipReadSettings` 或 `TarReadSettings`* )  | 適用于使用 **TarGzip** / **Tar** 壓縮設定輸入資料集時。 指出複製期間是否要將來源壓縮檔案名稱保留為資料夾結構。<br>-當設定為 **true (預設)** 時，Data Factory 會將解壓縮檔案寫入至 `<path specified in dataset>/<folder named as source compressed file>/` 。 <br>-當設定為 **false** 時，Data Factory 會將解壓縮的檔案直接寫入至 `<path specified in dataset>` 。 請確定您在不同的來源檔案中沒有重複的檔案名，以避免發生賽車或非預期的行為。 | 否 |
+| preserveZipFileNameAsFolder<br> (*下 `compressionProperties` -> `type` 的 `ZipDeflateReadSettings`*)   | 適用于設定 **ZipDeflate** 壓縮的輸入資料集時。 指出複製期間是否要將來源 ZIP 檔案名保留為資料夾結構。<br>-當設定為 **true (預設)** 時，Data Factory 會將解壓縮的檔案寫入 `<path specified in dataset>/<folder named as source zip file>/` 。<br>-當設定為 **false** 時，Data Factory 會將解壓縮的檔案直接寫入至 `<path specified in dataset>` 。 請確定您在不同的來源 zip 檔案中沒有重複的檔案名，以避免發生賽車或非預期的行為。  | 否 |
+| preserveCompressionFileNameAsFolder<br> (*下 `compressionProperties` -> `type` 的 `TarGZipReadSettings` 或 `TarReadSettings`*)  | 適用于使用 **TarGzip** / **Tar** 壓縮設定輸入資料集時。 指出複製期間是否要將來源壓縮檔案名稱保留為資料夾結構。<br>-當設定為 **true (預設)** 時，Data Factory 會將解壓縮檔案寫入至 `<path specified in dataset>/<folder named as source compressed file>/` 。 <br>-當設定為 **false** 時，Data Factory 會將解壓縮的檔案直接寫入至 `<path specified in dataset>` 。 請確定您在不同的來源檔案中沒有重複的檔案名，以避免發生賽車或非預期的行為。 | 否 |
 
 ### <a name="json-as-sink"></a>JSON 作為接收
 
-複製活動 **_ \_ 接收 \*** * 區段支援下列屬性。
+複製活動 **_ \_ 接收 \**** 區段支援下列屬性。
 
 | 屬性      | 描述                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | 複製活動來源的 type 屬性必須設為 **JSONSink** 。 | 是      |
+| type          | 複製活動來源的 type 屬性必須設為 **JSONSink**。 | 是      |
 | formatSettings | 屬性的群組。 請參閱下方的 **JSON 寫入設定** 表格。 | 否       |
-| storeSettings | 一組屬性，說明如何將資料寫入資料存放區。 每個以檔案為基礎的連接器在下都有自己支援的寫入設定 `storeSettings` 。 **請參閱連接器文章中的詳細資料-> 複製活動屬性一節** 。 | 否       |
+| storeSettings | 一組屬性，說明如何將資料寫入資料存放區。 每個以檔案為基礎的連接器在下都有自己支援的寫入設定 `storeSettings` 。 **請參閱連接器文章中的詳細資料-> 複製活動屬性一節**。 | 否       |
 
 支援的 **JSON 寫入設定** `formatSettings` ：
 
 | 屬性      | 描述                                                  | 必要                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| type          | FormatSettings 的類型必須設定為 **JsonWriteSettings** 。 | 是                                                   |
-| filePattern |表示每個 JSON 檔案中儲存的資料模式。 允許的值為： **setOfObjects** (JSON 行) 和 **arrayOfObjects** 。 **預設** 值為 **setOfObjects** 。 關於這些模式的詳細資訊，請參閱 [JSON 檔案模式](#json-file-patterns)一節。 |否 |
+| type          | FormatSettings 的類型必須設定為 **JsonWriteSettings**。 | 是                                                   |
+| filePattern |表示每個 JSON 檔案中儲存的資料模式。 允許的值為： **setOfObjects** (JSON 行) 和 **arrayOfObjects**。 **預設** 值為 **setOfObjects**。 關於這些模式的詳細資訊，請參閱 [JSON 檔案模式](#json-file-patterns)一節。 |否 |
 
 ### <a name="json-file-patterns"></a>JSON 檔案模式
 
@@ -221,7 +221,7 @@ ms.locfileid: "92927000"
 
 ### <a name="source-format-options"></a>來源格式選項
 
-使用 JSON 資料集做為資料流程中的來源，可讓您設定五個額外的設定。 這些設定可以在 [ **來源選項** ] 索引標籤中的 [ **JSON 設定** ] [可折疊] 底下找到。  
+使用 JSON 資料集做為資料流程中的來源，可讓您設定五個額外的設定。 這些設定可以在 [**來源選項**] 索引標籤中的 [ **JSON 設定**] [可折疊] 底下找到。  
 
 ![JSON 設定](media/data-flow/json-settings.png "JSON 設定")
 

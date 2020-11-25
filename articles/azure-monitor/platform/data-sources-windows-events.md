@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
 ms.openlocfilehash: 109e96f862ec2f3ddf879bccba114c44aecfe3c8
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440598"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012590"
 ---
 # <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>使用 Log Analytics 代理程式收集 Windows 事件記錄檔資料來源
 Windows 事件記錄是 Windows 虛擬機器上的 Log Analytics 代理程式最常見的其中一個 [資料來源](agent-data-sources.md) ，因為許多應用程式會寫入 windows 事件記錄檔。  除了指定您要監視之應用程式所建立的任何自訂記錄之外，您也可以透過標準記錄 (例如系統和應用程式) 來收集事件。
@@ -26,14 +26,14 @@ Windows 事件記錄是 Windows 虛擬機器上的 Log Analytics 代理程式最
 
 Azure 監視器只會從設定中指定的 Windows 事件記錄收集事件。  您可以輸入記錄檔的名稱，然後按一下，以新增事件記錄檔 **+** 。  針對每個記錄檔，僅會收集包含所選嚴重性的事件。  請檢查您想要收集之特定記錄檔的嚴重性。  您無法提供任何其他準則來篩選事件。
 
-輸入事件記錄檔的名稱時，Azure 監視器提供常見的事件記錄檔名稱的建議。 如果您想要新增的記錄檔未出現在清單中，您仍然可以透過輸入記錄檔的完整名稱來新增它。 您可以使用事件檢視器來尋找記錄檔的完整名稱。 在事件檢視器中，開啟記錄檔的 [內容]** 頁面，並從 [完整名稱]** 欄位複製字串。
+輸入事件記錄檔的名稱時，Azure 監視器提供常見的事件記錄檔名稱的建議。 如果您想要新增的記錄檔未出現在清單中，您仍然可以透過輸入記錄檔的完整名稱來新增它。 您可以使用事件檢視器來尋找記錄檔的完整名稱。 在事件檢視器中，開啟記錄檔的 [內容] 頁面，並從 [完整名稱] 欄位複製字串。
 
 ![設定 Windows 事件](media/data-sources-windows-events/configure.png)
 
 > [!NOTE]
 > Windows 事件記錄檔中的重大事件，在 Azure 監視器記錄中會有「錯誤」的嚴重性。
 
-## <a name="data-collection"></a>資料集合
+## <a name="data-collection"></a>資料收集
 在建立事件時，Azure 監視器會從受監視的事件記錄檔收集符合所選嚴重性的每個事件。  代理程式會在它收集的每個事件記錄檔中記錄它的位置。  如果代理程式離線一段時間，便會從上次停止的地方收集事件，即使這些事件是在代理程式離線時所建立亦同。  如果事件記錄檔是在代理程式離線時使用未收集且已遭覆寫的事件進行包裝，可能就無法收集這些事件。
 
 >[!NOTE]

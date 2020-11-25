@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
 ms.openlocfilehash: 81ded79ee72fb7c2d89898595602cb3e6d7ae5e2
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146972"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011059"
 ---
 # <a name="import-soap-api"></a>匯入 SOAP API
 

@@ -6,11 +6,11 @@ services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: cdeecabf569e3c6f9b280e6b0179e5378f5b1c95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88003099"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011365"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中隔離叢集的最佳做法
 
@@ -26,10 +26,10 @@ ms.locfileid: "88003099"
 
 Kubernetes 提供功能讓您以邏輯方式隔離相同叢集中的小組和工作負載。 其目標應該是要提供以每個小組所需資源為範圍的最少權限數目。 Kubernetes 中的 [命名空間][k8s-namespaces] 會建立邏輯隔離界限。 隔離和多租使用者的其他 Kubernetes 功能和考慮包含下列領域：
 
-* **排程**包含使用基本功能，例如資源配額和 Pod 中斷預算。 如需這些功能的詳細資訊，請參閱 [AKS 中基本排程器功能的最佳做法][aks-best-practices-scheduler]。
+* **排程** 包含使用基本功能，例如資源配額和 Pod 中斷預算。 如需這些功能的詳細資訊，請參閱 [AKS 中基本排程器功能的最佳做法][aks-best-practices-scheduler]。
   * 更進階的排程器功能包括污點和容差、節點選取器，以及節點和 Pod 的親和性或反親和性。 如需這些功能的詳細資訊，請參閱 [AKS 中進階排程器功能的最佳做法][aks-best-practices-advanced-scheduler]。
-* **網路**包含使用網路原則來控制流入和流出 Pod 的流量。
-* **驗證和授權**包含角色型存取控制 (RBAC) 及 Azure Active Directory (AD) 整合的使用者、Pod 身分識別和 Azure Key Vault 中的祕密。 如需這些功能的詳細資訊，請參閱 [AKS 中驗證和授權的最佳做法][aks-best-practices-identity]。
+* **網路** 包含使用網路原則來控制流入和流出 Pod 的流量。
+* **驗證和授權** 包含角色型存取控制 (RBAC) 及 Azure Active Directory (AD) 整合的使用者、Pod 身分識別和 Azure Key Vault 中的祕密。 如需這些功能的詳細資訊，請參閱 [AKS 中驗證和授權的最佳做法][aks-best-practices-identity]。
 * **容器** 包含適用于 AKS 的 Azure 原則附加元件，可強制執行 pod 安全性、使用 pod 安全性內容，以及掃描映射與執行時間是否有弱點。 另外還包含使用 App Armor 或 Seccomp (安全運算) 來限制容器對基礎節點的存取。
 
 ## <a name="logically-isolate-clusters"></a>以邏輯方式隔離叢集
@@ -46,7 +46,7 @@ Kubernetes 提供功能讓您以邏輯方式隔離相同叢集中的小組和工
 
 ## <a name="physically-isolate-clusters"></a>實體隔離叢集
 
-**最佳做法指引** - 請盡量不要對每個個別的小組或應用程式部署使用實體隔離。 相反地，請使用上一節所討論的「邏輯」** 隔離。
+**最佳做法指引** - 請盡量不要對每個個別的小組或應用程式部署使用實體隔離。 相反地，請使用上一節所討論的「邏輯」隔離。
 
 叢集隔離的常見方法是使用實際分隔的 AKS 叢集。 在此隔離模型中，小組或工作負載會獲派自己的 AKS 叢集。 這種方法看起來往往會是隔離工作負載或小組的最簡單方式，但會增添額外的管理和財務負荷。 您現在必須維護這些多重叢集，且必須個別提供存取權和指派權限。 您也要支付所有個別節點的費用。
 

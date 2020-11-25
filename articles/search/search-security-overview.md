@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
 ms.openlocfilehash: f314394d3a0ac453d525079e096162d8739f67cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314695"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011790"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure 認知搜尋中的安全性-總覽
 
@@ -84,7 +84,7 @@ ms.locfileid: "91314695"
 
 + 查詢金鑰 (允許唯讀存取索引的檔集合) 
 
-布建服務時，會建立系統*管理金鑰*。 有兩個管理員金鑰，指定為主要** 和次要** 以將它們保持在各自的位置，但事實上，它們是可互換。 每個服務有兩個管理員金鑰，以便您在轉換其中一個時不會無法存取您的服務。 您可以根據 Azure 安全性最佳作法定期 [重新產生管理金鑰](search-security-api-keys.md#regenerate-admin-keys) ，但無法新增至總管理金鑰計數。 每個搜尋服務最多可有兩個系統管理金鑰。
+布建服務時，會建立系統 *管理金鑰*。 有兩個管理員金鑰，指定為主要和次要以將它們保持在各自的位置，但事實上，它們是可互換。 每個服務有兩個管理員金鑰，以便您在轉換其中一個時不會無法存取您的服務。 您可以根據 Azure 安全性最佳作法定期 [重新產生管理金鑰](search-security-api-keys.md#regenerate-admin-keys) ，但無法新增至總管理金鑰計數。 每個搜尋服務最多可有兩個系統管理金鑰。
 
 *查詢金鑰* 是視需要建立的，而且是針對發出查詢的用戶端應用程式所設計。 您最多可以建立 50 個查詢金鑰。 在應用程式程式碼中，您可以指定搜尋 URL 和查詢 api 金鑰，以允許唯讀存取特定索引的檔集合。 端點、可供唯讀存取的 API 金鑰以及目標索引共同定義來自用戶端應用程式連接的範圍和存取層級。
 
@@ -94,7 +94,7 @@ ms.locfileid: "91314695"
 
 若要進一步控制搜尋服務的存取權，您可以建立允許存取特定 IP 位址或 IP 位址範圍的輸入防火牆規則。 所有用戶端連線都必須透過允許的 IP 位址進行，否則連接會遭到拒絕。
 
-:::image type="content" source="media/search-security-overview/inbound-firewall-ip-restrictions.png" alt-text="描述每個服務參與層級之不同安全性類型的圖表":::
+:::image type="content" source="media/search-security-overview/inbound-firewall-ip-restrictions.png" alt-text="ip 限制存取的範例架構圖表":::
 
 您可以使用入口網站來 [設定輸入存取權](service-configure-firewall.md)。
 
@@ -106,7 +106,7 @@ Azure 認知搜尋的 [私人端點](../private-link/private-endpoint-overview.m
 
 私人端點會使用來自虛擬網路位址空間的 IP 位址來連接到您的搜尋服務。 用戶端與搜尋服務之間的網路流量會在 Microsoft 骨幹網路上進行虛擬網路和私人連結，以消除公用網際網路的暴露。 VNET 允許資源之間的安全通訊，以及內部部署網路和網際網路。
 
-:::image type="content" source="media/search-security-overview/inbound-private-link-azure-cog-search.png" alt-text="描述每個服務參與層級之不同安全性類型的圖表":::
+:::image type="content" source="media/search-security-overview/inbound-private-link-azure-cog-search.png" alt-text="私人端點存取的範例架構圖表":::
 
 雖然這是最安全的解決方案，但使用額外的服務會增加成本，因此請務必清楚瞭解這些優點，再進行深入瞭解。 如需成本的詳細資訊，請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/private-link/)。 如需這些元件如何搭配運作的詳細資訊，請觀看本文頂端的影片。 私人端點選項的涵蓋範圍從5:48 開始進入影片。 如需有關如何設定端點的指示，請參閱 [建立 Azure 認知搜尋的私人端點](service-create-private-endpoint.md)。
 
@@ -122,7 +122,7 @@ Azure 認知搜尋的 [私人端點](../private-link/private-endpoint-overview.m
 
 ## <a name="user-access"></a>使用者存取
 
-使用者存取索引和其他物件的方式取決於要求上的 API 金鑰類型。 大部分的開發人員會為用戶端搜尋要求建立並指派[*查詢金鑰*](search-security-api-keys.md)。 查詢金鑰會將唯讀存取權授與索引中可搜尋的內容。
+使用者存取索引和其他物件的方式取決於要求上的 API 金鑰類型。 大部分的開發人員會為用戶端搜尋要求建立並指派 [*查詢金鑰*](search-security-api-keys.md)。 查詢金鑰會將唯讀存取權授與索引中可搜尋的內容。
 
 如果您需要對搜尋結果進行細微的每個使用者控制，您可以在查詢上建立安全性篩選，並傳回與指定的安全性識別相關聯的檔。 身分識別型存取控制會實作為 *篩選* 條件，以根據身分識別來修剪檔和內容的搜尋結果，而不是預先定義的角色和角色指派。 下表說明兩個針對未經授權的內容縮減搜尋結果的方法。
 
@@ -142,7 +142,7 @@ Azure 認知搜尋的 [私人端點](../private-link/private-endpoint-overview.m
 
 ## <a name="certifications-and-compliance"></a>認證和合規性
 
-Azure 認知搜尋已通過認證，適用于公用雲端和 Azure Government 的多重全球、區域及業界特定標準。 如需完整清單，請從官方 Audit reports 頁面下載[ **Microsoft Azure 合規性供應**專案白皮書](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/)。
+Azure 認知搜尋已通過認證，適用于公用雲端和 Azure Government 的多重全球、區域及業界特定標準。 如需完整清單，請從官方 Audit reports 頁面下載 [ **Microsoft Azure 合規性供應** 專案白皮書](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/)。
 
 為了符合規範，您可以使用 [Azure 原則](../governance/policy/overview.md) 來實行 [Azure 安全性基準測試](../security/benchmarks/introduction.md)的高安全性最佳作法。 Azure 安全性效能評定是一組安全性建議的集合，編寫至安全性控制項，以對應至緩解服務和資料的威脅時應採取的重要動作。 目前有11個安全性控制項，包括 [網路安全性](../security/benchmarks/security-control-network-security.md)、 [記錄和監視](../security/benchmarks/security-control-logging-monitoring.md)，以及 [資料保護](../security/benchmarks/security-control-data-protection.md) 等等。
 

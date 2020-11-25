@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
 ms.openlocfilehash: 70c77caebfd8f9bfd36c7384255cf7b66416a379
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454973"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012028"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-darwinbox"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Darwinbox 整合
 
@@ -51,7 +51,7 @@ ms.locfileid: "92454973"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Darwinbox** 。
+1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Darwinbox**。
 1. 從結果面板中選取 [Darwinbox]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -73,7 +73,7 @@ ms.locfileid: "92454973"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Darwinbox] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)

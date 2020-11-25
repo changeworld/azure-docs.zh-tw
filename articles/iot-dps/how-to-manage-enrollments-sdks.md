@@ -9,11 +9,11 @@ ms.service: iot-dps
 ms.custom: fasttrack-edit, iot
 services: iot-dps
 ms.openlocfilehash: 45a2b7a64006ab6963290be3ac86a3a5d1e4916d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959878"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010974"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>如何使用 Azure 裝置佈建服務 SDK 管理裝置註冊
 「裝置註冊」會建立單一裝置或裝置群組的記錄，這些裝置可能會在某個時間點向裝置佈建服務進行註冊。 註冊記錄包含屬於該註冊一部分之裝置一開始所需的設定，包括所需的 IoT 中樞。 本文會示範如何針對您的佈建服務使用 Azure IoT 佈建服務 SDK，以程式設計方式管理裝置註冊。  這些 SDK 可從 GitHub 上取得，其位在與 Azure IoT SDK 相同的存放庫中。

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
 ms.openlocfilehash: c4497805e64ef303c9d7340c48a49027b3a26bef
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144688"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011011"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 雲端服務之設定和管理問題：常見問題集 (FAQ)
 
@@ -103,7 +103,7 @@ Select-AzureSubscription -Current -SubscriptionName <your subscription name>
 Get-AzurePublishSettingsFile
 ```
 
-**Get-AzurePublishSettingsFile** 會在 Azure 入口網站的 [訂用帳戶]**** > [管理憑證]**** 中建立新的管理憑證。 新憑證的名稱如下 "YourSubscriptionNam]-[CurrentDate]-credentials"。
+**Get-AzurePublishSettingsFile** 會在 Azure 入口網站的 [訂用帳戶] > [管理憑證] 中建立新的管理憑證。 新憑證的名稱如下 "YourSubscriptionNam]-[CurrentDate]-credentials"。
 
 ### <a name="how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b"></a>如何自動安裝 ( .pfx) 和中繼憑證 ( 的主要 TLS/SSL 憑證。 p7b) ？
 
@@ -196,7 +196,7 @@ Windows 10 和 Windows Server 2016 隨附用戶端和伺服器端上的 HTTP/2 �
 3. 建立名為 **DuoEnabled** 的新 DWORD 值。
 4. 將值設為 1。
 5. 重新啟動您的伺服器。
-6. 移至**預設網站**，並在 [繫結]**** 下方 使用剛才建立的自我簽署憑證來建立新的 TLS 繫結。 
+6. 移至 **預設網站**，並在 [繫結] 下方 使用剛才建立的自我簽署憑證來建立新的 TLS 繫結。 
 
 如需詳細資訊，請參閱
 
@@ -228,9 +228,9 @@ Microsoft 會遵循嚴格的程序，不允許內部工程師在沒有擁有者�
 
 ### <a name="i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005"></a>我無法使用 RDP 檔案從遠端桌面登入雲端服務虛擬機器。 我收到下列錯誤：發生驗證錯誤 (代碼：0x80004005)
 
-如果您使用的 RDP 檔案來自已加入 Azure Active Directory 的機器，即可能會發生這個錯誤。 若要解決此問題，請依照下列步驟執行︰
+如果您使用的 RDP 檔案來自已加入 Azure Active Directory 的機器，即可能會發生這個錯誤。 若要解決此問題，請遵循下列步驟：
 
-1. 以滑鼠右鍵按一下您下載的 RDP 檔案，然後選取 [編輯]****。
+1. 以滑鼠右鍵按一下您下載的 RDP 檔案，然後選取 [編輯]。
 2. 新增 "&#92;" 作為使用者名稱的前置詞。 例如，使用 **.\username** 而不是 **username**。
 
 ## <a name="scaling"></a>調整大小

@@ -9,11 +9,11 @@ ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: b7c097306ba46d4f0024aecc55994508e2d8a090
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86156595"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011685"
 ---
 為了保護 Azure 檔案共用中的資料，避免資料遺失或損毀，所有 Azure 檔案共用都會在寫入時儲存每個檔案的多個複本。 視工作負載的需求而定，您可以選取額外的備援程度。 Azure 檔案儲存體目前支援下列資料備援選項：
 

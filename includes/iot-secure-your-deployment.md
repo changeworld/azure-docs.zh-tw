@@ -9,11 +9,11 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76748830"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010688"
 ---
 本文針對以 Azure IoT 為主的物聯網 (IoT) 基礎結構提供更進一層的詳細資料。 它會連結到設定及部署每個元件的實作層級詳細資料。 另外也會提供各種競爭方法之間的比較和選擇。
 
@@ -53,7 +53,7 @@ IoT 中樞使用安全性權杖來驗證裝置和服務，以避免透過網路�
 
 * AMQP：SASL PLAIN 和 AMQP 宣告式安全性 (若為 IoT 中樞層級權杖時為 `{policyName}@sas.root.{iothubName}`；若為裝置範圍權杖時為 `{deviceId}`)。
 
-* MQTT：CONNECT 封包使用 `{deviceId}` 作為 `{ClientId}`，在 [使用者名稱]**** 欄位中使用 `{IoThubhostname}/{deviceId}`，而在 [密碼]**** 欄位中則使用 SAS 權杖。
+* MQTT：CONNECT 封包使用 `{deviceId}` 作為 `{ClientId}`，在 [使用者名稱] 欄位中使用 `{IoThubhostname}/{deviceId}`，而在 [密碼] 欄位中則使用 SAS 權杖。
 
 * HTTP︰有效權杖位於驗證要求標頭中。
 
@@ -91,7 +91,7 @@ Azure IoT 中樞允許針對每個安全性金鑰定義[存取控制原則](../a
 
 * **>deviceconnect**。 授與裝置面向端點的存取權。 例如，它會授與傳送裝置到雲端的訊息和接收雲端到裝置的訊息的權限。 裝置會使用此權限。
 
-利用[安全性權杖](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)取得 IoT 中樞之 **DeviceConnect** 權限的方法有兩種：使用裝置身分識別金鑰，或使用共用存取金鑰。 此外，請務必注意所有可從裝置存取的功能，在設計上會於前置詞為 `/devices/{deviceId}`的端點公開。
+利用 [安全性權杖](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)取得 IoT 中樞之 **DeviceConnect** 權限的方法有兩種：使用裝置身分識別金鑰，或使用共用存取金鑰。 此外，請務必注意所有可從裝置存取的功能，在設計上會於前置詞為 `/devices/{deviceId}`的端點公開。
 
 服務元件只能使用授與適當權限的共用存取原則來[產生安全性權杖](../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components)。
 

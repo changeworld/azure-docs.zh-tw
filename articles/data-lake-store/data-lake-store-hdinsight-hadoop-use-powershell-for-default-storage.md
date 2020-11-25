@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 675f68a36963d19f42cb7c0c5d49ae8c4f0006f2
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103419"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010532"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>使用 PowerShell 建立以 Azure Data Lake Storage Gen1 作為預設儲存體的 HDInsight 叢集
 
@@ -27,17 +27,17 @@ ms.locfileid: "92103419"
 
 * HDInsight 3.5 和 3.6 版提供建立可存取 Data Lake Storage Gen1 作為預設儲存體之 HDInsight 叢集的選項。
 
-* HDInsight Premium 叢集「不提供」** 建立可存取 Data Lake Storage Gen1 作為預設儲存體之 HDInsight 叢集的選項。
+* HDInsight Premium 叢集「不提供」建立可存取 Data Lake Storage Gen1 作為預設儲存體之 HDInsight 叢集的選項。
 
 若要使用 PowerShell 來設定 HDInsight 搭配 Data Lake Storage Gen1 運作，請遵循接下來五個章節中的指示操作。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 開始本教學課程之前，請確定您符合下列需求：
 
-* **Azure 訂用帳戶**：請移至[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 訂用帳戶**：請移至 [取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure PowerShell 1.0 或更新版本**：請參閱 [如何安裝和設定 PowerShell](/powershell/azure/)。
 * **Windows 軟體開發套件 (SDK)**︰若要安裝 Windows SDK，請移至 [Windows 10 下載和工具](https://dev.windows.com/downloads)。 SDK 是用來建立安全性憑證。
 * **Azure Active Directory 服務主體**︰本教學課程說明如何在 Azure Active Directory (Azure AD) 中建立服務主體。 不過，您必須是 Azure AD 系統管理員，才能建立服務主體。 如果您是系統管理員，就可以略過這項先決條件並繼續進行本教學課程。
@@ -140,13 +140,13 @@ ms.locfileid: "92103419"
     ```
 
     系統會提示您輸入私密金鑰密碼。 命令成功執行之後，您應該會在您指定的憑證目錄中看到 **CertFile.cer** 和 **mykey.pvk**。
-2. 使用 [Pvk2Pfx][pvk2pfx] 公用程式將 MakeCert 建立的 .pvk 和 .cer 檔案轉換成 .pfx 檔案。 執行下列命令：
+2. 使用 [Pvk2Pfx][pvk2pfx] 公用程式將 MakeCert 建立的 .pvk 和 .cer 檔案轉換成 .pfx 檔案。 執行以下命令：
 
     ```azurepowershell
     pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
     ```
 
-    系統提示您時，請輸入您稍早指定的私密金鑰密碼。 您針對 **-po** 參數指定的值是與 .pfx 檔案相關聯的密碼。 順利完成命令之後，您應該也會在指定的憑證目錄中看到**CertFile .pfx。**
+    系統提示您時，請輸入您稍早指定的私密金鑰密碼。 您針對 **-po** 參數指定的值是與 .pfx 檔案相關聯的密碼。 順利完成命令之後，您應該也會在指定的憑證目錄中看到 **CertFile .pfx。**
 
 ### <a name="create-an-azure-ad-and-a-service-principal"></a>建立 Azure AD 和服務主體
 在這一節中，您會建立 Azure AD 應用程式的服務主體、指派角色給服務主體，並藉由提供憑證驗證為服務主體。 若要在 Azure AD 中建立應用程式，請執行下列命令：
@@ -236,7 +236,7 @@ ms.locfileid: "92103419"
     Cmdlet 成功完成後，您應該會看到列出叢集詳細資料的輸出。
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>在 HDInsight 叢集上執行測試作業以使用 Data Lake Storage Gen1
-設定 HDInsight 叢集之後，您可以在叢集上執行測試工作，確保它可以存取 Data Lake Storage Gen1。 若要這樣做，請執行範例 Hive 作業來建立資料表，該資料表會使用 Data Lake Storage Gen1 在* \<cluster root> /example/data/sample.log*中提供的範例資料。
+設定 HDInsight 叢集之後，您可以在叢集上執行測試工作，確保它可以存取 Data Lake Storage Gen1。 若要這樣做，請執行範例 Hive 作業來建立資料表，該資料表會使用 Data Lake Storage Gen1 在 *\<cluster root> /example/data/sample.log* 中提供的範例資料。
 
 在這一節中，您將透過安全殼層 (SSH) 連線到您所建立的 HDInsight Linux 叢集，然後執行範例 Hive 查詢。
 

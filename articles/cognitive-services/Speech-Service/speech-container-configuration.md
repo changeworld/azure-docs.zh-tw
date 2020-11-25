@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
 ms.openlocfilehash: e65bb7c7d8fc04baec6b50a53519e689e748fbe1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90900295"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012164"
 ---
 # <a name="configure-speech-service-containers"></a>設定語音服務容器
 
 語音容器可讓客戶建立一個已優化的語音應用程式架構，以充分利用健全的雲端功能和邊緣位置。 我們現在支援的五個語音容器是、 **語音轉換文字**、 **自訂語音轉換文字**、 **文字轉換語音**、類 **神經文字到語音** 轉換和 **自訂文字轉換語音**。
 
-**語音**容器執行時間環境是使用 `docker run` 命令引數進行設定。 此容器有數個必要的設定，和一些選擇性的設定。 命令有相關[範例](#example-docker-run-commands)可供參考。 容器專屬設定包括計費設定。
+**語音** 容器執行時間環境是使用 `docker run` 命令引數進行設定。 此容器有數個必要的設定，和一些選擇性的設定。 命令有相關[範例](#example-docker-run-commands)可供參考。 容器專屬設定包括計費設定。
 
 ## <a name="configuration-settings"></a>組態設定
 
@@ -36,7 +36,7 @@ ms.locfileid: "90900295"
 
 此設定可在下列位置找到：
 
-- Azure 入口網站：**語音的**資源管理，在**金鑰**底下
+- Azure 入口網站：**語音的** 資源管理，在 **金鑰** 底下
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 設定
 
@@ -78,9 +78,9 @@ ms.locfileid: "90900295"
 
 主機裝載位置的正確語法會隨著主機作業系統而有所不同。 此外， [主機電腦](speech-container-howto.md#the-host-computer)的裝載位置可能無法存取，因為 docker 服務帳戶所使用的許可權與主機裝載位置的許可權之間發生衝突。
 
-| 選用 | 名稱 | 資料類型 | 描述 |
+| 選擇性 | 名稱 | 資料類型 | 描述 |
 | -------- | ---- | --------- | ----------- |
-| 不允許 | `Input` | 字串 | 標準語音容器不會使用此功能。 自訂語音容器會使用 [磁片區裝載](#volume-mount-settings)。                                                                                    |
+| 不允許 | `Input` | String | 標準語音容器不會使用此功能。 自訂語音容器會使用 [磁片區裝載](#volume-mount-settings)。                                                                                    |
 | 選用 | `Output` | String | 輸出裝載的目標。 預設值是 `/output`。 這是記錄的位置。 這包括容器記錄。 <br><br>範例：<br>`--mount type=bind,src=c:\output,target=/output` |
 
 ## <a name="volume-mount-settings"></a>磁片區掛接設定
@@ -104,7 +104,7 @@ ms.locfileid: "90900295"
 此命令會將主機電腦 _C:\input_ 目錄裝載到容器 _/usr/local/models_ 目錄。
 
 > [!IMPORTANT]
-> 磁片區掛接設定只適用于 **自訂的語音轉換文字** 和 **自訂文字轉換語音的** 容器。 **語音轉換文字**、類**神經文字轉換語音**和**文字轉換語音**的容器都不會使用磁片區裝載。
+> 磁片區掛接設定只適用于 **自訂的語音轉換文字** 和 **自訂文字轉換語音的** 容器。 **語音轉換文字**、類 **神經文字轉換語音** 和 **文字轉換語音** 的容器都不會使用磁片區裝載。
 
 ## <a name="example-docker-run-commands"></a>範例 docker run 命令
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
 ms.openlocfilehash: a226682c2580a871e1b2fc4db71f369f3bcc3abb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778620"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010158"
 ---
 # <a name="how-caching-works"></a>快取的運作方式
 
@@ -65,7 +65,7 @@ ms.locfileid: "92778620"
 ## <a name="cache-directive-headers"></a>快取指示詞標頭
 
 > [!IMPORTANT]
-> 根據預設，已針對 DSA 最佳化的 Azure CDN 端點會忽略快取指示詞標頭並略過快取。 針對「 **來自 Verizon 的 Azure CDN 標準** 」和「 **來自 Akamai 的 Azure CDN 標準** 」設定檔，您可以使用 [CDN 快取規則](cdn-caching-rules.md)來啟用快取，以調整 Azure CDN 端點處理這些標頭的方式。 只有針對「 **來自 Verizon 的 Azure CDN 進階** 」，您需使用 [規則引擎](./cdn-verizon-premium-rules-engine.md)來啟用快取。
+> 根據預設，已針對 DSA 最佳化的 Azure CDN 端點會忽略快取指示詞標頭並略過快取。 針對「**來自 Verizon 的 Azure CDN 標準**」和「**來自 Akamai 的 Azure CDN 標準**」設定檔，您可以使用 [CDN 快取規則](cdn-caching-rules.md)來啟用快取，以調整 Azure CDN 端點處理這些標頭的方式。 只有針對「**來自 Verizon 的 Azure CDN 進階**」，您需使用 [規則引擎](./cdn-verizon-premium-rules-engine.md)來啟用快取。
 
 Azure CDN 支援下列 HTTP 快取指示詞標頭，這些標頭會定義快取持續時間和快取共用。
 
@@ -129,9 +129,9 @@ Azure CDN 支援下列 HTTP 快取指示詞標頭，這些標頭會定義快取�
 | **接受來源**       | 是    | 是   | 否   | 是    | 否   | 是   | 是    |
 | **CDN 快取持續時間** | 2 天 |7 天 | None | 7 天 | None | 1 日 | 1 年 |
 
-**接受來源** ：指定如果支援的快取指示詞標頭存在於原始伺服器的 HTTP 回應中，是否要加以接受。
+**接受來源**：指定如果支援的快取指示詞標頭存在於原始伺服器的 HTTP 回應中，是否要加以接受。
 
-**CDN 快取持續時間** ：指定資源會在 Azure CDN 快取的時間量。 不過，如果 **接受來源** 為 [是]，且來自原始伺服器的 HTTP 回應中包含快取指示詞標頭 `Expires` 或 `Cache-Control: max-age`，Azure CDN 就會改為使用標頭所指定的持續時間值。 
+**CDN 快取持續時間**：指定資源會在 Azure CDN 快取的時間量。 不過，如果 **接受來源** 為 [是]，且來自原始伺服器的 HTTP 回應中包含快取指示詞標頭 `Expires` 或 `Cache-Control: max-age`，Azure CDN 就會改為使用標頭所指定的持續時間值。 
 
 ## <a name="next-steps"></a>後續步驟
 

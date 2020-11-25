@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: caedcf313ab809e9607907545f26ca1b62bbeca7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76720039"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012402"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>準備增強機器學習服務的資料的工作
 前置處理和清除資料是重要的工作，必須先執行這些工作，資料集才能用於模型定型。 未經處理的資料通常會有雜訊且不可靠，還可能會有遺漏值。 使用這類資料進行模型化可能會產生誤導的結果。 這些工作屬於 Team Data Science Process (TDSP)，通常會遵循用來探索及計劃所需預先處理的資料集初始探索。 如需更多關於 TDSP 程序的詳細指示，請參閱 [Team Data Science Process](overview.md)中概述的步驟。
@@ -39,11 +39,11 @@ ms.locfileid: "76720039"
 ## <a name="what-are-some-typical-data-health-screens-that-are-employed"></a>哪些是要採用的典型資料健康狀態畫面？
 我們可以藉由檢查下列項目，來檢查一般的資料品質：
 
-* **記錄**的數目。
-* )  (或**功能**的**屬性**數目。
+* **記錄** 的數目。
+* )  (或 **功能** 的 **屬性** 數目。
 * 屬性 **資料類型** (名義、序數或連續) 。
-* **遺漏值**的數目。
-* 格式正確**的**資料。
+* **遺漏值** 的數目。
+* 格式正確 **的** 資料。
   * 如果資料是 TSV 或 CSV 格式，檢查資料行分隔符號和行分隔符號是否一律會正確分隔資料行與行。
   * 如果資料是 HTML 或 XML 格式，請根據各自的標準來檢查資料格式是否正確。
   * 可能也需要進行剖析，以從半結構化或非結構化的資料擷取結構化資訊。
@@ -57,7 +57,7 @@ ms.locfileid: "76720039"
 * **資料清理**：填滿遺漏值、偵測和移除雜訊資料和極端值。
 * **資料轉換**：標準化資料以減少維度和雜訊。
 * **減少資料**：取樣資料記錄或屬性，以簡化資料處理。
-* **資料離散**化：將連續屬性轉換為類別屬性，以方便搭配特定的機器學習方法使用。
+* **資料離散** 化：將連續屬性轉換為類別屬性，以方便搭配特定的機器學習方法使用。
 * **文字清除**：移除可能導致資料對齊的內嵌字元，例如，以定位字元分隔的資料檔案中的內嵌索引標籤，例如可能會中斷記錄的內嵌新行。
 
 下列各節將詳細說明一些資料處理步驟。

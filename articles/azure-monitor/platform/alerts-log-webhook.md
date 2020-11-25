@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.subservice: alerts
 ms.openlocfilehash: 9a074be9bcc62d8c20635400f462f52fb796d2fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294303"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012317"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhook 動作記錄警示規則
 
@@ -55,7 +55,7 @@ Webhook 動作可讓您叫用單一 HTTP POST 要求。 呼叫的服務應支援
 ## <a name="custom-webhook-payload-definition"></a>自訂 webhook 承載定義
 
 您可以使用 [ **包含 webhook 的自訂 json** 承載]，利用上述參數取得自訂 json 承載。 您也可以產生其他屬性。
-例如，您可以指定下列自訂承載，其中包含稱為 text ** 的單一參數。 此 webhook 呼叫的服務需要此參數：
+例如，您可以指定下列自訂承載，其中包含稱為 text 的單一參數。 此 webhook 呼叫的服務需要此參數：
 
 ```json
 
@@ -75,7 +75,7 @@ Webhook 動作可讓您叫用單一 HTTP POST 要求。 呼叫的服務應支援
 若要包含搜尋結果，請將 **>includesearchresults** 新增為自訂 JSON 中的最上層屬性。 搜尋結果會包含為 JSON 結構，因此無法在自訂定義的欄位中參考結果。 
 
 > [!NOTE]
-> [**包含 webhook 的自訂 JSON**承載] 選項旁的 [ **View Webhook** ] 按鈕會顯示所提供內容的預覽。 它不包含實際的資料，但代表將使用的 JSON 架構。 
+> [**包含 webhook 的自訂 JSON** 承載] 選項旁的 [ **View Webhook** ] 按鈕會顯示所提供內容的預覽。 它不包含實際的資料，但代表將使用的 JSON 架構。 
 
 ## <a name="sample-payloads"></a>承載範例
 本節顯示 webhook 記錄警示的範例承載。 範例承載包含當承載為標準和自訂時的範例。

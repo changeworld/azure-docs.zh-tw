@@ -8,11 +8,11 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: cynthn
 ms.openlocfilehash: 6a14e2bd7385430c3d0fbec06259a876af556e38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82190396"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010719"
 ---
 # <a name="create-a-proximity-placement-group-using-the-portal"></a>使用入口網站建立鄰近放置群組
 
@@ -57,7 +57,7 @@ ms.locfileid: "82190396"
 
 1. 在 [入口網站](https://portal.azure.com) 中，搜尋 *可用性設定* 組，然後從結果中選取您的可用性設定組。
 1. 選取 VM，然後選取 VM 頁面上的 [ **停止** ]，以 Stop\deallocate 可用性設定組中的每個 vm，然後選取 **[確定]** 以停止 vm。
-1. 在可用性設定組的頁面上，確定所有 Vm 的 **狀態** 都列為 [ **已停止]， (解除配置) **。
+1. 在可用性設定組的頁面上，確定所有 Vm 的 **狀態** 都列為 [ **已停止]， (解除配置)**。
 1. 在左功能表中選取 [設定]。
 1. 在 [ **鄰近位置群組**] 下，從下拉式清單中選取放置群組，然後選取 [ **儲存**]。
 1. 從左側功能表中選取 [ **總覽** ]，以再次查看 vm 清單。 
@@ -68,13 +68,13 @@ ms.locfileid: "82190396"
 
 
 1. 在 VM 的頁面上，選取 [ **停止**]。
-1. 一旦 VM 的狀態列為 [ **已停止] (解除配置) **，請 **選取左側** 功能表上的 [設定]。
+1. 一旦 VM 的狀態列為 [ **已停止] (解除配置)**，請 **選取左側** 功能表上的 [設定]。
 1. 在 [ **鄰近位置群組**] 下，從下拉式清單中選取放置群組，然後選取 [ **儲存**]。
 1. 從左側功能表中選取 **[總覽** ]，然後選取 [ **開始** ] 以重新開機 VM。
 
  
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 您也可以使用 [Azure PowerShell](proximity-placement-groups.md) 來建立鄰近位置群組。
 

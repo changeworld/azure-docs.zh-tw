@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: cherylmc
 ms.openlocfilehash: 1aba87b2139fb8a7d395fb3180d2074e47310fa9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94661149"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010759"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>關於 VPN 閘道組態設定
 
@@ -177,7 +177,7 @@ New-AzLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
 | --- | --- |
 | [PowerShell](/powershell/module/az.network/#networking) |[PowerShell](/powershell/module/az.network#vpn) |
 | [REST API](/previous-versions/azure/reference/jj154113(v=azure.100)) |[REST API](/rest/api/network/virtualnetworkgateways) |
-| 不支援 | [Azure CLI](/cli/azure/network/vnet-gateway)|
+| 不受支援 | [Azure CLI](/cli/azure/network/vnet-gateway)|
 
 ## <a name="next-steps"></a>後續步驟
 

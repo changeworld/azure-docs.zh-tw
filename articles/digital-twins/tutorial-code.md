@@ -8,11 +8,11 @@ ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ms.openlocfilehash: 3225fff1c82822dee990804f934ada86068841e8
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280244"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011241"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>教學課程：使用 Azure Digital Twins API 撰寫程式碼
 
@@ -31,7 +31,7 @@ ms.locfileid: "93280244"
 
 開始前的準備：
 * 任何程式碼編輯器
-* 開發電腦上的 **.NET Core 3.1** 。 您可以從[下載 .NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (英文) 下載此適用於多個平台的 .NET Core SDK 版本。
+* 開發電腦上的 **.NET Core 3.1**。 您可以從[下載 .NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (英文) 下載此適用於多個平台的 .NET Core SDK 版本。
 
 ### <a name="prepare-an-azure-digital-twins-instance"></a>準備 Azure Digital Twins 執行個體
 
@@ -43,11 +43,11 @@ ms.locfileid: "93280244"
 
 準備好使用您的 Azure Digital Twins 執行個體之後，請開始設定用戶端應用程式專案。 
 
-在您的電腦上開啟命令提示字元或其他主控台視窗，建立儲存本教學課程工作的空白專案目錄。 將目錄命名為任何您想要的名稱 (例如 *DigitalTwinsCodeTutorial* )。
+在您的電腦上開啟命令提示字元或其他主控台視窗，建立儲存本教學課程工作的空白專案目錄。 將目錄命名為任何您想要的名稱 (例如 *DigitalTwinsCodeTutorial*)。
 
 導覽到新目錄。
 
-進入專案目錄後， **建立空白的 .NET 主控台應用程式專案** 。 在命令視窗中執行下列命令，以建立主控台的基礎 C# 專案：
+進入專案目錄後，**建立空白的 .NET 主控台應用程式專案**。 在命令視窗中執行下列命令，以建立主控台的基礎 C# 專案：
 
 ```cmd/sh
 dotnet new console
@@ -57,7 +57,7 @@ dotnet new console
 
 讓命令視窗保持開啟，因為整個教學課程都要繼續使用。
 
-接下來， **將兩個相依性新增至您的專案** ，以使用 Azure Digital Twins。 您可以使用下列連結瀏覽至 NuGet 上的套件，在其中找到主控台命令 (包括 .NET CLI 可用的命令)，將每個套件的最新版本新增至您的專案。
+接下來，**將兩個相依性新增至您的專案**，以使用 Azure Digital Twins。 您可以使用下列連結瀏覽至 NuGet 上的套件，在其中找到主控台命令 (包括 .NET CLI 可用的命令)，將每個套件的最新版本新增至您的專案。
 * [**Azure.DigitalTwins.Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core)。 這是適用於[適用於 .NET 的 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 的套件。 
 * [**Azure.Identity**](https://www.nuget.org/packages/Azure.Identity). 此程式庫會提供協助驗證 Azure 的工具。
 
@@ -103,9 +103,9 @@ using Azure.Identity;
 
 應用程式必須執行的第一項工作，就是驗證 Azure Digital Twins 服務。 接著，您就可以建立服務用戶端類別以存取 SDK 函式。
 
-為了進行驗證，您需要 Azure Digital Twins 執行個體的 *hostName* 。
+為了進行驗證，您需要 Azure Digital Twins 執行個體的 *hostName*。
 
-在 *Program.cs* 中，將下列程式碼貼在 `Main` 方法中 "Hello, World!" 列印行下方。 將 `adtInstanceUrl` 的值設定為您的 Azure Digital Twins 執行個體 *hostName* 。
+在 *Program.cs* 中，將下列程式碼貼在 `Main` 方法中 "Hello, World!" 列印行下方。 將 `adtInstanceUrl` 的值設定為您的 Azure Digital Twins 執行個體 *hostName*。
 
 ```csharp
 string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>"; 
@@ -132,7 +132,7 @@ Azure Digital Twins 沒有內建的網域詞彙。 您環境中可以在 Azure D
 
 建立 Azure Digital Twins 解決方案的第一個步驟，是在 DTDL 檔案中至少定義一個模型。
 
-在您建立專案的目錄中，建立新的 *.json* 檔案，名為 *SampleModel.json* 。 貼入下列檔案主體： 
+在您建立專案的目錄中，建立新的 *.json* 檔案，名為 *SampleModel.json*。 貼入下列檔案主體： 
 
 ```json
 {
@@ -213,7 +213,7 @@ await foreach (DigitalTwinsModelData md in modelDataList)
 }
 ```
 
-**再次執行程式以測試這段新的程式碼之前** ，請記得您在上次執行程式時已上傳模型。 Azure Digital Twins 不會讓您將相同的模型上傳兩次，因此，如果您再次嘗試上傳相同的模型，程式應該會擲回例外狀況。
+**再次執行程式以測試這段新的程式碼之前**，請記得您在上次執行程式時已上傳模型。 Azure Digital Twins 不會讓您將相同的模型上傳兩次，因此，如果您再次嘗試上傳相同的模型，程式應該會擲回例外狀況。
 
 據此，在您的命令視窗中，再次使用此命令執行程式：
 
@@ -245,7 +245,7 @@ try {
 
 ### <a name="create-digital-twins"></a>建立數位分身
 
-將模型上傳至 Azure Digital Twins 之後，您就可以使用此模型定義來建立 **數位分身** 。 [數位分身](concepts-twins-graph.md)是模型的執行個體，代表商務環境中的實體，例如伺服陣列上的感應器、建築物中的房間，或汽車的燈。 本節會根據您之前上傳的模型，建立一些數位分身。
+將模型上傳至 Azure Digital Twins 之後，您就可以使用此模型定義來建立 **數位分身**。 [數位分身](concepts-twins-graph.md)是模型的執行個體，代表商務環境中的實體，例如伺服陣列上的感應器、建築物中的房間，或汽車的燈。 本節會根據您之前上傳的模型，建立一些數位分身。
 
 將下列程式碼新增至 `Main` 方法的結尾，根據此模型建立並初始化三個數位對應項。
 
@@ -267,7 +267,7 @@ for(int i=0; i<3; i++) {
 }
 ```
 
-在命令視窗中，使用 `dotnet run` 執行程式。 在輸出中，尋找指出 *sampleTwin-0* 、 *sampleTwin-1* 和 *sampleTwin-2* 已建立的列印訊息。 
+在命令視窗中，使用 `dotnet run` 執行程式。 在輸出中，尋找指出 *sampleTwin-0*、*sampleTwin-1* 和 *sampleTwin-2* 已建立的列印訊息。 
 
 然後，再次執行程式。 
 
@@ -275,7 +275,7 @@ for(int i=0; i<3; i++) {
 
 ### <a name="create-relationships"></a>建立關聯性
 
-接下來，您可以建立已建立對應項之間的 **關聯性** ，將其連線到 **對應項圖形** 。 [對應項圖形](concepts-twins-graph.md)用來表示整個環境。
+接下來，您可以建立已建立對應項之間的 **關聯性**，將其連線到 **對應項圖形**。 [對應項圖形](concepts-twins-graph.md)用來表示整個環境。
 
 在 `Main` 方法底下，將 **新的靜態方法** 新增至 `Program` 類別 (程式碼現在有兩個方法)：
 

@@ -8,11 +8,11 @@ ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
 ms.openlocfilehash: ceb8b8b31963317ccbbd1aee9f1b2606afc5a5db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91279020"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010244"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>如何使用多租用戶主機權限在 Azure 上部署 Windows 10 
 對於每位使用者都具有 Windows 10 企業版 E3/E5 或每位使用者都具有 Windows 虛擬桌面存取 (使用者訂用帳戶授權或附加元件使用者訂用帳戶授權) 的客戶，適用於 Windows 10 的多租用戶主機權限可讓您將 Windows 10 授權帶到雲端，並在 Azure 上執行 Windows 10 虛擬機器，而不必付費取得其他授權。 如需詳細資訊，請參閱[適用於 Windows 10 的多租用戶主機](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)。
@@ -63,7 +63,7 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
 ```
 
 
-**使用 Azure Resource Manager 範本部署進行部署**Resource Manager 範本內可指定另外的 `licenseType` 參數。 您可以閱讀更多有關 [撰寫 Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)的資訊。 將 VHD 上傳至 Azure 之後，請編輯 Resource Manager 範本以將授權類型納入計算提供者，之後再照常部署範本即可：
+**使用 Azure Resource Manager 範本部署進行部署** Resource Manager 範本內可指定另外的 `licenseType` 參數。 您可以閱讀更多有關 [撰寫 Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)的資訊。 將 VHD 上傳至 Azure 之後，請編輯 Resource Manager 範本以將授權類型納入計算提供者，之後再照常部署範本即可：
 ```json
 "properties": {
     "licenseType": "Windows_Client",
@@ -101,7 +101,7 @@ LicenseType              :
 
 ## <a name="additional-information-about-joining-azure-ad"></a>關於加入 Azure AD 的其他資訊
 >[!NOTE]
->Azure 會使用內建的 Administrator 帳戶佈建所有 Windows VM，但此帳戶無法用來加入 AAD。 例如，[設定] > [帳戶] > [存取公司或學校資源] > [+連線]** 不會有作用。 您必須建立第二個 Administrator 帳戶並以此帳戶的身分登入，才能手動加入 Azure AD。 您也可以使用佈建套件來設定 Azure AD，請使用*後續步驟*一節中的連結來進一步了解。
+>Azure 會使用內建的 Administrator 帳戶佈建所有 Windows VM，但此帳戶無法用來加入 AAD。 例如，[設定] > [帳戶] > [存取公司或學校資源] > [+連線] 不會有作用。 您必須建立第二個 Administrator 帳戶並以此帳戶的身分登入，才能手動加入 Azure AD。 您也可以使用佈建套件來設定 Azure AD，請使用 *後續步驟* 一節中的連結來進一步了解。
 >
 >
 

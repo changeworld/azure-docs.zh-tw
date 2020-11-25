@@ -6,11 +6,11 @@ author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
 ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91871893"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011875"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>管理和維護適用於 Windows 和 Linux 的 Log Analytics 代理程式
 
@@ -34,7 +34,7 @@ ms.locfileid: "91871893"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 在 Azure 入口網站中，按一下 [所有服務]。 在資源清單中輸入 **Log Analytics**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics 工作區]  。
+2. 在 Azure 入口網站中，按一下 [所有服務]。 在資源清單中輸入 **Log Analytics**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics 工作區]。
 
 3. 在您的 Log Analytics 工作區清單中，選取工作區。
 
@@ -91,11 +91,11 @@ ms.locfileid: "91871893"
 
 2. 開啟 [ **控制台**]。
 
-3. 選取 [Microsoft Monitoring Agent]****，然後按一下 [Azure Log Analytics]**** 索引標籤。
+3. 選取 [Microsoft Monitoring Agent]，然後按一下 [Azure Log Analytics] 索引標籤。
 
-4. 若要移除工作區，請選取工作區，然後按一下 [移除]****。 針對您希望代理程式停止向其報告的任何其他工作區，重複此步驟。
+4. 若要移除工作區，請選取工作區，然後按一下 [移除]。 針對您希望代理程式停止向其報告的任何其他工作區，重複此步驟。
 
-5. 若要新增工作區，請按一下 [新增]****，然後在 [新增 Log Analytics 工作區]**** 對話方塊中，貼上工作區識別碼和工作區索引鍵 (主索引鍵)。 如果電腦應該向 Azure Government 雲端中的 Log Analytics 工作區報告，請從 Azure 雲端下拉式清單中選取 [Azure US Government]。
+5. 若要新增工作區，請按一下 [新增]，然後在 [新增 Log Analytics 工作區] 對話方塊中，貼上工作區識別碼和工作區索引鍵 (主索引鍵)。 如果電腦應該向 Azure Government 雲端中的 Log Analytics 工作區報告，請從 Azure 雲端下拉式清單中選取 [Azure US Government]。
 
 6. 按一下 [確定]  以儲存變更。
 
@@ -176,7 +176,7 @@ $mma.ReloadConfiguration()
 
 3. 選取 **Microsoft Monitoring Agent** 然後按一下 [ **Proxy 設定** ] 索引標籤。
 
-4. 按一下 [使用 Proxy 伺服器]****，並提供 Proxy 伺服器或閘道的 URL 和連接埠號碼。 如果您的 Proxy 伺服器或 Log Analytics 閘道要求驗證，請輸入要驗證的使用者名稱和密碼，然後按一下 [確定]****。
+4. 按一下 [使用 Proxy 伺服器]，並提供 Proxy 伺服器或閘道的 URL 和連接埠號碼。 如果您的 Proxy 伺服器或 Log Analytics 閘道要求驗證，請輸入要驗證的使用者名稱和密碼，然後按一下 [確定]。
 
 #### <a name="update-settings-using-powershell"></a>使用 PowerShell 更新設定
 
@@ -233,7 +233,7 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 
 2. 在 **[控制台]** 中，按一下 **[程式和功能]**。
 
-3. 在 [程式和功能]**** 中，依序按一下 [Microsoft Monitoring Agent]****、[解除安裝]**** 和 [是]****。
+3. 在 [程式和功能] 中，依序按一下 [Microsoft Monitoring Agent]、[解除安裝] 和 [是]。
 
 >[!NOTE]
 >按兩下 **MMASetup-\<platform\>.exe** 也可以執行代理程式安裝精靈，您可從 Azure 入口網站中的工作區下載此檔案。
@@ -263,21 +263,21 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 
 2. 開啟 [ **控制台**]。
 
-3. 按一下 [Microsoft Monitoring Agent]****，然後按一下 [Operations Manager]**** 索引標籤。
+3. 按一下 [Microsoft Monitoring Agent]，然後按一下 [Operations Manager] 索引標籤。
 
-4. 如果 Operations Manager 伺服器已與 Active Directory 整合，請按一下 [自動更新來自 AD DS 的管理群組指派] ****。
+4. 如果 Operations Manager 伺服器已與 Active Directory 整合，請按一下 [自動更新來自 AD DS 的管理群組指派] 。
 
-5. 按一下 [新增]**** 以開啟 [新增管理群組]**** 對話方塊。
+5. 按一下 [新增] 以開啟 [新增管理群組] 對話方塊。
 
-6. 在 [管理群組名稱]**** 欄位中，輸入您的管理群組名稱。
+6. 在 [管理群組名稱] 欄位中，輸入您的管理群組名稱。
 
-7. 在 [主要管理伺服器]**** 欄位中，輸入主要管理伺服器的電腦名稱。
+7. 在 [主要管理伺服器] 欄位中，輸入主要管理伺服器的電腦名稱。
 
-8. 在 [管理伺服器連接埠] **** 欄位中，輸入 TCP 連接埠號碼。
+8. 在 [管理伺服器連接埠]  欄位中，輸入 TCP 連接埠號碼。
 
-9. 在 [代理程式動作帳戶] **** 頁面下，選擇本機系統帳戶或本機網域帳戶。
+9. 在 [代理程式動作帳戶] 頁面下，選擇本機系統帳戶或本機網域帳戶。
 
-10. 按一下 [確定]**** 關閉 [新增管理群組]**** 對話方塊，然後按一下 [確定]**** 關閉 [Microsoft 監視代理程式內容]**** 對話方塊。
+10. 按一下 [確定] 關閉 [新增管理群組] 對話方塊，然後按一下 [確定] 關閉 [Microsoft 監視代理程式內容] 對話方塊。
 
 ### <a name="linux-agent"></a>Linux 代理程式
 執行下列步驟，將適用於 Linux 的 Log Analytics 代理程式設定為向 System Center Operations Manager 管理群組報告。

@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: d222234cd6ff3d910e6dbc51a394695ce467edce
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793291"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011844"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-databases"></a>在使用分區化多租用戶資料庫的 SaaS 應用程式中管理結構描述
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -53,7 +53,7 @@ Azure SQL Database 的[彈性作業](./elastic-jobs-overview.md) 功能可用來
 - 必須已安裝 Azure PowerShell。 如需詳細資料，請參閱[開始使用 Azure PowerShell](/powershell/azure/get-started-azureps)。
 
 > [!NOTE]
-> 本教學課程使用的 Azure SQL Database 服務功能處於有限預覽版狀態 ([彈性資料庫作業](elastic-database-client-library.md))。 如果想要進行本教學課程，請將您的訂用帳戶識別碼提供給 *SaaSFeedback\@microsoft.com* ，並使用主旨 Elastic Jobs Preview (彈性作業預覽)。 在您收到訂用帳戶已啟用的確認之後，請[下載並安裝最新的發行前版本作業 Cmdlet (英文)](https://github.com/jaredmoo/azure-powershell/releases)。 這是有限預覽版，如果有相關問題或需要支援，請連絡 *SaaSFeedback\@microsoft.com* 。
+> 本教學課程使用的 Azure SQL Database 服務功能處於有限預覽版狀態 ([彈性資料庫作業](elastic-database-client-library.md))。 如果想要進行本教學課程，請將您的訂用帳戶識別碼提供給 *SaaSFeedback\@microsoft.com*，並使用主旨 Elastic Jobs Preview (彈性作業預覽)。 在您收到訂用帳戶已啟用的確認之後，請[下載並安裝最新的發行前版本作業 Cmdlet (英文)](https://github.com/jaredmoo/azure-powershell/releases)。 這是有限預覽版，如果有相關問題或需要支援，請連絡 *SaaSFeedback\@microsoft.com*。
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS 結構描述管理模式的簡介
 
@@ -84,7 +84,7 @@ Demo-SchemaManagement.ps1 指令碼會呼叫 Deploy-SchemaManagement.ps1 指令�
 
 #### <a name="prepare"></a>準備
 
-每個租用戶的資料庫都會在 **VenueTypes** 資料表中包含一組場地類型。 每個場地類型都會定義可在場地舉辦的事件種類。 這些場地類型會對應至您在租用戶活動應用程式中看到的背景影像。  在這個練習中，您要將更新部署到所有資料庫，以新增兩個額外的場地類型： *Motorcycle Racing* (機車賽) 和 *Swimming Club* (游泳俱樂部)。
+每個租用戶的資料庫都會在 **VenueTypes** 資料表中包含一組場地類型。 每個場地類型都會定義可在場地舉辦的事件種類。 這些場地類型會對應至您在租用戶活動應用程式中看到的背景影像。  在這個練習中，您要將更新部署到所有資料庫，以新增兩個額外的場地類型：*Motorcycle Racing* (機車賽) 和 *Swimming Club* (游泳俱樂部)。
 
 首先，檢閱每個租用戶資料庫中的場地類型。 連線至 SQL Server Management Studio (SSMS) 中的其中一個租用戶資料庫，並檢查 VenueTypes 資料表。  您也可以在 Azure 入口網站的查詢編輯器中查詢此資料表 (從資料庫頁面進行存取)。
 
@@ -105,7 +105,7 @@ Demo-SchemaManagement.ps1 指令碼會呼叫 Deploy-SchemaManagement.ps1 指令�
 
 3. 查詢 VenueTypes 資料表以確認 Motorcycle Racing (機車賽) 和 Swimming Club (游泳俱樂部) 尚不在結果清單中。
 
-4. 連線到目錄伺服器，也就是 *catalog-mt-&lt;user&gt;.database.windows.net* 。
+4. 連線到目錄伺服器，也就是 *catalog-mt-&lt;user&gt;.database.windows.net*。
 
 5. 連線至目錄伺服器中的 jobagent 資料庫。
 
@@ -125,7 +125,7 @@ Demo-SchemaManagement.ps1 指令碼會呼叫 Deploy-SchemaManagement.ps1 指令�
     - server 目標成員類型。
         - 這是包含在租用戶資料庫中的 *tenants1-mt-&lt;user&gt;* 伺服器。
         - 所包含的伺服器包括在作業執行時存在的租用戶資料庫。
-    - 範本資料庫 ( *basetenantdb* ) 的 database 目標成員類型，範本資料庫位於 *catalog-mt-&lt;user&gt;* 伺服器。
+    - 範本資料庫 (*basetenantdb*) 的 database 目標成員類型，範本資料庫位於 *catalog-mt-&lt;user&gt;* 伺服器。
     - 包含 adhocreporting 資料庫以用於之後教學課程的 database 目標成員類型。
 
 - **sp\_add\_job** 會建立稱為「參考資料部署」的作業。

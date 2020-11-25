@@ -9,11 +9,11 @@ ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 814bf085ca910ef07a13df779eef25e0e6510e57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563422"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011687"
 ---
 使用 Azure 儲存體服務加密 (SSE) 將儲存在 Azure 檔案儲存體中的所有資料進行待用加密。 儲存體服務加密的運作方式與 Windows 上的 BitLocker 相似：資料會在檔案系統層級下加密。 由於資料是在 Azure 檔案共用的檔案系統下加密，因此當其編碼為磁碟時，不需要存取用戶端上的基礎金鑰，即可讀取或寫入 Azure 檔案共用。 待用加密同時適用於 SMB 和 NFS 通訊協定。
 

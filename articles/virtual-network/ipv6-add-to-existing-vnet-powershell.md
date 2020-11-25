@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 9c2ea7cae26ac00c9c647704de8de1f39ebce8f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d2ff583b032ff1f9aa5dbc9706ea6c981fc7265
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90600818"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "96009971"
 ---
 # <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>將 IPv4 應用程式升級至 Azure 虛擬網路中的 IPv6-PowerShell
 
@@ -32,7 +32,7 @@ ms.locfileid: "90600818"
 
 如果您選擇在本機安裝和使用 PowerShell，本文會要求使用 Azure PowerShell 模組 6.9.0 版或更新版本。 執行 `Get-Module -ListAvailable Az` 來了解安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您已部署 Standard Load Balancer，如 [快速入門：建立 Standard Load Balancer Azure PowerShell](../load-balancer/quickstart-load-balancer-standard-public-powershell.md)中所述。
 
@@ -46,7 +46,7 @@ $rg = Get-AzResourceGroup  -ResourceGroupName "myResourceGroupSLB"
 
 ## <a name="create-an-ipv6-ip-addresses"></a>建立 IPv6 IP 位址
 
-為您的 Standard Load Balancer 建立具有 [新 >get-azpublicipaddress](/powershell/module/az.network/new-azpublicipaddress) 的公用 IPv6 位址。 下列範例會在*myResourceGroupSLB*資源群組中建立名為*PublicIP_v6*的 IPv6 公用 IP 位址：
+為您的 Standard Load Balancer 建立具有 [新 >get-azpublicipaddress](/powershell/module/az.network/new-azpublicipaddress) 的公用 IPv6 位址。 下列範例會在 *myResourceGroupSLB* 資源群組中建立名為 *PublicIP_v6* 的 IPv6 公用 IP 位址：
 
 ```azurepowershell-interactive  
 $PublicIP_v6 = New-AzPublicIpAddress `
@@ -116,7 +116,7 @@ $lb | Set-AzLoadBalancer
 $vnet = Get-AzVirtualNetwork  -ResourceGroupName $rg.ResourceGroupName -Name "myVnet" 
 
 #Add IPv6 prefix to the VNET
-$vnet.addressspace.addressprefixes.add("ace:cab:deca::/48")
+$vnet.addressspace.addressprefixes.add("fd00:db8:deca::/48")
 
 #Update the running VNET
 $vnet |  Set-AzVirtualNetwork
@@ -125,7 +125,7 @@ $vnet |  Set-AzVirtualNetwork
 $subnet= $vnet.subnets[0]
 
 #Add IPv6 prefix to the Subnet (subnet of the VNET prefix, of course)
-$subnet.addressprefix.add("ace:cab:deca::/64")
+$subnet.addressprefix.add("fd00:db8:deca::/64")
 
 #Update the running VNET with the new subnet configuration
 $vnet |  Set-AzVirtualNetwork
@@ -142,15 +142,15 @@ $NIC_2 = Get-AzNetworkInterface -Name "myNic2" -ResourceGroupName $rg.ResourceGr
 $NIC_3 = Get-AzNetworkInterface -Name "myNic3" -ResourceGroupName $rg.ResourceGroupName
 
 #Add an IPv6 IPconfig to NIC_1 and update the NIC on the running VM
-$NIC_1 | Add-AzNetworkInterfaceIpConfig -Name MyIPv6Config -Subnet $vnet.Subnets[0]  -PrivateIpAddressVersion IPv6 -LoadBalancerBackendAddressPool $backendPoolv6 
+$NIC_1 | Add-AzNetworkInterfaceIpConfig -Name MyIPv6Config -Subnet $vnet.Subnets[0]  -PrivateIpAddressVersion IPv6 -LoadBalancerBackendAddressPool $backendPoolv6 
 $NIC_1 | Set-AzNetworkInterface
 
 #Add an IPv6 IPconfig to NIC_2 and update the NIC on the running VM
-$NIC_2 | Add-AzNetworkInterfaceIpConfig -Name MyIPv6Config -Subnet $vnet.Subnets[0]  -PrivateIpAddressVersion IPv6 -LoadBalancerBackendAddressPool $backendPoolv6 
+$NIC_2 | Add-AzNetworkInterfaceIpConfig -Name MyIPv6Config -Subnet $vnet.Subnets[0]  -PrivateIpAddressVersion IPv6 -LoadBalancerBackendAddressPool $backendPoolv6 
 $NIC_2 | Set-AzNetworkInterface
 
 #Add an IPv6 IPconfig to NIC_3 and update the NIC on the running VM
-$NIC_3 | Add-AzNetworkInterfaceIpConfig -Name MyIPv6Config -Subnet $vnet.Subnets[0]  -PrivateIpAddressVersion IPv6 -LoadBalancerBackendAddressPool $backendPoolv6 
+$NIC_3 | Add-AzNetworkInterfaceIpConfig -Name MyIPv6Config -Subnet $vnet.Subnets[0]  -PrivateIpAddressVersion IPv6 -LoadBalancerBackendAddressPool $backendPoolv6 
 $NIC_3 | Set-AzNetworkInterface
 ```
 
@@ -158,7 +158,7 @@ $NIC_3 | Set-AzNetworkInterface
 
 您可以在 Azure 入口網站中看到 IPv6 雙重堆疊虛擬網路，如下所示：
 1. 在入口網站的搜尋列中，輸入 *myVnet*。
-2. 當 **myVnet** 出現在搜尋結果中時，請加以選取。 這會啟動名為*myVNet*的雙重堆疊虛擬網路的 [**總覽**] 頁面。 雙重堆疊虛擬網路會顯示在名為 *>mysubnet*的雙重堆疊子網中，具有 IPv4 和 IPv6 設定的三個 nic。
+2. 當 **myVnet** 出現在搜尋結果中時，請加以選取。 這會啟動名為 *myVNet* 的雙重堆疊虛擬網路的 [**總覽**] 頁面。 雙重堆疊虛擬網路會顯示在名為 *>mysubnet* 的雙重堆疊子網中，具有 IPv4 和 IPv6 設定的三個 nic。
 
   ![Azure 中的 IPv6 雙重堆疊虛擬網路](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
 

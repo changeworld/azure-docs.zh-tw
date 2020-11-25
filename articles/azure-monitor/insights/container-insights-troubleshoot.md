@@ -4,11 +4,11 @@ description: 本文說明如何對適用於容器的 Azure 監視器問題進行
 ms.topic: conceptual
 ms.date: 07/21/2020
 ms.openlocfilehash: 5727702ff973523ce7ab6400c1c7748e0584acbf
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890355"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010583"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>對適用於容器的 Azure 監視器進行疑難排解
 
@@ -23,9 +23,9 @@ ms.locfileid: "92890355"
 您也可以執行下列步驟，從 Azure 入口網站手動授與此角色：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 在 Azure 入口網站中，按一下左上角的 [所有服務]。 在資源清單中，輸入 **Kubernetes** 。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [ **Azure Kubernetes** ]。
+2. 在 Azure 入口網站中，按一下左上角的 [所有服務]。 在資源清單中，輸入 **Kubernetes**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [ **Azure Kubernetes**]。
 3. 在 Kubernetes 叢集清單中，從清單中選取一個。
-2. 從左側功能表中，按一下 [ **存取控制] (IAM)** 。
+2. 從左側功能表中，按一下 [ **存取控制] (IAM)**。
 3. 選取 [ **+ 新增** ] 以新增角色指派，並選取 [ **監視計量發行者]** 角色，然後在 [ **選取** ] 方塊中輸入 **AKS** ，只在訂用帳戶中定義的叢集服務主體上篩選結果。 從該叢集特定的清單中選取一個。
 4. 選取 [儲存] 以完成角色指派。
 
@@ -69,7 +69,7 @@ ms.locfileid: "92890355"
 
 4. 執行下列命令來檢查 Pod 的狀態，以確認其正在執行：`kubectl get pods --namespace=kube-system`
 
-    輸出應該會像下列範例，且 omsagent 的狀態為「執行中」  ：
+    輸出應該會像下列範例，且 omsagent 的狀態為「執行中」：
 
     ```
     User@aksuser:~$ kubectl get pods --namespace=kube-system
@@ -112,7 +112,7 @@ nodeSelector:
 
 ## <a name="non-azure-kubernetes-cluster-are-not-showing-in-azure-monitor-for-containers"></a>非 Azure Kubernetes 叢集未顯示在容器的 Azure 監視器中
 
-若要在 Azure 監視器 for 容器中查看非 Azure Kubernetes 叢集，支援此深入解析的 Log Analytics 工作區以及容器深入解析解決方案資源 **ContainerInsights ( *工作區* )** 都需要讀取存取權。
+若要在 Azure 監視器 for 容器中查看非 Azure Kubernetes 叢集，支援此深入解析的 Log Analytics 工作區以及容器深入解析解決方案資源 **ContainerInsights (*工作區*)** 都需要讀取存取權。
 
 ## <a name="next-steps"></a>後續步驟
 

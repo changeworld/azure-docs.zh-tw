@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
 ms.openlocfilehash: 500d5242d5185a8014283918c1f3a22c5c22cf48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87325588"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012011"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 監視 REST API 逐步解說
 
@@ -582,7 +582,7 @@ Invoke-RestMethod -Uri $request `
 另一種方法是在 Windows 機器上使用 [ARMClient](https://github.com/projectkudu/armclient)。 ARMClient 會自動處理 Azure AD 驗證 (以及產生的 JWT 權杖)。 下列步驟概述使用 ARMClient 來取出計量資料︰
 
 1. 安裝 [Chocolatey](https://chocolatey.org/) 和 [ARMClient](https://github.com/projectkudu/armclient)。
-2. 在終端機視窗中，輸入 armclient.exe login **。 這樣做會提示您登入 Azure。
+2. 在終端機視窗中，輸入 armclient.exe login 。 這樣做會提示您登入 Azure。
 3. 輸入 *armclient GET [your_resource_id]/providers/microsoft.insights/metricdefinitions?api-version=2016-03-01*
 4. 輸入 *armclient GET [your_resource_id]/providers/microsoft.insights/metrics?api-version=2016-09-01*
 
@@ -598,7 +598,7 @@ armclient GET /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups
 
 上述程式碼中，要使用的資源識別碼是所需 Azure 資源的完整路徑。 例如，若要查詢 Azure Web 應用程式，資源識別碼為︰
 
-**
+<bpt id="p1">*</bpt>/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{site-name}/<ept id="p1">*</ept>
 
 下列範例清單包含各種 Azure 資源的資源識別碼格式︰
 

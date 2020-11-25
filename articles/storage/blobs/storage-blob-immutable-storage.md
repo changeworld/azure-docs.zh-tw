@@ -9,12 +9,12 @@ ms.date: 11/13/2020
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 39fdde572e269bb4f5648e91bf85539d02236ff6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: acb2ebb0d7ce70c6b5963a8a6c3e392091e4bb1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658548"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010056"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>使用不可變儲存體儲存業務關鍵 Blob 資料
 
@@ -76,7 +76,7 @@ Azure Blob 儲存體的固定儲存體支援兩種 WORM 或固定原則：以時
 
 ### <a name="allow-protected-append-blobs-writes"></a>允許受保護的附加 blob 寫入
 
-附加 blob 是由資料區塊所組成，並且針對審核和記錄案例所需的資料附加作業優化。 根據設計，附加 blob 只允許將新區塊新增至 blob 的結尾。 不論是否有永久性、修改或刪除附加 blob 中的現有區塊，基本上都不允許。 若要深入瞭解附加 blob，請參閱 [關於附加 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)。
+附加 blob 是由資料區塊所組成，並且針對審核和記錄案例所需的資料附加作業優化。 根據設計，附加 blob 只允許將新區塊新增至 blob 的結尾。 不論是否有永久性、修改或刪除附加 blob 中的現有區塊，基本上都不允許。 若要深入瞭解附加 blob，請參閱 [關於附加 blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)。
 
 只有以時間為基礎的保留原則有一個 `allowProtectedAppendWrites` 設定，可讓您將新的區塊寫入至附加 blob，同時保有永久性保護和合規性。 如果啟用此設定，您可以直接在受原則保護的容器中建立附加 blob，並繼續使用 *AppendBlock* API 將新的資料區塊新增至現有附加 blob 的結尾。 只有新的區塊可以加入，而且無法修改或刪除任何現有的區塊。 仍會套用時間保留的永久性保護，以防止刪除附加 blob，直到有效的保留期限經過為止。 啟用此設定並不會影響區塊 blob 或分頁 blob 的永久性行為。
 
@@ -103,7 +103,7 @@ Azure Blob 儲存體的固定儲存體支援兩種 WORM 或固定原則：以時
 
 ## <a name="scenarios"></a>案例
 
-下表顯示針對不同的不可變案例停用的 Blob 儲存體作業類型。 如需詳細資訊，請參閱 [Azure Blob 服務 REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) 檔。
+下表顯示針對不同的不可變案例停用的 Blob 儲存體作業類型。 如需詳細資訊，請參閱 [Azure Blob 服務 REST API](/rest/api/storageservices/blob-service-rest-api) 檔。
 
 | 狀況 | Blob 狀態 | Blob 作業拒絕 | 容器與帳戶保護 |
 |--|--|--|--|
@@ -116,7 +116,7 @@ Azure Blob 儲存體的固定儲存體支援兩種 WORM 或固定原則：以時
 只有啟用屬性的以時間為基礎的保留原則時，才允許<sup>2</sup>個附加區塊 `allowProtectedAppendWrites` 。 如需詳細資訊，請參閱「 [允許受保護的附加 Blob 寫入](#allow-protected-append-blobs-writes) 」一節。
 
 > [!IMPORTANT]
-> 某些工作負載（例如 [SQL 備份至 URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url)）會建立 blob，然後將其新增至其中。 如果容器具有以時間為基礎的有效保留原則或合法保存，此模式將不會成功。
+> 某些工作負載（例如 [SQL 備份至 URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url)）會建立 blob，然後將其新增至其中。 如果容器具有以時間為基礎的有效保留原則或合法保存，此模式將不會成功。
 
 ## <a name="pricing"></a>定價
 
@@ -126,7 +126,7 @@ Azure Blob 儲存體的固定儲存體支援兩種 WORM 或固定原則：以時
 
 **您可以提供 WORM 合規性的檔嗎？**
 
-可以。 為了記載合規性，Microsoft 保留了領先的獨立評估公司，專門針對記錄管理和資訊治理（Cohasset 相關），以評估不可變的 Blob 儲存體，並符合金融服務產業的特定需求。 Cohasset 驗證了不可變的 Blob 儲存體（當用來以 WORM 狀態保留以時間為基礎的 Blob）時，符合 CFTC 規則 1.31 (c)  (d) 、FINRA Rule 4511 和 SEC Rule 17a-4 的相關儲存需求。 Microsoft 已將這組規則設為目標，因為它們代表金融機構記錄保留範圍內的最規範指導方針。 您可以從 [Microsoft 服務信任中心](https://aka.ms/AzureWormStorage)取得 Cohasset 報告。 若要向 Microsoft 要求有關 WORM 永久性合規性的信件證明，請聯絡 Azure 支援。
+是。 為了記載合規性，Microsoft 保留了領先的獨立評估公司，專門針對記錄管理和資訊治理（Cohasset 相關），以評估不可變的 Blob 儲存體，並符合金融服務產業的特定需求。 Cohasset 驗證了不可變的 Blob 儲存體（當用來以 WORM 狀態保留以時間為基礎的 Blob）時，符合 CFTC 規則 1.31 (c)  (d) 、FINRA Rule 4511 和 SEC Rule 17a-4 的相關儲存需求。 Microsoft 已將這組規則設為目標，因為它們代表金融機構記錄保留範圍內的最規範指導方針。 您可以從 [Microsoft 服務信任中心](https://aka.ms/AzureWormStorage)取得 Cohasset 報告。 若要向 Microsoft 要求有關 WORM 永久性合規性的信件證明，請聯絡 Azure 支援。
 
 **這項功能只適用于區塊 blob 和附加 blob，也適用于分頁 blob 嗎？**
 
@@ -166,15 +166,15 @@ Azure Blob 儲存體的固定儲存體支援兩種 WORM 或固定原則：以時
 
 **您是否提供試用此功能的試用版或寬限期？**
 
-可以。 當您第一次建立以時間為基礎的保留原則時，它會處於已 *解除鎖定* 的狀態。 在此狀態中，您可以對保留間隔進行任何所需的變更，例如增加或減少保留間隔，甚至刪除原則。 鎖定原則之後，會保持鎖定狀態，直到保留間隔到期為止。 此鎖定的原則可防止刪除和修改保留間隔。 我們強烈建議僅將「未鎖定」狀態使用於試用目的，並且在 24 小時期間內鎖定原則。 這些做法可協助您符合 SEC 17a-4(f) 和其他法規。
+是。 當您第一次建立以時間為基礎的保留原則時，它會處於已 *解除鎖定* 的狀態。 在此狀態中，您可以對保留間隔進行任何所需的變更，例如增加或減少保留間隔，甚至刪除原則。 鎖定原則之後，會保持鎖定狀態，直到保留間隔到期為止。 此鎖定的原則可防止刪除和修改保留間隔。 我們強烈建議僅將「未鎖定」狀態使用於試用目的，並且在 24 小時期間內鎖定原則。 這些做法可協助您符合 SEC 17a-4(f) 和其他法規。
 
 **我可以搭配不可變的 blob 原則使用虛刪除嗎？**
 
-是，如果您的合規性需求允許啟用虛刪除。 [Azure Blob 儲存體](storage-blob-soft-delete.md) 的虛刪除適用于儲存體帳戶內的所有容器，而不論合法保存或以時間為基礎的保留原則。 建議您先啟用虛刪除以進行額外保護，再套用並確認任何不可變的蠕蟲原則。
+是，如果您的合規性需求允許啟用虛刪除。 [Azure Blob 儲存體](./soft-delete-blob-overview.md) 的虛刪除適用于儲存體帳戶內的所有容器，而不論合法保存或以時間為基礎的保留原則。 建議您先啟用虛刪除以進行額外保護，再套用並確認任何不可變的蠕蟲原則。
 
 ## <a name="next-steps"></a>後續步驟
 
 - [設定和管理 Blob 儲存體的不變性原則](storage-blob-immutability-policies-manage.md)
 - [設定規則以使用生命週期管理自動分層和刪除 blob 資料](storage-lifecycle-management-concepts.md)
-- [Azure 儲存體 Blob 的虛刪除](../blobs/storage-blob-soft-delete.md)
+- [Azure 儲存體 Blob 的虛刪除](./soft-delete-blob-overview.md)
 - [使用 Azure Resource Manager 鎖定來保護訂用帳戶、資源群組和資源](../../azure-resource-manager/management/lock-resources.md)。

@@ -9,15 +9,15 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: cb5ee7d3549e433fb184b8c55c28b9a28ed89272
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84982113"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011926"
 ---
 # <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure 認知搜尋擴充管線中的自訂 Web API 技能
 
-**自訂 WEB api**技能可讓您透過呼叫提供自訂作業的 Web API 端點來擴充 AI 擴充。 與內建的技能類似，**自訂 Web API** 技能具有輸入和輸出。 根據輸入，您的 Web API 會在索引子執行時接收 JSON 承載，並輸出 JSON 承載作為回應，以及成功狀態碼。 預期回應應該具有您的自訂技能所指定的輸出。 任何其他的回應會被視為錯誤，並且不會執行任何擴充。
+**自訂 WEB api** 技能可讓您透過呼叫提供自訂作業的 Web API 端點來擴充 AI 擴充。 與內建的技能類似，**自訂 Web API** 技能具有輸入和輸出。 根據輸入，您的 Web API 會在索引子執行時接收 JSON 承載，並輸出 JSON 承載作為回應，以及成功狀態碼。 預期回應應該具有您的自訂技能所指定的輸出。 任何其他的回應會被視為錯誤，並且不會執行任何擴充。
 
 JSON 承載的結構會在本文件中進一步描述。
 
@@ -89,7 +89,7 @@ Microsoft.Skills.Custom.WebApiSkill
 
 * 最上層的實體稱為 `values`，且將是物件陣列。 此類物件的數目最多為 `batchSize`
 * `values` 陣列中的每個物件都有
-    * `recordId` 屬性，它是**唯一**字串，用來識別該記錄。
+    * `recordId` 屬性，它是 **唯一** 字串，用來識別該記錄。
     * `data` 屬性，它是 _JSON_ 物件。 `data` 屬性的欄位將對應到技能定義的 `inputs` 區段中指定的「名稱」。 這些欄位的值將來自這些欄位的 `source` (可能來自文件中的欄位，也可能來自另一個技能)
 
 ```json
@@ -197,7 +197,7 @@ Microsoft.Skills.Custom.WebApiSkill
 除了您的 Web API 無法使用或傳送不成功的狀態碼之外，下列各項被視為錯誤情況：
 
 * 如果 Web API 傳回成功狀態碼，但回應指出它不是 `application/json`，則回應被視為無效，並且不會執行任何擴充。
-* 如果回應 `values` 陣列中有**無效** (包含原始請求中沒有的 `recordId` 或具有重複值) 記錄，則不會對**那些**記錄執行任何擴充。
+* 如果回應 `values` 陣列中有 **無效** (包含原始請求中沒有的 `recordId` 或具有重複值) 記錄，則不會對 **那些** 記錄執行任何擴充。
 
 針對 Web API 無法使用或傳回 HTTP 錯誤的情況，將在索引子執行歷程記錄中加入有關 HTTP 錯誤的任何可用詳細資料的易懂錯誤。
 

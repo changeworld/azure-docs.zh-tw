@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 3db411df69a754857220867865522f8e4fa24030
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546002"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011484"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Hive 的閘道深入探討和最佳作法
 
@@ -56,7 +56,7 @@ Apache Hive 是與 HDFS 相容的檔案系統之上的關聯式抽象概念。 �
 
 * 執行大型 **SELECT** 查詢時，請使用 **LIMIT** 子句。 **LIMIT** 子句將會減少回報給用戶端主機的總數據列。 **LIMIT** 子句只會影響結果產生，而不會變更查詢計劃。 若要將 **LIMIT** 子句套用至查詢計劃，請使用此設定 `hive.limit.optimize.enable` 。 **限制** 可以與使用引數表單 **限制 x，y** 的位移合併。
 
-* 執行 **SELECT** 查詢時，請為您感興趣的資料行命名，而不是使用 * *SELECT \** _。 選取較少的資料行將會降低讀取的資料量。
+* 執行 **SELECT** 查詢時，請為您感興趣的資料行命名，而不是使用 **SELECT \** _。 選取較少的資料行將會降低讀取的資料量。
 
 _ 嘗試透過 Apache Beeline 執行感興趣的查詢。 如果透過 Apache Beeline 的結果抓取需要很長一段時間，則會在透過外部工具抓取相同結果時預期會發生延遲。
 
@@ -78,7 +78,7 @@ _ 嘗試透過 Apache Beeline 執行感興趣的查詢。 如果透過 Apache Be
 
 * 請考慮使用設定和來啟用壓縮 Hive `hive.exec.compress.output` `hive.exec.compress.intermediate` 。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [HDInsight 上的 Apache Beeline](../hadoop/apache-hadoop-use-hive-beeline.md)
 * [HDInsight 閘道超時疑難排解步驟](./troubleshoot-gateway-timeout.md)

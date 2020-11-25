@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: jingwang
 ms.openlocfilehash: 7d61121b4c80b7b89ec29ade4ab1bfab91a660d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334339"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010549"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Azure Data Factory 中的 Avro 格式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-當您想要 **剖析 avro 檔案或將資料寫入 avro 格式**時，請遵循這篇文章。 
+當您想要 **剖析 avro 檔案或將資料寫入 avro 格式** 時，請遵循這篇文章。 
 
 下列連接器支援 Avro 格式： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [Azure 檔案儲存體](connector-azure-file-storage.md)、 [檔案系統](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud Storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和 [SFTP](connector-sftp.md)。
 
@@ -67,7 +67,7 @@ ms.locfileid: "91334339"
 
 ### <a name="avro-as-source"></a>Avro 作為來源
 
-[複製活動*** \* 來源 \* *** ] 區段支援下列屬性。
+複製活動 **_ \_ 來源 \**** 區段支援下列屬性。
 
 | 屬性      | 描述                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -76,7 +76,7 @@ ms.locfileid: "91334339"
 
 ### <a name="avro-as-sink"></a>Avro 作為接收
 
-複製活動*** \* 接收 \* ***區段支援下列屬性。
+複製活動 **_ \_ 接收 \**** 區段支援下列屬性。
 
 | 屬性      | 描述                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -103,9 +103,9 @@ ms.locfileid: "91334339"
 | 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 萬用字元路徑 | 將會處理所有符合萬用字元路徑的檔案。 覆寫資料集中設定的資料夾和檔案路徑。 | 否 | String[] | wildcardPaths |
-| 分割區根路徑 | 針對已分割的檔案資料，您可以輸入磁碟分割根路徑，以便將分割的資料夾讀取為數據行 | 否 | 字串 | partitionRootPath |
+| 分割區根路徑 | 針對已分割的檔案資料，您可以輸入磁碟分割根路徑，以便將分割的資料夾讀取為數據行 | 否 | String | partitionRootPath |
 | 檔案清單 | 您的來源是否指向列出要處理之檔案的文字檔 | 否 | `true` 或 `false` | fileList |
-| 儲存檔案名稱的資料行 | 使用來原始檔案名和路徑建立新的資料行 | 否 | 字串 | rowUrlColumn |
+| 儲存檔案名稱的資料行 | 使用來原始檔案名和路徑建立新的資料行 | 否 | String | rowUrlColumn |
 | 完成後 | 在處理之後刪除或移動檔案。 從容器根目錄開始的檔案路徑 | 否 | Delete： `true` 或 `false` <br> 移動： `['<from>', '<to>']` | purgeFiles <br> moveFiles |
 | 依上次修改篩選 | 選擇根據上次修改檔案的時間進行篩選 | 否 | 時間戳記 | modifiedAfter <br> modifiedBefore |
 | 不允許找到任何檔案 | 若為 true，如果找不到任何檔案，就不會擲回錯誤 | 否 | `true` 或 `false` | ignoreNoFilesFound |

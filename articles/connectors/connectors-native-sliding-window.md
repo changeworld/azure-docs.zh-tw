@@ -7,11 +7,11 @@ ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.openlocfilehash: 103805fbf395dc120acc96fbcee273abcf14939d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85322114"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010413"
 ---
 # <a name="schedule-and-run-tasks-for-contiguous-data-by-using-the-sliding-window-trigger-in-azure-logic-apps"></a>使用 Azure Logic Apps 中的滑動視窗觸發程式來排程和執行連續資料的工作
 
@@ -30,7 +30,7 @@ ms.locfileid: "85322114"
 > [!TIP]
 > 如果您想要觸發邏輯應用程式，並且在未來只執行一次，請參閱 [只執行一次作業](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#run-once)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，您可以[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -51,7 +51,7 @@ ms.locfileid: "85322114"
    | 屬性 | JSON 名稱 | 必要 | 類型 | 說明 |
    |----------|----------|-----------|------|-------------|
    | **間隔** | `interval` | 是 | 整數 | 描述工作流程根據 frequency 多久執行一次的正整數。 以下是最小和最大間隔： <p>- 月：1-16 個月 <br>-周：1-71 周 <br>- 天：1-500 天 <br>- 小時：1-12,000 個小時 <br>- 分鐘：1-72,000 分鐘 <br>- 秒：1-9,999,999 秒 <p>例如，如果 interval 是 6，而 frequency 是「月」，則週期為每隔 6 個月。 |
-   | **頻率** | `frequency` | 是 | String | 重複的時間單位：**秒**、**分鐘**、**小時**、**天**、**週**或**月** |
+   | **頻率** | `frequency` | 是 | String | 重複的時間單位：**秒**、**分鐘**、**小時**、**天**、**週** 或 **月** |
    ||||||
 
    ![Advanced 迴圈選項](./media/connectors-native-sliding-window/sliding-window-trigger-more-options-details.png)
@@ -69,7 +69,7 @@ ms.locfileid: "85322114"
 
 ## <a name="workflow-definition---sliding-window"></a>工作流程定義-滑動視窗
 
-在邏輯應用程式的基礎工作流程定義中，使用 JSON，您可以使用您選擇的選項來查看滑動視窗觸發程式定義。 若要查看這個定義，請在設計工具的工具列上選擇 [程式 **代碼視圖**]。 若要返回設計工具，請選擇設計工具工具列上的 [ **設計**工具]。
+在邏輯應用程式的基礎工作流程定義中，使用 JSON，您可以使用您選擇的選項來查看滑動視窗觸發程式定義。 若要查看這個定義，請在設計工具的工具列上選擇 [程式 **代碼視圖**]。 若要返回設計工具，請選擇設計工具工具列上的 [ **設計** 工具]。
 
 此範例顯示滑動視窗觸發程序定義可能會查看基礎工作流程定義，其中每個週期的延遲為每小時週期的五秒：
 

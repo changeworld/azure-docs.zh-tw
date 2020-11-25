@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 09/27/2020
 ms.author: jingwang
 ms.openlocfilehash: c99225b53266fc74ea357151de824cd8d8ed2088
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946139"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011603"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Azure Data Factory 中的 Parquet 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-當您想要 **剖析 Parquet 檔案，或將資料寫入 Parquet 格式**時，請遵循這篇文章。 
+當您想要 **剖析 Parquet 檔案，或將資料寫入 Parquet 格式** 時，請遵循這篇文章。 
 
 下列連接器支援 Parquet 格式： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [Azure 檔案儲存體](connector-azure-file-storage.md)、 [檔案系統](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud Storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和 [SFTP](connector-sftp.md)。
 
@@ -66,7 +66,7 @@ ms.locfileid: "91946139"
 
 ### <a name="parquet-as-source"></a>Parquet 作為來源
 
-[複製活動*** \* 來源 \* *** ] 區段支援下列屬性。
+複製活動 **_ \_ 來源 \**** 區段支援下列屬性。
 
 | 屬性      | 描述                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -75,7 +75,7 @@ ms.locfileid: "91946139"
 
 ### <a name="parquet-as-sink"></a>Parquet 為接收
 
-複製活動*** \* 接收 \* ***區段支援下列屬性。
+複製活動 **_ \_ 接收 \**** 區段支援下列屬性。
 
 | 屬性      | 描述                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -99,13 +99,13 @@ ms.locfileid: "91946139"
 
 下表列出 parquet 來源所支援的屬性。 您可以在 [ **來源選項** ] 索引標籤中編輯這些屬性。
 
-| Name | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必須是 `parquet` | 是 | `parquet` | format |
 | 萬用字元路徑 | 將會處理所有符合萬用字元路徑的檔案。 覆寫資料集中設定的資料夾和檔案路徑。 | 否 | String[] | wildcardPaths |
-| 分割區根路徑 | 針對已分割的檔案資料，您可以輸入磁碟分割根路徑，以便將分割的資料夾讀取為數據行 | 否 | 字串 | partitionRootPath |
+| 分割區根路徑 | 針對已分割的檔案資料，您可以輸入磁碟分割根路徑，以便將分割的資料夾讀取為數據行 | 否 | String | partitionRootPath |
 | 檔案清單 | 您的來源是否指向列出要處理之檔案的文字檔 | 否 | `true` 或 `false` | fileList |
-| 儲存檔案名稱的資料行 | 使用來原始檔案名和路徑建立新的資料行 | 否 | 字串 | rowUrlColumn |
+| 儲存檔案名稱的資料行 | 使用來原始檔案名和路徑建立新的資料行 | 否 | String | rowUrlColumn |
 | 完成後 | 在處理之後刪除或移動檔案。 從容器根目錄開始的檔案路徑 | 否 | Delete： `true` 或 `false` <br> 移動： `[<from>, <to>]` | purgeFiles <br> moveFiles |
 | 依上次修改篩選 | 選擇根據上次修改檔案的時間進行篩選 | 否 | 時間戳記 | modifiedAfter <br> modifiedBefore |
 | 不允許找到任何檔案 | 若為 true，如果找不到任何檔案，就不會擲回錯誤 | 否 | `true` 或 `false` | ignoreNoFilesFound |
@@ -129,7 +129,7 @@ source(allowSchemaDrift: true,
 
 下表列出 parquet 接收所支援的屬性。 您可以在 [ **設定** ] 索引標籤中編輯這些屬性。
 
-| Name | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必須是 `parquet` | 是 | `parquet` | format |
 | 清除資料夾 | 如果在寫入之前清除目的資料夾 | 否 | `true` 或 `false` | truncate |
@@ -161,13 +161,13 @@ Parquet 複雜的資料類型 (例如，MAP、LIST、STRUCT) 目前僅支援資�
 ## <a name="using-self-hosted-integration-runtime"></a>使用自我裝載的 Integration Runtime
 
 > [!IMPORTANT]
-> 若為由自我裝載 Integration Runtime （ **例如，在**內部部署與雲端資料存放區之間）所授權的複製，您必須在 IR 機器上安裝 **64 位的 JRE 8 (JAVA Runtime Environment) 或 OpenJDK** 和 **Microsoft Visual C++ 2010** 可轉散發套件。 請參閱下列段落以取得詳細資料。
+> 若為由自我裝載 Integration Runtime （ **例如，在** 內部部署與雲端資料存放區之間）所授權的複製，您必須在 IR 機器上安裝 **64 位的 JRE 8 (JAVA Runtime Environment) 或 OpenJDK** 和 **Microsoft Visual C++ 2010** 可轉散發套件。 請參閱下列段落以取得詳細資料。
 
 若為使用 Parquet 檔案序列化/還原序列化在自我裝載 IR 上執行的複製，ADF 會先檢查 JRE 的登錄以找出 JAVA 執行時間， *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* 如果找不到，則會先檢查系統變數 *`JAVA_HOME`* 以進行 OpenJDK。
 
 - **若要使用 JRE**：64位 IR 需要64位 JRE。 您可以從[這裡](https://go.microsoft.com/fwlink/?LinkId=808605)找到該程式。
 - **若要使用 OpenJDK**：自 IR 3.13 版起即支援。 請將 jvm.dll 與所有其他必要的 OpenJDK 組件一起封裝至自我裝載 IR 機器，然後相應地設定 JAVA_HOME 系統環境變數。
-- **安裝 Visual C++ 2010 可**轉散發套件： Visual C++ 2010 可轉散發套件未與自我裝載 IR 安裝一起安裝。 您可以從[這裡](https://www.microsoft.com/download/details.aspx?id=14632)找到該程式。
+- **安裝 Visual C++ 2010 可** 轉散發套件： Visual C++ 2010 可轉散發套件未與自我裝載 IR 安裝一起安裝。 您可以從[這裡](https://www.microsoft.com/download/details.aspx?id=14632)找到該程式。
 
 > [!TIP]
 > 如果您使用自我裝載 Integration Runtime 將資料複製到 Parquet 格式 (或從該格式複製資料)，而且遇到錯誤顯示 [叫用 Java 時發生錯誤。訊息: **java.lang.OutOfMemoryError:Java heap space**]，您可以在裝載自我裝載 IR 的機器中新增環境變數 `_JAVA_OPTIONS`，以調整 JVM 的堆積大小下限/上限，使系統能執行這樣的複製，然後重新執行管線。

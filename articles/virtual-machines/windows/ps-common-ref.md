@@ -8,11 +8,11 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.openlocfilehash: 6f7f2adb5c3e154c3910ee1082e9afad70de9758
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836168"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010073"
 ---
 # <a name="common-powershell-commands-for-creating-and-managing-azure-virtual-machines"></a>用於建立及管理 Azure 虛擬機器的常用 PowerShell 命令
 
@@ -30,7 +30,7 @@ ms.locfileid: "87836168"
 
 | Task | Command |
 | ---- | ------- |
-| 建立簡易 VM | [New-AzVM](/powershell/module/az.compute/new-azvm) -命名 $myVM <BR></BR><BR></BR> New-AzVM 有一組「已簡化」** 的參數，其只需要單一名稱。 -Name 的值會用來作為所有建立新 VM 所需資源的名稱。 您可以指定多個，但這是唯一必要的值。|
+| 建立簡易 VM | [New-AzVM](/powershell/module/az.compute/new-azvm) -命名 $myVM <BR></BR><BR></BR> New-AzVM 有一組「已簡化」的參數，其只需要單一名稱。 -Name 的值會用來作為所有建立新 VM 所需資源的名稱。 您可以指定多個，但這是唯一必要的值。|
 | 從自訂映像建立 VM | New-AzVm -ResourceGroupName $myResourceGroup -Name $myVM ImageName "myImage" -Location $location  <BR></BR><BR></BR>您必須已建立自己的[受控映像](capture-image-resource.md)。 您可以使用映像來建立多個相同的 VM。 |
 
 

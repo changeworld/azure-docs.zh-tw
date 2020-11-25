@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
 ms.openlocfilehash: ddd1a6fa2fc25add30664da5b739338e87e7e74f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547838"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010107"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 叢集上使用空白邊緣節點
 
@@ -109,9 +109,9 @@ ms.locfileid: "92547838"
     |資源群組|建立用於叢集的新資源群組。|
     |Location|選取資源群組的位置。|
     |叢集名稱|輸入要建立之新叢集的名稱。|
-    |叢集登入使用者名稱|輸入 Hadoop HTTP 使用者名稱。  預設名稱為 **admin** 。|
+    |叢集登入使用者名稱|輸入 Hadoop HTTP 使用者名稱。  預設名稱為 **admin**。|
     |叢集登入密碼|輸入 Hadoop HTTP 使用者密碼。|
-    |SSH 使用者名稱|輸入 SSH 使用者名稱。 預設名稱為 **sshuser** 。|
+    |SSH 使用者名稱|輸入 SSH 使用者名稱。 預設名稱為 **sshuser**。|
     |SSH 密碼|輸入 SSH 使用者密碼。|
     |安裝指令碼動作|請保留預設值以便完成本文章。|
 
@@ -121,7 +121,7 @@ ms.locfileid: "92547838"
 
 ## <a name="add-multiple-edge-nodes"></a>新增多個邊緣節點
 
-您可以將多個邊緣節點新增至 HDInsight 叢集。  多個邊緣節點的設定只能使用 Azure Resource Manager 範本來執行。  請參閱本文開頭處的範本範例。  更新 **targetInstanceCount** ，以反映想要建立的邊緣節點數目。
+您可以將多個邊緣節點新增至 HDInsight 叢集。  多個邊緣節點的設定只能使用 Azure Resource Manager 範本來執行。  請參閱本文開頭處的範本範例。  更新 **targetInstanceCount**，以反映想要建立的邊緣節點數目。
 
 ## <a name="access-an-edge-node"></a>存取邊緣節點
 
@@ -133,7 +133,7 @@ ms.locfileid: "92547838"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 開啟具有邊緣節點的 HDInsight 叢集。
-3. 選取 **應用程式** 。 您應該會看到邊緣節點。  預設名稱為 **new-edgenode** 中找到。
+3. 選取 **應用程式**。 您應該會看到邊緣節點。  預設名稱為 **new-edgenode** 中找到。
 4. 選取邊緣節點。 您應該會看到 SSH 端點。
 
 **在邊緣節點上使用 Hive**
@@ -158,7 +158,7 @@ ms.locfileid: "92547838"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 開啟具有邊緣節點的 HDInsight 叢集。
-3. 選取 **應用程式** 。 您應該會看到邊緣節點清單。  
+3. 選取 **應用程式**。 您應該會看到邊緣節點清單。  
 4. 以滑鼠右鍵按一下想要刪除的邊緣節點，然後選取 [刪除] 。
 5. 選取 [是]  加以確認。
 

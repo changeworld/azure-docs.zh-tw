@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
 ms.openlocfilehash: 9a95970647a26ea80db9f63fb8523c6a65cc5e06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86082075"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012300"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>在 Azure HDInsight 中設定適用于 Apache Kafka 的 TLS 加密與驗證
 
@@ -127,13 +127,13 @@ Broker 安裝程式的摘要如下所示：
 若要完成設定修改，請執行以下步驟：
 
 1. 登入 Azure 入口網站，然後選取您的 Azure HDInsight Apache Kafka 叢集。
-1. 按一下 [叢集儀表板]**** 下方的 [Ambari 首頁]**** 來移至 Ambari UI。
-1. 在 [Kafka Broker]**** \(Kafka 訊息代理程式\) 下方，將 [listeners]**** \(接聽程式\) 屬性設定為 `PLAINTEXT://localhost:9092,SSL://localhost:9093`
-1. 在 [Advanced kafka-broker]**** \(進階 kafka-broker\) 下方，將 [security.inter.broker.protocol]**** 屬性設定為 `SSL`
+1. 按一下 [叢集儀表板] 下方的 [Ambari 首頁] 來移至 Ambari UI。
+1. 在 [Kafka Broker] \(Kafka 訊息代理程式\) 下方，將 [listeners] \(接聽程式\) 屬性設定為 `PLAINTEXT://localhost:9092,SSL://localhost:9093`
+1. 在 [Advanced kafka-broker] \(進階 kafka-broker\) 下方，將 [security.inter.broker.protocol] 屬性設定為 `SSL`
 
     ![在 Ambari 中編輯 Kafka ssl 設定屬性](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
 
-1. 在 [Custom kafka-broker]**** \(自訂 kafka-broker\) 下方，將 [ssl.client.auth]**** 屬性設定為 `required`。 只有在您要設定驗證和加密時，才需要執行此步驟。
+1. 在 [Custom kafka-broker] \(自訂 kafka-broker\) 下方，將 [ssl.client.auth] 屬性設定為 `required`。 只有在您要設定驗證和加密時，才需要執行此步驟。
 
     ![在 Ambari 中編輯 kafka ssl 設定屬性](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
@@ -355,6 +355,6 @@ Broker 安裝程式的摘要如下所示：
     $ /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server <FQDN_WORKER_NODE>:9093 --topic topic1 --consumer.config ~/ssl/client-ssl-auth.properties --from-beginning
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [什麼是 HDInsight 上的 Apache Kafka？](apache-kafka-introduction.md)

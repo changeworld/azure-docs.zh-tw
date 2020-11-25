@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 58f1c2621165a7074c04752832c6560b2fd3e423
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935427"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011960"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>範例：建立表單辨識器自訂技能
 
 在此 Azure 認知搜尋技能集範例中，您將瞭解如何使用 c # 和 Visual Studio 來建立表單辨識器自訂技能。 表單辨識器會分析檔，並將索引鍵/值組和資料表資料解壓縮。 藉由將表單辨識器包裝在 [自訂技能介面](cognitive-search-custom-skill-interface.md)中，您可以將此功能新增為端對端擴充管線中的一個步驟。 然後，管線可以載入檔並進行其他轉換。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (任何版本) 。
 - 至少五個相同類型的表單。 您可以使用本指南所提供的範例資料。
@@ -34,7 +34,7 @@ ms.locfileid: "88935427"
 
 ## <a name="set-up-the-custom-skill"></a>設定自訂技能
 
-本教學課程會使用[Azure 搜尋服務 Power 技能](https://github.com/Azure-Samples/azure-search-power-skills)GitHub 存放庫中的[AnalyzeForm](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Vision/AnalyzeForm)專案。 將此存放庫複製到您的本機電腦，並流覽至 **視覺/AnalyzeForm/** 以存取專案。 然後，在 Visual Studio 中開啟_AnalyzeForm。_ 此專案會建立可滿足 [自訂技能介面](cognitive-search-custom-skill-interface.md) 並可用於 Azure 認知搜尋擴充的 Azure 函數資源。 它會將表單檔做為輸入，並以文字) 您指定的索引鍵/值組來輸出 (。
+本教學課程會使用[Azure 搜尋服務 Power 技能](https://github.com/Azure-Samples/azure-search-power-skills)GitHub 存放庫中的[AnalyzeForm](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Vision/AnalyzeForm)專案。 將此存放庫複製到您的本機電腦，並流覽至 **視覺/AnalyzeForm/** 以存取專案。 然後，在 Visual Studio 中開啟 _AnalyzeForm。_ 此專案會建立可滿足 [自訂技能介面](cognitive-search-custom-skill-interface.md) 並可用於 Azure 認知搜尋擴充的 Azure 函數資源。 它會將表單檔做為輸入，並以文字) 您指定的索引鍵/值組來輸出 (。
 
 首先，加入專案層級的環境變數。 在左窗格中找出 **AnalyzeForm** 專案，以滑鼠右鍵按一下該專案，然後選取 [ **屬性**]。 在 [ **屬性** ] 視窗中，按一下 [ **調試** ] 索引標籤，然後尋找 [ **環境變數** ] 欄位。 按一下 [ **新增** ] 以新增下列變數：
 * `FORMS_RECOGNIZER_ENDPOINT_URL` 將值設定為您的端點 URL。
@@ -77,7 +77,7 @@ POST https://localhost:7071/api/analyze-form
 }
 ```
 
-在此，您將需要提供表單的 URL，該表單的類型與您用來定型的表單相同。 基於測試目的，您可以使用其中一個訓練表單。 如果您已遵循捲曲快速入門，您的表單將會位於 Azure blob 儲存體帳戶中。 開啟 Azure 儲存體總管，找出表單檔案，在其上按一下滑鼠右鍵，然後選取 [ **取得共用存取**簽章]。 下一個對話方塊視窗將提供 URL 和 SAS 權杖。 `"formUrl"`分別在要求主體的和欄位中輸入這些字串 `"formSasToken"` 。
+在此，您將需要提供表單的 URL，該表單的類型與您用來定型的表單相同。 基於測試目的，您可以使用其中一個訓練表單。 如果您已遵循捲曲快速入門，您的表單將會位於 Azure blob 儲存體帳戶中。 開啟 Azure 儲存體總管，找出表單檔案，在其上按一下滑鼠右鍵，然後選取 [ **取得共用存取** 簽章]。 下一個對話方塊視窗將提供 URL 和 SAS 權杖。 `"formUrl"`分別在要求主體的和欄位中輸入這些字串 `"formSasToken"` 。
 
 > [!div class="mx-imgBorder"]
 > ![Azure 儲存體 explorer;已選取 pdf 檔](media/cognitive-search-skill-form/form-sas.png)
@@ -112,10 +112,10 @@ POST https://localhost:7071/api/analyze-form
 當您對函式行為感到滿意時，就可以將它發行。
 
 1. 在 Visual Studio 的 **方案總管** 中，以滑鼠右鍵按一下專案，然後選取 [ **發行**]。 選擇 [**建立新**  >  **發行**]。
-1. 如果您尚未將 Visual Studio 連線到您的 Azure 帳戶，請選取 [新增帳戶...]****。
+1. 如果您尚未將 Visual Studio 連線到您的 Azure 帳戶，請選取 [新增帳戶...]。
 1. 遵循螢幕上的提示進行。 為您的 app service、Azure 訂用帳戶、資源群組、主控方案，以及您想要使用的儲存體帳戶指定唯一的名稱。 您可以建立新的資源群組、新的主控方案，以及新的儲存體帳戶（如果您還沒有的話）。 完成之後，選取 [建立]。
 1. 部署完成之後，請注意網站 URL。 此 URL 是您在 Azure 中的函數應用程式位址。 將它儲存至暫存位置。
-1. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至資源群組，並尋找您發行的函式 `AnalyzeForm` 。 在 [管理]**** 區段下，應該會看到主機金鑰。 複製 *預設* 的主機金鑰，並將它儲存至暫存位置。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至資源群組，並尋找您發行的函式 `AnalyzeForm` 。 在 [管理] 區段下，應該會看到主機金鑰。 複製 *預設* 的主機金鑰，並將它儲存至暫存位置。
 
 ## <a name="connect-to-your-pipeline"></a>連線到您的管線
 

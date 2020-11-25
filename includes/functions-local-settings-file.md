@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/14/2019
 ms.author: glenga
-ms.openlocfilehash: ca8d8edd334d89e03624793a35c49971ba8161ec
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d944d1d3e9c72471fab2435430a7d13e1770e807
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94884763"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010442"
 ---
 ## <a name="local-settings-file"></a>本機設定檔
 
@@ -46,7 +46,7 @@ local.settings.json 檔案會儲存本機開發工具所使用的應用程式設
 | **`LocalHttpPort`** | 設定於執行本機 Functions 主機 (`func host start` 和 `func run`) 時所使用的預設連接埠。 `--port` 命令列選項的優先順序高於此設定。 |
 | **`CORS`** | 定義針對[跨來源資源共享 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) 所允許的來源。 來源是以不含空格的逗號分隔清單提供。 支援萬用字元值 (\*)，它允許來自任何來源的要求。 |
 | **`CORSCredentials`** |  若設定為 `true`，則允許 `withCredentials` 要求。 |
-| **`ConnectionStrings`** | 集合。 請勿將此集合用於您函式繫結所使用的連接字串。 此集合僅供架構使用，其通常會從組態檔的 `ConnectionStrings` 區段取得連接字串，例如 [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)。 此物件中的連接字串會新增至具有 [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx) 提供者類型的環境。 此集合中的項目不會發佈至具備其他應用程式設定的 Azure。 您必須明確地將這些值新增到函式應用程式設定的 `Connection strings` 集合。 如果要在函式程式碼中建立 [`SqlConnection`](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx)，則應該將連接字串值連同您的其他連線一起儲存在入口網站的 [應用程式設定] 中。 |
+| **`ConnectionStrings`** | 集合。 請勿將此集合用於您函式繫結所使用的連接字串。 此集合僅供架構使用，其通常會從組態檔的 `ConnectionStrings` 區段取得連接字串，例如 [Entity Framework](/ef/ef6/)。 此物件中的連接字串會新增至具有 [System.Data.SqlClient](/dotnet/api/system.data.sqlclient) 提供者類型的環境。 此集合中的項目不會發佈至具備其他應用程式設定的 Azure。 您必須明確地將這些值新增到函式應用程式設定的 `Connection strings` 集合。 如果要在函式程式碼中建立 [`SqlConnection`](/dotnet/api/system.data.sqlclient.sqlconnection)，則應該將連接字串值連同您的其他連線一起儲存在入口網站的 [應用程式設定] 中。 |
 
 在本機執行時，下列應用程式設定可以包含在 **`Values`** 陣列中：
 

@@ -10,11 +10,11 @@ ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.openlocfilehash: 0240510a2232bd12a94d5cdd59672270289e5e8f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547515"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011824"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight：常見問題集
 
@@ -262,7 +262,7 @@ done
 
 ### <a name="can-i-increase-hdfs-storage-on-a-cluster-without-increasing-the-disk-size-of-worker-nodes"></a>我可以在叢集上增加 HDFS 儲存體，而不增加背景工作節點的磁片大小嗎？
 
-不可以。 您無法增加任何背景工作節點的磁片大小。 因此，增加磁片大小的唯一方式是卸載叢集，然後使用較大的背景工作 Vm 重新建立它。 請勿使用 HDFS 來儲存任何 HDInsight 資料，因為如果刪除您的叢集，就會刪除資料。 相反地，請將您的資料儲存在 Azure 中。 相應增加叢集也可將額外的容量新增至您的 HDInsight 叢集。
+否。 您無法增加任何背景工作節點的磁片大小。 因此，增加磁片大小的唯一方式是卸載叢集，然後使用較大的背景工作 Vm 重新建立它。 請勿使用 HDFS 來儲存任何 HDInsight 資料，因為如果刪除您的叢集，就會刪除資料。 相反地，請將您的資料儲存在 Azure 中。 相應增加叢集也可將額外的容量新增至您的 HDInsight 叢集。
 
 ## <a name="edge-nodes"></a>邊緣節點
 

@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 10/10/2018
 ms.topic: conceptual
 ms.openlocfilehash: 34222f396ed3c43932371aa9f64a459bb2a5dd0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61442856"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012283"
 ---
 # <a name="import-an-iot-edge-package-into-your-remote-monitoring-solution-accelerator"></a>在遠端監視解決方案加速器中匯入 IoT Edge 套件
 
@@ -29,9 +29,9 @@ ms.locfileid: "61442856"
 
 使用 Azure 入口網站，從開發環境匯出部署資訊清單：
 
-1. 在 Azure 入口網站中，瀏覽至您用來開發和測試 IoT Edge 裝置的 IoT 中樞。 按一下 [IoT Edge]****，然後按一下 [IoT Edge 部署]****：![IoT Edge](media/iot-accelerators-remote-monitoring-import-edge-package/iotedge.png)
+1. 在 Azure 入口網站中，瀏覽至您用來開發和測試 IoT Edge 裝置的 IoT 中樞。 按一下 [IoT Edge]，然後按一下 [IoT Edge 部署]：![IoT Edge](media/iot-accelerators-remote-monitoring-import-edge-package/iotedge.png)
 
-1. 按一下具有您想使用之部署組態的部署。 [部署詳細資料]**** 頁面會顯示：![IoT Edge 部署詳細資料](media/iot-accelerators-remote-monitoring-import-edge-package/deploymentdetails.png)
+1. 按一下具有您想使用之部署組態的部署。 [部署詳細資料] 頁面會顯示：![IoT Edge 部署詳細資料](media/iot-accelerators-remote-monitoring-import-edge-package/deploymentdetails.png)
 
 1. 按一下 [ **下載] IoT Edge 資訊清單**：  ![ 下載部署資訊清單](media/iot-accelerators-remote-monitoring-import-edge-package/download.png)
 
@@ -43,13 +43,13 @@ ms.locfileid: "61442856"
 
 請遵循下列步驟將 Edge 部署資訊清單當作套件匯入您的解決方案中：
 
-1. 在遠端監視 Web UI 中瀏覽至 [套件]**** 頁面：![套件頁面](media/iot-accelerators-remote-monitoring-import-edge-package/packagespage.png)
+1. 在遠端監視 Web UI 中瀏覽至 [套件] 頁面：![套件頁面](media/iot-accelerators-remote-monitoring-import-edge-package/packagespage.png)
 
-1. 按一下 [+ 新增套件]****，選擇 [Edge 資訊清單]**** 作為套件類型，然後按一下 [瀏覽]****，以選取您在上一節中儲存的 **deploymentmanifest.json** 檔案：![選取資訊清單](media/iot-accelerators-remote-monitoring-import-edge-package/selectmanifest.png)
+1. 按一下 [+ 新增套件]，選擇 [Edge 資訊清單] 作為套件類型，然後按一下 [瀏覽]，以選取您在上一節中儲存的 **deploymentmanifest.json** 檔案：![選取資訊清單](media/iot-accelerators-remote-monitoring-import-edge-package/selectmanifest.png)
 
-1. 按一下 [上傳]**** 將套件新增至遠端監視解決方案：![上傳的套件](media/iot-accelerators-remote-monitoring-import-edge-package/uploadedpackage.png)
+1. 按一下 [上傳] 將套件新增至遠端監視解決方案：![上傳的套件](media/iot-accelerators-remote-monitoring-import-edge-package/uploadedpackage.png)
 
-您現在已將 IoT Edge 部署資訊清單當作套件上傳。 在 [部署]**** 頁面上，您可以將此套件部署到已連線的 IoT Edge 裝置。
+您現在已將 IoT Edge 部署資訊清單當作套件上傳。 在 [部署] 頁面上，您可以將此套件部署到已連線的 IoT Edge 裝置。
 
 ## <a name="next-steps"></a>後續步驟
 

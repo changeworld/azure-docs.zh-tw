@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: 7cf18e2d375d7a45c3641876b8a3ed5974882927
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965420"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010022"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>在 SLES 12 SP3 上驗證 SAP HANA scale-out 高可用性設定並為其進行疑難排解 
 

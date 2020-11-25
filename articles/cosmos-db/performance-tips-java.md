@@ -10,11 +10,11 @@ ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: 9a074b872ed19a7d3e6b3e410c69da0f2b78e85e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339694"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012573"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>Azure Cosmos DB 同步 Java SDK v2 的效能提示
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -93,7 +93,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
     Azure Cosmos DB 同步 Java SDK 1.9.0 版和更新版本支援平行查詢，可讓您平行查詢分割的集合。 如需詳細資訊，請參閱使用 SDK 的相關[程式碼範例](https://github.com/Azure/azure-documentdb-java/tree/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples)。 平行查詢的設計目的是要改善其連續對應項目的查詢延遲和輸送量。
 
-     () * *_微調 setMaxDegreeOfParallelism \:_* _ 平行查詢的運作方式是以平行方式查詢多個資料分割。 不過，對於查詢會以循序方式擷取來自個別分割集合的資料。 因此，使用 [setMaxDegreeOfParallelism](/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxdegreeofparallelism) 設定分割數目會最有機會達到最高效能的查詢，但前提是其他所有系統條件皆維持不變。 如果您不知道分割數目，您可以使用 setMaxDegreeOfParallelism 設定為較高的數字，然後系統會選擇最小值 (分割數目、使用者提供的輸入) 作為平行處理原則的最大刻度。 
+     () **_微調 setMaxDegreeOfParallelism \:_* _ 平行查詢的運作方式是以平行方式查詢多個資料分割。 不過，對於查詢會以循序方式擷取來自個別分割集合的資料。 因此，使用 [setMaxDegreeOfParallelism](/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxdegreeofparallelism) 設定分割數目會最有機會達到最高效能的查詢，但前提是其他所有系統條件皆維持不變。 如果您不知道分割數目，您可以使用 setMaxDegreeOfParallelism 設定為較高的數字，然後系統會選擇最小值 (分割數目、使用者提供的輸入) 作為平行處理原則的最大刻度。 
 
     請務必注意，若對於查詢是以平均方式將資料分佈於所有分割，平行查詢便會產生最佳效益。 如果分割之集合的分割方式是查詢所傳回的所有或大多數資料集中在少數幾個分割中 (最差的情況是集中在一個分割)，則這些分割會成為查詢效能的瓶頸。
 

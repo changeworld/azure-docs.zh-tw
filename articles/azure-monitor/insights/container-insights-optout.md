@@ -4,12 +4,12 @@ description: 本文說明如何停止使用容器的 Azure 監視器來監視 Az
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: af5f49dfe5e668f39f105a62ad20858e273b34cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15ec102632258870745f510a98773f70242118be
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87489481"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96011637"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>如何停止使用容器的 Azure 監視器來監視 Azure Kubernetes Service (AKS)
 
@@ -35,7 +35,7 @@ az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMan
 * [使用 Resource Manager 範本與 Azure CLI 部署資源](../../azure-resource-manager/templates/deploy-cli.md)
 
 >[!NOTE]
->範本必須部署在叢集的相同資源群組中。 使用此範本時，如果您省略其他任何屬性或附加元件，可能會導致從叢集移除這些屬性或附加元件。 例如， *enableRBAC* 在您的叢集中執行的 RBAC 原則，或 *aksResourceTagValues* 是否已指定 AKS 叢集的標記。  
+>範本必須部署在叢集的相同資源群組中。 使用此範本時，如果您省略其他任何屬性或附加元件，可能會導致從叢集移除這些屬性或附加元件。 例如，在您的叢集中執行的 Kubernetes RBAC 原則 *enableRBAC* ，或如果已針對 AKS 叢集指定標記，則為 *aksResourceTagValues* 。  
 >
 
 如果您選擇使用 Azure CLI，必須先在本機安裝並使用 CLI。 您必須執行 Azure CLI 2.0.27 版或更新版本。 若要知道您使用的版本，請執行 `az --version`。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
@@ -116,11 +116,11 @@ az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMan
     }
     ```
 
-4. 使用可所選取叢集的 [屬性]**** 頁面上找到之 AKS 叢集的值，來編輯 **aksResourceId** 和 **aksResourceLocation** 的值。
+4. 使用可所選取叢集的 [屬性] 頁面上找到之 AKS 叢集的值，來編輯 **aksResourceId** 和 **aksResourceLocation** 的值。
 
     ![容器屬性頁面](media/container-insights-optout/container-properties-page.png)
 
-    當您在 [屬性]**** 頁面上時，亦請複製 [工作區資源識別碼]****。 如果您稍後決定要刪除 Log Analytics 工作區，必須要有這個值。 這部分的程序並不會刪除 Log Analytics 工作區。
+    當您在 [屬性] 頁面上時，亦請複製 [工作區資源識別碼]。 如果您稍後決定要刪除 Log Analytics 工作區，必須要有這個值。 這部分的程序並不會刪除 Log Analytics 工作區。
 
     編輯 **aksResourceTagValues** 的值，以符合針對 AKS 叢集指定的現有標記值。
 
@@ -163,6 +163,6 @@ ProvisioningState       : Succeeded
 ```
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果建立工作區只為了支援監視叢集，當您不再需要時，可以手動予以刪除。 如果您不熟悉如何刪除工作區，請參閱[使用 Azure 入口網站來刪除 Azure Log Analytics 工作區](../platform/delete-workspace.md)。 別忘了稍早在步驟4中複製的 **工作區資源識別碼** ，您將需要這麼做。

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
 ms.openlocfilehash: 1b02b089fea7e883bdc6c58c7a2845af12b50a37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87824523"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011943"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>設定 SQL Server 的災害復原
 
@@ -95,7 +95,7 @@ BCDR 技術 Always On、主動式異地複寫和自動容錯移轉群組都具�
 
 ### <a name="step-4-conduct-a-test-failover"></a>步驟4：進行測試容錯移轉
 
-某些 BCDR 技術（例如 SQL Always On）本身不支援測試容錯移轉。 *只有在使用這類技術時，才建議使用*下列方法。
+某些 BCDR 技術（例如 SQL Always On）本身不支援測試容錯移轉。 *只有在使用這類技術時，才建議使用* 下列方法。
 
 1. 設定在 Azure 中裝載可用性群組複本的 VM 上的 [Azure 備份](../backup/backup-azure-vms-first-look-arm.md) 。
 

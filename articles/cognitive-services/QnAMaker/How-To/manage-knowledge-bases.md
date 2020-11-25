@@ -6,11 +6,11 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 890b555703f922168a820a0535296b9f55218752
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777738"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011042"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>建立知識庫和管理設定
 
@@ -26,19 +26,19 @@ QnA Maker 可讓您藉由提供知識庫設定和資料來源的存取權，來�
 
 1. 利用您的 Azure 認證登入 [QnAMaker.ai](https://QnAMaker.ai) 入口網站。
 
-1. 在 QnA Maker 入口網站中，選取 [建立知識庫]****。
+1. 在 QnA Maker 入口網站中，選取 [建立知識庫]。
 
-1. 如果您已經有 QnA Maker 資源，請在 [建立]**** 頁面上略過 [步驟 1]****。
+1. 如果您已經有 QnA Maker 資源，請在 [建立] 頁面上略過 [步驟 1]。
 
-    如果您尚未建立資源，則請選取 [建立 QnA 服務]****。 系統會將您導向 [Azure 入口網站](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)，以在您的訂用帳戶中設定 QnA Maker 服務。 請記住您在建立資源時選取的 Azure Active Directory 識別碼、訂用帳戶、QnA 資源名稱。
+    如果您尚未建立資源，則請選取 [建立 QnA 服務]。 系統會將您導向 [Azure 入口網站](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)，以在您的訂用帳戶中設定 QnA Maker 服務。 請記住您在建立資源時選取的 Azure Active Directory 識別碼、訂用帳戶、QnA 資源名稱。
 
-    當您在 Azure 入口網站中建立好資源時，請回到 QnA Maker 入口網站、重新整理瀏覽器頁面，然後繼續 [步驟 2]****。
+    當您在 Azure 入口網站中建立好資源時，請回到 QnA Maker 入口網站、重新整理瀏覽器頁面，然後繼續 [步驟 2]。
 
-1. 在 [步驟 3]**** 中，選取您的 Active directory、訂用帳戶、服務 (資源)，以及在服務中所建立所有知識庫的語言。
+1. 在 [步驟 3] 中，選取您的 Active directory、訂用帳戶、服務 (資源)，以及在服務中所建立所有知識庫的語言。
 
    ![選取 QnA Maker 服務知識庫的螢幕擷取畫面](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
-1. 在 **步驟 3**中，為您的知識庫命名 `My Sample QnA KB` 。
+1. 在 **步驟 3** 中，為您的知識庫命名 `My Sample QnA KB` 。
 
 1. 在 [步驟 4] 中，使用下表進行設定：
 
@@ -53,13 +53,13 @@ QnA Maker 可讓您藉由提供知識庫設定和資料來源的存取權，來�
 
     擷取程序需要一點時間來讀取文件並找出問題和回答。
 
-    在 QnA Maker 成功建立知識庫之後，[知識庫]**** 頁面隨即開啟。 您可以在此頁面上編輯知識庫的內容。
+    在 QnA Maker 成功建立知識庫之後，[知識庫] 頁面隨即開啟。 您可以在此頁面上編輯知識庫的內容。
 
 ## <a name="edit-knowledge-base"></a>編輯知識庫
 
-1.  在上方導覽列中選取 [我的知識庫]****。
+1.  在上方導覽列中選取 [我的知識庫]。
 
-       您可以看到您建立或與您分享的所有服務，這些服務均按照**上次修改**日期的遞減順序排列。
+       您可以看到您建立或與您分享的所有服務，這些服務均按照 **上次修改** 日期的遞減順序排列。
 
        ![我的知識庫](../media/qnamaker-how-to-edit-kb/my-kbs.png)
 
@@ -69,19 +69,19 @@ QnA Maker 可讓您藉由提供知識庫設定和資料來源的存取權，來�
 
        |目標|動作|
        |--|--|
-       |新增 URL|您可以藉由按一下 [管理知識庫] -> [+ 新增 URL]**** 連結來新增 URL，以便將新的常見問題集內容新增至知識庫。|
+       |新增 URL|您可以藉由按一下 [管理知識庫] -> [+ 新增 URL] 連結來新增 URL，以便將新的常見問題集內容新增至知識庫。|
        |刪除 URL|您可以選取刪除圖示 (即垃圾桶)，以刪除現有 URL。|
-       |重新整理內容|如果您想要讓知識庫搜耙現有 URL 的最新內容，請選取 [重新整理]**** 核取方塊。 這會以最新的 URL 內容更新知識庫。 這不會設定週期性更新排程。|
-       |新增檔案|您可以藉由選取 [管理知識庫]**** 和 [+ 新增檔案]****，將受支援的檔案文件新增為知識庫的一部分|
+       |重新整理內容|如果您想要讓知識庫搜耙現有 URL 的最新內容，請選取 [重新整理] 核取方塊。 這會以最新的 URL 內容更新知識庫。 這不會設定週期性更新排程。|
+       |新增檔案|您可以藉由選取 [管理知識庫] 和 [+ 新增檔案]，將受支援的檔案文件新增為知識庫的一部分|
     |匯入|您也可以選取 [匯 **入知識庫** ] 按鈕，以匯入任何現有的知識庫。 |
-    |更新|知識庫的更新取決於當建立與知識庫相關聯的 QnA Maker 服務時，所使用的**管理定價層**。 您也可以視需要從 Azure 入口網站更新管理層。
+    |更新|知識庫的更新取決於當建立與知識庫相關聯的 QnA Maker 服務時，所使用的 **管理定價層**。 您也可以視需要從 Azure 入口網站更新管理層。
 
   1. 完成知識庫的變更之後，請選取頁面右上角的 [ **儲存並定型** ]，以便保存變更。
 
        ![儲存並訓練](../media/qnamaker-how-to-edit-kb/save-and-train.png)
 
        >[!CAUTION]
-       >如果您在選取 [儲存並訓練]**** 之前就離開此頁面，所有變更都將遺失。
+       >如果您在選取 [儲存並訓練] 之前就離開此頁面，所有變更都將遺失。
 
 
 
@@ -101,7 +101,7 @@ QnA Maker 可讓您藉由提供知識庫設定和資料來源的存取權，來�
 
 ## <a name="delete-knowledge-bases"></a>刪除知識庫
 
-刪除知識庫 (KB) 是永久性的作業。 該作業無法復原。 刪除知識庫之前，您應該從 QnA Maker 入口網站的 [設定]**** 頁面將知識庫匯出。
+刪除知識庫 (KB) 是永久性的作業。 該作業無法復原。 刪除知識庫之前，您應該從 QnA Maker 入口網站的 [設定] 頁面將知識庫匯出。
 
 如果您與共同作業者共用您的知識庫，請 (collaborate-knowledge-base.md) 然後將其刪除，每個人都會失去 KB 的存取權。
 

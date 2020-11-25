@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 10/29/2020
 ms.author: baanders
 ms.openlocfilehash: f56cc5b028f07964236fc42a1ca468aa28aae440
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358064"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011239"
 ---
 若要使用本文中的 Azure Digital Twins，您必須先設定 Azure Digital Twins 執行個體以及使用的必要權限。 如果您已經透過先前的工作設定 Azure Digital Twins 執行個體，您可以使用該執行個體。
 

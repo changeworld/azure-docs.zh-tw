@@ -7,12 +7,12 @@ ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 332d6da35af0eaae9d9d15258a152734f0a9eba6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64069292ea0059216d06bfc41316c2aed7484dd0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88033626"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011093"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>如何使用 C++ 的 Blob 儲存體
 
@@ -51,7 +51,7 @@ ms.locfileid: "88033626"
 ```
 
 ## <a name="setup-an-azure-storage-connection-string"></a>設定 Azure 儲存體連接字串
-Azure 儲存體用戶端會使用儲存體連接字串來儲存存取資料管理服務時所用的端點與認證。 在用戶端應用程式中執行時，您必須以下列格式提供儲存體連接字串：使用您的儲存體帳戶名稱，以及 AccountKey [Azure 入口網站](https://portal.azure.com)中針對*AccountName*和*AccountKey*值所列之儲存體帳戶的儲存體存取金鑰。 如需有關儲存體帳戶和存取金鑰的資訊，請參閱 [關於 Azure 儲存體帳戶](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 本範例將示範如何宣告靜態欄位來存放連接字串：
+Azure 儲存體用戶端會使用儲存體連接字串來儲存存取資料管理服務時所用的端點與認證。 在用戶端應用程式中執行時，您必須以下列格式提供儲存體連接字串：使用您的儲存體帳戶名稱，以及 AccountKey [Azure 入口網站](https://portal.azure.com)中針對 *AccountName* 和 *AccountKey* 值所列之儲存體帳戶的儲存體存取金鑰。 如需有關儲存體帳戶和存取金鑰的資訊，請參閱 [關於 Azure 儲存體帳戶](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 本範例將示範如何宣告靜態欄位來存放連接字串：
 
 ```cpp
 // Define the connection-string with your values.
@@ -184,7 +184,7 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 }
 ```
 
-如需列出作業的詳細資訊，請參閱 [以 C++ 列出 Azure 儲存體資源](../storage-c-plus-plus-enumeration.md)。
+如需列出作業的詳細資訊，請參閱 [以 C++ 列出 Azure 儲存體資源](../common/storage-c-plus-plus-enumeration.md)。
 
 ## <a name="how-to-download-blobs"></a>作法：下載 Blob
 若要下載 blob，請先取得 blob 參考，然後呼叫 **download_to_stream** 方法。 下列範例會使用 **download_to_stream** 方法將 blob 內容傳送至資料流程物件，您接著可以將這些內容保存到本機檔案。
@@ -257,10 +257,9 @@ blockBlob.delete_blob();
 ## <a name="next-steps"></a>後續步驟
 了解 Blob 儲存體的基礎概念之後，請依照下列連結深入了解 Azure 儲存體。
 
-- [如何使用 C++ 的佇列儲存體](../storage-c-plus-plus-how-to-use-queues.md)
+- [如何使用 C++ 的佇列儲存體](../queues/storage-c-plus-plus-how-to-use-queues.md)
 - [如何使用 c + + 的資料表儲存體](../../cosmos-db/table-storage-how-to-use-c-plus.md)
-- [列出 c + + 中的 Azure 儲存體資源](../storage-c-plus-plus-enumeration.md)
+- [列出 c + + 中的 Azure 儲存體資源](../common/storage-c-plus-plus-enumeration.md)
 - [適用于 c + + 的儲存體用戶端程式庫參考](https://azure.github.io/azure-storage-cpp)
 - [Azure 儲存體檔](https://azure.microsoft.com/documentation/services/storage/)
-- [使用 AzCopy 命令列公用程式傳輸資料](../storage-use-azcopy.md)
-
+- [使用 AzCopy 命令列公用程式傳輸資料](../common/storage-use-azcopy-v10.md)

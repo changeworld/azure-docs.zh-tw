@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
 ms.openlocfilehash: 329c4b40f11b36de80581d4a1396813bc8de5c73
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097323"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010311"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 跨足社交
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -172,7 +172,7 @@ Azure Cosmos DB 可利用自身的自動索引編製作業，確保所有屬性�
 
 透過查看此資訊，您可以快速偵測出哪些是重要資訊而哪些不是，藉此建立出一道「階梯」：
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="說明相對關聯式模型的圖表" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="階梯模式的圖表" border="false":::
 
 最小的一階稱為「使用者區塊」，其為可識別使用者並為資料重複使用的最基本部分。 透過將重複資料的大小縮減成僅限您將「顯示」的資訊，即可降低需要大量更新的機率。
 
@@ -239,7 +239,7 @@ Azure 認知搜尋會執行其呼叫 [索引子](/rest/api/searchservice/Indexer
 
 ## <a name="a-planet-scale-social-experience"></a>全球規模的社交體驗
 
-最後，還有一項重要的主題必須和各位分享，那就是「延展性」  。 在設計架構時，每個元件都應該自行調整。 您最終會需要處理更多資料，或者，會想要有更廣泛的地理涵蓋範圍。 幸好，透過 Cosmos DB，您便能 **輕鬆完成** 這兩項工作。
+最後，還有一項重要的主題必須和各位分享，那就是「延展性」。 在設計架構時，每個元件都應該自行調整。 您最終會需要處理更多資料，或者，會想要有更廣泛的地理涵蓋範圍。 幸好，透過 Cosmos DB，您便能 **輕鬆完成** 這兩項工作。
 
 Cosmos DB 預設支援動態分割。 它會根據特定 **資料分割索引鍵** (定義為您文件中的其中一項屬性) 自動建立資料分割。 定義正確的分割區索引鍵必須在設計階段完成。 如需詳細資訊，請參閱 [Azure Cosmos DB 中的資料分割](partitioning-overview.md)。
 
@@ -249,7 +249,7 @@ Cosmos DB 會透明地在所有資料分割上執行您的查詢 (包括[彙總]
 
 流量最終會隨時間增長，而您的資源消耗 (以 [RU](request-units.md) (要求單位) 為單位) 也會增加。 隨著使用者群的增長，讀取及寫入也會變得更頻繁。 使用者群將會開始建立及讀取更多內容。 因此 **調整輸送量** 的能力極為重要。 增加 RU 非常容易。 只要在 Azure 入口網站上按幾下，或是[透過 API 發出命令](/rest/api/cosmos-db/replace-an-offer)即可。
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="說明相對關聯式模型的圖表":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="相應增加及定義分割區索引鍵":::
 
 如果情況持續好轉會怎樣？ 假設有來自其他地區、國家或洲的使用者注意到您的平台，並開始使用它。 這還真是個好消息！
 
@@ -259,16 +259,16 @@ Cosmos DB 可讓您按幾下就能透明地[將資料複寫至全球](../cosmos-
 
 當您將資料複寫至全球時，您必須確保您的用戶端能充分利用它。 如果您使用 Web 前端，或是從行動用戶端存取 API，便可以部署 [Azure 流量管理員](https://azure.microsoft.com/services/traffic-manager/)，然後將您的 Azure App Service 複製到所有需要的區域，其中使用效能設定來支援延伸的全球涵蓋範圍。 當用戶端存取您的前端或 API 時，系統會將它們路由至最接近的 App Service，以便連接到當地的 Cosmos DB 複本。
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="說明相對關聯式模型的圖表" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="為您的社交平台加入全球涵蓋範圍" border="false":::
 
 ## <a name="conclusion"></a>結論
 
 本文會探討如何以低成本的服務在 Azure 上完整建立社交網路的替代方案。 其會藉由鼓勵使用多層次儲存體解決方案和稱為「階梯」的資料分散方式來提供結果。
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="說明相對關聯式模型的圖表" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="Azure 服務之間社交網路互動的圖表" border="false":::
 
 事實上，這類案例並沒有萬靈丹。 它是由絕佳服務組合所建立的協力，可讓我們建立絕佳的體驗： Azure Cosmos DB 的速度和自由，提供絕佳的社交應用程式、頂級搜尋解決方案背後的情報（例如 Azure 認知搜尋）、Azure App 服務的彈性，不僅能裝載不受語言限制的應用程式，還能提供強大的背景程式，以及可展開的 Azure 儲存體與 Azure SQL Database，以儲存大量資料和 Azure Machine 的分析能力學習如何建立可提供意見反應給您流程的知識和智慧，並協助我們將正確的內容傳遞給正確的使用者。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解 Cosmos DB 的使用案例，請參閱[常見 Cosmos DB 使用案例](use-cases.md)。

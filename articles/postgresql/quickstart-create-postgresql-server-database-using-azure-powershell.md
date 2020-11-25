@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: 91351c0b2982c6ee0e96cc1433c0fadf67e3bcc0
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485421"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010651"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-powershell"></a>快速入門：使用 PowerShell 建立適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
 
@@ -63,17 +63,17 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 | -------------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 名稱                       | mydemoserver     | 選擇 Azure 中可識別適用於 PostgreSQL 的 Azure 資料庫伺服器的全域唯一名稱。 伺服器名稱只能包含字母、數字及連字號 (-) 字元。 在建立過程中，指定的任何大寫字元都會自動轉換成小寫。 此名稱必須包含 3 到 63 個字元。 |
 | resourceGroupName          | myresourcegroup  | 提供 Azure 資源群組的名稱。                                                                                                                                                                                                                                                                                            |
-| SKU                        | GP_Gen5_2        | SKU 的名稱。 遵循簡短形式的慣例 **pricing-tier\_compute-generation\_vCores** 。 如需 Sku 參數的詳細資訊，請參閱此表格後面的資訊。                                                                                                                                           |
+| SKU                        | GP_Gen5_2        | SKU 的名稱。 遵循簡短形式的慣例 **pricing-tier\_compute-generation\_vCores**。 如需 Sku 參數的詳細資訊，請參閱此表格後面的資訊。                                                                                                                                           |
 | BackupRetentionDay         | 7                | 備份應保留的時間長度。 單位為天。 範圍為 7-35 天。                                                                                                                                                                                                                                                                       |
 | GeoRedundantBackup         | 啟用          | 是否應針對此伺服器啟用異地備援備份。 此值無法針對基本定價層中的伺服器啟用，而且在伺服器建立之後就無法變更。 允許的值：Enabled、Disabled。                                                                                                      |
 | Location                   | westus           | 伺服器的 Azure 區域。                                                                                                                                                                                                                                                                                                         |
 | SslEnforcement             | 啟用          | 是否應針對此伺服器啟用 SSL。 允許的值：Enabled、Disabled。                                                                                                                                                                                                                                                 |
 | StorageInMb                | 51200            | 伺服器的儲存體容量 (單位為 MB)。 有效的 StorageInMb 最小值為 5120 MB，並以 1024 MB 的增量增加。 如需儲存體大小限制的詳細資訊，請參閱[適用於 PostgreSQL 的 Azure 資料庫定價層](./concepts-pricing-tiers.md)。                                                                               |
 | 版本                    | 9.6              | PostgreSQL 主要版本。                                                                                                                                                                                                                                                                                                                 |
-| AdministratorUserName      | myadmin          | 適用於系統管理員登入的使用者名稱。 此名稱不得為 **azure_superuser** 、 **admin** 、 **administrator** 、 **root** 、 **guest** 或 **public** 。                                                                                                                                                                                            |
+| AdministratorUserName      | myadmin          | 適用於系統管理員登入的使用者名稱。 此名稱不得為 **azure_superuser**、**admin**、**administrator**、**root**、**guest** 或 **public**。                                                                                                                                                                                            |
 | AdministratorLoginPassword | `<securestring>` | 系統管理員使用者的密碼，其格式為安全字串。 其必須包含 8 到 128 個字元。 您的密碼必須包含下列類別中三種類別的字元：英文大寫字母、英文小寫字母、數字及非英數字元。                                       |
 
-**Sku** 參數值會遵循慣例 **pricing-tier\_compute-generation\_vCores** ，如下列範例所示。
+**Sku** 參數值會遵循慣例 **pricing-tier\_compute-generation\_vCores**，如下列範例所示。
 
 - `-Sku B_Gen5_1` 對應於基本、第 5 代和 1 個虛擬核心。 此選項是最小的可用 SKU。
 - `-Sku GP_Gen5_32` 對應於一般用途、第 5 代和 32 個 vCore。
@@ -81,7 +81,7 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 
 如需各區域和各層有效 **Sku** 值的相關資訊，請參閱 [適用於 PostgreSQL 的 Azure 資料庫定價層](./concepts-pricing-tiers.md)。
 
-下列範例會在 **美國西部** 區域中建立名為 **mydemoserver** 的 PostgreSQL 伺服器，其位於 **myresourcegroup** 資源群組中，且伺服器系統管理員登入為 **myadmin** 。 這是一般用途定價層中的 Gen 5 伺服器，已啟用 2 個虛擬核心和異地備援備份。 記錄範例第一行中使用的密碼，因為這是 PostgreSQL 伺服器系統管理員帳戶的密碼。
+下列範例會在 **美國西部** 區域中建立名為 **mydemoserver** 的 PostgreSQL 伺服器，其位於 **myresourcegroup** 資源群組中，且伺服器系統管理員登入為 **myadmin**。 這是一般用途定價層中的 Gen 5 伺服器，已啟用 2 個虛擬核心和異地備援備份。 記錄範例第一行中使用的密碼，因為這是 PostgreSQL 伺服器系統管理員帳戶的密碼。
 
 > [!TIP]
 > 伺服器名稱會對應至 DNS 名稱，而且在 Azure 中必須是全域唯一的。
@@ -149,7 +149,7 @@ mydemoserver.postgres.database.azure.com       myadmin
    CREATE DATABASE mypgsqldb;
    ```
 
-1. 在提示字元，執行下列命令以將連線切換到新建立的資料庫 **mypgsqldb** ：
+1. 在提示字元，執行下列命令以將連線切換到新建立的資料庫 **mypgsqldb**：
 
    ```sql
    \c mypgsqldb
@@ -163,7 +163,7 @@ pgAdmin 是搭配 PostgreSQL 使用的開放原始碼工具。 您可以從 [pgA
 
 1. 移至工具列中的 [物件]，將滑鼠停留在 [建立] 上方，然後選取 [伺服器]。
 
-1. 在 [建立 - 伺服器] 對話方塊的 [一般] 索引標籤上，輸入伺服器的唯一易記名稱，例如 **mydemoserver** 。
+1. 在 [建立 - 伺服器] 對話方塊的 [一般] 索引標籤上，輸入伺服器的唯一易記名稱，例如 **mydemoserver**。
 
    :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/9-pgadmin-create-server.png" alt-text="一般索引標籤":::
 
@@ -173,25 +173,25 @@ pgAdmin 是搭配 PostgreSQL 使用的開放原始碼工具。 您可以從 [pgA
 
     pgAdmin 參數 |值|描述
     ---|---|---
-    主機名稱/位址 | 伺服器名稱 | 您稍早建立 Azure Database for PostgreSQL 伺服器時所用的伺服器名稱值。 我們的範例伺服器是 **mydemoserver.postgres.database.azure.com** 。 使用如範例所示的完整網域名稱 ( **\*.postgres.database.azure.com** )。 如果您不記得您的伺服器名稱，請依照上一節中的步驟執行，以取得連線資訊。
+    主機名稱/位址 | 伺服器名稱 | 您稍早建立 Azure Database for PostgreSQL 伺服器時所用的伺服器名稱值。 我們的範例伺服器是 **mydemoserver.postgres.database.azure.com**。 使用如範例所示的完整網域名稱 ( **\*.postgres.database.azure.com**)。 如果您不記得您的伺服器名稱，請依照上一節中的步驟執行，以取得連線資訊。
     連接埠 | 5432 | 當您連線至 Azure Database for PostgreSQL 伺服器時所要使用的連接埠。
     維護資料庫 | *postgres* | 系統產生的預設資料庫名稱。
-    使用者名稱 | 伺服器管理員登入名稱 | 您稍早建立 Azure Database for PostgreSQL 時所提供的伺服器管理員登入使用者名稱。 如果您不記得使用者名稱，請依照上一節中的步驟執行，以取得連線資訊。 格式是 *username\@servername* 。
+    使用者名稱 | 伺服器管理員登入名稱 | 您稍早建立 Azure Database for PostgreSQL 時所提供的伺服器管理員登入使用者名稱。 如果您不記得使用者名稱，請依照上一節中的步驟執行，以取得連線資訊。 格式是 *username\@servername*。
     密碼 | 您的系統管理員密碼 | 您在本快速入門稍早建立伺服器時所選擇的密碼。
     角色 | 保留空白 | 此時不需要提供角色名稱。 將欄位保留空白。
     SSL 模式 | *必要* | 您可以在 pgAdmin 的 [SSL] 索引標籤中設定 TLS/SSL 模式。根據預設，所有適用於 PostgreSQL 的 Azure 資料庫伺服器建立時都會開啟強制執行 TLS。 若要關閉強制執行 TLS，請參閱[設定 TLS 的強制執行](./concepts-ssl-connection-security.md#configure-enforcement-of-tls)。
 
 1. 選取 [儲存]。
 
-1. 在左側的 [瀏覽器] 窗格中，展開 [伺服器] 節點。 選取您的伺服器，例如 **mydemoserver** 。 按一下以連線到它。
+1. 在左側的 [瀏覽器] 窗格中，展開 [伺服器] 節點。 選取您的伺服器，例如 **mydemoserver**。 按一下以連線到它。
 
 1. 展開伺服器節點，然後展開其下的 [資料庫]。 此清單應包含現有 postgres 資料庫和其他您已建立的資料庫。 您可以使用適用於 PostgreSQL 的 Azure 資料庫，為每一部伺服器建立多個資料庫。
 
 1. 以滑鼠右鍵按一下 [資料庫]，選擇 [建立] 功能表，然後選取 [資料庫]。
 
-1. 在 [資料庫] 欄位中輸入您選擇的資料庫名稱，例如 **mypgsqldb2** 。
+1. 在 [資料庫] 欄位中輸入您選擇的資料庫名稱，例如 **mypgsqldb2**。
 
-1. 從清單方塊中選取資料庫的 [擁有者]。 選擇您的伺服器管理員登入名稱，例如範例中的 **my admin** 。
+1. 從清單方塊中選取資料庫的 [擁有者]。 選擇您的伺服器管理員登入名稱，例如範例中的 **my admin**。
 
    :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/11-pgadmin-database.png" alt-text="在 pgAdmin 中建立資料庫":::
 

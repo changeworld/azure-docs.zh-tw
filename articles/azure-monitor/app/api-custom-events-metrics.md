@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: e9f175e2585a5254922c9e859cf5ece2afbbc3e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264128"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011334"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>自訂事件和度量的 Application Insights API
 
@@ -108,7 +108,7 @@ telemetry.getContext().getDevice().setId("...");
 
 ## <a name="trackevent"></a>TrackEvent
 
-在 Application Insights 中，「自訂事件」** 是您可以在[計量瀏覽器](../platform/metrics-charts.md)顯示為彙總計數，以及在[診斷搜尋](./diagnostic-search.md)中顯示為個別發生點的資料點。 (它與 MVC 或其他架構的「事件」不相關。)
+在 Application Insights 中，「自訂事件」是您可以在[計量瀏覽器](../platform/metrics-charts.md)顯示為彙總計數，以及在[診斷搜尋](./diagnostic-search.md)中顯示為個別發生點的資料點。 (它與 MVC 或其他架構的「事件」不相關。)
 
 在您的程式碼中插入 `TrackEvent` 呼叫，以計算各種事件。 使用者選擇特定功能的頻率、達成特定目標的頻率，或他們犯特定類型錯誤的頻率。
 
@@ -165,7 +165,7 @@ Application Insights 可以將未附加至特定事件的計量繪製成圖表�
 
 * 單一值： 每次在應用程式中執行一個測量，都會將對應值傳送至 Application Insights。 例如，假設您有一個描述容器中項目數的計量。 在特定期間內，您先將 3 個項目放入容器中，再移除 2 個項目。 因此，您會呼叫 `TrackMetric` 兩次：先傳遞值 `3`，再傳遞值 `-2`。 Application Insights 會代替您儲存這兩個值。
 
-* 彙總： 使用計量時，每個單一測量並不重要。 相反地，在特定期間內發生的狀況摘要才重要。 這類摘要稱為_彙總_。 在上述範例中，該期間的彙總計量總和為 `1`，而計量值的計數為 `2`。 使用彙總方法時，您只會在每段期間叫用 `TrackMetric` 一次，並傳送彙總值。 這是建議的方法，因為它可以藉由傳送較少資料點至 Application Insights，同時仍收集所有相關資訊，來大幅降低成本和效能負擔。
+* 彙總： 使用計量時，每個單一測量並不重要。 相反地，在特定期間內發生的狀況摘要才重要。 這類摘要稱為 _彙總_。 在上述範例中，該期間的彙總計量總和為 `1`，而計量值的計數為 `2`。 使用彙總方法時，您只會在每段期間叫用 `TrackMetric` 一次，並傳送彙總值。 這是建議的方法，因為它可以藉由傳送較少資料點至 Application Insights，同時仍收集所有相關資訊，來大幅降低成本和效能負擔。
 
 ### <a name="examples"></a>範例
 
@@ -247,7 +247,7 @@ appInsights.trackPageView("tab1", "http://fabrikam.com/page1.htm");
 
 ### <a name="timing-page-views"></a>計時頁面檢視
 
-根據預設，回報為**頁面檢視載入時間**的時間是測量從瀏覽器傳送要求開始，直到呼叫瀏覽器的頁面載入事件為止的時間。
+根據預設，回報為 **頁面檢視載入時間** 的時間是測量從瀏覽器傳送要求開始，直到呼叫瀏覽器的頁面載入事件為止的時間。
 
 相反地，您可以：
 
@@ -690,7 +690,7 @@ function Authenticated(signInId) {
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-在[計量瀏覽器](../platform/metrics-charts.md)中，您可建立可計算 [已驗證的使用者]**** 和 [使用者帳戶]**** 的圖表。
+在[計量瀏覽器](../platform/metrics-charts.md)中，您可建立可計算 [已驗證的使用者] 和 [使用者帳戶] 的圖表。
 
 您也可以使用特定的使用者名稱和帳戶來 [搜尋](./diagnostic-search.md) 用戶端資料點。
 
@@ -920,7 +920,7 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 *針對 javascript web 用戶端*，請使用 javascript 遙測初始化運算式。
 
-*若要將屬性新增至所有遙測*，並包括來自標準集合模組的資料，請[實作 `ITelemetryInitializer`](./api-filtering-sampling.md#add-properties)。
+*若要將屬性新增至所有遙測*，並包括來自標準集合模組的資料，請 [實作 `ITelemetryInitializer`](./api-filtering-sampling.md#add-properties)。
 
 ## <a name="sampling-filtering-and-processing-telemetry"></a>取樣、篩選及處理遙測資料
 
@@ -952,7 +952,7 @@ TelemetryConfiguration.Active.DisableTelemetry = true;
 telemetry.getConfiguration().setTrackingDisabled(true);
 ```
 
-若要 *停用選取的標準收集*器（例如，效能計數器、HTTP 要求或相依性），請在 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md)中刪除或批註相關的行。例如，如果您想要傳送自己的 TrackRequest 資料，可以這麼做。
+若要 *停用選取的標準收集* 器（例如，效能計數器、HTTP 要求或相依性），請在 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md)中刪除或批註相關的行。例如，如果您想要傳送自己的 TrackRequest 資料，可以這麼做。
 
 *Node.js*
 
@@ -960,7 +960,7 @@ telemetry.getConfiguration().setTrackingDisabled(true);
 telemetry.config.disableAppInsights = true;
 ```
 
-若要在初始化時「停用選取的標準收集器」**(例如，效能計數器、HTTP 要求或相依性)，請將設定方法鏈結至您的 SDK 初始化程式碼：
+若要在初始化時「停用選取的標準收集器」(例如，效能計數器、HTTP 要求或相依性)，請將設定方法鏈結至您的 SDK 初始化程式碼：
 
 ```javascript
 applicationInsights.setup()

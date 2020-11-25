@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.openlocfilehash: bcc0faa8fdbd61ab3e3e0886256f7c796e5a98e2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534680"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011501"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>將 Azure HDInsight 3.6 Hive 工作負載遷移至 HDInsight 4.0
 
@@ -103,7 +103,7 @@ HDInsight 3.6 和4.0 叢集必須使用相同的儲存體帳戶。
 >
 > * 完成此腳本之後，會假設舊的叢集不再用於存取腳本中所參考的任何資料表或資料庫。
 >
-> * 所有受控資料表在 HDInsight 4.0 中都會變成交易式。 （選擇性）將資料匯出至具有屬性 ' external. table. 清除 ' = ' true ' 的外部資料表，以將資料表保持為非交易式。 例如，套用至物件的
+> * 所有受控資料表在 HDInsight 4.0 中都會變成交易式。 （選擇性）將資料匯出至具有屬性 ' external. table. 清除 ' = ' true ' 的外部資料表，以將資料表保持為非交易式。 例如，
 >
 >    ```SQL
 >    create table tablename_backup like tablename;
@@ -212,7 +212,7 @@ HDInsight 3.6 和4.0 叢集必須使用相同的儲存體帳戶。
 
 在 HDInsight 4.0 中，HiveCLI 已被 Beeline 取代。 Tez view/Hive view 提供以 GUI 為基礎的工作流程。 HiveCLI 是 Hiveserver 1 的 thrift 用戶端，而 Beeline 是 JDBC 用戶端，可提供 Hiveserver 2 的存取權。 Beeline 也可以用來連接到任何其他與 JDBC 相容的資料庫端點。 Beeline 可在 HDInsight 4.0 的現成可用，而不需要任何安裝。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [HDInsight 4.0 公告](../hdinsight-version-release.md)
 * [HDInsight 4.0 深入探討](https://azure.microsoft.com/blog/deep-dive-into-azure-hdinsight-4-0/)

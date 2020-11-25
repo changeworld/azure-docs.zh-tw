@@ -16,11 +16,11 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f4e2e18f3bb9d1c972d805a60493897d605921e4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365522"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010634"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>邀請來賓使用者，並在 Privileged Identity Management 中指派 Azure 資源角色
 
@@ -57,7 +57,7 @@ Azure Active Directory (Azure AD) 來賓使用者屬於 (中的企業對企業) 
 
 1. 選取 [ **Azure Active Directory**  >  **使用者設定**]。
 
-1. 選取 [ **管理外部**共同作業設定]。
+1. 選取 [ **管理外部** 共同作業設定]。
 
     ![顯示許可權、邀請及共同作業限制設定的外部共同作業設定頁面](./media/pim-resource-roles-external-users/external-collaboration-settings.png)
 
@@ -73,7 +73,7 @@ Azure Active Directory (Azure AD) 來賓使用者屬於 (中的企業對企業) 
 
 1. 選取 [ **Azure 資源**]。
 
-1. 使用 [資源篩選]**** 來篩選管理的資源清單。
+1. 使用 [資源篩選] 來篩選管理的資源清單。
 
 1. 選取您要管理的資源，例如資源、資源群組、訂用帳戶或管理群組。
 
@@ -89,7 +89,7 @@ Azure Active Directory (Azure AD) 來賓使用者屬於 (中的企業對企業) 
 
 1. 在 [角色] 頁面上，選取 [新增 **成員** ] 以開啟 [新增指派] 窗格。
 
-1. 按一下 [選取成員或群組]****。
+1. 按一下 [選取成員或群組]。
 
     ![新增指派-選取成員或群組窗格，列出使用者和群組，以及邀請選項](./media/pim-resource-roles-external-users/select-member-group.png)
 
@@ -123,7 +123,7 @@ Azure Active Directory (Azure AD) 來賓使用者屬於 (中的企業對企業) 
 
 1. 選取電子郵件中的 **開始** 連結。
 
-1. 檢閱權限之後，按一下 [接受]****。
+1. 檢閱權限之後，按一下 [接受]。
 
     ![瀏覽器中的 [許可權] 頁面，其中包含組織想要審核的許可權清單](./media/pim-resource-roles-external-users/invite-accept.png)
 
@@ -141,7 +141,7 @@ Azure Active Directory (Azure AD) 來賓使用者屬於 (中的企業對企業) 
 
     根據角色設定，您必須指定一些資訊才能啟用該角色。
 
-1. 您指定了角色的設定之後，按一下 [啟用]**** 以啟用角色。
+1. 您指定了角色的設定之後，按一下 [啟用] 以啟用角色。
 
     ![啟用頁面清單範圍和選項，以指定開始時間、持續時間和原因](./media/pim-resource-roles-external-users/activate-role.png)
 
@@ -157,7 +157,7 @@ Azure Active Directory (Azure AD) 來賓使用者屬於 (中的企業對企業) 
 
     ![Azure 資源-列出時間、要求者和動作的資源審核頁面](./media/pim-resource-roles-external-users/audit-resource.png)
 
-1. 若要查看來賓的活動，請選取 [ **Azure Active Directory**  >  **使用者**的  >  *來賓名稱*]。
+1. 若要查看來賓的活動，請選取 [ **Azure Active Directory**  >  **使用者** 的  >  *來賓名稱*]。
 
 1. 選取 [ **audit logs** ] 以查看組織的審核記錄。 如有需要，您可以搜尋篩選條件。
 

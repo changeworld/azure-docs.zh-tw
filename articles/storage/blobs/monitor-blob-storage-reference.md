@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 8caa39bea2d0d835a94bc95a747f1f870bae3b12
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: d33c368c271c4d1809834e2eeac8c4b5c0ba0441
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357533"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011118"
 ---
 # <a name="azure-blob-storage-monitoring-data-reference"></a>Azure Blob 儲存體監視資料參考
 
@@ -36,12 +36,12 @@ Azure 儲存體會提供下列 Azure 監視器容量計量。
 
 #### <a name="blob-storage"></a>Blob 儲存體
 
-下表顯示 [Blob 儲存體計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsblobservices)。
+下表顯示 [Blob 儲存體計量](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices)。
 
-| 計量 | 描述 |
+| Metric | 描述 |
 | ------------------- | ----------------- |
-| BlobCapacity | 儲存體帳戶中所使用的 Blob 儲存體總計。 <br/><br/> 單位：位元組 <br/> 彙總類型：Average <br/> 值範例：1024 <br/> 維度： **BlobType** 和 **BlobTier** ( [定義](#metrics-dimensions)) |
-| BlobCount    | 儲存體帳戶中所儲存的 Blob 物件數目。 <br/><br/> 單位：Count <br/> 彙總類型：Average <br/> 值範例：1024 <br/> 維度： **BlobType** 和 **BlobTier** ( [定義](#metrics-dimensions)) |
+| BlobCapacity | 儲存體帳戶中所使用的 Blob 儲存體總計。 <br/><br/> 單位：位元組 <br/> 彙總類型：Average <br/> 值範例：1024 <br/> 維度：**BlobType** 和 **BlobTier** ([定義](#metrics-dimensions)) |
+| BlobCount    | 儲存體帳戶中所儲存的 Blob 物件數目。 <br/><br/> 單位：Count <br/> 彙總類型：Average <br/> 值範例：1024 <br/> 維度：**BlobType** 和 **BlobTier** ([定義](#metrics-dimensions)) |
 | BlobProvisionedSize | 在儲存體帳戶中布建的儲存體數量。 此計量僅適用于 premium 儲存體帳戶。 <br/><br/> 單位：位元組 <br/> 彙總類型：Average |
 | ContainerCount    | 儲存體帳戶中的容器數目。 <br/><br/> 單位：Count <br/> 彙總類型：Average <br/> 值範例：1024 |
 | IndexCapacity     | ADLS Gen2 階層式索引使用的儲存體容量 <br/><br/> 單位：位元組 <br/> 彙總類型：Average <br/> 值範例：1024 |
@@ -66,8 +66,8 @@ Azure 儲存體支援下列 Azure 監視器計量維度。
 
 | 維度名稱 | 描述 |
 | ------------------- | ----------------- |
-| **BlobType** | 只適用於 Blob 計量的 Blob 類型。 支援的值為 **BlockBlob** 、 **PageBlob** 和 **Azure Data Lake Storage** 。 附加 blob 包含在 **BlockBlob** 中。 |
-| **BlobTier** | Azure 儲存體提供不同的存取層，可讓您以最符合成本效益的方式儲存 Blob 物件資料。 如需詳細資訊，請參閱 [Azure 儲存體 Blob 層](../blobs/storage-blob-storage-tiers.md)。 支援的值包括： <br/> <li>**經常性** ：經常性存取層</li> <li>**非經常性** ：非經常性存取層</li> <li>**封存** ：封存層</li> <li>**進階** ：區塊 Blob 的進階層</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60** ：進階分頁 Blob 的層級類型</li> <li>**標準** ：標準分頁 Blob 的層級類型</li> <li>**無分層** ：一般用途 v1 儲存體帳戶的層級類型</li> |
+| **BlobType** | 只適用於 Blob 計量的 Blob 類型。 支援的值為 **BlockBlob**、**PageBlob** 和 **Azure Data Lake Storage**。 附加 blob 包含在 **BlockBlob** 中。 |
+| **BlobTier** | Azure 儲存體提供不同的存取層，可讓您以最符合成本效益的方式儲存 Blob 物件資料。 如需詳細資訊，請參閱 [Azure 儲存體 Blob 層](../blobs/storage-blob-storage-tiers.md)。 支援的值包括： <br/> <li>**經常性**：經常性存取層</li> <li>**非經常性**：非經常性存取層</li> <li>**封存**：封存層</li> <li>**進階**：區塊 Blob 的進階層</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**：進階分頁 Blob 的層級類型</li> <li>**標準**：標準分頁 Blob 的層級類型</li> <li>**無分層**：一般用途 v1 儲存體帳戶的層級類型</li> |
 
 對於計量支援維度，您必須指定維度值才能查看對應的計量值。 例如，如果您要查看成功回應的 **Transactions** 值，則需要篩選具有 **Success** 值的 **ResponseType** 維度。 如果您查看區塊 Blob 的 **BlobCount** 值，就必須使用 **BlockBlob** 來篩選 **BlobType** 維度。
 

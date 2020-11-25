@@ -13,11 +13,11 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 02/22/2019
 ms.openlocfilehash: 156a4c74eea24b20c28df88be85cb32c0ebe2981
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617633"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012440"
 ---
 # <a name="determine-required-subnet-size--range-for-azure-sql-managed-instance"></a>判斷 Azure SQL 受控執行個體所需的子網大小 & 範圍
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -48,18 +48,18 @@ Azure SQL 受控執行個體必須部署在 Azure [虛擬網路 (VNet) ](../../v
 - 每個受控實例都會使用取決於定價層和硬體世代的位址數目
 
 > [!IMPORTANT]
-> 如果子網中有任何資源，則不可能變更子網位址範圍。 您也無法將受控實例從一個子網移至另一個子網。 可能的話，請考慮使用較大的子網而不是較小的子網，以防止未來發生問題。
+> 如果子網路中有任何資源存在，您就無法變更子網路位址範圍。 也不可能將受控執行個體從一個子網路移至另一個子網路。 可能的話，請考慮使用較大的子網而不是較小的子網，以防止未來發生問題。
 
 GP = 一般用途;BC = 商務關鍵性;VC = 虛擬叢集
 
-| **硬體 gen** | **定價層** | **Azure 使用情況** | **VC 使用方式** | **實例使用方式** | **總*** |
+| **硬體 gen** | **定價層** | **Azure 使用情況** | **VC 使用方式** | **實例使用方式** | **總計** _ |
 | --- | --- | --- | --- | --- | --- |
 | Gen4 | GP | 5 | 1 | 5 | 11 |
 | Gen4 | BC | 5 | 1 | 5 | 11 |
 | Gen5 | GP | 5 | 6 | 3 | 14 |
 | Gen5 | BC | 5 | 6 | 5 | 16 |
 
-  \* [資料行總計] 會顯示在子網中部署一個實例時所要採取的位址數目。 子網中的每個額外實例都會新增以 [實例使用量] 資料行表示的位址數目。 以 Azure 使用量資料行表示的位址會在多個虛擬叢集之間共用，而以 VC usage 資料行表示的位址則會在放置於該虛擬叢集的實例之間共用。
+  \_ [資料行總計] 會顯示在子網中部署一個實例時所要採取的位址數目。 子網中的每個額外實例都會新增以 [實例使用量] 資料行表示的位址數目。 以 Azure 使用量資料行表示的位址會在多個虛擬叢集之間共用，而以 VC usage 資料行表示的位址則會在放置於該虛擬叢集的實例之間共用。
 
 更新作業通常需要調整虛擬叢集大小。 在某些情況下，更新作業將需要建立虛擬叢集 (如需詳細資料，請檢查 [管理作業文章](sql-managed-instance-paas-overview.md#management-operations)) 。 在建立虛擬叢集的案例中，所需的額外位址數目等於 [VC usage] 資料行所代表的位址數目，以及放置於該虛擬叢集中的實例所需的位址， (實例使用量] 資料行) 。
 
@@ -74,12 +74,12 @@ GP = 一般用途;BC = 商務關鍵性;VC = 虛擬叢集
 
 在調整作業期間，暫時需要依賴定價層和硬體世代的額外 IP 容量
 
-| **硬體 gen** | **定價層** | **案例** | **其他位址*** |
+| **硬體 gen** | **定價層** | **案例** | **其他位址** _ |
 | --- | --- | --- | --- |
 | Gen4 | GP 或 BC | 調整虛擬核心 | 5 |
 | Gen4 | GP 或 BC | 調整儲存體 | 5 |
 | Gen4 | GP 或 BC | 從 GP 切換至 BC 或 BC 至 GP | 5 |
-| Gen4 | GP | 切換至第5代 * | 9 |
+| Gen4 | GP | 切換至 Gen5_ | 9 |
 | Gen4 | BC | 切換至第5代 * | 11 |
 | Gen5 | GP | 調整虛擬核心 | 3 |
 | Gen5 | GP | 調整儲存體 | 0 |
