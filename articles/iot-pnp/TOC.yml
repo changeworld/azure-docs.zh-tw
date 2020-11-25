@@ -12,39 +12,13 @@
     - name: 設定您的環境
       href: set-up-environment.md
     - name: 將裝置連線到 IoT 中樞
-      items:
-        - name: C
-          href: quickstart-connect-device-c.md
-        - name: Node.js
-          href: quickstart-connect-device-node.md
-        - name: Python
-          href: quickstart-connect-device-python.md
-        - name: C#
-          href: quickstart-connect-device-csharp.md
-        - name: Java
-          href: quickstart-connect-device-java.md
+      href: quickstart-connect-device.md
     - name: 從您的解決方案與裝置互動
-      items:
-        - name: Node.js
-          href: quickstart-service-node.md
-        - name: Python
-          href: quickstart-service-python.md
-        - name: C#
-          href: quickstart-service-csharp.md
-        - name: Java
-          href: quickstart-service-java.md
+      href: quickstart-service.md
 - name: 教學課程
   items:
-    - name: 連接多個元件裝置 (C)
-      href: tutorial-multiple-components-c.md
-    - name: 連接多個元件裝置 (C#)
-      href: tutorial-multiple-components-csharp.md
-    - name: 連接多個元件裝置 (Java)
-      href: tutorial-multiple-components-java.md
-    - name: 連接多個元件裝置 (Node.js)
-      href: tutorial-multiple-components-node.md
-    - name: 連接多個元件裝置 (Python)
-      href: tutorial-multiple-components-python.md
+    - name: 連接多個元件裝置
+      href: tutorial-multiple-components.md
     - name: 使用 MQTT 來連接裝置
       href: tutorial-use-mqtt.md
     - name: 與 MXChip 裝置互動 (範例)
@@ -58,17 +32,7 @@
     - name: 架構
       href: concepts-architecture.md
     - name: 裝置開發人員指南
-      items:
-        - name: C#
-          href: concepts-developer-guide-device-csharp.md
-        - name: Node.js
-          href: concepts-developer-guide-device-node.md
-        - name: Java
-          href: concepts-developer-guide-device-java.md
-        - name: Python
-          href: concepts-developer-guide-device-python.md
-        - name: C
-          href: concepts-developer-guide-device-c.md
+      href: concepts-developer-guide-device.md
     - name: 服務開發人員指南
       href: concepts-developer-guide-service.md
     - name: 元件

@@ -5,16 +5,16 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 5e83650bc9861f982c4905e26fbb674abbd4de97
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c341ba20ece26e15255faf086e5bd2904fbaa797
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135718"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95095934"
 ---
-在本快速入門中，您將了解如何使用適用於 Android 的語音裝置 SDK 建置具備語音功能的產品，或使用它作為[交談轉譯](../conversation-transcription-service.md)裝置。
+在本快速入門中，您將了解如何使用適用於 Android 的語音裝置 SDK 建置具備語音功能的產品，或使用它作為[交談轉譯](../conversation-transcription.md)裝置。
 
-本指南需要 [Azure 認知服務帳戶](../get-started.md)和語音服務資源。
+本指南需要 [Azure 認知服務帳戶](../overview.md#try-the-speech-service-for-free)和語音服務資源。
 
 範例應用程式的原始程式碼包含在「語音裝置 SDK」中。 您也可以[在 GitHub 上取得](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)該原始程式碼。
 
@@ -24,18 +24,18 @@ ms.locfileid: "93135718"
 
 - 請遵循[開發套件](../get-speech-devices-sdk.md)隨附的指示來開啟裝置電源。
 
-- 下載最新版的[語音裝置 SDK](https://aka.ms/sdsdk-download)，並將 .zip 擷取至您的工作目錄。
+- 下載最新版的[語音裝置 SDK](../speech-devices-sdk.md)，並將 .zip 擷取至您的工作目錄。
 
   > [!NOTE]
   > 本快速入門會假設應用程式已解壓縮至 C:\SDSDK\Android-Sample-Release
 
-- 取得[適用於語音服務的 Azure 訂用帳戶金鑰](../get-started.md)
+- 取得[適用於語音服務的 Azure 訂用帳戶金鑰](../overview.md#try-the-speech-service-for-free)
 
 - 如果您打算使用交談轉譯，則必須使用[環形麥克風裝置](../get-speech-devices-sdk.md)，這項功能目前僅適用於 "centralus" 和 "eastasia" 區域的 "en-US" 和 "zh-CN"。 您在其中一個區域中必須具有語音金鑰，才能使用交談轉譯。
 
-- 如果您打算使用語音服務來識別使用者語句中的意圖 (或動作)，您將需要 [Language Understanding Service (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) 訂用帳戶。 若要深入了解 LUIS 和意圖辨識，請參閱[使用 LUIS (C#) 辨識語音意圖](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)。
+- 如果您打算使用語音服務來識別使用者語句中的意圖 (或動作)，您將需要 [Language Understanding Service (LUIS)](../../luis/luis-how-to-azure-subscription.md) 訂用帳戶。 若要深入了解 LUIS 和意圖辨識，請參閱[使用 LUIS (C#) 辨識語音意圖](../how-to-recognize-intents-from-speech-csharp.md)。
 
-  您可以[建立簡單 LUIS 模型](https://docs.microsoft.com/azure/cognitive-services/luis/)，或使用簡單 LUIS 模型 LUIS-example.json。 您可以從[語音裝置 SDK 下載網站](https://aka.ms/sdsdk-luis)取得範例 LUIS 模型。 若要將您模型的 JSON 檔案上傳到 [LUIS 入口網站](https://www.luis.ai/home)，請選取 [Import new app] \(匯入新應用程式\)，然後選取 JSON 檔案。
+  您可以[建立簡單 LUIS 模型](../../luis/index.yml)，或使用簡單 LUIS 模型 LUIS-example.json。 您可以從[語音裝置 SDK 下載網站](https://aka.ms/sdsdk-luis)取得範例 LUIS 模型。 若要將您模型的 JSON 檔案上傳到 [LUIS 入口網站](https://www.luis.ai/home)，請選取 [Import new app] \(匯入新應用程式\)，然後選取 JSON 檔案。
 
 - 在您的電腦上安裝 [Android Studio](https://developer.android.com/studio/) 和 [Vysor](https://vysor.io/download/)。
 
@@ -122,7 +122,7 @@ ms.locfileid: "93135718"
 1. 預設關鍵字是 "Computer"。 您也可以嘗試其中一個其他提供的關鍵字，例如 "Machine" 或 "Assistant"。 這些替代關鍵字的資源檔位於語音裝置 SDK 的 [keyword] 資料夾中。 例如 C:\SDSDK\Android-Sample-Release\keyword\Computer 便包含用於 "Computer" 關鍵字的檔案。
 
    > [!TIP]
-   > 您也可以[建立自訂關鍵字](../speech-devices-sdk-create-kws.md)。
+   > 您也可以[建立自訂關鍵字](../custom-keyword-basics.md)。
 
    若要使用新的關鍵字，請更新 `MainActivity.java` 中的下列兩行，並將關鍵字套件複製到您的應用程式。 例如，若要使用來自關鍵字套件 kws-machine.zip 的關鍵字 'Machine'：
 
@@ -162,7 +162,7 @@ ms.locfileid: "93135718"
 
    ![「語音裝置 SDK」範例應用程式和選項](../media/speech-devices-sdk/qsg-8.png)
 
-1. 嘗試新的交談轉譯示範。 透過 [啟動工作階段] 開始轉譯。 根據預設，每個人都是來賓。 不過，如果您有參與者的語音簽章，可以將其放入裝置上的 `/video/participants.properties` 檔案中。 若要產生語音簽章，請查看[轉譯交談 (SDK)](../how-to-use-conversation-transcription-service.md)。
+1. 嘗試新的交談轉譯示範。 透過 [啟動工作階段] 開始轉譯。 根據預設，每個人都是來賓。 不過，如果您有參與者的語音簽章，可以將其放入裝置上的 `/video/participants.properties` 檔案中。 若要產生語音簽章，請查看[轉譯交談 (SDK)](../how-to-use-conversation-transcription.md)。
 
    ![示範交談轉譯應用程式](../media/speech-devices-sdk/qsg-15.png)
 

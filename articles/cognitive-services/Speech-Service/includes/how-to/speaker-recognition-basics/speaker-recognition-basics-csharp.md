@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: v-jawe
 ms.custom: references_regions
-ms.openlocfilehash: 5be99ba09032020abf777c80307e347658a6e037
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 2b5a34e8f3e7132a16ad3683b846d57e9ece2cb6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92471033"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015460"
 ---
 在本快速入門中，您將了解使用語音 SDK 進行說話者辨識的基本設計模式，包括：
 
@@ -51,7 +51,7 @@ using Microsoft.CognitiveServices.Speech.Audio;
 
 ## <a name="create-a-speech-configuration"></a>建立語音設定
 
-若要使用語音 SDK 來呼叫語音服務，您必須建立 [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true)。 在此範例中，您會使用訂用帳戶金鑰和區域來建立 [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true)。 您也會建立一些基本的重複使用程式碼，用於本文的其餘部分，而您可針對不同的自訂項目進行修改。
+若要使用語音 SDK 來呼叫語音服務，您必須建立 [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet)。 在此範例中，您會使用訂用帳戶金鑰和區域來建立 [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet)。 您也會建立一些基本的重複使用程式碼，用於本文的其餘部分，而您可針對不同的自訂項目進行修改。
 
 請注意，區域會設定為 `westus`，因為這是唯一支援該服務的區域。
 
@@ -70,7 +70,7 @@ public class Program
 
 ## <a name="text-dependent-verification"></a>文字相依驗證
 
-說話者驗證是確認說話者符合已知或 **已註冊** 語音的動作。 第一個步驟是 **註冊** 一個語音設定檔，讓服務有一些內容可比較未來的語音樣本。 在此範例中，您會使用 **與文字相關的** 策略來註冊設定檔，這需要使用特定的傳遞片語來進行註冊和驗證。 如需支援的傳遞片語清單，請參閱 [參考文件](https://docs.microsoft.com/rest/api/speakerrecognition/)。
+說話者驗證是確認說話者符合已知或 **已註冊** 語音的動作。 第一個步驟是 **註冊** 一個語音設定檔，讓服務有一些內容可比較未來的語音樣本。 在此範例中，您會使用 **與文字相關的** 策略來註冊設定檔，這需要使用特定的傳遞片語來進行註冊和驗證。 如需支援的傳遞片語清單，請參閱 [參考文件](/rest/api/speakerrecognition/)。
 
 一開始，請先在您的 `Program` 類別中建立下列函式，以註冊語音設定檔。
 
@@ -127,7 +127,7 @@ public static async Task SpeakerVerify(SpeechConfig config, VoiceProfile profile
 
 在此函式中，您會傳遞剛建立的 `VoiceProfile` 物件以初始化模型，藉此進行驗證。 接下來，`await speakerRecognizer.RecognizeOnceAsync(model)` 會提示您再次說出此傳遞片語，但這次它會根據您的語音設定檔進行驗證，並傳回介於 0.0-1.0 的相似性分數。 根據傳遞片語是否相符，`result` 物件也會傳回 `Accept` 或 `Reject`。
 
-接下來，修改您的 `Main()` 函式，以呼叫您所建立的新函式。 此外，請注意，您可以透過函式呼叫，建立由參考傳遞的 `Dictionary<string, string>`。 這是因為服務不允許以建立的 `VoiceProfile` 儲存人可閱讀的名稱，而且只會儲存用於隱私權的識別碼號碼。 在 `VerificationEnroll` 函式中，您會將含有新建立之識別碼的項目加上文字名稱，加入此字典中。 在需要顯示人類可閱讀名稱的應用程式開發案例中， **您必須將此對應儲存在某處，因為服務無法將其儲存** 。
+接下來，修改您的 `Main()` 函式，以呼叫您所建立的新函式。 此外，請注意，您可以透過函式呼叫，建立由參考傳遞的 `Dictionary<string, string>`。 這是因為服務不允許以建立的 `VoiceProfile` 儲存人可閱讀的名稱，而且只會儲存用於隱私權的識別碼號碼。 在 `VerificationEnroll` 函式中，您會將含有新建立之識別碼的項目加上文字名稱，加入此字典中。 在需要顯示人類可閱讀名稱的應用程式開發案例中，**您必須將此對應儲存在某處，因為服務無法將其儲存**。
 
 ```csharp
 static async Task Main(string[] args)
@@ -163,7 +163,7 @@ Verified voice profile for speaker Your Name, score is 0.915581
 
 ## <a name="text-independent-verification"></a>與文字無關的驗證
 
-相對於 **與文字相關的** 驗證， **與文字無關的** 驗證是：
+相對於 **與文字相關的** 驗證，**與文字無關的** 驗證是：
 
 * 不需要說出特定的傳遞片語，可以說出任何內容
 * 不需要三個音訊樣本，但是總計 *需要* 20 秒的音訊
@@ -230,7 +230,7 @@ Verified voice profile for speaker Your Name, score is 0.849409
 
 ## <a name="speaker-identification"></a>說話者識別
 
-說話者辨識是用來判斷從指定的已註冊語音群組說話者的 **身份** 。 此流程非常類似 **與文字無關的驗證** ，主要差異在於能夠一次針對多個語音設定檔進行驗證，而不是針對單一設定檔進行驗證。
+說話者辨識是用來判斷從指定的已註冊語音群組說話者的 **身份**。 此流程非常類似 **與文字無關的驗證**，主要差異在於能夠一次針對多個語音設定檔進行驗證，而不是針對單一設定檔進行驗證。
 
 建立函式 `IdentificationEnroll` 以註冊多個語音設定檔。 每個設定檔的註冊流程皆和 **與文字無關的驗證** 註冊流程相同，而且每個設定檔都需要 20 秒的音訊。 此函式會接受 `profileNames`的字串清單，並會為清單中的每個名稱建立新的語音設定檔。 函式會傳回 `VoiceProfile` 物件的清單，您可以在下一個函式中用來識別說話者。
 

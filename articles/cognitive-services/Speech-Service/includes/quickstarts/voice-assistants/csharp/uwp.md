@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e2d43290946969643b10d2ecad2f076df208a5d0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ea7ea08fc07a895bc038b27701d7038a5f76c26f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88925389"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95095772"
 ---
 ## <a name="prerequisites"></a>必要條件
 
 開始之前，請務必：
 
 > [!div class="checklist"]
-> * [建立 Azure 語音資源](~/articles/cognitive-services/speech-service/get-started.md)
+> * [建立 Azure 語音資源](../../../../overview.md#try-the-speech-service-for-free)
 > * [設定您的開發環境並建立空白專案](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
-> * 建立連線至 [Direct Line Speech 通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)的 Bot
+> * 建立連線至 [Direct Line Speech 通道](/azure/bot-service/bot-service-channel-connect-directlinespeech)的 Bot
 > * 確定您可以存取麥克風以擷取音訊
 > 
   > [!NOTE]
@@ -277,7 +277,7 @@ ms.locfileid: "88925389"
    > 請參閱[語音助理支援的區域清單](~/articles/cognitive-services/speech-service/regions.md#voice-assistants)，並確定您的資源已部署於其中一個區域。
 
    > [!NOTE]
-   > 如需設定 Bot 的詳細資訊，請參閱 [Direct Line Speech 通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)的 Bot Framework 文件。
+   > 如需設定 Bot 的詳細資訊，請參閱 [Direct Line Speech 通道](/azure/bot-service/bot-service-channel-connect-directlinespeech)的 Bot Framework 文件。
 
 1. 針對您的語音訂用帳戶和[區域](~/articles/cognitive-services/speech-service/regions.md)，以您自己的值取代字串 `YourSpeechSubscriptionKey` 和 `YourServiceRegion`。
 

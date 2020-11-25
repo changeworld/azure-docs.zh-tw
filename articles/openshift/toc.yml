@@ -8,47 +8,45 @@
 - name: 教學課程
   expanded: true
   items:
-    - name: 1 - 建立 Azure Red Hat OpenShift 4 叢集
+    - name: 1 - 建立 ARO 叢集
       href: tutorial-create-cluster.md
-    - name: 2 - 連線至 Azure Red Hat OpenShift 4 叢集
+    - name: 2 - 連線至 ARO 叢集
       href: tutorial-connect-cluster.md
-    - name: 3 - 刪除 Azure Red Hat OpenShift 4 叢集
+    - name: 3 - 刪除 ARO 叢集
       href: tutorial-delete-cluster.md
 - name: 操作指南
   items:
-    - name: 建立私人 Azure Red Hat OpenShift 4 叢集
-      href: howto-create-private-cluster-4x.md
-    - name: 在 Azure Red Hat OpenShift 4 上建立 Azure 檔案儲存體 StorageClass
-      href: howto-create-a-storageclass.md
-    - name: 更新 Azure Red Hat OpenShift 4 叢集的提取祕密
-      href: howto-add-update-pull-secret.md
-    - name: 設定 Azure Red Hat OpenShift 4 叢集的 DNS 轉送
-      href: dns-forwarding.md
-    - name: 設定適用於 Azure Red Hat OpenShift 4 的內建容器登錄
-      href: built-in-container-registry.md
-    - name: 設定 Azure Red Hat OpenShift 4 叢集的 Azure Active Directory 驗證
+    - name: 網路
+      items:
+        - name: 建立私人 ARO 叢集
+          href: howto-create-private-cluster-4x.md
+        - name: 設定 DNS 轉寄站
+          href: dns-forwarding.md
+    - name: 安全性和驗證
       items:
         - name: 設定 Azure Active Directory 驗證 (CLI)
           href: configure-azure-ad-cli.md
         - name: 設定 Azure Active Directory 驗證 (入口網站)
           href: configure-azure-ad-ui.md
-    - name: 使用 Velero 建立備份並還原應用程式
+        - name: 更新 ARO 叢集的提取密碼
+          href: howto-add-update-pull-secret.md
+    - name: 備份與還原
       items:
         - name: 使用 Velero 建立叢集應用程式備份
           href: howto-create-a-backup.md
         - name: 使用 Velero 建立叢集應用程式還原
           href: howto-create-a-restore.md
-    - name: Azure Red Hat OpenShift 4 的監視和記錄
+    - name: 監視和記錄
       items:
-        - name: 適用於 Azure Red Hat OpenShift 4 (預覽) 中容器的 Azure 監視器
+        - name: 適用於容器的 Azure 監視器
           items:
-            - name: 針對適 Azure Red Hat OpenShift 4 (預覽) 中的容器設定 Azure 監視器
+            - name: 設定 ARO 4 中適用於容器的 Azure 監視器 (預覽)
               href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
-            - name: 針對 Azure Red Hat OpenShift 3.11 (預覽) 中的容器停用 Azure 監視器
+            - name: 停用 ARO 4 中適用於容器的 Azure 監視器 (預覽)
               href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
-    - name: 在 Azure Red Hat OpenShift 4 叢集上開啟 Liberty/WebSphere Liberty
+    - name: 開發及執行應用程式
       items:
-        - name: 在 Azure Red Hat OpenShift 4 叢集上部署開放式的 Liberty/WebSphere Liberty 應用程式
+        - name: 部署開放式 Liberty/WebSphere Liberty 應用程式
           href: howto-deploy-java-liberty-app.md
     - name: Azure Red Hat OpenShift 3.11
       items:
@@ -85,9 +83,9 @@
               href: cluster-administration-security-context-constraints.md
 - name: 概念
   items:
-    - name: Azure Red Hat OpenShift 4 叢集內的網路
+    - name: 網路
       href: concepts-networking.md
-    - name: 從 Azure Red Hat OpenShift 3.11 遷移至 Azure Red Hat OpenShift 4
+    - name: 從 ARO 3.11 遷移至 ARO 4
       href: migration.md
 - name: 參考
   items:
@@ -101,17 +99,15 @@
       href: openshift-faq.md
     - name: 疑難排解
       href: troubleshoot.md
-    - name: Azure Red Hat OpenShift 3.11 支援的資源
-      href: supported-resources.md
-    - name: Azure Red Hat OpenShift 4.3 支援的資源
+    - name: ARO 4 的支援原則
       href: support-policies-v4.md
-    - name: Azure Red Hat OpenShift 4 的支援生命週期
+    - name: ARO 4 的支援生命週期
       href: support-lifecycle.md
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Azure Red Hat OpenShift 4.3 文件
+    - name: Red Hat OpenShift 4 文件
       href: 'https://docs.openshift.com/aro/4/welcome/index.html'
-    - name: Azure Red Hat OpenShift 3.11 文件
-      href: 'https://docs.openshift.com/aro/3/welcome/index.html'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
+    - name: ARO Roadmap
+      href: 'https://github.com/Azure/OpenShift/projects/1'

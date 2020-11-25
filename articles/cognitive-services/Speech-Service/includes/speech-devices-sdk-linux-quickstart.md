@@ -5,18 +5,18 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 5766eb821800568b567350e1360ca4cf5403be6d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3c093539301f3f4e3309094f0b53a1f0e8393150
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135646"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95097901"
 ---
-在本快速入門中，您將了解如何使用適用於 Linux 的語音裝置 SDK 建置具備語音功能的產品，或使用它作為[交談轉譯](../conversation-transcription-service.md)裝置。 目前僅支援 [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)。
+在本快速入門中，您將了解如何使用適用於 Linux 的語音裝置 SDK 建置具備語音功能的產品，或使用它作為[交談轉譯](../conversation-transcription.md)裝置。 目前僅支援 [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)。
 
 此應用程式是使用語音 SDK 套件，以及 64 位元 Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7/8、CentOS 7/8) 上的 Eclipse Java IDE (v4) 來建置。 它會在 64 位元 Java 8 Runtime Environment (JRE) 上執行。
 
-本指南需要 [Azure 認知服務帳戶](../get-started.md)和語音服務資源。 
+本指南需要 [Azure 認知服務帳戶](../overview.md#try-the-speech-service-for-free)和語音服務資源。 
 
 [範例應用程式](https://aka.ms/sdsdk-download-JRE)的原始程式碼包含在語音裝置 SDK 中。 您也可以[在 GitHub 上取得](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)該原始程式碼。
 
@@ -28,7 +28,7 @@ ms.locfileid: "93135646"
 * [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/) \(英文\)
 * 僅限 [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) 或 [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)。
-* 適用於語音服務的 Azure 訂用帳戶金鑰。 [免費取得一個金鑰](../get-started.md)。
+* 適用於語音服務的 Azure 訂用帳戶金鑰。 [免費取得一個金鑰](../overview.md#try-the-speech-service-for-free)。
 * 下載適用於 Java 的最新版[語音裝置 SDK](https://aka.ms/sdsdk-download-JRE)，並將 .zip 擷取至您的工作目錄。
    > [!NOTE]
    > 本快速入門會假設應用程式已解壓縮至 /home/wcaltest/JRE-Sample-Release
@@ -62,7 +62,7 @@ ms.locfileid: "93135646"
 
 交談轉譯目前只適用於 "centralus" 和 "eastasia" 區域中的 "en-US" 和 "zh-CN"。 您在其中一個區域中必須具有語音金鑰，才能使用交談轉譯。
 
-如果您打算使用意圖，您需要 [Language Understanding Service (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) 訂用帳戶。 若要深入了解 LUIS 和意圖辨識，請參閱[使用 LUIS (C#) 辨識語音意圖](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)。 [範例 LUIS 模型](https://aka.ms/sdsdk-luis)適用於此應用程式。
+如果您打算使用意圖，您需要 [Language Understanding Service (LUIS)](../../luis/luis-how-to-azure-subscription.md) 訂用帳戶。 若要深入了解 LUIS 和意圖辨識，請參閱[使用 LUIS (C#) 辨識語音意圖](../how-to-recognize-intents-from-speech-csharp.md)。 [範例 LUIS 模型](https://aka.ms/sdsdk-luis)適用於此應用程式。
 
 ## <a name="create-and-configure-the-project"></a>建立和設定報告
 
@@ -107,13 +107,13 @@ ms.locfileid: "93135646"
 
 1. 在 [套件總管] 中，以滑鼠右鍵按一下您的專案。 依序選擇 [屬性]、[執行/偵錯設定] > [新增...] > [Java 應用程式]。 
 
-1. [編輯組態] 視窗隨即出現。 在 [名稱] 欄位中輸入 **Main** ，並在 [主要類別] 中使用 [搜尋] 來尋找和選取 [com.microsoft.cognitiveservices.speech.samples.FunctionsList]。
+1. [編輯組態] 視窗隨即出現。 在 [名稱] 欄位中輸入 **Main**，並在 [主要類別] 中使用 [搜尋] 來尋找和選取 [com.microsoft.cognitiveservices.speech.samples.FunctionsList]。
 
    ![編輯啟動組態的螢幕擷取畫面](../media/speech-devices-sdk/eclipse-edit-launch-configuration-linux.png)
 
 1. 將目標架構的音訊二進位檔從 **Linux-arm** 或 **Linux-x64** 複製到 Java 專案位置，例如 **/home/wcaltest/JRE-Sample-Release**
 
-1. 此外，從 [編輯組態] 視窗中選取 [環境] 頁面和 [新增]。 [新增環境變數] 視窗隨即出現。 在 [名稱] 欄位中輸入 **LD_LIBRARY_PATH** ，並在 [值] 欄位中輸入包含 *.so 檔案的資料夾，例如 **/home/wcaltest/JRE-Sample-Release**
+1. 此外，從 [編輯組態] 視窗中選取 [環境] 頁面和 [新增]。 [新增環境變數] 視窗隨即出現。 在 [名稱] 欄位中輸入 **LD_LIBRARY_PATH**，並在 [值] 欄位中輸入包含 *.so 檔案的資料夾，例如 **/home/wcaltest/JRE-Sample-Release**
 
 1. 將 `kws.table` 和 `participants.properties` 複製到專案資料夾 **target/classes**
 
@@ -143,11 +143,11 @@ ms.locfileid: "93135646"
 1. 預設關鍵字是「Computer」。 您也可以嘗試其中一個其他提供的關鍵字，例如 "Machine" 或 "Assistant"。 這些替代關鍵字的資源檔位於語音裝置 SDK 的 [keyword] 資料夾中。 例如，`/home/wcaltest/JRE-Sample-Release/keyword/Computer` 包含用於關鍵字「Computer」的檔案。
 
    > [!TIP]
-   > 您也可以[建立自訂關鍵字](../speech-devices-sdk-create-kws.md)。
+   > 您也可以[建立自訂關鍵字](../custom-keyword-basics.md)。
 
     若要使用新的關鍵字，請更新 `FunctionsList.java` 中的下列行，並將關鍵字複製到您的應用程式。 例如，若要使用來自關鍵字套件 `machine.zip` 的關鍵字「Machine」：
 
-   * 將 `kws.table` 檔案從 zip 套件複製到專案資料夾 **target/classes** 。
+   * 將 `kws.table` 檔案從 zip 套件複製到專案資料夾 **target/classes**。
 
    * 使用關鍵字名稱更新 `FunctionsList.java`：
 
@@ -163,7 +163,7 @@ ms.locfileid: "93135646"
 
    ![顯示語音裝置 SDK 範例應用程式和選項的螢幕擷取畫面。](../media/speech-devices-sdk/java-sample-app-linux.png)
 
-1. 嘗試新的 [交談轉譯] 示範。 透過 [工作階段] > [啟動] 開始轉譯。 根據預設，每個人都是來賓。 不過，如果您有參與者的語音簽章，可以將其放入專案資料夾 **target/classes** 的 `participants.properties` 中。 若要產生語音簽章，請查看[轉譯交談 (SDK)](../how-to-use-conversation-transcription-service.md)。
+1. 嘗試新的 [交談轉譯] 示範。 透過 [工作階段] > [啟動] 開始轉譯。 根據預設，每個人都是來賓。 不過，如果您有參與者的語音簽章，可以將其放入專案資料夾 **target/classes** 的 `participants.properties` 中。 若要產生語音簽章，請查看[轉譯交談 (SDK)](../how-to-use-conversation-transcription.md)。
 
    ![顯示示範交談轉譯應用程式的螢幕擷取畫面。](../media/speech-devices-sdk/cts-sample-app-linux.png)
 

@@ -4,6 +4,8 @@
   items:
     - name: Azure 備份概觀
       href: backup-overview.md
+    - name: Azure 備份的新功能
+      href: whats-new.md
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/backup/'
 - name: 快速入門

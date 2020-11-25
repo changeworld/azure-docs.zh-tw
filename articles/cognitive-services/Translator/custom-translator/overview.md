@@ -9,16 +9,16 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: 55555d81eb531ae5a4d946fa3f661796b3294897
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 6a7301fd878eb65e4c1dd540275611bcf9348afc
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94365494"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241738"
 ---
 # <a name="what-is-custom-translator"></a>什麼是自訂翻譯工具？
 
-[自訂翻譯工具](https://portal.customtranslator.azure.ai)是 Microsoft Translator 服務的功能，可讓翻譯工具企業、應用程式開發人員和語言服務提供者建置自訂的類神經機器翻譯 (NMT) 系統。 自訂的翻譯系統會順暢地整合到現有應用程式、工作流程和網站。 [自訂翻譯工具](https://portal.customtranslator.azure.ai/)所提供的功能，類似於 [Microsoft Translator Hub](https://hub.microsofttranslator.com/) 針對統計機器翻譯 (SMT) 所提供的功能，但前者專供類神經機器翻譯 (NMT) 系統來使用。
+[自訂翻譯工具](https://portal.customtranslator.azure.ai)是 Microsoft Translator 服務的功能，可讓翻譯工具企業、應用程式開發人員和語言服務提供者建置自訂的類神經機器翻譯 (NMT) 系統。 自訂的翻譯系統會順暢地整合到現有應用程式、工作流程和網站。
 
 使用[自訂翻譯工具](https://portal.customtranslator.azure.ai)所建置的翻譯系統，可透過相同的雲端式、[安全](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality)、高效能、具有高度擴充性的 Microsoft Translator [文字 API V3](../reference/v3-0-translate.md?tabs=curl)來使用，其每天支援數十億次翻譯。
 

@@ -1,19 +1,19 @@
 ---
 title: 常見問題集
 description: Azure Spatial Anchors 服務的相關常見問題。
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 05/18/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: eb02de25cfcb0dde01699c1169d03f0d822c4ae2
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 01eb0ce83efa54366e027d35d9c3c3bbf86eff7b
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097400"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95487362"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure Spatial Anchors 的相關常見問題集
 
@@ -90,7 +90,7 @@ Azure Spatial Anchors 會遵循 [Azure 服務合約條款](https://go.microsoft.
 
 **問：使用 Azure Spatial Anchors 需要付費嗎？**
 
-**答：** 您可以在我們的[定價頁面](https://azure.microsoft.com/pricing/details/spatial-anchors/)找到關於定價的詳細資訊。
+**答：** 您可以在我們的 [定價頁面](https://azure.microsoft.com/pricing/details/spatial-anchors/)找到關於定價的詳細資訊。
 
 ## <a name="technical-faqs"></a>技術的常見問題集
 

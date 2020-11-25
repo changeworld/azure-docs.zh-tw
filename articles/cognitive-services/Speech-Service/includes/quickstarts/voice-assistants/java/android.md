@@ -10,21 +10,21 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: fbfc6bf9c50257c2683522913503bf9b29450d94
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bc27c73fbf9e827ce9a95c8aaaddc82ffb0aec53
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86226378"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95096332"
 ---
 ## <a name="prerequisites"></a>必要條件
 
 開始之前，請務必：
 
 > [!div class="checklist"]
-> * [建立 Azure 語音資源](~/articles/cognitive-services/speech-service/get-started.md)
+> * [建立 Azure 語音資源](../../../../overview.md#try-the-speech-service-for-free)
 > * [設定您的開發環境並建立空白專案](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
-> * 建立連線至 [Direct Line Speech 通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)的 Bot
+> * 建立連線至 [Direct Line Speech 通道](/azure/bot-service/bot-service-channel-connect-directlinespeech)的 Bot
 > * 確定您可以存取麥克風以擷取音訊
 
   > [!NOTE]
@@ -272,4 +272,3 @@ UI 的文字表現方式和畫面現在應會如下：
 ## <a name="next-steps"></a>後續步驟
 
 [!INCLUDE [footer](./footer.md)]
-

@@ -23,6 +23,10 @@
           href: tutorial-net-virtual-machine.md
         - name: 在 Python 中搭配使用 Azure Key Vault 與虛擬機器
           href: tutorial-python-virtual-machine.md
+    - name: Azure App Service
+      items:
+        - name: 在 .NET 中透過 Web 應用程式使用 Azure Key Vault
+          href: tutorial-net-create-vault-azure-web-app.md
     - name: Azure Kubernetes Service
       items:
         - name: 整合 Azure Key Vault 與 Kubernetes
@@ -31,8 +35,6 @@
       items:
         - name: 使用 Azure Databricks 和 Azure Key Vault 存取 Azure Blob 儲存體
           href: integrate-databricks-blob-storage.md
-    - name: 使用受控識別和 .NET 將 Key Vault 連線至 Web 應用程式
-      href: tutorial-net-create-vault-azure-web-app.md
 - name: 範例
   items:
     - name: Key Vault 程式碼範例
@@ -144,7 +146,7 @@
           href: move-subscription.md
         - name: 將金鑰保存庫移至另一個區域
           href: move-region.md
-    - name: 網路功能
+    - name: 網路
       items:
         - name: 診斷私人連結設定問題
           href: private-link-diagnostics.md

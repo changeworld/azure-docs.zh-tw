@@ -12,26 +12,26 @@ ms.date: 09/11/2020
 ms.author: swmachan
 ms.custom: cog-serv-seo-aug-2020
 keywords: 翻譯工具, 文字翻譯, 機器翻譯, 翻譯服務
-ms.openlocfilehash: 32ae7f75c1b953e8af7dfef83c1971c2f78b0b62
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 8016c79cbe7f78bdaa18274f8873548e3982df2f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530330"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016461"
 ---
 # <a name="what-is-the-translator-service"></a>什麼是翻譯服務？
 
-翻譯工具是雲端式機器翻譯服務，屬於 [Azure 認知服務](https://docs.microsoft.com/azure/?pivot=products&panel=ai) 系列的認知 API，可用來建置智慧型應用程式。 您可以輕鬆地在應用程式、網站、工具和解決方案中整合翻譯工具。 其可讓您以 [70 種以上的語言](languages.md)新增多語言使用者體驗，並且可在使用任何作業系統的任何硬體平台上用於文字翻譯。
+翻譯工具是雲端式機器翻譯服務，屬於 [Azure 認知服務](../../index.yml?panel=ai&pivot=products) 系列的認知 API，可用來建置智慧型應用程式。 您可以輕鬆地在應用程式、網站、工具和解決方案中整合翻譯工具。 其可讓您以 [70 種以上的語言](./language-support.md)新增多語言使用者體驗，並且可在使用任何作業系統的任何硬體平台上用於文字翻譯。
 
 ## <a name="about-microsoft-translator"></a>關於 Microsoft Translator
 
 翻譯工具可為多種 Microsoft 產品和服務提供技術支援，並由全球數千個企業運用在其應用程式和工作流程中，使其內容得以觸及全球各地的用戶。
 
-語音翻譯由翻譯工具提供技術支援，也可透過 [Azure 語音服務](https://docs.microsoft.com/azure/cognitive-services/speech-service/)來使用。 此服務將翻譯工具語音 API 和自訂語音服務的功能結合為統合且可完整自訂的服務。 
+語音翻譯由翻譯工具提供技術支援，也可透過 [Azure 語音服務](../speech-service/index.yml)來使用。 此服務將翻譯工具語音 API 和自訂語音服務的功能結合為統合且可完整自訂的服務。 
 
 ## <a name="language-support"></a>語言支援
 
-翻譯工具提供文字翻譯、音譯、語言偵測和字典的多語言支援。 如需完整清單請參閱[語言支援](language-support.md)，或透過 [REST API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) 以程式設計方式存取清單。  
+翻譯工具提供文字翻譯、音譯、語言偵測和字典的多語言支援。 如需完整清單請參閱[語言支援](language-support.md)，或透過 [REST API](./reference/v3-0-languages.md) 以程式設計方式存取清單。  
 
 ## <a name="microsoft-translator-neural-machine-translation"></a>Microsoft Translator 類神經機器翻譯
 
@@ -53,7 +53,7 @@ NMT 模型位於 API 核心，使用者並不會看到這些模型。 唯一可�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [註冊](translator-text-how-to-signup.md)存取金鑰。
+- [註冊](./translator-how-to-signup.md)存取金鑰。
 - 請試用我們的[快速入門](quickstart-translator.md)來快速呼叫翻譯工具服務。
-- [API 參考](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)提供 API 的技術文件。
+- [API 參考](./reference/v3-0-reference.md)提供 API 的技術文件。
 - [價格詳細資料](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)

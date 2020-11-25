@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 10/13/2020
-ms.openlocfilehash: 60151e97c64a3d61044e4b82299573ee59951d46
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2048079a9b1eb5234d03c6fe57073228bd892d53
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128120"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019155"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>快速入門：使用預先建置的家庭自動化應用程式
 
@@ -44,7 +44,7 @@ ms.locfileid: "93128120"
 ## <a name="add-prebuilt-domain"></a>新增預建網域
 
 1. 從左側導覽中，選取 [預建網域]。
-1. 搜尋 **HomeAutomation** 。
+1. 搜尋 **HomeAutomation**。
 1. 在 HomeAutomation 卡片上選取 [新增網域]。
 
     > [!div class="mx-imgBorder"]
@@ -77,7 +77,7 @@ ms.locfileid: "93128120"
 
 1. 從右上方導覽中選取 [測試]。
 
-1. 將測試語句 (例如 `Turn off the lights`) 輸入到 [互動測試] 窗格中，然後按下 Enter 鍵。 例如， *關燈* 。
+1. 將測試語句 (例如 `Turn off the lights`) 輸入到 [互動測試] 窗格中，然後按下 Enter 鍵。 例如，*關燈*。
 
     在此範例中，`Turn off the lights` 會正確識別為 **HomeAutomation.TurnOff** 的最高得分意圖。
 
@@ -223,4 +223,4 @@ ms.locfileid: "93128120"
 您可以從程式碼呼叫端點：
 
 > [!div class="nextstepaction"]
-> [使用程式碼呼叫 LUIS 端點](luis-get-started-cs-get-intent.md)
+> [使用程式碼呼叫 LUIS 端點](./luis-get-started-get-intent-from-rest.md)
