@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 88bff924075b0fe525c4b64fca5736a88e26763c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a4a2034d44d98de9696b435c68c97a8a54a1c351
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779195"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026291"
 ---
 Azure 提供下列 Azure 內建角色，以使用 Azure AD 和 OAuth 來授權 Blob 和佇列資料的存取權：
 
@@ -26,9 +26,9 @@ Azure 提供下列 Azure 內建角色，以使用 Azure AD 和 OAuth 來授權 B
 - [儲存體佇列資料訊息處理者](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-processor)：用來授與 Azure 儲存體佇列中訊息的瞄核、取出和刪除權限。
 - [儲存體佇列資料訊息傳送者](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender)：用來授與 Azure 儲存體佇列中訊息的新增權限。
 
-只有針對資料存取明確定義的角色，才能允許安全性主體存取 Blob 或佇列資料。 內建角色 (例如 **擁有者**、**參與者**和**儲存體帳戶參與者**) 允許安全性主體管理儲存體帳戶，但是不會透過 Azure AD 提供該帳戶內 Blob 或佇列資料的存取權。 不過，如果角色包含 **Microsoft.Storage/storageAccounts/listKeys/action**，則獲指派該角色的使用者可以透過具有帳戶存取金鑰的共用金鑰授權來存取儲存體帳戶中的資料。 如需詳細資訊，請參閱[使用 Azure 入口網站來存取 Blob 或佇列資料](../articles/storage/blobs/authorize-blob-access-portal.md)。
+只有針對資料存取明確定義的角色，才能允許安全性主體存取 Blob 或佇列資料。 內建角色 (例如 **擁有者**、**參與者** 和 **儲存體帳戶參與者**) 允許安全性主體管理儲存體帳戶，但是不會透過 Azure AD 提供該帳戶內 Blob 或佇列資料的存取權。 不過，如果角色包含 **Microsoft.Storage/storageAccounts/listKeys/action**，則獲指派該角色的使用者可以透過具有帳戶存取金鑰的共用金鑰授權來存取儲存體帳戶中的資料。 如需詳細資訊，請參閱[使用 Azure 入口網站來存取 Blob 或佇列資料](../articles/storage/blobs/authorize-data-operations-portal.md)。
 
-如需有關適用於資料服務和管理服務的 Azure 儲存體 Azure 內建角色的詳細資訊，請參閱 [Azure RBAC 的 Azure 內建角色](../articles/role-based-access-control/built-in-roles.md#storage)中的**儲存體**一節。 此外，如需在 Azure 中提供權限的不同類型角色詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 角色](../articles/role-based-access-control/rbac-and-directory-admin-roles.md)。
+如需有關適用於資料服務和管理服務的 Azure 儲存體 Azure 內建角色的詳細資訊，請參閱 [Azure RBAC 的 Azure 內建角色](../articles/role-based-access-control/built-in-roles.md#storage)中的 **儲存體** 一節。 此外，如需在 Azure 中提供權限的不同類型角色詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 角色](../articles/role-based-access-control/rbac-and-directory-admin-roles.md)。
 
 > [!IMPORTANT]
 > Azure 角色指派可能需要五分鐘的時間傳播。

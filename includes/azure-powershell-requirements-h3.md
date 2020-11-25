@@ -9,16 +9,16 @@ ms.service: azure-powershell
 ms.devlang: azurepowershell
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 2ef86d27be47c6cd1ed73a52157dd429937535b4
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95556304"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026347"
 ---
 ### <a name="requirements"></a>需求
 
 * 如果您選擇在本機使用 Azure PowerShell：
   * [安裝 Az PowerShell 模組](/powershell/azure/install-az-ps)。
-  * 使用 [disconnect-azaccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet 連接到您的 Azure 帳戶。
+  * 使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet 連線至 Azure 帳戶。
 * 如果您選擇使用 Azure Cloud Shell：
-  * 如需詳細資訊，請參閱 [Azure Cloud Shell 的總覽](../articles/cloud-shell/overview.md) 。
+  * 請參閱 [Azure Cloud Shell 概觀](../articles/cloud-shell/overview.md) 以取得詳細資訊。
