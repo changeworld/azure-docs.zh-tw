@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
 ms.openlocfilehash: cec44bbabdb7d528c30a8d3396b819f2eb3c5386
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93235898"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999419"
 ---
-這項功能很容易設定，但這並不表示您的體驗不會有任何問題。 如果您在存取所需端點時遇到問題，您可以使用一些公用程式來測試從應用程式主控台的連線能力。 有兩個您可以使用的主控台。 其中一個是 Kudu 主控台，另一個則是 Azure 入口網站中的主控台。 若要從您的應用程式連接到 Kudu 主控台，請移至 [ **工具**  >  **Kudu** ]。 您也可以在 [sitename]. azurewebsites.net 連接到 Kudo 主控台。 網站載入之後，請移至 [ **Debug 主控台** ] 索引標籤。若要從您的應用程式取得 Azure 入口網站裝載的主控台，請移至 [ **工具**  >  **主控台** ]。
+這項功能很容易設定，但這並不表示您的體驗不會有任何問題。 如果您在存取所需端點時遇到問題，您可以使用一些公用程式來測試從應用程式主控台的連線能力。 有兩個您可以使用的主控台。 其中一個是 Kudu 主控台，另一個則是 Azure 入口網站中的主控台。 若要從您的應用程式連接到 Kudu 主控台，請移至 [**工具**  >  **Kudu**]。 您也可以在 [sitename]. azurewebsites.net 連接到 Kudo 主控台。 網站載入之後，請移至 [ **Debug 主控台**] 索引標籤。若要從您的應用程式取得 Azure 入口網站裝載的主控台，請移至 [**工具**  >  **主控台**]。
 
 #### <a name="tools"></a>工具
-在原生 Windows 應用程式中，由於安全性限制 (可在 [自訂 windows 容器](../articles/app-service/quickstart-custom-container.md)) 中運作，因此工具 **ping** 、 **nslookup** 和 **tracert** 將無法透過主控台運作。 為了填滿 void，會新增兩個不同的工具。 為了測試 DNS 功能，我們新增了一個名為 **nameresolver.exe** 的工具。 語法為：
+在原生 Windows 應用程式中，由於安全性限制 (可在 [自訂 windows 容器](../articles/app-service/quickstart-custom-container.md)) 中運作，因此工具 **ping**、 **nslookup** 和 **tracert** 將無法透過主控台運作。 為了填滿 void，會新增兩個不同的工具。 為了測試 DNS 功能，我們新增了一個名為 **nameresolver.exe** 的工具。 語法為：
 
 ```console
 nameresolver.exe hostname [optional: DNS Server]
@@ -26,7 +26,7 @@ nameresolver.exe hostname [optional: DNS Server]
 > nameresolver.exe 目前無法在自訂 Windows 容器中運作。
 >
 
-您可以使用下一個工具來測試與主機和埠組合的 TCP 連線能力。 此工具稱為 **tcpping** ，語法如下：
+您可以使用下一個工具來測試與主機和埠組合的 TCP 連線能力。 此工具稱為 **tcpping**，語法如下：
 
 ```console
 tcpping.exe hostname [optional: port]
@@ -51,7 +51,7 @@ tcpping.exe hostname [optional: port]
 **閘道-必要的 VNet 整合**
 * 在 RFC 1918 範圍內的點對站位址範圍 (10.0.0.0-10.255.255.255/172.16.0.0-172.31.255.255/192.168.0.0-192.168.255.255) ？
 * 閘道是否顯示在入口網站中？ 如果您的閘道已關閉，請重新啟動。
-* 憑證是否顯示為同步，或您是否懷疑網路設定已變更？  如果您的憑證未同步，或您懷疑未與 Asp 同步的虛擬網路設定有變更，請選取 [ **同步處理網路** ]。
+* 憑證是否顯示為同步，或您是否懷疑網路設定已變更？  如果您的憑證未同步，或您懷疑未與 Asp 同步的虛擬網路設定有變更，請選取 [ **同步處理網路**]。
 * 如果您是跨 VPN，內部部署閘道是否設定為將流量路由傳送至 Azure？ 如果您可以連線到虛擬網路中的端點，但無法連線到內部部署，請檢查您的路由。
 * 您是否嘗試使用同時支援點對站和 ExpressRoute 的共存閘道？ VNet 整合不支援共存閘道。
 
@@ -68,7 +68,7 @@ tcpping.exe hostname [optional: port]
 
 其他偵錯步驟包括：
 
-* 連線至虛擬網路中的 VM，並嘗試從該處連接到您的資源主機：埠。 若要測試 TCP 存取，請使用 PowerShell 命令 **test-netconnection** 。 語法為：
+* 連線至虛擬網路中的 VM，並嘗試從該處連接到您的資源主機：埠。 若要測試 TCP 存取，請使用 PowerShell 命令 **test-netconnection**。 語法為：
 
 ```powershell
 test-netconnection hostname [optional: -Port]

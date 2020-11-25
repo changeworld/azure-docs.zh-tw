@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
 ms.openlocfilehash: f230445ecdb046c2b631e89567df71e1d09c3234
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369942"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999224"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>分析 Azure Site Recovery 部署規劃工具報告
 本文討論 Azure Site Recovery 部署規劃工具針對 Hyper-V 到 Azure 的案例產生的 Excel 報告所包含的工作表。
@@ -35,7 +35,7 @@ ms.locfileid: "92369942"
 
 **平均磁碟大小 (GB)**：在所有相容 VM 中計算的平均磁碟大小。
 
-**需要的 RPO (分鐘) **：在產生報告時，預設復原點目標或傳遞給 "DesiredRPO" 參數的值，以估計所需的頻寬。
+**需要的 RPO (分鐘)**：在產生報告時，預設復原點目標或傳遞給 "DesiredRPO" 參數的值，以估計所需的頻寬。
 
 **所需的頻寬 (Mbps)**：在產生報告時針對 "Bandwidth" 參數所傳遞的值，用來估計可用的復原點目標 (RPO)。
 
@@ -64,7 +64,7 @@ ms.locfileid: "92369942"
 
 **不相容的虛擬機器**：可使用 Site recovery 保護之不相容的剖析 VM 數目。 「不相容的 VM」一節會提到不相容的原因。 如果 VMListFile 包含任何未剖析 VM 的名稱，則這些 VM 會從不相容的 VM 計數中排除。 這些 VM 會在「不相容的 VM」區段結尾列為「找不到資料」。
 
-**所需 RPO**：以分鐘為單位的所需復原點目標。 此報告會針對三個 RPO 值而產生：15 (預設值)、30 和 60 分鐘。 報告中的頻寬建議會隨著您在工作表右上方的 [所需的 RPO]**** 下拉式清單中選取的項目變更。 如果您使用 -DesiredRPO 參數以自訂值產生報告，這個自訂值會顯示為 [所需的 RPO]**** 下拉式清單中的預設值。
+**所需 RPO**：以分鐘為單位的所需復原點目標。 此報告會針對三個 RPO 值而產生：15 (預設值)、30 和 60 分鐘。 報告中的頻寬建議會隨著您在工作表右上方的 [所需的 RPO] 下拉式清單中選取的項目變更。 如果您使用 -DesiredRPO 參數以自訂值產生報告，這個自訂值會顯示為 [所需的 RPO] 下拉式清單中的預設值。
 
 ### <a name="required-network-bandwidth-mbps"></a>所需的網路頻寬 (Mbps)
 ![所需的網路頻寬](media/hyper-v-deployment-planner-analyze-report/required-network-bandwidth-h2a.png)
@@ -152,7 +152,7 @@ ms.locfileid: "92369942"
 ## <a name="vm-storage-placement-recommendation"></a>VM 儲存體放置建議 
 ![VM 儲存體放置](media/hyper-v-deployment-planner-analyze-report/vm-storage-placement-h2a.png)
 
-**磁碟儲存體類型**：標準或進階儲存體帳戶，用來複寫 [要放置的 VM]**** 資料行中提到的所有對應 VM。
+**磁碟儲存體類型**：標準或進階儲存體帳戶，用來複寫 [要放置的 VM] 資料行中提到的所有對應 VM。
 
 **建議的前置詞**：建議的三個字元前置詞，可用來命名儲存體帳戶。 您可以使用自己的前置詞，但工具的建議會遵循[儲存體帳戶的磁碟分割命名慣例](/en-in/azure/storage/blobs/storage-performance-checklist)。
 
@@ -179,7 +179,7 @@ Site Recovery 部署規劃工具所產生的 Excel 報告會在「相容的 VM�
 
 **VM 名稱**：產生報告時，使用於 VMListFile 的 VM 名稱。 此資料行也會列出連結至 VM 的磁碟 (VHD)。 名稱包含此工具在分析期間探索到 VM 時其所在位置的 Hyper-V 主機名稱。
 
-**VM 相容性**：值為 **[是]** 和 **[是**]\*。 **是** \*適用于 VM 符合[Premium ssd](../virtual-machines/disks-types.md)的情況。 相較於對應到磁碟的大小，這裡剖析的高變換或 IOPS 磁碟適合較大的進階磁碟大小。 儲存體帳戶會根據磁碟大小，決定磁碟要對應至的進階儲存體大小類型： 
+**VM 相容性**：值為 **[是]** 和 **[是**]\*。 **是** \*適用于 VM 符合 [Premium ssd](../virtual-machines/disks-types.md)的情況。 相較於對應到磁碟的大小，這裡剖析的高變換或 IOPS 磁碟適合較大的進階磁碟大小。 儲存體帳戶會根據磁碟大小，決定磁碟要對應至的進階儲存體大小類型： 
 * <128 GB 為 P10。
 * 128 GB 至 256 GB 為 P15。
 * 256 GB 至 512 GB 為 P20。
@@ -258,7 +258,7 @@ Site Recovery 部署規劃工具所產生的 Excel 報告會在「不相容的 V
 
 **磁碟數目**：VM 上的 VHD 總數。
 
-**磁片大小 (GB) **： VM 之所有磁片的總設定大小。 此工具也會顯示 VM 中個別磁碟的磁碟大小。
+**磁片大小 (GB)**： VM 之所有磁片的總設定大小。 此工具也會顯示 VM 中個別磁碟的磁碟大小。
 
 **核心**：VM 上的 CPU 核心數目。
 
@@ -329,13 +329,13 @@ Site Recovery 部署規劃工具所產生的 Excel 報告會在「不相容的 V
 
 **磁碟區 (VHD 路徑)**：VM 的 VHD 所在的磁碟區名稱。 
 
-**磁片區上的可用空間 (GB) **： VM 磁片區上的可用磁碟空間。 在計算磁碟區上的可用空間時，這會考量 VHD 位於相同磁碟區的前幾批 VM 用於差異複寫的磁碟空間。 
+**磁片區上的可用空間 (GB)**： VM 磁片區上的可用磁碟空間。 在計算磁碟區上的可用空間時，這會考量 VHD 位於相同磁碟區的前幾批 VM 用於差異複寫的磁碟空間。 
 
 例如，假設 VM1、VM2 和 VM3 位於磁碟區 E:\VHDpath 上。 複寫之前，磁碟區上的可用空間為 500 GB。 VM1 屬於第 1 批、VM2 屬於第 2 批，而 VM3 屬於第 3 批。 若為 VM1，可用空間為 500 GB。 VM2 的可用空間會是 500 – VM1 的差異複寫所需的磁碟空間。 如果 VM1 需要 300 GB 的空間進行差異複寫，則 VM2 的可用空間會是 500 GB – 300 GB = 200 GB。 同樣地，VM2 需要 300 GB 進行差異複寫。 VM3 的可用空間為 200 GB - 300 GB = -100 GB。
 
 **磁碟區上為了進行初始複寫所需的儲存體 (GB)**：VM 磁碟區上為了進行初始複寫所需的可用儲存空間。
 
-**差異複寫磁片區上所需的儲存體 (GB) **： VM 磁片區上所需的可用儲存空間以進行差異複寫。
+**差異複寫磁片區上所需的儲存體 (GB)**： VM 磁片區上所需的可用儲存空間以進行差異複寫。
 
 **為了避免複寫失敗所需的額外儲存體 (以不足額為基礎) (GB)**：VM 磁碟區上所需的額外的儲存空間。 這是初始複寫和差異複寫的儲存空間需求上限，減去磁碟區上的可用空間。
 
@@ -352,7 +352,7 @@ Site Recovery 部署規劃工具所產生的 Excel 報告會在「不相容的 V
 
 **批次差異複寫所耗用的大約頻寬**：VM 批次差異複寫所需的頻寬。 
 
-**批次的估計初始複寫時間 (HH： MM) **：估計的初始複寫時間（小時：分鐘）。
+**批次的估計初始複寫時間 (HH： MM)**：估計的初始複寫時間（小時：分鐘）。
 
 
 

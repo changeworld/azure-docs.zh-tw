@@ -4,11 +4,11 @@ description: Azure Functions 中的 OpenAPI 支援概觀
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.openlocfilehash: 499d4f685e3802fcc37c8a3050ae367207f192d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87385818"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000195"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Functions 中的 OpenAPI 2.0 中繼資料支援 (預覽)
 Azure Functions 中的 OpenAPI 2.0 (先前稱為 Swagger) 中繼資料支援是預覽功能，可讓您用來撰寫函式應用程式內的 OpenAPI 2.0 定義。 接著您可以使用函式應用程式裝載該檔案。
@@ -24,12 +24,12 @@ Azure Functions 中的 OpenAPI 2.0 (先前稱為 Swagger) 中繼資料支援是�
 >建議您從[入門教學課程](./functions-openapi-definition.md)開始，然後再回到此文件學習更多特定的功能。
 
 ## <a name="enable-openapi-definition-support"></a><a name="enable"></a>啟用 OpenAPI 定義支援
-您可以在函式應用程式設定的**平台功能**中的 **API 定義**頁面上，設定所有 OpenAPI 設定。
+您可以在函式應用程式設定的 **平台功能** 中的 **API 定義** 頁面上，設定所有 OpenAPI 設定。
 
 > [!NOTE]
 > 搶鮮版 (Beta) 執行階段目前不支援函式 API 定義功能。
 
-若要允許產生託管的 OpenAPI 定義和快速入門定義，請將 **API 定義來源** 設定為**函式 (預覽)**。 **外部 URL** 可讓您的函式使用裝載在其他位置的 OpenAPI 定義。
+若要允許產生託管的 OpenAPI 定義和快速入門定義，請將 **API 定義來源** 設定為 **函式 (預覽)**。 **外部 URL** 可讓您的函式使用裝載在其他位置的 OpenAPI 定義。
 
 ## <a name="generate-a-swagger-skeleton-from-your-functions-metadata"></a><a name="generate-definition"></a> 從您的函式中繼資料產生 Swagger 基本架構
 範本可協助您開始撰寫第一個 OpenAPI 定義。 定義範本功能會針對每個 HTTP 觸發程序函式，使用 function.json 中所有的中繼資料來建立鬆散的 OpenAPI 定義。 您會需要從 [OpenAPI 規格](https://swagger.io/specification/)填入 API 的更多相關資訊，例如要求和回應範本。
@@ -38,7 +38,7 @@ Azure Functions 中的 OpenAPI 2.0 (先前稱為 Swagger) 中繼資料支援是�
 
 ### <a name="available-templates"></a><a name="templates"></a>可用的範本
 
-|名稱| 說明 |
+|名稱| 描述 |
 |:-----|:-----|
 |已產生的定義|具有可從函式現有中繼資料推斷之最大數量資訊的 OpenAPI 定義。|
 
@@ -65,15 +65,15 @@ Azure Functions 中的 OpenAPI 2.0 (先前稱為 Swagger) 中繼資料支援是�
  從原始檔控制啟用讓原始檔控制修改 API 定義之前，您必須先啟用裝載在入口網站中的 API 定義。 遵循下列指示：
 
 1. 瀏覽至函式應用程式設定中的 **API 定義 (預覽)**。
-   1. 將 **API 定義來源**設定為 **Function**。
-   1. 依序按一下 [產生 API 定義範本]****、[儲存]**** 可建立範本定義以供稍後修改。
+   1. 將 **API 定義來源** 設定為 **Function**。
+   1. 依序按一下 [產生 API 定義範本]、[儲存] 可建立範本定義以供稍後修改。
    1. 請注意您的 API 定義 URL 和金鑰。
 1. [設定持續整合/持續部署 (CI/CD)](./functions-continuous-deployment.md#requirements-for-continuous-deployment)。
 2. 在原始檔控制中的 \site\wwwroot\.azurefunctions\swagger\swagger.json 修改 swagger.json。
 
 現在，您對存放庫中的 swagger.json 所進行之變更，會由您在步驟 1.c 中記下的 API 定義 URL 及金鑰之函式應用程式進行裝載。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [快速入門教學](./functions-openapi-definition.md)課程。 請嘗試我們的逐步解說，以查看 OpenAPI 定義實際運作。
 * [Azure Functions GitHub 存放庫](https://github.com/Azure/Azure-Functions/)。 查看 Functions 存放庫以提供我們 API 定義支援預覽的意見反應。 針對您想在更新看到的任何功能提出 GitHub 問題。
 * [Azure Functions 開發人員參考](functions-reference.md)。 深入了解如何撰寫函式程式碼及定義觸發程序和繫結。

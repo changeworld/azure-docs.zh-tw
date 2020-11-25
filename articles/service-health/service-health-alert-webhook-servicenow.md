@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.custom: devx-track-js
 ms.openlocfilehash: f120e9d950cc349d0331a476dbfbfe9d7e599f0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307563"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000635"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>使用 webhook 搭配 ServiceNow 傳送 Azure 服務健康狀態警示
 
@@ -19,27 +19,27 @@ ms.locfileid: "91307563"
 
 1.  請確定您已註冊並登入您的 [ServiceNow](https://www.servicenow.com/) 帳戶。
 
-1.  瀏覽至 ServiceNow 中的**系統 Web 服務**區段，並選取**指令碼式 REST API**。
+1.  瀏覽至 ServiceNow 中的 **系統 Web 服務** 區段，並選取 **指令碼式 REST API**。
 
     ![ServiceNow 中的 [指令碼式 Web 服務] 區段](./media/webhook-alerts/servicenow-sws-section.png)
 
-1.  選取 [新增]**** 來建立新的指令碼式 REST 服務。
+1.  選取 [新增] 來建立新的指令碼式 REST 服務。
  
     ![ServiceNow 中的 [新的指令碼式 REST API] 按鈕](./media/webhook-alerts/servicenow-new-button.png)
 
-1.  為 REST API 新增**名稱**，並將 **API 識別碼**設定為 `azureservicehealth`。
+1.  為 REST API 新增 **名稱**，並將 **API 識別碼** 設定為 `azureservicehealth`。
 
 1.  選取 [提交]  。
 
     ![ServiceNow 中的「REST API 設定」](./media/webhook-alerts/servicenow-restapi-settings.png)
 
-1.  選取您所建立的 REST API，並在 [資源]**** 索引標籤下選取 [新增]****。
+1.  選取您所建立的 REST API，並在 [資源] 索引標籤下選取 [新增]。
 
     ![ServiceNow 中的 [資源] 索引標籤](./media/webhook-alerts/servicenow-resources-tab.png)
 
-1.  為您的新資源**命名**`event`，並將 **HTTP 方法**變更為 `POST`。
+1.  為您的新資源 **命名**`event`，並將 **HTTP 方法** 變更為 `POST`。
 
-1.  在 [指令碼]**** 區段中，加入下列 JavaScript 程式碼：
+1.  在 [指令碼] 區段中，加入下列 JavaScript 程式碼：
 
     >[!NOTE]
     >您需要在下列指令碼中更新 `<secret>`、`<group>`和 `<email>` 的值。
@@ -132,11 +132,11 @@ ms.locfileid: "91307563"
     })(request, response);
     ```
 
-1.  在 [安全性] 索引標籤中，取消核取 [需要驗證]****，並選取 [提交]****。 您設定的 `<secret>` 則會保護此 API。
+1.  在 [安全性] 索引標籤中，取消核取 [需要驗證]，並選取 [提交]。 您設定的 `<secret>` 則會保護此 API。
 
     ![ServiceNow 中的 [需要驗證] 核取方塊](./media/webhook-alerts/servicenow-resource-settings.png)
 
-1.  回到 [指令碼式 REST API] 區段，您應該尋找**基本 API 路徑**作為新的 REST API:
+1.  回到 [指令碼式 REST API] 區段，您應該尋找 **基本 API 路徑** 作為新的 REST API:
 
      ![ServiceNow 中的「基本 API 路徑」](./media/webhook-alerts/servicenow-base-api-path.png)
 
@@ -150,32 +150,32 @@ ms.locfileid: "91307563"
 ### <a name="for-a-new-action-group"></a>新的動作群組：
 1. 請遵循[本文](./alerts-activity-log-service-notifications-portal.md)中的步驟 1 到 8，來建立具有新動作群組的警示。
 
-1. 在**動作**清單中定義：
+1. 在 **動作** 清單中定義：
 
     a. **動作類型：** *Webhook*
 
-    b. **詳細資料：** 您先前儲存的 ServiceNow** 整合 URL**。
+    b. **詳細資料：** 您先前儲存的 ServiceNow **整合 URL**。
 
     c. **名稱：** 的名稱、別名或識別項。
 
-1. 完成後選取 [儲存]**** 以建立警示。
+1. 完成後選取 [儲存] 以建立警示。
 
 ### <a name="for-an-existing-action-group"></a>現有的動作群組：
 1. 在 [ [Azure 入口網站](https://portal.azure.com/)中，選取 [ **監視**]。
 
-1. 在 [設定]**** 區段上，選取 [動作群組]****。
+1. 在 [設定] 區段上，選取 [動作群組]。
 
 1. 尋找並選取您要編輯的動作群組。
 
-1. 新增至**動作**清單：
+1. 新增至 **動作** 清單：
 
     a. **動作類型：** *Webhook*
 
-    b. **詳細資料：** 您先前儲存的 ServiceNow** 整合 URL**。
+    b. **詳細資料：** 您先前儲存的 ServiceNow **整合 URL**。
 
     c. **名稱：** 的名稱、別名或識別項。
 
-1. 完成後選取 [儲存]**** 來更新動作群組。
+1. 完成後選取 [儲存] 來更新動作群組。
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>透過 HTTP POST 要求測試 Webhook 整合
 1. 建立您想要傳送的服務健康情況承載。 您可以在 Webhook 中找到 [Azure 活動記錄警示](../azure-monitor/platform/activity-log-alerts-webhook.md)的範例服務健康情況 webhook 承載。
@@ -194,7 +194,7 @@ ms.locfileid: "91307563"
 1. 移至 [ServiceNow](https://www.servicenow.com/)，以確認您的整合已設定成功。
 
 ## <a name="next-steps"></a>後續步驟
-- 瞭解如何 [設定現有問題管理系統的 webhook 通知](service-health-alert-webhook-guide.md)。
-- 檢查 [活動記錄警示 webhook 架構](../azure-monitor/platform/activity-log-alerts-webhook.md)。 
+- 了解如何[設定現有問題管理系統的 Webhook 通知](service-health-alert-webhook-guide.md)。
+- 檢閱[活動記錄警示 Webhook 結構描述](../azure-monitor/platform/activity-log-alerts-webhook.md)。 
 - 深入了解[服務健康狀態通知](./service-notifications.md)。
 - 深入了解[動作群組](../azure-monitor/platform/action-groups.md)。

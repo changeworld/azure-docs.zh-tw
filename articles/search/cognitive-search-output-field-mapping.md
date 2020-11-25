@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 58bb87d5af785d3cffd96f3bd02477f97ed967a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935359"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001298"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>如何將 AI 擴充的欄位對應至可搜尋的索引
 
@@ -89,7 +89,7 @@ sourceFieldName 中的路徑可以代表一個元素或多個元素。 在上述
 
 如果有數個元素，這些元素會「壓平合併」至包含每個元素的陣列。 
 
-更具體地說，對於 ```/document/content/organizations/*/description``` 範例，[描述]** 欄位中的資料在進行編製索引之前，看起來像描述的平面陣列：
+更具體地說，對於 ```/document/content/organizations/*/description``` 範例，[描述] 欄位中的資料在進行編製索引之前，看起來像描述的平面陣列：
 
 ```
  ["Microsoft is a company in Seattle","LinkedIn's office is in San Francisco"]
@@ -145,7 +145,7 @@ sourceFieldName 中的路徑可以代表一個元素或多個元素。 在上述
   "diseases" : ["heart failure","morquio"]
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 一旦您將擴充欄位對應至可搜尋欄位，即可為每個可搜尋欄位將欄位屬性設定為[索引定義的一部分](search-what-is-an-index.md)。
 
 如需欄位對應的詳細資訊，請參閱 [Azure 認知搜尋索引子中的欄位](search-indexer-field-mappings.md)對應。

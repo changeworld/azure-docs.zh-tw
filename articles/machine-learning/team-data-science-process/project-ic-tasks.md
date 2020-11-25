@@ -11,11 +11,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4ecb5fef9c9b14bde72de29a45e29d7e16131bd1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321917"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000992"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Team Data Science Process 中個別參與者的工作
 
@@ -32,7 +32,7 @@ ms.locfileid: "93321917"
 > [!NOTE] 
 > 本文使用 Azure Repos 和資料科學虛擬機器 (DSVM) 設定 TDSP 環境，因為這是如何在 Microsoft 執行 TDSP 的方式。 如果您的小組使用其他程式碼裝載或開發平臺，個別的參與者工作也相同，但是完成這些工作的方式可能會不同。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程假設您的 [群組管理員](group-manager-tasks.md)、 [小組負責人](team-lead-tasks.md)和 [專案負責人](project-lead-tasks.md)已設定下列資源和許可權：
 
@@ -47,7 +47,7 @@ ms.locfileid: "93321917"
 - Azure 訂用帳戶。
 - 在您的電腦上安裝 Git。 如果您是使用 DSVM，則會預先安裝 Git。 否則，請參閱[平台和工具附錄](platforms-and-tools.md#appendix)。
 - 如果您想要使用 DSVM，則會在 Azure 中建立並設定 Windows 或 Linux DSVM。 如需詳細資訊和指示，請參閱 [資料科學虛擬機器檔](../data-science-virtual-machine/index.yml)。
-- 若為 Windows DSVM，則會在您的電腦上安裝 [Git 認證管理員 (GCM) ](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) 。 在 *README.md* 檔案中，向下卷到 [ **下載並安裝** ] 區段，然後選取 **最新的安裝程式** 。 從安裝程式頁面下載 *.exe* 安裝程式，然後執行它。 
+- 若為 Windows DSVM，則會在您的電腦上安裝 [Git 認證管理員 (GCM) ](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) 。 在 *README.md* 檔案中，向下卷到 [ **下載並安裝** ] 區段，然後選取 **最新的安裝程式**。 從安裝程式頁面下載 *.exe* 安裝程式，然後執行它。 
 - 針對 Linux DSVM，會在您的 DSVM 上設定 SSH 公開金鑰，並將其新增至 Azure DevOps。 如需詳細資訊和指示，請參閱 [平臺和工具附錄](platforms-and-tools.md#appendix)中的 **建立 SSH 公開金鑰** 一節。 
 - 您需要掛接至 DSVM 之任何 Azure 檔案儲存體的 Azure 檔案儲存體資訊。 
 
@@ -55,13 +55,13 @@ ms.locfileid: "93321917"
 
 若要在本機使用存放庫，並將您的變更推送至共用的小組和專案存放庫，您必須先將存放庫 *複製或複製* 到本機電腦。 
 
-1. 在 Azure DevOps 中，移至您的小組專案摘要頁面 *： HTTPs \/ / \<server name> / \<organization name> / \<team name> ：* ，例如 **HTTPs： \/ /dev.azure.com/DataScienceUnit/MyTeam** 。
+1. 在 Azure DevOps 中，移至您的小組專案摘要頁面 *： HTTPs \/ / \<server name> / \<organization name> / \<team name> ：*，例如 **HTTPs： \/ /dev.azure.com/DataScienceUnit/MyTeam**。
    
 1. 選取左側導覽列中的 [ **存放庫** ]，然後在頁面頂端選取您要複製的儲存機制。
    
 1. 在 [存放庫] 頁面上，選取右上方的 [ **複製** ]。
    
-1. 在 [ **複製存放庫** ] 對話方塊中，針對 HTTP 連線選取 **HTTPS** ，或針對 Ssh **連線** 選取 [ **SSH** ]，並將 [複製 URL] 下的 [複製 URL] 複製到剪貼簿。
+1. 在 [**複製存放庫**] 對話方塊中，針對 HTTP 連線選取 **HTTPS** ，或針對 Ssh **連線** 選取 [ **SSH** ]，並將 [複製 URL] 下的 [複製 URL] 複製到剪貼簿。
    
    ![複製存放庫](./media/project-ic-tasks/clone.png)
    

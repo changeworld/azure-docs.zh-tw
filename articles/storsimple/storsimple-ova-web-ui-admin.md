@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: 6bea9c9b7807ffb32b6071c968d3186965477009
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513041"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000924"
 ---
 # <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>使用 Web UI 來管理 StorSimple Virtual Array
 ![安裝程序流程](./media/storsimple-ova-web-ui-admin/manage4.png)
@@ -41,7 +41,7 @@ ms.locfileid: "85513041"
 
 #### <a name="to-get-the-service-data-encryption-key"></a>取得服務資料加密金鑰
 1. 連線到本機 Web UI。 移至 **[**  >  **設定雲端設定**]。
-2. 按一下頁面底部的 [取得服務資料加密金鑰] ****。 金鑰將會顯示。 複製並儲存此金鑰。
+2. 按一下頁面底部的 [取得服務資料加密金鑰] 。 金鑰將會顯示。 複製並儲存此金鑰。
    
     ![取得服務資料加密金鑰 1](./media/storsimple-ova-web-ui-admin/image27.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "85513041"
 1. 在本機 web UI 中，移至 [**疑難排解**  >  **診斷測試**]。
    
     ![執行診斷 1](./media/storsimple-ova-web-ui-admin/image29.png)
-2. 按一下頁面底部的 [執行診斷測試] ****。 這樣會起始測試以診斷和您的網路、裝置、Web Proxy、時間或雲端設定相關的任何可能問題。 您將收到裝置正在執行測試的通知。
+2. 按一下頁面底部的 [執行診斷測試] 。 這樣會起始測試以診斷和您的網路、裝置、Web Proxy、時間或雲端設定相關的任何可能問題。 您將收到裝置正在執行測試的通知。
 3. 測試完成後會顯示結果。 下列範例顯示診斷測試的結果。 請注意，此裝置上未設定 Web Proxy 設定，因此未執行 Web Proxy 測試。 網路設定、DNS 伺服器和時間設定的所有其他測試均成功。
    
     ![執行診斷 2](./media/storsimple-ova-web-ui-admin/image30.png)
@@ -61,17 +61,17 @@ ms.locfileid: "85513041"
 記錄封裝包含有助於 Microsoft 支援小組疑難排解任何裝置問題的所有相關記錄。 在此版本中，可透過本機 Web UI 產生記錄檔封裝。
 
 #### <a name="to-generate-the-log-package"></a>產生記錄檔封裝
-1. 在本機 web UI 中，移至 [**疑難排解**  >  **系統記錄**檔]。
+1. 在本機 web UI 中，移至 [**疑難排解**  >  **系統記錄** 檔]。
    
     ![產生記錄檔封裝 1](./media/storsimple-ova-web-ui-admin/image31.png)
-2. 按一下頁面底部的 [建立記錄檔封裝] ****。 將建立系統記錄的封裝。 這需要幾分鐘的時間。
+2. 按一下頁面底部的 [建立記錄檔封裝] 。 將建立系統記錄的封裝。 這需要幾分鐘的時間。
    
     ![產生記錄檔封裝 2](./media/storsimple-ova-web-ui-admin/image32.png)
    
     系統會通知您已成功建立封裝，並會更新頁面以顯示封裝建立的日期與時間。
    
     ![產生記錄檔封裝 3](./media/storsimple-ova-web-ui-admin/image33.png)
-3. 按一下 [下載記錄檔封裝] ****。 壓縮的封裝將會下載到您的系統上。
+3. 按一下 [下載記錄檔封裝] 。 壓縮的封裝將會下載到您的系統上。
    
     ![產生記錄檔封裝 4](./media/storsimple-ova-web-ui-admin/image34.png)
 4. 您可以解壓縮下載的記錄檔封裝，並檢視系統記錄檔。
@@ -96,7 +96,7 @@ ms.locfileid: "85513041"
 
 #### <a name="to-restart-your-virtual-device"></a>重新啟動虛擬裝置
 1. 在本機 web UI 中，移至 [**維護**  >  **電源設定**]。
-2. 按一下頁面底部的 [重新啟動] ****。
+2. 按一下頁面底部的 [重新啟動] 。
    
     ![裝置重新啟動](./media/storsimple-ova-web-ui-admin/image36.png)
 3. 會出現警告，指出重新啟動裝置將中斷已在進行的任何 IO，因而導致停機。 按一下核取圖示  ![核取圖示](./media/storsimple-ova-web-ui-admin/image3.png).
@@ -109,6 +109,6 @@ ms.locfileid: "85513041"
    
     重新啟動時，將會中斷 UI 連線。 您可以定期重新整理 UI 以監視重新啟動的情況。 或者，您可以透過 Hyper-V 管理員監視裝置重新啟動狀態。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 了解如何 [使用 StorSimple Manager 服務管理裝置](storsimple-virtual-array-manager-service-administration.md)。
 

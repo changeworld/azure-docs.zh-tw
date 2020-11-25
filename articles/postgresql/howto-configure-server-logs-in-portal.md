@@ -7,17 +7,17 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: 3b52cea1d440506caf5b8244c9643719edd8755c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704284"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999241"
 ---
 # <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-from-the-azure-portal"></a>從 Azure 入口網站設定和存取適用於 PostgreSQL 的 Azure 資料庫單一伺服器記錄
 
 您可以從 Azure 入口網站設定、列出和下載 [適用於 PostgreSQL 的 Azure 資料庫記錄](concepts-server-logs.md) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本文中的步驟要求您必須有 [適用於 PostgreSQL 的 Azure 資料庫 server](quickstart-create-server-database-portal.md)。
 
 ## <a name="configure-logging"></a>設定記錄
@@ -37,7 +37,7 @@ ms.locfileid: "91704284"
 
    變更參數之後，請選取 [ **儲存**]。 或者，您可以捨棄變更。 
 
-   :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="[伺服器記錄檔] 選項的螢幕擷取畫面":::
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="伺服器參數選項的螢幕擷取畫面":::
 
 在 [ **伺服器參數** ] 頁面上，您可以藉由關閉頁面來返回記錄清單。
 
@@ -50,18 +50,18 @@ ms.locfileid: "91704284"
 
 3. 在提要欄位的 [ **監視** ] 區段下，選取 [ **伺服器記錄**]。 頁面會顯示您的記錄檔清單。
 
-   :::image type="content" source="./media/howto-configure-server-logs-in-portal/4-server-logs-list.png" alt-text="[伺服器記錄檔] 選項的螢幕擷取畫面":::
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/4-server-logs-list.png" alt-text="[伺服器記錄] 頁面的螢幕擷取畫面，其中已醒目提示記錄清單":::
 
    > [!TIP]
    > 記錄的命名慣例是 **postgresql-yyyy-mm-dd_hh0000.log**。 檔案名中使用的日期和時間是發出記錄檔的時間。 記錄檔會每小時或 100 MB 輪替一次，視何者較早。
 
 4. 如有需要，請使用 [搜尋] 方塊，根據日期和時間快速縮小至特定的記錄。 搜尋是根據記錄的名稱進行。
 
-   :::image type="content" source="./media/howto-configure-server-logs-in-portal/5-search.png" alt-text="[伺服器記錄檔] 選項的螢幕擷取畫面":::
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/5-search.png" alt-text="[伺服器記錄] 頁面的螢幕擷取畫面，其中已醒目提示搜尋方塊和結果":::
 
 5. 若要下載個別記錄檔，請選取表格資料列中每個記錄檔旁邊的向下箭號圖示。
 
-   :::image type="content" source="./media/howto-configure-server-logs-in-portal/6-download.png" alt-text="[伺服器記錄檔] 選項的螢幕擷取畫面":::
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/6-download.png" alt-text="[伺服器記錄] 頁面的螢幕擷取畫面，反白顯示向下箭號圖示":::
 
 ## <a name="next-steps"></a>後續步驟
 - 請參閱 [CLI 中的存取伺服器記錄](howto-configure-server-logs-using-cli.md) ，以瞭解如何以程式設計方式下載記錄。

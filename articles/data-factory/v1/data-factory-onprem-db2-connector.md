@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74931792"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001060"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>使用 Azure Data Factory 複製活動從 DB2 移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -32,7 +32,7 @@ ms.locfileid: "74931792"
 
 資料處理站目前僅支援資料從 DB2 資料庫移至[支援的接收資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 不支援資料從其他資料存放區移至 DB2 資料庫。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 資料處理站支援使用[資料管理閘道](data-factory-data-management-gateway.md)連接至內部部署 DB2 資料庫。 如需有關設定閘道資料管線來移動資料的逐步指示，請參閱[將資料從內部部署移到雲端](data-factory-move-data-between-onprem-and-cloud.md)一文。
 
 即使 DB2 裝載於 Azure IaaS VM 中，也必須要有閘道。 您可以在資料存放區所在的 IaaS VM 上安裝閘道。 如果閘道可以連線到資料庫，您可以在不同的 VM 上安裝閘道。
@@ -90,22 +90,22 @@ ms.locfileid: "74931792"
 | **gatewayName** |Data Factory 服務應該用來連接到內部部署 DB2 資料庫的閘道器名稱。 |是 |
 
 ## <a name="dataset-properties"></a>資料集屬性
-如需定義資料集的區段和屬性清單，請參閱[建立資料集](data-factory-create-datasets.md)一文。 資料集 JSON 的**結構**、**可用性**和**原則**等區段類似於所有的資料集類型 (Azure SQL、Azure Blob 儲存體、Azure 資料表儲存體等)。
+如需定義資料集的區段和屬性清單，請參閱[建立資料集](data-factory-create-datasets.md)一文。 資料集 JSON 的 **結構**、**可用性** 和 **原則** 等區段類似於所有的資料集類型 (Azure SQL、Azure Blob 儲存體、Azure 資料表儲存體等)。
 
 每個資料集類型的 **>typeproperties** 區段都不同，並提供資料存放區中資料位置的相關資訊。 **RelationalTable** 類型資料集的 **typeProperties** 區段 (包含 DB2 資料集) 具有下列屬性：
 
 | 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| **名** |DB2 資料庫執行個體中連結服務所參照的資料表名稱。 此屬性必須區分大小寫。 |否 (如果指定 **RelationalSource** 類型複製活動的**查詢**屬性) |
+| **名** |DB2 資料庫執行個體中連結服務所參照的資料表名稱。 此屬性必須區分大小寫。 |否 (如果指定 **RelationalSource** 類型複製活動的 **查詢** 屬性) |
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
-如需定義複製活動的區段和屬性清單，請參閱[建立管線](data-factory-create-pipelines.md)一文。 複製活動屬性 (例如**名稱**、**描述**、**輸入**資料表、**輸出**資料表，以及**原則**) 適用於所有類型的活動。 活動 **typeProperties** 區段中的可用屬性，會因為活動類型不同而有所差異。 就複製活動而言，屬性會根據資料來源和接收的類型而有所不同。
+如需定義複製活動的區段和屬性清單，請參閱[建立管線](data-factory-create-pipelines.md)一文。 複製活動屬性 (例如 **名稱**、**描述**、**輸入** 資料表、**輸出** 資料表，以及 **原則**) 適用於所有類型的活動。 活動 **typeProperties** 區段中的可用屬性，會因為活動類型不同而有所差異。 就複製活動而言，屬性會根據資料來源和接收的類型而有所不同。
 
 在複製活動中，如果來源類型為 **RelationalSource** (包含 DB2)，則 **typeProperties** 區段可使用下列屬性：
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| **查詢** |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如： `"query": "select * from "MySchema"."MyTable""` |否 (如果已指定資料集的 **tableName** 屬性) |
+| **查詢** |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如：`"query": "select * from "MySchema"."MyTable""` |否 (如果已指定資料集的 **tableName** 屬性) |
 
 > [!NOTE]
 > 結構描述和資料表名稱會區分大小寫。 在查詢陳述式中，使用 "" (雙引號) 括住屬性名稱。
@@ -163,7 +163,7 @@ ms.locfileid: "74931792"
 
 此範例假設您已在 DB2 中建立資料表 "MyTable"，其中包含時間序列資料的資料行 (名稱為 "timestamp")。
 
-**外部**屬性是設定為 "true"。 此設定可讓 Data Factory 服務知道資料集是在 Data Factory 外部，而不是由 Data Factory 中的活動所產生。 請注意，**類型**屬性是設定為 **RelationalTable**。
+**外部** 屬性是設定為 "true"。 此設定可讓 Data Factory 服務知道資料集是在 Data Factory 外部，而不是由 Data Factory 中的活動所產生。 請注意，**類型** 屬性是設定為 **RelationalTable**。
 
 
 ```json
@@ -352,7 +352,7 @@ ms.locfileid: "74931792"
 若要了解如何將來源資料集內的資料行與接收資料集內的資料行對應，請參閱[在 Azure Data Factory 中對應資料集資料行](data-factory-map-columns.md)。
 
 ## <a name="repeatable-reads-from-relational-sources"></a>從關聯式來源進行可重複的讀取
-從關聯式資料存放區複製資料時，請留意可重複性，以避免產生非預期的結果。 在 Azure Data Factory 中，您可以手動重新執行配量。 您也可以為資料集設定重試**原則**屬性，使得在發生失敗時，重新執行配量。 確定無論配量將執行多少次，而且無論如何重新執行配量，均讀取相同的資料。 如需詳細資訊，請參閱[從關聯式來源進行可重複的讀取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
+從關聯式資料存放區複製資料時，請留意可重複性，以避免產生非預期的結果。 在 Azure Data Factory 中，您可以手動重新執行配量。 您也可以為資料集設定重試 **原則** 屬性，使得在發生失敗時，重新執行配量。 確定無論配量將執行多少次，而且無論如何重新執行配量，均讀取相同的資料。 如需詳細資訊，請參閱[從關聯式來源進行可重複的讀取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
 
 ## <a name="performance-and-tuning"></a>效能和微調
 請參閱[複製活動的效能及微調指南](data-factory-copy-activity-performance.md)，了解影響複製活動效能的重要因素，以及達到最佳效能的各種方法。

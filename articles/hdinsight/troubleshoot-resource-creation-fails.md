@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/22/2020
 ms.openlocfilehash: 2e9f6898dba559f557f49cc0ee9ff39644da243f
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287349"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000686"
 ---
 # <a name="troubleshoot-resource-creation-failures-in-azure-hdinsight"></a>針對 Azure HDInsight 中的資源建立失敗進行疑難排解
 
@@ -33,15 +33,15 @@ ms.locfileid: "93287349"
 
 若要要求增加配額，請遵循下列步驟：
 
-1. 移至 [Azure 入口網站](https://portal.azure.com)，然後選取 [說明 **+ 支援** ]。
+1. 移至 [Azure 入口網站](https://portal.azure.com)，然後選取 [說明 **+ 支援**]。
 
 1. 選取 [新增支援要求]。
 
-1. 在 [ **新增支援要求** ] 頁面的 [ **基本** ] 索引標籤上，提供下列資訊：
+1. 在 [**新增支援要求**] 頁面的 [**基本**] 索引標籤上，提供下列資訊：
 
    * **問題類型：** 選取 **(配額) 的服務和訂** 用帳戶限制。
    * **訂** 用帳戶：選取您要修改的訂用帳戶。
-   * **配額類型：** 選取 [ **HDInsight** ]。
+   * **配額類型：** 選取 [ **HDInsight**]。
 
 如需詳細資訊，請參閱[建立支援票證來增加核心](hdinsight-capacity-planning.md#quotas)。
 

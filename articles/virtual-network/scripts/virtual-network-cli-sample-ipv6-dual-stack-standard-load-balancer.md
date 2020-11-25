@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 12233fd44a74d127e9b7de71971b9831cf80f7b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e35d50abcb99b8bb67b611f0e03b3bdbc0c1c60
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87492933"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "96000227"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>在虛擬網路腳本範例中使用 Standard Load Balancer (preview 設定 IPv6 端點) 
 
@@ -206,7 +206,7 @@ az network vnet create \
 --name dsVNET \
 --resource-group DsResourceGroup01 \
 --location eastus  \
---address-prefixes "10.0.0.0/16" "ace:cab:deca::/48"
+--address-prefixes "10.0.0.0/16" "fd00:db8:deca::/48"
 
 # Create a single dual stack subnet
 
@@ -214,7 +214,7 @@ az network vnet subnet create \
 --name dsSubNET \
 --resource-group DsResourceGroup01 \
 --vnet-name dsVNET \
---address-prefixes "10.0.0.0/24" "ace:cab:deca:deed::/64" \
+--address-prefixes "10.0.0.0/24" "fd00:db8:deca:deed::/64" \
 --network-security-group dsNSG1
 
 # Create NICs
@@ -286,7 +286,7 @@ az vm create \
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>在 Azure 入口網站中查看 IPv6 雙重堆疊虛擬網路
 您可以在 Azure 入口網站中看到 IPv6 雙重堆疊虛擬網路，如下所示：
 1. 在入口網站的搜尋列中，輸入 *dsVnet*。
-2. 當搜尋結果中出現 **myVirtualNetwork** 時加以選取。 這會啟動名為*dsVnet*的雙重堆疊虛擬網路的 [**總覽**] 頁面。 雙重堆疊虛擬網路會顯示兩個 Nic，兩者皆位於名為 *dsSubnet*的雙重堆疊子網中的 IPv4 和 IPv6 設定。 
+2. 當搜尋結果中出現 **myVirtualNetwork** 時加以選取。 這會啟動名為 *dsVnet* 的雙重堆疊虛擬網路的 [**總覽**] 頁面。 雙重堆疊虛擬網路會顯示兩個 Nic，兩者皆位於名為 *dsSubnet* 的雙重堆疊子網中的 IPv4 和 IPv6 設定。 
 
 > [!NOTE]
 > 適用于 Azure 虛擬網路的 IPv6 可在此預覽版本的唯讀 Azure 入口網站中使用。

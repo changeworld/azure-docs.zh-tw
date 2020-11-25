@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
 ms.openlocfilehash: 1eb96248f68923da5ff5223f57fac1bffaf4ed04
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108876"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000414"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>如何整合常見的警示架構與 Logic Apps
 
@@ -20,7 +20,7 @@ ms.locfileid: "92108876"
 [一般警示架構](./alerts-common-schema.md)會在所有不同的警示類型之間提供標準化且可擴充的 JSON 架構。 當以程式設計方式（透過 webhook、runbook 和邏輯應用程式）運用時，常見的警示架構最有用。 在本文中，我們會示範如何撰寫單一邏輯應用程式來處理您的所有警示。 相同的原則也可以套用至其他程式設計方法。 本文中所述的邏輯應用程式會針對「 [基本」欄位](alerts-common-schema-definitions.md#essentials)建立定義完善的變數，也會說明如何處理 [警示類型](alerts-common-schema-definitions.md#alert-context) 的特定邏輯。
 
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 本文假設讀者已熟悉 
 * 設定警示規則 ([度量](./alerts-metric.md)、 [記錄](./alerts-log.md)、 [活動記錄](./alerts-activity-log.md)) 
@@ -31,11 +31,11 @@ ms.locfileid: "92108876"
 
 1. 遵循 [概述的步驟來建立邏輯應用程式](./action-groups-logic-app.md)。 
 
-1.  選取觸發程序：[收到 HTTP 要求時]****。
+1.  選取觸發程序：[收到 HTTP 要求時]。
 
     ![邏輯應用程式觸發程序](media/action-groups-logic-app/logic-app-triggers.png "邏輯應用程式觸發程序")
 
-1.  選取 [編輯]**** 以變更 HTTP 要求觸發程序。
+1.  選取 [編輯] 以變更 HTTP 要求觸發程序。
 
     ![HTTP 要求觸發程式](media/action-groups-logic-app/http-request-trigger-shape.png "HTTP 要求觸發程式")
 

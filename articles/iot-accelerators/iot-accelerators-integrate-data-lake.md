@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: fce4da9cc9577bc9805289473d3df7647b1b0934
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670918"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000465"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>整合遠端監視解決方案與 Azure Data Lake Store
 
@@ -21,7 +21,7 @@ ms.locfileid: "92670918"
 
 在本操作說明中，您會使用 Azure 串流分析作業將來自遠端監視解決方案 IoT 中樞的資料串流至 Azure Data Lake Store。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本操作說明，您需要下列各項：
 
@@ -40,7 +40,7 @@ ms.locfileid: "92670918"
 
 1. 登入 Azure 入口網站。
 
-1. 在 Azure 入口網站中，按一下 [Cloud Shell]  按鈕。
+1. 在 Azure 入口網站中，按一下 [Cloud Shell] 按鈕。
 
     ![入口網站啟動圖示](./media/iot-accelerators-integrate-data-lake/portal-launch-icon.png)
 
@@ -57,7 +57,7 @@ az iot hub consumer-group create --hub-name contoso-rm30263 --name streamanalyti
 
 建立 Azure 串流分析作業以將來自 IoT 中樞的資料串流至您的 Azure Data Lake Store。
 
-1. 按一下 [建立資源]  ，從 Marketplace 選取 [物聯網]，然後按一下 [串流分析作業]  。
+1. 按一下 [建立資源]，從 Marketplace 選取 [物聯網]，然後按一下 [串流分析作業]。
 
     ![新增串流分析作業](./media/iot-accelerators-integrate-data-lake/new-stream-analytics-job.png)
 
@@ -65,37 +65,37 @@ az iot hub consumer-group create --hub-name contoso-rm30263 --name streamanalyti
 
 1. 選取接近您 Data Lake Store 的區域或是位於相同區域中的位置。 我們在此處會使用 [美國東部]。
 
-1. 請務必讓主控環境保留為預設的 [雲端]  。
+1. 請務必讓主控環境保留為預設的 [雲端]。
 
-1. 按一下頁面底部的 [新增]  。
+1. 按一下 [建立]。
 
     ![建立串流分析作業](./media/iot-accelerators-integrate-data-lake/create-stream-analytics-job.png)
 
 ## <a name="configure-the-stream-analytics-job"></a>設定串流分析作業
 
-1. 在您的遠端監視解決方案資源群組中，移至該 **串流分析作業** 。
+1. 在您的遠端監視解決方案資源群組中，移至該 **串流分析作業**。
 
-1. 在 [概觀] 頁面上，按一下 [輸入]  。
+1. 在 [概觀] 頁面上，按一下 [輸入]。
 
     ![[概觀] 頁面](./media/iot-accelerators-integrate-data-lake/stream-analytics-overview.png)
 
-1. 按一下 [新增串流輸入]  ，然後從下拉式清單中選取 [IoT 中樞]  。
+1. 按一下 [新增串流輸入]，然後從下拉式清單中選取 [IoT 中樞]。
 
     ![新增輸入](./media/iot-accelerators-integrate-data-lake/stream-analytics-add-input.png)
 
 1. 在 [新的輸入] 索引標籤上，輸入 **IoTHub** 作為 [輸入別名]。
 
-1. 從 [取用者群組] 下拉式清單中，選取您稍早建立的取用者群組。 我們在此處是使用 [streamanalyticsjob]  。
+1. 從 [取用者群組] 下拉式清單中，選取您稍早建立的取用者群組。 我們在此處是使用 [streamanalyticsjob]。
 
     ![選取輸入](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-input.png)
 
-1. 按一下 [檔案]  。
+1. 按一下 [儲存]。
 
-1. 在 [概觀] 頁面上，按一下 [輸出]  。
+1. 在 [概觀] 頁面上，按一下 [輸出]。
 
     ![新增 Data Lake Store](./media/iot-accelerators-integrate-data-lake/stream-analytics-overview-2.png)
 
-1. 按一下 [新增]  ，然後從下拉式清單中選取 [Data Lake Store]  。
+1. 按一下 [新增]，然後從下拉式清單中選取 [Data Lake Store]。
 
     ![新增輸出](./media/iot-accelerators-integrate-data-lake/stream-analytics-output.png)
 
@@ -103,11 +103,11 @@ az iot hub consumer-group create --hub-name contoso-rm30263 --name streamanalyti
 
 1. 選取您在上一個步驟中建立的 Data Lake Store 帳戶，並提供資料夾結構以將資料串流至存放區。
 
-1. 在 [路徑前置詞模式] 欄位中，輸入 **/streaming/{date}/{time}** 。 保留 YYYY/MM/DD 的預設日期格式及 HH 的時間格式。
+1. 在 [路徑前置詞模式] 欄位中，輸入 **/streaming/{date}/{time}**。 保留 YYYY/MM/DD 的預設日期格式及 HH 的時間格式。
 
     ![提供資料夾結構](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-output.png)
 
-1. 按一下 [授權]  。
+1. 按一下 [ **授權**]。
 
     您必須以 Data Lake Store 授權，以提供串流分析作業寫入檔案系統的存取權。
 
@@ -118,13 +118,13 @@ az iot hub consumer-group create --hub-name contoso-rm30263 --name streamanalyti
     > [!NOTE]
     > 如果您在快顯視窗中看見錯誤，請以無痕模式開啟新的瀏覽器視窗，然後再試一次。
 
-1. 按一下 [檔案]  。
+1. 按一下 [儲存]。
 
 ## <a name="edit-the-stream-analytics-query"></a>編輯串流分析查詢
 
 Azure 串流分析會使用類似 SQL 的查詢語言，來指定要串流資料的輸入來源，視需要轉換該資料，然後將它輸出至各種不同的儲存體或處理目的地。
 
-1. 在 [概觀] 索引標籤上，按一下 [編輯查詢]  。
+1. 在 [概觀] 索引標籤上，按一下 [編輯查詢]。
 
     ![編輯查詢](./media/iot-accelerators-integrate-data-lake/stream-analytics-edit-query.png)
 
@@ -141,16 +141,16 @@ Azure 串流分析會使用類似 SQL 的查詢語言，來指定要串流資料
 
     ![串流分析查詢](./media/iot-accelerators-integrate-data-lake/stream-analytics-query.png)
 
-1. 按一下 [檔案]  。
-1. 按一下 [是]  以接受變更。
+1. 按一下 [儲存]。
+1. 按一下 [是] 以接受變更。
 
 ## <a name="start-the-stream-analytics-job"></a>啟動串流分析工作
 
-1. 在 [概觀] 索引標籤上，按一下 [啟動]  。
+1. 在 [概觀] 索引標籤上，按一下 [啟動]。
 
     ![啟動串流分析作業](./media/iot-accelerators-integrate-data-lake/stream-analytics-start.png)
 
-1. 在 [啟動工作] 索引標籤上，按一下 [自訂]  。
+1. 在 [啟動工作] 索引標籤上，按一下 [自訂]。
 
 1. 將自訂時間往前設定數個小時，以收集從裝置開始進行串流之後的資料。
 
@@ -168,7 +168,7 @@ Azure 串流分析會使用類似 SQL 的查詢語言，來指定要串流資料
 
 1. 前往您的 Data Lake Store。
 
-1. 在 [概觀] 索引標籤上，按一下 [資料總管]  。
+1. 在 [概觀] 索引標籤上，按一下 [資料總管]。
 
 1. 在 [資料總管] 中，向下切入至 **/streaming** 資料夾。 您會看到以 YYYY/MM/DD 格式建立的資料夾。
 

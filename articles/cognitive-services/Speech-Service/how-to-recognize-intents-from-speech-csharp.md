@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1138a970bf7c52182f13d0fd14d0178a2d0cfeba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93a3adf00203e317be912e3e72de7a3f7ca666c6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88918786"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96001081"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>如何使用適用于 C 的語音 SDK 從語音辨識意圖#
 
-認知服務[語音 SDK](speech-sdk.md) 會與 [Language Understanding Intelligent Service (LUIS)](https://www.luis.ai/home) 整合以提供**意圖辨識**。 意圖是使用者想要做的事情：訂機票、查看天氣或打電話。 使用者可以使用任何他們覺得自然的字詞。 使用機器學習服務，LUIS 會將使用者要求對應至您已定義的意圖。
+認知服務 [語音 SDK](speech-sdk.md) 會與 [Language Understanding Intelligent Service (LUIS)](https://www.luis.ai/home) 整合以提供 **意圖辨識**。 意圖是使用者想要做的事情：訂機票、查看天氣或打電話。 使用者可以使用任何他們覺得自然的字詞。 使用機器學習服務，LUIS 會將使用者要求對應至您已定義的意圖。
 
 > [!NOTE]
 > LUIS 應用程式 (application) 會定義您想要辨識的的意圖和實體。 其有別於使用語音服務的 C# 應用程式 (application)。 在本文中，「應用程式 (app)」意指 LUIS 應用程式 (app)，「應用程式 (application)」則意指 C# 程式碼。
@@ -36,7 +36,7 @@ ms.locfileid: "88918786"
 > - 從檔案辨識語音
 > - 使用非同步的事件驅動連續辨識
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始本指南之前，請確定您有下列專案：
 
@@ -55,7 +55,7 @@ LUIS 會使用三種金鑰：
 | 入門   | 可讓您只使用文字來測試 LUIS 應用程式   |
 | 端點  | 可授權特定 LUIS 應用程式的存取權            |
 
-在本指南中，您需要端點金鑰類型。 本指南使用範例 Home Automation LUIS 應用程式，您可以遵循「 [使用預建的家用自動化」應用](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) 程式快速入門來建立此應用程式。 如果您已建立自有 LUIS 應用程式，則可改用此應用程式。
+在本指南中，您需要端點金鑰類型。 本指南使用範例 Home Automation LUIS 應用程式，您可以遵循「 [使用預建的家用自動化」應用](../luis/luis-get-started-create-app.md) 程式快速入門來建立此應用程式。 如果您已建立自有 LUIS 應用程式，則可改用此應用程式。
 
 當您建立 LUIS 應用程式時，LUIS 會自動產生入門金鑰，讓您可以使用文字查詢來測試應用程式。 此金鑰不會啟用語音服務整合，也不會使用本指南。 在 Azure 儀表板中建立 LUIS 資源，並將它指派給 LUIS 應用程式。 您可以使用本指南的免費訂用帳戶層。
 
@@ -86,7 +86,7 @@ LUIS 會使用三種金鑰：
 
 接下來，將程式碼新增至專案。
 
-1. 在 [方案總管]**** 中，開啟 **Program.cs** 檔案。
+1. 在 [方案總管] 中，開啟 **Program.cs** 檔案。
 
 1. 以下列宣告取代檔案開頭的 `using` 陳述式區塊：
 
@@ -119,9 +119,9 @@ LUIS 會使用三種金鑰：
 
    | 預留位置 | 更換為 |
    | ----------- | ------------ |
-   | `YourLanguageUnderstandingSubscriptionKey` | LUIS 端點金鑰。 同樣地，您必須從 Azure 儀表板取得此項目，而不是「入門金鑰」。 您可以在應用程式的 [**金鑰和端點**] 頁面上找到它， (在[LUIS 入口網站](https://www.luis.ai/home)的 [**管理**) ] 下。 |
+   | `YourLanguageUnderstandingSubscriptionKey` | LUIS 端點金鑰。 同樣地，您必須從 Azure 儀表板取得此項目，而不是「入門金鑰」。 您可以在應用程式的 [**金鑰和端點**] 頁面上找到它， (在 [LUIS 入口網站](https://www.luis.ai/home)的 [**管理**) ] 下。 |
    | `YourLanguageUnderstandingServiceRegion` | LUIS 訂用帳戶所在區域的簡短識別碼，例如美國西部是 `westus`。 請參閱[區域](regions.md)。 |
-   | `YourLanguageUnderstandingAppId` | LUIS 應用程式識別碼。 您可以在 [LUIS 入口網站](https://www.luis.ai/home)中應用程式的 [設定]**** 頁面上找到此值。 |
+   | `YourLanguageUnderstandingAppId` | LUIS 應用程式識別碼。 您可以在 [LUIS 入口網站](https://www.luis.ai/home)中應用程式的 [設定] 頁面上找到此值。 |
 
 進行這些變更之後，您可以建立 (**Control + Shift + B**) ，然後) 應用程式中執行 (**F5** 。 出現提示時，請試著對電腦的麥克風說「關燈」。 應用程式會在主控台視窗中顯示結果。
 
@@ -201,4 +201,4 @@ result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_Js
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [快速入門：從麥克風辨識語音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)
+> [快速入門：從麥克風辨識語音](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore)

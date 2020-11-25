@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
 ms.openlocfilehash: 52bf42434640dc965999895549b4fa12a139dcce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87284059"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999598"
 ---
 # <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 在 Bing 搜尋中尋找結果
 
@@ -50,7 +50,7 @@ ms.locfileid: "87284059"
 
    在此範例中，針對從 Bing 搜尋傳回相符的新聞文章提供準則。
 
-   | 屬性 | 必要 | 值 | 說明 |
+   | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
    | 搜尋查詢 | 是 | <*搜尋-單字*> | 輸入您要使用的搜尋關鍵字。 |
    | Market | 是 | <*locale*> | 搜尋地區設定。 預設為 "en-US"，但您可以選取其他值。 |
@@ -101,7 +101,7 @@ ms.locfileid: "87284059"
 
    在此範例中，針對傳回觸發程序結果的子集提供準則。
 
-   | 屬性 | 必要 | 值 | 說明 |
+   | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
    | 搜尋查詢 | 是 | <*搜尋運算式*> | 輸入查詢觸發程序結果的運算式。 您可以從動態內容清單中的欄位選取，或使用運算式產生器建立運算式。 |
    | Market | 是 | <*locale*> | 搜尋地區設定。 預設為 "en-US"，但您可以選取其他值。 |
@@ -112,25 +112,25 @@ ms.locfileid: "87284059"
 
    例如，假設您想要的結果其類別名稱包括 "tech" 這個字。
 
-   1. 按一下 [搜尋查詢]**** 方塊，動態內容清單隨即出現。 
+   1. 按一下 [搜尋查詢] 方塊，動態內容清單隨即出現。 
    從該清單中選取 [ **運算式** ]，運算式產生器就會出現。 
 
       ![Bing 搜尋觸發程序](./media/connectors-create-api-bing-search/bing-search-action.png)
 
       現在您可以開始建立運算式。
 
-   2. 從函式清單中選取 **contains()** 函式，它會出現在運算式方塊中。 按一下 [動態內容]****，欄位清單會再次出現，但請確認您的資料指標停留在括號內。
+   2. 從函式清單中選取 **contains()** 函式，它會出現在運算式方塊中。 按一下 [動態內容]，欄位清單會再次出現，但請確認您的資料指標停留在括號內。
 
       ![選取函式](./media/connectors-create-api-bing-search/expression-select-function.png)
 
-   3. 從欄位清單中選取 [類別]****，它會轉換成參數。 
+   3. 從欄位清單中選取 [類別]，它會轉換成參數。 
    在第一個參數後新增逗號，並在逗號後新增這個字：`'tech'` 
 
       ![選取欄位](./media/connectors-create-api-bing-search/expression-select-field.png)
 
    4. 完成後，選取 [確定]。
 
-      運算式現在會出現在 [搜尋查詢]**** 方塊中，格式如下：
+      運算式現在會出現在 [搜尋查詢] 方塊中，格式如下：
 
       ![完成的運算式](./media/connectors-create-api-bing-search/resolved-expression.png)
 
@@ -159,7 +159,7 @@ ms.locfileid: "87284059"
 
    ![建立連線](./media/connectors-create-api-bing-search/bing-search-create-connection.png)
 
-2. 當您完成時，選取 [建立]。
+2. 當您完成時，選取 [建立]  。
 
 ## <a name="connector-reference"></a>連接器參考
 

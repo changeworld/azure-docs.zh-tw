@@ -5,11 +5,11 @@ services: service-bus-relay
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 5fcc0f820983da388d808cadf8ce64a555e8ef0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87532878"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000176"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor"></a>Azure 監視器中的 Azure 轉送計量 
 Azure 轉送計量會提供您 Azure 訂用帳戶中的資源狀態。 您可以使用豐富的計量資料集，評估轉送資源的整體健康狀態，不只在命名空間層級，還有實體層級。 這些統計資料相當重要，因為它們可協助您監視 Azure 轉送的狀態。 計量也可協助針對問題的根本原因進行疑難排解，而不需要連絡 Azure 支援。
@@ -77,7 +77,7 @@ Azure 轉送支援下列的 Azure 監視器計量維度。 將維度新增至計
 | ------------------- | ----------------- |
 |EntityName| Azure 轉送支援命名空間下的訊息實體。|
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請參閱 [Azure 監視概觀](../azure-monitor/overview.md)。
 

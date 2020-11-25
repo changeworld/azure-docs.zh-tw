@@ -9,11 +9,11 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
 ms.openlocfilehash: c920c9b3b28df7f5bf3bf169ef88ab967f23649e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085372"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001315"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將推播通知傳送至 iOS 應用程式
 
@@ -58,7 +58,7 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
    > [!NOTE]
    > 依預設，Keychain 存取會選取清單中的第一個項目。 如果您位於 [憑證] 類別中，而 **Apple Worldwide Developer Relations 憑證授權單位** 不是清單中的第一個項目，則可能因此而產生問題。 在產生 CSR (憑證簽署要求) 之前，請確定您擁有非金鑰項目，或已選取 **Apple Worldwide Developer Relations 憑證授權單位** 金鑰。
 
-3. 選取您的 **使用者電子郵件地址** ，輸入 **一般名稱** 值，並確定您已指定 [儲存至磁碟]  ，然後選取 [繼續]  。 請將 [CA 電子郵件地址]  留空，因為這不是必要資訊。
+3. 選取您的 **使用者電子郵件地址**，輸入 **一般名稱** 值，並確定您已指定 [儲存至磁碟]  ，然後選取 [繼續]  。 請將 [CA 電子郵件地址]  留空，因為這不是必要資訊。
 
    :::image type="content" source="media/ios-sdk-get-started/image2.png" alt-text="必要的憑證資訊":::
 
@@ -66,7 +66,7 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 
    :::image type="content" source="media/ios-sdk-get-started/image3.png" alt-text="選擇檔案名稱":::
 
-   此動作會在選取的位置儲存 CSR 檔案。 預設位置是 **桌面** 。 請記住為檔案選擇的位置。
+   此動作會在選取的位置儲存 CSR 檔案。 預設位置是 **桌面**。 請記住為檔案選擇的位置。
 
 接著，向 Apple 註冊您的應用程式，並啟用推播通知，然後上傳這個匯出的 CSR 建立推播憑證。
 
@@ -84,12 +84,12 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 
 3. 將新應用程式的下列三個值予以更新，然後選取 [繼續]  ：
 
-   - **描述** ：輸入您應用程式的描述性名稱。
-   - **套件組合識別碼** ：以 [應用程式分發指南](https://help.apple.com/xcode/mac/current/#/dev91fe7130a) \(英文\) 中所提的 **Organization Identifier.Product Name** 形式輸入套件組合識別碼。 [組織識別碼]  和 [產品名稱]  值必須符合當您建立 Xcode 專案時使用的組織識別碼和產品名稱。 在下列螢幕擷取畫面中， **NotificationHubs** 值會作為組織識別碼， **GetStarted** 值會作為產品名稱。 請確定 **套件組合識別碼** 值符合您 Xcode 專案中的值，好讓 Xcode 使用正確的發行設定檔。
+   - **描述**：輸入您應用程式的描述性名稱。
+   - **套件組合識別碼**：以 [應用程式分發指南](https://help.apple.com/xcode/mac/current/#/dev91fe7130a) \(英文\) 中所提的 **Organization Identifier.Product Name** 形式輸入套件組合識別碼。 [組織識別碼]  和 [產品名稱]  值必須符合當您建立 Xcode 專案時使用的組織識別碼和產品名稱。 在下列螢幕擷取畫面中，**NotificationHubs** 值會作為組織識別碼，**GetStarted** 值會作為產品名稱。 請確定 **套件組合識別碼** 值符合您 Xcode 專案中的值，好讓 Xcode 使用正確的發行設定檔。
 
       :::image type="content" source="media/ios-sdk-get-started/image6.png" alt-text="註冊應用程式識別碼":::
 
-   - **推播通知** ：勾選 [功能]  區段中的 [推播通知]  選項。
+   - **推播通知**：勾選 [功能]  區段中的 [推播通知]  選項。
 
       :::image type="content" source="media/ios-sdk-get-started/image7.png" alt-text="註冊新的應用程式識別碼":::
 
@@ -106,7 +106,7 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 > [!NOTE]
 > 隨著 iOS 13 的發行，您只能使用權杖型驗證來接收無訊息通知。 如果您要針對 APNS 認證使用憑證型驗證，則必須切換為使用權杖型驗證。
 
-需要憑證才能搭配使用通知中樞與 **APNS** 。 完成此步驟的方式有兩種：
+需要憑證才能搭配使用通知中樞與 **APNS**。 完成此步驟的方式有兩種：
 
 - 建立可直接上傳至通知中樞的 **.p12** 檔案。
 
@@ -139,9 +139,9 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 
    :::image type="content" source="media/ios-sdk-get-started/image12.png" alt-text="尋找憑證檔案":::
 
-   依預設，下載的開發憑證會名為 **aps_development.cer** 。
+   依預設，下載的開發憑證會名為 **aps_development.cer**。
 
-5. 按兩下下載的推播憑證 **aps\_development.cer** 。 此動作會將新的憑證安裝在金鑰鏈中，如下圖所示：
+5. 按兩下下載的推播憑證 **aps\_development.cer**。 此動作會將新的憑證安裝在金鑰鏈中，如下圖所示：
 
    :::image type="content" source="media/ios-sdk-get-started/image13.png" alt-text="金鑰鏈存取":::
 
@@ -160,7 +160,7 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 
 1. 記下下列詳細資料：
 
-   - **應用程式識別碼首碼** (這是 **小組識別碼** )
+   - **應用程式識別碼首碼** (這是 **小組識別碼**)
    - **套件組合識別碼**
 
 2. 回到 [憑證、識別碼與設定檔]  中，按一下 [金鑰]  。 如果您已為 **APNS** 設定金鑰，則可重複使用在建立之後所下載的 .p8 憑證。 若是如此，您可以忽略 3 到 5 的步驟。
@@ -290,7 +290,7 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 
 ### <a name="option-2-use-token-based-authentication"></a>選項 2：使用權杖式驗證
 
-1. 選取 **權杖** 。
+1. 選取 **權杖**。
 
 2. 輸入您稍早取得的下列值：
 

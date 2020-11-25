@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 2c2b7de65e7ac22ebe648ce98633d5ae88818324
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 3728fdd07172f2402ddb1dc7434ddb1993b984b1
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628385"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95999870"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商業 marketplace 夥伴和客戶使用方式屬性
 
@@ -74,9 +74,9 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立�
    * 合作夥伴可以註冊多個 GUID。
    * 合作夥伴可以註冊非市集解決方案範本和供應項目的 GUID。
 
-1. 選取右上角的 [ **設定** ] (齒輪圖示) > **帳戶設定** ]。
+1. 選取右上角的 [ **設定** ] (齒輪圖示) > **帳戶設定**]。
 
-1. 在 [ **組織設定檔**  >  **識別碼** ] 上，選取 [ **新增追蹤 GUID** ]。
+1. 在 [**組織設定檔**  >  **識別碼**] 上，選取 [**新增追蹤 GUID**]。
 
 1. 在 [GUID] 方塊中，輸入追蹤 GUID。 只輸入不含前置詞的 GUID `pid-` 。 在 [描述] 方塊中，輸入供應項目名稱或描述。
 
@@ -102,7 +102,7 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立�
 
 1. 在主要範本檔案中，新增類型為 [Microsoft .resources/部署](/azure/templates/microsoft.resources/deployments) 的新資源。 資源只需要置於 **mainTemplate.json** 或 **azuredeploy.json** 檔案中，而非任何巢狀或連結的範本中。
 
-1. 輸入 `pid-` 前置詞作為資源名稱之後的 GUID 值。 例如，如果 GUID 是 eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063-pid-eb7927c8-dd66-43e1-b0cf-c346a422063，則資源名稱將會是 _pid-eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063_ -eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063-pid-eb7927c8-dd66-43e1-b0cf-c346a422063。
+1. 輸入 `pid-` 前置詞作為資源名稱之後的 GUID 值。 例如，如果 GUID 是 eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063-pid-eb7927c8-dd66-43e1-b0cf-c346a422063，則資源名稱將會是 _pid-eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063_-eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063-pid-eb7927c8-dd66-43e1-b0cf-c346a422063。
 
 1. 檢查範本是否有任何錯誤。
 
@@ -251,11 +251,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>Report
 
-您可以在合作夥伴中心儀表板 ([https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)) ，找到客戶使用狀況歸因的報告。 若要查看報告，您必須使用合作夥伴中心認證來登入。 如果您在報告或登入方面遇到任何問題，請遵循〈取得支援〉一節的指示來建立支援要求。
-
-在 [合作夥伴關聯類型] 下拉式清單中，選擇 [追蹤的範本] 來查看報告。
-
-![客戶使用狀況歸因的報告](media/marketplace-publishers-guide/customer-usage-attribution-report.png)
+您可以在合作夥伴中心儀表板 ([https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview](https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview)) ，找到客戶使用狀況歸因的報告。 若要查看報告，您必須使用合作夥伴中心認證來登入。 如果您遇到任何報表或登入問題，請建立 [支援要求](#get-support)。
 
 ## <a name="notify-your-customers"></a>通知您的客戶
 

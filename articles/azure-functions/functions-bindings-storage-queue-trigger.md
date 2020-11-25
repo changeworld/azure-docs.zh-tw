@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 26f0006ad2b26757e335ba1819c2b82ba519f8cc
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 95560801d4132735435e4d45e8a588476636ec38
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491438"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96001230"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Functions 的 Azure 佇列儲存體觸發程式
 
@@ -97,6 +97,22 @@ public static void Run(CloudQueueMessage myQueueItem,
 
 [使用方式](#usage)章節會說明 `myQueueItem` (由 function.json 中的`name` 屬性命名)。  [訊息中繼資料區段](#message-metadata)會說明所有其他顯示的變數。
 
+# <a name="java"></a>[Java](#tab/java)
+
+下列 JAVA 範例顯示儲存體佇列觸發程式函式，此函式會記錄放入佇列中的觸發訊息 `myqueuename` 。
+
+ ```java
+ @FunctionName("queueprocessor")
+ public void run(
+    @QueueTrigger(name = "msg",
+                   queueName = "myqueuename",
+                   connection = "myconnvarname") String message,
+     final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+ ```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 下列範例示範的是 *function.json* 檔案中的佇列觸發程序繫結，以及使用該繫結的 [JavaScript 函式](functions-reference-node.md)。 此函式會輪詢 `myqueue-items` 佇列，並在每次處理佇列項目時寫入記錄。
@@ -142,11 +158,47 @@ module.exports = async function (context, message) {
 
 [使用方式](#usage)章節會說明 `myQueueItem` (由 function.json 中的`name` 屬性命名)。  [訊息中繼資料區段](#message-metadata)會說明所有其他顯示的變數。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+下列範例示範如何透過觸發程式讀取傳遞至函式的佇列訊息。
+
+儲存體佇列觸發程式會定義于檔案的 *function.js* 中，其中 `type` 設定為 `queueTrigger` 。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "QueueItem",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "messages",
+      "connection": "MyStorageConnectionAppSetting"
+    }
+  ]
+}
+```
+
+*Run.ps1* 檔案中的程式碼會將參數宣告為 `$QueueItem` ，可讓您讀取函數中的佇列訊息。
+
+```powershell
+# Input bindings are passed in via param block.
+param([string] $QueueItem, $TriggerMetadata)
+
+# Write out the queue message and metadata to the information log.
+Write-Host "PowerShell queue trigger function processed work item: $QueueItem"
+Write-Host "Queue item expiration time: $($TriggerMetadata.ExpirationTime)"
+Write-Host "Queue item insertion time: $($TriggerMetadata.InsertionTime)"
+Write-Host "Queue item next visible time: $($TriggerMetadata.NextVisibleTime)"
+Write-Host "ID: $($TriggerMetadata.Id)"
+Write-Host "Pop receipt: $($TriggerMetadata.PopReceipt)"
+Write-Host "Dequeue count: $($TriggerMetadata.DequeueCount)"
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 下列範例示範如何透過觸發程式讀取傳遞至函式的佇列訊息。
 
-儲存體佇列觸發程式是在 [ *類型* ] 設定為的 *function.js* 中定義 `queueTrigger` 。
+儲存體佇列觸發程式是在 [*類型*] 設定為的 *function.js* 中定義 `queueTrigger` 。
 
 ```json
 {
@@ -189,22 +241,6 @@ def main(msg: func.QueueMessage):
 
     logging.info(result)
 ```
-
-# <a name="java"></a>[Java](#tab/java)
-
-下列 JAVA 範例顯示儲存體佇列觸發程式函式，此函式會記錄放入佇列中的觸發訊息 `myqueuename` 。
-
- ```java
- @FunctionName("queueprocessor")
- public void run(
-    @QueueTrigger(name = "msg",
-                   queueName = "myqueuename",
-                   connection = "myconnvarname") String message,
-     final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
- ```
 
  ---
 
@@ -270,14 +306,6 @@ def main(msg: func.QueueMessage):
 
 C# 指令碼不支援屬性。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-JavaScript 不支援屬性。
-
-# <a name="python"></a>[Python](#tab/python)
-
-Python 指令碼不支援屬性。
-
 # <a name="java"></a>[Java](#tab/java)
 
 `QueueTrigger`批註可讓您存取觸發函數的佇列。 下列範例會透過參數將佇列訊息提供給函數 `message` 。
@@ -305,6 +333,18 @@ public class QueueTriggerDemo {
 |`queueName`  | 宣告儲存體帳戶中的佇列名稱。 |
 |`connection` | 指向儲存體帳戶連接字串。 |
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支援屬性。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 不支援屬性。
+
+# <a name="python"></a>[Python](#tab/python)
+
+Python 指令碼不支援屬性。
+
 ---
 
 ## <a name="configuration"></a>組態
@@ -327,7 +367,7 @@ public class QueueTriggerDemo {
 
 使用方法參數（例如）來存取訊息資料 `string paramName` 。 您可以繫結至下列任何類型：
 
-* 物件：Functions 執行階段會將 JSON 裝載還原序列化為程式碼中所定義之任意類別的執行個體。 
+* 物件：Functions 執行階段會將 JSON 裝載還原序列化為程式碼中所定義之任意類別的執行個體。
 * `string`
 * `byte[]`
 * [CloudQueueMessage]
@@ -336,7 +376,7 @@ public class QueueTriggerDemo {
 
 # <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-使用方法參數（例如）來存取訊息資料 `string paramName` 。 `paramName`是在function.js的屬性中指定的 `name` 值 *function.json* 。 您可以繫結至下列任何類型：
+使用方法參數（例如）來存取訊息資料 `string paramName` 。 `paramName`是在function.js的屬性中指定的 `name` 值 *function.json*。 您可以繫結至下列任何類型：
 
 * 物件：Functions 執行階段會將 JSON 裝載還原序列化為程式碼中所定義之任意類別的執行個體。 
 * `string`
@@ -345,17 +385,21 @@ public class QueueTriggerDemo {
 
 如果您嘗試繫結至 `CloudQueueMessage`，並出現錯誤訊息，請確定您已參考[正確的儲存體 SDK 版本](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)。
 
+# <a name="java"></a>[Java](#tab/java)
+
+[QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable&preserve-view=true)批註可讓您存取觸發函式的佇列訊息。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 佇列專案承載可透過 `context.bindings.<NAME>` `<NAME>` 符合 *function.js* 中定義之名稱的位置使用。 如果承載是 JSON，此值會還原序列化為物件。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+透過字串參數存取佇列訊息，此參數符合 `name` *function.json* 檔案的系結參數所指定的名稱。
+
 # <a name="python"></a>[Python](#tab/python)
 
-透過輸入為 [QueueMessage](/python/api/azure-functions/azure.functions.queuemessage?view=azure-python)的參數存取佇列訊息。
-
-# <a name="java"></a>[Java](#tab/java)
-
-[QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable)批註可讓您存取觸發函式的佇列訊息。
+透過輸入為 [QueueMessage](/python/api/azure-functions/azure.functions.queuemessage?view=azure-python&preserve-view=true)的參數存取佇列訊息。
 
 ---
 
@@ -375,7 +419,7 @@ public class QueueTriggerDemo {
 
 ## <a name="poison-messages"></a>有害訊息
 
-當佇列觸發程序函數失敗時，Azure Functions 會針對指定的佇列訊息重試該函數最多五次，包括第一次嘗試。 如果所有五次嘗試失敗，函式執行時間會將訊息新增至名為 >originalqueuename>-poison 的佇列 *&lt;>-有害* 。 您可以撰寫函數，透過記錄或傳送通知表示需要手動處理，來處理有害佇列中的訊息。
+當佇列觸發程序函數失敗時，Azure Functions 會針對指定的佇列訊息重試該函數最多五次，包括第一次嘗試。 如果所有五次嘗試失敗，函式執行時間會將訊息新增至名為 >originalqueuename>-poison 的佇列 *&lt;>-有害*。 您可以撰寫函數，透過記錄或傳送通知表示需要手動處理，來處理有害佇列中的訊息。
 
 若要手動處理有害訊息，請檢查佇列訊息的 [dequeueCount](#message-metadata)。
 

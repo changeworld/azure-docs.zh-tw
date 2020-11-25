@@ -4,11 +4,11 @@ description: 本指南可協助系統管理員使用 Azure 實驗室服務來建
 ms.topic: article
 ms.date: 10/20/2020
 ms.openlocfilehash: 08d2fea719ad67f666ea9da09721dc3f7ab54768
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024631"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999275"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure 實驗室服務 - 管理員指南
 資訊技術 (IT) 管理大學雲端資源的系統管理員，通常負責設定學校的實驗室帳戶。 在設定實驗室帳戶之後，系統管理員或教育人員會建立帳戶內所含的實驗室。 本文提供相關 Azure 資源的高階總覽，以及建立這些資源的指引。
@@ -271,7 +271,7 @@ ms.locfileid: "95024631"
 
 請勿將複寫刪除到特定區域，以降低成本，不過這個選項存在於共用映射庫中。 複寫變更可能會對 Azure 實驗室服務從儲存在共用映射庫中的映射發佈 Vm 的能力造成負面影響。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需設定和管理實驗室的詳細資訊，請參閱：
 

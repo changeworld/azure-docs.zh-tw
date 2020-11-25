@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 25f761d85ebfd0ac16f182941c5b5c29636066bf
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629728"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000329"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>使用 Azure Functions 和 Azure 服務匯流排來呼叫或觸發邏輯應用程式
 
 當您需要部署長時間執行的接聽程式或工作時，可以使用 [Azure Functions](../azure-functions/functions-overview.md) 來觸發邏輯應用程式。 例如，您可以建立一個函式，以在 [Azure 服務匯流排](../service-bus-messaging/service-bus-messaging-overview.md) 佇列上接聽，並立即將邏輯應用程式引發為推送觸發程式。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -50,7 +50,7 @@ ms.locfileid: "94629728"
 
    1. 在要求觸發程序中，選取 [使用範例承載來產生結構描述]。
 
-   1. 在 [ **輸入或貼上範例 JSON** 承載] 下，輸入您的範例承載，然後選取 [ **完成** ]。
+   1. 在 [ **輸入或貼上範例 JSON** 承載] 下，輸入您的範例承載，然後選取 [ **完成**]。
 
       ![輸入範例承載](./media/logic-apps-scenario-function-sb-trigger/enter-sample-payload.png)
 
@@ -100,13 +100,13 @@ ms.locfileid: "94629728"
 
 1. 在 Azure 入口網站中，開啟並展開函式應用程式 (如果尚未開啟)。 
 
-1. 在函式應用程式名稱之下，展開 [Functions]。 在 [ **函數** ] 窗格中，選取 [ **新增函數** ]。
+1. 在函式應用程式名稱之下，展開 [Functions]。 在 [ **函數** ] 窗格中，選取 [ **新增函數**]。
 
    ![展開 [函數]，然後選取 [新增函式]](./media/logic-apps-scenario-function-sb-trigger/add-new-function-to-function-app.png)
 
 1. 根據您是否已建立新的函式應用程式，並在其中選取 .NET 作為執行時間堆疊，或您使用現有的函數應用程式，來選取此範本。
 
-   * 針對新的函數應用程式，請選取此範本： **服務匯流排佇列觸發** 程式
+   * 針對新的函數應用程式，請選取此範本：**服務匯流排佇列觸發** 程式
 
      ![選取新函數應用程式的範本](./media/logic-apps-scenario-function-sb-trigger/current-add-queue-trigger-template.png)
 
@@ -114,7 +114,7 @@ ms.locfileid: "94629728"
 
      ![選取現有函數應用程式的範本](./media/logic-apps-scenario-function-sb-trigger/legacy-add-queue-trigger-template.png)
 
-1. 在 [ **Azure 服務匯流排佇列觸發** 程式] 窗格中，為您的觸發程式提供名稱，並設定佇列的 **服務匯流排連接** （使用 Azure 服務匯流排 SDK 接聽程式 `OnMessageReceive()` ），然後選取 [ **建立** ]。
+1. 在 [ **Azure 服務匯流排佇列觸發** 程式] 窗格中，為您的觸發程式提供名稱，並設定佇列的 **服務匯流排連接** （使用 Azure 服務匯流排 SDK 接聽程式 `OnMessageReceive()` ），然後選取 [ **建立**]。
 
 1. 撰寫基本函式，以使用佇列訊息做為觸發程式來呼叫先前建立的邏輯應用程式端點。 撰寫您的函式之前，請先參閱下列考慮：
 

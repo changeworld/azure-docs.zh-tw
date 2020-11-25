@@ -13,11 +13,11 @@ ms.date: 07/16/2020
 ms.author: aahi
 keywords: 內部部署、Docker、容器、識別
 ms.openlocfilehash: 0f6807f771510f85c5a20cfb2a160cfe1e8726a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461507"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000536"
 ---
 # <a name="install-and-run-face-containers-preview"></a>安裝並執行臉部容器 (預覽) 
 
@@ -28,7 +28,7 @@ Azure 認知服務臉部 API 提供 Linux Docker 容器，可偵測並分析影�
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 使用臉部服務容器之前，您必須符合下列必要條件。
 

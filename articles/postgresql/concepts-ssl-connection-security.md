@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/08/2020
 ms.openlocfilehash: c98ee8f747975d4237c2906be2060eddbc7b9990
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123264"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000941"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>在適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中設定 TLS 連線能力
 
@@ -38,11 +38,11 @@ ms.locfileid: "92123264"
 
 ### <a name="using-the-azure-portal"></a>使用 Azure 入口網站
 
-瀏覽您適用於 PostgreSQL 的 Azure 資料庫伺服器，然後按一下 [連接安全性]****。 使用切換按鈕來啟用或停用 [強制使用 SSL 連線]**** 設定。 然後按一下 [ **儲存**]。
+瀏覽您適用於 PostgreSQL 的 Azure 資料庫伺服器，然後按一下 [連接安全性]。 使用切換按鈕來啟用或停用 [強制使用 SSL 連線] 設定。 然後按一下 [ **儲存**]。
 
 :::image type="content" source="./media/concepts-ssl-connection-security/1-disable-ssl.png" alt-text="連接安全性-停用強制使用 TLS/SSL":::
 
-您可以檢視 [概觀]**** 頁面來查看 [SSL 強制執行狀態]**** 指標，以確認此設定。
+您可以檢視 [概觀] 頁面來查看 [SSL 強制執行狀態] 指標，以確認此設定。
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
 
@@ -111,7 +111,7 @@ psql "sslmode=verify-full sslrootcert=BaltimoreCyberTrustRoot.crt host=mydemoser
 *   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 *   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [針對適用於 PostgreSQL 的 Azure 資料庫查看連接程式庫中的](concepts-connection-libraries.md)各種應用程式連線選項。
 

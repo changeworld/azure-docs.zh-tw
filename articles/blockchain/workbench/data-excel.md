@@ -5,11 +5,11 @@ ms.date: 09/05/2019
 ms.topic: how-to
 ms.reviewer: mmercuri
 ms.openlocfilehash: 4dd941abdded6a93510f4a71119769cd73855bcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85253540"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000159"
 ---
 # <a name="view-azure-blockchain-workbench-data-with-microsoft-excel"></a>使用 Microsoft Excel 檢視 Azure Blockchain Workbench 資料
 
@@ -24,22 +24,22 @@ ms.locfileid: "85253540"
 若要連線至 Blockchain Workbench 資料庫：
 
 1. 開啟 Microsoft Excel。
-2. 在 [資料]**** 索引標籤上，選擇 [取得資料]****。
-3. 選取 [從 Azure]****，然後選取 [從 Azure SQL 資料庫]****。
+2. 在 [資料] 索引標籤上，選擇 [取得資料]。
+3. 選取 [從 Azure]，然後選取 [從 Azure SQL 資料庫]。
 
-   ![連線到 Azure SQL Database](./media/data-excel/connect-sql-db.png)
+   ![連線至 Azure SQL Database](./media/data-excel/connect-sql-db.png)
 
-4. 在 [SQL Server 資料庫]**** 對話方塊中：
+4. 在 [SQL Server 資料庫] 對話方塊中：
 
-    * 對於 [伺服器]****，輸入 Blockchain Workbench 伺服器的名稱。
-    * 對於 [資料庫 (選填)]****，輸入資料庫名稱。
+    * 對於 [伺服器]，輸入 Blockchain Workbench 伺服器的名稱。
+    * 對於 [資料庫 (選填)]，輸入資料庫名稱。
 
    ![提供資料庫伺服器與資料載](./media/data-excel/provide-server-db.png)
 
-5. 在 [SQL Server 資料庫]**** 對話方塊導覽列中，選取 [資料庫]****。 輸入 [使用者名稱]**** 與 [密碼]****，然後選取 [連線]****。
+5. 在 [SQL Server 資料庫] 對話方塊導覽列中，選取 [資料庫]。 輸入 [使用者名稱] 與 [密碼]，然後選取 [連線]。
 
     > [!NOTE]
-    > 如果您使用的是 Azure Blockchain Workbench 部署程序期間建立的認證，則 [使用者名稱]**** 為 `dbadmin`。 [密碼]**** 是您在部署 Blockchain Workbench 時建立的密碼。
+    > 如果您使用的是 Azure Blockchain Workbench 部署程序期間建立的認證，則 [使用者名稱] 為 `dbadmin`。 [密碼] 是您在部署 Blockchain Workbench 時建立的密碼。
     
    ![提供用於存取資料庫的認證](./media/data-excel/provide-credentials.png)
 
@@ -53,8 +53,8 @@ ms.locfileid: "85253540"
 
 下一個範例顯示如何將資料從檢視載入至 Excel 活頁簿。
 
-1. 在 [導覽器]**** 捲軸中，選取 [vwContractAction]**** 檢視。 [vwContractAction]**** 預覽會顯示與 Blockchain Workbench 資料庫中的合約相關的所有動作。
-2. 選取 [載入]**** 以擷取檢視中的所有資料並放到 Excel 活頁簿中。
+1. 在 [導覽器] 捲軸中，選取 [vwContractAction] 檢視。 [vwContractAction] 預覽會顯示與 Blockchain Workbench 資料庫中的合約相關的所有動作。
+2. 選取 [載入] 以擷取檢視中的所有資料並放到 Excel 活頁簿中。
 
    ![從檢視載入的資料](./media/data-excel/view-data.png)
 

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 2ec88e4e97d45b27c0226198491b3adec6448496
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960235"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000890"
 ---
 # <a name="storsimple-virtual-array-update-10-release-notes"></a>StorSimple Virtual Array Update 1.0 版本資訊
 
@@ -83,7 +83,7 @@ Update 1.0 與軟體版本 **10.0.10296.0** 對應。
 ## <a name="next-steps"></a>後續步驟
 在 StorSimple Virtual Array 上[安裝 Update 1.0](storsimple-virtual-array-install-update-1.md)。
 
-## <a name="references"></a>參考
+## <a name="references"></a>參考資料
 要尋找舊版本資訊嗎？ 請移至：
 *  [StorSimple Virtual Array 更新0.6 版本資訊](storsimple-virtual-array-update-06-release-notes.md)
 * [StorSimple Virtual Array Update 0.5 版本資訊](storsimple-virtual-array-update-05-release-notes.md)

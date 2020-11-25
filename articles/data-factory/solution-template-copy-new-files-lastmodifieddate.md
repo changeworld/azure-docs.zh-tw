@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
 ms.openlocfilehash: 99d90e4d93f0e4a70350a5a33a65700c3e14acb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398318"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000805"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>使用 Azure Data Factory 複製新的和變更的檔案（依 LastModifiedDate）
 
@@ -26,7 +26,7 @@ ms.locfileid: "91398318"
 
 ## <a name="about-this-solution-template"></a>關於此解決方案範本
 
-此範本會先根據其屬性 **LastModifiedDate**來選取新的和已變更的檔案，然後將這些選取的檔案從資料來源存放區複製到資料目的地存放區。
+此範本會先根據其屬性 **LastModifiedDate** 來選取新的和已變更的檔案，然後將這些選取的檔案從資料來源存放區複製到資料目的地存放區。
 
 範本包含一個活動：
 - **複製** 以從檔案存放區 LastModifiedDate 到目的地存放區，只複製新的和變更的檔案。
@@ -41,7 +41,7 @@ ms.locfileid: "91398318"
 
 ## <a name="how-to-use-this-solution-template"></a>如何使用此解決方案範本
 
-1. 移至範本 **只透過 LastModifiedDate 複製新**檔案。 建立與您的來源儲存體存放區的 **新** 連接。 來源儲存體存放區是您想要從中複製檔案的位置。
+1. 移至範本 **只透過 LastModifiedDate 複製新** 檔案。 建立與您的來源儲存體存放區的 **新** 連接。 來源儲存體存放區是您想要從中複製檔案的位置。
 
     ![建立與來源的新連線](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate1.png)
     
@@ -67,19 +67,19 @@ ms.locfileid: "91398318"
     
     此範例表示上次在時間範圍內修改的檔案（在 timespan (2019- **02-01T00：00： 00Z** 到 **2019-03-01T00：00： 00Z**) 將會從來源路徑 **sourcefolder/子資料夾** 複製到目的地路徑 **destinationfolder/子資料夾**。  您可以使用自己的參數來取代這些參數。
 
-    ![執行管道](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate6.png)
+    ![執行管線](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate6.png)
 
 6. 檢閱結果。 您將只會看到在設定的 timespan 內上次修改的檔案已複製到目的地存放區。
 
     ![檢閱結果](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate7.png)
     
-7. 現在您可以新增輪轉 windows 觸發程式來將此管線自動化，如此一來，管線一律只能由 LastModifiedDate 定期複製新的和變更的檔案。  選取 [新增 **觸發**程式]，然後選取 [ **新增/編輯**]。
+7. 現在您可以新增輪轉 windows 觸發程式來將此管線自動化，如此一來，管線一律只能由 LastModifiedDate 定期複製新的和變更的檔案。  選取 [新增 **觸發** 程式]，然後選取 [ **新增/編輯**]。
 
     ![反白顯示當您選取 [新增觸發程式] 時出現的 [新增/編輯] 功能表選項的螢幕擷取畫面。](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
     
-8. 在 [新增觸發程序]**** 視窗中，選取 [+ 新增]****。
+8. 在 [新增觸發程序] 視窗中，選取 [+ 新增]。
 
-9. 選取觸發程式類型的 [ **輪轉] 視窗** ，將 **每隔15分鐘 (s) ** 設定為迴圈 (您可以變更為任何間隔時間) 。 針對 [已啟用] 方塊選取 **[是** ]，然後選取 **[確定]**。
+9. 選取觸發程式類型的 [ **輪轉] 視窗** ，將 **每隔15分鐘 (s)** 設定為迴圈 (您可以變更為任何間隔時間) 。 針對 [已啟用] 方塊選取 **[是** ]，然後選取 **[確定]**。
 
     ![建立觸發程序](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
     
@@ -88,8 +88,8 @@ ms.locfileid: "91398318"
     - **Directory_Source**  = **子資料夾**。  您可以使用來源資料存放區中的子資料夾來取代。
     - **FolderPath_Destination**  = **destinationfolder**。  您可以使用目的地資料存放區中的資料夾取代。
     - **Directory_Destination**  = **子資料夾**。  您可以將替換為目的地資料存放區中的子資料夾。
-    - **LastModified_From**  =  ** \@ 觸發 ( # A1 >windowstarttime**。  這是來自觸發程式的系統變數，用來判斷上次觸發管線的時間。
-    - **LastModified_To**  = ** \@ 觸發 ( # A1 .windowendtime**。  這是來自觸發程式的系統變數，用來決定此時間觸發管線的時間。
+    - **LastModified_From**  =  **\@ 觸發 ( # A1 >windowstarttime**。  這是來自觸發程式的系統變數，用來判斷上次觸發管線的時間。
+    - **LastModified_To**  = **\@ 觸發 ( # A1 .windowendtime**。  這是來自觸發程式的系統變數，用來決定此時間觸發管線的時間。
     
     ![輸入參數](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     

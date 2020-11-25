@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: aldomel
 ms.openlocfilehash: ad0a5fc5940c36aa5d2d6912987b154532bc80a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83727112"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000873"
 ---
 # <a name="virtual-network-traffic-routing"></a>虛擬網路流量路由
 
@@ -42,14 +42,14 @@ Azure 會自動建立系統路由，並將路由指派給虛擬網路中的每�
 
 上表列出的下一個躍點類型，代表 Azure 如何路由上述位址首碼指定的流量。 下一個躍點類型的說明如下：
 
-* **虛擬網路**：在虛擬網路[位址空間](manage-virtual-network.md#add-or-remove-an-address-range)內的位址範圍間路由流量。 Azure 建立路由所用的位址首碼，會與每個虛擬網路位址空間中定義的位址範圍相對應。 如果虛擬網路位址空間有多個定義的位址範圍，則 Azure 會為每個位址範圍建立個別路由。 Azure 會使用針對每個位址範圍建立的路由，來自動路由子網路之間的流量。 您不需要為 Azure 定義閘道來路由子網路之間的流量。 雖然虛擬網路包含子網路，而且每個子網路都有定義的位址範圍，但 Azure 不會為子網路位址範圍建立預設路由，因為每一個子網路位址範圍都在虛擬網路位址空間的位址範圍內。<br>
+* **虛擬網路**：在虛擬網路 [位址空間](manage-virtual-network.md#add-or-remove-an-address-range)內的位址範圍間路由流量。 Azure 建立路由所用的位址首碼，會與每個虛擬網路位址空間中定義的位址範圍相對應。 如果虛擬網路位址空間有多個定義的位址範圍，則 Azure 會為每個位址範圍建立個別路由。 Azure 會使用針對每個位址範圍建立的路由，來自動路由子網路之間的流量。 您不需要為 Azure 定義閘道來路由子網路之間的流量。 雖然虛擬網路包含子網路，而且每個子網路都有定義的位址範圍，但 Azure 不會為子網路位址範圍建立預設路由，因為每一個子網路位址範圍都在虛擬網路位址空間的位址範圍內。<br>
 * **網際網路**：將位址首碼所指定的流量路由到網際網路。 系統預設路由會指定 0.0.0.0/0 位址首碼。 如果您不覆寫 Azure 的預設路由，Azure 會將所有不是由虛擬網路內位址範圍指定的流量路由至網際網路，但有一個例外。 如果目的地位址適用於 Azure 的其中一個服務，Azure 會透過 Azure 的骨幹網路直接將流量路由至該服務，而不是將流量路由至網際網路。 不論虛擬網路存在哪一個 Azure 區域，或 Azure 服務執行個體部署在哪一個 Azure 區域，Azure 服務之間的流量都不會周遊網際網路。 您可以使用[自訂路由](#custom-routes)，來覆寫位址首碼為 0.0.0.0/0 的 Azure 預設系統路由。<br>
 * **無**：路由至下一個躍點類型為 [無] 的流量會遭到捨棄，而不是路由至子網路以外的地方。 Azure 會為下列位址首碼自動建立預設路由：<br>
 
     * **10.0.0.0/8 和 192.168.0.0/16**：在 RFC 1918 中保留以作為私人用途。<br>
     * **100.64.0.0/10**：在 RFC 6598 中保留。
 
-    如果您在虛擬網路位址空間內指派上述任何位址範圍時，Azure 會自動將路由的下一個躍點類型從**無**變更至**虛擬網路**。 如果您對其指派位址範圍的虛擬網路位址空間中，包含四個保留位址首碼的其中一個 (但不是完全相同) 時，Azure 會移除該首碼的路由，並針對您新增的位址首碼來新增路由 (使用**虛擬網路**作為下一個躍點類型)。
+    如果您在虛擬網路位址空間內指派上述任何位址範圍時，Azure 會自動將路由的下一個躍點類型從 **無** 變更至 **虛擬網路**。 如果您對其指派位址範圍的虛擬網路位址空間中，包含四個保留位址首碼的其中一個 (但不是完全相同) 時，Azure 會移除該首碼的路由，並針對您新增的位址首碼來新增路由 (使用 **虛擬網路** 作為下一個躍點類型)。
 
 ### <a name="optional-default-routes"></a>選擇性預設路由
 
@@ -62,11 +62,11 @@ Azure 會針對不同的 Azure 功能，新增其他預設系統路由，但只�
 |預設                |多個                               |VirtualNetworkServiceEndpoint|僅限服務端點已啟用的子網路。|
 
 * **虛擬網路 (VNet) 對等互連**：當您在兩個虛擬網路間建立虛擬網路對等互連時，系統會在每個建立對等連線的虛擬網路位址空間中，為每個位址範圍新增路由。 深入了解[虛擬網路對等互連](virtual-network-peering-overview.md)。<br>
-* **虛擬網路閘道**：將虛擬網路閘道新增到虛擬網路時，系統會新增一個或多個下一個躍點類型列為「虛擬網路閘道」的路由。 來源也是*虛擬網路閘道*，因為閘道會將路由新增至子網路。 如果您的內部部署網路閘道會交換邊界閘道協定 ([BGP](#border-gateway-protocol)) 路由與 Azure 虛擬網路閘道，則系統會針對每個從內部部署網路閘道散佈的每個路由新增路由。 建議您盡可能將內部部署路由彙總至最大的位址範圍，那麼散佈至 Azure 虛擬網路閘道的路由就會最少。 您可以散佈至 Azure 虛擬網路閘道的路由數目有限。 如需詳細資訊，請參閱 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)。<br>
+* **虛擬網路閘道**：將虛擬網路閘道新增到虛擬網路時，系統會新增一個或多個下一個躍點類型列為「虛擬網路閘道」的路由。 來源也是 *虛擬網路閘道*，因為閘道會將路由新增至子網路。 如果您的內部部署網路閘道會交換邊界閘道協定 ([BGP](#border-gateway-protocol)) 路由與 Azure 虛擬網路閘道，則系統會針對每個從內部部署網路閘道散佈的每個路由新增路由。 建議您盡可能將內部部署路由彙總至最大的位址範圍，那麼散佈至 Azure 虛擬網路閘道的路由就會最少。 您可以散佈至 Azure 虛擬網路閘道的路由數目有限。 如需詳細資訊，請參閱 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)。<br>
 * **VirtualNetworkServiceEndpoint**：當您對特定服務啟用服務端點時，Azure 會將該服務的公用 IP 位址新增至路由表。 服務端點是針對虛擬網路內的個別子網路啟用，因此路由只會新增至服務端點已啟用的子網路路由表。 Azure 服務的公用 IP 位址會定期變更。 當位址變更時，Azure 會自動管理路由表中的位址。 深入了解[虛擬網路服務端點](virtual-network-service-endpoints-overview.md)，以及可以對其建立服務端點的服務。<br>
 
     > [!NOTE]
-    > **VNet 對等互連**和 **VirtualNetworkServiceEndpoint** 下一個躍點類型只會新增至透過 Azure Resource Manager 部署模型建立的虛擬網路子網路路由表。 如果路由表是與透過傳統部署模型建立的虛擬網路子網路相關聯，則下一個躍點類型不會新增至該路由表。 深入了解 Azure [部署模型](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+    > **VNet 對等互連** 和 **VirtualNetworkServiceEndpoint** 下一個躍點類型只會新增至透過 Azure Resource Manager 部署模型建立的虛擬網路子網路路由表。 如果路由表是與透過傳統部署模型建立的虛擬網路子網路相關聯，則下一個躍點類型不會新增至該路由表。 深入了解 Azure [部署模型](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="custom-routes"></a>自訂路由
 
@@ -78,9 +78,9 @@ Azure 會針對不同的 Azure 功能，新增其他預設系統路由，但只�
 
 建立使用者定義路由時，您可以指定下列的下一個躍點類型：
 
-* **虛擬設備**：虛擬設備通常是執行網路應用程式 (例如防火牆) 的虛擬機器。 若要了解您可以在虛擬網路中部署之多種預先設定的網路虛擬設備，請參閱 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances)。 當您使用**虛擬設備**躍點類型建立路由時，您也會指定下一個躍點 IP 位址。 IP 位址可以是：
+* **虛擬設備**：虛擬設備通常是執行網路應用程式 (例如防火牆) 的虛擬機器。 若要了解您可以在虛擬網路中部署之多種預先設定的網路虛擬設備，請參閱 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances)。 當您使用 **虛擬設備** 躍點類型建立路由時，您也會指定下一個躍點 IP 位址。 IP 位址可以是：
 
-    * 連接至虛擬機器的網路介面[私人 IP 位址](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)。 連接至虛擬機器，並將網路流量轉送至本身以外其他位址的任何網路介面，都必須啟用 Azure *啟用 IP 轉送*選項。 該設定會使 Azure 停止檢查網路介面的來源和目的地。 深入了解如何[啟用網路介面的 IP 轉送](virtual-network-network-interface.md#enable-or-disable-ip-forwarding)。 雖然 [啟用 IP 轉送] 是 Azure 的設定，但您可能也需要啟用虛擬機器作業系統內的 IP 轉送，以便設備轉送已指派給 Azure 網路介面的私人 IP 位址間的流量。 如果設備必須將流量路由傳送至公用 IP 位址，則設備必須代理流量，或將來源的私人 IP 位址進行網路位址轉譯為其自有的私人 IP 位址，然後 Azure 會將該位址進行網路位址轉譯為公用 IP 位址，再將流量傳送到網際網路。 若要決定虛擬機器內的必要設定，請參閱您作業系統或網路應用程式的文件。 若要了解 Azure 中的輸出連線，請參閱[了解輸出連線](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。<br>
+    * 連接至虛擬機器的網路介面[私人 IP 位址](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)。 連接至虛擬機器，並將網路流量轉送至本身以外其他位址的任何網路介面，都必須啟用 Azure *啟用 IP 轉送* 選項。 該設定會使 Azure 停止檢查網路介面的來源和目的地。 深入了解如何[啟用網路介面的 IP 轉送](virtual-network-network-interface.md#enable-or-disable-ip-forwarding)。 雖然 [啟用 IP 轉送] 是 Azure 的設定，但您可能也需要啟用虛擬機器作業系統內的 IP 轉送，以便設備轉送已指派給 Azure 網路介面的私人 IP 位址間的流量。 如果設備必須將流量路由傳送至公用 IP 位址，則設備必須代理流量，或將來源的私人 IP 位址進行網路位址轉譯為其自有的私人 IP 位址，然後 Azure 會將該位址進行網路位址轉譯為公用 IP 位址，再將流量傳送到網際網路。 若要決定虛擬機器內的必要設定，請參閱您作業系統或網路應用程式的文件。 若要了解 Azure 中的輸出連線，請參閱[了解輸出連線](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。<br>
 
         > [!NOTE]
         > 將虛擬設備部署至不同子網路，則透過該虛擬設備路由的資源就會在其中部署。 如果將虛擬設備部署至相同子網路，然後將路由表套用至透過虛擬設備路由流量的子網路，就會造成路由迴圈，使得流量不會離開子網路。
@@ -90,11 +90,11 @@ Azure 會針對不同的 Azure 功能，新增其他預設系統路由，但只�
     您可以定義位址首碼為 0.0.0.0/0 的路由和虛擬設備的下一個躍點類型，讓設備檢查流量並判斷是否要轉送或捨棄流量。 如果您想要建立包含 0.0.0.0/0 位址首碼的使用者定義路由，請先了解 [0.0.0.0/0 位址首碼](#default-route)。
 
 * **虛擬網路閘道**：當您要將特定位址首碼指定的流量路由至虛擬網路閘道時指定。 虛擬網路閘道必須使用 **VPN** 類型建立。 您無法在使用者定義路由中指定建立為 **ExpressRoute** 類型的虛擬網路閘道，因為若使用 ExpressRoute，您必須使用適用於自訂路由的 BGP。 您可以將路由定義為將 0.0.0.0/0 位址首碼指定流量導向[路由式](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#vpntype)虛擬網路閘道。 在內部部署上，您可能有裝置可檢查流量並決定是否要轉送或捨棄流量。 如果您想要建立 0.0.0.0/0 位址首碼的使用者定義路由，請先了解 [0.0.0.0/0 位址首碼](#default-route)。 您不需要設定 0.0.0.0/0 位址首碼的使用者定義路由，如果您已[啟用 VPN 虛擬網路閘道的 BGP](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，則可以透過 BGP 公佈具有 0.0.0.0/0 首碼的路由。<br>
-* **無**：當您要捨棄位址首碼的流量，而不是將流量轉送至目的地時指定。 如果有功能尚未設定完畢，Azure 可能會針對某些選擇性系統路徑列出「無」。 例如，如果您看到**下一個躍點類型**為「虛擬網路閘道」或「虛擬設備」的**下一個躍點 IP 位址**列為「無」，這可能是因為裝置未執行或未完整設定。 Azure 會針對下一個躍點類型為**無**的保留位址首碼，建立系統[預設路由](#default)。<br>
-* **虛擬網路**：當您想要覆寫虛擬網路中的預設路由時指定。 請參閱[路由範例](#routing-example)，以針對您想以**虛擬網路**躍點類型建立路由的原因取得範例。<br>
+* **無**：當您要捨棄位址首碼的流量，而不是將流量轉送至目的地時指定。 如果有功能尚未設定完畢，Azure 可能會針對某些選擇性系統路徑列出「無」。 例如，如果您看到 **下一個躍點類型** 為「虛擬網路閘道」或「虛擬設備」的 **下一個躍點 IP 位址** 列為「無」，這可能是因為裝置未執行或未完整設定。 Azure 會針對下一個躍點類型為 **無** 的保留位址首碼，建立系統 [預設路由](#default)。<br>
+* **虛擬網路**：當您想要覆寫虛擬網路中的預設路由時指定。 請參閱 [路由範例](#routing-example)，以針對您想以 **虛擬網路** 躍點類型建立路由的原因取得範例。<br>
 * **網際網路**：當您想要明確地將位址首碼指定的流量路由至網際網路時指定，或您想要 Azure 服務所用的流量 (具有公用 IP 位址) 保留在 Azure 骨幹網路中時指定。
 
-您無法在使用者定義路由中指定 **VNet 對等互連**或 **VirtualNetworkServiceEndpoint** 作為下一個躍點類型。 當您設定虛擬網路對等互連或服務端點時，具有 **VNet 對等互連**或 **VirtualNetworkServiceEndpoint** 下一個躍點類型的路由只可由 Azure 建立。
+您無法在使用者定義路由中指定 **VNet 對等互連** 或 **VirtualNetworkServiceEndpoint** 作為下一個躍點類型。 當您設定虛擬網路對等互連或服務端點時，具有 **VNet 對等互連** 或 **VirtualNetworkServiceEndpoint** 下一個躍點類型的路由只可由 Azure 建立。
 
 ## <a name="next-hop-types-across-azure-tools"></a>Azure 工具之間的下一個躍點類型
 
@@ -117,9 +117,9 @@ Azure 會針對不同的 Azure 功能，新增其他預設系統路由，但只�
 * **ExpressRoute**：您必須使用 BGP 將內部部署路由公告至 Microsoft 邊緣路由器。 如果您部署的虛擬網路閘道是以下列類型部署，您就無法建立使用者定義的路由來強制 ExpressRoute 虛擬網路閘道的流量：ExpressRoute。 您可以使用使用者定義的路由，強制執行從 Express Route 到例如網路虛擬裝置的流量。<br>
 * **VPN**：您可以選擇性地使用 BGP。 如需詳細資訊，請參閱[BGP 與站台對站 VPN 連線](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
-當您使用 BGP 交換 Azure 與路由時，系統會針對每個公佈的首碼，將個別路由新增至虛擬網路中的所有子網路路由表。 新增路由的來源和下一個躍點類型會列為*虛擬網路閘道*。 
+當您使用 BGP 交換 Azure 與路由時，系統會針對每個公佈的首碼，將個別路由新增至虛擬網路中的所有子網路路由表。 新增路由的來源和下一個躍點類型會列為 *虛擬網路閘道*。 
 
-ER 與 VPN 閘道路由傳播，可以透過使用路由表上的屬性來在子網路上停用。 當您使用 BGP 與 Azure 交換路由時，路由不會新增至已停用虛擬網路閘道路由傳播的所有子網路路由表。 使用下一個躍點類型為*虛擬網路閘道*的[自訂路由](#custom-routes)，即可進行 VPN 連線。 **GatewaySubnet 上不應停用路由傳播。在停用此設定的情況下，閘道將無法運作。** 如需詳細資料，請參閱[如何停用虛擬網路閘道路由傳播](manage-route-table.md#create-a-route-table)。
+ER 與 VPN 閘道路由傳播，可以透過使用路由表上的屬性來在子網路上停用。 當您使用 BGP 與 Azure 交換路由時，路由不會新增至已停用虛擬網路閘道路由傳播的所有子網路路由表。 使用下一個躍點類型為 *虛擬網路閘道* 的 [自訂路由](#custom-routes)，即可進行 VPN 連線。 **GatewaySubnet 上不應停用路由傳播。在停用此設定的情況下，閘道將無法運作。** 如需詳細資料，請參閱[如何停用虛擬網路閘道路由傳播](manage-route-table.md#create-a-route-table)。
 
 ## <a name="how-azure-selects-a-route"></a>Azure 如何選取路由
 
@@ -142,17 +142,17 @@ ER 與 VPN 閘道路由傳播，可以透過使用路由表上的屬性來在子
 |預設  | 0.0.0.0/0        |Internet                |
 |User     | 0.0.0.0/0        |虛擬網路閘道 |
 
-當流量的目的地 IP 位址不在路由表中任何其他路由的位址首碼內時，Azure 會選取具有**使用者**來源的路由，因為使用者定義路由的優先順序高於系統預設路由。
+當流量的目的地 IP 位址不在路由表中任何其他路由的位址首碼內時，Azure 會選取具有 **使用者** 來源的路由，因為使用者定義路由的優先順序高於系統預設路由。
 
 請參閱[路由範例](#routing-example)，以取得完整路由資料表，表中有路由的說明。
 
 ## <a name="00000-address-prefix"></a><a name="default-route"></a>0.0.0.0/0 位址首碼
 
-如果 IP 位址不在子網路路由表中任何其他路由的位址首碼內，則具有 0.0.0.0/0 位址首碼的路由會指示 Azure 如何路由該 IP 位址指定的流量。 建立子網路時，Azure 會建立 0.0.0.0/0 位址首碼的[預設](#default)路由，且下一個躍點類型為**網際網路**。 如果您不覆寫此路由，Azure 就會將不包含在任何其他路由位址首碼的 IP 位址所用流量，路由至網際網路。 但有個例外，Azure 服務公用 IP 位址的流量會保留在 Azure 骨幹網路中，而不會路由至網際網路。 如果您以[自訂](#custom-routes)路由覆寫此路由，其目的地位址不在路由表中任何其他路由位址首碼中的流量，就會將傳送至網路虛擬設備或虛擬網路閘道 (視您指定的自訂路由而定)。
+如果 IP 位址不在子網路路由表中任何其他路由的位址首碼內，則具有 0.0.0.0/0 位址首碼的路由會指示 Azure 如何路由該 IP 位址指定的流量。 建立子網路時，Azure 會建立 0.0.0.0/0 位址首碼的 [預設](#default)路由，且下一個躍點類型為 **網際網路**。 如果您不覆寫此路由，Azure 就會將不包含在任何其他路由位址首碼的 IP 位址所用流量，路由至網際網路。 但有個例外，Azure 服務公用 IP 位址的流量會保留在 Azure 骨幹網路中，而不會路由至網際網路。 如果您以[自訂](#custom-routes)路由覆寫此路由，其目的地位址不在路由表中任何其他路由位址首碼中的流量，就會將傳送至網路虛擬設備或虛擬網路閘道 (視您指定的自訂路由而定)。
 
 當您覆寫 0.0.0.0/0 位址首碼後，除了輸出流量會從子網路流經虛擬網路閘道或虛擬設備外，使用 Azure 預設路由時也會發生下列變更： 
 
-* Azure 會將所有流量傳送至路由中指定的下一個躍點類型，包括 Azure 服務公用 IP 位址指定的流量。 當 0.0.0.0/0 位址首碼路由的下個躍點類型是**網際網路**時，從子網路送往 Azure 服務公用 IP 位址的流量永遠不會離開 Azure 的骨幹網路，不論虛擬網路或 Azure 服務資源存在哪個 Azure 地區。 但當您以**虛擬網路閘道**或**虛擬設備**建立使用者定義或 BGP 路由時，所有流量 (包括傳送至您尚未對其啟用[服務端點](virtual-network-service-endpoints-overview.md)之 Azure 服務公用 IP 位址的流量) 會傳送至路由中指定的下一個躍點類型。 如果您已啟用服務的服務端點，服務的流量則不會路由至路由位址首碼為 0.0.0.0/0 的下一個躍點類型，因為當您啟用服務端點時，服務的位址首碼會在 Azure 建立的路由中指定，而服務的位址首碼會比 0.0.0.0/0 長。
+* Azure 會將所有流量傳送至路由中指定的下一個躍點類型，包括 Azure 服務公用 IP 位址指定的流量。 當 0.0.0.0/0 位址首碼路由的下個躍點類型是 **網際網路** 時，從子網路送往 Azure 服務公用 IP 位址的流量永遠不會離開 Azure 的骨幹網路，不論虛擬網路或 Azure 服務資源存在哪個 Azure 地區。 但當您以 **虛擬網路閘道** 或 **虛擬設備** 建立使用者定義或 BGP 路由時，所有流量 (包括傳送至您尚未對其啟用 [服務端點](virtual-network-service-endpoints-overview.md)之 Azure 服務公用 IP 位址的流量) 會傳送至路由中指定的下一個躍點類型。 如果您已啟用服務的服務端點，服務的流量則不會路由至路由位址首碼為 0.0.0.0/0 的下一個躍點類型，因為當您啟用服務端點時，服務的位址首碼會在 Azure 建立的路由中指定，而服務的位址首碼會比 0.0.0.0/0 長。
 * 您已無法從網際網路直接存取子網路中的資源。 如果輸入流量是通過路由位址首碼為 0.0.0.0/0 的下一個躍點所指定的裝置後，再抵達虛擬網路中的資源，則您可以直接從網際網路存取子網路中的資源。 如果路由包含下列的下一個躍點類型值：<br>
 
     * **虛擬設備**：設備必須：<br>
@@ -163,9 +163,9 @@ ER 與 VPN 閘道路由傳播，可以透過使用路由表上的屬性來在子
         * 不會拒絕通訊<br>
         * 能夠進行網路位址轉譯和轉送，或對傳送至子網路中目的地資源的流量設定 Proxy，並將流量傳回網際網路。
 
-    * **虛擬網路閘道**：如果閘道是 ExpressRoute 虛擬網路閘道，則透過 ExpressRoute 的[私人對等互連](../expressroute/expressroute-circuit-peerings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#privatepeering)，連線到網際網路的裝置在內部部署上可以進行網路位址轉譯和轉送，或對傳送至子網路中目的地資源的流量設定 Proxy。 
+    * **虛擬網路閘道**：如果閘道是 ExpressRoute 虛擬網路閘道，則透過 ExpressRoute 的 [私人對等互連](../expressroute/expressroute-circuit-peerings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#privatepeering)，連線到網際網路的裝置在內部部署上可以進行網路位址轉譯和轉送，或對傳送至子網路中目的地資源的流量設定 Proxy。 
 
-如果虛擬網路連線至 Azure VPN 閘道，請勿將路由表關聯至所含路由的目的地為 0.0.0.0/0 的[閘道子網路](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)。 這麼做會讓閘道無法正常運作。 如需詳細資訊，請參閱 [VPN 閘道常見問題集](../vpn-gateway/vpn-gateway-vpn-faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gatewayports)中的*為什麼 VPN 閘道上的某些連接埠已開啟？* 問題。
+如果虛擬網路連線至 Azure VPN 閘道，請勿將路由表關聯至所含路由的目的地為 0.0.0.0/0 的[閘道子網路](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)。 這麼做會讓閘道無法正常運作。 如需詳細資訊，請參閱 [VPN 閘道常見問題集](../vpn-gateway/vpn-gateway-vpn-faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gatewayports)中的 *為什麼 VPN 閘道上的某些連接埠已開啟？* 問題。
 
 請參閱 [Azure 與內部部署資料中心之間的 DMZ](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json)，以取得在網際網路與 Azure 之間使用虛擬網路閘道的實作詳細資料。
 

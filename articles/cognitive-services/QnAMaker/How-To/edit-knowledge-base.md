@@ -6,11 +6,11 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.openlocfilehash: 3940f060209ea5ba55957a3673020656d45de9e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776539"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000091"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>在知識庫中編輯 QnA 組
 
@@ -60,7 +60,7 @@ QnA 組是從資料來源（例如檔案或 URL）新增，或新增為編輯來
     |--|--|
     |在 rich text 編輯器與 markdown 之間切換。 `</>`|CTRL+M|
     |大膽。 **B**|CTR + LB|
-    |斜體，以斜體** _I_表示**|CTRL+I|
+    |斜體，以斜體 **_I_ 表示**|CTRL+I|
     |未排序清單||
     |已排序清單||
     |段落樣式||
@@ -87,7 +87,7 @@ QnA 組是從資料來源（例如檔案或 URL）新增，或新增為編輯來
 
 ## <a name="delete-a-qna-pair"></a>刪除 QnA 組
 
-若要刪除 QnA，請按一下 QnA 資料列最右側的 [刪除]**** 圖示。 這是永久性的作業。 該作業無法復原。 請考慮先從 [發佈]**** 頁面匯出知識庫，再刪除 QnA 組。
+若要刪除 QnA，請按一下 QnA 資料列最右側的 [刪除] 圖示。 這是永久性的作業。 該作業無法復原。 請考慮先從 [發佈] 頁面匯出知識庫，再刪除 QnA 組。
 
 ![刪除 QnA 組](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 

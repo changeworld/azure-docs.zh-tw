@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 6bdf6015ca5633c77280111a55055a7394cee5bd
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057649"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001366"
 ---
 # <a name="stream-content-with-cdn-integration"></a>使用 CDN 整合來串流內容
 
@@ -54,11 +54,11 @@ CDN 會快取從媒體服務 [串流端點串流處理的內容 (來源) ](strea
 
 布建啟用 CDN 的串流端點之後，在完成 DNS 更新以將串流端點對應至 CDN 端點之前，媒體服務上會有已定義的等候時間。
 
-如果您稍後想要停用/啟用 CDN，串流端點必須處於**已停止**狀態。 串流端點啟動後，最多可能需要四個小時，Azure CDN 整合才會啟用，而且所有 CDN Pop 上的變更都在作用中。 不過，您可以啟動串流端點，並在不中斷串流端點的情況下串流處理。 整合完成後，就會從 CDN 傳遞串流。 在布建期間，您的串流端點會處於 **啟動** 狀態，而您可能會發現效能降低。
+如果您稍後想要停用/啟用 CDN，串流端點必須處於 **已停止** 狀態。 串流端點啟動後，最多可能需要四個小時，Azure CDN 整合才會啟用，而且所有 CDN Pop 上的變更都在作用中。 不過，您可以啟動串流端點，並在不中斷串流端點的情況下串流處理。 整合完成後，就會從 CDN 傳遞串流。 在布建期間，您的串流端點會處於 **啟動** 狀態，而您可能會發現效能降低。
 
 建立標準串流端點時，預設會使用標準 Verizon 來設定它。 您可以使用 REST Api 來設定 Premium Verizon 或標準 Akamai 提供者。
 
-如果是標準串流端點，Azure 媒體服務與 Azure CDN 的整合是在**來自 Verizon 的 Azure CDN** 上實作。 您可以使用所有 **Azure CDN 定價層和提供者**來設定進階串流端點。
+如果是標準串流端點，Azure 媒體服務與 Azure CDN 的整合是在 **來自 Verizon 的 Azure CDN** 上實作。 您可以使用所有 **Azure CDN 定價層和提供者** 來設定進階串流端點。
 
 > [!NOTE]
 > 如需 Azure CDN 的詳細資訊，請參閱 [CDN 總覽](../../cdn/cdn-overview.md)。

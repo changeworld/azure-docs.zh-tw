@@ -12,11 +12,11 @@ ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml
 ms.openlocfilehash: c6b9dc95e1d50481ac5353460910032ca1711ab1
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532812"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000448"
 ---
 # <a name="collect-data-from-models-in-production"></a>從生產環境中的模型收集資料
 
@@ -55,7 +55,7 @@ Blob 中輸出資料的路徑遵循此語法：
 >[!NOTE]
 > 在版本 0.1.0 a16 之前的 Azure Machine Learning SDK for Python 版本中， `designation` 引數命名為 `identifier` 。 如果您使用較早的版本開發程式碼，您必須據以更新。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://aka.ms/AMLFree)。
 
@@ -89,7 +89,7 @@ Blob 中輸出資料的路徑遵循此語法：
     prediction_dc = ModelDataCollector("best_model", designation="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
-    *CorrelationId* 是選擇性參數。 如果您的模型不需要，您就不需要使用它。 使用 *CorrelationId* 可協助您更輕鬆地與其他資料（例如 *LoanNumber* 或 *CustomerId* ）對應。
+    *CorrelationId* 是選擇性參數。 如果您的模型不需要，您就不需要使用它。 使用 *CorrelationId* 可協助您更輕鬆地與其他資料（例如 *LoanNumber* 或 *CustomerId*）對應。
     
     稍後會使用 *識別碼* 參數來建立 blob 中的資料夾結構。 您可以使用它來區分原始資料與處理過的資料。
 
@@ -155,9 +155,9 @@ Blob 中輸出資料的路徑遵循此語法：
 
     [![Power BI blob 安裝程式](./media/how-to-enable-data-collection/PBIBlob.png)](././media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
-1. 新增您的儲存體帳戶名稱並輸入您的儲存體金鑰。 您可以藉由選取 blob 中的 [ **設定**  >  **存取金鑰** ] 來尋找此資訊。
+1. 新增您的儲存體帳戶名稱並輸入您的儲存體金鑰。 您可以藉由選取 blob 中的 [**設定**  >  **存取金鑰**] 來尋找此資訊。
 
-1. 選取 **模型資料** 容器，然後選取 [ **編輯** ]。
+1. 選取 **模型資料** 容器，然後選取 [ **編輯**]。
 
     [![Power BI 導覽器](./media/how-to-enable-data-collection/pbiNavigator.png)](././media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
@@ -189,11 +189,11 @@ Blob 中輸出資料的路徑遵循此語法：
 
 1. 移至 Databricks 工作區。
 
-1. 在 Databricks 工作區中，選取 **[上傳資料** ]。
+1. 在 Databricks 工作區中，選取 **[上傳資料**]。
 
     [![選取 Databricks 上傳資料選項](./media/how-to-enable-data-collection/dbupload.png)](././media/how-to-enable-data-collection/dbupload.png#lightbox)
 
-1. 選取 [ **建立新的資料表** ]，然後選取 [ **其他資料來源** ]  >  **Azure Blob 儲存體**  >  **在筆記本中建立資料表** 。
+1. 選取 [**建立新的資料表**]，然後選取 [**其他資料來源**]  >  **Azure Blob 儲存體**  >  **在筆記本中建立資料表**。
 
     [![建立 Databricks 資料表](./media/how-to-enable-data-collection/dbtable.PNG)](././media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 

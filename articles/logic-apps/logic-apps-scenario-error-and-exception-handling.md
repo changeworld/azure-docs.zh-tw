@@ -8,11 +8,11 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
 ms.openlocfilehash: fdf5f25ae6f89ccc06c95ee1be021691dab0047a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322422"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000346"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>案例︰適用於邏輯應用程式的例外狀況處理與記錄錯誤
 
@@ -37,7 +37,7 @@ ms.locfileid: "91322422"
 
 ## <a name="how-we-solved-the-problem"></a>問題解決方式
 
-我們選擇 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") 做為記錄檔和錯誤記錄的存放庫， (Cosmos DB 將記錄視為檔) 。 由於 Azure Logic Apps 具有適用於所有回應的標準範本，因此我們不需要建立自訂結構描述。 我們可以建立 API 應用程式來**插入**及**查詢**錯誤和記錄檔記錄。 我們也可以為 API 應用程式中的每個項目定義結構描述。  
+我們選擇 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") 做為記錄檔和錯誤記錄的存放庫， (Cosmos DB 將記錄視為檔) 。 由於 Azure Logic Apps 具有適用於所有回應的標準範本，因此我們不需要建立自訂結構描述。 我們可以建立 API 應用程式來 **插入** 及 **查詢** 錯誤和記錄檔記錄。 我們也可以為 API 應用程式中的每個項目定義結構描述。  
 
 另一個需求是要在特定日期之後清除記錄。 Cosmos DB 具有稱為「 [存留時間](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "存留時間") (TTL) 的屬性，可讓我們為每個記錄或集合設定生存 **時間** 值。 此功能讓我們不需手動在 Cosmos DB 中刪除記錄。
 
@@ -48,11 +48,11 @@ ms.locfileid: "91322422"
 
 第一個步驟是建立邏輯應用程式，並在邏輯應用程式設計工具中開啟該應用程式。 在此範例中，我們會使用父子邏輯應用程式。 假設我們已建立父項，而且將要建立一個子邏輯應用程式。
 
-由於我們將記錄來自 Dynamics CRM Online 的記錄，因此讓我們從最上層開始。 我們必須使用**要求**觸發程序，因為父邏輯應用程式會觸發這個子項。
+由於我們將記錄來自 Dynamics CRM Online 的記錄，因此讓我們從最上層開始。 我們必須使用 **要求** 觸發程序，因為父邏輯應用程式會觸發這個子項。
 
 ### <a name="logic-app-trigger"></a>邏輯應用程式觸發程序
 
-我們使用**要求**觸發程序，如下列範例所示：
+我們使用 **要求** 觸發程序，如下列範例所示：
 
 ``` json
 "triggers": {
@@ -97,7 +97,7 @@ ms.locfileid: "91322422"
 1. 我們必須從 Dynamics CRM Online 取得新的預約記錄。
 
    來自 CRM 的觸發程序會提供我們 **CRM PatentId**、**記錄類型**、**新的或更新的記錄** (新增或更新布林值) 和 **SalesforceId**。 **SalesforceId** 可以是 null，因為它只會用於更新。
-   我們使用 CRM **PatientID** 和 [記錄類型]**** 來取得 CRM 記錄。
+   我們使用 CRM **PatientID** 和 [記錄類型] 來取得 CRM 記錄。
 
 2. 接下來，必須新增 Azure Cosmos DB SQL API 應用程式 **InsertLogEntry** 作業，如以下「邏輯應用程式設計工具」所示。
 
@@ -116,7 +116,7 @@ ms.locfileid: "91322422"
 ## <a name="logic-app-source-code"></a>邏輯應用程式原始程式碼
 
 > [!NOTE]
-> 以下僅是範例。 由於此教學課程是以目前在生產環境中的實作為基礎，因此，**來源節點**的值可能不會顯示與安排預約相關的屬性。 
+> 以下僅是範例。 由於此教學課程是以目前在生產環境中的實作為基礎，因此，**來源節點** 的值可能不會顯示與安排預約相關的屬性。 
 
 ### <a name="logging"></a>記錄
 
@@ -396,10 +396,10 @@ ms.locfileid: "91322422"
 
 ### <a name="error-management-portal"></a>錯誤管理入口網站
 
-若要檢視錯誤，您可以建立 MVC Web 應用程式，以顯示來自 Cosmos DB 的錯誤記錄。 目前的版本中包含**清單**、**詳細資料**、**編輯**和**刪除**作業。
+若要檢視錯誤，您可以建立 MVC Web 應用程式，以顯示來自 Cosmos DB 的錯誤記錄。 目前的版本中包含 **清單**、**詳細資料**、**編輯** 和 **刪除** 作業。
 
 > [!NOTE]
-> 編輯作業︰Cosmos DB 會取代整份文件。 **清單**和**詳細資料**檢視中所顯示的記錄只是範例。 而非實際的病患預約記錄。
+> 編輯作業︰Cosmos DB 會取代整份文件。 **清單** 和 **詳細資料** 檢視中所顯示的記錄只是範例。 而非實際的病患預約記錄。
 
 以下是使用先前所述方法建立之 MVC 應用程式詳細資料的範例。
 
@@ -466,7 +466,7 @@ Azure Cosmos DB 中的每個文件都必須具有唯一識別碼。 我們將會
  }
 ```
 
-上述程式碼範例的運算式會檢查 Create_NewPatientRecord** 狀態是否為 **Failed**。
+上述程式碼範例的運算式會檢查 Create_NewPatientRecord 狀態是否為 **Failed**。
 
 ## <a name="summary"></a>摘要
 

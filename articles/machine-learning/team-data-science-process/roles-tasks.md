@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4bcbbd9378b6ea861c926eed16d2ceed8131b913
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082744"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000958"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Team Data Science Process 角色和工作
 
@@ -125,7 +125,7 @@ Team Data 科學程式 (TDSP) 是由 Microsoft 所開發的架構，可提供結
 
 使用 Microsoft TDSP 小組的 [專案範本存放庫](https://github.com/Azure/Azure-TDSP-ProjectTemplate) ，以支援有效率的專案執行和協同作業。 存放庫會提供您可用於自己 TDSP 專案的標準化目錄結構和檔範本。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入探索 Team Data Science Process 定義的角色和工作描述：
 

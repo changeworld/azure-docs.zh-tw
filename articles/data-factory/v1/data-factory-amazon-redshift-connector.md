@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 290990e312a7f591539686ecce1eec1ac742dd60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89443019"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999292"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure Data Factory 從 Amazon Redshift 移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -34,7 +34,7 @@ Data Factory 目前僅支援資料從 Amazon Redshift 移至[支援的接收資�
 > [!TIP]
 > 當您從 Amazon Redshift 中複製大量資料時，若想獲得最佳效能，請考慮透過 Amazon Simple Storage Service (Amazon S3) 使用內建的 Redshift **UNLOAD**。 如需詳細資料，請參閱[使用 UNLOAD 複製 Amazon Redshift 中的資料](#use-unload-to-copy-data-from-amazon-redshift)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 * 如果您要將資料移到內部部署的資料存放區，請在內部部署的電腦上安裝[資料管理閘道](data-factory-data-management-gateway.md)。 使用內部部署機器的 IP 位址，授與 Amazon Redshift 叢集閘道的存取權。 如需相關指示，請參閱[授權存取叢集](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html)。
 * 若要將資料移動到 Azure 資料存放區，請參閱[計算 Microsoft Azure 資料中心所使用的 IP 位址和 SQL 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。
 
@@ -76,7 +76,7 @@ Data Factory 目前僅支援資料從 Amazon Redshift 移至[支援的接收資�
 
 | 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| **名** |Amazon Redshift 資料庫中連結服務所參照的資料表名稱。 |否 (如果指定 **RelationalSource** 類型複製活動的**查詢**屬性) |
+| **名** |Amazon Redshift 資料庫中連結服務所參照的資料表名稱。 |否 (如果指定 **RelationalSource** 類型複製活動的 **查詢** 屬性) |
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 
@@ -101,7 +101,7 @@ Data Factory 目前僅支援資料從 Amazon Redshift 移至[支援的接收資�
 
 Amazon Redshift [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) 命令會將查詢的結果上傳到 Amazon S3 上的一個或多個檔案。 Amazon 建議使用此命令從 Redshift 複製大型資料集。
 
-**範例：將資料從 Amazon Redshift 複製到先前的 SQL 資料倉儲 (Azure Synapse Analytics) **
+**範例：將資料從 Amazon Redshift 複製到先前的 SQL 資料倉儲 (Azure Synapse Analytics)**
 
 此範例會將資料從 Amazon Redshift 複製到 Azure Synapse Analytics。 此範例使用 Redshift **UNLOAD** 命令、暫存複製資料和 Microsoft PolyBase。
 
@@ -335,18 +335,18 @@ Amazon Redshift [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UN
 | DECIMAL |Decimal |
 | REAL |Single |
 | DOUBLE PRECISION |Double |
-| BOOLEAN |字串 |
+| BOOLEAN |String |
 | CHAR |String |
 | VARCHAR |String |
-| DATE |Datetime |
+| 日期 |Datetime |
 | timestamp |Datetime |
-| TEXT |字串 |
+| TEXT |String |
 
 ## <a name="map-source-to-sink-columns"></a>將來源對應到接收資料行
 若要了解如何將來源資料集內的資料行與接收資料集內的資料行對應，請參閱[在 Azure Data Factory 中對應資料集資料行](data-factory-map-columns.md)。
 
 ## <a name="repeatable-reads-from-relational-sources"></a>從關聯式來源進行可重複的讀取
-從關聯式資料存放區複製資料時，請留意可重複性，以避免產生非預期的結果。 在 Azure Data Factory 中，您可以手動重新執行配量。 您也可以為資料集設定重試**原則**，使得在發生失敗時，重新執行配量。 確定無論配量將執行多少次，均讀取相同的資料。 也請確定無論重新執行配量的方式為何，均讀取相同的資料。 如需詳細資訊，請參閱[從關聯式來源進行可重複的讀取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
+從關聯式資料存放區複製資料時，請留意可重複性，以避免產生非預期的結果。 在 Azure Data Factory 中，您可以手動重新執行配量。 您也可以為資料集設定重試 **原則**，使得在發生失敗時，重新執行配量。 確定無論配量將執行多少次，均讀取相同的資料。 也請確定無論重新執行配量的方式為何，均讀取相同的資料。 如需詳細資訊，請參閱[從關聯式來源進行可重複的讀取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
 
 ## <a name="performance-and-tuning"></a>效能和微調
 請參閱[複製活動的效能及微調指南](data-factory-copy-activity-performance.md)，了解影響複製活動效能的重要因素，以及達到最佳效能的各種方法。

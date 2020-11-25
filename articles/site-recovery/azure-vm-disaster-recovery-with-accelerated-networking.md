@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: harshacs
 ms.openlocfilehash: 1d2d3b3aacc00428c96cde0f8230421a98151ae2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90068008"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000244"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>加速網路與 Azure 虛擬機器災害復原
 
@@ -24,7 +24,7 @@ ms.locfileid: "90068008"
 
 Azure Site Recovery 可讓您針對容錯移轉至不同 Azure 區域的 Azure 虛擬機器，利用加速網路的優點。 本文說明如何針對使用 Azure Site Recovery 所複寫的 Azure 虛擬機器，啟用加速網路。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請確定您了解：
 -   Azure 虛擬機器[複寫架構](azure-to-azure-architecture.md)
@@ -72,14 +72,14 @@ Azure Site Recovery 只有在來源虛擬機器已啟用加速網路時，才支
 
 當您針對 Azure 虛擬機器[啟用複寫](azure-to-azure-tutorial-enable-replication.md)時，Site Recovery 會自動偵測虛擬機器網路介面是否已啟用加速網路。 如果已啟用加速網路，Site Recovery 會自動在已複寫虛擬機器網路介面上設定加速網路。
 
-加速網路的狀態，可以在已複寫虛擬機器 [計算與網路]**** 設定的 [網路介面]**** 區段底下確認。
+加速網路的狀態，可以在已複寫虛擬機器 [計算與網路] 設定的 [網路介面] 區段底下確認。
 
 ![加速網路設定](./media/azure-vm-disaster-recovery-with-accelerated-networking/compute-network-accelerated-networking.png)
 
 如果您在啟用複寫之後，在來源虛擬機器上啟用加速網路，可以藉由下列程序，針對已複寫虛擬機器網路介面啟用加速網路：
-1. 開啟已複寫虛擬機器的 [計算與網路]**** 設定
-2. 在 [網路介面]**** 區段底下，按一下網路介面的名稱
-3. 從 [目標]**** 資料行底下的加速網路下拉式清單，選取 [已啟用]****
+1. 開啟已複寫虛擬機器的 [計算與網路] 設定
+2. 在 [網路介面] 區段底下，按一下網路介面的名稱
+3. 從 [目標] 資料行底下的加速網路下拉式清單，選取 [已啟用]
 
 ![啟用加速網路](./media/azure-vm-disaster-recovery-with-accelerated-networking/network-interface-accelerated-networking-enabled.png)
 

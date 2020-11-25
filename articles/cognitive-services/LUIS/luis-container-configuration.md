@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 48a9856c58a815eabcc0b105efcd548e66ddd552
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a4f2b07edc6c290fa030621a4dc400ab50890bba
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80874206"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96001138"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>設定 Language Understanding 的 Docker 容器 
 
@@ -29,7 +29,7 @@ ms.locfileid: "80874206"
 |必要|設定|目的|
 |--|--|--|
 |是|[ApiKey](#apikey-setting)|用來追蹤帳單資訊。|
-|否|[ApplicationInsights](#applicationinsights-setting)|可讓您將 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遙測支援新增至容器。|
+|否|[ApplicationInsights](#applicationinsights-setting)|可讓您將 [Azure Application Insights](/azure/application-insights) 遙測支援新增至容器。|
 |是|[Billing](#billing-setting)|指定 Azure 上服務資源的端點 URI。|
 |是|[Eula](#eula-setting)| 表示您已接受容器的授權。|
 |否|[Fluentd](#fluentd-settings)|將記錄 (和選擇性的計量資料) 寫入至 Fluentd 伺服器。|
@@ -46,7 +46,7 @@ ms.locfileid: "80874206"
 
 此設定可在下列位置找到：
 
-* Azure 入口網站：**認知服務**資源管理，位於**金鑰**底下
+* Azure 入口網站：**認知服務** 資源管理，位於 **金鑰** 底下
 * LUIS 入口網站： [ **金鑰和端點設定** ] 頁面。 
 
 請勿使用入門金鑰或撰寫金鑰。 
@@ -96,8 +96,8 @@ LUIS 容器不會使用輸入或輸出裝載來儲存訓練或服務資料。
 
 |必要| 名稱 | 資料類型 | 描述 |
 |-------|------|-----------|-------------|
-|是| `Input` | String | 輸入裝載的目標。 預設值為 `/input`。 這是 LUIS 套件檔案的位置。 <br><br>範例：<br>`--mount type=bind,src=c:\input,target=/input`|
-|否| `Output` | String | 輸出裝載的目標。 預設值為 `/output`。 這是記錄的位置。 其中包括 LUIS 查詢記錄和容器記錄。 <br><br>範例：<br>`--mount type=bind,src=c:\output,target=/output`|
+|是| `Input` | String | 輸入裝載的目標。 預設值是 `/input`。 這是 LUIS 套件檔案的位置。 <br><br>範例：<br>`--mount type=bind,src=c:\input,target=/input`|
+|否| `Output` | String | 輸出裝載的目標。 預設值是 `/output`。 這是記錄的位置。 其中包括 LUIS 查詢記錄和容器記錄。 <br><br>範例：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>範例 docker run 命令
 

@@ -9,11 +9,11 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.openlocfilehash: 191832ab227e854b40938183e335c1b6ea52199c
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347824"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000043"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>在 Azure Logic Apps 中建立和管理供 B2B 企業整合運用的整合帳戶
 
@@ -33,7 +33,7 @@ ms.locfileid: "93347824"
 * 將整合帳戶移到另一個 Azure 資源群組或訂用帳戶。
 * 刪除整合帳戶。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -45,11 +45,11 @@ ms.locfileid: "93347824"
 
 1. 使用您的 Azure 帳戶認證登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 在 Azure 主功能表上，選取 [建立資源]。 在搜尋方塊中，輸入「整合帳戶」作為篩選準則，然後選取 [ **整合帳戶** ]。
+1. 在 Azure 主功能表上，選取 [建立資源]。 在搜尋方塊中，輸入「整合帳戶」作為篩選準則，然後選取 [ **整合帳戶**]。
 
    ![建立新的整合帳戶](./media/logic-apps-enterprise-integration-create-integration-account/create-integration-account.png)
 
-1. 在 [ **整合帳戶** ] 底下，選取 [ **建立** ]。
+1. 在 [ **整合帳戶**] 底下，選取 [ **建立**]。
 
    ![選擇 [新增] 以建立整合帳戶](./media/logic-apps-enterprise-integration-create-integration-account/add-integration-account.png)
 
@@ -62,8 +62,8 @@ ms.locfileid: "93347824"
    | **名稱** | 是 | <*整合-帳戶-名稱*> | 您的整合帳戶名稱，只能包含字母、數位、連字號 (`-`) 、底線 (`_`) 、括弧 (`(` 、 `)`) 和句點 (`.`) 。 此範例使用「Fabrikam-整合」。 |
    | **訂用帳戶** | 是 | <*Azure-subscription-name*> | Azure 訂用帳戶的名稱 |
    | **資源群組** | 是 | <*Azure-resource-group-name*> | 用來組織相關資源的 [Azure 資源組](../azure-resource-manager/management/overview.md) 名。 針對此範例，請建立名為 "FabrikamIntegration-RG" 的新資源群組。 |
-   | 定價層  | 是 | <*定價層級*> | 整合帳戶的定價層，您可以在稍後變更。 在此範例中，請選取 [ **免費** ]。 如需詳細資訊，請參閱下列主題： <p>- [Logic Apps 計價模式](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps 限制和設定](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps/) |
-   | **位置** | 是 | <*Azure-region*> | 要儲存整合帳戶中繼資料的區域。 請選取與邏輯應用程式相同的位置，或在與整合帳戶相同的位置中建立邏輯應用程式。 在此範例中，請使用「美國西部」。 <p>**注意** ：若要在 [整合服務環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)內建立整合帳戶，請選取該 ise 作為位置。 如需詳細資訊，請參閱 [在 ISE 中建立整合帳戶](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)。 |
+   | 定價層 | 是 | <*定價層級*> | 整合帳戶的定價層，您可以在稍後變更。 在此範例中，請選取 [ **免費**]。 如需詳細資訊，請參閱下列主題： <p>- [Logic Apps 計價模式](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps 限制和設定](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps/) |
+   | **位置** | 是 | <*Azure-region*> | 要儲存整合帳戶中繼資料的區域。 請選取與邏輯應用程式相同的位置，或在與整合帳戶相同的位置中建立邏輯應用程式。 在此範例中，請使用「美國西部」。 <p>**注意**：若要在 [整合服務環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)內建立整合帳戶，請選取該 ise 作為位置。 如需詳細資訊，請參閱 [在 ISE 中建立整合帳戶](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)。 |
    | **Log Analytics** | 否 | 關閉、開啟 | 在此範例中，請保留 [ **關閉** ] 設定。 |
    |||||
 
@@ -160,11 +160,11 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，開啟現有的邏輯應用程式，或建立新的邏輯應用程式。
 
-1. 在邏輯應用程式功能表的 [設定] 底下，選取 [工作流程設定]。 在 [ **整合帳戶** ] 下，開啟 [ **選取整合帳戶** ] 清單。 選取整合帳戶以連結至您的邏輯應用程式。
+1. 在邏輯應用程式功能表的 [設定] 底下，選取 [工作流程設定]。 在 [ **整合帳戶**] 下，開啟 [ **選取整合帳戶** ] 清單。 選取整合帳戶以連結至您的邏輯應用程式。
 
    ![選取您的整合帳戶](./media/logic-apps-enterprise-integration-create-integration-account/select-integration-account.png)
 
-1. 若要完成連結，請選取 [ **儲存** ]。
+1. 若要完成連結，請選取 [ **儲存**]。
 
    ![顯示在哪裡選取 [儲存] 以選擇您的整合帳戶的螢幕擷取畫面。](./media/logic-apps-enterprise-integration-create-integration-account/save-link.png)
 
@@ -193,17 +193,17 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
 1. 使用您的 Azure 帳戶認證登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 在主要 Azure 搜尋方塊中，輸入「整合帳戶」作為篩選準則，然後選取 [ **整合帳戶** ]。
+1. 在主要 Azure 搜尋方塊中，輸入「整合帳戶」作為篩選準則，然後選取 [ **整合帳戶**]。
 
    ![尋找整合帳戶](./media/logic-apps-enterprise-integration-create-integration-account/find-integration-account.png)
 
    Azure 會在您的 Azure 訂用帳戶中顯示所有整合帳戶。
 
-1. 在 [整合帳戶] 底下，選取您想要移動的整合帳戶。 在 [整合帳戶] 功能表上，選取 **[總覽** ]。
+1. 在 [整合帳戶] 底下，選取您想要移動的整合帳戶。 在 [整合帳戶] 功能表上，選取 **[總覽**]。
 
    ![在 [整合帳戶] 功能表上，選取 [總覽]](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-overview.png)
 
-1. 在 [總覽] 窗格中，選取 [ **升級定價層** ]，其中會列出任何可用的較高層級。 當您選取某個階層時，變更會立即生效。
+1. 在 [總覽] 窗格中，選取 [ **升級定價層**]，其中會列出任何可用的較高層級。 當您選取某個階層時，變更會立即生效。
 
 <a name="upgrade-tier-azure-cli"></a>
 
@@ -265,11 +265,11 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
    ![尋找並選取邏輯應用程式](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-find-logic-app.png)
 
-1. 在 explorer 標題列上，選取 [ **讀取/寫入** ]。
+1. 在 explorer 標題列上，選取 [ **讀取/寫入**]。
 
    ![開啟「讀取/寫入」模式](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-select-read-write.png)
 
-1. 在 [ **資料** ] 索引標籤上，選取 [ **編輯** ]。
+1. 在 [ **資料** ] 索引標籤上，選取 [ **編輯**]。
 
    ![在 [資料] 索引標籤上，選取 [編輯]](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-select-edit.png)
 
@@ -305,17 +305,17 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
 1. 使用您的 Azure 帳戶認證登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 在主要 Azure 搜尋方塊中，輸入「整合帳戶」作為篩選準則，然後選取 [ **整合帳戶** ]。
+1. 在主要 Azure 搜尋方塊中，輸入「整合帳戶」作為篩選準則，然後選取 [ **整合帳戶**]。
 
    ![尋找整合帳戶](./media/logic-apps-enterprise-integration-create-integration-account/find-integration-account.png)
 
    Azure 會在您的 Azure 訂用帳戶中顯示所有整合帳戶。
 
-1. 在 [整合帳戶] 底下，選取您想要移動的整合帳戶。 在 [整合帳戶] 功能表上，選取 **[總覽** ]。
+1. 在 [整合帳戶] 底下，選取您想要移動的整合帳戶。 在 [整合帳戶] 功能表上，選取 **[總覽**]。
 
    ![在 [整合帳戶] 功能表上，選取 [總覽]](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-overview.png)
 
-1. 在 [ **資源群組** ] 或 [訂用帳戶 **名稱** ] 旁邊，選取 [ **變更** ]。
+1. 在 [ **資源群組** ] 或 [訂用帳戶 **名稱**] 旁邊，選取 [ **變更**]。
 
    ![變更資源群組或訂用帳戶](./media/logic-apps-enterprise-integration-create-integration-account/change-resource-group-subscription.png)
 
@@ -323,11 +323,11 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
 1. 根據您的選擇，依照下列步驟變更資源群組或訂用帳戶：
 
-   * 資源群組：從 **資源群組** 清單中，選取目的地資源群組。 或者，若要建立不同的資源群組，請選取 [ **建立新的資源群組** ]。
+   * 資源群組：從 **資源群組** 清單中，選取目的地資源群組。 或者，若要建立不同的資源群組，請選取 [ **建立新的資源群組**]。
 
-   * 訂用帳戶：從 **訂** 用帳戶清單中，選取目的地訂用帳戶。 從 **資源群組** 清單中，選取目的地資源群組。 或者，若要建立不同的資源群組，請選取 [ **建立新的資源群組** ]。
+   * 訂用帳戶：從 **訂** 用帳戶清單中，選取目的地訂用帳戶。 從 **資源群組** 清單中，選取目的地資源群組。 或者，若要建立不同的資源群組，請選取 [ **建立新的資源群組**]。
 
-1. 若要確認您瞭解任何與移動的資源相關聯的腳本或工具都將無法運作，直到您以新的資源識別碼更新它們為止，請選取 [確認] 方塊，然後選取 **[確定]** 。
+1. 若要確認您瞭解任何與移動的資源相關聯的腳本或工具都將無法運作，直到您以新的資源識別碼更新它們為止，請選取 [確認] 方塊，然後選取 **[確定]**。
 
 1. 完成之後，請確定您已使用已移動資源的新資源識別碼來更新任何和所有腳本。  
 
@@ -337,21 +337,21 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
 1. 使用您的 Azure 帳戶認證登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 在主要 Azure 搜尋方塊中，輸入「整合帳戶」作為篩選準則，然後選取 [ **整合帳戶** ]。
+1. 在主要 Azure 搜尋方塊中，輸入「整合帳戶」作為篩選準則，然後選取 [ **整合帳戶**]。
 
    ![尋找整合帳戶](./media/logic-apps-enterprise-integration-create-integration-account/find-integration-account.png)
 
    Azure 會在您的 Azure 訂用帳戶中顯示所有整合帳戶。
 
-1. 在 [整合帳戶] 底下，選取您想要刪除的整合帳戶。 在 [整合帳戶] 功能表上，選取 **[總覽** ]。
+1. 在 [整合帳戶] 底下，選取您想要刪除的整合帳戶。 在 [整合帳戶] 功能表上，選取 **[總覽**]。
 
    ![在 [整合帳戶] 功能表上，選取 [總覽]](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-overview.png)
 
-1. 在 [總覽] 窗格中，選取 [ **刪除** ]。
+1. 在 [總覽] 窗格中，選取 [ **刪除**]。
 
    ![在 [總覽] 窗格中，選取 [刪除]](./media/logic-apps-enterprise-integration-create-integration-account/delete-integration-account.png)
 
-1. 若要確認您想要刪除整合帳戶，請選取 **[是]** 。
+1. 若要確認您想要刪除整合帳戶，請選取 **[是]**。
 
    ![若要確認刪除，請選取 [是]](./media/logic-apps-enterprise-integration-create-integration-account/confirm-delete.png)
 

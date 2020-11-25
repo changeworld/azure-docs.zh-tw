@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
 ms.openlocfilehash: 255e4085e24ee7520c603f8a00b3e46c23367a77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441998"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000822"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>從具有控制資料表的資料庫進行差異複製
 
@@ -42,7 +42,7 @@ ms.locfileid: "89441998"
 
 範本會定義下列參數：
 - *Data_Source_Table_Name* 是源資料庫中您要從中載入資料的資料表。
-- *Data_Source_WaterMarkColumn* 是用來識別新的或更新的資料列之來源資料表中的資料行名稱。 此資料行的類型通常是 *datetime*、 *INT*或類似的。
+- *Data_Source_WaterMarkColumn* 是用來識別新的或更新的資料列之來源資料表中的資料行名稱。 此資料行的類型通常是 *datetime*、 *INT* 或類似的。
 - *Data_Destination_Container* 是要將資料複製到目的地存放區中之位置的根路徑。
 - *Data_Destination_Directory* 是在目的地存放區中將資料複製到其中的根目錄下的目錄路徑。
 - *Data_Destination_Table_Name* 是將資料複製到目的地存放區中的位置， (適用于選取 [Azure Synapse Analytics (先前的 SQL DW) ] 作為 [資料目的地]) 。
@@ -52,7 +52,7 @@ ms.locfileid: "89441998"
 
 ## <a name="how-to-use-this-solution-template"></a>如何使用此解決方案範本
 
-1. 探索您想要載入的來源資料表，並定義可用來識別新的或更新的資料列的高水位線資料行。 此資料行的類型可能是 *datetime*、 *INT*或類似的。 當加入新資料列時，這個資料行的值會增加。 從下列範例來源資料表 (data_source_table) ，我們可以使用 *LastModifytime* 資料行做為高水位線資料行。
+1. 探索您想要載入的來源資料表，並定義可用來識別新的或更新的資料列的高水位線資料行。 此資料行的類型可能是 *datetime*、 *INT* 或類似的。 當加入新資料列時，這個資料行的值會增加。 從下列範例來源資料表 (data_source_table) ，我們可以使用 *LastModifytime* 資料行做為高水位線資料行。
 
     ```sql
             PersonID    Name    LastModifytime
@@ -110,11 +110,11 @@ ms.locfileid: "89441998"
   
     ![檢閱管線](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
 
-9. 選取 [ **預存**程式]。 針對 [ **預存**程式名稱 **]，選擇 [dbo]。 [update_watermark]**。 選取 [匯 **入參數**]，然後選取 [ **新增動態內容**]。  
+9. 選取 [ **預存** 程式]。 針對 [ **預存** 程式名稱 **]，選擇 [dbo]。 [update_watermark]**。 選取 [匯 **入參數**]，然後選取 [ **新增動態內容**]。  
 
     ![設定預存程式活動](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png)  
 
-10. 寫入 content ** \@ {activity ( ' LookupCurrentWaterMark ' ) . FirstRow. NewWatermarkValue}**，然後選取 **[完成]**。  
+10. 寫入 content **\@ {activity ( ' LookupCurrentWaterMark ' ) . FirstRow. NewWatermarkValue}**，然後選取 **[完成]**。  
 
     ![寫入預存程式之參數的內容](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)       
      

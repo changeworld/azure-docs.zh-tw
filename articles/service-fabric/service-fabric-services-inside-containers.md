@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 5/23/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e0c5f3ecf0334ad2190d8542e54388a2a25d30fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537407"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999802"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>將 Windows 上的 Service Fabric Reliable Services 和 Reliable Actors 容器化
 
@@ -45,7 +45,7 @@ Service Fabric 支援將 Service Fabric 微服務 (Reliable Services 和 Reliabl
           {
    ```
 
-4. 建置和[封裝](service-fabric-package-apps.md#Package-App)您的專案。 若要建置和建立套件，請以滑鼠右鍵按一下方案總管中的應用程式專案，然後選擇 [封裝]**** 命令。
+4. 建置和[封裝](service-fabric-package-apps.md#Package-App)您的專案。 若要建置和建立套件，請以滑鼠右鍵按一下方案總管中的應用程式專案，然後選擇 [封裝] 命令。
 
 5. 針對每個需要容器化的程式碼套件，執行 PowerShell 指令碼 [CreateDockerPackage.ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1)。 使用方式如下：
 

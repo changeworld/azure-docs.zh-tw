@@ -8,11 +8,11 @@ ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: ad1bec66edaa3fcc6049f4911684f6e6d6c3e366
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369398"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999176"
 ---
 # <a name="troubleshoot-the-process-server"></a>針對處理序伺服器進行疑難排解
 
@@ -200,7 +200,7 @@ ms.locfileid: "92369398"
 ## <a name="step-10-check-the-process-server-connection-to-azure-public-ip-address"></a>步驟 10：檢查處理序伺服器與 Azure 公用 IP 位址的連線
 
 1. 在處理序伺服器的 **%programfiles%\Microsoft Azure Recovery Services Agent\Temp** 中，開啟最新的 CBEngineCurr.errlog 檔案。
-2. 在此檔案中，搜尋 **443**，或搜尋**連線嘗試失敗**字串。
+2. 在此檔案中，搜尋 **443**，或搜尋 **連線嘗試失敗** 字串。
 
   ![暫存資料夾中的錯誤記錄檔](./media/vmware-physical-azure-troubleshoot-process-server/logdetails1.png)
 

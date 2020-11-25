@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-python
 ms.date: 04/23/2020
 ms.openlocfilehash: 96b2e7deff464f00ced4457a514ac833a90bd42d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87873886"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999887"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>在電腦上安裝 Jupyter Notebook，並連線到 HDInsight 上的 Apache Spark
 
@@ -67,7 +67,7 @@ ms.locfileid: "87873886"
 
 1. 在您的新工作目錄中，輸入下列一或多個命令，以安裝所需的核心 (s) ：
 
-    |核心 | Command |
+    |核心 | 命令 |
     |---|---|
     |Spark|`jupyter-kernelspec install sparkmagic/kernels/sparkkernel`|
     |SparkR|`jupyter-kernelspec install sparkmagic/kernels/sparkrkernel`|
@@ -90,7 +90,7 @@ ms.locfileid: "87873886"
     python
     ```
 
-2. Jupyter 組態資訊通常儲存在使用者主目錄中。 輸入下列命令來識別 home 目錄，並建立名為** \. sparkmagic**的資料夾。  將會輸出完整的路徑。
+2. Jupyter 組態資訊通常儲存在使用者主目錄中。 輸入下列命令來識別 home 目錄，並建立名為 **\. sparkmagic** 的資料夾。  將會輸出完整的路徑。
 
     ```python
     import os

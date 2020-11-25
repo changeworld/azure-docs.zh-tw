@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/30/2019
 ms.author: wolfma
 ms.openlocfilehash: c7332177795a45331749225e0f3dc3856e28a6a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71327036"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001082"
 ---
 若要建立 Visual Studio 專案以開發 Windows，您必須建立專案、設定 Visual Studio 以開發 .NET 桌面、安裝語音 SDK，並選擇目標架構。
 
@@ -21,15 +21,15 @@ ms.locfileid: "71327036"
 
 1. 在 [開始] 視窗中，選取 [ **建立新專案**]。 
 
-1. 在 [建立新專案]**** 視窗中，選擇 [主控台應用程式 (.NET Framework)]****，然後選取 [下一步]****。
+1. 在 [建立新專案] 視窗中，選擇 [主控台應用程式 (.NET Framework)]，然後選取 [下一步]。
 
-1. 在 [設定您的新專案]**** 視窗中，在 [專案名稱]**** 中輸入 *helloworld*、在 [位置]**** 中選擇或建立目錄路徑，然後選取 [建立]****。
+1. 在 [設定您的新專案] 視窗中，在 [專案名稱] 中輸入 *helloworld*、在 [位置] 中選擇或建立目錄路徑，然後選取 [建立]。
 
-1. 從 Visual Studio 的功能表列中，選取 [**工具**  >  **取得工具和功能**]，這會開啟 Visual Studio 安裝程式並顯示 [**修改**中] 對話方塊。
+1. 從 Visual Studio 的功能表列中，選取 [**工具**  >  **取得工具和功能**]，這會開啟 Visual Studio 安裝程式並顯示 [**修改** 中] 對話方塊。
 
-1. 請檢查 [.NET 桌面開發]**** 工作負載是否可用。 如果尚未安裝此工作負載，請選取旁邊的核取方塊，然後選取 [修改]**** 以開始安裝。 下載及安裝可能需要幾分鐘的時間。
+1. 請檢查 [.NET 桌面開發] 工作負載是否可用。 如果尚未安裝此工作負載，請選取旁邊的核取方塊，然後選取 [修改] 以開始安裝。 下載及安裝可能需要幾分鐘的時間。
 
-   如果 [.NET 桌面開發]**** 旁邊的核取方塊已經選取，請選取 [關閉]**** 來結束對話方塊。
+   如果 [.NET 桌面開發] 旁邊的核取方塊已經選取，請選取 [關閉] 來結束對話方塊。
 
    ![啟用 .NET 桌面開發](../articles/cognitive-services/speech-service/media/sdk/vs-enable-net-desktop-workload.png)
 
@@ -43,13 +43,13 @@ ms.locfileid: "71327036"
 
    ![NuGet 套件管理員](../articles/cognitive-services/speech-service/media/sdk/vs-nuget-package-manager.png)
 
-1. 在右上角找到 [套件來源]**** 下拉式方塊，並確定已選取 [nuget.org]****。
+1. 在右上角找到 [套件來源] 下拉式方塊，並確定已選取 [nuget.org]。
 
 1. 選取左上角的 [瀏覽]  。
 
 1. 在搜尋方塊中，鍵入 *Microsoft.CognitiveServices.Speech*，然後選取 **Enter**。
 
-1. 從搜尋結果中，選取 [Microsoft.CognitiveServices.Speech]**** 套件，然後選取 [安裝]**** 以安裝最新的穩定版本。
+1. 從搜尋結果中，選取 [Microsoft.CognitiveServices.Speech] 套件，然後選取 [安裝] 以安裝最新的穩定版本。
 
    ![安裝 Microsoft.CognitiveServices.Speech NuGet 套件](../articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-03-nuget-install-1.0.0.png)
 
@@ -65,10 +65,10 @@ ms.locfileid: "71327036"
 
    ![組態管理員對話方塊](../articles/cognitive-services/speech-service/media/sdk/vs-configuration-manager-dialog-box.png)
 
-1. 在 [使用中的方案平台]**** 下拉式方塊中，選取 [新增]****。 [新增方案平台]**** 對話方塊隨即出現。
+1. 在 [使用中的方案平台] 下拉式方塊中，選取 [新增]。 [新增方案平台] 對話方塊隨即出現。
 
-1. 在 [輸入或選取新平台]**** 下拉式方塊中：
+1. 在 [輸入或選取新平台] 下拉式方塊中：
    - 如果您執行 64 位元的 Windows，請選取 **x64**。
    - 如果您執行 32 位元的 Windows，請選取 **x86**。
 
-1. 選取 [確定]****，然後選取 [關閉]****。
+1. 選取 [確定]，然後選取 [關閉]。

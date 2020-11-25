@@ -6,11 +6,11 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: c21c82b5fd024598da30f4ac7b1ed01e64561e3b
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576184"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000108"
 ---
 # <a name="question-and-answer-pair-concepts"></a>問題和答案配對概念
 
@@ -21,15 +21,15 @@ ms.locfileid: "94576184"
 問答 (QnA) 組的 **必要** 設定如下：
 
 * 使用者查詢的 **問題** 文字，用來 QnA Maker 的機器學習服務，用來配合使用者問題的文字與不同的用語，但答案相同
-* **答案** -配對的答案是使用者查詢與相關問題相符時所傳回的回應。
+* **答案**-配對的答案是使用者查詢與相關問題相符時所傳回的回應。
 
 每個配對都會以 **識別碼** 表示。
 
 配對的 **選擇性** 設定包括：
 
 * **問題的替代形式** -這有助於 QnA Maker 傳回更多不同問題的正確答案片語
-* **中繼資料** ：中繼資料是與 QnA 配對相關聯的標籤，並以索引鍵/值組表示。 中繼資料標記用來篩選 QnA 配對，並限制執行查詢比對的集合。
-* **多回合提示** ，用來繼續進行多重回合對話
+* **中繼資料**：中繼資料是與 QnA 配對相關聯的標籤，並以索引鍵/值組表示。 中繼資料標記用來篩選 QnA 配對，並限制執行查詢比對的集合。
+* **多回合提示**，用來繼續進行多重回合對話
 
 ![QnA Maker 知識庫](../media/qnamaker-concepts-knowledgebase/knowledgebase.png)
 

@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: ef9322c17a20ab5bfcf348649a1272dd4f301c5c
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93284475"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000669"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>針對 Azure HDInsight 中的腳本動作進行疑難排解
 
@@ -45,21 +45,21 @@ ms.locfileid: "93284475"
 
     ![腳本動作記錄](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
 
-    在此目錄底下，記錄會個別針對 **前端節點** 、 **背景工作節點** 及 **Zookeeper 節點** 進行組織。 請參閱下列範例：
+    在此目錄底下，記錄會個別針對 **前端節點**、**背景工作節點** 及 **Zookeeper 節點** 進行組織。 請參閱下列範例：
 
-    * 前端 **節點** ：`<ACTIVE-HEADNODE-NAME>.cloudapp.net`
+    * 前端 **節點**：`<ACTIVE-HEADNODE-NAME>.cloudapp.net`
 
-    * 背景 **工作節點** ：`<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
+    * 背景 **工作節點**：`<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
 
-    * **Zookeeper 節點** ： `<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
+    * **Zookeeper 節點**： `<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
 
-* 相對應主機的所有 **stdout** 和 **stderr** 都會上傳到儲存體帳戶。 每個指令碼動作都有一個 **output-\*.txt** 和 **errors-\*.txt** 。 **output-*.txt** 檔案包含在主機上執行之指令碼的 URI 相關資訊。 以下文字是此資訊的範例：
+* 相對應主機的所有 **stdout** 和 **stderr** 都會上傳到儲存體帳戶。 每個指令碼動作都有一個 **output-\*.txt** 和 **errors-\*.txt**。 **output-*.txt** 檔案包含在主機上執行之指令碼的 URI 相關資訊。 以下文字是此資訊的範例：
 
     ```output
     'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
     ```
 
-* 您有可能重複建立具有相同名稱的指令碼動作叢集。 在該情況下，您可以根據 **DATE** 資料夾名稱來區分相關的記錄。 例如，在不同日期建立之叢集 ( **mycluster** ) 的資料夾結構會類似下列記錄項目：
+* 您有可能重複建立具有相同名稱的指令碼動作叢集。 在該情況下，您可以根據 **DATE** 資料夾名稱來區分相關的記錄。 例如，在不同日期建立之叢集 (**mycluster**) 的資料夾結構會類似下列記錄項目：
 
     `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-04` `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-05`
 
@@ -75,7 +75,7 @@ ms.locfileid: "93284475"
 
 ## <a name="cant-import-name-blobservice"></a>無法匯入名稱 BlobService
 
-__徵兆__ 。 指令碼動作失敗。 在 Ambari 中檢視作業時，會顯示類似下列錯誤的文字：
+__徵兆__。 指令碼動作失敗。 在 Ambari 中檢視作業時，會顯示類似下列錯誤的文字：
 
 ```
 Traceback (most recent call list):
@@ -84,9 +84,9 @@ Traceback (most recent call list):
 ImportError: cannot import name BlobService
 ```
 
-__原因__ 。 如果您升級 HDInsight 叢集隨附的「Python Azure 儲存體」用戶端，就會發生此錯誤。 HDInsight 需要 Azure 儲存體用戶端 0.20.0。
+__原因__。 如果您升級 HDInsight 叢集隨附的「Python Azure 儲存體」用戶端，就會發生此錯誤。 HDInsight 需要 Azure 儲存體用戶端 0.20.0。
 
-__解決方法__ ： 若要解決此錯誤，請使用 `ssh`來手動連線至每個叢集節點。 請執行下列命令來重新安裝正確的儲存體用戶端版本：
+__解決方法__： 若要解決此錯誤，請使用 `ssh`來手動連線至每個叢集節點。 請執行下列命令來重新安裝正確的儲存體用戶端版本：
 
 ```bash
 sudo pip install azure-storage==0.20.0
