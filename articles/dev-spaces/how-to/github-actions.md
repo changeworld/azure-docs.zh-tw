@@ -8,11 +8,11 @@ keywords: Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、容器�
 manager: gwallace
 ms.custom: devx-track-js, devx-track-azurecli
 ms.openlocfilehash: 9bed61861c80f141270e50b644b32ae42fbe8e77
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748137"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995554"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub Actions & Azure Kubernetes Service (preview) 
 
@@ -30,7 +30,7 @@ Azure Dev Spaces 提供使用 GitHub Actions 的工作流程，可讓您直接�
 > [!IMPORTANT]
 > 此功能目前為預覽狀態。 若您同意[補充的使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，您可以建立[免費帳戶](https://azure.microsoft.com/free)。
 * [已安裝 Azure CLI][azure-cli-installed]。
@@ -88,31 +88,31 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 > [!IMPORTANT]
 > 您必須為您的存放庫啟用 GitHub Actions。 若要為您的存放庫啟用 GitHub Actions，請流覽至 GitHub 上的存放庫，按一下 [動作] 索引標籤，然後選擇啟用此存放庫的動作。
 
-流覽至您的分支存放庫，然後按一下 [ *設定* ]。 按一下左側提要欄位中的 [ *秘密* ]。 按一下 [新增 *密碼* ]，在下面新增每個新密碼：
+流覽至您的分支存放庫，然後按一下 [ *設定*]。 按一下左側提要欄位中的 [ *秘密* ]。 按一下 [新增 *密碼* ]，在下面新增每個新密碼：
 
-1. *AZURE_CREDENTIALS* ：服務主體建立的完整輸出。
-1. *RESOURCE_GROUP* ： AKS 叢集的資源群組，在此範例中為 *MyResourceGroup* 。
-1. *CLUSTER_NAME* ： AKS 叢集的名稱，在此範例中為 *MyAKS* 。
-1. *CONTAINER_REGISTRY* ： ACR 的 *loginServer* 。
-1. *Host* ：適用于您的開發空間的主機，其採用 *<MASTER_SPACE> 的格式。 <APP_NAME* > <HOST_SUFFIX，在此範例中為 *dev.bikesharingweb.fedcab0987.eus.azds.io* 。
-1. *IMAGE_PULL_SECRET* ：您想要使用的秘密名稱，例如 *示範秘密* 。
-1. *MASTER_SPACE* ：父開發人員空間的名稱，在此範例中為 *dev* 。
-1. *REGISTRY_USERNAME* ：從服務主體建立的 JSON 輸出中的 *clientId* 。
-1. *REGISTRY_PASSWORD* ：從服務主體建立的 JSON 輸出 *clientSecret* 。
+1. *AZURE_CREDENTIALS*：服務主體建立的完整輸出。
+1. *RESOURCE_GROUP*： AKS 叢集的資源群組，在此範例中為 *MyResourceGroup*。
+1. *CLUSTER_NAME*： AKS 叢集的名稱，在此範例中為 *MyAKS*。
+1. *CONTAINER_REGISTRY*： ACR 的 *loginServer* 。
+1. *Host*：適用于您的開發空間的主機，其採用 *<MASTER_SPACE> 的格式。 <APP_NAME*> <HOST_SUFFIX，在此範例中為 *dev.bikesharingweb.fedcab0987.eus.azds.io*。
+1. *IMAGE_PULL_SECRET*：您想要使用的秘密名稱，例如 *示範秘密*。
+1. *MASTER_SPACE*：父開發人員空間的名稱，在此範例中為 *dev*。
+1. *REGISTRY_USERNAME*：從服務主體建立的 JSON 輸出中的 *clientId* 。
+1. *REGISTRY_PASSWORD*：從服務主體建立的 JSON 輸出 *clientSecret* 。
 
 > [!NOTE]
 > 所有這些秘密都是由 GitHub 動作使用，並設定于 [github/workflow/自行車. yml][github-action-yaml]中。
 
-（選擇性）如果您想要在合併 PR 之後更新主要空間，請新增 *GATEWAY_HOST* 的秘密，這會採用 *<MASTER_SPACE>* 的格式。 <HOST_SUFFIX>，在此範例中為 *dev.gateway.fedcab0987.eus.azds.io* 。 當您將變更合併至分支中的主要分支之後，會執行另一個動作，以在主要開發人員空間中重建並執行整個應用程式。 在此範例中，主要空間為 *dev* 。 此動作設定于 [github/workflow/>bikesharing.clients.windows. yml][github-action-bikesharing-yaml]中。
+（選擇性）如果您想要在合併 PR 之後更新主要空間，請新增 *GATEWAY_HOST* 的秘密，這會採用 *<MASTER_SPACE>* 的格式。 <HOST_SUFFIX>，在此範例中為 *dev.gateway.fedcab0987.eus.azds.io*。 當您將變更合併至分支中的主要分支之後，會執行另一個動作，以在主要開發人員空間中重建並執行整個應用程式。 在此範例中，主要空間為 *dev*。 此動作設定于 [github/workflow/>bikesharing.clients.windows. yml][github-action-bikesharing-yaml]中。
 
 此外，如果您想要在孫空間中執行 PR 中的變更，請更新 *MASTER_SPACE* 並 *裝載* 秘密。 例如，如果您的應用程式在具有子空間 *開發/>azureuser1* 的 *開發環境* 中執行，則會在 *dev/>azureuser1* 的子空間中執行 PR：
 
-* 將 *MASTER_SPACE* 更新為您想要作為父空間的子空間，在此範例中為 *>azureuser1* 。
-* 將 *主機* 更新為 *<GRANDPARENT_SPACE>。 <APP_NAME* > <HOST_SUFFIX>，在此範例中 *dev.bikesharingweb.fedcab0987.eus.azds.io* 。
+* 將 *MASTER_SPACE* 更新為您想要作為父空間的子空間，在此範例中為 *>azureuser1*。
+* 將 *主機* 更新為 *<GRANDPARENT_SPACE>。 <APP_NAME*> <HOST_SUFFIX>，在此範例中 *dev.bikesharingweb.fedcab0987.eus.azds.io*。
 
 ## <a name="create-a-new-branch-for-code-changes"></a>建立新的分支以進行程式碼變更
 
-流覽 `BikeSharingApp/` 並建立新的分支，稱為 *自行車影像* 。
+流覽 `BikeSharingApp/` 並建立新的分支，稱為 *自行車影像*。
 
 ```cmd
 cd dev-spaces/samples/BikeSharingApp/
@@ -162,7 +162,7 @@ git push origin bike-images
 
 開啟批註中的 URL，以流覽至 *>bikesharingweb* 服務。 選取 *Aurelia Briggs (客戶)* 作為使用者，然後選取要租借的自行車。 確認您不再看到自行車的預留位置影像。
 
-如果您將變更合併至分支中的 *主要* 分支，則會執行另一個動作，以在父開發空間中重建並執行整個應用程式。 在此範例中，父系空間為 *dev* 。 此動作設定于 [github/workflow/>bikesharing.clients.windows. yml][github-action-bikesharing-yaml]中。
+如果您將變更合併至分支中的 *主要* 分支，則會執行另一個動作，以在父開發空間中重建並執行整個應用程式。 在此範例中，父系空間為 *dev*。 此動作設定于 [github/workflow/>bikesharing.clients.windows. yml][github-action-bikesharing-yaml]中。
 
 ## <a name="clean-up-your-azure-resources"></a>清除 Azure 資源
 

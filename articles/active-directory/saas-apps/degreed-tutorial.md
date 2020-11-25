@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
 ms.openlocfilehash: 96f2c96e7770ec7acc690a1d057fef16db5b88ed
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675973"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994429"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-degreed"></a>教學課程：Azure Active Directory 與 Degreed 整合
 
@@ -58,7 +58,7 @@ Degreed 與 Azure AD 整合提供下列優點：
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Degreed** 。
+1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Degreed**。
 1. 從結果面板中選取 [Degreed]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>設定並測試 Azure AD SSO
@@ -80,7 +80,7 @@ Degreed 與 Azure AD 整合提供下列優點：
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Degreed] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -98,7 +98,7 @@ Degreed 與 Azure AD 整合提供下列優點：
     > [!NOTE]
     > 這些都不是真正的值。 使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 請連絡 [Degreed 用戶端支援小組](mailto:admin@degreed.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -119,7 +119,7 @@ Degreed 與 Azure AD 整合提供下列優點：
 1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
 1. 在畫面頂端選取 [新增使用者]。
 1. 在 [使用者] 屬性中，執行下列步驟：
-   1. 在 [名稱] 欄位中，輸入 **B.Simon** 。  
+   1. 在 [名稱] 欄位中，輸入 **B.Simon**。  
    1. 在 [使用者名稱] 欄位中，輸入 `<username>@<companydomain>.<extension>`。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
    1. 選取 [建立]。

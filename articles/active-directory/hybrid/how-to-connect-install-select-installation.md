@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7275d115210100bdd4a3a2eb683c867a6a4a4f4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85358696"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996605"
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>選取要用於 Azure AD Connect 的安裝類型
 Azure AD Connect 針對新安裝提供兩種安裝類型：快速和自訂。 本主題將協助您決定安裝時要使用的選項。

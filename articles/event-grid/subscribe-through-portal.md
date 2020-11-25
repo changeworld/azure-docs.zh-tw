@@ -4,11 +4,11 @@ description: 本文說明如何使用 Azure 入口網站，為支援的來源（
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: e80e2243c93ab38187646256f567d6ab73c40100
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308498"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995058"
 ---
 # <a name="subscribe-to-events-through-portal"></a>透過入口網站訂閱事件
 
@@ -22,7 +22,7 @@ ms.locfileid: "91308498"
 
    ![選取 [所有服務]](./media/subscribe-through-portal/select-all-services.png)
 
-1. 搜尋**事件方格訂閱**，然後從可用的選項中選取它。
+1. 搜尋 **事件方格訂閱**，然後從可用的選項中選取它。
 
    ![螢幕擷取畫面會在已選取事件方格訂閱的 Azure 入口網站中顯示搜尋。](./media/subscribe-through-portal/search.png)
 
@@ -30,11 +30,11 @@ ms.locfileid: "91308498"
 
    ![新增訂用帳戶](./media/subscribe-through-portal/add-subscription.png)
 
-1. 選取您要建立的訂閱類型。 例如，若要訂閱適用於您 Azure 訂用帳戶的事件，請選取 [Azure 訂用帳戶]**** 和目標訂閱。
+1. 選取您要建立的訂閱類型。 例如，若要訂閱適用於您 Azure 訂用帳戶的事件，請選取 [Azure 訂用帳戶] 和目標訂閱。
 
    ![選取 Azure 訂用帳戶](./media/subscribe-through-portal/azure-subscription.png)
 
-1. 若要訂閱適用於此事件來源的所有事件類型，請讓 [訂閱所有事件類型]**** 選項保持勾選狀態。 否則，選取適用於此訂閱的事件類型。
+1. 若要訂閱適用於此事件來源的所有事件類型，請讓 [訂閱所有事件類型] 選項保持勾選狀態。 否則，選取適用於此訂閱的事件類型。
 
    ![選取事件類型](./media/subscribe-through-portal/select-event-types.png)
 
@@ -42,7 +42,7 @@ ms.locfileid: "91308498"
 
    ![顯示 [端點詳細資料] 和 [事件訂用帳戶詳細資料] 區段的螢幕擷取畫面，其中已輸入訂用帳戶名稱值。](./media/subscribe-through-portal/provide-subscription-details.png)
 
-1. 若要啟用無效信件功能及自訂重試原則，請選取 [其他功能]****。
+1. 若要啟用無效信件功能及自訂重試原則，請選取 [其他功能]。
 
    ![選取其他功能](./media/subscribe-through-portal/select-additional-features.png)
 
@@ -50,11 +50,11 @@ ms.locfileid: "91308498"
 
    ![啟用無效信件功能並重試](./media/subscribe-through-portal/set-deadletter-retry.png)
 
-1. 完成後，請選取 [建立]****。
+1. 完成後，請選取 [建立]。
 
 ## <a name="create-subscription-on-resource"></a>建立資源相關的訂閱
 
-某些事件來源支援透過入口網站介面，針對該資源建立事件訂閱。 選取事件來源，並在左窗格中尋找**事件**。
+某些事件來源支援透過入口網站介面，針對該資源建立事件訂閱。 選取事件來源，並在左窗格中尋找 **事件**。
 
 ![提供訂閱詳細資料](./media/subscribe-through-portal/resource-events.png)
 

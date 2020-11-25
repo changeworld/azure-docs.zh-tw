@@ -14,11 +14,11 @@ ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb138ade0f579a7545c0910646b6adfb7d5ac02a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94650218"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996656"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>將商標新增至組織的 Azure Active Directory 登入頁面
 使用您組織的標誌和自訂色彩配置，在 Azure Active Directory (Azure AD) 登入頁面上展現一致的外觀與風格。 登入頁面會在使用者登入您組織的 web 應用程式時出現，例如 Microsoft 365，其使用 Azure AD 作為身分識別提供者。
@@ -74,7 +74,7 @@ ms.locfileid: "94650218"
           
           > 強調： ``` ++text++ ``` 
 
-    - **Advanced 設定**
+    - **進階設定**
             
         ![設定公司商標頁面，進階設定已完成](media/customize-branding/configure-company-branding-advanced-settings.png)   
 

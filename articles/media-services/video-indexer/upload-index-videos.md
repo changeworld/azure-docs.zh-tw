@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 11/12/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 014c9759756a1da922a5141f064991827d593208
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: a0b7330485d3152a588d43added7d9feaa5c2a14
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630255"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "95994482"
 ---
 # <a name="upload-and-index-your-videos"></a>上傳影片及編製影片索引  
 
-上傳您的影片後，影片索引子 (選擇性地) 編碼) 文章中所討論的影片 (。 建立影片索引器帳戶時，您可以選擇免費試用帳戶 (您可取得特定的免費編製索引分鐘數) 或付費選項 (您不會受限於配額)。 使用免費試用時，影片索引器最多可為網站使用者提供 600 分鐘的免費編製索引，以及為 API 使用者提供 2400 分鐘的免費索引編製。 使用付費選項時，您建立的影片索引器帳戶會[連線到您的 Azure 訂用帳戶和 Azure 媒體服務帳戶](connect-to-azure.md)。 您需支付已編制索引的分鐘數。如需詳細資訊，請參閱 [媒體服務定價](https://azure.microsoft.com/pricing/details/media-services/)。
+上傳您的影片後，影片索引子 (選擇性地) 編碼) 文章中所討論的影片 (。 建立影片索引器帳戶時，您可以選擇免費試用帳戶 (您可取得特定的免費編製索引分鐘數) 或付費選項 (您不會受限於配額)。 使用免費試用時，影片索引器最多可為網站使用者提供 600 分鐘的免費編製索引，以及為 API 使用者提供 2400 分鐘的免費索引編製。 使用付費選項時，您建立的影片索引器帳戶會[連線到您的 Azure 訂用帳戶和 Azure 媒體服務帳戶](connect-to-azure.md)。 您需支付已編製索引的分鐘數，如需詳細資訊，請參閱[媒體服務定價](https://azure.microsoft.com/pricing/details/media-services/)。
 
 使用影片索引器 API 上傳視訊時，您會有下列上傳選項： 
 
@@ -74,27 +74,7 @@ ms.locfileid: "94630255"
 
 #### <a name="callbackurl"></a>callbackUrl
 
-用來通知客戶下列事件的 URL (使用 POST 要求)：
-
-- 索引狀態變更： 
-    - 內容：    
-    
-        |名稱|描述|
-        |---|---|
-        |id|影片識別碼|
-        |state|影片狀態|  
-    - 範例： HTTPs： \/ /test.com/notifyme?projectName=MyProject&識別碼 = 1234abcd&狀態 = 已處理
-- 在影片中識別到的人員：
-  - 屬性
-    
-      |名稱|描述|
-      |---|---|
-      |id| 影片識別碼|
-      |faceId|影片索引中出現的臉部識別碼|
-      |knownPersonId|臉部模型中唯一的個人識別碼|
-      |personName|人員名稱|
-        
-    - 範例： HTTPs： \/ /test.com/notifyme?projectName=MyProject&id = 1234abcd&faceid = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
+[!INCLUDE [callback url](./includes/callback-url.md)]
 
 ##### <a name="other-considerations"></a>其他考量
 
@@ -118,7 +98,7 @@ ms.locfileid: "94630255"
 
 #### <a name="priority"></a>priority
 
-影片索引器會根據影片的優先順序來為其編製索引。 請使用 **priority** 參數來指定索引的優先順序。 下列是有效值： **Low (低)** 、 **Normal** (一般，預設值) 和 **High (高)** 。
+影片索引器會根據影片的優先順序來為其編製索引。 請使用 **priority** 參數來指定索引的優先順序。 下列是有效值：**Low (低)**、**Normal** (一般，預設值) 和 **High (高)**。
 
 僅有付費帳戶可支援 **Priority** 參數。
 

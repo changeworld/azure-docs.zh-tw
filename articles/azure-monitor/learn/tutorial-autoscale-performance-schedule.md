@@ -9,11 +9,11 @@ ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
 ms.openlocfilehash: 8853a153450a07105ed4bac13de0da6cea95ce2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356344"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995840"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>根據效能資料或排程建立自動調整 Azure 資源規模設定
 
@@ -36,7 +36,7 @@ ms.locfileid: "91356344"
 ## <a name="create-a-web-app-and-app-service-plan"></a>建立 Web 應用程式與 App Service 方案
 1. 按一下左邊瀏覽窗格中的 [建立資源]  選項。
 2. 搜尋並選取 [Web 應用程式]  項目，然後按一下 [建立]  。
-3. 選取如 *MyTestScaleWebApp*的應用程式名稱。 建立新資源群組 *myResourceGroup'，並將它放入您所選的資源群組中。
+3. 選取如 *MyTestScaleWebApp* 的應用程式名稱。 建立新資源群組 *myResourceGroup'，並將它放入您所選的資源群組中。
 
 在數分鐘內，系統應該就會佈建您的資源。 在此教學課程剩餘部分使用 Web 應用程式與對應的 App Service 方案。
 
@@ -55,7 +55,7 @@ ms.locfileid: "91356344"
    ![儲存自動調整規模設定](./media/tutorial-autoscale-performance-schedule/Autoscale-Setting-Save.png)
 
 ## <a name="configure-default-profile"></a>設定預設設定檔
-1. 為動調整規模設定提供**名稱**。
+1. 為動調整規模設定提供 **名稱**。
 2. 在預設設定檔中，確定 [縮放模式]  設定為 [調整為特定執行個體計數]。
 3. 將執行個體計數設定為 **1**。 此設定可確保當沒有其他設定檔為使用中或作用中時，預設設定檔會將執行個體計數還原為 1。
 
@@ -115,7 +115,7 @@ ms.locfileid: "91356344"
 
     ![建立相應縮小規則](./media/tutorial-autoscale-performance-schedule/Scale-In-Rule.png)
 
-8. **儲存**自動調整規模設定。
+8. **儲存** 自動調整規模設定。
 
     ![儲存自動調整規模設定](./media/tutorial-autoscale-performance-schedule/Autoscale-Setting-Save.png)
 
@@ -163,11 +163,11 @@ ms.locfileid: "91356344"
 
 1. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]  ，然後選取在此教學課程中建立的 Web 應用程式。
 
-2. 在您的資源頁面上，按一下 [刪除]  在文字方塊中輸入**是**以確認刪除，然後按一下 [刪除]  。
+2. 在您的資源頁面上，按一下 [刪除]  在文字方塊中輸入 **是** 以確認刪除，然後按一下 [刪除]  。
 
 3. 接著，選取 App Service 方案資源並按一下 [刪除]  。
 
-4. 在文字方塊中輸入**是**以確認刪除，然後按一下 [刪除 ]  。
+4. 在文字方塊中輸入 **是** 以確認刪除，然後按一下 [刪除 ]  。
 
 ## <a name="next-steps"></a>後續步驟
 

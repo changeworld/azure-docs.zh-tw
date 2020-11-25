@@ -14,11 +14,11 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 21f29135cc3b94e5b8c2dfc99b0f7be26b37d123
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425276"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995194"
 ---
 # <a name="migrating-applications-to-msalnet"></a>將應用程式遷移至 Azure
 
@@ -51,7 +51,7 @@ ADAL.NET 取用自 [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www
 
 ### <a name="scopes-not-resources"></a>範圍，而非資源
 
-ADAL.NET 可取得「資源」** 的權杖，但 MSAL.NET 可取得「範圍」** 的權杖。 有些 MSAL.NET AcquireToken 覆寫需要名為 scopes 的參數 (`IEnumerable<string> scopes`)。 此參數是簡單的字串清單，其宣告所需的權限和要求的資源。 知名的範圍是 [Microsoft Graph 範圍](/graph/permissions-reference)。
+ADAL.NET 可取得「資源」的權杖，但 MSAL.NET 可取得「範圍」的權杖。 有些 MSAL.NET AcquireToken 覆寫需要名為 scopes 的參數 (`IEnumerable<string> scopes`)。 此參數是簡單的字串清單，其宣告所需的權限和要求的資源。 知名的範圍是 [Microsoft Graph 範圍](/graph/permissions-reference)。
 
 此外，也可以在 MSAL.NET 中存取 v1.0 資源。 請參閱 [v1.0 應用程式範圍](#scopes-for-a-web-api-accepting-v10-tokens)中的詳細資料。
 
@@ -123,7 +123,7 @@ MSAL.NET 和 v2.0 端點尚未支援所有的授與。 以下摘要說明 ADAL.N
 互動式 | [互動式驗證](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-interactively---Public-client-application-flows) | [在 MSAL.NET 中以互動方式取得權杖](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively)
 整合式 Windows 驗證 | [Windows (Kerberos) 上的整合式驗證](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos)) | [整合式 Windows 驗證](msal-authentication-flows.md#integrated-windows-authentication)
 使用者名稱/密碼 | [以使用者名稱和密碼取得權杖](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-username-and-password)| [使用者名稱密碼驗證](msal-authentication-flows.md#usernamepassword)
-裝置代碼流程 | [裝置 (不具網頁瀏覽器) 的裝置設定檔](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Device-profile-for-devices-without-web-browsers) | [裝置程式碼流程](msal-authentication-flows.md#device-code)
+裝置程式碼流程 | [裝置 (不具網頁瀏覽器) 的裝置設定檔](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Device-profile-for-devices-without-web-browsers) | [裝置程式碼流程](msal-authentication-flows.md#device-code)
 
 #### <a name="confidential-client-applications"></a>機密用戶端應用程式
 

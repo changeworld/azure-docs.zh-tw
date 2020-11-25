@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
 ms.openlocfilehash: 8081c60833c3c02d55ae66ca695ba106dba01450
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294133"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995075"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure 監視器中的記錄警示
 
@@ -25,7 +25,7 @@ ms.locfileid: "91294133"
 > [!NOTE]
 > API 版本 `2020-05-01-preview` 和以資源為中心的記錄警示目前不會產生額外費用。  預覽版中的功能價格將于未來宣佈，並在開始計費之前提供通知。 如果您選擇在通知期間之後繼續使用新的 API 版本和以資源為中心的記錄警示，將會以適用的費率計費。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 記錄警示會對 Log Analytics 資料執行查詢。 首先，您應該開始 [收集記錄資料](resource-logs.md) 並查詢記錄資料中的問題。 您可以使用 Log Analytics 中的 [警示查詢範例主題](../log-query/saved-queries.md) ，來瞭解您可以探索的內容，或 [開始撰寫您自己的查詢](../log-query/get-started-portal.md)。
 
@@ -62,7 +62,7 @@ ms.locfileid: "91294133"
 
 如同在 log analytics 中，時間範圍會將查詢資料限制為指定的範圍。 即使在查詢中使用 **前** 一個命令，也會套用時間範圍。
 
-例如，查詢會掃描60分鐘，如果時間範圍是60分鐘，即使文字包含 **前 (1d) **。 時間範圍和查詢時間篩選需要相符。 在範例案例中，將**週期**覆  /  **寫查詢時間範圍**變更為一天，會如預期般運作。
+例如，查詢會掃描60分鐘，如果時間範圍是60分鐘，即使文字包含 **前 (1d)**。 時間範圍和查詢時間篩選需要相符。 在範例案例中，將 **週期** 覆  /  **寫查詢時間範圍** 變更為一天，會如預期般運作。
 
 ### <a name="measure"></a>Measure
 
@@ -74,7 +74,7 @@ ms.locfileid: "91294133"
 
 當您嘗試在記錄檔中偵測到資料時，記錄警示的效果最佳。 當您嘗試在記錄檔中偵測缺少的資料時，它的運作效果比較低。 例如，警示虛擬機器的信號。
 
-針對工作區和 Application Insights，則會 **根據** 選取 **的結果數目**來呼叫它。 在所有其他資源類型中，它是使用選取**資料表資料列**來呼叫**量值**。
+針對工作區和 Application Insights，則會 **根據** 選取 **的結果數目** 來呼叫它。 在所有其他資源類型中，它是使用選取 **資料表資料列** 來呼叫 **量值**。
 
 > [!NOTE]
 > 由於記錄是半結構化的資料，因此其本質上會高於計量，您可能會在嘗試偵測到記錄中缺少資料時遇到 misfires，而且您應該考慮使用計量 [警示](alerts-metric-overview.md)。 您可以使用 [記錄的計量警示](alerts-metric-logs.md)，將資料從記錄傳送至計量存放區。
@@ -98,7 +98,7 @@ requests
 
 #### <a name="calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value"></a>根據數值資料行的量值計算 (例如 CPU 計數器值) 
 
-針對工作區和 Application Insights，則會 **根據** 選取的 **度量量測**來呼叫它。 在所有其他資源類型中，它會被稱為 **量值** ，並選取任何數目的資料行名稱。
+針對工作區和 Application Insights，則會 **根據** 選取的 **度量量測** 來呼叫它。 在所有其他資源類型中，它會被稱為 **量值** ，並選取任何數目的資料行名稱。
 
 ### <a name="aggregation-type"></a>彙總類型
 

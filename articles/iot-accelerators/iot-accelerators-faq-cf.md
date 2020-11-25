@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: e6acea560c3a02420b15aff84475ab58e642116c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078250"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995959"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>連線處理站解決方案加速器的常見問題集
 
@@ -32,7 +32,7 @@ ms.locfileid: "92078250"
 * 基礎結構
 * 規格
 * 技術
-* 處理程序
+* 處理序
 
 ### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-solution-accelerator"></a>Microsoft 為什麼選擇 OPC UA 作為連線的處理站解決方案加速器？
 
@@ -44,7 +44,7 @@ Microsoft 選擇 OPC UA 的原因是它是一種開放式、非專屬、與平�
 
 * 使用[儲存機制](https://github.com/Azure/azure-iot-connected-factory)中的 PowerShell 指令碼 `Simulation/Factory/Add-SimulationPublicIp.ps1`。 傳遞您的部署名稱做為參數。 對於本機部署，請使用 `<your username>ConnFactoryLocal`。 指令碼會列印出虛擬機器的 IP 位址。
 
-* 在 Azure 入口網站中，找出您部署的資源群組。 除了本機部署以外，您指定作為解決方案或部署的名稱就是資源群組的名稱。 對於使用組建指令碼的本機部署，資源群組的名稱是 `<your username>ConnFactoryLocal`。 現在請將新的**公用 IP 位址**資源新增至資源群組。
+* 在 Azure 入口網站中，找出您部署的資源群組。 除了本機部署以外，您指定作為解決方案或部署的名稱就是資源群組的名稱。 對於使用組建指令碼的本機部署，資源群組的名稱是 `<your username>ConnFactoryLocal`。 現在請將新的 **公用 IP 位址** 資源新增至資源群組。
 
 > [!NOTE]
 > 無論哪種情況，請確定遵循 [Ubuntu 網站](https://wiki.ubuntu.com/Security/Upgrades)的指示安裝最新的修補程式。 只要您的虛擬機器可透過公用 IP 位址存取，請確保安裝保持最新狀態。
@@ -55,7 +55,7 @@ Microsoft 選擇 OPC UA 的原因是它是一種開放式、非專屬、與平�
 
 * 使用[儲存機制](https://github.com/Azure/azure-iot-connected-factory)的 PowerShell 指令碼 Simulation/Factory/Remove-SimulationPublicIp.ps1。 傳遞您的部署名稱做為參數。 對於本機部署，請使用 `<your username>ConnFactoryLocal`。 指令碼會列印出虛擬機器的 IP 位址。
 
-* 在 Azure 入口網站中，找出您部署的資源群組。 除了本機部署以外，您指定作為解決方案或部署的名稱就是資源群組的名稱。 對於使用組建指令碼的本機部署，資源群組的名稱是 `<your username>ConnFactoryLocal`。 現在，將新的**公用 IP 位址**資源從資源群組中移除。
+* 在 Azure 入口網站中，找出您部署的資源群組。 除了本機部署以外，您指定作為解決方案或部署的名稱就是資源群組的名稱。 對於使用組建指令碼的本機部署，資源群組的名稱是 `<your username>ConnFactoryLocal`。 現在，將新的 **公用 IP 位址** 資源從資源群組中移除。
 
 ### <a name="how-do-i-sign-in-to-the-simulation-vm"></a>如何登入模擬虛擬機器？
 
@@ -90,7 +90,7 @@ Microsoft 選擇 OPC UA 的原因是它是一種開放式、非專屬、與平�
 
 ### <a name="how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution"></a>如何找出我的解決方案所使用之 IoT 中樞的連接字串？
 
-如果您已透過[儲存機制](https://github.com/Azure/azure-iot-connected-factory)中的 `build.ps1` 指令碼部署解決方案，連接字串是 `<name of your deployment>.config.user` 檔案中的 **IotHubOwnerConnectionString** 值。
+如果您已透過 [儲存機制](https://github.com/Azure/azure-iot-connected-factory)中的 `build.ps1` 指令碼部署解決方案，連接字串是 `<name of your deployment>.config.user` 檔案中的 **IotHubOwnerConnectionString** 值。
 
 您也可以使用 Azure 入口網站尋找連接字串。 在您部署之資源群組中的 IoT 中樞資源中，找出連接字串設定。
 
@@ -146,7 +146,7 @@ Microsoft 選擇 OPC UA 的原因是它是一種開放式、非專屬、與平�
 
 當您使用連線處理站 GitHub 存放庫中的 `build.ps1` 指令碼進行部署時，請將建置視窗中的 `$env:MapApiQueryKey` 環境變數設定為 [Azure 地圖服務帳戶的金鑰](../azure-maps/how-to-manage-account-keys.md)。 系統隨後會自動啟用互動式地圖。
 
-您也可以在部署之後將 Azure 地圖服務帳戶金鑰新增至解決方案加速器。 瀏覽至 Azure 入口網站，並存取連線處理站部署中的 App Service 資源。 瀏覽至 [應用程式設定]****，您可以在此找到 [應用程式設定]**** 區段。 將 **MapApiQueryKey** 設定為 [Azure 地圖服務帳戶的金鑰](../azure-maps/how-to-manage-account-keys.md)。 儲存設定，然後瀏覽至 [概觀]****，並重新啟動 App Service。
+您也可以在部署之後將 Azure 地圖服務帳戶金鑰新增至解決方案加速器。 瀏覽至 Azure 入口網站，並存取連線處理站部署中的 App Service 資源。 瀏覽至 [應用程式設定]，您可以在此找到 [應用程式設定] 區段。 將 **MapApiQueryKey** 設定為 [Azure 地圖服務帳戶的金鑰](../azure-maps/how-to-manage-account-keys.md)。 儲存設定，然後瀏覽至 [概觀]，並重新啟動 App Service。
 
 ### <a name="how-do-i-create-an-azure-maps-account"></a>如何? 建立 Azure 地圖服務帳戶嗎？
 

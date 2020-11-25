@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 06/04/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 87337cf22bdb388c5873a2811bb9913c3e7f4d4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019771"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994956"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>使用 Active Directory 身分識別來修剪 Azure 認知搜尋結果的安全性篩選
 
@@ -31,7 +31,7 @@ ms.locfileid: "89019771"
 > [!NOTE]
 > 本文中的範例程式碼片段是以 C# 撰寫。 您可以 [在 GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started)找到完整的原始程式碼。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您 Azure 認知搜尋中的索引必須具有 [安全性欄位](search-security-trimming-for-azure-search.md) ，才能儲存具有檔讀取權限的群組身分識別清單。 此使用案例會假設安全性實體項目 (例如個人的大學應用程式) 與指定可存取該項目之人員 (許可人員) 的安全性欄位之間的一對一對應。
 
@@ -43,12 +43,12 @@ ms.locfileid: "89019771"
 
 這個步驟會就接受使用者和群組帳戶登入的目的，將您的應用程式與 AAD 整合。 如果您在貴組織中不是 AAD 系統管理員，可能需要[建立新的租用戶](../active-directory/develop/quickstart-create-new-tenant.md)才能執行下列步驟。
 
-1. 移至[**應用程式註冊入口網站**](https://apps.dev.microsoft.com)  >   **融合式應用**程式  >  **新增應用**程式。
-2. 輸入應用程式的名稱，然後按一下 [建立]****。 
+1. 移至 [**應用程式註冊入口網站**](https://apps.dev.microsoft.com)  >   **融合式應用** 程式  >  **新增應用** 程式。
+2. 輸入應用程式的名稱，然後按一下 [建立]。 
 3. 在 [我的應用程式] 頁面中，選取您新註冊的應用程式。
 4. 在 [應用程式註冊] 頁面上 >**平臺**  >  **新增平臺**] 中，選擇 [ **Web API**]。
 5. 仍在 [應用程式註冊] 頁面上，移至 > **Microsoft Graph 許可權**  >  **新增**]。
-6. 在 [選取權限] 中，新增下列委派的權限，然後按一下 [確定]****：
+6. 在 [選取權限] 中，新增下列委派的權限，然後按一下 [確定]：
 
    + **Directory.ReadWrite.All**
    + **Group.ReadWrite.All**

@@ -15,16 +15,16 @@ ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: f49af1488a0c044639a72fc2ea52ba0a47727a24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89433665"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996146"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>CDN 檔案壓縮疑難排解
 這篇文章可協助您針對 [CDN 檔案壓縮](cdn-improve-performance.md)的問題進行疑難排解。
 
-如果在本文章中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您也可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後按一下 [取得支援]****。
+如果在本文章中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您也可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後按一下 [取得支援]。
 
 ## <a name="symptom"></a>徵狀
 已為您的端點啟用壓縮，但會傳回未壓縮的檔案。
@@ -65,11 +65,11 @@ ms.locfileid: "89433665"
 
 ### <a name="verify-compression-settings-standard-cdn-profiles"></a>驗證壓縮設定 (標準 CDN 設定檔)
 > [!NOTE]
-> 如果您的 CDN 設定檔是**來自 Microsoft 的標準 Azure CDN**、**來自 Verizon 的標準 Azure CDN**或**來自 Akamai 的標準 Azure CDN** 設定檔，才能套用此步驟。 
+> 如果您的 CDN 設定檔是 **來自 Microsoft 的標準 Azure CDN**、**來自 Verizon 的標準 Azure CDN** 或 **來自 Akamai 的標準 Azure CDN** 設定檔，才能套用此步驟。 
 > 
 > 
 
-在 [Azure 入口網站](https://portal.azure.com)中瀏覽至您的端點，然後按一下 [設定]**** 按鈕。
+在 [Azure 入口網站](https://portal.azure.com)中瀏覽至您的端點，然後按一下 [設定] 按鈕。
 
 * 驗證已啟用壓縮。
 * 驗證要壓縮之內容的 MIME 類型已包含在壓縮格式清單中。
@@ -82,17 +82,17 @@ ms.locfileid: "89433665"
 > 
 > 
 
-在 [Azure 入口網站](https://portal.azure.com)中瀏覽至您的端點，然後按一下 [管理]**** 按鈕。  即會開啟補充入口網站。  將滑鼠移至 [HTTP 大型]**** 索引標籤上，然後將滑鼠移至 [快取設定]**** 飛出視窗上。  按一下 [壓縮]****。 
+在 [Azure 入口網站](https://portal.azure.com)中瀏覽至您的端點，然後按一下 [管理] 按鈕。  即會開啟補充入口網站。  將滑鼠移至 [HTTP 大型] 索引標籤上，然後將滑鼠移至 [快取設定] 飛出視窗上。  按一下 [壓縮]。 
 
 * 驗證已啟用壓縮。
-* 驗證 [檔案類型] **** 清單包含以逗號分隔 (無空格) 的 MIME 類型清單。
+* 驗證 [檔案類型]  清單包含以逗號分隔 (無空格) 的 MIME 類型清單。
 * 驗證要壓縮之內容的 MIME 類型已包含在壓縮格式清單中。
 
 ![CDN 進階壓縮設定](./media/cdn-troubleshoot-compression/cdn-compression-settings-premium.png)
 
 ### <a name="verify-the-content-is-cached-verizon-cdn-profiles"></a>驗證已快取內容 (Verizon CDN 設定檔)
 > [!NOTE]
-> 如果您的 CDN 設定檔是**來自 Verizon 的標準 Azure CDN** 或**來自 Verizon 的進階 Azure CDN** 設定檔，才能套用此步驟。
+> 如果您的 CDN 設定檔是 **來自 Verizon 的標準 Azure CDN** 或 **來自 Verizon 的進階 Azure CDN** 設定檔，才能套用此步驟。
 > 
 > 
 
@@ -105,7 +105,7 @@ ms.locfileid: "89433665"
 
 ### <a name="verify-the-file-meets-the-size-requirements-verizon-cdn-profiles"></a>驗證檔案符合大小需求 (Verizon CDN 設定檔)
 > [!NOTE]
-> 如果您的 CDN 設定檔是**來自 Verizon 的標準 Azure CDN** 或**來自 Verizon 的進階 Azure CDN** 設定檔，才能套用此步驟。
+> 如果您的 CDN 設定檔是 **來自 Verizon 的標準 Azure CDN** 或 **來自 Verizon 的進階 Azure CDN** 設定檔，才能套用此步驟。
 > 
 > 
 

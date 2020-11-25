@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/31/2020
 ms.openlocfilehash: 1f83f13564a64a0d9d8a5e0144ca95af6a769d6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76905064"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995041"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>針對 Azure Logic Apps 中的失敗進行疑難排解和診斷
 
@@ -27,7 +27,7 @@ ms.locfileid: "76905064"
 
    ![查看觸發程式狀態和歷程記錄](./media/logic-apps-diagnosing-failures/logic-app-trigger-history.png)
 
-1. 檢查觸發程式的輸入，確認它們如預期般出現。 在 [ **輸入] 連結**底下，選取 [ **輸入** ] 窗格中顯示的連結。
+1. 檢查觸發程式的輸入，確認它們如預期般出現。 在 [ **輸入] 連結** 底下，選取 [ **輸入** ] 窗格中顯示的連結。
 
    觸發程式輸入包括觸發程式所預期的資料，以及啟動工作流程所需的資料。 查看這些輸入可以協助您判斷觸發程式輸入是否正確，以及是否符合條件，以便工作流程繼續進行。
 
@@ -60,7 +60,7 @@ ms.locfileid: "76905064"
 
 1. 檢查失敗的步驟輸入，以確認是否如您預期般出現。
 
-1. 檢閱特定執行中每個步驟的詳細資料。 在 [執行歷程記錄]**** 下，選取您想要檢查的執行。
+1. 檢閱特定執行中每個步驟的詳細資料。 在 [執行歷程記錄] 下，選取您想要檢查的執行。
 
    ![檢閱執行歷程記錄](./media/logic-apps-diagnosing-failures/logic-app-runs-history.png)
 

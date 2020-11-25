@@ -12,11 +12,11 @@ ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: asteen
 ms.openlocfilehash: 306c3771c0392bbc97260a726e153cfd385cebcd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84782121"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994786"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>設定 Azure AD 資源庫應用程式的使用者佈建時遇到的問題
 
@@ -28,9 +28,9 @@ ms.locfileid: "84782121"
 
 一旦設定服務之後，就能從下列兩個位置繪製出大多數對服務作業的深入見解：
 
--   布建記錄** (預覽) ** –布建[記錄](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)會記錄布建服務所執行的所有作業，包括查詢布建範圍內的已指派使用者 Azure AD。 查詢目標應用程式以確定那些使用者是否存在，比較系統之間的使用者物件。 接著，根據比較，在目標系統中新增、更新或停用使用者帳戶。 您可以在 [活動] 區段中選取 [ **Azure Active Directory** &gt; **企業應用程式**布建 &gt; **記錄] (預覽) ** **Activity** ，以存取 Azure 入口網站中的布建記錄。
+-   布建記錄 **(預覽)** –布建 [記錄](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)會記錄布建服務所執行的所有作業，包括查詢布建範圍內的已指派使用者 Azure AD。 查詢目標應用程式以確定那些使用者是否存在，比較系統之間的使用者物件。 接著，根據比較，在目標系統中新增、更新或停用使用者帳戶。 您可以在 [活動] 區段中選取 [ **Azure Active Directory** &gt; **企業應用程式** 布建 &gt; **記錄] (預覽)** **Activity** ，以存取 Azure 入口網站中的布建記錄。
 
--   **目前狀態–** 您可以在 [ **Azure Active Directory &gt; Enterprise Apps &gt; \[ 應用程式名稱 \] &gt; ** 布建] 區段的 [服務設定] 下方的 [企業應用程式] 的 [布建] 區段中，看到指定應用程式的最後一個布建執行的摘要。 [目前狀態] 區段會顯示布建週期是否已開始布建使用者帳戶。 您可以監看迴圈的進度、查看已布建的使用者和群組數目，以及查看有多少角色已建立。 如果有任何錯誤，您可以在 [布建記錄檔 ( 中找到詳細資料。/reports-monitoring/concept-provisioning-logs.md？內容 = azure/active directory/管理-應用程式/內容/管理-應用程式-內容) 。
+-   **目前狀態–** 您可以在 [ **Azure Active Directory &gt; Enterprise Apps &gt; \[ 應用程式名稱 \] &gt;** 布建] 區段的 [服務設定] 下方的 [企業應用程式] 的 [布建] 區段中，看到指定應用程式的最後一個布建執行的摘要。 [目前狀態] 區段會顯示布建週期是否已開始布建使用者帳戶。 您可以監看迴圈的進度、查看已布建的使用者和群組數目，以及查看有多少角色已建立。 如果有任何錯誤，您可以在 [布建記錄檔 ( 中找到詳細資料。/reports-monitoring/concept-provisioning-logs.md？內容 = azure/active directory/管理-應用程式/內容/管理-應用程式-內容) 。
 
 ## <a name="general-problem-areas-with-provisioning-to-consider"></a>關於佈建要考慮的一般問題領域
 
@@ -42,7 +42,7 @@ ms.locfileid: "84782121"
 
 ## <a name="provisioning-service-does-not-appear-to-start"></a>佈建服務似乎未啟動
 
-如果您在 Azure 入口網站的 [Azure Active Directory]&gt;[企業應用程式][&gt; \[應用程式名稱]\] &gt;[佈建]**** 區段中，將 [佈建狀態]**** 設為 [啟用]****。 不過，在後續重新載入之後，該頁面上並未顯示任何其他狀態詳細資料。 可能是服務正在執行，但尚未完成初始週期。 檢查上面所述的布建 **記錄** ，以判斷服務所執行的作業，以及是否有任何錯誤。
+如果您在 Azure 入口網站的 [Azure Active Directory]&gt;[企業應用程式][&gt; \[應用程式名稱]\] &gt;[佈建] 區段中，將 [佈建狀態] 設為 [啟用]。 不過，在後續重新載入之後，該頁面上並未顯示任何其他狀態詳細資料。 可能是服務正在執行，但尚未完成初始週期。 檢查上面所述的布建 **記錄** ，以判斷服務所執行的作業，以及是否有任何錯誤。
 
 >[!NOTE]
 >視 Azure AD 目錄的大小和布建範圍中的使用者數目而定，初始週期可能需要20分鐘到數小時的時間。 初始迴圈之後的後續同步處理會更快，因為布建服務會儲存浮水印，以代表兩個系統在初始迴圈之後的狀態，進而改善後續同步處理的效能。
@@ -63,7 +63,7 @@ ms.locfileid: "84782121"
 
 - **必要屬性已遺失或未針對使用者填入。** 設定佈建時必須考量的重點是，檢視和設定屬性 (Attribute) 對應，以及定義哪些使用者 (或群組) 屬性 (Property) 會從 Azure AD 流向應用程式的工作流程。 這包括設定「比對屬性」，此屬性可用於唯一識別並比對兩個系統之間的使用者/群組。 如需這個重要程式的詳細資訊，請參閱 [自訂使用者布建屬性](../app-provisioning/customize-application-attributes.md)對應。
 
-  * **群組的屬性對應：** 除了成員，還有群組名稱和群組詳細資訊的佈建 (如果某些應用程式有支援)。 您可以啟用或停用 [布**建] 索引**標籤中顯示之群組物件的**對應**，以啟用或停用這項功能。如果已啟用布建群組，請務必檢查屬性對應，以確保「相符識別碼」使用適當的欄位。 這可以是顯示名稱或電子郵件別名，因為如果 Azure AD 中某個群組的比對屬性空白或未填入，則不會佈建群組和其成員。
+  * **群組的屬性對應：** 除了成員，還有群組名稱和群組詳細資訊的佈建 (如果某些應用程式有支援)。 您可以啟用或停用 [布 **建] 索引** 標籤中顯示之群組物件的 **對應**，以啟用或停用這項功能。如果已啟用布建群組，請務必檢查屬性對應，以確保「相符識別碼」使用適當的欄位。 這可以是顯示名稱或電子郵件別名，因為如果 Azure AD 中某個群組的比對屬性空白或未填入，則不會佈建群組和其成員。
 
 ## <a name="next-steps"></a>後續步驟
 [自動化使用 Azure Active Directory 對於 SaaS 應用程式的使用者佈建和解除佈建](user-provisioning.md)

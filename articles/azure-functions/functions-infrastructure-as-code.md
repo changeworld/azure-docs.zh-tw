@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 2403e3a4bfe7824659a9c34c407e55e6c56e6046
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107720"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994650"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions 中函數應用程式的自動化資源部署
 
@@ -58,7 +58,7 @@ Azure Functions 部署通常包含下列資源：
 
 此外，您必須在網站設定中將 `AzureWebJobsStorage` 屬性指定為應用程式設定。 若函式應用程式不使用 Application Insights 以進行監視，也應該將 `AzureWebJobsDashboard` 指定為應用程式設定。
 
-Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建立內部佇列。  在未啟用 Application Insights 的情況下，執行階段會使用 `AzureWebJobsDashboard` 連接字串來記錄至 Azure 資料表儲存體，並啟動入口網站中的 [監視]**** 索引標籤。
+Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建立內部佇列。  在未啟用 Application Insights 的情況下，執行階段會使用 `AzureWebJobsDashboard` 連接字串來記錄至 Azure 資料表儲存體，並啟動入口網站中的 [監視] 索引標籤。
 
 這些屬性會在 `siteConfig` 物件的 `appSettings`集合中指定：
 
@@ -77,7 +77,7 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 
 ### <a name="application-insights"></a>Application Insights
 
-建議 Application Insights，以監視您的函數應用程式。 Application Insights 的資源會以類型 [ **Microsoft. Insights/元件** ] 和 [ **網路**類型] 來定義：
+建議 Application Insights，以監視您的函數應用程式。 Application Insights 的資源會以類型 [ **Microsoft. Insights/元件** ] 和 [ **網路** 類型] 來定義：
 
 ```json
         {
@@ -114,9 +114,9 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 * [進階方案](#premium)
 * [App Service 計劃](#app-service-plan)
 
-### <a name="function-app"></a>函式應用程式
+### <a name="function-app"></a>函數應用程式
 
-函數應用程式資源是 **使用類型為** **functionapp**的資源所定義：
+函數應用程式資源是 **使用類型為** **functionapp** 的資源所定義：
 
 ```json
 {
@@ -577,7 +577,7 @@ Linux 應用程式也應該 `linuxFxVersion` 在下包含屬性 `siteConfig` 。
 函數應用程式有許多子資源可供您用於部署，包括應用程式設定和原始檔控制選項。 您也可以選擇移除 **>sourcecontrols** 子資源，並改為使用不同的 [部署選項](functions-continuous-deployment.md) 。
 
 > [!IMPORTANT]
-> 若要使用 Azure Resource Manager 成功部署應用程式，請務必了解資源在 Azure 中部署的方式。 在下列範例中，將使用 **siteConfig** 套用高層級組態。 請務必將這些組態設定為高層級，因為它們會將資訊傳遞給 Functions 執行階段和部署引擎。 在套用子 **sourcecontrols/web** 資源之前，需要高層級資訊。 雖然可以在子層級設定 **/appSettings** 資源中設定這些設定，但在某些情況下，您必須先部署函數應用程式， *再*套用 **config/appSettings** 。 例如，在搭配使用函數應用程式與 [Logic Apps](../logic-apps/index.yml) 時，您的函數為另一個資源的相依性。
+> 若要使用 Azure Resource Manager 成功部署應用程式，請務必了解資源在 Azure 中部署的方式。 在下列範例中，將使用 **siteConfig** 套用高層級組態。 請務必將這些組態設定為高層級，因為它們會將資訊傳遞給 Functions 執行階段和部署引擎。 在套用子 **sourcecontrols/web** 資源之前，需要高層級資訊。 雖然可以在子層級設定 **/appSettings** 資源中設定這些設定，但在某些情況下，您必須先部署函數應用程式， *再* 套用 **config/appSettings** 。 例如，在搭配使用函數應用程式與 [Logic Apps](../logic-apps/index.yml) 時，您的函數為另一個資源的相依性。
 
 ```json
 {

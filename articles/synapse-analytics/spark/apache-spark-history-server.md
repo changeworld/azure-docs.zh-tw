@@ -10,17 +10,17 @@ ms.date: 10/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 94c30cad1e09a01686a9042a6271a152d0f433fd
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738523"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995381"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>使用延伸 Apache Spark 歷程記錄伺服器來對 Apache Spark 應用程式進行偵錯工具和診斷
 
 本文提供如何使用延伸的 Apache Spark 歷程記錄伺服器，來對已完成和執行中的 Spark 應用程式進行偵錯工具和診斷的指引。
 
-延伸模組包含 [資料] 索引標籤、[圖形] 索引標籤和 [診斷] 索引卷使用 [ **資料** ] 索引標籤來檢查 Spark 作業的輸入和輸出資料。 [ **圖形** ] 索引標籤會顯示工作圖形的資料流程和重新執行。 [ **診斷** ] 索引標籤會顯示  **資料扭曲** 、 **時間誤差** 和 **執行程式使用量分析** 。
+延伸模組包含 [資料] 索引標籤、[圖形] 索引標籤和 [診斷] 索引卷使用 [ **資料** ] 索引標籤來檢查 Spark 作業的輸入和輸出資料。 [ **圖形** ] 索引標籤會顯示工作圖形的資料流程和重新執行。 [ **診斷** ] 索引標籤會顯示  **資料扭曲**、 **時間誤差** 和 **執行程式使用量分析**。
 
 ## <a name="access-the-apache-spark-history-server"></a>存取 Apache Spark 歷程記錄伺服器
 
@@ -30,7 +30,7 @@ Apache Spark 歷程記錄伺服器是已完成和執行中 Spark 應用程式的
 
 1. 開啟 [Azure Synapse Analytics](https://web.azuresynapse.net/)。
 
-2. 選取 [ **監視** ]，然後選取 [ **Apache Spark 應用程式** ]。
+2. 選取 [ **監視**]，然後選取 [ **Apache Spark 應用程式**]。
 
     ![選取 [監視]，然後選取 [spark 應用程式]。](./media/apache-spark-history-server/click-monitor-spark-application.png)
 
@@ -38,13 +38,13 @@ Apache Spark 歷程記錄伺服器是已完成和執行中 Spark 應用程式的
 
     ![開啟 [記錄查詢] 視窗。](./media/apache-spark-history-server/open-application-window.png)
 
-4. 選取 [ **spark 歷程記錄伺服器** ]，然後會顯示 Spark 歷程記錄伺服器 web UI。
+4. 選取 [ **spark 歷程記錄伺服器**]，然後會顯示 Spark 歷程記錄伺服器 web UI。
 
     ![開啟 spark 歷程記錄伺服器。](./media/apache-spark-history-server/open-spark-history-server.png)
 
 ### <a name="open-the-spark-history-server-web-ui-from-data-node"></a>從資料節點開啟 Spark 歷程記錄伺服器 web UI
 
-1. 從您的 Azure Synapse Studio 筆記本中，從 [作業執行] 輸出儲存格，或從筆記本檔底部的 [狀態] 面板中，選取 [ **Spark 歷程記錄伺服器** ]。 選取 [工作階段詳細資料]  。
+1. 從您的 Azure Synapse Studio 筆記本中，從 [作業執行] 輸出儲存格，或從筆記本檔底部的 [狀態] 面板中，選取 [ **Spark 歷程記錄伺服器** ]。 選取 [工作階段詳細資料]。
 
    ![啟動 Spark 歷程記錄伺服器1](./media/apache-spark-history-server/launch-history-server2.png "啟動 Spark 歷程記錄伺服器")
 
@@ -60,7 +60,7 @@ Apache Spark 歷程記錄伺服器是已完成和執行中 Spark 應用程式的
 
     ![Spark 應用程式索引標籤的資料](./media/apache-spark-history-server/apache-spark-data-tabs.png)
 
-* 選取 [ **複製** ] 來複製所有資料列。
+* 選取 [ **複製**] 來複製所有資料列。
 
     ![Spark 應用程式複製的資料](./media/apache-spark-history-server/apache-spark-data-copy.png)
 
@@ -68,7 +68,7 @@ Apache Spark 歷程記錄伺服器是已完成和執行中 Spark 應用程式的
 
     ![Spark 應用程式儲存的資料](./media/apache-spark-history-server/apache-spark-data-save.png)
 
-* 在 [欄位 **搜尋** ] 中輸入關鍵字來進行搜尋。 搜尋結果會立即顯示。
+* 在 [欄位 **搜尋**] 中輸入關鍵字來進行搜尋。 搜尋結果會立即顯示。
 
     ![Spark 應用程式搜尋的資料](./media/apache-spark-history-server/apache-spark-data-search.png)
 
@@ -76,7 +76,7 @@ Apache Spark 歷程記錄伺服器是已完成和執行中 Spark 應用程式的
 
     ![Spark 應用程式資料表的資料](./media/apache-spark-history-server/apache-spark-data-table.png)
 
-* 選取 [ **部分下載** ] 以下載單一檔案。 選取的檔案會下載到本機。 如果檔案不再存在，新的索引標籤隨即出現，並顯示錯誤訊息。
+* 選取 [ **部分下載**] 以下載單一檔案。 選取的檔案會下載到本機。 如果檔案不再存在，新的索引標籤隨即出現，並顯示錯誤訊息。
 
     ![Spark 應用程式下載資料列的資料](./media/apache-spark-history-server/sparkui-data-download-row.png)
 
@@ -108,7 +108,7 @@ Apache Spark 歷程記錄伺服器是已完成和執行中 Spark 應用程式的
 
 ### <a name="display"></a>顯示
 
-依預設，會選取 **進度** 顯示。 您可以在 [ **顯示** ] 下拉式清單中選取 [ **讀取** ] 或 [ **寫入** ] 來檢查資料流程。
+依預設，會選取 **進度** 顯示。 您可以在 [**顯示**] 下拉式清單中選取 [**讀取**] 或 [**寫入**] 來檢查資料流程。
 
 ![Spark 應用程式和作業圖形顯示](./media/apache-spark-history-server/sparkui-graph-display.png)
 
@@ -118,9 +118,9 @@ Apache Spark 歷程記錄伺服器是已完成和執行中 Spark 應用程式的
 
 ### <a name="playback"></a>播放
 
-若要播放作業，請選取 [ **播放** ]。 您可以隨時選擇 **停止** 。 播放時，工作色彩會顯示不同的狀態：
+若要播放作業，請選取 [ **播放**]。 您可以隨時選擇 **停止** 。 播放時，工作色彩會顯示不同的狀態：
 
-|色彩|意義|
+|Color|意義|
 |-|-|
 |綠色|成功：作業已順利完成。|
 |橙色|重試：工作的實例失敗，但不會影響作業的最終結果。 這些工作具有稍後可能會成功的重複或重試執行個體。|
@@ -216,7 +216,7 @@ Apache Spark 歷程記錄伺服器是已完成和執行中 Spark 應用程式的
 
 * **指定參數** - 第一個區段會顯示用來偵測時間扭曲的參數。 偵測時間扭曲的預設準則是：工作執行時間大於平均執行時間的三倍，而工作執行時間大於 30 秒。 您可以根據您的需求變更參數。 [扭曲階段] 和 [扭曲圖表] 會顯示對應的階段和工作資訊，就像上面的 [資料扭曲] 索引標籤一樣。
 
-* 選取 [ **時間誤差** ]，然後根據 [ **指定參數** ] 區段中所設定的參數，在 [ **扭曲階段** ] 區段中顯示篩選的結果。 在 [ **扭曲階段** ] 區段中選取一個專案，然後在 section3 中繪製對應的圖表，工作詳細資料就會顯示在右下的面板中。
+* 選取 [**時間誤差**]，然後根據 [**指定參數**] 區段中所設定的參數，在 [**扭曲階段**] 區段中顯示篩選的結果。 在 [ **扭曲階段** ] 區段中選取一個專案，然後在 section3 中繪製對應的圖表，工作詳細資料就會顯示在右下的面板中。
 
     ![sparkui 診斷時間扭曲區段](./media/apache-spark-history-server/sparkui-diagnosis-timeskew-section2.png)
 
@@ -224,7 +224,7 @@ Apache Spark 歷程記錄伺服器是已完成和執行中 Spark 應用程式的
 
 執行程式使用量圖表會將 Spark 作業執行程式的配置和執行狀態視覺化。  
 
-1. 選取 **[執行程式使用狀況分析** ]，接著會草擬四個關於執行程式使用方式的曲線 **，包括配置的執行****程式、執行的執行** 程式、 **閒置** 執行程式，以及 **最大執行** 程式 針對已配置的執行程式，每個「執行程式新增」或「已移除執行程式」事件會增加或減少已配置的執行程式。 您可以檢查 [作業] 索引標籤中的 [事件時間軸] 以進行比較。
+1. 選取 **[執行程式使用狀況分析**]，接著會草擬四個關於執行程式使用方式的曲線 **，包括配置的執行****程式、執行的執行** 程式、**閒置** 執行程式，以及 **最大執行** 程式 針對已配置的執行程式，每個「執行程式新增」或「已移除執行程式」事件會增加或減少已配置的執行程式。 您可以檢查 [作業] 索引標籤中的 [事件時間軸] 以進行比較。
 
    ![[sparkui 診斷執行程式] 索引標籤](./media/apache-spark-history-server/sparkui-diagnosis-executors.png)
 

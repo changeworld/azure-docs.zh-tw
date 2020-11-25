@@ -11,11 +11,11 @@ ms.workload: identity
 ms.date: 03/19/2020
 ms.author: kenwith
 ms.openlocfilehash: e34656d6ce515cabe955c101f7b52ac0f2ade8db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235812"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994803"
 ---
 # <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>How to：匯出布建設定，並回復為已知的良好狀態
 
@@ -32,7 +32,7 @@ ms.locfileid: "88235812"
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的左方瀏覽窗格中，選取 [Azure Active Directory]。
 1. 在 [ **Azure Active Directory** ] 窗格中，選取 [ **企業應用程式** ]，然後選擇您的應用程式。
-1. 在左側流覽窗格中 **，選取 [** 布建]。 在 [布建設定] 頁面上，按一下 [ **屬性**對應]，然後 **顯示 [advanced options**]，最後再 **檢查您的架構**。 這會將您帶到架構編輯器。
+1. 在左側流覽窗格中 **，選取 [** 布建]。 在 [布建設定] 頁面上，按一下 [ **屬性** 對應]，然後 **顯示 [advanced options**]，最後再 **檢查您的架構**。 這會將您帶到架構編輯器。
 1. 在頁面頂端的命令列中按一下 [下載]，以下載您的架構。
 
 ### <a name="disaster-recovery---roll-back-to-a-known-good-state"></a>嚴重損壞修復-復原至已知的良好狀態
@@ -49,7 +49,7 @@ ms.locfileid: "88235812"
 ### <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>步驟1： (物件識別碼取得布建 App Service 主體識別碼) 
 
 1. 啟動 [Azure 入口網站](https://portal.azure.com)，然後流覽至布建應用程式的 [屬性] 區段。 例如，如果您想要將 Workday 匯出 *至 AD 使用者布建應用程式* 對應，請流覽至該應用程式的屬性區段。
-1. 在佈建應用程式的 [屬性] 區段中，複製與 [物件識別碼]** 欄位相關的 GUID 值。 此值也稱為應用程式的 **ServicePrincipalId** ，將用於 Microsoft Graph Explorer 作業中。
+1. 在佈建應用程式的 [屬性] 區段中，複製與 [物件識別碼] 欄位相關的 GUID 值。 此值也稱為應用程式的 **ServicePrincipalId** ，將用於 Microsoft Graph Explorer 作業中。
 
    ![Workday 應用程式服務主體識別碼](./media/export-import-provisioning-configuration/wd_export_01.png)
 
@@ -64,7 +64,7 @@ ms.locfileid: "88235812"
 
 ### <a name="step-3-retrieve-the-provisioning-job-id-of-the-provisioning-app"></a>步驟3：取出布建應用程式的布建作業識別碼
 
-在「Microsoft Graph 總管」中，執行下列 GET 查詢，其中以從[步驟 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id) 擷取的 **ServicePrincipalId** 取代 [servicePrincipalId]。
+在「Microsoft Graph 總管」中，執行下列 GET 查詢，其中以從 [步驟 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id) 擷取的 **ServicePrincipalId** 取代 [servicePrincipalId]。
 
 ```http
    GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/jobs

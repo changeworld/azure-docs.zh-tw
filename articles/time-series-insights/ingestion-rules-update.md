@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: lyhughes
 ms.openlocfilehash: 56a1d5aab2f665f9c5bd8f6fa322f35e55483c7b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016712"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995228"
 ---
 # <a name="upcoming-changes-to-json-flattening-and-escaping-rules-for-new-environments"></a>新環境的 JSON 簡維和轉義規則即將變更
 
@@ -51,7 +51,7 @@ ms.locfileid: "95016712"
 * `"value": {"tsx": "$event.series.value.Double"}`
 * `"value": {"tsx": "$event['series']['value'].Double"}`
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解 [Azure 時間序列深入解析 Gen2 儲存體和](./concepts-ingestion-overview.md)輸入。
 

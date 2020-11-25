@@ -14,11 +14,11 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 320d48535c4792a4d610888c6a7030568ccf16bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89459839"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995177"
 ---
 # <a name="configuration-requirements-and-troubleshooting-tips-for-xamarin-android-with-msalnet"></a>Xamarin Android with MSAL.NET 的設定需求和疑難排解秘訣
 
@@ -76,7 +76,7 @@ protected override void OnActivityResult(int requestCode,
 
 ## <a name="update-the-android-manifest"></a>更新 Android 資訊清單
 
-*AndroidManifest.xml*檔案應包含下列值：
+*AndroidManifest.xml* 檔案應包含下列值：
 
 ```XML
   <!--Intent filter to capture System Browser or Authenticator calling back to our app after sign-in-->
@@ -112,7 +112,7 @@ protected override void OnActivityResult(int requestCode,
 
 ### <a name="xamarinforms-43x-manifest"></a>Xamarin 4.3. x 資訊清單
 
-Xamarin 4.3. x 會產生將 `package` 屬性設為 `com.companyname.{appName}` *AndroidManifest.xml*中的程式碼。 如果您使用 `DataScheme` as `msal{client_id}` ，則可能會想要將值變更為符合命名空間的值 `MainActivity.cs` 。
+Xamarin 4.3. x 會產生將 `package` 屬性設為 `com.companyname.{appName}` *AndroidManifest.xml* 中的程式碼。 如果您使用 `DataScheme` as `msal{client_id}` ，則可能會想要將值變更為符合命名空間的值 `MainActivity.cs` 。
 
 ## <a name="use-the-embedded-web-view-optional"></a>使用內嵌的 web view (選用) 
 
@@ -145,7 +145,7 @@ var authResult = AcquireTokenInteractive(scopes)
 
 ### <a name="error-the-name-authenticationcontinuationhelper-doesnt-exist-in-the-current-context"></a>錯誤： AuthenticationContinuationHelper 名稱不存在目前的內容中
 
-如果錯誤指出 `AuthenticationContinuationHelper` 目前內容中不存在，Visual Studio 可能會不正確地更新*Android .csproj \* *檔案。 有時元素中的檔案路徑不 `<HintPath>` 正確地包含 `netstandard13` 而不是 `monoandroid90` 。
+如果錯誤指出 `AuthenticationContinuationHelper` 目前內容中不存在，Visual Studio 可能會不正確地更新 *Android .csproj \** 檔案。 有時元素中的檔案路徑不 `<HintPath>` 正確地包含 `netstandard13` 而不是 `monoandroid90` 。
 
 此範例包含正確的檔案路徑：
 

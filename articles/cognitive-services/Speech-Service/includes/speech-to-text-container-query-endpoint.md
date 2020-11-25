@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 08/18/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e920ea3cd91f6275c4cb52dc070b0df60312d525
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: dd1552dda28291112a2412bdf956bc49a0b541d7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470847"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95996383"
 ---
 容器會提供以 websocket 為基礎的查詢端點 Api，可透過 [語音 SDK](../index.yml)來存取。 語音 SDK 預設會使用線上語音服務。 若要使用容器，您必須變更初始化方法。
 
@@ -29,7 +29,7 @@ ms.locfileid: "92470847"
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
-若要對容器 [主機](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-dotnet&preserve-view=true)使用此呼叫：
+若要對容器 [主機](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost?preserve-view=true&view=azure-dotnet)使用此呼叫：
 
 ```csharp
 var config = SpeechConfig.FromHost(
@@ -45,7 +45,7 @@ speech_config = speechsdk.SpeechConfig(
     subscription=speech_key, region=service_region)
 ```
 
-若要搭配容器 [端點](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python&preserve-view=true)使用此呼叫：
+若要搭配容器 [端點](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-python)使用此呼叫：
 
 ```python
 speech_config = speechsdk.SpeechConfig(

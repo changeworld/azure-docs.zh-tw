@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: aahi
 ms.openlocfilehash: cedcf8a3fcd656c4af0ca7493c598791d35d20d9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130556"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996115"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>使用 Docker Compose 來部署多個容器
 
@@ -39,7 +39,7 @@ ms.locfileid: "93130556"
 
 ## <a name="docker-compose-file"></a>Docker Compose 檔案
 
-YAML 檔案會定義要部署的所有服務。 這些服務依賴 `DockerFile` 或現有的容器映射。 在此情況下，我們將使用兩個預覽映射。 複製並貼上下列 YAML 檔，並將它儲存為 *YAML* 。 在檔案中提供適當的 **apikey** 、 **帳單** 和 **EndpointUri** 值。
+YAML 檔案會定義要部署的所有服務。 這些服務依賴 `DockerFile` 或現有的容器映射。 在此情況下，我們將使用兩個預覽映射。 複製並貼上下列 YAML 檔，並將它儲存為 *YAML*。 在檔案中提供適當的 **apikey**、 **帳單** 和 **EndpointUri** 值。
 
 ```yaml
 version: '3.7'

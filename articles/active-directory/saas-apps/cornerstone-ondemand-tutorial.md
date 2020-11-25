@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.openlocfilehash: 2837f8c5b098b0502bd293ec2414ad7401cc4f95
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455199"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996163"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-ondemand"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Cornerstone OnDemand 整合
 
@@ -54,7 +54,7 @@ ms.locfileid: "92455199"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Cornerstone OnDemand** 。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Cornerstone OnDemand**。
 1. 從結果面板選取 [Cornerstone OnDemand]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-cornerstone-ondemand"></a>設定及測試 Cornerstone OnDemand 的 Azure AD 單一登入
@@ -114,7 +114,7 @@ ms.locfileid: "92455199"
 在本節中，您會將 Cornerstone OnDemand 的存取權授與 B.Simon，使其能夠使用 Azure 單一登入。
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 **Cornerstone OnDemand** 。
+1. 在應用程式清單中，選取 **Cornerstone OnDemand**。
 1. 在應用程式的概觀頁面中尋找 [管理] 區段，然後選取 [使用者和群組]。
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)

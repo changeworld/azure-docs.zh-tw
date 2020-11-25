@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: 內部部署、Docker、容器
-ms.openlocfilehash: ad3f73276a2a965032fd2acf368bce4a0c146632
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 9ca5229200b39f0a3c68da152f4d89f842d021ca
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94744166"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95996384"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>安裝和執行適用于語音服務 Api 的 Docker 容器 
 
@@ -39,12 +39,12 @@ ms.locfileid: "94744166"
 >
 > 若要使用語音容器，您必須提交線上要求並核准。 如需詳細資訊，請參閱下一節 **執行容器的要求核准** 。
 
-| 容器 | 特性 | Latest |
+| 容器 | 功能 | Latest |
 |--|--|--|
-| 語音轉文字 | 使用中繼結果分析情感和轉譯連續即時語音或批次音訊錄製。  | 2.6.0 |
-| 自訂語音轉換文字 | 從 [自訂語音入口網站](https://speech.microsoft.com/customspeech)使用自訂模型，以中繼結果轉譯連續的即時語音或批次音訊錄製至文字。 | 2.6.0 |
-| 文字轉換語音 | 使用純文字輸入或語音合成標記語言 (SSML) 將文字轉換成自然發音語音。 | 1.8.0 |
-| 自訂文字轉換語音 | 使用 [自訂語音入口網站](https://aka.ms/custom-voice-portal)中的自訂模型，將文字轉換成自然發音語音，並以純文字輸入或語音合成標記語言 (SSML) 。 | 1.8.0 |
+| 語音轉文字 | 使用中繼結果分析情感和轉譯連續即時語音或批次音訊錄製。  | 2.7.0 |
+| 自訂語音轉換文字 | 從 [自訂語音入口網站](https://speech.microsoft.com/customspeech)使用自訂模型，以中繼結果轉譯連續的即時語音或批次音訊錄製至文字。 | 2.7.0 |
+| 文字轉換語音 | 使用純文字輸入或語音合成標記語言 (SSML) 將文字轉換成自然發音語音。 | 1.9.0 |
+| 自訂文字轉換語音 | 使用 [自訂語音入口網站](https://aka.ms/custom-voice-portal)中的自訂模型，將文字轉換成自然發音語音，並以純文字輸入或語音合成標記語言 (SSML) 。 | 1.9.0 |
 | 語音語言偵測 | 偵測音訊檔案中所說的語言。 | 1.0 |
 | 神經文字轉換語音 | 使用深度類神經網路技術將文字轉換成自然發音語音，以允許更自然合成的語音。 | 1.3.0 |
 

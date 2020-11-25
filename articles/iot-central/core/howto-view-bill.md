@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 515f5f665e947ff9594cce6dbbaea9b5e0c50ebf
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999707"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995738"
 ---
 # <a name="manage-your-bill-in-an-iot-central-application"></a>在 IoT Central 應用程式中管理您的帳單
 
@@ -32,7 +32,7 @@ ms.locfileid: "91999707"
 
 若要完成此自助程序，請遵循這些步驟：
 
-1. 移至 [系統**管理**] 區段中的 [**定價**] 頁面。
+1. 移至 [系統 **管理**] 區段中的 [**定價**] 頁面。
 
     ![試用狀態](media/howto-view-bill/freetrialbilling.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "91999707"
 
 在 [定價] 區段中，您可以隨時升級或降級您的 Azure IoT 定價方案。
 
-1. 移至 [系統**管理**] 區段中的 [**定價**] 頁面。
+1. 移至 [系統 **管理**] 區段中的 [**定價**] 頁面。
 
     ![升級 prcing 方案](media/howto-view-bill/pricing.png)
 

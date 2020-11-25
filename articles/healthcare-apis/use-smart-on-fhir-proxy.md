@@ -10,11 +10,11 @@ ms.author: matjazl
 author: matjazl
 ms.date: 04/02/2019
 ms.openlocfilehash: 2e13a9fc32964781dda07e5534e5cab79868ddf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87846970"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995534"
 ---
 # <a name="tutorial-azure-active-directory-smart-on-fhir-proxy"></a>教學課程：Azure Active Directory SMART on FHIR Proxy
 
@@ -42,7 +42,7 @@ SMART on FHIR 會要求 `Audience` 的識別碼 URI 必須等於 FHIR 服務的 
 
 ## <a name="enable-the-smart-on-fhir-proxy"></a>啟用 SMART on FHIR Proxy
 
-藉由選取 [SMART on FHIR Proxy]**** 核取方塊，在 Azure API for FHIR 執行個體的 [驗證]**** 設定中啟用 SMART on FHIR Proxy：
+藉由選取 [SMART on FHIR Proxy] 核取方塊，在 Azure API for FHIR 執行個體的 [驗證] 設定中啟用 SMART on FHIR Proxy：
 
 ![啟用 SMART on FHIR Proxy 的選項](media/tutorial-smart-on-fhir/enable-smart-on-fhir-proxy.png)
 
@@ -126,9 +126,9 @@ dotnet run
 
 ![SMART on FHIR 應用程式啟動器](media/tutorial-smart-on-fhir/smart-on-fhir-app-launcher.png)
 
-當您輸入 **病患**、**遭遇**或**從業人員**資訊時，您會發現 [啟動內容]**** 已更新。 當您使用 Azure API for FHIR 時，啟動內容只是一份 JSON 文件，其中包含病患、從業人員等等的相關資訊。 此啟動內容是以 base64 編碼，並傳遞至 SMART on FHIR 應用程式做為 `launch` 查詢參數。 根據 SMART on FHIR 規格，此變數對 SMART on FHIR 應用程式而言是不透明的，並會傳遞給識別提供者。 
+當您輸入 **病患**、**遭遇** 或 **從業人員** 資訊時，您會發現 [啟動內容] 已更新。 當您使用 Azure API for FHIR 時，啟動內容只是一份 JSON 文件，其中包含病患、從業人員等等的相關資訊。 此啟動內容是以 base64 編碼，並傳遞至 SMART on FHIR 應用程式做為 `launch` 查詢參數。 根據 SMART on FHIR 規格，此變數對 SMART on FHIR 應用程式而言是不透明的，並會傳遞給識別提供者。 
 
-SMART on FHIR Proxy 會使用此資訊來填入權杖回應中的欄位。 SMART on FHIR 應用程式*可以*使用這些欄位來控制其要求資料的病患，以及如何在螢幕上呈現應用程式。 SMART on FHIR Proxy 支援下欄欄位：
+SMART on FHIR Proxy 會使用此資訊來填入權杖回應中的欄位。 SMART on FHIR 應用程式 *可以* 使用這些欄位來控制其要求資料的病患，以及如何在螢幕上呈現應用程式。 SMART on FHIR Proxy 支援下欄欄位：
 
 * `patient`
 * `encounter`
@@ -138,7 +138,7 @@ SMART on FHIR Proxy 會使用此資訊來填入權杖回應中的欄位。 SMART
 
 這些欄位旨在提供應用程式的指引，但不會傳達任何安全性資訊。 SMART on FHIR 應用程式可以忽略它們。
 
-請注意，SMART on FHIR 應用程式啟動器會更新頁面底部的 [啟動 URL]**** 資訊。 選取 [啟動]**** 以啟動範例應用程式，您應該會看到類似此範例的內容：
+請注意，SMART on FHIR 應用程式啟動器會更新頁面底部的 [啟動 URL] 資訊。 選取 [啟動] 以啟動範例應用程式，您應該會看到類似此範例的內容：
 
 ![SMART on FHIR 應用程式](media/tutorial-smart-on-fhir/smart-on-fhir-app.png)
 

@@ -18,18 +18,18 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4dcc7ed6076c3bac723d709f50f1b3ab2ce8f58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319923"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996554"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>變更 ADSync 服務帳戶密碼
 如果您變更 ADSync 服務帳戶密碼，同步處理服務將會無法正確啟動，直到您放棄加密金鑰，並將 ADSync 服務帳戶密碼重新初始化為止。 
 
 Azure AD Connect，在同步處理服務中，會使用加密金鑰來儲存 AD DS 連接器帳戶和 ADSync 服務帳戶的密碼。  這些帳戶會先加密再儲存到資料庫中。 
 
-所使用的加密金鑰會使用 [Windows 資料保護 (DPAPI)](/previous-versions/ms995355(v=msdn.10)) 來提供保護。 DPAPI 使用 **ADSync 服務帳戶**保護加密金鑰。 
+所使用的加密金鑰會使用 [Windows 資料保護 (DPAPI)](/previous-versions/ms995355(v=msdn.10)) 來提供保護。 DPAPI 使用 **ADSync 服務帳戶** 保護加密金鑰。 
 
 如果您需要變更服務帳戶密碼，可以使用 [放棄 ADSync 服務帳戶加密金鑰](#abandoning-the-adsync-service-account-encryption-key) 中的程式來完成此動作。  如果您基於任何原因而需要放棄加密金鑰，您也應該使用這些程序。
 
@@ -40,7 +40,7 @@ Azure AD Connect，在同步處理服務中，會使用加密金鑰來儲存 AD 
 
 
 - 如果您嘗試在 Windows 服務控制管理員中啟動同步處理服務，您會收到錯誤「**Windows 無法在本機電腦上啟動 Microsoft Azure AD 同步處理服務**」。 **錯誤 1069︰由於登入失敗，此服務未啟動。**」
-- 在 Windows 事件檢視器底下，系統事件記錄包含**事件識別碼為 7038** 的錯誤和「**ADSync 服務無法使用目前設定的密碼來登入，因為發生下列錯誤︰使用者名稱或密碼不正確**」的訊息。
+- 在 Windows 事件檢視器底下，系統事件記錄包含 **事件識別碼為 7038** 的錯誤和「**ADSync 服務無法使用目前設定的密碼來登入，因為發生下列錯誤︰使用者名稱或密碼不正確**」的訊息。
 
 第二件事，若密碼在特定狀況下做了更新，同步處理服務將無法再透過 DPAPI 擷取加密金鑰。 沒有加密金鑰，同步處理服務就無法將密碼解密，以供用來在內部部署 AD 和 Azure AD 進行同步處理。
 您會看到如下錯誤︰
@@ -75,7 +75,7 @@ Azure AD Connect，在同步處理服務中，會使用加密金鑰來儲存 AD 
 
 
 1. 移至 Windows 服務控制管理員 ([開始] → [服務])。
-2. 選取 [Microsoft Azure AD 同步處理]****，然後按一下 [停止]。
+2. 選取 [Microsoft Azure AD 同步處理]，然後按一下 [停止]。
 
 #### <a name="abandon-the-existing-encryption-key"></a>放棄現有的加密金鑰
 放棄現有的加密金鑰，以便能夠建立新的加密金鑰︰
@@ -95,12 +95,12 @@ Azure AD Connect，在同步處理服務中，會使用加密金鑰來儲存 AD 
 
 1. 啟動同步處理服務管理員 ([開始] → [同步處理服務])。
 </br>![Sync Service Manager](./media/how-to-connect-sync-change-serviceacct-pass/startmenu.png)  
-2. 移至 [連接器]**** 索引標籤。
-3. 選取與內部部署 AD 對應的 [AD 連接器]****。 如果您有多個 AD 連接器，請為每個連接器重複下列步驟。
+2. 移至 [連接器] 索引標籤。
+3. 選取與內部部署 AD 對應的 [AD 連接器]。 如果您有多個 AD 連接器，請為每個連接器重複下列步驟。
 4. 在 [ **動作**] 底下，選取 [ **屬性**]。
-5. 在快顯對話方塊中，選取 [連線至 Active Directory 樹系]****：
-6. 在 [密碼]**** 文字方塊中輸入 AD DS 帳戶的密碼。 如果您不知道該帳戶的密碼，您必須先將密碼設定為您知道的值，再執行此步驟。
-7. 按一下 [確定]**** 以儲存新密碼，然後關閉快顯對話方塊。
+5. 在快顯對話方塊中，選取 [連線至 Active Directory 樹系]：
+6. 在 [密碼] 文字方塊中輸入 AD DS 帳戶的密碼。 如果您不知道該帳戶的密碼，您必須先將密碼設定為您知道的值，再執行此步驟。
+7. 按一下 [確定] 以儲存新密碼，然後關閉快顯對話方塊。
 ![顯示 [屬性] 視窗中 [連線至 Active Directory 樹系] 頁面的螢幕擷取畫面。](./media/how-to-connect-sync-change-serviceacct-pass/key6.png)
 
 #### <a name="reinitialize-the-password-of-the-adsync-service-account"></a>重新初始化 ADSync 服務帳戶的密碼
@@ -117,7 +117,7 @@ Azure AD Connect，在同步處理服務中，會使用加密金鑰來儲存 AD 
 
 
 1. 移至 Windows 服務控制管理員 ([開始] → [服務])。
-2. 選取 [Microsoft Azure AD 同步處理]****，然後按一下 [重新啟動]。
+2. 選取 [Microsoft Azure AD 同步處理]，然後按一下 [重新啟動]。
 
 ## <a name="next-steps"></a>後續步驟
 **概觀主題**

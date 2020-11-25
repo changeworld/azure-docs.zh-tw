@@ -14,15 +14,15 @@ ms.author: ryanwi
 ms.reviewer: marsma, jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
 ms.openlocfilehash: 0c5b06fd14f526ca90b1b922be281af55ba00116
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077484"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995211"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>操作說明：讓任何 Azure Active Directory (AD) 使用者以多租用戶應用程式的模式登入
 
-如果您提供「軟體即服務」(SaaS) 應用程式給許多組織，您可以將應用程式設定為可接受來自任何 Azure Active Directory (Azure AD) 租用戶的登入。 這項設定稱為 *讓您的應用程式成為多租使用者* 。 任何 Azure AD 租用戶中的使用者在同意搭配您的應用程式使用其帳戶之後，便可登入您的應用程式。
+如果您提供「軟體即服務」(SaaS) 應用程式給許多組織，您可以將應用程式設定為可接受來自任何 Azure Active Directory (Azure AD) 租用戶的登入。 這項設定稱為 *讓您的應用程式成為多租使用者*。 任何 Azure AD 租用戶中的使用者在同意搭配您的應用程式使用其帳戶之後，便可登入您的應用程式。
 
 如果您的現有應用程式有自身的帳戶系統，或支援其他雲端提供者的其他登入方式，您就可以輕鬆新增任何租用戶的 Azure AD 登入功能。 直接註冊您的應用程式、透過 OAuth2、OpenID Connect 或 SAML 新增登入程式碼，然後在您的應用程式中放入 ["使用 Microsoft 帳戶登入" 按鈕][AAD-App-Branding] 。
 
@@ -40,7 +40,7 @@ ms.locfileid: "93077484"
 
 ## <a name="update-registration-to-be-multi-tenant"></a>將註冊更新成多租用戶
 
-根據預設，Azure AD 中的 web 應用程式/API 註冊為單一租使用者。 您可以在 [Azure 入口網站][AZURE-portal]中，于應用程式註冊的 [ **驗證** ] 窗格中尋找 **支援的帳戶類型** ，並將其設定為 **任何組織目錄中的帳戶** ，以讓註冊成為多租使用者。
+根據預設，Azure AD 中的 web 應用程式/API 註冊為單一租使用者。 您可以在 [Azure 入口網站][AZURE-portal]中，于應用程式註冊的 [**驗證**] 窗格中尋找 **支援的帳戶類型**，並將其設定為 **任何組織目錄中的帳戶**，以讓註冊成為多租使用者。
 
 在 Azure AD 中，應用程式的「應用程式識別碼 URI」必須具全域唯一性，您才能將其設為多租用戶應用程式。 「應用程式識別碼 URI」是其中一種可在通訊協定訊息中識別應用程式的方式。 在單一租用戶應用程式中，只要該租用戶內有唯一的應用程式識別碼 URI 就已足夠。 就多租用戶應用程式而言，該 URI 則必須具全域唯一性，Azure AD 才能在所有租用戶中找到該應用程式。 系統會透過要求「應用程式識別碼 URI」必須具有與已驗證的 Azure AD 租用戶網域相符的主機名稱，來強制執行全域唯一性。
 
@@ -106,7 +106,7 @@ https://sts.windows.net/{tenantid}/
 
 若要讓使用者登入 Azuer AD 中的應用程式，必須以使用者的租用戶代表該應用程式。 這可讓組織執行一些操作，例如在來自其租用戶的使用者登入應用程式時套用唯一原則。 若為單一租使用者應用程式，這種註冊會更容易;當您在 [Azure 入口網站][AZURE-portal]中註冊應用程式時，就會發生這種情況。
 
-就多租用戶應用程式而言，應用程式的初始註冊程序則是在開發人員所使用的 Azure AD 租用戶中進行。 當來自不同租用戶的使用者第一次登入應用程式時，Azure AD 會要求他們同意應用程式所要求的權限。 如果他們同意，系統就會在使用者的租用戶中建立一個稱為「服務主體」  的應用程式代表，然後登入便可繼續進行。 系統也會在記錄使用者對應用程式之同意意向的目錄中建立委派。 如需應用程式的「應用程式物件」和「服務主體物件」的詳細資料，請參閱[應用程式物件和服務主體物件][AAD-App-SP-Objects]。
+就多租用戶應用程式而言，應用程式的初始註冊程序則是在開發人員所使用的 Azure AD 租用戶中進行。 當來自不同租用戶的使用者第一次登入應用程式時，Azure AD 會要求他們同意應用程式所要求的權限。 如果他們同意，系統就會在使用者的租用戶中建立一個稱為「服務主體」的應用程式代表，然後登入便可繼續進行。 系統也會在記錄使用者對應用程式之同意意向的目錄中建立委派。 如需應用程式的「應用程式物件」和「服務主體物件」的詳細資料，請參閱[應用程式物件和服務主體物件][AAD-App-SP-Objects]。
 
 ![說明如何同意單一層應用程式][Consent-Single-Tier]
 
@@ -125,11 +125,11 @@ https://sts.windows.net/{tenantid}/
 
 如果您的應用程式使用需要系統管理員同意的權限，您就必須要有相關的表示，例如可供系統管理員起始動作的按鈕或連結。 您的應用程式針對此動作傳送的要求是一個一般的 OAuth2/OpenID Connect 授權要求，其中也包含 `prompt=admin_consent` 查詢字串參數。 在系統管理員同意且系統已在客戶的租用戶中建立服務主體之後，後續的登入要求就不再需要 `prompt=admin_consent` 參數。 由於系統管理員已決定可接受要求的權限，因此從該時間點之後，就不會再提示租用戶中的任何其他使用者行使同意權。
 
-租用戶系統管理員可以停用一般使用者對應用程式行使同意權的能力。 如果停用這項功能，就一律需要系統管理員同意，才能在租用戶中使用應用程式。 如果您想要在停用使用者同意的情況下測試應用程式，您可以在 [ **企業應用程式** ] 下的 [ **[使用者設定](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** ] 區段中的 [ [Azure 入口網站][AZURE-portal]] 中找到設定參數。
+租用戶系統管理員可以停用一般使用者對應用程式行使同意權的能力。 如果停用這項功能，就一律需要系統管理員同意，才能在租用戶中使用應用程式。 如果您想要在停用使用者同意的情況下測試應用程式，您可以在 [**企業應用程式**] 下的 [**[使用者設定](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)**] 區段中的 [ [Azure 入口網站][AZURE-portal]] 中找到設定參數。
 
 如果應用程式要求的權限不需要系統管理員同意，則應用程式也可以使用 `prompt=admin_consent` 參數。 這項作業的使用時機範例如下：如果應用程式需要租用戶系統管理員「註冊」一次，之後就不會再提示其他使用者表示同意的情況。
 
-如果應用程式需要系統管理員同意，但系統管理員登入時未傳送 `prompt=admin_consent` 參數，則當系統管理員順利同意此應用程式時， **只會針對其使用者帳戶** 套用該參數。 一般使用者將仍然無法登入此應用程式或對其行使同意權。 當您想要先讓租用戶系統管理員能夠瀏覽您的應用程式，然後才允許其他使用者存取時，這個功能相當有用。
+如果應用程式需要系統管理員同意，但系統管理員登入時未傳送 `prompt=admin_consent` 參數，則當系統管理員順利同意此應用程式時，**只會針對其使用者帳戶** 套用該參數。 一般使用者將仍然無法登入此應用程式或對其行使同意權。 當您想要先讓租用戶系統管理員能夠瀏覽您的應用程式，然後才允許其他使用者存取時，這個功能相當有用。
 
 ### <a name="consent-and-multi-tier-applications"></a>同意和多層應用程式
 
@@ -184,7 +184,7 @@ https://sts.windows.net/{tenantid}/
 * [同意架構的總覽][AAD-Consent-Overview]
 * [Microsoft Graph API 權限範圍][MSFT-Graph-permission-scopes]
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已了解如何建置可讓使用者從任何 Azure AD 租用戶登入的應用程式。 啟用單一 Sign-On (應用程式與 Azure AD 之間的 SSO) 之後，您也可以更新應用程式以存取 Microsoft 資源所公開的 Api，例如 Microsoft 365。 這樣一來，您即可在應用程式中提供個人化的體驗；例如，向使用者顯示其設定檔圖片或下一個行事曆約會等內容資訊。
 

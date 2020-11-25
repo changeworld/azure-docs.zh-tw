@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 732362ef7099e93697320d8e47180c1207e8cb32
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92453853"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995891"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>教學課程：Azure Active Directory 與 Everbridge 整合
 
@@ -60,7 +60,7 @@ ms.locfileid: "92453853"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Everbridge** 。 從結果面板中選取 [Everbridge]  ，然後選取 [新增]  。
+4. 在搜尋方塊中，輸入 **Everbridge**。 從結果面板中選取 [Everbridge]  ，然後選取 [新增]  。
 
      ![結果清單中的 Everbridge](common/search-new-app.png)
 
@@ -100,7 +100,7 @@ ms.locfileid: "92453853"
     >[!NOTE]
     >在 Azure 入口網站和 Everbridge 入口網站上，將應用程式設定為管理員入口網站「或」  成員入口網站。
 
-4. 若要將 **Everbridge** 應用程式設為 **EverBridge 管理員入口網站** ，請在 [基本 SAML 設定]  區段執行下列步驟：
+4. 若要將 **Everbridge** 應用程式設為 **EverBridge 管理員入口網站**，請在 [基本 SAML 設定]  區段執行下列步驟：
 
     ![Everbridge 網域及 URL 單一登入資訊](common/idp-intiated.png)
 
@@ -111,7 +111,7 @@ ms.locfileid: "92453853"
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 值來更新這些值。 若要取得這些值，請連絡 [Everbridge 支援小組](mailto:support@everbridge.com)。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-5. 若要將  應用程式設為 **EverBridge 成員入口網站** ，請在 [基本 SAML 設定]  區段執行下列步驟：
+5. 若要將  應用程式設為 **EverBridge 成員入口網站**，請在 [基本 SAML 設定]  區段執行下列步驟：
 
   * 如果您想要以 IDP 起始模式設定應用程式，請遵循下列步驟：
 
@@ -130,7 +130,7 @@ ms.locfileid: "92453853"
      > [!NOTE]
      > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」和「登入 URL」值更新這些值。 若要取得這些值，請連絡 [Everbridge 支援小組](mailto:support@everbridge.com)。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-6. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，選取 [下載]  以下載 **同盟中繼資料 XML** 。 將其儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，選取 [下載]  以下載 **同盟中繼資料 XML**。 將其儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -186,7 +186,7 @@ ms.locfileid: "92453853"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  方塊中，輸入 **BrittaSimon** 。
+    a. 在 [名稱]  方塊中，輸入 **BrittaSimon**。
   
     b. 在 [使用者名稱]  方塊中，輸入 `brittasimon@yourcompanydomain.extension`。 例如 BrittaSimon@contoso.com。
 

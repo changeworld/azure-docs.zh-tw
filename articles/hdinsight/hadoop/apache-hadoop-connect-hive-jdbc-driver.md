@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: 183bc416dde941f11bd94cfcff3bf738b35f876f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207375"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996064"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>透過 JDBC 驅動程式在 HDInsight 中查詢 Apache Hive
 
@@ -75,11 +75,11 @@ SQuirreL SQL 是可用來從遠端以 HDInsight 叢集執行 Hive 查詢的 JDBC
     scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/{commons-codec*.jar,commons-logging-*.jar,hive-*-*.jar,httpclient-*.jar,httpcore-*.jar,libfb*.jar,libthrift-*.jar} .
     ```
 
-3. 啟動 SQuirreL SQL 應用程式。 從視窗左側選取 [驅動程式]****。
+3. 啟動 SQuirreL SQL 應用程式。 從視窗左側選取 [驅動程式]。
 
     ![視窗左側的 [驅動程式] 索引標籤](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-squirreldrivers.png)
 
-4. 從 [驅動程式]**** 對話方塊上方的圖示，選取 [+]**** 圖示以建立驅動程式。
+4. 從 [驅動程式] 對話方塊上方的圖示，選取 [+] 圖示以建立驅動程式。
 
     ![SQuirreL SQL 應用程式驅動程式圖示](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png)
 
@@ -96,7 +96,7 @@ SQuirreL SQL 是可用來從遠端以 HDInsight 叢集執行 Hive 查詢的 JDBC
 
    選取 **[確定]** 以儲存這些設定。
 
-6. 在 SQuirreL SQL 視窗的左側選取 [別名]****。 然後選取 **+** 圖示來建立連接別名。
+6. 在 SQuirreL SQL 視窗的左側選取 [別名]。 然後選取 **+** 圖示來建立連接別名。
 
     ![[SQuirreL SQL 新增別名] 對話方塊](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
 
@@ -113,11 +113,11 @@ SQuirreL SQL 是可用來從遠端以 HDInsight 叢集執行 Hive 查詢的 JDBC
     ![使用參數新增別名對話方塊](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
 
     > [!IMPORTANT]
-    > 使用 [測試]**** 按鈕來確認連接能正常運作。 當 [連接到︰HDInsight 上的 Hive]**** 對話方塊出現時，請選取 [連接]**** 來執行測試。 如果測試成功，您會看到 [連線成功]**** 對話方塊。 如果發生錯誤，請參閱[疑難排解](#troubleshooting)。
+    > 使用 [測試] 按鈕來確認連接能正常運作。 當 [連接到︰HDInsight 上的 Hive] 對話方塊出現時，請選取 [連接] 來執行測試。 如果測試成功，您會看到 [連線成功] 對話方塊。 如果發生錯誤，請參閱[疑難排解](#troubleshooting)。
 
-    若要儲存連線別名，請使用 [新增別名]**** 對話方塊底部的 [確定]**** 按鈕。
+    若要儲存連線別名，請使用 [新增別名] 對話方塊底部的 [確定] 按鈕。
 
-8. 從 SQuirreL SQL 頂端的 [連接到]**** 下拉式清單選取 [HDInsight 上的 Hive]****。 出現提示時，請選取 [連接]****。
+8. 從 SQuirreL SQL 頂端的 [連接到] 下拉式清單選取 [HDInsight 上的 Hive]。 出現提示時，請選取 [連接]。
 
     ![具有參數的連接對話方塊](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
 
@@ -161,7 +161,7 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 **解決方法**：避免使用 JDBC/ODBC 驅動程式來下載大量資料。 請改為直接從 blob 儲存體複製資料。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 現在您已瞭解如何使用 JDBC 來處理 Hive，請使用下列連結來探索使用 Azure HDInsight 的其他方式。
 

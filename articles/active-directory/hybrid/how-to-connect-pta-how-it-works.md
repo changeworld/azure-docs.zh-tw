@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe92f761ac0b16da7c3cc3c69c1fa4b00f4e7579
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836354"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996588"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory 傳遞驗證：技術深入探討
 本文概述 Azure Active Directory (Azure AD)傳遞驗證的運作方式。 如需深入的技術和安全性資訊，請參閱 [安全性深入探討](how-to-connect-pta-security-deep-dive.md) 文章。

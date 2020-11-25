@@ -12,11 +12,11 @@ ms.date: 04/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 21f16a0b9c8b3b603735520d5dcdbf61601e1480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706496"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994820"
 ---
 # <a name="no-users-are-being-provisioned"></a>未佈建使用者 
 >[!NOTE]
@@ -24,14 +24,14 @@ ms.locfileid: "90706496"
 >
 為應用程式設定自動佈建 (包括驗證供給 Azure AD 以連接至應用程式的應用程式認證提是有效的) 之後，使用者及/或群組就會佈建至應用程式。 佈建是由下列事項決定：
 
--   已將哪些使用者和群組**指派**給應用程式。 請注意，不支援布建嵌套群組或 Microsoft 365 群組。 如需指派的詳細資訊，請參閱[在 Azure Active Directory 中將使用者或群組指派給企業應用程式](../manage-apps/assign-user-or-group-access-portal.md)。
--   是否已啟用**屬性對應**，並設定為將來自 Azure AD 的有效屬性同步處理至應用程式。 如需詳細資訊，請參閱[在 Azure Active Directory 中自訂 SaaS 應用程式的使用者佈建屬性對應](customize-application-attributes.md)。
--   是否存在**範圍設定篩選**，這會根據根據特定的屬性值來篩選使用者。 如需範圍設定篩選條件的詳細資訊，請參閱[含範圍篩選器的屬性型應用程式佈建](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。
+-   已將哪些使用者和群組 **指派** 給應用程式。 請注意，不支援布建嵌套群組或 Microsoft 365 群組。 如需指派的詳細資訊，請參閱[在 Azure Active Directory 中將使用者或群組指派給企業應用程式](../manage-apps/assign-user-or-group-access-portal.md)。
+-   是否已啟用 **屬性對應**，並設定為將來自 Azure AD 的有效屬性同步處理至應用程式。 如需詳細資訊，請參閱[在 Azure Active Directory 中自訂 SaaS 應用程式的使用者佈建屬性對應](customize-application-attributes.md)。
+-   是否存在 **範圍設定篩選**，這會根據根據特定的屬性值來篩選使用者。 如需範圍設定篩選條件的詳細資訊，請參閱[含範圍篩選器的屬性型應用程式佈建](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。
   
   
 如果您發現未布建使用者，請參閱 Azure AD 中的布建 [記錄 (預覽) ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 。 搜尋特定使用者的記錄項目。
 
-您可以在 [活動] 區段中選取 [ **Azure Active Directory** &gt; **企業應用程式**布建 &gt; **記錄] (預覽) ** **Activity** ，以存取 Azure 入口網站中的布建記錄。 您可以根據使用者的名稱或來源系統或目標系統中的識別碼來搜尋布建資料。 如需詳細資訊，請參閱 [ (預覽版布建記錄) ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。 
+您可以在 [活動] 區段中選取 [ **Azure Active Directory** &gt; **企業應用程式** 布建 &gt; **記錄] (預覽)** **Activity** ，以存取 Azure 入口網站中的布建記錄。 您可以根據使用者的名稱或來源系統或目標系統中的識別碼來搜尋布建資料。 如需詳細資訊，請參閱 [ (預覽版布建記錄) ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。 
 
 布建記錄會記錄布建服務所執行的所有作業，包括查詢在布建範圍內的已指派使用者 Azure AD、查詢目標應用程式是否存在這些使用者，以及比較系統之間的使用者物件。 接著，根據比較，在目標系統中新增、更新或停用使用者帳戶。
 
@@ -42,7 +42,7 @@ ms.locfileid: "90706496"
 - [布建記錄檔表示略過和未布建使用者，即使已指派它們](#provisioning-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
 
 ## <a name="provisioning-service-does-not-appear-to-start"></a>佈建服務似乎未啟動
-如果您在 Azure 入口網站的 [Azure Active Directory]&gt;[企業應用程式][&gt; \[應用程式名稱]\] &gt;[佈建]**** 區段中，將 [佈建狀態]**** 設為 [啟用]****。 不過，在後續重載之後，該頁面上就不會顯示其他狀態詳細資料，但可能是服務正在執行，但尚未完成初始週期。 查看上述的布建 **記錄 (預覽) ** 上面所述，以判斷服務正在執行的作業，以及是否有任何錯誤。
+如果您在 Azure 入口網站的 [Azure Active Directory]&gt;[企業應用程式][&gt; \[應用程式名稱]\] &gt;[佈建] 區段中，將 [佈建狀態] 設為 [啟用]。 不過，在後續重載之後，該頁面上就不會顯示其他狀態詳細資料，但可能是服務正在執行，但尚未完成初始週期。 查看上述的布建 **記錄 (預覽)** 上面所述，以判斷服務正在執行的作業，以及是否有任何錯誤。
 
 >[!NOTE]
 >視 Azure AD 目錄的大小和布建範圍中的使用者數目而定，初始週期可能需要20分鐘到數小時的時間。 初始迴圈之後的後續同步處理會更快，因為布建服務會儲存浮水印，代表兩個系統在初始迴圈之後的狀態。 初始週期會改善後續同步處理的效能。
@@ -56,7 +56,7 @@ ms.locfileid: "90706496"
 - **已設定範圍設定篩選，** **這會根據屬性值篩選出使用者**。 如需有關範圍設定篩選的詳細資訊，請參閱[範圍篩選器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。
 - **使用者「不具有效權限」。** 如果您看到此特定錯誤訊息，這是因為儲存在 Azure AD 中的使用者指派記錄發生問題。 若要修正此問題，請從應用程式解除指派使用者 (或群組)，然後重新指派一次。 如需有關指派的詳細資訊，請參閱[指派使用者或群組存取](../manage-apps/assign-user-or-group-access-portal.md)。
 - **必要屬性已遺失或未針對使用者填入。** 設定佈建時必須考量的重點是，檢視和設定屬性 (Attribute) 對應，以及定義哪些使用者 (或群組) 屬性 (Property) 會從 Azure AD 流向應用程式的工作流程。 此組態包括設定「比對屬性」，此屬性可用於唯一識別並比對兩個系統之間的使用者/群組。 如需這個重要程序的詳細資訊，請參閱[在 Azure Active Directory 中自訂 SaaS 應用程式的使用者佈建屬性對應](customize-application-attributes.md)。
-- **群組的屬性對應：** 除了成員，還有群組名稱和群組詳細資訊的佈建 (如果某些應用程式有支援)。 您可以啟用或停用 [布**建] 索引**標籤中顯示之群組物件的**對應**，以啟用或停用這項功能。如果已啟用布建群組，請務必檢查屬性對應，以確保「相符識別碼」使用適當的欄位。 此比對識別碼可以是顯示名稱或電子郵件別名。 如果 Azure AD 中某個群組的比對屬性空白或未填入，則不會佈建群組及其成員。
+- **群組的屬性對應：** 除了成員，還有群組名稱和群組詳細資訊的佈建 (如果某些應用程式有支援)。 您可以啟用或停用 [布 **建] 索引** 標籤中顯示之群組物件的 **對應**，以啟用或停用這項功能。如果已啟用布建群組，請務必檢查屬性對應，以確保「相符識別碼」使用適當的欄位。 此比對識別碼可以是顯示名稱或電子郵件別名。 如果 Azure AD 中某個群組的比對屬性空白或未填入，則不會佈建群組及其成員。
 ## <a name="provisioning-users-assigned-to-the-default-access-role"></a>布建指派給預設存取角色的使用者
 資源庫中的應用程式預設角色稱為「預設存取」角色。 在過去，指派給此角色的使用者不會布建，而且會在布建 [記錄](../reports-monitoring/concept-provisioning-logs.md) 中標示為略過，因為「沒有有效的權利」。 
 

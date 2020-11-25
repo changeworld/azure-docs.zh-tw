@@ -9,11 +9,11 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 85c67384c38376dc6f5701cf26e879d6e1b76c7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80875026"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996390"
 ---
 ## <a name="gathering-required-parameters"></a>收集必要參數
 
@@ -21,7 +21,7 @@ ms.locfileid: "80875026"
 
 ### <a name="endpoint-uri-endpoint_uri"></a>端點 URI `{ENDPOINT_URI}`
 
-**端點**URI 值可在對應認知服務資源的 Azure 入口網站*總覽*] 頁面上取得。 流覽至 [ *總覽* ] 頁面，將滑鼠停留在端點上，隨即會 `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> 出現一個圖示。 在需要時複製並使用。
+**端點** URI 值可在對應認知服務資源的 Azure 入口網站 *總覽*] 頁面上取得。 流覽至 [ *總覽* ] 頁面，將滑鼠停留在端點上，隨即會 `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> 出現一個圖示。 在需要時複製並使用。
 
 ![收集端點 uri 以供稍後使用](../media/overview-endpoint-uri.png)
 

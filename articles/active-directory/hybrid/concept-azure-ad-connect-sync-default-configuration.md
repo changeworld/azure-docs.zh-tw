@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e55526e0a63a0c603e2b62ccb3ac0efed911cff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295221"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996622"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect 同步處理：了解預設組態
 本文說明現成可用的組態規則。 其中說明這些規則以及這些規則對組態有何影響。 它也會逐步引導您進行 Azure AD Connect 同步的預設設定。其目標在於讀者瞭解設定模型（名為宣告式布建）在真實世界範例中的運作方式。 本文假設您已使用安裝精靈安裝並設定 Azure AD Connect Sync。
@@ -138,9 +138,9 @@ SRE 是一種資源套件工具，它會隨 Azure AD Connect 同步進行安裝�
 在此窗格中，您會看到所有為您的組態建立的同步處理規則。 表格中的每一行都是一個同步處理規則。 在 [規則類型] 的左下方會列出兩種不同類型：[輸入] 和 [輸出]。 [輸入] 和 [輸出] 來自 Metaverse 的檢視。 您主要會將重點放在本概觀中的輸入規則。 實際的同步處理規則清單取決於在 AD 中偵測到的結構描述。 在上圖中，帳戶樹系 (fabrikamonline.com) 沒有任何服務 (例如 Exchange 和 Lync)，而且也沒有為這些服務建立任何同步處理規則。 不過，在資源樹系 (res.fabrikamonline.com) 中，您可找到這些服務的同步處理規則。 規則的內容會隨著偵測到的版本而有所不同。 比方說，在 Exchange 2013 的部署中，屬性流程比在 Exchange 2010/2007 中設定的多。
 
 ### <a name="synchronization-rule"></a>同步處理規則
-同步處理規則是一個組態物件，當滿足條件時會有一組屬性進行流動。 此規則也會用來說明連接器空間中物件與 Metaverse 中物件的關係 (稱為**聯結**或**相符項目**)。 同步處理規則具有優先順序值，指出它們彼此之間的關係。 具有較低數值的同步處理規則具有較高的優先順序，而在發生屬性流程衝突時，較高的優先順序會在衝突解決過程中勝出。
+同步處理規則是一個組態物件，當滿足條件時會有一組屬性進行流動。 此規則也會用來說明連接器空間中物件與 Metaverse 中物件的關係 (稱為 **聯結** 或 **相符項目**)。 同步處理規則具有優先順序值，指出它們彼此之間的關係。 具有較低數值的同步處理規則具有較高的優先順序，而在發生屬性流程衝突時，較高的優先順序會在衝突解決過程中勝出。
 
-舉例來說，我們將了解同步處理規則 **In from AD – User AccountEnabled**。 在 SRE 中標示這一行並選取 [編輯] ****。
+舉例來說，我們將了解同步處理規則 **In from AD – User AccountEnabled**。 在 SRE 中標示這一行並選取 [編輯] 。
 
 由於此規則是現成可用的規則，因此您會在開啟規則時收到警告。 您不應 [變更現成可用的規則](how-to-connect-sync-best-practices-changing-default-configuration.md)，而要讓系統詢問您自己的意願為何。 在此案例中，您只想要檢視規則。 請選取 [否] 。
 
@@ -162,7 +162,7 @@ SRE 是一種資源套件工具，它會隨 Azure AD Connect 同步進行安裝�
 
 ![顯示 [編輯輸入同步處理規則] 視窗之 [範圍篩選器] 區段的螢幕擷取畫面。](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
 
-範圍篩選器具有可為巢狀的群組和子句。 必須滿足群組中的所有子句，才能套用同步處理規則。 如果多個群組已經過定義時，則必須至少滿足一個群組才能套用該規則。 也就是說，系統會在群組間評估邏輯 OR ，而在單一群組中評估邏輯 AND。 您可以在輸出同步處理規則 **Out to AAD – Group Join**中找到此組態的範例。 同步處理篩選器有數個群組，例如，一個適用於安全性群組 (`securityEnabled EQUAL True`) 的群組，和一個適用於通訊群組 (`securityEnabled EQUAL False`) 的群組。
+範圍篩選器具有可為巢狀的群組和子句。 必須滿足群組中的所有子句，才能套用同步處理規則。 如果多個群組已經過定義時，則必須至少滿足一個群組才能套用該規則。 也就是說，系統會在群組間評估邏輯 OR ，而在單一群組中評估邏輯 AND。 您可以在輸出同步處理規則 **Out to AAD – Group Join** 中找到此組態的範例。 同步處理篩選器有數個群組，例如，一個適用於安全性群組 (`securityEnabled EQUAL True`) 的群組，和一個適用於通訊群組 (`securityEnabled EQUAL False`) 的群組。
 
 ![同步處理規則編輯器中的範圍索引標籤](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilterout.png)
 
@@ -173,7 +173,7 @@ SRE 是一種資源套件工具，它會隨 Azure AD Connect 同步進行安裝�
 
 ![同步處理規則編輯器中的聯結規則索引標籤](./media/concept-azure-ad-connect-sync-default-configuration/syncrulejoinrules.png)
 
-聯結規則的內容取決於安裝精靈中選取的比對選項。 針對輸入規則，評估作業將會從來源連接器空間中的物件開始進行，接著再評估聯結規則中的各個群組。 如果來源物件經評估確實符合 Metaverse 中的一個物件，且 Metaverse 使用其中一個聯結規則，物件就會聯結起來。 如果所有規則經評估後沒有任何相符項目，則會使用說明頁面上的連結類型。 如果此設定設為 [布建 **]，則**會在目標中建立新的物件（元組），如果聯結準則中至少有一個屬性 (具有) 的值。 將新物件佈建至 Metaverse，也等同於將物件**投射**至 Metaverse。
+聯結規則的內容取決於安裝精靈中選取的比對選項。 針對輸入規則，評估作業將會從來源連接器空間中的物件開始進行，接著再評估聯結規則中的各個群組。 如果來源物件經評估確實符合 Metaverse 中的一個物件，且 Metaverse 使用其中一個聯結規則，物件就會聯結起來。 如果所有規則經評估後沒有任何相符項目，則會使用說明頁面上的連結類型。 如果此設定設為 [布建 **]，則** 會在目標中建立新的物件（元組），如果聯結準則中至少有一個屬性 (具有) 的值。 將新物件佈建至 Metaverse，也等同於將物件 **投射** 至 Metaverse。
 
 只會對聯結規則評估一次。 當連接器空間物件和 Metaverse 物件聯結起來時，只要仍滿足同步處理規則的範圍，兩者就會維持聯結狀態。
 

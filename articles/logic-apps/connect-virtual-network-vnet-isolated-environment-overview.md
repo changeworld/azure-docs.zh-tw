@@ -7,11 +7,11 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.openlocfilehash: 19c9ec39d85bfc56b118498aba62c3752d6d771c
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616921"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996316"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>透過整合服務環境 (ISE) 從 Azure Logic Apps 存取 Azure 虛擬網路資源
 
@@ -53,7 +53,7 @@ ms.locfileid: "94616921"
 
 * 內建的觸發程式和動作（例如 HTTP）會顯示 **核心** 標籤，並在與邏輯應用程式相同的 ISE 中執行。
 
-* 顯示 **ISE** 標籤的受控連接器是特別針對 ise 所設計，而且 *一律在與邏輯應用程式相同的 ISE 中執行* 。 例如，以下是一些 [提供 ISE 版本的連接器](../connectors/apis-list.md#ise-connectors)：<p>
+* 顯示 **ISE** 標籤的受控連接器是特別針對 ise 所設計，而且 *一律在與邏輯應用程式相同的 ISE 中執行*。 例如，以下是一些 [提供 ISE 版本的連接器](../connectors/apis-list.md#ise-connectors)：<p>
 
   * Azure Blob 儲存體、檔案儲存體及表格儲存體
   * Azure 服務匯流排、Azure 佇列、Azure 事件中樞
@@ -65,7 +65,7 @@ ms.locfileid: "94616921"
 
   在罕見的情況下，如果 ISE 連接器適用于內部部署系統或資料來源，您就可以直接連接，而不需要使用內部 [部署資料閘道](../logic-apps/logic-apps-gateway-connection.md)。 如需詳細資訊，請參閱本主題稍後的 [存取內部部署系統](#on-premises) 。
 
-* 未顯示 **ise** 標籤的受控連接器會繼續在 ise 內的邏輯應用程式中運作。 這些連接器 *一律會在多租使用者 Logic Apps 服務中執行* ，而不是在 ISE 中執行。
+* 未顯示 **ise** 標籤的受控連接器會繼續在 ise 內的邏輯應用程式中運作。 這些連接器 *一律會在多租使用者 Logic Apps 服務中執行*，而不是在 ISE 中執行。
 
 * 您在 *ise 之外* 建立的自訂連接器（不論是否需要內部 [部署資料閘道](../logic-apps/logic-apps-gateway-connection.md)）都能繼續處理 ise 內的邏輯應用程式。 不過，您在 *ISE 內* 建立的自訂連接器將無法使用內部部署資料閘道。 如需詳細資訊，請參閱內部 [部署系統的存取權](#on-premises)。
 
@@ -117,13 +117,13 @@ ms.locfileid: "94616921"
 > [!IMPORTANT]
 > 您只能在 ISE 建立期間選取存取端點，且稍後無法變更此選項。
 
-* **內部** ：私人端點允許呼叫您 ISE 中的邏輯應用程式，您可以在其中查看及存取邏輯應用程式在您的 *虛擬網路內* 的執行歷程記錄的輸入和輸出。
+* **內部**：私人端點允許呼叫您 ISE 中的邏輯應用程式，您可以在其中查看及存取邏輯應用程式在您的 *虛擬網路內* 的執行歷程記錄的輸入和輸出。
 
   > [!IMPORTANT]
   > 如果您需要使用這些以 webhook 為基礎的觸發程式，當您建立 ISE 時，請使用外部端點， *而不* 是內部端點：
   > 
   > * Azure DevOps
-  > * Azure Event Grid
+  > * Azure 事件方格
   > * Common Data Service
   > * Office 365
   > * SAP (ISE 版本) 
@@ -134,9 +134,9 @@ ms.locfileid: "94616921"
   >
   > 例如，您的用戶端電腦可以存在於 ISE 的虛擬網路內，或是在透過對等互連或虛擬私人網路連線到 ISE 虛擬網路的虛擬網路內。 
 
-* **外部** ：公用端點允許呼叫您 ISE 中的邏輯應用程式，您可以在其中查看及存取邏輯應用程式從 *虛擬網路外部* 執行歷程記錄的輸入和輸出。 如果您使用 (Nsg) 的網路安全性群組，請確定它們已設定輸入規則，以允許存取執行歷程記錄的輸入和輸出。 如需詳細資訊，請參閱 [啟用 ISE 的存取](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)。
+* **外部**：公用端點允許呼叫您 ISE 中的邏輯應用程式，您可以在其中查看及存取邏輯應用程式從 *虛擬網路外部* 執行歷程記錄的輸入和輸出。 如果您使用 (Nsg) 的網路安全性群組，請確定它們已設定輸入規則，以允許存取執行歷程記錄的輸入和輸出。 如需詳細資訊，請參閱 [啟用 ISE 的存取](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)。
 
-若要判斷 ISE 是否使用內部或外部存取端點，請在 ISE 的功能表上，選取 [ **設定** ] 下的 [ **屬性** ]，然後尋找 [ **存取端點** ] 屬性：
+若要判斷 ISE 是否使用內部或外部存取端點，請在 ISE 的功能表上，選取 [ **設定**] 下的 [ **屬性**]，然後尋找 [ **存取端點** ] 屬性：
 
 ![尋找 ISE 存取端點](./media/connect-virtual-network-vnet-isolated-environment-overview/find-ise-access-endpoint.png)
 

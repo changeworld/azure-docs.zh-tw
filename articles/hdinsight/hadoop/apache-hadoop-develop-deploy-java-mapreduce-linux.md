@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
 ms.date: 01/16/2020
 ms.openlocfilehash: 8b80616806f846951ebbaffcb2bf31ad77b96266
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546597"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996027"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>開發適用於 HDInsight 上 Apache Hadoop 的 Java MapReduce 程式
 
 了解如何使用 Apache Maven 來建立以 Java 為基礎的 MapReduce 應用程式，然後在 Azure HDInsight 上使用 Apache Hadoop 來加以執行。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [JAVA Developer 套件 (JDK) 第8版](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
 
@@ -44,7 +44,7 @@ cd C:\HDI
    mvn archetype:generate -DgroupId=org.apache.hadoop.examples -DartifactId=wordcountjava -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    ```
 
-    此命令會 `artifactID` 在此範例中使用參數 ( **>wordcountjava** 所指定的名稱來建立目錄。 ) 此目錄包含下列專案：
+    此命令會 `artifactID` 在此範例中使用參數 (**>wordcountjava** 所指定的名稱來建立目錄。 ) 此目錄包含下列專案：
 
     * `pom.xml` - [專案物件模型 (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)，包含用來建置專案的資訊和組態詳細資料。
     * src\main\java\org\apache\hadoop\examples：包含您的應用程式程式碼。
@@ -281,7 +281,7 @@ mvn clean package
     zenith  2
     ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文件中，您已學到如何開發 Java MapReduce 工作。 請參閱下列文件，了解其他的 HDInsight 使用方式。
 

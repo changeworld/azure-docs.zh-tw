@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: 05295efec3d7651c3a77dd5ad6e2c72b57a6c5a3
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146751"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994676"
 ---
 # <a name="import-an-openapi-specification"></a>匯入 OpenAPI 規格
 

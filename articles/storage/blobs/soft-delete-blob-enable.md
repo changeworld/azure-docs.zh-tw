@@ -10,12 +10,12 @@ ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 07e306c6c428a0e3a3f64a29a2574cb0378bb81f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a74860b7adf4dade5aedc71a4960595cbe55eaf0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230223"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95995296"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>啟用及管理 Blob 的虛刪除
 
@@ -82,7 +82,7 @@ $MatchingAccounts | $account = Get-AzStorageAccount -ResourceGroupName myresourc
    Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context | Select-Object -ExpandProperty DeleteRetentionPolicy
 ```
 
-若要復原意外刪除的 blob，請在這些 blob 上呼叫取消 **刪除 blob** 。 請記住，無論是對作用中還是已虛刪除的 Blob 呼叫**取消刪除 Blob**，都會將所有相關聯的虛刪除快照集還原為作用中。 下列範例會在容器中的所有虛刪除和作用中 blob 上呼叫取消 **刪除 blob** ：
+若要復原意外刪除的 blob，請在這些 blob 上呼叫取消 **刪除 blob** 。 請記住，無論是對作用中還是已虛刪除的 Blob 呼叫 **取消刪除 Blob**，都會將所有相關聯的虛刪除快照集還原為作用中。 下列範例會在容器中的所有虛刪除和作用中 blob 上呼叫取消 **刪除 blob** ：
 
 ```powershell
 # Create a context by specifying storage account name and key
@@ -164,7 +164,7 @@ serviceProperties.DeleteRetentionPolicy.RetentionDays = RetentionDays;
 blobClient.SetServiceProperties(serviceProperties);
 ```
 
-若要復原意外刪除的 blob，請在這些 blob 上呼叫取消 **刪除 blob** 。 請記住，無論是對作用中還是已虛刪除的 Blob 呼叫**取消刪除 Blob**，都會將所有相關聯的虛刪除快照集還原為作用中。 下列範例會在容器中的所有虛刪除和作用中 blob 上呼叫取消 **刪除 blob** ：
+若要復原意外刪除的 blob，請在這些 blob 上呼叫取消 **刪除 blob** 。 請記住，無論是對作用中還是已虛刪除的 Blob 呼叫 **取消刪除 Blob**，都會將所有相關聯的虛刪除快照集還原為作用中。 下列範例會在容器中的所有虛刪除和作用中 blob 上呼叫取消 **刪除 blob** ：
 
 ```csharp
 // Recover all blobs in a container
@@ -194,5 +194,5 @@ blockBlob.StartCopy(copySource);
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Blob 儲存體的虛刪除](soft-delete-overview.md)
+- [Blob 儲存體的虛刪除](./soft-delete-blob-overview.md)
 - [Blob 版本設定](versioning-overview.md)

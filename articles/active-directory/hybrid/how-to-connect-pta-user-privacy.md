@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 396344ba90aa3850d7d23dc40d6df95f6d1f6c3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279511"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996571"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>使用者隱私權與 Azure Active Directory 傳遞驗證
 
@@ -69,7 +69,7 @@ Foreach ($file in $Files) {
 
 此產品也可能會建立 **Windows 事件記錄**。 若要深入了解，請閱讀[這篇文章](/windows/win32/wes/windows-event-log)。
 
-若要檢視與傳遞驗證代理程式相關的記錄，請開啟伺服器上的**事件檢視器**應用程式，並於 **Application and Service Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin** 下查看。
+若要檢視與傳遞驗證代理程式相關的記錄，請開啟伺服器上的 **事件檢視器** 應用程式，並於 **Application and Service Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin** 下查看。
 
 ### <a name="delete-authentication-agent-trace-log-files"></a>刪除驗證代理程式追蹤記錄檔
 
@@ -91,14 +91,14 @@ Foreach ($file in $files) {
 若要將此指令碼排程為每 48 小時執行一次，請遵循下列步驟：
 
 1.  將指令碼儲存在副檔名為 ".PS1" 的檔案中。
-2.  開啟 [控制台]****，然後按一下 [系統與安全性]****。
-3.  在 [系統 **管理工具** ] 標題下，按一下 [**排程**工作]。
-4.  在 [工作排程器]**** 中，以滑鼠右鍵按一下 [工作排程程式庫]****，然後按一下 [建立基本工作...]****。
-5.  輸入新工作的名稱，然後按 [下一步]****。
-6.  針對 [工作觸發程序]**** 選取 [每天]****，然後按 [下一步]****。
-7.  將週期設定為 2 天，然後按 [下一步]****。
-8.  選取 [啟動程式]**** 作為動作，然後按 [下一步]****。
-9.  在程式/腳本的方塊中輸入 "**PowerShell**"，然後在標示為 [**新增引數 (選擇性) **] 的方塊中，輸入您稍早建立之腳本的完整路徑，然後按 **[下一步]**。
+2.  開啟 [控制台]，然後按一下 [系統與安全性]。
+3.  在 [系統 **管理工具** ] 標題下，按一下 [**排程** 工作]。
+4.  在 [工作排程器] 中，以滑鼠右鍵按一下 [工作排程程式庫]，然後按一下 [建立基本工作...]。
+5.  輸入新工作的名稱，然後按 [下一步]。
+6.  針對 [工作觸發程序] 選取 [每天]，然後按 [下一步]。
+7.  將週期設定為 2 天，然後按 [下一步]。
+8.  選取 [啟動程式] 作為動作，然後按 [下一步]。
+9.  在程式/腳本的方塊中輸入 "**PowerShell**"，然後在標示為 [**新增引數 (選擇性)**] 的方塊中，輸入您稍早建立之腳本的完整路徑，然後按 **[下一步]**。
 10. 下一個畫面會顯示您即將建立之工作的摘要。 確認值並按一下 **[完成]** ，以建立工作：
  
 ### <a name="note-about-domain-controller-logs"></a>請注意網域控制站記錄

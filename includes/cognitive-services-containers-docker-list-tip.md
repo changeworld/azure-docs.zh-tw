@@ -5,11 +5,11 @@ ms.date: 06/26/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 71f81c23b63d6299e7f48ed9b7d9a6f70841f91f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68357010"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996114"
 ---
 > [!TIP]
 > 您可以使用 [docker images](https://docs.docker.com/engine/reference/commandline/images/) \(英文\) 命令來列出已下載的容器映像。 例如，下列命令會列出每個已下載之容器映像的識別碼、存放庫和標籤，並將它格式化為表格：

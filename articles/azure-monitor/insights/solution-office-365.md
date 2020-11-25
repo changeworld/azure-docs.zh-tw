@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
 ms.openlocfilehash: eb20bf4164cb2153f6786dbec04f79453554fa25
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999750"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995857"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解決方案 (預覽)
 
@@ -39,11 +39,11 @@ ms.locfileid: "91999750"
 > 否，無法再使用 Azure 監視器 Office 365 解決方案上架腳本。 解決方案將在10月31日移除。
 > 
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>問：是否要變更資料表和架構？
-> **OfficeActivity**資料表名稱和架構會維持與目前解決方案中的相同。 您可以繼續使用新方案中的相同查詢，但不包括參考 Azure AD 資料的查詢。
+> **OfficeActivity** 資料表名稱和架構會維持與目前解決方案中的相同。 您可以繼續使用新方案中的相同查詢，但不包括參考 Azure AD 資料的查詢。
 > 
 > 新的 [Azure AD 報告和監視方案](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) 記錄會內嵌到 [SigninLogs](../../active-directory/reports-monitoring/concept-sign-ins.md) 和 [AuditLogs](../../active-directory/reports-monitoring/concept-audit-logs.md) 資料表，而不是 **OfficeActivity**。 如需詳細資訊，請參閱 [如何分析 Azure AD 記錄](../../active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics.md)，這也是 Azure Sentinel 和 Azure 監視器使用者的相關資訊。
 > 
-> 以下是將查詢從 **OfficeActivity** 轉換成 **SigninLogs**的範例：
+> 以下是將查詢從 **OfficeActivity** 轉換成 **SigninLogs** 的範例：
 > 
 > **依使用者查詢失敗的登入：**
 > 
@@ -125,7 +125,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 您可以使用[移除管理解決方案](solutions.md#remove-a-monitoring-solution)中的程序移除 Office 365 管理解決方案。 但這不會停止從 Office 365 收集資料到 Azure 監視器。 請遵循底下程序，從 Office 365 取消訂閱並停止收集資料。
 
-1. 將下列指令碼儲存為 office365_unsubscribe.ps1**。
+1. 將下列指令碼儲存為 office365_unsubscribe.ps1。
 
     ```powershell
     param (
@@ -234,10 +234,10 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-當您將 Office 365 解決方案新增至 Log Analytics 工作區時，[Office 365]**** 圖格會新增至儀表板。 此圖格會顯示計數並以圖形表示環境中的電腦數目及其更新合規性。<br><br>
+當您將 Office 365 解決方案新增至 Log Analytics 工作區時，[Office 365] 圖格會新增至儀表板。 此圖格會顯示計數並以圖形表示環境中的電腦數目及其更新合規性。<br><br>
 ![Office 365 摘要圖格](media/solution-office-365/tile.png)  
 
-按一下 [Office 365]**** 圖格以開啟 [Office 365]**** 儀表板。
+按一下 [Office 365] 圖格以開啟 [Office 365] 儀表板。
 
 ![Office 365 儀表板](media/solution-office-365/dashboard.png)  
 
@@ -245,7 +245,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 | 資料行 | 描述 |
 |:--|:--|
-| Operations | 提供所有受監視 Office 365 訂閱中之作用中使用者的相關資訊。 您也可以查看一段時間內發生的活動數。
+| 作業 | 提供所有受監視 Office 365 訂閱中之作用中使用者的相關資訊。 您也可以查看一段時間內發生的活動數。
 | Exchange | 顯示 Exchange Server 活動細目，例如 Add-Mailbox 權限或 Set-Mailbox。 |
 | SharePoint | 顯示使用者最常對 SharePoint 文件執行的活動。 當您從此圖格向下鑽研時，搜尋頁面會顯示這些活動的詳細資料，例如此活動的目標文件與位置。 例如，針對存取檔案的事件，您將能夠看到正在存取的檔、其相關聯的帳戶名稱和 IP 位址。 |
 | Azure Active Directory | 包含熱門使用者活動，例如「重設使用者密碼」和「登入嘗試」。 向下鑽研時，您可以像「結果狀態」一般地查看這些活動的詳細資料。 如果您想要監視 Azure Active Directory 上的可疑活動，這會很有幫助。 |
@@ -255,7 +255,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 ## <a name="azure-monitor-log-records"></a>Azure 監視器記錄
 
-由 Office 365 解決方案在 Azure 監視器 Log Analytics 工作區中建立的所有記錄，都具有 **OfficeActivity** 的「類型」****。  **OfficeWorkload** 屬性可決定該記錄所指的 Office 365 服務：Exchange、AzureActiveDirectory、SharePoint 或 OneDrive。  **RecordType** 屬性指定作業的類型。  每種作業類型會有不同的屬性，如下表所示。
+由 Office 365 解決方案在 Azure 監視器 Log Analytics 工作區中建立的所有記錄，都具有 **OfficeActivity** 的「類型」。  **OfficeWorkload** 屬性可決定該記錄所指的 Office 365 服務：Exchange、AzureActiveDirectory、SharePoint 或 OneDrive。  **RecordType** 屬性指定作業的類型。  每種作業類型會有不同的屬性，如下表所示。
 
 ### <a name="common-properties"></a>通用屬性
 
@@ -272,7 +272,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 | ResultStatus | 指出 (Operation 屬性中指定的) 動作是否成功。 可能的值為 Succeeded、PartiallySucceeded 或 Failed。 對於 Exchange 管理員活動，這個值將會是 True 或 False。 |
 | UserId | 執行動作導致記下該記錄之使用者的 UPN (使用者主體名稱)，例如 my_name@my_domain_name。 請注意，由系統帳戶 (例如 SHAREPOINT\system 或 NTAUTHORITY\SYSTEM) 所執行之活動的記錄也會包含在內。 | 
 | UserKey | UserId 屬性所識別之使用者的替代識別碼。  例如，針對由使用者在 SharePoint、商務用 OneDrive 及 Exchange 中所執行的事件，此屬性都會填入 Passport 唯一識別碼 (PUID)。 針對在其他服務中所發生的事件，以及由系統帳戶所執行的事件，此屬性也可能會將相同的值指定為 UserID 屬性|
-| UserType | 執行作業的使用者類型。<br><br>管理<br>應用程式<br>DcAdmin<br>標準<br>保留<br>ServicePrincipal<br>系統 |
+| UserType | 執行作業的使用者類型。<br><br>系統管理員<br>應用程式<br>DcAdmin<br>標準<br>保留<br>ServicePrincipal<br>系統 |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory 基底

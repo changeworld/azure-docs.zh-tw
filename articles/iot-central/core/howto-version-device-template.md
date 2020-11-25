@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
 ms.openlocfilehash: 93545c63013c95e3db498b079061da3d9b189efd
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94986435"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995755"
 ---
 # <a name="create-a-new-device-template-version"></a>建立新的裝置範本版本
 
@@ -106,7 +106,7 @@ ms.locfileid: "94986435"
 1. 選擇 **遷移**：  :::image type="content" source="media/howto-version-device-template/migrate-device.png" alt-text="選擇開始遷移裝置的選項":::
 1. 選取具有您想要將裝置遷移至其版本號碼的裝置範本，然後選取 [ **遷移**]。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如果您是操作員或解決方案產生器，建議的下一個步驟是瞭解 [如何管理您的裝置](./howto-manage-devices.md)。
 

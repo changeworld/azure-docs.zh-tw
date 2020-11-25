@@ -12,15 +12,15 @@ ms.date: 08/10/2020
 ms.author: juliako
 ms.custom: devx-track-js
 ms.openlocfilehash: 1bc751ae293abbb7aa330a99a4b66a917d150906
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268616"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994973"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>在您的應用程式中內嵌影片索引子小工具
 
-本文說明如何將影片索引子小工具內嵌到您的應用程式。 影片索引器支援將三種類型的小工具內嵌到應用程式中：*認知深入解析*、*播放機*以及*編輯器*。
+本文說明如何將影片索引子小工具內嵌到您的應用程式。 影片索引器支援將三種類型的小工具內嵌到應用程式中：*認知深入解析*、*播放機* 以及 *編輯器*。
 
 從第2版開始，小工具基底 URL 包含指定之帳戶的區域。 例如，美國西部區域中的帳戶會產生：`https://www.videoindexer.ai/embed/insights/.../?location=westus2`。
 
@@ -70,7 +70,7 @@ ms.locfileid: "91268616"
 
 本節討論如何將公開和私用內容內嵌至應用程式。
 
-`location`參數必須包含在內嵌連結中，請參閱[如何取得您的區功能變數名稱稱](regions.md)。 如果您的帳戶處於預覽狀態，則應該將其 `trial` 用於位置值。 `trial` 這是參數的預設值 `location` 。 例如： `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial` 。
+`location`參數必須包含在內嵌連結中，請參閱[如何取得您的區功能變數名稱稱](regions.md)。 如果您的帳戶處於預覽狀態，則應該將其 `trial` 用於位置值。 `trial` 這是參數的預設值 `location` 。 例如：`https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`。
 
 > [!IMPORTANT]
 > 共用 **播放機** 或 **見解** widget 的連結將會包含存取權杖，並將唯讀許可權授與您的帳戶。
@@ -79,8 +79,8 @@ ms.locfileid: "91268616"
 
 1. 登入 [影片索引子](https://www.videoindexer.ai/) 網站。
 1. 選取您要使用的影片，然後按下 [ **播放**]。
-1. 選取您要 (**認知見解**、 **播放機**或 **編輯器**) 的 widget 類型。
-1. 按一下 [ ** &lt; / &gt; 內嵌**]。
+1. 選取您要 (**認知見解**、 **播放機** 或 **編輯器**) 的 widget 類型。
+1. 按一下 [ **&lt; / &gt; 內嵌**]。
 5. 複製內嵌程式碼 (會出現在 [**共用 &** 內嵌] 對話方塊) 的 [**複製內嵌程式碼**] 中。
 6. 將程式碼新增至您的應用程式。
 
