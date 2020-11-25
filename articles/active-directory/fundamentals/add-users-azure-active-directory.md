@@ -14,11 +14,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: de529a8ffb0c72854904717c71dbc322c919f1a8
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370809"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996690"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>使用 Azure Active Directory 新增或刪除使用者
 
@@ -42,9 +42,9 @@ ms.locfileid: "92370809"
 
    - **名稱**。 必要。 新使用者的姓氏與名字。 例如， *Mary Parker*。
 
-   - [使用者名稱]****。 必要。 新使用者的使用者名稱。 例如： `mary@contoso.com` 。
+   - [使用者名稱]。 必要。 新使用者的使用者名稱。 例如： `mary@contoso.com` 。
 
-     使用者名稱的網域部分必須使用初始預設功能變數名稱* \<yourdomainname> onmicrosoft.com*或自訂功能變數名稱，例如*contoso.com*。 如需有關如何建立自訂功能變數名稱的詳細資訊，請參閱 [使用 Azure Active Directory 入口網站新增自訂功能變數名稱](add-custom-domain.md)。
+     使用者名稱的網域部分必須使用初始預設功能變數名稱 *\<yourdomainname> onmicrosoft.com* 或自訂功能變數名稱，例如 *contoso.com*。 如需有關如何建立自訂功能變數名稱的詳細資訊，請參閱 [使用 Azure Active Directory 入口網站新增自訂功能變數名稱](add-custom-domain.md)。
 
    - **群組**。 (選擇性) 您可以將使用者新增到一或多個現有的群組。 您也可以稍後再將使用者新增到群組。 如需將使用者新增至群組的詳細資訊，請參閱 [使用 Azure Active Directory 建立基本群組和新增成員](active-directory-groups-create-azure-portal.md)。
 
@@ -86,7 +86,7 @@ ms.locfileid: "92370809"
 
     ![使用者 - 已反白顯示 [刪除使用者] 的 [所有使用者] 頁面](media/add-users-azure-active-directory/delete-user-all-users-blade.png)
 
-使用者會被刪除，而且再也不會出現在 [使用者 - 所有使用者]**** 頁面上。 在接下來的 30 天，您可以在 [刪除的使用者]**** 頁面上看到該使用者，而且在此期間內可將該使用者還原。 如需有關還原使用者的詳細資訊，請參閱 [使用 Azure Active Directory 還原或移除最近刪除的使用者](active-directory-users-restore.md)。
+使用者會被刪除，而且再也不會出現在 [使用者 - 所有使用者] 頁面上。 在接下來的 30 天，您可以在 [刪除的使用者] 頁面上看到該使用者，而且在此期間內可將該使用者還原。 如需有關還原使用者的詳細資訊，請參閱 [使用 Azure Active Directory 還原或移除最近刪除的使用者](active-directory-users-restore.md)。
 
 當使用者被刪除時，使用者所使用的任何授權都可供其他使用者使用。
 

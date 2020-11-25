@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 4/13/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 945a67f81010a61adf814f6f6f422eba5001b48d
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541567"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998544"
 ---
 # <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>使用 Azure CLI 來設定和存取慢速查詢記錄
 您可以使用 Azure 命令列公用程式 Azure CLI 來下載適用於 MySQL 的 Azure 資料庫慢速查詢記錄。
@@ -26,8 +26,8 @@ ms.locfileid: "94541567"
 ## <a name="configure-logging"></a>設定記錄
 您可以採取下列步驟，設定伺服器以存取 MySQL 慢速查詢記錄檔：
 1. 藉由將 **慢速 \_ 查詢 \_** 記錄參數設定為 on，開啟慢速查詢記錄。
-2. 選取要使用 **記錄 \_ 輸出** 輸出記錄檔的位置。 若要將記錄傳送至本機儲存體和 Azure 監視器診斷記錄， **請選取 [** 檔案]。 若只要將記錄傳送至 Azure 監視器記錄檔，請選取 [ **無** ]
-3. 調整其他參數，例如 **long\_query\_time** 和 **log\_slow\_admin\_statements** 。
+2. 選取要使用 **記錄 \_ 輸出** 輸出記錄檔的位置。 若要將記錄傳送至本機儲存體和 Azure 監視器診斷記錄， **請選取 [** 檔案]。 若只要將記錄傳送至 Azure 監視器記錄檔，請選取 [**無**]
+3. 調整其他參數，例如 **long\_query\_time** 和 **log\_slow\_admin\_statements**。
 
 若要了解如何透過 Azure CLI 設定這些參數的值，請參閱[如何設定伺服器參數](howto-configure-server-parameters-using-cli.md)。
 
@@ -50,7 +50,7 @@ az mysql server-logs list --resource-group myresourcegroup --server mydemoserver
 ## <a name="download-logs-from-the-server"></a>從伺服器下載記錄
 如果 **log_output** 設定為 "File"，您可以使用 [az mysql server-logs 下載](/cli/azure/mysql/server-logs#az-mysql-server-logs-download) 命令從您的伺服器下載個別的記錄檔。
 
-使用下列範例，針對資源群組 **myresourcegroup** 下的伺服器 **mydemoserver.mysql.database.azure.com** ，將特定的記錄檔下載至您的本機環境。
+使用下列範例，針對資源群組 **myresourcegroup** 下的伺服器 **mydemoserver.mysql.database.azure.com**，將特定的記錄檔下載至您的本機環境。
 ```azurecli-interactive
 az mysql server-logs download --name 20170414-mydemoserver-mysql.log --resource-group myresourcegroup --server mydemoserver
 ```

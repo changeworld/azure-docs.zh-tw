@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 05/04/2020
 ms.author: jeedes
 ms.openlocfilehash: 5a2169db47ca5a6adcddbcc9558161370b896a62
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92509517"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997064"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smart-global-governance"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Smart Global Governance 整合
 
@@ -51,7 +51,7 @@ Smart Global Governance 支援由 SP 和 IDP 起始的 SSO。
 1. 在左窗格中，選取 [Azure Active Directory]。
 1. 移至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Smart Global Governance** 。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Smart Global Governance**。
 1. 在結果面板中選取 [Smart Global Governance]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-sso-for-smart-global-governance"></a>設定及測試 Smart Global Governance 的 Azure AD SSO
@@ -72,7 +72,7 @@ Smart Global Governance 支援由 SP 和 IDP 起始的 SSO。
 依照下列步驟，在 Azure 入口網站中啟用 Azure AD SSO：
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Smart Global Governance] 應用程式整合頁面上，選取 [管理] 區段中的 [單一登入]。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入] 頁面上，選取 [基本 SAML 組態] 的鉛筆按鈕，以編輯設定：
 
    ![基本 SAML 組態的鉛筆按鈕](common/edit-urls.png)
@@ -111,7 +111,7 @@ Smart Global Governance 支援由 SP 和 IDP 起始的 SSO。
 1. 在 Azure 入口網站的左側窗格中，選取 [Azure Active Directory]。 選取 [使用者 ]，然後選取 [所有使用者]。
 1. 在畫面頂端選取 [新增使用者]。
 1. 在 [使用者] 屬性中，完成下列步驟：
-   1. 在 [名稱] 方塊中，輸入 **B.Simon** 。  
+   1. 在 [名稱] 方塊中，輸入 **B.Simon**。  
    1. 在 [使用者名稱] 方塊中，輸入 \<username>@\<companydomain>.\<extension>。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼]，然後記下 [密碼] 方塊中顯示的值。
    1. 選取 [建立]。

@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 366d68be1a7f115980973015e363da6095876754
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835912"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997625"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>如何：設定及啟用風險原則
 
@@ -31,7 +31,7 @@ ms.locfileid: "94835912"
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 如果您的組織想要允許使用者在偵測到風險時自行進行補救，則必須同時為使用者註冊自助式密碼重設和 Azure AD Multi-Factor Authentication。 建議您 [啟用合併的安全性資訊註冊體驗](../authentication/howto-registration-mfa-sspr-combined.md) ，以獲得最佳體驗。 讓使用者能在不需要系統管理員介入的情況下，以更快的速度讓使用者進行自動補救。 系統管理員仍然可以看到這些事件，並在事實之後進行調查。 
 

@@ -7,11 +7,11 @@ ms.date: 02/25/2019
 ms.author: srrengar
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 59c8202b03bf1be2be5a68b75a1d7c7404b2213d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020196"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998238"
 ---
 # <a name="report-and-check-service-health"></a>回報和檢查服務健康情況
 當您的服務發生問題時，您回應並修正事件和中斷的能力，取決於您快速偵測問題的能力。 如果您從服務程式碼向 Azure Service Fabric 健全狀況管理員回報問題和失敗，您便可以使用 Service Fabric 提供的標準健全狀況監視工具來檢查健全狀況。
@@ -26,7 +26,7 @@ ms.locfileid: "89020196"
 
 這篇文章會引導您完成從服務程式碼回報健全狀況的範例。 此範例也會示範如何使用 Service Fabric 提供的工具來檢查健康情況。 本文旨在快速介紹 Service Fabric 的健全狀況監視功能。 如需更詳細的資訊，您可以閱讀一系列有關健全狀況的深入文章，從本文結尾的連結開始。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 您必須安裝下列項目：
 
 * Visual Studio 2015 或 Visual Studio 2019
@@ -43,7 +43,7 @@ ms.locfileid: "89020196"
    
     ![建立與具狀態服務搭配使用的 Service Fabric 應用程式](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/create-stateful-service-application-dialog.png)
 1. 按 **F5** 以在偵測模式中執行應用程式。 應用程式會部署至本機叢集。
-1. 應用程式執行之後，在通知區域中的本機叢集管理員圖示上按一下滑鼠右鍵，然後從捷徑功能表選取 [管理本機叢集] **** ，以開啟 [Service Fabric 總管。
+1. 應用程式執行之後，在通知區域中的本機叢集管理員圖示上按一下滑鼠右鍵，然後從捷徑功能表選取 [管理本機叢集]  ，以開啟 [Service Fabric 總管。
    
     ![從通知區域開啟 Service Fabric 總管](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/LaunchSFX.png)
 1. 應用程式健全狀況應該會如此圖所示。 此時，應用程式應該狀況良好而沒有任何錯誤。

@@ -9,17 +9,17 @@ ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: add73e1399b11d4bd8f039c72bb4e5e9f2b82cfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82085170"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997993"
 ---
 在 Cloud Shell 中，使用 [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest) 命令來建立 App Service 方案。
 
 <!-- [!INCLUDE [app-service-plan](app-service-plan.md)] -->
 
-下列範例會在**免費**定價層中建立名為 `myAppServicePlan` 的 App Service 方案。
+下列範例會在 **免費** 定價層中建立名為 `myAppServicePlan` 的 App Service 方案。
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE

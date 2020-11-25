@@ -14,11 +14,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 476cf8013f5dc8b5d54efb573cf305d81fc690b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89319146"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996707"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>什麼是 Azure Active Directory 架構？
 
@@ -39,7 +39,7 @@ Azure AD 分佈各地的架構結合廣泛監視、自動化重設路徑、容�
 
 ### <a name="service-architecture-design"></a>服務架構設計
 
-若要建置可存取且可使用、資料豐富的系統，最常見的方式就是透過獨立建置組塊或縮放單位。 對於 Azure AD 資料層，縮放單位稱之為「分割區」**。
+若要建置可存取且可使用、資料豐富的系統，最常見的方式就是透過獨立建置組塊或縮放單位。 對於 Azure AD 資料層，縮放單位稱之為「分割區」。
 
 資料層有數個可提供讀寫功能的前端服務。 下圖顯示單一目錄分割的元件如何在各地分散的資料中心提供。
 
@@ -49,11 +49,11 @@ Azure AD 架構的元件包括主要複本和次要複本。
 
 #### <a name="primary-replica"></a>主要複本
 
-「主要複本」** 會接收其所屬資料分割的所有「寫入」**。 所有寫入作業會先立即複寫至不同資料中心內的次要複本，然後將成功傳回給呼叫端，因而確保寫入的地理備援持久性。
+「主要複本」會接收其所屬資料分割的所有「寫入」。 所有寫入作業會先立即複寫至不同資料中心內的次要複本，然後將成功傳回給呼叫端，因而確保寫入的地理備援持久性。
 
 #### <a name="secondary-replicas"></a>您應該
 
-所有目錄 *讀取* 都是由 *次要複本*提供服務，而這些複本位於實際位於不同地理位置的資料中心。 次要複本有許多個，因為資料會以非同步方式複寫。 目錄讀取（例如驗證要求）是由接近客戶的資料中心提供服務。 次要複本負責提供讀取延展性。
+所有目錄 *讀取* 都是由 *次要複本* 提供服務，而這些複本位於實際位於不同地理位置的資料中心。 次要複本有許多個，因為資料會以非同步方式複寫。 目錄讀取（例如驗證要求）是由接近客戶的資料中心提供服務。 次要複本負責提供讀取延展性。
 
 ### <a name="scalability"></a>延展性
 

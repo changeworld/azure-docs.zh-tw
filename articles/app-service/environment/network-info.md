@@ -8,11 +8,11 @@ ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 91b6134e7c809a8af75aa1cf23523e352e0a1a0e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150240"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997336"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment 的網路考量 #
 
@@ -25,7 +25,7 @@ ms.locfileid: "92150240"
 
 所有 Ase、External 和 ILB 都有一個公用 VIP，可用於輸入管理流量，以及在從 ASE 到網際網路進行呼叫時作為來源位址。 從 ASE 移至網際網路的呼叫會透過指派給 ASE 的 VIP 離開 VNet。 此 VIP 的公用 IP 是來自 ASE 並傳送至網際網路之所有呼叫的來源 IP。 如果 ASE 中的應用程式會呼叫位於 VNet 中或跨 VPN 的資源，則來源 IP 就會是 ASE 所用子網路中的其中一個 IP。 因為 ASE 是位於 VNet 之內，所以它也可以存取 VNet 內的資源，而不需要任何額外設定。 如果 VNet 連線至您的內部部署網路，您 ASE 中的應用程式也擁有該處資源的存取權，而不需其他設定。
 
-![外部 ASE][1] 
+![外部 ASE][1] 
 
 如果您有外部 ASE，公用 VIP 也會是您 ASE 應用程式針對以下項目進行解析的端點：
 
@@ -53,7 +53,7 @@ ASE 部署之後，就無法變更用來裝載 ASE 的子網路大小。  每個
 
 ASE 需要開啟下列埠，才能運作 ASE：
 
-| 用途 | 寄件者 | 收件者 |
+| 使用 | 寄件者 | 收件者 |
 |-----|------|----|
 | 管理性 | App Service 管理位址 | ASE 子網路：454、455 |
 |  ASE 內部通訊 | ASE 子網路：所有連接埠 | ASE 子網路：所有連接埠
@@ -69,7 +69,7 @@ ASE 需要開啟下列埠，才能運作 ASE：
 
 您需要關注的其他埠是應用程式埠：
 
-| 用途 | 連接埠 |
+| 使用 | 連接埠 |
 |----------|-------------|
 |  HTTP/HTTPS  | 80、443 |
 |  FTP/FTPS    | 21、990、10001-10020 |
@@ -106,7 +106,7 @@ ASE 會在下列埠上與網際網路可存取的位址通訊：
 
 ## <a name="portal-dependencies"></a>入口網站相依性 ##
 
-除了 ASE 功能性相依性之外，還有幾個額外項目和入口網站體驗有關。 Azure 入口網站的部分功能需要能夠直接存取「SCM 網站」__。 Azure App Service 中的每個應用程式都有兩個 URL。 第一個 URL 是用來存取您的應用程式。 第二個 URL 則是用來存取 SCM 網站，也稱為「Kudu 主控台」__。 使用 SCM 網站的功能包括：
+除了 ASE 功能性相依性之外，還有幾個額外項目和入口網站體驗有關。 Azure 入口網站的部分功能需要能夠直接存取「SCM 網站」。 Azure App Service 中的每個應用程式都有兩個 URL。 第一個 URL 是用來存取您的應用程式。 第二個 URL 則是用來存取 SCM 網站，也稱為「Kudu 主控台」。 使用 SCM 網站的功能包括：
 
 -   Web 工作
 -   函式
@@ -118,7 +118,7 @@ ASE 會在下列埠上與網際網路可存取的位址通訊：
 
 當您使用 ILB ASE 時，無法從 VNet 外部存取 SCM 網站。 某些功能將無法在應用程式入口網站中運作，因為它們需要存取應用程式的 SCM 網站。 您可以直接連接到 SCM 網站，而不是使用入口網站。 
 
-如果您的 ILB ASE 是功能變數名稱 *contoso.appserviceenvironment.net* ，而您的應用程式名稱是 *testapp*，則會在 *testapp.contoso.appserviceenvironment.net*上到達應用程式。 與它一起使用的 SCM 網站是在 *testapp.scm.contoso.appserviceenvironment.net*時達成。
+如果您的 ILB ASE 是功能變數名稱 *contoso.appserviceenvironment.net* ，而您的應用程式名稱是 *testapp*，則會在 *testapp.contoso.appserviceenvironment.net* 上到達應用程式。 與它一起使用的 SCM 網站是在 *testapp.scm.contoso.appserviceenvironment.net* 時達成。
 
 ## <a name="ase-ip-addresses"></a>ASE IP 位址 ##
 
@@ -148,7 +148,7 @@ ASE 有一些 IP 位址需要注意。 其中包括：
 
 在 ASE 中，您不會有存取用來裝載 ASE 本身之 VM 的存取權。 它們處於由 Microsoft 管理的訂用帳戶之中。 如果想要針對 ASE 上的應用程式限制存取，請在 ASE 子網路上設定 NSG。 這樣做時，請特別注意 ASE 相依性。 如果您封鎖任何相依性，ASE 會停止運作。
 
-NSG 可以透過 Azure 入口網站或 PowerShell 來設定。 這裡的資訊僅針對 Azure 入口網站說明。 您會在入口網站中的 [網路]**** 底下，以最上層資源的形式建立及管理 NSG。
+NSG 可以透過 Azure 入口網站或 PowerShell 來設定。 這裡的資訊僅針對 Azure 入口網站說明。 您會在入口網站中的 [網路] 底下，以最上層資源的形式建立及管理 NSG。
 
 NSG 中的必要專案（為了讓 ASE 運作）是允許流量：
 
@@ -157,7 +157,7 @@ NSG 中的必要專案（為了讓 ASE 運作）是允許流量：
 * 埠16001上來自負載平衡器的 TCP
 * 從 ASE 子網至所有埠上的 ASE 子網
 
-**輸出**
+**連出**
 * UDP 到埠53上的所有 Ip
 * UDP 到埠123上的所有 Ip
 * TCP 至埠80、443上的所有 Ip
@@ -169,7 +169,7 @@ NSG 中的必要專案（為了讓 ASE 運作）是允許流量：
 
 一般的應用程式存取連接埠為：
 
-| 用途 | 連接埠 |
+| 使用 | 連接埠 |
 |----------|-------------|
 |  HTTP/HTTPS  | 80、443 |
 |  FTP/FTPS    | 21、990、10001-10020 |
@@ -180,9 +180,9 @@ NSG 中的必要專案（為了讓 ASE 運作）是允許流量：
 
 ![輸入安全性規則][4]
 
-預設規則可讓 VNet 中的 IP 與 ASE 子網路通訊。 另一個預設規則可讓負載平衡器 (也稱為公用 VIP) 和 ASE 通訊。 您可以選取 [新增]**** 圖示旁邊的 [預設規則]**** 來查看預設規則。 如果您在預設規則之前放置拒絕所有其他專案規則，則會防止 VIP 和 ASE 之間的流量。 若要防止來自 VNet 內部的流量，請新增您自己的規則來允許輸入。 使用來源等於 AzureLoadBalancer，目的地為 **Any**，以及 **\*** 的連接埠範圍。 由於 NSG 規則是套用至 ASE 子網路，因此不需要特別指定目的地。
+預設規則可讓 VNet 中的 IP 與 ASE 子網路通訊。 另一個預設規則可讓負載平衡器 (也稱為公用 VIP) 和 ASE 通訊。 您可以選取 [新增] 圖示旁邊的 [預設規則] 來查看預設規則。 如果您在預設規則之前放置拒絕所有其他專案規則，則會防止 VIP 和 ASE 之間的流量。 若要防止來自 VNet 內部的流量，請新增您自己的規則來允許輸入。 使用與 AzureLoadBalancer 相同的來源，其目的地為 * _ 的 **任何** 和埠範圍 *\** 。 由於 NSG 規則是套用至 ASE 子網路，因此不需要特別指定目的地。
 
-如果指派 IP 位址給應用程式，請確定維持開啟連接埠。 若要查看埠，請選取**App Service 環境**  >  **IP 位址**。  
+如果指派 IP 位址給應用程式，請確定維持開啟連接埠。 若要查看埠，請選取 _ *App Service 環境** > 的 **IP 位址**。  
 
 下列輸出規則中顯示的所有項目都是需要的項目，但不包含最後一個項目。 它們可啟用針對本文章之前所提到之 ASE 相依性的網路存取。 如果封鎖它們任何一項，ASE 會停止運作。 清單中的最後一個項目可讓 ASE 和 VNet 中的其他資源通訊。
 
@@ -197,13 +197,13 @@ NSG 中的必要專案（為了讓 ASE 運作）是允許流量：
 當您在入口網站中建立 ASE 時，我們也會在隨著 ASE 建立的子網路上建立一組路由資料表。  這些路由只單純指示直接將輸出流量傳送至網際網路。  
 若要手動建立路由，請依照下列步驟執行︰
 
-1. 前往 Azure 入口網站。 選取**網路**  >  **路由表**。
+1. 前往 Azure 入口網站。 選取 **網路**  >  **路由表**。
 
 2. 在和您 VNet 相同的區域內建立一個新的路由表。
 
 3. 從您的路由表 UI 內，選取 [**路由**  >  **新增**]。
 
-4. 將 [下一個躍點類型]**** 設為 [網際網路]****，將 [位址首碼]**** 設為 **0.0.0.0/0**。 選取 [儲存]。
+4. 將 [下一個躍點類型] 設為 [網際網路]，將 [位址首碼] 設為 **0.0.0.0/0**。 選取 [儲存]。
 
     您就會看到類似以下的畫面：
 

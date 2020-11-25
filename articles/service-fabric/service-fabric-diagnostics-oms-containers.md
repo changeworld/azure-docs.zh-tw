@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: c1d118fa1fb65663f37e33f739bf4a72a14e1c52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258696"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998207"
 ---
 # <a name="monitor-containers-with-azure-monitor-logs"></a>使用 Azure 監視器記錄監視容器
  
@@ -27,7 +27,7 @@ ms.locfileid: "86258696"
 
 1. 使用 Azure 監視器記錄和 Log Analytics 代理程式設定叢集之後，請部署您的容器。 移至下一步之前，請等待容器部署完成。
 
-2. 在 Azure Marketplace 中，搜尋 [容器監視解決方案]**，然後按一下顯示在 [監視 + 管理] 類別下的 [容器監視解決方案]**** 資源。
+2. 在 Azure Marketplace 中，搜尋 [容器監視解決方案]，然後按一下顯示在 [監視 + 管理] 類別下的 [容器監視解決方案] 資源。
 
     ![新增容器解決方案](./media/service-fabric-diagnostics-event-analysis-oms/containers-solution.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "86258696"
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 深入瞭解 [Azure 監視器記錄容器解決方案](../azure-monitor/insights/containers.md)。
 * 深入了解 Service Fabric 上的容器協調流程 - [Service Fabric 與容器](service-fabric-containers-overview.md)
 * 熟悉 Azure 監視器記錄中提供的[記錄搜尋和查詢](../azure-monitor/log-query/log-query-overview.md)功能

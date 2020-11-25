@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 0df9e4722136dafe94d1bfc84a7767e1e0144d69
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458292"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997217"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>教學課程：Azure Active Directory 與 M-Files 整合
 
@@ -61,7 +61,7 @@ M-Files 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中輸入 **M-Files** ，並從結果面板中選取 [M-Files]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中輸入 **M-Files**，並從結果面板中選取 [M-Files]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 M-Files](common/search-new-app.png)
 
@@ -108,7 +108,7 @@ M-Files 與 Azure AD 整合提供下列優點：
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [M-Files 客戶支援小組](mailto:support@m-files.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -143,9 +143,9 @@ M-Files 與 Azure AD 整合提供下列優點：
 
     a. 在 [名稱]  中，輸入 `<tenant-name>.cloudvault.m-files.com`。 
  
-    b. 在 [連接埠號碼]  中，輸入 **4466** 。 
+    b. 在 [連接埠號碼]  中，輸入 **4466**。 
 
-    c. 在 [通訊協定]  中，選取 **HTTPS** 。 
+    c. 在 [通訊協定]  中，選取 **HTTPS**。 
 
     d. 在 [驗證]  欄位中，選取 [特定的 Windows 使用者]  。 然後，系統會向您提示簽署頁面。 請插入您的 Azure AD 認證。 
 
@@ -169,7 +169,7 @@ M-Files 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com

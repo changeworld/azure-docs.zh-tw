@@ -4,11 +4,11 @@ description: ReliableConcurrentQueue 是高輸送量的佇列，可允許平行�
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.openlocfilehash: 423ef3d1898176d7c25c596ad186a9c000108aa4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257447"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997115"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric 中的 ReliableConcurrentQueue 簡介
 可靠的並行佇列是非同步、交易式和複寫的佇列，特徵是加入佇列與清除佇列作業的高並行存取。 它旨在提供高輸送量和低延遲，方法是將[可靠的佇列](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)所提供的嚴格 FIFO 順序放寬，並改為提供最佳的順序。
@@ -33,8 +33,8 @@ ReliableConcurrentQueue 的範例使用情況為[訊息佇列](https://en.wikipe
 * 佇列會預期佇列中的項目具有低保留期限。 也就是項目在佇列中不會長時間停留。
 * 佇列並不保證嚴格的 FIFO 順序。
 * 佇列不會閱讀它自己的寫入。 如果項目在交易內加入佇列，則同一個交易內的清除佇列者將看不到它。
-* 清除佇列不會彼此互相隔離。 如果已在交易 txnA** 中將項目 A** 清除佇列，則即使 txnA** 不認可，並行交易 txnB** 也看不到項目 A**。  如果 txnA** 中止，txnB** 就可立即看到 A**。
-* 可將 TryPeekAsync** 行為加以實作，方法是使用 TryDequeueAsync**，然後中止交易。 您可以在程式設計模式一節中找到這種行為的範例。
+* 清除佇列不會彼此互相隔離。 如果已在交易 txnA 中將項目 A 清除佇列，則即使 txnA 不認可，並行交易 txnB 也看不到項目 A。  如果 txnA 中止，txnB 就可立即看到 A。
+* 可將 TryPeekAsync 行為加以實作，方法是使用 TryDequeueAsync，然後中止交易。 您可以在程式設計模式一節中找到這種行為的範例。
 * 計數為非交易式。 它可用來了解佇列中元素的數目，但會以時間點表示且無法依賴。
 * 當交易處於使用中狀態時，不應在清除佇列的專案上執行耗費資源的處理，以避免長時間執行的交易可能會對系統造成效能影響。
 
@@ -51,7 +51,7 @@ IReliableConcurrentQueue<int> queue = await this.StateManager.GetOrAddAsync<IRel
 ### <a name="enqueueasync"></a>EnqueueAsync
 以下是使用 EnqueueAsync 的幾個程式碼片段，隨後是其預期的輸出。
 
-- 案例 1︰單一加入佇列工作**
+- 案例 1︰單一加入佇列工作
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -70,7 +70,7 @@ using (var txn = this.StateManager.CreateTransaction())
 > 20, 10
 
 
-- 案例 2︰平行加入佇列工作**
+- 案例 2︰平行加入佇列工作
 
 ```
 // Parallel Task 1
@@ -99,7 +99,7 @@ using (var txn = this.StateManager.CreateTransaction())
 以下是使用 TryDequeueAsync 的幾個程式碼片段，隨後是預期的輸出。 假設已將佇列中的下列項目填入佇列︰
 > 10, 20, 30, 40, 50, 60
 
-- 案例 1︰單一清除佇列工作**
+- 案例 1︰單一清除佇列工作
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -114,7 +114,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 假設已順利完成工作，且沒有修改佇列的並行交易。 由於無法推斷佇列中的項目順序，任何三個項目都可能會以任何順序加以清除佇列。 佇列會嘗試以原始順序保留項目 (佇列)，但可能會因並行作業或錯誤而強制將它們重新排序。  
 
-- 案例 2︰平行清除佇列工作**
+- 案例 2︰平行清除佇列工作
 
 ```
 // Parallel Task 1
@@ -138,11 +138,11 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-假設已順利完成工作、工作以平行方式執行，且沒有其他修改佇列的並行交易。 由於無法推斷佇列中的項目順序，dequeue1** 和 dequeue2** 都會以任何順序包含任何兩個項目。
+假設已順利完成工作、工作以平行方式執行，且沒有其他修改佇列的並行交易。 由於無法推斷佇列中的項目順序，dequeue1 和 dequeue2 都會以任何順序包含任何兩個項目。
 
-相同項目不會** 同時出現在兩份清單中。 因此，如果 dequeue1 包含 10**、*30*，dequeue2 就會包含 *20*、*40*。
+相同項目不會同時出現在兩份清單中。 因此，如果 dequeue1 包含 10、*30*，dequeue2 就會包含 *20*、*40*。
 
-- 案例 3︰使用交易中止來清除佇列排序**
+- 案例 3︰使用交易中止來清除佇列排序
 
 使用執行中的清除佇列將交易中止，會將項目放回佇列的前端。 無法保證將項目放回佇列前端的順序。 我們來看看下面的程式碼：
 
@@ -164,7 +164,7 @@ using (var txn = this.StateManager.CreateTransaction())
 > 
 > 20, 10
 
-這也適用於交易未成功認可** 的所有情況。
+這也適用於交易未成功認可的所有情況。
 
 ## <a name="programming-patterns"></a>程式設計模式
 在本節中，我們來看看幾個可能有助於使用 ReliableConcurrentQueue 的程式設計模式。
@@ -264,7 +264,7 @@ while(!cancellationToken.IsCancellationRequested)
 ```
 
 ### <a name="best-effort-drain"></a>盡可能清空
-由於資料結構的並行本質，無法保證可將佇列清空。  即使佇列上沒有任何使用者作業正在進行中，TryDequeueAsync 的特定呼叫可能不會傳回先前已排入佇列並已認可的專案。  清除佇列最終** 保證可看到加入佇列的項目，不過，沒有超出訊號範圍通訊機制的獨立取用者，無法得知佇列已觸達穩定狀態，即使已將所有的產生者停止，且不允許任何新的加入佇列作業亦然。 因此，已盡可能清空作業，實作如下。
+由於資料結構的並行本質，無法保證可將佇列清空。  即使佇列上沒有任何使用者作業正在進行中，TryDequeueAsync 的特定呼叫可能不會傳回先前已排入佇列並已認可的專案。  清除佇列最終保證可看到加入佇列的項目，不過，沒有超出訊號範圍通訊機制的獨立取用者，無法得知佇列已觸達穩定狀態，即使已將所有的產生者停止，且不允許任何新的加入佇列作業亦然。 因此，已盡可能清空作業，實作如下。
 
 使用者應該將所有進一步的生產者和取用者工作停止，並在嘗試清空佇列之前，等待任何進行中的交易加以認可或中止。  如果使用者知道佇列中的預期專案數目，他們可以設定通知，通知所有專案都已清除佇列。
 
@@ -303,7 +303,7 @@ do
 ```
 
 ### <a name="peek"></a>預覽
-ReliableConcurrentQueue 不會提供 TryPeekAsync** API。 使用者可以預覽語意，方法是使用 TryDequeueAsync** 然後將交易中止。 在此範例中，僅在項目大於 10** 時，才會處理清除佇列。
+ReliableConcurrentQueue 不會提供 TryPeekAsync API。 使用者可以預覽語意，方法是使用 TryDequeueAsync 然後將交易中止。 在此範例中，僅在項目大於 10 時，才會處理清除佇列。
 
 ```
 using (var txn = this.StateManager.CreateTransaction())

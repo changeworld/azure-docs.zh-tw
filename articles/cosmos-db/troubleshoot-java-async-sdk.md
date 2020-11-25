@@ -10,12 +10,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: eca64411ccb61e5dcbac5e988f12096550eaaa2c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4ec2deaf3149e174cce201d0bbad8a55d156d30f
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100995"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95998325"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>針對搭配使用 Azure Cosmos DB 非同步 Java SDK v2 和 SQL API 帳戶時所發生的問題進行疑難排解
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -181,9 +181,9 @@ createObservable
 ### <a name="request-rate-too-large"></a>要求率太大
 此失敗為伺服器端失敗。 其指出您已取用您佈建的輸送量。 稍後重試。 如果您經常發生此失敗，請考慮增加集合輸送量。
 
-### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>無法連線至 Azure Cosmos DB 模擬器
+### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>無法連接到 Azure Cosmos DB 模擬器
 
-Azure Cosmos DB 模擬器的 HTTPS 憑證是自我簽署的。 針對要與模擬器搭配運作的 SDK，將模擬器憑證匯入到 Java TrustStore。 如需詳細資訊，請參閱[匯出 Azure Cosmos DB 模擬器憑證](local-emulator-export-ssl-certificates.md)。
+Azure Cosmos DB 模擬器的 HTTPS 憑證是自我簽署的。 針對要與模擬器搭配運作的 SDK，將模擬器憑證匯入到 Java TrustStore。 如需詳細資訊，請參閱 [匯出 Azure Cosmos DB 模擬器憑證](local-emulator-export-ssl-certificates.md)。
 
 ### <a name="dependency-conflict-issues"></a>相依性衝突問題
 

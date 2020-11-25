@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 105978daeb93a2e5646222ff10055ba20a1dc481
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 7174f7dd53387de9a569a5ddcadc08c32692c749
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172910"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997098"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Azure Blob 儲存體中的變更摘要支援
 
@@ -21,7 +21,7 @@ ms.locfileid: "92172910"
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
-變更摘要會以 [blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 的形式儲存在儲存體帳戶的特殊容器中，標準 [blob 價格](https://azure.microsoft.com/pricing/details/storage/blobs/) 成本。 您可以根據需求來控制這些檔案的保留期限 (查看目前版本) 的 [條件](#conditions) 。 變更事件會附加至變更摘要做為 [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) 格式規格中的記錄：精簡、快速、二進位格式，可使用內嵌架構提供豐富的資料結構。 此格式廣泛運用在 Hadoop 生態系統、串流分析和 Azure Data Factory。
+變更摘要會以 [blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 的形式儲存在儲存體帳戶的特殊容器中，標準 [blob 價格](https://azure.microsoft.com/pricing/details/storage/blobs/) 成本。 您可以根據需求來控制這些檔案的保留期限 (查看目前版本) 的 [條件](#conditions) 。 變更事件會附加至變更摘要做為 [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) 格式規格中的記錄：精簡、快速、二進位格式，可使用內嵌架構提供豐富的資料結構。 此格式廣泛運用在 Hadoop 生態系統、串流分析和 Azure Data Factory。
 
 您可以用累加方式或完整方式來處理這些記錄。 任何數目的用戶端應用程式都可以依自己的步調，以平行方式獨立讀取變更摘要。 [Apache 演練](https://drill.apache.org/docs/querying-avro-files/)或[Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html)之類的分析應用程式可以直接取用記錄檔做為 Avro 檔案，讓您以低成本的方式處理這些記錄，並使用高頻寬，而不需要撰寫自訂的應用程式。
 
@@ -64,7 +64,7 @@ ms.locfileid: "92172910"
 
 2. 瀏覽至 [Blob 服務] 底下的 [資料保護] 選項。
 
-3. 按一下 [ **Blob 變更**摘要] 下的 [**啟用**]。
+3. 按一下 [ **Blob 變更** 摘要] 下的 [**啟用**]。
 
 4. 選擇 [ **儲存** ] 按鈕以確認您的 **資料保護** 設定。
 
@@ -151,7 +151,7 @@ ms.locfileid: "92172910"
 
 ### <a name="segments"></a>使用者分佈
 
-變更摘要是組織成**每小時***區段*的變更記錄，但會每隔幾分鐘附加到並更新。 只有在該小時內發生 blob 變更事件時，才會建立這些區段。 這可讓您的用戶端應用程式使用在特定時間範圍內發生的變更，而不需要搜尋整個記錄。 若要深入瞭解，請參閱 [規格](#specifications)。
+變更摘要是組織成 **每小時***區段* 的變更記錄，但會每隔幾分鐘附加到並更新。 只有在該小時內發生 blob 變更事件時，才會建立這些區段。 這可讓您的用戶端應用程式使用在特定時間範圍內發生的變更，而不需要搜尋整個記錄。 若要深入瞭解，請參閱 [規格](#specifications)。
 
 變更摘要的可用每小時區段描述于指定該區段變更摘要檔案路徑的資訊清單檔中。 虛擬目錄的清單會 `$blobchangefeed/idx/segments/` 顯示依時間排序的這些區段。 區段的路徑描述區段所代表的每小時時間範圍開始。 您可以使用該清單來篩選出您感興趣的記錄區段。
 
@@ -206,7 +206,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 變更摘要檔案包含一連串的變更事件記錄。 每個變更事件記錄都會對應到個別 blob 的一項變更。 記錄會使用 [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) 格式規格進行序列化並寫入至檔案。 您可以使用 Avro 檔案格式規格來讀取記錄。 有數個程式庫可以用來處理該格式的檔案。
 
-變更摘要檔案會以 `$blobchangefeed/log/` [附加 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)的形式儲存在虛擬目錄中。 每個路徑下的第一個變更摘要檔案將會有 `00000` 檔案名 (例如 `00000.avro`) 。 新增至該路徑的每個後續記錄檔的名稱將遞增 1 (例如： `00001.avro`) 。
+變更摘要檔案會以 `$blobchangefeed/log/` [附加 blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)的形式儲存在虛擬目錄中。 每個路徑下的第一個變更摘要檔案將會有 `00000` 檔案名 (例如 `00000.avro`) 。 新增至該路徑的每個後續記錄檔的名稱將遞增 1 (例如： `00001.avro`) 。
 
 下列事件種類會在變更摘要記錄中捕捉：
 - BlobCreated
@@ -243,7 +243,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 }
 ```
 
-如需每個屬性的說明，請參閱 [適用于 Blob 儲存體的 Azure 事件方格事件架構](https://docs.microsoft.com/azure/event-grid/event-schema-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties)。 BlobPropertiesUpdated 和 BlobSnapshotCreated 事件目前僅供變更摘要，Blob 儲存體事件尚未支援。
+如需每個屬性的說明，請參閱 [適用于 Blob 儲存體的 Azure 事件方格事件架構](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties)。 BlobPropertiesUpdated 和 BlobSnapshotCreated 事件目前僅供變更摘要，Blob 儲存體事件尚未支援。
 
 > [!NOTE]
 > 區段的變更摘要檔案不會在建立區段之後立即顯示。 延遲的長度是在變更摘要的正常間隔時間內，也就是變更摘要的幾分鐘內。
@@ -256,7 +256,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 - 變更事件記錄會在變更的幾分鐘內附加。 用戶端應用程式可以選擇在附加記錄以進行串流存取，或在任何其他時間進行大量使用記錄。
 
-- 變更事件記錄依 **每個 blob**的修改順序排序。 Azure Blob 儲存體中未定義跨 blob 的變更順序。 前一個區段中的所有變更都是在後續區段的任何變更之前。
+- 變更事件記錄依 **每個 blob** 的修改順序排序。 Azure Blob 儲存體中未定義跨 blob 的變更順序。 前一個區段中的所有變更都是在後續區段的任何變更之前。
 
 - 變更事件記錄會使用 [Apache Avro 1.8.2](https://avro.apache.org/docs/1.8.2/spec.html) 格式規格序列化到記錄檔中。
 

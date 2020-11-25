@@ -14,11 +14,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60f23efa4f46849e1fe8b0ebe05cdd83ec16f49e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294813"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997676"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>針對 Azure Active Directory 無縫單一登入進行疑難排解
 
@@ -28,7 +28,7 @@ ms.locfileid: "91294813"
 
 - 在某些情況下，啟用無縫 SSO 最久可能需要 30 分鐘。
 - 如果您在租用戶上將「無縫 SSO」停用再重新啟用，使用者將必須等到他們的已快取 Kerberos 票證到期 (有效期通常為 10 小時) 之後，才能使用單一登入體驗。
-- 如果無縫 SSO 成功，使用者就沒有機會選取 [讓我保持登入]****。 由於這種行為， [SharePoint 和 OneDrive 對應案例](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec) 無法運作。
+- 如果無縫 SSO 成功，使用者就沒有機會選取 [讓我保持登入]。 由於這種行為， [SharePoint 和 OneDrive 對應案例](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec) 無法運作。
 - 使用非互動式流程可支援 Microsoft 365 的 Win32 用戶端 (Outlook、Word、Excel 和使用版本16.0.8730 的其他) 。 不支援其他版本；在那些版本中，使用者將輸入其使用者名稱 (但不輸入密碼) 來登入。 針對 OneDrive，您必須啟用 [OneDrive 無訊息設定功能](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) \(英文\) 以獲得無訊息登入體驗。
 - 在 Firefox 的私用瀏覽模式中，無法使用無縫 SSO。
 - Internet Explorer 在開啟「增強保護」模式時也無法使用無縫 SSO。
@@ -41,7 +41,7 @@ ms.locfileid: "91294813"
 
 ## <a name="check-status-of-feature"></a>檢查功能的狀態
 
-確認您租用戶端的無縫 SSO 功能仍為 [已啟用]****。 您可以前往 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)的 [Azure AD Connect]**** 窗格來檢查狀態。
+確認您租用戶端的無縫 SSO 功能仍為 [已啟用]。 您可以前往 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)的 [Azure AD Connect] 窗格來檢查狀態。
 
 ![Azure Active Directory 管理中心：Azure AD Connect 窗格](./media/tshoot-connect-sso/sso10.png)
 
@@ -55,9 +55,9 @@ ms.locfileid: "91294813"
 
 ![Azure Active Directory 管理中心：登入報告](./media/tshoot-connect-sso/sso9.png)
 
-流覽至**Azure Active Directory**  >  Azure Active Directory 系統[管理中心](https://aad.portal.azure.com/)內 Azure Active Directory**登入**，然後選取特定使用者的登入活動。 尋找 [登入錯誤碼]**** 欄位。 使用下表，將該欄位的值對應至失敗原因和解決方式：
+流覽至 **Azure Active Directory**  >  Azure Active Directory 系統 [管理中心](https://aad.portal.azure.com/)內 Azure Active Directory **登入**，然後選取特定使用者的登入活動。 尋找 [登入錯誤碼] 欄位。 使用下表，將該欄位的值對應至失敗原因和解決方式：
 
-|登入錯誤碼|登入失敗原因|解決方案
+|登入錯誤碼|登入失敗原因|解決方法
 | --- | --- | ---
 | 81001 | 使用者的 Kerberos 票證太大。 | 降低使用者的群組成員資格，並再試一次。
 | 81002 | 無法驗證使用者的 Kerberos 票證。 | 請參閱[為檢查清單疑難排解](#troubleshooting-checklist)。
@@ -77,7 +77,7 @@ ms.locfileid: "91294813"
 - 請務必在 Azure AD Connect 上已啟用無縫 SSO 功能。 如果您無法啟用此功能 (例如，因為連接埠已封鎖)，請確定您已完成所有[必要條件](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites)。
 - 如果您已在租用戶上同時啟用 [Azure AD 聯結](../devices/overview.md)和「無縫 SSO」，請確定問題不是出在「Azure AD 聯結」上。 如果裝置既已向 Azure AD 註冊也加入網域，則來自「Azure AD 聯結」的 SSO 優先順序會高於「無縫 SSO」。 使用來自「Azure AD 聯結」的 SSO 時，使用者會看到指出「已連線到 Windows」的登入圖格。
 - 確認 Azure AD URL (`https://autologon.microsoftazuread-sso.com`) 是使用者內部網路區域設定的一部分。
-- 確定公司裝置已加入 Active Directory 網域。 裝置「不」__ 需要[加入 Azure AD](../devices/overview.md)，無縫 SSO 就可運作。
+- 確定公司裝置已加入 Active Directory 網域。 裝置「不」需要[加入 Azure AD](../devices/overview.md)，無縫 SSO 就可運作。
 - 確定使用者已透過 Active Directory 網域帳戶登入裝置。
 - 確定使用者帳戶是來自已設定無縫 SSO 的 Active Directory 樹系。
 - 確定裝置已連線到公司網路。
@@ -86,7 +86,7 @@ ms.locfileid: "91294813"
 - 從命令提示字元使用 `klist` 命令，列出裝置上現有的 Kerberos 票證。 確認是否有核發給 `AZUREADSSOACC` 電腦帳戶的票證。 使用者的 Kerberos 票證有效期通常為 10 個小時。 您的 Active Directory 可能有不同的設定。
 - 如果您在租用戶上將「無縫 SSO」停用再重新啟用，使用者將必須等到他們的已快取 Kerberos 票證到期之後，才能使用單一登入體驗。
 - 使用 `klist purge` 命令從裝置中清除現有的 Kerberos 票證，然後再試一次。
-- 若要判斷是否有 JavaScript 相關問題，請檢閱瀏覽器的主控台記錄 (在 [開發人員工具]**** 底下)。
+- 若要判斷是否有 JavaScript 相關問題，請檢閱瀏覽器的主控台記錄 (在 [開發人員工具] 底下)。
 - 檢閱[網域控制站記錄](#domain-controller-logs)。
 
 ### <a name="domain-controller-logs"></a>網域控制站記錄

@@ -9,12 +9,12 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 5e6289fb4e3b5bb695b79589d544d0ae475f9774
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: dcc6f3bca80cb5860679327226d3e034c3e9b14a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314658"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95996860"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>將自訂網域對應至 Azure Blob 儲存體端點
 
@@ -79,11 +79,11 @@ ms.locfileid: "92314658"
 
 1. 登入網域註冊機構的網站，然後移至 [管理 DNS] 設定頁面。
 
-   您可能會在名為 [Domain Name] \(網域名稱\)****、[DNS]**** 或 [Name Server Management] \(名稱伺服器管理\)**** 的區段中找到該頁面。
+   您可能會在名為 [Domain Name] \(網域名稱\)、[DNS] 或 [Name Server Management] \(名稱伺服器管理\) 的區段中找到該頁面。
 
 2. 尋找管理 CNAME 記錄的區段。 
 
-   您可能需要前往進階設定頁面，然後尋找 [CNAME]****、[Alias] \(別名\)**** 或 [Subdomains] \(子網域\)****。
+   您可能需要前往進階設定頁面，然後尋找 [CNAME]、[Alias] \(別名\) 或 [Subdomains] \(子網域\)。
 
 3. 建立 CNAME 記錄。 作為該記錄的一部分，請提供下列專案： 
 
@@ -97,11 +97,11 @@ ms.locfileid: "92314658"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，移至您的儲存體帳戶。
 
-2. 在功能表窗格中的 [Blob 服務]**** 底下，選取 [自訂網域]****。  
+2. 在功能表窗格中的 [Blob 服務] 底下，選取 [自訂網域]。  
 
    ![自訂網域選項](./media/storage-custom-domain-name/custom-domain-button.png "自訂網域")
 
-   [自訂網域]**** 窗格隨即開啟。
+   [自訂網域] 窗格隨即開啟。
 
 3. 在 [ **功能變數名稱** ] 文字方塊中，輸入自訂網域的名稱，包括子域  
    
@@ -115,7 +115,7 @@ ms.locfileid: "92314658"
 
 若要確認自訂網域是否對應至 Blob 服務端點，請在儲存體帳戶內的公用容器中建立 Blob。 接著，在網頁瀏覽器中，使用以下格式的 URI 來存取 Blob：`http://<subdomain.customdomain>/<mycontainer>/<myblob>`
 
-例如，若要存取 *photos.contoso.com* 自訂子網域之 *myforms*容器中的 Web 表單，您可以使用以下 URI：`http://photos.contoso.com/myforms/applicationform.htm`
+例如，若要存取 *photos.contoso.com* 自訂子網域之 *myforms* 容器中的 Web 表單，您可以使用以下 URI：`http://photos.contoso.com/myforms/applicationform.htm`
 
 <a id="zero-down-time"></a>
 
@@ -163,11 +163,11 @@ ms.locfileid: "92314658"
 
 1. 登入網域註冊機構的網站，然後移至 [管理 DNS] 設定頁面。
 
-   您可能會在名為 [Domain Name] \(網域名稱\)****、[DNS]**** 或 [Name Server Management] \(名稱伺服器管理\)**** 的區段中找到該頁面。
+   您可能會在名為 [Domain Name] \(網域名稱\)、[DNS] 或 [Name Server Management] \(名稱伺服器管理\) 的區段中找到該頁面。
 
 2. 尋找管理 CNAME 記錄的區段。 
 
-   您可能需要前往進階設定頁面，然後尋找 [CNAME]****、[Alias] \(別名\)**** 或 [Subdomains] \(子網域\)****。
+   您可能需要前往進階設定頁面，然後尋找 [CNAME]、[Alias] \(別名\) 或 [Subdomains] \(子網域\)。
 
 3. 建立 CNAME 記錄。 作為該記錄的一部分，請提供下列專案： 
 
@@ -177,7 +177,7 @@ ms.locfileid: "92314658"
        
    - 您在本文稍早的 [取得儲存體端點的主機名稱](#endpoint) 一節中取得的主機名稱。 
 
-     將子域新增 `asverify` 至主機名稱。 例如： `asverify.mystorageaccount.blob.core.windows.net` 。
+     將子域新增 `asverify` 至主機名稱。 例如：`asverify.mystorageaccount.blob.core.windows.net`。
 
 4. 若要註冊自訂網域，請選擇 [ **儲存** ] 按鈕。
 
@@ -189,17 +189,17 @@ ms.locfileid: "92314658"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，移至您的儲存體帳戶。
 
-2. 在功能表窗格中的 [Blob 服務]**** 底下，選取 [自訂網域]****。  
+2. 在功能表窗格中的 [Blob 服務] 底下，選取 [自訂網域]。  
 
    ![自訂網域選項](./media/storage-custom-domain-name/custom-domain-button.png "自訂網域")
 
-   [自訂網域]**** 窗格隨即開啟。
+   [自訂網域] 窗格隨即開啟。
 
 3. 在 [ **功能變數名稱** ] 文字方塊中，輸入自訂網域的名稱，包括子域  
    
    例如，如果您的網域是 *contoso.com* ，而您的子域別名是 *www*，請輸入 `www.contoso.com` 。 如果您的子域是 *相片*，請輸入 `photos.contoso.com` 。
 
-4. 選取 [使用間接 CNAME 驗證]**** 核取方塊。
+4. 選取 [使用間接 CNAME 驗證] 核取方塊。
 
 5. 若要註冊自訂網域，請選擇 [ **儲存** ] 按鈕。
   
@@ -211,11 +211,11 @@ ms.locfileid: "92314658"
 
 1. 登入網域註冊機構的網站，然後移至 [管理 DNS] 設定頁面。
 
-   您可能會在名為 [Domain Name] \(網域名稱\)****、[DNS]**** 或 [Name Server Management] \(名稱伺服器管理\)**** 的區段中找到該頁面。
+   您可能會在名為 [Domain Name] \(網域名稱\)、[DNS] 或 [Name Server Management] \(名稱伺服器管理\) 的區段中找到該頁面。
 
 2. 尋找管理 CNAME 記錄的區段。 
 
-   您可能需要前往進階設定頁面，然後尋找 [CNAME]****、[Alias] \(別名\)**** 或 [Subdomains] \(子網域\)****。
+   您可能需要前往進階設定頁面，然後尋找 [CNAME]、[Alias] \(別名\) 或 [Subdomains] \(子網域\)。
 
 3. 建立 CNAME 記錄。 作為該記錄的一部分，請提供下列專案： 
 
@@ -227,7 +227,7 @@ ms.locfileid: "92314658"
 
 若要確認自訂網域是否對應至 Blob 服務端點，請在儲存體帳戶內的公用容器中建立 Blob。 接著，在網頁瀏覽器中，使用以下格式的 URI 來存取 Blob：`http://<subdomain.customdomain>/<mycontainer>/<myblob>`
 
-例如，若要存取 *photos.contoso.com* 自訂子網域之 *myforms*容器中的 Web 表單，您可以使用以下 URI：`http://photos.contoso.com/myforms/applicationform.htm`
+例如，若要存取 *photos.contoso.com* 自訂子網域之 *myforms* 容器中的 Web 表單，您可以使用以下 URI：`http://photos.contoso.com/myforms/applicationform.htm`
 
 ### <a name="remove-a-custom-domain-mapping"></a>移除自訂網域對應
 
@@ -239,8 +239,8 @@ ms.locfileid: "92314658"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，移至您的儲存體帳戶。
 
-2. 在功能表窗格中的 [Blob 服務]**** 底下，選取 [自訂網域]****。  
-   [自訂網域]**** 窗格隨即開啟。
+2. 在功能表窗格中的 [Blob 服務] 底下，選取 [自訂網域]。  
+   [自訂網域] 窗格隨即開啟。
 
 3. 清除包含自訂網域名稱的文字方塊內容。
 
@@ -250,7 +250,7 @@ ms.locfileid: "92314658"
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要移除自訂網域註冊，請使用 [az storage account update](https://docs.microsoft.com/cli/azure/storage/account) CLI 命令，然後指定空字串 (`""`) 作為 `--custom-domain` 引數值。
+若要移除自訂網域註冊，請使用 [az storage account update](/cli/azure/storage/account) CLI 命令，然後指定空字串 (`""`) 作為 `--custom-domain` 引數值。
 
 * 命令格式︰
 
@@ -320,11 +320,11 @@ ms.locfileid: "92314658"
 
 4.  (選用) 請參閱下列指導方針：
 
-   * [使用 AZURE CDN (SAS) 權杖的共用存取](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#shared-access-signatures)簽章。
+   * [使用 AZURE CDN (SAS) 權杖的共用存取](../../cdn/cdn-storage-custom-domain-https.md#shared-access-signatures)簽章。
 
-   * [使用 AZURE CDN 的 HTTP 對 HTTPS 重新導向](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#http-to-https-redirection)。
+   * [使用 AZURE CDN 的 HTTP 對 HTTPS 重新導向](../../cdn/cdn-storage-custom-domain-https.md#http-to-https-redirection)。
 
-   * 搭配[使用 Blob 儲存體與 AZURE CDN 時的定價和帳單](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#http-to-https-redirection)。
+   * 搭配[使用 Blob 儲存體與 AZURE CDN 時的定價和帳單](../../cdn/cdn-storage-custom-domain-https.md#http-to-https-redirection)。
 
 ## <a name="next-steps"></a>後續步驟
 

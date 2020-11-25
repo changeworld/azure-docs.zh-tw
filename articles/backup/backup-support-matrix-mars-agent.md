@@ -4,11 +4,11 @@ description: 本文摘要說明當您備份執行 Microsoft Azure 復原服務 (
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: 26a47c2648d1307d2e7da2b25455f3f036cbf32d
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363233"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997234"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 復原服務 (MARS) 代理程式進行備份的支援矩陣
 
@@ -46,7 +46,7 @@ Azure 備份使用 MARS 代理程式，將資料從內部部署機器和 Azure V
 大小 |  快取資料夾中的可用空間應該至少為備份資料的整體大小5到10%。
 Location | 快取資料夾必須在要備份的機器上儲存在本機，而且必須在線上。 快取資料夾不應位於網路共用、卸載式媒體或離線磁片區上。
 資料夾 | 快取資料夾不應該在重復資料刪除磁片區或壓縮的資料夾中加密，也就是稀疏或有重新分析點。
-位置變更 | 您可以藉由停止備份引擎 (`net stop bengine`) ，並將快取資料夾複製到新的磁片磁碟機，來變更快取位置。  (確定新磁片磁碟機有足夠的空間。 ) 接著在 **HKLM\SOFTWARE\Microsoft\Windows Azure 備份** ( **Config/ScratchLocation** 和 **Config/CloudBackupProvider/ScratchLocation** ) 更新兩個登錄專案，然後重新開機引擎。
+位置變更 | 您可以藉由停止備份引擎 (`net stop bengine`) ，並將快取資料夾複製到新的磁片磁碟機，來變更快取位置。  (確定新磁片磁碟機有足夠的空間。 ) 接著在 **HKLM\SOFTWARE\Microsoft\Windows Azure 備份** (**Config/ScratchLocation** 和 **Config/CloudBackupProvider/ScratchLocation**) 更新兩個登錄專案，然後重新開機引擎。
 
 ## <a name="networking-and-access-support"></a>網路功能與存取支援
 
@@ -67,7 +67,7 @@ MARS 伺服器需要存取這些 URL：
 
 存取上述所有 Url 和 IP 位址時，會使用埠443上的 HTTPS 通訊協定。
 
-使用 MARS 代理程式從 Azure Vm 備份檔案和資料夾時，也需要設定 Azure 虛擬網路以允許存取。 如果您使用網路安全性群組 (NSG)，請使用 AzureBackup 服務標籤，以允許對 Azure 備份進行輸出存取。 除了 Azure 備份標籤之外，您還需要為 Azure AD ( *AzureActiveDirectory* ) 和 Azure 儲存體 (儲存體) 建立類似的 [NSG 規則](../virtual-network/network-security-groups-overview.md#service-tags)，以允許用於驗證和資料傳輸的連線。 下列步驟說明建立 Azure 備份標籤規則的程序：
+使用 MARS 代理程式從 Azure Vm 備份檔案和資料夾時，也需要設定 Azure 虛擬網路以允許存取。 如果您使用網路安全性群組 (NSG)，請使用 AzureBackup 服務標籤，以允許對 Azure 備份進行輸出存取。 除了 Azure 備份標籤之外，您還需要為 Azure AD (*AzureActiveDirectory*) 和 Azure 儲存體 (儲存體) 建立類似的 [NSG 規則](../virtual-network/network-security-groups-overview.md#service-tags)，以允許用於驗證和資料傳輸的連線。 下列步驟說明建立 Azure 備份標籤規則的程序：
 
 1. 在 [所有服務] 中，移至 [網路安全性群組]，然後選取網路安全性群組。
 2. 選取 [設定] 底下的 [輸出安全性規則]。
@@ -173,7 +173,7 @@ Windows 7| 1,700 GB
 
 以下是可針對不同復原點設定的最小保留期限：
 
-|復原點 |Duration  |
+|復原點 |持續時間  |
 |---------|---------|
 |每日復原點    |   7 天      |
 |每週復原點     |    4 週     |
@@ -206,12 +206,12 @@ OneDrive (同步處理的檔案是稀疏資料流程) | 不支援。
 
 **磁碟機/磁碟區** | **支援** | **詳細資料**
 --- | --- | ---
-唯讀磁碟區| 不支援 | 磁片區陰影複製服務 (VSS) 只有在磁片區可寫入時才能運作。
-離線磁碟區| 不支援 |只有當磁片區在線上時，VSS 才能運作。
-網路共用| 不支援 |磁片區必須是伺服器上的本機磁片區。
-BitLocker 鎖定的磁片區| 不支援 |磁片區必須先解除鎖定，才能開始備份。
-檔案系統識別| 不支援 |僅支援 NTFS。
-卸除式媒體| 不支援 |所有備份專案來源都必須有 *固定* 狀態。
+唯讀磁碟區| 不受支援 | 磁片區陰影複製服務 (VSS) 只有在磁片區可寫入時才能運作。
+離線磁碟區| 不受支援 |只有當磁片區在線上時，VSS 才能運作。
+網路共用| 不受支援 |磁片區必須是伺服器上的本機磁片區。
+BitLocker 鎖定的磁片區| 不受支援 |磁片區必須先解除鎖定，才能開始備份。
+檔案系統識別| 不受支援 |僅支援 NTFS。
+卸除式媒體| 不受支援 |所有備份專案來源都必須有 *固定* 狀態。
 刪除重複資料的磁碟機 | 支援 | Azure 備份會將刪除重複資料的資料轉換成一般資料。 它會將資料優化、加密、儲存，並將資料傳送至保存庫。
 
 ## <a name="support-for-initial-offline-backup"></a>支援初始離線備份

@@ -9,11 +9,11 @@ ms.date: 09/04/2020
 ms.topic: how-to
 ms.service: key-vault
 ms.openlocfilehash: ac3ee108fc63441b2a9381b9e7624631bdca4e5b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289832"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998101"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 進行 Azure Key Vault 的服務對服務驗證
 
@@ -36,7 +36,7 @@ ms.locfileid: "93289832"
 
 對於 .NET 應用程式，使用受控識別最簡單的方式是透過 `Microsoft.Azure.Services.AppAuthentication` 套件。 如何開始使用：
 
-1. 選取 [ **工具** ]  >  **nuget 封裝管理員**  >  **管理解決方案的 nuget 套件** ，以將 [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)和 [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) nuget 套件的參考新增至您的專案。
+1. 選取 [**工具**]  >  **nuget 封裝管理員**  >  **管理解決方案的 nuget 套件**，以將 [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)和 [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) nuget 套件的參考新增至您的專案。
 
 1. 新增下列程式碼：
 
@@ -65,19 +65,19 @@ ms.locfileid: "93289832"
 
 本機電腦不支援適用于 Azure 資源的受控識別。 因此，`Microsoft.Azure.Services.AppAuthentication` 程式庫會使用您的開發人員認證，以在本機開發環境中執行。 當解決方案部署至 Azure 時，程式庫會使用受控識別切換至 OAuth 2.0 用戶端的認證授與流程。 這種方法表示您可以在本機和遠端測試相同的程式碼，而不必擔心。
 
-針對本機開發，`AzureServiceTokenProvider` 會使用 **Visual Studio** 、 **Azure 命令列介面** (CLI)，或 **Azure AD 整合式驗證** 來擷取權杖。 會依序嘗試每個選項，而程式庫會使用第一個成功的選項。 如果沒有選項可用，`AzureServiceTokenProviderException` 會擲回包含詳細資訊的例外狀況。
+針對本機開發，`AzureServiceTokenProvider` 會使用 **Visual Studio**、**Azure 命令列介面** (CLI)，或 **Azure AD 整合式驗證** 來擷取權杖。 會依序嘗試每個選項，而程式庫會使用第一個成功的選項。 如果沒有選項可用，`AzureServiceTokenProviderException` 會擲回包含詳細資訊的例外狀況。
 
 #### <a name="authenticating-with-visual-studio"></a>使用 Visual Studio 進行驗證
 
 若要使用 Visual Studio 進行驗證：
 
-1. 登入 Visual Studio，並使用 [ **工具** ] &nbsp; > &nbsp; **選項** 開啟 [ **選項** ]。
+1. 登入 Visual Studio，並使用 [**工具**] &nbsp; > &nbsp; **選項** 開啟 [**選項**]。
 
-1. 選取 [ **Azure 服務驗證** ]，選擇本機開發的帳戶，然後選取 **[確定]** 。
+1. 選取 [ **Azure 服務驗證**]，選擇本機開發的帳戶，然後選取 **[確定]**。
 
 如果您使用 Visual Studio 遇到問題，例如涉及權杖提供者檔案的錯誤，請仔細檢查先前的步驟。
 
-您可能需要重新驗證您的開發人員權杖。 若要這樣做，請選取 [ **工具** &nbsp; > &nbsp; **選項** ]，然後選取 [ **Azure &nbsp; 服務 &nbsp; 驗證** ]。 在選取的帳戶下尋找 **重新驗證** 連結。 選取該項目並進行驗證。
+您可能需要重新驗證您的開發人員權杖。 若要這樣做，請選取 [**工具** &nbsp; > &nbsp; **選項**]，然後選取 [ **Azure &nbsp; 服務 &nbsp; 驗證**]。 在選取的帳戶下尋找 **重新驗證** 連結。 選取該項目並進行驗證。
 
 #### <a name="authenticating-with-azure-cli"></a>使用 Azure CLI 進行驗證
 
@@ -89,11 +89,11 @@ ms.locfileid: "93289832"
 
 1. 登入 Azure 入口網站： *az login 以登* 入 Azure。
 
-1. 輸入 *az 帳戶存取權杖--resource HTTPs： \/ /vault.azure.net* ，以確認存取權。 如果您收到錯誤，請檢查正確的 Azure CLI 版本是否正確安裝。
+1. 輸入 *az 帳戶存取權杖--resource HTTPs： \/ /vault.azure.net*，以確認存取權。 如果您收到錯誤，請檢查正確的 Azure CLI 版本是否正確安裝。
 
    如果 Azure CLI 未安裝到預設目錄，您可能會收到錯誤報表，指出找 `AzureServiceTokenProvider` 不到 Azure CLI 的路徑。 使用 **>azureclipath** 環境變數來定義 Azure CLI 安裝資料夾。 必要時，`AzureServiceTokenProvider` 會將 **AzureCLIPath** 環境變數中指定的目錄新增至 **路徑** 環境變數。
 
-1. 如果您使用多個帳戶登入 Azure CLI，或您的帳戶有權存取多個訂用帳戶，您必須指定要使用的訂用帳戶。 輸入 *az account set--訂用帳戶 <訂用帳戶識別碼>* 。
+1. 如果您使用多個帳戶登入 Azure CLI，或您的帳戶有權存取多個訂用帳戶，您必須指定要使用的訂用帳戶。 輸入 *az account set--訂用帳戶 <訂用帳戶識別碼>*。
 
 此命令只會在失敗時產生輸出。 若要確認目前的帳戶設定，請輸入命令 `az account list` 。
 
@@ -131,7 +131,7 @@ ms.locfileid: "93289832"
 
 ## <a name="running-the-application-using-managed-identity-or-user-assigned-identity"></a>使用受控識別或使用者指派的身分識別執行應用程式
 
-當您在 Azure App Service 或啟用受控識別的 Azure VM 上執行程式碼時，程式庫會自動使用受控識別。 不需要變更任何程式碼，但受控識別必須具有金鑰保存庫的 *取得* 許可權。 您可以透過金鑰保存庫的 *存取原則* ，授與受控識別 *取得* 許可權。
+當您在 Azure App Service 或啟用受控識別的 Azure VM 上執行程式碼時，程式庫會自動使用受控識別。 不需要變更任何程式碼，但受控識別必須具有金鑰保存庫的 *取得* 許可權。 您可以透過金鑰保存庫的 *存取原則*，授與受控識別 *取得* 許可權。
 
 或者，您也可以使用使用者指派的身分識別進行驗證。 如需使用者指派之身分識別的詳細資訊，請參閱 [關於 Azure 資源的受控](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)識別。 若要使用使用者指派的身分識別進行驗證，您必須在連接字串中指定使用者指派之身分識別的用戶端識別碼。 連接字串是在 [連接字串支援](#connection-string-support)中指定。
 
@@ -167,7 +167,7 @@ ms.locfileid: "93289832"
           CertificateStoreLocation={CertificateStore}
     ```
 
-    使用步驟 1 產生的值取代 *{AppId}* 、 *{TenantId}* 和 *{Thumbprint}* 。 根據您的部署計畫，以 *LocalMachine* ' 或 *CurrentUser* 取代 *{CertificateStore}* 。
+    使用步驟 1 產生的值取代 *{AppId}*、*{TenantId}* 和 *{Thumbprint}*。 根據您的部署計畫，以 *LocalMachine*' 或 *CurrentUser* 取代 *{CertificateStore}* 。
 
 1. 執行應用程式。
 
@@ -185,7 +185,7 @@ ms.locfileid: "93289832"
     RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}
     ```
 
-    使用步驟 1 產生的值取代 _{AppId}_ 、 _{TenantId}_ 和 _{ClientSecret}_ 。
+    使用步驟 1 產生的值取代 _{AppId}_、_{TenantId}_ 和 _{ClientSecret}_。
 
 1. 執行應用程式。
 
@@ -262,7 +262,7 @@ ms.locfileid: "93289832"
 
 #### <a name="azure-cli-is-not-installed-youre-not-logged-in-or-you-dont-have-the-latest-version"></a>未安裝 Azure CLI、您未登入，或您沒有最新版本
 
-執行 *az 帳戶取得存取權杖* ，以查看 Azure CLI 是否為您顯示權杖。 如果 **找不到這類程式** ，請安裝 [最新版本的 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 系統會提示您登入。
+執行 *az 帳戶取得存取權杖* ，以查看 Azure CLI 是否為您顯示權杖。 如果 **找不到這類程式**，請安裝 [最新版本的 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 系統會提示您登入。
 
 #### <a name="azureservicetokenprovider-cant-find-the-path-for-azure-cli"></a>Azureservicetokenprovider 會找不到 Azure CLI 的路徑
 
@@ -270,7 +270,7 @@ Azureservicetokenprovider 會會尋找 Azure CLI 的預設安裝位置。 如果
 
 #### <a name="youre-logged-into-azure-cli-using-multiple-accounts-the-same-account-has-access-to-subscriptions-in-multiple-tenants-or-you-get-an-access-denied-error-when-trying-to-make-calls-during-local-development"></a>您已使用多個帳戶登入 Azure CLI、相同的帳戶可以存取多個租使用者中的訂用帳戶，或您在本機開發期間收到呼叫拒絕存取的錯誤
 
-使用 Azure CLI，將預設訂用帳戶設定為具有您想要使用之帳戶的訂用帳戶。 訂用帳戶必須與您想要存取的資源位於相同的租使用者： **az account set--訂用帳戶 [訂用帳戶識別碼]** 。 如果未看到任何輸出，則會成功。 使用 **az account list** 確認正確的帳戶現在是預設值。
+使用 Azure CLI，將預設訂用帳戶設定為具有您想要使用之帳戶的訂用帳戶。 訂用帳戶必須與您想要存取的資源位於相同的租使用者： **az account set--訂用帳戶 [訂用帳戶識別碼]**。 如果未看到任何輸出，則會成功。 使用 **az account list** 確認正確的帳戶現在是預設值。
 
 ### <a name="common-issues-across-environments"></a>跨環境的常見問題
 

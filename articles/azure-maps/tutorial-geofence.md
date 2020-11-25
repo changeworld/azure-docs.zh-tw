@@ -10,11 +10,11 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: ee32749e2c6f0118507fcfc6d4994a04ea3a6d69
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896795"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997268"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>教學課程：使用 Azure 地圖服務設定地理柵欄
 
@@ -192,7 +192,7 @@ Azure 地圖服務提供許多服務，以支援在設備進入和離開建築�
 
 2. 在 Azure 入口網站的左上角，選取 [建立資源]。
 
-3. 在 [搜尋 Marketplace] 方塊中，輸入 **Logic App** 。
+3. 在 [搜尋 Marketplace] 方塊中，輸入 **Logic App**。
 
 4. 從結果中選取 [邏輯應用程式]  >  [建立]。
 
@@ -205,23 +205,23 @@ Azure 地圖服務提供許多服務，以支援在設備進入和離開建築�
 
     :::image type="content" source="./media/tutorial-geofence/logic-app-create.png" alt-text="建立邏輯應用程式的螢幕擷取畫面。":::
 
-6. 選取 [檢閱 + 建立]。 檢閱設定，然後選取 [建立] 以提交部署。 當部署成功完成時，選取 [移至資源]。 您會進入 **邏輯應用程式設計工具** 。
+6. 選取 [檢閱 + 建立]。 檢閱設定，然後選取 [建立] 以提交部署。 當部署成功完成時，選取 [移至資源]。 您會進入 **邏輯應用程式設計工具**。
 
 7. 選取觸發程序類型。 向下捲動到 [從通用觸發程序開始] 區段。 選取 [收到 HTTP 要求時]。
 
-     :::image type="content" source="./media/tutorial-geofence/logic-app-trigger.png" alt-text="建立邏輯應用程式的螢幕擷取畫面。":::
+     :::image type="content" source="./media/tutorial-geofence/logic-app-trigger.png" alt-text="建立邏輯應用程式 HTTP 觸發程序的螢幕擷取畫面。":::
 
-8. 在邏輯應用程式設計工具的右上角，選取 [儲存]。 系統會自動產生 **HTTP POST URL** 。 儲存 URL。 您在下一節中需要使用此資訊來建立事件端點。
+8. 在邏輯應用程式設計工具的右上角，選取 [儲存]。 系統會自動產生 **HTTP POST URL**。 儲存 URL。 您在下一節中需要使用此資訊來建立事件端點。
 
-    :::image type="content" source="./media/tutorial-geofence/logic-app-httprequest.png" alt-text="建立邏輯應用程式的螢幕擷取畫面。":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-httprequest.png" alt-text="邏輯應用程式 HTTP 要求 URL 和 JSON 的螢幕擷取畫面。":::
 
 9. 選取 [+ 新增步驟] 。 現在您要選擇動作。 在搜尋方塊中鍵入 `outlook.com email`。 在 [動作] 清單中向下捲動，然後選取 [傳送電子郵件 (V2)]。
   
-    :::image type="content" source="./media/tutorial-geofence/logic-app-designer.png" alt-text="建立邏輯應用程式的螢幕擷取畫面。":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-designer.png" alt-text="建立邏輯應用程式設計工具的螢幕擷取畫面。":::
 
 10. 登入 Outlook 帳戶。 請務必選取 [是] 允許邏輯應用程式存取帳戶。 填寫傳送電子郵件的欄位。
 
-    :::image type="content" source="./media/tutorial-geofence/logic-app-email.png" alt-text="建立邏輯應用程式的螢幕擷取畫面。":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-email.png" alt-text="建立邏輯應用程式傳送電子郵件步驟的螢幕擷取畫面。":::
 
     >[!TIP]
     > 您可以在電子郵件通知中，取出 GeoJSON 回應資料，例如 `geometryId` 或 `deviceId`。 您可以設定 Logic Apps 來讀取事件方格所傳送的資料。 如需如何設定 Logic Apps 以取用並將事件資料傳遞至電子郵件通知的詳細資訊，請參閱[教學課程：使用事件方格和 Logic Apps 來傳送 Azure IoT 中樞事件的相關電子郵件通知](../event-grid/publish-iot-hub-events-to-logic-apps.md)。
@@ -238,11 +238,11 @@ Azure 地圖服務支援[三種事件類型](../event-grid/event-schema-azure-ma
 
 1. 移至您的 Azure 地圖服務帳戶。 在儀表板中，選取 [訂用帳戶]。 選取您的訂用帳戶名稱，然後從設定功能表中選取 [事件]。
 
-    :::image type="content" source="./media/tutorial-geofence/events-tab.png" alt-text="建立邏輯應用程式的螢幕擷取畫面。":::
+    :::image type="content" source="./media/tutorial-geofence/events-tab.png" alt-text="移至 Azure 地圖服務帳戶事件的螢幕擷取畫面。":::
 
 2. 若要建立事件訂用帳戶，請從事件頁面中選取 [+事件訂用帳戶]。
 
-    :::image type="content" source="./media/tutorial-geofence/create-event-subscription.png" alt-text="建立邏輯應用程式的螢幕擷取畫面。":::
+    :::image type="content" source="./media/tutorial-geofence/create-event-subscription.png" alt-text="建立 Azure 地圖服務事件訂用帳戶的螢幕擷取畫面。":::
 
 3. 在 [建立事件訂用帳戶] 頁面上，輸入下列值：
     * 事件訂用帳戶的「名稱」。
@@ -252,7 +252,7 @@ Azure 地圖服務支援[三種事件類型](../event-grid/event-schema-azure-ma
     * 針對「端點類型」，選擇 `Web Hook`。
     * 針對「端點」，請複製您在上一節中所建立邏輯應用程式進入端點的 HTTP POST URL。 如果您忘記儲存此資訊，可以直接回到邏輯應用程式設計工具，並從 HTTP 觸發程序步驟複製。
 
-    :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="建立邏輯應用程式的螢幕擷取畫面。":::
+    :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="Azure 地圖服務事件訂用帳戶詳細資料的螢幕擷取畫面。":::
 
 4. 選取 [建立]。
 

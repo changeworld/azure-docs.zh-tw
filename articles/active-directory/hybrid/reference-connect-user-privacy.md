@@ -16,11 +16,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8f1d1bf35d03f0f7c4d11e4cc7e9b6f98f38d8ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279562"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997693"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>使用者隱私權與 Azure AD Connect 
 
@@ -37,9 +37,9 @@ ms.locfileid: "89279562"
 Azure AD Connect 小組建議採用第二個選項，因為此選項較容易實作及維護。
 
 Azure AD Connect 同步處理伺服器會儲存下列使用者隱私權資料：
-1.  **Azure AD Connect 資料庫**中的個人相關資料
-2.  **Windows 事件記錄**檔案中可能包含個人相關資訊的資料
-3.  **Azure AD Connect 安裝記錄檔**中可能包含的個人相關資料
+1.  **Azure AD Connect 資料庫** 中的個人相關資料
+2.  **Windows 事件記錄** 檔案中可能包含個人相關資訊的資料
+3.  **Azure AD Connect 安裝記錄檔** 中可能包含的個人相關資料
 
 Azure AD Connect 客戶應該在移除使用者資料時使用下列指導方針：
 1.  定期刪除 Azure AD Connect 安裝記錄檔所在資料夾中的內容 – 至少每 48 小時一次
@@ -67,18 +67,18 @@ If ($File.ToUpper() -ne "$env:programdata\aadconnect\PERSISTEDSTATE.XML".toupper
 ### <a name="schedule-this-script-to-run-every-48-hours"></a>將此指令碼排程為每 48 小時執行一次
 請使用下列步驟來將指令碼排程為每 48 小時執行一次。
 
-1.  將指令碼儲存在副檔名為 **&#46;PS1** 的檔案中，然後開啟控制台並按一下 [系統及安全性]****。
+1.  將指令碼儲存在副檔名為 **&#46;PS1** 的檔案中，然後開啟控制台並按一下 [系統及安全性]。
     ![系統](./media/reference-connect-user-privacy/gdpr2.png)
 
-2.  在 [系統管理工具] 標題下，按一下 [排程工作]****。
+2.  在 [系統管理工具] 標題下，按一下 [排程工作]。
     ![Task](./media/reference-connect-user-privacy/gdpr3.png)
-3.  在工作排程器中，以滑鼠右鍵按一下 [工作排程程式庫]****，然後按一下 [建立基本工作...]****
-4.  輸入新工作的名稱，然後按 [下一步]****。
-5.  選取 [每天]**** 作為工作觸發程序，然後按 [下一步]****。
-6.  將週期設定為 **2 天**，然後按 [下一步]****。
-7.  選取 [啟動程式]**** 作為動作，然後按 [下一步]****。
-8.  在程式/指令碼的方塊中輸入 **PowerShell**，然後在標示為 [新增引數 (可省略)]**** 的方塊中，輸入您稍早所建立之指令碼的完整路徑，然後按 [下一步]****。
-9.  下一個畫面會顯示您即將建立之工作的摘要。 確認所有值，然後按一下 [完成]**** 來建立工作。
+3.  在工作排程器中，以滑鼠右鍵按一下 [工作排程程式庫]，然後按一下 [建立基本工作...]
+4.  輸入新工作的名稱，然後按 [下一步]。
+5.  選取 [每天] 作為工作觸發程序，然後按 [下一步]。
+6.  將週期設定為 **2 天**，然後按 [下一步]。
+7.  選取 [啟動程式] 作為動作，然後按 [下一步]。
+8.  在程式/指令碼的方塊中輸入 **PowerShell**，然後在標示為 [新增引數 (可省略)] 的方塊中，輸入您稍早所建立之指令碼的完整路徑，然後按 [下一步]。
+9.  下一個畫面會顯示您即將建立之工作的摘要。 確認所有值，然後按一下 [完成] 來建立工作。
 
 
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 keywords: prometheus、aro、openshift、計量、red hat
 ms.openlocfilehash: 42ed8c90b35eba57fdc3db1f0ed93d44cf9a5e41
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218607"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996843"
 ---
 # <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>在 Azure Red Hat OpenShift 叢集中部署獨立的 Prometheus 實例
 
@@ -36,9 +36,9 @@ ms.locfileid: "92218607"
 
 ## <a name="sign-in-to-the-cluster-by-using-the-oc-tool"></a>使用 OC 工具登入叢集
 
-1. 開啟網頁瀏覽器，然後移至叢集 (的 web 主控台 https://openshift 。*隨機識別碼*。* *azmosa.io) 。
+1. 開啟網頁瀏覽器，然後移至叢集 (的 web 主控台 https://openshift 。*隨機識別碼*。** azmosa.io) 。
 2. 利用您的 Azure 認證登入。
-3. 在右上角選取您的使用者名稱，然後選取 [ **複製登**入] 命令。
+3. 在右上角選取您的使用者名稱，然後選取 [ **複製登** 入] 命令。
 4. 將您的使用者名稱貼入您將使用的終端機。
 
 > [!NOTE]
@@ -188,7 +188,7 @@ oc process -f prometheus-sdrole.yml | oc apply -f - -n prometheus-project
 
 ## <a name="optional-deploy-example-application"></a>選用：部署範例應用程式
 
-一切都能正常運作，但沒有任何計量來源。 移至 Prometheus URL (https://prom-prometheus-project.apps 。*隨機識別碼*。* *azmosa.io/) 。 您可以使用下列命令來找到它：
+一切都能正常運作，但沒有任何計量來源。 移至 Prometheus URL (https://prom-prometheus-project.apps 。*隨機識別碼*。** azmosa.io/) 。 您可以使用下列命令來找到它：
 
 ```
 oc get route prom -n prometheus-project

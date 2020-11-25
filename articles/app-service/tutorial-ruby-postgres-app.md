@@ -6,11 +6,11 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 ms.openlocfilehash: 7d6c0d13e440beb9a934adba3908cc9a08f396f1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747134"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997891"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure App Service 中建置 Ruby 和 Postgres 應用程式
 
@@ -125,7 +125,7 @@ rails server
 az extension add --name db-up
 ```
 
-使用 [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) 命令建立 Postgres 資料庫，如下列範例所示。 以「唯一的」名稱取代 *\<postgresql-name>* (伺服器端點是 *https://\<postgresql-name>.postgres.database.azure.com* )。 為 *\<admin-username>* 和 *\<admin-password>* ，指定認證以建立此 Postgres 伺服器的系統管理員使用者。
+使用 [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) 命令建立 Postgres 資料庫，如下列範例所示。 以「唯一的」名稱取代 *\<postgresql-name>* (伺服器端點是 *https://\<postgresql-name>.postgres.database.azure.com*)。 為 *\<admin-username>* 和 *\<admin-password>* ，指定認證以建立此 Postgres 伺服器的系統管理員使用者。
 
 <!-- Issue: without --location -->
 ```azurecli
@@ -157,7 +157,7 @@ az postgres up --resource-group myResourceGroup --location westeurope --server-n
 
 ### <a name="configure-the-database-connection"></a>設定資料庫連接
 
-在存放庫中，開啟 config/database.yml  。 在檔案最下方，使用下列程式碼取代生產變數。 
+在存放庫中，開啟 config/database.yml。 在檔案最下方，使用下列程式碼取代生產變數。 
 
 ```txt
 production:
@@ -255,9 +255,9 @@ git commit -m "database.yml updates"
 
 ### <a name="configure-database-settings"></a>設定資料庫設定
 
-在 App Service 中，您可以在 Cloud Shell 中使用  。
+在 App Service 中，您可以在 Cloud Shell 中使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) 命令將環境變數設定為「應用程式設定」。
 
-下列 Cloud Shell 命令會設定 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME`和 `DB_PASSWORD` 應用程式設定。 取代預留位置 &lt;appname>  和 &lt;postgres-server-name>  。
+下列 Cloud Shell 命令會設定 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME`和 `DB_PASSWORD` 應用程式設定。 取代預留位置 &lt;appname> 和 &lt;postgres-server-name>。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<postgres-server-name>.postgres.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="root@<postgres-server-name>" DB_PASSWORD="Sampledb1"
@@ -273,7 +273,7 @@ rails secret
 
 設定 Rails 生產環境所需的變數。
 
-在下列 Cloud Shell 命令中，以本機終端機中產生的新秘密金鑰取代兩個 &lt;output-of-rails-secret>  預留位置。
+在下列 Cloud Shell 命令中，以本機終端機中產生的新秘密金鑰取代兩個 &lt;output-of-rails-secret> 預留位置。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings RAILS_MASTER_KEY="<output-of-rails-secret>" SECRET_KEY_BASE="<output-of-rails-secret>" RAILS_SERVE_STATIC_FILES="true" ASSETS_PRECOMPILE="true"
@@ -316,7 +316,7 @@ remote: Running deployment command...
 
 瀏覽至 `http://<app-name>.azurewebsites.net` 並將幾項工作新增至清單。
 
-:::image type="content" source="./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png" alt-text="標題為工作的 Ruby on Rails 應用程式範例的螢幕擷取畫面。":::
+:::image type="content" source="./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png" alt-text="標題為工作的 Azure 應用程式範例的螢幕擷取畫面，其中顯示新增至清單中的工作。":::
 
 恭喜，您正在 Azure App Service 中執行資料驅動的 Ruby on Rails 應用程式。
 
@@ -336,7 +336,7 @@ remote: Running deployment command...
 rails generate migration AddDoneToTasks Done:boolean
 ```
 
-此命令會在 db/migrate  目錄中產生新的移轉檔案。
+此命令會在 db/migrate 目錄中產生新的移轉檔案。
 
 
 在終端機中，執行 Rails 資料庫移轉，以在本機資料庫中進行變更。
@@ -347,7 +347,7 @@ rake db:migrate
 
 ### <a name="update-application-logic"></a>更新應用程式邏輯
 
-開啟 app/controllers/tasks_controller.rb  檔案。 在檔案結尾處，尋找下列這一行︰
+開啟 app/controllers/tasks_controller.rb 檔案。 在檔案結尾處，尋找下列這一行︰
 
 ```rb
 params.require(:task).permit(:Description)
@@ -361,7 +361,7 @@ params.require(:task).permit(:Description, :Done)
 
 ### <a name="update-the-views"></a>更新檢視
 
-開啟 app/views/tasks/_form.html.erb  檔案，這是編輯表單。
+開啟 app/views/tasks/_form.html.erb 檔案，這是編輯表單。
 
 找到 `<%=f.error_span(:Description) %>` 行，並直接將下列程式碼插入該行下方：
 
@@ -381,7 +381,7 @@ params.require(:task).permit(:Description, :Done)
   <dd><%= check_box "task", "Done", {:checked => @task.Done, :disabled => true}%></dd>
 ```
 
-開啟 app/views/tasks/index.html.erb  檔案，這是所有記錄的索引頁面。
+開啟 app/views/tasks/index.html.erb 檔案，這是所有記錄的索引頁面。
 
 找到 `<th><%= model_class.human_attribute_name(:Description) %></th>` 行，並直接將下列程式碼插入該行下方：
 
@@ -439,7 +439,7 @@ git push azure master
 
 移至 [Azure 入口網站](https://portal.azure.com)，以管理您所建立的應用程式。
 
-按一下左側功能表中的 [應用程式服務]  ，然後按一下 Azure 應用程式的名稱。
+按一下左側功能表中的 [應用程式服務]，然後按一下 Azure 應用程式的名稱。
 
 ![入口網站瀏覽至 Azure 應用程式](./media/tutorial-php-mysql-app/access-portal.png)
 

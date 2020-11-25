@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9536cf41add73f494bfff451c201d36e951864e3
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489483"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997659"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection 通知
 
@@ -68,8 +68,8 @@ Azure AD Identity Protection 傳送兩種類型的自動通知電子郵件，協
 
 以系統管理員身分，您可以開啟或關閉傳送每週摘要電子郵件的功能，並選擇獲指派以接收電子郵件的使用者。
 
-在 [ **Azure 入口網站** **Azure Active Directory**  >  **安全性** 身分  >  **識別保護** 的  >  **每週摘要** ] 下，設定中的每週摘要電子郵件。
+在 [ **Azure 入口網站** **Azure Active Directory**  >  **安全性** 身分  >  **識別保護** 的  >  **每週摘要**] 下，設定中的每週摘要電子郵件。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [Azure Active Directory Identity Protection](./overview-identity-protection.md)

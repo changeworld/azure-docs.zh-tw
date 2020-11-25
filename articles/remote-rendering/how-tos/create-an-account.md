@@ -6,15 +6,15 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.openlocfilehash: 8169b277dfae918e86ac493259325ff84d0b6a4e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427481"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998527"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>建立 Azure 遠端轉譯帳戶
 
-本章節會引導您完成為 **Azure 遠端轉譯**服務建立帳戶的步驟。 您必須具備有效帳戶，才能完成任何快速入門或教學課程。
+本章節會引導您完成為 **Azure 遠端轉譯** 服務建立帳戶的步驟。 您必須具備有效帳戶，才能完成任何快速入門或教學課程。
 
 ## <a name="create-an-account"></a>建立帳戶
 
@@ -57,7 +57,7 @@ ms.locfileid: "92427481"
 
 ![訂閱篩選器](./media/azure-subscription-filter.png)
 
-按一下您的帳戶可帶您前往此畫面，隨即會顯示**帳戶識別碼**：
+按一下您的帳戶可帶您前往此畫面，隨即會顯示 **帳戶識別碼**：
 
 ![Azure 帳戶識別碼](./media/azure-account-id.png)
 

@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: fe4ecc237b56575f99844d3ec074225fadb69d3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eeea7b1fed0c2a1f805e21b4dec9ec3cad7fc976
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67673263"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95996797"
 ---
 ## <a name="configure-your-application-to-access-azure-storage"></a>設定您的應用程式以存取 Azure 儲存體
 有兩種方式可驗證您的應用程式對儲存體服務的存取權：
@@ -49,5 +49,4 @@ ms.locfileid: "67673263"
    
    `"SharedAccessSignature=sv=2015-04-05&ss=b&srt=sco&sp=rw&se=2016-07-21T18%3A00%3A00Z&sig=3ABdLOJZosCp0o491T%2BqZGKIhafF1nlM3MzESDDD3Gg%3D;BlobEndpoint=https://youraccount.blob.core.windows.net"`
 
-如您所見，使用 SAS 時，您並不會在應用程式中公開您的帳戶金鑰。 若要了解 SAS 與使用 SAS 的最佳做法，請參閱[共用存取簽章：了解 SAS 模型](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)。
-
+如您所見，使用 SAS 時，您並不會在應用程式中公開您的帳戶金鑰。 若要了解 SAS 與使用 SAS 的最佳做法，請參閱[共用存取簽章：了解 SAS 模型](../articles/storage/common/storage-sas-overview.md)。

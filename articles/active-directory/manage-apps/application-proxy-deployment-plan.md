@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: kenwith
 ms.openlocfilehash: 9736e1b71f5e129989aba9a045581bae8a1c5f93
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658276"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997540"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>規劃 Azure AD 應用程式 Proxy 部署
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) 應用程式 Proxy 是適用于內部部署應
 
 下一節提供主要規劃專案的廣泛觀點，這些專案將會為您設定有效率的部署體驗。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>Prerequisites
 
 開始執行之前，您必須符合下列必要條件。 您可以在本 [教學](application-proxy-add-on-premises-application.md)課程中看到有關設定環境的詳細資訊，包括這些必要條件。
 
