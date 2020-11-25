@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: 70441c3a1953fa1b6ebd69ef9cdb324d6cc04a5b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e31a1cef427062723adf4b45bd47cd8009630128
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336430"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888805"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>快速入門：設定 Azure NetApp Files 並建立 NFS 磁碟區
 
@@ -32,8 +32,6 @@ ms.locfileid: "93336430"
 
 > [!IMPORTANT]
 > 您必須具備 Azure NetApp Files 服務的存取權。 若要要求服務的存取權，請參閱 [Azure NetApp 檔案等候清單提交頁面](https://aka.ms/azurenetappfiles) \(英文\)。  您必須等候 Azure NetApp Files 團隊發出官方確認電子郵件，然後再繼續。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ---
 
@@ -65,6 +63,10 @@ ms.locfileid: "93336430"
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
+備妥環境以使用 Azure CLI。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
 
 # <a name="template"></a>[範本](#tab/template)
@@ -81,7 +83,7 @@ ms.locfileid: "93336430"
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-1. 在 Azure 入口網站的搜尋方塊中，輸入 **Azure NetApp Files** ，然後從顯示的清單中選取 [Azure NetApp Files]。
+1. 在 Azure 入口網站的搜尋方塊中，輸入 **Azure NetApp Files**，然後從顯示的清單中選取 [Azure NetApp Files]。
 
       ![選取 Azure NetApp Files](../media/azure-netapp-files/azure-netapp-files-select-azure-netapp-files.png)
 
@@ -176,7 +178,7 @@ ms.locfileid: "93336430"
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-1. 從 Azure NetApp Files 管理刀鋒視窗中，選取您的 NetApp 帳戶 ( **myaccount1** )。
+1. 從 Azure NetApp Files 管理刀鋒視窗中，選取您的 NetApp 帳戶 (**myaccount1**)。
 
     ![選取 NetApp 帳戶](../media/azure-netapp-files/azure-netapp-files-select-netapp-account.png)
 
@@ -260,7 +262,7 @@ ms.locfileid: "93336430"
 
 3. 在 [建立磁碟區] 視窗中，提供磁碟區的資訊：
    1. 輸入 **myvol1** 作為磁碟區名稱。
-   2. 選取您的容量集區 ( **mypool1** )。
+   2. 選取您的容量集區 (**mypool1**)。
    3. 針對配額，請使用預設值。
    4. 在 [虛擬網路] 下，按一下 [新建]  來建立新的 Azure 虛擬網路 (Vnet)。  然後填寫下列資訊︰
        * 輸入 **myvnet1** 作為 Vnet 名稱。
@@ -269,7 +271,7 @@ ms.locfileid: "93336430"
        * 指定子網路位址範圍，例如 10.7.0.0/24。 您無法與其他資源共用專用子網路。
        * 針對子網路委派，請選取 [Microsoft.NetApp/磁碟區]  。
        * 按一下 [確定]  以建立 Vnet。
-   5. 在子網路中，選取新建立的 Vnet ( **myvnet1** ) 作為委派子網路。
+   5. 在子網路中，選取新建立的 Vnet (**myvnet1**) 作為委派子網路。
 
       ![建立磁碟區視窗](../media/azure-netapp-files/azure-netapp-files-create-volume-window.png)
 
@@ -277,8 +279,8 @@ ms.locfileid: "93336430"
 
 4. 按一下 [通訊協定]  ，然後完成下列動作：
     * 選取 [NFS]  作為磁碟區的通訊協定類型。
-    * 輸入 **myfilepath1** ，作為用來建立磁碟區匯出路徑的檔案路徑。
-    * 選取磁碟區的 NFS 版本 ( **NFSv3** 或 **NFSv4.1** )。
+    * 輸入 **myfilepath1**，作為用來建立磁碟區匯出路徑的檔案路徑。
+    * 選取磁碟區的 NFS 版本 (**NFSv3** 或 **NFSv4.1**)。
       請參閱有關 NFS 版本的[考量](azure-netapp-files-create-volumes.md#considerations)和[最佳做法](azure-netapp-files-create-volumes.md#best-practice)。
 
     ![為快速入門指定 NFS 通訊協定](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
@@ -408,7 +410,7 @@ ms.locfileid: "93336430"
 > [!IMPORTANT]
 > 資源群組內的所有資源都將永久刪除且無法復原。
 
-1. 在 Azure 入口網站的搜尋方塊中，輸入 **Azure NetApp Files** ，然後從顯示的清單中選取 [Azure NetApp Files]。
+1. 在 Azure 入口網站的搜尋方塊中，輸入 **Azure NetApp Files**，然後從顯示的清單中選取 [Azure NetApp Files]。
 
 2. 在訂用帳戶清單中，按一下您想要刪除的資源群組 (myRG1)。
 

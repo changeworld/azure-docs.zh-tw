@@ -6,19 +6,18 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: enterprise-users
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5cec8802fba3852f4600b9fb426ee4c175314b1
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 3f79b08a75deca64a301f5b8e0b3a7634f5a3c7d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647115"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95502989"
 ---
 # <a name="restore-a-deleted-microsoft-365-group-in-azure-active-directory"></a>在 Azure Active Directory 中還原已刪除的 Microsoft 365 群組
 

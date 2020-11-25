@@ -8,12 +8,12 @@ ms.author: mikben
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 1c79ffb02df4a64b2c506ef0863d9bb2da06db53
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d680df0ec5e18cca4d7a42edf45dbd6a50be1472
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91303364"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888601"
 ---
 # <a name="what-is-azure-communication-services"></a>什麼是 Azure 通訊服務？
 
@@ -77,9 +77,9 @@ Azure 通訊服務可讓您輕鬆地將即時多媒體語音、影片、IP 電�
 
 您可以考慮使用另外兩個 Microsoft 通訊產品，它們目前與 Azure 通訊服務沒有直接互通：
 
- - [Microsoft Graph 雲端通訊 API](https://docs.microsoft.com/graph/cloud-communications-concept-overview) 可讓組織建立的通訊體驗繫系結至具有 M365 授權的 Azure Active Directory 使用者。 這適合用在繫結至 Azure Active Directory 的應用程式，或用於您想要在 Microsoft Teams 中擴充生產力體驗之處。 另外還有一些 API 可在 [Teams 體驗](https://docs.microsoft.com/microsoftteams/platform/?view=msteams-client-js-latest&preserve-view=true)中建立應用程式和自訂。
+ - [Microsoft Graph 雲端通訊 API](/graph/cloud-communications-concept-overview) 可讓組織建立的通訊體驗繫系結至具有 M365 授權的 Azure Active Directory 使用者。 這適合用在繫結至 Azure Active Directory 的應用程式，或用於您想要在 Microsoft Teams 中擴充生產力體驗之處。 另外還有一些 API 可在 [Teams 體驗](/microsoftteams/platform/?preserve-view=true&view=msteams-client-js-latest)中建立應用程式和自訂。
 
- - [Azure PlayFab Party](https://docs.microsoft.com/gaming/playfab/features/multiplayer/networking/) 簡化了在遊戲中加入低延遲聊天和資料通訊的程序。 雖然您可以使用通訊服務來增強遊戲的聊天和社交系統，但 PlayFab 是一種量身打造的選擇，在 Xbox 上免費提供。
+ - [Azure PlayFab Party](/gaming/playfab/features/multiplayer/networking/) 簡化了在遊戲中加入低延遲聊天和資料通訊的程序。 雖然您可以使用通訊服務來增強遊戲的聊天和社交系統，但 PlayFab 是一種量身打造的選擇，在 Xbox 上免費提供。
 
 
 ## <a name="next-steps"></a>後續步驟

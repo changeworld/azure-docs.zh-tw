@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 10/02/2020
-ms.openlocfilehash: 9cd1a6059360c948229a1da00780cd6cb40b7f35
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3956f8d91793367f7200d2f349a8713aff3d2f59
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91666529"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016219"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>快速入門：探索 Azure 時間序列深入解析 Gen2 示範環境
 
@@ -111,7 +111,7 @@ Azure 時間序列深入解析 Gen2 總管會顯示歷史資料和根本原因�
 
 1. 藉由新增內容相關度高的資料，就更能看出階段 3 的下降就是問題所在。 現在，我們會對於警告原因有很好的線索。 我們準備好將問題交付給我們的維護小組。  
 
-    * 變更顯示畫面，使所有**發電機系統**感應器以相同的圖表比例重疊。
+    * 變更顯示畫面，使所有 **發電機系統** 感應器以相同的圖表比例重疊。
 
       [![變更顯示畫面以包含所有項目](media/v2-update-quickstart/quick-start-generator-system.png)](media/v2-update-quickstart/quick-start-generator-system.png#lightbox)
 
@@ -127,9 +127,9 @@ Azure 時間序列深入解析 Gen2 總管會顯示歷史資料和根本原因�
 您已準備好建立自己的 Azure 時間序列深入解析 Gen2 環境。 若要開始：
 
 > [!div class="nextstepaction"]
-> [規劃 Azure 時間序列深入解析 Gen2 環境](time-series-insights-update-plan.md)
+> [規劃 Azure 時間序列深入解析 Gen2 環境](./how-to-plan-your-environment.md)
 
 了解如何使用示範及其功能：
 
 > [!div class="nextstepaction"]
-> [Azure 時間序列深入解析 Gen2 總管](time-series-insights-update-explorer.md)
+> [Azure 時間序列深入解析 Gen2 總管](./concepts-ux-panels.md)

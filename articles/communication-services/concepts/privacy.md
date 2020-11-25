@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6b8145666ab92432d01b2f039685afe5534f0958
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 7c522abd04f4a3e480bb5c3e14e78cc03dbd5d86
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043564"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888635"
 ---
 # <a name="region-availability-and-data-residency"></a>區域可用性與資料落地
 
@@ -37,13 +37,13 @@ Azure 通訊服務致力於協助我們的客戶符合其隱私權和個人資�
 
 ### <a name="identities"></a>Identities
 
-Azure 通訊服務會維護一個身分識別目錄，使用 [DeleteIdentity](https://docs.microsoft.com/rest/api/communication/communicationidentity/delete) API 來加以移除。 刪除身分識別將會撤銷所有相關聯的存取權杖，並刪除其交談訊息。 如需如何移除身分識別的詳細資訊，[參閱此頁面](../quickstarts/access-tokens.md)。
+Azure 通訊服務會維護一個身分識別目錄，使用 [DeleteIdentity](/rest/api/communication/communicationidentity/delete) API 來加以移除。 刪除身分識別將會撤銷所有相關聯的存取權杖，並刪除其交談訊息。 如需如何移除身分識別的詳細資訊，[參閱此頁面](../quickstarts/access-tokens.md)。
 
 - DeleteIdentity
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
 
-透過通訊服務使用 Azure 入口網站或 Azure Resource Manager API，可以建立個人資料。 [使用此頁面了解如何管理 Azure Resource Manager 系統中的個人資料。](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-manager-personal-data)
+透過通訊服務使用 Azure 入口網站或 Azure Resource Manager API，可以建立個人資料。 [使用此頁面了解如何管理 Azure Resource Manager 系統中的個人資料。](../../azure-resource-manager/management/resource-manager-personal-data.md)
 
 ### <a name="telephone-number-management"></a>電話號碼管理
 
@@ -52,7 +52,7 @@ Azure 通訊服務會維護與通訊服務資源相關聯的電話號碼目錄�
 
 ### <a name="chat"></a>聊天
 
-聊天執行緒和訊息會一直保留到明確刪除為止。 30 天後，系統將會自動刪除完全閒置執行緒。 使用[聊天 API](https://docs.microsoft.com/rest/api/communication/chat/deletechatmessage/deletechatmessage) 來取得、列出、更新和刪除訊息。
+聊天執行緒和訊息會一直保留到明確刪除為止。 30 天後，系統將會自動刪除完全閒置執行緒。 使用[聊天 API](/rest/api/communication/chat/deletechatmessage/deletechatmessage) 來取得、列出、更新和刪除訊息。
 
 - `Get Thread`
 - `Get Message`
@@ -73,10 +73,10 @@ Azure 通訊服務會維護與通訊服務資源相關聯的電話號碼目錄�
 
 ## <a name="azure-monitor-and-log-analytics"></a>Azure 監視器與 Log Analytics
 
-Azure 通訊服務會提供 Azure 監視器記錄資料，以司解服務的操作健康情況和使用方式。 其中有些記錄包含通訊服務身分識別和電話號碼作為欄位資料。 若要刪除所有可能的個人資料，[請使用 Azure 監視器的這些程序](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt)。 建議您設定 [Azure 監視器的預設保留期限](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)。
+Azure 通訊服務會提供 Azure 監視器記錄資料，以司解服務的操作健康情況和使用方式。 其中有些記錄包含通訊服務身分識別和電話號碼作為欄位資料。 若要刪除所有可能的個人資料，[請使用 Azure 監視器的這些程序](../../azure-monitor/platform/personal-data-mgmt.md)。 建議您設定 [Azure 監視器的預設保留期限](../../azure-monitor/platform/manage-cost-storage.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [適用於 GDPR 和 CCPA 的 Azure 資料主體要求](https://docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-azure?view=o365-worldwide&preserve-view=true)
+- [適用於 GDPR 和 CCPA 的 Azure 資料主體要求](/microsoft-365/compliance/gdpr-dsr-azure?preserve-view=true&view=o365-worldwide)
 - [Microsoft 信任中心](https://www.microsoft.com/trust-center/privacy/data-location)
 - [Azure 互動式地圖 - 我的客戶資料在哪裡？](https://azuredatacentermap.azurewebsites.net/)

@@ -7,12 +7,12 @@ ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: dms
-ms.openlocfilehash: 24a0d16a6ff052df4b7a9bcdd078542987b4fd50
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a9c68bca4d50af734a0a2cd8a91c7e46d9b56ff1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88661175"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963210"
 ---
 # <a name="quickstart-create-instance-of-azure-database-migration-service-using-arm-template"></a>快速入門：使用 ARM 範本建立 Azure 資料庫移轉服務的執行個體
 
@@ -109,7 +109,7 @@ Write-Host "Press [ENTER] to continue..."
 如需逐步教學課程，以引導您完成建立範本的流程，請參閱：
 
 > [!div class="nextstepaction"]
-> [教學課程：建立及部署您的第一個 ARM 範本](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [教學課程：建立及部署您的第一個 ARM 範本](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 如需部署 Azure 資料庫移轉服務的其他方式，請參閱： 
 - [Azure 入口網站](quickstart-create-data-migration-service-portal.md)

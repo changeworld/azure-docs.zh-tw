@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: eebfa61632bc49d5df35c17ba2d2faca0382001c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 998d49e91d38a1f2fdc2503165ee99635e153027
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91336134"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001893"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -26,7 +26,7 @@ Azure Blob 儲存體經過最佳化，能妥善儲存大量的非結構化資料
 * [API 參考文件](/javascript/api/@azure/storage-blob)
 * [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
 * [套件 (npm)](https://www.npmjs.com/package/@azure/storage-blob)
-* [範例](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [範例](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -66,7 +66,7 @@ Blob 儲存體提供三種類型資源：
 
 ### <a name="create-a-cors-rule"></a>建立 CORS 規則
 
-您必須先設定帳戶以啟用[跨原始資源共用](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) (或簡稱為 CORS)，Web 應用程式才可從用戶端存取 Blob 儲存體。
+您必須先設定帳戶以啟用[跨原始資源共用](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) (或簡稱為 CORS)，Web 應用程式才可從用戶端存取 Blob 儲存體。
 
 在 Azure 入口網站中，選取您的儲存體帳戶。 若要定義新的 CORS 規則，請瀏覽至 [設定] 區段，然後選取 [CORS]。 在此快速入門中，您會建立開啟的 CORS 規則：
 
@@ -76,10 +76,10 @@ Blob 儲存體提供三種類型資源：
 
 |設定  |值  | 描述 |
 |---------|---------|---------|
-| **允許的原始來源** | **\*** | 接受設為可接受原始來源之網域的逗號分隔清單。 將值設為 `*` 時，會允許所有網域存取儲存體帳戶。 |
+| **允許的原始來源** | **\** _ | 接受設為可接受原始來源之網域的逗號分隔清單。 將值設為 `_` 時，會允許所有網域存取儲存體帳戶。 |
 | **允許的方法** | **DELETE**、**GET**、**HEAD**、**MERGE**、**POST**、**OPTIONS** 和 **PUT** | 列出可對儲存體帳戶執行的 HTTP 動詞。 基於此快速入門的用途，請選取所有可用選項。 |
-| **允許的標頭** | **\*** | 定義儲存體帳戶所允許的要求標頭清單 (包括帶有前置詞的標頭)。 將值設為 `*`，會允許所有標頭存取。 |
-| **公開的標頭** | **\*** | 列出帳戶允許的回應標頭。 將值設為 `*`，會允許帳戶傳送任何標頭。 |
+| **允許的標頭** | **\** _ | 定義儲存體帳戶所允許的要求標頭清單 (包括帶有前置詞的標頭)。 將值設為 `_`，會允許所有標頭存取。 |
+| **公開的標頭** | **\** _ | 列出帳戶允許的回應標頭。 將值設為 `_`，會允許帳戶傳送任何標頭。 |
 | **存留期上限** | **86400** | 瀏覽器快取預檢 OPTIONS 要求的時間量上限 (以秒為單位)。 值為 *86400* 時，會允許快取保留一天。 |
 
 在您使用此表格中的值填入欄位之後，請按一下 [儲存] 按鈕。
@@ -216,7 +216,7 @@ npm install -g parcel-bundler
 
 儲存 index.js 檔案。
 
-此程式碼會將 [選取並上傳檔案] 按鈕連結到隱藏的 `file-input` 元素。 `click` 按鈕事件會觸發 `click` 檔案輸入事件，並顯示檔案選擇器。 當您選取檔案並關閉對話方塊後，`input` 事件就會發生，並呼叫 `uploadFiles` 函式。 此函式會建立 [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient) 物件，然後針對您選取的每個檔案呼叫瀏覽器專用的 [uploadBrowserData](/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) 函式。 每次呼叫都會傳回 `Promise`。 每個 `Promise` 都會新增至一份清單，使其能夠全部一起等候，這麼一來，檔案就能平行地上傳。
+此程式碼會將 [選取並上傳檔案]  按鈕連結到隱藏的 `file-input` 元素。 `click` 按鈕事件會觸發 `click` 檔案輸入事件，並顯示檔案選擇器。 當您選取檔案並關閉對話方塊後，`input` 事件就會發生，並呼叫 `uploadFiles` 函式。 此函式會建立 [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient) 物件，然後針對您選取的每個檔案呼叫瀏覽器專用的 [uploadBrowserData](/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) 函式。 每次呼叫都會傳回 `Promise`。 每個 `Promise` 都會新增至一份清單，使其能夠全部一起等候，這麼一來，檔案就能平行地上傳。
 
 ### <a name="delete-blobs"></a>刪除 Blob
 

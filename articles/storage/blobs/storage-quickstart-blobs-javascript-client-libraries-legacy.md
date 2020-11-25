@@ -9,12 +9,12 @@ ms.author: mhopkins
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 134408704d54479fbbe0dfb5094f2920fa2e74be
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d212029936bcd257ef5a78eeedc98c2d6e1df514
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91336185"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96012777"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -35,7 +35,7 @@ ms.locfileid: "91336185"
 
 ## <a name="setting-up-storage-account-cors-rules"></a>設定儲存體帳戶 CORS 規則
 
-您必須先設定帳戶以啟用[跨原始資源共用](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) (或簡稱為 CORS)，Web 應用程式才可從用戶端存取 Blob 儲存體。
+您必須先設定帳戶以啟用[跨原始資源共用](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) (或簡稱為 CORS)，Web 應用程式才可從用戶端存取 Blob 儲存體。
 
 返回 Azure 入口網站，然後選取您的儲存體帳戶。 若要定義新的 CORS 規則，請瀏覽至 [設定]  區段，然後按一下 [CORS]  連結。 接著，按一下 [新增]  按鈕，以開啟 [新增 CORS 規則]  視窗。 在此快速入門中，您會建立開啟的 CORS 規則：
 
@@ -185,7 +185,7 @@ npx http-server
 
 此程式碼會將參考新增至指令碼檔案，並為您自己的 JavaScript 程式碼提供位置。 基於本快速入門的目的，我們會使用 *azure-storage-blob.js* 指令碼檔案，讓您可以在 VS Code 中將其開啟、讀取其內容，然後設定中斷點。 在生產環境中，您應該使用較精簡的 *azure-storage.blob.min.js* 檔案，這也會以 zip 檔案提供。
 
-您可以在[參考文件](https://docs.microsoft.com/javascript/api/%40azure/storage-blob/index)中深入了解每個 Blob 儲存體函式。 請注意，SDK 中的某些函式只適用於 Node.js，或是僅適用於瀏覽器。
+您可以在[參考文件](/javascript/api/%40azure/storage-blob/index)中深入了解每個 Blob 儲存體函式。 請注意，SDK 中的某些函式只適用於 Node.js，或是僅適用於瀏覽器。
 
 *azure-storage-blob.js* 中的程式碼會匯出名為 `azblob` 的全域變數，您將會在 JavaScript 程式碼中使用此變數來存取 Blob 儲存體 API。
 
@@ -226,7 +226,7 @@ const containerURL = new azblob.ContainerURL(
     azblob.StorageURL.newPipeline(new azblob.AnonymousCredential));
 ```
 
-此程式碼會使用您的帳戶資訊和 SAS 來建立 [ContainerURL](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL) 執行個體，這可用於建立和管理儲存體容器。
+此程式碼會使用您的帳戶資訊和 SAS 來建立 [ContainerURL](/javascript/api/@azure/storage-blob/ContainerURL) 執行個體，這可用於建立和管理儲存體容器。
 
 ### <a name="create-and-delete-a-storage-container"></a>建立及刪除儲存體容器
 
@@ -257,7 +257,7 @@ createContainerButton.addEventListener("click", createContainer);
 deleteContainerButton.addEventListener("click", deleteContainer);
 ```
 
-此程式碼會呼叫 ContainerURL 的[建立](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-)和[刪除](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#delete-containerdeletemethodoptions-)函式，無須使用 [Aborter](https://docs.microsoft.com/javascript/api/@azure/storage-blob/aborter) 執行個體。 為了簡化本快速入門，此程式碼會假設您已建立並啟用儲存體帳戶。 在生產環境的程式碼中，請使用 Aborter 執行個體來新增逾時功能。
+此程式碼會呼叫 ContainerURL 的[建立](/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-)和[刪除](/javascript/api/@azure/storage-blob/containerclient#delete-containerdeletemethodoptions-)函式，無須使用 [Aborter](/javascript/api/@azure/storage-blob/aborter) 執行個體。 為了簡化本快速入門，此程式碼會假設您已建立並啟用儲存體帳戶。 在生產環境的程式碼中，請使用 Aborter 執行個體來新增逾時功能。
 
 ### <a name="list-blobs"></a>列出 Blob
 
@@ -293,7 +293,7 @@ const listFiles = async () => {
 listButton.addEventListener("click", listFiles);
 ```
 
-此程式碼會在迴圈中呼叫 [ContainerURL.listBlobFlatSegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) 函式，以確保擷取所有區段。 該函式會針對每個區段，在所包含的 Blob 項目清單上循環，並更新 **檔案** 清單。
+此程式碼會在迴圈中呼叫 [ContainerURL.listBlobFlatSegment](/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) 函式，以確保擷取所有區段。 該函式會針對每個區段，在所包含的 Blob 項目清單上循環，並更新 **檔案** 清單。
 
 ### <a name="upload-blobs"></a>上傳 Blob
 
@@ -321,7 +321,7 @@ selectButton.addEventListener("click", () => fileInput.click());
 fileInput.addEventListener("change", uploadFiles);
 ```
 
-此程式碼會將 [選取並上傳檔案]  按鈕連結到隱藏的 `file-input` 元素。 如此一來，`click` 按鈕事件會觸發 `click` 檔案輸入事件，並顯示檔案選擇器。 當您選取檔案並關閉對話方塊後，`input` 事件就會發生，並呼叫 `uploadFiles` 函式。 此函式會針對您選取的每個檔案呼叫瀏覽器專用的 [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) 函式。 每個呼叫都會傳回可新增至清單的 Promise，讓所有檔案同時一起等候，這麼一來，檔案就能平行地上傳。
+此程式碼會將 [選取並上傳檔案]  按鈕連結到隱藏的 `file-input` 元素。 如此一來，`click` 按鈕事件會觸發 `click` 檔案輸入事件，並顯示檔案選擇器。 當您選取檔案並關閉對話方塊後，`input` 事件就會發生，並呼叫 `uploadFiles` 函式。 此函式會針對您選取的每個檔案呼叫瀏覽器專用的 [uploadBrowserDataToBlockBlob](/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) 函式。 每個呼叫都會傳回可新增至清單的 Promise，讓所有檔案同時一起等候，這麼一來，檔案就能平行地上傳。
 
 ### <a name="delete-blobs"></a>刪除 Blob
 
@@ -349,7 +349,7 @@ const deleteFiles = async () => {
 deleteButton.addEventListener("click", deleteFiles);
 ```
 
-此程式碼會呼叫 [BlobURL.delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/BlobURL#delete-aborter--iblobdeleteoptions-) 函式來移除清單中選定的每個檔案。 然後呼叫稍早說明的 `listFiles` 函式，來重新整理 **檔案** 清單的內容。
+此程式碼會呼叫 [BlobURL.delete](/javascript/api/@azure/storage-blob/BlobURL#delete-aborter--iblobdeleteoptions-) 函式來移除清單中選定的每個檔案。 然後呼叫稍早說明的 `listFiles` 函式，來重新整理 **檔案** 清單的內容。
 
 ### <a name="run-and-test-the-web-application"></a>執行並測試 Web 應用程式
 
@@ -364,4 +364,4 @@ deleteButton.addEventListener("click", deleteFiles);
 在本快速入門中，您已建立可從瀏覽器型 JavaScript 中存取 Blob 儲存體的簡易網站。 若要了解如何在 Blob 儲存體上裝載網站本身，請繼續下列教學課程：
 
 > [!div class="nextstepaction"]
-> [將靜態網站裝載於 Blob 儲存體上](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host)
+> [將靜態網站裝載於 Blob 儲存體上](./storage-blob-static-website-host.md)

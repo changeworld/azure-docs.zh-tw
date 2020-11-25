@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 10/15/2020
 ms.author: cherylmc
 ms.openlocfilehash: 325f39b695d80c14ed7097d071380b937458546c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150454"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021481"
 ---
 # <a name="quickstart-connect-to-a-vm-securely-through-a-browser-via-private-ip-address"></a>快速入門：透過瀏覽器使用私人 IP 位址安全地連線到 VM
 
@@ -72,44 +72,44 @@ ms.locfileid: "92150454"
 1. 瀏覽至您想要連線的 VM，然後選取 [連線]。
 
    :::image type="content" source="./media/quickstart-host-portal/vm-settings.png" alt-text="虛擬機器設定" lightbox="./media/quickstart-host-portal/vm-settings.png":::
-1. 從下拉式清單中，選取 [Bastion]  。
+1. 從下拉式清單中，選取 [Bastion]。
 1. 在 [TestVM | 連線頁面] 上，選取 [使用 Bastion]。
 
-   :::image type="content" source="./media/quickstart-host-portal/select-bastion.png" alt-text="虛擬機器設定" border="false":::
+   :::image type="content" source="./media/quickstart-host-portal/select-bastion.png" alt-text="選取 Bastion" border="false":::
 
 1. 在 [Bastion] 頁面上，填寫下列設定欄位：
 
-   * **名稱** ：為堡壘主機命名。
-   * **子網路** ：這個虛擬網路位址空間會是 Bastion 資源的部署目的地。 此子網路必須以名稱 **AzureBastionSubnet** 建立。 請使用至少 /27 或更大的子網路 (/27、/26、/25 等)。
+   * **名稱**：為堡壘主機命名。
+   * **子網路**：這個虛擬網路位址空間會是 Bastion 資源的部署目的地。 此子網路必須以名稱 **AzureBastionSubnet** 建立。 請使用至少 /27 或更大的子網路 (/27、/26、/25 等)。
    * 選取 [管理子網路組態]。
 1. 在 [子網路] 頁面上，選取 [+子網路]。
 
-   :::image type="content" source="./media/quickstart-host-portal/subnet.png" alt-text="虛擬機器設定":::
+   :::image type="content" source="./media/quickstart-host-portal/subnet.png" alt-text="+ 子網路":::
     
-1. 在 [新增子網路] 頁面上，於 [名稱] 中輸入 **AzureBastionSubnet** 。
+1. 在 [新增子網路] 頁面上，於 [名稱] 中輸入 **AzureBastionSubnet**。
    * 在 [子網路位址範圍] 中，選擇位於虛擬網路位址空間內的子網路位址。
    * 請勿調整任何其他設定。 選取 [確定] 以接受並儲存子網路變更。
 
-   :::image type="content" source="./media/quickstart-host-portal/add-subnet.png" alt-text="虛擬機器設定":::
+   :::image type="content" source="./media/quickstart-host-portal/add-subnet.png" alt-text="新增子網路":::
 1. 按一下瀏覽器上的 [上一頁] 按鈕，瀏覽回到 [Bastion] 頁面，然後繼續指定值。
-   * **公用 IP 位址** ：維持 [新建]。
-   * **公用 IP 位址名稱** ：公用 IP 位址資源的名稱。
-   * **指派** ：預設為 [靜態]。 您無法為 Azure Bastion 使用 [動態] 指派。
-   * **資源群組** ：與 VM 相同的資源群組。
+   * **公用 IP 位址**：維持 [新建]。
+   * **公用 IP 位址名稱**：公用 IP 位址資源的名稱。
+   * **指派**：預設為 [靜態]。 您無法為 Azure Bastion 使用 [動態] 指派。
+   * **資源群組**：與 VM 相同的資源群組。
 
-   :::image type="content" source="./media/quickstart-host-portal/validate.png" alt-text="虛擬機器設定":::
+   :::image type="content" source="./media/quickstart-host-portal/validate.png" alt-text="建立堡壘主機":::
 1. 選取 [建立] 以建立堡壘主機。 Azure 會驗證您的設定，然後建立主機。 主機及其資源需要大約 5 分鐘的時間來建立和部署。
 
 ## <a name="connect"></a><a name="connect"></a>連線
 
 將 Bastion 部署至虛擬網路後，畫面會變更為 [連線] 頁面。
 
-1. 輸入虛擬機器的使用者名稱和密碼。 然後，選取 [連線]  。
+1. 輸入虛擬機器的使用者名稱和密碼。 然後，選取 [連線]。
 
-   :::image type="content" source="./media/quickstart-host-portal/connect-vm.png" alt-text="虛擬機器設定":::
+   :::image type="content" source="./media/quickstart-host-portal/connect-vm.png" alt-text="螢幕擷取畫面顯示 [使用 Azure Bastion 進行連線] 對話方塊。":::
 1. 這個虛擬機器的 RDP 連線會使用連接埠 443 和 Bastion 服務，直接在 Azure 入口網站中開啟 (透過 HTML5)。
 
-   :::image type="content" source="./media/quickstart-host-portal/connected.png" alt-text="虛擬機器設定":::
+   :::image type="content" source="./media/quickstart-host-portal/connected.png" alt-text="RDP 連線":::
 
 ## <a name="clean-up-resources"></a>清除資源
 

@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: fa1354c471cf23d85b3c2b0b563ed0463f5e19b2
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: a32811b439a569a8f8f82fcc046e0f4b89e47a38
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90528409"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966695"
 ---
 # <a name="quickstart-provision-a-simulated-device-to-iot-hub-with-symmetric-keys"></a>使用對稱金鑰將模擬裝置佈建至 IoT 中樞
 
@@ -34,7 +34,7 @@ ms.locfileid: "90528409"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* 請確定您已在電腦上安裝 [Java SE 開發套件 8](https://aka.ms/azure-jdks) 或更新版本。
+* 請確定您已在電腦上安裝 [Java SE 開發套件 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) 或更新版本。
 
 * 下載並安裝 [Maven](https://maven.apache.org/install.html)。
 
@@ -44,7 +44,7 @@ ms.locfileid: "90528409"
 
 ## <a name="prepare-the-java-sdk-environment"></a>準備 Java SDK 環境 
 
-1. 確定 Git 已安裝在機器上，並已新增至命令視窗可存取的環境變數。 請參閱[軟體自由保護協會的 Git 用戶端工具](https://git-scm.com/download/)以取得所要安裝的最新版 `git` 工具，其中包括 **Git Bash** (您可用來與本機 Git 存放庫互動的命令列應用程式)。 
+1. 確定 Git 已安裝在機器上，並已新增至命令視窗可存取的環境變數。 請參閱 [軟體自由保護協會的 Git 用戶端工具](https://git-scm.com/download/)以取得所要安裝的最新版 `git` 工具，其中包括 **Git Bash** (您可用來與本機 Git 存放庫互動的命令列應用程式)。 
 
 2. 開啟命令提示字元。 複製裝置模擬程式碼範例的 GitHub 存放庫：
     
@@ -60,13 +60,13 @@ ms.locfileid: "90528409"
 
 ## <a name="create-a-device-enrollment"></a>建立裝置註冊
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)，選取左側功能表上的 [所有資源]**** 按鈕，然後開啟您的裝置佈建服務 (DPS) 執行個體。
+1. 登入 [Azure 入口網站](https://portal.azure.com)，選取左側功能表上的 [所有資源] 按鈕，然後開啟您的裝置佈建服務 (DPS) 執行個體。
 
-2. 選取 [管理註冊]**** 索引標籤，然後選取頂端的 [新增個別註冊]**** 按鈕。 
+2. 選取 [管理註冊] 索引標籤，然後選取頂端的 [新增個別註冊] 按鈕。 
 
-3. 在 [新增註冊]**** 面板中，輸入下列資訊，然後按 [儲存]**** 按鈕。
+3. 在 [新增註冊] 面板中，輸入下列資訊，然後按 [儲存] 按鈕。
 
-   - **機制**：選取 [對稱金鑰]**** 作為身分識別證明「機制」**。
+   - **機制**：選取 [對稱金鑰] 作為身分識別證明「機制」。
 
    - **自動產生金鑰**︰選取此方塊。
 
@@ -76,9 +76,9 @@ ms.locfileid: "90528409"
 
      ![在入口網站中為對稱金鑰證明新增個別註冊](./media/quick-create-simulated-device-symm-key-java/create-individual-enrollment-java.png)
 
-4. 一旦儲存您的註冊，將會產生 [主要金鑰]**** 與 [次要金鑰]**** 並新增到註冊項目。 您的對稱金鑰裝置註冊會在 [個別註冊]** 索引標籤中的 [註冊識別碼]** 欄下顯示為 **symm-key-java-device-007**。 
+4. 一旦儲存您的註冊，將會產生 [主要金鑰] 與 [次要金鑰] 並新增到註冊項目。 您的對稱金鑰裝置註冊會在 [個別註冊] 索引標籤中的 [註冊識別碼] 欄下顯示為 **symm-key-java-device-007**。 
 
-    開啟註冊並複製您產生之 [主要金鑰]**** 的值。 您稍後更新裝置的 Java 程式碼時，將使用此金鑰值和 [註冊識別碼]****。
+    開啟註冊並複製您產生之 [主要金鑰] 的值。 您稍後更新裝置的 Java 程式碼時，將使用此金鑰值和 [註冊識別碼]。
 
 
 
@@ -88,7 +88,7 @@ ms.locfileid: "90528409"
 
 在本節中，您將更新範例程式碼以將裝置的開機順序傳送至 DPS 執行個體。 此開機順序會使裝置經過辨識、驗證，並指派給連結至 DPS 執行個體的 IoT 中樞。
 
-1. 從 [裝置佈建服務] 功能表中，選取 [概觀]****，並記下您的 [識別碼範圍]__ 和 [佈建服務全域端點]__。
+1. 從 [裝置佈建服務] 功能表中，選取 [概觀]，並記下您的 [識別碼範圍] 和 [佈建服務全域端點]。
 
     ![服務資訊](./media/java-quick-create-simulated-device-x509/extract-dps-endpoints.png)
 
@@ -96,7 +96,7 @@ ms.locfileid: "90528409"
 
     `azure-iot-sdk-java/provisioning/provisioning-samples/provisioning-symmetrickey-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningSymmetricKeySampleSample.java`
 
-   - 新增您 DPS 執行個體的 [識別碼範圍]__ 和 [佈建服務全域端點]__。 還有納入您針對個別註冊所選擇的主要對稱金鑰和註冊識別碼。 儲存您的變更。 
+   - 新增您 DPS 執行個體的 [識別碼範圍] 和 [佈建服務全域端點]。 還有納入您針對個別註冊所選擇的主要對稱金鑰和註冊識別碼。 儲存您的變更。 
 
       ```java
         private static final String SCOPE_ID = "[Your scope ID here]";
@@ -132,12 +132,12 @@ ms.locfileid: "90528409"
       Message received! Response status: OK_EMPTY
     ```
 
-6. 在 Azure 入口網站中，瀏覽到連結至您佈建服務的 IoT 中樞，並開啟 [Device Explorer]**** 刀鋒視窗。 在模擬對稱金鑰裝置成功佈建到中樞時，其裝置識別碼會出現在 [Device Explorer]**** 刀鋒視窗上，且 [狀態]** 顯示為 [已啟用]****。  如果您在執行範例裝置應用程式之前開啟了刀鋒視窗，可能需要按頂端的 [重新整理]**** 按鈕。 
+6. 在 Azure 入口網站中，瀏覽到連結至您佈建服務的 IoT 中樞，並開啟 [Device Explorer] 刀鋒視窗。 在模擬對稱金鑰裝置成功佈建到中樞時，其裝置識別碼會出現在 [Device Explorer] 刀鋒視窗上，且 [狀態] 顯示為 [已啟用]。  如果您在執行範例裝置應用程式之前開啟了刀鋒視窗，可能需要按頂端的 [重新整理] 按鈕。 
 
     ![已向 IoT 中樞註冊裝置](./media/quick-create-simulated-device-symm-key-java/hubregistration-java.png) 
 
 > [!NOTE]
-> 如果您在裝置的註冊項目中變更了*初始裝置對應項狀態* (變更自預設值)，它即可從中樞提取所需的對應項狀態並採取適當的動作。 如需詳細資訊，請參閱[了解和使用 Azure IoT 中樞的裝置對應項](../iot-hub/iot-hub-devguide-device-twins.md)。
+> 如果您在裝置的註冊項目中變更了 *初始裝置對應項狀態* (變更自預設值)，它即可從中樞提取所需的對應項狀態並採取適當的動作。 如需詳細資訊，請參閱[了解和使用 Azure IoT 中樞的裝置對應項](../iot-hub/iot-hub-devguide-device-twins.md)。
 >
 
 
@@ -146,8 +146,8 @@ ms.locfileid: "90528409"
 如果您打算繼續使用並探索裝置用戶端範例，請勿清除在此快速入門中建立的資源。 如果您不打算繼續，請使用下列步驟來刪除本快速入門建立的所有資源。
 
 1. 在您的電腦上關閉裝置用戶端範例輸出視窗。
-1. 從 Azure 入口網站的左側功能表中，選取 [所有資源]****，然後選取您的裝置佈建服務。 為您的服務開啟 [管理註冊]  ，然後選取 [個別註冊]  索引標籤。選取您在本快速入門中所註冊裝置的 [註冊識別碼]  旁的核取方塊，然後按窗格頂端的 [刪除]  按鈕。 
-1. 從 Azure 入口網站的左側功能表中，選取 [所有資源]****，然後選取您的 IoT 中樞。 開啟您中樞的 [IoT 裝置]****，選取您在本快速入門所註冊裝置的 [裝置識別碼]** 旁的核取方塊，然後按窗格頂端的 [刪除]**** 按鈕。
+1. 從 Azure 入口網站的左側功能表中，選取 [所有資源]，然後選取您的裝置佈建服務。 為您的服務開啟 [管理註冊]  ，然後選取 [個別註冊]  索引標籤。選取您在本快速入門中所註冊裝置的 [註冊識別碼]  旁的核取方塊，然後按窗格頂端的 [刪除]  按鈕。 
+1. 從 Azure 入口網站的左側功能表中，選取 [所有資源]，然後選取您的 IoT 中樞。 開啟您中樞的 [IoT 裝置]，選取您在本快速入門所註冊裝置的 [裝置識別碼] 旁的核取方塊，然後按窗格頂端的 [刪除] 按鈕。
 
 ## <a name="next-steps"></a>後續步驟
 
