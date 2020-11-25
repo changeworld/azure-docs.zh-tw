@@ -7,11 +7,11 @@ ms.date: 2/25/2019
 ms.author: srrengar
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a80eea5a50aa7b1e441049eeb2cae381994cd3ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018649"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006331"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>使用 EventFlow 的事件彙總與集合
 
@@ -83,7 +83,7 @@ internal sealed class ServiceEventSource : EventSource
 
 請注意，`eventFlowConfig.json` 檔案是服務組態封裝的一部分。 對此檔案所做的變更可以包含在完整或僅限組態的服務升級中，並受到 Service Fabric 升級健康情況檢查和自動復原 (如果發生升級失敗) 控管。 如需詳細資訊，請參閱 [Service Fabric 應用程式升級](service-fabric-application-upgrade.md)。
 
-組態的「篩選」** 區段可讓您進一步自訂經過 EventFlow 管線到輸出的資訊，讓您卸除或包含特定資訊，或變更事件資料結構。 如需有關篩選的詳細資訊，請參閱 [EventFlow 篩選](https://github.com/Azure/diagnostics-eventflow#filters)。
+組態的「篩選」區段可讓您進一步自訂經過 EventFlow 管線到輸出的資訊，讓您卸除或包含特定資訊，或變更事件資料結構。 如需有關篩選的詳細資訊，請參閱 [EventFlow 篩選](https://github.com/Azure/diagnostics-eventflow#filters)。
 
 最後一個步驟是在服務的啟動程式碼 (位於 `Program.cs` 檔案中) 中將 EventFlow 管線具現化：
 
@@ -130,7 +130,7 @@ namespace Stateless1
 }
 ```
 
-當作 `ServiceFabricDiagnosticsPipelineFactory` 之 `CreatePipeline` 方法的參數來傳遞的名稱是「健康情況實體」** 的名稱，此實體代表 EventFlow 記錄檔收集管線。 當 EventFlow 發生錯誤並透過 Service Fabric 健康情況子系統回報錯誤時，就會使用此名稱。
+當作 `ServiceFabricDiagnosticsPipelineFactory` 之 `CreatePipeline` 方法的參數來傳遞的名稱是「健康情況實體」的名稱，此實體代表 EventFlow 記錄檔收集管線。 當 EventFlow 發生錯誤並透過 Service Fabric 健康情況子系統回報錯誤時，就會使用此名稱。
 
 ### <a name="use-service-fabric-settings-and-application-parameters-in-eventflowconfig"></a>在 eventFlowConfig 中使用 Service Fabric 設定和應用程式參數
 

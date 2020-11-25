@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.openlocfilehash: 66a17b61fef652160dc6d4a02bf330adbf0c7362
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425702"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006812"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory 中的查閱活動
 
@@ -65,7 +65,7 @@ firstRowOnly | 指出是否只傳回第一個資料列或傳回所有資料列�
 > [!NOTE]
 > 
 > * 不支援 **ByteArray** 類型的來源資料行。
-> * 資料集定義不支援**結構**。 針對文字格式檔案，可以使用標頭資料列來提供資料行名稱。
+> * 資料集定義不支援 **結構**。 針對文字格式檔案，可以使用標頭資料列來提供資料行名稱。
 > * 如果您的查閱來源是 JSON 檔案，不支援用於調整 JSON 物件的 `jsonPathDefinition` 設定。 將會擷取整個物件。
 
 ## <a name="use-the-lookup-activity-result"></a>使用查閱活動結果
@@ -244,7 +244,7 @@ firstRowOnly | 指出是否只傳回第一個資料列或傳回所有資料列�
 
 ### <a name="lookup-dataset"></a>查閱資料集
 
-**查閱**資料集是**AzureBlobStorageLinkedService**類型所指定之 Azure 儲存體 lookup 資料夾中檔案的**sourcetable.js** 。 
+**查閱** 資料集是 **AzureBlobStorageLinkedService** 類型所指定之 Azure 儲存體 lookup 資料夾中檔案的 **sourcetable.js** 。 
 
 ```json
 {
@@ -267,9 +267,9 @@ firstRowOnly | 指出是否只傳回第一個資料列或傳回所有資料列�
 }
 ```
 
-### <a name="source-dataset-for-copy-activity"></a>複製活動的**來源**資料集
+### <a name="source-dataset-for-copy-activity"></a>複製活動的 **來源** 資料集
 
-**來源**資料集會使用查閱活動的輸出，亦即 SQL 資料表的名稱。 複製活動會將資料從此 SQL 資料表複製到 Azure Blob 儲存體 中的位置。 此位置會由**接收**資料集指定。 
+**來源** 資料集會使用查閱活動的輸出，亦即 SQL 資料表的名稱。 複製活動會將資料從此 SQL 資料表複製到 Azure Blob 儲存體 中的位置。 此位置會由 **接收** 資料集指定。 
 
 ```json
 {
@@ -304,7 +304,7 @@ firstRowOnly | 指出是否只傳回第一個資料列或傳回所有資料列�
 }
 ```
 
-### <a name="sink-dataset-for-copy-activity"></a>複製活動的**接收**資料集
+### <a name="sink-dataset-for-copy-activity"></a>複製活動的 **接收** 資料集
 
 複製活動會將資料從 SQL 資料表複製到 Azure 儲存體中 **csv** 資料夾內的 **filebylookup.csv** 檔案。 檔案是由 **AzureBlobStorageLinkedService** 屬性所指定。 
 

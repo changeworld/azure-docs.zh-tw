@@ -13,24 +13,24 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 670aef4f6f866788ef7a1a4502de242e765f5cc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89e0d6873ebfd8f8396c36185730c57a66af0dd9
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89017646"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96007018"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>開始使用 Azure Blob 儲存體和 Visual Studio 已連接服務 (雲端服務專案)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>概觀
-本文描述如何在 Visual Studio 雲端服務專案中使用 [ **加入已連接服務** ] 對話方塊建立或參考 Azure 儲存體帳戶後，開始搭配使用 Azure Blob 儲存體。 我們會說明如何存取及建立 Blob 容器，以及如何執行上傳、列出和下載 Blob 等一般工作。 這些範例是以 C 撰寫 \# ，並使用 [適用于 .net 的 Microsoft Azure 儲存體用戶端程式庫](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
+本文描述如何在 Visual Studio 雲端服務專案中使用 [ **加入已連接服務** ] 對話方塊建立或參考 Azure 儲存體帳戶後，開始搭配使用 Azure Blob 儲存體。 我們會說明如何存取及建立 Blob 容器，以及如何執行上傳、列出和下載 Blob 等一般工作。 這些範例是以 C 撰寫 \# ，並使用 [適用于 .net 的 Microsoft Azure 儲存體用戶端程式庫](/previous-versions/azure/dn261237(v=azure.100))。
 
 Azure 二進位大型物件 (Microsoft Azure Blob) 儲存是一項儲存大量非結構化資料的服務，全球任何地方都可透過 HTTP 或 HTTPS 來存取這些資料。 單一 Blob 可以是任何大小。 Blob 可以是影像、音訊和視訊檔、原始資料及文件檔案。
 
 就像檔案在資料夾中一樣，儲存體 Blob 位於容器中。 在您已建立儲存體之後，您會在儲存體中建立一個或多個容器。 例如，在稱為 "Scrapbook" 的儲存體中，您可以在儲存體中建立稱為 "images" 的容器來儲存圖片，並建立稱為 "audio" 的容器來儲存音訊檔。 建立容器之後，就可以將個別的 Blob 檔案上傳至這些容器。
 
-* 如需以程式設計方式處理 Blob 的詳細資訊，請參閱 [以 .NET 開始使用 Azure Blob 儲存體](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。
+* 如需以程式設計方式處理 Blob 的詳細資訊，請參閱 [以 .NET 開始使用 Azure Blob 儲存體](../storage/blobs/storage-quickstart-blobs-dotnet.md)。
 * 如需 Azure 儲存體的一般資訊，請參閱 [儲存體文件](https://azure.microsoft.com/documentation/services/storage/)。
 * 如需 Azure 雲端服務的一般資訊，請參閱 [雲端服務文件](https://azure.microsoft.com/documentation/services/cloud-services/)。
 * 如需 ASP.NET 應用程式設計的詳細資訊，請參閱 [ASP.NET](https://www.asp.net)。
@@ -73,7 +73,7 @@ Azure 二進位大型物件 (Microsoft Azure Blob) 儲存是一項儲存大量�
 
 ## <a name="create-a-container-in-code"></a>在程式碼中建立容器
 > [!NOTE]
-> 有些對外向 ASP.NET 中 Azure 儲存體執行呼叫的 API 是非同步的。 如需詳細資訊，請參閱 [使用 Async 和 Await 進行非同步程式設計](https://msdn.microsoft.com/library/hh191443.aspx) 。 以下範例中的程式碼假設使用非同步程式設計方法。
+> 有些對外向 ASP.NET 中 Azure 儲存體執行呼叫的 API 是非同步的。 如需詳細資訊，請參閱 [使用 Async 和 Await 進行非同步程式設計](/previous-versions/hh191443(v=vs.140)) 。 以下範例中的程式碼假設使用非同步程式設計方法。
 > 
 > 
 
@@ -114,7 +114,7 @@ using (var fileStream = System.IO.File.OpenRead(@"path\myfile"))
 ```
 
 ## <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
-若要列出容器中的 Blob，請先取得容器參照。 然後您即可使用容器的 **ListBlobs** 方法來擷取 Blob 和 (或) 其中的目錄。 若要針對傳回的 **>ilistblobitem**存取一組豐富的屬性和方法，您必須將它轉換成 **>cloudblockblob**、 **CloudPageBlob**或 **>cloudblobdirectory** 物件。 如果不清楚類型，可使用類型檢查來決定要將其轉換至何種類型。 下列程式碼示範如何擷取和輸出 **photos** 容器中每個項目的 URI：
+若要列出容器中的 Blob，請先取得容器參照。 然後您即可使用容器的 **ListBlobs** 方法來擷取 Blob 和 (或) 其中的目錄。 若要針對傳回的 **>ilistblobitem** 存取一組豐富的屬性和方法，您必須將它轉換成 **>cloudblockblob**、 **CloudPageBlob** 或 **>cloudblobdirectory** 物件。 如果不清楚類型，可使用類型檢查來決定要將其轉換至何種類型。 下列程式碼示範如何擷取和輸出 **photos** 容器中每個項目的 URI：
 
 ```csharp
 // Loop over items within the container and output the length and URI.
@@ -143,7 +143,7 @@ foreach (IListBlobItem item in container.ListBlobs(null, false))
 }
 ```
 
-如先前程式碼範例所示，Blob 服務也具備容器中之目錄的概念。 正因如此，您能夠以更像資料夾的結構組織 Blob。 例如，假設名為 **photos**的容器中有下列一組區塊 Blob：
+如先前程式碼範例所示，Blob 服務也具備容器中之目錄的概念。 正因如此，您能夠以更像資料夾的結構組織 Blob。 例如，假設名為 **photos** 的容器中有下列一組區塊 Blob：
 
 ```output
 photo1.jpg
@@ -165,7 +165,7 @@ Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/
 ```
 
 
-此外，您可以選擇將 **ListBlobs** 方法的 **UseFlatBlobListing** 參數設定為 **true**。 如此會導致不論目錄為何，都將每個 Blob 當成 **CloudBlockBlob**傳回。 以下是對 **ListBlobs**的呼叫︰
+此外，您可以選擇將 **ListBlobs** 方法的 **UseFlatBlobListing** 參數設定為 **true**。 如此會導致不論目錄為何，都將每個 Blob 當成 **CloudBlockBlob** 傳回。 以下是對 **ListBlobs** 的呼叫︰
 
 ```csharp
 // Loop over items within the container and output the length and URI.
@@ -188,7 +188,7 @@ Block blob of length 399751: https://<accountname>.blob.core.windows.net/photos/
 Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 ```
 
-如需詳細資訊，請參閱 [CloudBlobContainer.ListBlobs](https://msdn.microsoft.com/library/azure/dd135734.aspx)。
+如需詳細資訊，請參閱 [CloudBlobContainer.ListBlobs](/rest/api/storageservices/List-Blobs)。
 
 ## <a name="download-blobs"></a>下載 Blob
 若要下載 Blob，請先擷取 Blob 參照，然後呼叫 **DownloadToStream** 方法。 下列範例使用 **DownloadToStream** 方法將 Blob 內容傳送給資料流物件，您接著可將該物件永久儲存成本機檔案。
@@ -270,4 +270,3 @@ async public static Task ListBlobsSegmentedInFlatListing(CloudBlobContainer cont
 
 ## <a name="next-steps"></a>後續步驟
 [!INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
-

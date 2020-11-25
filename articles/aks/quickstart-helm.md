@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 07/28/2020
 ms.author: zarhoads
 ms.openlocfilehash: 0ca2d7ccc863e2208db1212ef3d3f10fa709d069
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87407110"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006639"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>快速入門：使用 Helm 在 Azure Kubernetes Service (AKS) 上進行開發
 
@@ -26,14 +26,14 @@ ms.locfileid: "87407110"
 * [已安裝 Helm v3][helm-install]。
 
 ## <a name="create-an-azure-container-registry"></a>建立 Azure Container Registry
-若要使用 Helm 在 AKS 叢集中執行您的應用程式，您需要 Azure Container Registry 來儲存您的容器映射。 下列範例會使用[az acr create][az-acr-create] ，以*基本*SKU 在*MyResourceGroup*資源群組中建立名為*MyHelmACR*的 acr。 您應該提供自己的唯一登錄名稱。 登錄名稱在 Azure 內必須是唯一的，且包含 5-50 個英數字元。 *基本* SKU 對開發用途而言是最符合成本效益的進入點，可在儲存體和輸送量之間取得平衡。
+若要使用 Helm 在 AKS 叢集中執行您的應用程式，您需要 Azure Container Registry 來儲存您的容器映射。 下列範例會使用 [az acr create][az-acr-create] ，以 *基本* SKU 在 *MyResourceGroup* 資源群組中建立名為 *MyHelmACR* 的 acr。 您應該提供自己的唯一登錄名稱。 登錄名稱在 Azure 內必須是唯一的，且包含 5-50 個英數字元。 *基本* SKU 對開發用途而言是最符合成本效益的進入點，可在儲存體和輸送量之間取得平衡。
 
 ```azurecli
 az group create --name MyResourceGroup --location eastus
 az acr create --resource-group MyResourceGroup --name MyHelmACR --sku Basic
 ```
 
-輸出類似於下列範例： 記下您 ACR 的 *loginServer* 值，因為它將在稍後的步驟中使用。 在下列範例中， *myhelmacr.azurecr.io*是*myhelmacr*的*loginServer* 。
+輸出類似於下列範例： 記下您 ACR 的 *loginServer* 值，因為它將在稍後的步驟中使用。 在下列範例中， *myhelmacr.azurecr.io* 是 *myhelmacr* 的 *loginServer* 。
 
 ```console
 {
@@ -77,7 +77,7 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus  --attach-acr MyHelm
 az aks install-cli
 ```
 
-若要設定 `kubectl` 以連線到 Kubernetes 叢集，請使用 [az aks get-credentials][] 命令。 下列範例會取得*MyResourceGroup*中名為*MyAKS*之 AKS 叢集的認證：
+若要設定 `kubectl` 以連線到 Kubernetes 叢集，請使用 [az aks get-credentials][] 命令。 下列範例會取得 *MyResourceGroup* 中名為 *MyAKS* 之 AKS 叢集的認證：
 
 ```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKS
@@ -129,7 +129,7 @@ az acr build --image webfrontend:v1 \
 helm create webfrontend
 ```
 
-對 *webfrontend/values. yaml*進行下列更新。 以您在先前步驟中記下的登錄 loginServer 取代，例如 *myhelmacr.azurecr.io*：
+對 *webfrontend/values. yaml* 進行下列更新。 以您在先前步驟中記下的登錄 loginServer 取代，例如 *myhelmacr.azurecr.io*：
 
 * 將 `image.repository` 變更為 `<loginServer>/webfrontend`
 * 將 `service.type` 變更為 `LoadBalancer`
@@ -153,7 +153,7 @@ service:
 ...
 ```
 
-`appVersion` `v1` 在*webfrontend/Chart. yaml*中更新至。 例如
+`appVersion` `v1` 在 *webfrontend/Chart. yaml* 中更新至。 例如：
 
 ```yml
 apiVersion: v2
@@ -172,7 +172,7 @@ appVersion: v1
 helm install webfrontend webfrontend/
 ```
 
-需要幾分鐘的時間，服務才能傳回公用 IP 位址。 若要監視進度，請使用 `kubectl get service` 命令搭配 watch** 參數：
+需要幾分鐘的時間，服務才能傳回公用 IP 位址。 若要監視進度，請使用 `kubectl get service` 命令搭配 watch 參數：
 
 ```console
 $ kubectl get service --watch

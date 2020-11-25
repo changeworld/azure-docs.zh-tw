@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 03/24/2020
 ms.custom: seodec18
 ms.openlocfilehash: ba216e41672e1d19e552b3f82a2ea65da7d3a435
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124572"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007081"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>開始使用 Azure 串流分析：即時詐欺偵測
 
@@ -263,7 +263,7 @@ TelcoGenerator 應用程式正在將通話記錄傳送到事件中樞，而串�
 
     在此查詢中，`CallStream` 是您建立輸入時所指定的別名。 如果您使用不同的別名，請改為使用該名稱。
 
-2. 按一下 [ **測試** ]。
+2. 按一下 [ **測試**]。
 
     串流分析作業會查詢範例資料，然後在視窗底部顯示輸出。 結果指出事件中樞和串流分析作業都正確設定。 (如前所述，稍後您將建立輸出接收供查詢寫入資料)。
 

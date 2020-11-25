@@ -9,11 +9,11 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.openlocfilehash: 602da28f0c235fb0e797a493bc1160631c042a9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132716"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005974"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>負責任地實作個人化工具的指導方針
 
@@ -128,7 +128,7 @@ Microsoft 會持續將心力投注於其工具和文件，以協助您善盡相�
 * 封存個人化工具賴以重現結果的資訊和資產，例如模型、學習原則和其他資料。
 
 ### <a name="transparency"></a>透明度
-*AI 系統應該是可理解*的。 透過個人化工具：
+*AI 系統應該是可理解* 的。 透過個人化工具：
 
 * *為使用者提供有關於內容如何個人化的資訊。* 例如，您可以向使用者顯示標示為 `Why These Suggestions?` 的按鈕，說明使用者和動作有哪些最高排名的特性會影響個人化工具的結果。
 * 確定您的使用規定提及您將使用使用者及其行為的相關資訊將體驗個人化。
@@ -199,6 +199,6 @@ Microsoft 會持續將心力投注於工具和文件，以協助您善盡相關�
 * [FATML 負責任的演算法原則](https://www.fatml.org/resources/principles-for-accountable-algorithms)
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [功能：動作和內容](concepts-features.md)。

@@ -16,11 +16,11 @@ ms.date: 06/25/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b159250e107fa73b9071eafe24fbe08ff1ea100b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895999"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006246"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>使用 REST API 呼叫在 Azure VM 上設定 Azure 資源受控識別
 
@@ -293,7 +293,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
     }
    ```
 
-   若要從具有使用者指派受控識別的虛擬機器移除系統指派的受控識別，請從 `{"identity":{"type:" "}}` 值移除 `SystemAssigned`，但同時保留 `UserAssigned` 值和 `userAssignedIdentities` 字典值 (如果您使用 **API 版本 2018-06-01** )。 如果您使用 **API 版本 2017-12-01** 或先前版本，則請保留 `identityIds` 陣列。
+   若要從具有使用者指派受控識別的虛擬機器移除系統指派的受控識別，請從 `{"identity":{"type:" "}}` 值移除 `SystemAssigned`，但同時保留 `UserAssigned` 值和 `userAssignedIdentities` 字典值 (如果您使用 **API 版本 2018-06-01**)。 如果您使用 **API 版本 2017-12-01** 或先前版本，則請保留 `identityIds` 陣列。
 
 ## <a name="user-assigned-managed-identity"></a>使用者指派的受控識別
 

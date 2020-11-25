@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: mikhegn
 ms.openlocfilehash: 4e96a732cffd70b0a5c24e7ebafe214297a72720
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75644625"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006042"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>如何參數化 Service Fabric 中的設定檔
 
@@ -20,7 +20,7 @@ ms.locfileid: "75644625"
 
 在此範例中，您會使用應用程式部署中的參數來覆寫設定值。
 
-1. 開啟服務專案中的* \<MyService>\PackageRoot\Config\Settings.xml*檔案。
+1. 開啟服務專案中的 *\<MyService>\PackageRoot\Config\Settings.xml* 檔案。
 1. 新增下列 XML 來設定組態參數名稱和值 (例如快取大小等於 25)：
 
    ```xml
@@ -30,7 +30,7 @@ ms.locfileid: "75644625"
    ```
 
 1. 儲存並關閉檔案。
-1. 開啟* \<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml*檔案。
+1. 開啟 *\<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* 檔案。
 1. 在 ApplicationManifest.xml 檔案中，於 `Parameters` 元素中宣告參數和預設值。  建議使參數名稱包含服務的名稱 (例如 "MyService")。
 
    ```xml

@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 06/19/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 4231f348f99073406fcb6a5bef9bf0f84cacf2eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707671"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005566"
 ---
 # <a name="customize-server-configuration-parameters-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>使用 Azure CLI 為適用於 PostgreSQL 的 Azure 資料庫單一伺服器自訂伺服器設定參數
 您可以使用命令列介面 (Azure CLI)，來列出、顯示和更新 Azure PostgreSQL 伺服器的設定參數。 有一部分的引擎設定會在伺服器層級公開而且可供修改。 

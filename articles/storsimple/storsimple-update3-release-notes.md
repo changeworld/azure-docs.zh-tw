@@ -9,11 +9,11 @@ ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e081acc357c1b8872dd3a25c552d4cbe9785e212
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956580"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007064"
 ---
 # <a name="update-3-release-notes-for-your-storsimple-8000-series-device"></a>StorSimple 8000 系列裝置的 Update 3 版本資訊
 
@@ -47,7 +47,7 @@ Update 3 包含以下重要的改良功能和錯誤修正。
 | 2 |固定在本機的磁碟區 |在先前版本中，固定在本機的磁碟區有與 I/O 失敗、磁碟區轉換失敗及資料路徑失敗相關的問題。 此版本已找出這些問題的根本原因並加以修正。 |是 |否 |
 | 3 |監視 |有多個與報表單位和監視以及裝置儀表板圖表相關的問題，其中針對固定在本機的磁碟區顯示了不正確的資訊。 此版本已經修正這些問題。 |是 |否 |
 | 4 |大量寫入 I/O |當使用 StorSimple 來處理涉及大量寫入的工作負載時，使用者會遇到工作集被分層到雲端的罕見錯誤。 此版本已經修正這個錯誤。 |是 |是 |
-| 5 |備份 |在某些罕見的情況下，在舊版的軟體中，當使用者進行遠端複製的備份時，會遇到雲端錯誤，而且作業會發生錯誤。在此版本中，已修正此問題，且作業順利完成。 |是 |是 |
+| 5 |Backup |在某些罕見的情況下，在舊版的軟體中，當使用者進行遠端複製的備份時，會遇到雲端錯誤，而且作業會發生錯誤。在此版本中，已修正此問題，且作業順利完成。 |是 |是 |
 | 6 |備份原則 |在某些罕見的情況下，於舊版軟體中，有與刪除備份原則相關的錯誤。 此版本已經修正這個問題。 |是 |是 |
 
 ## <a name="known-issues-in-update-3"></a>Update 3 中的已知問題

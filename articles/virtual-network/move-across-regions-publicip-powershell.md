@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: allensu
 ms.openlocfilehash: 4f72c22ee26375e025af7b3a391fdd45187e7041
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84703735"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006263"
 ---
 # <a name="move-azure-public-ip-configuration-to-another-region-using-azure-powershell"></a>使用 Azure PowerShell 將 Azure 公用 IP 設定移至另一個區域
 
@@ -83,7 +83,7 @@ ms.locfileid: "84703735"
 
     ```
 
-6. 若要編輯公用 IP 將移至的目標區域，請在資源下方變更**位置**屬性：
+6. 若要編輯公用 IP 將移至的目標區域，請在資源下方變更 **位置** 屬性：
 
     ```json
             "resources": [
@@ -118,7 +118,7 @@ ms.locfileid: "84703735"
     ```
 8. 您也可以根據需求而選擇變更範本中的其他參數：
 
-    * **SKU** - 您可變更 **\<resource-group-name>.json** 檔案中的 **SKU** > **名稱**屬性，以將設定中的公用 IP SKU 從標準變更為基本，或從基本變更為標準：
+    * **SKU** - 您可變更 **\<resource-group-name>.json** 檔案中的 **SKU** > **名稱** 屬性，以將設定中的公用 IP SKU 從標準變更為基本，或從基本變更為標準：
 
          ```json
             "resources": [
@@ -135,7 +135,7 @@ ms.locfileid: "84703735"
 
          如需基本和標準 SKU 公用 IP 之間差異的詳細資訊，請參閱[建立、變更或刪除公用 IP 位址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address) (機器翻譯)。
 
-    * **公用 IP 配置方法**和**閒置逾時** - 您可將 **publicIPAllocationMethod** 屬性從**動態**變更為**靜態**，或從**靜態**變更為**動態**，以在範本中變更這兩個選項。 將 **idleTimeoutInMinutes** 屬性變更為所要的數量，即可變更閒置時間。  預設值為 **4**：
+    * **公用 IP 配置方法** 和 **閒置逾時** - 您可將 **publicIPAllocationMethod** 屬性從 **動態** 變更為 **靜態**，或從 **靜態** 變更為 **動態**，以在範本中變更這兩個選項。 將 **idleTimeoutInMinutes** 屬性變更為所要的數量，即可變更閒置時間。  預設值為 **4**：
 
          ```json
          "resources": [

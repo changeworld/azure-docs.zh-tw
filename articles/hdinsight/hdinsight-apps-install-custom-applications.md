@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 11/29/2019
 ms.openlocfilehash: d110f4ee0248b6ea069c6033dd69840eec1a18f3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741609"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007149"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安裝自訂的 Apache Hadoop 應用程式
 
@@ -49,7 +49,7 @@ HDInsight 應用程式可以在您建立叢集時安裝，或安裝至現有的 
 
 1. 輸入您要安裝應用程式的叢集名稱。 此叢集必須是現有的叢集。
 
-1. 選取 [ **我同意上方所述的條款及條件** ] 核取方塊。
+1. 選取 [ **我同意上方所述的條款及條件**] 核取方塊。
 
 1. 選取 [購買]。
 
@@ -73,13 +73,13 @@ HDInsight 應用程式可以在您建立叢集時安裝，或安裝至現有的 
 
 您可以在 Azure 入口網站上檢查應用程式狀態以驗證應用程式安裝。 此外，您也可以驗證所有 HTTP 端點是否如預期般出現，以及網頁（如果有的話）。
 
-針對 **色調** ，您可以使用下列步驟：
+針對 **色調**，您可以使用下列步驟：
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 選取您安裝應用程式的叢集。
-1. 從 [ **設定** ] 功能表中選取 [ **應用程式** ]。
+1. 從 [ **設定** ] 功能表中選取 [ **應用程式**]。
 1. 從清單中選取 [ **色調** ] 以查看屬性。  
 1. 選取 [網頁] 連結來驗證網站。
 
@@ -127,9 +127,9 @@ HDInsight 應用程式可以在您建立叢集時安裝，或安裝至現有的 
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 選取您安裝應用程式的叢集。
-1. 從 [ **設定** ] 功能表中選取 [ **應用程式** ]。
-1. 以滑鼠右鍵按一下您要移除的應用程式，然後選取 [ **刪除** ]。
-1. 選取 [是] 以確認。
+1. 從 [ **設定** ] 功能表中選取 [ **應用程式**]。
+1. 以滑鼠右鍵按一下您要移除的應用程式，然後選取 [ **刪除**]。
+1. 選取 [是]  加以確認。
 
 ### <a name="azure-cli"></a>Azure CLI
 

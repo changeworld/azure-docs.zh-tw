@@ -11,11 +11,11 @@ ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
 ms.openlocfilehash: d39e00a80ab167936a749c73867b4343e6ed9d76
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358808"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006433"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>教學課程：設定從 Azure AD 到 SAP SuccessFactors 的屬性回寫
 本教學課程旨在說明將屬性從 Azure AD 回寫到 SAP SuccessFactors 員工中心的步驟。 

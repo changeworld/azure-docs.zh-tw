@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: 889e298f64689748340713de6318f8ffcd181001
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123841"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006450"
 ---
 # <a name="guarantee-stream-analytics-job-reliability-during-service-updates"></a>在服務更新期間確保串流分析工作可靠性
 
@@ -23,7 +23,7 @@ ms.locfileid: "93123841"
 
 「串流分析」可確保以個別的批次更新在配對區域中的工作。 因此，更新之間有足夠的時間來識別潛在的問題並加以修復。
 
-「印度中部是一個例外」  (其配對區域印度南部並沒有提供「串流分析」服務)，「串流分析」更新部署不會在一組配對區域同時發生。 **相同群組內** 多個區域中的部署可能 **同時** 發生。
+「印度中部是一個例外」(其配對區域印度南部並沒有提供「串流分析」服務)，「串流分析」更新部署不會在一組配對區域同時發生。 **相同群組內** 多個區域中的部署可能 **同時** 發生。
 
 關於 **[可用性與配對區域](../best-practices-availability-paired-regions.md)** 的文章提供了有關配對區域的最新資訊。
 

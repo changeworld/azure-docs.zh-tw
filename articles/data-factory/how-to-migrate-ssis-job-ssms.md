@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
 ms.openlocfilehash: 5566717387f6da375129a0e70c9ad825198d66b7
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634601"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005702"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>使用 SSMS 將 SQL Server Agent 作業遷移至 ADF
 
@@ -39,13 +39,13 @@ ms.locfileid: "92634601"
 
 - 在本機輸出檔案夾中產生 Azure Resource Manager (ARM) 範本，並以手動方式或稍後手動部署至 data factory。 如需 ADF Resource Manager 範本的詳細資訊，請參閱 [DataFactory 資源類型](/azure/templates/microsoft.datafactory/allversions)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文所述的功能需要 SQL Server Management Studio 18.5 版或更高版本。 若要取得最新版的 SSMS，請參閱[下載 SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)。
 
 ## <a name="migrate-ssis-jobs-to-adf"></a>將 SSIS 作業遷移至 ADF
 
-1. 在 SSMS 的物件總管中，選取 [SQL Server Agent]，選取 [作業]，然後以滑鼠右鍵按一下並選取 [ **將 SSIS 作業遷移至 ADF** ]。
+1. 在 SSMS 的物件總管中，選取 [SQL Server Agent]，選取 [作業]，然後以滑鼠右鍵按一下並選取 [ **將 SSIS 作業遷移至 ADF**]。
 ![螢幕擷取畫面顯示 SQL Server Management Studio 物件總管，您可以在其中選取作業，然後將 S I S 的作業遷移至 D F。](media/how-to-migrate-ssis-job-ssms/menu.png)
 
 1. 登入 Azure，並選取 Azure 訂用帳戶、Data Factory 和 Integration Runtime。 Azure 儲存體是選擇性的，如果要遷移的 SSIS 作業具有 SSIS 檔案系統封裝，則會在封裝位置對應步驟中使用。
@@ -53,7 +53,7 @@ ms.locfileid: "92634601"
 
 1. 將 ssis 作業中的 SSIS 封裝和設定檔路徑，對應至遷移的管線可以存取的目的地路徑。 在此對應步驟中，您可以：
 
-    1. 選取源資料夾，然後 **加入對應** 。
+    1. 選取源資料夾，然後 **加入對應**。
     1. 更新源資料夾路徑。 有效的路徑是資料夾路徑或封裝的上層資料夾路徑。
     1. 更新目的地資料夾路徑。 預設值是在步驟1中選取的預設儲存體帳戶的相對路徑。
     1. 透過 **刪除對應** 來刪除選取的對應。
@@ -62,17 +62,17 @@ ms.locfileid: "92634601"
 
 1. 選取要遷移的適用作業，並設定對應的已 *執行 SSIS 套件活動* 的設定。
 
-    - *預設設定* ，預設會套用至所有選取的步驟。 如需每個屬性的詳細資訊，請參閱當封裝位置是 *檔案系統 (封裝* 時， [執行 SSIS 套件活動](how-to-invoke-ssis-package-ssis-activity.md)的 [ *設定]* 索引標籤) 。
+    - *預設設定*，預設會套用至所有選取的步驟。 如需每個屬性的詳細資訊，請參閱當封裝位置是 *檔案系統 (封裝* 時，[執行 SSIS 套件活動](how-to-invoke-ssis-package-ssis-activity.md)的 [*設定]* 索引標籤) 。
     ![螢幕擷取畫面顯示 [選取我的工作] 頁面，您可以在其中設定對應的已執行 SSIS 套件活動的設定。](media/how-to-migrate-ssis-job-ssms/step3-1.png)
-    - *步驟設定* ，設定所選步驟的設定。
+    - *步驟設定*，設定所選步驟的設定。
         
-        套用 **預設設定** ：預設為已選取。 取消選取以設定所選步驟的設定。  
-        如需其他屬性的詳細資訊，請參閱當封裝位置是 *檔案系統 (封裝* 時， [執行 SSIS 套件活動](how-to-invoke-ssis-package-ssis-activity.md)的 [ *設定]* 索引標籤) 。
+        套用 **預設設定**：預設為已選取。 取消選取以設定所選步驟的設定。  
+        如需其他屬性的詳細資訊，請參閱當封裝位置是 *檔案系統 (封裝* 時，[執行 SSIS 套件活動](how-to-invoke-ssis-package-ssis-activity.md)的 [*設定]* 索引標籤) 。
     ![螢幕擷取畫面顯示 [選取我的工作] 頁面，您可以在其中套用預設設定。](media/how-to-migrate-ssis-job-ssms/step3-2.png)
 
 1. 產生和部署 ARM 範本。
     1. 針對已遷移的 ADF 管線，選取或輸入 ARM 範本的輸出路徑。 如果不存在，則會自動建立資料夾。
-    2. 選取 [將 **ARM 範本部署到您的 data factory** ] 選項：
+    2. 選取 [將 **ARM 範本部署到您的 data factory**] 選項：
         - 預設為未選取。 您可以稍後手動部署產生的 ARM 範本。
         - 選取即可直接將產生的 ARM 範本部署至 data factory。
     ![螢幕擷取畫面顯示 [設定遷移] 頁面，您可以在其中選取或輸入已遷移 ADF 管線的 ARM 範本輸出路徑，並選取 [將 ARM 範本部署至您的資料處理站] 選項。](media/how-to-migrate-ssis-job-ssms/step4.png)

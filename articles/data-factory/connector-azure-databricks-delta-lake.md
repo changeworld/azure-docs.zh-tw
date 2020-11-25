@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/28/2020
-ms.openlocfilehash: 8937cfa5a48903ab53f3015b056a4915240bc525
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/24/2020
+ms.openlocfilehash: 3eb43c98ae2697ece5ded8ae0df451a6cf5f272d
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633122"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96007200"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製到 Azure Databricks Delta Lake 或從中複製資料
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何使用 Azure Data Factory 中的「複製活動」，將資料複製到 Azure Databricks Delta Lake 或從中複製資料。 它是 [以 Azure Data Factory 文章中的「複製活動](copy-activity-overview.md) 」為基礎，其中提供「複製活動」的一般總覽。
 
@@ -31,13 +31,13 @@ ms.locfileid: "92633122"
 - 使用[支援的來源/接收矩陣](copy-activity-overview.md)資料表[複製活動](copy-activity-overview.md)
 - [查閱活動](control-flow-lookup-activity.md)
 
-一般來說，Azure Data Factory 支援 Delta Lake，並具備下列功能來滿足您的各種需求。
+一般來說，Azure Data Factory 支援 Delta Lake 搭配下列功能，以符合您的各種需求。
 
 - 複製活動支援 Azure Databricks Delta Lake connector，以將資料從任何支援的來源資料存放區複製到 Azure Databricks Delta lake 資料表，以及從 delta lake 資料表複製到任何支援的接收資料存放區。 它會利用您的 Databricks 叢集來執行資料移動，請參閱「 [必要條件」一節](#prerequisites)中的詳細資料。
 - [對應資料流程](concepts-data-flow-overview.md) 支援 Azure 儲存體上的一般 [差異格式](format-delta.md) 作為來源和接收，以讀取和寫入無程式碼 ETL 的差異檔案，並在受控 Azure Integration Runtime 上執行。
 - [Databricks 活動](transform-data-databricks-notebook.md) 支援在 delta lake 之上協調以程式碼為中心的 ETL 或機器學習工作負載。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要使用此 Azure Databricks Delta Lake connector，您需要在 Azure Databricks 中設定叢集。
 
@@ -46,15 +46,15 @@ ms.locfileid: "92633122"
 
 Databricks 叢集必須能夠存取 Azure Blob 或 Azure Data Lake Storage Gen2 帳戶，也就是用於來源/接收/暫存的儲存體容器/檔案系統，以及您想要在其中寫入 Delta Lake 資料表的容器/檔案系統。
 
-- 若要使用 **Azure Data Lake Storage Gen2** ，您可以在 Apache Spark 設定中設定 Databricks 叢集上的 **服務主體** 或 **儲存體帳戶存取金鑰** 。 遵循 [直接使用服務主體存取](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20) 的步驟，或 [直接使用儲存體帳戶存取金鑰來存取](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-using-the-storage-account-access-key)。
+- 若要使用 **Azure Data Lake Storage Gen2**，您可以在 Apache Spark 設定中設定 Databricks 叢集上的 **服務主體** 或 **儲存體帳戶存取金鑰** 。 遵循 [直接使用服務主體存取](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20) 的步驟，或 [直接使用儲存體帳戶存取金鑰來存取](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-using-the-storage-account-access-key)。
 
-- 若要使用 **Azure Blob 儲存體** ，您可以在 Databricks 叢集上設定 **儲存體帳戶存取金鑰** 或 **SAS 權杖** ，作為 Apache Spark 設定的一部分。 遵循 [使用 RDD API 存取 Azure Blob 儲存體](/azure/databricks/data/data-sources/azure/azure-storage#access-azure-blob-storage-using-the-rdd-api)中的步驟。
+- 若要使用 **Azure Blob 儲存體**，您可以在 Databricks 叢集上設定 **儲存體帳戶存取金鑰** 或 **SAS 權杖** ，作為 Apache Spark 設定的一部分。 遵循 [使用 RDD API 存取 Azure Blob 儲存體](/azure/databricks/data/data-sources/azure/azure-storage#access-azure-blob-storage-using-the-rdd-api)中的步驟。
 
 在複製活動執行期間，如果您設定的叢集已終止，Data Factory 自動啟動它。 如果您使用 Data Factory 撰寫 UI 來撰寫管線，針對資料預覽等作業，您需要有即時叢集，Data Factory 不會代表您啟動叢集。
 
 #### <a name="specify-the-cluster-configuration"></a>指定叢集設定
 
-1. 在 [叢集 **模式]** 下拉式清單中，選取 [ **標準** ]。
+1. 在 [叢集 **模式]** 下拉式清單中，選取 [ **標準**]。
 
 2. 在 [ **Databricks Runtime 版本** ] 下拉式清單中，選取 Databricks 執行階段版本。
 
@@ -81,7 +81,7 @@ Databricks 叢集必須能夠存取 Azure Blob 或 Azure Data Lake Storage Gen2 
 
 | 屬性    | 描述                                                  | 必要 |
 | :---------- | :----------------------------------------------------------- | :------- |
-| type        | Type 屬性必須設為 **AzureDatabricksDeltaLake** 。 | 是      |
+| type        | Type 屬性必須設為 **AzureDatabricksDeltaLake**。 | 是      |
 | 網域      | 指定 Azure Databricks 工作區 URL，例如 `https://adb-xxxxxxxxx.xx.azuredatabricks.net` 。 |          |
 | clusterId   | 指定現有叢集的叢集識別碼。 它應該是已建立的互動式叢集。 <br>您可以在 Databricks 工作區 -> [叢集]-> [互動式叢集名稱]-> [設定]-> [標記] 找到互動式叢集的叢集識別碼。 [深入了解](/azure/databricks/clusters/configure#cluster-tags)。 |          |
 | accessToken | Data Factory 需要有存取權杖才能向 Azure Databricks 進行驗證。 存取權杖必須由 Databricks 工作區產生。 您可以在 [這裡](/azure/databricks/dev-tools/api/latest/authentication#generate-token)找到更詳細的尋找存取權杖的步驟。 |          |
@@ -114,9 +114,9 @@ Databricks 叢集必須能夠存取 Azure Blob 或 Azure Data Lake Storage Gen2 
 
 | 屬性  | 描述                                                  | 必要                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| type      | 資料集的 type 屬性必須設為 **AzureDatabricksDeltaLakeDataset** 。 | 是                         |
+| type      | 資料集的 type 屬性必須設為 **AzureDatabricksDeltaLakeDataset**。 | 是                         |
 | [資料庫] | 資料庫的名稱。 |否，來源，是接收的  |
-| 資料表 | 差異資料表的名稱。 |否，來源，是接收的  |
+| table | 差異資料表的名稱。 |否，來源，是接收的  |
 
 **範例︰**
 
@@ -148,7 +148,7 @@ Databricks 叢集必須能夠存取 Azure Blob 或 Azure Data Lake Storage Gen2 
 
 | 屬性                     | 描述                                                  | 必要 |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| type                         | 複製活動來源的 type 屬性必須設為 **AzureDatabricksDeltaLakeSource** 。 | 是      |
+| type                         | 複製活動來源的 type 屬性必須設為 **AzureDatabricksDeltaLakeSource**。 | 是      |
 | 查詢          | 指定要讀取資料的 SQL 查詢。 針對「時間移動」控制項，請遵循下列模式：<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | 否       |
 | exportSettings | 用來從 delta 資料表中取出資料的 Advanced 設定。 | 否       |
 | ***在 `exportSettings` ：** _ |  |  |
@@ -162,14 +162,14 @@ Databricks 叢集必須能夠存取 Azure Blob 或 Azure Data Lake Storage Gen2 
 
 - **接收連結服務** 是 [Azure Blob 儲存體](connector-azure-blob-storage.md)或 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)。 帳號憑證應該在 Azure Databricks 叢集設定中預先設定，請從 [必要條件](#prerequisites)中深入瞭解。
 
-- **接收資料格式** 是 **Parquet** 、分隔的 **文字** ，或是具有下列設定的 **Avro** ，並指向資料夾而非檔案。
+- **接收資料格式** 是 **Parquet**、分隔的 **文字**，或是具有下列設定的 **Avro** ，並指向資料夾而非檔案。
 
-    - 針對 **Parquet** 格式，壓縮編解碼器為 **none** 、 **snappy** 或 **gzip** 。
+    - 針對 **Parquet** 格式，壓縮編解碼器為 **none**、 **snappy** 或 **gzip**。
     - 若為 **分隔的文字** 格式：
         - `rowDelimiter` 為任何單一字元。
-        - `compression` 可以是 **none** 、 **bzip2** 、 **gzip** 。
+        - `compression` 可以是 **none**、 **bzip2**、 **gzip**。
         - `encodingName` 不支援 UTF-7。
-    - 若為 **Avro** 格式，壓縮編解碼器為 **none** 、 **deflate** 或 **snappy** 。
+    - 若為 **Avro** 格式，壓縮編解碼器為 **none**、 **deflate** 或 **snappy**。
 
 - 在複製活動來源中， `additionalColumns` 未指定。
 - 如果將資料複製到複製活動接收中的分隔文字，則必須 `fileExtension` 是 ".csv"。
@@ -262,7 +262,7 @@ Databricks 叢集必須能夠存取 Azure Blob 或 Azure Data Lake Storage Gen2 
 
 | 屬性      | 描述                                                  | 必要 |
 | :------------ | :----------------------------------------------------------- | :------- |
-| type          | 複製活動接收的 type 屬性，設定為 **AzureDatabricksDeltaLakeSink** 。 | 是      |
+| type          | 複製活動接收的 type 屬性，設定為 **AzureDatabricksDeltaLakeSink**。 | 是      |
 | preCopyScript | 針對要在每次執行中的 Databricks delta 資料表寫入資料之前執行的複製活動，指定 SQL 查詢。 您可以使用這個屬性來清除預先載入的資料，或加入截斷資料表或清除語句。 | 否       |
 | importSettings | 用來將資料寫入 delta 資料表的 Advanced 設定。 | 否 |
 | **_在 `importSettings` ：_* _ |                                                              |  |
@@ -276,14 +276,14 @@ Databricks 叢集必須能夠存取 Azure Blob 或 Azure Data Lake Storage Gen2 
 
 - **來源連結服務** 是 [Azure Blob 儲存體](connector-azure-blob-storage.md)或 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)。 帳號憑證應該在 Azure Databricks 叢集設定中預先設定，請從 [必要條件](#prerequisites)中深入瞭解。
 
-- **源資料格式** 是 **Parquet** 、分隔的 **文字** ，或是具有下列設定的 **Avro** ，並指向資料夾而非檔案。
+- **源資料格式** 是 **Parquet**、分隔的 **文字**，或是具有下列設定的 **Avro** ，並指向資料夾而非檔案。
 
-    - 針對 **Parquet** 格式，壓縮編解碼器為 **none** 、 **snappy** 或 **gzip** 。
+    - 針對 **Parquet** 格式，壓縮編解碼器為 **none**、 **snappy** 或 **gzip**。
     - 若為 **分隔的文字** 格式：
         - `rowDelimiter` 為預設值，或任何單一字元。
-        - `compression` 可以是 **none** 、 **bzip2** 、 **gzip** 。
+        - `compression` 可以是 **none**、 **bzip2**、 **gzip**。
         - `encodingName` 不支援 UTF-7。
-    - 若為 **Avro** 格式，壓縮編解碼器為 **none** 、 **deflate** 或 **snappy** 。
+    - 若為 **Avro** 格式，壓縮編解碼器為 **none**、 **deflate** 或 **snappy**。
 
 - 在複製活動來源中： 
 

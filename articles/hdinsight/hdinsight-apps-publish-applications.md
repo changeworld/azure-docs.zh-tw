@@ -9,29 +9,29 @@ ms.topic: how-to
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: ca84cb6cdd6b47976eadbc5298701a46fe677426
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547821"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007132"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>將 HDInsight 應用程式發佈到 Azure Marketplace
 您可以在以 Linux 為基礎的 HDInsight 叢集上安裝 Azure HDInsight 應用程式。 在此文章中，您會學習如何將 HDInsight 應用程式發佈到 Azure Marketplace。 如需發佈到 Azure Marketplace 的一般資訊，請參閱[將供應項目發佈到 Azure Marketplace](../marketplace/overview.md)。
 
-HDInsight 應用程式會使用「自備授權 (BYOL)」  模型。 在 BYOL 案例中，應用程式提供者負責將應用程式授權給應用程式使用者。 應用程式使用者只需支付他們建立的 Azure 資源費用，例如在 HDInsight 叢集以及叢集的 VM 和節點。 目前，Azure 不經手應用程式本身的計費。
+HDInsight 應用程式會使用「自備授權 (BYOL)」模型。 在 BYOL 案例中，應用程式提供者負責將應用程式授權給應用程式使用者。 應用程式使用者只需支付他們建立的 Azure 資源費用，例如在 HDInsight 叢集以及叢集的 VM 和節點。 目前，Azure 不經手應用程式本身的計費。
 
 如需詳細資訊，請參閱這些 HDInsight 應用程式相關文章：
 
 * [安裝 HDInsight 應用程式](hdinsight-apps-install-applications.md)。 了解如何在您的叢集上安裝 HDInsight 應用程式。
 * [安裝自訂 HDInsight 應用程式](hdinsight-apps-install-custom-applications.md)。 了解如何安裝和測試自訂 HDInsight 應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要將自訂應用程式提交至 Marketplace，首先，[建立並測試您的自訂應用程式](hdinsight-apps-install-custom-applications.md)。
 
 您還必須註冊開發人員帳戶。 如需詳細資訊，請參閱[將供應項目發佈到 Azure Marketplace](../marketplace/overview.md) 和[建立 Microsoft 開發人員帳戶](../marketplace/overview.md)。
 
 ## <a name="define-the-application"></a>定義應用程式
-將應用程式發佈到 Marketplace 包括兩個步驟。 首先，定義 createUiDef.json  檔案。 CreateUiDef.json 檔案表示您的應用程式與哪些叢集相容。 接著，從 Azure 入口網站發佈範本。 以下是範例 createUiDef.json 檔案：
+將應用程式發佈到 Marketplace 包括兩個步驟。 首先，定義 createUiDef.json 檔案。 CreateUiDef.json 檔案表示您的應用程式與哪些叢集相容。 接著，從 Azure 入口網站發佈範本。 以下是範例 createUiDef.json 檔案：
 
 ```json
 {
@@ -63,7 +63,7 @@ HDInsight 應用程式會使用「自備授權 (BYOL)」  模型。 在 BYOL 案
   > * 連字號，以方便閱讀。
   > * 唯一的字串函式，並以應用程式名稱作為參數。
   > 
-  > 在保存的指令碼動作清單中，上述範例會顯示為 **hue-install-v0-4wkahss55hlas** 。 請參閱[範例 JSON 承載](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json)。
+  > 在保存的指令碼動作清單中，上述範例會顯示為 **hue-install-v0-4wkahss55hlas**。 請參閱[範例 JSON 承載](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json)。
   > 
 
 安裝指令碼必須具有下列特性：
@@ -87,16 +87,16 @@ HDInsight 應用程式會使用「自備授權 (BYOL)」  模型。 在 BYOL 案
 若要安裝 HDInsight 應用程式：
 
 1. 登入 [Azure 發佈](https://publish.windowsazure.com/)。
-2. 在左窗格中，選取 [解決方案範本]  。
-3. 輸入標題，然後選取 [建立新的解決方案範本]  。
-4. 如果您尚未註冊您的組織，請選取 [建立開發人員中心帳戶並加入 Azure 方案]  。  如需詳細資訊，請參閱 [建立 Microsoft 開發人員帳戶](../marketplace/overview.md)。
-5. 選取 [定義一些拓撲以便開始使用]  。 方案範本是所有其拓撲的「父項」。 您可以在一個供應項目或解決方案範本中定義多個拓撲。 當供應項目推送到預備環境時，它的所有拓撲也會一起推入。 
+2. 在左窗格中，選取 [解決方案範本]。
+3. 輸入標題，然後選取 [建立新的解決方案範本]。
+4. 如果您尚未註冊您的組織，請選取 [建立開發人員中心帳戶並加入 Azure 方案]。  如需詳細資訊，請參閱 [建立 Microsoft 開發人員帳戶](../marketplace/overview.md)。
+5. 選取 [定義一些拓撲以便開始使用] 。 方案範本是所有其拓撲的「父項」。 您可以在一個供應項目或解決方案範本中定義多個拓撲。 當供應項目推送到預備環境時，它的所有拓撲也會一起推入。 
 6. 輸入拓撲名稱，然後選取 [] **+** 。
 7. 輸入新的版本，然後選取 [] **+** 。
 8. 上傳您在封裝應用程式時建立的 .zip 檔案。  
-9. 選取 [要求認證]  。 Microsoft 認證團隊會檢閱檔案並認證拓撲。
+9. 選取 [要求認證]。 Microsoft 認證團隊會檢閱檔案並認證拓撲。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * 了解如何在您的叢集上[安裝 HDInsight 應用程式](hdinsight-apps-install-applications.md)。
 * 了解如何[安裝自訂 HDInsight 應用程式](hdinsight-apps-install-custom-applications.md)，以及如何將未發佈的 HDInsight 應用程式部署到 HDInsight。
 * 了解如何[使用指令碼動作來自訂以 Linux 為基礎的 HDInsight 叢集](hdinsight-hadoop-customize-cluster-linux.md)，以及新增更多應用程式。 

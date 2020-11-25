@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 09/25/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: bed8475e5d6c7bf26003672b6cf9ce51a82384ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8959904482bda8dc26e4df626377027e1ab4bd1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91376975"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005534"
 ---
 若要在 Azure 入口網站中建立一般用途 v2 儲存體帳戶，請遵循下列步驟：
 
-1. 在 Azure 入口網站功能表上，選取 [所有服務]  。 在資源清單中，輸入**儲存體帳戶**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [儲存體帳戶]  。
+1. 在 Azure 入口網站功能表上，選取 [所有服務]  。 在資源清單中，輸入 **儲存體帳戶**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [儲存體帳戶]  。
 1. 在出現的 [儲存體帳戶]  視窗上，選擇 [新增]  。
 1. 在 [基本] 索引標籤上，選取要在其中建立儲存體帳戶的訂用帳戶。
-1. 在 [資源群組]  欄位下，選取您想要的資源群組，或建立新的資源群組。  如需 Azure 資源群組的詳細資訊，請參閱 [Azure Resource Manager 概觀](../articles/azure-resource-manager/resource-group-overview.md)。
+1. 在 [資源群組]  欄位下，選取您想要的資源群組，或建立新的資源群組。  如需 Azure 資源群組的詳細資訊，請參閱 [Azure Resource Manager 概觀](../articles/azure-resource-manager/management/overview.md)。
 1. 接下來，輸入儲存體帳戶的名稱。 您所選擇的名稱在整個 Azure 中必須是唯一的。 名稱的長度必須介於 3 到 24 個字元之間，且只能包含數字和小寫字母。
 1. 選取儲存體帳戶的位置，或使用預設位置。
 1. 選取一個效能層級。 預設階層為 [標準]。

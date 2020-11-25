@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 6b4484b9bb235b24d2b733c329b52ab6b04be183
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519817"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006416"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Zoom 整合
 
@@ -50,7 +50,7 @@ ms.locfileid: "92519817"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Zoom** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Zoom**。
 1. 從結果面板選取 [Zoom]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-zoom"></a>設定及測試 Zoom 的 Azure AD 單一登入
@@ -147,7 +147,7 @@ ms.locfileid: "92519817"
 
     a. 在 [登入頁面 URL] 文字方塊中，貼上您從 Azure 入口網站複製的 **登入 URL** 值。
 
-    b. 針對 [登出頁面 URL] 值，您必須移至 Azure 入口網站，並按一下左側的 **Azure Active Directory** ，然後瀏覽至 [應用程式註冊]。
+    b. 針對 [登出頁面 URL] 值，您必須移至 Azure 入口網站，並按一下左側的 **Azure Active Directory**，然後瀏覽至 [應用程式註冊]。
 
     ![Azure Active Directory 按鈕](./media/zoom-tutorial/appreg.png)
 

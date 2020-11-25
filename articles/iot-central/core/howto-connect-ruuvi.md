@@ -11,11 +11,11 @@ ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
 ms.openlocfilehash: 7cf0d31895eaeaa41c23f9f07664b27bed1d3126
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90016753"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006382"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>將 RuuviTag 感應器連線到您的 Azure IoT Central 應用程式
 
@@ -31,7 +31,7 @@ RuuviTag 透過 BLE (藍牙低能源) 進行通訊，且需要閘道裝置與 Az
 
 如果您想要設定 Rigado 串聯500閘道裝置，請遵循 [此處的指示](./howto-connect-rigado-cascade-500.md) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要連接 RuuviTag 感應器，您需要下列資源：
 
@@ -45,10 +45,10 @@ RuuviTag 透過 BLE (藍牙低能源) 進行通訊，且需要閘道裝置與 Az
 
 若要新增 RuuviTag 裝置範本：
 
-1. 流覽至左窗格中的 [ ***裝置範本*** ] 索引標籤，選取 [ **+ 新增**：  ![ 建立新的裝置範本] ](./media/howto-connect-ruuvi/devicetemplate-new.png) 頁面可讓您選擇 ***建立自訂範本*** ，或 ***使用預先設定的裝置範本***
+1. 流覽至左窗格中的 [**裝置範本**] 索引標籤，選取 [ _* + 新增 * *：  ![ 建立新的裝置範本] ](./media/howto-connect-ruuvi/devicetemplate-new.png) 頁面可讓您選擇 **_建立自訂範本_*_ 或 _*_使用預先設定的裝置範本_*_
 1. 從預先設定的裝置範本清單中選取 RuuviTag 裝置範本，如下所示：  ![ 選取 RuuviTag 裝置範本](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
-1. 選取 ***[下一步：自訂]*** 繼續進行下一個步驟。
-1. 在下一個畫面中，選取 [ ***建立*** ] 以將 C500 裝置範本上線至 IoT Central 應用程式。
+1. 選取 _*_[下一步：自訂]_*_ 繼續進行下一個步驟。
+1. 在下一個畫面中，選取 [ _*_建立_*_ ] 以將 C500 裝置範本上線至 IoT Central 應用程式。
 
 ## <a name="connect-a-ruuvitag-sensor"></a>連接 RuuviTag 感應器
 
@@ -68,8 +68,8 @@ RuuviTag 透過 BLE (藍牙低能源) 進行通訊，且需要閘道裝置與 Az
 
 若要建立模擬的 RuuviTag：
 
-1. 選取 **> RuuviTag 的裝置**。
-1. 選取 [+ 新增]。
+1. 選取 _ * Devices > RuuviTag * *。
+1. 選取 [+ 新增]  。
 1. 指定唯一的 **裝置識別碼** 和易記的 **裝置名稱**。  
 1. 啟用 [模擬] 設定。
 1. 選取 [建立]。  

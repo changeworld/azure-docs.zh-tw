@@ -9,11 +9,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
 ms.openlocfilehash: a9a90fbb2eedd6db2873d4ac2a5fea94c05c7eed
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844739"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005651"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>靜態資料的 Azure HDInsight 雙重加密
 
@@ -36,7 +36,7 @@ HDInsight 支援兩種不同層級的多種加密類型：
 |叢集類型 |OS 磁片 (受控磁片)  |資料磁片 (受控磁片)  |暫存資料磁片 (本機 SSD)  |
 |---|---|---|---|
 |Kafka，具有加速寫入的 HBase|Layer1：預設的[SSE 加密](../virtual-machines/managed-disks-overview.md#encryption)|Layer1：預設的 [SSE 加密](../virtual-machines/managed-disks-overview.md#encryption) ，l2：使用 CMK 的選擇性靜態加密|Layer1：使用 PMK 的主機選擇性加密，L2：使用 CMK 的選擇性靜態加密|
-|所有其他叢集 (Spark、互動式、Hadoop、HBase，而不需要加速寫入) |Layer1：預設的[SSE 加密](../virtual-machines/managed-disks-overview.md#encryption)|不適用|Layer1：使用 PMK 的主機選擇性加密，L2：使用 CMK 的選擇性靜態加密|
+|所有其他叢集 (Spark、互動式、Hadoop、HBase，而不需要加速寫入) |Layer1：預設的[SSE 加密](../virtual-machines/managed-disks-overview.md#encryption)|N/A|Layer1：使用 PMK 的主機選擇性加密，L2：使用 CMK 的選擇性靜態加密|
 
 ## <a name="encryption-at-rest-using-customer-managed-keys"></a>使用客戶管理的金鑰進行待用加密
 
@@ -101,7 +101,7 @@ HDInsight 僅支援 Azure Key Vault。 如果您有自己的金鑰保存庫，�
 
 1. 在 [ **新增存取原則** ] 頁面中，提供下列資訊：
 
-    |屬性 |說明|
+    |屬性 |描述|
     |---|---|
     |金鑰許可權|選取 [ **取得**]、[解除包裝 **金鑰**] 和 [ **包裝金鑰**]。|
     |秘密許可權|選取 [ **取得**]、[ **設定**] 和 [ **刪除**]。|

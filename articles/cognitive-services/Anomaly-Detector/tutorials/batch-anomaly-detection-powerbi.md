@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: mbullwin
 ms.openlocfilehash: a17301e0807877662ae1bf34ade48e90a1d30c0c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368639"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006195"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>教學課程：使用批次偵測與 Power BI 將異常狀況視覺化
 
@@ -48,7 +48,7 @@ ms.locfileid: "94368639"
 
 ![Power BI 中的 [取得資料] 按鈕的影像](../media/tutorials/power-bi-get-data-button.png)
 
-對話方塊出現之後，請瀏覽至您下載範例 .xlsx 檔案的資料夾並加以選取。 在 [導覽] 對話方塊出現後，按一下 **Sheet1** ，然後按一下 [編輯]。
+對話方塊出現之後，請瀏覽至您下載範例 .xlsx 檔案的資料夾並加以選取。 在 [導覽] 對話方塊出現後，按一下 **Sheet1**，然後按一下 [編輯]。
 
 ![Power BI 中資料來源 [導覽] 畫面的影像](../media/tutorials/navigator-dialog-box.png)
 
@@ -131,7 +131,7 @@ Power BI 會將第一欄中的時間戳記轉換為 `Date/Time` 資料類型。 
 
 ![顯示要求指定存取認證的影像](../media/tutorials/edit-credentials-message.png)
 
-若要修正此問題，按一下訊息中的 [編輯認證]。 在對話方塊出現之後，選取 [匿名] 以匿名方式連線到 API。 然後按一下 [ **連接** ]。
+若要修正此問題，按一下訊息中的 [編輯認證]。 在對話方塊出現之後，選取 [匿名] 以匿名方式連線到 API。 然後按一下 [ **連接**]。
 
 接著，按一下 [首頁] 功能區中的 [關閉並套用]，或套用變更。
 

@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: e5e0c43aa8c4fbf0db89065e0fab93ee174a4ede
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85483664"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006588"
 ---
 # <a name="create-a-netapp-account"></a>建立 NetApp 帳戶
 建立 NetApp 帳戶可讓您設定容量集區，並接著建立磁碟區。 您可以使用 [Azure NetApp Files] 刀鋒視窗來建立新的 NetApp 帳戶。
@@ -34,7 +34,7 @@ ms.locfileid: "85483664"
 1. 登入 Azure 入口網站。 
 2. 使用下列其中一個方法存取 [Azure NetApp Files] 刀鋒視窗：  
    * 在 Azure 入口網站搜尋方塊中搜尋 **Azure NetApp Files**。  
-   * 按一下導覽中的 [所有服務]****，然後篩選為 Azure NetApp Files。  
+   * 按一下導覽中的 [所有服務]，然後篩選為 Azure NetApp Files。  
 
    您可以藉由按一下 [Azure NetApp Files] 刀鋒視窗旁邊的星號，將其加入「我的最愛」。 
 
@@ -62,7 +62,7 @@ ms.locfileid: "85483664"
 >
 > `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
 
-## <a name="next-steps"></a>接下來的步驟  
+## <a name="next-steps"></a>後續步驟  
 
 [設定容量集區](azure-netapp-files-set-up-capacity-pool.md)
 

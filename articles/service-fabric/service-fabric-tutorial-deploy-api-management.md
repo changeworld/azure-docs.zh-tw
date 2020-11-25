@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 61a13d80fd67751d77bc77199fa433143ad92048
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831679"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007098"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>整合 API 管理與 Azure 中的 Service Fabric
 
@@ -25,7 +25,7 @@ ms.locfileid: "94831679"
 > [!IMPORTANT]
 > 由於這項功能需要支援虛擬網路，因此可用於 API 管理的 **進階** 與 **開發人員** 層級。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前：
 

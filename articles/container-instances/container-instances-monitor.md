@@ -4,11 +4,11 @@ description: 如何在 Azure 容器執行個體中依照您的容器，監視計
 ms.topic: article
 ms.date: 04/24/2019
 ms.openlocfilehash: b10c370b599233d00b2b4a65268f6c61a11cbd5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526692"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007251"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>在 Azure 容器執行個體中監視容器資源
 
@@ -35,14 +35,14 @@ Azure 監視器為 [Azure 容器執行個體提供下列計量][supported-metric
 
 ## <a name="get-metrics---azure-portal"></a>取得計量 - Azure 入口網站
 
-建立容器群組後，即可在 Azure 入口網站中使用 Azure 監視資料。 若要查看容器群組的計量，請前往容器群組的 [概觀]**** 頁面。 您可以在這裡查看為每個可用計量預先建立的圖表。
+建立容器群組後，即可在 Azure 入口網站中使用 Azure 監視資料。 若要查看容器群組的計量，請前往容器群組的 [概觀] 頁面。 您可以在這裡查看為每個可用計量預先建立的圖表。
 
 ![雙重圖表][dual-chart]
 
 在包含多個容器的容器群組中，使用[維度][monitor-dimension]來呈現各容器的計量。 若要使用個別容器計量來建立圖表，請執行下列步驟：
 
-1. 在 [概觀]**** 頁面中，選取其中一個計量圖表，例如 **CPU**。 
-1. 選取 [套用設定]**** 按鈕，然後選取 [容器名稱]****。
+1. 在 [概觀] 頁面中，選取其中一個計量圖表，例如 **CPU**。 
+1. 選取 [套用設定] 按鈕，然後選取 [容器名稱]。
 
 ![螢幕擷取畫面會顯示已選取 [套用分割] 和 [容器名稱] 的容器實例的計量。][dimension]
 
@@ -78,7 +78,7 @@ Timestamp            Name       Average
 2019-04-23 23:10:00  CPU Usage  0.5
 ```
 
-變更命令中的 `--metric` 參數值，以取得其他[支援的計量][supported-metrics]。 例如，使用下列命令來取得**記憶體**使用量計量。 
+變更命令中的 `--metric` 參數值，以取得其他[支援的計量][supported-metrics]。 例如，使用下列命令來取得 **記憶體** 使用量計量。 
 
 ```azurecli
 az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --output table

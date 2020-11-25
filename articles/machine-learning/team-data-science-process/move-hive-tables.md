@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 5d61c0f5f26bc46b9c4a5bc4a793df1e10710004
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130862"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006724"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>建立 Hive 資料表，並從 Azure Blob 儲存體載入資料
 
@@ -147,11 +147,11 @@ STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line
 
 以下是您需要插入的欄位和其他設定的說明：
 
-* **\<database name\>** ：您想要建立的資料庫名稱。 如果您只想要使用預設資料庫，則可省略 " *create database...* " 查詢。
-* **\<table name\>** ：您想要在指定資料庫內建立之資料表的名稱。 如果您想要使用預設資料庫，則可以直接參考資料表， *\<table name\>* 而不需要 \<database name\> 。
-* **\<field separator\>** ：分隔資料檔案中要上傳至 Hive 資料表之欄位的分隔符號。
-* **\<line separator\>** ：分隔資料檔案行的分隔符號。
-* **\<storage location\>** ：用來儲存 Hive 資料表資料的 Azure 儲存體位置。 如果您未指定  目錄中。 如果您想要指定儲存體位置，儲存體位置必須位於資料庫和資料表的預設容器內。 此位置必須參考為相對於叢集預設容器的位置，格式為 *' wasb:/// \<directory 1> /'* 或 *' wasb:/// \<directory 1> / \<directory 2> /'* 等等。執行查詢之後，會在預設容器內建立相對目錄。
+* **\<database name\>**：您想要建立的資料庫名稱。 如果您只想要使用預設資料庫，則可省略 "*create database...* " 查詢。
+* **\<table name\>**：您想要在指定資料庫內建立之資料表的名稱。 如果您想要使用預設資料庫，則可以直接參考資料表， *\<table name\>* 而不需要 \<database name\> 。
+* **\<field separator\>**：分隔資料檔案中要上傳至 Hive 資料表之欄位的分隔符號。
+* **\<line separator\>**：分隔資料檔案行的分隔符號。
+* **\<storage location\>**：用來儲存 Hive 資料表資料的 Azure 儲存體位置。 如果您未指定 *LOCATION \<storage location\>*，資料庫和資料表預設會儲存在 Hive 叢集之預設容器的 hive/warehouse/ 目錄中。 如果您想要指定儲存體位置，儲存體位置必須位於資料庫和資料表的預設容器內。 此位置必須參考為相對於叢集預設容器的位置，格式為 *' wasb:/// \<directory 1> /'* 或 *' wasb:/// \<directory 1> / \<directory 2> /'* 等等。執行查詢之後，會在預設容器內建立相對目錄。
 * **TBLPROPERTIES("skip.header.line.count"="1")** ：如果資料檔案有標頭行，您就必須在 *建立資料表* 查詢的 **結尾** 處新增這個屬性。 否則，載入的標頭行會做為資料表的記錄。 如果資料檔不含標頭行，則可在查詢中省略此設定。
 
 ## <a name="load-data-to-hive-tables"></a><a name="load-data"></a>將資料載入至 Hive 資料表
@@ -161,7 +161,7 @@ STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line
 LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 ```
 
-* **\<path to blob data\>** ：如果要上傳至 Hive 資料表的 blob 檔案是在 HDInsight Hadoop 叢集的預設容器中，則其 *\<path to blob data\>* 格式應為 *' wasb:// \<directory in this container> / \<blob file name> '* 。 Blob 檔案也可以位於 HDInsight Hadoop 叢集的其他容器中。 在此情況下， *\<path to blob data\>* 格式應為 *' wasb:// \<container name> @ \<storage account name> . blob.core.windows.net/ \<blob file name> '* 。
+* **\<path to blob data\>**：如果要上傳至 Hive 資料表的 blob 檔案是在 HDInsight Hadoop 叢集的預設容器中，則其 *\<path to blob data\>* 格式應為 *' wasb:// \<directory in this container> / \<blob file name> '*。 Blob 檔案也可以位於 HDInsight Hadoop 叢集的其他容器中。 在此情況下， *\<path to blob data\>* 格式應為 *' wasb:// \<container name> @ \<storage account name> . blob.core.windows.net/ \<blob file name> '*。
 
   > [!NOTE]
   > 上傳至 Hive 資料表的 Blob 資料必須位於 Hadoop 叢集儲存體帳戶的預設或其他容器中。 否則，「LOAD DATA」  查詢會失敗並提報它無法存取資料。
@@ -249,7 +249,7 @@ INSERT OVERWRITE TABLE <database name>.<ORC table name> PARTITION (<partition va
     WHERE <partition variable>=<partition value>;
 ```
 
-將 *\<external text file table name\>* 所有資料插入之後，在使用下列查詢時，可以放心地卸載 *\<database name\> 。 \<ORC table name\>* ：
+將 *\<external text file table name\>* 所有資料插入之後，在使用下列查詢時，可以放心地卸載 *\<database name\> 。 \<ORC table name\>*：
 
 ```hiveql
     DROP TABLE IF EXISTS <database name>.<external textfile table name>;

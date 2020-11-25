@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
-ms.openlocfilehash: 530aa17a165092fc9219629180c81014039c3dac
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: ab0ed536bd23aaf15d85af85e4f924bc2f51f3d4
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132681"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96006622"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>使用 HTTP 資料收集器 API 將記錄資料傳送給 Azure 監視器 (公開預覽)
 本文示範如何使用 HTTP 資料收集器 API 將記錄資料從 REST API 用戶端傳送給 Azure 監視器。  內容說明如何將您指令碼或應用程式所收集的資料格式化、將其包含在要求中，以及讓 Azure 監視器授權該要求。  提供的範例適用於 PowerShell、C# 及 Python。
@@ -66,7 +66,7 @@ Log Analytics 工作區中的所有資料都會以具有特定記錄類型的記
 Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 
-WorkspaceID** 是 Log Analytics 工作區的唯一識別碼。 Signature** 是[雜湊式訊息驗證碼 (HMAC)](/dotnet/api/system.security.cryptography.hmacsha256?view=netcore-3.1)，該驗證碼從要求建構而來，而後使用 [SHA256 演算法](/dotnet/api/system.security.cryptography.sha256?view=netcore-3.1)進行計算。 接下來，您可使用 Base64 編碼方式進行編碼。
+WorkspaceID 是 Log Analytics 工作區的唯一識別碼。 Signature 是[雜湊式訊息驗證碼 (HMAC)](/dotnet/api/system.security.cryptography.hmacsha256?view=netcore-3.1)，該驗證碼從要求建構而來，而後使用 [SHA256 演算法](/dotnet/api/system.security.cryptography.sha256?view=netcore-3.1)進行計算。 接下來，您可使用 Base64 編碼方式進行編碼。
 
 使用此格式來進行 **SharedKey** 簽章字串的編碼︰
 
@@ -194,7 +194,7 @@ HTTP 狀態碼 200 表示已經接受要求且正在處理。 這表示作業已
 | 400 |不正確的要求 |MissingApiVersion |未指定 API 版本。 |
 | 400 |不正確的要求 |MissingContentType |未指定內容類型。 |
 | 400 |不正確的要求 |MissingLogType |未指定必要值的記錄檔類型。 |
-| 400 |不正確的要求 |UnsupportedContentType |內容類型未設定為 [應用程式/json]****。 |
+| 400 |不正確的要求 |UnsupportedContentType |內容類型未設定為 [應用程式/json]。 |
 | 403 |禁止 |InvalidAuthorization |服務無法驗證要求。 請確認工作區識別碼和連線金鑰都正確。 |
 | 404 |找不到 | | 提供的 URL 不正確，或是要求是太大。 |
 | 429 |太多要求 | | 服務遭遇大量資料來自您的帳戶。 請稍後再重試要求。 |
@@ -211,8 +211,8 @@ HTTP 狀態碼 200 表示已經接受要求且正在處理。 這表示作業已
 
 1. 在 Azure 入口網站中，找出 Log Analytics 工作區。
 2. 選取 [ **代理程式管理**]。
-2. 選取 [工作區識別碼]**** 右邊的複製圖示，然後貼上識別碼做為 [客戶識別碼]**** 變數值。
-3. 選取 [主要金鑰]**** 右邊的複製圖示，然後貼上識別碼做為 [共用金鑰]**** 變數值。
+2. 選取 [工作區識別碼] 右邊的複製圖示，然後貼上識別碼做為 [客戶識別碼] 變數值。
+3. 選取 [主要金鑰] 右邊的複製圖示，然後貼上識別碼做為 [共用金鑰] 變數值。
 
 或者，您可以變更記錄檔類型和 JSON 資料的變數。
 
@@ -651,7 +651,7 @@ public class ApiExample {
 |---|---|---|
 | [自訂事件](../app/api-custom-events-metrics.md?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties)： Application Insights 中以原生 SDK 為基礎的內嵌 | Application Insights （通常是透過應用程式內的 SDK 進行檢測）可讓您透過自訂事件傳送自訂資料。 | <ul><li> 在您的應用程式內產生的資料，但是 SDK 無法透過其中一種預設資料類型 (要求、相依性、例外狀況等) 來挑選資料。</li><li> 最常與 Application Insights 中的其他應用程式資料相關聯的資料 </li></ul> |
 | Azure 監視器記錄中的資料收集器 API | Azure 監視器記錄檔中的資料收集器 API 是完全以開放式方式內嵌資料的方式。 JSON 物件中格式化的任何資料都可以在這裡傳送。 一旦傳送之後，它就會被處理，並可在記錄檔中使用，以與記錄中的其他資料或其他 Application Insights 資料相互關聯。 <br/><br/> 將資料以檔案形式上傳至 Azure Blob blob 相當容易，因為這些檔案將在其中處理並上傳至 Log Analytics。 請參閱 [這](./create-pipeline-datacollector-api.md) 篇文章，以取得這類管線的範例執行。 | <ul><li> 不一定會在 Application Insights 中檢測的應用程式內產生的資料。</li><li> 範例包括查閱和事實資料表、參考資料、預先匯總統計資料等等。 </li><li> 適用于將針對其他 Azure 監視器資料進行交叉參照的資料 (Application Insights、其他記錄資料類型、資訊安全中心、容器/Vm Azure 監視器等，) 依此類推。 </li></ul> |
-| [Azure 資料總管](/azure/data-explorer/ingest-data-overview) | Azure 資料總管 (ADX) 是可 Application Insights 分析和 Azure 監視器記錄的資料平臺。 現已正式推出 ( 「GA」 ) ，在其原始形式中使用資料平臺可提供您完整的彈性 (但需要在叢集上進行管理) 的額外負荷 (RBAC、保留費率、架構等) 。 ADX 提供許多內嵌 [選項](/azure/data-explorer/ingest-data-overview#ingestion-methods) ，包括 [CSV、TSV 和 JSON](/azure/kusto/management/mappings?branch=master) 檔案。 | <ul><li> 將不會與 Application Insights 或記錄下的任何其他資料相互關聯的資料。 </li><li> Azure 監視器記錄中目前無法使用先進的內嵌或處理功能的資料。 </li></ul> |
+| [Azure 資料總管](/azure/data-explorer/ingest-data-overview) | Azure 資料總管 (ADX) 是可 Application Insights 分析和 Azure 監視器記錄的資料平臺。 現已正式推出 ( 「GA」 ) ，在其原始形式中使用資料平臺可提供您完整的彈性 (但需要在叢集上進行管理) 的額外負荷 (Kubernetes RBAC、保留費率、架構等) 。 ADX 提供許多內嵌 [選項](/azure/data-explorer/ingest-data-overview#ingestion-methods) ，包括 [CSV、TSV 和 JSON](/azure/kusto/management/mappings?branch=master) 檔案。 | <ul><li> 將不會與 Application Insights 或記錄下的任何其他資料相互關聯的資料。 </li><li> Azure 監視器記錄中目前無法使用先進的內嵌或處理功能的資料。 </li></ul> |
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -9,16 +9,16 @@ ms.reviewer: dineshm
 ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-js
-ms.openlocfilehash: 952d0acb00a25fe7d84738825cbad017e5b18029
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: b9eb65311951706863c3b18c5fc91bae8c41c7dc
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91892688"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96007336"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 儲存體中的靜態網站代管
 
-您可以直接從名為 *$web* 的儲存體容器提供靜態內容 (HTML、CSS、JavaScript 和影像檔)。 在 Azure 儲存體中託管內容可讓您使用無伺服器架構，其中包括 [Azure Functions](/azure/azure-functions/functions-overview)，以及其他平台即服務 (PaaS) 服務。 如果您不需要 web 伺服器轉譯內容，Azure 儲存體靜態網站裝載是很好的選項。
+您可以直接從名為 *$web* 的儲存體容器提供靜態內容 (HTML、CSS、JavaScript 和影像檔)。 在 Azure 儲存體中託管內容可讓您使用無伺服器架構，其中包括 [Azure Functions](../../azure-functions/functions-overview.md)，以及其他平台即服務 (PaaS) 服務。 如果您不需要 web 伺服器轉譯內容，Azure 儲存體靜態網站裝載是很好的選項。
 
 [App Service 靜態 Web Apps](https://azure.microsoft.com/services/app-service/static/) 是 Azure 儲存體靜態網站裝載的絕佳替代方案，也適用于不需要 Web 服務器轉譯內容的情況。 App Service 靜態 Web Apps 可提供完全受控的持續整合和持續傳遞 (從 GitHub 來源到全域部署的 CI/CD) 工作流程。
 
@@ -60,7 +60,7 @@ ms.locfileid: "91892688"
 如果伺服器傳回 404 錯誤，而且您在啟用網站時未指定錯誤文件，則會將預設的 404 頁面傳回給使用者。
 
 > [!NOTE]
-> 靜態網站不支援[Azure 儲存體的跨原始來源資源分享 (CORS) 支援](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)。
+> 靜態網站不支援[Azure 儲存體的跨原始來源資源分享 (CORS) 支援](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)。
 
 ### <a name="regional-codes"></a>區域代碼
 
@@ -84,7 +84,7 @@ ms.locfileid: "91892688"
 
 雖然主要靜態網站端點不受影響，但對公用存取層級的變更會影響主要 Blob 服務端點。
 
-例如，如果您將 **$web** 容器的公用存取層級從**私人 (無匿名存取)** 變更為 **Blob (僅限 Blob 的匿名讀取存取)** ，則主要靜態網站端點的公用存取層級`https://contosoblobaccount.z22.web.core.windows.net/index.html`不會變更。
+例如，如果您將 **$web** 容器的公用存取層級從 **私人 (無匿名存取)** 變更為 **Blob (僅限 Blob 的匿名讀取存取)** ，則主要靜態網站端點的公用存取層級`https://contosoblobaccount.z22.web.core.windows.net/index.html`不會變更。
 
 不過，主要 Blob 服務端點的公用存取`https://contosoblobaccount.blob.core.windows.net/$web/index.html`會從私人變更至公用。 現在，使用者可以使用這兩個端點的其中一個來開啟該檔案。
 
@@ -103,13 +103,13 @@ ms.locfileid: "91892688"
 
 ## <a name="adding-http-headers"></a>新增 HTTP 標頭
 
-沒有任何方法可以將標頭設為靜態網站功能的一部分。 不過，您可以使用 Azure CDN 以新增標頭和附加 (或覆寫) 標頭值。 請參閱 [Azure CDN 的標準規則引擎參考](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference)。
+沒有任何方法可以將標頭設為靜態網站功能的一部分。 不過，您可以使用 Azure CDN 以新增標頭和附加 (或覆寫) 標頭值。 請參閱 [Azure CDN 的標準規則引擎參考](../../cdn/cdn-standard-rules-engine-reference.md)。
 
-如需使用標頭以控制快取的詳細資訊，請參閱[使用快取規則控制 Azure CDN 快取行為](https://docs.microsoft.com/azure/cdn/cdn-caching-rules)。
+如需使用標頭以控制快取的詳細資訊，請參閱[使用快取規則控制 Azure CDN 快取行為](../../cdn/cdn-caching-rules.md)。
 
 ## <a name="multi-region-website-hosting"></a>多區域網站裝載
 
-如果您打算在多個地理位置中裝載網站，建議您使用 [內容傳遞網路](https://docs.microsoft.com/azure/cdn/) 進列區域快取。 如果您想要在每個區域中提供不同的內容，請使用 [Azure Front Door](https://docs.microsoft.com/azure/frontdoor/) 。 它也會提供容錯移轉功能。 如果您打算使用自訂網域，則不建議使用[Azure 流量管理員](https://docs.microsoft.com/azure/traffic-manager/)。 由於 Azure 儲存體如何驗證自訂功能變數名稱，因此可能會發生問題。
+如果您打算在多個地理位置中裝載網站，建議您使用 [內容傳遞網路](../../cdn/index.yml) 進列區域快取。 如果您想要在每個區域中提供不同的內容，請使用 [Azure Front Door](../../frontdoor/index.yml) 。 它也會提供容錯移轉功能。 如果您打算使用自訂網域，則不建議使用[Azure 流量管理員](../../traffic-manager/index.yml)。 由於 Azure 儲存體如何驗證自訂功能變數名稱，因此可能會發生問題。
 
 
 ## <a name="pricing"></a>定價
@@ -126,7 +126,7 @@ ms.locfileid: "91892688"
 
 * [在 Azure 儲存體中託管靜態網站](storage-blob-static-website-how-to.md)
 * [將自訂網域對應至 Azure Blob 儲存體端點](storage-custom-domain-name.md)
-* [Azure Functions](/azure/azure-functions/functions-overview)
-* [Azure App Service](/azure/app-service/overview)
-* [建置您的第一個無伺服器 Web 應用程式](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
+* [Azure Functions](../../azure-functions/functions-overview.md)
+* [Azure App Service](../../app-service/overview.md)
+* [建置您的第一個無伺服器 Web 應用程式](/azure/functions/tutorial-static-website-serverless-api-with-database)
 * [教學課程：在 Azure DNS 上託管您的網域](../../dns/dns-delegate-domain-azure-dns.md)

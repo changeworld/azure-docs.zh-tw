@@ -15,11 +15,11 @@ ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a1430b32c0e74be7a0e50fa4c5c183018b2b55e0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967766"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006297"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何在 Azure 上安裝和設定 SAP HANA (大型執行個體)
 
@@ -125,7 +125,7 @@ HANA 大型執行個體單位可以連接到這個 SMT 執行個體。 (如需�
 因此，您必須設定不同時間伺服器，以供 Azure VM 上執行的 SAP 應用程式伺服器與 HANA 大型執行個體上執行的 SAP HANA 資料庫執行個體使用。 大型執行個體戳記中的儲存體基礎結構與 NTP 伺服器進行時間同步處理。
 
 
-## <a name="networking"></a>網路功能
+## <a name="networking"></a>網路
 我們假設您已如下列文件所述，依照建議設計 Azure 虛擬網路，並將這些虛擬網路連接到 HANA 大型執行個體：
 
 - [SAP Hana (大型實例) 總覽和 Azure 上的架構](./hana-overview-architecture.md)

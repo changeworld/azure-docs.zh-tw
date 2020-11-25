@@ -16,11 +16,11 @@ ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
 ms.openlocfilehash: 4b3b2b8c39b5b2552b5ce9f508bacd1ea86b2638
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269585"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006351"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>適用於 Android 的離線 Widevine 串流
 
@@ -71,9 +71,9 @@ ms.locfileid: "89269585"
 2. ContentKeyAuthorizationPolicyRestriction 會指定內容金鑰傳遞在授權傳遞服務中的授權方式 (Open Authorization 或權杖授權)
 3. DRM (Widevine) 授權範本
 
-若要針對 Widevine 授權啟用**離線**模式，您必須設定 [Widevine 授權範本](media-services-widevine-license-template-overview.md)。 在 **policy_overrides** 物件中，將 **can_persist** 屬性設定為 **true** (預設值為 false)。 
+若要針對 Widevine 授權啟用 **離線** 模式，您必須設定 [Widevine 授權範本](media-services-widevine-license-template-overview.md)。 在 **policy_overrides** 物件中，將 **can_persist** 屬性設定為 **true** (預設值為 false)。 
 
-下列程式碼範例會使用 .NET 以啟用 Widevine 授權的**離線**模式。 程式碼是以[搭配 .NET 使用 PlayReady 和/或 Widevine 動態一般加密](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm) \(英文\) 的範例為基礎。 
+下列程式碼範例會使用 .NET 以啟用 Widevine 授權的 **離線** 模式。 程式碼是以[搭配 .NET 使用 PlayReady 和/或 Widevine 動態一般加密](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm) \(英文\) 的範例為基礎。 
 
 ```
 private static string ConfigureWidevineLicenseTemplateOffline(Uri keyDeliveryUrl)
@@ -152,7 +152,7 @@ Android 5.0 Lollipop 或更新版本不會發生此問題，因為 Android 5.0 �
 
 此外，Google 已推出 Progressive Web App (PWA) 範例，並將它作為開放原始碼提供： 
 
-- [原始程式碼](https://github.com/GoogleChromeLabs/sample-media-pwa) \(英文\)
+- [原始程式碼](https://github.com/GoogleChromeLabs/sample-media-pwa)
 - [Google 裝載的版本 ](https://biograf-155113.appspot.com/ttt/episode-2/) \(英文\) (僅適用於 Android 裝置上的 Chrome v 62 和更新版本)
 
 如果將 Android 手機上的 Chrome 行動瀏覽器升級至 v62 (或更新版本)，並測試上述裝載的範例應用程式，線上串流和離線播放將同時皆能夠運作。

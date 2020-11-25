@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: b-juche
 ms.openlocfilehash: bb3d1fd49c2623ff6dcbe8a19ae8c8ca3b46425a
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930623"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006571"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>將子網路委派至 Azure NetApp Files 
 
@@ -40,12 +40,12 @@ ms.locfileid: "91930623"
 
 1.  移至 Azure 入口網站中的 [ **虛擬網路** ] 分頁，然後選取您想要用於 Azure NetApp Files 的虛擬網路。    
 
-1. 在 [虛擬網路] 刀鋒視窗中選取 [子網路]****，然後按一下 [+ 子網路]**** 按鈕。 
+1. 在 [虛擬網路] 刀鋒視窗中選取 [子網路]，然後按一下 [+ 子網路] 按鈕。 
 
 1. 完成 [新增子網路] 頁面中的下列必要欄位，以建立要用於 Azure NetApp Files 的新子網路：
     * **名稱**：指定子網名稱。
     * **位址範圍**：指定 IP 位址範圍。
-    * **子網委派**：選取 [ **Microsoft. NetApp/磁片**區]。 
+    * **子網委派**：選取 [ **Microsoft. NetApp/磁片** 區]。 
 
       ![子網路委派](../media/azure-netapp-files/azure-netapp-files-subnet-delegation.png)
     

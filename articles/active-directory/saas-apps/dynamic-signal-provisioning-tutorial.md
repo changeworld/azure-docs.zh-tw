@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 263a67fd8fba2c336d1ed4d91475386a8ae175dd
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359012"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005787"
 ---
 # <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>教學課程：設定 Dynamic Signal 來自動佈建使用者
 

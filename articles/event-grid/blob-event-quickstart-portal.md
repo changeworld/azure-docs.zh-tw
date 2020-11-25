@@ -4,11 +4,11 @@ description: 快速入門：使用 Azure Event Grid 和 Azure 入口網站來建
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.openlocfilehash: 46cd88558334239a1a9971c63b8b2608def3c4d3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87421598"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005685"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>快速入門：使用 Azure 入口網站將 Blob 儲存體事件路由傳送至 Web 端點
 
@@ -86,7 +86,7 @@ Azure Event Grid 是一項雲端事件服務。 在本文中，您會使用 Azur
    ![選取 Web Hook](./media/blob-event-quickstart-portal/select-web-hook.png)
 3. 在 [建立事件訂用帳戶] 頁面上，執行下列步驟： 
     1. 輸入事件訂閱的 [名稱]。
-    2. 輸入**系統主題**的**名稱**。 若要了解系統主題，請參閱[系統主題概觀](system-topics.md)。
+    2. 輸入 **系統主題** 的 **名稱**。 若要了解系統主題，請參閱[系統主題概觀](system-topics.md)。
 
        ![輸入事件訂閱與系統主題的名稱](./media/blob-event-quickstart-portal/event-subscription-name-system-topic.png)
     2. 選取 [WebHook] 作為 [端點類型]。 
@@ -127,7 +127,7 @@ Azure Event Grid 是一項雲端事件服務。 在本文中，您會使用 Azur
 
 1. 瀏覽至您的測試檔案，並加以上傳。
 
-1. 您已觸發此事件，而 Event Grid 會將訊息傳送至您在訂閱時設定的端點。 訊息為 JSON 格式，且其包含具有一或多個事件的陣列。 在下列範例中，JSON 訊息會包含具有單一事件的陣列。 檢視您的 Web 應用程式，並留意已接收到 **Blob 所建立**的事件。 
+1. 您已觸發此事件，而 Event Grid 會將訊息傳送至您在訂閱時設定的端點。 訊息為 JSON 格式，且其包含具有一或多個事件的陣列。 在下列範例中，JSON 訊息會包含具有單一事件的陣列。 檢視您的 Web 應用程式，並留意已接收到 **Blob 所建立** 的事件。 
 
    ![Blob 所建立的事件](./media/blob-event-quickstart-portal/blob-created-event.png)
 

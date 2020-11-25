@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: alzam
 ms.openlocfilehash: 1f10799ab32b6cb26a8b3b5b343f65b960d71357
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94889094"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006996"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>從 VPN 閘道設定資源記錄事件的警示
 
@@ -20,7 +20,7 @@ ms.locfileid: "94889094"
 
 Azure 提供下列資源記錄：
 
-|***名稱** _ | _*_說明_*_ |
+|***名稱** _ | _*_描述_*_ |
 |---        | ---               |
 |GatewayDiagnosticLog | 包含閘道設定事件、主要變更和維護事件的資源記錄 |
 |TunnelDiagnosticLog | 包含通道狀態變更事件。 通道連線/中斷線上活動具有狀態變更的摘要原因（如果適用） |

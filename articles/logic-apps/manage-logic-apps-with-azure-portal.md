@@ -10,11 +10,11 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 07/20/2020
 ms.openlocfilehash: d50f577a7170982be004cc8957114f79675fbc6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87078616"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006093"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>管理 Azure 入口網站中的邏輯應用程式
 
@@ -54,7 +54,7 @@ ms.locfileid: "87078616"
 
 1. 在 [ **屬性** ] 窗格中，您可以查看和複製邏輯應用程式的下列資訊：
 
-   * **名稱**
+   * **Name**
    * **資源識別碼**
    * **資源群組**
    * **位置**
@@ -214,7 +214,7 @@ ms.locfileid: "87078616"
 
    ![邏輯應用程式版本歷程記錄的螢幕擷取畫面，顯示升級舊版的按鈕。](./media/manage-logic-apps-with-azure-portal/promote-button.png)
 
-1. 在開啟的 **Logic Apps 設計** 工具頁面上，視需要編輯您要升級的版本。 您可以在 **設計** 工具和程式 **代碼視圖** 模式之間切換。 您也可以更新 **參數**、 **範本**和 **連接器**。
+1. 在開啟的 **Logic Apps 設計** 工具頁面上，視需要編輯您要升級的版本。 您可以在 **設計** 工具和程式 **代碼視圖** 模式之間切換。 您也可以更新 **參數**、 **範本** 和 **連接器**。
 
    ![Logic Apps 設計工具的螢幕擷取畫面，顯示升級舊版邏輯應用程式的按鈕。](./media/manage-logic-apps-with-azure-portal/promote-page.png)
 
@@ -222,6 +222,6 @@ ms.locfileid: "87078616"
 
    當您再次 [查看邏輯應用程式的版本歷程記錄](#find-version-history) 時，升級版本會顯示在清單頂端，並具有新的識別碼。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [監視 Logic Apps](monitor-logic-apps.md)

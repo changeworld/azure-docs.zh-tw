@@ -4,19 +4,19 @@ ms.author: dapine
 ms.date: 10/02/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.openlocfilehash: 7ccbc6c06419d22add7c52829069bb858cb35cf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6f399e19cadf3d6ce9edfaecb3d904e62c498aa
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73484095"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006863"
 ---
 容器具有下列設定：
 
 |必要|設定|目的|
 |--|--|--|
 |是|[ApiKey](#apikey-configuration-setting)|追蹤帳單資訊。|
-|否|[ApplicationInsights](#applicationinsights-setting)|可將 [Azure 應用程式 Insights](https://docs.microsoft.com/azure/application-insights) 遙測支援新增至您的容器。|
+|否|[ApplicationInsights](#applicationinsights-setting)|可將 [Azure 應用程式 Insights](/azure/application-insights) 遙測支援新增至您的容器。|
 |是|[Billing](#billing-configuration-setting)|指定 Azure 上服務資源的端點 URI。|
 |是|[Eula](#eula-setting)| 表示您已接受容器的授權。|
 |否|[Fluentd](#fluentd-settings)|將記錄檔和（選擇性）計量資料寫入至 Fluentd 伺服器。|

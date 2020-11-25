@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/06/2020
 ms.author: jeedes
 ms.openlocfilehash: 23db3457458d34852f164649137c2b20cf99238b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458428"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006008"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-litmus"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Litmus 整合
 
@@ -50,7 +50,7 @@ ms.locfileid: "92458428"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Litmus** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Litmus**。
 1. 從結果面板選取 [Litmus]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -72,7 +72,7 @@ ms.locfileid: "92458428"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Litmus]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -147,7 +147,7 @@ ms.locfileid: "92458428"
 
     a. 在 [SAML 2.0 端點 (HTTP)]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
 
-    b. 在記事本中開啟已從 Azure 入口網站下載的 **憑證** ，將內容貼至 [X.509 憑證]  文字方塊。
+    b. 在記事本中開啟已從 Azure 入口網站下載的 **憑證**，將內容貼至 [X.509 憑證]  文字方塊。
 
     c. 按一下 [儲存 SAML 設定]  。
 
@@ -169,9 +169,9 @@ ms.locfileid: "92458428"
 
     a. 在 [電子郵件] 文字方塊中，輸入像是 **B.Simon\@contoso.com** 的使用者電子郵件地址
 
-    b. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **B** 。
+    b. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **B**。
 
-    c. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon** 。
+    c. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon**。
 
     d. 按一下 [建立使用者]  。
 

@@ -5,11 +5,11 @@ services: container-service
 ms.topic: article
 ms.date: 04/08/2020
 ms.openlocfilehash: 39c2fe177d0a6d913d7bf2b2baf44af3c69c0868
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900096"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006928"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中建立和管理叢集的多個節點集區 \(部分機器翻譯\)
 
@@ -45,7 +45,7 @@ ms.locfileid: "92900096"
 若要開始使用，請建立具有單一節點集區的 AKS 叢集。 下列範例會使用 [az group create][az-group-create]命令，在 *eastus* 區域中建立名為 *myResourceGroup* 的資源群組。 接著會使用 [az AKS create][az-aks-create]命令來建立名為 *myAKSCluster* 的 AKS 叢集。
 
 > [!NOTE]
-> 使用多個節點集區時， **不支援***基本* 負載平衡器 SKU。 根據預設，系統會使用 Azure CLI 和 Azure 入口網站的 *標準* 負載平衡器 SKU 來建立 AKS 叢集。
+> 使用多個節點集區時，**不支援***基本* 負載平衡器 SKU。 根據預設，系統會使用 Azure CLI 和 Azure 入口網站的 *標準* 負載平衡器 SKU 來建立 AKS 叢集。
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -161,7 +161,7 @@ az aks nodepool add \
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-讓我們升級 *mynodepool* 。 使用 [az aks nodepool upgrade][az-aks-nodepool-upgrade] 命令升級節點集區，如下列範例所示：
+讓我們升級 *mynodepool*。 使用 [az aks nodepool upgrade][az-aks-nodepool-upgrade] 命令升級節點集區，如下列範例所示：
 
 ```azurecli-interactive
 az aks nodepool upgrade \
@@ -172,7 +172,7 @@ az aks nodepool upgrade \
     --no-wait
 ```
 
-使用 [az aks node pool list][az-aks-nodepool-list] 命令再次列出節點集區的狀態。 下列範例顯示 *mynodepool* 正在 *升級* 狀態，以 *KUBERNETES_VERSION* ：
+使用 [az aks node pool list][az-aks-nodepool-list] 命令再次列出節點集區的狀態。 下列範例顯示 *mynodepool* 正在 *升級* 狀態，以 *KUBERNETES_VERSION*：
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -249,7 +249,7 @@ AKS 叢集有兩個叢集資源物件，且有相關聯的 Kubernetes 版本。
 
 <!--If you scale down, nodes are carefully [cordoned and drained][kubernetes-drain] to minimize disruption to running applications.-->
 
-若要調整節點集區中的節點數目，請使用 [az aks node pool scale][az-aks-nodepool-scale] 命令。 下列範例會將 *mynodepool* 中的節點數目調整為 *5* ：
+若要調整節點集區中的節點數目，請使用 [az aks node pool scale][az-aks-nodepool-scale] 命令。 下列範例會將 *mynodepool* 中的節點數目調整為 *5*：
 
 ```azurecli-interactive
 az aks nodepool scale \
@@ -355,7 +355,7 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 在下列範例中，請建立使用 *Standard_NC6* VM 大小的 GPU 型節點集區。 這些 Vm 是由 NVIDIA Tesla K80 卡提供技術支援。 如需可用 VM 大小的詳細資訊，請參閱 [Azure 中 Linux 虛擬機器的大小][vm-sizes]。
 
-再次使用 [az aks node pool add][az-aks-nodepool-add] 命令建立節點集區。 這次請指定名稱 *gpunodepool* ，然後使用 `--node-vm-size` 參數來指定 *Standard_NC6* 大小：
+再次使用 [az aks node pool add][az-aks-nodepool-add] 命令建立節點集區。 這次請指定名稱 *gpunodepool*，然後使用 `--node-vm-size` 參數來指定 *Standard_NC6* 大小：
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -577,7 +577,7 @@ az aks nodepool add \
 ```
 
 > [!NOTE]
-> 在叢集建立期間，您也可以使用此 `--tags` 參數。 [az aks nodepool update][az-aks-nodepool-update] 在叢集建立期間， `--tags` 參數會將標記套用至使用叢集建立的初始節點集區。 所有標記名稱都必須遵守 [使用標記來組織 Azure 資源][tag-limitation]的限制。 使用參數更新節點集區會 `--tags` 更新任何現有的標記值，並附加任何新的標記。 例如，如果您的節點集區具有「 *部門 =* 」和「 *costcenter = 9999* 」的標籤，而且您已使用 *team = dev* 和 *costcenter = 111* 對標記進行更新，您的 nodepool 會有 *部門 = IT* 、 *costcenter = 111* 和 *team = dev* for 標記。
+> 在叢集建立期間，您也可以使用此 `--tags` 參數。 [az aks nodepool update][az-aks-nodepool-update] 在叢集建立期間， `--tags` 參數會將標記套用至使用叢集建立的初始節點集區。 所有標記名稱都必須遵守 [使用標記來組織 Azure 資源][tag-limitation]的限制。 使用參數更新節點集區會 `--tags` 更新任何現有的標記值，並附加任何新的標記。 例如，如果您的節點集區具有「 *部門 =* 」和「 *costcenter = 9999* 」的標籤，而且您已使用 *team = dev* 和 *costcenter = 111* 對標記進行更新，您的 nodepool 會有 *部門 = IT*、 *costcenter = 111* 和 *team = dev* for 標記。
 
 下列來自 [az aks nodepool list][az-aks-nodepool-list] 命令的範例輸出顯示 *tagnodepool* 正在 *建立* 具有指定 *標記* 的節點：
 
@@ -613,8 +613,8 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 建立範本（例如） `aks-agentpools.json` ，並貼上下列範例資訊清單。 此範例範本會設定下列設定：
 
 * 更新名為 *>myagentpool* 的 *Linux* 節點集區，以執行三個節點。
-* 設定節點集區中的節點，以執行 Kubernetes 版本 *1.15.7* 。
-* 將節點大小定義為 *Standard_DS2_v2* 。
+* 設定節點集區中的節點，以執行 Kubernetes 版本 *1.15.7*。
+* 將節點大小定義為 *Standard_DS2_v2*。
 
 視需要編輯這些值以更新、新增或刪除節點集區：
 
@@ -796,7 +796,7 @@ az group delete --name myResourceGroup --yes --no-wait
 az group delete --name myResourceGroup2 --yes --no-wait
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解 [系統節點][use-system-pool]集區。
 

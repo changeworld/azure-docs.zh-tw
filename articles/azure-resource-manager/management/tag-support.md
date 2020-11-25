@@ -4,11 +4,11 @@ description: 顯示哪些 Azure 資源類型支援標記。 提供所有 Azure �
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.openlocfilehash: fb81ed303cf27add3a033021f017c03f4b9e9750
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427763"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005719"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 資源的標記支援
 本文將說明資源類型是否支援[標記](tag-resources.md)。 標示為 [ **支援** 標籤] 的資料行會指出資源類型是否有標記的屬性。 在 [ **成本] 報表中** 標示為 [標籤] 的資料行會指出該資源類型是否要將標記傳遞給成本報告。 您可以依 [成本管理成本分析](../../cost-management-billing/costs/group-filter.md) 和 [Azure 計費發票及每日使用量資料](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)中的標記來查看成本。

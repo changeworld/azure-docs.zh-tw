@@ -11,11 +11,11 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: b7faec5023abe37802d8b08980f216934d70a6ac
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784349"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005535"
 ---
 # <a name="create-a-storage-account"></a>建立儲存體帳戶
 
@@ -25,7 +25,7 @@ Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -104,9 +104,9 @@ N/A
 
 ## <a name="create-a-storage-account"></a>建立儲存體帳戶
 
-每個儲存體帳戶都必須屬於 Azure 資源群組。 資源群組是用來群組 Azure 服務的邏輯容器。 當您建立儲存體帳戶時，可以選擇建立新的資源群組，或使用現有的資源群組。 本文說明如何建立新的資源群組。
+每個儲存體帳戶都必須屬於 Azure 資源群組。 資源群組是用來群組 Azure 服務的邏輯容器。 當您建立儲存體帳戶時，可以選擇建立新的資源群組，或使用現有的資源群組。 本文說明如何建立新資源群組。
 
-**一般用途 v2** 儲存體帳戶提供所有 Azure 儲存體服務的存取權：Blob、檔案、佇列、資料表和磁碟。 此處所述的步驟會建立一般用途 v2 儲存體帳戶，但建立任何類型儲存體帳戶的步驟都很類似。 如需儲存體帳戶類型及其他儲存體帳戶設定的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](storage-account-overview.md)。
+**一般用途 v2** 儲存體帳戶可讓您存取所有的 Azure 儲存體服務： blob、檔案、佇列、資料表和磁片。 此處說明的步驟會建立一般用途 v2 儲存體帳戶，但建立任何類型儲存體帳戶的步驟都很類似。 如需儲存體帳戶類型及其他儲存體帳戶設定的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](storage-account-overview.md)。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -147,7 +147,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 
 |複寫選項  |SkuName 參數  |
 |---------|---------|
-|本機備援儲存體 (LRS)     |Standard_LRS         |
+|本地備援儲存體 (LRS)     |Standard_LRS         |
 |區域備援儲存體 (ZRS)     |Standard_ZRS         |
 |異地備援儲存體 (GRS)     |Standard_GRS         |
 |讀取權限異地備援儲存體 (GRS)     |Standard_RAGRS         |
@@ -190,7 +190,7 @@ az storage account create \
 
 |複寫選項  |sku 參數  |
 |---------|---------|
-|本機備援儲存體 (LRS)     |Standard_LRS         |
+|本地備援儲存體 (LRS)     |Standard_LRS         |
 |區域備援儲存體 (ZRS)     |Standard_ZRS         |
 |異地備援儲存體 (GRS)     |Standard_GRS         |
 |讀取權限異地備援儲存體 (GRS)     |Standard_RAGRS         |
