@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
-ms.openlocfilehash: 9b660bf20c90a84780175e70573c96a0ce1b0b7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cb4cdef227c786b12790903037fdc02649592e3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91377553"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95990865"
 ---
 ## <a name="use-custom-page-content"></a>使用自訂頁面內容
 
@@ -48,7 +48,7 @@ Azure AD B2C 在客戶的瀏覽器中使用 [跨原始資源分享 (CORS) ](http
 
 | 預設頁面 | 描述 | 內容定義識別碼<br/>僅 (自訂原則)  |
 |:-----------------------|:--------|-------------|
-| [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **錯誤頁面**。 在發生例外狀況或錯誤時，系統會顯示此頁面。 | api.error** |
+| [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **錯誤頁面**。 在發生例外狀況或錯誤時，系統會顯示此頁面。 | api.error |
 | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **自我判斷頁面**。 使用此檔案作為社交帳戶註冊頁面、本機帳戶註冊頁面、本機帳戶登入頁面、密碼重設等的自訂頁面內容。 此表單可以包含各種輸入控制項，例如文字輸入方塊、密碼輸入方塊、選項按鈕、單選下拉式清單方塊和多選核取方塊。 | *localaccountsignin*、api. *localaccountsignup*、 *localaccountpasswordreset*、 *api. selfasserted* |
 | [multifactor-1.0.0.html](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Multi-Factor Authentication 頁面**。 在此頁面上，使用者可以在註冊或登入期間驗證其電話號碼 (藉由使用文字或語音)。 | *api.phonefactor* |
 | [updateprofile.html](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **設定檔更新頁面**。 此頁面包含一份表單，使用者可用來更新其設定檔。 此頁面類似於社交帳戶註冊頁面，但密碼輸入欄位除外。 | *api.selfasserted.profileupdate* |
@@ -56,7 +56,7 @@ Azure AD B2C 在客戶的瀏覽器中使用 [跨原始資源分享 (CORS) ](http
 
 ## <a name="hosting-the-page-content"></a>裝載頁面內容
 
-使用您自己的 HTML 和 CSS 檔案自訂 UI 時，請將 UI 內容裝載于任何支援 CORS 的公開可用 HTTPS 端點上。 例如， [Azure Blob 儲存體](../articles/storage/blobs/storage-blobs-introduction.md)、 [Azure App 服務](/azure/app-service/)、網頁伺服器、cdn、AWS S3 或檔案共用系統。
+使用您自己的 HTML 和 CSS 檔案自訂 UI 時，請將 UI 內容裝載于任何支援 CORS 的公開可用 HTTPS 端點上。 例如， [Azure Blob 儲存體](../articles/storage/blobs/storage-blobs-introduction.md)、 [Azure App 服務](../articles/app-service/index.yml)、網頁伺服器、cdn、AWS S3 或檔案共用系統。
 
 ## <a name="guidelines-for-using-custom-page-content"></a>使用自訂頁面內容的指導方針
 
@@ -103,7 +103,7 @@ Azure AD B2C 在客戶的瀏覽器中使用 [跨原始資源分享 (CORS) ](http
    </html>
    ```
 
-1. 在文字編輯器中貼上所複製的程式碼片段，然後將檔案儲存為 customize-ui.html**。
+1. 在文字編輯器中貼上所複製的程式碼片段，然後將檔案儲存為 customize-ui.html。
 
 > [!NOTE]
 > 如果您使用 login.microsoftonline.com，HTML 表單元素將會因為安全性限制而移除。 如果您想要在自訂 HTML 內容中使用 HTML 表單元素，請 [使用 b2clogin.com](../articles/active-directory-b2c/b2clogin.md)。
@@ -120,11 +120,11 @@ Azure AD B2C 在客戶的瀏覽器中使用 [跨原始資源分享 (CORS) ](http
 1. 建立資源群組，或選取現有的 **資源群組** 。
 1. 輸入儲存體帳戶的唯一 **名稱** 。
 1. 選取儲存體帳戶的 **地理位置** 。
-1. [部署模型]**** 可保持為 [資源管理員]****。
-1. [效能]**** 可保持為 [標準]****。
-1. 將 [帳戶類型]**** 變更為 [Blob 儲存體]****。
-1. [複寫]**** 可保持為 [RA-GRS]****。
-1. [存取層]**** 可保持為 [經常性存取]****。
+1. [部署模型] 可保持為 [資源管理員]。
+1. [效能] 可保持為 [標準]。
+1. 將 [帳戶類型] 變更為 [Blob 儲存體]。
+1. [複寫] 可保持為 [RA-GRS]。
+1. [存取層] 可保持為 [經常性存取]。
 1. 選取 [ **審核 + 建立** ] 以建立儲存體帳戶。
     部署完成後，[ **儲存體帳戶** ] 頁面會自動開啟。
 
@@ -141,7 +141,7 @@ Azure AD B2C 在客戶的瀏覽器中使用 [跨原始資源分享 (CORS) ](http
 #### <a name="22-upload-your-custom-page-content-files"></a>2.2 上傳您的自訂頁面內容檔案
 
 1. 選取 [上傳] 。
-1. 選取 [ **選取**檔案] 旁的資料夾圖示。
+1. 選取 [ **選取** 檔案] 旁的資料夾圖示。
 1. 流覽至並選取您稍早在 [頁面 UI 自訂] 區段中建立的 **customize-ui.html**。
 1. 如果您想要上傳至子資料夾，請展開 [ **Advanced** ]，然後在 **[上傳至資料夾**] 中輸入資料夾名稱。
 1. 選取 [上傳] 。
@@ -155,11 +155,11 @@ Azure AD B2C 在客戶的瀏覽器中使用 [跨原始資源分享 (CORS) ](http
 
 1. 在功能表中，選取 [CORS]。
 1. 針對 [允許的來源]，輸入 `https://your-tenant-name.b2clogin.com`。 將 `your-tenant-name` 取代為您的 Azure AD B2C 租用戶名稱。 例如： `https://fabrikam.b2clogin.com` 。 輸入您的租使用者名稱時，全部使用小寫字母。
-1. 針對 [允許的方法]****，選取 `GET` 和 `OPTIONS`。
+1. 針對 [允許的方法]，選取 `GET` 和 `OPTIONS`。
 1. 針對 [允許的標頭]，輸入星號 (*)。
 1. 針對 [公開的標頭]，輸入星號 (*)。
 1. 針對 [最大壽命]，輸入 200。
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 
 #### <a name="31-test-cors"></a>3.1 測試 CORS
 
