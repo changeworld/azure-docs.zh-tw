@@ -3,12 +3,12 @@ title: 針對連線能力問題進行疑難排解-Azure 事件中樞 |Microsoft 
 description: 本文提供 Azure 事件中樞的連接問題疑難排解的相關資訊。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: b85c0895d1c8f165f494d29013adea014187dd23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eddc0e8c598e4553b30759d179fecb6ae880829
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87039322"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96012675"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>針對連線能力問題進行疑難排解-Azure 事件中樞
 用戶端應用程式無法連線到事件中樞的原因有很多種。 您遇到的連線問題可能是永久或暫時性的。 如果問題發生 (永久) ，您可能會想要檢查連接字串、組織的防火牆設定、IP 防火牆設定、網路安全性設定 (服務端點、私人端點 ) 等等。 針對暫時性問題，升級至最新版本的 SDK、執行命令以檢查捨棄的封包，以及取得網路追蹤，可能有助於疑難排解問題。 
@@ -26,54 +26,7 @@ ms.locfileid: "87039322"
 
 針對 Kafka 用戶端，確認已正確設定 producer.config 或 consumer.config 檔案。 如需詳細資訊，請參閱 [在事件中樞中使用 Kafka 傳送和接收訊息](event-hubs-quickstart-kafka-enabled-event-hubs.md#send-and-receive-messages-with-kafka-in-event-hubs)。
 
-### <a name="check-if-the-ports-required-to-communicate-with-event-hubs-are-blocked-by-organizations-firewall"></a>檢查與事件中樞通訊所需的埠是否遭到組織的防火牆封鎖
-確認您的組織防火牆未封鎖與 Azure 事件中樞通訊所使用的埠。 請參閱下表，以瞭解您需要開啟以與 Azure 事件中樞通訊的輸出埠。 
-
-| 通訊協定 | 連接埠 | 詳細資料 | 
-| -------- | ----- | ------- | 
-| AMQP | 5671 與 5672 | 請參閱 [AMQP 通訊協定指南](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
-| HTTP、HTTPS | 80、443 |  |
-| Kafka | 9093 | 請參閱[從 Kafka 應用程式使用事件中樞](event-hubs-for-kafka-ecosystem-overview.md)
-
-以下是檢查5671埠是否封鎖的範例命令。
-
-```powershell
-tnc <yournamespacename>.servicebus.windows.net -port 5671
-```
-
-在 Linux 上：
-
-```shell
-telnet <yournamespacename>.servicebus.windows.net 5671
-```
-
-### <a name="verify-that-ip-addresses-are-allowed-in-your-corporate-firewall"></a>確認您的公司防火牆中允許 IP 位址
-當您使用 Azure 時，有時您必須允許公司防火牆或 proxy 中的特定 IP 位址範圍或 Url 存取您使用的所有 Azure 服務，或嘗試使用的所有服務。 確認事件中樞所使用的 IP 位址上允許流量。 針對 Azure 事件中樞所使用的 IP 位址：請參閱 [AZURE Ip 範圍和服務標籤-公用雲端](https://www.microsoft.com/download/details.aspx?id=56519)。
-
-此外，請確認是否允許命名空間的 IP 位址。 若要尋找正確的 IP 位址以允許您的連線，請遵循下列步驟：
-
-1. 從命令提示字元執行下列命令： 
-
-    ```
-    nslookup <YourNamespaceName>.servicebus.windows.net
-    ```
-2. 記下 `Non-authoritative answer` 中傳回的 IP 位址。 只有當您將命名空間還原到不同的叢集時，才會變更該 IP 位址。
-
-如果您將區域備援用於命名空間，則需要執行一些額外的步驟： 
-
-1. 首先，在命名空間上執行 nslookup。
-
-    ```
-    nslookup <yournamespace>.servicebus.windows.net
-    ```
-2. 記下 [非授權回答] 區段中的名稱，其採用下列其中一種格式： 
-
-    ```
-    <name>-s1.cloudapp.net
-    <name>-s2.cloudapp.net
-    <name>-s3.cloudapp.net
-    ```
-3. 針對具有尾碼 s1、s2 和 s3 的每一個執行 nslookup，以取得三個可用性區域中執行的三個實例的 IP 位址。 
+[!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
 
 ### <a name="verify-that-azureeventgrid-service-tag-is-allowed-in-your-network-security-groups"></a>確認您的網路安全性群組中允許 AzureEventGrid 服務標記
 如果您的應用程式是在子網內執行，而且有相關聯的網路安全性群組，請確認是否允許網際網路輸出，或是否允許 AzureEventGrid 服務標記。 請參閱 [虛擬網路服務標記](../virtual-network/service-tags-overview.md) 並搜尋 `EventHub` 。
@@ -92,22 +45,6 @@ IP 防火牆規則會在事件中樞命名空間層級套用。 因此，規則�
 
 如需詳細資訊，請參閱 [設定 Azure 事件中樞命名空間的 IP 防火牆規則](event-hubs-ip-filtering.md)。 若要檢查您是否有 IP 篩選、虛擬網路或憑證鏈問題，請參閱 [疑難排解網路相關問題](#troubleshoot-network-related-issues)。
 
-#### <a name="find-the-ip-addresses-blocked-by-ip-firewall"></a>尋找 IP 防火牆封鎖的 IP 位址
-遵循「[啟用診斷記錄](event-hubs-diagnostic-logs.md#enable-diagnostic-logs)」中的指示，啟用[事件中樞虛擬網路線上活動](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema)的診斷記錄。 您會看到已拒絕連線的 IP 位址。
-
-```json
-{
-    "SubscriptionId": "0000000-0000-0000-0000-000000000000",
-    "NamespaceName": "namespace-name",
-    "IPAddress": "1.2.3.4",
-    "Action": "Deny Connection",
-    "Reason": "IPAddress doesn't belong to a subnet with Service Endpoint enabled.",
-    "Count": "65",
-    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name",
-    "Category": "EventHubVNetConnectionEvent"
-}
-```
-
 ### <a name="check-if-the-namespace-can-be-accessed-using-only-a-private-endpoint"></a>檢查是否只能使用私人端點來存取命名空間
 如果事件中樞命名空間設定為只能透過私人端點存取，請確認用戶端應用程式正在透過私人端點存取命名空間。 
 
@@ -120,13 +57,13 @@ IP 防火牆規則會在事件中樞命名空間層級套用。 因此，規則�
 
 流覽至或 [wget](https://www.gnu.org/software/wget/) `https://<yournamespacename>.servicebus.windows.net/` 。 使用 JAVA SDK) 時，它有助於檢查您的 IP 篩選或虛擬網路或憑證鏈是否有問題 (最常見的問題。
 
-**成功訊息**的範例：
+**成功訊息** 的範例：
 
 ```xml
 <feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Publicly Listed Services</title><subtitle type="text">This is the list of publicly-listed services currently available.</subtitle><id>uuid:27fcd1e2-3a99-44b1-8f1e-3e92b52f0171;id=30</id><updated>2019-12-27T13:11:47Z</updated><generator>Service Bus 1.1</generator></feed>
 ```
 
-**失敗錯誤訊息**的範例：
+**失敗錯誤訊息** 的範例：
 
 ```json
 <Error>

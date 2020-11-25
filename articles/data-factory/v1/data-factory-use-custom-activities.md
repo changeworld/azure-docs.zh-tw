@@ -14,11 +14,11 @@ ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: b3391727b19e9e8e88646f72667545f1df7fe5a7
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637372"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012862"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>在 Azure Data Factory 第1版管線中使用自訂活動
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -33,7 +33,7 @@ ms.locfileid: "92637372"
 - 在[支援的來源與接收資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats)之間移動資料的[資料移動活動](data-factory-data-movement-activities.md)。
 - 使用計算服務（例如 Azure HDInsight、Azure Batch 和 Azure Machine Learning Studio (傳統) ）來轉換資料的[資料轉換活動](data-factory-data-transformation-activities.md)。
 
-如果要移動資料至/自 Data Factory 不支援的資料存放區，利用自己的資料移動邏輯建立 **自訂活動** ，然後在管線中使用活動。 同樣地，若要以 Data Factory 不支援的方法轉換/處理資料，可以利用自己的資料轉換邏輯建立自訂活動，然後在管線中使用活動。
+如果要移動資料至/自 Data Factory 不支援的資料存放區，利用自己的資料移動邏輯建立 **自訂活動**，然後在管線中使用活動。 同樣地，若要以 Data Factory 不支援的方法轉換/處理資料，可以利用自己的資料轉換邏輯建立自訂活動，然後在管線中使用活動。
 
 您可以設定自訂活動以在虛擬機器的 **Azure Batch** 集區上執行。 當使用 Azure Batch 時，您只可以使用現有的 Azure Batch 集區。
 
@@ -43,7 +43,7 @@ ms.locfileid: "92637372"
 > - 您不能使用自訂活動中的資料管理閘道來存取內部部署資料來源。 目前在 Data Factory 中，[資料管理閘道](data-factory-data-management-gateway.md)只支援複製活動和預存程序活動。
 
 ## <a name="walkthrough-create-a-custom-activity"></a>逐步解說：建立自訂活動
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 * Visual Studio 2012/2013/2015/2017
 * 下載並安裝 [Azure .NET SDK](https://azure.microsoft.com/downloads/)
 
@@ -52,24 +52,24 @@ ms.locfileid: "92637372"
 
 在教學課程中，建立含 VM 集區的 Azure Batch 帳戶。 以下是步驟：
 
-1. 使用 [Azure 入口網站](https://portal.azure.com)建立 **Azure Batch 帳戶** 。 請參閱[建立和管理 Azure Batch 帳戶][batch-create-account]一文以取得指示。
+1. 使用 [Azure 入口網站](https://portal.azure.com)建立 **Azure Batch 帳戶**。 請參閱[建立和管理 Azure Batch 帳戶][batch-create-account]一文以取得指示。
 2. 記下 Azure Batch 帳戶名稱、帳戶金鑰、URI，以及集區名稱。 您需要它們來建立 Azure Batch 連結服務。
-    1. 在 Azure Batch 帳戶首頁上，您會看到一串 URL 為下列格式︰`https://myaccount.westus.batch.azure.com`。 在此範例中， **myaccount** 是 Azure Batch 帳戶的名稱。 您在連結服務的定義中使用之 URI 是不含帳戶名稱的 URL。 例如： `https://<region>.batch.azure.com` 。
-    2. 在左窗格上按一下 [金鑰]，然後複製 **主要存取金鑰** 。
-    3. 若要使用現有的集區，在功能表上按一下 [集區]，記下集區的 **識別碼** 。 如果您沒有現有的集區，請移至下一個步驟。
+    1. 在 Azure Batch 帳戶首頁上，您會看到一串 URL 為下列格式︰`https://myaccount.westus.batch.azure.com`。 在此範例中，**myaccount** 是 Azure Batch 帳戶的名稱。 您在連結服務的定義中使用之 URI 是不含帳戶名稱的 URL。 例如：`https://<region>.batch.azure.com`。
+    2. 在左窗格上按一下 [金鑰]，然後複製 **主要存取金鑰**。
+    3. 若要使用現有的集區，在功能表上按一下 [集區]，記下集區的 **識別碼**。 如果您沒有現有的集區，請移至下一個步驟。
 2. 建立 **Azure Batch 集** 區。
 
    1. 在 [Azure 入口網站](https://portal.azure.com)中，按一下左側功能標中的 [瀏覽]，然後按一下 [Batch 帳戶]。
    2. 選取您的 Azure Batch 帳戶，以開啟 [Batch 帳戶]  刀鋒視窗。
    3. 按一下 [集區]  圖格。
    4. 在 [集區]  刀鋒視窗中，按一下工具列上的 [新增] 按鈕以新增集區。
-      1. 輸入集區的識別碼 (集區識別碼)。 請注意 **集區的識別碼** ；您在建立 Data Factory 解決方案時需要它。
+      1. 輸入集區的識別碼 (集區識別碼)。 請注意 **集區的識別碼**；您在建立 Data Factory 解決方案時需要它。
       2. 針對 [作業系統系列] 設定指定 **Windows Server 2012 R2** 。
-      3. 選取 **節點定價層** 。
+      3. 選取 **節點定價層**。
       4. 輸入 **2** 做為 [目標專用] 設定的值。
       5. 輸入 **2** 做為 [每個節點的工作上限] 設定的值。
    5. 按一下 [確定]  以建立集區。
-   6. 記下集區的 **識別碼** 。
+   6. 記下集區的 **識別碼**。
 
 ### <a name="high-level-steps"></a>高階步驟
 以下是您在此逐步解說中執行的兩個高階步驟︰
@@ -90,10 +90,10 @@ public IDictionary<string, string> Execute(
 
 此方法會採用四個參數：
 
-- **linkedServices** 。 這個屬性是活動之輸入/輸出資料集所參考的資料存放區連結服務的可列舉清單。
-- **資料集** 。 這個屬性是活動之輸入/輸出資料集的可列舉清單。 您可以使用這個參數取得輸入和輸出資料集定義的位置和結構描述。
-- **活動** 。 這個屬性表示目前的活動。 它可以用來存取與自訂活動相關聯的延伸屬性。 如需詳細資訊，請參閱[存取延伸屬性](#access-extended-properties)。
-- **logger** 。 此物件可讓您撰寫會呈現為管線的使用者記錄檔的偵錯註解。
+- **linkedServices**。 這個屬性是活動之輸入/輸出資料集所參考的資料存放區連結服務的可列舉清單。
+- **資料集**。 這個屬性是活動之輸入/輸出資料集的可列舉清單。 您可以使用這個參數取得輸入和輸出資料集定義的位置和結構描述。
+- **活動**。 這個屬性表示目前的活動。 它可以用來存取與自訂活動相關聯的延伸屬性。 如需詳細資訊，請參閱[存取延伸屬性](#access-extended-properties)。
+- **logger**。 此物件可讓您撰寫會呈現為管線的使用者記錄檔的偵錯註解。
 
 此方法會傳回未來可用來將自訂活動鏈結在一起的字典。 尚未實作這項功能，因此會從方法傳回空的字典。
 
@@ -109,9 +109,9 @@ public IDictionary<string, string> Execute(
      <li>按一下 [確定]  以建立專案。</li>
    </ol>
 
-2. 按一下 [ **工具** ]，指向 [ **NuGet 封裝管理員** ]，然後按一下 [ **封裝管理員主控台** ]。
+2. 按一下 [**工具**]，指向 [**NuGet 封裝管理員**]，然後按一下 [**封裝管理員主控台**]。
 
-3. 在封裝管理員主控台中，執行下列命令以匯入 **DataFactories** 。
+3. 在封裝管理員主控台中，執行下列命令以匯入 **DataFactories**。
 
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactories
@@ -149,12 +149,12 @@ public IDictionary<string, string> Execute(
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
-6. 將 **命名空間** 的名稱變更為 **MyDotNetActivityNS** 。
+6. 將 **命名空間** 的名稱變更為 **MyDotNetActivityNS**。
 
     ```csharp
     namespace MyDotNetActivityNS
     ```
-7. 將類別的名稱變更為 **MyDotNetActivity** ，並從 **IDotNetActivity** 介面衍生它，如下列程式碼片段所示：
+7. 將類別的名稱變更為 **MyDotNetActivity**，並從 **IDotNetActivity** 介面衍生它，如下列程式碼片段所示：
 
     ```csharp
     public class MyDotNetActivity : IDotNetActivity
@@ -372,7 +372,7 @@ public IDictionary<string, string> Execute(
     > [!IMPORTANT]
     > 將 .NET Framework 4.5.2 版設定為您專案的目標架構：在專案上按一下滑鼠右鍵，然後按一下 [屬性] 來設定目標架構。 Data Factory 不支援針對 .NET Framework 4.5.2 版之後的版本編譯的自訂活動。
 
-11. 啟動 **Windows 檔案總管** ，並根據組建的類型流覽至 **bin\debug** 或 **bin\release** 資料夾。
+11. 啟動 **Windows 檔案總管**，並根據組建的類型流覽至 **bin\debug** 或 **bin\release** 資料夾。
 12. 建立 zip 檔案 **MyDotNetActivity.zip** ，其中包含 \bin\Debug 資料夾中的所有二進位檔 \<project folder\> 。 新增 **MyDotNetActivity.pdb** 檔案，讓您可以取得額外的詳細資訊，例如如果有失敗時，原始程式碼中引起問題的程式碼行號。
 
     > [!IMPORTANT]
@@ -408,8 +408,8 @@ test custom activity Microsoft test custom activity Microsoft
 以下是您會在此節中執行的步驟：
 
 1. 建立 **資料** 處理站。
-2. 建立自訂活動執行所在之 Azure Batch VM 集區的連結服務，以及容納輸入/輸出 Blob 之 Azure 儲存體的 **連結服務** 。
-3. 建立輸入和輸出 **資料集** ，代表自訂活動的輸入和輸出。
+2. 建立自訂活動執行所在之 Azure Batch VM 集區的連結服務，以及容納輸入/輸出 Blob 之 Azure 儲存體的 **連結服務**。
+3. 建立輸入和輸出 **資料集**，代表自訂活動的輸入和輸出。
 4. 建立使用自訂活動的 **管線** 。
 
 > [!NOTE]
@@ -422,7 +422,7 @@ test custom activity Microsoft test custom activity Microsoft
    3. 按一下 [資料分析] 刀鋒視窗上的 [Data Factory]。
 
       ![新增 Azure Data Factory 功能表](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
-2. 在 [新增 Data Factory] 刀鋒視窗中，輸入 **CustomActivityFactor** 做為 [名稱]。 Azure Data Factory 的名稱在全域必須是唯一的。 如果您收到錯誤： **Data Factory 名稱 “CustomActivityFactory” 無法使用** ，請變更 Data Factory 名稱 (例如 **yournameCustomActivityFactory** )，然後試著重新建立。
+2. 在 [新增 Data Factory] 刀鋒視窗中，輸入 **CustomActivityFactor** 做為 [名稱]。 Azure Data Factory 的名稱在全域必須是唯一的。 如果您收到錯誤：**Data Factory 名稱 “CustomActivityFactory” 無法使用**，請變更 Data Factory 名稱 (例如 **yournameCustomActivityFactory**)，然後試著重新建立。
 
     ![新增 Azure Data Factory 刀鋒視窗](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)
 3. 按一下 [資源群組名稱] ，並選取現有的資源群組，或建立一個群組。
@@ -438,7 +438,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 #### <a name="create-azure-storage-linked-service"></a>建立 Azure 儲存體連結服務
 1. 按一下 **CustomActivityFactory** 的 [DATA FACTORY] 刀鋒視窗上的 [作者和部署] 圖格。 您會看到 [Data Factory 編輯器]。
-2. 按一下命令列上的 [ **新增資料存放區** ]，然後選擇 [ **Azure 儲存體** ]。 在編輯器中，您應該會看到用來建立 Azure 儲存體連結服務的 JSON 指令碼。
+2. 按一下命令列上的 [ **新增資料存放區** ]，然後選擇 [ **Azure 儲存體**]。 在編輯器中，您應該會看到用來建立 Azure 儲存體連結服務的 JSON 指令碼。
 
     ![新增資料存放區 - Azure 儲存體](media/data-factory-use-custom-activities/new-data-store-menu.png)
 3. 以您的 Azure 儲存體帳戶名稱取代`<accountname>`，並以 Azure 儲存體帳戶的存取金鑰取代`<accountkey>`。 若要了解如何取得儲存體存取金鑰，請參閱[管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。
@@ -447,7 +447,7 @@ test custom activity Microsoft test custom activity Microsoft
 4. 按一下命令列的 [部署]  ，部署連結服務。
 
 #### <a name="create-azure-batch-linked-service"></a>建立 Azure Batch 連結服務
-1. 在 [Data Factory 編輯器] 中，按一下 **.。。** 在命令列上按一下 [ **新增計算** ]，然後從功能表中選取 [ **Azure Batch** ]。
+1. 在 [Data Factory 編輯器] 中，按一下 **.。。** 在命令列上按一下 [ **新增計算**]，然後從功能表中選取 [ **Azure Batch** ]。
 
     ![[新增計算]-[Azure 批次]](media/data-factory-use-custom-activities/new-azure-compute-batch.png)
 2. 對 JSON 指令碼進行下列變更：
@@ -480,7 +480,7 @@ test custom activity Microsoft test custom activity Microsoft
 在此步驟中，您會建立資料集來代表輸入和輸出資料。
 
 #### <a name="create-input-dataset"></a>建立輸入資料集
-1. 在 Data Factory 的 **編輯器** 中，按一下 **.。。在命令列上按一下** [ **新增資料集** ]，然後從下拉式功能表中選取 [ **Azure Blob 儲存體** ]。
+1. 在 Data Factory 的 **編輯器** 中，按一下 **.。。在命令列上按一下** [ **新增資料集**]，然後從下拉式功能表中選取 [ **Azure Blob 儲存體** ]。
 2. 使用下列 JSON 程式碼片段取代右窗格中的 JSON：
 
     ```json
@@ -505,15 +505,15 @@ test custom activity Microsoft test custom activity Microsoft
     }
     ```
 
-   您稍後會在本逐步解說建立管線，開始時間為：2016-11-16T00:00:00Z，而結束時間為：2016-11-16T05:00:00Z。 排程為每小時產生，因此會有 5 個輸入/輸出配量 (在 **00** :00:00 -> **05** :00:00 之間)。
+   您稍後會在本逐步解說建立管線，開始時間為：2016-11-16T00:00:00Z，而結束時間為：2016-11-16T05:00:00Z。 排程為每小時產生，因此會有 5 個輸入/輸出配量 (在 **00**:00:00 -> **05**:00:00 之間)。
 
-   輸入資料集的 **frequency** 和 **interval** 設定為 **Hour** 和 **1** ，這表示每小時皆可使用輸入配量。 在此範例中，它是 intputfolder 中的相同檔案 (file.txt)。
+   輸入資料集的 **frequency** 和 **interval** 設定為 **Hour** 和 **1**，這表示每小時皆可使用輸入配量。 在此範例中，它是 intputfolder 中的相同檔案 (file.txt)。
 
    以下是每個配量的開始時間，由上述 JSON 程式碼片段中的 SliceStart 系統變數代表。
-3. 按一下工具列的 [部署]，建立並部署 **InputDataset** 。 確認您在編輯器的標題列看到  [已成功建立資料表] 訊息。
+3. 按一下工具列的 [部署]，建立並部署 **InputDataset**。 確認您在編輯器的標題列看到  [已成功建立資料表] 訊息。
 
 #### <a name="create-an-output-dataset"></a>建立輸出資料集
-1. 在 [ **Data Factory 編輯器** ] 中，按一下 **.。。** 在命令列上按一下 [ **新增資料集** ]，然後選取 [ **Azure Blob 儲存體** ]，以取得詳細資訊。
+1. 在 [ **Data Factory 編輯器**] 中，按一下 **.。。** 在命令列上按一下 [ **新增資料集**]，然後選取 [ **Azure Blob 儲存體**]，以取得詳細資訊。
 2. 使用下列 JSON 指令碼取代右窗格中的 JSON 指令碼：
 
     ```JSON
@@ -546,7 +546,7 @@ test custom activity Microsoft test custom activity Microsoft
 
      輸出位置是 **adftutorial/customactivityoutput/** ，而輸出檔案名稱是 yyyy-MM-dd-HH.txt ，其中 yyyy-MM-dd-HH 是產生配量的年、月、日、時。 如需詳細資訊，請參閱[開發人員參考資料][adf-developer-reference]。
 
-    為每個輸入配量產生輸出 blob/檔案。 以下是為每個配量命名輸出檔案的方式。 所有的輸出檔案會產生於一個輸出資料夾： **adftutorial\customactivityoutput** 。
+    為每個輸入配量產生輸出 blob/檔案。 以下是為每個配量命名輸出檔案的方式。 所有的輸出檔案會產生於一個輸出資料夾：**adftutorial\customactivityoutput**。
 
    | 配量 | 開始時間 | 輸出檔案 |
    |:--- |:--- |:--- |
@@ -557,10 +557,10 @@ test custom activity Microsoft test custom activity Microsoft
    | 5 |2016-11-16T04:00:00 |2016-11-16-04.txt |
 
     請記得輸入資料夾中的所有檔案都是包含上述開始時間之配量的一部分。 處理此配量時，自訂活動會掃描每個檔案，並利用搜尋詞彙 (“Microsoft”) 的出現次數在輸出檔案中產生資料行。 如果輸入資料夾中有三個檔案，則每小時配量的輸出檔中會有三行： 2016-11-16-00.txt、2016-11-16:01:00:00.txt 等等。
-3. 若要部署 **OutputDataset** ，按一下命令列上的 [部署]。
+3. 若要部署 **OutputDataset**，按一下命令列上的 [部署]。
 
 ### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>建立並執行使用自訂活動的管線
-1. 在 [Data Factory 編輯器] 中，按一下 **.。。更多** ]，然後選取命令列上的 [ **新增管線** ]。
+1. 在 [Data Factory 編輯器] 中，按一下 **.。。更多**]，然後選取命令列上的 [ **新增管線** ]。
 2. 使用下列 JSON 指令碼取代右窗格中的 JSON︰
 
     ```JSON
@@ -610,20 +610,20 @@ test custom activity Microsoft test custom activity Microsoft
 
     請注意下列幾點：
 
-   * **Concurrency** 設定為 **2** ，因此 Azure Batch 集區中會有 2 部 VM 以平行方式處理 2 個配量。
-   * activities 區段中有一個活動，它的類型是： **DotNetActivity** 。
-   * **AssemblyName** 設定為 DLL 的名稱： **MyDotnetActivity.dll** 。
-   * **EntryPoint** 設定為 **MyDotNetActivityNS.MyDotNetActivity** 。
-   * **PackageLinkedService** 設定為 **AzureStorageLinkedService** ，它會指向包含自訂活動 zip 檔案的 Blob 儲存體。 如果您將不同的 Azure 儲存體帳戶用於輸入/輸出檔案和自訂活動 zip 檔案，您可以建立另一個 Azure 儲存體連結服務。 本文假設您使用相同的 Azure 儲存體帳戶。
-   * **PackageFile** 設定為 **customactivitycontainer/MyDotNetActivity.zip** 。 其格式為：containerforthezip/nameofthezip.zip。
+   * **Concurrency** 設定為 **2**，因此 Azure Batch 集區中會有 2 部 VM 以平行方式處理 2 個配量。
+   * activities 區段中有一個活動，它的類型是： **DotNetActivity**。
+   * **AssemblyName** 設定為 DLL 的名稱： **MyDotnetActivity.dll**。
+   * **EntryPoint** 設定為 **MyDotNetActivityNS.MyDotNetActivity**。
+   * **PackageLinkedService** 設定為 **AzureStorageLinkedService**，它會指向包含自訂活動 zip 檔案的 Blob 儲存體。 如果您將不同的 Azure 儲存體帳戶用於輸入/輸出檔案和自訂活動 zip 檔案，您可以建立另一個 Azure 儲存體連結服務。 本文假設您使用相同的 Azure 儲存體帳戶。
+   * **PackageFile** 設定為 **customactivitycontainer/MyDotNetActivity.zip**。 其格式為：containerforthezip/nameofthezip.zip。
    * 自訂活動會採用 **InputDataset** 做為輸入和 **OutputDataset** 做為輸出。
-   * 自訂活動的 linkedServiceName 屬性會指向 **AzureBatchLinkedService** ，這會告知 Azure Data Factory 自訂活動必須在 Azure Batch VM 上執行。
+   * 自訂活動的 linkedServiceName 屬性會指向 **AzureBatchLinkedService**，這會告知 Azure Data Factory 自訂活動必須在 Azure Batch VM 上執行。
    * 依預設， **isPaused** 屬性會設定為 **false** 。 在此範例中，管線會立即執行，因為配量已在過去開始。 您可以將此屬性設為 true，以暫停管線，並將其設回 false，以重新啟動。
    * **開始** 時間和 **結束** 時間會相隔 **五個** 小時，而配量會每小時產生，因此管線會產生五個配量。
 3. 若要部署管線，按一下命令列上的 [部署]。
 
 ### <a name="monitor-the-pipeline"></a>監視管線
-1. 在 Azure 入口網站的 [Data Factory] 分頁中，按一下 [ **圖表** ]。
+1. 在 Azure 入口網站的 [Data Factory] 分頁中，按一下 [ **圖表**]。
 
     ![[圖表] 圖格](./media/data-factory-use-custom-activities/DataFactoryBlade.png)
 2. 在 [圖表] 檢視中，現在按一下 [OutputDataset]。
@@ -660,7 +660,7 @@ test custom activity Microsoft test custom activity Microsoft
     > 當您發佈 Data Factory 實體時，系統會自動為您建立 zip 檔，並且上傳至 blob 容器：customactivitycontainer。 如果 blob 容器不存在，也會自動建立。
 
 ## <a name="data-factory-and-batch-integration"></a>Data Factory 和 Batch 整合
-Data Factory 服務會在 Azure Batch 中建立作業，其名為： **adf-poolname: job-xxx** 。 按一下左側功能表中的 [作業]。
+Data Factory 服務會在 Azure Batch 中建立作業，其名為：**adf-poolname: job-xxx**。 按一下左側功能表中的 [作業]。
 
 ![Azure Data Factory - Batch 作業](media/data-factory-use-custom-activities/data-factory-batch-jobs.png)
 
@@ -675,19 +675,19 @@ Data Factory 服務會在 Azure Batch 中建立作業，其名為： **adf-pooln
 ## <a name="troubleshoot-failures"></a>針對失敗進行疑難排解
 疑難排解包含一些基本技術：
 
-1. 如果您看到下列錯誤，您可能正在使用經常性/非經常性 Blob 儲存體，而非使用一般用途的 Azure Blob 儲存體。 將 zip 檔案上傳至 **一般用途的 Azure 儲存體帳戶** 。
+1. 如果您看到下列錯誤，您可能正在使用經常性/非經常性 Blob 儲存體，而非使用一般用途的 Azure Blob 儲存體。 將 zip 檔案上傳至 **一般用途的 Azure 儲存體帳戶**。
 
     ```
     Error in Activity: Job encountered scheduling error. Code: BlobDownloadMiscError Category: ServerError Message: Miscellaneous error encountered while downloading one of the specified Azure Blob(s).
     ```
-2. 如果您看到下列錯誤，請確認 CS 檔案中的類別名稱符合您在管線 JSON 中為 **EntryPoint** 屬性指定的名稱。 在逐步解說中，類別的名稱是︰MyDotNetActivity，而 JSON 中的 EntryPoint 是︰MyDotNetActivityNS. **MyDotNetActivity** 。
+2. 如果您看到下列錯誤，請確認 CS 檔案中的類別名稱符合您在管線 JSON 中為 **EntryPoint** 屬性指定的名稱。 在逐步解說中，類別的名稱是︰MyDotNetActivity，而 JSON 中的 EntryPoint 是︰MyDotNetActivityNS.**MyDotNetActivity**。
 
     ```
     MyDotNetActivity assembly does not exist or doesn't implement the type Microsoft.DataFactories.Runtime.IDotNetActivity properly
     ```
 
    如果名稱相符，請確認所有二進位檔皆位於 zip 檔案的 **根資料夾** 中。 也就是說，當您開啟 zip 檔案，您應該會在根資料夾中看到所有檔案，而非在任何子資料夾中看到。
-3. 如果輸入配量未設定為 [ **就緒** ]，請確認輸入資料夾結構正確，且 **file.txt** 存在於輸入資料夾中。
+3. 如果輸入配量未設定為 [ **就緒**]，請確認輸入資料夾結構正確，且 **file.txt** 存在於輸入資料夾中。
 3. 在自訂活動的 **Execute** 方法中，使用可協助您針對問題進行疑難排解的 **IActivityLogger** 物件記錄資訊。 記錄的訊息會顯示在使用者記錄檔 (一或多個名為 user-0.log、user-1.log、user-2.log 等的檔案) 中。
 
    在 [OutputDataset] 刀鋒視窗中，按一下配量，以查看該配量的 [資料配量] 刀鋒視窗。 您會看到該配量的 [活動執行]。 您會看到一個為該配量執行的活動。 如果您按一下命令列中的 [執行]，您可以為相同的配量啟動另一個活動執行。
@@ -699,7 +699,7 @@ Data Factory 服務會在 Azure Batch 中建立作業，其名為： **adf-pooln
    此外，檢查 **system-0.log** 是否有任何系統錯誤訊息和例外狀況。
 4. 將 **PDB** 檔案包含在 zip 檔案中，讓錯誤詳細資料具有在錯誤發生時的資訊，例如 **呼叫堆疊** 。
 5. 自訂活動之 zip 檔案中的所有檔案都必須位於 **最上層** 且不包含任何子資料夾。
-6. 確認 **assemblyName** (MyDotNetActivity.dll)、 **entryPoint** (MyDotNetActivityNS.MyDotNetActivity)、 **packageFile** (customactivitycontainer/MyDotNetActivity.zip) 和 **packageLinkedService** (應指向包含 zip 檔案的 **一般用途** Azure blob 儲存體) 都設為正確的值。
+6. 確認 **assemblyName** (MyDotNetActivity.dll)、**entryPoint** (MyDotNetActivityNS.MyDotNetActivity)、**packageFile** (customactivitycontainer/MyDotNetActivity.zip) 和 **packageLinkedService** (應指向包含 zip 檔案的 **一般用途** Azure blob 儲存體) 都設為正確的值。
 7. 如果您修正錯誤，並想要重新處理配量，請以滑鼠右鍵按一下 [OutputDataset] 刀鋒視窗中的配量，然後按一下 [執行]。
 8. 如果您看到下列錯誤，您使用的 Azure 儲存體封裝的版本即 > 4.3.0。 Data Factory 服務啟動程式需要 4.3 版的 WindowsAzure.Storage。 若您必須使用更新版本的 Azure 儲存體組件，請參閱 [Appdomain 隔離](#appdomain-isolation)小節，以取得因應措施。
 
@@ -714,7 +714,7 @@ Data Factory 服務會在 Azure Batch 中建立作業，其名為： **adf-pooln
     ```
 
     建置專案。 從 bin\Debug 資料夾刪除版本 > 4.3.0 的 Azure.Storage 組件。 以二進位檔和 PDB 檔案建立 zip 檔案。 以 blob 容器 (customactivitycontainer) 中的 zip 檔案取代舊的 zip 檔案。 重新執行失敗的配量 (以滑鼠右鍵按一下配量並按一下 [執行])。
-8. 自訂活動不會使用來自您套件的 **app.config** 檔案。 因此，如果您的程式碼會從組態檔讀取任何連接字串，則在執行階段沒有作用。 使用 Azure Batch 的最佳作法是在 **Azure KeyVault** 中保存任何秘密、使用以憑證為基礎的服務主體來保護 **KeyVault** ，然後將憑證發佈至 Azure Batch 集區。 接著，.NET 自訂活動便可以在執行階段從 KeyVault 存取密碼。 這是一般解決方案，而且可以擴展至任何類型的密碼，不僅限於連接字串。
+8. 自訂活動不會使用來自您套件的 **app.config** 檔案。 因此，如果您的程式碼會從組態檔讀取任何連接字串，則在執行階段沒有作用。 使用 Azure Batch 的最佳作法是在 **Azure KeyVault** 中保存任何秘密、使用以憑證為基礎的服務主體來保護 **KeyVault**，然後將憑證發佈至 Azure Batch 集區。 接著，.NET 自訂活動便可以在執行階段從 KeyVault 存取密碼。 這是一般解決方案，而且可以擴展至任何類型的密碼，不僅限於連接字串。
 
    此外，也有較簡單的因應措施 (但並非最佳做法)︰您可以建立一個帶有連接字串設定的 **Azure SQL 連結服務** 、建立一個使用該連結服務的資料集，然後將該資料集以虛擬輸入資料集的形式鏈結至自訂 .NET 活動。 接著，您便可以在自訂活動程式碼中存取連結服務的連接字串。
 
@@ -740,7 +740,7 @@ Data Factory 服務會在 Azure Batch 中建立作業，其名為： **adf-pooln
 },
 ```
 
-範例中有兩個延伸屬性： **SliceStart** 和 **DataFactoryName** 。 SliceStart 的值以 SliceStart 系統變數為基礎。 如需支援的系統變數清單，請參閱 [系統變數](data-factory-functions-variables.md) 。 DataFactoryName 值為硬式編碼為 CustomActivityFactory。
+範例中有兩個延伸屬性：**SliceStart** 和 **DataFactoryName**。 SliceStart 的值以 SliceStart 系統變數為基礎。 如需支援的系統變數清單，請參閱 [系統變數](data-factory-functions-variables.md) 。 DataFactoryName 值為硬式編碼為 CustomActivityFactory。
 
 若要以 **Execute** 方法存取這些延伸屬性，請使用類似以下的程式碼：
 

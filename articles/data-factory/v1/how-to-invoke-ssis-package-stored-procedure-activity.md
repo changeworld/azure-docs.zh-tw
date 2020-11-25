@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
 ms.openlocfilehash: c7a99e7e5f27f8c3503c7fa6124d27cfc4e7f4a4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636760"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012828"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>在 Azure Data Factory 使用預存程序活動叫用 SSIS 套件
 本文描述如何使用預存程序活動從 Azure Data Factory 管線叫用 SSIS 封裝。 
@@ -26,7 +26,7 @@ ms.locfileid: "92636760"
 > [!NOTE]
 > 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[使用預存程序活動來叫用 SSIS 套件](../how-to-invoke-ssis-package-stored-procedure-activity.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="azure-sql-database"></a>Azure SQL Database 
 本文中的逐步解說會使用 Azure SQL Database。 您也可以使用 Azure SQL 受控執行個體。
@@ -79,7 +79,7 @@ ms.locfileid: "92636760"
     ```
     The specified Data Factory name 'ADFTutorialFactory' is already in use. Data Factory names must be globally unique.
     ```
-* 若要建立 Data Factory 執行個體，您用來登入 Azure 的使用者帳戶必須為 **參與者** 或 **擁有者** 角色，或是 Azure 訂用帳戶的 **管理員** 。
+* 若要建立 Data Factory 執行個體，您用來登入 Azure 的使用者帳戶必須為 **參與者** 或 **擁有者** 角色，或是 Azure 訂用帳戶的 **管理員**。
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>建立 Azure SQL Database 連結服務
 建立連結服務，以將裝載 SSIS 目錄的 Azure SQL Database 中的資料庫連結至您的 data factory。 資料處理站使用此連結服務中的資訊連線到 SSISDB 資料庫，並執行預存程序來執行 SSIS 套件。 
@@ -101,7 +101,7 @@ ms.locfileid: "92636760"
         }
     ```
 2. 在 **Azure PowerShell** 中，切換至 **C:\ADF\RunSSISPackage** 資料夾。
-3. 執行 **>new-azdatafactorylinkedservice** Cmdlet 來建立連結服務： **>azuresqldatabaselinkedservice** 。 
+3. 執行 **>new-azdatafactorylinkedservice** Cmdlet 來建立連結服務： **>azuresqldatabaselinkedservice**。 
 
     ```powershell
     New-AzDataFactoryLinkedService $df -File ".\AzureSqlDatabaseLinkedService.json"
@@ -168,7 +168,7 @@ ms.locfileid: "92636760"
     }    
     ```
 
-2. 若要建立管線： **RunSSISPackagePipeline** ，請執行 **AzDataFactoryPipeline** Cmdlet。
+2. 若要建立管線： **RunSSISPackagePipeline**，請執行 **AzDataFactoryPipeline** Cmdlet。
 
     ```powershell
     $DFPipeLine = New-AzDataFactoryPipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "RunSSISPackagePipeline" -DefinitionFile ".\RunSSISPackagePipeline.json"
@@ -182,7 +182,7 @@ ms.locfileid: "92636760"
     Get-AzDataFactorySlice $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
     ```
     請注意，您在此處指定的 StartDateTime 與在管線 JSON 中指定的開始時間是相同的。 
-1. 執行 **Get-AzDataFactoryRun** ，來取得特定配量的活動回合詳細資料。
+1. 執行 **Get-AzDataFactoryRun**，來取得特定配量的活動回合詳細資料。
 
     ```powershell
     Get-AzDataFactoryRun $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z

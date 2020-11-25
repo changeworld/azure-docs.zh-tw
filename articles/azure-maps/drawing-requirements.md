@@ -9,11 +9,11 @@ ms.service: azure-maps
 services: azure-maps
 manager: philMea
 ms.openlocfilehash: 2c3e46bf386e70cbe35d96728ede896d6bf0dc7d
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895829"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013117"
 ---
 # <a name="drawing-package-requirements"></a>繪圖套件需求
 
@@ -50,9 +50,9 @@ ms.locfileid: "92895829"
 
 ## <a name="dwg-files-requirements"></a>DWG 檔案需求
 
-設施的每個樓層都需要一個 DWG 檔案。 樓層的資料必須包含在單一 DWG 檔案中。 任何外部參考 ( _xrefs_ ) 都必須繫結至父系繪圖。 此外，每個 DWG 檔案：
+設施的每個樓層都需要一個 DWG 檔案。 樓層的資料必須包含在單一 DWG 檔案中。 任何外部參考 (_xrefs_) 都必須繫結至父系繪圖。 此外，每個 DWG 檔案：
 
-* 必須定義「外部」和「單位」圖層。 它可以選擇性地定義下列選用圖層： _牆_ 、 _門_ 、 _UnitLabel_ 、 _Zone_ 和 _ZoneLabel_ 。
+* 必須定義「外部」和「單位」圖層。 它可以選擇性地定義下列選用圖層： _牆_、 _門_、 _UnitLabel_、 _Zone_ 和 _ZoneLabel_。
 * 不能包含多個樓層中的特徵。
 * 不能包含多個設施中的特徵。
 
@@ -168,7 +168,7 @@ Azure 地圖服務資料集中的門，會表示為與多個單位界限重迭�
 
 ## <a name="manifest-file-requirements"></a>資訊清單檔的需求
 
-zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔案必須命名為 **manifest.json** 。 其中會描述可讓 [Azure 地圖轉換服務](/rest/api/maps/conversion)剖析其內容的 DWG 檔案。 只有資訊清單所識別的檔案會內嵌。 Zip 資料夾中的檔案，但未正確列在資訊清單中，會被忽略。
+zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔案必須命名為 **manifest.json**。 其中會描述可讓 [Azure 地圖轉換服務](/rest/api/maps/conversion)剖析其內容的 DWG 檔案。 只有資訊清單所識別的檔案會內嵌。 Zip 資料夾中的檔案，但未正確列在資訊清單中，會被忽略。
 
 資訊清單檔之物件中的檔案路徑 `buildingLevels` 必須相對於 ZIP 檔案夾的根目錄。 DWG 檔案名稱必須完全符合設施樓層的名稱。 例如，「下一層」層級的 DWG 檔案為「下 dwg」。 層級2的 DWG 檔案會命名為 "level_2。 如果您的樓層名稱有空格，請使用底線。
 

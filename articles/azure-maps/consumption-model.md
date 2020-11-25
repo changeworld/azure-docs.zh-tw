@@ -9,22 +9,22 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: b44186d783a249192a8c13ee97063034ee319df7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88036754"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013134"
 ---
 # <a name="consumption-model"></a>耗用模型
 
 路由服務會提供一組參數，以取得車輛專屬耗用量模型的詳細描述。
-視 **vehicleEngineType** 的值而定，支援兩種主要的耗用模型：_燃燒_和_電子_。 在相同的要求中指定屬於不同模型的參數不正確。 此外，耗用量模型參數無法搭配下列 **travelMode** 值使用： _自行車_ 和 _地下_。
+視 **vehicleEngineType** 的值而定，支援兩種主要的耗用模型：_燃燒_ 和 _電子_。 在相同的要求中指定屬於不同模型的參數不正確。 此外，耗用量模型參數無法搭配下列 **travelMode** 值使用： _自行車_ 和 _地下_。
 
 ## <a name="parameter-constraints-for-consumption-model"></a>耗用模型的參數限制式
 
 在這兩種耗用量模型中，指定參數時都有一些相依性。 也就是說，明確指定某些參數可能需要指定一些其他參數。 以下是要注意的相依性：
 
-* 所有參數都需要由使用者指定 **constantSpeedConsumption**。 如果未指定 **>constantspeedconsumption** ，指定任何其他耗用量模型參數會發生錯誤。 **>constantspeedconsumption**參數是這項需求的例外狀況。
+* 所有參數都需要由使用者指定 **constantSpeedConsumption**。 如果未指定 **>constantspeedconsumption** ，指定任何其他耗用量模型參數會發生錯誤。 **>constantspeedconsumption** 參數是這項需求的例外狀況。
 * **accelerationEfficiency** 和 **>decelerationefficiency** 一律必須指定為配對 (也就是，或) 都沒有。
 * 如果指定 **accelerationEfficiency** 和 **decelerationEfficiency**，其值的產品必不能大於 1 (以防永恆運動)。
 * **uphillEfficiency** 和 **>downhillefficiency** 一律必須指定為一組， (也就是、或無) 。
@@ -37,7 +37,7 @@ ms.locfileid: "88036754"
 
 ## <a name="combustion-consumption-model"></a>燃燒耗用模型
 
-**vehicleEngineType** 設為_燃燒_時，會使用燃燒耗用模型。
+**vehicleEngineType** 設為 _燃燒_ 時，會使用燃燒耗用模型。
 屬於此模型的參數清單如下。 請參閱 [參數] 區段，取得詳細說明。
 
 * constantSpeedConsumptionInLitersPerHundredkm
@@ -52,7 +52,7 @@ ms.locfileid: "88036754"
 
 ## <a name="electric-consumption-model"></a>電子耗用模型
 
-**vehicleEngineType** 設為_電子_時，會使用電子耗用模型。
+**vehicleEngineType** 設為 _電子_ 時，會使用電子耗用模型。
 屬於此模型的參數清單如下。 請參閱 [參數] 區段，取得詳細說明。
 
 * constantSpeedConsumptionInkWhPerHundredkm

@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
 ms.openlocfilehash: 0a2a386264be0ec13e29b7a7546926819c5d931a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972878"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012726"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager 範本中的虛擬機器
 
@@ -308,7 +308,7 @@ Resource Manager 會以平行方式部署任何不依存於另一個要部署資
 },
 ```
 
-作業系統磁碟的組態設定會使用 OsDisk 項目指派。 此範例會定義新的受控磁碟，其快取模式設定為 [ReadWrite]****，而此磁碟會從[平台映像](cli-ps-findimage.md)建立：
+作業系統磁碟的組態設定會使用 OsDisk 項目指派。 此範例會定義新的受控磁碟，其快取模式設定為 [ReadWrite]，而此磁碟會從[平台映像](cli-ps-findimage.md)建立：
 
 ```json
 "osDisk": { 
@@ -437,7 +437,7 @@ Start.ps1 指令碼可以完成許多組態工作。 例如，範例中新增至
 
 ![取得擴充功能狀態](./media/template-description/virtual-machines-show-extensions.png)
 
-您也可以使用 **Get-AzVMExtension** PowerShell 命令、**vm extension get** Azure CLI 命令或**取得延伸模組資訊** REST API，來取得延伸模組資訊。
+您也可以使用 **Get-AzVMExtension** PowerShell 命令、**vm extension get** Azure CLI 命令或 **取得延伸模組資訊** REST API，來取得延伸模組資訊。
 
 ## <a name="deployments"></a>部署
 
@@ -447,7 +447,7 @@ Start.ps1 指令碼可以完成許多組態工作。 例如，範例中新增至
 
 ![取得部署資訊](./media/template-description/virtual-machines-deployment-info.png)
     
-使用相同的範本來建立資源或更新現有的資源並不是問題。 當您使用命令來部署範本時，有機會說您想要使用的[模式](../../azure-resource-manager/templates/deploy-powershell.md)。 模式可以設定為 [完成]**** 或 [累加]****。 預設值是執行累加式更新。 使用 [完成]**** 模式請小心，因為您可能會不小心刪除資源。 當您將模式設定為 [完成]**** 時，Resource Manager 就會刪除不在範本中的資源群組之任何資源。
+使用相同的範本來建立資源或更新現有的資源並不是問題。 當您使用命令來部署範本時，有機會說您想要使用的[模式](../../azure-resource-manager/templates/deploy-powershell.md)。 模式可以設定為 [完成] 或 [累加]。 預設值是執行累加式更新。 使用 [完成] 模式請小心，因為您可能會不小心刪除資源。 當您將模式設定為 [完成] 時，Resource Manager 就會刪除不在範本中的資源群組之任何資源。
 
 ## <a name="next-steps"></a>後續步驟
 

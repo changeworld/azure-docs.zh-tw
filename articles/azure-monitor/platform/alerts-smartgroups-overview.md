@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/15/2018
 ms.openlocfilehash: dff59ac207e6078a264d1350d24c9e6f4a461d78
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108774"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012879"
 ---
 # <a name="smart-groups"></a>智慧群組
 
@@ -23,11 +23,11 @@ ms.locfileid: "92108774"
 
 ## <a name="smart-group-state"></a>智慧群組狀態
 
-智慧型群組狀態會是類似警示狀態的概念，可讓您在智慧群組層級上管理解析流程。 與警示狀態類似，當建立智慧群組時，其狀態有 [新]**** 狀態，此狀態可變更為 [已認可]**** 或 [已關閉]****。
+智慧型群組狀態會是類似警示狀態的概念，可讓您在智慧群組層級上管理解析流程。 與警示狀態類似，當建立智慧群組時，其狀態有 [新] 狀態，此狀態可變更為 [已認可] 或 [已關閉]。
 
 支援下列智慧群組狀態。
 
-| State | 描述 |
+| 州 | 描述 |
 |:---|:---|
 | 新增 | 已經偵測到問題，但尚未檢閱。 |
 | 已認可 | 系統管理員已檢閱智慧群組，並已開始處理。 |

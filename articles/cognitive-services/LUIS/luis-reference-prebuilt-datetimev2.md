@@ -10,15 +10,15 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/13/2020
 ms.openlocfilehash: 83522de9c00056a3808b002b3103f45c72553399
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534177"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013066"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS 應用程式的 DatetimeV2 預先建置實體
 
-**datetimeV2** 預先建置的實體會擷取日期和時間值。 這些值會以標準化格式解析，以供用戶端程式取用。 當語句中有不完整的日期或時間時，LUIS 會在端點回應中包括「過去與未來值」__。 因為此實體已經定型，所以您不需要將包含 datetimeV2 的範例語句加入應用程式意圖。
+**datetimeV2** 預先建置的實體會擷取日期和時間值。 這些值會以標準化格式解析，以供用戶端程式取用。 當語句中有不完整的日期或時間時，LUIS 會在端點回應中包括「過去與未來值」。 因為此實體已經定型，所以您不需要將包含 datetimeV2 的範例語句加入應用程式意圖。
 
 ## <a name="types-of-datetimev2"></a>datetimeV2 類型
 DatetimeV2 是從辨識器 [文字](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) 的 GitHub 存放庫進行管理。
@@ -114,7 +114,7 @@ DatetimeV2 是從辨識器 [文字](https://github.com/Microsoft/Recognizers-Tex
 |屬性名稱 |屬性類型和描述|
 |---|---|
 |實體|**string** - 以日期、時間、日期範圍或時間範圍的類型從語句中擷取的文字。|
-|type|**string** - 其中一個 [datetimeV2 子類型](#subtypes-of-datetimev2)
+|類型|**string** - 其中一個 [datetimeV2 子類型](#subtypes-of-datetimev2)
 |startIndex|**int** - 實體開始的語句中的索引。|
 |endIndex|**int** - 實體結束的語句中的索引。|
 |resolution|有一、二或四個[解析值](#values-of-resolution)的 `values` 陣列。|
@@ -145,8 +145,8 @@ DatetimeV2 是從辨識器 [文字](https://github.com/Microsoft/Recognizers-Tex
 |--|--|
 |timex|以遵循 [ISO 8601 標準](https://en.wikipedia.org/wiki/ISO_8601)的 TIMEX 格式表示的時間、日期或日期範圍，並對註解的 TIMEX3 屬性使用 TimeML 語言。|
 |mod|用來描述如何使用值（例如 `before` ，）的詞彙 `after` 。|
-|type|子類型，可以是下列其中一個專案： `datetime` 、 `date` 、 `time` 、 `daterange` 、 `timerange` 、 `datetimerange` 、 `duration` 、 `set` 。|
-|value|**選擇性。** Datetime 物件的格式為 yyyy-mm-dd (date) ，HH： MM： ss (time) yyyy-mm-dd HH： mm： ss (datetime) 。 如果 `type` 是 `duration`，則值會是秒數 (duration) <br/> 只有當 `type` 是 `datetime` 或 `date`、`time` 或 `duration 時才能使用。|
+|類型|子類型，可以是下列其中一個專案： `datetime` 、 `date` 、 `time` 、 `daterange` 、 `timerange` 、 `datetimerange` 、 `duration` 、 `set` 。|
+|value|**選。** Datetime 物件的格式為 yyyy-mm-dd (date) ，HH： MM： ss (time) yyyy-mm-dd HH： mm： ss (datetime) 。 如果 `type` 是 `duration`，則值會是秒數 (duration) <br/> 只有當 `type` 是 `datetime` 或 `date`、`time` 或 `duration 時才能使用。|
 
 ## <a name="valid-date-values"></a>有效的日期值
 
@@ -673,10 +673,10 @@ API V2 的變更：
 
 若要在 LUIS 應用程式中以 `datetimeV2` 取代 `datetime`，請完成下列步驟：
 
-1. 開啟 LUIS 網頁介面的 [實體]**** 窗格。
+1. 開啟 LUIS 網頁介面的 [實體] 窗格。
 2. 刪除 **datetime** 預先建置的實體。
-3. 按一下 [新增預先建置的實體]****
-4. 選取 [datetimeV2]****，然後按一下 [儲存]****。
+3. 按一下 [新增預先建置的實體]
+4. 選取 [datetimeV2]，然後按一下 [儲存]。
 
 ## <a name="next-steps"></a>後續步驟
 

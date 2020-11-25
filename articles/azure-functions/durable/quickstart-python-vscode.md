@@ -6,11 +6,11 @@ ms.topic: quickstart
 ms.date: 04/04/2020
 ms.reviewer: azfuncdf, antchu
 ms.openlocfilehash: 5d624027259212d804ced26a6daaffb853984a98
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294839"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012624"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>使用 Python 建立第一個耐久函式
 
@@ -147,7 +147,7 @@ ms.locfileid: "91294839"
     | 提供函式名稱 | DurableFunctionsHttpStart | 活動函式的名稱 |
     | 授權層級 | 匿名 | 基於示範目的，我們允許在沒有驗證的情況下呼叫函式 |
 
-您已新增可啟動協調流程的 HTTP 觸發函式。 開啟*DurableFunctionsHttpStart/\_\_init__.py*，以查看其是否使用 `client.start_new` 來啟動新的協調流程。 然後，該函式會使用 `client.create_check_status_response` 傳回 HTTP 回應，其中包含可用於監視和管理新協調流程的 URL。
+您已新增可啟動協調流程的 HTTP 觸發函式。 開啟 *DurableFunctionsHttpStart/\_\_init__.py*，以查看其是否使用 `client.start_new` 來啟動新的協調流程。 然後，該函式會使用 `client.create_check_status_response` 傳回 HTTP 回應，其中包含可用於監視和管理新協調流程的 URL。
 
 您現在有一個可在本機執行並部署至 Azure 的 Durable Functions 應用程式。
 
@@ -155,7 +155,7 @@ ms.locfileid: "91294839"
 
 Azure Functions Core Tools 可讓您在本機開發電腦上執行 Azure Functions 專案。 第一次從 Visual Studio Code 啟動函式時，系統會提示您安裝這些工具 (如果您尚未安裝)。
 
-1. 若要測試您的函式，請在 `Hello` 活動函式程式碼 (*Hello/\_\_init__.py*) 中設定中斷點。 按 F5 鍵，或從命令選擇區選取 `Debug: Start Debugging`，以啟動函式應用程式專案。 Core Tools 的輸出會顯示在**終端機**面板中。
+1. 若要測試您的函式，請在 `Hello` 活動函式程式碼 (*Hello/\_\_init__.py*) 中設定中斷點。 按 F5 鍵，或從命令選擇區選取 `Debug: Start Debugging`，以啟動函式應用程式專案。 Core Tools 的輸出會顯示在 **終端機** 面板中。
 
     > [!NOTE]
     > 如需有關偵錯的詳細資訊，請參閱 [Durable Functions 診斷](durable-functions-diagnostics.md#debugging)。
@@ -174,7 +174,7 @@ Azure Functions Core Tools 可讓您在本機開發電腦上執行 Azure Functio
     | 選取資源群組 | 唯一名稱 | 要建立的資源群組名稱 |
     | 選取位置 | *region* | 選取您附近的區域 |
 
-1. 在**終端機**面板中，複製 HTTP 觸發函式的 URL 端點。
+1. 在 **終端機** 面板中，複製 HTTP 觸發函式的 URL 端點。
 
     ![Azure 本機輸出](media/quickstart-python-vscode/functions-f5.png)
 

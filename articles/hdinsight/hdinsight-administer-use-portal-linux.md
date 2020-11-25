@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
 ms.openlocfilehash: 7c644583e994e51f11bdf7991755a6ea94b01e76
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533473"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012797"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 入口網站管理 HDInsight 中的 Apache Hadoop 叢集
 
@@ -21,7 +21,7 @@ ms.locfileid: "92533473"
 
 您可以使用 [Azure 入口網站](https://portal.azure.com)，在 Azure HDInsight 中管理 [Apache Hadoop](https://hadoop.apache.org/) 叢集。 使用上述的索引標籤選取器，以取得使用其他工具管理 HDInsight 中 Hadoop 叢集的詳細資訊。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 HDInsight 中現有的 Apache Hadoop 叢集。  請參閱 [使用 Azure 入口網站在 HDInsight 中建立以 Linux 為基礎的叢集](hdinsight-hadoop-create-linux-clusters-portal.md)。
 
@@ -31,13 +31,13 @@ HDInsight 中現有的 Apache Hadoop 叢集。  請參閱 [使用 Azure 入口�
 
 ## <a name="list-and-show-clusters"></a><a name="showClusters"></a> 列出和顯示叢集
 
-[HDInsight 叢集]  頁面將會列出您現有的叢集。  從入口網站：
-1. 從左側功能表中選取 [所有服務]  。
-2. 在 [分析]  底下，選取 [HDInsight 叢集]  。
+[HDInsight 叢集] 頁面將會列出您現有的叢集。  從入口網站：
+1. 從左側功能表中選取 [所有服務]。
+2. 在 [分析] 底下，選取 [HDInsight 叢集]。
 
 ## <a name="cluster-home-page"></a><a name="homePage"></a> 叢集首頁
 
-從 [ [**HDInsight**](#showClusters) 叢集] 頁面中選取您的叢集名稱。  這將會開啟 [概觀]  檢視，它看起來類似下圖：
+從 [ [**HDInsight**](#showClusters) 叢集] 頁面中選取您的叢集名稱。  這將會開啟 [概觀] 檢視，它看起來類似下圖：
 
 ![Azure portal HDInsight cluster essentials](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials2.png)
 
@@ -98,7 +98,7 @@ HDInsight 中現有的 Apache Hadoop 叢集。  請參閱 [使用 Azure 入口�
 
 ## <a name="cluster-properties"></a><a name="properties"></a> 叢集屬性
 
-從  底下，選取 [屬性]  。
+從[叢集首頁](#homePage)的 [設定] 底下，選取 [屬性]。
 
 |項目 | 描述 |
 |---|---|
@@ -107,9 +107,9 @@ HDInsight 中現有的 Apache Hadoop 叢集。  請參閱 [使用 Azure 入口�
 |私人端點|叢集的私人端點。|
 |安全 shell (SSH) |透過 SSH 存取叢集時使用的使用者名稱和主機名稱。|
 |狀態|其中一個：中止、接受、ClusterStorageProvisioned、AzureVMConfiguration、HDInsightConfiguration、操作、執行中、錯誤、刪除、刪除、逾時、DeleteQueued、DeleteTimedout、DeleteError、PatchQueued、CertRolloverQueued、ResizeQueued 或 ClusterCustomization。|
-|區域|Azure 位置。 如需支援的 Azure 位置清單，請參閱  下拉式清單方塊。|
+|區域|Azure 位置。 如需支援的 Azure 位置清單，請參閱 [HDInsight 定價](https://azure.microsoft.com/pricing/details/hdinsight/)上的 [區域] 下拉式清單方塊。|
 |建立日期|叢集部署的日期。|
-|作業系統|**Windows** 或 **Linux** 。|
+|作業系統|**Windows** 或 **Linux**。|
 |TYPE|Hadoop、HBase、Storm、Spark。|
 |版本|請參閱 [HDInsight 版本](hdinsight-component-versioning.md)。|
 |最小 TLS 版本|TLS 版本。|
@@ -125,8 +125,8 @@ HDInsight 中現有的 Apache Hadoop 叢集。  請參閱 [使用 Azure 入口�
 
 從[叢集首頁](#homePage)：
 
-1. 從上方功能表中選取 [移動]  。
-2. 選取 [移至另一個資源群組]  或 [移至另一個訂用帳戶]  。
+1. 從上方功能表中選取 [移動]。
+2. 選取 [移至另一個資源群組] 或 [移至另一個訂用帳戶]。
 3. 遵循新頁面中的指示。
 
 ## <a name="delete-clusters"></a>刪除叢集
@@ -135,7 +135,7 @@ HDInsight 中現有的 Apache Hadoop 叢集。  請參閱 [使用 Azure 入口�
 
 從[叢集首頁](#homePage)：
 
-1. 從上方功能表中選取 [刪除]  。
+1. 從上方功能表中選取 [刪除]。
 2. 遵循新頁面中的指示。
 
 另請參閱 [暫停/關閉叢集](#pauseshut-down-clusters)。
@@ -174,12 +174,12 @@ Ambari 提供一個以其 RESTful API 為後盾的 Hadoop 管理 Web UI，此 UI
 
 從[叢集首頁](#homePage)：
 
-1. 選取 [叢集儀表板]  。
+1. 選取 [叢集儀表板]。
 
     ![HDInsight Apache Hadoop 叢集功能表](./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu2.png)
 
-1. 從新頁面中選取 [Ambari 首頁]  。
-1. 輸入叢集使用者名稱和密碼。  預設的叢集使用者名稱為 _admin_ 。
+1. 從新頁面中選取 [Ambari 首頁]。
+1. 輸入叢集使用者名稱和密碼。  預設的叢集使用者名稱為 _admin_。
 
 如需詳細資訊，請參閱 [使用 Apache Ambari Web UI 管理 HDInsight 叢集](hdinsight-hadoop-manage-ambari.md)。
 
@@ -193,10 +193,10 @@ HDInsight 叢集可以有兩個使用者帳戶。 HDInsight 叢集使用者帳�
 > 變更叢集使用者 (管理員) 密碼可能會造成針對此叢集執行的指令碼動作失敗。 如果您有任何以背景工作節點為目標的持續性指令碼動作，當您透過調整大小作業新增節點到叢集，這些指令碼可能會失敗。 如需指令碼動作的詳細資訊，請參閱 [使用指令碼動作自訂 HDInsight 叢集](hdinsight-hadoop-customize-cluster-linux.md)。
 
 從[叢集首頁](#homePage)：
-1. 在 [設定]  底下，選取 [SSH + 叢集登入]  。
-2. 選取 [重設認證]  。
+1. 在 [設定] 底下，選取 [SSH + 叢集登入]。
+2. 選取 [重設認證]。
 3. 在文字方塊中輸入新密碼並加以確認。
-4. 選取 [確定]  。
+4. 選取 [確定]。
 
 系統會在叢集中的所有節點上變更密碼。
 
@@ -215,7 +215,7 @@ HDInsight 叢集可以有兩個使用者帳戶。 HDInsight 叢集使用者帳�
     ```
 
 2. 將檔案上傳至可以使用 HTTP 或 HTTPS 位址從 HDInsight 存取的儲存位置。 例如，OneDrive 或 Azure Blob 儲存體這類的公用檔案存放區。 將 URI (HTTP 或 HTTPS 位址) 儲存至檔案，在下一個步驟需用到此 URI。
-3. 從叢集 [首頁](#homePage)上，選取 [ **設定** ] 下的 [ **腳本動作** ]。
+3. 從叢集 [首頁](#homePage)上，選取 [**設定**] 下的 [**腳本動作**]。
 4. 從 [ **腳本動作** ] 頁面中，選取 [ **提交新** 的]。
 5. 在 [ **提交腳本動作** ] 頁面上，輸入下列資訊：
 
@@ -227,14 +227,14 @@ HDInsight 叢集可以有兩個使用者帳戶。 HDInsight 叢集使用者帳�
 
    | 欄位 | 值 |
    | --- | --- |
-   | 指令碼類型 | 從下拉式清單中選取 [- 自訂]  。|
+   | 指令碼類型 | 從下拉式清單中選取 [- 自訂]。|
    | 名稱 |「變更 ssh 認證」 |
    | Bash 指令碼 URI |Changecredentials.sh 檔案的 URI |
    | 節點類型 (s) ： (Head、Worker、Nimbus、監督員或 Zookeeper。 )  |✓ 針對列出的所有節點類型 |
    | 參數 |輸入 SSH 使用者名稱，然後輸入密碼。 使用者名稱和密碼之間應該有一個空格。 |
    | 保存這個指令碼動作... |不選取此欄位。 |
 
-6. 按一下 [建立]  套用指令碼。 腳本完成後，您就可以使用 SSH 搭配新的認證來連接到叢集。
+6. 按一下 [建立] 套用指令碼。 腳本完成後，您就可以使用 SSH 搭配新的認證來連接到叢集。
 
 ## <a name="find-the-subscription-id"></a>尋找訂用帳戶識別碼
 
@@ -246,7 +246,7 @@ HDInsight 叢集可以有兩個使用者帳戶。 HDInsight 叢集使用者帳�
 
 ## <a name="find-the-storage-accounts"></a>尋找儲存體帳戶
 
-HDInsight 叢集會使用 Azure 儲存體帳戶或 Azure Data Lake Storage 來儲存資料。 每個 HDInsight 叢集可以有一個預設儲存體帳戶及一些連結的儲存體帳戶。 若要列出儲存體帳戶，從  底下，選取 [儲存體帳戶]  。
+HDInsight 叢集會使用 Azure 儲存體帳戶或 Azure Data Lake Storage 來儲存資料。 每個 HDInsight 叢集可以有一個預設儲存體帳戶及一些連結的儲存體帳戶。 若要列出儲存體帳戶，從[叢集首頁](#homePage)的 [設定] 底下，選取 [儲存體帳戶]。
 
 ## <a name="monitor-jobs"></a>監視工作
 
@@ -254,7 +254,7 @@ HDInsight 叢集會使用 Azure 儲存體帳戶或 Azure Data Lake Storage 來�
 
 ## <a name="cluster-size"></a>叢集大小
 
-叢集 [首頁](#homePage)上的 [叢集 **大小** ] 圖格會顯示配置給此叢集的核心數目，以及如何為此叢集中的節點配置這些核心。
+叢集 [首頁](#homePage)上的 [叢集 **大小**] 圖格會顯示配置給此叢集的核心數目，以及如何為此叢集中的節點配置這些核心。
 
 > [!IMPORTANT]  
 > 若要監視 HDInsight 叢集所提供的服務，您必須使用 Ambari Web 或 Ambari REST API。 如需使用 Ambari 的詳細資訊，請參閱[使用 Apache Ambari 管理 HDInsight 叢集](hdinsight-hadoop-manage-ambari.md)
@@ -264,7 +264,7 @@ HDInsight 叢集會使用 Azure 儲存體帳戶或 Azure Data Lake Storage 來�
 - [搭配 HDInsight 使用 Apache Hive](hadoop/apache-hadoop-use-hive-ambari-view.md)
 - [搭配使用 SSH 與 HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解一些基本的系統管理功能。 如需詳細資訊，請參閱下列文章：
 
