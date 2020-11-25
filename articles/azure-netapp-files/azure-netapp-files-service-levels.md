@@ -15,18 +15,18 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: b-juche
 ms.openlocfilehash: 7eac6a40476cffe875a03de49c9c9311ffbf4d39
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016037"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017061"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Azure NetApp Files 的服務等級
 服務層級是容量集區的屬性。 服務層級會根據指派給磁片區的配額，定義並依容量集區中的磁片區允許的最大輸送量來區分。
 
 ## <a name="supported-service-levels"></a>支援的服務層級
 
-Azure NetApp Files 支援三種服務層級： *Ultra*、 *Premium*和 *Standard*。 
+Azure NetApp Files 支援三種服務層級： *Ultra*、 *Premium* 和 *Standard*。 
 
 * <a name="Ultra"></a>Ultra 儲存體
 

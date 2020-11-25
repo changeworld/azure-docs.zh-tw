@@ -6,11 +6,11 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: 152a000939f74b1852073742e501ac66246389a5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88961411"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015818"
 ---
 # <a name="create-a-php-web-app-in-azure-app-service"></a>在 Azure App Service 中建立 PHP Web 應用程式
 
@@ -182,7 +182,7 @@ git commit -am "updated output"
 git push azure master
 ```
 
-部署完成後，返回在**瀏覽至應用程式**步驟中開啟的瀏覽器視窗，然後重新整理頁面。
+部署完成後，返回在 **瀏覽至應用程式** 步驟中開啟的瀏覽器視窗，然後重新整理頁面。
 
 ![在 Azure 中執行的已更新範例應用程式](media/quickstart-php/hello-azure-in-browser.png)
 

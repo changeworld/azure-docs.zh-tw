@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: ff612b7c052ead5658ea4bbfafd7aace51ba3c02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86132485"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017435"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>管理實體伺服器災害復原的組態伺服器
 
@@ -47,10 +47,10 @@ ms.locfileid: "86132485"
 Site Recovery 入口網站中提供最新版本的組態伺服器安裝檔案。 此外，您可以從 [Microsoft 下載中心](https://aka.ms/unifiedsetup)下載。
 
 1. 登入 Azure 入口網站並瀏覽至您的復原服務保存庫。
-2. 在 [VMware & 實體機器) ] 底下，流覽至 (的**Site Recovery 基礎結構**設定  >  **伺服器**。
-3. 按一下 [+伺服器]**** 按鈕。
-4. 在 [新增伺服器]**** 頁面上，按一下 [下載] 按鈕，下載註冊金鑰。 在組態伺服器安裝期間，您需要使用此金鑰向 Azure Site Recovery 服務註冊它。
-5. 按一下 [下載 Microsoft Azure Site Recovery 整合安裝]**** 連結，以下載最新版本的組態伺服器。
+2. 在 [VMware & 實體機器) ] 底下，流覽至 (的 **Site Recovery 基礎結構** 設定  >  **伺服器**。
+3. 按一下 [+伺服器] 按鈕。
+4. 在 [新增伺服器] 頁面上，按一下 [下載] 按鈕，下載註冊金鑰。 在組態伺服器安裝期間，您需要使用此金鑰向 Azure Site Recovery 服務註冊它。
+5. 按一下 [下載 Microsoft Azure Site Recovery 整合安裝] 連結，以下載最新版本的組態伺服器。
 
    ![下載頁面](./media/physical-manage-configuration-server/downloadcs.png)
 
@@ -108,7 +108,7 @@ Site Recovery 入口網站中提供最新版本的組態伺服器安裝檔案。
 
 ### <a name="parameters"></a>參數
 
-|參數名稱| 類型 | 說明| 值|
+|參數名稱| 類型 | 描述| 值|
 |-|-|-|-|
 | /ServerMode|必要|指定應該同時安裝組態和處理序伺服器，還是只安裝處理序伺服器|CS<br>PS|
 |/InstallLocation|必要|安裝元件的資料夾| 電腦上的任何資料夾|
@@ -118,12 +118,12 @@ Site Recovery 入口網站中提供最新版本的組態伺服器安裝檔案。
 |/PSIP|必要|要用於複寫資料傳輸的 NIC IP 位址| 任何有效的 IP 位址|
 |/CSIP|必要|接聽組態伺服器的 NIC IP 位址| 任何有效的 IP 位址|
 |/PassphraseFilePath|必要|複雜密碼檔案的位置完整路徑|有效的檔案路徑|
-|/BypassProxy|選用|指定組態伺服器不使用 Proxy 連接至 Azure|若要這樣做，請從 Venu 取得此值|
-|/ProxySettingsFilePath|選用|Proxy 設定 (預設的 Proxy 需要驗證或自訂的 Proxy)|此檔案應該具備如下所指定的格式|
-|DataTransferSecurePort|選用|要用於複寫資料的 PSIP 上的連接埠號碼| 有效的連接埠號碼 (預設值是 9433)|
-|/SkipSpaceCheck|選用|略過快取磁碟的空間檢查| |
+|/BypassProxy|選擇性|指定組態伺服器不使用 Proxy 連接至 Azure|若要這樣做，請從 Venu 取得此值|
+|/ProxySettingsFilePath|選擇性|Proxy 設定 (預設的 Proxy 需要驗證或自訂的 Proxy)|此檔案應該具備如下所指定的格式|
+|DataTransferSecurePort|選擇性|要用於複寫資料的 PSIP 上的連接埠號碼| 有效的連接埠號碼 (預設值是 9433)|
+|/SkipSpaceCheck|選擇性|略過快取磁碟的空間檢查| |
 |/AcceptThirdpartyEULA|必要|旗標表示接受協力廠商使用者授權合約| |
-|/ShowThirdpartyEULA|選用|顯示協力廠商使用者授權合約。 如果提供作為輸入，則會忽略所有其他參數| |
+|/ShowThirdpartyEULA|選擇性|顯示協力廠商使用者授權合約。 如果提供作為輸入，則會忽略所有其他參數| |
 
 
 
@@ -152,13 +152,13 @@ ProxyPassword="Password"
 
 1. 登入組態伺服器。
 2. 使用桌面上的捷徑啟動 cspsconfigtool.exe。
-3. 按一下 [保存庫註冊]**** 索引標籤。
+3. 按一下 [保存庫註冊] 索引標籤。
 4. 從入口網站下載新的保存庫註冊檔案，並提供給工具作為輸入。
 
    ![註冊組態伺服器](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
-5. 提供新的 Proxy 詳細資料，然後按一下 [註冊]**** 按鈕。
+5. 提供新的 Proxy 詳細資料，然後按一下 [註冊] 按鈕。
 6. 開啟系統管理 PowerShell 命令視窗。
-7. 執行下列命令：
+7. 執行以下命令：
 
    ```powershell
    $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
@@ -173,10 +173,10 @@ ProxyPassword="Password"
 ## <a name="reregister-a-configuration-server-with-the-same-vault"></a>使用相同保存庫註冊組態伺服器
 1. 登入您的組態伺服器。
 2. 使用桌面上的捷徑啟動 cspsconfigtool.exe。
-3. 按一下 [保存庫註冊]**** 索引標籤。
+3. 按一下 [保存庫註冊] 索引標籤。
 4. 從入口網站下載新的註冊檔案，並提供給工具作為輸入。
       ![註冊組態伺服器](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
-5. 提供 Proxy 伺服器詳細資料，然後按一下 [註冊]**** 按鈕。  
+5. 提供 Proxy 伺服器詳細資料，然後按一下 [註冊] 按鈕。  
 6. 開啟系統管理 PowerShell 命令視窗。
 7. 執行下列命令
 
@@ -203,9 +203,9 @@ ProxyPassword="Password"
     net stop dra
     ```
 3. 使用桌面上的捷徑啟動 cspsconfigtool.exe。
-4. 按一下 [保存庫註冊]**** 索引標籤。
+4. 按一下 [保存庫註冊] 索引標籤。
 5. 從入口網站下載新的註冊檔案，並提供給工具作為輸入。
-6. 提供 Proxy 伺服器詳細資料，然後按一下 [註冊]**** 按鈕。  
+6. 提供 Proxy 伺服器詳細資料，然後按一下 [註冊] 按鈕。  
 7. 開啟系統管理 PowerShell 命令視窗。
 8. 執行下列命令
     ```powershell
@@ -229,7 +229,7 @@ ProxyPassword="Password"
 1. 將更新安裝程式檔案下載到組態伺服器上。
 2. 按兩下以執行安裝程式。
 3. 安裝程式會偵測機器上執行的目前版本。
-4. 按一下 [確定]**** 以確認，並執行升級。 
+4. 按一下 [確定] 以確認，並執行升級。 
 
 
 ## <a name="delete-or-unregister-a-configuration-server"></a>將設定伺服器刪除或取消註冊
@@ -242,10 +242,10 @@ ProxyPassword="Password"
 
 
 ### <a name="delete-the-configuration-server-from-azure-portal"></a>從 Azure 入口網站刪除組態伺服器
-1. 在 Azure 入口網站中，從保存庫功能表流覽至**Site Recovery 基礎結構**設定  >  **伺服器**。
+1. 在 Azure 入口網站中，從保存庫功能表流覽至 **Site Recovery 基礎結構** 設定  >  **伺服器**。
 2. 按一下您需要解除委任的組態伺服器。
-3. 在組態伺服器的詳細資料頁面上，按一下 [刪除]**** 按鈕。
-4. 按一下 [是]**** 以確認刪除伺服器。
+3. 在組態伺服器的詳細資料頁面上，按一下 [刪除] 按鈕。
+4. 按一下 [是] 以確認刪除伺服器。
 
 ### <a name="uninstall-the-configuration-server-and-its-dependencies"></a>將組態伺服器軟體和其相依性解除安裝
 > [!TIP]
@@ -299,13 +299,13 @@ ProxyPassword="Password"
 
 - 當到期日是兩個月或少於兩個月時，服務會開始在入口網站傳送通知，以及透過電子郵件傳送通知 (如果您已訂閱 Azure Site Recovery 通知)。
 - 通知橫幅會出現在保存庫資源頁面上。 按一下橫幅可取得詳細資料。
-- 如果您看到 [立即升級]**** 按鈕，表示您的環境中有些元件尚未升級至 9.4.xxxx.x 或更新版本。 更新憑證之前請先升級元件。 您不能在舊版上更新。
+- 如果您看到 [立即升級] 按鈕，表示您的環境中有些元件尚未升級至 9.4.xxxx.x 或更新版本。 更新憑證之前請先升級元件。 您不能在舊版上更新。
 
 ### <a name="renew-the-certificate"></a>更新憑證
 
-1. 在保存庫中，開啟**Site Recovery 基礎結構**設定  >  **伺服器**]，然後按一下所需的設定伺服器。
-2. 到期日顯示在 [設定**伺服器健康**情況] 底下
-3. 按一下 [更新憑證]****。 
+1. 在保存庫中，開啟 **Site Recovery 基礎結構** 設定  >  **伺服器**]，然後按一下所需的設定伺服器。
+2. 到期日顯示在 [設定 **伺服器健康** 情況] 底下
+3. 按一下 [更新憑證]。 
 
 
 
@@ -313,6 +313,6 @@ ProxyPassword="Password"
 ## <a name="common-issues"></a>常見問題
 [!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 檢閱教學課程，了解如何設定[實體伺服器](./physical-azure-disaster-recovery.md)至 Azure 的災害復原。

@@ -10,11 +10,11 @@ ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
 ms.openlocfilehash: 68bd748e890659e4b79d76e4ccab038f251a937a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87368178"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016024"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平臺3.11 的一般必要條件
 
@@ -47,7 +47,7 @@ OpenShift 安裝是使用 Ansible 腳本。 Ansible 使用安全殼層 (SSH) 連
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure 
-使用 [az login](/cli/azure/reference-index) 命令來登入 Azure 訂用帳戶並遵循畫面上的指示進行，或按一下 [試用]**** 來使用 Cloud Shell。
+使用 [az login](/cli/azure/reference-index) 命令來登入 Azure 訂用帳戶並遵循畫面上的指示進行，或按一下 [試用] 來使用 Cloud Shell。
 
 ```azurecli
 az login
@@ -57,7 +57,7 @@ az login
 
 使用 [az group create](/cli/azure/group) 命令來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 您應該使用專用的資源群組來裝載金鑰保存庫。 此群組與 OpenShift 叢集資源部署所在的資源群組分開。
 
-下列範例會在*eastus*位置建立名為 *>keyvaultrg*的資源群組：
+下列範例會在 *eastus* 位置建立名為 *>keyvaultrg* 的資源群組：
 
 ```azurecli
 az group create --name keyvaultrg --location eastus
@@ -98,9 +98,9 @@ OpenShift 會使用使用者名稱與密碼或服務主體與 Azure 進行通訊
 
 使用 [az ad sp create-for-rbac](/cli/azure/ad/sp) 建立服務主體，並輸出 OpenShift 所需的認證。
 
-下列範例會建立服務主體，並將其參與者許可權指派給名為 *openshiftrg*的資源群組。
+下列範例會建立服務主體，並將其參與者許可權指派給名為 *openshiftrg* 的資源群組。
 
-首先，建立名為 *openshiftrg*的資源群組：
+首先，建立名為 *openshiftrg* 的資源群組：
 
 ```azurecli
 az group create -l eastus -n openshiftrg
@@ -138,7 +138,7 @@ az ad sp create-for-rbac --name openshiftsp \
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>僅適用于 Resource Manager 範本的必要條件
 
-您必須為 SSH 私密金鑰建立密碼 (**sshPrivateKey**) 、Azure AD 用戶端密碼 (**AadClientSecret**) 、OpenShift 系統管理員密碼 (**OpenshiftPassword**) ，以及 Red Hat 訂用帳戶管理員密碼或啟用金鑰 (**rhsmPasswordOrActivationKey**) 。  此外，如果使用自訂的 TLS/SSL 憑證，則必須建立六個額外的秘密- **routingcafile**、 **routingcertfile**、 **routingkeyfile**、 **mastercafile**、 **mastercertfile**和 **masterkeyfile**。  這些參數將會更詳細地說明。
+您必須為 SSH 私密金鑰建立密碼 (**sshPrivateKey**) 、Azure AD 用戶端密碼 (**AadClientSecret**) 、OpenShift 系統管理員密碼 (**OpenshiftPassword**) ，以及 Red Hat 訂用帳戶管理員密碼或啟用金鑰 (**rhsmPasswordOrActivationKey**) 。  此外，如果使用自訂的 TLS/SSL 憑證，則必須建立六個額外的秘密- **routingcafile**、 **routingcertfile**、 **routingkeyfile**、 **mastercafile**、 **mastercertfile** 和 **masterkeyfile**。  這些參數將會更詳細地說明。
 
 範本會參考特定的秘密名稱，因此您 **必須** 使用上列粗體名稱 (區分大小寫的) 。
 
@@ -163,7 +163,7 @@ az ad sp create-for-rbac --name openshiftsp \
 az keyvault secret set --vault-name KeyVaultName -n mastercafile --file ~/certificates/masterca.pem
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 本文涵蓋下列主題：
 > [!div class="checklist"]

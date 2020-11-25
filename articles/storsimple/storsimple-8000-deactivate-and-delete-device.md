@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 07/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 07d108306fdca9bfe8f793b61660550e43151d71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777827"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017180"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>停用及刪除 StorSimple 裝置
 
@@ -58,19 +58,19 @@ ms.locfileid: "91777827"
 
 2. 請依照下列步驟來停用裝置：
 
-   1. 移至 StorSimple 裝置管理員服務，然後按一下 [裝置]****。 在 [裝置]**** 刀鋒視窗中，選取您想要停用的裝置、按一下滑鼠右鍵，然後按一下 [停用]****。
+   1. 移至 StorSimple 裝置管理員服務，然後按一下 [裝置]。 在 [裝置] 刀鋒視窗中，選取您想要停用的裝置、按一下滑鼠右鍵，然後按一下 [停用]。
 
         ![停用 StorSimple 裝置](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
-   2. 在 [停用]**** 刀鋒視窗中，輸入裝置名稱以進行確認，然後按一下 [停用]****。 停用程序開始，需要幾分鐘才能完成。
+   2. 在 [停用] 刀鋒視窗中，輸入裝置名稱以進行確認，然後按一下 [停用]。 停用程序開始，需要幾分鐘才能完成。
 
         ![停用 StorSimple 裝置2](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
 
 3. 停用之後，您就可以完全刪除裝置。 刪除裝置會將其從與服務連接的裝置清單移除。 服務將不再管理已刪除的裝置。 請使用下列步驟來刪除裝置：
    
-   1. 移至 StorSimple 裝置管理員服務，然後按一下 [裝置]****。 在 [裝置]**** 刀鋒視窗中，選取您想要刪除的已停用裝置、按一下滑鼠右鍵，然後按一下 [刪除]****。
+   1. 移至 StorSimple 裝置管理員服務，然後按一下 [裝置]。 在 [裝置] 刀鋒視窗中，選取您想要刪除的已停用裝置、按一下滑鼠右鍵，然後按一下 [刪除]。
 
         ![停用 StorSimple 裝置3](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
-   2. 在 [刪除]**** 刀鋒視窗中，輸入裝置名稱以進行確認，然後按一下 [刪除]****。 刪除需要幾分鐘才能完成。
+   2. 在 [刪除] 刀鋒視窗中，輸入裝置名稱以進行確認，然後按一下 [刪除]。 刪除需要幾分鐘才能完成。
 
         ![停用 StorSimple 裝置4](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
    3. 順利完成刪除之後，您會收到通知。 裝置清單也會更新以反映刪除。
@@ -83,19 +83,19 @@ ms.locfileid: "91777827"
 
 1. 停用裝置。 裝置的所有磁碟區容器及快照都會保留。
    
-   1. 移至 StorSimple 裝置管理員服務，然後按一下 [裝置]****。 在 [裝置]**** 刀鋒視窗中，選取您想要停用的裝置、按一下滑鼠右鍵，然後按一下 [停用]****。
+   1. 移至 StorSimple 裝置管理員服務，然後按一下 [裝置]。 在 [裝置] 刀鋒視窗中，選取您想要停用的裝置、按一下滑鼠右鍵，然後按一下 [停用]。
 
          ![停用 StorSimple 裝置5](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
-   2. 在 [停用]**** 刀鋒視窗中，輸入裝置名稱以進行確認，然後按一下 [停用]****。 停用程序開始，需要幾分鐘才能完成。
+   2. 在 [停用] 刀鋒視窗中，輸入裝置名稱以進行確認，然後按一下 [停用]。 停用程序開始，需要幾分鐘才能完成。
 
          ![停用 StorSimple 裝置6](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
 2. 您現在可以容錯移轉磁碟區容器和相關聯的快照集。 關於程序，請移至 [StorSimple 裝置的容錯移轉和災害復原](storsimple-8000-device-failover-disaster-recovery.md)。
 3. 停用和容錯移轉之後，您就可以完全刪除裝置。 刪除裝置會將其從與服務連接的裝置清單移除。 服務將不再管理已刪除的裝置。 若要刪除裝置，請完成下列步驟：
    
-   1. 移至 StorSimple 裝置管理員服務，然後按一下 [裝置]****。 在 [裝置]**** 刀鋒視窗中，選取您想要刪除的已停用裝置、按一下滑鼠右鍵，然後按一下 [刪除]****。
+   1. 移至 StorSimple 裝置管理員服務，然後按一下 [裝置]。 在 [裝置] 刀鋒視窗中，選取您想要刪除的已停用裝置、按一下滑鼠右鍵，然後按一下 [刪除]。
 
        ![停用 StorSimple 裝置7](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
-   2. 在 [刪除]**** 刀鋒視窗中，輸入裝置名稱以進行確認，然後按一下 [刪除]****。 刪除需要幾分鐘才能完成。
+   2. 在 [刪除] 刀鋒視窗中，輸入裝置名稱以進行確認，然後按一下 [刪除]。 刪除需要幾分鐘才能完成。
 
        ![停用 StorSimple 裝置8](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
    3. 順利完成刪除之後，您會收到通知。 裝置清單也會更新以反映刪除。
@@ -114,7 +114,7 @@ ms.locfileid: "91777827"
 * 保留在佈建期間建立的託管服務和虛擬網路。 如果您不使用這些項目，就應該手動加以刪除。
 * 保留 StorSimple 雲端設備建立的雲端快照。
 
-雲端設備停用之後，您可以將其從裝置清單中刪除。 選取停用的裝置、按一下滑鼠右鍵，然後按一下 [刪除]****。 刪除裝置之後，StorSimple 會通知您，而且裝置清單也會隨即更新。
+雲端設備停用之後，您可以將其從裝置清單中刪除。 選取停用的裝置、按一下滑鼠右鍵，然後按一下 [刪除]。 刪除裝置之後，StorSimple 會通知您，而且裝置清單也會隨即更新。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -9,11 +9,11 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 7079f0b1060be1a260b41e07b9d9299bab57127f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410805"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016296"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>適用於 Linux VM 的 Azure 磁碟加密 
 
@@ -93,7 +93,7 @@ Azure 磁碟加密無法在 [第2代 vm](../generation-2.md#generation-1-vs-gene
 > [!NOTE]
 > RHEL OS 和適用於 RHEL7 隨用隨付映像的資料磁碟，可支援全新的 Azure 磁碟加密實作。  
 >
-> RHEL 自備訂閱金級映像也支援 ADE，但僅限於註冊訂閱 **之後** 。 如需詳細資訊，請參閱 [Azure 中的 Red Hat Enterprise Linux 自備訂閱金級映像](../workloads/redhat/byos.md#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)
+> RHEL 自備訂閱金級映像也支援 ADE，但僅限於註冊訂閱 **之後**。 如需詳細資訊，請參閱 [Azure 中的 Red Hat Enterprise Linux 自備訂閱金級映像](../workloads/redhat/byos.md#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)
 
 ## <a name="additional-vm-requirements"></a>其他 VM 需求
 

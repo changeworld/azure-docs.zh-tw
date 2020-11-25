@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 04/05/2018
 ms.author: cynthn
 ms.openlocfilehash: 964d2b5d89fd91aca68e9b47b0049529fe284848
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87828994"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016398"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>使用 Azure CLI 在可用性區域中建立 Linux 虛擬機器
 
@@ -25,7 +25,7 @@ ms.locfileid: "87828994"
 ## <a name="check-vm-sku-availability"></a>檢查 VM SKU 可用性
 VM 大小或 SKU 的可用性可能因地區和區域而有所不同。 為了協助您規劃如何利用可用性區域，您可以依照 Azure 地區和區域列出可用的 VM SKU。 這項功能可確保您選擇適當的 VM 大小，並取得所需的跨區域復原功能。 如需有關不同 VM 類型和大小的詳細資訊，請參閱 [VM 大小概觀](../sizes.md)。
 
-您可以使用 [az vm list-skus](/cli/azure/vm) 命令檢視可用的 VM SKU。 下列範例會列出 eastus2** 地區中可用的 VM SKU：
+您可以使用 [az vm list-skus](/cli/azure/vm) 命令檢視可用的 VM SKU。 下列範例會列出 eastus2 地區中可用的 VM SKU：
 
 ```azurecli
 az vm list-skus --location eastus2 --output table
@@ -66,7 +66,7 @@ az group create --name myResourceGroupVM --location eastus2
 
 使用 [az vm create](/cli/azure/vm) 命令建立虛擬機器。 
 
-建立虛擬機器時，有數個可用的選項，例如作業系統映像、磁碟大小及系統管理認證。 在此範例中，是使用 myVM** 名稱來建立執行 Ubuntu Server 的虛擬機器。 VM 是在可用性區域 *1* 中所建立。 依預設，會以 *Standard_DS1_v2* 大小建立 VM。
+建立虛擬機器時，有數個可用的選項，例如作業系統映像、磁碟大小及系統管理認證。 在此範例中，是使用 myVM 名稱來建立執行 Ubuntu Server 的虛擬機器。 VM 是在可用性區域 *1* 中所建立。 依預設，會以 *Standard_DS1_v2* 大小建立 VM。
 
 ```azurecli-interactive
 az vm create --resource-group myResourceGroupVM --name myVM --location eastus2 --image UbuntuLTS --generate-ssh-keys --zone 1

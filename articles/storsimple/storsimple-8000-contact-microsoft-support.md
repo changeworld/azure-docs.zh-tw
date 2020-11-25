@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: c288f59b1cb9a85ed4bc978d1c3fba18ba30b572
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968752"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017197"
 ---
 # <a name="contact-microsoft-support"></a>連絡 Microsoft 支援服務
 
@@ -57,7 +57,7 @@ StorSimple 裝置管理員可讓您在服務摘要刀鋒視窗中 **登錄新的
 
    1. 在 [連絡人選項] 中，提供您偏好的連絡方法 (電話或電子郵件) 以及語言。 會根據您的訂用帳戶方案自動選擇回應時間。
    2. 在 [連絡人資訊] 中，提供姓名、電子郵件、選用連絡方法、國家/地區。 選取 [儲存連絡人變更以供未來的支援要求使用]  核取方塊。
-   3. 按一下 [建立]  。
+   3. 按一下 [建立]。
    
        ![透過新的入口網站4聯絡 MS 支援](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 

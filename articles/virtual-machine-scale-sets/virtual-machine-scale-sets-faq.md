@@ -10,11 +10,11 @@ ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 8170cfcbbf200c6ba5030aff5716f46b537d8c97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87080466"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016704"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虛擬機器擴展集常見問題集
 
@@ -60,7 +60,7 @@ ms.locfileid: "87080466"
 
 ### <a name="do-scale-sets-work-with-azure-availability-sets"></a>擴展集是否可與 Azure 可用性設定組組搭配使用？
 
-區域 (非區域) 擴展集會使用「放置群組」**，其可作為隱含的可用性設定組，並具有五個容錯網域和五個更新網域。 具有 100 部以上 VM 的擴展集會跨越多個放置群組。 如需放置群組的詳細資訊，請參閱[使用大型的虛擬機器擴展集](virtual-machine-scale-sets-placement-groups.md)。 VM 的可用性設定組可以存在於與 VM 擴展集相同的虛擬網路中。 常見組態是在可用性設定組中放入控制節點 VM (其通常需要唯一組態)，以及在擴展集中放入資料節點。
+區域 (非區域) 擴展集會使用「放置群組」，其可作為隱含的可用性設定組，並具有五個容錯網域和五個更新網域。 具有 100 部以上 VM 的擴展集會跨越多個放置群組。 如需放置群組的詳細資訊，請參閱[使用大型的虛擬機器擴展集](virtual-machine-scale-sets-placement-groups.md)。 VM 的可用性設定組可以存在於與 VM 擴展集相同的虛擬網路中。 常見組態是在可用性設定組中放入控制節點 VM (其通常需要唯一組態)，以及在擴展集中放入資料節點。
 
 ### <a name="do-scale-sets-work-with-azure-availability-zones"></a>擴展集是否可與 Azure 可用性區域搭配使用？
 
@@ -224,10 +224,10 @@ az sf cluster create -h
 }
 ```
 
-linuxConfiguration 元素名稱 | 必要 | 類型 | 說明
+linuxConfiguration 元素名稱 | 必要 | 類型 | 描述
 --- | --- | --- | ---
 ssh | 否 | 集合 | 指定 Linux OS 的 SSH 金鑰組態
-path | 是 | String | 指定 SSH 金鑰或憑證必須位於的 Linux 檔案路徑
+路徑 | 是 | String | 指定 SSH 金鑰或憑證必須位於的 Linux 檔案路徑
 keyData | 是 | String | 指定 base64 編碼的 SSH 公開金鑰
 
 如需範例，請參閱 [101-vm-sshkey GitHub 快速入門範本](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)。
@@ -368,9 +368,9 @@ Update-AzVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName
 
 ### <a name="how-do-i-add-an-extension-to-all-vms-in-my-virtual-machine-scale-set"></a>如何將擴充功能新增至虛擬機器擴展集中的所有 VM？
 
-將更新原則設定為**自動**時，使用新的擴充屬性重新部署範本便會更新所有 VM。
+將更新原則設定為 **自動** 時，使用新的擴充屬性重新部署範本便會更新所有 VM。
 
-如果更新原則設定為**手動**，請先更新擴充功能，然後手動更新 VM 中的所有執行個體。
+如果更新原則設定為 **手動**，請先更新擴充功能，然後手動更新 VM 中的所有執行個體。
 
 ### <a name="if-the-extensions-associated-with-an-existing-virtual-machine-scale-set-are-updated-are-existing-vms-affected"></a>如果更新與現有虛擬機器擴展集相關聯的擴充功能，現有的 VM 是否會受影響？
 
@@ -465,7 +465,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
     Update-AzVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -VirtualMachineScaleSet $vmss
     ```
 
-## <a name="networking"></a>網路功能
+## <a name="networking"></a>網路
 
 ### <a name="is-it-possible-to-assign-a-network-security-group-nsg-to-a-scale-set-so-that-it-applies-to-all-the-vm-nics-in-the-set"></a>是否可以將「網路安全性群組」(NSG) 指派給擴展集，以便將它套用至擴展集中的所有 VM NIC？
 
@@ -523,7 +523,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>我可以搭配加速的網路使用擴展集嗎？
 
-是。 若要使用加速的網路，請在擴展集的 networkInterfaceConfigurations 設定中，將enableAcceleratedNetworking 設為 true。 例如
+是。 若要使用加速的網路，請在擴展集的 networkInterfaceConfigurations 設定中，將enableAcceleratedNetworking 設為 true。 例如：
 
 ```json
 "networkProfile": {
@@ -566,7 +566,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 ### <a name="can-i-configure-a-scale-set-to-work-with-multiple-application-gateways"></a>我可以設定擴展集以搭配多個應用程式閘道使用嗎？
 
-是。 您可以將多個應用程式閘道後端位址集區的資源識別碼新增到擴展集網路設定檔的 [ _ipconfiguration_ ] 區段中的_applicationGatewayBackendAddressPools_清單。
+是。 您可以將多個應用程式閘道後端位址集區的資源識別碼新增到擴展集網路設定檔的 [ _ipconfiguration_ ] 區段中的 _applicationGatewayBackendAddressPools_ 清單。
 
 ## <a name="scale"></a>調整
 
@@ -671,7 +671,7 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
 }
 ```
 
-建立新的 VM 時，VM 的 InstanceView 會顯示螢幕擷取畫面等的詳細資料。 以下為範例：
+建立新的 VM 時，VM 的 InstanceView 會顯示螢幕擷取畫面等的詳細資料。 以下是範例：
 
 ```json
 "bootDiagnostics": {

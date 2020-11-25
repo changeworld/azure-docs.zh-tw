@@ -10,11 +10,11 @@ ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 ms.openlocfilehash: 234834af4fcf4ad809f548d171a4c1c406d85895
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747834"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016687"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虛擬機器擴展集的網路
 
@@ -23,7 +23,7 @@ ms.locfileid: "92747834"
 本文所討論的所有概念都可以使用 Azure Resource Manager 範本來設定。 選取的功能也會包含 Azure CLI 和 PowerShell 範例。
 
 ## <a name="accelerated-networking"></a>加速網路
-Azure 加速網路可以對虛擬機器啟用 Single Root I/O Virtualization (SR-IOV)，大幅提升網路效能。 若要深入了解如何使用加速網路，請參閱 [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) 或 [Linux](../virtual-network/create-vm-accelerated-networking-cli.md) 虛擬機器的加速網路。 若要搭配擴展集使用加速的網路，請在擴展集的 networkInterfaceConfigurations 設定中，將 enableAcceleratedNetworking 設為 **true** 。 例如：
+Azure 加速網路可以對虛擬機器啟用 Single Root I/O Virtualization (SR-IOV)，大幅提升網路效能。 若要深入了解如何使用加速網路，請參閱 [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) 或 [Linux](../virtual-network/create-vm-accelerated-networking-cli.md) 虛擬機器的加速網路。 若要搭配擴展集使用加速的網路，請在擴展集的 networkInterfaceConfigurations 設定中，將 enableAcceleratedNetworking 設為 **true**。 例如：
 
 ```json
 "networkProfile": {
@@ -132,7 +132,7 @@ Azure 加速網路可以對虛擬機器啟用 Single Root I/O Virtualization (SR
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>使用公用 IP 每虛擬機器建立擴展集
 若要使用 CLI 建立將公用 IP 位址指派給每個虛擬機器的擴展集，請將 **--public-ip-per-vm** 參數新增至 **vmss create** 命令。 
 
-若要使用 Azure 範本建立擴展集，請確定 Microsoft.Compute/virtualMachineScaleSets 資源的 API 版本至少為 **2017-03-30** ，並將 **publicIpAddressConfiguration** JSON 屬性新增至擴展集 ipConfigurations 區段。 例如：
+若要使用 Azure 範本建立擴展集，請確定 Microsoft.Compute/virtualMachineScaleSets 資源的 API 版本至少為 **2017-03-30**，並將 **publicIpAddressConfiguration** JSON 屬性新增至擴展集 ipConfigurations 區段。 例如：
 
 ```json
 "publicIpAddressConfiguration": {
@@ -165,14 +165,14 @@ Get-AzPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 若要查詢 [Azure 資源總管](https://resources.azure.com)：
 
 1. 在 Web 瀏覽器中開啟 [Azure 資源總管](https://resources.azure.com)。
-1. 從左側按一下 [訂用帳戶]  旁的 [+]  ，即可展開訂用帳戶。 如果 [訂用帳戶]  底下只有一個項目，則可能已經展開。
+1. 從左側按一下 [訂用帳戶] 旁的 [+]，即可展開訂用帳戶。 如果 [訂用帳戶] 底下只有一個項目，則可能已經展開。
 1. 展開您的訂用帳戶。
 1. 展開您的資源群組。
-1. 展開 [提供者]  。
-1. 展開 [ *Microsoft. 計算* ]。
-1. 展開 [virtualMachineScaleSets]  。
+1. 展開 [提供者]。
+1. 展開 [ *Microsoft. 計算*]。
+1. 展開 [virtualMachineScaleSets]。
 1. 展開您的擴展集。
-1. 按一下 [publicipaddresses]  。
+1. 按一下 [publicipaddresses]。
 
 若要查詢 Azure REST API：
 

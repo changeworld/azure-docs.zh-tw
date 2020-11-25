@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 5427077a4b07917c8852d0a63c815195e776b9de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085186"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017027"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上管理 Apache Spark 叢集的資源
 
@@ -29,12 +29,12 @@ ms.locfileid: "86085186"
 
 1. 從 [Azure 入口網站](https://portal.azure.com/)，開啟 Spark 叢集。 如需詳細資訊，請參閱[列出和顯示叢集](../hdinsight-administer-use-portal-linux.md#showClusters)。
 
-2. 從叢集 **儀表板**中選取 [ **Yarn**]。 出現提示時，輸入 Spark 叢集的系統管理員認證。
+2. 從叢集 **儀表板** 中選取 [ **Yarn**]。 出現提示時，輸入 Spark 叢集的系統管理員認證。
 
     ![啟動 YARN UI](./media/apache-spark-resource-manager/azure-portal-dashboard-yarn.png)
 
    > [!TIP]  
-   > 或者，您也可以從 Ambari UI 啟動 YARN UI。 從 Ambari ui 中，流覽至**YARN**[  >  **Quick Links**  >  **Active**  >  **Resource Manager UI**的 YARN 快速連結。
+   > 或者，您也可以從 Ambari UI 啟動 YARN UI。 從 Ambari ui 中，流覽至 **YARN**[  >  **Quick Links**  >  **Active**  >  **Resource Manager UI** 的 YARN 快速連結。
 
 ## <a name="optimize-clusters-for-spark-applications"></a>針對 Spark 應用程式進行叢集最佳化
 
@@ -44,7 +44,7 @@ ms.locfileid: "86085186"
 
 ### <a name="change-the-parameters-using-ambari-ui"></a>使用 Ambari UI 變更參數
 
-1. 從 Ambari UI 中，流覽至**Spark2**  >  **Configs**  >  **的 [自訂 Spark2-預設值**]。
+1. 從 Ambari UI 中，流覽至 **Spark2**  >  **Configs**  >  **的 [自訂 Spark2-預設值**]。
 
     ![使用 Ambari 自訂設定參數](./media/apache-spark-resource-manager/ambari-ui-spark2-configs.png "使用 Ambari 自訂設定參數")
 
@@ -52,7 +52,7 @@ ms.locfileid: "86085186"
 
     ![使用 Ambari UI 設定參數](./media/apache-spark-resource-manager/ambari-ui-spark2-defaults.png "使用 Ambari UI 設定參數")
 
-1. 選取 [ **儲存** ] 以儲存設定變更。 在頁面頂端，系統會提示您重新開機所有受影響的服務。 選取 [重新啟動]****。
+1. 選取 [ **儲存** ] 以儲存設定變更。 在頁面頂端，系統會提示您重新開機所有受影響的服務。 選取 [重新啟動]。
 
     ![重新啟動服務](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
 
@@ -103,7 +103,7 @@ Spark Thrift 伺服器會使用 Spark 動態執行程式配置，因此 `spark.e
 
 「Spark Thrift 伺服器」驅動程式記憶體是設定為前端節點 RAM 大小的 25%，其中假設前端節點的 RAM 大小總計大於 14 GB。 您可以使用 Ambari UI 來變更驅動程式記憶體設定，如以下螢幕擷取畫面所示：
 
-從 Ambari UI 中，流覽至**Spark2**  >  **Configs**  >  **Advanced Advanced Spark2-env**。 然後提供 **spark_thrift_cmd_opts**的值。
+從 Ambari UI 中，流覽至 **Spark2**  >  **Configs**  >  **Advanced Advanced Spark2-env**。 然後提供 **spark_thrift_cmd_opts** 的值。
 
 ## <a name="reclaim-spark-cluster-resources"></a>回收 Spark 叢集資源
 
@@ -132,7 +132,7 @@ Spark Thrift 伺服器會使用 Spark 動態執行程式配置，因此 `spark.e
 
 ## <a name="monitor-resources"></a>監視資源
 
-啟動 Yarn UI，如本文開頭所示。 在螢幕頂端的叢集計量資料表中，檢查[使用的記憶體]**** 的值和 [記憶體總計]**** 資料行。 如果這兩個值相當接近，可能會沒有足夠的資源來啟動下一個應用程式。 這同樣適用於 [使用的 VCores]**** 和 [VCores 總計]**** 資料行。 此外，在主視圖中，如果應用程式維持在 [已 **接受** ] 狀態，而不是 **轉換為 [執行中]** 或 [ **失敗** ] 狀態，這也可能表示它沒有足夠的資源可以啟動。
+啟動 Yarn UI，如本文開頭所示。 在螢幕頂端的叢集計量資料表中，檢查[使用的記憶體] 的值和 [記憶體總計] 資料行。 如果這兩個值相當接近，可能會沒有足夠的資源來啟動下一個應用程式。 這同樣適用於 [使用的 VCores] 和 [VCores 總計] 資料行。 此外，在主視圖中，如果應用程式維持在 [已 **接受** ] 狀態，而不是 **轉換為 [執行中]** 或 [ **失敗** ] 狀態，這也可能表示它沒有足夠的資源可以啟動。
 
 ![資源限制](./media/apache-spark-resource-manager/apache-ambari-resource-limit.png "資源限制")
 

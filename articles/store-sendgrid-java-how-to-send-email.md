@@ -17,14 +17,14 @@ ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
 ms.custom: devx-track-java
 ms.openlocfilehash: 9ff006b74b6202b02a2767aee4d853b1206ce60d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87304474"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015446"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>如何使用 SendGrid 透過 Java 傳送電子郵件
-本指南示範如何在 Azure 上透過 SendGrid 電子郵件服務執行常見程式設計工作。 相關範例是以 Java 撰寫的。 涵蓋的案例包括**建構電子郵件**、**傳送電子郵件**、**新增附件**、**使用篩選器**及**更新屬性**。 如需有關 SendGrid 及傳送電子郵件的詳細資訊，請參閱[後續步驟](#next-steps)一節。
+本指南示範如何在 Azure 上透過 SendGrid 電子郵件服務執行常見程式設計工作。 相關範例是以 Java 撰寫的。 涵蓋的案例包括 **建構電子郵件**、**傳送電子郵件**、**新增附件**、**使用篩選器** 及 **更新屬性**。 如需有關 SendGrid 及傳送電子郵件的詳細資訊，請參閱[後續步驟](#next-steps)一節。
 
 ## <a name="what-is-the-sendgrid-email-service"></a>什麼是 SendGrid 電子郵件服務？
 SendGrid 是 [雲端架構電子郵件服務]，能提供可靠的 [交易式電子郵件傳遞]、擴充性和即時分析，以及有彈性的 API 來輕鬆進行自訂整合。 常見的 SendGrid 使用案例包括：
@@ -86,7 +86,7 @@ SendGrid 是 [雲端架構電子郵件服務]，能提供可靠的 [交易式電
     Authenticator auth = new SMTPAuthenticator();
     Session mailSession = Session.getDefaultInstance(properties, auth);
     ```
-3. 建立郵件並指派 [收件者]****、[寄件者]****、[主旨]**** 和內容值。 這顯示在[如何：建立電子郵件](#how-to-create-an-email)一節中。
+3. 建立郵件並指派 [收件者]、[寄件者]、[主旨] 和內容值。 這顯示在[如何：建立電子郵件](#how-to-create-an-email)一節中。
 4. 透過 *javax.mail.Transport* 物件傳送郵件。 這顯示在 [如何：傳送電子郵件][#how-to-send-an-email] 一節中。
 
 ## <a name="how-to-create-an-email"></a>如何：建立電子郵件
@@ -143,7 +143,7 @@ multipart.addBodyPart(attachmentPart);
 ```
 
 ## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>如何：使用篩選器來啟用頁尾、追蹤和分析
-SendGrid 透過使用 *篩選*來提供額外的電子郵件功能。 這些設定可新增到電子郵件以啟用特定功能，例如啟用點擊追蹤、Google 分析、訂閱追蹤等。 如需完整的篩選器清單，請參閱[篩選器設定][Filter Settings]。
+SendGrid 透過使用 *篩選* 來提供額外的電子郵件功能。 這些設定可新增到電子郵件以啟用特定功能，例如啟用點擊追蹤、Google 分析、訂閱追蹤等。 如需完整的篩選器清單，請參閱[篩選器設定][Filter Settings]。
 
 * 下列程式碼顯示如何插入頁尾篩選器，以使 HTML 文字出現在傳送之電子郵件的底部。
 
@@ -188,7 +188,7 @@ InternetAddress addresses[] =
 message.setReplyTo(addresses);
 ```
 
-若要增加 [副本]**** 收件者，請使用下列程式碼：
+若要增加 [副本] 收件者，請使用下列程式碼：
 
 ```java
 message.addRecipient(Message.RecipientType.CC, new
@@ -198,7 +198,7 @@ InternetAddress("john@contoso.com"));
 ## <a name="how-to-use-additional-sendgrid-services"></a>如何：使用其他 SendGrid 服務
 SendGrid 提供的網頁式 API 可供從 Azure 應用程式運用其他 SendGrid 功能。 如需完整詳細資料，請參閱 [SendGrid API 文件][SendGrid API documentation]。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 了解 SendGrid 電子郵件服務的基本概念後，請參考下列連結以取得更多資訊。
 
 * 示範在 Azure 部署中使用 SendGrid 的範例：[如何在 Azure 部署中使用 SendGrid 透過 Java 傳送電子郵件](store-sendgrid-java-how-to-send-email-example.md)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 6fb3c9b6dbbab036ddb00edd7e1d5980bb425ebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 881a7fc915ab986577599b85f8412fa8107f7902
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326111"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017384"
 ---
 # <a name="encryption-scopes-for-blob-storage-preview"></a>Blob 儲存體 (預覽) 的加密範圍
 
@@ -52,8 +52,8 @@ ms.locfileid: "91326111"
 
 如果您的加密範圍受到客戶管理的金鑰保護，則您也可以在金鑰保存庫中刪除相關聯的金鑰，以便停用加密範圍。 請記住，客戶管理的金鑰受限於金鑰保存庫中的虛刪除和清除保護，而且已刪除的金鑰受限於這些屬性所定義的行為。 如需詳細資訊，請參閱 Azure Key Vault 檔中的下列其中一個主題：
 
-- [透過 PowerShell 使用虛刪除](../../key-vault/general/soft-delete-powershell.md)
-- [如何透過 CLI 使用虛刪除](../../key-vault/general/soft-delete-cli.md)
+- [透過 PowerShell 使用虛刪除](../../key-vault/general/key-vault-recovery.md)
+- [如何透過 CLI 使用虛刪除](../../key-vault/general/key-vault-recovery.md)
 
 > [!NOTE]
 > 不可能刪除加密範圍。

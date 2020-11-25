@@ -5,11 +5,11 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
 ms.openlocfilehash: dae63e16356e825d3be31380df1648749e59d8bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86538309"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015497"
 ---
 # <a name="smart-contract-integration-patterns"></a>智慧合約整合模式
 
@@ -65,7 +65,7 @@ Azure Blockchain Workbench REST API 會傳送已驗證的要求，以查詢對�
 
 傳訊整合有助於與無法使用或不適用互動式登入的系統、服務和裝置進行互動。 傳訊整合著重在兩種類型的訊息：要求對分散式總帳執行交易，且在交易發生時必須由該總帳公開事件的訊息。
 
-傳訊整合著重於執行和監視與使用者建立、合約建立和合約的交易執行有關的交易，且主要由*無周邊*後端系統所使用。
+傳訊整合著重於執行和監視與使用者建立、合約建立和合約的交易執行有關的交易，且主要由 *無周邊* 後端系統所使用。
 
 本節探討的模式著重在可將交易傳送至分散式總帳的訊息型 API 層面，以及可表示基礎分散式總帳所公開事件訊息的模式。
 
@@ -73,7 +73,7 @@ Azure Blockchain Workbench REST API 會傳送已驗證的要求，以查詢對�
 
 在此案例中，事件發生於智慧合約內，例如特定事件類型的狀態變更或執行。 此事件會透過事件方格廣播至下游取用者，讓這些取用者採取適當的動作。
 
-此案例的範例之一，是取用者在交易發生時會收到警示並可執行動作，例如在 SQL DB 或 Common Data Service 中記錄資訊。 此案例是 Workbench 填入其「鏈結關閉」** SQL DB 時所依循的相同模式。
+此案例的範例之一，是取用者在交易發生時會收到警示並可執行動作，例如在 SQL DB 或 Common Data Service 中記錄資訊。 此案例是 Workbench 填入其「鏈結關閉」SQL DB 時所依循的相同模式。
 
 另一個範例，是智慧合約轉換為特定狀態時，例如，當合約進入 *OutOfCompliance* 時。 當此狀態變更發生時，可能會觸發警示並傳送至系統管理員的行動電話。
 
@@ -192,7 +192,7 @@ Azure Blockchain Workbench REST API 會傳送已驗證的要求，以查詢對�
 -   轉換後的訊息現已採用標準格式，會傳送至 Azure Blockchain Workbench 的服務匯流排。
 -   Azure Blockchain Workbench 訂閱來自服務匯流排的事件，並擷取訊息。
 -   Azure Blockchain Workbench 對總帳起始呼叫，將資料從外部系統傳送至特定合約。
--   收到訊息時，合約會評估資料，並且可根據該評估的結果變更狀態，例如，在溫度過高時，將狀態變更為*不合規*。
+-   收到訊息時，合約會評估資料，並且可根據該評估的結果變更狀態，例如，在溫度過高時，將狀態變更為 *不合規*。
 
 ## <a name="data-integration"></a>資料整合
 

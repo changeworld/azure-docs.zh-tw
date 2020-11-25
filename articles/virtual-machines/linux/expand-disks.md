@@ -8,11 +8,11 @@ ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: bbb959b6b1d71c81f7b920b3962f693716041e16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89181743"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016228"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>使用 Azure CLI 擴充 Linux VM 上的虛擬硬碟
 
@@ -28,7 +28,7 @@ ms.locfileid: "89181743"
 
 在下列範例中，以您自己的值取代範例參數名稱，例如 *myResourceGroup* 和 *myVM*。
 
-1. 當 VM 正在執行時，無法對虛擬硬碟執行作業。 使用 [az vm deallocate](/cli/azure/vm#az-vm-deallocate) 解除配置您的 VM。 下列範例會將名為*myResourceGroup*的資源群組中名為*myVM*的 VM 解除配置：
+1. 當 VM 正在執行時，無法對虛擬硬碟執行作業。 使用 [az vm deallocate](/cli/azure/vm#az-vm-deallocate) 解除配置您的 VM。 下列範例會將名為 *myResourceGroup* 的資源群組中名為 *myVM* 的 VM 解除配置：
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
@@ -37,7 +37,7 @@ ms.locfileid: "89181743"
     > [!NOTE]
     > 必須解除配置 VM，才能擴充虛擬硬碟。 使用 `az vm stop` 停止 VM，不會釋放計算資源。 若要釋放計算資源，請使用 `az vm deallocate`。
 
-1. 使用 [az disk list](/cli/azure/disk#az-disk-list) 來檢視資源群組中的受控磁碟清單。 下列範例會顯示名為 myResourceGroup** 之資源群組中的受控磁碟清單：
+1. 使用 [az disk list](/cli/azure/disk#az-disk-list) 來檢視資源群組中的受控磁碟清單。 下列範例會顯示名為 myResourceGroup 之資源群組中的受控磁碟清單：
 
     ```azurecli
     az disk list \
@@ -58,7 +58,7 @@ ms.locfileid: "89181743"
     > [!NOTE]
     > 當您擴充受控磁碟時，會將更新的大小向上調整為最接近的受控磁碟大小。 如需可用受控磁碟大小和階層的表格，請參閱 [Azure 受控磁碟概觀 - 價格和計費](../managed-disks-overview.md)。
 
-1. 使用 [az vm create](/cli/azure/vm#az-vm-start) 啟動 VM。 下列範例會啟動名為 myResourceGroup** 資源群組中名為 myVM** 的 VM：
+1. 使用 [az vm create](/cli/azure/vm#az-vm-start) 啟動 VM。 下列範例會啟動名為 myResourceGroup 資源群組中名為 myVM 的 VM：
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM

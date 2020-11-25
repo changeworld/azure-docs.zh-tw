@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 9210c54305427c82d5666d68573fd3af41e8cef7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e77b58f7741af42f00b2a1831157405b12fa24ff
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90972188"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017401"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>建立及管理加密範圍 (預覽) 
 
@@ -179,7 +179,7 @@ az storage account encryption-scope create \
 
 若要在 Azure 入口網站中查看儲存體帳戶的加密範圍，請流覽至儲存體帳戶的 **加密範圍** 設定。 從這個窗格中，您可以啟用或停用加密範圍，或變更加密範圍的金鑰。
 
-:::image type="content" source="media/encryption-scope-manage/list-encryption-scopes-portal.png" alt-text="顯示如何在 Azure 入口網站中建立加密範圍的螢幕擷取畫面":::
+:::image type="content" source="media/encryption-scope-manage/list-encryption-scopes-portal.png" alt-text="顯示 Azure 入口網站中加密範圍清單的螢幕擷取畫面":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -223,11 +223,11 @@ az storage account encryption-scope list \
 1. 在 [ **加密範圍** ] 下拉式清單中，選取容器的預設加密範圍。
 1. 若要要求容器中的所有 blob 使用預設加密範圍，請選取核取方塊，將 **此加密範圍用於容器中的所有 blob**。 如果選取此核取方塊，則容器中的個別 blob 無法覆寫預設的加密範圍。
 
-    :::image type="content" source="media/encryption-scope-manage/create-container-default-encryption-scope.png" alt-text="顯示如何在 Azure 入口網站中建立加密範圍的螢幕擷取畫面":::
+    :::image type="content" source="media/encryption-scope-manage/create-container-default-encryption-scope.png" alt-text="顯示容器具有預設加密範圍的螢幕擷取畫面":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要使用 PowerShell 建立具有預設加密範圍的容器，請呼叫 [AzRmStorageContainer](/powershell/module/az.storage/new-azrmstoragecontainer) 命令，並指定參數的範圍 `-DefaultEncryptionScope` 。 **AzRmStorageContainer**命令會使用 Azure 儲存體資源提供者來建立容器，以啟用加密範圍和其他資源管理作業的設定。
+若要使用 PowerShell 建立具有預設加密範圍的容器，請呼叫 [AzRmStorageContainer](/powershell/module/az.storage/new-azrmstoragecontainer) 命令，並指定參數的範圍 `-DefaultEncryptionScope` 。 **AzRmStorageContainer** 命令會使用 Azure 儲存體資源提供者來建立容器，以啟用加密範圍和其他資源管理作業的設定。
 
 若要強制容器中的所有 blob 使用容器的預設範圍，請將 `-PreventEncryptionScopeOverride` 參數設定為 `true` 。
 
@@ -247,7 +247,7 @@ New-AzRmStorageContainer -ResourceGroupName $rgName `
 
 若要建立具有 Azure CLI 之預設加密範圍的容器，請呼叫 [az storage container create](/cli/azure/storage/container#az-storage-container-create) 命令，並指定參數的範圍 `--default-encryption-scope` 。 若要強制容器中的所有 blob 使用容器的預設範圍，請將 `--prevent-encryption-scope-override` 參數設定為 `true` 。
 
-下列範例會使用您的 Azure AD 帳戶來授權作業，以便建立容器。 您也可以使用帳戶存取金鑰。 如需詳細資訊，請參閱[使用 Azure CLI 授與 Blob 或佇列資料的存取權](../common/authorize-data-operations-cli.md)。
+下列範例會使用您的 Azure AD 帳戶來授權作業，以便建立容器。 您也可以使用帳戶存取金鑰。 如需詳細資訊，請參閱[使用 Azure CLI 授與 Blob 或佇列資料的存取權](./authorize-data-operations-cli.md)。
 
 ```azurecli-interactive
 az storage container create \
@@ -277,7 +277,7 @@ az storage container create \
 1. 找出 [ **加密範圍** ] 下拉式區段。 根據預設，會使用容器的預設加密範圍來建立 blob （如果已指定）。 如果容器要求 blob 使用預設加密範圍，則會停用此區段。
 1. 若要為您要上傳的 blob 指定不同的範圍，請選取 **[選擇現有的範圍**]，然後從下拉式清單中選取所需的範圍。
 
-    :::image type="content" source="media/encryption-scope-manage/upload-blob-encryption-scope.png" alt-text="顯示如何在 Azure 入口網站中建立加密範圍的螢幕擷取畫面":::
+    :::image type="content" source="media/encryption-scope-manage/upload-blob-encryption-scope.png" alt-text="顯示如何使用加密範圍上傳 blob 的螢幕擷取畫面":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -376,7 +376,7 @@ az storage account encryption-scope update \
 
 # <a name="portal"></a>[入口網站](#tab/portal)
 
-若要在 Azure 入口網站中停用加密範圍，請流覽至儲存體帳戶的 **加密** 範圍設定，並選取所需的加密範圍，然後選取 [ **停**用]。
+若要在 Azure 入口網站中停用加密範圍，請流覽至儲存體帳戶的 **加密** 範圍設定，並選取所需的加密範圍，然後選取 [ **停** 用]。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

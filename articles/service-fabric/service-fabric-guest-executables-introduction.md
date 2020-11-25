@@ -4,11 +4,11 @@ description: 了解如何將現有應用程式封裝為來賓可執行檔，使�
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: 8b808d092001196a4d2150e44d508e031db95554
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86247382"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017741"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>將現有可執行檔部署至 Service Fabric
 您可以在 Azure Service Fabric 中將任何類型的程式碼 (例如 Node.js、Java 或 C++) 當作服務來執行。 Service Fabric 將這些類型的服務稱為客體可執行檔。
@@ -29,7 +29,7 @@ Service Fabric 將來賓可執行檔視為無狀態服務。 因此會根據可�
 * [兩個客體可執行檔 (C# 和 nodejs) 使用 REST 透過命名服務進行通訊的範例](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
 ## <a name="overview-of-application-and-service-manifest-files"></a>應用程式和服務資訊清單檔案的概觀
-在部署來賓執行檔的過程中，最好先了解 Service Fabric 封裝和部署模型，如[應用程式模型](service-fabric-application-model.md)中所述。 Service Fabric 封裝模型依賴兩個 XML 檔案：應用程式和服務資訊清單。 ApplicationManifest.xml 和 ServiceManifest.xml 檔案的結構描述定義是和 Service Fabric SDK 一起安裝在 C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd**。
+在部署來賓執行檔的過程中，最好先了解 Service Fabric 封裝和部署模型，如[應用程式模型](service-fabric-application-model.md)中所述。 Service Fabric 封裝模型依賴兩個 XML 檔案：應用程式和服務資訊清單。 ApplicationManifest.xml 和 ServiceManifest.xml 檔案的結構描述定義是和 Service Fabric SDK 一起安裝在 C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd。
 
 * **應用程式資訊清單**：應用程式資訊清單用來描述應用程式。 其中列出組成該應用程式的服務，以及用來定義應如何部署一或多個服務的其他參數，例如執行個體數目。
 
@@ -53,7 +53,7 @@ Service Fabric 將來賓可執行檔視為無狀態服務。 因此會根據可�
 
 ApplicationPackageRoot 包含可定義應用程式的 ApplicationManifest.xml 檔案。 對於應用程式包含的每個服務，都有一個子目錄用來包含服務所需的所有構件。 這些子目錄是 ServiceManifest.xml，通常如下︰
 
-* 程式*代碼*。 此目錄包含服務程式碼。
+* 程式 *代碼*。 此目錄包含服務程式碼。
 * *Config*。此目錄包含 Settings.xml 檔案 (和其他檔案（如有必要）) 服務可在執行時間存取，以取得特定的設定。
 * *資料*。 這是額外的目錄，用來儲存服務可能需要的其他本機資料。 資料應該只用來儲存短期資料。 如果必須重新定位服務 (例如在容錯移轉期間)，Service Fabric 不會將變更複製/複寫到資料目錄。
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: cbd6f821326c86983ceb3ae5b90969e522c187fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bdeef537556db94338ed50fcfa6e9d88431f25a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82204474"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96016247"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
 
@@ -29,9 +29,9 @@ ms.locfileid: "82204474"
 ```PowerShell
 Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
 ```
-在 Linux 上，CLI 安裝將依作業系統版本而有所不同。  請參閱安裝特定 Linux 版本 [的 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 。
+在 Linux 上，CLI 安裝將依作業系統版本而有所不同。  請參閱安裝特定 Linux 版本 [的 Azure CLI](/cli/azure/install-azure-cli) 。
 
-若要建立增量快照集，請使用 [az snapshot create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) 搭配 `--incremental` 參數。
+若要建立增量快照集，請使用 [az snapshot create](/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) 搭配 `--incremental` 參數。
 
 下列範例會建立累加式快照集、 `<yourDesiredSnapShotNameHere>` `<yourResourceGroupNameHere>` 將、 `<exampleDiskName>` 和取代 `<exampleLocation>` 為您自己的值，然後執行範例：
 
@@ -99,6 +99,6 @@ az snapshot list -g <yourResourceGroupNameHere> -o json \
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您想要查看使用 .NET 來示範增量快照差異功能的範例程式碼，請參閱 [將 Azure 受控磁碟備份複製到具有增量快照差異功能的另一個區域](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)。

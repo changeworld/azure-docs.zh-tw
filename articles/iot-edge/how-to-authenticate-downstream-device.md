@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: f2dd7cac8370c261f24f5587e801bd621fbdb0f0
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151392"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016993"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>在 Azure IoT 中樞中驗證下游裝置
 
@@ -144,7 +144,7 @@ az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway 
 
 2. 遵循＜在 IoT 中樞中設定 X.509 安全性＞的＜ IoT 中樞註冊 X.509 CA 憑證＞[向](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub)一節中指示。 在該節中，您將執行下列步驟：
 
-   1. 上傳根 CA 憑證。 如果您使用的是示範憑證，根 CA 會是** \<path> /certs/azure-iot-test-only.root.ca.cert.pem**。
+   1. 上傳根 CA 憑證。 如果您使用的是示範憑證，根 CA 會是 **\<path> /certs/azure-iot-test-only.root.ca.cert.pem**。
 
    2. 確認擁有該根 CA 憑證。
 

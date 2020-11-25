@@ -7,11 +7,11 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: fb5352b4cc84801296d9e621053672328b02692a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86523361"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017265"
 ---
 # <a name="how-to-view-related-data-assets-in-azure-data-catalog"></a>如何檢視 Azure 資料目錄中的相關資料資產？
 「Azure 資料目錄」可讓您檢視與所選資料資產相關的資料資產，並檢視它們之間的關係。 
@@ -28,7 +28,7 @@ ms.locfileid: "86523361"
 > 若要讓資料目錄匯入兩個資料資產之間的關聯性，您必須同時註冊兩個資產。 如果您已個別新增其中一個，將它再新增一次，然後新增另一個資料資產，接著匯入它們之間的關聯性。
 
 ## <a name="view-related-data-assets"></a>檢視相關的資料資產
-若要檢視與所選資料集相關的資料資產，請使用 [關聯性]**** 索引標籤，如下圖所示： 
+若要檢視與所選資料集相關的資料資產，請使用 [關聯性] 索引標籤，如下圖所示： 
 
 ![Azure 資料目錄 - 檢視相關的資料資產](media/data-catalog-how-to-view-related-data-assets/relationships-tab.png)
 
@@ -46,5 +46,5 @@ ms.locfileid: "86523361"
 
 若要包含已註冊之資產間的關聯性，請重新註冊這些資產。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - [如何管理資料資產](data-catalog-how-to-manage.md)

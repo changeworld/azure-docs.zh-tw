@@ -8,11 +8,11 @@ ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
 ms.openlocfilehash: 6a5d4f388d9e5f47a13812687489525590c520c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87085481"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016092"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>使用 SMB 在 Linux VM 上掛接 Azure 檔案儲存體
 
@@ -27,7 +27,7 @@ ms.locfileid: "87085481"
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-在「美國東部」** 位置建立名為 myResourceGroup** 的資源群組。
+在「美國東部」位置建立名為 myResourceGroup 的資源群組。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -65,7 +65,7 @@ STORAGEKEY=$(az storage account keys list \
 
 共用名稱必須全部使用小寫字母、數字和單一連字號，但開頭不可以是連字號。 如需有關為檔案共用與檔案命名的完整詳細資料，請參閱 [命名和參考共用、目錄、檔案及中繼資料](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)。
 
-此範例會建立名為 myshare** 的共用 (具有 10-GiB 配額)。 
+此範例會建立名為 myshare 的共用 (具有 10-GiB 配額)。 
 
 ```azurecli
 az storage share create --name myshare \
@@ -106,7 +106,7 @@ sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFile
 
 為了提高生產環境的安全性，您應該將您的認證儲存在 fstab 之外。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [在建立期間使用 cloud-init 自訂 Linux VM](using-cloud-init.md)
 - [在 Linux VM 中新增磁碟](add-disk.md)

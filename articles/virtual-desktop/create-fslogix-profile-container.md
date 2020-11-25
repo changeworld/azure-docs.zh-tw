@@ -7,11 +7,11 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 6a9f2c62d8e7f17f6ea8377982c79fef3dfbb97c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88002811"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016823"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>使用 Azure NetApp Files 和 AD DS 建立設定檔容器
 
@@ -31,7 +31,7 @@ ms.locfileid: "88002811"
 >[!NOTE]
 >如果您要尋找有關 Azure 上不同 FSLogix 設定檔容器儲存體選項的比較資料，請參閱 [FSLogix 設定檔容器的儲存體選項](store-fslogix-profile.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在您可以為主機集區建立 FSLogix 設定檔容器之前，您必須：
 
@@ -76,7 +76,7 @@ ms.locfileid: "88002811"
 9. 當新的 [ **NetApp 帳戶** ] 索引標籤開啟時，輸入下列值：
 
     - 針對 [ **名稱**]，輸入您的 NetApp 帳戶名稱。
-    - 針對 [ **訂**用帳戶]，請從下拉式功能表中選取您在步驟4所設定之儲存體帳戶的訂用帳戶。
+    - 針對 [ **訂** 用帳戶]，請從下拉式功能表中選取您在步驟4所設定之儲存體帳戶的訂用帳戶。
     - 針對 [ **資源群組**]，請從下拉式功能表中選取現有的資源群組，或選取 **[新建]** 建立新的資源群組。
     - 針對 [ **位置**]，從下拉式功能表中選取您的 NetApp 帳戶區域。 此區域必須與您的工作階段主機 Vm 位於相同的區域。
 
@@ -91,16 +91,16 @@ ms.locfileid: "88002811"
 
 1. 移至 [Azure NetApp Files] 功能表，然後選取您的新帳戶。
 2. 在您的帳戶功能表中，選取 [儲存體服務] 下的 [ **容量** 集區]。
-3. 選取 [ **新增集**區]。
+3. 選取 [ **新增集** 區]。
 4. 當 [ **新增容量集** 區] 索引標籤開啟時，輸入下列值：
 
     - 針對 [ **名稱**]，輸入新容量集區的名稱。
     - 在 [ **服務等級**] 中，從下拉式功能表中選取您想要的值。 建議您在大部分的環境中採用 **Premium** 。
        >[!NOTE]
        >Premium 設定提供 Premium 服務等級可用的最小輸送量，也就是 256 MBps。 您可能需要調整生產環境的此輸送量。 最終輸送量是以 [輸送量限制](../azure-netapp-files/azure-netapp-files-service-levels.md)中所描述的關聯性為基礎。
-    - 針對 [ **大小] (TiB) **]，輸入最適合您需求的容量集區大小。 大小下限為 4 TiB。
+    - 針對 [ **大小] (TiB)**]，輸入最適合您需求的容量集區大小。 大小下限為 4 TiB。
 
-5. 完成後，按一下 [確定]****。
+5. 完成後，按一下 [確定]。
 
 ## <a name="join-an-active-directory-connection"></a>加入 Active Directory 連接
 
@@ -123,15 +123,15 @@ ms.locfileid: "88002811"
 
 接下來，您必須建立新的磁片區。
 
-1. 選取 [ **磁片**區]，然後選取 [ **新增磁片**區]。
+1. 選取 [ **磁片** 區]，然後選取 [ **新增磁片** 區]。
 
 2. 當 [ **建立磁片** 區] 索引標籤開啟時，輸入下列值：
 
     - 針對 [ **磁片區名稱**]，輸入新磁片區的名稱。
-    - 針對 [ **容量集**區]，從下拉式功能表中選取您剛才建立的容量集區。
-    - 針對 [ **配額 (GiB) **]，輸入適合您環境的磁片區大小。
+    - 針對 [ **容量集** 區]，從下拉式功能表中選取您剛才建立的容量集區。
+    - 針對 [ **配額 (GiB)**]，輸入適合您環境的磁片區大小。
     - 針對 [ **虛擬網路**]，請從下拉式功能表中選取可連線到網域控制站的現有虛擬網路。
-    - 在 [ **子網**] 底下，選取 [ **建立新**的]。 請記住，此子網將會委派給 Azure NetApp Files。
+    - 在 [ **子網**] 底下，選取 [ **建立新** 的]。 請記住，此子網將會委派給 Azure NetApp Files。
 
 3.  選取 **[下一 \> \> 步：通訊協定**] 以開啟 [通訊協定] 索引標籤，並設定磁片區存取參數
 
@@ -160,7 +160,7 @@ ms.locfileid: "88002811"
 
 2. 將下載的檔案解壓縮。
 
-3. 在檔案中，移至**x64**  >  **版本**並執行**FSLogixAppsSetup.exe**。 [安裝] 功能表隨即開啟。
+3. 在檔案中，移至 **x64**  >  **版本** 並執行 **FSLogixAppsSetup.exe**。 [安裝] 功能表隨即開啟。
 
 4.  如果您有產品金鑰，請在 [產品金鑰] 文字方塊中輸入。
 
@@ -174,11 +174,11 @@ ms.locfileid: "88002811"
 
 9. 流覽至 [ **電腦 \\ HKEY_LOCAL_MACHINE \\ 軟體 \\ FSLogix**]。
 
-10. 建立名為 **設定檔**的索引鍵。
+10. 建立名為 **設定檔** 的索引鍵。
 
-11.  使用設定為數據值**1**的**REG_DWORD**類型，建立名為**Enabled**的值。
+11.  使用設定為數據值 **1** 的 **REG_DWORD** 類型，建立名為 **Enabled** 的值。
 
-12. 使用**多字串**類型來建立名為**VHDLocations**的值，並將其資料值設為 Azure NETAPP Files 共用的 URI。
+12. 使用 **多字串** 類型來建立名為 **VHDLocations** 的值，並將其資料值設為 Azure NETAPP Files 共用的 URI。
 
 13. 建立名為 **DeleteLocalProfileWhenVHDShouldApply** 的值，其 DWORD 值為1，以避免在您登入之前發生現有本機設定檔的問題。
 
@@ -218,14 +218,14 @@ ms.locfileid: "88002811"
 
 3. 一旦您已建立使用者會話，請使用系統管理帳戶登入 Azure 入口網站。
 
-4. 開啟 [ **Azure Netapp files**]，選取您的 Azure netapp files 帳戶，然後選取 [ **磁片**區]。 磁片區功能表開啟後，請選取對應的磁片區。
+4. 開啟 [ **Azure Netapp files**]，選取您的 Azure netapp files 帳戶，然後選取 [ **磁片** 區]。 磁片區功能表開啟後，請選取對應的磁片區。
 
    > [!div class="mx-imgBorder"]
    > ![您稍早在 Azure 入口網站中設定之 NetApp 帳戶的螢幕擷取畫面，其中已選取 [磁片區] 按鈕。](media/netapp-account.png)
 
 5. 移至 [ **總覽** ] 索引標籤，並確認 FSLogix 設定檔容器使用空間。
 
-6. 使用遠端桌面直接連接到主機集區中的任何 VM 元件，然後開啟 **檔案總管。** 然後流覽至**掛接路徑** (在下列範例中，裝載路徑為 \\ \\ anf-SMB-3863.gt1107.onmicrosoft.com \\ anf-VOL) 。
+6. 使用遠端桌面直接連接到主機集區中的任何 VM 元件，然後開啟 **檔案總管。** 然後流覽至 **掛接路徑** (在下列範例中，裝載路徑為 \\ \\ anf-SMB-3863.gt1107.onmicrosoft.com \\ anf-VOL) 。
 
    在此資料夾中，應該有設定檔 VHD (或 VHDX) 如下列範例所示。
 

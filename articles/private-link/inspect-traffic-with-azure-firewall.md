@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 734d52dadbb849925303febb0d3d1195bbddb0df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cbfd90ca65a1fb75c9cbe5602ac2a69741e378f
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89236633"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96017231"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>使用 Azure 防火牆來檢查以私人端點為目的地的流量
 
@@ -38,7 +38,7 @@ Azure 防火牆會使用下列其中一種方式來篩選流量：
 透過私人端點公開的大部分服務都會使用 HTTPS。 使用 Azure SQL 時，建議使用透過網路規則的應用程式規則。
 
 > [!NOTE]
-> 只有 [Proxy 模式](../azure-sql/database/connectivity-architecture.md#connection-policy)才支援 SQL FQDN 篩選 (連接埠 1433)。 相較于重新*導向*， **Proxy**模式可能會產生更多延遲。 如果您想要繼續使用重新導向模式（這是在 Azure 中連線用戶端的預設值），您可以在防火牆網路規則中使用 FQDN 篩選存取權。
+> 只有 [Proxy 模式](../azure-sql/database/connectivity-architecture.md#connection-policy)才支援 SQL FQDN 篩選 (連接埠 1433)。 相較于重新 *導向*， **Proxy** 模式可能會產生更多延遲。 如果您想要繼續使用重新導向模式（這是在 Azure 中連線用戶端的預設值），您可以在防火牆網路規則中使用 FQDN 篩選存取權。
 
 ## <a name="scenario-1-hub-and-spoke-architecture---dedicated-virtual-network-for-private-endpoints"></a>案例1：中樞和輪輻架構-私人端點專用的虛擬網路
 
@@ -55,7 +55,7 @@ Azure 防火牆會使用下列其中一種方式來篩選流量：
 
 ## <a name="scenario-2-hub-and-spoke-architecture---shared-virtual-network-for-private-endpoints-and-virtual-machines"></a>案例2：中樞和輪輻架構-私人端點和虛擬機器的共用虛擬網路
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/shared-spoke.png" alt-text="私人端點專用的虛擬網路" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/shared-spoke.png" alt-text="在相同虛擬網路中的私人端點和虛擬機器" border="true":::
 
 此案例會在下列情況下實行：
 
@@ -78,7 +78,7 @@ Azure 防火牆會使用下列其中一種方式來篩選流量：
 
 ## <a name="scenario-3-single-virtual-network"></a>案例3：單一虛擬網路
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="私人端點專用的虛擬網路" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="單一虛擬網路" border="true":::
 
 有一些可執行檔限制：無法遷移至中樞和輪輻架構。 與案例2相同的考慮也適用。 在此案例中，虛擬網路對等互連費用並不適用。
 
@@ -87,7 +87,7 @@ Azure 防火牆會使用下列其中一種方式來篩選流量：
 
 ## <a name="scenario-4-on-premises-traffic-to-private-endpoints"></a>案例4：內部部署到私人端點的流量
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/on-premises.png" alt-text="私人端點專用的虛擬網路" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/on-premises.png" alt-text="私人端點的內部部署流量" border="true":::
 
 如果您已使用下列任一項設定與內部部署網路的連線，則可執行此架構： 
 
@@ -101,12 +101,12 @@ Azure 防火牆會使用下列其中一種方式來篩選流量：
 >[!NOTE]
 > 如果您想要使用協力廠商 NVA 或 Azure 防火牆來執行此案例，則需要網路規則，而不是應用程式規則，以將目標設為私人端點的 SNAT 流量。 否則，虛擬機器和私人端點之間的通訊將會失敗。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。
 * Log Analytics 工作區。  
 
-請參閱， [在 Azure 入口網站中建立 Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) ，以建立工作區（如果您的訂用帳戶中沒有該工作區的話）。
+請參閱， [在 Azure 入口網站中建立 Log Analytics 工作區](../azure-monitor/learn/quick-create-workspace.md) ，以建立工作區（如果您的訂用帳戶中沒有該工作區的話）。
 
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
@@ -174,7 +174,7 @@ Azure 防火牆會使用下列其中一種方式來篩選流量：
     | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此資源群組。  |
     | **執行個體詳細資料** |  |
     | 虛擬機器名稱 | 輸入 **myVM**。 |
-    | 區域 | 選取 ** (us) 美國中南部**。 |
+    | 區域 | 選取 **(us) 美國中南部**。 |
     | 可用性選項 | 保留預設值 [不需要基礎結構備援]。 |
     | 映像 | 選取 [ **Ubuntu Server 18.04 LTS-Gen1**]。 |
     | 大小 | 選取 **Standard_B2s**。 |
@@ -196,7 +196,7 @@ Azure 防火牆會使用下列其中一種方式來篩選流量：
     | 設定 | 值 |
     | ------- | ----- |
     | 虛擬網路 | 選取 [ **myVMVNet**]。  |
-    | 子網路 | 選取 **VMSubnet (10.1.0.0/24) **。|
+    | 子網路 | 選取 **VMSubnet (10.1.0.0/24)**。|
     | 公用 IP | 保留預設值 [(new) myVm-ip]。 |
     | 公用輸入連接埠 | 選取 [允許選取的連接埠]。 |
     | 選取輸入連接埠 | 選取 [ **SSH**]。|
@@ -225,7 +225,7 @@ Azure 防火牆會使用下列其中一種方式來篩選流量：
     | 名稱 | 輸入 **myAzureFirewall**。 |
     | 區域 | 選取 [ **美國中南部**]。 |
     | 可用性區域 | 保留預設值 [無]。 |
-    | 選擇虛擬網路    |    選取 [ **使用現有**的]。    |
+    | 選擇虛擬網路    |    選取 [ **使用現有** 的]。    |
     | 虛擬網路    |    選取 [ **myAzFwVNet**]。    |
     | 公用 IP 位址    |    選取 [ **加入新** 的]，然後在 [名稱] 中輸入 **myFirewall-ip**。    |
     | 強制通道    | 將預設值保留為 **停用**。    |
@@ -246,18 +246,18 @@ Azure 防火牆會使用下列其中一種方式來篩選流量：
 
 4. 選取 [診斷設定] 中的 [ **+ 新增診斷設定** ]。
 
-5. 在 [ **診斷] 設定**中，輸入或選取這項資訊：
+5. 在 [ **診斷] 設定** 中，輸入或選取這項資訊：
 
     | 設定 | 值 |
     | ------- | ----- |
     | 診斷設定名稱 | 輸入 **myDiagSetting**。 |
     | 類別目錄詳細資料 | |
     | log | 選取 [ **>azurefirewallapplicationrule** ] 和 [ **AzureFirewallNetworkRule**]。 |
-    | 目的地詳細資料 | 選取 [傳送至 Log Analytics]****。 |
+    | 目的地詳細資料 | 選取 [傳送至 Log Analytics]。 |
     | 訂用帳戶 | 選取您的訂用帳戶。 |
     | Log Analytics 工作區 | 選取 Log Analytics 工作區。 |
 
-6. 選取 [儲存]****。
+6. 選取 [儲存]。
 
 ## <a name="create-azure-sql-database"></a>建立 Azure SQL 資料庫
 
@@ -279,7 +279,7 @@ Azure 防火牆會使用下列其中一種方式來篩選流量：
     | 伺服器管理員登入 | 輸入您選擇的名稱。 |
     | 密碼    |    輸入您選擇的密碼。    |
     | 確認密碼 | 再次輸入密碼    |
-    | Location    | 選取 ** (us) 美國中南部**。    |
+    | Location    | 選取 **(us) 美國中南部**。    |
     | 想要使用 SQL 彈性集區    | 保留預設值 [否]。 |
     | 計算 + 儲存體 | 保留預設的 **一般用途第5代，2虛擬核心，32 GB 的儲存體**。 |
     |||
@@ -296,7 +296,7 @@ Azure 防火牆會使用下列其中一種方式來篩選流量：
 
 2. 在服務清單中選取 [Azure SQL server] **mydbserver** 。  如果您使用不同的伺服器名稱，請選擇該名稱。
 
-3. 在 [伺服器設定] 中，選取 [**安全性**] 下的 [**私人端點**連線]。
+3. 在 [伺服器設定] 中，選取 [**安全性**] 下的 [**私人端點** 連線]。
 
 4. 選取 [+私人端點]。
 
@@ -309,7 +309,7 @@ Azure 防火牆會使用下列其中一種方式來篩選流量：
     | 資源群組 | 選取 **myResourceGroup**。 |
     | **執行個體詳細資料** | |
     | 名稱 | 輸入 **SQLPrivateEndpoint**。 |
-    | 區域 | 選取 ** (us) 美國中南部。** |
+    | 區域 | 選取 **(us) 美國中南部。** |
 
 6. 選取 [ **資源** ] 索引標籤，或選取頁面底部的 **[下一步：資源** ]。
 
@@ -339,21 +339,21 @@ Azure 防火牆會使用下列其中一種方式來篩選流量：
 
 10. 選取頁面底部的 [ **審核 + 建立** ] 索引標籤或選取 [ **審核 + 建立** ]。
 
-11. 選取 [建立]****。
+11. 選取 [建立]。
 
 12. 建立端點之後，請選取 [**安全性**] 下的 [**防火牆和虛擬網路**]。
 
 13. 在 [ **防火牆與虛擬網路**] 中，選取 [ **是** ]，以 **允許 Azure 服務和資源存取此伺服器**。
 
-14. 選取 [儲存]****。
+14. 選取 [儲存]。
 
 ## <a name="connect-the-virtual-networks-using-virtual-network-peering"></a>使用虛擬網路對等互連來連接虛擬網路
 
-在本節中，我們會使用對等互連將虛擬網路 **myVMVNet** 和 **MyPEVNet** 連線至 **myAzFwVNet** 。 **MyVMVNet**和**myPEVNet**之間不會有直接連線。
+在本節中，我們會使用對等互連將虛擬網路 **myVMVNet** 和 **MyPEVNet** 連線至 **myAzFwVNet** 。 **MyVMVNet** 和 **myPEVNet** 之間不會有直接連線。
 
 1. 在入口網站的搜尋列中，輸入 **myAzFwVNet**。
 
-2. 在 [**設定**] 功能表下選取**對等互連**，然後選取 [ **+ 新增**]。
+2. 在 [**設定**] 功能表下選取 **對等互連**，然後選取 [ **+ 新增**]。
 
 3. 在 [ **新增對等互連** ] 中，輸入或選取下列資訊：
 
@@ -368,18 +368,18 @@ Azure 防火牆會使用下列其中一種方式來篩選流量：
     | 從遠端虛擬網路到 myAzFwVNet 的對等互連名稱    |    輸入 **myVMVNet 至 myAzFwVNet**。    |
     | **設定** | |
     | **設定虛擬網路存取設定** | |
-    | 允許從 myAzFwVNet 到遠端虛擬網路的虛擬網路存取 | 保留預設值 [啟用]****。    |
-    | 允許從遠端虛擬網路到 myAzFwVNet 的虛擬網路存取    | 保留預設值 [啟用]****。    |
+    | 允許從 myAzFwVNet 到遠端虛擬網路的虛擬網路存取 | 保留預設值 [啟用]。    |
+    | 允許從遠端虛擬網路到 myAzFwVNet 的虛擬網路存取    | 保留預設值 [啟用]。    |
     | **設定轉送的流量設定** | |
-    | 允許從遠端虛擬網路轉送到 myAzFwVNet 的流量    | 選取 [啟用] 。 |
-    | 允許從 myAzFwVNet 轉送到遠端虛擬網路的流量 | 選取 [啟用] 。 |
+    | 允許從遠端虛擬網路轉送到 myAzFwVNet 的流量    | 選取 [啟用]。 |
+    | 允許從 myAzFwVNet 轉送到遠端虛擬網路的流量 | 選取 [啟用]。 |
     | **設定閘道傳輸設定** | |
     | 允許閘道傳輸 | 保持未核取狀態 |
     |||
 
-4. 選取 [確定]  。
+4. 選取 [確定]。
 
-5. 選取 [+ 新增] 。
+5. 選取 [+ 新增]  。
 
 6. 在 [ **新增對等互連** ] 中，輸入或選取下列資訊：
 
@@ -394,15 +394,15 @@ Azure 防火牆會使用下列其中一種方式來篩選流量：
     | 從遠端虛擬網路到 myAzFwVNet 的對等互連名稱    |    輸入 **myPEVNet 至 myAzFwVNet**。    |
     | **設定** | |
     | **設定虛擬網路存取設定** | |
-    | 允許從 myAzFwVNet 到遠端虛擬網路的虛擬網路存取 | 保留預設值 [啟用]****。    |
-    | 允許從遠端虛擬網路到 myAzFwVNet 的虛擬網路存取    | 保留預設值 [啟用]****。    |
+    | 允許從 myAzFwVNet 到遠端虛擬網路的虛擬網路存取 | 保留預設值 [啟用]。    |
+    | 允許從遠端虛擬網路到 myAzFwVNet 的虛擬網路存取    | 保留預設值 [啟用]。    |
     | **設定轉送的流量設定** | |
-    | 允許從遠端虛擬網路轉送到 myAzFwVNet 的流量    | 選取 [啟用] 。 |
-    | 允許從 myAzFwVNet 轉送到遠端虛擬網路的流量 | 選取 [啟用] 。 |
+    | 允許從遠端虛擬網路轉送到 myAzFwVNet 的流量    | 選取 [啟用]。 |
+    | 允許從 myAzFwVNet 轉送到遠端虛擬網路的流量 | 選取 [啟用]。 |
     | **設定閘道傳輸設定** | |
     | 允許閘道傳輸 | 保持未核取狀態 |
 
-7. 選取 [確定]  。
+7. 選取 [確定]。
 
 ## <a name="link-the-virtual-networks-to-the-private-dns-zone"></a>將虛擬網路連結至私人 DNS 區域
 
@@ -413,7 +413,7 @@ VM 和防火牆需要有連結，才能將資料庫的 FQDN 解析為其私人�
 >[!NOTE]
 >如果您未將 VM 和防火牆虛擬網路連結至私人 DNS 區域，則 VM 和防火牆仍能解析 SQL Server FQDN。 它們會解析為其公用 IP 位址。
 
-1. 在入口網站的搜尋列中，輸入**privatelink。**
+1. 在入口網站的搜尋列中，輸入 **privatelink。**
 
 2. 在搜尋結果中選取 [ **privatelink.database.windows.net** ]。
 
@@ -434,11 +434,11 @@ VM 和防火牆需要有連結，才能將資料庫的 FQDN 解析為其私人�
     | 啟用自動註冊 | 請勿核取。    |
 
 
-6. 選取 [確定]  。
+6. 選取 [確定]。
 
 ## <a name="configure-an-application-rule-with-sql-fqdn-in-azure-firewall"></a>使用 Azure 防火牆中的 SQL FQDN 來設定應用程式規則
 
-在本節中，設定應用程式規則以允許 SQL Server **mydbserver.database.windows.net**的**myVM**和私人端點之間的通訊。 
+在本節中，設定應用程式規則以允許 SQL Server **mydbserver.database.windows.net** 的 **myVM** 和私人端點之間的通訊。 
 
 此規則可讓您透過在先前步驟中建立的防火牆進行通訊。
 
@@ -446,7 +446,7 @@ VM 和防火牆需要有連結，才能將資料庫的 FQDN 解析為其私人�
 
 2. 在搜尋結果中選取 [ **myAzureFirewall** ]。
 
-3. 在 [ **myAzureFirewall**總覽] 的 [**設定**] 下選取 [**規則**]。
+3. 在 [ **myAzureFirewall** 總覽] 的 [**設定**] 下選取 [**規則**]。
 
 4. 選取 [應用程式規則集合] 索引標籤。
 
@@ -473,19 +473,19 @@ VM 和防火牆需要有連結，才能將資料庫的 FQDN 解析為其私人�
     | 目標 Fqdn | 輸入 **mydbserver.database.windows.net**。 |
     |||
 
-7. 選取 [新增]。
+7. 選取 [新增]  。
 
 ## <a name="route-traffic-between-the-virtual-machine-and-private-endpoint-through-azure-firewall"></a>透過 Azure 防火牆在虛擬機器和私人端點之間路由傳送流量
 
-我們未直接在虛擬網路 **myVMVNet** 與 **myPEVNet**之間建立虛擬網路對等互連。 虛擬機器 **myVM** 沒有所建立私人端點的路由。 
+我們未直接在虛擬網路 **myVMVNet** 與 **myPEVNet** 之間建立虛擬網路對等互連。 虛擬機器 **myVM** 沒有所建立私人端點的路由。 
 
 在本節中，我們將建立具有自訂路由的路由表。 
 
-此路由會透過 Azure 防火牆，將流量從 **myVM** 子網傳送到虛擬網路 **myPEVNet**的位址空間。
+此路由會透過 Azure 防火牆，將流量從 **myVM** 子網傳送到虛擬網路 **myPEVNet** 的位址空間。
 
-1. 從 Azure 入口網站功能表或 **[首頁]** 頁面，選取 [建立資源]。
+1. 在 Azure 入口網站功能表上，或從 [首頁] 頁面，選取 [建立資源]。
 
-2. 在搜尋方塊中輸入 **路由表** ，然後按 **enter**鍵。
+2. 在搜尋方塊中輸入 **路由表** ，然後按 **enter** 鍵。
 
 3. 選取 [ **路由表** ]，然後選取 [ **建立**]。
 
@@ -509,7 +509,7 @@ VM 和防火牆需要有連結，才能將資料庫的 FQDN 解析為其私人�
 
 8. 在 [**設定**] 底下選取 [**路由**]。
 
-9. 選取 [+ 新增] 。
+9. 選取 [+ 新增]  。
 
 10. 在 [ **新增路由** ] 頁面上，輸入或選取下列資訊：
 
@@ -520,7 +520,7 @@ VM 和防火牆需要有連結，才能將資料庫的 FQDN 解析為其私人�
     | 下一個躍點類型 | 選取 [ **虛擬裝置**]。 |
     | 下一個躍點位址 | 輸入 **10.0.0.4**。 |
 
-11. 選取 [確定]  。
+11. 選取 [確定]。
 
 12. 在 [**設定**] 底下選取 [**子網**]。
 
@@ -533,7 +533,7 @@ VM 和防火牆需要有連結，才能將資料庫的 FQDN 解析為其私人�
     | 虛擬網路 | 選取 [ **myVMVNet**]。 |
     | 子網路 | 選取 [ **VMSubnet**]。  |
 
-15. 選取 [確定]  。
+15. 選取 [確定]。
 
 ## <a name="connect-to-the-virtual-machine-from-your-client-computer"></a>從用戶端電腦連接到虛擬機器
 
@@ -555,7 +555,7 @@ VM 和防火牆需要有連結，才能將資料庫的 FQDN 解析為其私人�
     ssh username@IPaddress
     ```
 
-5. 輸入您在建立**myVm**時所定義的密碼
+5. 輸入您在建立 **myVm** 時所定義的密碼
 
 ## <a name="access-sql-server-privately-from-the-virtual-machine"></a>從虛擬機器私下存取 SQL Server
 
@@ -575,7 +575,7 @@ VM 和防火牆需要有連結，才能將資料庫的 FQDN 解析為其私人�
     Address: 10.2.0.4
     ```
 
-2. 安裝 [SQL Server 命令列工具](https://docs.microsoft.com/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-ver15#tools)。
+2. 安裝 [SQL Server 命令列工具](/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-ver15#tools)。
 
 3. 執行下列命令以連接到 SQL Server。 使用您在先前步驟中建立 SQL Server 時定義的伺服器管理員和密碼。
 
@@ -588,7 +588,7 @@ VM 和防火牆需要有連結，才能將資料庫的 FQDN 解析為其私人�
     ```
 4. 成功登入時，會顯示 SQL 命令提示字元。 輸入 **exit** 以結束 **sqlcmd** 工具。
 
-5. 輸入**exit**以關閉**myVM**的連線。
+5. 輸入 **exit** 以關閉 **myVM** 的連線。
 
 ## <a name="validate-the-traffic-in-azure-firewall-logs"></a>驗證 Azure 防火牆記錄中的流量
 

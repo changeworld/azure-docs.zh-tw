@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2020
 ms.author: kumud
 ms.openlocfilehash: c8fdba59a8d31c064745c7a1904204359b386a7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84707849"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015911"
 ---
 # <a name="configure-a-private-ip-address-for-a-vm-using-the-azure-portal"></a>使用 Azure 入口網站設定 VM 的私人 IP 位址
 
@@ -41,7 +41,7 @@ ms.locfileid: "84707849"
 ## <a name="create-a-vm-for-testing-static-private-ip-addresses"></a>建立 VM 以測試靜態私人 IP 位址
 當您在 Resource Manager 部署模式中建立 VM 時，您無法使用 Azure 入口網站來設定靜態私人 IP 位址。 相反地，您會先建立 VM。 然後，您可以將其私人 IP 設定為靜態。
 
-若要在名為*TestVNet*的虛擬網路的*前端*子網中建立名為*DNS01*的 VM，請遵循下列步驟：
+若要在名為 *TestVNet* 的虛擬網路的 *前端* 子網中建立名為 *DNS01* 的 VM，請遵循下列步驟：
 
 1. 從 [Azure 入口網站](https://portal.azure.com)功能表選取 [建立資源]。
 
@@ -57,14 +57,14 @@ ms.locfileid: "84707849"
     | **資源群組** | **>testrg** (從下拉式清單中選取)  |
     | **虛擬機器名稱** | *DNS01* |
     | **區域** | **(美國) 美國東部** |
-    | **映像** | **Windows Server 2019 Datacenter** |
-    | **大小** | **B1ls**的**VM 大小**，**提供****標準** |
+    | **影像** | **Windows Server 2019 Datacenter** |
+    | **大小** | **B1ls** 的 **VM 大小**，**提供****標準** |
     | **使用者名稱** | 您系統管理員帳戶的使用者名稱 |
     | **密碼** | 您系統管理員帳戶之使用者名稱的密碼 |
     | **確認密碼** | 再次輸入密碼 |
 
     ![[基本] 索引標籤，建立虛擬機器，Azure 入口網站](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-basics.png)
-4. 在 [ **網路**功能] 中，指定下表所述之專案的值，然後選取 **[下一步]**。
+4. 在 [ **網路** 功能] 中，指定下表所述之專案的值，然後選取 **[下一步]**。
 
     | Item | 值 |
     | --- | --- |
@@ -72,7 +72,7 @@ ms.locfileid: "84707849"
     | **子網路** | **FrontEnd** |
 
     ![[網路] 索引標籤，建立虛擬機器，Azure 入口網站](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-networking.png)
-5. 在 [ **管理**] 的 [ **診斷儲存體帳戶**] 下，選擇 [ **vnetstorage**]。 如果該儲存體帳戶未出現在清單中，請選取 [**建立新**的]、指定*vnetstorage*的**名稱**，然後選取 **[確定]**。 最後，選取 [**審核 &nbsp; + &nbsp; 建立**]。
+5. 在 [ **管理**] 的 [ **診斷儲存體帳戶**] 下，選擇 [ **vnetstorage**]。 如果該儲存體帳戶未出現在清單中，請選取 [**建立新** 的]、指定 *vnetstorage* 的 **名稱**，然後選取 **[確定]**。 最後，選取 [**審核 &nbsp; + &nbsp; 建立**]。
 
     ![[管理] 索引標籤，建立虛擬機器，Azure 入口網站](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-management.png)
 6. 在 [審核] 和 [ **建立**] 中，檢查總覽資訊，然後選取 [ **建立**]。
@@ -98,7 +98,7 @@ ms.locfileid: "84707849"
 
     ![網路介面、網路、虛擬機器、Azure 入口網站](./media/virtual-networks-static-ip-arm-pportal/networking-network-interface.png)
 
-4. 選擇 [ **ip**設定]，然後選取表格中所列的 ip 設定。
+4. 選擇 [ **ip** 設定]，然後選取表格中所列的 ip 設定。
 
     ![IP 設定、網路介面、網路、虛擬機器、Azure 入口網站](./media/virtual-networks-static-ip-arm-pportal/network-interface-ip-configurations.png)
 
@@ -128,6 +128,6 @@ ms.locfileid: "84707849"
 
 此外，您絕對不要在虛擬機器的作業系統內手動指派指派給 Azure 虛擬機器的 *公用* IP 位址。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 了解如何管理 [IP 位址設定](virtual-network-network-interface-addresses.md)。

@@ -7,11 +7,11 @@ ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 4a847b273472ecc9d2aaa3993ec9d88aa46f2e7f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973864"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017163"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>建立及管理 StorSimple 8000 系列的支援封裝
 
@@ -43,7 +43,7 @@ StorSimple 支援封裝是一種簡便的機制，可收集所有相關的記錄
    2. 在開啟的對話方塊中，輸入您的裝置系統管理員密碼。 預設密碼為 _Password1_。
      
       ![[PowerShell 認證] 對話方塊](./media/storsimple-8000-create-manage-support-package/IC740962.png)
-   3. 選取 [確定]  。
+   3. 選取 [確定]。
    4. 在命令提示字元中，輸入：
      
       `Enter-PSSession $MS`
@@ -68,10 +68,10 @@ StorSimple 支援封裝是一種簡便的機制，可收集所有相關的記錄
 | --- | --- | --- |
 | `-Path` |必要 |用來提供存放支援封裝的網路共用資料夾位置。 |
 | `-EncryptionPassphrase` |必要 |用來提供複雜密碼，以協助加密支援封裝。 |
-| `-Credential` |選用 |用來提供網路共用資料夾的存取認證。 |
-| `-Force` |選用 |用來略過加密複雜密碼確認步驟。 |
-| `-PackageTag` |選用 |用來指定 *Path* 下存放支援封裝的目錄。 預設值是 [裝置名稱]-[目前日期和時間：yyyy-MM-dd-HH-mm-ss]。 |
-| `-Scope` |選用 |指定為 [Cluster]**** (預設值) 可為兩個控制器建立支援封裝。 如果您只想為目前的控制器建立封裝，請指定 [Controller]****。 |
+| `-Credential` |選擇性 |用來提供網路共用資料夾的存取認證。 |
+| `-Force` |選擇性 |用來略過加密複雜密碼確認步驟。 |
+| `-PackageTag` |選擇性 |用來指定 *Path* 下存放支援封裝的目錄。 預設值是 [裝置名稱]-[目前日期和時間：yyyy-MM-dd-HH-mm-ss]。 |
+| `-Scope` |選擇性 |指定為 [Cluster] (預設值) 可為兩個控制器建立支援封裝。 如果您只想為目前的控制器建立封裝，請指定 [Controller]。 |
 
 ## <a name="edit-a-support-package"></a>編輯支援封裝
 

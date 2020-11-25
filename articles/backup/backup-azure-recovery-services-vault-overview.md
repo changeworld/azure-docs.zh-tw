@@ -4,11 +4,11 @@ description: 復原服務保存庫的總覽。
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.openlocfilehash: ab6b27bdc7ac9b01385ed43830d0af5900210d43
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093662"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017316"
 ---
 # <a name="recovery-services-vaults-overview"></a>復原服務保存庫概觀
 
@@ -16,11 +16,11 @@ ms.locfileid: "92093662"
 
 - **可協助保護備份資料安全的增強功能**︰透過復原服務保存庫，Azure 備份能提供安全性功能來保護雲端備份。 這些安全性功能可確保您能保護您的備份，並安全地將資料復原，即使生產和備份伺服器遭到入侵也一樣。 [深入了解](backup-azure-security-feature.md)
 
-- **將您的混合式 IT 環境集中監視**︰透過復原服務保存庫，您不只可以監視 [Azure IaaS VM](backup-azure-manage-vms.md)，還可以從中央入口網站監視[內部部署資產](backup-azure-manage-windows-server.md#manage-backup-items)。 [深入了解](backup-azure-monitoring-built-in-monitor.md)
+- **將您的混合式 IT 環境集中監視**︰透過復原服務保存庫，您不只可以監視 [Azure IaaS VM](backup-azure-manage-vms.md)，還可以從中央入口網站監視 [內部部署資產](backup-azure-manage-windows-server.md#manage-backup-items)。 [深入了解](backup-azure-monitoring-built-in-monitor.md)
 
-- Azure**角色型存取控制 (AZURE rbac) **： azure rbac 可在 azure 中提供更細緻的存取管理控制。 [Azure 提供各種內建角色](../role-based-access-control/built-in-roles.md)，且 Azure Backup 有三個[內建的角色可用來管理復原點](backup-rbac-rs-vault.md)。 復原服務保存庫與 Azure RBAC 相容，這會限制對所定義使用者角色集的備份和還原存取權。 [深入了解](backup-rbac-rs-vault.md)
+- Azure **角色型存取控制 (AZURE rbac)**： azure rbac 可在 azure 中提供更細緻的存取管理控制。 [Azure 提供各種內建角色](../role-based-access-control/built-in-roles.md)，且 Azure Backup 有三個[內建的角色可用來管理復原點](backup-rbac-rs-vault.md)。 復原服務保存庫與 Azure RBAC 相容，這會限制對所定義使用者角色集的備份和還原存取權。 [深入了解](backup-rbac-rs-vault.md)
 
-- 虛**刪除**：透過虛刪除，即使惡意執行者刪除備份 (或不小心刪除備份資料) ，備份資料仍會保留14天，以允許復原該備份專案，而不會遺失資料。 在「虛刪除」狀態中，備份資料保留的額外14天不會產生任何費用。 [深入了解](backup-azure-security-feature-cloud.md)。
+- 虛 **刪除**：透過虛刪除，即使惡意執行者刪除備份 (或不小心刪除備份資料) ，備份資料仍會保留14天，以允許復原該備份專案，而不會遺失資料。 在「虛刪除」狀態中，備份資料保留的額外14天不會產生任何費用。 [深入了解](backup-azure-security-feature-cloud.md)。
 
 - **跨區域還原**：跨區域還原 (CRR) 可讓您在次要區域（即 azure 配對的區域）中還原 azure vm。 如果 Azure 在主要區域中宣告了嚴重損壞，次要區域中複寫的資料就可以在次要區域中還原，以降低其環境的主要區域發生的即時停機。 [深入了解](backup-azure-arm-restore-vms.md#cross-region-restore)。
 

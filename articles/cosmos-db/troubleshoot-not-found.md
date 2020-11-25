@@ -8,12 +8,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 782abee06c5ab0f985e8bd90dbbecae18b1dfe02
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 2df401f7871d631ba317fb670783cad086b9a351
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442322"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "96017554"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>針對找不到 Azure Cosmos DB 找不到例外狀況進行診斷和疑難排解
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -25,6 +25,11 @@ HTTP 狀態碼 404 表示資源已不存在。
 
 ## <a name="a-not-found-exception-was-returned-for-an-item-that-should-exist-or-does-exist"></a>針對應該存在或存在的專案，傳回了找不到的例外狀況
 以下是如果專案應該存在或存在，可能會傳回狀態碼404的原因。
+
+### <a name="the-read-session-is-not-available-for-the-input-session-token"></a>讀取工作階段不適用於輸入工作階段權杖
+
+#### <a name="solution"></a>解決方案：
+1. 將您目前的 SDK 更新為可用的最新版本。 最新的 SDK 版本已修正此特定錯誤的最常見原因。
 
 ### <a name="race-condition"></a>競爭條件
 有多個 SDK 用戶端實例，並在寫入之前發生讀取。

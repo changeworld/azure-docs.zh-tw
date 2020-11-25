@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 03117b9f0c3cbaea22f36703f689264549b851e8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 485b23d9b7ebac4f7d183239d035fbd53b09f4ee
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959130"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017660"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中)  (Acl 的存取控制清單
 
@@ -23,7 +23,7 @@ Azure Data Lake Storage Gen2 會實作為存取控制模型，以支援 Azure �
 
 ## <a name="about-acls"></a>關於 Acl
 
-您可以將 [安全性主體](https://docs.microsoft.com/azure/role-based-access-control/overview#security-principal) 與檔案和目錄的存取層級產生關聯。 這些關聯會在 *(ACL) 的存取控制清單* 中捕捉。 您儲存體帳戶中的每個檔案和目錄都具有存取控制清單。 當安全性主體嘗試在檔案或目錄上執行作業時，ACL 檢查會判斷該安全性主體 (使用者、群組、服務主體或受控識別) 是否有正確的許可權等級可以執行此作業。
+您可以將 [安全性主體](../../role-based-access-control/overview.md#security-principal) 與檔案和目錄的存取層級產生關聯。 這些關聯會在 *(ACL) 的存取控制清單* 中捕捉。 您儲存體帳戶中的每個檔案和目錄都具有存取控制清單。 當安全性主體嘗試在檔案或目錄上執行作業時，ACL 檢查會判斷該安全性主體 (使用者、群組、服務主體或受控識別) 是否有正確的許可權等級可以執行此作業。
 
 > [!NOTE]
 > Acl 只適用于相同租使用者中的安全性主體，而且不會套用至使用共用金鑰或共用存取簽章 (SAS) 權杖驗證的使用者。 這是因為沒有與呼叫端相關聯的身分識別，因此無法執行安全性主體許可權型授權。  
@@ -40,7 +40,7 @@ Azure Data Lake Storage Gen2 會實作為存取控制模型，以支援 Azure �
 |Python|[使用 Python 來管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl](data-lake-storage-directory-file-acl-python.md#manage-access-control-lists-acls)|
 |PowerShell|[使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl](data-lake-storage-directory-file-acl-powershell.md#manage-access-control-lists-acls)|
 |Azure CLI|[使用 Azure CLI 來管理 Azure Data Lake Storage Gen2 中的目錄、檔案，以及 ACL](data-lake-storage-directory-file-acl-cli.md#manage-access-control-lists-acls)|
-|REST API |[路徑-更新](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
+|REST API |[路徑-更新](/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
 > 如果安全性主體是 *服務* 主體，請務必使用服務主體的物件識別碼，而不是相關應用程式註冊的物件識別碼。 若要取得服務主體的物件識別碼，請開啟 Azure CLI，然後使用此命令： `az ad sp show --id <Your App ID> --query objectId` 。 請務必將預留位置取代為 `<Your App ID>` 應用程式註冊的應用程式識別碼。
@@ -92,7 +92,8 @@ Azure Data Lake Storage Gen2 會實作為存取控制模型，以支援 Azure �
 
 下表顯示代表虛構目錄階層之每個層級的資料行。 容器的根目錄有一個資料行 (`\`) 、一個名為 **俄勒岡** 的子目錄、名為 [中] 的俄勒岡目錄子目錄，以及一個名為 [ **Data.txt**] 的 [中 **名]** 目錄中的文字檔。 
 
-> [!IMPORANT] 下表假設您 **只** 使用 acl，而不使用任何 Azure 角色指派。 若要查看結合 Azure RBAC 與 Acl 的類似表格，請參閱 [許可權表：結合 AZURE rbac 和 acl](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl)。
+> [!IMPORTANT]
+> 下表假設您 **只** 使用 acl，而不使用任何 Azure 角色指派。 若要查看結合 Azure RBAC 與 Acl 的類似表格，請參閱 [許可權表：結合 AZURE rbac 和 acl](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl)。
 
 |    作業             |    /    | Oregon/ | Portland/ | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
@@ -330,7 +331,7 @@ az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
 
 否。 容器沒有 ACL。 不過，您可以設定容器根目錄的 ACL。 每個容器都有一個根目錄，且共用與容器相同的名稱。 例如，如果容器名為，則 `my-container` 根目錄的名稱為 `myContainer/` 。 
 
-Azure 儲存體 REST API 包含名為 [ [設定容器 ACL](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)] 的作業，但該作業不能用來設定容器的 ACL 或容器的根目錄。 相反地，該作業會用來指出是否可以 [公開存取](anonymous-read-access-configure.md)容器中的 blob。 
+Azure 儲存體 REST API 包含名為 [ [設定容器 ACL](/rest/api/storageservices/set-container-acl)] 的作業，但該作業不能用來設定容器的 ACL 或容器的根目錄。 相反地，該作業會用來指出是否可以 [公開存取](anonymous-read-access-configure.md)容器中的 blob。 
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>何處可以進一步了解 POSIX 存取控制模型？
 
