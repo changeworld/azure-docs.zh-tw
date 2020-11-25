@@ -1,20 +1,20 @@
 ---
-author: cynthn
-ms.author: cynthn
+author: ''
+ms.author: danielsollondon
 ms.date: 08/03/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: daberry
-ms.openlocfilehash: a5a201a9f993db2be00645d8d60a11c5be9cdbe0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c028fc1abd77bda1a41857a7a7c77da1ad1b2d2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89303946"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025941"
 ---
 標準化虛擬機器 (VM) 映像可讓組織遷移至雲端，並確保部署的一致性。 映像通常包含預先定義的安全性和組態設定，以及必要的軟體。 設定您自己的映像處理管線需要一些時間、基礎結構和設定，但透過 Azure VM Image Builder，只要提供簡單的組態來描述您的映像、將其提交至服務，然後就會建立映像並加以散發。
  
-Azure VM Image Builder (Azure Image Builder) 可讓您從以 Windows 或 Linux 為基礎的 Azure Marketplace 映像、現有的自訂映像或 Red Hat Enterprise Linux (RHEL) ISO 著手，並開始新增自己的自訂項目。 因為 Image Builder 建置在 [HashiCorp Packer](https://packer.io/) 上，所以您也可匯入現有的 Packer Shell 佈建工具指令碼。 您也可以在 [Azure 共用映像庫](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)中，指定您要裝載映像的位置，作為受控映像或 VHD。
+Azure VM Image Builder (Azure Image Builder) 可讓您從以 Windows 或 Linux 為基礎的 Azure Marketplace 映像、現有的自訂映像或 Red Hat Enterprise Linux (RHEL) ISO 著手，並開始新增自己的自訂項目。 因為 Image Builder 建置在 [HashiCorp Packer](https://packer.io/) 上，所以您也可匯入現有的 Packer Shell 佈建工具指令碼。 您也可以在 [Azure 共用映像庫](../articles/virtual-machines/windows/shared-image-galleries.md)中，指定您要裝載映像的位置，作為受控映像或 VHD。
 
 > [!IMPORTANT]
 > Azure Image Builder 目前處於公開預覽狀態。
@@ -59,12 +59,8 @@ AIB 將支援 Azure Marketplace 基底 OS 映像：
 
 ## <a name="how-it-works"></a>運作方式
 
-
-![Azure Image Builder 的概念圖](./media/virtual-machines-image-builder-overview/image-builder.png)
-
 Azure Image Builder 是完全受控的 Azure 服務，可供 Azure 資源提供者存取。 Azure Image Builder 程序有三個主要部分：來源、自訂和散發，這些都會在範本中表現。 下圖顯示元件及其部分屬性。 
  
-
 
 **Image Builder 程序** 
 
@@ -81,14 +77,14 @@ Azure Image Builder 是完全受控的 Azure 服務，可供 Azure 資源提供�
 
 若要允許 Azure VM Image Builder 將映像散發至受控映像或共用映像庫，您必須建立 Azure 使用者指派的身分識別，其具有讀取和寫入映像的權限。 如果您要存取 Azure 儲存體，則需要讀取私人容器的權限。
 
-一開始，您必須遵循[建立 Azure 使用者指派的受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli)文件，以了解如何建立身分識別。
+一開始，您必須遵循[建立 Azure 使用者指派的受控識別](../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)文件，以了解如何建立身分識別。
 
 一旦擁有您需要授與權限的身分識別，若要這麼做，您可使用 Azure 自訂角色定義，然後指派使用者所指派的受控識別以使用自訂角色定義。
 
 [這裡](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)會詳細說明權限，而範例會示範其實作方式。
 
 > [!Note]
-> 先前使用 AIB 時，您會使用 AIB SPN，並將 SPN 權限授予映像資源群組。 我們即將脫離此模型，以允許使用未來的功能。 從 2020 年 5 月 26 日起，Image Builder 不會接受沒有使用者所指派身分識別的範本，必須將現有的範本重新提交至具有[使用者身分識別](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#identity)的服務。 這裡的範例已示範如何建立使用者指派的身分識別，並將其新增至範本。 如需詳細資訊，請檢閱這份有關這項變動和版本更新的[文件](https://github.com/danielsollondon/azvmimagebuilder#service-updates-and-latest-release-information)。
+> 先前使用 AIB 時，您會使用 AIB SPN，並將 SPN 權限授予映像資源群組。 我們即將脫離此模型，以允許使用未來的功能。 從 2020 年 5 月 26 日起，Image Builder 不會接受沒有使用者所指派身分識別的範本，必須將現有的範本重新提交至具有[使用者身分識別](../articles/virtual-machines/linux/image-builder-json.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#identity)的服務。 這裡的範例已示範如何建立使用者指派的身分識別，並將其新增至範本。 如需詳細資訊，請檢閱這份有關這項變動和版本更新的[文件](https://github.com/danielsollondon/azvmimagebuilder#service-updates-and-latest-release-information)。
 
 ## <a name="costs"></a>費用
 使用 Azure Image Builder 建立、建置和儲存映像時，您會產生一些計算、網路和儲存成本。 這些成本類似於手動建立自訂映像所產生的成本。 對於各項資源，系統會以您的 Azure 費率向您收費。 
@@ -105,4 +101,3 @@ Azure Image Builder 會將映像散發至您選擇的區域，這可能會產生
 ## <a name="next-steps"></a>後續步驟 
  
 若要試用 Azure Image Builder，請參閱建置 [Linux](../articles/virtual-machines/linux/image-builder.md) 或 [Windows](../articles/virtual-machines/windows/image-builder.md) 映像的文章。
- 

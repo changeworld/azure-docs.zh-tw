@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 8/7/2020
 ms.author: baanders
 ms.openlocfilehash: 58ae9c187f50bb7eb3f1ccc2a618275885121267
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95559726"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026059"
 ---
 > [!TIP]
 > 建立模型之後，建議您先離線驗證模型，然後再將它們上傳至您的 Azure 數位 Twins 實例。
