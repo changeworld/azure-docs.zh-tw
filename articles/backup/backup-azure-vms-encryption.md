@@ -4,11 +4,11 @@ description: 說明如何使用 Azure 備份服務來備份和還原已加密的
 ms.topic: conceptual
 ms.date: 08/18/2020
 ms.openlocfilehash: 67c0e879fe2acf241b1ed08a5658209bf70b1b9c
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173905"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95978109"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>備份和還原已加密的 Azure 虛擬機器
 
@@ -30,7 +30,7 @@ Azure 備份支援以 Azure 磁碟加密 (ADE) 加密其作業系統/資料磁�
 
 Azure 備份可以使用具有和沒有 Azure AD 應用程式的 ADE 來備份和還原 Azure Vm，如下表所摘要。
 
-**VM 磁碟類型** | **ADE (BEK/dm-crypt) ** | **ADE 和 KEK**
+**VM 磁碟類型** | **ADE (BEK/dm-crypt)** | **ADE 和 KEK**
 --- | --- | ---
 **非受控** | 是 | 是
 **受控**  | 是 | 是
@@ -46,7 +46,7 @@ Azure 備份可以使用具有和沒有 Azure AD 應用程式的 ADE 來備份�
 - 加密的 VM 無法在檔案/資料夾層級復原。 您必須復原整個 VM，才能還原檔案和資料夾。
 - 還原 VM 時，您無法使用已加密 Vm 的 [ [取代現有的 VM](backup-azure-arm-restore-vms.md#restore-options) ] 選項。 只有未加密的受控磁片才支援此選項。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 開始之前，請執行下列作業：
 
@@ -77,7 +77,7 @@ Azure 備份可以使用具有和沒有 Azure AD 應用程式的 ADE 來備份�
 
     ![選擇備份原則](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
 
-1. 如果您不想要使用預設原則，請選取 [ **建立新**的]，然後 [建立自訂原則](backup-azure-arm-vms-prepare.md#create-a-custom-policy)。
+1. 如果您不想要使用預設原則，請選取 [ **建立新** 的]，然後 [建立自訂原則](backup-azure-arm-vms-prepare.md#create-a-custom-policy)。
 
 1. 在 [虛擬機器] 下，選取 [新增]。
 
@@ -121,17 +121,17 @@ Azure 備份需要唯讀存取權來備份金鑰和密碼，以及相關聯的 V
 
 1. 在 [Azure 入口網站中，選取 [ **所有服務**]，然後搜尋 **金鑰保存庫**。
 1. 選取與您要備份之加密 VM 相關聯的金鑰保存庫。
-1. 選取 [**存取**原則  >  **新增存取原則**]。
+1. 選取 [**存取** 原則  >  **新增存取原則**]。
 
     ![新增存取原則](./media/backup-azure-vms-encryption/add-access-policy.png)
 
-1. 在**Add access policy**[  >  **從範本設定] (選用) **的 [新增存取原則] 中，選取 [ **Azure 備份**]。
-    - 該備份會在 [金鑰權限]**** 和 [祕密權限]**** 預先填入必要的權限。
-    - 如果您的 VM 只使用 **BEK**加密，請移除 **金鑰許可權** 的選項，因為您只需要秘密的許可權。
+1. 在 **Add access policy**[  >  **從範本設定] (選用)** 的 [新增存取原則] 中，選取 [ **Azure 備份**]。
+    - 該備份會在 [金鑰權限] 和 [祕密權限] 預先填入必要的權限。
+    - 如果您的 VM 只使用 **BEK** 加密，請移除 **金鑰許可權** 的選項，因為您只需要秘密的許可權。
 
     ![Azure 備份選取範圍](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-1. 選取 [新增]。 **備份管理服務** 已新增至 **存取原則**。
+1. 選取 [新增]  。 **備份管理服務** 已新增至 **存取原則**。
 
     ![存取原則](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 
@@ -139,7 +139,7 @@ Azure 備份需要唯讀存取權來備份金鑰和密碼，以及相關聯的 V
 
 ## <a name="restore-an-encrypted-vm"></a>還原已加密的 VM
 
-您只能藉由還原 VM 磁片來還原已加密的 Vm，如下所述。 不支援**取代現有**和**還原 VM** 。
+您只能藉由還原 VM 磁片來還原已加密的 Vm，如下所述。 不支援 **取代現有** 和 **還原 VM** 。
 
 還原已加密的 Vm，如下所示：
 

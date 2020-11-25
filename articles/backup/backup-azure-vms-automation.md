@@ -4,11 +4,11 @@ description: 說明如何使用 Azure 備份搭配 PowerShell 來備份和復原
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: ded2bc8a71bf564e31f40ca9f0d6c8049188768b
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094087"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95978364"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>使用 PowerShell 備份及還原 Azure Vm
 
@@ -149,7 +149,7 @@ $targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" 
 $targetVault.ID
 ```
 
-或者
+或
 
 ```powershell
 $targetVaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
@@ -232,7 +232,7 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 
 下列範例會使用原則 NewPolicy 來對項目 V2VM 啟用保護。 這些範例根據 VM 是否加密以及加密的類型而有所不同。
 
-在**非加密 Resource Manager VM** 上啟用保護：
+在 **非加密 Resource Manager VM** 上啟用保護：
 
 ```powershell
 $pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -VaultId $targetVault.ID
@@ -247,7 +247,7 @@ $pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -VaultId $
 Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1" -VaultId $targetVault.ID
 ```
 
-若要在**加密的 VM 上 (只使用 BEK 加密)** 啟用保護，您必須提供權限讓 Azure 備份服務讀取金鑰保存庫中的密碼。
+若要在 **加密的 VM 上 (只使用 BEK 加密)** 啟用保護，您必須提供權限讓 Azure 備份服務讀取金鑰保存庫中的密碼。
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName "KeyVaultName" -ResourceGroupName "RGNameOfKeyVault" -PermissionsToSecrets backup,get,list -ServicePrincipalName 262044b1-e2ce-469f-a196-69ab7ada62d3
@@ -256,7 +256,7 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 ```
 
 > [!NOTE]
-> 如果您是使用 Azure Government 雲端，則 `ff281ffe-705c-4f53-9f37-a40e6f2c68f3` 在[>set-azkeyvaultaccesspolicy 指令程式](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy)中使用參數**ServicePrincipalName**的值。
+> 如果您是使用 Azure Government 雲端，則 `ff281ffe-705c-4f53-9f37-a40e6f2c68f3` 在 [>set-azkeyvaultaccesspolicy 指令程式](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy)中使用參數 **ServicePrincipalName** 的值。
 >
 
 ## <a name="monitoring-a-backup-job"></a>監視備份工作
@@ -435,7 +435,7 @@ $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -Work
 
 使用 [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) Cmdlet 來列出備份項目的所有復原點。 接下來選擇要還原的復原點。 如果您不確定要使用哪一個復原點，最好在清單中選擇最新的 RecoveryPointType = AppConsistent 點。
 
-在下列腳本中，變數 **$rp**是所選備份專案的復原點陣列（從過去七天起算）。 陣列是以相反時間順序排序，最新復原點位於索引 0。 使用標準 PowerShell 陣列索引來挑選復原點。 在範例中，$rp[0] 會選取最新的復原點。
+在下列腳本中，變數 **$rp** 是所選備份專案的復原點陣列（從過去七天起算）。 陣列是以相反時間順序排序，最新復原點位於索引 0。 使用標準 PowerShell 陣列索引來挑選復原點。 在範例中，$rp[0] 會選取最新的復原點。
 
 ```powershell
 $startDate = (Get-Date).AddDays(-7)
@@ -478,7 +478,7 @@ $restorejob
 >
 >
 
-請提供額外的參數 **TargetResourceGroupName**以指定將作為受控磁碟還原目的地的 RG。
+請提供額外的參數 **TargetResourceGroupName** 以指定將作為受控磁碟還原目的地的 RG。
 
 > [!IMPORTANT]
 > 強烈建議使用 **TargetResourceGroupName** 參數來還原受控磁片，因為這樣會大幅改善效能。 如果未指定此參數，則您無法從立即還原功能獲益，而且還原作業將會比較慢。 如果目的是要將受控磁片還原為非受控磁片，則請勿提供此參數，並藉由提供參數來清除意圖 `-RestoreAsUnmanagedDisks` 。 您 `-RestoreAsUnmanagedDisks` 可以從 Azure PowerShell 3.7.0 開始取得參數。 在未來的版本中，必須提供這些參數的任一個，才能進行正確的還原體驗。
@@ -636,7 +636,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
         }
     ```
 
-    * **不含 Azure AD 的非受控已加密 VM (僅限 BEK)** - 對於不含 Azure AD 的非受控已加密 VM (僅限使用 BEK 加密)，如果**無法使用來源 keyVault/密碼**，會使用[從 Azure 備份復原點還原未加密的虛擬機器](backup-azure-restore-key-secret.md)中的程序，將密碼還原至金鑰保存庫。 然後執行下列腳本，以在還原的作業系統 blob 上設定加密詳細資料 (此步驟不是資料 blob) 所需的步驟。 可以從還原的 keyVault 擷取 $dekurl。
+    * **不含 Azure AD 的非受控已加密 VM (僅限 BEK)** - 對於不含 Azure AD 的非受控已加密 VM (僅限使用 BEK 加密)，如果 **無法使用來源 keyVault/密碼**，會使用 [從 Azure 備份復原點還原未加密的虛擬機器](backup-azure-restore-key-secret.md)中的程序，將密碼還原至金鑰保存庫。 然後執行下列腳本，以在還原的作業系統 blob 上設定加密詳細資料 (此步驟不是資料 blob) 所需的步驟。 可以從還原的 keyVault 擷取 $dekurl。
 
     只有在無法使用來源 keyVault/密碼時，才需要執行下列腳本。
 
@@ -650,7 +650,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
         $osBlob.ICloudBlob.SetMetadata()
     ```
 
-    有**密碼可用**，而且也對於 OS Blob 設定加密詳細資料後，可使用下列指令碼附加磁碟。
+    有 **密碼可用**，而且也對於 OS Blob 設定加密詳細資料後，可使用下列指令碼附加磁碟。
 
     如果來源 keyVault/密碼已可供使用，則不需要執行上述腳本。
 
@@ -663,7 +663,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
         }
     ```
 
-    * **不含 Azure AD 的非受控已加密 VM (BEK 和 KEK)** - 對於不含 Azure AD 的非受控已加密 VM (僅限使用 BEK 和 KEK 加密)，如果**無法使用來源 keyVault/金鑰/密碼**，會使用[從 Azure 備份復原點還原未加密的虛擬機器](backup-azure-restore-key-secret.md)中的程序，將金鑰和密碼還原至金鑰保存庫。 然後執行下列腳本，以在還原的作業系統 blob 上設定加密詳細資料 (此步驟不是資料 blob) 所需的步驟。 可以從還原的 keyVault 擷取 $dekurl 和 $kekurl。
+    * **不含 Azure AD 的非受控已加密 VM (BEK 和 KEK)** - 對於不含 Azure AD 的非受控已加密 VM (僅限使用 BEK 和 KEK 加密)，如果 **無法使用來源 keyVault/金鑰/密碼**，會使用 [從 Azure 備份復原點還原未加密的虛擬機器](backup-azure-restore-key-secret.md)中的程序，將金鑰和密碼還原至金鑰保存庫。 然後執行下列腳本，以在還原的作業系統 blob 上設定加密詳細資料 (此步驟不是資料 blob) 所需的步驟。 可以從還原的 keyVault 擷取 $dekurl 和 $kekurl。
 
     只有在沒有來源 keyVault/金鑰/密碼可用時，才需要執行下列腳本。
 
@@ -678,7 +678,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
         $osBlob.ICloudBlob.SetMetadata()
     ```
 
-    有**金鑰/密碼可用**，而且對於 OS Blob 設定加密詳細資料後，可使用下列指令碼附加磁碟。
+    有 **金鑰/密碼可用**，而且對於 OS Blob 設定加密詳細資料後，可使用下列指令碼附加磁碟。
 
     如果來源 keyVault/金鑰/密碼可供使用，則不需要執行上述腳本。
 
@@ -697,7 +697,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 
     * **含 Azure AD 的受控已加密 VM (BEK 與 KEK)** - 對於含 Azure AD 的受控已加密的 VM (使用 BEK 與 KEK 加密)，請連結已還原的受控磁碟。 如需深入的資訊，請參閱[使用 PowerShell 將資料磁碟連結至 Windows VM](../virtual-machines/windows/attach-disk-ps.md)。
 
-    * 未使用**Azure AD (的受控和加密 vm) 僅**適用于未使用 BEK 進行 Azure AD (加密的受控、已加密的 vm。如果無法使用來源**keyVault/密碼**，請使用[從) 復原點還原非加密虛擬機器](backup-azure-restore-key-secret.md)中的程式，將秘密還原至金鑰保存庫。 然後執行下列腳本，在還原的 OS 磁片上設定加密詳細資料 (此步驟不是資料磁片) 所需的步驟。 可以從還原的 keyVault 擷取 $dekurl。
+    * 未使用 **Azure AD (的受控和加密 vm) 僅** 適用于未使用 BEK 進行 Azure AD (加密的受控、已加密的 vm。如果無法使用來源 **keyVault/密碼**，請使用 [從) 復原點還原非加密虛擬機器](backup-azure-restore-key-secret.md)中的程式，將秘密還原至金鑰保存庫。 然後執行下列腳本，在還原的 OS 磁片上設定加密詳細資料 (此步驟不是資料磁片) 所需的步驟。 可以從還原的 keyVault 擷取 $dekurl。
 
     只有在無法使用來源 keyVault/密碼時，才需要執行下列腳本。  
 
@@ -718,7 +718,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 
     有密碼可用，而且也對於 OS 磁碟設定加密詳細資料後，若要附加已還原的受控磁碟，請參閱[使用 PowerShell 將資料磁碟連結至 Windows VM](../virtual-machines/windows/attach-disk-ps.md)。
 
-    * 未**Azure AD (BEK 和 KEK 的受控和加密 vm) ** -針對 Azure AD 未使用 BEK (KEK & 加密的受控、已加密的 vm，如果無法使用來源**keyVault/金鑰/秘密**，請使用[從) 復原點還原非加密虛擬機器](backup-azure-restore-key-secret.md)中的程式，將金鑰和秘密還原至金鑰保存庫。 然後執行下列腳本，在還原的 OS 磁片上設定加密詳細資料 (此步驟不是) 資料磁片的必要步驟。 可以從還原的 keyVault 擷取 $dekurl 和 $kekurl。
+    * 未 **Azure AD (BEK 和 KEK 的受控和加密 vm)** -針對 Azure AD 未使用 BEK (KEK & 加密的受控、已加密的 vm，如果無法使用來源 **keyVault/金鑰/秘密**，請使用 [從) 復原點還原非加密虛擬機器](backup-azure-restore-key-secret.md)中的程式，將金鑰和秘密還原至金鑰保存庫。 然後執行下列腳本，在還原的 OS 磁片上設定加密詳細資料 (此步驟不是) 資料磁片的必要步驟。 可以從還原的 keyVault 擷取 $dekurl 和 $kekurl。
 
     只有在沒有來源 keyVault/金鑰/密碼可用時，才需要執行下列腳本。
 
@@ -824,7 +824,7 @@ $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -Work
 
 使用 [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) Cmdlet 來列出備份項目的所有復原點。 接下來選擇要還原的復原點。 如果您不確定要使用哪一個復原點，最好在清單中選擇最新的 RecoveryPointType = AppConsistent 點。
 
-在下列腳本中，變數 **$rp**是所選備份專案的復原點陣列（從過去七天起算）。 陣列是以相反時間順序排序，最新復原點位於索引 0。 使用標準 PowerShell 陣列索引來挑選復原點。 在範例中，$rp[0] 會選取最新的復原點。
+在下列腳本中，變數 **$rp** 是所選備份專案的復原點陣列（從過去七天起算）。 陣列是以相反時間順序排序，最新復原點位於索引 0。 使用標準 PowerShell 陣列索引來挑選復原點。 在範例中，$rp[0] 會選取最新的復原點。
 
 ```powershell
 $startDate = (Get-Date).AddDays(-7)
