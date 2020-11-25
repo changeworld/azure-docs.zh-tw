@@ -10,16 +10,16 @@ ms.date: 05/18/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ee461193be81297c6577ce4c264cabbf08e72417
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 42359eb8a2bfdad23589e0302b80e7806b388510
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359437"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913601"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Azure CLI 來管理 Azure Data Lake Storage Gen2 中的目錄、檔案，以及 ACL
 
-本文介紹如何使用 [Azure 命令列介面 (CLI)](https://docs.microsoft.com/cli/azure/)，在具有階層命名空間的儲存體帳戶，建立並管理目錄、檔案以及權限。 
+本文介紹如何使用 [Azure 命令列介面 (CLI)](/cli/azure/)，在具有階層命名空間的儲存體帳戶，建立並管理目錄、檔案以及權限。 
 
 [範例](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)  | [提供意見](https://github.com/Azure/azure-cli-extensions/issues)反應
 
@@ -27,19 +27,19 @@ ms.locfileid: "93359437"
 
 > [!div class="checklist"]
 > * Azure 訂用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-> * 已啟用階層命名空間 (HNS) 的儲存體帳戶。 遵循[下列](data-lake-storage-quickstart-create-account.md)指示以建立帳戶。
+> * 已啟用階層命名空間 (HNS) 的儲存體帳戶。 遵循[下列](../common/storage-account-create.md)指示以建立帳戶。
 > * Azure CLI `2.6.0` 版或更高版本。
 
 ## <a name="ensure-that-you-have-the-correct-version-of-azure-cli-installed"></a>請確保您已安裝正確版本的 Azure CLI
 
-1. 開啟 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)，或如果您已在本機[安裝](https://docs.microsoft.com/cli/azure/install-azure-cli) Azure CLI，請開啟命令主控台應用程式，例如 Windows PowerShell。
+1. 開啟 [Azure Cloud Shell](../../cloud-shell/overview.md)，或如果您已在本機[安裝](/cli/azure/install-azure-cli) Azure CLI，請開啟命令主控台應用程式，例如 Windows PowerShell。
 
 2. 使用下列命令，確認已安裝的 Azure CLI 版本為 `2.6.0` 或更高版本。
 
    ```azurecli
     az --version
    ```
-   如果您的 Azure CLI 版本低於 `2.6.0`，請安裝較新的版本。 請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+   如果您的 Azure CLI 版本低於 `2.6.0`，請安裝較新的版本。 請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="connect-to-the-account"></a>連線到帳戶
 
@@ -53,7 +53,7 @@ ms.locfileid: "93359437"
 
    否則，請在 [https://aka.ms/devicelogin](https://aka.ms/devicelogin) 開啟瀏覽器頁面，並輸入顯示在終端機中的授權碼。 然後，請在瀏覽器中使用您的帳戶認證登入。
 
-   若要深入了解不同的驗證方法，請參閱[使用 Azure CLI 授與 Blob 或佇列資料的存取權](../common/authorize-data-operations-cli.md)。
+   若要深入了解不同的驗證方法，請參閱[使用 Azure CLI 授與 Blob 或佇列資料的存取權](./authorize-data-operations-cli.md)。
 
 2. 如果您的身分識別與多個訂閱相關聯，請將您的使用中訂閱設為將代管靜態網站的儲存體帳戶的訂閱。
 
@@ -64,7 +64,7 @@ ms.locfileid: "93359437"
    使用您的訂閱識別碼取代 `<subscription-id>` 預留位置值。
 
 > [!NOTE]
-> 本文中所述的範例會顯示 Azure Active Directory (AD) 授權。 若要深入了解授權方法，請參閱[使用 Azure CLI 授與 Blob 或佇列資料的存取權](../common/authorize-data-operations-cli.md)。
+> 本文中所述的範例會顯示 Azure Active Directory (AD) 授權。 若要深入了解授權方法，請參閱[使用 Azure CLI 授與 Blob 或佇列資料的存取權](./authorize-data-operations-cli.md)。
 
 ## <a name="create-a-container"></a>建立容器
 
@@ -221,7 +221,7 @@ az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --accou
 您可以取得、設定及更新目錄和檔案的存取權限。
 
 > [!NOTE]
-> 如果您使用 Azure Active Directory (Azure AD) 來授權命令，請確定已將[儲存體 Blob 資料擁有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)指派給您的安全性主體。 若要深入了解如何套用 ACL 權限以及變更權限的效果，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
+> 如果您使用 Azure Active Directory (Azure AD) 來授權命令，請確定已將[儲存體 Blob 資料擁有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)指派給您的安全性主體。 若要深入了解如何套用 ACL 權限以及變更權限的效果，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](./data-lake-storage-access-control.md)。
 
 ### <a name="get-an-acl"></a>取得 ACL
 
@@ -319,5 +319,3 @@ az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-dir
 * [範例](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
 * [提供意見反應](https://github.com/Azure/azure-cli-extensions/issues)
 * [已知問題](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-
-

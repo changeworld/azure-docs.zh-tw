@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/11/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 603a002b4d9088295f7050afc47e643290818e0b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 60675d4e6979237ed0b2d28f81dace35e1fcb54c
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969478"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95752298"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-31-rest-api-read-operation-and-c"></a>快速入門：使用電腦視覺 3.1 REST API Read 作業和 C# 來擷取文字
 
@@ -32,7 +32,7 @@ ms.locfileid: "91969478"
 * 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="建立電腦視覺資源"  target="_blank">建立電腦視覺資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
     * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 電腦視覺服務。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
     * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
-* 為金鑰和端點 URL (分別名為 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`)，[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
+* 為金鑰和端點 URL (分別名為 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`)，[建立環境變數](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)。
 
 ## <a name="create-and-run-the-sample-application"></a>建立並執行範例應用程式
 

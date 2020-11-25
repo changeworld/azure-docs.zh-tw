@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: 573937638ac0ba1c9db6f1410b9a09f4d79e0056
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: a99436a65a97ae1536bd0e950a29145ccb5c669b
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542791"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95746246"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-javascript-in-computer-vision"></a>快速入門：在電腦視覺中使用 REST API 與 JavaScript 分析遠端影像
 
@@ -211,4 +211,4 @@ Image to analyze:
 探索使用「電腦視覺」在影像中執行光學字元辨識 (OCR)、建立智慧型裁剪縮圖以及偵測、分類、標記和描述視覺特徵 (包括臉部) 的 JavaScript 應用程式。 若要快速地試驗電腦視覺 API，請嘗試 [Open API 測試主控台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b/console)。
 
 > [!div class="nextstepaction"]
-> [電腦視覺 API JavaScript 教學課程](../Tutorials/javascript-tutorial.md)
+> [電腦視覺 API JavaScript 教學課程](https://github.com/Azure-Samples/cognitive-services-javascript-computer-vision-tutorial)

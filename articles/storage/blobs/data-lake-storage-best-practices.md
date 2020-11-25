@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: e008bad2043d8cd633f0849aefc62c4ed7a7e89d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0efcdfd1b14479edf84dc1892e7e1d9afabd5a81
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86104872"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913550"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>使用 Azure Data Lake Storage Gen2 的最佳做法
 
@@ -21,7 +21,7 @@ ms.locfileid: "86104872"
 
 ## <a name="security-considerations"></a>安全性考量
 
-Azure Data Lake Storage Gen2 針對 Azure Active Directory (Azure AD) 使用者、群組和服務主體提供了 POSIX 存取控制。 您可以對現有檔案和目錄設定這些存取控制。 存取控制也可用來建立能自動套用至新檔案或目錄的預設權限。 如需有關 Data Lake Storage Gen2 ACL 的更多詳細資料，可在[Azure Data Lake Storage Gen2 中的存取控制](storage-data-lake-storage-access-control.md)中取得。
+Azure Data Lake Storage Gen2 針對 Azure Active Directory (Azure AD) 使用者、群組和服務主體提供了 POSIX 存取控制。 您可以對現有檔案和目錄設定這些存取控制。 存取控制也可用來建立能自動套用至新檔案或目錄的預設權限。 如需有關 Data Lake Storage Gen2 ACL 的更多詳細資料，可在[Azure Data Lake Storage Gen2 中的存取控制](./data-lake-storage-access-control.md)中取得。
 
 ### <a name="use-security-groups-versus-individual-users"></a>使用安全性群組與個別使用者
 
@@ -31,7 +31,7 @@ Azure Data Lake Storage Gen2 針對 Azure Active Directory (Azure AD) 使用者�
 
 ### <a name="security-for-groups"></a>群組的安全性
 
-當您或您的使用者需要在啟用階層命名空間的情況下，存取儲存體帳戶中的資料時，最好是使用 Azure Active Directory 安全性群組。 從容器的根目錄開始，某些建議的群組可能是 **ReadOnlyUsers**、 **>writeaccessusers**和 **FullAccessUsers** ，甚至是個別的金鑰子目錄。 如果預期之後可能會新增任何其他使用者的群組 (但未經過識別)，您可以考慮建立空的安全性群組，讓其可存取特定資料夾。 使用安全性群組可確保您在將新權限指派給數千個檔案時，不需要很長的處理時間。
+當您或您的使用者需要在啟用階層命名空間的情況下，存取儲存體帳戶中的資料時，最好是使用 Azure Active Directory 安全性群組。 從容器的根目錄開始，某些建議的群組可能是 **ReadOnlyUsers**、 **>writeaccessusers** 和 **FullAccessUsers** ，甚至是個別的金鑰子目錄。 如果預期之後可能會新增任何其他使用者的群組 (但未經過識別)，您可以考慮建立空的安全性群組，讓其可存取特定資料夾。 使用安全性群組可確保您在將新權限指派給數千個檔案時，不需要很長的處理時間。
 
 ### <a name="security-for-service-principals"></a>服務主體的安全性
 
@@ -39,9 +39,9 @@ Azure Databricks 這類服務通常會使用 Azure Active Directory 服務主體
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>啟用 Data Lake Storage Gen2 防火牆與 Azure 服務存取權
 
-Data Lake Storage Gen2 支援開啟防火牆，以及限制僅有 Azure 服務具有存取權，建議使用此功能來限制外部攻擊的媒介。 您可以透過**Firewall**  > ) 允許存取 Azure 服務] 選項上的 [防火牆**啟用防火牆 (**，在 Azure 入口網站的儲存體帳戶上啟用防火牆  >  **Allow access to Azure services** 。
+Data Lake Storage Gen2 支援開啟防火牆，以及限制僅有 Azure 服務具有存取權，建議使用此功能來限制外部攻擊的媒介。 您可以透過 **Firewall**  > ) 允許存取 Azure 服務] 選項上的 [防火牆 **啟用防火牆 (**，在 Azure 入口網站的儲存體帳戶上啟用防火牆  >  **Allow access to Azure services** 。
 
-若要從 Azure Databricks 存取您的儲存體帳戶，請將 Azure Databricks 部署到您的虛擬網路，然後將該虛擬網路新增至您的防火牆。 請參閱 [設定 Azure 儲存體防火牆和虛擬網路](https://docs.microsoft.com/azure/storage/common/storage-network-security)。
+若要從 Azure Databricks 存取您的儲存體帳戶，請將 Azure Databricks 部署到您的虛擬網路，然後將該虛擬網路新增至您的防火牆。 請參閱 [設定 Azure 儲存體防火牆和虛擬網路](../common/storage-network-security.md)。
 
 ## <a name="resiliency-considerations"></a>恢復功能考量
 
@@ -89,7 +89,7 @@ Data Lake Storage Gen2 在 Azure 入口網站的 Data Lake Storage Gen2 帳戶�
 
 簡單來說，批次處理中常用的方法是將資料置入 "in" 目錄。 然後，資料處理好後，將新的資料放入 "out" 目錄，以供下游程序使用。 此目錄結構有時會出現在需要對個別檔案進行處理的作業上，而且可能不需要大量平行處理大型資料集。 如同上述建議的 IoT 結構，好的目錄結構都使用區域和內容這類事項 (例如，組織、產品/生產者) 作為父層級目錄。 此結構有助於保護跨組織資料，以及更有效率地管理工作負載中的資料。 此外，請考慮在結構中使用日期和時間，可在處理時具有較佳的組織性、可篩選的搜尋、安全性及自動化。 日期結構的細微性層級取決於資料上傳或處理的間隔，例如每小時、每天或甚至是每個月。
 
-有時後，檔案處理會因為資料損毀或未預期的格式而不成功。 在這種情況下，目錄結構可能就需要 **/bad** 資料夾的功用，才能將檔案移至該資料夾並進行進一步檢查。 批次作業可能也會處理這些「不良」** 檔案的報告或通知，以進行手動介入。 請參考下列的範本結構：
+有時後，檔案處理會因為資料損毀或未預期的格式而不成功。 在這種情況下，目錄結構可能就需要 **/bad** 資料夾的功用，才能將檔案移至該資料夾並進行進一步檢查。 批次作業可能也會處理這些「不良」檔案的報告或通知，以進行手動介入。 請參考下列的範本結構：
 
 *{Region}/{SubjectMatter (s) }/In/{yyyy}/{mm}/{dd}/{hh}/*\
 *{Region}/{SubjectMatter (s) }/Out/{yyyy}/{mm}/{dd}/{hh}/*\

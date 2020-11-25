@@ -6,20 +6,23 @@ author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 10/16/2020
-ms.author: euang
+ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 6f777b605c5050b7fa4b3b9e3671f3638ad67372
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8d478b35b702e02f303358972526c091ceb3657e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016253"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95917120"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中管理 Apache Spark 的程式庫
 
 程式庫提供可重複使用的程式碼，您可能會想要將它包含在程式或專案中。 若要讓您的應用程式可以使用協力廠商或本機建立的程式碼，您可以將程式庫安裝到您的其中一個無伺服器 Apache Spark 集區 (preview) 。 一旦為 Spark 集區安裝程式庫之後，就可以使用相同集區的所有會話使用該程式庫。 
 
+## <a name="before-you-begin"></a>開始之前
+- 若要安裝及更新程式庫，您必須擁有連結至 Azure Synapse Analytics 工作區之主要 Gen2 儲存體帳戶的 **儲存體 Blob 資料參與者** 或 **儲存體 blob 資料擁有** 者許可權。
+  
 ## <a name="default-installation"></a>預設安裝
 Azure Synapse Analytics 中的 Apache Spark 有完整的 Anacondas 安裝以及額外的程式庫。 您可以在 [Apache Spark 版本支援](apache-spark-version-support.md)中找到完整的程式庫清單。 
 
@@ -35,6 +38,7 @@ Azure Synapse Analytics 中的 Apache Spark 有完整的 Anacondas 安裝以及�
 > - 如果您要安裝的套件很大或需要很長的時間才能安裝，這會影響 Spark 實例的啟動時間。
 > - 不支援在安裝時需要編譯器支援的套件，例如 GCC。
 > - 封裝不能降級，只能新增或升級。
+> - 若要安裝程式庫，您必須擁有連結至 Synapse 工作區之主要 Gen2 儲存體帳戶的儲存體 Blob 資料參與者或儲存體 Blob 資料擁有者許可權。
 
 ### <a name="requirements-format"></a>需求格式
 
@@ -131,5 +135,5 @@ abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<wo
 >[!IMPORTANT]
 >可以在會話之間新增或修改自訂套件。 不過，您必須等候集區和會話重新開機，以查看更新的套件。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 查看預設程式庫： [Apache Spark 版本支援](apache-spark-version-support.md)

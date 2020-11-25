@@ -9,12 +9,12 @@ ms.date: 11/06/2020
 ms.service: storage
 ms.custom: references_regions
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 9da6ea7abf57ffecc900a6dbef065a8c6b123e61
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: db95f22a17c3776d84f12249693fb23b3d2d94e6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94810949"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95914434"
 ---
 # <a name="meet-demanding-migration-requirements-with-wandisco-livedata-platform-for-azure-preview"></a>使用適用于 Azure (preview 的 WANdisco 即時資料活頁 Platform 滿足要求的遷移需求) 
 
@@ -30,7 +30,7 @@ ms.locfileid: "94810949"
 
 您可以使用 Azure 入口網站和 Azure CLI 來管理這兩項服務，並遵循與所有其他 Azure 服務相同的計量付費、隨用隨付計費模型。 即時資料活頁 Platform for Azure 使用量會出現在相同的每月 Azure 帳單上，並提供一致且方便的方式來追蹤和監視您的使用量。
 
-不同 [于將靜態資訊複製到 Azure 資料箱](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster)，或使用 [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html)之類的 Hadoop 工具來將資料 _離線_ 遷移，您可以在使用 WANdisco 即時資料活頁 for Azure 進行 _線上_ 遷移期間，維護商務系統的完整運作。 即使在將資料移至 Azure 時，仍可讓您的大型資料環境保持運作。
+不同 [于將靜態資訊複製到 Azure 資料箱](./data-lake-storage-migrate-on-premises-hdfs-cluster.md)，或使用 [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html)之類的 Hadoop 工具來將資料 _離線_ 遷移，您可以在使用 WANdisco 即時資料活頁 for Azure 進行 _線上_ 遷移期間，維護商務系統的完整運作。 即使在將資料移至 Azure 時，仍可讓您的大型資料環境保持運作。
 
 ## <a name="key-features-of-wandisco-livedata-platform-for-azure"></a>適用于 Azure 的 WANdisco 即時資料活頁 Platform 主要功能
 

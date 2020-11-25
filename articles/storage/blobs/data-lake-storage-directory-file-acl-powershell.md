@@ -10,24 +10,24 @@ ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e2138fc03fcdb614daef2051b7fc1a840e421658
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: eaa34da7dbdf8d315cf60d84cf15ef428f4c7900
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359726"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913346"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl
 
 本文說明如何使用 PowerShell，在已啟用階層命名空間 (HNS) 的儲存體帳戶中，建立及管理目錄、檔案和許可權。 
 
-[參考](https://docs.microsoft.com/powershell/module/Az.Storage/)  | [Gen1 至 Gen2 對應](#gen1-gen2-map)  | [提供意見](https://github.com/Azure/azure-powershell/issues)反應
+[參考](/powershell/module/Az.Storage/)  | [Gen1 至 Gen2 對應](#gen1-gen2-map)  | [提供意見](https://github.com/Azure/azure-powershell/issues)反應
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 > [!div class="checklist"]
 > * Azure 訂用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-> * 已啟用階層命名空間 (HNS) 的儲存體帳戶。 遵循[下列](data-lake-storage-quickstart-create-account.md)指示以建立帳戶。
+> * 已啟用階層命名空間 (HNS) 的儲存體帳戶。 遵循[下列](../common/storage-account-create.md)指示以建立帳戶。
 > * .NET Framework 已安裝4.7.2 或更高版本。 請參閱 [下載 .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework)。
 > * PowerShell 版本 `5.1` 或更高版本。
 
@@ -39,7 +39,7 @@ ms.locfileid: "93359726"
    echo $PSVersionTable.PSVersion.ToString() 
    ```
     
-   若要升級您的 PowerShell 版本，請參閱 [升級現有的 Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell)
+   若要升級您的 PowerShell 版本，請參閱 [升級現有的 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell)
     
 2. 安裝 **Az. Storage** 模組。
 
@@ -47,7 +47,7 @@ ms.locfileid: "93359726"
    Install-Module Az.Storage -Repository PSGallery -Force  
    ```
 
-   如需如何安裝 PowerShell 模組的詳細資訊，請參閱 [安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)
+   如需如何安裝 PowerShell 模組的詳細資訊，請參閱 [安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)
 
 ## <a name="connect-to-the-account"></a>連線到帳戶
 
@@ -271,7 +271,7 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 您可以取得、設定及更新目錄和檔案的存取權限。
 
 > [!NOTE]
-> 如果您使用 Azure Active Directory (Azure AD) 來授權命令，請確定已將[儲存體 Blob 資料擁有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)指派給您的安全性主體。 若要深入了解如何套用 ACL 權限以及變更權限的效果，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
+> 如果您使用 Azure Active Directory (Azure AD) 來授權命令，請確定已將[儲存體 Blob 資料擁有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)指派給您的安全性主體。 若要深入了解如何套用 ACL 權限以及變更權限的效果，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](./data-lake-storage-access-control.md)。
 
 ### <a name="get-an-acl"></a>取得 ACL
 
@@ -400,7 +400,7 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 
 下表顯示用於 Data Lake Storage Gen1 的 Cmdlet 如何對應至 Data Lake Storage Gen2 的 Cmdlet。
 
-|Data Lake Storage Gen1 Cmdlet| Data Lake Storage Gen2 Cmdlet| 注意 |
+|Data Lake Storage Gen1 Cmdlet| Data Lake Storage Gen2 Cmdlet| 備忘稿 |
 |--------|---------|-----|
 |Get-AzDataLakeStoreChildItem|Get-AzDataLakeGen2ChildItem|根據預設，Get-AzDataLakeGen2ChildItem Cmdlet 只會列出第一個層級的子專案。 -遞迴參數會以遞迴方式列出子專案。 |
 |Get-AzDataLakeStoreItem<br>Get-AzDataLakeStoreItemAclEntry<br>Get-AzDataLakeStoreItemOwner<br>Get-AzDataLakeStoreItemPermission|Get-AzDataLakeGen2Item|Get-AzDataLakeGen2Item Cmdlet 的輸出專案具有下列屬性： Acl、擁有者、群組、許可權。|

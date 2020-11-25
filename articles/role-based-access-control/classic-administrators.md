@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/22/2020
+ms.date: 11/24/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d61d49fdd90f1f916141ca636e2c2a4dbe0b9bcd
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 935c0bf76e298ab1e2e4d25fab8685ac4ce617db
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657733"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95916146"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure 傳統訂用帳戶管理員
 
@@ -99,25 +99,25 @@ Microsoft 建議您使用 Azure RBAC)  (azure 角色型存取控制來管理對 
 
 只有帳戶管理員可以變更訂用帳戶的服務管理員。 根據預設，註冊 Azure 訂用帳戶時系統會將服務管理員與帳戶管理員設為同一人。 具有帳戶管理員角色的使用者無法存取 Azure 入口網站。 具有服務管理員角色的使用者可完整存取 Azure 入口網站。 如果帳戶管理員和服務管理員是相同的使用者，並且您將服務管理員變更為不同的使用者，則帳戶管理員將失去 Azure 入口網站的存取權限。 不過，帳戶管理員可隨時使用帳戶中心，將自己變更回服務管理員。
 
-請遵循下列步驟來變更 **帳戶中心** 內的服務管理員。
-
-### <a name="account-center"></a>帳戶中心
+請遵循下列步驟來變更 Azure 入口網站中的服務管理員。
 
 1. 藉由檢查 [變更服務管理員的限制](#limitations-for-changing-the-service-administrator)，確定您的案例受到支援。
 
-1. 以帳戶管理員身分登入 [帳戶中心](https://account.windowsazure.com/subscriptions) 。
+1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 按一下訂用帳戶。
+1. 開啟[訂用帳戶](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，並選取訂用帳戶。
 
-1. 按一下右側的 [ **編輯訂用帳戶詳細資料**]。
+1. 在左側導覽中，按一下 [ **屬性**]。
 
-    ![顯示帳戶中心裡 [編輯訂用帳戶] 按鈕的螢幕擷取畫面](./media/classic-administrators/editsub.png)
+1. 按一下 [ **服務管理員**]。
 
-1. 在 [服務管理員  ] 方塊中，輸入新的服務管理員的電子郵件地址。
+    ![顯示 Azure 入口網站中訂用帳戶屬性的螢幕擷取畫面](./media/classic-administrators/service-admin.png)
 
-    ![顯示應變更服務管理員電子郵件之方塊的螢幕擷取畫面](./media/classic-administrators/change-service-admin.png)
+1. 在 [ **編輯服務管理** ] 頁面中，輸入新服務系統管理員的電子郵件地址。
 
-1. 按一下核取記號以儲存變更。
+    ![顯示 [編輯服務管理] 頁面的螢幕擷取畫面](./media/classic-administrators/service-admin-edit.png)
+
+1. 按一下 [確定] 來儲存變更。
 
 ### <a name="limitations-for-changing-the-service-administrator"></a>變更服務管理員的限制
 
@@ -142,7 +142,7 @@ Microsoft 建議您使用 Azure RBAC)  (azure 角色型存取控制來管理對 
 
 1. 開啟[訂用帳戶](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，並選取訂用帳戶。
 
-1. 按一下 **[屬性]**。
+1. 在左側導覽中，按一下 [ **屬性**]。
 
     訂用帳戶的帳戶管理員會顯示在 [ **帳戶管理員** ] 方塊中。
 

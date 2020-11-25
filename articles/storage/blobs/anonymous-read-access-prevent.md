@@ -10,12 +10,12 @@ ms.date: 10/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 3d843440adc61b315616a05f223c5a13ebe271ed
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 01a5c696a41b9361c35e7af90f68088acea2944b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930827"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913771"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>防止對容器和 blob 進行匿名公用讀取存取
 
@@ -59,7 +59,7 @@ ms.locfileid: "91930827"
 
 設定計量之後，匿名要求會開始出現在圖形上。 下圖顯示過去三十分鐘內匯總的匿名要求。
 
-:::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="顯示如何設定計量以將 blob 交易加總的螢幕擷取畫面":::
+:::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="顯示對 Blob 儲存體進行匯總之匿名要求的螢幕擷取畫面":::
 
 您也可以設定警示規則，在對您的儲存體帳戶進行特定數目的匿名要求時通知您。 如需詳細資訊，請參閱[使用 Azure 監視器建立、檢視及管理計量警示](../../azure-monitor/platform/alerts-metric.md)。
 
@@ -67,9 +67,9 @@ ms.locfileid: "91930827"
 
 Azure 儲存體記錄取得對儲存體帳戶提出之要求的詳細資料，包括要求的授權方式。 您可以分析記錄檔，以判斷哪些容器正在接收匿名要求。
 
-若要將要求記錄到您的 Azure 儲存體帳戶以評估匿名要求，您可以使用 Azure 監視器 (preview) 中的 Azure 儲存體記錄。 如需詳細資訊，請參閱 [監視 Azure 儲存體](../common/monitor-storage.md)。
+若要將要求記錄到您的 Azure 儲存體帳戶以評估匿名要求，您可以使用 Azure 監視器 (preview) 中的 Azure 儲存體記錄。 如需詳細資訊，請參閱 [監視 Azure 儲存體](./monitor-blob-storage.md)。
 
-Azure 監視器中的 Azure 儲存體記錄支援使用記錄查詢來分析記錄資料。 若要查詢記錄，您可以使用 Azure Log Analytics 工作區。 若要深入瞭解記錄查詢，請參閱 [教學課程：開始使用 Log Analytics 查詢](../../azure-monitor/log-query/get-started-portal.md)。
+Azure 監視器中的 Azure 儲存體記錄支援使用記錄查詢來分析記錄資料。 若要查詢記錄，您可以使用 Azure Log Analytics 工作區。 若要深入瞭解記錄查詢，請參閱 [教學課程：開始使用 Log Analytics 查詢](../../azure-monitor/log-query/log-analytics-tutorial.md)。
 
 > [!NOTE]
 > 只有在 Azure 公用雲端中才支援 Azure 監視器中 Azure 儲存體記錄的預覽。 政府雲端不支援記錄 Azure 監視器的 Azure 儲存體。
@@ -81,18 +81,18 @@ Azure 監視器中的 Azure 儲存體記錄支援使用記錄查詢來分析記�
 1. [在 Azure 監視器 preview 中註冊 Azure 儲存體記錄](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)。
 1. 在訂用帳戶中建立新的 Log Analytics 工作區，其中包含您的 Azure 儲存體帳戶。 設定儲存體帳戶的記錄之後，記錄將會出現在 Log Analytics 工作區中。 如需詳細資訊，請參閱[在 Azure 入口網站中建立 Log Analytics 工作區](../../azure-monitor/learn/quick-create-workspace.md)。
 1. 在 Azure 入口網站中巡覽至您的儲存體帳戶。
-1. 在 [監視] 區段中，選取 [ **診斷設定 (預覽]) **。
+1. 在 [監視] 區段中，選取 [ **診斷設定 (預覽])**。
 1. 選取 **blob** 來記錄對 blob 儲存體提出的要求。
-1. 選取 [ **新增診斷設定**]。
+1. 選取 [新增診斷設定]。
 1. 提供診斷設定的名稱。
 1. 在 [ **類別細節**] 下的 [ **記錄** ] 區段中，選擇要記錄的要求類型。 所有匿名要求都會被讀取要求，所以請選取 **StorageRead** 來捕捉匿名要求。
 1. 在 [ **目的地詳細資料**] 底下，選取 [ **傳送至 Log Analytics**]。 選取您的訂用帳戶和您稍早建立的 Log Analytics 工作區，如下列影像所示。
 
-    :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="顯示如何設定計量以將 blob 交易加總的螢幕擷取畫面":::
+    :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="顯示如何建立記錄要求之診斷設定的螢幕擷取畫面":::
 
 建立診斷設定之後，系統會根據該設定，對儲存體帳戶的要求進行記錄。 如需詳細資訊，請參閱 [建立診斷設定以收集 Azure 中的資源記錄和計量](../../azure-monitor/platform/diagnostic-settings.md)。
 
-如需 Azure 監視器中 Azure 儲存體記錄檔中可用欄位的參考，請參閱 [ (preview 的資源記錄) ](../common/monitor-storage-reference.md#resource-logs-preview)。
+如需 Azure 監視器中 Azure 儲存體記錄檔中可用欄位的參考，請參閱 [ (preview 的資源記錄) ](./monitor-blob-storage-reference.md#resource-logs-preview)。
 
 #### <a name="query-logs-for-anonymous-requests"></a>匿名要求的查詢記錄
 
@@ -164,7 +164,7 @@ New-AzStorageContainer -Name $containerName -Permission Blob -Context $ctx
 
 ### <a name="check-the-public-access-setting-for-multiple-accounts"></a>檢查多個帳戶的公用存取設定
 
-若要在一組儲存體帳戶間檢查公用存取設定，並獲得最佳效能，您可以使用 Azure 入口網站中的 Azure Resource Graph Explorer。 若要深入瞭解如何使用 Resource Graph Explorer，請參閱 [快速入門：使用 Azure Resource Graph Explorer 執行您的第一個 Resource Graph 查詢](/azure/governance/resource-graph/first-query-portal)。
+若要在一組儲存體帳戶間檢查公用存取設定，並獲得最佳效能，您可以使用 Azure 入口網站中的 Azure Resource Graph Explorer。 若要深入瞭解如何使用 Resource Graph Explorer，請參閱 [快速入門：使用 Azure Resource Graph Explorer 執行您的第一個 Resource Graph 查詢](../../governance/resource-graph/first-query-portal.md)。
 
 在 Resource Graph Explorer 中執行下列查詢，會傳回儲存體帳戶的清單，並顯示每個帳戶的公用存取設定：
 
@@ -244,7 +244,7 @@ Azure 原則支援的效果，可決定針對資源評估原則規則時所發�
 1. 篩選您在上一個步驟中建立的原則指派名稱結果。 報表會顯示有多少資源不符合原則。
 1. 您可以向下切入報表以取得其他詳細資料，包括不符合規範的儲存體帳戶清單。
 
-    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="顯示如何設定計量以將 blob 交易加總的螢幕擷取畫面":::
+    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="顯示適用于 blob 公用存取之稽核原則合規性報告的螢幕擷取畫面":::
 
 ## <a name="use-azure-policy-to-enforce-authorized-access"></a>使用 Azure 原則強制執行授權存取
 
@@ -280,7 +280,7 @@ Azure 原則藉由確保 Azure 資源遵守需求和標準，來支援雲端治�
 
 下圖顯示當您嘗試建立儲存體帳戶以允許公用存取 (新帳戶的預設值時，所發生的錯誤) 當具有 Deny 效果的原則需要不允許公用存取時。
 
-:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="顯示如何設定計量以將 blob 交易加總的螢幕擷取畫面":::
+:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="螢幕擷取畫面，顯示在違反原則時建立儲存體帳戶時所發生的錯誤":::
 
 ## <a name="next-steps"></a>後續步驟
 

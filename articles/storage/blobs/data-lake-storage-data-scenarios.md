@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 6e183a1e8cac8eec2806a35603c40a44aadac502
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eea7fb073cdf99ee1f4257f6824375a6502a4fad
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84193499"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913618"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen2 處理巨量資料需求
 
@@ -27,7 +27,7 @@ ms.locfileid: "84193499"
 
 本文將重點放在每個處理階段的選項和工具。
 
-如需可搭配 Azure Data Lake Storage Gen2 使用的 Azure 服務完整清單，請參閱 [整合 Azure Data Lake Storage 與 azure 服務](data-lake-storage-integrate-with-azure-services.md)
+如需可搭配 Azure Data Lake Storage Gen2 使用的 Azure 服務完整清單，請參閱 [整合 Azure Data Lake Storage 與 azure 服務](./data-lake-storage-supported-azure-services.md)
 
 ## <a name="ingest-the-data-into-data-lake-storage-gen2"></a>將資料內嵌至 Data Lake Storage Gen2
 
@@ -54,8 +54,8 @@ ms.locfileid: "84193499"
 
 |工具 | 指引 |
 |---|--|
-|Azure 串流分析|[快速入門：使用 Azure 入口網站建立串流分析作業](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal) <br> [輸出至 Azure Data Lake Gen2](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs#blob-storage-and-azure-data-lake-gen2)|
-|Azure HDInsight Storm | [從 HDInsight 上的 Apache Storm 寫入 Apache Hadoop HDFS](https://docs.microsoft.com/azure/hdinsight/storm/apache-storm-write-data-lake-store) |
+|Azure 串流分析|[快速入門：使用 Azure 入口網站建立串流分析作業](../../stream-analytics/stream-analytics-quick-create-portal.md) <br> [輸出至 Azure Data Lake Gen2](../../stream-analytics/stream-analytics-define-outputs.md)|
+|Azure HDInsight Storm | [從 HDInsight 上的 Apache Storm 寫入 Apache Hadoop HDFS](../../hdinsight/storm/apache-storm-write-data-lake-store.md) |
 
 ### <a name="relational-data"></a>關聯式資料
 
@@ -65,7 +65,7 @@ ms.locfileid: "84193499"
 
 |工具 | 指引 |
 |---|--|
-|Azure Data Factory | [Azure Data Factory 中的複製活動](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
+|Azure Data Factory | [Azure Data Factory 中的複製活動](../../data-factory/copy-activity-overview.md) |
 
 ### <a name="web-server-log-data-upload-using-custom-applications"></a>Web 伺服器記錄資料 (使用自訂應用程式上傳)
 
@@ -75,7 +75,7 @@ ms.locfileid: "84193499"
 
 |工具 | 指引 |
 |---|--|
-|Azure Data Factory | [Azure Data Factory 中的複製活動](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)  |
+|Azure Data Factory | [Azure Data Factory 中的複製活動](../../data-factory/copy-activity-overview.md)  |
 |Azure CLI|[Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
 |Azure PowerShell|[Azure PowerShell](data-lake-storage-directory-file-acl-powershell.md)|
 
@@ -89,9 +89,9 @@ ms.locfileid: "84193499"
 
 |工具 | 指引 |
 |---|--|
-|Apache DistCp | [使用 DistCp 在 Azure 儲存體 Blob 與 Azure Data Lake Storage Gen2 之間複製資料](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
-|AzCopy 工具 | [使用 AzCopy 轉送資料](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10) |
-|Azure Data Factory | [使用 Azure Data Factory 將資料複製到 Azure Data Lake Storage Gen2 或從中複製資料](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2) |
+|Apache DistCp | [使用 DistCp 在 Azure 儲存體 Blob 與 Azure Data Lake Storage Gen2 之間複製資料](./data-lake-storage-use-distcp.md) |
+|AzCopy 工具 | [使用 AzCopy 轉送資料](../common/storage-use-azcopy-v10.md) |
+|Azure Data Factory | [使用 Azure Data Factory 將資料複製到 Azure Data Lake Storage Gen2 或從中複製資料](../../data-factory/load-azure-data-lake-storage-gen2.md) |
 
 ### <a name="data-stored-in-on-premises-or-iaas-hadoop-clusters"></a>儲存於內部部署環境或 IaaS Hadoop 叢集中的資料
 
@@ -118,12 +118,12 @@ Azure ExpressRoute 可讓您在 Azure 資料中心與內部部署的基礎結構
 
 |工具 | 指引 |
 |---|--|
-|Azure HDInsight | [搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
-|Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) \(部分機器翻譯\)<br><br>[快速入門：使用 Azure Databricks 分析 Azure Data Lake Storage Gen2 中的資料](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[教學課程：使用 Azure Databricks 擷取、轉換和載入資料](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (機器翻譯)|
+|Azure HDInsight | [搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) |
+|Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) \(部分機器翻譯\)<br><br>[快速入門：使用 Azure Databricks 分析 Azure Data Lake Storage Gen2 中的資料](./data-lake-storage-quickstart-create-databricks-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[教學課程：使用 Azure Databricks 擷取、轉換和載入資料](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (機器翻譯)|
 
 ## <a name="visualize-the-data"></a>將資料視覺化
 
-使用 Power BI 連接器來建立儲存在 Data Lake Storage Gen2 中之資料的視覺標記法。 請參閱 [使用 Power BI 來分析 Azure Data Lake Storage Gen2 中的資料](https://docs.microsoft.com/power-query/connectors/datalakestorage)。
+使用 Power BI 連接器來建立儲存在 Data Lake Storage Gen2 中之資料的視覺標記法。 請參閱 [使用 Power BI 來分析 Azure Data Lake Storage Gen2 中的資料](/power-query/connectors/datalakestorage)。
 
 ## <a name="download-the-data"></a>下載資料
 
@@ -139,7 +139,7 @@ Azure ExpressRoute 可讓您在 Azure 資料中心與內部部署的基礎結構
 
 |工具 | 指引 |
 |---|--|
-|Azure Data Factory | [Azure Data Factory 中的複製活動](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
-|Apache DistCp | [使用 DistCp 在 Azure 儲存體 Blob 與 Azure Data Lake Storage Gen2 之間複製資料](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
+|Azure Data Factory | [Azure Data Factory 中的複製活動](../../data-factory/copy-activity-overview.md) |
+|Apache DistCp | [使用 DistCp 在 Azure 儲存體 Blob 與 Azure Data Lake Storage Gen2 之間複製資料](./data-lake-storage-use-distcp.md) |
 |Azure 儲存體總管|[使用 Azure 儲存體總管來管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 ACL](data-lake-storage-explorer.md) (機器翻譯)|
 |AzCopy 工具|[使用 AzCopy 和 Blob 儲存體傳輸資料](../common/storage-use-azcopy-blobs.md)|

@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: d3b16101cec242ad2cc470f90b37ab0f19848918
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: e98db4ce9884918e63bc87b68f9ab6c0fdf99b93
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542757"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95746127"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-javascript"></a>快速入門：使用電腦視覺 REST API 和 JavaScript 擷取印刷文字 (OCR)
 
 > [!NOTE]
-> 如果您要擷取英文文字，請考慮使用新的[讀取作業](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) \(部分機器翻譯\)。 目前已有 [JavaScript 快速入門](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/javascript-hand-text)可供使用。
+> 如果您要擷取英文文字，請考慮使用新的[讀取作業](../concept-recognizing-text.md) \(部分機器翻譯\)。 目前已有 [JavaScript 快速入門](./javascript-hand-text.md)可供使用。
 
 在此快速入門中，您將使用電腦視覺 REST API，利用光學字元辨識 (OCR) 來擷取影像中的印刷文字。 使用 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) 方法，您可以偵測影像中的印刷文字，然後將辨識出的字元擷取到電腦可使用的字元資料流中。
 
@@ -248,6 +248,6 @@ Image to read:
 接下來，探索使用「電腦視覺」在影像中執行光學字元辨識 (OCR)、建立智慧型裁剪縮圖以及偵測、分類、標記和描述視覺特徵的 JavaScript 應用程式。 
 
 > [!div class="nextstepaction"]
-> [電腦視覺 API JavaScript 教學課程](../Tutorials/javascript-tutorial.md)
+> [電腦視覺 API JavaScript 教學課程](https://github.com/Azure-Samples/cognitive-services-javascript-computer-vision-tutorial)
 
 * 若要快速地試驗電腦視覺 API，請嘗試 [Open API 測試主控台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b/console)。
