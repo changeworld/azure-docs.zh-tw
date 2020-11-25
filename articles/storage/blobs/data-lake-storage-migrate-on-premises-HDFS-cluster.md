@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: a50f85e76f16f1e5ba8823adb1ea1aa02157fcee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e58137dd680ff9a2be2bd657f0969304b526873f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88032555"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913108"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>使用 Azure 資料箱從內部內部部署 HDFS 存放區遷移至 Azure 儲存體
 
@@ -37,9 +37,9 @@ ms.locfileid: "88032555"
 
 * [Azure 資料箱裝置](https://azure.microsoft.com/services/storage/databox/)。
 
-  * [訂購資料箱](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) 或 [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered)。 
+  * [訂購資料箱](../../databox/data-box-deploy-ordered.md) 或 [Data Box Heavy](../../databox/data-box-heavy-deploy-ordered.md)。 
 
-  * 將您的 [資料箱](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) 或 [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) 連接至內部部署網路。
+  * 將您的 [資料箱](../../databox/data-box-deploy-set-up.md) 或 [Data Box Heavy](../../databox/data-box-heavy-deploy-set-up.md) 連接至內部部署網路。
 
 如果您已經準備好了，讓我們開始吧。
 
@@ -59,7 +59,7 @@ ms.locfileid: "88032555"
 
 2. 在 [存取儲存體帳戶] 和 [上傳資料] 對話方塊中，複製 **Blob 服務端點** 和 **儲存體帳戶金鑰**。 從 blob 服務端點，省略 `https://` 和結尾的斜線。
 
-    在此情況下，端點為： `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/` 。 您將使用的 URI 主機部分是： `mystorageaccount.blob.mydataboxno.microsoftdatabox.com` 。 如需範例，請參閱如何透過 [Http 連接到 REST](/azure/databox/data-box-deploy-copy-data-via-rest)。 
+    在此情況下，端點為： `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/` 。 您將使用的 URI 主機部分是： `mystorageaccount.blob.mydataboxno.microsoftdatabox.com` 。 如需範例，請參閱如何透過 [Http 連接到 REST](../../databox/data-box-deploy-copy-data-via-rest.md)。 
 
      ![[存取儲存體帳戶並上傳資料] 對話方塊](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
 
@@ -161,7 +161,7 @@ ms.locfileid: "88032555"
 
 遵循下列步驟來準備資料箱裝置並寄送至 Microsoft。
 
-1. 首先，  [寄送準備您的資料箱或 Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest)。
+1. 首先，  [寄送準備您的資料箱或 Data Box Heavy](../../databox/data-box-deploy-copy-data-via-rest.md)。
 
 2. 裝置準備完成後，請下載 BOM 檔案。 您稍後將會使用這些 BOM 或資訊清單檔案來確認已上傳至 Azure 的資料。
 
@@ -169,9 +169,9 @@ ms.locfileid: "88032555"
 
 4. 與 UPS 排定取貨時間。
 
-    * 針對資料箱裝置，請參閱 [寄送資料箱](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)。
+    * 針對資料箱裝置，請參閱 [寄送資料箱](../../databox/data-box-deploy-picked-up.md)。
 
-    * 針對 Data Box Heavy 裝置，請參閱 [寄送您的 Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up)。
+    * 針對 Data Box Heavy 裝置，請參閱 [寄送您的 Data Box Heavy](../../databox/data-box-heavy-deploy-picked-up.md)。
 
 5. 當 Microsoft 收到您的裝置之後，它會連線到資料中心網路，並將資料上傳至您放置裝置訂單時所指定的儲存體帳戶。 針對您所有資料上傳至 Azure 的 BOM 檔案進行驗證。 
 
@@ -184,11 +184,11 @@ ms.locfileid: "88032555"
 
 ### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>為您的 Azure Data Lake Storage Gen2 帳戶建立服務主體
 
-若要建立服務主體，請參閱 [如何：使用入口網站來建立可存取資源 Azure AD 應用程式和服務主體](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
+若要建立服務主體，請參閱 [如何：使用入口網站來建立可存取資源 Azure AD 應用程式和服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
-* 在執行該文章的[將應用程式指派給角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)一節中的步驟時，請確實將 [儲存體 Blob 資料參與者]**** 角色指派給服務主體。
+* 在執行該文章的[將應用程式指派給角色](../../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)一節中的步驟時，請確實將 [儲存體 Blob 資料參與者] 角色指派給服務主體。
 
-* 當您執行文章的 [ [取得值以進行登入](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) ] 區段中的步驟時，請將應用程式識別碼和用戶端秘密值儲存到文字檔中。 您很快就會用到這些資料。
+* 當您執行文章的 [ [取得值以進行登入](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) ] 區段中的步驟時，請將應用程式識別碼和用戶端秘密值儲存到文字檔中。 您很快就會用到這些資料。
 
 ### <a name="generate-a-list-of-copied-files-with-their-permissions"></a>使用許可權產生複製的檔案清單
 

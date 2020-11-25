@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 06/15/2020
+ms.date: 11/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 08e236d798f700a3c48dd41ba61941bc0037d613
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 888ed2fa24b82c0dda3361df1c63bb802e58f5fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88055372"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95904098"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>在條件式存取原則中使用位置條件 
 
@@ -33,11 +33,11 @@ ms.locfileid: "88055372"
 網路位置取決於用戶端提供給 Azure Active Directory 的公用 IP 位址。 依預設，條件式存取原則適用于所有 IPv4 和 IPv6 位址。 
 
 > [!TIP]
-> 只有 **[命名位置 (預覽版) ](#preview-features)** 介面支援 IPv6 範圍。 
+> 只有 **[命名位置 (預覽版)](#preview-features)** 介面支援 IPv6 範圍。 
 
 ## <a name="named-locations"></a>具名位置
 
-位置是在**Azure Active Directory**  >  **安全性**  >  **條件式存取**（  >  **名為「位置**」）下的 Azure 入口網站中指定。 這些名稱的網路位置可能包括組織的總部網路範圍、VPN 網路範圍，或您想要封鎖的範圍等位置。 
+位置是在 **Azure Active Directory**  >  **安全性**  >  **條件式存取**（  >  **名為「位置**」）下的 Azure 入口網站中指定。 這些名稱的網路位置可能包括組織的總部網路範圍、VPN 網路範圍，或您想要封鎖的範圍等位置。 
 
 ![Azure 入口網站中的命名位置](./media/location-condition/new-named-location.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "88055372"
 - 最多 90 個具名位置，每個位置皆指派一個 IP 範圍。
 
 > [!TIP]
-> 只有 **[命名位置 (預覽版) ](#preview-features)** 介面支援 IPv6 範圍。 
+> 只有 **[命名位置 (預覽版)](#preview-features)** 介面支援 IPv6 範圍。 
 
 ### <a name="trusted-locations"></a>信任的位置
 
@@ -64,13 +64,13 @@ ms.locfileid: "88055372"
 某些組織可能會選擇將整個國家或地區的 IP 界限定義為條件式存取原則的命名位置。 當封鎖不必要的流量時，他們可能會使用這些位置，因為他們知道有效的使用者絕對不會來自北歐等位置。 這些 IP 位址與國家/地區的對應會定期更新。 
 
 > [!NOTE]
-> 國家/地區不包含 IPv6 位址範圍、僅限已知的 IPv4 位址範圍，而且不能標示為受信任。
+> IPv6 位址範圍無法對應到國家/地區。 只有 IPv4 位址會對應到國家/地區。
 
 ![在 Azure 入口網站中建立新的國家/地區或以區域為基礎的位置](./media/location-condition/new-named-location-country-region.png)
 
 #### <a name="include-unknown-areas"></a>包含未知區域
 
-某些 IP 位址未對應至特定的國家或地區。 若要捕獲這些 IP 位置，請核取 [在定義位置時 **包含未知的區域** ] 核取方塊。 此選項可讓您選擇這些 IP 位址是否應包含在具名位置中。 當使用具名位置的原則應套用到未知位置時，請使用此設定。
+某些 IP 位址不會對應到特定的國家或地區，包括所有 IPv6 位址。 若要捕獲這些 IP 位置，請核取 [在定義位置時 **包含未知的區域** ] 核取方塊。 此選項可讓您選擇這些 IP 位址是否應包含在具名位置中。 當使用具名位置的原則應套用到未知位置時，請使用此設定。
 
 ### <a name="configure-mfa-trusted-ips"></a>設定 MFA 信任的 Ip
 
@@ -80,7 +80,7 @@ ms.locfileid: "88055372"
 
 ### <a name="skipping-multi-factor-authentication"></a>略過多重要素驗證
 
-在多重要素驗證服務設定頁面中，您可以透過選取**針對來自內部網路同盟使用者的要求略過多重要素驗證**來識別公司內部網路使用者。 此設定表示 AD FS 所發出的內部公司網路宣告應受信任，並且應用來識別使用者位於公司網路上。 如需詳細資訊，請參閱 [使用條件式存取啟用信任的 ip 功能](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access)。
+在多重要素驗證服務設定頁面中，您可以透過選取 **針對來自內部網路同盟使用者的要求略過多重要素驗證** 來識別公司內部網路使用者。 此設定表示 AD FS 所發出的內部公司網路宣告應受信任，並且應用來識別使用者位於公司網路上。 如需詳細資訊，請參閱 [使用條件式存取啟用信任的 ip 功能](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access)。
 
 核取此選項之後，包括已命名位置 **MFA 受信任的 ip** 會套用至已選取此選項的任何原則。
 
@@ -114,7 +114,7 @@ ms.locfileid: "88055372"
 - **IP 範圍位置**
 
 > [!NOTE]
-> 國家/地區不包含 IPv6 位址範圍、僅限已知的 IPv4 位址範圍，而且不能標示為受信任。
+> IPv6 位址範圍無法對應到國家/地區。 只有 IPv4 位址會對應到國家/地區。
 
 ![命名位置預覽介面](./media/location-condition/named-location-preview.png)
 
@@ -128,7 +128,7 @@ ms.locfileid: "88055372"
 
 ### <a name="any-location"></a>任何位置
 
-根據預設，選取 [任何位置]**** 會將原則套用到所有 IP 位址，而這意味著網際網路上的所有位址。 這項設定不限於您已設為具名位置的 IP 位址。 當您選取 [任何位置]**** 時，您仍然可以從原則中排除特定位置。 例如，您可以將原則套用到受信任位置以外的所有位置，以將範圍設為公司網路以外的所有位置。
+根據預設，選取 [任何位置] 會將原則套用到所有 IP 位址，而這意味著網際網路上的所有位址。 這項設定不限於您已設為具名位置的 IP 位址。 當您選取 [任何位置] 時，您仍然可以從原則中排除特定位置。 例如，您可以將原則套用到受信任位置以外的所有位置，以將範圍設為公司網路以外的所有位置。
 
 ### <a name="all-trusted-locations"></a>所有信任的位置
 
@@ -139,7 +139,7 @@ ms.locfileid: "88055372"
 
 ### <a name="selected-locations"></a>選取的位置
 
-使用此選項，您可以選取一或多個具名位置。 將套用的原則若有此設定，使用者必須從任一選取的位置連線。 當您按一下 [選取]**** 時，顯示具名網路清單的具名網路選取控制項隨即開啟。 此清單也會顯示網路位置是否已標示為受信任。 稱為 [MFA 信任的 IP]**** 的具名位置是用來包含可在多重要素驗證服務設定頁面中設定的 IP 設定。
+使用此選項，您可以選取一或多個具名位置。 將套用的原則若有此設定，使用者必須從任一選取的位置連線。 當您按一下 [選取] 時，顯示具名網路清單的具名網路選取控制項隨即開啟。 此清單也會顯示網路位置是否已標示為受信任。 稱為 [MFA 信任的 IP] 的具名位置是用來包含可在多重要素驗證服務設定頁面中設定的 IP 設定。
 
 ## <a name="ipv6-traffic"></a>IPv6 流量
 
@@ -157,7 +157,7 @@ Azure Active Directory (Azure AD) 目前不支援使用 IPv6 的直接網路連�
 這些是您在命名位置中設定 IPv6 範圍時最常見的原因。 此外，如果您使用 Azure Vnet，則會有來自 IPv6 位址的流量。 如果您有條件式存取原則封鎖的 VNet 流量，請檢查您的 Azure AD 登入記錄。 一旦識別出流量之後，您就可以取得使用的 IPv6 位址，並將其從原則中排除。 
 
 > [!NOTE]
-> 如果您想要指定單一位址的 IP CIDR 範圍，請套用/32 位元遮罩。 如果您說出 IPv6 位址2607： fb90： b27a：6f69： f8d5： dea0： fb39：74a，而且想要將該單一位址排除為一個範圍，您會使用2607： fb90： b27a：6f69： f8d5： dea0： fb39： 74a/32。
+> 如果您想要指定單一位址的 IP CIDR 範圍，請套用/128 位元遮罩。 如果您說出 IPv6 位址2607： fb90： b27a：6f69： f8d5： dea0： fb39：74a，而且想要將該單一位址排除為一個範圍，您會使用2607： fb90： b27a：6f69： f8d5： dea0： fb39： 74a/128。
 
 ### <a name="identifying-ipv6-traffic-in-the-azure-ad-sign-in-activity-reports"></a>在 Azure AD 登入活動報告中識別 IPv6 流量
 

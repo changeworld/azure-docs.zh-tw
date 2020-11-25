@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: devx-track-python, devx-track-js
-ms.openlocfilehash: 41d7fe8e22b39d8755f86e5ee490aa6e7dff97fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cbe4d44f5e1c8b34a3d7bb9d05b9546f320b81c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330616"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023460"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>教學課程：建置採用 Azure 認知服務的 Flask 應用程式
 
@@ -53,9 +53,9 @@ Flask 是一個可建立 Web 應用程式的微架構。 這表示 Flask 會提�
 * [Git 工具](https://git-scm.com/downloads)
 * IDE 或文字編輯器，例如 [Visual Studio Code](https://code.visualstudio.com/) 或 [Atom](https://atom.io/)  
 * [Chrome](https://www.google.com/chrome/browser/) 或 [Firefox](https://www.mozilla.org/firefox)
-* **翻譯工具**訂用帳戶金鑰 (請注意，您不需要選取區域。)
-* **美國西部**區域的**文字分析**訂用帳戶金鑰。
-* **美國西部**區域的**語音服務**訂用帳戶金鑰。
+* **翻譯工具** 訂用帳戶金鑰 (請注意，您不需要選取區域。)
+* **美國西部** 區域的 **文字分析** 訂用帳戶金鑰。
+* **美國西部** 區域的 **語音服務** 訂用帳戶金鑰。
 
 ## <a name="create-an-account-and-subscribe-to-resources"></a>建立帳戶並訂閱資源
 
@@ -64,7 +64,7 @@ Flask 是一個可建立 Web 應用程式的微架構。 這表示 Flask 會提�
 * 文字分析
 * 語音服務
 
-請使用[在 Azure 入口網站中建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)，取得建立資源的逐步指示。
+請使用[在 Azure 入口網站中建立認知服務帳戶](../cognitive-services-apis-create-account.md)，取得建立資源的逐步指示。
 
 > [!IMPORTANT]
 > 在本教學課程中，請在美國西部區域建立您的資源。 如果使用不同的區域，您將必須在每個 Python 檔案中調整基底 URL。
@@ -475,7 +475,7 @@ flask run
 
 ## <a name="analyze-sentiment"></a>分析情感
 
-[文字分析 API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) 可用來執行情感分析、從文字中擷取關鍵片語，或偵測原始語言。 在此應用程式中，我們將使用情感分析來判斷提供的文字是正面、中性還是負面的。 此 API 會傳回 0 到 1 之間的數值分數。 接近 1 的分數表示正面情感；接近 0 的分數表示負面情感。
+[文字分析 API](../text-analytics/overview.md) 可用來執行情感分析、從文字中擷取關鍵片語，或偵測原始語言。 在此應用程式中，我們將使用情感分析來判斷提供的文字是正面、中性還是負面的。 此 API 會傳回 0 到 1 之間的數值分數。 接近 1 的分數表示正面情感；接近 0 的分數表示負面情感。
 
 在本節中，您將執行幾項工作：
 
@@ -659,7 +659,7 @@ flask run
 
 ## <a name="convert-text-to-speech"></a>將文字轉換成語音
 
-[文字轉語音 API](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech) 可讓您的應用程式將文字轉換為仿真人的合成語音。 此服務支援標準、神經和自訂語音。 我們的範例應用程式只會使用幾個可用的語音，如需完整清單，請參閱[支援的語言](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)。
+[文字轉語音 API](../speech-service/text-to-speech.md) 可讓您的應用程式將文字轉換為仿真人的合成語音。 此服務支援標準、神經和自訂語音。 我們的範例應用程式只會使用幾個可用的語音，如需完整清單，請參閱[支援的語言](../speech-service/language-support.md#text-to-speech)。
 
 在本節中，您將執行幾項工作：
 
@@ -954,7 +954,7 @@ flask run
 > [!TIP]
 > 若未顯示您所做的變更，或應用程式的運作不符合預期，請嘗試清除快取或開啟 private/incognito 視窗。
 
-就這樣，您已有可執行翻譯、分析情緒和合成語音的應用程式。 請按 **CTRL + c** 以終止應用程式。 請務必查看其他 [Azure 認知服務](https://docs.microsoft.com/azure/cognitive-services/)。
+就這樣，您已有可執行翻譯、分析情緒和合成語音的應用程式。 請按 **CTRL + c** 以終止應用程式。 請務必查看其他 [Azure 認知服務](../index.yml)。
 
 ## <a name="get-the-source-code"></a>取得原始程式碼
 
@@ -962,6 +962,6 @@ flask run
 
 ## <a name="next-steps"></a>後續步驟
 
-* [翻譯工具參考](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
+* [翻譯工具參考](./reference/v3-0-reference.md)
 * [文字分析 API 參考](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
-* [文字轉換語音 API 參考](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)
+* [文字轉換語音 API 參考](../speech-service/rest-text-to-speech.md)

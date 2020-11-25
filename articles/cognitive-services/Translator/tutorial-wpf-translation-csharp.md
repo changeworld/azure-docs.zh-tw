@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ef5384abd63dcd9aeb4789dc4955f4b80068d330
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d239b89aaf0bc140916d38583f4263f7bf660f1a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88921234"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023611"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>教學課程：使用 WPF 建立翻譯應用程式
 
-在本教學課程中，您將建置以單一訂用帳戶金鑰使用 Azure 認知服務進行文字翻譯、語言偵測和拼字檢查的 [Windows Presentation Foundation (WPF)](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2019) 應用程式。 具體來說，您的應用程式將呼叫翻譯工具和 [Bing 拼字檢查](https://azure.microsoft.com/services/cognitive-services/spell-check/)的 API。
+在本教學課程中，您將建置以單一訂用帳戶金鑰使用 Azure 認知服務進行文字翻譯、語言偵測和拼字檢查的 [Windows Presentation Foundation (WPF)](/visualstudio/designers/getting-started-with-wpf?view=vs-2019) 應用程式。 具體來說，您的應用程式將呼叫翻譯工具和 [Bing 拼字檢查](https://azure.microsoft.com/services/cognitive-services/spell-check/)的 API。
 
 什麼是 WPF？ 這是可建立桌面用戶端應用程式的 UI 架構。 WPF 開發平台支援廣泛的應用程式開發功能，包括應用程式模型、資源、控制項、圖形、版面配置、資料繫結、文件和安全性。 它是 .NET Framework 的子集，因此，如果您先前曾使用 ASP.NET 或 Windows Forms 在 .NET Framework 中建置應用程式，即應熟悉其程式設計體驗。 WPF 使用可延伸應用程式標記語言 (XAML) 提供應用程式開發的宣告式模型，我們將在接下來的章節中加以討論。
 
@@ -40,16 +40,16 @@ ms.locfileid: "88921234"
 
 | 服務 | 功能 | 描述 |
 |---------|---------|-------------|
-| 轉譯程式 | [取得語言](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | 擷取文字翻譯完整的支援語言清單。 |
-| 轉譯程式 | [翻譯](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | 將文字翻譯為 70 多種語言。 |
-| 轉譯程式 | [偵測](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | 偵測輸入文字的語言。 包含偵測的信賴分數。 |
-| Bing 拼字檢查 | [拼字檢查](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | 更正拼字錯誤以改善翻譯的正確性。 |
+| 轉譯程式 | [取得語言](./reference/v3-0-languages.md) | 擷取文字翻譯完整的支援語言清單。 |
+| 轉譯程式 | [翻譯](./reference/v3-0-translate.md) | 將文字翻譯為 70 多種語言。 |
+| 轉譯程式 | [偵測](./reference/v3-0-detect.md) | 偵測輸入文字的語言。 包含偵測的信賴分數。 |
+| Bing 拼字檢查 | [拼字檢查](/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | 更正拼字錯誤以改善翻譯的正確性。 |
 
 ## <a name="prerequisites"></a>Prerequisites
 
 繼續操作之前，您將需要下列項目：
 
-* Azure 認知服務訂用帳戶。 [取得認知服務金鑰](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#create-a-new-azure-cognitive-services-resource)。
+* Azure 認知服務訂用帳戶。 [取得認知服務金鑰](../cognitive-services-apis-create-account.md#create-a-new-azure-cognitive-services-resource)。
 * 一部 Windows 電腦
 * [Visual Studio 2019](https://www.visualstudio.com/downloads/) - Community 或 Enterprise 版
 
@@ -83,14 +83,14 @@ ms.locfileid: "88921234"
 1. [組件] 索引標籤會列出所有可供參考的 .NET Framework 組件。 使用右上方的搜尋列來搜尋參考。
    ![新增組件參考](media/add-assemblies-2019.png)
 1. 為您的專案選取下列參考：
-   * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
-   * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
+   * [System.Runtime.Serialization](/dotnet/api/system.runtime.serialization)
+   * [System.Web](/dotnet/api/system.web)
    * System.Web.Extensions
-   * [System.Windows](https://docs.microsoft.com/dotnet/api/system.windows)
+   * [System.Windows](/dotnet/api/system.windows)
 1. 將這些參考新增至專案後，您可以按一下 [確定] 以關閉 [參考管理員]。
 
 > [!NOTE]
-> 如果您想要深入了解組件參考，請參閱[操作說明：使用參考管理員新增或移除參考](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019)。
+> 如果您想要深入了解組件參考，請參閱[操作說明：使用參考管理員新增或移除參考](/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019)。
 
 ### <a name="install-newtonsoftjson"></a>安裝 Newtonsoft.Json
 
@@ -269,7 +269,7 @@ ms.locfileid: "88921234"
 在本節中，我們將建立對語言資源的 `GET` 要求，以指定我們想要翻譯的可用語言清單。
 
 > [!NOTE]
-> 語言資源可讓您以下列查詢參數篩選語言支援：音譯、字典和翻譯。 如需詳細資訊，請參閱 [API 參考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages)。
+> 語言資源可讓您以下列查詢參數篩選語言支援：音譯、字典和翻譯。 如需詳細資訊，請參閱 [API 參考](./reference/v3-0-languages.md)。
 
 在進一步討論之前，我們先看看一個語言資源呼叫的範例輸出：
 
@@ -581,4 +581,4 @@ private string CorrectSpelling(string text)
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [Microsoft Translator 參考](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
+> [Microsoft Translator 參考](./reference/v3-0-reference.md)

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: 26dd255e6edff7c339ab9766bb71889cf4e2deaa
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8f184de8953e8e8bfe982d2502ca476fb54a66c9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577638"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95903707"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>整合所有應用程式與 Azure AD 的五個步驟
 
@@ -46,7 +46,7 @@ Azure Active Directory (Azure AD) 有一個資源庫，其中包含數千個預�
 
 接下來，探索員工經常使用的應用程式，並設定工作的優先順序以將其與 Azure AD 整合。
 
-您可以開始使用 Microsoft Cloud App Security&#39;的 [Cloud discovery 工具](/cloud-app-security/tutorial-shadow-it) 來探索及管理 &quot; &quot; 網路中的影子 IT (也就是不受 IT 部門) 管理的應用程式。 您可以 [使用 Microsoft Defender 進階威脅防護 (ATP) ](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) 來簡化及擴充探索程式。
+您可以從使用 Microsoft Cloud App Security 的 [Cloud discovery tools](/cloud-app-security/tutorial-shadow-it) 開始探索及管理網路中的「影子」 it， (也就是不受 IT 部門) 管理的應用程式。 您可以 [使用 Microsoft Defender 進階威脅防護 (ATP) ](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) 來簡化及擴充探索程式。
 
 此外，您可以使用 Azure 入口網站中的 [AD FS 應用程式活動報告](../manage-apps/migrate-adfs-application-activity.md) ，探索組織中的所有 AD FS 應用程式、已登入他們的唯一使用者數目，以及與 Azure AD 整合的相容性。
 
@@ -66,7 +66,7 @@ Azure Active Directory (Azure AD) 有一個資源庫，其中包含數千個預�
 - 免除內部部署使用者布建和驗證的需求，以及針對相同服務支付其他雲端身分識別提供者的授權費用，以節省成本。
 - 在您的身分識別與存取管理程式中，降低系統管理的額外負荷，並讓安全性更緊密。
 - 讓員工可以透過 [MyApps 入口網站](../manage-apps/access-panel-collections.md)，取得所有所需應用程式的安全單一登入存取權。
-- 藉由增加應用程式使用量所取得的資料量，改善 Azure AD&#39;s [identity protection](../identity-protection/overview-identity-protection.md) 相關服務的智慧，並將其優點延伸至新增的應用程式。
+- 藉由增加從應用程式使用量取得的資料量，改善 Azure AD [identity protection](../identity-protection/overview-identity-protection.md) 相關服務的智慧，並將其優點延伸至新加入的應用程式。
 
 我們已發佈用來管理將應用程式與 Azure AD 整合之商務程式的指引，包括您可以用來讓商務和應用程式擁有者感知和感興趣的 [海報](https://aka.ms/AppOnePager) 和 [簡報](https://aka.ms/AppGuideline) 。 您可以使用自己的商標來修改這些範例，並在完成此程式時，透過公司入口網站、電子報或其他媒體將這些範例發佈到您的組織。
 
@@ -103,7 +103,7 @@ Azure Active Directory (Azure AD) 有一個資源庫，其中包含數千個預�
 
 針對公司內建的應用程式，您的開發人員可以使用 [Microsoft 身分識別平臺](../develop/index.yml) 來執行驗證和授權。 與平臺整合的應用程式，可向 [Azure AD](../develop/quickstart-register-app.md) 登錄，並如同您組合中的任何其他應用程式一樣進行管理。
 
-開發人員可以將平臺用於內部使用的應用程式和麵向客戶的應用程式，而且有其他使用平臺的優點。 [Microsoft 驗證程式庫 (MSAL) ](../develop/msal-overview.md)（屬於平臺的一部分）可讓開發人員啟用新式體驗，例如多重要素驗證，以及使用安全性金鑰來存取其應用程式，而不需要自行執行。 此外，與 Microsoft 身分識別平臺整合的應用程式可以存取 [Microsoft Graph](../develop/microsoft-graph-intro.md) -統一的 API 端點，提供描述組織中生產力、身分識別和安全性模式的 Microsoft 365 資料。 開發人員可以使用此資訊來執行功能，以提升使用者的生產力。 例如，藉由識別使用者最近與之互動的使用者，並在應用程式&#39;的 UI 中加以呈現。
+開發人員可以將平臺用於內部使用的應用程式和麵向客戶的應用程式，而且有其他使用平臺的優點。 [Microsoft 驗證程式庫 (MSAL) ](../develop/msal-overview.md)（屬於平臺的一部分）可讓開發人員啟用新式體驗，例如多重要素驗證，以及使用安全性金鑰來存取其應用程式，而不需要自行執行。 此外，與 Microsoft 身分識別平臺整合的應用程式可以存取 [Microsoft Graph](../develop/microsoft-graph-intro.md) -統一的 API 端點，提供描述組織中生產力、身分識別和安全性模式的 Microsoft 365 資料。 開發人員可以使用此資訊來執行功能，以提升使用者的生產力。 例如，藉由識別使用者最近與之互動的使用者，並在應用程式的 UI 中加以呈現。
 
 我們有一個 [影片系列](https://www.youtube.com/watch?v=zjezqZPPOfc&amp;list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX) ，可提供平臺的完整簡介，以及支援的語言和平臺的 [許多程式碼範例](../develop/sample-v2-code.md) 。
 

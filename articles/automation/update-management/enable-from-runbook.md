@@ -3,14 +3,14 @@ title: 從 Runbook 啟用 Azure 自動化更新管理
 description: 本文說明如何從 Runbook 啟用更新管理。
 services: automation
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 11/24/2020
 ms.custom: mvc
-ms.openlocfilehash: ec102015355e3312f5dc15fa526fa543da75e0de
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 5a9f12a823a22bfb48ccb4482d3402464aa77fea
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222079"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908350"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>從 Runbook 啟用更新管理
 
@@ -24,7 +24,7 @@ ms.locfileid: "92222079"
 * **Enable-multiplesolution** -提示進行設定資訊的主要 runbook、查詢指定的 VM 並執行其他驗證檢查，然後叫用 **AutomationSolution** runbook，為指定資源群組內的每個 VM 設定更新管理。
 * **AutomationSolution** -啟用目標資源群組中指定的一或多個 vm 的更新管理。 它會確認符合必要條件、確認已安裝 Log Analytics VM 延伸模組，並在找不到的情況下進行安裝，並將 Vm 新增至連結至自動化帳戶之指定 Log Analytics 工作區中的範圍設定。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有這類帳戶，可以[啟用自己的 MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [自動化帳戶](../automation-security-overview.md)，以管理電腦。
@@ -34,7 +34,7 @@ ms.locfileid: "92222079"
     * *LASolutionSubscriptionId*： Log Analytics 工作區所在位置的訂用帳戶識別碼。
     * *LASolutionWorkspaceId*：連結至您的自動化帳戶之 Log Analytics 工作區的工作區識別碼。
 
-    這些變數可用來設定上線 VM 的工作區。 如果未指定這些，腳本會先搜尋任何 VM 上線，以在其訂用帳戶中更新管理，後面接著自動化帳戶所在的訂用帳戶，後面接著您的使用者帳戶可以存取的所有其他訂用帳戶。 如果未正確設定，這可能會導致您的機器上線至某些隨機的 Log Analytics 工作區。
+    這些變數可用來設定上線 VM 的工作區，而您需要手動建立它們。 如果未指定這些，腳本會先搜尋任何 VM 上線，以在其訂用帳戶中更新管理，後面接著自動化帳戶所在的訂用帳戶，後面接著您的使用者帳戶可以存取的所有其他訂用帳戶。 如果未正確設定，這可能會導致您的機器上線至某些隨機的 Log Analytics 工作區。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -52,7 +52,7 @@ ms.locfileid: "92222079"
 
 ## <a name="install-and-update-modules"></a>安裝和更新模組
 
-您必須更新至最新的 Azure 模組並匯入 [OperationalInsights](/powershell/module/az.operationalinsights) 模組，才能使用 runbook 成功啟用 vm 的更新管理。
+您必須更新至最新的 Azure 模組並匯入 [AzureRM OperationalInsights](/powershell/module/azurerm.operationalinsights) 模組，才能使用 runbook 成功啟用 vm 的更新管理。
 
 1. 在您的自動化帳戶中，選取 [共用資源] 下的 [模組]。
 
@@ -66,9 +66,9 @@ ms.locfileid: "92222079"
 
 5. 選取 [瀏覽資源庫] 以開啟模組資源庫。
 
-6. 搜尋 `Az.OperationalInsights`，並將此模組匯入您的自動化帳戶。
+6. 搜尋 `AzureRM.OperationalInsights`，並將此模組匯入您的自動化帳戶。
 
-    ![匯入 OperationalInsights 模組](media/enable-from-runbook/import-operational-insights-module.png)
+    ![匯入 OperationalInsights 模組](media/enable-from-runbook/import-operational-insights-module-azurerm.png)
 
 ## <a name="select-azure-vm-to-manage"></a>選取要管理的 Azure VM
 
@@ -93,7 +93,7 @@ ms.locfileid: "92222079"
 
 3. 搜尋 **更新和變更追蹤**。
 
-4. 選取 runbook，然後按一下 [**視圖來源**] 頁面上的 [匯**入**]。
+4. 選取 runbook，然後按一下 [**視圖來源**] 頁面上的 [匯 **入**]。
 
 5. 按一下 [確定]，然後將 Runbook 匯入至自動化帳戶。
 

@@ -3,14 +3,14 @@ title: 在 Azure 自動化中部署 Windows 混合式 Runbook 背景工作角色
 description: 本文說明如何部署混合式 Runbook 背景工作角色，讓您可以在本機資料中心或雲端環境中，用來在 Windows 電腦上執行 runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 11/23/2020
+ms.date: 11/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: cb501b954897beb73ae05bfdc7b5ded2221dc114
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 31bb0fac302a81c2523a2d2855ca1930cb266ac4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95493922"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95906614"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合式 Runbook 背景工作角色
 
@@ -50,7 +50,7 @@ Azure 自動化儲存和管理 runbook，然後將它們傳遞到一或多個指
 
 Windows 系統和使用者混合式 Runbook 背景工作角色的最低需求如下：
 
-* Windows PowerShell 5.1 或更新版本 ([下載 WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616))
+* Windows PowerShell 5.1 ([下載 WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)) 。 不支援 PowerShell Core。
 * .NET Framework 4.6.2 或更新版本
 * 雙核心
 * 4 GB 的 RAM

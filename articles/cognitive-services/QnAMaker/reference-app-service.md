@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/9/2020
-ms.openlocfilehash: d2095919d6f6be482390250fd8d0ee20e9015237
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 1dfe14d96efd37e3dec7faeae1dfff21122958bc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444855"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95894196"
 ---
 # <a name="service-configuration"></a>服務設定
 
@@ -18,13 +18,13 @@ ms.locfileid: "94444855"
 
 ## <a name="app-service"></a>App Service
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker 正式發行 (穩定版本)](#tab/v1)
 
 QnA Maker 使用 App Service 來提供 [GENERATEANSWER API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/runtime/generateanswer)所使用的查詢執行時間。
 
-這些設定適用于 App Service 的 Azure 入口網站。 您可以依序選取 [ **設定** ] 和 [設定] 來使用這些 **設定。**
+這些設定適用于 App Service 的 Azure 入口網站。 您可以依序選取 [**設定**] 和 [設定] 來使用這些 **設定。**
 
-您可以透過 [應用程式設定] 清單設定個別設定，或選取 [ **Advanced edit （編輯** ）] 來修改數個設定。
+您可以透過 [應用程式設定] 清單設定個別設定，或選取 [ **Advanced edit （編輯**）] 來修改數個設定。
 
 |資源|設定|
 |--|--|
@@ -35,9 +35,9 @@ QnA Maker 使用 App Service 來提供 [GENERATEANSWER API](https://docs.microso
 |UserAppInsightsKey|聊天記錄和遙測|
 |UserAppInsightsName|聊天記錄和遙測|
 
-完成變更之後，您必須從 Azure 入口網站的 [ **總覽** ] 頁面 **重新開機** 服務。
+完成變更之後，您必須從 Azure 入口網站的 [**總覽**] 頁面 **重新開機** 服務。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
+# <a name="qna-maker-managed-preview-release"></a>[受控 QnA Maker (預覽版本)](#tab/v2)
 
 App Service 自訂不適用於 QnA Maker 受控 (預覽) 。
 
@@ -47,7 +47,7 @@ App Service 自訂不適用於 QnA Maker 受控 (預覽) 。
 
 QnA Maker 服務會提供下列使用者的設定，以在單一 QnA Maker 服務及其所有知識庫上共同作業。
 
-瞭解 [如何將](./how-to/collaborate-knowledge-base.md) 共同作業者新增至您的服務。
+瞭解 [如何將](./reference-role-based-access-control.md) 共同作業者新增至您的服務。
 
 ## <a name="change-azure-cognitive-search"></a>變更 Azure 認知搜尋
 
@@ -59,11 +59,11 @@ QnA Maker 服務會提供下列使用者的設定，以在單一 QnA Maker 服�
 
 ## <a name="telemetry"></a>遙測
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker 正式發行 (穩定版本)](#tab/v1)
 
 Application Insights 用於監視 QnA Maker GA 的遙測。 QnA Maker 沒有特定的設定設定。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
+# <a name="qna-maker-managed-preview-release"></a>[受控 QnA Maker (預覽版本)](#tab/v2)
 
 瞭解 [如何將遙測新增至您的 QnA Maker 受控 (預覽版) 服務](How-To/get-analytics-knowledge-base.md)。 
 

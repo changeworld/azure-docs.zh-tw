@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dddad5692ab2eebb6ef9b427c091be449791d7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96d1eaff4d1b93ad3bb489f177020c351fe4d13d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91818355"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95904030"
 ---
 # <a name="conditional-access-conditions"></a>條件式存取：條件
 
@@ -57,7 +57,7 @@ Azure AD 條件式存取支援下列裝置平臺：
 
 將位置設定為條件時，組織可以選擇包含或排除位置。 這些命名位置可能包含公用 IPv4 網路資訊、國家或地區，甚至是未對應到特定國家或地區的未知區域。 只能將 IP 範圍標記為受信任的位置。
 
-當包含 **任何位置**時，此選項會包含網際網路上的任何 IP 位址，而不只是設定的命名位置。 當您選取 **任何位置**時，系統管理員可以選擇排除 **所有信任** 或 **選取的位置**。
+當包含 **任何位置** 時，此選項會包含網際網路上的任何 IP 位址，而不只是設定的命名位置。 當您選取 **任何位置** 時，系統管理員可以選擇排除 **所有信任** 或 **選取的位置**。
 
 例如，有些組織可能會在使用者連線到受信任位置（例如其實體總部）中的網路時，選擇不需要多重要素驗證。 系統管理員可以建立包含任何位置的原則，但會排除其總部網路的選取位置。
 
@@ -128,7 +128,7 @@ Azure AD 條件式存取支援下列裝置平臺：
 
 #### <a name="chrome-support"></a>Chrome 支援
 
-如 **Windows 10 Creators Update (1703 版) ** 或更新版本中的 Chrome 支援，請安裝 [Windows 10 帳戶延伸](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)模組。 當條件式存取原則需要裝置特定的詳細資料時，就需要此延伸模組。
+如 **Windows 10 Creators Update (1703 版)** 或更新版本中的 Chrome 支援，請安裝 [Windows 10 帳戶延伸](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)模組。 當條件式存取原則需要裝置特定的詳細資料時，就需要此延伸模組。
 
 若要自動將此擴充功能部署到 Chrome 瀏覽器，請建立下列登錄機碼：
 
@@ -187,14 +187,14 @@ Azure AD 條件式存取支援下列裝置平臺：
 
 ### <a name="other-clients"></a>其他用戶端
 
-藉由選取 [其他用戶端]****，您可以指定會影響搭配使用基本驗證和郵件通訊協定 (如 IMAP、MAPI、POP、SMTP) 之應用程式的條件，這些條件也會影響不是使用新式驗證的舊版 Office 應用程式。
+藉由選取 [其他用戶端]，您可以指定會影響搭配使用基本驗證和郵件通訊協定 (如 IMAP、MAPI、POP、SMTP) 之應用程式的條件，這些條件也會影響不是使用新式驗證的舊版 Office 應用程式。
 
 ## <a name="device-state-preview"></a>裝置狀態 (預覽)
 
 裝置狀態條件可用來從組織的條件式存取原則中，將混合式 Azure AD 聯結和/或標示為符合 Microsoft Intune 合規性原則的裝置排除在一起。
 
-例如，所有存取*Microsoft Azure 管理*雲端應用程式的*使用者*，包括裝置的**所有裝置狀態**（包括**裝置混合式 Azure AD 未加入裝置**），以及已**標示為符合規範**的裝置，以及*存取控制*，**封鎖**。 
-   - 此範例會建立一個原則，只允許從混合式 Azure AD 已加入及/或已標示為符合規範的裝置存取 Microsoft Azure 管理。
+例如，所有存取 *Microsoft Azure 管理* 雲端應用程式的 *使用者*，包括裝置的 **所有裝置狀態**（包括 **裝置混合式 Azure AD 未加入裝置**），以及已 **標示為符合規範** 的裝置，以及 *存取控制*，**封鎖**。 
+   - 此範例會建立一個原則，只允許從混合式 Azure AD 聯結或標示為符合規範的裝置存取 Microsoft Azure 管理。
 
 ## <a name="next-steps"></a>後續步驟
 

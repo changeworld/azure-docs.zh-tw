@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 8ae9f96b42c0eb36a9380589780d141711c7ae4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c99d57ddd86ecff71c35ad6c0f2c2561e279b4b0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88034726"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912802"
 ---
 # <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>微調效能： Spark、HDInsight & Azure Data Lake Storage Gen2
 
@@ -23,9 +23,9 @@ ms.locfileid: "88034726"
 ## <a name="prerequisites"></a>必要條件
 
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure Data Lake Storage Gen2 帳戶**。 如需有關如何建立的指示，請參閱 [快速入門：建立 Azure Data Lake Storage Gen2 儲存體帳戶](data-lake-storage-quickstart-create-account.md)。
-* 可存取 Data Lake Storage Gen2 帳戶的 **Azure HDInsight 叢集**。 請參閱[搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)。 請確實為叢集啟用遠端桌面。
-* **在 Data Lake Storage Gen2 上執行 Spark 叢集**。  如需詳細資訊，請參閱[使用 HDInsight Spark 叢集來分析 Data Lake Storage Gen2 中的資料](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
+* **Azure Data Lake Storage Gen2 帳戶**。 如需有關如何建立的指示，請參閱 [快速入門：建立 Azure Data Lake Storage Gen2 儲存體帳戶](../common/storage-account-create.md)。
+* 可存取 Data Lake Storage Gen2 帳戶的 **Azure HDInsight 叢集**。 請參閱[搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)。 請確實為叢集啟用遠端桌面。
+* **在 Data Lake Storage Gen2 上執行 Spark 叢集**。  如需詳細資訊，請參閱[使用 HDInsight Spark 叢集來分析 Data Lake Storage Gen2 中的資料](../../hdinsight/spark/apache-spark-use-with-data-lake-store.md)
 * **Data Lake Storage Gen2 的效能微調方針**。  如需一般效能概念，請參閱[Data Lake Storage Gen2 效能微調指導](data-lake-storage-performance-tuning-guidance.md)方針 
 
 ## <a name="parameters"></a>參數
@@ -124,4 +124,3 @@ ms.locfileid: "88034726"
 - num-執行 = Min (memory 條件約束，CPU 條件約束) 
 - num-執行 = Min (16，16) 
 - num-執行程式 = 16
-

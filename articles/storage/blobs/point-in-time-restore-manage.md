@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 828b5c34aaccf2a53aa197f921a8ef02d46821ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2350177373bc99907c437d814d8f01193f18f3fd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91280465"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95895718"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>在區塊 blob 資料上執行時間點還原
 
@@ -29,7 +29,7 @@ ms.locfileid: "91280465"
 
 在您啟用和設定時間點還原之前，請先啟用其儲存體帳戶的必要條件：虛刪除、變更摘要和 blob 版本設定。 如需啟用上述各項功能的詳細資訊，請參閱下列文章：
 
-- [啟用 Blob 的虛刪除](soft-delete-enable.md)
+- [啟用 Blob 的虛刪除](./soft-delete-blob-enable.md)
 - [啟用和停用變更摘要](storage-blob-change-feed.md#enable-and-disable-the-change-feed)
 - [啟用和管理 Blob 版本設定](versioning-enable.md)
 
@@ -122,7 +122,7 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 1. 勾選方塊，確認您想要繼續進行。
 1. 選取 [ **還原** ] 開始還原作業。
 
-    :::image type="content" source="media/point-in-time-restore-manage/restore-all-containers-portal.png" alt-text="顯示如何在 Azure 入口網站中設定時間點還原的螢幕擷取畫面":::
+    :::image type="content" source="media/point-in-time-restore-manage/restore-all-containers-portal.png" alt-text="顯示如何將所有容器還原至指定還原點的螢幕擷取畫面":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -169,31 +169,31 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 1. 指定要還原的範圍。 使用正斜線 (/) 來描繪 blob 首碼中的容器名稱。
 1. [ **還原選取的容器** ] 窗格預設會指定包含容器中所有 blob 的範圍。 如果您不想要還原整個容器，請刪除此範圍。 預設範圍如下圖所示。
 
-    :::image type="content" source="media/point-in-time-restore-manage/delete-default-blob-range.png" alt-text="顯示如何在 Azure 入口網站中設定時間點還原的螢幕擷取畫面":::
+    :::image type="content" source="media/point-in-time-restore-manage/delete-default-blob-range.png" alt-text="顯示在指定自訂範圍之前，要刪除之預設 blob 範圍的螢幕擷取畫面":::
 
 1. 勾選方塊，確認您想要繼續進行。
 1. 選取 [ **還原** ] 開始還原作業。
 
 下圖顯示一組範圍的還原作業。
 
-:::image type="content" source="media/point-in-time-restore-manage/restore-multiple-container-ranges-portal.png" alt-text="顯示如何在 Azure 入口網站中設定時間點還原的螢幕擷取畫面":::
+:::image type="content" source="media/point-in-time-restore-manage/restore-multiple-container-ranges-portal.png" alt-text="顯示如何在一或多個容器中還原 blob 範圍的螢幕擷取畫面":::
 
 映射中顯示的還原作業會執行下列動作：
 
-- 還原 *container1*的完整內容。
-- 還原字典範圍中的 blob *>original-blob1*至*container2*中的*blob5* 。 此範圍會還原具有名稱的 blob，例如 *>original-blob1*、 *blob11*、 *blob100*、 *blob2*等等。 因為範圍的結尾是專屬的，所以它會還原名稱開頭為 *blob4*的 blob，但不會還原名稱開頭為 *blob5*的 blob。
-- 還原 *container3* 和 *container4*中的所有 blob。 由於範圍結尾是獨佔的，此範圍不會還原 *container5*。
+- 還原 *container1* 的完整內容。
+- 還原字典範圍中的 blob *>original-blob1* 至 *container2* 中的 *blob5* 。 此範圍會還原具有名稱的 blob，例如 *>original-blob1*、 *blob11*、 *blob100*、 *blob2* 等等。 因為範圍的結尾是專屬的，所以它會還原名稱開頭為 *blob4* 的 blob，但不會還原名稱開頭為 *blob5* 的 blob。
+- 還原 *container3* 和 *container4* 中的所有 blob。 由於範圍結尾是獨佔的，此範圍不會還原 *container5*。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要還原單一 blob 範圍，請呼叫 **restore-AzStorageBlobRange** 命令，並為參數指定容器和 blob 名稱的字典範圍 `-BlobRestoreRange` 。 例如，若要在名為 *container1*的單一容器中還原 blob，您可以指定以 *container1* 開頭且結尾為 *container2*的範圍。 開始和結束範圍中指定的容器不需要存在。 由於範圍結尾是專屬的，即使儲存體帳戶包含名為 *container2*的容器，也只會還原名為 *container1* 的容器：
+若要還原單一 blob 範圍，請呼叫 **restore-AzStorageBlobRange** 命令，並為參數指定容器和 blob 名稱的字典範圍 `-BlobRestoreRange` 。 例如，若要在名為 *container1* 的單一容器中還原 blob，您可以指定以 *container1* 開頭且結尾為 *container2* 的範圍。 開始和結束範圍中指定的容器不需要存在。 由於範圍結尾是專屬的，即使儲存體帳戶包含名為 *container2* 的容器，也只會還原名為 *container1* 的容器：
 
 ```powershell
 $range = New-AzStorageBlobRangeToRestore -StartRange container1 `
     -EndRange container2
 ```
 
-若要指定要還原之容器中的 blob 子集，請使用正斜線 (/) 來分隔容器名稱與 blob 首碼模式。 例如，下列範圍會選取單一容器中的 blob，其名稱是以字母 *d* 到 *f*開頭：
+若要指定要還原之容器中的 blob 子集，請使用正斜線 (/) 來分隔容器名稱與 blob 首碼模式。 例如，下列範圍會選取單一容器中的 blob，其名稱是以字母 *d* 到 *f* 開頭：
 
 ```powershell
 $range = New-AzStorageBlobRangeToRestore -StartRange container1/d `
@@ -248,6 +248,6 @@ $restoreOperation.Parameters.BlobRanges
 ## <a name="next-steps"></a>後續步驟
 
 - [區塊 blob 的時間點還原](point-in-time-restore-overview.md)
-- [虛刪除](soft-delete-overview.md)
+- [虛刪除](./soft-delete-blob-overview.md)
 - [變更摘要](storage-blob-change-feed.md)
 - [Blob 版本設定](versioning-overview.md)

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 85499839992f872896153e360507d7d1ba7fea38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4db85357ee970d13d6b4fcce195cae66932bed18
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037196"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912785"
 ---
 # <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>微調效能：風暴、HDInsight & Azure Data Lake Storage Gen2
 
@@ -22,9 +22,9 @@ ms.locfileid: "88037196"
 ## <a name="prerequisites"></a>必要條件
 
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure Data Lake Storage Gen2 帳戶**。 如需有關如何建立的指示，請參閱 [快速入門：建立用於分析的儲存體帳戶](data-lake-storage-quickstart-create-account.md)。
-* 可存取 Data Lake Storage Gen2 帳戶的 **Azure HDInsight 叢集**。 請參閱[搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)。 請確實為叢集啟用遠端桌面。
-* **在 Data Lake Storage Gen2 上執行 Storm 叢集**。 如需詳細資訊，請參閱「 [在 HDInsight 上的風暴](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview)」。
+* **Azure Data Lake Storage Gen2 帳戶**。 如需有關如何建立的指示，請參閱 [快速入門：建立用於分析的儲存體帳戶](../common/storage-account-create.md)。
+* 可存取 Data Lake Storage Gen2 帳戶的 **Azure HDInsight 叢集**。 請參閱[搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)。 請確實為叢集啟用遠端桌面。
+* **在 Data Lake Storage Gen2 上執行 Storm 叢集**。 如需詳細資訊，請參閱「 [在 HDInsight 上的風暴](../../hdinsight/storm/apache-storm-overview.md)」。
 * **Data Lake Storage Gen2 的效能微調方針**。  如需一般的效能概念，請參閱 [Data Lake Storage Gen2 效能微調指導方針](data-lake-storage-performance-tuning-guidance.md)。   
 
 ## <a name="tune-the-parallelism-of-the-topology"></a>調整拓撲的平行處理原則
@@ -110,10 +110,10 @@ ms.locfileid: "88037196"
 
 若要檢查您是否遭到節流，請在用戶端啟用偵錯記錄：
 
-1. 在**Ambari**  >  **風暴**設定  >  **Config**  >  **Advanced 風暴-log4j**中，將** &lt; 根層級 = "info" &gt; **變更為** &lt; 根層級 = " &gt; debug"**。 重新啟動所有節點/服務，以便讓設定生效。
+1. 在 **Ambari**  >  **風暴** 設定  >  **Config**  >  **Advanced 風暴-log4j** 中，將 **&lt; 根層級 = "info" &gt;** 變更為 **&lt; 根層級 = " &gt; debug"**。 重新啟動所有節點/服務，以便讓設定生效。
 2. 監視背景工作節點上的 Storm 拓撲記錄 (在 /var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log 下)，注意是否有 Data Lake Storage Gen2 節流例外狀況。
 
 ## <a name="next-steps"></a>後續步驟
-在 [此 blog](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)中可以參考風暴的額外效能微調。
+在 [此 blog](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)中可以參考風暴的額外效能微調。
 
 如需可執行的其他範例，請參閱 [GitHub 上的這一個](https://github.com/hdinsight/storm-performance-automation)。

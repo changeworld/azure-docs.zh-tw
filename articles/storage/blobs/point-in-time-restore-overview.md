@@ -10,12 +10,12 @@ ms.date: 09/22/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: aed3116976d57df81da399495fd9da3722ba770a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ca09e41e6d5b83f14d2dfee4107135585b7e945a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960672"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908790"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>區塊 blob 的時間點還原
 
@@ -35,7 +35,7 @@ Azure 儲存體會分析在要求的還原點（以 UTC 時間指定）和目前
 
 一次只能在一個儲存體帳戶上執行一個還原作業。 還原作業在進行中時無法取消，但可以執行第二個還原作業來復原第一項作業。
 
-**還原 Blob 範圍**作業會傳回可唯一識別作業的還原識別碼。 若要檢查時間點還原的狀態，請使用「**還原 Blob 範圍**」作業所傳回的還原識別碼，呼叫「**取得還原狀態**」作業。
+**還原 Blob 範圍** 作業會傳回可唯一識別作業的還原識別碼。 若要檢查時間點還原的狀態，請使用「**還原 Blob 範圍**」作業所傳回的還原識別碼，呼叫「**取得還原狀態**」作業。
 
 > [!IMPORTANT]
 > 當您執行還原作業時，Azure 儲存體會封鎖作業期間正在還原之範圍中 blob 的資料作業。 主要位置會封鎖讀取、寫入和刪除作業。 基於這個理由，在進行還原作業時，在 Azure 入口網站中列出容器的作業可能不會如預期般執行。
@@ -49,7 +49,7 @@ Azure 儲存體會分析在要求的還原點（以 UTC 時間指定）和目前
 
 還原時間點需要先啟用下列 Azure 儲存體功能，才能啟用時間點還原：
 
-- [虛刪除](soft-delete-overview.md)
+- [虛刪除](./soft-delete-blob-overview.md)
 - [變更摘要](storage-blob-change-feed.md)
 - [Blob 版本設定](versioning-overview.md)
 
@@ -92,5 +92,5 @@ Azure 儲存體會分析在要求的還原點（以 UTC 時間指定）和目前
 
 - [在區塊 blob 資料上執行時間點還原](point-in-time-restore-manage.md)
 - [Azure Blob 儲存體中的變更摘要支援](storage-blob-change-feed.md)
-- [啟用 Blob 的虛刪除](soft-delete-enable.md)
+- [啟用 Blob 的虛刪除](./soft-delete-blob-enable.md)
 - [啟用和管理 Blob 版本設定](versioning-enable.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 909d64d3d32e8b9a314f7afb06b9c0121f624cec
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 32f8ab3f7e222108bec4ec81b14c113705370096
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358478"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913057"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知問題
 
@@ -41,21 +41,21 @@ Blob API 和 Data Lake Storage Gen2 API 可運作於相同的資料上。
 
 本節描述使用 Blob API 和 Data Lake Storage Gen2 API 來對相同資料進行操作時的問題和限制。
 
-* 您無法使用 blob API 和 Data Lake Storage Api 寫入相同的檔案實例。 如果使用 Data Lake Storage Gen2 API 來寫入檔案，則呼叫[取得區塊清單](https://docs.microsoft.com/rest/api/storageservices/get-block-list) (機器翻譯) Blob API 將不會顯示該檔案的區塊。 唯一的例外是當您使用覆寫時。 您可以使用任一種 API 來覆寫檔案/blob。
+* 您無法使用 blob API 和 Data Lake Storage Api 寫入相同的檔案實例。 如果使用 Data Lake Storage Gen2 API 來寫入檔案，則呼叫[取得區塊清單](/rest/api/storageservices/get-block-list) (機器翻譯) Blob API 將不會顯示該檔案的區塊。 唯一的例外是當您使用覆寫時。 您可以使用任一種 API 來覆寫檔案/blob。
 
-* 當使用 [列出 Blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 作業而不指定分隔符號時，結果會同時包含目錄和 Blob。 如果選擇使用分隔符號，請僅使用正斜線 (`/`)。 這是唯一支援的分隔符號。
+* 當使用 [列出 Blob](/rest/api/storageservices/list-blobs) 作業而不指定分隔符號時，結果會同時包含目錄和 Blob。 如果選擇使用分隔符號，請僅使用正斜線 (`/`)。 這是唯一支援的分隔符號。
 
-* 如果使用 [刪除 Blob](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API 來刪除目錄，則只有當該目錄為空時才會將其刪除。 這表示您無法以遞迴方式使用 Blob API 來刪除目錄。
+* 如果使用 [刪除 Blob](/rest/api/storageservices/delete-blob) API 來刪除目錄，則只有當該目錄為空時才會將其刪除。 這表示您無法以遞迴方式使用 Blob API 來刪除目錄。
 
 不支援這些 Blob REST API：
 
-* [Put Blob (頁面)](https://docs.microsoft.com/rest/api/storageservices/put-blob) (機器翻譯)
-* [放置頁面](https://docs.microsoft.com/rest/api/storageservices/put-page)
-* [取得頁面範圍](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges) (機器翻譯)
-* [累加複製 Blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob) (機器翻譯)
-* [從 URL 放置頁面](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url) (機器翻譯)
-* [附加區塊](https://docs.microsoft.com/rest/api/storageservices/append-block)
-* [從 URL 附加區塊](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url) (機器翻譯)
+* [Put Blob (頁面)](/rest/api/storageservices/put-blob) (機器翻譯)
+* [放置頁面](/rest/api/storageservices/put-page)
+* [取得頁面範圍](/rest/api/storageservices/get-page-ranges) (機器翻譯)
+* [累加複製 Blob](/rest/api/storageservices/incremental-copy-blob) (機器翻譯)
+* [從 URL 放置頁面](/rest/api/storageservices/put-page-from-url) (機器翻譯)
+* [附加區塊](/rest/api/storageservices/append-block)
+* [從 URL 附加區塊](/rest/api/storageservices/append-block-from-url) (機器翻譯)
 
 
 具有階層式命名空間的帳戶不支援非受控 VM 磁碟。 如果要在儲存體帳戶上啟用階層命名空間，請將非受控 VM 磁碟放入沒有啟用階層命名空間功能的儲存體帳戶。
@@ -70,7 +70,7 @@ Blob API 和 Data Lake Storage Gen2 API 可運作於相同的資料上。
 
 ## <a name="azcopy"></a>AzCopy
 
-請僅使用最新版本的 AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json))。  不支援舊版的 AzCopy (例如 AzCopy 8.1)。
+請僅使用最新版本的 AzCopy ([AzCopy v10](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json))。  不支援舊版的 AzCopy (例如 AzCopy 8.1)。
 
 <a id="storage-explorer"></a>
 
@@ -92,7 +92,7 @@ Blob API 和 Data Lake Storage Gen2 API 可運作於相同的資料上。
 
 ## <a name="access-control-lists-acl-and-anonymous-read-access"></a>存取控制清單 (ACL) 和匿名讀取權限
 
-如果已將[匿名讀取權限](storage-manage-access-to-resources.md)授與容器，則 ACL 不會影響該容器或該容器中的檔案。
+如果已將[匿名讀取權限](./anonymous-read-access-configure.md)授與容器，則 ACL 不會影響該容器或該容器中的檔案。
 
 ## <a name="diagnostic-logs"></a>診斷記錄
 

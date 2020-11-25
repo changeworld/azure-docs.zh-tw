@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 01/30/2020
+ms.date: 11/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fba2610b3343744c448e390bc2d713b38da481d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 25c6ccb4661fde1efb088cd8535bf2759f2057b3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839466"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95902755"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>使用 Azure Active Directory (preview 啟用無密碼安全性金鑰登入 Windows 10 裝置) 
 
@@ -25,7 +25,7 @@ ms.locfileid: "94839466"
 > [!NOTE]
 > FIDO2 安全性金鑰是 Azure Active Directory 的公開預覽功能。 如需預覽的詳細資訊，請參閱  [Microsoft Azure 預覽的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 | 裝置類型 | 已聯結的 Azure AD | 已聯結的混合式 Azure AD |
 | --- | --- | --- |
@@ -134,7 +134,7 @@ ms.locfileid: "94839466"
 - 將此原則設定為 [ **已啟用** ]，可讓使用者以安全性金鑰登入。
 - 將此原則設定為 [ **已停** 用] 或 [ **未設定** ]，會阻止使用者以安全性金鑰登入。
 
-此群組原則設定需要群組原則範本的更新版本 `credentialprovider.admx` 。 這個新範本適用于下一版的 Windows Server 和 Windows 10 20H1。 這項設定可透過執行下列其中一種新版 Windows 的裝置來管理，或依照支援主題中的指導方針、 [如何建立和管理 Windows 中群組原則系統管理範本的集中存放區](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)。
+此群組原則設定需要群組原則範本的更新版本 `CredentialProviders.admx` 。 這個新範本適用于下一版的 Windows Server 和 Windows 10 20H1。 這項設定可透過執行下列其中一種新版 Windows 的裝置來管理，或依照支援主題中的指導方針、 [如何建立和管理 Windows 中群組原則系統管理範本的集中存放區](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)。
 
 ## <a name="sign-in-with-fido2-security-key"></a>使用 FIDO2 安全性金鑰登入
 

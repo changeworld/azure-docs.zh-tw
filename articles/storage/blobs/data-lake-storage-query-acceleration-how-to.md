@@ -9,12 +9,12 @@ ms.date: 09/09/2020
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: b7f566f85ebdb6b481797823cba78aa968747e9f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b02f5a7c390c5594a7c5692798a0691c8d9a42d0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746421"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912768"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>使用 Azure Data Lake Storage 查詢加速來篩選資料
 
@@ -26,7 +26,7 @@ ms.locfileid: "92746421"
 
 - 若要存取 Azure 儲存體，您需要有 Azure 訂用帳戶。 如果您還沒有訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始操作。
 
-- **一般用途 v2** 儲存體帳戶。 請參閱 [建立儲存體帳戶](../common/storage-quickstart-create-account.md)。
+- **一般用途 v2** 儲存體帳戶。 請參閱 [建立儲存體帳戶](../common/storage-account-create.md)。
 
 - 選擇索引標籤以查看任何 SDK 特定的必要條件。
 
@@ -92,7 +92,7 @@ ms.locfileid: "92746421"
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. 開啟 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)，或如果您已在本機[安裝](https://docs.microsoft.com/cli/azure/install-azure-cli) Azure CLI，請開啟命令主控台應用程式，例如 Windows PowerShell。
+1. 開啟 [Azure Cloud Shell](../../cloud-shell/overview.md)，或如果您已在本機[安裝](/cli/azure/install-azure-cli) Azure CLI，請開啟命令主控台應用程式，例如 Windows PowerShell。
 
 2. 如果您的身分識別與多個訂用帳戶相關聯，請將使用中的訂用帳戶設定為儲存體帳戶的訂用帳戶。
 
@@ -152,7 +152,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 ---
 
-## <a name="set-up-your-environment"></a>設定您的環境
+## <a name="set-up-your-environment"></a>設定環境
 
 ### <a name="step-1-install-packages"></a>步驟1：安裝套件 
 
@@ -328,7 +328,7 @@ Get-QueryCsv $ctx $container $blob "SELECT * FROM BlobStorage WHERE _3 = 'Heming
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Async 方法會 `BlobQuickQueryClient.QueryAsync` 將查詢傳送至查詢加速 API，然後將結果以 [資料流程](https://docs.microsoft.com/dotnet/api/system.io.stream) 物件的形式串流回應用程式。
+Async 方法會 `BlobQuickQueryClient.QueryAsync` 將查詢傳送至查詢加速 API，然後將結果以 [資料流程](/dotnet/api/system.io.stream) 物件的形式串流回應用程式。
 
 ```cs
 static async Task QueryHemingway(BlockBlobClient blob)

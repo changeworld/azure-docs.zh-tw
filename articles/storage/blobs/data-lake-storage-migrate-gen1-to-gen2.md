@@ -8,21 +8,21 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: c0b85164042ef8ba0dda5f83dbfe49f585a11f7c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: aeb2c58504d1f058a3b887e02a7b7406c09db5b6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102637"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913142"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>將 Azure Data Lake Storage 從 Gen1 遷移至 Gen2
 
 您可以將資料、工作負載和應用程式從 Data Lake Storage Gen1 遷移至 Data Lake Storage Gen2。
 
-Azure Data Lake Storage Gen2 建置於 [Azure Blob 儲存體](storage-blobs-introduction.md) 上，並提供一組專門用於大型資料分析的功能。 [Data Lake Storage Gen2](https://azure.microsoft.com/services/storage/data-lake-storage/) 結合了 [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index)的功能，例如檔案系統語義、目錄和檔案層級安全性，以及 [Azure Blob 儲存體](storage-blobs-introduction.md)的低成本、分層式儲存體、高可用性/嚴重損壞修復功能的調整。
+Azure Data Lake Storage Gen2 建置於 [Azure Blob 儲存體](storage-blobs-introduction.md) 上，並提供一組專門用於大型資料分析的功能。 [Data Lake Storage Gen2](https://azure.microsoft.com/services/storage/data-lake-storage/) 結合了 [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml)的功能，例如檔案系統語義、目錄和檔案層級安全性，以及 [Azure Blob 儲存體](storage-blobs-introduction.md)的低成本、分層式儲存體、高可用性/嚴重損壞修復功能的調整。
 
 > [!NOTE]
-> 為了方便閱讀，本文使用「詞彙 Gen1」（ *Gen1* ）來參考 Azure Data Lake Storage Gen1，並使用*Gen2*一詞來參考 Azure Data Lake Storage Gen2。
+> 為了方便閱讀，本文使用「詞彙 Gen1」（ *Gen1* ）來參考 Azure Data Lake Storage Gen1，並使用 *Gen2* 一詞來參考 Azure Data Lake Storage Gen2。
 
 ## <a name="recommended-approach"></a>建議的方法
 
@@ -47,9 +47,9 @@ Azure Data Lake Storage Gen2 建置於 [Azure Blob 儲存體](storage-blobs-intr
 
 3. 請查看 [已知問題](data-lake-storage-known-issues.md) 清單，以評估任何功能中的差距。
 
-4. Gen2 支援 Blob 儲存體功能，例如 [診斷記錄](../common/storage-analytics-logging.md)、 [存取層](storage-blob-storage-tiers.md)，以及 [blob 儲存體生命週期管理原則](storage-lifecycle-management-concepts.md)。 如果您很感興趣使用這些功能，請參閱 [目前的支援層級](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-supported-blob-storage-features)。
+4. Gen2 支援 Blob 儲存體功能，例如 [診斷記錄](../common/storage-analytics-logging.md)、 [存取層](storage-blob-storage-tiers.md)，以及 [blob 儲存體生命週期管理原則](storage-lifecycle-management-concepts.md)。 如果您很感興趣使用這些功能，請參閱 [目前的支援層級](./data-lake-storage-supported-blob-storage-features.md)。
 
-5. 請參閱 [Azure 生態系統支援](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-multi-protocol-access) 的目前狀態，以確保 Gen2 支援您解決方案所依存的任何服務。
+5. 請參閱 [Azure 生態系統支援](./data-lake-storage-multi-protocol-access.md) 的目前狀態，以確保 Gen2 支援您解決方案所依存的任何服務。
 
 ### <a name="step-2-prepare-to-migrate"></a>步驟2：準備遷移
 
@@ -69,13 +69,13 @@ Azure Data Lake Storage Gen2 建置於 [Azure Blob 儲存體](storage-blobs-intr
 
 使用您偏好的模式來遷移資料、工作負載和應用程式。 建議您以累加方式驗證案例。
 
-1. [建立儲存體帳戶](data-lake-storage-quickstart-create-account.md) 並啟用階層命名空間功能。 
+1. [建立儲存體帳戶](../common/storage-account-create.md) 並啟用階層命名空間功能。 
 
 2. 遷移您的資料。 
 
-3. 設定 [工作負載中的服務](data-lake-storage-integrate-with-azure-services.md) ，以指向您的 Gen2 端點。 
+3. 設定 [工作負載中的服務](./data-lake-storage-supported-azure-services.md) ，以指向您的 Gen2 端點。 
    
-4. 更新應用程式以使用 Gen2 Api。 請參閱 [.net](data-lake-storage-directory-file-acl-dotnet.md)、 [JAVA](data-lake-storage-directory-file-acl-java.md)、 [Python](data-lake-storage-directory-file-acl-python.md)、 [JavaScript](data-lake-storage-directory-file-acl-javascript.md) 和 [REST](https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2)的指南。 
+4. 更新應用程式以使用 Gen2 Api。 請參閱 [.net](data-lake-storage-directory-file-acl-dotnet.md)、 [JAVA](data-lake-storage-directory-file-acl-java.md)、 [Python](data-lake-storage-directory-file-acl-python.md)、 [JavaScript](data-lake-storage-directory-file-acl-javascript.md) 和 [REST](/rest/api/storageservices/data-lake-storage-gen2)的指南。 
    
 5. 更新腳本以使用 Data Lake Storage Gen2 [PowerShell Cmdlet](data-lake-storage-directory-file-acl-powershell.md)和 [Azure CLI 命令](data-lake-storage-directory-file-acl-cli.md)。
    
@@ -97,13 +97,13 @@ Azure Data Lake Storage Gen2 建置於 [Azure Blob 儲存體](storage-blobs-intr
 |---|---|---|
 |資料組織|[階層式命名空間](data-lake-storage-namespace.md)<br>檔案和資料夾支援|[階層式命名空間](data-lake-storage-namespace.md)<br>容器、檔案和資料夾支援 |
 |異地備援| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage)、 [ZRS](../common/storage-redundancy.md#zone-redundant-storage)、 [GRS](../common/storage-redundancy.md#geo-redundant-storage)、 [RA-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |
-|驗證|[AAD 受控識別](../../active-directory/managed-identities-azure-resources/overview.md)<br>[服務主體](../../active-directory/develop/app-objects-and-service-principals.md)|[AAD 受控識別](../../active-directory/managed-identities-azure-resources/overview.md)<br>[服務主體](../../active-directory/develop/app-objects-and-service-principals.md)<br>[共用存取金鑰](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
+|驗證|[AAD 受控識別](../../active-directory/managed-identities-azure-resources/overview.md)<br>[服務主體](../../active-directory/develop/app-objects-and-service-principals.md)|[AAD 受控識別](../../active-directory/managed-identities-azure-resources/overview.md)<br>[服務主體](../../active-directory/develop/app-objects-and-service-principals.md)<br>[共用存取金鑰](/rest/api/storageservices/authorize-with-shared-key)|
 |授權|管理- [AZURE RBAC](../../role-based-access-control/overview.md)<br>資料- [acl](data-lake-storage-access-control.md)|管理– [AZURE RBAC](../../role-based-access-control/overview.md)<br>資料-  [acl](data-lake-storage-access-control.md)、 [Azure RBAC](../../role-based-access-control/overview.md) |
-|加密-待用資料|伺服器端–具有 [Microsoft 管理](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 或 [客戶管理的](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 金鑰|伺服器端–具有 [Microsoft 管理](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 或 [客戶管理的](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 金鑰|
+|加密-待用資料|伺服器端–具有 [Microsoft 管理](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 或 [客戶管理的](../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 金鑰|伺服器端–具有 [Microsoft 管理](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 或 [客戶管理的](../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 金鑰|
 |VNET 支援|[VNET 整合](../../data-lake-store/data-lake-store-network-security.md)|[服務端點](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)， [私人端點](../common/storage-private-endpoints.md)|
 |開發人員體驗|[REST](../../data-lake-store/data-lake-store-data-operations-rest-api.md)、 [.net](../../data-lake-store/data-lake-store-data-operations-net-sdk.md)、 [JAVA](../../data-lake-store/data-lake-store-get-started-java-sdk.md)、 [Python](../../data-lake-store/data-lake-store-data-operations-python.md)、 [PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)、 [Azure CLI](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|正式推出- [REST](/rest/api/storageservices/data-lake-storage-gen2)、 [.net](data-lake-storage-directory-file-acl-dotnet.md)、 [JAVA](data-lake-storage-directory-file-acl-java.md)、 [Python](data-lake-storage-directory-file-acl-python.md)<br>公開預覽- [JavaScript](data-lake-storage-directory-file-acl-javascript.md)、 [PowerShell](data-lake-storage-directory-file-acl-powershell.md)、 [Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
 |資源記錄|傳統記錄檔<br>[Azure 監視器整合式](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[傳統記錄](../common/storage-analytics-logging.md) -正式推出<br>Azure 監視器整合–時程表 TBD|
-|生態系統|[HDInsight (3.6) ](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)、 [Azure Databricks (3.1 和 ](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html)更新版本) 、 [Azure Synapse Analytics](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store)、 [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3.6、4.0) ](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)、 [Azure Databricks (5.1 和 ](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2)更新版本) 、 [Azure Synapse Analytics](../../azure-sql/database/vnet-service-endpoint-rule-overview.md)、 [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
+|生態系統|[HDInsight (3.6) ](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)、 [Azure Databricks (3.1 和 ](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html)更新版本) 、 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)、 [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3.6、4.0) ](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)、 [Azure Databricks (5.1 和 ](/azure/databricks/data/data-sources/azure/azure-datalake-gen2)更新版本) 、 [Azure Synapse Analytics](../../azure-sql/database/vnet-service-endpoint-rule-overview.md)、 [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
 
 <a id="migration-patterns"></a>
 
@@ -126,7 +126,7 @@ Azure Data Lake Storage Gen2 建置於 [Azure Blob 儲存體](storage-blobs-intr
 
 1. 停止所有寫入 Gen1。
 
-2. 將資料從 Gen1 移至 Gen2。 建議 [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)。 Acl 會與資料一起複製。
+2. 將資料從 Gen1 移至 Gen2。 建議 [Azure Data Factory](../../data-factory/connector-azure-data-lake-storage.md)。 Acl 會與資料一起複製。
 
 3. 將內嵌作業和工作負載指向 Gen2。
 
@@ -147,7 +147,7 @@ Azure Data Lake Storage Gen2 建置於 [Azure Blob 儲存體](storage-blobs-intr
 
 ### <a name="incremental-copy-pattern"></a>增量複製模式
 
-1. 開始將資料從 Gen1 移至 Gen2。 建議 [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)。 Acl 會與資料一起複製。
+1. 開始將資料從 Gen1 移至 Gen2。 建議 [Azure Data Factory](../../data-factory/connector-azure-data-lake-storage.md)。 Acl 會與資料一起複製。
 
 2. 以累加方式從 Gen1 複製新資料。
 
@@ -171,7 +171,7 @@ Azure Data Lake Storage Gen2 建置於 [Azure Blob 儲存體](storage-blobs-intr
 
 ### <a name="dual-pipeline-pattern"></a>雙重管線模式
 
-1. 將資料從 Gen1 移至 Gen2。 建議 [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)。 Acl 會與資料一起複製。
+1. 將資料從 Gen1 移至 Gen2。 建議 [Azure Data Factory](../../data-factory/connector-azure-data-lake-storage.md)。 Acl 會與資料一起複製。
 
 2. 將新資料內嵌至 Gen1 和 Gen2。
 
@@ -213,6 +213,6 @@ Azure Data Lake Storage Gen2 建置於 [Azure Blob 儲存體](storage-blobs-intr
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解設定儲存體帳戶安全性的各個部分。 請參閱 [Azure 儲存體安全性指南](../common/storage-security-guide.md)。
+- 瞭解設定儲存體帳戶安全性的各個部分。 請參閱 [Azure 儲存體安全性指南](./security-recommendations.md)。
 - 將您 Data Lake Store 的效能優化。 查看效能 [優化 Azure Data Lake Storage Gen2](data-lake-storage-performance-tuning-guidance.md)
 - 複習管理 Data Lake Store 的最佳做法。 請參閱 [使用 Azure Data Lake Storage Gen2 的最佳作法](data-lake-storage-best-practices.md)

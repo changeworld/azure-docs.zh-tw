@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5e861182ee57a0b49d3e62a858fc97dbf0890ea3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48cde51ee9941f705aa848d121c419a8f0c9ad1a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399698"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013709"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>教學課程：建立租用戶模型 (預覽)
 
@@ -58,7 +58,7 @@ ms.locfileid: "91399698"
 
 1. 登入 [Azure 入口網站](https://aka.ms/azureportal)。
 1. 選取 [建立資源]。
-1. 在 [搜尋] 方塊中，輸入**語音**。
+1. 在 [搜尋] 方塊中，輸入 **語音**。
 1. 在結果清單中，選取 [語音]，然後選取 [建立]。
 1. 遵循畫面上的指示來建立資源。 請確認：
    * [位置] 設定為 [eastus] 或 [westus]。
@@ -105,7 +105,7 @@ ms.locfileid: "91399698"
 
 現在您已部署模型，您可以搭配語音 SDK 使用它。 在本節中，您會透過 Azure Active Directory (Azure AD) 驗證，使用範例程式碼來呼叫語音服務。
 
-讓我們看一下您會用 C# 呼叫語音 SDK 的程式碼。 在此範例中，您會使用租用戶模型執行語音辨識。 本指南假設您的平台已設定好。 如果您需要安裝程式說明，請參閱[快速入門：辨識語音，C# (.NET Core)](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)。
+讓我們看一下您會用 C# 呼叫語音 SDK 的程式碼。 在此範例中，您會使用租用戶模型執行語音辨識。 本指南假設您的平台已設定好。 如果您需要安裝程式說明，請參閱[快速入門：辨識語音，C# (.NET Core)](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore)。
 
 請將下列程式碼複製到您的專案中：
 

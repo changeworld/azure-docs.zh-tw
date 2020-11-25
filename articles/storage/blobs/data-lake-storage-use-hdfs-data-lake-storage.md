@@ -9,12 +9,12 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: 1d720aed44358dd314bc4226adb9ad517139cd18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2b36dd600efa864913e0087c49bffd556e8330d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836304"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912394"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>使用 HDFS CLI 搭配 Data Lake Storage Gen2
 
@@ -29,7 +29,7 @@ HDInsight 可讓您存取本機連接到計算節點的分散式容器。 您可
 
 ## <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>在 Linux 上搭配使用 HDFS CLI 和 HDInsight Hadoop 叢集
 
-首先，建立[服務的遠端存取](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-information#remote-access-to-services)。 如果您挑選 [SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)，則範例 PowerShell 程式碼會看起來像這樣：
+首先，建立[服務的遠端存取](../../hdinsight/hdinsight-hadoop-linux-information.md#remote-access-to-services)。 如果您挑選 [SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)，則範例 PowerShell 程式碼會看起來像這樣：
 
 ```powershell
 #Connect to the cluster via SSH.
@@ -58,7 +58,7 @@ hdfs dfs -mkdir /samplefolder
 
 將預留位置取代為 `<path>` 容器或容器檔案夾的 URI。
 
-例如： `hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
+例如：`hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
 
 ## <a name="create-a-directory"></a>建立目錄
 
@@ -66,7 +66,7 @@ hdfs dfs -mkdir /samplefolder
 
 將預留位置取代為 `<path>` 容器中的根容器名稱或資料夾。
 
-例如： `hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
+例如：`hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
 
 ## <a name="delete-a-file-or-directory"></a>刪除檔案或目錄
 
@@ -74,7 +74,7 @@ hdfs dfs -mkdir /samplefolder
 
 將 `<path>` 預留位置取代為您想要刪除之檔案或資料夾的 URI。
 
-例如： `hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name/my-file-name`
+例如：`hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name/my-file-name`
 
 ## <a name="display-the-access-control-lists-acls-of-files-and-directories"></a>顯示檔案和目錄的存取控制清單 (ACL)
 
@@ -120,4 +120,4 @@ hdfs dfs -mkdir /samplefolder
 
 * [在 Azure Databricks 中使用具有 Azure Data Lake Storage Gen2 功能的帳戶](./data-lake-storage-quickstart-create-databricks-account.md)
 
-* [深入瞭解檔案和目錄的存取控制清單](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
+* [深入瞭解檔案和目錄的存取控制清單](./data-lake-storage-access-control.md)

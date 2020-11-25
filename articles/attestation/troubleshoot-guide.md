@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 46e3521a54f6bfdfbfb25634a09b8c8e0cfdcac0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: fe347983e2143c7a4bdf00ca0207356c881c66ac
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342990"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95891277"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure 證明疑難排解指南
 
@@ -64,7 +64,7 @@ At line:1 char:1
 
 a. 透過 "Disconnect-azaccount" Cmdlet 啟動 PowerShell 並登入 Azure
 
-b. 驗證您的 RBAC 角色指派設定
+b. 驗證您的 Azure 角色指派設定
 
 
   ```powershell
@@ -261,7 +261,7 @@ At line:1 char:1
 
 無法在 PowerShell 中安裝 Az 或 Az. 證明模組
 
-### <a name="error"></a>錯誤
+### <a name="error"></a>Error
 
 警告：無法解析套件來源 ' https://www.powershellgallery.com/api/v2 ' PackageManagement\Install-Package：找不到符合指定搜尋準則和模組名稱的相符項
 
@@ -279,7 +279,7 @@ PowerShell 資源庫已淘汰傳輸層安全性 (TLS) 1.0 和1.1 版。
 
 已指派適當角色的使用者。 但透過 PowerShell 管理證明原則時遇到授權問題。
 
-### <a name="error"></a>錯誤
+### <a name="error"></a>Error
 具有物件識別碼的用戶端沒有 <object Id>  授權，無法執行 Microsoft 的動作。授權/roleassignments/寫入範圍 ' 經由 open 訂閱/ <subscriptionId> resourcegroups/secure_enclave_poc/providers/microsoft.authorization/roleassignments/ <role assignmentId> '，或範圍無效。 如果最近才授與存取權，請重新整理您的認證
 
 ### <a name="troubleshooting-steps"></a>疑難排解步驟

@@ -10,12 +10,12 @@ ms.date: 09/09/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: affddf7367f58107106ae07a07b8baedac73e251
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2eda67e377a3b61e696e732b916d788c00a18eae
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659559"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908773"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>查詢加速 SQL 語言參考
 
@@ -63,7 +63,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 |timestamp|時間點。                           |
 |BOOLEAN  |true 或 false。                             |
 
-從 CSV 格式化的資料讀取值時，所有值都會讀取為字串。  您可以使用 CAST 運算式，將字串值轉換成其他類型。  根據內容，值可能會隱含地轉換成其他類型。 如需詳細資訊，請參閱 [ (transact-sql) 的資料類型優先順序 ](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql)。
+從 CSV 格式化的資料讀取值時，所有值都會讀取為字串。  您可以使用 CAST 運算式，將字串值轉換成其他類型。  根據內容，值可能會隱含地轉換成其他類型。 如需詳細資訊，請參閱 [ (transact-sql) 的資料類型優先順序 ](/sql/t-sql/data-types/data-type-precedence-transact-sql)。
 
 ## <a name="expressions"></a>運算式
 
@@ -73,40 +73,40 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 在 CSV 格式的資料中，也可以依序數參考欄位，前面加上底線 (_) 字元。  例如，第一個欄位可以參考為 _1，或第十個欄位可以參考為 _11。  依序數參考欄位適用于 CSV 格式的資料，其中不包含標頭資料列，在此情況下，參考特定欄位的唯一方式是依序數。
 
-### <a name="operators"></a>操作員
+### <a name="operators"></a>運算子
 
 以下是支援的標準 SQL 運算子：
 
 |運算子|描述|
 |--|--|
-|[=](https://docs.microsoft.com/sql/t-sql/language-elements/equals-transact-sql)    |比較兩個運算式是否相等 (比較運算子)。|
-|[!=](https://docs.microsoft.com/sql/t-sql/language-elements/not-equal-to-transact-sql-exclamation)    |測試一個運算式是否等於另一個運算式 (比較運算子)。|
-|[<>](https://docs.microsoft.com/sql/t-sql/language-elements/not-equal-to-transact-sql-traditional)    |比較兩個不等於 (比較運算子) 的運算式。|
-|[<](https://docs.microsoft.com/sql/t-sql/language-elements/less-than-transact-sql)    |比較兩個運算式是否小於 (比較運算子) 。|
-|[<=](https://docs.microsoft.com/sql/t-sql/language-elements/less-than-or-equal-to-transact-sql)    |比較兩個運算式是否小於或等於 (比較運算子) 。|
-|[>](https://docs.microsoft.com/sql/t-sql/language-elements/greater-than-transact-sql)    |比較兩個運算式是否大於 (比較運算子) 。 |
-|[>=](https://docs.microsoft.com/sql/t-sql/language-elements/greater-than-or-equal-to-transact-sql)    |比較大於或等於 (比較運算子) 的兩個運算式。|
-|[+](https://docs.microsoft.com/sql/t-sql/language-elements/add-transact-sql)    |兩個數字相加。 這個加法算術運算子也可以在日期中加入數字 (表示天數)。|
-|[-](https://docs.microsoft.com/sql/t-sql/language-elements/subtract-transact-sql)    |執行兩個數字的減法運算 (算術減法運算子)。 |
-|[/](https://docs.microsoft.com/sql/t-sql/language-elements/divide-transact-sql)    |將一個數字除以另一個數字 (算術除法運算子)。|
-|[*](https://docs.microsoft.com/sql/t-sql/language-elements/multiply-transact-sql)    |乘以兩個運算式 (算術乘法運算子)。|
-|[%](https://docs.microsoft.com/sql/t-sql/language-elements/modulo-transact-sql)    |傳回某個數值除以另一個數值的餘數。|
-|[AND](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-and-transact-sql)    |在兩個整數值之間，執行位元邏輯 AND 運算。|
-|[OR](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-or-transact-sql)    |在兩個指定整數值之間執行位邏輯 OR 運算，以轉譯成 Transact-sql 語句內的二進位運算式。|
-|[NOT](https://docs.microsoft.com/sql/t-sql/language-elements/not-transact-sql)    |執行布林輸入的否定運算。|
-|[CAST](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)    |將某種資料類型的運算式轉換成另一種。|
-|[BETWEEN](https://docs.microsoft.com/sql/t-sql/language-elements/between-transact-sql)    |指定要測試的範圍。|
-|[IN](https://docs.microsoft.com/sql/t-sql/language-elements/in-transact-sql)    |判斷指定的值是否符合子查詢或清單中的任何值。|
-|[NULLIF](https://docs.microsoft.com/sql/t-sql/language-elements/nullif-transact-sql)    |如果兩個指定的運算式相等，便傳回 Null 值。|
-|[COALESCE](https://docs.microsoft.com/sql/t-sql/language-elements/coalesce-transact-sql)    |依序評估引數，並傳回一開始未評估為 Null 之第一個運算式的目前值。|
+|[=](/sql/t-sql/language-elements/equals-transact-sql)    |比較兩個運算式是否相等 (比較運算子)。|
+|[!=](/sql/t-sql/language-elements/not-equal-to-transact-sql-exclamation)    |測試一個運算式是否等於另一個運算式 (比較運算子)。|
+|[<>](/sql/t-sql/language-elements/not-equal-to-transact-sql-traditional)    |比較兩個不等於 (比較運算子) 的運算式。|
+|[<](/sql/t-sql/language-elements/less-than-transact-sql)    |比較兩個運算式是否小於 (比較運算子) 。|
+|[<=](/sql/t-sql/language-elements/less-than-or-equal-to-transact-sql)    |比較兩個運算式是否小於或等於 (比較運算子) 。|
+|[>](/sql/t-sql/language-elements/greater-than-transact-sql)    |比較兩個運算式是否大於 (比較運算子) 。 |
+|[>=](/sql/t-sql/language-elements/greater-than-or-equal-to-transact-sql)    |比較大於或等於 (比較運算子) 的兩個運算式。|
+|[+](/sql/t-sql/language-elements/add-transact-sql)    |兩個數字相加。 這個加法算術運算子也可以在日期中加入數字 (表示天數)。|
+|[-](/sql/t-sql/language-elements/subtract-transact-sql)    |執行兩個數字的減法運算 (算術減法運算子)。 |
+|[/](/sql/t-sql/language-elements/divide-transact-sql)    |將一個數字除以另一個數字 (算術除法運算子)。|
+|[*](/sql/t-sql/language-elements/multiply-transact-sql)    |乘以兩個運算式 (算術乘法運算子)。|
+|[%](/sql/t-sql/language-elements/modulo-transact-sql)    |傳回某個數值除以另一個數值的餘數。|
+|[AND](/sql/t-sql/language-elements/bitwise-and-transact-sql)    |在兩個整數值之間，執行位元邏輯 AND 運算。|
+|[OR](/sql/t-sql/language-elements/bitwise-or-transact-sql)    |在兩個指定整數值之間執行位邏輯 OR 運算，以轉譯成 Transact-sql 語句內的二進位運算式。|
+|[NOT](/sql/t-sql/language-elements/not-transact-sql)    |執行布林輸入的否定運算。|
+|[CAST](/sql/t-sql/functions/cast-and-convert-transact-sql)    |將某種資料類型的運算式轉換成另一種。|
+|[BETWEEN](/sql/t-sql/language-elements/between-transact-sql)    |指定要測試的範圍。|
+|[IN](/sql/t-sql/language-elements/in-transact-sql)    |判斷指定的值是否符合子查詢或清單中的任何值。|
+|[NULLIF](/sql/t-sql/language-elements/nullif-transact-sql)    |如果兩個指定的運算式相等，便傳回 Null 值。|
+|[COALESCE](/sql/t-sql/language-elements/coalesce-transact-sql)    |依序評估引數，並傳回一開始未評估為 Null 之第一個運算式的目前值。|
 
-如果運算子左邊和右邊的資料類型不同，則會根據此處指定的規則來執行自動轉換： [資料類型優先順序 (transact-sql) ](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql)。
+如果運算子左邊和右邊的資料類型不同，則會根據此處指定的規則來執行自動轉換： [資料類型優先順序 (transact-sql) ](/sql/t-sql/data-types/data-type-precedence-transact-sql)。
 
 查詢加速 SQL 語言僅支援在該文章中討論的一小部分資料類型。  請參閱本文的 [資料類型](#data-types) 一節。
 
 ### <a name="casts"></a>轉換
 
-根據此處的規則，查詢加速 SQL 語言支援轉換運算子： [資料類型轉換 (資料庫引擎) ](https://docs.microsoft.com/sql/t-sql/data-types/data-type-conversion-database-engine)。  
+根據此處的規則，查詢加速 SQL 語言支援轉換運算子： [資料類型轉換 (資料庫引擎) ](/sql/t-sql/data-types/data-type-conversion-database-engine)。  
 
 查詢加速 SQL 語言僅支援在該文章中討論的一小部分資料類型。  請參閱本文的 [資料類型](#data-types) 一節。
 
@@ -118,10 +118,10 @@ SELECT sys.split(split_size)FROM BlobStorage
 |--|--|
 |CHAR_LENGTH    | 如果字串運算式是字元資料類型，則傳回字串運算式的長度（以字元為單位）。否則，會傳回字串運算式的長度（以位元組為單位）， (不小於位數除以 8) 的最小整數。  (此函數與 CHARACTER_LENGTH 函數相同。 ) |
 |CHARACTER_LENGTH    |如果字串運算式是字元資料類型，則傳回字串運算式的長度（以字元為單位）。否則，會傳回字串運算式的長度（以位元組為單位）， (不小於位數除以 8) 的最小整數。  (此函式與 CHAR_LENGTH 函數相同|
-|[LOWER](https://docs.microsoft.com/sql/t-sql/functions/lower-transact-sql)    |將大寫字元資料轉換成小寫之後，傳回字元運算式。|
-|[UPPER](https://docs.microsoft.com/sql/t-sql/functions/upper-transact-sql)    |傳回小寫字元資料轉換成大寫的字元運算式。|
-|[SUBSTRING](https://docs.microsoft.com/sql/t-sql/functions/substring-transact-sql)    |傳回 SQL Server 中的字元、二進位、文字或影像運算式的一部分。|
-|[TRIM](https://docs.microsoft.com/sql/t-sql/functions/trim-transact-sql)    |從字串的開頭和結尾移除空白字元 char (32) 或其他指定的字元。|
+|[LOWER](/sql/t-sql/functions/lower-transact-sql)    |將大寫字元資料轉換成小寫之後，傳回字元運算式。|
+|[UPPER](/sql/t-sql/functions/upper-transact-sql)    |傳回小寫字元資料轉換成大寫的字元運算式。|
+|[SUBSTRING](/sql/t-sql/functions/substring-transact-sql)    |傳回 SQL Server 中的字元、二進位、文字或影像運算式的一部分。|
+|[TRIM](/sql/t-sql/functions/trim-transact-sql)    |從字串的開頭和結尾移除空白字元 char (32) 或其他指定的字元。|
 |LEADING    |描述|
 |TRAILING    |描述|
 
@@ -340,4 +340,3 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 - [Azure Data Lake Storage 查詢加速](data-lake-storage-query-acceleration.md)
 - [使用 Azure Data Lake Storage 查詢加速來篩選資料](data-lake-storage-query-acceleration-how-to.md)
-

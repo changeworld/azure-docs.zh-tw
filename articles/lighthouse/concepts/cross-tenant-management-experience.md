@@ -1,14 +1,14 @@
 ---
 title: 跨租用戶管理體驗
 description: Azure 委派的資源管理能提供跨租用戶管理體驗。
-ms.date: 11/09/2020
+ms.date: 11/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: dfb92e3f4f02e693ae5e4bba57e5344288c4615a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 95b9bcf6bb9530afc9f6a23c323b6931e8975ad1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413117"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95905118"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租用戶管理體驗
 
@@ -81,6 +81,8 @@ Azure PowerShell [>select-azsubscription 指令程式](/powershell/module/Az.Acc
 [Azure Kubernetes Service (AKS)](../../aks/index.yml)：
 
 - 管理託管的 Kubernetes 環境並部署及管理客戶租用戶內的容器化應用程式
+- 部署及管理客戶租使用者中的叢集
+-   使用容器的 Azure 監視器來監視客戶租使用者之間的效能
 
 [Azure Migrate](../../migrate/index.yml)：
 
@@ -156,7 +158,7 @@ Azure PowerShell [>select-azsubscription 指令程式](/powershell/module/Az.Acc
 
 支援要求：
 
-- 在委派資源的 Azure 入口網站中，從 [說明 [ **+ 支援** ] 開啟支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started)， (選取可供委派範圍使用的支援方案) 
+- 在委派資源的 Azure 入口網站中，從 [說明 [ **+ 支援**] 開啟支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started)， (選取可供委派範圍使用的支援方案) 
 
 ## <a name="current-limitations"></a>目前的限制
 

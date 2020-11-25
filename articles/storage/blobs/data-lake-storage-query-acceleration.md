@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 09/09/2020
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: ae92828f08ae4abf9cc28f18872cca27ce747be4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc1d217dba64c36aa219abbd4d2220a494347689
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657643"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912751"
 ---
 # <a name="azure-data-lake-storage-query-acceleration"></a>Azure Data Lake Storage 查詢加速
 
@@ -50,7 +50,7 @@ ms.locfileid: "89657643"
 
 查詢加速藉由減少應用程式所傳輸及處理的資料量來優化效能。
 
-若要計算匯總值，應用程式通常會從檔案中取出 **所有** 資料，然後在本機處理和篩選資料。 分析工作負載的輸入/輸出模式分析顯示，應用程式通常只需要其所讀取的20% 資料來執行任何指定的計算。 即使在套用資料 [分割剪除](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-optimize-hive-query#hive-partitioning)之類的技術之後，此統計資料也是如此。 這表示，80% 的資料會不必要地透過網路傳輸、經過剖析，並依應用程式進行篩選。 此模式基本上是設計來移除不必要的資料，會產生大量的計算成本。  
+若要計算匯總值，應用程式通常會從檔案中取出 **所有** 資料，然後在本機處理和篩選資料。 分析工作負載的輸入/輸出模式分析顯示，應用程式通常只需要其所讀取的20% 資料來執行任何指定的計算。 即使在套用資料 [分割剪除](../../hdinsight/hdinsight-hadoop-optimize-hive-query.md#hive-partitioning)之類的技術之後，此統計資料也是如此。 這表示，80% 的資料會不必要地透過網路傳輸、經過剖析，並依應用程式進行篩選。 此模式基本上是設計來移除不必要的資料，會產生大量的計算成本。  
 
 雖然 Azure 具有領先業界的網路，但在輸送量和延遲方面，不必要地跨該網路傳輸資料仍是應用程式效能的代價。 藉由在儲存體要求期間篩選出不必要的資料，查詢加速會消除這項成本。
 
@@ -76,5 +76,3 @@ ms.locfileid: "89657643"
 
 - [使用 Azure Data Lake Storage 查詢加速來篩選資料](data-lake-storage-query-acceleration-how-to.md)
 - [查詢加速 SQL 語言參考](query-acceleration-sql-reference.md)
-
-

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dc695cc36113430cb1820d978ed41f5250cad33e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3e040146673ba16c07856f30b88771d0063713e9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94974777"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95896878"
 ---
 # <a name="azure-security-baseline-for-azure-hpc-cache"></a>適用于 Azure HPC Cache 的 Azure 安全性基準
 
@@ -305,7 +305,7 @@ Azure 進階威脅防護 (ATP) 是一種安全性解決方案，可以使用 Act
 
 **指導** 方針： HPC Cache 使用 Azure RBAC 來隔離對商務關鍵性系統的存取權，方法是限制哪些帳戶會授與他們所屬訂用帳戶和管理群組的特殊許可權存取權。
 
-使用專用的系統管理帳戶建立標準作業程式。 若要建立快取，HPC Cache 要求使用者必須在訂用帳戶中擁有足夠的許可權，才能建立 Nic。 如果使用 Blob 儲存體，則需要 RBAC 角色儲存體帳戶參與者和儲存體 Blob 資料參與者，才能讓 HPC Cache 存取儲存體。 
+使用專用的系統管理帳戶建立標準作業程式。 若要建立快取，HPC Cache 要求使用者必須在訂用帳戶中擁有足夠的許可權，才能建立 Nic。 如果使用 Blob 儲存體，則需要 Azure 角色儲存體帳戶參與者和儲存體 Blob 資料參與者，才能讓 HPC Cache 存取儲存體。 
 
 確定您也會限制存取管理、身分識別和安全性系統，這些系統具有業務關鍵資產的系統管理存取權，例如 Active Directory 網網域控制站 (Dc) 、安全性工具和系統管理工具，並將代理程式安裝在商務關鍵系統上。 入侵這些管理和安全性系統的攻擊者，可以立即 weaponize 它們來入侵商務關鍵資產。
 

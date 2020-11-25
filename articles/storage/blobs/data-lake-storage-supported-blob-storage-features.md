@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: b670ec3cee2ebd1cc98ea2e04fb2b0dfd90e4e1a
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 900021e258bb96c0d0c83ef182262515449ad5df
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594210"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912581"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中可用的 Blob 儲存體功能
 
@@ -31,7 +31,7 @@ Blob 儲存體功能，例如 [診斷記錄](../common/storage-analytics-logging
 |非經常性存取層|正式推出|不支援|[Azure Blob 儲存體︰經常性存取、非經常性存取和封存存取層](storage-blob-storage-tiers.md)|
 |事件|正式推出|正式推出|[回應 Blob 儲存體事件](storage-blob-event-overview.md)|
 |計量 (傳統)|正式推出|正式推出|[Azure 儲存體分析計量 (傳統)](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Azure 監視器中的計量|正式推出|預覽|[Azure 監視器中的 Azure 儲存體計量](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure 監視器中的計量|正式推出|預覽|[Azure 監視器中的 Azure 儲存體計量](./monitor-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Blob 儲存體 PowerShell 命令|正式推出|正式推出|[快速入門：使用 PowerShell 上傳、下載及列出 Blob](storage-quickstart-blobs-powershell.md)|
 |Blob 儲存體 Azure CLI 命令|正式推出|正式推出|[快速入門：使用 Azure CLI 建立、下載及列出 Blob](storage-quickstart-blobs-cli.md)|
 |Blob 儲存體 API|正式推出|正式推出|[快速入門：適用於 .NET 的 Azure Blob 儲存體用戶端程式庫 v12](storage-quickstart-blobs-dotnet.md)<br>[快速入門：使用 Java v12 SDK 來管理 Blob](storage-quickstart-blobs-java.md)<br>[快速入門：使用 Python v12 SDK 來管理 Blob](storage-quickstart-blobs-python.md)<br>[快速入門：使用 Node.js 中的 JavaScript v12 SDK 來管理 Blob](storage-quickstart-blobs-nodejs.md)|
@@ -39,12 +39,12 @@ Blob 儲存體功能，例如 [診斷記錄](../common/storage-analytics-logging
 |封存存取層|正式推出|不支援|[Azure Blob 儲存體︰經常性存取、非經常性存取和封存存取層](storage-blob-storage-tiers.md)|
 |生命週期管理原則 (分層) |正式推出|尚不支援|[管理 Azure Blob 儲存體生命週期](storage-lifecycle-management-concepts.md)|
 |生命週期管理原則 (刪除 blob) |正式推出|正式推出|[管理 Azure Blob 儲存體生命週期](storage-lifecycle-management-concepts.md)|
-|登入 Azure 監視器|預覽 |預覽|[監視 Azure 儲存體](../common/monitor-storage.md)|
+|登入 Azure 監視器|預覽 |預覽|[監視 Azure 儲存體](./monitor-blob-storage.md)|
 |快照集|預覽|預覽|[Blob 快照集](snapshots-overview.md)|
 |靜態網站|預覽|預覽|[Azure 儲存體中的靜態網站裝載](storage-blob-static-website.md) \(機器翻譯\)|
 |固定儲存體|預覽|預覽|[使用不可變儲存體儲存業務關鍵 Blob 資料](storage-blob-immutable-storage.md)|
 |容器虛刪除|預覽|預覽|[適用于容器的虛刪除 (預覽) ](soft-delete-container-overview.md)|
-|Blob 虛刪除|尚不支援|尚不支援|[Blob 的虛刪除](storage-blob-soft-delete.md)|
+|Blob 虛刪除|尚不支援|尚不支援|[Blob 的虛刪除](./soft-delete-blob-overview.md)|
 |Blobfuse|正式推出|正式推出|[如何使用 Blobfuse 將 Blob 儲存體掛接為檔案系統](storage-how-to-mount-container-linux.md)|
 |帳戶容錯移轉|尚不支援|尚不支援|[災害復原和帳戶容錯移轉](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Blob 容器 ACL|不受支援<div role="complementary" aria-labelledby="blob-container-ACL"><sup>1</sup></div>|不受支援<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|請參閱下表中的相關附注。|

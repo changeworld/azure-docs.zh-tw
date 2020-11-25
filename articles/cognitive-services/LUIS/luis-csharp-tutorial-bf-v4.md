@@ -6,16 +6,16 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a8d6481bdf3476f8f91c437138f4b6f1ebd1f1de
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 931fa2c10a47e5d00f8e83b31b16618b06da8a46
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058194"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019104"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>教學課程：使用以 C# 中 Language Understanding 啟用的 Web 應用程式 Bot
 
-使用 C# 建置與 Language Understanding (LUIS) 整合的聊天機器人。 此 Bot 是使用 Azure [Web 應用程式 Bot](https://docs.microsoft.com/azure/bot-service/) 資源和 [Bot Framework 版本](https://github.com/Microsoft/botbuilder-dotnet) V4 所建置的。
+使用 C# 建置與 Language Understanding (LUIS) 整合的聊天機器人。 此 Bot 是使用 Azure [Web 應用程式 Bot](/azure/bot-service/) 資源和 [Bot Framework 版本](https://github.com/Microsoft/botbuilder-dotnet) V4 所建置的。
 
 **在本教學課程中，您將了解如何：**
 
@@ -336,4 +336,4 @@ Bot 服務建立流程也會以意圖和語句範例來建立新 LUIS 應用程�
 查看更多聊天機器人[範例](https://github.com/microsoft/botframework-solutions)。
 
 > [!div class="nextstepaction"]
-> [使用自訂主體網域建置 Language Understanding 應用程式](luis-quickstart-intents-only.md)
+> [使用自訂主體網域建置 Language Understanding 應用程式](./tutorial-intents-only.md)

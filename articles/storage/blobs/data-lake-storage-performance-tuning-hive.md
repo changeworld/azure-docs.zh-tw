@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: fb908fe94f940073753ea8e1cde3da2b2a0c4b6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b1e5dd3c72122ade2fd4d4092bb18a7acf215f5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88034765"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912938"
 ---
 # <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>微調效能： Hive、HDInsight & Azure Data Lake Storage Gen2
 
@@ -22,9 +22,9 @@ ms.locfileid: "88034765"
 ## <a name="prerequisites"></a>必要條件
 
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-* **Data Lake Storage Gen2 帳戶**。 如需有關如何建立的指示，請參閱 [快速入門：建立 Azure Data Lake Storage Gen2 儲存體帳戶](data-lake-storage-quickstart-create-account.md)
-* 可存取 Data Lake Storage Gen2 帳戶的 **Azure HDInsight 叢集**。 請參閱[搭配使用 Azure Data Lake Storage Gen2 與 Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)叢集
-* **在 HDInsight 上執行 Hive**。  若要了解如何在 HDInsight 上執行 Hive 作業，請參閱[ HDInsight 上使用 Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
+* **Data Lake Storage Gen2 帳戶**。 如需有關如何建立的指示，請參閱 [快速入門：建立 Azure Data Lake Storage Gen2 儲存體帳戶](../common/storage-account-create.md)
+* 可存取 Data Lake Storage Gen2 帳戶的 **Azure HDInsight 叢集**。 請參閱[搭配使用 Azure Data Lake Storage Gen2 與 Azure HDInsight](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)叢集
+* **在 HDInsight 上執行 Hive**。  若要了解如何在 HDInsight 上執行 Hive 作業，請參閱[ HDInsight 上使用 Hive](../../hdinsight/hadoop/hdinsight-use-hive.md)
 * **Data Lake Storage Gen2 的效能微調方針**。  如需一般效能概念，請參閱[Data Lake Storage Gen2 效能微調指導](data-lake-storage-performance-tuning-guidance.md)方針
 
 ## <a name="parameters"></a>參數
@@ -51,7 +51,7 @@ ms.locfileid: "88034765"
 
 **Set hive.exec.reducer.bytes.per.reducer** – 資料若未壓縮，預設值就很適用。  資料若有壓縮，則應縮減歸納器的大小。  
 
-**Set hive.tez.container.size** – 在每個節點中，記憶體會由 yarn.nodemanager.resource.memory-mb 指定，且預設應該會在 HDI 叢集上正確設定。  如需在 YARN 中設定適當記憶體的詳細資訊，請參閱這篇[文章](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom)。
+**Set hive.tez.container.size** – 在每個節點中，記憶體會由 yarn.nodemanager.resource.memory-mb 指定，且預設應該會在 HDI 叢集上正確設定。  如需在 YARN 中設定適當記憶體的詳細資訊，請參閱這篇[文章](../../hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom.md)。
 
 I/O 密集工作負載可以透過減少 Tez 容器大小，而從更符合平行處理原則受益。 這會讓使用者獲得更多容器，而增加並行能力。  不過，某些 Hive 查詢需要大量的記憶體 (例如 MapJoin)。  如果工作沒有足夠的記憶體，您會在執行階段期間遇到記憶體不足的例外狀況。  如果您遇到記憶體不足的例外狀況，則應增加記憶體。   
 
@@ -73,6 +73,6 @@ I/O 密集工作負載可以透過減少 Tez 容器大小，而從更符合平�
 ## <a name="further-information-on-hive-tuning"></a>關於微調 Hive 的進一步資訊
 
 以下是一些有助於微調 Hive 查詢的部落格︰
-* [在 Hdinsight 中最佳化 Hadoop 的 Hive 查詢](https://azure.microsoft.com/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
-* [將 Azure HDInsight 中的 Apache Hive 查詢最佳化](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-optimize-hive-query)
+* [在 Hdinsight 中最佳化 Hadoop 的 Hive 查詢](../../hdinsight/hdinsight-hadoop-optimize-hive-query.md)
+* [將 Azure HDInsight 中的 Apache Hive 查詢最佳化](../../hdinsight/hdinsight-hadoop-optimize-hive-query.md)
 * [Ignite 講解如何將 HDInsight 上的 Hive 最佳化](https://channel9.msdn.com/events/Machine-Learning-and-Data-Sciences-Conference/Data-Science-Summit-2016/MSDSS25)

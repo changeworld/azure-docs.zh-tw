@@ -12,17 +12,20 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 38be8b97b3255e4e63301e693d2a5f295e8d801b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8881dc3f67ac1c9f699bd2bf7bcf1dbbcd5e9c0c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779963"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95905322"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell 和 Azure CLI：使用來自 Azure Key Vault 的客戶管理金鑰來啟用透明資料加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 本文將逐步解說如何使用 Azure Key Vault 的透明資料加密 (TDE) Azure SQL Database 或 Azure Synapse Analytics (先前的 SQL 資料倉儲) 。 若要深入了解以 Azure Key Vault 整合進行 TDE - 攜帶您自己的金鑰 (BYOK) 的支援，請參閱 [Azure SQL 透明資料加密：「攜帶您自己的金鑰」支援](transparent-data-encryption-byok-overview.md)。
+
+> [!NOTE] 
+> Azure SQL 現在支援使用以 TDE 保護裝置形式儲存在受控 HSM 中的 RSA 金鑰。 這項功能處於 **公開預覽** 狀態。 Azure Key Vault 受控 HSM 是完全受控、高可用性、單一租使用者、符合標準的雲端服務，可讓您使用 FIPS 140-2 層級3驗證的 Hsm 來保護雲端應用程式的密碼編譯金鑰。 深入瞭解 [受管理的 hsm](../../key-vault/managed-hsm/index.yml)。
 
 ## <a name="prerequisites-for-powershell"></a>PowerShell 的必要條件
 
@@ -36,7 +39,8 @@ ms.locfileid: "92779963"
 - 金鑰必須具有下列屬性才能用於 TDE：
   - 沒有到期日
   - 未停用
-  - 能夠執行 *取得* 、 *包裝金鑰* 、 *解除包裝金鑰* 作業
+  - 能夠執行 *取得*、*包裝金鑰*、*解除包裝金鑰* 作業
+- **預覽版中的 ()** 若要使用受管理的 HSM 金鑰，請依照指示 [使用 Azure CLI 來建立和啟用受控 hsm](../../key-vault/managed-hsm/quick-create-cli.md)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -70,6 +74,8 @@ ms.locfileid: "92779963"
    Set-AzKeyVaultAccessPolicy -VaultName <KeyVaultName> `
        -ObjectId $server.Identity.PrincipalId -PermissionsToKeys get, wrapKey, unwrapKey
    ```
+若要在受控 HSM 上將許可權新增至您的伺服器，請將「受管理的 HSM 加密服務加密」本機 RBAC 角色新增至伺服器。 這可讓伺服器針對受管理的 HSM 中的金鑰執行 get、wrap key、解除包裝金鑰操作。
+[在受控 HSM 上布建伺服器存取的指示](../../key-vault/managed-hsm/role-management.md)
 
 ## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>將 Key Vault 金鑰新增至伺服器，並設定 TDE 保護裝置
 
@@ -79,10 +85,15 @@ ms.locfileid: "92779963"
 - 使用 [AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) 指令程式來確認已依照預期設定 TDE 保護裝置。
 
 > [!NOTE]
+> **預覽版中的 ()** 針對受管理的 HSM 金鑰，請使用 Az. Sql 2.11.1 版本的 PowerShell。
+
+> [!NOTE]
 > 金鑰保存庫名稱和金鑰名稱的合併長度不可超過 94 個字元。
 
 > [!TIP]
-> Key Vault 中的範例 KeyId： https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+> Key Vault 中的範例 KeyId： <br/>https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+>
+> 受控 HSM 的範例 KeyId：<br/>https://contosoMHSM.managedhsm.azure.net/keys/myrsakey
 
 ```powershell
 # add the key from Key Vault to the server
@@ -239,7 +250,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
 
 - 如果新的金鑰無法新增至伺服器，或新的金鑰無法更新為 TDE 保護裝置，請進行下列檢查：
    - 金鑰不應有到期日
-   - 金鑰必須已啟用 *取得* 、 *包裝金鑰* 和 *解除包裝金鑰* 作業。
+   - 金鑰必須已啟用 *取得*、*包裝金鑰* 和 *解除包裝金鑰* 作業。
 
 ## <a name="next-steps"></a>後續步驟
 

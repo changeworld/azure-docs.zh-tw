@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 8f4d16931f09f94af81dd4e0f178ce6e0f990881
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 744bcfe196629f76c5505f36ef9c8c224fefe601
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426199"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95909062"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Azure API for FHIR 的常見問題
 
@@ -65,6 +65,10 @@ Azure API for FHIR 是適用于 Azure 的開放原始碼 Microsoft FHIR Server �
 
 智慧型 (可將醫療應用程式和可重複使用的技術) 在 FHIR 上，是一組開放的規格，可將夥伴應用程式與 FHIR 伺服器和其他健康情況的 IT 系統整合，例如電子健康記錄和健康情況資訊交換。 藉由建立智慧型 on FHIR 應用程式，您可以確定您的應用程式可以透過眾多的不同系統來存取及利用。
 驗證與 Azure API for FHIR。 若要深入瞭解 SMART，請造訪 [Smart Health](https://smarthealthit.org/)。
+
+### <a name="where-can-i-find-what-version-of-fhir-is-running-on-my-database"></a>我可以在哪裡找到我的資料庫上正在執行的 FHIR 版本。 
+
+您可以在 "fhirVersion" 屬性下，找到在功能語句中公開的確切 FHIR 版本。
 
 ## <a name="fhir-implementations-and-specifications"></a>FHIR 的實施和規格
 

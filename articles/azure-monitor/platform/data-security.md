@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/04/2019
-ms.openlocfilehash: ef34dbfd3af326dbf2d82e09a4c5c8c8e4a91a84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/11/2020
+ms.openlocfilehash: 5aa379f6601bc324bd08c53f251b2097141eec69
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87319791"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95911629"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 資料安全性
 本文件旨在提供 Log Analytics (Azure 監視器的功能) 的特定資訊，以補充 [Azure 信任中心](https://www.microsoft.com/en-us/trust-center?rtc=1)上的資訊。  
@@ -27,11 +27,17 @@ Log Analytics 服務會使用下列方法安全地管理您以雲端為基礎的
 * 法規遵循
 * 安全性標準認證
 
+您也可以使用內建于 Azure 監視器與 Log Analytics 中的其他安全性功能。 這些功能需要更多系統管理員管理。 
+* 客戶管理的 (安全性) 金鑰
+* Azure 私人儲存體
+* 私人連結網路 
+* Azure 支援 Azure 加密箱設定的存取限制
+
 如有任何問題、建議或關於下列任一項資訊的問題 (包括我們的安全性原則)，請與我們連絡：[Azure 支援選項](https://azure.microsoft.com/support/options/)。
 
 ## <a name="sending-data-securely-using-tls-12"></a>使用 TLS 1.2 安全地傳送資料 
 
-為了確保資料傳送至 Log Analytics 時的安全性，我們強烈建議您將代理程式設定為至少使用傳輸層安全性 (TLS) 1.2。 我們已發現較舊版本的 TLS/安全通訊端層 (SSL) 較易受到攻擊，而且在其目前的運作中仍允許回溯相容性，因此並**不建議使用**這些版本，很快地，業界也會捨棄這些舊版通訊協定的支援。 
+為了確保資料傳送至 Log Analytics 時的安全性，我們強烈建議您將代理程式設定為至少使用傳輸層安全性 (TLS) 1.2。 我們已發現較舊版本的 TLS/安全通訊端層 (SSL) 較易受到攻擊，而且在其目前的運作中仍允許回溯相容性，因此並 **不建議使用** 這些版本，很快地，業界也會捨棄這些舊版通訊協定的支援。 
 
 [PCI 安全標準委員會](https://www.pcisecuritystandards.org/)已設定 [2018 年 6 月 30 日作為最後期限](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf)，在此之後將停用舊版 TLS/SSL，並升級至更安全的通訊協定。 當 Azure 捨棄舊版支援後，如果您的代理程式無法透過 TLS 1.2 (至少) 進行通訊，就無法將資料傳送至 Log Analytics。 
 
@@ -56,7 +62,7 @@ Log Analytics 服務會使用下列方法安全地管理您以雲端為基礎的
 
 下表列出一些可用的解決方案，並提供它們所收集的資料類型範例。
 
-| **解決方案** | **資料類型** |
+| **方案** | **資料類型** |
 | --- | --- |
 | 容量和效能 |效能資料和中繼資料 |
 | 更新管理 |中繼資料和狀態資料 |
@@ -73,7 +79,7 @@ Log Analytics 服務會使用下列方法安全地管理您以雲端為基礎的
 | 事件 |EventId、EventOriginalID、BaseManagedEntityInternalId、RuleId、PublisherId、PublisherName、FullNumber、Number、Category、ChannelLevel、LoggingComputer、EventData、EventParameters、TimeGenerated、TimeAdded <br>**注意：** 當您使用自訂欄位將事件寫入 Windows 事件記錄檔時，Log Analytics 會收集它們。 |
 | 中繼資料 |BaseManagedEntityId、ObjectStatus、OrganizationalUnit、ActiveDirectoryObjectSid、PhysicalProcessors、NetworkName、IPAddress、ForestDNSName、NetbiosComputerName、VirtualMachineName、LastInventoryDate、HostServerNameIsVirtualMachine、IP 位址、NetbiosDomainName、LogicalProcessors、DNSName、DisplayName、DomainDnsName、ActiveDirectorySite、PrincipalName、OffsetInMinuteFromGreenwichTime |
 | 效能 |ObjectName、CounterName、PerfmonInstanceName、PerformanceDataId、PerformanceSourceInternalID、SampleValue、TimeSampled、TimeAdded |
-| State |StateChangeEventId、StateId、NewHealthState、OldHealthState、Context、TimeGenerated、TimeAdded、StateId2、BaseManagedEntityId、MonitorId、HealthState、LastModified、LastGreenAlertGenerated、DatabaseTimeModified |
+| 州 |StateChangeEventId、StateId、NewHealthState、OldHealthState、Context、TimeGenerated、TimeAdded、StateId2、BaseManagedEntityId、MonitorId、HealthState、LastModified、LastGreenAlertGenerated、DatabaseTimeModified |
 
 ## <a name="physical-security"></a>實體安全性
 Log Analytics 服務是由 Microsoft 人員所管理，所有活動都有記錄並且可供稽核。 Log Analytics 會作為 Azure 服務操作，並符合所有 Azure 合規性與安全性需求。 您可以在 [Microsoft Azure 安全性概觀](https://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf)的第 18 頁上檢視 Azure 資產之實體安全性的詳細資料。 不再負責管理 Log Analytics 服務的人員，其用來確保區域安全的實體存取權限 (包括傳輸和終止) 將會在一個工作天內變更。 若要了解我們使用的全域實體基礎結構，請參閱 [Microsoft 資料中心](https://azure.microsoft.com/global-infrastructure/)。
@@ -166,12 +172,21 @@ Windows 或管理伺服器代理程式的快取資料會受到作業系統的認
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. Log Analytics 服務接收和處理資料
 Log Analytics 服務會確保內送資料是來自信任的來源，方法是驗證憑證和與 Azure 驗證的資料完整性。 接著，未經處理的資料會儲存在 Azure 事件中樞，在資料最終會待用儲存的區域中。 所儲存的資料類型取決於匯入和用來收集資料的解決方案類型。 然後，Log Analytics 服務會處理未經處理的資料，並將這些資料內嵌至資料庫內。
 
-儲存在資料庫中已收集資料的保留期，會取決於所選的定價方案。 對於「免費」** 層，收集的資料可使用七天。 對於「付費」** 層，收集的資料根據預設可供使用 31 天，但可以延長為 730 天。 資料會以待用加密的形式儲存在 Azure 儲存體，以確保資料機密性，並使用本地備援儲存體 (LRS) 在本地區域內複寫資料。 過去兩周的資料也會儲存在以 SSD 為基礎的快取中，而且此快取會加密。
+儲存在資料庫中已收集資料的保留期，會取決於所選的定價方案。 對於「免費」層，收集的資料可使用七天。 對於「付費」層，收集的資料根據預設可供使用 31 天，但可以延長為 730 天。 資料會以待用加密的形式儲存在 Azure 儲存體，以確保資料機密性，並使用本地備援儲存體 (LRS) 在本地區域內複寫資料。 過去兩周的資料也會儲存在以 SSD 為基礎的快取中，而且此快取會加密。
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. 使用 Log Analytics 來存取資料
 如需存取 Log Analytics 工作區，請使用組織帳戶或您先前設定的 Microsoft 帳戶來登入 Azure 入口網站。 入口網站與 Log Analytics 服務之間的所有流量都會透過安全的 HTTPS 通道傳送。 在使用入口網站時，使用者用戶端 (網頁瀏覽器) 上會產生工作階段識別碼，且資料會儲存在本機快取中，直到工作階段終止為止。 終止時便會刪除快取。 未包含個人識別資訊的用戶端 Cookie 不會自動移除。 工作階段 Cookie 會標示為 HTTPOnly，並受到保護。 經過預先決定的閒置時間後，Azure 入口網站工作階段就會終止。
 
-## <a name="next-steps"></a>接下來的步驟
+
+## <a name="additional-security-features"></a>其他安全性功能
+您可以使用這些額外的安全性功能，進一步保護您的 Azure 監視器/Log Analytics 環境。 這些功能需要更多系統管理員管理。 
+- [客戶管理的 (安全性) 金鑰](customer-managed-keys.md) -您可以使用客戶管理的金鑰來加密傳送至 Log Analytics 工作區的資料。 它需要使用 Azure Key Vault。 
+- [私用/客戶管理的儲存體](private-storage.md) -管理個人加密的儲存體帳戶，並告知 Log Analytics 使用它來儲存監視資料 
+- [Private Link 網路](private-link-security.md) 功能-Azure Private Link 可讓您安全地將 Azure PaaS (服務（包括 Azure 監視器) ）連結至使用私人端點的虛擬網路。 
+- 適用于 Microsoft Azure 的[Azure 客戶加密箱](/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview)-客戶加密箱會提供介面供客戶審查及核准或拒絕客戶資料存取要求。 在 Microsoft 工程師必須於支援要求期間存取客戶資料的情況下，便會使用此功能。
+
+
+## <a name="next-steps"></a>後續步驟
 * 請遵循 [Azure VM 快速入門](../learn/quick-collect-azurevm.md)，了解如何針對您的 Azure VM 使用 Log Analytics 收集資料。  
 
 *  如果您需要在您的環境中，從實體或虛擬 Windows 或 Linux 電腦收集資料，請參閱 [Linux 電腦的快速入門](../learn/quick-collect-linux-computer.md)或 [Windows 電腦的快速入門](../learn/quick-collect-windows-computer.md)

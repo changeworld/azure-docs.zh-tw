@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: 1f85ba0c64db23e156f384fadcc5ca7bf84a58d4
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: aa2783abe86b90a907510dec8d7eb40162820ad5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130718"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025254"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>教學課程：在 Language Understanding (LUIS) 中使用機器學習實體從使用者語句中擷取結構化資料
 
@@ -173,7 +173,7 @@ ms.locfileid: "93130718"
 
 1. 從左側導覽中選取 [意圖]，然後選取 [OrderPizza] 意圖。
 
-1. 若要開啟 **實體選擇區** ，請在內容工具列中選取 @ 符號。
+1. 若要開啟 **實體選擇區**，請在內容工具列中選取 @ 符號。
 
 1. 選取選擇區中的每個實體資料列，然後使用選擇區游標來選取每個範例語句中的實體。 當您完成時，實體清單看起來應該如下圖所示。
 
@@ -247,7 +247,7 @@ ms.locfileid: "93130718"
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. 移至網址列中的 URL 結尾處，然後以您在互動式測試面板中輸入的相同查詢取代 _YOUR_QUERY_HERE_ 。
+1. 移至網址列中的 URL 結尾處，然後以您在互動式測試面板中輸入的相同查詢取代 _YOUR_QUERY_HERE_。
 
     `2 small cheese pizzas for pickup`
 
@@ -297,7 +297,7 @@ ms.locfileid: "93130718"
 
 ## <a name="related-information"></a>相關資訊
 
-* [教學課程 - 意圖](luis-quickstart-intents-only.md)
+* [教學課程 - 意圖](./tutorial-intents-only.md)
 * [概念 - 實體](luis-concept-entity-types.md)概念資訊
 * [概念 - 特徵](luis-concept-feature.md)概念資訊
 * [如何訓練](luis-how-to-train.md)
@@ -309,4 +309,4 @@ ms.locfileid: "93130718"
 在本教學課程中，應用程式會使用機器學習實體來尋找使用者語句的意圖，並從該語句中擷取詳細資料。 使用機器學習實體可讓您分解實體的詳細資料。
 
 > [!div class="nextstepaction"]
-> [新增預先建置的 keyPhrase 實體](luis-quickstart-intent-and-key-phrase.md)
+> [新增預先建置的 keyPhrase 實體](./luis-reference-prebuilt-keyphrase.md)

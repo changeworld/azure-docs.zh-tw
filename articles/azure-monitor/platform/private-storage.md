@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: a487e6989792c63aaf5baf9ddb3875df549561a4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7cb427c83345a4603c6fe7727c1cc42c1943c456
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143990"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908244"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>在 Azure 監視器 Log Analytics 中使用客戶管理的儲存體帳戶
 
-Log Analytics 依賴各種案例中的 Azure 儲存體。 此使用通常會自動管理。 不過，在某些情況下，您需要提供和管理您自己的儲存體帳戶，也稱為客戶管理的儲存體帳戶。 本檔詳細說明 WAD/LAD 記錄的內嵌、Private Link 特定案例和 CMK 加密的客戶管理儲存體使用方式。 
+Log Analytics 依賴各種案例中的 Azure 儲存體。 此使用通常會自動管理。 不過，在某些情況下，您需要提供和管理您自己的儲存體帳戶，也稱為客戶管理的儲存體帳戶。 本檔詳細說明使用客戶管理的儲存體來內嵌 WAD/LAD 記錄、Private Link 特定案例，以及客戶管理的金鑰 (CMK) 加密。 
 
 > [!NOTE]
 > 我們建議您不要相依于 Log Analytics 上傳至客戶管理的儲存體（假設格式設定和內容可能會變更）。

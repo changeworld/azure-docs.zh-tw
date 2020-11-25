@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: trbye
-ms.openlocfilehash: c4195ff1b81097a3620f68939f32147a26e16d60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f547b353091cc81816f0974fced8d4dc836d22b2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85391599"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023815"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>快速入門：取得 LUIS 端點金鑰
 
@@ -37,7 +37,7 @@ LUIS 會使用三種金鑰：
 |入門|可讓您只使用文字來測試 LUIS 應用程式|
 |端點 |可授權特定 LUIS 應用程式的存取權|
 
-在本教學課程中，您需要端點金鑰類型。 本教學課程使用「家庭自動化」LUIS 應用程式範例，遵循[使用預先建置的家庭自動化應用程式](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app)快速入門即可建立。 如果您已建立自有 LUIS 應用程式，則可改用此應用程式。
+在本教學課程中，您需要端點金鑰類型。 本教學課程使用「家庭自動化」LUIS 應用程式範例，遵循[使用預先建置的家庭自動化應用程式](../../luis/luis-get-started-create-app.md)快速入門即可建立。 如果您已建立自有 LUIS 應用程式，則可改用此應用程式。
 
 當您建立 LUIS 應用程式時，LUIS 會自動產生入門金鑰，讓您可以使用文字查詢來測試應用程式。 此金鑰不會啟用語音服務整合，且無法用於本教學課程。 在 Azure 儀表板中建立 LUIS 資源，並將它指派給 LUIS 應用程式。 在本教學課程中，您可以使用免費訂用帳戶層。
 

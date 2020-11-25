@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: dcf34d896deafad77d16619f3883ddd103fc55d4
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: c35ee7bcdefa5091d9c887430182638f066cb9fa
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95790756"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95900874"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中建立、開發及維護 Synapse Studio (預覽版) 筆記本
 
@@ -399,68 +399,6 @@ df = spark.read.option("header", "true") \
 
 ![data-to-cell](./media/apache-spark-development-using-notebooks/synapse-data-to-cell.png)
 
-## <a name="visualize-data-in-a-notebook"></a>在筆記本中將資料視覺化
-
-### <a name="produce-rendered-table-view"></a>產生轉譯的表格視圖
-
-表格式結果檢視會提供選項，以建立橫條圖、折線圖、圓形圖、散佈圖和區域圖。 您可以將資料視覺化，而不需要撰寫程式碼。 您可以在 [圖表選項] 中自訂圖表。 
-
-預設會在轉譯的資料表檢視中顯示 **%%sql** magic 命令的輸出。 您可以 <code>display(df)</code> 在 Spark 資料框架、Pandas 資料框架、清單或復原的分散式資料集上呼叫 (RDD) 函數來產生轉譯的資料表視圖。
-
-   [![builtin-charts](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png#lightbox)
-
-### <a name="visualize-built-in-charts-from-large-scale-dataset"></a>從大規模資料集將內建圖表視覺化 
-
-根據預設，函式 <code>display(df)</code> 只會採用前1000個數據列的資料來呈現圖表。 檢查 **所有結果的匯總** ，然後選取 [套用 **] 按鈕，** 就會從整個資料集套用圖表產生。 當圖表設定變更時，將會觸發 spark 作業，需要一段時間才能完成計算並呈現圖表。 
-    [![內建-圖表-匯總-全部](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png#lightbox)
-
-
-
-### <a name="visualize-data-statistic-information"></a>視覺化資料統計資料資訊
-您可以使用 <code>display(df, summary = True)</code> 來檢查特定 Spark 資料框架的統計資料摘要，其中包含資料行名稱、資料行類型、唯一值，以及每個資料行的遺漏值。 您也可以選取特定資料行，以查看其最大值、最大值、平均值和標準差。
-    [內 ![ 建-圖表-摘要 ](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png#lightbox)
-
-### <a name="render-html-or-interactive-libraries"></a>轉譯 HTML 或互動式程式庫
-
-您可以使用 **displayHTML ( # B1** 來呈現 HTML 程式碼，包括 JAVASCRIPT、CSS、D3 或互動式程式庫（例如 **bokeh**）。
-
-下圖是使用 **bokeh** 在地圖上繪製圖像的範例。
-
-   ![bokeh-example](./media/apache-spark-development-using-notebooks/synapse-bokeh-image.png)
-   
-
-執行下列範例程式碼以繪製上述影像。
-
-```python
-from bokeh.plotting import figure, output_file
-from bokeh.tile_providers import get_provider, Vendors
-from bokeh.embed import file_html
-from bokeh.resources import CDN
-from bokeh.models import ColumnDataSource
-
-tile_provider = get_provider(Vendors.CARTODBPOSITRON)
-
-# range bounds supplied in web mercator coordinates
-p = figure(x_range=(-9000000,-8000000), y_range=(4000000,5000000),
-           x_axis_type="mercator", y_axis_type="mercator")
-p.add_tile(tile_provider)
-
-# plot datapoints on the map
-source = ColumnDataSource(
-    data=dict(x=[ -8800000, -8500000 , -8800000],
-              y=[4200000, 4500000, 4900000])
-)
-
-p.circle(x="x", y="y", size=15, fill_color="blue", fill_alpha=0.8, source=source)
-
-# create an html document that embeds the Bokeh plot
-html = file_html(p, CDN, "my plot1")
-
-# display this html
-displayHTML(html)
-
-```
-
 ## <a name="save-notebooks"></a>儲存筆記本
 
 您可以將單一筆記本或所有筆記本儲存在工作區中。
@@ -539,11 +477,11 @@ Azure Data Factory 會尋找參數儲存格，並將此資料格視為在執行�
 
 1. 沒有文字游標提示您輸入時，儲存格就會處於命令模式。 儲存格處於命令模式時，您可以將筆記本當做整體編輯，但無法輸入個別的儲存格。 按下 `ESC` 或使用滑鼠選取資料格的編輯器區域以外的地方，進入命令模式。
 
-   ![command-mode](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
+   ![command-mode](./media/apache-spark-development-using-notebooks/synapse-command-mode-2.png)
 
 2. 編輯模式會以文字游標指示，提示您在編輯器區域中輸入。 當儲存格處於編輯模式時，您可以在資料格中輸入資料格。 按下 `Enter` 或使用滑鼠選取儲存格的編輯器區域，進入編輯模式。
    
-   ![edit-mode](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
+   ![edit-mode](./media/apache-spark-development-using-notebooks/synapse-edit-mode-2.png)
 
 ### <a name="shortcut-keys-under-command-mode"></a>命令模式下的快速鍵
 

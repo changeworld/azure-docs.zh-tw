@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 49a89ee90d28c9c7a3f59424b773ee0f221381e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: add763b713b93604e089d7aec586876fecd2887c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89301627"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95895633"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立公用 IP 位址
 
@@ -24,7 +24,7 @@ ms.locfileid: "89301627"
 
 # <a name="standard-sku---using-zones"></a>[**標準 SKU-使用區域**](#tab/option-create-public-ip-standard-zones)
 
-使用下列步驟來建立名為 **myStandardZRPublicIP**的標準區域冗余公用 IP 位址。
+使用下列步驟來建立名為 **myStandardZRPublicIP** 的標準區域冗余公用 IP 位址。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 選取 [建立資源]。 
@@ -47,34 +47,9 @@ ms.locfileid: "89301627"
 
 請注意，這些只是具有 [可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones)之區域中的有效選項。   (您也可以在這些區域中選取特定區域，不過它將無法在區域失敗時復原。 ) 
 
-# <a name="standard-sku---no-zones"></a>[**標準 SKU-沒有區域**](#tab/option-create-public-ip-standard)
-
-使用下列步驟來建立標準公用 IP 位址，作為名為 **myStandardPublicIP**的非區域性資源。
-
-1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 選取 [建立資源]。 
-3. 在搜尋方塊中，輸入「公用 IP 位址」。
-4. 在搜尋結果中，選取「公用 IP 位址」。 接下來，在 [公用 IP 位址] 頁面中，選取 [建立]。
-5. 在 [ **建立公用 IP 位址** ] 頁面上，輸入或選取下列資訊： 
-
-    | 設定                 | 值                       |
-    | ---                     | ---                         |
-    | IP 版本              | 選取 IPv4                 |    
-    | SKU                     | 選取 [標準]         |
-    | 名稱                    | 輸入 *myStandardPublicIP*          |
-    | IP 位址指派   | 請注意，這會鎖定為「靜態」                                        |
-    | 閒置超時 (分鐘)   | 將值保留為4        |
-    | DNS 名稱標籤          | 將值保留為空白    |
-    | 訂用帳戶            | 選取您的訂用帳戶。   |
-    | 資源群組          | 選取 [ **建立新** 的]，輸入 myResourceGroup，然後選取 **[確定]** |
-    | Location                | 選取 **美國東部 2**      |
-    | 可用性區域       | 選取 [ **沒有區域** (]，並參閱下面的附注)  |
-
-此選項在所有區域中都是有效的，而且是區域中標準公用 IP 位址的預設選項，而不需要 [可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones)。
-
 # <a name="basic-sku"></a>[**基本 SKU**](#tab/option-create-public-ip-basic)
 
-使用下列步驟來建立名為 **myBasicPublicIP**的基本靜態公用 IP 位址。  基本公用 Ip 沒有可用性區域的概念。
+使用下列步驟來建立名為 **myBasicPublicIP** 的基本靜態公用 IP 位址。  基本公用 Ip 沒有可用性區域的概念。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 選取 [建立資源]。 

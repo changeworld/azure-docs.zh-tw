@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: c4a564834166686e8280f1117269742b489fc62c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 398324099f923a5141b172d61f9fd41a69dbf069
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334747"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025288"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>教學課程：建置 LUIS 應用程式來判斷使用者意圖
 
@@ -32,7 +32,7 @@ ms.locfileid: "91334747"
 
 `I'd like to order a veggie pizza with a salad on the side.`
 
-這些用意可歸類為各種**意圖**。
+這些用意可歸類為各種 **意圖**。
 
 |Intent|目的|
 |--|--|
@@ -69,7 +69,7 @@ ms.locfileid: "91334747"
     > [!div class="mx-imgBorder"]
     > ![在 LUIS 入口網站中的 [意圖] 頁面上新增範例語句的螢幕擷取畫面](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
 
-    藉由提供_範例語句_，您可以教導 LUIS 應針對此意圖預測哪些種類的語句。 這些是正面範例。 所有其他意圖中的語句都會被視為此意圖的負面範例。
+    藉由提供 _範例語句_，您可以教導 LUIS 應針對此意圖預測哪些種類的語句。 這些是正面範例。 所有其他意圖中的語句都會被視為此意圖的負面範例。
 
     [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]
 
@@ -116,7 +116,7 @@ ms.locfileid: "91334747"
     `get a medium vegetarian pizza for delivery`
 
   
-    查詢字串參數是 `query`，會在 URI 中傳遞語句**查詢**。 此語句與所有範例語句不同。 這應該是一個很好的測試，可以檢查 LUIS 是否學習並預測 `OrderPizza` 意圖，以做為最高分的意圖。
+    查詢字串參數是 `query`，會在 URI 中傳遞語句 **查詢**。 此語句與所有範例語句不同。 這應該是一個很好的測試，可以檢查 LUIS 是否學習並預測 `OrderPizza` 意圖，以做為最高分的意圖。
 
     ```JSON
     {
@@ -193,7 +193,7 @@ ms.locfileid: "91334747"
 * [如何訓練](luis-how-to-train.md)
 * [發佈方法](luis-how-to-publish-app.md)
 * [如何在 LUIS 入口網站中測試](luis-interactive-test.md)
-* [Azure Bot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
+* [Azure Bot](/azure/bot-service/?view=azure-bot-service-4.0)
 
 
 ## <a name="next-steps"></a>後續步驟

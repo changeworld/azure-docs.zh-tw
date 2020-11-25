@@ -4,12 +4,12 @@ description: 描述如何使用 GitHub Actions 部署 Azure Resource Manager 範
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: adb0b9d9a7da19c45904a5d222573e1880915b12
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 3dcb246956aae274f17cf938ee3d406562b22941
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841677"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95905254"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>使用 GitHub Actions 部署 Azure Resource Manager 範本
 
@@ -112,7 +112,7 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
         steps:
 
           # Checkout code
-        - uses: actions/checkout@master
+        - uses: actions/checkout@main
 
           # Log into Azure
         - uses: azure/login@v1
@@ -137,10 +137,10 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
     工作流程檔案的第一個區段包括：
 
     - **名稱**：工作流程的名稱。
-    - **on**：觸發工作流程的 GitHub 事件名稱。 當主要分支上有推送事件時，工作流程就會觸發，這會在這兩個指定的檔案中至少修改其中一個。 這兩個檔案為工作流程檔案和範本檔案。
+    - **on**：觸發工作流程的 GitHub 事件名稱。 當主要分支上有一個推播事件時，工作流程就會觸發，其中至少會修改兩個指定檔案中的其中一個。 這兩個檔案為工作流程檔案和範本檔案。
 
 1. 選取 [開始認可]。
-1. 選取 [直接認可至主要分支]。
+1. 選取 **[直接認可至主要分支**]。
 1. 選取 [認可新檔案] (或 [認可變更])。
 
 由於工作流程會設定為透過要更新的工作流程檔案或範本檔案來觸發，因此，工作流程會在您認可變更後立即啟動。
@@ -152,7 +152,6 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
 1. 從功能表選取 [ **執行 ARM 部署** ] 以確認部署。
 
 ## <a name="clean-up-resources"></a>清除資源
-
 當您的資源群組和儲存機制不再需要時，請刪除資源群組和您的 GitHub 存放庫，以清除您所部署的資源。 
 
 ## <a name="next-steps"></a>後續步驟

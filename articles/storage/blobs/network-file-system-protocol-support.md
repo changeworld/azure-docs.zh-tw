@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 41ad20de6b7a800ff1f97a7ff371c8e0012fed27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78455659d76d259c626745c93770428c25042b2d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88166972"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908807"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob 儲存體中的網路檔案系統 (NFS) 3.0 通訊協定支援 (預覽) 
 
@@ -64,13 +64,13 @@ Blob 儲存體現在支援 (NFS) 3.0 通訊協定的網路檔案系統。 這項
 
   您必須設定您的儲存體帳戶，以允許此對等互連 VNet 的存取權。 若要深入瞭解，請參閱 [從虛擬網路授與存取權](../common/storage-network-security.md#grant-access-from-a-virtual-network)。
 
-- 使用 [VPN 閘道](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 或 [ExpressRoute 閘道](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager)連接到您主要 VNet 的內部部署網路。 
+- 使用 [VPN 閘道](../../vpn-gateway/vpn-gateway-about-vpngateways.md) 或 [ExpressRoute 閘道](../../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)連接到您主要 VNet 的內部部署網路。 
 
   若要深入瞭解，請參閱設定 [來自內部部署網路的存取](../common/storage-network-security.md#configuring-access-from-on-premises-networks)。
 
 - 連線到對等互連網路的內部部署網路。
 
-  您可以使用 [VPN 閘道](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 或 [ExpressRoute 閘道](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager) 以及 [閘道傳輸](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/vnet-peering#gateway-transit)來完成這項操作。 
+  您可以使用 [VPN 閘道](../../vpn-gateway/vpn-gateway-about-vpngateways.md) 或 [ExpressRoute 閘道](../../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md) 以及 [閘道傳輸](/azure/architecture/reference-architectures/hybrid-networking/vnet-peering#gateway-transit)來完成這項操作。 
 
 > [!IMPORTANT]
 > 如果您要從內部部署網路進行連線，請確定您的用戶端允許透過埠111和2048的連出通訊。 NFS 3.0 通訊協定會使用這些埠。
@@ -114,8 +114,3 @@ Azure Data Lake Storage Gen2 尚不支援下列 NFS 3.0 功能。
 ## <a name="next-steps"></a>後續步驟
 
 若要開始使用，請參閱 [使用 Network File System (NFS) 3.0 通訊協定 (preview) 掛接 Blob 儲存體 ](network-file-system-protocol-support-how-to.md)。
-
-
-
-
-

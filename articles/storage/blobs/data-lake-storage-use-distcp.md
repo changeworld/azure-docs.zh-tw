@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 734ad2d45dbb27894e5da4fbeb11c0e8b60df8bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e69a97a86a357fb36dde572f292b5cac7963d14a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88035666"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912479"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>使用 DistCp 在 Azure 儲存體 Blob 與 Azure Data Lake Storage Gen2 之間複製資料
 
@@ -27,7 +27,7 @@ DistCp 提供各種不同的命令列參數，我們強烈建議您閱讀這篇�
 * 未啟用 Data Lake Storage Gen2 功能 (階層命名空間) 的現有 Azure 儲存體帳戶。
 * 已啟用 Data Lake Storage Gen2 功能 (階層命名空間) 的 Azure 儲存體帳戶。 如需儲存體帳戶建立方式的指示，請參閱[建立 Azure 儲存體帳戶](../common/storage-account-create.md)
 * 已在儲存體帳戶 (已啟用階層命名空間) 中建立的容器。
-* 可存取儲存體帳戶 (已啟用階層命名空間功能) 的 Azure HDInsight 叢集。 請參閱[搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 請確實為叢集啟用遠端桌面。
+* 可存取儲存體帳戶 (已啟用階層命名空間功能) 的 Azure HDInsight 叢集。 請參閱[搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 請確實為叢集啟用遠端桌面。
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>使用來自 HDInsight Linux 叢集的 DistCp
 
