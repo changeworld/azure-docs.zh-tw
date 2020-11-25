@@ -11,11 +11,11 @@ ms.date: 10/26/2020
 ms.author: banders
 ms.custom: contentperfq2
 ms.openlocfilehash: c4a9a981017becd0d9343d9c287a4fe9341d7c43
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678136"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006144"
 ---
 # <a name="tutorial-review-your-individual-azure-subscription-bill"></a>教學課程：檢閱您的個別 Azure 訂用帳戶帳單
 
@@ -49,7 +49,7 @@ Azure 免費帳戶的發票只會在您超過每月信用額度時建立。
 
 比較使用量和成本的第一個步驟是下載發票和使用量檔案。 詳細使用量 CSV 檔案會顯示依計費期間和每日使用量的費用。 其不會包含任何稅務資訊。 您必須是帳戶管理員或具有擁有者角色，才能下載檔案。
 
-在 Azure 入口網站的搜尋方塊中輸入「訂用帳戶」，然後按一下 **訂用帳戶** 。
+在 Azure 入口網站的搜尋方塊中輸入「訂用帳戶」，然後按一下 **訂用帳戶**。
 
 [![瀏覽至訂用帳戶](./media/review-individual-bill/navigate-subscriptions.png)](./media/review-individual-bill/navigate-subscriptions.png#lightbox)
 
@@ -65,7 +65,7 @@ Azure 免費帳戶的發票只會在您超過每月信用額度時建立。
 
 ![顯示 [下載發票和使用 量] 的螢幕擷取畫面](./media/review-individual-bill/usageandinvoice.png)
 
-如果顯示 **不適用** ，則有幾個原因會導致您看不到使用量詳細資料或發票：
+如果顯示 **不適用**，則有幾個原因會導致您看不到使用量詳細資料或發票：
 
 - 您的 Azure 訂閱不滿 30 天。
 - 此計費週期沒有使用量。
@@ -157,7 +157,7 @@ Azure 不會直接根據資源成本計費。 資源費用會使用一或多個�
 
 <a name="payment"></a>
 
-如果您設定信用卡作為付款方式，我們會在計費期間結束後的 10 天內自動扣款。 在您的信用卡對帳單上，明細項目的名稱會是 **MSFT Azure** 。
+如果您設定信用卡作為付款方式，我們會在計費期間結束後的 10 天內自動扣款。 在您的信用卡對帳單上，明細項目的名稱會是 **MSFT Azure**。
 
 若要變更用來支付費用的信用卡，請參閱[新增、更新或移除 Azure 的信用卡](../manage/change-credit-card.md)。
 

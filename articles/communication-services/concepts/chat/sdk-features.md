@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 3b66c962758afc28da3c6be938c13d768c4f2572
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b239cf6d253c1c2d2e36d213e92e0b218add3f8c
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91666138"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94885983"
 ---
 # <a name="chat-client-library-overview"></a>聊天用戶端程式庫概觀
 
@@ -52,7 +52,7 @@ ms.locfileid: "91666138"
 | 事件             | 使用事件方格來訂閱聊天對話中發生的使用者活動，以及整合自訂通知服務或商務邏輯     | ✔️   | ✔️  | ✔️    | ✔️  |
 | 監視        | 根據傳送的訊息監視使用狀況                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
 |                    | 監視應用程式所提 API 要求的品質和狀態，並透過入口網站設定警示                                                          | ✔️   | ✔️  | ✔️    | ✔️  |
-|其他功能 | 使用[認知服務 API](https://docs.microsoft.com/azure/cognitive-services/) 及聊天用戶端程式庫來啟用智慧型功能 - 用戶端上傳入訊息的語言翻譯及情感分析、在成員說話時以語音轉換文字撰寫訊息等等。                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
+|其他功能 | 使用[認知服務 API](../../../cognitive-services/index.yml) 及聊天用戶端程式庫來啟用智慧型功能 - 用戶端上傳入訊息的語言翻譯及情感分析、在成員說話時以語音轉換文字撰寫訊息等等。                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
 
 ## <a name="next-steps"></a>下一步
 

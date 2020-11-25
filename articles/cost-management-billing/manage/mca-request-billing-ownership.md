@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
 ms.openlocfilehash: 2aae71836a4eaba845e4752edf708607977763fa
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371859"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014276"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>從其他帳戶接管 Azure 訂用帳戶的帳單擁有權
 
@@ -21,34 +21,34 @@ ms.locfileid: "91371859"
 
 本文適用於 Microsoft 客戶合約的計費帳戶。 請[確認您是否有 Microsoft 客戶合約的存取權](#check-for-access)。
 
-若要要求帳單擁有權，您必須是**發票區段擁有者**或**發票區段參與者**。 若要深入了解，請參閱[發票區段角色工作](understand-mca-roles.md#invoice-section-roles-and-tasks)。
+若要要求帳單擁有權，您必須是 **發票區段擁有者** 或 **發票區段參與者**。 若要深入了解，請參閱[發票區段角色工作](understand-mca-roles.md#invoice-section-roles-and-tasks)。
 
 ## <a name="request-billing-ownership"></a>要求帳單擁有權
 
 1. 以發票區段擁有者或參與者的身分登入 [Azure 入口網站](https://portal.azure.com)，以存取 Microsoft 客戶合約的計費帳戶。
-1. 搜尋 [成本管理 + 帳單]****。  
+1. 搜尋 [成本管理 + 帳單]。  
     ![顯示在 Azure 入口網站中搜尋 [成本管理 + 計費] 的螢幕擷取畫面](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
 1. 在 [計費範圍] 頁面中選取 [計費帳戶]，以供用來支付訂用帳戶的使用量。 計費帳戶的類型應該是 **Microsoft 客戶合約**。  
     [![顯示在入口網站中搜尋 [成本管理 + 計費] 的螢幕擷取畫面](./media/mca-request-billing-ownership/list-of-scopes.png)](./media/mca-request-billing-ownership/list-of-scopes.png#lightbox)
     > [!NOTE]
     > Azure 入口網站會記住您所存取的最後一個計費範圍，並在您下一次進入 [成本管理 + 帳單] 頁面時顯示該範圍。 如果您先前已造訪過 [成本管理 + 帳單]，就不會看到 [計費範圍] 頁面。 若是如此，請確認您已位於[正確的範圍](#check-for-access)。 如果沒有，請[切換範圍](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)以選取 Microsoft 客戶合約的計費帳戶。
-1. 從左側選取 [帳單設定檔]****。  
+1. 從左側選取 [帳單設定檔]。  
     [![顯示選取了 [帳單設定檔] 的螢幕擷取畫面](./media/mca-request-billing-ownership/mca-select-profiles.png)](./media/mca-request-billing-ownership/mca-select-profiles.png#lightbox)
     > [!Note]
     > 如果您沒有看到 [帳單設定檔]，則表示您不在正確的計費範圍。 您必須選取 Microsoft 客戶合約的計費帳戶，然後選取 [帳單設定檔]。 若要了解如何變更範圍，請參閱[在 Azure 入口網站中切換計費範圍](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)。
-1. 從清單中選取 [帳單設定檔]****。 在您接管訂用帳戶的擁有權後，其使用量費用就會計入此帳單設定檔。
-1. 從左側選取 [發票區段]****。  
+1. 從清單中選取 [帳單設定檔]。 在您接管訂用帳戶的擁有權後，其使用量費用就會計入此帳單設定檔。
+1. 從左側選取 [發票區段]。  
     [![顯示選取發票區段的螢幕擷取畫面](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)](./media/mca-request-billing-ownership/mca-select-invoice-sections.png#lightbox)   
 1. 從清單中選取發票區段。 在您接管訂用帳戶的擁有權後，其使用量就會指派給帳單設定檔發票的這個區段。
-1. 從左下方選取 [轉移要求]****，然後選取 [新增要求]****。  
+1. 從左下方選取 [轉移要求]，然後選取 [新增要求]。  
     [![顯示選取轉移要求的螢幕擷取畫面](./media/mca-request-billing-ownership/mca-select-transfer-requests.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests.png#lightbox)
-1. 輸入您要對其要求帳單擁有權之使用者的電子郵件地址。 這個使用者必須是 Microsoft 線上服務方案計費帳戶的帳戶管理員，或是Enterprise 合約的帳戶擁有者。 如需詳細資訊，請參閱[在 Azure 入口網站中檢視計費帳戶](view-all-accounts.md)。 選取 [傳送轉移要求]****。  
+1. 輸入您要對其要求帳單擁有權之使用者的電子郵件地址。 這個使用者必須是 Microsoft 線上服務方案計費帳戶的帳戶管理員，或是Enterprise 合約的帳戶擁有者。 如需詳細資訊，請參閱[在 Azure 入口網站中檢視計費帳戶](view-all-accounts.md)。 選取 [傳送轉移要求]。  
     [![顯示傳送轉移要求的螢幕擷取畫面](./media/mca-request-billing-ownership/mca-send-transfer-requests.png)](./media/mca-request-billing-ownership/mca-send-transfer-requests.png#lightbox)
 1. 使用者會收到一封電子郵件，內含用來檢閱轉移要求的指示。  
     ![顯示檢閱轉移要求電子郵件的螢幕擷取畫面](./media/mca-request-billing-ownership/mca-review-transfer-request-email.png)
 1. 若要核准轉移要求，使用者須選取電子郵件中的連結，並遵循相關指示。
-    [![顯示檢閱轉移要求的螢幕擷取畫面](./media/mca-request-billing-ownership/review-transfer-requests.png)](./media/mca-request-billing-ownership/review-transfer-requests.png#lightbox) 使用者可選取他們要從中轉移 Azure 產品的計費帳戶。 選取之後，會顯示可轉移的合格產品。 **注意：** 已停用的訂用帳戶無法轉移，且會顯示在「無法轉移的 Azure 產品」清單中 (如果適用)。 選取要轉移的 Azure 產品之後，請選取 [驗證]****。
-1. [傳輸驗證結果]**** 區域會顯示即將轉移的 Azure 產品所產生的影響。 以下是可能的狀態：
+    [![顯示檢閱轉移要求的螢幕擷取畫面](./media/mca-request-billing-ownership/review-transfer-requests.png)](./media/mca-request-billing-ownership/review-transfer-requests.png#lightbox) 使用者可選取他們要從中轉移 Azure 產品的計費帳戶。 選取之後，會顯示可轉移的合格產品。 **注意：** 已停用的訂用帳戶無法轉移，且會顯示在「無法轉移的 Azure 產品」清單中 (如果適用)。 選取要轉移的 Azure 產品之後，請選取 [驗證]。
+1. [傳輸驗證結果] 區域會顯示即將轉移的 Azure 產品所產生的影響。 以下是可能的狀態：
     * **通過** - 此 Azure 產品的驗證已通過，可進行轉移。
     * **警告** - 選取的 Azure 產品出現警告。 雖然產品仍可轉移，但轉移時會造成使用者在想要採取緩和動作時應注意的影響。 例如，假設要轉移的 Azure 訂用帳戶受益於 RI。 轉移之後，訂用帳戶將不再享有該權益。 若要盡可能節省成本，請確定 RI 已與可使用其權益的另一個訂用帳戶相關聯。 實際上，使用者也可選擇返回選取頁面，並取消選取此 Azure 訂用帳戶。
     * **失敗** - 選取的 Azure 產品因錯誤而無法轉移。 使用者必須回到選取頁面並取消選取此產品，以轉移其他已選取的 Azure 產品。  
@@ -57,16 +57,16 @@ ms.locfileid: "91371859"
 ## <a name="check-the-transfer-request-status"></a>查看轉移要求狀態
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 搜尋 [成本管理 + 帳單]****。  
+1. 搜尋 [成本管理 + 帳單]。  
     ![顯示在 Azure 入口網站中搜尋 [成本管理 + 計費] 的螢幕擷取畫面](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
 1. 在 [計費範圍] 頁面中，選取要為其傳送移轉要求的計費帳戶。
-1. 從左側選取 [帳單設定檔]****。  
+1. 從左側選取 [帳單設定檔]。  
     [![顯示選取了 [帳單設定檔] 的螢幕擷取畫面](./media/mca-request-billing-ownership/mca-select-profiles.png)](./media/mca-request-billing-ownership/mca-select-profiles.png#lightbox)
-1. 選取已為其傳送移轉要求的 [帳單設定檔]****。
-1. 從左側選取 [發票區段]****。  
+1. 選取已為其傳送移轉要求的 [帳單設定檔]。
+1. 從左側選取 [發票區段]。  
     [![顯示選取發票區段的螢幕擷取畫面](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)](./media/mca-request-billing-ownership/mca-select-invoice-sections.png#lightbox)   
 1. 從清單中選取已為其傳送移轉要求的發票區段。
-1. 從左下方選取 [轉移要求]****。 [轉移要求] 頁面會顯示下列資訊：  
+1. 從左下方選取 [轉移要求]。 [轉移要求] 頁面會顯示下列資訊：  
     [![顯示轉移要求清單的螢幕擷取畫面](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png#lightbox)
    |資料行|定義|
    |---------|---------|
