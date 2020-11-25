@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: b0574c41042e172af78365bb273c81729ce204ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b872340c50c800ebe4d4d6c7ca56b3b327bf162
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88749308"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95972637"
 ---
 # <a name="speech-service-supported-regions"></a>語音服務支援的區域
 
@@ -27,7 +27,7 @@ ms.locfileid: "88749308"
 考慮區域時請記住下列幾點：
 
 * 如果您的應用程式使用 [語音 SDK](speech-sdk.md)，您可以在建立語音設定時提供區域識別碼，例如 `westus` 。
-* 如果您的應用程式使用其中一個語音服務 [REST API](rest-apis.md)，則區域會是您提出要求時所用端點 URI 的一部份。
+* 如果您的應用程式使用其中一個語音服務 [REST API](./overview.md#reference-docs)，則區域會是您提出要求時所用端點 URI 的一部份。
 * 為某區域建立的金鑰，就只能在該區域中使用。 若嘗試在其他區域使用，將會導致驗證錯誤。
 
 ## <a name="speech-sdk"></a>語音 SDK
@@ -38,7 +38,7 @@ ms.locfileid: "88749308"
 
 您可以從這裡取得語音自訂入口網站： https://speech.microsoft.com
 
-語音服務可在這些區域中使用，以進行 **語音辨識**、 **文字到語音**轉換和 **轉譯**：
+語音服務可在這些區域中使用，以進行 **語音辨識**、 **文字到語音** 轉換和 **轉譯**：
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
@@ -46,7 +46,7 @@ ms.locfileid: "88749308"
 
 ### <a name="intent-recognition"></a>意圖辨識
 
-透過語音 SDK 進行**意圖辨識**的可用區域如下所示：
+透過語音 SDK 進行 **意圖辨識** 的可用區域如下所示：
 
 | 全球區域 | 區域           | 區域識別碼 |
 | ------------- | ---------------- | -------------------- |
@@ -63,11 +63,11 @@ ms.locfileid: "88749308"
 | 北美洲 | 美國西部 2        | `westus2`            |
 | 南美洲 | 巴西南部     | `brazilsouth`        |
 
-這是 [Language Understanding 服務 (LUIS)](/azure/cognitive-services/luis/luis-reference-regions)所支援的發行區域子集。
+這是 [Language Understanding 服務 (LUIS)](../luis/luis-reference-regions.md)所支援的發行區域子集。
 
 ### <a name="voice-assistants"></a>語音助理
 
-[語音 SDK](speech-sdk.md)支援這些區域中的**語音助理**功能：
+[語音 SDK](speech-sdk.md)支援這些區域中的 **語音助理** 功能：
 
 | 區域         | 區域識別碼 |
 | -------------- | -------------------- |

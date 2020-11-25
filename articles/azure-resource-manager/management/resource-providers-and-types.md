@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 702836e0dc98b06ccf6e0eeb0d0f373374c4e783
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426454"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972533"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure 資源提供者和類型
 
 部署資源時，您經常需要擷取有關資源提供者和類型的資訊。 例如，如果想要儲存金鑰和密碼，您會使用 Microsoft.KeyVault 資源提供者。 此資源提供者會提供稱為保存庫的資源類型來建立金鑰保存庫。
 
-資源類型名稱的格式： **{resource-provider}/{resource-type}** 。 金鑰保存庫的資源類型是 **Microsoft.KeyVault/vaults** 。
+資源類型名稱的格式：**{resource-provider}/{resource-type}**。 金鑰保存庫的資源類型是 **Microsoft.KeyVault/vaults**。
 
 在本文中，您將學會如何：
 
