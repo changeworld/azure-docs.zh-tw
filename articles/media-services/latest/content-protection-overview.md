@@ -16,11 +16,11 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 5d6530cf7b8d8611ff23a3517112cb0aa7442d6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91595995"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95971191"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>使用媒體服務動態加密來保護您的內容
 
@@ -177,7 +177,7 @@ Smooth Streaming 通訊協定支援下列容器格式和加密配置。
 
 ## <a name="controlling-content-access"></a>控制內容存取
 
-您可以設定內容金鑰原則來控制可存取內容的人員。 媒體服務支援多種方式來授權提出金鑰要求的使用者。 用戶端 (播放器) 必須先符合原則，系統才會將金鑰傳遞給用戶端。 內容金鑰原則可具有*開啟*或*權杖*限制。
+您可以設定內容金鑰原則來控制可存取內容的人員。 媒體服務支援多種方式來授權提出金鑰要求的使用者。 用戶端 (播放器) 必須先符合原則，系統才會將金鑰傳遞給用戶端。 內容金鑰原則可具有 *開啟* 或 *權杖* 限制。
 
 如果您想要在沒有授權的情況下發出授權給任何人，則可以使用開放限制的內容金鑰原則。 例如，如果您的收入是以 ad 為基礎，而非以訂用帳戶為基礎。  
 

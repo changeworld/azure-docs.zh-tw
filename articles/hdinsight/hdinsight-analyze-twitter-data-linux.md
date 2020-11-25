@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
 ms.openlocfilehash: fe511ed2d6b724c1215f9986c9d6c50aae076935
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533286"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95971904"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>在 HDInsight 上使用 Apache Hive 與 Apache Hadoop 分析 Twitter 資料
 
@@ -30,9 +30,9 @@ Twitter 可讓您透過 REST API 抓取每則推文資料，作為 JavaScript �
 
 1. 從網頁瀏覽器登入 [https://developer.twitter.com/apps/](https://developer.twitter.com/apps/) 。 如果您沒有 Twitter 帳戶，請選取 [ **立即註冊** ] 連結。
 
-2. 選取 [ **建立新的應用程式** ]。
+2. 選取 [ **建立新的應用程式**]。
 
-3. 輸入 [名稱]  、[說明]  、[網站]  。 您可以在 [網站]  欄位中自行設定 URL。 下表列出部分要使用的範例值：
+3. 輸入 [名稱]、[說明]、[網站]。 您可以在 [網站] 欄位中自行設定 URL。 下表列出部分要使用的範例值：
 
    | 欄位 | 值 |
    |--- |--- |
@@ -40,17 +40,17 @@ Twitter 可讓您透過 REST API 抓取每則推文資料，作為 JavaScript �
    | 描述 |MyHDInsightApp |
    | 網站 |`https://www.myhdinsightapp.com` |
 
-4. 選取 **[是，我同意]** ，然後選取 [ **建立您的 Twitter 應用程式** ]。
+4. 選取 **[是，我同意]**，然後選取 [ **建立您的 Twitter 應用程式**]。
 
 5. 選取 [ **許可權** ] 索引標籤。預設許可權是 **唯讀** 的。
 
 6. 選取 [ **金鑰和存取權杖** ] 索引標籤。
 
-7. 選取 [ **建立我的存取權杖** ]。
+7. 選取 [ **建立我的存取權杖**]。
 
 8. 選取頁面右上角的 [ **測試 OAuth** ]。
 
-9. 記下 **消費者金鑰** 、 **消費者祕密** 、 **存取權杖** 和 **存取權杖祕密** 。
+9. 記下 **消費者金鑰**、**消費者祕密**、**存取權杖** 和 **存取權杖祕密**。
 
 ### <a name="download-tweets"></a>下載的推文
 
@@ -143,7 +143,7 @@ Twitter 可讓您透過 REST API 抓取每則推文資料，作為 JavaScript �
     > [!TIP]  
     > 調整最後一行上的主題篩選條件，以追蹤熱門關鍵字。 使用您執行指令碼當時熱門的關鍵字，可以更快擷取資料。
 
-1. 依序按 **Ctrl + X** ，然後 **Y** 儲存檔案。
+1. 依序按 **Ctrl + X**，然後 **Y** 儲存檔案。
 
 1. 使用以下命令執行檔案，並下載推文：
 
@@ -283,7 +283,7 @@ hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
    WHERE (length(json_response) > 500);
    ```
 
-1. 依序按 **Ctrl + X** ，然後 **Y** 儲存檔案。
+1. 依序按 **Ctrl + X**，然後 **Y** 儲存檔案。
 
 1. 使用以下命令執行包含於檔案中的 HiveQL：
 
@@ -308,7 +308,7 @@ hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
     > [!NOTE]  
     > 如果您變更了 `gettweets.py` 指令碼中的篩選條件，請將 **Azure** 取代為您使用的其中一個篩選條件。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 您已瞭解如何將非結構化的 JSON 資料集轉換成結構化的 [Apache Hive](https://hive.apache.org/) 資料表。 若要深入了解 HDInsight 上的 Hive，請參閱下列文件：
 
