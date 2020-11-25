@@ -12,17 +12,17 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7cabae837656611813d44017ce2e1112f06066ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89669607"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013287"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>準備在生產環境中部署 IoT Edge 解決方案
 
 當您準備將 IoT Edge 解決方案從開發層面轉移到生產環境時，請確保其設定可以提供持續性效能。
 
-本文所提供的資訊並不相同。 為了協助您設定優先權，每個區段都會以清單開始，並將工作分成兩個部分：生產前需完成的**重要**事項，或是您需要知道的**實用**事項。
+本文所提供的資訊並不相同。 為了協助您設定優先權，每個區段都會以清單開始，並將工作分成兩個部分：生產前需完成的 **重要** 事項，或是您需要知道的 **實用** 事項。
 
 ## <a name="device-configuration"></a>裝置設定
 
@@ -108,7 +108,7 @@ IoT Edge 的中樞和代理程式模組會使用本機儲存體來維護狀態�
 
 根據預設，IoT Edge 中樞已針對效能優化，因此它會嘗試配置大型的記憶體區塊。 這項設定會在 Raspberry Pi 等小型裝置上造成穩定性問題。 如果您要部署具有受限資源的裝置，您可能會想要在 IoT Edge 中樞上將 **將 optimizeforperformance** 環境變數設定為 **false** 。
 
-當 **將 optimizeforperformance** 設定為 **TRUE**時，MQTT 通訊協定標頭會使用 PooledByteBufferAllocator，但其效能較佳，但會配置更多記憶體。 配置器在32位作業系統或記憶體不足的裝置上無法正常運作。 此外，針對效能優化時，RocksDb 會為其角色配置更多的記憶體作為本機儲存提供者。
+當 **將 optimizeforperformance** 設定為 **TRUE** 時，MQTT 通訊協定標頭會使用 PooledByteBufferAllocator，但其效能較佳，但會配置更多記憶體。 配置器在32位作業系統或記憶體不足的裝置上無法正常運作。 此外，針對效能優化時，RocksDb 會為其角色配置更多的記憶體作為本機儲存提供者。
 
 如需詳細資訊，請參閱 [較小裝置上的穩定性問題](troubleshoot-common-errors.md#stability-issues-on-smaller-devices)。
 
@@ -122,7 +122,7 @@ IoT Edge 的中樞和代理程式模組會使用本機儲存體來維護狀態�
 * **mqttSettings__enabled**
 * **httpSettings__enabled**
 
-這三個變數都有*兩條底線*，而且可以設為 true 或 false。
+這三個變數都有 *兩條底線*，而且可以設為 true 或 false。
 
 #### <a name="reduce-storage-time-for-messages"></a>減少訊息的儲存時間
 
@@ -132,7 +132,7 @@ timeToLiveSecs 參數的預設值是 7200 秒，也就是兩小時。
 
 ### <a name="do-not-use-debug-versions-of-module-images"></a>請勿使用模組映像的偵錯版本
 
-從測試情節轉移至生產環境情節時，請務必移除部署資訊清單中的偵錯設定。 檢查部署資訊清單中沒有任何模組映射具有** \. debug**尾碼。 如果您已新增建立選項，以公開模組中的連接埠進行偵錯時，也請移除這些建立選項。
+從測試情節轉移至生產環境情節時，請務必移除部署資訊清單中的偵錯設定。 檢查部署資訊清單中沒有任何模組映射具有 **\. debug** 尾碼。 如果您已新增建立選項，以公開模組中的連接埠進行偵錯時，也請移除這些建立選項。
 
 ## <a name="container-management"></a>容器管理
 
@@ -194,7 +194,7 @@ timeToLiveSecs 參數的預設值是 7200 秒，也就是兩小時。
 
     `"image": "<registry name and server>/azureiotedge-hub:1.0",`
 
-## <a name="networking"></a>網路功能
+## <a name="networking"></a>網路
 
 * **實用**
   * 檢閱輸出/輸入設定
@@ -209,17 +209,17 @@ Azure IoT 中樞和 IoT Edge 之間的通訊通道一律會設定為輸出。 �
 
 如果您的網路設定要求您明確允許從 IoT Edge 裝置進行連線，請參閱下列 IoT Edge 元件清單：
 
-* **IoT Edge 代理程式**可能會透過 WebSockets 持續以 AMQP/MQTT 連線方式連線到 IoT 中樞。
-* **IoT Edge 中樞**可能會透過 WebSockets 持續以 AMQP 連線或多種 MQTT 連線方式連線到 IoT 中樞。
-* **IoT Edge 精靈**對 IoT 中樞進行 HTTPS 間歇性呼叫。
+* **IoT Edge 代理程式** 可能會透過 WebSockets 持續以 AMQP/MQTT 連線方式連線到 IoT 中樞。
+* **IoT Edge 中樞** 可能會透過 WebSockets 持續以 AMQP 連線或多種 MQTT 連線方式連線到 IoT 中樞。
+* **IoT Edge 精靈** 對 IoT 中樞進行 HTTPS 間歇性呼叫。
 
 在這三個案例中，DNS 名稱會符合模式 \*.azure-devices.net。
 
-此外，**容器引擎**會透過 HTTPS 呼叫容器登錄。 若要擷取 IoT Edge 執行階段容器映像，DNS 名稱為 mcr.microsoft.com。 容器引擎會依部署中的設定，連線到其他登錄。
+此外，**容器引擎** 會透過 HTTPS 呼叫容器登錄。 若要擷取 IoT Edge 執行階段容器映像，DNS 名稱為 mcr.microsoft.com。 容器引擎會依部署中的設定，連線到其他登錄。
 
 此檢查清單是防火牆規則的起始點：
 
-   | URL (\* = 萬用字元) | 輸出 TCP 連接埠 | 使用量 |
+   | URL (\* = 萬用字元) | 輸出 TCP 連接埠 | 使用方式 |
    | ----- | ----- | ----- |
    | mcr.microsoft.com  | 443 | Microsoft 容器登錄 |
    | global.azure-devices-provisioning.net  | 443 | DPS 存取 (選用) |

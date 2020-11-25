@@ -2,15 +2,15 @@
 title: 建立和部署範本規格
 description: 了解如何從 ARM 範本建立範本規格。 然後，將範本規格部署至您訂用帳戶中的資源群組。
 author: tfitzmac
-ms.date: 11/10/2020
+ms.date: 11/17/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: 96ef5796aac1d0ee02e6bbafc40b7d3bcdea4e2f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 8439b1de5a69b3e5bfc22e10f089938da921c1cb
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506357"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94747497"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>快速入門：建立和部署範本規格 (預覽)
 
@@ -21,9 +21,7 @@ ms.locfileid: "94506357"
 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 範本規格目前為預覽狀態。 若要加以使用，您必須[註冊等待清單](https://aka.ms/templateSpecOnboarding)。
->
-> 從等待清單獲得核准之後，您將會取得安裝預覽版 PowerShell 模組和預覽版 CLI 模組的指示。
+> 範本規格目前為預覽狀態。 若要加以使用，您必須安裝最新版的 PowerShell 或 Azure CLI。 針對 Azure PowerShell，請使用 [5.0.0 版或更新版本](/powershell/azure/install-az-ps)。 針對 Azure CLI，請使用 [2.14.2 版或更新版本](/cli/azure/install-azure-cli)。
 
 ## <a name="create-template-spec"></a>建立範本規格
 

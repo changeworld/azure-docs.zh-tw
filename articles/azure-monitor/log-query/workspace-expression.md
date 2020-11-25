@@ -7,24 +7,24 @@ author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
 ms.openlocfilehash: 255888acf5da6149b6a964b23ed038b99715481c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75364946"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014035"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>Azure 監視器記錄查詢中的 workspace() 運算式
 
 在 Azure 監視器查詢中，`workspace` 運算式用來從相同資源群組、另一個資源群組或另一個訂用帳戶中的特地工作區擷取資料。 這適用於在 Application Insights 查詢中包含記錄資料，以及在記錄查詢中跨多個工作區查詢資料。
 
 
-## <a name="syntax"></a>語法
+## <a name="syntax"></a>Syntax
 
 `workspace(`*識別碼*`)`
 
 ## <a name="arguments"></a>引數
 
-- 識別碼**：使用下表中的其中一個格式來識別工作區。
+- 識別碼：使用下表中的其中一個格式來識別工作區。
 
 | 識別碼 | 描述 | 範例
 |:---|:---|:---|

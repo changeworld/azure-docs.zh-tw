@@ -2,14 +2,14 @@
 title: 已啟用 Azure Arc 的伺服器概觀
 description: 了解如何使用已啟用 Azure Arc 的伺服器來管理裝載於 Azure 外部的伺服器，如同 Azure 資源一樣。
 keywords: azure 自動化, DSC, powershell, Desired State Configuration, 更新管理, 變更追蹤, 清查, Runbook, python, 圖形, 混合式
-ms.date: 11/04/2020
+ms.date: 11/12/2020
 ms.topic: overview
-ms.openlocfilehash: b9d38b2395d922e3e2a7daec654cd73de7267ee1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 2df970f7c94f1e306243aba1480ee7023b8f76c1
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360576"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578717"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>什麼是已啟用 Azure Arc 的伺服器？
 
@@ -45,6 +45,15 @@ ms.locfileid: "93360576"
 如需確切已啟用 Azure Arc 之伺服器的支援區域清單，請參閱[依區域分類的 Azure 產品](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)頁面。
 
 在大部分情況下，您在建立安裝指令碼時所選取的位置，應該是地理位置最接近機器位置的 Azure 區域。 待用資料會儲存在包含您所指定區域的 Azure 地理位置中，如果您有資料落地需求，這可能也會影響選擇的區域。 如果您的機器所連線的 Azure 區域受到中斷影響，連線的機器不會受到影響，但使用 Azure 的管理作業可能無法完成。 在發生區域性中斷的情況下，如果您有多個位置可支援異地備援服務，最好將每個位置中的機器連線到不同的 Azure 區域。
+
+關於已連線機器的下列中繼資料資訊會收集並儲存在已設定 Azure Arc 機器資源的區域中：
+
+- 作業系統名稱和版本
+- 電腦名稱
+- 電腦完整網域名稱 (FQDN)
+- Connected Machine 代理程式版本
+
+例如，如果機器是在美國東部區域向 Azure Arc 註冊，這項資料會儲存在美國地區。
 
 ### <a name="agent-status"></a>代理程式狀態
 

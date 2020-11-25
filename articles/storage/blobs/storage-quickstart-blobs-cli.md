@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 55cbf0a304bbf13d47fefad0981c0143c101bbb0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c9797024315a8fdc744d08863a42fba0b0b16420
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88520765"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660333"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>快速入門：使用 Azure CLI 上傳、下載及列出 Blob
 
@@ -27,19 +27,9 @@ Azure CLI 是管理 Azure 資源的 Azure 命令列體驗。 您可以在瀏覽�
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment-h3.md)]
 
-## <a name="install-the-azure-cli-locally"></a>在本機安裝 Azure CLI
-
-如果您選擇在本機安裝和使用 Azure CLI，本快速入門會要求您執行 Azure CLI 2.0.46 版或更新版本。 執行 `az --version` 來判斷您的版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
-
-如果您要在本機執行 Azure CLI，則必須登入並進行驗證。 如果您要使用 Azure Cloud Shell，則不需要執行此步驟。 若要登入 Azure CLI，請在瀏覽器視窗中執行 `az login` 並進行驗證：
-
-```azurecli
-az login
-```
-
-如需關於使用 Azure CLI 進行驗證的詳細資訊，請參閱[使用 Azure CLI 登入](/cli/azure/authenticate-azure-cli)。
+- 本文需要 2.0.46 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="authorize-access-to-blob-storage"></a>授與 Blob 儲存體的存取權
 

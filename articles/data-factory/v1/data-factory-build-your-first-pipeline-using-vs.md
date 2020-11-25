@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: 65309bbd70a6fda2bf725ce96cc5595cd9b55083
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db93262a0f5c6bd75f8c5611c7f33de085e05a82
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569073"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564883"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>教學課程：使用 Visual Studio 建立資料處理站
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -74,12 +74,12 @@ ms.locfileid: "91569073"
 2. 在 [新增專案]  對話方塊中，選取 **DataFactory** 範本，然後按一下 [空白 Data Factory 專案]  。   
 
     ![[新增專案] 對話方塊](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
-3. 輸入專案的**名稱**、**位置**和**方案**的名稱，然後按一下 [確定]  。
+3. 輸入專案的 **名稱**、**位置** 和 **方案** 的名稱，然後按一下 [確定]  。
 
     ![方案總管](./media/data-factory-build-your-first-pipeline-using-vs/solution-explorer.png)
 
 ### <a name="create-linked-services"></a>建立連結的服務
-在此步驟中，您會建立兩個連結服務：**Azure 儲存體**和**隨選 HDInsight**。 
+在此步驟中，您會建立兩個連結服務：**Azure 儲存體** 和 **隨選 HDInsight**。 
 
 Azure 儲存體連結服務會提供連線資訊，以將 Azure 儲存體帳戶連結至資料處理站。 Data Factory 服務會使用連結服務設定中的連接字串，在執行階段連線至 Azure 儲存體。 此儲存體可保存管線的輸入和輸出資料，以及 Hive 活動所使用的 Hive 指令碼檔案。 
 
@@ -126,7 +126,7 @@ Azure 儲存體連結服務會提供連線資訊，以將 Azure 儲存體帳戶�
     linkedServiceName | 指定用來儲存 HDInsight Hadoop 產生之記錄的儲存體帳戶。 
 
     > [!IMPORTANT]
-    > HDInsight 叢集會在您於 JSON (linkedServiceName) 指定的 Blob 儲存體中建立**預設容器**。 HDInsight 不會在刪除叢集時刪除此容器。 這是設計的行為。 在使用 HDInsight 隨選連結服務時，除非有現有的即時叢集 (timeToLive)，否則每次處理配量時，就會建立 HDInsight 叢集。 此叢集會在處理完成時自動刪除。
+    > HDInsight 叢集會在您於 JSON (linkedServiceName) 指定的 Blob 儲存體中建立 **預設容器**。 HDInsight 不會在刪除叢集時刪除此容器。 這是設計的行為。 在使用 HDInsight 隨選連結服務時，除非有現有的即時叢集 (timeToLive)，否則每次處理配量時，就會建立 HDInsight 叢集。 此叢集會在處理完成時自動刪除。
     > 
     > 隨著處理的配量越來越多，您會在 Azure Blob 儲存體中看到許多容器。 如果在疑難排解作業時不需要這些容器，建議您加以刪除以降低儲存成本。 這些容器的名稱會遵循模式︰`adf<yourdatafactoryname>-<linkedservicename>-datetimestamp`。 請使用 [Microsoft Azure 儲存體總管](https://storageexplorer.com/) 之類的工具刪除 Azure Blob 儲存體中的容器。
 
@@ -288,7 +288,7 @@ Azure 儲存體連結服務會提供連線資訊，以將 Azure 儲存體帳戶�
 1. 以滑鼠右鍵按一下 [方案總管]  視窗中的 [相依性]  ，指向 [新增]  ，按一下 [現有項目]  。  
 2. 瀏覽至 **C:\ADFGettingStarted**、選取 **partitionweblogs.hql** 及 **input.log** 檔案，然後按一下 [新增]  。 您建立了兩個檔案，作為一部分的 [教學課程概觀](data-factory-build-your-first-pipeline.md)必要條件。
 
-當您在下一個步驟中發佈方案時，已將 **partitionweblogs.hql** 檔案上傳到 `adfgetstarted` Blob 容器中的**指令碼**資料夾。   
+當您在下一個步驟中發佈方案時，已將 **partitionweblogs.hql** 檔案上傳到 `adfgetstarted` Blob 容器中的 **指令碼** 資料夾。   
 
 ### <a name="publishdeploy-data-factory-entities"></a>發佈/部署 Data Factory 實體
 在此步驟中，您會將專案中的 Data Factory 實體 (連結的服務、資料集和管線) 發佈至 Azure Data Factory 服務。 在發佈過程中，您可指定資料處理站的名稱。 
@@ -303,7 +303,7 @@ Azure 儲存體連結服務會提供連線資訊，以將 Azure 儲存體帳戶�
     ![發佈 - 新增資料處理站設定](media/data-factory-build-your-first-pipeline-using-vs/publish-new-data-factory.png)
 
    1. 選取 [建立新的 Data Factory]  選項。
-   2. 輸入 Data Factory 的唯一**名稱**。 例如：**DataFactoryUsingVS09152016**。 此名稱必須是全域唯一的。
+   2. 輸入 Data Factory 的唯一 **名稱**。 例如：**DataFactoryUsingVS09152016**。 此名稱必須是全域唯一的。
    3. 針對 [訂用帳戶]  欄位選取適當的訂用帳戶。 
         > [!IMPORTANT]
         > 如果看不到任何訂用帳戶，請確定您是使用訂用帳戶的管理員或共同管理員的帳戶進行登入。
@@ -375,7 +375,7 @@ Azure 儲存體連結服務會提供連線資訊，以將 Azure 儲存體帳戶�
    > 建立隨選 HDInsight 叢集通常需要一些時間 (大約 20 分鐘)。 因此，管線預計需要 **大約 30 分鐘** 的時間來處理配量。  
    
     ![資料集](./media/data-factory-build-your-first-pipeline-using-vs/dataset-slice-ready.png)    
-10. 當配量處於**就緒**狀態時，檢查您 blob 儲存體中 `adfgetstarted` 容器內 `partitioneddata` 資料夾的輸出資料。  
+10. 當配量處於 **就緒** 狀態時，檢查您 blob 儲存體中 `adfgetstarted` 容器內 `partitioneddata` 資料夾的輸出資料。  
 
     ![輸出資料](./media/data-factory-build-your-first-pipeline-using-vs/three-ouptut-files.png)
 11. 按一下配量，以在 [資料配量]  刀鋒視窗中查看其詳細資料。
@@ -409,8 +409,8 @@ Azure 儲存體連結服務會提供連線資訊，以將 Azure 儲存體帳戶�
 - 連結服務會將資料存放區或計算服務連結至 Azure Data Factory。 如需複製活動支援的所有來源和接收，請參閱 [支援的資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 。 如需 Data Factory 支援的計算服務清單以及可在其上執行的[轉換活動](data-factory-data-transformation-activities.md)，請參閱[計算連結服務](data-factory-compute-linked-services.md)。
 - 如需使用於 Azure 儲存體連結服務定義之 JSON 屬性的詳細資料，請參閱[從 Azure Blob 移入/移出資料](data-factory-azure-blob-connector.md#azure-storage-linked-service)。
 - 您可以使用自己的 HDInsight 叢集，不必使用隨選的 HDInsight 叢集。 請參閱 [計算連結服務](data-factory-compute-linked-services.md) 以取得詳細資料。
--  Data Factory 會使用先前的 JSON 為您建立**以 Linux 為基礎的** HDInsight 叢集。 如需詳細資訊，請參閱 [HDInsight 隨選連結服務](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) 。
-- HDInsight 叢集會在您於 JSON (linkedServiceName) 指定的 Blob 儲存體中建立**預設容器**。 HDInsight 不會在刪除叢集時刪除此容器。 這是設計的行為。 在使用 HDInsight 隨選連結服務時，除非有現有的即時叢集 (timeToLive)，否則每次處理配量時，就會建立 HDInsight 叢集。 此叢集會在處理完成時自動刪除。
+-  Data Factory 會使用先前的 JSON 為您建立 **以 Linux 為基礎的** HDInsight 叢集。 如需詳細資訊，請參閱 [HDInsight 隨選連結服務](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) 。
+- HDInsight 叢集會在您於 JSON (linkedServiceName) 指定的 Blob 儲存體中建立 **預設容器**。 HDInsight 不會在刪除叢集時刪除此容器。 這是設計的行為。 在使用 HDInsight 隨選連結服務時，除非有現有的即時叢集 (timeToLive)，否則每次處理配量時，就會建立 HDInsight 叢集。 此叢集會在處理完成時自動刪除。
     
     隨著處理的配量越來越多，您會在 Azure Blob 儲存體中看到許多容器。 如果在疑難排解作業時不需要這些容器，建議您加以刪除以降低儲存成本。 這些容器的名稱會遵循模式︰`adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`。 請使用 [Microsoft Azure 儲存體總管](https://storageexplorer.com/) 之類的工具刪除 Azure Blob 儲存體中的容器。
 - 目前，輸出資料集會影響排程，因此即使活動並未產生任何輸出，您都必須建立輸出資料集。 如果活動沒有任何輸入，您可以略過建立輸入資料集。 
@@ -419,7 +419,7 @@ Azure 儲存體連結服務會提供連線資訊，以將 Azure 儲存體帳戶�
 
 ## <a name="use-server-explorer-to-view-data-factories"></a>使用伺服器總管檢視 Data Factory
 1. 在 **Visual Studio** 中，按一下功能表上的 [檢視]  ，然後按一下 [伺服器總管]  。
-2. 在 [伺服器總管] 視窗中，依序展開 **Azure** 和 **Data Factory**。 如果您看到 [登入 Visual Studio]  ，請輸入和 Azure 訂用帳戶相關聯的**帳戶**，然後按一下 [繼續]  。 輸入**密碼**，然後按一下 [登入]  。 Visual Studio 會嘗試取得訂用帳戶中所有 Azure Data Factory 的相關資訊。 您會在 [Data Factory 工作清單]  視窗中看到這項作業的狀態。
+2. 在 [伺服器總管] 視窗中，依序展開 **Azure** 和 **Data Factory**。 如果您看到 [登入 Visual Studio]  ，請輸入和 Azure 訂用帳戶相關聯的 **帳戶**，然後按一下 [繼續]  。 輸入 **密碼**，然後按一下 [登入]  。 Visual Studio 會嘗試取得訂用帳戶中所有 Azure Data Factory 的相關資訊。 您會在 [Data Factory 工作清單]  視窗中看到這項作業的狀態。
 
     ![Server Explorer](./media/data-factory-build-your-first-pipeline-using-vs/server-explorer.png)
 3. 您可以在 Data Factory 上按一下滑鼠右鍵，並選取 [將 Data Factory 匯出至新的專案]  ，以便根據現有的 Data Factory 建立 Visual Studio 專案。
@@ -536,7 +536,7 @@ Azure 儲存體連結服務會提供連線資訊，以將 Azure 儲存體帳戶�
 3. 在 [發佈項目]  頁面：您會看到下拉式清單，其中具有 [選取部署設定]  欄位的可用設定。
 
     ![選取組態檔](./media/data-factory-build-your-first-pipeline-using-vs/select-config-file.png)
-4. 選取您想要使用的**設定檔**，然後按 [下一步]  。
+4. 選取您想要使用的 **設定檔**，然後按 [下一步]  。
 5. 確認您在 [摘要]  頁面上看到 JSON 檔案的名稱，然後按 [下一步]  。
 6. 部署作業完成後按一下 [完成]  。
 
@@ -553,7 +553,7 @@ Azure 儲存體連結服務會提供連線資訊，以將 Azure 儲存體帳戶�
    1. **Azure 儲存體** 連結服務可將保留輸入/輸出檔案的 Azure Blob 儲存體連結至 Data Factory。
    2. **Azure HDInsight** 隨選連結服務可將 HDInsight Hadoop 隨選叢集連結至 Data Factory。 Azure Data Factory 會即時建立 HDInsight Hadoop 叢集以處理輸入資料及產生輸出資料。
 3. 建立兩個 **資料集**，以說明管線中 HDInsight Hive 活動的輸入和輸出資料。
-4. 建立具有 **HDInsight Hive** 活動的**管線**。  
+4. 建立具有 **HDInsight Hive** 活動的 **管線**。  
 
 ## <a name="next-steps"></a>後續步驟
 在本文中，您已經建立可在隨選 HDInsight 叢集上執行 Hive 指令碼，含有轉換活動 (HDInsight 活動) 的管線。 若要了解如何使用「複製活動」從 Azure Blob 將資料複製到 Azure SQL，請參閱 [教學課程：從 Azure Blob 將資料複製到 Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。

@@ -1,17 +1,17 @@
 ---
 title: 使用 Azure CLI 建立無伺服器函式應用程式
-description: 使用 Azure CLI 在 Azure 中建立無伺服器也可執行的函式應用程式
+description: 使用 Azure CLI 在 Azure 中建立無伺服器也可執行的函式應用程式。
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
 ms.topic: sample
 ms.date: 07/03/2018
 ms.author: glenga
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: f94048014f18c584637b9863bb59982f9143661e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5fa6b5a25b07585e3c0ea07fb4a361ab82a9815
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87498237"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565087"
 ---
 # <a name="create-a-function-app-for-serverless-code-execution"></a>建立無伺服器程式碼也可執行的函式應用程式 
 
@@ -19,9 +19,9 @@ ms.locfileid: "87498237"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。 
+ - 本教學課程需要 2.0 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。 
 
 ## <a name="sample-script"></a>範例指令碼
 

@@ -11,11 +11,11 @@ ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 9c522d870a25b3df34ab6a0cf1c1e944a6462685
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93284490"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013984"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>使用 Logic Apps 接收有關金鑰保存庫祕密狀態變更的電子郵件
 
@@ -53,21 +53,21 @@ ms.locfileid: "93284490"
     ![邏輯應用程式設計工具 - 事件處理常式](../media/eventgrid-logicappdesigner2.png)
 
 1. 選取 [+ 新增步驟]。這樣會開啟 [選擇動作] 的視窗。
-1. 搜尋 **電子郵件** 。 根據您的電子郵件提供者，尋找並選取相符的連接器。 本教學課程使用 **Office 365 Outlook** 。 其他電子郵件提供者的步驟很類似。
+1. 搜尋 **電子郵件**。 根據您的電子郵件提供者，尋找並選取相符的連接器。 本教學課程使用 **Office 365 Outlook**。 其他電子郵件提供者的步驟很類似。
 1. 選取 [傳送電子郵件 \(V2\)] 動作。
 
    ![邏輯應用程式設計工具 - 傳送電子郵件](../media/eventgrid-logicappdesigner3.png)
 
 1. 建置您的電子郵件範本：
     - **收件人：** 輸入要收到通知電子郵件的電子郵件地址。 在此教學課程中，請使用您可以存取的電子郵件帳戶來進行測試。
-    - **主旨** 和 **本文** ：撰寫電子郵件內容。 從選取器工具選取 [JSON 屬性]，以便根據事件資料納入動態內容。 您可以使用 `@{triggerBody()?['Data']}` 來擷取事件的資料。
+    - **主旨** 和 **本文**：撰寫電子郵件內容。 從選取器工具選取 [JSON 屬性]，以便根據事件資料納入動態內容。 您可以使用 `@{triggerBody()?['Data']}` 來擷取事件的資料。
 
     您的電子郵件範本可能類似此範例。
 
     ![邏輯應用程式設計工具 - 電子郵件內文](../media/eventgrid-logicappdesigner4.png)
 
 8. 按一下 [另存新檔]。
-9. 為新的邏輯應用程式輸入 **名稱** ，然後按一下 [建立]。
+9. 為新的邏輯應用程式輸入 **名稱**，然後按一下 [建立]。
     
     ![邏輯應用程式設計工具 - 建立](../media/eventgrid-logicappdesigner5.png)
 

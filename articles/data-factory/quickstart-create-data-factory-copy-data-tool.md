@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 複製資料工具複製資料
-description: 建立 Azure 資料處理站，然後使用「複製資料」工具將資料從 Azure Blob 儲存體中的某個位置複製到另一個位置。
+description: 建立 Azure Data Factory，然後使用「複製資料」工具將資料從 Azure Blob 儲存體中的某個位置複製到另一個位置。
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -10,13 +10,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 06/10/2020
-ms.openlocfilehash: 756c62aa070f05c4b66de0cde6c7df59d9b1d09a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 11/09/2020
+ms.openlocfilehash: 282917a6bbf7edb962a87ad87810adde56206d97
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84735181"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564713"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>快速入門：使用複製資料工具複製資料
 
@@ -37,13 +37,13 @@ ms.locfileid: "84735181"
 
 1. 啟動 **Microsoft Edge** 或 **Google Chrome** 網頁瀏覽器。 目前，只有 Microsoft Edge 和 Google Chrome 網頁瀏覽器支援 Data Factory UI。
 1. 移至 [Azure 入口網站](https://portal.azure.com)。 
-1. 在 Azure 入口網站功能表中，選取 [建立資源]   > [分析]   > [Data Factory]  ：
+1. 在 Azure 入口網站功能表中，選取 [建立資源] > [整合] > [Data Factory]：
 
     ![新資料處理站的建立](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 1. 在 [新增資料處理站]  頁面上，輸入 **ADFTutorialDataFactory** 作為 [名稱]  。 
  
-   Azure Data Factory 的名稱必須是 *全域唯一的*。 如果您看到下列錯誤，請變更資料處理站的名稱 (例如 **&lt;yourname&gt;ADFTutorialDataFactory**)，然後試著重新建立。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory - 命名規則](naming-rules.md)一文。
+   Azure Data Factory 的名稱必須是「全域唯一的」。 如果您看到下列錯誤，請變更資料處理站的名稱 (例如 **&lt;yourname&gt;ADFTutorialDataFactory**)，然後試著重新建立。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory - 命名規則](naming-rules.md)一文。
   
    ![名稱無法使用時的錯誤](./media/doc-common-process/name-not-available-error.png)
 1. 針對 [訂用帳戶]  ，選取您要用來建立資料處理站的 Azure 訂用帳戶。 

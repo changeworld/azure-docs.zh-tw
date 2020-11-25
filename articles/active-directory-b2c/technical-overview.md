@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 80ae79f73a55d5feb1aede7ccc7d3b2b64682a24
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 519e2da902e1121220bcbb28c4cb18a68001293b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364077"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840545"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技術和功能概觀
 
@@ -29,7 +29,7 @@ ms.locfileid: "92364077"
 
 * **目錄** -「目錄」是 Azure AD B2C 儲存使用者認證和設定檔資料，以及您的應用程式註冊的位置。
 * **應用程式註冊** - 您向 Azure AD B2C 註冊 Web、行動和原生應用程式，以啟用身分識別管理。 還有，您想要使用 Azure AD B2C 保護的任何 API。
-* **使用者流程** 和 **自訂原則** - 您應用程式的內建 (使用者流程) 並可完全自訂 (自訂原則) 的身分識別體驗。
+* **使用者流程** 和 **自訂原則**- 您應用程式的內建 (使用者流程) 並可完全自訂 (自訂原則) 的身分識別體驗。
   * 使用「使用者流程」來快速設定和啟用常見身分識別工作，例如註冊、登入和設定檔編輯。
   * 使用「自訂原則」來啟用使用者體驗，不僅適於常見身分識別工作，還能為貴組織、客戶、員工、合作夥伴和公民獨有的複雜身分識別工作流程提供特別支援。
 * **身分識別提供者** - 同盟設定適用於：
@@ -45,7 +45,7 @@ Azure AD B2C 租用戶是開始使用 Azure AD B2C 所需建立的第一個資�
 Azure AD B2C 定義數種類型的使用者帳戶。 Azure Active Directory、Azure Active Directory B2B 和 Azure Active Directory B2C 會共用這些帳戶類型。
 
 * **公司帳戶** - 具有公司帳戶的使用者可管理租用戶中的資源，而具有系統管理員角色的使用者也可管理租用戶。 具有工作帳戶的使用者可以建立新的取用者帳戶、重設密碼、封鎖/解除封鎖帳戶，以及設定權限或將帳戶指派給安全性群組。
-* **來賓帳戶** - 您邀請以來賓身分使用租用戶的外部使用者。 將來賓使用者邀請到 Azure AD B2C 租用戶的典型案例是為了分擔管理責任。
+* **來賓帳戶**- 您邀請以來賓身分使用租用戶的外部使用者。 將來賓使用者邀請到 Azure AD B2C 租用戶的典型案例是為了分擔管理責任。
 * **取用者帳戶** - 取用者帳戶是當使用者在您於租用戶中註冊的應用程式中完成註冊使用者旅程圖時，在 Azure AD B2C 目錄中建立的帳戶。
 
 ![Azure 入口網站中的 Azure AD B2C 使用者管理頁面](media/technical-overview/portal-01-users.png)<br/>*圖：Azure 入口網站中 Azure AD B2C 租用戶內的使用者目錄*
@@ -101,7 +101,7 @@ Azure AD B2C 的可延伸原則架構是其核心優點。 原則可描述使用
 
 * 用於登入的帳戶類型，例如 Facebook 之類的社交帳戶，或使用電子郵件地址和密碼進行登入的本機帳戶
 * 要向取用者收集的屬性，例如名字、郵遞區號或所在國家/區域
-* Azure Multi-Factor Authentication (MFA)
+* Azure AD Multi-Factor Authentication (MFA)
 * 使用者介面的自訂
 * 在使用者完成使用者流程之後，您的應用程式所收到權杖中的一組宣告
 * 工作階段管理

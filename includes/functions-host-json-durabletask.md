@@ -7,14 +7,14 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 24dc2cad8d299d150adddc03de5e9006fc831fc6
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 6a862a051d0040ac99746d81f10ae63d5af7545f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061590"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013714"
 ---
-[Durable Functions](../articles/azure-functions/durable-functions-overview.md) 的組態設定。
+[Durable Functions](../articles/azure-functions/durable/durable-functions-overview.md) 的組態設定。
 
 > [!NOTE]
 > Azure Functions 執行階段的所有版本，都支援 Durable Functions 的所有主要版本。 不過，根據您所使用的 Azure Functions 執行階段和 Durable Functions 延伸模組版本，host.json 設定的架構會稍有不同。 下列範例適用於 Azure Functions 2.0 和 3.0。 在這兩個範例中，如果您使用 Azure Functions 1.0，則可用的設定相同，但 host.json 的 [durableTask] 區段應位於 host.jso 設定的根目錄中，而不是在 [延伸模組] 下的欄位。
@@ -97,11 +97,11 @@ ms.locfileid: "93061590"
 }
 ```
 
-工作中樞名稱必須以字母開頭，且只包含字母和數字。 如果未指定函式應用程式的工作中樞名稱，則預設為 **DurableFunctionsHub** 。 如需詳細資訊，請參閱[工作中樞](../articles/azure-functions/durable-functions-task-hubs.md)。
+工作中樞名稱必須以字母開頭，且只包含字母和數字。 如果未指定函式應用程式的工作中樞名稱，則預設為 **DurableFunctionsHub**。 如需詳細資訊，請參閱[工作中樞](../articles/azure-functions/durable/durable-functions-task-hubs.md)。
 
 |屬性  |預設 | 描述 |
 |---------|---------|---------|
-|hubName|DurableFunctionsHub|替代[工作中樞](../articles/azure-functions/durable-functions-task-hubs.md)名稱可用來彼此隔離多個 Durable Functions 應用程式，即使它們使用相同的儲存體後端。|
+|hubName|DurableFunctionsHub|替代[工作中樞](../articles/azure-functions/durable/durable-functions-task-hubs.md)名稱可用來彼此隔離多個 Durable Functions 應用程式，即使它們使用相同的儲存體後端。|
 |controlQueueBatchSize|32|要從控制佇列中一次提取的訊息數。|
 |controlQueueBufferThreshold|256|可以在記憶體中一次緩衝處理的控制佇列訊息數目，到達這個數目之後發送器會在針對任何其他訊息清除佇列之前等待。|
 |partitionCount |4|控制佇列的資料分割計數。 必須是介於 1 到 16 之間的正整數。|
@@ -124,4 +124,4 @@ ms.locfileid: "93061590"
 |useLegacyPartitionManagement|true|設定為 `false` 時，會使用資料分割管理演算法，以降低相應放大時重複函式執行的可能性。從 v2.3.0 開始可供使用。 預設值將在未來的版本中變更為 `false`。|
 |useGracefulShutdown|false|(預覽) 啟用正常關機以減少主機關機讓內含式函式執行失敗的機會。|
 
-上述許多設定適用於將效能最佳化。 如需詳細資訊，請參閱[效能和擴充](../articles/azure-functions/durable-functions-perf-and-scale.md)。
+上述許多設定適用於將效能最佳化。 如需詳細資訊，請參閱[效能和擴充](../articles/azure-functions/durable/durable-functions-perf-and-scale.md)。

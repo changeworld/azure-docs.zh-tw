@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 544509a8c90c9273b748591509b1fa86510d71c3
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421731"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013814"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure 認知搜尋中的文字處理分析器
 
-「 *分析器* 」是 [全文搜尋引擎](search-lucene-query-architecture.md)的元件，負責查詢字串和已編製索引文件中的文字處理。 文字處理 (也稱為「詞彙分析) 轉型，可透過下列動作修改字串：
+「*分析器*」是 [全文搜尋引擎](search-lucene-query-architecture.md)的元件，負責查詢字串和已編製索引文件中的文字處理。 文字處理 (也稱為「詞彙分析) 轉型，可透過下列動作修改字串：
 
 + 移除不必要的單字 (停用字詞) 和標點符號
 + 將片語和以字元分隔的單字分成元件部分
@@ -47,11 +47,11 @@ ms.locfileid: "93421731"
 
 | 類別 | 描述 |
 |----------|-------------|
-| [標準 Lucene 分析器](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | 預設值。 不需要任何規格或設定。 這種一般用途的分析器適用于許多語言和案例。|
-| 預先定義的分析器 | 作為預計要依現狀使用的成品提供。 <br/>共有兩種類型：特製化和語言。 使它們成為「預先定義」的條件是依名稱參考，無須設定或自訂。 <br/><br/>[特製化 (語言無從驗證) 分析器](index-add-custom-analyzers.md#AnalyzerTable)適用於文字輸入需要特殊處理或最少處理時。 非語言預先定義的分析器包含 **Asciifolding** 、 **金鑰** 、 **模式** 、 **簡單** 、 **停止** 、 **空白** 。<br/><br/>[語言分析器](index-add-language-analyzers.md)適用於當您需要為個別語言提供豐富的語言支援時。 Azure 認知搜尋支援 35 Lucene 語言分析器和 50 Microsoft 自然語言處理分析器。 |
+| [標準 Lucene 分析器](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | 預設值： 不需要任何規格或設定。 這種一般用途的分析器適用于許多語言和案例。|
+| 預先定義的分析器 | 作為預計要依現狀使用的成品提供。 <br/>共有兩種類型：特製化和語言。 使它們成為「預先定義」的條件是依名稱參考，無須設定或自訂。 <br/><br/>[特製化 (語言無從驗證) 分析器](index-add-custom-analyzers.md#AnalyzerTable)適用於文字輸入需要特殊處理或最少處理時。 非語言預先定義的分析器包含 **Asciifolding**、**金鑰**、**模式**、**簡單**、**停止**、**空白**。<br/><br/>[語言分析器](index-add-language-analyzers.md)適用於當您需要為個別語言提供豐富的語言支援時。 Azure 認知搜尋支援 35 Lucene 語言分析器和 50 Microsoft 自然語言處理分析器。 |
 |[自訂分析器](/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | 意指結合現有元素的使用者定義組態，包括一個權杖化工具 (必要) 和選擇性篩選條件 (Char 或權杖)。|
 
-一些預先定義的分析器 (例如 **Pattern** 或 **Stop** ) 可支援一組有限的設定選項。 若要設定這些選項，請實際上建立自訂分析器，其中包含預先定義的分析器和其中一個記載於[預先定義的分析器參考](index-add-custom-analyzers.md#AnalyzerTable)中的替代選項。 如同任何自訂組態，為您的新組態提供名稱，例如 myPatternAnalyzer，以便與 Lucene 分析器有所區別。
+一些預先定義的分析器 (例如 **Pattern** 或 **Stop**) 可支援一組有限的設定選項。 若要設定這些選項，請實際上建立自訂分析器，其中包含預先定義的分析器和其中一個記載於[預先定義的分析器參考](index-add-custom-analyzers.md#AnalyzerTable)中的替代選項。 如同任何自訂組態，為您的新組態提供名稱，例如 myPatternAnalyzer，以便與 Lucene 分析器有所區別。
 
 ## <a name="how-to-specify-analyzers"></a>如何指定分析器
 
@@ -375,7 +375,7 @@ API 包含其他的索引屬性，可針對索引和搜尋指定不同的分析�
 
 + [設定自訂分析器](index-add-custom-analyzers.md)以進行最少的處理，或是在個別欄位上進行特殊的處理。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
  [搜尋檔 REST API](/rest/api/searchservice/search-documents) 
 

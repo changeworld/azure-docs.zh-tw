@@ -10,27 +10,27 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d0fcd57a71baec54fbed2dd41a936895ad9a462
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a120e015bd8ca38e32bd8cbef1fd48f4caef8e44
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966571"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837799"
 ---
-# <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-multi-factor-authentication-or-password-changes"></a>教學課程：利用使用者登入的風險偵測來觸發 Azure Multi-Factor Authentication 或密碼變更
+# <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-ad-multi-factor-authentication-or-password-changes"></a>教學課程：利用使用者登入的風險偵測來觸發 Azure AD Multi-Factor Authentication 或密碼變更
 
-若要保護您的使用者，您可以在 Azure Active Directory (Azure AD) 中設定會自動因應風險行為的風險型原則。 Azure AD Identity Protection 原則可以自動封鎖登入嘗試或要求額外的動作，例如，要求變更密碼或提示進行 Azure Multi-Factor Authentication。 這些原則可以與現有的 Azure AD 條件式存取原則搭配使用，為組織提供多一層的保護。 使用者雖然不太可能觸發這類原則中的風險行為，但若有人試圖危害您的安全性，組織將會受到保護。
+若要保護您的使用者，您可以在 Azure Active Directory (Azure AD) 中設定會自動因應風險行為的風險型原則。 Azure AD Identity Protection 原則可以自動封鎖登入嘗試或要求額外的動作，例如，要求變更密碼或提示進行 Azure AD Multi-Factor Authentication。 這些原則可以與現有的 Azure AD 條件式存取原則搭配使用，為組織提供多一層的保護。 使用者雖然不太可能觸發這類原則中的風險行為，但若有人試圖危害您的安全性，組織將會受到保護。
 
 > [!IMPORTANT]
-> 此教學課程將說明系統管理員如何啟用風險型 Azure Multi-Factor Authentication。
+> 此教學課程將說明系統管理員如何啟用風險型 Azure AD Multi-Factor Authentication。
 >
-> 如果您的 IT 小組尚未啟用使用 Azure Multi-Factor Authentication 的功能，或您在進行單一登入時遇到問題，請與您的技術服務人員聯繫以取得其他協助。
+> 如果您的 IT 小組尚未啟用使用 Azure AD Multi-Factor Authentication 的功能，或您在進行單一登入時遇到問題，請與您的技術服務人員聯繫以取得其他協助。
 
 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 了解 Azure AD Identity Protection 的可用原則
-> * 啟用 Azure Multi-Factor Authentication 註冊
+> * 啟用 Azure AD Multi-Factor Authentication 註冊
 > * 啟用風險型密碼變更
 > * 啟用風險型 Multi-Factor Authentication
 > * 測試使用者登入嘗試的風險型原則
@@ -42,9 +42,9 @@ ms.locfileid: "91966571"
 * 至少已啟用 Azure AD Premium P2 或試用版授權的有效 Azure AD 租用戶。
     * 如有需要，[請建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 具有「全域系統管理員」權限的帳戶。
-* 已設定自助式密碼重設和 Azure Multi-Factor Authentication 的 Azure AD
+* 已設定自助式密碼重設和 Azure AD Multi-Factor Authentication 的 Azure AD
     * 如有需要，請[完成教學課程以啟用 Azure AD SSPR](tutorial-enable-sspr.md)。
-    * 如有需要，請[完成教學課程以啟用 Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md)。
+    * 如有需要，請[完成教學課程以啟用 Azure AD Multi-Factor Authentication](tutorial-enable-azure-mfa.md)。
 
 ## <a name="overview-of-azure-ad-identity-protection"></a>Azure AD Identity Protection 概觀
 
@@ -64,17 +64,17 @@ Azure AD Identity Protection 提供下列三項原則，用以保護使用者及
 * 使用者風險原則
     * 識別認證可能已遭入侵的使用者帳戶，並加以因應。 可提示使用者建立新的密碼。
 * 登入風險原則
-    * 識別可疑的登入嘗試，並加以因應。 可提示使用者使用 Azure Multi-Factor Authentication 提供其他形式的驗證。
+    * 識別可疑的登入嘗試，並加以因應。 可提示使用者使用 Azure AD Multi-Factor Authentication 提供其他形式的驗證。
 * MFA 註冊原則
-    * 確定使用者已註冊 Azure Multi-Factor Authentication。 如果登入風險原則提示須進行 MFA，使用者必須已註冊 Azure Multi-Factor Authentication。
+    * 確定使用者已註冊 Azure AD Multi-Factor Authentication。 如果登入風險原則提示須進行 MFA，使用者必須已註冊 Azure AD Multi-Factor Authentication。
 
-當您啟用原則使用者或登入風險原則時，您也可以選擇風險層級的閾值 - *低 (含) 以上*、*中 (含) 以上*或*高*。 此彈性可讓您決定對可疑的登入事件強制執行任何控制措施的積極程度。
+當您啟用原則使用者或登入風險原則時，您也可以選擇風險層級的閾值 - *低 (含) 以上*、*中 (含) 以上* 或 *高*。 此彈性可讓您決定對可疑的登入事件強制執行任何控制措施的積極程度。
 
 如需 Azure AD Identity Protection 的詳細資訊，請參閱[什麼是 Azure AD Identity Protection？](../identity-protection/overview-identity-protection.md)
 
 ## <a name="enable-mfa-registration-policy"></a>啟用 MFA 註冊原則
 
-Azure AD Identity Protection 包含預設原則，可協助使用者進行 Azure Multi-Factor Authentication 註冊。 如果您使用其他原則來保護登入事件，您的使用者必須已註冊 MFA。 此原則啟用時並不會要求使用者在每次登入時執行 MFA。 此原則只會檢查使用者的註冊狀態，並要求他們在必要時預先註冊。
+Azure AD Identity Protection 包含預設原則，可協助使用者進行 Azure AD Multi-Factor Authentication 註冊。 如果您使用其他原則來保護登入事件，您的使用者必須已註冊 MFA。 此原則啟用時並不會要求使用者在每次登入時執行 MFA。 此原則只會檢查使用者的註冊狀態，並要求他們在必要時預先註冊。
 
 建議您為要啟用其他 Azure AD Identity Protection 原則的使用者啟用 MFA 註冊原則。 若要啟用此原則，請完成下列步驟：
 
@@ -82,7 +82,7 @@ Azure AD Identity Protection 包含預設原則，可協助使用者進行 Azure
 1. 搜尋並選取 **Azure Active Directory**，選取 [安全性]，然後在 [保護] 功能表標題下，選擇 [Identity Protection]。
 1. 從左側功能表中選取 [MFA 註冊原則]。
 1. 根據預設，原則會套用至 *所有使用者*。 如有需要，請選取 [指派]，然後選擇要套用原則的使用者或群組。
-1. 在 [控制項] 底下，選取 [存取]。 請確定已核取 [需要 Azure MFA 註冊] 選項，然後選擇 [選取]。
+1. 在 [控制項] 底下，選取 [存取]。 請確定已核取 [需要 Azure AD MFA 註冊] 選項，然後選擇 [選取]。
 1. 將 [強制執行原則] 設定為 [開啟]，然後選取 [儲存]。
 
     ![如何要求使用者在 Azure 入口網站中註冊 MFA 的螢幕擷取畫面](./media/tutorial-risk-based-sspr-mfa/enable-mfa-registration.png)
@@ -133,7 +133,7 @@ Microsoft 與研究人員、執法機關，Microsoft 的各個安全性小組和
 
 > [!div class="checklist"]
 > * 了解 Azure AD Identity Protection 的可用原則
-> * 啟用 Azure Multi-Factor Authentication 註冊
+> * 啟用 Azure AD Multi-Factor Authentication 註冊
 > * 啟用風險型密碼變更
 > * 啟用風險型 Multi-Factor Authentication
 > * 測試使用者登入嘗試的風險型原則

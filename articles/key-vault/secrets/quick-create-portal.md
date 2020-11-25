@@ -11,67 +11,47 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 080e2daf5065c0762fb039a84e62580e5c915ddb
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 212e5fb62043c2ffe2b8876249a6aad1d224411d
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735164"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685846"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站從 Azure Key Vault 設定及擷取祕密
 
-Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 您也可以安全地儲存金鑰、密碼、憑證和其他祕密。 您可以透過 Azure 入口網站建立和管理 Azure 金鑰保存庫。 在本快速入門中，您會建立金鑰保存庫，然後用它來儲存祕密。 如需 Key Vault 的詳細資訊，您可以檢閱[概觀](../general/overview.md)。
+Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 您也可以安全地儲存金鑰、密碼、憑證和其他祕密。 您可以透過 Azure 入口網站建立和管理 Azure 金鑰保存庫。 在本快速入門中，您會建立金鑰保存庫，然後用它來儲存祕密。 
 
-如需祕密的詳細資訊，請參閱[關於祕密](about-secrets.md)。
+如需詳細資訊，請參閱 
+- [Key Vault 概觀](../general/overview.md)
+- [秘密概觀](about-secrets.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-- Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+若要存取 Azure Key Vault，您必須要有 Azure 訂用帳戶。 如果您還沒有訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始操作。
+
+對密碼的所有存取都會透過 Azure Key Vault 進行。 在本快速入門中，請使用 [Azure 入口網站](../general/quick-create-portal.md)、[Azure CLI](../general/quick-create-cli.md) 或 [Azure PowerShell](../general/quick-create-powershell.md) 建立金鑰保存庫。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
 在 https://portal.azure.com 登入 Azure 入口網站。
 
-## <a name="create-a-vault"></a>建立保存庫
-
-1. 從 Azure 入口網站功能表或 **首頁** ，選取 [建立資源]。
-2. 在 [搜尋] 方塊中輸入 **Key Vault** 。
-3. 從結果清單中，選擇 [Key Vault]。
-4. 在 [金鑰保存庫] 區段上選擇 [建立]。
-5. 在 [建立金鑰保存庫] 區段上提供下列資訊：
-    - **Name** ：唯一名稱是必要項。 在本快速入門中，我們使用 **Contoso-vault2** 。 
-    - 訂用帳戶：選擇訂用帳戶。
-    - 在 [資源群組] 底下，選擇 [新建]，然後輸入資源群組名稱。
-    - 在 [位置] 下拉式功能表中選擇位置。
-    - 將其他的選項保留預設值。
-6. 提供上述資訊之後，請選取 [建立]。
-
-請記下下列兩個屬性：
-
-* **保存庫名稱** ：在此範例中是 **Contoso-Vault2** 。 您將在其他步驟中使用此名稱。
-* **保存庫 URI** ：在此範例中是 https://contoso-vault2.vault.azure.net/ 。 透過其 REST API 使用保存庫的應用程式必須使用此 URI。
-
-您也可使用 Azure CLI 和 PowerShell 來建立 Key Vault：
-- [使用 PowerShell 建立 Key Vault](../general/quick-create-powershell.md)
-- [使用 Azure CLI 建立 Key Vault](../general/quick-create-cli.md)
-
-此時，您的 Azure 帳戶是唯一獲得授權在此新保存庫上執行作業的帳戶。
-
-![Key Vault 建立完成後的輸出](../media/quick-create-portal/vault-properties.png)
-
 ## <a name="add-a-secret-to-key-vault"></a>將祕密新增至 Key Vault
 
-若要將祕密新增至保存庫，您只需要採取一些額外步驟。 在此情況下，我們會新增應用程式可以使用的密碼。 此密碼稱為 **ExamplePassword** ，且我們會在其中儲存 **hVFkk965BuUv** 值。
+若要將秘密新增至保存庫，請依照下列步驟操作：
 
-1. 在 Key Vault 屬性頁面上，選取 [祕密]。
-2. 按一下 [產生/匯入]。
-3. 在 [建立祕密] 畫面上選擇下列值：
-    - **上傳選項** ：手動。
-    - **Name** ：ExamplePassword。
-    - **值** ：hVFkk965BuUv
+1. 在 Azure 入口網站中瀏覽至您新的金鑰保存庫
+1. 在 Key Vault 設定頁面上，選取 [祕密]。
+1. 按一下 [產生/匯入]。
+1. 在 [建立祕密] 畫面上選擇下列值：
+    - **上傳選項**：手動。
+    - **名稱**：輸入祕密的名稱。 秘密名稱在 Key Vault 內必須是唯一的。 其名稱必須是 1-127 個字元的字串，開頭必須是字母，且只能包含 0-9、a-z、A-Z 和 -。 如需命名的詳細資訊，請參閱 [Key Vault 物件、識別碼和版本設定](https://docs.microsoft.com/azure/key-vault/general/about-keys-secrets-certificates#objects-identifiers-and-versioning)
+    - **值**：輸入祕密的值。 Key Vault API 會以字串的形式接受和傳回秘密值。 
     - 將其他的值保留預設值。 按一下頁面底部的 [新增]  。
 
 一旦收到已成功建立祕密的訊息，即可按一下清單上的祕密。 
+
+如需秘密屬性的詳細資訊，請參閱[關於 Azure Key Vault 秘密](https://docs.microsoft.com/azure/key-vault/secrets/about-secrets)
 
 ## <a name="retrieve-a-secret-from-key-vault"></a>從 Key Vault 擷取祕密
 
@@ -83,6 +63,8 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
 
 ![顯示祕密值](../media/quick-create-portal/current-version-shown.png)
 
+您也可以使用 [Azure CLI]() 或 [Azure PowerShell]() 來擷取先前建立的秘密。
+
 ## <a name="clean-up-resources"></a>清除資源
 
 其他 Key Vault 快速入門和教學課程會以本快速入門為基礎。 如果您打算繼續進行後續的快速入門和教學課程，您可以讓這些資源留在原處。
@@ -92,6 +74,8 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
 2. 選取 [刪除資源群組]。
 3. 在 [輸入資源群組名稱:] 方塊中輸入資源群組的名稱，然後選取 [刪除]。
 
+> [!NOTE]
+> 請務必注意，秘密、金鑰、憑證或金鑰保存庫在刪除後，會在可設定的期間 (日曆的 7 到 90 天) 內保持可復原的狀態。 若未指定任何設定，預設復原期間將會設為 90 天。 這可讓使用者有足夠的時間可注意到意外的秘密刪除，並予以因應。 如需關於刪除和復原金鑰保存庫和金鑰保存庫物件的詳細資訊，請參閱 [Azure Key Vault 虛刪除概觀](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)
 
 ## <a name="next-steps"></a>後續步驟
 

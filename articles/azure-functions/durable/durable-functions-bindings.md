@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 899bc3fdc94b8232acd3edf3e0cbab3c481ff8f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081843"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013715"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>長期函式中的繫結 (Azure Functions)
 
@@ -249,7 +249,7 @@ module.exports = async function (context) {
 
 如果您使用 Visual Studio，可以使用 Durable Functions 1.0 的 .Net 屬性系結至協調流程用戶端 `OrchestrationClientAttribute` 。 從 Durable Functions 2.0 開始，您可以使用 .Net 屬性系結至協調流程用戶端 `DurableClientAttribute` 。
 
-如果您使用指令碼語言 (例如， *.csx*或 *.js*檔案) 進行開發，則協調流程觸發程式是由function.js的陣列中的下列 JSON 物件所定義 `bindings` ： *function.json*
+如果您使用指令碼語言 (例如， *.csx* 或 *.js* 檔案) 進行開發，則協調流程觸發程式是由function.js的陣列中的下列 JSON 物件所定義 `bindings` ： *function.json*
 
 ```json
 {
@@ -303,7 +303,7 @@ public static Task Run(
 
 ### <a name="client-sample-not-visual-studio"></a>用戶端範例 (不是 Visual Studio)
 
-如果您不是使用 Visual Studio 進行開發，您可以建立下列 function.json** 檔案。 此範例示範如何設定佇列觸發函式，它使用長期協調流程用戶端繫結：
+如果您不是使用 Visual Studio 進行開發，您可以建立下列 function.json 檔案。 此範例示範如何設定佇列觸發函式，它使用長期協調流程用戶端繫結：
 
 ```json
 {
@@ -379,7 +379,7 @@ module.exports = async function (context) {
 * **單一執行緒**：單一發送器執行緒用來處理特定實體的作業。 如果多個訊息同時傳送至單一實體，則會一次處理一次作業。
 * **有害訊息處理** -實體觸發程式中沒有有害訊息支援。
 * **訊息可見度** -實體觸發程式訊息會被清除佇列，並且在可設定的持續時間內保持不可見。 只要函式應用程式正在執行且狀況良好，就會自動更新這些訊息的可見度。
-* 傳回**值**-實體函數不支援傳回值。 您可以使用特定的 Api 來儲存狀態，或將值傳回給協調流程。
+* 傳回 **值**-實體函數不支援傳回值。 您可以使用特定的 Api 來儲存狀態，或將值傳回給協調流程。
 
 執行完成之後，對實體所做的任何狀態變更都會自動儲存。
 
@@ -392,20 +392,20 @@ module.exports = async function (context) {
 * **EntityId**：目前執行中實體的識別碼。
 * **OperationName**：目前作業的名稱。
 * **HasState**：實體是否存在，也就是具有某些狀態。 
-* **>getstate \<TState> ( # B1 **：取得實體的目前狀態。 如果它不存在，則會建立並初始化為 `default<TState>` 。 `TState`參數必須是基本或 JSON 可序列化型別。 
-* **>getstate \<TState> (initfunction) **：取得實體的目前狀態。 如果它不存在，則會藉由呼叫提供的參數來建立 `initfunction` 。 `TState`參數必須是基本或 JSON 可序列化型別。 
-* **SetState (arg) **：建立或更新實體的狀態。 `arg`參數必須是 JSON 可序列化物件或基本類型。
-* **DeleteState ( # B1 **：刪除實體的狀態。 
-* **>getinput \<TInput> ( # B1 **：取得目前作業的輸入。 `TInput`型別參數必須是基本或 JSON 可序列化型別。
-* 傳回** (arg) **：將值傳回給呼叫作業的協調流程。 `arg`參數必須是基本或 JSON 可序列化物件。
-* **SignalEntity (EntityId、scheduledTimeUtc、operation、input) **：將單向訊息傳送至實體。 `operation`參數必須為非 null 字串，選擇性必須是要叫用作業的 `scheduledTimeUtc` UTC 日期時間，而 `input` 參數必須是基本或 JSON 可序列化物件。
-* **CreateNewOrchestration (orchestratorFunctionName，輸入) **：啟動新的協調流程。 `input`參數必須是基本或 JSON 可序列化物件。
+* **>getstate \<TState> ( # B1**：取得實體的目前狀態。 如果它不存在，則會建立並初始化為 `default<TState>` 。 `TState`參數必須是基本或 JSON 可序列化型別。 
+* **>getstate \<TState> (initfunction)**：取得實體的目前狀態。 如果它不存在，則會藉由呼叫提供的參數來建立 `initfunction` 。 `TState`參數必須是基本或 JSON 可序列化型別。 
+* **SetState (arg)**：建立或更新實體的狀態。 `arg`參數必須是 JSON 可序列化物件或基本類型。
+* **DeleteState ( # B1**：刪除實體的狀態。 
+* **>getinput \<TInput> ( # B1**：取得目前作業的輸入。 `TInput`型別參數必須是基本或 JSON 可序列化型別。
+* 傳回 **(arg)**：將值傳回給呼叫作業的協調流程。 `arg`參數必須是基本或 JSON 可序列化物件。
+* **SignalEntity (EntityId、scheduledTimeUtc、operation、input)**：將單向訊息傳送至實體。 `operation`參數必須為非 null 字串，選擇性必須是要叫用作業的 `scheduledTimeUtc` UTC 日期時間，而 `input` 參數必須是基本或 JSON 可序列化物件。
+* **CreateNewOrchestration (orchestratorFunctionName，輸入)**：啟動新的協調流程。 `input`參數必須是基本或 JSON 可序列化物件。
 
 `IDurableEntityContext`傳遞給實體函數的物件可以使用 `Entity.Current` 非同步區域屬性來存取。 使用以類別為基礎的程式設計模型時，這種方法很方便。
 
 ### <a name="trigger-sample-c-function-based-syntax"></a>以 c # 函式為基礎的語法) 的觸發程式範例 (
 
-下列程式碼會舉例說明實作為持久函式的簡單「計數器」** 實體。 此函式會定義三個作業 (`add`、`reset` 和 `get`)，每個作業都會以整數狀態運作。
+下列程式碼會舉例說明實作為持久函式的簡單「計數器」實體。 此函式會定義三個作業 (`add`、`reset` 和 `get`)，每個作業都會以整數狀態運作。
 
 ```csharp
 [FunctionName("Counter")]
@@ -456,7 +456,7 @@ public class Counter
 如需以類別為基礎的語法及其使用方式的詳細資訊，請參閱[定義實體類別](durable-functions-dotnet-entities.md#defining-entity-classes)。
 
 > [!NOTE]
-> 使用實體類別時，具有 `[FunctionName]` 屬性的函式進入點方法「必須」** 宣告為 `static`。 非靜態的進入點方法可能會導致初始化多個物件，並可能導致其他未定義的行為。
+> 使用實體類別時，具有 `[FunctionName]` 屬性的函式進入點方法「必須」 宣告為 `static`。 非靜態的進入點方法可能會導致初始化多個物件，並可能導致其他未定義的行為。
 
 實體類別具有與系結和 .NET 相依性插入互動的特殊機制。 如需詳細資訊，請參閱 [實體結構](durable-functions-dotnet-entities.md#entity-construction)。
 
@@ -511,7 +511,7 @@ module.exports = df.entity(function(context) {
 > [!NOTE]
 > `[DurableClientAttribute]`也可以用來系結至[協調流程用戶端](#orchestration-client)。
 
-如果您是使用指令碼語言 (例如， *.csx*或 *.js*檔案) 進行開發，則實體觸發程式是由function.js的陣列中的下列 JSON 物件所定義 `bindings` ： *function.json*
+如果您是使用指令碼語言 (例如， *.csx* 或 *.js* 檔案) 進行開發，則實體觸發程式是由function.js的陣列中的下列 JSON 物件所定義 `bindings` ： *function.json*
 
 ```json
 {
@@ -533,9 +533,9 @@ module.exports = df.entity(function(context) {
 
 在 .NET 函式中，您通常會系結至 `IDurableEntityClient` ，這可讓您完整存取持久性實體所支援的所有用戶端 api。 您也可以系結至 `IDurableOrchestrationClient` 介面，此介面可讓您存取實體和協調流程的用戶端 api。 用戶端物件上的 API 包括：
 
-* **ReadEntityStateAsync \<T> **：讀取實體的狀態。 它會傳迴響應，指出目標實體是否存在，如果是，則為其狀態。
+* **ReadEntityStateAsync \<T>**：讀取實體的狀態。 它會傳迴響應，指出目標實體是否存在，如果是，則為其狀態。
 * **SignalEntityAsync**：將單向訊息傳送至實體，並等候它排入佇列。
-* **ListEntitiesAsync**：查詢多個實體的狀態。 實體可以依 *名稱* 和上次作業 *時間*進行查詢。
+* **ListEntitiesAsync**：查詢多個實體的狀態。 實體可以依 *名稱* 和上次作業 *時間* 進行查詢。
 
 在傳送信號之前，不需要建立目標實體-實體狀態可以從處理信號的實體函式中建立。
 
@@ -641,7 +641,7 @@ module.exports = async function (context) {
 
 [!INCLUDE [durabletask](../../../includes/functions-host-json-durabletask.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [實例管理的內建 HTTP API 參考](durable-functions-http-api.md)

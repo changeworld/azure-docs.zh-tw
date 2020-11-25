@@ -1,17 +1,17 @@
 ---
-title: 快速入門：建立 Python 應用程式
-description: 藉由將您的第一個 Python 應用程式部署至 App Service 中的 Linux 容器來開始使用 Azure App Service。
+title: 快速入門：建立適用於 Linux 的 Python 應用程式
+description: 藉由將 Python 應用程式部署至 App Service 中的 Linux 容器，開始使用 Azure App Service。
 ms.topic: quickstart
 ms.date: 09/22/2020
-ms.custom: seo-python-october2019, cli-validate, devx-track-python
+ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 adobe-target: true
-ms.openlocfilehash: 8b88b8ef81dc8186c122a24896d85114ef8a163d
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: dc4c67437d6cc6d5eea87bf414058a676d7cd8a4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506459"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833678"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-for-linux"></a>快速入門：在 Linux 的 Azure App Service 中建立 Python 應用程式
 

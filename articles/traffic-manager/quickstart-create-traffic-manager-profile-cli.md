@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b2f25eec3a8a992e9fce0191700775968854a0c2
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 7dabf94c711972f9fe543edac0d7b95469fc2d35
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939132"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661098"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>快速入門：使用 Azure CLI 建立流量管理員設定檔以獲得高可用性的 Web 應用程式
 
@@ -26,14 +26,11 @@ ms.locfileid: "91939132"
 
 在本快速入門中，您會建立 Web 應用程式的兩個執行個體。 每個執行個體會在不同的 Azure 區域中執行。 您會建立以[端點優先順序](traffic-manager-routing-methods.md#priority-traffic-routing-method)為基礎的流量管理員設定檔。 此設定檔會將使用者流量導向執行 Web 應用程式的主要網站。 流量管理員會持續監視 Web 應用程式。 如果主要網站無法使用，它會提供自動容錯移轉至備份網站。
 
-## <a name="prerequisites"></a>必要條件
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- 已在本機安裝 Azure CLI 或 Azure Cloud Shell
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-如果您選擇在本機安裝和使用 CLI，在執行本教學課程時，您必須執行 Azure CLI 2.0.28 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
+- 本文需要 2.0.28 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 使用 [az group create](https://docs.microsoft.com/cli/azure/group) 來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
@@ -198,7 +195,7 @@ az network traffic-manager profile show \
 1. 在網頁瀏覽器中，輸入流量管理員設定檔的 DNS 名稱 (*http://<* relativednsname *>.trafficmanager.net*)，以檢視 Web 應用程式的預設網站。
 
     > [!NOTE]
-    > 在此快速入門案例中，所有要求都會路由傳送至主要端點。 它會設定為 [優先順序 1]****。
+    > 在此快速入門案例中，所有要求都會路由傳送至主要端點。 它會設定為 [優先順序 1]。
 2. 若要檢視進行中的流量管理員容錯移轉，請使用 [az network traffic-manager endpoint update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) 來停用主要網站。
 
    ```azurecli-interactive

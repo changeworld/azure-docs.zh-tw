@@ -4,12 +4,12 @@ description: 建立函數應用程式，並使用 Azure Functions 從 GitHub 存
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 7f7c272fa95d2697d41cb751e39ef72b0da86a12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 752d8a729c56fc2e0e110fcedc263eab4ba7a96b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87498509"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565302"
 ---
 # <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>在 Azure 中建立從 GitHub 部署的函式應用程式
 
@@ -22,9 +22,9 @@ ms.locfileid: "87498509"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-如果您不是在本機使用 Azure CLI，則必須安裝和使用 2.0 版或更新版本。 若要判斷 Azure CLI 版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。 
+ - 本教學課程需要 2.0 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。 
 
 ## <a name="sample-script"></a>範例指令碼
 

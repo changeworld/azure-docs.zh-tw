@@ -9,11 +9,11 @@ ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: 54612bee5715cdb78141a8aacfa5d24c814269d1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312403"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014715"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>將許可權授與工作區受控識別 (預覽) 
 
@@ -26,7 +26,7 @@ ms.locfileid: "93312403"
 
 受控識別會將許可權授與工作區中的專用 SQL 集區。 授與許可權之後，您就可以協調執行專用 SQL 集區相關活動的管線。 當您使用 Azure 入口網站建立 Azure Synapse 工作區時，可以在專用的 SQL 集區上授與受控識別控制許可權。
 
-當您建立 Azure Synapse 工作區時，請選取 [ **安全性** ]。 然後選取 **[允許管線 (正在執行作為工作區的系統指派身分識別]) 存取 SQL 集區** 。
+當您建立 Azure Synapse 工作區時，請選取 [ **安全性** ]。 然後選取 **[允許管線 (正在執行作為工作區的系統指派身分識別]) 存取 SQL 集區**。
 
 ![專用 SQL 集區的 CONTROL 許可權](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-16.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "93312403"
 
 #### <a name="step-4-add-a-new-role-assignment"></a>步驟4：新增角色指派
 
-選取 [+ 新增]。
+選取 [+ 新增]  。
 
 ![新增角色指派](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-9.png)
 
@@ -92,13 +92,13 @@ ms.locfileid: "93312403"
 
 #### <a name="step-6-select-the-azure-ad-security-principal"></a>步驟6：選取 Azure AD 安全性主體
 
-從 [ **指派存取權至** ] 下拉式清單中選取 **Azure AD 使用者、群組或服務主體** 。
+從 [**指派存取權至**] 下拉式清單中選取 **Azure AD 使用者、群組或服務主體**。
 
 ![選取 AAD 安全性主體](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-11.png)
 
 #### <a name="step-7-search-for-the-managed-identity"></a>步驟7：搜尋受控識別
 
-受控識別的名稱也是工作區名稱。 在 [ **選取** ] 中輸入您的 Azure Synapse 工作區名稱，以搜尋受控識別。 您應該會看到列出的受控識別。
+受控識別的名稱也是工作區名稱。 在 [ **選取**] 中輸入您的 Azure Synapse 工作區名稱，以搜尋受控識別。 您應該會看到列出的受控識別。
 
 ![尋找受控識別](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-12.png)
 
@@ -110,7 +110,7 @@ ms.locfileid: "93312403"
 
 #### <a name="step-9-verify-that-the-storage-blob-data-contributor-role-is-assigned-to-the-managed-identity"></a>步驟9：確認儲存體 Blob 資料參與者角色已指派給受控識別
 
-選取 [ **存取控制] (IAM)** ，然後選取 [ **角色指派** ]。
+選取 [ **存取控制] (IAM)** ，然後選取 [ **角色指派**]。
 
 ![確認角色指派](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-14.png)
 

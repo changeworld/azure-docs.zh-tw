@@ -16,12 +16,12 @@ ms.workload: web
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 8e99d4f1d6de9aa9845ca83dfa68099aad25f9f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3133d5f17643eeb1a0e9f77f7d0af6532c30592d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88960627"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561403"
 ---
 # <a name="integrate-app-service-with-application-gateway-using-cli"></a>使用 CLI 整合 App Service 與應用程式閘道
 
@@ -29,9 +29,9 @@ ms.locfileid: "88960627"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-如果您選擇在本機安裝和使用 CLI，需要 Azure CLI 2.0.74 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
+ - 本教學課程需要 2.0.74 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="sample-script"></a>範例指令碼
 

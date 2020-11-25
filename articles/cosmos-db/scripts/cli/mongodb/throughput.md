@@ -7,19 +7,19 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 10/07/2020
-ms.openlocfilehash: 5dcd3b0404b83755a6d8187c38adf1281aa79845
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 54aebb48986b94dbebea400e6b6ee155a54f514b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102142"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566209"
 ---
 # <a name="throughput-rus-operations-with-azure-cli-for-a-database-or-graph-for-azure-cosmos-db-api-for-mongodb"></a>使用 Azure CLI 對 MongoDB 版 Azure Cosmos DB API 的資料庫或圖表執行輸送量 (RU/秒) 作業
 [!INCLUDE[appliesto-mongodb-api](../../../includes/appliesto-mongodb-api.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../../../includes/azure-cli-prepare-your-environment.md)]
 
-若選擇在本機安裝及使用 CLI，此主題需要您執行 Azure CLI 2.12.1 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+- 本文需要 2.12.1 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="sample-script"></a>範例指令碼
 

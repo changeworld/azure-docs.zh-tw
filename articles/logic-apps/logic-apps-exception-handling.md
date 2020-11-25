@@ -9,11 +9,11 @@ ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
 ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84704517"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014732"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>處理 Azure Logic Apps 中的錯誤和例外狀況
 
@@ -29,10 +29,10 @@ ms.locfileid: "84704517"
 
 | 類型 | 描述 |
 |------|-------------|
-| **預設值** | 此原則會以*指數漸增*的間隔 (依 7.5 秒調整，但限制在 5 到 45 秒之間) 傳送最多 4 次重試。 |
+| **預設值** | 此原則會以 *指數漸增* 的間隔 (依 7.5 秒調整，但限制在 5 到 45 秒之間) 傳送最多 4 次重試。 |
 | **指數間隔**  | 此原則會先等待選自指數成長範圍內的隨機間隔時間，再傳送下一個要求。 |
 | **固定間隔**  | 此原則會先等待指定的間隔時間，再傳送下一個要求。 |
-| **無**  | 不重新傳送要求。 |
+| **None**  | 不重新傳送要求。 |
 |||
 
 如需有關重試原則限制的資訊，請參閱 [Logic Apps 限制和設定](../logic-apps/logic-apps-limits-and-config.md#request-limits)。
@@ -43,9 +43,9 @@ ms.locfileid: "84704517"
 
 1. 在邏輯應用程式設計工具中開啟邏輯應用程式。
 
-1. 開啟動作或觸發程序的 [設定]****。
+1. 開啟動作或觸發程序的 [設定]。
 
-1. 如果動作或觸發程序支援重試原則，請於 [重試原則]**** 底下選取您想要的類型。
+1. 如果動作或觸發程序支援重試原則，請於 [重試原則] 底下選取您想要的類型。
 
 或者，您也可以針對支援重試原則的動作或觸發程序，在其 `inputs` 區段中手動指定重試原則。 如果您未指定重試原則，則動作會使用預設原則。
 
@@ -69,7 +69,7 @@ ms.locfileid: "84704517"
 
 *必要*
 
-| 值 | 類型 | 說明 |
+| 值 | 類型 | 描述 |
 |-------|------|-------------|
 | <*重試原則類型*> | String | 您想要使用的重試原則類型：`default`、`none`、`fixed` 或 `exponential` |
 | <*重試間隔*> | String | 值必須使用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)的重試間隔。 預設最小間隔是 `PT5S`，最大間隔則是 `PT1D`。 當您使用指數間隔原則時，您可以指定不同的最小和最大值。 |
@@ -78,7 +78,7 @@ ms.locfileid: "84704517"
 
 *選擇性*
 
-| 值 | 類型 | 說明 |
+| 值 | 類型 | 描述 |
 |-------|------|-------------|
 | <*最小間隔*> | String | 對於指數間隔原則，此為隨機選取間隔的最小間隔，且採用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
 | <*最大間隔*> | String | 對於指數間隔原則，此為隨機選取間隔的最大間隔，且採用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
@@ -112,13 +112,13 @@ ms.locfileid: "84704517"
 }
 ```
 
-### <a name="none"></a>無
+### <a name="none"></a>None
 
-若要將動作或觸發程序指定為不會重試失敗的要求，請將 <retry-policy-type**> 設定為 `none`。
+若要將動作或觸發程序指定為不會重試失敗的要求，請將 <retry-policy-type> 設定為 `none`。
 
 ### <a name="fixed-interval"></a>固定間隔
 
-若要將動作或觸發程序指定為先等候指定間隔再傳送下一個要求，請將 <retry-policy-type**> 設定為 `fixed`。
+若要將動作或觸發程序指定為先等候指定間隔再傳送下一個要求，請將 <retry-policy-type> 設定為 `fixed`。
 
 *範例*
 
@@ -143,7 +143,7 @@ ms.locfileid: "84704517"
 
 ### <a name="exponential-interval"></a>指數間隔
 
-若要將動作或觸發程序指定為先等候隨機間隔再傳送下一個要求，請將 <retry-policy-type**> 設定為 `exponential`。 隨機間隔會從指數成長範圍來選取。 (選擇性) 您也可以藉由指定自己的最小和最大間隔，覆寫預設的最小和最大間隔。
+若要將動作或觸發程序指定為先等候隨機間隔再傳送下一個要求，請將 <retry-policy-type> 設定為 `exponential`。 隨機間隔會從指數成長範圍來選取。 (選擇性) 您也可以藉由指定自己的最小和最大間隔，覆寫預設的最小和最大間隔。
 
 **隨機變數範圍**
 
@@ -312,11 +312,11 @@ ms.locfileid: "84704517"
 
 以下是說明此範例中所發生情況的詳細逐步解說︰
 
-1. 若要從 "My_Scope" 內的所有動作取得結果，**篩選陣列**動作會使用這個篩選條件運算式：`@result('My_Scope')`
+1. 若要從 "My_Scope" 內的所有動作取得結果，**篩選陣列** 動作會使用這個篩選條件運算式：`@result('My_Scope')`
 
-1. **篩選陣列**的條件是任何 `@result()` 狀態等於的專案 `Failed` 。 此條件會將具有 "My_Scope" 所有動作結果的陣列篩選成只剩失敗動作結果的陣列。
+1. **篩選陣列** 的條件是任何 `@result()` 狀態等於的專案 `Failed` 。 此條件會將具有 "My_Scope" 所有動作結果的陣列篩選成只剩失敗動作結果的陣列。
 
-1. `For_each`在*篩選的陣列*輸出上執行迴圈動作。 此步驟會對之前篩選的每個失敗動作結果執行動作。
+1. `For_each`在 *篩選的陣列* 輸出上執行迴圈動作。 此步驟會對之前篩選的每個失敗動作結果執行動作。
 
    如果範圍中的單一動作失敗，則迴圈中的動作 `For_each` 只會執行一次。 如果有多個失敗動作，則會導致對每個失敗執行一個動作。
 
@@ -366,7 +366,7 @@ ms.locfileid: "84704517"
 
 若要評估執行狀態，您可以監視記錄和度量，或將它們發佈至您偏好使用的任何監視工具。 其中一個可能的選項是透過「事件中樞」將所有事件串流到 [Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)。 在「串流分析」中，您可以根據診斷記錄中的任何異常、平均或失敗，撰寫即時查詢。 您可以使用「串流分析」將資訊傳送到其他資料來源，例如傳送到佇列、主題、SQL、Azure Cosmos DB 或 Power BI。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [看看客戶如何使用 Azure Logic Apps 建置錯誤處理](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 * [尋找更多 Logic Apps 範例和案例](../logic-apps/logic-apps-examples-and-scenarios.md)

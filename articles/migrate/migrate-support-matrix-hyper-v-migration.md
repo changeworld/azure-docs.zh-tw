@@ -4,11 +4,11 @@ description: 深入瞭解使用 Azure Migrate 進行 Hyper-v 遷移的支援。
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: 4ba8b8cea784167ad045c5635ce512a68b48d897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442304"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014188"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-v 遷移的支援矩陣
 
@@ -28,7 +28,7 @@ ms.locfileid: "91442304"
 | **主機作業系統** | 具有最新更新的 windows Server 2019、Windows Server 2016 或 Windows Server 2012 R2。 請注意，也支援這些作業系統的 Server core 安裝。 |
 | **其他軟體需求** | .NET Framework 4.7 或更新版本 |
 | **連接埠存取** |  HTTPS 埠443上的輸出連線以傳送 VM 複寫資料。
-| ** (快取) 的可用磁碟空間 ** |  600 GB |
+| **(快取) 的可用磁碟空間** |  600 GB |
 | **可用磁碟空間 (保留磁碟)** |  600 GB |
 
 
@@ -97,7 +97,7 @@ time.nist.gov | 驗證系統時間與通用時間之間的時間同步處理。
 FC 磁碟 | 不支援。 | 若不支援，則檢查會失敗。
 BitLocker | 不支援。 | 為電腦啟用複寫之前必須先停用 BitLocker。
 VM 名稱 | 從 1 到 63 個字元。<br/> 只能使用字母、數字和連字號。<br/><br/> 電腦名稱必須以字母或數字為開頭或結尾。 |  更新 Site Recovery 中電腦屬性的值。
-在遷移後連接-Windows | 若要在遷移之後連線到執行 Windows 的 Azure Vm：<br/><br/> -在遷移之前，請在內部部署 VM 上啟用 RDP。 確定已針對 [公用]**** 設定檔新增 TCP 和 UDP 規則，且在 [Windows 防火牆]**** > [允許的應用程式]**** 中已針對所有設定檔允許 RDP。<br/><br/> -若為站對站 VPN 存取，請啟用 rdp，並允許**Windows 防火牆**中的 rdp 允許  ->  **網域和專用**網的**應用程式和功能**。 此外，請確定作業系統的 SAN 原則設定為 **OnlineAll**。 [深入了解](prepare-for-migration.md)。 |
+在遷移後連接-Windows | 若要在遷移之後連線到執行 Windows 的 Azure Vm：<br/><br/> -在遷移之前，請在內部部署 VM 上啟用 RDP。 確定已針對 [公用] 設定檔新增 TCP 和 UDP 規則，且在 [Windows 防火牆] > [允許的應用程式] 中已針對所有設定檔允許 RDP。<br/><br/> -若為站對站 VPN 存取，請啟用 rdp，並允許 **Windows 防火牆** 中的 rdp 允許  ->  **網域和專用** 網的 **應用程式和功能**。 此外，請確定作業系統的 SAN 原則設定為 **OnlineAll**。 [深入了解](prepare-for-migration.md)。 |
 在遷移後連接-Linux | 使用 SSH 進行遷移之後，使用 SSH 連線到 Azure Vm：<br/><br/> -在遷移之前，請在內部部署機器上，確認安全殼層服務已設定為 [啟動]，且防火牆規則允許 SSH 連線。<br/><br/> -在遷移之後，請在 Azure VM 上，針對已容錯移轉的 VM 上的網路安全性群組規則以及它所連接的 Azure 子網，允許 SSH 埠的連入連線。 此外，新增 VM 的公用 IP 位址。 |  
 
 ## <a name="next-steps"></a>後續步驟

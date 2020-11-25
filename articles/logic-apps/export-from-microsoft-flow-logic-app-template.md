@@ -7,11 +7,11 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.openlocfilehash: 1c2f0a2c54be7adbc7b8babd596f18e08c67a024
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269551"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014409"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>從 Power Automate 匯出流程，並部署至 Azure Logic Apps
 
@@ -24,7 +24,7 @@ ms.locfileid: "91269551"
 >
 > * 若要找出哪些 Logic Apps 連接器沒有 Power Automate 對等專案，請參閱 [Logic Apps 連接器](/connectors/connector-reference/connector-reference-powerautomate-connectors)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -32,7 +32,7 @@ ms.locfileid: "91269551"
 
 ## <a name="export-your-flow"></a>匯出您的流程
 
-1. 登入 [Power Automate](https://flow.microsoft.com)，然後選取 [ **我的流程**]。 尋找並選取您的流程。 在工具列上，選取省略號 (**...**) 按鈕 >**匯出**  >  **Logic Apps 範本 (. json) **。
+1. 登入 [Power Automate](https://flow.microsoft.com)，然後選取 [ **我的流程**]。 尋找並選取您的流程。 在工具列上，選取省略號 (**...**) 按鈕 >**匯出**  >  **Logic Apps 範本 (. json)**。
 
    ![從 Power Automate 匯出流程](./media/export-from-microsoft-flow-logic-app-template/export-flow.png)
 
@@ -52,11 +52,11 @@ ms.locfileid: "91269551"
 
    ![選取 [在編輯器中建立您自己的範本]](./media/export-from-microsoft-flow-logic-app-template/build-template-in-editor.png)
 
-1. 在 [ **編輯範本** ] 工具列上，選取 [ **載入**檔案]。
+1. 在 [ **編輯範本** ] 工具列上，選取 [ **載入** 檔案]。
 
    ![選取 [載入檔案]](./media/export-from-microsoft-flow-logic-app-template/load-file.png)
 
-1. 流覽至您儲存從 Power Automate 匯出的 JSON 範本檔案的位置。 選取 > **開啟**的範本檔案。
+1. 流覽至您儲存從 Power Automate 匯出的 JSON 範本檔案的位置。 選取 > **開啟** 的範本檔案。
 
 1. 在編輯器顯示範本中的 JSON、參數和資源之後，請選取 [ **儲存**]。
 
@@ -82,19 +82,19 @@ ms.locfileid: "91269551"
 
    1. 當您完成時，請參閱建立必要 Azure 資源的 **條款及條件** ，並據此向您的 azure 訂用帳戶計費。
 
-   1. 當您準備好時，請選取 **[我同意上方所述的條款及條件**]  >  ** **。
+   1. 當您準備好時，請選取 **[我同意上方所述的條款及條件**]  >  ****。
 
       Azure 會將您的範本作為邏輯應用程式部署到指定的資源群組。
 
 1. 您從 Power Automate 遷移的所有邏輯應用程式都會部署為停用狀態。 啟用邏輯應用程式之前，請遵循下列步驟來授權任何新的連接：
 
-   1. 在 Azure 入口網站中，開啟您所建立的邏輯應用程式。 在邏輯應用程式的功能表上，選取 [ **邏輯應用程式設計**工具]。
+   1. 在 Azure 入口網站中，開啟您所建立的邏輯應用程式。 在邏輯應用程式的功能表上，選取 [ **邏輯應用程式設計** 工具]。
 
       每個需要授權的連接都會顯示警告圖示：
 
       ![警告圖示](./media/export-from-microsoft-flow-logic-app-template/authorize-connections.png)
 
-   1. 針對需要授權連接的每個步驟，展開該步驟，然後選取 [ **加入新**的]。
+   1. 針對需要授權連接的每個步驟，展開該步驟，然後選取 [ **加入新** 的]。
 
       ![顯示在 Outlook [連接] 視窗上選取 [新增] 按鈕的螢幕擷取畫面。](./media/export-from-microsoft-flow-logic-app-template/add-new-connection.png)
 
@@ -114,13 +114,13 @@ ms.locfileid: "91269551"
 
 1. 在 Visual Studio 中，流覽至您從 Power Automate 匯出的邏輯應用程式範本的 json 檔案並加以開啟。
 
-1. 在 Visual Studio 中，[依照快速入門：使用 Azure Logic Apps Visual Studio 建立自動化工作、進程和工作流程](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)中的步驟，建立使用**邏輯應用程式**範本的**Azure 資源群組**專案。
+1. 在 Visual Studio 中，[依照快速入門：使用 Azure Logic Apps Visual Studio 建立自動化工作、進程和工作流程](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)中的步驟，建立使用 **邏輯應用程式** 範本的 **Azure 資源群組** 專案。
 
    這個範例會建立名為 "ImportedLogicApp" 的 Visual Studio 方案。
 
    ![建立 Azure 資源群組專案](./media/export-from-microsoft-flow-logic-app-template/create-azure-resource-group-project.png)
 
-1. 建立方案之後，在方案總管中，開啟檔案 ** 上的LogicApp.js** （如果檔案尚未開啟）。
+1. 建立方案之後，在方案總管中，開啟檔案 **上的LogicApp.js** （如果檔案尚未開啟）。
 
 1. 從匯出的範本複製內容，並覆寫檔案 **LogicApp.js** 中的內容。
 
@@ -138,7 +138,7 @@ ms.locfileid: "91269551"
 
       ![具有警告圖示的連接](./media/export-from-microsoft-flow-logic-app-template/authorize-connections-vs.png)
 
-   1. 針對需要授權連接的每個步驟，展開該步驟，然後選取 [ **加入新**的]。
+   1. 針對需要授權連接的每個步驟，展開該步驟，然後選取 [ **加入新** 的]。
 
       ![增加新的連線](./media/export-from-microsoft-flow-logic-app-template/add-new-connection-vs.png)
 
@@ -146,7 +146,7 @@ ms.locfileid: "91269551"
 
    1. 部署邏輯應用程式之前，請先儲存您的解決方案。
 
-1. 在方案總管中，開啟專案快捷方式功能表，然後選取 [**部署**  >  **新**專案]。 如果出現提示，登入您的 Azure 帳戶。
+1. 在方案總管中，開啟專案快捷方式功能表，然後選取 [**部署**  >  **新** 專案]。 如果出現提示，登入您的 Azure 帳戶。
 
 1. 出現提示時，請確認 Azure 訂用帳戶、Azure 資源群組，以及您想要用於部署的任何其他設定，例如用於傳遞範本參數值的 [參數](../azure-resource-manager/templates/parameter-files.md) 檔案，然後選取 [ **部署**]。
 

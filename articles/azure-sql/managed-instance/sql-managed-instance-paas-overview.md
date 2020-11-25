@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 211ce85fdbf918171ecfc7964bbcdfa2ef245990
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 83f38797e406ff7e62503f59ef979b9ce4f07f97
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790707"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917931"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>什麼是 Azure SQL 受控執行個體？
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,7 +33,7 @@ Azure SQL 受控執行個體是是可調整的智慧型雲端資料庫服務，�
 
 ![主要功能](./media/sql-managed-instance-paas-overview/key-features.png)
 
-Azure SQL 受控執行個體專為以下客戶設計：想要盡可能輕鬆地將大量應用程式，從內部部署或 IaaS、自行建置或 ISV 提供的環境遷移至完全受控的 PaaS 雲端環境。 利用 Azure 中完全自動化的 [Azure 資料移轉服務](../../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance)，客戶可以將現有 SQL Server 執行個體隨即移轉至 SQL 受控執行個體，受控執行個體可與 SQL Server 相容，並透過原生 VNet 支援來完全隔離客戶執行個體。  您可以透過軟體保證使用[適用於 SQL Server 的 Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)，以折扣優惠在 SQL 受控執行個體上交換執行個體的現有授權。 對於需要高度安全性和程式設計介面豐富的 SQL Server 執行個體而言，SQL 受控執行個體是雲端中最佳的移轉目的地。
+Azure SQL 受控執行個體專為以下客戶設計：想要盡可能輕鬆地將大量應用程式，從內部部署或 IaaS、自行建置或 ISV 提供的環境遷移至完全受控的 PaaS 雲端環境。 利用 Azure 中完全自動化的 [Azure 資料移轉服務](../../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance)，客戶可以將現有 SQL Server 執行個體隨即移轉至 SQL 受控執行個體，受控執行個體可與 SQL Server 相容，並透過原生 VNet 支援來完全隔離客戶執行個體。 如需移轉選項和工具的詳細資訊，請參閱[移轉概觀：將 SQL Server 移轉至 Azure SQL 受控執行個體](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md)。</br> 您可以透過軟體保證使用[適用於 SQL Server 的 Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)，以折扣優惠在 SQL 受控執行個體上交換執行個體的現有授權。 對於需要高度安全性和程式設計介面豐富的 SQL Server 執行個體而言，SQL 受控執行個體是雲端中最佳的移轉目的地。
 
 ## <a name="key-features-and-capabilities"></a>重要功能
 
@@ -85,8 +85,8 @@ SQL 受控執行個體中[以虛擬核心為基礎的購買模型](../database/s
 
 有兩個服務層級可使用 SQL 受控執行個體：
 
-- **一般用途** ：專為具有標準效能和 I/O 延遲需求的應用程式所設計。
-- **業務關鍵** ：專為具有低 I/O 延遲需求且對工作負載的基礎維護作業影響最小的應用程式所設計。
+- **一般用途**：專為具有標準效能和 I/O 延遲需求的應用程式所設計。
+- **業務關鍵**：專為具有低 I/O 延遲需求且對工作負載的基礎維護作業影響最小的應用程式所設計。
 
 這兩個服務層級均保證 99.99% 的可用性，可讓您單獨選取儲存體大小和計算容量。 如需 Azure SQL 受控執行個體高可用性架構的詳細資訊，請參閱[高可用性和 Azure SQL 受控執行個體](../database/high-availability-sla.md)。
 
@@ -156,9 +156,9 @@ Azure SQL 受控執行個體提供一組可用來保護資料的進階安全性�
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory 整合
 
-SQL 受控執行個體支援傳統的 SQL Server 資料庫引擎登入以及與 Azure AD 整合的登入。 Azure AD 伺服器主體(登入) ( **公開預覽** ) 是您使用於內部部署環境的 Azure 雲端版內部部署資料庫登入。 Azure AD 伺服器主體 (登入) 可讓您從 Azure AD 租用戶指定使用者和群組作為實際執行個體範圍的主體，能夠執行任何執行個體層級的作業，包括在相同受控執行個體中的跨資料庫查詢。
+SQL 受控執行個體支援傳統的 SQL Server 資料庫引擎登入以及與 Azure AD 整合的登入。 Azure AD 伺服器主體(登入) (**公開預覽**) 是您使用於內部部署環境的 Azure 雲端版內部部署資料庫登入。 Azure AD 伺服器主體 (登入) 可讓您從 Azure AD 租用戶指定使用者和群組作為實際執行個體範圍的主體，能夠執行任何執行個體層級的作業，包括在相同受控執行個體中的跨資料庫查詢。
 
-為了建立 Azure AD 伺服器主體 (登入)，引進了新的語法 **FROM EXTERNAL PROVIDER** 。 如需有關語法的詳細資訊，請參閱 <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>，並檢閱[為 SQL 受控執行個體佈建 Azure Active Directory 系統管理員](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)文章。
+為了建立 Azure AD 伺服器主體 (登入)，引進了新的語法 **FROM EXTERNAL PROVIDER**。 如需有關語法的詳細資訊，請參閱 <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>，並檢閱[為 SQL 受控執行個體佈建 Azure Active Directory 系統管理員](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)文章。
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory 整合和多重要素驗證
 
@@ -168,10 +168,10 @@ SQL 受控執行個體可讓您透過 [Azure Active Directory 整合](../databas
 
 SQL 受控執行個體驗證是指使用者連線到資料庫時如何證明他們的身分識別。 SQL 受控執行個體支援兩種類型的驗證：  
 
-- **SQL 驗證** ：
+- **SQL 驗證**：
 
   此驗證方法會使用使用者名稱和密碼。
-- **Azure Active Directory 驗證** ：
+- **Azure Active Directory 驗證**：
 
   此驗證方法會使用由 Azure Active Directory 管理的身分識別，並且受控網域和整合式網域都支援此驗證。 [盡可能](/sql/relational-databases/security/choose-an-authentication-mode)使用 Active Directory 驗證 (整合式安全性)。
 
@@ -181,14 +181,14 @@ SQL 受控執行個體驗證是指使用者連線到資料庫時如何證明他�
 
 ## <a name="database-migration"></a>資料庫移轉
 
-SQL 受控執行個體鎖定的是將大量資料庫從內部部署或 IaaS 資料庫實作移轉的使用者案例。 SQL 受控執行個體支援數個資料庫移轉選項：
+SQL 受控執行個體鎖定的是將大量資料庫從內部部署或 IaaS 資料庫實作移轉的使用者案例。 SQL 受控執行個體支援移轉指南中所討論的數個資料庫移轉選項。 請參閱[移轉概觀：將 SQL Server 移轉至 Azure SQL 受控執行個體](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md)，以取得詳細資訊。
 
 ### <a name="backup-and-restore"></a>備份與還原  
 
 移轉方法會利用 SQL 備份到 Azure Blob 儲存體。 透過 [T-SQL RESTORE 命令](/sql/t-sql/statements/restore-statements-transact-sql?preserve-view=true&view=azuresqldb-mi-current)，儲存在 Azure 儲存體 Blob 的備份可以直接用來還原到受控執行個體。
 
 - 如需示範如何還原 Wide World Importers - 標準資料庫備份檔案的快速入門，請參閱[還原備份檔案至受控執行個體](restore-sample-database-quickstart.md)。 本快速入門顯示，您必須將備份檔案上傳到 Azure Blob 儲存體，並使用共用存取簽章 (SAS) 金鑰保護其安全。
-- 如需從 URL 還原的資訊，請參閱[從 URL 原生還原](migrate-to-instance-from-sql-server.md#native-restore-from-url)。
+- 如需從 URL 還原的資訊，請參閱[從 URL 原生還原](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md#backup-and-restore)。
 
 > [!IMPORTANT]
 > 來自受控執行個體的備份只能還原至其他受控執行個體。 其無法還原至 SQL Server 執行個體或 Azure SQL Database。

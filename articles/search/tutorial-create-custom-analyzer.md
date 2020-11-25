@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: ac7cee2c1d72b4102fb397aa8093c2d38686fc88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90d60a20bb464936d04662b0b9286bd7aaac9e74
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397261"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700166"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>教學課程：建立電話號碼的自訂分析器
 
@@ -59,9 +59,9 @@ ms.locfileid: "91397261"
 
 1. 將 `<YOUR-ADMIN-API-KEY>` 取代為搜尋服務的主要或次要金鑰。
 
-  :::image type="content" source="media/search-get-started-postman/postman-url.png" alt-text="Postman 要求 URL 和標頭" border="false":::
+  :::image type="content" source="media/search-get-started-rest/postman-url.png" alt-text="Postman 要求 URL 和標頭" border="false":::
 
-如果您不熟悉 Postman，請參閱[使用 Postman 探索 Azure 認知搜尋 REST API](search-get-started-postman.md)。
+如果您不熟悉 Postman，請參閱[探索 Azure 認知搜尋 REST API](search-get-started-rest.md)。
 
 ## <a name="3---create-an-initial-index"></a>3 - 建立初始索引
 
@@ -172,7 +172,7 @@ GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic
   api-key: <YOUR-ADMIN-API-KEY>  
 ```
 
-此查詢傳回了**四個預期結果中的三個**，但也傳回了**兩個非預期的結果**：
+此查詢傳回了 **四個預期結果中的三個**，但也傳回了 **兩個非預期的結果**：
 
 ```json
 {
@@ -208,7 +208,7 @@ GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic
   api-key: <YOUR-ADMIN-API-KEY>
 ```
 
-此查詢的表現更差，只傳回**四個正確相符項目的其中一個**。
+此查詢的表現更差，只傳回 **四個正確相符項目的其中一個**。
 
 ```json
 {
@@ -239,11 +239,11 @@ GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic
 
 在下圖中，您可以看到這三個元件如何合作將句子化為權杖：
 
-  :::image type="content" source="media/tutorial-create-custom-analyzer/analyzers-explained.png" alt-text="Postman 要求 URL 和標頭":::
+  :::image type="content" source="media/tutorial-create-custom-analyzer/analyzers-explained.png" alt-text="權杖化句子的分析器流程圖表":::
 
 然後，這些權杖會儲存在反向索引中，以實現快速的全文檢索搜尋。  反向索引會將在語彙分析期間擷取的所有唯一詞彙對應到其發生所在的文件，以實現全文檢索搜尋。 您可以在下圖中看到範例：
 
-  :::image type="content" source="media/tutorial-create-custom-analyzer/inverted-index-explained.png" alt-text="Postman 要求 URL 和標頭":::
+  :::image type="content" source="media/tutorial-create-custom-analyzer/inverted-index-explained.png" alt-text="反向索引範例":::
 
 所有搜尋都會往下一路搜尋儲存在反向索引中的詞彙。 當使用者發出查詢時：
 
@@ -251,7 +251,7 @@ GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic
 1. 接著，會掃描反向索引，以尋找具有相符詞彙的文件。
 1. 最後，所擷取的文件會依照[相似性演算法](index-ranking-similarity.md)排序。
 
-  :::image type="content" source="media/tutorial-create-custom-analyzer/query-architecture-explained.png" alt-text="Postman 要求 URL 和標頭":::
+  :::image type="content" source="media/tutorial-create-custom-analyzer/query-architecture-explained.png" alt-text="分析器流程次序相似度圖表":::
 
 如果查詢詞彙不符合反向索引中的詞彙，則不會傳回結果。 若要深入了解查詢的運作方式，請參閱關於[全文檢索搜尋](search-lucene-query-architecture.md)的這篇文章。
 
@@ -491,7 +491,7 @@ POST https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-firs
 
 使用自訂分析器對索引進行一些範例查詢之後，您會發現重新叫用已改善，而且現在會傳回所有相符的電話號碼。 不過，n 元權杖篩選器也會導致傳回一些誤判為真。 這是 n 元權杖篩選器的常見副作用。
 
-為了避免誤判為真，我們會建立不同的查詢分析器。 此分析器會與我們已建立的分析器相同，但**沒有** `custom_ngram_filter`。
+為了避免誤判為真，我們會建立不同的查詢分析器。 此分析器會與我們已建立的分析器相同，但 **沒有** `custom_ngram_filter`。
 
 ```json
     {

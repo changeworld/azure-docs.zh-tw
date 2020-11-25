@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: f501b9f4215b9eeb48aa8bc80d492d55cf940404
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c88aea6aff942cdcf5cbc022df8f07cfe0d4cce
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397380"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701274"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>教學課程：使用 REST 為 Azure 儲存體中的 JSON Blob 編製索引
 
@@ -76,11 +76,11 @@ Azure 認知搜尋可以在 Azure Blob 儲存體中，使用[索引子](search-i
 
 1. 建立容器之後，請加以開啟，然後選取命令列的 [上傳]  。
 
-   :::image type="content" source="media/search-semi-structured-data/upload-command-bar.png" alt-text="建立儲存體帳戶" border="false":::
+   :::image type="content" source="media/search-semi-structured-data/upload-command-bar.png" alt-text="使用命令列上傳" border="false":::
 
 1. 瀏覽至包含範例檔案的資料夾。 全部選取，然後按一下 [上傳]  。
 
-   :::image type="content" source="media/search-semi-structured-data/clinicalupload.png" alt-text="建立儲存體帳戶" border="false":::
+   :::image type="content" source="media/search-semi-structured-data/clinicalupload.png" alt-text="上傳檔案" border="false":::
 
 上傳完成之後，檔案應該會出現在資料容器內部它們本身的子資料夾中。
 
@@ -98,19 +98,19 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 
 1. 在 [設定]   >  [金鑰]  中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
 
-:::image type="content" source="media/search-get-started-postman/get-url-key.png" alt-text="建立儲存體帳戶" border="false":::
+:::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="取得 HTTP 端點和存取金鑰" border="false":::
 
 所有要求均都需要在傳送至您服務上的每個要求上使用 API 金鑰。 擁有有效的金鑰就能為每個要求在傳送要求之應用程式與處理要求之服務間建立信任。
 
 ## <a name="2---set-up-postman"></a>2 - 設定 Postman
 
-啟動 Postman 及設定 HTTP 要求。 如果您不熟悉此工具，請參閱[使用 Postman 探索 Azure 認知搜尋 REST API](search-get-started-postman.md)。
+啟動 Postman 及設定 HTTP 要求。 如果您不熟悉此工具，請參閱[探索 Azure 認知搜尋 REST API](search-get-started-rest.md)。
 
 本教學課程中用於各個呼叫的要求方法為 **POST** 和 **GET**。 您將對搜尋服務進行三個 API 呼叫，以建立資料來源、索引及索引子。 資料來源包括指向您儲存體帳戶和您 JSON 資料的指標。 您的搜尋服務會在載入資料時進行連線。
 
 在標頭中，將 "Content-type" 設定為 `application/json`，並將 `api-key` 設定為您 Azure 認知搜尋服務的管理員 API 金鑰。 設定標頭之後，您就可以在此練習中的每個要求上加以使用。
 
-  :::image type="content" source="media/search-get-started-postman/postman-url.png" alt-text="建立儲存體帳戶" border="false":::
+  :::image type="content" source="media/search-get-started-rest/postman-url.png" alt-text="Postman 要求 URL 和標頭" border="false":::
 
 URI 必須指定 api-version，且每個呼叫都應傳回 **201 已建立**。 用於使用 JSON 陣列的公開推出 api-version 為 `2020-06-30`。
 
@@ -315,11 +315,11 @@ URI 必須指定 api-version，且每個呼叫都應傳回 **201 已建立**。 
 
 1. 新增 `$select` 查詢參數，以將結果限定為較少的欄位：`https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2020-06-30&$count=true`。  此查詢有 100 份相符的文件，但根據預設，Azure 認知搜尋只會傳回結果中的 50 份。
 
-   :::image type="content" source="media/search-semi-structured-data/lastquery.png" alt-text="建立儲存體帳戶" border="false":::
+   :::image type="content" source="media/search-semi-structured-data/lastquery.png" alt-text="參數化查詢" border="false":::
 
 1. 有一個更複雜的查詢範例會包含 `$filter=MinimumAge ge 30 and MaximumAge lt 75`，這只會傳回參數 MinimumAge 大於或等於 30 且 MaximumAge 小於 75 的結果。 請將 `$select` 運算式取代為 `$filter` 運算式。
 
-   :::image type="content" source="media/search-semi-structured-data/metadatashort.png" alt-text="建立儲存體帳戶" border="false":::
+   :::image type="content" source="media/search-semi-structured-data/metadatashort.png" alt-text="半結構化搜尋" border="false":::
 
 您也可以使用邏輯運算子 (and、or、not) 和比較運算子 (eq、ne、gt、lt、ge、le)。 字串比較是區分大小寫的。 如需詳細資訊和範例，請參閱[建立簡易查詢](search-query-simple-examples.md)。
 

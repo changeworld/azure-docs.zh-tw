@@ -10,20 +10,20 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: has-adal-ref
-ms.openlocfilehash: a430bb41f88bfec1299d52d8237c9534b28acc5d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: fb8aad52eeaef2366afe28aa71059b7f8f780501
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093373"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843293"
 ---
 # <a name="use-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>搭配使用多重要素 AAD 驗證與 Synapse SQL (MFA 的 SSMS 支援)
 
-Synapse SQL 支援使用 *Active Directory 通用驗證*從 SQL Server Management Studio (SSMS) 進行連線。 
+Synapse SQL 支援使用 *Active Directory 通用驗證* 從 SQL Server Management Studio (SSMS) 進行連線。 
 
 本文討論各種驗證選項之間的差異，以及與使用通用驗證相關聯的限制。 
 
-**下載最新的 SSMS** - 在用戶端電腦上，從[下載 SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 下載最新版的 SSMS。
+**下載最新的 SSMS** - 在用戶端電腦上，從 [下載 SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 下載最新版的 SSMS。
 
 對於本文討論的所有功能，請至少使用 2017 年 7 月的 17.2 版。  最近的連線對話方塊看起來應該會類似下圖：
 
@@ -40,11 +40,11 @@ Active Directory 通用驗證支援兩種非互動式驗證方法：
 - `Active Directory - Password`
 - `Active Directory - Integrated`
 
-同樣支援 Azure 多重要素驗證 (MFA) 的互動式方法是：
+同樣支援 Azure AD 多重要素驗證 (MFA) 的互動式方法是：
 
 - `Active Directory - Universal with MFA`
 
-Azure MFA 有助於保護資料和應用程式的存取，同時又滿足使用者對簡單登入程序的需求。 它利用各種簡單的驗證選項來提供強大的驗證 (包括電話、簡訊、含有 Pin 的智慧卡或行動應用程式通知)，讓使用者能夠選擇自己喜歡的方式。 搭配 Azure AD 使用互動式 MFA 時，會出現快顯對話方塊以進行驗證。
+Azure AD MFA 有助於保護資料和應用程式的存取，同時又滿足使用者對簡單登入程序的需求。 它利用各種簡單的驗證選項來提供強大的驗證 (包括電話、簡訊、含有 Pin 的智慧卡或行動應用程式通知)，讓使用者能夠選擇自己喜歡的方式。 搭配 Azure AD 使用互動式 MFA 時，會出現快顯對話方塊以進行驗證。
 
 如需 Multi-Factor Authentication 的說明，請參閱 [Multi-Factor Authentication](../../active-directory/authentication//concept-mfa-howitworks.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 

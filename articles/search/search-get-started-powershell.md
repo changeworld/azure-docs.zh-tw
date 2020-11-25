@@ -8,20 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 08/17/2020
+ms.date: 11/17/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8ad5c73fee93d935ad050cea8feca2754649a61f
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 9dd9de9dcb01e9be200e07e5925d8b856432b620
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058500"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94742373"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>快速入門：使用 REST API 在 PowerShell 中建立 Azure 認知搜尋索引
 > [!div class="op_single_selector"]
 > * [PowerShell (REST)]()
 > * [C#](./search-get-started-dotnet.md)
-> * [Postman (REST)](search-get-started-postman.md)
+> * [REST](search-get-started-rest.md)
 > * [Python](search-get-started-python.md)
 > * [入口網站](search-get-started-portal.md)
 > 
@@ -38,7 +38,7 @@ ms.locfileid: "92058500"
 
 + [建立 Azure 認知搜尋服務](search-create-service-portal.md)，或在您目前的訂用帳戶下方[尋找現有服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用本快速入門的免費服務。 
 
-## <a name="get-a-key-and-url"></a>取得金鑰和 URL
+## <a name="copy-a-key-and-url"></a>複製金鑰和 URL
 
 REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務時需要這兩項資料，因此如果您將 Azure 認知搜尋新增至您的訂用帳戶，請依照下列步驟來取得必要的資訊：
 
@@ -46,7 +46,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 
 2. 在 [設定]   >  [金鑰]  中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
 
-![取得 HTTP 端點和存取金鑰](media/search-get-started-postman/get-url-key.png "取得 HTTP 端點和存取金鑰")
+![取得 HTTP 端點和存取金鑰](media/search-get-started-rest/get-url-key.png "取得 HTTP 端點和存取金鑰")
 
 所有要求均都需要在傳送至您服務上的每個要求上使用 API 金鑰。 擁有有效的金鑰就能為每個要求在傳送要求之應用程式與處理要求之服務間建立信任。
 

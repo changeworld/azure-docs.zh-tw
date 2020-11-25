@@ -6,11 +6,11 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 04/30/2018
 ms.openlocfilehash: ba69098f32e131714a15923aef64c3f6ba17e18f
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219491"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013304"
 ---
 # <a name="manage-azure-data-lake-analytics-using-account-policies"></a>使用帳戶原則來管理 Azure Data Lake Analytics
 
@@ -26,11 +26,11 @@ ms.locfileid: "92219491"
 
 1. 在 Azure 入口網站中，移至您的 Data Lake Analytics 帳戶。
 2. 按一下 [ **限制和原則**]。
-3. 在 [AU 上限]**** 之下，移動滑桿以選取值，或在文字方塊中輸入值。
+3. 在 [AU 上限] 之下，移動滑桿以選取值，或在文字方塊中輸入值。
 4. 按一下 [儲存]。
 
    > [!NOTE]
-   > 如果您需要的 AU 超過預設值 (250)，請在入口網站中按一下 [說明 + 支援]**** 以提交支援要求。 您可以增加 Data Lake Analytics 帳戶中可用的 AU 數目。
+   > 如果您需要的 AU 超過預設值 (250)，請在入口網站中按一下 [說明 + 支援] 以提交支援要求。 您可以增加 Data Lake Analytics 帳戶中可用的 AU 數目。
 
 ## <a name="maximum-number-of-jobs-that-can-run-simultaneously"></a>可以同時執行的作業數目上限
 
@@ -40,11 +40,11 @@ ms.locfileid: "92219491"
 
 1. 在 Azure 入口網站中，移至您的 Data Lake Analytics 帳戶。
 2. 按一下 [ **限制和原則**]。
-3. 在 [執行中作業數目上限]**** 之下，移動滑桿以選取值，或在文字方塊中輸入值。
+3. 在 [執行中作業數目上限] 之下，移動滑桿以選取值，或在文字方塊中輸入值。
 4. 按一下 [儲存]。
 
    > [!NOTE]
-   > 如果您需要執行的作業數目超過預設值 (20)，請在入口網站中按一下 [說明 + 支援]**** 以提交支援要求。 您可以增加 Data Lake Analytics 帳戶中可以同時執行的作業數目。
+   > 如果您需要執行的作業數目超過預設值 (20)，請在入口網站中按一下 [說明 + 支援] 以提交支援要求。 您可以增加 Data Lake Analytics 帳戶中可以同時執行的作業數目。
 
 ## <a name="how-long-to-keep-job-metadata-and-resources"></a>保留作業中繼資料和資源的時間長度
 
@@ -54,7 +54,7 @@ ms.locfileid: "92219491"
 
 1. 在 Azure 入口網站中，移至您的 Data Lake Analytics 帳戶。
 2. 按一下 [ **限制和原則**]。
-3. 在 [保留作業查詢的天數]**** 之下，移動滑桿以選取值，或在文字方塊中輸入值。  
+3. 在 [保留作業查詢的天數] 之下，移動滑桿以選取值，或在文字方塊中輸入值。  
 4. 按一下 [儲存]。
 
 ## <a name="job-level-policies"></a>作業層級原則
@@ -78,7 +78,7 @@ ms.locfileid: "92219491"
 
 2. 按一下 [ **限制和原則**]。
 
-3. 在 [作業提交限制]**** 之下，按一下 [新增原則]**** 按鈕。 然後，選取或輸入下列設定：
+3. 在 [作業提交限制] 之下，按一下 [新增原則] 按鈕。 然後，選取或輸入下列設定：
 
    1. **計算原則名稱**：輸入原則名稱，藉此提醒您原則的用途。
 
@@ -88,9 +88,9 @@ ms.locfileid: "92219491"
 
    4. **設定優先順序限制**：設定會套用所選使用者或群組的優先順序限制。
 
-4. 按一下 [確定]。
+4. 按一下 [確定] 。
 
-5. 新原則會列在 [預設]**** 原則資料表的 [作業提交限制]**** 之下。
+5. 新原則會列在 [預設] 原則資料表的 [作業提交限制] 之下。
 
 ## <a name="delete-or-edit-an-existing-policy"></a>刪除或編輯現有原則
 
@@ -98,7 +98,7 @@ ms.locfileid: "92219491"
 
 2. 按一下 [ **限制和原則**]。
 
-3. 在 [作業提交限制]**** 之下，尋找您想要編輯的原則。
+3. 在 [作業提交限制] 之下，尋找您想要編輯的原則。
 
 4. 若要查看 [ **刪除** ] 和 [ **編輯** ] 選項，請在資料表的最右邊資料行中，按一下 [ `...` # # 作業原則的其他資源]
 

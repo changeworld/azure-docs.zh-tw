@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
 ms.openlocfilehash: 1766705e73afab5d15cdb5aa2c5bb1487ad3d7c5
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634278"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013882"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>在管線活動中使用 Azure Key Vault 祕密
 
@@ -23,7 +23,7 @@ ms.locfileid: "92634278"
 
 您可以將認證或秘密值儲存在 Azure Key Vault 中，並在管線執行期間使用它們來傳遞至您的活動。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 這項功能依賴 data factory 受控識別。  瞭解 [Data Factory 的受控識別](./data-factory-service-identity.md) 如何運作，並確定您的 Data Factory 有相關聯的資料處理站。
 
@@ -39,7 +39,7 @@ ms.locfileid: "92634278"
 
     ![Key Vault 存取原則](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies-2.png)
 
-    按一下 [ **新增** ]，然後按一下 [ **儲存** ]。
+    按一下 [ **新增**]，然後按一下 [ **儲存**]。
 
 3. 流覽至您的 Key Vault 秘密，並複製秘密識別碼。
 
@@ -65,7 +65,7 @@ ms.locfileid: "92634278"
     > [!CAUTION]
     > 將安全輸出選項設定為 true，防止秘密值以純文字記錄。  任何進一步使用此值的活動都應該將其 [安全輸入] 選項設定為 [是]。
 
-5. 若要使用其他活動中的值，請使用下列程式碼運算式 **@activity ( ' Web1 ' ) . output. value** 。
+5. 若要使用其他活動中的值，請使用下列程式碼運算式 **@activity ( ' Web1 ' ) . output. value**。
 
     ![程式碼運算式](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 

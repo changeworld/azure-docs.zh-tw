@@ -8,28 +8,28 @@ ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9c569e65546853c4e9c8c460d29041e4bb829c09
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: dd07c09c4ed5be311bf5a485b9bff938c976a2f5
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564197"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659228"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>快速入門：使用 Azure CLI 建立及管理 Azure 檔案共用
 本指南會逐步說明透過 Azure CLI 來使用 [Azure 檔案共用](storage-files-introduction.md)的基本概念。 Azure 檔案共用與其他檔案共用類似，但它儲存在雲端中，並且由 Azure 平台支援。 Azure 檔案共用支援業界標準的伺服器訊息區 (SMB) 通訊協定、網路檔案系統 (NFS) 通訊協定 (預覽)，並可讓您跨多部機器、應用程式和執行個體來啟用檔案共用。 
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-如果您決定在本機安裝及使用 Azure CLI，您必須執行 2.0.4 或更新版本的 Azure CLI，以便進行本文中的步驟。 執行 **az --version** 可找出 Azure CLI 版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI 2.0](/cli/azure/install-azure-cli)。 
+- 本文需要 2.0.4 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
-Azure CLI 命令預設會傳回 JavaScript 物件標記法 (JSON)。 JSON 是從 REST API 傳送和接收訊息的標準方式。 為了方便處理 JSON 回應，本文中有些範例會在 Azure CLI 命令上使用「查詢」** 參數。 這個參數會使用 [JMESPath 查詢語言](http://jmespath.org/) 來剖析 JSON。 若要進一步了解如何依照 JMESPath 查詢語言來使用 Azure CLI 命令的結果，請參閱 [JMESPath 教學課程](http://jmespath.org/tutorial.html)。
+- Azure CLI 命令預設會傳回 JavaScript 物件標記法 (JSON)。 JSON 是從 REST API 傳送和接收訊息的標準方式。 為了方便處理 JSON 回應，本文中有些範例會在 Azure CLI 命令上使用「查詢」參數。 這個參數會使用 [JMESPath 查詢語言](http://jmespath.org/) 來剖析 JSON。 若要進一步了解如何依照 JMESPath 查詢語言來使用 Azure CLI 命令的結果，請參閱 [JMESPath 教學課程](http://jmespath.org/tutorial.html)。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 資源群組是一種邏輯容器，您會在其中部署與管理 Azure 資源。 如果您還沒有 Azure 資源群組，您可以使用 [az group create](/cli/azure/group) 命令建立一個。 
 
-下列範例會在「美國西部 2」** 位置建立名為 myResourceGroup** 的資源群組：
+下列範例會在「美國西部 2」位置建立名為 myResourceGroup 的資源群組：
 
 ```azurecli-interactive 
 export resourceGroupName="myResourceGroup"
@@ -73,7 +73,7 @@ export storageAccountKey=$(az storage account keys list \
 ```
 
 ## <a name="create-an-azure-file-share"></a>建立 Azure 檔案共用
-現在，您可以建立第一個 Azure 檔案共用。 使用 [az storage share create](/cli/azure/storage/share) 命令來建立檔案共用。 此範例會建立名為 myshare** 的 Azure 檔案共用： 
+現在，您可以建立第一個 Azure 檔案共用。 使用 [az storage share create](/cli/azure/storage/share) 命令來建立檔案共用。 此範例會建立名為 myshare 的 Azure 檔案共用： 
 
 ```azurecli-interactive
 shareName="myshare"
@@ -87,10 +87,10 @@ az storage share create \
     --output none
 ```
 
-共用名稱只能包含小寫字母、數字和單一連字號 (但開頭不可以是連字號)。 如需有關為檔案共用與檔案命名的完整詳細資料，請參閱[命名和參考共用、目錄、檔案及中繼資料](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)。
+共用名稱只能包含小寫字母、數字和單一連字號 (但開頭不可以是連字號)。 如需有關為檔案共用與檔案命名的完整詳細資料，請參閱[命名和參考共用、目錄、檔案及中繼資料](/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)。
 
 ## <a name="use-your-azure-file-share"></a>使用您的 Azure 檔案共用
-Azure 檔案服務提供兩個在 Azure 檔案共用中使用檔案和資料夾的方法：業界標準[伺服器訊息區 (SMB) 通訊協定](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)和[檔案 REST 通訊協定](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api)。 
+Azure 檔案服務提供兩個在 Azure 檔案共用中使用檔案和資料夾的方法：業界標準[伺服器訊息區 (SMB) 通訊協定](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)和[檔案 REST 通訊協定](/rest/api/storageservices/file-service-rest-api)。 
 
 若要使用 SMB 掛接檔案共用，請根據您的作業系統參閱下列文件：
 - [Linux](storage-how-to-use-files-linux.md)
@@ -212,7 +212,7 @@ az storage file list \
 
 - Linux 系統的[邏輯磁碟區管理員 (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) 快照集。
 - macOS 的 [Apple 檔案系統 (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) 快照集。
-- Windows 檔案系統的[磁碟區陰影複製服務 (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal)，例如 NTFS 和 ReFS。
+- Windows 檔案系統的[磁碟區陰影複製服務 (VSS)](/windows/desktop/VSS/volume-shadow-copy-service-portal)，例如 NTFS 和 ReFS。
  
 您可以使用 [`az storage share snapshot`](/cli/azure/storage/share) 命令來建立共用快照集：
 

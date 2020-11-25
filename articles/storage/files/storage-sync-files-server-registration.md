@@ -8,11 +8,11 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 194b0f2ff94197fe11c189e97dbc65c9d0367932
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630578"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013916"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>使用 Azure 檔案同步管理已註冊的伺服器
 Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服務」中，而不需要犧牲內部部署檔案伺服器的靈活度、效能及相容性。 它會將您的 Windows Server 轉換成 Azure 檔案共用的快速快取來達到這個目的。 您可以使用 Windows Server 上可用的任何通訊協定來存取本機資料 (包括 SMB、NFS 和 FTPS)，並且可以在世界各地擁有任何所需數量的快取。
@@ -22,7 +22,7 @@ Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服�
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>使用儲存體同步服務來註冊/取消註冊伺服器
 使用 Azure 檔案同步來註冊伺服器可在 Windows Server 與 Azure 之間建立信任關係。 此關係可用來在伺服器上建立伺服器端點，其代表應與 Azure 檔案共用 (也稱為雲端端點) 同步的特定資料夾。 
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>Prerequisites
 若要使用儲存體同步服務來註冊伺服器，您必須先準備好符合下列必要條件的伺服器：
 
 * 伺服器必須執行支援的 Windows 版本。 如需詳細資訊，請參閱 [Azure 檔案同步系統需求和互通性](storage-sync-files-planning.md#windows-file-server-considerations)。

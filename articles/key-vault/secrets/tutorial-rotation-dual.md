@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 5da31d45e068f414c8afa38bcb46cdf1f790a9e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a061cf493fba99c518448acd9c4bf4bd5949eb98
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843272"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831801"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>針對使用兩組驗證認證的資源，將秘密的輪替自動化
 
@@ -67,8 +67,6 @@ akvrotationstorage2    akvrotation      eastus      Microsoft.Storage/storageAcc
 ```
 
 ## <a name="create-and-deploy-storage-account-key-rotation-function"></a>建立及部署儲存體帳戶金鑰輪替函式
-> [!IMPORTANT]
-> 以下範本需要 Key Vault、Azure 儲存體帳戶和 Azure 函式位於相同的資源群組中
 
 接下來，使用系統管理的身分識別以及其他必要元件建立函數應用程式，並部署儲存體帳戶金鑰輪替函式
 
@@ -85,13 +83,15 @@ akvrotationstorage2    akvrotation      eastus      Microsoft.Storage/storageAcc
    [![顯示標示為「部署至 Azure」的按鈕影像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json)
 
 1. 在 [資源群組] 清單中，選取 [akvrotation]。
-1. 在 [儲存體帳戶名稱] 中，輸入具有所要輪替存取金鑰的儲存體帳戶名稱
-1. 在 [Key Vault 名稱] 中，輸入金鑰保存庫名稱
-1. 在 [函數應用程式名稱] 中，輸入函數應用程式名稱
-1. 在 [秘密名稱] 中，輸入要儲存存取金鑰的秘密名稱
-1. 在 [存放庫 URL] 中，輸入函式程式碼 GitHub 位置 ( **https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell.git** )
+1. 在 [儲存體帳戶 RG]中，輸入您的儲存體帳戶所在的資源群組名稱。 如果您的儲存體帳戶已存在於部署金鑰輪替功能的相同資源群組中，請保留預設值 **[resourceGroup().name]** 。
+1. 在 [儲存體帳戶名稱] 中，輸入要輪替的存取金鑰所屬的儲存體帳戶名稱。
+1. 在 [Key Vault RG]中，輸入您的金鑰保存庫所在的資源群組名稱。 如果您的金鑰保存庫已存在於部署金鑰輪替功能的相同資源群組中，請保留預設值 **[resourceGroup().name]** 。
+1. 在 [Key Vault 名稱] 中，輸入金鑰保存庫名稱。
+1. 在 [函式應用程式名稱] 中，輸入函式應用程式名稱。
+1. 在 [秘密名稱] 中，輸入要儲存存取金鑰的秘密名稱。
+1. 在 [存放庫 URL] 中，輸入函式程式碼 GitHub 位置 ( **https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell.git** )。
 1. 請選取 [檢閱 + 建立]。
-1. 選取 [建立] 
+1. 選取 [建立]。
 
    ![檢閱並建立第一個儲存體帳戶](../media/secrets/rotation-dual/dual-rotation-2.png)
 

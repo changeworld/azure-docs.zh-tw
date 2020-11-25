@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 80b0c357bbad79a31d8b7153248b73c1231629c8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 98d2b4ed4b0d3cef2cde156dc05ebb314edff365
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145046"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592255"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 ASP.NET Core Web 應用程式
 
-在本快速入門中，您將利用程式碼範例了解 ASP.NET Core Web 應用程式如何從任何 Azure Active Directory (Azure AD) 執行個體登入個人帳戶 (hotmail.com、outlook.com 等) 與公司和學校帳戶。 (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
+在本快速入門中，您會下載並執行程式碼範例，該範例會示範 ASP.NET Core Web 應用程式如何從任何 Azure Active Directory (Azure AD) 組織登入使用者。  
+
+如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。
 
 > [!div renderon="docs"]
 > ## <a name="prerequisites"></a>必要條件
@@ -86,7 +88,7 @@ ms.locfileid: "92145046"
 > > `Enter_the_Supported_Account_Info_Here`
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-aspnet-core-project"></a>步驟 3：設定 ASP.NET Core 專案
-> 1. 將 .zip 封存檔解壓縮至磁碟機根目錄附近的本機資料夾。 例如，解壓縮至 *C:\Azure-Samples* 。
+> 1. 將 .zip 封存檔解壓縮至磁碟機根目錄附近的本機資料夾。 例如，解壓縮至 *C:\Azure-Samples*。
 > 1. 在 Visual Studio 2019 中開啟解決方案。
 > 1. 開啟 *appsettings.json* 檔案，然後修改下列內容：
 >
@@ -95,9 +97,9 @@ ms.locfileid: "92145046"
 >    "TenantId": "common",
 >    ```
 >
->    - 將 `Enter_the_Application_Id_here` 取代為您在 Azure 入口網站中註冊的應用程式的 **應用程式 (用戶端) 識別碼** 。 您可以在應用程式的 [概觀] 頁面中找到 **應用程式 (用戶端) 識別碼** 。
+>    - 將 `Enter_the_Application_Id_here` 取代為您在 Azure 入口網站中註冊的應用程式的 **應用程式 (用戶端) 識別碼**。 您可以在應用程式的 [概觀] 頁面中找到 **應用程式 (用戶端) 識別碼**。
 >    - 將 `common` 取代為下列其中一項：
->       - 如果您的應用程式支援 [僅此組織目錄中的帳戶]，請將此值取代為 **目錄 (租用戶) 識別碼** (即 GUID) 或 **租用戶名稱** (例如 `contoso.onmicrosoft.com`)。 您可以在應用程式的 [概觀] 頁面上找到 **目錄 (租用戶) 識別碼** 。
+>       - 如果您的應用程式支援 [僅此組織目錄中的帳戶]，請將此值取代為 **目錄 (租用戶) 識別碼** (即 GUID) 或 **租用戶名稱** (例如 `contoso.onmicrosoft.com`)。 您可以在應用程式的 [概觀] 頁面上找到 **目錄 (租用戶) 識別碼**。
 >       - 如果您的應用程式支援 [任何組織目錄中的帳戶]，請將此值取代為 `organizations`
 >       - 如果您的應用程式支援 [所有 Microsoft 帳戶使用者]，請讓此值保持為 `common`
 >
@@ -113,7 +115,7 @@ ms.locfileid: "92145046"
 >
 > 同意所要求的權限之後，應用程式會顯示您已使用 Azure Active Directory 認證成功登入。
 >
-> :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-02-signed-in.png" alt-text="[同意] 對話方塊，其中顯示應用程式從 > 使用者要求的權限":::
+> :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-02-signed-in.png" alt-text="顯示執行中 Web 應用程式和使用者已登入的網頁瀏覽器":::
 
 ## <a name="more-information"></a>詳細資訊
 
@@ -150,7 +152,7 @@ ms.locfileid: "92145046"
 
 | *appsettings.json* 金鑰 | 描述                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `ClientId`             | 於 Azure 入口網站中註冊的應用程式的 **應用程式 (用戶端) 識別碼** 。                                                                                       |
+| `ClientId`             | 於 Azure 入口網站中註冊的應用程式的 **應用程式 (用戶端) 識別碼**。                                                                                       |
 | `Instance`             | 使用者進行驗證的 Security Token Service (STS) 端點。 此值通常為 `https://login.microsoftonline.com/`，代表 Azure 公用雲端。 |
 | `TenantId`             | 租用戶名稱或其租用戶識別碼 (即 GUID)，或 *common* (使用公司或學校帳戶或 Microsoft 個人帳戶來登入使用者)。                             |
 

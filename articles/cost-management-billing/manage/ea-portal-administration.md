@@ -3,18 +3,18 @@ title: Azure EA 入口網站系統管理員
 description: 本文將說明系統管理員在 Azure EA 入口網站中完成的一般工作。
 author: bandersmsft
 ms.author: banders
-ms.date: 10/27/2020
+ms.date: 11/13/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperfq1
-ms.openlocfilehash: e83af5baa4ca38a8e81dffa8bb81ab3da64e1e95
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: edcc94050880544a6c2de54ff27f833f1c60f99f
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411017"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683640"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA 入口網站系統管理員
 
@@ -135,28 +135,20 @@ ms.locfileid: "94411017"
    狀態應該會從 [擱置] 變更為 [開始/結束日期]。 開始/結束日期是使用者第一次登入的日期和合約結束日期。
 1. 出現 [警告] 訊息時，帳戶擁有者必須選取 [繼續]，才能在第一次登入 Azure 企業版入口網站時啟用帳戶。
 
-## <a name="change-account-owner"></a>變更帳戶擁有者
+## <a name="change-azure-subscription-or-account-ownership"></a>變更 Azure 訂用帳戶或帳戶擁有權
 
-企業系統管理員可以使用 Azure 企業版入口網站來轉移註冊中的訂用帳戶擁有權。 此動作會將來源使用者帳戶中的所有訂用帳戶移至目的地使用者帳戶。
+企業系統管理員可以使用 Azure 企業版入口網站來轉移註冊中所選或所有訂用帳戶的帳戶擁有權。
 
-轉移帳戶時，請注意這項重要資訊：
+當您完成訂用帳戶或帳戶所有權轉移時，Microsoft 會更新帳戶擁有者。
 
-- 您可以進行下列轉移：
-  - 從公司或學校帳戶轉移至另一個公司或學校帳戶。
-  - 從 Microsoft 帳戶轉移至公司或學校帳戶。
-  - 從 Microsoft 帳戶轉移至另一個 Microsoft 帳戶。
+在執行擁有權轉移之前，請先了解這些 Azure 角色型存取控制 (Azure RBAC) 原則：
 
-    目標帳戶必須是有效的 Azure Commerce 帳戶，才能作為轉移的有效目標。 若使用新帳戶，當您登入 Azure 企業版入口網站時，系統會要求您建立 Azure Commerce 帳戶。 若使用現有帳戶，您必須先建立新的 Azure 訂用帳戶，才能讓該帳戶符合資格。
-
-- 您無法從公司或學校帳戶轉移至 Microsoft 帳戶。
-
-- 當您完成訂用帳戶轉移時，Microsoft 會更新帳戶擁有者。
-
-了解這些角色型存取控制 (RBAC) 原則：
-
-- 當您在相同租用戶中的兩個組織識別碼之間執行訂用帳戶轉移時，RBAC 原則和現有的服務管理員及共同管理員角色都會保留。
-- 其他訂用帳戶轉移會導致您的 RBAC 原則和角色指派遺失。
+- 當您在相同租用戶中的兩個組織識別碼之間執行訂用帳戶或帳戶擁有權轉移時，Azure RBAC 原則、現有的服務管理員及共同管理員角色都會保留。
+- 跨訂用帳戶或帳戶擁有權轉移會導致您的 Azure RBAC 原則和角色指派遺失。
 - 原則和管理員角色不會在不同的目錄之間轉移。 服務管理員會更新為目的地帳戶的擁有者。
+- 若要避免在租用戶之間轉移訂用帳戶時遺失 RBAC 原則和角色指派，請確定 [將訂用帳戶移至收件者的 Azure AD 租用戶] 核取方塊仍是 [未核取] 的狀態。 這會在目前的 Azure AD 租用戶上保留服務、RBAC 角色和原則，只轉移帳戶的帳單擁有權。  
+    :::image type="content" source="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="顯示未選取核取方塊來將訂用帳戶移至 Azure AD 租用戶的影像" lightbox="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
+
 
 變更帳戶擁有者之前：
 
@@ -168,26 +160,25 @@ ms.locfileid: "94411017"
 1. 登入 Azure 企業版入口網站。
 1. 在左側導覽區域中，選取 [管理]。
 1. 選取 [帳戶] 索引標籤，並將滑鼠停留在帳戶上。
-1. 選取右側的變更帳戶擁有者圖示。 該圖示類似一個人型。
-1. 選擇合格的帳戶，然後選取 [下一步]。
+1. 選取右側的變更帳戶擁有者圖示。 該圖示類似一個人型。  
+    ![顯示變更帳戶擁有者符號的影像](./media/ea-portal-administration/create-ea-create-sub-transfer-account-ownership-of-sub.png)
+1. 選擇要轉移的目的地帳戶，然後選取 [下一步]。
+1. 如果您想要在 Azure AD 租用戶之間轉移帳戶擁有權，請選取 [將訂用帳戶移至收件者的 Azure AD 租用戶] 核取方塊。  
+    :::image type="content" source="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="顯示已選取核取方塊來將訂用帳戶移至 Azure AD 租用戶的影像" lightbox="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
 1. 確認轉移，然後選取 [提交]。
-
-![顯示變更帳戶擁有者符號的影像](./media/ea-portal-administration/create-ea-create-sub-transfer-account-ownership-of-sub.png)
 
 若要轉移單一訂用帳戶的帳戶擁有權：
 
 1. 登入 Azure 企業版入口網站。
 1. 在左側導覽區域中，選取 [管理]。
 1. 選取 [帳戶] 索引標籤，並將滑鼠停留在帳戶上。
-1. 選取右側的轉移訂用帳戶圖示。 該圖示類似一個頁面。
-1. 選擇合格的訂用帳戶，然後選取 [下一步]。
+1. 選取右側的轉移訂用帳戶圖示。 該圖示類似一個頁面。  
+    ![顯示轉移訂用帳戶符號的影像](./media/ea-portal-administration/ea-transfer-subscriptions.png)
+1. 選擇要轉移訂用帳戶的目的地帳戶，然後選取 [下一步]。
+1. 如果您想要在 Azure AD 租用戶之間轉移訂用帳戶擁有權，請選取 [將訂用帳戶移至收件者的 Azure AD 租用戶] 核取方塊。  
+    :::image type="content" source="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="顯示已選取核取方塊來將訂用帳戶移至 Azure AD 租用戶的影像" lightbox="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
 1. 確認轉移，然後選取 [提交]。
 
-![顯示轉移訂用帳戶符號的影像](./media/ea-portal-administration/ea-transfer-subscriptions.png)
-
-觀看這段影片以查看 Azure 企業版入口網站使用者管理：
-
-> [!VIDEO https://www.youtube.com/embed/621jVkvmwm8]
 
 ## <a name="associate-an-account-to-a-department"></a>將帳戶與部門建立關聯
 

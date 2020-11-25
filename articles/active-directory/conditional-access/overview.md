@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4, azuread-video-2020
-ms.openlocfilehash: d46dfba9d9dedea57b6be872a6853bc522a0bc8c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f0a91a4d3b479d1243907951481e5a10f7085bbc
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145245"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837425"
 ---
 # <a name="what-is-conditional-access"></a>何謂條件式存取？
 
@@ -80,7 +80,7 @@ ms.locfileid: "92145245"
 - 針對具有系統管理角色的使用者，要求執行多重要素驗證
 - Azure 管理工作需要多重要素驗證
 - 封鎖嘗試使用舊版驗證通訊協定的使用者登入
-- 需要適用於 Azure Multi-Factor Authentication 註冊的信任位置
+- 需要適用於 Azure AD Multi-Factor Authentication 註冊的信任位置
 - 封鎖或授與特定位置的存取權
 - 封鎖有風險的登入行為
 - 需要由組織管理的裝置來使用特定應用程式

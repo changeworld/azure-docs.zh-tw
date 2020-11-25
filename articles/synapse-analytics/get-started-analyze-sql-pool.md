@@ -9,22 +9,22 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 07/20/2020
-ms.openlocfilehash: c46adf9e9f5c1b2e74c1098ebf137c4556bfc58d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.date: 11/17/2020
+ms.openlocfilehash: ae7b15bf2e2efd72184110a105f68815516569ab
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147563"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843905"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>使用專用 SQL 集區來分析資料
 
 Azure Synapse Analytics 可為您提供使用專用 SQL 集區分析資料的功能。 在此教學課程中，您將使用紐約市計程車資料來探索專用 SQL 集區的功能。
 
-## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>將 NYC 計程車資料載入 SQLDB1
+## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>將 NYC 計程車資料載入 SQLPOOL1 中
 
 1. 在 Synapse Studio 中，瀏覽至 [開發] 中樞，然後建立新的 SQL 指令碼
-1. 在指令碼的 [連線至] 區段中，選取集區 'SQLDB1' (在本教學課程的[步驟 1](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) 建立的集區)。
+1. 在指令碼的 [連線至] 區段中，選取集區 'SQLPOOL1' (在本教學課程的[步驟 1](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) 建立的集區)。
 1. 輸入下列程式碼：
     ```
     CREATE TABLE [dbo].[Trip]
@@ -71,15 +71,15 @@ Azure Synapse Analytics 可為您提供使用專用 SQL 集區分析資料的功
     )
     OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
     ```
-1. 此指令碼需要大約 1 分鐘的時間來執行。 其會將 200 萬列的 NYC 計程車資料載入名為 **dbo.Trip** 的表格
+1. 此指令碼將在大約 60 秒內完成。 其會將 200 萬列的 NYC 計程車資料載入名為 **dbo.Trip** 的表格
 
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>探索專用 SQL 集區中的紐約市計程車資料
 
 1. 在 Synapse Studio 中，移至 [資料] 中樞。
-1. 前往 [SQLDB1] > [資料表]。 您會看到數個已載入的資料表。
+1. 移至 [SQLPOOL1] > [資料表]。 您會看到數個已載入的資料表。
 1. 以滑鼠右鍵按一下 [dbo.Trip] 資料表，然後選取 [新增 SQL 指令碼] > [選取前 100 個資料列]。
 1. 請等到新 SQL 指令碼建立完成並開始執行。
-1. 請注意，在 SQL 指令碼頂端的 [連線到] 會自動設定成名為 **SQLDB1** 的 SQL 集區。
+1. 請注意，在 SQL 指令碼頂端，[連線至] 會自動設定成名為 **SQLPOOL1** 的 SQL 集區。
 1. 將 SQL 指令碼的文字取代為此程式碼並加以執行。
 
     ```sql

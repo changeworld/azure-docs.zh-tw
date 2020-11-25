@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: ae4281350efc96fab6c4e2898cbcddf83bf29cd8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ecf4229c95ff9103cd27fd161fdd19c9e7a0f76b
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073095"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636957"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支援的 Apache Cassandra 功能 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -86,17 +86,24 @@ Azure Cosmos DB Cassandra API 支援下列 CQL 函式：
 | writetime | 是 |
 | 轉換 | 否 |
 
-\* Cassandra API 支援使用 Token 作為投影/選取器，而且只允許 token (pk) 位在 where 子句的左側。 例如，支援 `WHERE token(pk) > 1024`，但不支援 `WHERE token(pk) > token(100)`。
+> [!NOTE]
+> \* Cassandra API 支援使用 Token 作為投影/選取器，而且只允許 token (pk) 位在 where 子句的左側。 例如，支援 `WHERE token(pk) > 1024`，但 **不** 支援 `WHERE token(pk) > token(100)`。
+
 
 
 彙總函式：
 
 |Command  |支援 |
 |---------|---------|
-| Min | 是 |
-| max | 是 |
 | avg | 是 |
 | count | 是 |
+| Min | 是 |
+| max | 是 |
+| Sum | 是 |
+
+> [!NOTE]
+> 彙總函式適用於一般資料行，但 **不** 支援叢集資料行上的彙總。
+
 
 Blob 轉換函式：
  
@@ -260,7 +267,7 @@ Azure Cosmos DB Cassandra API 提供讀取作業的一致性選擇。  一致性
 
 ## <a name="permission-and-role-management"></a>權限與角色管理
 
-Azure Cosmos DB 支援角色型存取控制 (RBAC) 來佈建、輪替金鑰、檢視計量及讀寫和唯讀密碼/金鑰，其可透過 [Azure 入口網站](https://portal.azure.com)取得。 Azure Cosmos DB 不支援 CRUD 活動的角色。
+Azure Cosmos DB 支援 Azure 角色型存取控制 (Azure RBAC) 來佈建、輪替金鑰、檢視計量及讀寫和唯讀密碼/金鑰，其可透過 [Azure 入口網站](https://portal.azure.com)取得。 Azure Cosmos DB 不支援 CRUD 活動的角色。
 
 ## <a name="keyspace-and-table-options"></a>Keyspace 和資料表選項
 

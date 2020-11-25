@@ -16,24 +16,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 68ccd21af585d853592ab8cce24f251d810a4160
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 773cf5cc6755a4f094eb676992364eea07a795ea
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90889204"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654655"
 ---
 # <a name="what-is-azure-sentinel"></a>什麼是 Azure Sentinel？
 
-Microsoft Azure Sentinel 是可調整的雲端原生**安全性資訊事件管理 (SIEM)** 和**安全性協調流程自動化回應 (SOAR)** 解決方案。 Azure Sentinel 提供整個企業的智慧型安全性分析和威脅情報，並針對警示偵測、威脅可見性、主動式搜捕及回應威脅提供單一解決方案。 
+Microsoft Azure Sentinel 是可調整的雲端原生 **安全性資訊事件管理 (SIEM)** 和 **安全性協調流程自動化回應 (SOAR)** 解決方案。 Azure Sentinel 提供整個企業的智慧型安全性分析和威脅情報，並針對警示偵測、威脅可見性、主動式搜捕及回應威脅提供單一解決方案。 
 
 Azure Sentinel 可讓您鳥瞰檢視整個企業，以減輕攻擊日益複雜、警示數量增加及解決時間範圍冗長的壓力。
 
-- **以雲端規模收集**內部部署和多個雲端中所有使用者、裝置、應用程式和基礎結構的資料。 
+- **以雲端規模收集** 內部部署和多個雲端中所有使用者、裝置、應用程式和基礎結構的資料。 
 
-- 使用 Microsoft 的分析和無可匹敵的威脅情報，**偵測先前未偵測到的威脅**，並減少誤判。 
+- 使用 Microsoft 的分析和無可匹敵的威脅情報，**偵測先前未偵測到的威脅**，並減少誤判。 
 
-- **使用人工智慧調查威脅**，並大規模搜捕可疑的活動，深入探究 Microsoft 多年來的網路安全性工作。 
+- **使用人工智慧調查威脅**，並大規模搜捕可疑的活動，深入探究 Microsoft 多年來的網路安全性工作。 
 
 - 使用內建的常見工作協調流程和自動化，**快速回應事件**。
 
@@ -51,20 +51,20 @@ Azure Sentinel 以完方位的現有 Azure 服務為基礎，原生併入經過�
 
 ## <a name="workbooks"></a>活頁簿
 
-在  [將資料來源連線](quickstart-onboard.md) 至 Azure Sentinel 之後，您可以使用 Azure Sentinel 與 Azure 監視器活頁簿的整合來監視資料，此整合可提供建立自訂活頁簿的豐富功能。 雖然活頁簿在 Azure Sentinel 中的顯示方式不同，但很適合用於查看如何[使用 Azure 監視器活頁簿建立互動式報告](../azure-monitor/platform/workbooks-overview.md)。 Azure Sentinel 可讓您建立資料的自訂活頁簿，同時還隨附內建活頁簿範本，可讓您在連線資料來源後快速取得資料的見解。
+在[將資料來源連線](quickstart-onboard.md)至 Azure Sentinel 之後，您可以使用 Azure Sentinel 與 Azure 監視器活頁簿的整合來監視資料，此整合可提供建立自訂活頁簿的豐富功能。 雖然活頁簿在 Azure Sentinel 中的顯示方式不同，但很適合用於查看如何[使用 Azure 監視器活頁簿建立互動式報告](../azure-monitor/platform/workbooks-overview.md)。 Azure Sentinel 可讓您建立資料的自訂活頁簿，同時還隨附內建活頁簿範本，可讓您在連線資料來源後快速取得資料的見解。
 
 ![儀表板](./media/tutorial-monitor-data/access-workbooks.png)
 
 ## <a name="analytics"></a>分析
 
-為了協助您減少雜訊並盡可能減少您必須檢閱和調查的警示數目，Azure Sentinel 使用[分析讓警示相互關聯成為事件](tutorial-detect-threats-built-in.md)。 **事件**是一組相關警示，可一起建立可操作的可能威脅，以便您進行調查並予以解決。 依照現狀使用內建的相互關聯規則，或使用其作為建立自有規則的起點。 Azure Sentinel 也會提供機器學習規則來對應您的網路行為，然後跨越資源尋找異常狀況。 這些分析會將不同實體的相關低精確度警示結合成為潛在高精確度安全性事件，藉此將點點滴滴串聯起來。
+為了協助您減少雜訊並盡可能減少您必須檢閱和調查的警示數目，Azure Sentinel 使用[分析讓警示相互關聯成為事件](tutorial-detect-threats-built-in.md)。 **事件** 是一組相關警示，可一起建立可操作的可能威脅，以便您進行調查並予以解決。 依照現狀使用內建的相互關聯規則，或使用其作為建立自有規則的起點。 Azure Sentinel 也會提供機器學習規則來對應您的網路行為，然後跨越資源尋找異常狀況。 這些分析會將不同實體的相關低精確度警示結合成為潛在高精確度安全性事件，藉此將點點滴滴串聯起來。
 
 ![事故](./media/tutorial-investigate-cases/incident-severity.png)
 
 
 ## <a name="security-automation--orchestration"></a>安全性自動化與協調流程
 
-將一般工作自動化及[利用劇本簡化安全性協調流程](tutorial-respond-threats-playbook.md)，以整合 Azure 服務與您現有的工具。 Azure Sentinel 的自動化和協調流程解決方案會以 Azure Logic Apps 的基礎為根據，提供可高度延伸的架構，讓自動化可隨著新技術和威脅的出現而調整。 若要使用 Azure Logic Apps 建置劇本，您可以從不斷成長的內建劇本資源庫中選擇。 其中包括 [200 個以上的連接器](https://docs.microsoft.com/azure/connectors/apis-list)其適用於 Azure Functions 等服務。 連接器可讓您在程式碼、ServiceNow、Jira、Zendesk、HTTP 要求、Microsoft Teams、Slack、Windows Defender ATP 和 Cloud App Security 中套用任何自訂邏輯。
+將一般工作自動化及[利用劇本簡化安全性協調流程](tutorial-respond-threats-playbook.md)，以整合 Azure 服務與您現有的工具。 Azure Sentinel 的自動化和協調流程解決方案會以 Azure Logic Apps 的基礎為根據，提供可高度延伸的架構，讓自動化可隨著新技術和威脅的出現而調整。 若要使用 Azure Logic Apps 建置劇本，您可以從不斷成長的內建劇本資源庫中選擇。 其中包括 [200 個以上的連接器](../connectors/apis-list.md)其適用於 Azure Functions 等服務。 連接器可讓您在程式碼、ServiceNow、Jira、Zendesk、HTTP 要求、Microsoft Teams、Slack、Windows Defender ATP 和 Cloud App Security 中套用任何自訂邏輯。
 
 舉例來說，如果您使用 ServiceNow 票證系統，則可透過所提供的工具，使用 Azure Logic Apps 將您的工作流程自動化，並且在每次偵測到特殊事件時在 ServiceNow 中開啟票證。
 

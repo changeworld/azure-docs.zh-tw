@@ -9,11 +9,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: ee3029de9826aee17dc76d0e69f08b3c1068423b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85847157"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014496"
 ---
 # <a name="create-a-virtual-machine-in-azure-using-vm-templates-on-the-vmware-infrastructure"></a>使用 VMware 基礎結構上的 VM 範本，在 Azure 中建立虛擬機器
 
@@ -49,7 +49,7 @@ ms.locfileid: "85847157"
     | 私人雲端 | 您要在其中建立虛擬機器的 CloudSimple 私人雲端。 |
     | 資源集區 | VM 的對應資源集區。 請從可用的資源集區中選取。 |
     | vSphere 範本 | VM 的 vSphere 範本。  |
-    | [使用者名稱] | Windows 範本的 VM 系統管理員 (的使用者名稱) |
+    | 使用者名稱 | Windows 範本的 VM 系統管理員 (的使用者名稱) |
     | 密碼 <br>確認密碼 | 適用于 Windows 範本的 VM 系統管理員 (的密碼) 。  |
 
 5. 選取 VM 的核心數目和記憶體容量，然後按 **[下一步：設定]**。 如果您想要將完整的 CPU 虛擬化公開給客體作業系統，讓需要硬體虛擬化的應用程式可以在沒有二進位轉譯或 paravirtualization 的虛擬機器上執行，請選取此核取方塊。 如需詳細資訊，請參閱 VMware 文章[公開 VMware 硬體輔助虛擬化](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A98801C-68E8-47AF-99ED-00C63E4857F6.html)。
@@ -62,21 +62,21 @@ ms.locfileid: "85847157"
 
     若為網路介面，請按一下 [ **新增網路介面** ] 並設定下列設定。
 
-    | 控制 | 說明 |
+    | 控制 | 描述 |
     | ------------ | ------------- |
     | 名稱 | 輸入識別介面的名稱。  |
     | 網路 | 從私用雲端 vSphere 中已設定的分散式埠群組清單中選取。  |
     | 配接器 | 從為 VM 設定的可用類型清單中，選取 vSphere 的介面卡。 如需詳細資訊，請參閱 VMware 知識庫文章 [選擇虛擬機器的網路介面卡](https://kb.vmware.com/s/article/1001805)。 |
-    | 在開機時開啟電源 | 選擇是否要在 VM 開機時啟用 NIC 硬體。 預設值為 [啟用]****。 |
+    | 在開機時開啟電源 | 選擇是否要在 VM 開機時啟用 NIC 硬體。 預設值為 [啟用]。 |
 
     若為磁片，請按一下 [ **新增磁片** ] 並設定下列設定。
 
-    | 項目 | 說明 |
+    | 項目 | 描述 |
     | ------------ | ------------- |
     | 名稱 | 輸入識別磁碟的名稱。  |
     | 大小 | 選取其中一個可用的大小。  |
     | SCSI 控制器 | 選取磁碟的 SCSI 控制器。  |
-    | 模式 | 決定磁片參與快照集的方式。 請選擇其中一個選項： <br> -獨立持續性：寫入磁片的所有資料都會永久寫入。<br> -獨立的非持續性：當您關閉或重設虛擬機器時，寫入磁片的變更會被捨棄。  獨立而非持續的模式可讓您一律以相同的狀態重新啟動 VM。 如需詳細資訊，請參閱 [VMware 文件](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html)。
+    | [模式] | 決定磁片參與快照集的方式。 請選擇其中一個選項： <br> -獨立持續性：寫入磁片的所有資料都會永久寫入。<br> -獨立的非持續性：當您關閉或重設虛擬機器時，寫入磁片的變更會被捨棄。  獨立而非持續的模式可讓您一律以相同的狀態重新啟動 VM。 如需詳細資訊，請參閱 [VMware 文件](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html)。
 
 7. 驗證完成後，請檢查設定，然後按一下 [ **建立**]。 若要進行任何變更，請按一下頂端的索引標籤，或按一下 []。
 

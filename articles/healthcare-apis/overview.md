@@ -6,14 +6,14 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: overview
-ms.date: 08/03/2020
+ms.date: 11/13/2020
 ms.author: matjazl
-ms.openlocfilehash: 12635979d90dcc4be5b45bf7d64ceb602119faf7
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 3bb168cf3f642d22096c54b3f35c7833afaff769
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394759"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635138"
 ---
 # <a name="what-is-azure-api-for-fhirreg"></a>什麼是 Azure API for FHIR&reg;？
 
@@ -84,7 +84,7 @@ FHIR 伺服器是健康情況資料互通性的重要工具。  Azure API for FH
 
 ## <a name="azure-iot-connector-for-fhir-preview"></a>Azure IoT Connector for FHIR (預覽)
 
-Azure IoT Connector for FHIR* 是 Azure API for FHIR 的一個選用功能，可讓您內嵌來自醫學物聯網 (IoMT) 裝置的資料。 醫學物聯網是一種 IoT 裝置類別，可透過網路來擷取衛生與健康資料，並與其他醫療保健 IT 系統交換這些資料。 IoMT 裝置的一些範例包括健身與臨床穿戴式裝置、監視感應器、活動追蹤器、護理資訊亭，甚至是智慧藥丸。 Azure IoT Connector for FHIR 功能可讓您快速設定服務，以可調整、安全且符合規範的方式，將 IoMT 資料內嵌到 Azure API for FHIR 中。
+Azure IoT Connector for FHIR (快速健康照護互通資源)* 是 Azure API for FHIR 的一個選用功能，可讓您內嵌來自醫學物聯網 (IoMT) 裝置的資料。 醫學物聯網是一種 IoT 裝置類別，可透過網路來擷取衛生與健康資料，並與其他醫療保健 IT 系統交換這些資料。 IoMT 裝置的一些範例包括健身與臨床穿戴式裝置、監視感應器、活動追蹤器、護理資訊亭，甚至是智慧藥丸。 Azure IoT Connector for FHIR 功能可讓您快速設定服務，以可調整、安全且符合規範的方式，將 IoMT 資料內嵌到 Azure API for FHIR 中。
 
 Azure IoT Connector for FHIR 可以接受由 IoMT 裝置傳送的任何 JSON 型訊息。 此資料會先轉換成適當的 FHIR 型[觀察](https://www.hl7.org/fhir/observation.html) \(英文\) 資源，然後再保存到 Azure API for FHIR 中。 資料轉換邏輯是透過一組您根據訊息結構描述和 FHIR 需求所設定的對應範本定義的。 裝置資料可以直接推送到 Azure IoT Connector for FHIR，或緊密地與其他 Azure IoT 解決方案搭配使用 ([Azure IoT 中樞](../iot-hub/index.yml)和 [Azure IoT Central](../iot-central/index.yml))。 Azure IoT Connector for FHIR 提供安全的資料管線，同時允許 Azure IoT 解決方案管理實體裝置的佈建和維護。
 
@@ -108,6 +108,4 @@ IoMT 裝置的用途在醫療保健方面快速擴展，而 Azure IoT Connector 
 >[!div class="nextstepaction"]
 >[部署 Azure IoT Connector for FHIR](iot-fhir-portal-quickstart.md)
 
-*在 Azure 入口網站中，Azure IoT Connector for FHIR 稱為 IoT 連接器 (預覽)。
-
-FHIR 是 HL7 的註冊商標，必須搭配 HL7 權限方可使用。
+*在 Azure 入口網站中，Azure IoT Connector for FHIR 稱為 IoT 連接器 (預覽)。 FHIR 是 HL7 的註冊商標，可與 HL7 的權限搭配使用。 

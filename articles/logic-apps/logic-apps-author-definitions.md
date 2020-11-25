@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
 ms.openlocfilehash: 9163071237041d7c8510a644c573e3763434bb0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87060663"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014392"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>在 Azure Logic Apps 中建立、編輯或擴充邏輯應用程式工作流程定義的 JSON
 
@@ -30,10 +30,10 @@ ms.locfileid: "87060663"
 
 1. 登入 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>。
 
-2. 在左側功能表中，選擇 [所有服務]****。
+2. 在左側功能表中，選擇 [所有服務]。
 在搜尋方塊中尋找「邏輯應用程式」，然後從結果中選取您的邏輯應用程式。
 
-3. 在邏輯應用程式功能表的 [開發工具]**** 底下，選取 [邏輯應用程式程式碼檢視]****。
+3. 在邏輯應用程式功能表的 [開發工具] 底下，選取 [邏輯應用程式程式碼檢視]。
 
    程式碼檢視編輯器隨即開啟，並以 JSON 格式顯示您的邏輯應用程式定義。
 
@@ -57,17 +57,17 @@ ms.locfileid: "87060663"
    > [!TIP]
    > 如果您在 Visual Studio 2019 中沒有此命令，請檢查您是否有最新的 Visual Studio 更新。
 
-4. 在設計工具底部，選擇 [程式碼檢視]****。
+4. 在設計工具底部，選擇 [程式碼檢視]。
 
    程式碼檢視編輯器隨即開啟，並以 JSON 格式顯示您的邏輯應用程式定義。
 
-5. 若要返回設計工具檢視，請在程式碼檢視編輯器的底部，選擇 [設計]****。
+5. 若要返回設計工具檢視，請在程式碼檢視編輯器的底部，選擇 [設計]。
 
 ## <a name="parameters"></a>參數
 
 部署生命週期通常會有不同的環境可用於開發、測試、預備和生產環境。 如果您有想要在整個邏輯應用程式中重複使用的值，而不需要硬式編碼，或根據您的部署需求而有所不同，您可以為工作流程定義建立 [Azure Resource Manager 範本](../azure-resource-manager/management/overview.md) ，讓您也可以將邏輯應用程式部署自動化。
 
-請依照這些一般步驟 *，將參數參數化*或定義和使用這些值的參數。 然後，您可以在將這些值傳遞至範本的個別參數檔中提供值。 如此一來，您就可以更輕鬆地變更這些值，而不需要更新和重新部署您的邏輯應用程式。 如需完整的詳細資訊，請參閱 [總覽：使用 Azure Resource Manager 範本將邏輯應用程式的部署自動化](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)。
+請依照這些一般步驟 *，將參數參數化* 或定義和使用這些值的參數。 然後，您可以在將這些值傳遞至範本的個別參數檔中提供值。 如此一來，您就可以更輕鬆地變更這些值，而不需要更新和重新部署您的邏輯應用程式。 如需完整的詳細資訊，請參閱 [總覽：使用 Azure Resource Manager 範本將邏輯應用程式的部署自動化](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)。
 
 1. 在您的範本中，定義範本參數和工作流程定義參數，以分別接受部署和執行時間所使用的值。
 
@@ -221,7 +221,7 @@ Logic Apps 具有各種函式可處理字串。
 
 ## <a name="get-data-with-date-functions"></a>使用 Date 函式取得資料
 
-若要從原生不支援「觸發程序」** 的資料來源取得資料，您可改為使用 Date 函式來處理時間和日期。
+若要從原生不支援「觸發程序」的資料來源取得資料，您可改為使用 Date 函式來處理時間和日期。
 例如，這個運算式會尋找這個工作流程從內部到外部的步驟需要花費多少時間：
 
 ``` json

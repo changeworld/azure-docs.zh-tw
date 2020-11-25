@@ -3,12 +3,12 @@ title: ISO 27001 共用服務藍圖範例控制項
 description: ISO 27001 共用服務藍圖範例的控制項對應。 每個控制措施都會對應至一或多個可協助評量的 Azure 原則定義。
 ms.date: 11/05/2020
 ms.topic: sample
-ms.openlocfilehash: bb1cfbc09e8a6209b9e6d0cb2970dc66ee05ba6d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: c79159fca9d619b727ef651bf42044182144ab35
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420337"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842510"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共用服務藍圖範例的控制項對應
 
@@ -82,7 +82,7 @@ Azure 的 [SQL 弱點評量服務](../../../../azure-sql/database/sql-vulnerabil
 
 ## <a name="a942-secure-log-on-procedures"></a>A.9.4.2 安全登入程序
 
-此藍圖指派了三項 Azure 原則定義來稽核未啟用多重要素驗證的帳戶。 Azure Multi-Factor Authentication 會藉由要求第二種形式的驗證來提供額外的安全性，並提供增強式驗證。 藉由監視未啟用多重要素驗證的帳戶，您將可識別較可能遭到入侵的帳戶。
+此藍圖指派了三項 Azure 原則定義來稽核未啟用多重要素驗證的帳戶。 Azure AD Multi-Factor Authentication 會藉由要求第二種形式的驗證來提供額外的安全性，並提供增強式驗證。 藉由監視未啟用多重要素驗證的帳戶，您將可識別較可能遭到入侵的帳戶。
 
 - 應在您訂用帳戶上具有擁有者權限的帳戶上啟用 MFA
 - 應在您訂用帳戶上具有讀取權限的帳戶上啟用 MFA

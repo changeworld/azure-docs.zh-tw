@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: ee709868cd7e78afbcc480913c4e4c8fd2acf832
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 75f4602be15ef2487272ed5790d92c4c884c551f
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167180"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681545"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -26,11 +26,11 @@ Azure Kubernetes Service (AKS) 可讓您輕鬆地在 Azure 中部署受控 Kuber
 
 ## <a name="access-security-and-monitoring"></a>存取、安全性和監視
 
-針對改善的安全性和管理，AKS 可讓您與 Azure Active Directory 整合，並使用 Kubernetes 角色型存取控制 (RBAC)。 您也可以監視叢集與資源的健康情況。
+針對改善的安全性和管理，AKS 可讓您與 Azure Active Directory 整合，並使用 Kubernetes 角色型存取控制 (Kubernetes RBAC)。 您也可以監視叢集與資源的健康情況。
 
 ### <a name="identity-and-security-management"></a>身分識別和安全性管理
 
-為限制對叢集資源的存取，AKS 支援 [Kubernetes 角色型存取控制 (RBAC)][kubernetes-rbac]。 RBAC 可讓您控制 Kubernetes 資源與命名空間的存取，以及這些資源的權限。 您也可以將 AKS 叢集設定成與 Azure Active Directory (AD) 整合。 若與 Azure AD 整合，您可以根據現有的身分識別與群組成員資格來設定 Kubernetes 存取。 可以為您現有的 Azure AD 使用者與群組提供 AKS 資源的存取權，且包含整合式登入體驗。
+為限制對叢集資源的存取，AKS 支援 [Kubernetes 角色型存取控制 (Kubernetes RBAC)][kubernetes-rbac]。 Kubernetes RBAC 可讓您控制 Kubernetes 資源與命名空間的存取，以及這些資源的權限。 您也可以將 AKS 叢集設定成與 Azure Active Directory (AD) 整合。 若與 Azure AD 整合，您可以根據現有的身分識別與群組成員資格來設定 Kubernetes 存取。 可以為您現有的 Azure AD 使用者與群組提供 AKS 資源的存取權，且包含整合式登入體驗。
 
 如需身分識別的詳細資訊，請參閱 [AKS 的存取和身分識別選項][concepts-identity]。
 
@@ -146,7 +146,7 @@ Azure Kubernetes Service (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 的規範。
 [aks-master-logs]: view-master-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
-[kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-control-rbac
+[kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac
 [concepts-identity]: concepts-identity.md
 [concepts-storage]: concepts-storage.md
 [conf-com-node]: ../confidential-computing/confidential-nodes-aks-overview.md

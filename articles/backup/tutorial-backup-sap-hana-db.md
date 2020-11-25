@@ -3,12 +3,12 @@ title: 教學課程 - 將 SAP HANA 資料庫備份至 Azure VM
 description: 在本教學課程中，您將了解如何將執行於 Azure VM 上的 SAP HANA 資料庫備份至 Azure 備份復原服務保存庫。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 8de567b9f895ea0b3fa4a0f85a8bbad8bf82588f
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 31a0a773096ec0f69e87bfd4a05f8ba98185e6cf
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173777"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695209"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>教學課程：將 SAP HANA 資料庫備份至 Azure VM
 
@@ -34,7 +34,7 @@ ms.locfileid: "92173777"
 * 確定 Azure Resoure Manager ARM_ VM 的 SAP Hana 伺服器 VM 名稱和資源群組名稱的合併長度未超過 84 個字元 (傳統 VM 的限制為 77 個字元)。 之所以有此限制，是因為服務會保留某些字元。
 * **hdbuserstore** 中應該會有一個金鑰符合下列準則：
   * 此金鑰應位於預設的 **hdbuserstore** 中。 預設值是已安裝之 SAP HANA 下的 `<sid>adm` 帳戶。
-  * 針對 MDC，此金鑰應指向 **NAMESERVER**的 SQL 連接埠。 在 SDC 的案例中，則應指向 **INDEXSERVER** 的 SQL 連接埠
+  * 針對 MDC，此金鑰應指向 **NAMESERVER** 的 SQL 連接埠。 在 SDC 的案例中，則應指向 **INDEXSERVER** 的 SQL 連接埠
   * 此金鑰應具有新增和刪除使用者的認證
   * 請注意，您可以在成功執行預先註冊指令碼後刪除此金鑰
 * 以根使用者身分，在安裝 HANA 的虛擬機器中執行 SAP HANA 備份設定指令碼 (預先註冊指令碼)。 [此指令碼](https://aka.ms/scriptforpermsonhana)會為 HANA 系統做好備份的準備。 請參閱[預先註冊指令碼的功能](#what-the-pre-registration-script-does)一節，以深入了解預先註冊指令碼。
@@ -105,11 +105,12 @@ ms.locfileid: "92173777"
 
 * 根據您的 Linux 發行版本，指令碼會安裝或更新 Azure 備份代理程式所需的任何必要套件。
 * 會對 Azure 備份伺服器和相依服務 (如 Azure Active Directory 和 Azure 儲存體) 執行輸出網路連線檢查。
-* 會使用列為[必要條件](#prerequisites)之一的使用者金鑰登入您的 HANA 系統。 使用者金鑰可用來在 HANA 系統中建立備份使用者 (AZUREWLBACKUPHANAUSER)，且**使用者金鑰可在預先註冊指令碼成功執行之後刪除**。
+* 會使用列為[必要條件](#prerequisites)之一的使用者金鑰登入您的 HANA 系統。 使用者金鑰可用來在 HANA 系統中建立備份使用者 (AZUREWLBACKUPHANAUSER)，且 **使用者金鑰可在預先註冊指令碼成功執行之後刪除**。
 * AZUREWLBACKUPHANAUSER 會被指派下列必要的角色和權限：
-  * 資料庫管理員 (如果是 MDC) 和備份管理員 (如果是 SDC)：用以在還原期間建立新的資料庫。
+  * 針對 MDC：資料庫管理員和備份管理員 (從 HANA 2.0 SPS05 開始)：在還原期間建立新的資料庫。
+  * 針對 SDC：備份管理員：在還原期間建立新的資料庫。
   * 目錄讀取：讀取備份目錄。
-  * SAP_INTERNAL_HANA_SUPPORT：存取數個私人資料表。
+  * SAP_INTERNAL_HANA_SUPPORT：存取數個私人資料表。 只有低於 HANA 2.0 SPS04 Rev 46 的 SDC 和 MDC 版本才需要。 HANA 2.0 SPS04 Rev 46 和更高版本不需要此項目，因為我們現在會透過 HANA 小組的修正來取得公用資料表中的必要資訊。
 * 此指令碼會將金鑰新增至 AZUREWLBACKUPHANAUSER 的 **hdbuserstore**，供 HANA 備份外掛程式處理所有作業 (資料庫查詢、還原作業、設定和執行備份)。
 
 >[!NOTE]
@@ -152,10 +153,10 @@ hdbuserstore list
    ![建立復原服務保存庫](./media/tutorial-backup-sap-hana-db/create-vault.png)
 
    * **Name**：名稱會用來識別復原服務保存庫，且對於 Azure 訂用帳戶必須是唯一的。 指定的名稱至少要有兩個字元，但不能超過 50 個字元。 名稱開頭必須是字母，且只能包含字母、數字和連字號。 在本教學課程中，我們使用名稱 **SAPHanaVault**。
-   * 訂用帳戶：選擇要使用的訂用帳戶。 如果您是唯一一個訂用帳戶的成員，就會看到該名稱。 如果您不確定要使用哪個訂用帳戶，請使用預設 (建議) 的訂用帳戶。 只有在您的公司或學校帳戶與多個 Azure 訂用帳戶相關聯時，才會有多個選擇。 在此，我們使用 **SAP HANA 解決方案實驗室訂用帳戶**訂用帳戶。
+   * 訂用帳戶：選擇要使用的訂用帳戶。 如果您是唯一一個訂用帳戶的成員，就會看到該名稱。 如果您不確定要使用哪個訂用帳戶，請使用預設 (建議) 的訂用帳戶。 只有在您的公司或學校帳戶與多個 Azure 訂用帳戶相關聯時，才會有多個選擇。 在此，我們使用 **SAP HANA 解決方案實驗室訂用帳戶** 訂用帳戶。
    * **資源群組**：使用現有的資源群組或建立新群組。 在此，我們使用 **SAPHANADemo**。<br>
    若要查看您訂用帳戶中可用的資源群組清單，請選取 [使用現有的]﹐然後從下拉式清單方塊中選取資源。 若要建立新的資源群組，請選取 [新建]，然後輸入名稱。 如需資源群組的完整資訊，請參閱 [Azure Resource Manager 概觀](../azure-resource-manager/management/overview.md)。
-   * **位置**：選取保存庫的地理區域。 保存庫必須與執行 SAP HANA 的虛擬機器位於相同的區域中。 我們使用**美國東部 2**。
+   * **位置**：選取保存庫的地理區域。 保存庫必須與執行 SAP HANA 的虛擬機器位於相同的區域中。 我們使用 **美國東部 2**。
 
 5. 選取 [檢閱 + 建立]。
 
@@ -221,16 +222,21 @@ hdbuserstore list
    * 每月和每年保留範圍會以類似方式運作。
 4. 在 [完整備份原則]  功能表中，選取 [確定]  接受設定。
 5. 然後，選取 [差異備份] 以新增差異原則。
-6. 在 [差異備份原則] 中，選取 [啟用] 以開啟頻率和保留控制項。 我們已啟用會在每**週日**的**凌晨 2:00** 執行的差異備份，此備份會保留 **30 天**。
+6. 在 [差異備份原則] 中，選取 [啟用] 以開啟頻率和保留控制項。 我們已啟用會在每 **週日** 的 **凌晨 2:00** 執行的差異備份，此備份會保留 **30 天**。
 
    ![差異備份原則](./media/tutorial-backup-sap-hana-db/differential-backup-policy.png)
 
    >[!NOTE]
-   >目前不支援增量備份。
+   >增量備份現已可公開預覽。 您可以選擇 [差異] 或 [增量] 做為每日備份，但不能同時選擇兩者。
    >
+7. 在 [增量備份原則] 中，選取 [啟用] 以開啟頻率和保留控制項。
+    * 您每天最多可以觸發一次增量備份。
+    * 增量備份最多可以保留 180 天。 如果您需要保留更久，則必須使用完整備份。
 
-7. 選取 [確定]  以儲存原則，然後返回主要 [備份原則]  功能表。
-8. 選取 [記錄備份]，以新增交易記錄備份原則。
+    ![增量備份原則](./media/backup-azure-sap-hana-database/incremental-backup-policy.png)
+
+8. 選取 [確定]  以儲存原則，然後返回主要 [備份原則]  功能表。
+9. 選取 [記錄備份]，以新增交易記錄備份原則。
    * [記錄備份] 會預設為 [啟用]。 此選項無法停用，因為 SAP HANA 管理所有的記錄備份。
    * 我們將備份排程設為 **2 小時**，並將保留期間設為 **15 天**。
 
@@ -240,8 +246,8 @@ hdbuserstore list
    > 只有在順利完成一個完整備份後，記錄備份才會開始運作。
    >
 
-9. 選取 [確定]  以儲存原則，然後返回主要 [備份原則]  功能表。
-10. 在完成備份原則的定義後，選取 [確定]。
+10. 選取 [確定]  以儲存原則，然後返回主要 [備份原則]  功能表。
+11. 在完成備份原則的定義後，選取 [確定]。
 
 現在，您已成功設定 SAP HANA 資料庫的備份。
 

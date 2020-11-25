@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2020
-ms.openlocfilehash: eb2212d618d45187779b328c7ba164bbacc980a4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 012df825f38d292d0b0549701ad90334e3e30bb0
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088676"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637008"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>歡迎使用 Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -55,7 +55,7 @@ Azure Cosmos DB 是適用於新式應用程式開發的完全受控 NoSQL 資料
 - Azure Cosmos DB 提供一套完整的 [SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db)，包括領先業界的全球可用性。
 - 使用自動資料複寫，輕鬆地將資料散發到任何 Azure 區域。 使用強式一致性時，多區域寫入或 RPO 0 可享有零停機。
 - 使用自我管理金鑰，享有企業級的靜態加密。
-- 角色型存取控制可讓您的資料保持安全，並提供微調控制。
+- Azure 角色型存取控制可讓您的資料保持安全，並提供微調控制。
 
 ### <a name="fully-managed-and-cost-effective"></a>完全受控且符合成本效益
 

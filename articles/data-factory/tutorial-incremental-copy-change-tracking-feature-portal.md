@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 78b9d3f30ebc8f74433f04c4474121682c4a3f36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5f87e693d2592f830ec785f2163c232915544d1
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542014"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561126"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>使用 Azure 入口網站使用變更追蹤資訊，以累加方式將資料從 Azure SQL Database 載入到 Azure Blob 儲存體
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-在本教學課程中，您會建立一個 Azure Data Factory 並讓其具有管線，以根據 Azure SQL Database 來源資料庫中的**變更追蹤**資訊，將差異資料載入到 Azure Blob 儲存體。  
+在本教學課程中，您會建立一個 Azure Data Factory 並讓其具有管線，以根據 Azure SQL Database 來源資料庫中的 **變更追蹤** 資訊，將差異資料載入到 Azure Blob 儲存體。  
 
 您會在本教學課程中執行下列步驟：
 
@@ -50,7 +50,7 @@ ms.locfileid: "91542014"
     3. 將完整資料從來源資料庫載入到 Azure Blob 儲存體。
 2. **依排程累加載入差異資料** (在初始載入資料後定期執行)：
     1. 取得 SYS_CHANGE_VERSION 的舊值和新值。
-    3. 藉由將 **sys.change_tracking_tables** 中有所變更資料列 (介於兩個 SYS_CHANGE_VERSION 值之間) 的主索引鍵，聯結到**來源資料表**中的資料來載入差異資料，然後將差異資料移動到目的地。
+    3. 藉由將 **sys.change_tracking_tables** 中有所變更資料列 (介於兩個 SYS_CHANGE_VERSION 值之間) 的主索引鍵，聯結到 **來源資料表** 中的資料來載入差異資料，然後將差異資料移動到目的地。
     4. 針對要在下一次載入的差異更新其 SYS_CHANGE_VERSION。
 
 ## <a name="high-level-solution"></a>高階解決方案
@@ -60,9 +60,9 @@ ms.locfileid: "91542014"
 
     ![完整載入資料](media/tutorial-incremental-copy-change-tracking-feature-portal/full-load-flow-diagram.png)
 1.  **累加載入：** 您會使用下列活動建立管線，然後定期執行該管線。
-    1. 建立**兩個查閱活動**，從 Azure SQL Database 取得舊的和新的 SYS_CHANGE_VERSION，並將其傳遞給複製活動。
-    2. 建立**一個複製活動**，將兩個 SYS_CHANGE_VERSION 值之間所插入/更新/刪除的資料，從 Azure SQL Database 複製到 Azure Blob 儲存體。
-    3. 建立**一個預存程序活動**，以更新下一次管線執行的 SYS_CHANGE_VERSION 值。
+    1. 建立 **兩個查閱活動**，從 Azure SQL Database 取得舊的和新的 SYS_CHANGE_VERSION，並將其傳遞給複製活動。
+    2. 建立 **一個複製活動**，將兩個 SYS_CHANGE_VERSION 值之間所插入/更新/刪除的資料，從 Azure SQL Database 複製到 Azure Blob 儲存體。
+    3. 建立 **一個預存程序活動**，以更新下一次管線執行的 SYS_CHANGE_VERSION 值。
 
     ![累加載入流程圖](media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-load-flow-diagram.png)
 
@@ -70,13 +70,13 @@ ms.locfileid: "91542014"
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必要條件
-* **Azure SQL Database**。 您需要使用資料庫作為**來源**資料存放區。 如果您在 Azure SQL Database 中沒有資料庫，請參閱[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)一文，按照步驟建立資料庫。
-* **Azure 儲存體帳戶**。 您需要使用 Blob 儲存體作為**接收**資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱[建立儲存體帳戶](../storage/common/storage-account-create.md)一文，按照步驟來建立帳戶。 建立名為 **adftutorial** 的容器。 
+* **Azure SQL Database**。 您需要使用資料庫作為 **來源** 資料存放區。 如果您在 Azure SQL Database 中沒有資料庫，請參閱[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)一文，按照步驟建立資料庫。
+* **Azure 儲存體帳戶**。 您需要使用 Blob 儲存體作為 **接收** 資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱[建立儲存體帳戶](../storage/common/storage-account-create.md)一文，按照步驟來建立帳戶。 建立名為 **adftutorial** 的容器。 
 
 ### <a name="create-a-data-source-table-in-azure-sql-database"></a>在 Azure SQL Database 中建立資料來源資料表
 
 1. 啟動 **SQL Server Management Studio**，然後連線至 SQL Database。
-2. 在**伺服器總管**中，以滑鼠右鍵按一下您的**資料庫**，然後選擇 [新增查詢]。
+2. 在 **伺服器總管** 中，以滑鼠右鍵按一下您的 **資料庫**，然後選擇 [新增查詢]。
 3. 對資料庫執行下列 SQL 命令，以建立名為 `data_source_table` 的資料表作為資料來源存放區。  
 
     ```sql
@@ -99,7 +99,7 @@ ms.locfileid: "91542014"
 
     ```
 
-4. 執行下列 SQL 查詢，在您的資料庫和來源資料表 (data_source_table) 啟用**變更追蹤**機制：
+4. 執行下列 SQL 查詢，在您的資料庫和來源資料表 (data_source_table) 啟用 **變更追蹤** 機制：
 
     > [!NOTE]
     > - 將 &lt;your database name&gt; 替換為 Azure SQL Database 中具有 data_source_table 的資料庫名稱。
@@ -264,8 +264,8 @@ ms.locfileid: "91542014"
 4. 在 [屬性] 視窗中切換至 [連線] 索引標籤，執行下列步驟：
 
     1. 選取 [AzureStorageLinkedService] 作為 [連結服務]。
-    2. 在 [檔案路徑] 的**資料夾**部分輸入 **adftutorial/incchgtracking**。
-    3. 在 [檔案路徑] 的**檔案**部分輸入 **\@CONCAT('Incremental-', pipeline().RunId, '.txt')** 。  
+    2. 在 [檔案路徑] 的 **資料夾** 部分輸入 **adftutorial/incchgtracking**。
+    3. 在 [檔案路徑] 的 **檔案** 部分輸入 **\@CONCAT('Incremental-', pipeline().RunId, '.txt')** 。  
 
        ![接收資料集 - 連線](./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-connection.png)
 
@@ -358,7 +358,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 ```
 
 ## <a name="create-a-pipeline-for-the-delta-copy"></a>建立差異複本的管線
-在此步驟中，您會建立具有下列活動的管線，並定期執行此管線。 **查閱活動**會從 Azure SQL Database 取得舊的和新的 SYS_CHANGE_VERSION，並將它傳遞給複製活動。 **複製活動**會將兩個 SYS_CHANGE_VERSION 值之間所插入/更新/刪除的資料，從 Azure SQL Database 複製到 Azure Blob 儲存體。 **預存程序活動**會更新下一次管線執行的 SYS_CHANGE_VERSION 值。
+在此步驟中，您會建立具有下列活動的管線，並定期執行此管線。 **查閱活動** 會從 Azure SQL Database 取得舊的和新的 SYS_CHANGE_VERSION，並將它傳遞給複製活動。 **複製活動** 會將兩個 SYS_CHANGE_VERSION 值之間所插入/更新/刪除的資料，從 Azure SQL Database 複製到 Azure Blob 儲存體。 **預存程序活動** 會更新下一次管線執行的 SYS_CHANGE_VERSION 值。
 
 1. 在 [Data Factory] 使用者介面中，切換至 [編輯] 索引標籤。按一下左窗格中的 [+] (加號)，然後按一下 [管線]。
 
@@ -403,7 +403,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 9. 切換至 [接收] 索引標籤，在 [接收資料集] 欄位選取 [SinkDataset]。
 
     ![複製活動 - 接收設定](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-sink-settings.png)
-10. 逐一**將兩個查詢活動連線至複製活動**。 將連結 [查閱] 活動**綠色**按鈕拖曳至 [複製] 活動。
+10. 逐一 **將兩個查詢活動連線至複製活動**。 將連結 [查閱] 活動 **綠色** 按鈕拖曳至 [複製] 活動。
 
     ![將查閱和複製活動連線](./media/tutorial-incremental-copy-change-tracking-feature-portal/connect-lookup-and-copy.png)
 11. 將 [活動] 工具箱中的 [預存程序] 活動拖放至管線設計工具介面。 將活動的名稱設定為 **StoredProceduretoUpdateChangeTrackingActivity**。 此活動會更新 **table_store_ChangeTracking_version** 資料表中的變更追蹤版本。
@@ -424,7 +424,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
         | TableName | String | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} |
 
         ![預存程序活動 - 參數](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-parameters.png)
-14. **將複製活動連線至預存程序活動**。 將連結 [複製] 活動的**綠色**按鈕拖曳至 [預存程序] 活動。
+14. **將複製活動連線至預存程序活動**。 將連結 [複製] 活動的 **綠色** 按鈕拖曳至 [預存程序] 活動。
 
     ![將複製和預存程序活動連線](./media/tutorial-incremental-copy-change-tracking-feature-portal/connect-copy-stored-procedure.png)
 15. 按一下工具列上的 [驗證]。 確認沒有任何驗證錯誤。 按一下 **>>** 關閉 [管線驗證報告] 視窗。

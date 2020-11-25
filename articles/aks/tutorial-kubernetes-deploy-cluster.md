@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 55af44f498492136b2ae03c7e23fce3676aa8e22
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 0e034ebede39a3fd9046ced9716323d0c7d874df
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747089"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684065"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>教學課程：部署 Azure Kubernetes Service (AKS) 叢集
 
@@ -31,7 +31,7 @@ Kubernetes 會提供容器化應用程式的分散式平台。 透過 AKS，您�
 
 ## <a name="create-a-kubernetes-cluster"></a>建立 Kubernetes 叢集
 
-AKS 叢集可使用 Kubernetes 角色型存取控制 (RBAC)。 這些控制可讓您根據指派給使用者的角色，來定義資源的存取權。 如果為使用者指派了多個角色，即會合併權限，而且可將權限的範圍設定為單一命名空間或整個叢集。 根據預設，Azure CLI 會在您建立 AKS 叢集時自動啟用 RBAC。
+AKS 叢集可使用 Kubernetes 角色型存取控制 (Kubernetes RBAC)。 這些控制可讓您根據指派給使用者的角色，來定義資源的存取權。 如果為使用者指派了多個角色，即會合併權限，而且可將權限的範圍設定為單一命名空間或整個叢集。 根據預設，Azure CLI 會在您建立 AKS 叢集時自動啟用 Kubernetes RBAC。
 
 使用 [az aks create][] 建立 AKS 叢集。 下列範例會在名為 myResourceGroup  的資源群組中建立名為 myAKSCluster  的叢集。 在 [先前的教學課程][aks-tutorial-prepare-acr]中，我們已在 *eastus* 區域建立此資源群組。 下列範例不會指定區域，因此也會在 *eastus* 區域中建立 AKS 叢集。 如需 AKS 的資源限制和區域可用性的詳細資訊，請參閱 [Azure Kubernetes Service (AKS) 中的配額、虛擬機器大小限制和區域可用性][quotas-skus-regions]。
 

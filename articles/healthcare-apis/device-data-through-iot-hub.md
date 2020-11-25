@@ -6,18 +6,18 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: tutorial
-ms.date: 08/03/2020
+ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: ee286540d4fd740c5e7c1f8bd693fddd625eeae2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 6c364cf84bada2a951ef3f224ea836885f0e3c1e
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93398142"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636311"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>教學課程：透過 Azure IoT 中樞接收裝置資料
 
-Azure IoT Connector for FHIR* 可讓您將來自醫學物聯網 (IoMT) 裝置的資料內嵌到 Azure API for FHIR 中。 [使用 Azure 入口網站部署 Azure IoT Connector for FHIR (預覽)](iot-fhir-portal-quickstart.md) 快速入門示範了 Azure IoT Central 所管理的裝置如何[將遙測傳送](iot-fhir-portal-quickstart.md#connect-your-devices-to-iot)至 Azure IoT Connector for FHIR 的範例。 Azure IoT Connector for FHIR 也可以使用透過 Azure IoT 中樞佈建和管理的裝置。 本教學課程提供將裝置資料從 Azure IoT 中樞連線並路由至 Azure IoT Connector for FHIR 的程序。
+Azure IoT Connector for FHIR (快速健康照護互通資源)* 可讓您將來自醫學物聯網 (IoMT) 裝置的資料內嵌到 Azure API for FHIR 中。 [使用 Azure 入口網站部署 Azure IoT Connector for FHIR (預覽)](iot-fhir-portal-quickstart.md) 快速入門示範了 Azure IoT Central 所管理的裝置如何[將遙測傳送](iot-fhir-portal-quickstart.md#connect-your-devices-to-iot)至 Azure IoT Connector for FHIR 的範例。 Azure IoT Connector for FHIR 也可以使用透過 Azure IoT 中樞佈建和管理的裝置。 本教學課程提供將裝置資料從 Azure IoT 中樞連線並路由至 Azure IoT Connector for FHIR 的程序。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -113,6 +113,4 @@ Azure IoT 中樞支援稱為[訊息路由](../iot-hub/iot-hub-devguide-messages-
 >[!div class="nextstepaction"]
 >[Azure IoT Connector for FHIR 對應範本](iot-mapping-templates.md)
 
-*在 Azure 入口網站中，Azure IoT Connector for FHIR 稱為 IoT 連接器 (預覽)。
-
-FHIR 是 HL7 的註冊商標，必須搭配 HL7 權限方可使用。
+*在 Azure 入口網站中，Azure IoT Connector for FHIR 稱為 IoT 連接器 (預覽)。 FHIR 是 HL7 的註冊商標，可與 HL7 的權限搭配使用。

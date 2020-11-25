@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 11/04/2020
 ms.author: memildin
 ms.openlocfilehash: 0a487f778693e87e680033edd0d80c55d1a85f66
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348622"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013780"
 ---
 # <a name="sql-information-protection-policy-in-azure-security-center"></a>Azure 資訊安全中心中的 SQL 資訊保護原則
  
@@ -55,7 +55,7 @@ SQL 資訊保護的 [資料探索和分類機制](../azure-sql/database/data-dis
 
 ### <a name="access-the-policy-from-security-centers-pricing-and-settings-page"></a>從安全性中心的 [定價和設定] 頁面存取原則 <a name="sqlip-tenant"></a>
 
-從資訊安全中心的 [ **定價和設定** ] 頁面，選取 **[SQL 資訊保護** ]。
+從資訊安全中心的 [ **定價和設定** ] 頁面，選取 **[SQL 資訊保護**]。
 
 > [!NOTE]
 > 此選項只會針對具有租使用者層級許可權的使用者顯示。 
@@ -70,7 +70,7 @@ SQL 資訊保護的 [資料探索和分類機制](../azure-sql/database/data-dis
 
 使用「安全性中心」的建議：「您的 SQL 資料庫中的敏感性資料應進行分類」，以查看您資料庫的 [資料探索與分類] 頁面。 在那裡，您也會看到探索到的資料行包含我們建議您分類的資訊。
 
-1. 在 [安全性中心的 **建議** ] 頁面中，搜尋 **您的 SQL 資料庫中應分類的建議機密資料** 。
+1. 在 [安全性中心的 **建議** ] 頁面中，搜尋 **您的 SQL 資料庫中應分類的建議機密資料**。
 
     :::image type="content" source="./media/security-center-info-protection-policy/sql-sensitive-data-recommendation.png" alt-text="尋找可存取 SQL 資訊保護原則的建議":::
 
@@ -103,11 +103,11 @@ SQL 資訊保護的 [資料探索和分類機制](../azure-sql/database/data-dis
 
 若要管理和自訂資訊類型：
 
-1. 選取 [ **管理資訊類型** ]。
+1. 選取 [ **管理資訊類型**]。
 
     :::image type="content" source="./media/security-center-info-protection-policy/manage-types.png" alt-text="管理資訊保護原則的資訊類型":::
 
-1. 若要加入新的類型，請選取 [ **建立資訊類型** ]。 您可以設定資訊類型的名稱、描述和搜尋模式字串。 搜尋模式字串可以選擇性地使用具有萬用字元 (使用 '%' 字元) 的關鍵字，而自動化探索引擎會使用它，以根據資料行的中繼資料來識別您資料庫中的敏感性資料。
+1. 若要加入新的類型，請選取 [ **建立資訊類型**]。 您可以設定資訊類型的名稱、描述和搜尋模式字串。 搜尋模式字串可以選擇性地使用具有萬用字元 (使用 '%' 字元) 的關鍵字，而自動化探索引擎會使用它，以根據資料行的中繼資料來識別您資料庫中的敏感性資料。
  
     :::image type="content" source="./media/security-center-info-protection-policy/configure-new-type.png" alt-text="為您的資訊保護原則設定新的資訊類型":::
 
@@ -122,7 +122,7 @@ SQL 資訊保護的 [資料探索和分類機制](../azure-sql/database/data-dis
 
 1. 在您完成資訊類型的管理之後，請務必按一下特定標籤的 [設定]，並視需要新增或刪除資訊類型，以建立相關類型與相關標籤的關聯。
 
-1. 若要套用變更，請選取 [主要 **標籤** ] 頁面中的 [ **儲存** ]。
+1. 若要套用變更，請選取 [主要 **標籤**] 頁面中的 [**儲存**]。
  
 
 ## <a name="exporting-and-importing-a-policy"></a>匯出和匯入原則

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: komammas
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: f4c71cffe00faa6dd8cc440c59f94b8c2d60f712
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c66c14d42c3d14fc4171f6fdfaf2e7f75a531507
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88185106"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886901"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>教學課程：使用 Azure Batch 透過 Azure Data Factory 執行 Python 指令碼
 
@@ -33,7 +33,7 @@ ms.locfileid: "88185106"
 ## <a name="prerequisites"></a>必要條件
 
 * 已安裝的 [Python](https://www.python.org/downloads/) 散發套件 (用於本機測試)。
-* [Azure](https://pypi.org/project/azure/) `pip` 套件。
+* [azure-storage-blob](https://pypi.org/project/azure-storage-blob/) `pip` 套件。
 * [iris.csv 資料集](https://www.kaggle.com/uciml/iris/version/2#Iris.csv)
 * Azure Batch 帳戶和連結的 Azure 儲存體帳戶。 請參閱[建立 Batch 帳戶](quick-create-portal.md#create-a-batch-account)，深入了解如何建立 Batch 帳戶並將其連結至儲存體帳戶。
 * Azure Data Factory 帳戶。 請參閱[建立資料處理站](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)，深入了解如何透過 Azure 入口網站建立資料處理站。
@@ -57,7 +57,7 @@ ms.locfileid: "88185106"
     1. 將縮放類型設定為 [固定大小]，並將專用節點計數設定為 2。
     1. 在 [資料科學] 之下，選取 [Dsvm Windows] 作為作業系統。
     1. 選擇 `Standard_f2s_v2` 為虛擬機器大小。
-    1. 啟用啟動工作，並新增命令 `cmd /c "pip install pandas"`。 使用者身分識別可保留為預設 [集區使用者]。
+    1. 啟用啟動工作，並新增命令 `cmd /c "pip install azure-storage-blob pandas"`。 使用者身分識別可保留為預設 [集區使用者]。
     1. 選取 [確定]。
 
 ## <a name="create-blob-containers"></a>建立 Blob 容器
@@ -75,17 +75,17 @@ ms.locfileid: "88185106"
 
 ``` python
 # Load libraries
-from azure.storage.blob import BlockBlobService
+from azure.storage.blob import BlobServiceClient
 import pandas as pd
 
 # Define parameters
-storageAccountName = "<storage-account-name>"
+storageAccountURL = "<storage-account-url>"
 storageKey         = "<storage-account-key>"
 containerName      = "output"
 
 # Establish connection with the blob storage account
-blobService = BlockBlobService(account_name=storageAccountName,
-                               account_key=storageKey
+blob_service_client = BlockBlobService(account_url=storageAccountURL,
+                               credential=storageKey
                                )
 
 # Load iris dataset from the task node
@@ -98,10 +98,12 @@ df = df[df['Species'] == "setosa"]
 df.to_csv("iris_setosa.csv", index = False)
 
 # Upload iris dataset
-blobService.create_blob_from_path(containerName, "iris_setosa.csv", "iris_setosa.csv")
+container_client = blob_service_client.get_container_client(containerName)
+with open("iris_setosa.csv", "rb") as data:
+    blob_client = container_client.upload_blob(name="iris_setosa.csv", data=data)
 ```
 
-將指令碼儲存為 `main.py`，並將其上傳至 [Azure 儲存體] 容器。 請務必先在本機測試並驗證其功能，再將其上傳至您的 Blob 容器：
+將指令碼儲存為 `main.py`，並將其上傳至 **Azure 儲存體** `input` 容器。 請務必先在本機測試並驗證其功能，再將其上傳至您的 Blob 容器：
 
 ``` bash
 python main.py
@@ -121,7 +123,7 @@ python main.py
 1. 在 [一般] 索引標籤中，指定 **testPipeline** 作為 [名稱]。
 
     ![在 [一般] 索引標籤中，指定 testPipeline 作為 [名稱]](./media/run-python-batch-azure-data-factory/create-custom-task.png)
-1. 在 [Azure Batch] 索引標籤中，新增在先前步驟中建立的 [Batch 帳戶]，然後**測試連線**以確保連線成功。
+1. 在 [Azure Batch] 索引標籤中，新增在先前步驟中建立的 [Batch 帳戶]，然後 **測試連線** 以確保連線成功。
 
     ![在 [Azure Batch] 索引標籤中，新增在先前步驟中建立的 [Batch 帳戶]，然後測試連線](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
 

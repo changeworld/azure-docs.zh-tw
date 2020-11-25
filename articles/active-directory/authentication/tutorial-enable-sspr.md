@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbbf1a6aebf54c7928fe0636262055f37d7f93bd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 59de3123dc991d0314cd9046d83712d17da53d9f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966537"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837816"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>教學課程：讓使用者使用 Azure Active Directory 自助式密碼重設來解除鎖定其帳戶或重設密碼
 
@@ -120,7 +120,7 @@ Azure AD 可讓您針對 [無]、[已選取] 或 [所有] 使用者啟用 SSPR�
 
 1. 若要查看手動註冊程序，請在 InPrivate 或 Incognito 模式中開啟新的瀏覽器視窗，並瀏覽至 [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)。 使用者下次登入時，應會被導向至這個註冊入口網站。
 1. 以非系統管理員測試使用者的身分登入 (例如 testuser)，並註冊您的驗證方法連絡人資訊。
-1. 完成後，選取標示為**狀況良好**的按鈕，然後關閉瀏覽器視窗。
+1. 完成後，選取標示為 **狀況良好** 的按鈕，然後關閉瀏覽器視窗。
 1. 在 InPrivate 或 Incognito 模式中開啟新的瀏覽器視窗，並瀏覽至 [https://aka.ms/sspr](https://aka.ms/sspr)。
 1. 輸入非系統管理員測試使用者的帳戶資訊 (例如 testuser)，以及 CAPTCHA 中的字元，然後選取 [下一步]。
 
@@ -149,4 +149,4 @@ Azure AD 可讓您針對 [無]、[已選取] 或 [所有] 使用者啟用 SSPR�
 > * 以使用者身分測試 SSPR 程序
 
 > [!div class="nextstepaction"]
-> [啟用 Azure Multi-Factor Authentication](./tutorial-enable-azure-mfa.md)
+> [啟用 Azure AD Multi-Factor Authentication](./tutorial-enable-azure-mfa.md)

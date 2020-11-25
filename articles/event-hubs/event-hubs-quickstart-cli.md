@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: efb00d35d2b12e6b6a577483257debf4e797c0a0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9a47548fb1f94ac7fe9b561e798b010fa9176e9e
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88934033"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566294"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-cli"></a>快速入門：使用 Azure CLI 建立事件中樞
 
@@ -18,22 +18,15 @@ Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可�
 
 在此快速入門中，您將使用 Azure CLI 建立事件中樞。
 
-## <a name="prerequisites"></a>Prerequisites
-若要完成本快速入門，您需要 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶][]。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-如果您選擇在本機安裝和使用 Azure CLI，本教學課程會要求您執行 Azure CLI 2.0.4 版或更新版本。 執行 `az --version` 來檢查您的版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
+- 本文需要 2.0.4 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
-## <a name="sign-in-to-azure"></a>登入 Azure
+## <a name="set-the-subscription-context"></a>設定訂用帳戶內容
 
 如果您在 Cloud Shell 中執行命令，則不需要執行下列步驟。 如果您在本機執行 CLI，請執行下列步驟來登入 Azure 並設定您目前的訂用帳戶：
-
-執行下列命令以登入 Azure：
-
-```azurecli-interactive
-az login
-```
 
 設定目前的訂用帳戶環境。 以您要使用的 Azure 訂用帳戶名稱取代 `MyAzureSub`：
 
@@ -69,7 +62,7 @@ az eventhubs eventhub create --name <event hub name> --resource-group <resource 
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已建立資源群組、事件中樞命名空間和事件中樞。 如需將事件傳送至事件中樞或從事件中樞接收事件的逐步指示，請參閱**傳送及接收事件**教學課程： 
+在本文中，您已建立資源群組、事件中樞命名空間和事件中樞。 如需將事件傳送至事件中樞或從事件中樞接收事件的逐步指示，請參閱 **傳送及接收事件** 教學課程： 
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
 - [Java](event-hubs-java-get-started-send.md)
@@ -79,7 +72,7 @@ az eventhubs eventhub create --name <event hub name> --resource-group <resource 
 - [C (僅傳送)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (僅接受)](event-hubs-storm-getstarted-receive.md)
 
-[建立免費帳戶]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[create a free account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Install the Azure CLI]: /cli/azure/install-azure-cli
 [az group create]: /cli/azure/group#az_group_create
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name

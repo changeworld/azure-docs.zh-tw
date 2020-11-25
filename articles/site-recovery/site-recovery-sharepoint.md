@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
 ms.openlocfilehash: 08e971e52f994ec5fa5663708fa9f173daf33d80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86135396"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013746"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>使用 Azure Site Recovery 設定多層式 SharePoint 應用程式的災害復原，以便進行災害復原
 
@@ -93,7 +93,7 @@ Site Recovery 是與應用程式無關的，且應該適用于支援的電腦上
     ![選取網路](./media/site-recovery-sharepoint/select-network.png)
 
 
-* 如果您是使用靜態 IP 位址，然後在 [目標 IP]**** 欄位中指定您希望虛擬機器採用的 IP
+* 如果您是使用靜態 IP 位址，然後在 [目標 IP] 欄位中指定您希望虛擬機器採用的 IP
 
     ![設定靜態 IP](./media/site-recovery-sharepoint/set-static-ip.png)
 
@@ -199,5 +199,5 @@ Site Recovery 是與應用程式無關的，且應該適用于支援的電腦上
 3.  按一下 [容錯移轉]。
 4.  選取復原點以啟動容錯移轉程序。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 您可以深入了解如何使用 Site Recovery [複寫其他應用程式](site-recovery-workload.md)。

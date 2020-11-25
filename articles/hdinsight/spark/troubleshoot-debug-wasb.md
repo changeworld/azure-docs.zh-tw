@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/18/2020
 ms.openlocfilehash: 85e974d51f49bbb6742683ed253c077bb3ff69de
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545543"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014647"
 ---
 # <a name="debug-wasb-file-operations-in-azure-hdinsight"></a>Azure HDInsight 中的 Debug WASB 檔案作業
 
@@ -28,13 +28,13 @@ ms.locfileid: "92545543"
 
 1. 從網頁瀏覽器流覽至 `https://CLUSTERNAME.azurehdinsight.net/#/main/services/SPARK2/configs` ，其中 `CLUSTERNAME` 是您 Spark 叢集的名稱。
 
-1. 流覽至 **advanced spark2-log4j-properties** 。
+1. 流覽至 **advanced spark2-log4j-properties**。
 
     1. 修改 `log4j.appender.console.Threshold=INFO` 為 `log4j.appender.console.Threshold=DEBUG` 。
 
     1. 加入 `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG`。
 
-1. 流覽至 **Advanced livy2-log4j-properties** 。
+1. 流覽至 **Advanced livy2-log4j-properties**。
 
     加入 `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG`。
 

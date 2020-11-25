@@ -3,12 +3,12 @@ title: ISO 27001 ASE/SQL 工作負載藍圖範例控制項
 description: ISO 27001 App Service 環境/SQL Database 工作負載藍圖範例對於 Azure 原則和 Azure RBAC 的控制項對應。
 ms.date: 11/05/2020
 ms.topic: sample
-ms.openlocfilehash: 438f2af05e0c499e9f002b501b97e291705cee9a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4256f401e602a0641247dd06a1537289282f647b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420405"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842544"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>ISO 27001 ASE/SQL 工作負載藍圖的控制項對應
 
@@ -82,7 +82,7 @@ Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-base
 
 ## <a name="a942-secure-log-on-procedures"></a>A.9.4.2 安全登入程序
 
-此藍圖指派了三項 Azure 原則定義來稽核未啟用多重要素驗證的帳戶。 Azure Multi-Factor Authentication 會藉由要求第二種形式的驗證來提供額外的安全性，並提供增強式驗證。 藉由監視未啟用多重要素驗證的帳戶，您將可識別較可能遭到入侵的帳戶。
+此藍圖指派了三項 Azure 原則定義來稽核未啟用多重要素驗證的帳戶。 Azure AD Multi-Factor Authentication 會藉由要求第二種形式的驗證來提供額外的安全性，並提供增強式驗證。 藉由監視未啟用多重要素驗證的帳戶，您將可識別較可能遭到入侵的帳戶。
 
 - 應在您訂用帳戶上具有擁有者權限的帳戶上啟用 MFA
 - 應在您訂用帳戶上具有讀取權限的帳戶上啟用 MFA

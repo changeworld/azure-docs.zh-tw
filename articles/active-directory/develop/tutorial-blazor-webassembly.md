@@ -1,23 +1,25 @@
 ---
 title: 教學課程 - 從 Blazor WebAssembly 應用程式登入使用者並呼叫受保護的 API
 titleSuffix: Microsoft identity platform
-description: 在本教學課程中，您將使用 Blazor WebAssembly 應用程式中的 Microsoft 身分識別平台來登入使用者並呼叫受保護的 API。
+description: 在本教學課程中，您將使用 Blazor WebAssembly (WASM) 應用程式中的 Microsoft 身分識別平台來登入使用者並呼叫受保護的 API。
 author: knicholasa
 ms.author: nichola
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: ba3607c522191644ec0cc63db118de285d297c48
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: f967b10d729c9c5486bbca9b643f48aaf558687c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221485"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628060"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>教學課程：從 Blazor WebAssembly 應用程式登入使用者並呼叫受保護的 API
 
-[Blazor WebAssembly](/aspnet/core/blazor#blazor-webassembly) 是單頁應用程式架構，可使用 .NET 來建置互動式用戶端 Web 應用程式。 您將會在本教學課程中建立應用程式，然後使用 [Microsoft 身分識別平台](https://docs.microsoft.com/azure/active-directory/develop/)從 Blazor WebAssembly (Blazor WASM) 應用程式登入使用者，以及從受保護的 API 擷取資料。
+Blazor WebAssembly (WASM) 是單頁應用程式架構，可使用 .NET 來建置互動式用戶端 Web 應用程式。 在本教學課程中，您將了解如何使用 Microsoft 身分識別平台並且在 Azure Active Directory (Azure AD) 中註冊應用程式，藉以從 Blazor WASM 應用程式中的 Microsoft Graph 實作驗證和擷取資料。
+
+我們也提供 [Blazor Server 的教學課程](tutorial-blazor-server.md)。 
 
 在本教學課程中，您將：
 
@@ -239,5 +241,5 @@ else
 
 ## <a name="next-steps"></a>下一步
 
-- [Microsoft 身分識別平台最佳做法和建議](./identity-platform-integration-checklist.md)
-- [ASP.NET Core Blazor 簡介](/aspnet/core/blazor) (機器翻譯)
+> [!div class="nextstepaction"]
+> [Microsoft 身分識別平台最佳做法和建議](./identity-platform-integration-checklist.md)

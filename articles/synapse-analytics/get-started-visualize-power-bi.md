@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: business-intelligence
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: c5c41b98d52a4b8182fb162c3bfa9a08c0df5e15
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: b72d083216b7cd0ae7a588bfd721d8981829bfc7
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171840"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844362"
 ---
 # <a name="visualize-data-with-power-bi"></a>使用 Power BI 視覺化資料
 
@@ -37,13 +37,9 @@ ms.locfileid: "92171840"
 ### <a name="link-your-azure-synapse-workspace-to-your-new-power-bi-workspace"></a>將您的 Azure Synapse 工作區連結至您新的 Power BI 工作區
 
 1. 在 Synapse Studio 中，移至 [管理] > [連結服務]。
-1. 選取 [新增] > [連線到 Power BI]，然後設定下列欄位：
-
-    |設定 | 建議的值 | 
-    |---|---|
-    |**名稱**|**NYCTaxiWorkspace1**|
-    |**工作區名稱**|**NYCTaxiWorkspace1**|
-
+1. 選取 [新增] > [連線至 Power BI]
+1. 將 [名稱] 設定為 **NYCTaxiWorkspace1**
+1. 將 [工作區名稱] 設定為 **NYCTaxiWorkspace1**
 1. 選取 [建立]。
 
 ### <a name="create-a-power-bi-dataset-that-uses-data-in-your-azure-synapse-workspace"></a>建立在 Azure Synapse 工作區中使用資料的 Power BI 資料集
@@ -70,7 +66,7 @@ ms.locfileid: "92171840"
 
 ### <a name="configure-authentication-for-your-dataset"></a>設定資料集的驗證
 
-1. 開啟 [powerbi.microsoft.com](https://powerbi.microsoft.com/)，然後**登入**。
+1. 開啟 [powerbi.microsoft.com](https://powerbi.microsoft.com/)，然後 **登入**。
 1. 在左側的 [工作區] 下，選取 [NYCTaxiWorkspace1] 工作區。
 1. 在該工作區中，找出名為 [乘客分析 (Passenger Analysis)] 的資料集，以及名為 [乘客分析 (Passenger Analysis)] 的報表。
 1. 將滑鼠停留在 [乘客分析 (Passenger Analysis)] 資料集上，選取省略符號 (...) 按鈕，然後選取 [設定]。
@@ -86,11 +82,7 @@ ms.locfileid: "92171840"
     * 在 [NYCTaxiWorkspace1] > [Power BI 報告] 下，新的報告稱為 [PassengerAnalysis]。
 1. 選取 [PassengerAnalysis] 報告。 報表會隨即開啟，而且您可以直接在 Synapse Studio 內進行編輯。
 
-## <a name="monitor-activities"></a>監視器活動
 
-1. 在 Synapse Studio 中，移至 [監視] 中樞。
-1. 在此位置中，您可以查看工作區中所發生之所有活動的歷程記錄，以及目前作用中的活動。
-1. 探索 [管線執行]、[Apache Spark 應用程式] 和 [SQL 要求]，即可在工作區中查看已完成的作業。
 
 ## <a name="next-steps"></a>後續步驟
 

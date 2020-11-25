@@ -6,11 +6,11 @@ ms.topic: conceptual
 description: 描述在 Azure Kubernetes Service 上使用 Azure Dev Spaces 執行程式碼的程式
 keywords: azds. yaml、Azure Dev Spaces、Dev Spaces、Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、容器
 ms.openlocfilehash: 1cace325f9415d46210636e5c04cc2d75589cc11
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975462"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014426"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>使用 Azure Dev Spaces 執行您的程式碼的運作方式
 
@@ -46,7 +46,7 @@ azds up
 
 1. 檔案會從使用者的電腦[同步][sync-section]處理到使用者 AKS 叢集特有的 Azure 檔案儲存體。 原始程式碼、Helm 圖表和設定檔上傳。
 1. 控制器會建立新會話的啟動要求。 此要求包含數個屬性，包括唯一識別碼、空間名稱、原始程式碼的路徑，以及偵錯工具旗標。
-1. 控制器會以唯一的會話識別碼取代 Helm 圖中的 *$ (標記) * 預留位置，並安裝服務的 Helm 圖表。 將唯一會話識別碼的參考新增至 Helm 圖表，可讓此特定會話部署到 AKS 叢集的容器連結回會話要求和相關聯的資訊。
+1. 控制器會以唯一的會話識別碼取代 Helm 圖中的 *$ (標記)* 預留位置，並安裝服務的 Helm 圖表。 將唯一會話識別碼的參考新增至 Helm 圖表，可讓此特定會話部署到 AKS 叢集的容器連結回會話要求和相關聯的資訊。
 1. 在安裝 Helm 圖期間，Kubernetes webhook 許可伺服器會將額外的容器新增至您應用程式的 pod，以進行檢測並存取專案的原始程式碼。 系統會新增 microsoft.devspaces proxy 和 microsoft.devspaces proxy-init 容器以提供 HTTP 追蹤和空間路由。 系統會新增 microsoft.devspaces 組建容器，以提供 pod 以存取 Docker 實例和專案原始程式碼，以建立應用程式的容器。
 1. 當應用程式的 pod 啟動時，會使用 microsoft.devspaces 組建容器和 microsoft.devspaces proxy-init 容器來建立應用程式容器。 然後會啟動應用程式容器和 microsoft.devspaces proxy 容器。
 1. 應用程式容器啟動之後，用戶端功能會使用 Kubernetes 的 *埠轉送* 功能，以提供應用程式的 HTTP 存取 http://localhost 。 此埠轉送會將您的開發電腦連接到開發人員空間中的服務。
@@ -64,13 +64,13 @@ azds up
 
 某些靜態資產（例如 html、css 和 cshtml 檔案）的特定專案檔可以直接在應用程式的容器中更新，而不需要重新開機任何專案。 如果靜態資產變更，則新的檔案會同步至開發空間，然後由執行中的容器使用。
 
-您可以在執行中的容器內重新開機應用程式的進程，以套用原始程式碼或應用程式佈建檔等檔案的變更。 這些檔案在同步處理之後，就會使用 *devhostagent* 程式在執行中的容器內重新開機應用程式的進程。 在一開始建立應用程式的容器時，控制器會以稱為 *devhostagent*的不同進程來取代應用程式的啟動命令。 然後應用程式的實際進程會以 *devhostagent*下的子進程的形式執行，並使用 *devhostagent*的輸出將其輸出輸送。 *Devhostagent*程式也是開發人員空間的一部分，而且可以代表 dev spaces 在執行中的容器中執行命令。 執行重新開機時，請 *devhostagent*：
+您可以在執行中的容器內重新開機應用程式的進程，以套用原始程式碼或應用程式佈建檔等檔案的變更。 這些檔案在同步處理之後，就會使用 *devhostagent* 程式在執行中的容器內重新開機應用程式的進程。 在一開始建立應用程式的容器時，控制器會以稱為 *devhostagent* 的不同進程來取代應用程式的啟動命令。 然後應用程式的實際進程會以 *devhostagent* 下的子進程的形式執行，並使用 *devhostagent* 的輸出將其輸出輸送。 *Devhostagent* 程式也是開發人員空間的一部分，而且可以代表 dev spaces 在執行中的容器中執行命令。 執行重新開機時，請 *devhostagent*：
 
 * 停止目前的進程或與應用程式相關聯的進程
 * 重建應用程式
 * 重新開機與應用程式相關聯的進程
 
-*Devhostagent*執行上述步驟的方式是[在中 `azds.yaml` 設定][azds-yaml-section]。
+*Devhostagent* 執行上述步驟的方式是 [在中 `azds.yaml` 設定][azds-yaml-section]。
 
 更新專案檔（例如 Dockerfile、.csproj 檔案或 Helm 圖表的任何部分）需要重建和重新部署應用程式的容器。 當這些檔案的其中一個同步處理至開發人員空間時，控制器會執行 [helm upgrade][helm-upgrade] 命令，並重建並重新部署應用程式的容器。
 
@@ -132,13 +132,13 @@ install:
 
 在上述範例中， *replicaCount* 屬性會告訴控制器要在您的開發空間中執行的應用程式實例數目。 視您的案例而定，您可以增加此值，但它會影響將偵錯工具附加至應用程式的 pod。 如需詳細資訊，請參閱 [疑難排解文章][troubleshooting]。
 
-在產生的 Helm 圖中，容器映射設為 *{{。值。儲存機制}}： {{。Values. tag}}*。 檔案 `azds.yaml` 預設會將 *install. tag* 屬性定義為 *$ (tag) * ，以作為 {{的值使用 *。Values. tag}}*。 藉由以這種方式設定 *install. tag* 屬性，可讓您的應用程式的容器映射在執行 Azure Dev Spaces 時，以不同的方式標記。 在此特定案例中，會將影像標記為* \<value from image.repository> ： $ (* 標籤) 。 您必須使用 *$ (* 標籤) 變數作為   *install* .. 標籤的值，以便開發人員空間辨識和尋找 AKS 叢集中的容器。
+在產生的 Helm 圖中，容器映射設為 *{{。值。儲存機制}}： {{。Values. tag}}*。 檔案 `azds.yaml` 預設會將 *install. tag* 屬性定義為 *$ (tag)* ，以作為 {{的值使用 *。Values. tag}}*。 藉由以這種方式設定 *install. tag* 屬性，可讓您的應用程式的容器映射在執行 Azure Dev Spaces 時，以不同的方式標記。 在此特定案例中，會將影像標記為 *\<value from image.repository> ： $ (* 標籤) 。 您必須使用 *$ (* 標籤) 變數作為   *install* .. 標籤的值，以便開發人員空間辨識和尋找 AKS 叢集中的容器。
 
-在上述範例中， `azds.yaml` 定義了 *install. hosts*。 *Install*屬性會定義公用端點的主機名稱格式。 此屬性也會使用 *$ (spacePrefix) *、 *$ (rootSpacePrefix) *和 *$ (hostSuffix) *，這些是控制器所提供的值。
+在上述範例中， `azds.yaml` 定義了 *install. hosts*。 *Install* 屬性會定義公用端點的主機名稱格式。 此屬性也會使用 *$ (spacePrefix)*、 *$ (rootSpacePrefix)* 和 *$ (hostSuffix)*，這些是控制器所提供的值。
 
-*$ (spacePrefix) *是子開發空間的名稱，它採用*SPACENAME*的形式。 *$ (rootSpacePrefix) *是父空間的名稱。 例如，如果 *>azureuser*是*預設*的子空間， *$ (rootSpacePrefix) *的值為*預設*值，而 *$ (spacePrefix) *的值為 *>azureuser。* 如果空間不是子空間， *$ (spacePrefix) * 空白。 例如，如果 *預設* 空間沒有父空間， *$ (rootSpacePrefix) * 的值為 *預設* 值，而 *$ (spacePrefix) * 的值為空白。 *$ (hostSuffix) *是指向 AKS 叢集中執行之 Azure Dev Spaces 輸入控制器的 DNS 尾碼。 例如，此 DNS 尾碼會對應到萬用字元 DNS 專案* \* 。* Azure Dev Spaces 控制器新增至 AKS 叢集時所建立的 RANDOM_VALUE eus. azds。
+*$ (spacePrefix)* 是子開發空間的名稱，它採用 *SPACENAME* 的形式。 *$ (rootSpacePrefix)* 是父空間的名稱。 例如，如果 *>azureuser* 是 *預設* 的子空間， *$ (rootSpacePrefix)* 的值為 *預設* 值，而 *$ (spacePrefix)* 的值為 *>azureuser。* 如果空間不是子空間， *$ (spacePrefix)* 空白。 例如，如果 *預設* 空間沒有父空間， *$ (rootSpacePrefix)* 的值為 *預設* 值，而 *$ (spacePrefix)* 的值為空白。 *$ (hostSuffix)* 是指向 AKS 叢集中執行之 Azure Dev Spaces 輸入控制器的 DNS 尾碼。 例如，此 DNS 尾碼會對應到萬用字元 DNS 專案 *\* 。* Azure Dev Spaces 控制器新增至 AKS 叢集時所建立的 RANDOM_VALUE eus. azds。
 
-在上述檔案中 `azds.yaml` ，您也可以更新 *install* ，以變更應用程式的主機名稱。 例如，如果您想要簡化應用程式的主機名稱，請從 *$ (spacePrefix) $ (rootSpacePrefix) webfrontend $ (hostSuffix) * 至 *$ (spacePrefix) $ (rootSpacePrefix) Web $ (hostSuffix) *。
+在上述檔案中 `azds.yaml` ，您也可以更新 *install* ，以變更應用程式的主機名稱。 例如，如果您想要簡化應用程式的主機名稱，請從 *$ (spacePrefix) $ (rootSpacePrefix) webfrontend $ (hostSuffix)* 至 *$ (spacePrefix) $ (rootSpacePrefix) Web $ (hostSuffix)*。
 
 若要為您的應用程式建立容器，控制器會使用設定檔的下列區段 `azds.yaml` ：
 
@@ -159,7 +159,7 @@ configurations:
 
 控制器會使用 Dockerfile 來建立和執行您的應用程式。
 
-*Build. coNtext*屬性會列出 dockerfile 存在的目錄。 *build.dockerfile*屬性會定義用來建立應用程式實際執行版本的 Dockerfile 名稱。 *configurations.develop.build.dockerfile*屬性會設定應用程式開發版本的 Dockerfile 名稱。
+*Build. coNtext* 屬性會列出 dockerfile 存在的目錄。 *build.dockerfile* 屬性會定義用來建立應用程式實際執行版本的 Dockerfile 名稱。 *configurations.develop.build.dockerfile* 屬性會設定應用程式開發版本的 Dockerfile 名稱。
 
 針對開發和生產環境使用不同的 Dockerfile，可讓您在開發期間啟用某些專案，並停用這些專案以進行生產部署。 例如，您可以在開發期間啟用偵錯工具或更詳細的記錄，並在生產環境中停用。 如果您的 Dockerfile 命名方式不同或位於不同的位置，您也可以更新這些屬性。
 
@@ -186,9 +186,9 @@ configurations:
 
 將同步處理變更的檔案和目錄會列在 [設定]. [ *.sync* ] 屬性中。 當您執行命令以及偵測到變更時，就會一開始同步處理這些目錄 `up` 。 如果您想要將其他或不同的目錄同步至開發人員空間，您可以變更此屬性。
 
-*BuildCommands*屬性會指定如何在開發案例中建立應用程式。 [設定 *] 屬性會* 提供在開發案例中執行應用程式的命令。 如果您想要在開發期間使用額外的組建或執行時間旗標或參數，您可能會想要更新其中一個屬性。
+*BuildCommands* 屬性會指定如何在開發案例中建立應用程式。 [設定 *] 屬性會* 提供在開發案例中執行應用程式的命令。 如果您想要在開發期間使用額外的組建或執行時間旗標或參數，您可能會想要更新其中一個屬性。
 
-*ProcessesToKill*會列出要終止的進程，以停止應用程式。 如果您想要在開發期間變更應用程式的重新開機行為，您可能會想要更新此屬性。 例如，如果您更新了 *buildCommands* *或設定。若* 要變更建立或啟動應用程式的方式，您可能需要變更已停止的進程的程式。
+*ProcessesToKill* 會列出要終止的進程，以停止應用程式。 如果您想要在開發期間變更應用程式的重新開機行為，您可能會想要更新此屬性。 例如，如果您更新了 *buildCommands* *或設定。若* 要變更建立或啟動應用程式的方式，您可能需要變更已停止的進程的程式。
 
 使用命令準備程式碼時 `azds prep` ，您可以選擇新增 `--enable-ingress` 旗標。 新增旗標會 `--enable-ingress` 為您的應用程式建立可公開存取的 URL。 如果您省略此旗標，則只能在叢集內或使用 localhost 通道來存取應用程式。 執行 `azds prep` 命令之後，您可以變更此設定，以修改中的 [ *已啟用* ] 屬性 `charts/APPNAME/values.yaml` ：
 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
 ms.openlocfilehash: d890f73ea8b2294755b14055cb11904d50160cc4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632119"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014001"
 ---
 # <a name="process-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>藉由在 Azure Data Lake Analytics 上執行 U-SQL 腳本來處理資料 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -26,7 +26,7 @@ ms.locfileid: "92632119"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Data Factory 中的「管線」會使用連結的計算服務，來處理連結的儲存體服務中的資料。 它包含一系列活動，其中每個活動都會執行特定的處理作業。 本文將說明 **Data Lake Analytics U-SQL 活動** ，它在 **Azure Data Lake Analytics** 計算連結的服務上執行 **U-SQL** 指令碼。 
+Azure Data Factory 中的「管線」會使用連結的計算服務，來處理連結的儲存體服務中的資料。 它包含一系列活動，其中每個活動都會執行特定的處理作業。 本文將說明 **Data Lake Analytics U-SQL 活動**，它在 **Azure Data Lake Analytics** 計算連結的服務上執行 **U-SQL** 指令碼。 
 
 使用 Data Lake Analytics「U-SQL 活動」來建立管線之前，請先建立 Azure Data Lake Analytics 帳戶。 若要了解 Azure Data Lake Analytics，請參閱 [開始使用 Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)。
 
@@ -38,7 +38,7 @@ Azure Data Factory 中的「管線」會使用連結的計算服務，來處理�
 
 | 屬性                 | 描述                              | 必要                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| **type**                 | type 屬性應設為： **AzureDataLakeAnalytics** 。 | 是                                      |
+| **type**                 | type 屬性應設為：**AzureDataLakeAnalytics**。 | 是                                      |
 | **accountName**          | Azure Data Lake Analytics 帳戶名稱。  | 是                                      |
 | **dataLakeAnalyticsUri** | Azure Data Lake Analytics URI。           | 否                                       |
 | **subscriptionId**       | Azure 訂用帳戶識別碼                    | 否                                       |
@@ -123,7 +123,7 @@ Azure Data Lake Analytics 已連結的服務需要服務主體驗證，才能連
 | :------------------ | :--------------------------------------- | :------- |
 | NAME                | 管線中的活動名稱     | 是      |
 | description         | 說明活動用途的文字。  | 否       |
-| type                | 對於 Data Lake Analytics U-SQL 活動，活動類型為 **DataLakeAnalyticsU-SQL** 。 | 是      |
+| type                | 對於 Data Lake Analytics U-SQL 活動，活動類型為 **DataLakeAnalyticsU-SQL**。 | 是      |
 | linkedServiceName   | Azure Data Lake Analytics 之已連結的服務。 若要深入了解此已連結的服務，請參閱[計算已連結的服務](compute-linked-services.md)一文。  |是       |
 | scriptPath          | 包含 U-SQL 指令碼的資料夾的路徑。 檔案的名稱有區分大小寫。 | 是      |
 | scriptLinkedService | 連結服務會將包含指令碼的 **Azure Data Lake Store** 或 **Azure 儲存體** 連結至資料處理站 | 是      |
@@ -131,7 +131,7 @@ Azure Data Lake Analytics 已連結的服務需要服務主體驗證，才能連
 | priority            | 判斷應該選取排入佇列的哪些工作首先執行。 編號愈低，優先順序愈高。 | 否       |
 | 參數          | 要傳遞到 U-SQL 指令碼的參數。    | 否       |
 | runtimeVersion      | 所要使用之 U-SQL 引擎的執行階段版本。 | 否       |
-| compilationMode     | <p>U-SQL 的編譯模式。 必須是下列其中一個值： **Semantic：** 僅執行語意檢查和必要的例行性檢查， **Full：** 執行完整編譯，包括語法檢查、最佳化、程式碼產生等， **SingleBox：** 在將 TargetType 設定為 SingleBox 的情況下，執行完整編譯。 如果您沒有為此屬性指定值，伺服器將會判斷最佳的編譯模式。 | 否 |
+| compilationMode     | <p>U-SQL 的編譯模式。 必須是下列其中一個值：**Semantic：** 僅執行語意檢查和必要的例行性檢查，**Full：** 執行完整編譯，包括語法檢查、最佳化、程式碼產生等，**SingleBox：** 在將 TargetType 設定為 SingleBox 的情況下，執行完整編譯。 如果您沒有為此屬性指定值，伺服器將會判斷最佳的編譯模式。 | 否 |
 
 請參閱 [SearchLogProcessing.txt](#sample-u-sql-script) 以了解指令碼定義。 
 

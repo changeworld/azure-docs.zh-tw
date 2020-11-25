@@ -10,11 +10,11 @@ ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: c0fddca70ca09f0a3abb3c84672e20a42551ecd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322308"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014307"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-powershell"></a>使用入口網站或 PowerShell 建立快照集
 
@@ -26,14 +26,14 @@ ms.locfileid: "89322308"
 
 若要建立快照集，請完成下列步驟： 
 1.  在 [ [Azure 入口網站](https://portal.azure.com)上，選取 [ **建立資源**]。
-2. 搜尋並選取 [ **快照**集]。
-3. 在 [快照集]**** 視窗中，選取 [建立]****。 [建立快照集]**** 視窗隨即出現。
-4. 輸入快照集的 [名稱]****。
+2. 搜尋並選取 [ **快照** 集]。
+3. 在 [快照集] 視窗中，選取 [建立]。 [建立快照集] 視窗隨即出現。
+4. 輸入快照集的 [名稱]。
 5. 選取現有的[資源群組](../../azure-resource-manager/management/overview.md#resource-groups)，或輸入新資源群組的名稱。 
-6. 選取 Azure 資料中心的 [位置]****。  
-7. 在 [來源磁碟]**** 中，選取要建立快照集的受控磁碟。
-8. 選取用來儲存快照集的 [帳戶類型]****。 除非需要將快照集存放在高效能磁碟上，否則選取 [Standard_HDD]****。
-9. 選取 [建立]****。
+6. 選取 Azure 資料中心的 [位置]。  
+7. 在 [來源磁碟] 中，選取要建立快照集的受控磁碟。
+8. 選取用來儲存快照集的 [帳戶類型]。 除非需要將快照集存放在高效能磁碟上，否則選取 [Standard_HDD]。
+9. 選取 [建立]。
 
 ## <a name="use-powershell"></a>使用 PowerShell
 

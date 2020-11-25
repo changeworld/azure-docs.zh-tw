@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: apimpm
 ms.openlocfilehash: 44de30438d59252a431bf37ac6919a9bc186c8ed
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315752"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013529"
 ---
 > [!NOTE]
 > 本文件內容與已淘汰的開發人員入口網站相關。 您可以照舊繼續使用，直到其在 2023 年 10 月淘汰，屆時便會將其從所有 API 管理服務中移除。 已淘汰的入口網站只會收到重大安全性更新。 如需詳細資料，請參閱下列文章：

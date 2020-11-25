@@ -8,11 +8,11 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
 ms.openlocfilehash: 6a0aebc727233cdd838f3e1bf8eeb5cd247b9836
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489671"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014018"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>在 Azure DNS 中託管反向 DNS 對應區域
 
@@ -29,11 +29,11 @@ ms.locfileid: "92489671"
 ## <a name="create-a-reverse-lookup-dns-zone"></a>建立反向對應 DNS 區域
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在 [中樞]**** 功能表上，選取 [新增]**** > [網路]****，然後選取 [DNS 區域]****。
+1. 在 [中樞] 功能表上，選取 [新增] > [網路]，然後選取 [DNS 區域]。
 
    ![「DNS 區域」選取項目](./media/dns-reverse-dns-hosting/figure1.png)
 
-1. 在 [建立 DNS 區域]**** 窗格中，命名 DNS 區域。 區域名稱針對 IPv4 和 IPv6 前置詞的製作方式不同。 請遵循 [IPv4](#ipv4) 或 [IPv6](#ipv6) 的指示來命名區域。 當您完成時，選取 [建立]**** 來建立區域。
+1. 在 [建立 DNS 區域] 窗格中，命名 DNS 區域。 區域名稱針對 IPv4 和 IPv6 前置詞的製作方式不同。 請遵循 [IPv4](#ipv4) 或 [IPv6](#ipv6) 的指示來命名區域。 當您完成時，選取 [建立] 來建立區域。
 
 ### <a name="ipv4"></a>IPv4
 
@@ -50,7 +50,7 @@ IPv4 反向對應區域的名稱是以其所代表的 IP 範圍為基礎。 格�
 
  ![顯示如何透過 Azure 入口網站在 Azure DNS 中建立名為 2.0.192.in-addr. arpa 的類別 C 反向 DNS 區域的螢幕擷取畫面。](./media/dns-reverse-dns-hosting/figure2.png)
 
-[資源群組位置]**** 會定義資源群組的位置。 它對於 DNS 區域沒有任何影響。 DNS 區域一定是「全域」位置，且不會顯示出來。
+[資源群組位置] 會定義資源群組的位置。 它對於 DNS 區域沒有任何影響。 DNS 區域一定是「全域」位置，且不會顯示出來。
 
 下列範例示範如何使用 Azure PowerShell 和 Azure CLI 完成這項工作。
 
@@ -81,7 +81,7 @@ IPv6 反向對應區域的名稱格式應該如下：`<IPv6 network prefix in re
 
  ![[建立 DNS 區域] 窗格，並填滿方塊](./media/dns-reverse-dns-hosting/figure3.png)
 
-[資源群組位置]**** 會定義資源群組的位置。 它對於 DNS 區域沒有任何影響。 DNS 區域一定是「全域」位置，且不會顯示出來。
+[資源群組位置] 會定義資源群組的位置。 它對於 DNS 區域沒有任何影響。 DNS 區域一定是「全域」位置，且不會顯示出來。
 
 下列範例示範如何使用 Azure PowerShell 和 Azure CLI 完成這項工作。
 
@@ -115,16 +115,16 @@ az network dns zone create -g MyResourceGroup -n 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2
 
 下例會逐步解說在 Azure DNS 的反向 DNS 區域中建立 PTR 記錄的程序。 關於其他記錄類型和修改現有的記錄，請參閱[使用 Azure 入口網站管理 DNS 記錄和記錄集](dns-operations-recordsets-portal.md)。
 
-1. 在 [DNS 區域]**** 窗格頂端，選取 [+ 記錄集]**** 以開啟 [新增記錄集]**** 窗格。
+1. 在 [DNS 區域] 窗格頂端，選取 [+ 記錄集] 以開啟 [新增記錄集] 窗格。
 
    ![[DNS 區域] 窗格的螢幕擷取畫面，其中箭號指向 [+ 記錄集] 按鈕。](./media/dns-reverse-dns-hosting/figure4.png)
 
 1. PTR 記錄的記錄集名稱必須是反向順序的其餘 IPv4 位址。 
 
-   在本例中，已填入前三個八位元當作區域名稱的一部分 (.2.0.192)。 因此，[名稱]**** 方塊中只會填入最後一個八位元。 例如，您可以將 IP 位址是 192.0.2.15 的資源記錄集命名為 **15**。  
-1. 在 [類型]**** 中，選取 [PTR]****。  
-1. 在 [網域名稱]**** 中，輸入使用 IP 之資源的完整網域名稱 (FQDN)。
-1. 選取窗格底部的 [確定]****，建立 DNS 記錄。
+   在本例中，已填入前三個八位元當作區域名稱的一部分 (.2.0.192)。 因此，[名稱] 方塊中只會填入最後一個八位元。 例如，您可以將 IP 位址是 192.0.2.15 的資源記錄集命名為 **15**。  
+1. 在 [類型] 中，選取 [PTR]。  
+1. 在 [網域名稱] 中，輸入使用 IP 之資源的完整網域名稱 (FQDN)。
+1. 選取窗格底部的 [確定]，建立 DNS 記錄。
 
    ![[新增記錄集] 窗格，並填滿方塊](./media/dns-reverse-dns-hosting/figure5.png)
 
@@ -151,16 +151,16 @@ az network dns record-set ptr add-record -g MyResourceGroup -z 2.0.192.in-addr.a
 
 下列範例會逐步引導您完成建立新 PTR 記錄的程序。 關於其他記錄類型和修改現有的記錄，請參閱[使用 Azure 入口網站管理 DNS 記錄和記錄集](dns-operations-recordsets-portal.md)。
 
-1. 在 [DNS 區域]**** 窗格頂端，選取 [+ 記錄集]**** 以開啟 [新增記錄集]**** 窗格。
+1. 在 [DNS 區域] 窗格頂端，選取 [+ 記錄集] 以開啟 [新增記錄集] 窗格。
 
    ![建立記錄集的按鈕](./media/dns-reverse-dns-hosting/figure6.png)
 
 2. PTR 記錄的記錄集名稱必須是反向順序的其餘 IPv6 位址。 它絕不能包含任何零壓縮。 
 
-   在本例中，已填入 IPv6 的第一組 64 位元當作區域名稱的一部分 (0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa)。 因此，[名稱]**** 方塊中只會填入最後 64 個位元。 IP 位址的最後 64 個位元是以反向順序輸入，每個十六進位數字之間會使用句點作為分隔符號。 例如，您可以將 IP 位址是 2001:0db8:abdc:0000:f524:10bc:1af9:405e 的資源記錄集命名為 **e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f**。  
-3. 在 [類型]**** 中，選取 [PTR]****。  
-4. 在 [網域名稱]**** 中，輸入使用 IP 之資源的 FQDN。
-5. 選取窗格底部的 [確定]****，建立 DNS 記錄。
+   在本例中，已填入 IPv6 的第一組 64 位元當作區域名稱的一部分 (0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa)。 因此，[名稱] 方塊中只會填入最後 64 個位元。 IP 位址的最後 64 個位元是以反向順序輸入，每個十六進位數字之間會使用句點作為分隔符號。 例如，您可以將 IP 位址是 2001:0db8:abdc:0000:f524:10bc:1af9:405e 的資源記錄集命名為 **e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f**。  
+3. 在 [類型] 中，選取 [PTR]。  
+4. 在 [網域名稱] 中，輸入使用 IP 之資源的 FQDN。
+5. 選取窗格底部的 [確定]，建立 DNS 記錄。
 
 ![顯示 [新增記錄集] 窗格的螢幕擷取畫面，其中的箭號指向 [類型] 欄位中的值。](./media/dns-reverse-dns-hosting/figure7.png)
 
@@ -186,11 +186,11 @@ az network dns record-set ptr add-record -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8
 
 ## <a name="view-records"></a>檢視記錄
 
-若要檢視您所建立的記錄，請瀏覽至您在 Azure 入口網站中的 DNS 區域。 在 [DNS 區域]**** 窗格的下半部，您可以看到 DNS 區域的記錄。 您應該會看到預設 NS 與 SOA 記錄，以及您已建立的任何新記錄。 每個區域中都會建立 NS 與 SOA 記錄。 
+若要檢視您所建立的記錄，請瀏覽至您在 Azure 入口網站中的 DNS 區域。 在 [DNS 區域] 窗格的下半部，您可以看到 DNS 區域的記錄。 您應該會看到預設 NS 與 SOA 記錄，以及您已建立的任何新記錄。 每個區域中都會建立 NS 與 SOA 記錄。 
 
 ### <a name="ipv4"></a>IPv4
 
-[DNS 區域]**** 窗格會顯示 IPv4 PTR 記錄：
+[DNS 區域] 窗格會顯示 IPv4 PTR 記錄：
 
 ![包含 IPv4 記錄的 [DNS 區域] 窗格](./media/dns-reverse-dns-hosting/figure8.png)
 
@@ -216,7 +216,7 @@ az network dns record-set list -g MyResourceGroup -z 2.0.192.in-addr.arpa
 
 ### <a name="ipv6"></a>IPv6
 
-[DNS 區域]**** 窗格會顯示 IPv6 PTR 記錄：
+[DNS 區域] 窗格會顯示 IPv6 PTR 記錄：
 
 ![包含 IPv6 記錄的 [DNS 區域] 窗格](./media/dns-reverse-dns-hosting/figure9.png)
 

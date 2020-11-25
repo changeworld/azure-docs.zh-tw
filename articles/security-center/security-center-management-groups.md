@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
 ms.openlocfilehash: 7252a6ccd77212f75f5db54e5f3fcad7aa2df50a
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339725"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013797"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>取得 Azure 資訊安全中心的全租用戶可見性
 本文說明如何將安全性原則套用至連結至您 Azure Active Directory 租使用者的所有 Azure 訂用帳戶，以大規模管理您組織的安全性狀況。
@@ -29,7 +29,7 @@ ms.locfileid: "92339725"
 Azure 管理群組可讓您有效管理訂用帳戶群組的存取、原則和報告，並藉由對根管理群組執行動作來有效管理整個 Azure 資產。 每個 Azure AD 租用戶都會有一個最上層管理群組，名為根管理群組。 這個根管理群組會建置於階層內，讓所有的管理群組和訂用帳戶摺疊於其中。 此群組可讓全域原則和 Azure 角色指派套用於目錄層級。 
 
 當您執行下列任何動作時，即會自動建立根管理群組： 
-1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)中的 [管理群組]****，以選擇使用 Azure 管理群組。
+1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)中的 [管理群組]，以選擇使用 Azure 管理群組。
 2. 透過 API 呼叫建立管理群組。
 3. 透過 PowerShell 建立管理群組。
 
@@ -41,20 +41,20 @@ Azure 管理群組可讓您有效管理訂用帳戶群組的存取、原則和�
  
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 選取 [所有服務] > [管理群組]。
-3. 在主頁面上，選取 [新增管理群組]****。 
+3. 在主頁面上，選取 [新增管理群組]。 
 
     ![主要群組](./media/security-center-management-groups/main.png) 
 4.  填寫管理群組識別碼欄位。 
-    - [管理群組識別碼]**** 是用來在此管理群組上提交命令的目錄唯一識別碼。 此識別碼在建立後即無法編輯，因為整個 Azure 系統會使用它來識別此群組。 
+    - [管理群組識別碼] 是用來在此管理群組上提交命令的目錄唯一識別碼。 此識別碼在建立後即無法編輯，因為整個 Azure 系統會使用它來識別此群組。 
     - [顯示名稱] 欄位是顯示在 Azure 入口網站內的名稱。 在建立管理群組時，不同的顯示名稱是選擇性欄位，並且可以隨時進行變更。  
 
       ![建立](./media/security-center-management-groups/create_context_menu.png)  
-5.  選取 [儲存]。
+5.  選取 [儲存]
 
 ### <a name="view-management-groups-in-the-azure-portal"></a>檢視 Azure 入口網站中的管理群組
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 若要檢視管理群組，請在 Azure 主功能表下選取 [所有服務]****。
-3. 在 [一般]**** 下，選取 [管理群組]****。
+2. 若要檢視管理群組，請在 Azure 主功能表下選取 [所有服務]。
+3. 在 [一般] 下，選取 [管理群組]。
 
     ![建立管理群組](./media/security-center-management-groups/all-services.png)
 
@@ -68,11 +68,11 @@ Azure Active Directory 租用戶管理員並沒有 Azure 訂用帳戶的直接�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)或 [Azure Active Directory 系統管理中心](https://aad.portal.azure.com)。
 
-2. 在瀏覽清單中，按一下 [Azure Active Directory]****，然後按一下 [屬性]****。
+2. 在瀏覽清單中，按一下 [Azure Active Directory]，然後按一下 [屬性]。
 
    ![Azure AD 屬性 - 螢幕擷取畫面](./media/security-center-management-groups/aad-properties.png)
 
-3. 在 [Azure 資源的存取管理]**** 下，將切換開關設為 [是]****。
+3. 在 [Azure 資源的存取管理] 下，將切換開關設為 [是]。
 
    ![Azure 資源的存取管理 - 螢幕擷取畫面](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
 
@@ -80,30 +80,30 @@ Azure Active Directory 租用戶管理員並沒有 Azure 訂用帳戶的直接�
 
    - 當您將切換開關設定為 [否] 時，Azure RBAC 中的使用者存取管理員角色會從使用者帳戶中移除。 您將無法在所有與 Azure AD 目錄相關聯的 Azure 訂用帳戶和管理群組中指派角色。 您只能檢視和管理已取得其存取權的 Azure 訂用帳戶和管理群組。
 
-4. 按一下 [儲存]**** 儲存您的設定。
+4. 按一下 [儲存] 儲存您的設定。
 
     - 此設定不是全域屬性，而且只會套用至目前登入的使用者。
 
-5. 執行您需要以更高存取權完成的工作。 當您完成時，請將開關設回 [否]****。
+5. 執行您需要以更高存取權完成的工作。 當您完成時，請將開關設回 [否]。
 
 
 ### <a name="assign-azure-roles-to-users"></a>將 Azure 角色指派給使用者
-若要深入瞭解所有訂用帳戶，租使用者系統管理員必須將適當的 Azure 角色指派給他們想要授與租使用者範圍可見度的任何使用者，包括自己的根管理群組層級。 建議指派的角色為 [安全性管理員]**** 或 [安全性讀取者]****。 一般而言，需具備安全性管理員角色，才能在根層級套用原則，而安全性讀取者就足以提供租用戶層級的可見性。 如需有關這些角色所授與權限的詳細資訊，請參閱[安全性管理員內建角色描述](../role-based-access-control/built-in-roles.md#security-admin)或[安全性讀取者內建角色描述](../role-based-access-control/built-in-roles.md#security-reader)。
+若要深入瞭解所有訂用帳戶，租使用者系統管理員必須將適當的 Azure 角色指派給他們想要授與租使用者範圍可見度的任何使用者，包括自己的根管理群組層級。 建議指派的角色為 [安全性管理員] 或 [安全性讀取者]。 一般而言，需具備安全性管理員角色，才能在根層級套用原則，而安全性讀取者就足以提供租用戶層級的可見性。 如需有關這些角色所授與權限的詳細資訊，請參閱[安全性管理員內建角色描述](../role-based-access-control/built-in-roles.md#security-admin)或[安全性讀取者內建角色描述](../role-based-access-control/built-in-roles.md#security-reader)。
 
 
 #### <a name="assign-azure-roles-to-users-through-the-azure-portal"></a>透過 Azure 入口網站將 Azure 角色指派給使用者： 
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
-1. 若要檢視管理群組，請在 Azure 主功能表下選取 [所有服務]****，然後選取 [管理群組]****。
-1.  選取管理群組，然後按一下 [詳細資料]****。
+1. 若要檢視管理群組，請在 Azure 主功能表下選取 [所有服務]，然後選取 [管理群組]。
+1.  選取管理群組，然後按一下 [詳細資料]。
 
     ![管理群組詳細資料螢幕擷取畫面](./media/security-center-management-groups/management-group-details.PNG)
  
-1. 依序按一下 [存取控制 (IAM)\]**** 和 [角色指派]****。
+1. 依序按一下 [存取控制 (IAM)\] 和 [角色指派]。
 
 1. 按一下 [ **新增角色指派**]。
 
-1. 選取要指派的角色和使用者，然後按一下 [儲存]****。  
+1. 選取要指派的角色和使用者，然後按一下 [儲存]。  
    
    ![新增安全性讀取者角色螢幕擷取畫面](./media/security-center-management-groups/asc-security-reader.png)
 
@@ -145,12 +145,12 @@ Azure Active Directory 租用戶管理員並沒有 Azure 訂用帳戶的直接�
 
     ![訂用帳戶選取器螢幕擷取畫面](./media/security-center-management-groups/subscription-selector.png)
 
-1. 在 Azure 主功能表下選取 [所有服務]****，然後選取 [資訊安全中心]****。
-2. 在 [概觀]**** 中，會有一個訂用帳戶涵蓋範圍表。
+1. 在 Azure 主功能表下選取 [所有服務]，然後選取 [資訊安全中心]。
+2. 在 [概觀] 中，會有一個訂用帳戶涵蓋範圍表。
 
     ![訂用帳戶涵蓋範圍表螢幕擷取畫面](./media/security-center-management-groups/security-center-subscription-coverage.png)
 
-3. 按一下 [涵蓋範圍]**** 以查看涵蓋的訂用帳戶清單。 
+3. 按一下 [涵蓋範圍] 以查看涵蓋的訂用帳戶清單。 
 
     ![訂用帳戶涵蓋範圍清單螢幕擷取畫面](./media/security-center-management-groups/security-center-coverage.png)
 
@@ -159,26 +159,26 @@ Azure Active Directory 租用戶管理員並沒有 Azure 訂用帳戶的直接�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)或 [Azure Active Directory 系統管理中心](https://aad.portal.azure.com)。
 
-2. 在瀏覽清單中，按一下 [Azure Active Directory]****，然後按一下 [屬性]****。
+2. 在瀏覽清單中，按一下 [Azure Active Directory]，然後按一下 [屬性]。
 
 3. 在 [ **Azure 資源的存取管理**] 下，將參數設定為 [ **否**]。
 
-4. 按一下 [儲存]**** 儲存您的設定。
+4. 按一下 [儲存] 儲存您的設定。
 
 
 
 ## <a name="adding-subscriptions-to-a-management-group"></a>將訂用帳戶新增至管理群組
 您可以將訂用帳戶新增至已建立的管理群組。 下列步驟並非取得全租用戶可見性以及全域原則和存取管理的必要步驟。
 
-1. 在 [管理群組]**** 下，選取要新增訂用帳戶的管理群組。
+1. 在 [管理群組] 下，選取要新增訂用帳戶的管理群組。
 
     ![選取要新增訂用帳戶的管理群組](./media/security-center-management-groups/management-group-subscriptions.png)
 
-2. 選取 [新增現有項目]****。
+2. 選取 [新增現有項目]。
 
     ![新增現有項目](./media/security-center-management-groups/add-existing.png)
 
-3. 在 [新增現有資源]**** 下輸入訂用帳戶，然後按一下 [儲存]****。
+3. 在 [新增現有資源] 下輸入訂用帳戶，然後按一下 [儲存]。
 
 4. 重複步驟 1 到 3，直到您已新增範圍內的所有訂用帳戶為止。
 

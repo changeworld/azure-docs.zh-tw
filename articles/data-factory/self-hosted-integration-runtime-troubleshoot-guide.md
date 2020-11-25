@@ -2,17 +2,17 @@
 title: 針對在 Azure Data Factory 中的自我裝載整合執行階段進行疑難排解
 description: 深入了解如何針對在 Azure Data Factory 中的自我裝載整合執行階段進行疑難排解。
 services: data-factory
-author: nabhishek
+author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/17/2020
 ms.author: lle
-ms.openlocfilehash: e3a517497a480995b8ce63d36d0427e3bfadfe43
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 93c35828444ec93a974769ed3a2f1981c0ec4368
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844053"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96013432"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>針對自我裝載整合執行階段進行疑難排解
 
@@ -50,7 +50,7 @@ ms.locfileid: "94844053"
 
 ### <a name="out-of-memory-issue"></a>記憶體不足問題
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
 嘗試使用連結的 IR 或自我裝載 IR 來執行查閱活動時，會發生 "OutOfMemoryException" 問題。
 
@@ -65,7 +65,7 @@ ms.locfileid: "94844053"
 
 ### <a name="tlsssl-certificate-issue"></a>TLS/SSL 憑證問題
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
 嘗試從「自我裝載 IR 設定管理員」 -> 「從內部網路進行遠端存取」啟用 TLS/SSL 憑證 (進階) 時，在選取 TLS/SSL 憑證後顯示下列錯誤：
 
@@ -85,7 +85,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 ### <a name="concurrent-jobs-limit-issue"></a>並行作業數限制問題
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
 當嘗試增加 Azure Data Factory UI 的並行作業限制數時，系統會像執行「更新」一樣永遠沒有回應。
 並行作業數的最大值設定為 24，而您需要增加計數，以便更快速地執行作業。 您可以輸入的最小值是 3，最大值為 32。 您將值從24增加到32，並點擊 [ *更新* ] 按鈕，在 UI 中，它會停滯于 *更新* ，如下所示。 重新整理之後，客戶仍然看到值為 24，而且永遠不會更新為 32。
@@ -103,7 +103,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 ### <a name="self-hosted-ir-ha-ssl-certificate-issue"></a>自我裝載 IR HA SSL 憑證問題
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
 自我裝載 IR 工作節點已回報下列錯誤：
 
@@ -163,7 +163,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 ### <a name="self-hosted-ir-could-not-load-file-or-assembly"></a>自我裝載 IR 無法載入檔案或組件
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
 `Could not load file or assembly 'XXXXXXXXXXXXXXXX, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
  
@@ -203,7 +203,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 ### <a name="how-to-audit-self-hosted-ir-key-missing"></a>如何稽核自我裝載 IR 金鑰遺漏的問題
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
 自我裝載整合執行階段因為沒有金鑰突然離線，事件記錄檔中顯示下列錯誤訊息：`Authentication Key is not assigned yet`
 
@@ -223,7 +223,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 ### <a name="cannot-use-self-hosted-ir-to-bridge-two-on-premises-data-stores"></a>無法使用自我裝載 IR 來橋接兩個內部部署資料存放區
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
 建立來源和目的地資料存放區的自我裝載 IR 後，您想將兩個 IR 連接在一起，以完成複本。 如果資料存放區是在不同的 Vnet 中設定，或無法瞭解閘道機制，您將會遇到類似以下的錯誤： *無法在目的地 IR 中找到來源的驅動程式*; *目的地 IR 無法存取來源*。
  
@@ -242,7 +242,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 ### <a name="credential-sync-issue-causes-credential-lost-from-ha"></a>認證同步處理問題導致 HA 遺失認證
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
 已從目前的 Integration Runtime 節點刪除資料來源認證 "XXXXXXXXXX"，承載為「當您刪除 Azure 入口網站上的連結服務，或工作的承載錯誤時，請使用您的認證，重新建立新的連結服務」。
 
@@ -257,7 +257,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 ### <a name="cannot-choose-the-certificate-due-to-private-key-missing"></a>因為缺少私密金鑰，因此無法選擇憑證
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
 1.  將 PFX 檔案匯入至憑證存放區。
 2.  透過 IR Configuration Manager UI 選取憑證時，您會遇到下列錯誤：
@@ -283,7 +283,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 ### <a name="the-integration-runtime-registration-error"></a>Integration Runtime 的註冊錯誤 
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
 有時候我們會想要在不同的帳戶中執行自我裝載 IR，原因如下：
 - 公司原則不允許服務帳戶。
@@ -320,7 +320,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
         1. 清除 [將目前的自我裝載 IR 卸載]。
         1. 安裝自我裝載 IR 位。
         1. 請遵循下列指示來變更服務帳戶： 
-            1. 移至 selfhosted IR 的安裝資料夾，切換到下列資料夾： *Microsoft Integration Runtime\4.0\Shared*。
+            1. 移至自我裝載 IR 的安裝資料夾，切換到下列資料夾： *Microsoft Integration Runtime\4.0\Shared*。
             1. 使用較高的許可權啟動命令列。 *\<user>* 將和取代 *\<password>* 為您自己的使用者名稱和密碼，然後執行下列命令：
                        
                 ```
@@ -358,7 +358,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 ### <a name="cannot-find-register-button-to-register-a-self-hosted-ir"></a>找不到註冊按鈕以註冊自我裝載 IR    
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
 註冊自我裝載 IR 時，在 Configuration Manager UI 上找不到 **註冊** 按鈕。
 
@@ -383,7 +383,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 ### <a name="unable-to-register-the-self-hosted-ir-due-to-localhost"></a>因 localhost 而無法註冊自我裝載 IR    
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
 Get_LoopbackIpOrName 時，無法在新電腦上註冊自我裝載 IR。
 
@@ -404,7 +404,7 @@ Get_LoopbackIpOrName 時，無法在新電腦上註冊自我裝載 IR。
 
 ### <a name="self-hosted-setup-failed"></a>自我裝載設定失敗    
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
 無法卸載現有的 IR，或安裝新的 ir，或將現有的 IR 升級至新的 IR。
 
@@ -421,7 +421,7 @@ Get_LoopbackIpOrName 時，無法在新電腦上註冊自我裝載 IR。
 
 ### <a name="ir-service-account-failed-to-fetch-certificate-access"></a>IR 服務帳戶無法提取憑證存取權
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
 透過 Microsoft Integration Runtime Configuration manager 安裝自我裝載 IR 時，會產生具有信任 CA 的憑證。 無法套用憑證來加密兩個節點之間的通訊。 
 
@@ -464,7 +464,7 @@ openssl pkcs12-export-in xxxx_new xxxx_new .pfx
 
 ### <a name="self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>自我裝載整合執行時間無法連接到雲端服務
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
 ![自我裝載整合執行階段連線問題](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
 
@@ -577,7 +577,7 @@ openssl pkcs12-export-in xxxx_new xxxx_new .pfx
 
 若要疑難排解網路連線問題，您應該知道如何收集網路追蹤、瞭解如何使用它，以及如何在從自我裝載 IR 的真實案例中套用 Netmon 工具之前，先 [分析 netmon 追蹤](#how-to-analyze-netmon-trace) 。
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
 有時候，我們會在自我裝載 IR 和 Data Factory 之間的連線問題進行疑難排解，例如下列各項： 
 
@@ -708,7 +708,7 @@ openssl pkcs12-export-in xxxx_new xxxx_new .pfx
 
 ### <a name="could-not-establish-trust-relationship-for-the-ssltls-secure-channel"></a>無法建立 SSLTLS 安全通道的信任關係 
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
 自我裝載 IR 無法連接至 ADF 服務。
 
@@ -731,7 +731,7 @@ openssl pkcs12-export-in xxxx_new xxxx_new .pfx
 - 在安裝 SHIR 的電腦上，ADF 服務伺服器憑證的根 CA 不受信任。 
 - 您在環境中使用 proxy，且 ADF 服務的伺服器憑證是由 proxy 所取代，而已取代的伺服器憑證則不受安裝 SHIR 的電腦所信任。
 
-#### <a name="solution"></a>解決方法
+#### <a name="resolution"></a>解決方法
 
 - 基於原因1，請確定 ADF 伺服器憑證及其憑證鏈是否受安裝 SHIR 的電腦所信任。
 - 基於原因2，請信任 SHIR 電腦上取代的根 CA，或將 proxy 設定為不要取代 ADF 伺服器憑證。
@@ -745,11 +745,12 @@ openssl pkcs12-export-in xxxx_new xxxx_new .pfx
 
 如果沒有，請從 [這裡](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt )下載。 
 
+
 ## <a name="self-hosted-ir-sharing"></a>自我裝載 IR 共用
 
 ### <a name="share-self-hosted-ir-from-a-different-tenant-is-not-supported"></a>不支援從不同的租使用者共用自我裝載 IR 
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
 您可能會注意到在不同的租使用者上 (其他資料處理站) 在嘗試從 Azure Data Factory UI 共用自我裝載的 IR，但無法在不同租使用者上的資料處理站之間共用自我裝載的 IR。
 

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
 ms.openlocfilehash: 390a8a49e9a47ee5e6845d85fe4fe02f514708e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362192"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013610"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Hyper-v 複寫的運作方式為何？
 
@@ -71,8 +71,8 @@ Hyper-v 的複寫效能受到影響，包括 VM 大小、vm 大小 (變換) 、�
 
 1. 登入 Hyper-v 主機或叢集節點。
 2. 執行 **C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.msc**，以開啟 WINDOWS Azure 備份 MMC 嵌入式管理單元。
-3. 在嵌入式管理單元中，選取 [變更內容]****。
-4. 在 [ **節流**] 中，選取 [ **啟用備份作業的網際網路頻寬使用節流**設定]。 設定工作和非工作時數的限制。 有效範圍是 512 Kbps 到 1,023 Mbps。
+3. 在嵌入式管理單元中，選取 [變更內容]。
+4. 在 [ **節流**] 中，選取 [ **啟用備份作業的網際網路頻寬使用節流** 設定]。 設定工作和非工作時數的限制。 有效範圍是 512 Kbps 到 1,023 Mbps。
 I
 
 ### <a name="influence-upload-efficiency"></a>影響上傳效率

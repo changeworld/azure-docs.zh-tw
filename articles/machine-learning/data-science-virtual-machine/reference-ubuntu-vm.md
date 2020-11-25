@@ -10,11 +10,11 @@ ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
 ms.openlocfilehash: 6fb7b7c2e9022b6b629a039a48bb559b36393f79
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94334987"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013848"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>參考： Ubuntu (Linux) 資料科學虛擬機器
 
@@ -67,7 +67,7 @@ MXNet 是兼具效率和彈性的深入學習架構。 它在 DSVM 中包含了 
 
 NVIDIA 深度學習 GPU 訓練系統 (名為 DIGITS) 是一個可簡化常見深度學習工作的系統。 這些工作包括管理資料、設計和訓練 GPU 系統上的神經網路，以及使用進階視覺效果即時監視效能。
 
-數位會以服務的形式提供，稱為 *數位* 。 啟動此服務並瀏覽至 `http://localhost:5000` 以開始使用。
+數位會以服務的形式提供，稱為 *數位*。 啟動此服務並瀏覽至 `http://localhost:5000` 以開始使用。
 
 DIGITS 也會安裝為 Conda 根環境中的 Python 模組。
 
@@ -91,13 +91,13 @@ R 是其中一種最受歡迎的資料分析和機器學習語言。 如果您�
 
 Machine Learning Server 可讓您在 Web 服務中調整和運作 R 模型。 您可以在其中一個預設編輯器 (如 RStudio、vi 或 Emacs) 中編輯您的 R 程式。 如果您偏好使用 Emacs 編輯器，它已經預先安裝完畢。 Emacs ESS (Emacs Speaks Statistics) 套件能夠簡化在 Emacs 編輯器中處理 R 檔案的程序。
 
-若要開啟 R 主控台，請在殼層中輸入 **R** 。 此命令會帶您前往互動式環境。 若要開發 R 程式，在一般情況下，您可以使用編輯器 (例如 Emacs 或 vi)，然後在 R 內執行指令碼。透過 RStudio，您將有完整的圖形化 IDE 可用來開發 R 程式。
+若要開啟 R 主控台，請在殼層中輸入 **R**。 此命令會帶您前往互動式環境。 若要開發 R 程式，在一般情況下，您可以使用編輯器 (例如 Emacs 或 vi)，然後在 R 內執行指令碼。透過 RStudio，您將有完整的圖形化 IDE 可用來開發 R 程式。
 
 如果您想要的話，另外也有 R 指令碼可讓您安裝[最熱門的 20 個 R 套件](https://www.kdnuggets.com/2015/06/top-20-r-packages.html)。 您可以在進入 R 互動式介面後執行此指令碼。 如前所述，您可以在殼層中輸入 **R** 來開啟該介面。  
 
 ## <a name="python"></a>Python
 
-Anaconda Python 是隨著 Python 2.7 和 3.5 環境一起安裝。 2.7 環境稱為 _root_ ，而 3.5 環境稱為 _py35_ 。 這個散發套件包含基本的 Python 以及大約 300 個最受歡迎的數學運算、工程設計和資料分析封裝。
+Anaconda Python 是隨著 Python 2.7 和 3.5 環境一起安裝。 2.7 環境稱為 _root_，而 3.5 環境稱為 _py35_。 這個散發套件包含基本的 Python 以及大約 300 個最受歡迎的數學運算、工程設計和資料分析封裝。
 
 py35 環境是預設環境。 若要啟用根 (2.7) 環境，請使用下列命令：
 
@@ -111,7 +111,7 @@ source activate root
 source activate py35
 ```
 
-若要叫用 Python 互動式工作階段，請在殼層中輸入 **python** 。 
+若要叫用 Python 互動式工作階段，請在殼層中輸入 **python**。 
 
 使用 Conda 或 pip 安裝其他 Python 程式庫。 對於 pip，如果您不想使用預設值，請先啟用正確的環境：
 
@@ -143,7 +143,7 @@ Jupyter 筆記本伺服器已使用 Python 2、Python 3 及 R 核心進行預先
 > [!NOTE]
 > 如果您收到任何憑證警告，請繼續。
 
-您可以從任何主機存取 Jupyter Notebook 伺服器。 輸入 **HTTPs:// \<VM DNS name or IP address\> ： 8000/** 。
+您可以從任何主機存取 Jupyter Notebook 伺服器。 輸入 **HTTPs:// \<VM DNS name or IP address\> ： 8000/**。
 
 > [!NOTE]
 > 在佈建 VM 時，防火牆預設會開啟連接埠 8000。 
@@ -206,11 +206,11 @@ SQuirrel SQL 是一個圖形化 SQL 用戶端，可連線至多種不同的資�
 
 SQL Server 的 ODBC 驅動程式封裝也隨附兩個命令列工具：
 
-- **bcp** ： bcp 工具會在 Microsoft SQL Server 實例和使用者指定格式的資料檔案之間大量複製資料。 您可以使用 bcp 工具將大量新資料列匯入 SQL Server 資料表中，或是將資料表的資料匯出成資料檔案。 若要將資料匯入資料表中，您必須使用為該資料表建立的格式檔案。 或者，您必須了解資料表的結構，以及適用於其資料行的資料類型。
+- **bcp**： bcp 工具會在 Microsoft SQL Server 實例和使用者指定格式的資料檔案之間大量複製資料。 您可以使用 bcp 工具將大量新資料列匯入 SQL Server 資料表中，或是將資料表的資料匯出成資料檔案。 若要將資料匯入資料表中，您必須使用為該資料表建立的格式檔案。 或者，您必須了解資料表的結構，以及適用於其資料行的資料類型。
 
   如需詳細資訊，請參閱 [使用 bcp 進行連接](/sql/connect/odbc/linux-mac/connecting-with-bcp)。
 
-- **sqlcmd** ：您可以使用 sqlcmd 工具輸入 transact-sql 語句。 您也可以在命令提示字元中輸入系統程序和指令檔。 此工具會使用 ODBC 執行 Transact-SQL 批次。
+- **sqlcmd**：您可以使用 sqlcmd 工具輸入 transact-sql 語句。 您也可以在命令提示字元中輸入系統程序和指令檔。 此工具會使用 ODBC 執行 Transact-SQL 批次。
 
   如需詳細資訊，請參閱 [使用 sqlcmd 連接](/sql/connect/odbc/linux-mac/connecting-with-sqlcmd)。
 
@@ -228,13 +228,13 @@ SQL Server 的 ODBC 驅動程式封裝也隨附兩個命令列工具：
 
 VM 上安裝了下列 Azure 工具：
 
-* **Azure CLI** ：您可以在 azure 中使用命令列介面，透過 shell 命令來建立和管理 azure 資源。 若要開啟 Azure Tools，請輸入 **azure help** 。 如需詳細資訊，請參閱 [Azure CLI 文件頁面](/cli/azure/get-started-with-az-cli2)。
-* **Azure 儲存體總管** ： Azure 儲存體總管是一種圖形化工具，可用來流覽您儲存在 azure 儲存體帳戶中的物件，以及上傳及下載 azure blob 的資料。 您可以從桌面捷徑圖示存取儲存體總管。 您也可以輸入 **StorageExplorer** ，從殼層提示字元加以開啟。 您必須從 X2Go 用戶端登入，或是已設定 X11 轉寄。
-* **Azure 程式庫** ：下列是一些預先安裝的程式庫。
+* **Azure CLI**：您可以在 azure 中使用命令列介面，透過 shell 命令來建立和管理 azure 資源。 若要開啟 Azure Tools，請輸入 **azure help**。 如需詳細資訊，請參閱 [Azure CLI 文件頁面](/cli/azure/get-started-with-az-cli2)。
+* **Azure 儲存體總管**： Azure 儲存體總管是一種圖形化工具，可用來流覽您儲存在 azure 儲存體帳戶中的物件，以及上傳及下載 azure blob 的資料。 您可以從桌面捷徑圖示存取儲存體總管。 您也可以輸入 **StorageExplorer**，從殼層提示字元加以開啟。 您必須從 X2Go 用戶端登入，或是已設定 X11 轉寄。
+* **Azure 程式庫**：下列是一些預先安裝的程式庫。
   
-  * **Python** ： python 中的 azure 相關連結庫為 *azure* 、 *azureml* 、 *pydocumentdb* 和 *pyodbc* 。 透過前三個程式庫，您可以存取 Azure 儲存體服務、Azure Machine Learning 和 Azure Cosmos DB (Azure 上的 NoSQL 資料庫)。 第四個程式庫、pyodbc (以及適用于 SQL Server) 的 Microsoft ODBC 驅動程式，可讓您使用 ODBC 介面，從 Python 存取 SQL Server、Azure SQL Database 和 Azure Synapse Analytics。 輸入 **pip list** 以查看所有列出的程式庫。 請務必在 Python 2.7 和 3.5 的環境中執行此命令。
-  * **R** ： r 中的 Azure 相關連結庫為 AZUREML 和 RODBC。
-  * **Java** ︰Azure Java 程式庫清單位於 VM 上的 /dsvm/sdk/AzureSDKJava 目錄中。 關鍵的程式庫為 Azure 儲存體和管理 API、Azure Cosmos DB 和 JDBC Driver for SQL Server。  
+  * **Python**： python 中的 azure 相關連結庫為 *azure*、 *azureml*、 *pydocumentdb* 和 *pyodbc*。 透過前三個程式庫，您可以存取 Azure 儲存體服務、Azure Machine Learning 和 Azure Cosmos DB (Azure 上的 NoSQL 資料庫)。 第四個程式庫、pyodbc (以及適用于 SQL Server) 的 Microsoft ODBC 驅動程式，可讓您使用 ODBC 介面，從 Python 存取 SQL Server、Azure SQL Database 和 Azure Synapse Analytics。 輸入 **pip list** 以查看所有列出的程式庫。 請務必在 Python 2.7 和 3.5 的環境中執行此命令。
+  * **R**： r 中的 Azure 相關連結庫為 AZUREML 和 RODBC。
+  * **Java**︰Azure Java 程式庫清單位於 VM 上的 /dsvm/sdk/AzureSDKJava 目錄中。 關鍵的程式庫為 Azure 儲存體和管理 API、Azure Cosmos DB 和 JDBC Driver for SQL Server。  
 
 您可以從預先安裝的 Firefox 瀏覽器存取 [Azure 入口網站](https://portal.azure.com) 。 在 Azure 入口網站中，您可以建立、管理和監視 Azure 資源。
 
@@ -246,7 +246,7 @@ Azure Machine Learning 是完全受控的雲端服務，讓您能夠建置、部
 
 讓您建置的機器學習模型能夠運作，方法是將它們包裝在 Web 服務介面中。 讓機器學習模型能夠運作，使用任何語言撰寫的用戶端就能夠從這些模型叫用預測。 如需詳細資訊，請參閱 [機器學習文件](https://azure.microsoft.com/documentation/services/machine-learning/)。
 
-您可以也在 VM 上以 R 或 Python 建置模型，然後將其部署在 Azure Machine Learning 的生產環境中。 我們已安裝 R ( **AzureML** ) 和 Python ( **azureml** ) 的程式庫來啟用這項功能。
+您可以也在 VM 上以 R 或 Python 建置模型，然後將其部署在 Azure Machine Learning 的生產環境中。 我們已安裝 R (**AzureML**) 和 Python (**azureml**) 的程式庫來啟用這項功能。
 
 > [!NOTE]
 > 這些指示是針對 Windows 版的資料科學虛擬機器而撰寫的。 但所提供關於將模型部署到 Azure Machine Learning 的資訊也適用於 Linux VM。
@@ -255,12 +255,12 @@ Azure Machine Learning 是完全受控的雲端服務，讓您能夠建置、部
 
 VM 隨附已預先編譯且預先安裝在本機上的機器學習工具和演算法。 它們包括：
 
-* **Vowpal Wabbit** ：快速線上學習演算法。
-* **xgboost** ：提供最佳化推進式決策樹演算法的工具。
-* **Rattle** ：以 R 為基礎的圖形化工具，可輕鬆地進行資料瀏覽和模組化。
-* **Python** ：Anaconda Python 會與含有像是 Scikit-learn 的程式庫的機器學習演算法進行配套。 您可以使用 `pip install` 程式庫。
-* **LightGBM** ︰以決策樹演算法為基礎的一種快速、分散式的高效能漸層提升架構。
-* **R** ：有豐富的機器學習函式程式庫可供 R 使用。預先安裝的程式庫包括 lm、Glm、randomForest 和 rpart。 您可以執行下列命令來安裝其他程式庫：
+* **Vowpal Wabbit**：快速線上學習演算法。
+* **xgboost**：提供最佳化推進式決策樹演算法的工具。
+* **Rattle**：以 R 為基礎的圖形化工具，可輕鬆地進行資料瀏覽和模組化。
+* **Python**：Anaconda Python 會與含有像是 Scikit-learn 的程式庫的機器學習演算法進行配套。 您可以使用 `pip install` 程式庫。
+* **LightGBM**︰以決策樹演算法為基礎的一種快速、分散式的高效能漸層提升架構。
+* **R**：有豐富的機器學習函式程式庫可供 R 使用。預先安裝的程式庫包括 lm、Glm、randomForest 和 rpart。 您可以執行下列命令來安裝其他程式庫：
 
     ```r
     install.packages(<lib name>)
@@ -316,9 +316,9 @@ xgboost mushroom.conf
 
 ### <a name="rattle"></a>Rattle
 
-Rattle ( **R** **A** nalytical **T** ool **T** o **L** earn **E** asily) 會使用 GUI 型資料探索和模型化。 它會提供資料的統計和視覺化摘要、轉換已經可以輕易模型化的資料、從資料建置未經指導和經過指導的模型、以圖形方式呈現模型的效能，以及評分新的資料集。 它也會產生 R 程式碼，複寫 UI 中可以直接在 R 中執行的作業，或是作為進一步分析之起點的作業。
+Rattle (**R** **A** nalytical **T** ool **T** o **L** earn **E** asily) 會使用 GUI 型資料探索和模型化。 它會提供資料的統計和視覺化摘要、轉換已經可以輕易模型化的資料、從資料建置未經指導和經過指導的模型、以圖形方式呈現模型的效能，以及評分新的資料集。 它也會產生 R 程式碼，複寫 UI 中可以直接在 R 中執行的作業，或是作為進一步分析之起點的作業。
 
-若要執行 Rattle，您必須位於圖形化桌面登入工作階段。 在終端機上輸入 **R** ，以開啟 R 環境。 在 R 提示字元中輸入下列命令：
+若要執行 Rattle，您必須位於圖形化桌面登入工作階段。 在終端機上輸入 **R**，以開啟 R 環境。 在 R 提示字元中輸入下列命令：
 
 ```R
 library(rattle)

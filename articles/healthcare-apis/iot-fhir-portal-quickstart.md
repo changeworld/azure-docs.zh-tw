@@ -6,18 +6,18 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: quickstart
-ms.date: 09/08/2020
+ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: 1e3101c8abcaef52c0ae9aaafef36b23aa45b586
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: f36d842e14c91850bfeba47e9fef61d4747c33a9
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394504"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630561"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>快速入門：使用入口網站部署 Azure IoT Connector for FHIR (預覽)
 
-Azure IoT Connector for FHIR* 是 Azure API for FHIR 的一個選用功能，可讓您內嵌來自醫學物聯網 (IoMT) 裝置的資料。 在預覽階段，Azure IoT Connector for FHIR 功能可供免費使用。 在本快速入門中，您將了解如何：
+Azure IoT Connector for FHIR (快速健康照護互通資源)* 是 Azure API for FHIR 的一個選用功能，可讓您內嵌來自醫學物聯網 (IoMT) 裝置的資料。 在預覽階段，Azure IoT Connector for FHIR 功能可供免費使用。 在本快速入門中，您將了解如何：
 - 使用 Azure 入口網站部署和設定 Azure IoT Connector for FHIR
 - 使用模擬裝置將資料傳送至 Azure IoT Connector for FHIR
 - 在 Azure API for FHIR 上檢視 Azure IoT Connector for FHIR 所建立的資源
@@ -61,7 +61,7 @@ Azure IoT Connector for FHIR* 是 Azure API for FHIR 的一個選用功能，可
 
 ## <a name="configure-azure-iot-connector-for-fhir-preview"></a>設定 Azure IoT Connector for FHIR (預覽)
 
-Azure IoT Connector for FHIR 需要兩個對應範本，才能將裝置訊息轉換成 FHIR 型觀察資源： **裝置對應** 和 **FHIR 對應** 。 在上傳這些對應之前，您的 Azure IoT Connector for FHIR 無法完全正常運作。
+Azure IoT Connector for FHIR 需要兩個對應範本，才能將裝置訊息轉換成 FHIR 型觀察資源：**裝置對應** 和 **FHIR 對應**。 在上傳這些對應之前，您的 Azure IoT Connector for FHIR 無法完全正常運作。
 
 [![IoT 連接器遺漏的對應](media/quickstart-iot-fhir-portal/portal-iot-connector-missing-mappings.jpg)](media/quickstart-iot-fhir-portal/portal-iot-connector-missing-mappings.jpg#lightbox)
 
@@ -163,7 +163,7 @@ IoMT 裝置需要一個連接字串，才能將訊息連線並傳送至 Azure Io
 
 Azure 提供一套廣泛的 IoT 產品，可連線並管理您的 IoT 裝置。 您可以根據 PaaS，使用 Azure IoT 中樞建置自己的解決方案，或從使用 Azure IoT Central 管理 IoT 應用程式平台開始。 在此教學課程中，我們將利用 Azure IoT Central 中，專門針對產業提供的解決方案範本，協助您開始使用。
 
-部署[持續性患者監視應用程式範本](../iot-central/healthcare/tutorial-continuous-patient-monitoring.md#create-an-application-template)。 此範本包含兩個可產生即時資料的模擬裝置，可協助您開始使用： **Smart Vitals Patch** 和 **Smart Knee Brace** 。
+部署[持續性患者監視應用程式範本](../iot-central/healthcare/tutorial-continuous-patient-monitoring.md#create-an-application-template)。 此範本包含兩個可產生即時資料的模擬裝置，可協助您開始使用：**Smart Vitals Patch** 和 **Smart Knee Brace**。
 
 > [!NOTE]
 > 當您的實際裝置準備就緒時，您可以使用相同的 IoT Central 應用程式[將裝置上線](../iot-central/core/howto-set-up-template.md) \(部分機器翻譯\)，並取代裝置模擬器。 您的裝置資料也會自動開始流向 FHIR。 
@@ -207,6 +207,4 @@ Azure 提供一套廣泛的 IoT 產品，可連線並管理您的 IoT 裝置。 
 >[!div class="nextstepaction"]
 >[Azure IoT Connector for FHIR 對應範本](iot-mapping-templates.md)
 
-*在 Azure 入口網站中，Azure IoT Connector for FHIR 稱為 IoT 連接器 (預覽)。
-
-FHIR 是 HL7 的註冊商標，必須搭配 HL7 權限方可使用。
+*在 Azure 入口網站中，Azure IoT Connector for FHIR 稱為 IoT 連接器 (預覽)。 FHIR 是 HL7 的註冊商標，可與 HL7 的權限搭配使用。

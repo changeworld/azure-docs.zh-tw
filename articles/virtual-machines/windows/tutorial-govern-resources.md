@@ -1,6 +1,6 @@
 ---
 title: 教學課程 - 使用 PowerShell 管理虛擬機器
-description: 在本教學課程中，您會了解如何使用 Azure PowerShell 來套用 RBAC、原則、鎖定和標籤以管理 Azure 虛擬機器
+description: 在本教學課程中，您會了解如何使用 Azure PowerShell 來套用 Azure RBAC、原則、鎖定和標籤以管理 Azure 虛擬機器
 author: tfitzmac
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 723eaeb6eb8946473b31b447e817a0a3b696f1cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 393606eb4211131b2b530e3900746e5024321aa3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87926564"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844245"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>教學課程：了解如何使用 Azure PowerShell 來管理 Windows 虛擬機器
 
@@ -39,7 +39,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 目前資源群組是空的。
 
-## <a name="role-based-access-control"></a>角色型存取控制
+## <a name="azure-role-based-access-control"></a>Azure 角色型存取控制
 
 您想要確定組織中的使用者具有這些資源的正確存取權等級。 您不想要授與不受限制的存取權給使用者，但是您又必須確定他們可以執行其工作。 [Azure 角色型存取控制 (Azure RBAC)](../../role-based-access-control/overview.md) 可讓您管理哪些使用者具有權限可以在一個範圍內完成特定動作。
 
@@ -63,7 +63,7 @@ New-AzRoleAssignment -ObjectId $adgroup.id `
   -RoleDefinitionName "Virtual Machine Contributor"
 ```
 
-如果出現錯誤，指出**原則 \<guid> 不存在於目錄中**，表示新群組未傳播至整個 Azure Active Directory。 請嘗試再次執行命令。
+如果出現錯誤，指出 **原則 \<guid> 不存在於目錄中**，表示新群組未傳播至整個 Azure Active Directory。 請嘗試再次執行命令。
 
 通常您需要針對網路參與者和儲存體帳戶參與者重複進行此程序，以確保已指派使用者來管理已部署的資源。 在本文中，您可以略過這些步驟。
 
@@ -75,7 +75,7 @@ New-AzRoleAssignment -ObjectId $adgroup.id `
 (Get-AzPolicyDefinition).Properties | Format-Table displayName, policyType
 ```
 
-您會看到現有的原則定義。 原則類型不是**內建**就是**自訂**。 查看定義，尋找符合您要指派之條件的定義。 在本文中，您指派的原則要：
+您會看到現有的原則定義。 原則類型不是 **內建** 就是 **自訂**。 查看定義，尋找符合您要指派之條件的定義。 在本文中，您指派的原則要：
 
 * 限制所有資源的位置。
 * 限制虛擬機器的 SKU。

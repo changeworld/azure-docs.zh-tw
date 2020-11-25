@@ -8,11 +8,11 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: bff930153dc8941fbfe561edf963d5b1c1e7811f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708011"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014613"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>針對適用於 PostgreSQL 的 Azure 資料庫的連接問題進行疑難排解-單一伺服器
 
@@ -40,7 +40,7 @@ ms.locfileid: "91708011"
 1. 檢查 [Microsoft Azure 服務儀表板](https://azure.microsoft.com/status) ，以了解是否有在應用程式回報錯誤期間發生的任何已知中斷。
 2. 連線到雲端服務 (例如「適用於 PostgreSQL 的 Azure 資料庫」) 的應用程式應該預期會發生暫時性錯誤，並實作重試邏輯來處理這些錯誤，而不是將這些錯誤當作應用程式錯誤呈現給使用者。 請檢閱[處理適用於 PostgreSQL 的 Azure 資料庫的暫時性連線錯誤](concepts-connectivity.md)，以了解處理暫時性錯誤的最佳做法和設計指導方針。
 3. 當伺服器接近其資源限制時，錯誤可能似乎是暫時性連線問題。 請參閱[適用於 PostgreSQL 的 Azure 資料庫中的限制](concepts-limits.md)。
-4. 如果連線問題繼續發生，或如果您的應用程式發生錯誤的持續時間超過 60 秒，或如果您在一天當中，看到錯誤多次發生，請在 [Azure 支援](https://azure.microsoft.com/support/options)網站上選取 [取得支援]****，來提出 Azure 支援要求。
+4. 如果連線問題繼續發生，或如果您的應用程式發生錯誤的持續時間超過 60 秒，或如果您在一天當中，看到錯誤多次發生，請在 [Azure 支援](https://azure.microsoft.com/support/options)網站上選取 [取得支援]，來提出 Azure 支援要求。
 
 ## <a name="troubleshoot-persistent-errors"></a>針對持續性錯誤進行疑難排解
 
@@ -48,7 +48,7 @@ ms.locfileid: "91708011"
 
 * 伺服器防火牆設定：確認適用於 PostgreSQL 的 Azure 資料庫伺服器防火牆設定為允許來自用戶端的連線，包括 proxy 伺服器和閘道。
 * 用戶端防火牆設定：用戶端上的防火牆必須允許連線至您的資料庫伺服器。 也必須允許您無法連到的伺服器 IP 位址和連接埠，在某些防火牆中，還要允許應用程式名稱，例如 PostgreSQL。
-* 使用者錯誤：您可能輸入了輸入錯的連接參數，例如連接字串中的伺服器名稱，或使用者名稱中遺漏的* \@ servername*尾碼。
+* 使用者錯誤：您可能輸入了輸入錯的連接參數，例如連接字串中的伺服器名稱，或使用者名稱中遺漏的 *\@ servername* 尾碼。
 * 如果您看到錯誤 _伺服器未設定為允許 ipv6 連接_，請注意基本層不支援 VNet 服務端點。 您必須從嘗試連接到基本伺服器的子網中移除 Microsoft .Sql 端點。
 * 如果您看到連接錯誤 _sslmode 值 "* * *" 當 SSL 支援未在錯誤中編譯時無效_ ，這表示您的于 postgresql 用戶端不支援 ssl。 最可能的情況是，用戶端 libpq 尚未使用 "--with-openssl" 旗標進行編譯。 請嘗試連接具有 SSL 支援的于 postgresql 用戶端。 
 

@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: 811f1c27af660d388ecb875741c073591bd25f7f
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 4f6e194f04789fbcaf24d69965dfa8ac61b20a38
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358604"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886323"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>教學課程：使用自動化機器學習預測計程車車資
 
@@ -39,7 +39,9 @@ ms.locfileid: "93358604"
 * 如果您還沒有 Azure Machine Learning 工作區或 Notebook 虛擬機器，請完成[設定教學課程](tutorial-1st-experiment-sdk-setup.md)。
 * 完成設定教學課程之後，請使用相同的筆記本伺服器開啟 tutorials/regression-automl-nyc-taxi-data/regression-automated-ml.ipynb 筆記本。
 
-如果您想要在自己的[本機環境](how-to-configure-environment.md#local)中執行此教學課程，也可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上取得。 執行 `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` 以取得必要套件。
+如果您想要在自己的[本機環境](how-to-configure-environment.md#local)中執行此教學課程，也可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上取得。 若要取得必要套件： 
+* [安裝完整的 `automl` 用戶端](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)。
+* 執行 `pip install azureml-opendatasets azureml-widgets` 以取得必要套件。
 
 ## <a name="download-and-prepare-data"></a>下載並準備資料
 

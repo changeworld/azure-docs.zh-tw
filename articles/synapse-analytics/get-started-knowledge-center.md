@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 09/15/2020
-ms.openlocfilehash: 461fabd0dd9948e8967ac61919f77e3e23a981b9
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.date: 11/16/2020
+ms.openlocfilehash: 57213e228359fd6c201d501d3bb75f7267054277
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331952"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685421"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>探索 Synapse 知識中心
 
@@ -25,7 +25,7 @@ ms.locfileid: "94331952"
 
 有兩種方式可找到 Synapse Studio 中的知識中心：
 
-  1. 在首頁中樞的實用連結底下，按一下名為 **知識中心** 的第一個連結。
+  1. 在 [首頁] 中樞的頁面右上方，按一下 [學習]。
   2. 在頂端的功能表列上，按一下 [？] 然後按一下 [知識中心]。
 
 挑選其中一個方法並開啟 [知識中心]。

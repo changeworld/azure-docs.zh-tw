@@ -6,14 +6,14 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 09/08/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 55e47b09ac4a6256a125a75c8a0f856e867e7c0e
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 0802f09cfb03f837fb7080620da776e79b37c9ed
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337766"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845079"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>快速入門：設定 Azure Spring Cloud 設定伺服器
 
@@ -57,9 +57,19 @@ Azure Spring Cloud Config Server 是分散式系統的集中式設定服務。 �
 
 2. 在 [預設存放庫] 區段中，將 [URI] 設定為 [https://github.com/Azure-Samples/piggymetrics-config ]。
 
-3. 選取 [套用] 以儲存變更。
+3. 按一下 **[驗證]** 。
 
-    ![ASC 入口網站的螢幕擷取畫面](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+    ![瀏覽至 Config Server](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+
+4. 在驗證完成後，按一下 [套用] 以儲存您的變更。
+
+    ![驗證 Config Server](media/spring-cloud-quickstart-launch-app-portal/validate-complete.png)
+
+5. 更新設定可能需要幾分鐘的時間。
+ 
+    ![更新 Config Server](media/spring-cloud-quickstart-launch-app-portal/updating-config.png) 
+
+6. 設定完成後，您應該會收到通知。
 
 #### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 

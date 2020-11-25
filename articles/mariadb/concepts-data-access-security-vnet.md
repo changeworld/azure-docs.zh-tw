@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/17/2020
 ms.openlocfilehash: 0863ccda9f292f3da9f7064a78ba700ab5962eb2
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533458"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014630"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>針對適用於 MariaDB 的 Azure 資料庫使用虛擬網路服務端點和規則
 
@@ -32,9 +32,9 @@ ms.locfileid: "94533458"
 
 **虛擬網路：** Azure 訂用帳戶可以有相關聯的虛擬網路。
 
-**子網路：** 虛擬網路包含 **子網路** 。 您有的任何 Azure 虛擬機器 (VM) 會指派給子網路。 一個子網路可以包含多個 VM 或其他計算節點。 計算虛擬網路外部的節點無法存取虛擬網路，除非您設定安全性來允許存取。
+**子網路：** 虛擬網路包含 **子網路**。 您有的任何 Azure 虛擬機器 (VM) 會指派給子網路。 一個子網路可以包含多個 VM 或其他計算節點。 計算虛擬網路外部的節點無法存取虛擬網路，除非您設定安全性來允許存取。
 
-**虛擬網路服務端點：** [虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]是一個子網路，其屬性值包含一或多個正式的 Azure 服務類型名稱。 本文中我們探討類型名稱 **Microsoft.Sql** ，它參考名為 SQL Database 的 Azure 服務。 此服務標籤也會套用至適用於 MariaDB、MySQL 和 PostgreSQL 服務的 Azure 資料庫。 請務必注意，當您將 **Microsoft.Sql** 服務標籤套用到 VNet 服務端點時，它將會針對子網路上的所有 Azure SQL Database、適用於 MariaDB 的 Azure 資料庫、適用於 MySQL 的 Azure 資料庫，以及適用於 PostgreSQL 的 Azure 資料庫伺服器設定服務端點流量。
+**虛擬網路服務端點：** [虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]是一個子網路，其屬性值包含一或多個正式的 Azure 服務類型名稱。 本文中我們探討類型名稱 **Microsoft.Sql**，它參考名為 SQL Database 的 Azure 服務。 此服務標籤也會套用至適用於 MariaDB、MySQL 和 PostgreSQL 服務的 Azure 資料庫。 請務必注意，當您將 **Microsoft.Sql** 服務標籤套用到 VNet 服務端點時，它將會針對子網路上的所有 Azure SQL Database、適用於 MariaDB 的 Azure 資料庫、適用於 MySQL 的 Azure 資料庫，以及適用於 PostgreSQL 的 Azure 資料庫伺服器設定服務端點流量。
 
 **虛擬網路規則：** 適用於 MariaDB 的 Azure 資料庫伺服器的虛擬網路規則，是列於適用於 MariaDB 的 Azure 資料庫伺服器之存取控制清單 (ACL) 中的子網路。 子網路必須包含 **Microsoft.Sql** 類型名稱，才能列在適用於 MariaDB 的 Azure 資料庫伺服器的 ACL 中。
 

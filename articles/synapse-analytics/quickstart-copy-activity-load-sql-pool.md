@@ -1,6 +1,6 @@
 ---
-title: 使用複製活動將資料載入 SQL 集區的快速入門
-description: 使用 Azure Synapse Analytics 將資料載入至 SQL 集區
+title: 快速入門：使用複製活動將資料載入專用 SQL 集區中
+description: 使用 Azure Synapse Analytics 中的管線複製活動，將資料載入專用 SQL 集區中。
 services: synapse-analytics
 ms.author: jingwang
 author: linda33wj
@@ -10,18 +10,18 @@ ms.service: synapse-analytics
 ms.topic: quickstart
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 12b5530ccf154220b11f9d1286d629caf2209475
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 542fde3ac951bf60d999361dc114491515fb9528
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280758"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94735240"
 ---
-# <a name="quickstart-load-data-into-sql-pool-using-copy-activity"></a>快速入門：使用複製活動將資料載入 SQL 集區
+# <a name="quickstart-load-data-into-dedicated-sql-pool-using-the-copy-activity"></a>快速入門：使用複製活動將資料載入專用 SQL 集區中
 
-Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、模型化及分析您的資料。 SQL 集區提供以 T-SQL 為基礎的計算和儲存功能。 在 Synapse 工作區中建立 SQL 集區後，就可以載入、模型化、處理及提供資料，以提供更快速的分析見解。
+Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、模型化及分析您的資料。 專用 SQL 集區提供以 T-SQL 為基礎的計算和儲存功能。 在 Synapse 工作區中建立專用 SQL 集區後，就可以載入、模型化、處理及提供資料，以提供更快速的分析見解。
 
-在本快速入門中，您將了解如何「將資料從 Azure SQL Database 載入至 Azure Synapse Analytics」。 您可以依照類似的步驟，從其他類型的資料存放區複製資料。 而類似的流程也適用於其他來源與接收之間的資料複製。
+在本快速入門中，您將了解如何「將資料從 Azure SQL Database 載入至 Azure Synapse Analytics」。 您可以依照類似的步驟，從其他類型的資料存放區複製資料。 這個類似的流程也適用於其他來源和接收的資料複製。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -29,13 +29,13 @@ Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、�
 * Azure Synapse 工作區：遵循以下指示，使用 Azure 入口網站建立 Synapse 工作區：[快速入門：建立 Synapse 工作區](quickstart-create-workspace.md)。
 * Azure SQL Database：本教學課程會從 Azure SQL Database 中的 Adventure Works LT 範例資料集複製資料。 您可以遵循[在 Azure SQL Database 中建立範例資料庫](../azure-sql/database/single-database-create-quickstart.md)中的指示，在 SQL Database 中建立此範例資料庫。 或者，您可以依照類似的步驟來使用其他資料存放區。
 * Azure 儲存體帳戶：在複製作業中，Azure 儲存體會作為「暫存」區域。 如果您沒有 Azure 儲存體帳戶，請參閱[建立儲存體帳戶](../storage/common/storage-account-create.md)中的指示。
-* Azure Synapse Analytics：您可使用 SQL 集區作為接收資料存放區。 如果您沒有 Azure Synapse Analytics 執行個體，請參閱[建立 SQL 資料庫](quickstart-create-sql-pool-portal.md)，按照步驟建立。
+* Azure Synapse Analytics：您可以使用專用 SQL 集區作為接收資料存放區。 如果您沒有 Azure Synapse Analytics 執行個體，請參閱[建立專用 SQL 集區](quickstart-create-sql-pool-portal.md)，按照步驟建立。
 
 ### <a name="navigate-to-the-synapse-studio"></a>瀏覽至 Synapse Studio
 
-建立 Azure Synapse 工作區之後，有兩種方式可以開啟 Synapse Studio：
+建立 Synapse 工作區之後，有兩種方式可以開啟 Synapse Studio：
 
-* 在 [Azure 入口網站](https://ms.portal.azure.com/#home)中開啟 Synapse 工作區。 在 [概觀] 區段的頂端，選取 [啟動 Synapse Studio]。
+* 在 [Azure 入口網站](https://ms.portal.azure.com/#home)中開啟 Synapse 工作區。 在 [開始使用] 底下的 [開啟 Synapse Studio] 卡片上，選取 [開啟]。
 * 開啟 [Azure Synapse Analytics](https://web.azuresynapse.net/) 並登入您的工作區。
 
 在本快速入門中，我們會使用名為 "adftest2020" 的工作區作為範例。 其會自動讓您瀏覽至 Synapse Studio 首頁。
@@ -44,7 +44,7 @@ Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、�
 
 ## <a name="create-linked-services"></a>建立連結的服務
 
-在 Azure Synapse Analytics 中，連結服務可讓您定義其他服務的連線資訊。 在本節中，您將建立下列兩種連結服務：Azure SQL Database 和 Azure Data Lake Storage Gen2 連結服務。
+在 Azure Synapse Analytics 中，連結服務可讓您定義其他服務的連線資訊。 在本節中，您將建立下列兩種連結服務：Azure SQL Database 和 Azure Data Lake Storage Gen2 (ADLS Gen2) 連結服務。
 
 1. 在 Synapse Studio 首頁上，在左側導覽中選取 [管理] 索引標籤。
 1. 在 [外部連線] 底下，選取 [連結服務]。
@@ -66,7 +66,7 @@ Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、�
  
 ## <a name="create-a-pipeline"></a>建立管線
 
-管線包含執行一組活動的邏輯流程。 在本節中，您將建立一個包含複製活動的管線，可將資料從 Azure SQL Database 內嵌至 SQL 集區。
+管線包含執行一組活動的邏輯流程。 在本節中，您將建立一個包含複製活動的管線，將資料從 Azure SQL Database 內嵌至專用 SQL 集區。
 
 1. 移至 [整合] 索引標籤。選取管線標頭旁的加號圖示，然後選取 [管線]。
 
@@ -84,7 +84,7 @@ Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、�
    ![設定來源資料集屬性](media/quickstart-copy-activity-load-sql-pool/source-dataset-properties.png)
 1. 於完成時選取 [確定]。
 1. 選取複製活動，然後移至 [接收] 索引標籤。選取 [新增] 以建立新的接收資料集。
-1. 選取 [SQL 分析集區] 作為資料存放區，然後選取 [繼續]。
+1. 選取 [Azure Synapse 專用 SQL 及區] 作為資料存放區，然後選取 [繼續]。
 1. 在 [設定屬性] 窗格中，選取您在先前步驟中建立的 SQL 分析集區。 如果您要寫入現有的資料表，請在 [資料表名稱] 底下，從下拉式清單加以選取。 否則，請勾選 [編輯] 並輸入新的資料表名稱。 於完成時選取 [確定]。
 1. 針對 [接收資料集設定]，在 [資料表選項] 欄位中啟用 [自動建立資料表]。
 
@@ -122,7 +122,7 @@ Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、�
    ![活動詳細資料](media/quickstart-copy-activity-load-sql-pool/activity-details.png)
 
 1. 若要切換回 [管線執行] 檢視，請選取頂端的 [所有管線執行] 連結。 選取 [重新整理] 即可重新整理清單。
-1. 確認您的資料已在 SQL 集區中正確寫入。
+1. 確認您的資料已在專用 SQL 集區中正確寫入。
 
 
 ## <a name="next-steps"></a>後續步驟

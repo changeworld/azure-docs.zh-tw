@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 3e68e65a5c2ed73a8fb6d8e5d01c645e05ca5157
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: b368048e5ea34ebfc073b1ae239cbb40724ae393
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320709"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684367"
 ---
 # <a name="communication-services-notifications"></a>通訊服務通知
 
@@ -36,7 +36,7 @@ Azure 通訊服務與 [Azure 事件方格](https://azure.microsoft.com/services/
 
 您可以將 Azure 通知中樞連線到您的通訊服務資源，以便在接到來電時，自動將推播通知傳送至使用者的行動裝置。 您應該使用這些推播通知將您的應用程式從背景喚醒，並且顯示 UI，讓使用者接受或拒絕通話。 
 
-:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="圖表顯示通訊服務與事件方格的整合方式。":::
+:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="圖表顯示通訊服務與事件中樞的整合方式。":::
 
 通訊服務會使用 Azure 通知中樞作為傳遞服務，以使用[直接傳送](https://docs.microsoft.com/rest/api/notificationhubs/direct-send) API 與各種平台特定的推播通知服務進行通訊。 這可讓您重複使用現有的 Azure 通知中樞資源和設定，為您的應用程式提供低延遲、可靠的通話通知。
 
@@ -53,7 +53,8 @@ Azure 通訊服務與 [Azure 事件方格](https://azure.microsoft.com/services/
 設定通知中樞之後，您可以使用 Azure Resource Manager 用戶端或透過 Azure 入口網站提供中樞的連接字串，將其與您的「通訊服務」資源建立關聯。 連接字串應該包含「傳送」權限。 我們建議您特別為您的中樞建立另一個具有僅限「傳送」權限的存取原則。 深入了解[通知中樞安全性和存取原則](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-security)
 
 > [!IMPORTANT]
-> 若要啟用 Apple Push Notification Service VOIP 通知，您必須將通知中樞的名稱設定為具有 `.voip` 尾碼的應用程式套件組合識別碼。 請參閱[透過通知中樞使用 APNS VOIP](https://docs.microsoft.com/azure/notification-hubs/voip-apns)。
+> 這僅適用於權杖驗證模式。 目前不支援憑證驗證模式。  
+若要啟用 APNS VOIP 通知，您必須在設定通知中樞時，將套件組合識別碼的值設定為具有 `.voip` 尾碼的應用程式套件組合識別碼。 如需詳細資訊，請參閱[透過通知中樞使用 APNS VOIP](https://docs.microsoft.com/azure/notification-hubs/voip-apns)。
 
 #### <a name="using-the-azure-resource-manager-client-to-configure-the-notification-hub"></a>使用 Azure Resource Manager 用戶端來設定通知中樞
 
@@ -73,7 +74,7 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 
 在入口網站中，瀏覽至您的 Azure 通訊服務資源。 在通訊服務資源中，從 [通訊服務] 頁面的左側功能表選取 [推播通知]，然後連線您先前佈建的通知中樞。 您必須在這裡提供您的連接字串和資源識別碼：
 
-:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="圖表顯示通訊服務與事件方格的整合方式。":::
+:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="顯示 Azure 入口網站中推播通知設定的螢幕擷取畫面。":::
 
 > [!NOTE]
 > 如果 Azure 通知中樞連接字串有更新，則必須一併更新通訊服務資源。

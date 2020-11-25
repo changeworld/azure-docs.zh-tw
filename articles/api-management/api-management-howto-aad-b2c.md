@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 7b586edd7adce8bcea61419005a3ce8cfc814fb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86254926"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013531"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>如何在 Azure API 管理中使用 Azure Active Directory B2C 授權開發人員帳戶
 
@@ -40,53 +40,53 @@ Azure Active Directory B2C 是適用於取用者導向 Web 與行動應用程式
 
 1. 在 **[** 身分識別] 下。 按一下頂端的 [ **+ 新增** ]。
 
-   [新增識別提供者]**** 窗格隨即出現在右邊。 選擇 [Azure Active Directory B2C]****。
+   [新增識別提供者] 窗格隨即出現在右邊。 選擇 [Azure Active Directory B2C]。
     
    ![將 AAD B2C 新增為識別提供者][api-management-howto-add-b2c-identity-provider]
 
-1. 複製 [重新導向 URL] ****。
+1. 複製 [重新導向 URL] 。
 
    ![AAD B2C 識別提供者重新導向 URL][api-management-howto-copy-b2c-identity-provider-redirect-url]
 
-1. 以新的索引標籤存取 Azure 入口網站中的 Azure Active Directory B2C 租用戶，然後開啟 [應用程式]**** 刀鋒視窗。
+1. 以新的索引標籤存取 Azure 入口網站中的 Azure Active Directory B2C 租用戶，然後開啟 [應用程式] 刀鋒視窗。
 
    ![註冊新的應用程式 1][api-management-howto-aad-b2c-portal-menu]
 
-1. 按一下 [新增]**** 按鈕以建立新的 Azure Active Directory B2C 應用程式。
+1. 按一下 [新增] 按鈕以建立新的 Azure Active Directory B2C 應用程式。
 
    ![註冊新的應用程式 2][api-management-howto-aad-b2c-add-button]
 
-1. 在 [新增應用程式]**** 刀鋒視窗中，輸入應用程式的名稱。 在 [Web 應用程式/Web API]**** 下選擇 [是]****，然後在 [允許隱含流程]**** 下選擇 [是]****。 將在步驟 3 複製的**重新導向 URL** 貼到 [回覆 URL]**** 文字方塊。
+1. 在 [新增應用程式] 刀鋒視窗中，輸入應用程式的名稱。 在 [Web 應用程式/Web API] 下選擇 [是]，然後在 [允許隱含流程] 下選擇 [是]。 將在步驟 3 複製的 **重新導向 URL** 貼到 [回覆 URL] 文字方塊。
 
    ![註冊新的應用程式 3][api-management-howto-aad-b2c-app-details]
 
-1. 如果您使用的是新的開發人員入口網站 (而不是舊版開發人員入口網站) ，請在應用程式宣告中包含 **指定的名稱**、 **姓氏**和 **使用者的物件識別碼** 。
+1. 如果您使用的是新的開發人員入口網站 (而不是舊版開發人員入口網站) ，請在應用程式宣告中包含 **指定的名稱**、 **姓氏** 和 **使用者的物件識別碼** 。
 
     ![應用程式宣告](./media/api-management-howto-aad-b2c/api-management-application-claims.png)
 
-1. 按一下 [ **建立** ] 按鈕。 應用程式在建立後會出現在 [應用程式]**** 刀鋒視窗。 按一下應用程式名稱可查看其詳細資料。
+1. 按一下 [ **建立** ] 按鈕。 應用程式在建立後會出現在 [應用程式] 刀鋒視窗。 按一下應用程式名稱可查看其詳細資料。
 
    ![註冊新的應用程式 4][api-management-howto-aad-b2c-app-created]
 
-1. 從 [屬性]**** 刀鋒視窗複製 [應用程式識別碼]**** 到剪貼簿。
+1. 從 [屬性] 刀鋒視窗複製 [應用程式識別碼] 到剪貼簿。
 
    ![應用程式識別碼 1][api-management-howto-aad-b2c-app-id]
 
-1. 切換回 API 管理的 [新增識別提供者]**** 窗格，然後將識別碼貼到 [用戶端識別碼]**** 文字方塊。
+1. 切換回 API 管理的 [新增識別提供者] 窗格，然後將識別碼貼到 [用戶端識別碼] 文字方塊。
     
-1.  切換回 B2C 應用程式註冊，按一下 [金鑰]**** 按鈕，然後按一下 [產生金鑰]****。 按一下 [儲存]**** 以儲存組態並顯示**應用程式金鑰**。 複製金鑰至剪貼簿。
+1.  切換回 B2C 應用程式註冊，按一下 [金鑰] 按鈕，然後按一下 [產生金鑰]。 按一下 [儲存] 以儲存組態並顯示 **應用程式金鑰**。 複製金鑰至剪貼簿。
 
     ![應用程式金鑰 1][api-management-howto-aad-b2c-app-key]
 
-1.  切換回 API 管理的 [新增識別提供者]**** 窗格，然後將金鑰貼到 [用戶端密碼]**** 文字方塊。
+1.  切換回 API 管理的 [新增識別提供者] 窗格，然後將金鑰貼到 [用戶端密碼] 文字方塊。
     
-1.  指定登入 **租**使用者中 Azure Active Directory B2C 租使用者的功能變數名稱。
+1.  指定登入 **租** 使用者中 Azure Active Directory B2C 租使用者的功能變數名稱。
 
 1.  [ **授權** 單位] 欄位可讓您控制要使用的 Azure AD B2C 登入 URL。 將值設定為 **<your_b2c_tenant_name>. b2clogin.com**。
 
-1. 指定 B2C 租用戶原則中的 [註冊原則]**** 和 [登入原則]****。 (選擇性) 您也可以提供 [設定檔編輯原則]**** 和 [密碼重設原則]****。
+1. 指定 B2C 租用戶原則中的 [註冊原則] 和 [登入原則]。 (選擇性) 您也可以提供 [設定檔編輯原則] 和 [密碼重設原則]。
 
-1. 指定需要的組態之後，按一下 [儲存]****。
+1. 指定需要的組態之後，按一下 [儲存]。
 
     儲存變更後，開發人員就可以使用 Azure Active Directory B2C 建立新帳戶和登入開發人員入口網站。
 
@@ -105,18 +105,18 @@ Azure Active Directory B2C 是適用於取用者導向 Web 與行動應用程式
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
-1. 若要使用 Azure Active Directory B2C 註冊開發人員帳戶，請開啟新的瀏覽器視窗並移至開發人員入口網站。 按一下 [註冊]**** 按鈕。
+1. 若要使用 Azure Active Directory B2C 註冊開發人員帳戶，請開啟新的瀏覽器視窗並移至開發人員入口網站。 按一下 [註冊] 按鈕。
 
    ![開發人員入口網站 1][api-management-howto-aad-b2c-dev-portal]
 
-2. 選擇使用 [Azure Active Directory B2C]**** 進行註冊。
+2. 選擇使用 [Azure Active Directory B2C] 進行註冊。
 
    ![開發人員入口網站 2][api-management-howto-aad-b2c-dev-portal-b2c-button]
 
 3. 系統會將您重新導向至您在上一節中設定的註冊原則。 選擇使用電子郵件地址或其中一個現有的社交帳戶登入。
 
    > [!NOTE]
-   > 如果 Azure Active Directory B2C 是發佈者入口網站的 [身分識別]**** 索引標籤上唯一啟用的選項，系統會直接將您重新導向至註冊原則。
+   > 如果 Azure Active Directory B2C 是發佈者入口網站的 [身分識別] 索引標籤上唯一啟用的選項，系統會直接將您重新導向至註冊原則。
 
    ![開發人員入口網站][api-management-howto-aad-b2c-dev-portal-b2c-options]
 
@@ -124,7 +124,7 @@ Azure Active Directory B2C 是適用於取用者導向 Web 與行動應用程式
 
     ![註冊完成][api-management-registration-complete]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 *  [Azure Active Directory B2C 概觀]
 *  [Azure Active Directory B2C：可延伸的原則架構]

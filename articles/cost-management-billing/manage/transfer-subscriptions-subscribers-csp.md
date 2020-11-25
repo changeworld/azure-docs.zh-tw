@@ -6,14 +6,14 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/22/2020
+ms.date: 11/17/2020
 ms.author: banders
-ms.openlocfilehash: 69d6544485e356741634749dd91ba6485cfbb31c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7cbb628f6af286141fb1c7b330117ded33142c4f
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460677"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94744233"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>在訂閱者與 CSP 之間轉移 Azure 訂用帳戶
 
@@ -25,7 +25,7 @@ ms.locfileid: "92460677"
 
 ## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>將 EA 訂用帳戶轉移給 CSP 合作夥伴
 
-已認證為 [Azure Expert 受控服務提供者 (MSP) 的](https://partner.microsoft.com/membership/azure-expert-msp)可以要求為具有直接 Enterprise 合約 (EA) 的客戶轉移 Azure 訂用帳戶。 只有已接受 Microsoft 客戶合約 (MCA) 並購買 Azure 方案的客戶才能轉移訂用帳戶。
+已認證為 [Azure Expert 受控服務提供者 (MSP) 的](https://partner.microsoft.com/membership/azure-expert-msp)可以要求為具有直接 Enterprise 合約 (EA) 的客戶轉移 Azure 訂用帳戶。 只有已接受 Microsoft 客戶合約 (MCA) 並購買 Azure 方案搭配 CSP 計畫的客戶才能轉移訂用帳戶。
 
 當要求獲得核准後，CSP 就可以為其客戶提供合併的發票。 若要深入了解 CSP 的訂用帳戶轉移，請參閱[取得您 MPA 帳戶的 Azure 訂用帳戶帳單擁有權](mpa-request-ownership.md)。
 

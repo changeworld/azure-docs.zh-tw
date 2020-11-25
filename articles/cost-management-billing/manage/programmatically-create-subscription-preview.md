@@ -5,26 +5,34 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/29/2020
+ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3ffdeb0add8622e1b9f28f9603dc146b78f742cd
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 68d890386d53b4115c773b128f8678bac9579e53
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043297"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844330"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>使用預覽 API 以程式設計方式建立 Azure 訂用帳戶
 
-本文可協助您使用我們舊版的預覽 API，以程式設計方式建立 Azure 訂用帳戶。 我們已發行[較新的 API 版本](programmatically-create-subscription.md)。 如果您不想要使用最新版本，可以參考本文中的資訊。 在本文中，可了解如何使用 Azure Resource Manager 以程式設計方式建立訂用帳戶。
+本文可協助您使用我們舊版的預覽 API，以程式設計方式建立 Azure 訂用帳戶。 在本文中，可了解如何使用 Azure Resource Manager 以程式設計方式建立訂用帳戶。
+
+我們提供了新文章，說明可與不同的 Azure 合約訂用帳戶類型搭配使用的最新 API 版本：
+
+- [使用最新 API 以程式設計方式建立 EA 訂用帳戶](programmatically-create-subscription-enterprise-agreement.md)
+- [使用最新 API 以程式設計方式建立 MCA 訂用帳戶](programmatically-create-subscription-microsoft-customer-agreement.md)
+- [使用最新 API 以程式設計方式建立 MPA 訂用帳戶](Programmatically-create-subscription-microsoft-customer-agreement.md)
+
+不過，如果您不想要使用最新的 API 版本，仍然可以使用本文中的資訊。
 
 Azure 客戶若使用下列合約類型的計費帳戶，則可以程式設計方式建立訂用帳戶：
 
-- [Enterprise 合約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
-- [Microsoft 客戶合約 (MCA)](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/)
-- [Microsoft 合作夥伴合約 (MPA)](https://www.microsoft.com/licensing/news/introducing-microsoft-partner-agreement)
+- Enterprise 合約
+- Microsoft 客戶合約 (MCA)
+- Microsoft 合作夥伴合約 (MPA)
 
 當您以程式設計方式建立 Azure 訂用帳戶時，該訂用帳戶會受合約規範，此合約是您向 Microsoft 或授權經銷商取得 Azure 服務時所簽署的合約。 如需詳細資訊，請參閱 [Microsoft Azure 法律資訊](https://azure.microsoft.com/support/legal/)。
 
@@ -157,7 +165,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 }
 ```
 
-| 元素名稱  | 必要 | 類型   | 描述                                                                                               |
+| 元素名稱  | 必要 | 類型   | 說明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | 否      | String | 訂用帳戶的顯示名稱。 如果未指定，會設定為供應項目的名稱，例如「Microsoft Azure 企業版」。                                 |
 | `offerType`   | 是      | String | 訂用帳戶的供應項目方案。 EA 的兩個選項為 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (生產環境使用) 和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開發/測試環境使用，必須[使用 EA 入口網站來開啟](https://ea.azure.com/helpdocs/DevOrTestOffer))。                |
@@ -175,9 +183,9 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId <enrollmentAccountObjectId> -OwnerObjectId <userObjectId1>,<servicePrincipalObjectId>
 ```
 
-| 元素名稱  | 必要 | 類型   | 描述 |
+| 元素名稱  | 必要 | 類型   | 說明 |
 |---------------|----------|--------|----|
-| `Name` | 否      | String | 訂用帳戶的顯示名稱。 若未指定，則會設定為供應項目的名稱，例如 *Microsoft Azure 企業版* 。 |
+| `Name` | 否      | String | 訂用帳戶的顯示名稱。 若未指定，則會設定為供應項目的名稱，例如 *Microsoft Azure 企業版*。 |
 | `OfferType`   | 是      | String | 訂用帳戶供應項目。 EA 的兩個選項為 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (生產環境使用) 和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開發/測試環境使用，必須[使用 EA 入口網站來開啟](https://ea.azure.com/helpdocs/DevOrTestOffer))。                |
 | `EnrollmentAccountObjectId`      | 是       | String | 用來建立訂用帳戶並加以收費的註冊帳戶物件識別碼。 此值是您從 `Get-AzEnrollmentAccount` 取得的 GUID。 |
 | `OwnerObjectId`      | 否       | String | 在建立訂用帳戶之後，任何要在該訂用帳戶上新增為「Azure RBAC 擁有者」之使用者的「物件識別碼」。  |
@@ -196,9 +204,9 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
 ```
 
-| 元素名稱  | 必要 | 類型   | 描述 |
+| 元素名稱  | 必要 | 類型   | 說明 |
 |---------------|----------|--------|------------|
-| `display-name` | 否      | String | 訂用帳戶的顯示名稱。 若未指定，則會設定為供應項目的名稱，例如 *Microsoft Azure 企業版* 。|
+| `display-name` | 否      | String | 訂用帳戶的顯示名稱。 若未指定，則會設定為供應項目的名稱，例如 *Microsoft Azure 企業版*。|
 | `offer-type`   | 是      | String | 訂用帳戶的供應項目方案。 EA 的兩個選項為 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (生產環境使用) 和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開發/測試環境使用，必須[使用 EA 入口網站來開啟](https://ea.azure.com/helpdocs/DevOrTestOffer))。                |
 | `enrollment-account-object-id`      | 是       | String | 用來建立訂用帳戶並加以收費的註冊帳戶物件識別碼。 此值是您從 `az billing enrollment-account list` 取得的 GUID。 |
 | `owner-object-id`      | 否       | String | 在建立訂用帳戶之後，任何要在該訂用帳戶上新增為「Azure RBAC 擁有者」之使用者的「物件識別碼」。  |
@@ -506,7 +514,7 @@ API 回應會列出客戶適用的轉售商：
 
 下列範例會為 *Fabrikam toys* 建立名為「開發小組訂用帳戶」的訂用帳戶，並讓 *Wingtip* 轉銷商與訂用帳戶建立關聯。 
 
-提出下列要求，並以從第二個步驟複製的 `id` 取代 `<customerId>` (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```)。 在 API 的要求參數中，傳遞從第二個步驟中複製的選擇性 *resellerId* 。
+提出下列要求，並以從第二個步驟複製的 `id` 取代 `<customerId>` (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```)。 在 API 的要求參數中，傳遞從第二個步驟中複製的選擇性 *resellerId*。
 
 ```json
 POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/createSubscription?api-version=2018-11-01-preview

@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 803663f845272c6b1573fceed8025cc23483ec09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cef5c60b8b06a7bedbf65312c3210d5eb746880d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628735"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649717"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>將現有及全新樹系與單一 Azure AD 租用戶整合
 
@@ -39,12 +39,13 @@ ms.locfileid: "91628735"
 1. 識別已加入網域、執行 Windows Server 2012 R2 或更新版本，且至少有 4 GB RAM 和 .NET 4.7.1+ 執行階段的主機伺服器 
 
 2. 如果您的伺服器和 Azure AD 之間有防火牆，請設定下列項目：
-   - 確定代理程式可透過下列連接埠對 Azure AD 提出*輸出*要求：
+   - 確定代理程式可透過下列連接埠對 Azure AD 提出 *輸出* 要求：
 
      | 連接埠號碼 | 使用方式 |
      | --- | --- |
      | **80** | 驗證 TLS/SSL 憑證時下載憑證撤銷清單 (CRL) |
      | **443** | 處理所有與服務之間的輸出通訊 |
+     | **8082**| 安裝的必要項目。|
      | **8080** (選擇性) | 如果無法使用連接埠 443，則代理程式會透過連接埠 8080 每 10 分鐘報告其狀態一次。 此狀態會顯示在 Azure 入口網站上。 |
      
      如果您的防火牆會根據原始使用者強制執行規則，請開啟這些連接埠，讓來自以網路服務形式執行之 Windows 服務的流量得以通行。
@@ -56,21 +57,21 @@ ms.locfileid: "91628735"
 1. 登入已加入網域的伺服器。  如果您使用[基本 AD 和 Azure 環境](tutorial-basic-ad-azure.md)教學課程，則會是 DC1。
 2. 使用僅限雲端的全域管理員認證登入 Azure 入口網站。
 3. 在左側選取 [Azure Active Directory]  ，按一下 [Azure AD Connect]  ，然後在中央選取 [管理佈建 (預覽)]  。</br>
-![Azure 入口網站](media/how-to-install/install6.png)</br>
+![Azure 入口網站](media/how-to-install/install-6.png)</br>
 4. 按一下 [下載代理程式]
 5. 執行 Azure AD Connect 佈建代理程式
-6. 在啟動顯示畫面上**接受**授權條款，然後按一下 [安裝]  。</br>
-![此螢幕擷取畫面顯示 [Microsoft Azure AD Connect 佈建代理程式套件] 啟動顯示畫面。](media/how-to-install/install1.png)</br>
+6. 在啟動顯示畫面上 **接受** 授權條款，然後按一下 [安裝]  。</br>
+![此螢幕擷取畫面顯示 [Microsoft Azure AD Connect 佈建代理程式套件] 啟動顯示畫面。](media/how-to-install/install-1.png)</br>
 
 7. 此作業完成後，就會啟動組態精靈。  以 Azure AD 全域管理員帳戶登入。  請注意，如果您已啟用 IE 增強式安全性，則會封鎖登入。  在此情況下，請關閉安裝，在伺服器管理員中停用 [IE 增強式安全性]，然後按一下 [AAD Connect 佈建代理程式精靈] 以重新開始安裝。
-8. 在 [連接 Active Directory] 畫面上，按一下 [新增目錄]，然後以您的 Active Directory 網域系統管理員帳戶登入。  注意：網域系統管理員帳戶應該不會有密碼變更需求。 如果密碼過期或變更，您必須使用新的認證重新設定代理程式。 此作業將會新增您的內部部署目錄。  按 [下一步]  。</br>
-![顯示 [連線 Active Directory] 畫面的螢幕擷取畫面。](media/how-to-install/install3.png)</br>
+8. 在 [連接 Active Directory] 畫面上，按一下 [新增目錄]，然後以您的 Active Directory 網域系統管理員帳戶登入。 網域系統管理員帳戶應該不會有密碼變更需求。 如果密碼過期或變更，您必須使用新的認證重新設定代理程式。 此作業將會新增您的內部部署目錄。  按 [下一步]  。</br>
+![顯示 [連線 Active Directory] 畫面的螢幕擷取畫面。](media/how-to-install/install-3.png)</br>
 
 9. 在 [設定完成] 畫面上，按一下 [確認]。  此作業將會註冊並重新啟動代理程式。</br>
-![顯示 [組態完成] 畫面的螢幕擷取畫面。](media/how-to-install/install4.png)</br>
+![顯示 [組態完成] 畫面的螢幕擷取畫面。](media/how-to-install/install-4a.png)</br>
 
 10. 此作業完成後，您應該會看到一則通知：**已成功驗證您的代理程式設定。**  您可以按一下 [結束]。</br>
-![歡迎使用畫面](media/how-to-install/install5.png)</br>
+![歡迎使用畫面](media/how-to-install/install-5.png)</br>
 11. 如果您仍看到初始啟動顯示畫面，請按一下 [關閉]。
 
 
@@ -82,21 +83,21 @@ ms.locfileid: "91628735"
 
 1. 登入 Azure 入口網站。
 2. 在左側選取 [Azure Active Directory]，按一下 [Azure AD Connect]，然後在中央選取 [管理佈建 (預覽)]。</br>
-![Azure 入口網站](media/how-to-install/install6.png)</br>
+![Azure 入口網站](media/how-to-install/install-6.png)</br>
 
 3.  在 [Azure AD 佈建 (預覽)] 畫面上，按一下 [檢閱所有代理程式]。
-![Azure AD 佈建](media/how-to-install/install7.png)</br>
+![Azure AD 佈建](media/how-to-install/install-7.png)</br>
  
 4. 在 [內部部署佈建代理程式] 畫面上，您會看到已安裝的代理程式。  確認相關代理程式位於該處，且已標示為 [作用中]。
-![佈建代理程式](media/how-to-install/verify1.png)</br>
+![佈建代理程式](media/how-to-install/verify-1.png)</br>
 
 ### <a name="on-the-local-server"></a>在本機伺服器上
 若要確認代理程式正在執行中，請遵循下列步驟：
 
 1.  以系統管理員帳戶登入伺服器
 2.  瀏覽至 [服務] 或移至 [開始]/[執行]/[services.msc]，以開啟 [服務]。
-3.  在 [服務] 底下，確定有 **Microsoft Azure AD Connect 代理程式更新程式**和 **Microsoft Azure AD Connect 佈建代理程式**存在，且狀態為 [執行中]。
-![服務](media/how-to-troubleshoot/troubleshoot1.png)
+3.  在 [服務] 底下，確定有 **Microsoft Azure AD Connect 代理程式更新程式** 和 **Microsoft Azure AD Connect 佈建代理程式** 存在，且狀態為 [執行中]。
+![服務](media/how-to-install/troubleshoot-1.png)
 
 ## <a name="configure-azure-ad-connect-cloud-provisioning"></a>設定 Azure AD Connect 雲端佈建
  使用下列步驟來設定佈建
@@ -118,16 +119,15 @@ ms.locfileid: "91628735"
 
 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)並使用具有 Azure 訂用帳戶的帳戶登入。
-2. 選取左邊的 [Azure Active Directory]
-3. 在 [管理] 底下選取 [使用者]。
+2. 選取左邊的 [Azure Active Directory] 
+3. 在 [管理]  底下選取 [使用者]  。
 4. 確認您在我們的租用戶中看到新使用者</br>
-![同步](media/tutorial-single-forest/synchronize1.png)</br>
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>使用我們其中一個使用者來測試登入
 
 1. 瀏覽至 [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. 使用我們在新租用戶中建立的使用者來登入。  您必須使用下列格式登入：(user@domain.onmicrosoft.com)。 透過該使用者在內部部署用來登入的密碼登入。</br>
-   ![Verify](media/tutorial-single-forest/verify1.png)</br>
+   ![Verify](media/tutorial-single-forest/verify-1.png)</br>
 
 您現在已成功設定混合式身分識別環境，可用來測試及熟悉 Azure 的功能。
 

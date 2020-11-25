@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: a85656909df5538f9f57e05d79ae768623d7eba6
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c8f11f17c9e110509dcbcda291194f9b8d928c50
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289616"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658956"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>在 Key Vault 中建立和合併 CSR
 
@@ -25,7 +25,15 @@ Azure Key Vault 支援將您所選任何憑證授權單位發行的數位憑證�
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="adding-certificate-in-key-vault-issued-by-a-non-trusted-ca"></a>在 Key Vault 中新增非信任 CA 所發行的憑證
+## <a name="adding-certificate-in-key-vault-issued-by-partnered-ca"></a>在 Key Vault 中新增合作 CA 所簽發的憑證
+Key Vault 與下列兩個憑證授權單位合作，以簡化建立憑證的程序。 
+
+|提供者|憑證類型|組態設定  
+|--------------|----------------------|------------------|  
+|DigiCert|Key Vault 透過 DigiCert 提供 OV 或 EV SSL 憑證| [整合指南](./how-to-integrate-certificate-authority.md)
+|GlobalSign|Key Vault 透過 GlobalSign 提供 OV 或 EV SSL 憑證| [整合指南](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
+
+## <a name="adding-certificate-in-key-vault-issued-by-non-partnered-ca"></a>在 Key Vault 中新增非合作 CA 所簽發的憑證
 
 下列步驟將協助您從非 Key Vault 合作憑證授權單位中建立憑證 (例如，GoDaddy 不是受信任的金鑰保存庫 CA) 
 

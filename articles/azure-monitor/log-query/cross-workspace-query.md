@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
 ms.openlocfilehash: 8eb163c95fb1426ebae8956d50f6d8f6aec6fd7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612077"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013644"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>在跨工作區和應用程式的 Azure 監視器中執行記錄查詢
 
@@ -36,11 +36,11 @@ Azure 監視器記錄在相同的資源群組、另一個資源群組或另一�
 若要在查詢中參考另一個工作區，請使用 [*workspace*](./workspace-expression.md) 識別項，而若要查詢來自 Application Insights 的應用程式，請使用 [*app*](./app-expression.md) 識別項。  
 
 ### <a name="identifying-workspace-resources"></a>識別工作區資源
-下列範例示範對 Log Analytics 工作區的查詢，從名為 contosoretail-it** 工作區上的 Update 資料表，傳回記錄彙總計數。 
+下列範例示範對 Log Analytics 工作區的查詢，從名為 contosoretail-it 工作區上的 Update 資料表，傳回記錄彙總計數。 
 
 您可以下列數種方式之一來完成識別工作區：
 
-* 資源名稱 - 是人類看得懂的工作區名稱，有時稱為「元件名稱」**。 
+* 資源名稱 - 是人類看得懂的工作區名稱，有時稱為「元件名稱」。 
 
     `workspace("contosoretail-it").Update | count`
 
@@ -68,7 +68,7 @@ Azure 監視器記錄在相同的資源群組、另一個資源群組或另一�
 
 在 Application Insights 中識別應用程式可以使用 *app(Identifier)* 運算式來完成。  *Identifier* 引數會使用下列其中之一指定應用程式：
 
-* 資源名稱 - 是人類看得懂的應用程式名稱，有時稱為「元件名稱」**。  
+* 資源名稱 - 是人類看得懂的應用程式名稱，有時稱為「元件名稱」。  
 
     `app("fabrikamapp")`
 

@@ -4,12 +4,12 @@ description: 快速了解如何使用 Azure CLI 建立 Batch 帳戶並執行 bat
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 8824d4485167955dd1b928bc57381b2e6b672c5d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eb5bb4a627ff26250519651f5e6d47ddd6f5a776
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88213105"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562282"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>快速入門：使用 Azure CLI 執行您的第一個 Batch 作業
 
@@ -17,13 +17,11 @@ ms.locfileid: "88213105"
 
 Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。 完成本快速入門之後，您將了解 Batch 服務的重要概念，並可準備使用更多真實的工作負載來大規模試用 Batch。
 
-## <a name="prerequisites"></a>必要條件
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- 如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.20 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+- 本快速入門需要 2.0.20 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 

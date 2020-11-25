@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/09/2020
 ms.openlocfilehash: 1da86e36cf20dc15152aea74be6c43a4cb43d3b4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539763"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014239"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>監視 Azure HDInsight 中的叢集效能
 
@@ -50,11 +50,11 @@ Hadoop 有各種服務在其分散式平台之間執行。 YARN (Yet Another Res
 
 YARN 會將 JobTracker、資源管理及作業排程/監視的兩個責任分割為兩個精靈：全域 Resource Manager 和每個應用程式 ApplicationMaster (AM)。
 
-Resource Manager 是純排程器  ，且會單獨仲裁所有競爭應用程式之間的可用資源。 Resource Manager 可確保所有資源一律在使用中、最佳化各種常數，例如 SLA、容量保證等等。 ApplicationMaster 會交涉 Resource Manager 的資源，並使用 NodeManager(s) 來執行及監視容器和其資源耗用量。
+Resource Manager 是純排程器，且會單獨仲裁所有競爭應用程式之間的可用資源。 Resource Manager 可確保所有資源一律在使用中、最佳化各種常數，例如 SLA、容量保證等等。 ApplicationMaster 會交涉 Resource Manager 的資源，並使用 NodeManager(s) 來執行及監視容器和其資源耗用量。
 
 當有多個租使用者共用大型叢集時，會對叢集的資源進行競爭。 CapacityScheduler 是隨插即用的排程器，可藉由將要求排入佇列來協助資源共用。 CapacityScheduler 也支援 *階層式佇列* ，以確保在其他應用程式的佇列可使用免費資源之前，在組織的子佇列之間共用資源。
 
-YARN 可讓我們將資源配置給這些佇列，並顯示是否已指派所有可用的資源。 若要檢視您佇列的相關資訊，請登入 Ambari Web UI，然後從頂端功能表中選取 [YARN 佇列管理員]  。
+YARN 可讓我們將資源配置給這些佇列，並顯示是否已指派所有可用的資源。 若要檢視您佇列的相關資訊，請登入 Ambari Web UI，然後從頂端功能表中選取 [YARN 佇列管理員]。
 
 ![Apache Ambari YARN 佇列管理員](./media/hdinsight-key-scenarios-to-monitor/apache-yarn-queue-manager.png)
 
@@ -62,17 +62,17 @@ YARN 可讓我們將資源配置給這些佇列，並顯示是否已指派所有
 
 ![YARN 佇列管理員詳細資料頁面](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager-details.png)
 
-若要更詳細查看您的佇列，請從 Ambari 儀表板中的左側清單選取 [YARN]  服務。 然後在 [快速連結]  下拉式功能表中，選取作用中節點下的 [Resource Manager UI]  。
+若要更詳細查看您的佇列，請從 Ambari 儀表板中的左側清單選取 [YARN] 服務。 然後在 [快速連結] 下拉式功能表中，選取作用中節點下的 [Resource Manager UI]。
 
 ![Resource Manager UI 功能表連結](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu-link.png)
 
-在 Resource Manager UI 中，從左側功能表選取 [排程器]  。 您會在 [應用程式佇列]  下方看到您的佇列清單。 您可以在這裡查看每個佇列使用的容量，作業在它們之間散發的情況，以及是否有任何作業為有限資源。
+在 Resource Manager UI 中，從左側功能表選取 [排程器]。 您會在 [應用程式佇列] 下方看到您的佇列清單。 您可以在這裡查看每個佇列使用的容量，作業在它們之間散發的情況，以及是否有任何作業為有限資源。
 
 ![Apache HAdoop Resource Manager UI 功能表](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
 
 ## <a name="storage-throttling"></a>儲存體節流
 
-叢集的效能瓶頸可能會發生在儲存層級中。 這種類型的瓶頸最常見的原因是 *封鎖* 輸入/輸出 (io) 作業，這會在您執行的工作傳送比儲存體服務可以處理的 io 更多時發生。 此封鎖會建立 IO 要求的佇列，等候目前 IO 處理完成後才會予以處理。 區塊的原因是 *儲存體節流* ，這並不是實體限制，而是由服務等級協定的儲存體服務所加諸的限制 (SLA) 。 這項限制可確保沒有任何單一用戶端或租用戶可以獨佔服務。 SLA 會限制每秒的 Io 數目 (IOPS) 用於 Azure 儲存體-如需詳細資料，請參閱 [標準儲存體帳戶的擴充性和效能目標](../storage/common/scalability-targets-standard-account.md)。
+叢集的效能瓶頸可能會發生在儲存層級中。 這種類型的瓶頸最常見的原因是 *封鎖* 輸入/輸出 (io) 作業，這會在您執行的工作傳送比儲存體服務可以處理的 io 更多時發生。 此封鎖會建立 IO 要求的佇列，等候目前 IO 處理完成後才會予以處理。 區塊的原因是 *儲存體節流*，這並不是實體限制，而是由服務等級協定的儲存體服務所加諸的限制 (SLA) 。 這項限制可確保沒有任何單一用戶端或租用戶可以獨佔服務。 SLA 會限制每秒的 Io 數目 (IOPS) 用於 Azure 儲存體-如需詳細資料，請參閱 [標準儲存體帳戶的擴充性和效能目標](../storage/common/scalability-targets-standard-account.md)。
 
 如果您使用 Azure 儲存體，如需監視儲存體相關問題的詳細資訊（包括節流），請參閱 [監視、診斷和疑難排解 Microsoft Azure 儲存體](../storage/common/storage-monitoring-diagnosing-troubleshooting.md)。
 
@@ -122,7 +122,7 @@ YARN 可讓我們將資源配置給這些佇列，並顯示是否已指派所有
 > [!NOTE]  
 > 如果您有想要保留但造成磁碟空間不足問題的大型檔案，您必須擴大 HDInsight 叢集並重新啟動您的服務。 當您完成此程式並等候幾分鐘之後，您會注意到儲存體已釋出，而節點的一般效能也會還原。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 請造訪下列連結以取得關於疑難排解和監視您叢集的詳細資訊：
 

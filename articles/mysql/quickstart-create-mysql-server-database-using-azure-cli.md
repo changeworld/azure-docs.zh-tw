@@ -1,46 +1,38 @@
 ---
 title: 快速入門：建立伺服器 - Azure CLI - 適用於 MySQL 的 Azure 資料庫
 description: 本快速入門說明如何使用 Azure CLI 在 Azure 資源群組中建立 Azure Database for MySQL 伺服器。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/15/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 0c43f1ea81bbc29817e6a2509c9967bf3b5782c9
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 63768581da07566ac59b525ca0aefbd7b616e20e
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337280"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635563"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>快速入門：使用 Azure CLI 建立 Azure Database for MySQL 伺服器
 
 > [!TIP]
 > 請考慮使用較簡單的 [az mysql up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI 命令 (目前在預覽狀態)。 試用[快速入門](./quickstart-create-server-up-azure-cli.md)。
 
-本快速入門說明如何使用 [Azure Cloud Shell](https://shell.azure.com) 中的 [Azure CLI](/cli/azure/get-started-with-azure-cli) 命令，在五分鐘內建立適用於 MySQL 的 Azure 資料庫伺服器。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+本快速入門說明如何使用 [Azure Cloud Shell](https://shell.azure.com) 中的 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 命令，在五分鐘內建立適用於 MySQL 的 Azure 資料庫伺服器。 
 
-[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-> [!NOTE]
-> 如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。 
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="prerequisites"></a>Prerequisites
-本文需要您以本機方式執行 Azure CLI 2.0 版或更新版本。 若要查看所安裝的版本，請執行 `az --version` 命令。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+ - 本快速入門需要 2.0 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
-您必須使用 [az login](/cli/azure/reference-index#az-login) 命令登入您的帳戶。 請注意 **id** 屬性，這是指您的 Azure 帳戶的 **訂用帳戶識別碼** 。 
+ - 使用 [az account set](/cli/azure/account) 命令來選取您帳戶底下的特定訂用帳戶。 記下 **az login** 輸出中的 **id** 值，作為命令中 **訂用帳戶** 引數的值。 如果您有多個訂用帳戶，請選擇資源計費的適當訂用帳戶。 若要取得您的所有訂用帳戶，請使用 [az account list](/cli/azure/account#az-account-list)。
 
-```azurecli-interactive
-az login
-```
-
-使用 [az account set](/cli/azure/account) 命令來選取您帳戶底下的特定訂用帳戶。 記下 **az login** 輸出中的 **id** 值，作為命令中 **訂用帳戶** 引數的值。 如果您有多個訂用帳戶，請選擇資源計費的適當訂用帳戶。 若要取得您的所有訂用帳戶，請使用 [az account list](/cli/azure/account#az-account-list)。
-
-```azurecli
-az account set --subscription <subscription id>
-```
+   ```azurecli
+   az account set --subscription <subscription id>
+   ```
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>建立適用於 MySQL 的 Azure 資料庫伺服器
 使用 [az group create](/cli/azure/group) 命令建立 [Azure 資源群組](../azure-resource-manager/management/overview.md)，然後在此資源群組內建立您的 MySQL 伺服器。 請提供唯一的名稱。 下列範例會在 `westus` 位置建立名為 `myresourcegroup` 的資源群組。
@@ -62,7 +54,7 @@ az mysql server create --resource-group myresourcegroup --name mydemoserver --lo
 NAME | mydemoserver | 輸入 Azure Database for MySQL 伺服器的唯一名稱。 伺服器名稱只能包含小寫字母、數字及連字號 (-) 字元。 此名稱必須包含 3 到 63 個字元。
 resource-group | myresourcegroup | 提供 Azure 資源群組的名稱。
 location | westus | 伺服器的 Azure 位置。
-admin-user | myadmin | 適用於系統管理員登入的使用者名稱。 此名稱不得為 **azure_superuser** 、 **admin** 、 **administrator** 、 **root** 、 **guest** 或 **public** 。
+admin-user | myadmin | 適用於系統管理員登入的使用者名稱。 此名稱不得為 **azure_superuser**、**admin**、**administrator**、**root**、**guest** 或 **public**。
 admin-password | *安全密碼* | 系統管理員使用者的密碼。 其必須包含 8 到 128 個字元。 您的密碼必須包含下列類別中三種類別的字元：英文大寫字母、英文小寫字母、數字及非英數字元。
 sku-name|GP_Gen5_2|輸入定價層和計算組庇的名稱。 遵循簡短形式的慣例 {pricing tier} _{compute generation}_ {vCores}。 如需詳細資訊，請參閱[定價層](./concepts-pricing-tiers.md)。
 
@@ -91,7 +83,7 @@ az mysql server firewall-rule create --resource-group myresourcegroup --server m
 az mysql server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-結果會採用 JSON 格式。 請記下 **fullyQualifiedDomainName** 和 **administratorLogin** 。
+結果會採用 JSON 格式。 請記下 **fullyQualifiedDomainName** 和 **administratorLogin**。
 ```json
 {
   "administratorLogin": "myadmin",

@@ -7,12 +7,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 006c995217ced91690798ae68f04e3b6c3148228
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 27594ff4d7673038e9de38c5969a615be60aeadf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131950"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844688"
 ---
 # <a name="create-an-additional-azure-subscription"></a>建立額外的 Azure 訂用帳戶
 
@@ -35,7 +35,7 @@ ms.locfileid: "92131950"
 ## <a name="create-a-subscription-in-the-azure-portal"></a>在 Azure 入口網站中建立訂用帳戶
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 尋找**訂用帳戶**。
+1. 尋找 **訂用帳戶**。
 
    ![顯示在入口網站中搜尋訂用帳戶的螢幕擷取畫面](./media/create-subscription/billing-search-subscription-portal.png)
 
@@ -73,7 +73,11 @@ ms.locfileid: "92131950"
 
 ## <a name="create-an-additional-azure-subscription-programmatically"></a>以程式設計方式建立額外的 Azure 訂用帳戶
 
-您也可以利用程式設計方式來建立額外的訂用帳戶。 如需詳細資訊，請參閱[以程式設計方式建立 Azure 訂用帳戶](programmatically-create-subscription.md)。
+您也可以利用程式設計方式來建立額外的訂用帳戶。 如需詳細資訊，請參閱
+
+- [使用最新 API 以程式設計方式建立 EA 訂用帳戶](programmatically-create-subscription-enterprise-agreement.md)
+- [使用最新 API 以程式設計方式建立 MCA 訂用帳戶](programmatically-create-subscription-microsoft-customer-agreement.md)
+- [使用最新 API 以程式設計方式建立 MPA 訂用帳戶](Programmatically-create-subscription-microsoft-customer-agreement.md)
 
 ## <a name="next-steps"></a>後續步驟
 

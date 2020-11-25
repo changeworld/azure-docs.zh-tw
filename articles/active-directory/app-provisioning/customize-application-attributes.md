@@ -1,5 +1,5 @@
 ---
-title: 教學課程-自訂 Azure Active Directory 屬性對應
+title: 教學課程 - 自訂 Azure Active Directory 屬性對應
 description: 了解 Azure Active Directory 中 SaaS 應用程式有哪些屬性對應，以及如何修改屬性對應來應付業務需求。
 services: active-directory
 author: kenwith
@@ -10,14 +10,14 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: 42ec826ab95363c2599be541fe451473be5ca08d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f65fb37a4cc6640bc998af1c56e7852cccaba234
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441948"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955510"
 ---
-# <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>教學課程-在 Azure Active Directory 中自訂 SaaS 應用程式的使用者布建屬性對應
+# <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>教學課程 - 在 Azure Active Directory 中自訂 SaaS 應用程式的使用者佈建屬性對應
 
 Microsoft Azure AD 支援將使用者佈建至 Salesforce、G Suite 等第三方 SaaS 應用程式。 如果您啟用了第三方 SaaS 應用程式的使用者佈建，Azure 入口網站將會透過屬性對應控制其屬性值。
 
@@ -107,11 +107,11 @@ Azure AD 佈建服務可以部署在 "greenfield" 案例中 (使用者不存在�
 
 - Salesforce
 - ServiceNow
-- Workday 至 Active Directory/Workday 到 Azure Active Directory
-- SuccessFactors 至 Azure Active Directory 的 Active Directory/SuccessFactors
+- Workday 至 Active Directory / Workday 至 Azure Active Directory
+- SuccessFactors 至 Active Directory / SuccessFactors 至 Azure Active Directory
 - Azure Active Directory (支援 [Azure AD Graph API 預設屬性](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity)和自訂目錄擴充功能)
-- 支援[SCIM 2.0](https://tools.ietf.org/html/rfc7643)的應用程式
-- 針對 Azure Active Directory 回寫至 Workday 或 SuccessFactors，支援 (XPATH 和 JSONPath) 更新支援屬性的相關中繼資料，但不支援將新的 Workday 或 SuccessFactors 屬性加入預設架構中包含的屬性之外
+- 支援 [SCIM 2.0](https://tools.ietf.org/html/rfc7643) 的應用程式
+- Azure Active Directory 若回寫至 Workday 或 SuccessFactors，支援為支援的屬性 (XPATH 和 JSONPath) 更新相關的中繼資料，但不支援新增 Workday 或 SuccessFactors 屬性，不過，預設架構描述中所包含的屬性除外
 
 
 > [!NOTE]
@@ -142,11 +142,11 @@ SCIM RFC 會定義核心使用者和群組結構描述，同時允許結構描�
    4. 選取 [編輯 AppName 的屬性清單]。
    5. 在屬性清單的底部，將自訂屬性的相關資訊輸入到提供的欄位中。 然後，選取 [新增屬性]。
 
-SCIM 應用程式的屬性名稱必須遵循下列範例顯示的模式。 您可以根據應用程式的需求自訂 "CustomExtensionName" 和 "CustomAttribute"，例如： urn： ietf： params： scim：架構： extension： CustomExtensionName：2.0： User： CustomAttribute 
+SCIM 應用程式的屬性名稱必須遵循下列範例顯示的模式。 可以根據應用程式的需求自訂 "CustomExtensionName" 和 "CustomAttribute"，例如：urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User:CustomAttribute 
 
 這些指示僅適用於已啟用 SCIM 的應用程式。 ServiceNow 和 Salesforce 等應用程式不會與使用 SCIM 的 Azure AD 整合，因此在新增自訂屬性時不需要此特定命名空間。
 
-自訂屬性不能是引用屬性、多重值或複雜類型的屬性。 目前只有資源庫中的應用程式支援自訂的多值和複雜類型延伸模組屬性。  
+自訂屬性不可以是參考屬性、多重值或複雜類型屬性。 目前只有資源庫中的應用程式可支援自訂多重值和複雜類型延伸模組屬性。  
  
 **具有延伸模組屬性之使用者的範例表示法：**
 
@@ -202,7 +202,7 @@ SCIM 應用程式的屬性名稱必須遵循下列範例顯示的模式。 您�
   - **考量事項**
     - 確定未指派多個角色給使用者。 我們無法保證會佈建哪個角色。
     
-  - **範例輸出** 
+  - **範例要求 (POST)** 
 
    ```json
     {
@@ -226,6 +226,21 @@ SCIM 應用程式的屬性名稱必須遵循下列範例顯示的模式。 您�
    }
    ```
   
+  - **範例輸出 (PATCH)** 
+    
+   ```
+   "Operations": [
+   {
+   "op": "Add",
+   "path": "roles",
+   "value": [
+   {
+   "value": "{\"id\":\"06b07648-ecfe-589f-9d2f-6325724a46ee\",\"value\":\"25\",\"displayName\":\"Role1234\"}"
+   }
+   ]
+   ```  
+PATCH 和 POST 中的要求格式不同。 若要確保 POST 和 PATCH 以相同格式傳送，您可以使用[這裡](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility#flags-to-alter-the-scim-behavior)所述的功能旗標。 
+
 - **AppRoleAssignmentsComplex** 
   - **使用時機：** 使用 AppRoleAssignmentsComplex 運算式為使用者佈建多個角色。 
   - **如何設定：** 依照先前的說明編輯支援的屬性清單，以納入角色的新屬性： 
@@ -316,7 +331,7 @@ SCIM 應用程式的屬性名稱必須遵循下列範例顯示的模式。 您�
 - Azure AD 佈建服務不支援佈建 Null 值。
 - 其主索引鍵 (通常是 "ID") 不應包含在屬性對應中作為目標屬性。 
 - 角色屬性通常需要使用運算式來對應，而不是直接對應。 如需角色對應的詳細資訊，請參閱上一節。 
-- 雖然您可以從對應中停用群組，但不支援停用使用者。 
+- 儘管您可以從對應中停用群組，但不支援停用使用者。 
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,18 +3,18 @@ title: 適用於合作夥伴的 Azure 成本管理入門
 description: 本文說明合作夥伴如何使用 Azure 成本管理功能，以及如何為其客戶啟用成本管理存取權。
 author: bandersmsft
 ms.author: banders
-ms.date: 08/04/2020
+ms.date: 11/16/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 0076c70f64ec5cea8b92cb2b9ed27de05406316d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: d2b90db18a31fff4190be4f84625ad52fcaae578
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827579"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657307"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>適用於合作夥伴的 Azure 成本管理入門
 
@@ -65,7 +65,7 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 ## <a name="manage-costs-with-partner-tenant-billing-scopes"></a>使用合作夥伴租用戶計費範圍來管理成本
 
-在您將客戶登錄至 Microsoft 客戶合約之後，您的租用戶將有下列可用的_計費範圍_。 使用範圍可在「成本管理」中管理成本。
+在您將客戶登錄至 Microsoft 客戶合約之後，您的租用戶將有下列可用的 _計費範圍_。 使用範圍可在「成本管理」中管理成本。
 
 ### <a name="billing-account-scope"></a>計費帳戶範圍
 
@@ -126,7 +126,7 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 您必須是 **admin agent** 群組的成員，才能檢視和更新原則。 請使用下列資訊，啟用允許客戶檢視 Azure 使用費的原則。
 
-在 Azure 入口網站中登入合作夥伴租用戶，然後選取 [成本管理 + 計費]。 在 [計費範圍] 區域中選取相關的計費範圍，然後選取 [客戶]。 客戶的清單會與計費帳戶產生關聯。
+在 Azure 入口網站中登入「合作夥伴租用戶」，然後選取 [成本管理 + 計費]。 在 [計費範圍] 區域中選取相關的計費範圍，然後選取 [客戶]。 客戶的清單會與計費帳戶產生關聯。 如果您不正確地登入客戶租用戶，您將不會看到 **客戶** 清單。
 
 在客戶清單中，選取您要允許他們檢視成本的客戶。
 
@@ -188,7 +188,7 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 | costCenter | 與訂用帳戶相關聯的成本中心。 | N/A |
 | billingPeriodStartDate | 計費週期開始日期，如發票所示。 | N/A |
 | billingPeriodEndDate | 計費週期結束日期，如發票所示。 | N/A |
-| servicePeriodStartDate | 評等服務使用方式的費用時的評等期間開始日期。 Azure 服務的價格會依據評等期間來決定。 | 合作夥伴中心的 ChargeStartDate。 計費週期的開始日期，但在呈現先前的計費週期內未收費的潛在使用量資料的日期時除外。 此時間一律為第一天的開始時間，即 0:00。 |
+| servicePeriodStartDate | 評等服務使用方式的費用時的評等期間開始日期。 Azure 服務的價格會依據評等期間來決定。 | 合作夥伴中心的 ChargeStartDate。  計費週期的開始日期，但在呈現先前的計費週期內未收費的潛在使用量資料的日期時除外。 此時間一律為第一天的開始時間，即 0:00。 |
 | servicePeriodEndDate | 評等服務使用方式的費用時的期間結束日期。 Azure 服務的價格會依據評等期間來決定。 | N/A |
 | date | 針對 Azure 使用量資料，會顯示評等使用量的日期。 針對保留執行個體，會顯示購買的日期。 針對週期性費用和一次性費用 (例如 Marketplace 和支援)，會顯示購買日期。 | N/A |
 | productID | 因使用量或購買而產生費用之產品的識別碼。 這是 productID 和 SKuID 的串連索引鍵，如合作夥伴中心所示。 | 產品的識別碼。 |
