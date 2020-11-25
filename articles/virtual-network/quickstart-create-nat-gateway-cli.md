@@ -15,29 +15,28 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a44a3af7be214aa2ed000eb824b63c0bf7a95aee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a4d034aefe59a661bfb0694feba36a669aa274ac
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88054012"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007268"
 ---
 # <a name="create-a-nat-gateway-using-azure-cli"></a>使用 Azure CLI 建立 NAT 閘道
 
 本教學課程說明如何使用 Azure 虛擬網路 NAT 服務。 您將建立 NAT 閘道，為 Azure 中的虛擬機器提供輸出連線能力。 
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-您可以使用 Azure Cloud Shell 完成本教學課程，或在本機執行個別命令。  如果您從未使用過 Azure Cloud Shell，請[立即登入](https://shell.azure.com)以進行初始設定。
-如果您選擇在本機執行這些命令，則必須安裝 CLI。  在本教學課程中，您必須執行 Azure CLI 2.0.71 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
-
+- 本文需要 2.0.71 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
 使用 [az group create](https://docs.microsoft.com/cli/azure/group) 來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
-下列範例會在 **eastus2** 位置建立名為 myResourceGroupNAT**** 的資源群組：
+下列範例會在 **eastus2** 位置建立名為 myResourceGroupNAT 的資源群組：
 
 ```azurecli-interactive
   az group create \

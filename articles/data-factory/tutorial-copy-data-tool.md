@@ -1,6 +1,6 @@
 ---
 title: 使用資料複製工具將資料從 Azure Blob 儲存體複製到 SQL
-description: 建立 Azure 資料處理站，然後使用「複製資料」工具將資料從 Azure Blob 儲存體複製到 SQL Database。
+description: 建立 Azure Data Factory，然後使用「複製資料」工具將資料從 Azure Blob 儲存體複製到 SQL Database。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 06/08/2020
-ms.openlocfilehash: 2165efd6b522d3809dba285cf2c3050fc50b2d28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: de01a8a8522f93684ed428fd4ef19963b1af2059
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84660983"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008339"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>使用複製資料工具將資料從 Azure Blob 儲存體複製到 SQL Database
 
@@ -40,7 +40,7 @@ ms.locfileid: "84660983"
 
 ## <a name="prerequisites"></a>必要條件
 
-* **Azure 訂用帳戶**：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+* **Azure 訂用帳戶**：如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/)。
 * **Azure 儲存體帳戶**：使用 Blob 儲存體作為「來源」資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱[建立儲存體帳戶](../storage/common/storage-account-create.md)中的指示。
 * **Azure SQL Database**：使用 SQL Database 作為「接收」資料存放區。 如果您沒有 SQL Database，請參閱[建立 SQL Database](../azure-sql/database/single-database-create-quickstart.md) 中的指示。
 
@@ -80,7 +80,7 @@ ms.locfileid: "84660983"
 
 ## <a name="create-a-data-factory"></a>建立 Data Factory
 
-1. 在左側功能表上，選取 [建立資源] > [分析] > [資料處理站]：
+1. 在左側功能表上，選取 [建立資源] > [整合] > [Data Factory]：
 
     ![新資料處理站的建立](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. 在 [新增資料處理站] 頁面的 [名稱] 下，輸入 **ADFTutorialDataFactory**。
@@ -89,7 +89,7 @@ ms.locfileid: "84660983"
 
     ![新增資料處理站錯誤訊息](./media/doc-common-process/name-not-available-error.png)
 
-    如果您收到有關名稱值的錯誤訊息，請輸入不同的資料處理站名稱。 例如，使用**您的名稱****ADFTutorialDataFactory**。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](naming-rules.md)。
+    如果您收到有關名稱值的錯誤訊息，請輸入不同的資料處理站名稱。 例如，使用 **您的名稱****ADFTutorialDataFactory**。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](naming-rules.md)。
 1. 選取要在其中建立新資料處理站的 Azure **訂用帳戶**。
 1. 針對 [資源群組]，採取下列其中一個步驟︰
 
@@ -159,7 +159,7 @@ ms.locfileid: "84660983"
 
 1. 在 [摘要] 頁面上檢閱設定，然後選取 [下一步]。
 
-1. 在**部署頁面**上選取 [監視] 來監視管線 (工作)。
+1. 在 **部署頁面** 上選取 [監視] 來監視管線 (工作)。
 
     ![監視管線](./media/tutorial-copy-data-tool/monitor-pipeline.png)
     

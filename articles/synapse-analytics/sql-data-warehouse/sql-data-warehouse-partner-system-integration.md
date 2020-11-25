@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 11/24/2020
 ms.author: procha
 ms.reviewer: jrasnick
-ms.openlocfilehash: 94872d3765a992fd025f30feaab95248ce6831ec
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 19941963b5200b3ffdb9f2360301d30fe9df4823
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919492"
+ms.locfileid: "96121840"
 ---
 # <a name="azure-synapse-analytics-system-integration-partners"></a>Azure Synapse Analytics 系統整合合作夥伴
 
 本文將重點放在使用 Azure Synapse 建立解決方案的 Microsoft 系統整合合作夥伴公司。
 
-## <a name="our-public-preview-launch-partners"></a>我們的公開預覽啟動合作夥伴
+## <a name="system-integration-partners"></a>系統整合合作夥伴
 | Partner | 描述 | 網站/產品連結 |
 | ------- | ----------- | -------------------- |
 | ![Accenture](./media/sql-data-warehouse-partner-public-preview/accenture-logo.png) |**Accenture**<br>將 45000 + 專屬專業人員（由 Avanade 提供的 Accenture Microsoft Business Group）結合在一起，可協助企業在數位中斷的時代中脫穎而出。|[合作夥伴頁面](https://www.accenture.com/us-en/services/microsoft-index) \(英文\)<br>|

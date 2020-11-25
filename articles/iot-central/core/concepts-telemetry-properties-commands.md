@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 24fbe347aeb0b47ffd1ba694f761d909ff2950f8
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 5b1bbce68be19c2dbb08f7d69611b719b450a370
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989542"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96121754"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>遙測、屬性和命令承載
 
@@ -36,7 +36,7 @@ Azure IoT Central 中的裝置範本是定義下列各項的藍圖：
 
 定義裝置型號的 JSON 檔案會使用數位對應項 [定義語言 (DTDL) v2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
 
-如需顯示使用中部分承載的範例裝置程式碼，請參閱 [建立用戶端應用程式並將其連接到您的 Azure IoT Central 應用程式 ( # A0) ](tutorial-connect-device-nodejs.md) ，以及 [建立用戶端應用程式並將其連接至 Azure IoT Central 應用程式 (Python) ](tutorial-connect-device-python.md) 教學課程。
+如需顯示使用中部分承載的範例裝置程式碼，請參閱 [建立並將用戶端應用程式連線到您的 Azure IoT Central 應用程式](tutorial-connect-device.md) 教學課程。
 
 ## <a name="view-raw-data"></a>檢視未經處理資料
 
@@ -1000,6 +1000,6 @@ IoT Central 預期會有裝置的回應可寫入屬性更新。 回應訊息應�
 }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 作為裝置開發人員，您現在已瞭解裝置範本，建議的後續步驟是閱讀 [連線至 Azure IoT Central](./concepts-get-connected.md) ，以深入瞭解如何使用 IoT Central 註冊裝置，以及 IoT Central 如何保護裝置連線。

@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 6a40ffab652a6ae8671d6cd1c0dd9336764ce2c4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 67c556e44f07240b1ad1bcde61f40042da46def8
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791931"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122206"
 ---
 # <a name="respond-to-azure-defender-for-key-vault-alerts"></a>回應適用於 Key Vault 的 Azure Defender 警示
 當您從 Azure Defender 針對 Key Vault 收到警示時，建議您調查並回應警示，如下所述。 適用于 Key Vault 的 Azure Defender 可保護應用程式和認證，因此即使您熟悉觸發警示的應用程式或使用者，也請務必確認每個警示周圍的狀況。  
@@ -72,4 +72,4 @@ Azure Defender for Key Vault 的每個警示都包含下列元素：
 
 - [適用於 Key Vault 的 Azure Defender 簡介](defender-for-key-vault-introduction.md)
 - [隱藏來自 Azure Defender 的警示](alerts-suppression-rules.md)
-- [持續匯出安全中心資料](continuous-export.md)
+- [持續匯出資訊安全中心資料](continuous-export.md)

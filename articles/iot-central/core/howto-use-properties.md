@@ -7,12 +7,12 @@ ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: aeb1e5ee00bd52ebb4bd93dec2f4a1eacb002fb9
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 992fb4422974dad7a48e5fea953ac4530bb52d5c
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94986520"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122598"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>使用 Azure IoT Central 解決方案中的屬性
 
@@ -35,17 +35,17 @@ ms.locfileid: "94986520"
 | 欄位           | 說明                                                                                                                                                                                                                        |
 |-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 顯示名稱    | 儀表板和表單上所用屬性值的顯示名稱。                                                                                                                                                              |
-| Name            | 屬性的名稱。 Azure IoT Central 會從顯示名稱產生此欄位的值，但您可以視需要選擇自己的值。 此欄位必須是英數位元。                                                 |
+| 名稱            | 屬性的名稱。 Azure IoT Central 會從顯示名稱產生此欄位的值，但您可以視需要選擇自己的值。 此欄位必須是英數位元。                                                 |
 | 功能類型 | 屬性。                                                                                                                                                                                                                          |
 | 語意類型   | 屬性的語意類型，例如溫度、狀態或事件。 所選擇的語意類型會決定下列哪些欄位可供使用。                                                                       |
 | 結構描述          | 屬性的資料類型，例如雙精度浮點數、字串或向量。 可用的選項取決於語意類型。 結構描述不適用於事件和狀態這兩種語意類型。                                               |
 | 可寫入       | 如果屬性無法寫入，則裝置可以向 Azure IoT Central 報告屬性值。 如果屬性為可寫入，則裝置可以向 Azure IoT Central 報告屬性值。 然後 Azure IoT Central 可以將屬性更新傳送至裝置。 |
-| Severity        | 僅適用於事件語意類型。 嚴重性為 [錯誤]、[資訊]或 [警告]。                                                                                                                         |
+| 嚴重性        | 僅適用於事件語意類型。 嚴重性為 [錯誤]、[資訊]或 [警告]。                                                                                                                         |
 | 狀態值    | 僅適用於狀態語意類型。 會定義可能的狀態值，每個狀態值都會有顯示名稱、名稱、列舉類型和值。                                                                                   |
 | 單位            | 屬性值的單位，例如 **>mph**、 **%** 或 **&deg; C**。                                                                                                                                                              |
 | 顯示單位    | 要在儀表板和表單上使用的顯示單位。                                                                                                                                                                                    |
 | 註解         | 屬性功能的任何相關註解。                                                                                                                                                                                        |
-| Description     | 屬性功能的說明。                                                                                                                                                                                          |
+| 說明     | 屬性功能的說明。                                                                                                                                                                                          |
 
 屬性也可以在裝置範本的介面中定義，如下所示：
 
@@ -160,11 +160,7 @@ hubClient.getTwin((err, twin) => {
 });
 ```
 
-為了簡單起見，本文使用 Node.js。 如需裝置應用程式範例的完整資訊，請參閱下列教學課程：
-
-* [建立用戶端應用程式，並將其連線至您的 Azure IoT Central 應用程式 ( # A0) ](tutorial-connect-device-nodejs.md)
-* [建立用戶端應用程式，並將其連線至您的 Azure IoT Central 應用程式 (Python) ](tutorial-connect-device-python.md)
-* [建立用戶端應用程式，並將其連線至您的 Azure IoT Central 應用程式 (JAVA) ](tutorial-connect-device-java.md)
+為了簡單起見，本文使用 Node.js。 如需裝置應用程式範例的完整資訊，請參閱下列 [建立用戶端應用程式並將其連接到您的 Azure IoT Central 應用程式](tutorial-connect-device.md) 教學課程。
 
 Azure IoT Central 應用程式中的下列視圖會顯示您可以看到的屬性。 此視圖會自動讓 **裝置模型** 屬性成為 _唯讀裝置屬性_。
 
@@ -231,9 +227,9 @@ hubClient.getTwin((err, twin) => {
 
 ![顯示 [已接受] 屬性的螢幕擷取畫面。](./media/howto-use-properties/accepted.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 現在您已瞭解如何在 Azure IoT Central 應用程式中使用屬性，請參閱：
 
 * [內容](concepts-telemetry-properties-commands.md)
-* [建立用戶端應用程式，並將其連線至您的 Azure IoT Central 應用程式 ( # A0) ](tutorial-connect-device-nodejs.md)
+* [建立用戶端應用程式並將其連線到您的 Azure IoT Central 應用程式](tutorial-connect-device.md)

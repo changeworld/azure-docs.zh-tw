@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: abfd5fadcf553e73dca3f08bc8a0e377f2ace87d
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 1a050daa3a4b3ae9be5ef40961c40adaa90dc72b
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992653"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96121821"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>連線至 Azure IoT Central
 
@@ -233,7 +233,7 @@ Azure 裝置 Sdk 提供最簡單的方式來執行您的裝置程式碼。 可�
 | 遙測 | 裝置到雲端傳訊 |
 | 屬性 | 裝置對應項的報告屬性 |
 | 屬性 (可寫入) | 裝置對應項所需和所報告的屬性 |
-| 命令 | 直接方法 |
+| Command | 直接方法 |
 
 ### <a name="protocols"></a>通訊協定
 
@@ -255,7 +255,7 @@ Azure 裝置 Sdk 提供最簡單的方式來執行您的裝置程式碼。 可�
 
 如果您是裝置開發人員，則建議的後續步驟如下：
 
-- 請參閱 < 教學課程：建立用戶端應用程式並將其連接到 Azure IoT Central 應用程式 (tutorial-connect-device-nodejs.md) 中的一些範例程式碼，以瞭解如何使用 SAS 權杖。
+- 請參閱[教學課程：建立用戶端應用程式並將其連接到您的 Azure IoT Central 應用程式](tutorial-connect-device.md)，以瞭解如何使用 SAS 權杖的一些範例程式碼
 - 瞭解如何 [使用適用于 IoT Central 應用程式 Node.js 裝置 SDK，將裝置連線到 x.509 憑證](how-to-connect-devices-x509.md)
 - 了解如何[使用 Azure CLI 監視裝置連線能力](./howto-monitor-devices-azure-cli.md)
 - 瞭解如何 [在您的 Azure IoT Central 應用程式中定義新的 IoT 裝置類型](./howto-set-up-template.md)

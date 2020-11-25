@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 複製資料工具複製內部部署資料
-description: 建立 Azure 資料處理站，然後使用「複製資料」工具將資料從 SQL Server 資料庫複製到 Azure Blob 儲存體。
+description: 建立 Azure Data Factory，然後使用「複製資料」工具將資料從 SQL Server 資料庫複製到 Azure Blob 儲存體。
 services: data-factory
 ms.author: abnarain
 author: nabhishek
@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 06/09/2020
-ms.openlocfilehash: 3237ff37e4314459a9e9a7a255b0ad10b3958509
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/09/2020
+ms.openlocfilehash: d9cf9729d8be77845572efd9ef6e2486ddceaaaf
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636947"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002829"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>使用「複製資料」工具將資料從 SQL Server 資料庫複製到 Azure Blob 儲存體
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -99,7 +99,7 @@ ms.locfileid: "92636947"
 
 1. 在 [Blob] 視窗中，選取 [+ 容器]。
 
-1. 在 [新增容器] 視窗的 [名稱] 底下，輸入 **adftutorial** ，然後選取 [確定]。
+1. 在 [新增容器] 視窗的 [名稱] 底下，輸入 **adftutorial**，然後選取 [確定]。
 
 1. 在容器清單中選取 [adftutorial]。
 
@@ -109,16 +109,16 @@ ms.locfileid: "92636947"
 
 ## <a name="create-a-data-factory"></a>建立 Data Factory
 
-1. 在左側功能表上，選取 [+ 建立資源] > [分析] > [資料處理站]。
+1. 在左側的功能表上，選取 [建立資源] > [整合] > [Data Factory]。
 
    ![新資料處理站的建立](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-1. 在 [新增資料處理站] 頁面的 [名稱] 下，輸入 **ADFTutorialDataFactory** 。
+1. 在 [新增資料處理站] 頁面的 [名稱] 下，輸入 **ADFTutorialDataFactory**。
 
    資料處理站的名稱必須是「全域唯一」的名稱。 如果您在 [名稱] 欄位看到下列錯誤訊息，請變更資料處理站的名稱 (例如 yournameADFTutorialDataFactory)。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](naming-rules.md)。
 
    ![新增資料處理站名稱](./media/doc-common-process/name-not-available-error.png)
-1. 選取您要在其中建立資料處理站的 Azure **訂用帳戶** 。
+1. 選取您要在其中建立資料處理站的 Azure **訂用帳戶**。
 1. 針對 [資源群組]，採取下列其中一個步驟︰
 
    - 選取 [使用現有的] ，然後從下拉式清單選取現有的資源群組。
@@ -141,20 +141,20 @@ ms.locfileid: "92636947"
 
    ![開始使用頁面](./media/doc-common-process/get-started-page.png)
 
-1. 在複製資料工具的 [屬性] 頁面中上，於 [工作名稱] 下輸入 **CopyFromOnPremSqlToAzureBlobPipeline** 。 然後選取 [下一步]。 複製資料工具會使用您在此欄位指定的名稱建立管線。
+1. 在複製資料工具的 [屬性] 頁面中上，於 [工作名稱] 下輸入 **CopyFromOnPremSqlToAzureBlobPipeline**。 然後選取 [下一步]。 複製資料工具會使用您在此欄位指定的名稱建立管線。
   ![工作名稱](./media/tutorial-hybrid-copy-data-tool/properties-page.png)
 
 1. 在 [來源資料存放區] 頁面上，按一下 [建立新連線]。
 
 1. 在 [新增連結服務] 下搜尋 [SQL Server]，然後選取 [繼續]。
 
-1. 在 [新增連結服務 (SQL Server)] 對話方塊的 [名稱] 下，輸入 **SqlServerLinkedService** 。 在 [透過整合執行階段連線] 下選取 [+新增]。 您必須建立自我裝載的整合執行階段、將其下載到您的機器，並使用 Data Factory 進行註冊。 自我裝載的整合執行階段會在內部部署環境與雲端之間複製資料。
+1. 在 [新增連結服務 (SQL Server)] 對話方塊的 [名稱] 下，輸入 **SqlServerLinkedService**。 在 [透過整合執行階段連線] 下選取 [+新增]。 您必須建立自我裝載的整合執行階段、將其下載到您的機器，並使用 Data Factory 進行註冊。 自我裝載的整合執行階段會在內部部署環境與雲端之間複製資料。
 
 1. 在 [整合執行階段設定] 對話方塊中，選取 [自我裝載]。 然後選取 [繼續]。
 
    ![建立整合執行階段](./media/tutorial-hybrid-copy-data-tool/create-self-hosted-integration-runtime.png)
 
-1. 在 [整合執行階段設定] 對話方塊中的 [名稱] 下，輸入 **TutorialIntegrationRuntime** 。 然後選取 [建立]。
+1. 在 [整合執行階段設定] 對話方塊中的 [名稱] 下，輸入 **TutorialIntegrationRuntime**。 然後選取 [建立]。
 
 1. 在 [整合執行階段設定] 對話方塊中，選取 [按一下這裡啟動此電腦的快速設定]。 此動作會在您的機器上安裝整合執行階段，並使用 Data Factory 進行註冊。 或者，您可以使用手動安裝選項來下載安裝檔案、執行它，並使用金鑰來註冊整合執行階段。
 
@@ -164,7 +164,7 @@ ms.locfileid: "92636947"
 
 1. 在 [新增連結服務 (SQL Server)] 對話方塊中，確認已為 [整合執行階段] 欄位選取 [TutorialIntegrationRuntime]。 然後採取下列步驟：
 
-    a. 在 [名稱] 下輸入 **SqlServerLinkedService** 。
+    a. 在 [名稱] 下輸入 **SqlServerLinkedService**。
 
     b. 在 [伺服器名稱] 下，輸入 SQL Server 執行個體的名稱。
 
@@ -193,7 +193,7 @@ ms.locfileid: "92636947"
 
 1. 在 [新增連結服務 (Azure Blob 儲存體)] 對話方塊上，執行下列步驟：
 
-   a. 在 [名稱] 下，輸入 **AzureStorageLinkedService** 。
+   a. 在 [名稱] 下，輸入 **AzureStorageLinkedService**。
 
    b. 在 [透過整合執行階段連線] 下，選取 [TutorialIntegrationRuntime]
 
@@ -203,7 +203,7 @@ ms.locfileid: "92636947"
 
 1. 在 [目的地資料存放區] 對話方塊中，確定已選取 [Azure Blob 儲存體]。 然後選取 [下一步]。
 
-1. 在 [選擇輸出檔案或資料夾] 對話方塊中的 [資料夾路徑] 下，輸入 **adftutorial/fromonprem** 。 您已建立 **adftutorial** 容器作為必要條件的一部分。 如果輸出資料夾不存在 (在此案例中為 **fromonprem** )，Data Factory 會自動加以建立。 您也可以使用 [瀏覽] 按鈕以瀏覽 Blob 儲存體和其容器/資料夾。 如果您未在 [檔案名稱] 下指定任何值，依預設將會使用來自來源的名稱 (在此案例中為 **dbo.emp** )。
+1. 在 [選擇輸出檔案或資料夾] 對話方塊中的 [資料夾路徑] 下，輸入 **adftutorial/fromonprem**。 您已建立 **adftutorial** 容器作為必要條件的一部分。 如果輸出資料夾不存在 (在此案例中為 **fromonprem**)，Data Factory 會自動加以建立。 您也可以使用 [瀏覽] 按鈕以瀏覽 Blob 儲存體和其容器/資料夾。 如果您未在 [檔案名稱] 下指定任何值，依預設將會使用來自來源的名稱 (在此案例中為 **dbo.emp**)。
 
    ![選擇輸出檔案或資料夾](./media/tutorial-hybrid-copy-data-tool/choose-output-file-folder.png)
 

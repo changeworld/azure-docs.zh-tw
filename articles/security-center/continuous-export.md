@@ -8,16 +8,16 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: 59cfe7b990523e5cb165d1037291b3c1b1301624
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 43b66a59062a230aa2fba6909172deb5f1740b28
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289232"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122307"
 ---
 # <a name="continuously-export-security-center-data"></a>持續匯出資訊安全中心資料
 
-Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以在入口網站中或透過程式設計工具來加以查看。 您也可能需要匯出部分或全部資訊，以與您環境中的其他監視工具進行追蹤。 
+Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以在入口網站中或透過程式設計工具來加以查看。 您可能也需要匯出部分或全部資訊，以與您環境中的其他監視工具進行追蹤。 
 
 **連續匯出** 可讓您完整自訂將匯出的 *內容* ，以及將匯出到 *何處* 。 例如，您可以設定它，以便：
 
@@ -58,10 +58,14 @@ Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以�
 
 無論您是設定連續匯出至 Log Analytics 工作區或 Azure 事件中樞，都必須執行下列步驟。
 
-1. 從 [Security Center 的提要欄位] 中，選取 [ **定價 & 設定** ]。
+1. 從 [Security Center 的提要欄位] 中，選取 [ **定價 & 設定**]。
 1. 選取您要設定資料匯出的特定訂用帳戶。
-1. 從該訂用帳戶的 [設定] 頁面的側邊欄中，選取 [ **連續匯出** ]。
-    您可以[ ![ 在 Azure 資訊安全中心的 [匯出選項] 中](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox)看到 [匯出選項]。 每個可用的匯出目標都有一個索引標籤。 
+1. 從該訂用帳戶的 [設定] 頁面的側邊欄中，選取 [ **連續匯出**]。
+
+    :::image type="content" source="./media/continuous-export/continuous-export-options-page.png" alt-text="Azure 資訊安全中心中的匯出選項":::
+
+    您會在這裡看到匯出選項。 每個可用的匯出目標都有一個索引標籤。 
+
 1. 選取您要匯出的資料類型，然後從每種類型的篩選中選擇 (例如，[僅匯出高嚴重性警示]) 。
 1. （選擇性）如果您的選擇包含這四個建議的其中一個，您可以將弱點評定結果與它們一起包含：
     - 應補救 SQL 資料庫的弱點評定結果
@@ -74,7 +78,7 @@ Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以�
     :::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="在連續匯出設定中包含安全性結果切換" :::
 
 1. 從 [匯出目標] 區域中，選擇您想要儲存資料的位置。 資料可以儲存在不同訂用帳戶的目標中 (例如中央事件中樞實例或中央 Log Analytics 工作區) 。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 ### <a name="use-the-rest-api"></a>[**使用 REST API**](#tab/rest-api)
 
@@ -127,7 +131,7 @@ API 提供 Azure 入口網站中無法使用的額外功能，例如：
     > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="存取 Azure 原則":::
     > 2. 在 [Azure 原則] 功能表中，選取 [ **定義** ] 並依名稱搜尋。 
 
-1. 從相關的 Azure 原則] 頁面中，選取 [ **指派** ]。
+1. 從相關的 Azure 原則] 頁面中，選取 [ **指派**]。
     :::image type="content" source="./media/continuous-export/export-policy-assign.png" alt-text="指派 Azure 原則":::
 
 1. 開啟每個索引標籤，並視需要設定參數：
@@ -139,7 +143,7 @@ API 提供 Azure 入口網站中無法使用的額外功能，例如：
         > Azure 原則的 [參數] 索引標籤中 (1) 可存取與安全性中心的連續匯出頁面 (2) 類似的設定選項。
         > :::image type="content" source="./media/continuous-export/azure-policy-next-to-continuous-export.png" alt-text="比較連續匯出與 Azure 原則的參數" lightbox="./media/continuous-export/azure-policy-next-to-continuous-export.png":::
     1. （選擇性）若要將此指派套用至現有的訂用帳戶，請開啟 [ **補救** ] 索引標籤，然後選取建立補救工作的選項。
-1. 查看 [摘要] 頁面，然後選取 [ **建立** ]。
+1. 查看 [摘要] 頁面，然後選取 [ **建立**]。
 
 --- 
 
@@ -163,21 +167,21 @@ API 提供 Azure 入口網站中無法使用的額外功能，例如：
 
 ##  <a name="view-exported-alerts-and-recommendations-in-azure-monitor"></a>在 Azure 監視器中查看匯出的警示和建議
 
-在某些情況下，您可以選擇在 [Azure 監視器](../azure-monitor/platform/alerts-overview.md)中查看匯出的安全性警示及/或建議。 
+您也可以選擇在 [Azure 監視器](../azure-monitor/platform/alerts-overview.md)中查看匯出的安全性警示及/或建議。 
 
 Azure 監視器針對各種不同的 Azure 警示（包括診斷記錄、計量警示，以及以 Log Analytics 工作區查詢為基礎的自訂警示）提供統一的警示體驗。
 
 若要在 Azure 監視器中從資訊安全中心查看警示和建議，請根據 Log Analytics 查詢 (記錄警示) 來設定警示規則：
 
-1. 從 Azure 監視器的 [ **警示** ] 頁面上，選取 [ **新增警示規則** ]。
+1. 從 Azure 監視器的 [ **警示** ] 頁面上，選取 [ **新增警示規則**]。
 
     ![Azure 監視器的警示頁面](./media/continuous-export/azure-monitor-alerts.png)
 
 1. 在 [建立規則] 頁面中，以您在 [Azure 監視器) 中設定記錄警示規則](../azure-monitor/platform/alerts-unified-log.md) 的相同方式，設定新的規則 (：
 
-    * 針對 [ **資源** ]，選取您匯出安全性警示和建議的 Log Analytics 工作區。
+    * 針對 [ **資源**]，選取您匯出安全性警示和建議的 Log Analytics 工作區。
 
-    * 針對 [ **條件** ]，選取 [ **自訂記錄搜尋** ]。 在出現的頁面中，設定查詢、回顧期限和頻率週期。 在搜尋查詢中，您可以輸入 *SecurityAlert* 或 *SecurityRecommendation* ，以查詢當您啟用「連續匯出至 Log Analytics」功能時，「安全性中心」持續匯出的資料類型。 
+    * 針對 [ **條件**]，選取 [ **自訂記錄搜尋**]。 在出現的頁面中，設定查詢、回顧期限和頻率週期。 在搜尋查詢中，您可以輸入 *SecurityAlert* 或 *SecurityRecommendation* ，以查詢當您啟用「連續匯出至 Log Analytics」功能時，「安全性中心」持續匯出的資料類型。 
     
     * （選擇性）設定您想要觸發的 [動作群組](../azure-monitor/platform/action-groups.md) 。 動作群組可以觸發電子郵件傳送、ITSM 票證、Webhook 等等。
     ![Azure 監視器警示規則](./media/continuous-export/azure-monitor-alert-rule.png)
@@ -210,7 +214,7 @@ Azure 監視器針對各種不同的 Azure 警示（包括診斷記錄、計量�
 否。 為 **事件** 串流建立連續匯出：
 
 - 啟用匯出之前所收到的 **警示** 將不會匯出。
-- 每當資源的合規性狀態變更時，就會傳送 **建議** 。 例如，當資源變成狀況不良時。 因此，與警示相同，將不會匯出因為您啟用匯出而未變更狀態之資源的建議。
+- 每當資源的合規性狀態變更時，就會傳送 **建議**。 例如，當資源變成狀況不良時。 因此，與警示相同，將不會匯出因為您啟用匯出而未變更狀態之資源的建議。
 
 
 ### <a name="why-are-recommendations-sent-at-different-intervals"></a>為何會以不同的間隔傳送建議？

@@ -4,21 +4,17 @@ description: 了解可用於 Azure API 管理中的存取限制原則。
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: erikre
-editor: ''
 ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 11/23/2020
 ms.author: apimpm
-ms.openlocfilehash: 711a973f13c8e292578703518df4c4302c31eb57
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 70be2000d3b01e55cd52d161072c3249870310b9
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071382"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122586"
 ---
 # <a name="api-management-access-restriction-policies"></a>API 管理存取限制原則
 
@@ -26,13 +22,13 @@ ms.locfileid: "92071382"
 
 ## <a name="access-restriction-policies"></a><a name="AccessRestrictionPolicies"></a> 存取限制原則
 
--   [檢查 HTTP 標頭](api-management-access-restriction-policies.md#CheckHTTPHeader) - 強制必須存在和/或強制採用 HTTP 標頭的值。
--   [依訂閱限制呼叫率](api-management-access-restriction-policies.md#LimitCallRate) - 以訂閱為單位，限制呼叫率以避免 API 使用量暴增。
+-   [檢查 HTTP 標頭](#CheckHTTPHeader) - 強制必須存在和/或強制採用 HTTP 標頭的值。
+-   [依訂閱限制呼叫率](#LimitCallRate) - 以訂閱為單位，限制呼叫率以避免 API 使用量暴增。
 -   [依金鑰限制呼叫率](#LimitCallRateByKey) - 以金鑰為單位，限制呼叫率以避免 API 使用量暴增。
--   [限制呼叫端 IP](api-management-access-restriction-policies.md#RestrictCallerIPs) - 篩選 (允許/拒絕) 來自特定 IP 位址和/或位址範圍的呼叫。
--   [依訂閱設定使用量配額](api-management-access-restriction-policies.md#SetUsageQuota) - 以訂閱為單位，讓您可以強制採用可續訂或有存留期呼叫量與 (或) 頻寬配額。
+-   [限制呼叫端 IP](#RestrictCallerIPs) - 篩選 (允許/拒絕) 來自特定 IP 位址和/或位址範圍的呼叫。
+-   [依訂閱設定使用量配額](#SetUsageQuota) - 以訂閱為單位，讓您可以強制採用可續訂或有存留期呼叫量與 (或) 頻寬配額。
 -   [依金鑰設定使用量配額](#SetUsageQuotaByKey) - 以金鑰為單位，讓您可以強制採用可續訂或有存留期呼叫量與 (或) 頻寬配額。
--   [驗證 JWT](api-management-access-restriction-policies.md#ValidateJWT) - 強制擷取自指定 HTTP 標頭或指定查詢參數的 JWT 必須存在且有效。
+-   [驗證 JWT](#ValidateJWT) - 強制擷取自指定 HTTP 標頭或指定查詢參數的 JWT 必須存在且有效。
 
 > [!TIP]
 > 您可以針對不同的用途，在不同的範圍中使用存取限制原則。 例如，您可以在 API 層級套用原則，以透過 AAD 驗證來保護整個 API，也可以 `validate-jwt` 將它套用在 api 作業層級上， `claims` 以進行更細微的控制。
@@ -60,14 +56,14 @@ ms.locfileid: "92071382"
 
 ### <a name="elements"></a>項目
 
-| 名稱         | 描述                                                                                                                                   | 必要 |
+| 名稱         | 說明                                                                                                                                   | 必要 |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | check-header | 根元素。                                                                                                                                 | 是      |
 | value        | 允許的 HTTP 標頭值。 指定多個值元素時，如果其中任何一個值相符，則會將檢查視為成功。 | 否       |
 
 ### <a name="attributes"></a>屬性
 
-| 名稱                       | 描述                                                                                                                                                            | 必要 | 預設 |
+| 名稱                       | 說明                                                                                                                                                            | 必要 | 預設 |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | failed-check-error-message | 如果標頭不存在或具有無效值，要在 HTTP 回應本文中傳回的錯誤訊息。 此訊息必須正確逸出任何特殊字元。 | 是      | N/A     |
 | failed-check-httpcode      | 標頭不存在或具有無效值時所要傳回的 HTTP 狀態碼。                                                                                        | 是      | N/A     |
@@ -123,7 +119,7 @@ ms.locfileid: "92071382"
 
 ### <a name="elements"></a>項目
 
-| 名稱       | 描述                                                                                                                                                                                                                                                                                              | 必要 |
+| 名稱       | 說明                                                                                                                                                                                                                                                                                              | 必要 |
 | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | rate-limit | 根元素。                                                                                                                                                                                                                                                                                            | 是      |
 | api        | 新增一或多個這些元素，以對產品內的 Api 強加呼叫頻率限制。 產品和 API 呼叫頻率限制會獨立套用。 API 可以透過 `name` 或 `id` 參考。 如果同時提供兩個屬性，則會使用 `id` 而忽略 `name`。                    | 否       |
@@ -131,7 +127,7 @@ ms.locfileid: "92071382"
 
 ### <a name="attributes"></a>屬性
 
-| 名稱           | 描述                                                                                           | 必要 | 預設 |
+| 名稱           | 說明                                                                                           | 必要 | 預設 |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | NAME           | 要套用速率限制的 API 名稱。                                                | 是      | N/A     |
 | calls          | 在 `renewal-period` 中指定的時間週期內允許的呼叫總數上限。 | 是      | N/A     |
@@ -148,7 +144,7 @@ ms.locfileid: "92071382"
 ## <a name="limit-call-rate-by-key"></a><a name="LimitCallRateByKey"></a>依金鑰限制呼叫頻率
 
 > [!IMPORTANT]
-> 這項功能無法在 API 管理的**使用**層中使用。
+> 這項功能無法在 API 管理的 **使用** 層中使用。
 
 `rate-limit-by-key` 原則藉由將指定時間週期內的呼叫頻率限制為指定次數，以防止每個金鑰的 API 使用量暴增。 金鑰可以具有任意字串值，而且通常會使用原則運算式來提供。 可以新增選擇性增量條件，以指定哪些要求應該計入限制。 觸發此原則時，呼叫者會收到 `429 Too Many Requests` 回應狀態碼。
 
@@ -191,13 +187,13 @@ ms.locfileid: "92071382"
 
 ### <a name="elements"></a>項目
 
-| 名稱              | 描述   | 必要 |
+| 名稱              | 說明   | 必要 |
 | ----------------- | ------------- | -------- |
 | 速率-依金鑰限制 | 根元素。 | 是      |
 
 ### <a name="attributes"></a>屬性
 
-| 名稱                | 描述                                                                                           | 必要 | 預設 |
+| 名稱                | 說明                                                                                           | 必要 | 預設 |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | calls               | 在 `renewal-period` 中指定的時間週期內允許的呼叫總數上限。 | 是      | N/A     |
 | counter-key         | 用於頻率限制原則的金鑰。                                                             | 是      | N/A     |
@@ -238,7 +234,7 @@ ms.locfileid: "92071382"
 
 ### <a name="elements"></a>項目
 
-| 名稱                                      | 描述                                         | 必要                                                       |
+| 名稱                                      | 說明                                         | 必要                                                       |
 | ----------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------- |
 | ip-filter                                 | 根元素。                                       | 是                                                            |
 | address                                   | 指定要篩選的單一 IP 位址。   | 至少需要一個 `address` 或 `address-range` 元素。 |
@@ -246,7 +242,7 @@ ms.locfileid: "92071382"
 
 ### <a name="attributes"></a>屬性
 
-| 名稱                                      | 描述                                                                                 | 必要                                           | 預設 |
+| 名稱                                      | 說明                                                                                 | 必要                                           | 預設 |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
 | address-range from="位址" to="位址" | 允許或拒絕存取的 IP 位址範圍。                                        | 使用 `address-range` 元素時必要。 | N/A     |
 | ip-filter action="allow &#124; forbid"    | 指定允許或不允許指定的 IP 位址和範圍進行呼叫。 | 是                                                | N/A     |
@@ -296,7 +292,7 @@ ms.locfileid: "92071382"
 
 ### <a name="elements"></a>項目
 
-| 名稱      | 描述                                                                                                                                                                                                                                                                                  | 必要 |
+| 名稱      | 說明                                                                                                                                                                                                                                                                                  | 必要 |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | quota     | 根元素。                                                                                                                                                                                                                                                                                | 是      |
 | api       | 新增一或多個這些元素，以對產品內的 Api 強加呼叫配額。 產品和 API 呼叫配額會獨立套用。 API 可以透過 `name` 或 `id` 參考。 如果同時提供兩個屬性，則會使用 `id` 而忽略 `name`。                    | 否       |
@@ -304,7 +300,7 @@ ms.locfileid: "92071382"
 
 ### <a name="attributes"></a>屬性
 
-| 名稱           | 描述                                                                                               | 必要                                                         | 預設 |
+| 名稱           | 說明                                                                                               | 必要                                                         | 預設 |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | NAME           | 套用配額的 API 或作業名稱。                                             | 是                                                              | N/A     |
 | bandwidth      | 在 `renewal-period` 中指定的時間週期內允許的 KB 總數上限。 | 必須指定 `calls`、`bandwidth`，或同時指定兩者。 | N/A     |
@@ -321,7 +317,7 @@ ms.locfileid: "92071382"
 ## <a name="set-usage-quota-by-key"></a><a name="SetUsageQuotaByKey"></a>依金鑰設定使用量配額
 
 > [!IMPORTANT]
-> 這項功能無法在 API 管理的**使用**層中使用。
+> 這項功能無法在 API 管理的 **使用** 層中使用。
 
 `quota-by-key` 原則會以金鑰為單位，強制採用可續訂或有存留期呼叫量與 (或) 頻寬配額。 金鑰可以具有任意字串值，而且通常會使用原則運算式來提供。 可以新增選擇性增量條件，以指定哪些要求應該計入配額。 如果多個原則會使相同的金鑰值遞增，該值址會針對每個要求遞增一次。 達到呼叫限制時，呼叫端會收到 `403 Forbidden` 回應狀態碼。
 
@@ -361,13 +357,13 @@ ms.locfileid: "92071382"
 
 ### <a name="elements"></a>項目
 
-| 名稱  | 描述   | 必要 |
+| 名稱  | 說明   | 必要 |
 | ----- | ------------- | -------- |
 | quota | 根元素。 | 是      |
 
 ### <a name="attributes"></a>屬性
 
-| 名稱                | 描述                                                                                               | 必要                                                         | 預設 |
+| 名稱                | 說明                                                                                               | 必要                                                         | 預設 |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | bandwidth           | 在 `renewal-period` 中指定的時間週期內允許的 KB 總數上限。 | 必須指定 `calls`、`bandwidth`，或同時指定兩者。 | N/A     |
 | calls               | 在 `renewal-period` 中指定的時間週期內允許的呼叫總數上限。     | 必須指定 `calls`、`bandwidth`，或同時指定兩者。 | N/A     |
@@ -384,12 +380,12 @@ ms.locfileid: "92071382"
 
 ## <a name="validate-jwt"></a><a name="ValidateJWT"></a>驗證 JWT
 
-`validate-jwt` 原則會強制擷取自指定 HTTP 標頭或指定查詢參數的 JWT 必須存在且有效。
+此 `validate-jwt` 原則會強制從指定的 HTTP 標頭或指定的查詢參數解壓縮 (JWT) JSON web 權杖的存在和有效性。
 
 > [!IMPORTANT]
 > `validate-jwt` 原則會要求 `exp` 註冊的宣告包含在 JWT 權杖中 (除非已指定 `require-expiration-time` 屬性並設定為 `false`)。
-> `validate-jwt` 原則支援 HS256 和 RS256 簽署演算法。 若為 HS256，必須以 base64 編碼形式內嵌於原則內的方式提供金鑰。 若為 RS256，必須透過 Open ID 設定端點提供金鑰。
-> `validate-jwt` 原則支援使用下列加密演算法以對稱金鑰加密的權杖：A128CBC-HS256、A192CBC-HS384、A256CBC-HS512。
+> `validate-jwt` 原則支援 HS256 和 RS256 簽署演算法。 若為 HS256，必須以 base64 編碼形式內嵌於原則內的方式提供金鑰。 針對 RS256，可以透過 Open ID 設定端點來提供金鑰，或提供已上傳憑證的識別碼（其中包含公開金鑰的公開金鑰或模數/指數配對）。
+> `validate-jwt`原則支援使用下列加密演算法以對稱金鑰加密的權杖：以-HS256、權杖-a128cbc-hs256 a192cbc-hs384、a256cbc-hs512-、a256cbc-hs512。
 
 ### <a name="policy-statement"></a>原則陳述式
 
@@ -440,6 +436,22 @@ ms.locfileid: "92071382"
 <validate-jwt header-name="Authorization" require-scheme="Bearer">
     <issuer-signing-keys>
         <key>{{jwt-signing-key}}</key>  <!-- signing key specified as a named value -->
+    </issuer-signing-keys>
+    <audiences>
+        <audience>@(context.Request.OriginalUrl.Host)</audience>  <!-- audience is set to API Management host name -->
+    </audiences>
+    <issuers>
+        <issuer>http://contoso.com/</issuer>
+    </issuers>
+</validate-jwt>
+```
+
+#### <a name="token-validation-with-rsa-certificate"></a>使用 RSA 憑證的權杖驗證
+
+```xml
+<validate-jwt header-name="Authorization" require-scheme="Bearer">
+    <issuer-signing-keys>
+        <key certficate-id="my-rsa-cert" />  <!-- signing key specified as certificate ID, enclosed in double-quotes -->
     </issuer-signing-keys>
     <audiences>
         <audience>@(context.Request.OriginalUrl.Host)</audience>  <!-- audience is set to API Management host name -->
@@ -519,15 +531,15 @@ ms.locfileid: "92071382"
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | validate-jwt        | 根元素。                                                                                                                                                                                                                                                                                                                                         | 是      |
 | audiences           | 包含可呈現在權杖上之可接受的受眾宣告清單。 如果存在多個受眾值，則會嘗試每個值，直到全部試完 (即表示驗證失敗) 或其中一個值成功為止。 必須指定至少一個受眾。                                                                     | 否       |
-| issuer-signing-keys | 用來驗證已簽署權杖的 Base64 編碼安全性金鑰清單。 如果存在多個安全性金鑰，則會嘗試每個金鑰，直到全部試完 (即表示驗證失敗) 或其中一個金鑰成功 (很適合用於權杖變換) 為止。 金鑰元素具有用來與 `kid` 宣告進行比對的選擇性 `id` 屬性。               | 否       |
-| decryption-keys     | 用來將權杖解密的 Base64 編碼金鑰清單。 如果有多個安全性金鑰存在，則系統會嘗試每個金鑰，直到試完所有金鑰 (即表示驗證失敗) 或某個金鑰成功為止。 金鑰元素具有用來與 `kid` 宣告進行比對的選擇性 `id` 屬性。                                                 | 否       |
+| issuer-signing-keys | 用來驗證已簽署權杖的 Base64 編碼安全性金鑰清單。 如果有多個安全性金鑰，則會嘗試每個金鑰，直到全部耗盡為止 (在這種情況下，驗證會失敗) 或一個成功 (適用于權杖變換) 。 金鑰元素具有用來與 `kid` 宣告進行比對的選擇性 `id` 屬性。 <br/><br/>或者，使用下列內容提供簽發者簽署金鑰：<br/><br/> - `certificate-id` 以格式 `<key certificate-id="mycertificate" />` 指定 [上傳](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity#Add) 至 API 管理的憑證實體識別碼<br/>-採用格式的 RSA 模數 `n` 和指數 `e` 配對 `<key n="<modulus>" e="<exponent>" />` ，以 base64url 編碼格式指定 rsa 參數               | 否       |
+| decryption-keys     | 用來將權杖解密的 Base64 編碼金鑰清單。 如果有多個安全性金鑰，則會嘗試每個金鑰，直到兩個金鑰都耗盡為止 (在這種情況下，驗證會失敗) 或金鑰成功。 金鑰元素具有用來與 `kid` 宣告進行比對的選擇性 `id` 屬性。<br/><br/>或者，使用下列內容提供解密金鑰：<br/><br/> - `certificate-id` 以格式 `<key certificate-id="mycertificate" />` 指定 [上傳](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity#Add) 至 API 管理的憑證實體識別碼                                                 | 否       |
 | issuers             | 可接受之簽發權杖的主體清單。 如果存在多個簽發者值，則會嘗試每個值，直到全部試完 (即表示驗證失敗) 或其中一個值成功為止。                                                                                                                                         | 否       |
 | openid-config       | 此元素用於指定可從中取得簽署金鑰和簽發者之符合規範的 Open ID 設定端點。                                                                                                                                                                                                                        | 否       |
 | required-claims     | 包含應存在於權杖上才會被視為有效的宣告清單。 當 `match` 屬性設定為 `all` 時，原則中的每個宣告值都必須存在於權杖，才能驗證成功。 當 `match` 屬性設定為 `any` 時，至少一個宣告必須存在於權杖，才能驗證成功。 | 否       |
 
 ### <a name="attributes"></a>屬性
 
-| 名稱                            | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                            | 必要                                                                         | 預設                                                                           |
+| 名稱                            | 說明                                                                                                                                                                                                                                                                                                                                                                                                                                            | 必要                                                                         | 預設                                                                           |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | clock-skew                      | 時間範圍。 用來指定權杖簽發者和 API 管理執行個體的系統時鐘之間最大預期時間差異。                                                                                                                                                                                                                                                                                                               | 否                                                                               | 0 秒                                                                         |
 | failed-validation-error-message | 如果 JWT 未通過驗證，在 HTTP 回應主體中傳回的錯誤訊息。 此訊息必須正確逸出任何特殊字元。                                                                                                                                                                                                                                                                                                 | 否                                                                               | 預設錯誤訊息視驗證問題而定，例如「JWT 不存在」。 |
