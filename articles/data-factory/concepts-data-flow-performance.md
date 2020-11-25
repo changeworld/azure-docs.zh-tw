@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 08/12/2020
-ms.openlocfilehash: 055cdf7b6cec12eb8c3e7fde891d155b831a6523
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/24/2020
+ms.openlocfilehash: cc06f12317f5e30721452e07bd4dc5f50dfdb7ec
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637865"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022355"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>對應資料流的效能和調整指南
 
@@ -80,12 +80,18 @@ Azure Data Factory 會產生資料行的雜湊以產生統一的資料分割，�
 
 針對分割資料行內的值，建立可提供固定範圍的運算式。 若要避免資料分割扭曲，在使用此選項之前，您應該先對資料有充分的瞭解。 您為運算式輸入的值會當做資料分割函數的一部分使用。 您可以設定實體分割區的數目。
 
-### <a name="key"></a>機碼
+### <a name="key"></a>答案
 
 如果您對資料的基數有充分的瞭解，索引鍵分割可能是不錯的策略。 索引鍵分割會為數據行中的每個唯一值建立資料分割。 您無法設定分割區數目，因為此數目是根據資料中的唯一值。
 
 > [!TIP]
 > 手動設定資料分割配置 reshuffles 資料，並可抵消 Spark 優化工具的優點。 最佳做法是不要手動設定分割，除非您需要。
+
+## <a name="logging-level"></a>記錄層級
+
+如果您不需要每次執行資料流程活動的管線來完整記錄所有詳細資訊遙測記錄檔，您可以選擇性地將記錄層級設定為「基本」或「無」。 在 [詳細資訊] 模式中執行您的資料流程時 (預設) ，您會要求 ADF 在資料轉換期間，在每個個別的資料分割層級上完整記錄活動。 這可能是相當昂貴的作業，所以在進行疑難排解時只啟用詳細資訊，可以改善整體的資料流程和管線效能。 「基本」模式只會記錄轉換持續時間，而「無」只會提供持續時間的摘要。
+
+![記錄層級](media/data-flow/logging.png "設定記錄層級")
 
 ## <a name="optimizing-the-azure-integration-runtime"></a><a name="ir"></a> 優化 Azure Integration Runtime
 
@@ -155,7 +161,7 @@ Azure SQL Database 有一個稱為「來源」資料分割的唯一資料分割�
 
 #### <a name="isolation-level"></a>隔離等級
 
-在 Azure SQL 來源系統上讀取的隔離等級會對效能造成影響。 選擇 [讀取未認可] 可提供最快的效能，並防止任何資料庫鎖定。 若要深入瞭解 SQL 隔離等級，請參閱 [瞭解隔離等級](/sql/connect/jdbc/understanding-isolation-levels?view=sql-server-ver15)。
+在 Azure SQL 來源系統上讀取的隔離等級會對效能造成影響。 選擇 [讀取未認可] 可提供最快的效能，並防止任何資料庫鎖定。 若要深入瞭解 SQL 隔離等級，請參閱 [瞭解隔離等級](https://docs.microsoft.com/sql/connect/jdbc/understanding-isolation-levels)。
 
 #### <a name="read-using-query"></a>使用查詢讀取
 
@@ -163,7 +169,7 @@ Azure SQL Database 有一個稱為「來源」資料分割的唯一資料分割�
 
 ### <a name="azure-synapse-analytics-sources"></a>Azure Synapse Analytics 來源
 
-使用 Azure Synapse Analytics 時，來源選項中會有一個稱為「 **啟用暫存** 」的設定。 這可讓 ADF 使用 [PolyBase](/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15)從 Synapse 讀取，以大幅改善讀取效能。 啟用 PolyBase 需要您在 [資料流程] 活動設定中指定 Azure Blob 儲存體或 Azure Data Lake Storage gen2 預備位置。
+使用 Azure Synapse Analytics 時，來源選項中會有一個稱為「 **啟用暫存** 」的設定。 這可讓 ADF 使用 Synapse 讀取 ```Polybase``` ，這可大幅提升讀取效能。 啟用 ```Polybase``` 時，您需要在 [資料流程] 活動設定中指定 Azure Blob 儲存體或 Azure Data Lake Storage gen2 預備位置。
 
 ![啟用暫存](media/data-flow/enable-staging.png "啟用暫存")
 
@@ -183,6 +189,10 @@ Azure SQL Database 有一個稱為「來源」資料分割的唯一資料分割�
 
 使用 Azure SQL Database 時，預設資料分割應該會在大部分情況下運作。 您的接收可能有太多資料分割可供您的 SQL database 處理。 如果您遇到這種情況，請減少 SQL Database 接收輸出的資料分割數目。
 
+#### <a name="impact-of-error-row-handling-to-performance"></a>錯誤資料列處理對效能的影響
+
+當您啟用錯誤資料列處理 ( 在接收轉換中 ) [發生錯誤時仍繼續] 時，ADF 會在將相容的資料列寫入目的地資料表之前進行額外的步驟。 這項額外的步驟將會降低效能，而且可能會在此步驟中新增5% 的範圍內，而且如果您將此選項設定為也將不相容的資料列設定為記錄檔，則也會新增額外的小型效能點擊。
+
 #### <a name="disabling-indexes-using-a-sql-script"></a>使用 SQL 腳本停用索引
 
 在 SQL database 中的負載之前停用索引，可大幅提升寫入資料表的效能。 在寫入至您的 SQL 接收器之前，請先執行下列命令。
@@ -198,7 +208,7 @@ Azure SQL Database 有一個稱為「來源」資料分割的唯一資料分割�
 ![停用索引](media/data-flow/disable-indexes-sql.png "停用索引")
 
 > [!WARNING]
-> 停用索引時，資料流程實際上會取得資料庫的控制權，而且查詢目前不可能成功。 如此一來，許多 ETL 作業都會在夜間觸發，以避免發生此衝突。 如需詳細資訊，請瞭解 [停用索引的條件約束](/sql/relational-databases/indexes/disable-indexes-and-constraints?view=sql-server-ver15)
+> 停用索引時，資料流程實際上會取得資料庫的控制權，而且查詢目前不可能成功。 如此一來，許多 ETL 作業都會在夜間觸發，以避免發生此衝突。 如需詳細資訊，請瞭解 [停用索引的條件約束](https://docs.microsoft.com/sql/relational-databases/indexes/disable-indexes-and-constraints)
 
 #### <a name="scaling-up-your-database"></a>擴大您的資料庫
 
@@ -240,7 +250,6 @@ Azure SQL Database 有一個稱為「來源」資料分割的唯一資料分割�
 
 **寫入輸送量預算：** 使用小於每分鐘總 ru 數的值。 如果您有大量 Spark 資料分割的資料流程，設定預算輸送量將可讓這些分割區進行更多的平衡。
 
-
 ## <a name="optimizing-transformations"></a>優化轉換
 
 ### <a name="optimizing-joins-exists-and-lookups"></a>優化聯結、存在和查閱
@@ -271,7 +280,7 @@ Azure SQL Database 有一個稱為「來源」資料分割的唯一資料分割�
 
 ![偏斜和峰](media/data-flow/skewness-kurtosis.png "偏斜和峰")
 
-監視顯示器會顯示如何將資料分散到每個資料分割，以及兩個度量、偏斜和峰。 非 **對稱** 性是指非對稱資料的量值，而且可以有正數、零、負值或未定義的值。 負誤差表示左尾的長度超過右邊。 [ **峰值** ] 是資料是否為繁重或亮尾的量值。 不需要高峰值。 最理想的偏斜範圍介於-3 和3之間，而峰值範圍小於10。 解讀這些數位的簡單方式，就是查看分割區圖表，並查看1個橫條圖是否明顯大於其餘部分。
+監視顯示器會顯示如何將資料分散到每個資料分割，以及兩個度量、偏斜和峰。 非 **對稱** 性是指非對稱資料的量值，而且可以有正數、零、負值或未定義的值。 負誤差表示左尾的長度超過右邊。 [**峰值**] 是資料是否為繁重或亮尾的量值。 不需要高峰值。 最理想的偏斜範圍介於-3 和3之間，而峰值範圍小於10。 解讀這些數位的簡單方式，就是查看分割區圖表，並查看1個橫條圖是否明顯大於其餘部分。
 
 如果您的資料未在轉換後平均分割，您可以使用 [ [優化]](#optimize-tab) 索引標籤重新分割。 重新輪換資料需要一些時間，而且可能無法改善您的資料流程效能。
 

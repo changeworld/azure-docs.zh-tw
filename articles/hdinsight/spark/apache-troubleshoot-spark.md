@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
 ms.openlocfilehash: 9e60903aaa61cae63d406d459937d33317eee394
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545628"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022246"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>使用 Azure HDInsight 為 Apache Spark 進行疑難排解
 
@@ -25,31 +25,31 @@ ms.locfileid: "92545628"
 
 1. 使用您的叢集認證登入 Ambari `https://CLUSTERNAME.azurehdidnsight.net` 。 初始畫面會顯示總覽儀表板。 HDInsight 3.6 與4.0 之間有輕微的表面差異。
 
-1. 流覽至  。
+1. 流覽至 **Spark2** 的 [進行]  >  ****。
 
     ![選取 [設定] 索引標籤](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
 
-1. 在設定清單中，選取並展開 [ **自訂-spark2-預設值** ]。
+1. 在設定清單中，選取並展開 [ **自訂-spark2-預設值**]。
 
-1. 尋找需要調整的設定值，例如 **spark.executor.memory** 。 在此情況下， **9728m** 的值太高。
+1. 尋找需要調整的設定值，例如 **spark.executor.memory**。 在此情況下， **9728m** 的值太高。
 
     ![選取 [Custom-spark2-defaults]](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
 
-1. 將值設為建議的設定。 這項設定的建議值為 **2048m** 。
+1. 將值設為建議的設定。 這項設定的建議值為 **2048m**。
 
 1. 儲存此值，然後儲存設定。 選取 [儲存]。
 
     ![將值變更為 2048m](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 
-    註記設定變更，然後選取 [儲存]  。
+    註記設定變更，然後選取 [儲存]。
 
     ![輸入所做變更的附註內容](./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png)
 
-    如有任何設定需要注意，您會收到通知。 記下項目，然後選取 [仍要繼續]  。
+    如有任何設定需要注意，您會收到通知。 記下項目，然後選取 [仍要繼續]。
 
     ![選取 [仍要繼續]](./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png)
 
-1. 每次儲存設定時，系統都會提示您重新啟動服務。 選取 [重新啟動]  。
+1. 每次儲存設定時，系統都會提示您重新啟動服務。 選取 [重新啟動]。
 
     ![選取 [重新啟動]](./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png)
 
@@ -61,13 +61,13 @@ ms.locfileid: "92545628"
 
     ![檢閱執行中的處理序](./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png)
 
-1. 您可以新增設定。 在設定清單中選取 [Custom-spark2-defaults]  ，然後選取 [新增屬性]  。
+1. 您可以新增設定。 在設定清單中選取 [Custom-spark2-defaults]，然後選取 [新增屬性]。
 
     ![選取 [新增屬性]](./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png)
 
 1. 定義新的屬性。 您可以使用特定設定 (例如資料類型) 的對話方塊定義單一屬性。 或者，您也可以使用一行一定義的方式定義多個屬性。
 
-    在本例中， **spark.driver.memory** 屬性是以值 **4g** 定義。
+    在本例中，**spark.driver.memory** 屬性是以值 **4g** 定義。
 
     ![定義新的屬性](./media/apache-troubleshoot-spark/apache-spark-ambari-config9.png)
 
