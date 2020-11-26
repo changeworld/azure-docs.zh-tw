@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/16/2019
-ms.openlocfilehash: b85e72ae6698cd9fa018c940e158bfcf25279ed5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/26/2020
+ms.openlocfilehash: 11e0d3336f085ccae9a7fb83ed050d69a15ce42b
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81410471"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296500"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製到適用於 PostgreSQL 的 Azure 資料庫或從中複製資料
 
@@ -57,8 +57,8 @@ Azure Data Factory 會提供內建的驅動程式來啟用連線。 因此，您
 
 | 屬性 | 描述 | 選項。 | 必要 |
 |:--- |:--- |:--- |:--- |
-| EncryptionMethod (EM)| 驅動程式用來加密在驅動程式和資料庫伺服器之間傳送之資料的方法。 例如，`EncryptionMethod=<0/1/6>;`| 0 (無加密) **(預設)** / 1 (SSL) / 6 (RequestSSL) | 否 |
-| ValidateServerCertificate (VSC) | 判斷當啟用 SSL 加密 (加密方法 = 1) 時，驅動程式是否會驗證資料庫伺服器所傳送的憑證。 例如，`ValidateServerCertificate=<0/1>;`| 0 (停用) **(預設)** / 1 (啟用) | 否 |
+| EncryptionMethod (EM)| 驅動程式用來加密在驅動程式和資料庫伺服器之間傳送之資料的方法。 例如，`EncryptionMethod=<0/1/6>;`| 0 (無加密) **(預設)** / 1 (SSL) / 6 (RequestSSL) | No |
+| ValidateServerCertificate (VSC) | 判斷當啟用 SSL 加密 (加密方法 = 1) 時，驅動程式是否會驗證資料庫伺服器所傳送的憑證。 例如，`ValidateServerCertificate=<0/1>;`| 0 (停用) **(預設)** / 1 (啟用) | No |
 
 **範例**：
 
@@ -76,7 +76,7 @@ Azure Data Factory 會提供內建的驅動程式來啟用連線。 因此，您
 
 **範例**：
 
-***在 Azure Key Vault 中儲存密碼***
+**_將密碼儲存在 Azure Key Vault_* _
 
 ```json
 {
@@ -85,13 +85,13 @@ Azure Data Factory 會提供內建的驅動程式來啟用連線。 因此，您
         "type": "AzurePostgreSql",
         "typeProperties": {
             "connectionString": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;",
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         }
     }
@@ -102,7 +102,7 @@ Azure Data Factory 會提供內建的驅動程式來啟用連線。 因此，您
 
 如需可用來定義資料集之區段和屬性的完整清單，請參閱 [Azure Data Factory 中的資料集](concepts-datasets-linked-services.md)。 本節提供資料集中適用於 PostgreSQL 的 Azure 資料庫支援的屬性清單。
 
-若要從適用於 PostgreSQL 的 Azure 資料庫複製資料，將資料集的類型屬性設定為 **AzurePostgreSqlTable**。 以下是支援的屬性：
+若要從適用於 PostgreSQL 的 Azure 資料庫複製資料，請將資料集的類型屬性設定為 _ * AzurePostgreSqlTable * *。 以下是支援的屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
@@ -136,7 +136,7 @@ Azure Data Factory 會提供內建的驅動程式來啟用連線。 因此，您
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 type 屬性必須設定為 **>azurepostgresqlsource** | 是 |
-| 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如： `"SELECT * FROM MyTable"` | 如果已指定資料集中的 tableName 屬性，則沒有 ()  |
+| 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如：`SELECT * FROM mytable` 或 `SELECT * FROM "MyTable"`。 請注意，在於 postgresql 中，如果未加上引號，則會將機構名稱視為不區分大小寫。 | 如果已指定資料集中的 tableName 屬性，則沒有 ()  |
 
 **範例**：
 
@@ -160,7 +160,7 @@ Azure Data Factory 會提供內建的驅動程式來啟用連線。 因此，您
         "typeProperties": {
             "source": {
                 "type": "AzurePostgreSqlSource",
-                "query": "<custom query e.g. SELECT * FROM MyTable>"
+                "query": "<custom query e.g. SELECT * FROM mytable>"
             },
             "sink": {
                 "type": "<sink type>"
@@ -176,7 +176,7 @@ Azure Data Factory 會提供內建的驅動程式來啟用連線。 因此，您
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動接收的 type 屬性必須設為 **AzurePostgreSQLSink**。 | 是 |
+| type | 複製活動接收的 type 屬性必須設為 **AzurePostgreSQLSink**。 | Yes |
 | preCopyScript | 在每次執行時將資料寫入適用於 PostgreSQL 的 Azure 資料庫之前，請指定複製活動所要執行的 SQL 查詢。 您可以使用此屬性來清除預先載入的資料。 | 否 |
 | writeBatchSize | 當緩衝區大小達到 writeBatchSize 時，將資料插入適用於 PostgreSQL 的 Azure 資料庫資料表中。<br>允許的值是表示資料列數目的整數。 | 否 (預設值為 10000) |
 | writeBatchTimeout | 在逾時前等待批次插入作業完成的時間。<br>允許的值為 Timespan 字串。 範例是 00:30:00 (30 分鐘)。 | 沒有 (預設值為 00:00:30)  |
@@ -218,5 +218,5 @@ Azure Data Factory 會提供內建的驅動程式來啟用連線。 因此，您
 
 如需屬性的詳細資訊，請參閱 [Azure Data Factory 中的查閱活動](control-flow-lookup-activity.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 如需 Azure Data Factory 中複製活動所支援作為來源和接收器的資料存放區清單，請參閱 [支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。

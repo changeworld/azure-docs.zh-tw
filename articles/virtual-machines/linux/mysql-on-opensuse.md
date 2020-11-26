@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: eee32dc7edd4256dd2bd120609504042d7ab78ea
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7fbdeda4cce737a6220d42642473e5f86ef8e525
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016075"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96295956"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>在 Azure 中執行 OpenSUSE Linux 的虛擬機器上安裝 MySQL
 
@@ -117,7 +117,7 @@ mysql_secure_installation
 您現在可以登入，並輸入 MySQL 提示。
 
 ```bash  
-mysql -u root -p
+sudo mysql -u root -p
 ```
 這會切換到 MySQL 提示，您可以在該提示中發出 SQL 陳述式，與資料庫進行互動。
 
@@ -155,5 +155,5 @@ quit
 ```
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 如需 MySQL 的詳細資訊，請參閱 [MySQL 文件](https://dev.mysql.com/doc)。

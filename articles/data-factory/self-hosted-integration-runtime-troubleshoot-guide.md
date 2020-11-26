@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/17/2020
 ms.author: lle
-ms.openlocfilehash: 93c35828444ec93a974769ed3a2f1981c0ec4368
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 8195c4d072acce5345fa9752f97713aed22d962f
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96013432"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296949"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>針對自我裝載整合執行階段進行疑難排解
 
@@ -459,6 +459,22 @@ openssl pkcs12-export-in xxxx_new xxxx_new .pfx
 
 ![憑證變更之後](media/self-hosted-integration-runtime-troubleshoot-guide/after-certificate-change.png)
 
+### <a name="self-hosted-integration-runtime-version-5x"></a>自我裝載 Integration Runtime 5.x 版
+若要升級至 Azure Data Factory 自我裝載整合執行時間的5.x 版，我們需要 **.net framework runtime 4.7.2** 或更新版本。 在 [下載] 頁面中，會有最新的4.x 版本和最新的兩個5.x 版本的下載連結。 
+
+
+ADF V2 客戶：
+- 如果已開啟自動更新，且您已將 .Net framework 執行時間升級至4.7.2 或更新版本，自我裝載整合執行時間將會自動升級為最新的5.x 版。
+- 如果自動更新是開啟的，而且您尚未將 .Net framework 執行時間升級至4.7.2 或更高版本，自我裝載整合執行時間將不會自動升級為最新的5.x 版。 自我裝載整合執行時間會保持在目前的4.x 版本。 您可以在入口網站和自我裝載整合執行時間用戶端查看 .Net framework 執行時間升級的警告。
+- 如果自動更新已關閉，且您已將 .Net framework 執行時間升級至4.7.2 或更新版本，您可以手動下載最新的5.x 並安裝在您的電腦中。
+- 如果自動更新已關閉，且您未將 .Net framework 執行時間升級至4.7.2 或更新版本。 當您嘗試手動安裝 SHIR 5.x 並註冊金鑰時，將必須先升級 .Net framework 執行時間。
+
+
+ADF V1 客戶：
+- 自我裝載整合執行時間5.x 不支援 ADF V1。
+- 自我裝載整合執行時間將自動升級至最新版的4.x。 而最新的4.x 版本將不會過期。 
+- 如果您嘗試手動安裝自我裝載整合執行時間5.x 並註冊金鑰，將會告知您，自我裝載整合執行時間5.x 不支援 V1。
+
 
 ## <a name="self-hosted-ir-connectivity-issues"></a>自我裝載 IR 連接問題
 
@@ -759,7 +775,8 @@ openssl pkcs12-export-in xxxx_new xxxx_new .pfx
 自我裝載 IR 無法共用跨租使用者。
 
 
-## <a name="next-steps"></a>後續步驟
+
+## <a name="next-steps"></a>下一步
 
 如需疑難排解的詳細資訊，請嘗試下列資源：
 

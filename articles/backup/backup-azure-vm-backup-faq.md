@@ -4,18 +4,18 @@ description: 在本文中，探索使用 Azure 備份服務備份 Azure Vm 的�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 74e2facfd9fd6073acc1f939c3d2ba922e3ac931
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: e6e14209a8df7160d103cb036d38c9fee29b34dd
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925572"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296058"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常見問題-備份 Azure Vm
 
 本文提供使用 [Azure 備份](./backup-overview.md) 服務來備份 Azure vm 的常見問題解答。
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>備份
 
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>當我建立 VM 映射時，可以啟用這些映射以進行備份嗎？
 
@@ -87,11 +87,11 @@ Azure 備份會以儲存 ResourcePointCollections 物件的格式來建立個別
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>我們可以備份具有已啟用寫入加速器 (WA) 之磁碟的 VM 嗎？
 
-您無法在已啟用 WA 的磁碟上建立快照集。 不過，Azure 備份服務可以從備份中排除已啟用 WA 的磁碟。
+快照集只能在已啟用 WA 且不是 OS 磁片的資料磁片上取得。 因此，只有已啟用 WA 的資料磁片可以受到保護。
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>我的 VM 具有寫入加速器 (WA) 磁碟並已安裝 SAP HANA。 該如何備份？
 
-Azure 備份無法備份已啟用 WA 的磁碟，但可從備份中排除該磁碟。 不過，備份將不會提供資料庫一致性，因為系統不會備份已啟用 WA 之磁碟的相關資訊。 如果您想要作業系統磁碟備份以及未啟用 WA 的磁碟備份，您可以使用此設定來備份磁碟。
+Azure 備份可以備份已啟用 WA 的資料磁片。 不過，備份不會提供資料庫一致性。
 
 Azure 備份針對 RPO 為15分鐘的 SAP Hana 資料庫提供串流備份解決方案。 它是經過 SAP 認證的 Backint，可利用 SAP Hana 的原生 Api 來提供原生備份支援。 深入瞭解 [如何在 Azure vm 中備份 SAP Hana 資料庫](./sap-hana-db-about.md)。
 
@@ -185,7 +185,7 @@ VM 會使用已修改或新的原則中的排程和保留期設定來備份。
 
    1. 尋找虛擬機器的位置。
    2. 尋找具有下列命名模式的資源群組： `AzureBackupRG_<location of your VM>_1` 。 例如， *AzureBackupRG_westus2_1*
-   3. 在 [Azure 入口網站中，選取 [ **顯示隱藏的類型** ]。
+   3. 在 [Azure 入口網站中，選取 [ **顯示隱藏的類型**]。
    4. 尋找具有命名模式的 **restorePointCollections** 類型的資源 `AzureBackup_<name of your VM that you're trying to move>_###########` 。
    5. 刪除此資源。 此作業只會刪除立即復原點，而不會刪除保存庫中備份的資料。
    6. 刪除作業完成之後，您就可以移動虛擬機器。

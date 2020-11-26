@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: a5cb5831090987f1b620593843ddba817d8e68d4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 111b2b5b660133c20afdb3c56e1c3e3ed607398c
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188117"
+ms.locfileid: "96296988"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Azure Synapse Studio 中的原始檔控制
 
@@ -32,9 +32,9 @@ ms.locfileid: "96188117"
 
 啟動 Synapse Studio 之後，您可以在工作區中設定 git 存放庫。 Synapse Studio 工作區一次只能與一個 git 存放庫相關聯。 
 
-### <a name="configuration-method-1-authoring-canvas"></a>設定方法1：撰寫畫布
+### <a name="configuration-method-1-global-bar"></a>設定方法1： global bar
 
-在 Synapse Studio 撰寫畫布中，選取 [ **Synapse Live** ] 下拉式功能表，然後選取 [設定程式 **代碼存放庫**]。
+在 Synapse Studio 全域列中，選取 [ **Synapse Live** ] 下拉式功能表，然後選取 [設定程式 **代碼存放庫**]。
 
 ![從撰寫中設定程式碼存放庫設定](media/configure-repo-1.png)
 
@@ -51,7 +51,7 @@ ms.locfileid: "96188117"
 
 ## <a name="connect-with-azure-devops-git"></a>使用 Azure DevOps Git 連接 
 
-您可以將 Synapse 工作區與 Azure DevOps 儲存機制建立關聯，以進行原始檔控制、共同作業、版本設定等。 如果您沒有 Azure DevOps 存放庫，請依照下列 [指示](/azure/devops/organizations/accounts/create-organization-msa-or-work-student) 先建立您的存放庫資源。
+您可以將 Synapse 工作區與 Azure DevOps 儲存機制建立關聯，以進行原始檔控制、共同作業、版本設定等。 如果您沒有 Azure DevOps 存放庫，請遵循下列 [指示](/azure/devops/organizations/accounts/create-organization-msa-or-work-student) 來建立您的存放庫資源。
 
 ### <a name="azure-devops-git-repository-settings"></a>Azure DevOps Git 存放庫設定
 
@@ -94,7 +94,7 @@ Azure Repos Git 存放庫可以位於不同的 Azure Active Directory 租用戶�
 
 在這些設定步驟之後，當您在 Synapse Studio 中設定 Git 整合時，即可使用您的個人存放庫。
 
-如需將 Azure Repos 連線至貴組織 Active Directory 的詳細資訊，請參閱[將您的 Azure DevOps 組織連線至 Azure Active Directory](/azure/devops/organizations/accounts/connect-organization-to-azure-ad)。
+如需將 Azure Repos 連接到您組織 Active Directory 的詳細資訊，請參閱 [將您的組織連線至 Azure Active Directory](/azure/devops/organizations/accounts/connect-organization-to-azure-ad)。
 
 ## <a name="connect-with-github"></a>使用 GitHub 連接 
 
@@ -223,6 +223,6 @@ Azure Synapse Studio 一次只能有一個發佈分支。 當您指定新的發�
 - Synapse Studio 不支援自訂認可訊息。
 - 根據設計，Studio 中的刪除動作將直接認可至 git
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 若要執行持續整合和部署，請參閱 [ (CI/CD) 的持續整合與傳遞 ](continuous-integration-deployment.md)。

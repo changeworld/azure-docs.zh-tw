@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 76f4f9ddaa1e4aec9409e96a0088ec51b8c2645e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 86de3e1199b00dff4e03f3b4292f86e6c19ea491
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097459"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296534"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中最佳化已佈建的輸送量成本
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,7 +31,7 @@ Azure Cosmos DB 可藉由提供所佈建的輸送量模型，於任何規模提�
 
 用來決定佈建輸送量策略的一些指導方針如下：
 
-**考慮在下列情況中，在包含一組容器的 Azure Cosmos 資料庫上布建輸送量 ()** ：
+**考慮在下列情況中，在包含一組容器的 Azure Cosmos 資料庫上布建輸送量 ()**：
 
 1. 您有幾十個 Azure Cosmos 容器，並想要在全部或其中一部分共用輸送量。 
 
@@ -137,7 +137,7 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 若要判斷該為新工作負載佈建多少輸送量，您可以使用下列步驟： 
 
-1. 使用容量規劃工具執行初始的粗略評估，並在 Azure 入口網站中透過 Azure Cosmos Explorer 的協助來調整您的預估值。 
+1. 使用容量規劃程式執行初步的粗略評估，並透過 Azure 入口網站中的 Azure Cosmos DB 總管協助來調整您的估價。 
 
 2. 建議您建立輸送量高於預期值的容器，然後視需要相應減少。 
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 372ff1dc53f15a1338cad933fec64746b6736f40
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5645a2e0449a1929421f9444bf645f08ad0525e9
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368075"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296806"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>使用安全中心的整合式 EDR 解決方案來保護您的端點： Microsoft Defender for Endpoint
 
@@ -31,7 +31,7 @@ Microsoft Defender for Endpoint 是全方位的雲端提供端點安全性解決
 - 受控搜尋服務
 
 > [!TIP]
-> 此端點偵測和回應 (EDR) 產品最初以 **Windows Defender ATP**的形式啟動，會在2019中重新命名為 **Microsoft Defender ATP**。
+> 此端點偵測和回應 (EDR) 產品最初以 **Windows Defender ATP** 的形式啟動，會在2019中重新命名為 **Microsoft Defender ATP**。
 >
 > 在 Ignite 2020，我們啟動了 [Microsoft DEFENDER XDR suite](https://www.microsoft.com/security/business/threat-protection) ，而此 EDR 元件已重新命名 **為 Microsoft defender for Endpoint**。
 
@@ -42,10 +42,10 @@ Microsoft Defender for Endpoint 是全方位的雲端提供端點安全性解決
 |---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 版本狀態：                  | 正式上市 (GA)                                                                                                                                                                                                                                                                                      |
 | 定價：                        | 需要[適用於伺服器的 Azure Defender](security-center-pricing.md)                                                                                                                                                                                                                                             |
-| 支援的平台：            | ![是](./media/icons/yes-icon.png) 執行 Windows 的 Azure 機器<br>![是](./media/icons/yes-icon.png) 執行 Windows 的 Azure Arc 電腦|
+| 支援的平台：            | ![Yes](./media/icons/yes-icon.png) 執行 Windows 的 Azure 機器<br>![Yes](./media/icons/yes-icon.png) 執行 Windows 的 Azure Arc 電腦|
 | 支援的 Windows 版本：  | Defender for Endpoint 內建于 Windows 10 1703 (與較新的) 和 Windows Server 2019。<br>資訊安全中心支援 Windows Server 2016、2012 R2 和 2008 R2 SP1 的偵測。<br>Office 365 GCC 客戶已停用使用此整合的伺服器端點監視。 |
-| 必要的角色和權限： | 若要啟用/停用整合：**安全性系統管理員**或**擁有**者<br>若要在安全性中心內查看 MDATP 警示： **安全性讀取者**、 **讀者**、 **資源群組參與者**、 **資源群組擁有**者、 **安全性系統管理員**、訂用帳戶 **擁有**者或訂用帳戶 **參與者**                         |
-| 雲端：                         | ![是](./media/icons/yes-icon.png) 商業雲端。<br>![否](./media/icons/no-icon.png) 在全域 Azure 雲端中執行工作負載的 GCC 客戶<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov、其他 Gov                                                        |
+| 必要的角色和權限： | 若要啟用/停用整合：**安全性系統管理員** 或 **擁有** 者<br>若要在安全性中心內查看 MDATP 警示： **安全性讀取者**、 **讀者**、 **資源群組參與者**、 **資源群組擁有** 者、 **安全性系統管理員**、訂用帳戶 **擁有** 者或訂用帳戶 **參與者**                         |
+| 雲端：                         | ![是](./media/icons/yes-icon.png) 商業雲端。<br>![No](./media/icons/no-icon.png) 在全域 Azure 雲端中執行工作負載的 GCC 客戶<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov、其他 Gov                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 
@@ -55,13 +55,13 @@ Microsoft Defender for Endpoint 是全方位的雲端提供端點安全性解決
 
 - **Advanced 入侵後偵測感應器**。 適用于 Windows 機器的端點感應器的 Defender 會收集大量的行為信號。
 
-- 以**分析為基礎、以雲端為基礎的入侵後偵測**。 Defender for Endpoint 可快速適應不斷變化的威脅。 並使用進階分析與巨量資料。 它利用 Intelligent Security Graph 的強大功能，在 Windows、Azure 和 Office 之間的信號偵測到未知的威脅。 它提供採取行動警示，讓您得以快速回應。
+- 以 **分析為基礎、以雲端為基礎的入侵後偵測**。 Defender for Endpoint 可快速適應不斷變化的威脅。 並使用進階分析與巨量資料。 它利用 Intelligent Security Graph 的強大功能，在 Windows、Azure 和 Office 之間的信號偵測到未知的威脅。 它提供採取行動警示，讓您得以快速回應。
 
 - **威脅情報**。 Defender for Endpoint 會在識別攻擊者的工具、技術和程式時產生警示。 它會使用由 Microsoft 威脅獵人和安全小組提供的資料，利用合作夥伴提供的情報變得更強大。
 
 藉由整合 Defender for Endpoint 與 Security Center，您將可受益于下列額外功能：
 
-- **自動**上線。 針對安全性中心所監視的所有 Windows 伺服器，「安全性中心」會自動啟用「Microsoft Defender for Endpoint 感應器」 (除非它們正在執行 Windows Server 2019) 。
+- **自動** 上線。 針對由安全性中心監視的所有 Windows 伺服器，「安全性中心」會自動啟用「Microsoft Defender for Endpoint 感應器」。 除了執行 Windows Server 2019 的 Windows Server （必須透過本機腳本上線）之外，群組原則物件 (GPO) ，或 [Microsoft Endpoint Configuration Manager](https://docs.microsoft.com/mem/configmgr/) (先前的 SCCM) 。
 
 - **單一窗格**。 安全性中心主控台會顯示 Microsoft Defender 的端點警示。 若要進一步調查，請使用 Microsoft Defender 作為端點自己的入口網站頁面，您可以在其中看到警示流程樹狀結構和事件圖表等其他資訊。 您也可以查看詳細的機器時間軸，其中會顯示最多六個月歷程記錄期間的每項行為。
 
@@ -87,7 +87,7 @@ Microsoft Defender for Endpoint 是全方位的雲端提供端點安全性解決
 1. 選取 [威脅偵測]。
 1. 選取 [ **允許 Microsoft Defender For Endpoint 存取我的資料**]，然後選取 [ **儲存**]。
 
-    :::image type="content" source="./media/security-center-wdatp/enable-integration-with-edr.png" alt-text="適用于端點本身的安全性中心的 Microsoft Defender":::
+    :::image type="content" source="./media/security-center-wdatp/enable-integration-with-edr.png" alt-text="啟用 Azure 資訊安全中心與 Microsoft 的 EDR 解決方案、Microsoft Defender for Endpoint 之間的整合":::
 
     Azure 資訊安全中心會自動將您的伺服器上架到 Microsoft Defender for Endpoint。 上架最多可能需要24小時的時間。
 
@@ -112,10 +112,10 @@ Microsoft Defender for Endpoint 是全方位的雲端提供端點安全性解決
     ```powershell
     powershell.exe -NoExit -ExecutionPolicy Bypass -WindowStyle Hidden (New-Object System.Net.WebClient).DownloadFile('http://127.0.0.1/1.exe', 'C:\\test-MDATP-test\\invoice.exe'); Start-Process 'C:\\test-MDATP-test\\invoice.exe'
     ```
-    :::image type="content" source="./media/security-center-wdatp/generate-edr-alert.png" alt-text="適用于端點本身的安全性中心的 Microsoft Defender":::
+    :::image type="content" source="./media/security-center-wdatp/generate-edr-alert.png" alt-text="命令提示字元視窗，其中含有用來產生測試警示的命令。":::
 
 1. 如果命令成功，您會在 Azure 資訊安全中心儀表板和 Microsoft Defender for Endpoint portal 上看到新的警示。 此警示可能需要幾分鐘才會顯示。
-1. 若要在「安全性中心」內檢查警示，請前往**安全性警示**  >  **可疑的 PowerShell 命令列**。
+1. 若要在「安全性中心」內檢查警示，請前往 **安全性警示**  >  **可疑的 PowerShell 命令列**。
 1. 從 [調查] 視窗中，選取連結以前往 Microsoft Defender for Endpoint 入口網站。
 
 
@@ -123,7 +123,7 @@ Microsoft Defender for Endpoint 是全方位的雲端提供端點安全性解決
 
 ### <a name="what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint"></a>Microsoft Defender for Endpoint 的授權需求有哪些？
 
-適用于 **伺服器的 Azure defender**不需額外付費，即可使用 Defender for Endpoint。 或者，您也可以另外購買50部機器或更多。
+適用于 **伺服器的 Azure defender** 不需額外付費，即可使用 Defender for Endpoint。 或者，您也可以另外購買50部機器或更多。
 
 
 ### <a name="how-do-i-switch-from-a-third-party-edr-tool"></a>從協力廠商 EDR 工具如何? 切換？
@@ -132,7 +132,7 @@ Microsoft Defender for Endpoint 是全方位的雲端提供端點安全性解決
   
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [Azure 資訊安全中心所支援的功能和平台](security-center-os-coverage.md)
 - [管理 Azure 資訊安全中心的安全性建議](security-center-recommendations.md)：了解建議如何協助保護您的 Azure 資源。
