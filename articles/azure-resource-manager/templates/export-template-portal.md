@@ -3,12 +3,12 @@ title: Azure 入口網站中的匯出範本
 description: 使用 Azure 入口網站從您訂用帳戶中的資源匯出 Azure Resource Manager 範本。
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 6d0c9adb121372047336d2753df047f54f1e0fa2
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: ee97953a337bbb7cc9a8d1f042a3beae7bccdcae
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951752"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185686"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Azure 入口網站中的單一和多重資源匯出至範本
 
@@ -51,7 +51,7 @@ Resource Manager 可讓您挑選一或多個要匯出至範本的資源。 您�
 
 匯出範本功能不支援匯出 Azure Data Factory 資源。 若要瞭解如何匯出 Data Factory 資源，請參閱 [Azure Data Factory 中的複製或複製 Data Factory](../../data-factory/copy-clone-data-factory.md)。
 
-若要匯出透過傳統部署模型建立的資源，您必須將 [它們遷移至 Resource Manager 部署模型](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)。
+若要匯出透過傳統部署模型建立的資源，您必須將 [它們遷移至 Resource Manager 部署模型](../../virtual-machines/migration-classic-resource-manager-overview.md)。
 
 如果您在匯出指出未匯出資源類型的範本時收到警告，您仍然可以探索該資源的屬性。 若要瞭解用來查看資源屬性的不同選項，請參閱 [探索資源屬性](view-resources.md)。 您也可以查看 [Azure REST API](/rest/api/azure/) 中的資源類型。
 

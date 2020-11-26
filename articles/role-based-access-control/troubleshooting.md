@@ -15,12 +15,12 @@ ms.date: 11/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: 53628f5aa0bc5ab5dedde5deb9950c7b13fb4bf6
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e30af9522d7c8fa81c4d93e11d252aefc4426586
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490741"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184258"
 ---
 # <a name="troubleshoot-azure-rbac"></a>針對 Azure RBAC 進行疑難排解
 
@@ -51,7 +51,7 @@ $ras.Count
 
 ## <a name="problems-with-azure-role-assignments"></a>Azure 角色指派的問題
 
-- 如果您因為 [ **新增** 新增角色指派] 選項已停用，或因為您收到許可權錯誤「具有物件識別碼的用戶端沒有執行動作的授權」，所以無法在存取控制的 Azure 入口網站中新增角色指派 **(IAM)** 。確認  >  **Add role assignment** 您目前登入的使用者，具有在 `Microsoft.Authorization/roleAssignments/write` 您嘗試指派角色的範圍內，具有擁有者 [Owner](built-in-roles.md#owner)或 [使用者存取系統管理員](built-in-roles.md#user-access-administrator)許可權的角色。
+- 如果您因為 [**新增** 新增角色指派] 選項已停用，或因為您收到許可權錯誤「具有物件識別碼的用戶端沒有執行動作的授權」，所以無法在存取控制的 Azure 入口網站中新增角色指派 **(IAM)** 。確認  >  **Add role assignment** 您目前登入的使用者，具有在 `Microsoft.Authorization/roleAssignments/write` 您嘗試指派角色的範圍內，具有擁有者 [Owner](built-in-roles.md#owner)或 [使用者存取系統管理員](built-in-roles.md#user-access-administrator)許可權的角色。
 - 如果您使用服務主體來指派角色，您可能會收到「許可權不足，無法完成作業」錯誤。 例如，假設您的服務主體已獲指派擁有者角色，而您嘗試使用 Azure CLI 建立下列角色指派作為服務主體：
 
     ```azurecli
@@ -80,7 +80,7 @@ $ras.Count
 
 ## <a name="custom-roles-and-management-groups"></a>自訂角色和管理群組
 
-- 您只能在自訂角色中定義一個管理群組 `AssignableScopes` 。 將管理群組新增至的 `AssignableScopes` 功能目前為預覽狀態。
+- 您只能在自訂角色中定義一個管理群組 `AssignableScopes` 。 將管理群組新增至 `AssignableScopes` 的服務目前為預覽狀態。
 - `DataActions`無法在管理群組範圍指派具有的自訂角色。
 - Azure Resource Manager 不會驗證管理群組是否存在角色定義的可指派範圍中。
 - 如需自訂角色和管理群組的詳細資訊，請參閱 [使用 Azure 管理群組來組織您的資源](../governance/management-groups/overview.md#azure-custom-role-definition-and-assignment)。
@@ -121,7 +121,7 @@ $ras.Count
 
 但是，如果此安全性主體並非最近受邀的使用者，則可能是已刪除的安全性主體。 如果您將角色指派給安全性主體，然後在不先移除角色指派的情況下刪除該安全性主體，則會將安全性主體列為 **找不** 到身分識別和 **未知** 的類型。
 
-如果您使用 Azure PowerShell 列出此角色指派，您可能會看到空白 `DisplayName` 且已 `ObjectType` 設定為 **未知** 。 例如， [>new-azroleassignment](/powershell/module/az.resources/get-azroleassignment) 會傳回類似下列輸出的角色指派：
+如果您使用 Azure PowerShell 列出此角色指派，您可能會看到空白 `DisplayName` 且已 `ObjectType` 設定為 **未知**。 例如， [>new-azroleassignment](/powershell/module/az.resources/get-azroleassignment) 會傳回類似下列輸出的角色指派：
 
 ```
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -151,7 +151,7 @@ CanDelegate        : False
 }
 ```
 
-離開安全性主體已刪除的角色指派並不會造成問題。 如果您想要的話，可以使用與其他角色指派類似的步驟來移除這些角色指派。 如需有關如何移除角色指派的詳細資訊，請參閱 [Azure 入口網站](role-assignments-portal.md#remove-a-role-assignment)、 [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)或 [Azure CLI](role-assignments-cli.md#remove-role-assignment)
+離開安全性主體已刪除的角色指派並不會造成問題。 如果您想要的話，可以使用與其他角色指派類似的步驟來移除這些角色指派。 如需有關如何移除角色指派的詳細資訊，請參閱 [Azure 入口網站](role-assignments-portal.md#remove-a-role-assignment)、 [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)或 [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
 
 在 PowerShell 中，如果您嘗試使用物件識別碼和角色定義名稱移除角色指派，且有一個以上的角色指派符合您的參數，您將會收到錯誤訊息：「提供的資訊未對應至角色指派」。 下列輸出顯示錯誤訊息的範例：
 
@@ -240,7 +240,7 @@ Web 應用程式因為幾個互有關聯的資源而顯得複雜。 以下是具
 
 ## <a name="azure-functions-and-write-access"></a>Azure Functions 和寫入權限
 
-[Azure Functions](../azure-functions/functions-overview.md) 的某些功能需要寫入存取權。 例如，如果使用者被指派「 [讀取](built-in-roles.md#reader) 者」角色，他們將無法在函式應用程式中查看函式。 入口網站將顯示 **(無存取權)** 。
+[Azure Functions](../azure-functions/functions-overview.md) 的某些功能需要寫入存取權。 例如，如果使用者被指派「 [讀取](built-in-roles.md#reader) 者」角色，他們將無法在函式應用程式中查看函式。 入口網站將顯示 **(無存取權)**。
 
 ![函數應用程式無存取權](./media/troubleshooting/functionapps-noaccess.png)
 

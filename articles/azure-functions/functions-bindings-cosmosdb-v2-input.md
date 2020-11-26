@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 42932d712d6c4a94cad28aec924b88fbc126662b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dec41a5e05d22891aae9d16280ebb6b0c8da3f20
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212800"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185108"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>Azure Functions 2.x 和更新版本 Azure Cosmos DB 輸入系結
 
@@ -20,7 +20,7 @@ Azure Cosmos DB 輸入繫結會使用 SQL API 來擷取一或多個 Azure Cosmos
 如需安裝和設定詳細資料的相關資訊，請參閱[概觀](./functions-bindings-cosmosdb-v2.md)。
 
 > [!NOTE]
-> 如果集合已 [分割](../cosmos-db/partition-data.md#logical-partitions)，則查閱作業也必須指定資料分割索引鍵值。
+> 如果集合已 [分割](../cosmos-db/partitioning-overview.md#logical-partitions)，則查閱作業也必須指定資料分割索引鍵值。
 >
 
 <a id="example" name="example"></a>
@@ -212,7 +212,7 @@ namespace CosmosDBSamplesV2
 範例會顯示如何在 `SqlQuery` 參數中使用繫結運算式。 您可以如範例所示，將路由資料傳遞至 `SqlQuery` 參數，但目前[您無法傳遞查詢字串值](https://github.com/Azure/azure-functions-host/issues/2554#issuecomment-392084583)。
 
 > [!NOTE]
-> 如果您只需要依識別碼進行查詢，建議使用查閱，就像 [先前的範例](#http-trigger-look-up-id-from-query-string-c)一樣，因為它會耗用較少的 [要求單位](../cosmos-db/request-units.md)。 點讀取作業 (取得) 比依識別碼查詢 [更有效率](../cosmos-db/optimize-cost-queries.md) 。
+> 如果您只需要依識別碼進行查詢，建議使用查閱，就像 [先前的範例](#http-trigger-look-up-id-from-query-string-c)一樣，因為它會耗用較少的 [要求單位](../cosmos-db/request-units.md)。 點讀取作業 (取得) 比依識別碼查詢 [更有效率](../cosmos-db/optimize-cost-reads-writes.md) 。
 >
 
 ```cs
@@ -386,7 +386,7 @@ namespace CosmosDBSamplesV2
 
 ### <a name="queue-trigger-look-up-id-from-string"></a>佇列觸發程序，從字串中查閱識別碼
 
-下列範例示範 function.json** 檔案中的 Cosmos DB 輸入繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。 函式會讀取單一文件，並更新文件的文字值。
+下列範例示範 function.json 檔案中的 Cosmos DB 輸入繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。 函式會讀取單一文件，並更新文件的文字值。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -734,7 +734,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 
 ### <a name="queue-trigger-look-up-id-from-json"></a>佇列觸發程序，從 JSON 中查閱識別碼
 
-下列範例示範 function.json** 檔案中的 Cosmos DB 輸入繫結，以及使用此繫結的 [JavaScript 指令碼函式](functions-reference-node.md)。 函式會讀取單一文件，並更新文件的文字值。
+下列範例示範 function.json 檔案中的 Cosmos DB 輸入繫結，以及使用此繫結的 [JavaScript 指令碼函式](functions-reference-node.md)。 函式會讀取單一文件，並更新文件的文字值。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -943,7 +943,7 @@ module.exports = function (context, req, toDoItem) {
 
 ### <a name="queue-trigger-look-up-id-from-json"></a>佇列觸發程序，從 JSON 中查閱識別碼
 
-下列範例示範 function.json** 檔案中的 Cosmos DB 觸發程序繫結，以及使用此繫結的 [Python 函式](functions-reference-python.md)。 函式會讀取單一文件，並更新文件的文字值。
+下列範例示範 function.json 檔案中的 Cosmos DB 觸發程序繫結，以及使用此繫結的 [Python 函式](functions-reference-python.md)。 函式會讀取單一文件，並更新文件的文字值。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -1315,7 +1315,7 @@ public class DocByIdFromRoute {
 下列範例示範會擷取單一文件的 Java 函式。 此函式是由 HTTP 要求所觸發，該 HTTP 要求會使用路由參數來指定要查閱的識別碼。 該識別碼會用來從指定的資料庫和集合中擷取文件，並將結果集轉換為 ```ToDoItem[]```，因為根據查詢準則而定，可能會傳回許多文件。
 
 > [!NOTE]
-> 如果您只需要依識別碼進行查詢，建議使用查閱，就像 [先前的範例](#http-trigger-look-up-id-from-query-string---pojo-parameter-java)一樣，因為它會耗用較少的 [要求單位](../cosmos-db/request-units.md)。 點讀取作業 (取得) 比依識別碼查詢 [更有效率](../cosmos-db/optimize-cost-queries.md) 。
+> 如果您只需要依識別碼進行查詢，建議使用查閱，就像 [先前的範例](#http-trigger-look-up-id-from-query-string---pojo-parameter-java)一樣，因為它會耗用較少的 [要求單位](../cosmos-db/request-units.md)。 點讀取作業 (取得) 比依識別碼查詢 [更有效率](../cosmos-db/optimize-cost-reads-writes.md) 。
 >
 
 ```java
@@ -1442,7 +1442,7 @@ Python 指令碼不支援屬性。
 |**id**    | **識別碼** | 要擷取之文件的識別碼。 此屬性支援[繫結運算式](./functions-bindings-expressions-patterns.md)。 請勿同時設定 `id` 和 **sqlQuery** 屬性。 如果您未設定其中一個，就會擷取整個集合。 |
 |**sqlQuery**  |**SqlQuery**  | 用來擷取多份文件的 Azure Cosmos DB SQL 查詢。 屬性會支援執行階段繫結，如此範例所示：`SELECT * FROM c where c.departmentId = {departmentId}`。 請勿同時設定 `id` 和 `sqlQuery` 屬性。 如果您未設定其中一個，就會擷取整個集合。|
 |**connectionStringSetting**     |**ConnectionStringSetting**|包含 Azure Cosmos DB 連接字串的應用程式設定名稱。 |
-|**partitionKey**|**PartitionKey**|指定分割區索引鍵值進行查閱。 可能包含繫結參數。 這是在資料 [分割](../cosmos-db/partition-data.md#logical-partitions) 集合中查閱的必要項。|
+|**partitionKey**|**PartitionKey**|指定分割區索引鍵值進行查閱。 可能包含繫結參數。 這是在資料 [分割](../cosmos-db/partitioning-overview.md#logical-partitions) 集合中查閱的必要項。|
 |**preferredLocations**| **PreferredLocations**|  (選擇性) 會針對 Azure Cosmos DB 服務中的異地複寫資料庫帳戶，定義 (區域) 的慣用位置。 值應以逗號分隔。 例如「美國東部、美國中南部、北歐」。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

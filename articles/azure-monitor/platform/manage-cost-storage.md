@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/22/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 940955c8ace956354a2747f5ad21430620c2a9d1
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: b84d24174771e8395677874c9dac863fa6f27a54
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95744563"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185907"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure 監視器記錄來管理使用量和成本    
 
@@ -78,7 +78,7 @@ Log Analytics 費用會新增到您的 Azure 帳單中。 您可以在 Azure 入
 
 ## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>在 Azure 帳單上檢視 Log Analytics 使用量 
 
-Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%252fazure%252fbilling%252fTOC.json)中樞內提供了大量實用功能。 例如，「成本分析」功能可讓您檢視 Azure 資源的花費。 首先，新增依「資源類型」的篩選器 (新增到 microsoft.operationalinsights/workspace for Log Analytics 和 microsoft.operationalinsights/workspace for Log Analytics Clusters) 可讓您追蹤 Log Analytics 的支出。 然後在 [群組依據] 中選取 [計量類別] 或 [計量]。  請注意，Azure 資訊安全中心和 Azure Sentinel 等其他服務也會對 Log Analytics 工作區資源收取使用費用。 若要查看服務名稱的對應，您可以選取 [資料表] 檢視而非圖表。 
+Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json)中樞內提供了大量實用功能。 例如，「成本分析」功能可讓您檢視 Azure 資源的花費。 首先，新增依「資源類型」的篩選器 (新增到 microsoft.operationalinsights/workspace for Log Analytics 和 microsoft.operationalinsights/workspace for Log Analytics Clusters) 可讓您追蹤 Log Analytics 的支出。 然後在 [群組依據] 中選取 [計量類別] 或 [計量]。  請注意，Azure 資訊安全中心和 Azure Sentinel 等其他服務也會對 Log Analytics 工作區資源收取使用費用。 若要查看服務名稱的對應，您可以選取 [資料表] 檢視而非圖表。 
 
 若要更加了解您的使用量，請[從 Azure 入口網站下載使用量](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)。 在下載的試算表中，您可以看到每天每一 Azure 資源 (例如 Log Analytics 工作區) 的使用量。 在此 Excel 試算表中，您可以先在 [計量類別] 資料行進行篩選以顯示「Log Analytics」、「深入解析與分析」(某些舊版定價層會使用) 和「Azure 監視器」(容量保留定價層會使用)，然後在 [執行個體識別碼] 資料行上新增篩選 (「包含工作區」或「包含叢集」，後者可包含 Log Analytics 叢集使用量)，藉此找到 Log Analytics 工作區的使用量。 使用量會顯示在 [已取用的數量] 資料行，每個項目的單位則會顯示在 [測量單位] 資料行。  有更多詳細資料可協助您[了解 Microsoft Azure 帳單](../../cost-management-billing/understand/review-individual-bill.md)。 
 
@@ -128,7 +128,7 @@ Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quic
 
 ## <a name="log-analytics-and-security-center"></a>Log Analytics 和安全性中心
 
-[Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/) 計費與 Log Analytics 計費密切相關。 資訊安全中心會針對一組 [安全性資料類型](https://docs.microsoft.com/azure/azure-monitor/reference/tables/tables-category#security) （ (Windowsevent 進行篩選、SecurityAlert、SecurityBaseline、SecurityBaselineSummary、SecurityDetection、SecurityEvent、Windows 防火牆、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus) 和 Update 和 UpdateSummary 資料類型），提供 500 MB/節點/天的配置，但不會在工作區上執行更新管理解決方案或啟用目標解決方案。 如果工作區處於舊版的每個節點定價層，則會結合安全性中心和 Log Analytics 配置，並將其套用至所有可計費的內嵌資料。  
+[Azure 資訊安全中心](../../security-center/index.yml) 計費與 Log Analytics 計費密切相關。 資訊安全中心會針對一組 [安全性資料類型](/azure/azure-monitor/reference/tables/tables-category#security) （ (Windowsevent 進行篩選、SecurityAlert、SecurityBaseline、SecurityBaselineSummary、SecurityDetection、SecurityEvent、Windows 防火牆、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus) 和 Update 和 UpdateSummary 資料類型），提供 500 MB/節點/天的配置，但不會在工作區上執行更新管理解決方案或啟用目標解決方案。 如果工作區處於舊版的每個節點定價層，則會結合安全性中心和 Log Analytics 配置，並將其套用至所有可計費的內嵌資料。  
 
 ## <a name="change-the-data-retention-period"></a>變更資料保留期
 
@@ -481,7 +481,7 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 | 效能計數器       | 變更[效能計數器組態](data-sources-performance-counters.md)以： <br> - 減少收集頻率 <br> - 減少效能計數器的數目 |
 | 事件記錄                 | 變更[事件記錄組態](data-sources-windows-events.md)以： <br> - 減少所收集的事件記錄數目 <br> - 只收集必要的事件層級。 例如，不要收集「資訊」層級事件 |
 | syslog                     | 變更 [Syslog 組態](data-sources-syslog.md)以： <br> - 減少所收集的設施數目 <br> - 只收集必要的事件層級。 例如，不要收集「資訊」和「偵錯」層級事件 |
-| AzureDiagnostics           | 將 [資源記錄檔收集](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-in-azure-portal) 變更為： <br> - 減少會將記錄傳送至 Log Analytics 的資源數目 <br> - 只收集必要的記錄 |
+| AzureDiagnostics           | 將 [資源記錄檔收集](./diagnostic-settings.md#create-in-azure-portal) 變更為： <br> - 減少會將記錄傳送至 Log Analytics 的資源數目 <br> - 只收集必要的記錄 |
 | 電腦中不需要解決方案的方案資料 | 使用[方案目標](../insights/solution-targeting.md)，只從必要的電腦群組收集資料。 |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>在每一節點定價層讓節點成為已計費

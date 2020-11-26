@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: sstein, sashan
 ms.date: 10/28/2020
-ms.openlocfilehash: c0c925f68e8edbae00f980d9445c59d7213a4b25
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 6b6ae2ffca420dc126d56c0f1cfed9188dec0e47
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901312"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185601"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database 和 SQL 受控執行個體的高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,8 +28,8 @@ ms.locfileid: "92901312"
 
 有兩個高可用性架構模型：
 
-- 以計算和儲存體分隔為基礎的 **標準可用性模型** 。  它依賴遠端儲存層的高可用性和可靠性。 此架構的目標是以預算導向的商務應用程式，可容忍維護活動期間的效能降低。
-- 以資料庫引擎進程叢集為基礎的高階 **可用性模型** 。 這是因為永遠會有一個可用資料庫引擎節點的仲裁。 此架構以高 IO 效能、高交易率為目標的任務關鍵性應用程式，並保證在維護活動期間對您的工作負載造成最少的效能影響。
+- 以計算和儲存體分隔為基礎的 **標準可用性模型**。  它依賴遠端儲存層的高可用性和可靠性。 此架構的目標是以預算導向的商務應用程式，可容忍維護活動期間的效能降低。
+- 以資料庫引擎進程叢集為基礎的高階 **可用性模型**。 這是因為永遠會有一個可用資料庫引擎節點的仲裁。 此架構以高 IO 效能、高交易率為目標的任務關鍵性應用程式，並保證在維護活動期間對您的工作負載造成最少的效能影響。
 
 SQL Database 和 SQL 受控執行個體都是在最新穩定版本的 SQL Server Database engine 和 Windows 作業系統上執行，大部分的使用者都不會注意到升級會持續執行。
 
@@ -94,7 +94,7 @@ Premium 和業務關鍵服務層級會利用高階可用性模型，將計算資
 
 ## <a name="hyperscale-service-tier-availability"></a>超大規模服務層級可用性
 
-超大規模服務層架構在分散式函式 [架構](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#distributed-functions-architecture) 中有描述，而且目前僅適用于 SQL Database，而非 SQL 受控執行個體。
+超大規模服務層架構在分散式函式 [架構](./service-tier-hyperscale.md#distributed-functions-architecture) 中有描述，而且目前僅適用于 SQL Database，而非 SQL 受控執行個體。
 
 ![超大規模功能架構](./media/high-availability-sla/hyperscale-architecture.png)
 
@@ -102,12 +102,12 @@ Premium 和業務關鍵服務層級會利用高階可用性模型，將計算資
 
 - 執行進程的無狀態計算層， `sqlservr.exe` 只包含暫時性和快取的資料，例如在連接的 SSD 上的非涵蓋 RBPEX 快取、TempDB、模型資料庫等等，以及記憶體中的計畫快取、緩衝集區和資料行存放區集區。 此無狀態層包含主要計算複本，並選擇性地包含一些可作為容錯移轉目標的次要計算複本。
 - 頁面伺服器所形成的無狀態儲存層。 這一層是在計算複本上執行之進程的分散式儲存引擎 `sqlservr.exe` 。 每一頁伺服器僅包含暫時性和快取的資料，例如涵蓋連接 SSD 上的 RBPEX 快取，以及在記憶體中快取的資料頁。 每部頁面伺服器在主動-主動設定中都有成對的頁面伺服器，以提供負載平衡、冗余和高可用性。
-- 由執行記錄服務處理常式、交易記錄登陸區域，以及交易記錄長期儲存的計算節點所形成的具狀態交易記錄儲存層。 登陸區域和長期儲存使用 Azure 儲存體，可為交易記錄提供可用性和 [冗余](https://docs.microsoft.com/azure/storage/common/storage-redundancy) ，以確保認可交易的資料耐久性。
-- 具有資料庫檔案的具狀態資料儲存層 ( .mdf/ndf) 儲存在 Azure 儲存體中，並由頁面伺服器更新。 這一層會使用 Azure 儲存體的資料可用性和 [冗余](https://docs.microsoft.com/azure/storage/common/storage-redundancy) 功能。 它保證資料檔中的每個頁面都會保留，即使超大規模架構的其他層級中的進程損毀，或計算節點失敗也一樣。
+- 由執行記錄服務處理常式、交易記錄登陸區域，以及交易記錄長期儲存的計算節點所形成的具狀態交易記錄儲存層。 登陸區域和長期儲存使用 Azure 儲存體，可為交易記錄提供可用性和 [冗余](../../storage/common/storage-redundancy.md) ，以確保認可交易的資料耐久性。
+- 具有資料庫檔案的具狀態資料儲存層 ( .mdf/ndf) 儲存在 Azure 儲存體中，並由頁面伺服器更新。 這一層會使用 Azure 儲存體的資料可用性和 [冗余](../../storage/common/storage-redundancy.md) 功能。 它保證資料檔中的每個頁面都會保留，即使超大規模架構的其他層級中的進程損毀，或計算節點失敗也一樣。
 
 所有超大規模層中的計算節點會在 Azure Service Fabric 上執行，以控制每個節點的健康情況，並視需要執行容錯移轉至可用狀況良好的節點。
 
-如需超大規模中高可用性的詳細資訊，請參閱 [超大規模中的資料庫高可用性](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#database-high-availability-in-hyperscale)。
+如需超大規模中高可用性的詳細資訊，請參閱 [超大規模中的資料庫高可用性](./service-tier-hyperscale.md#database-high-availability-in-hyperscale)。
 
 
 ## <a name="accelerated-database-recovery-adr"></a>加速資料庫復原 (ADR)

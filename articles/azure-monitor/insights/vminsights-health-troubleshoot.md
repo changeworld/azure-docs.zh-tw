@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/08/2020
-ms.openlocfilehash: 048230bb85d2ac599efc6bd3fb326f98038cce57
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 2aa83a861697882127c75eb696807f604c3061f0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686797"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184547"
 ---
 # <a name="troubleshoot-azure-monitor-for-vms-guest-health-preview"></a>針對適用於 VM 的 Azure 監視器 guest health (preview) 進行疑難排解
 本文說明當您有適用於 VM 的 Azure 監視器健康情況問題時，可採取的疑難排解步驟。
@@ -42,7 +42,7 @@ ms.locfileid: "94686797"
 確認將健全狀況延伸模組指定為數據源的資料集合規則，與虛擬機器相關聯。
 
 ## <a name="error-message-for-bad-request-due-to-insufficient-permissions"></a>因為許可權不足而導致錯誤要求的錯誤訊息
-此錯誤表示未在訂用帳戶中註冊 **WorkloadMonitor** 資源提供者。 如需註冊此資源提供者的詳細資訊，請參閱 [Azure 資源提供者和類型](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider) 。 
+此錯誤表示未在訂用帳戶中註冊 **WorkloadMonitor** 資源提供者。 如需註冊此資源提供者的詳細資訊，請參閱 [Azure 資源提供者和類型](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) 。 
 
 ![不正確的要求](media/vminsights-health-troubleshoot/bad-request.png)
 

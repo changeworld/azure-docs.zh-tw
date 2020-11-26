@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: e3a8e8b908c9d278654bfe992474811d6a9ddb86
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: d365b13ef8fb7ed9676bb00919315dc6fc9773ee
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993703"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184581"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>使用 Azure 監視器監視 Azure 資源
 當您有依賴 Azure 資源的重要應用程式和商務程序時，您會想要監視這些資源的可用性、效能和操作。 本文說明 Azure 資源所產生的監視資料，以如何使用 Azure 監視器的功能來分析此資料並發出警示。
@@ -93,7 +93,7 @@ Azure 中的資源會產生下圖所示的[記錄](../platform/data-platform-log
 
 
 ### <a name="insights-and-solutions"></a>深入解析和解決方案 
-有些服務會提供超越 Azure 監視器標準功能的工具。 [深入解析](./insights-overview.md)可提供建置於 Azure 監視器資料平台和標準功能之上的自訂監視體驗。 [解決方案](./solutions.md)可提供建置於 Azure 監視器記錄之上的預先定義監視邏輯。 
+有些服務會提供超越 Azure 監視器標準功能的工具。 [深入解析](../monitor-reference.md)可提供建置於 Azure 監視器資料平台和標準功能之上的自訂監視體驗。 [解決方案](./solutions.md)可提供建置於 Azure 監視器記錄之上的預先定義監視邏輯。 
 
 如果服務有 Azure 監視器深入解析，您可以從資源各自功能表中的 [監視] 來加以存取。 從 [Azure 監視器] 功能表則可存取所有的深入解析和解決方案。
 
@@ -119,7 +119,7 @@ Azure 中的資源會產生下圖所示的[記錄](../platform/data-platform-log
 ### <a name="azure-monitor-logs"></a>Azure 監視器記錄
 Azure 監視器記錄會合併來自多個服務和其他資料來源的記錄與計量，以利用功能強大的查詢工具進行分析。 如上所述，請建立診斷設定，以將平台計量、活動記錄和資源記錄收集到 Azure 監視器中的 Log Analytics 工作區。
 
-[Log Analytics](../log-query/get-started-portal.md) 可讓您使用[記錄查詢](../log-query/log-query-overview.md)，這是 Azure 監視器的強大功能，可讓您使用功能完整的查詢語言來為記錄資料執行進階分析。 請從 Azure 資源 [監視] 功能表中的 [記錄] 開啟 Log Analytics，以使用資源作為[查詢範圍](../log-query/scope.md#query-scope)來處理記錄查詢。 這可讓您只針對該資源分析多個資料表的資料。 使用 [Azure 監視器] 功能表中的 [記錄] 來存取所有資源的記錄。 
+[Log Analytics](../log-query/log-analytics-tutorial.md) 可讓您使用[記錄查詢](../log-query/log-query-overview.md)，這是 Azure 監視器的強大功能，可讓您使用功能完整的查詢語言來為記錄資料執行進階分析。 請從 Azure 資源 [監視] 功能表中的 [記錄] 開啟 Log Analytics，以使用資源作為[查詢範圍](../log-query/scope.md#query-scope)來處理記錄查詢。 這可讓您只針對該資源分析多個資料表的資料。 使用 [Azure 監視器] 功能表中的 [記錄] 來存取所有資源的記錄。 
 
 - 如需「如何使用用來撰寫記錄查詢的查詢語言」的教學課程，請參閱[開始使用 Azure 監視器中的記錄查詢](../log-query/get-started-queries.md)。
 - 如需 Azure 監視器記錄如何收集資源記錄的相關資訊，以及如何在查詢中存取資源記錄的詳細資訊，請參閱[在 Azure 監視器中於 Log Analytics 工作區內收集 Azure 資源記錄](../platform/resource-logs.md#send-to-log-analytics-workspace)。

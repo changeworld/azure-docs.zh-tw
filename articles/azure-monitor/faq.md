@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 391d9562bc73265a10976f485c78e3966aa4fe83
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: b770e4488b6edb1c2d3749066315b552c0b5b40a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536280"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186162"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 監視器常見問題集
 
@@ -31,7 +31,7 @@ ms.locfileid: "95536280"
 自動啟用的 Azure 監視器功能 (例如，收集計量和活動記錄) 皆免費提供。 使用記錄查詢和警示等其他功能，則有相關聯的費用。 如需詳細定價資訊，請參閱 [Azure 監視器定價頁面](https://azure.microsoft.com/pricing/details/monitor/)。
 
 ### <a name="how-do-i-enable-azure-monitor"></a>如何啟用 Azure 監視器？
-Azure 監視器會在您建立新的 Azure 訂用帳戶時啟用，並自動收集[活動記錄](./platform/platform-logs-overview.md)和平台[計量](platform/data-platform-metrics.md)。 建立[診斷設定](platform/diagnostic-settings.md)以收集更多有關 Azure 資源作業的詳細資訊，並新增[監視解決方案](insights/solutions.md)和[見解](insights/insights-overview.md)，以針對特定服務所收集的資料提供額外分析。 
+Azure 監視器會在您建立新的 Azure 訂用帳戶時啟用，並自動收集[活動記錄](./platform/platform-logs-overview.md)和平台[計量](platform/data-platform-metrics.md)。 建立[診斷設定](platform/diagnostic-settings.md)以收集更多有關 Azure 資源作業的詳細資訊，並新增[監視解決方案](insights/solutions.md)和[見解](./monitor-reference.md)，以針對特定服務所收集的資料提供額外分析。 
 
 ### <a name="how-do-i-access-azure-monitor"></a>如何存取 Azure 監視器？
 從 Azure 入口網站的 [監視器] 功能表中，存取所有 Azure 監視器功能和資料。 適用於不同 Azure 服務的功能表 [監視] 區段，可讓您存取與篩選至特定資源之資料相同的工具。 此外，也可以使用 CLI、PowerShell 和 REST API，針對各種案例存取 Azure 監視器資料。
@@ -65,7 +65,7 @@ Azure 監視器會將來自各種來源的資料收集到[記錄](platform/data-
 ## <a name="solutions-and-insights"></a>解決方案和見解
 
 ### <a name="what-is-an-insight-in-azure-monitor"></a>什麼是 Azure 監視器中的見解？
-見解可為特定 Azure 服務提供自訂的監視體驗。 其會使用與 Azure 監視器中其他功能相同的計量和記錄，但可能會收集額外的資料，並在 Azure 入口網站中提供獨特的體驗。 請參閱 [Azure 監視器中的見解](insights/insights-overview.md)。
+見解可為特定 Azure 服務提供自訂的監視體驗。 其會使用與 Azure 監視器中其他功能相同的計量和記錄，但可能會收集額外的資料，並在 Azure 入口網站中提供獨特的體驗。 請參閱 [Azure 監視器中的見解](./monitor-reference.md)。
 
 若要在 Azure 入口網站中檢視見解，請參閱 [監視器] 功能表的 [見解] 區段，或服務功能表的 [監視] 區段。
 
@@ -77,7 +77,7 @@ Azure 監視器會將來自各種來源的資料收集到[記錄](platform/data-
 ## <a name="logs"></a>記錄
 
 ### <a name="whats-the-difference-between-azure-monitor-logs-and-azure-data-explorer"></a>Azure 監視器記錄和 Azure 資料總管之間有何差異？
-Azure 資料總管是一項快速又可高度調整的資料探索服務，可用於處理記錄和遙測資料。 Azure 監視器記錄建置於 Azure 資料總管之上，並使用相同的 Kusto 查詢語言 (KQL)，但有一些小差異。 請參閱 [Azure 監視器記錄查詢語言差異](log-query/data-explorer-difference.md)。
+Azure 資料總管是一項快速又可高度調整的資料探索服務，可用於處理記錄和遙測資料。 Azure 監視器記錄建置於 Azure 資料總管之上，並使用相同的 Kusto 查詢語言 (KQL)，但有一些小差異。 請參閱 [Azure 監視器記錄查詢語言差異](/azure/data-explorer/kusto/query/)。
 
 ### <a name="how-do-i-retrieve-log-data"></a>如何擷取記錄資料？
 使用以 Kusto 查詢語言 (KQL) 撰寫的記錄查詢，從 Log Analytics 工作區中擷取所有資料。 您可以撰寫自己的查詢，或使用解決方案和見解，以包含特定應用程式或服務的記錄查詢。 請參閱 [Azure 監視器中的記錄查詢概觀](log-query/log-query-overview.md)。
@@ -224,7 +224,7 @@ WireData
 * [Node.js 應用程式](app/nodejs.md)
 * [Azure 上的 Web 應用程式](app/azure-web-apps.md)
 * [Azure 上的雲端服務](app/cloudservices.md)
-* [在 Docker 中執行的應用程式伺服器](app/docker.md)
+* [在 Docker 中執行的應用程式伺服器](./azure-monitor-app-hub.yml)
 * [單一頁面 Web 應用程式](app/javascript.md)
 * [SharePoint](app/sharepoint.md)
 * [Windows 傳統型應用程式](app/windows-desktop.md)
@@ -401,7 +401,7 @@ WireData
 
 **目前不支援** 將現有的 Application Insights 資源從某個區域移至另一個區域。 您所收集的歷程記錄資料 **無法遷移** 至新的區域。 唯一的部分解決方法是：
 
-1. 在新區域中建立全新的 Application Insights 資源 ([傳統](app/create-new-resource.md) 或以 [工作區為基礎](/azure/azure-monitor/app/create-workspace-resource) 的) 。
+1. 在新區域中建立全新的 Application Insights 資源 ([傳統](app/create-new-resource.md) 或以 [工作區為基礎](./app/create-workspace-resource.md) 的) 。
 2. 重新建立新資源中原始資源專屬的所有唯一自訂。
 3. 修改您的應用程式，以使用新區域資源的 [檢測金鑰](app/create-new-resource.md#copy-the-instrumentation-key) 或 [連接字串](app/sdk-connection-string.md)。  
 4. 測試以使用新的 Application Insights 資源，確認一切都如預期般繼續運作。 
@@ -414,7 +414,7 @@ WireData
 - 重新建立可用性警示。
 - 重新建立任何自訂的 Azure 角色型存取控制， (您的使用者存取新資源所需的 Azure RBAC) 設定。 
 - 複寫牽涉到內嵌取樣、資料保留、每日上限和自訂計量的設定。 這些設定可透過 [ **使用量和估計成本** ] 窗格來控制。
-- 依賴 API 金鑰的任何整合，例如 [發行注釋](/azure/azure-monitor/app/annotations)、 [即時計量安全控制通道](app/live-stream.md#secure-the-control-channel) 等等。您將需要產生新的 API 金鑰，並更新相關聯的整合。 
+- 依賴 API 金鑰的任何整合，例如 [發行注釋](./app/annotations.md)、 [即時計量安全控制通道](app/live-stream.md#secure-the-control-channel) 等等。您將需要產生新的 API 金鑰，並更新相關聯的整合。 
 - 需要再次設定傳統資源中的連續匯出。
 - 以工作區為基礎的資源中的診斷設定必須重新設定。
 

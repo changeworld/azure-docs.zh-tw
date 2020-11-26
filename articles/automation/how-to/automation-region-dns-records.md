@@ -3,14 +3,14 @@ title: Azure 自動化使用的 Azure 資料中心 DNS 記錄 |Microsoft Docs
 description: 本文提供限制與裝載該自動化帳戶之特定 Azure 區域的通訊時，Azure 自動化功能所需的 DNS 記錄。
 services: automation
 ms.subservice: process-automation
-ms.date: 07/23/2020
+ms.date: 11/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 17d0857a8979cfcc632ab8951fb255f97229a665
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4b8f48afc75c0a96937575bdad5bb884d0cb4d8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87117187"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183714"
 ---
 # <a name="dns-records-for-azure-regions-used-by-azure-automation"></a>Azure 自動化所使用之 Azure 區域的 DNS 記錄
 
@@ -84,11 +84,14 @@ ms.locfileid: "87117187"
 | US Gov 德克薩斯州 |`https://<accountId>.webhook.ussc.azure-automation.us`<br>`https://<accountId>.agentsvc.ussc.azure-automation.us`<br>`https://<accountId>.jrds.ussc.azure-automation.us` |
 | US Gov 亞利桑那州 |`https://<accountId>.webhook.phx.azure-automation.us`<br>`https://<accountId>.agentsvc.phx.azure-automation.us`<br>`https://<accountId>.jrds.phx.azure-automation.us` |
 
-在 `<accountId>` DNS 記錄中取代為值 **URL**中代表您自動化帳戶識別碼的 GUID。 您可以在 Azure 入口網站中，從 [**帳戶設定**] 下的**金鑰**取得所需的識別碼。
+在 `<accountId>` DNS 記錄中取代為值 **URL** 中代表您自動化帳戶識別碼的 GUID。 您可以在 Azure 入口網站中，從 [**帳戶設定**] 下的 **金鑰** 取得所需的識別碼。
 
 ![自動化帳戶的主要金鑰頁面](./media/automation-region-dns-records/automation-account-keys.png)
 
 在 [帳戶] */* [ **URL** ] 欄位中複製值- `https://<GUID>.agentsvc.<region>.azure-automation.net/accounts/<GUID>`
+
+> [!NOTE]
+> 所有 Webhook 和 agentservice.svc DNS 記錄都已更新為新的樣式 DNS 記錄，以支援 Private Link。 針對 JRDS DNS 記錄，支援舊的和新的樣式 DNS 記錄。 如果您不是使用 Private Link，您會看到舊樣式的 DNS 記錄，而使用 Private Link 的 DNS 記錄將會看到新的 DNS 記錄樣式。
 
 建議您使用定義[例外狀況](../automation-runbook-execution.md#exceptions)時所列出的位址。 如需區域 IP 位址的清單，而不是區功能變數名稱稱，請從 Microsoft 下載中心下載下列雲端環境的 JSON 檔案：
 
@@ -104,7 +107,7 @@ IP 位址檔案會列出用於 Microsoft Azure 資料中心的 IP 位址範圍�
 > [!NOTE]
 > 如果您是使用 Azure ExpressRoute，請記得在每個月的第一週，該 IP 位址檔案會用來更新 Azure 空間的邊界閘道協定 (BGP) 公告。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 若要了解如何對混合式 Runbook 背景工作角色進行疑難排解，請參閱[對混合式 Runbook 背景工作角色問題進行疑難排解](../troubleshoot/hybrid-runbook-worker.md#general)。
 

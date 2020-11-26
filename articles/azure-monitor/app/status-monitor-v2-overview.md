@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 0fa0b0d5e3620fc45a104ea31fd3bcbedd673da1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0ce969a4ab016d6a036d33a0e9bf027bb580a20
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318941"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186213"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>為內部部署伺服器部署 Azure 監視器 Application Insights 代理程式
 
@@ -67,12 +67,12 @@ Application Insights 代理程式位於： https://www.powershellgallery.com/pac
   - [ApplicationInsightsMonitoringStatus](./status-monitor-v2-api-reference.md#get-applicationinsightsmonitoringstatus)指令程式可用來確認啟用成功。
   - 建議您使用 [即時計量](./live-stream.md) 來快速判斷您的應用程式是否正在傳送遙測。
 
-  - 您也可以使用 [Log Analytics](../log-query/get-started-portal.md) 來列出目前正在傳送遙測的所有雲端角色：
+  - 您也可以使用 [Log Analytics](../log-query/log-analytics-tutorial.md) 來列出目前正在傳送遙測的所有雲端角色：
       ```Kusto
       union * | summarize count() by cloud_RoleName, cloud_RoleInstance
       ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 檢視遙測：
 
@@ -86,4 +86,3 @@ Application Insights 代理程式位於： https://www.powershellgallery.com/pac
 * [建立 Web 測試](monitor-web-app-availability.md)，確定您的網站保持即時狀態。
 * [新增 web 用戶端遙測](./javascript.md) 以查看網頁程式碼的例外狀況，並啟用追蹤呼叫。
 * [將 APPLICATION INSIGHTS SDK 新增至您的程式碼](./asp-net.md) ，讓您可以插入追蹤和記錄呼叫。
-

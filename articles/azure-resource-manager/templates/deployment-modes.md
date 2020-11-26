@@ -3,12 +3,12 @@ title: 部署模式
 description: 說明如何指定是否要透過 Azure Resource Manager 使用完整或累加部署模式。
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: e584acd4af1dc6adb5f5d383acd5d16da0815f32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc499be4185905af7eaf71b3515895de9bee46d3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87371578"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184037"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager 部署模式
 
@@ -20,16 +20,16 @@ ms.locfileid: "87371578"
 
 ## <a name="complete-mode"></a>完整模式
 
-在完整模式中，Resource Manager 會**刪除**現存於資源群組中但未在範本內指定的資源。
+在完整模式中，Resource Manager 會 **刪除** 現存於資源群組中但未在範本內指定的資源。
 
 > [!NOTE]
 > 在以完整模式部署範本之前，請一律使用「 [假設](template-deploy-what-if.md) 」作業。 假設會顯示要建立、刪除或修改哪些資源。 使用假設來避免不慎刪除資源。
 
-如果您的範本包含因為 [條件](conditional-resource-deployment.md) 評估為 false 而未部署的資源，則結果取決於您用來部署範本的 REST API 版本。 如果您使用的版本早于2019-05-10，則 **不會刪除**資源。 使用2019-05-10 或更新版本時， **會刪除**資源。 Azure PowerShell 和 Azure CLI 的最新版本會刪除資源。
+如果您的範本包含因為 [條件](conditional-resource-deployment.md) 評估為 false 而未部署的資源，則結果取決於您用來部署範本的 REST API 版本。 如果您使用的版本早于2019-05-10，則 **不會刪除** 資源。 使用2019-05-10 或更新版本時， **會刪除** 資源。 Azure PowerShell 和 Azure CLI 的最新版本會刪除資源。
 
 使用具有 [複製迴圈](copy-resources.md)的完整模式時請小心。 在解析複製迴圈之後，未在範本中指定的任何資源都會刪除。
 
-如果您 [在範本中部署至多個資源群組](cross-scope-deployment.md)，部署作業中所指定資源群組中的資源就有資格刪除。 次要資源群組中的資源不會被刪除。
+如果您 [在範本中部署至多個資源群組](./deploy-to-resource-group.md)，部署作業中所指定資源群組中的資源就有資格刪除。 次要資源群組中的資源不會被刪除。
 
 資源類型處理完整模式刪除的方式有一些差異。 當不在以完整模式部署的範本中時，將自動刪除父代資源。 當不在範本中時，不會自動刪除某些子系資源。 但是，如果刪除父資源，則會刪除這些子資源。
 
@@ -49,7 +49,7 @@ ms.locfileid: "87371578"
 
 ## <a name="incremental-mode"></a>累加模式
 
-在累加模式中，Resource Manager 會讓現存於資源群組中但未在範本內指定的資源**保持不變**。 範本中的資源 **會新增** 至資源群組。
+在累加模式中，Resource Manager 會讓現存於資源群組中但未在範本內指定的資源 **保持不變**。 範本中的資源 **會新增** 至資源群組。
 
 > [!NOTE]
 > 在累加模式中重新部署現有的資源時，會重新套用所有屬性。 這些 **屬性不會以累加方式新增**。 常見的誤解是將未在範本中指定的屬性保持不變。 如果您未指定某些屬性，Resource Manager 會將部署解讀為覆寫這些值。 範本中未包含的屬性會重設為預設值。 指定資源的所有非預設值，而不只是您要更新的值。 範本中的資源定義一律會包含資源的最終狀態。 它無法表示對現有資源的部分更新。
@@ -60,26 +60,26 @@ ms.locfileid: "87371578"
 
 若要說明增量和完整模式之間的差異，請考慮下列案例。
 
-**資源群組**包含：
+**資源群組** 包含：
 
 * 資源 A
 * 資源 B
 * 資源 C
 
-**範本**包含：
+**範本** 包含：
 
 * 資源 A
 * 資源 B
 * 資源 D
 
-部署於**累加**模式時，資源群組具有：
+部署於 **累加** 模式時，資源群組具有：
 
 * 資源 A
 * 資源 B
 * 資源 C
 * 資源 D
 
-若部署在**完整**模式中，資源 C 會遭到刪除。 資源群組具有：
+若部署在 **完整** 模式中，資源 C 會遭到刪除。 資源群組具有：
 
 * 資源 A
 * 資源 B
@@ -124,7 +124,7 @@ az deployment group create \
 ]
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 若要瞭解如何建立 Resource Manager 範本，請參閱 [撰寫 Azure Resource Manager 範本](template-syntax.md)。
 * 若要了解如何部署資源，請參閱 [使用 Azure 資源管理員範本部署應用程式](deploy-powershell.md)。

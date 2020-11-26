@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6ac568e56d201ef43e40428085b226608e83973a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 62b4629d258f8779dc53b4b8e00684d3b793291d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024563"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183748"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>適用於 API 管理的 Azure 安全性基準
 
 適用於 API 管理的 Azure 安全性基準包含的建議有助於改善部署的安全性狀態。
 
-此服務的基準取自 [Azure 安全性效能評定 1.0 版](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
+此服務的基準取自 [Azure 安全性基準測試版本 1.0](../security/benchmarks/overview.md)，其中提供有關如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
 如需詳細資訊，請參閱 [Azure 安全性基準概觀](../security/benchmarks/security-baselines-overview.md)。
 
@@ -98,7 +98,7 @@ ms.locfileid: "95024563"
 
 * [了解 Azure 應用程式閘道](../application-gateway/index.yml)
 
-* [如何設定 DDoS 保護標準](../virtual-network/manage-ddos-protection.md)
+* [如何設定 DDoS 保護標準](../ddos-protection/manage-ddos-protection.md)
 
 * [了解 Azure 資訊安全中心的整合式威脅情報](../security-center/azure-defender.md)
 
@@ -301,7 +301,7 @@ ms.locfileid: "95024563"
 
 * [如何在 Azure 監視器中執行自訂查詢](../azure-monitor/log-query/get-started-queries.md)
 
-* [了解 Log Analytics 工作區](../azure-monitor/log-query/get-started-portal.md)
+* [了解 Log Analytics 工作區](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [如何與 Azure Application Insights 整合](./api-management-howto-app-insights.md)
 
@@ -490,7 +490,7 @@ Azure API 管理訂用帳戶是保護 API 存取的一種方法，不過其隨�
 
 * [如何使用 OAuth 2.0 搭配 Azure Active Directory 與 API 管理來保護 API](./api-management-howto-protect-backend-with-aad.md)
 
-* [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+* [如何建立和設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -614,7 +614,7 @@ Microsoft 會管理 Azure API 管理的基礎結構，並已實作嚴格的控�
 
 **指引**：管理平面呼叫會經由 Azure Resource Manager 透過 TLS 進行。 需要有效的 JSON Web 權杖 (JWT)。 您可使用 TLS 和其中一種支援的驗證機制 (例如用戶端憑證或 JWT) 來保護資料平面呼叫。
 
-* [了解 Azure API 管理中的資料保護](./api-management-security-controls.md#data-protection)
+* [了解 Azure API 管理中的資料保護](#data-protection)
 
 * [管理 Azure API 管理中的 TLS 設定](./api-management-howto-manage-protocols-ciphers.md)
 
@@ -664,7 +664,7 @@ Microsoft 會管理 Azure API 管理的基礎結構，並已實作嚴格的控�
 
 **指引**：敏感性資料 (例如憑證、金鑰和秘密具名值) 會使用服務所管理的各服務執行個體金鑰進行加密。 所有加密金鑰都會屬於服務所管理的各服務執行個體。
 
-* [了解如何使用 Azure API 管理進行待用資料保護/加密](./api-management-security-controls.md#data-protection)
+* [了解如何使用 Azure API 管理進行待用資料保護/加密](#data-protection)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -692,7 +692,7 @@ Microsoft 會管理 Azure API 管理的基礎結構，並已實作嚴格的控�
 
 Microsoft 所掃描和修補的基礎平台。 檢閱可用來減少服務設定相關弱點的安全性控制項。
 
-* [了解 Azure API 管理可用的安全性控制項](./api-management-security-controls.md)
+* [了解 Azure API 管理可用的安全性控制項]()
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -728,7 +728,7 @@ Microsoft 所掃描和修補的基礎平台。 檢閱可用來減少服務設定
 
 Microsoft 所掃描和修補的基礎平台。 客戶會檢閱可用來減少服務設定相關弱點的安全性控制項。
 
-* [了解 Azure API 管理可用的安全性控制項](./api-management-security-controls.md)
+* [了解 Azure API 管理可用的安全性控制項]()
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -932,8 +932,6 @@ Microsoft 所掃描和修補的基礎平台。 客戶會檢閱可用來減少服
 
 * [Azure Repos 文件](/azure/devops/repos/index)
 
-* [了解 Azure API 管理 DevOps 資源套件](./api-management-security-controls.md#configuration-management)
-
 **Azure 資訊安全中心監視**：不適用
 
 **責任**：客戶
@@ -971,8 +969,6 @@ Microsoft 所掃描和修補的基礎平台。 客戶會檢閱可用來減少服
 **指引**：使用 Azure API 管理的 DevOps 資源套件來執行 Azure API 管理的組態管理。
 
 此外，使用 Azure 原則，為您的 Azure API 管理服務定義及實作標準安全性設定。 使用 "Microsoft.ApiManagement" 命名空間中的 Azure 原則別名來建立自訂原則，以稽核或強制執行 Azure API 管理執行個體的設定。 使用 Azure 原則 [拒絕] 和 [在不存在時部署]，對您的 Azure 資源強制使用安全設定。
-
-* [了解 Azure API 管理 DevOps 資源套件](./api-management-security-controls.md#configuration-management)
 
 * [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 

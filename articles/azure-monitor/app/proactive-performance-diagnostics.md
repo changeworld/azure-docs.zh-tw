@@ -4,12 +4,12 @@ description: Application Insights 會執行您應用程式遙測的智慧型分�
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: c817e2c7f609bbbec52eff1b898a8d7c53209a28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28a32c714618a3b6b0c3126d8060295f134ddc7c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87321304"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186230"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智慧型偵測 - 效能異常
 
@@ -75,7 +75,7 @@ Application Insights 偵測到您的應用程式以下列其中一種方式降�
 * *執行分析的頻率為何？*
 
   * 我們每天都會根據前一天的遙測執行分析 (UTC 時區中全天)。
-* *那麼，這可以取代[計量警示](../platform/alerts-log.md)嗎？*
+* *那麼，這可以取代 [計量警示](../platform/alerts-log.md)嗎？*
   * 否。  我們不保證能偵測到您可能認為異常的每項行為。
 
 
@@ -159,7 +159,7 @@ Application Insights 會尋找可能只會影響某部分使用者，或只在�
 
 ![按一下電子郵件警示中的連結，可在 Azure 中開啟診斷報告](./media/proactive-performance-diagnostics/03.png)
 
-* **時間**顯示偵測到問題的時間。
+* **時間** 顯示偵測到問題的時間。
 * [對象] 說明：
 
   * 偵測到的問題；
@@ -175,11 +175,10 @@ Application Insights 會尋找可能只會影響某部分使用者，或只在�
 
 * [分析工具](profiler.md) 
 * [快照偵錯工具](./snapshot-debugger.md)
-* [分析](../log-query/get-started-portal.md)
+* [分析](../log-query/log-analytics-tutorial.md)
 * [分析智慧型診斷](../log-query/log-query-overview.md)
 
 智慧型偵測是完全自動的。 但是，或許您會想要再設定一些警示？
 
 * [手動設定的度量警示](../platform/alerts-log.md)
 * [可用性 Web 測試](./monitor-web-app-availability.md)
-

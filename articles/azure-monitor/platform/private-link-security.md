@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 61073ce7e8d3abc43d1db031608da72e6d3e0791
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 3f9779d2676d4d2b67efff37118d109664b84bd5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926796"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184598"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>使用 Azure 私人連結將網路安全地連線到 Azure 監視器
 
@@ -90,7 +90,7 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 
 首先，建立 Azure 監視器私人連結範圍資源。
 
-1. 在 Azure 入口網站中移至 [建立資源]，搜尋 **Azure 監視器私人連結範圍** 。
+1. 在 Azure 入口網站中移至 [建立資源]，搜尋 **Azure 監視器私人連結範圍**。
 
    ![尋找 Azure 監視器 Private Link 範圍](./media/private-link-security/ampls-find-1c.png)
 
@@ -144,7 +144,7 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
  
    b.    請在 [與私人 DNS 區域整合] 選擇 [是] ，讓它自動建立新的私人 DNS 區域。 實際的 DNS 區域可能與下列螢幕擷取畫面中顯示的不同。 
    > [!NOTE]
-   > 如果您選擇 [ **否** ] 並偏好手動管理 DNS 記錄，請先完成您的 Private Link （包括此私人端點和 AMPLS 設定）。 然後，根據 [Azure 私人端點 DNS](https://docs.microsoft.com/azure/private-link/private-endpoint-dns)設定中的指示來設定您的 DNS。 請務必建立空白記錄，以準備 Private Link 安裝。 您所建立的 DNS 記錄可以覆寫現有的設定，並影響您與 Azure 監視器的連線能力。
+   > 如果您選擇 [ **否** ] 並偏好手動管理 DNS 記錄，請先完成您的 Private Link （包括此私人端點和 AMPLS 設定）。 然後，根據 [Azure 私人端點 DNS](../../private-link/private-endpoint-dns.md)設定中的指示來設定您的 DNS。 請務必建立空白記錄，以準備 Private Link 安裝。 您所建立的 DNS 記錄可以覆寫現有的設定，並影響您與 Azure 監視器的連線能力。
  
    c.    按一下 [檢閱 + 建立]。
  
@@ -240,11 +240,11 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-若要使用 Azure 監視器的入口網站體驗，例如 Application Insights 和 Log Analytics，您必須允許在私人網路上存取 Azure 入口網站和 Azure 監視器擴充功能。 將 **AzureActiveDirectory** 、 **AzureResourceManager** 、 **AzureFrontDoor. FirstParty** 和 **AzureFrontDoor. 前端**[服務標記](../../firewall/service-tags.md)新增至您的網路安全性群組。
+若要使用 Azure 監視器的入口網站體驗，例如 Application Insights 和 Log Analytics，您必須允許在私人網路上存取 Azure 入口網站和 Azure 監視器擴充功能。 將 **AzureActiveDirectory**、 **AzureResourceManager**、 **AzureFrontDoor. FirstParty** 和 **AzureFrontDoor. 前端**[服務標記](../../firewall/service-tags.md)新增至您的網路安全性群組。
 
 ### <a name="programmatic-access"></a>以程式設計方式存取
 
-若要在私人網路上使用 REST API、 [CLI](/cli/azure/monitor?view=azure-cli-latest) 或具有 Azure 監視器的 PowerShell，請在您的防火牆新增 **AzureActiveDirectory** 和 **AzureResourceManager** [服務標記](../../virtual-network/service-tags-overview.md)。
+若要在私人網路上使用 REST API、[CLI](/cli/azure/monitor?view=azure-cli-latest) 或具有 Azure 監視器的 PowerShell，請在您的防火牆新增 **AzureActiveDirectory** 和 **AzureResourceManager** [服務標記](../../virtual-network/service-tags-overview.md)。
 
 新增這些標記可讓您執行一些動作，例如查詢記錄資料、建立和管理 Log Analytics 工作區和 Application Insights 元件。
 

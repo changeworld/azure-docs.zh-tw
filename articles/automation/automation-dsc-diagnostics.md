@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 425a7ff0553ddeac502c59e240f5ab152d6e0d79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f66c710901b129cb6b138fff126e67615c790714
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015148"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183663"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>與 Azure 監視器記錄整合
 
@@ -36,7 +36,7 @@ Azure 監視器記錄讓您在「自動化狀態設定」資料上有更高的�
 
 - 2016 年 11 月或更新版本的 [Azure PowerShell](/powershell/azure/) (v2.3.0)。
 - Azure 自動化帳戶。 如需詳細資訊，請參閱 [Azure 自動化簡介](automation-intro.md)。
-- Log Analytics 工作區搭配 [自動化與控制] 服務供應項目。 如需詳細資訊，請參閱[開始使用 Azure 監視器中的 Log Analytics](../azure-monitor/log-query/get-started-portal.md)。
+- Log Analytics 工作區搭配 [自動化與控制] 服務供應項目。 如需詳細資訊，請參閱[開始使用 Azure 監視器中的 Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)。
 - 至少一個 Azure Automation State Configuration 節點。 如需詳細資訊，請參閱[讓機器上線交由「Azure 自動化狀態設定」來管理](automation-dsc-onboarding.md)。
 - [xDscDiagnostics](https://www.powershellgallery.com/packages/xDscDiagnostics/2.7.0.0) 模組，2.7.0.0 版或更新版本。 關於安裝步驟，請參閱[對 Azure 自動化 Desired State Configuration 進行疑難排解](./troubleshoot/desired-state-configuration.md)。
 

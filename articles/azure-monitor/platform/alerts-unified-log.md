@@ -6,28 +6,28 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 8081c60833c3c02d55ae66ca695ba106dba01450
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 89cec12804f6fd2b8a3885248c42646d6c6dbb13
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995075"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186553"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure 監視器中的記錄警示
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
-記錄警示是 [Azure 警示](./alerts-overview.md)中支援的其中一種警示類型。 記錄警示可讓使用者使用 [Log Analytics](../log-query/get-started-portal.md) 查詢來評估每個設定頻率的資源記錄，並根據結果引發警示。 規則可以使用 [動作群組](./action-groups.md)觸發一或多個動作。
+記錄警示是 [Azure 警示](./alerts-overview.md)中支援的其中一種警示類型。 記錄警示可讓使用者使用 [Log Analytics](../log-query/log-analytics-tutorial.md) 查詢來評估每個設定頻率的資源記錄，並根據結果引發警示。 規則可以使用 [動作群組](./action-groups.md)觸發一或多個動作。
 
 > [!NOTE]
-> Log [Analytics 工作區](../log-query/get-started-portal.md) 中的記錄資料可以傳送至 Azure 監視器計量存放區。 計量警示有 [不同的行為](alerts-metric-overview.md)，視您使用的資料而定，這可能更適合。 如需有關如何將記錄路由至計量的詳細資訊，請參閱 [記錄的計量警示](alerts-metric-logs.md)。
+> Log [Analytics 工作區](../log-query/log-analytics-tutorial.md) 中的記錄資料可以傳送至 Azure 監視器計量存放區。 計量警示有 [不同的行為](alerts-metric-overview.md)，視您使用的資料而定，這可能更適合。 如需有關如何將記錄路由至計量的詳細資訊，請參閱 [記錄的計量警示](alerts-metric-logs.md)。
 
 > [!NOTE]
 > API 版本 `2020-05-01-preview` 和以資源為中心的記錄警示目前不會產生額外費用。  預覽版中的功能價格將于未來宣佈，並在開始計費之前提供通知。 如果您選擇在通知期間之後繼續使用新的 API 版本和以資源為中心的記錄警示，將會以適用的費率計費。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-記錄警示會對 Log Analytics 資料執行查詢。 首先，您應該開始 [收集記錄資料](resource-logs.md) 並查詢記錄資料中的問題。 您可以使用 Log Analytics 中的 [警示查詢範例主題](../log-query/saved-queries.md) ，來瞭解您可以探索的內容，或 [開始撰寫您自己的查詢](../log-query/get-started-portal.md)。
+記錄警示會對 Log Analytics 資料執行查詢。 首先，您應該開始 [收集記錄資料](resource-logs.md) 並查詢記錄資料中的問題。 您可以使用 Log Analytics 中的 [警示查詢範例主題](../log-query/example-queries.md) ，來瞭解您可以探索的內容，或 [開始撰寫您自己的查詢](../log-query/log-analytics-tutorial.md)。
 
 [Azure 監視參與者](./roles-permissions-security.md) 是建立、修改和更新記錄警示所需的共同角色。 也需要存取資源記錄檔的 & 查詢執行許可權。 部分存取資源記錄可能會使查詢失敗或傳回部分結果。 [深入瞭解如何在 Azure 中設定記錄警示](./alerts-log.md)。
 
@@ -44,7 +44,7 @@ ms.locfileid: "95995075"
 下列各節說明您可以用來設定上述邏輯的不同參數。
 
 ### <a name="log-query"></a>記錄檔查詢
-用來評估規則的 [Log Analytics](../log-query/get-started-portal.md) 查詢。 此查詢所傳回的結果會用來判斷是否要觸發警示。 查詢的範圍可以是：
+用來評估規則的 [Log Analytics](../log-query/log-analytics-tutorial.md) 查詢。 此查詢所傳回的結果會用來判斷是否要觸發警示。 查詢的範圍可以是：
 
 - 特定的資源，例如虛擬機器。
 - 大規模資源，例如訂用帳戶或資源群組。
@@ -209,4 +209,3 @@ requests
 * 了解 [Azure 中記錄警示中的 Webhook](alerts-log-webhook.md)。
 * 了解 [Azure 警示](./alerts-overview.md)。
 * 深入瞭解 [Log Analytics](../log-query/log-query-overview.md)。
-

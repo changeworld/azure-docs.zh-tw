@@ -6,18 +6,18 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: yajin1
-ms.openlocfilehash: 4b0b85b08c3f813440d556c61ba5e290ac200049
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 413bb88deac96c1ca12e8a9d25fc9cd16edf4616
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686669"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183952"
 ---
 # <a name="how-to-troubleshoot-connectivity-and-message-delivery-issues"></a>如何針對連線能力和訊息傳遞問題進行疑難排解
 
 本指南引進數種方式來協助自行診斷，以直接找出根本原因或縮小問題範圍。 將自我診斷結果回報給我們以進行進一步調查時，也會很有用。
 
-首先，您必須檢查 Azure 入口網站 [ServiceMode](https://docs.microsoft.com/azure/azure-signalr/concept-service-mode) 是 Azure SignalR Service (也稱為 **ASRS**) 設定為。
+首先，您必須檢查 Azure 入口網站 [ServiceMode](./concept-service-mode.md) 是 Azure SignalR Service (也稱為 **ASRS**) 設定為。
 
 :::image type="content" source="./media/signalr-howto-troubleshoot-method/service-mode.png" alt-text="ServiceMode":::
 
@@ -49,13 +49,13 @@ ms.locfileid: "94686669"
 
 ### <a name="how-to-view-the-traffic-and-narrow-down-the-issue"></a>如何查看流量並將問題縮小
 
-捕捉流量的最簡單方式，就是縮小問題的最簡單方法。 您可以使用以下所述的選項來捕捉 [網路追蹤](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#network-traces) ：
+捕捉流量的最簡單方式，就是縮小問題的最簡單方法。 您可以使用以下所述的選項來捕捉 [網路追蹤](/aspnet/core/signalr/diagnostics#network-traces) ：
 
-* [使用 Fiddler 收集網路追蹤](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#network-traces)
+* [使用 Fiddler 收集網路追蹤](/aspnet/core/signalr/diagnostics#network-traces)
 
-* [使用 tcpdump 收集網路追蹤](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#collect-a-network-trace-with-tcpdump-macos-and-linux-only)
+* [使用 tcpdump 收集網路追蹤](/aspnet/core/signalr/diagnostics#collect-a-network-trace-with-tcpdump-macos-and-linux-only)
 
-* [在瀏覽器中收集網路追蹤](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#collect-a-network-trace-in-the-browser)
+* [在瀏覽器中收集網路追蹤](/aspnet/core/signalr/diagnostics#collect-a-network-trace-in-the-browser)
 
 <a name="view_traffic_client"></a>
 
@@ -63,7 +63,7 @@ ms.locfileid: "94686669"
 
 針對 SignalR 持續連線，它會先連接 `/negotiate` 到您託管的應用程式伺服器，然後重新導向至 Azure SignalR 服務，然後建立與 Azure SignalR 服務的真正持續連線。 如需詳細步驟，請參閱 [Azure SignalR Service 的內部](https://github.com/Azure/azure-signalr/blob/dev/docs/internal.md) 。
 
-在用戶端的網路追蹤中，檢查哪些要求失敗，並顯示狀態碼和回應的內容，以及在 [疑難排解指南](https://docs.microsoft.com/azure/azure-signalr/signalr-howto-troubleshoot-guide)內尋找解決方案。
+在用戶端的網路追蹤中，檢查哪些要求失敗，並顯示狀態碼和回應的內容，以及在 [疑難排解指南](./signalr-howto-troubleshoot-guide.md)內尋找解決方案。
 
 #### <a name="server-requests"></a>伺服器要求
 
@@ -71,7 +71,7 @@ SignalR *伺服器* 會維護 *伺服器* 與 *服務* 之間的 *伺服器連�
 
 *伺服器* 連線可能會因為網路不穩定或 Azure SignalR Service 的定期維護或您託管的應用程式伺服器更新/維護而下降。 只要用戶端有中斷連線/重新連線機制，影響就會很簡單，就像任何用戶端造成中斷連線一樣。
 
-查看伺服器端網路追蹤，以找出 *伺服器連接* 卸載或被 *服務* 拒絕的狀態碼和錯誤詳細資料，並尋找 [疑難排解指南](https://docs.microsoft.com/azure/azure-signalr/signalr-howto-troubleshoot-guide)內的根本原因。
+查看伺服器端網路追蹤，以找出 *伺服器連接* 卸載或被 *服務* 拒絕的狀態碼和錯誤詳細資料，並尋找 [疑難排解指南](./signalr-howto-troubleshoot-guide.md)內的根本原因。
 
 
 ### <a name="how-to-add-logs"></a>如何新增記錄
@@ -86,18 +86,18 @@ SignalR *伺服器* 會維護 *伺服器* 與 *服務* 之間的 *伺服器連�
 
 ##### <a name="enable-client-side-logging-for-aspnet-core-signalr"></a>啟用的用戶端記錄 `ASP.NET Core SignalR`
 
-* [JavaScript 用戶端記錄](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#javascript-client-logging)
+* [JavaScript 用戶端記錄](/aspnet/core/signalr/diagnostics#javascript-client-logging)
 
-* [.NET 用戶端記錄](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#net-client-logging)
+* [.NET 用戶端記錄](/aspnet/core/signalr/diagnostics#net-client-logging)
 
 
 ##### <a name="enable-client-side-logging-for-aspnet-signalr"></a>啟用的用戶端記錄 `ASP.NET SignalR`
 
-* [.NET 用戶端](https://docs.microsoft.com/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-net-client-windows-desktop-apps)
+* [.NET 用戶端](/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-net-client-windows-desktop-apps)
 
-* [在 Windows Phone 8 用戶端中啟用追蹤](https://docs.microsoft.com/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-windows-phone-8-clients)
+* [在 Windows Phone 8 用戶端中啟用追蹤](/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-windows-phone-8-clients)
 
-* [在 JavaScript 用戶端中啟用追蹤](https://docs.microsoft.com/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-javascript-client)
+* [在 JavaScript 用戶端中啟用追蹤](/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-javascript-client)
 
 <a name="add_logs_server"></a>
 
@@ -105,7 +105,7 @@ SignalR *伺服器* 會維護 *伺服器* 與 *服務* 之間的 *伺服器連�
 
 ##### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>啟用的伺服器端記錄 `ASP.NET Core SignalR`
 
-的伺服器端記錄可 `ASP.NET Core SignalR` 與 `ILogger` 架構中提供的 [記錄](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&tabs=aspnetcore2x) 整合 `ASP.NET Core` 。 您可以使用的範例使用方式來啟用伺服器端記錄 `ConfigureLogging` ，如下所示：
+的伺服器端記錄可 `ASP.NET Core SignalR` 與 `ILogger` 架構中提供的 [記錄](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1) 整合 `ASP.NET Core` 。 您可以使用的範例使用方式來啟用伺服器端記錄 `ConfigureLogging` ，如下所示：
 
 ```cs
 .ConfigureLogging((hostingContext, logging) =>
@@ -162,7 +162,7 @@ Azure SignalR 的記錄器類別一律以開始 `Microsoft.Azure.SignalR` 。 �
 
 #### <a name="how-to-enable-logs-inside-azure-signalr-service"></a>如何在 Azure SignalR service 內啟用記錄
 
-您也可以啟用 Azure SignalR service 的 [診斷記錄](https://docs.microsoft.com/azure/azure-signalr/signalr-tutorial-diagnostic-logs) ，這些記錄會提供連線到 azure SignalR 服務之每個連線的詳細資訊。
+您也可以啟用 Azure SignalR service 的 [診斷記錄](./signalr-howto-diagnostic-logs.md) ，這些記錄會提供連線到 azure SignalR 服務之每個連線的詳細資訊。
 
 <a name="serverless_mode_tsg"></a>
 
@@ -194,7 +194,7 @@ Azure SignalR 的記錄器類別一律以開始 `Microsoft.Azure.SignalR` 。 �
     * 或重新開機實例。
     * 如果上述所有選項都無法運作，請在 Azure 入口網站中加入新的支援要求，以聯繫我們。
 
-有關嚴重損壞 [修復](https://docs.microsoft.com/azure/azure-signalr/signalr-concept-disaster-recovery)的詳細資訊。
+有關嚴重損壞 [修復](./signalr-concept-disaster-recovery.md)的詳細資訊。
 
 ## <a name="next-steps"></a>後續步驟
 

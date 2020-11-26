@@ -3,12 +3,12 @@ title: Azure 訂用帳戶限制與配額
 description: 提供通用的 Azure 訂用帳戶和服務限制、配額和條件約束的清單。 本文包含如何增加限制以及最大值的資訊。
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 54eb25e302d49be9e3ab1febeb5c636d267d7e4f
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 810d503f1abdc14ad2d255a89aebe7c10954a889
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577833"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186196"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 訂用帳戶和服務限制、配額與限制
 
@@ -21,7 +21,7 @@ ms.locfileid: "94577833"
 > [!NOTE]
 > 某些服務具有可調整的限制。
 >
-> 當服務沒有可調整的限制時，下表會使用標頭 **限制** 。 在這些情況下，預設和最大限制是相同的。
+> 當服務沒有可調整的限制時，下表會使用標頭 **限制**。 在這些情況下，預設和最大限制是相同的。
 >
 > 當限制可以調整時，資料表會包含 **預設限制** 和 **最大限制** 標頭。 限制可以在預設限制以上引發，但不能超過上限。
 >
@@ -96,7 +96,7 @@ ms.locfileid: "94577833"
 
 * 與其他 Azure 訂閱者共用的 **免費** 多租使用者服務，適用于評估和小型開發專案。
 *  可針對規模較小的生產工作負載提供專用的計算資源，以及針對高可用性的查詢工作負載提供最多 3 個複本。
-* **標準** （包括 S1、S2、S3 及 s3 高密度）適用于較大型的生產工作負載。 標準層內有多個層級，因此您可以選擇最符合您工作負載設定檔的資源設定。
+* **標準**（包括 S1、S2、S3 及 s3 高密度）適用于較大型的生產工作負載。 標準層內有多個層級，因此您可以選擇最符合您工作負載設定檔的資源設定。
 
 **每一訂用帳戶的限制**
 
@@ -231,7 +231,7 @@ ms.locfileid: "94577833"
 ## <a name="digital-twins-limits"></a>數位 Twins 限制
 
 > [!NOTE]
-> 這項服務的某些區域具有可調整的限制，其他則否。 這會在下表中以可 *調整的？* 資料行表示。 當限制可以調整時，可 *調整* 的值是 *[是]* 。
+> 這項服務的某些區域具有可調整的限制，其他則否。 這會在下表中以可 *調整的？* 資料行表示。 當限制可以調整時，可 *調整* 的值是 *[是]*。
 
 [!INCLUDE [digital-twins-limits](../../../includes/digital-twins-limits.md)]
 
@@ -398,7 +398,7 @@ ms.locfileid: "94577833"
 
 #### <a name="disk-encryption-sets"></a>磁片加密集
 
-每個訂用帳戶的每個區域都有50磁片加密集的限制。 如需詳細資訊，請參閱適用于 [Linux](../../virtual-machines/linux/disk-encryption.md#restrictions) 或 [Windows](../../virtual-machines/windows/disk-encryption.md#restrictions) 虛擬機器的加密檔。 如果您需要增加配額，請聯絡 Azure 支援。
+每個訂用帳戶的每個區域都有50磁片加密集的限制。 如需詳細資訊，請參閱適用于 [Linux](../../virtual-machines/disk-encryption.md#restrictions) 或 [Windows](../../virtual-machines/disk-encryption.md#restrictions) 虛擬機器的加密檔。 如果您需要增加配額，請聯絡 Azure 支援。
 
 ### <a name="managed-virtual-machine-disks"></a>受控虛擬機器磁碟
 
@@ -442,7 +442,7 @@ ms.locfileid: "94577833"
 
 [!INCLUDE [virtual-machine-scale-sets-limits](../../../includes/azure-virtual-machine-scale-sets-limits.md)]
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [瞭解 Azure 限制和增加](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Azure 的虛擬機器和雲端服務大小](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

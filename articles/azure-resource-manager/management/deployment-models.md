@@ -3,12 +3,12 @@ title: Resource Manager 與傳統部署
 description: 描述資源管理員部署模型與傳統 (或服務管理) 部署模型之間的差異。
 ms.topic: conceptual
 ms.date: 02/06/2020
-ms.openlocfilehash: d9c1a27efc1f474e25d0ed164d106e8f64ba3e96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da260db84de0cc8bd092eb95491b7cc38df93a12
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88511400"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185839"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager vs. 傳統部署：了解資源的部署模型和狀態
 
@@ -113,7 +113,7 @@ SRP：儲存體資源提供者，CRP：計算資源提供者，NRP：網路資�
 | 保留 IP 位址 |您可以將 IP 位址保留在 Azure 中，然後與雲端服務建立關聯，確保 IP 位址不會變動。 |您可以在靜態模式中建立公用 IP 位址，然後它就具有與保留 IP 位址一樣的功能。 |
 | 每一個 VM 的公用 IP 位址 (PIP) |公用 IP 位址也可以直接與 VM 建立關聯。 |公用 IP 位址是 Microsoft.Network 提供者所公開的資源。 公用 IP 位址可以是靜態 (保留) 或動態。 |
 | 端點 |輸入端點需要在開放特定連接埠連線的虛擬機器上設定。 設定輸入端點之後，就能完成幾個常見的虛擬機器連線模式之一。 |您可以在負載平衡器上設定「傳入 NAT 規則」，以達到啟用特定連接埠上的端點以連線至 VM 的相同功能。 |
-| DNS 名稱 |雲端服務會取得隱含的全域唯一 DNS 名稱。 例如： `mycoffeeshop.cloudapp.net` 。 |DNS 名稱是可以在公用 IP 位址資源上指定的選用參數。 FQDN 的格式如下 - `<domainlabel>.<region>.cloudapp.azure.com`。 |
+| DNS 名稱 |雲端服務會取得隱含的全域唯一 DNS 名稱。 例如：`mycoffeeshop.cloudapp.net`。 |DNS 名稱是可以在公用 IP 位址資源上指定的選用參數。 FQDN 的格式如下 - `<domainlabel>.<region>.cloudapp.azure.com`。 |
 | 網路介面 |主要和次要網路介面與其屬性會定義為虛擬機器的網路組態。 |網路介面是 Microsoft.Network 提供者所公開的資源。 網路介面的生命週期未系結至虛擬機器。 它會參考虛擬機器指派的 IP 位址 (必要)、虛擬機器之虛擬網路的子網路 (必要)，以及網路安全性群組 (選擇性)。 |
 
 若要了解從不同部署模型連接虛擬網路，請參閱[在入口網站中從不同部署模型連接虛擬網路](../../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)。
@@ -123,9 +123,9 @@ SRP：儲存體資源提供者，CRP：計算資源提供者，NRP：網路資�
 如果您已經準備好要將資源從傳統部署遷移至 Resource Manager 部署，請參閱：
 
 1. [平台支援的從傳統移轉至 Azure Resource Manager 的技術深入探討](../../virtual-machines/migration-classic-resource-manager-deep-dive.md)
-2. [支援將 IaaS 資源從傳統移轉至 Azure Resource Manager 的平台](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)
-3. [使用 Azure PowerShell 將 IaaS 資源從傳統移轉至 Azure Resource Manager](../../virtual-machines/windows/migration-classic-resource-manager-ps.md)
-4. [使用 Azure CLI 將 IaaS 資源從傳統移轉至 Azure Resource Manager](../../virtual-machines/linux/migration-classic-resource-manager-cli.md)
+2. [支援將 IaaS 資源從傳統移轉至 Azure Resource Manager 的平台](../../virtual-machines/migration-classic-resource-manager-overview.md)
+3. [使用 Azure PowerShell 將 IaaS 資源從傳統移轉至 Azure Resource Manager](../../virtual-machines/migration-classic-resource-manager-ps.md)
+4. [使用 Azure CLI 將 IaaS 資源從傳統移轉至 Azure Resource Manager](../../virtual-machines/migration-classic-resource-manager-cli.md)
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 

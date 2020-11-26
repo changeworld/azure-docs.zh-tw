@@ -6,19 +6,19 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.subservice: alerts
-ms.openlocfilehash: 7f03858b2427b2a2069ebe2c9d06425e7a741e2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7c9c76816b5d1ee2eedfb7e54645e056906feef
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294354"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186621"
 ---
 # <a name="optimizing-log-alert-queries"></a>優化記錄警示查詢
 本文描述如何寫入和轉換 [記錄警示](alerts-unified-log.md) 查詢，以達到最佳效能。 優化查詢可減少延遲，以及經常執行的警示載入。
 
 ## <a name="how-to-start-writing-an-alert-log-query"></a>如何開始撰寫警示記錄查詢
 
-警示查詢會開始 [查詢 Log Analytics 中](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) 指出問題的記錄資料。 您可以使用「 [警示查詢範例」主題](../log-query/saved-queries.md) 來瞭解您可以探索的內容。 您也可以 [開始撰寫自己的查詢](../log-query/get-started-portal.md)。 
+警示查詢會開始 [查詢 Log Analytics 中](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) 指出問題的記錄資料。 您可以使用「 [警示查詢範例」主題](../log-query/example-queries.md) 來瞭解您可以探索的內容。 您也可以 [開始撰寫自己的查詢](../log-query/log-analytics-tutorial.md)。 
 
 ### <a name="queries-that-indicate-the-issue-and-not-the-alert"></a>指出問題的查詢，而不是警示
 

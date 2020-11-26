@@ -5,16 +5,16 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: tomfitz
-ms.openlocfilehash: 9d41e41f110e927f436b38d6291719c138defa53
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 2fdbbad467d8c762db485fc7935e9cef78313fd0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94745752"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184445"
 ---
 # <a name="microsoftcommonserviceprincipalselector-ui-element"></a>ServicePrincipalSelector UI 元素
 
-此控制項可讓使用者選取現有的 [服務主體](/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) 或註冊新的應用程式。 當您選取 [ **建立新** 的] 時，請遵循下列步驟來註冊新的應用程式。 當您選取現有的應用程式時，控制項會提供一個文字方塊來輸入密碼或憑證指紋。
+此控制項可讓使用者選取現有的 [服務主體](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) 或註冊新的應用程式。 當您選取 [ **建立新** 的] 時，請遵循下列步驟來註冊新的應用程式。 當您選取現有的應用程式時，控制項會提供一個文字方塊來輸入密碼或憑證指紋。
 
 ## <a name="ui-samples"></a>UI 範例
 

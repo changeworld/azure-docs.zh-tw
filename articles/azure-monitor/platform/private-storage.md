@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: 7cb427c83345a4603c6fe7727c1cc42c1943c456
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f424a2c3102f7b270a64c612a91d645ab71461fc
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95908244"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184088"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>在 Azure 監視器 Log Analytics 中使用客戶管理的儲存體帳戶
 
@@ -64,7 +64,7 @@ Azure 儲存體會加密儲存體帳戶中的所有待用資料。 根據預設�
 儲存體帳戶與金鑰保存庫必須位於相同區域，但可位於不同的訂用帳戶中。 如需 Azure 儲存體加密與金鑰管理的詳細資訊，請參閱 [Azure 儲存體待用資料的加密](../../storage/common/storage-service-encryption.md)。
 
 ##### <a name="apply-cmk-to-your-storage-accounts"></a>將 CMK 套用至您的儲存體帳戶
-若要設定 Azure 儲存體帳戶以搭配 Azure Key Vault 使用客戶管理的金鑰，請使用 [Azure 入口網站](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)、 [PowerShell](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) 或 [CLI](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)。 
+若要設定 Azure 儲存體帳戶以搭配 Azure Key Vault 使用客戶管理的金鑰，請使用 [Azure 入口網站](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)、 [PowerShell](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 或 [CLI](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 
 
 ## <a name="managing-linked-storage-accounts"></a>管理連結的儲存體帳戶
 

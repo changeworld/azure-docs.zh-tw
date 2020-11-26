@@ -7,23 +7,23 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 6543b629af8d67658afe61ef81e22eb7355e1de7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b49faabb1c61a10418bfce3ae2e8187429981ad
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91772799"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186077"
 ---
 # <a name="azure-activity-log"></a>Azure 活動記錄
-活動記錄是 Azure 中的 [平臺記錄](platform-logs-overview.md) ，可提供訂用帳戶層級事件的見解。 這包括修改資源或啟動虛擬機器時的資訊。 您可以在 Azure 入口網站中檢視活動記錄，或使用 PowerShell 和 CLI 來取出項目。 如需其他功能，您應該建立診斷設定，以將活動記錄傳送至 [Azure 監視器記錄](data-platform-logs.md)檔、Azure 事件中樞轉送至 Azure 外部，或用於封存的 Azure 儲存體。 本文提供有關查看活動記錄，並將其傳送至不同目的地的詳細資料。
+活動記錄是 Azure 中的[平台記錄](platform-logs-overview.md)，可提供訂用帳戶層級事件的深入解析。 這包括修改資源或啟動虛擬機器時的資訊。 您可以在 Azure 入口網站中檢視活動記錄，或使用 PowerShell 和 CLI 來取出項目。 如需其他功能，您應該建立診斷設定，以將活動記錄傳送至 [Azure 監視器記錄](data-platform-logs.md)檔、Azure 事件中樞轉送至 Azure 外部，或用於封存的 Azure 儲存體。 本文提供有關查看活動記錄，並將其傳送至不同目的地的詳細資料。
 
 如需建立診斷設定的詳細資訊，請參閱 [建立診斷設定以將平臺記錄和計量傳送至不同的目的地](diagnostic-settings.md) 。
 
 > [!NOTE]
-> 活動記錄檔中的專案是系統產生的，無法變更或刪除。
+> 活動記錄中的項目會由系統產生，無法變更或刪除。
 
 ## <a name="view-the-activity-log"></a>檢視活動記錄
-您可以從 Azure 入口網站的大部分功能表存取活動記錄。 從中開啟它的功能表會決定其初始篩選。 如果您從 [ **監視** ] 功能表開啟它，則唯一的篩選準則會在訂用帳戶上。 如果您從資源的功能表中開啟它，則篩選會設定為該資源。 您隨時都可以變更篩選，以查看所有其他專案。 按一下 [ **加入篩選** ]，將其他屬性加入至篩選準則。
+您可以從 Azure 入口網站的大部分功能表中存取活動記錄。 用來開啟活動記錄的功能表將決定其初始篩選。 如果您從 [ **監視** ] 功能表開啟它，則唯一的篩選準則會在訂用帳戶上。 如果您從資源的功能表中開啟它，則篩選會設定為該資源。 您隨時都可以變更篩選，以查看所有其他專案。 按一下 [ **加入篩選** ]，將其他屬性加入至篩選準則。
 
 ![檢視活動記錄](./media/activity-logs-overview/view-activity-log.png)
 
@@ -58,9 +58,9 @@ ms.locfileid: "91772799"
 - 儲存超過90天的活動記錄專案。
 - 在 Log Analytics 工作區中儲存的活動記錄資料不會有資料內嵌或資料保留費用。
 
-[建立診斷設定](diagnostic-settings.md) ，以將活動記錄傳送至 log Analytics 工作區。 您可以從任何單一訂用帳戶將活動記錄傳送到最多五個工作區。 收集跨租使用者的記錄需要 [Azure Lighthouse](../../lighthouse/index.yml)。
+[建立診斷設定](diagnostic-settings.md) ，以將活動記錄傳送至 log Analytics 工作區。 您可以從任何單一訂用帳戶將活動記錄傳送到最多五個工作區。 在租用戶之間收集記錄需要 [Azure Lighthouse](../../lighthouse/index.yml)。
 
-Log Analytics 工作區中的活動記錄資料會儲存在名為*AzureActivity*的資料表中，您可以使用[log Analytics](../log-query/get-started-portal.md)中的[記錄查詢](../log-query/log-query-overview.md)來取得此資料表。 此資料表的結構會根據 [記錄專案的類別](activity-log-schema.md)而有所不同。 如需資料表屬性的描述，請參閱 [Azure 監視器資料參考](/azure/azure-monitor/reference/tables/azureactivity)。
+Log Analytics 工作區中的活動記錄資料會儲存在名為 *AzureActivity* 的資料表中，您可以使用 [log Analytics](../log-query/log-analytics-tutorial.md)中的 [記錄查詢](../log-query/log-query-overview.md)來取得此資料表。 此資料表的結構會根據 [記錄專案的類別](activity-log-schema.md)而有所不同。 如需資料表屬性的描述，請參閱 [Azure 監視器資料參考](/azure/azure-monitor/reference/tables/azureactivity)。
 
 例如，若要查看每個類別目錄的活動記錄計數，請使用下列查詢。
 
@@ -170,7 +170,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
 記錄設定檔是將活動記錄傳送到 Azure 儲存體或事件中樞的舊版方法。 您可以使用下列程式繼續使用記錄檔設定檔，或將它停用以準備遷移至診斷設定。
 
 1. 從 Azure 入口網站的 [ **Azure 監視器** ] 功能表中，選取 [ **活動記錄**]。
-3. 按一下 [診斷設定]****。
+3. 按一下 [診斷設定]  。
 
    ![診斷設定](media/diagnostic-settings-subscription/diagnostic-settings.png)
 
@@ -186,7 +186,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
 
 1. 使用 `Get-AzLogProfile` 來識別記錄設定檔是否存在。  如果記錄設定檔存在，請注意 [ *名稱* ] 屬性。
 
-1. 使用 `Remove-AzLogProfile` 透過 name** 屬性中的值來移除記錄設定檔。
+1. 使用 `Remove-AzLogProfile` 透過 name 屬性中的值來移除記錄設定檔。
 
     ```powershell
     # For example, if the log profile name is 'default'
@@ -206,7 +206,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
     | serviceBusRuleId |否 |服務匯流排規則識別碼，您想要在其中建立事件中樞的服務匯流排命名空間。 這是具有下列格式的字串： `{service bus resource ID}/authorizationrules/{key name}` 。 |
     | 位置 |是 |以逗號分隔的區域清單，其中列出您要收集的活動記錄檔事件的區域。 |
     | RetentionInDays |是 |要在儲存體帳戶中保留事件的天數，介於1到365之間。 值為 0 會無限期地儲存記錄。 |
-    | 類別 |否 |以逗號分隔的類別清單，其中列出應該收集的事件類別。 可能的值為 _Write_、 _Delete_和 _Action_。 |
+    | 類別 |否 |以逗號分隔的類別清單，其中列出應該收集的事件類別。 可能的值為 _Write_、 _Delete_ 和 _Action_。 |
 
 ### <a name="example-script"></a>範例指令碼
 以下是範例 PowerShell 腳本，用來建立記錄檔設定檔，以將活動記錄寫入儲存體帳戶和事件中樞。
@@ -235,7 +235,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
 如果記錄設定檔已經存在，您必須先移除現有的記錄設定檔，然後再建立新的記錄設定檔。
 
 1. 使用 `az monitor log-profiles list` 來識別記錄設定檔是否存在。
-2. 使用 `az monitor log-profiles delete --name "<log profile name>` 透過 name** 屬性中的值來移除記錄設定檔。
+2. 使用 `az monitor log-profiles delete --name "<log profile name>` 透過 name 屬性中的值來移除記錄設定檔。
 3. 使用 `az monitor log-profiles create` 來建立新的記錄設定檔：
 
    ```azurecli-interactive
@@ -281,7 +281,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
 | ResourceProvider  | ResourceProviderValue  |
 
 > [!IMPORTANT]
-> 在某些情況下，這些資料行中的值可能全部都是大寫。 如果您有包含這些資料行的查詢，您應該使用 [= ~ 運算子](/azure/kusto/query/datatypes-string-operators) 來進行不區分大小寫的比較。
+> 在某些情況下，這些資料行中的值會全部大寫。 如果您的查詢包含這些資料行，您應該使用 [=~ 運算子](/azure/kusto/query/datatypes-string-operators)來執行不區分大小寫的比較。
 
 已將下列資料行新增至已更新之架構中的 *AzureActivity* ：
 
@@ -308,7 +308,7 @@ Azure Log Analytics 監視解決方案即將被取代，並使用 Log Analytics 
 ### <a name="enable-the-solution-for-new-subscriptions"></a>啟用新訂閱的解決方案
 您很快就無法再使用 Azure 入口網站將活動記錄分析解決方案新增至您的訂用帳戶。 您可以使用下列程式搭配 Resource Manager 範本來新增它。 
 
-1. 將下列 json 複製到名為 *ActivityLogTemplate*的檔案中。
+1. 將下列 json 複製到名為 *ActivityLogTemplate* 的檔案中。
 
     ```json
     {

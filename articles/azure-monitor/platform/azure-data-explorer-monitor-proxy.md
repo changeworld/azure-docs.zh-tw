@@ -7,12 +7,12 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 9b434c426264fcfee0dfe663a7d1b21a354badec
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 2a21d7a06e8a92022b620704d1fb51a303da3ae0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491251"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185975"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>使用 Azure 資料總管 Azure 監視器查詢資料 (預覽) 
 Azure 資料總管 proxy 叢集可讓您在 Azure 監視器中的 Azure 資料總管、Log Analytics 工作區和傳統 Application Insights 應用程式之間執行跨產品查詢。 您可以將 Azure 監視器或傳統 Application Insights 應用程式中的 Log Analytics 工作區對應為 proxy 叢集。 然後，您可以使用 Azure 資料總管工具來查詢 proxy 叢集，並在跨叢集查詢中參考它。 本文說明如何連線到 proxy 叢集、將 proxy 叢集新增至 Azure 資料總管 Web UI，以及對您的 Log Analytics 工作區或 Azure 資料總管的傳統 Application Insights 應用程式執行查詢。
@@ -60,7 +60,7 @@ Azure 資料總管 proxy 叢集可讓您在 Azure 監視器中的 Azure 資料�
 > * 資料庫名稱的名稱應該與在 proxy 叢集中指定的資源相同。 名稱區分大小寫。
 > * 在跨叢集查詢中，請確定 Application Insights apps 與 Log Analytics 工作區的命名正確。
 >     * 如果名稱包含特殊字元，則會以 proxy 叢集名稱中的 URL 編碼來取代它們。 
->     * 如果名稱包含的字元不符合 [KQL 識別碼名稱規則](https://docs.microsoft.com/azure/data-explorer/kusto/query/schema-entities/entity-names)，則會以虛線字元取代這些字元 **-** 。
+>     * 如果名稱包含的字元不符合 [KQL 識別碼名稱規則](/azure/data-explorer/kusto/query/schema-entities/entity-names)，則會以虛線字元取代這些字元 **-** 。
 
 ### <a name="direct-query-from-your-log-analytics-or-application-insights-proxy-cluster"></a>從您的 Log Analytics 或 Application Insights proxy 叢集的直接查詢
 
@@ -93,9 +93,9 @@ Azure 資料總管 proxy 不支援跨租使用者查詢。 您已登入單一租
 
 如果 Azure 資料總管資源位於租使用者 ' A '，而 Log Analytics 工作區位於租使用者 ' B ' 中，請使用下列兩種方法之一：
 
-- Azure 資料總管可讓您為不同租使用者中的主體新增角色。 在租使用者 ' B ' 中新增您的使用者識別碼，作為 Azure 資料總管叢集上的授權使用者。 驗證 Azure 資料總管叢集中包含租使用者 ' B ' 的 *[' TrustedExternalTenant '](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster)* 屬性。 在租使用者 ' B ' 中完整執行交叉查詢。
+- Azure 資料總管可讓您為不同租使用者中的主體新增角色。 在租使用者 ' B ' 中新增您的使用者識別碼，作為 Azure 資料總管叢集上的授權使用者。 驗證 Azure 資料總管叢集中包含租使用者 ' B ' 的 *[' TrustedExternalTenant '](/powershell/module/az.kusto/update-azkustocluster)* 屬性。 在租使用者 ' B ' 中完整執行交叉查詢。
 
-- 使用 [Lighthouse](/azure/lighthouse/) 將 Azure 監視器資源投影至租使用者 ' A '。
+- 使用 [Lighthouse](../../lighthouse/index.yml) 將 Azure 監視器資源投影至租使用者 ' A '。
 
 ### <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>從不同的租使用者連接到 Azure 資料總管叢集
 
@@ -124,7 +124,7 @@ Proxy 支援下列命令：
 
 |語法描述  |Application Insights  |Log Analytics  |
 |----------------|---------|---------|
-| 叢集內的資料庫僅包含此訂用帳戶中已定義的資源 ( **建議用於跨叢集查詢** )  |   叢集 (`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>`)  | 叢集 (`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>`)      |
+| 叢集內的資料庫僅包含此訂用帳戶中已定義的資源 (**建議用於跨叢集查詢**)  |   叢集 (`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>`)  | 叢集 (`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>`)      |
 | 包含此訂用帳戶中所有應用程式/工作區的叢集    |     叢集 (`https://ade.applicationinsights.io/subscriptions/<subscription-id>`)     |    叢集 (`https://ade.loganalytics.io/subscriptions/<subscription-id>`)      |
 |包含訂用帳戶中所有應用程式/工作區的叢集，且為此資源群組的成員    |   叢集 (`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)       |    叢集 (`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)       |
 |僅包含此訂用帳戶中已定義資源的叢集      |    叢集 (`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`)     |  叢集 (`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`)      |
@@ -132,4 +132,4 @@ Proxy 支援下列命令：
 ## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [Log Analytics 工作區和 Application Insights 的資料結構](data-platform-logs.md)。
-- 瞭解如何 [在 Azure 資料總管中撰寫查詢](https://docs.microsoft.com/azure/data-explorer/write-queries)。
+- 瞭解如何 [在 Azure 資料總管中撰寫查詢](/azure/data-explorer/write-queries)。

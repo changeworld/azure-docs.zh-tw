@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 79e5b1ddde0ff5f0d09dc1c20e3b20ec4de3d925
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 234ef58920a9f896d3e8ebcc561562ea7ceb2708
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536671"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186417"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理 Azure 監視器中記錄資料和工作區的存取
 
@@ -106,7 +106,7 @@ Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 
 下列活動也需要 Azure 權限︰
 
-|動作 |所需的 Azure 權限 |備註 |
+|動作 |所需的 Azure 權限 |備忘錄 |
 |-------|-------------------------|------|
 | 新增和移除監視解決方案 | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | 必須在資源群組或訂用帳戶層級授與這些權限。 |
 | 變更定價層 | `Microsoft.OperationalInsights/workspaces/*/write` | |
@@ -285,7 +285,7 @@ Log Analytics 參與者角色包含下列 Azure 動作：
 
 ### <a name="custom-logs"></a>自訂的記錄
 
- 自訂記錄是從資料來源建立，例如自訂記錄和 HTTP 資料收集器 API。 識別記錄類型最簡單的方式，就是檢查 [記錄架構中 [自訂記錄](../log-query/get-started-portal.md#understand-the-schema)檔] 底下列出的資料表。
+ 自訂記錄是從資料來源建立，例如自訂記錄和 HTTP 資料收集器 API。 識別記錄類型最簡單的方式，就是檢查 [記錄架構中 [自訂記錄](../log-query/log-analytics-tutorial.md#table-schema)檔] 底下列出的資料表。
 
  您無法將存取權授與個別的自訂記錄，但您可以將存取權授與所有自訂記錄。 若要建立可存取所有自訂記錄的角色，請使用下列動作來建立自訂角色：
 

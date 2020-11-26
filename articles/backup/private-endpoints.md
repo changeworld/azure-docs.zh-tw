@@ -4,11 +4,11 @@ description: 瞭解建立 Azure 備份私用端點的程式，以及使用私人
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.openlocfilehash: 0ca4e7a83e18ac72e25131d320737ce9578b1cf3
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172240"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184737"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure 備份的私人端點
 
@@ -72,8 +72,8 @@ Azure 備份可讓您使用 [私人端點](../private-link/private-endpoint-over
 
 建議您將這三個資源群組的「 **參與者** 」角色授與保存庫 (受控識別) 。 下列步驟說明如何針對特定的資源群組進行這項作業 (這需要針對三個資源群組) 執行這項作業：
 
-1. 移至資源群組，並流覽至左側列上 ** (IAM) 的存取控制 ** 。
-1. 在 **存取控制**中，請移至 [ **新增角色指派**]。
+1. 移至資源群組，並流覽至左側列上 **(IAM) 的存取控制** 。
+1. 在 **存取控制** 中，請移至 [ **新增角色指派**]。
 
     ![新增角色指派](./media/private-endpoints/add-role-assignment.png)
 
@@ -313,13 +313,13 @@ PrivateEndpointSubnetContributorRoleDef.js開啟
 
     這些是參數：
 
-    - **訂**用帳戶： * * SubscriptionId 具有資源群組，其中會建立保存庫的私人端點，以及將附加保存庫私人端點的子網
+    - **訂** 用帳戶： * * SubscriptionId 具有資源群組，其中會建立保存庫的私人端點，以及將附加保存庫私人端點的子網
 
     - **vaultPEResourceGroup**：將在其中建立保存庫私人端點的資源群組
 
     - **vaultPESubnetResourceGroup**：私人端點將加入之子網的資源群組
 
-    - **vaultMsiName**：保存庫的 MSI 名稱，與**VaultName**相同
+    - **vaultMsiName**：保存庫的 MSI 名稱，與 **VaultName** 相同
 
 1. 完成驗證，腳本將會採用上述提供的指定訂用帳戶內容。 如果租使用者中缺少適當的角色，則會建立適當的角色，並將角色指派給保存庫的 MSI。
 
@@ -411,13 +411,13 @@ $privateEndpoint = New-AzPrivateEndpoint `
 - 保存庫的私人端點會使用建立私人端點時所指定的名稱
 - Blob 和佇列服務的私人端點前面會加上與保存庫相同的名稱。
 
-例如，下圖顯示針對名稱為 *pee2epe*的私人端點連線所建立的三個私人端點：
+例如，下圖顯示針對名稱為 *pee2epe* 的私人端點連線所建立的三個私人端點：
 
 ![私人端點連接的三個私人端點](./media/private-endpoints/three-private-endpoints.png)
 
 備份服務的 DNS 區域 (`privatelink.<geo>.backup.windowsazure.com`) ：
 
-1. 流覽至您的私人端點，以在 **Private Link 中心**進行備份。 [總覽] 頁面會列出私人端點的 FQDN 和私人 Ip。
+1. 流覽至您的私人端點，以在 **Private Link 中心** 進行備份。 [總覽] 頁面會列出私人端點的 FQDN 和私人 Ip。
 
 1. 將每個 FQDN 和私人 IP 的一個專案新增為類型記錄。
 
@@ -425,7 +425,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 Blob 服務的 DNS 區域 (`privatelink.blob.core.windows.net`) ：
 
-1. 流覽至 **Private Link 中心**內的 Blob 私人端點。 [總覽] 頁面會列出私人端點的 FQDN 和私人 Ip。
+1. 流覽至 **Private Link 中心** 內的 Blob 私人端點。 [總覽] 頁面會列出私人端點的 FQDN 和私人 Ip。
 
 1. 將 FQDN 和私人 IP 的專案新增為類型記錄。
 
@@ -433,7 +433,7 @@ Blob 服務的 DNS 區域 (`privatelink.blob.core.windows.net`) ：
 
 佇列服務 () 的 DNS 區域 `privatelink.queue.core.windows.net` ：
 
-1. 在 **Private Link 中心**流覽至佇列的私人端點。 [總覽] 頁面會列出私人端點的 FQDN 和私人 Ip。
+1. 在 **Private Link 中心** 流覽至佇列的私人端點。 [總覽] 頁面會列出私人端點的 FQDN 和私人 Ip。
 
 1. 將 FQDN 和私人 IP 的專案新增為類型記錄。
 

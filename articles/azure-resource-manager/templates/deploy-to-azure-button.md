@@ -3,12 +3,12 @@ title: 部署至 Azure 按鈕
 description: 使用按鈕，從 GitHub 存放庫部署 Azure Resource Manager 範本。
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 25ec5fd7a0c5b356097412ab6f1765cb0886522a
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 65891cace1cb17614abbfe091e1592d6f13feff4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555256"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185720"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>使用部署按鈕從 GitHub 存放庫部署範本
 
@@ -39,7 +39,7 @@ ms.locfileid: "94555256"
 
 ## <a name="create-url-for-deploying-template"></a>建立用來部署範本的 URL
 
-若要建立範本的 URL，請從您存放庫中範本的原始 URL 開始。 若要查看原始 URL，請選取 [ **原始** ]。
+若要建立範本的 URL，請從您存放庫中範本的原始 URL 開始。 若要查看原始 URL，請選取 [ **原始**]。
 
 :::image type="content" source="./media/deploy-to-azure-button/select-raw.png" alt-text="選取原始":::
 
@@ -107,7 +107,7 @@ https://dev.azure.com/{organization-name}/{project-name}/_apis/git/repositories/
 若為 Git 與 Azure 存放庫，按鈕的格式如下：
 
 ```markdown
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fdev.azure.com%2Forgname%2Fprojectname%2F_apis%2Fgit%2Frepositories%2Freponame%2Fitems%3FscopePath%3D%252Freponame%252Fazuredeploy.json%26api-version%3D6.0)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fdev.azure.com%2Forgname%2Fprojectname%2F_apis%2Fgit%2Frepositories%2Freponame%2Fitems%3FscopePath%3D%2freponame%2fazuredeploy.json%26api-version%3D6.0)
 ```
 
 ## <a name="deploy-the-template"></a>部署範本

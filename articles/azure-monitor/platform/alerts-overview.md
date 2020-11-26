@@ -4,12 +4,12 @@ description: Azure 中的警示概觀。 警示、傳統警示和警示介面。
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: b8d24eab79bdf16e4d883549be00431bd5372af8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: d0f71ebf8a7acab6d4b46f59049bf1efd5290284
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536042"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186638"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警示概觀 
 
@@ -19,7 +19,7 @@ ms.locfileid: "95536042"
 
 當您的基礎結構或應用程式使用您的監視資料在 Azure 監視器中找到問題時，警示會主動通知您。 它們可讓您在系統使用者注意到問題之前，找出並解決問題。 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 下圖代表警示流程。 
 
@@ -76,7 +76,7 @@ ms.locfileid: "95536042"
 
 支援下列警示狀態：
 
-| State | 描述 |
+| 州 | 描述 |
 |:---|:---|
 | 新增 | 已偵測到問題，但尚未經過檢查。 |
 | 已認可 | 系統管理員已檢閱警示，且已開始處理。 |
@@ -84,7 +84,7 @@ ms.locfileid: "95536042"
 
 *警示狀態* 與 *監視條件* 不同且無關。 警示狀態是由使用者所設定的。 監視條檢是由系統所設定的。 當警示引發時，警示的監視條件會設定為「已 *引發*」，當引發警示的基礎條件清除時，監視條件會設定為「 *已解決*」。 
 
-警示狀態需等到使用者變更它之後才會變更。 了解[如何變更警示與智慧群組的狀態](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)。
+警示狀態需等到使用者變更它之後才會變更。 了解[如何變更警示與智慧群組的狀態](./alerts-managing-alert-states.md?toc=%2fazure%2fazure-monitor%2ftoc.json)。
 
 ## <a name="alerts-experience"></a>警示體驗 
 [預設警示] 頁面會提供在特定時間範圍內建立之警示的摘要。 它會顯示每個嚴重性的警示總數，其中的資料行會指出每個嚴重性的每個狀態的警示總數。 選取任何嚴重性以開啟依照該嚴重性篩選的 [所有警示](#all-alerts-page) 頁面。
@@ -152,7 +152,7 @@ ms.locfileid: "95536042"
 | 資源群組 | 選取單一資源群組。 檢視僅會包含所選資源群組中具有目標的警示。 |
 | 資源類型 | 選取一個或多個資源類型。 檢視僅會包含所選類型目標之具目標的警示。 指定資源群組之後，才可使用此欄。 |
 | 資源 | 選取資源。 只有以該資源作為目標的警示才會包含在檢視中。 指定資源類型之後，才可使用此欄。 |
-| Severity | 選取警示嚴重性，或選取 [ **全部** ] 以包含所有嚴重性的警示。 |
+| 嚴重性 | 選取警示嚴重性，或選取 [ **全部** ] 以包含所有嚴重性的警示。 |
 | 監視器條件 | 選取監視條件，或選取 [ **全部** ] 以包含所有條件的警示。 |
 | 警示狀態 | 選取警示狀態，或選取 [ **全部** ] 以包含所有狀態的警示。 |
 | 監視器服務 | 選取服務，或選取 [ **全部** ] 以包含所有服務。 只會包含由使用服務作為目標之規則所建立的警示。 |
@@ -204,12 +204,12 @@ ms.locfileid: "95536042"
 
 ## <a name="smart-groups"></a>智慧群組
 
-智慧群組是以機器學習演算法為基礎的警示匯總，有助於減少警示雜訊並協助進行疑難排解。 [深入了解智慧群組](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json)和[如何管理智慧群組](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json)。
+智慧群組是以機器學習演算法為基礎的警示匯總，有助於減少警示雜訊並協助進行疑難排解。 [深入了解智慧群組](./alerts-smartgroups-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json)和[如何管理智慧群組](./alerts-managing-smart-groups.md?toc=%2fazure%2fazure-monitor%2ftoc.json)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [深入了解智慧群組](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+- [深入了解智慧群組](./alerts-smartgroups-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 - [深入了解動作群組](./action-groups.md)
-- [在 Azure 中管理警示](./alerts-managing-alert-instances.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
-- [管理智慧群組](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+- [在 Azure 中管理警示](./alerts-managing-alert-instances.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
+- [管理智慧群組](./alerts-managing-smart-groups.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 - [深入瞭解 Azure 警示定價](https://azure.microsoft.com/pricing/details/monitor/)

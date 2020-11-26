@@ -4,16 +4,16 @@ description: 管理在您的警示執行個體上建立的智慧型群組
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 09/24/2018
-ms.openlocfilehash: 763bfefcf71b0be43722b99f31641015a5991607
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 564440336bf6a90cbd40aba6c8284cbc6c5e3ff3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92105833"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186043"
 ---
 # <a name="manage-smart-groups"></a>管理智慧群組
 
-[智慧型群組](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json)使用機器學習演算法，根據共生或相似度將警示分組，因此使用者現在能管理智慧群組，而不必個別管理每個警示。 此文章會逐步引導您了解如何存取及使用 Azure 監視器中的智慧型群組。
+[智慧型群組](./alerts-smartgroups-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json)使用機器學習演算法，根據共生或相似度將警示分組，因此使用者現在能管理智慧群組，而不必個別管理每個警示。 此文章會逐步引導您了解如何存取及使用 Azure 監視器中的智慧型群組。
 
 1. 若要查看為您的警示實例建立的智慧群組，您可以：
 

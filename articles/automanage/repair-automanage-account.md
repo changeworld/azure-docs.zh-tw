@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.author: alsin
-ms.openlocfilehash: 226a23bfdacb0f7423c7dafb8cae36af7333699d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 4694fa679c7bbff309a0452219ff39bacf2488c4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681834"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183697"
 ---
 # <a name="repair-an-automanage-account"></a>修復 Automanage 帳戶
 您的 [Azure Automanage 帳戶](./automanage-virtual-machines.md#automanage-account) 是在其下進行自動化作業所用的安全性內容或身分識別。 如果您最近將包含 Automanage 帳戶的訂用帳戶移至新的租使用者，則需要重新設定帳戶。 若要重新設定，您必須重設身分識別類型，並為帳戶指派適當的角色。
@@ -22,8 +22,8 @@ ms.locfileid: "94681834"
 使用下列 Azure Resource Manager (ARM) 範本來重設 Automanage 帳戶身分識別類型。 在本機將檔案儲存為 armdeploy.js或類似的名稱。 請注意您的 Automanage 帳戶名稱和位置，因為它們是 ARM 範本中的必要參數。
 
 1. 使用下列範本建立 Resource Manager 部署。 請使用 `identityType = None`。
-    * 您可以使用在 Azure CLI 中建立部署 `az deployment sub create` 。 如需詳細資訊，請參閱 [az deployment sub](https://docs.microsoft.com/cli/azure/deployment/sub)。
-    * 您可以使用模組，在 PowerShell 中建立部署 `New-AzDeployment` 。 如需詳細資訊，請參閱 [test-azdeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azdeployment)。
+    * 您可以使用在 Azure CLI 中建立部署 `az deployment sub create` 。 如需詳細資訊，請參閱 [az deployment sub](/cli/azure/deployment/sub)。
+    * 您可以使用模組，在 PowerShell 中建立部署 `New-AzDeployment` 。 如需詳細資訊，請參閱 [test-azdeployment](/powershell/module/az.resources/new-azdeployment)。
 
 1. 使用再次執行相同的 ARM 範本 `identityType = SystemAssigned` 。
 
@@ -63,7 +63,7 @@ Automanage 帳戶需要訂用帳戶上的「參與者」和「資源原則參與
 
 如果您使用 ARM 範本或 Azure CLI，則需要主體識別碼 (也稱為 Automanage 帳戶的物件識別碼) 。  (如果您使用 Azure 入口網站，則不需要識別碼。 ) 您可以使用下列方法來尋找此識別碼：
 
-- [Azure CLI](https://docs.microsoft.com/cli/azure/ad/sp)：使用命令 `az ad sp list --display-name <name of your Automanage Account>` 。
+- [Azure CLI](/cli/azure/ad/sp)：使用命令 `az ad sp list --display-name <name of your Automanage Account>` 。
 
 - Azure 入口網站：移至 **Azure Active Directory** ，並依名稱搜尋您的 Automanage 帳戶。 在 [ **企業應用程式**] 下，選取出現的 Automanage 帳戶名稱。
 

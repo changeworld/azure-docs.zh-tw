@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/29/2019
-ms.openlocfilehash: 727792b110c3bc486d31214096be1934539f6d11
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 392f361f6fe487a15bdd63c2f3281ccc78b2f86d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790299"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184411"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>開始使用 Azure SQL Database 中的單一資料庫
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "92790299"
 
 ## <a name="migrating-to-a-single-database-with-minimal-downtime"></a>以最短停機時間移轉到單一資料庫
 
-這些快速入門可讓您快速建立資料庫，或使用 `.bacpac` 檔案將資料庫匯入至 Azure。 不過，`.bacpac` 與 `.dacpac` 檔案是為了在不同版本的 SQL Server 之間與 Azure SQL 內快速地移動資料庫所設計，或是在 DevOps 管線中實作持續整合。 此方法的設計宗旨並非是要以最短的停機時間移轉您的生產資料庫，因為您必須停止新增資料、等候來源資料庫匯出至 `.bacpac` 檔案的作業完成，並等候匯入到 Azure SQL Database 的作業完成。 這類等候會導致您的應用程式停止運作，特別是在資料庫較大時。 若要移動生產資料庫，您必須以更好的方法進行移轉，以確保最短的停機時間。 為此，請使用[資料移轉服務 (DMS)](../../dms/tutorial-sql-server-to-azure-sql.md?toc=%252fazure%252fsql-database%252ftoc.json) \(部分機器翻譯\) 以最短的停機時間移轉資料庫。 DMS 會以累加方式將來源資料庫中的變更推送到正在還原的單一資料庫，藉以完成移轉。 透過此方法，您可以在最短停機時間的前提下，快速地將應用程式從來源資料庫切換到目標資料庫。
+這些快速入門可讓您快速建立資料庫，或使用 `.bacpac` 檔案將資料庫匯入至 Azure。 不過，`.bacpac` 與 `.dacpac` 檔案是為了在不同版本的 SQL Server 之間與 Azure SQL 內快速地移動資料庫所設計，或是在 DevOps 管線中實作持續整合。 此方法的設計宗旨並非是要以最短的停機時間移轉您的生產資料庫，因為您必須停止新增資料、等候來源資料庫匯出至 `.bacpac` 檔案的作業完成，並等候匯入到 Azure SQL Database 的作業完成。 這類等候會導致您的應用程式停止運作，特別是在資料庫較大時。 若要移動生產資料庫，您必須以更好的方法進行移轉，以確保最短的停機時間。 為此，請使用[資料移轉服務 (DMS)](../../dms/tutorial-sql-server-to-azure-sql.md?toc=%2fazure%2fsql-database%2ftoc.json) \(部分機器翻譯\) 以最短的停機時間移轉資料庫。 DMS 會以累加方式將來源資料庫中的變更推送到正在還原的單一資料庫，藉以完成移轉。 透過此方法，您可以在最短停機時間的前提下，快速地將應用程式從來源資料庫切換到目標資料庫。
 
 ## <a name="hands-on-learning-modules"></a>實作學習模組
 

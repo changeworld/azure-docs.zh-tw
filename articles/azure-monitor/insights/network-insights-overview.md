@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: 52ca879d5a680d0e62cc469e768236eac11f3719
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 2f262b328efcc341c93f1e5c31cab8cbd3ecbf6b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030148"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184632"
 ---
 # <a name="azure-monitor-for-networks"></a>適用於網路的 Azure 監視器
 適用于網路的 Azure 監視器可針對所有已部署的網路資源全面查看 [健康](../../service-health/resource-health-checks-resource-types.md) 情況和計量，而不需要任何 [設定](../platform/metrics-supported.md) 。 它也可讓您存取網路監視功能，例如連線 [監視器](../../network-watcher/connection-monitor-preview.md)、 [網路安全性群組的流量記錄 (nsg) ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)和使用 [分析](../../network-watcher/traffic-analytics.md)。 它還提供其他網路 [診斷](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) 功能。
@@ -119,11 +119,11 @@ ms.locfileid: "96030148"
 若要瞭解如何針對您使用網路 Azure 監視器識別的任何網路相關問題進行疑難排解，請參閱故障資源的疑難排解檔。 
 
 以下是常用服務的疑難排解文章連結。 如需有關這些服務的詳細疑難排解文章，請參閱服務之目錄的疑難排解一節中的其他文章。
-* [Azure 虛擬網路](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-peering-issues)
-* [Azure 應用程式閘道](https://docs.microsoft.com/azure/application-gateway/create-gateway-internal-load-balancer-app-service-environment)
-* [Azure VPN 閘道](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-troubleshoot)
-* [Azure ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-expressroute-overview) 
-* [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-troubleshoot) 
+* [Azure 虛擬網路](../../virtual-network/virtual-network-troubleshoot-peering-issues.md)
+* [Azure 應用程式閘道](../../application-gateway/create-gateway-internal-load-balancer-app-service-environment.md)
+* [Azure VPN 閘道](../../vpn-gateway/vpn-gateway-troubleshoot.md)
+* [Azure ExpressRoute](../../expressroute/expressroute-troubleshooting-expressroute-overview.md) 
+* [Azure Load Balancer](../../load-balancer/load-balancer-troubleshoot.md) 
 
 ### <a name="why-dont-i-see-the-resources-for-all-the-subscriptions-ive-selected"></a>為什麼我看不到我選取的所有訂用帳戶的資源？
 

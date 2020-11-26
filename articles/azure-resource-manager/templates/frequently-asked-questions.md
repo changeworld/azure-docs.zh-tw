@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 7f4238035a6fccb0addb9a481287b31732bd2662
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: af6a46e16cd888e3ff6a382be2b1a4264fcc2941
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94744530"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184003"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>ARM 範本的常見問題
 
@@ -68,7 +68,7 @@ ms.locfileid: "94744530"
 
 * **我可以在 ARM 範本中建立訂用帳戶嗎？**
 
-  是，如需詳細資訊，請參閱以程式設計 [方式使用最新的 api 建立 Azure 訂用](../../cost-management-billing/manage/programmatically-create-subscription.md)帳戶。
+  是，如需詳細資訊，請參閱以程式設計 [方式使用最新的 api 建立 Azure 訂用](../../cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement.md)帳戶。
 
 * **如何在部署範本之前進行測試？**
 
@@ -100,13 +100,13 @@ ms.locfileid: "94744530"
 
 * **您是否提供將 JSON 範本轉換成新範本語言的工具？**
 
-  可以。
+  是。
 
 ## <a name="template-specs"></a>範本規格
 
 * **如何開始使用範本規格的預覽版本？**
 
-  安裝最新版本的 PowerShell 或 Azure CLI。 針對 Azure PowerShell，請使用第 [5.0.0 版或更新](/powershell/azure/install-az-ps)版本。 針對 Azure CLI，請使用 [2.14.2 版或更新版本](/cli/azure/install-azure-cli)。
+  安裝最新版本的 PowerShell 或 Azure CLI。 針對 Azure PowerShell，請使用 [5.0.0 版或更新版本](/powershell/azure/install-az-ps)。 針對 Azure CLI，請使用 [2.14.2 版或更新版本](/cli/azure/install-azure-cli)。
 
 * **範本規格和 Azure 藍圖如何相關？**
 
@@ -182,7 +182,7 @@ ms.locfileid: "94744530"
 
 * **我可以將 ARM 範本整合到 Azure Pipelines 嗎？**
 
-  可以。 如需如何使用範本和管線的說明，請參閱 [教學課程：搭配使用 Azure Pipelines 的 Azure Resource Manager 範本的持續整合](deployment-tutorial-pipeline.md) ，以及 [整合 ARM 範本與 Azure Pipelines](add-template-to-azure-pipelines.md)。
+  是。 如需如何使用範本和管線的說明，請參閱 [教學課程：搭配使用 Azure Pipelines 的 Azure Resource Manager 範本的持續整合](deployment-tutorial-pipeline.md) ，以及 [整合 ARM 範本與 Azure Pipelines](add-template-to-azure-pipelines.md)。
 
 * **是否可以使用 GitHub 動作來部署範本？**
 

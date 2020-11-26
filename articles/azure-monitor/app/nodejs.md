@@ -4,12 +4,12 @@ description: 使用 Application Insights 監視 Node.js 服務的效能和診斷
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 982adf6c6d7cd825d185802321ce30a04bd2f216
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4c350cbfdf92d19a084940941351cf1f028c93d2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020886"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186274"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>使用 Application Insights 監視 Node.js 服務和應用程式
 
@@ -416,10 +416,9 @@ client.config.PROPERTYNAME = VALUE;
 ## <a name="next-steps"></a>後續步驟
 
 * [在入口網站中監視遙測](./overview-dashboard.md)
-* [[寫您的遙測的分析查詢](../log-query/get-started-portal.md)
+* [[寫您的遙測的分析查詢](../log-query/log-analytics-tutorial.md)
 
 <!--references-->
 
 [portal]: https://portal.azure.com/
 [FAQ]: ../faq.md
-

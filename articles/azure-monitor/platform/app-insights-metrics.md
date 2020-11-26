@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 9ea98df4b6cd8572412e7082b451feac3736919c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c61287475eb82241aa5c9e1d1649e8b20e3b28c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327067"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185941"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights 以記錄為基礎的計量
 
@@ -29,23 +29,23 @@ Application Insights 記錄型計量可讓您分析受監視應用程式的健�
 
 當您在 [計量瀏覽器](metrics-getting-started.md)中繪製相同的計量時，沒有預設值-系統會根據您的圖表設定動態調整查詢：
 
-- 選取的 **時間範圍** 會轉譯成其他 *where timestamp ...* 子句，以便只從選取的時間範圍挑選事件。 例如，顯示最近24小時資料的圖表，查詢包含 *| where timestamp > 前 (24 h) *。
+- 選取的 **時間範圍** 會轉譯成其他 *where timestamp ...* 子句，以便只從選取的時間範圍挑選事件。 例如，顯示最近24小時資料的圖表，查詢包含 *| where timestamp > 前 (24 h)*。
 
-- 選取的 **時間細微性** 會放入最後一個 *摘要 .。。依 bin (timestamp，[時間細微性] ) * 子句。
+- 選取的 **時間細微性** 會放入最後一個 *摘要 .。。依 bin (timestamp，[時間細微性] )* 子句。
 
 - 任何選取的 **篩選準則** 維度都會轉譯成其他 *where* 子句。
 
-- 選取的 **分割圖表** 維度會轉譯為額外的摘要屬性。 例如，如果您依*位置*分割您的圖表，並使用5分鐘的時間細微性來繪製，則*summarize*會摘要說明摘要*子句 .。。依 bin (timestamp，5 m) ，location*。
+- 選取的 **分割圖表** 維度會轉譯為額外的摘要屬性。 例如，如果您依 *位置* 分割您的圖表，並使用5分鐘的時間細微性來繪製，則 *summarize* 會摘要說明摘要 *子句 .。。依 bin (timestamp，5 m) ，location*。
 
 > [!NOTE]
-> 如果您剛開始使用 Kusto 查詢語言，您可以將 Kusto 語句複製並貼入 Log Analytics 查詢窗格中，而不需要進行任何修改。 按一下 [ **執行** ] 以查看基本圖表。 當您開始瞭解查詢語言的語法時，您可以開始進行小型修改，並查看變更的影響。 探索您自己的資料是開始充分發揮 [Log Analytics](../log-query/get-started-portal.md) 和 [Azure 監視器](../overview.md)功能的絕佳方式。
+> 如果您剛開始使用 Kusto 查詢語言，您可以將 Kusto 語句複製並貼入 Log Analytics 查詢窗格中，而不需要進行任何修改。 按一下 [ **執行** ] 以查看基本圖表。 當您開始瞭解查詢語言的語法時，您可以開始進行小型修改，並查看變更的影響。 探索您自己的資料是開始充分發揮 [Log Analytics](../log-query/log-analytics-tutorial.md) 和 [Azure 監視器](../overview.md)功能的絕佳方式。
 
 ## <a name="availability-metrics"></a>可用性度量
 
 可用性類別中的計量可讓您查看 web 應用程式的健康情況，如世界各地的觀點所觀察。 [設定可用性測試](../app/monitor-web-app-availability.md) 以開始使用此類別中的任何計量。
 
 ### <a name="availability-availabilityresultsavailabilitypercentage"></a>可用性 (availabilityResults/availabilityPercentage) 
-*可用性*度量會顯示未偵測到任何問題之 web 測試回合的百分比。 最小的可能值為0，表示所有 web 測試回合都已失敗。 100的值表示所有 web 測試執行都通過驗證準則。
+*可用性* 度量會顯示未偵測到任何問題之 web 測試回合的百分比。 最小的可能值為0，表示所有 web 測試回合都已失敗。 100的值表示所有 web 測試執行都通過驗證準則。
 
 |測量單位|支援的匯總|支援的維度|
 |---|---|---|---|---|---|
@@ -98,7 +98,7 @@ Application Insights JavaScript SDK 會從真實的終端使用者瀏覽器收�
 
 |測量單位|支援的匯總|預先匯總的維度|
 |---|---|---|
-|毫秒|平均、最小值、最大值|無|
+|毫秒|平均、最小值、最大值|None|
 
 ```Kusto
 browserTimings
@@ -114,7 +114,7 @@ browserTimings
 
 |測量單位|支援的匯總|預先匯總的維度|
 |---|---|---|
-|毫秒|平均、最小值、最大值|無|
+|毫秒|平均、最小值、最大值|None|
 
 ```Kusto
 browserTimings
@@ -130,7 +130,7 @@ browserTimings
 
 |測量單位|支援的匯總|預先匯總的維度|
 |---|---|---|
-|毫秒|平均、最小值、最大值|無|
+|毫秒|平均、最小值、最大值|None|
 
 ```Kusto
 browserTimings
@@ -146,7 +146,7 @@ browserTimings
 
 |測量單位|支援的匯總|預先匯總的維度|
 |---|---|---|
-|毫秒|平均、最小值、最大值|無|
+|毫秒|平均、最小值、最大值|None|
 
 ```Kusto
 browserTimings
@@ -162,7 +162,7 @@ browserTimings
 
 |測量單位|支援的匯總|預先匯總的維度|
 |---|---|---|
-|毫秒|平均、最小值、最大值|無|
+|毫秒|平均、最小值、最大值|None|
 
 ```Kusto
 browserTimings
@@ -176,15 +176,15 @@ browserTimings
 
 ## <a name="failure-metrics"></a>失敗計量
 
-**失敗**中的計量會顯示處理要求、相依性呼叫及擲回例外狀況的問題。
+**失敗** 中的計量會顯示處理要求、相依性呼叫及擲回例外狀況的問題。
 
 ### <a name="browser-exceptions-exceptionsbrowser"></a> (例外狀況/瀏覽器) 的瀏覽器例外狀況
 
 此標準反映在瀏覽器中執行的應用程式程式碼所擲回的例外狀況數目。 只有使用 Application Insights API 呼叫追蹤的例外狀況 ```trackException()``` 會包含在度量中。
 
-|測量單位|支援的匯總|預先匯總的維度|注意|
+|測量單位|支援的匯總|預先匯總的維度|備忘錄|
 |---|---|---|---|
-|Count|Count|無|以記錄為基礎的版本使用 **Sum** 匯總|
+|Count|Count|None|以記錄為基礎的版本使用 **Sum** 匯總|
 
 ```Kusto
 exceptions
@@ -197,9 +197,9 @@ exceptions
 
 失敗的相依性呼叫數目。
 
-|測量單位|支援的匯總|預先匯總的維度|注意|
+|測量單位|支援的匯總|預先匯總的維度|備忘錄|
 |---|---|---|---|
-|Count|Count|無|以記錄為基礎的版本使用 **Sum** 匯總|
+|Count|Count|None|以記錄為基礎的版本使用 **Sum** 匯總|
 
 ```Kusto
 dependencies
@@ -212,7 +212,7 @@ dependencies
 
 每次當您將例外狀況記錄到 Application Insights 時，會呼叫 SDK 的 [trackException ( # A1 方法](../app/api-custom-events-metrics.md#trackexception) 。 例外狀況度量會顯示已記錄的例外狀況數目。
 
-|測量單位|支援的匯總|預先匯總的維度|注意|
+|測量單位|支援的匯總|預先匯總的維度|備忘錄|
 |---|---|---|---|
 |Count|Count|雲端角色名稱、雲端角色實例、裝置類型|以記錄為基礎的版本使用 **Sum** 匯總|
 
@@ -224,9 +224,9 @@ exceptions
 
 ### <a name="failed-requests-requestsfailed"></a>失敗的要求 (要求/失敗) 
 
-標示為 *失敗*的追蹤伺服器要求計數。 根據預設，Application Insights SDK 會自動將傳回 HTTP 回應碼5xx 或4xx 的每個伺服器要求標記為失敗的要求。 您可以藉由在[自訂遙測初始化運算式](../app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)中修改要求遙測專案的*success*屬性來自訂此邏輯。
+標示為 *失敗* 的追蹤伺服器要求計數。 根據預設，Application Insights SDK 會自動將傳回 HTTP 回應碼5xx 或4xx 的每個伺服器要求標記為失敗的要求。 您可以藉由在 [自訂遙測初始化運算式](../app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)中修改要求遙測專案的 *success* 屬性來自訂此邏輯。
 
-|測量單位|支援的匯總|預先匯總的維度|注意|
+|測量單位|支援的匯總|預先匯總的維度|備忘錄|
 |---|---|---|---|
 |Count|Count|雲端角色實例、雲端角色名稱、實際或綜合流量、要求效能、回應碼|以記錄為基礎的版本使用 **Sum** 匯總|
 
@@ -241,7 +241,7 @@ requests
 
 此度量會顯示伺服器例外狀況的數目。
 
-|測量單位|支援的匯總|預先匯總的維度|注意|
+|測量單位|支援的匯總|預先匯總的維度|備忘錄|
 |---|---|---|---|
 |Count|Count|雲端角色名稱，雲端角色實例|以記錄為基礎的版本使用 **Sum** 匯總|
 
@@ -492,4 +492,3 @@ union traces, requests, pageViews, dependencies, customEvents, availabilityResul
 | summarize dcount(user_AuthenticatedId) by bin(timestamp, 1h)
 | render barchart
 ```
-

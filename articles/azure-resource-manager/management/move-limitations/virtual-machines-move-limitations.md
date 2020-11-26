@@ -2,13 +2,13 @@
 title: 將 Azure Vm 移至新的訂用帳戶或資源群組
 description: 使用 Azure Resource Manager 將虛擬機器移至新的資源群組或訂用帳戶。
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: 219a8b438d2715f6e97085a527b386e51759ec2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/25/2020
+ms.openlocfilehash: ace1fb6bf3944df539ec8f7301357e67d2b315a9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317101"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184071"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>虛擬機器的移動指引
 
@@ -19,7 +19,6 @@ ms.locfileid: "91317101"
 尚未支援下列案例：
 
 * 具有標準 SKU Load Balancer 或標準 SKU 公用 IP 的虛擬機器擴展集無法移動。
-* 從 Marketplace 資源建立且附加方案的虛擬機器，無法跨訂用帳戶移動。 解除布建目前訂用帳戶中的虛擬機器，並在新的訂用帳戶中再次部署。
 * 當您未移動虛擬網路中的所有資源時，現有虛擬網路中的虛擬機器無法移至新的訂用帳戶。
 * 低優先順序的虛擬機器和低優先順序的虛擬機器擴展集無法跨資源群組或訂用帳戶移動。
 * 無法個別移動可用性設定組中的虛擬機器。
@@ -35,6 +34,24 @@ az vm encryption disable --resource-group demoRG --name myVm1
 ```azurepowershell-interactive
 Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
 ```
+
+## <a name="virtual-machines-with-marketplace-plans"></a>具有 Marketplace 方案的虛擬機器
+
+從 Marketplace 資源建立且附加方案的虛擬機器，無法跨訂用帳戶移動。 若要解決這項限制，您可以在目前的訂用帳戶中取消布建虛擬機器，並在新的訂用帳戶中再次部署它。 下列步驟可協助您重新建立新訂用帳戶中的虛擬機器。 不過，它們在所有案例中可能無法運作。 如果 Marketplace 中已不再提供方案，則這些步驟將無法運作。
+
+1. 複製計畫的相關資訊。
+
+1. 請將 OS 磁碟複製到目的地訂用帳戶，或從來源訂用帳戶刪除虛擬機器之後移動原始磁片。
+
+1. 在目的地訂用帳戶中，接受您方案的 Marketplace 條款。 您可以執行下列 PowerShell 命令來接受這些條款：
+
+   ```azurepowershell
+   Get-AzMarketplaceTerms -Publisher {publisher} -Product {product/offer} -Name {name/SKU} | Set-AzMarketplaceTerms -Accept
+   ```
+
+   或者，您可以透過入口網站，建立新的虛擬機器實例與方案。 您可以在接受新訂用帳戶中的條款之後，刪除虛擬機器。
+
+1. 在目的地訂用帳戶中，使用 PowerShell、CLI 或 Azure Resource Manager 範本，從複製的 OS 磁片重新建立虛擬機器。 包含連接到磁片的 marketplace 方案。 計畫的相關資訊應該符合您在新訂用帳戶中購買的方案。
 
 ## <a name="virtual-machines-with-azure-backup"></a>具有 Azure 備份的虛擬機器
 

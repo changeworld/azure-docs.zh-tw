@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/18/2020
-ms.openlocfilehash: 7bfd951d7cec27e0b8264aaabf9bc3a17875256a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9715724fc0fbd25198dd3244215ac2c12638d2b8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000720"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185958"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
 
@@ -72,7 +72,7 @@ Azure 監視器利用系統所指派受控識別來授與 Azure Key Vault 的存
 1. 授與 Key Vault 的權限
 1. 連結 Log Analytics 工作區
 
-Azure 入口網站中不支援 Customer-Managed 金鑰設定，而布建是透過 [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/)、 [CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics) 或 [REST](https://docs.microsoft.com/rest/api/loganalytics/) 要求來執行。
+Azure 入口網站中不支援 Customer-Managed 金鑰設定，而布建是透過 [PowerShell](/powershell/module/az.operationalinsights/)、 [CLI](/cli/azure/monitor/log-analytics) 或 [REST](/rest/api/loganalytics/) 要求來執行。
 
 ### <a name="asynchronous-operations-and-status-check"></a>非同步作業和狀態檢查
 
@@ -107,7 +107,7 @@ Authorization: Bearer <token>
 
 ### <a name="create-cluster"></a>建立叢集
 
-請依照 [專用叢集文章](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters#creating-a-cluster)中所述的程式進行操作。 
+請依照 [專用叢集文章](../log-query/logs-dedicated-clusters.md#creating-a-cluster)中所述的程式進行操作。 
 
 > [!IMPORTANT]
 > 複製並儲存回應，因為接下來的步驟將需要詳細資料。
@@ -212,7 +212,7 @@ Content-type: application/json
 
 這項作業是非同步，而且可能需要一段時間才能完成。
 
-請依照 [專用叢集文章](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters#link-a-workspace-to-the-cluster)中所述的程式進行操作。
+請依照 [專用叢集文章](../log-query/logs-dedicated-clusters.md#link-a-workspace-to-the-cluster)中所述的程式進行操作。
 
 ## <a name="key-revocation"></a>金鑰撤銷
 

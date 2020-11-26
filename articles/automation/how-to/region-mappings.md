@@ -5,12 +5,12 @@ ms.date: 10/19/2020
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: bffd1cc0ce2a6a827c0bc708321a6bd2839aae2d
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 23e5293301a2fc311565d0c1c8ec5fd92bebe9b2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207320"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183561"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>已連結 Log Analytics 工作區的支援區域
 
@@ -87,6 +87,6 @@ ms.locfileid: "92207320"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 了解[更新管理概觀](../update-management/update-mgmt-overview.md)中的更新管理。
+* 了解[更新管理概觀](../update-management/overview.md)中的更新管理。
 * 了解[變更追蹤和清查概觀](../change-tracking/overview.md)中的變更追蹤和清查。
 * 了解[停機期間啟動/停止 VM 概觀](../automation-solution-vm-management.md)中的停機期間啟動/停止 VM。

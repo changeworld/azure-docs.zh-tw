@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: kgremban
-ms.openlocfilehash: 7ab62b04f8bea76c7efb587665f87ccaf123da24
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: a7794bcdfa4f82698fdc5875bc94dcf52b70166e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108995"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185091"
 ---
 # <a name="install-or-uninstall-the-azure-iot-edge-runtime"></a>安裝或卸載 Azure IoT Edge 執行時間
 
@@ -24,7 +24,7 @@ Azure IoT Edge 執行階段可將裝置變成 IoT Edge 裝置。 此執行階段
 
 本文列出在 Linux 或 Windows 裝置上安裝 Azure IoT Edge 執行時間的步驟。 針對 Windows 裝置，您有其他使用 Linux 容器或 Windows 容器的選項。 目前，Windows 上的 Windows 容器建議用於生產案例。 Windows 上的 Linux 容器適用于開發和測試案例，特別是如果您是在 Windows 電腦上進行開發，以便部署到 Linux 裝置。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如需有關生產案例目前支援哪些作業系統的最新資訊，請參閱 [Azure IoT Edge 支援的系統](support.md#operating-systems)
 
@@ -51,7 +51,7 @@ Azure IoT Edge 執行階段可將裝置變成 IoT Edge 裝置。 此執行階段
      curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
      ```
 
-   * **Raspbian Stretch**：
+   * **Raspberry PI 作業系統延展**：
 
      ```bash
      curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list

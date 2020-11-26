@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: ec2ffe71a32781a855da258f3621738f1a5f6be4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9a1bef582053eccdbfef63c2159cf540ffd9bfb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294286"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186587"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>針對 Azure 監視器中的記錄警示進行疑難排解  
 
 本文說明如何解決 Azure 監視器中的記錄警示常見問題。 它也提供記錄警示功能和設定的常見問題解決方案。
 
-記錄警示可讓使用者使用 [Log Analytics](../log-query/get-started-portal.md) 查詢來評估每個設定頻率的資源記錄，並根據結果引發警示。 規則可以使用 [動作群組](./action-groups.md)觸發一或多個動作。 [深入瞭解記錄警示的功能和術語](alerts-unified-log.md)。
+記錄警示可讓使用者使用 [Log Analytics](../log-query/log-analytics-tutorial.md) 查詢來評估每個設定頻率的資源記錄，並根據結果引發警示。 規則可以使用 [動作群組](./action-groups.md)觸發一或多個動作。 [深入瞭解記錄警示的功能和術語](alerts-unified-log.md)。
 
 > [!NOTE]
 > 本文並不考慮 Azure 入口網站顯示已觸發的警示規則，而且相關聯的動作群組不會執行通知的情況。 在這種情況下，請參閱 [此處](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected)的疑難排解詳細資料。
@@ -36,7 +36,7 @@ Azure 監視器處理來自世界各地的數 tb 客戶記錄，這可能會導�
 
 在規則條件定義中設定查詢時間範圍。 此欄位稱為工作區和 Application Insights 的 **期間** ，並且針對所有其他資源類型呼叫覆 **寫查詢時間範圍** 。 如同在 log analytics 中，時間範圍會將查詢資料限制在指定的期間內。 即使在查詢中使用 **前** 一個命令，也會套用時間範圍。 
 
-例如，查詢會掃描60分鐘，如果時間範圍是60分鐘，即使文字包含 **前 (1d) **。 時間範圍和查詢時間篩選需要相符。 在範例案例中，將**週期**覆  /  **寫查詢時間範圍**變更為一天，會如預期般運作。
+例如，查詢會掃描60分鐘，如果時間範圍是60分鐘，即使文字包含 **前 (1d)**。 時間範圍和查詢時間篩選需要相符。 在範例案例中，將 **週期** 覆  /  **寫查詢時間範圍** 變更為一天，會如預期般運作。
 
 ![時間週期](media/alert-log-troubleshoot/LogAlertTimePeriod.png)
 
@@ -52,7 +52,7 @@ Azure 監視器處理來自世界各地的數 tb 客戶記錄，這可能會導�
 
 [計量測量](alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) 是以摘要時間序列結果為基礎的一種記錄警示。 這些規則允許依資料行分組來 [分割警示](alerts-unified-log.md#split-by-alert-dimensions)。 如果您使用舊版 Log Analytics API，則分割將無法如預期般運作。 不支援選擇舊版 API 中的群組。
 
-目前的 ScheduledQueryRules API 可讓您在[計量測量](alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value)規則中設定**匯總**，這會如預期般運作。 [深入瞭解如何切換至目前的 SCHEDULEDQUERYRULES API](alerts-log-api-switch.md)。
+目前的 ScheduledQueryRules API 可讓您在 [計量測量](alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value)規則中設定 **匯總**，這會如預期般運作。 [深入瞭解如何切換至目前的 SCHEDULEDQUERYRULES API](alerts-log-api-switch.md)。
 
 ## <a name="log-alert-fired-unnecessarily"></a>記錄警示被不必要地引發
 
@@ -131,7 +131,7 @@ SecurityEvent
 
     - 需要增加配額限制的訂用帳戶識別碼和資源識別碼。
     - 增加配額的原因。
-    - 配額增加的資源類型： **Log Analytics**、 **Application Insights**等等。
+    - 配額增加的資源類型： **Log Analytics**、 **Application Insights** 等等。
     - 要求的配額限制。
 
 

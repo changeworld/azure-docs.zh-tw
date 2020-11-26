@@ -3,12 +3,12 @@ title: 使用 PowerShell 將 Azure Application Insights 自動化 | Microsoft Do
 description: 在 PowerShell 中使用 Azure Resource Manager 範本自動建立及管理資源、警示及可用性測試。
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: 58ed537a8fa6622756e7bcddceb6e9321cfbd82e
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: c380880845c162a1e8fb38e699a439ac04fb3b5a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94741071"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186264"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>使用 PowerShell 管理 Application Insights 資源
 
@@ -469,7 +469,6 @@ Azure 應以嚴格的順序設定資源。 為確保一項設定完成後再開�
 其他自動化文件：
 
 * [建立 Application Insights 資源](./create-new-resource.md#creating-a-resource-automatically) - 快速方法 (不使用範本)
-* [建立 Web 測試](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-alerts-metric#availability-test-with-metric-alert)
+* [建立 Web 測試](../samples/resource-manager-alerts-metric.md#availability-test-with-metric-alert)
 * [將 Azure 診斷傳送至 Application Insights](powershell-azure-diagnostics.md)
 * [建立版本附註](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
-

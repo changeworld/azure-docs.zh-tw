@@ -7,24 +7,24 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.openlocfilehash: cf25ef59bc1ea5db61dcfb3c76c0d978cb1f95d0
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: b41575208d0793a33864556ec4313ae1a71f2db5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931831"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184462"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>適用於Azure NetApp Files 的效能基準測試建議
 
 本文針對使用 Azure NetApp Files 的磁片區效能和計量提供基準測試建議。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 若要瞭解 Azure NetApp Files 磁片區的效能特性，您可以使用開放原始碼工具 [FIO](https://github.com/axboe/fio) 來執行一連串的基準測試，以模擬各種不同的工作負載。 FIO 可以安裝在 Linux 和 Windows 作業系統上。  它是一項絕佳的工具，可取得磁片區的 IOPS 和輸送量的快速快照。
 
 ### <a name="vm-instance-sizing"></a>VM 實例大小調整
 
-為了獲得最佳結果，請確定您使用的虛擬機器 (VM) 實例已適當調整大小，以執行測試。 下列範例會使用 Standard_D32s_v3 實例。 如需 VM 實例大小的詳細資訊，請參閱適用于 Windows Vm 的 [azure 中的 windows 虛擬機器大小](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-network%252ftoc.json) ，以及 [azure 中 linux 虛擬機器的大小](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) （適用于 linux 型 vm）。
+為了獲得最佳結果，請確定您使用的虛擬機器 (VM) 實例已適當調整大小，以執行測試。 下列範例會使用 Standard_D32s_v3 實例。 如需 VM 實例大小的詳細資訊，請參閱適用于 Windows Vm 的 [azure 中的 windows 虛擬機器大小](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ，以及 [azure 中 linux 虛擬機器的大小](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) （適用于 linux 型 vm）。
 
 ### <a name="azure-netapp-files-volume-sizing"></a>Azure NetApp Files 磁片區大小調整
 

@@ -10,18 +10,18 @@ ms.workload: identity
 ms.date: 09/28/2020
 ms.author: rolyon
 ms.custom: contperfq1, devx-track-azurecli
-ms.openlocfilehash: e23b6513751764063e3d8c85e063a24165d34648
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 94052b847f48a9fd676496601d85a8cb58a76944
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844875"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184292"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>使用 Azure CLI 新增或移除 Azure 角色指派
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] 本文說明如何使用 Azure CLI 指派角色。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要新增或移除角色指派，您必須具有：
 
@@ -183,17 +183,7 @@ az role assignment create --assignee "{assignee}" \
     
 ## <a name="add-role-assignment-examples"></a>新增角色指派範例
 
-### <a name="add-role-assignment-for-a-specific-blob-container-resource-scope"></a>新增特定 blob 容器資源範圍的角色指派
-
-將 [儲存體 Blob 資料參與者](built-in-roles.md#storage-blob-data-contributor)角色指派給 blob 容器 *-01* blob 容器之資源範圍中的物件識別碼為 *55555555-5555-5555-5555-555555555555* 的服務主體。
-
-```azurecli
-az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
---role "Storage Blob Data Contributor" \
---scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-Storage-rg/providers/Microsoft.Storage/storageAccounts/storage12345/blobServices/default/containers/blob-container-01"
-```
-
-### <a name="add-role-assignment-for-all-blob-containers-in-a-storage-account-resource-scope"></a>為儲存體帳戶資源範圍中的所有 blob 容器新增角色指派
+#### <a name="add-role-assignment-for-all-blob-containers-in-a-storage-account-resource-scope"></a>為儲存體帳戶資源範圍中的所有 blob 容器新增角色指派
 
 針對名為 *storage12345* 的儲存體帳戶，將 [儲存體 Blob 資料參與者](built-in-roles.md#storage-blob-data-contributor)角色指派給資源範圍中具有物件識別碼 *55555555-5555-5555-5555-555555555555* 的服務主體。
 
@@ -203,7 +193,17 @@ az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-Storage-rg/providers/Microsoft.Storage/storageAccounts/storage12345"
 ```
 
-### <a name="add-role-assignment-for-a-group-in-a-specific-virtual-network-resource-scope"></a>在特定虛擬網路資源範圍中新增群組的角色指派
+#### <a name="add-role-assignment-for-a-specific-blob-container-resource-scope"></a>新增特定 blob 容器資源範圍的角色指派
+
+將 [儲存體 Blob 資料參與者](built-in-roles.md#storage-blob-data-contributor)角色指派給 blob 容器 *-01* blob 容器之資源範圍中的物件識別碼為 *55555555-5555-5555-5555-555555555555* 的服務主體。
+
+```azurecli
+az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
+--role "Storage Blob Data Contributor" \
+--scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-Storage-rg/providers/Microsoft.Storage/storageAccounts/storage12345/blobServices/default/containers/blob-container-01"
+```
+
+#### <a name="add-role-assignment-for-a-group-in-a-specific-virtual-network-resource-scope"></a>在特定虛擬網路資源範圍中新增群組的角色指派
 
 針對名為 *醫藥* 的虛擬網路，將 [虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)角色指派給名為22222222-2222-2222-2222-222222222222 的 *王 mack」團隊* 群組（名為的資源範圍）。
 
@@ -213,7 +213,7 @@ az role assignment create --assignee "22222222-2222-2222-2222-222222222222" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/pharma-sales/providers/Microsoft.Network/virtualNetworks/pharma-sales-project-network"
 ```
 
-### <a name="add-role-assignment-for-a-user-at-a-resource-group-scope"></a>在資源群組範圍新增使用者的角色指派
+#### <a name="add-role-assignment-for-a-user-at-a-resource-group-scope"></a>在資源群組範圍新增使用者的角色指派
 
 將「[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)」角色指派給 *醫藥-sales* 資源群組範圍的 *patlong \@ contoso.com* 使用者。
 
@@ -223,7 +223,7 @@ az role assignment create --assignee "patlong@contoso.com" \
 --resource-group "pharma-sales"
 ```
 
-### <a name="add-role-assignment-for-a-user-using-the-unique-role-id-at-a-resource-group-scope"></a>在資源群組範圍中使用唯一角色識別碼為使用者新增角色指派
+#### <a name="add-role-assignment-for-a-user-using-the-unique-role-id-at-a-resource-group-scope"></a>在資源群組範圍中使用唯一角色識別碼為使用者新增角色指派
 
 有幾個時候角色名稱可能會變更，例如：
 
@@ -240,7 +240,7 @@ az role assignment create --assignee "patlong@contoso.com" \
 --resource-group "pharma-sales"
 ```
 
-### <a name="add-role-assignment-for-all-blob-containers-at-a-resource-group-scope"></a>為資源群組範圍中的所有 blob 容器新增角色指派
+#### <a name="add-role-assignment-for-all-blob-containers-at-a-resource-group-scope"></a>為資源群組範圍中的所有 blob 容器新增角色指派
 
 在 *範例-rg* 資源群組範圍中，將 [儲存體 Blob 資料參與者](built-in-roles.md#storage-blob-data-contributor)角色指派給物件識別碼為 *55555555-5555-5555-5555-555555555555* 的服務主體。
 
@@ -258,7 +258,7 @@ az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-Storage-rg"
 ```
 
-### <a name="add-role-assignment-for-an-application-at-a-resource-group-scope"></a>在資源群組範圍中新增應用程式的角色指派
+#### <a name="add-role-assignment-for-an-application-at-a-resource-group-scope"></a>在資源群組範圍中新增應用程式的角色指派
 
 將「 [虛擬機器參與者](built-in-roles.md#virtual-machine-contributor) 」角色指派給 *醫藥-sales* 資源群組範圍的服務主體物件識別碼為44444444-4444-4444-4444-444444444444 的應用程式。
 
@@ -268,7 +268,7 @@ az role assignment create --assignee "44444444-4444-4444-4444-444444444444" \
 --resource-group "pharma-sales"
 ```
 
-### <a name="add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope"></a>在資源群組範圍為新的服務主體新增角色指派
+#### <a name="add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope"></a>在資源群組範圍為新的服務主體新增角色指派
 
 如果您建立新的服務主體，並立即嘗試將角色指派給該服務主體，在某些情況下，該角色指派可能會失敗。 例如，如果您使用腳本來建立新的受控識別，然後嘗試將角色指派給該服務主體，則角色指派可能會失敗。 此失敗的原因可能是複寫延遲。 服務主體建立在某個區域中；不過，角色指派可能發生在另一個尚未複寫服務主體的區域中。 若要解決這種情況，您應該在建立角色指派時指定主體類型。
 
@@ -291,7 +291,7 @@ az role assignment create --assignee-object-id "33333333-3333-3333-3333-33333333
 --resource-group "pharma-sales"
 ```
 
-### <a name="add-role-assignment-for-a-user-at-a-subscription-scope"></a>在訂用帳戶範圍為使用者新增角色指派
+#### <a name="add-role-assignment-for-a-user-at-a-subscription-scope"></a>在訂用帳戶範圍為使用者新增角色指派
 
 將「 [讀取](built-in-roles.md#reader) 者」角色指派給訂用帳戶範圍內的 *annm \@ example.com* 使用者。
 
@@ -301,7 +301,7 @@ az role assignment create --assignee "annm@example.com" \
 --subscription "00000000-0000-0000-0000-000000000000"
 ```
 
-### <a name="add-role-assignment-for-a-group-at-a-subscription-scope"></a>在訂用帳戶範圍新增群組的角色指派
+#### <a name="add-role-assignment-for-a-group-at-a-subscription-scope"></a>在訂用帳戶範圍新增群組的角色指派
 
 將 [讀者](built-in-roles.md#reader) 角色指派給訂用帳戶範圍中識別碼為22222222-2222-2222-2222-222222222222 的 *王 mack」團隊* 群組。
 
@@ -311,7 +311,7 @@ az role assignment create --assignee "22222222-2222-2222-2222-222222222222" \
 --subscription "00000000-0000-0000-0000-000000000000"
 ```
 
-### <a name="add-role-assignment-for-all-blob-containers-at-a-subscription-scope"></a>為訂用帳戶範圍內的所有 blob 容器新增角色指派
+#### <a name="add-role-assignment-for-all-blob-containers-at-a-subscription-scope"></a>為訂用帳戶範圍內的所有 blob 容器新增角色指派
 
 將 [儲存體 Blob 資料讀取器](built-in-roles.md#storage-blob-data-reader) 角色指派給訂用帳戶範圍內的 *alain \@ example.com* 使用者。
 
@@ -321,7 +321,7 @@ az role assignment create --assignee "alain@example.com" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000"
 ```
 
-### <a name="add-role-assignment-for-a-user-at-a-management-group-scope"></a>為管理群組範圍的使用者新增角色指派
+#### <a name="add-role-assignment-for-a-user-at-a-management-group-scope"></a>為管理群組範圍的使用者新增角色指派
 
 將「 [帳單讀者](built-in-roles.md#billing-reader) 」角色指派給位於管理群組範圍的 *alain \@ example.com* 使用者。
 
@@ -331,7 +331,7 @@ az role assignment create --assignee "alain@example.com" \
 --scope "/providers/Microsoft.Management/managementGroups/marketing-group"
 ```
 
-## <a name="remove-role-assignment"></a>移除角色指派
+## <a name="remove-a-role-assignment"></a>移除角色指派
 
 在 Azure RBAC 中，若要移除存取權，您可以使用 [az 角色指派刪除](/cli/azure/role/assignment#az_role_assignment_delete)來移除角色指派。
 

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 11ea348a80bc226b6a96bea1e7c023ee9c06b13a
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: cc17dcef7a554bee2715c79ba7d0c2356db2c6b3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684112"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185652"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Azure SignalR Service 常見問題的疑難排解指南
 
@@ -122,7 +122,7 @@ JWT 權杖存留期目前的預設值為1小時。
 
 針對 ASP.NET SignalR，用戶端 `/ping` 會及時將 KeepAlive 要求傳送給服務，當 `/ping` 失敗時，用戶端會 **中止** 連線，而且永遠不會重新連接。 這表示，在 ASP.NET SignalR 中，預設權杖存留期會讓所有傳輸類型的連接 **最多** 持續1小時。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 基於安全性考慮，不建議延伸 TTL。 建議您從用戶端新增重新連接邏輯，以便在發生這類401時重新開機連線。 當用戶端重新開機連線時，它會與應用程式伺服器協調以再次取得 JWT 權杖，並取得更新的權杖。
 
@@ -148,7 +148,7 @@ JWT 權杖存留期目前的預設值為1小時。
 
 針對 **免費** 實例，**標準** 實例的 **並行** 連接計數限制為20，**每個單位** 的 **並行** 連線計數限制為 1 K，這表示 Unit100 允許 100-K 個並行連線。
 
-連接包括用戶端和伺服器連接。 請 [在這裡](https://docs.microsoft.com/azure/azure-signalr/signalr-concept-messages-and-connections#how-connections-are-counted) 查看連接的計算方式。
+連接包括用戶端和伺服器連接。 請 [在這裡](./signalr-concept-messages-and-connections.md#how-connections-are-counted) 查看連接的計算方式。
 
 ## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>500當 negotiate： Azure SignalR Service 尚未連線時發生錯誤，請稍後再試一次。
 
@@ -162,7 +162,7 @@ JWT 權杖存留期目前的預設值為1小時。
 
 #### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>針對 ASP.NET Core SignalR 啟用伺服器端記錄
 
-ASP.NET Core SignalR 的伺服器端記錄會與 `ILogger` ASP.NET Core framework 中提供的 [記錄](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&tabs=aspnetcore2x) 整合。 您可以使用的範例使用方式來啟用伺服器端記錄 `ConfigureLogging` ，如下所示：
+ASP.NET Core SignalR 的伺服器端記錄會與 `ILogger` ASP.NET Core framework 中提供的 [記錄](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1) 整合。 您可以使用的範例使用方式來啟用伺服器端記錄 `ConfigureLogging` ，如下所示：
 ```cs
 .ConfigureLogging((hostingContext, logging) =>
         {
@@ -253,7 +253,7 @@ Azure SignalR 的記錄器類別一律以開始 `Microsoft.Azure.SignalR` 。 �
 
 1. 檢查 SignalR 用戶端是否 **永遠不會** 關閉。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 檢查您是否關閉連接。 使用手動呼叫 `HubConnection.DisposeAsync()` 以停止連接。
 
@@ -281,7 +281,7 @@ finally
 
 當有人在 Azure 函式方法中建立 SignalR 用戶端連線，而不是將它設為函式類別的靜態成員時，通常就會發生此問題。 您可能只會建立一個用戶端連線，但您會在 [Azure 入口網站資源] 功能表的 [監視中] 區段中看到 [用戶端連線計數] 不斷增加，而這些連線只會在 Azure 函式或 Azure SignalR 服務重新開機後卸載。 這是因為對於 **每個** 要求，Azure 函式會建立 **一個** 用戶端連線，如果您未在函式方法中停止用戶端連線，用戶端會將連線保持在 Azure SignalR service 的運作狀態。
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 
 * 如果您在 Azure 函式中使用 SignalR 用戶端，或使用 SignalR 用戶端做為 singleton，請記得關閉用戶端連線。
 * 除了在 Azure 函式中使用 SignalR 用戶端之外，您還可以在其他任何地方建立 SignalR 用戶端，並使用 [Azure SignalR Service 的 Azure Functions](https://github.com/Azure/azure-functions-signalrservice-extension) 系結，將用戶端 [協商](https://github.com/Azure/azure-functions-signalrservice-extension/blob/dev/samples/simple-chat/csharp/FunctionApp/Functions.cs#L22) 至 Azure SignalR。 此外，您也可以利用系結來 [傳送訊息](https://github.com/Azure/azure-functions-signalrservice-extension/blob/dev/samples/simple-chat/csharp/FunctionApp/Functions.cs#L40)。 您可以在 [這裡](https://github.com/Azure/azure-functions-signalrservice-extension/tree/dev/samples)找到 negotiate 用戶端和傳送訊息的範例。 您可以在 [這裡](https://github.com/Azure/azure-functions-signalrservice-extension)找到進一步的資訊。

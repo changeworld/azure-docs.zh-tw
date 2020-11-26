@@ -5,12 +5,12 @@ services: automation
 ms.date: 11/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 1ed4ad3e1bae34b5007d13c7d092f46e972ac8a8
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 35feb136ca1fd7ea0be16a906f7d5193cf8570c7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347075"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183544"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>從 Azure VM 啟用更新管理
 
@@ -35,11 +35,11 @@ ms.locfileid: "93347075"
 
 2. 選取您要啟用更新管理的 VM。 VM 可能存在於任何區域中，無論您的自動化帳戶位於何處。 您
 
-3. 在 [VM] 頁面的 [ **作業** ] 底下，選取 [ **來賓 + 主機更新** ]。
+3. 在 [VM] 頁面的 [ **作業**] 底下，選取 [ **來賓 + 主機更新**]。
 
     ![從左側窗格中選取 [來賓 + 主機更新]](media/enable-from-vm/select-guest-and-os-updates.png)
 
-4. 您必須具有 `Microsoft.OperationalInsights/workspaces/read` 權限，才能判斷是否已啟用工作區的 VM。 若要了解所需的其他權限，請參閱[啟用機器所需的權限](../automation-role-based-access-control.md#feature-setup-permissions)。 若要了解如何同時啟用多台機器，請參閱[從自動化帳戶啟用更新管理](update-mgmt-enable-automation-account.md)。
+4. 您必須具有 `Microsoft.OperationalInsights/workspaces/read` 權限，才能判斷是否已啟用工作區的 VM。 若要了解所需的其他權限，請參閱[啟用機器所需的權限](../automation-role-based-access-control.md#feature-setup-permissions)。 若要了解如何同時啟用多台機器，請參閱[從自動化帳戶啟用更新管理](./enable-from-automation-account.md)。
 
 5. 在 [啟用更新管理] 頁面上，選擇 Log Analytics 工作區和自動化帳戶，然後按一下 [ **啟用** ] 以啟用更新管理。 啟用更新管理之後，可能需要大約15分鐘的時間，才能從 VM 查看更新評定。
 

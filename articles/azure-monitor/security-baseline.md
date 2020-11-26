@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c8ed791fc9496e67acdcfbfafddad9170ac47535
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: b19162636707b8d2cc8b7a9ef33c03738eb8e631
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522578"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184428"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>適用于 Azure 監視器的 Azure 安全性基準
 
@@ -154,7 +154,7 @@ Azure 監視器是 Azure 核心服務的一部分，且 Azure 監視器服務無
 
 - [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
-- [開始使用 Log Analytics 查詢](log-query/get-started-portal.md)
+- [開始使用 Log Analytics 查詢](./log-query/log-analytics-tutorial.md)
 
 - [如何在 Azure 監視器中執行自訂查詢](log-query/get-started-queries.md)
 
@@ -182,7 +182,7 @@ Azure 監視器是 Azure 核心服務的一部分，且 Azure 監視器服務無
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
-**指導** 方針： azure 角色型存取控制 (azure RBAC) 可讓您透過角色指派來管理 Azure 資源的存取權。 您可以將這些角色指派給使用者、群組服務主體和受控識別。 某些資源有預先定義的內建角色，而這些角色可透過 Azure CLI、Azure PowerShell 或 Azure 入口網站等工具進行清查或查詢。
+**指導** 方針： azure 角色型存取控制 (azure RBAC) 可讓您透過角色指派來管理 Azure 資源的存取權。 您可以將這些角色指派給使用者、群組服務主體和受控識別。 某些資源有預先定義的內建角色，這些角色可透過 Azure CLI、Azure PowerShell 或 Azure 入口網站之類的工具進行清查或查詢。
 
 - [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -264,7 +264,7 @@ Azure 監視器是 Azure 核心服務的一部分，且 Azure 監視器服務無
 
 **指導** 方針：使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
 
-- [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何建立和設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -381,7 +381,7 @@ Application Insights 和 Log Analytics 都會繼續允許內嵌 TLS 1.1 和 TLS 
 
 - [Application Insights 中的資料收集、保留和儲存](app/data-retention-privacy.md)
 
-- [瞭解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md) 
+- [了解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md) 
 
 **Azure 資訊安全中心監視**：是
 
@@ -785,7 +785,7 @@ Application Insights 和 Log Analytics 都會繼續允許內嵌 TLS 1.1 和 TLS 
 
 - [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-- [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 資訊安全中心監視**：不適用
 

@@ -4,12 +4,12 @@ description: Azure 應用程式服務的應用程式效能監視。 圖表載入
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: f46d00f97dab18b0c7c1d4a5742a87308f814e9e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c0ee68659f4729ed8f63b9ea990343adf51513bd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832871"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186366"
 ---
 # <a name="monitor-azure-app-service-performance"></a>監視 Azure App Service 效能
 
@@ -372,7 +372,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
     * 確認沒有 `AppAlreadyInstrumented` 、和的專案 `AppContainsDiagnosticSourceAssembly` `AppContainsAspNetTelemetryCorrelationAssembly` 。
         * 如果有任何這些專案存在，請從您的應用程式中移除下列封裝： `Microsoft.ApplicationInsights` 、 `System.Diagnostics.DiagnosticSource` 和 `Microsoft.AspNet.TelemetryCorrelation` 。
-        * 僅適用于 ASP.NET Core apps：如果您的應用程式參考任何 Application Insights 套件，例如，如果您先前已使用 ASP.NET Core SDK 來檢測 (或嘗試使用 [App Service SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)來) 檢測應用程式，則啟用 Application Insights 整合可能不會生效，且資料可能不會出現在中。 若要修正此問題，請在入口網站中開啟「Interop 與 Application Insights SDK」，您就會開始在 Application Insights 中看到資料。 
+        * 僅適用于 ASP.NET Core apps：如果您的應用程式參考任何 Application Insights 套件，例如，如果您先前已使用 ASP.NET Core SDK 來檢測 (或嘗試使用 [App Service SDK](./asp-net-core.md)來) 檢測應用程式，則啟用 Application Insights 整合可能不會生效，且資料可能不會出現在中。 若要修正此問題，請在入口網站中開啟「Interop 與 Application Insights SDK」，您就會開始在 Application Insights 中看到資料。 
         > [!IMPORTANT]
         > 這項功能目前為預覽狀態 
 
@@ -432,4 +432,3 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 * 每當發生作業事件或計量超過臨界值時，[接收警示通知](../platform/alerts-overview.md)。
 * 使用 [JavaScript 應用程式和網頁適用的 Application Insights](javascript.md) ，以從造訪網頁的瀏覽器取得用戶端遙測。
 * [設定可用性 Web 測試](monitor-web-app-availability.md) ，以在您的網站關閉時發出警示。
-

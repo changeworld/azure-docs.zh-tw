@@ -16,11 +16,11 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: bbbf924ea950c5ba281be430190370ae77734b7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262170"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184338"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>使用 .NET SDK 傳遞點播內容入門
 
@@ -30,7 +30,7 @@ ms.locfileid: "89262170"
 
 本教學課程會逐步引導您使用 Azure 媒體服務 .NET SDK 實作含 Azure 媒體服務 (AMS) 應用程式的基本點播視訊 (VoD) 內容傳遞服務。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 需要有下列項目，才能完成教學課程：
 
@@ -49,7 +49,7 @@ ms.locfileid: "89262170"
 4. 發佈資產並取得串流和漸進式下載 URL。  
 5. 播放您的內容。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本教學課程會逐步完成使用 Azure Media Services (AMS) SDK for .NET 實作點播視訊 (VoD) 內容傳遞應用程式。
 
 教學課程中介紹基本的媒體服務工作流程，以及媒體服務開發最常用的程式設計物件和必要工作。 完成本教學課程時，您將能夠串流或漸進式下載您已上傳、編碼和下載的範例媒體檔案。
@@ -69,7 +69,7 @@ ms.locfileid: "89262170"
 使用 Azure 媒體服務時，其中一個最常見的案例是透過自適性串流提供影片。 媒體服務提供動態封裝，這讓您以媒體服務即時支援的串流格式 (MPEG DASH、HLS、Smooth Streaming) 提供自適性 MP4 編碼內容，而不必儲存這些串流格式個別的預先封裝版本。
 
 >[!NOTE]
->建立 AMS 帳戶時，**預設**串流端點會新增至 [已停止] 狀態的帳戶。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中] 狀態。
+>建立 AMS 帳戶時，**預設** 串流端點會新增至 [已停止] 狀態的帳戶。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中] 狀態。
 
 若要啟動串流端點，請執行下列作業︰
 
@@ -155,11 +155,11 @@ ms.locfileid: "89262170"
 
 ## <a name="create-a-new-asset-and-upload-a-video-file"></a>建立新資產並上傳視訊檔案
 
-在媒體服務中，您可以將數位檔案上傳 (或內嵌) 到資產。 **資產**實體可包含影片、音訊、影像、縮圖集合、文字播放軌和隱藏式輔助字幕檔案 (以及這些檔案的相關中繼資料。 ) 檔案上傳之後，您的內容就會安全地儲存在雲端，以供進一步處理和串流處理。 資產中的檔案稱為 **資產檔案**。
+在媒體服務中，您可以將數位檔案上傳 (或內嵌) 到資產。 **資產** 實體可包含影片、音訊、影像、縮圖集合、文字播放軌和隱藏式輔助字幕檔案 (以及這些檔案的相關中繼資料。 ) 檔案上傳之後，您的內容就會安全地儲存在雲端，以供進一步處理和串流處理。 資產中的檔案稱為 **資產檔案**。
 
 下面所定義的 **UploadFile** 方法會呼叫 **CreateFromFile** (定義於 .NET SDK 延伸模組中)。 **CreateFromFile** 會建立要在其中上傳指定來源檔案的新資產。
 
-**CreateFromFile**方法會採用**AssetCreationOptions**，可讓您指定下列其中一個資產建立選項：
+**CreateFromFile** 方法會採用 **AssetCreationOptions**，可讓您指定下列其中一個資產建立選項：
 
 * **None** - 不使用加密。 這是預設值。 請注意，使用此選項時，您的內容在傳輸或儲存體中靜止時不會受到保護。
   如果您計劃使用漸進式下載傳遞 MP4，請使用此選項。
@@ -249,7 +249,7 @@ ms.locfileid: "89262170"
 
 #### <a name="a-streaming-url-for-mpeg-dash-has-the-following-format"></a>MPEG DASH 的串流 URL 具有下列格式：
 
-{串流端點名稱-媒體服務帳戶名稱}. windowsazure.mediaservices。 windows. net/{定位器 ID} .Streaming.mediaservices.windows.net manifest** (format = mpd-time-csf) **
+{串流端點名稱-媒體服務帳戶名稱}. windowsazure.mediaservices。 windows. net/{定位器 ID} .Streaming.mediaservices.windows.net manifest **(format = mpd-time-csf)**
 
 #### <a name="a-streaming-url-for-hls-has-the-following-format"></a>HLS 的串流 URL 具有下列格式：
 

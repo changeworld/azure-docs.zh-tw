@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: ramakk
-ms.openlocfilehash: 50669dcce044988f2e45acc2a17ae43c140d1ab5
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 96d8ba058a33d408ec2ee2a1adfba9011f393da9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930300"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184479"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>適用於 Azure NetApp Files 網路方案的指導方針
 
@@ -116,7 +116,7 @@ Azure NetApp Files 的委派子網路不支援使用者定義路由 (UDR) 和網
 
 ![混合式網路環境](../media/azure-netapp-files/azure-netapp-files-network-hybrid-environment.png)
 
-在混合式案例中，來自內部部署資料中心的應用程式需要存取 Azure 中資源。  無論您想要將資料中心延伸至 Azure，或想要使用 Azure 原生服務或進行災害復原，都是如此。 如需如何透過站對站 VPN 或 ExpressRoute 將多個內部部署資源連線到 Azure 中資源的資訊，請參閱 [VPN 閘道規劃選項](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%252fazure%252fvirtual-network%252ftoc.json#planningtable)。
+在混合式案例中，來自內部部署資料中心的應用程式需要存取 Azure 中資源。  無論您想要將資料中心延伸至 Azure，或想要使用 Azure 原生服務或進行災害復原，都是如此。 如需如何透過站對站 VPN 或 ExpressRoute 將多個內部部署資源連線到 Azure 中資源的資訊，請參閱 [VPN 閘道規劃選項](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable)。
 
 在混合式中樞輪輻拓撲內，Azure 的中樞 VNet 會作為內部部署網路的連線中心點。 輪輻是與中樞對等互連的 VNet，且其可用於隔離工作負載。
 

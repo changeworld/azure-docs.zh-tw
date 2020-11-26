@@ -6,16 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: b23f1d455610222ffa5713773a0bfb947f23ce34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fb0288d592af8bd23415b31ecf6a6e3448b92ba
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342253"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186026"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立記錄警示
 
-記錄警示可讓使用者使用 [Log Analytics](../log-query/get-started-portal.md) 查詢來評估每個設定頻率的資源記錄，並根據結果引發警示。 規則可以觸發使用 [動作群組](./action-groups.md)執行一或多個動作。 [深入瞭解記錄警示的功能和術語](alerts-unified-log.md)。
+記錄警示可讓使用者使用 [Log Analytics](../log-query/log-analytics-tutorial.md) 查詢來評估每個設定頻率的資源記錄，並根據結果引發警示。 規則可以觸發使用 [動作群組](./action-groups.md)執行一或多個動作。 [深入瞭解記錄警示的功能和術語](alerts-unified-log.md)。
 
 本文說明如何使用 [Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md) 來設定 Azure 監視器中的 [記錄警示](alerts-unified-log.md) 。 Resource Manager 範本可讓您以程式設計方式，在環境中以一致且可重現的方式設定警示。 記錄警示會建立在 `Microsoft.Insights/scheduledQueryRules` 資源提供者中。 請參閱已 [排程查詢規則 api](/rest/api/monitor/scheduledqueryrules/)的 api 參考。
 
@@ -26,7 +26,7 @@ ms.locfileid: "91342253"
 4. 使用任何部署方法部署範本。
 
 > [!NOTE]
-> Log [Analytics 工作區](../log-query/get-started-portal.md) 中的記錄資料可以傳送至 Azure 監視器計量存放區。 計量警示有 [不同的行為](alerts-metric-overview.md)，視您使用的資料而定，這可能更適合。 如需有關如何將記錄路由至計量的詳細資訊，請參閱 [記錄的計量警示](alerts-metric-logs.md)。
+> Log [Analytics 工作區](../log-query/log-analytics-tutorial.md) 中的記錄資料可以傳送至 Azure 監視器計量存放區。 計量警示有 [不同的行為](alerts-metric-overview.md)，視您使用的資料而定，這可能更適合。 如需有關如何將記錄路由至計量的詳細資訊，請參閱 [記錄的計量警示](alerts-metric-logs.md)。
 
 > [!NOTE]
 > 使用舊版 [Log Analytics 警示 API](api-alerts.md) 來管理 log analytics 的記錄警示，以及 [log analytics 儲存的搜尋和警示](../insights/solutions.md)舊版範本。 [深入瞭解如何切換至目前的 SCHEDULEDQUERYRULES API](alerts-log-api-switch.md)。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 2f2221ad10a2e07a3443cab9f957c8ec26969a3b
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 7b77a47acba6180df4a067887b79d8cdc0f56df6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96031202"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185074"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure Synapse 工作區的持續整合和傳遞
 
@@ -25,7 +25,7 @@ ms.locfileid: "96031202"
 
 本文將概述如何使用 Azure 發行管線，將 Synapse 工作區的部署自動化至多個環境。
 
-## <a name="pre-requirements"></a>預先需求
+## <a name="prerequisites"></a>Prerequisites
 
 -   用於開發的工作區已使用 Studio 中的 Git 儲存機制進行設定，請參閱 [Synapse Studio 中的原始檔控制](source-control.md)。
 -   已準備好執行發行管線的 Azure DevOps 專案。
@@ -82,7 +82,7 @@ ms.locfileid: "96031202"
     
     ![工作區和集區部署](media/pools-resource-deploy.png)
 
-1.  (選擇性) 新增授與和更新工作區角色指派 **Azure PowerShell** 。 如果您使用發行管線來建立 Synapse 工作區，則必須將管線的服務主體新增為預設工作區系統管理員。您可以執行 PowerShell，將工作區的存取權授與其他帳戶。 
+1.  (選擇性) 新增授與和更新工作區角色指派 **Azure PowerShell** 。 如果您使用發行管線來建立 Synapse 工作區，則會將管線的服務主體新增為預設工作區系統管理員。您可以執行 PowerShell，將工作區的存取權授與其他帳戶。 
     
     ![授與許可權](media/release-creation-grant-permission.png)
 
@@ -115,12 +115,8 @@ ms.locfileid: "96031202"
 如果您使用 Git 與 Synapse 工作區的整合，並擁有 CI/CD 管線，將您的變更從開發移至測試，然後再移至生產環境，我們建議使用下列最佳作法：
 
 -   **Git 整合**。 使用 Git 整合來設定您的開發 Synapse 工作區。 測試和生產工作區的變更會透過 CI/CD 部署，而不需要 Git 整合。
--   **在構件遷移之前準備** 集區。 如果您在開發工作區中將集區附加至 SQL 腳本或筆記本，則預期會有不同環境中相同的集區名稱。 
--   **其他**。 查看 [其他最佳作法](/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)
+-   **在構件遷移之前準備** 集區。 如果您已將 SQL 腳本或筆記本附加至開發工作區中的集區，則需要在不同環境中使用相同的集區名稱。 
+-   **基礎結構即程式碼 (IaC)**。 基礎結構 (網路、虛擬機器、負載平衡器和連線拓撲的管理) 在描述性模型中，使用與 DevOps 小組用於原始程式碼的相同版本控制。 
+-   **其他**。 查看 [ADF 構件的最佳作法](/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)
 
-## <a name="unsupported-features"></a>不支援的功能
-
-- Synapse Studio 不允許對認可或選擇性的資源發佈進行揀選選擇。 
-- Synapse Studio 不支援自訂認可訊息。
-- 根據設計，刪除動作將直接認可至 git
 

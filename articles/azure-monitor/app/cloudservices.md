@@ -4,19 +4,19 @@ description: 使用 Application Insights 有效地監視您的 Web 和背景工�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: cae2e4e1d5b5e199e772c5263a46d82289f5d6ac
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 29482403358936b95fc5e814b68238cc8c25f7a8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992844"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186349"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure 雲端服務的 Application Insights
 [Application Insights][start] 透過將 Application Insights SDK 的資料與 [Azure 診斷](../platform/diagnostics-extension-overview.md) 資料結合的方式，監視 [Azure 雲端服務應用程式](https://azure.microsoft.com/services/cloud-services/)的可用性、效能、故障與使用狀況。 當您取得有關應用程式在現實世界的效能和效率的意見反應時，您可以在每個開發生命週期中針對設計方向做出明智的抉擇。
 
 ![概觀儀表板](./media/cloudservices/overview-graphs.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 在開始之前，您需要：
 
 * [Azure](https://azure.com)訂用帳戶。 使用 Windows、Xbox Live 或其他 Microsoft 雲端服務適用的 Microsoft 帳戶登入。 
@@ -73,11 +73,11 @@ ms.locfileid: "91992844"
 
 如果您已決定為每個角色建立個別的資源，或許也為每個組建組態建立一組個別的資源，則最簡單的方式就是全部都在 Application Insights 入口網站中建立。 如果您要建立很多資源，您可以[將程序自動化](./powershell.md)。
 
-1. 在 [Azure 入口網站][portal]中，選取 [新增] **** >  [開發人員服務] **** >  [Application Insights]****。  
+1. 在 [Azure 入口網站][portal]中，選取 [新增]  >  [開發人員服務]  >  [Application Insights]。  
 
     ![Application Insights 窗格](./media/cloudservices/01-new.png)
 
-1. 在 [應用程式類型]**** 下拉式清單中，選取 [ASP.NET Web 應用程式]****。
+1. 在 [應用程式類型] 下拉式清單中，選取 [ASP.NET Web 應用程式]。
 
 每項資源均會以檢測金鑰來識別。 如果您想要手動設定或確認 SDK 的組態，稍後可能會需要此金鑰。
 
@@ -87,7 +87,7 @@ ms.locfileid: "91992844"
 
 1. 在 Visual Studio 方案總管的 **\<YourCloudService>**  >  [**角色**] 下，開啟每個角色的屬性。
 
-1. 在 [組態]**** 中選取 [傳送診斷資料至 Application Insights]**** 核取方塊，然後選取您先前建立的 Application Insights 資源。
+1. 在 [組態] 中選取 [傳送診斷資料至 Application Insights] 核取方塊，然後選取您先前建立的 Application Insights 資源。
 
 如果您已決定針對每個組建組態使用個別的 Application Insights 資源，請先選取組態。
 
@@ -102,11 +102,11 @@ ms.locfileid: "91992844"
 
 在 Visual Studio 中，設定每個雲端應用程式專案的 Application Insights SDK。
 
-1. 若要設定 **Web 角色**，請以滑鼠右鍵按一下專案，然後選取 [設定 Application Insights]**** 或 [新增] > [Application Insights 遙測]****。
+1. 若要設定 **Web 角色**，請以滑鼠右鍵按一下專案，然後選取 [設定 Application Insights] 或 [新增] > [Application Insights 遙測]。
 
-1. 若要設定**背景工作角色**： 
+1. 若要設定 **背景工作角色**： 
 
-    a. 以滑鼠右鍵按一下專案，然後選取 [管理 NuGet 套件]****。
+    a. 以滑鼠右鍵按一下專案，然後選取 [管理 NuGet 套件]。
 
     b. 新增[適用於 Windows 伺服器的 Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)。
 
@@ -176,7 +176,7 @@ ms.locfileid: "91992844"
 
 1. 若要檢視個別事件，請開啟[搜尋][diagnostic]圖格。
 1. 在應用程式中開啟各種頁面，以產生一些遙測。
-1. 請稍等片刻，然後按一下 [重新整理]****。  
+1. 請稍等片刻，然後按一下 [重新整理]。  
 
 如需詳細資訊，請參閱[疑難排解][qna]。
 
@@ -191,7 +191,7 @@ ms.locfileid: "91992844"
 
 ![Azure 診斷資料](./media/cloudservices/23-wad.png)
 
-若要搜尋 Azure 診斷所傳送的各種追蹤記錄檔，請使用[搜尋](./diagnostic-search.md)或[分析查詢](../log-query/get-started-portal.md)。 例如，假設您有未處理的例外狀況導致角色損毀並需要回收。 這項資訊會出現在 Windows 事件記錄檔的「應用程式 (Application)」通道。 您可以使用 [搜尋] 來檢視 Windows 事件記錄檔錯誤，並取得例外狀況的完整堆疊追蹤。 這將協助您找出問題的根本原因。
+若要搜尋 Azure 診斷所傳送的各種追蹤記錄檔，請使用[搜尋](./diagnostic-search.md)或[分析查詢](../log-query/log-analytics-tutorial.md)。 例如，假設您有未處理的例外狀況導致角色損毀並需要回收。 這項資訊會出現在 Windows 事件記錄檔的「應用程式 (Application)」通道。 您可以使用 [搜尋] 來檢視 Windows 事件記錄檔錯誤，並取得例外狀況的完整堆疊追蹤。 這將協助您找出問題的根本原因。
 
 ![Azure 診斷搜尋](./media/cloudservices/25-wad.png)
 

@@ -3,12 +3,12 @@ title: 無效範本錯誤
 description: 描述如何解決在部署 Azure Resource Manager 範本時出現的無效範本錯誤。
 ms.topic: troubleshooting
 ms.date: 05/22/2020
-ms.openlocfilehash: 3e68d4634d0092d05222348ca0db0116422faec3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba19d3c4e72a765e2aaff7393915b77a80daf2ba
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373805"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185788"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>解決無效範本的錯誤
 
@@ -62,7 +62,7 @@ Message=Deployment template validation failed: 'The template resource {resource-
 for type {resource-type} has incorrect segment lengths.
 ```
 
-根層級資源的名稱必須比資源類型少一個區段。 每個區段是以斜線區分。 在下列範例中，類型有兩個區段，而名稱有一個區段，因此它是**有效名稱**。
+根層級資源的名稱必須比資源類型少一個區段。 每個區段是以斜線區分。 在下列範例中，類型有兩個區段，而名稱有一個區段，因此它是 **有效名稱**。
 
 ```json
 {
@@ -130,7 +130,7 @@ part of the allowed values
 
 ## <a name="solution-4---too-many-target-resource-groups"></a>解決方案 4 - 太多目標資源群組
 
-您可能會在先前的部署中看到此錯誤，因為您在單一部署中的限制為五個目標資源群組。 在 2020 年 5 月，該限制已增加到 800 個資源群組。 如需詳細資訊，請參閱[將 Azure 資源部署至多個訂用帳戶或資源群組](cross-scope-deployment.md)。
+您可能會在先前的部署中看到此錯誤，因為您在單一部署中的限制為五個目標資源群組。 在 2020 年 5 月，該限制已增加到 800 個資源群組。 如需詳細資訊，請參閱[將 Azure 資源部署至多個訂用帳戶或資源群組](./deploy-to-resource-group.md)。
 
 <a id="circular-dependency"></a>
 

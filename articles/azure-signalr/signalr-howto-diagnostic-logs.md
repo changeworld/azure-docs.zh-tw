@@ -6,18 +6,18 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: b0c1a91df30ee6a88f055dc47cfdef339e2ee2b2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5ad40ca051677ced0c6d8b5c35e8563272ff598f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151056"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183969"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Azure SignalR Service 的資源記錄
 
 本教學課程會討論 Azure SignalR Service 的資源記錄檔、如何設定它們，以及如何進行疑難排解。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要啟用資源記錄，您將需要儲存記錄資料的地方。 本教學課程使用 Azure 儲存體和 Log Analytics。
 
 * [Azure 儲存體](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) -保留原則審核、靜態分析或備份的資源記錄。
@@ -68,7 +68,7 @@ Azure SignalR Service 會在一個類別中捕捉資源記錄：
 
 **格式**
 
-Name | 描述
+名稱 | 描述
 ------- | -------
 time | 記錄檔事件時間
 等級 | 記錄事件層級
@@ -81,7 +81,7 @@ properties | 與此記錄事件相關的詳細屬性。 如需詳細資訊，請
 
 **Properties 資料表**
 
-Name | 描述
+名稱 | 描述
 ------- | -------
 type | 記錄檔事件的類型。 目前，我們會提供與 Azure SignalR Service 的連接相關資訊。 只有 `ConnectivityLogs` 類型可供使用
 collection | 記錄檔事件的集合。 允許的值為 `Connection` ： `Authorization` 和。 `Throttling`
@@ -89,7 +89,7 @@ connectionId | 連接的身分識別
 transportType | 連接的傳輸類型。 允許的值為： `Websockets` \| `ServerSentEvents` \|`LongPolling`
 connectionType | 連線的類型。 允許的值包括：`Server` \| `Client`。 `Server`：伺服器端的連接; `Client`：來自用戶端的連接
 userId | 使用者的身分識別
-訊息 | 記錄事件的詳細訊息
+message | 記錄事件的詳細訊息
 
 下列程式碼是封存記錄 JSON 字串的範例：
 
@@ -122,13 +122,13 @@ userId | 使用者的身分識別
 
     ![Log Analytics 功能表項目](./media/signalr-tutorial-diagnostic-logs/log-analytics-menu-item.png)
 
-2. 輸入 `SignalRServiceDiagnosticLogs` 並選取時間範圍，以查詢資源記錄。 如需 advanced query，請參閱 [Azure 監視器中的開始使用 Log Analytics](../azure-monitor/log-query/get-started-portal.md)
+2. 輸入 `SignalRServiceDiagnosticLogs` 並選取時間範圍，以查詢資源記錄。 如需 advanced query，請參閱 [Azure 監視器中的開始使用 Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)
 
     ![Log Analytics 中的查詢記錄](./media/signalr-tutorial-diagnostic-logs/query-log-in-log-analytics.png)
 
 封存記錄資料行包含下表所列的元素：
 
-Name | 描述
+名稱 | 描述
 ------- | ------- 
 TimeGenerated | 記錄檔事件時間
 集合 | 記錄檔事件的集合。 允許的值為 `Connection` ： `Authorization` 和。 `Throttling`
@@ -182,7 +182,7 @@ TransportType | 連接的傳輸類型。 允許的值為： `Websockets` \| `Ser
 
 #### <a name="throttling"></a>節流
 
-如果您發現無法 Azure SignalR Service 建立 SignalR 用戶端連線，請檢查您的資源記錄。 如果您 `Connection count reaches limit` 在資源記錄檔中遇到，則會建立太多與 SignalR Service 的連線，以達到連接計數限制。 請考慮擴大您的 SignalR Service。 如果您 `Message count reaches limit` 在資源記錄檔中遇到，這表示您使用的是免費層，且您使用的是訊息配額。 如果您想要傳送更多訊息，請考慮將您的 SignalR Service 變更為標準層，以傳送額外的訊息。 如需詳細資訊，請參閱 [Azure SignalR Service 定價](https://azure.microsoft.com/pricing/details/signalr-service/)。
+如果您發現無法 Azure SignalR Service 建立 SignalR 用戶端連線，請檢查您的資源記錄。 如果您 `Connection count reaches limit` 在資源記錄檔中遇到，則會建立太多與 SignalR Service 的連線，以達到連接計數限制。 請考慮擴大您的 SignalR Service。 如果您 `Message count reaches limit` 在資源記錄檔中遇到，這表示您使用的是免費層，且您使用的是訊息配額。 如果您想要傳送更多訊息，請考慮將您的 SignalR Service 變更為標準層，以傳送額外的訊息。 如需詳細資訊，請參閱 [Azure SignalR Service 定價](https://azure.microsoft.com/pricing/details/signalr-service/)。
 
 ### <a name="get-help"></a>取得協助
 

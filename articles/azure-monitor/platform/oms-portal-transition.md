@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 9c4e9676208a5d2cfa8c0c04a97675a3c634e3d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba81e0bd74390d8b20803f8f9cf6e9f2ae9f0eab
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87446784"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184513"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS 入口網站移至 Azure
 
@@ -32,7 +32,7 @@ Azure 入口網站為所有 Azure 服務的中樞，提供豐富的管理體驗�
 - [OMS 行動裝置應用程式](#oms-mobile-app)即將淘汰。 
 - [NSG 解決方案已取代](#azure-network-security-group-analytics)為透過流量分析解決方案提供的增強功能。
 - System Center Operations Manager 與 Log Analytics 的新連線需要[更新的管理組件](#system-center-operations-manager)。
-- 如需[更新管理](../../automation/update-management/update-mgmt-overview.md)變更的詳細資訊，請參閱[將您的 OMS 更新部署移轉至 Azure](../../automation/migrate-oms-update-deployments.md)。
+- 如需[更新管理](../../automation/update-management/overview.md)變更的詳細資訊，請參閱[將您的 OMS 更新部署移轉至 Azure](../../automation/migrate-oms-update-deployments.md)。
 
 
 ## <a name="what-should-i-do-now"></a>我現在該怎麼辦？
@@ -58,7 +58,7 @@ Azure 入口網站存取管理功能，比在 OMS 入口網站中的存取管理
 
 | OMS 入口網站權限 | Azure 角色 |
 |:---|:---|
-| 唯讀 | Log Analytics 讀者 |
+| ReadOnly | Log Analytics 讀者 |
 | 參與者 | Log Analytics 參與者 |
 | 系統管理員 | 擁有者 | 
  
@@ -104,5 +104,5 @@ OMS 行動裝置應用程式將會連同 OMS 入口網站一併終止。 您不�
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
 如果您已經[將 Operations Manager 管理群組連線到 Log Analytics](om-agents.md)，則此服務將繼續運作，無須變更。 然而，針對新連線，您必須依照[使用 Microsoft System Center Operations Manager 管理組件設定 Operations Management Suite](https://techcommunity.microsoft.com/t5/system-center-blog/bg-p/SystemCenterBlog) 中的指引。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - 如需有關從 OMS 入口網站移至 Azure 入口網站的指引，請參閱 [Log Analytics 使用者從 OMS 入口網站轉換至 Azure 入口網站的常見問題](../overview.md)。

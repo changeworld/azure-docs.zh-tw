@@ -3,12 +3,12 @@ title: Azure Application Insights 中的智慧型偵測 | Microsoft Docs
 description: Application Insights 會自動深入分析您的 App 遙測，並且警告您有潛在的問題。
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 24ed8eefb7e07930cbd123fbe4081d555f0c27c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b6e9370387bf3bb87555261b3949db2917e9911
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87305868"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186247"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights 中的智慧型偵測
  「智慧偵測」會自動警告您 Web 應用程式中的可能效能問題和失敗異常。 它會針對您應用程式傳送給 [Application Insights](./app-insights-overview.md) 的遙測執行主動式分析。 如果失敗率急遽上升或是用戶端或伺服器效能出現異常模式，您就會收到警示。 這項功能不需要進行任何設定。 只要您的應用程式傳送的遙測足夠，它就能發揮作用。
@@ -40,7 +40,7 @@ ms.locfileid: "87305868"
 
 ## <a name="smart-detection-email-notifications"></a>智慧型偵測電子郵件通知
 
-除了標示為_預覽_狀態的規則之外，所有智慧偵測規則均預設為發現到偵測時，傳送電子郵件通知。
+除了標示為 _預覽_ 狀態的規則之外，所有智慧偵測規則均預設為發現到偵測時，傳送電子郵件通知。
 
 開啟智慧型偵測 [設定] 刀鋒視窗，然後選取規則，即會開啟 [編輯規則] 刀鋒視窗，然後便可設定特定智慧偵測規則的電子郵件通知。
 
@@ -55,10 +55,9 @@ ms.locfileid: "87305868"
 
 * [計量瀏覽器](../platform/metrics-charts.md)
 * [搜尋總管](./diagnostic-search.md)
-* [分析 - 功能強大的查詢語言](../log-query/get-started-portal.md)
+* [分析 - 功能強大的查詢語言](../log-query/log-analytics-tutorial.md)
 
 「智慧型偵測」是全自動的。 但是，或許您會想要再設定一些警示？
 
 * [手動設定的度量警示](../platform/alerts-log.md)
-* [可用性 Web 測試](./monitor-web-app-availability.md) 
-
+* [可用性 Web 測試](./monitor-web-app-availability.md)

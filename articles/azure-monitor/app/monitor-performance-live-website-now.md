@@ -4,12 +4,12 @@ description: 監視網站的效能而不重新部署網站。 使用裝載於內
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 6c27c78bf8e3f3b8af342a14a38c9be3821d781a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 53dbcc341fdd4bc194d34d40cdd2a975df496376
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020920"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186298"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>使用 Application Insights 無程式碼附加在執行時間檢測 web 應用程式
 
@@ -93,7 +93,7 @@ ms.locfileid: "96020920"
 
 - 確認 applicationInsights.config 檔案在您的目標應用程式目錄中，並且包含您的 ikey。
 
-- 如果您懷疑資料遺失，您可以在 [Analytics](../log-query/get-started-portal.md) 中執行查詢，以列出目前正在傳送遙測的所有雲端角色。
+- 如果您懷疑資料遺失，您可以在 [Analytics](../log-query/log-analytics-tutorial.md) 中執行查詢，以列出目前正在傳送遙測的所有雲端角色。
   ```Kusto
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
@@ -340,4 +340,3 @@ Application Insights SDK 2.4 版是 [最後一個支援 .net 4.0 的版本](http
 [qna]: ../faq.md
 [roles]: ./resources-roles-access-control.md
 [usage]: ./javascript.md
-

@@ -3,12 +3,12 @@ title: 完整模式刪除
 description: 顯示資源類型如何處理 Azure Resource Manager 範本中的完整模式刪除。
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: b1f7623d6eee1ff629412a4cc0d76e59e6c9e847
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e0c67bfcda81ad128e0018c4ab37c4b0cbe680f0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370119"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184020"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>完整模式部署的 Azure 資源刪除
 
@@ -18,7 +18,7 @@ ms.locfileid: "92370119"
 
 標記為 **No** 的資源類型不會在範本中自動刪除;但是，如果父資源遭到刪除，則會刪除這些資源。 如需行為的完整描述，請參閱 [Azure Resource Manager 部署模式](deployment-modes.md)。
 
-如果您 [在範本中部署至多個資源群組](cross-scope-deployment.md)，部署作業中所指定資源群組中的資源就有資格刪除。 次要資源群組中的資源不會被刪除。
+如果您 [在範本中部署至多個資源群組](./deploy-to-resource-group.md)，部署作業中所指定資源群組中的資源就有資格刪除。 次要資源群組中的資源不會被刪除。
 
 資源會依資源提供者命名空間列出。 若要使資源提供者命名空間與 Azure 服務名稱相符，請參閱 [azure 服務的資源提供者](../management/azure-services-resource-providers.md)。
 

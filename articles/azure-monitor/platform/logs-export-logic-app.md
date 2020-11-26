@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: ed9942fa7b73418e3ef1ddf0651781d32b662995
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 04f1eb0d9db00a2be1a4619cafe38aa18145fc78
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92049705"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185992"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>使用邏輯應用程式將資料從 Log Analytics 工作區封存至 Azure 儲存體
 本文說明使用 [Azure Logic Apps](../../logic-apps/index.yml) 從 Azure 監視器中的 Log Analytics 工作區查詢資料並傳送至 Azure 儲存體的方法。 當您需要匯出 Azure 監視器記錄資料來進行審核和合規性案例，或允許其他服務取得此資料時，請使用此程式。  
@@ -25,7 +25,7 @@ ms.locfileid: "92049705"
 - 使用 PowerShell 腳本一次匯出到本機電腦。 請參閱 [AzOperationalInsightsQueryExport]] (https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport) 。
 
 ## <a name="overview"></a>總覽
-此程式會使用 [Azure 監視器記錄連接器](https://docs.microsoft.com/connectors/azuremonitorlogs/) ，可讓您從邏輯應用程式執行記錄查詢，並在工作流程中的其他動作中使用其輸出。 此程式會使用 [Azure Blob 儲存體連接器](https://docs.microsoft.com/connectors/azureblob/) ，將查詢輸出傳送至 Azure 儲存體。 其他動作將在下列各節中說明。
+此程式會使用 [Azure 監視器記錄連接器](/connectors/azuremonitorlogs/) ，可讓您從邏輯應用程式執行記錄查詢，並在工作流程中的其他動作中使用其輸出。 此程式會使用 [Azure Blob 儲存體連接器](/connectors/azureblob/) ，將查詢輸出傳送至 Azure 儲存體。 其他動作將在下列各節中說明。
 
 ![邏輯應用程式總覽](media/logs-export-logicapp/logic-app-overview.png)
 
@@ -39,7 +39,7 @@ SecurityEvent
 
 當您依排程匯出資料時，請在查詢中使用 ingestion_time ( # A1 函式，以確保您不會錯過延遲抵達的資料。 如果資料因為網路或平臺問題而延遲，使用內嵌時間可確保它會包含在下一個邏輯應用程式執行中。 如需範例，請參閱 [新增 Azure 監視器記錄動作](#add-azure-monitor-logs-action) 。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 以下是完成此程式之前必須完成的必要條件。
 
 - Log Analytics 工作區。 建立邏輯應用程式的使用者必須至少擁有工作區的讀取權限。 
@@ -61,15 +61,15 @@ Azure 監視器中的 log Analytics 工作區和記錄查詢都是多租使用�
 
 ## <a name="create-logic-app"></a>建立邏輯應用程式
 
-移至 Azure 入口網站中的 **Logic Apps** ，然後按一下 [ **新增**]。 選取 **訂**用帳戶、 **資源群組**和 **區域** 以儲存新的邏輯應用程式，然後為其指定唯一的名稱。 您可以開啟 **Log Analytics** 設定，以收集有關執行時間資料和事件的資訊，如 [設定 Azure 監視器記錄和收集診斷資料以供 Azure Logic Apps](../../logic-apps/monitor-logic-apps-log-analytics.md)所述。 使用 Azure 監視器記錄連接器不需要此設定。
+移至 Azure 入口網站中的 **Logic Apps** ，然後按一下 [ **新增**]。 選取 **訂** 用帳戶、 **資源群組** 和 **區域** 以儲存新的邏輯應用程式，然後為其指定唯一的名稱。 您可以開啟 **Log Analytics** 設定，以收集有關執行時間資料和事件的資訊，如 [設定 Azure 監視器記錄和收集診斷資料以供 Azure Logic Apps](../../logic-apps/monitor-logic-apps-log-analytics.md)所述。 使用 Azure 監視器記錄連接器不需要此設定。
 
 ![建立邏輯應用程式](media/logs-export-logicapp/create-logic-app.png)
 
 
-按一下 [ **審核 + 建立** ]，然後 **建立**。 當部署完成時，按一下 [ **移至資源** ] 以開啟 **Logic Apps 設計**工具。
+按一下 [ **審核 + 建立** ]，然後 **建立**。 當部署完成時，按一下 [ **移至資源** ] 以開啟 **Logic Apps 設計** 工具。
 
 ## <a name="create-a-trigger-for-the-logic-app"></a>建立邏輯應用程式的觸發程式
-在 [ **開始使用一般觸發**程式] 下，選取 **[週期**]。 這會建立可定期自動執行的邏輯應用程式。 在動作的 [ **頻率** ] 方塊中，選取 [ **小時** ]，然後在 [ **間隔** ] 方塊中輸入 **1** ，每天執行一次工作流程。
+在 [ **開始使用一般觸發** 程式] 下，選取 **[週期**]。 這會建立可定期自動執行的邏輯應用程式。 在動作的 [ **頻率** ] 方塊中，選取 [ **小時** ]，然後在 [ **間隔** ] 方塊中輸入 **1** ，每天執行一次工作流程。
 
 ![週期動作](media/logs-export-logicapp/recurrence-action.png)
 
@@ -89,9 +89,9 @@ Azure 監視器中的 log Analytics 工作區和記錄查詢都是多租使用�
 ## <a name="add-azure-monitor-logs-action"></a>新增 Azure 監視器記錄檔動作
 Azure 監視器 Logs] 動作可讓您指定要執行的查詢。 此範例中使用的記錄查詢已針對每小時週期優化，並會收集特定執行時間的資料內嵌。 例如，如果工作流程在4:35 執行，時間範圍會是4:00 到5:00。 如果您將邏輯應用程式變更為以不同的頻率執行，您也需要變更查詢。 例如，如果您將迴圈設定為每天執行，您會在查詢中設定 startTime 以 startofday (make_datetime (年、月、日、0、0) # A3。 
 
-選取 Log Analytics 工作區的 **訂** 用帳戶和 **資源群組** 。 選取**資源類型**的*Log Analytics 工作區*，然後在 [**資源名稱**] 底下選取工作區的名稱。
+選取 Log Analytics 工作區的 **訂** 用帳戶和 **資源群組** 。 選取 **資源類型** 的 *Log Analytics 工作區*，然後在 [**資源名稱**] 底下選取工作區的名稱。
 
-在 [查詢]**** 視窗新增下列記錄查詢。  
+在 [查詢] 視窗新增下列記錄查詢。  
 
 ```Kusto
 let dt = now();
@@ -118,7 +118,7 @@ AzureActivity
     ResourceId = _ResourceId 
 ```
 
-**時間範圍**會根據**TimeGenerated**資料行指定要包含在查詢中的記錄。 這應該設定為等於或大於查詢中所選時間範圍的值。 因為此查詢不使用 **TimeGenerated** 資料行，所以無法使用 [ **在查詢中設定** ] 選項。 如需時間範圍的詳細資訊，請參閱 [查詢範圍](../log-query/scope.md) 。 
+**時間範圍** 會根據 **TimeGenerated** 資料行指定要包含在查詢中的記錄。 這應該設定為等於或大於查詢中所選時間範圍的值。 因為此查詢不使用 **TimeGenerated** 資料行，所以無法使用 [ **在查詢中設定** ] 選項。 如需時間範圍的詳細資訊，請參閱 [查詢範圍](../log-query/scope.md) 。 
 
 選取 [ **過去4小時** ] 作為 **時間範圍**。 這可確保結果中會包含任何內嵌時間大於 **TimeGenerated** 的記錄。
    
@@ -164,7 +164,7 @@ AzureActivity
 ![剖析 JSON 承載](media/logs-export-logicapp/parse-json-payload.png)
 
 ## <a name="add-the-compose-action"></a>新增撰寫動作
-**撰寫**動作會採用剖析的 JSON 輸出，並建立您需要儲存在 blob 中的物件。
+**撰寫** 動作會採用剖析的 JSON 輸出，並建立您需要儲存在 blob 中的物件。
 
 按一下 [ **+ 新增步驟**]，然後按一下 [ **+ 新增動作**]。 在 **[選擇動作**] 下，輸入 [ **撰寫** ]，然後選取 [ **撰寫** ] 動作。
 
@@ -191,7 +191,7 @@ subtractFromTime(formatDateTime(utcNow(),'yyyy-MM-ddTHH:00:00'), 1,'Hour')
 
 [![Blob 運算式](media/logs-export-logicapp/blob-expression.png)](media/logs-export-logicapp/blob-expression.png#lightbox)
 
-按一下 [ **Blob 內容**] 方塊，以顯示先前活動中的值清單，然後在 [**撰寫**中] 區段中選取 [**輸出**]。
+按一下 [ **Blob 內容**] 方塊，以顯示先前活動中的值清單，然後在 [**撰寫** 中] 區段中選取 [**輸出**]。
 
 
 ![建立 blob 運算式](media/logs-export-logicapp/create-blob.png)

@@ -6,14 +6,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: d00ffb1cb9b9fd6231322d4ef5bfebfbe242eac7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3c3a20d8401affc519e118c7f2295339990e7dee
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014232"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186502"
 ---
-# <a name="azure-monitor-logs-overview"></a>Azure 監視器記錄檔總覽
+# <a name="azure-monitor-logs-overview"></a>Azure 監視器記錄概觀 (機器翻譯)
 Azure 監視器記錄是 Azure 監視器的功能，可從 [受監視的資源](../monitor-reference.md)收集及組織記錄和效能資料。 來自不同來源的資料，例如來自 Azure 服務的 [平臺記錄](platform-logs-overview.md) 、 [虛擬機器代理](agents-overview.md)程式的記錄和效能資料，以及 [應用程式](../app/app-insights-overview.md) 的使用方式和效能資料，都可以合併到單一工作區中，因此可以使用能夠快速分析數百萬筆記錄的精密查詢語言來分析它們。 您可以執行簡單的查詢，只抓取一組特定的記錄，或執行精密的資料分析，以識別監視資料中的重要模式。 使用 Log Analytics 以互動方式使用記錄查詢及其結果、在警示規則中使用這些查詢，以主動通知 br，或在活頁簿或儀表板中將其結果視覺化。
 
 > [!NOTE]
@@ -25,11 +25,11 @@ Azure 監視器記錄是 Azure 監視器的功能，可從 [受監視的資源](
 
 |  |  |
 |:---|:---|
-| **分析** | 使用 Azure 入口網站中的 [Log Analytics](../log-query/get-started-portal.md) 來撰寫 [記錄查詢](../log-query/log-query-overview.md) ，並使用強大的分析引擎以互動方式分析記錄資料 |
+| **分析** | 使用 Azure 入口網站中的 [Log Analytics](../log-query/log-analytics-tutorial.md) 來撰寫 [記錄查詢](../log-query/log-query-overview.md) ，並使用強大的分析引擎以互動方式分析記錄資料 |
 | **警示** | 設定[記錄警示規則](alerts-log.md)，在查詢結果符合特定結果時，傳送通知或採取[自動化動作](action-groups.md)。 |
-| **視覺化** | 將轉譯為表格或圖表的查詢結果釘選到 [Azure 儀表板](../../azure-portal/azure-portal-dashboards.md)。<br>建立[活頁簿](../app/usage-workbooks.md)，以在互動式報告中與多組資料結合。 <br>將查詢的結果匯出到 [Power BI](powerbi.md) 以使用不同的視覺效果，並與 Azure 外部的使用者共用。<br>將查詢的結果匯出至 [Grafana](grafana-plugin.md) 以利用其儀表板功能，並與其他資料來源結合。|
+| **視覺化** | 將轉譯為表格或圖表的查詢結果釘選到 [Azure 儀表板](../../azure-portal/azure-portal-dashboards.md)。<br>建立[活頁簿](./workbooks-overview.md)，以在互動式報告中與多組資料結合。 <br>將查詢的結果匯出到 [Power BI](powerbi.md) 以使用不同的視覺效果，並與 Azure 外部的使用者共用。<br>將查詢的結果匯出至 [Grafana](grafana-plugin.md) 以利用其儀表板功能，並與其他資料來源結合。|
 | **深入解析** | 針對特定應用程式和服務提供自訂監視體驗的支援 [見解](../monitor-reference.md#insights-and-core-solutions) 。  |
-| **擷取** | 使用 [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics)，從命令列存取記錄查詢結果。<br>使用 [PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/az.operationalinsights)，從命令列存取記錄查詢結果。<br>使用 [REST API](https://dev.loganalytics.io/)，從自訂應用程式存取記錄查詢結果。 |
+| **擷取** | 使用 [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics)，從命令列存取記錄查詢結果。<br>使用 [PowerShell Cmdlet](/powershell/module/az.operationalinsights)，從命令列存取記錄查詢結果。<br>使用 [REST API](https://dev.loganalytics.io/)，從自訂應用程式存取記錄查詢結果。 |
 | **匯出** | 設定將 [記錄資料自動匯出](logs-data-export.md) 到 Azure 儲存體帳戶或 Azure 事件中樞。<br>建立工作流程來擷取記錄資料，並使用 [Logic Apps](logicapp-flow-connector.md) 將其複製到外部位置。 |
 
 ![記錄概觀](media/data-platform-logs/logs-overview.png)
@@ -75,8 +75,8 @@ Application Insights 中的記錄資料也會儲存在 Azure 監視器記錄中�
 ## <a name="log-analytics"></a>Log Analytics
 使用 Log Analytics （這是 Azure 入口網站中的工具）來編輯和執行記錄查詢，並以互動方式分析其結果。 然後，您可以使用您所建立的查詢來支援 Azure 監視器中的其他功能，例如記錄查詢警示和活頁簿。 從 [Azure 監視器] 功能表中的 [ **記錄** ] 選項，或從 Azure 入口網站的大部分其他服務存取 Log Analytics。
 
-- 如需 Log Analytics 的說明，請參閱 [Azure 監視器中的 Log Analytics 總覽](/azure/azure-monitor/log-query/log-analytics-overview) 。 
-- 請參閱 [Log analytics 教學](/azure/azure-monitor/log-query/log-analytics-tutorial) 課程，以逐步解說使用 log analytics 功能來建立簡單的記錄查詢並分析其結果。
+- 如需 Log Analytics 的說明，請參閱 [Azure 監視器中的 Log Analytics 總覽](../log-query/log-analytics-overview.md) 。 
+- 請參閱 [Log analytics 教學](../log-query/log-analytics-tutorial.md) 課程，以逐步解說使用 log analytics 功能來建立簡單的記錄查詢並分析其結果。
 
 
 
@@ -84,7 +84,7 @@ Application Insights 中的記錄資料也會儲存在 Azure 監視器記錄中�
 Azure 監視器記錄以 Azure 資料總管為基礎。 Log Analytics 工作區大致上等同于 Azure 資料總管中的資料庫，資料表的結構相同，而且兩者都使用相同的 Kusto 查詢語言 (KQL) 。 使用 Log Analytics 來處理 Azure 入口網站中 Azure 監視器查詢的經驗，與使用 Azure 資料總管 Web UI 的體驗類似。 您甚至可以 [在 Azure 資料總管查詢中包含 Log Analytics 工作區的資料](/azure/data-explorer/query-monitor-data)。 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [記錄查詢](../log-query/log-query-overview.md) ，以從 log Analytics 工作區取出和分析資料。
 - 了解 [Azure 監視器中的計量](data-platform-metrics.md)。

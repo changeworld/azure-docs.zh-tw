@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 4cc345eda8a8d51fb61cbbbd5cf0bf84633ccf0b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: ec40e209d522daf882b8c704c7de6a1fb6aa29f9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676095"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183935"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL Database 與 Azure SQL 受控執行個體連線及查詢的文章
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "92676095"
 | 快速入門 | 描述 |
 |---|---|
 |[SQL Server Management Studio](connect-query-ssms.md)|此快速入門示範如何使用 SSMS 連線至資料庫，然後使用 Transact-SQL 陳述式來查詢、插入、更新及刪除資料庫中的資料。|
-|[Azure Data Studio](/sql/azure-data-studio/quickstart-sql-database?toc=%252fazure%252fsql-database%252ftoc.json)|此快速入門示範如何使用 Azure Data Studio 連線至資料庫，然後使用 Transact-SQL (T-SQL) 陳述式來建立 Azure Data Studio 教學課程中所使用的 TutorialDB。|
+|[Azure Data Studio](/sql/azure-data-studio/quickstart-sql-database?toc=%2fazure%2fsql-database%2ftoc.json)|此快速入門示範如何使用 Azure Data Studio 連線至資料庫，然後使用 Transact-SQL (T-SQL) 陳述式來建立 Azure Data Studio 教學課程中所使用的 TutorialDB。|
 |[Azure 入口網站](connect-query-portal.md)|此快速入門會示範如何使用查詢編輯器連線至資料庫 (僅限 Azure SQL Database)，然後使用 Transact-SQL 陳述式來查詢、插入、更新及刪除資料庫中的資料。|
 |[Visual Studio Code](connect-query-vscode.md)|此快速入門示範如何使用 Visual Studio Code 連線至資料庫，然後使用 Transact-SQL 陳述式來查詢、插入、更新及刪除資料庫中的資料。|
 |[.NET 搭配 Visual Studio](connect-query-dotnet-visual-studio.md)|此快速入門示範如何搭配使用 .NET Framework 與 Visual Studio 來建立 C# 程式，以連線至資料庫，並使用 Transact-SQL 陳述式查詢資料。|

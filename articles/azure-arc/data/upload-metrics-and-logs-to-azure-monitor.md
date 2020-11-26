@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: c333b95ed762c905511ab1d4a84050d50f0e023c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 66b10efb6ca93bc6b4dd67d700daaf1f9049de68
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371319"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183425"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>將使用方式資料、計量和記錄上傳至 Azure 監視器
 
@@ -63,7 +63,7 @@ az provider register -n Microsoft.AzureData --wait
 請依照下列命令來建立您的計量上傳服務主體：
 
 > [!NOTE]
-> 建立服務主體需要 [Azure 中的特定許可權](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app)。
+> 建立服務主體需要 [Azure 中的特定許可權](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 
 若要建立服務主體，請更新下列範例。 `<ServicePrincipalName>`以您的服務主體名稱取代，然後執行命令：
 

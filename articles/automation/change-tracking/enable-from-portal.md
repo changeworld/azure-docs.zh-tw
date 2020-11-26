@@ -5,18 +5,18 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9d13e19958ce4614db3706845cc6717b77f60c4c
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 6ca5b1df05c04937598278378e001f41f08ef23c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209496"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183629"
 ---
 # <a name="enable-change-tracking-and-inventory-from-azure-portal"></a>Azure 入口網站的 [啟用變更追蹤和清查]
 
 本文說明如何針對 Azure 入口網站中的一或多個 Azure Vm 啟用 [變更追蹤和清查](overview.md) 。 若要大規模啟用 Azure VM，您必須使用「變更追蹤和清查」來啟用現有的 VM。
 
-可用於管理 VM 的資源群組數目受限於 [Resource Manager 部署限制](../../azure-resource-manager/templates/cross-scope-deployment.md)。 每個部署的 Resource Manager 部署限制為五個資源群組。 其中 2 個資源群組保留來設定 Log Analytics 工作區、自動化帳戶和相關資源。 這樣剩下三個資源群組，可供您選取由「變更追蹤和清查」來管理。 此限制僅適用於同時的設定，而不是可由自動化功能管理的資源群組數目。
+可用於管理 VM 的資源群組數目受限於 [Resource Manager 部署限制](../../azure-resource-manager/templates/deploy-to-resource-group.md)。 每個部署的 Resource Manager 部署限制為五個資源群組。 其中 2 個資源群組保留來設定 Log Analytics 工作區、自動化帳戶和相關資源。 這樣剩下三個資源群組，可供您選取由「變更追蹤和清查」來管理。 此限制僅適用於同時的設定，而不是可由自動化功能管理的資源群組數目。
 
 > [!NOTE]
 > 啟用「變更追蹤和清查」時，僅支援特定區域連結 Log Analytics 工作區和自動化帳戶。 如需支援的對應配對清單，請參閱[自動化帳戶和 Log Analytics 工作區的區域對應](../how-to/region-mappings.md)。

@@ -4,12 +4,12 @@ description: 說明如何解決使用 Azure Resource Manager 將資源部署至 
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 09/09/2020
-ms.openlocfilehash: fb7e476a5b4416282546d321a5e9a0127b7a4364
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 785a74184cae8523b99da7f647ca87fda53c8648
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000703"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185822"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>使用 Azure Resource Manager 針對常見的 Azure 部署錯誤進行疑難排解
 
@@ -19,7 +19,7 @@ ms.locfileid: "96000703"
 
 ## <a name="error-codes"></a>錯誤碼
 
-| 錯誤碼 | 降低 | 其他資訊 |
+| 錯誤碼 | 降低 | 更多資訊 |
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | 遵循儲存體帳戶的命名限制。 | [解析儲存體帳戶名稱](error-storage-account-name.md) |
 | AccountPropertyCannotBeSet | 檢查可用儲存體帳戶屬性。 | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
@@ -76,10 +76,10 @@ ms.locfileid: "96000703"
 | StorageAccountAlreadyTaken | 提供儲存體帳戶的唯一名稱。 | [解析儲存體帳戶名稱](error-storage-account-name.md) |
 | StorageAccountNotFound | 檢查您嘗試使用的訂用帳戶、資源群組和儲存體帳戶的名稱。 | |
 | SubnetsNotInSameVnet | 虛擬機器只能有一個虛擬網路。 在部署數個 NIC 時，請確定它們屬於相同的虛擬網路。 | [多個 NIC](../../virtual-machines/windows/multiple-nics.md) |
-| SubscriptionNotFound | 無法存取指定的部署訂用帳戶。 可能是訂用帳戶識別碼錯誤、部署範本的使用者沒有足夠的許可權可部署至訂用帳戶，或訂用帳戶識別碼的格式錯誤。 使用嵌套部署 [跨範圍部署](cross-scope-deployment.md)時，請提供訂用帳戶的 GUID。 | |
+| SubscriptionNotFound | 無法存取指定的部署訂用帳戶。 可能是訂用帳戶識別碼錯誤、部署範本的使用者沒有足夠的許可權可部署至訂用帳戶，或訂用帳戶識別碼的格式錯誤。 使用嵌套部署 [跨範圍部署](./deploy-to-resource-group.md)時，請提供訂用帳戶的 GUID。 | |
 | SubscriptionNotRegistered | 部署資源時，必須為您的訂用帳戶註冊資源提供者。 當您使用 Azure Resource Manager 範本進行部署時，會在訂用帳戶中自動註冊資源提供者。 有時候，自動註冊不會及時完成。 若要避免此間歇性錯誤，請在部署之前註冊資源提供者。 | [解析註冊](error-register-resource-provider.md) |
 | TemplateResourceCircularDependency | 移除不必要的相依性。 | [解析循環相依性](error-invalid-template.md#circular-dependency) |
-| TooManyTargetResourceGroups | 減少單一部署的資源群組數目。 | [跨領域部署](cross-scope-deployment.md) |
+| TooManyTargetResourceGroups | 減少單一部署的資源群組數目。 | [跨領域部署](./deploy-to-resource-group.md) |
 
 ## <a name="find-error-code"></a>尋找錯誤碼
 

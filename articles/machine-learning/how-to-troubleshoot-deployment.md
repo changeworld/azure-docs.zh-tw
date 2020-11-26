@@ -1,5 +1,5 @@
 ---
-title: 針對 Web 服務部署進行疑難排解
+title: 針對遠端 Web 服務部署進行疑難排解
 titleSuffix: Azure Machine Learning
 description: 瞭解如何使用 Azure Kubernetes Service 和 Azure 容器實例來解決常見的 Docker 部署錯誤，並對其進行疑難排解。
 services: machine-learning
@@ -8,29 +8,26 @@ ms.subservice: core
 author: gvashishtha
 ms.author: gopalv
 ms.reviewer: jmartens
-ms.date: 11/02/2020
+ms.date: 11/25/2020
 ms.topic: troubleshooting
-ms.custom: contperfq4, devx-track-python, deploy
-ms.openlocfilehash: dfbfea22738e6aeb0df31ad941b2ff10e53795a4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: contperfq4, devx-track-python, deploy, contperfq2
+ms.openlocfilehash: 0b8da0be16adc79b606b59f394b223b001453607
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311285"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185057"
 ---
 # <a name="troubleshoot-model-deployment"></a>針對模型部署進行疑難排解
 
-瞭解如何針對 Azure 容器實例 (ACI) 和 Azure Kubernetes Service (AKS) 使用 Azure Machine Learning，來進行疑難排解並解決問題，或解決這些常見的 Docker 部署錯誤。
+瞭解如何針對 Azure 容器實例 (ACI) 和 Azure Kubernetes Service (AKS) 使用 Azure Machine Learning，進行疑難排解和解決，或解決這些常見的遠端 Docker 部署錯誤。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* **Azure 訂用帳戶** 。 試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
+* **Azure 訂用帳戶**。 試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 * [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
 * [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 * [適用於 Azure Machine Learning 的 CLI 擴充功能](reference-azure-machine-learning-cli.md)。
-* 若要在本機偵錯，您必須在本機系統上擁有正常運作的 Docker 安裝。
-
-    若要驗證您的 Docker 安裝，請從終端或命令提示字元使用命令 `docker run hello-world`。 如需有關安裝 Docker 或針對 Docker 錯誤進行疑難排解的資訊，請參閱 [Docker 文件](https://docs.docker.com/)。
 
 ## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>Docker 部署機器學習模型的步驟
 
@@ -79,94 +76,8 @@ print(service.get_logs())
 
 ## <a name="debug-locally"></a>在本機執行偵錯
 
-如果您在將模型部署到 ACI 或 AKS 時遇到問題，請將它部署為本機 web 服務。 使用本機 Web 服務可讓您更輕鬆地針對問題進行疑難排解。
+如果您在將模型部署到 ACI 或 AKS 時遇到問題，請將它部署為本機 web 服務。 使用本機 Web 服務可讓您更輕鬆地針對問題進行疑難排解。 若要在本機針對部署進行疑難排解，請參閱 [本機疑難排解文章](./how-to-troubleshoot-deployment-local.md)。
 
-您可以在[MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks)存放庫中找到範例[本機部署筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb)，以探索可執行檔範例。
-
-> [!WARNING]
-> 針對生產案例，不支援本機 Web 服務部署。
-
-若要在本機部署，請修改您的程式碼，以使用 `LocalWebservice.deploy_configuration()` 建立部署組態。 然後使用 `Model.deploy()` 來部署服務。 下列範例會將模型 (包含在模型變數中) 部署為本機 Web 服務：
-
-```python
-from azureml.core.environment import Environment
-from azureml.core.model import InferenceConfig, Model
-from azureml.core.webservice import LocalWebservice
-
-
-# Create inference configuration based on the environment definition and the entry script
-myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
-inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
-# Create a local deployment, using port 8890 for the web service endpoint
-deployment_config = LocalWebservice.deploy_configuration(port=8890)
-# Deploy the service
-service = Model.deploy(
-    ws, "mymodel", [model], inference_config, deployment_config)
-# Wait for the deployment to complete
-service.wait_for_deployment(True)
-# Display the port that the web service is available on
-print(service.port)
-```
-
-如果您要定義自己的 conda 規格 YAML，請列出 azureml-預設版本 >= 1.0.45 版 azureml-defaults 作為 pip 相依性。 需要此套件才能將模型裝載為 web 服務。
-
-此時，您可以照常使用服務。 下列程式碼示範如何將資料傳送至服務：
-
-```python
-import json
-
-test_sample = json.dumps({'data': [
-    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
-]})
-
-test_sample = bytes(test_sample, encoding='utf8')
-
-prediction = service.run(input_data=test_sample)
-print(prediction)
-```
-
-如需自訂 Python 環境的詳細資訊，請參閱[建立和管理用於訓練和部署的環境](how-to-use-environments.md)。 
-
-### <a name="update-the-service"></a>更新服務
-
-在本機測試期間，您可能需要更新 `score.py` 檔案，以新增記錄或嘗試解決您發現的任何問題。 若要重新載入 `score.py` 檔案的變更，請使用 `reload()`。 例如，下列程式碼會重新載入服務的指令碼，然後將資料過去。 資料會使用更新後的 `score.py` 檔案進行評分：
-
-> [!IMPORTANT]
-> `reload` 方法僅可用於本機部署。 如需將部署更新至另一個計算目標的相關資訊，請參閱 [如何更新您的 webservice](how-to-deploy-update-web-service.md)。
-
-```python
-service.reload()
-print(service.run(input_data=test_sample))
-```
-
-> [!NOTE]
-> 此指令碼會從服務所使用的 `InferenceConfig` 物件指定的位置重新載入。
-
-若要變更模型、Conda 相依性或部署組態，請使用 [update()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueupdate--args-)。 下列範例會更新服務所使用的模型：
-
-```python
-service.update([different_model], inference_config, deployment_config)
-```
-
-### <a name="delete-the-service"></a>刪除服務
-
-要刪除服務，請使用 [delete()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--)。
-
-### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a> 檢查 Docker 記錄
-
-您可以從服務物件中列印詳細的 Docker 引擎記錄訊息。 您可以檢視 ACI、AKS 和本機部署記錄。 下列範例示範如何列印記錄。
-
-```python
-# if you already have the service object handy
-print(service.get_logs())
-
-# if you only know the name of the service (note there might be multiple services with the same name but different version number)
-print(ws.webservices['mysvc'].get_logs())
-```
-如果您 `Booting worker with pid: <pid>` 在記錄中看到一行出現多次，則表示沒有足夠的記憶體可啟動背景工作。
-您可以藉由增加中的值來解決錯誤。 `memory_gb``deployment_config`
- 
 ## <a name="container-cannot-be-scheduled"></a>無法排程容器
 
 將服務部署至 Azure Kubernetes Service 計算目標時，Azure Machine Learning 會嘗試使用要求的資源量來排程服務。 如果叢集中沒有任何節點在5分鐘後具有適當的資源數量，部署將會失敗。 失敗訊息為 `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` 。 您可以藉由新增更多節點、變更節點的 SKU，或變更服務的資源需求，來解決此錯誤。 
@@ -177,7 +88,7 @@ print(ws.webservices['mysvc'].get_logs())
 
 成功建置映像後，系統就會嘗試使用您的部署組態啟動容器。 作為容器啟動程序的一部分，系統會叫用評分指令碼中的 `init()` 函式。 如果 `init()` 函式中有無法攔截的例外狀況，您可能會在錯誤訊息中看到 **CrashLoopBackOff** 錯誤。
 
-請使用[檢查 Docker 記錄](#dockerlog)一節中的資訊來檢查記錄。
+使用 [ [檢查 Docker 記錄](how-to-troubleshoot-deployment-local.md#dockerlog) 檔] 文章中的資訊。
 
 ## <a name="function-fails-get_model_path"></a>函式錯誤：get_model_path()
 
@@ -211,7 +122,7 @@ def run(input_data):
         return json.dumps({"error": result})
 ```
 
-**注意** ：從 `run(input_data)` 呼叫傳回錯誤訊息的方式應僅用於偵錯目的。 基於安全性理由，您不應該在生產環境中以這種方式傳回錯誤訊息。
+**注意**：從 `run(input_data)` 呼叫傳回錯誤訊息的方式應僅用於偵錯目的。 基於安全性理由，您不應該在生產環境中以這種方式傳回錯誤訊息。
 
 ## <a name="http-status-code-502"></a>HTTP 狀態碼 502
 
@@ -221,7 +132,7 @@ def run(input_data):
 
 Azure Kubernetes Service 部署支援自動調整，可讓您新增複本以支援額外的負載。 自動調整程式是設計來處理負載中的 **漸進** 式變更。 如果您每秒收到非常大量的要求數，用戶端可能會收到 HTTP 狀態碼 503。 即使自動調整程式迅速做出反應，還是需要 AKS 很長的時間來建立額外的容器。
 
-相應增加/減少的決策是以目前容器複本的使用量為基礎。 處理要求時忙碌 (的複本數目) 除以目前複本的總數目是目前的使用率。 如果此數位超過 `autoscale_target_utilization` ，則會建立更多複本。 如果較低，則會降低複本。 新增複本的決策是立即且快速 (大約1秒的) 。 移除複本的決策是保守 (大約1分鐘的) 。 根據預設，自動調整目標使用率會設定為 **70%** ，這表示服務可以處理每秒要求的尖峰 (RPS) （ **最多 30%** ）。
+相應增加/減少的決策是以目前容器複本的使用量為基礎。 處理要求時忙碌 (的複本數目) 除以目前複本的總數目是目前的使用率。 如果此數位超過 `autoscale_target_utilization` ，則會建立更多複本。 如果較低，則會降低複本。 新增複本的決策是立即且快速 (大約1秒的) 。 移除複本的決策是保守 (大約1分鐘的) 。 根據預設，自動調整目標使用率會設定為 **70%**，這表示服務可以處理每秒要求的尖峰 (RPS) （ **最多 30%**）。
 
 有兩個方法可協助防止出現 503 狀態碼：
 
@@ -281,3 +192,4 @@ Azure Kubernetes Service 部署支援自動調整，可讓您新增複本以支�
 
 * [部署方式及位置](how-to-deploy-and-where.md)
 * [教學課程：定型與部署模型](tutorial-train-models-with-aml.md)
+* [如何在本機執行和調試實驗](./how-to-debug-visual-studio-code.md)

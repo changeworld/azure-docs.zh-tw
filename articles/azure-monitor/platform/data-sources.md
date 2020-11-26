@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/06/2020
-ms.openlocfilehash: 48336b65ec564f834ef8a1e8f4911c89b1a37f31
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: c6b976ca1beb9beb78f7c56d7ae512c1f499c2c5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107941"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186519"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure 監視器的監視資料來源
 Azure 監視器是以包含[記錄](data-platform-logs.md)和[計量](data-platform-metrics.md)的[一般監視資料平臺](data-platform.md)為基礎。 將資料收集到這個平臺，可讓您使用 Azure 監視器中的一組通用工具來分析多個資源的資料。 您也可以將監視資料傳送至其他位置以支援特定案例，而某些資源可能會在收集到記錄檔或計量之前，寫入至其他位置。
@@ -66,7 +66,7 @@ Azure 監視器是以包含[記錄](data-platform-logs.md)和[計量](data-platf
 ![Azure 訂用帳戶](media/data-sources/azure-subscription.png)
 
 ### <a name="azure-activity-log"></a>Azure 活動記錄 
-[Azure 活動記錄](platform-logs-overview.md)包含服務健康狀態記錄，以及對您的 Azure 訂用帳戶中的資源進行任何設定變更的記錄。 所有 Azure 資源都會有活動記錄，也代表了資源的_外部_檢視。
+[Azure 活動記錄](platform-logs-overview.md)包含服務健康狀態記錄，以及對您的 Azure 訂用帳戶中的資源進行任何設定變更的記錄。 所有 Azure 資源都會有活動記錄，也代表了資源的 _外部_ 檢視。
 
 | Destination | 描述 | 參考 |
 |:---|:---|
@@ -164,7 +164,7 @@ Azure 監視器中的詳細應用程式監視是透過 [Application Insights](/a
 |            | 針對例外狀況子集所捕捉的 Debug snapshot 資料會儲存在 Azure 儲存體中。 使用 Azure 入口網站中的 Application Insights 下載以進行本機分析。  | [快照集運作方式](../app/snapshot-debugger.md#how-snapshots-work) |
 
 ## <a name="monitoring-solutions-and-insights"></a>監視解決方案和見解
-[監視解決方案](../insights/solutions.md) 和 [見解](../insights/insights-overview.md) 會收集資料，以提供特定服務或應用程式之作業的其他深入解析。 它們可解決不同應用層中的資源，甚至是多層的資源。
+[監視解決方案](../insights/solutions.md) 和 [見解](../monitor-reference.md) 會收集資料，以提供特定服務或應用程式之作業的其他深入解析。 它們可解決不同應用層中的資源，甚至是多層的資源。
 
 ### <a name="monitoring-solutions"></a>監視解決方案
 

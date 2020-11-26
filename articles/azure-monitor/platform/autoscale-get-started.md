@@ -4,12 +4,12 @@ description: 了解如何在 Azure 中調整您的資源 Web 應用程式、雲�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 543ecc80abeb9a437a895224de6ade679698c4d7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5af60befeda9f0ed4ed76f7ab8449e94950352fb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020903"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186570"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>開始在 Azure 中自動調整規模
 本文說明如何在 Microsoft Azure 入口網站中為您的資源設定自動調整規模。
@@ -57,7 +57,7 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 
    您現在應該會有一個調整規模設定，其會根據 CPU 使用量進行相應放大/相應縮小。
    ![根據 CPU 調整規模][8]
-1. 按一下 [儲存]。
+1. 按一下 **[儲存]** 。
 
 恭喜！ 您現在已成功建立第一個調整規模設定，可根據 CPU 使用量自動調整 Web 應用程式的規模。
 
@@ -115,7 +115,7 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 
 ## <a name="route-traffic-to-healthy-instances-app-service"></a>將流量路由傳送至狀況良好的實例 (App Service) 
 
-當您相應放大至多個實例時，App Service 可以對實例執行健康情況檢查，只將流量路由傳送至狀況良好的實例。 若要這樣做，請開啟入口網站 App Service，然後選取 [**監視**] 底下的 [**健康情況檢查**]。 選取 [ **啟用** ]，並在您的應用程式上提供有效的 URL 路徑，例如 `/health` 或 `/api/health` 。 按一下 [儲存]。
+當您相應放大至多個實例時，App Service 可以對實例執行健康情況檢查，只將流量路由傳送至狀況良好的實例。 若要這樣做，請開啟入口網站 App Service，然後選取 [**監視**] 底下的 [**健康情況檢查**]。 選取 [ **啟用** ]，並在您的應用程式上提供有效的 URL 路徑，例如 `/health` 或 `/api/health` 。 按一下 **[儲存]** 。
 
 若要啟用 ARM 範本的功能，請將 `healthcheckpath` 資源的屬性設定 `Microsoft.Web/sites` 為您網站上的健康情況檢查路徑，例如： `"/api/health/"` 。 若要停用此功能，請將屬性設定回空字串 `""` 。
 
@@ -151,12 +151,12 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 1. 確定 Azure 自動調整功能可在 [您想要移至的 azure 區域](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all)中使用。
 
 ### <a name="move"></a>移動
-使用 [REST API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings/createorupdate) 在新的環境中建立自動調整設定。 在目的地區域中建立的自動調整規模設定將會是來源區域中自動調整規模設定的複本。
+使用 [REST API](/rest/api/monitor/autoscalesettings/createorupdate) 在新的環境中建立自動調整設定。 在目的地區域中建立的自動調整規模設定將會是來源區域中自動調整規模設定的複本。
 
-無法移動與來源區域中的自動調整設定關聯所建立的[診斷設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)。 完成 autosale 設定的建立之後，您必須在目的地區域中重新建立診斷設定。 
+無法移動與來源區域中的自動調整設定關聯所建立的[診斷設定](./diagnostic-settings.md)。 完成 autosale 設定的建立之後，您必須在目的地區域中重新建立診斷設定。 
 
 ### <a name="learn-more-about-moving-resources-across-azure-regions"></a>深入瞭解如何在 Azure 區域間移動資源
-若要深入瞭解如何在 Azure 中的區域與災難復原之間移動資源，請參閱[將資源移至新的資源群組或訂](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)用帳戶
+若要深入瞭解如何在 Azure 中的區域與災難復原之間移動資源，請參閱[將資源移至新的資源群組或訂](../../azure-resource-manager/management/move-resource-group-and-subscription.md)用帳戶
 
 ## <a name="next-steps"></a>後續步驟
 - [建立活動記錄警示以監視訂用帳戶的所有自動調整引擎作業](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)

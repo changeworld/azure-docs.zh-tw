@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: ea2b8deb07a899ab35ddd761df3e3ddb413dd45d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 7bd9560399a2b2b377cb543a4f829883bcbdf7c8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95509085"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183765"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>混合式 Runbook 背景工作概觀
 
@@ -29,7 +29,7 @@ Runbook Worker 有兩種類型：系統和使用者。 下表說明兩者之間�
 
 混合式 Runbook 背景工作角色可在 Windows 或 Linux 作業系統上執行，而且此角色依賴 [Log analytics 代理程式](../azure-monitor/platform/log-analytics-agent.md) 向 Azure 監視器 [log analytics 工作區](../azure-monitor/platform/design-logs-deployment.md)報告。 工作區不僅能監視支援的作業系統的電腦，也會下載安裝混合式 Runbook 背景工作角色所需的元件。
 
-當 Azure 自動化 [更新管理](update-management/update-mgmt-overview.md) 啟用時，任何連線到 Log Analytics 工作區的電腦都會自動設定為系統混合式 Runbook 背景工作角色。
+當 Azure 自動化 [更新管理](./update-management/overview.md) 啟用時，任何連線到 Log Analytics 工作區的電腦都會自動設定為系統混合式 Runbook 背景工作角色。
 
 每個使用者混合式 Runbook 背景工作角色都是您在安裝背景工作時所指定之混合式 Runbook 背景工作角色群組的成員。 群組可以包含單一背景工作角色，但您可以在群組中包含多個背景工作角色，以獲得高可用性。 每部電腦可以將一個混合式 Runbook 背景工作角色裝載到一個自動化帳戶;您無法跨多個自動化帳戶註冊混合式背景工作角色。 這是因為混合式背景工作角色只能接聽單一自動化帳戶中的作業。 針對裝載受更新管理管理之系統混合式 Runbook 背景工作角色的電腦，您可以將它們新增至混合式 Runbook 背景工作角色群組。 但是，您必須針對更新管理和混合式 Runbook 背景工作角色群組成員資格使用相同的自動化帳戶。
 
@@ -99,7 +99,7 @@ Azure 自動化混合式 Runbook 背景工作角色可在 Azure Government 中�
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>混合式 Runbook 背景工作角色的更新管理位址
 
-除了混合式 Runbook 背景工作角色所需的標準位址和埠之外，更新管理還有 [ [網路規劃](update-management/update-mgmt-overview.md#ports) ] 區段下所述的其他網路設定需求。
+除了混合式 Runbook 背景工作角色所需的標準位址和埠之外，更新管理還有 [ [網路規劃](./update-management/overview.md#ports) ] 區段下所述的其他網路設定需求。
 
 ## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>混合式 Runbook 背景工作角色上的 Azure 自動化狀態設定
 

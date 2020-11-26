@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: c7f0e98b5ea2fdd13b1daa9fd9737998eb6cfaf1
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 466af29a3f073f73d4a0fc62d74709cd59f82425
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "96010209"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183782"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>升級和調整 Azure API 管理執行個體的規模  
 
@@ -74,13 +74,13 @@ ms.locfileid: "96010209"
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，流覽至您的 API 管理服務。
 2. 按一下功能表中的 **定價層** 。
 3. 從下拉式清單中選取所需的服務層級。 使用滑杆來指定您的 API 管理服務在變更之後的規模。
-4. 按一下 [儲存]。
+4. 按一下 **[儲存]** 。
 
 ## <a name="downtime-during-scaling-up-and-down"></a>相應增加和減少期間的停機時間
 如果您要從或升級至開發人員層，將會有停機時間。 否則，就不會有停機時間。 
 
 ## <a name="compute-isolation"></a>計算隔離
-如果您的安全性需求包含 [計算隔離](https://docs.microsoft.com/azure/azure-government/azure-secure-isolation-guidance#compute-isolation)，則可以使用 **隔離** 的定價層。 這一層可確保 API 管理服務實例的計算資源會取用整個實體主機，並提供支援所需的隔離層級，例如美國國防部影響等級 5 (IL5) 工作負載。 若要取得隔離層的存取權，請 [建立支援票證](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 
+如果您的安全性需求包含 [計算隔離](../azure-government/azure-secure-isolation-guidance.md#compute-isolation)，則可以使用 **隔離** 的定價層。 這一層可確保 API 管理服務實例的計算資源會取用整個實體主機，並提供支援所需的隔離層級，例如美國國防部影響等級 5 (IL5) 工作負載。 若要取得隔離層的存取權，請 [建立支援票證](../azure-portal/supportability/how-to-create-azure-support-request.md)。 
 
 
 
