@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/22/2019
 ms.author: dech
-ms.openlocfilehash: c869069e40780b1fd399758e84b0ffba311398e3
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 7b52a066f80b686a0e424d8f63d520d46691a72a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334169"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187811"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>啟用 Azure Cosmos DB 帳戶的筆記本 (preview) 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,9 +24,9 @@ Azure Cosmos DB 中的內建 Jupyter 筆記本可供從 Azure 入口網站分析
 
 ## <a name="enable-notebooks-in-a-new-cosmos-account"></a>啟用新 Cosmos 帳戶中的筆記本
 
-1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+1. 登入[Azure 入口網站](https://portal.azure.com/)。
 1. 選取 [建立資源] > [資料庫] > [Azure Cosmos DB]。
-1. 在 [ **建立 Azure Cosmos DB 帳戶** ] 頁面上，選取 [ **筆記本** ]。 
+1. 在 [ **建立 Azure Cosmos DB 帳戶** ] 頁面上，選取 [ **筆記本**]。 
  
     :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks.png" alt-text="Azure Cosmos DB Create blade 中的 [選取筆記本] 選項":::
 
@@ -48,7 +48,7 @@ Azure Cosmos DB 中的內建 Jupyter 筆記本可供從 Azure 入口網站分析
 您也可以在現有的帳戶上啟用筆記本。 每個帳戶只需執行一次此步驟。
 
 1. 流覽至 Cosmos 帳戶中的 **資料總管** 窗格。
-1. 選取 [ **啟用筆記本** ]。
+1. 選取 [ **啟用筆記本**]。
 
     :::image type="content" source="media/enable-notebooks/enable-notebooks-workspace.png" alt-text="在資料總管中建立新的筆記本工作區":::
 
@@ -59,7 +59,7 @@ Azure Cosmos DB 中的內建 Jupyter 筆記本可供從 Azure 入口網站分析
 
 若要確認您可以使用筆記本，請選取 [範例筆記本] 下的其中一個筆記本。 這會將筆記本的複本儲存至您的工作區並加以開啟。
 
-在此範例中，我們將使用 **GettingStarted .ipynb** 。 
+在此範例中，我們將使用 **GettingStarted .ipynb**。 
 
 :::image type="content" source="media/enable-notebooks/select-getting-started-notebook.png" alt-text="View GettingStarted. .ipynb 筆記本":::
 
@@ -70,10 +70,10 @@ Azure Cosmos DB 中的內建 Jupyter 筆記本可供從 Azure 入口網站分析
 
     :::image type="content" source="media/enable-notebooks/run-first-notebook-cell.png" alt-text="執行開始使用筆記本":::
 
-您也可以選取 [ **新增筆記本** ] 以建立新的筆記本，或從 [ **我的筆記本** ] 功能表中選取 [ **上傳** 檔案]， ( .ipynb) 檔案上傳現有的筆記本。 
+您也可以選取 [**新增筆記本**] 以建立新的筆記本，或從 [**我的筆記本**] 功能表中選取 [**上傳** 檔案]， ( .ipynb) 檔案上傳現有的筆記本。 
 
 :::image type="content" source="media/enable-notebooks/create-or-upload-new-notebook.png" alt-text="建立或上傳新的筆記本":::
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解 [Azure Cosmos DB Jupyter 筆記本](cosmosdb-jupyter-notebooks.md)的優點
+- 瞭解[Azure Cosmos DB Jupyter 筆記本](cosmosdb-jupyter-notebooks.md)的優點

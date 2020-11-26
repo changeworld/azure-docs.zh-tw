@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d349d07a66b21766ea529661c2f27d0c76ea4d3b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: cac0d8cb8a910b735454c9270060364cab2db5fb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024716"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187233"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure Digital Twins API 和 SDK
 
@@ -20,7 +20,7 @@ Azure 數位 Twins 隨附 **控制平面 api** 和 **資料平面 api** ，可�
 * 控制平面 Api 是 [Azure Resource Manager (ARM) ](../azure-resource-manager/management/overview.md) api，並涵蓋資源管理作業，例如建立和刪除您的實例。 
 * 資料平面 Api 是 Azure 數位 Twins Api，用於管理模型、Twins 和圖形等資料管理作業。
 
-本文概述可用的 Api，以及與其互動的方法。 您可以直接使用 REST Api 與其相關聯的 Swagger，或透過 SDK 來使用。
+本文概述可用的 Api，以及與其互動的方法。 您可以透過 [Postman](how-to-use-postman.md)) 或 SDK 之類的工具，直接使用 REST api 與其相關聯的 swagger (。
 
 ## <a name="overview-control-plane-apis"></a>總覽：控制平面 Api
 
@@ -32,7 +32,7 @@ Azure 數位 Twins 隨附 **控制平面 api** 和 **資料平面 api** ，可�
 * 您可以參考 [控制平面 Swagger 資料夾](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)中最新的 Swagger，直接呼叫 api。 此存放庫也包含顯示使用方式的範例資料夾。
 * 您目前可以在中存取控制項 Api 的 Sdk .。。
   - [**.Net (c # )**](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([參考 [自動產生]](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true))  ([來源](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins)) 
-  - [**JAVA**](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([參考 [自動產生]](/java/api/overview/azure/digitaltwins?view=azure-java-stable))  ([來源](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31)) 
+  - [**JAVA**](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([參考 [自動產生]](/java/api/overview/azure/digitaltwins?view=azure-java-stable&preserve-view=true))  ([來源](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31)) 
   - [**JavaScript**](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([來源](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins)) 
   - [**Python**](https://pypi.org/project/azure-mgmt-digitaltwins/) ([來源](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins)) 
   - [**前往**](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins) ([來源](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins)) 
@@ -279,6 +279,7 @@ client.UpdateDigitalTwin("myTwin", updateTwinData);
 
 下列清單提供使用 Api 和 Sdk 的其他詳細資料和一般指導方針。
 
+* 您可以使用 HTTP REST 測試控管（例如 Postman）來對 Azure 數位 Twins Api 進行直接呼叫。 如需此程式的詳細資訊，請參閱 how [*to：利用 Postman 提出要求*](how-to-use-postman.md)。
 * 若要使用 SDK，請將類別具現化 `DigitalTwinsClient` 。 此函式需要可以使用套件中各種驗證方法取得的認證 `Azure.Identity` 。 如需詳細資訊 `Azure.Identity` ，請參閱其 [命名空間檔](/dotnet/api/azure.identity?preserve-view=true&view=azure-dotnet)。 
 * 您可能會在 `InteractiveBrowserCredential` 開始使用時發現有用的功能，但還有其他幾個選項，包括 [受控識別](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet)的認證，您可能會使用這些選項來驗證 [使用 MSI](../app-service/overview-managed-identity.md?tabs=dotnet) 針對 azure 數位 Twins 所設定的 azure 函式。 如需詳細資訊 `InteractiveBrowserCredential` ，請參閱其 [類別檔](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet)。
 * 所有服務 API 呼叫都會公開為類別上的成員函式 `DigitalTwinsClient` 。
@@ -301,10 +302,10 @@ client.UpdateDigitalTwin("myTwin", updateTwinData);
 
 您可以從這裡查看實例的計量，並建立自訂的視圖。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
-瞭解如何使用 Api 來設定 Azure 數位 Twins 實例和驗證：
-* [*How to：設定實例和驗證*](how-to-set-up-instance-cli.md)
+瞭解如何使用 Postman 對 Api 進行直接要求：
+* [*How to：使用 Postman 提出要求*](how-to-use-postman.md)
 
-或者，逐步解說建立用戶端應用程式的步驟，例如本操作說明中所使用的應用程式：
+或者，在本教學課程中建立用戶端應用程式，練習使用 .NET SDK：
 * [*教學課程：撰寫用戶端應用程式的程式碼*](tutorial-code.md)

@@ -3,12 +3,12 @@ title: 設定 Azure Red Hat OpenShift v3. x 與容器的 Azure 監視器 |Micros
 description: 本文說明如何使用 Azure Red Hat OpenShift 第3版和更高版本上託管的 Azure 監視器來設定 Kubernetes 叢集的監視。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 1186056559d6497b2b48cb3533a0967d6d61f38e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 2cd39c13ce7d67b2bfcfaca0a6f627e19d289783
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216363"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186910"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>使用容器 Azure 監視器設定 Azure Red Hat OpenShift v3
 
@@ -18,7 +18,7 @@ ms.locfileid: "92216363"
 > 從2020年10月起，您將無法再建立新的3.11 叢集。
 > 現有的3.11 叢集將會繼續運作到6月2022，但在該日期之後將不再受到支援。
 >
-> 遵循本指南來 [建立 Azure Red Hat OpenShift 4](https://docs.microsoft.com/azure/openshift/tutorial-create-cluster)叢集。
+> 遵循本指南來 [建立 Azure Red Hat OpenShift 4](../../openshift/tutorial-create-cluster.md)叢集。
 > 如果您有特定問題， [請洽詢我們](mailto:aro-feedback@microsoft.com)。
 
 適用于容器的 Azure 監視器可針對 Azure Kubernetes Service (AKS) 和 AKS 引擎叢集提供豐富的監視體驗。 本文說明如何啟用監視裝載于 [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) 第3版和最新支援版本3的 Kubernetes 叢集，以達成類似的監視體驗。
@@ -67,7 +67,7 @@ ms.locfileid: "92216363"
     Microsoft Azure                       AzureCloud   0fb60ef2-03cc-4290-b595-e71108e8f4ce  Enabled  True
     ```
 
-1. 複製 **SubscriptionId**的值。
+1. 複製 **SubscriptionId** 的值。
 
 1. 藉由執行下列命令，切換至裝載 Log Analytics 工作區的訂用帳戶：
 
@@ -81,7 +81,7 @@ ms.locfileid: "92216363"
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
-1. 在輸出中，尋找工作區名稱，然後在欄位 **識別碼**下複製該 Log Analytics 工作區的完整資源識別碼。
+1. 在輸出中，尋找工作區名稱，然後在欄位 **識別碼** 下複製該 Log Analytics 工作區的完整資源識別碼。
 
 ## <a name="enable-for-a-new-cluster-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本啟用新叢集
 
@@ -172,11 +172,11 @@ ms.locfileid: "92216363"
 
 2. 在 [Azure 入口網站] 功能表上，或從 [首頁] 中，選取 [ **Azure 監視器**]。 在 [Insights] 區段下方，選取 [容器]。
 
-3. 在 [監視器 - 容器]**** 頁面上，選取 [不受監視的叢集]****。
+3. 在 [監視器 - 容器] 頁面上，選取 [不受監視的叢集]。
 
-4. 從未受監視叢集的清單中，尋找清單中的叢集，然後按一下 [ **啟用**]。 您可以在 [資料行叢集**類型**] 下方尋找值**ARO** ，以識別清單中的結果。
+4. 從未受監視叢集的清單中，尋找清單中的叢集，然後按一下 [ **啟用**]。 您可以在 [資料行叢集 **類型**] 下方尋找值 **ARO** ，以識別清單中的結果。
 
-5. 在 [適用於容器的 Azure 監視器上線]**** 頁面上，如果相同訂用帳戶中有現有 Log Analytics 工作區可作為叢集，請從下拉式清單中加以選取。  
+5. 在 [適用於容器的 Azure 監視器上線] 頁面上，如果相同訂用帳戶中有現有 Log Analytics 工作區可作為叢集，請從下拉式清單中加以選取。  
     此清單會會預先選取在訂用帳戶中部署叢集的預設工作區和位置。
 
     ![針對非受監視的叢集啟用監視](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
@@ -230,7 +230,7 @@ ms.locfileid: "92216363"
     az openshift show -g <clusterResourceGroup> -n <clusterName>
     ```
 
-5. 編輯 **existingClusterParam.js** 的 JSON 參數檔案，並更新 *aroResourceId* 和 *aroResourceLocation*的值。 **workspaceResourceId** 值是您 Log Analytics 工作區的完整資源識別碼，其中包含工作區名稱。
+5. 編輯 **existingClusterParam.js** 的 JSON 參數檔案，並更新 *aroResourceId* 和 *aroResourceLocation* 的值。 **workspaceResourceId** 值是您 Log Analytics 工作區的完整資源識別碼，其中包含工作區名稱。
 
 6. 若要使用 Azure CLI 部署，請執行下列命令：
 

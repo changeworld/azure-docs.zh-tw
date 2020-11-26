@@ -3,12 +3,12 @@ title: 從 Azure Application Insights 匯出至 Power BI | Microsoft Docs
 description: Analytics 查詢可以在 Power BI 中顯示。
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 804da7d3aaa2fd1b7973a686bc9ca5cb5ee973a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e88d60cd9a9d0e6267998237b33a361b12ffd84
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979163"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186995"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>從 Application Insights 提供 Power BI
 [Power BI](https://www.powerbi.com/) 是一套商務工具，可協助您分析資料及分享見解。 每個裝置上都提供豐富的儀表板。 您可以結合許多來源的資料，包含來自 [Azure Application Insights](./app-insights-overview.md) 的「分析」查詢。
@@ -20,7 +20,7 @@ ms.locfileid: "90979163"
 * **Power BI 配接器**。 儀表板中已預先定義一組圖表，但您可以從任何其他來源新增您自己的查詢。
 
 > [!NOTE]
-> Power BI 配接器現在**已被取代**。 針對此解決方案預先定義的圖表已透過無法編輯的靜態查詢加以填入。 您無法編輯這些查詢，而且根據您資料的某些屬性而定，連線到 Power BI 可能會成功，但不會填入任何資料。 這是因為硬式編碼查詢內所設定的排除準則。 雖然這個解決方案仍然可能適用於某些客戶，但由於缺乏配接器的彈性，因此，建議的解決方案是使用[**匯出 Analytics 查詢**](#export-analytics-queries)功能。
+> Power BI 配接器現在 **已被取代**。 針對此解決方案預先定義的圖表已透過無法編輯的靜態查詢加以填入。 您無法編輯這些查詢，而且根據您資料的某些屬性而定，連線到 Power BI 可能會成功，但不會填入任何資料。 這是因為硬式編碼查詢內所設定的排除準則。 雖然這個解決方案仍然可能適用於某些客戶，但由於缺乏配接器的彈性，因此，建議的解決方案是使用 [**匯出 Analytics 查詢**](#export-analytics-queries)功能。
 
 ## <a name="export-analytics-queries"></a>匯出 Analytics 查詢
 此途徑可讓您撰寫您喜歡的任何 Analytics 查詢，或從「使用方式漏斗圖」匯出，然後將其匯出至 Power BI 儀表板。 (您可以新增至配接器所建立的儀表板)。
@@ -31,12 +31,12 @@ ms.locfileid: "90979163"
 安裝 [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/)。
 
 ### <a name="export-an-analytics-query"></a>匯出 Analytics 查詢
-1. [開啟 Analytics 並撰寫查詢](../log-query/get-started-portal.md)。
+1. [開啟 Analytics 並撰寫查詢](../log-query/log-analytics-tutorial.md)。
 2. 測試並精簡查詢，直到您滿意結果。 請先確定查詢在 Analytics 中正確執行，再將它匯出。
-3. 在 [匯出]**** 功能表上，選擇 [Power BI (M)]****。 儲存文字檔案。
+3. 在 [匯出] 功能表上，選擇 [Power BI (M)]。 儲存文字檔案。
    
     ![Analytics 的螢幕擷取畫面，並已醒目顯示 [匯出] 功能表](./media/export-power-bi/analytics-export-power-bi.png)
-4. 在 Power BI Desktop 中，選取 [**取得資料**  >  **空白查詢**]。 然後在查詢編輯器的 [檢視]**** 底下，選取 [進階編輯器]****。
+4. 在 Power BI Desktop 中，選取 [**取得資料**  >  **空白查詢**]。 然後在查詢編輯器的 [檢視] 底下，選取 [進階編輯器]。
 
     將匯出的 M 語言指令碼貼到進階編輯器。
 
@@ -57,11 +57,11 @@ ms.locfileid: "90979163"
 
 ### <a name="export-a-funnel"></a>匯出漏斗圖
 1. [製作您的漏斗](./usage-funnels.md)圖。
-2. 選取 [Power BI] ****。
+2. 選取 [Power BI] 。
 
    ![Power BI 按鈕的螢幕擷取畫面](./media/export-power-bi/button.png)
 
-3. 在 Power BI Desktop 中，選取 [**取得資料**  >  **空白查詢**]。 然後在查詢編輯器的 [檢視]**** 底下，選取 [進階編輯器]****。
+3. 在 Power BI Desktop 中，選取 [**取得資料**  >  **空白查詢**]。 然後在查詢編輯器的 [檢視] 底下，選取 [進階編輯器]。
 
    ![Power BI Desktop 的螢幕擷取畫面，並已醒目顯示 [空白查詢] 按鈕](./media/export-power-bi/blankquery.png)
 
@@ -119,14 +119,14 @@ ms.locfileid: "90979163"
 
 ### <a name="get-the-adapter"></a>取得配接器
 1. 登入 [Power BI](https://app.powerbi.com/)。
-2. 開啟 [取得資料]**** ![左下角 [取得資料] 圖示的螢幕擷取畫面](./media/export-power-bi/001.png)、[服務]****。
+2. 開啟 [取得資料] ![左下角 [取得資料] 圖示的螢幕擷取畫面](./media/export-power-bi/001.png)、[服務]。
 
     ![螢幕擷取畫面會在 [服務] 視窗中顯示 [取得] 按鈕。](./media/export-power-bi/002.png)
 
-3. 選取 Application Insights 下方的 [立即取得]****。
+3. 選取 Application Insights 下方的 [立即取得]。
 
    ![「取自 Application Insights 資料來源」的螢幕擷取畫面](./media/export-power-bi/003.png)
-4. 提供 Application Insights 資源的詳細資料，然後**登入**。
+4. 提供 Application Insights 資源的詳細資料，然後 **登入**。
 
     ![螢幕擷取畫面顯示 [連接到 Application Insights] 視窗。](./media/export-power-bi/005.png)
 
@@ -146,5 +146,4 @@ ms.locfileid: "90979163"
 
 ## <a name="next-steps"></a>後續步驟
 * [Power BI - 了解](https://www.powerbi.com/learning/)
-* [Analytics 教學課程](../log-query/get-started-portal.md)
-
+* [Analytics 教學課程](../log-query/log-analytics-tutorial.md)

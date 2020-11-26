@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 0842efe304faa9a0d94fbf71075f1bc16ff34014
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 61aba3e5792d1cc20da16686d052de91744dab76
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018200"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186774"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure 監視器來建立、檢視及管理記錄警示
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
-記錄警示可讓使用者使用 [Log Analytics](../log-query/get-started-portal.md) 查詢來評估每個設定頻率的資源記錄，並根據結果引發警示。 規則可以使用 [動作群組](./action-groups.md)觸發一或多個動作。 [深入瞭解記錄警示的功能和術語](alerts-unified-log.md)。
+記錄警示可讓使用者使用 [Log Analytics](../log-query/log-analytics-tutorial.md) 查詢來評估每個設定頻率的資源記錄，並根據結果引發警示。 規則可以使用 [動作群組](./action-groups.md)觸發一或多個動作。 [深入瞭解記錄警示的功能和術語](alerts-unified-log.md)。
 
 本文說明如何使用 Azure 監視器建立和記錄管理警示。 警示規則是由三個元件所定義：
 - 目標：要監視的特定 Azure 資源。
@@ -27,7 +27,7 @@ ms.locfileid: "96018200"
 您也可以使用 Azure Resource Manager 範本建立記錄警示規則，這些範本會在 [個別的文章](alerts-log-create-templates.md)中說明。
 
 > [!NOTE]
-> Log [Analytics 工作區](../log-query/get-started-portal.md) 中的記錄資料可以傳送至 Azure 監視器計量存放區。 計量警示有 [不同的行為](alerts-metric-overview.md)，視您使用的資料而定，這可能更適合。 如需有關如何將記錄路由至計量的詳細資訊，請參閱 [記錄的計量警示](alerts-metric-logs.md)。
+> Log [Analytics 工作區](../log-query/log-analytics-tutorial.md) 中的記錄資料可以傳送至 Azure 監視器計量存放區。 計量警示有 [不同的行為](alerts-metric-overview.md)，視您使用的資料而定，這可能更適合。 如需有關如何將記錄路由至計量的詳細資訊，請參閱 [記錄的計量警示](alerts-metric-logs.md)。
 
 ## <a name="create-a-log-alert-rule-with-the-azure-portal"></a>使用 Azure 入口網站建立記錄警示規則
 
@@ -35,7 +35,7 @@ ms.locfileid: "96018200"
 
 1. 移至您想要警示的資源。
 1. 在 [ **監視**] 底下，選取 [ **記錄**]。
-1. 查詢可指出問題的記錄資料。 您可以使用「 [警示查詢範例」主題](../log-query/saved-queries.md) 來瞭解您可以探索的內容，或 [開始撰寫您自己的查詢](../log-query/get-started-portal.md)。 此外，[了解如何建立最佳化的警示查詢](alerts-log-query.md)。
+1. 查詢可指出問題的記錄資料。 您可以使用「 [警示查詢範例」主題](../log-query/example-queries.md) 來瞭解您可以探索的內容，或 [開始撰寫您自己的查詢](../log-query/log-analytics-tutorial.md)。 此外，[了解如何建立最佳化的警示查詢](alerts-log-query.md)。
 1. 按 [+ 新增警示規則] 按鈕，以啟動警示建立流程。
 
     ![Log Analytics - 設定警示](media/alerts-log/AlertsAnalyticsCreate.png)
@@ -327,4 +327,3 @@ az group deployment create \
 * 使用 [Azure Resource Manager 範本](./alerts-log-create-templates.md)建立記錄警示。
 * 瞭解 [記錄警示的 webhook 動作](./alerts-log-webhook.md)。
 * 深入瞭解 [記錄查詢](../log-query/log-query-overview.md)。
-

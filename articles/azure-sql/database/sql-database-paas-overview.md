@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 093d470052a639ad3d4e819d08fad7c34b547d44
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: bf7e99f6e6201afefd316deafe37e38088fb9fae
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789500"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187114"
 ---
 # <a name="what-is-azure-sql-database"></a>什麼是 Azure SQL Database？
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -26,7 +26,7 @@ Azure SQL Database 是完全受控的平台即服務 (PaaS) 資料庫引擎，�
 
 有了 Azure SQL Database，您可為 Azure 中的應用程式與解決方案建立高度可用且高效能的資料儲存層。 SQL Database 可謂是適合各種現代化雲端應用程式的選擇，因為其可供處理關聯式資料，以及[非關聯式結構](../multi-model-features.md) (例如圖表、JSON、空間和 XML)。
 
-Azure SQL Database 以最新穩定版本的 [Microsoft SQL Server 資料庫引擎](/sql/sql-server/sql-server-technical-documentation?toc=%252fazure%252fsql-database%252ftoc.json)為基礎。 您可使用進階查詢處理功能，例如[高效能記憶體內部技術](../in-memory-oltp-overview.md)和[智慧查詢處理](/sql/relational-databases/performance/intelligent-query-processing?toc=%252fazure%252fsql-database%252ftoc.json)。 事實上，SQL Server 的最新功能會先發行至 SQL Database，然後才發行至 SQL Server 本身。 您可取得最新的 SQL Server 功能，無需額外的修補或升級，即可在數百萬個資料庫之間進行測試。 
+Azure SQL Database 以最新穩定版本的 [Microsoft SQL Server 資料庫引擎](/sql/sql-server/sql-server-technical-documentation?toc=%2fazure%2fsql-database%2ftoc.json)為基礎。 您可使用進階查詢處理功能，例如[高效能記憶體內部技術](../in-memory-oltp-overview.md)和[智慧查詢處理](/sql/relational-databases/performance/intelligent-query-processing?toc=%2fazure%2fsql-database%2ftoc.json)。 事實上，SQL Server 的最新功能會先發行至 SQL Database，然後才發行至 SQL Server 本身。 您可取得最新的 SQL Server 功能，無需額外的修補或升級，即可在數百萬個資料庫之間進行測試。 
 
 SQL Database 可供輕鬆地在兩個不同的購買模型內定義和調整效能：[以虛擬核心為基礎的購買模型](service-tiers-vcore.md)和[以 DTU 為基礎的購買模型](service-tiers-dtu.md)。 SQL Database 是完全受控的服務，其具有內建的高可用性、備份與其他一般維護作業。 Microsoft 可處理 SQL 和作業系統程式碼的所有修補和更新。 您不需要管理基礎結構。
 
@@ -37,7 +37,7 @@ SQL Database 可供輕鬆地在兩個不同的購買模型內定義和調整效�
 
 Azure SQL Database 為資料庫提供下列部署選項：
 
-- [單一資料庫](single-database-overview.md)代表完全受控的隔離資料庫。 如果有需要單一可靠資料來源的現代化雲端應用程式和微服務，則可使用此選項。 單一資料庫類似於 [SQL Server 資料庫引擎](/sql/sql-server/sql-server-technical-documentation?toc=%252fazure%252fsql-database%252ftoc.json)中的[自主資料庫](/sql/relational-databases/databases/contained-databases?toc=%252fazure%252fsql-database%252ftoc.json)。
+- [單一資料庫](single-database-overview.md)代表完全受控的隔離資料庫。 如果有需要單一可靠資料來源的現代化雲端應用程式和微服務，則可使用此選項。 單一資料庫類似於 [SQL Server 資料庫引擎](/sql/sql-server/sql-server-technical-documentation?toc=%2fazure%2fsql-database%2ftoc.json)中的[自主資料庫](/sql/relational-databases/databases/contained-databases?toc=%2fazure%2fsql-database%2ftoc.json)。
 - [彈性集區](elastic-pool-overview.md)是具有一組共用資源 (例如 CPU 或記憶體) 的[單一資料庫](single-database-overview.md)集合。 單一資料庫可以移入和移出彈性集區。
 
 > [!IMPORTANT]
@@ -96,9 +96,9 @@ Azure SQL Database 提供進階監視和疑難排解功能，可協助更深入�
 
 Azure 提供[內建的效能監視](performance-guidance.md)和[警示](alerts-insights-configure-portal.md)工具，並搭配使用效能分級，其可供監視數千個資料庫的狀態。 使用這些工具，即可根據目前或所預計效能需求來快速評定擴大或縮小的影響。 此外，SQL Database 可[發出計量和資源記錄](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)，以供更輕鬆地進行監視。 您可以將 SQL Database 設定為將資源使用量、背景工作與工作階段及連線儲存到下列其中一項 Azure 資源：
 
-- **Azure 儲存體** ：用於封存大量遙測，價格實惠。
-- **Azure 事件中樞** ：用於整合 SQL Database 遙測與自訂監視解決方案或經常性管線。
-- **Azure 監視器記錄** ：用於具有報告、警示及風險降低功能的內建監視解決方案。
+- **Azure 儲存體**：用於封存大量遙測，價格實惠。
+- **Azure 事件中樞**：用於整合 SQL Database 遙測與自訂監視解決方案或經常性管線。
+- **Azure 監視器記錄**：用於具有報告、警示及風險降低功能的內建監視解決方案。
 
 ![Azure 監視架構的圖表](./media/sql-database-paas-overview/architecture.png)
 
@@ -149,8 +149,8 @@ SQL Database 會提供您需要監視之查詢的詳細解析。 SQL Database �
 
 [SQL Database 中可用的](automatic-tuning-overview.md)自動調整層面有兩個：
 
-- **自動索引管理** ：識別應該在資料庫中新增的索引，以及應該移除的索引。
-- **自動計劃修正** ：識別有問題的計劃並修正 SQL 計劃效能問題。
+- **自動索引管理**：識別應該在資料庫中新增的索引，以及應該移除的索引。
+- **自動計劃修正**：識別有問題的計劃並修正 SQL 計劃效能問題。
 
 ### <a name="adaptive-query-processing"></a>自適性查詢處理
 

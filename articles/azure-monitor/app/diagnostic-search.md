@@ -3,18 +3,18 @@ title: 在 Azure Application Insights 中使用搜尋服務 | Microsoft Docs
 description: 搜尋和篩選 Web 應用程式傳送的原始遙測。
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: f88e0fb8fbd7e9605635ede1e8f71b57de84b74e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f87a972b417bf6074de1c10b7a54bd2416f88daa
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324449"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187012"
 ---
 # <a name="using-search-in-application-insights"></a>在 Application Insights 中使用搜尋
 
 「搜尋」是 [Application Insights](./app-insights-overview.md) 的一項功能，可用來尋找及探索個別遙測項目，例如頁面檢視、例外狀況或 Web 要求。 而您可以檢視所編寫的記錄追蹤和事件。
 
-(若要對您的資料執行更複雜的查詢，請使用[分析](../log-query/get-started-portal.md)。)
+(若要對您的資料執行更複雜的查詢，請使用[分析](../log-query/log-analytics-tutorial.md)。)
 
 ## <a name="where-do-you-see-search"></a>「搜尋」在哪裡？
 
@@ -59,9 +59,9 @@ ms.locfileid: "87324449"
 * **追蹤**  - [診斷記錄](./asp-net-trace-logs.md)，包括 TrackTrace、Log4Net、NLog 和。 Trace 呼叫。
 * **要求** - 伺服器應用程式收到的 HTTP 要求，包括頁面、指令碼、影像、樣式檔案和資料。 這些事件是用來建立要求和回應概觀圖表。
 * **網頁檢視**  - [Web 用戶端傳送的遙測](./javascript.md)資料，用來建立網頁檢視報表。
-* **自訂事件** - 如果您插入 TrackEvent() 呼叫來[監視使用量](./api-custom-events-metrics.md)，則可以在這裡搜尋它們。
+* **自訂事件** - 如果您插入 TrackEvent() 呼叫來 [監視使用量](./api-custom-events-metrics.md)，則可以在這裡搜尋它們。
 * **例外** 狀況- [在伺服器中無法攔截的例外](./asp-net-exceptions.md)狀況，以及您使用 TrackException 記錄的例外狀況 ( # A1。
-* 相依性**Dependency**  - [從您的伺服器應用程式](./asp-net-dependencies.md)到其他服務（例如 REST api 或資料庫），以及從您的[用戶端程式代碼](./javascript.md)呼叫 AJAX 的呼叫。
+* 相依性 **Dependency**  - [從您的伺服器應用程式](./asp-net-dependencies.md)到其他服務（例如 REST api 或資料庫），以及從您的 [用戶端程式代碼](./javascript.md)呼叫 AJAX 的呼叫。
 * **可用性** - [可用性測試](./monitor-web-app-availability.md)的結果。
 
 ## <a name="filter-on-property-values"></a>依據屬性值篩選
@@ -81,7 +81,7 @@ ms.locfileid: "87324449"
 ## <a name="search-the-data"></a>搜尋資料
 
 > [!NOTE]
-> 若要撰寫更複雜的查詢，請從搜尋分頁的頂端開啟 [**記錄 (分析) **](../log-query/get-started-portal.md) 。
+> 若要撰寫更複雜的查詢，請從搜尋分頁的頂端開啟 [**記錄 (分析)**](../log-query/log-analytics-tutorial.md) 。
 >
 
 您可以搜尋任何屬性值中的字詞。 如果您已撰寫具有屬性值的 [自訂事件](./api-custom-events-metrics.md) ，這就很有用。
@@ -92,7 +92,7 @@ ms.locfileid: "87324449"
 
 請搜尋完整單字，而不是子字串。 使用引號來括住的特殊字元。
 
-| String | 找*不*到 | 已找到 |
+| 字串 | 找 *不* 到 | 已找到 |
 | --- | --- | --- |
 | HomeController.About |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
 |美國|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
@@ -145,8 +145,7 @@ ms.locfileid: "87324449"
 
 ## <a name="next-steps"></a><a name="add"></a>後續步驟
 
-* [在分析中撰寫複雜的查詢](../log-query/get-started-portal.md)
+* [在分析中撰寫複雜的查詢](../log-query/log-analytics-tutorial.md)
 * [將記錄和自訂遙測傳送至 Application Insights](./asp-net-trace-logs.md)
 * [設定可用性和回應性測試](./monitor-web-app-availability.md)
 * [疑難排解](../faq.md)
-

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 0c1e84695ce40b489fb1005325d501ea241cdaf1
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: fc89790c7d268bcfa0c08bd26249bc91979d7fca
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94738096"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186893"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>使用 Azure 監視器監視 Azure 虛擬機器
 本文說明如何使用 Azure 監視器來收集和分析來自 Azure 虛擬機器的監視資料，以維持資料健康。 您可以使用 Azure 監視器來監視虛擬機器的可用性和效能，如同監視任何[其他 Azure 資源](monitor-azure-resource.md)一樣，但虛擬機器與其他資源不同，因為您也需要監視客體作業和系統，及其在其中執行的工作負載。 
@@ -64,7 +64,7 @@ Azure 中的虛擬機器會針對虛擬機器主機產生下列資料，與其�
 下列各節將說明這其中的每個組態步驟。
 
 ### <a name="enable-azure-monitor-for-vms"></a>啟用適用於 VM 的 Azure 監視器
-[適用於 VM 的 Azure 監視器](vminsights-overview.md)是 Azure 監視器中的[深入解析](insights-overview.md)，是用來監視 Azure 監視器中虛擬機器的主要工具。 其透過標準 Azure 監視器功能提供下列額外的價值。
+[適用於 VM 的 Azure 監視器](vminsights-overview.md)是 Azure 監視器中的[深入解析](../monitor-reference.md)，是用來監視 Azure 監視器中虛擬機器的主要工具。 其透過標準 Azure 監視器功能提供下列額外的價值。
 
 - 簡化 Log Analytics 代理程式和相依性代理程式的上線程序，以啟用虛擬機器客體作業系統和工作負載的監視。 
 - 預先定義的趨勢效能圖表和活頁簿，可讓您從虛擬機器的客體作業系統分析核心效能計量。
@@ -140,7 +140,7 @@ az monitor diagnostic-settings create \
 | 診斷設定 | 啟用和設定目前虛擬機器的[診斷擴充功能](../platform/diagnostics-extension-overview.md)。 |
 | Advisor 建議 | [Azure Advisor](../../advisor/index.yml) 中目前虛擬機器的建議。 |
 | 記錄 | 開啟 [Log Analytics](../log-query/log-analytics-overview.md)，並將[範圍](../log-query/scope.md)設定為目前的虛擬機器。 |
-| 連線監視 | 開啟[網路監看員連線監視器](../../network-watcher/connection-monitor-preview.md)，以監視目前虛擬機器與其他虛擬機器之間的連線。 |
+| 連線監視 | 開啟[網路監看員連線監視器](../../network-watcher/connection-monitor-overview.md)，以監視目前虛擬機器與其他虛擬機器之間的連線。 |
 
 
 ## <a name="analyzing-metric-data"></a>分析計量資料
@@ -242,4 +242,3 @@ System Center Operations Manager 可提供虛擬機器上工作負載的細微�
 
 * [了解如何使用記錄查詢來分析 Azure 監視器記錄中的資料。](../log-query/get-started-queries.md)
 * [了解在 Azure 監視器中使用計量和記錄的警示。](../platform/alerts-overview.md)
-

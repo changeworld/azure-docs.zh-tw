@@ -12,19 +12,19 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: d5da6576258d3e33296781bbc262494220140ddc
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 37c237cdaf6c0d4f766d4b2e39c10e3e96215463
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489279"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187828"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>將下游 IoT Edge 裝置連線至 Azure IoT Edge 閘道 (預覽) 
 
 本文提供在 IoT Edge 閘道和下游 IoT Edge 裝置之間建立信任連線的指示。
 
 >[!NOTE]
->這項功能需要 IoT Edge 版本1.2 （處於公開預覽狀態）正在執行 Linux 容器。
+>這項功能需要目前處於公開預覽狀態，且執行 Linux 容器的 IoT Edge 1.2 版本。
 
 在閘道案例中，IoT Edge 的裝置可以是閘道和下游裝置。 多個 IoT Edge 閘道可以分層來建立裝置的階層。 下游 (或子) 裝置可透過其閘道 (或父) 裝置來驗證及傳送或接收訊息。
 
@@ -34,15 +34,15 @@ ms.locfileid: "94489279"
 
 本文中的所有步驟都是以設定 [IoT Edge 裝置作為透明閘道的方式來](how-to-create-transparent-gateway.md)建立，其會將 IoT Edge 裝置設定為下游 IoT 裝置的閘道。 相同的基本步驟適用于所有閘道案例：
 
-* **驗證** ：為閘道階層中的所有裝置建立 IoT 中樞身分識別。
-* **授權** ：設定 IoT 中樞內的父子式關聯性，以授權子裝置連線至其父裝置，如同連線到 IoT 中樞。
-* **閘道探索** ：確定子裝置可以在區域網路上找到其父裝置。
+* **驗證**：為閘道階層中的所有裝置建立 IoT 中樞身分識別。
+* **授權**：設定 IoT 中樞內的父子式關聯性，以授權子裝置連線至其父裝置，如同連線到 IoT 中樞。
+* **閘道探索**：確定子裝置可以在區域網路上找到其父裝置。
 * **安全** 連線：使用屬於相同鏈的受信任憑證建立安全連線。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 免費或標準的 IoT 中樞。
-* 至少兩部 **IoT Edge 裝置** ，一個是最上層裝置和一或多個較低層的裝置。 如果您沒有可用的 IoT Edge 裝置，可以 [在 Ubuntu 虛擬機器上執行 Azure IoT Edge](how-to-install-iot-edge-ubuntuvm.md)。
+* 至少兩部 **IoT Edge 裝置**，一個是最上層裝置和一或多個較低層的裝置。 如果您沒有可用的 IoT Edge 裝置，可以 [在 Ubuntu 虛擬機器上執行 Azure IoT Edge](how-to-install-iot-edge-ubuntuvm.md)。
 * 如果您使用 Azure CLI 來建立和管理裝置，請在安裝 Azure IoT 擴充功能 v 0.10.6 或更新版本時，使用 Azure CLI 的2.3.1。
 
 本文提供詳細的步驟和選項，協助您為您的案例建立正確的閘道階層。 如需引導式教學課程，請參閱 [使用閘道建立 IoT Edge 裝置](tutorial-nested-iot-edge.md)的階層。
@@ -66,7 +66,7 @@ ms.locfileid: "94489279"
 1. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至您的 IoT 中樞。
 1. 從導覽功能表中選取 [ **IoT Edge** ]。
 1. 選取 [新增 IoT Edge 裝置]。
-1. 除了設定裝置識別碼和驗證設定之外，您還可以 **設定父裝置** 或 **選擇子裝置** 。
+1. 除了設定裝置識別碼和驗證設定之外，您還可以 **設定父裝置** 或 **選擇子裝置**。
 1. 選擇您想要作為父系或子系的裝置。
 
 您也可以建立或管理現有裝置的父/子關聯性。
@@ -74,7 +74,7 @@ ms.locfileid: "94489279"
 1. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至您的 IoT 中樞。
 1. 從導覽功能表中選取 [ **IoT Edge** ]。
 1. 從 **IoT Edge 裝置** 清單中選取您想要管理的裝置。
-1. 選取 [ **設定父裝置** ] 或 [ **管理子裝置** ]。
+1. 選取 [ **設定父裝置** ] 或 [ **管理子裝置**]。
 1. 新增或移除任何父系或子裝置。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -99,9 +99,9 @@ ms.locfileid: "94489279"
 
 建立下列憑證：
 
-* **根 CA 憑證** ，這是指定閘道階層中所有裝置最上層的共用憑證。 此憑證會安裝在所有裝置上。
+* **根 CA 憑證**，這是指定閘道階層中所有裝置最上層的共用憑證。 此憑證會安裝在所有裝置上。
 * 任何您想要包含在根憑證鏈中的 **中繼憑證** 。
-* 由根和中繼憑證所產生的 **裝置 CA 憑證** 及其 **私密金鑰** 。 閘道階層中的每個 IoT Edge 裝置都需要一個唯一的裝置 CA 憑證。
+* 由根和中繼憑證所產生的 **裝置 CA 憑證** 及其 **私密金鑰**。 閘道階層中的每個 IoT Edge 裝置都需要一個唯一的裝置 CA 憑證。
 
 >[!NOTE]
 >目前，libiothsm 中的限制會防止使用在2038年1月1日或之後過期的憑證。
@@ -146,11 +146,11 @@ ms.locfileid: "94489279"
    sudo nano /etc/iotedge/config.yaml
    ```
 
-1. 在 yaml 檔案中尋找 [ **憑證** ] 區段。 更新三個憑證欄位以指向您的憑證。 提供採用格式的檔案 URI 路徑 `file:///<path>/<filename>` 。
+1. 在 yaml 檔案中尋找 [ **憑證** ] 區段。 更新三個憑證欄位以指向您的憑證。 提供檔案 URI 路徑，格式為 `file:///<path>/<filename>`。
 
-   * **device_ca_cert** ：此裝置唯一的裝置 ca 憑證的檔案 URI 路徑。
-   * **device_ca_pk** ：此裝置唯一的裝置 ca 私密金鑰的檔案 URI 路徑。
-   * **trusted_ca_certs** ：閘道階層中所有裝置共用之根 ca 憑證的檔案 URI 路徑。
+   * **device_ca_cert**：此裝置唯一的裝置 ca 憑證的檔案 URI 路徑。
+   * **device_ca_pk**：此裝置唯一的裝置 ca 私密金鑰的檔案 URI 路徑。
+   * **trusted_ca_certs**：閘道階層中所有裝置共用之根 ca 憑證的檔案 URI 路徑。
 
 1. 在 yaml 檔案中尋找 **hostname** 參數。 將主機名稱更新為 (FQDN) 或 IoT Edge 裝置 IP 位址的完整功能變數名稱。
 
@@ -160,7 +160,7 @@ ms.locfileid: "94489279"
 
    在閘道階層中與主機名稱模式保持一致。 請使用 Fqdn 或 IP 位址，但不能同時使用兩者。
 
-1. **如果此裝置是子裝置** ，請尋找 **parent_hostname** 參數。 將 **parent_hostname** 欄位更新為父裝置的 FQDN 或 IP 位址，以符合在父 yaml 檔中提供的主機名稱。
+1. **如果此裝置是子裝置**，請尋找 **parent_hostname** 參數。 將 **parent_hostname** 欄位更新為父裝置的 FQDN 或 IP 位址，以符合在父 yaml 檔中提供的主機名稱。
 
 1. 雖然這項功能處於公開預覽狀態，但您必須將 IoT Edge 裝置設定為在啟動時使用 IoT Edge 代理程式的公開預覽版本。
 
@@ -172,7 +172,7 @@ ms.locfileid: "94489279"
      type: "docker"
      env: {}
      config:
-       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1"
+       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2"
        auth: {}
    ```
 
@@ -202,7 +202,7 @@ ms.locfileid: "94489279"
 
 雖然這項功能處於公開預覽狀態，但您必須將 IoT Edge 裝置設定為使用 IoT Edge 執行時間模組的公開預覽版本。 上一節提供在啟動時設定 edgeAgent 的步驟。 您也需要在裝置的部署中設定執行時間模組。
 
-1. 將 edgeHub 模組設定為使用公開預覽映射： `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1` 。
+1. 將 edgeHub 模組設定為使用公開預覽映射： `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` 。
 
 1. 設定 edgeHub 模組的下列環境變數：
 
@@ -211,7 +211,7 @@ ms.locfileid: "94489279"
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. 將 edgeAgent 模組設定為使用公開預覽映射： `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1` 。
+1. 將 edgeAgent 模組設定為使用公開預覽映射： `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` 。
 
 ## <a name="network-isolate-downstream-devices"></a>網路隔離下游裝置
 
@@ -223,7 +223,7 @@ ms.locfileid: "94489279"
 
 * 在其下有另一個 IoT Edge 裝置的任何 IoT Edge 閘道上，都需要 **API proxy 模組** 。 這表示它必須位在閘道階層的 *每一層* ，但底端層除外。 此課程模組會使用 [nginx](https://nginx.org) 反向 proxy，透過單一端口將 HTTP 資料透過網路層路由傳送。 其可透過其模組對應項和環境變數進行高度設定，因此可以調整以符合您的閘道案例需求。
 
-* **Docker 登錄模組** 可以部署在閘道階層 *最上層* 的 IoT Edge 閘道上。 此模組負責代表較低層中的所有 IoT Edge 裝置，來取得和快取容器映射。 在最上層部署此模組的替代方式是使用本機登錄，或手動將容器映射載入至裝置，並將模組提取原則設定為 [ **永不** ]。
+* **Docker 登錄模組** 可以部署在閘道階層 *最上層* 的 IoT Edge 閘道上。 此模組負責代表較低層中的所有 IoT Edge 裝置，來取得和快取容器映射。 在最上層部署此模組的替代方式是使用本機登錄，或手動將容器映射載入至裝置，並將模組提取原則設定為 [ **永不**]。
 
 * IoT Edge 上的 **Azure Blob 儲存體** 可以部署在閘道階層 *最上層* 的 IoT Edge 閘道上。 此模組負責代表較低層中的所有 IoT Edge 裝置上傳 blob。 上傳 blob 的能力也可針對較低層的 IoT Edge 裝置啟用有用的疑難排解功能，例如模組記錄上傳和支援套件組合上傳。
 
@@ -252,7 +252,7 @@ API proxy 模組的設計目的是要自訂以處理最常見的閘道案例。 
 1. 從導覽功能表中選取 [ **IoT Edge** ]。
 1. 從 **IoT Edge 裝置** 清單中選取您要設定的最上層裝置。
 1. 選取 [設定模組]。
-1. 在 [ **IoT Edge 模組** ] 區段中，選取 [ **新增** ]，然後選擇 [ **Marketplace 模組** ]。
+1. 在 [ **IoT Edge 模組** ] 區段中，選取 [ **新增** ]，然後選擇 [ **Marketplace 模組**]。
 1. 搜尋並選取 **IOT EDGE API Proxy** 模組。
 1. 從已部署的模組清單中選取 API proxy 模組的名稱，並更新下列模組設定：
    1. 在 [ **環境變數** ] 索引標籤中，將 **NGINX_DEFAULT_PORT** 的值更新為 `443` 。
@@ -296,19 +296,19 @@ API proxy 模組的設計目的是要自訂以處理最常見的閘道案例。 
    ```
 
 1. 選取 [ **儲存** ] 以儲存對執行時間設定的變更。
-1. 再次選取 [ **新增** ]，然後選擇 [ **IoT Edge 模組** ]。
+1. 再次選取 [ **新增** ]，然後選擇 [ **IoT Edge 模組**]。
 1. 提供下列值，以將 Docker 登錄模組新增至您的部署：
-   1. **IoT Edge 模組名稱** ： `registry`
-   1. 在 [ **模組設定** ] 索引標籤上， **映射 URI** ： `registry:latest`
+   1. **IoT Edge 模組名稱**： `registry`
+   1. 在 [ **模組設定** ] 索引標籤上， **映射 URI**： `registry:latest`
    1. 在 [ **環境變數** ] 索引標籤上，新增下列環境變數：
 
-      * **Name** ： `REGISTRY_PROXY_REMOTEURL` **Value** ：您希望這個登錄模組對應的容器登錄 URL。 例如 `https://myregistry.azurecr`。
+      * **Name**： `REGISTRY_PROXY_REMOTEURL` **Value**：您希望這個登錄模組對應的容器登錄 URL。 例如 `https://myregistry.azurecr`。
 
         登錄模組只能對應至一個容器登錄，因此建議您將所有容器映射都包含在單一私人容器登錄中。
 
-      * **Name** ： `REGISTRY_PROXY_USERNAME` **Value** ：要向容器登錄進行驗證的使用者名稱。
+      * **Name**： `REGISTRY_PROXY_USERNAME` **Value**：要向容器登錄進行驗證的使用者名稱。
 
-      * **Name** ： `REGISTRY_PROXY_PASSWORD` **Value** ：驗證容器登錄的密碼。
+      * **Name**： `REGISTRY_PROXY_PASSWORD` **Value**：驗證容器登錄的密碼。
 
    1. 在 [ **容器建立選項** ] 索引標籤上，貼上：
 
@@ -329,8 +329,8 @@ API proxy 模組的設計目的是要自訂以處理最常見的閘道案例。 
 1. 選取 [ **新增** ]，將模組新增至部署。
 1. 選取 **[下一步：路由** ] 以移至下一個步驟。
 1. 若要啟用從下游裝置到 IoT 中樞的裝置到雲端訊息，請包含會將所有訊息傳遞至 IoT 中樞的路由。 例如：
-    1. **名稱** ：`Route`
-    1. **值** ：`FROM /messages/* INTO $upstream`
+    1. **名稱**：`Route`
+    1. **值**：`FROM /messages/* INTO $upstream`
 1. 選取 [ **審核 + 建立** ] 以移至最後一個步驟。
 1. 選取 [ **建立** ] 以部署至您的裝置。
 
@@ -350,7 +350,7 @@ API proxy 模組的設計目的是要自訂以處理最常見的閘道案例。 
 
 API proxy 模組只能路由至一個登錄模組，而且每個登錄模組只能對應至一個容器登錄。 因此，任何較低層裝置需要提取的映射都必須儲存在單一容器登錄中。
 
-如果您不想讓較低層的裝置透過閘道階層進行模組提取要求，另一個選項是管理本機登錄解決方案。 或者，在建立部署之前將模組映射推送至裝置，然後將 **imagePullPolicy** 設定為 [ **永不** ]。
+如果您不想讓較低層的裝置透過閘道階層進行模組提取要求，另一個選項是管理本機登錄解決方案。 或者，在建立部署之前將模組映射推送至裝置，然後將 **imagePullPolicy** 設定為 [ **永不**]。
 
 #### <a name="bootstrap-the-iot-edge-agent"></a>啟動 IoT Edge 代理程式
 
@@ -366,7 +366,7 @@ agent:
   type: "docker"
   env: {}
   config:
-    image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc1"
+    image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc2"
     auth: {}
 ```
 
@@ -382,7 +382,7 @@ API proxy 模組的設計目的是要自訂以處理最常見的閘道案例。 
 1. 從導覽功能表中選取 [ **IoT Edge** ]。
 1. 從 **IoT Edge 裝置** 清單中，選取您要設定的較低層裝置。
 1. 選取 [設定模組]。
-1. 在 [ **IoT Edge 模組** ] 區段中，選取 [ **新增** ]，然後選擇 [ **Marketplace 模組** ]。
+1. 在 [ **IoT Edge 模組** ] 區段中，選取 [ **新增** ]，然後選擇 [ **Marketplace 模組**]。
 1. 搜尋並選取 **IOT EDGE API Proxy** 模組。
 1. 從已部署的模組清單中選取 API proxy 模組的名稱，並更新下列模組設定：
    1. 在 [ **模組設定** ] 索引標籤中，更新 **映射 URI** 的值。 將 `mcr.microsoft.com` 取代為 `$upstream:443`。
@@ -405,7 +405,7 @@ API proxy 模組的設計目的是要自訂以處理最常見的閘道案例。 
 
    這些變更會將 API proxy 模組設定為在埠443上接聽。 若要防止埠系結衝突，您必須將 edgeHub 模組設定為不接聽埠443。 相反地，API proxy 模組會路由埠443上的任何 edgeHub 流量。
 
-1. 選取 [ **執行時間設定** ]。
+1. 選取 [ **執行時間設定**]。
 1. 更新 edgeHub 模組設定：
 
    1. 在 [ **影像** ] 欄位中，將取代 `mcr.microsoft.com` 為 `$upstream:443` 。
@@ -436,8 +436,8 @@ API proxy 模組的設計目的是要自訂以處理最常見的閘道案例。 
 1. 選取 [ **儲存** ] 以儲存對執行時間設定的變更。
 1. 選取 **[下一步：路由** ] 以移至下一個步驟。
 1. 若要啟用從下游裝置到 IoT 中樞的裝置到雲端訊息，請包含將所有訊息傳遞至的路由 `$upstream` 。 如果是較低層的裝置，上游參數會指向父裝置。 例如：
-    1. **名稱** ：`Route`
-    1. **值** ：`FROM /messages/* INTO $upstream`
+    1. **名稱**：`Route`
+    1. **值**：`FROM /messages/* INTO $upstream`
 1. 選取 [ **審核 + 建立** ] 以移至最後一個步驟。
 1. 選取 [ **建立** ] 以部署至您的裝置。
 

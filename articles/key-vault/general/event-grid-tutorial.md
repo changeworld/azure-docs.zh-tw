@@ -11,11 +11,11 @@ ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d7bb697879f40b45c886cd90bbb1e34906d35f66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530500"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187369"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid"></a>使用 Azure 事件方格來接收和回應金鑰保存庫通知
 
@@ -40,7 +40,7 @@ Azure Key Vault 與 Azure 事件方格的整合可讓使用者在金鑰保存庫
 
 1.  移至 portal.azure.com 並登入您的訂用帳戶。
 
-1.  在搜尋方塊中，輸入**自動化帳戶**。
+1.  在搜尋方塊中，輸入 **自動化帳戶**。
 
 1.  在搜尋列下拉式清單的 [服務]  區段底下，選取 [自動化帳戶]  。
 
@@ -121,7 +121,7 @@ write-Error "No input data found."
 
 透過 [Azure 入口網站](https://portal.azure.com)建立事件方格訂用帳戶。
 
-1.  移至您的金鑰保存庫，然後選取 [事件]**** 索引標籤。
+1.  移至您的金鑰保存庫，然後選取 [事件] 索引標籤。
 
     ![Azure 入口網站中的事件索引標籤](../media/event-grid-tutorial-7.png)
 
@@ -131,7 +131,7 @@ write-Error "No input data found."
 
 1.  選擇 [事件方格結構描述]  。
 
-1.  **主題資源**應該是您要監視其狀態變更的金鑰保存庫。
+1.  **主題資源** 應該是您要監視其狀態變更的金鑰保存庫。
 
 1.  針對 [篩選至事件類型]  ，讓所有選項保持選取 (**已選取 9 項**)。
 

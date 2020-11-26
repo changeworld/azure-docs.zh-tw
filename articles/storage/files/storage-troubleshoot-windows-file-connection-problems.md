@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: b684123068889e422080605fb9c50ef9aed0cb76
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e446ec08d63c44566b2f45c1427999536d0be703
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630153"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188712"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>針對 Windows (SMB) 中的 Azure 檔案儲存體問題進行疑難排解
 
@@ -145,7 +145,7 @@ Azure 檔案同步可以將您的內部部署 Windows Server 轉換成 Azure 檔
 
 當您達到 Azure 檔案共用上的檔案或目錄允許的並行開啟控制碼上限時，就會發生錯誤1816。 如需詳細資訊，請參閱 [Azure 檔案服務擴展目標](./storage-files-scale-targets.md#azure-files-scale-targets)。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 關閉一些控制代碼以減少同時開啟的控制代碼數，然後再試一次。 如需詳細資訊，請參閱 [Microsoft Azure 儲存體效能和擴充性檢查清單](../blobs/storage-performance-checklist.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)。
 
@@ -176,7 +176,7 @@ Azure 檔案同步可以將您的內部部署 Windows Server 轉換成 Azure 檔
 瀏覽至 Azure 檔案共用所在的儲存體帳戶，按一下 [存取控制 (IAM)]，並確認您的使用者帳戶擁有儲存體帳戶的存取權。 若要深入瞭解，請參閱 [如何使用 azure 角色型存取控制來保護儲存體帳戶 (AZURE RBAC) ](../blobs/security-recommendations.md#data-protection)。
 
 <a id="open-handles"></a>
-## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>無法刪除 Azure 檔案共用中的檔案或目錄
+## <a name="unable-to-modify-moverename-or-delete-a-file-or-directory"></a>無法修改、移動/重新命名或刪除檔案或目錄
 檔案共用的主要用途之一，就是多個使用者和應用程式可以同時與共享中的檔案和目錄互動。 為了協助進行此互動，檔案共用提供數種方式來調節檔案和目錄的存取權。
 
 當您透過 SMB 從掛接的 Azure 檔案共用開啟檔案時，您的應用程式/作業系統要求檔案控制代碼，也就是檔案的參考。 此外，您的應用程式會在要求檔案控制代碼時指定檔案共用模式，以指定 Azure 檔案儲存體強制執行之檔案的存取層級獨佔性： 
@@ -289,7 +289,7 @@ $leaseClient.Break() | Out-Null
 
 根據預設，Windows 檔案總管不會以系統管理員身分執行。 如果您從系統管理命令提示字元執行 net use，就是以系統管理員身分對應網路磁碟機。 因為對應的磁碟機是以使用者為中心，如果磁碟機掛接在不同的使用者帳戶下，登入的使用者帳戶不會顯示此磁碟機。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 從非系統管理員命令掛接共用。 或者，您也可以遵循 [本 TechNet 主題](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee844140(v=ws.10)) 來設定 **EnableLinkedConnections** 登錄值。
 
 <a id="netuse"></a>
@@ -299,7 +299,7 @@ $leaseClient.Break() | Out-Null
 
 Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者帳戶名稱開頭為斜線，磁碟機對應將會失敗。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 您可以使用下列其中一種方式來解決這個問題：
 
@@ -320,7 +320,7 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 
 磁碟機是按每個使用者掛接。 如果您的應用程式或服務正在與掛接磁碟機之帳戶不同的使用者帳戶下執行，應用程式將不會看到該磁碟機。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 使用下列其中一個解決方案：
 
@@ -361,7 +361,7 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 
 如果用戶端機器上沒有足夠的快取可供大型目錄使用時，就會發生此問題。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 若要解決此問題，請調整 **DirectoryCacheEntrySizeMax** 登錄值，以允許在用戶端機器快取較大型的目錄清單：
 
@@ -378,7 +378,7 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 
 當您嘗試在未于相關聯訂用帳戶的 Azure 檔案儲存體租使用者上建立[Azure AD 網域服務 (AZURE AD ds) ](../../active-directory-domain-services/overview.md)的儲存體帳戶上，于[Azure AD 上啟用 AZURE ACTIVE DIRECTORY DOMAIN SERVICES (Azure AD ds) 驗證](storage-files-identity-auth-active-directory-domain-service-enable.md)時，就會發生錯誤 AadDsTenantNotFound。  
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 在您的儲存體帳戶部署所在訂用帳戶的 Azure AD 租使用者上，啟用 Azure AD DS。 您需要 Azure AD 租使用者的系統管理員許可權，才能建立受控網域。 如果您不是 Azure AD 租使用者的系統管理員，請洽詢系統管理員，並遵循逐步指引來 [建立和設定 Azure Active Directory Domain Services 受控網域](../../active-directory-domain-services/tutorial-create-instance.md)。
 
@@ -415,7 +415,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 - 按一下 [安全性] 索引標籤下的 [編輯] 許可權之後，就不會載入許可權嚮導。 
 - 當您嘗試選取新的使用者或群組時，網域位置不會顯示正確的 AD DS 網域。 
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 建議您使用 [icacls 工具](/windows-server/administration/windows-commands/icacls) 來設定目錄/檔案層級許可權，以作為因應措施。 
 

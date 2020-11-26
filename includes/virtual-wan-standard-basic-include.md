@@ -9,11 +9,11 @@ ms.date: 10/20/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 732c08a1d97735ef1df04abbed548fd4af4e3411
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73491694"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187423"
 ---
 | **虛擬 WAN 類型** | **中樞類型** | **可用設定** |
 |---|---|---|

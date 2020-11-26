@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.custom: seodec18
 ms.openlocfilehash: c8be18049e6ae74a198f5885a46b70df581e0cd7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020822"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187454"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>串流內嵌輸送量限制
 
@@ -96,6 +96,6 @@ Azure 時間序列深入解析 Gen2 目前有 **每個資料分割限制 0.5 MBp
 * [事件中樞規模](../event-hubs/event-hubs-scalability.md#throughput-units)
 * [事件中樞分割區](../event-hubs/event-hubs-features.md#partitions)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解資料 [儲存體](./concepts-storage.md)

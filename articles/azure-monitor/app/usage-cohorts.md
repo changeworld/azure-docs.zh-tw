@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d12244bce117d6a631fdb67dc460af18bc77028c
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f8edeb452f01af88f0305cd0a3e3a2332ec09e4e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995759"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186944"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights 世代
 
@@ -36,7 +36,7 @@ ms.locfileid: "91995759"
 
 2. 選取 [ **範本資源庫** ] 索引標籤。您會看到各種世代的樣板集合。
 
-3. 選取 [參與的使用者 -- 依使用天數]****。
+3. 選取 [參與的使用者 -- 依使用天數]。
 
     此世代有三個參數：
     * **Activities**，可讓您選擇哪些事件和網頁檢視應計為「使用」。
@@ -54,11 +54,11 @@ ms.locfileid: "91995759"
    > [!TIP]
    > 指定您的世代名稱，例如「參與的使用者 (5 天以上)」。 根據您是否要讓有權存取此 Appication Insights 資源的其他人看見此世代，將它儲存到「我的報告」或「共用報告」。
 
-6. 選取 [回到範本庫]****。
+6. 選取 [回到範本庫]。
 
 ### <a name="what-can-you-do-by-using-this-cohort"></a>此世代有何功能？
 
-開啟 [使用者] 工具。 在 [顯示]**** 下拉式方塊中，選擇您已根據**使用者所屬範圍**建立的世代。
+開啟 [使用者] 工具。 在 [顯示] 下拉式方塊中，選擇您已根據 **使用者所屬範圍** 建立的世代。
 
 此時，「使用者」工具已篩選出下列使用者世代：
 
@@ -73,17 +73,17 @@ ms.locfileid: "91995759"
 
 ## <a name="example-events-cohort"></a>範例：事件世代
 
-您也可以建立事件的世代。 在本節中，您會為事件和網頁檢視定義世代。 然後，您會從其他工具了解如何使用這些項目。 此世代可定義一組小組視為_有效使用_的事件，或一組與特定新功能有關的事件。
+您也可以建立事件的世代。 在本節中，您會為事件和網頁檢視定義世代。 然後，您會從其他工具了解如何使用這些項目。 此世代可定義一組小組視為 _有效使用_ 的事件，或一組與特定新功能有關的事件。
 
 1. 開啟 [世代] 工具。
 
 2. 選取 [ **範本資源庫** ] 索引標籤。您會看到各種世代的樣板集合。
 
-3. 選取 [事件選擇器]****。
+3. 選取 [事件選擇器]。
 
     ![事件選擇器的螢幕擷取畫面](./media/usage-cohorts/006.png)
 
-4. 在 [活動]**** 下拉式方塊中，選取要納入世代中的事件。
+4. 在 [活動] 下拉式方塊中，選取要納入世代中的事件。
 
 5. 儲存世代，並為它命名。
 
@@ -93,14 +93,14 @@ ms.locfileid: "91995759"
 
 ![逐步使用世代工具的動畫影像](./media/usage-cohorts/cohorts0001.gif)
 
-1. 開啟 [世代] 工具，選取 [範本庫]**** 索引標籤，然後選取 [空白使用者世代]****。
+1. 開啟 [世代] 工具，選取 [範本庫] 索引標籤，然後選取 [空白使用者世代]。
 
     ![空白使用者世代](./media/usage-cohorts/001.png)
 
     其中包含三個區段：
    * Markdown 文字區段；您可以在其中為其他小組成員詳細說明世代。
 
-   * 參數區段，可讓您自行設定參數，例如**活動**，以及上述兩個範例中的其他下拉式方塊。
+   * 參數區段，可讓您自行設定參數，例如 **活動**，以及上述兩個範例中的其他下拉式方塊。
 
    * 查詢區段，可讓您使用分析查詢定義世代。
 
@@ -116,7 +116,7 @@ ms.locfileid: "91995759"
     | where client_CountryOrRegion == "United Kingdom"
     ```
 
-3. 選取 [執行查詢]****。 如果您沒有看到使用者識別碼出現在資料表中，請變更為您的應用程式具有使用者的國家/地區。
+3. 選取 [執行查詢]。 如果您沒有看到使用者識別碼出現在資料表中，請變更為您的應用程式具有使用者的國家/地區。
 
 4. 儲存世代並為其命名。
 
@@ -131,7 +131,7 @@ _我已從特定國家/地區定義使用者的世代。當我比較 [使用者]
 
 ## <a name="learn-more"></a>深入了解
 
-* [分析查詢語言](../log-query/get-started-portal.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+* [分析查詢語言](../log-query/log-analytics-tutorial.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 * [使用者、會話、事件](usage-segmentation.md)
 * [使用者流程](usage-flows.md)
 * [使用量概觀](usage-overview.md)

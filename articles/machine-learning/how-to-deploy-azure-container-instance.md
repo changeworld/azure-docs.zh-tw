@@ -11,15 +11,14 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: 580459f3a5da8485bd92395f9b0b9745e28c023c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a0e9401842284cad29b297be5ce572fa53cfe774
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325256"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188083"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>將模型部署到 Azure 容器執行個體
-
 
 瞭解如何使用 Azure Machine Learning 在 Azure 容器實例上將模型部署為 web 服務 (ACI) 。 如果下列其中一個條件成立，請使用 Azure 容器實例：
 
@@ -29,7 +28,7 @@ ms.locfileid: "93325256"
 如需 ACI 的配額和區域可用性的資訊，請參閱 [Azure 容器實例的配額和區域可用性](../container-instances/container-instances-quotas.md) 文章。
 
 > [!IMPORTANT]
-> 強烈建議您先在本機上進行偵錯工具，再部署至 web 服務。如需詳細資訊，請參閱[本機的調試](./how-to-troubleshoot-deployment.md#debug-locally)程式
+> 強烈建議您先在本機上進行偵錯工具，再部署至 web 服務。如需詳細資訊，請參閱[本機的調試](./how-to-troubleshoot-deployment-local.md)程式
 >
 > 您也可以參考 Azure Machine Learning - [部署至本機筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
 

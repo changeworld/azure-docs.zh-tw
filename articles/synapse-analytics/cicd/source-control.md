@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: b7248a3a66e0eeca4d86568f80af82bf2d89701f
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: a5cb5831090987f1b620593843ddba817d8e68d4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96031131"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188117"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Azure Synapse Studio 中的原始檔控制
 
@@ -38,7 +38,7 @@ ms.locfileid: "96031131"
 
 ![從撰寫中設定程式碼存放庫設定](media/configure-repo-1.png)
 
-### <a name="configuration-method-2-management-hub"></a>設定方法2：管理中樞
+### <a name="configuration-method-2-manage-hub"></a>設定方法2：管理中樞
 
 移至 Synapse Studio 的管理中樞。 在 [**原始檔控制**] 區段中，選取 [ **Git** 設定]。 如果您沒有任何已連線的儲存機制，請按一下 [ **設定**]。
 
@@ -197,7 +197,7 @@ Azure Synapse Studio 一次只能有一個發佈分支。 當您指定新的發�
 -   **Synapse 即時模式**。 在 git 模式下發布之後，所有變更都會反映在 Synapse live 模式中。 在 Synapse live 模式中，發佈已停用。 而且，如果您已授與正確的許可權，您可以在即時模式中執行成品。 
 -   **編輯 Studio 中的構件**。 Synapse studio 是唯一可讓您啟用工作區原始檔控制，以及自動將變更同步至 git 的位置。 任何透過 SDK、PowerShell 進行的變更都不會同步至 git。 建議您在啟用 git 時，一律在 Studio 中編輯成品。
 
-## <a name="troubleshooting-git-integration"></a>針對 Git 整合進行疑難排解
+## <a name="troubleshooting-git-integration"></a>針對 git 整合進行疑難排解
 
 ### <a name="access-to-git-mode"></a>存取 git 模式 
 
@@ -217,6 +217,11 @@ Azure Synapse Studio 一次只能有一個發佈分支。 當您指定新的發�
 
 1. 建立提取要求以將變更合併到共同作業分支 
 
+## <a name="unsupported-features"></a>不支援的功能
+
+- Synapse Studio 不允許對認可或選擇性的資源發佈進行揀選選擇。 
+- Synapse Studio 不支援自訂認可訊息。
+- 根據設計，Studio 中的刪除動作將直接認可至 git
 
 ## <a name="next-steps"></a>後續步驟
 

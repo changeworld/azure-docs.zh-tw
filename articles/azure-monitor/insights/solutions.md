@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: c38fa77951aaeb5559dc2030f1401a896d7c238d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f9ced3dfeccdbac5f0eb220cf0e104679f263aac
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841915"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186859"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure 監視器中的監視解決方案
 
@@ -29,7 +29,7 @@ Azure 監視器中的 [解決方案 **總覽** ] 頁面會顯示 Log Analytics �
 
 [![螢幕擷取畫面顯示已選取解決方案的 [Azure 入口網站] 功能表和 [解決方案] 窗格中顯示的解決方案。](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
-監視解決方案可以包含多種的 Azure 資源，而您可以檢視解決方案隨附的任何資源，就像任何其他資源一樣。 例如，解決方案中包含的任何記錄查詢都會列在 [查詢總管](../log-query/get-started-portal.md#load-queries) 中的 [解決方案查詢] 下方。您在使用[記錄查詢](../log-query/log-query-overview.md) 執行臨機操作分析時，使用那些查詢。
+監視解決方案可以包含多種的 Azure 資源，而您可以檢視解決方案隨附的任何資源，就像任何其他資源一樣。 例如，解決方案中包含的任何記錄查詢都會列在 [[查詢瀏覽器](../log-query/log-analytics-tutorial.md)] 的 [**方案查詢**] 下。 您可以在使用 [記錄查詢](../log-query/log-query-overview.md)執行臨機操作分析時使用這些查詢。
 
 ## <a name="list-installed-monitoring-solutions"></a>列出已安裝的監視解決方案
 

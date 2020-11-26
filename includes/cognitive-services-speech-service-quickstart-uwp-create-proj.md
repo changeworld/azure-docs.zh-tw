@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.openlocfilehash: df9dbdf61dbc7d83f1cf74871ddc864488ed9d47
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097213"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188162"
 ---
 若要建立適用於通用 Windows 平台 (UWP) 開發的 Visual Studio 專案，您必須設定 Visual Studio 開發選項、建立專案、選取目標架構、設定音訊擷取，以及安裝語音 SDK。
 
@@ -66,7 +66,7 @@ ms.locfileid: "92097213"
 現在，請選取您的目標平台架構。 在 [Visual Studio] 工具列中， 尋找 [方案平台]  下拉式方塊。 (如果您沒有看到它，請選擇 [檢視]   > [工具列]   > [標準]  以顯示包含 [方案平台]  的工具列。)如果您執行的是 64 位元 Windows，請在下拉式方塊中選擇 [x64]  。 64 位元 Windows 也可執行 32 位元應用程式，因此您可以依需求選擇 [x86]  。
 
 > [!NOTE]
-> 語音 SDK 支援所有 Intel 相容處理器，但是**僅限 x64** 版本的 ARM 處理器。
+> 語音 SDK 支援所有 Intel 相容處理器，但是 **僅限 x64** 版本的 ARM 處理器。
 
 ### <a name="set-up-audio-capture"></a>設定音訊擷取
 

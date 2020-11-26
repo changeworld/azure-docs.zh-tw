@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: f97d04ca40e69ba2516744adfc9f1f455cba97c0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0bb252e227e4f23388929f2fca18769e0bd02e19
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896339"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187029"
 ---
 # <a name="tutorial---migrate-web-service-from-google-maps"></a>教學課程 - 從 Google Maps 遷移 Web 服務
 
@@ -132,7 +132,7 @@ Azure 地圖服務反向地理編碼 API 有一些無法在 Google Maps 中取�
 您可以使用地點搜尋 API，在 Google Maps 中搜尋景點資料。 此 API 提供了三種不同的方式供您搜尋景點：
 
 - **從文字尋找地點：** 根據景點名稱、地址或電話號碼來搜尋景點。
-- **鄰近搜尋** ：搜尋位於某位置一定距離內的景點。
+- **鄰近搜尋**：搜尋位於某位置一定距離內的景點。
 - **文字搜尋：** 使用包含景點和位置資訊的自由格式文字來搜尋地點。 例如，「紐約的披薩」或「主街附近的餐廳」。
 
 Azure 地圖服務會提供數個景點搜尋 API：
@@ -501,10 +501,10 @@ Azure 地圖服務針對下列程式設計語言提供了用戶端程式庫：
 > [路由的最佳做法](how-to-use-best-practices-for-routing.md)
 
 > [!div class="nextstepaction"]
-> [Azure 地圖服務 REST 服務 API 參考文件](https://docs.microsoft.com/rest/api/maps/)
+> [Azure 地圖服務 REST 服務 API 參考文件](/rest/api/maps/)
 
 > [!div class="nextstepaction"]
-> [程式碼範例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [程式碼範例](/samples/browse/?products=azure-maps)
 
 > [!div class="nextstepaction"]
 > [如何使用服務模組 (Web SDK)](how-to-use-best-practices-for-routing.md)

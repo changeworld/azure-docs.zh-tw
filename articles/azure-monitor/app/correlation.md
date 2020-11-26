@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 5d8adea95708f4c7bbe3e7113c3e39e0484159ee
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 634ac311ba62a134e47f9413d185d4fdf9d63cdb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018044"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186978"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遙測相互關聯
 
@@ -46,7 +46,7 @@ Application Insights 會定義分散遙測相互關聯的[資料模型](../../az
 
 在結果中，請注意，所有遙測項目都共用 `operation_Id` 這個根。 從頁面發出 Ajax 呼叫時，會將新的唯一識別碼 (`qJSXU`) 指派給相依性遙測，而 pageView 的識別碼則會用來做為 `operation_ParentId` 。 接著，伺服器要求會使用 Ajax 識別碼作為 `operation_ParentId`。
 
-| itemType   | NAME                      | 識別碼           | operation_ParentId | operation_Id |
+| itemType   | name                      | 識別碼           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Stock 頁面                |              | STYz               | STYz         |
 | 相依性 | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
@@ -147,7 +147,7 @@ Application Insights 也會定義相互關聯 HTTP 通訊協定的 [延伸](http
       distributedTracingMode: 2 // DistributedTracingModes.W3C
   ```
 > [!IMPORTANT] 
-> 若要查看啟用相互關聯所需的所有設定，請參閱 [JavaScript 相互關聯檔](/azure/azure-monitor/app/javascript#enable-correlation)。
+> 若要查看啟用相互關聯所需的所有設定，請參閱 [JavaScript 相互關聯檔](./javascript.md#enable-correlation)。
 
 ## <a name="telemetry-correlation-in-opencensus-python"></a>OpenCensus Python 中的遙測相互關聯
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: d7ec1edb779ddaf53cef02dd6e83bb3e719d0b4e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b096b24acd5cf65f6ad3e9eabb1d536b3aae0168
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503550"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187063"
 ---
 # <a name="tutorial---migrate-an-android-app-from-google-maps"></a>教學課程 - 從 Google 地圖遷移 Android 應用程式
 
@@ -171,7 +171,7 @@ Azure 地圖服務 Android SDK 支援的最低 Android 版本為 API 21：Androi
     }
     ```
 
-2. 更新 **app/build.gradle** ，並於其中新增下列程式碼：
+2. 更新 **app/build.gradle**，並於其中新增下列程式碼：
 
     1. 確定專案的 **minSdkVersion** 是 API 21 或更新版本。
 
@@ -769,7 +769,7 @@ mapControl.onReady(map -> {
 > [在 Android 地圖中新增符號圖層](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [在 Android 地圖中新增圖形](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+> [在 Android 地圖中新增圖形](./how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [變更 Android 地圖中的地圖樣式](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [變更 Android 地圖中的地圖樣式](./set-android-map-styles.md)

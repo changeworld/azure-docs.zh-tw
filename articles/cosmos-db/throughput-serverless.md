@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: f6fbd963966dd1a5c433a97cb8d37ae22998be4c
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.date: 11/25/2020
+ms.openlocfilehash: 1943aae3a2b01490dca687bcdea99d76da238d51
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491183"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187250"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>如何在布建的輸送量和無伺服器之間進行選擇
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -25,35 +25,26 @@ Azure Cosmos DB 有兩種不同的容量模式：布 [建的輸送量](set-throu
 | 準則 | 佈建的輸送量 | 無伺服器 |
 | --- | --- | --- |
 | 狀態 | 正式推出 | 預覽狀態 |
-| 最適用於 | 需要可預測效能的任務關鍵性工作負載 | 使用輕量流量的小型至中型非關鍵性工作負載 |
+| 最適用於 | 需要可預測效能的任務關鍵性工作負載 | 使用輕量和間歇流量的小型到中型非關鍵性工作負載 |
 | 運作方式 | 針對每個容器，您可以布建以每秒 [要求單位](request-units.md) 數表示的輸送量量。 每秒，此數量的要求單位適用于您的資料庫作業。 您可以手動更新布建的 [輸送量，或使用自動](provision-throughput-autoscale.md)調整自動調整。 | 您可以對容器執行資料庫作業，而不需要布建任何容量。 |
-| 每個帳戶的限制 | Azure 區域數目上限：無限制 | Azure 區域數目上限：1 |
-| 每個容器的限制 | 最大輸送量：無限制<br>儲存體上限：無限制 | 最大輸送量： 5000 RU/秒<br>儲存體上限： 50 GB |
+| 地理分散 | 可用 (不限數量的 Azure 區域)  | 無法使用 (無伺服器帳戶只能在1個 Azure 區域中執行)  |
+| 每個容器的儲存體上限 | 無限制 | 50 GB |
 | 效能 | SLA 涵蓋99.99% 到99.999% 的可用性<br>SLA 所涵蓋的點讀取和寫入 < 10 毫秒延遲<br>SLA 涵蓋99.99% 的保證輸送量 | SLA 涵蓋99.9% 到99.99% 的可用性<br>適用于點讀取的10毫秒延遲，以及 SLO 所涵蓋的寫入 < 30 毫秒 <<br>SLO 所涵蓋的 95% burstability |
 | 計費模式 | 我們會每小時根據佈建的 RU/秒來收取費用，而不論使用的 RU 數目為何。 | 系統會根據您的資料庫作業所耗用的 ru 量，以每小時為單位來計費。 |
 
 > [!IMPORTANT]
 > 當無伺服器正式推出時，有些無伺服器限制可能會分階段減緩或移除，而 **您的意見** 反應將有助於我們決定！ 請與我們分享您無伺服器體驗的詳細資訊： [azurecosmosdbserverless@service.microsoft.com](mailto:azurecosmosdbserverless@service.microsoft.com) 。
 
-## <a name="burstability-and-expected-consumption"></a>Burstability 和預期的耗用量
+## <a name="estimating-your-expected-consumption"></a>估計預期的耗用量
 
-在某些情況下，應該不清楚是否應針對指定的工作負載選擇布建的輸送量或無伺服器。 若要協助進行這種決策，您可以預估：
+在某些情況下，應該不清楚是否應針對指定的工作負載選擇布建的輸送量或無伺服器。 為了協助進行這項決定，您可以估計整體 **預期的耗用量**，也就是您可以在一個月內取用的 ru 總數 (您可以使用 [此處](plan-manage-costs.md#estimating-serverless-costs) 所示的表格協助來評估這一點) 
 
-- 您工作負載的 **burstability** 需求，也就是您在一秒內需要取用的 ru 數量上限
-- 您的整體 **預期耗用量** ，也就是您可以在一個月內取用的 ru 總數 (您可以 [使用如下所示的](plan-manage-costs.md#estimating-serverless-costs) 表格協助來評估這一點) 
-
-如果您的工作負載需要高載超過每秒 5000 RU，則應該選擇布建的輸送量，因為無伺服器容器無法高載超過此限制。 如果沒有，您可以根據預期的耗用量來比較這兩種模式的成本。
-
-**範例 1** ：工作負載預期會高載至最多 10000 RU/秒，並在一個月內耗用總計20000000個 RU。
-
-- 只有布建的輸送量模式可以提供 10000 RU/秒的輸送量
-
-**範例 2** ：工作負載預期會高載至最多 500 RU/秒，並在一個月內耗用總計20000000個 RU。
+**範例 1**：工作負載預期會高載至最多 500 RU/秒，並在一個月內耗用總計20000000個 RU。
 
 - 在布建的輸送量模式中，您會布建 500 RU/秒的容器，每月成本： $0.008 * 5 * 730 = **$29.20**
 - 在無伺服器模式中，您需要支付已使用的 ru： $0.25 * 20 = **$5.00**
 
-**範例 3** ：工作負載預期會高載至最多 500 RU/秒，並在一個月內耗用總計250000000個 RU。
+**範例 2**：工作負載預期會高載至最多 500 RU/秒，並在一個月內耗用總計250000000個 RU。
 
 - 在布建的輸送量模式中，您會布建 500 RU/秒的容器，每月成本： $0.008 * 5 * 730 = **$29.20**
 - 在無伺服器模式中，您需要支付已使用的 ru： $0.25 * 250 = **$62.50**
