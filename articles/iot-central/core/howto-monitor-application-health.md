@@ -7,12 +7,12 @@ ms.date: 05/14/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 66f0846ab8fcfc316c4b40ad9e51b402a37e874d
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1fb17d56c546511fee291f30b103a5310c8015cc
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122904"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122274"
 ---
 # <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>監視連線到 IoT Central 應用程式之裝置的整體健全狀況
 
@@ -31,11 +31,11 @@ ms.locfileid: "92122904"
 
 ## <a name="view-metrics-in-the-azure-portal"></a>查看 Azure 入口網站中的計量
 
-下列步驟假設您有一個 [IoT Central 的應用程式](./quick-deploy-iot-central.md) ，且有一些 [連接的裝置](./tutorial-connect-device-nodejs.md)。
+下列步驟假設您有一個 [IoT Central 的應用程式](./quick-deploy-iot-central.md) ，且有一些 [連接的裝置](./tutorial-connect-device.md)。
 
 若要在入口網站中查看 IoT Central 計量：
 
-1. 在入口網站中流覽至您的 IoT Central 應用程式資源。 根據預設，IoT Central 資源位於名為 **iotc-explorer**的資源群組中。
+1. 在入口網站中流覽至您的 IoT Central 應用程式資源。 根據預設，IoT Central 資源位於名為 **iotc-explorer** 的資源群組中。
 1. 若要從應用程式的度量建立圖表，請選取 [**監視**] 區段中的 [**計量**]。
 
 ![Azure 計量](media/howto-monitor-application-health/metrics.png)
@@ -58,6 +58,6 @@ ms.locfileid: "92122904"
 
 - 雖然計量可能會顯示裝置到雲端通訊的子集，裝置與雲端之間的所有通訊都 [會計為計費的訊息](https://azure.microsoft.com/pricing/details/iot-central/)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 現在您已瞭解如何使用應用程式範本，建議的下一個步驟是瞭解如何 [從 Azure 入口網站管理 IoT Central](howto-manage-iot-central-from-portal.md)

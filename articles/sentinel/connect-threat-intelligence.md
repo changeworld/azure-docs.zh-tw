@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: 223f3e45f25e3aed3ed6fa15e5b9ea04b17f6c59
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 205cc6eea5d1ac3be2d0e266621067dc8e20d2f9
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023903"
+ms.locfileid: "96121737"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>連接威脅情報提供者的資料
 
@@ -56,10 +56,15 @@ Azure Sentinel 可讓您匯入組織所使用的威脅指標，進而增強您�
 
     如需詳細資訊，請參閱頁面上的 [ThreatConnect](https://threatconnect.com/integrations/) 整合和尋找 Microsoft Graph 安全性 API。
 
+- [EclecticIQ 平臺](https://www.eclecticiq.com/solutions)
+
+- [ThreatQ 威脅情報平臺](https://www.threatq.com/)
+
+    如需詳細資訊和引導式指示，請參閱 [ThreatQ 整合的 Microsoft Sentinel Connector](https://appsource.microsoft.com/product/web-apps/threatquotientinc1595345895602.microsoft-sentinel-connector-threatq?src=health&tab=Overview)。
 
 ## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>將 Azure Sentinel 連接到您的威脅情報平臺
 
-### <a name="prerequisites"></a>Prerequisites  
+### <a name="prerequisites"></a>必要條件  
 
 - 全域管理員或安全性系統管理員的 Azure AD 角色，以將許可權授與使用與 Microsoft Graph 安全性 tiIndicators API 直接整合的提示產品或自訂應用程式。
 
@@ -89,7 +94,7 @@ Azure Sentinel 可讓您匯入組織所使用的威脅指標，進而增強您�
 
 ## <a name="connect-azure-sentinel-to-taxii-servers"></a>將 Azure Sentinel 連線到 TAXII 伺服器
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 - Azure Sentinel 工作區的讀取和寫入權限，以儲存您的威脅指標。
 
