@@ -16,12 +16,18 @@
       href: tutorial-delete-cluster.md
 - name: 操作指南
   items:
-    - name: 網路
+    - name: 網路功能
       items:
         - name: 建立私人 ARO 叢集
           href: howto-create-private-cluster-4x.md
         - name: 設定 DNS 轉寄站
           href: dns-forwarding.md
+    - name: 儲存體
+      items:
+        - name: 建立 Azure 檔案儲存體 Storageclass
+          href: howto-create-a-storageclass.md
+        - name: 使用內建的容器登錄
+          href: built-in-container-registry.md
     - name: 安全性和驗證
       items:
         - name: 設定 Azure Active Directory 驗證 (CLI)
@@ -83,7 +89,7 @@
               href: cluster-administration-security-context-constraints.md
 - name: 概念
   items:
-    - name: 網路
+    - name: 網路功能
       href: concepts-networking.md
     - name: 從 ARO 3.11 遷移至 ARO 4
       href: migration.md

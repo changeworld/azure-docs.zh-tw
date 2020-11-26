@@ -244,7 +244,7 @@
     - name: Microsoft Graph REST API 搶鮮版 (Beta)
       href: /graph/api/resources/authenticationmethods-overview?view=graph-rest-beta
     - name: 服務限制
-      href: ../users-groups-roles/directory-service-limits-restrictions.md
+      href: ../enterprise-users/directory-service-limits-restrictions.md
 - name: 資源
   items:
     - name: Azure 意見反應論壇

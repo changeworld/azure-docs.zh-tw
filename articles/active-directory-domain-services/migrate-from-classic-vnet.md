@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: joflore
-ms.openlocfilehash: a66268c0cd0c2382b412873ec7f78b87d3491594
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: aae665b5982ab2b5c1163bb9297eda5f2e5d344a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968169"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175367"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>將 Azure Active Directory Domain Services 從傳統虛擬網路模型遷移至 Resource Manager
 
@@ -176,7 +176,7 @@ Azure AD DS 通常會使用位址範圍中的前兩個可用 IP 位址，但不�
 
     Azure AD DS 需要一個網路安全性群組來保護受控網域所需的連接埠，並封鎖所有其他的傳入流量。 此網路安全性群組可作為鎖定受控網域存取權的額外一層保護。 若要檢視所需的連接埠，請參閱[網路安全性群組與必要連接埠][network-ports]。
 
-    如果您使用安全 LDAP，請在網路安全性群組中新增規則，以允許 *TCP* 埠 *636*的連入流量。 如需詳細資訊，請參閱 [鎖定透過網際網路的安全 LDAP 存取](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet)
+    如果您使用安全 LDAP，請在網路安全性群組中新增規則，以允許 *TCP* 埠 *636* 的連入流量。 如需詳細資訊，請參閱 [鎖定透過網際網路的安全 LDAP 存取](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet)
 
     請記下此目標資源群組、目標虛擬網路和目標虛擬網路子網。 這些資源名稱會在遷移過程中使用。
 
@@ -214,7 +214,7 @@ Azure PowerShell 用來準備要進行遷移的受控網域。 這些步驟包�
    $subscriptionId = 'yourSubscriptionId'
    ```
 
-1. 現在 `Migrate-Aadds` 使用 *-Prepare* 參數執行 Cmdlet。 為您自己的受控網域（例如*aaddscontoso.com*）提供 *-ManagedDomainFqdn* ：
+1. 現在 `Migrate-Aadds` 使用 *-Prepare* 參數執行 Cmdlet。 為您自己的受控網域（例如 *aaddscontoso.com*）提供 *-ManagedDomainFqdn* ：
 
     ```powershell
     Migrate-Aadds `
@@ -228,7 +228,7 @@ Azure PowerShell 用來準備要進行遷移的受控網域。 這些步驟包�
 
 在準備和備份受控網域的情況下，可以遷移網域。 此步驟會使用 Resource Manager 部署模型來重建 Azure AD DS 網域控制站 Vm。 此步驟可能需要1到3小時的時間才能完成。
 
-`Migrate-Aadds`使用 *-Commit*參數執行 Cmdlet。 針對您在上一節中備妥的受控網域提供 *-ManagedDomainFqdn* ，例如 *aaddscontoso.com*：
+`Migrate-Aadds`使用 *-Commit* 參數執行 Cmdlet。 針對您在上一節中備妥的受控網域提供 *-ManagedDomainFqdn* ，例如 *aaddscontoso.com*：
 
 指定目標資源群組，其中包含您想要遷移 Azure AD DS 的虛擬網路，例如 *myResourceGroup*。 提供目標虛擬網路（例如 *myVnet*）和子網，例如 *DomainServices*。
 
@@ -302,7 +302,7 @@ Azure AD DS 會公開 audit 記錄檔，以協助疑難排解和查看網域控�
 
 1. 針對受控網域設定較少限制的[密碼原則][password-policy]，並觀察 audit 記錄檔中的事件。
 1. 如果有任何服務帳戶使用審核記錄中所識別的過期密碼，請使用正確的密碼來更新這些帳戶。
-1. 如果 VM 公開至網際網路，請查看具有高登入嘗試的一般帳戶名稱，例如 *系統管理員*、 *使用者*或 *來賓* 。 可能的話，請更新這些 Vm，以使用較不一般命名的帳戶。
+1. 如果 VM 公開至網際網路，請查看具有高登入嘗試的一般帳戶名稱，例如 *系統管理員*、 *使用者* 或 *來賓* 。 可能的話，請更新這些 Vm，以使用較不一般命名的帳戶。
 1. 在 VM 上使用網路追蹤，以找出攻擊的來源，並封鎖這些 IP 位址無法嘗試登入。
 1. 當有最少的鎖定問題時，請視需要將更細緻的密碼原則更新為嚴格的限制。
 
@@ -314,7 +314,7 @@ Azure AD DS 會公開 audit 記錄檔，以協助疑難排解和查看網域控�
 
 如果您在步驟2中執行 PowerShell Cmdlet 來準備要進行遷移，或在步驟3中執行遷移本身時發生錯誤，受控網域可以回復成原始設定。 此復原需要原始的傳統虛擬網路。 復原之後，IP 位址可能仍會變更。
 
-`Migrate-Aadds`使用 *-Abort*參數執行 Cmdlet。 針對您在上一節中備妥的受控網域提供 *-ManagedDomainFqdn* ，例如 *aaddscontoso.com*和傳統虛擬網路名稱，例如 *myClassicVnet*：
+`Migrate-Aadds`使用 *-Abort* 參數執行 Cmdlet。 針對您在上一節中備妥的受控網域提供 *-ManagedDomainFqdn* ，例如 *aaddscontoso.com* 和傳統虛擬網路名稱，例如 *myClassicVnet*：
 
 ```powershell
 Migrate-Aadds `
@@ -360,7 +360,7 @@ Migrate-Aadds `
 [notifications]: notifications.md
 [password-policy]: password-policy.md
 [secure-ldap]: tutorial-configure-ldaps.md
-[migrate-iaas]: ../virtual-machines/windows/migration-classic-resource-manager-overview.md
+[migrate-iaas]: ../virtual-machines/migration-classic-resource-manager-overview.md
 [join-windows]: join-windows-vm.md
 [tutorial-create-management-vm]: tutorial-create-management-vm.md
 [troubleshoot-domain-join]: troubleshoot-domain-join.md

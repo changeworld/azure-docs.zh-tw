@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 224ccaeace91288171db42d2b8b8cf8c21a352e0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 99da9b787bfe06bece8b8dafdafc257336dddf63
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652513"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176183"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>針對 Azure Active Directory 傳遞驗證進行疑難排解
 
@@ -72,7 +72,7 @@ ms.locfileid: "94652513"
  ``` 
 4. 當系統提示您輸入認證時，請輸入用來登入 (的相同使用者名稱和密碼 https://login.microsoftonline.com) 。
 
-如果您收到相同的使用者名稱/密碼錯誤，這表示傳遞驗證代理程式正常運作，問題可能是內部部署 UPN 無法路由傳送。 若要深入瞭解，請參閱設定 [替代登入識別碼]( /windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More)。
+如果您收到相同的使用者名稱/密碼錯誤，這表示傳遞驗證代理程式正常運作，問題可能是內部部署 UPN 無法路由傳送。 若要深入瞭解，請參閱設定 [替代登入識別碼](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)。
 
 > [!IMPORTANT]
 > 如果 Azure AD Connect 伺服器未加入網域，則 [Azure AD Connect：必要條件](./how-to-connect-install-prerequisites.md#installation-prerequisites)中所述的需求，就會發生不正確使用者名稱/密碼問題。

@@ -445,61 +445,72 @@
           href: quickstart-create-apache-spark-pool-studio.md
     - name: 教學課程
       items:
-        - name: 執行 Apache Spark 應用程式
-          href: ./spark/intellij-tool-synapse.md
-          displayname: intellij
-        - name: 執行適用於 Spark 集區的 PySpark 應用程式
-          href: ./spark/vscode-tool-synapse.md
-        - name: Spark 作業定義
+        - name: Synapse Studio 筆記本的資料視覺效果
+          href: ./spark/apache-spark-data-visualization-tutorial.md
+        - name: 使用 Apache Spark 和 Power BI 分析資料
+          href: ./spark/apache-spark-to-power-bi.md
+        - name: 建立機器學習模型
+          href: ./spark/apache-spark-machine-learning-mllib-notebook.md
+        - name: 提交 Spark 作業定義
           href: ./spark/apache-spark-job-definitions.md
     - name: 概念
       items:
-        - name: Apache Spark 概念
+        - name: Apache Spark
           href: ./spark/apache-spark-concepts.md
-        - name: 什麼是 Delta Lake
+        - name: Delta Lake
           href: ./spark/apache-spark-what-is-delta-lake.md
-        - name: Delta Lake 功能概觀
-          href: ./spark/apache-spark-delta-lake-overview.md
-        - name: Apache Spark 效能
-          href: ./spark/apache-spark-performance.md
-        - name: 使用 Hyperspace 索引將 Apache Spark 的效能最佳化
-          href: ./spark/apache-spark-performance-hyperspace.md
         - name: Apache Spark 自動調整行為
           href: ./spark/apache-spark-autoscale.md
-        - name: 部署
+        - name: Synapse 執行階段
+          href: ./spark/apache-spark-version-support.md
+        - name: 機器學習服務
+          href: ./spark/apache-spark-machine-learning-concept.md
+        - name: Notebooks
+          href: ./spark/apache-spark-notebook-concept.md
+        - name: 監視工具
+          href: monitoring/how-to-monitor-spark-applications.md
+    - name: 操作指南
+      items:
+        - name: 使用 Delta Lake
+          href: ./spark/apache-spark-delta-lake-overview.md
+        - name: 管理媒體櫃
+          href: ./spark/apache-spark-azure-portal-add-libraries.md
+        - name: 使用筆記本
           items:
-            - name: 程式庫
-              items:
-                - name: 新增和管理程式庫
-                  href: ./spark/apache-spark-azure-portal-add-libraries.md
-                - name: 執行階段語言和程式庫支援
-                  href: ./spark/apache-spark-version-support.md
-            - name: Azure Synapse Studio 筆記本
+            - name: 管理筆記本
               href: ./spark/apache-spark-development-using-notebooks.md
-            - name: 使用 TokenLibrary 保護認證
-              href: ./spark/apache-spark-secure-credentials-with-tokenlibrary.md
+            - name: 顯現資料
+              href: ./spark/apache-spark-data-visualization.md
+            - name: 使用 IntelliJ 外掛程式連線到 Spark
+              href: ./spark/intellij-tool-synapse.md
+            - name: 使用 VSCode 連線到 Spark 集區
+              href: ./spark/vscode-tool-synapse.md
+        - name: 探索語言
+          items:
             - name: 適用於 Apache Spark 的 .NET
               href: ./spark/spark-dotnet.md
-        - name: 監視
+        - name: 安全性
+          items:
+            - name: 使用 TokenLibrary 保護認證
+              href: ./spark/apache-spark-secure-credentials-with-tokenlibrary.md
+        - name: 效能最佳化
+          items:
+            - name: Apache Spark 效能
+              href: ./spark/apache-spark-performance.md
+            - name: 使用 Hyperspace 索引將 Apache Spark 的效能最佳化
+              href: ./spark/apache-spark-performance-hyperspace.md
+        - name: 管理和監視
           items:
             - name: Spark 集區記錄伺服器
               href: ./spark/apache-spark-history-server.md
-    - name: 操作指南
-      items:
-        - name: 管理和監視
-          items:
-            - name: Apache Spark 應用程式
-              href: monitoring/how-to-monitor-spark-applications.md
-            - name: Apache Spark 應用程式詳細資料
+            - name: 監視 Spark 應用程式
               href: monitoring/apache-spark-applications.md
-            - name: 使用 Apache Spark 分析 JSON
-              href: how-to-analyze-complex-schema.md
         - name: 內嵌和準備資料
           items:
-            - name: 匯入資料倉儲
-              items:
-                - name: 使用 Apache Spark 匯入和匯出資料
-                  href: ./spark/synapse-spark-sql-pool-import-export.md
+            - name: SQL 資料倉儲
+              href: ./spark/synapse-spark-sql-pool-import-export.md
+            - name: 分析 JSON
+              href: how-to-analyze-complex-schema.md
 - name: Synapse Link
   items:
     - name: 概觀
@@ -616,6 +627,8 @@
               href: ../data-factory/connector-azure-database-for-mysql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 適用於 PostgreSQL 的 Azure 資料庫
               href: ../data-factory/connector-azure-database-for-postgresql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Azure Databricks Delta Lake
+              href: ../data-factory/connector-azure-databricks-delta-lake.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure 檔案儲存體
               href: ../data-factory/connector-azure-file-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure SQL Database
@@ -959,8 +972,8 @@
               href: ../data-factory/data-factory-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 連接器疑難排解
               href: ../data-factory/connector-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: 資料複製工具疑難排解
-              href: ../data-factory/copy-data-tool-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: 安全性和存取控制
+              href: ../data-factory/security-and-access-control-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 自我裝載整合執行階段疑難排解
               href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
 - name: Machine Learning
@@ -973,15 +986,22 @@
       items:
         - name: 建立新的 Azure Machine Learning 連結服務
           href: machine-learning/quickstart-integrate-azure-machine-learning.md
+    - name: 概念
+      items:
+        - name: 將模型定型
+          href: ./spark/apache-spark-machine-learning-training.md
     - name: 教學課程
       items:
+        - name: 使用 Apache Spark 將資料視覺化
+          href: ./spark/apache-spark-data-visualization-tutorial.md
+          displayname: machine learning
         - name: SQL 集區的模型評分精靈
           href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
           displayname: machine learning
         - name: 使用 Azure AutoML 執行迴歸實驗
           href: ./spark/apache-spark-azure-machine-learning-tutorial.md
           displayname: machine learning
-        - name: 建立 Apache Spark 機器學習應用程式
+        - name: 使用 Apache Spark MLlib 建立機器學習模型
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
           displayname: machine learning
 - name: 參考
@@ -1046,5 +1066,9 @@
           href: ./sql-data-warehouse/sql-data-warehouse-partner-data-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: 機器學習服務和 AI
           href: ./sql-data-warehouse/sql-data-warehouse-partner-machine-learning-ai.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: 系統整合
+          href: ./sql-data-warehouse/sql-data-warehouse-partner-system-integration.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: 公用預覽合作夥伴
           href: ./sql-data-warehouse/sql-data-warehouse-partner-launch.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: 第三方應用程式的相容性問題
+          href: ./sql-data-warehouse/sql-data-warehouse-partner-compatibility-issues.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

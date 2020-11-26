@@ -11,9 +11,9 @@
 - name: 快速入門
   expanded: true
   items:
-    - name: .NET Core
+    - name: ASP.NET Core
       href: quickstart-dotnetcore.md
-    - name: .NET Framework
+    - name: ASP.NET
       href: quickstart-dotnet-framework.md
     - name: Node.js
       href: quickstart-nodejs.md
@@ -52,9 +52,9 @@
           href: scenario-secure-app-clean-up-resources.md
     - name: App with DB
       items:
-        - name: .NET Core with SQL DB
+        - name: ASP.NET Core 搭配 SQL DB
           href: tutorial-dotnetcore-sqldb-app.md
-        - name: 具有 SQL DB 的 .NET Framework
+        - name: ASP.NET 搭配 SQL DB
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: PHP with MySQL
           href: tutorial-php-mysql-app.md

@@ -12,14 +12,14 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 036c40395e5da5ebc09a87e420893d7dbd2ec668
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94da22fbb2940bddaad1324bedc8759706eca37b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116796"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173561"
 ---
-# <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft 身分識別平臺的最佳作法和建議
+# <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft 身分識別平台最佳做法和建議
 
 本文將重點說明與 Microsoft 身分識別平臺整合時的最佳作法、建議和一般 oversights。  這份檢查清單會引導您進行高品質且安全的整合。 定期檢查這份清單，以確保您保有應用程式與身分識別平臺整合的品質和安全性。 檢查清單不適合用來檢查您的整個應用程式。 當我們對平臺進行改善時，檢查清單的內容可能會變更。
 
@@ -28,11 +28,11 @@ ms.locfileid: "88116796"
 使用下列檢查清單，以確保您的應用程式能夠有效地與 [Microsoft 身分識別平臺](./index.yml)整合。
 
 > [!TIP]
-> Azure 入口網站中的 [ *整合助理* ] 可協助您套用許多這些最佳作法和建議。 在 Azure 入口網站中選取您的任何 [應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ，然後選取 [ **整合助理] ([預覽]) ** 功能表項目，以開始使用助理。
+> Azure 入口網站中的 [ *整合助理* ] 可協助您套用許多這些最佳作法和建議。 在 Azure 入口網站中選取您的任何 [應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ，然後選取 [ **整合助理] ([預覽])** 功能表項目，以開始使用助理。
 
-## <a name="basics"></a>基本概念
+## <a name="basics"></a>基本
 
-![核取方塊 ](./media/active-directory-integration-checklist/checkbox-two.svg) ：閱讀並瞭解 [Microsoft 平臺原則](https://go.microsoft.com/fwlink/?linkid=2090497&clcid=0x409)。 確定您的應用程式符合所述的條款，因為它們是設計來保護使用者和平臺。
+![核取方塊 ](./media/active-directory-integration-checklist/checkbox-two.svg) ：閱讀並瞭解 [Microsoft 平臺原則](/legal/microsoft-identity-platform/terms-of-use)。 確定您的應用程式符合所述的條款，因為它們是設計來保護使用者和平臺。
 
 ## <a name="ownership"></a>擁有權
 

@@ -13,12 +13,12 @@ ms.date: 10/09/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 77cb3b0c13a6bfe41c6f7a1a5a0f9d7278aea1db
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: b82e300128a41f8315132e1ff93af33c853edb15
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930147"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173510"
 ---
 # <a name="microsoft-identity-web-authentication-library"></a>Microsoft Identity Web 驗證程式庫
 
@@ -58,14 +58,14 @@ dotnet new --install Microsoft.Identity.Web.ProjectTemplates::1.0.0
 
 下圖顯示支援的應用程式類型和其相關引數的高階觀點：
 
-:::image type="content" source="media/microsoft-identity-web-overview/diagram-microsoft-identity-web-templates.png" lightbox="media/microsoft-identity-web-overview/diagram-microsoft-identity-web-templates.png" alt-text="適用于 Microsoft Identity Web 的可用點 net CLI 專案範本圖表&quot;:::
-<br /><sup><b>*</b></sup>`MultiOrg`不支援 `webapi2` ，但可以在*appsettings.js*中啟用，方法是將租使用者設定為 `common` 或`organizations`
+:::image type="content" source="media/microsoft-identity-web-overview/diagram-microsoft-identity-web-templates.png" lightbox="media/microsoft-identity-web-overview/diagram-microsoft-identity-web-templates.png" alt-text="適用于 Microsoft Identity Web 的可用點 net CLI 專案範本圖表":::
+<br /><sup><b>*</b></sup>`MultiOrg`不支援 `webapi2` ，但可以在 *appsettings.js* 中啟用，方法是將租使用者設定為 `common` 或`organizations`
 <br /><sup><b>**</b></sup>`--calls-graph`Azure AD B2C 不支援
 
 此範例 .NET CLI 命令取自我們的 [Blazor Server 教學](tutorial-blazor-server.md)課程，會產生新的 Blazor 伺服器專案，其中包含正確的套件和起始程式碼 (顯示) 的預留位置值：
 
 ```dotnetcli
-dotnet new blazorserver2 --auth SingleOrg --calls-graph --client-id &quot;00000000-0000-0000-0000-000000000000&quot; --tenant-id &quot;11111111-1111-1111-1111-111111111111" --output my-blazor-app
+dotnet new blazorserver2 --auth SingleOrg --calls-graph --client-id "00000000-0000-0000-0000-000000000000" --tenant-id "11111111-1111-1111-1111-111111111111" --output my-blazor-app
 ```
 
 #### <a name="github"></a>GitHub
@@ -74,7 +74,7 @@ Microsoft Identity Web 是裝載在 GitHub 上的開放原始碼專案： <a hre
 
 存放 [庫 wiki](https://github.com/AzureAD/microsoft-identity-web/wiki) 包含其他檔，如果您需要協助或發現錯誤，您可以提出 [問題](https://github.com/AzureAD/microsoft-identity-web/issues)。
 
-## <a name="features"></a>特性
+## <a name="features"></a>功能
 
 如果您使用預設的 ASP.NET 3.1 專案範本，Microsoft Identity Web 包含數個未提供的功能。
 
@@ -82,7 +82,7 @@ Microsoft Identity Web 是裝載在 GitHub 上的開放原始碼專案： <a hre
 |------------------------------------------------------------------------------------------|----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | 在 web 應用程式中登[入使用者](scenario-web-app-sign-user-app-configuration.md)             | <li>工作或學校帳戶<li>社交身分識別 (與 Azure AD B2C)  | <li>工作或學校帳戶<li>個人 Microsoft 帳戶<li>社交身分識別 (與 Azure AD B2C)      |
 | [保護 web Api](scenario-protected-web-api-app-configuration.md#microsoftidentityweb) | <li>工作或學校帳戶<li>社交身分識別 (與 Azure AD B2C)  | <li>工作或學校帳戶<li>個人 Microsoft 帳戶<li>社交身分識別 (與 Azure AD B2C)      |
-| 多租使用者應用程式中的簽發者驗證                                                   | 否                                                                   | 是，適用于 [所有](authentication-national-cloud.md) 雲端和 [Azure AD B2C](/azure/active-directory-b2c) |
+| 多租使用者應用程式中的簽發者驗證                                                   | 否                                                                   | 是，適用于 [所有](authentication-national-cloud.md) 雲端和 [Azure AD B2C](../../active-directory-b2c/index.yml) |
 | Web 應用程式/API [呼叫 Microsoft graph] [案例-API-呼叫-graph]                             | 否                                                                   | 是                                                                                                     |
 | Web 應用程式/API [呼叫 web API] [案例-api-呼叫-api]                                       | 否                                                                   | 是                                                                                                     |
 | 支援憑證認證                                                         | 否                                                                   | 是，包括 Azure Key Vault                                                                          |
@@ -95,7 +95,7 @@ Microsoft Identity Web 是裝載在 GitHub 上的開放原始碼專案： <a hre
 
 若要查看 Microsoft 身分識別 Web 的運作方式，請嘗試我們的 Blazor Server 教學課程：
 
-[教學課程：建立使用 Microsoft 身分識別平臺進行驗證的 Blazor 伺服器應用程式](tutorial-blazor-server.md)
+[教學課程：建立使用 Microsoft 身分識別平台進行驗證的 Blazor Server 應用程式](tutorial-blazor-server.md)
 
 GitHub 上的 Microsoft 身分識別 Web wiki 包含程式庫各個層面的廣泛參考檔集。 例如，您可以在這裡找到憑證使用方式、累加式同意和條件式存取參考：
 

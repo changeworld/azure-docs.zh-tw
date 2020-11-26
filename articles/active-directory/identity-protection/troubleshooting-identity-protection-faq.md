@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58f0ffa8bd43a8428603334b6c89fa1cf36315b5
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: ba22745923f1b157c477dce0b5704c7e278e748e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987332"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175996"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>常見問題身分識別保護 Azure Active Directory 的常見問題
 
@@ -38,7 +38,7 @@ ms.locfileid: "94987332"
 ## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>為什麼我的登入被封鎖，但 Identity Protection 未產生風險偵測？
 登入可能會因為許多原因而遭到封鎖。 請務必注意，只有在驗證要求中使用正確的認證時，身分識別保護才會產生風險偵測。 如果使用者使用不正確的認證，則不會受到 Identity Protection 的旗標，除非有不良執行者使用正確的認證，否則不會有認證洩漏的風險。 有一些原因會封鎖使用者不會產生身分識別保護偵測的簽章，包括：
 * 由於 IP 位址有惡意活動，因此 **ip 可能已被封鎖** 。 IP 封鎖的訊息不會區分認證是否正確。 如果 IP 遭到封鎖且未使用正確的認證，則不會產生身分識別保護偵測
-* **[Smart 鎖定](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)** 可以封鎖帳戶在多次嘗試失敗後登入
+* **[Smart 鎖定](../authentication/howto-password-smart-lockout.md)** 可以封鎖帳戶在多次嘗試失敗後登入
 * 可以強制執行 **條件式存取原則** ，以使用風險層級以外的條件來封鎖驗證要求
 
 ### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>如何取得特定類型偵測的報告？
@@ -93,6 +93,4 @@ IP 地理位置對應對整個產業而言是項挑戰。 如果您認為登入�
 
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>當與登入相關聯的偵測其風險為低或中時，為何該登入的「登入風險 (彙總)」分數為「高」？
 
-高彙總風險分數是根據登入的其他特徵而定，或根據為該登入引發了多個偵測的這項事實而定。 相反地，即使與該登入相關聯的偵測為「高」風險，登入的「登入風險 (彙總)」也有可能為「中」。 
-
-
+高彙總風險分數是根據登入的其他特徵而定，或根據為該登入引發了多個偵測的這項事實而定。 相反地，即使與該登入相關聯的偵測為「高」風險，登入的「登入風險 (彙總)」也有可能為「中」。

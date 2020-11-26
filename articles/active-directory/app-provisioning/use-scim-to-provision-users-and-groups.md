@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 5e2f323f705a891f06cee1d25779351d02a91572
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 19942e5400be63dfde48b9653282fb93bcb1ec42
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695260"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174810"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>教學課程 - 建置 SCIM 端點並設定使用 Azure AD 的使用者佈建
 
@@ -154,7 +154,7 @@ SCIM RFC 中定義了數個端點。 您可以從 /User 端點開始著手，然
 * 支援根據 [SCIM 通訊協定 3.4.2 小節](https://tools.ietf.org/html/rfc7644#section-3.4.2)查詢使用者或群組的作業。  依預設會按 `id` 擷取使用者，並按 `username` 和 `externalId` 加以查詢，以及按 `displayName` 查詢群組。  
 * 支援根據 SCIM 通訊協定 3.4.2 小節，依識別碼和管理員查詢使用者的作業。  
 * 支援根據 SCIM 通訊協定 3.4.2 小節，依識別碼和成員查詢群組的作業。  
-* 支援在查詢群組資源時篩選 [excludedAttributes=members](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#get-group)，如 SCIM 通訊協定的 3.4.2.5 節所述。
+* 支援在查詢群組資源時篩選 [excludedAttributes=members](#get-group)，如 SCIM 通訊協定的 3.4.2.5 節所述。
 * 接受以單一持有人權杖對應用程式進行 Azure AD 的驗證和授權。
 * 支援虛刪除使用者 `active=false` 和還原使用者 `active=true` (不論使用者是否為作用中，都應該在要求中傳回使用者物件)。 只在從應用程式中將使用者實刪除時，才不應傳回該使用者。 
 
@@ -1173,7 +1173,7 @@ Azure AD 可設定為將已指派的使用者和群組自動佈建至實作 [SCI
 
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>步驟 5：將您的應用程式發佈至 Azure AD 應用程式庫
 
-如果您要建立將由多個租用戶使用的應用程式，您可以在 Azure AD 應用程式庫中加以提供。 這可讓組織輕鬆地探索應用程式和設定佈建。 在 Azure AD 資源庫中發佈您的應用程式並供其他人佈建，是很簡單的作業。 請在 [這裡](../azuread-dev/howto-app-gallery-listing.md)查明步驟。 Microsoft 會與您合作，將您的應用程式整合到我們的資源庫中、測試您的端點，以及發行上線[文件](../saas-apps/tutorial-list.md)供客戶使用。 
+如果您要建立將由多個租用戶使用的應用程式，您可以在 Azure AD 應用程式庫中加以提供。 這可讓組織輕鬆地探索應用程式和設定佈建。 在 Azure AD 資源庫中發佈您的應用程式並供其他人佈建，是很簡單的作業。 請在 [這裡](../develop/v2-howto-app-gallery-listing.md)查明步驟。 Microsoft 會與您合作，將您的應用程式整合到我們的資源庫中、測試您的端點，以及發行上線[文件](../saas-apps/tutorial-list.md)供客戶使用。
 
 ### <a name="gallery-onboarding-checklist"></a>資源庫上線檢查清單
 請依照下列檢查清單操作，以確保您的應用程式可快速上線，且客戶會有順暢的部署體驗。 當您上線至資源庫時，系統將會向您收集資訊。 

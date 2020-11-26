@@ -79,6 +79,46 @@
               href: sync-ldap.md
             - name: SCIM 同步處理
               href: sync-scim.md
+        - name: 為復原能力而建置
+          items:
+            - name: 概觀
+              href: resilience-overview.md
+            - name: 基礎結構指導
+              items:
+                - name: 基礎結構概觀
+                  href: resilience-in-infrastructure.md
+                - name: 認證管理
+                  href: resilience-in-credentials.md
+                - name: 裝置狀態
+                  href: resilience-with-device-states.md
+                - name: 持續存取評估
+                  href: resilience-with-continuous-access-evaluation.md
+                - name: 外部使用者驗證
+                  href: resilience-b2b-authentication.md
+                - name: 混合式驗證
+                  href: resilience-in-hybrid.md
+                - name: 應用程式 Proxy
+                  href: resilience-on-premises-access.md
+            - name: Azure AD B2C 指導
+              items:
+                - name: Azure AD B2C 復原能力簡介
+                  href: resilience-b2c.md
+                - name: 使用者體驗
+                  href: resilient-end-user-experience.md
+                - name: 具有外部程序的介面
+                  href: resilient-external-processes.md
+                - name: Azure AD B2C 開發人員最佳做法
+                  href: resilience-b2c-developer-best-practices.md
+                - name: 監視和分析
+                  href: resilience-with-monitoring-alerting.md
+            - name: 應用程式開發指導
+              items:
+                - name: 開發概觀
+                  href: resilience-app-development-overview.md
+                - name: 用戶端應用程式
+                  href: resilience-client-app.md
+                - name: 精靈應用程式
+                  href: resilience-daemon-app.md
         - name: Azure 中使用的憑證授權單位
           href: certificate-authorities.md
     - name: 部署指南

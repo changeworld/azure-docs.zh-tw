@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5322e5ce1bb124387931eac666cf9e5510cb2463
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: c3960b8afeb9d7ecc80aa49fc13eee4977fa5494
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95237626"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173965"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>安裝 Azure AD Connect 雲端佈建代理程式
 本文件會逐步引導您完成 Azure Active Directory (Azure AD) Connect 佈建代理程式的安裝程序，以及如何在 Azure 入口網站中進行初始設定。
@@ -32,7 +32,7 @@ ms.locfileid: "95237626"
 
 
 ## <a name="group-managed-service-accounts"></a>群組受管理的服務帳戶
-群組受管理的服務帳戶是受控網域帳戶，可提供自動密碼管理、簡化的服務主體名稱 (SPN) 管理、將管理委派給其他系統管理員的能力，以及將這項功能延伸到多部伺服器。  Azure AD Connect Cloud Sync 支援並建議使用群組受管理的服務帳戶來執行代理程式。  如需 gMSA 的詳細資訊，請參閱 [群組受管理的服務帳戶](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
+群組受管理的服務帳戶是受控網域帳戶，可提供自動密碼管理、簡化的服務主體名稱 (SPN) 管理、將管理委派給其他系統管理員的能力，以及將這項功能延伸到多部伺服器。  Azure AD Connect Cloud Sync 支援並建議使用群組受管理的服務帳戶來執行代理程式。  如需 gMSA 的詳細資訊，請參閱 [群組受管理的服務帳戶](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
 
 
 ### <a name="upgrading-an-existing-agent-to-use-the-gmsa-account"></a>升級現有的代理程式以使用 gMSA 帳戶
@@ -54,12 +54,12 @@ ms.locfileid: "95237626"
    ![Microsoft Azure AD Connect 佈建代理程式套件畫面](media/how-to-install/install-1.png)</br>
  8. 此作業完成之後，設定精靈就會隨之啟動。 以 Azure AD 全域管理員帳戶登入。
  9. 在 [ **設定服務帳戶] 畫面** 上，選取 [ **建立 gMSA** ] 或 [ **使用自訂 gMSA**]。  如果您允許代理程式建立帳戶，它就會命名為 provAgentgMSA $。 如果您指定 [ **使用自訂 gMSA** ]，系統會提示您提供此帳戶。
- 10. 輸入網域系統管理員認證，以建立將用來執行代理程式服務的群組受管理的服務帳戶。 按 [下一步] 。  
+ 10. 輸入網域系統管理員認證，以建立將用來執行代理程式服務的群組受管理的服務帳戶。 按 [下一步]  。  
    ![建立 gMSA](media/how-to-install/install-12.png)</br>
  11. 在 [連線 Active Directory] 畫面上，選取 [新增目錄]。 然後使用您的 Active Directory 系統管理員帳戶登入。 此作業會新增您的內部部署目錄。 
  12. （選擇性）您可以選取 [ **選取網域控制站優先權** ] 和 [排序網域控制站清單]，以管理代理程式將使用之網域控制站的喜好設定。   按一下 [確定]。
   ![訂購網域 controlllers](media/how-to-install/install-2a.png)</br>
- 13. 選取 [下一步]。
+ 13. 選取 [下一步] 。
   ![連線 Active Directory 畫面](media/how-to-install/install-3a.png)</br>
  14.  在 [ **代理程式安裝** ] 畫面上，確認設定和將建立的帳戶，然後按一下 [ **確認**]。
   ![確認 settings](media/how-to-install/install-11.png)</br>
@@ -107,4 +107,3 @@ ms.locfileid: "95237626"
 
 - [什麼是佈建？](what-is-provisioning.md)
 - [什麼是 Azure AD Connect 雲端佈建？](what-is-cloud-provisioning.md)
- 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 21307deb509d0735e4367f2b41603086f301bdeb
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 51a2facfdaccc6cb29264873e9ffd60fc48735da
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533526"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174657"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory 應用程式布建：新功能
 
@@ -44,7 +44,7 @@ ms.locfileid: "94533526"
 
 ### <a name="new-articles"></a>新文章
 
-- [檔有哪些新功能？](whats-new-docs.md)
+- [Docs 有哪些新功能？](whats-new-docs.md)
 
 ### <a name="updated-articles"></a>更新的文章
 - [隔離狀態中的應用程式布建](application-provisioning-quarantine-status.md)
@@ -59,7 +59,7 @@ ms.locfileid: "94533526"
 
 
 ### <a name="updated-articles"></a>更新的文章
-- [使用 Microsoft Graph Api 來設定布建](application-provisioning-configure-api.md)
+- [使用 Microsoft Graph Api 來設定布建](/graph/application-provisioning-configure-api)
 - [Azure AD 使用者佈建服務 SCIM 2.0 通訊協定相容性的已知問題和解決方法](application-provisioning-config-problem-scim-compatibility.md)
 
 ## <a name="july-2020"></a>2020 年 7 月

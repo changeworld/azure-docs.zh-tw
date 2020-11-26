@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 68e47fe3cc674542a807ecbabd37cc6b624d5c03
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 167ed7e5c00452db4ee77e10236fec3ff86f0439
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145584"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175095"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>瞭解布建如何與 Azure 監視器記錄整合
 
@@ -30,13 +30,13 @@ ms.locfileid: "92145584"
 
 :::image type="content" source="media/application-provisioning-log-analytics/diagnostic-settings.png" alt-text="存取診斷設定" lightbox="media/application-provisioning-log-analytics/diagnostic-settings.png":::
 
-:::image type="content" source="media/application-provisioning-log-analytics/enable-log-analytics.png" alt-text="存取診斷設定" lightbox="media/application-provisioning-log-analytics/enable-log-analytics.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/enable-log-analytics.png" alt-text="啟用應用程式布建記錄" lightbox="media/application-provisioning-log-analytics/enable-log-analytics.png":::
 
 > [!NOTE]
 > 如果您剛剛布建工作區，可能需要一些時間，才能將記錄傳送給它。 如果您收到錯誤，指出訂用帳戶未註冊為使用 *microsoft* ，請在幾分鐘後回來查看。
  
 ## <a name="understanding-the-data"></a>了解資料
-布建記錄檢視器的基礎資料流程幾乎完全相同。 Azure 監視器記錄會取得與 Azure 入口網站 UI 和 Azure API 幾乎相同的資料流程。 記錄欄位只有一些 **差異** ，如下表所述。 若要深入瞭解這些欄位，請參閱 [清單 provisioningObjectSummary](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http&preserve-view=true)。
+布建記錄檢視器的基礎資料流程幾乎完全相同。 Azure 監視器記錄會取得與 Azure 入口網站 UI 和 Azure API 幾乎相同的資料流程。 記錄欄位只有一些 **差異** ，如下表所述。 若要深入瞭解這些欄位，請參閱 [清單 provisioningObjectSummary](/graph/api/provisioningobjectsummary-list?preserve-view=true&tabs=http&view=graph-rest-beta)。
 
 |Azure 監視器記錄   |Azure 入口網站 UI   |Azure API |
 |----------|-----------|------------|
@@ -45,15 +45,15 @@ ms.locfileid: "92145584"
 |activityDateTime |TimeGenerated |TimeGenerated |
 
 
-## <a name="azure-monitor-workbooks"></a>Azure 監視器活頁簿
+## <a name="azure-monitor-workbooks"></a>Azure 監視器活頁簿 \(部分機器翻譯\)
 
 Azure 監視器活頁簿為數據分析提供了彈性的畫布。 也可讓您在 Azure 入口網站中建立豐富的視覺效果報表。 若要深入瞭解，請參閱 [Azure 監視器活頁簿總覽](../../azure-monitor/platform/workbooks-overview.md)。
 
 應用程式布建隨附一組預先建立的活頁簿。 您可以在 [活頁簿] 頁面上找到它們。 若要查看資料，您必須確定已填入 (timeRange、jobID、appName) 的所有篩選準則。 您也必須確定您已布建應用程式，否則記錄中不會有任何資料。
 
-:::image type="content" source="media/application-provisioning-log-analytics/workbooks.png" alt-text="存取診斷設定" lightbox="media/application-provisioning-log-analytics/workbooks.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/workbooks.png" alt-text="應用程式布建活頁簿" lightbox="media/application-provisioning-log-analytics/workbooks.png":::
 
-:::image type="content" source="media/application-provisioning-log-analytics/report.png" alt-text="存取診斷設定" lightbox="media/application-provisioning-log-analytics/report.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/report.png" alt-text="應用程式布建儀表板" lightbox="media/application-provisioning-log-analytics/report.png":::
 
 ## <a name="custom-queries"></a>自訂查詢
 
@@ -100,15 +100,15 @@ Azure 監視器可讓您設定自訂警示，讓您可以收到與布建相關�
 
 當失敗的尖峰時發出警示。 將 jobID 取代為應用程式的 jobID。
 
-:::image type="content" source="media/application-provisioning-log-analytics/alert1.png" alt-text="存取診斷設定" lightbox="media/application-provisioning-log-analytics/alert1.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/alert1.png" alt-text="當失敗的尖峰時發出警示。" lightbox="media/application-provisioning-log-analytics/alert1.png":::
 
 可能有問題導致布建服務停止執行。 使用下列警示來偵測指定時間間隔內沒有任何布建事件的時間。
 
-:::image type="content" source="media/application-provisioning-log-analytics/alert2.png" alt-text="存取診斷設定" lightbox="media/application-provisioning-log-analytics/alert2.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/alert2.png" alt-text="可能有問題導致布建服務停止執行。" lightbox="media/application-provisioning-log-analytics/alert2.png":::
 
 當停用或刪除出現尖峰時發出警示。
 
-:::image type="content" source="media/application-provisioning-log-analytics/alert3.png" alt-text="存取診斷設定" lightbox="media/application-provisioning-log-analytics/alert3.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/alert3.png" alt-text="當停用或刪除出現尖峰時發出警示。" lightbox="media/application-provisioning-log-analytics/alert3.png":::
 
 
 ## <a name="community-contributions"></a>社群投稿
@@ -121,4 +121,4 @@ Azure 監視器可讓您設定自訂警示，讓您可以收到與布建相關�
 - [開始使用 Azure 監視器記錄中的查詢](../../azure-monitor/log-query/get-started-queries.md)
 - [在 Azure 入口網站中建立和管理警示群組](../../azure-monitor/platform/action-groups.md)
 - [安裝與使用適用於 Azure Active Directory 的記錄分析檢視](../reports-monitoring/howto-install-use-log-analytics-views.md)
-- [布建記錄 API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta.md&preserve-view=true)
+- [布建記錄 API](/graph/api/resources/provisioningobjectsummary?preserve-view=true&view=graph-rest-beta.md)

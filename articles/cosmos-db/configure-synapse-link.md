@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: a487d984fe4b8f5d6313e181863872c4ea150059
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 3355b502033451f58ac2289a81414e62823e459b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334528"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175928"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>設定及使用適用於 Azure Cosmos DB 的 Azure Synapse Link (預覽)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -63,7 +63,7 @@ Azure Synapse 連結適用于 Azure Cosmos DB SQL API 容器或適用于 Mongo D
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-1. 登入 [Azure 入口網站](https://portal.azure.com/)或 [Azure Cosmos 總管](https://cosmos.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/) 或 [Azure Cosmos DB 總管](https://cosmos.azure.com/)。
 
 1. 巡覽至 Azure Cosmos DB 帳戶並開啟 [資料總管] 索引標籤。
 
@@ -75,7 +75,7 @@ Azure Synapse 連結適用于 Azure Cosmos DB SQL API 容器或適用于 Mongo D
 
 1. 選取 [確定]，以建立已啟用分析存放區的 Azure Cosmos 容器。
 
-1. 建立容器之後，請按一下 [ **設定** ]，然後在資料總管中的檔下方，確認已啟用分析存放區，並檢查是否已開啟 [ **分析存放區存留時間** ] 選項。
+1. 建立容器之後，請按一下 [ **設定**]，然後在資料總管中的檔下方，確認已啟用分析存放區，並檢查是否已開啟 [ **分析存放區存留時間** ] 選項。
 
 ### <a name="net-sdk"></a>.NET SDK
 
@@ -171,7 +171,7 @@ except exceptions.CosmosResourceExistsError:
 
 如果您已透過 Azure 入口網站建立已啟用分析存放區的容器，其會包含 -1 的預設分析 TTL。 請使用下列步驟來更新此值：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com/)或 [Azure Cosmos 總管](https://cosmos.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/) 或 [Azure Cosmos DB 總管](https://cosmos.azure.com/)。
 
 1. 巡覽至 Azure Cosmos DB 帳戶並開啟 [資料總管] 索引標籤。
 

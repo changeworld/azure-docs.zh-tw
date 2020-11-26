@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/27/2020
+ms.date: 11/21/2020
 ms.author: memildin
-ms.openlocfilehash: 79dcc645ecff00b3189dc90dcf34e042a78ed318
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9b715ea890c7c85161a9e360bc16f9a2a608d64b
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949321"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95320995"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -39,6 +39,8 @@ ms.locfileid: "94949321"
 - [NIST SP 800 171 R2 已新增至資訊安全中心的法規合規性儀表板](#nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard)
 - [建議清單現在包含篩選器](#recommendations-list-now-includes-filters)
 - [自動佈建體驗已改善並擴充](#auto-provisioning-experience-improved-and-expanded)
+- [連續匯出中現在可以使用安全分數 (預覽)](#secure-score-is-now-available-in-continuous-export-preview)
+- [「您應在機器上安裝系統更新」建議現在包含子建議](#system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations)
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>已新增 29 個預覽建議，以增加 Azure 安全性效能評定的涵蓋範圍
 
@@ -103,6 +105,41 @@ NIST SP 800-171 R2 標準版現已提供內建方案，可與 Azure 資訊安全
 - (新增) Microsoft Dependency Agent
 
 如需深入了解，請[從 Azure 資訊安全中心自動佈建代理程式和擴充功能](security-center-enable-data-collection.md)。
+
+
+### <a name="secure-score-is-now-available-in-continuous-export-preview"></a>連續匯出中現在可以使用安全分數 (預覽)
+
+在連續匯出安全分數時，您可以即時地將分數的變更串流至 Azure 事件中樞或 Log Analytics 工作區。 使用此功能可以：
+
+- 使用動態報告追蹤一段時間的安全分數
+- 將安全分數資料匯出至 Azure Sentinel (或任何其他 SIEM)
+- 將此資料與您可能已用來監視組織中安全分數的任何程序進行整合
+
+深入了解如何[連續匯出資訊安全中心資料](continuous-export.md)。
+
+
+### <a name="system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations"></a>「您應在機器上安裝系統更新」建議現在包含子建議
+
+**您應在機器上安裝系統更新** 建議已有所增強。 新版本會包含每個遺漏更新的子建議，並提供下列改良功能：
+
+- Azure 入口網站的 Azure 資訊安全中心頁面會提供經過重新設計的體驗。 **您應在機器上安裝系統更新** 的建議詳細資料包含結果清單，如下所示。 當您選取單一結果時，詳細資料窗格隨即開啟，其中含有補救資訊的連結和受影響的資源清單。
+
+    :::image type="content" source="./media/upcoming-changes/system-updates-should-be-installed-subassessment.png" alt-text="在入口網站體驗中開啟其中一個子建議，以取得更新的建議":::
+
+- Azure Resource Graph (ARG) 的建議有更豐富的資料。 ARG 是專門設計來提供有效率資源探索的 Azure 服務。 您可以使用 ARG 在一組指定的訂用帳戶中大規模查詢，以便有效率地控管您的環境。 
+
+    對於 Azure 資訊安全中心，您可以使用 ARG 和 [Kusto 查詢語言 (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) 來查詢各種安全性狀態資料。
+
+    先前如果您在 ARG 中查詢此建議，唯一可用的資訊就是必須在機器上補救建議。 增強版本的下列查詢則會傳回每個遺漏的系統更新，並依機器分組。
+
+    ```kusto
+    securityresources
+    | where type =~ "microsoft.security/assessments/subassessments"
+    | where extract(@"(?i)providers/Microsoft.Security/assessments/([^/]*)", 1, id) == "4ab6e3c5-74dd-8b35-9ab9-f61b30875b27"
+    | where properties.status.code == "Unhealthy"
+    ```
+
+
 
 ## <a name="october-2020"></a>2020 年 10 月
 

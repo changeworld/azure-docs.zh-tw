@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 010e2a206ef08677651572c274cfc38fd516ecc9
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: e741bd6c87ea32b0d92b1dd53112a1bed3e4cd38
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041126"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174912"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>規劃自動使用者佈建部署
 
@@ -34,13 +34,13 @@ Azure Active Directory (Azure AD) 自動使用者布建可簡化此程式，方�
 
 啟用自動使用者布建的主要優點包括：
 
-* **提高生產力** 。 您可以使用單一使用者布建管理介面，跨 SaaS 應用程式管理使用者身分識別。 此介面有一組布建原則。
+* **提高生產力**。 您可以使用單一使用者布建管理介面，跨 SaaS 應用程式管理使用者身分識別。 此介面有一組布建原則。
 
-* **管理風險** 。 您可以根據定義角色及/或存取權的員工狀態或群組成員資格，將變更自動化，以提高安全性。
+* **管理風險**。 您可以根據定義角色及/或存取權的員工狀態或群組成員資格，將變更自動化，以提高安全性。
 
-* **解決合規性和治理** 。 Azure AD 支援每個使用者布建要求的原生審核記錄。 要求會在來源和目標系統中執行。 這可讓您從單一畫面追蹤誰可以存取應用程式。
+* **解決合規性和治理**。 Azure AD 支援每個使用者布建要求的原生審核記錄。 要求會在來源和目標系統中執行。 這可讓您從單一畫面追蹤誰可以存取應用程式。
 
-* **降低成本** 。 自動使用者布建可避免與手動布建相關的低效率和人為錯誤，以降低成本。 它可減少自訂開發的使用者布建解決方案、腳本和審核記錄的需求。
+* **降低成本**。 自動使用者布建可避免與手動布建相關的低效率和人為錯誤，以降低成本。 它可減少自訂開發的使用者布建解決方案、腳本和審核記錄的需求。
 
 ### <a name="licensing"></a>授權
 
@@ -83,7 +83,7 @@ Azure AD 布建服務會藉由連接到每個應用程式廠商所提供的使�
 
 在此範例中，會在連線到內部部署目錄的 HR 資料庫中建立使用者和或群組。 Azure AD 布建服務會管理目標 SaaS 應用程式的自動使用者布建。
 
- ![使用者佈建](./media/plan-auto-user-provisioning/hybridprovisioning.png)
+ ![使用者布建](./media/plan-auto-user-provisioning/hybridprovisioning.png)
 
 **工作流程的描述：**
 
@@ -157,7 +157,7 @@ Azure AD 布建服務會藉由連接到每個應用程式廠商所提供的使�
 
 如果沒有，請遵循下列步驟：
 
-1. [建立](../azuread-dev/howto-app-gallery-listing.md) 預先整合的使用者布建連接器的要求。 我們的團隊將與您和應用程式開發人員合作，讓您的應用程式在支援 SCIM 時，將應用程式上架到平臺。
+1. [建立](../develop/v2-howto-app-gallery-listing.md) 預先整合的使用者布建連接器的要求。 我們的團隊將與您和應用程式開發人員合作，讓您的應用程式在支援 SCIM 時，將應用程式上架到平臺。
 
 1. 使用 [BYOA SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 應用程式的一般使用者布建支援。 這是 Azure AD 在沒有預先整合的布建連接器的情況下，將使用者布建到應用程式的需求。
 
@@ -300,11 +300,11 @@ Azure AD 可以透過審核記錄和報告，為您組織的使用者布建使�
 
 * [將屬性從內部部署 Active Directory 同步處理至 Azure AD 以布建至應用程式](../app-provisioning/user-provisioning-sync-attributes-for-mapping.md)
 
-* [在設定 Azure Active Directory 資源庫應用程式之使用者佈建的情況下儲存系統管理員認證時發生問題](../app-provisioning/application-provisioning-config-problem-storage-limit.md)
+* [在設定 Azure Active Directory 資源庫應用程式之使用者佈建的情況下儲存系統管理員認證時發生問題](./user-provisioning.md)
 
 * [未將任何使用者佈建至 Azure AD 資源庫應用程式](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md)
 
-* [一組錯誤的使用者佈建至 Azure AD 資源庫應用程式](../app-provisioning/application-provisioning-config-problem-wrong-users-provisioned.md)
+* [一組錯誤的使用者佈建至 Azure AD 資源庫應用程式](../manage-apps/add-application-portal-assign-users.md)
 
 ### <a name="helpful-documentation"></a>實用的文件
 

@@ -424,5 +424,9 @@
           href: sql-data-warehouse-partner-data-management.md
         - name: 機器學習服務和 AI
           href: sql-data-warehouse-partner-machine-learning-ai.md
+        - name: 系統整合
+          href: sql-data-warehouse-partner-system-integration.md
         - name: 公用預覽合作夥伴
           href: sql-data-warehouse-partner-launch.md
+        - name: 第三方應用程式的相容性問題
+          href: sql-data-warehouse-partner-compatibility-issues.md

@@ -4,12 +4,12 @@ description: 瞭解如何將您的函數應用程式連接至 Application Insigh
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperfq2, devx-track-azurecli
-ms.openlocfilehash: f5b1b00c534abf1e7f82d2aca69dd4763b40d5ad
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0b8aae707f0fb055677af111f1e88c0a2e19b227
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833073"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175741"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>如何設定 Azure Functions 的監視
 
@@ -230,7 +230,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 
 針對將資料傳送至 Application Insights 的函式應用程式，它需要知道 Application Insights 資源的檢測金鑰。 金鑰必須在名為 **APPINSIGHTS_INSTRUMENTATIONKEY** 的應用程式設定中。
 
-當您在 [Azure 入口網站](functions-create-first-azure-function.md)中，使用 [Azure Functions Core Tools](functions-create-first-azure-function-azure-cli.md) 或使用 [Visual Studio Code](functions-create-first-function-vs-code.md)，從命令列建立函式應用程式時，預設會啟用 Application Insights 整合。 Application Insights 資源的名稱與您的函式應用程式相同，而且其會建立於相同區域或最近的區域中。
+當您在 [Azure 入口網站](functions-create-first-azure-function.md)中，使用 [Azure Functions Core Tools](./create-first-function-cli-csharp.md) 或使用 [Visual Studio Code](./create-first-function-vs-code-csharp.md)，從命令列建立函式應用程式時，預設會啟用 Application Insights 整合。 Application Insights 資源的名稱與您的函式應用程式相同，而且其會建立於相同區域或最近的區域中。
 
 ### <a name="new-function-app-in-the-portal"></a>入口網站中新的函式應用程式
 

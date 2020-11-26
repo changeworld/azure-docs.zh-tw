@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: f1a7ffc8225ea20b48df4e1d9a049655ca4776a4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: de74d7e3cf854f36d122be6a32c7fb4d449c5fe5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964655"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175895"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服務配額
 
@@ -91,7 +91,6 @@ Cosmos DB 支援透過 Sdk 或入口網站，以程式設計方式調整每個�
 
 | 資源 | 限制 |
 | --- | --- |
-| 每個容器的 RU/秒上限 | 5,000 |
 | 每 (邏輯) 分割區的最大 RU/秒 | 5,000 |
 | 每 (邏輯) 分割區中所有專案的最大儲存空間 | 20 GB |
 | 相異 (邏輯) 分割區索引鍵的數目上限 | 無限制 |

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: 4ced7331daa116e237d9628d12d16a67687db5b9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 43731f84066943b991b566ff5936e4288aa669eb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968084"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175214"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 的虛擬網路設計考慮和設定選項
 
@@ -104,7 +104,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供驗證和管理服務
 
 ## <a name="network-security-groups-and-required-ports"></a>網路安全性群組和必要的埠
 
-[網路安全性群組 (NSG)](../virtual-network/security-overview.md) 包含規則清單，可允許或拒絕 Azure 虛擬網路中的網路流量。 當您部署的受控網域包含一組可讓服務提供驗證和管理功能的規則時，就會建立網路安全性群組。 此預設網路安全性群組會與您的受控網域部署所在的虛擬網路子網相關聯。
+[網路安全性群組 (NSG)](../virtual-network/network-security-groups-overview.md) 包含規則清單，可允許或拒絕 Azure 虛擬網路中的網路流量。 當您部署的受控網域包含一組可讓服務提供驗證和管理功能的規則時，就會建立網路安全性群組。 此預設網路安全性群組會與您的受控網域部署所在的虛擬網路子網相關聯。
 
 受控網域需要下列網路安全性群組規則，才能提供驗證和管理服務。 請勿針對您的受控網域部署所在的虛擬網路子網，編輯或刪除這些網路安全性群組規則。
 
@@ -123,7 +123,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供驗證和管理服務
 >
 > 如果您使用安全 LDAP，則可以視需要新增必要的 TCP 埠636規則以允許外部流量。 新增此規則並不會將您的網路安全性群組規則放在不受支援的狀態。 如需詳細資訊，請參閱 [鎖定透過網際網路的安全 LDAP 存取](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet)
 >
-> *AllowVnetInBound*、 *AllowAzureLoadBalancerInBound*、 *>denyallinbound*、 *AllowVnetOutBound*、 *>allowinternetoutbound*和 *>denyalloutbound*的預設規則也存在於網路安全性群組中。 請勿編輯或刪除這些預設規則。
+> *AllowVnetInBound*、 *AllowAzureLoadBalancerInBound*、 *>denyallinbound*、 *AllowVnetOutBound*、 *>allowinternetoutbound* 和 *>denyalloutbound* 的預設規則也存在於網路安全性群組中。 請勿編輯或刪除這些預設規則。
 >
 > Azure SLA 不適用於未正確設定的網路安全性群組和/或使用者定義路由表已套用的部署，會封鎖 Azure AD DS 以更新和管理您的網域。
 
@@ -154,7 +154,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供驗證和管理服務
 * 用來在受控網域中使用 PowerShell 遠端執行管理工作。
 * 如果沒有此埠的存取權，您的受控網域就無法更新、設定、備份或監視。
 * 針對使用以 Resource Manager 為基礎之虛擬網路的受控網域，您可以將此埠的輸入存取限制為 *AzureActiveDirectoryDomainServices* 服務標記。
-    * 針對使用傳統虛擬網路的舊版受控網域，您可以將此埠的輸入存取限制為下列來源 IP 位址： *52.180.183.8*、 *23.101.0.70*、 *52.225.184.198*、 *52.179.126.223*、 *13.74.249.156*、 *52.187.117.83*、 *52.161.13.95*、 *104.40.156.18*和 *104.40.87.209*。
+    * 針對使用傳統虛擬網路的舊版受控網域，您可以將此埠的輸入存取限制為下列來源 IP 位址： *52.180.183.8*、 *23.101.0.70*、 *52.225.184.198*、 *52.179.126.223*、 *13.74.249.156*、 *52.187.117.83*、 *52.161.13.95*、 *104.40.156.18* 和 *104.40.87.209*。
 
     > [!NOTE]
     > 在2017中，Azure AD Domain Services 可用於 Azure Resource Manager 網路中的主機。 從那時開始，我們可以使用 Azure Resource Manager 的新式功能來建立更安全的服務。 因為 Azure Resource Manager 部署完全取代傳統部署，所以 Azure AD DS 傳統虛擬網路部署將于2023年3月1日淘汰。
@@ -176,4 +176,4 @@ Azure Active Directory Domain Services (Azure AD DS) 提供驗證和管理服務
 
 * [Azure 虛擬網路對等互連](../virtual-network/virtual-network-peering-overview.md)
 * [Azure VPN 閘道](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)
-* [Azure 網路安全性群組](../virtual-network/security-overview.md)
+* [Azure 網路安全性群組](../virtual-network/network-security-groups-overview.md)

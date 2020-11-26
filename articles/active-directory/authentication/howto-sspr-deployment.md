@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06c37eaf63b79b171e5a21d807262cfb359d416c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 765bfe0f805ae4219110d689e8f7f8fd54a26cf3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994157"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173931"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>規劃 Azure Active Directory 自助式密碼重設部署
 
@@ -123,7 +123,7 @@ Microsoft 建議組織針對 SSPR 和多重要素驗證啟用合併註冊體驗�
 
 ### <a name="engage-the-right-stakeholders"></a>包含正確的專案關係人
 
-當技術專案失敗時，其通常是因為人員對影響、結果與責任抱持不相符的預期而造成。 若要避免這些錯誤，[請務必包含正確的專案關係人](https://aka.ms/deploymentplans) \(部分機器翻譯\)，並透過記錄專案關係人及其專案投入和責任，使該專案關係人清楚了解其在專案中的角色。
+當技術專案失敗時，其通常是因為人員對影響、結果與責任抱持不相符的預期而造成。 若要避免這些錯誤，[請務必包含正確的專案關係人](../fundamentals/active-directory-deployment-plans.md) \(部分機器翻譯\)，並透過記錄專案關係人及其專案投入和責任，使該專案關係人清楚了解其在專案中的角色。
 
 #### <a name="required-administrator-roles"></a>必要系統管理員角色
 
@@ -325,7 +325,7 @@ Azure AD 可以透過稽核和報告來提供 SSPR 效能的額外資訊。
 
 ### <a name="troubleshoot"></a>疑難排解
 
-* 請參閱[針對自助式密碼重設進行疑難排解](./active-directory-passwords-troubleshoot.md) \(部分機器翻譯\) 
+* 請參閱[針對自助式密碼重設進行疑難排解](./troubleshoot-sspr.md) \(部分機器翻譯\) 
 
 * 請遵循[密碼管理常見問題集](./active-directory-passwords-faq.md) \(部分機器翻譯\) 
 

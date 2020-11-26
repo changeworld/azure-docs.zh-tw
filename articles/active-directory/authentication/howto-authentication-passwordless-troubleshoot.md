@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 690d4761657b8bf6e5ba63ddfbce7163584e64e2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964565"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174029"
 ---
 # <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad-preview"></a>針對 Azure AD (preview) 中 FIDO2 安全性金鑰的混合式部署進行疑難排解
 
@@ -46,7 +46,7 @@ ms.locfileid: "91964565"
 
 Windows Hello 臉部是註冊使用者的裝置所需的最佳體驗。 FIDO2 安全性金鑰適用于共用裝置，或 Windows Hello 企業版註冊是一道關卡。
 
-如果 Windows Hello 臉部讓使用者無法嘗試 FIDO2 安全性金鑰登入案例，則使用者可以藉由在 [ **設定] > Sign-In 選項**中移除臉部註冊，來關閉 Hello 臉部登入。
+如果 Windows Hello 臉部讓使用者無法嘗試 FIDO2 安全性金鑰登入案例，則使用者可以藉由在 [ **設定] > Sign-In 選項** 中移除臉部註冊，來關閉 Hello 臉部登入。
 
 ### <a name="users-arent-able-to-use-fido2-security-keys-immediately-after-they-create-a-hybrid-azure-ad-joined-machine"></a>使用者建立已加入混合式 Azure AD 的電腦之後，無法立即使用 FIDO2 安全性金鑰
 
@@ -75,7 +75,7 @@ Windows Hello 臉部是註冊使用者的裝置所需的最佳體驗。 FIDO2 �
     針對意見專案類型，選擇 [ *問題*]。
 
 1. 選取 [ *安全性與隱私權* ] 類別，然後選取 [ *FIDO* ] 子類別。
-1. 將 [ *傳送附加的*檔案] 和 [診斷] 的核取方塊，切換至 [我的意見反應]。
+1. 將 [ *傳送附加的* 檔案] 和 [診斷] 的核取方塊，切換至 [我的意見反應]。
 1. 選取 [ *重新建立我的問題*]，然後啟動 [ *capture*]。
 1. 使用 FIDO2 安全性金鑰來鎖定電腦並將其解除鎖定。 如果發生此問題，請嘗試使用其他認證來解除鎖定。
 1. 返回 **意見反應中樞**，選取 [ **停止捕捉**]，並提交您的意見反應。

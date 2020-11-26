@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: f65fb37a4cc6640bc998af1c56e7852cccaba234
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5f6e5de61c9f43d5958e68c545105c4373996f7c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955510"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175061"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>教學課程 - 在 Azure Active Directory 中自訂 SaaS 應用程式的使用者佈建屬性對應
 
@@ -239,7 +239,7 @@ SCIM 應用程式的屬性名稱必須遵循下列範例顯示的模式。 可�
    }
    ]
    ```  
-PATCH 和 POST 中的要求格式不同。 若要確保 POST 和 PATCH 以相同格式傳送，您可以使用[這裡](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility#flags-to-alter-the-scim-behavior)所述的功能旗標。 
+PATCH 和 POST 中的要求格式不同。 若要確保 POST 和 PATCH 以相同格式傳送，您可以使用[這裡](./application-provisioning-config-problem-scim-compatibility.md#flags-to-alter-the-scim-behavior)所述的功能旗標。 
 
 - **AppRoleAssignmentsComplex** 
   - **使用時機：** 使用 AppRoleAssignmentsComplex 運算式為使用者佈建多個角色。 

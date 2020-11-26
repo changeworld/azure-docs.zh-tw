@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bef201cbd14a4de0c785b5f86d534f27bfedb31
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e121a6a45ab20055591a3670152114b8d03529cf
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363703"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173989"
 ---
 # <a name="customize-the-user-experience-for-azure-active-directory-self-service-password-reset"></a>自訂 Azure Active Directory 自助式密碼重設的使用者體驗
 
@@ -56,8 +56,8 @@ ms.locfileid: "92363703"
 
 如果您的組織不想要通知系統管理員有關密碼重設要求，可以使用下列設定選項：
 
-* 自訂技術服務人員連結，以提供可讓使用者取得協助的 Web URL 或 mailto︰位址。 此選項位於**密碼重設**  >  **自**  >  **定義技術支援中心電子郵件或 URL**。
-* 為所有使用者啟用自助式密碼重設。 此選項位於 [**密碼重設**]  >  **屬性**下。 如果您不想讓使用者重設其自己的密碼，可以將存取範圍設定為空群組。 *不建議採用此選項。*
+* 自訂技術服務人員連結，以提供可讓使用者取得協助的 Web URL 或 mailto︰位址。 此選項位於 **密碼重設**  >  **自**  >  **定義技術支援中心電子郵件或 URL**。
+* 為所有使用者啟用自助式密碼重設。 此選項位於 [**密碼重設**]  >  **屬性** 下。 如果您不想讓使用者重設其自己的密碼，可以將存取範圍設定為空群組。 *不建議採用此選項。*
 
 ## <a name="customize-the-sign-in-page-and-access-panel"></a>自訂登入頁面和存取面板
 
@@ -72,7 +72,7 @@ ms.locfileid: "92363703"
 
 ### <a name="directory-name"></a>目錄名稱
 
-為了讓使用者更容易使用，您可以在入口網站和自動化通訊中變更組織名稱。 若要變更 Azure 入口網站中的目錄名稱屬性，請流覽至**Azure Active Directory**  >  **屬性**。 此易記的組織名稱選項在自動化電子郵件中最明顯可見，如下列範例所示：
+為了讓使用者更容易使用，您可以在入口網站和自動化通訊中變更組織名稱。 若要變更 Azure 入口網站中的目錄名稱屬性，請流覽至 **Azure Active Directory**  >  **屬性**。 此易記的組織名稱選項在自動化電子郵件中最明顯可見，如下列範例所示：
 
 * 電子郵件中的易記名稱，例如「*Microsoft 代表 CONTOSO 示範*」
 * 電子郵件中的主旨行，例如「*CONTOSO 示範帳戶電子郵件驗證碼*」
@@ -91,4 +91,4 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><a href='https://passwor
 
 若要瞭解您環境中的 SSPR 使用方式，請參閱 [Azure AD 密碼管理的報告選項](howto-sspr-reporting.md)。
 
-如果您或使用者遇到 SSPR 的問題，請參閱 [疑難排解自助式密碼重設](active-directory-passwords-troubleshoot.md)
+如果您或使用者遇到 SSPR 的問題，請參閱 [疑難排解自助式密碼重設](./troubleshoot-sspr.md)

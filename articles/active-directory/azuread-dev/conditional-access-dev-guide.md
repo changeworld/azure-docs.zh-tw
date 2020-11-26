@@ -13,19 +13,19 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
-ms.openlocfilehash: 378dab95d8fb3519bb2fc5c934a760e051a18d29
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: b08b07ebcd6e45e95e23dff8686148889e9d4b39
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94575878"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173914"
 ---
 # <a name="developer-guidance-for-the-azure-active-directory-conditional-access-feature"></a>Azure Active Directory 條件式存取功能的開發人員指引
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
 > [!NOTE]
-> 如需本文的 Microsoft 身分識別平臺版本，請參閱 [Azure Active Directory 條件式存取的開發人員指引](/azure/active-directory/develop/v2-conditional-access-dev-guide)。
+> 如需本文的 Microsoft 身分識別平臺版本，請參閱 [Azure Active Directory 條件式存取的開發人員指引](../develop/v2-conditional-access-dev-guide.md)。
 
 您可以使用 Azure Active Directory (Azure AD) 中條件式存取功能所提供的其中一種方式，來保護您的應用程式及保護服務。 條件式存取可讓開發人員和企業客戶以多種方式保護服務，包括：
 

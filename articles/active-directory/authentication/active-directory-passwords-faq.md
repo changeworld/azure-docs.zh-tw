@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c154952d41db742c4d33899094a49a65fae72f26
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 7caeefb741e6916d69894ede3a7c64eb2e8f623f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840095"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174491"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>自助式密碼重設的常見問題
 
@@ -289,4 +289,4 @@ ms.locfileid: "94840095"
 * [什麼是密碼回寫，且為什麼我需要了解它？](./tutorial-enable-sspr-writeback.md)
 * [如何回報 SSPR 中的活動？](howto-sspr-reporting.md)
 * [SSPR 中的所有選項有哪些，以及它們有何意義？](concept-sspr-howitworks.md)
-* [我認為有中斷。如何針對 SSPR 進行疑難排解？](active-directory-passwords-troubleshoot.md)
+* [我認為有中斷。如何針對 SSPR 進行疑難排解？](./troubleshoot-sspr.md)

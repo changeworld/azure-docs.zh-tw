@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0143da9c1961b4123467120210135f7db2c582c8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b4c06e53d3ddfb5f344a759e31d83cb22ce6d4d3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839568"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174131"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>規劃 Azure Active Directory 中的無密碼 authentication 部署
 
@@ -61,7 +61,7 @@ Microsoft 的無密碼 authentication 方法可實現不同的案例。 請考�
 
 如需為您的組織選取最佳方法的詳細資訊，請參閱 [決定無密碼方法](./concept-authentication-passwordless.md#choose-a-passwordless-method)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 在開始進行無密碼部署之前，組織必須符合下列必要條件：
 
@@ -93,7 +93,7 @@ Windows Hello 的必要條件高度取決於您要部署的是內部部署、混
 
 下表列出此專案期間要執行的使用案例。
 
-| 區域 | 說明 |
+| 區域 | 描述 |
 | --- | --- |
 | **存取** | 您可以從公司網路內部或外部的公司或個人裝置，使用無密碼登入。 |
 | **稽核** | 系統管理員可使用資料，以近乎即時的方式進行審查。 <br> 使用量資料會每隔29天下載到公司系統，或使用 SIEM 工具。 |
@@ -126,7 +126,7 @@ Microsoft 提供多重要素驗證 [通訊範本](https://aka.ms/mfatemplates)�
 
 群組可以從內部部署目錄或 Azure AD 進行同步處理。 當您滿意試驗的結果之後，就可以為所有使用者切換無密碼 authentication。
 
-請參閱 [部署計畫] 頁面上的 [試驗最佳做法](https://aka.ms/deploymentplans) 。
+請參閱 [部署計畫] 頁面上的 [試驗最佳做法](../fundamentals/active-directory-deployment-plans.md) 。
 
 ## <a name="plan-passwordless-authentication-with-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 應用程式規劃無密碼 authentication
 
@@ -292,7 +292,7 @@ Azure AD 會在下列情況將專案新增至 audit 記錄：
 
 ### <a name="required-administrative-roles"></a>必要的系統管理角色
 
-| Azure AD 角色 | 說明 |
+| Azure AD 角色 | 描述 |
 | --- | --- |
 | 全域管理員|具有最小許可權的角色，可執行結合的註冊體驗。 |
 | 驗證系統管理員 | 具有最小許可權的角色可以執行和管理驗證方法。 |

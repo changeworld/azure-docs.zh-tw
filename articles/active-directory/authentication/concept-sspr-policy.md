@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 695d47c839a9436f4fad9399f7995b3197e1c0eb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b1583307771dd58053128d71cb0ae5dd7e709f68
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964990"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174376"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密碼原則和帳戶限制
 
@@ -49,7 +49,7 @@ ms.locfileid: "91964990"
 
 已定義下列 Azure AD 密碼原則選項。 除非另有說明，否則您無法變更這些設定：
 
-| 屬性 | 規格需求 |
+| 屬性 | 需求 |
 | --- | --- |
 | 允許的字元 |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [] {} &#124; \： '，。 ? / \` ~ " ( ) ;</li> <li>空白</li></ul> |
 | 不允許的字元 | Unicode 字元。 |
@@ -57,8 +57,8 @@ ms.locfileid: "91964990"
 | 密碼到期期間 (密碼最長使用期限)  |<ul><li>預設值： **90** 天。</li><li>可透過適用於 Windows PowerShell 的 Azure Active Directory 模組使用 `Set-MsolPasswordPolicy` Cmdlet 設定該值。</li></ul> |
 | 通知使用者密碼到期時的密碼到期通知 ()  |<ul><li>預設值：在密碼到期前 **14** 天 () 。</li><li>可使用 `Set-MsolPasswordPolicy` Cmdlet 設定此值。</li></ul> |
 | 密碼到期 (讓密碼永遠不會過期)  |<ul><li>預設值： **false** (表示密碼的到期日) 。</li><li>可以使用 `Set-MsolUser` Cmdlet 針對個別使用者帳戶設定該值。</li></ul> |
-| 密碼變更歷程記錄 | 當使用者變更密碼時，*不能*重複使用上次的密碼。 |
-| 密碼重設歷程記錄 | 當使用者重設忘記密碼時，*不能*重複使用上次的密碼。 |
+| 密碼變更歷程記錄 | 當使用者變更密碼時，*不能* 重複使用上次的密碼。 |
+| 密碼重設歷程記錄 | 當使用者重設忘記密碼時，*不能* 重複使用上次的密碼。 |
 
 ## <a name="administrator-reset-policy-differences"></a>系統管理員重設原則差異
 
@@ -107,7 +107,7 @@ ms.locfileid: "91964990"
 
 ## <a name="password-expiration-policies"></a><a name="set-password-expiration-policies-in-azure-ad"></a>密碼到期原則
 
-*全域管理員*或*使用者系統管理員*可以使用[適用於 Windows PowerShell 的 Microsoft Azure AD 模組](/powershell/module/Azuread/?view=azureadps-2.0)，將使用者密碼設為不會過期。
+*全域管理員* 或 *使用者系統管理員* 可以使用 [適用於 Windows PowerShell 的 Microsoft Azure AD 模組](/powershell/module/Azuread/?view=azureadps-2.0)，將使用者密碼設為不會過期。
 
 您也可以使用 PowerShell Cmdlet 來移除永不過期的設定，或查看哪些使用者密碼設定為永不過期。
 
@@ -124,7 +124,7 @@ ms.locfileid: "91964990"
 
 ### <a name="check-the-expiration-policy-for-a-password"></a>檢查密碼的到期原則
 
-1. 開啟 PowerShell 提示字元，並使用*全域管理員*或*使用者系統管理員*帳戶[連接到您的 Azure AD 租](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples)使用者。
+1. 開啟 PowerShell 提示字元，並使用 *全域管理員* 或 *使用者系統管理員* 帳戶 [連接到您的 Azure AD 租](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples)使用者。
 1. 針對個別使用者或所有使用者，執行下列其中一個命令：
 
    * 若要查看單一使用者的密碼是否設定為永不過期，請執行下列 Cmdlet。 取代 `<user ID>` 為您想要檢查之使用者的使用者識別碼，例如 *driley \@ contoso.onmicrosoft.com*：
@@ -133,7 +133,7 @@ ms.locfileid: "91964990"
        Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
        ```
 
-   * 若要查看所有使用者的**密碼永久有效**設定，請執行下列 Cmdlet：
+   * 若要查看所有使用者的 **密碼永久有效** 設定，請執行下列 Cmdlet：
 
        ```powershell
        Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
@@ -141,7 +141,7 @@ ms.locfileid: "91964990"
 
 ### <a name="set-a-password-to-expire"></a>設定密碼到期
 
-1. 開啟 PowerShell 提示字元，並使用*全域管理員*或*使用者系統管理員*帳戶[連接到您的 Azure AD 租](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples)使用者。
+1. 開啟 PowerShell 提示字元，並使用 *全域管理員* 或 *使用者系統管理員* 帳戶 [連接到您的 Azure AD 租](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples)使用者。
 1. 針對個別使用者或所有使用者，執行下列其中一個命令：
 
    * 若要設定某位使用者的密碼，讓密碼過期，請執行下列 Cmdlet。 取代 `<user ID>` 為您想要檢查之使用者的使用者識別碼，例如 *driley \@ contoso.onmicrosoft.com*
@@ -158,7 +158,7 @@ ms.locfileid: "91964990"
 
 ### <a name="set-a-password-to-never-expire"></a>設定密碼為永久有效
 
-1. 開啟 PowerShell 提示字元，並使用*全域管理員*或*使用者系統管理員*帳戶[連接到您的 Azure AD 租](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples)使用者。
+1. 開啟 PowerShell 提示字元，並使用 *全域管理員* 或 *使用者系統管理員* 帳戶 [連接到您的 Azure AD 租](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples)使用者。
 1. 針對個別使用者或所有使用者，執行下列其中一個命令：
 
    * 若要將某位使用者的密碼設定為永不過期，請執行下列 Cmdlet。 取代 `<user ID>` 為您想要檢查之使用者的使用者識別碼，例如 *driley \@ contoso.onmicrosoft.com*
@@ -180,4 +180,4 @@ ms.locfileid: "91964990"
 
 若要開始使用 SSPR，請參閱 [教學課程：讓使用者使用 Azure Active Directory 自助式密碼重設來解除鎖定其帳戶或重設密碼](tutorial-enable-sspr.md)。
 
-如果您或使用者遇到 SSPR 的問題，請參閱 [疑難排解自助式密碼重設](active-directory-passwords-troubleshoot.md)
+如果您或使用者遇到 SSPR 的問題，請參閱 [疑難排解自助式密碼重設](./troubleshoot-sspr.md)

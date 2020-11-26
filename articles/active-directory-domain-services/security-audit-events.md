@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: b9656b62e2c689d0993fb16c1f1d66b14d3430c6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b4fb5c1dcb2bb34b472c2a3eda88ca4c219303d0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967727"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175163"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>啟用 Azure Active Directory Domain Services 的安全性審核
 
@@ -95,7 +95,7 @@ Azure Active Directory Domain Services (Azure AD DS) 安全性審核，可讓 Az
 1. 建立安全性審核事件的目標資源。
 
     * **Azure 儲存體**  - [使用 Azure PowerShell 建立儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-powershell)
-    * **Azure 事件中樞**  - [使用 Azure PowerShell 建立事件中樞](../event-hubs/event-hubs-quickstart-powershell.md)。 您也可能需要使用 [AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) 指令程式來建立授權規則，以授與事件中樞 *命名空間*Azure AD DS 許可權。 授權規則必須包含「 **管理**」、「 **接聽**」和「 **傳送** 」許可權。
+    * **Azure 事件中樞**  - [使用 Azure PowerShell 建立事件中樞](../event-hubs/event-hubs-quickstart-powershell.md)。 您也可能需要使用 [AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) 指令程式來建立授權規則，以授與事件中樞 *命名空間* Azure AD DS 許可權。 授權規則必須包含「 **管理**」、「 **接聽**」和「 **傳送** 」許可權。
 
         > [!IMPORTANT]
         > 請確定您已在事件中樞命名空間上設定授權規則，而不是在事件中樞本身。
@@ -141,7 +141,7 @@ Azure Active Directory Domain Services (Azure AD DS) 安全性審核，可讓 Az
 記錄分析工作區可讓您使用 Azure 監視器和 Kusto 查詢語言來查看和分析安全性審核事件。 這項查詢語言是針對唯讀用途所設計，其具有容易閱讀的語法，可提供強大的電源分析功能。 如需開始使用 Kusto 查詢語言的詳細資訊，請參閱下列文章：
 
 * [Azure 監視器文件](../azure-monitor/index.yml)
-* [開始使用 Azure 監視器 Log Analytics](../azure-monitor/log-query/get-started-portal.md)
+* [開始使用 Azure 監視器 Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)
 * [開始使用 Azure 監視器中的查詢](../azure-monitor/log-query/get-started-queries.md)
 * [建立和共用 Log Analytics 資料的儀表板](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
@@ -191,7 +191,7 @@ AADDomainServicesAccountLogon
 
 ### <a name="sample-query-5"></a>範例查詢5
 
-從現在開始，針對嘗試在帳戶遭到鎖定時嘗試登入的帳戶登入帳戶，從過去七天內查看帳戶登入事件 (* >*) ：
+從現在開始，針對嘗試在帳戶遭到鎖定時嘗試登入的帳戶登入帳戶，從過去七天內查看帳戶登入事件 (*>*) ：
 
 ```Kusto
 AADDomainServicesAccountLogon
@@ -237,10 +237,10 @@ Azure AD DS 安全性審核與傳統 AD DS 網域控制站的傳統審查一致�
 |:---|:---|
 |帳戶登入安全性|4767、4774、4775、4776、4777|
 |帳戶管理安全性|4720、4722、4723、4724、4725、4726、4727、4728、4729、4730、4731、4732、4733、4734、4735、4737、4738、4740、4741、4742、4743、4754、4755、4756、4757、4758、4764、4765、4766、4780、4781、4782、4793、4798、4799、5376、5377、、|
-|詳細資料追蹤安全性|無|
+|詳細資料追蹤安全性|None|
 |DS 存取安全性|5136、5137、5138、5139、5141|
 |Logon-Logoff 安全性|4624、4625、4634、4647、4648、4672、4675、4964|
-|物件存取安全性|無|
+|物件存取安全性|None|
 |原則變更安全性|4670、4703、4704、4705、4706、4707、4713、4715、4716、4717、4718、4719、4739、4864、4865、4866、4867、4904、4906、4911、4912|
 |許可權使用安全性|4985|
 |系統安全性|4612、4621|

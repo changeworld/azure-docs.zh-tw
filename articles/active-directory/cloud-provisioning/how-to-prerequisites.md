@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f6c5985c16875e263f2494f56636abb4d4e980d
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 8eb8de2424012d12f216f154eb077028a8f82d76
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95237250"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173697"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect 雲端佈建的先決條件
 本文提供如何選擇及使用 Azure Active Directory (Azure AD) Connect 雲端佈建作為身分識別的指引。
@@ -30,11 +30,11 @@ ms.locfileid: "95237250"
 - 內部部署防火牆設定。
 
 ## <a name="group-managed-service-accounts"></a>群組受管理的服務帳戶
-群組受管理的服務帳戶是受控網域帳戶，可提供自動密碼管理、簡化的服務主體名稱 (SPN) 管理、將管理委派給其他系統管理員的能力，以及將這項功能延伸到多部伺服器。  Azure AD Connect Cloud Sync 支援並使用 gMSA 來執行代理程式。  系統會在安裝期間提示您輸入系統管理認證，以便建立此帳戶。  帳戶會顯示為 (domain\provAgentgMSA $) 。  如需 gMSA 的詳細資訊，請參閱 [群組受管理的服務帳戶](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
+群組受管理的服務帳戶是受控網域帳戶，可提供自動密碼管理、簡化的服務主體名稱 (SPN) 管理、將管理委派給其他系統管理員的能力，以及將這項功能延伸到多部伺服器。  Azure AD Connect Cloud Sync 支援並使用 gMSA 來執行代理程式。  系統會在安裝期間提示您輸入系統管理認證，以便建立此帳戶。  帳戶會顯示為 (domain\provAgentgMSA $) 。  如需 gMSA 的詳細資訊，請參閱 [群組受管理的服務帳戶](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
 
 ### <a name="prerequisites-for-gmsa"></a>GMSA 的必要條件：
 1.  GMSA 網域樹系中的 Active Directory 架構必須更新為 Windows Server 2012
-2.  網域控制站上的[POWERSHELL RSAT 模組](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools)
+2.  網域控制站上的[POWERSHELL RSAT 模組](/windows-server/remote/remote-server-administration-tools)
 3.  網域中至少有一個網域控制站必須執行 Windows Server 2012。
 4.  安裝代理程式的已加入網域伺服器必須是 Windows Server 2012 或更新版本。
 

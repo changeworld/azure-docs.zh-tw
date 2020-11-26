@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6aa31d0b8c68f38d2b4fc41a6bbaaeab8a3ffac
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 3f2c5b37c713b69df56e938fdaa2a9134402d765
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363601"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173897"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD 密碼管理的報告選項
 
@@ -27,7 +27,7 @@ ms.locfileid: "92363601"
 存在於 [Azure 入口網站](https://portal.azure.com/)中的報告可以回答下列問題：
 
 > [!NOTE]
-> 您必須是[全域管理員](../roles/permissions-reference.md)且至少必須已瀏覽一次報告索引標籤或稽核記錄。 若要選擇加入，您必須瀏覽 [報告]**** 索引標籤或稽核記錄至少一次。 在此之前，不會為您的組織收集資料。
+> 您必須是[全域管理員](../roles/permissions-reference.md)且至少必須已瀏覽一次報告索引標籤或稽核記錄。 若要選擇加入，您必須瀏覽 [報告] 索引標籤或稽核記錄至少一次。 在此之前，不會為您的組織收集資料。
 >
 
 * 有多少人已註冊密碼重設？
@@ -44,16 +44,16 @@ ms.locfileid: "92363601"
 在 Azure 入口網站體驗中，我們找到更好的方式來檢視密碼重設和密碼重設註冊活動。 使用下列步驟，尋找密碼重設和密碼重設註冊事件：
 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
-2. 在左側窗格中選取 [所有服務]****。
+2. 在左側窗格中選取 [所有服務]。
 3. 在服務清單中搜尋並選取 **Azure Active Directory**。
 4. 從 [管理] 區段中選取 [ **使用者** ]。
 5. 選取 [**使用者**] 分頁的 [**審核記錄**]。 這會顯示目錄中所有使用者發生的稽核事件。 您可以篩選此檢視，查看密碼相關的所有事件。
 6. 從窗格頂端的 [ **篩選** ] 功能表中，選取 [ **服務** ] 下拉式清單，並將其變更為 [ **自助式密碼管理** ] 服務類型。
-7. 另可選擇您有興趣的特定 [活動]****，以進一步篩選清單。
+7. 另可選擇您有興趣的特定 [活動]，以進一步篩選清單。
 
 ### <a name="combined-registration"></a>合併的註冊
 
-如果您已啟用[合併的註冊](./concept-registration-mfa-sspr-combined.md)，則會在**安全性**  >  **驗證方法**下找到有關 audit 記錄檔中的使用者活動資訊。
+如果您已啟用 [合併的註冊](./concept-registration-mfa-sspr-combined.md)，則會在 **安全性**  >  **驗證方法** 下找到有關 audit 記錄檔中的使用者活動資訊。
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Azure 入口網站中報告資料行的說明
 
@@ -104,7 +104,7 @@ ms.locfileid: "92363601"
 * **活動目標**：已變更其密碼的使用者。 使用者可以是一般使用者或系統管理員。
 * **活動狀態**：
   * _成功_：指出使用者已成功變更其密碼。
-  * _失敗_：指出使用者變更其密碼失敗。 您可以選取該資料列，以查看 [活動狀態原因]**** 類別，深入了解失敗發生的原因。
+  * _失敗_：指出使用者變更其密碼失敗。 您可以選取該資料列，以查看 [活動狀態原因] 類別，深入了解失敗發生的原因。
 * **活動狀態失敗原因**：
   * _FuzzyPolicyViolationInvalidPassword_：使用者選取的密碼自動被禁用，因為 Microsoft 的禁用密碼偵測功能發現此密碼太普通或太弱。
 
@@ -117,7 +117,7 @@ ms.locfileid: "92363601"
 * **活動目標**：已重設密碼的使用者。 使用者可以是一般使用者或不同的系統管理員。
 * **活動狀態**：
   * _成功_：指出系統管理員已成功重設使用者的密碼。
-  * _失敗_：指出管理員變更使用者的密碼失敗。 您可以選取該資料列，以查看 [活動狀態原因]**** 類別，深入了解失敗發生的原因。
+  * _失敗_：指出管理員變更使用者的密碼失敗。 您可以選取該資料列，以查看 [活動狀態原因] 類別，深入了解失敗發生的原因。
 
 ### <a name="activity-type-reset-password-self-service"></a>活動類型：重設密碼 (自助式)
 
@@ -128,7 +128,7 @@ ms.locfileid: "92363601"
 * **活動目標**：已重設其密碼的使用者。 使用者可以是一般使用者或系統管理員。
 * **活動狀態**：
   * _成功_：指出使用者已成功重設其密碼。
-  * _失敗_：指出使用者重設其密碼失敗。 您可以選取該資料列，以查看 [活動狀態原因]**** 類別，深入了解失敗發生的原因。
+  * _失敗_：指出使用者重設其密碼失敗。 您可以選取該資料列，以查看 [活動狀態原因] 類別，深入了解失敗發生的原因。
 * **活動狀態失敗原因**：
   * _FuzzyPolicyViolationInvalidPassword_：系統管理員選取的密碼自動被禁用，因為 Microsoft 的禁用密碼偵測功能發現此密碼太普通或太弱。
 
@@ -141,8 +141,8 @@ ms.locfileid: "92363601"
 * **活動目標**：執行部分密碼重設流程的使用者。 使用者可以是一般使用者或系統管理員。
 * **活動狀態**：
   * _成功_：指出使用者已成功完成密碼重設流程的特定步驟。
-  * _失敗_：指出密碼重設流程的特定步驟失敗。 您可以選取該資料列，以查看 [活動狀態原因]**** 類別，深入了解失敗發生的原因。
-* **活動狀態原因**：請參閱下的表以取得[所有允許的重設活動狀態原因](#description-of-the-report-columns-in-the-azure-portal)。
+  * _失敗_：指出密碼重設流程的特定步驟失敗。 您可以選取該資料列，以查看 [活動狀態原因] 類別，深入了解失敗發生的原因。
+* **活動狀態原因**：請參閱下的表以取得 [所有允許的重設活動狀態原因](#description-of-the-report-columns-in-the-azure-portal)。
 
 ### <a name="activity-type-unlock-a-user-account-self-service"></a>活動類型：解除鎖定使用者帳戶 (自助式)
 
@@ -153,7 +153,7 @@ ms.locfileid: "92363601"
 * **活動目標**：已解除鎖定帳戶但未重設其密碼的使用者。 使用者可以是一般使用者或系統管理員。
 * **允許的活動狀態**：
   * _成功_：指出使用者已成功解除鎖定其帳戶。
-  * _失敗_：指出使用者解除鎖定帳戶失敗。 您可以選取該資料列，以查看 [活動狀態原因]**** 類別，深入了解失敗發生的原因。
+  * _失敗_：指出使用者解除鎖定帳戶失敗。 您可以選取該資料列，以查看 [活動狀態原因] 類別，深入了解失敗發生的原因。
 
 ### <a name="activity-type-user-registered-for-self-service-password-reset"></a>活動類型︰使用者已註冊自助式密碼重設
 
@@ -164,7 +164,7 @@ ms.locfileid: "92363601"
 * **活動目標**：已註冊密碼重設的使用者。 使用者可以是一般使用者或系統管理員。
 * **允許的活動狀態**：
   * _成功_：指出使用者已根據目前的原則成功註冊密碼重設。 
-  * _失敗_：指出使用者註冊密碼重設失敗。 您可以選取該資料列，以查看 [活動狀態原因]**** 類別，深入了解失敗發生的原因。
+  * _失敗_：指出使用者註冊密碼重設失敗。 您可以選取該資料列，以查看 [活動狀態原因] 類別，深入了解失敗發生的原因。
 
      >[!NOTE]
      >失敗並不代表使用者無法重設自己的密碼。 這表示它們未完成註冊程序。 如果帳戶上有未驗證但正確的資料 (例如未驗證的電話號碼)，即使此電話號碼尚未驗證，仍然可用來重設密碼。
@@ -181,7 +181,7 @@ ms.locfileid: "92363601"
 * [使用 SSPR 的原則選項有哪些？](concept-sspr-policy.md)
 * [什麼是密碼回寫，且為什麼我需要了解它？](./tutorial-enable-sspr-writeback.md)
 * [SSPR 中的所有選項有哪些，以及它們有何意義？](concept-sspr-howitworks.md)
-* [我認為有中斷。如何針對 SSPR 進行疑難排解？](active-directory-passwords-troubleshoot.md)
+* [我認為有中斷。如何針對 SSPR 進行疑難排解？](./troubleshoot-sspr.md)
 * [在其他某處並未涵蓋我的問題](active-directory-passwords-faq.md)
 
 [Reporting]: ./media/howto-sspr-reporting/sspr-reporting.png "Azure AD 中 SSPR 活動稽核記錄的範例"

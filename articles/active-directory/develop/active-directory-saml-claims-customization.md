@@ -13,18 +13,18 @@ ms.date: 10/22/2019
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 90efdd560735a112c2a4c5eb5740f211b587a241
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f462a78790e73f3e0f67f55b6417589c7826a75d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275762"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173663"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：針對企業應用程式自訂 SAML 權杖中發出的宣告
 
 現今，Microsoft 身分識別平臺支援單一登入 (SSO) 與大部分的企業應用程式，包括 Azure AD 應用程式資源庫中預先整合的應用程式，以及自訂應用程式。 當使用者透過 Microsoft 身分識別平臺使用 SAML 2.0 通訊協定驗證應用程式時，Microsoft 身分識別平臺會透過 HTTP POST) ，將權杖傳送給應用程式 (。 然後，應用程式會驗證並使用權杖將使用者登入，而不會提示輸入使用者名稱和密碼。 這些 SAML 權杖包含關於使用者的資訊片段，稱為「宣告」。
 
-*宣告*是身分識別提供者核發權杖給使用者時，所提供的權杖內部使用者相關資訊。 在 [SAML 權杖](https://en.wikipedia.org/wiki/SAML_2.0)中，此資料通常包含在 SAML 屬性陳述式中。 使用者的唯一識別碼通常在 SAML Subject 中表示，也稱為「名稱識別碼」。
+*宣告* 是身分識別提供者核發權杖給使用者時，所提供的權杖內部使用者相關資訊。 在 [SAML 權杖](https://en.wikipedia.org/wiki/SAML_2.0)中，此資料通常包含在 SAML 屬性陳述式中。 使用者的唯一識別碼通常在 SAML Subject 中表示，也稱為「名稱識別碼」。
 
 根據預設，Microsoft 身分識別平臺會將 SAML 權杖簽發給您的應用程式，其中包含 `NameIdentifier` 具有使用者使用者名稱值的宣告 (也稱為 Azure AD 中的使用者主體名稱) ，可唯一識別使用者。 SAML 權杖也包含額外的宣告，其包含使用者的電子郵件地址、名字和姓氏。
 
@@ -129,8 +129,8 @@ ms.locfileid: "92275762"
 |----------|-------------|
 | **ExtractMailPrefix()** | 從電子郵件地址或使用者主體名稱中移除網域尾碼。 這只會擷取使用者名稱的第一個部分 (例如，"joe_smith" 而不是 joe_smith@contoso.com)。 |
 | **Join()** | 透過聯結兩個屬性來建立新值。 您也可以選擇性地在兩個屬性之間使用分隔符號。 針對 NameID 宣告轉換，聯結僅限用於已驗證的網域。 如果選取的使用者識別碼值具有網域，它會擷取使用者名稱以附加所選的已驗證網域。 例如，如果您選取電子郵件 (joe_smith@contoso.com) 作為使用者識別碼值，並選取 contoso.onmicrosoft.com 作為已驗證的網域，這樣會產生 joe_smith@contoso.onmicrosoft.com。 |
-| **ToLowercase ( # B1 ** | 將所選取屬性中的字元轉換成小寫字元。 |
-| **ToUppercase ( # B1 ** | 將所選取屬性中的字元轉換成大寫字元。 |
+| **ToLowercase ( # B1** | 將所選取屬性中的字元轉換成小寫字元。 |
+| **ToUppercase ( # B1** | 將所選取屬性中的字元轉換成大寫字元。 |
 | **Contains()** | 如果輸入符合指定的值，則輸出屬性或常數。 否則，您可以在沒有相符結果時指定另一個輸出。<br/>例如，假設您想要發出宣告，其中如果值包含網域 “@contoso.com”，便代表其為使用者的電子郵件地址，否則您便想要輸出使用者主體名稱。 若要這麼做，您必須設定下列值：<br/>參數 1 (輸入)：user.email<br/>值："@contoso.com"<br/>參數 2 (輸出)：user.email<br/>參數 3 (在沒有相符項目下的輸出)：user.userprincipalname |
 | **EndWith()** | 如果輸入的結尾是指定的值，則輸出屬性或常數。 否則，您可以在沒有相符結果時指定另一個輸出。<br/>例如，假設您想要發出宣告，其中如果員工識別碼是以 “000” 作為結尾，便代表值為使用者的員工識別碼，否則您便想要輸出分機屬性。 若要這麼做，您必須設定下列值：<br/>參數 1 (輸入)：user.employeeid<br/>*值*："000"<br/>參數 2 (輸出)：user.employeeid<br/>參數 3 (在沒有相符項目下的輸出)：user.extensionattribute1 |
 | **StartWith()** | 如果輸入的開頭是指定的值，則輸出屬性或常數。 否則，您可以在沒有相符結果時指定另一個輸出。<br/>例如，假設您想要發出宣告，其中如果國家/地區是以 "US" 作為開頭，便代表值為使用者的員工識別碼，否則您便想要輸出分機屬性。 若要這麼做，您必須設定下列值：<br/>參數 1 (輸入)：user.country<br/>*值*："US"<br/>參數 2 (輸出)：user.employeeid<br/>參數 3 (在沒有相符項目下的輸出)：user.extensionattribute1 |
@@ -178,5 +178,5 @@ ms.locfileid: "92275762"
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure AD 中的應用程式管理](../manage-apps/what-is-application-management.md)
-* [對不存在於 Azure AD 應用程式庫的應用程式設定單一登入](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
-* [針對 SAML 型單一登入進行疑難排解](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+* [對不存在於 Azure AD 應用程式庫的應用程式設定單一登入](../manage-apps/configure-saml-single-sign-on.md)
+* [針對 SAML 型單一登入進行疑難排解](../manage-apps/debug-saml-sso-issues.md)

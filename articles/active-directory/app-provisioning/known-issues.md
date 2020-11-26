@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 11/19/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 8a1c789759f1119a6170fffc2c70874cd9a32fde
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: e0a77e1e4757c8951756c3e41479628c293dfd8f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919672"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174827"
 ---
 # <a name="known-issues-application-provisioning"></a>已知問題：應用程式布建
 使用應用程式布建時要注意的已知問題。 您可以在 UserVoice 上提供關於應用程式布建服務的意見反應，請參閱 [Azure AD 應用程式](https://aka.ms/appprovisioningfeaturerequest)布建 UserVoice。 我們會密切觀賞 UserVoice，讓我們可以改善服務。 
@@ -28,7 +28,7 @@ ms.locfileid: "94919672"
 
 **連接測試成功後無法儲存**
 
-如果您可以成功測試連接但無法儲存，則表示您已超過允許的認證儲存空間限制。 若要深入瞭解，請參閱 [儲存系統管理員認證時發生問題](application-provisioning-config-problem-storage-limit.md)。
+如果您可以成功測試連接但無法儲存，則表示您已超過允許的認證儲存空間限制。 若要深入瞭解，請參閱 [儲存系統管理員認證時發生問題](./user-provisioning.md)。
 
 **無法儲存**
 
