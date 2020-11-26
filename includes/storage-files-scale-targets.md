@@ -2,14 +2,14 @@
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: a71762010984928b93c19c7256c2ba4f0fe0f64b
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e7b7fae094ad15bc1732778b6a4a3259fb4dd3b5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94503867"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025475"
 ---
 | 資源 | 標準檔案共用\* | 進階檔案共用 |
 |----------|---------------|------------------------------------------|
@@ -27,6 +27,7 @@ ms.locfileid: "94503867"
 | 物件 (目錄和檔案) 名稱長度上限 | 2,048 個字元 | 2,048 個字元 |
 | 最大路徑名稱元件 (在路徑 \A\B\C\D 中，每個字母都是元件) | 255 個字元 | 255 個字元 |
 | 固定連結限制 (僅限 NFS) | N/A | 178 |
+| SMB 多重通道的通道數目上限 | N/A | 4 |
 
 \* 標準檔案共用的限制適用於標準檔案共用可用的三個層級：交易最佳化、經常性存取和非經常性存取。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 3f2dfb113f4c82dfea422a7c2be1c5fb07ffd60e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ef79844cf2f90ce97ea30a1948a441f909255f98
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358162"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169928"
 ---
 # <a name="public-ip-addresses"></a>公用 IP 位址
 
@@ -54,7 +54,7 @@ ms.locfileid: "94358162"
 - 讓可調整的輸入起源流量閒置逾時 4 到 30 分鐘 (預設值為 4 分鐘)，固定的輸出起源流量閒置逾時 4 分鐘。
 - 預設為安全且已關閉連入流量。 允許列出具有 [網路安全性群組](security-overview.md#network-security-groups)的輸入流量。
 - 指派給網路介面、標準公用負載平衡器或應用程式閘道。 如需標準負載平衡器的詳細資訊，請參閱 [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-- 可以是區域冗余或區域性 (可以建立區域性，並在特定的可用性區域) 中保證。 若要了解可用性區域，請參閱[可用性區域概觀](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和[標準負載平衡器和可用性區域](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+- 可以是區域冗余 (從所有3個區域 advertized) 或區域 (可以在特定的可用性區域) 中建立區域性和保證。 若要了解可用性區域，請參閱[可用性區域概觀](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和[標準負載平衡器和可用性區域](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 **區域多餘 Ip 只能在具有3個 [可用性區域的區域](https://docs.microsoft.com/azure/availability-zones/az-region) 中建立。** 在區域上線之前建立的 Ip 不會是區域冗余。
  
 > [!NOTE]
 > 在建立和關聯[網路安全性群組](security-overview.md#network-security-groups)並明確地允許所要輸入流量前，與標準 SKU 資源進行的輸入通訊會失敗。
@@ -95,7 +95,7 @@ ms.locfileid: "94358162"
 
 例如，公用 IP 資源會從名為 **Resource a** 的資源釋出。如果已重新指派公用 IP 資源，則 **資源 A** 會在啟動時收到不同的 ip。
 
-當配置方法從 **靜態** 變更為 **動態** 時，就會釋放 IP 位址。 若要確保相關聯資源的 IP 位址維持不變，請明確地將配置方法設定為 **靜態** 。 系統會立即指派靜態 IP 位址。
+當配置方法從 **靜態** 變更為 **動態** 時，就會釋放 IP 位址。 若要確保相關聯資源的 IP 位址維持不變，請明確地將配置方法設定為 **靜態**。 系統會立即指派靜態 IP 位址。
 
 > [!NOTE]
 > 即使將配置方法設定為「靜態」，您也無法指定已指派給公用 IP 位址資源的實際 IP 位址。 Azure 會從資源建立所在的 Azure 位置中可用的 IP 位址集區指派 IP 位址。
@@ -139,7 +139,7 @@ ms.locfileid: "94358162"
 
 ## <a name="virtual-machines"></a>虛擬機器
 
-您可以藉由將公用 IP 位址指派給其 **網路介面** ，以建立其與 [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虛擬機器的關聯。 
+您可以藉由將公用 IP 位址指派給其 **網路介面**，以建立其與 [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虛擬機器的關聯。 
 
 選擇 [ **動態** ] 或 [ **靜態** ] 作為公用 IP 位址。 深入了解如何[將 IP 位址指派給網路介面](virtual-network-network-interface-addresses.md)。
 
@@ -178,7 +178,7 @@ ms.locfileid: "94358162"
 
 下表顯示可透過其將公用 IP 與最上層資源相關聯的屬性，以及可能的配置方法。
 
-| 最上層資源 | IP 位址關聯 | 動態 | Static |
+| 最上層資源 | IP 位址關聯 | 動態 | 靜態 |
 | --- | --- | --- | --- |
 | 虛擬機器 |Linux |是 |是 |
 | 網際網路對應負載平衡器 |前端組態 |是 |是 |

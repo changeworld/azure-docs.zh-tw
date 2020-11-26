@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 0b54a8227594a81c17dcaaaaa6c599d70217c498
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d899fe7f84a8708bb8ee32cc008567b272a885c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705855"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169370"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>在國家雲端環境中使用 MSAL
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) 部署在下列國家雲端中，包括全域�
 
 本指南示範如何登入公司和學校帳戶、取得存取權杖，以及在 [Azure Government 雲端](https://azure.microsoft.com/global-infrastructure/government/) 環境中呼叫 Microsoft Graph API。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請確定您符合這些必要條件。
 
@@ -49,7 +49,7 @@ Azure Active Directory (Azure AD) 部署在下列國家雲端中，包括全域�
 
 ### <a name="get-an-azure-government-subscription"></a>取得 Azure Government 訂用帳戶
 
-若要取得 Azure Government 訂用帳戶，請參閱 [Azure Government 中的 [管理及連接到您的訂用](../../azure-government/documentation-government-manage-subscriptions.md)帳戶]。
+若要取得 Azure Government 訂用帳戶，請參閱 [Azure Government 中的 [管理及連接到您的訂用](../../azure-government/compare-azure-government-global-azure.md)帳戶]。
 
 如果您沒有 Azure Government 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/global-infrastructure/government/request/) 。
 
@@ -80,10 +80,10 @@ Azure Active Directory (Azure AD) 部署在下列國家雲端中，包括全域�
 1. 在 [支援的帳戶類型] 下，選取 [任何組織目錄中的帳戶]。
 1. 在 [重新 **導向 URI** ] 區段中，選取 **web** 平臺，然後根據您的網頁伺服器，將值設定為應用程式的 URL。 請參閱下一節，以取得如何在 Visual Studio 和節點中設定和取得重新導向 URL 的指示。
 1. 選取 [註冊]。
-1. 在應用程式 [概觀]**** 頁面上，記下 [應用程式 (用戶端) 識別碼]**** 值。
+1. 在應用程式 [概觀] 頁面上，記下 [應用程式 (用戶端) 識別碼] 值。
 1. 本教學課程會要求您啟用 [隱含授與流程](v2-oauth2-implicit-grant-flow.md)。 在所註冊應用程式的左側窗格中，選取 [驗證]。
 1. 在 [進階設定] 的 [隱含授與] 底下，選取 [識別碼權杖] 和 [存取權杖] 核取方塊。 識別碼權杖和存取權杖是必要的，因為此應用程式需要登入使用者並呼叫 API。
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 
 ### <a name="step-2--set-up-your-web-server-or-project"></a>步驟2：設定您的 web 伺服器或專案
 
@@ -122,7 +122,7 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 
 在該程式碼中：
 
-- `Enter_the_Application_Id_here` 應用程式 ** (用戶端) ** 您所註冊之應用程式的識別碼值。
+- `Enter_the_Application_Id_here` 應用程式 **(用戶端)** 您所註冊之應用程式的識別碼值。
 - `Enter_the_Tenant_Info_Here` 設定為下列其中一個選項：
     - 如果您的應用程式支援 **此組織目錄中的帳戶**，請將此值取代為租使用者識別碼或租使用者名稱 (例如 contoso.microsoft.com) 。
     - 如果您的應用程式支援 **任何組織目錄中的帳戶**，請將此值取代為 `organizations` 。

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ab14413de1f999747e5b3fb58b505e0a9258a55
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7cd2aa5e9ff8cbaeead69f11d2e3de7f760b53ec
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441210"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168639"
 ---
 # <a name="saml-authentication-with-azure-active-directory"></a>使用 Azure Active Directory 的 SAML 驗證
 
@@ -45,7 +45,7 @@ SAML 定址為 SSO 的其中一個最重要的使用案例，特別是在安全�
 
 * **Web 瀏覽器**：與使用者互動的元件。
 
-* **Web 應用**程式：支援 SAML 並使用 Azure AD 作為 IdP 的企業應用程式。
+* **Web 應用** 程式：支援 SAML 並使用 Azure AD 作為 IdP 的企業應用程式。
 
 * **Token**： saml 判斷提示 (也稱為 saml 權杖) ，它會攜帶 IdP 對主體 (使用者) 所做的宣告集。 它包含驗證資訊、屬性和授權決策語句。
 
@@ -53,8 +53,8 @@ SAML 定址為 SSO 的其中一個最重要的使用案例，特別是在安全�
 
 ## <a name="implement-saml-authentication-with-azure-ad"></a>使用 Azure AD 來執行 SAML 驗證
 
-* [使用 Azure Active Directory 整合 SaaS 應用程式的教學課程](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) 
+* [使用 Azure Active Directory 整合 SaaS 應用程式的教學課程](../saas-apps/tutorial-list.md) 
 
-* [為非資源庫應用程式設定 SAML 型單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app) 
+* [為非資源庫應用程式設定 SAML 型單一登入](../manage-apps/add-application-portal.md) 
 
-* [Azure AD 如何使用 SAML 通訊協定](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-protocol-reference)
+* [Azure AD 如何使用 SAML 通訊協定](../develop/active-directory-saml-protocol-reference.md)

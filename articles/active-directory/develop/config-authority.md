@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 4810de772e44be22ee5bd4a9fb6ef0ef756e62f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8a176fff0da932d0fafd40b9ab895b635acc5f6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77085219"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169438"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>How to：設定 MSAL for iOS 和 macOS 使用不同的身分識別提供者
 
@@ -29,7 +29,7 @@ ms.locfileid: "77085219"
 `MSALPublicClientApplication` 設定為預設授權單位 URL `https://login.microsoftonline.com/common` ，適用于大部分的 Azure Active Directory (AAD) 案例。 除非您正在實行像是國家雲端的 advanced 案例，或使用 B2C，否則您不需要加以變更。
 
 > [!NOTE]
-> 不支援以 Active Directory 同盟服務作為身分識別提供者的新式驗證 (ADFS)  (如需詳細資料，請參閱 [適用于開發人員的 adfs](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)) 。 透過同盟支援 ADFS。
+> 不支援以 Active Directory 同盟服務作為身分識別提供者的新式驗證 (ADFS)  (如需詳細資料，請參閱 [適用于開發人員的 adfs](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)) 。 透過同盟支援 ADFS。
 
 ## <a name="change-the-default-authority"></a>變更預設授權單位
 

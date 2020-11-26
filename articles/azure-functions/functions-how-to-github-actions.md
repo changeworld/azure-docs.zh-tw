@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: a2d5234b3c80456a98fde4547b9665ca1b0a83dd
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 651c1913491952c53af42abec5ce5d5009da06a0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913540"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168061"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 GitHub 動作進行持續傳遞
 
@@ -32,9 +32,9 @@ ms.locfileid: "92913540"
 ## <a name="prerequisites"></a>Prerequisites
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- GitHub 帳戶。 如果您沒有帳戶，請 [免費](https://github.com/join)註冊。  
+- GitHub 帳戶。 如果您沒有帳戶，請[免費](https://github.com/join)註冊。  
 - 裝載在 Azure 上的運作中函式應用程式與 GitHub 存放庫。   
-    - [快速入門：使用 Visual Studio Code 在 Azure 中建立函式](functions-create-first-function-vs-code.md)
+    - [快速入門：使用 Visual Studio Code 在 Azure 中建立函式](./create-first-function-vs-code-csharp.md)
 
 ## <a name="generate-deployment-credentials"></a>產生部署認證
 
@@ -46,7 +46,7 @@ ms.locfileid: "92913540"
 
 若要下載函數應用程式的發行設定檔：
 
-1. 選取函數應用程式的 **[總覽** ] 頁面，然後選取 [ **取得發行設定檔** ]。
+1. 選取函數應用程式的 **[總覽** ] 頁面，然後選取 [ **取得發行設定檔**]。
 
    :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="Download publish profile":::
 
@@ -55,11 +55,11 @@ ms.locfileid: "92913540"
 
 ### <a name="add-the-github-secret"></a>新增 GitHub 秘密
 
-1. 在 [GitHub](https://github.com)中，流覽至您的存放庫，並選取 [ **設定**  >  **秘密**  >  **新增密碼** ]。
+1. 在 [GitHub](https://github.com)中，流覽至您的存放庫，並選取 [**設定**  >  **秘密**  >  **新增密碼**]。
 
-   :::image type="content" source="media/functions-how-to-github-actions/add-secret.png" alt-text="Download publish profile":::
+   :::image type="content" source="media/functions-how-to-github-actions/add-secret.png" alt-text="新增秘密":::
 
-1. 使用 `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` [ **名稱** ]、[發佈設定檔] 的 [ **值** ] 內容，然後選取 [新增 **密碼** ]，以新增秘密。
+1. 使用 `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` [ **名稱**]、[發佈設定檔] 的 [ **值**] 內容，然後選取 [新增 **密碼**]，以新增秘密。
 
 GitHub 現在可以驗證您在 Azure 中的函數應用程式。
 
@@ -495,7 +495,7 @@ jobs:
 
 ---
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [深入瞭解 Azure 和 GitHub 整合](/azure/developer/github/)

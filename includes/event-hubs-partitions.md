@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 05/22/2019
+ms.date: 11/19/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: cbd2d3b46ec339328e0d0889a722d39070104953
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 48cc6b84fe88676a03d1bb6e0a8154c16e3ef618
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92347015"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007424"
 ---
 事件中樞透過分割取用者模式來提供訊息串流，每位取用者只會讀取訊息串流的特定子集 (即資料分割)。 此模式能水平擴充事件處理規模，並提供佇列和主題缺少的其他串流導向功能。
 
@@ -25,7 +25,7 @@ ms.locfileid: "92347015"
 
 ![事件中樞](./media/event-hubs-partitions/multiple-partitions.png)
 
-資料分割數目是在建立時指定，值必須介於 2 到 32 之間。 資料分割計數不可變更，您在設定資料分割計數時，應該考慮長期的規模。 資料分割是一種資料組織機制，與取用端應用程式所需的下游平行處理原則有關。 事件中樞內的資料分割數目，與您預期有的並行讀取器數目直接相關。 您可以連絡事件中樞小組，將資料分割數目提高到 32 個以上。
+資料分割數目是在建立時指定，值必須介於 1 到 32 之間。 資料分割計數不可變更，您在設定資料分割計數時，應該考慮長期的規模。 資料分割是一種資料組織機制，與取用端應用程式所需的下游平行處理原則有關。 事件中樞內的資料分割數目，與您預期有的並行讀取器數目直接相關。 您可以連絡事件中樞小組，將資料分割數目提高到 32 個以上。
 
 在建立時，您可能會想要將其設定為最高的可能值，也就是 32。 請記住，有多個分割區會導致事件傳送至多個分割區，而不會保留順序，除非您將傳送者設定為只傳送至 32 個分割區中的單一分割區，而留下剩餘的 31 個分割區做為備援之用。 在前者案例中，您必須跨所有 32 個分割區讀取事件。 在後者案例中，除了您必須在事件處理器主機上進行的額外設定外，沒有明顯的額外成本。
 

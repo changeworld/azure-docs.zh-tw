@@ -12,12 +12,12 @@ ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 59ed397f3bd54a324f8fa375a3ea870860c31142
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: fa6fc11441811589967ddd7728501b521f9f9155
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410924"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169268"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 驗證與授權錯誤碼 \(部分機器翻譯\)
 
@@ -315,7 +315,7 @@ ms.locfileid: "94410924"
 | AADSTS700022 | InvalidMultipleResourcesScope - 所提供的輸入參數範圍值無效，因為它包含多個資源。 |
 | AADSTS700023 | InvalidResourcelessScope - 要求存取權杖時，所提供的輸入參數範圍值無效。 |
 | AADSTS7000215 | 提供的用戶端祕密無效。 開發人員錯誤-應用程式嘗試在沒有必要或正確的驗證參數的情況下登入。|
-| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided-提供的用戶端秘密金鑰已過期。 請造訪 Azure 入口網站為您的應用程式建立新的金鑰，或考慮使用憑證認證來提高安全性： [https://aka.ms/certCreds](https://aka.ms/certCreds) |
+| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided-提供的用戶端秘密金鑰已過期。 請造訪 Azure 入口網站為您的應用程式建立新的金鑰，或考慮使用憑證認證來提高安全性： [https://aka.ms/certCreds](./active-directory-certificate-credentials.md) |
 | AADSTS700005 | InvalidGrantRedeemAgainstWrongTenant 提供的授權碼適用于其他租使用者，因此遭到拒絕。 OAuth2 授權碼必須針對 (/common 或/{tenant-ID} 所取得的相同租使用者兌換（適當)  |
 | AADSTS1000000 | UserNotBoundError - 繫結 API 需要 Azure AD 使用者也向外部 IDP 進行驗證，但尚未發生。 |
 | AADSTS1000002 | BindCompleteInterruptError - 繫結已順利完成，但必須通知使用者。 |

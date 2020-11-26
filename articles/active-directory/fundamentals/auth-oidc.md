@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f38da0dd2dc2adc8049e2b307c861651a55ed700
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 0e5bf7e51de38d42e64f6737e687c5946a464160
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576983"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168656"
 ---
 # <a name="openid-connect-authentication-with-azure-active-directory"></a>使用 Azure Active Directory OpenID Connect 驗證
 
@@ -38,24 +38,23 @@ OIDC 的設計目標是「簡化簡單、複雜的事物」。 OIDC 可讓開發
 
 ## <a name="components-of-system"></a>系統的元件
 
-* **使用者** ：從應用程式要求服務。
+* **使用者**：從應用程式要求服務。
 
-* **受信任的代理程式** ：使用者所互動的元件。 此受信任的代理程式通常是網頁瀏覽器。
+* **受信任的代理程式**：使用者所互動的元件。 此受信任的代理程式通常是網頁瀏覽器。
 
 * **應用** 程式：應用程式或資源伺服器是資源或資料所在的位置。 它會信任身分識別提供者，以安全地驗證及授權受信任的代理程式。 
 
-* **Azure AD** ： OIDC 提供者（也稱為身分識別提供者）會安全地管理任何與使用者資訊、使用者存取權，以及流程中合作物件之間的信任關係。 它會驗證使用者的身分識別、授與及撤銷資源的存取權，以及發行權杖。 
+* **Azure AD**： OIDC 提供者（也稱為身分識別提供者）會安全地管理任何與使用者資訊、使用者存取權，以及流程中合作物件之間的信任關係。 它會驗證使用者的身分識別、授與及撤銷資源的存取權，以及發行權杖。 
 
 ## <a name="implement-oidc-with-azure-ad"></a>使用 Azure AD 來執行 OIDC
 
-* [整合應用程式與 Azure AD](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) 
+* [整合應用程式與 Azure AD](../saas-apps/tutorial-list.md) 
 
-* [Microsoft 身分識別平臺上的 OAuth 2.0 和 OpenID Connect 通訊協定](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols) 
+* [Microsoft 身分識別平臺上的 OAuth 2.0 和 OpenID Connect 通訊協定](../develop/active-directory-v2-protocols.md) 
 
-* [Microsoft 身分識別平台和 OpenID Connect 通訊協定](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc) 
+* [Microsoft 身分識別平台和 OpenID Connect 通訊協定](../develop/v2-protocols-oidc.md) 
 
-* [在 Azure Active Directory B2C 中利用 OpenID Connect 的 Web 登入](https://docs.microsoft.com/azure/active-directory-b2c/openid-connect) 
+* [在 Azure Active Directory B2C 中利用 OpenID Connect 的 Web 登入](../../active-directory-b2c/openid-connect.md) 
 
-* [使用 OpenID Connect 與 Azure AD 保護您的應用程式](https://docs.microsoft.com/learn/modules/secure-app-with-oidc-and-azure-ad/) 
+* [使用 OpenID Connect 與 Azure AD 保護您的應用程式](/learn/modules/secure-app-with-oidc-and-azure-ad/) 
 
- 

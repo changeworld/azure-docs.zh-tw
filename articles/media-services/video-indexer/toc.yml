@@ -54,6 +54,7 @@
     - name: 檢查影片索引器輸出
       href: video-indexer-output-json-v2.md
     - name: 尋找影片中的確切時間
+      displayName: search
       href: video-indexer-search.md
     - name: 偵測場景、擷取畫面、主要畫面格
       href: scenes-shots-keyframes.md

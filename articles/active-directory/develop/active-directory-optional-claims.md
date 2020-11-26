@@ -12,12 +12,12 @@ ms.date: 10/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 1a08aa4261e8d2546d16bb60394829c83604b4cd
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 50f57f48ca839c5389df49fc5dc7586030916b6b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019954"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169744"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：為您的應用程式提供選擇性宣告
 
@@ -67,7 +67,7 @@ ms.locfileid: "95019954"
 | `email`                    | 此使用者可定址的電子郵件 (如果使用者有的話)。  | JWT、SAML | MSA、Azure AD | 如果使用者是租用戶中的來賓，則預設會包含此值。  若為受管理的使用者 (租用戶內的使用者)，則必須透過此選擇性宣告，或使用 OpenID 範圍 (僅限 v2.0) 來要求此值。  若為受管理的使用者，電子郵件地址必須設定於 [Office 管理入口網站](https://portal.office.com/adminportal/home#/users)。|
 | `acct`                | 租使用者中的使用者帳戶狀態 | JWT、SAML | | 如果使用者是租用戶的成員，則值為 `0`。 如果是來賓使用者，則值為 `1`。 |
 | `groups`| 群組宣告的選擇性格式化 |JWT、SAML| |與[應用程式資訊清單](reference-app-manifest.md)中的 GroupMembershipClaims 設定 (也必須設定) 搭配使用。 如需詳細資訊，請參閱下面的[群組宣告](#configuring-groups-optional-claims)。 如需群組宣告的詳細資訊，請參閱[如何設定群組宣告](../hybrid/how-to-connect-fed-group-claims.md)
-| `upn`                      | UserPrincipalName | JWT、SAML  |           | 可與 username_hint 參數搭配使用的使用者識別碼。  不是使用者的持久性識別碼，也不能用來唯一識別使用者資訊 (例如，做為資料庫金鑰) 。 相反地，請使用使用者物件識別碼 (`oid`) 做為資料庫索引鍵。 使用 [替代登入識別碼登](/azure/active-directory/authentication/howto-authentication-use-email-signin) 入的使用者不應該顯示其使用者主體名稱 (UPN) 。 相反地，請使用下列識別碼權杖宣告來向使用者顯示登入狀態： `preferred_username` 或 `unique_name` 適用于 v1 權杖和 `preferred_username` v2 權杖。 雖然會自動包含此宣告，但在來賓使用者案例中，您可以將它指定為選擇性宣告來附加額外屬性，以修改其行為。  |
+| `upn`                      | UserPrincipalName | JWT、SAML  |           | 可與 username_hint 參數搭配使用的使用者識別碼。  不是使用者的持久性識別碼，也不能用來唯一識別使用者資訊 (例如，做為資料庫金鑰) 。 相反地，請使用使用者物件識別碼 (`oid`) 做為資料庫索引鍵。 使用 [替代登入識別碼登](../authentication/howto-authentication-use-email-signin.md) 入的使用者不應該顯示其使用者主體名稱 (UPN) 。 相反地，請使用下列識別碼權杖宣告來向使用者顯示登入狀態： `preferred_username` 或 `unique_name` 適用于 v1 權杖和 `preferred_username` v2 權杖。 雖然會自動包含此宣告，但在來賓使用者案例中，您可以將它指定為選擇性宣告來附加額外屬性，以修改其行為。  |
 | `idtyp`                    | Token 類型   | JWT 存取權杖 | 特殊：只在僅限應用程式的存取權杖中 |  值是 `app` 當令牌是僅限應用程式的權杖時。 這是 API 判斷權杖是否為應用程式權杖或應用程式 + 使用者權杖的最精確方式。|
 
 ## <a name="v20-specific-optional-claims-set"></a>v2.0 特有的選擇性宣告集
@@ -76,7 +76,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 **表 3：僅限 v2.0 的選擇性宣告**
 
-| JWT 宣告     | 名稱                            | 說明                                | 注意 |
+| JWT 宣告     | 名稱                            | 描述                                | 注意 |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP 位址                      | 用戶端的登入來源 IP 位址。   |       |
 | `onprem_sid`  | 內部部署安全性識別碼 |                                             |       |
@@ -85,7 +85,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 | `in_corp`     | 公司網路內部        | 指出用戶端是否是從公司網路登入的。 如果不是，則不包含此宣告。   |  根據 MFA 中的[可信任 IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) 設定。    |
 | `family_name` | 姓氏                       | 提供使用者物件中定義的使用者姓氏。 <br>"family_name":"Miller" | MSA 和 Azure AD 支援。 需要 `profile` 範圍。   |
 | `given_name`  | 名字                      | 提供使用者物件上設定的使用者名字。<br>"given_name"："Frank"                   | MSA 和 Azure AD 支援。  需要 `profile` 範圍。 |
-| `upn`         | 使用者主體名稱 | 可與 username_hint 參數搭配使用的使用者識別碼。  不是使用者的持久性識別碼，也不能用來唯一識別使用者資訊 (例如，做為資料庫金鑰) 。 相反地，請使用使用者物件識別碼 (`oid`) 做為資料庫索引鍵。 使用 [替代登入識別碼登](/azure/active-directory/authentication/howto-authentication-use-email-signin) 入的使用者不應該顯示其使用者主體名稱 (UPN) 。 相反地，請使用下列識別碼權杖宣告來向使用者顯示登入狀態： `preferred_username` 或 `unique_name` 適用于 v1 權杖和 `preferred_username` v2 權杖。 | 如需了解宣告的設定，請參閱下方的[額外屬性](#additional-properties-of-optional-claims)。 需要 `profile` 範圍。|
+| `upn`         | 使用者主體名稱 | 可與 username_hint 參數搭配使用的使用者識別碼。  不是使用者的持久性識別碼，也不能用來唯一識別使用者資訊 (例如，做為資料庫金鑰) 。 相反地，請使用使用者物件識別碼 (`oid`) 做為資料庫索引鍵。 使用 [替代登入識別碼登](../authentication/howto-authentication-use-email-signin.md) 入的使用者不應該顯示其使用者主體名稱 (UPN) 。 相反地，請使用下列識別碼權杖宣告來向使用者顯示登入狀態： `preferred_username` 或 `unique_name` 適用于 v1 權杖和 `preferred_username` v2 權杖。 | 如需了解宣告的設定，請參閱下方的[額外屬性](#additional-properties-of-optional-claims)。 需要 `profile` 範圍。|
 
 ### <a name="additional-properties-of-optional-claims"></a>選擇性宣告的額外屬性
 
@@ -139,7 +139,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 1. 選取 [新增]。
 
 > [!NOTE]
-> 目前在 Azure AD B2C 租使用者中註冊的應用程式無法使用 UI 選項 **權杖** 設定分頁。 針對在 B2C 租使用者中註冊的應用程式，可以藉由修改應用程式資訊清單來設定選擇性宣告。 如需詳細資訊，請參閱 [在 Azure Active Directory B2C 中使用自訂原則新增宣告和自訂使用者輸入](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-configure-user-input) 
+> 目前在 Azure AD B2C 租使用者中註冊的應用程式無法使用 UI 選項 **權杖** 設定分頁。 針對在 B2C 租使用者中註冊的應用程式，可以藉由修改應用程式資訊清單來設定選擇性宣告。 如需詳細資訊，請參閱 [在 Azure Active Directory B2C 中使用自訂原則新增宣告和自訂使用者輸入](../../active-directory-b2c/custom-policy-configure-user-input.md) 
 
 **透過應用程式資訊清單設定選擇性宣告：**
 

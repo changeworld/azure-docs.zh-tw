@@ -4,12 +4,12 @@ description: 了解在 Azure 中開發函式所需的 Azure Functions 概念與�
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 9a3c0643f4fc965ff64106758320aeb445aaf9ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54bfd770fba9a1766396d66c0c263111c233c9c2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85921731"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96167874"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions 開發人員指南
 在 Azure Functions 中，不論您使用何種語言或繫結，特定函式都會共用一些核心技術概念和元件。 閱讀指定語言或繫結特有的詳細資料之前，請務必詳閱這份適用於所有語言或繫結的概觀。
@@ -17,7 +17,7 @@ ms.locfileid: "85921731"
 本文假設您已閱讀過 [Azure Functions 開發人員概觀](functions-overview.md)。
 
 ## <a name="function-code"></a>函式程式碼
-「函數」 ** 是 Azure Functions 中的主要概念。 函式包含兩個重要的部分，一個部分是可用各種語言撰寫的程式碼，另一則是一些組態，亦即 function.json 檔案。 對於已編譯的語言，系統會自動從您程式碼中的註解產生此組態檔。 對於指令碼語言，您必須自行提供組態檔。
+「函數」  是 Azure Functions 中的主要概念。 函式包含兩個重要的部分，一個部分是可用各種語言撰寫的程式碼，另一則是一些組態，亦即 function.json 檔案。 對於已編譯的語言，系統會自動從您程式碼中的註解產生此組態檔。 對於指令碼語言，您必須自行提供組態檔。
 
 function.json 檔案會定義函式的觸發程序、繫結和其他組態設定。 每個函式會有一個且只能有一個觸發程序。 執行階段使用此組態檔來判斷要監視的事件，以及如何傳入資料並從函式執行傳回資料。 以下是範例 function.json 檔案。
 
@@ -42,7 +42,7 @@ function.json 檔案會定義函式的觸發程序、繫結和其他組態設定
 
 | 屬性 | 值/類型 | 註解 |
 | --- | --- | --- |
-| `type` |字串 |繫結類型。 例如： `queueTrigger` 。 |
+| `type` |字串 |繫結類型。 例如 `queueTrigger`。 |
 | `direction` |'in'、'out' |表示繫結用於將資料接收到函數，還是從函數傳送資料。 |
 | `name` |字串 |用於函式中所繫結資料的名稱。 在 C# 中，這是引數名稱；在 JavaScript 中，這是索引鍵/值清單中的索引鍵。 |
 
@@ -61,7 +61,7 @@ function.json 檔案會定義函式的觸發程序、繫結和其他組態設定
 > 如果手動部署封裝，請務必將您的 _host.json_ 檔案和函式資料夾直接部署至 `wwwroot` 資料夾。 您的部署中請勿包含 `wwwroot` 資料夾。 否則，您會得到 `wwwroot\wwwroot` 資料夾。
 
 #### <a name="use-local-tools-and-publishing"></a>使用本機工具與發佈
-您可以使用各種工具來製作及發佈函數應用程式，包括 [Visual Studio](./functions-develop-vs.md)、[Visual Studio Code](functions-create-first-function-vs-code.md)、[IntelliJ](./functions-create-maven-intellij.md)、[Eclipse](./functions-create-maven-eclipse.md) 與 [Azure Functions Core Tools](./functions-develop-local.md)。 如需詳細資訊，請參閱[如何在本機撰寫 Azure Functions 程式碼並進行測試](./functions-develop-local.md)。
+您可以使用各種工具來製作及發佈函數應用程式，包括 [Visual Studio](./functions-develop-vs.md)、[Visual Studio Code](./create-first-function-vs-code-csharp.md)、[IntelliJ](./functions-create-maven-intellij.md)、[Eclipse](./functions-create-maven-eclipse.md) 與 [Azure Functions Core Tools](./functions-develop-local.md)。 如需詳細資訊，請參閱[如何在本機撰寫 Azure Functions 程式碼並進行測試](./functions-develop-local.md)。
 
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 

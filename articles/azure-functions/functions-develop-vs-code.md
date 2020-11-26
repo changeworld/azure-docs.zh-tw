@@ -4,12 +4,12 @@ description: 瞭解如何使用 Visual Studio Code 的 Azure Functions 擴充功
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: c851f5284b87f224932b027fd10ce720327639c2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 573177615ff898326eb29649a7f766b5df34b587
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010445"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168404"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio Code 來開發 Azure Functions
 
@@ -34,7 +34,7 @@ Azure Functions 擴充功能提供下列優點：
 
 在本文中，範例目前僅適用于 JavaScript ( # A0) 和 c # 類別庫函式。  
 
-本文提供有關如何使用 Azure Functions 擴充功能來開發函式並將其發佈至 Azure 的詳細資料。 閱讀本文之前，您應該先 [使用 Visual Studio Code 建立您的第一個函數](functions-create-first-function-vs-code.md)。
+本文提供有關如何使用 Azure Functions 擴充功能來開發函式並將其發佈至 Azure 的詳細資料。 閱讀本文之前，您應該先 [使用 Visual Studio Code 建立您的第一個函數](./create-first-function-vs-code-csharp.md)。
 
 > [!IMPORTANT]
 > 請勿混合單一函式應用程式的本機開發和入口網站開發。 當您從本機專案發佈至函式應用程式時，部署程序將會覆寫您在入口網站開發的任何函式。
@@ -233,7 +233,7 @@ Visual Studio Code 可讓您將函式專案直接發行至 Azure。 在這過程
 
 ### <a name="quick-function-app-create"></a>快速函數應用程式建立
 
-當您 **在 Azure 中選擇 [+ 建立新的函式應用程式**] 時，擴充功能會自動為您的函式應用程式所需的 Azure 資源產生值。 這些值是以您選擇的函式應用程式名稱為基礎。 如需使用預設值將專案發佈至 Azure 中新函數應用程式的範例，請參閱 [Visual Studio Code 快速入門文章](functions-create-first-function-vs-code.md#publish-the-project-to-azure)。
+當您 **在 Azure 中選擇 [+ 建立新的函式應用程式**] 時，擴充功能會自動為您的函式應用程式所需的 Azure 資源產生值。 這些值是以您選擇的函式應用程式名稱為基礎。 如需使用預設值將專案發佈至 Azure 中新函數應用程式的範例，請參閱 [Visual Studio Code 快速入門文章](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure)。
 
 如果您想要為所建立的資源提供明確的名稱，您必須選擇 [advanced create path]。
 

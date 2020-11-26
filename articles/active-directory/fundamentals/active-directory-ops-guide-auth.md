@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: baa0aa01c94c4deb35db8a59f7b4f81224ae1fd3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5f529e6148463ae384791985659378cb9d0a5046
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836983"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168860"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory Authentication 管理作業參考指南
 
@@ -31,7 +31,7 @@ ms.locfileid: "94836983"
 
 管理 Azure Active Directory 需要持續執行重要的作業工作和進程，這可能不是首度發行專案的一部分。 您也必須設定這些工作來優化您的環境。 主要工作和其建議的擁有者包括：
 
-| 工作 | 擁有者 |
+| Task | 擁有者 |
 | :- | :- |
 | 在 Azure AD 中管理單一登入 (SSO) 設定的生命週期 | IAM 作業小組 |
 | 設計 Azure AD 應用程式的條件式存取原則 | InfoSec 架構小組 |
@@ -160,7 +160,7 @@ ms.locfileid: "94836983"
 > [!NOTE]
 > 如果您沒有探索組織中非受控應用程式的機制，我們建議使用雲端存取安全性代理程式解決方案來執行探索程式， (CASB) 例如 [Microsoft Cloud App Security](https://www.microsoft.com/enterprise-mobility-security/cloud-app-security)。
 
-最後，如果您有 Azure AD 的應用程式庫，並使用支援 SSO 與 Azure AD 的應用程式，我們建議您 [在應用程式庫中列出應用程式](../azuread-dev/howto-app-gallery-listing.md)。
+最後，如果您有 Azure AD 的應用程式庫，並使用支援 SSO 與 Azure AD 的應用程式，我們建議您 [在應用程式庫中列出應用程式](../develop/v2-howto-app-gallery-listing.md)。
 
 #### <a name="single-sign-on-recommended-reading"></a>建議閱讀單一登入
 
@@ -255,7 +255,7 @@ Microsoft Intune 應用程式管理 (MAM) 提供將資料保護控制（例如�
 
 #### <a name="conditional-access-recommended-reading"></a>建議閱讀條件式存取
 
-- [Azure Active Directory 中條件式存取的最佳作法](../conditional-access/best-practices.md)
+- [Azure Active Directory 中條件式存取的最佳作法](../conditional-access/overview.md)
 - [身分識別與裝置存取設定](/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Azure Active Directory 條件式存取設定參考](../conditional-access/concept-conditional-access-conditions.md)
 - [一般條件式存取原則](../conditional-access/concept-conditional-access-policy-common.md)

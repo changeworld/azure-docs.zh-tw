@@ -14,26 +14,26 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: hahamil
 ms.reviewer: marsma
-ms.openlocfilehash: 7e53e21b6d929e2f0ba9a2e23e4e8e1b2278f828
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 3f5791bfcf6547b7fc4e84bee3d4c1c49453af9c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209499"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169489"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-msal"></a>如何：使用 MSAL 在 Android 上啟用跨應用程式的 SSO
 
 單一登入 (SSO) 可讓使用者只輸入其認證一次，並讓這些認證自動跨應用程式運作。
 
-[Microsoft 身分識別平臺](/azure/active-directory/develop/)和 microsoft 驗證程式庫 (MSAL) 可協助您在自己的應用程式套件中啟用 SSO。 使用訊息代理程式功能和驗證器應用程式，您可以在整個裝置上擴充 SSO。
+[Microsoft 身分識別平臺](./index.yml)和 microsoft 驗證程式庫 (MSAL) 可協助您在自己的應用程式套件中啟用 SSO。 使用訊息代理程式功能和驗證器應用程式，您可以在整個裝置上擴充 SSO。
 
 在此操作說明中，您將瞭解如何設定應用程式所使用的 Sdk，以提供 SSO 給您的客戶。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 此操作說明假設您知道如何：
 
-- 使用 Azure 入口網站布建您的應用程式。 如需本主題的詳細資訊，請參閱在[Android 教學](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android#create-a-project)課程中建立應用程式的指示。
+- 使用 Azure 入口網站布建您的應用程式。 如需本主題的詳細資訊，請參閱在[Android 教學](./tutorial-v2-android.md#create-a-project)課程中建立應用程式的指示。
 - 整合您的應用程式與 [適用于 Android 的 Microsoft 驗證程式庫](https://github.com/AzureAD/microsoft-authentication-library-for-android)。
 
 ## <a name="methods-for-single-sign-on"></a>單一登入的方法
@@ -117,9 +117,9 @@ Windows：
 keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64
 ```
 
-當您使用 *keytool*產生簽章雜湊之後，請使用 Azure 入口網站來產生重新導向 URI：
+當您使用 *keytool* 產生簽章雜湊之後，請使用 Azure 入口網站來產生重新導向 URI：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com) ，並在 **應用程式註冊**中選取您的 Android 應用程式。
+1. 登入 [Azure 入口網站](https://portal.azure.com) ，並在 **應用程式註冊** 中選取您的 Android 應用程式。
 1. 選取 [**驗證**]  >  **新增平臺**  >  **Android**。
 1. 在 [ **設定您的 Android 應用程式** ] 窗格中，輸入您稍早產生的簽章 **雜湊** 和 **套件名稱**。
 1. 選取 [ **設定** ] 按鈕。
@@ -159,7 +159,7 @@ MSAL 會先使用 broker 系結服務，因為呼叫此服務不需要任何 And
 它可能不會立即明確地清楚訊息代理程式整合是否正常運作，但您可以使用下列步驟來檢查：
 
 1. 在您的 Android 裝置上，使用訊息代理程式完成要求。
-1. 在 Android 裝置的設定中，尋找與您用來驗證的帳戶相對應的新建立帳戶。 帳戶應該是 *工作帳戶*類型。
+1. 在 Android 裝置的設定中，尋找與您用來驗證的帳戶相對應的新建立帳戶。 帳戶應該是 *工作帳戶* 類型。
 
 如果您想要重複此測試，您可以從設定中移除帳戶。
 

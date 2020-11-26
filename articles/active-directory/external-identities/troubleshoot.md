@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 646bd2b6a8e22698e6fbcb44d2442e921c7850a5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e7a77c110c12fd6b42e8defbe43a40579b9c6588
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441499"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168758"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>針對 Azure Active Directory B2B 共同作業問題進行疑難排解
 
@@ -93,11 +93,11 @@ ms.locfileid: "92441499"
 
 使用者有 Azure 使用者帳戶，而且是已放棄或未受管理的病毒租使用者。 此外，租使用者中不會有任何全域或公司系統管理員。
 
-若要解決此問題，您必須接管已放棄的租使用者。 請參閱  [在 Azure Active Directory 中，以系統管理員身分接管非受控目錄](../users-groups-roles/domains-admin-takeover.md)。 您也必須針對有問題的網域尾碼存取網際網路對應的 DNS，以提供您控制命名空間的直接辨識項。 當租使用者返回受控狀態之後，請與客戶討論是否讓使用者與已驗證的功能變數名稱成為其組織的最佳選項。
+若要解決此問題，您必須接管已放棄的租使用者。 請參閱  [在 Azure Active Directory 中，以系統管理員身分接管非受控目錄](../enterprise-users/domains-admin-takeover.md)。 您也必須針對有問題的網域尾碼存取網際網路對應的 DNS，以提供您控制命名空間的直接辨識項。 當租使用者返回受控狀態之後，請與客戶討論是否讓使用者與已驗證的功能變數名稱成為其組織的最佳選項。
 
 ## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>具有 Just-In-Time (JIT) 或「病毒式」租用戶的來賓使用者無法重設其密碼
 
-如果身分識別租用戶是 Just-In-Time (JIT) 或病毒式租用戶 (表示它是獨立、非受控的 Azure 租用戶)，只有來賓使用者才能重設自己的密碼。 組織有時會[接管病毒式租用戶的管理](../users-groups-roles/domains-admin-takeover.md)，這些是員工使用其工作電子郵件地址來註冊服務時所建立的租用戶。 在組織接管病毒式租用戶之後，只有該組織的系統管理員可以重設使用者的密碼或啟用 SSPR。 如有必要，作為發出邀請的組織，您可以從目錄中移除來賓使用者帳戶，並重新傳送邀請。
+如果身分識別租用戶是 Just-In-Time (JIT) 或病毒式租用戶 (表示它是獨立、非受控的 Azure 租用戶)，只有來賓使用者才能重設自己的密碼。 組織有時會[接管病毒式租用戶的管理](../enterprise-users/domains-admin-takeover.md)，這些是員工使用其工作電子郵件地址來註冊服務時所建立的租用戶。 在組織接管病毒式租用戶之後，只有該組織的系統管理員可以重設使用者的密碼或啟用 SSPR。 如有必要，作為發出邀請的組織，您可以從目錄中移除來賓使用者帳戶，並重新傳送邀請。
 
 ## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>來賓使用者無法使用 AzureAD PowerShell V1 模組
 

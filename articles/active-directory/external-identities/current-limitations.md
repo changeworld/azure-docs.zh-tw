@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2d7c1c0245649fdb7eed1033a953b8cc3933626
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e4f960819aa208dcc8d3e476fc45a766452b612c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442111"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168945"
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Azure AD B2B 共同作業的限制
 Azure Active Directory (Azure AD) B2B 共同作業目前受限於本文所述的限制。
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) B2B 共同作業目前受限於本文所述的
 在 B2B 共同作業流程中，我們會新增使用者到目錄中，並在邀請兌換與應用程式指派等期間動態更新它們。 更新與寫入通常會在一個目錄執行個體中進行，而且必須複寫到所有執行個體。 在所有執行個體都更新後，複寫作業便已完成。 有時，在某個執行個體中寫入或更新物件，但另一個執行個體呼叫擷取此物件時，就會發生複寫延遲問題。 如果發生該情況，請重新整理或重試來提供幫助。 如果您正在使用我們的 API 來撰寫應用程式，則採用某種讓步來重試是可減輕此問題的良好防禦性做法。
 
 ## <a name="azure-ad-directories"></a>Azure AD 目錄
-Azure AD B2B 受限於 Azure AD 服務目錄限制。 如需使用者可建立的目錄數目以及使用者或來賓使用者可屬於的目錄數目詳細資訊，請參閱 [Azure AD 服務限制](../users-groups-roles/directory-service-limits-restrictions.md)。
+Azure AD B2B 受限於 Azure AD 服務目錄限制。 如需使用者可建立的目錄數目以及使用者或來賓使用者可屬於的目錄數目詳細資訊，請參閱 [Azure AD 服務限制](../enterprise-users/directory-service-limits-restrictions.md)。
 
 ## <a name="national-clouds"></a>國家雲端
 [國家](../develop/authentication-national-cloud.md) 雲端是 Azure 的實際隔離實例。 不支援跨國家雲端界限進行 B2B 共同作業。 例如，如果您的 Azure 租使用者位於公用的全球雲端，您將無法邀請其帳戶位於全國雲端的使用者。 若要與使用者共同作業，請要求他們輸入其他電子郵件地址，或在您的目錄中建立成員使用者帳戶。
@@ -39,7 +39,7 @@ Azure AD B2B 受限於 Azure AD 服務目錄限制。 如需使用者可建立�
 ### <a name="how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant"></a>如何判斷我的 Azure 美國政府租使用者是否可以使用 B2B 共同作業？
 若要瞭解您的 Azure 美國政府雲端租使用者是否支援 B2B 共同作業，請執行下列動作：
 
-1. 在瀏覽器中，移至下列 URL，並以您的租使用者名稱取代* &lt; tenantname &gt; *：
+1. 在瀏覽器中，移至下列 URL，並以您的租使用者名稱取代 *&lt; tenantname &gt;*：
 
    `https://login.microsoftonline.com/<tenantname>/v2.0/.well-known/openid-configuration`
 

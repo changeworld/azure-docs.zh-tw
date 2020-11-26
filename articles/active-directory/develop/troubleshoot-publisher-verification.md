@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 4a66db34adb4eb751abc741964b740b3b6f48c69
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 857659cdd97666dba585c1ec22c750e29bf28879
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073728"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169166"
 ---
 # <a name="troubleshoot-publisher-verification"></a>針對發行者驗證進行疑難排解
 如果您無法完成此程式，或在 [發行者驗證](publisher-verification-overview.md)中遇到非預期的行為，您應該先執行下列動作，如果您收到錯誤或看到非預期的行為： 
@@ -51,8 +51,8 @@ ms.locfileid: "92073728"
     1. 移至您的[合作夥伴設定檔](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile)並確認： 
         - MPN 識別碼正確無誤。 
         - 未顯示任何錯誤或「擱置動作」，而且合法商務設定檔與合作夥伴資訊底下的驗證狀態都顯示「已授權」或「成功」。
-    1. 移至 [MPN 租用戶管理頁面](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement)，並確認應用程式註冊所在的租用戶和您以使用者帳戶登入的租用戶位於相關聯的租用戶清單上。 如果您需要新增額外的租使用者，請遵循 [此處](https://docs.microsoft.com/partner-center/multi-tenant-account)的指示。 請注意，您新增的任何租使用者的全域管理員都會獲得合作夥伴中心帳戶的全域管理員許可權。
-    1. 移至 [ [MPN 使用者管理] 頁面](https://partner.microsoft.com/pcv/users) ，並確認您用來登入的使用者為 [全域管理員]、[MPN 管理員] 或 [帳戶管理員]。如果您需要將使用者新增至合作夥伴中心中的角色，請遵循 [此處](https://docs.microsoft.com/partner-center/create-user-accounts-and-set-permissions)的指示。
+    1. 移至 [MPN 租用戶管理頁面](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement)，並確認應用程式註冊所在的租用戶和您以使用者帳戶登入的租用戶位於相關聯的租用戶清單上。 如果您需要新增額外的租使用者，請遵循 [此處](/partner-center/multi-tenant-account)的指示。 請注意，您新增的任何租使用者的全域管理員都會獲得合作夥伴中心帳戶的全域管理員許可權。
+    1. 移至 [ [MPN 使用者管理] 頁面](https://partner.microsoft.com/pcv/users) ，並確認您用來登入的使用者為 [全域管理員]、[MPN 管理員] 或 [帳戶管理員]。如果您需要將使用者新增至合作夥伴中心中的角色，請遵循 [此處](/partner-center/create-user-accounts-and-set-permissions)的指示。
 
 - **當我登入 Azure AD 入口網站時，我沒看到任何已註冊的應用程式。原因為何？** 
     您的應用程式註冊可能是使用此租使用者中不同的使用者帳戶、個人/取用者帳戶或不同的租使用者所建立。 確保您在建立應用程式註冊的租用戶中使用正確的帳戶進行登入。
