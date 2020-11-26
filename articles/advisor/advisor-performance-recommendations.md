@@ -3,12 +3,12 @@ title: 使用 Advisor 改善 Azure 應用程式的效能
 description: 使用 Azure Advisor 中的效能建議來改善業務關鍵應用程式的速度和回應能力。
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 6a008411d4422853e6a98fad59bd4519b42a9548
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 55f5ac6784bf613170fd10060799ab5ad1290a62
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308673"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183340"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>使用 Azure Advisor 來改善 Azure 應用程式的效能
 
@@ -146,7 +146,7 @@ Advisor 會偵測到 Azure Cosmos DB 的帳戶，該帳戶具有來自目前未�
 
 ## <a name="configure-your-azure-cosmos-db-indexing-policy-by-using-custom-included-or-excluded-paths"></a>使用自訂包含或排除的路徑來設定您的 Azure Cosmos DB 編制索引原則
 
-Advisor 會識別使用預設索引編制原則，但可受益于自訂編制索引原則的 Azure Cosmos DB 容器。 這項決定是根據工作負載模式。 預設索引編制原則會編制所有屬性的索引。 自訂索引編制原則具有在查詢篩選中使用的明確包含或排除路徑，可減少用於編制索引的 ru 和儲存體。 [深入瞭解如何修改索引原則。](/azure/cosmos-db/index-policy)
+Advisor 會識別使用預設索引編制原則，但可受益于自訂編制索引原則的 Azure Cosmos DB 容器。 這項決定是根據工作負載模式。 預設索引編制原則會編制所有屬性的索引。 自訂索引編制原則具有在查詢篩選中使用的明確包含或排除路徑，可減少用於編制索引的 ru 和儲存體。 [深入瞭解如何修改索引原則。](../cosmos-db/index-policy.md)
 
 ## <a name="set-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>將 Azure Cosmos DB 查詢頁面大小 (MaxItemCount) 設定為-1 
 

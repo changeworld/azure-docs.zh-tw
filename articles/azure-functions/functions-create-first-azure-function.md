@@ -5,12 +5,12 @@ ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 770b1076f1a711cd863c5d3d468a3ec87ea54e7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a6f154dc3c7a2984c687d55af2cf51a60169d6b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212723"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182558"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>在 Azure 入口網站中建立您的第一個函式
 
@@ -21,7 +21,7 @@ Azure Functions 可讓您在無伺服器環境中執行程式碼，而不需要�
 
 | Visual Studio Code | 終端機/命令提示字元 | Visual Studio |
 | --- | --- | --- |
-|  &bull;&nbsp;[C 入門#](./functions-create-first-function-vs-code.md?pivots=programming-language-csharp)<br/>&bull;&nbsp;[開始使用 JAVA](./functions-create-first-function-vs-code.md?pivots=programming-language-java)<br/>&bull;&nbsp;[開始使用 JavaScript](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)<br/>&bull;&nbsp;[開始使用 PowerShell](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)<br/>&bull;&nbsp;[開始使用 Python](./functions-create-first-function-vs-code.md?pivots=programming-language-python) |&bull;&nbsp;[C 入門#](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-csharp)<br/>&bull;&nbsp;[開始使用 JAVA](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)<br/>&bull;&nbsp;[開始使用 JavaScript](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)<br/>&bull;&nbsp;[開始使用 PowerShell](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-powershell)<br/>&bull;&nbsp;[開始使用 Python](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python) | [開始使用 C#](functions-create-your-first-function-visual-studio.md) |
+|  &bull;&nbsp;[C 入門#](./create-first-function-vs-code-csharp.md?pivots=programming-language-csharp)<br/>&bull;&nbsp;[開始使用 JAVA](./create-first-function-vs-code-csharp.md?pivots=programming-language-java)<br/>&bull;&nbsp;[開始使用 JavaScript](./create-first-function-vs-code-csharp.md?pivots=programming-language-javascript)<br/>&bull;&nbsp;[開始使用 PowerShell](./create-first-function-vs-code-csharp.md?pivots=programming-language-powershell)<br/>&bull;&nbsp;[開始使用 Python](./create-first-function-vs-code-csharp.md?pivots=programming-language-python) |&bull;&nbsp;[C 入門#](./create-first-function-cli-csharp.md?pivots=programming-language-csharp)<br/>&bull;&nbsp;[開始使用 JAVA](./create-first-function-cli-csharp.md?pivots=programming-language-java)<br/>&bull;&nbsp;[開始使用 JavaScript](./create-first-function-cli-csharp.md?pivots=programming-language-javascript)<br/>&bull;&nbsp;[開始使用 PowerShell](./create-first-function-cli-csharp.md?pivots=programming-language-powershell)<br/>&bull;&nbsp;[開始使用 Python](./create-first-function-cli-csharp.md?pivots=programming-language-python) | [開始使用 C#](functions-create-your-first-function-visual-studio.md) |
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -57,7 +57,7 @@ Azure Functions 可讓您在無伺服器環境中執行程式碼，而不需要�
 
     ![選取取得函式 URL](./media/functions-create-first-azure-function/function-app-select-get-function-url.png)
 
-1. 在 [取得函式 URL] 對話方塊中，從下拉式清單中選取**預設值**，然後選取 [複製到剪貼簿] 圖示。 
+1. 在 [取得函式 URL] 對話方塊中，從下拉式清單中選取 **預設值**，然後選取 [複製到剪貼簿] 圖示。 
 
     ![從 Azure 入口網站複製函式 URL](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
@@ -80,4 +80,3 @@ Azure Functions 可讓您在無伺服器環境中執行程式碼，而不需要�
 ## <a name="next-steps"></a>後續步驟
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
-

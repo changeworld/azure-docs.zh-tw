@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 6643ec72ec5126866b0ad6e924a92f02170bd278
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 2ce5ac43af57b82f912b10eeacf285a688888e9d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359641"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180875"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>教學課程︰設定 G Suite 來自動佈建使用者
 
@@ -45,7 +45,7 @@ ms.locfileid: "94359641"
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
 * [Azure AD 租用戶](../develop/quickstart-create-new-tenant.md) 
-* Azure AD 中具有設定佈建[權限](../users-groups-roles/directory-assign-admin-roles.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
+* Azure AD 中具有設定佈建[權限](../roles/permissions-reference.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
 * [G Suite 租用戶](https://gsuite.google.com/pricing.html)
 * G Suite 上具有管理員權限的使用者帳戶。
 

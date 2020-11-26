@@ -1,5 +1,5 @@
 ---
-title: Azure 中的區域和可用性區域 \(部分機器翻譯\)
+title: Azure 中的區域和可用性區域
 description: 瞭解 Azure 中的區域和可用性區域，以符合您的技術與法規需求。
 author: cynthn
 ms.service: azure
@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 771635baa3c49c07d0d796cf6ef3be7b870de3e1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 32cd6c23e1fe465a801e56fad5dd3461df860503
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425437"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182728"
 ---
-# <a name="regions-and-availability-zones-in-azure"></a>Azure 中的區域和可用性區域 \(部分機器翻譯\)
+# <a name="regions-and-availability-zones-in-azure"></a>Azure 中的區域和可用性區域
 
 Microsoft Azure 服務可在全球使用，以達到最佳等級來推動您的雲端作業。 您可以根據技術與法規考慮，選擇最適合您需求的區域：服務功能、資料落地、合規性需求及延遲。
 
-## <a name="terminology"></a>詞彙
+## <a name="terminology"></a>術語
 
 若要深入瞭解 Azure 中的區域和可用性區域，它有助於瞭解重要的條款或概念。
 
@@ -27,7 +27,7 @@ Microsoft Azure 服務可在全球使用，以達到最佳等級來推動您的�
 | region | 在延遲定義的周邊內部署的一組資料中心，並透過專用的區域低延遲網路進行連線。 |
 | geography | 全球的區域，其中至少包含一個 Azure 區域。 地理位置會定義可保留資料落地和合規性界限的離散市場。 不同的地理區讓具有特殊資料落地與合規性需求的客戶，可以將他們的資料與應用程式存放在彼此鄰近的區域。 每個地理位置都有容錯能力，可透過其連線到專用的高容量網路基礎結構，來承受完成區域失敗。 |
 | 可用性區域 | 區域內的唯一實體位置。 每個區域皆由一或多個配備獨立電力、冷卻系統及網路的資料中心所組成。 |
-| 建議的區域 | 提供最廣泛服務功能的區域，其設計目的是要支援現在或未來的可用性區域。 這些是依 **建議**在 Azure 入口網站中指定的。 |
+| 建議的區域 | 提供最廣泛服務功能的區域，其設計目的是要支援現在或未來的可用性區域。 這些是依 **建議** 在 Azure 入口網站中指定的。 |
 | 替代 (其他) 區域 | 在資料落地界限內擴充 Azure 使用量的區域，其中也存在建議的區域。 替代區域有助於將延遲優化，並為嚴重損壞修復需求提供第二個區域。 雖然 Azure 會定期評估這些區域，以判斷是否應該成為建議的區域) ，但它們並不是設計來支援可用性區域 (。 這些會在 Azure 入口網站中指定為 **其他**。 |
 | 基礎服務 | 當區域正式推出時，可在所有區域中使用的核心 Azure 服務。 |
 | 主流服務 | 一項 Azure 服務，可在區域/服務正式運作的12個月內，或在替代區域中的需求導向可用性內的所有建議區域中使用。 |
@@ -61,7 +61,7 @@ Azure 區域中的可用性區域是由容錯網域和更新網域組成。 例�
 
 Azure 對於跨區域的 Azure 服務可用性的方法，最好是藉由表達建議區域和替代區域中提供的服務來描述。
 
-- **建議的區域** ：提供最廣泛服務功能的區域，其設計目的是要支援現在或未來的可用性區域。 這些是依 **建議**在 Azure 入口網站中指定的。
+- **建議的區域** ：提供最廣泛服務功能的區域，其設計目的是要支援現在或未來的可用性區域。 這些是依 **建議** 在 Azure 入口網站中指定的。
 - **替代 (其他) 區域** -此區域會在建議的區域同時存在的資料落地界限內，擴充 Azure 的使用量。 替代區域有助於將延遲優化，並為嚴重損壞修復需求提供第二個區域。 雖然 Azure 會定期評估這些區域，以判斷是否應該成為建議的區域) ，但它們並不是設計來支援可用性區域 (。 這些會在 Azure 入口網站中指定為 **其他**。
 
 ### <a name="comparing-region-types"></a>比較區欄位型別
@@ -116,7 +116,7 @@ Azure 服務分為三種類別：基本、主流和特製化的服務。 將服�
 > | 虛擬機器： Av2-Series | Azure Machine Learning | Azure Machine Learning Studio (傳統) |
 > | 虛擬機器： Bs-Series | Azure Private Link | Microsoft Genomics |
 > | 虛擬機器： DSv2-Series | Azure Red Hat OpenShift | 遠端轉譯 |
-> | 虛擬機器： DSv3-Series | Azure SignalR 服務 | Spatial Anchors |
+> | 虛擬機器： DSv3-Series | Azure SignalR Service | Spatial Anchors |
 > | 虛擬機器： Dv2-Series | Azure Site Recovery | StorSimple |
 > | 虛擬機器： Dv3-Series | Azure Stack Hub | 影片索引器 |
 > | 虛擬機器： ESv3-Series | Azure 串流分析 | 虛擬機器： DASv4-Series |
@@ -170,9 +170,9 @@ Azure 服務分為三種類別：基本、主流和特製化的服務。 將服�
 - [建立虛擬機器](../virtual-machines/windows/create-portal-availability-zone.md)
 - [使用 PowerShell 來新增受控磁碟](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 - [建立區域備援虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [使用具有區域備援前端的標準 Load Balancer 來進行跨區域的 VM 負載平衡](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
-- [使用具有區域前端的標準 Load Balancer 來進行區域內的 VM 負載平衡](../load-balancer/load-balancer-standard-public-zonal-cli.md)
-- [區域備援儲存體](../storage/common/storage-redundancy-zrs.md)
+- [使用具有區域備援前端的標準 Load Balancer 來進行跨區域的 VM 負載平衡](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
+- [使用具有區域前端的標準 Load Balancer 來進行區域內的 VM 負載平衡](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
+- [區域備援儲存體](../storage/common/storage-redundancy.md)
 - [SQL Database 一般用途層](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
 - [事件中樞異地災害復原](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [服務匯流排異地災害復原](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)

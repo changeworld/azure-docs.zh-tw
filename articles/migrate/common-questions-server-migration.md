@@ -4,11 +4,11 @@ description: 取得有關使用 Azure Migrate Server 遷移來遷移機器的常
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.openlocfilehash: b62110e6b2ce97cdd80ed91ee4b1e75d119c7c7d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315241"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180688"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server 遷移：常見問題
 
@@ -81,7 +81,7 @@ Azure Migrate：伺服器遷移工具提供兩個選項，可讓您將來源伺�
 **無代理程式遷移** 不需要將任何軟體 (代理程式) 部署到所要遷移的來源 vm/伺服器上。 無代理程式選項會整合虛擬化提供者所提供的功能，以協調複寫。
 適用于 [VMware vm](./tutorial-migrate-vmware.md) 和 [Hyper-v Vm](./tutorial-migrate-hyper-v.md)的無代理程式複寫選項。
 
-以代理程式為**基礎的遷移**需要在要遷移的來源 vm/機器上安裝 Azure Migrate 軟體 (代理程式) 。 以代理程式為基礎的選項並不依賴虛擬化平臺的複寫功能，因此可以搭配執行 x86/x64 架構的任何伺服器和代理程式型複寫方法所支援的作業系統版本使用。
+以代理程式為 **基礎的遷移** 需要在要遷移的來源 vm/機器上安裝 Azure Migrate 軟體 (代理程式) 。 以代理程式為基礎的選項並不依賴虛擬化平臺的複寫功能，因此可以搭配執行 x86/x64 架構的任何伺服器和代理程式型複寫方法所支援的作業系統版本使用。
 
 以代理程式為基礎的遷移選項可用於 [VMware vm](./tutorial-migrate-vmware-agent.md)、 [hyper-v vm](./tutorial-migrate-physical-virtual-machines.md)、 [實體伺服器](./tutorial-migrate-physical-virtual-machines.md)、 [在 AWS](./tutorial-migrate-aws-virtual-machines.md)上執行的 vm、在 GCP 上執行的 vm，或在不同的虛擬化提供者上執行的 vm。 以代理程式為基礎的遷移會將您的電腦視為實體伺服器，以進行遷移。
 
@@ -143,7 +143,7 @@ New-NetQosPolicy-Name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWi
 
 ## <a name="how-does-churn-rate-affect-agentless-replication"></a>流失率如何影響無代理程式複寫？
 
-因為無代理程式複寫會在資料中折迭，所以變換 *模式* 比變換 *率*更重要。 再次寫入檔案時，速率不會有很大的影響。 不過，寫入其他每個磁區的模式會導致下一個週期的高變換率。 由於我們會將傳輸的資料量降到最低，因此我們可以在排程下一個週期之前，讓資料盡可能折迭。
+因為無代理程式複寫會在資料中折迭，所以變換 *模式* 比變換 *率* 更重要。 再次寫入檔案時，速率不會有很大的影響。 不過，寫入其他每個磁區的模式會導致下一個週期的高變換率。 由於我們會將傳輸的資料量降到最低，因此我們可以在排程下一個週期之前，讓資料盡可能折迭。
 
 ## <a name="how-frequently-is-a-replication-cycle-scheduled"></a>複寫週期排程的頻率為何？
 

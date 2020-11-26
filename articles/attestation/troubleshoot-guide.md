@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: fe347983e2143c7a4bdf00ca0207356c881c66ac
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 72d7a40c38f3629a70260f223074b456dff9ce38
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95891277"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182830"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure 證明疑難排解指南
 
@@ -95,7 +95,7 @@ b. 驗證您的 Azure 角色指派設定
  
   ```
 
-c. 如果您在清單中找不到適當的角色指派，請遵循[此處](/azure/role-based-access-control/role-assignments-powershell)的指示。
+c. 如果您在清單中找不到適當的角色指派，請遵循[此處](../role-based-access-control/role-assignments-powershell.md)的指示。
 
 ## <a name="2-http--400-errors"></a>2. HTTP-400 錯誤
 
@@ -123,7 +123,7 @@ G:\Az\security\Attestation\src\AttestationServices\Instance\Enclave\api.cpp(840)
 
 在 "draftPolicyForAttestation" 參數中提供原則文字，以傳送證明 API 的要求。 AttestSgxEnclave API 會在證明通話期間使用此原則檔，而這可在取用證明原則之前用來進行測試。 當這個欄位存在時所產生的證明權杖將會是不安全的。
 
-請參閱 [證明原則範例](/azure/attestation/policy-examples)
+請參閱 [證明原則範例](./policy-examples.md)
 
 ### <a name="22-attestation-failure-due-to-invalid-input"></a>2.2. 因為輸入無效，所以證明失敗
 
@@ -163,7 +163,7 @@ At line:1 char:1
 
 否則，憑證鏈會視為無效。
 
-請參閱 [原則簽署者](/azure/attestation/policy-signer-examples) 和 [原則](/azure/attestation/policy-examples) 範例 
+請參閱 [原則簽署者](./policy-signer-examples.md) 和 [原則](./policy-examples.md) 範例 
 
 ### <a name="24-adddelete-policy-signer-failure"></a>2.4. 新增/刪除原則簽署人失敗
 
@@ -209,7 +209,7 @@ At line:1 char:1
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Attestation.AddAzureAttestationPolicySigner
 ```
 
-**疑難排解步驟** 若要新增/刪除新的原則簽署者憑證，請使用 RFC7519 JSON Web 權杖 (JWT) 搭配名為 "x-policyCertificate" 的宣告。 宣告的值是 RFC7517 JSON Web 金鑰，其中包含要新增的憑證。 JWT 必須使用任何與提供者相關聯的有效原則簽署者憑證的私密金鑰進行簽署。 請參閱 [原則簽署者範例](/azure/attestation/policy-signer-examples)。
+**疑難排解步驟** 若要新增/刪除新的原則簽署者憑證，請使用 RFC7519 JSON Web 權杖 (JWT) 搭配名為 "x-policyCertificate" 的宣告。 宣告的值是 RFC7517 JSON Web 金鑰，其中包含要新增的憑證。 JWT 必須使用任何與提供者相關聯的有效原則簽署者憑證的私密金鑰進行簽署。 請參閱 [原則簽署者範例](./policy-signer-examples.md)。
 
 ### <a name="25-attestation-policy-configuration-failure"></a>2.5. 證明原則設定失敗
 
@@ -255,13 +255,13 @@ At line:1 char:1
 
 在 PowerShell 中，將 PolicyFormat 指定為 JWT 以設定 JWT 格式的原則。 預設原則格式為 Text。
 
-請參閱證明 [原則範例](/azure/attestation/policy-examples) 及 [如何撰寫證明原則](/azure/attestation/author-sign-policy) 
+請參閱證明 [原則範例](./policy-examples.md) 及 [如何撰寫證明原則](./author-sign-policy.md) 
 
 ## <a name="3-azattestation-installation-issues-in-powershell"></a>3. 將 PowerShell 中的證明安裝問題
 
 無法在 PowerShell 中安裝 Az 或 Az. 證明模組
 
-### <a name="error"></a>Error
+### <a name="error"></a>錯誤
 
 警告：無法解析套件來源 ' https://www.powershellgallery.com/api/v2 ' PackageManagement\Install-Package：找不到符合指定搜尋準則和模組名稱的相符項
 
@@ -279,7 +279,7 @@ PowerShell 資源庫已淘汰傳輸層安全性 (TLS) 1.0 和1.1 版。
 
 已指派適當角色的使用者。 但透過 PowerShell 管理證明原則時遇到授權問題。
 
-### <a name="error"></a>Error
+### <a name="error"></a>錯誤
 具有物件識別碼的用戶端沒有 <object Id>  授權，無法執行 Microsoft 的動作。授權/roleassignments/寫入範圍 ' 經由 open 訂閱/ <subscriptionId> resourcegroups/secure_enclave_poc/providers/microsoft.authorization/roleassignments/ <role assignmentId> '，或範圍無效。 如果最近才授與存取權，請重新整理您的認證
 
 ### <a name="troubleshooting-steps"></a>疑難排解步驟
@@ -301,4 +301,3 @@ Get-InstalledModule
 如果版本不符合最低需求，請執行 Update-Module 命令
 
 例如-Update-Module-名稱 Az. 證明
-

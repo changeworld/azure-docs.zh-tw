@@ -6,16 +6,16 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 2e89b372e3ee8d71e99baa4072cd577fa4fb8d7c
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: e2753f0f8926ac15f5d32020c8891d1b612d2bb3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423922"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182592"
 ---
 # <a name="azure-app-configuration-rest-api"></a>Azure 應用程式組態 REST API
 
-如需有關 Azure 應用程式組態之 REST API 的高階檔，請參閱主要 [AZURE REST 檔](https://docs.microsoft.com/rest/api/appconfiguration/)。 本章節包含使用應用程式設定 REST API 之開發人員的更多詳細資料。
+如需有關 Azure 應用程式組態之 REST API 的高階檔，請參閱主要 [AZURE REST 檔](/rest/api/appconfiguration/)。 本章節包含使用應用程式設定 REST API 之開發人員的更多詳細資料。
 
 下列參考頁面可用來詳細描述 Azure 應用程式組態 API 介面。
 
@@ -36,7 +36,7 @@ ms.locfileid: "93423922"
 - [節流](./rest-api-throttling.md)
 - [版本控制](./rest-api-versioning.md)
 
-## <a name="development"></a>部署
+## <a name="development"></a>開發
 
 - [Fiddler](./rest-api-fiddler.md)
 - [Postman](./rest-api-postman.md)

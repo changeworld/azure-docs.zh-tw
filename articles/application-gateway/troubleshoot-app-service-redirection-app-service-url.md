@@ -8,18 +8,18 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 51249c68407f6b4ca7793b2fdeceab5aa4f7bc5c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 1cc7df755198461643703cac988c8c31f2ac25db
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94575980"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182881"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>針對應用程式閘道中的 App Service 問題進行疑難排解
 
 瞭解當 Azure App Service 用來作為具有 Azure 應用程式閘道的後端目標時，如何診斷並解決您可能會遇到的問題。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 在本文中，您將瞭解如何針對下列問題進行疑難排解：
 
@@ -41,8 +41,8 @@ ms.locfileid: "94575980"
 
 - HTTP 接聽程式：基本或多網站
 - 後端位址集區： App Service
-- HTTP 設定： **從已啟用的後端位址挑選主機名稱**
-- 探查： **從啟用的 HTTP 設定挑選主機名稱**
+- HTTP 設定：**從已啟用的後端位址挑選主機名稱**
+- 探查：**從啟用的 HTTP 設定挑選主機名稱**
 
 ## <a name="cause"></a>原因
 
@@ -93,7 +93,7 @@ X-Powered-By: ASP.NET
 
 您必須擁有自訂網域，並遵循此程式：
 
-- 向 app service 的自訂網域清單註冊網域。 您的自訂網域中必須有指向 app service 的 FQDN 的 CNAME。 如需詳細資訊，請參閱 [將現有的自訂 DNS 名稱對應至 Azure App Service](/azure/app-service/app-service-web-tutorial-custom-domain)。
+- 向 app service 的自訂網域清單註冊網域。 您的自訂網域中必須有指向 app service 的 FQDN 的 CNAME。 如需詳細資訊，請參閱 [將現有的自訂 DNS 名稱對應至 Azure App Service](../app-service/app-service-web-tutorial-custom-domain.md)。
 
     ![App service 自訂網域清單](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
@@ -101,12 +101,12 @@ X-Powered-By: ASP.NET
 
 - 當您進行 DNS 查詢時，請確定您的網域會 `www.contoso.com` 解析為應用程式閘道的 FQDN。
 
-- 設定您的自訂探查，以停 **用後端 HTTP 設定的挑選主機名稱** 。 在 [Azure 入口網站中，清除探查設定中的核取方塊。 在 PowerShell 中，請勿在 **AzApplicationGatewayProbeConfig** 命令中使用 **-PickHostNameFromBackendHttpSettings** 參數。 在探查的 [主機名稱] 欄位中，輸入您的 app service 的 FQDN example.azurewebsites.net。 從應用程式閘道傳送的探查要求會在主機標頭中攜帶此 FQDN。
+- 設定您的自訂探查，以停 **用後端 HTTP 設定的挑選主機名稱**。 在 [Azure 入口網站中，清除探查設定中的核取方塊。 在 PowerShell 中，請勿在 **AzApplicationGatewayProbeConfig** 命令中使用 **-PickHostNameFromBackendHttpSettings** 參數。 在探查的 [主機名稱] 欄位中，輸入您的 app service 的 FQDN example.azurewebsites.net。 從應用程式閘道傳送的探查要求會在主機標頭中攜帶此 FQDN。
 
   > [!NOTE]
   > 在下一個步驟中，請確定您的自訂探查未與您的後端 HTTP 設定相關聯。 在此時，您的 HTTP 設定仍會啟用 **來自後端位址切換的挑選主機名稱** 。
 
-- 設定應用程式閘道的 HTTP 設定，以停 **用後端位址的挑選主機名稱** 。 在 [Azure 入口網站中，清除此核取方塊。 在 PowerShell 中，請勿在 **>new-azapplicationgatewaybackendHTTPsettings** 命令中使用 **-PickHostNameFromBackendAddress** 參數。
+- 設定應用程式閘道的 HTTP 設定，以停 **用後端位址的挑選主機名稱**。 在 [Azure 入口網站中，清除此核取方塊。 在 PowerShell 中，請勿在 **>new-azapplicationgatewaybackendHTTPsettings** 命令中使用 **-PickHostNameFromBackendAddress** 參數。
 
 - 將自訂探查關聯回後端 HTTP 設定，並確認後端狀況良好。
 

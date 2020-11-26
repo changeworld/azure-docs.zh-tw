@@ -6,12 +6,12 @@ author: yunjchoi
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 9d06ad2f740394a4959f3665c5d6311e71841241
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: e8921152177d3e4534ca9fb48cf209aed6e1b27c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960830"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183357"
 ---
 # <a name="azure-kubernetes-service-diagnostics-preview-overview"></a>Azure Kubernetes Service 診斷 (預覽) 總覽
 
@@ -83,6 +83,6 @@ CRUD 作業會檢查任何可能會在您的叢集中造成問題的 CRUD 作業
 
 收集記錄檔，以協助您使用 [AKS Periscope](https://aka.ms/aksperiscope)進一步針對叢集問題進行疑難排解。
 
-閱讀 AKS day-2 操作指南的分級 [實務一節](https://docs.microsoft.com/azure/architecture/operator-guides/aks/aks-triage-practices) 。
+閱讀 AKS day-2 操作指南的分級 [實務一節](/azure/architecture/operator-guides/aks/aks-triage-practices) 。
 
 在標題中新增 "[診斷]"，以在 [UserVoice](https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks) 張貼您的問題或意見反應。

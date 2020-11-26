@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 818ae0b90b71b61c3b33676d81d9c783c577bdcc
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 6612e6982ae4826869134dfa46b35a3f202d4bbb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683891"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183238"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>適用于 Azure Kubernetes Service 的 Azure 安全性基準
 
@@ -20,7 +20,7 @@ ms.locfileid: "94683891"
 
 此服務的基準取自 [Azure 安全性效能評定 1.0 版](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
-如需詳細資訊，請參閱 [Azure 安全性基準概觀](/azure/security/benchmarks/security-baselines-overview) (機器翻譯)。
+如需詳細資訊，請參閱 [Azure 安全性基準概觀](../security/benchmarks/security-baselines-overview.md) (機器翻譯)。
 
 ## <a name="network-security"></a>網路安全性
 
@@ -85,7 +85,7 @@ ms.locfileid: "94683891"
 
 - [在 Azure Kubernetes Service (AKS) 中使用網路原則來保護 Pod 之間的流量](use-network-policies.md)
 
-- [如何設定 DDoS 保護](../virtual-network/manage-ddos-protection.md)
+- [如何設定 DDoS 保護](../ddos-protection/manage-ddos-protection.md)
 
 **Azure 資訊安全中心監視**：不適用
 

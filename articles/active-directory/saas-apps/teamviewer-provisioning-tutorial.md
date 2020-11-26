@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5f26746cbe88a01503c1d6c481a9a938a660c05a
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 0362f0d69581c252170b4f37f8564caa7acd3d29
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359318"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182235"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>教學課程：設定 TeamViewer 來自動佈建使用者
 
@@ -35,7 +35,7 @@ ms.locfileid: "94359318"
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
 * [Azure AD 租用戶](../develop/quickstart-create-new-tenant.md) 
-* Azure AD 中具有設定佈建[權限](../users-groups-roles/directory-assign-admin-roles.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
+* Azure AD 中具有設定佈建[權限](../roles/permissions-reference.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
 * TeamViewer 的有效 [Tensor 授權](https://www.teamviewer.com/de/teamviewer-tensor/)。
 * [單一登入](https://community.teamviewer.com/t5/Knowledge-Base/Single-Sign-On-with-Azure-Active-Directory/ta-p/60209#toc-hId--473669723)設定中具有有效的自訂識別碼。
 

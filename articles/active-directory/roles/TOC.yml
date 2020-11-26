@@ -33,11 +33,11 @@
         - name: 撤銷使用者的存取權
           href: ../enterprise-users/users-revoke-access.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
         - name: 將角色指派給來賓使用者
-          href: ../b2b/add-guest-to-role.md?context=%2fazure/active-directory/roles/context/ugr-context
+          href: ../external-identities/add-guest-to-role.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
         - name: 限制來賓使用者的存取權
           href: ../enterprise-users/users-restrict-guest-permissions.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
         - name: 動態群組與來賓
-          href: ../b2b/use-dynamic-groups.md?context=%2fazure/active-directory/roles/context/ugr-context
+          href: ../external-identities/use-dynamic-groups.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
     - name: 角色和權限
       expanded: true
       items:

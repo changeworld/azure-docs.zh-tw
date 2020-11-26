@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 640d51de6dac1d175f9b46f327b72f293cf025cb
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5b9c41209902e384988064207bb3e1ded1c47477
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94849166"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182949"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>適用于 App Service 的 Azure 安全性基準
 
@@ -47,7 +47,7 @@ ms.locfileid: "94849166"
 
 - [開啟 Web 應用程式安全性專案 (OWASP) 前10個弱點保護](https://owasp.org/www-project-top-ten/)
 
-- [網路安全性群組](/azure/virtual-network/security-overview)
+- [網路安全性群組](../virtual-network/network-security-groups-overview.md)
 
 - [將您的應用程式與 Azure 虛擬網路整合](web-sites-integrate-with-vnet.md)
 
@@ -71,7 +71,7 @@ ms.locfileid: "94849166"
 
 - [瞭解 Azure 資訊安全中心所提供的網路安全性](../security-center/security-center-network-recommendations.md)
 
-- [如何啟用 App Service 的監視和保護](/azure/security-center/security-center-app-services)
+- [如何啟用 App Service 的監視和保護](/azure/security-center/defender-for-app-service-intro)
 
 **Azure 資訊安全中心監視**：是
 
@@ -219,7 +219,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 套用任何與標記效果相關的內建 Azure 原則定義，例如「需要標籤和其值」，以確保所有資源都是使用標籤建立的，並會通知您任何現有未標記的資源。 使用 Azure PowerShell 或 Azure CLI，根據其標記查閱或執行資源的動作。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 - [Azure App Service 存取限制](/azure/app-service/app-service-ip-restriction)
 
@@ -241,7 +241,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 建議您建立具有自動化工具的進程，以監視網路資源設定並快速偵測變更。
 
-- [如何檢視及擷取 Azure 活動記錄事件](/azure/azure-monitor/platform/activity-log-view)
+- [如何檢視及擷取 Azure 活動記錄事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [如何在 Azure 監視器中建立警示](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -280,7 +280,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 此外，Azure Key Vault 可透過存取原則和審核歷程記錄來提供集中式秘密管理。 
 
-- [如何啟用 Azure 活動記錄的診斷設定](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [如何啟用 Azure 活動記錄的診斷設定](../azure-monitor/platform/activity-log.md)
 
 - [如何啟用 Azure App Service 的診斷設定](troubleshoot-diagnostic-logs.md)
 
@@ -309,7 +309,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 使用 Azure Sentinel 是可調整的雲端原生安全性資訊事件管理 (SIEM) ，以根據需求與各種資料來源和連接器整合。 （選擇性）啟用 Azure Marketplace 中的協力廠商安全性資訊事件管理解決方案的和內部資料。
 
-- [如何啟用 Azure 活動記錄的診斷設定](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [如何啟用 Azure 活動記錄的診斷設定](../azure-monitor/platform/activity-log.md)
 
 - [如何啟用 Application Insights](../azure-monitor/app/app-insights-overview.md)
 
@@ -343,7 +343,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 **指導** 方針： Azure Active Directory (Azure AD) 有必須明確指派和查詢能力的內建角色。 使用 Azure AD PowerShell 模組執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
 
 - [如何使用 App Service 和 Azure Functions 的受控身分識別](overview-managed-identity.md?context=azure%2Factive-directory%2Fmanaged-identities-azure-resources%2Fcontext%2Fmsi-context&amp;tabs=dotnet)
 
@@ -422,7 +422,7 @@ App Service apps 會使用同盟身分識別，而協力廠商身分識別提供
 
 針對 Azure AD 執行多重要素驗證。 系統管理員必須確保入口網站中的訂用帳戶帳戶受到保護。 訂用帳戶很容易受到攻擊，因為它會管理您所建立的資源。 
 
-- [Azure 安全性 MFA](/azure/security/develop/secure-aad-app)
+- [Azure 安全性 MFA](/previous-versions/azure/security/develop/secure-aad-app)
 
 - [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -454,9 +454,9 @@ App Service apps 會使用同盟身分識別，而協力廠商身分識別提供
 
 - [如何部署 Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [了解 Azure AD 風險偵測](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [了解 Azure AD 風險偵測](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Azure 計算資源的威脅防護](/azure/security-center/threat-protection)
+- [Azure 計算資源的威脅防護](../security-center/azure-defender.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -478,7 +478,7 @@ App Service apps 會使用同盟身分識別，而協力廠商身分識別提供
 
 - [如何設定 Azure App Service apps 以使用 Azure AD 登入](configure-authentication-provider-aad.md)
 
-- [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何建立和設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -488,7 +488,7 @@ App Service apps 會使用同盟身分識別，而協力廠商身分識別提供
 
 **指導** 方針：使用 Azure Active Directory (Azure AD) 所提供的記錄來探索過時的帳戶。 使用 Azure 身分識別存取審核來有效率地管理群組成員資格和企業應用程式的存取權，以及角色指派。 定期檢查使用者存取權，以確保只有預期的使用者能夠繼續存取。 
 
-- [瞭解 Azure AD 報告](/azure/active-directory/reports-monitoring)
+- [瞭解 Azure AD 報告](../active-directory/reports-monitoring/index.yml)
 
 - [如何使用 Azure 身分識別存取權檢閱](../active-directory/governance/access-reviews-overview.md)
 
@@ -504,7 +504,7 @@ App Service apps 會使用同盟身分識別，而協力廠商身分識別提供
 
 - [如何設定 Azure App Service apps 以使用 Azure AD 登入](configure-authentication-provider-aad.md)
 
-- [如何將 Azure 活動記錄整合到 Azure 監視器中](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何將 Azure 活動記錄整合到 Azure 監視器中](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [如何讓 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
@@ -520,7 +520,7 @@ App Service apps 會使用同盟身分識別，而協力廠商身分識別提供
 
 - [如何設定您的 Azure App Service 應用程式以使用 Azure AD 登入](configure-authentication-provider-aad.md)
 
-- [如何檢視有風險的 Azure AD 登入](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何檢視有風險的 Azure AD 登入](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何設定和啟用身分識別保護風險原則](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -546,7 +546,7 @@ App Service apps 會使用同盟身分識別，而協力廠商身分識別提供
 
 **指導** 方針：使用標記來協助追蹤儲存或處理機密資訊 App Service 資源。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -628,7 +628,7 @@ Microsoft 會管理基礎平臺，並將所有客戶資料視為機密資料，�
 
 請注意，網站可以選擇性地使用本機連接的磁片作為暫存儲存體， (例如 D:\local 和% TMP% ) ，則不會在待用時加密。
 
-- [瞭解 Azure App Service 的資料保護控制項](app-service-security-controls.md)
+- [瞭解 Azure App Service 的資料保護控制項]()
 
 - [瞭解靜態加密 Azure 儲存體](../storage/common/storage-service-encryption.md)
 
@@ -656,9 +656,9 @@ Microsoft 會管理基礎平臺，並將所有客戶資料視為機密資料，�
 
 複習並遵循安全性中心的建議，以保護您的 App Service 應用程式。
 
-- [如何將持續安全性驗證新增至 CI/CD 管線](https://docs.microsoft.com/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops&amp;preserve-view=true)
+- [如何將持續安全性驗證新增至 CI/CD 管線](/azure/devops/migrate/security-validation-cicd-pipeline?amp;preserve-view=true&view=azure-devops)
 
-- [如何實行 Azure 資訊安全中心弱點評定建議](/azure/security-center/security-center-vulnerability-assessment-recommendations)
+- [如何實行 Azure 資訊安全中心弱點評定建議](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -686,7 +686,7 @@ Microsoft 會管理基礎平臺，並將所有客戶資料視為機密資料，�
 
 - [如何使用 Azure Resource Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-- [如何檢視您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [如何檢視您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -698,7 +698,7 @@ Microsoft 會管理基礎平臺，並將所有客戶資料視為機密資料，�
 
 **指導** 方針：使用中繼資料將標記套用至 Azure 資源，以邏輯方式將它們組織成分類法。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -715,11 +715,11 @@ Microsoft 會管理基礎平臺，並將所有客戶資料視為機密資料，�
 
 如需其他資訊，請參閱參考的連結。
 
-- [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](/azure/governance/management-groups/create)
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -891,7 +891,7 @@ Microsoft 會管理基礎平臺，並將所有客戶資料視為機密資料，�
 
 建議您記載程式以套用內建原則定義，以用於標準化的使用方式。   
 
-- [如何檢視可用的 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [如何檢視可用的 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
@@ -917,9 +917,9 @@ Microsoft 會管理基礎平臺，並將所有客戶資料視為機密資料，�
 
 使用您現有的持續整合 (CI) 和持續傳遞 (CD) 管線來部署已知安全的設定。
 
-- [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
 
-- [Azure Repos 文件](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Azure Repos 文件](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -951,11 +951,11 @@ Microsoft 會管理基礎平臺，並將所有客戶資料視為機密資料，�
 
 **指導** 方針：使用受控識別，在 Azure Active Directory (Azure AD) 中，為您的 App Service 應用程式提供自動管理的身分識別。 受控識別可讓您的應用程式向任何支援 Azure AD 驗證的服務進行驗證，包括 Key Vault，而不需要在您的程式碼中提供任何認證。 確定已在 Azure Key Vault 中啟用虛刪除。
 
-- [如何在 Azure Key Vault 中啟用虛刪除](/azure/key-vault/key-vault-soft-delete-powershell)
+- [如何在 Azure Key Vault 中啟用虛刪除](../key-vault/general/key-vault-recovery.md)
 
 - [如何使用受控識別進行 App Service](overview-managed-identity.md)
 
-- [如何使用受控識別來提供 Key Vault authentication](/azure/key-vault/managed-identity)
+- [如何使用受控識別來提供 Key Vault authentication](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -967,7 +967,7 @@ Microsoft 會管理基礎平臺，並將所有客戶資料視為機密資料，�
 
 - [如何使用受控識別進行 App Service](overview-managed-identity.md)
 
-- [如何使用受控識別來提供 Key Vault authentication](/azure/key-vault/managed-identity)
+- [如何使用受控識別來提供 Key Vault authentication](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -1000,7 +1000,7 @@ App Service 可以將下列資訊備份到您已設定應用程式使用的 Azur
 
 - [瞭解 Azure App Service 備份功能](manage-backup.md)
 
-- [Azure 儲存體加密的客戶管理金鑰](https://docs.microsoft.com/azure/storage/common/customer-managed-keys-overview?toc=/azure/storage/blobs/toc.json)
+- [Azure 儲存體加密的客戶管理金鑰](../storage/common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1021,7 +1021,7 @@ App Service 可以將下列資訊備份到您已設定應用程式使用的 Azur
 
 - [還原在 Azure App Service 中執行的應用程式](web-sites-restore.md)
 
-- [瞭解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md#encryption-at-rest-in-microsoft-cloud-services) 
+- [了解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md#encryption-at-rest-in-microsoft-cloud-services) 
 
 - [加密模型和金鑰管理表](../security/fundamentals/encryption-atrest.md)
 
@@ -1053,7 +1053,7 @@ App Service 可以將下列資訊備份到您已設定應用程式使用的 Azur
 
 - [瞭解靜態資料的 Azure 儲存體加密](../storage/common/storage-service-encryption.md)
 
-- [如何在 Azure Key Vault 中啟用虛刪除](/azure/key-vault/key-vault-soft-delete-powershell)
+- [如何在 Azure Key Vault 中啟用虛刪除](../key-vault/general/key-vault-recovery.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -1141,7 +1141,7 @@ App Service 可以將下列資訊備份到您已設定應用程式使用的 Azur
 
 您可以在 microsoft 管理的雲端基礎結構、服務和應用程式中，找到關於 Microsoft 的策略和執行紅色小組和即時網站滲透測試的詳細資訊。
 
-- [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1149,5 +1149,5 @@ App Service 可以將下列資訊備份到您已設定應用程式使用的 Azur
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8578f8aef779ff80f3965fc21b24b785f11226d0
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2e7e798967541748b5572994d48cb5bdf7474cb1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024138"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182864"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>將 Azure 自動化作業資料轉送至 Azure 監視器記錄
 
@@ -177,7 +177,7 @@ AzureDiagnostics
 
 ### <a name="filter-job-status-output-converted-into-a-json-object"></a>篩選作業狀態輸出轉換為 JSON 物件
 
-最近我們已變更如何將 Automation 記錄資料寫入 `AzureDiagnostics` Log Analytics 服務中的資料表，而不再將 JSON 屬性細分為個別的欄位。 如果您將 runbook 設定為將輸出資料流程中的物件格式化為個別的資料行，則必須重新設定您的查詢，以將該欄位剖析為 JSON 物件，才能存取這些屬性。 這是使用 [parsejson](https://docs.microsoft.com/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#parsejson) 存取已知路徑中的特定 JSON 元素來完成。
+最近我們已變更如何將 Automation 記錄資料寫入 `AzureDiagnostics` Log Analytics 服務中的資料表，而不再將 JSON 屬性細分為個別的欄位。 如果您將 runbook 設定為將輸出資料流程中的物件格式化為個別的資料行，則必須重新設定您的查詢，以將該欄位剖析為 JSON 物件，才能存取這些屬性。 這是使用 [parsejson](/azure/data-explorer/kusto/query/samples?pivots=#parsejson) 存取已知路徑中的特定 JSON 元素來完成。
 
 例如，runbook 會以 JSON 格式將輸出資料流程中的 *ResultDescription* 屬性格式化為多個欄位。 若要搜尋處於 [**狀態**] 欄位中所指定之失敗狀態的作業狀態，請使用此範例查詢來搜尋狀態為 [**失敗**] 的 *ResultDescription* ：
 

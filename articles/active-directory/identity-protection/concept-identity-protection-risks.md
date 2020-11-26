@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0da8755199645b12e9c6ed75a42881fe86e70b5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f10d8a94be53780f732112c012600a7fb840642b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023032"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180637"
 ---
 # <a name="what-is-risk"></a>什麼是風險？
 
@@ -41,7 +41,7 @@ Identity Protection 可讓組織存取強大的資源，以快速查看及回應
 
 這些風險會使用 Microsoft 的內部和外部威脅情報來源（包括安全性研究人員、Microsoft 的安全性小組，以及其他受信任的來源）離線計算。
 
-| 風險偵測 | Description |
+| 風險偵測 | 描述 |
 | --- | --- |
 | 認證外洩 | 此風險偵測類型表示使用者的有效認證已洩露。 當網路罪犯入侵合法使用者的有效密碼時，他們通常會共用這些認證。 這項共用通常是藉由在黑色市場上公開張貼、貼上網站，或透過交易和銷售認證來完成。 當 Microsoft 洩漏的認證服務從深色 web、貼上網站或其他來源取得使用者認證時，系統會根據 Azure AD 使用者目前有效的認證來檢查它們，以找出有效的相符專案。 如需洩漏認證的詳細資訊，請參閱 [常見問題](#common-questions)。 |
 | Azure AD 威脅情報 | 此風險偵測類型指出指定使用者不尋常的使用者活動，或是與以 Microsoft 內部和外部威脅情報來源為基礎的已知攻擊模式一致的使用者活動。 |
@@ -52,7 +52,7 @@ Identity Protection 可讓組織存取強大的資源，以快速查看及回應
 
 您可以使用 Microsoft 的內部和外部威脅情報來源（包括安全性研究人員、Microsoft 的安全性小組，以及其他受信任的來源），即時計算這些風險或離線計算這些風險。
 
-| 風險偵測 | 偵測類型 | Description |
+| 風險偵測 | 偵測類型 | 描述 |
 | --- | --- | --- |
 | 匿名 IP 位址 | 即時 | 此風險偵測類型表示來自匿名 IP 位址的登入 (例如，Tor browser 或匿名 VPN) 。 這些 IP 位址通常由意圖隱藏其登入遙測資料 (IP 位址、位置、裝置等) 的執行者所使用，以遂行其潛在惡意目的。 |
 | 非慣用登入位置 | 離線 | 此風險偵測類型會識別來自不同地理位置的兩個登入，其中至少有一個位置對於使用者來說可能也是非典型的，但有提供過去的行為。 在許多其他因素中，此機器學習演算法會考量兩次登入之間的時間，以及使用者從第一個位置移到第二個位置所需的時間，這表示有不同的使用者正在使用相同的認證。 <br><br> 演算法會忽略明顯的「誤判」，以致發生不可能的移動情況，例如，組織中的其他使用者定期使用的 VPN 和位置。 系統具有最早14天或10個登入的初始學習期間，在這段期間內，它會學習新使用者的登入行為。 |
@@ -66,7 +66,7 @@ Identity Protection 可讓組織存取強大的資源，以快速查看及回應
 
 ### <a name="other-risk-detections"></a>其他風險偵測
 
-| 風險偵測 | 偵測類型 | Description |
+| 風險偵測 | 偵測類型 | 描述 |
 | --- | --- | --- |
 | 已偵測到的額外風險 | 即時或離線 | 此偵測表示偵測到上述其中一個 premium 偵測。 由於只有 Azure AD Premium P2 客戶才能看到 premium 偵測，因此在沒有 Azure AD Premium P2 授權的客戶上，其標題為「偵測到額外的風險」。 |
 
@@ -74,7 +74,7 @@ Identity Protection 可讓組織存取強大的資源，以快速查看及回應
 
 ### <a name="risk-levels"></a>風險層級
 
-身分識別保護會將風險分類成三個層級：低、中和高。 設定 [自訂身分識別保護原則](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-policies#custom-conditional-access-policy)時，您也可以將它設定為在 **沒有風險** 層級的情況下觸發。 沒有風險表示使用者的身分識別已遭入侵，所以沒有任何作用中的指示。
+身分識別保護會將風險分類成三個層級：低、中和高。 設定 [自訂身分識別保護原則](./concept-identity-protection-policies.md#custom-conditional-access-policy)時，您也可以將它設定為在 **沒有風險** 層級的情況下觸發。 沒有風險表示使用者的身分識別已遭入侵，所以沒有任何作用中的指示。
 
 雖然 Microsoft 並未提供如何計算風險的特定詳細資料，但我們會假設每個層級針對使用者或登入遭到入侵時都具備更高的信賴度。 例如，相較於使用者的其中一個執行個體出現不熟悉的登入屬性，將認證洩漏給其他使用者的情況比較嚴重。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: fe2d09315dcb2a0958f8a1b8efe7532c64c111d8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: ab729460a676bb5daa8860b3b4a837ec276fc5db
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966542"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182331"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>教學課程：設定 ServiceNow 來自動佈建使用者
 
@@ -36,7 +36,7 @@ ms.locfileid: "94966542"
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
 * [Azure AD 租用戶](../develop/quickstart-create-new-tenant.md) 
-* Azure AD 中具有設定佈建[權限](../users-groups-roles/directory-assign-admin-roles.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
+* Azure AD 中具有設定佈建[權限](../roles/permissions-reference.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
 * Calgary 或更高版本的 [ServiceNow 執行個體](https://www.servicenow.com/)
 * Helsinki 或更高版本的 [ServiceNow Express 執行個體](https://www.servicenow.com/)
 * ServiceNow 中具有管理員角色的使用者帳戶

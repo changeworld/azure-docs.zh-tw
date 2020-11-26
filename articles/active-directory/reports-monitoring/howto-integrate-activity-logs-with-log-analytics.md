@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01f762ef1fa3a997c01873df02abf87362b8c06f
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 85e6a66f4520f12278266203211e1d1ae224c97f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055948"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180450"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>整合 Azure AD 記錄與 Azure 監視器記錄
 
@@ -45,8 +45,8 @@ Ignite 工作階段中的下列影片，會示範在特定使用者案例中針�
 您可以將稽核活動記錄和登入活動記錄路由到 Azure 監視器記錄，以進行深入分析。 
 
 * **稽核記錄**：[稽核記錄活動報告](concept-audit-logs.md)可讓您對每個在租用戶中執行的工作存取歷程記錄。
-* **登入記錄**：透過[登入活動報告](concept-sign-ins.md)，您可以判斷是誰執行了稽核記錄中所報告的工作。
-* 布建**記錄**：透過布建[記錄](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics)檔，您可以監視所有協力廠商應用程式中已建立、更新及刪除的使用者。 
+* **登入記錄**：透過 [登入活動報告](concept-sign-ins.md)，您可以判斷是誰執行了稽核記錄中所報告的工作。
+* 布建 **記錄**：透過布建 [記錄](../app-provisioning/application-provisioning-log-analytics.md)檔，您可以監視所有協力廠商應用程式中已建立、更新及刪除的使用者。 
 
 > [!NOTE]
 > 目前不支援與 B2C 相關的稽核和登入活動記錄。
@@ -69,15 +69,15 @@ Ignite 工作階段中的下列影片，會示範在特定使用者案例中針�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 
-2. 選取**Azure Active Directory**  >  **診斷**設定  ->  **新增診斷設定**。 您也可以在 [稽核記錄]**** 或 [登入]**** 頁面中選取 [匯出設定]****，以移至診斷設定組態頁面。  
+2. 選取 **Azure Active Directory**  >  **診斷** 設定  ->  **新增診斷設定**。 您也可以在 [稽核記錄] 或 [登入] 頁面中選取 [匯出設定]，以移至診斷設定組態頁面。  
     
-3. 在 [診斷設定]**** 功能表中選取 [傳送至 Log Analytics 工作區]**** 核取方塊，然後選取 [設定]****。
+3. 在 [診斷設定] 功能表中選取 [傳送至 Log Analytics 工作區] 核取方塊，然後選取 [設定]。
 
 4. 選取記錄要傳送到的 Log Analytics 工作區，或在畫面上提供的對話方塊中建立新的工作區。  
 
 5. 執行下列其中一個動作或兩個動作都執行：
-    * 若要將稽核記錄傳送到 Log Analytics 工作區，請選取 [AuditLogs]**** 核取方塊。 
-    * 若要將登入記錄傳送到 Log Analytics 工作區，請選取 [SignInLogs]**** 核取方塊。
+    * 若要將稽核記錄傳送到 Log Analytics 工作區，請選取 [AuditLogs] 核取方塊。 
+    * 若要將登入記錄傳送到 Log Analytics 工作區，請選取 [SignInLogs] 核取方塊。
 
 6. 選取 [儲存]  以儲存設定。
 

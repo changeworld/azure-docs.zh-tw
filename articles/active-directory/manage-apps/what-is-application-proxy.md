@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bc3352dd57a76cbb0b38455adfa11987ec93781a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d73cf3336afad83fadf6f56606161f523e202280
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003016"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180535"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>使用 Azure AD 應用程式 Proxy 來為遠端使用者發佈內部部署應用程式
 
@@ -95,7 +95,7 @@ Azure Active Directory (Azure AD) 提供了許多功能來保護雲端和內部�
 
 應用程式 Proxy 也支援搭配第三方整合或在特定的設定案例中使用下列驗證通訊協定：
 
-* [**標頭型驗證**](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers)。 此登入方法會使用名為 PingAccess 的第三方驗證服務，使用時機則在應用程式使用標頭進行驗證時。 在此案例中，驗證會由 PingAccess 處理。
+* [**標頭型驗證**](./application-proxy-configure-single-sign-on-with-headers.md)。 此登入方法會使用名為 PingAccess 的第三方驗證服務，使用時機則在應用程式使用標頭進行驗證時。 在此案例中，驗證會由 PingAccess 處理。
 * [**表單或密碼型驗證**](application-proxy-configure-single-sign-on-password-vaulting.md)。 若使用此驗證方法，使用者在第一次存取應用程式時，要以使用者名稱和密碼登入應用程式。 第一次登入之後，Azure AD 就會向應用程式提供使用者名稱和密碼。 在此案例中，驗證會由 Azure AD 處理。
 * [**SAML 驗證**](application-proxy-configure-single-sign-on-on-premises-apps.md)。 使用 SAML 2.0 或 WS-同盟通訊協定的應用程式都支援 SAML 型單一登入。 使用 SAML 單一登入時，Azure AD 會使用使用者的 Azure AD 帳戶向應用程式驗證。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 79fa480e0cca590446a0251f43c45b2e04c97cd5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: aa4e8c2baaaa0c8ccc9bcdda595f040fac72682f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013151"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181436"
 ---
 # <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>教學課程：設定 Smartsheet 來自動佈建使用者
 
@@ -38,7 +38,7 @@ ms.locfileid: "96013151"
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
 * [Azure AD 租用戶](../develop/quickstart-create-new-tenant.md)。
-* Azure AD 中具有設定佈建[權限](../users-groups-roles/directory-assign-admin-roles.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。
+* Azure AD 中具有設定佈建[權限](../roles/permissions-reference.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。
 * [Smartsheet 租用戶](https://www.smartsheet.com/pricing)。
 * Smartsheet Enterprise 或 Enterprise Premier 方案中具有系統管理員權限的使用者帳戶。
 

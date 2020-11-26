@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 3cae4591a5da53683c965d7c6ba3ec169249c87e
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 43aadee627c7dc12a37a8f3895ba4dfed472808c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566124"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182898"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>教學課程：使用新的應用程式閘道執行個體來啟用新 AKS 叢集的輸入控制器附加元件 (預覽)
 
@@ -36,17 +36,17 @@ ms.locfileid: "94566124"
 
  - 本教學課程需要 2.0.4 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
- - 若要註冊 AKS-IngressApplicationGatewayAddon 功能旗標，請使用 [az feature register](https://docs.microsoft.com/cli/azure/feature#az-feature-register) 命令，如下列範例所示。 當附加元件仍處於預覽狀態時，您只需要針對每個訂用帳戶執行此動作一次。
+ - 若要註冊 AKS-IngressApplicationGatewayAddon 功能旗標，請使用 [az feature register](/cli/azure/feature#az-feature-register) 命令，如下列範例所示。 當附加元件仍處於預覽狀態時，您只需要針對每個訂用帳戶執行此動作一次。
     ```azurecli-interactive
     az feature register --name AKS-IngressApplicationGatewayAddon --namespace Microsoft.ContainerService
     ```
 
-   可能需要數分鐘的時間狀態才會顯示為 `Registered`。 您可以使用 [az feature list](https://docs.microsoft.com/cli/azure/feature#az-feature-register) 命令檢查註冊狀態：
+   可能需要數分鐘的時間狀態才會顯示為 `Registered`。 您可以使用 [az feature list](/cli/azure/feature#az-feature-register) 命令檢查註冊狀態：
     ```azurecli-interactive
     az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
     ```
 
- - 準備就緒時，使用 [az provider register](https://docs.microsoft.com/cli/azure/provider#az-provider-register) 命令重新整理 Microsoft.ContainerService 資源提供者的註冊：
+ - 準備就緒時，使用 [az provider register](/cli/azure/provider#az-provider-register) 命令重新整理 Microsoft.ContainerService 資源提供者的註冊：
     ```azurecli-interactive
     az provider register --namespace Microsoft.ContainerService
     ```

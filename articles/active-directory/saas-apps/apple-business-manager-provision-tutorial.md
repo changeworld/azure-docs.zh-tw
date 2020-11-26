@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: f7fd2337fe496e75ced78215d14d530a853096fd
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b4f24c9beffcd67fb84940c2e159da615496d9aa
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359254"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180365"
 ---
 # <a name="tutorial-configure-apple-business-manager-for-automatic-user-provisioning"></a>教學課程：設定 Apple Business Manager 來自動佈建使用者
 
@@ -39,7 +39,7 @@ ms.locfileid: "94359254"
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
 * [Azure AD 租用戶](../develop/quickstart-create-new-tenant.md)。
-* Azure AD 中具有設定佈建[權限](../users-groups-roles/directory-assign-admin-roles.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。
+* Azure AD 中具有設定佈建[權限](../roles/permissions-reference.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。
 * 具有系統管理員或人力管理員角色的 Apple Business Manager 帳戶。
 
 > [!NOTE]

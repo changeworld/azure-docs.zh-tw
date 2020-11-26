@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: apimpm
-ms.openlocfilehash: 92d108304f788279a636b1dc5e1c4e6c103ede3d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 62f163b9ce649cd5ddb52b4325682570633dfb92
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088874"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183153"
 ---
 # <a name="cicd-for-api-management-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本進行 API 管理的 CI/CD
 
@@ -41,14 +41,14 @@ ms.locfileid: "93088874"
 * API 開發人員可存取開發實例，並可用於開發和測試其 Api。 
 * 稱為 *API 發行者* 的指定小組會管理實際執行實例。
 
-此建議方法中的關鍵是將所有 API 管理設定保留在 [Azure Resource Manager 範本](../azure-resource-manager/resource-group-authoring-templates.md)中。 組織應該將這些範本保存在原始檔控制系統（例如 Git）中。 如圖中所示，發行者存放庫會在樣板集合中包含生產 API 管理實例的所有設定：
+此建議方法中的關鍵是將所有 API 管理設定保留在 [Azure Resource Manager 範本](../azure-resource-manager/templates/template-syntax.md)中。 組織應該將這些範本保存在原始檔控制系統（例如 Git）中。 如圖中所示，發行者存放庫會在樣板集合中包含生產 API 管理實例的所有設定：
 
 |範本  |描述  |
 |---------|---------|
 |服務範本     | API 管理實例的服務層級設定，例如定價層和自訂網域。         |
 |共用範本     |  API 管理實例中的共用資源，例如群組、產品和記錄器。    |
 |API 範本     |  Api 的設定及其子資源：作業、原則、診斷設定。        |
-|主要) 範本的主要 (     |   藉由 [連結](../azure-resource-manager/resource-group-linked-templates.md) 至所有範本並依序部署，將所有專案結合在一起。 若要將所有設定部署至 API 管理實例，請部署主要範本。 您也可以個別部署每個範本。       |
+|主要) 範本的主要 (     |   藉由 [連結](../azure-resource-manager/templates/linked-templates.md) 至所有範本並依序部署，將所有專案結合在一起。 若要將所有設定部署至 API 管理實例，請部署主要範本。 您也可以個別部署每個範本。       |
 
 API 開發人員會將發行者存放庫派生給開發人員存放庫，並處理其 Api 的變更。 在大部分情況下，他們會將焦點放在其 Api 的 API 範本，而不需要變更共用或服務範本。
 

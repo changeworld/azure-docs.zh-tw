@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: fd1ca218d9c079e26f8424a36b90b9b657690b41
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: d44f9109540c3899ab50bd5c4c02afa19045bafb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397700"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182932"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>疑難排解應用程式閘道中閘道不正確的錯誤
 
@@ -41,7 +41,7 @@ NSG/UDR 可能存在於應用程式閘道子網或部署應用程式 Vm 的子�
 
 同樣地，VNet 中的自訂 DNS 存在也可能會造成問題。 針對後端集區成員使用的 FQDN，可能無法由使用者為 VNet 設定的 DNS 伺服器正確解析。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 透過下列步驟來驗證 NSG、UDR 和 DNS 設定：
 
@@ -89,13 +89,13 @@ DhcpOptions            : {
 | 逾時 |30 |探查逾時 (秒) |
 | 狀況不良臨界值 |3 |探查重試計數。 連續探查失敗計數到達狀況不良臨界值後，就會將後端伺服器標示為故障。 |
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 * 確定預設網站已設定且正於 127.0.0.1 上進行接聽。
 * 如果 BackendHttpSetting 指定了 80 以外的連接埠，則應將預設網站設定為在該連接埠上進行接聽。
 * 對 `http://127.0.0.1:port` 的呼叫應該會傳回 HTTP 結果碼 200。 這應該會在30秒的超時期間內傳回。
 * 確定設定的埠已開啟，且沒有任何防火牆規則或 Azure 網路安全性群組，以封鎖設定的埠上的連入或連出流量。
-* 如果使用 Azure 傳統 Vm 或雲端服務搭配 FQDN 或公用 IP，請確定已開啟對應的 [端點](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints?toc=%252fazure%252fapplication-gateway%252ftoc.json) 。
+* 如果使用 Azure 傳統 Vm 或雲端服務搭配 FQDN 或公用 IP，請確定已開啟對應的 [端點](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints?toc=%2fazure%2fapplication-gateway%2ftoc.json) 。
 * 如果 VM 是透過 Azure Resource Manager 設定的，且在部署應用程式閘道的 VNet 外部，則必須將 [網路安全性群組](../virtual-network/network-security-groups-overview.md) 設定為允許在所需的埠上進行存取。
 
 ## <a name="problems-with-custom-health-probe"></a>自訂健全狀況探查的問題
@@ -116,7 +116,7 @@ DhcpOptions            : {
 | 逾時 |探查逾時 (秒)。 如果在這個逾時期間內未收到有效的回應，則會將探查標示為失敗。 |
 | 狀況不良臨界值 |探查重試計數。 連續探查失敗計數到達狀況不良臨界值後，就會將後端伺服器標示為故障。 |
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 確認已按照上述資料表正確設定 [自訂健全狀態探查]。 除了上述的疑難排解步驟，也請確定下列各項：
 
@@ -132,7 +132,7 @@ DhcpOptions            : {
 
 當收到使用者要求時，應用程式閘道會將設定的規則套用至要求，並將其路由傳送至後端集區實例。 其會等候一段可設定的時間間隔以接收來自後端應用程式的回應。 依預設，此間隔為 **20** 秒。 如果應用程式閘道未在此間隔內接收來自後端應用程式的回應，則使用者要求會取得502錯誤。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 應用程式閘道可讓您透過 BackendHttpSetting 設定這種設定，然後將其套用至不同的集區。 不同的後端集區可以有不同的 BackendHttpSetting，並設定不同的要求超時。
 
@@ -146,7 +146,7 @@ DhcpOptions            : {
 
 如果應用程式閘道沒有在後端位址集區中設定的 Vm 或虛擬機器擴展集，它就無法路由傳送任何客戶要求，也不會傳送錯誤的閘道錯誤。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 確定後端位址集區不是空的。 這可透過 PowerShell、CLI 或入口網站來完成。
 
@@ -188,7 +188,7 @@ BackendAddressPoolsText：
 
 如果 BackendAddressPool 的所有實例都狀況不良，則應用程式閘道不會有任何後端可將使用者要求路由至。 當後端實例狀況良好，但尚未部署必要的應用程式時，也可能會發生這種情況。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 確定執行個體的狀況良好且已正確設定應用程式。 檢查後端實例是否可以從相同 VNet 中的另一個 VM 回應 ping。 如果設定了公用端點，請確保 web 應用程式的瀏覽器要求可以維修。
 

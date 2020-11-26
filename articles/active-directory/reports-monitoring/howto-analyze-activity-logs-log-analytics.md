@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a48a72aa021a17c59adb86bece66cec966e234bd
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 0c4fde22b1b8d72ae8ae775c090e0da25ce0665f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056135"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181164"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>使用 Azure 監視器記錄來分析 Azure AD 活動記錄
 
@@ -90,13 +90,13 @@ AuditLogs
 
     ![設定警示](./media/howto-analyze-activity-logs-log-analytics/setalert.png)
 
-2. 選取警示中建立的預設**警示準則**，並將預設計量中的**閾值**更新為 10。
+2. 選取警示中建立的預設 **警示準則**，並將預設計量中的 **閾值** 更新為 10。
 
     ![警示準則](./media/howto-analyze-activity-logs-log-analytics/alertcriteria.png)
 
-3. 輸入警示的名稱和描述，並選擇嚴重性層級。 在我們的範例中，我們可以將它設定為**資訊**。
+3. 輸入警示的名稱和描述，並選擇嚴重性層級。 在我們的範例中，我們可以將它設定為 **資訊**。
 
-4. 選取訊號發生時會收到警示的**動作群組**。 您可以選擇透過電子郵件或文字訊息來通知團隊，或者使用 Webhook、Azure Functions 或 Logic Apps 來自動化動作。 深入了解[在 Azure 入口網站中建立及管理警示群組](../../azure-monitor/platform/action-groups.md)。
+4. 選取訊號發生時會收到警示的 **動作群組**。 您可以選擇透過電子郵件或文字訊息來通知團隊，或者使用 Webhook、Azure Functions 或 Logic Apps 來自動化動作。 深入了解[在 Azure 入口網站中建立及管理警示群組](../../azure-monitor/platform/action-groups.md)。
 
 5. 一旦設定警示之後，請選取 [建立警示] 來加以啟用。 
 
@@ -104,9 +104,9 @@ AuditLogs
 
 活頁簿會提供數個與常見案例相關的報表，這些案例包括審核、登入和布建事件。 您也可以使用上一節中所述的步驟，在報表所提供的任何資料上設定警示。
 
-* 布建**分析**：此活頁[簿](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics)會顯示與「審核布建」活動相關的報表，例如已布建的新使用者數目和布建失敗、更新的使用者數目和更新失敗，以及取消布建的使用者數目和對應的失敗數目。    
-* 登**入事件**：此活頁簿會顯示與監視登入活動相關的最相關報告，例如依應用程式、使用者、裝置的登入，以及追蹤一段時間內登入次數的摘要觀點。
-* **條件式存取深入**解析：條件式存取深入解析和報告活頁 [簿](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-insights-reporting) 可讓您瞭解您組織中的條件式存取原則在一段時間內的影響。 
+* 布建 **分析**：此活頁 [簿](../app-provisioning/application-provisioning-log-analytics.md)會顯示與「審核布建」活動相關的報表，例如已布建的新使用者數目和布建失敗、更新的使用者數目和更新失敗，以及取消布建的使用者數目和對應的失敗數目。    
+* 登 **入事件**：此活頁簿會顯示與監視登入活動相關的最相關報告，例如依應用程式、使用者、裝置的登入，以及追蹤一段時間內登入次數的摘要觀點。
+* **條件式存取深入** 解析：條件式存取深入解析和報告活頁 [簿](../conditional-access/howto-conditional-access-insights-reporting.md) 可讓您瞭解您組織中的條件式存取原則在一段時間內的影響。 
 
 ## <a name="next-steps"></a>後續步驟
 

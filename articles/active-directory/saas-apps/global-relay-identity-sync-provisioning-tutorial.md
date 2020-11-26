@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/22/2020
 ms.author: Zhchia
-ms.openlocfilehash: bdbda77c45e3b1f1533326483ee19aa8ff4af515
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: d003a512ebde626b8726dfccc58110e53f1cd467
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358332"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180909"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>教學課程：設定 Global Relay Identity Sync 來自動佈建使用者
 
-本教學課程說明您需要在 Global Relay Identity Sync 與 Azure Active Directory (Azure AD) 中執行哪些步驟，以設定自動使用者佈建。 設定後，Azure AD 就會使用 Azure AD 佈建服務，自動對 Global Relay Identity Sync 佈建及取消佈建使用者和群組。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
+本教學課程說明您需要在 Global Relay Identity Sync 與 Azure Active Directory (Azure AD) 中執行哪些步驟，以設定自動使用者佈建。 設定後，Azure AD 就會使用 Azure AD 佈建服務，自動對 Global Relay Identity Sync 佈建及取消佈建使用者和群組。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支援的功能
@@ -42,13 +42,13 @@ ms.locfileid: "94358332"
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
-* [Azure AD 租用戶](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Azure AD 中具有設定佈建[權限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。
+* [Azure AD 租用戶](../develop/quickstart-create-new-tenant.md) 
+* Azure AD 中具有設定佈建[權限](../roles/permissions-reference.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步驟 1： 規劃佈建部署
-1. 了解[佈建服務的運作方式](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) \(部分機器翻譯\)。
-2. 判斷誰會在[佈建範圍](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)內。
-3. 判斷哪些資料要[在 Azure AD 與 Global Relay Identity Sync 之間對應](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)。 
+1. 了解[佈建服務的運作方式](../app-provisioning/user-provisioning.md) \(部分機器翻譯\)。
+2. 判斷誰會在[佈建範圍](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)內。
+3. 判斷哪些資料要[在 Azure AD 與 Global Relay Identity Sync 之間對應](../app-provisioning/customize-application-attributes.md)。 
 
 ## <a name="step-2-configure-global-relay-identity-sync-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定 Global Relay Identity Sync 以支援使用 Azure AD 進行佈建
 
@@ -56,13 +56,13 @@ ms.locfileid: "94358332"
 
 ## <a name="step-3-add-global-relay-identity-sync-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫新增 Global Relay Identity Sync
 
-從 Azure AD 應用程式庫新增 Global Relay Identity Sync，以開始管理對 Global Relay Identity Sync 的佈建。[在此](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)深入了解從資源庫新增應用程式。 
+從 Azure AD 應用程式庫新增 Global Relay Identity Sync，以開始管理對 Global Relay Identity Sync 的佈建。[在此](../manage-apps/add-application-portal.md)深入了解從資源庫新增應用程式。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步驟 4： 定義將在佈建範圍內的人員 
 
-Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/群組的屬性，界定將要佈建的人員。 如果您選擇根據指派來界定將佈建至應用程式的人員，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定將要佈建的人員，可以使用如[這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的範圍篩選條件。 
+Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/群組的屬性，界定將要佈建的人員。 如果您選擇根據指派來界定將佈建至應用程式的人員，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定將要佈建的人員，可以使用如[這裡](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的範圍篩選條件。 
 
-* 從小規模開始。 在推出給所有人之前，先使用一小部分的使用者和群組進行測試。 當佈建範圍設為已指派的使用者和群組時，您可將一或兩個使用者或群組指派給應用程式來控制這點。 當範圍設為所有使用者和群組時，您可指定[以屬性為基礎的範圍篩選條件](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
+* 從小規模開始。 在推出給所有人之前，先使用一小部分的使用者和群組進行測試。 當佈建範圍設為已指派的使用者和群組時，您可將一或兩個使用者或群組指派給應用程式來控制這點。 當範圍設為所有使用者和群組時，您可指定[以屬性為基礎的範圍篩選條件](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。 
 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-global-relay-identity-sync"></a>步驟 5。 設定將使用者自動佈建至 Global Relay Identity Sync 
@@ -99,7 +99,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 8. 在 [對應] 區段底下，選取 [將 Azure Active Directory 使用者同步處理至 Global Relay Identity Sync]。
 
-9. 在 [屬性對應] 區段中，檢閱從 Azure AD 同步處理至 Global Relay Identity Sync 的使用者屬性。 選取為 [比對] 屬性的屬性會用來比對 Global Relay Identity Sync 中的使用者帳戶以進行更新作業。 如果您選擇變更[比對目標屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，則必須確定 Global Relay Identity Sync API 支援根據該屬性來篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
+9. 在 [屬性對應] 區段中，檢閱從 Azure AD 同步處理至 Global Relay Identity Sync 的使用者屬性。 選取為 [比對] 屬性的屬性會用來比對 Global Relay Identity Sync 中的使用者帳戶以進行更新作業。 如果您選擇變更[比對目標屬性](../app-provisioning/customize-application-attributes.md)，則必須確定 Global Relay Identity Sync API 支援根據該屬性來篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
 
    |屬性|類型|
    |---|---|
@@ -182,7 +182,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
       |displayName|String|
       |members|參考|
 
-12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
+12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
 13. 若要啟用 Global Relay Identity Sync 的 Azure AD 佈建服務，在 [設定] 區段中，將 [佈建狀態] 變更為 [開啟]。
 
@@ -201,15 +201,15 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 ## <a name="step-6-monitor-your-deployment"></a>步驟 6. 監視您的部署
 設定佈建後，請使用下列資源來監視您的部署：
 
-1. 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
-2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
-3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)深入了解隔離狀態。  
+1. 使用[佈建記錄](../reports-monitoring/concept-provisioning-logs.md) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
+2. 檢查[進度列](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
+3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](../app-provisioning/application-provisioning-quarantine-status.md)深入了解隔離狀態。  
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶佈建](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解如何針對佈建活動檢閱記錄和取得報告](../manage-apps/check-status-user-account-provisioning.md)
+* [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)

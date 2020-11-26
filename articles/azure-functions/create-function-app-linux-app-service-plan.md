@@ -3,12 +3,12 @@ title: 在 Linux 從 Azure 入口網站建立函式應用程式
 description: 瞭解如何使用 Azure 入口網站在 Linux 上建立您的第一個 Azure 函數。
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 53edee15d9c9dfa66e57bb1eb03b1d8f66aa1ee2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20390239ed58e42749e9a3bae472a2f3f6324bb2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970739"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181249"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>在 Azure App Service 方案中建立 Linux 上的函式應用程式
 
@@ -44,7 +44,7 @@ Azure Functions 可讓您在 Linux 上預設的 Azure App Service 容器中裝�
     |**版本**| 版本號碼 | 選擇已安裝的執行階段版本。  |
     |**區域**| 慣用區域 | 選擇與您接近的[區域](https://azure.microsoft.com/regions/)，或選擇與函式將會存取之其他服務接近的區域。 |
 
-    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-basics-linux.png" alt-text="在 Azure 入口網站中建立函式應用程式":::
+    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-basics-linux.png" alt-text="基本資料頁面":::
 
 1. 選取 [下一步：裝載]。 在 [裝載] 頁面中輸入下列設定。
 
@@ -52,17 +52,17 @@ Azure Functions 可讓您在 Linux 上預設的 Azure App Service 容器中裝�
     | ------------ | ---------------- | ----------- |
     | **[儲存體帳戶](../storage/common/storage-account-create.md)** |  全域唯一的名稱 |  建立您函式應用程式使用的儲存體帳戶。 儲存體帳戶名稱必須介於 3 到 24 個字元的長度，而且只能包含數字和小寫字母。 您也可以使用現有帳戶，條件是必須符合[儲存體帳戶需求](../azure-functions/functions-scale.md#storage-account-requirements)。 |
     |**作業系統**| **Linux** | 系統會根據您的執行階段堆疊選項預先選取作業系統，但您可以視需要變更設定。 |
-    | **[規劃](../azure-functions/functions-scale.md)** | **使用量 (無伺服器)** | 會定義如何將資源配置給函式應用程式的主控方案。 在預設**取用**方案中，您的函式會根據需要來動態新增資源。 在此[無伺服器](https://azure.microsoft.com/overview/serverless-computing/)裝載中，您只需要針對函式有執行的時間來付費。 在 App Service 方案中執行時，您必須管理[函式應用程式的調整](../azure-functions/functions-scale.md)。  |
+    | **[規劃](../azure-functions/functions-scale.md)** | **使用量 (無伺服器)** | 會定義如何將資源配置給函式應用程式的主控方案。 在預設 **取用** 方案中，您的函式會根據需要來動態新增資源。 在此[無伺服器](https://azure.microsoft.com/overview/serverless-computing/)裝載中，您只需要針對函式有執行的時間來付費。 在 App Service 方案中執行時，您必須管理[函式應用程式的調整](../azure-functions/functions-scale.md)。  |
 
-    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-hosting-linux.png" alt-text="在 Azure 入口網站中建立函式應用程式":::
+    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-hosting-linux.png" alt-text="主控頁面":::
 
 1. 選取 [下一步：監視]。 在 [掛接] 頁面中輸入下列設定。
 
     | 設定      | 建議的值  | 描述 |
     | ------------ | ---------------- | ----------- |
-    | **[Application Insights](../azure-functions/functions-monitoring.md)** | **是** (預設) | 在最近的支援區域中，建立相同*應用程式名稱*的 Application Insights 資源。 展開此設定或選取 [新增]，即可變更 Application Insights 名稱或在 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中依您希望儲存資料的地點，選擇不同的區域。 |
+    | **[Application Insights](../azure-functions/functions-monitoring.md)** | **是** (預設) | 在最近的支援區域中，建立相同 *應用程式名稱* 的 Application Insights 資源。 展開此設定或選取 [新增]，即可變更 Application Insights 名稱或在 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中依您希望儲存資料的地點，選擇不同的區域。 |
 
-   :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-monitoring-linux.png" alt-text="在 Azure 入口網站中建立函式應用程式":::
+   :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-monitoring-linux.png" alt-text="監視頁面":::
 
 1. 選取 [檢閱 + 建立]，以檢閱應用程式組態選項。
 
@@ -83,7 +83,7 @@ Azure Functions 可讓您在 Linux 上預設的 Azure App Service 容器中裝�
 這一節說明如何在入口網站的新函式應用程式中建立函式。
 
 > [!NOTE]
-> 試用 Azure Functions 時，入口網站開發體驗很實用。 在大部分的情況下，請考慮使用 [Visual Studio Code](functions-create-first-function-vs-code.md#create-an-azure-functions-project) 或 [Azure Functions Core Tools](functions-run-local.md#create-a-local-functions-project)，在本機開發函式並將專案發佈至函式應用程式。  
+> 試用 Azure Functions 時，入口網站開發體驗很實用。 在大部分的情況下，請考慮使用 [Visual Studio Code](./create-first-function-vs-code-csharp.md#create-an-azure-functions-project) 或 [Azure Functions Core Tools](functions-run-local.md#create-a-local-functions-project)，在本機開發函式並將專案發佈至函式應用程式。  
 
 1. 從 [函式] 視窗的左側功能表選取 [函式]，然後從頂端功能表選取 [新增]。 
  
@@ -103,7 +103,7 @@ Azure Functions 可讓您在 Linux 上預設的 Azure App Service 容器中裝�
 
     ![選取取得函式 URL](./media/create-function-app-linux-app-service-plan/function-app-select-get-function-url.png)
 
-1. 在 [取得函式 URL] 對話方塊中，從下拉式清單中選取**預設值**，然後選取 [複製到剪貼簿] 圖示。 
+1. 在 [取得函式 URL] 對話方塊中，從下拉式清單中選取 **預設值**，然後選取 [複製到剪貼簿] 圖示。 
 
     ![從 Azure 入口網站複製函式 URL](./media/create-function-app-linux-app-service-plan/function-app-develop-tab-testing.png)
 

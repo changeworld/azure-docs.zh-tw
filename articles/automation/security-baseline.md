@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2d0157f3e7ab0ef373235fcc6e188f9caa36eff4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: e07e9035dc55f77a2e76b4f4ee306deab829980a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833294"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182745"
 ---
 # <a name="azure-security-baseline-for-automation"></a>自動化的 Azure 安全性基準
 
 適用于自動化的 Azure 安全性基準包含可協助您改善部署安全性狀態的建議。
 
-此服務的基準取自 [Azure 安全性效能評定 1.0 版](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
+此服務的基準取自 [Azure 安全性基準測試版本 1.0](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
 如需詳細資訊，請參閱 [Azure 安全性基準概觀](../security/benchmarks/security-baselines-overview.md)。
 
@@ -80,7 +80,7 @@ ms.locfileid: "94833294"
 
 您可以使用 Azure 資訊安全中心的即時網路存取，將 Windows 虛擬機器的公開限制在一段有限的時間內，以獲得核准的 IP 位址。 此外，請使用 Azure 資訊安全中心 NSG 設定的彈性網路強化建議，根據實際流量和威脅情報來限制埠和來源 Ip。
 
-* [如何設定 DDoS 保護](../virtual-network/manage-ddos-protection.md)
+* [如何設定 DDoS 保護](../ddos-protection/manage-ddos-protection.md)
 
 * [如何部署 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -220,7 +220,7 @@ ms.locfileid: "94833294"
 
 * [已連結 Log Analytics 工作區的支援區域](./how-to/region-mappings.md)
 
-* [查詢更新管理記錄](./update-management/update-mgmt-query-logs.md)
+* [查詢更新管理記錄](./update-management/query-logs.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -270,7 +270,7 @@ ms.locfileid: "94833294"
 
 * [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
-* [瞭解 Azure 監視器中的記錄查詢](../azure-monitor/log-query/get-started-portal.md)
+* [瞭解 Azure 監視器中的記錄查詢](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [如何在 Azure 監視器中執行自訂查詢](../azure-monitor/log-query/get-started-queries.md)
 
@@ -438,7 +438,7 @@ ms.locfileid: "94833294"
 
 **指導** 方針：使用 Azure AD 作為中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。 如果使用混合式 Runbook 背景工作角色，您可以利用受控識別（而非執行身分帳戶）來啟用更順暢的安全許可權。
 
-* [如何建立和設定 Azure AD 實例](../active-directory-domain-services/tutorial-create-instance.md)
+* [如何建立和設定 Azure AD 執行個體](../active-directory-domain-services/tutorial-create-instance.md)
 
 * [使用具有受控識別的 runbook 驗證](./automation-hrw-run-runbooks.md#runbook-auth-managed-identities)
 
@@ -600,7 +600,7 @@ ms.locfileid: "94833294"
 
 使用混合式 Runbook 背景工作角色時，虛擬機器上的虛擬磁片會使用伺服器端加密或 Azure 磁片加密 (ADE) 進行靜態加密。 Azure 磁片加密利用 Windows 的 BitLocker 功能，利用來賓 VM 內客戶管理的金鑰來加密受控磁片。 使用客戶管理的金鑰進行伺服器端加密，可讓您藉由加密儲存庫服務中的資料，對您的 VM 使用任何作業系統類型和映像，而改善 ADE 的效能。
 
-* [Azure 受控磁片的伺服器端加密](../virtual-machines/windows/disk-encryption.md)
+* [Azure 受控磁片的伺服器端加密](../virtual-machines/disk-encryption.md)
 
 * [適用于 Windows Vm 的 Azure 磁碟加密](../virtual-machines/windows/disk-encryption-overview.md)
 
@@ -646,9 +646,9 @@ ms.locfileid: "94833294"
 
 如果您使用 Azure 虛擬機器所支援的混合式 Runbook 背景工作角色，請使用 Azure 更新管理來管理虛擬機器的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 System Center Updates Publisher (Updates Publisher) 之類的工具可讓您將自訂更新發佈至 Windows Server Update Services (WSUS) 。 此案例可讓更新管理修補使用 Configuration Manager 作為其更新存放庫（具有協力廠商軟體）的機器。
 
-* [Azure 中的更新管理](./update-management/update-mgmt-overview.md)
+* [Azure 中的更新管理](./update-management/overview.md)
 
-* [管理 Vm 的更新和修補程式](./update-management/update-mgmt-manage-updates-for-vm.md)
+* [管理 Vm 的更新和修補程式](./update-management/manage-updates-for-vm.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -660,9 +660,9 @@ ms.locfileid: "94833294"
 
 如果您使用 Azure 虛擬機器所支援的混合式 Runbook 背景工作角色，您可以使用 Azure 更新管理來管理虛擬機器的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 System Center Updates Publisher (Updates Publisher) 之類的工具可讓您將自訂更新發佈至 Windows Server Update Services (WSUS) 。 此案例可讓更新管理修補使用 Configuration Manager 作為其更新存放庫（具有協力廠商軟體）的機器。
 
-* [Azure 中的更新管理解決方案](./update-management/update-mgmt-overview.md)
+* [Azure 中的更新管理解決方案](./update-management/overview.md)
 
-* [管理 Azure VM 的更新和修補程式](./update-management/update-mgmt-manage-updates-for-vm.md)
+* [管理 Azure VM 的更新和修補程式](./update-management/manage-updates-for-vm.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1280,11 +1280,11 @@ ms.locfileid: "94833294"
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
-**指導** 方針：遵循 Microsoft 的 Engagement 規則，以確保您的滲透測試不違反 Microsoft 原則。 針對受 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 的策略和執行的 Red 小組和即時網站滲透測試。
+**指導** 方針：遵循 Microsoft 的 Engagement 規則，以確保您的滲透測試不違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 對於 Red Teaming 和即時網站滲透測試的策略與執行方法。
 
 * [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-* [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+* [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 資訊安全中心監視**：不適用
 

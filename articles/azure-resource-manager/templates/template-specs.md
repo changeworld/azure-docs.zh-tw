@@ -2,15 +2,15 @@
 title: 範本規格總覽
 description: 說明如何建立範本規格，並與組織中的其他使用者共用它們。
 ms.topic: conceptual
-ms.date: 11/17/2020
+ms.date: 11/25/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 83d5a210a5af538173ad0ca5e4c718363639c40a
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: e919db24a70b0ed69aca6977865cc76c0c9c5845
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94747395"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182456"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager 範本規格 (預覽) 
 
@@ -21,7 +21,7 @@ ms.locfileid: "94747395"
 若要部署範本規格，您可以使用 PowerShell、Azure CLI、Azure 入口網站、REST 和其他支援的 Sdk 和用戶端等標準 Azure 工具。 您可以使用與範本相同的命令。
 
 > [!NOTE]
-> 範本規格目前為預覽狀態。 若要使用它，您必須安裝最新版本的 PowerShell 或 Azure CLI。 針對 Azure PowerShell，請使用第 [5.0.0 版或更新](/powershell/azure/install-az-ps)版本。 針對 Azure CLI，請使用 [2.14.2 版或更新版本](/cli/azure/install-azure-cli)。
+> 範本規格目前為預覽狀態。 若要加以使用，您必須安裝最新版的 PowerShell 或 Azure CLI。 針對 Azure PowerShell，請使用 [5.0.0 版或更新版本](/powershell/azure/install-az-ps)。 針對 Azure CLI，請使用 [2.14.2 版或更新版本](/cli/azure/install-azure-cli)。
 
 ## <a name="why-use-template-specs"></a>為何要使用範本規格？
 
@@ -73,7 +73,7 @@ ms.locfileid: "94747395"
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-New-AzTemplateSpec -Name storageSpec -Version 1.0 -ResourceGroupName templateSpecsRg -Location westus2 -TemplateFile ./mainTemplate.json
+New-AzTemplateSpec -Name storageSpec -Version 1.0a -ResourceGroupName templateSpecsRg -Location westus2 -TemplateFile ./mainTemplate.json
 ```
 
 # <a name="cli"></a>[CLI](#tab/azure-cli)
@@ -81,7 +81,7 @@ New-AzTemplateSpec -Name storageSpec -Version 1.0 -ResourceGroupName templateSpe
 ```azurecli
 az ts create \
   --name storageSpec \
-  --version "1.0" \
+  --version "1.0a" \
   --resource-group templateSpecRG \
   --location "westus2" \
   --template-file "./mainTemplate.json"
@@ -119,7 +119,7 @@ Get-AzTemplateSpec -ResourceGroupName templateSpecsRG -Name storageSpec
 az ts show \
     --name storageSpec \
     --resource-group templateSpecRG \
-    --version "1.0"
+    --version "1.0a"
 ```
 
 ---
@@ -134,14 +134,14 @@ az ts show \
 
 **/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Resources/templateSpecs/{template-spec-name}/versions/{template-spec-version}**
 
-請注意，資源識別碼包含範本規格的版本號碼。
+請注意，資源識別碼包含範本規格的版本名稱。
 
 例如，您可以使用下列命令來部署範本規格。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-$id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/templateSpecsRG/providers/Microsoft.Resources/templateSpecs/storageSpec/versions/1.0"
+$id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/templateSpecsRG/providers/Microsoft.Resources/templateSpecs/storageSpec/versions/1.0a"
 
 New-AzResourceGroupDeployment `
   -TemplateSpecId $id `
@@ -151,7 +151,7 @@ New-AzResourceGroupDeployment `
 # <a name="cli"></a>[CLI](#tab/azure-cli)
 
 ```azurecli
-id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/templateSpecsRG/providers/Microsoft.Resources/templateSpecs/storageSpec/versions/1.0"
+id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/templateSpecsRG/providers/Microsoft.Resources/templateSpecs/storageSpec/versions/1.0a"
 
 az deployment group create \
   --resource-group demoRG \
@@ -160,12 +160,12 @@ az deployment group create \
 
 ---
 
-在實務上，您通常會執行 `Get-AzTemplateSpec` 以取得您想要部署之範本規格的識別碼。
+在實務上，您通常會執行 `Get-AzTemplateSpec` 或 `az ts show` 以取得您想要部署之範本規格的識別碼。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-$id = (Get-AzTemplateSpec -Name storageSpec -ResourceGroupName templateSpecsRg -Version 1.0).Versions.Id
+$id = (Get-AzTemplateSpec -Name storageSpec -ResourceGroupName templateSpecsRg -Version 1.0a).Versions.Id
 
 New-AzResourceGroupDeployment `
   -ResourceGroupName demoRG `
@@ -175,7 +175,7 @@ New-AzResourceGroupDeployment `
 # <a name="cli"></a>[CLI](#tab/azure-cli)
 
 ```azurecli
-id = $(az ts show --name storageSpec --resource-group templateSpecRG --version "1.0" --query "id")
+id = $(az ts show --name storageSpec --resource-group templateSpecRG --version "1.0a" --query "id")
 
 az deployment group create \
   --resource-group demoRG \
@@ -309,7 +309,7 @@ az deployment group create \
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "id": "[resourceId('templateSpecsRG', 'Microsoft.Resources/templateSpecs/versions', 'networkingSpec', '1.0')]"
+          "id": "[resourceId('templateSpecsRG', 'Microsoft.Resources/templateSpecs/versions', 'networkingSpec', '1.0a')]"
         }
       }
     },
@@ -321,7 +321,7 @@ az deployment group create \
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "id": "[resourceId('templateSpecsRG', 'Microsoft.Resources/templateSpecs/versions', 'storageSpec', '1.0')]"
+          "id": "[resourceId('templateSpecsRG', 'Microsoft.Resources/templateSpecs/versions', 'storageSpec', '1.0a')]"
         }
       }
     }
@@ -334,7 +334,7 @@ az deployment group create \
 
 ## <a name="versioning"></a>版本控制
 
-當您建立範本規格時，您會提供其版本號碼。 當您逐一查看範本程式碼時，您可以更新現有版本的 (，) 或發佈新的版本。 版本是文字字串。 您可以選擇遵循任何版本控制系統，包括語義版本控制。 範本規格的使用者可以提供部署時所要使用的版本號碼。
+當您建立範本規格時，您會提供其版本名稱。 當您逐一查看範本程式碼時，您可以更新現有版本的 (，) 或發佈新的版本。 版本是文字字串。 您可以選擇遵循任何版本控制系統，包括語義版本控制。 範本規格的使用者可以提供部署時所要使用的版本名稱。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5cdc36c20cbba148bb68bda700f5fdccbc593caf
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: cca46d47003a1611c861986f8df839de57500db6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94352994"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181473"
 ---
 # <a name="tutorial-configure-solarwinds-service-desk-previously-samanage-for-automatic-user-provisioning"></a>教學課程：設定 SolarWinds Service Desk (先前稱為 Samanage) 來自動佈建使用者
 
@@ -54,7 +54,7 @@ ms.locfileid: "94352994"
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
 * [Azure AD 租用戶](../develop/quickstart-create-new-tenant.md) 
-* Azure AD 中具有設定佈建[權限](../users-groups-roles/directory-assign-admin-roles.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
+* Azure AD 中具有設定佈建[權限](../roles/permissions-reference.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
 * 具有專業版套件的 [SolarWinds Service Desk 租用戶](https://www.samanage.com/pricing/)。
 * SolarWinds Service Desk 中具有管理員權限的使用者帳戶。
 

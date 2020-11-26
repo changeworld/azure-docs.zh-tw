@@ -5,12 +5,12 @@ description: 瞭解如何使用 Azure Kubernetes Service (AKS) 叢集 Windows Se
 services: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.openlocfilehash: c774e2287d0540c73cdd2234843d6766e7f2fb91
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 4f221a98adb779d32fc5567b201699672c8b90f5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95792259"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183272"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>使用 RDP 連線至 Azure Kubernetes Service (AKS) 叢集 Windows Server 節點進行維護或疑難排解
 
@@ -20,7 +20,7 @@ ms.locfileid: "95792259"
 
 ## <a name="before-you-begin"></a>開始之前
 
-本文假設您已有包含 Windows Server 節點的現有 AKS 叢集。 如果您需要 AKS 叢集，請參閱 [使用 Azure CLI 建立具有 Windows 容器之 AKS][aks-windows-cli]叢集的文章。 您需要 windows 系統管理員使用者名稱和密碼，才能進行要疑難排解的 Windows Server 節點。 如果您不知道它們，可以依照 [重設遠端桌面服務或其在 WINDOWS VM 中的系統管理員密碼 ](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/reset-rdp)進行重設。 您也需要 RDP 用戶端（例如 [Microsoft 遠端桌面][rdp-mac]）。
+本文假設您已有包含 Windows Server 節點的現有 AKS 叢集。 如果您需要 AKS 叢集，請參閱 [使用 Azure CLI 建立具有 Windows 容器之 AKS][aks-windows-cli]叢集的文章。 您需要 windows 系統管理員使用者名稱和密碼，才能進行要疑難排解的 Windows Server 節點。 如果您不知道它們，可以依照 [重設遠端桌面服務或其在 WINDOWS VM 中的系統管理員密碼 ](../virtual-machines/troubleshooting/reset-rdp.md)進行重設。 您也需要 RDP 用戶端（例如 [Microsoft 遠端桌面][rdp-mac]）。
 
 您也需要安裝並設定 Azure CLI 2.0.61 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][install-azure-cli]。
 

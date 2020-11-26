@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 185b61f77b275ed78050f5d8efb820c5333f6e1f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: d813757d5adb8cee9b83e0486baed80ae1bac874
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358570"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180926"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>教學課程︰設定 DocuSign 來自動佈建使用者
 
@@ -95,7 +95,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="troubleshooting-tips"></a>疑難排解秘訣
-* 若要在 Docusign 中佈建使用者的角色或權限設定檔，您可以在屬性對應中使用運算式來完成，方法是使用 [switch](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#switch) 和 [singleAppRoleAssignment](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#singleapproleassignment) 函式。 例如，下列運算式會在已於 Azure AD 中為使用者指派「DS 管理員」角色時，佈建識別碼 "8032066"。 如果未在 Azure AD 端為使用者指派角色，則不會佈建任何權限設定檔。 您可以從 DocuSign [入口網站](https://support.docusign.com/articles/Default-settings-for-out-of-the-box-DocuSign-Permission-Profiles)中擷取識別碼。
+* 若要在 Docusign 中佈建使用者的角色或權限設定檔，您可以在屬性對應中使用運算式來完成，方法是使用 [switch](../app-provisioning/functions-for-customizing-application-data.md#switch) 和 [singleAppRoleAssignment](../app-provisioning/functions-for-customizing-application-data.md#singleapproleassignment) 函式。 例如，下列運算式會在已於 Azure AD 中為使用者指派「DS 管理員」角色時，佈建識別碼 "8032066"。 如果未在 Azure AD 端為使用者指派角色，則不會佈建任何權限設定檔。 您可以從 DocuSign [入口網站](https://support.docusign.com/articles/Default-settings-for-out-of-the-box-DocuSign-Permission-Profiles)中擷取識別碼。
 
 Switch(SingleAppRoleAssignment([appRoleAssignments])," ", "8032066", "DS Admin")
 

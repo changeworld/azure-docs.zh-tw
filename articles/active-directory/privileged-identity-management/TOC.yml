@@ -11,7 +11,7 @@
     - name: 無法使用 PIM 管理的角色
       href: pim-roles.md
     - name: 特殊權限的安全存取
-      href: ../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
+      href: ../roles/security-planning.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
     - name: MFA 和 PIM
       href: pim-how-to-require-mfa.md
     - name: 儀表板概觀

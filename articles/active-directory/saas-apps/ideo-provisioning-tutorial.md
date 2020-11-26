@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: Zhchia
-ms.openlocfilehash: 10b7b79ba5081e6133f2e5e94840eddfe403caef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4d877468e87edb11b606668739d8d539ef0cc1dd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013168"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180841"
 ---
 # <a name="tutorial-configure-ideo-for-automatic-user-provisioning"></a>教學課程：設定 IDEO 來自動佈建使用者
 
@@ -39,7 +39,7 @@ ms.locfileid: "96013168"
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
 * [Azure AD 租用戶](../develop/quickstart-create-new-tenant.md)。
-* Azure AD 中具有設定佈建[權限](../users-groups-roles/directory-assign-admin-roles.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。
+* Azure AD 中具有設定佈建[權限](../roles/permissions-reference.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。
 * [IDEO 租用戶](https://www.shape.space/product/pricing)
 * IDEO 上的使用者帳戶 | 具有管理員權限的圖形。
 

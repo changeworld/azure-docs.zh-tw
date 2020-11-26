@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: a51a4a95d3580912d9b727d1580e6f278831f677
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ffbf3fa3e2d404b7bc5888ef01707cbd816600b3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891497"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182847"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>適用于虛擬機器的 Azure Automanage
 
@@ -26,9 +26,9 @@ ms.locfileid: "92891497"
 - 提供簡單的體驗 (點、按一下、設定、忘記) 
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
-適用于虛擬機器的 Azure Automanage 是一項服務，可免除探索的需要、瞭解如何上線，以及如何在 Azure 中設定可受益于您虛擬機器的特定服務。 這些服務可協助增強虛擬機器的可靠性、安全性及管理，並被視為 Azure 最佳做法服務，例如 [azure 更新管理](../automation/update-management/update-mgmt-overview.md) 和 [Azure 備份](../backup/backup-overview.md) -只需要命名。
+適用于虛擬機器的 Azure Automanage 是一項服務，可免除探索的需要、瞭解如何上線，以及如何在 Azure 中設定可受益于您虛擬機器的特定服務。 這些服務可協助增強虛擬機器的可靠性、安全性及管理，並被視為 Azure 最佳做法服務，例如 [azure 更新管理](../automation/update-management/overview.md) 和 [Azure 備份](../backup/backup-overview.md) -只需要命名。
 
 將虛擬機器上架至 Azure Automanage 之後，它會自動將每個最佳做法服務設定為其建議的設定。 每項服務的最佳作法各不相同。 其中一個範例可能是 Azure 備份，其中最佳作法可能是每天備份一次虛擬機器，並保留期限為6個月。
 
@@ -69,7 +69,7 @@ ms.locfileid: "92891497"
 
 在 Azure 入口網站中，您可以在現有的虛擬機器上或在建立新的虛擬機器時啟用 Automanage。 如需此程式的簡潔步驟，請參閱 [虛擬機器快速入門的 Automanage](quick-create-virtual-machines-portal.md)。
 
-如果這是您第一次啟用 VM 的 Automanage，您可以在 Azure 入口網站中搜尋 **Automanage – Azure 虛擬機器的最佳做法** 。 按一下 [ **在現有的 VM 上啟用** ]，選取您要上架的 vm，按一下 [ **選取** ]，再按一下 [ **啟用** ]，即可完成。
+如果這是您第一次啟用 VM 的 Automanage，您可以在 Azure 入口網站中搜尋 **Automanage – Azure 虛擬機器的最佳做法**。 按一下 [ **在現有的 VM 上啟用**]，選取您要上架的 vm，按一下 [ **選取**]，再按一下 [ **啟用**]，即可完成。
 
 當我們嘗試修復您的 VM 時，您可能需要與此 VM 互動以管理這些服務，但無法執行這項作業。 如果我們成功修復您的 VM，我們會將它恢復合規性，而不會對您發出警示。
 
@@ -114,7 +114,7 @@ Automanage 帳戶是安全性內容或執行自動化作業所用的身分識別
 
 在 Azure 入口網站中，移至 [ **Automanage – Azure 虛擬機器最佳作法** ] 頁面，其中會列出所有自動管理的 vm。 在這裡，您將會看到每部虛擬機器的整體狀態。
 
-:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="以智慧方式將服務上架。":::
+:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="已設定的虛擬機器清單。":::
 
 針對每個列出的 VM，會顯示下列詳細資料：名稱、設定檔、設定喜好設定、狀態、帳戶、訂用帳戶和資源群組。
 
@@ -123,7 +123,7 @@ Automanage 帳戶是安全性內容或執行自動化作業所用的身分識別
 - *已設定* -VM 已設定且未偵測到漂移
 - *失敗* -VM 已漂移，所以無法補救
 
-如果您看到 **狀態** 為 [ *失敗* ]，您可以透過您的 VM 所在的資源群組進行部署的疑難排解。 移至 [ **資源群組** ]，選取您的資源群組，按一下 [ **部署** ]，並在該處查看 *失敗* 的狀態以及錯誤詳細資料。
+如果您看到 **狀態** 為 [ *失敗*]，您可以透過您的 VM 所在的資源群組進行部署的疑難排解。 移至 [ **資源群組**]，選取您的資源群組，按一下 [ **部署** ]，並在該處查看 *失敗* 的狀態以及錯誤詳細資料。
 
 
 ## <a name="disabling-automanage-for-vms"></a>停用 Vm 的 Automanage
@@ -132,7 +132,7 @@ Automanage 帳戶是安全性內容或執行自動化作業所用的身分識別
 
 若要在 Azure 入口網站中執行這項操作，請移至 [ **Automanage – Azure 虛擬機器最佳作法** ] 頁面，其中會列出所有自動管理的 vm。 選取您要從 Automanage 停用的虛擬機器旁的核取方塊，然後按一下 [ **停用 automanagment** ] 按鈕。
 
-:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="以智慧方式將服務上架。":::
+:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="在虛擬機器上停用 Automanage。":::
 
 先仔細閱讀所產生快顯視窗中的訊息，然後同意 [停用]。
 

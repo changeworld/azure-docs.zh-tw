@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: b87b9d9e7cab0334f1b1996feb99dc69396527b7
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 31e5393cb5de627ebf8832e43302583d6eacbf59
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94352943"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181472"
 ---
 # <a name="tutorial-configure-sap-analytics-cloud-for-automatic-user-provisioning"></a>教學課程：設定 SAP Analytics Cloud 來自動佈建使用者
 
@@ -39,7 +39,7 @@ ms.locfileid: "94352943"
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
 * [Azure AD 租用戶](../develop/quickstart-create-new-tenant.md) 
-* Azure AD 中具有設定佈建[權限](../users-groups-roles/directory-assign-admin-roles.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
+* Azure AD 中具有設定佈建[權限](../roles/permissions-reference.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
 * SAP Analytics Cloud 租用戶
 * SAP 身分識別佈建管理主控台上具有管理員權限的使用者帳戶。 請確定您可以存取身分識別佈建管理主控台中的 Proxy 系統。 如果您沒有看到 [Proxy 系統] 磚，請為 **BC-IAM-IPS** 元件建立事件，以要求此磚的存取權。
 * 在 SAP Analytics Cloud 中具有授權授與用戶端認證的 OAuth 用戶端。 若要了解如何進行，請參閱︰[管理 OAuth 用戶端和信任的識別提供者](https://help.sap.com/viewer/00f68c2e08b941f081002fd3691d86a7/release/en-US/4f43b54398fc4acaa5efa32badfe3df6.html)

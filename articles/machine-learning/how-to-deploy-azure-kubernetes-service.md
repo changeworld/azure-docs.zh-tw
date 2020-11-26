@@ -11,15 +11,14 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: e041b69d8fc256ff5fe759be9716db032540f2cb
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: d314c285057950ebaecb2e3f75a83948c8bf3cc2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873789"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182439"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>將模型部署到 Azure Kubernetes Service 叢集
-
 
 瞭解如何使用 Azure Machine Learning 在 Azure Kubernetes Service (AKS) 上將模型部署為 web 服務。 Azure Kubernetes Service 適用于高規模的生產部署。 如果您需要下列其中一項或多項功能，請使用 Azure Kubernetes service：
 
@@ -34,7 +33,7 @@ ms.locfileid: "94873789"
 部署至 Azure Kubernetes Service 時，您會部署至已 __連線到您工作區__ 的 AKS 叢集。 如需將 AKS 叢集連線至工作區的相關資訊，請參閱 [建立和附加 Azure Kubernetes Service](how-to-create-attach-kubernetes.md)叢集。
 
 > [!IMPORTANT]
-> 建議您先在本機進行偵錯工具，再部署至 web 服務。 如需詳細資訊，請參閱[本機的調試](./how-to-troubleshoot-deployment.md#debug-locally)程式
+> 建議您先在本機進行偵錯工具，再部署至 web 服務。 如需詳細資訊，請參閱[本機的調試](./how-to-troubleshoot-deployment-local.md)程式
 >
 > 您也可以參考 Azure Machine Learning - [部署至本機筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
 

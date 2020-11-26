@@ -10,14 +10,14 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 9abc069c202af425970e46286d88d1c18ece5a20
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: aa3329c3d9e241fb8224ecc69199779d53027474
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616190"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183136"
 ---
-# <a name="configure-a-java-app-for-azure-app-service"></a>設定適用于 Azure App Service 的 JAVA 應用程式
+# <a name="configure-a-java-app-for-azure-app-service"></a>為 Azure App Service 設定 Java 應用程式
 
 Azure App Service 可讓 JAVA 開發人員在完全受控的服務上快速建立、部署及調整其 JAVA SE、Tomcat 和 JBoss EAP web 應用程式。 使用 Maven 外掛程式、命令列或編輯器（例如 IntelliJ、Eclipse 或 Visual Studio Code）來部署應用程式。
 
@@ -332,13 +332,13 @@ keyStore.load(
 1. 在 [NewRelic.com](https://newrelic.com/signup) 建立 NewRelic 帳戶
 2. 從 NewRelic 下載 Java 代理程式，其檔案名稱類似 [newrelic-java-x.x.x.zip]。
 3. 複製您的授權金鑰，以供稍後設定代理程式時使用。
-4. [透過 SSH 連線到您的 App Service 執行個體](configure-linux-open-ssh-session.md)，然後建立新目錄 */home/site/wwwroot/apm* 。
+4. [透過 SSH 連線到您的 App Service 執行個體](configure-linux-open-ssh-session.md)，然後建立新目錄 */home/site/wwwroot/apm*。
 5. 將解壓縮的 NewRelic Java 代理程式檔案上傳至 */home/site/wwwroot/apm* 之下的目錄。 代理程式檔案應位於 */home/site/wwwroot/apm/newrelic* 中。
 6. 在 */home/site/wwwroot/apm/newrelic/newrelic.yml* 修改 YAML 檔案，並將預留位置授權值取代為您自己的授權金鑰。
 7. 在 Azure 入口網站中，瀏覽至您在 App Service 中的應用程式，並建立新的應用程式設定。
 
     - 若為 **JAVA SE** 應用程式，請建立名為的環境變數 `JAVA_OPTS` 並指定值 `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 。
-    - 針對 **Tomcat** ，請建立名為的環境變數 `CATALINA_OPTS` 並指定值 `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 。
+    - 針對 **Tomcat**，請建立名為的環境變數 `CATALINA_OPTS` 並指定值 `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 。
 
 ::: zone-end
 ::: zone pivot="platform-linux"
@@ -346,13 +346,13 @@ keyStore.load(
 1. 在 [NewRelic.com](https://newrelic.com/signup) 建立 NewRelic 帳戶
 2. 從 NewRelic 下載 Java 代理程式，其檔案名稱類似 [newrelic-java-x.x.x.zip]。
 3. 複製您的授權金鑰，以供稍後設定代理程式時使用。
-4. [透過 SSH 連線到您的 App Service 執行個體](configure-linux-open-ssh-session.md)，然後建立新目錄 */home/site/wwwroot/apm* 。
+4. [透過 SSH 連線到您的 App Service 執行個體](configure-linux-open-ssh-session.md)，然後建立新目錄 */home/site/wwwroot/apm*。
 5. 將解壓縮的 NewRelic Java 代理程式檔案上傳至 */home/site/wwwroot/apm* 之下的目錄。 代理程式檔案應位於 */home/site/wwwroot/apm/newrelic* 中。
 6. 在 */home/site/wwwroot/apm/newrelic/newrelic.yml* 修改 YAML 檔案，並將預留位置授權值取代為您自己的授權金鑰。
 7. 在 Azure 入口網站中，瀏覽至您在 App Service 中的應用程式，並建立新的應用程式設定。
    
     - 若為 **JAVA SE** 應用程式，請建立名為的環境變數 `JAVA_OPTS` 並指定值 `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 。
-    - 針對 **Tomcat** ，請建立名為的環境變數 `CATALINA_OPTS` 並指定值 `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 。
+    - 針對 **Tomcat**，請建立名為的環境變數 `CATALINA_OPTS` 並指定值 `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 。
 
 ::: zone-end
 
@@ -364,7 +364,7 @@ keyStore.load(
 
 1. 在 [AppDynamics.com](https://www.appdynamics.com/community/register/) 建立 AppDynamics 帳戶
 2. 從 AppDynamics 網站下載 Java 代理程式，其檔案名稱會類似 *AppServerAgent-x.x.x.xxxxx.zip*
-3. 使用 [Kudu 主控台](https://github.com/projectkudu/kudu/wiki/Kudu-console) 來建立新的目錄 */home/site/wwwroot/apm* 。
+3. 使用 [Kudu 主控台](https://github.com/projectkudu/kudu/wiki/Kudu-console) 來建立新的目錄 */home/site/wwwroot/apm*。
 4. 將 Java 代理程式檔案上傳至 */home/site/wwwroot/apm* 下的目錄。 代理程式檔案應位於 */home/site/wwwroot/apm/appdynamics* 中。
 5. 在 Azure 入口網站中，瀏覽至您在 App Service 中的應用程式，並建立新的應用程式設定。
 
@@ -376,7 +376,7 @@ keyStore.load(
 
 1. 在 [AppDynamics.com](https://www.appdynamics.com/community/register/) 建立 AppDynamics 帳戶
 2. 從 AppDynamics 網站下載 Java 代理程式，其檔案名稱會類似 *AppServerAgent-x.x.x.xxxxx.zip*
-3. [透過 SSH 連線到您的 App Service 執行個體](configure-linux-open-ssh-session.md)，然後建立新目錄 */home/site/wwwroot/apm* 。
+3. [透過 SSH 連線到您的 App Service 執行個體](configure-linux-open-ssh-session.md)，然後建立新目錄 */home/site/wwwroot/apm*。
 4. 將 Java 代理程式檔案上傳至 */home/site/wwwroot/apm* 下的目錄。 代理程式檔案應位於 */home/site/wwwroot/apm/appdynamics* 中。
 5. 在 Azure 入口網站中，瀏覽至您在 App Service 中的應用程式，並建立新的應用程式設定。
 
@@ -452,7 +452,7 @@ keyStore.load(
     </Context>
     ```
 
-3. 更新您應用程式的 *web.xml* ，以使用您應用程式中的資料來源。
+3. 更新您應用程式的 *web.xml*，以使用您應用程式中的資料來源。
 
     ```xml
     <resource-env-ref>
@@ -530,7 +530,7 @@ keyStore.load(
     </Context>
     ```
 
-3. 更新您應用程式的 *web.xml* ，以使用您應用程式中的資料來源。
+3. 更新您應用程式的 *web.xml*，以使用您應用程式中的資料來源。
 
     ```xml
     <resource-env-ref>
@@ -678,7 +678,7 @@ xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /
     ```
 
 1. 使用您選擇的 FTP 用戶端，將 JDBC driver、 `jboss-cli-commands.cli` 、 `startup_script.sh` 和模組定義上傳至 `/site/deployments/tools/` 。
-2. 設定您的網站在 `startup_script.sh` 容器啟動時執行。 在 Azure 入口網站中，流覽 **至**  >  **[設定一般設定**  >  **啟動] 命令** 。 將 [啟動命令] 欄位設定為 `/home/site/deployments/tools/startup_script.sh` 。 [儲存] 變更。
+2. 設定您的網站在 `startup_script.sh` 容器啟動時執行。 在 Azure 入口網站中，流覽 **至**  >  **[設定一般設定**  >  **啟動] 命令**。 將 [啟動命令] 欄位設定為 `/home/site/deployments/tools/startup_script.sh` 。 [儲存] 變更。
 
 若要確認資料來源已新增至 JBoss 伺服器，請透過 SSH 連線到您的 webapp 並執行 `$JBOSS_HOME/bin/jboss-cli.sh --connect` 。 當您連接到 JBoss 之後，請執行 `/subsystem=datasources:read-resource` 以列印資料來源清單。
 
@@ -700,7 +700,7 @@ JBoss EAP 僅適用于 Premium 和獨立硬體選項。 在公開預覽期間，
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK 版本和維護
 
-Azure 支援的 Java Development Kit (JDK) 是透過 [Azul Systems](https://www.azul.com/) 提供的 [Zulu](https://www.azul.com/downloads/azure-only/zulu/)。 OpenJDK 的 Azul Zulu Enterprise 組建是免費、多平台、可實際執行的 OpenJDK 散發套件，適用於 Azure 和 Azure Stack，由 Microsoft 與 Azul Systems 提供支援。 其中包含建置及執行 Java SE 應用程式所需的所有元件。 您可以透過 [JAVA JDK 安裝](https://aka.ms/azure-jdks)來安裝 JDK。
+Azure 支援的 Java Development Kit (JDK) 是透過 [Azul Systems](https://www.azul.com/) 提供的 [Zulu](https://www.azul.com/downloads/azure-only/zulu/)。 OpenJDK 的 Azul Zulu Enterprise 組建是免費、多平台、可實際執行的 OpenJDK 散發套件，適用於 Azure 和 Azure Stack，由 Microsoft 與 Azul Systems 提供支援。 其中包含建置及執行 Java SE 應用程式所需的所有元件。 您可以透過 [JAVA JDK 安裝](/azure/developer/java/fundamentals/java-jdk-long-term-support)來安裝 JDK。
 
 主要版本更新將透過 Azure App Service 中的新執行時間選項提供。 客戶會更新為設定其 App Service 部署的這些新版 Java，以及負責測試並確定主要更新符合其需求。
 

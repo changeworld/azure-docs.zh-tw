@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 25767a7ddb83acf3ad10698f9f2ff8949a0ad55f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 0ed56d200c2b5a472dbf93d45ad25156ea02a884
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357193"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181147"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>教學課程：設定 8x8 來自動佈建使用者
 
@@ -34,7 +34,7 @@ ms.locfileid: "94357193"
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
 * [Azure AD 租用戶](../develop/quickstart-create-new-tenant.md) 
-* Azure AD 中具有設定佈建[權限](../users-groups-roles/directory-assign-admin-roles.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。
+* Azure AD 中具有設定佈建[權限](../roles/permissions-reference.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。
 * 任何層級的 8x8 X 系列訂用帳戶。
 * 在 [Configuration Manager](https://vo-cm.8x8.com) 中具有系統管理員權限的 8x8 使用者帳戶。
 * 已設定[使用 Azure AD 進行單一登入](./8x8virtualoffice-tutorial.md)。

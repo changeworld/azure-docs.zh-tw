@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 2317e61111c3ad328e8f112e7d9567f3f5d47990
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 031b3bfd30e0272589c5c7ee2c546b9459767b33
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997033"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183187"
 ---
 # <a name="tutorial-monitor-published-apis"></a>教學課程：監視發佈的 API
 
@@ -149,7 +149,7 @@ API 管理會每分鐘發出[計量](../azure-monitor/platform/data-platform-met
 
     :::image type="content" source="media/api-management-howto-use-azure-monitor/logs-menu-item.png" alt-text="[監視] 功能表中的記錄項目的螢幕擷取畫面":::
 
-執行查詢以檢視資料。 您可以使用數個隨附的[範例查詢](../azure-monitor/log-query/saved-queries.md)，或執行您自己的查詢。 例如，下列查詢會從 GatewayLogs 資料表中擷取最近 24 小時的資料：
+執行查詢以檢視資料。 您可以使用數個隨附的[範例查詢](../azure-monitor/log-query/example-queries.md)，或執行您自己的查詢。 例如，下列查詢會從 GatewayLogs 資料表中擷取最近 24 小時的資料：
 
 ```kusto
 ApiManagementGatewayLogs
@@ -158,7 +158,7 @@ ApiManagementGatewayLogs
 
 如需與使用 API 管理的資源記錄有關的詳細資訊，請參閱：
 
-* [開始使用 Azure 監視器 Log Analytics](../azure-monitor/log-query/get-started-portal.md)，或參閱 [Log Analytics 示範環境](https://portal.loganalytics.io/demo)。
+* [開始使用 Azure 監視器 Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)，或參閱 [Log Analytics 示範環境](https://portal.loganalytics.io/demo)。
 
 * [Azure 監視器中的記錄查詢概觀](../azure-monitor/log-query/log-query-overview.md)。
 

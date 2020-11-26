@@ -5,12 +5,12 @@ ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: how-to
 ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: c7dc18d8186d7262154cc0718bb6ad77ebbb5d2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 907836b0e45ccc9e9481e605b1ebf4180f7650d6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85829834"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182575"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>建立 Azure Cosmos DB 所觸發的函式
 
@@ -50,7 +50,7 @@ ms.locfileid: "85829834"
 
 1. 在 [新增函式] 頁面的搜尋欄位中輸入 `cosmos`，然後選擇 [Azure Cosmos DB 觸發程序] 範本。
 
-   :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-choose-cosmos.png" alt-text="Azure Cosmos DB 程式碼":::
+   :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-choose-cosmos.png" alt-text="Azure 入口網站中的函式頁面":::
 
 
 1. 使用下表中指定的設定來設定新的觸發程序：
@@ -64,7 +64,7 @@ ms.locfileid: "85829834"
     | **租用的集合名稱** | 租用 | 可存放租用的集合名稱。 |
     | **若不存在，則建立租用集合** | 是 | 確定租用集合存在後加以自動建立。 |
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="Azure Cosmos DB 程式碼":::
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="建立 Azure Cosmos DB 觸發的函式":::
 
 1. 選取 [建立函式]。 
 
@@ -72,7 +72,7 @@ ms.locfileid: "85829834"
 
 1. 若要顯示以範本為基礎的函式程式碼，請選取 [程式碼 + 測試]。
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png" alt-text="Azure Cosmos DB 程式碼":::
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png" alt-text="C# 中的 Cosmos DB 函式範本":::
 
     此函式範本會將文件數和第一個文件識別碼寫入記錄。
 
@@ -100,7 +100,7 @@ ms.locfileid: "85829834"
     | ---|---|--- |
     | **資料庫識別碼** | 工作 |新資料庫的名稱。 這必須符合您函式繫結中定義的名稱。 |
     | **容器識別碼** | 項目 | 新容器的名稱。 這必須符合您函式繫結中定義的名稱。  |
-    | **[分割區索引鍵](../cosmos-db/partition-data.md)** | /類別|可將資料平均分散到每個資料分割的資料分割索引鍵。 選取正確的資料分割索引鍵對於建立高效能容器來說很重要。 | 
+    | **[分割區索引鍵](../cosmos-db/partitioning-overview.md)** | /類別|可將資料平均分散到每個資料分割的資料分割索引鍵。 選取正確的資料分割索引鍵對於建立高效能容器來說很重要。 | 
     | **輸送量** |400 RU| 使用預設值。 如果您想要降低延遲，稍後可以擴大輸送量。 |    
 
 1. 按一下 [確定] 以建立 [項目] 容器。 容器可能會在很短的時間內建立。
@@ -109,9 +109,17 @@ ms.locfileid: "85829834"
 
 ## <a name="test-the-function"></a>測試函式
 
-1. 在資料總管中展開新的**項目**容器，選擇 [項目]，然後選取 [新增項目]。
+1. 在資料總管中展開新的 **項目** 容器，選擇 [項目]，然後選取 [新增項目]。
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png" alt-text="Azure Cosmos DB 程式碼"
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png" alt-text="在項目容器中建立項目":::
+
+1. 使用以下內容來取代新項目的內容，然後選擇 [儲存]。
+
+    ```yaml
+    {
+        "id": "task1",
+        "category": "general",
+        "description": "some task"
     }
     ```
 

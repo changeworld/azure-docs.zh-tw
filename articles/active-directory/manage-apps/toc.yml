@@ -263,7 +263,7 @@
             - name: 設定 Kerberos 限制委派
               href: application-proxy-back-end-kerberos-constrained-delegation-how-to.md
             - name: 使用 PingAccess 設定
-              href: /azure/active-directory/manage-apps/application-proxy-ping-access-publishing-guide
+              href: ./application-proxy-ping-access-publishing-guide.md
             - name: 「無法存取此公司應用程式」錯誤
               href: application-proxy-sign-in-bad-gateway-timeout-error.md
             - name: 安裝應用程式 Proxy 代理程式連接器時遇到問題

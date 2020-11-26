@@ -4,12 +4,12 @@ description: 瞭解如何在 Azure Kubernetes Service (AKS) 叢集設定以主�
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 4b5deeec0b76520952345e9b03135fa094a1f78e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14ec39272bf2f434aaa57217a90667a62e82901a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87986860"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183289"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS)  (preview) 上的主機型加密
 
@@ -23,7 +23,7 @@ ms.locfileid: "87986860"
 > [!NOTE]
 > 以主機為基礎的加密功能可在 [azure 區域][supported-regions] 中使用，這些區域支援 azure 受控磁片的伺服器端加密，且僅支援特定的 [支援 VM 大小][supported-sizes]。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 - 確定您已 `aks-preview` 安裝 CLI 擴充功能 v 0.4.55 或更高版本
 - 確定您在 [ `EncryptionAtHost` 已啟用] 下有功能旗標 `Microsoft.Compute` 。
@@ -41,7 +41,7 @@ az feature register --namespace "Microsoft.Compute" --name "EncryptionAtHost"
 az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHostPreview"
 ```
 
-狀態需要幾分鐘的時間才會顯示「已註冊」**。 您可以使用 [az feature list][az-feature-list] 命令檢查註冊狀態：
+狀態需要幾分鐘的時間才會顯示「已註冊」。 您可以使用 [az feature list][az-feature-list] 命令檢查註冊狀態：
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.Compute/EncryptionAtHost')].{Name:name,State:properties.state}"
@@ -61,7 +61,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="install-aks-preview-cli-extension"></a>安裝 aks-preview CLI 延伸模組
 
-若要建立以主機為基礎的加密 AKS 叢集，您需要最新的 *AKS-preview* CLI 擴充功能。 使用[az extension add][az-extension-add]命令安裝*aks-preview* Azure CLI 擴充功能，或使用[az extension update][az-extension-update]命令檢查是否有任何可用的更新：
+若要建立以主機為基礎的加密 AKS 叢集，您需要最新的 *AKS-preview* CLI 擴充功能。 使用 [az extension add][az-extension-add]命令安裝 *aks-preview* Azure CLI 擴充功能，或使用 [az extension update][az-extension-update]命令檢查是否有任何可用的更新：
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -99,7 +99,7 @@ az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-gr
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱 [AKS 叢集安全性的最佳作法，][best-practices-security] 深入瞭解 [主機型加密](../virtual-machines/linux/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)。
+請參閱 [AKS 叢集安全性的最佳作法，][best-practices-security] 深入瞭解 [主機型加密](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)。
 
 
 <!-- LINKS - external -->
@@ -108,8 +108,8 @@ az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-gr
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [best-practices-security]: ./operator-best-practices-cluster-security.md
-[supported-regions]: ../virtual-machines/linux/disk-encryption.md#supported-regions
-[supported-sizes]: ../virtual-machines/linux/disk-encryption.md#supported-vm-sizes
+[supported-regions]: ../virtual-machines/disk-encryption.md#supported-regions
+[supported-sizes]: ../virtual-machines/disk-encryption.md#supported-vm-sizes
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list

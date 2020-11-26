@@ -14,12 +14,12 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1012ae32f679d23f16a7483415657596d027cc01
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: ab3b655d59e2cb8c6773fa1a34a08638e6926475
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658820"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180654"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>將應用程式驗證從 Active Directory 同盟服務移至 Azure Active Directory
 
@@ -222,7 +222,7 @@ LOB 應用程式是由您的組織在內部開發，或作為安裝在您資料�
 
 
 
-| 項目| 設定值 |
+| 元素| 設定值 |
 | - | - |
 | 身分識別提供者簽發者| HTTPs： \/ /sts.windows.net/{tenant-id}/ |
 | 身分識別提供者登入 URL| [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) |
@@ -262,7 +262,7 @@ SaaS 應用程式必須知道傳送驗證要求的位置，以及如何驗證所
 
 這會以下列其中一種方式對應至 Azure AD：
 
-在 [ [Azure 入口網站](https://portal.azure.com/)：
+在 [Azure 入口網站](https://portal.azure.com/)：
 * 選項1：設定不需要的使用者指派 ![編輯 SaaS 應用程式的存取控制原則 ](media/migrate-adfs-apps-to-azure/permit-access-to-all-users-2.png)
 
     請注意，將 [需要使用者指派] 參數設定為 [是] 時，需要將使用者指派給應用程式才能取得存取權。 當設定為 [否] 時，所有使用者都有存取權。 此參數不會控制我的應用程式體驗中的使用者所顯示的內容。
@@ -320,7 +320,7 @@ AD FS 中的 MFA 規則設定：
 
 在 Azure AD 中指定使用者或群組的 MFA 規則：
 
-1. 建立 [新的條件式存取原則](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json)。
+1. 建立 [新的條件式存取原則](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json)。
 
 2. 選取 [指派]  。 將您想要在其上強制執行 MFA 的使用者 (s) 或群組)  (。
 
@@ -333,7 +333,7 @@ AD FS 中的 MFA 規則設定：
 
 在 Azure AD 中指定未註冊裝置的 MFA 規則：
 
-1. 建立 [新的條件式存取原則](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json)。
+1. 建立 [新的條件式存取原則](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json)。
 
 2. 將 **指派** 設定為 [ **所有使用者**]。
 
@@ -348,7 +348,7 @@ AD FS 中的 MFA 規則設定：
 
 根據使用者在 Azure AD 中的位置指定 MFA 規則：
 
-1. 建立 [新的條件式存取原則](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json)。
+1. 建立 [新的條件式存取原則](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json)。
 
 1. 將 **指派** 設定為 [ **所有使用者**]。
 
@@ -386,7 +386,7 @@ AD FS 2016 有數個內建存取控制原則，您可以從中選擇：
 ![Azure AD 內建的存取控制](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-1.png)
 
 
-若要在 Azure AD 中執行內建原則，您可以使用 [新的條件式存取原則](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json) 並設定存取控制，也可以使用 AD FS 2016 中的自訂原則設計工具來設定存取控制原則。 「規則編輯器」有一份完整的「允許」和「除外」選項，可協助您進行所有種類的排列。
+若要在 Azure AD 中執行內建原則，您可以使用 [新的條件式存取原則](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json) 並設定存取控制，也可以使用 AD FS 2016 中的自訂原則設計工具來設定存取控制原則。 「規則編輯器」有一份完整的「允許」和「除外」選項，可協助您進行所有種類的排列。
 
 ![Azure AD 存取控制原則](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-2.png)
 

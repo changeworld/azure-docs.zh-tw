@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 31bb0fac302a81c2523a2d2855ca1930cb266ac4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e77a90617d79dab8c71cdf0c7a6a4fb21e052fbd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95906614"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182779"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合式 Runbook 背景工作角色
 
@@ -20,7 +20,7 @@ Azure 自動化儲存和管理 runbook，然後將它們傳遞到一或多個指
 
 在您成功部署 Runbook 背景工作角色後，請檢閱[在混合式 Runbook 背景工作角色上執行 Runbook](automation-hrw-run-runbooks.md)，以了解如何設定 Runbook 以將內部部署資料中心或其他雲端環境中的程序自動化。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請確定您具有下列各項。
 
@@ -65,7 +65,7 @@ Windows 系統和使用者混合式 Runbook 背景工作角色的最低需求如
 您可以將背景工作電腦新增至其中一個自動化帳戶中的混合式 Runbook 背景工作角色群組。 針對裝載受更新管理管理之系統混合式 Runbook 背景工作角色的電腦，您可以將它們新增至混合式 Runbook 背景工作角色群組。 但是，您必須針對更新管理和混合式 Runbook 背景工作角色群組成員資格使用相同的自動化帳戶。
 
 >[!NOTE]
->Azure 自動化 [更新管理](update-management/update-mgmt-overview.md) 會自動在啟用更新管理的 azure 或非 azure 電腦上安裝系統混合式 Runbook 背景工作角色。 不過，此背景工作未向您的自動化帳戶中的任何混合式 Runbook 背景工作角色群組註冊。 若要在這些機器上執行您的 runbook，您需要將它們新增至混合式 Runbook 背景工作角色群組。 依照 [手動部署](#manual-deployment) 一節中的步驟6，將它新增至群組。
+>Azure 自動化 [更新管理](./update-management/overview.md) 會自動在啟用更新管理的 azure 或非 azure 電腦上安裝系統混合式 Runbook 背景工作角色。 不過，此背景工作未向您的自動化帳戶中的任何混合式 Runbook 背景工作角色群組註冊。 若要在這些機器上執行您的 runbook，您需要將它們新增至混合式 Runbook 背景工作角色群組。 依照 [手動部署](#manual-deployment) 一節中的步驟6，將它新增至群組。
 
 ## <a name="enable-for-management-with-azure-automation-state-configuration"></a>使用 Azure 自動化狀態設定啟用管理
 

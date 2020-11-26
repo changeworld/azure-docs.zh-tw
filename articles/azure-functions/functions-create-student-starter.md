@@ -4,12 +4,12 @@ description: 了解如何從 Azure 學生入門版訂用帳戶建立 Azure 函�
 Customer intent: As a student, I want to be able to create an HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: ecb2cc20bec602101d683dbfdd3f82a2e199aa16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f40405c9325743da5d1963e3baea781606d2d8d9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87386957"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182524"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>使用 Azure 學生入門版建立函式
 
@@ -59,7 +59,7 @@ Azure Functions 可讓您在[無伺服器](https://azure.microsoft.com/solutions
 
     ![選取取得函式 URL](./media/functions-create-student-starter/function-app-select-get-function-url.png)
 
-1. 在 [取得函式 URL] 對話方塊中，從下拉式清單中選取**預設值**，然後選取 [複製到剪貼簿] 圖示。 
+1. 在 [取得函式 URL] 對話方塊中，從下拉式清單中選取 **預設值**，然後選取 [複製到剪貼簿] 圖示。 
 
     ![從 Azure 入口網站複製函式 URL](./media/functions-create-student-starter/function-app-develop-tab-testing.png)
 
@@ -100,7 +100,7 @@ Azure Functions 可讓您在[無伺服器](https://azure.microsoft.com/solutions
 您現在已使用簡單的 HTTP 觸發程序函式建立了函數應用程式。 接著，您可以探索本機工具、更多語言、監視及整合。
 
  * [使用 Visual Studio 建立第一個函數](./functions-create-your-first-function-visual-studio.md)
- * [使用 Visual Studio Code 建立第一個函式](./functions-create-first-function-vs-code.md)
+ * [使用 Visual Studio Code 建立第一個函式](./create-first-function-vs-code-csharp.md)
  * [Azure Functions JavaScript 開發人員指南](./functions-reference-node.md)
  * [使用 Azure Functions 連接到 Azure SQL Database](./functions-scenario-database-table-cleanup.md)
  * [深入了解 Azure Functions HTTP 繫結](./functions-bindings-http-webhook.md)。

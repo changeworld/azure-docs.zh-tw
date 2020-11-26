@@ -6,23 +6,23 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 4171155f5a9f72ef0c021bd0e37fe4ec2f206646
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: bd1667f6c17922b6c0b0bfba7a7329a3fc96b62e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95253349"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182626"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>HMAC 驗證-REST API 參考
 
 您可以使用 HMAC-SHA256 驗證配置來驗證 HTTP 要求。  (HMAC 指的是以雜湊為基礎的消息驗證碼。 ) 這些要求必須透過 TLS 傳輸。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - **憑據** - \<Access Key ID\>
 - **Secret** -base64 解碼的存取金鑰值。 ``base64_decode(<Access Key Value>)``
 
-認證的值 (也稱為 `id`) 和秘密 (也稱為 `value`) 必須從 Azure 應用程式組態的實例取得。 您可以使用 [Azure 入口網站](https://portal.azure.com) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true)來完成這項作業。
+認證的值 (也稱為 `id`) 和秘密 (也稱為 `value`) 必須從 Azure 應用程式組態的實例取得。 您可以使用 [Azure 入口網站](https://portal.azure.com) 或 [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest)來完成這項作業。
 
 為每個要求提供驗證所需的所有 HTTP 標頭。 所需的最小值為：
 
@@ -45,11 +45,11 @@ Authorization: HMAC-SHA256 Credential={Access Key ID}&SignedHeaders=x-ms-date;ho
 
 ## <a name="authorization-header"></a>驗證標頭
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>語法
 
 ``Authorization``： **HMAC-SHA256**```Credential```=\<value\>&```SignedHeaders```=\<value\>&```Signature```=\<value\>
 
-|  引數 | 說明  |
+|  引數 | 描述  |
 | ------ | ------ |
 | **HMAC-SHA256** | 授權配置。 _需要 ()_ |
 | **認證** | 用來計算簽章的存取金鑰識別碼。 _需要 ()_ |
@@ -87,7 +87,7 @@ _字串至符號 =_
 
 **HTTP_METHOD** + ' \n ' + **path_and_query** + ' \n ' + **signed_headers_values**
 
-|  引數 | 說明  |
+|  引數 | 描述  |
 | ------ | ------ |
 | **HTTP_METHOD** | 與要求搭配使用的大寫 HTTP 方法名稱。 如需詳細資訊，請參閱 [第9節](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)。 |
 |**path_and_query** | 要求絕對 URI 路徑和查詢字串的串連。 如需詳細資訊，請參閱 [第3.3 節](https://tools.ietf.org/html/rfc3986#section-3.3)。
@@ -545,7 +545,7 @@ Invoke-RestMethod -Uri $uri -Method $method -Headers $headers -Body $body
 
 *必要條件*：
 
-| 必要條件 | 命令 | 測試的版本 |
+| 必要條件 | Command | 測試的版本 |
 | ------------ | ------- | --------------- |
 | [Bash](https://www.gnu.org/software/bash/) | Bash | 3.5.27, 4.4.23 |
 | [coreutils](https://www.gnu.org/software/coreutils/) | tr | 8.28 |

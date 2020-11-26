@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: 2c5c017ac0faf443a38fc43dfd27c7e776cb52a0
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: a5f7569fc46d4678ca0c12299e33caa3c78df849
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683334"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182915"
 ---
 # <a name="application-gateway-high-traffic-support"></a>應用程式閘道高流量支援
 
@@ -23,7 +23,7 @@ ms.locfileid: "94683334"
 
 您必須根據您的流量和一些緩衝區來調整應用程式閘道，讓您準備好任何流量激增或尖峰，並將它在您的 QoS 中可能造成的影響降至最低。 下列建議可協助您設定搭配 WAF 的應用程式閘道來處理額外的流量。
 
-請查看 [計量檔](./application-gateway-metrics.md) ，以取得應用程式閘道所提供的完整計量清單。 請參閱在 Azure 入口網站中將 [計量視覺化](./application-gateway-metrics.md#metrics-visualization) ，以及如何設定計量警示的 [Azure 監視器檔](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric) 。
+請查看 [計量檔](./application-gateway-metrics.md) ，以取得應用程式閘道所提供的完整計量清單。 請參閱在 Azure 入口網站中將 [計量視覺化](./application-gateway-metrics.md#metrics-visualization) ，以及如何設定計量警示的 [Azure 監視器檔](../azure-monitor/platform/alerts-metric.md) 。
 
 ## <a name="scaling-for-application-gateway-v1-sku-standardwaf-sku"></a>應用程式閘道 v1 SKU (Standard/WAF SKU) 的調整
 
@@ -65,7 +65,7 @@ v2 SKU 提供自動調整，以確保您的應用程式閘道可以隨著流量�
 
 ## <a name="monitoring-and-alerting"></a>監視和警示
 
-若要取得任何流量或使用狀況異常的通知，您可以設定特定計量的警示。 如需應用程式閘道所提供的完整度量清單，請參閱 [計量檔](./application-gateway-metrics.md) 。 請參閱在 Azure 入口網站中將 [計量視覺化](./application-gateway-metrics.md#metrics-visualization) ，以及如何設定計量警示的 [Azure 監視器檔](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric) 。
+若要取得任何流量或使用狀況異常的通知，您可以設定特定計量的警示。 如需應用程式閘道所提供的完整度量清單，請參閱 [計量檔](./application-gateway-metrics.md) 。 請參閱在 Azure 入口網站中將 [計量視覺化](./application-gateway-metrics.md#metrics-visualization) ，以及如何設定計量警示的 [Azure 監視器檔](../azure-monitor/platform/alerts-metric.md) 。
 
 ## <a name="alerts-for-application-gateway-v1-sku-standardwaf"></a>應用程式閘道 v1 SKU (Standard/WAF) 的警示
 

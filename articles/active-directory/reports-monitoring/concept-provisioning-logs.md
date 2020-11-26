@@ -17,12 +17,12 @@ ms.date: 10/07/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 675c98e00b7458f326c95741529f7ce41a91dc18
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2408db2d91740350405f11e2a1250ab9b3a4fe31
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319734"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181198"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 入口網站中布建報表 (預覽) 
 
@@ -31,15 +31,15 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 - **活動** 
     - **登入** – 受控應用程式和使用者登入活動的使用情況相關資訊。
     - **審核記錄**  - [Audit 記錄](concept-audit-logs.md)檔提供有關使用者和群組管理、受控應用程式和目錄活動的系統活動資訊。
-    - 布建**記錄**：提供 Azure AD 布建服務所布建之使用者、群組和角色的相關系統活動。 
+    - 布建 **記錄**：提供 Azure AD 布建服務所布建之使用者、群組和角色的相關系統活動。 
 
 - **安全性** 
-    - 有**風險**的登入：有[風險](../identity-protection/overview-identity-protection.md)的登入是指登入嘗試的指標，該嘗試可能是使用者帳戶的合法擁有者所執行。
+    - 有 **風險** 的登入：有 [風險](../identity-protection/overview-identity-protection.md)的登入是指登入嘗試的指標，該嘗試可能是使用者帳戶的合法擁有者所執行。
     - **標示為有風險的使用者** -有 [風險的使用者](../identity-protection/overview-identity-protection.md) 是指可能遭到盜用的使用者帳戶指標。
 
 本主題提供布建報告的總覽。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="who-can-access-the-data"></a>誰可以存取資料？
 * 應用程式擁有者可以查看他們所擁有之應用程式的記錄
@@ -59,9 +59,9 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 * 從 Amazon Web Services 匯入了哪些角色？
 * 哪些使用者在 DropBox 中建立失敗？
 
-您可以在[Azure 入口網站](https://portal.azure.com)的**Azure Active Directory**分頁的 [**監視**] 區段中選取 [布建**記錄**]，以存取布建記錄。 某些布建記錄最多可能需要兩個小時才會顯示在入口網站中。
+您可以在 [Azure 入口網站](https://portal.azure.com)的 **Azure Active Directory** 分頁的 [**監視**] 區段中選取 [布建 **記錄**]，以存取布建記錄。 某些布建記錄最多可能需要兩個小時才會顯示在入口網站中。
 
-![佈建記錄](./media/concept-provisioning-logs/access-provisioning-logs.png "佈建記錄")
+![布建記錄](./media/concept-provisioning-logs/access-provisioning-logs.png "佈建記錄")
 
 
 布建記錄有一個預設的清單視圖，顯示：
@@ -86,7 +86,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 選取清單檢視中的項目，即可取得更詳細的資訊。
 
-![詳細資訊](./media/concept-provisioning-logs/steps.png "Filter")
+![詳細資訊](./media/concept-provisioning-logs/steps.png "篩選")
 
 
 ## <a name="filter-provisioning-activities"></a>篩選布建活動
@@ -95,17 +95,17 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 在預設視圖中，您可以選取下列篩選準則：
 
 - 身分識別
-- Date
+- 日期
 - 狀態
 - 動作
 
 
-![新增篩選條件](./media/concept-provisioning-logs/default-filter.png "Filter")
+![新增篩選條件](./media/concept-provisioning-logs/default-filter.png "篩選")
 
 身分 **識別** 篩選器可讓您指定您關心的名稱或身分識別。 此身分識別可以是使用者、群組、角色或其他物件。 您可以依物件的名稱或識別碼進行搜尋。 此識別碼會因案例而異。 例如，從 Azure AD 將物件布建到 SalesForce 時，來源識別碼是 Azure AD 中使用者的物件識別碼，而 TargetID 是 Salesforce 中使用者的識別碼。 從 Workday 布建至 Active Directory 時，來源識別碼是 Workday 背景工作員工識別碼。 請注意，使用者的名稱不一定會出現在識別欄位中。 一律會有一個識別碼。 
 
 
-[日期]**** 篩選條件可讓您定義傳回資料的時間範圍。  
+[日期] 篩選條件可讓您定義傳回資料的時間範圍。  
 可能的值包括：
 
 - 1 個月
@@ -117,7 +117,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 當您選取自訂時間範圍時，可以設定開始日期和結束日期。
 
 
-[狀態]**** 篩選條件可讓您選取︰
+[狀態] 篩選條件可讓您選取︰
 
 - 全部
 - Success
@@ -126,7 +126,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 
 
-**動作**篩選器可讓您篩選：
+**動作** 篩選器可讓您篩選：
 
 - 建立 
 - 更新
@@ -191,7 +191,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 
 
-![螢幕擷取畫面顯示 [步驟] 索引標籤，其中顯示布建步驟。](./media/concept-provisioning-logs/steps.png "Filter")
+![螢幕擷取畫面顯示 [步驟] 索引標籤，其中顯示布建步驟。](./media/concept-provisioning-logs/steps.png "篩選")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>疑難排解和建議
@@ -202,16 +202,16 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 ### <a name="modified-properties"></a>修改的屬性
 
-**修改過的屬性**會顯示舊值和新值。 在沒有舊值的情況下，舊的值資料行是空白的。 
+**修改過的屬性** 會顯示舊值和新值。 在沒有舊值的情況下，舊的值資料行是空白的。 
 
 
 ### <a name="summary"></a>摘要
 
 [ **摘要** ] 索引標籤提供來源和目標系統中物件的發生狀況和識別碼的總覽。 
 
-## <a name="what-you-should-know"></a>您應該知道的事項
+## <a name="what-you-should-know"></a>您應該知道的事情
 
-- 如果您有 premium edition，Azure 入口網站會將回報的布建資料儲存30天，而如果您有免費版本，則會儲存7天。布建記錄可以發佈至 [log analytics](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics) ，以保留超過30天的時間。 
+- 如果您有 premium edition，Azure 入口網站會將回報的布建資料儲存30天，而如果您有免費版本，則會儲存7天。布建記錄可以發佈至 [log analytics](../app-provisioning/application-provisioning-log-analytics.md) ，以保留超過30天的時間。 
 
 - 您可以使用 [變更識別碼] 屬性做為唯一識別碼。 例如，當與產品支援互動時，這會很有説明。
 

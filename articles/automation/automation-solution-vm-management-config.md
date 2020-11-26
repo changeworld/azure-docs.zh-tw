@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: b0bc23d515bebdd0d943bbad33c5ebba35a35605
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fdb3b2b23d07b79a8e9979450bee653d646196c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987200"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182796"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>設定在停機期間啟動/停止 VM
 
@@ -55,7 +55,7 @@ ms.locfileid: "90987200"
 5. 本案例不接受 `External_Start_ResourceGroupNames` 和 `External_Stop_ResourceGroupnames` 變數。 針對此案例，您需要建立自己的自動化排程。 如需詳細資料，請參閱[在 Azure 自動化中為 Runbook 進行排程](shared-resources/schedules.md)。
 
     > [!NOTE]
-    > **目標資源群組名稱**其值會同時儲存為 `External_Start_ResourceGroupNames` 和 `External_Stop_ResourceGroupNames` 的值。 如需進一步的細微設定，您可以修改這些變數來以不同的資源群組為目標。 使用 `External_Start_ResourceGroupNames` 作為啟動動作，並使用 `External_Stop_ResourceGroupNames` 作為停止動作。 虛擬機器會自動新增至啟動和停止排程。
+    > **目標資源群組名稱** 其值會同時儲存為 `External_Start_ResourceGroupNames` 和 `External_Stop_ResourceGroupNames` 的值。 如需進一步的細微設定，您可以修改這些變數來以不同的資源群組為目標。 使用 `External_Start_ResourceGroupNames` 作為啟動動作，並使用 `External_Stop_ResourceGroupNames` 作為停止動作。 虛擬機器會自動新增至啟動和停止排程。
 
 ## <a name="scenario-2-startstop-vms-in-sequence-by-using-tags"></a><a name="tags"></a>案例 2：使用標記依順序啟動/停止 VM
 
@@ -63,7 +63,7 @@ ms.locfileid: "90987200"
 
 ### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>針對訂用帳戶和資源群組設定啟動和停止動作目標
 
-1. 將具有正整數值的 `sequencestart` 和 `sequencestop` 標籤新增至 VM (`External_Start_ResourceGroupNames` 和 `External_Stop_ResourceGroupNames` 變數中已將該 VM 設定為目標)。 啟動和停止動作會依遞增順序執行。 若要了解如何標籤虛擬機器，請參閱[在 Azure 中為 Windows 虛擬機器加上標籤](../virtual-machines/windows/tag.md)和[在 Azure 中為 Linux 虛擬機器加上標籤](../virtual-machines/linux/tag.md)。
+1. 將具有正整數值的 `sequencestart` 和 `sequencestop` 標籤新增至 VM (`External_Start_ResourceGroupNames` 和 `External_Stop_ResourceGroupNames` 變數中已將該 VM 設定為目標)。 啟動和停止動作會依遞增順序執行。 若要了解如何標籤虛擬機器，請參閱[在 Azure 中為 Windows 虛擬機器加上標籤](../virtual-machines/tag-portal.md)和[在 Azure 中為 Linux 虛擬機器加上標籤](../virtual-machines/tag-cli.md)。
 
 2. 修改排程 **Sequenced-StartVM** 和 **Sequenced-StopVM** 以符合您所需的日期和時間，然後啟用排程。
 
@@ -126,7 +126,7 @@ ms.locfileid: "90987200"
 
 ### <a name="target-the-autostop-action-to-a-list-of-vms"></a>將自動停止動作目標設為 VM 清單
 
-1. 建立新的[排程](shared-resources/schedules.md#create-a-schedule)並將其連結至 **AutoStop_CreateAlert_Parent** Runbook，然後將以逗號分隔的 VM 名稱清單新增至 `VMList` 參數。
+1. 建立新的 [排程](shared-resources/schedules.md#create-a-schedule)並將其連結至 **AutoStop_CreateAlert_Parent** Runbook，然後將以逗號分隔的 VM 名稱清單新增至 `VMList` 參數。
 
 2. （選擇性）如果您想要從 autostop 動作中排除某些 Vm，您可以新增以逗號分隔的 VM 名稱清單， (沒有空間) 的 `External_ExcludeVMNames` 變數。
 
@@ -143,13 +143,13 @@ ms.locfileid: "90987200"
 
 2. 在 [StartStop_VM_Notification] 頁面上，按一下 [詳細資料] 底下的 [編輯詳細資料]。 隨即會開啟 [電子郵件/SMS/推播/語音] 頁面。 請更新電子郵件地址，然後按一下 [確定] 以儲存變更。
 
-    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="[監視-動作群組] 頁面的螢幕擷取畫面。":::
+    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="[電子郵件/SMS/推播/語音] 頁面的螢幕擷取畫面，其中顯示已更新的電子郵件地址範例。":::
 
     或者，您也可以將其他動作新增至動作群組中；若要深入了解動作群組，請參閱[動作群組](../azure-monitor/platform/action-groups.md)
 
 下列是當功能關閉虛擬機器時，所傳送的範例電子郵件。
 
-:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="[監視-動作群組] 頁面的螢幕擷取畫面。":::
+:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="當此功能關閉虛擬機器時傳送的範例電子郵件螢幕擷取畫面。":::
 
 ## <a name="add-or-exclude-vms"></a><a name="add-exclude-vms"></a>新增或排除 VM
 
