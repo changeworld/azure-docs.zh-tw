@@ -11,12 +11,12 @@ ms.custom: devx-track-csharp, mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 5957ccb7bd7ff7e7acc0ed76899850bbca09ad6c
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 9c3c63b6116e02e8a742b69e90c11e182d72ab2e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91664795"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953020"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>教學課程：使用 Azure Active Directory B2C 在 Web 應用程式中啟用驗證
 
@@ -37,7 +37,7 @@ ms.locfileid: "91664795"
 ## <a name="prerequisites"></a>必要條件
 
 * [建立使用者流程](tutorial-create-user-flows.md)以在您的應用程式中達成使用者體驗。
-* 安裝包含 **ASP.NET 和 Web 開發**工作負載的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
+* 安裝包含 **ASP.NET 和 Web 開發** 工作負載的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 
 ## <a name="update-the-application-registration"></a>更新應用程式註冊
 
@@ -45,7 +45,7 @@ ms.locfileid: "91664795"
 
 ### <a name="add-a-redirect-uri-reply-url"></a>新增重新導向 URI (回覆 URL)
 
-若要在您的 Azure AD B2C 租用戶中更新應用程式，您可以使用我們新的整合**應用程式註冊**體驗，或使用舊版**應用程式 (舊版)** 體驗。 [深入了解新的體驗](https://aka.ms/b2cappregtraining)。
+若要在您的 Azure AD B2C 租用戶中更新應用程式，您可以使用我們新的整合 **應用程式註冊** 體驗，或使用舊版 **應用程式 (舊版)** 體驗。 [深入了解新的體驗](./app-registrations-training-guide.md)。
 
 #### <a name="app-registrations"></a>[應用程式註冊](#tab/app-reg-ga/)
 
@@ -77,7 +77,7 @@ ms.locfileid: "91664795"
 
 ## <a name="configure-the-sample"></a>設定範例
 
-在本教學課程中，您會設定可從 GitHub 下載的範例。 此範例會使用 ASP.NET 來提供簡單的待辦事項清單。 此範例會使用 [Microsoft OWIN 中介軟體元件](https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/)。 [下載 zip 檔案](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip)，或從 GitHub 複製範例。 請務必要擷取資料夾中的檔案範例，路徑的總字元長度少於 260。
+在本教學課程中，您會設定可從 GitHub 下載的範例。 此範例會使用 ASP.NET 來提供簡單的待辦事項清單。 此範例會使用 [Microsoft OWIN 中介軟體元件](/aspnet/aspnet/overview/owin-and-katana/)。 [下載 zip 檔案](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip)，或從 GitHub 複製範例。 請務必要擷取資料夾中的檔案範例，路徑的總字元長度少於 260。
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
@@ -85,7 +85,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 範例解決方案中有下列兩個專案：
 
-* **TaskWebApp** - 建立和編輯工作清單。 此範例會使用**註冊或登入**使用者流程來註冊或登入使用者。
+* **TaskWebApp** - 建立和編輯工作清單。 此範例會使用 **註冊或登入** 使用者流程來註冊或登入使用者。
 * **TaskService** - 支援建立、讀取、更新和刪除工作清單功能。 此 API 會受到 Azure AD B2C 的保護，且由 TaskWebApp 呼叫。
 
 您可將範例變更為使用租用戶中註冊的應用程式，其中包含您先前記錄下來的應用程式識別碼和金鑰。 您也會設定您所建立的使用者流程。 此範例會在 *Web.config* 檔案中將組態值定義為設定。
@@ -119,7 +119,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 應用程式使用者現在已可使用電子郵件地址登入並使用 Web 應用程式。
 
-不過，要使用**待辦事項清單**功能，必須先完成系列中的下一個教學課程，[教學課程：使用 Azure AD B2C 保護 ASP.NET Web API](tutorial-web-api-dotnet.md)。
+不過，要使用 **待辦事項清單** 功能，必須先完成系列中的下一個教學課程，[教學課程：使用 Azure AD B2C 保護 ASP.NET Web API](tutorial-web-api-dotnet.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -130,7 +130,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 > * 設定範例以使用應用程式
 > * 利用使用者流程註冊
 
-現在請繼續進行下一個教學課程，以啟用 Web 應用程式的**待辦事項清單**功能。 在其中，您會在自己的 Azure AD B2C 租用戶中註冊 Web API 應用程式，然後修改程式碼範例，以使用您的租用戶進行 API 驗證。
+現在請繼續進行下一個教學課程，以啟用 Web 應用程式的 **待辦事項清單** 功能。 在其中，您會在自己的 Azure AD B2C 租用戶中註冊 Web API 應用程式，然後修改程式碼範例，以使用您的租用戶進行 API 驗證。
 
 > [!div class="nextstepaction"]
 > [教學課程：使用 Azure Active Directory B2C 保護 ASP.NET Web API>](tutorial-web-api-dotnet.md)

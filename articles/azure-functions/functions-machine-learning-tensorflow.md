@@ -7,11 +7,11 @@ ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc, devx-track-python, devx-track-azurepowershell
 ms.openlocfilehash: ca9ce27583168dfee1a597fce559afad38a3a8c7
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422921"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994599"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>教學課程：在 Azure Functions 中使用 Python 和 TensorFlow 來套用機器學習模型
 
@@ -229,7 +229,7 @@ py -3.7 -m venv .venv
 
 ## <a name="update-the-function-to-run-predictions"></a>更新函式以執行預測
 
-1. 在文字編輯器中開啟 *classify/\_\_init\_\_.py* ，然後在現有的 `import` 陳述式後面新增以下幾行，以匯入標準 JSON 程式庫和 predict  協助程式：
+1. 在文字編輯器中開啟 *classify/\_\_init\_\_.py*，然後在現有的 `import` 陳述式後面新增以下幾行，以匯入標準 JSON 程式庫和 predict  協助程式：
 
     :::code language="python" source="~/functions-python-tensorflow-tutorial/end/classify/__init__.py" range="1-6" highlight="5-6":::
 

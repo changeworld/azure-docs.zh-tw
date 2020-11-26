@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: apimpm
 ms.openlocfilehash: 979bdaa1e0dac4f45a321abda2a208f46983f9cd
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108128"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010226"
 ---
 # <a name="tutorial-transform-and-protect-your-api"></a>教學課程：轉換及保護您的 API
 
@@ -58,7 +58,7 @@ ms.locfileid: "92108128"
 
 原始回應看起來應該如下所示：
 
-:::image type="content" source="media/transform-api/original-response.png" alt-text="入口網站中的原則":::
+:::image type="content" source="media/transform-api/original-response.png" alt-text="原始 API 回應":::
 
 如您所見，回應會包含 **X-AspNet-Version** 和 **X-Powered-By** 標頭。
 
@@ -67,12 +67,12 @@ ms.locfileid: "92108128"
 1. 選取 [Demo Conference API]  >  [設計]  >  [所有作業]。
 4. 在 [輸出處理] 區段中，選取程式碼編輯器 ( **</>** ) 圖示。
 
-   :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png" alt-text="入口網站中的原則" border="false":::
+   :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png" alt-text="瀏覽至輸出原則" border="false":::
 
 1. 將游標放在 **&lt;outbound&gt;** 元素中，然後選取右上角的 [顯示程式碼片段]。
 1. 在右側視窗的 [轉換原則] 下方，選取兩次 [設定 HTTP 標頭] (以插入兩個原則程式碼片段)。
 
-   :::image type="content" source="media/transform-api/transform-api.png" alt-text="入口網站中的原則":::
+   :::image type="content" source="media/transform-api/transform-api.png" alt-text="設定 HTTP 標頭原則":::
 
 1. 修改您的 **\<outbound>** 程式碼，使它看起來如下：
 
@@ -81,7 +81,7 @@ ms.locfileid: "92108128"
    <set-header name="X-AspNet-Version" exists-action="delete" />
    ```
 
-   :::image type="content" source="media/transform-api/set-policy.png" alt-text="入口網站中的原則":::
+   :::image type="content" source="media/transform-api/set-policy.png" alt-text="設定 HTTP 標頭":::
 
 1. 選取 [儲存]。
 
@@ -98,7 +98,7 @@ ms.locfileid: "92108128"
 
     如您所見，回應會包含原始後端 URL：
 
-    :::image type="content" source="media/transform-api/original-response2.png" alt-text="入口網站中的原則":::
+    :::image type="content" source="media/transform-api/original-response2.png" alt-text="回應中的原始 URL":::
 
 
 ### <a name="set-the-transformation-policy"></a>設定轉換原則
@@ -117,7 +117,7 @@ ms.locfileid: "92108128"
 1.  在 [輸入處理] 區段中，選取程式碼編輯器 ( **</>** ) 圖示。
 1.  將游標放在 **&lt;inbound&gt;** 元素中，然後選取右上角的 [顯示程式碼片段]。
 
-    :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png" alt-text="入口網站中的原則" border="false":::
+    :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png" alt-text="設定輸入原則" border="false":::
 
 1.  在右側視窗的 [存取限制原則] 下方，選取 [+ 限制每個金鑰的呼叫速率]。
 1.  將您的 **rate-limit-by-key** 程式碼 (位於 **\<inbound\>** 元素中) 修改為下列程式碼：
@@ -160,7 +160,7 @@ ms.locfileid: "92108128"
 
     此時，您可以看到已刪除標頭：
 
-    :::image type="content" source="media/transform-api/final-response1.png" alt-text="入口網站中的原則":::
+    :::image type="content" source="media/transform-api/final-response1.png" alt-text="已刪除的回應標頭":::
 
 ### <a name="test-the-replaced-url"></a>測試已取代的 URL
 
@@ -169,7 +169,7 @@ ms.locfileid: "92108128"
 
     此時，您可以看到已取代 URL。
 
-    :::image type="content" source="media/transform-api/final-response2.png" alt-text="入口網站中的原則":::
+    :::image type="content" source="media/transform-api/final-response2.png" alt-text="取代的 URL":::
 
 ### <a name="test-the-rate-limit-throttling"></a>測試速率限制 (節流)
 
@@ -178,7 +178,7 @@ ms.locfileid: "92108128"
 
     傳送要求 3 次之後，您會收到 **429 太多要求** 的回應。
 
-    :::image type="content" source="media/transform-api/test-throttling.png" alt-text="入口網站中的原則":::
+    :::image type="content" source="media/transform-api/test-throttling.png" alt-text="要求太多":::
 
 1. 大約等候 15 秒之後，再選取一次 [傳送]。 此時，您應該得到 **200 確定** 的回應。
 

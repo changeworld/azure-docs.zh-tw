@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4a017f4b71a91f580a5281468a3f2bcbf7ba31b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd82b8ac3a510d1b16b0d2f42d3e50803162a119
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531520"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959793"
 ---
 # <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>教學課程：將裝置設定為使用 Azure IoT 中樞裝置佈建服務進行佈建
 
@@ -38,7 +38,7 @@ ms.locfileid: "90531520"
 
 下列必要條件適用於 Windows 開發環境。 針對 Linux 或 macOS，請參閱 SDK 文件中[準備您的開發環境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的適當章節。
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 並啟用[使用 C++ 的桌面開發](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作負載。 也會支援 Visual Studio 2015 和 Visual Studio 2017。
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 並啟用[使用 C++ 的桌面開發](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作負載。 也會支援 Visual Studio 2015 和 Visual Studio 2017。
 
 * 已安裝最新版的 [Git](https://git-scm.com/download/)。
 
@@ -96,7 +96,7 @@ ms.locfileid: "90531520"
 
 根據您所建置的 SDK 是使用實體 TPM/HSM 的證明還是使用 X.509 憑證，依照下列方式收集安全性構件：
 
-- 對於 TPM 裝置，您必須從 TPM 晶片製造商找出與其相關聯的**簽署金鑰**。 您可以將簽署金鑰進行雜湊處理，以衍生 TPM 裝置的唯一**註冊識別碼**。  
+- 對於 TPM 裝置，您必須從 TPM 晶片製造商找出與其相關聯的 **簽署金鑰**。 您可以將簽署金鑰進行雜湊處理，以衍生 TPM 裝置的唯一 **註冊識別碼**。  
 
 - 針對 X.509 裝置，您必須取得核發給裝置的憑證。 佈建服務會公開兩種類型的註冊項目，用來對使用 X.509 證明機制的裝置進行存取控制。 所需的憑證取決於您要使用的註冊類型。
 

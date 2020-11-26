@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3f2171d3271a4ffc4770dd0c9faea16c23e44d02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01f4f52acaa5b461e2b058f112f26dafda86dcb7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88005497"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025022"
 ---
 # <a name="tutorial-set-up-service-alerts-for-windows-virtual-desktop-classic"></a>教學課程：設定 Windows 虛擬桌面 (傳統) 的服務警示
 
@@ -25,7 +25,7 @@ ms.locfileid: "88005497"
 > [!div class="checklist"]
 > * 建立及設定服務警示。
 
-若要深入了解 Azure 服務健康狀態，請參閱 [Azure 健康狀態文件](https://docs.microsoft.com/azure/service-health/)。
+若要深入了解 Azure 服務健康狀態，請參閱 [Azure 健康狀態文件](../../service-health/index.yml)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -52,7 +52,7 @@ ms.locfileid: "88005497"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 選取 [服務健康狀態]  。
-3. 使用[建立服務通知的活動記錄警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal)中的指示，設定您的警示和通知。
+3. 使用[建立服務通知的活動記錄警示](../../service-health/alerts-activity-log-service-notifications-portal.md?toc=%2fazure%2fservice-health%2ftoc.json)中的指示，設定您的警示和通知。
 
 ## <a name="next-steps"></a>後續步驟
 

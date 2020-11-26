@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
 ms.openlocfilehash: f2687909a7067bc135f6fcf27fce2e1694325887
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92504026"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95987952"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tas"></a>教學課程：Azure Active Directory 與 TAS 整合
 
@@ -61,7 +61,7 @@ ms.locfileid: "92504026"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **TAS** ，從結果面板中選取 [TAS]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **TAS**，從結果面板中選取 [TAS]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 TAS](common/search-new-app.png)
 
@@ -175,7 +175,7 @@ ms.locfileid: "92504026"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com

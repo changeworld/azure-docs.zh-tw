@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 9b712756b6daf7380998bb98f56113cab29ebb59
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516506"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015157"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>教學課程：Azure Active Directory 與 Skills Base 整合
 
@@ -65,7 +65,7 @@ Skills Base 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，鍵入 **Skills Base** ，從結果面板中選取 [Skills Base]，然後按一下 [新增] 按鈕以新增應用程式。
+4. 在搜尋方塊中，鍵入 **Skills Base**，從結果面板中選取 [Skills Base]，然後按一下 [新增] 按鈕以新增應用程式。
 
      ![結果清單中的 Skills Base](common/search-new-app.png)
 
@@ -110,7 +110,7 @@ Skills Base 與 Azure AD 整合提供下列優點：
     > [!NOTE]
     > 您可以從技能基本應用程式中取得登入 URL。 請以系統管理員的身分登入，並前往 [系統管理] -> [設定] -> [執行個體詳細資料] -> [捷徑連結]。 複製登入 URL，並將它貼在上方的文字方塊中。
 
-5. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中按一下 [下載]，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中按一下 [下載]，以依據您的需求從指定選項下載 **同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -163,7 +163,7 @@ Skills Base 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱] 欄位中，輸入 **BrittaSimon** 。
+    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
   
     b. 在 [使用者名稱] 欄位中，輸入 **brittasimon@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com

@@ -11,11 +11,11 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: 5b0bcdd66e17fb93a560b6073c13e3170e3ab37b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81409252"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010141"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>使用 Azure Data Factory 中的 Spark 活動來轉換雲端中的資料
 
@@ -155,7 +155,7 @@ ms.locfileid: "81409252"
    
    e. 針對 [服務主體識別碼]  ，輸入有權建立 HDInsight 叢集的服務主體識別碼。 
    
-      此服務主體必須是訂用帳戶的參與者角色成員，或建立叢集所在的資源群組成員。 如需詳細資訊，請參閱[建立 Azure Active Directory 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。 **服務主體識別碼**相當於「應用程式識別碼」  ，而**服務主體金鑰**則相當於「用戶端密碼」  的值。
+      此服務主體必須是訂用帳戶的參與者角色成員，或建立叢集所在的資源群組成員。 如需詳細資訊，請參閱[建立 Azure Active Directory 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。 **服務主體識別碼** 相當於「應用程式識別碼」  ，而 **服務主體金鑰** 則相當於「用戶端密碼」  的值。
    
    f. 針對 [服務主體金鑰]  ，輸入金鑰。 
    
@@ -163,9 +163,9 @@ ms.locfileid: "81409252"
    
    h. 展開 [OS 類型]  。
    
-   i. 針對**叢集使用者名稱**輸入名稱。 
+   i. 針對 **叢集使用者名稱** 輸入名稱。 
    
-   j. 輸入使用者的**叢集密碼**。 
+   j. 輸入使用者的 **叢集密碼**。 
    
    k. 選取 [完成]  。 
 

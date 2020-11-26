@@ -8,11 +8,11 @@ ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.openlocfilehash: 5747de399e7ae0cfe99ba013f8da376be0ba1b2a
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544948"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993630"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>教學課程：使用企業安全性套件在 HDInsight 中設定 Apache HBase 原則
 
@@ -95,7 +95,7 @@ ms.locfileid: "92544948"
 
 為 **sales_user1** 和 **marketing_user1** 建立 Ranger 原則。
 
-1. 開啟 **Ranger 管理員 UI** 。 按一下 [HBase] 底下的 [\<ClusterName>_hbase]。
+1. 開啟 **Ranger 管理員 UI**。 按一下 [HBase] 底下的 [\<ClusterName>_hbase]。
 
    ![HDInsight Apache Ranger 系統管理員 UI](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
@@ -145,7 +145,7 @@ ms.locfileid: "92544948"
 
 ## <a name="test-the-ranger-policies"></a>測試 Ranger 原則
 
-根據所設定的 Ranger 原則， **sales_user1** 可以檢視 `Name` 和 `Contact` 資料行系列中所有資料行資料。 **Marketing_user1** 只能檢視 `Contact` 資料行系列中的資料。
+根據所設定的 Ranger 原則，**sales_user1** 可以檢視 `Name` 和 `Contact` 資料行系列中所有資料行資料。 **Marketing_user1** 只能檢視 `Contact` 資料行系列中的資料。
 
 ### <a name="access-data-as-sales_user1"></a>以 sales_user1 的身分存取資料
 
@@ -236,7 +236,7 @@ ms.locfileid: "92544948"
 如果您不打算繼續使用此應用程式，請使用下列步驟來刪除所建立的 HBase 叢集：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 在頂端的 [搜尋]  方塊中，輸入 **HDInsight** 。 
+2. 在頂端的 [搜尋]  方塊中，輸入 **HDInsight**。 
 1. 在 [服務]  底下，選取 [HDInsight 叢集]  。
 1. 從出現的 HDInsight 叢集清單中，在您為本教學課程建立的叢集旁按一下 [...]  。 
 1. 按一下 **[刪除]** 。 按一下 [是]  。

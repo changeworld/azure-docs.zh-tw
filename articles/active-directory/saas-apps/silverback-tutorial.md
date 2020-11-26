@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: a70b6bb50b397429af1af41869bbe9ecf7e8bad9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92510761"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004172"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>教學課程：Azure Active Directory 與 Silverback 整合
 
@@ -61,7 +61,7 @@ Silverback 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Silverback** ，從結果面板中選取 [Silverback]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Silverback**，從結果面板中選取 [Silverback]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Silverback](common/search-new-app.png)
 
@@ -158,7 +158,7 @@ Silverback 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -201,19 +201,19 @@ Silverback 與 Azure AD 整合提供下列優點：
 
 1. 以系統管理員身分登入 Silverback Server。
 
-2. 瀏覽至 [使用者]  ，並 **新增新的裝置使用者** 。
+2. 瀏覽至 [使用者]  ，並 **新增新的裝置使用者**。
 
 3. 在 [基本]  頁面上，執行下列步驟：
 
     ![使用者](./media/silverback-tutorial/tutorial_silverback_user.png)
 
-    a. 在 [使用者名稱]  文字方塊中，輸入使用者的名稱，例如 **Britta** 。
+    a. 在 [使用者名稱]  文字方塊中，輸入使用者的名稱，例如 **Britta**。
 
-    b. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **Britta** 。
+    b. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **Britta**。
 
-    c. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon** 。
+    c. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon**。
 
-    d. 在 [電子郵件地址] 文字方塊中，輸入使用者的電子郵件地址，例如 **Brittasimon\@contoso.com** 。
+    d. 在 [電子郵件地址] 文字方塊中，輸入使用者的電子郵件地址，例如 **Brittasimon\@contoso.com**。
 
     e. 在 [密碼]  文字方塊中，輸入您的密碼。
 

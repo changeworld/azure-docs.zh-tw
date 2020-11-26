@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 601e5cf15c47b16c53ff9ca81a56cb613bcfc3f5
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127143"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006554"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>教學課程：使用資料複製服務將資料複製到 Azure Data Box Heavy (預覽)
 
@@ -98,7 +98,7 @@ ms.locfileid: "92127143"
         >[!NOTE]
         > 如果您取消或暫停作業，大型檔案可能只複製了一部分。 這些部分複製的檔案會以相同的狀態上傳至 Azure。 當您取消或暫停作業時，請確定檔案是否已徹底複製完成。 若要驗證檔案，請查看 SMB 共用或下載 BOM 檔案。
 
-    - 如果作業因為暫時性錯誤 (例如網路故障) 而失敗，您可以重新啟動作業。 但如果作業已達到終端狀態 (例如，**成功**或**完成但發生錯誤**)，您就無法重新啟動作業。 作業失敗可能是檔案命名或檔案大小的問題所造成。 系統會記錄這些錯誤，但作業在完成後就無法重新啟動。
+    - 如果作業因為暫時性錯誤 (例如網路故障) 而失敗，您可以重新啟動作業。 但如果作業已達到終端狀態 (例如，**成功** 或 **完成但發生錯誤**)，您就無法重新啟動作業。 作業失敗可能是檔案命名或檔案大小的問題所造成。 系統會記錄這些錯誤，但作業在完成後就無法重新啟動。
 
         ![重新啟動失敗的作業](media/data-box-deploy-copy-data-via-copy-service/restart-failed-job.png)
 
@@ -107,7 +107,7 @@ ms.locfileid: "92127143"
     - 在這個版本中，您無法刪除作業。
     
     - 您可以建立的作業數量沒有限制，但一次最多只能平行執行 10 個作業。
-    - 若已開啟**檔案最佳化**，系統便會在擷取時封裝小型檔案以改善複製效能。 在這些情況下，您會看到封裝的檔案 (其會有和檔案名稱一樣的 GUID)。 請勿刪除此檔案。 其會在上傳期間解除封裝。
+    - 若已開啟 **檔案最佳化**，系統便會在擷取時封裝小型檔案以改善複製效能。 在這些情況下，您會看到封裝的檔案 (其會有和檔案名稱一樣的 GUID)。 請勿刪除此檔案。 其會在上傳期間解除封裝。
 
 6. 當作業正在進行時，在 [複製資料]  頁面上：
 

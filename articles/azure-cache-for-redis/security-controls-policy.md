@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure Cache for Redis 的 Azure 原則法規合規性控制項
 description: 列出適用於 Azure Cache for Redis 的 Azure 原則法規合規性控制項。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.topic: sample
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 01d6567433bed465aee5e3ee63cc0031a7a66fdd
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 7924d82067e74a2055185384ff324c6bd0325efc
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701668"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992282"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cache-for-redis"></a>適用於 Azure Cache for Redis 的 Azure 原則法規合規性控制項
 

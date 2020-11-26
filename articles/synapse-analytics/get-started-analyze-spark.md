@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 07537e26b169414e3f8ec35cc32945c20f7eb7ce
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d7b198790b1ecc884321ad42c97eb5cf0c239b7e
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843276"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241976"
 ---
 # <a name="analyze-with-apache-spark"></a>使用 Apache Spark 進行分析
 
@@ -93,22 +93,7 @@ ms.locfileid: "94843276"
 
 1. 在資料格結果中，選取 [圖表] 可查看視覺化的資料。
 
-## <a name="customize-data-visualization-with-spark-and-notebooks"></a>使用 Spark 和筆記本自訂資料視覺效果
 
-您可以使用筆記本來控制圖表的呈現方式。 下列程式碼顯示一個簡單的範例。 其使用熱門的程式庫 **matplotlib** 和 **seaborn**。 該程式碼會轉譯與稍早所執行 SQL 查詢相同類型的折線圖。
-
-```py
-%%pyspark
-import matplotlib.pyplot
-import seaborn
-
-seaborn.set(style = "whitegrid")
-df = spark.sql("SELECT * FROM nyctaxi.passengercountstats")
-df = df.toPandas()
-seaborn.lineplot(x="PassengerCount", y="SumTripDistance" , data = df)
-seaborn.lineplot(x="PassengerCount", y="AvgTripDistance" , data = df)
-matplotlib.pyplot.show()
-```
 
 
 

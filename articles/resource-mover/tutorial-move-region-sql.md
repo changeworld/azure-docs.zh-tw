@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e3e2c9aa42ff3189e90f57d7c6e92b2a71f46639
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9fe43125c83436f89bf93cbe975317efec2beb46
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061594"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542808"
 ---
 # <a name="tutorial-move-azure-sql-database-resources-to-another-region"></a>教學課程：將 Azure SQL Database 資源移到另一個區域
 
@@ -43,22 +43,22 @@ ms.locfileid: "90061594"
 -  檢查您在包含要移動之資源的訂用帳戶上，有「擁有者」存取權。
     - 第一次在 Azure 訂用帳戶中新增特定來源和目的地組的資源時，Resource Mover 會建立訂用帳戶所信任的[系統指派受控識別](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (之前稱為「受控服務識別 (MSI)」)。
     - 若要建立身分識別，並為其指派必要的角色 (來源訂用帳戶中的參與者或使用者存取管理員)，您用來新增資源的帳戶需要訂用帳戶「擁有者」權限。 [深入了解](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) Azure 角色。
-- 訂用帳戶需要足夠的配額，才能建立您要在目標區域中移動的資源。 如果沒有配額，請[要求額外的限制](/azure/azure-resource-manager/management/azure-subscription-service-limits)。
+- 訂用帳戶需要足夠的配額，才能建立您要在目標區域中移動的資源。 如果沒有配額，請[要求額外的限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 - 確認與您要移動資源的目標區域相關聯的定價和費用。 請使用[定價計算機](https://azure.microsoft.com/pricing/calculator/)協助確認。
     
 
 ## <a name="check-sql-requirements"></a>檢查 SQL 需求
 
 1. [檢查](support-matrix-move-region-sql.md)哪些資料庫/彈性集區功能受支援可移至另一個區域。
-2. 在目標區域中，為每個來源伺服器建立目標伺服器。 [深入了解](/azure/azure-sql/database/active-geo-replication-security-configure#how-to-configure-logins-and-users)。
+2. 在目標區域中，為每個來源伺服器建立目標伺服器。 [深入了解](../azure-sql/database/active-geo-replication-security-configure.md#how-to-configure-logins-and-users)。
 4. 如果資料庫使用透明資料加密 (TDE) 進行加密，而且您在 Azure Key Vault 中使用自己的加密金鑰，請[了解如何](../key-vault/general/move-region.md)將金鑰保存庫移至另一個區域。
 5. 如果已啟用 SQL 資料同步，則系統支援移動成員資料庫的作業。 移動後，您必須將 SQL 資料設定為同步到新的目標資料庫。
-6. 移動之前，請先移除進階資料安全性設定。 移動後，在目標區域的 SQL Server 層級中[設定](/azure/sql-database/sql-database-advanced-data-security)。
-7. 如果已啟用稽核，原則會在移動之後重設為預設值。 移動後，再次[設定稽核](/azure/sql-database/sql-database-auditing)。
-7. 來源資料庫的備份保留原則會一併傳送到目標資料庫。 [深入了解](/azure/sql-database/sql-database-long-term-backup-retention-configure )在移動後修改設定。
-8. 在移動之前移除伺服器層級防火牆規則。 在移動期間，系統會將資料庫層級的防火牆規則從來源伺服器複製到目標伺服器。 移動後，為目標區域中的 SQL Server [設定防火牆規則](/azure/sql-database/sql-database-server-level-firewall-rule) 。
-9. 移動之前，請先移除自動調整設定。 移動之後，[再次設定自動調整](/azure/sql-database/sql-database-automatic-tuning-enable)。
-10. 移動之前，請先移除資料庫警示設定。 移動後[重設](/azure/sql-database/sql-database-insights-alerts-portal)。
+6. 移動之前，請先移除進階資料安全性設定。 移動後，在目標區域的 SQL Server 層級中[設定](../azure-sql/database/azure-defender-for-sql.md)。
+7. 如果已啟用稽核，原則會在移動之後重設為預設值。 移動後，再次[設定稽核](../azure-sql/database/auditing-overview.md)。
+7. 來源資料庫的備份保留原則會一併傳送到目標資料庫。 [深入了解](../azure-sql/database/long-term-backup-retention-configure.md)在移動後修改設定。
+8. 在移動之前移除伺服器層級防火牆規則。 在移動期間，系統會將資料庫層級的防火牆規則從來源伺服器複製到目標伺服器。 移動後，為目標區域中的 SQL Server [設定防火牆規則](../azure-sql/database/firewall-create-server-level-portal-quickstart.md) 。
+9. 移動之前，請先移除自動調整設定。 移動之後，[再次設定自動調整](../azure-sql/database/automatic-tuning-enable.md)。
+10. 移動之前，請先移除資料庫警示設定。 移動後[重設](../azure-sql/database/alerts-insights-configure-portal.md)。
     
 ## <a name="select-resources"></a>選取資源
 
@@ -67,34 +67,34 @@ ms.locfileid: "90061594"
 - 您可以在選取的來源區域中的任何資源群組中，選取任何支援的資源類型。
 - 您可以將資源移至與來源區域位於相同訂用帳戶中的目標區域。 如果要變更訂用帳戶，可以在移動資源後執行此動作。
 
-1. 在 Azure 入口網站中，搜尋並選取 [資源移動器]。 然後，在**服務**底下，選取 [Azure Resource Mover]。
+1. 在 Azure 入口網站中，搜尋並選取 [資源移動器]。 然後，在 **服務** 底下，選取 [Azure Resource Mover]。
 
      ![Azure 入口網站中資源移動器的搜尋結果](./media/tutorial-move-region-sql/search.png)
 
-2. 在**概觀**中，按一下 [開始使用]。
+2. 在 **概觀** 中，按一下 [開始使用]。
 
     ![新增要移至另一個區域之資源的按鈕](./media/tutorial-move-region-sql/get-started.png)
 
-3. 在**移動資源** > **來源 + 目的地**中，選取來源訂用帳戶和區域。
-4. 在**目的地**中，選取要將資源移至哪一個區域。 然後按一下 [下一步]  。
+3. 在 **移動資源** > **來源 + 目的地** 中，選取來源訂用帳戶和區域。
+4. 在 **目的地** 中，選取要將資源移至哪一個區域。 然後按一下 [下一步]  。
 
     ![選取來源和目標區域的頁面](./media/tutorial-move-region-sql/source-target.png)
 
-6. 在**要移動的資源**中，按一下 [選取資源]。
-7. 在**選取資源**中，選取資源。 您只能新增支援移動的資源。 然後按一下 [完成]。
+6. 在 **要移動的資源** 中，按一下 [選取資源]。
+7. 在 **選取資源** 中，選取資源。 您只能新增支援移動的資源。 然後按一下 [完成]。
 
     ![選取要移動之 SQL 資源的頁面](./media/tutorial-move-region-sql/select-resources.png)
 
-8. 在要**移動的資源**中，按一下 [下一步]。
+8. 在要 **移動的資源** 中，按一下 [下一步]。
 
-9. 在**檢閱 + 新增**中，檢查來源和目的地設定。 請確認您了解有關移動的中繼資料將會儲存在中繼資料區域中針對此用途所建立的資源群組中。
+9. 在 **檢閱 + 新增** 中，檢查來源和目的地設定。 請確認您了解有關移動的中繼資料將會儲存在中繼資料區域中針對此用途所建立的資源群組中。
 
 
     ![用來檢閱設定並繼續移動的頁面](./media/tutorial-move-region-sql/review.png)
 
 10. 按一下 [繼續]，開始新增資源。
 11. 成功新增程序後，按一下通知圖示中的 [新增要移動的資源]。
-12. 按一下通知之後，檢閱**跨區域**頁面上的資源。
+12. 按一下通知之後，檢閱 **跨區域** 頁面上的資源。
 
 
 > [!NOTE]
@@ -106,16 +106,16 @@ ms.locfileid: "90061594"
 ## <a name="resolve-dependencies"></a>解析相依性
 
 
-1. 在**跨區域**中，如果資源在**問題**資料行中顯示「驗證相依性」訊息，請按一下 [驗證相依性] 按鈕。 驗證程序開始。
+1. 在 **跨區域** 中，如果資源在 **問題** 資料行中顯示「驗證相依性」訊息，請按一下 [驗證相依性] 按鈕。 驗證程序開始。
 2. 如果找到相依性，請按一下 [新增相依性]。
 
     ![加入相依性的按鈕](./media/tutorial-move-region-sql/add-dependencies.png)
    
-3. 在**新增相依性**中，選取相依資源 > **新增相依性**。 在通知中監視進度。
+3. 在 **新增相依性** 中，選取相依資源 > **新增相依性**。 在通知中監視進度。
 
 4. 視需要新增其他相依性，然後再次驗證相依性。 
 
-5. 在**跨區域**頁面上，確認資源現在處於「準備擱置」狀態，且沒有任何問題。
+5. 在 **跨區域** 頁面上，確認資源現在處於「準備擱置」狀態，且沒有任何問題。
 
     ![顯示資源處於準備擱置狀態的頁面](./media/tutorial-move-region-sql/prepare-pending.png)
 
@@ -127,7 +127,7 @@ ms.locfileid: "90061594"
 
 ### <a name="assign-a-target-sql-server"></a>指派目標 SQL Server
 
-1. 在**跨區域**之 SQL Server資源的**目的地組態**欄中，按一下 [未指派 資源]。
+1. 在 **跨區域** 之 SQL Server資源的 **目的地組態** 欄中，按一下 [未指派 資源]。
 2. 在目標區域中選取現有的 SQL Server 資源。 
     
     ![顯示設定為認可移動擱置的 SQL Server 狀態之項目](./media/tutorial-move-region-sql/sql-server-commit-move-pending.png) 
@@ -138,8 +138,8 @@ ms.locfileid: "90061594"
 
 ### <a name="commit-the-sql-server-move"></a>認可 SQL Server 移動
 
-1. 在**跨區域**中，選取 SQL Server，然後按一下 [認可移動]。
-2. 在**認可資源**中，按一下 [認可]。
+1. 在 **跨區域** 中，選取 SQL Server，然後按一下 [認可移動]。
+2. 在 **認可資源** 中，按一下 [認可]。
 
     ![認可 SQL Server 移動的頁面](./media/tutorial-move-region-sql/commit-sql-server.png)
 
@@ -155,11 +155,11 @@ ms.locfileid: "90061594"
 
 ## <a name="prepare-an-elastic-pool"></a>準備彈性集區
 
-1. 在**跨區域**中，選取來源彈性集區 (demo-test1-elasticpool in our walkthrough)，然後按一下 [準備]。
+1. 在 **跨區域** 中，選取來源彈性集區 (demo-test1-elasticpool in our walkthrough)，然後按一下 [準備]。
 
     ![準備資源的按鈕](./media/tutorial-move-region-sql/prepare-elastic.png)
 
-2. 在**準備資源**中，按一下 [準備]。
+2. 在 **準備資源** 中，按一下 [準備]。
 3. 當通知顯示準備程序成功時，按一下 [重新整理]。
 
 > [!NOTE]
@@ -167,11 +167,11 @@ ms.locfileid: "90061594"
 
 ## <a name="prepare-a-single-database"></a>準備單一資料庫
 
-1. 在**跨區域**中，選取單一資料庫 (並非在彈性集區中)，然後按一下 [準備]。
+1. 在 **跨區域** 中，選取單一資料庫 (並非在彈性集區中)，然後按一下 [準備]。
 
     ![準備已選取資源的按鈕](./media/tutorial-move-region-sql/prepare-db.png)
 
-2. 在**準備資源**中，按一下 [準備]。
+2. 在 **準備資源** 中，按一下 [準備]。
 3. 當通知顯示準備程序成功時，按一下 [重新整理]。
 
 > [!NOTE]
@@ -184,8 +184,8 @@ ms.locfileid: "90061594"
 
 #### <a name="initiate-move---elastic-pool"></a>起始移動 - 彈性集區
 
-1. 在**跨區域**中，選取來源彈性集區 (demo-test1-elasticpool in our walkthrough)，然後按一下 [起始移動]。
-2. 在**移動資源**中，按一下 [起始移動]。
+1. 在 **跨區域** 中，選取來源彈性集區 (demo-test1-elasticpool in our walkthrough)，然後按一下 [起始移動]。
+2. 在 **移動資源** 中，按一下 [起始移動]。
 
     
     ![用來起始彈性集區移動的按鈕](./media/tutorial-move-region-sql/initiate-elastic.png)
@@ -198,8 +198,8 @@ ms.locfileid: "90061594"
 
 #### <a name="prepare-database"></a>準備資料庫
 
-1. 在**跨區域**中，選取資料庫 (demo-test2-sqldb in our walkthrough)，然後按一下 [準備]。
-2. 在**準備資源**中，按一下 [準備]。
+1. 在 **跨區域** 中，選取資料庫 (demo-test2-sqldb in our walkthrough)，然後按一下 [準備]。
+2. 在 **準備資源** 中，按一下 [準備]。
 
     ![用來準備彈性集區中資料庫的按鈕](./media/tutorial-move-region-sql/prepare-database-elastic.png) 
 
@@ -210,8 +210,8 @@ ms.locfileid: "90061594"
 ## <a name="move-databases"></a>移動資料庫
 
 開始移動資料庫。
-1. 在**跨區域**中，選取狀態為「起始移動擱置」的資源。 然後按一下 [起始移動]。
-2. 在**移動資源**中，按一下 [起始移動]。
+1. 在 **跨區域** 中，選取狀態為「起始移動擱置」的資源。 然後按一下 [起始移動]。
+2. 在 **移動資源** 中，按一下 [起始移動]。
 
     ![起始移動的頁面](./media/tutorial-move-region-sql/initiate-move.png)
 
@@ -233,8 +233,8 @@ ms.locfileid: "90061594"
 
 您可以捨棄移動，如下所示：
 
-1. 在**跨區域**中，選取具有「認可移動擱置」狀態的資源，然後按一下 [捨棄移動]。
-2. 在**捨棄移動**中，按一下 [捨棄]。
+1. 在 **跨區域** 中，選取具有「認可移動擱置」狀態的資源，然後按一下 [捨棄移動]。
+2. 在 **捨棄移動** 中，按一下 [捨棄]。
 3. 在通知列中追蹤移動進度。
 
 
@@ -254,8 +254,8 @@ ms.locfileid: "90061594"
 
 1. 檢查 SQL Server 是否處於「刪除來源擱置」狀態。
 2. 在認可之前，請先將資料庫連接字串更新至目標區域。
-3. 在**跨區域**中，選取 SQL 資源，然後按一下 [認可移動]。
-4. 在**認可資源**中，按一下 [認可]。
+3. 在 **跨區域** 中，選取 SQL 資源，然後按一下 [認可移動]。
+4. 在 **認可資源** 中，按一下 [認可]。
 
     ![認可移動](./media/tutorial-move-region-sql/commit-sql-resources.png)
 
@@ -272,7 +272,7 @@ ms.locfileid: "90061594"
 
 移動後，您可以選擇是否要除除來源區域中的資源。 
 
-1. 在**跨區域**中，按一下您想要刪除之每個來源資源的名稱。
+1. 在 **跨區域** 中，按一下您想要刪除之每個來源資源的名稱。
 2. 在每個資源的屬性頁面上，選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟

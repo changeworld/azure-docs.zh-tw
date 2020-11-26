@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: jeedes
 ms.openlocfilehash: 3c03bb91320e79d5ea54ad43802073795bfbd4cb
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896481"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008373"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-springer-link"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Springer Link 整合
 
@@ -47,7 +47,7 @@ ms.locfileid: "92896481"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Springer Link** 。
+1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Springer Link**。
 1. 從結果面板中選取 [Springer Link]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>設定並測試 Azure AD SSO
@@ -67,7 +67,7 @@ ms.locfileid: "92896481"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 Azure 入口網站的 [Springer Link] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -89,7 +89,7 @@ ms.locfileid: "92896481"
     > [!NOTE]
     > [登入 URL] 的值不是真正的值。 請使用實際的「登入 URL」來更新此值。 `<entityID>` 是從＜設定 Springer Link＞一節複製的 Azure AD 識別碼，稍後會在教學課程中說明。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-6. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，按一下 [複製] 圖示以複製 **應用程式同盟中繼資料 URL** ，並儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，按一下 [複製] 圖示以複製 **應用程式同盟中繼資料 URL**，並儲存在您的電腦上。
 
     ![中繼資料下載連結](common/copy_metadataurl.png)
 

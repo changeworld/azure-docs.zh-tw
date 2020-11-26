@@ -4,11 +4,11 @@ description: 使用 Azure Resource Graph 執行某些進階查詢，包括使用
 ms.date: 10/14/2020
 ms.topic: sample
 ms.openlocfilehash: dff4b06cc5cf4385820c7f6251efaae792d9c22d
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057139"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005396"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>進階 Resource Graph 查詢範例
 
@@ -174,7 +174,7 @@ Search-AzGraph -Query "Resources | project tags | summarize buildschema(tags)"
 
 ## <a name="virtual-machines-matched-by-regex"></a><a name="vm-regex"></a>依 RegEx 比對虛擬機器
 
-此查詢會尋找符合[規則運算式](/dotnet/standard/base-types/regular-expression-language-quick-reference) (亦稱為 _RegEx_) 的虛擬機器。 **matches regex \@** 可讓我們定義要比對的 RegEx，也就是 `^Contoso(.*)[0-9]+$`。
+此查詢會尋找符合 [規則運算式](/dotnet/standard/base-types/regular-expression-language-quick-reference) (亦稱為 _RegEx_) 的虛擬機器。 **matches regex \@** 可讓我們定義要比對的 RegEx，也就是 `^Contoso(.*)[0-9]+$`。
 該 RegEx 定義說明如下：
 
 - `^`：比對必須從字串的開頭開始。
@@ -255,7 +255,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.documentdb/databasea
 
 ## <a name="key-vaults-with-subscription-name"></a><a name="join"></a>金鑰保存庫與訂用帳戶名稱
 
-下列查詢會顯示使用**種類**作為 _leftouter_的 `join` 複雜用法。 此查詢會將聯結的資料表限制為訂用帳戶資源，並利用 `project` 使其僅包含原始欄位 _subscriptionId_ 和已重新命名為 _SubName_ 的 _name_ 欄位。 欄位重新命名可避免 `join` 將它新增為 _name1_，因為此欄位已經存在於 _resources_ 中。 原始資料表會使用 `where` 進行篩選，而下列 `project` 包含兩個資料表的資料行。 查詢結果是所有金鑰保存庫顯示類型、金鑰保存庫名稱，及其所在訂用帳戶的名稱。
+下列查詢會顯示使用 **種類** 作為 _leftouter_ 的 `join` 複雜用法。 此查詢會將聯結的資料表限制為訂用帳戶資源，並利用 `project` 使其僅包含原始欄位 _subscriptionId_ 和已重新命名為 _SubName_ 的 _name_ 欄位。 欄位重新命名可避免 `join` 將它新增為 _name1_，因為此欄位已經存在於 _resources_ 中。 原始資料表會使用 `where` 進行篩選，而下列 `project` 包含兩個資料表的資料行。 查詢結果是所有金鑰保存庫顯示類型、金鑰保存庫名稱，及其所在訂用帳戶的名稱。
 
 ```kusto
 Resources

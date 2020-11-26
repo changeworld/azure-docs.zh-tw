@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 202a7f6b01423045fe7c72db5b42c29ae58f648d
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91739658"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013831"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>教學課程：使用 .NET SDK 新增自動完成和建議
 
@@ -85,7 +85,7 @@ ms.locfileid: "91739658"
     </head>
     ```
 
-2. 因為我們引進了新的 jQuery 參考，所以我們也需要在 _Layout.cshtml 檔案 (位於 **Views/Shared**資料夾) 中將預設的 jQuery 參考移除或標示為註解。 找出下列幾行，並註解化第一個指令碼行，如下所示。 這項變更可避免對 jQuery 參考的衝突。
+2. 因為我們引進了新的 jQuery 參考，所以我們也需要在 _Layout.cshtml 檔案 (位於 **Views/Shared** 資料夾) 中將預設的 jQuery 參考移除或標示為註解。 找出下列幾行，並註解化第一個指令碼行，如下所示。 這項變更可避免對 jQuery 參考的衝突。
 
     ```html
     <environment include="Development">
@@ -132,7 +132,7 @@ ms.locfileid: "91739658"
     }
     ```
 
-    **Size** 參數會指定要傳回多少結果 (如果未指定，預設值為 5)。 建立索引時，會在搜尋索引上指定_建議工具_。 在 Microsoft 所裝載的範例旅館索引中，建議工具名稱是 "sg"，建議工具會搜尋 **HotelName** 欄位中以獨佔方式建議的相符項目。
+    **Size** 參數會指定要傳回多少結果 (如果未指定，預設值為 5)。 建立索引時，會在搜尋索引上指定 _建議工具_。 在 Microsoft 所裝載的範例旅館索引中，建議工具名稱是 "sg"，建議工具會搜尋 **HotelName** 欄位中以獨佔方式建議的相符項目。
 
     模糊比對可在輸出中包含「接近未命中」(最多一個編輯距離)。 如果 **highlights** 參數設為 true，則粗體顯示的 HTML 標記就會加入至輸出。 在下一節中，我們會將這兩個參數設定為 true。
 
@@ -147,11 +147,11 @@ ms.locfileid: "91739658"
 
     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-po.png" alt-text="輸入 *po* 可顯示兩個建議" border="false":::
 
-    請注意，您輸入的字母_必須_是一個單字的開始，而不只是這個字中的一個字母。
+    請注意，您輸入的字母 _必須_ 是一個單字的開始，而不只是這個字中的一個字母。
 
 4. 在檢視指令碼中，將 **&fuzzy** 設為 true，然後再次執行應用程式。 現在，請輸入 "po"。 請注意，搜尋服務會假設您有一個字母錯誤。
  
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png" alt-text="輸入 *po* 可顯示兩個建議" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png" alt-text="將 fuzzy 設定為 true 時，輸入 *pa*" border="false":::
 
     如果您感興趣，[Azure 認知搜尋服務中的 Lucene 查詢語法](./query-lucene-syntax.md)詳細描述模糊搜尋中使用的邏輯。
 
@@ -196,7 +196,7 @@ ms.locfileid: "91739658"
 
 1. 再次執行應用程式，您應該會看到您輸入的文字在建議中呈現粗體。 嘗試輸入 "pa"。
  
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-highlight.png" alt-text="輸入 *po* 可顯示兩個建議" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-highlight.png" alt-text="輸入醒目提示的 *pa*" border="false":::
 
    上述反白顯示指令碼中使用的邏輯非常簡單。 如果您輸入的詞彙在相同的名稱中出現兩次，則粗體的結果不是您想要的結果。 嘗試輸入 "mo"。
 
@@ -249,13 +249,13 @@ ms.locfileid: "91739658"
     }
     ```
 
-    請注意，我們在自動完成搜尋中使用的*建議工具*功能 (稱為 "sg") 與我們用於建議的相同 (因此我們只要嘗試自動完成旅館名稱)。
+    請注意，我們在自動完成搜尋中使用的 *建議工具* 功能 (稱為 "sg") 與我們用於建議的相同 (因此我們只要嘗試自動完成旅館名稱)。
 
     有多種 **AutocompleteMode** 設定，而我們會使用 **OneTermWithContext**。 如需其他選項的說明，請參閱[自動完成 API](/rest/api/searchservice/autocomplete)。
 
 1. 執行應用程式。 請注意，下拉式清單中所顯示的選項範圍是單一文字。 請嘗試輸入開頭為 "re" 的文字。 請注意，輸入的字母越多，選項的數量越少。
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocompletebasic.png" alt-text="輸入 *po* 可顯示兩個建議" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocompletebasic.png" alt-text="使用基本的自動完成輸入" border="false":::
 
     就目前而言，您之前執行的建議指令碼可能比這個自動完成指令碼更有用。 若要讓自動完成更方便使用者使用，請考慮將其與建議的結果搭配使用。
 
@@ -315,7 +315,7 @@ ms.locfileid: "91739658"
     }
     ```
 
-    系統會在**結果**清單的最上方傳回一個自動完成選項，後面接著所有建議。
+    系統會在 **結果** 清單的最上方傳回一個自動完成選項，後面接著所有建議。
 
 1. 在檢視中，首先我們會實作一個技巧，讓淺灰色的自動完成文字呈現在使用者所輸入的粗體文字正下方。 HTML 會包含用於此目的的相對位置。 將 **TextBoxFor** 陳述式 (及其周圍的 &lt;div&gt; 陳述式) 變更如下，並注意，將被視為 **underneath** 的另一個搜尋方塊拉開其預設位置 39 個像素，該搜尋方塊就會位於我們一般搜尋方塊的正下方！
 
@@ -451,7 +451,7 @@ ms.locfileid: "91739658"
 
 1. 現在，執行應用程式。 在搜尋方塊中輸入"pa"。 您是否獲得 "palace" 這個自動完成建議，以及包含 "pa" 的兩間旅館？
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocomplete.png" alt-text="輸入 *po* 可顯示兩個建議" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocomplete.png" alt-text="以內嵌的自動完成及建議輸入" border="false":::
 
 1. 請嘗試使用 Tab 鍵接受自動完成建議，然後嘗試使用方向鍵和 Tab 鍵選擇建議，最後再次嘗試使用滑鼠按一下。 請確認指令碼會靈巧地處理所有這些情況。
 

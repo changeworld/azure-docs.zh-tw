@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 05/19/2020
 ms.openlocfilehash: d2780b3456a802904800b894f6849544cfee4e61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85105944"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010124"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>教學課程：使用企業安全性套件在 HDInsight 中設定 Apache Kafka 原則 (預覽)
 
@@ -40,7 +40,7 @@ ms.locfileid: "85105944"
 
 ## <a name="create-domain-users"></a>建立網域使用者
 
-請參閱[使用企業安全性套件建立 HDInsight 叢集](./apache-domain-joined-configure-using-azure-adds.md)，以了解如何建立 **sales_user** 和 **marketing_user** 網域使用者。 在生產情節中，網域使用者來自 Active Directory 租用戶。
+請參閱 [使用企業安全性套件建立 HDInsight 叢集](./apache-domain-joined-configure-using-azure-adds.md)，以了解如何建立 **sales_user** 和 **marketing_user** 網域使用者。 在生產情節中，網域使用者來自 Active Directory 租用戶。
 
 ## <a name="create-ranger-policy"></a>建立 Ranger 原則
 
@@ -112,7 +112,7 @@ ms.locfileid: "85105944"
 
 1. 下載[已加入 Apache Kafka 網域的產生者/取用者範例](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)。
 
-1. 依照**建置並部署範例**底下的步驟 2 和 3 進行操作 (在[教學課程：使用 Apache Kafka Producer 和 Consumer API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) 中)
+1. 依照 **建置並部署範例** 底下的步驟 2 和 3 進行操作 (在 [教學課程：使用 Apache Kafka Producer 和 Consumer API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) 中)
 
 1. 執行下列命令：
 
@@ -139,7 +139,7 @@ ms.locfileid: "85105944"
 
    範例： `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
-3. 依照**建置並部署範例**底下的步驟 3 進行操作 (在[教學課程：使用 Apache Kafka Producer 和 Consumer API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example))，以確定 `kafka-producer-consumer.jar` 也可供 **sales_user**使用。
+3. 依照 **建置並部署範例** 底下的步驟 3 進行操作 (在 [教學課程：使用 Apache Kafka Producer 和 Consumer API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example))，以確定 `kafka-producer-consumer.jar` 也可供 **sales_user** 使用。
 
    > [!NOTE]  
    > 在本教學課程中，請使用 "DomainJoined-Producer-Consumer" 專案下的 kafka-producer-consumer.jar (不是 Producer-Consumer 專案下的檔案，其適用於未加入網域的案例)。

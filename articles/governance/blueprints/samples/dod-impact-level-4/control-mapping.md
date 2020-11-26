@@ -4,11 +4,11 @@ description: 控制 DoD 影響等級 4 藍圖範例的對應。 每個控制措�
 ms.date: 10/26/2020
 ms.topic: sample
 ms.openlocfilehash: 376ddd68373026a93eaf08774cee0a1f8ce06bec
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675741"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019526"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>控制 DoD 影響等級 4 藍圖範例的對應
 

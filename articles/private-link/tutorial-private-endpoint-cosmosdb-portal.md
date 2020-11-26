@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: cd534fff5bfc56dbc4040db016563b06bef6d047
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a544d0c5fafbdaf9d272fed552fb38eda613292f
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145690"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522136"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>教學課程：使用 Azure 私人端點連線至 Azure Cosmos 帳戶
 
@@ -74,7 +74,7 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
 
 7. 選取 [儲存]。
 
-8. 選取 [安全性]  索引標籤。
+8. 選取 [安全性] 索引標籤。
 
 9. 在 [BastionHost] 底下，選取 [啟用]。 輸入此資訊：
 
@@ -143,9 +143,9 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
     |-----------------------|----------------------------------|
     | **專案詳細資料** |  |
     | 訂用帳戶 | 選取 Azure 訂用帳戶。 |
-    | 資源群組 | 選取 **myResourceGroup** 。 |
+    | 資源群組 | 選取 **myResourceGroup**。 |
     | **執行個體詳細資料** |  |
-    | 帳戶名稱 | 輸入 **mycosmosdb** 。 如果名稱無法使用，請輸入唯一的名稱。 |
+    | 帳戶名稱 | 輸入 **mycosmosdb**。 如果名稱無法使用，請輸入唯一的名稱。 |
     | API | 選取 [核心 (SQL)]。 |
     | Location | 選取 [美國東部]  。 |
     | 容量模式 | 保留預設值 [佈建的輸送量]。 |
@@ -201,8 +201,8 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
 
     | 設定 | 值 |
     | ------- | ----- |
-    | 資料庫識別碼 | 保留預設值 [新建]。 </br> 在文字方塊中輸入 **mydatabaseid** 。 |
-    | 輸送量 (400 - 100,000 RU/秒) | 保留預設值 [手動]。 </br> 在文字方塊中輸入 **400** 。 |
+    | 資料庫識別碼 | 保留預設值 [新建]。 </br> 在文字方塊中輸入 **mydatabaseid**。 |
+    | 輸送量 (400 - 100,000 RU/秒) | 保留預設值 [手動]。 </br> 在文字方塊中輸入 **400**。 |
     | 容器識別碼 | 輸入 **mycontainerid** |
     | 資料分割索引鍵 | 輸入 **/mykey** |
 
@@ -210,11 +210,11 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
 
 10. 在 CosmosDB 帳戶的 [設定] 區段中，選取 [金鑰]。
 
-11. 選取 **myResourceGroup** 。
+11. 選取 **myResourceGroup**。
 
 12. 選取您在上一個步驟中建立的儲存體帳戶。
 
-14. 選取並複製 **PRIMARY CONNECTION STRING** 。
+14. 選取並複製 **PRIMARY CONNECTION STRING**。
 
 ## <a name="test-connectivity-to-private-endpoint"></a>測試對私人端點的連線能力
 
@@ -222,9 +222,9 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
 
 1. 在左側瀏覽窗格中，選取 [資源群組]。
 
-2. 選取 **myResourceGroup** 。
+2. 選取 **myResourceGroup**。
 
-3. 選取 [myVM]  。
+3. 選取 [myVM]。
 
 4. 在 **myVM** 的 [概觀] 頁面上，選取 [連線] 然後 [堡壘]。
 
@@ -248,7 +248,7 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
 
     會針對 Cosmos DB 帳戶名稱傳回 **10.1.0.5** 的私人 IP 位址。  此位址位於您先前所建立虛擬網路的子網路中。
 
-9. 在虛擬機器上安裝 [Microsoft Azure 儲存體總管](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows)。
+9. 在虛擬機器上安裝 [Microsoft Azure 儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%252fazure%252fstorage%252fblobs%252ftoc.json)。
 
 10. 在安裝 [Microsoft Azure 儲存體總管] 之後，選取 [完成]。  保持方塊核取狀態以開啟應用程式。
 
@@ -275,11 +275,11 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
 
 1. 從左側功能表，選取 [資源群組]。
 
-2. 選取 **myResourceGroup** 。
+2. 選取 **myResourceGroup**。
 
 3. 選取 [刪除資源群組]。
 
-4. 在 [輸入資源群組名稱] 中，輸入 **myResourceGroup** 。
+4. 在 [輸入資源群組名稱] 中，輸入 **myResourceGroup**。
 
 5. 選取 [刪除]  。
 

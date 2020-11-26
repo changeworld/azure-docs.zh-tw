@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 157922cf597ff110b8d66ddaa44917bf2cb76029
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514940"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000788"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartlpa"></a>教學課程：Azure Active Directory 與 SmartLPA 整合
 
@@ -61,7 +61,7 @@ SmartLPA 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **SmartLPA** ，從結果面板中選取 [SmartLPA]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **SmartLPA**，從結果面板中選取 [SmartLPA]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
     ![結果清單中的 [SmartLPA]](common/search-new-app.png)
 
@@ -142,7 +142,7 @@ SmartLPA 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com

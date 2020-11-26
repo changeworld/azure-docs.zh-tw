@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/17/2020
-ms.openlocfilehash: c45b30fb16293652e169b89a6d93520509777a40
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 87b1f4ab7b7091970d7bb76ae1e00b06549fb0b4
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95554676"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96152643"
 ---
 **計算目標皆可重複用於多個訓練作業。** 例如，將遠端 VM 連結至您的工作區之後，您可以將其重複用於多個作業。 針對機器學習管線，請針對每個計算目標使用適當的[管線步驟](/python/api/azureml-pipeline-steps/azureml.pipeline.steps?preserve-view=true&view=azure-ml-py)。
 

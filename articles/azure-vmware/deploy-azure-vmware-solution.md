@@ -4,12 +4,12 @@ description: 了解如何使用在規劃階段中收集到的資訊來部署 Azu
 ms.topic: tutorial
 ms.author: tredavis
 ms.date: 11/09/2020
-ms.openlocfilehash: 264ad99b21150f391c367eba2da31f0d08f4ab08
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 47fc894fa1d6204a1bc2c912da7fcbb2394627fa
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94336330"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95484214"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>部署及設定 Azure VMware 解決方案
 
@@ -30,7 +30,7 @@ ms.locfileid: "94336330"
 [!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-private-cloud-azure-portal-steps.md)]
 
 >[!NOTE]
->如需此步驟的端對端概觀，請檢視 [Azure VMware 解決方案：部署](https://www.youtube.com/embed/1JLB3L2WDWI)影片。 
+>如需此步驟的端對端概觀，請檢視 [Azure VMware 解決方案：部署](https://www.youtube.com/embed/gng7JjxgayI)影片。
 
 ## <a name="create-the-jump-box"></a>建立跳躍箱
 

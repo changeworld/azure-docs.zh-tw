@@ -12,12 +12,12 @@ ms.date: 04/10/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d38f10e5a4f2562825ed2374317602b0640894ae
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 84a3ef7b41b17e85c594213246211d45911ac56a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275882"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953044"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>教學課程：在 Azure Active Directory B2C 中註冊 Web 應用程式
 
@@ -37,7 +37,7 @@ ms.locfileid: "92275882"
 
 ## <a name="register-a-web-application"></a>註冊 Web 應用程式
 
-若要在您的 Azure AD B2C 租用戶中註冊 Web 應用程式，您可以使用我們新的整合 **應用程式註冊** 體驗，或使用舊版 **應用程式 (舊版)** 體驗。 [深入了解新的體驗](https://aka.ms/b2cappregtraining)。
+若要在您的 Azure AD B2C 租用戶中註冊 Web 應用程式，您可以使用我們新的整合 **應用程式註冊** 體驗，或使用舊版 **應用程式 (舊版)** 體驗。 [深入了解新的體驗](./app-registrations-training-guide.md)。
 
 #### <a name="app-registrations"></a>[應用程式註冊](#tab/app-reg-ga/)
 
@@ -45,7 +45,7 @@ ms.locfileid: "92275882"
 1. 在入口網站工具列中選取 **目錄 + 訂用帳戶** 圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
 1. 在 Azure 入口網站中，搜尋並選取 [Azure AD B2C]。
 1. 選取 [應用程式註冊]，然後選取 [新增註冊]。
-1. 輸入應用程式的 [名稱]。 例如， *webapp1* 。
+1. 輸入應用程式的 [名稱]。 例如，*webapp1*。
 1. 在 [支援的帳戶類型] 中，選取 [任何識別提供者或組織目錄中的帳戶 (適用於以使用者流程驗證使用者)]。
 1. 在 [重新導向 URI] 底下，選取 [Web]，然後在 URL 文字方塊中輸入 `https://jwt.ms`。
 
@@ -65,9 +65,9 @@ ms.locfileid: "92275882"
 1. 在入口網站工具列中選取 **目錄 + 訂用帳戶** 圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
 1. 在 Azure 入口網站中，搜尋並選取 [Azure AD B2C]。
 1. 選取 [應用程式 (舊版)]，然後選取 [新增]。
-1. 輸入應用程式的名稱。 例如， *webapp1* 。
+1. 輸入應用程式的名稱。 例如，*webapp1*。
 1. 針對 [包含 Web 應用程式/Web API]，選取 [是]。
-1. 針對 **回覆 URL** ，請輸入 Azure AD B2C 應傳回您的應用程式所要求任何權杖的端點。 例如，您可以將其設定為在 `http://localhost:5000` 進行本機接聽。 您可以隨時在已註冊的應用程式中新增及修改重新導向 URI。
+1. 針對 **回覆 URL**，請輸入 Azure AD B2C 應傳回您的應用程式所要求任何權杖的端點。 例如，您可以將其設定為在 `http://localhost:5000` 進行本機接聽。 您可以隨時在已註冊的應用程式中新增及修改重新導向 URI。
 
     下列限制會套用至重新導向 URI：
 
@@ -84,16 +84,16 @@ ms.locfileid: "92275882"
 
 #### <a name="app-registrations"></a>[應用程式註冊](#tab/app-reg-ga/)
 
-1. 在 [Azure AD B2C - 應用程式註冊] 頁面中，選取您建立的應用程式，例如 *webapp1* 。
+1. 在 [Azure AD B2C - 應用程式註冊] 頁面中，選取您建立的應用程式，例如 *webapp1*。
 1. 在左側功能表的 [管理] 下，選取 [驗證和密碼]。
 1. 選取 [新增用戶端密碼]。
-1. 在 [描述] 方塊中，輸入用戶端密碼的描述。 例如， *clientsecret1* 。
+1. 在 [描述] 方塊中，輸入用戶端密碼的描述。 例如，*clientsecret1*。
 1. 在 [到期] 下，選取密碼有效的持續時間，然後選取 [新增]。
-1. 記錄密碼的 **值** 。 您可以使用此值，作為應用程式程式碼中的應用程式密碼。
+1. 記錄密碼的 **值**。 您可以使用此值，作為應用程式程式碼中的應用程式密碼。
 
 #### <a name="applications-legacy"></a>[應用程式 (舊版)](#tab/applications-legacy/)
 
-1. 在 [Azure AD B2C - 應用程式] 頁面中，選取您建立的應用程式，例如 *webapp1* 。
+1. 在 [Azure AD B2C - 應用程式] 頁面中，選取您建立的應用程式，例如 *webapp1*。
 1. 選取 [金鑰]，然後選取 [產生金鑰]。
 1. 選取 [儲存] 以檢視金鑰。 請記下 [應用程式金鑰] 值。 您可以使用此值，作為應用程式程式碼中的應用程式密碼。
 

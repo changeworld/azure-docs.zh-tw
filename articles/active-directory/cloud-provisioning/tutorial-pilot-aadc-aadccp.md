@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77a8e6948b9912061801fefaa63d2f49611014aa
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6b510464145f434f761cc28ba4e1c1361f983f8b
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651697"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237386"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>針對現有的同步 AD 樹系進行雲端佈建試驗 
 
@@ -126,7 +126,7 @@ Azure AD Connect 同步會使用排程器來同步處理您內部部署目錄中
 
 4. 此作業完成後，就會啟動組態精靈。  以 Azure AD 全域管理員帳戶登入。
 5. 在 [連線 Active Directory] 畫面上，按一下 [新增目錄]，然後以您的 Active Directory 系統管理員帳戶登入。  此作業將會新增您的內部部署目錄。  按 [下一步] 。</br>
-![此螢幕擷取畫面顯示已輸入目錄值的 [連線 Active Directory] 畫面。](media/how-to-install/install-3.png)</br>
+![此螢幕擷取畫面顯示已輸入目錄值的 [連線 Active Directory] 畫面。](media/how-to-install/install-3a.png)</br>
 
 6. 在 [設定完成] 畫面上，按一下 [確認]。  此作業將會註冊並重新啟動代理程式。</br>
 ![此螢幕擷取畫面顯示已選取 [確認] 按鈕的 [組態完成] 畫面。](media/how-to-install/install-4a.png)</br>

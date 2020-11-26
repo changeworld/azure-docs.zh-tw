@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: 64856d0c9a06f57eb25a0cbc9279d1c09992f0d3
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 97795b2a693b68d1bd73a00f7b3e5ee3d4679545
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147601"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522119"
 ---
 # <a name="tutorial-connect-to-a-storage-account-using-an-azure-private-endpoint"></a>教學課程：使用 Azure 私人端點連線至儲存體帳戶
 
@@ -74,7 +74,7 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
 
 7. 選取 [儲存]。
 
-8. 選取 [安全性]  索引標籤。
+8. 選取 [安全性] 索引標籤。
 
 9. 在 [BastionHost] 底下，選取 [啟用]。 輸入此資訊：
 
@@ -146,7 +146,7 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
     | 訂用帳戶 | 選取您的 Azure 訂用帳戶 |
     | 資源群組 | 選取 **myResourceGroup** |
     | **執行個體詳細資料** |  |
-    | 儲存體帳戶名稱 | 輸入 **mystorageaccount** 。 如果名稱無法使用，請輸入唯一的名稱。 |
+    | 儲存體帳戶名稱 | 輸入 **mystorageaccount**。 如果名稱無法使用，請輸入唯一的名稱。 |
     | Location | 選取 [美國東部] |
     | 效能 | 保留預設值 [標準] |
     | 帳戶種類 | 保留預設值 [儲存體 (一般用途 v2)] |
@@ -182,7 +182,7 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
 
 10. 在左側瀏覽窗格中，選取 [資源群組]。
 
-11. 選取 **myResourceGroup** 。
+11. 選取 **myResourceGroup**。
 
 12. 選取您在上一個步驟中建立的儲存體帳戶。
 
@@ -196,9 +196,9 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
 
 1. 在左側瀏覽窗格中，選取 [資源群組]。
 
-2. 選取 **myResourceGroup** 。
+2. 選取 **myResourceGroup**。
 
-3. 選取 [myVM]  。
+3. 選取 [myVM]。
 
 4. 在 **myVM** 的 [概觀] 頁面上，選取 [連線] 然後 [堡壘]。
 
@@ -222,7 +222,7 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
 
     會針對儲存體帳戶名稱傳回 **10.1.0.5** 的私人 IP 位址。  此位址位於您先前所建立虛擬網路的子網路中。
 
-9. 在虛擬機器上安裝 [Microsoft Azure 儲存體總管](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows)。
+9. 在虛擬機器上安裝 [Microsoft Azure 儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%252fazure%252fstorage%252fblobs%252ftoc.json)。
 
 10. 在安裝 [Microsoft Azure 儲存體總管] 之後，選取 [完成]。  保持方塊核取狀態以開啟應用程式。
 
@@ -248,11 +248,11 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
 
 1. 從左側功能表，選取 [資源群組]。
 
-2. 選取 **myResourceGroup** 。
+2. 選取 **myResourceGroup**。
 
 3. 選取 [刪除資源群組]。
 
-4. 在 [輸入資源群組名稱] 中，輸入 **myResourceGroup** 。
+4. 在 [輸入資源群組名稱] 中，輸入 **myResourceGroup**。
 
 5. 選取 [刪除]  。
 

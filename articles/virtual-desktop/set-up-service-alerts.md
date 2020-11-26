@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0391102683ebafba63c429072c8afa9f24223955
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66617afee11b02eae0ba5e36d9ff91cbdf21911f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88009421"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023100"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>教學課程：設定服務警示
 
@@ -25,7 +25,7 @@ ms.locfileid: "88009421"
 > [!div class="checklist"]
 > * 建立及設定服務警示。
 
-若要深入了解 Azure 服務健康狀態，請參閱 [Azure 健康狀態文件](https://docs.microsoft.com/azure/service-health/)。
+若要深入了解 Azure 服務健康狀態，請參閱 [Azure 健康狀態文件](../service-health/index.yml)。
 
 ## <a name="create-service-alerts"></a>建立服務警示
 
@@ -46,7 +46,7 @@ ms.locfileid: "88009421"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 選取 [服務健康狀態]  。
-3. 遵循[建立服務通知的活動記錄警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal)中的指示，設定您的警示和通知。
+3. 遵循[建立服務通知的活動記錄警示](../service-health/alerts-activity-log-service-notifications-portal.md?toc=%2fazure%2fservice-health%2ftoc.json)中的指示，設定您的警示和通知。
 
 ## <a name="next-steps"></a>後續步驟
 

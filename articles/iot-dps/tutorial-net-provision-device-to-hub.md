@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 55195949cfaa741389f38deaea69806c568c0ce6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9a14ee6ee3e10b36d64ec11fc23807efe2bfaf2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89008262"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966559"
 ---
 # <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>教學課程：使用 Azure IoT 中樞佈建服務用戶端 (.NET) 將裝置註冊到 IoT 中樞
 
@@ -27,7 +27,7 @@ ms.locfileid: "89008262"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-在繼續之前，請務必依照[將裝置設定為使用 Azure IoT 中樞裝置佈建服務來進行佈建](./tutorial-set-up-device.md)教學課程所討論的方法，來設定裝置和其*硬體安全模組*。
+在繼續之前，請務必依照 [將裝置設定為使用 Azure IoT 中樞裝置佈建服務來進行佈建](./tutorial-set-up-device.md)教學課程所討論的方法，來設定裝置和其 *硬體安全模組*。
 
 * Visual Studio
 
@@ -42,12 +42,12 @@ ms.locfileid: "89008262"
 此步驟涉及將裝置的唯一安全性構件新增至裝置佈建服務。 這些安全性構件如下所示：
 
 - 若為 TPM 架構的裝置：
-    - 簽署金鑰  ，每個 TPM 晶片或模擬都會有唯一的簽署金鑰。 如需詳細資訊，請參閱[了解 TPM 簽署金鑰](https://technet.microsoft.com/library/cc770443.aspx)。
+    - 簽署金鑰  ，每個 TPM 晶片或模擬都會有唯一的簽署金鑰。 如需詳細資訊，請參閱[了解 TPM 簽署金鑰](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770443(v=ws.11))。
     - 註冊識別碼  ，用來唯一識別命名空間/範圍中的裝置。 註冊識別碼與裝置識別碼不一定相同。 每個裝置都必須有註冊識別碼。 若為 TPM 架構的裝置，註冊識別碼可能會衍生自該 TPM 自身，例如，TPM 簽署金鑰的 SHA-256 雜湊。
 
 - 若為 X.509 架構的裝置：
-    - [核發給裝置的 X.509 憑證](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)，其格式為 .pem  或 .cer  檔案。 若要進行個別註冊，您必須對 X.509 系統使用「分葉憑證」  ，若要進行群組註冊，則必須使用「根憑證」  或等同的「簽署者憑證」  。
-    - 註冊識別碼  ，用來唯一識別命名空間/範圍中的裝置。 註冊識別碼與裝置識別碼不一定相同。 每個裝置都必須有註冊識別碼。 對於以 X.509 為基礎的裝置，註冊識別碼會衍生自憑證的通用名稱 (CN)。 如需這些需求的詳細資訊，請參閱[裝置概念](https://docs.microsoft.com/azure/iot-dps/concepts-device)。
+    - [核發給裝置的 X.509 憑證](/windows/win32/seccertenroll/about-x-509-public-key-certificates)，其格式為 .pem  或 .cer  檔案。 若要進行個別註冊，您必須對 X.509 系統使用「分葉憑證」  ，若要進行群組註冊，則必須使用「根憑證」  或等同的「簽署者憑證」  。
+    - 註冊識別碼  ，用來唯一識別命名空間/範圍中的裝置。 註冊識別碼與裝置識別碼不一定相同。 每個裝置都必須有註冊識別碼。 對於以 X.509 為基礎的裝置，註冊識別碼會衍生自憑證的通用名稱 (CN)。 如需這些需求的詳細資訊，請參閱[裝置概念](./concepts-service.md)。
 
 有兩種方式可向裝置佈建服務註冊裝置：
 

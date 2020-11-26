@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.openlocfilehash: 05c89c8628b4d4ce10ca4ba12c720b410b72601f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457719"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005141"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>教學課程：Azure Active Directory 與 Asana 整合
 
@@ -63,7 +63,7 @@ ms.locfileid: "92457719"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Asana** ，從結果面板中選取 [Asana]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Asana**，從結果面板中選取 [Asana]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Asana](common/search-new-app.png)
 
@@ -153,7 +153,7 @@ ms.locfileid: "92457719"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -200,7 +200,7 @@ ms.locfileid: "92457719"
 
     ![建立 Azure AD 測試使用者](./media/asana-tutorial/tutorial_asana_12.png)
 
-2. 在文字方塊中輸入使用者的電子郵件 (如 **britta.simon\@contoso.com** )，然後選取 [邀請]  。
+2. 在文字方塊中輸入使用者的電子郵件 (如 **britta.simon\@contoso.com**)，然後選取 [邀請]  。
 
 3. 按一下 [傳送邀請]  。 新的使用者會在其電子郵件帳戶收到一封電子郵件。 使用者將需要建立並驗證帳戶。
 

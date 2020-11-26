@@ -9,12 +9,12 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-python
-ms.openlocfilehash: 394e735be5da65ffa75e10200589a4adb4e7cad2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5fce5871b4bd6c3e2353f7df04018e88b86ec4c7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313931"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912513"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>教學課程：Azure Data Lake Storage Gen2、Azure Databricks 和 Spark
 
@@ -35,20 +35,20 @@ ms.locfileid: "93313931"
 
   請參閱[建立儲存體帳戶以與 Azure Data Lake Storage Gen2 搭配使用](create-data-lake-storage-account.md)。
 
-* 確定您已對使用者帳戶指派[儲存體 Blob 資料參與者角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac)。
+* 確定您已對使用者帳戶指派[儲存體 Blob 資料參與者角色](../common/storage-auth-aad-rbac-portal.md)。
 
-* 安裝 AzCopy v10。 請參閱[使用 AzCopy v10 轉送資料](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* 安裝 AzCopy v10。 請參閱[使用 AzCopy v10 轉送資料](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-* 建立服務主體。 請參閱[如何：使用入口網站來建立可存取資源的 Azure AD 應用程式和服務主體](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
+* 建立服務主體。 請參閱[如何：使用入口網站來建立可存取資源的 Azure AD 應用程式和服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
   在執行該文章中的步驟時，您必須執行幾個特定動作。
 
-  :heavy_check_mark:在執行該文章的[將應用程式指派給角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)一節中的步驟時，請確實將 [儲存體 Blob 資料參與者]  角色指派給服務主體。
+  :heavy_check_mark:在執行該文章的[將應用程式指派給角色](../../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)一節中的步驟時，請確實將 [儲存體 Blob 資料參與者]  角色指派給服務主體。
 
   > [!IMPORTANT]
   > 請務必在 Data Lake Storage Gen2 儲存體帳戶的範圍中指派該角色。 您可以將角色指派給父資源群組或訂用帳戶，但在這些角色指派傳播至儲存體帳戶之前，您將會收到與權限有關的錯誤。
 
-  :heavy_check_mark:在執行該文章的[取得值以便登入](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)一節中的步驟時，請將租用戶識別碼、應用程式識別碼和用戶端密碼值貼到文字檔中。 您很快就會用到這些資料。
+  :heavy_check_mark:在執行該文章的[取得值以便登入](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)一節中的步驟時，請將租用戶識別碼、應用程式識別碼和用戶端密碼值貼到文字檔中。 您很快就會用到這些資料。
 
 ### <a name="download-the-flight-data"></a>下載航班資料
 

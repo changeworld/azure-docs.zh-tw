@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.custom: devx-track-python
-ms.openlocfilehash: 6a113b3a3df475853f3690a0e932378bc0e2ab02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4455f21ae7243ab7a15e8d746d6674289f9fdb5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87844621"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952993"
 ---
 # <a name="tutorial-enable-authentication-in-a-python-web-application-with-azure-ad-b2c"></a>教學課程：在 Python Web 應用程式中透過 Azure AD B2C 啟用驗證
 
@@ -37,7 +37,7 @@ ms.locfileid: "87844621"
 您需要先備妥下列 Azure AD B2C 資源，才能繼續本教學課程中的步驟：
 
 * [Azure AD B2C 租用戶](tutorial-create-tenant.md)
-* 已在您租用戶中[註冊的應用程式](tutorial-register-applications.md)，以及其*應用程式 (用戶端) 識別碼*和*用戶端密碼*
+* 已在您租用戶中 [註冊的應用程式](tutorial-register-applications.md)，以及其 *應用程式 (用戶端) 識別碼* 和 *用戶端密碼*
 * 您租用戶中[建立的使用者流程](tutorial-create-user-flows.md)
 
 此外，您的開發環境中需要下列項目：
@@ -49,7 +49,7 @@ ms.locfileid: "87844621"
 
 在已完成的第二個必要教學課程中，您在 Azure AD B2C 中註冊了 Web 應用程式。 若要啟用本教學課程中範例程式碼的通訊，請在應用程式註冊中新增回覆 URL (也稱為重新導向 URI)。
 
-若要更新 Azure AD B2C 租用戶中的應用程式，您可以使用我們全新整合的**應用程式註冊**體驗，或使用舊版**應用程式 (舊版)** 體驗。 [深入了解新的體驗](https://aka.ms/b2cappregtraining)。
+若要更新 Azure AD B2C 租用戶中的應用程式，您可以使用我們全新整合的 **應用程式註冊** 體驗，或使用舊版 **應用程式 (舊版)** 體驗。 [深入了解新的體驗](./app-registrations-training-guide.md)。
 
 #### <a name="app-registrations"></a>[應用程式註冊](#tab/app-reg-ga/)
 
@@ -95,8 +95,8 @@ git clone https://github.com/Azure-Samples/ms-identity-python-webapp.git
 1. 在編輯器中開啟 *app_config.py* 檔案。
 1. 將 `b2c_tenant` 值更新為 Azure AD B2C 租用戶的名稱，例如 *contosob2c*。
 1. 更新每個 `*_user_flow` 值，以符合您建立作為必要條件的使用者流程名稱。
-1. 將 `CLIENT_ID` 值更新為 Web 應用程式的**應用程式 (用戶端) 識別碼**，而此 Web 應用程式已被您註冊為必要條件。
-1. 將 `CLIENT_SECRET` 值更新為您已在必要條件中建立的**用戶端密碼**值。 為了提高安全性，考慮將其改存在**環境變數**中，依註解中的建議進行。
+1. 將 `CLIENT_ID` 值更新為 Web 應用程式的 **應用程式 (用戶端) 識別碼**，而此 Web 應用程式已被您註冊為必要條件。
+1. 將 `CLIENT_SECRET` 值更新為您已在必要條件中建立的 **用戶端密碼** 值。 為了提高安全性，考慮將其改存在 **環境變數** 中，依註解中的建議進行。
 
 *app_config.py* 的頂端區段現在看起來應該類似下列程式碼片段：
 
@@ -121,7 +121,7 @@ CLIENT_SECRET = "22222222-2222-2222-2222-222222222222" # Placeholder - for use O
 ```
 
 > [!WARNING]
-> 如程式碼片段註解中所述，我們建議您**不要以純文字將秘密儲存**在應用程式碼中。 程式碼範例中使用硬式編碼變數，*只是為了方便*而已。 請考慮使用環境變數或秘密存放區，例如 Azure Key Vault。
+> 如程式碼片段註解中所述，我們建議您 **不要以純文字將秘密儲存** 在應用程式碼中。 程式碼範例中使用硬式編碼變數，*只是為了方便* 而已。 請考慮使用環境變數或秘密存放區，例如 Azure Key Vault。
 
 ## <a name="run-the-sample"></a>執行範例
 
@@ -162,13 +162,13 @@ CLIENT_SECRET = "22222222-2222-2222-2222-222222222222" # Placeholder - for use O
 
     請使用有效的電子郵件地址，並使用驗證碼進行驗證。 設定密碼。 輸入要求的屬性值。
 
-    :::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-02.png" alt-text="網頁瀏覽器顯示在本機執行的 Python Flask Web 應用程式":::
+    :::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-02.png" alt-text="Azure AD B2C 使用者流程所顯示的註冊頁面":::
 
 1. 選取 [建立]，在 Azure AD B2C 目錄中建立本機帳戶。
 
 當您選取 [建立] 時，應用程式會顯示已登入之使用者的名稱。
 
-:::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-03.png" alt-text="網頁瀏覽器顯示在本機執行的 Python Flask Web 應用程式":::
+:::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-03.png" alt-text="網頁瀏覽器顯示使用者登入的 Python Flask Web 應用程式":::
 
 如果想要測試登入，請選取 [登出] 連結，然後選取 [登入]，以您註冊時所輸入的電子郵件地址和密碼登入。
 

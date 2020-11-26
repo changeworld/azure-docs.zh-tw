@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 3a5489241aa15ce105dbe4d89086aff00373ca55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f21db00ecc9ff2668698f53a4d20f5bae525721
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90603963"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95520436"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>教學課程：跨區域移動 Azure VM
 
@@ -44,7 +44,7 @@ ms.locfileid: "90603963"
 -  檢查您在包含要移動之資源的訂用帳戶上，有「擁有者」存取權。
     - 第一次在 Azure 訂用帳戶中新增特定來源和目的地組的資源時，Resource Mover 會建立訂用帳戶所信任的[系統指派受控識別](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (之前稱為「受控服務識別 (MSI)」)。
     - 若要建立身分識別，並為其指派必要的角色 (來源訂用帳戶中的參與者或使用者存取管理員)，您用來新增資源的帳戶需要訂用帳戶「擁有者」權限。 [深入了解](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) Azure 角色。
-- 訂用帳戶需要足夠的配額，才能建立您要在目標區域中移動的資源。 如果沒有配額，請[要求額外的限制](/azure/azure-resource-manager/management/azure-subscription-service-limits)。
+- 訂用帳戶需要足夠的配額，才能建立您要在目標區域中移動的資源。 如果沒有配額，請[要求額外的限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 - 確認與您要移動 VM 的目標區域相關聯的定價和費用。 請使用[定價計算機](https://azure.microsoft.com/pricing/calculator/)協助確認。
     
 
@@ -71,31 +71,31 @@ ms.locfileid: "90603963"
 - 不會顯示已新增來跨區域移動的資源。
 - 您可以將資源移至與來源區域位於相同訂用帳戶中的目標區域。 如果要變更訂用帳戶，可以在移動資源後執行此動作。
 
-1. 在 Azure 入口網站中，搜尋並選取 [資源移動器]。 然後，在**服務**底下，選取 [Azure Resource Mover]。
+1. 在 Azure 入口網站中，搜尋並選取 [資源移動器]。 然後，在 **服務** 底下，選取 [Azure Resource Mover]。
 
     ![Azure 入口網站中資源移動器的搜尋結果](./media/tutorial-move-region-virtual-machines/search.png)
 
-2. 在**概觀**中，按一下 [開始使用]。
+2. 在 **概觀** 中，按一下 [開始使用]。
 
     ![新增要移至另一個區域之資源的按鈕](./media/tutorial-move-region-virtual-machines/get-started.png)
 
-3. 在**移動資源** > **來源 + 目的地**中，選取來源訂用帳戶和區域。
-4. 在**目的地**中，選取您要將 VM 移至哪一個區域。 然後按一下 [下一步]  。
+3. 在 **移動資源** > **來源 + 目的地** 中，選取來源訂用帳戶和區域。
+4. 在 **目的地** 中，選取您要將 VM 移至哪一個區域。 然後按一下 [下一步]  。
 
     ![選取來源和目標區域的頁面](./media/tutorial-move-region-virtual-machines/source-target.png)
 
-6. 在**要移動的資源** 中，按一下 [選取資源]。
-7. 在**選取資源**中，選取 VM。 您只能新增[支援移動的資源](#check-vm-requirements)。 然後按一下 [完成]。
+6. 在 **要移動的資源** 中，按一下 [選取資源]。
+7. 在 **選取資源** 中，選取 VM。 您只能新增[支援移動的資源](#check-vm-requirements)。 然後按一下 [完成]。
 
     ![選取要移動之 VM 的頁面](./media/tutorial-move-region-virtual-machines/select-vm.png)
 
-8.  在要**移動的資源**中，按一下 [下一步]。
-9. 在**檢閱 + 新增**中，檢查來源和目的地設定。 
+8.  在要 **移動的資源** 中，按一下 [下一步]。
+9. 在 **檢閱 + 新增** 中，檢查來源和目的地設定。 
 
     ![用來檢閱設定並繼續移動的頁面](./media/tutorial-move-region-virtual-machines/review.png)
 10. 按一下 [繼續]，開始新增資源。
 11. 成功新增程序後，按一下通知圖示中的 [新增要移動的資源]。
-12. 按一下通知之後，檢閱**跨區域**頁面上的資源。
+12. 按一下通知之後，檢閱 **跨區域** 頁面上的資源。
 
 > [!NOTE]
 > - 新增的資源處於「準備擱置」狀態。
@@ -103,21 +103,21 @@ ms.locfileid: "90603963"
 
 ## <a name="resolve-dependencies"></a>解析相依性
 
-1. 如果資源在**問題**資料行中顯示「驗證相依性」訊息，請按一下 [驗證相依性] 按鈕。 驗證程序開始。
+1. 如果資源在 **問題** 資料行中顯示「驗證相依性」訊息，請按一下 [驗證相依性] 按鈕。 驗證程序開始。
 2. 如果找到相依性，請按一下 [新增相依性]。 
-3. 在**新增相依性**中，選取相依資源 > **新增相依性**。 在通知中監視進度。
+3. 在 **新增相依性** 中，選取相依資源 > **新增相依性**。 在通知中監視進度。
 
     ![新增相依性](./media/tutorial-move-region-virtual-machines/add-dependencies.png)
 
 4. 視需要新增其他相依性，然後再次驗證相依性。 
     ![新增其他相依性的頁面](./media/tutorial-move-region-virtual-machines/add-additional-dependencies.png)
 
-4. 在**跨區域**頁面上，確認資源現在處於「準備擱置」狀態，且沒有任何問題。
+4. 在 **跨區域** 頁面上，確認資源現在處於「準備擱置」狀態，且沒有任何問題。
 
     ![顯示資源處於準備擱置狀態的頁面](./media/tutorial-move-region-virtual-machines/prepare-pending.png)
 
 > [!NOTE]
-> 如果要在開始移動前編輯目標設定，請在資源的**目的地組態**資料行中選取連結，然後編輯設定。 如果您編輯目標 VM 設定，目標 VM 大小不應小於來源 VM 大小。  
+> 如果要在開始移動前編輯目標設定，請在資源的 **目的地組態** 資料行中選取連結，然後編輯設定。 如果您編輯目標 VM 設定，目標 VM 大小不應小於來源 VM 大小。  
 
 ## <a name="move-the-source-resource-group"></a>移動來源資源群組 
 
@@ -129,8 +129,8 @@ ms.locfileid: "90603963"
 
 請如下所述加以準備：
 
-1. 在**跨區域**中，選取來源資源群組 > **準備**。
-2. 在**準備資源**中，按一下 [準備]。
+1. 在 **跨區域** 中，選取來源資源群組 > **準備**。
+2. 在 **準備資源** 中，按一下 [準備]。
 
     ![準備資源群組](./media/tutorial-move-region-virtual-machines/prepare-resource-group.png)
 
@@ -142,16 +142,16 @@ ms.locfileid: "90603963"
 
 開始移動，如下所示：
 
-1. 在**跨區域**中，選取資源群組 > **起始移動**
-2. 在**移動資源**中，按一下 [起始移動]。 資源群組會移至「正在起始移動」狀態。
+1. 在 **跨區域** 中，選取資源群組 > **起始移動**
+2. 在 **移動資源** 中，按一下 [起始移動]。 資源群組會移至「正在起始移動」狀態。
 3. 起始移動後，系統會根據產生的 ARM 範本來建立目標資源群組。 來源資源群組會移至「認可移動擱置」狀態。
 
     ![按一下起始移動按鈕](./media/tutorial-move-region-virtual-machines/commit-move-pending.png)
 
 若要認可並完成移動程序：
 
-1. 在**跨區域**中，選取資源群組 > **認可移動**。
-2. 在**移動資源**中，按一下 [認可]。
+1. 在 **跨區域** 中，選取資源群組 > **認可移動**。
+2. 在 **移動資源** 中，按一下 [認可]。
 
 > [!NOTE]
 > 認可移動後，來源資源群組會處於「刪除來源擱置」狀態。
@@ -160,7 +160,7 @@ ms.locfileid: "90603963"
 
 現在已移動來源資源群組，您可以準備移動其他資源。
 
-1. 在**跨區域**中，選取要準備的資源。 
+1. 在 **跨區域** 中，選取要準備的資源。 
 
     ![選取準備其他資源的頁面](./media/tutorial-move-region-virtual-machines/prepare-other.png)
 
@@ -179,8 +179,8 @@ ms.locfileid: "90603963"
 
 準備好資源後，您就可以開始移動。 
 
-1. 在**跨區域**中，選取狀態為「起始移動擱置」的資源。 然後按一下 [起始移動]。
-2. 在**移動資源**中，按一下 [起始移動]。
+1. 在 **跨區域** 中，選取狀態為「起始移動擱置」的資源。 然後按一下 [起始移動]。
+2. 在 **移動資源** 中，按一下 [起始移動]。
 
     ![按一下起始移動按鈕](./media/tutorial-move-region-virtual-machines/initiate-move.png)
 
@@ -206,8 +206,8 @@ ms.locfileid: "90603963"
 
 您可以捨棄移動，如下所示：
 
-1. 在**跨區域**中，選取具有「認可移動擱置」狀態的資源，然後按一下 [捨棄移動]。
-2. 在**捨棄移動**中，按一下 [捨棄]。
+1. 在 **跨區域** 中，選取具有「認可移動擱置」狀態的資源，然後按一下 [捨棄移動]。
+2. 在 **捨棄移動** 中，按一下 [捨棄]。
 3. 在通知列中追蹤移動進度。
 
 
@@ -218,8 +218,8 @@ ms.locfileid: "90603963"
 
 如果要完成移動程序，請認可移動。 
 
-1. 在**跨區域**中，選取具有「認可移動擱置」狀態的資源，然後按一下 [認可移動]。
-2. 在**認可資源**中，按一下 [認可]。
+1. 在 **跨區域** 中，選取具有「認可移動擱置」狀態的資源，然後按一下 [認可移動]。
+2. 在 **認可資源** 中，按一下 [認可]。
 
     ![用來認可資源以完成移動的頁面](./media/tutorial-move-region-virtual-machines/commit-resources.png)
 
@@ -242,7 +242,7 @@ ms.locfileid: "90603963"
 
 移動後，您可以選擇是否要除除來源區域中的資源。 
 
-1. 在**跨區域**中，按一下您想要刪除之每個來源資源的名稱。
+1. 在 **跨區域** 中，按一下您想要刪除之每個來源資源的名稱。
 2. 在每個資源的屬性頁面上，選取 [刪除]。
 
 ## <a name="delete-additional-resources-created-for-move"></a>刪除為移動建立的其他資源

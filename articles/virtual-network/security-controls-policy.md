@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure 虛擬網路的 Azure 原則法規合規性控制
 description: 列出可供 Azure 虛擬網路使用的 Azure 原則法規合規性控制。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.topic: sample
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 9000b14b4d1ac1929fc6098218977f7d0593cdf2
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: ff3486e1ed4e38aa04c745c2a37f07eab7c87c33
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697830"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992622"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-virtual-network"></a>適用於 Azure 虛擬網路的 Azure 原則法規合規性控制
 

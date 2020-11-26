@@ -7,18 +7,17 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 0edcdbfec07c032f095cc03eb91be8cf0785b58a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 53884c2f6d9f2e8cbb5676e9ac10e8fb15ed919e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844841"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024274"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>搭配 Azure Spring Cloud 使用斷路器儀表板
 
 **本文適用於：** ✔️ Java
 
-::: zone pivot="programming-language-java"
 Spring [Cloud Netflix Turbine](https://github.com/Netflix/Turbine) 已廣泛用於彙總多個 [Hystrix](https://github.com/Netflix/Hystrix) 計量串流，讓您可以使用 Hystrix 儀表板在單一檢視中監視串流。 本教學課程將示範如何在 Azure Spring Cloud 上使用這些功能。
 > [!NOTE]
 > Netflix Hystrix 廣泛用於許多現有的 Spring Cloud 應用程式中，但已不再進行開發。 如果您正在開發新專案，請改用 Spring Cloud Circuit Breaker 的實作項目，例如 [resilience4j](https://github.com/resilience4j/resilience4j)。 不同於本教學課程中顯示的 Turbine，新的 Spring Cloud Circuit Breaker 架構會將其計量資料管線的所有實作合併到 Micrometer。 我們仍在努力讓 Azure Spring Cloud 可支援 Micrometer，因此本教學課程不包含此相關內容。
@@ -84,4 +83,4 @@ az spring-cloud app deploy -n hystrix-turbine --jar-path hystrix-turbine/target/
 ## <a name="next-steps"></a>後續步驟
 * [在 Azure CLI 上佈建服務執行個體](./spring-cloud-quickstart.md#provision-an-instance-of-azure-spring-cloud)
 * [準備 Java Spring 應用程式以部署到 Azure Spring Cloud](./spring-cloud-tutorial-prepare-app-deployment.md)
-::: zone-end
+

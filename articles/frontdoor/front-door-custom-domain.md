@@ -13,11 +13,11 @@ ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: duau
 ms.openlocfilehash: e153edd807dcb119c34f60dc34e33fed510916bb
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277605"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011518"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>教學課程：將自訂網域新增到您的前端
 本教學課程說明如何將自訂網域新增至您的 Front Door。 使用 Azure Front Door 進行應用程式傳遞時，如果您想要在使用者要求中顯示您自己的網域名稱，則需要自訂網域。 有可見的網域名稱對您的客戶而言較為方便，並且也有助於宣傳商標。
@@ -33,7 +33,7 @@ ms.locfileid: "92277605"
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 > [!NOTE]
-> Front Door **不**支援具有 [punycode](https://en.wikipedia.org/wiki/Punycode) 字元的自訂網域。 
+> Front Door **不** 支援具有 [punycode](https://en.wikipedia.org/wiki/Punycode) 字元的自訂網域。 
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -61,7 +61,7 @@ ms.locfileid: "92277605"
 
 1. 登入自訂網域的網域提供者網站。
 
-2. 找出管理 DNS 記錄的頁面 (可查閱提供者的文件或，尋找網站上標示為**網域名稱**、**DNS** 或**名稱伺服器管理**的區域)。 
+2. 找出管理 DNS 記錄的頁面 (可查閱提供者的文件或，尋找網站上標示為 **網域名稱**、**DNS** 或 **名稱伺服器管理** 的區域)。 
 
 3. 建立自訂網域的 CNAME 記錄項目，並完成下表說明的欄位 (欄位名稱可能有所不同)：
 
@@ -121,7 +121,7 @@ ms.locfileid: "92277605"
    Azure 會確認您所輸入的自訂網域名稱有 CNAME 記錄存在。 如果 CNAME 正確，就會驗證您的自訂網域。
 
 >[!WARNING]
-> 您**必須**確定 Front Door 中的每個前端主機 (包括自訂網域) 都具有一個路由規則，其中含有與其相關聯的預設路徑 ('/\*')。 也就是說，在您的所有路由規則中，至少必須有一個適用於您每個前端主機的路由規則，這類主機會以預設路徑 ('/\*') 來定義。 無法執行這項操作，可能導致您的使用者流量無法被正確路由傳送。
+> 您 **必須** 確定 Front Door 中的每個前端主機 (包括自訂網域) 都具有一個路由規則，其中含有與其相關聯的預設路徑 ('/\*')。 也就是說，在您的所有路由規則中，至少必須有一個適用於您每個前端主機的路由規則，這類主機會以預設路徑 ('/\*') 來定義。 無法執行這項操作，可能導致您的使用者流量無法被正確路由傳送。
 
 ## <a name="verify-the-custom-domain"></a>驗證自訂網域
 
@@ -138,7 +138,7 @@ ms.locfileid: "92277605"
 
 1. 登入自訂網域的網域提供者網站。
 
-2. 找到管理 DNS 記錄的頁面 (可查閱提供者的文件或，尋找網站上標示**網域名稱**、**DNS** 或**名稱伺服器管理**的區域)。 
+2. 找到管理 DNS 記錄的頁面 (可查閱提供者的文件或，尋找網站上標示 **網域名稱**、**DNS** 或 **名稱伺服器管理** 的區域)。 
 
 3. 建立自訂網域的 CNAME 記錄項目，並完成下表說明的欄位 (欄位名稱可能有所不同)：
 

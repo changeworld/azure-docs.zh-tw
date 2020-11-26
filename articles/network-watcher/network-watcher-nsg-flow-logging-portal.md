@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 89258b05831170ff502cde80577f3a6851659bf2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 385d43e46cd3f9465c0fbf9a02eeae356f48fac4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986328"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966525"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站記錄往返於虛擬機器的網路流量
 
@@ -67,7 +67,7 @@ ms.locfileid: "90986328"
 
 如果您已經在美國東部區域中啟用網路監看員，請跳至[註冊 Insights 提供者](#register-insights-provider)。
 
-1. 在入口網站中，選取 [所有服務]。 在 [篩選條件] 方塊中，輸入*網路監看員*。 當結果中出現**網路監看員**時，請加以選取。
+1. 在入口網站中，選取 [所有服務]。 在 [篩選條件] 方塊中，輸入 *網路監看員*。 當結果中出現 **網路監看員** 時，請加以選取。
 2. 選取 [地區]、展開它，然後選取 [美國東部] 右邊的 [...]，如下圖所示：
 
     ![啟用網路監看員](./media/network-watcher-nsg-flow-logging-portal/enable-network-watcher.png)
@@ -78,10 +78,10 @@ ms.locfileid: "90986328"
 
 NSG 流量記錄需要 **Microsoft.Insights** 提供者。 若要註冊提供者，請完成下列步驟：
 
-1. 在入口網站的左上角，選取 [所有服務]。 在 [篩選] 方塊中輸入 [訂用帳戶]。 當搜尋結果中出現**訂用帳戶**時加以選取。
+1. 在入口網站的左上角，選取 [所有服務]。 在 [篩選] 方塊中輸入 [訂用帳戶]。 當搜尋結果中出現 **訂用帳戶** 時加以選取。
 2. 從訂用帳戶的清單中，選取您要為其啟用提供者的訂用帳戶。
 3. 在 [設定] 下，選取 [資源提供者]。
-4. 確認 **microsoft.insights** 提供者的**狀態**是 [已註冊]，如下圖所示。 如果狀態為 [未註冊]，則選取提供者右邊的 [註冊]。
+4. 確認 **microsoft.insights** 提供者的 **狀態** 是 [已註冊]，如下圖所示。 如果狀態為 [未註冊]，則選取提供者右邊的 [註冊]。
 
     ![註冊提供者](./media/network-watcher-nsg-flow-logging-portal/register-provider.png)
 
@@ -98,7 +98,7 @@ NSG 流量記錄需要 **Microsoft.Insights** 提供者。 若要註冊提供者
     | 資源群組 | 選取 [使用現有的]，然後選取 [myResourceGroup] |
 
     建立儲存體帳戶可能需要一分鐘的時間。 建好儲存體帳戶之前，請不要繼續其餘步驟。 在所有情況下，儲存體帳戶必須與 NSG 位在同一個區域中。
-4. 在入口網站的左上角，選取 [所有服務]。 在 [篩選] 方塊中，輸入*網路監看員*。 當搜尋結果中出現**網路監看員**時，請加以選取。
+4. 在入口網站的左上角，選取 [所有服務]。 在 [篩選] 方塊中，輸入 *網路監看員*。 當搜尋結果中出現 **網路監看員** 時，請加以選取。
 5. 在 [記錄] 下，選取 [NSG 流量記錄]，如下列圖所示：
 
     ![螢幕擷取畫面顯示網路監看員 NSG 流量記錄。](./media/network-watcher-nsg-flow-logging-portal/nsgs.png)
@@ -111,8 +111,8 @@ NSG 流量記錄需要 **Microsoft.Insights** 提供者。 若要註冊提供者
 
 9. 選取您在步驟 3 建立的儲存體帳戶。
    > [!NOTE]
-   > NSG 流量記錄無法與已啟用[階層式命名空間](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)的儲存體帳戶搭配使用。
-1. 在入口網站的左上角，選取 [所有服務]。 在 [篩選] 方塊中，輸入*網路監看員*。 當搜尋結果中出現**網路監看員**時，請加以選取。
+   > NSG 流量記錄無法與已啟用[階層式命名空間](../storage/blobs/data-lake-storage-namespace.md)的儲存體帳戶搭配使用。
+1. 在入口網站的左上角，選取 [所有服務]。 在 [篩選] 方塊中，輸入 *網路監看員*。 當搜尋結果中出現 **網路監看員** 時，請加以選取。
 10. 將 [保留 (天數)] 設定為 5，然後選取 [儲存]。
 
 ## <a name="download-flow-log"></a>下載流量記錄

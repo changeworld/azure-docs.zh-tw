@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 58da5c73ea2674bbbd1536a163e163aa0ff31d96
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: eeb3de2fc3f0e3e0be9c98002f11e470eaf04f8c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521283"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020924"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>教學課程：設定 Azure 時間序列深入解析 Gen2 環境
 
@@ -68,7 +68,7 @@ ms.locfileid: "92521283"
 
    [![裝置模擬解決方案佈建完成。](media/v2-update-provision/iot-solution-accelerator-ready.png)](media/v2-update-provision/iot-solution-accelerator-ready.png#lightbox)
 
-1. 現在，您可以在 Azure 入口網站中檢查新建立的資源。 在 [資源群組] 頁面中，您會看到已建立的新資源群組，其使用上一個步驟中提供的 **解決方案名稱** 。 記下針對裝置模擬所建立的資源。
+1. 現在，您可以在 Azure 入口網站中檢查新建立的資源。 在 [資源群組] 頁面中，您會看到已建立的新資源群組，其使用上一個步驟中提供的 **解決方案名稱**。 記下針對裝置模擬所建立的資源。
 
    [![裝置模擬資源。](media/v2-update-provision/tsi-device-sim-solution-resources.png)](media/v2-update-provision/tsi-device-sim-solution-resources.png#lightbox)
 
@@ -91,7 +91,7 @@ ms.locfileid: "92521283"
     | **資源群組** | 為 Azure 時間序列深入解析 Gen2 環境資源選取現有的資源群組，或建立新的資源群組。 資源群組是 Azure 資源的容器。 您使用的資源群組最好與裝置模擬器所建立的其餘 IoT 資源相同。 |
     | **位置** | 為 Azure 時間序列深入解析 Gen2 環境選取資料中心區域。 為了避免增加額外的延遲，建議您將 Azure 時間序列深入解析 Gen2 環境建立於裝置模擬器所建立的 IoT 中樞所在區域。 |
     | **層級** |  選取 [Gen2(L1)]。 這是適用於 Azure 時間序列深入解析 Gen2 產品的 SKU。 |
-    | **時間序列識別碼屬性名稱** | 輸入屬性的名稱，此屬性包含可唯一識別您時間序列執行個體的值。 您在 [屬性名稱] 方塊中輸入的值 (例如時間序列識別碼)，稍後均無法變更。 針對本教學課程，請輸入 * *_iothub-connection-device-id_* _。 若要深入了解時間序列識別碼 (包括複合時間序列識別碼)，請閱讀[選擇時間序列識別碼的最佳做法](./time-series-insights-update-how-to-id.md)。 |
+    | **時間序列識別碼屬性名稱** | 輸入屬性的名稱，此屬性包含可唯一識別您時間序列執行個體的值。 您在 [屬性名稱] 方塊中輸入的值 (例如時間序列識別碼)，稍後均無法變更。 針對本教學課程，請輸入 **_iothub-connection-device-id_* _。 若要深入了解時間序列識別碼 (包括複合時間序列識別碼)，請閱讀[選擇時間序列識別碼的最佳做法](./how-to-select-tsid.md)。 |
     | _ *儲存體帳戶名稱** | 針對新儲存體帳戶輸入全域唯一的名稱。|
     | **儲存體帳戶種類** | 選取新儲存體帳戶的儲存體種類。 我們建議選取 StorageV2|
     | **儲存體帳戶複寫** | 選取新儲存體帳戶的儲存體種類。 根據您的位置選取項目，您可以從 LRS、GRS 和 ZRS 中進行選擇。 在此教學課程中，您可以選取 [LRS]。|
@@ -143,13 +143,13 @@ ms.locfileid: "92521283"
 
    1. 確認您的認證是否有列出：
 
-      如果未列出您的認證，您就必須藉由選取 [新增] 並搜尋認證，來對自己授與環境的存取權限。 若要深入了解如何設定權限，請參閱[授與資料存取權](./time-series-insights-data-access.md)。
+      如果未列出您的認證，您就必須藉由選取 [新增] 並搜尋認證，來對自己授與環境的存取權限。 若要深入了解如何設定權限，請參閱[授與資料存取權](./concepts-access-policies.md)。
 
 ## <a name="stream-data"></a>串流資料
 
 現在，您已部署 Azure 時間序列深入解析 Gen2 環境，接下來可以開始串流處理資料以進行分析。
 
-1. 返回您的[解決方案加速器儀表板](https://www.azureiotsolutions.com/Accelerators#dashboard)。 如有必要，請使用您在本教學課程中使用的相同 Azure 帳戶重新登入。 選取您的「裝置解決方案」，然後 **移至您的解決方案加速器** ，以啟動您已部署的解決方案。
+1. 返回您的[解決方案加速器儀表板](https://www.azureiotsolutions.com/Accelerators#dashboard)。 如有必要，請使用您在本教學課程中使用的相同 Azure 帳戶重新登入。 選取您的「裝置解決方案」，然後 **移至您的解決方案加速器**，以啟動您已部署的解決方案。
 
    [![解決方案加速器儀表板。](media/v2-update-provision/iot-solution-accelerator-ready.png)](media/v2-update-provision/iot-solution-accelerator-ready.png#lightbox)
 
@@ -166,7 +166,7 @@ ms.locfileid: "92521283"
         | **名稱** | 為模擬器輸入唯一的名稱。 |
         | **說明** | 輸入定義。 |
         | **模擬持續時間** | 設定為 [Run indefinitely] \(無限期執行\)。 |
-        | **裝置型號** | 按一下 [+ 新增裝置類型] <br />**Name** ：輸入「電梯」。 <br />**數量** ：輸入 **3** 。 <br /> 保留其餘預設值 |
+        | **裝置型號** | 按一下 [+ 新增裝置類型] <br />**Name**：輸入「電梯」。 <br />**數量**：輸入 **3**。 <br /> 保留其餘預設值 |
         | **目標 IoT 中樞** | 設定為 [Use pre-provisioned IoT Hub] \(使用預先佈建的 IoT 中樞\)。 |
 
         [![設定參數和啟動。](media/v2-update-provision/tsi-launch-solution-accelerator.png)](media/v2-update-provision/tsi-launch-solution-accelerator.png#lightbox)
@@ -177,7 +177,7 @@ ms.locfileid: "92521283"
 
 ## <a name="analyze-data"></a>分析資料
 
-在此節中，您會使用 [Azure 時間序列深入解析 Gen2 總管](./time-series-insights-update-explorer.md)，對時間序列資料執行基本分析。
+在此節中，您會使用 [Azure 時間序列深入解析 Gen2 總管](./concepts-ux-panels.md)，對時間序列資料執行基本分析。
 
 1. 從 [Azure 入口網站](https://portal.azure.com/)的資源頁面選取 URL，以移至 Azure 時間序列深入解析 Gen2 總管。
 
@@ -185,7 +185,7 @@ ms.locfileid: "92521283"
 
 1. 在 Azure 時間序列深入解析 Gen2 總管中，將會顯示橫跨畫面頂端的長條。 這是您的可用性選擇器。 請務必至少選取 2m，並在需要時，藉由將選取的選擇器控點向左和向右拖曳來擴展時間範圍。
 
-1. 左側會顯示 **時間序列執行個體** 。
+1. 左側會顯示 **時間序列執行個體**。
 
     [![無上層執行個體的清單。](media/v2-update-provision/tsi-explorer-unparented-instances.png)](media/v2-update-provision/tsi-explorer-unparented-instances.png#lightbox)
 
@@ -193,7 +193,7 @@ ms.locfileid: "92521283"
 
     [![已選取的時間序列執行個體，其中含有顯示平均溫度的功能表命令。](media/v2-update-provision/select-instance-and-temperature.png)](media/v2-update-provision/select-instance-and-temperature.png#lightbox)
 
-    時間序列圖隨即出現。 將 [間隔] 變更為 **30 秒** 。
+    時間序列圖隨即出現。 將 [間隔] 變更為 **30 秒**。
 
 1. 針對其他兩個時間序列執行個體重複上述步驟，以便您同時查看三個執行個體，如下圖所示：
 
@@ -228,9 +228,9 @@ ms.locfileid: "92521283"
 
         | 參數 | 動作 |
         | --- | --- |
-        | **名稱** | 輸入 **平均溫度** 。 |
+        | **名稱** | 輸入 **平均溫度**。 |
         | **種類** | 選取 [數值] |
-        | **ReplTest1** | 從預設中選取：選取 [溫度 (雙精準數)]。 <br /> 注意:在 Azure 時間序列深入解析 Gen2 開始接收事件之後，可能需要幾分鐘的時間，才會自動填入 **值** 。|
+        | **ReplTest1** | 從預設中選取：選取 [溫度 (雙精準數)]。 <br /> 注意:在 Azure 時間序列深入解析 Gen2 開始接收事件之後，可能需要幾分鐘的時間，才會自動填入 **值**。|
         | **彙總作業** | 展開 [進階選項]。 <br /> 選取 [AVG]。 |
 
     1. 選取 [套用]  。 接著，再次選取 [+ 新增變數]，然後設定下列值：
@@ -239,7 +239,7 @@ ms.locfileid: "92521283"
         | --- | --- |
         | **名稱** | 輸入「平均震動」。 |
         | **種類** | 選取 [數值] |
-        | **ReplTest1** | 從預設中選取：選取 [震動 (雙精確度)]。 <br /> 注意:在 Azure 時間序列深入解析 Gen2 開始接收事件之後，可能需要幾分鐘的時間，才會自動填入 **值** 。|
+        | **ReplTest1** | 從預設中選取：選取 [震動 (雙精確度)]。 <br /> 注意:在 Azure 時間序列深入解析 Gen2 開始接收事件之後，可能需要幾分鐘的時間，才會自動填入 **值**。|
         | **彙總作業** | 展開 [進階選項]。 <br /> 選取 [AVG]。 |
 
     1. 選取 [套用]  。 接著，再次選取 [+ 新增變數]，然後為第三個和最後一個變數設定下列值：
@@ -248,7 +248,7 @@ ms.locfileid: "92521283"
         | --- | --- |
         | **名稱** | 輸入「樓層」。 |
         | **種類** | 選取 [類別] |
-        | **ReplTest1** | 從預設中選取：選取 [樓層 (雙精確度)]。 <br /> 注意:在 Azure 時間序列深入解析 Gen2 開始接收事件之後，可能需要幾分鐘的時間，才會自動填入 **值** 。|
+        | **ReplTest1** | 從預設中選取：選取 [樓層 (雙精確度)]。 <br /> 注意:在 Azure 時間序列深入解析 Gen2 開始接收事件之後，可能需要幾分鐘的時間，才會自動填入 **值**。|
         | **類別** | <span style="text-decoration: underline">標籤</span>  - <span style="text-decoration: underline">值</span> <br /> 低：1、2、3、4 <br /> 中：5、6、7、8、9 <br /> 高：10、11、12、13、14、15 |
         | **預設類別** | 輸入「未知」 |
 
@@ -265,7 +265,7 @@ ms.locfileid: "92521283"
 
         | 參數 | 動作 |
         | --- | ---|
-        | **名稱** | 輸入 **位置階層** 。 |
+        | **名稱** | 輸入 **位置階層**。 |
         |**層級**| 輸入「國家/地區」作為第一個層級的名稱 <br /> 選取 [+ 新增層級] <br /> 輸入「城市」作為第二個層級，然後選取 [+ 新增層級] <br /> 輸入「建築物」作為第三個和最後一個層級的名稱 |
 
    1. 選取 [儲存]  。

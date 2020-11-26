@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cef5c60b8b06a7bedbf65312c3210d5eb746880d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 546d5462c890e73994f04dfe1921b6365a112b7f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649717"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237318"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>將現有及全新樹系與單一 Azure AD 租用戶整合
 
@@ -65,7 +65,7 @@ ms.locfileid: "94649717"
 
 7. 此作業完成後，就會啟動組態精靈。  以 Azure AD 全域管理員帳戶登入。  請注意，如果您已啟用 IE 增強式安全性，則會封鎖登入。  在此情況下，請關閉安裝，在伺服器管理員中停用 [IE 增強式安全性]，然後按一下 [AAD Connect 佈建代理程式精靈] 以重新開始安裝。
 8. 在 [連接 Active Directory] 畫面上，按一下 [新增目錄]，然後以您的 Active Directory 網域系統管理員帳戶登入。 網域系統管理員帳戶應該不會有密碼變更需求。 如果密碼過期或變更，您必須使用新的認證重新設定代理程式。 此作業將會新增您的內部部署目錄。  按 [下一步]  。</br>
-![顯示 [連線 Active Directory] 畫面的螢幕擷取畫面。](media/how-to-install/install-3.png)</br>
+![顯示 [連線 Active Directory] 畫面的螢幕擷取畫面。](media/how-to-install/install-3a.png)</br>
 
 9. 在 [設定完成] 畫面上，按一下 [確認]。  此作業將會註冊並重新啟動代理程式。</br>
 ![顯示 [組態完成] 畫面的螢幕擷取畫面。](media/how-to-install/install-4a.png)</br>

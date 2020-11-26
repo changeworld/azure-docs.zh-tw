@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 08/29/2018
 ms.custom: mvc
 ms.openlocfilehash: bb0eb9226a99f139ff10a8da12a1e22017536c67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326298"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018846"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>教學課程：將具有 CI/CD 的容器應用程式部署到 Service Fabric 叢集
 
@@ -34,7 +34,7 @@ ms.locfileid: "91326298"
 
 您現在已經[部署容器應用程式](service-fabric-host-app-in-a-container.md)，接下來可以設定持續整合。  首先，在應用程式中準備部署程序使用的發行設定檔 (於 Azure DevOps 內執行)。  發行設定檔應設定為以先前建立的叢集為目標。  啟動 Visual Studio，並開啟現有的 Service Fabric 應用程式專案。  在 [方案總管]  中，以滑鼠右鍵按一下應用程式並選取 [發佈...]  。
 
-在您的應用程式專案內選擇要使用於持續整合工作流程 (例如雲端) 的目標設定檔。  指定叢集連線端點。  勾選**升級應用程式**核取方塊，讓您的應用程式對於 Azure DevOps 中的每個部署升級。  按一下 [儲存]  超連結，將設定儲存至發行設定檔，然後按一下 [取消]  關閉對話方塊。
+在您的應用程式專案內選擇要使用於持續整合工作流程 (例如雲端) 的目標設定檔。  指定叢集連線端點。  勾選 **升級應用程式** 核取方塊，讓您的應用程式對於 Azure DevOps 中的每個部署升級。  按一下 [儲存]  超連結，將設定儲存至發行設定檔，然後按一下 [取消]  關閉對話方塊。
 
 ![推送設定檔][publish-app-profile]
 
@@ -52,7 +52,7 @@ Visual Studio 右上角的狀態列上，選取 [新增至原始檔控制]   -> 
 
 ![[推送至 Azure DevOps] 視窗的螢幕擷取畫面。 [電子郵件]、[帳戶]、[存放庫名稱] 和 [發佈存放庫] 按鈕的設定會反白顯示。][publish-code]
 
-發佈存放庫將在帳戶中建立與本機存放庫名稱相同的新 Team 專案。 若要在現有的 Team 專案中建立存放庫，請按一下**存放庫名稱**旁邊的 [進階]  ，並選取 Team 專案。 您可以選取**在網路上檢視**，在網路上檢視您的程式碼。
+發佈存放庫將在帳戶中建立與本機存放庫名稱相同的新 Team 專案。 若要在現有的 Team 專案中建立存放庫，請按一下 **存放庫名稱** 旁邊的 [進階]  ，並選取 Team 專案。 您可以選取 **在網路上檢視**，在網路上檢視您的程式碼。
 
 ## <a name="configure-continuous-delivery-with-azure-pipelines"></a>設定 Azure Pipelines 的持續傳遞
 
@@ -71,7 +71,7 @@ Azure DevOps 發行定義描述將應用程式封裝部署到叢集的工作流�
 
 ![新增管線][new-pipeline]
 
-選取 [Azure Repos Git]  作為來源，然後依序選取 Team 專案名稱、專案存放庫、**主要**預設分支或手動和排程組建。  然後按一下 [繼續]  。
+選取 [Azure Repos Git]  作為來源，然後依序選取 Team 專案名稱、專案存放庫、**主要** 預設分支或手動和排程組建。  然後按一下 [繼續]  。
 
 在 [選取範本]  中，選取 [含 Docker 支援的 Azure Service Fabric 應用程式]  範本，然後按一下 [套用]  。
 
@@ -113,9 +113,9 @@ Azure DevOps 發行定義描述將應用程式封裝部署到叢集的工作流�
 
 在 [新增 Service Fabric 連線]  檢視中，選取 [憑證式]  或 [Azure Active Directory]  驗證。  指定連線名稱 "mysftestcluster" 和叢集端點 "tcp://mysftestcluster.southcentralus.cloudapp.azure.com:19000" (或您要部署的目標叢集端點)。
 
-若是憑證式驗證，請新增伺服器憑證的**伺服器憑證指紋** (用來建立叢集的伺服器憑證)。  在 [用戶端憑證]  中，新增 Base-64 編碼的用戶端憑證檔案。 請參閱該欄位的快顯說明，了解如何取得以 Base-64 編碼表示的憑證。 以及新增憑證的**密碼**。  如果您沒有個別的用戶端憑證，您可以使用叢集或伺服器憑證。
+若是憑證式驗證，請新增伺服器憑證的 **伺服器憑證指紋** (用來建立叢集的伺服器憑證)。  在 [用戶端憑證]  中，新增 Base-64 編碼的用戶端憑證檔案。 請參閱該欄位的快顯說明，了解如何取得以 Base-64 編碼表示的憑證。 以及新增憑證的 **密碼**。  如果您沒有個別的用戶端憑證，您可以使用叢集或伺服器憑證。
 
-若是 Azure Active Directory 認證，請新增伺服器憑證的**伺服器憑證指紋** (用來建立叢集的伺服器憑證)，以及在 [使用者名稱]  和 [密碼]  欄位中新增要用來連線到叢集的認證。
+若是 Azure Active Directory 認證，請新增伺服器憑證的 **伺服器憑證指紋** (用來建立叢集的伺服器憑證)，以及在 [使用者名稱]  和 [密碼]  欄位中新增要用來連線到叢集的認證。
 
 按一下 [新增]  以儲存叢集連線。
 
@@ -144,7 +144,7 @@ Azure DevOps 發行定義描述將應用程式封裝部署到叢集的工作流�
 
 您撰寫程式碼時，Visual Studio 會自動追蹤您的變更。 認可本機 Git 儲存機制的變更，方法是從右下方的狀態列選取暫止變更圖示 (![暫止的變更圖示會顯示一個鉛筆和一個數字。][pending])。
 
-在 Team Explorer 的**變更**檢視中，加入描述更新的訊息，並認可變更。
+在 Team Explorer 的 **變更** 檢視中，加入描述更新的訊息，並認可變更。
 
 ![全部認可][changes]
 

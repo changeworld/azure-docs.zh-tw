@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: 633e3a6386b9e6098e167c7fdd542d98c16fae48
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7b6f762dd04244f430f08894cc06991796a11229
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737887"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96004920"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教學課程：使用受控識別保護來自 App Service 的 Azure SQL Database 連線
 
@@ -37,7 +37,7 @@ ms.locfileid: "92737887"
 > * 使用 Azure AD 驗證從 Visual Studio 連線至 SQL Database
 
 > [!NOTE]
->Azure AD 驗證與內部部署 Active Directory (AD DS) 中的 [整合式 Windows 驗證](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10))_不同_ 。 AD DS 和 Azure AD 使用完全不同的驗證通訊協定。 如需詳細資訊，請參閱 [Azure AD Domain Services 文件](../active-directory-domain-services/index.yml)。
+>Azure AD 驗證與內部部署 Active Directory (AD DS) 中的 [整合式 Windows 驗證](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10))_不同_。 AD DS 和 Azure AD 使用完全不同的驗證通訊協定。 如需詳細資訊，請參閱 [Azure AD Domain Services 文件](../active-directory-domain-services/index.yml)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -151,8 +151,8 @@ Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 接下來，您要提供 Entity Framework 資料庫內容，以及 SQL Database 的存取權杖。 在 Data\MyDatabaseContext.cs 中，將下列程式碼新增至空白 `MyDatabaseContext (DbContextOptions<MyDatabaseContext> options)` 建構函式的大括弧內：
 
 ```csharp
-var conn = (Microsoft.Data.SqlClient.SqlConnection)Database.GetDbConnection();
-conn.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceTokenProvider()).GetAccessTokenAsync("https://database.windows.net/").Result;
+var connection = (SqlConnection)Database.GetDbConnection();
+connection.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceTokenProvider()).GetAccessTokenAsync("https://database.windows.net/").Result;
 ```
 
 > [!NOTE]
@@ -220,7 +220,7 @@ ALTER ROLE db_ddladmin ADD MEMBER [<identity-name>];
 GO
 ```
 
-*\<identity-name>* 是 Azure AD 中的受控識別名稱。 如果身分識別是由系統指派的，則名稱一律會與您 App Service 應用程式名稱相同。 若要為 Azure AD 群組授與權限，請改用群組的顯示名稱 (例如 *myAzureSQLDBAccessGroup* )。
+*\<identity-name>* 是 Azure AD 中的受控識別名稱。 如果身分識別是由系統指派的，則名稱一律會與您 App Service 應用程式名稱相同。 若要為 Azure AD 群組授與權限，請改用群組的顯示名稱 (例如 *myAzureSQLDBAccessGroup*)。
 
 輸入 `EXIT` 以返回 Cloud Shell 提示字元。
 

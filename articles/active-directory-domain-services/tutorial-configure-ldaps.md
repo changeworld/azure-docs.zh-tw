@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: joflore
 ms.openlocfilehash: f5ebe594f1f50c7b7490e5ead8cb3fe7636f0ce7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967472"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994021"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>教學課程：為 Azure Active Directory Domain Services 受控網域設定安全 LDAP
 
@@ -74,7 +74,7 @@ ms.locfileid: "91967472"
 
 在本教學課程中，會使用 [New-SelfSignedCertificate][New-SelfSignedCertificate] Cmdlet 建立安全 LDAP 的自我簽署憑證。
 
-以**系統管理員**身分開啟 PowerShell 視窗並執行下列命令。 將 $dnsName 變數取代為您本身的受控網域所使用的 DNS 名稱，例如 aaddscontoso.com：
+以 **系統管理員** 身分開啟 PowerShell 視窗並執行下列命令。 將 $dnsName 變數取代為您本身的受控網域所使用的 DNS 名稱，例如 aaddscontoso.com：
 
 ```powershell
 # Define your own DNS name used by your managed domain
@@ -107,11 +107,11 @@ Thumbprint                                Subject
 
 若要使用安全 LDAP，網路流量會使用公開金鑰基礎結構 (PKI) 來加密。
 
-* **私密**金鑰會套用至受控網域。
+* **私密** 金鑰會套用至受控網域。
     * 我們會用此私密金鑰來「解密」安全 LDAP 的流量。 私密金鑰只能套用至受控網域，而不是廣泛散發到用戶端電腦。
     * 包含私密金鑰的憑證會使用 .PFX 檔案格式。
     * 憑證的加密演算法必須是 TripleDES-SHA1。
-* **公開**金鑰會套用至用戶端電腦。
+* **公開** 金鑰會套用至用戶端電腦。
     * 我們會使用此公開金鑰來「加密」安全 LDAP 的流量。 公開金鑰可以散發到用戶端電腦。
     * 沒有私密金鑰的憑證會使用 .CER 檔案格式。
 
@@ -124,7 +124,7 @@ Thumbprint                                Subject
 若要搭配受控網域使用上一個步驟中建立的數位憑證，您必須先將憑證匯出至包含私密金鑰的 .PFX 憑證檔案。
 
 1. 若要開啟 [執行] 對話方塊，請選取 [Windows] + **R** 鍵。
-1. 在 [執行] 對話方塊中輸入 **mmc**並選取 [確定]，以開啟 Microsoft Management Console (MMC)。
+1. 在 [執行] 對話方塊中輸入 **mmc** 並選取 [確定]，以開啟 Microsoft Management Console (MMC)。
 1. 在 [使用者帳戶控制] 提示字元選取 [是]，以系統管理員身分啟動 MMC。
 1. 從 [檔案] 功能表中，選取 [新增/移除嵌入式...]
 1. 在 [憑證嵌入式管理單元] 精靈中，選擇 [電腦帳戶] 並選取 [下一步]。
@@ -285,7 +285,7 @@ CER 憑證檔案現在可以散發到用戶端電腦，因為這些電腦必須�
 如果您已針對本教學課程，將 DNS 項目新增至電腦的本機 hosts 檔案來測試連線能力，請移除此項目，並在您的 DNS 區域中新增正式記錄。 若要移除本機 hosts 檔案中的項目，請完成下列步驟：
 
 1. 在您的本機電腦上，以系統管理員身分開啟 [記事本]
-1. 流覽至 *C:\Windows\System32\drivers\etc\hosts*並開啟檔案
+1. 流覽至 *C:\Windows\System32\drivers\etc\hosts* 並開啟檔案
 1. 刪除您所新增的記錄行，例如 `168.62.205.103    ldaps.aaddscontoso.com`
 
 ## <a name="next-steps"></a>後續步驟

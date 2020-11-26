@@ -12,12 +12,12 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: d68522d92409cfcba38abeb86f2db7c4b78869e6
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 51b7f6e814a9fad286a934466daeb1ffced225c1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045596"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968055"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>教學課程：開發適用於 Linux 裝置的 Java IoT Edge 模組
 
@@ -34,7 +34,7 @@ ms.locfileid: "92045596"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="solution-scope"></a>解決方案範圍
+## <a name="prerequisites"></a>必要條件
 
 本教學課程示範如何使用 **Visual Studio Code** 以 **Java** 開發模組，以及如何將其部署到 **Linux 裝置**。 IoT Edge 不支援適用於 Windows 裝置的 Java 模組。
 
@@ -44,8 +44,6 @@ ms.locfileid: "92045596"
 | - | ------------------ | ------------------ |
 | **Linux AMD64** | ![在 Linux AMD64 上將 VS Code 使用於 Java 模組](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![在 Linux ARM32 上將 VS Code 使用於 Java 模組](./media/tutorial-c-module/green-check.png) |  |
-
-## <a name="prerequisites"></a>Prerequisites
 
 在開始本教學課程之前，您應該已經完成先前的教學課程，以針對 Linux 容器開發設定您的開發環境：[開發適用於 Linux 裝置的 IoT Edge 模組](tutorial-develop-for-linux.md)。 完成上述任一教學課程後，您應該會具備下列必要條件：
 
@@ -82,7 +80,7 @@ ms.locfileid: "92045596"
    | 提供解決方案名稱 | 輸入解決方案的描述性名稱或接受預設值 **EdgeSolution**。 |
    | 選取模組範本 | 選擇 [Java 模組]  。 |
    | 提供模組名稱 | 將模組命名為 **JavaModule**。 |
-   | 提供模組的 Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 您的容器映像會從您在上一個步驟中提供的名稱預先填入。 將 **localhost:5000** 取代為 Azure Container Registry 的**登入伺服器**值。 您可以在 Azure 入口網站中，從容器登錄的概觀頁面擷取登入伺服器。 <br><br>最終的映像存放庫看起來類似於：\<registry name\>.azurecr.io/javamodule。 |
+   | 提供模組的 Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 您的容器映像會從您在上一個步驟中提供的名稱預先填入。 將 **localhost:5000** 取代為 Azure Container Registry 的 **登入伺服器** 值。 您可以在 Azure 入口網站中，從容器登錄的概觀頁面擷取登入伺服器。 <br><br>最終的映像存放庫看起來類似於：\<registry name\>.azurecr.io/javamodule。 |
    | 提供 groupId 值 | 輸入群組識別碼值，或接受預設值 **com.edgemodule**。 |
 
    ![提供 Docker 映像存放庫](./media/tutorial-java-module/repository.png)
@@ -268,7 +266,7 @@ IoT Edge 擴充功能會嘗試從 Azure 提取您的容器登錄認證，並將�
 
 3. 選取 **config** 資料夾中的 **deployment.amd64.json** 檔案，然後按一下 [選取 Edge 部署資訊清單]。 請勿使用 deployment.template.json 檔案。
 
-4. 請展開裝置下的**模組**，以查看已部署且執行中的模組清單。 按一下 [重新整理] 按鈕。 您應該會看到新的 **JavaModule** 正在與 **SimulatedTemperatureSensor** 模組以及 **$edgeAgent** 和 **$edgeHub** 一起執行。  
+4. 請展開裝置下的 **模組**，以查看已部署且執行中的模組清單。 按一下 [重新整理] 按鈕。 您應該會看到新的 **JavaModule** 正在與 **SimulatedTemperatureSensor** 模組以及 **$edgeAgent** 和 **$edgeHub** 一起執行。  
 
     模組可能需要幾分鐘才會啟動。 IoT Edge 執行階段需要接收其新的部署資訊清單、從容器執行階段提取模組映像，然後啟動每個新的模組。
 

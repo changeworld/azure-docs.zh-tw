@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 5deece615e9d7de1e71e33164560c1c26212ec08
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 6c1d9b813db15900521968865c1036d53ad53f41
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676790"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544780"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>對雲端儲存體應用程式進行疑難排解及監視
 
@@ -81,17 +81,17 @@ curl https://<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/<CONTAINER_NAME>/<INCO
 
 ## <a name="download-and-view-logs"></a>下載及檢視記錄
 
-儲存體記錄會將資料儲存在您儲存體帳戶 Blob 容器內的一組 Blob 中，該容器名為 **$logs** 。 當您列出帳戶中的所有 Blob 容器時，不會顯示這個容器；但如果您直接存取，即可查看其中的內容。
+儲存體記錄會將資料儲存在您儲存體帳戶 Blob 容器內的一組 Blob 中，該容器名為 **$logs**。 當您列出帳戶中的所有 Blob 容器時，不會顯示這個容器；但如果您直接存取，即可查看其中的內容。
 
-在此案例中，您會使用 [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx) 來與 Azure 儲存體帳戶進行互動。
+在此案例中，您會使用 [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide) 來與 Azure 儲存體帳戶進行互動。
 
 ### <a name="download-microsoft-message-analyzer"></a>下載 Microsoft Message Analyzer
 
-下載 [Microsoft Message Analyzer](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer) 並安裝應用程式。
+下載 [Microsoft Message Analyzer](/message-analyzer/installing-and-upgrading-message-analyzer) 並安裝應用程式。
 
 啟動應用程式，然後選擇 [檔案]   > [開啟]   > [From Other File Sources] \(從其他檔案來源)  。
 
-在 [檔案選取器]  對話方塊中，選取 [+ Add Azure Connection] \(+ 新增 Azure 連線)  。 輸入 **儲存體帳戶的名稱** 和 **帳戶金鑰** ，然後按一下 [確定]  。
+在 [檔案選取器]  對話方塊中，選取 [+ Add Azure Connection] \(+ 新增 Azure 連線)  。 輸入 **儲存體帳戶的名稱** 和 **帳戶金鑰**，然後按一下 [確定]  。
 
 ![Microsoft Message Analyzer - [新增 Azure 儲存體連線] 對話方塊](media/storage-monitor-troubleshoot-storage-application/figure3.png)
 

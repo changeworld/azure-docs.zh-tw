@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: e1ccd337851f8242526362675a11280e33584082
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92513784"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993919"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>教學課程：Azure Active Directory 與 PageDNA 整合
 
@@ -64,7 +64,7 @@ PageDNA 支援下列功能︰
 
     ![新增應用程式選項](common/add-new-app.png)
 
-1. 在搜尋方塊中，輸入 **PageDNA** 。 在搜尋結果中，選取 [PageDNA]，然後選取 [新增] 以新增應用程式。
+1. 在搜尋方塊中，輸入 **PageDNA**。 在搜尋結果中，選取 [PageDNA]，然後選取 [新增] 以新增應用程式。
 
     ![結果清單中的 PageDNA](common/search-new-app.png)
 
@@ -154,9 +154,9 @@ PageDNA 支援下列功能︰
 
     ![[使用者] 窗格](common/user-properties.png)
 
-    1. 在 [名稱] 方塊中，輸入 **BrittaSimon** 。
+    1. 在 [名稱] 方塊中，輸入 **BrittaSimon**。
   
-    1. 在 [使用者名稱] 方塊中，輸入 **BrittaSimon\@\<yourcompanydomain>.\<extension>** 。 例如 **BrittaSimon\@contoso.com** 。
+    1. 在 [使用者名稱] 方塊中，輸入 **BrittaSimon\@\<yourcompanydomain>.\<extension>** 。 例如 **BrittaSimon\@contoso.com**。
 
     1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
 
@@ -170,7 +170,7 @@ PageDNA 支援下列功能︰
 
     ![企業應用程式窗格](common/enterprise-applications.png)
 
-1. 在應用程式清單中，選取 **PageDNA** 。
+1. 在應用程式清單中，選取 **PageDNA**。
 
     ![應用程式清單中的 PageDNA](common/all-applications.png)
 

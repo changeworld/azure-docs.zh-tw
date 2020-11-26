@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 93cccb1455f7a228cf40d4948cd8579610230db5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 876fd8260b64fba4d3d34a766b4259323c660b76
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526437"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968072"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>教學課程：使用 Azure IoT 中樞裝置佈建服務將裝置佈建到 IoT 中樞
 
@@ -36,13 +36,13 @@ ms.locfileid: "90526437"
 此步驟涉及將裝置的唯一安全性構件新增至裝置佈建服務。 這些安全性成品是以裝置的[證明機制](concepts-service.md#attestation-mechanism)為基礎，如下所示：
 
 - 對於以 TPM 為基礎的裝置，您需要：
-    - 「簽署金鑰」  是每個 TPM 晶片或模擬從 TMP 晶片製造商取得唯一的簽署金鑰。  如需詳細資訊，請參閱[了解 TPM 簽署金鑰](https://technet.microsoft.com/library/cc770443.aspx)。
+    - 「簽署金鑰」  是每個 TPM 晶片或模擬從 TMP 晶片製造商取得唯一的簽署金鑰。  如需詳細資訊，請參閱[了解 TPM 簽署金鑰](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770443(v=ws.11))。
     - 註冊識別碼  ，用來唯一識別命名空間/範圍中的裝置。 此識別碼與裝置識別碼不一定相同。 每個裝置都必須有註冊識別碼。 若為 TPM 架構的裝置，註冊識別碼可能會衍生自該 TPM 自身，例如，TPM 簽署金鑰的 SHA-256 雜湊。
 
       [![入口網站中的 TPM 註冊資訊](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - 對於以 X.509 為基礎的裝置，您需要：
-    - [核發給 X.509 晶片或模擬的憑證](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)，格式為 .pem  或 .cer  檔案。 若要進行個別註冊，您必須對 X.509 系統使用每一裝置的「簽署憑證」  ，若要進行群組註冊，則必須使用「根憑證」  。 
+    - [核發給 X.509 晶片或模擬的憑證](/windows/win32/seccertenroll/about-x-509-public-key-certificates)，格式為 .pem  或 .cer  檔案。 若要進行個別註冊，您必須對 X.509 系統使用每一裝置的「簽署憑證」  ，若要進行群組註冊，則必須使用「根憑證」  。 
 
       [![在入口網站中新增 X.509 證明的個別註冊](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 
@@ -84,11 +84,11 @@ ms.locfileid: "90526437"
 2. 若為 TPM 裝置，裝置佈建服務會回傳註冊挑戰供您的裝置回應。 
 3. 註冊成功後，裝置佈建服務會對裝置回傳 IoT 中樞 URI、裝置識別碼和加密金鑰。 
 4. 裝置上的 IoT 中樞用戶端應用程式接著會連線到您的中樞。 
-5. 成功連線至中樞後，您應該會看到裝置出現在 IoT 中樞的 **IoT 裝置**總管中。 
+5. 成功連線至中樞後，您應該會看到裝置出現在 IoT 中樞的 **IoT 裝置** 總管中。 
 
     ![在入口網站中成功連線至中樞](./media/tutorial-provision-device-to-hub/hub-connect-success.png)
 
-如需詳細資訊，請參閱佈建裝置用戶端範例 [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c)。 此範例示範如何使用 TPM、X.509 憑證和對稱金鑰來佈建模擬裝置。 回頭參考 [TPM](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device)、[X.509](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509) 和[對稱金鑰](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-symm-key)證明快速入門，以取得使用此範例的逐步指示。
+如需詳細資訊，請參閱佈建裝置用戶端範例 [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c)。 此範例示範如何使用 TPM、X.509 憑證和對稱金鑰來佈建模擬裝置。 回頭參考 [TPM](./quick-create-simulated-device.md)、[X.509](./quick-create-simulated-device-x509.md) 和[對稱金鑰](./quick-create-simulated-device-symm-key.md)證明快速入門，以取得使用此範例的逐步指示。
 
 ## <a name="next-steps"></a>後續步驟
 在本教學課程中，您已了解如何：

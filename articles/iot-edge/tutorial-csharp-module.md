@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: b46ce20b868f8756f6ad91795a27328abcb2fbdf
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 71bfc84eb50521aef72f78b482bddda112c00c6c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044168"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964349"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>教學課程：開發適用於 Linux 裝置的 C# IoT Edge 模組
 
@@ -33,7 +33,7 @@ ms.locfileid: "92044168"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="solution-scope"></a>解決方案範圍
+## <a name="prerequisites"></a>必要條件
 
 本教學課程示範如何使用 **Visual Studio Code** 以 **C#** 開發模組，以及如何將其部署到 **Linux 裝置**。 如果您要開發適用於 Windows 裝置的模組，請改為移至[開發適用於 Windows 裝置的 C# IoT Edge 模組](tutorial-csharp-module-windows.md)。
 
@@ -46,8 +46,6 @@ ms.locfileid: "92044168"
 
 >[!NOTE]
 >[公開預覽](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)提供 Linux ARM64 裝置的支援。 如需詳細資訊，請參閱[在 Visual Studio Code (預覽)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview) 中開發和偵錯 ARM64 IoT Edge 模組。
-
-## <a name="prerequisites"></a>Prerequisites
 
 在開始本教學課程之前，您應該已經完成先前的教學課程 ([開發適用於 Linux 裝置的 IoT Edge 模組](tutorial-develop-for-linux.md)) 來設定您的開發環境。 完成該教學課程之後，您已經具備下列必要條件：
 
@@ -82,7 +80,7 @@ ms.locfileid: "92044168"
    | 提供解決方案名稱 | 輸入解決方案的描述性名稱或接受預設值 **EdgeSolution**。 |
    | 選取模組範本 | 選擇 [C# 模組]  。 |
    | 提供模組名稱 | 將模組命名為 **CSharpModule**。 |
-   | 提供模組的 Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 您的容器映像會從您在上一個步驟中提供的名稱預先填入。 將 **localhost:5000** 取代為 Azure Container Registry 的**登入伺服器**值。 您可以在 Azure 入口網站中，從容器登錄的概觀頁面擷取登入伺服器。 <br><br>最終的映像存放庫看起來類似於：\<registry name\>.azurecr.io/csharpmodule。 |
+   | 提供模組的 Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 您的容器映像會從您在上一個步驟中提供的名稱預先填入。 將 **localhost:5000** 取代為 Azure Container Registry 的 **登入伺服器** 值。 您可以在 Azure 入口網站中，從容器登錄的概觀頁面擷取登入伺服器。 <br><br>最終的映像存放庫看起來類似於：\<registry name\>.azurecr.io/csharpmodule。 |
 
    ![提供 Docker 映像存放庫](./media/tutorial-csharp-module/repository.png)
 
@@ -93,7 +91,7 @@ ms.locfileid: "92044168"
 IoT Edge 擴充功能會嘗試從 Azure 提取您的容器登錄認證，並將這些認證填入到環境檔案中。 請查看您的認證是否已包含其中。 如果沒有，請立即新增：
 
 1. 在 VS Code 總管中，開啟 **.env** 檔案。
-2. 使用 Azure 容器登錄中的**使用者名稱**和**密碼**值來更新欄位。
+2. 使用 Azure 容器登錄中的 **使用者名稱** 和 **密碼** 值來更新欄位。
 3. 儲存這個檔案。
 
 ### <a name="select-your-target-architecture"></a>選取您的目標架構
@@ -191,7 +189,7 @@ IoT Edge 擴充功能會嘗試從 Azure 提取您的容器登錄認證，並將�
     }
     ```
 
-7. 使用 **FilterMessages** 方法取代 **PipeMessage** 方法。 每當模組從 IoT Edge 中樞接收到訊息時，就會呼叫此方法。 它會篩選所報告溫度低於 (透過模組對應項所設定) 之溫度閾值的訊息。 針對具有設定為 [警示] 之值的訊息，此方法也會將 **MessageType** 屬性新增至該訊息。
+7. 使用 **FilterMessages** 方法取代 **PipeMessage** 方法。 每當模組從 IoT Edge 中樞接收到訊息時，就會呼叫此方法。 它會篩選所報告溫度低於 (透過模組對應項所設定) 之溫度閾值的訊息。 針對具有設定為 [警示]  之值的訊息，此方法也會將 **MessageType** 屬性新增至該訊息。
 
     ```csharp
     static async Task<MessageResponse> FilterMessages(Message message, object userContext)
@@ -298,7 +296,7 @@ IoT Edge 擴充功能會嘗試從 Azure 提取您的容器登錄認證，並將�
 
 3. 選取 **config** 資料夾中的 **deployment.amd64.json** 檔案，然後按一下 [選取 Edge 部署資訊清單]。 請勿使用 deployment.template.json 檔案。
 
-4. 請展開裝置下的**模組**，以查看已部署且執行中的模組清單。 按一下 [重新整理] 按鈕。 您應該會看到新的 **CSharpModule** 正在與 **SimulatedTemperatureSensor** 模組以及 **$edgeAgent** 和 **$edgeHub** 一起執行。
+4. 請展開裝置下的 **模組**，以查看已部署且執行中的模組清單。 按一下 [重新整理] 按鈕。 您應該會看到新的 **CSharpModule** 正在與 **SimulatedTemperatureSensor** 模組以及 **$edgeAgent** 和 **$edgeHub** 一起執行。
 
     模組可能需要幾分鐘才會啟動。 IoT Edge 執行階段需要接收其新的部署資訊清單、從容器執行階段提取模組映像，然後啟動每個新的模組。
 

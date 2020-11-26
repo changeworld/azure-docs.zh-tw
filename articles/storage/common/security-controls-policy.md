@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure 儲存體的 Azure 原則法規合規性控制項
 description: 列出適用於 Azure 儲存體的 Azure 原則法規合規性控制項。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.topic: sample
 author: twooley
 ms.author: twooley
 ms.service: storage
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 725e861e87e93ab133a1e6b66f369c42b7f0c791
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 29f57089265434e3bdf4bc3e352a451d16df152a
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694307"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94988916"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-storage"></a>適用於 Azure 儲存體的 Azure 原則法規合規性控制項
 

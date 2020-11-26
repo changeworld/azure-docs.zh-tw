@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 6eced120a05ddaca8d8cf426fd2a977891b3e36b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515895"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997132"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>教學課程：Azure Active Directory 與 Small Improvements 整合
 
@@ -61,7 +61,7 @@ Small Improvements 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Small Improvements** ，從結果面板中選取 **Small Improvements** ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Small Improvements**，從結果面板中選取 **Small Improvements**，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Small Improvements](common/search-new-app.png)
 
@@ -164,7 +164,7 @@ Small Improvements 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -221,11 +221,11 @@ Small Improvements 與 Azure AD 整合提供下列優點：
 
     ![此螢幕擷取畫面顯示 [新增使用者] 對話方塊，您可以在其中輸入所述的值。](./media/smallimprovements-tutorial/tutorial_smallimprovements_12.png)
 
-    a. 輸入使用者的 **名字** ，例如 **Britta** 。
+    a. 輸入使用者的 **名字**，例如 **Britta**。
 
-    b. 輸入使用者的 **姓氏** ，例如 **Simon** 。
+    b. 輸入使用者的 **姓氏**，例如 **Simon**。
 
-    c. 輸入使用者的 **電子郵件** ，例如 **brittasimon@contoso.com** 。
+    c. 輸入使用者的 **電子郵件**，例如 **brittasimon@contoso.com** 。
 
     d. 您也可以選擇在 [傳送通知電子郵件]  方塊中，輸入您個人的訊息。 如果您不想傳送通知，則取消選取此核取方塊。
 

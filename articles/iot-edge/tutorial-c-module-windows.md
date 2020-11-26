@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 59656db2bbb8a6898ae08a168dbbc7e0a6a82aec
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: d9cffcadcb95b6c8c61205d458610f402fa7286d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044712"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964587"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>教學課程：開發適用於 Windows 裝置的 C IoT Edge 模組
 
@@ -33,7 +33,7 @@ ms.locfileid: "92044712"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="solution-scope"></a>解決方案範圍
+## <a name="prerequisites"></a>必要條件
 
 本教學課程示範如何使用 **Visual Studio 2019** 以 **C** 開發模組，並將其部署至 **Windows 裝置**。 如果您要開發適用於 Linux 裝置的模組，請改為移至[開發適用於 Linux 裝置的 C IoT Edge 模組](tutorial-c-module.md)。
 
@@ -42,8 +42,6 @@ ms.locfileid: "92044712"
 | C | Visual Studio Code | Visual Studio 2017/2019 |
 | -- | ------------------ | ------------------ |
 | **Windows AMD64** |  | ![在 Visual Studio 中開發適用於 WinAMD64 的 C 模組](./media/tutorial-c-module/green-check.png) |
-
-## <a name="prerequisites"></a>Prerequisites
 
 在開始本教學課程之前，您應該已經完成先前的教學課程，以針對 Windows 容器開發設定您的開發環境：[開發適用於 Windows 裝置的 IoT Edge 模組](tutorial-develop-for-windows.md)。 完成該教學課程之後，您必須具備下列必要條件：
 
@@ -89,7 +87,7 @@ ms.locfileid: "92044712"
    | ----- | ----- |
    | 選取範本 | 選取 [C 模組]  。 |
    | 模組專案名稱 | 將模組命名為 **CModule**。 |
-   | Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 系統會從模組專案名稱值預先填入容器映像。 將 **localhost:5000** 取代為 Azure Container Registry 的**登入伺服器**值。 您可以在 Azure 入口網站中，從容器登錄的概觀頁面擷取登入伺服器。 <br><br> 最終的映像存放庫看起來類似於：\<registry name\>.azurecr.io/cmodule。 |
+   | Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 系統會從模組專案名稱值預先填入容器映像。 將 **localhost:5000** 取代為 Azure Container Registry 的 **登入伺服器** 值。 您可以在 Azure 入口網站中，從容器登錄的概觀頁面擷取登入伺服器。 <br><br> 最終的映像存放庫看起來類似於：\<registry name\>.azurecr.io/cmodule。 |
 
    ![針對目標裝置、模組類型和容器登錄設定您的專案](./media/tutorial-c-module-windows/add-application-and-module.png)
 

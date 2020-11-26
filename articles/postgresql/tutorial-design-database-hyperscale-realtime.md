@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: 2bd06491b5488223b9a8eba50839a7fdf0cd61b6
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 480af87519f8e11c14f009058b0f518bdfc34a1b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478536"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026262"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>教學課程：使用適用於 PostgreSQL 的 Azure 資料庫 – Hyperscale (Citus) 設計即時分析儀表板
 
@@ -227,4 +227,4 @@ DELETE FROM http_request_1min WHERE ingest_time < now() - interval '1 month';
 在本教學課程中，您已了解如何佈建 Hyperscale (Citus) 伺服器群組。 您已使用 psql 連線到該群組、建立結構描述，並散發資料。 您已了解如何查詢未經處理格式的資料、定期彙總該資料、查詢彙總的資料表，以及使舊資料過期。
 
 - 了解伺服器群組[節點類型](./concepts-hyperscale-nodes.md)
-- 判斷伺服器群組的最佳[初始大小](howto-hyperscale-scaling.md#picking-initial-size)
+- 判斷伺服器群組的最佳[初始大小](howto-hyperscale-scale-initial.md)

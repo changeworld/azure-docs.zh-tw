@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 4392086146642e18b1fdef28a9e602bdbb5b0b18
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b138b3eb52a0bfb6dca2ec6fdf0b855223bab698
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542179"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984442"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>標記標籤專案中的影像 
 
@@ -133,7 +133,7 @@ ms.locfileid: "94542179"
 
 1. 為您要建立的週框多邊形選取標記。
 1. 選取 **繪製多邊形區域** 工具![繪製多邊形區域工具](./media/how-to-label-images/polygon-tool.png)或選取 [P]。
-3. 按一下多邊形中的每個點。  當您完成圖形時，請按兩下以完成。
+1. 按一下多邊形中的每個點。  當您完成圖形時，請按兩下以完成。
 
     :::image type="content" source="media/how-to-label-images/polygon.gif" alt-text="建立適用於貓和狗的多邊形":::
 
@@ -158,3 +158,5 @@ ms.locfileid: "94542179"
 ## <a name="next-steps"></a>後續步驟
 
 * 了解如何[在 Azure 中將影像分類模型定型](./tutorial-train-models-with-aml.md)
+
+

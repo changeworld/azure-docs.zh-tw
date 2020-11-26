@@ -1,21 +1,21 @@
 ---
 title: 內建原則方案的清單
 description: 列出 Azure 原則的內建原則方案。 類別包括法規合規性、客體設定等。
-ms.date: 10/20/2020
+ms.date: 11/20/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: cf685f10ba27064e650070a5e0a7fc44104f0bea
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 74ebf960933837953c0b279da14dbb17bd88b330
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311563"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94986885"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure 原則內建方案定義
 
 此頁面是 Azure 原則內建方案定義的索引。
 
-在 [Azure 原則 GitHub 存放庫](https://github.com/Azure/azure-policy)上，每個內建連結的名稱都與方案定義來源相關。 內建方案會依照**中繼資料**中的**類別**屬性來分組。 若要跳至特定的**類別**，請使用頁面右側的功能表。 或是使用 <kbd>Ctrl</kbd>-<kbd>F</kbd> 來使用瀏覽器的搜尋功能。
+在 [Azure 原則 GitHub 存放庫](https://github.com/Azure/azure-policy)上，每個內建連結的名稱都與方案定義來源相關。 內建方案會依照 **中繼資料** 中的 **類別** 屬性來分組。 若要跳至特定的 **類別**，請使用頁面右側的功能表。 或是使用 <kbd>Ctrl</kbd>-<kbd>F</kbd> 來使用瀏覽器的搜尋功能。
 
 ## <a name="cosmos-db"></a>Cosmos DB
 

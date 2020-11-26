@@ -1,16 +1,16 @@
 ---
 title: 適用於 Azure App Service 的 Azure 原則法規合規性控制措施
 description: 列出適用於 Azure App Service 的 Azure 原則法規合規性控制措施。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.topic: sample
 ms.service: app-service
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 4dbc7918fb25c44a31e9620794f974f656c69232
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 244f64179ba752e565dbc2507fe7e0db36777ba0
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701701"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94991891"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-app-service"></a>適用於 Azure App Service 的 Azure 原則法規合規性控制措施
 

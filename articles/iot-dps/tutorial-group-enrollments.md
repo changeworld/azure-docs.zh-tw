@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: db5a1a2994a6202f7bbe95716534bfd68e3e1a7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cfbfe3e3e3ba620d8292767012c9bb866d8a878
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316047"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968089"
 ---
 # <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>教學課程：使用適用於 IoT 中樞裝置佈建服務的 Java 裝置和服務 SDK 以及註冊群組來建立及佈建模擬 X.509 裝置
 
@@ -25,19 +25,19 @@ ms.locfileid: "91316047"
 
 ## <a name="prerequisites"></a>必要條件
 
-1. 請確定您已在電腦上安裝 [Java SE 開發套件 8](https://aka.ms/azure-jdks)。
+1. 請確定您已在電腦上安裝 [Java SE 開發套件 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
 
 1. 下載並安裝 [Maven](https://maven.apache.org/install.html)。
 
-1. 確定 `git` 已安裝在電腦上，並已新增至命令視窗可存取的環境變數。 請參閱[軟體自由保護協會的 Git 用戶端工具](https://git-scm.com/download/)以取得所要安裝的最新版 `git` 工具，其中包括 **Git Bash** (您可用來與本機 Git 存放庫互動的命令列應用程式)。 
+1. 確定 `git` 已安裝在電腦上，並已新增至命令視窗可存取的環境變數。 請參閱 [軟體自由保護協會的 Git 用戶端工具](https://git-scm.com/download/)以取得所要安裝的最新版 `git` 工具，其中包括 **Git Bash** (您可用來與本機 Git 存放庫互動的命令列應用程式)。 
 
 1. 使用下列[憑證概觀](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)建立測試憑證。
 
     > [!NOTE]
-    > 此步驟需要 [OpenSSL](https://www.openssl.org/)，您可以從來源加以建置並安裝，或從[第三方](https://wiki.openssl.org/index.php/Binaries) (例如[這個](https://sourceforge.net/projects/openssl/)) 加以下載並安裝。 如果您已建立_根_、_中繼_和_裝置_憑證，您可以略過此步驟。
+    > 此步驟需要 [OpenSSL](https://www.openssl.org/)，您可以從來源加以建置並安裝，或從[第三方](https://wiki.openssl.org/index.php/Binaries) (例如[這個](https://sourceforge.net/projects/openssl/)) 加以下載並安裝。 如果您已建立 _根_、_中繼_ 和 _裝置_ 憑證，您可以略過此步驟。
     >
 
-    1. 執行前兩個步驟，以建立您的_根_和_中繼_憑證。
+    1. 執行前兩個步驟，以建立您的 _根_ 和 _中繼_ 憑證。
 
     1. 登入 Azure 入口網站，按一下左側功能表上的 [所有資源]  按鈕，然後開啟您的佈建服務。
 
@@ -52,7 +52,7 @@ ms.locfileid: "91316047"
 
         1. 選取新建立的憑證：
             - 按一下 [產生驗證碼]  。 複製已產生的程式碼。
-            - 執行驗證步驟。 輸入_驗證碼_，或按一下滑鼠右鍵，在您執行中的 PowerShell 視窗中貼上。  按 **Enter** 鍵。
+            - 執行驗證步驟。 輸入 _驗證碼_，或按一下滑鼠右鍵，在您執行中的 PowerShell 視窗中貼上。  按 **Enter** 鍵。
             - 在 Azure 入口網站中選取新建立的 **_verifyCert4.pem_** 檔案。 按一下 [確認]  。
 
               ![驗證憑證](./media/tutorial-group-enrollments/validate-certificate.png)
@@ -84,7 +84,7 @@ ms.locfileid: "91316047"
 
             ![從入口網站取得佈建連接字串](./media/tutorial-group-enrollments/provisioning-string.png)  
 
-        1. 在範例程式碼檔案 **_ServiceEnrollmentGroupSample.java_** 中，將 `[Provisioning Connection String]` 取代為**主索引鍵連接字串**。
+        1. 在範例程式碼檔案 **_ServiceEnrollmentGroupSample.java_** 中，將 `[Provisioning Connection String]` 取代為 **主索引鍵連接字串**。
 
             ```java
             private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
@@ -149,7 +149,7 @@ ms.locfileid: "91316047"
 
 ## <a name="simulate-the-device"></a>模擬裝置
 
-1. 在 [裝置佈建服務摘要] 刀鋒視窗中，選取 [概觀]  ，並記下您的_識別碼範圍_和_佈建服務全域端點_。
+1. 在 [裝置佈建服務摘要] 刀鋒視窗中，選取 [概觀]  ，並記下您的 _識別碼範圍_ 和 _佈建服務全域端點_。
 
     ![服務資訊](./media/tutorial-group-enrollments/extract-dps-endpoints.png)
 

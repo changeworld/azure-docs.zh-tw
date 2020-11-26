@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: e20183356655668750cb1450338d4c8af1ee2d8c
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 4cab1765a387bbae61c9c242a8e7a1ca881ea1f5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951701"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966627"
 ---
 # <a name="tutorial-use-custom-allocation-policies-with-device-provisioning-service-dps"></a>教學課程：使用自訂配置原則搭配裝置佈建服務 (DPS)
 
@@ -46,7 +46,7 @@ ms.locfileid: "91951701"
 
 * 已安裝最新版的 [Git](https://git-scm.com/download/)。
 
-* 在 Windows 開發環境中，需要 [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，並啟用 [「使用 C++ 的桌面開發」](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作負載。 也會支援 Visual Studio 2015 和 Visual Studio 2017。
+* 在 Windows 開發環境中，需要 [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，並啟用 [「使用 C++ 的桌面開發」](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作負載。 也會支援 Visual Studio 2015 和 Visual Studio 2017。
 
 * 針對 Linux 或 macOS，請參閱 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 文件中[準備您的開發環境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的適當章節。
 
@@ -194,7 +194,7 @@ ms.locfileid: "91951701"
 
     ![為對稱金鑰證明新增自訂配置註冊群組](./media/tutorial-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
-4. 儲存註冊之後，請重新開啟它，並記下 [主要金鑰]****。 您必須先儲存註冊，才能產生金鑰。 此主要對稱金鑰將用來為稍後嘗試佈建的裝置產生唯一的裝置金鑰。 
+4. 儲存註冊之後，請重新開啟它，並記下 [主要金鑰]。 您必須先儲存註冊，才能產生金鑰。 此主要對稱金鑰將用來為稍後嘗試佈建的裝置產生唯一的裝置金鑰。 
 
 ## <a name="derive-unique-device-keys"></a>衍生唯一的裝置金鑰
 
@@ -296,7 +296,7 @@ contoso-heatpump-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
 
-    如果 `cmake` 找不到 C++ 編譯器，您在執行命令時，可能會收到建置錯誤。 如果發生這種情況，請嘗試在 [Visual Studio 命令提示字元](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)中執行命令。
+    如果 `cmake` 找不到 C++ 編譯器，您在執行命令時，可能會收到建置錯誤。 如果發生這種情況，請嘗試在 [Visual Studio 命令提示字元](/dotnet/framework/tools/developer-command-prompt-for-vs)中執行命令。
 
     建置成功後，最後幾行輸出會類似於下列輸出：
 
@@ -320,7 +320,7 @@ contoso-heatpump-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
 
 此範例程式碼會模擬將佈建要求傳送至裝置佈建服務執行個體的裝置開機順序。 此開機順序會使烤箱裝置接受辨識，並使用自訂配置原則指派給 IoT 中樞。
 
-1. 在 Azure 入口網站中，選取您裝置佈建服務的 [概觀]**** 索引標籤，並記下 [識別碼範圍]**__** 值。
+1. 在 Azure 入口網站中，選取您裝置佈建服務的 [概觀] 索引標籤，並記下 [識別碼範圍]**** 值。
 
     ![從入口網站刀鋒視窗擷取裝置佈建服務端點資訊](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
@@ -347,7 +347,7 @@ contoso-heatpump-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. 在 `main()` 函式中，尋找 `Prov_Device_Register_Device()` 的呼叫。 在呼叫之前，請新增下列幾行程式碼，以使用 [`Prov_Device_Set_Provisioning_Payload()`](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/prov-device-client-h/prov-device-set-provisioning-payload) 在佈建期間傳遞自訂 JSON 承載。 這可用來提供自訂配置函式的詳細資訊。 這也可以用來傳遞裝置類型，而不是檢查註冊識別碼。
+6. 在 `main()` 函式中，尋找 `Prov_Device_Register_Device()` 的呼叫。 在呼叫之前，請新增下列幾行程式碼，以使用 [`Prov_Device_Set_Provisioning_Payload()`](/azure/iot-hub/iot-c-sdk-ref/prov-device-client-h/prov-device-set-provisioning-payload) 在佈建期間傳遞自訂 JSON 承載。 這可用來提供自訂配置函式的詳細資訊。 這也可以用來傳遞裝置類型，而不是檢查註冊識別碼。
 
     ```c
     // An example custom payload
@@ -475,11 +475,11 @@ contoso-heatpump-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，然後選取 [資源群組]  。
 
-2. 在 [依名稱篩選]**** 文字方塊中，輸入您的資源所屬的資源群組名稱 **contoso-us-resource-group**。 
+2. 在 [依名稱篩選] 文字方塊中，輸入您的資源所屬的資源群組名稱 **contoso-us-resource-group**。 
 
-3. 在結果清單中的資源群組右側，選取 [...]****，然後按一下 [刪除資源群組]****。
+3. 在結果清單中的資源群組右側，選取 [...]，然後按一下 [刪除資源群組]。
 
-4. 系統將會要求您確認是否刪除資源。 再次輸入您的資源群組名稱以進行確認，然後選取 [刪除]****。 片刻過後，系統便會刪除該資源群組及其所有內含的資源。
+4. 系統將會要求您確認是否刪除資源。 再次輸入您的資源群組名稱以進行確認，然後選取 [刪除]。 片刻過後，系統便會刪除該資源群組及其所有內含的資源。
 
 ## <a name="next-steps"></a>後續步驟
 

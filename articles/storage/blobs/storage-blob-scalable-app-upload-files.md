@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/08/2019
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: dd87e1a9bcff55813dff420976df58351386fb34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dc1f8b8a7c46a3d6ad6f62d93bc91753e42c3ae
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75371933"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545035"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>將大量隨機資料平行上傳至 Azure 儲存體
 
@@ -44,13 +44,13 @@ mstsc /v:<publicIpAddress>
 
 ## <a name="configure-the-connection-string"></a>設定連接字串
 
-在 Azure 入口網站中，瀏覽至您的儲存體帳戶。 在儲存體帳戶中選取 [設定]  下的 [存取金鑰]  。 從主要或次要金鑰複製**連接字串**。 登入先前教學課程中所建立的虛擬機器。 以系統管理員身分開啟 [命令提示字元]  ，並以 `/m` 執行 `setx` 命令，此命令會儲存機器的設定環境變數。 您須重新載入**命令提示字元**，才能使用環境變數。 取代下列範例中的 **\<storageConnectionString\>** ：
+在 Azure 入口網站中，瀏覽至您的儲存體帳戶。 在儲存體帳戶中選取 [設定]  下的 [存取金鑰]  。 從主要或次要金鑰複製 **連接字串**。 登入先前教學課程中所建立的虛擬機器。 以系統管理員身分開啟 [命令提示字元]  ，並以 `/m` 執行 `setx` 命令，此命令會儲存機器的設定環境變數。 您須重新載入 **命令提示字元**，才能使用環境變數。 取代下列範例中的 **\<storageConnectionString\>** ：
 
 ```
 setx storageconnectionstring "<storageConnectionString>" /m
 ```
 
-完成後，請開啟另一個**命令提示字元**，並瀏覽至 `D:\git\storage-dotnet-perf-scale-app`，然後輸入 `dotnet build` 來建置應用程式。
+完成後，請開啟另一個 **命令提示字元**，並瀏覽至 `D:\git\storage-dotnet-perf-scale-app`，然後輸入 `dotnet build` 來建置應用程式。
 
 ## <a name="run-the-application"></a>執行應用程式
 
@@ -62,7 +62,7 @@ setx storageconnectionstring "<storageConnectionString>" /m
 dotnet run
 ```
 
-應用程式會建立五個隨機命名的容器，並開始將暫存目錄中的檔案上傳至儲存體帳戶。 應用程式會將最小執行緒設為 100，以及將 [DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit(v=vs.110).aspx) 設為 100，確保執行應用程式時能允許大量的並行連線。
+應用程式會建立五個隨機命名的容器，並開始將暫存目錄中的檔案上傳至儲存體帳戶。 應用程式會將最小執行緒設為 100，以及將 [DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) 設為 100，確保執行應用程式時能允許大量的並行連線。
 
 除了設定執行緒和連線限制設定，[UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) 的 [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) 方法也會設定為使用平行處理原則，並停用 MD5 雜湊驗證。 檔案會以 100 MB 的區塊上傳，這項設定可提供更佳的效能，但如果使用效能差的網路則可能提高成本，因為整個 100 MB 的區塊可能會因為失敗而需要重試。
 
@@ -171,7 +171,7 @@ Upload has been completed in 142.0429536 seconds. Press any key to continue
 
 ### <a name="validate-the-connections"></a>驗證連線
 
-當檔案正在上傳時，您可以確認與您儲存體帳戶建立的並行連線數目。 開啟**命令提示字元**，然後輸入 `netstat -a | find /c "blob:https"`。 此命令可顯示目前使用 `netstat` 開啟的連線數目。 下列範例顯示的輸出類似您自己執行教學課程時所見的輸出。 如範例中所見，將隨機檔案上傳至儲存體帳戶時時開啟了 800 個連線。 此值會在整個上傳作業期間變更。 藉由以區塊的形式來平行上傳，就可大幅減少傳送內容所需的時間。
+當檔案正在上傳時，您可以確認與您儲存體帳戶建立的並行連線數目。 開啟 **命令提示字元**，然後輸入 `netstat -a | find /c "blob:https"`。 此命令可顯示目前使用 `netstat` 開啟的連線數目。 下列範例顯示的輸出類似您自己執行教學課程時所見的輸出。 如範例中所見，將隨機檔案上傳至儲存體帳戶時時開啟了 800 個連線。 此值會在整個上傳作業期間變更。 藉由以區塊的形式來平行上傳，就可大幅減少傳送內容所需的時間。
 
 ```
 C:\>netstat -a | find /c "blob:https"

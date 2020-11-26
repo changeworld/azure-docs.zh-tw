@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: duau
 ms.openlocfilehash: 348f1d779f8ea67860726b8f8b7739921e7ad54a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205943"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003798"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>教學課程：使用流量管理員根據使用者子網路將流量導向特定端點
 
@@ -41,7 +41,7 @@ ms.locfileid: "92205943"
 若要查看流量管理員的運作，本教學課程會要求您部署下列項目：
 
 - 在不同 Azure 區域中執行的兩個基本網站，分別是 **美國東部** (作為內部網站) 和 **西歐** (作為生產網站)。
-- 用於測試流量管理員的兩個測試 VM - 一個 VM 位於 **美國東部** ，另一個 VM 位於 **西歐** 。
+- 用於測試流量管理員的兩個測試 VM - 一個 VM 位於 **美國東部**，另一個 VM 位於 **西歐**。
 
 測試 VM 可用來說明流量管理員如何根據使用者查詢的來源子網路，將使用者流量路由傳送至內部網站或生產網站。
 
@@ -53,7 +53,7 @@ ms.locfileid: "92205943"
 
 在本節中，您會建立兩個網站執行個體，這兩個執行個體可在兩個 Azure 區域中為流量管理員設定檔提供兩個服務端點。 請執行下列步驟來建立這兩個網站：
 
-1. 建立兩個 VM 來執行基本網站 - 一個位於 **美國東部** ，另一個位於 **西歐** 。
+1. 建立兩個 VM 來執行基本網站 - 一個位於 **美國東部**，另一個位於 **西歐**。
 2. 在每個 VM 上安裝 IIS 伺服器並更新預設網站頁面，該頁面描述使用者在造訪網站時所連線的 VM 名稱。
 
 #### <a name="create-vms-for-running-websites"></a>建立 VM 以供執行網站
@@ -63,13 +63,13 @@ ms.locfileid: "92205943"
 1. 在 Azure 入口網站的左上角，選取 [建立資源]   > [計算]   > [Windows Server 2019 Datacenter]  。
 2. 在 [建立虛擬機器]  中，輸入或選取 [基本資訊]  索引標籤中的下列值：
 
-   - [訂用帳戶]   > [資源群組]  ：選取 [新建]  ，然後輸入 **myResourceGroupTM1** 。
-   - **執行個體詳細資料** > **虛擬機器名稱** ：輸入 myIISVMEastUS  。
-   - **執行個體詳細資料** > **區域** ：選取 [美國東部]  。
-   - **系統管理員帳戶** > **使用者名稱** ：輸入您選擇的使用者名稱。
-   - **系統管理員帳戶** > **密碼** ：輸入您選擇的密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。
-   - **輸入連接埠規則** > **公用輸入連接埠** ：選取 [允許選取的連接埠]  。
-   - **輸入連接埠規則** > **選取輸入連接埠** ：在下拉式方塊中選取 [RDP]  和 [HTTP]  。
+   - [訂用帳戶]   > [資源群組]  ：選取 [新建]  ，然後輸入 **myResourceGroupTM1**。
+   - **執行個體詳細資料** > **虛擬機器名稱**：輸入 myIISVMEastUS  。
+   - **執行個體詳細資料** > **區域**：選取 [美國東部]  。
+   - **系統管理員帳戶** > **使用者名稱**：輸入您選擇的使用者名稱。
+   - **系統管理員帳戶** > **密碼**：輸入您選擇的密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。
+   - **輸入連接埠規則** > **公用輸入連接埠**：選取 [允許選取的連接埠]  。
+   - **輸入連接埠規則** > **選取輸入連接埠**：在下拉式方塊中選取 [RDP]  和 [HTTP]  。
 
 3. 選取 [管理]  索引標籤，或選取 **[下一步：磁碟]** ，然後選取 **[下一步：網路功能]** ，然後選取 **[下一步：管理]** 。 在 [監視]  下，將 [開機診斷]  設定為 [關閉]  。
 4. 選取 [檢閱 + 建立]  。
@@ -79,9 +79,9 @@ ms.locfileid: "92205943"
 
 #### <a name="install-iis-and-customize-the-default-web-page"></a>安裝 IIS 和自訂預設網頁
 
-在本節中，您會在兩部 VM ( *myIISVMEastUS* & *myIISVMWestEurope* ) 上安裝 IIS 伺服器，然後更新預設網站頁面。 自訂的網站頁面會顯示當您從網頁瀏覽器瀏覽網站時，您所連線的 VM 名稱。
+在本節中，您會在兩部 VM (*myIISVMEastUS* & *myIISVMWestEurope*) 上安裝 IIS 伺服器，然後更新預設網站頁面。 自訂的網站頁面會顯示當您從網頁瀏覽器瀏覽網站時，您所連線的 VM 名稱。
 
-1. 選取左側功能表中的 [所有資源]  ，然後從資源清單按一下 *myIISVMEastUS* ，其位於 *myResourceGroupTM1* 資源群組中。
+1. 選取左側功能表中的 [所有資源]  ，然後從資源清單按一下 *myIISVMEastUS*，其位於 *myResourceGroupTM1* 資源群組中。
 2. 在 [概觀]  頁面上，按一下 [連線]  ，然後在 [連線至虛擬機器]  中選取 [下載 RDP 檔案]  。
 3. 開啟所下載的 rdp 檔案。 如果出現提示，請選取 [連接]  。 輸入您在建立 VM 時指定的使用者名稱和密碼。 您可能需要選取 [其他選擇]  ，然後選取 [使用不同的帳戶]  ，以指定您在建立 VM 時輸入的認證。
 4. 選取 [確定]  。
@@ -119,25 +119,25 @@ ms.locfileid: "92205943"
 
 流量管理員會根據服務端點的 DNS 名稱來路由傳送使用者流量。 在本節中，您會設定 IIS 伺服器 myIISVMEastUS  和 myIISVMWestEurope  的 DNS 名稱。
 
-1. 按一下左側功能表中的 [所有資源]  ，然後從資源清單選取 *myIISVMEastUS* ，其位於 *myResourceGroupTM1* 資源群組中。
+1. 按一下左側功能表中的 [所有資源]  ，然後從資源清單選取 *myIISVMEastUS*，其位於 *myResourceGroupTM1* 資源群組中。
 2. 在 [概觀]  頁面的 [DNS 名稱]  底下，選取 [設定]  。
 3. 在 [組態]  頁面的 [DNS 名稱] 標籤之下，新增唯一的名稱，然後選取 [儲存]  。
 4. 針對 myResourceGroupTM2  資源群組中名為 myIISVMWestEurope  的 VM，重複步驟 1-3。
 
 ### <a name="create-test-vms"></a>建立測試 VM
 
-在本節中，您會在每個 Azure 區域 ( **美國東部** 和 **西歐** ) 中建立 VM (myVMEastUS  和 myVMWestEurope  )。 您將使用這些 VM 來測試流量管理員如何根據使用者查詢的子網路，來路由使用者流量。
+在本節中，您會在每個 Azure 區域 (**美國東部** 和 **西歐**) 中建立 VM (myVMEastUS  和 myVMWestEurope  )。 您將使用這些 VM 來測試流量管理員如何根據使用者查詢的子網路，來路由使用者流量。
 
 1. 在 Azure 入口網站的左上角，選取 [建立資源]   > [計算]   > [Windows Server 2019 Datacenter]  。
 2. 在 [建立虛擬機器]  中，輸入或選取 [基本資訊]  索引標籤中的下列值：
 
    - [訂用帳戶]   > [資源群組]  ：選取 [myResourceGroupTM1]  。
-   - **執行個體詳細資料** > **虛擬機器名稱** ：輸入 myVMEastUS  。
-   - **執行個體詳細資料** > **區域** ：選取 [美國東部]  。
-   - **系統管理員帳戶** > **使用者名稱** ：輸入您選擇的使用者名稱。
-   - **系統管理員帳戶** > **密碼** ：輸入您選擇的密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。
-   - **輸入連接埠規則** > **公用輸入連接埠** ：選取 [允許選取的連接埠]  。
-   - **輸入連接埠規則** > **選取輸入連接埠** ：在下拉式方塊中選取 [RDP]  。
+   - **執行個體詳細資料** > **虛擬機器名稱**：輸入 myVMEastUS  。
+   - **執行個體詳細資料** > **區域**：選取 [美國東部]  。
+   - **系統管理員帳戶** > **使用者名稱**：輸入您選擇的使用者名稱。
+   - **系統管理員帳戶** > **密碼**：輸入您選擇的密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。
+   - **輸入連接埠規則** > **公用輸入連接埠**：選取 [允許選取的連接埠]  。
+   - **輸入連接埠規則** > **選取輸入連接埠**：在下拉式方塊中選取 [RDP]  。
 
 3. 選取 [管理]  索引標籤，或選取 **[下一步：磁碟]** ，然後選取 **[下一步：網路功能]** ，然後選取 **[下一步：管理]** 。 在 [監視]  下，將 [開機診斷]  設定為 [關閉]  。
 4. 選取 [檢閱 + 建立]  。
@@ -157,7 +157,7 @@ ms.locfileid: "92205943"
     | 名稱                   | 此名稱在 trafficmanager.net 區域內必須是唯一的，而且會產生 DNS 名稱 trafficmanager.net，用以存取您的流量管理員設定檔。                                   |
     | 路由方法          | 選取 [子網路]  路由方法。                                       |
     | 訂用帳戶            | 選取您的訂用帳戶。                          |
-    | 資源群組          | 選取 [現有]  ，然後輸入 *myResourceGroupTM1* 。 |
+    | 資源群組          | 選取 [現有]  ，然後輸入 *myResourceGroupTM1*。 |
     | |                              |
     |
 
@@ -188,7 +188,7 @@ ms.locfileid: "92205943"
 
 1. 決定流量管理員設定檔的 DNS 名稱。
 2. 檢視流量管理員的運作，如下所示：
-    - 從位於 **美國東部** 區域的測試 VM ( *myVMEastUS* )，在網頁瀏覽器中瀏覽至您流量管理員設定檔的 DNS 名稱。
+    - 從位於 **美國東部** 區域的測試 VM (*myVMEastUS*)，在網頁瀏覽器中瀏覽至您流量管理員設定檔的 DNS 名稱。
     - 從位於 **西歐** 區域的測試 VM (myVMWestEurope  )，在網頁瀏覽器中瀏覽至您流量管理員設定檔的 DNS 名稱。
 
 ### <a name="determine-dns-name-of-traffic-manager-profile"></a>決定流量管理員設定檔的 DNS 名稱
@@ -205,18 +205,18 @@ ms.locfileid: "92205943"
 
 在本節中，您可以看到流量管理員的運作。
 
-1. 選取左側功能表中的 [所有資源]  ，然後從資源清單按一下 *myVMEastUS* ，其位於 *myResourceGroupTM1* 資源群組中。
+1. 選取左側功能表中的 [所有資源]  ，然後從資源清單按一下 *myVMEastUS*，其位於 *myResourceGroupTM1* 資源群組中。
 2. 在 [概觀]  頁面上，按一下 [連線]  ，然後在 [連線至虛擬機器]  中選取 [下載 RDP 檔案]  。
 3. 開啟所下載的 rdp 檔案。 如果出現提示，請選取 [連接]  。 輸入您在建立 VM 時指定的使用者名稱和密碼。 您可能需要選取 [其他選擇]  ，然後選取 [使用不同的帳戶]  ，以指定您在建立 VM 時輸入的認證。
 4. 選取 [確定]  。
 5. 您可能會在登入過程中收到憑證警告。 如果您收到警告，請選取 [是]  或 [繼續]  以繼續進行連線。
 6. 在 VM *myVMEastUS* 的網頁瀏覽器中，輸入流量管理員設定檔的 DNS 名稱，以檢視您的網站。 因為 VM myVMEastUS  IP 位址與端點 myInternalWebsiteEndpoint  相關聯，網頁瀏覽器會啟動測試網站伺服器 - myIISVMEastUS  。
 
-7. 接下來，使用步驟 1-5 來連線到位於 **西歐** 的 VM *myVMWestEurope* ，並從這個 VM 瀏覽到流量管理員設定檔網域名稱。 因為 VM myVMWestEurope  IP 位址與端點 myProductionWebsiteEndpoint  相關聯，網頁瀏覽器會啟動測試網站伺服器 - myIISVMWestEurope  。
+7. 接下來，使用步驟 1-5 來連線到位於 **西歐** 的 VM *myVMWestEurope*，並從這個 VM 瀏覽到流量管理員設定檔網域名稱。 因為 VM myVMWestEurope  IP 位址與端點 myProductionWebsiteEndpoint  相關聯，網頁瀏覽器會啟動測試網站伺服器 - myIISVMWestEurope  。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果不再需要，請刪除資源群組 ( **ResourceGroupTM1** 和 **ResourceGroupTM2** )。 若要這麼做，請選取資源群組 ( **ResourceGroupTM1** 或 **ResourceGroupTM2** )，然後選取 [刪除]  。
+如果不再需要，請刪除資源群組 (**ResourceGroupTM1** 和 **ResourceGroupTM2**)。 若要這麼做，請選取資源群組 (**ResourceGroupTM1** 或 **ResourceGroupTM2**)，然後選取 [刪除]  。
 
 ## <a name="next-steps"></a>後續步驟
 

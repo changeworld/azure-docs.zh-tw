@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: 3413e594179cdca0704cb5db7908276b7502e719
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901168"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004750"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 ServiceNow 整合
 
@@ -59,7 +59,7 @@ ms.locfileid: "92901168"
 1. 在左窗格中選取 [Azure Active Directory]  服務。
 1. 移至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **ServiceNow** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **ServiceNow**。
 1. 從結果面板中選取 [ServiceNow]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-sso-for-servicenow"></a>設定和測試 ServiceNow 的 Azure AD SSO
@@ -83,7 +83,7 @@ ms.locfileid: "92901168"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 Azure 入口網站的 [ServiceNow] 應用程式整合頁面上，尋找 [管理] 區段。 選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，選取 [基本 SAML 組態]  的畫筆圖示，以編輯設定。
 
    ![醒目提示畫筆圖示的 [以 SAML 設定單一登入] 頁面螢幕擷取畫面](common/edit-urls.png)
@@ -188,7 +188,7 @@ ms.locfileid: "92901168"
 
     ![[設定 ServiceNow] 區段的螢幕擷取畫面，其中已醒目提示 [檢視逐步指示]](./media/servicenow-tutorial/tutorial-servicenow-configure.png)
 
-7. 在 [設定單一登入]  表單中輸入 ServiceNow 執行個體名稱、管理員使用者名稱和管理員密碼。 選取 [立即設定]  。 提供的管理員使用者名稱必須在 ServiceNow 中指派 **security_admin** 角色，才能運作。 否則，若要手動設定 ServiceNow 以使用 Azure AD 作為 SAML 識別提供者，請選取 [手動設定單一登入]  。 從 [快速參考] 區段中複製 **登出 URL、Azure AD 識別碼，和登入 URL** 。
+7. 在 [設定單一登入]  表單中輸入 ServiceNow 執行個體名稱、管理員使用者名稱和管理員密碼。 選取 [立即設定]  。 提供的管理員使用者名稱必須在 ServiceNow 中指派 **security_admin** 角色，才能運作。 否則，若要手動設定 ServiceNow 以使用 Azure AD 作為 SAML 識別提供者，請選取 [手動設定單一登入]  。 從 [快速參考] 區段中複製 **登出 URL、Azure AD 識別碼，和登入 URL**。
 
     ![設定登入表單的螢幕擷取畫面，其中已醒目提示 [立即設定]](./media/servicenow-tutorial/configure.png "設定應用程式 URL")
 
@@ -202,7 +202,7 @@ ms.locfileid: "92901168"
 
     ![[系統定義] 區段的螢幕擷取畫面，其中已醒目提示 [系統定義] 和 [外掛程式]](./media/servicenow-tutorial/tutorial-servicenow-03.png "啟用外掛程式")
 
-    b. 搜尋 **整合 - 多個提供者單一登入安裝程式** 。
+    b. 搜尋 **整合 - 多個提供者單一登入安裝程式**。
 
      ![[系統外掛程式] 頁面的螢幕擷取畫面，其中已醒目提示 [整合 - 多個提供者單一登入安裝程式]](./media/servicenow-tutorial/tutorial-servicenow-04.png "啟用外掛程式")
 
@@ -228,7 +228,7 @@ ms.locfileid: "92901168"
 
     * 針對 [啟用偵錯記錄以供多個提供者 SSO 整合]  ，選取 [是]  。
 
-    * 針對 [使用者資料表上的欄位...]  ，輸入 **電子郵件** 。
+    * 針對 [使用者資料表上的欄位...]  ，輸入 **電子郵件**。
   
     * 選取 [儲存]  。
 
@@ -240,7 +240,7 @@ ms.locfileid: "92901168"
 
         ![[設定 ServiceNow] 的螢幕擷取畫面，其中已醒目提示 [檢視逐步指示]](./media/servicenow-tutorial/tutorial-servicenow-configure.png)
 
-    1. 在 [設定單一登入]  表單中輸入 ServiceNow 執行個體名稱、管理員使用者名稱和管理員密碼。 選取 [立即設定]  。 提供的管理員使用者名稱必須在 ServiceNow 中指派 **security-admin** 角色，才能運作。 否則，若要手動設定 ServiceNow 以使用 Azure AD 作為 SAML 識別提供者，請選取 [手動設定單一登入]  。 從 [快速參考] 區段中複製 **登出 URL、SAML 實體識別碼，和 SAML 單一登入服務 URL** 。
+    1. 在 [設定單一登入]  表單中輸入 ServiceNow 執行個體名稱、管理員使用者名稱和管理員密碼。 選取 [立即設定]  。 提供的管理員使用者名稱必須在 ServiceNow 中指派 **security-admin** 角色，才能運作。 否則，若要手動設定 ServiceNow 以使用 Azure AD 作為 SAML 識別提供者，請選取 [手動設定單一登入]  。 從 [快速參考] 區段中複製 **登出 URL、SAML 實體識別碼，和 SAML 單一登入服務 URL**。
 
         ![設定登入表單的螢幕擷取畫面，其中已醒目提示 [立即設定]](./media/servicenow-tutorial/configure.png "設定應用程式 URL")
 
@@ -260,7 +260,7 @@ ms.locfileid: "92901168"
 
              ![[識別提供者] 區段的螢幕擷取畫面](./media/servicenow-tutorial/automatic-config.png "設定單一登入")
 
-               a. 針對 [名稱]，輸入您的組態名稱 (例如 **Microsoft Azure Federated Single Sign-On** )。
+               a. 針對 [名稱]，輸入您的組態名稱 (例如 **Microsoft Azure Federated Single Sign-On**)。
 
                b. 複製 [ServiceNow 首頁]  值，然後將其貼到 Azure 入口網站的 [ServiceNow 基本 SAML 組態]  區段的 [登入 URL]  中。
 
@@ -288,7 +288,7 @@ ms.locfileid: "92901168"
              ![頁面的螢幕擷取畫面，其中已醒目提示 [測試連線]](./media/servicenow-tutorial/tutorial-activate-2.png "啟用外掛程式")
 
              > [!NOTE]
-             > 如果測試連線失敗，而且您也無法啟動此連線的話，ServiceNow 就會提供覆寫參數。 您必須在 [搜尋導覽]  中輸入 **Sys_properties.LIST** ，新的 [系統屬性] 頁面會隨即開啟。 在這裡，您必須建立新的屬性，並將名稱設為 **glide.authenticate.multisso.test.connection.mandatory** 、將 [資料類型]  設為 **True/False** ，然後將 [值]  設為 **False** 。
+             > 如果測試連線失敗，而且您也無法啟動此連線的話，ServiceNow 就會提供覆寫參數。 您必須在 [搜尋導覽]  中輸入 **Sys_properties.LIST**，新的 [系統屬性] 頁面會隨即開啟。 在這裡，您必須建立新的屬性，並將名稱設為 **glide.authenticate.multisso.test.connection.mandatory**、將 [資料類型]  設為 **True/False**，然後將 [值]  設為 **False**。
 
              > ![[測試連線] 頁面的螢幕擷取畫面](./media/servicenow-tutorial/test-connection-fail.png "設定單一登入")
         
@@ -296,7 +296,7 @@ ms.locfileid: "92901168"
 
              ![[認證] 頁面的螢幕擷取畫面](./media/servicenow-tutorial/servicenow-activate.png "設定單一登入")
   
-1. 若要手動設定 **ServiceNow** ，請依照下列步驟操作：
+1. 若要手動設定 **ServiceNow**，請依照下列步驟操作：
 
     1. 以系統管理員身分登入您的 ServiceNow 應用程式。
 
@@ -324,7 +324,7 @@ ms.locfileid: "92901168"
 
         ![[識別提供者] 的螢幕擷取畫面](./media/servicenow-tutorial/ic7694982.png "設定單一登入")
 
-        a. 針對 [名稱]  ，輸入您的組態名稱 (例如 **Microsoft Azure Federated Single Sign-On** )。
+        a. 針對 [名稱]  ，輸入您的組態名稱 (例如 **Microsoft Azure Federated Single Sign-On**)。
 
         b. 複製 [ServiceNow 首頁]  值。 將其貼到 Azure 入口網站的 [ServiceNow 基本 SAML 組態]  區段的 [登入 URL]  中。
 
@@ -335,7 +335,7 @@ ms.locfileid: "92901168"
 
         d. 確認 [NameID 原則]  設定為 `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` 值。
 
-        e。 選取 [進階]  。 在 [使用者欄位]  中，輸入 **電子郵件** 。
+        e。 選取 [進階]  。 在 [使用者欄位]  中，輸入 **電子郵件**。
 
         > [!NOTE]
         > 您可以設定 Azure AD 以發出 Azure AD 使用者識別碼 (使用者主體名稱) 或電子郵件地址，作為 SAML 權杖中的唯一識別碼。 若要這麼做，請移至 Azure 入口網站的 [ServiceNow]   > [屬性]   > [單一登入]  區段，並將所需的欄位對應至 **nameidentifier** 屬性。 所選屬性儲存在 Azure AD 中的值 (例如使用者主體名稱) 必須符合所輸入欄位 (例如 user_name) 儲存在 ServiceNow 中的值。
@@ -343,7 +343,7 @@ ms.locfileid: "92901168"
         如 在頁面的右上角選取 [測試連線]  。
 
         > [!NOTE]
-        > 如果測試連線失敗，而且您也無法啟動此連線的話，ServiceNow 就會提供覆寫參數。 您必須在 [搜尋導覽]  中輸入 **Sys_properties.LIST** ，新的 [系統屬性] 頁面會隨即開啟。 在這裡，您必須建立新的屬性，並將名稱設為 **glide.authenticate.multisso.test.connection.mandatory** 、將 [資料類型]  設為 **True/False** ，然後將 [值]  設為 **False** 。
+        > 如果測試連線失敗，而且您也無法啟動此連線的話，ServiceNow 就會提供覆寫參數。 您必須在 [搜尋導覽]  中輸入 **Sys_properties.LIST**，新的 [系統屬性] 頁面會隨即開啟。 在這裡，您必須建立新的屬性，並將名稱設為 **glide.authenticate.multisso.test.connection.mandatory**、將 [資料類型]  設為 **True/False**，然後將 [值]  設為 **False**。
 
           > ![[測試連線] 的螢幕擷取畫面](./media/servicenow-tutorial/test-connection-fail.png "設定單一登入")
 
@@ -374,7 +374,7 @@ ms.locfileid: "92901168"
 
     b. 將 [啟用偵錯記錄以供多個提供者 SSO 整合]  切換到右邊。
 
-    c. 在 [使用者資料表上的欄位...]  中，輸入 **user_name** 。
+    c. 在 [使用者資料表上的欄位...]  中，輸入 **user_name**。
 
 4. 在 [單一登入]  對話方塊中，選取 [新增憑證]  。
 
@@ -384,7 +384,7 @@ ms.locfileid: "92901168"
 
     ![[X.509 憑證] 對話方塊的螢幕擷取畫面](./media/servicenow-tutorial/ic7694975.png "設定單一登入")
 
-    a. 針對 [名稱]  ，輸入您的組態名稱 (例如： **TestSAML2.0** )。
+    a. 針對 [名稱]  ，輸入您的組態名稱 (例如：**TestSAML2.0**)。
 
     b. 選取 [使用中]  。
 
@@ -404,7 +404,7 @@ ms.locfileid: "92901168"
 
     ![[新增識別提供者] 對話方塊的螢幕擷取畫面](./media/servicenow-tutorial/ic7694982ex.png "設定單一登入")
 
-    a. 針對 [名稱]  ，輸入您的組態名稱 (例如： **SAML 2.0** )。
+    a. 針對 [名稱]  ，輸入您的組態名稱 (例如：**SAML 2.0**)。
 
     b. 針對 [識別提供者 URL]  ，貼上您從 Azure 入口網站複製的識別提供者識別碼值。
 
@@ -418,9 +418,9 @@ ms.locfileid: "92901168"
 
     ![[新增識別提供者] 對話方塊的螢幕擷取畫面，其中已醒目提示 [進階設定]](./media/servicenow-tutorial/ic7694983ex.png "設定單一登入")
 
-    a. 針對 [IDP SingleLogoutRequest 的通訊協定繫結]  ，輸入 **urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect** 。
+    a. 針對 [IDP SingleLogoutRequest 的通訊協定繫結]  ，輸入 **urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect**。
 
-    b. 針對 [名稱識別碼原則]  ，輸入 **urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified** 。
+    b. 針對 [名稱識別碼原則]  ，輸入 **urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified**。
 
     c. 針對 [AuthnContextClassRef 方法]  ，輸入 `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password`。
 
@@ -439,9 +439,9 @@ ms.locfileid: "92901168"
 
     c. 針對 [對象 URI]  ，輸入您 ServiceNow 租用戶的 URL。
 
-    d. 針對 [時鐘誤差]  ，輸入 **60** 。
+    d. 針對 [時鐘誤差]  ，輸入 **60**。
 
-    e. 針對 [使用者欄位]  ，輸入 **電子郵件** 。
+    e. 針對 [使用者欄位]  ，輸入 **電子郵件**。
 
     > [!NOTE]
     > 您可以設定 Azure AD 以發出 Azure AD 使用者識別碼 (使用者主體名稱) 或電子郵件地址，作為 SAML 權杖中的唯一識別碼。 若要這麼做，請移至 Azure 入口網站的 [ServiceNow]   > [屬性]   > [單一登入]  區段，並將所需的欄位對應至 **nameidentifier** 屬性。 所選屬性儲存在 Azure AD 中的值 (例如使用者主體名稱) 必須符合所輸入欄位 (例如 user_name) 儲存在 ServiceNow 中的值。

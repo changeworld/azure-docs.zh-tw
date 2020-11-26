@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: b1f0cbc1b15eec6498b9219b58d4679bf1a854dc
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515860"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018761"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tango-analytics"></a>教學課程：Azure Active Directory 與 Tango Analytics 整合
 
@@ -61,7 +61,7 @@ Tango Analytics 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Tango Analytics** ，從結果面板中選取 [Tango Analytics]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Tango Analytics**，從結果面板中選取 [Tango Analytics]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Tango Analytics](common/search-new-app.png)
 
@@ -108,7 +108,7 @@ Tango Analytics 與 Azure AD 整合提供下列優點：
     > [!NOTE]
     > [回覆 URL] 不是真實的值。 使用實際的 [回覆 URL] 來更新此值。 請連絡 [Tango Analytics 用戶端支援小組](mailto:support@tangoanalytics.com)以取得此值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -142,7 +142,7 @@ Tango Analytics 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com

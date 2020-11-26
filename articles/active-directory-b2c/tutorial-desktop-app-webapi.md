@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 8ebfbeeb4533f21bc0fa10a5fee7b88ef069c262
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eca6297a704e1ef478c09baf227cf622d6890bb
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84298837"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953146"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>教學課程：使用 Azure Active Directory B2C 授與從傳統型應用程式存取 Node.js Web API 的權限
 
@@ -51,7 +51,7 @@ ms.locfileid: "84298837"
 
 在必要的教學課程中，您已註冊名為 *nativeapp1* 的原生用戶端應用程式。 下列步驟會使用您在上一節中為 *webapi1* 公開的 API 範圍來設定該原生應用程式註冊。 這可讓傳統型應用程式從 Azure AD B2C 取得存取權杖，Web API 可將它用於驗證和提供其資源的有限範圍存取權。 您稍後會在本教學課程中設定及執行傳統型應用程式和 Web API 程式碼範例。
 
-若要在您的 Azure AD B2C 租用戶中註冊應用程式，您可以使用我們新的整合**應用程式註冊**體驗，或使用舊版**應用程式 (舊版)** 體驗。 [深入了解新的體驗](https://aka.ms/b2cappregtraining)。
+若要在您的 Azure AD B2C 租用戶中註冊應用程式，您可以使用我們新的整合 **應用程式註冊** 體驗，或使用舊版 **應用程式 (舊版)** 體驗。 [深入了解新的體驗](./app-registrations-training-guide.md)。
 
 #### <a name="app-registrations"></a>[應用程式註冊](#tab/app-reg-ga/)
 
@@ -89,7 +89,7 @@ ms.locfileid: "84298837"
 
 1. 在 Visual Studio 中開啟 **active-directory-b2c-wpf** 方案 (`active-directory-b2c-wpf.sln`)。
 1. 在 **active-directory-b2c-wpf** 專案中，開啟 *App.xaml.cs* 檔案，並尋找以下變數定義。
-    1. 將 `ApiScopes` 變數的值取代為您稍早在定義 **demo.read**範圍時所記錄的值。
+    1. 將 `ApiScopes` 變數的值取代為您稍早在定義 **demo.read** 範圍時所記錄的值。
     1. 將 `ApiEndpoint` 變數的值取代為您稍早在租用戶中註冊 Web API (例如，*webapi1*) 時所記錄的 [重新導向 URI]。
 
     以下是範例：

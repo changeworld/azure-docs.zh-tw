@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
 ms.openlocfilehash: bf86656ff670df19162867d597a869d762a012e8
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454554"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019339"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>教學課程：整合 Dropbox Business 與 Azure Active Directory
 
@@ -53,7 +53,7 @@ ms.locfileid: "92454554"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Dropbox Business** 。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Dropbox Business**。
 1. 從結果面板選取 [Dropbox Business]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
@@ -129,7 +129,7 @@ ms.locfileid: "92454554"
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組] 對話方塊中，從使用者清單選取 **Britta Simon** ，然後按一下畫面底部的 [選取] 按鈕。
+1. 在 [使用者和群組] 對話方塊中，從使用者清單選取 **Britta Simon**，然後按一下畫面底部的 [選取] 按鈕。
 1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
 1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
@@ -173,7 +173,7 @@ ms.locfileid: "92454554"
 
     ![設定單一登入](./media/dropboxforbusiness-tutorial/configure6.png "設定單一登入")
 
-    c. 按一下 [上傳憑證]，然後瀏覽至您從 Azure 入口網站下載的 **Base64 編碼憑證檔案** 。
+    c. 按一下 [上傳憑證]，然後瀏覽至您從 Azure 入口網站下載的 **Base64 編碼憑證檔案**。
 
     d. 按一下 [複製連結]，並在 Azure 入口網站中，將複製的值貼到 [Dropbox Business 網域和 URL] 區段的 [登入 URL] 文字方塊。
 

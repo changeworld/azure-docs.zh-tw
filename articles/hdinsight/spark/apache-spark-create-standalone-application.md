@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.custom: contperfq1
 ms.date: 08/21/2020
 ms.openlocfilehash: 02192f3960b8021ee32203620893620c7b96f076
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539440"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023988"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>教學課程：使用 IntelliJ 為 HDInsight 中的 Apache Spark 建立 Scala Maven 應用程式
 
@@ -66,8 +66,8 @@ ms.locfileid: "92539440"
 3. 選取主視窗中的 [Spark 專案 (Scala)]  。
 
 4. 從 [建置工具]  下拉式清單中，選取下列其中一個值：
-      * **Maven** ：建立 Scala 專案精靈支援。
-      * **SBT** ：可供管理相依性並建置 Scala 專案。
+      * **Maven**：建立 Scala 專案精靈支援。
+      * **SBT**：可供管理相依性並建置 Scala 專案。
 
    ![IntelliJ 的新增專案對話方塊](./media/apache-spark-create-standalone-application/intellij-project-apache-spark.png)
 
@@ -115,9 +115,9 @@ ms.locfileid: "92539440"
 
 10. 確認專案名稱和位置，然後按一下 [完成]  。  專案需要幾分鐘才能匯入。
 
-11. 匯入專案後，從左窗格瀏覽至 **SparkSimpleApp** > **src** > **test** > **scala** > **com** > **microsoft** > **spark** > **example** 。  以滑鼠右鍵按一下 **MySpec** ，然後選取 [刪除...]  。應用程式並不需要此檔案。  在對話方塊中選取 [確定]  。
+11. 匯入專案後，從左窗格瀏覽至 **SparkSimpleApp** > **src** > **test** > **scala** > **com** > **microsoft** > **spark** > **example**。  以滑鼠右鍵按一下 **MySpec**，然後選取 [刪除...]  。應用程式並不需要此檔案。  在對話方塊中選取 [確定]  。
   
-12. 在稍後的步驟中，您會更新 **pom.xml** ，以定義 Spark Scala 應用程式的相依性。 若要自動下載並解析這些相依性，您必須設定 Maven。
+12. 在稍後的步驟中，您會更新 **pom.xml**，以定義 Spark Scala 應用程式的相依性。 若要自動下載並解析這些相依性，您必須設定 Maven。
 
 13. 在 [檔案]  功能表中，選取 [設定]  以開啟 [設定]  視窗。
 
@@ -129,9 +129,9 @@ ms.locfileid: "92539440"
 
     ![設定 Maven 以進行自動下載](./media/apache-spark-create-standalone-application/configure-maven-download.png)
 
-17. 從左窗格瀏覽至 **src** > **main** > **scala** > **com.microsoft.spark.example** ，然後按兩下 [應用程式]  以開啟 App.scala。
+17. 從左窗格瀏覽至 **src** > **main** > **scala** > **com.microsoft.spark.example**，然後按兩下 [應用程式]  以開啟 App.scala。
 
-18. 將現有的範例程式碼取代為下列程式碼，然後儲存變更。 此程式碼會從 HVAC.csv (所有 HDInsight Spark 叢集上均有提供) 讀取資料。 擷取在第六個資料行中只有一個數字的資料列。 以即將輸出寫入叢集預設儲存體容器下的 **/HVACOut** 。
+18. 將現有的範例程式碼取代為下列程式碼，然後儲存變更。 此程式碼會從 HVAC.csv (所有 HDInsight Spark 叢集上均有提供) 讀取資料。 擷取在第六個資料行中只有一個數字的資料列。 以即將輸出寫入叢集預設儲存體容器下的 **/HVACOut**。
 
     ```scala
     package com.microsoft.spark.example
@@ -157,7 +157,7 @@ ms.locfileid: "92539440"
     }
     ```
 
-19. 在左窗格中按兩下 **pom.xml** 。  
+19. 在左窗格中按兩下 **pom.xml**。  
 
 20. 在 `<project>\<properties>` 內新增下列區段：
 
@@ -197,7 +197,7 @@ ms.locfileid: "92539440"
 
         ![IntelliJ IDEA 專案結構 jar 來自模組](./media/apache-spark-create-standalone-application/hdinsight-create-jar3.png)
 
-    6. [輸出配置]  索引標籤會列出所有納入 Maven 專案中的 jar。 您可以選取並刪除 Scala 應用程式未直接依存的 jar。 對於您在此處建立的應用程式，您可以移除最後一個 ( **SparkSimpleApp 編譯輸出** ) 以外的所有項目。 選取要刪除的 jar，然後選取負號 **-** 。
+    6. [輸出配置]  索引標籤會列出所有納入 Maven 專案中的 jar。 您可以選取並刪除 Scala 應用程式未直接依存的 jar。 對於您在此處建立的應用程式，您可以移除最後一個 (**SparkSimpleApp 編譯輸出**) 以外的所有項目。 選取要刪除的 jar，然後選取負號 **-** 。
 
         ![「IntelliJ IDEA 專案結構刪除輸出」](./media/apache-spark-create-standalone-application/hdi-delete-output-jars.png)
 
@@ -211,7 +211,7 @@ ms.locfileid: "92539440"
 
 若要在叢集上執行應用程式，您可以使用下列方法：
 
-* **將應用程式 jar 複製到與叢集相關聯的 Azure 儲存體 Blob** 。 您可以使用命令列公用程式 **AzCopy** 來執行此動作。 另外也有很多用戶端可用來上傳資料。 [在 HDInsight 上將 Apache Hadoop 作業的資料上傳](../hdinsight-upload-data.md)中可找到其詳細資訊。
+* **將應用程式 jar 複製到與叢集相關聯的 Azure 儲存體 Blob**。 您可以使用命令列公用程式 **AzCopy** 來執行此動作。 另外也有很多用戶端可用來上傳資料。 [在 HDInsight 上將 Apache Hadoop 作業的資料上傳](../hdinsight-upload-data.md)中可找到其詳細資訊。
 
 * **使用 Apache Livy 從遠端提交應用程式作業至** Spark 叢集。 HDInsight 上的 Spark 叢集包含會公開 REST 端點以從遠端提交 Spark 作業的 Livy。 如需詳細資訊，請參閱 [搭配 HDInsight 上的 Spark 叢集利用 Apache Livy 遠端提交 Apache Spark 作業](apache-spark-livy-rest-interface.md)。
 
@@ -221,7 +221,7 @@ ms.locfileid: "92539440"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 在頂端的 [搜尋]  方塊中，輸入 **HDInsight** 。
+1. 在頂端的 [搜尋]  方塊中，輸入 **HDInsight**。
 
 1. 在 [服務]  底下，選取 [HDInsight 叢集]  。
 

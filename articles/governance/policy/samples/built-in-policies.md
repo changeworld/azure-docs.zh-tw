@@ -1,21 +1,21 @@
 ---
 title: 內建原則定義的清單
 description: 列出 Azure 原則的內建原則定義。 分類包括標籤、法規合規性、Key Vault、Kubernetes、來賓設定等等。
-ms.date: 10/20/2020
+ms.date: 11/20/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: c1627c05e041b2b4a91f5fb5ad44d79641cb9756
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 66563a4754d706f2c73e90ad3c2e8e0f4fe7d3a0
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311970"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "96007596"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure 原則的內建原則定義
 
 此頁面是 Azure 原則內建原則定義的索引。
 
-Azure 入口網站中原則定義的每個內建連結名稱。 使用 [來源] 資料行中的連結查看 [Azure 原則 GitHub 存放庫](https://github.com/Azure/azure-policy)上的來源。 內建方案會依照**中繼資料**中的**類別**屬性來分組。 若要跳至特定的**類別**，請使用頁面右側的功能表。 或是使用 <kbd>Ctrl</kbd>-<kbd>F</kbd> 來使用瀏覽器的搜尋功能。
+Azure 入口網站中原則定義的每個內建連結名稱。 使用 [來源] 資料行中的連結查看 [Azure 原則 GitHub 存放庫](https://github.com/Azure/azure-policy)上的來源。 內建方案會依照 **中繼資料** 中的 **類別** 屬性來分組。 若要跳至特定的 **類別**，請使用頁面右側的功能表。 或是使用 <kbd>Ctrl</kbd>-<kbd>F</kbd> 來使用瀏覽器的搜尋功能。
 
 ## <a name="api-for-fhir"></a>API for FHIR
 
@@ -44,6 +44,10 @@ Azure 入口網站中原則定義的每個內建連結名稱。 使用 [來源] 
 ## <a name="automation"></a>自動化
 
 [!INCLUDE [azure-policy-reference-policies-automation](../../../../includes/policy/reference/bycat/policies-automation.md)]
+
+## <a name="azure-data-explorer"></a>Azure 資料總管
+
+[!INCLUDE [azure-policy-reference-policies-azure-data-explorer](../../../../includes/policy/reference/bycat/policies-azure-data-explorer.md)]
 
 ## <a name="backup"></a>Backup
 
@@ -133,6 +137,10 @@ Azure 入口網站中原則定義的每個內建連結名稱。 使用 [來源] 
 
 [!INCLUDE [azure-policy-reference-policies-network](../../../../includes/policy/reference/bycat/policies-network.md)]
 
+## <a name="portal"></a>入口網站
+
+[!INCLUDE [azure-policy-reference-policies-portal](../../../../includes/policy/reference/bycat/policies-portal.md)]
+
 ## <a name="search"></a>搜尋
 
 [!INCLUDE [azure-policy-reference-policies-search](../../../../includes/policy/reference/bycat/policies-search.md)]
@@ -164,6 +172,10 @@ Azure 入口網站中原則定義的每個內建連結名稱。 使用 [來源] 
 ## <a name="stream-analytics"></a>串流分析
 
 [!INCLUDE [azure-policy-reference-policies-stream-analytics](../../../../includes/policy/reference/bycat/policies-stream-analytics.md)]
+
+## <a name="synapse"></a>Synapse
+
+[!INCLUDE [azure-policy-reference-policies-synapse](../../../../includes/policy/reference/bycat/policies-synapse.md)]
 
 ## <a name="tags"></a>Tags
 

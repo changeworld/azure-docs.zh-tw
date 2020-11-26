@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 3816239798290318404980ded388b726d8134395
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895147"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999785"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>教學課程：Azure Active Directory 與 ScreenSteps 整合
 
@@ -61,7 +61,7 @@ ScreenSteps 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **ScreenSteps** ，從結果面板中選取 [ScreenSteps]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **ScreenSteps**，從結果面板中選取 [ScreenSteps]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 ScreenSteps](common/search-new-app.png)
 
@@ -186,7 +186,7 @@ ScreenSteps 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com

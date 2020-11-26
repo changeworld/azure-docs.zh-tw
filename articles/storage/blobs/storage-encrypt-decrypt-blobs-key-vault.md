@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ac69b442b06864fd45561b26909e1247674611a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddc9dbf77c04ea95e5b873c45de4c0df109514c7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458377"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544440"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>教學課程 - 使用 Azure Key Vault 加密及解密 Blob
 
@@ -236,8 +236,8 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關搭配使用 C# 和 Microsoft Azure 儲存體的詳細資訊，請參閱[適用於 .NET 的 Microsoft Azure 儲存體用戶端程式庫](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
+如需有關搭配使用 C# 和 Microsoft Azure 儲存體的詳細資訊，請參閱[適用於 .NET 的 Microsoft Azure 儲存體用戶端程式庫](/previous-versions/azure/dn261237(v=azure.100))。
 
-如需 Blob REST API 的詳細資訊，請參閱 [Blob 服務 REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)。
+如需 Blob REST API 的詳細資訊，請參閱 [Blob 服務 REST API](/rest/api/storageservices/Blob-Service-REST-API)。
 
-如需 Microsoft Azure 儲存體的最新資訊，請移至 [Microsoft Azure 儲存體團隊部落格](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)。
+如需 Microsoft Azure 儲存體的最新資訊，請移至 [Microsoft Azure 儲存體團隊部落格](/archive/blogs/windowsazurestorage/)。

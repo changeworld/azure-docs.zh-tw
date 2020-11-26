@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure Batch 的 Azure 原則法規合規性控制項
 description: 列出適用於 Azure Batch 的 Azure 原則法規合規性控制項。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.topic: sample
 author: JnHs
 ms.author: jenhayes
 ms.service: batch
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: f351da484855d2628334a236ed71edd307d52aa6
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: e1bb6a80bfd1411fe30774c429a2d18782b27ece
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695671"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987845"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-batch"></a>適用於 Azure Batch 的 Azure 原則法規合規性控制項
 

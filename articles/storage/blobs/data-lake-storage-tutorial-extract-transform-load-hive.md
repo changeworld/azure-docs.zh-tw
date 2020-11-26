@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: b247a72b5d7db9892c6a2a763b7b71dc5f972d95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7640b7a6053532360da4c908089aecfe163bd3de
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045292"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912649"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>教學課程：使用 Azure HDInsight 擷取、轉換和載入資料
 
@@ -32,17 +32,17 @@ ms.locfileid: "86045292"
 
 * **針對 HDInsight 設定的 Azure Data Lake Storage Gen2 儲存體帳戶**
 
-    請參閱[搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)。
+    請參閱[搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)。
 
 * **HDInsight 上的 Linux 型 Hadoop 叢集**
 
-    請參閱[快速入門：使用 Azure 入口網站在 Azure HDInsight 中開始使用 Apache Hadoop 和 Apache Hive](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal)。
+    請參閱[快速入門：使用 Azure 入口網站在 Azure HDInsight 中開始使用 Apache Hadoop 和 Apache Hive](../../hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)。
 
-* **Azure SQL Database**：您會使用 Azure SQL Database 做為目的地資料存放區。 如果您在 SQL Database 中沒有資料庫，請參閱[在 Azure 入口網站的 Azure SQL Database 中建立資料庫](../../sql-database/sql-database-get-started.md)。
+* **Azure SQL Database**：您會使用 Azure SQL Database 做為目的地資料存放區。 如果您在 SQL Database 中沒有資料庫，請參閱[在 Azure 入口網站的 Azure SQL Database 中建立資料庫](../../azure-sql/database/single-database-create-quickstart.md)。
 
-* **Azure CLI**：如果您未安裝 Azure CLI，請參閱 [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* **Azure CLI**：如果您未安裝 Azure CLI，請參閱 [安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-* **安全殼層 (SSH) 用戶端**：如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Hadoop)](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)。
+* **安全殼層 (SSH) 用戶端**：如需詳細資訊，請參閱 [使用 SSH 連線至 HDInsight (Hadoop)](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 ## <a name="download-the-flight-data"></a>下載航班資料
 
@@ -344,4 +344,4 @@ ms.locfileid: "86045292"
 若要深入了解如何使用 HDInsight 中的資料，請參閱下列文章：
 
 > [!div class="nextstepaction"]
-> [搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+> [搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
