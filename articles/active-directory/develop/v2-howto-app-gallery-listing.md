@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 3b9f744e414e83c103f6b9249a0ccf5020588463
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 6374164bb5049742d63a669b4c1e552c93967977
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356343"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173374"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>將您的應用程式發佈至 Azure AD 應用程式資源庫
 
@@ -36,7 +36,7 @@ ms.locfileid: "93356343"
 - 為您的使用者提供單一登入。 使用 SSO，您可以透過單一登入讓客戶更輕鬆地降低支援成本。 如果已啟用單鍵 SSO，客戶的 IT 系統管理員就不需要學習如何設定您的應用程式以在其組織中使用。 若要深入了解單一登入，請參閱[什麼是單一登入？](../manage-apps/what-is-single-sign-on.md)。
 - 您的應用程式可以在 Microsoft 365 應用程式資源庫、Microsoft 365 應用程式啟動程式，以及在 Office.com 上的 Microsoft 搜尋服務中找到。 
 - 整合式應用程式管理。 若要深入瞭解 Azure AD 中的應用程式管理，請參閱 [什麼是應用程式管理？](../manage-apps/what-is-application-management.md)。
-- 您的應用程式可以使用 [圖形 API](https://docs.microsoft.com/graph/) 來存取在 Microsoft 生態系統中驅動使用者生產力的資料。
+- 您的應用程式可以使用 [圖形 API](/graph/) 來存取在 Microsoft 生態系統中驅動使用者生產力的資料。
 - 隨 Azure AD 團隊共同產生的應用程式專屬檔，適用于我們的共同客戶可簡化採用。
 - 您可以讓您的客戶能夠完全管理其員工和來賓身分識別的驗證與授權。
 - 將所有帳戶管理和合規性責任與客戶的身分識別相關聯。
@@ -47,7 +47,7 @@ ms.locfileid: "93356343"
 - 當使用者使用 Azure AD SSO 登入應用程式，並移除個別認證的需求時，增加安全性和便利性。
 
 > [!TIP]
-> 當您透過購買或訂用帳戶提供其他公司所使用的應用程式時，您可以將應用程式提供給他們自己的 Azure 租使用者中的客戶。 這就是所謂的建立多租使用者應用程式。 如需此概念的總覽，請參閱 Azure 中的多租使用者 [應用程式](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications) 和 [Azure Active Directory 中](single-and-multi-tenant-apps.md)的租使用者。
+> 當您透過購買或訂用帳戶提供其他公司所使用的應用程式時，您可以將應用程式提供給他們自己的 Azure 租使用者中的客戶。 這就是所謂的建立多租使用者應用程式。 如需此概念的總覽，請參閱 Azure 中的多租使用者 [應用程式](../../dotnet-develop-multitenant-applications.md) 和 [Azure Active Directory 中](single-and-multi-tenant-apps.md)的租使用者。
 
 > [!IMPORTANT]
 > 若要在 Azure AD 資源庫中發佈您的應用程式，您必須同意特定的條款及條件。 開始之前，請務必閱讀並同意 [條款及條件](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/)。
@@ -69,7 +69,7 @@ ms.locfileid: "93356343"
 - 共同客戶可取得逐步設定教學課程。
 - 使用系統進行跨網域身分識別管理的客戶 ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) 可以針對相同的應用程式使用布建。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 您需要一個永久的帳戶來進行測試，而且至少已註冊兩個使用者。
 
@@ -162,7 +162,7 @@ Web 服務同盟 (WS-送) 是一種 [業界標準](https://docs.oasis-open.org/w
 Microsoft 不會提供（或建議） SAML 執行的程式庫。 有許多可用的開放原始碼程式庫。
 
 ### <a name="implement-ws-fed"></a>執行 WS-Fed
-若要深入瞭解 ASP.NET Core 中的 WS-Fed，請參閱 [ASP.NET Core 中使用 WS-Federation 來驗證使用者](https://docs.microsoft.com/aspnet/core/security/authentication/ws-federation)。
+若要深入瞭解 ASP.NET Core 中的 WS-Fed，請參閱 [ASP.NET Core 中使用 WS-Federation 來驗證使用者](/aspnet/core/security/authentication/ws-federation)。
 
 ### <a name="implement-password-vaulting"></a>執行密碼保存庫
 
@@ -173,13 +173,13 @@ Microsoft 不會提供（或建議） SAML 執行的程式庫。 有許多可用
 
 您將需要 Azure AD 租使用者，才能測試您的應用程式。 若要設定您的開發環境，請參閱 [快速入門：設定租](quickstart-create-new-tenant.md)使用者。
 
-或者，Azure AD 租使用者會隨附于每個 Microsoft 365 訂用帳戶。 若要設定免費的 Microsoft 365 開發環境，請參閱 [加入 Microsoft 365 開發人員計畫](https://docs.microsoft.com/office/developer-program/microsoft-365-developer-program)。
+或者，Azure AD 租使用者會隨附于每個 Microsoft 365 訂用帳戶。 若要設定免費的 Microsoft 365 開發環境，請參閱 [加入 Microsoft 365 開發人員計畫](/office/developer-program/microsoft-365-developer-program)。
 
 擁有租使用者之後，您必須啟用並測試單一登入存取。 
 
 **針對 OIDC 或 Oath 應用** 程式，請將 [您的應用程式註冊](quickstart-register-app.md) 為多租使用者應用程式。 在 [支援的帳戶類型] 中，選取 [任何組織目錄中的帳戶及個人 Microsoft 帳戶] 選項。
 
-**針對 saml 和 WS-送出的應用程式** ，您可以在 Azure AD 中使用一般 SAML 範本來 [設定 saml 型單一登入](../manage-apps/configure-saml-single-sign-on.md) 應用程式。
+**針對 saml 和 WS-送出的應用程式**，您可以在 Azure AD 中使用一般 SAML 範本來 [設定 saml 型單一登入](../manage-apps/configure-saml-single-sign-on.md) 應用程式。
 
 如有必要，您也可以 [將單一租使用者應用程式轉換為多租](howto-convert-app-to-be-multi-tenant.md) 使用者。
 
@@ -209,7 +209,7 @@ Microsoft 不會提供（或建議） SAML 執行的程式庫。 有許多可用
 
 ### <a name="documentation-on-the-microsoft-site"></a>Microsoft 網站上的檔
 
-當您使用 Azure Active Directory 應用程式庫列出您的應用程式時，它也會將您的應用程式發佈到 Azure Marketplace 中，Microsoft 將會為我們的共同客戶產生說明逐步程式的檔。 您可以在 [這裡](https://aka.ms/appstutorial)看到範例。 本檔是根據您提交至資源庫所建立，如果您使用 GitHub 帳戶對應用程式進行變更，就可以輕鬆地加以更新。
+當您使用 Azure Active Directory 應用程式庫列出您的應用程式時，它也會將您的應用程式發佈到 Azure Marketplace 中，Microsoft 將會為我們的共同客戶產生說明逐步程式的檔。 您可以在 [這裡](../saas-apps/tutorial-list.md)看到範例。 本檔是根據您提交至資源庫所建立，如果您使用 GitHub 帳戶對應用程式進行變更，就可以輕鬆地加以更新。
 
 
 ## <a name="step-5---submit-your-app"></a>步驟 5-提交您的應用程式
@@ -220,7 +220,7 @@ Microsoft 不會提供（或建議） SAML 執行的程式庫。 有許多可用
 
 如果您收到「無法運作」的訊息，則必須聯絡 [AZURE AD SSO 整合小組](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。 提供您要用來提交要求的電子郵件帳戶。 慣用的商業電子郵件地址 `name@yourbusiness.com` 。 Azure AD 團隊會在 Microsoft 應用程式網路入口網站中新增該帳戶。
 
-如果您看到 [要求存取] 頁面，請填寫商務理由，然後選取 [ **要求存取** ]。
+如果您看到 [要求存取] 頁面，請填寫商務理由，然後選取 [ **要求存取**]。
 
 新增帳戶之後，您可以登入 Microsoft 應用程式網路入口網站，然後在首頁上選取 [ **提交要求 (ISV)** ] 磚來提交要求。
 
@@ -262,7 +262,7 @@ Microsoft 不會提供（或建議） SAML 執行的程式庫。 有許多可用
 
 ![在資源庫中列出密碼 SSO 應用程式](./media/howto-app-gallery-listing/passwordsso.png)
 
-如果您正在執行 [SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) 2.0 端點以進行使用者布建，請選取如下所示的選項。 
+如果您正在執行 [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2.0 端點以進行使用者布建，請選取如下所示的選項。 
 
    ![要求使用者布建](./media/howto-app-gallery-listing/user-provisioning.png)
 

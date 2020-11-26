@@ -12,25 +12,25 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f92b95e38dea6555ca881d56ccf1cf2d68783e53
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 2825d3776f7b45f6726aaec05484900511ed1477
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896084"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172970"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B 共同作業常見問題集
 
 這些有關 Azure Active Directory (Azure AD) 企業對企業 (B2B) 共同作業的常見問題集 (FAQ) 會定期更新來包含新的主題。
 
    > [!IMPORTANT]
-   > **自 2021 年 3 月 31 日起** ，Microsoft 將不再支援兌換邀請，而是建立適用於 B2B 共同作業案例的非受控 Azure AD 帳戶和租用戶。 在準備過程中，我們鼓勵客戶選擇使用[電子郵件一次性密碼驗證](one-time-passcode.md)。 我們歡迎您提供此公開預覽功能的意見反應，而且期待能建立更多共同作業的方式。
+   > **自 2021 年 3 月 31 日起**，Microsoft 將不再支援兌換邀請，而是建立適用於 B2B 共同作業案例的非受控 Azure AD 帳戶和租用戶。 在準備過程中，我們鼓勵客戶選擇使用[電子郵件一次性密碼驗證](one-time-passcode.md)。 我們歡迎您提供此公開預覽功能的意見反應，而且期待能建立更多共同作業的方式。
 
 ### <a name="can-we-customize-our-sign-in-page-so-its-more-intuitive-for-our-b2b-collaboration-guest-users"></a>是否可以自訂登入頁面，讓我們的 B2B 共同作業來賓使用者感到更直覺式？
 當然！ 請參閱我們[有關這項功能的部落格文章](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/)。 如需有關如何自訂組織登入頁面的詳細資訊，請參閱[將公司商標新增至登入和存取面板頁面](../fundamentals/customize-branding.md)。
 
 ### <a name="can-b2b-collaboration-users-access-sharepoint-online-and-onedrive"></a>B2B 共同作業的使用者可以存取 SharePoint Online 和 OneDrive 嗎？
-是。 不過，在 SharePoint Online 中使用人員選擇器搜尋現有來賓使用者的功能，預設為 **關閉** 。 若要開啟搜尋現有來賓使用者的選項，請將 **ShowPeoplePickerSuggestionsForGuestUsers** 設定為 **On** 。 您可以在租用戶等級或網站集合等級開啟這項設定。 您可以使用 Set-SPOTenant 和 Set-SPOSite Cmdlet 變更此設定。 透過這些 Cmdlet，成員可以搜尋目錄中所有現有的來賓使用者。 租用戶範圍中的變更不會影響已佈建的 SharePoint Online 網站。
+是。 不過，在 SharePoint Online 中使用人員選擇器搜尋現有來賓使用者的功能，預設為 **關閉**。 若要開啟搜尋現有來賓使用者的選項，請將 **ShowPeoplePickerSuggestionsForGuestUsers** 設定為 **On**。 您可以在租用戶等級或網站集合等級開啟這項設定。 您可以使用 Set-SPOTenant 和 Set-SPOSite Cmdlet 變更此設定。 透過這些 Cmdlet，成員可以搜尋目錄中所有現有的來賓使用者。 租用戶範圍中的變更不會影響已佈建的 SharePoint Online 網站。
 
 ### <a name="is-the-csv-upload-feature-still-supported"></a>是否仍支援 CSV 上傳功能？
 是。 如需有關使用 .csv 檔案上傳功能的詳細資訊，請參閱[這個 PowerShell 範例](code-samples.md)。
@@ -64,17 +64,17 @@ ms.locfileid: "92896084"
 可以！ 您可以建立條件式存取原則，以封鎖所有來賓和外部使用者存取 Azure 入口網站。 當您設定此原則時，請小心避免不慎封鎖成員和管理員的存取權。
 
 1. 以安全性系統管理員或條件式存取系統管理員的身分，登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 在 [Azure 入口網站中，選取 [ **Azure Active Directory** ]。 
-3. 在 [ **管理** ] 底下，選取 [ **安全性** ]。
-4. 在 [ **保護** ] 下，選取 [ **條件式存取** ]。 選取 [新增原則]。
+2. 在 Azure 入口網站中，選取 [Azure Active Directory]  。 
+3. 在 [ **管理**] 底下，選取 [ **安全性**]。
+4. 在 [ **保護**] 下，選取 [ **條件式存取**]。 選取 [新增原則]。
 5. 在 [ **新增** ] 頁面的 [ **名稱** ] 文字方塊中，輸入原則的名稱 (例如「封鎖來賓存取入口網站」 ) 。
 6. 在 [指派]  底下，選取 [使用者和群組]  。
-7. 在 [ **包含** ] 索引標籤上，選擇 [ **選取使用者和群組** ]，然後選取 [ **所有來賓和外部使用者] (預覽)** 。
+7. 在 [ **包含** ] 索引標籤上，選擇 [ **選取使用者和群組**]，然後選取 [ **所有來賓和外部使用者] (預覽)**。
 9. 選取 [完成]。
-10. 在 [ **新增** ] 頁面的 [ **指派** ] 區段中，選取 [ **雲端應用程式] 或 [動作** ]。
-11. 在 [ **雲端應用程式] 或 [動作** ] 頁面上，選擇 [ **選取應用程式** ]，然後選擇 [ **選取** ]。
+10. 在 [ **新增** ] 頁面的 [ **指派** ] 區段中，選取 [ **雲端應用程式] 或 [動作**]。
+11. 在 [ **雲端應用程式] 或 [動作** ] 頁面上，選擇 [ **選取應用程式**]，然後選擇 [ **選取**]。
 12. 在 [選取]  頁面上，選擇 [Microsoft Azure 管理]  ，然後選擇 [選取]  。
-13. 在 [ **雲端應用程式] 或 [動作** ] 頁面上，選取 [ **完成** ]。
+13. 在 [ **雲端應用程式] 或 [動作** ] 頁面上，選取 [ **完成**]。
 
 ### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>Azure AD B2B 共同作業是否支援多重要素驗證和取用者電子郵件帳戶？
 是。 Azure AD B2B 共同作業支援多重要素驗證和取用者電子郵件帳戶。
@@ -84,7 +84,7 @@ ms.locfileid: "92896084"
  
 * 使用 Microsoft 帳戶 (例如guestuser@live.com) 登入的來賓使用者，可以使用 Microsoft 帳戶自助式密碼重設 (SSPR) 功能重設自己的密碼。 請參閱[如何重設 Microsoft 帳戶密碼](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password)。
 * 使用 Google 帳戶或其他外部身分識別提供者登入的來賓使用者，可以使用其身分識別提供者的 SSPR 方法重設自己的密碼。 例如，使用 Google 帳戶 guestuser@gmail.com 的來賓使用者可以依照[變更或重設密碼](https://support.google.com/accounts/answer/41078)中的指示重設自己的密碼。
-* 如果身分識別租用戶是 Just-in-time (JIT) 或 「病毒式」租用戶 (表示它是獨立、非受控的 Azure 租用戶)，只有來賓使用者才能重設自己的密碼。 組織有時會[接管病毒式租用戶的管理](../users-groups-roles/domains-admin-takeover.md)，這些是員工使用其工作電子郵件地址來註冊服務時所建立的租用戶。 在組織接管病毒式租用戶之後，只有該組織的系統管理員可以重設使用者的密碼或啟用 SSPR。 如有必要，作為發出邀請的組織，您可以從目錄中移除來賓使用者帳戶，並重新傳送邀請。
+* 如果身分識別租用戶是 Just-in-time (JIT) 或 「病毒式」租用戶 (表示它是獨立、非受控的 Azure 租用戶)，只有來賓使用者才能重設自己的密碼。 組織有時會[接管病毒式租用戶的管理](../enterprise-users/domains-admin-takeover.md)，這些是員工使用其工作電子郵件地址來註冊服務時所建立的租用戶。 在組織接管病毒式租用戶之後，只有該組織的系統管理員可以重設使用者的密碼或啟用 SSPR。 如有必要，作為發出邀請的組織，您可以從目錄中移除來賓使用者帳戶，並重新傳送邀請。
 
 * 如果來賓使用者的主目錄是您的 Azure AD 租用戶，您可以重設使用者的密碼。 例如，您可能已建立使用者或從您的內部部署 Active Directory 同步使用者，並將他們的 UserType 設為 Guest。 因為這位使用者位於您的主目錄中，所以您可以從 Azure 入口網站重設其密碼。
 

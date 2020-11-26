@@ -16,12 +16,12 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a0765f5279eb41324691c431c5973bb55a8b52d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74bc659c11c4f43ab3cf85cdc53f704cd07a1cde
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662493"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172362"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同步處理：目錄擴充
 您可以使用目錄擴充功能，從內部部署 Active Directory 利用自己的屬性擴充 Azure Active Directory (Azure AD) 中的結構描述。 此功能可讓您建置 LOB 應用程式，方法是取用您在內部部署中持續進行管理的屬性。 這些屬性可以透過 [擴充](/graph/extensibility-overview
@@ -60,7 +60,7 @@ Azure AD 中的物件最多可有 100 個目錄擴充功能的屬性。 長度�
 
 請確定選取 **所有應用程式** 以查看此應用程式。
 
-屬性的前面會加**上 \_ {ApplicationId} \_ **。 ApplicationId 的 Azure AD 租使用者中的所有屬性都有相同的值。 本主題的所有其他案例都需要此值。
+屬性的前面會加 **上 \_ {ApplicationId} \_**。 ApplicationId 的 Azure AD 租使用者中的所有屬性都有相同的值。 本主題的所有其他案例都需要此值。
 
 ## <a name="viewing-attributes-using-the-microsoft-graph-api"></a>使用 Microsoft Graph API 來查看屬性
 
@@ -70,6 +70,9 @@ Azure AD 中的物件最多可有 100 個目錄擴充功能的屬性。 長度�
 > 在 Microsoft Graph API 中，您必須要求傳回屬性。 明確地選取屬性，如下所示： `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division` 。
 >
 > 如需詳細資訊，請參閱 [Microsoft Graph：使用查詢參數](/graph/query-parameters#select-parameter)。
+
+>[!NOTE]
+> 不支援將屬性值從 AADConnect 同步至不是由 AADConnect 建立的延伸模組屬性。 這樣做可能會產生效能問題和非預期的結果。 同步處理只支援以上所示的擴充屬性建立。
 
 ## <a name="use-the-attributes-in-dynamic-groups"></a>使用動態群組中的屬性
 
@@ -87,7 +90,7 @@ Azure AD 中的物件最多可有 100 個目錄擴充功能的屬性。 長度�
 
    ![UI 中顯示新屬性的螢幕擷取畫面](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup3.png)
 
-   完成運算式以符合您的需求。 在我們的範例中，規則設定為 ** (user.extension_9d98ed114c4840d298fad781915f27e4_division-eq "Sales and marketing" ) **。
+   完成運算式以符合您的需求。 在我們的範例中，規則設定為 **(user.extension_9d98ed114c4840d298fad781915f27e4_division-eq "Sales and marketing" )**。
 
 4. 建立群組之後，請 Azure AD 一些時間來填入成員，然後再檢查成員。
 

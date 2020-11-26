@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb766150339820f9356fe94311cd1ff33dda5480
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3b77ab0832fa19149c270d6ba5a6641069548cbe
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92462865"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172715"
 ---
 # <a name="ssh"></a>SSH  
 
@@ -52,10 +52,9 @@ SSH 與 Azure AD
 
 ## <a name="implement-ssh-with-azure-ad"></a>使用 Azure AD 來執行 SSH 
 
-* [使用 Azure Active Directory 認證登入 Linux® VM-Azure 虛擬機器 ](https://docs.microsoft.com/azure/virtual-machines/linux/login-using-aad) 
+* [使用 Azure Active Directory 認證登入 Linux® VM-Azure 虛擬機器 ](../../virtual-machines/linux/login-using-aad.md) 
 
-* [OAuth 2.0 裝置程式碼流程-Microsoft 身分識別平臺 ](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-device-code)
+* [OAuth 2.0 裝置程式碼流程-Microsoft 身分識別平臺 ](../develop/v2-oauth2-device-code.md)
 
 * [與 Azure Active Directory (akamai.com) 整合 ](https://learn.akamai.com/webhelp/enterprise-application-access/enterprise-application-access/GUID-6B16172C-86CC-48E8-B30D-8E678BF3325F.html)
 
- 

@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: c811a2ea5c06250068e7c0276e4b79e9108d920d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.date: 11/25/2020
+ms.openlocfilehash: cabc243c6ba74217873b5b0a5fa51a7cb410512e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490350"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170822"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB 無伺服器 (預覽) 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -33,9 +33,8 @@ Azure Cosmos DB 無伺服器，可讓您以耗用量方式使用您的 Azure Cos
 
 Azure Cosmos DB 無伺服器最適合您預期的案例：
 
-- **輕量流量** ：由於在這種情況下不需要布建容量，而且可能是成本高昂的
-- **適中 burstability** ：由於無伺服器容器最多可傳遞每秒5000個要求單位
-- **適中效能** ：由於無伺服器容器具有 [特定的效能特性](#performance)
+- **低、間歇和無法預測的流量**：由於在這種情況下不需要布建容量，而且可能是成本高昂的
+- **適中效能**：由於無伺服器容器具有 [特定的效能特性](#performance)
 
 基於這些理由，Azure Cosmos DB 無伺服器應考慮下列類型的工作負載：
 
@@ -62,14 +61,13 @@ Azure Cosmos DB 無伺服器最適合您預期的案例：
     - 您無法在建立無伺服器容器時傳遞任何輸送量，因此會傳回錯誤。
     - 您無法讀取或更新無伺服器容器的輸送量，因此會傳回錯誤。
     - 您無法在無伺服器帳戶中建立共用輸送量資料庫，而且這麼做會傳回錯誤。
-- 無伺服器容器可提供每秒5000要求單位的最大輸送量 burstability。
 - 無伺服器容器最多可以儲存 50 GB 的資料和索引。
 
 ## <a name="monitoring-your-consumption"></a>監視您的耗用量
 
 如果您之前已在布建的輸送量模式中使用 Azure Cosmos DB，您會發現當您的流量不會證明布建的容量時，無伺服器會更符合成本效益。 權衡代價是，您的成本將會變得比較不容易預測，因為您是根據資料庫處理的要求數來計費。 因此，請務必留意您目前的耗用量。
 
-流覽您帳戶的 [ **計量** ] 窗格時，您會在 [ **總覽** ] 索引標籤底下找到名為「 **要求單位** 」的圖表。此圖表會顯示您的帳戶已取用的要求單位數目：
+流覽您帳戶的 [**計量**] 窗格時，您會在 [**總覽**] 索引標籤底下找到名為「**要求單位**」的圖表。此圖表會顯示您的帳戶已取用的要求單位數目：
 
 :::image type="content" source="./media/serverless/request-units-consumed.png" alt-text="顯示已使用要求單位的圖表" border="false":::
 
@@ -79,9 +77,9 @@ Azure Cosmos DB 無伺服器最適合您預期的案例：
 
 無伺服器資源會產生與布建的輸送量資源所提供不同的特定效能特性：
 
-- **可用性** ：當無伺服器供應專案正式推出之後，如果未使用可用性區域 (區域冗余) ，則服務等級協定 (SLA) 99.9%，將會涵蓋無伺服器容器的可用性。 使用可用性區域時，SLA 為99.99%。
-- **延遲** ：在無伺服器供應專案正式推出之後，無伺服器容器的延遲將會由服務等級目標（ (SLO) 10 毫秒或更低的時間點讀取，以及30毫秒或更少的寫入）所涵蓋。 點讀取作業包含依識別碼和資料分割索引鍵值來提取單一專案。
-- **Burstability** ：在無伺服器供應專案正式推出之後，服務等級目標將會涵蓋無伺服器容器的 BURSTABILITY (SLO) 95%。 這表示最大 burstability 可達至少95% 的時間。
+- **可用性**：當無伺服器供應專案正式推出之後，如果未使用可用性區域 (區域冗余) ，則服務等級協定 (SLA) 99.9%，將會涵蓋無伺服器容器的可用性。 使用可用性區域時，SLA 為99.99%。
+- **延遲**：在無伺服器供應專案正式推出之後，無伺服器容器的延遲將會由服務等級目標（ (SLO) 10 毫秒或更低的時間點讀取，以及30毫秒或更少的寫入）所涵蓋。 點讀取作業包含依識別碼和資料分割索引鍵值來提取單一專案。
+- **Burstability**：在無伺服器供應專案正式推出之後，服務等級目標將會涵蓋無伺服器容器的 BURSTABILITY (SLO) 95%。 這表示最大 burstability 可達至少95% 的時間。
 
 > [!NOTE]
 > 如同任何 Azure 預覽版，Azure Cosmos DB 無伺服器的服務等級協定 (SLA) 。 上述的效能特性可作為此供應專案在正式推出時將提供的內容預覽。

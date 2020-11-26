@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: joflore
-ms.openlocfilehash: bc16f75a4ed2f9fe3be8a8bdc2d981a339780cc3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7c30bca947788e93e57f462094d51f00e338c0b8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960774"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171648"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>部署 Azure AD 應用程式 Proxy，以安全地存取 Azure Active Directory Domain Services 受控網域中的內部應用程式
 
@@ -53,7 +53,7 @@ ms.locfileid: "91960774"
 
 請執行下列步驟來下載 Azure AD 應用程式 Proxy 連接器。 您下載的安裝檔會在下一節中複製到您的應用程式 Proxy VM。
 
-1. 使用具有 Azure AD*企業系統管理員*許可權的使用者帳戶登入[Azure 入口網站](https://portal.azure.com)。
+1. 使用具有 Azure AD *企業系統管理員* 許可權的使用者帳戶登入 [Azure 入口網站](https://portal.azure.com)。
 1. 搜尋並選取入口網站頂端的 [ **Azure Active Directory** ]，然後選擇 [ **企業應用程式**]。
 1. 從左側功能表中選取 [ **應用程式 proxy** ]。 若要建立您的第一個連接器，並啟用應用程式 Proxy，請選取連結以 **下載連接器**。
 1. 在下載頁面上，接受授權條款和隱私權協定，然後選取 [ **接受條款] & 下載**。
@@ -77,7 +77,7 @@ ms.locfileid: "91960774"
    * 如果您在安裝連接器的 VM 上開啟了 Internet Explorer 增強式安全性設定，則可能會封鎖註冊畫面。 若要允許存取，請依照錯誤訊息中的指示進行，或在安裝程式期間關閉 Internet Explorer 增強式安全性。
    * 如果連接器註冊失敗，請參閱 [疑難排解應用程式 Proxy](../active-directory/manage-apps/application-proxy-troubleshoot.md)。
 1. 在設定結束時，會針對具有輸出 proxy 的環境顯示附注。 若要將 Azure AD 應用程式 Proxy 連接器設定為透過輸出 Proxy 運作，請執行提供的腳本，例如 `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1` 。
-1. 在 Azure 入口網站的 [應用程式 proxy] 頁面上，會列出新的連接器，並顯示狀態為 [作用中 *]，如*下列範例所示：
+1. 在 Azure 入口網站的 [應用程式 proxy] 頁面上，會列出新的連接器，並顯示狀態為 [作用中 *]，如* 下列範例所示：
 
     ![新的 Azure AD 應用程式 Proxy 連接器在 Azure 入口網站中顯示為作用中](./media/app-proxy/connected-app-proxy.png)
 
@@ -97,7 +97,7 @@ ms.locfileid: "91960774"
 
 使用 [get-adcomputer][Get-ADComputer] 來取得安裝 Azure AD 應用程式 Proxy 連接器之電腦的設定。 從已加入網域的管理 VM，並以屬於 *AZURE AD DC 系統管理員* 群組成員身分的使用者帳戶登入，執行下列 Cmdlet。
 
-下列範例會取得名為 *appproxy.aaddscontoso.com*之電腦帳戶的相關資訊。 為先前步驟中設定的 Azure AD 應用程式 Proxy VM 提供您自己的電腦名稱稱。
+下列範例會取得名為 *appproxy.aaddscontoso.com* 之電腦帳戶的相關資訊。 為先前步驟中設定的 Azure AD 應用程式 Proxy VM 提供您自己的電腦名稱稱。
 
 ```powershell
 $ImpersonatingAccount = Get-ADComputer -Identity appproxy.aaddscontoso.com
@@ -120,6 +120,6 @@ Set-ADComputer appserver.aaddscontoso.com -PrincipalsAllowedToDelegateToAccount 
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [create-join-windows-vm]: join-windows-vm.md
-[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[azure-bastion]: ../bastion/tutorial-create-host-portal.md
 [Get-ADComputer]: /powershell/module/addsadministration/get-adcomputer
 [Set-ADComputer]: /powershell/module/addsadministration/set-adcomputer

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 4a9282882d23ecbdc3c03ca158ea3de5566143e7
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 59924c1f876d08aa504f19c5d6c86dca32fbd1e2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94634849"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173459"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>在您開發的 mobile apps 中支援單一登入和應用程式保護原則
 
@@ -38,7 +38,7 @@ ms.locfileid: "94634849"
 
 ### <a name="use-microsoft-authentication-library-msal"></a>使用 Microsoft 驗證程式庫 (MSAL) 
 
-在您的應用程式中執行單一登入的最佳選擇是使用 [Microsoft 驗證程式庫 (MSAL) ](msal-overview.md)。 藉由使用 MSAL，您可以使用最少量的程式碼和 API 呼叫，將驗證新增至您的應用程式、取得 [Microsoft 身分識別平臺](/azure/active-directory/develop/)的完整功能，並讓 Microsoft 處理安全驗證解決方案的維護。 根據預設，MSAL 會為您的應用程式新增 SSO 支援。 此外，如果您也計畫要執行應用程式保護原則，則需要使用 MSAL。
+在您的應用程式中執行單一登入的最佳選擇是使用 [Microsoft 驗證程式庫 (MSAL) ](msal-overview.md)。 藉由使用 MSAL，您可以使用最少量的程式碼和 API 呼叫，將驗證新增至您的應用程式、取得 [Microsoft 身分識別平臺](./index.yml)的完整功能，並讓 Microsoft 處理安全驗證解決方案的維護。 根據預設，MSAL 會為您的應用程式新增 SSO 支援。 此外，如果您也計畫要執行應用程式保護原則，則需要使用 MSAL。
 
 > [!NOTE]
 > 您可以設定 MSAL 使用內嵌的 web view。 這將會防止單一登入。 使用預設行為 (也就是系統網頁瀏覽器) ，以確保 SSO 可正常運作。
@@ -64,7 +64,7 @@ Apple 具有在 iOS 應用程式中進行這項操作的指引： [透過 Web �
 
 若要啟用應用程式保護原則，請使用 [Microsoft 驗證程式庫 (MSAL) ](msal-overview.md)。 MSAL 是 Microsoft 身分識別平臺的驗證和授權程式庫，而 Intune SDK 的開發目的是與它一起運作。
 
-此外，您必須使用訊息代理程式應用程式進行驗證。 訊息代理程式會要求應用程式提供應用程式和裝置資訊，以確保應用程式合規性。 iOS 使用者將使用 [Microsoft Authenticator 應用](../user-help/user-help-auth-app-sign-in.md) 程式，而 Android 使用者將使用 Microsoft Authenticator 應用程式或 [公司入口網站應用程式](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal) 進行代理 [驗證](brokered-auth.md)。 根據預設，MSAL 會使用 broker 做為完成驗證要求的第一個選擇，因此使用現成的 MSAL 時，將會自動為您的應用程式啟用使用訊息代理程式驗證。
+此外，您必須使用訊息代理程式應用程式進行驗證。 訊息代理程式會要求應用程式提供應用程式和裝置資訊，以確保應用程式合規性。 iOS 使用者將使用 [Microsoft Authenticator 應用](../user-help/user-help-auth-app-sign-in.md) 程式，而 Android 使用者將使用 Microsoft Authenticator 應用程式或 [公司入口網站應用程式](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal) 進行代理 [驗證](./msal-android-single-sign-on.md)。 根據預設，MSAL 會使用 broker 做為完成驗證要求的第一個選擇，因此使用現成的 MSAL 時，將會自動為您的應用程式啟用使用訊息代理程式驗證。
 
 最後， [將 INTUNE SDK 新增](/mem/intune/developer/app-sdk-get-started) 至您的應用程式，以啟用應用程式保護原則。 大部分的 SDK 都會遵循攔截模型，並且會自動套用應用程式保護原則，以判斷是否允許應用程式所採取的動作。 您也可以手動呼叫 Api 來告訴應用程式是否有某些動作的限制。
 
@@ -73,8 +73,8 @@ Apple 具有在 iOS 應用程式中進行這項操作的指引： [透過 Web �
 - [規劃 Azure Active Directory 單一登入部署](../manage-apps/plan-sso-deployment.md)
 - [如何：在 macOS 和 iOS 上設定 SSO](single-sign-on-macos-ios.md)
 - [適用于 Apple 裝置的 Microsoft 企業 SSO 外掛程式 (Preview) ](apple-sso-plugin.md)
-- [Android 中的代理驗證](brokered-auth.md)
-- [授權代理程式及其啟用方式](authorization-agents.md)
+- [Android 中的代理驗證](./msal-android-single-sign-on.md)
+- [授權代理程式及其啟用方式](./msal-android-single-sign-on.md)
 - [開始使用 Microsoft Intune App SDK](/mem/intune/developer/app-sdk-get-started)
 - [設定 Intune App SDK 的設定](/mem/intune/developer/app-sdk-ios#configure-settings-for-the-intune-app-sdk)
 - [受 Microsoft Intune 保護的應用程式](/mem/intune/apps/apps-supported-intune-apps)

@@ -13,16 +13,16 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: ed3e9da628ab779ab47673fa2ce728c5c25539be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b683eaaf4c93ef0dcf74680e1e174e0f867a7041
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88166428"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173391"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>使用 MSAL.NET 來登入具有社交身分識別的使用者
 
-您可以使用 [Azure Active Directory B2C (Azure AD B2C) ](https://aka.ms/aadb2c)，使用 MSAL.NET 以社交身分識別登入使用者。 Azure AD B2C 是根據原則的概念來建立的。 在 MSAL.NET 中，指定原則會轉譯為提供授權。
+您可以使用 [Azure Active Directory B2C (Azure AD B2C) ](../../active-directory-b2c/overview.md)，使用 MSAL.NET 以社交身分識別登入使用者。 Azure AD B2C 是根據原則的概念來建立的。 在 MSAL.NET 中，指定原則會轉譯為提供授權。
 
 - 當您具現化公用用戶端應用程式時，您必須將原則指定為授權單位的一部分。
 - 當您想要套用原則時，請呼叫 `AcquireTokenInteractive` 可接受參數的覆寫 `authority` 。
@@ -35,7 +35,7 @@ Azure AD B2C 的授權單位格式為： `https://{azureADB2CHostname}/tfp/{tena
 
 - `azureADB2CHostname` -Azure AD B2C 租使用者加上主機的名稱。 例如， *contosob2c.b2clogin.com*。
 - `tenant` -功能變數名稱或 (租使用者) 識別碼 Azure AD B2C 租使用者的目錄。 例如，分別是 *contosob2c.onmicrosoft.com* 或 GUID。
-- `policyName` -要套用的使用者流程或自訂原則的名稱。 例如，如 *b2c_1_susi*的註冊/登入原則。
+- `policyName` -要套用的使用者流程或自訂原則的名稱。 例如，如 *b2c_1_susi* 的註冊/登入原則。
 
 如需 Azure AD B2C 授權單位的詳細資訊，請參閱 [將重新導向 Url 設為 b2clogin.com](../../active-directory-b2c/b2clogin.md)。
 
@@ -124,7 +124,7 @@ private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
 
 如需 ROPC 流程的詳細資訊，請參閱 [使用資源擁有者密碼認證授與登入](v2-oauth-ropc.md)。
 
-**不建議**使用 ROPC 流程，因為在您的應用程式中詢問使用者的密碼並不安全。 如需有關此問題的詳細資訊，請參閱 [不斷成長的密碼問題解決方案](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)。
+**不建議** 使用 ROPC 流程，因為在您的應用程式中詢問使用者的密碼並不安全。 如需有關此問題的詳細資訊，請參閱 [不斷成長的密碼問題解決方案](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)。
 
 藉由在 ROPC 流程中使用使用者名稱/密碼，您會犧牲幾件事：
 

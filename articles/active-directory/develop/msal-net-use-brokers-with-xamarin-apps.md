@@ -13,17 +13,17 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 7fa13a328a55b0e9eaa546e70bf0711f4f011cf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89068522"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173425"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>在 Xamarin 應用程式上使用 Microsoft Authenticator 或 Intune 公司入口網站
 
 在 Android 和 iOS 上，代理程式（例如 Microsoft Authenticator 和 Android 特定的 Microsoft Intune 公司入口網站啟用：
 
-- **單一登入 (SSO) **：使用者不需要登入每個應用程式。
+- **單一登入 (SSO)**：使用者不需要登入每個應用程式。
 - **裝置識別碼**：訊息代理程式存取裝置憑證。 當裝置加入工作場所時，會在裝置上建立此憑證。
 - **應用程式識別驗證**：當應用程式呼叫訊息代理程式時，它會傳遞其重新導向 URL。 訊息代理程式會驗證 URL。
 
@@ -101,13 +101,13 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 
 1. 在 `AcquireTokenInteractive` 呼叫上，使用 `.WithParentActivityOrWindow(App.RootViewController)` ，然後傳入您將使用之物件視窗的參考。
 
-    在 *App.cs*中：
+    在 *App.cs* 中：
 
     ```csharp
        public static object RootViewController { get; set; }
     ```
 
-    在 *AppDelegate.cs*中：
+    在 *AppDelegate.cs* 中：
 
     ```csharp
        LoadApplication(new App());
@@ -153,7 +153,7 @@ MSAL.NET 使用 Url 叫用訊息代理程式，然後將訊息代理程式回應
 
 MSAL `–canOpenURL:` 會使用檢查訊息代理程式是否已安裝在裝置上。 在 iOS 9 中，Apple 已鎖定應用程式可以查詢的配置。
 
-新增 `msauthv2` 至 plist 檔案的 `LSApplicationQueriesSchemes` 區段*Info.plist* ，如下列範例所示：
+新增 `msauthv2` 至 plist 檔案的 `LSApplicationQueriesSchemes` 區段 *Info.plist* ，如下列範例所示：
 
 ```XML
 <key>LSApplicationQueriesSchemes</key>
@@ -171,7 +171,7 @@ MSAL `–canOpenURL:` 會使用檢查訊息代理程式是否已安裝在裝置�
 $"msauth.{BundleId}://auth"
 ```
 
-以下為範例：
+以下是範例：
 
 ```csharp
 public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth";
@@ -184,8 +184,8 @@ public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth";
 **若要產生重新導向 URI：**
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 選取**Azure Active Directory**  >  **應用程式註冊**> 您註冊的應用程式
-1. 選取**驗證**  >  **新增平臺**  >  **iOS/macOS**
+1. 選取 **Azure Active Directory**  >  **應用程式註冊**> 您註冊的應用程式
+1. 選取 **驗證**  >  **新增平臺**  >  **iOS/macOS**
 1. 輸入您的套件組合識別碼，然後選取 [ **設定**]。
 
     複製 [重新 **導向 uri** ] 文字方塊中所產生的重新導向 uri，以包含在您的程式碼中：
@@ -237,7 +237,7 @@ result = await app.AcquireTokenInteractive(scopes)
 
 ### <a name="step-4-add-a-redirect-uri-to-your-app-registration"></a>步驟4：將重新導向 URI 新增至您的應用程式註冊
 
-MSAL 使用 Url 叫用訊息代理程式，然後返回您的應用程式。 若要完成該往返，您必須使用[Azure 入口網站](https://portal.azure.com)為您的應用程式註冊重新**導向 URI** 。
+MSAL 使用 Url 叫用訊息代理程式，然後返回您的應用程式。 若要完成該往返，您必須使用 [Azure 入口網站](https://portal.azure.com)為您的應用程式註冊重新 **導向 URI** 。
 
 應用程式的重新導向 URI 格式取決於用來簽署 APK 的憑證。 例如：
 
@@ -315,7 +315,7 @@ URI 的最後一個部分 `hgbUYHVBYUTvuvT&Y6tr554365466=` 是 APK 所簽署之�
 
 例如，如果您有的重新導向 URI `msauth://com.microsoft.xforms.testApp/hgbUYHVBYUTvuvT&Y6tr554365466=` ，您的資訊清單看起來應該類似下列 XML 程式碼片段。
 
-值中簽章前面的正斜線 (`/`) `android:path` 為 **必要**項。
+值中簽章前面的正斜線 (`/`) `android:path` 為 **必要** 項。
 
 ```xml
 <!-- NOTE the SLASH (required) that prefixes the signature value in the path attribute.
@@ -336,7 +336,7 @@ URI 的最後一個部分 `hgbUYHVBYUTvuvT&Y6tr554365466=` 是 APK 所簽署之�
 
 以下是在 Android 上執行代理驗證時避免問題的一些秘訣：
 
-- 重新**導向 uri** -將重新導向 uri 新增至[Azure 入口網站](https://portal.azure.com/)中的應用程式註冊。 遺失或不正確的重新導向 URI 是開發人員遇到的常見問題。
+- 重新 **導向 uri** -將重新導向 uri 新增至 [Azure 入口網站](https://portal.azure.com/)中的應用程式註冊。 遺失或不正確的重新導向 URI 是開發人員遇到的常見問題。
 - **Broker 版本** -安裝 broker 應用程式的最小必要版本。 這兩個應用程式中的任一個都可用於 Android 上的代理驗證。
   - [Intune 公司入口網站](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal) (5.0.4689.0 版或更高版本) 
   - [Microsoft Authenticator](https://play.google.com/store/apps/details?id=com.azure.authenticator) (版本6.2001.0140 或更高的) 。
@@ -355,7 +355,7 @@ URI 的最後一個部分 `hgbUYHVBYUTvuvT&Y6tr554365466=` 是 APK 所簽署之�
   - 查看 Intune 公司入口網站記錄：
 
     1. 選取應用程式左上角的功能表按鈕
-    1. 選取**設定**  >  **診斷資料**
+    1. 選取 **設定**  >  **診斷資料**
     1. 選取 [ **複製記錄** ]，將訊息代理程式記錄檔複製到裝置的 SD 記憶卡。
     1. 使用 USB 纜線將裝置連接到電腦，以在您的開發電腦上查看記錄。
 

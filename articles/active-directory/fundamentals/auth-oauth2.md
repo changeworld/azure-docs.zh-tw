@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: daf40a2ced3f753619e9c4723dbe78cd7e51ff21
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: c1604d79ce5eb9949028cd677b340bf3d4b09f6c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577901"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172834"
 ---
 # <a name="oauth-20-authentication-with-azure-active-directory"></a>使用 Azure Active Directory 進行 OAuth 2.0 驗證
 
@@ -34,20 +34,19 @@ OAuth 2.0 與 OpenID Connect (OIDC) 直接相關。 由於 OIDC 是建置於 OAu
 
 ## <a name="components-of-system"></a>系統的元件
 
-* **使用者** ： (應用程式) ，向 web 應用程式要求服務。 使用者通常是擁有資料的資源擁有者，且具有允許用戶端存取資料或資源的能力。 
+* **使用者**： (應用程式) ，向 web 應用程式要求服務。 使用者通常是擁有資料的資源擁有者，且具有允許用戶端存取資料或資源的能力。 
 
-* **Web 瀏覽器** ：使用者與其互動的網頁瀏覽器是 OAuth 用戶端。 
+* **Web 瀏覽器**：使用者與其互動的網頁瀏覽器是 OAuth 用戶端。 
 
-* **Web 應用程式** ： web 應用程式（或資源伺服器）是資源或資料所在的位置。 它會信任授權伺服器，以便安全地驗證和授權 OAuth 用戶端。 
+* **Web 應用程式**： web 應用程式（或資源伺服器）是資源或資料所在的位置。 它會信任授權伺服器，以便安全地驗證和授權 OAuth 用戶端。 
 
-* **Azure AD** ： Azure AD 是授權伺服器，也稱為身分識別提供者 (IdP) 。 它會安全地處理與使用者資訊、其存取和信任關係相關的任何動作。 它負責發出可授與及撤銷資源存取權的權杖。
+* **Azure AD**： Azure AD 是授權伺服器，也稱為身分識別提供者 (IdP) 。 它會安全地處理與使用者資訊、其存取和信任關係相關的任何動作。 它負責發出可授與及撤銷資源存取權的權杖。
 
 ## <a name="implement-oauth-20-with-azure-ad"></a>使用 Azure AD 來執行 OAuth 2。0
 
-* [整合應用程式與 Azure AD](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) 
+* [整合應用程式與 Azure AD](../saas-apps/tutorial-list.md) 
 
-* [Microsoft 身分識別平臺上的 OAuth 2.0 和 OpenID Connect 通訊協定](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols) 
+* [Microsoft 身分識別平臺上的 OAuth 2.0 和 OpenID Connect 通訊協定](../develop/active-directory-v2-protocols.md) 
 
-* [應用程式類型和 OAuth2](https://docs.microsoft.com/azure/active-directory/develop/v2-app-types) 
+* [應用程式類型和 OAuth2](../develop/v2-app-types.md) 
 
- 

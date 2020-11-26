@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 184616058cb2a86025eb75b4923e374ab42ebf05
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 99741a412ae02a2d30293e1aa254245f5ca7b662
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953554"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171427"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 Saviynt 的教學課程
 
@@ -69,7 +69,7 @@ Saviynt 整合包含下列元件：
 
 1. 若要建立 Saviynt 帳戶，請聯絡 [Saviynt](https://saviynt.com/contact-us/)
 
-2. 建立委派的系統管理原則，並將使用者指派為具有各種角色的 [委派系統管理員](../active-directory/users-groups-roles/roles-concept-delegation.md) 。
+2. 建立委派的系統管理原則，並將使用者指派為具有各種角色的 [委派系統管理員](../active-directory/roles/concept-delegation.md) 。
 
 ## <a name="configure-azure-ad-b2c-with-saviynt"></a>使用 Saviynt 設定 Azure AD B2C
 

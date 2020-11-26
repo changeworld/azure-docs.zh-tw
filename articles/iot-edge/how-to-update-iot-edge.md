@@ -9,12 +9,12 @@ ms.date: 06/22/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7cde23372f6a3af0320e2d48c78a0d7fe69a2600
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 3916855a62e506b12f72de713ccb56e89f846938
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045698"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171801"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>更新 IoT Edge 安全性精靈和執行階段
 
@@ -48,7 +48,7 @@ IoT Edge 安全性精靈是一項原生元件，必須在 IoT Edge 裝置上使�
    curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
    ```
 
-* **Raspbian Stretch**：
+* **Raspberry PI 作業系統延展**：
 
    ```bash
    curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
@@ -108,14 +108,14 @@ curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
 
 執行 Update-IoTEdge 命令會從您的裝置移除並更新安全性守護程式，以及兩個執行時間容器映射。 Yaml 檔案會保留在裝置上，以及 Moby 容器引擎的資料 (如果您是使用 Windows 容器) 。 保留設定資訊表示您不需要在更新程式期間，再次提供裝置的連接字串或裝置布建服務資訊。
 
-如果您想要更新為特定版本的安全 daemon，請從 [IoT Edge](https://github.com/Azure/azure-iotedge/releases)版本中尋找您想要作為目標的版本。 在該版本中，下載 **Microsoft-Azure-IoTEdge.cab** 檔案。 然後，使用 `-OfflineInstallationPath` 參數指向本機檔案位置。 例如︰
+如果您想要更新為特定版本的安全 daemon，請從 [IoT Edge](https://github.com/Azure/azure-iotedge/releases)版本中尋找您想要作為目標的版本。 在該版本中，下載 **Microsoft-Azure-IoTEdge.cab** 檔案。 然後，使用 `-OfflineInstallationPath` 參數指向本機檔案位置。 例如：
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux> -OfflineInstallationPath <absolute path to directory>
 ```
 
 >[!NOTE]
->`-OfflineInstallationPath`參數會在提供的目錄中尋找名為**Microsoft-Azure-IoTEdge.cab**的檔案。 從 IoT Edge 版本 1.0.9-rc4 開始，有兩個 .cab 檔案可供使用，一個用於 AMD64 裝置，另一個用於 ARM32。 為您的裝置下載正確的檔案，然後將檔案重新命名以移除架構尾碼。
+>`-OfflineInstallationPath`參數會在提供的目錄中尋找名為 **Microsoft-Azure-IoTEdge.cab** 的檔案。 從 IoT Edge 版本 1.0.9-rc4 開始，有兩個 .cab 檔案可供使用，一個用於 AMD64 裝置，另一個用於 ARM32。 為您的裝置下載正確的檔案，然後將檔案重新命名以移除架構尾碼。
 
 如需更新選項的詳細資訊，請使用命令 `Get-Help Update-IoTEdge -full` 或參考 [Windows 上 IoT Edge 的 PowerShell 腳本](reference-windows-scripts.md)。
 
@@ -160,11 +160,11 @@ IoT Edge 服務將會提取執行階段映像的最新版本，並自動在您�
 
    ![設定執行時間設定](./media/how-to-update-iot-edge/configure-runtime.png)
 
-1. 在 [**執行時間設定**] 中，以所需的版本更新**Edge 中樞**的**映射**值。 不要選取 [ **儲存** ]。
+1. 在 [**執行時間設定**] 中，以所需的版本更新 **Edge 中樞** 的 **映射** 值。 不要選取 [ **儲存** ]。
 
    ![更新 Edge 中樞映射版本](./media/how-to-update-iot-edge/runtime-settings-edgehub.png)
 
-1. 折迭**Edge 中樞**設定，或向下滾動，然後以相同的所需版本更新**edge 代理程式**的**影像**值。
+1. 折迭 **Edge 中樞** 設定，或向下滾動，然後以相同的所需版本更新 **edge 代理程式** 的 **影像** 值。
 
    ![更新 Edge 中樞代理程式版本](./media/how-to-update-iot-edge/runtime-settings-edgeagent.png)
 
@@ -205,7 +205,7 @@ IoT Edge 服務將會提取執行階段映像的最新版本，並自動在您�
 
 Azure IoT Edge 定期發行新版本的 IoT Edge 服務。 在每個穩定版本之前，有一或多個候選版 (RC) 版本。 RC 版本包含所有已規劃的發行功能，但仍在進行測試和驗證。 如果您想要提早測試新的功能，您可以安裝 RC 版本，並透過 GitHub 提供意見反應。
 
-候選版會遵循相同的發行編號慣例，但會加上後面 **附加的遞增** 數位。 您可以在 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases) 的相同清單中看到發行候選版本，作為穩定版本。 例如，尋找 **1.0.9-rc5** 和 **1.0.9-rc6**，這是 **1.0.9**之前的兩個候選版。 您也可以看到 RC 版本戳記為 **發行前** 版本標籤。
+候選版會遵循相同的發行編號慣例，但會加上後面 **附加的遞增** 數位。 您可以在 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases) 的相同清單中看到發行候選版本，作為穩定版本。 例如，尋找 **1.0.9-rc5** 和 **1.0.9-rc6**，這是 **1.0.9** 之前的兩個候選版。 您也可以看到 RC 版本戳記為 **發行前** 版本標籤。
 
 IoT Edge 代理程式和中樞模組都有以相同慣例標記的 RC 版本。 例如， **mcr.microsoft.com/azureiotedge-hub:1.0.9-rc6**。
 

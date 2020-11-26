@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 846c47017ba2887c287dd080c44c46b372660d0e
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 016a2917c02deaecf35c526426cb2a6dbc89e338
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443597"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173184"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>呼叫 web api 的 web 應用程式：呼叫 web API
 
@@ -152,7 +152,7 @@ public async Task<IActionResult> Profile()
 > [!NOTE]
 > 您可以使用相同的原則來呼叫任何 web API。
 >
-> 大部分的 Azure web Api 都會提供 SDK，以簡化 Microsoft Graph 的情況下呼叫 API 的方式。 比方說，您可以 [建立一個 web 應用程式，以使用 Azure AD 來授與 Blob 儲存體的存取權](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=dotnet) ，並使用 Azure 儲存體 SDK 的 web 應用程式範例。
+> 大部分的 Azure web Api 都會提供 SDK，以簡化 Microsoft Graph 的情況下呼叫 API 的方式。 比方說，您可以 [建立一個 web 應用程式，以使用 Azure AD 來授與 Blob 儲存體的存取權](../../storage/common/storage-auth-aad-app.md?tabs=dotnet&toc=%2fazure%2fstorage%2fblobs%2ftoc.json) ，並使用 Azure 儲存體 SDK 的 web 應用程式範例。
 
 # <a name="java"></a>[Java](#tab/java)
 

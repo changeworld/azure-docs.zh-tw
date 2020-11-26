@@ -11,16 +11,16 @@ ms.date: 10/15/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 39d23313f9d00ef48f64327dd10356a91b9d13b7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8c150235dc6b867a69b539aba9c90d666122a210
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951888"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170441"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中啟用多重要素驗證 | Microsoft Docs
 
-Azure Active Directory B2C (Azure AD B2C) 直接與 [Azure AD Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) 整合，讓您可以在應用程式中新增第二層安全性來註冊和登入體驗。 您不需要撰寫單一行程式碼，即可啟用多重要素驗證。 如果您已經建立註冊和登入使用者流程，仍然可以啟用多重要素驗證。
+Azure Active Directory B2C (Azure AD B2C) 直接與 [Azure AD Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) 整合，讓您可以在應用程式中新增第二層安全性來註冊和登入體驗。 您不需要撰寫單一行程式碼，即可啟用多重要素驗證。 如果您已經建立註冊和登入使用者流程，仍然可以啟用多重要素驗證。
 
 這項功能可協助應用程式處理案例，例如：
 

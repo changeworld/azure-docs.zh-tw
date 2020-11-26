@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: a02fa7d9f656ed3b6e61aab1f42e2a3ffca131a7
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 4fea027663b55e87822eae1fd0cdb2d67dbc630b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917251"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170815"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>簡介 Azure Cosmos DB 中的佈建輸送量
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -137,7 +137,7 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 
 如上面目前布 [建的輸送量](#current-provisioned-throughput) 一節所述，您可以在容器或資料庫上布建的最小輸送量取決於許多因素。 其中一個是目前儲存的資料量，因為 Azure Cosmos DB 強制執行每 GB 儲存體 10 RU/秒的最小輸送量。
 
-這可能會在您需要儲存大量資料，但比較中有低輸送量需求的情況下考慮。 為了更妥善配合這些案例，Azure Cosmos DB 引進了「 **高儲存體/低輸送量」程式** ，可將符合資格的帳戶從10個到1減少 RU/秒的限制。
+這可能會在您需要儲存大量資料，但比較中有低輸送量需求的情況下考慮。 為了更妥善配合這些案例，Azure Cosmos DB 引進了「 **高儲存體/低輸送量」程式** ，可減少符合資格之帳戶的每 GB RU/秒。
 
 您目前必須至少有1個容器或共用輸送量資料庫，且您的帳戶中必須包含超過 1 TB 的資料才能符合資格。 若要加入此計畫並評估您的完整資格，您只需要填寫 [這份問卷](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u)。 然後，Azure Cosmos DB 的小組會跟進並繼續進行上線。
 

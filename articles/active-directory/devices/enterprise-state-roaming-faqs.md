@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9510bd564ced2f458a9a78ff23200bb32358c3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb889298a09c30a629c69442ebf31bc735af31d1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268531"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173119"
 ---
 # <a name="settings-and-data-roaming-faq"></a>設定和資料漫遊常見問題集
 
@@ -76,16 +76,16 @@ ms.locfileid: "89268531"
 
 當來自不同 Azure AD 租用戶的多個 Azure AD 帳戶位於相同的裝置時，您必須更新裝置的登錄，才能與每個 Azure AD 租用戶的 Azure Rights Management 服務進行通訊。  
 
-1. 尋找每個 Azure AD 租用戶的 GUID。 開啟 Azure 入口網站，然後選取 Azure AD 租用戶。 租用戶的 GUID 是在所選租用戶的 [屬性] 頁面 (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) 上，其標示為 [目錄識別碼]****。 
-2. 擁有 GUID 之後，您將需要新增登錄機碼**HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID> **。
-   從「租用戶識別碼 GUID」**** 機碼，建立一個名為 **AllowedRMSServerUrls** 的新多字串值 (REG-MULTI-SZ)。 針對其資料，指定裝置所存取之其他 Azure 租用戶的授權發佈點 URL。
+1. 尋找每個 Azure AD 租用戶的 GUID。 開啟 Azure 入口網站，然後選取 Azure AD 租用戶。 租用戶的 GUID 是在所選租用戶的 [屬性] 頁面 (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) 上，其標示為 [目錄識別碼]。 
+2. 擁有 GUID 之後，您將需要新增登錄機碼 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID>**。
+   從「租用戶識別碼 GUID」機碼，建立一個名為 **AllowedRMSServerUrls** 的新多字串值 (REG-MULTI-SZ)。 針對其資料，指定裝置所存取之其他 Azure 租用戶的授權發佈點 URL。
 3. 您可以藉由從 AADRM 模組執行 **Get-AadrmConfiguration** Cmdlet 來尋找授權發佈點 URL。 如果 **LicensingIntranetDistributionPointUrl** 與 **LicensingExtranetDistributionPointUrl** 的值不同，則請同時指定這兩個值。 如果值相同，則只要指定值一次。
 
 ## <a name="what-are-the-roaming-settings-options-for-existing-windows-desktop-applications"></a>適用於現有 Windows 傳統型應用程式的漫遊設定選項有哪些？
 
 漫遊僅適用於通用 Windows 應用程式。 有兩個選項可用來在現有 Windows 傳統型應用程式上啟用漫遊：
 
-* [傳統型應用程式橋接器](https://aka.ms/desktopbridge) 可協助您輕鬆地將現有的 Windows 傳統型應用程式帶到「通用 Windows 平台」。 從這裡，只需進行最低限度的程式碼變更，即可利用 Azure AD 的應用程式資料漫遊功能。 桌面橋接器會為應用程式提供應用程式身分識別，需要有此身分識別才能為現有的傳統型應用程式啟用應用程式資料漫遊。
+* [傳統型應用程式橋接器](/windows/msix/desktop/source-code-overview) 可協助您輕鬆地將現有的 Windows 傳統型應用程式帶到「通用 Windows 平台」。 從這裡，只需進行最低限度的程式碼變更，即可利用 Azure AD 的應用程式資料漫遊功能。 桌面橋接器會為應用程式提供應用程式身分識別，需要有此身分識別才能為現有的傳統型應用程式啟用應用程式資料漫遊。
 * [User Experience Virtualization (UE-V)](/previous-versions//dn458947(v=vs.85)) 可協助您為現有的 Windows 傳統型應用程式建立自訂設定範本，並為 Win32 應用程式啟用漫遊功能。 這個選項不需要應用程式開發人員變更應用程式的程式碼。 UE-V 僅限於已購買 Microsoft Desktop Optimization Pack 之客戶的內部部署 Active Directory 漫遊。
 
 系統管理員可以設定讓 UE-V 漫遊 Windows 傳統型應用程式資料，方法是透過 [UE-V 群組原則](/microsoft-desktop-optimization-pack/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2)變更 Windows OS 設定與通用應用程式資料的漫遊，包括：
@@ -112,7 +112,7 @@ Microsoft 致力於保護客戶資料。 企業使用者的設定資料在離開
 
 ## <a name="how-can-i-enable-or-disable-roaming"></a>如何啟用或停用漫遊功能？
 
-在 [設定]**** 應用程式中，移至 [帳戶]**** > [同步您的設定]****。 您可以從這個頁面看見正在使用哪一個帳戶漫遊設定，您可以啟用或停用要漫遊得個別群組設定。
+在 [設定] 應用程式中，移至 [帳戶] > [同步您的設定]。 您可以從這個頁面看見正在使用哪一個帳戶漫遊設定，您可以啟用或停用要漫遊得個別群組設定。
 
 ## <a name="what-is-microsofts-recommendation-for-enabling-roaming-in-windows-10"></a>Microsoft 對於在 Windows 10 中啟用漫遊功能有什麼建議？
 

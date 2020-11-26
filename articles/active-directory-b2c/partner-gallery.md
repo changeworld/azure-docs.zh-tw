@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3bf65fd2cc6feb338c1cd7d0742fb3d2a4289eff
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c695a08e25512720c542c2a94048c5390b452591
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287187"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170988"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV 合作夥伴
 
@@ -37,6 +37,7 @@ ms.locfileid: "93287187"
 | ![Jumio 標誌的螢幕擷取畫面。](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) 是一種識別碼驗證服務，可啟用即時自動化識別碼驗證，保護客戶資料。 |
 | ![LexisNexis 標誌的螢幕擷取畫面。](./media/partner-gallery/lexisnexis-logo.png) | [LexisNexis](./partner-lexisnexis.md) 是一種分析和身分識別驗證提供者，可驗證使用者的身分識別，並根據使用者的裝置提供完整的風險評估。 |
 | ![N8 身分識別標誌的螢幕擷取畫面。](./media/partner-gallery/n8identity-logo.png) | [N8 identity](./partner-n8identity.md) 是身分識別即服務治理平臺，可提供解決客戶帳戶遷移和客戶服務要求的解決方案， (在 Microsoft Azure 上執行的 CSR) 管理。 |
+| ![尼維斯標誌的螢幕擷取畫面。](./media/partner-gallery/nevis-logo.png) | [尼維斯](./partner-nevis.md) 提供行動優先、功能完整的終端使用者體驗與尼維斯存取應用程式，以提供強式客戶驗證並符合付款服務指示詞 2 (PSD2) 交易需求。 |
 | ![Onfido 標誌的螢幕擷取畫面。](./media/partner-gallery/onfido-logo.png) | [Onfido](./partner-onfido.md) 是一種檔識別碼和臉部生物特徵辨識驗證解決方案，可讓公司即時符合 *您的客戶* 和身分識別需求。  |
 | ![Saviynt 標誌的螢幕擷取畫面。](./media/partner-gallery/saviynt-logo.png) | [Saviynt](./partner-saviynt.md) 雲端原生平臺使用智慧型分析，並提供跨應用程式整合，以簡化 IT 現代化，並提高安全性、治理和合規性。 企業現代化改變公司審查存取要求、進行存取評論、報告分析，以及簡化認證活動的方式。  |
 | ![分層標誌的螢幕擷取畫面。](./media/partner-gallery/strata-logo.png) | [分層](./partner-strata.md) 可保護內部部署應用程式，方法是強制執行一致的存取原則、保持身分識別同步，以及輕鬆地將應用程式從舊版身分識別系統轉換為 Azure AD B2C 所提供的標準驗證和存取控制。 |

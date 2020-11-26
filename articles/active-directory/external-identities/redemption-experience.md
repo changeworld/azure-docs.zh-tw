@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2427d974f96c0905ea2eb33daea7c89de277ec9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8520afdd05ecce8604ce72596bdf06053217cc2e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441805"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173085"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B 共同作業邀請兌換
 
@@ -31,9 +31,9 @@ ms.locfileid: "92441805"
 
 當您[使用 Azure 入口網站](./b2b-quickstart-add-guest-users-portal.md)將來賓使用者新增至您的目錄時，系統會將邀請電子郵件傳送給處理中的來賓。 當您[使用 PowerShell](./b2b-quickstart-invite-powershell.md)將來賓使用者新增到您的目錄時，也可選擇傳送邀請電子郵件。 以下說明來賓在兌換電子郵件中的連結時的體驗。
 
-1. 來賓會收到從 **Microsoft Invitations** 傳送的[邀請電子郵件](./invitation-email-elements.md)。
+1. 來賓會收到從 **Microsoft Invitations** 傳送的 [邀請電子郵件](./invitation-email-elements.md)。
 2. 來賓會在電子郵件中選取 [接受邀請]。
-3. 來賓會使用自己的認證來登入您的目錄。 如果來賓沒有可與您的目錄同盟的帳戶，且未啟用[電子郵件一次性密碼 (OTP)](./one-time-passcode.md) 功能，則系統會提示來賓建立個人 [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) 或 [Azure AD 自助式帳戶](../users-groups-roles/directory-self-service-signup.md)。 如需詳細資訊，請參閱[邀請兌換流程](#invitation-redemption-flow)。
+3. 來賓會使用自己的認證來登入您的目錄。 如果來賓沒有可與您的目錄同盟的帳戶，且未啟用[電子郵件一次性密碼 (OTP)](./one-time-passcode.md) 功能，則系統會提示來賓建立個人 [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) 或 [Azure AD 自助式帳戶](../enterprise-users/directory-self-service-signup.md)。 如需詳細資訊，請參閱[邀請兌換流程](#invitation-redemption-flow)。
 4. 系統會引導來賓進行[同意體驗](#consent-experience-for-the-guest)，如下所述。
 
 ## <a name="redemption-through-a-direct-link"></a>透過直接連結兌換
@@ -68,15 +68,15 @@ ms.locfileid: "92441805"
 
 4. 兌換程序會檢查使用者是否有現有的個人 [Microsoft 帳戶 (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)。
 
-5. 一旦識別出使用者的**主目錄**，使用者就會被傳送至對應的識別提供者以進行登入。  
+5. 一旦識別出使用者的 **主目錄**，使用者就會被傳送至對應的識別提供者以進行登入。  
 
 6. 如果步驟 1 到 4 找不到受邀使用者的主目錄，則 Azure AD 會判斷邀請租用戶是否已啟用來賓的[電子郵件一次性密碼 (OTP)](./one-time-passcode.md) 功能。
 
 7. 如果[已啟用來賓的電子郵件一次性密碼](./one-time-passcode.md#when-does-a-guest-user-get-a-one-time-passcode)，則會透過受邀的電子郵件將密碼傳送給使用者。 使用者將會在 Azure AD 登入頁面中，擷取並輸入此密碼。
 
-8. 如果已停用來賓的電子郵件一次性密碼，Azure AD 會檢查網域尾碼，以判斷其是否屬於取用者帳戶。 若是如此，系統會提示使用者建立個人 [Microsoft 帳戶](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)。 若非如此，系統會提示使用者建立 [Azure AD 自助式帳戶](../users-groups-roles/directory-self-service-signup.md)。
+8. 如果已停用來賓的電子郵件一次性密碼，Azure AD 會檢查網域尾碼，以判斷其是否屬於取用者帳戶。 若是如此，系統會提示使用者建立個人 [Microsoft 帳戶](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)。 若非如此，系統會提示使用者建立 [Azure AD 自助式帳戶](../enterprise-users/directory-self-service-signup.md)。
 
-9. Azure AD 藉由驗證電子郵件的存取權，嘗試建立 [Azure AD 自助式帳戶](../users-groups-roles/directory-self-service-signup.md)。 將程式碼傳送至電子郵件，並且讓使用者擷取並提交給 Azure AD，即可驗證帳戶是否已完成。 不過，如果受邀使用者的租用戶已同盟，或 AllowEmailVerifiedUsers 欄位在受邀使用者的租用戶中設定為 False，則使用者無法完成兌換，且流程會產生錯誤。 如需詳細資訊，請參閱 [Azure Active Directory B2B 共同作業疑難排解](./troubleshoot.md#the-user-that-i-invited-is-receiving-an-error-during-redemption)。
+9. Azure AD 藉由驗證電子郵件的存取權，嘗試建立 [Azure AD 自助式帳戶](../enterprise-users/directory-self-service-signup.md)。 將程式碼傳送至電子郵件，並且讓使用者擷取並提交給 Azure AD，即可驗證帳戶是否已完成。 不過，如果受邀使用者的租用戶已同盟，或 AllowEmailVerifiedUsers 欄位在受邀使用者的租用戶中設定為 False，則使用者無法完成兌換，且流程會產生錯誤。 如需詳細資訊，請參閱 [Azure Active Directory B2B 共同作業疑難排解](./troubleshoot.md#the-user-that-i-invited-is-receiving-an-error-during-redemption)。
 
 10. 系統會提示使用者建立個人 [Microsoft 帳戶 (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)。
 

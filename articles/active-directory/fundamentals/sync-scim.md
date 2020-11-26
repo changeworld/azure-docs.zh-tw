@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f957070ec94fc4c61089f31fe91261a2f52c4ee4
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: b95aac504bc6ee72c353faecad25384e2dc90840
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578853"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172413"
 ---
 # <a name="scim-synchronization-with-azure-active-directory"></a>Azure Active Directory 的 SCIM 同步處理
 
@@ -35,21 +35,20 @@ SCIM 是兩個端點的標準化定義：/Users 的端點和/Groups 端點。 �
 
 ## <a name="components-of-system"></a>系統的元件 
 
-* **HCM system** ：應用程式和技術，可在整個員工生命週期中，提供可支援及自動化 HR 流程的人力資本管理程式和作法。 
+* **HCM system**：應用程式和技術，可在整個員工生命週期中，提供可支援及自動化 HR 流程的人力資本管理程式和作法。 
 
 * **Azure AD** 布建服務：使用 SCIM 2.0 通訊協定進行自動布建。 此服務會連接到應用程式的 SCIM 端點，並使用 SCIM 使用者物件架構和 REST Api 來自動布建和解除布建使用者和群組。  
 
-* **Azure AD** ：用來管理身分識別和其權利之生命週期的使用者存放庫。 
+* **Azure AD**：用來管理身分識別和其權利之生命週期的使用者存放庫。 
 
-* **目標系統** ：具有 SCIM 端點的應用程式或系統，並可搭配 Azure AD 布建來啟用自動布建使用者和群組。  
+* **目標系統**：具有 SCIM 端點的應用程式或系統，並可搭配 Azure AD 布建來啟用自動布建使用者和群組。  
 
 ## <a name="implement-scim-with-azure-ad"></a>使用 Azure AD 來執行 SCIM 
 
-* [布建在 Azure AD 中的運作方式 ](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works)
+* [布建在 Azure AD 中的運作方式 ](../app-provisioning/how-provisioning-works.md)
 
-* [在 Azure 入口網站中管理企業應用程式的使用者帳戶布建 ](https://docs.microsoft.com/azure/active-directory/app-provisioning/configure-automatic-user-provisioning-portal)
+* [在 Azure 入口網站中管理企業應用程式的使用者帳戶布建 ](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 
-* [使用 Azure AD 建立 SCIM 端點並設定使用者布建  ](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups)
+* [使用 Azure AD 建立 SCIM 端點並設定使用者布建  ](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
-* [Azure AD 布建服務的 SCIM 2.0 通訊協定相容性](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility)
-
+* [Azure AD 布建服務的 SCIM 2.0 通訊協定相容性](../app-provisioning/application-provisioning-config-problem-scim-compatibility.md)

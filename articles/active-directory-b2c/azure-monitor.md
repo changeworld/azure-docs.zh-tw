@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 11/12/2020
-ms.openlocfilehash: b41f5e9a3bd4d3cbe52cf2e1c567d24de8a661f4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6d40eab12c9726459543d0b69e27b73178eba99f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95992829"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170611"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>使用 Azure 監視器監視 Azure AD B2C
 
@@ -140,9 +140,9 @@ Azure AD B2C 利用 [Azure Active Directory 監視](../active-directory/reports-
 
 診斷設定會定義應該如何傳送資源的記錄和計量。 可能的目的地包括：
 
-- [Azure 儲存體帳戶](../azure-monitor/platform/resource-logs-collect-storage.md)
-- [事件中樞](../azure-monitor/platform/resource-logs-stream-event-hubs.md) 解決方案
-- [Log Analytics 工作區](../azure-monitor/platform/resource-logs-collect-workspace.md)
+- [Azure 儲存體帳戶](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [事件中樞](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) 解決方案
+- [Log Analytics 工作區](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)
 
 在此範例中，我們使用 Log Analytics 工作區來建立儀表板。
 
@@ -180,7 +180,7 @@ Azure AD B2C 利用 [Azure Active Directory 監視](../active-directory/reports-
 記錄查詢可協助您充分利用 Azure 監視器記錄中收集的資料值。 強大的查詢語言可讓您聯結來自多個資料表的資料、匯總大型資料集，並以基本程式碼執行複雜作業。 幾乎任何問題只要已收集到支援資料，就可以回答和分析，而且您瞭解如何建立正確的查詢。 如需詳細資訊，請參閱 [Azure 監視器中的開始使用記錄查詢](../azure-monitor/log-query/get-started-queries.md)。
 
 1. 從 **Log Analytics 工作區** 選取 **記錄**
-1. 在 [查詢編輯器] 中，貼上下列 [Kusto 查詢語言](https://docs.microsoft.com/azure/data-explorer/kusto/query/) 查詢。 此查詢會依操作顯示過去 x 天的原則使用方式。 預設的持續時間會設定為90天 (90d) 。 請注意，此查詢只著重于原則發出權杖/程式碼的作業。
+1. 在 [查詢編輯器] 中，貼上下列 [Kusto 查詢語言](/azure/data-explorer/kusto/query/) 查詢。 此查詢會依操作顯示過去 x 天的原則使用方式。 預設的持續時間會設定為90天 (90d) 。 請注意，此查詢只著重于原則發出權杖/程式碼的作業。
 
     ```kusto
     AuditLogs
@@ -205,7 +205,7 @@ Azure AD B2C 利用 [Azure Active Directory 監視](../active-directory/reports-
 
 1. 選取 [儲存]。
 
-您也可以使用 [轉譯運算子來](https://docs.microsoft.com/azure/data-explorer/kusto/query/renderoperator?pivots=azuremonitor) 變更您的查詢，以將資料視覺化。
+您也可以使用 [轉譯運算子來](/azure/data-explorer/kusto/query/renderoperator?pivots=azuremonitor) 變更您的查詢，以將資料視覺化。
 
 ```kusto
 AuditLogs

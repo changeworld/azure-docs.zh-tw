@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbf23a32fdf5515402e18f70fe032a1a589dbcbe
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 32526a31a9d52fbfac57f1d384b25e0939b5e297
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424057"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172868"
 ---
 # <a name="how-to-find-your-azure-active-directory-tenant-id"></a>如何尋找您的 Azure Active Directory 租使用者識別碼
 
@@ -28,7 +28,7 @@ Azure 訂用帳戶具有與 Azure Active Directory (Azure AD) 之間的信任關
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
  
-1. 選取 **Azure Active Directory** 。
+1. 選取 **Azure Active Directory**。
 
 1. 選取 [屬性] 。
 
@@ -51,7 +51,7 @@ Get-AzTenant
 ## <a name="find-tenant-id-with-cli"></a>使用 CLI 尋找租使用者識別碼
 如果您想要使用命令列介面來尋找租使用者識別碼，您可以使用 [Azure CLI](/cli/azure/install-azure-cli) 或 [Microsoft 365 CLI](https://pnp.github.io/cli-microsoft365/)來執行此動作。 
 
-針對 Azure CLI，請使用 **az login** 、 **az account list** 或 **az 帳戶租使用者清單** 其中一個命令，如下列範例所示。 請注意每個命令的輸出中每個訂用帳戶的 **tenantId** 屬性。
+針對 Azure CLI，請使用 **az login**、 **az account list** 或 **az 帳戶租使用者清單** 其中一個命令，如下列範例所示。 請注意每個命令的輸出中每個訂用帳戶的 **tenantId** 屬性。
 
 ```azurecli-interactive
 az login
@@ -77,4 +77,4 @@ m365 tenant id get
 
 - 若要瞭解如何將訂用帳戶關聯或新增至租使用者，請參閱 [將 Azure 訂用帳戶關聯或新增至您的 Azure Active Directory 租使用者](active-directory-how-subscriptions-associated-directory.md)。
 
-- 若要瞭解如何尋找物件識別碼，請參閱 [尋找使用者物件識別碼](https://docs.microsoft.com/partner-center/find-ids-and-domain-names#find-the-user-object-id)。
+- 若要瞭解如何尋找物件識別碼，請參閱 [尋找使用者物件識別碼](/partner-center/find-ids-and-domain-names#find-the-user-object-id)。

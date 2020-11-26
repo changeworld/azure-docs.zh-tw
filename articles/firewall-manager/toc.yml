@@ -40,6 +40,10 @@
       href: threat-intelligence-settings.md
     - name: 網路規則中的 FQDN
       href: fqdn-filtering-network-rules.md
+    - name: 安全性
+      items:
+        - name: 安全性基準
+          href: security-baseline.md
 - name: 操作指南
   items:
     - name: 部署安全性合作夥伴提供者
