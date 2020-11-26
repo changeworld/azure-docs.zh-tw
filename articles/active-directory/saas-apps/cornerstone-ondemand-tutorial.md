@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 2837f8c5b098b0502bd293ec2414ad7401cc4f95
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 33c7b9b91067c39ea047242d207a4834c08b7e40
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996163"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179263"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-ondemand"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Cornerstone OnDemand 整合
 
@@ -82,9 +82,9 @@ ms.locfileid: "95996163"
 
 1. 在 [基本 SAML 組態] 區段上，執行下列步驟：
 
-    a. 在 [登入 URL] 文字方塊中，使用下列模式輸入 URL：`https://<company>.csod.com`
+    a. 在 [登入 URL] 文字方塊中，使用下列模式輸入 URL：`https://<company>.csod.com/samldefault.aspx?ouid=2`
 
-    b. 在 [識別碼 (實體識別碼)] 文字方塊中，使用下列模式輸入 URL：`https://<company>.csod.com`
+    b. 在 [識別碼 (實體識別碼)] 文字方塊中，使用下列模式輸入 URL：`https://<company>.csod.com/samldefault.aspx?ouid=2`
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Cornerstone OnDemand 用戶端支援小組](mailto:moreinfo@csod.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。

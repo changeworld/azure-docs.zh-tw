@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: Zhchia
-ms.openlocfilehash: b12a595c9b59b40ee6982f123baddaa818dd87ef
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 56b75d34bed65dae53c88eab6a16d848083ccc73
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836252"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179056"
 ---
 # <a name="tutorial-configure-cofense-recipient-sync-for-automatic-user-provisioning"></a>教學課程：設定 Cofense Recipient Sync 來自動佈建使用者
 
@@ -38,7 +38,7 @@ ms.locfileid: "94836252"
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
 * [Azure AD 租用戶](../develop/quickstart-create-new-tenant.md) 
-* Azure AD 中具有設定佈建[權限](../users-groups-roles/directory-assign-admin-roles.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
+* Azure AD 中具有設定佈建[權限](../roles/permissions-reference.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
 * Cofense PhishMe 中的標準操作員帳戶。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步驟 1： 規劃佈建部署

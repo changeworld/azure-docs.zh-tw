@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: Zhchia
-ms.openlocfilehash: f6a03a65b18d09000e93a1e0fa4a194321912211
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 75da1e2b2f1954b0126b08232046fe09b1c2b6e7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94354243"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96177934"
 ---
 # <a name="tutorial-configure-invision-for-automatic-user-provisioning"></a>教學課程：設定 InVision 來自動佈建使用者
 
@@ -39,7 +39,7 @@ ms.locfileid: "94354243"
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
 * [Azure AD 租用戶](../develop/quickstart-create-new-tenant.md) 
-* Azure AD 中具有設定佈建[權限](../users-groups-roles/directory-assign-admin-roles.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
+* Azure AD 中具有設定佈建[權限](../roles/permissions-reference.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
 * 已啟用 SSO 的 [InVision 企業帳戶](https://www.invisionapp.com/enterprise)。
 * InVision 中具有管理員權限的使用者帳戶。
 

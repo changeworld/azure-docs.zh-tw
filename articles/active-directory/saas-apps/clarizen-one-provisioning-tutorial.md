@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: Zhchia
-ms.openlocfilehash: 9335869797509171c71caffb0062aeccca207803
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 1658e6adf0c9de0cbd7412b963fb9a134f633430
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358910"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179688"
 ---
 # <a name="tutorial-configure-clarizen-one-for-automatic-user-provisioning"></a>教學課程：教學課程︰設定 Clarizen One 來自動佈建使用者
 
-此教學課程說明您需要在 Clarizen One 與 Azure Active Directory (Azure AD) 中執行的步驟，以設定自動使用者佈建。 設定後，Azure AD 就會使用 Azure AD 佈建服務，自動對 [Clarizen One](https://www.clarizen.com/) 佈建及取消佈建使用者和群組。 如需此服務的用途、運作方式和常見問題集的詳細資訊，請參閱[使用 Azure AD 對軟體即服務 (SaaS) 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。
+此教學課程說明您需要在 Clarizen One 與 Azure Active Directory (Azure AD) 中執行的步驟，以設定自動使用者佈建。 設定後，Azure AD 就會使用 Azure AD 佈建服務，自動對 [Clarizen One](https://www.clarizen.com/) 佈建及取消佈建使用者和群組。 如需此服務的用途、運作方式和常見問題集的詳細資訊，請參閱[使用 Azure AD 對軟體即服務 (SaaS) 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 
 ## <a name="capabilities-supported"></a>支援的功能
 
@@ -33,21 +33,21 @@ ms.locfileid: "94358910"
 > * 當使用者不再需要存取時，將其從 Clarizen One 中移除。
 > * 讓 Azure AD 與 Clarizen One 之間的使用者屬性保持同步。
 > * 在 Clarizen One 中佈建群組和群組成員資格。
-> * 建議[單一登入 (SSO)](https://docs.microsoft.com/azure/active-directory/saas-apps/clarizen-tutorial) 至 Clarizen One。
+> * 建議[單一登入 (SSO)](./clarizen-tutorial.md) 至 Clarizen One。
 
 ## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
-* [Azure AD 租用戶](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)。
-* Azure AD 中具有[權限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)可設定佈建的使用者帳戶。 範例包括應用程式系統管理員、雲端應用程式系統管理員、應用程式擁有者或全域管理員。
+* [Azure AD 租用戶](../develop/quickstart-create-new-tenant.md)。
+* Azure AD 中具有[權限](../roles/permissions-reference.md)可設定佈建的使用者帳戶。 範例包括應用程式系統管理員、雲端應用程式系統管理員、應用程式擁有者或全域管理員。
 * Clarizen One 中具有 **整合使用者** 和 **Lite Admin** [權限](https://success.clarizen.com/hc/articles/360011833079-API-Keys-Support)的使用者帳戶。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步驟 1： 規劃佈建部署
 
-1. 了解[佈建服務的運作方式](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) \(部分機器翻譯\)。
-1. 判斷誰會在[佈建範圍](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)內。
-1. 判斷哪些資料要[在 Azure AD 與 Clarizen One 之間對應](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)。
+1. 了解[佈建服務的運作方式](../app-provisioning/user-provisioning.md) \(部分機器翻譯\)。
+1. 判斷誰會在[佈建範圍](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)內。
+1. 判斷哪些資料要[在 Azure AD 與 Clarizen One 之間對應](../app-provisioning/customize-application-attributes.md)。
 
 ## <a name="step-2-configure-clarizen-one-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定 Clarizen One 以支援使用 Azure AD 進行佈建
 
@@ -61,14 +61,14 @@ ms.locfileid: "94358910"
 
 ## <a name="step-3-add-clarizen-one-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫新增 Clarizen One
 
-從 Azure AD 應用程式庫新增 Clarizen One，以開始管理對 Clarizen One 的佈建。 如果您先前已針對 SSO 設定 Clarizen One，則可使用相同的應用程式。 當您最初測試整合時，請建立個別的應用程式。 若要深入了解如何從資源庫新增應用程式，請參閱[將應用程式新增至 Azure AD 租用戶](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)。
+從 Azure AD 應用程式庫新增 Clarizen One，以開始管理對 Clarizen One 的佈建。 如果您先前已針對 SSO 設定 Clarizen One，則可使用相同的應用程式。 當您最初測試整合時，請建立個別的應用程式。 若要深入了解如何從資源庫新增應用程式，請參閱[將應用程式新增至 Azure AD 租用戶](../manage-apps/add-application-portal.md)。
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步驟 4： 定義將在佈建範圍內的人員
 
-透過 Azure AD 佈建服務，您可以根據對應用程式的指派，或根據使用者或群組的屬性，界定將要佈建的人員。 如果您選擇根據指派界定要佈建至應用程式的人員，請依照[在 Azure Active Directory 中管理應用程式的使用者指派](../manage-apps/assign-user-or-group-access-portal.md)中的步驟，將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定要佈建的人員，請使用範圍篩選器，如[使用範圍篩選器的屬性型應用程式佈建](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所說明。
+透過 Azure AD 佈建服務，您可以根據對應用程式的指派，或根據使用者或群組的屬性，界定將要佈建的人員。 如果您選擇根據指派界定要佈建至應用程式的人員，請依照[在 Azure Active Directory 中管理應用程式的使用者指派](../manage-apps/assign-user-or-group-access-portal.md)中的步驟，將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定要佈建的人員，請使用範圍篩選器，如[使用範圍篩選器的屬性型應用程式佈建](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所說明。
 
-* 將使用者和群組指派給 Clarizen One 時，您必須選取 [預設存取] 以外的角色。 具有預設存取角色的使用者會從佈建中排除，且會在佈建記錄中標示為不具有效授權。 如果應用程式上唯一可用的角色是預設存取角色，您可以[更新應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以新增更多角色。
-* 從小規模開始。 在推出給所有人之前，先使用一小部分的使用者和群組進行測試。 當佈建範圍設為已指派的使用者和群組時，您可將一或兩個使用者或群組指派給應用程式加以控制。 當範圍設為所有使用者和群組時，您可以指定[屬性型範圍篩選器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。
+* 將使用者和群組指派給 Clarizen One 時，您必須選取 [預設存取] 以外的角色。 具有預設存取角色的使用者會從佈建中排除，且會在佈建記錄中標示為不具有效授權。 如果應用程式上唯一可用的角色是預設存取角色，您可以[更新應用程式資訊清單](../develop/howto-add-app-roles-in-azure-ad-apps.md)以新增更多角色。
+* 從小規模開始。 在推出給所有人之前，先使用一小部分的使用者和群組進行測試。 當佈建範圍設為已指派的使用者和群組時，您可將一或兩個使用者或群組指派給應用程式加以控制。 當範圍設為所有使用者和群組時，您可以指定[屬性型範圍篩選器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-clarizen-one"></a>步驟 5。 設定將使用者自動佈建至 Clarizen One
 
@@ -104,7 +104,7 @@ ms.locfileid: "94358910"
 
 1. 在 [對應] 區段底下，選取 [將 Azure Active Directory 使用者同步處理至 Clarizen One]。
 
-1. 在 [屬性對應] 區段中，檢閱從 Azure AD 同步處理至 Clarizen One 的使用者屬性。 選取為 [比對] 屬性的屬性會用來比對 Clarizen One 中的使用者帳戶以進行更新作業。 如果您變更[比對目標屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，則必須確定 Clarizen One API 支援根據該屬性來篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
+1. 在 [屬性對應] 區段中，檢閱從 Azure AD 同步處理至 Clarizen One 的使用者屬性。 選取為 [比對] 屬性的屬性會用來比對 Clarizen One 中的使用者帳戶以進行更新作業。 如果您變更[比對目標屬性](../app-provisioning/customize-application-attributes.md)，則必須確定 Clarizen One API 支援根據該屬性來篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
 
    |屬性|類型|
    |---|---|
@@ -158,7 +158,7 @@ ms.locfileid: "94358910"
       |externalId|String|
       |members|參考|
 
-1. 若要設定範圍篩選條件，請參閱[範圍篩選器教學課程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中的指示。
+1. 若要設定範圍篩選條件，請參閱[範圍篩選器教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中的指示。
 
 1. 若要啟用 Clarizen One 的 Azure AD 佈建服務，請在 [設定] 區段中，將 [佈建狀態] 變更為 [開啟]。
 
@@ -178,9 +178,9 @@ ms.locfileid: "94358910"
 
 設定佈建後，請使用下列資源來監視部署。
 
-1. 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)來判斷哪些使用者已佈建成功或失敗。
-1. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)來查看佈建週期的狀態，以及其接近完成的程度。
-1. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 若要深入了解隔離狀態，請參閱[應用程式佈建處於隔離狀態](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)。
+1. 使用[佈建記錄](../reports-monitoring/concept-provisioning-logs.md)來判斷哪些使用者已佈建成功或失敗。
+1. 檢查[進度列](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)來查看佈建週期的狀態，以及其接近完成的程度。
+1. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 若要深入了解隔離狀態，請參閱[應用程式佈建處於隔離狀態](../app-provisioning/application-provisioning-quarantine-status.md)。
 
 ## <a name="troubleshooting-tips"></a>疑難排解秘訣
 
@@ -196,9 +196,9 @@ ms.locfileid: "94358910"
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶佈建](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解如何針對佈建活動檢閱記錄和取得報告](../manage-apps/check-status-user-account-provisioning.md)
+* [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)

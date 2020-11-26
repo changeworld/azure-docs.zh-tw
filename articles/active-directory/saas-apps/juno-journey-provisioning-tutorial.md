@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: f060a6ee2b5968c1d1daf3c668b6e7009b6ccd69
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 0efb451997b0ed842e6757a7e6b30dd88b33f4aa
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358128"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96177862"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>教學課程：設定 Juno Journey 來自動佈建使用者
 
@@ -35,7 +35,7 @@ ms.locfileid: "94358128"
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
 * [Azure AD 租用戶](../develop/quickstart-create-new-tenant.md) 
-* Azure AD 中具有設定佈建[權限](../users-groups-roles/directory-assign-admin-roles.md)的使用者帳戶 (例如，應用程式系統管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
+* Azure AD 中具有設定佈建[權限](../roles/permissions-reference.md)的使用者帳戶 (例如，應用程式系統管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
 *  [Juno Journey 租用戶](https://www.junojourney.com/getstarted)。
 *  Juno Journey 中具有管理員權限的使用者帳戶。
 
