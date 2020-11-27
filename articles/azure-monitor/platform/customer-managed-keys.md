@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/18/2020
-ms.openlocfilehash: 9715724fc0fbd25198dd3244215ac2c12638d2b8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ac785b3ad534e80d4dd240d1a29ba5f6aa75e10a
+ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185958"
+ms.locfileid: "96299034"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
 
@@ -538,7 +538,9 @@ Content-type: application/json
   1. 使用 REST 時，請從回應中複製 Azure-AsyncOperation URL 值，並遵循 [非同步作業狀態檢查](#asynchronous-operations-and-status-check)。
   2. 將 GET 要求傳送至叢集或工作區，並觀察回應。 例如，未連結的工作區不會有 [*功能*] 下的 *clusterResourceId* 。
 
-- 如果區域中有雙重加密，則會自動為從2020年10月建立的叢集設定[雙重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。 如果您建立叢集並收到錯誤「<的區功能變數名稱稱> 不支援叢集的雙重加密」，您仍然可以建立叢集，但已停用雙重加密。 建立叢集之後，即無法啟用或停用。 若要在區域中不支援雙重加密時建立叢集，請新增 `"properties": {"isDoubleEncryptionEnabled": false}` REST 要求主體。
+- 針對在支援區域中從2020年10月建立的叢集，會自動設定[雙重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。 您可以透過叢集上的 GET 要求，確認您的叢集是否已設定雙精度加密，並觀察 `"isDoubleEncryptionEnabled"` 屬性值- `true` 適用于已啟用雙重加密的叢集。 
+  - 如果您建立叢集並收到錯誤「<的區功能變數名稱稱> 不支援叢集的雙重加密」，您仍然可以建立不含雙重加密的叢集。 新增 `"properties": {"isDoubleEncryptionEnabled": false}` REST 要求主體。
+  - 建立叢集之後，就無法變更雙重加密設定。
 
 - 錯誤訊息
   
