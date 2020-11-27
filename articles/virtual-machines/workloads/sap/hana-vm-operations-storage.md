@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/05/2020
+ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: af2eac929e3e3f40e1ac1cd384c943b1e09171a8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b8b8d100eb2ff16e8f8b7a734ad493ed4faddd33
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967460"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299525"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虛擬機器儲存體設定
 
@@ -273,7 +273,7 @@ Ultra 磁碟可讓您定義滿足大小、IOPS 和磁碟輸送量範圍的單一
 
 
 ## <a name="cost-conscious-solution-with-azure-premium-storage"></a>使用 Azure premium 儲存體的成本意識解決方案
-到目前為止，本檔中所述的 Azure premium 儲存體解決方案適用于 [Azure M 系列虛擬機器的高階儲存體和 azure 寫入加速器](#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) 的各節解決方案，是為了 SAP Hana 生產環境的支援案例。 生產環境支援設定的其中一個特性是將 SAP Hana 資料的磁片區區隔，並將重新執行登入兩個不同的磁片區。 這類分隔的原因是磁片區上的工作負載特性不同。 而且，在建議的生產環境設定中，可能需要不同類型的快取或甚至不同類型的 Azure 區塊儲存體。 使用 Azure 區塊儲存體目標的生產環境支援設定，也會符合 [Azure 虛擬機器的單一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 。  針對非生產案例，針對生產系統所採取的一些考慮可能不適用於較低的非生產系統。 如此一來，就可以合併 HANA 資料和記錄磁片區。 但最終有一些原因，例如最後不符合生產系統所需的特定輸送量或延遲 Kpi。 減少這類環境成本的另一個層面就是使用 [Azure 標準 SSD 儲存體](./planning-guide-storage.md#azure-standard-ssd-storage)。 但可 [讓 Azure 虛擬機器的單一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)失效的選項。 
+到目前為止，本檔中所述的 Azure premium 儲存體解決方案適用于 [Azure M 系列虛擬機器的高階儲存體和 azure 寫入加速器](#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) 的各節解決方案，是為了 SAP Hana 生產環境的支援案例。 生產環境支援設定的其中一個特性是將 SAP Hana 資料的磁片區區隔，並將重新執行登入兩個不同的磁片區。 這類分隔的原因是磁片區上的工作負載特性不同。 而且，在建議的生產環境設定中，可能需要不同類型的快取或甚至不同類型的 Azure 區塊儲存體。 針對非生產案例，針對生產系統所採取的一些考慮可能不適用於較低的非生產系統。 如此一來，就可以合併 HANA 資料和記錄磁片區。 但最終有一些原因，例如最後不符合生產系統所需的特定輸送量或延遲 Kpi。 減少這類環境成本的另一個層面就是使用 [Azure 標準 SSD 儲存體](./planning-guide-storage.md#azure-standard-ssd-storage)。 請記住，選擇標準 SSD 或標準 HDD Azure 儲存體會影響您的單一 VM Sla，如  [虛擬機器的 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines)所述。
 
 成本較低的替代方案可能如下所示：
 

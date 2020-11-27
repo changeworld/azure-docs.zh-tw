@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: e3f0a9f0b7fdef26cf1ef2b145ede1826fda6ebd
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d24ae1f42c685589309506b2d5e0eab157b2bc42
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685591"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299610"
 ---
 # <a name="use-file-metadata-in-serverless-sql-pool-queries"></a>在無伺服器 SQL 集區查詢中使用檔案中繼資料
 
@@ -76,7 +76,7 @@ ORDER BY
 
 filepath 函式會傳回完整或部分路徑：
 
-- 若在沒有參數的情況下進行呼叫，會傳回資料列來源的完整檔案路徑。
+- 若在沒有參數的情況下進行呼叫，會傳回資料列來源的完整檔案路徑。 當 DATA_SOURCE 用於 OPENROWSET 時，它會傳回相對於 DATA_SOURCE 的路徑。 
 - 若以參數進行呼叫，則會傳回路徑的一部分，該部分會與參數中所指定位置上的萬用字元相符。 例如，參數值 1 會傳回符合第一個萬用字元的路徑部分。
 
 下列範例會讀取 2017 年最後三個月的 NYC Yellow Taxi 資料檔案， 並傳回每個檔案路徑的乘車次數。 查詢的 OPENROWSET 部分會指定要讀取哪一個檔案。

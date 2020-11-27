@@ -3,12 +3,12 @@ title: 監視 Azure Vm 上的效能-Azure 應用程式見解
 description: Azure VM 和 Azure 虛擬機器擴展集的應用程式效能監視。 圖表載入和回應時間、相依性資訊，以及設定效能警示。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 8b025c5196d65234a632bd1f939bc1116b72dce0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcf0c88eae021487072424636113d5a3de08699a
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87024627"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299559"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>在 Azure 虛擬機器和 Azure 虛擬機器擴展集上部署 Azure 監視器 Application Insights 代理程式
 
@@ -17,8 +17,8 @@ ms.locfileid: "87024627"
 本文將逐步引導您使用 Application Insights 代理程式來啟用 Application Insights 監視，並提供將大規模部署程式自動化的初步指引。
 
 > [!IMPORTANT]
-> 適用于 .NET 的 Azure 應用程式 Insights 代理程式目前處於公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 某些功能可能不受支援，有些功能可能會有有限的功能。
+> 針對在 **Azure vm 和 VMSS** 上執行的 APS.NET 應用程式，Azure 應用程式 Insights 代理程式目前處於公開預覽狀態。 若要監視在 **內部部署** 環境中執行的 ASP.Net 應用程式，請使用適用于內部 [部署伺服器的 Azure 應用程式 Insights 代理](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)程式，其已正式運作並受到完整支援。
+> Azure Vm 和 VMSS 的預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 某些功能可能不受支援，有些功能可能會有有限的功能。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="enable-application-insights"></a>啟用 Application Insights
@@ -34,7 +34,7 @@ ms.locfileid: "87024627"
         > [!NOTE]
         > 目前只支援 .Net IIS 託管的應用程式。 使用 SDK 來檢測裝載在 Azure 虛擬機器和虛擬機器擴展集上的 ASP.NET Core、JAVA 和 Node.js 應用程式。
 
-* 以**程式碼為基礎的**via SDK
+* 以 **程式碼為基礎的** via SDK
 
     * 這種方法更容易自訂，但需要 [在 APPLICATION INSIGHTS SDK NuGet 套件上新增](./asp-net.md)相依性。 這種方法也表示您必須自行管理套件最新版本的更新。
 
@@ -175,6 +175,6 @@ Get-AzResource -ResourceId /subscriptions/<mySubscriptionId>/resourceGroups/<myR
 C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.ApplicationMonitoringWindows\<version>\
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 瞭解如何將 [應用程式部署至 Azure 虛擬機器擴展集](../../virtual-machine-scale-sets/virtual-machine-scale-sets-deploy-app.md)。
 * [設定可用性 web 測試](monitor-web-app-availability.md) ，以在您的端點關閉時收到警示。

@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/05/2020
+ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4f104accad2b23b907d888ce3d0da083f1fa019a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 05b2747dc21e2aedf16c6ca6e6c31af03b38c81f
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964825"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299508"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 來裝載及執行 SAP 工作負載案例
 
@@ -80,6 +80,7 @@ SAP 應用層和 DBMS 的高可用性記載于從[適用于 Sap NetWeaver 的 Az
 
 ## <a name="change-log"></a>變更記錄
 
+- 11/26/2020：調整 [SAP Hana 的 Azure 虛擬機器儲存體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) 設定和 [Azure 儲存體類型，讓 SAP 工作負載](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) 變更單一 [VM sla](https://azure.microsoft.com/support/legal/sla/virtual-machines)
 - 11/05/2020：在[SAP Hana Azure 虛擬機器儲存體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)設定中，將連結新增至有關 HANA 支援之檔案系統類型的新 SAP 附注 
 - 10/26/2020：變更 Azure premium 儲存體設定的部分資料表，以說明[SAP Hana azure 虛擬機器儲存體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)設定中的布建與高載輸送量
 - 10/22/2020：在[適用于 sap](./high-availability-guide-rhel-netapp-files.md)的[sles for sap 應用程式](./high-availability-guide-suse.md) [、azure vm 上的](./high-availability-guide-suse-netapp-files.md)azure vm 上的 azure vm 上的 azure vm 上 net.ipv4.tcp_keepalive_time，azure vm 上的 azure vm 上的 azure vm 上的 azure [vm 上的](./high-availability-guide-rhel.md)sap nw 變更  

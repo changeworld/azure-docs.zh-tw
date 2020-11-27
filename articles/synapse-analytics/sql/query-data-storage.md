@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: c7a8fb63f775a76342849957f070861fd200a9d3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 81a892b10996686cf58d45867e3d889505b5d3d9
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998918"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299576"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>具有無伺服器 SQL 集區 (預覽) 的查詢儲存體檔案不支援此語法
 
@@ -47,7 +47,7 @@ ms.locfileid: "95998918"
 ```syntaxsql
 SELECT * FROM
 OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net//mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
-WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
+WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
 ```
 
 如需使用範例，請參閱[查詢 Parquet 檔案](query-parquet-files.md)一文。
@@ -59,7 +59,7 @@ WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
 ```sql
 SELECT * FROM
 OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.csv', FORMAT = 'CSV', PARSER_VERSION='2.0') 
-WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
+WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
 ```
 
 還有一些其他選項可用來將剖析規則調整為自訂 CSV 格式：
@@ -85,7 +85,7 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolde
 WITH (
       C1 int, 
       C2 varchar(20),
-      C3 as varchar(max)
+      C3 varchar(max)
 ) as rows
 ```
 

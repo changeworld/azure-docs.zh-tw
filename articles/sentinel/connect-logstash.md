@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: 247abafd7abec38e43794b76268ee52538aee508
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 63b9d74fbbb1a79dd4f3d3e7c5fb094a372282e0
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655675"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299627"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>使用 Logstash 將資料來源連接到 Azure Sentinel
 
@@ -57,7 +57,7 @@ Logstash 引擎是由三個元件所組成：
 
 Azure Sentinel 輸出外掛程式可在 Logstash 集合中取得。
 
-- 遵循 Logstash [使用外掛程式](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) 檔中的指示，安裝 **_Logstash-輸出-azure-loganalytics_* _ 外掛程式。
+- 遵循 Logstash [使用外掛程式](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) 檔中的指示，安裝 **_[Logstash-輸出-azure-loganalytics](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics)_* _ 外掛程式。
    
 - 如果您的 Logstash 系統沒有網際網路存取權，請遵循 Logstash [離線外掛程式管理](https://www.elastic.co/guide/en/logstash/current/offline-plugins.html) 檔中的指示來準備和使用離線外掛程式套件。  (此情況下，您必須建立另一個具有網際網路存取權的 Logstash 系統。 ) 
 
