@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5b9c41209902e384988064207bb3e1ded1c47477
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 691bb538ea0f46e26c318a68e9f66a9a986eb5d4
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182949"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301838"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>適用于 App Service 的 Azure 安全性基準
 
@@ -168,7 +168,7 @@ ms.locfileid: "96182949"
 
 - [如何透過入口網站使用應用程式閘道設定端對端 TLS](../application-gateway/end-to-end-ssl-portal.md)
 
-- [保護 ASE 的安全，如鎖定 App Service 所述](https://review.docs.microsoft.com/azure/app-service/environment/firewall-integrationEnvironment:)
+- [保護 ASE 的安全，如鎖定 App Service 所述](/azure/app-service/environment/firewall-integration)
 
 **Azure 資訊安全中心監視**：是
 
@@ -205,7 +205,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 - [如何透過入口網站使用應用程式閘道設定端對端 TLS](../application-gateway/end-to-end-ssl-portal.md)
 
-- [保護 ASE 的安全，如鎖定 App Service 所述](https://review.docs.microsoft.com/azure/app-service/environment/firewall-integrationEnvironment:)
+- [保護 ASE 的安全，如鎖定 App Service 所述](/azure/app-service/environment/firewall-integration)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -221,7 +221,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 - [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
-- [Azure App Service 存取限制](/azure/app-service/app-service-ip-restriction)
+- [Azure App Service 存取限制](/azure/app-service/app-service-ip-restrictions)
 
 **Azure 資訊安全中心監視**：不適用
 

@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b9966d4d9ab0a37f5484ec9eb9b7e2472a6b41dc
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a7fdb370847e72657829d53df019203b0a5b211b
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012915"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302581"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>具有 Azure Machine Learning 的增強式學習 (預覽)
 
@@ -117,7 +117,7 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="specify-a-virtual-network"></a>指定虛擬網路
 
-對於使用多個計算目標的 RL 作業，您必須指定具有開啟連接埠的虛擬網路，以允許背景工作節點和前端節點彼此通訊。 虛擬網路可以位於任何資源群組中，但其應該與您的工作區位於相同的區域。 如需設定虛擬網路的詳細資訊，請參閱必要條件一節中的[工作區設定筆記本](https://aka.ms/azure-rl-env-setup)。 在這裡，您會在資源群組中指定虛擬網路的名稱。
+對於使用多個計算目標的 RL 作業，您必須指定具有開啟連接埠的虛擬網路，以允許背景工作節點和前端節點彼此通訊。 虛擬網路可以位於任何資源群組中，但其應該與您的工作區位於相同的區域。 如需設定虛擬網路的詳細資訊，請參閱必要條件一節中的工作區設定筆記本。 在這裡，您會在資源群組中指定虛擬網路的名稱。
 
 ```python
 vnet = 'your_vnet'

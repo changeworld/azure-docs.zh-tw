@@ -3,12 +3,12 @@ title: 如何建立 Windows 的客體設定原則
 description: 了解如何建立 Windows 的 Azure 原則客體設定原則。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: ea9b40006deefbac2c253082eda4ef2da12149a4
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 124f747a1e7c7925efc2519ee826d62034e69cc5
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700672"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302697"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>如何建立 Windows 的客體設定原則
 
@@ -160,7 +160,7 @@ class ResourceName : OMI_BaseResource
 
 PowerShell Cmdlet 可協助建立此套件，
 而無需根層級資料夾或版本資料夾。
-套件格式必須為 .zip 檔案。
+封裝格式必須是 .zip 檔案，而且在未壓縮時不能超過100MB 的總大小。
 
 ### <a name="storing-guest-configuration-artifacts"></a>儲存客體設定成品
 

@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/10/2020
+ms.date: 11/25/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2e54c0b09c3dbe398b0522d0ad9ad2314e29ed26
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dcc84dc252001721a3848a008a3db80dcc7822d2
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023835"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301262"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>針對 Azure Data Factory 連接器進行疑難排解
 
@@ -440,7 +440,7 @@ ms.locfileid: "96023835"
 
 - **訊息**：`The name of column index %index; is empty. Make sure column name is properly specified in the header row.`
 
-- **原因**︰在活動中設定 'firstRowAsHeader' 時，第一個資料列會用來作為資料行名稱。 此錯誤表示第一個資料列包含空的值。 例如： ' ColumnA，，ColumnB '。
+- **原因**︰在活動中設定 'firstRowAsHeader' 時，第一個資料列會用來作為資料行名稱。 此錯誤表示第一個資料列包含空的值。 例如： ' ColumnA，ColumnB '。
 
 - **建議**：檢查第一個資料列，如果有空白值，請修正此值。
 
@@ -449,7 +449,7 @@ ms.locfileid: "96023835"
 
 - **訊息**：`Error found when processing '%function;' source '%name;' with row number %rowCount;: found more columns than expected column count: %columnCount;.`
 
-- **原因**︰問題資料列的資料行計數大於第一個資料列的資料行計數。 這可能是因為資料問題或資料行分隔符號/引號字元設定不正確所造成。
+- **原因**：有問題的資料列資料行計數大於第一個資料列的資料行計數。 這可能是因為資料問題或資料行分隔符號/引號字元設定不正確所造成。
 
 - **建議**：取得錯誤訊息中的資料列計數，檢查資料列的資料行並修正資料。
 
@@ -645,6 +645,29 @@ ms.locfileid: "96023835"
 
 - **建議**：移除承載中的 'CompressionType'。
 
+
+## <a name="rest"></a>REST
+
+### <a name="unexpected-network-response-from-rest-connector"></a>來自 REST 連接器的非預期網路回應
+
+- **徵兆**：端點有時候會收到非預期的回應 (400/401/403/500) 來自 REST 連接器。
+
+- **原因**：當您在建立 HTTP 要求時，REST 來源連接器會使用連結服務/資料集/複製來源的 URL 和 HTTP 方法/標頭/主體作為參數。 問題很可能是因為一個或多個指定參數中的一些錯誤所造成。
+
+- **解決方案**： 
+    - 在 cmd 視窗中使用「捲曲」以檢查參數是否為原因或不是 (**接受** ，而且應該一律包含 **使用者代理程式** 標頭) ：
+        ```
+        curl -i -X <HTTP method> -H <HTTP header1> -H <HTTP header2> -H "Accept: application/json" -H "User-Agent: azure-data-factory/2.0" -d '<HTTP body>' <URL>
+        ```
+      如果命令傳回相同的非預期回應，請使用 ' 捲曲 ' 修正上述參數，直到它傳回預期的回應為止。 
+
+      此外，您也可以使用 ' 捲曲--help ' 來更先進地使用命令。
+
+    - 如果只有 ADF REST 連接器傳回非預期的回應，請洽詢 Microsoft 支援服務，以取得進一步的疑難排解。
+    
+    - 請注意，「捲曲」可能不適合用來重現 SSL 憑證驗證問題。 在某些情況下，已順利執行 ' 捲曲 ' 命令，而不會發生任何 SSL 憑證驗證問題。 但在瀏覽器中執行相同的 URL 時，不會實際傳回任何 SSL 憑證來讓用戶端建立與伺服器的信任。
+
+      針對上述案例，建議使用 **Postman** 和 **Fiddler** 等工具。
 
 
 ## <a name="general-copy-activity-error"></a>一般複製活動錯誤

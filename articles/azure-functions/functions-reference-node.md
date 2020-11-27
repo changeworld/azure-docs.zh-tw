@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: d32c63332c530ec05eb9f93661a8f2a0c5d8264c
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 21ab58095fa919e6302251c16e474b02f1445993
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94743315"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301999"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 開發人員指南
 
@@ -567,7 +567,7 @@ module.exports = function(context) {
 
 ### <a name="in-local-development-environment"></a>在本機開發環境中
 
-在本機執行時，您的函式專案會包含[ `local.settings.json` 檔案，您](/functions-run-local.md?tabs=node#local-settings-file)可以在其中將環境變數儲存在 `Values` 物件中。 
+在本機執行時，您的函式專案會包含[ `local.settings.json` 檔案，您](/azure/azure-functions/functions-run-local)可以在其中將環境變數儲存在 `Values` 物件中。 
 
 ```json
 {

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 24935f1b10ec11bb546cb08e06430d1e0b5c31fa
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7a3351654bb912eb7a4b532e636ca02fdf08a14d
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183323"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301546"
 ---
 # <a name="azure-security-baseline-for-azure-advisor"></a>適用于 Azure Advisor 的 Azure 安全性基準
 
@@ -143,7 +143,7 @@ Azure 進階威脅防護 (ATP) 是一項安全性解決方案，可使用 Active
 
 - [在 Privileged Identity Management (PIM) 中建立 Azure 資源角色的存取權審核 ](../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md) 
 
-- [如何使用 Azure AD 身分識別和存取權檢閱](/azure/active-directory/governance/access-reviews-overvie)
+- [如何使用 Azure AD 身分識別和存取權檢閱](/azure/active-directory/governance/access-reviews-overview)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -219,7 +219,7 @@ Azure 進階威脅防護 (ATP) 是一項安全性解決方案，可使用 Active
 
 ## <a name="logging-and-threat-detection"></a>記錄與威脅偵測
 
-*如需詳細資料，請參閱 [Azure 安全性效能評定：稽核與威脅偵測](/azure/security/benchmarks/security-controls-v2-logging-threat-protection)。*
+*如需詳細資料，請參閱 [Azure 安全性效能評定：稽核與威脅偵測](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)。*
 
 ### <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4：啟用 Azure 資源的記錄
 
@@ -370,7 +370,7 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 ## <a name="posture-and-vulnerability-management"></a>態勢和弱點管理
 
-*如需詳細資料，請參閱 [Azure 安全性效能評定：態勢和弱點管理](/azure/security/benchmarks/security-controls-v2-vulnerability-management)。*
+*如需詳細資料，請參閱 [Azure 安全性效能評定：態勢和弱點管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)。*
 
 ### <a name="pv-8-conduct-regular-attack-simulation"></a>PV-8：執行常見攻擊的模擬
 
@@ -420,9 +420,9 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 - [雲端採用架構 - Azure 資料安全性和加密最佳做法](../security/fundamentals/data-encryption-best-practices.md?amp;bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
-- [Azure 安全性效能評定 - 資產管理](/azure/security/benchmarks/security-benchmark-v2-asset-management)
+- [Azure 安全性效能評定 - 資產管理](/azure/security/benchmarks/security-controls-v2-asset-management)
 
-- [Azure 安全性效能評定 - 資料保護](/azure/security/benchmarks/security-benchmark-v2-data-protection)
+- [Azure 安全性效能評定 - 資料保護](/azure/security/benchmarks/security-controls-v2-data-protection)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -450,7 +450,7 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 **指引**：持續測量並降低個別資產及其裝載環境的風險。 優先處理高價值資產和高度暴露的攻擊面，例如已發佈的應用程式、網路輸入點和輸出點、使用者和系統管理員端點等等。
 
-- [Azure 安全性效能評定 - 態勢和弱點管理](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
+- [Azure 安全性效能評定 - 態勢和弱點管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -491,7 +491,7 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 如需詳細資訊，請參閱下列參考資料：
 - [Azure 安全性最佳做法 11 - 結構。單一整合安全性策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure 安全性效能評定 - 網路安全性](/azure/security/benchmarks/security-benchmark-v2-network-security)
+- [Azure 安全性效能評定 - 網路安全性](/azure/security/benchmarks/security-controls-v2-network-security)
 
 - [Azure 網路安全性概觀](../security/fundamentals/network-overview.md)
 
@@ -519,9 +519,9 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 如需詳細資訊，請參閱參考的連結。
 
-- [Azure 安全性效能評定 - 身分識別管理](/azure/security/benchmarks/security-benchmark-v2-identity-management)
+- [Azure 安全性效能評定 - 身分識別管理](/azure/security/benchmarks/security-controls-v2-identity-management)
 
-- [Azure 安全性效能評定 - 特殊權限存取](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
+- [Azure 安全性效能評定 - 特殊權限存取](/azure/security/benchmarks/security-controls-v2-privileged-access)
 
 - [Azure 安全性最佳做法 11 - 結構。單一整合安全性策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -553,9 +553,9 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 如需詳細資訊，請參閱下列參考資料：
 
-- [Azure 安全性效能評定 - 記錄和威脅偵測](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
+- [Azure 安全性效能評定 - 記錄和威脅偵測](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
-- [Azure 安全性效能評定 - 事件回應](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure 安全性效能評定 - 事件回應](/azure/security/benchmarks/security-controls-v2-incident-response)
 
 - [Azure 安全性最佳做法 4 - 程序。更新雲端的事件回應程序](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 

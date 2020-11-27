@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7bf78194b50e2e2335d807504ebca5f8a0e9f0eb
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 88feb08851e0b69e31218a42fe877112561bddba
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94849184"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301656"
 ---
 # <a name="azure-security-baseline-for-azure-data-share"></a>適用于 Azure Data Share 的 azure 安全性基準
 
@@ -108,7 +108,7 @@ ms.locfileid: "94849184"
 
 **指導** 方針： Azure Data Share 支援 AZURE ACTIVE DIRECTORY 的 SSO 驗證。 藉由您組織的預先存在身分識別，為服務啟用 SSO，以減少使用者必須管理的身分識別與認證數目。
 
-- [瞭解 Azure AD 的 SSO](/azure/active-directory/manage-apps/what-is-single-sign-o)
+- [瞭解 Azure AD 的 SSO](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -143,7 +143,7 @@ ms.locfileid: "94849184"
 
 **指導** 方針：使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
 
-- [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) 
+- [如何建立和設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) 
 
 - [Azure Data Share 適用于一般的 Azure 內建角色 ](../role-based-access-control/built-in-roles.md#general)
 
@@ -157,7 +157,7 @@ ms.locfileid: "94849184"
 
 - [瞭解 Azure AD 報告](/azure/active-directory/reports-monitoring/) 
 
-- [如何使用 Azure AD 身分識別和存取權評論](../active-directory/governance/access-reviews-overview.md) 
+- [如何使用 Azure AD 身分識別和存取權檢閱](../active-directory/governance/access-reviews-overview.md) 
 
 - [Azure Data Share 適用于一般的 Azure 內建角色 ](../role-based-access-control/built-in-roles.md#general)
 

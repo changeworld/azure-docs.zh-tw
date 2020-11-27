@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 9a2bda0a526c307ae17d8415f6f24423ddf51b63
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 8a4f9a5df8def928c06fe95a53c7be0d93ec76c4
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917761"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302675"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight 識別碼代理程式 (HIB) 
 
@@ -140,7 +140,7 @@ curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application
 
 ## <a name="faq"></a>常見問題集
 ### <a name="what-app-is-created-by-hdinsight-in-aad"></a>HDInsight 在 AAD 中所建立的應用程式是什麼？
-針對每個叢集，會在 AAD 中註冊協力廠商應用程式，並以叢集 uri 作為 identifierUri (例如 https://clustername.azurehdinsight.net ) 。
+針對每個叢集，會在 AAD 中註冊協力廠商應用程式，並以叢集 uri 作為 identifierUri (例如 `https://clustername.azurehdinsight.net`) 。
 
 ### <a name="why-are-users-prompted-for-consent-before-using-hib-enabled-clusters"></a>為什麼使用者在使用啟用 HIB 的叢集之前會提示您同意？
 在 AAD 中，所有協力廠商應用程式都需要同意，才能驗證使用者或存取資料。

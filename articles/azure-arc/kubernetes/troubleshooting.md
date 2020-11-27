@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 針對已啟用 Arc 的 Kubernetes 叢集常見問題進行疑難排解。
 keywords: Kubernetes, Arc, Azure, 容器
-ms.openlocfilehash: 4a8f4c652f1ab73e0b9979f77d7de5014c8d31a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e05701b92d2d96074a07e0e61ce65145a1d9dfd
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540603"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302392"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>已啟用 Azure Arc 的 Kubernetes 疑難排解 (預覽)
 
@@ -69,7 +69,7 @@ pod/metrics-agent-58b765c8db-n5l7k              2/2     Running  0       16h
 pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 ```
 
-所有 Pod 應會將 `STATUS` 顯示為 `Running`，而 `READY` 應為 `3/3` 或 `2/2`。 擷取記錄並描述傳回 `Error` 或 `CrashLoopBackOff` 的 Pod。 如果這些 pod 中有任何一個卡在 `Pending` 狀態，可能是因為叢集節點上的資源不足所造成。 相應[增加您](https://kubernetes.io/docs/tasks/administer-cluster/cluster-management/#resizing-a-cluster)的叢集會讓這些 pod 轉換成 `Running` 狀態。
+所有 Pod 應會將 `STATUS` 顯示為 `Running`，而 `READY` 應為 `3/3` 或 `2/2`。 擷取記錄並描述傳回 `Error` 或 `CrashLoopBackOff` 的 Pod。 如果這些 pod 中有任何一個卡在 `Pending` 狀態，可能是因為叢集節點上的資源不足所造成。 相應[增加您](https://kubernetes.io/docs/tasks/administer-cluster/)的叢集會讓這些 pod 轉換成 `Running` 狀態。
 
 ## <a name="connecting-kubernetes-clusters-to-azure-arc"></a>將 Kubernetes 叢集連接到 Azure Arc
 

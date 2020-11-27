@@ -4,12 +4,12 @@ description: 了解如何建立 Linux 的 Azure 原則客體設定原則。
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1e81d1a5157cc5872ba2628c8d6cb408e35ab9c6
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 1f6308250717d35dc725b097575bf3921646c6a0
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694237"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302715"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何建立 Linux 的客體設定原則
 
@@ -89,6 +89,10 @@ DSC 會作為 InSpec 的包裝函式，以將執行方式、參數提供方式�
 #### <a name="configuration-requirements"></a>組態需求
 
 自訂設定的名稱在任何位置都必須一致。 內容套件的 .zip 檔名稱、MOF 檔案中的設定名稱，以及 Azure Resource Manager 範本 (ARM 範本) 的來賓指派名稱必須相同。
+
+PowerShell Cmdlet 可協助建立此套件，
+而無需根層級資料夾或版本資料夾。
+套件格式必須為 .zip 檔案。 未壓縮時，不能超過100MB 的總大小。
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux 上的自訂客體設定組態
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 9e1c45b99138a05ef78976b90f65f57304e676ff
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: aa97fa5e92d4afe11cf8af5f7cfd3458a3c12014
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962768"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302729"
 ---
 # <a name="migrate-sql-server-to-sql-managed-instance-with-powershell--azure-database-migration-service"></a>使用 PowerShell 將 SQL Server 遷移至 SQL 受控執行個體 & Azure 資料庫移轉服務
 
@@ -80,7 +80,7 @@ New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 * *服務名稱*。 字串，對應至 Azure 資料庫移轉服務所需的唯一服務名稱。
 * *位置*。 指定服務的位置。 指定 Azure 資料中心位置，例如美國西部或東南亞。
 * *Sku*。 此參數會對應至 DMS SKU 名稱。 目前支援的 Sku 名稱為 *Basic_1vCore*、 *Basic_2vCores* *GeneralPurpose_4vCores*。
-* 虛擬子網路識別碼。 您可以使用 Cmdlet [`New-AzVirtualNetworkSubnetConfig`](//powershell/module/az.network/new-azvirtualnetworksubnetconfig) 來建立子網。
+* 虛擬子網路識別碼。 您可以使用 Cmdlet [`New-AzVirtualNetworkSubnetConfig`](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 來建立子網。
 
 下列範例會使用名為 *MyVNET* 的虛擬網路和名為 *>mysubnet* 的子網，在位於 *美國東部* 區域的資源群組 *>mydms* 中建立名為 *>mydmsresourcegroup* 的服務。
 

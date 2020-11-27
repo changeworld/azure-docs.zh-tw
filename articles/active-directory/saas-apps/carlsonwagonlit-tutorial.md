@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 04399dc82a3bd2d70b8b472b121e95a73ca43136
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9c27139e2dca37c1ff8d963e1e8cdb5de682d39d
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009597"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302953"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-carlson-wagonlit-travel"></a>教學課程：Azure Active Directory 與 Carlson Wagonlit Travel 整合
 
@@ -119,7 +119,7 @@ ms.locfileid: "96009597"
 
 ### <a name="configure-carlson-wagonlit-travel-single-sign-on"></a>設定 Carlson Wagonlit Travel 單一登入
 
-若要在 **Carlson Wagonlit Travel** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和複製的適當 URL 傳送給 [Carlson Wagonlit Travel 支援小組](http://www.carlsonwagonlit.in/content/cwt/in/en/technical-assistance.html)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Carlson Wagonlit Travel** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和複製的適當 URL 傳送給 [Carlson Wagonlit Travel 支援小組](https://www.mycwt.com/traveler-help/)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
@@ -174,7 +174,7 @@ ms.locfileid: "96009597"
 
 ### <a name="create-carlson-wagonlit-travel-test-user"></a>建立 Carlson Wagonlit Travel 測試使用者
 
-在本節中，您會在 Carlson Wagonlit Travel 中建立名為 Britta Simon 的使用者。 請與 [Carlson Wagonlit Travel 支援小組](http://www.carlsonwagonlit.in/content/cwt/in/en/technical-assistance.html)合作，在 Carlson Wagonlit Travel 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您會在 Carlson Wagonlit Travel 中建立名為 Britta Simon 的使用者。 請與 [Carlson Wagonlit Travel 支援小組](https://www.mycwt.com/traveler-help/)合作，在 Carlson Wagonlit Travel 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 

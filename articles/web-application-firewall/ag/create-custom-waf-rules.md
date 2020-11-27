@@ -8,12 +8,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: f164418c29e9838928f3d03519342ebef40e16e7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b14bd60ab744be5a1735abc073f32f8ebc3e1ab1
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015692"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301700"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>在應用程式閘道上建立及使用 Web 應用程式防火牆 v2 自訂規則
 
@@ -21,7 +21,7 @@ Azure 應用程式閘道上的 Web 應用程式防火牆 (WAF) v2 提供 web 應
 
 本文將說明一些您可以建立並搭配 v2 WAF 使用的自訂規則範例。 若要瞭解如何使用 Azure PowerShell 以自訂規則部署 WAF，請參閱 [使用 Azure PowerShell 設定 Web 應用程式防火牆自訂規則](configure-waf-custom-rules.md)。
 
-本文所顯示的 JSON 程式碼片段衍生自 [ApplicationGatewayWebApplicationFirewallPolicies](/templates/microsoft.network/applicationgatewaywebapplicationfirewallpolicies) 資源。
+本文所顯示的 JSON 程式碼片段衍生自 [ApplicationGatewayWebApplicationFirewallPolicies](/azure/templates/microsoft.network/applicationgatewaywebapplicationfirewallpolicies) 資源。
 
 >[!NOTE]
 > 如果您的應用程式閘道並未使用 WAF 層，右窗格中會出現將應用程式閘道升級至 WAF 層的選項。
@@ -545,7 +545,7 @@ $rule3 = New-AzApplicationGatewayFirewallCustomRule `
   }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 建立自訂規則之後，您可以瞭解如何查看 WAF 記錄。 如需詳細資訊，請參閱[應用程式閘道診斷](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)。
 

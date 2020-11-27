@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ea834ed874f3011d95f8b924df860576f72bc4ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70a56b7efc34ba2fd3c06521c6e4cac6ea28778f
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88825608"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302468"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>使用 Azure 檔案儲存體和 Azure AD DS 建立設定檔容器
 
@@ -71,7 +71,7 @@ ms.locfileid: "88825608"
 
 6. 選取目標 Azure Active Directory 身分識別的名稱或電子郵件地址。
 
-7. 選取 [儲存]****。
+7. 選取 [儲存]。
 
 ## <a name="get-the-storage-account-access-key"></a>取得儲存體帳戶存取金鑰
 
@@ -87,7 +87,7 @@ ms.locfileid: "88825608"
 
 4. 移至 [ **虛擬機器** ] 索引標籤，找出將成為主機集區一部分的任何 VM。
 
-5. 在 [**虛擬機器] (adVM) **下，選取虛擬機器 (VM) 的名稱，然後選取 **[連線]** 。
+5. 在 [**虛擬機器] (adVM)** 下，選取虛擬機器 (VM) 的名稱，然後選取 **[連線]** 。
 
     這會下載 RDP 檔案，讓您使用自己的認證登入 VM。
 
@@ -99,7 +99,7 @@ ms.locfileid: "88825608"
 7. 執行下列命令：
 
      ```cmd
-     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
+     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
      ```
 
     - `<desired-drive-letter>`以您選擇的磁碟機號取代 (例如 `y:`) 。
@@ -142,22 +142,22 @@ ms.locfileid: "88825608"
 
 1. 登入您在本文開頭設定的工作階段主機 VM，然後 [下載並安裝 FSLogix 代理程式](/fslogix/install-ht/)。
 
-2. 將您下載的 FSLogix 代理程式檔案解壓縮並移至**x64**  >  **版本**，然後開啟**FSLogixAppsSetup.exe**。
+2. 將您下載的 FSLogix 代理程式檔案解壓縮並移至 **x64**  >  **版本**，然後開啟 **FSLogixAppsSetup.exe**。
 
 3. 安裝程式啟動後，請選取 [ **我同意授權條款及條件]。** 如果適用的話，請提供新的金鑰。
 
 4. 選取 [安裝]。
 
-5. 開啟**磁片磁碟機 C**，然後移至**Program Files**  >  **FSLogix**  >  **Apps** ，以確定已正確安裝 FSLogix 代理程式。
+5. 開啟 **磁片磁碟機 C**，然後移至 **Program Files**  >  **FSLogix**  >  **Apps** ，以確定已正確安裝 FSLogix 代理程式。
 
      >[!NOTE]
      > 如果主機集區中有多個 Vm，您必須針對每個 VM 重複步驟1到5。
 
 6. 以系統管理員身分 (RegEdit) 執行 **登錄編輯程式** 。
 
-7. 流覽至 [**電腦**  >  **HKEY_LOCAL_MACHINE**  >  **software**  >  **FSLogix**]，以滑鼠右鍵按一下 [ **FSLogix**]，選取 [**新增**]，然後選取 [機**碼**]。
+7. 流覽至 [**電腦**  >  **HKEY_LOCAL_MACHINE**  >  **software**  >  **FSLogix**]，以滑鼠右鍵按一下 [ **FSLogix**]，選取 [**新增**]，然後選取 [機 **碼**]。
 
-8. 建立名為 **設定檔**的新機碼。
+8. 建立名為 **設定檔** 的新機碼。
 
 9.  以滑鼠右鍵按一下 [ **設定檔**]，選取 [ **新增**]，然後選取 [ **DWORD (32-位) 值]。** 為 **啟用** 的值命名，並將 **資料** 值設定為 **1**。
 
@@ -240,7 +240,7 @@ ms.locfileid: "88825608"
 
     如果一切都設定正確，您應該會看到名稱格式如下的 **目錄** ： `<user SID>-<username>` 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您要尋找建立 FSLogix 設定檔容器的替代方式，請參閱下列文章：
 

@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: a58fa45f47ee8dce4ec96591551abad76c1218ee
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 86c6ea9dded423e7bd513faf73adfd293f2bd38f
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045477"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302606"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT 隨插即用慣例
 
@@ -20,7 +20,7 @@ IoT 隨插即用裝置與 IoT 中樞交換訊息時，應遵循一組慣例。 I
 
 裝置可以包含 [模組](../iot-hub/iot-hub-devguide-module-twins.md)，也可以在 IoT Edge 執行時間所裝載的 [IoT Edge 模組](../iot-edge/about-iot-edge.md) 中執行。
 
-您可以使用 [數位 Twins 定義語言 v2 (DTDL) ](https://github.com/Azure/opendigitaltwins-dtdl) _模型_，來描述 IoT 隨插即用裝置所執行的遙測、屬性和命令。 這篇文章中所參考的模型類型有兩種：
+您可以使用 [數位 Twins 定義語言 v2 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) _模型_，來描述 IoT 隨插即用裝置所執行的遙測、屬性和命令。 這篇文章中所參考的模型類型有兩種：
 
 - **沒有元件** -沒有元件的模型。 此模型會將遙測、屬性和命令宣告為主要介面之 [內容] 區段中的最上層屬性。 在 Azure IoT explorer 工具中，此模型會顯示為單一 _預設元件_。
 - **多個元件** -由兩個或多個介面所組成的模型。 主要介面，此介面會顯示為 _預設元件_，其中包含遙測、屬性和命令。 以其他遙測、屬性和命令宣告為元件的一或多個介面。
@@ -79,7 +79,7 @@ DTDL
 
 裝置或模組必須新增 `{"__t": "c"}` 標記，以指出元素參考元件。
 
-DTDL
+參考元件的 DTDL：
 
 ```json
 {
@@ -95,7 +95,11 @@ DTDL
     }
   ]
 }
+```
 
+定義元件的 DTDL：
+
+```json
 {
   "@context": "dtmi:dtdl:context;2",
   "@id": "dtmi:com:example:Thermostat;1",
@@ -132,7 +136,7 @@ DTDL
 
 當裝置啟動時，它應該會要求裝置對應項，並檢查是否有任何可寫入的屬性更新。 如果可寫入屬性的版本在裝置離線時增加，則裝置應該傳送回報的屬性回應，以確認它已收到更新。
 
-當裝置第一次啟動時，如果它沒有從中樞收到初始所需的屬性，它就可以傳送報告屬性的初始值。 在此情況下，裝置應該設定 `av` 為 `1` 。 例如︰
+當裝置第一次啟動時，如果它沒有從中樞收到初始所需的屬性，它就可以傳送報告屬性的初始值。 在此情況下，裝置應該設定 `av` 為 `1` 。 例如：
 
 ```json
 "reported": {
@@ -255,7 +259,7 @@ DTDL
 
 裝置或模組應藉由傳送報告屬性來確認它是否收到屬性：
 
-DTDL
+參考元件的 DTDL：
 
 ```json
 {
@@ -271,7 +275,11 @@ DTDL
     }
   ]
 }
+```
 
+定義元件的 DTDL：
+
+```json
 {
   "@context": "dtmi:dtdl:context;2",
   "@id": "dtmi:com:example:Thermostat;1",

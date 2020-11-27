@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 6d98f1a1dfb575f4af8b666d173f9354b5eeac6b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: e2d89718d953f05b3e5500db412ac8ac03bfa00b
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966236"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301942"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>針對 StorSimple 上裝載的檔案共用使用 Azure Site Recovery 的自動化災害復原解決方案
 
@@ -44,7 +44,7 @@ Microsoft Azure StorSimple 是一個混合式雲端儲存體解決方案，可�
    - 在 Azure StorSimple Manager 註冊之 StorSimple 儲存體裝置內部部署
    - 在 Azure StorSimple Manager 中建立 StorSimple 雲端設備。 此設備可維持在關機狀態。
    - 裝載在 StorSimple 儲存體裝置上設定之磁碟區中的檔案共用
-   - [Azure Site Recovery 服務保存庫](/azure/storsimple/hyper-v-vmm-disaster-recovery)
+   - [Azure Site Recovery 服務保存庫](/azure/site-recovery/hyper-v-vmm-azure-tutorial)
 
 此外，如果 Azure 是您的復原網站，請在 VM 上執行 [Azure 虛擬機器整備評估工具](https://azure.microsoft.com/downloads/vm-readiness-assessment/) ，以確保相容於 Azure VM 與 Azure Site Recovery 服務。
 
@@ -91,7 +91,7 @@ Microsoft Azure StorSimple 是一個混合式雲端儲存體解決方案，可�
          > [!NOTE]
          > 視版本不同，檔案名稱可能會改變。
       
-1. 按 [下一步] 。
+1. 按 [下一步]  。
 1. 接受 [合約條款] 然後按一下 [下一步]。
 1. 按一下 [完成] 。
 1. 使用從 StorSimple 儲存體劃分出來的磁碟區建立檔案共用。 如需詳細資訊，請參閱 [使用 StorSimple Manager 服務管理磁碟區](./index.yml)。
@@ -112,7 +112,7 @@ Microsoft Azure StorSimple 是一個混合式雲端儲存體解決方案，可�
    1. 請使用檔案和存放服務角色在這些磁碟區上建立檔案共用。
 
 #### <a name="to-create-and-prepare-an-azure-site-recovery-vault"></a>建立及準備 Azure Site Recovery 保存庫
-請參閱 [Azure Site Recovery 文件](/azure/storsimple/hyper-v-azure-tutorial) 來於保護檔案伺服器 VM 之前開始使用 Azure Site Recovery。
+請參閱 [Azure Site Recovery 文件](/azure/site-recovery/) 來於保護檔案伺服器 VM 之前開始使用 Azure Site Recovery。
 
 #### <a name="to-enable-protection"></a>啟用保護
 1. 透過 Azure Site Recovery 將 iSCSI 目標與您想要保護的內部部署 VM 中斷連線：
@@ -124,7 +124,7 @@ Microsoft Azure StorSimple 是一個混合式雲端儲存體解決方案，可�
    > [!NOTE]
    > 這將會導致檔案共用暫時無法使用。
    
-1. 從 Azure Site Recovery 入口網站為檔案伺服器 VM [啟用虛擬機器保護](/azure/storsimple/hyper-v-azure-tutorial)。
+1. 從 Azure Site Recovery 入口網站為檔案伺服器 VM [啟用虛擬機器保護](/azure/site-recovery/hyper-v-azure-tutorial)。
 1. 當起始同步處理開始時，您可以再次重新連線目標。 移至 iSCSI 啟動器，選取 StorSimple 裝置，然後按一下 [連線] 。
 1. 當同步完成且 VM 的狀態為 [受保護] 時，請選取 VM，選取 [設定] 索引標籤，然後據以更新 VM 的網路 (這是已容錯移轉的 VM 所屬的網路)。 如果網路沒有顯示，表示同步仍在進行中。
 
@@ -234,7 +234,7 @@ Microsoft Azure StorSimple 是一個混合式雲端儲存體解決方案，可�
    
    匯入 StorSimple 8000 系列模組後，[模組] 索引標籤應會如下所示：
    
-      ![模組](./media/storsimple-disaster-recovery-using-azure-site-recovery/image12.png)
+      ![單元](./media/storsimple-disaster-recovery-using-azure-site-recovery/image12.png)
 
 1. 移至 [復原服務]  區段並選取您之前建立的 Azure Site Recovery 保存庫。
 1. 從 [管理] 群組選取 [復原計劃 (站台復原)] 群組，然後如下所述建立新的復原計劃：
@@ -361,5 +361,5 @@ Microsoft Azure StorSimple 是一個混合式雲端儲存體解決方案，可�
   > 請在設備容錯移轉完成後重新執行復原計劃。
 
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 使用 Azure Site Recovery 時，您可以為有檔案共用裝載於 StorSimple 儲存體上的檔案伺服器 VM 建立完整自動化的災害復原計劃。 當發生中斷時，您可以在幾秒鐘內從任何地方起始容錯移轉，並且在數分鐘內啟動並執行應用程式。

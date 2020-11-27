@@ -3,16 +3,16 @@ title: 在 Azure Migrate 伺服器評量中設定代理程式相依性分析
 description: 本文說明如何在 Azure Migrate 伺服器評量中設定代理程式相依性分析。
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 17c6e3e24596727350b11946bdf6896e22d41529
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 58c1aeea00ae033def0f45d220c12d13cc28b4b2
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96028957"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302837"
 ---
 # <a name="set-up-dependency-visualization"></a>設定相依性視覺效果
 
-本文說明如何在 Azure Migrate：伺服器評量中設定無代理程式相依性分析。 相依性[分析](concepts-dependency-visualization.md)可協助您識別並瞭解您想要評估及遷移至 Azure 的機器之間的相依性。
+本文說明如何在 Azure Migrate：伺服器評量中設定代理程式的相依性分析。 相依性[分析](concepts-dependency-visualization.md)可協助您識別並瞭解您想要評估及遷移至 Azure 的機器之間的相依性。
 
 ## <a name="before-you-start"></a>開始之前
 

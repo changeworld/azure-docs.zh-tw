@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 11/16/2020
-ms.openlocfilehash: 38f65253791f28d9ae9806bea1264e594b769b19
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: aaf0374bcafdb91f316b7133de1c2d019b12b285
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94741904"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302859"
 ---
 # <a name="introduction-to-listing-options"></a>清單選項簡介
 
@@ -145,7 +145,7 @@ ms.locfileid: "94741904"
 
 AppSource 中的 &#42; SaaS 可交易供應專案目前僅供信用卡之用。
 
-&#42;&#42; Microsoft 365 增益集可免費安裝，而且可以使用 SaaS 供應專案販賣。 如需詳細資訊，請參閱[透過 Microsoft 商業市集販售 Office 365 增益集](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace.md)。
+&#42;&#42; Microsoft 365 增益集可免費安裝，而且可以使用 SaaS 供應專案販賣。 如需詳細資訊，請參閱[透過 Microsoft 商業市集販售 Office 365 增益集](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)。
 
 ## <a name="marketplace-rewards"></a>Marketplace 獎勵
 

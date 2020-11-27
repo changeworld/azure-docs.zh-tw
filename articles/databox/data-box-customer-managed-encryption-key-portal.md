@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/19/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: cd9f4ad6b6831b2b15c09b37edc569b3f2d247f7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f75907dc1fa079cebb3b80874090c658fd7b8174
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958007"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302829"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>在 Azure Key Vault 中使用客戶管理的金鑰 Azure 資料箱
 
@@ -103,7 +103,7 @@ Azure 資料箱保護裝置的解除鎖定金鑰 (也稱為裝置密碼) ，它�
 
     ![選取要使用的身分識別](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-14.png)
 
-    您無法在這裡建立新的使用者身分識別。 若要瞭解如何建立一個，請參閱 [使用 Azure 入口網站建立、列出、刪除或指派角色給使用者指派的受控識別](/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)。
+    您無法在這裡建立新的使用者身分識別。 若要瞭解如何建立一個，請參閱 [使用 Azure 入口網站建立、列出、刪除或指派角色給使用者指派的受控識別](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)。
 
     選取的使用者身分識別會顯示在 [ **加密類型** ] 設定中。
 

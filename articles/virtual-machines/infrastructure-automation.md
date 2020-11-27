@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 36ac0058f8f2cf3ca106b30c86207e46d0712193
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfa0efaa49fbca0b927bfd32511348f3ded7e6c7
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87830541"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302818"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>在 Azure 中使用基礎結構自動化工具搭配虛擬機器
 
@@ -53,7 +53,7 @@ ms.locfileid: "87830541"
 
 了解如何：
 
-- [從 Azure Marketplace 部署 Puppet ](https://azuremarketplace.microsoft.com/marketplace/apps/Puppet.puppet-agent-windows-asm?tab=Overview)。
+- [部署 Puppet](https://puppet.com/docs/puppet/5.5/install_windows.html)。
 
 
 ## <a name="cloud-init"></a>Cloud-init

@@ -7,19 +7,19 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: troubleshooting
-ms.date: 11/26/2020
-ms.openlocfilehash: f07cc8e3d5e9d6f59671a3c8c2efd9f5fb9f27b7
-ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
+ms.date: 11/27/2020
+ms.openlocfilehash: e0b4b31a1d732cbd5cbfaa9b6e5e021caa3adf01
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96299051"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301962"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>針對 ADF 中的 CI-CD、Azure DevOps 和 GitHub 問題進行疑難排解 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文探討 Azure Data Factory 中 CI-CD、Azure DevOps 和 GitHub 問題的常見疑難排解方法。
+本文探討 Azure Data Factory 中的連續 Integration-Continuous 部署 (CI CD) 、Azure DevOps 和 GitHub 問題的常見疑難排解方法。
 
 如果您在使用原始檔控制或 DevOps 技術方面有任何疑問或問題，以下是您可能會覺得有用的一些文章：
 
@@ -151,16 +151,12 @@ CI/CD 發行管線因下列錯誤而失敗：
 
 為了解決此問題，您必須將下列許可權新增至您的角色： *DataFactory/factory/queryFeaturesValue/action*。 依預設，此許可權應該包含在「Data Factory 參與者」角色中。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需疑難排解的詳細資訊，請嘗試下列資源：
 
 *  [Data Factory 部落格](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory 功能要求](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure 影片](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [Microsoft 問與答頁面](/answers/topics/azure-data-factory.html)
 *  [Data Factory 的堆疊溢位論壇](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [關於 Data Factory 的 Twitter 資訊](https://twitter.com/hashtag/DataFactory)
-
-
- 
