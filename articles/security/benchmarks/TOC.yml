@@ -105,6 +105,8 @@
       href: ../../devtest-labs/security-baseline.md
     - name: Azure 防火牆安全性基準
       href: ../../firewall/security-baseline.md
+    - name: Azure 防火牆管理員安全性基準
+      href: ../../firewall-manager/security-baseline.md
     - name: Azure Front Door 安全性基準
       href: ../../frontdoor/security-baseline.md
     - name: Azure Functions 安全性基準
@@ -185,6 +187,8 @@
       href: ../../logic-apps/security-baseline.md
     - name: 網路監看員安全性基準
       href: ../../network-watcher/security-baseline.md
+    - name: Power BI 基準
+      href: /power-bi/fundamentals/security-baseline
     - name: 資訊安全中心基準
       href: ../../security-center/security-baseline.md
     - name: 服務匯流排基準
@@ -207,5 +211,7 @@
       href: ../../virtual-network/security-baseline.md
     - name: 虛擬網路 NAT 安全性基準
       href: ../../virtual-network/nat-security-baseline.md
+    - name: Virtual WAN 安全性基準
+      href: ../../virtual-wan/security-baseline.md
     - name: VPN 閘道安全性基準
       href: ../../vpn-gateway/security-baseline.md

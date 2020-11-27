@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 43aadee627c7dc12a37a8f3895ba4dfed472808c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 627d5b15a861c3d564cb4db33b366d3227092d37
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182898"
+ms.locfileid: "96296245"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>教學課程：使用新的應用程式閘道執行個體來啟用新 AKS 叢集的輸入控制器附加元件 (預覽)
 
@@ -34,7 +34,10 @@ ms.locfileid: "96182898"
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
- - 本教學課程需要 2.0.4 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
+ - 本教學課程需要 2.0.4 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。 如果使用 Azure CLI，您必須使用下列命令在 CLI 上安裝預覽擴充功能 (如果尚未安裝)：
+    ```azurecli-interactive
+    az extension add --name aks-preview
+    ```
 
  - 若要註冊 AKS-IngressApplicationGatewayAddon 功能旗標，請使用 [az feature register](/cli/azure/feature#az-feature-register) 命令，如下列範例所示。 當附加元件仍處於預覽狀態時，您只需要針對每個訂用帳戶執行此動作一次。
     ```azurecli-interactive

@@ -33,6 +33,8 @@
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: 在 Load Balancer 中設定連接埠轉送
       href: tutorial-load-balancer-port-forwarding-portal.md
+    - name: 建立跨區域負載平衡器 - 入口網站
+      href: tutorial-cross-region-portal.md
 - name: 範例
   items:
     - name: Azure CLI
