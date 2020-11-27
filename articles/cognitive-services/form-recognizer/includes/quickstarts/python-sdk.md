@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: b09dfe8e585dbcb6b8b1289fc551cec12d86c6db
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 534916d81cfb4d3ad1e96d2934f43221067fb94f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92918673"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95862973"
 ---
 > [!IMPORTANT]
 > * 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。 請參閱下列參考文件。 
@@ -36,9 +36,19 @@ ms.locfileid: "92918673"
 
 安裝 Python 之後，您可以使用下列方式安裝最新版本的表單辨識器用戶端程式庫：
 
+#### <a name="version-30"></a>[3.0 版](#tab/ga)
+
 ```console
 pip install azure-ai-formrecognizer
 ```
+
+#### <a name="version-31-preview"></a>[3.1 版 (預覽)](#tab/preview)
+
+```console
+pip install azure-ai-formrecognizer --pre
+```
+
+---
 
 ### <a name="create-a-new-python-application"></a>建立新的 Python 應用程式
 
@@ -81,6 +91,8 @@ pip install azure-ai-formrecognizer
 
 這些程式碼片段會示範如何使用適用於 Python 的表單辨識器用戶端程式庫來執行下列工作：
 
+#### <a name="version-30"></a>[3.0 版](#tab/ga)
+
 * [驗證用戶端](#authenticate-the-client)
 * [辨識表單內容](#recognize-form-content)
 * [辨識收據](#recognize-receipts)
@@ -88,6 +100,18 @@ pip install azure-ai-formrecognizer
 * [使用自訂模型分析表單](#analyze-forms-with-a-custom-model)
 * [管理您的自訂模型](#manage-your-custom-models)
 
+#### <a name="version-31-preview"></a>[3.1 版 (預覽)](#tab/preview)
+
+* [驗證用戶端](#authenticate-the-client)
+* [辨識表單內容](#recognize-form-content)
+* [辨識收據](#recognize-receipts)
+* [辨識名片](#recognize-business-cards)
+* [辨識發票](#recognize-invoices)
+* [訓練自訂模型](#train-a-custom-model)
+* [使用自訂模型分析表單](#analyze-forms-with-a-custom-model)
+* [管理您的自訂模型](#manage-your-custom-models)
+
+---
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
@@ -135,7 +159,6 @@ Confidence score: 1.0
 Cell text: Charges
 Location: [Point(x=4.7074, y=2.8088), Point(x=5.386, y=2.8088), Point(x=5.386, y=3.3219), Point(x=4.7074, y=3.3219)]
 Confidence score: 1.0
-
 ...
 
 ```
@@ -170,6 +193,30 @@ Subtotal: 1098.99 has confidence 0.964
 Tax: 104.4 has confidence 0.713
 Total: 1203.39 has confidence 0.774
 ```
+
+#### <a name="version-30"></a>[3.0 版](#tab/ga)
+
+#### <a name="version-31-preview"></a>[3.1 版 (預覽)](#tab/preview)
+
+## <a name="recognize-business-cards"></a>辨識名片
+
+本節示範如何使用預先定型的模型，辨識並擷取英文名片中的常見欄位。 若要從 URL 辨識名片，請使用 `begin_recognize_business_cards_from_url` 方法。 
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
+
+> [!TIP]
+> 您也可以辨識本機名片影像。 請參閱 [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_business_cards`。 或如需本機映像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的範例程式碼。
+
+## <a name="recognize-invoices"></a>辨識發票
+
+本節示範如何使用預先定型的模型，辨識並擷取銷售發票中的常見欄位。 若要從 URL 辨識發票，請使用 `begin_recognize_invoices_from_url` 方法。 
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_invoice)]
+
+> [!TIP]
+> 您也可以辨識本機發票影像。 請參閱 [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_invoices`。 或如需本機映像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的範例程式碼。
+
+---
 
 ## <a name="train-a-custom-model"></a>定型自訂模型
 

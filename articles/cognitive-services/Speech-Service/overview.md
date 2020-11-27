@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 08/20/2020
+ms.date: 11/23/2020
 ms.author: trbye
-ms.openlocfilehash: 7d31649e18f8cc687a9716c8ecafe556fa250de6
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 291ac7804109b098b556e38c57ca493ba74f1b14
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377882"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95528885"
 ---
 # <a name="what-is-the-speech-service"></a>什麼是語音服務？
 
-語音服務會將語音轉文字、文字轉語音及語音翻譯整合至單一 Azure 訂用帳戶。 藉由[語音 CLI](spx-overview.md)、[語音 SDK](speech-sdk-reference.md)、[語音裝置 SDK](https://aka.ms/sdsdk-quickstart)、[Speech Studio](https://speech.microsoft.com/) 或 [REST API](rest-apis.md)，可輕易地透過語音來啟用您的應用程式、工具和裝置。
+語音服務會將語音轉文字、文字轉語音及語音翻譯整合至單一 Azure 訂用帳戶。 藉由[語音 CLI](spx-overview.md)、[語音 SDK](./speech-sdk.md)、[語音裝置 SDK](./speech-devices-sdk-quickstart.md?pivots=platform-android)、[Speech Studio](https://speech.microsoft.com/) 或 [REST API](#reference-docs)，可輕易地透過語音來啟用您的應用程式、工具和裝置。
 
 > [!IMPORTANT]
 > 語音服務已取代 Bing 語音 API 和翻譯工具語音。 如需移轉說明，請參閱「移轉」一節。
@@ -28,16 +28,16 @@ ms.locfileid: "93377882"
 
 | 服務 | 功能 | 描述 | SDK | REST |
 |---------|---------|-------------|-----|------|
-| [語音轉文字](speech-to-text.md) | 即時語音轉換文字 | 語音轉換文字可將音訊串流或本機檔案即時轉譯或翻譯為的文字，讓您的應用程式、工具或裝置可以取用或顯示。 若搭配 [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) 使用語音轉文字，即可從轉譯的語音衍生使用者意圖，以及根據語音命令執行動作。 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [語音轉文字](speech-to-text.md) | 即時語音轉換文字 | 語音轉換文字可將音訊串流或本機檔案即時轉譯或翻譯為的文字，讓您的應用程式、工具或裝置可以取用或顯示。 若搭配 [Language Understanding (LUIS)](../luis/index.yml) 使用語音轉文字，即可從轉譯的語音衍生使用者意圖，以及根據語音命令執行動作。 | [是](./speech-sdk.md) | [是](#reference-docs) |
 | | [批次語音轉換文字](batch-transcription.md) | 批次語音轉換文字可針對 Azure Blob 儲存體中的大量語音音訊資料，啟用非同步語音轉換文字轉譯。 除了將語音音訊轉換為文字之外，批次語音轉換文字也可以進行自動分段標記和情感分析。 | 否 | [是](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
 | | [多裝置交談](multi-device-conversation.md) | 透過便利的轉譯和翻譯支援，在一個對話中連接多個裝置或用戶端以傳送以語音或文字為基礎的訊息| 是 | 否 |
-| | [對話轉譯](conversation-transcription-service.md) | 啟用即時語音辨識、說話者識別和自動分段標記功能。 非常適合利用辨識說話者的能力來轉譯面對面會議。 | 是 | 否 |
+| | [對話轉譯](./conversation-transcription.md) | 啟用即時語音辨識、說話者識別和自動分段標記功能。 非常適合利用辨識說話者的能力來轉譯面對面會議。 | 是 | 否 |
 | | [建立自訂語音模型](#customize-your-speech-experience) | 如果您在獨特的環境中使用語音轉文字進行辨識及轉譯，您可以建立並定型自訂原音、語言和發音模型，以處理環境噪音或業界專有詞彙。 | 否 | [是](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
-| [文字轉換語音](text-to-speech.md) | 文字轉換語音 | 文字轉語音會使用[語音合成標記語言 (SSML)](speech-synthesis-markup.md) 將輸入文字轉換為仿真人的合成語音。 可選擇標準語音和類神經語音 (請參閱[語言支援](language-support.md))。 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| | [建立自訂語音](#customize-your-speech-experience) | 建立您品牌或產品專有的自訂聲音音調。 | 否 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [語音翻譯](speech-translation.md) | 語音翻譯 | 語音翻譯可讓您在應用程式、工具和裝置上使用即時且多語言的語音翻譯。 此服務可用於語音轉語音及語音轉文字翻譯。 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | 否 |
+| [文字轉換語音](text-to-speech.md) | 文字轉換語音 | 文字轉語音會使用[語音合成標記語言 (SSML)](speech-synthesis-markup.md) 將輸入文字轉換為仿真人的合成語音。 可選擇標準語音和類神經語音 (請參閱[語言支援](language-support.md))。 | [是](./speech-sdk.md) | [是](#reference-docs) |
+| | [建立自訂語音](#customize-your-speech-experience) | 建立您品牌或產品專有的自訂聲音音調。 | 否 | [是](#reference-docs) |
+| [語音翻譯](speech-translation.md) | 語音翻譯 | 語音翻譯可讓您在應用程式、工具和裝置上使用即時且多語言的語音翻譯。 此服務可用於語音轉語音及語音轉文字翻譯。 | [是](./speech-sdk.md) | 否 |
 | [語音助理](voice-assistants.md) | 語音助理 | 使用語音服務的語音助理能賦予開發人員建立自然、擬人的對話介面，供其應用程式和體驗之用。 語音助理服務能在裝置和助理實作之間提供迅速且可靠的互動；該助理實作會使用 Bot Framework 的 Direct Line 語音頻道，或是整合的自訂命令 (預覽) 服務來完成工作。 | [是](voice-assistants.md) | 否 |
-| [說話者辨識](speaker-recognition-overview.md) | 說話者驗證與識別 | 說話者辨識服務提供以唯一語音特性驗證和識別說話者的演算法。 說話者辨識是用來回答「誰在說話？」的問題。 | 是 | [是](https://docs.microsoft.com/rest/api/speakerrecognition/) |
+| [說話者辨識](speaker-recognition-overview.md) | 說話者驗證與識別 | 說話者辨識服務提供以唯一語音特性驗證和識別說話者的演算法。 說話者辨識是用來回答「誰在說話？」的問題。 | 是 | [是](/rest/api/speakerrecognition/) |
 
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
@@ -104,15 +104,15 @@ ms.locfileid: "93377882"
 
 * [語音轉換文字快速入門](get-started-speech-to-text.md)
 * [文字轉換語音快速入門](get-started-text-to-speech.md)
-* [語音翻譯快速入門](speech-translation-basics.md)
+* [語音翻譯快速入門](./get-started-speech-translation.md)
 * [意圖辨識快速入門](quickstarts/intent-recognition.md)
-* [說話者辨識快速入門](speaker-recognition-basics.md)
+* [說話者辨識快速入門](./get-started-speaker-recognition.md)
 
 在您有機會開始使用語音服務之後，請嘗試我們的教學課程，其可說明如何解決各種案例。
 
 - [教學課程：使用語音 SDK 和 LUIS 從語音辨識意圖 (C#)](how-to-recognize-intents-from-speech-csharp.md)
 - [教學課程：使用語音 SDK 和 C# 透過聲音啟用 Bot](tutorial-voice-enable-your-bot-speech-sdk.md)
-- [教學課程：建置 Flask 應用程式以翻譯文字、分析情緒並將翻譯的文字合成語音，REST](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json&toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fspeech-service%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
+- [教學課程：建置 Flask 應用程式以翻譯文字、分析情緒並將翻譯的文字合成語音，REST](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%252fazure%252fcognitive-services%252fspeech-service%252fbreadcrumb%252ftoc.json%252c%252fen-us%252fazure%252fbread%252ftoc.json&toc=%252fazure%252fcognitive-services%252fspeech-service%252ftoc.json%252c%252fen-us%252fazure%252fcognitive-services%252fspeech-service%252ftoc.json)
 
 ## <a name="get-sample-code"></a>取得範例程式碼
 
@@ -134,16 +134,28 @@ ms.locfileid: "93377882"
 | 語音轉文字 | [客製化的語音](https://aka.ms/customspeech) | 依據您的需求和可用的資料，自訂語音辨識模型。 克服像是語音模式、詞彙及背景雜音等語音辨識的阻礙。 |
 | 文字轉語音 | [自訂語音](https://aka.ms/customvoice) | 使用您的談話資料，為您的文字轉語音應用程式建置可辨識且獨一無二的語音。 您可以藉由調整一組語音參數，來進一步微調語音輸出。 |
 
+## <a name="deploy-on-premises-using-docker-containers"></a>使用 Docker 容器在內部部署環境進行部署
+
+[使用語音服務容器](speech-container-howto.md)在內部部署環境中部署 API 功能。 這些 Docker 容器可讓服務更加契合您的資料，以實現合規性、安全性或其他操作性原因。 語音服務提供下列容器：
+
+* 標準語音轉換文字
+* 自訂語音轉換文字
+* 標準文字轉換語音
+* 類神經文字轉換語音
+* 自訂文字轉換語音 (預覽)
+* 語音語言偵測 (預覽)
+
 ## <a name="reference-docs"></a>參考文件
 
-- [語音 SDK](speech-sdk-reference.md)
+- [語音 SDK](./speech-sdk.md)
 - [語音裝置 SDK](speech-devices-sdk.md)
 - [REST API：語音轉文字](rest-speech-to-text.md)
 - [REST API：文字轉語音](rest-text-to-speech.md)
 - [REST API：批次轉譯與自訂](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)
 
+
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [開始使用語音轉換文字](speech-to-text-basics.md)
+> [開始使用語音轉換文字](./get-started-speech-to-text.md)
 > [開始使用文字轉換語音](get-started-text-to-speech.md)

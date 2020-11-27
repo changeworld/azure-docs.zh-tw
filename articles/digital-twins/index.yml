@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: a05f168b18f32e2b4730e5ef50624d41fb48e147
-  ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+  ms.openlocfilehash: bcba2b48fdecda311ce349f90ba43023b906bd44
+  ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/30/2020
-  ms.locfileid: "93099091"
+  ms.lasthandoff: 11/26/2020
+  ms.locfileid: "96186400"
 landingContent:
 - title: 關於 Azure Digital Twins
   linkLists:
@@ -71,20 +71,24 @@ landingContent:
     links:
     - text: 撰寫應用程式驗證碼
       url: how-to-authenticate-client.md
-- title: 檢視 API 參考
+- title: 探索 API
   linkLists:
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: /rest/api/azure-digitaltwins/
   - linkListType: how-to-guide
     links:
     - text: 使用 Azure Digital Twins API 和 SDK
       url: how-to-use-apis-sdks.md
   - linkListType: how-to-guide
     links:
+    - text: 使用 Postman 提出要求
+      url: how-to-use-postman.md
+  - linkListType: how-to-guide
+    links:
     - text: 使用 AutoRest 建立自訂 SDK
       url: how-to-create-custom-sdks.md
-  - linkListType: reference
-    links:
-    - text: REST API
-      url: /rest/api/azure-digitaltwins/
 - title: 探索程式碼範例
   linkLists:
   - linkListType: sample

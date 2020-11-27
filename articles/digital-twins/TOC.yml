@@ -83,6 +83,8 @@
       items:
         - name: 使用 API 和 SDK
           href: how-to-use-apis-sdks.md
+        - name: 使用 Postman 提出要求
+          href: how-to-use-postman.md
         - name: 使用 AutoRest 建立自訂 SDK
           href: how-to-create-custom-sdks.md
         - name: 與 Azure SignalR Service 整合

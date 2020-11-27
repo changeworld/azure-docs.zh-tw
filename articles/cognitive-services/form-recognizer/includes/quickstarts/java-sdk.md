@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: fa15b48cff73b567187aa078bec02aa82e41e665
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 48162609c27372937337be87d4b8f78af35a46d5
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92918668"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95869771"
 ---
 > [!IMPORTANT]
 > 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。
@@ -43,7 +43,7 @@ ms.locfileid: "92918668"
 mkdir myapp && cd myapp
 ```
 
-從您的工作目錄執行 `gradle init` 命令。 此命令會建立 Gradle 的基本組建檔案，包括 *build.gradle.kts* ，此檔案將在執行階段用來建立及設定您的應用程式。
+從您的工作目錄執行 `gradle init` 命令。 此命令會建立 Gradle 的基本組建檔案，包括 *build.gradle.kts*，此檔案將在執行階段用來建立及設定您的應用程式。
 
 ```console
 gradle init --type basic
@@ -58,6 +58,7 @@ gradle init --type basic
 
 在專案的 build.gradle.kts 檔案中，將用戶端程式庫納入為 `implementation` 陳述式，以及必要的外掛程式和設定。
 
+#### <a name="version-30"></a>[3.0 版](#tab/ga)
 ```kotlin
 plugins {
     java
@@ -73,6 +74,23 @@ dependencies {
     implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.0.0")
 }
 ```
+#### <a name="version-31-preview"></a>[3.1 版 (預覽)](#tab/preview)
+```kotlin
+plugins {
+    java
+    application
+}
+application {
+    mainClass.set("FormRecognizer")
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.1.0-beta.1")
+}
+```
+---
 
 ### <a name="create-a-java-file"></a>建立 Java 檔案
 
@@ -106,9 +124,16 @@ mkdir -p src/main/java
 * 若要取得要測試的表單 URL，您可以使用上述步驟來取得 Blob 儲存體中個別文件的 SAS URL， 或使用位於他處的文件 URL。
 * 也請使用上述方法取得收據影像的 URL。
 
+#### <a name="version-30"></a>[3.0 版](#tab/ga)
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_mainvars)]
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_maincalls)]
+#### <a name="version-31-preview"></a>[3.1 版 (預覽)](#tab/preview)
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_mainvars)]
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_maincalls)]
+
+---
 
 
 
@@ -140,12 +165,24 @@ mkdir -p src/main/java
 
 這些程式碼片段會示範如何使用適用於 Java 的表單辨識器用戶端程式庫來執行下列工作：
 
+#### <a name="version-30"></a>[3.0 版](#tab/ga)
 * [驗證用戶端](#authenticate-the-client)
 * [辨識表單內容](#recognize-form-content)
 * [辨識收據](#recognize-receipts)
 * [訓練自訂模型](#train-a-custom-model)
 * [使用自訂模型分析表單](#analyze-forms-with-a-custom-model)
 * [管理您的自訂模型](#manage-your-custom-models)
+#### <a name="version-31-preview"></a>[3.1 版 (預覽)](#tab/preview)
+* [驗證用戶端](#authenticate-the-client)
+* [辨識表單內容](#recognize-form-content)
+* [辨識收據](#recognize-receipts)
+* [辨識名片](#recognize-business-cards)
+* [辨識發票](#recognize-invoices)
+* [訓練自訂模型](#train-a-custom-model)
+* [使用自訂模型分析表單](#analyze-forms-with-a-custom-model)
+* [管理您的自訂模型](#manage-your-custom-models)
+
+---
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
@@ -162,7 +199,7 @@ mkdir -p src/main/java
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_getcontent_call)]
 
 > [!TIP]
-> 您也可以從本機檔案取得內容。 請參閱 [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 **beginRecognizeContent** 。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的範例程式碼。
+> 您也可以從本機檔案取得內容。 請參閱 [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 **beginRecognizeContent**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的範例程式碼。
 
 傳回的值會是 **FormPage** 物件的集合：提交的文件每頁各一個。 下列程式碼會逐一查看這些物件，並列印擷取到的索引鍵/值組和資料表資料。
 
@@ -195,7 +232,7 @@ Cell has text ET.
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_call)]
 
 > [!TIP]
-> 您也可以取得辨識本機收據映像。 請參閱 [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 **beginRecognizeReceipts** 。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的範例程式碼。
+> 您也可以辨識本機收據映像。 請參閱 [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 **beginRecognizeReceipts**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的範例程式碼。
 
 傳回的值會是 **RecognizedReceipt** 物件的集合：提交的文件每頁各一個。 下一個程式碼區塊會逐一查看收據，並將其詳細資料列印至主控台。
 
@@ -221,6 +258,43 @@ Name: BACON & EGGS, confidence: 0.94s
 Quantity: null, confidence: 0.927s]
 Total Price: null, confidence: 0.93
 ```
+
+#### <a name="version-30"></a>[3.0 版](#tab/ga)
+
+#### <a name="version-31-preview"></a>[3.1 版 (預覽)](#tab/preview)
+
+## <a name="recognize-business-cards"></a>辨識名片
+
+本節示範如何使用預先定型的模型，辨識並擷取英文名片中的常見欄位。
+
+若要從 URL 辨識名片，請使用 `beginRecognizeBusinessCardsFromUrl` 方法。 
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_call)]
+
+> [!TIP]
+> 您也可以辨識本機名片影像。 請參閱 [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 **beginRecognizeBusinessCards**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的範例程式碼。
+
+傳回值是 **RecognizedForm** 物件的集合：文件中的每張名片各一個。 下列程式碼會處理位於指定 URI 的名片，並將主要欄位和值列印至主控台。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_print)]
+
+## <a name="recognize-invoices"></a>辨識發票
+
+本節示範如何使用預先定型的模型，辨識並擷取銷售發票中的常見欄位。
+
+若要從 URL 辨識名片，請使用 `beginRecognizeInvoicesFromUrl` 方法。 
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_call)]
+
+> [!TIP]
+> 您也可以辨識本機發票。 請參閱 [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 **beginRecognizeInvoices**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的範例程式碼。
+
+傳回值是 **RecognizedForm** 物件的集合：文件中的每個發票各一個。 下列程式碼會處理位於指定 URI 的名片，並將主要欄位和值列印至主控台。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_print)]
+
+---
+
 ## <a name="train-a-custom-model"></a>定型自訂模型
 
 本節會示範如何使用自己的資料來訓練模型。 經過訓練的模型能夠輸出結構化資料，且其中包含原始表單文件內的索引鍵/值關係。 定型模型後，您就可以測試及重新定型模型，並於最終根據您的需求用此模型來從更多的表單可靠地擷取資料。
@@ -268,7 +342,7 @@ The model found field 'field-6' with label: VAT ID
 
 ### <a name="train-a-model-with-labels"></a>訓練具備標籤的模型
 
-您也可以手動標記訓練文件來訓練自訂模型。 在某些情況下，使用標籤來訓練會讓效能更佳。 若要使用標籤來訓練，您的 Blob 儲存體容器中除了訓練文件以外，還必須要有特殊的標籤資訊檔案 ( *\<filename\>.pdf.labels.json* )。 [表單辨識器範例標籤工具](../../quickstarts/label-tool.md)提供可協助您建立這些標籤檔案的 UI。 只要有了這些檔案，即可呼叫 **beginTraining** 方法，且將 *useTrainingLabels* 參數設為 `true`。
+您也可以手動標記訓練文件來訓練自訂模型。 在某些情況下，使用標籤來訓練會讓效能更佳。 若要使用標籤來訓練，您的 Blob 儲存體容器中除了訓練文件以外，還必須要有特殊的標籤資訊檔案 ( *\<filename\>.pdf.labels.json*)。 [表單辨識器範例標籤工具](../../quickstarts/label-tool.md)提供可協助您建立這些標籤檔案的 UI。 只要有了這些檔案，即可呼叫 **beginTraining** 方法，且將 *useTrainingLabels* 參數設為 `true`。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_trainlabels_call)]
 
@@ -310,7 +384,7 @@ The model found field 'field-6' with label: VAT ID
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_analyze_call)]
 
 > [!TIP]
-> 您也可以分析本機檔案。 請參閱 [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 **beginRecognizeCustomForms** 。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的範例程式碼。
+> 您也可以分析本機檔案。 請參閱 [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 **beginRecognizeCustomForms**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的範例程式碼。
 
 傳回的值會是 **RecognizedForm** 物件的集合：提交的文件每頁各一個。下列程式碼會將分析結果列印至主控台。 列印內容包括辨識到的每個欄位和對應的值，以及信賴分數。
 

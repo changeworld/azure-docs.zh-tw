@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: ee9f49463e8e6749d29c810afaf7337cc99a98e8
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: a47475ad55c5e6262dc8ba1a384d89b9721fd2e9
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616037"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736420"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>教學課程：以 Python 執行 TensorFlow 模型
 
@@ -34,7 +34,7 @@ ms.locfileid: "94616037"
 
 接下來，您需要安裝下列套件：
 
-```
+```bash
 pip install tensorflow
 pip install pillow
 pip install numpy
@@ -43,7 +43,7 @@ pip install opencv-python
 
 ## <a name="load-your-model-and-tags"></a>載入模型和標籤
 
-已下載的 ZIP 檔案包含 model.pb 和 labels.txt。 這些檔案代表訓練過的模型和分類標籤。 第一個步驟是將模型載入到您的專案。
+已下載的 .zip 檔案包含 _model.pb_ 和 _labels.txt_ 檔案。 這些檔案代表訓練過的模型和分類標籤。 第一個步驟是將模型載入到您的專案。 將下列程式碼新增到新的 Python 指令碼。
 
 ```Python
 import tensorflow as tf
@@ -126,6 +126,8 @@ augmented_image = crop_center(augmented_image, network_input_size, network_input
 
 ```
 
+### <a name="add-helper-functions"></a>新增協助程式函式
+
 上述步驟使用下列協助程式函式：
 
 ```Python
@@ -191,7 +193,7 @@ with tf.compat.v1.Session() as sess:
         exit(-1)
 ```
 
-## <a name="view-the-results"></a>View the results
+## <a name="display-the-results"></a>顯示結果
 
 透過模型執行影像張量的結果接著需要對應回標籤。
 

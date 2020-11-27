@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 9/17/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 臉部辨識, 臉部辨識軟體, 臉部分析, 臉部比對, 臉部辨識應用程式, 依影像進行臉部搜尋, 臉部辨識搜尋
-ms.openlocfilehash: ccc9ee3107d287844430be0ae089e4b7ac3a2f44
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 600ca48cc19ee8723b423e484ec96736a55ae7fc
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911438"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95532251"
 ---
 # <a name="what-is-the-azure-face-service"></a>什麼是 Azure 臉部辨識服務？
 
@@ -58,7 +58,7 @@ Azure 臉部辨識服務會提供 AI 演算法，可偵測、辨識和分析影�
 
 ![五個面帶笑容人員的影像。 影像 a 和 b 顯示同一人。](./Images/FaceFindSimilar.Candidates.jpg)
 
-為了尋找四個相似的臉部， **matchPerson** 模式會傳回 a 和 b，因為其顯示的是與目標臉部相同的人員。 **matchFace** 模式會傳回 a、b、c 和 d 四個候選項目，不過某些項目不是與目標相同的人員，或是相似度較低。 如需詳細資訊，請參閱[臉部辨識](concepts/face-recognition.md)概念指南或[尋找類似項目 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) 參考文件。
+為了尋找四個相似的臉部，**matchPerson** 模式會傳回 a 和 b，因為其顯示的是與目標臉部相同的人員。 **matchFace** 模式會傳回 a、b、c 和 d 四個候選項目，不過某些項目不是與目標相同的人員，或是相似度較低。 如需詳細資訊，請參閱[臉部辨識](concepts/face-recognition.md)概念指南或[尋找類似項目 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) 參考文件。
 
 ## <a name="face-grouping"></a>臉部分組
 
@@ -76,9 +76,9 @@ Azure 臉部辨識服務會提供 AI 演算法，可偵測、辨識和分析影�
 
 如需人員識別的詳細資訊，請參閱[臉部辨識](concepts/face-recognition.md)概念指南或[識別 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) 參考文件。
 
-## <a name="containers"></a>容器
+## <a name="deploy-on-premises-using-docker-containers"></a>使用 Docker 容器在內部部署環境進行部署
 
-藉由在更接近資料的位置安裝標準化的 Docker 容器，從而[使用臉部容器](face-how-to-install-containers.md)來偵測、辨識和識別臉部。
+[使用臉部容器 (預覽)](face-how-to-install-containers.md) 在內部部署環境中部署 API 功能。 此 Docker 容器可讓服務更加契合您的資料，以實現合規性、安全性或其他操作性原因。
 
 ## <a name="sample-apps"></a>範例應用程式
 

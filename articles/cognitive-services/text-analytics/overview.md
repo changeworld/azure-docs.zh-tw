@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/02/2020
+ms.date: 11/17/2020
 ms.author: aahi
 keywords: 文字採礦, 情感分析, 文字分析
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 6d10161609abda321ed1be9dfda0acabf2030c9e
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 14dfa6111bbda8750b175c8c9b2a96321e1af2c5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94365290"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519399"
 ---
 # <a name="what-is-the-text-analytics-api"></a>什麼是文字分析 API？
 
@@ -47,9 +47,18 @@ ms.locfileid: "94365290"
 
 「具名實體辨識 (NER)」可以[將文字中的實體識別和分類](how-tos/text-analytics-how-to-entity-linking.md)為人員、地點、組織或數量，而眾所皆知的實體還可以在辨識後連結至網路上的更多資訊。
 
-## <a name="use-containers"></a>使用容器
+## <a name="deploy-on-premises-using-docker-containers"></a>使用 Docker 容器在內部部署環境進行部署
 
-[使用文字分析容器](how-tos/text-analytics-how-to-install-containers.md)作為文字採礦和使用 API 的內部部署解決方案。 這些 Docker 容器可讓您擷取關鍵片語、偵測語言，以及分析更貼近資料的情感。
+[使用文字分析容器](how-tos/text-analytics-how-to-install-containers.md)在內部部署環境中部署 API 功能。 這些 Docker 容器可讓服務更加契合您的資料，以實現合規性、安全性或其他操作性原因。 文字分析提供下列容器：
+
+* 情感分析
+* 關鍵片語擷取 (預覽)
+* 語言偵測 (預覽)
+* 健康情況的文字分析 (預覽)
+
+## <a name="asynchronous-operations"></a>非同步作業
+
+`/analyze` 端點可讓您[以非同步方式](how-tos/text-analytics-how-to-call-api.md)使用文字分析 API 的精選功能，例如 NER 和關鍵片語擷取。
 
 ## <a name="typical-workflow"></a>一般工作流程
 

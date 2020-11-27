@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 86803e1d7ef77467fd870221c0bc2c1c006ae479
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 2d8b876f01f110a314734e596055831650a6c08b
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94816668"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95864867"
 ---
 > [!IMPORTANT]
 > 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。
@@ -31,18 +31,6 @@ ms.locfileid: "94816668"
     * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
 
 ## <a name="setting-up"></a>設定
-
-### <a name="create-a-new-c-application"></a>建立新的 C# 應用程式
-
-#### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
-
-使用 Visual Studio，建立新的 .NET Core 應用程式。 
-
-### <a name="install-the-client-library"></a>安裝用戶端程式庫 
-
-建立新專案後，以滑鼠右鍵按一下 [方案總管] 中的專案解決方案，然後選取 [管理 NuGet 套件]，以安裝用戶端程式庫。 在開啟的套件管理員中，選取 [瀏覽]、核取 [包含發行前版本]，然後搜尋 `Azure.AI.FormRecognizer`。 選取版本 `3.0.0`，然後 **安裝**。 
-
-#### <a name="cli"></a>[CLI](#tab/cli)
 
 在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `formrecognizer-quickstart` 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔：*program.cs*。 
 
@@ -70,8 +58,16 @@ Build succeeded.
 
 在應用程式目錄中，使用下列命令安裝適用於 .NET 的表單辨識器用戶端程式庫：
 
+#### <a name="version-30"></a>[3.0 版](#tab/ga)
+
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.0.0
+```
+
+#### <a name="version-31-preview"></a>[3.1 版 (預覽)](#tab/preview)
+
+```console
+dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 ```
 ---
 
@@ -91,9 +87,14 @@ dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_creds)]
 
-在應用程式的 **Main** 方法中，新增對本快速入門中所用非同步工作的呼叫。 您稍後會加以實作。
+在應用程式的 **Main** 方法中，新增對本快速入門中所用非同步工作的呼叫。 您稍後會實作這些呼叫。
 
+#### <a name="version-30"></a>[3.0 版](#tab/ga)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
+#### <a name="version-31-preview"></a>[3.1 版 (預覽)](#tab/preview)
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_main)]
+
+---
 
 
 ## <a name="object-model"></a>物件模型 
@@ -126,6 +127,8 @@ dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 
 這些程式碼片段會示範如何使用適用於 .NET 的表單辨識器用戶端程式庫來執行下列工作：
 
+#### <a name="version-30"></a>[3.0 版](#tab/ga)
+
 * [驗證用戶端](#authenticate-the-client)
 * [辨識表單內容](#recognize-form-content)
 * [辨識收據](#recognize-receipts)
@@ -133,6 +136,18 @@ dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 * [使用自訂模型分析表單](#analyze-forms-with-a-custom-model)
 * [管理您的自訂模型](#manage-your-custom-models)
 
+#### <a name="version-31-preview"></a>[3.1 版 (預覽)](#tab/preview)
+
+* [驗證用戶端](#authenticate-the-client)
+* [辨識表單內容](#recognize-form-content)
+* [辨識收據](#recognize-receipts)
+* [辨識名片](#recognize-business-cards)
+* [辨識發票](#recognize-invoices)
+* [訓練自訂模型](#train-a-custom-model)
+* [使用自訂模型分析表單](#analyze-forms-with-a-custom-model)
+* [管理您的自訂模型](#manage-your-custom-models)
+
+---
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
@@ -155,9 +170,14 @@ dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 
 * 若要為您的自訂模型訓練資料擷取 SAS URL，請開啟 Microsoft Azure 儲存體總管、以滑鼠右鍵按一下您的容器，然後選取 [取得共用存取簽章]。 確定 [讀取] 和 [列出] 權限均已勾選，再按一下 [建立]。 然後，複製 [URL] 區段的值。 其格式應該為：`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
 * 然後，使用上述步驟來取得 Blob 儲存體中個別文件的 SAS URL。
-* 最後，儲存下列範例中包含的範例收據影像 URL (也可在 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) 上取得)。 
+* 最後，儲存下面所包含範例影像的 URL (也可在 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) 上取得)。 
 
+#### <a name="version-30"></a>[3.0 版](#tab/ga)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_urls)]
+#### <a name="version-31-preview"></a>[3.1 版 (預覽)](#tab/preview)
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_urls)]
+
+---
 
 
 ## <a name="recognize-form-content"></a>辨識表單內容
@@ -268,6 +288,43 @@ Item:
     Total Price: '99.99', with confidence 0.386
 Total: '1203.39', with confidence '0.774'
 ```
+
+#### <a name="version-30"></a>[3.0 版](#tab/ga)
+
+#### <a name="version-31-preview"></a>[3.1 版 (預覽)](#tab/preview)
+
+## <a name="recognize-business-cards"></a>辨識名片
+
+本節示範如何使用預先定型的模型，辨識並擷取英文名片中的常見欄位。
+
+若要從 URL 辨識名片，請使用 `StartRecognizeBusinessCardsFromUriAsync` 方法。 
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_call)]
+
+> [!TIP]
+> 您也可以辨識本機收據映像。 請參閱 [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) 方法，例如 **StartRecognizeBusinessCards**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上的範例程式碼。
+
+傳回值是 `RecognizedForm` 物件的集合：文件中的每張名片各一個。 下列程式碼會處理位於指定 URI 的名片，並將主要欄位和值列印至主控台。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_print)]
+
+## <a name="recognize-invoices"></a>辨識發票
+
+本節示範如何使用預先定型的模型，辨識並擷取銷售發票中的常見欄位。
+
+若要從 URL 辨識發票，請使用 `StartRecognizeInvoicesFromUriAsync` 方法。 
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_invoice_call)]
+
+> [!TIP]
+> 您也可以辨識本機發票影像。 請參閱 [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) 方法，例如 **StartRecognizeInvoices**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上的範例程式碼。
+
+傳回值是 `RecognizedForm` 物件的集合：所提交文件中的每張發票各一個。 下列程式碼會處理位於指定 URI 的發票，並將主要欄位和值列印至主控台。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_invoice_print)]
+
+---
+
 
 ## <a name="train-a-custom-model"></a>定型自訂模型
 
@@ -575,19 +632,12 @@ Submodel Form Type: form-150828c4-2eb2-487e-a728-60d5d504bd16
 
 ## <a name="run-the-application"></a>執行應用程式
 
-#### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
-
-按一下 IDE 視窗頂端的 [偵錯] 按鈕，以執行應用程式。
-
-#### <a name="cli"></a>[CLI](#tab/cli)
-
 使用 `dotnet run` 命令從您的應用程式目錄執行應用程式。
 
 ```dotnet
 dotnet run
 ```
 
----
 
 ## <a name="clean-up-resources"></a>清除資源
 

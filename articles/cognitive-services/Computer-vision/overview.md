@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 11/13/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: 電腦視覺, 電腦視覺應用程式, 電腦視覺服務
-ms.openlocfilehash: aeaa10870b8b40b907da1d1660e77ebf0271c300
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 1b4768781c45733590639b4a382fecfdb02adf48
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629745"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95532285"
 ---
 # <a name="what-is-computer-vision"></a>什麼是電腦視覺？
 
@@ -64,7 +64,7 @@ Azure 的電腦視覺服務可讓您存取進階演算法，以根據您感興�
 
 ### <a name="detect-faces"></a>偵測臉部
 
-偵測影像中的臉部，並提供與每個偵測到的臉部有關的資訊。 電腦視覺會針對每個偵測到的臉部傳回座標、矩形、性別和年齡。<br/>電腦視覺提供部分的[臉部](/azure/cognitive-services/face/)服務功能。 您可以使用臉部服務進行更詳細的分析，例如臉部識別和姿勢偵測。 [偵測臉部](concept-detecting-faces.md)
+偵測影像中的臉部，並提供與每個偵測到的臉部有關的資訊。 電腦視覺會針對每個偵測到的臉部傳回座標、矩形、性別和年齡。<br/>電腦視覺提供部分的[臉部](../face/index.yml)服務功能。 您可以使用臉部服務進行更詳細的分析，例如臉部識別和姿勢偵測。 [偵測臉部](concept-detecting-faces.md)
 
 ### <a name="detect-image-types"></a>偵測影像類型
 
@@ -90,13 +90,12 @@ Azure 的電腦視覺服務可讓您存取進階演算法，以根據您感興�
 
 您可以使用電腦視覺在影像中[偵測成人內容](concept-detecting-adult-content.md)，並傳回不同分類的信賴分數。 為內容加上旗標的閾值可用滑動標尺來設定，以配合您的喜好設定。
 
-## <a name="use-containers"></a>使用容器
+## <a name="deploy-on-premises-using-docker-containers"></a>使用 Docker 容器在內部部署環境進行部署
 
-使用電腦視覺 Docker 容器來使用服務內部部署。 目前有兩個可用的容器：
+使用電腦視覺容器在內部部署環境中部署 API 功能。 這些 Docker 容器可讓服務更加契合您的資料，以實現合規性、安全性或其他操作性原因。 電腦視覺提供下列容器：
 
-* [電腦視覺讀取容器](computer-vision-how-to-install-containers.md)可讓您辨識影像中的列印和手寫文字。
-
-* [電腦視覺的空間分析容器](spatial-analysis-container.md)可讓您分析即時串流影片，透過實體環境了解人員之間的空間關聯性，以及移動情況。
+* [電腦視覺讀取 OCR 容器 (預覽)](computer-vision-how-to-install-containers.md) 可讓您辨識影像中的列印和手寫文字。
+* [電腦視覺的空間分析容器 (預覽)](spatial-analysis-container.md) 可讓您分析即時串流影片，透過實體環境了解人員之間的空間關聯性，以及移動情況。
 
 ## <a name="image-requirements"></a>影像需求
 

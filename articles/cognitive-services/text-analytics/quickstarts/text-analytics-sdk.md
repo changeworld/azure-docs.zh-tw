@@ -13,12 +13,12 @@ ms.author: aahi
 keywords: 文字採礦, 情感分析, 文字分析
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 6d69c47c4833247ac259f9dcc166d7ab2696c117
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5a0856df71f87e49c1a7d627ba92419352c796d5
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977785"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980932"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>快速入門：使用文字分析用戶端程式庫
 
@@ -38,6 +38,7 @@ ms.locfileid: "91977785"
 > * 文字分析 API 的最新穩定版本是 `3.0`。
 >    * 請務必遵循您所使用版本的指示。
 > * 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。 針對生產案例，建議您使用批次非同步方法來取得效能和擴充性。 請參閱下列參考文件。
+> * 如果您想要使用健康情況的文字分析或非同步作業，請參閱 Github 上的 [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)、[Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/) 或 [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics) 範例
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
@@ -50,6 +51,7 @@ ms.locfileid: "91977785"
 > [!IMPORTANT]
 > * 文字分析 API 的最新穩定版本是 `3.0`。
 > * 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。 針對生產案例，建議您使用批次非同步方法來取得效能和擴充性。 請參閱下列參考文件。
+如果您想要使用健康情況的文字分析或非同步作業，請參閱 Github 上的 [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)、[Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/) 或 [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics) 範例
 
 [!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
 
@@ -72,7 +74,7 @@ ms.locfileid: "91977785"
 > [!IMPORTANT]
 > * 文字分析 API 的最新穩定版本是 `3.0`。
 >    * 請務必遵循您所使用版本的指示。
-> * 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。 針對生產案例，建議您使用批次非同步方法來取得效能和擴充性。 請參閱下列參考文件。 
+> * 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。 針對生產案例，建議您使用批次非同步方法來取得效能和擴充性。 請參閱下列參考文件。 如果您想要使用健康情況的文字分析或非同步作業，請參閱 Github 上的 [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)、[Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/) 或 [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics) 範例
 
 [!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
 

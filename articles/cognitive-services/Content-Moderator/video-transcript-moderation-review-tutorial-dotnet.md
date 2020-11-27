@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1648bd9a073bca696299e9ed703536db745e7edb
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: ad689c746a0f4d7232e7f61982fb8c4f735cbe34
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912832"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95737797"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>教學課程：影片及文字記錄仲裁
 
@@ -35,7 +35,7 @@ ms.locfileid: "92912832"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- 註冊 [Content Moderator 審核工具](https://contentmoderator.cognitive.microsoft.com/)網站，並建立自訂標記。 如果您需要此步驟的說明，請參閱[使用標記](./review-tool-user-guide/configure.md#tags)。
+- 註冊 [Content Moderator 審核工具](https://contentmoderator.cognitive.microsoft.com/)網站，並為您要識別的功能建立自訂標籤。 如果您需要此步驟的說明，請參閱[使用標記](./review-tool-user-guide/configure.md#tags)。
 
     ![影片審核自訂標記的螢幕擷取畫面](images/video-tutorial-custom-tags.png)
 - 若要執行範例應用程式，您需要 Azure 帳戶、Azure 媒體服務資源、Azure Content Moderator 資源和 Azure Active Directory 認證。 如需有關如何取得這些資源的指示，請參閱[影片審核 API](video-moderation-api.md) 指南。
@@ -57,7 +57,7 @@ ms.locfileid: "92912832"
 
 ## <a name="examine-the-main-code"></a>檢查主要程式碼
 
-`Program.cs` 中的 `Program` 類別是影片審核應用程式的主要進入點。
+_Program.cs_ 中的 **Program** 類別是影片審核應用程式的主要進入點。
 
 ### <a name="methods-of-program-class"></a>Program 類別的方法
 
@@ -116,7 +116,7 @@ ms.locfileid: "92912832"
 為了將網路流量降到最低，應用程式會將影片檔案轉換為 H.264 (MPEG-4 AVC) 格式，並將其調整為最大寬度 640 像素。 建議您使用 H.264 轉碼器，因為它有很高的效率 (壓縮率)。 壓縮會使用免費的 `ffmpeg` 命令列工具來完成，其隨附於 Visual Studio 解決方案的 `Lib` 資料夾中。 輸入檔案可以使用 `ffmpeg` 支援的任何格式，包括最常使用的影片檔案格式和轉碼器。
 
 > [!NOTE]
-> 當您使用命令列選項啟動程式時，您會指定包含影片檔案的目錄，以提交檔案來進行審核。 此目錄中副檔名為 `.mp4` 的所有檔案皆會進入處理程序。 若要處理其他副檔名，請更新 `Program.cs` 中的 `Main()` 方法，讓其包含所需的副檔名。
+> 當您使用命令列選項啟動程式時，您會指定包含影片檔案的目錄，以提交檔案來進行審核。 此目錄中副檔名為 `.mp4` 的所有檔案皆會進入處理程序。 若要處理其他副檔名，請更新 _Program.cs_ 中的 `Main()` 方法，讓其包含所需的副檔名。
 
 壓縮單一影片檔案的程式碼是 `AMSComponent.cs` 中的 `AmsComponent` 類別。 負責這項功能的方法是 `CompressVideo()`，如下所示。
 
@@ -138,7 +138,7 @@ ms.locfileid: "92912832"
 
 ## <a name="upload-and-moderate-the-video"></a>上傳及審核影片
 
-影片必須儲存在 Azure 媒體服務，才能由內容審核服務進行處理。 `Program.cs` 中的 `Program` 類別具有 `CreateVideoStreamingRequest()` 簡短方法，其傳回的物件代表用來上傳影片的串流要求。
+影片必須儲存在 Azure 媒體服務，才能由內容審核服務進行處理。 _Program.cs_ 中的 **Program** 類別具有 `CreateVideoStreamingRequest()` 簡短方法，其傳回的物件代表用來上傳影片的串流要求。
 
 [!code-csharp[CreateVideoStreamingRequest](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/Program.cs?range=120-133)]
 
@@ -228,7 +228,7 @@ ms.locfileid: "92912832"
 
 ## <a name="create-a-human-review"></a>建立人工審核
 
-審核程序會傳回影片中的主要畫面清單，以及其音軌的文字記錄。 下一個步驟是在 Content Moderator 審核工具中建立審核項目，以進行人工審核。 返回 `Program.cs` 中的 `ProcessVideo()` 方法，您會看到對 `CreateVideoReviewInContentModerator()` 方法的呼叫。 此方法位於 `VideoReviewAPI.cs` 中的 `videoReviewApi` 類別，如下所示。
+審核程序會傳回影片中的主要畫面清單，以及其音軌的文字記錄。 下一個步驟是在 Content Moderator 審核工具中建立審核項目，以進行人工審核。 返回 _Program.cs_ 中的 `ProcessVideo()` 方法，您會看到對 `CreateVideoReviewInContentModerator()` 方法的呼叫。 此方法位於 `VideoReviewAPI.cs` 中的 `videoReviewApi` 類別，如下所示。
 
 [!code-csharp[CreateVideoReviewInContentModerator](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=42-69)]
 
