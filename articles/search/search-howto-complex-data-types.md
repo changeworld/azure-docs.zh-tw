@@ -8,17 +8,17 @@ ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/07/2020
-ms.openlocfilehash: 1d380a41f5b20c52fefca9e68bb4ed858b3bf3a1
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 11/27/2020
+ms.openlocfilehash: b0b2dd9904682121c83b22b9029097e7ee57fb11
+ms.sourcegitcommit: 6b16e7cc62b29968ad9f3a58f1ea5f0baa568f02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422046"
+ms.lasthandoff: 11/28/2020
+ms.locfileid: "96303767"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中建立複雜資料類型的模型
 
-用來填入 Azure 認知搜尋索引的外部資料集可能會有許多圖形。 有時會包含階層式或嵌套子結構。 範例可能包含單一客戶的多個位址、單一 SKU 的多種色彩和大小、單一書籍的多位作者等等。 在模型化方面，您可能會看到這些結構稱為 *複雜* 、 *複合* 、 *複合* 或 *匯總* 資料類型。 此概念 Azure 認知搜尋使用的詞彙是 **複雜類型** 。 在 Azure 認知搜尋中，複雜型別會使用 **複雜欄位** 進行模型化。 複雜欄位是一個欄位，其中包含子欄位 (子欄位) 可以是任何資料類型，包括其他複雜類型。 其運作方式類似于程式設計語言中的結構化資料類型。
+用來填入 Azure 認知搜尋索引的外部資料集可能會有許多圖形。 有時會包含階層式或嵌套子結構。 範例可能包含單一客戶的多個位址、單一 SKU 的多種色彩和大小、單一書籍的多位作者等等。 在模型化方面，您可能會看到這些結構稱為 *複雜*、 *複合*、 *複合* 或 *匯總* 資料類型。 此概念 Azure 認知搜尋使用的詞彙是 **複雜類型**。 在 Azure 認知搜尋中，複雜型別會使用 **複雜欄位** 進行模型化。 複雜欄位是一個欄位，其中包含子欄位 (子欄位) 可以是任何資料類型，包括其他複雜類型。 其運作方式類似于程式設計語言中的結構化資料類型。
 
 複雜欄位代表檔中的單一物件，或是物件的陣列（視資料類型而定）。 類型的欄位 `Edm.ComplexType` 代表單一物件，而類型的欄位則 `Collection(Edm.ComplexType)` 代表物件的陣列。
 
@@ -62,8 +62,6 @@ Azure 認知搜尋原本就支援複雜類型和集合。 這些類型可讓您�
   ]
 }
 ```
-
-<name = "索引-複雜類型></a>
 
 ## <a name="indexing-complex-types"></a>編制複雜類型的索引
 
@@ -164,7 +162,7 @@ Azure 認知搜尋原本就支援複雜類型和集合。 這些類型可讓您�
 
 ## <a name="next-steps"></a>後續步驟
 
-在 [匯 **入資料** ] 嚮導中，嘗試 [旅館資料集](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)。 您將需要讀我檔案中提供的 Cosmos DB 連接資訊，才能存取資料。
+在 [匯 **入資料**] 嚮導中，嘗試 [旅館資料集](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)。 您將需要讀我檔案中提供的 Cosmos DB 連接資訊，才能存取資料。
 
 有了該資訊之後，您在嚮導中的第一個步驟就是建立新的 Azure Cosmos DB 資料來源。 此外，在嚮導中，當您進入 [目標索引] 頁面時，您會看到具有複雜類型的索引。 建立並載入此索引，然後執行查詢以瞭解新的結構。
 
