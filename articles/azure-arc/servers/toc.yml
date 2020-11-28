@@ -62,7 +62,7 @@
         - name: 登入 Azure Sentinel
           href: scenario-onboard-azure-sentinel.md
         - name: 登入 Azure 資訊安全中心
-          href: /security-center/quickstart-onboard-machines.md
+          href: /security-center/quickstart-onboard-machines
     - name: 疑難排解
       items:
         - name: 代理程式連線問題
