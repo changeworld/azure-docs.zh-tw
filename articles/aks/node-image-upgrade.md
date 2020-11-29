@@ -3,37 +3,69 @@ title: Azure Kubernetes Service (AKS) 節點映射升級
 description: 瞭解如何升級 AKS 叢集節點和節點集區上的映射。
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 211190228c1ea9c98004b55da96ad38808821d67
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.date: 11/25/2020
+ms.author: jpalma
+ms.openlocfilehash: e8214345bd1c328f0996f8aa8a2a8bb402a76e8d
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682378"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309591"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Azure Kubernetes Service (AKS) 節點映射升級
 
 AKS 支援升級節點上的映射，讓您能夠掌握最新的 OS 和執行時間更新。 AKS 每週提供一個新的映射與最新的更新，因此請定期升級節點的映射以取得最新的功能，包括 Linux 或 Windows 修補程式。 本文說明如何升級 AKS 叢集節點映射，以及如何更新節點集區映射，而不需要升級 Kubernetes 版本。
 
-如果您有興趣瞭解 AKS 提供的最新映射，請參閱 [AKS 版本](https://github.com/Azure/AKS/releases) 資訊以取得詳細資料。
+如需 AKS 所提供最新映射的詳細資訊，請參閱 [AKS 版本](https://github.com/Azure/AKS/releases)資訊。
 
 如需升級叢集之 Kubernetes 版本的詳細資訊，請參閱 [升級 AKS][upgrade-cluster]叢集。
 
-## <a name="limitations"></a>限制
+> [!NOTE]
+> AKS 叢集必須使用節點的虛擬機器擴展集。
 
-* AKS 叢集必須使用節點的虛擬機器擴展集。
+## <a name="check-if-your-node-pool-is-on-the-latest-node-image"></a>檢查您的節點集區是否位於最新節點映射上
 
-## <a name="install-the-aks-cli-extension"></a>安裝 AKS CLI 擴充功能
-
-在下一個核心 CLI 版本發行之前，您需要 *aks-preview* cli 擴充功能才能使用節點映射升級。 使用 [az extension add][az-extension-add] 命令，然後使用 [az extension update][az-extension-update] 命令檢查是否有任何可用的更新：
+您可以使用下列命令來查看節點集區可用的最新節點映射版本： 
 
 ```azurecli
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
+az aks nodepool get-upgrades \
+    --nodepool-name mynodepool \
+    --cluster-name myAKSCluster \
+    --resource-group myResourceGroup
 ```
+
+在輸出中，您可以在 `latestNodeImageVersion` 下列範例中看到類似的內容：
+
+```output
+{
+  "id": "/subscriptions/XXXX-XXX-XXX-XXX-XXXXX/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster/agentPools/nodepool1/upgradeProfiles/default",
+  "kubernetesVersion": "1.17.11",
+  "latestNodeImageVersion": "AKSUbuntu-1604-2020.10.28",
+  "name": "default",
+  "osType": "Linux",
+  "resourceGroup": "myResourceGroup",
+  "type": "Microsoft.ContainerService/managedClusters/agentPools/upgradeProfiles",
+  "upgrades": null
+}
+```
+
+因此， `nodepool1` 最新的節點映射可供使用 `AKSUbuntu-1604-2020.10.28` 。 您現在可以執行下列動作，將它與節點集區所使用的目前節點映射版本進行比較：
+
+```azurecli
+az aks nodepool show \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name mynodepool \
+    --query nodeImageVersion
+```
+
+輸出範例如下：
+
+```output
+"AKSUbuntu-1604-2020.10.08"
+```
+
+因此，在此範例中，您可以從目前的 `AKSUbuntu-1604-2020.10.08` 映射版本升級至最新版本 `AKSUbuntu-1604-2020.10.28` 。 
 
 ## <a name="upgrade-all-nodes-in-all-node-pools"></a>升級所有節點集區中的所有節點
 

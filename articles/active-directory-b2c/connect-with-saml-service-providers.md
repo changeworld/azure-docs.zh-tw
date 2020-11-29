@@ -12,12 +12,12 @@ ms.date: 11/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4426a305d72fdd86ee58b3f4a05153593515d4b5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7c6ba79a82fe3d291008f3317ddce7df4adcda0a
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949644"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309642"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中註冊 SAML 應用程式
 
@@ -443,7 +443,7 @@ https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/generic
 
 SAML 權杖是在成功登入之後 Azure AD B2C 所簽發的安全性權杖。 它包含使用者的相關資訊、權杖所適用的服務提供者、簽章和有效時間。 下表列出 Azure AD B2C 所簽發的 SAML 權杖中，您可以預期的宣告和屬性。
 
-|項目  |屬性  |注意  |
+|元素  |屬性  |備註  |
 |---------|---------|---------|
 |`<Response>`| `ID` | 自動產生之回應的唯一識別碼。 | 
 |`<Response>`| `InResponseTo` | 此訊息所回應的 SAML 要求識別碼。 | 
@@ -453,7 +453,7 @@ SAML 權杖是在成功登入之後 Azure AD B2C 所簽發的安全性權杖。 
 |`<Response>` `<Assertion>` `<Subject>` `<NameID>`     |         |權杖判斷提示資訊的相關主體，例如使用者物件識別碼。 這個值不可變，而且無法重新指派或重複使用。 它可用來安全地執行授權檢查，例如當權杖用於存取資源時。 根據預設，主體宣告會填入目錄中使用者的物件識別碼。|
 |`<Response>` `<Assertion>` `<Subject>` `<NameID>`     | `Format` | 表示以字串為基礎之識別碼資訊分類的 URI 參考。 預設會省略此屬性。 您可以設定信賴憑證者 [SubjectNamingInfo](relyingparty.md#subjectnaminginfo) 來指定 `NameID` 格式，例如 `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` 。 |
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` |`NotBefore` |權杖變成有效的時間。 時間值會以 UTC 編碼。 您的應用程式應使用此宣告來驗證權杖存留期的有效性。 若要變更權杖存留期的設定，請設定 `TokenNotBeforeSkewInSeconds` SAML 權杖問題技術設定檔的 [中繼資料](saml-issuer-technical-profile.md#metadata) 。 |
-|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | 權杖變成不正確時間。 您的應用程式應使用此宣告來驗證權杖存留期的有效性。 值為15分鐘之後 `NotBefore` ，無法變更。|
+|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | 權杖變成不正確時間。 您的應用程式應使用此宣告來驗證權杖存留期的有效性。 預設值為5分鐘之後 `NotBefore` ，可以藉由新增 `TokenLifeTimeInSeconds` SAML 權杖問題技術設定檔的 [中繼資料](saml-issuer-technical-profile.md#metadata) 來更新。|
 |`<Response>` `<Assertion>` `<Conditions>` `<AudienceRestriction>` `<Audience>` | |識別目標物件的 URI 參考。 它會識別權杖的預定收件者。 此值與 SAML 要求相同 `AssertionConsumerServiceURL` 。|
 |`<Response>``<Assertion>` `<AttributeStatement>` 的集合`<Attribute>` | | 判斷提示集合 (宣告) ，如信賴憑證者 [技術設定檔](relyingparty.md#technicalprofile) 輸出宣告中所設定。 您可以藉由設定輸出宣告的來設定判斷提示的名稱 `PartnerClaimType` 。 |
 

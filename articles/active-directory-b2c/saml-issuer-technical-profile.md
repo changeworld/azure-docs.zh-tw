@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 73c381624b69acb6fe7a6296a3153160812818bf
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: b4fb7c6fb3bbf02e5f1aba25c868e4a44e8507dd
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886408"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309625"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義 SAML 權杖簽發者的技術設定檔
 
@@ -60,6 +60,8 @@ Azure Active Directory B2C (Azure AD B2C) 會在處理每個驗證流程時發�
 | IssuerUri | 否 | 出現在 SAML 回應中的簽發者名稱。 此值應該與信賴憑證者應用程式中所設定的名稱相同。 |
 | XmlSignatureAlgorithm | 否 | Azure AD B2C 用來簽署 SAML 判斷提示的方法。 可能的值：`Sha256`、`Sha384`、`Sha512` 或 `Sha1`。 請確定您會使用相同的值來設定這兩端的簽章演算法。 僅使用您憑證支援的演算法。 若要設定 SAML 回應，請參閱信賴憑證者 [SAML 中繼資料](relyingparty.md#metadata)|
 |TokenNotBeforeSkewInSeconds| 否| 指定標示有效期間開始時間戳的扭曲（以整數表示）。 此數位愈高，有效期間的最長時間會從針對信賴憑證者發出宣告的時間開始。 例如，當 TokenNotBeforeSkewInSeconds 設定為60秒時，如果權杖是在 13:05:10 UTC 發出，則權杖有效期限為 13:04:10 UTC。 預設值為 0。 最大值為 3600 (一小時) 。 |
+|TokenLifeTimeInSeconds| 否| 指定 SAML 判斷提示的存留期。 此值是從上述 NotBefore 值 refernced 的秒數。預設值為300秒 (5 分鐘) 。 |
+
 
 ## <a name="cryptographic-keys"></a>密碼編譯金鑰
 

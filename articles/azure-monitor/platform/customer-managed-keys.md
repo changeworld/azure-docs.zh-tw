@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/18/2020
-ms.openlocfilehash: ac785b3ad534e80d4dd240d1a29ba5f6aa75e10a
-ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
+ms.openlocfilehash: 6264ea50f128764a5213a7a1fd9b8c47ddae8961
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96299034"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309676"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
 
@@ -76,7 +76,23 @@ Azure 入口網站中不支援 Customer-Managed 金鑰設定，而布建是透�
 
 ### <a name="asynchronous-operations-and-status-check"></a>非同步作業和狀態檢查
 
-部分設定步驟會以非同步方式執行，因為它們無法快速完成。 使用 REST 時，回應一開始會傳回 HTTP 狀態碼 200 (確定) 和標頭，並在接受時使用 *Azure AsyncOperation* 屬性：
+部分設定步驟會以非同步方式執行，因為它們無法快速完成。 `status`In 回應 contains 可以是下列其中之一： ' InProgress '、' 更新 '、' 刪除 '、' Succeeded '、' Failed '，包括錯誤碼。
+
+# <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
+
+N/A
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+N/A
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+N/A
+
+# <a name="rest"></a>[REST](#tab/rest)
+
+使用 REST 時，回應一開始會傳回 HTTP 狀態碼 200 (確定) 和標頭，並在接受時使用 *Azure AsyncOperation* 屬性：
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
@@ -87,7 +103,7 @@ GET https://management.azure.com/subscriptions/subscription-id/providers/microso
 Authorization: Bearer <token>
 ```
 
-`status`In 回應 contains 可以是下列其中之一： ' InProgress '、' 更新 '、' 刪除 '、' Succeeded '、' Failed '，包括錯誤碼。
+---
 
 ### <a name="allowing-subscription"></a>允許訂用帳戶
 
@@ -137,16 +153,25 @@ Authorization: Bearer <token>
 
 作業是非同步，可能需要一段時間才能完成。
 
+# <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
+
+N/A
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
 az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --key-name "key-name" --key-vault-uri "key-uri" --key-version "key-version"
 ```
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -KeyVaultUri "key-uri" -KeyName "key-name" -KeyVersion "key-version"
 ```
 
+# <a name="rest"></a>[REST](#tab/rest)
+
 ```rst
-PATCH https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/cluster-name"?api-version=2020-08-01
+PATCH https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/cluster-name?api-version=2020-08-01
 Authorization: Bearer <token> 
 Content-type: application/json
  
@@ -200,6 +225,8 @@ Content-type: application/json
 }
 ```
 
+---
+
 ### <a name="link-workspace-to-cluster"></a>將工作區連結至叢集
 
 您必須擁有工作區和叢集的「寫入」許可權，才能執行這項作業，包括下列動作：
@@ -250,15 +277,25 @@ Log Analytics 中使用的查詢語言是可表達的，且可以包含您新增
 
 將 *查詢* 的儲存體帳戶連結至您的工作區--儲存 *的搜尋* 查詢會儲存在您的儲存體帳戶中。 
 
+# <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
+
+N/A
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
 $storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
 az monitor log-analytics workspace linked-storage create --type Query --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Query -StorageAccountIds $storageAccount.Id
 ```
+
+# <a name="rest"></a>[REST](#tab/rest)
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Query?api-version=2020-08-01
@@ -276,21 +313,33 @@ Content-type: application/json
 }
 ```
 
+---
+
 設定之後，任何新 *儲存的搜尋* 查詢都會儲存在您的儲存體中。
 
 **設定 BYOS 的記錄警示查詢**
 
 將 *警示* 的儲存體帳戶連結至您的工作區-- *記錄-警示* 查詢會儲存在您的儲存體帳戶中。 
 
+# <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
+
+N/A
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
 $storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
 az monitor log-analytics workspace linked-storage create --type ALerts --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Alerts -StorageAccountIds $storageAccount.Id
 ```
+
+# <a name="rest"></a>[REST](#tab/rest)
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Alerts?api-version=2020-08-01
@@ -308,9 +357,12 @@ Content-type: application/json
 }
 ```
 
+---
+
 設定之後，任何新的警示查詢都會儲存在您的儲存體中。
 
 ## <a name="customer-lockbox-preview"></a>客戶加密箱 (preview) 
+
 加密箱可讓您控制在支援要求期間，核准或拒絕 Microsoft 工程師要求存取您的資料。
 
 在 Azure 監視器中，您可以控制連結至 Log Analytics 專用叢集之工作區中的資料。 加密密碼控制適用于儲存在 Log Analytics 專用叢集中的資料，其會在您的加密箱保護的訂用帳戶下，保持隔離在叢集的儲存體帳戶中。  
@@ -321,13 +373,23 @@ Content-type: application/json
 
 - **取得資源群組中的所有叢集**
   
+  # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
+
+  N/A
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
   ```azurecli
   az monitor log-analytics cluster list --resource-group "resource-group-name"
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name"
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
@@ -369,15 +431,27 @@ Content-type: application/json
   }
   ```
 
+  ---
+
 - **取得訂用帳戶中的所有叢集**
+
+  # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
+
+  N/A
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
   ```azurecli
   az monitor log-analytics cluster list
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Get-AzOperationalInsightsCluster
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
@@ -388,17 +462,29 @@ Content-type: application/json
     
   與「資源群組」中的「叢集」相同的回應，但在訂用帳戶範圍中。
 
+  ---
+
 - **更新叢集中的 *容量保留***
 
   當連結的工作區的資料量隨著時間變更，而且您想要適當地更新容量保留層級時。 遵循 [更新](#update-cluster-with-key-identifier-details) 叢集，並提供新的容量值。 它的範圍可以是每日1000到 3000 GB 的範圍，以及100的步驟。 如果是每天超過 3000 GB 的等級，則會觸及您的 Microsoft 連絡人來啟用它。 請注意，您不需要提供完整的 REST 要求主體，但應該包含 sku：
+
+  # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
+
+  N/A
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
   ```azurecli
   az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --sku-capacity daily-ingestion-gigabyte
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity daily-ingestion-gigabyte
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
@@ -413,6 +499,8 @@ Content-type: application/json
   }
   ```
 
+  ---
+
 - **更新叢集中的 *billingType***
 
   *BillingType* 屬性會決定叢集和其資料的計費屬性：
@@ -420,6 +508,20 @@ Content-type: application/json
   - 工作區 -- 計費會按比例歸類到裝載工作區的訂用帳戶
   
   遵循 [更新](#update-cluster-with-key-identifier-details) 叢集，並提供新的 billingType 值。 請注意，您不需要提供完整的 REST 要求本文，但應該包含 *billingType*：
+
+  # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
+
+  N/A
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+  N/A
+
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+  N/A
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
@@ -433,36 +535,67 @@ Content-type: application/json
   }
   ``` 
 
+  ---
+
 - **取消連結工作區**
 
   您需要工作區和叢集的「寫入」許可權，才能執行此操作。 您可以隨時從叢集取消連結工作區。 取消連結作業之後，會將新的內嵌資料儲存在 Log Analytics 儲存體中，並使用 Microsoft 金鑰進行加密。 只要以有效的 Key Vault 金鑰布建和設定叢集，您就可以查詢在取消連結前後內嵌至工作區的資料。
 
   這項作業是非同步，而且可能需要一段時間才能完成。
 
+  # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
+
+  N/A
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
   ```azurecli
   az monitor log-analytics workspace linked-service delete --resource-group "resource-group-name" --name "cluster-name" --workspace-name "workspace-name"
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Remove-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" -Name "workspace-name" -LinkedServiceName cluster
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rest
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-08-01
   Authorization: Bearer <token>
   ```
 
+  ---
+
   - **檢查工作區連結狀態**
   
   在工作區上執行取得作業，並觀察 [ *clusterResourceId* ] 屬性是否存在於 [ *功能*] 下的 [回應] 中。 連結的工作區會有 *clusterResourceId* 屬性。
+
+  # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
+
+  N/A
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
   ```azurecli
   az monitor log-analytics cluster show --resource-group "resource-group-name" --name "cluster-name"
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Get-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
+
+   ```rest
+  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>?api-version=2020-08-01
+  Authorization: Bearer <token>
+  ```
+
+  ---
 
 - **刪除叢集**
 
@@ -470,18 +603,30 @@ Content-type: application/json
   
   取消連結作業是非同步，最多可能需要90分鐘的時間才能完成。
 
+  # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
+
+  N/A
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
   ```azurecli
   az monitor log-analytics cluster delete --resource-group "resource-group-name" --name "cluster-name"
   ```
- 
+
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
   Authorization: Bearer <token>
   ```
+
+  ---
   
 - **復原您的叢集和資料** 
   

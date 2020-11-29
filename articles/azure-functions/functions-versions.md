@@ -4,12 +4,12 @@ description: Azure Functions 支援多個執行階段版本。 了解其間的�
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 12/09/2019
-ms.openlocfilehash: c67708b5c23667a7b0a1603b756d564b35fa0c3f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3997c5e79192f4386ee5280350620a748dd1489b
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533730"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309696"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 執行階段版本概觀
 
@@ -27,8 +27,6 @@ Azure Functions 目前支援三個版本的執行時間主機：1.x、2.x 和3.x
 下表指出每個執行階段版本目前支援的程式設計語言。
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
-
-如需詳細資訊，請參閱[支援的語言](supported-languages.md)。
 
 ## <a name="run-on-a-specific-version"></a><a name="creating-1x-apps"></a>在特定版本上執行
 

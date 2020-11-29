@@ -3,12 +3,12 @@ title: Azure 備份的新功能
 description: 瞭解 Azure 備份中的新功能。
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: e48a7df1e42591843c30b77026a4d8656773a57d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ba29ddea5d5f096640f2bfc012c44ab06bb3e131
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511444"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309659"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure 備份的新功能
 
@@ -19,6 +19,7 @@ Azure 備份不斷地改進和釋出新功能，以增強 Azure 中資料的保�
 ## <a name="updates-summary"></a>更新摘要
 
 - 2020 年 11 月
+  - [適用于 Azure 檔案共用 (AFS) 備份的 Azure Resource Manager 範本](#azure-resource-manager-template-for-afs-backup)
   - [Azure Vm 上的 SAP Hana 資料庫增量備份](#incremental-backups-for-sap-hana-databases)
 - 2020 年 9 月
   - [備份中心](#backup-center)
@@ -30,6 +31,12 @@ Azure 備份不斷地改進和釋出新功能，以增強 Azure 中資料的保�
   - [RHEL Azure 虛擬機器中的備份 SAP Hana](#backup-sap-hana-in-rhel-azure-virtual-machines)
   - [適用于備份資料的區域冗余儲存體 (ZRS) ](#zone-redundant-storage-zrs-for-backup-data)
   - [Azure Vm 中 SQL Server 和 SAP Hana 工作負載的虛刪除](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="azure-resource-manager-template-for-afs-backup"></a>適用于 AFS 備份的 Azure Resource Manager 範本
+
+Azure 備份現在支援使用 Azure Resource Manager (ARM) 範本來設定現有 Azure 檔案共用的備份。 此範本會針對復原服務保存庫和備份原則指定適當的詳細資料，以設定現有 Azure 檔案共用的保護。 它會選擇性地建立新的復原服務保存庫和備份原則，並將包含檔案共用的儲存體帳戶註冊到復原服務保存庫。
+
+如需詳細資訊，請參閱 [Azure 備份的 Azure Resource Manager 範本](backup-rm-template-samples.md)。
 
 ## <a name="incremental-backups-for-sap-hana-databases"></a>SAP Hana 資料庫的增量備份
 

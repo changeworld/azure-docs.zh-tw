@@ -7,17 +7,17 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: bd929d06bca370ffab53ce2023188bc12a1d8bd1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d2e93ccfaf3ff2c5b74ceef1f6a274f71ee52c4e
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186434"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309829"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure 監視器 (預覽中的 Log Analytics 工作區資料匯出) 
 Azure 監視器中的 Log Analytics 工作區資料匯出可讓您從 Log Analytics 工作區中選取的資料表持續將資料匯出到 Azure 儲存體帳戶，或在收集時 Azure 事件中樞。 本文提供這項功能的詳細資料，以及在工作區中設定資料匯出的步驟。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 針對您的 Log Analytics 工作區設定資料匯出後，任何傳送至工作區中所選資料表的新資料都會以近乎即時的方式自動匯出到您的儲存體帳戶，或您的事件中樞。
 
 ![資料匯出總覽](media/logs-data-export/data-export-overview.png)
@@ -58,7 +58,7 @@ Log Analytics 工作區資料匯出會持續從 Log Analytics 工作區匯出資
 ## <a name="data-completeness"></a>資料完整性
 當目的地無法使用時，資料匯出會繼續重試傳送資料最多30分鐘。 如果在30分鐘後仍無法使用，則會捨棄資料，直到目的地變成可用為止。
 
-## <a name="cost"></a>成本
+## <a name="cost"></a>Cost
 資料匯出功能目前沒有額外的費用。 未來將會宣佈資料匯出的定價，以及開始計費之前所提供的通知。 如果您選擇在通知期間之後繼續使用資料匯出，將會以適用的費率向您收費。
 
 ## <a name="export-destinations"></a>匯出目的地
@@ -117,6 +117,10 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 ### <a name="create-or-update-data-export-rule"></a>建立或更新資料匯出規則
 資料匯出規則會定義要針對一組資料表匯出到單一目的地的資料。 您可以為每個目的地建立規則。
 
+
+# <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
+
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -203,6 +207,10 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 ## <a name="view-data-export-configuration"></a>查看資料匯出設定
 
+# <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
+
+N/A
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 使用下列命令，以使用 CLI 來查看資料匯出規則的設定。
@@ -221,6 +229,10 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ---
 
 ## <a name="disable-an-export-rule"></a>停用匯出規則
+
+# <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
+
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -256,6 +268,10 @@ Content-type: application/json
 
 ## <a name="delete-an-export-rule"></a>刪除匯出規則
 
+# <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
+
+N/A
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 使用下列命令，以使用 CLI 來刪除資料匯出規則。
@@ -274,6 +290,10 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 ---
 
 ## <a name="view-all-data-export-rules-in-a-workspace"></a>查看工作區中的所有資料匯出規則
+
+# <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
+
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
