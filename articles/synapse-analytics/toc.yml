@@ -98,6 +98,8 @@
           items:
             - name: 安全性基準
               href: security-baseline.md
+            - name: 加密
+              href: ./security/workspaces-encryption.md
             - name: 網路安全性
               items:
                 - name: Synapse 工作區 IP 防火牆規則
@@ -976,6 +978,8 @@
               href: ../data-factory/data-factory-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 連接器疑難排解
               href: ../data-factory/connector-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: 持續整合及部署
+              href: ../data-factory/ci-cd-github-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 安全性和存取控制
               href: ../data-factory/security-and-access-control-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 自我裝載整合執行階段疑難排解
@@ -1028,6 +1032,9 @@
       href: 'https://github.com/Azure-Samples/Synapse'
     - name: 系統檢視表
       href: sql/reference-tsql-system-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
     - name: T-SQL
       items:
         - name: 完整參考

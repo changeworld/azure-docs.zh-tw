@@ -6,12 +6,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 84f04d2f1f8c9b54a1f2a2a13cc97954ac5add90
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 038d0ec817d4f81371546e8d7aa4b48b299c8d98
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995313"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302560"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>將 Hyper-V VM 遷移至 Azure 
 
@@ -43,23 +43,9 @@ ms.locfileid: "95995313"
 2. [檢閱](migrate-support-matrix-hyper-v-migration.md#hyper-v-host-requirements) 移轉時的 Hyper-V 主機需求，以及進行 VM 移轉時 Hyper-V 主機和叢集需要存取的 Azure URL。
 3. [檢閱](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms)您要遷移至 Azure 的 Hyper-V VM 有何需求。
 4. 我們建議您先[評估 Hyper-V VM](tutorial-assess-hyper-v.md)，再將其遷移至 Azure，但您不必這麼做。
+5. 移至已建立的專案，或 [建立新的專案](https://docs.microsoft.com/azure/migrate/create-manage-projects)
+6. 驗證 Azure 帳戶的權限 - 您的 Azure 帳戶必須有建立 VM 以及寫入至 Azure 受控磁碟的權限。
 
-   
-## <a name="add-the-azure-migrateserver-migration-tool"></a>新增 Azure Migrate：伺服器移轉工具
-
-新增 Azure Migrate：伺服器移轉工具。 如果您還沒有 Azure Migrate 專案，請[先加以建立](how-to-add-tool-first-time.md)才可設定 Azure Migrate 專案。 您會在建立專案時新增 Azure Migrate：伺服器移轉工具。
-
-如果您已設定專案，請新增工具，如下所示：
-
-1. 在 Azure Migrate 專案中，按一下 [概觀]。 
-2. 在 [探索、評估和遷移伺服器] 底下，按一下 [評估和遷移伺服器]。
-3. 在 [移轉工具] 中，選取 [當您準備好遷移時按一下此處來新增移轉工具]。
-
-    ![選取工具](./media/tutorial-migrate-hyper-v/select-migration-tool.png)
-
-4. 在工具清單中選取 **[Azure Migrate：伺服器移轉]**  > [新增工具]
-
-    ![伺服器移轉工具](./media/tutorial-migrate-hyper-v/server-migration-tool.png)
 
 ## <a name="download-and-install-the-provider"></a>下載並安裝提供者
 
@@ -120,7 +106,7 @@ ms.locfileid: "95995313"
     - 如果您不需要為已遷移的電腦提供任何一種可用性設定，則不需要任何基礎結構備援選項。
 10. 在 [Azure Hybrid Benefit] 中：
 
-    - 如果您不想套用 Azure Hybrid Benefit，請選取 [否]。 然後按 [下一步] 。
+    - 如果您不想套用 Azure Hybrid Benefit，請選取 [否]。 然後按 [下一步]  。
     - 如果您有 Windows Server 機器涵蓋於有效的軟體保證或 Windows Server 訂用帳戶下，且您想要將權益套用至要移轉的機器，請選取 [是]。 然後按一下 [下一步]  。
 
     ![目標設定](./media/tutorial-migrate-hyper-v/target-settings.png)

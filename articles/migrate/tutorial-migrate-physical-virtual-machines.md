@@ -4,12 +4,12 @@ description: 本文說明如何使用 Azure Migrate 將實體機器遷移至 Azu
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: 67ea5800885b4edb16581f22c199d139053af495
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c783cb22ce8a31d346e98c53dee365fa59b73b8a
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018931"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302900"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>將機器視為實體伺服器遷移至 Azure
 
@@ -52,7 +52,7 @@ ms.locfileid: "96018931"
 
 **Task** | **詳細資料**
 --- | ---
-**建立 Azure Migrate 專案** | 您的 Azure 帳戶需要參與者或擁有者權限，才能建立專案。
+**建立 Azure Migrate 專案** | 您的 Azure 帳戶需要參與者或擁有者權限，才能[建立新專案](https://docs.microsoft.com/azure/migrate/create-manage-projects)。
 **驗證您 Azure 帳戶的權限** | 您的 Azure 帳戶必須有建立 VM 以及寫入至 Azure 受控磁碟的權限。
 
 
@@ -110,28 +110,6 @@ ms.locfileid: "96018931"
 
 > [!NOTE]
 > 複寫設備不應該安裝在您想要複寫的來源機器上，也不應該安裝在您先前已安裝的 Azure Migrate 探索和評估設備上。
-
-## <a name="add-the-server-migration-tool"></a>新增伺服器移轉工具
-
-設定 Azure Migrate 專案，然後將伺服器移轉工具新增至其中。
-
-1. 在 Azure 入口網站 > [所有服務] 中，搜尋 **Azure Migrate**。
-2. 在 [服務] 下，選取 [Azure Migrate]。
-3. 在 [概觀] 中，按一下 [評估和遷移伺服器]。
-4. 在 [探索、評估和遷移伺服器] 下方，按一下 [評估和遷移伺服器]。
-
-    ![探索和評估伺服器](./media/tutorial-migrate-physical-virtual-machines/assess-migrate.png)
-
-5. 在 [探索、評估和遷移伺服器] 中，按一下 [新增工具]。
-6. 在 [Migrate 專案] 中選取您的 Azure 訂用帳戶，並建立資源群組 (如果您還沒有的話)。
-7. 在 [專案詳細資料] 中指定專案名稱，以及您要在其中建立專案的地理位置，然後按 [下一步]。 請檢閱[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府雲端](migrate-support-matrix.md#supported-geographies-azure-government)支援的地理位置。
-
-    ![建立 Azure Migrate 專案](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
-
-8. 在 [選取評量工具] 中，選取 [暫時跳過新增評量工具] > [下一步]。
-9. 在 [選取移轉工具] 中，選取 **[Azure Migrate：伺服器移轉]**  > [下一步]。
-10. 在 [檢閱 + 新增工具] 中檢閱設定，然後按一下 [新增工具]
-11. 新增工具之後，工具會出現在 Azure Migrate 專案 > [伺服器] > [移轉工具] 中。
 
 ## <a name="set-up-the-replication-appliance"></a>設定複寫設備
 

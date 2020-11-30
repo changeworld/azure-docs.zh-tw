@@ -75,10 +75,14 @@
       href: ../../backup/security-baseline.md
     - name: Azure Bastion 安全性基準
       href: ../../bastion/security-baseline.md
+    - name: Azure Bot Network 安全性基準
+      href: /azure/bot-service/security-baseline?view=azure-bot-service-4.0
     - name: Azure Cache for Redis 安全性基準
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: Azure 認知搜尋安全性基準
       href: ../../search/security-baseline.md
+    - name: Azure Cosmos DB 安全性基準
+      href: ../../cosmos-db/security-baseline.md
     - name: Azure 資料箱安全性基準
       href: ../../databox/security-baseline.md
     - name: Azure 資料總管安全性基準
@@ -91,18 +95,20 @@
       href: ../../mysql/security-baseline.md
     - name: 適用於 MariaDB 的 Azure 資料庫安全性基準
       href: ../../mariadb/security-baseline.md
-    - name: 適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器安全性基準
-      href: ../../postgresql/security-baseline.md
     - name: 適用於 PostgreSQL 的 Azure 資料庫 - 超大規模資料庫安全性基準
       href: ../../postgresql/postgresql-hyperscale-security-baseline.md
+    - name: 適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器安全性基準
+      href: ../../postgresql/security-baseline.md
     - name: Azure Databricks 安全性基準
       href: /azure/databricks/scenarios/security-baseline
+    - name: Azure DDOS 保護標準安全性基準
+      href: ../fundamentals/ddos-protection-security-baseline.md
     - name: 適用於 Azure Defender 的 IoT 安全性基準
       href: ../../defender-for-iot/security-baseline.md
-    - name: Azure DNS 安全性基準
-      href: ../../dns/security-baseline.md
     - name: Azure DevTest Labs 安全性基準
       href: ../../devtest-labs/security-baseline.md
+    - name: Azure DNS 安全性基準
+      href: ../../dns/security-baseline.md
     - name: Azure 防火牆安全性基準
       href: ../../firewall/security-baseline.md
     - name: Azure 防火牆管理員安全性基準
@@ -115,18 +121,16 @@
       href: ../../hpc-cache/security-baseline.md
     - name: Azure 資訊保護安全性基準
       href: /azure/information-protection/security-baseline
-    - name: Azure IoT 中樞安全性基準
-      href: ../../iot-hub/security-baseline.md
     - name: Azure Kubernetes Service 安全性基準
       href: ../../aks/security-baseline.md
     - name: Azure Lighthouse 安全性基準
       href: ../../lighthouse/security-baseline.md
     - name: Azure Load Balancer 安全性基準
       href: ../../load-balancer/security-baseline.md
-    - name: 適用於安全性基準的 Azure 監視器
-      href: ../../azure-monitor/security-baseline.md
     - name: Azure Machine Learning 安全性基準
       href: ../../machine-learning/security-baseline.md
+    - name: 適用於安全性基準的 Azure 監視器
+      href: ../../azure-monitor/security-baseline.md
     - name: Azure Migrate Learning 安全性基準
       href: ../../migrate/security-baseline.md
     - name: Azure 原則安全性基準
@@ -141,12 +145,12 @@
       href: ../../azure-resource-manager/management/security-baseline.md
     - name: Azure Sentinel 安全性基準
       href: ../../sentinel/security-baseline.md
+    - name: Azure SignalR Service 安全性基準
+      href: ../../azure-signalr/security-baseline.md
     - name: Azure SQL Database 安全性基準
       href: ../../azure-sql/database/security-baseline.md
     - name: Azure 儲存體安全性基準
       href: ../../storage/common/security-baseline.md
-    - name: Azure 流量管理員安全性基準
-      href: ../../traffic-manager/security-baseline.md
     - name: Azure Web 應用程式防火牆安全性基準
       href: ../../web-application-firewall/security-baseline.md
     - name: 批次安全性基準
@@ -163,16 +167,12 @@
       href: ../../container-registry/security-baseline.md
     - name: 內容傳遞網路安全性基準
       href: ../../cdn/security-baseline.md
-    - name: Cosmos DB 安全性基準
-      href: ../../cosmos-db/security-baseline.md
     - name: 成本管理安全性基準
       href: ../../cost-management-billing/security-baseline.md
     - name: 客戶加密箱安全性基準
       href: ../fundamentals/customer-lockbox-security-baseline.md
     - name: Data Lake Analytics 安全性基準
       href: ../../data-lake-analytics/security-baseline.md
-    - name: DDOS 保護安全性基準
-      href: ../fundamentals/ddos-protection-security-baseline.md
     - name: 事件方格安全性基準
       href: ../../event-grid/security-baseline.md
     - name: 事件中樞安全性基準
@@ -181,6 +181,8 @@
       href: ../../expressroute/security-baseline.md
     - name: HDInsight 安全性基準
       href: ../../hdinsight/security-baseline.md
+    - name: IoT 中樞安全性基準
+      href: ../../iot-hub/security-baseline.md
     - name: Key Vault 安全性基準
       href: ../../key-vault/general/security-baseline.md
     - name: Logic Apps 安全性基準
@@ -201,6 +203,8 @@
       href: ../../stream-analytics/security-baseline.md
     - name: Synapse Analytics 安全性基準
       href: ../../synapse-analytics/security-baseline.md
+    - name: 流量管理員安全性基準
+      href: ../../traffic-manager/security-baseline.md
     - name: 虛擬機器擴展集安全性基準
       href: ../../virtual-machine-scale-sets/security-baseline.md
     - name: 虛擬機器 Linux 安全性基準

@@ -45,6 +45,10 @@
           href: manage-assets-quickstart.md
         - name: 使用入口網站加密內容
           href: encrypt-content-quickstart.md
+    - name: 使用 ARM 範本
+      items:
+        - name: 使用 ARM 建立帳戶
+          href: quickstart-arm-template-account.md
 - name: 教學課程
   items:
     - name: .NET

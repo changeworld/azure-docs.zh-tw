@@ -752,6 +752,8 @@
           href: connector-troubleshoot-guide.md
         - name: 資料流程
           href: data-flow-troubleshoot-guide.md
+        - name: 持續整合及部署
+          href: ci-cd-github-troubleshoot-guide.md
         - name: 安全性和存取控制
           href: security-and-access-control-troubleshoot-guide.md
         - name: 自我裝載整合執行階段

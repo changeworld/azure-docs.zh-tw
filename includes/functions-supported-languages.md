@@ -6,15 +6,15 @@ author: ggailey777
 manager: cfowler
 ms.service: azure-functions
 ms.topic: include
-ms.date: 12/09/2019
+ms.date: 11/27/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 23f342b7e6151657a93af6c83f7b73d102167bd8
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 78b94dad03200d25bd29861acc92b10037a81238
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94633443"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309695"
 ---
 |Language                                 |1.x         |2.x| 3.x |
 |-----------------------------------------|------------|---| --- |
@@ -28,4 +28,5 @@ ms.locfileid: "94633443"
 
 <sup>*</sup> 透過轉譯成 JavaScript 而支援。
 
+如需支援語言版本的詳細資訊，請參閱特定語言開發人員指南一文。   
 如需語言支援變更規劃的相關資訊，請參閱 [Azure 藍圖](https://azure.microsoft.com/roadmap/?tag=functions)。
