@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/18/2020
-ms.openlocfilehash: 6264ea50f128764a5213a7a1fd9b8c47ddae8961
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: c2a9dbb5fa821d408835cd1bcbf3e6afdade36e1
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309676"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317481"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
 
@@ -568,7 +568,7 @@ Content-type: application/json
 
   ---
 
-  - **檢查工作區連結狀態**
+- **檢查工作區連結狀態**
   
   在工作區上執行取得作業，並觀察 [ *clusterResourceId* ] 屬性是否存在於 [ *功能*] 下的 [回應] 中。 連結的工作區會有 *clusterResourceId* 屬性。
 

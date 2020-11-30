@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 3f9779d2676d4d2b67efff37118d109664b84bd5
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8633aba2f7cda5dec4a48e9f7132283f8235f746
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184598"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317515"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>使用 Azure 私人連結將網路安全地連線到 Azure 監視器
 
@@ -79,10 +79,10 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 * AMPLS 物件最多可連接至10個私人端點。
 
 在下列拓撲中：
-* 每個 VNet 都會連接到1個 AMPLS 物件，因此無法連線到其他 AMPLSs。
-* AMPLS B 會連接到 2 Vnet：使用其可能的私人端點連接的2/10。
-* AMPLS 會連接到2個工作區和1個應用程式深入解析元件：使用3/50 的可能 Azure 監視器資源。
-* 工作區2會連接到 AMPLS A 和 AMPLS B：使用2/5 的可能 AMPLS 連接。
+* 每個 VNet 只能連接到 **1** 個 AMPLS 物件。
+* AMPLS B 會連接到兩個 Vnet (VNet2 和 VNet3) 的私人端點，並使用 2/10 (20% ) 其可能的私人端點連線。
+* AMPLS 可連接至兩個工作區和一個 Application insights 元件，並使用 3/50 (6% ) 其可能的 Azure 監視器資源連接。
+* Workspace2 會連接到 AMPLS A 和 AMPLS B，並使用 2/5 (40% ) 其可能的 AMPLS 連接。
 
 ![AMPLS 限制的圖表](./media/private-link-security/ampls-limits.png)
 
@@ -103,9 +103,9 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 
 6. 讓驗證通過，然後按一下 [建立]。
 
-## <a name="connect-azure-monitor-resources"></a>連線 Azure 監視器資源
+### <a name="connect-azure-monitor-resources"></a>連線 Azure 監視器資源
 
-您可以將您的 AMPLS 先連線到私人端點，再連線到 Azure 監視器資源，或是反向操作，但如果您從 Azure 監視器資源開始，連線過程會更快。 以下是我們的做法，將 Azure 監視器 Log Analytics 工作區和 Application Insights 元件連線到 AMPLS。
+將 Azure 監視器資源 (Log Analytics 工作區和 Application Insights) 元件連線到您的 AMPLS。
 
 1. 在您的 Azure 監視器私人連結範圍中，按一下左側功能表中的 [Azure 監視器資源]。 按一下 [新增]  按鈕。
 2. 新增工作區或元件。 按一下 [新增] 按鈕會顯示一個對話方塊，您可以在其中選取 Azure 監視器資源。 您可以瀏覽您的訂用帳戶和資源群組，也可以輸入名稱將其篩選出來。 選取工作區或元件，然後按一下 [套用] 將其新增至您的範圍。
@@ -158,16 +158,19 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 
 ## <a name="configure-log-analytics"></a>設定 Log Analytics
 
-移至 Azure 入口網站。 在您的 Log Analytics 工作區資源中，左側會有功能表項目 **網路隔離** 。 您可以從這個功能表控制兩種不同的狀態。 
+移至 Azure 入口網站。 在您的 Log Analytics 工作區資源中，左側會有功能表項目 **網路隔離** 。 您可以從這個功能表控制兩種不同的狀態。
 
 ![Log Analytics 網路隔離](./media/private-link-security/ampls-log-analytics-lan-network-isolation-6.png)
 
-首先，您可以將此 Log Analytics 資源連線到您可存取的任何 Azure 監視器私人連結範圍。 按一下 [新增]，然後選取 [Azure 監視器私人連結範圍]。  按一下 [套用] 以與之連線。 所有連線的範圍都會顯示在此畫面中。 進行此連線可以使連線的虛擬網路中的網路流量連線到此工作區。 建立連線的效果與從範圍進行連線相同，如同我們在[連線 Azure 監視器資源](#connect-azure-monitor-resources)中所做的。  
+### <a name="connected-azure-monitor-private-link-scopes"></a>已連線 Azure 監視器 Private Link 範圍
+所有連線到此工作區的範圍都會顯示在此畫面中。 連線至範圍 (AMPLSs) 可讓連線到每個 AMPLS 的虛擬網路的網路流量抵達此工作區。 透過這裡建立連線的效果與在範圍上進行設定相同，就像我們在 [連接 Azure 監視器資源](#connect-azure-monitor-resources)時所做的一樣。 若要加入新的連接，請按一下 [ **新增** ]，然後選取 [Private Link 範圍] Azure 監視器。 按一下 [套用] 以與之連線。 請注意，工作區可以連接到5個 AMPLS 物件，如 [考慮限制](#consider-limits)中所述。 
 
-然後，您可以控制如何從上方所列的私人連結範圍外部連線到此資源。 如果您將 [允許擷取的公用網路存取] 設為 [否]，則連線範圍以外的電腦就無法將資料上傳到此工作區。 如果您將 [允許查詢的公用網路存取] 設為 [否]，則範圍以外的電腦就無法存取此工作區中的資料。 該資料包括對活頁簿、儀表板、以查詢 API 為基礎的用戶端體驗、Azure 入口網站中的深入解析等等的存取。 在 Azure 入口網站外執行的體驗，而且查詢 Log Analytics 資料也必須在私人連結的 VNET 內執行。
+### <a name="access-from-outside-of-private-links-scopes"></a>從 private links 範圍外部存取
+此頁面下半部的設定會控制從公用網路的存取，這表示未透過上列範圍連線的網路。 如果您將 [允許擷取的公用網路存取] 設為 [否]，則連線範圍以外的電腦就無法將資料上傳到此工作區。 如果您將 [ **允許查詢的公用網路存取** ] 設定為 [ **否**]，則範圍外的電腦將無法存取此工作區中的資料，這表示它將無法查詢工作區資料。 這包括活頁簿、儀表板、以 API 為基礎的用戶端體驗中的查詢、Azure 入口網站中的深入解析等等。 在 Azure 入口網站外執行的體驗，而且查詢 Log Analytics 資料也必須在私人連結的 VNET 內執行。
 
-以這種方式限制存取並不適用于 Azure Resource Manager，因此有下列限制：
-* 存取資料-雖然從公用網路封鎖查詢適用于大部分的 Log Analytics 體驗，但有些體驗會透過 Azure Resource Manager 來查詢資料，因此將無法查詢資料，除非將 Private Link 設定套用至 Resource Manager， (功能很快就會推出) 。 例如 Azure 監視器的解決方案、活頁簿和見解，以及 LogicApp 連接器。
+### <a name="exceptions"></a>例外狀況
+如上所述，限制存取權並不適用于 Azure Resource Manager，因此有下列限制：
+* 存取資料-雖然封鎖/允許來自公用網路的查詢適用于大部分的 Log Analytics 體驗，但有些體驗會透過 Azure Resource Manager 來查詢資料，因此將無法查詢資料，除非 Private Link 設定也套用至 Resource Manager， (功能即將在) 中推出。 例如 Azure 監視器的解決方案、活頁簿和見解，以及 LogicApp 連接器。
 * 工作區管理-工作區設定和設定變更 (包括開啟或關閉這些存取設定) 是由 Azure Resource Manager 管理。 使用適當的角色、許可權、網路控制項和審核來限制對工作區管理的存取。 如需詳細資訊，請參閱 [Azure 監視器的角色、權限和安全性](roles-permissions-security.md)。
 
 > [!NOTE]

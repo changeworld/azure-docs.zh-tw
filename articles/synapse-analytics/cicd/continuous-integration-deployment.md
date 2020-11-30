@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 7b77a47acba6180df4a067887b79d8cdc0f56df6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5dbd49312b58dc656e2239e8a0a4acea614023de
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185074"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317117"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure Synapse 工作區的持續整合和傳遞
 
@@ -25,7 +25,7 @@ ms.locfileid: "96185074"
 
 本文將概述如何使用 Azure 發行管線，將 Synapse 工作區的部署自動化至多個環境。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 -   用於開發的工作區已使用 Studio 中的 Git 儲存機制進行設定，請參閱 [Synapse Studio 中的原始檔控制](source-control.md)。
 -   已準備好執行發行管線的 Azure DevOps 專案。
@@ -91,15 +91,25 @@ ms.locfileid: "96185074"
 
 ## <a name="set-up-a-stage-task-for-artifacts-deployment"></a>設定構件部署的階段工作 
 
-使用 [Synapse Workspace Build & Release](https://marketplace.visualstudio.com/items?itemName=PraveenMathamsetty.synapsecicd-deploy) 工作，在 Synapse 工作區中部署其他專案，例如資料集、SQL 腳本、筆記本、spark 作業定義、資料流程、管線、連結服務、認證和 IR (Integration Runtime) 。  
+使用 [Synapse 工作區部署](https://marketplace.visualstudio.com/items?itemName=AzureSynapseWorkspace.synapsecicd-deploy) 延伸模組，在 Synapse 工作區中部署其他專案，例如資料集、SQL 腳本、筆記本、spark 作業定義、資料流程、管線、連結服務、認證和 IR (Integration Runtime) 。  
+
+1. 從 **Azure DevOps marketplace** (搜尋並取得延伸模組 https://marketplace.visualstudio.com/azuredevops) 
+
+     ![取得延伸模組](media/get-extension-from-market.png)
+
+1. 請選取要安裝擴充功能的組織。 
+
+     ![安裝擴充功能](media/install-extension.png)
 
 1. 確定已將訂用帳戶的許可權授與 Azure DevOps 管線的服務主體，而且也指派為目標工作區的工作區系統管理員。 
 
-1. 建立新的工作。 搜尋 **Synapse Workspace Build & Release**，然後選取 [ **新增**]。
+1. 建立新的工作。 搜尋 **Synapse 工作區部署**，然後選取 [ **新增**]。
+
+     ![新增延伸模組](media/add-extension-task.png)
 
 1.  在工作中，提供 **workspace_publish** 的相關 git 存放庫資訊，然後選取目標工作區的資源群組、區域、名稱和雲端環境。 如有需要，請提供參數和值。
 
-    ![synapse 工作區部署](media/create-release-artifacts-deployment.png)
+    ![Synapse 工作區部署](media/create-release-artifacts-deployment.png)
 
 > [!IMPORTANT]
 > 在 CI/CD 案例中，不同環境中的整合執行階段 (IR) 類型必須相同。 例如，如果您在開發環境中有自我裝載 IR，則相同的 IR 在其他環境 (例如測試和生產環境) 中也必須屬於自我裝載類型。 同樣地，如果您要跨多個階段共用整合執行階段，則必須將所有環境中的整合執行階段設定為連結自我裝載，例如開發、測試和生產環境。

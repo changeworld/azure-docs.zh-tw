@@ -6,16 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 89cec12804f6fd2b8a3885248c42646d6c6dbb13
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 9f8004b41e8048dfc97fb61bb67a634963c0c575
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186553"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317549"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure 監視器中的記錄警示
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 記錄警示是 [Azure 警示](./alerts-overview.md)中支援的其中一種警示類型。 記錄警示可讓使用者使用 [Log Analytics](../log-query/log-analytics-tutorial.md) 查詢來評估每個設定頻率的資源記錄，並根據結果引發警示。 規則可以使用 [動作群組](./action-groups.md)觸發一或多個動作。
 
@@ -25,7 +25,7 @@ ms.locfileid: "96186553"
 > [!NOTE]
 > API 版本 `2020-05-01-preview` 和以資源為中心的記錄警示目前不會產生額外費用。  預覽版中的功能價格將于未來宣佈，並在開始計費之前提供通知。 如果您選擇在通知期間之後繼續使用新的 API 版本和以資源為中心的記錄警示，將會以適用的費率計費。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 記錄警示會對 Log Analytics 資料執行查詢。 首先，您應該開始 [收集記錄資料](resource-logs.md) 並查詢記錄資料中的問題。 您可以使用 Log Analytics 中的 [警示查詢範例主題](../log-query/example-queries.md) ，來瞭解您可以探索的內容，或 [開始撰寫您自己的查詢](../log-query/log-analytics-tutorial.md)。
 
@@ -90,7 +90,7 @@ requests
 | where resultCode == "500"
 ```
 
-- **時間週期：** 15 分鐘
+- **時間週期/匯總細微性：** 15 分鐘
 - **警示頻率：** 15 分鐘
 - **閾值：** 大於 0
 
@@ -145,7 +145,7 @@ requests
 - **資源識別碼資料行：** 依警示規則中的資源識別碼資料行分割 _ResourceId (只適用于目前) 的訂用帳戶和資源群組
 - **維度/匯總于：**
   - 電腦 = VM1、VM2 (警示規則定義中的篩選值目前無法用於工作區和 Application Insights。 篩選查詢文字。 ) 
-- **時間週期：** 15 分鐘
+- **時間週期/匯總細微性：** 15 分鐘
 - **警示頻率：** 15 分鐘
 - **閾值：** 大於 0
 
@@ -182,11 +182,11 @@ requests
 
 請參閱此警示評估範例：
 
-| 時間    | 記錄條件評估 | 結果 
+| Time    | 記錄條件評估 | 結果 
 | ------- | ----------| ----------| ------- 
 | 00:05 | false | 不會引發警示。 未呼叫任何動作。
-| 00:10 | true  | 引發警示，並呼叫動作群組。 新的警示狀態為 [作用中]。
-| 00:15 | true  | 引發警示，並呼叫動作群組。 新的警示狀態為 [作用中]。
+| 00:10 | TRUE  | 引發警示，並呼叫動作群組。 新的警示狀態為 [作用中]。
+| 00:15 | TRUE  | 引發警示，並呼叫動作群組。 新的警示狀態為 [作用中]。
 | 00:20 | false | 不會引發警示。 未呼叫任何動作。 舊警示狀態維持使用中狀態。
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>記錄警示的定價和計費
