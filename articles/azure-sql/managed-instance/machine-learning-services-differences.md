@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 10/26/2020
-ms.openlocfilehash: adf454ac697f8cabf4256ebfc5baa5d0d1c76264
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c806c0a13f9f5f13588b780054d1f285beb44802
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782462"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324528"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>Azure SQL 受控執行個體和 SQL Server 中機器學習服務的主要差異
 
@@ -55,7 +55,7 @@ SQL 受控執行個體中的 Machine Learning 服務和 SQL Server 同時支援 
 Python 和 R 套件管理在 SQL 受控執行個體和 SQL Server 之間的運作方式不同。 這些差異包括：
 
 - 對於依賴外部執行階段 (如 Java) 或需要 OS API 安裝或使用存取權的套件並不支援。
-- 封裝可以執行輸出網路呼叫 (從先前的預覽) 變更。 您可以在 [網路安全性群組](/azure/virtual-network/network-security-groups-overview) 層級設定正確的輸出安全性規則，以啟用輸出網路呼叫。
+- 封裝可以執行輸出網路呼叫 (從先前的預覽) 變更。 您可以在 [網路安全性群組](../../virtual-network/network-security-groups-overview.md) 層級設定正確的輸出安全性規則，以啟用輸出網路呼叫。
 
 如需管理 Python 和 R 套件的詳細資訊，請參閱：
 

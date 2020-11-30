@@ -4,12 +4,12 @@ description: 了解如何使用 Java 開發函式。
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 9679f6030ac889ac442a40cd852f5cc17f505756
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 1ffbd760ae75605d75652b29d379420d6946aa8f
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422513"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326449"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 開發人員指南
 
@@ -45,15 +45,27 @@ JAVA 函式是 `public` 方法，以註釋 `@FunctionName` 裝飾。 此方法�
 
 ### <a name="project-scaffolding"></a>建立專案的結構
 
-如果您偏好從終端機執行命令列開發，則針對以 JAVA 為基礎的函式專案，使用 `Apache Maven` 原型來建立結構最簡單。 Azure Functions 的 JAVA Maven 原型已發佈於下列 _groupId_ : _artifactId_ : [com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/) 之下。 
+如果您偏好從終端機執行命令列開發，則針對以 JAVA 為基礎的函式專案，使用 `Apache Maven` 原型來建立結構最簡單。 Azure Functions 的 JAVA Maven 原型已發佈於下列 _groupId_:_artifactId_: [com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/) 之下。 
 
 下列命令使用此原型產生新的 JAVA 函式專案：
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```bash
 mvn archetype:generate \
     -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-archetype 
+    -DarchetypeArtifactId=azure-functions-archetype
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+mvn archetype:generate ^
+    -DarchetypeGroupId=com.microsoft.azure ^
+    -DarchetypeArtifactId=azure-functions-archetype
+```
+
+---
 
 若要開始使用此原型，請參閱 [JAVA 快速入門](./create-first-function-cli-java.md)。
 
@@ -153,7 +165,7 @@ public class Function {
 
 Maven 原型會產生以指定的 JAVA 版本為目標的 pom.xml。 pom.xml 中的下列元素指出要使用的 JAVA 版本：
 
-| 項目 |  JAVA 8 值 | JAVA 11 值 | 描述 |
+| 元素 |  JAVA 8 值 | JAVA 11 值 | 說明 |
 | ---- | ---- | ---- | --- |
 | **`Java.version`** | 1.8 | 11 | Maven 編譯器-外掛程式所使用的 JAVA 版本。 |
 | **`JavaVersion`** | 8 | 11 | Azure 中函數應用程式所裝載的 JAVA 版本。 |
@@ -173,7 +185,7 @@ Maven 原型會產生以指定的 JAVA 版本為目標的 pom.xml。 pom.xml 中
 
 Maven 也可讓您指定在 Azure 中執行函數應用程式的作業系統。 使用 `os` 元素選擇作業系統。 
 
-| 項目 |  Windows | Linux | Docker |
+| 元素 |  Windows | Linux | Docker |
 | ---- | ---- | ---- | --- |
 | **`os`** | windows | Linux | docker |
 
@@ -210,19 +222,40 @@ Maven 也可讓您指定在 Azure 中執行函數應用程式的作業系統。 
 
 您可以使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) 命令來設定 `JAVA_OPTS`，如下列範例所示：
 
-#### <a name="consumption-plan"></a>[使用量方案](#tab/consumption)
+# <a name="consumption-plan"></a>[使用量方案](#tab/consumption/bash)
+
 ```azurecli-interactive
 az functionapp config appsettings set \
---settings "JAVA_OPTS=-Djava.awt.headless=true" \
-"WEBSITE_USE_PLACEHOLDER=0" \
---name <APP_NAME> --resource-group <RESOURCE_GROUP>
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" \
+    "WEBSITE_USE_PLACEHOLDER=0" \
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
 ```
-#### <a name="dedicated-plan--premium-plan"></a>[專用方案/進階方案](#tab/dedicated+premium)
+
+# <a name="consumption-plan"></a>[使用量方案](#tab/consumption/cmd)
+
+```azurecli-interactive
+az functionapp config appsettings set ^
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" ^
+    "WEBSITE_USE_PLACEHOLDER=0" ^
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
+```
+
+# <a name="dedicated-plan--premium-plan"></a>[專用方案/進階方案](#tab/dedicated+premium/bash)
+
 ```azurecli-interactive
 az functionapp config appsettings set \
---settings "JAVA_OPTS=-Djava.awt.headless=true" \
---name <APP_NAME> --resource-group <RESOURCE_GROUP>
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" \
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
 ```
+
+# <a name="dedicated-plan--premium-plan"></a>[專用方案/進階方案](#tab/dedicated+premium/cmd)
+
+```azurecli-interactive
+az functionapp config appsettings set ^
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" ^
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
+```
+
 ---
 
 此範例啟用無周邊模式。 請將 `<APP_NAME>` 換成您的函數應用程式名稱，將 `<RESOURCE_GROUP>` 換成資源群組。 
@@ -460,15 +493,36 @@ public class Function {
 
 以下示範如何使用 Azure CLI，將函式應用程式設定為寫入應用程式記錄：
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```azurecli-interactive
 az webapp log config --name functionname --resource-group myResourceGroup --application-logging true
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli-interactive
+az webapp log config --name functionname --resource-group myResourceGroup --application-logging true
+```
+
+---
+
 若要使用 Azure CLI 來串流函數應用程式的記錄輸出，請開啟新的命令提示字元、Bash 或終端機工作階段，然後輸入下列命令：
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli-interactive
 az webapp log tail --name webappname --resource-group myResourceGroup
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli-interactive
+az webapp log tail --name webappname --resource-group myResourceGroup
+```
+
+---
+
 [az webapp log tail](/cli/azure/webapp/log) 命令有選項讓您使用 `--provider` 選項來篩選輸出。 
 
 若要使用 Azure CLI 將記錄檔下載為單一 ZIP 檔案，請開啟新的命令提示字元、Bash 或終端機工作階段，然後輸入下列命令：

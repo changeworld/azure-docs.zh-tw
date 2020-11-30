@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 1558c396566b2fcfc098a749407d5e7a28316b6f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3b0fdccd3eaf6e6bd94b595107022f738bdd8382
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019444"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325907"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>遷移指南：在 Azure Vm 上 SQL Server 至 SQL Server 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -38,8 +38,8 @@ ms.locfileid: "95019444"
 遷移至 Azure Vm 上的 SQL Server 需要下列各項： 
 
 - [資料庫 Migration Assistant (DMA) ](https://www.microsoft.com/download/details.aspx?id=53595)。
-- [Azure Migrate 專案](/azure/migrate/create-manage-projects)。
-- [AZURE VM 上](/azure/azure-sql/virtual-machines/windows/create-sql-vm-portal)已備妥的目標 SQL Server，與來源 SQL Server 相同或更高的版本。
+- [Azure Migrate 專案](../../../migrate/create-manage-projects.md)。
+- [AZURE VM 上](../../virtual-machines/windows/create-sql-vm-portal.md)已備妥的目標 SQL Server，與來源 SQL Server 相同或更高的版本。
 - [Azure 與內部部署之間](/azure/architecture/reference-architectures/hybrid-networking)的連線能力。
 - [選擇適當的遷移策略](sql-server-to-sql-on-azure-vm-migration-overview.md#migrate)。
 
@@ -157,8 +157,8 @@ Data Migration Assistant (DMA) 藉由偵測可能影響新版本 SQL Server 中�
 || 具有 Filestream 的使用者資料庫 |  使用 [備份和還原](../../virtual-machines/windows/migrate-to-vm-from-sql-server.md#back-up-and-restore) 方法來進行遷移。 DMA 不支援具有 Filestream 的資料庫。 |
 | **安全性** | SQL Server 和 Windows 登入 | 使用 DMA 來 [遷移使用者](/sql/dma/dma-migrateserverlogins)登入。 |
 || SQL Server 角色 | 使用 SQL Server Management Studio 的腳本 |
-|| 密碼編譯提供者 | 建議 [轉換為使用 Azure Key Vault 服務](../../virtual-machines/windows/azure-key-vault-integration-configure.md)。 此程式會使用 [SQL VM 資源提供者](../../virtual-machines/windows/sql-vm-resource-provider-register.md)。 |
-| **伺服器物件** | 備份裝置 | 使用 [Azure 備份 Service](../../../backup/backup-sql-server-database-azure-vms.md) 或寫入備份來取代為資料庫備份，以 [Azure 儲存體](../../virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md) (SQL Server 2012 SP1 CU2 +) 。 此程式會使用 [SQL VM 資源提供者](../../virtual-machines/windows/sql-vm-resource-provider-register.md)。|
+|| 密碼編譯提供者 | 建議 [轉換為使用 Azure Key Vault 服務](../../virtual-machines/windows/azure-key-vault-integration-configure.md)。 此程式會使用 [SQL VM 資源提供者](../../virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md)。 |
+| **伺服器物件** | 備份裝置 | 使用 [Azure 備份 Service](../../../backup/backup-sql-server-database-azure-vms.md) 或寫入備份來取代為資料庫備份，以 [Azure 儲存體](../../virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md) (SQL Server 2012 SP1 CU2 +) 。 此程式會使用 [SQL VM 資源提供者](../../virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md)。|
 || 連結的伺服器 | 使用 SQL Server Management Studio 的腳本。 |
 || 伺服器觸發程式 | 使用 SQL Server Management Studio 的腳本。 |
 | **複寫** | 本機發行集 | 使用 SQL Server Management Studio 的腳本。 |
@@ -205,7 +205,7 @@ Data Migration Assistant (DMA) 藉由偵測可能影響新版本 SQL Server 中�
 - [調整 AZURE SQL 虛擬機器中的效能](../../virtual-machines/windows/performance-guidelines-best-practices.md)。
 - [Azure 成本優化中心](https://azure.microsoft.com/overview/cost-optimization/)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 若要檢查適用于 SQL Server 的服務可用性，請參閱 [Azure 全球基礎結構中心](https://azure.microsoft.com/global-infrastructure/services/?regions=all&amp;products=synapse-analytics,virtual-machines,sql-database)
 

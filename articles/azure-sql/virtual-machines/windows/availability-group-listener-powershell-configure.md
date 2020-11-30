@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: cb55274800b239cf0e1e942647ae0c65b321b862
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 147c507cde9abf2ef97098c6b41fbbd4d67f02d2
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790044"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324800"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>設定一或多個 Always On 可用性群組接聽程式 - Resource Manager
 
@@ -64,7 +64,7 @@ ms.locfileid: "92790044"
 可用性群組的目前 [Microsoft 範本](./availability-group-quickstart-template-configure.md)會使用基本 IP 位址的基本負載平衡器。
 
    > [!NOTE]
-   > 若將標準負載平衡器和 Azure 儲存體用於雲端見證，則需要設定[服務端點](../../../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#grant-access-from-a-virtual-network)。 
+   > 若將標準負載平衡器和 Azure 儲存體用於雲端見證，則需要設定[服務端點](../../../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)。 
    > 
 
 本文中的範例會指定標準負載平衡器。 在範例中，指令碼包含 `-sku Standard`。
@@ -199,7 +199,7 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 
 1. 您現在應該會看到在容錯移轉叢集管理員中建立的接聽程式名稱。 以滑鼠右鍵按一下接聽程式名稱，然後選取 [屬性] 。
 
-1. 在 [ **埠** ] 方塊中，使用您先前使用的 $EndpointPort 來指定可用性群組接聽程式的通訊埠編號 (1433 是預設) ，然後選取 **[確定]** 。
+1. 在 [ **埠** ] 方塊中，使用您先前使用的 $EndpointPort 來指定可用性群組接聽程式的通訊埠編號 (1433 是預設) ，然後選取 **[確定]**。
 
 ## <a name="test-the-connection-to-the-listener"></a>測試接聽程式的連線
 
@@ -236,7 +236,7 @@ SQLCMD 連線會自動連線到任何一個裝載主要複本的 SQL Server 執�
   - AG 接聽程式的負載平衡器浮動 IP 位址
   - 叢集核心 IP 位址（如果適用）。
 
-* 將標準負載平衡器與 Azure 儲存體用於雲端見證時，請建立服務端點。 如需詳細資訊，請參閱[授與虛擬網路存取權](../../../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#grant-access-from-a-virtual-network)。
+* 將標準負載平衡器與 Azure 儲存體用於雲端見證時，請建立服務端點。 如需詳細資訊，請參閱[授與虛擬網路存取權](../../../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)。
 
 ## <a name="for-more-information"></a>取得詳細資訊
 

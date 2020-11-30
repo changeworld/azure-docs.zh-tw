@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5e688fbf653646fcdd500f36930fd6b46bebeefa
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: a2cbd2dd4dd32be137e461985e9f10fd07ed8a60
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842153"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325633"
 ---
 # <a name="azure-security-baseline-for-backup"></a>適用于備份的 Azure 安全性基準
 
@@ -350,7 +350,7 @@ ms.locfileid: "94842153"
 
 - [如何設定 Azure 備份以使用 Azure AD 登入](../app-service/configure-authentication-provider-aad.md)
 
-- [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何建立和設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -534,7 +534,7 @@ Azure 備份提供三個內建角色來控制備份管理作業：「備份參�
 
 Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安全性控制，以減少服務設定的相關弱點。
 
-- [瞭解適用于 Azure 備份的安全性控制項](./backup-security-controls.md)
+- [瞭解適用于 Azure 備份的安全性控制項]()
 
 **Azure 資訊安全中心監視**：目前無法使用
 

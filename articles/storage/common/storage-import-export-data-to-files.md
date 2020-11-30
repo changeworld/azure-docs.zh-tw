@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 859325bffe1db9cd6a7afc7e5013681c88209eff
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 9d1d0f4b615bbf4cc7faf82d70a4de0b0157ed82
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491778"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326347"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>使用 Azure 匯入/匯出服務將資料匯入 Azure 檔案服務
 
@@ -22,7 +22,7 @@ ms.locfileid: "94491778"
 
 匯入/匯出服務僅支援將 Azure 檔案服務匯入到 Azure 儲存體。 不支援將 Azure 檔案服務匯出。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在建立匯入作業來將資料傳入 Azure 檔案服務之前，請仔細檢閱並完成下列必要條件清單。 您必須：
 
@@ -30,7 +30,7 @@ ms.locfileid: "94491778"
 - 具有至少一個 Azure 儲存體帳戶。 請參閱[匯入/匯出服務支援的儲存體帳戶和儲存體類型](storage-import-export-requirements.md)清單。 如需建立新儲存體帳戶的詳細資訊，請參閱 [如何建立儲存體帳戶](storage-account-create.md)(英文)。
 - 具有屬於[支援類型](storage-import-export-requirements.md#supported-disks)的磁碟，且數量足夠。
 - 具有執行[受支援 OS 版本](storage-import-export-requirements.md#supported-operating-systems) 的 Windows 系統。
-- 請在 Windows 系統上[下載 WAImportExport 第 2 版](https://aka.ms/waiev2)。 將檔案解壓縮至預設資料夾 `waimportexport`。 例如 `C:\WaImportExport`。
+- 請在 Windows 系統上[下載 WAImportExport 第 2 版](https://aka.ms/waiev2)。 將檔案解壓縮至預設資料夾 `waimportexport`。 例如： `C:\WaImportExport` 。
 - 擁有 FedEx/DHL 帳戶。 如果您想要使用 FedEx/DHL 以外的電訊廠商，請聯絡 Azure 資料箱營運團隊 `adbops@microsoft.com` 。
     - 帳戶必須是有效的、需要有餘額，且必須有退貨運送功能。
     - 產生匯出作業的追蹤號碼。
@@ -58,7 +58,7 @@ ms.locfileid: "94491778"
            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
 
        ```
-   - **若要匯入資料夾** ：MyFolder2 底下的所有檔案和資料夾會以遞迴方式複製到檔案共用。 資料夾結構會保留。
+   - **若要匯入資料夾**：MyFolder2 底下的所有檔案和資料夾會以遞迴方式複製到檔案共用。 資料夾結構會保留。
 
        ```
            "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None
@@ -78,14 +78,14 @@ ms.locfileid: "94491778"
 
     此範例假設已連結兩個磁碟，並已建立基本 NTFS 磁碟區 G:\ 和 H:\。 當 G: 已加密時，H:\ 就不會加密。 此工具只會格式化和加密裝載 H:\ (不是 G:\)) 的磁碟。
 
-   - **針對未加密的磁碟** ：指定「Encrypt」，以在磁碟上啟用 BitLocker 加密。
+   - **針對未加密的磁碟**：指定「Encrypt」，以在磁碟上啟用 BitLocker 加密。
 
        ```
        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
        H,Format,SilentMode,Encrypt,
        ```
 
-   - **針對已加密的磁碟** ：指定「AlreadyEncrypted」，並提供 BitLocker 金鑰。
+   - **針對已加密的磁碟**：指定「AlreadyEncrypted」，並提供 BitLocker 金鑰。
 
        ```
        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
@@ -123,7 +123,7 @@ ms.locfileid: "94491778"
 
     ![移至匯入/匯出](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
-3. 按一下 [ **建立匯入/匯出作業** ]。
+3. 按一下 [ **建立匯入/匯出作業**]。
 
     ![按一下 [匯入/匯出作業]](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
@@ -355,9 +355,9 @@ Install-Module -Name Az.ImportExport
 
 ## <a name="samples-for-journal-files"></a>日誌檔案的範例
 
-若要 **新增更多磁碟機** ，可以建立新的磁碟機集檔案並執行命令，如下所示。
+若要 **新增更多磁碟機**，可以建立新的磁碟機集檔案並執行命令，如下所示。
 
-對於後續複製到不同磁碟機的工作階段 (不是 InitialDriveset.csv 檔案中指定的磁碟機)，請指定新的磁碟機集 .csv 檔案，並以值形式提供給參數 `AdditionalDriveSet`。 使用 **相同的日誌檔** 名稱，並提供 **新的工作階段識別碼** 。 AdditionalDriveset CSV 檔案的格式與 InitialDriveSet 格式相同 。
+對於後續複製到不同磁碟機的工作階段 (不是 InitialDriveset.csv 檔案中指定的磁碟機)，請指定新的磁碟機集 .csv 檔案，並以值形式提供給參數 `AdditionalDriveSet`。 使用 **相同的日誌檔** 名稱，並提供 **新的工作階段識別碼**。 AdditionalDriveset CSV 檔案的格式與 InitialDriveSet 格式相同 。
 
 ```cmd
 WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AdditionalDriveSet:<driveset.csv>
@@ -372,7 +372,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3  /AdditionalDrive
 
 若要將其他資料新增至相同磁碟機集，請對後續複製工作階段使用 PrepImport 命令，以複製其他檔案/目錄。
 
-若要對 InitialDriveset.csv 檔案中指定的同個硬碟進行後續複製工作階段，請指定 **相同的日誌檔案** 名稱並提供 **新的工作階段識別碼** ；不需要再次提供儲存體帳戶金鑰。
+若要對 InitialDriveset.csv 檔案中指定的同個硬碟進行後續複製工作階段，請指定 **相同的日誌檔案** 名稱並提供 **新的工作階段識別碼**；不需要再次提供儲存體帳戶金鑰。
 
 ```cmd
 WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] DataSet:<dataset.csv>

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 0361ba7bc67948c25b842a3fb7406d2999fdd725
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87d7d4676c604ca7219b7580eb3ce585282a7f11
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530607"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327235"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions 部署位置
 
@@ -28,7 +28,7 @@ Azure Functions 部署位置可讓您的函數應用程式執行不同的實例�
 
 使用部署位置有一些優點。 下列案例說明位置的常見用法：
 
-- 不同**的環境有不同的用途**：使用不同的位置，讓您有機會在交換至生產環境或預備位置之前，先區分應用程式實例。
+- 不同 **的環境有不同的用途**：使用不同的位置，讓您有機會在交換至生產環境或預備位置之前，先區分應用程式實例。
 - **預先準備**：部署至位置而非直接進入生產環境，可讓應用程式在上線之前先準備就緒。 此外，使用位置可減少 HTTP 觸發之工作負載的延遲。 實例會在部署之前準備就緒，以減少新部署函數的冷啟動。
 - **輕鬆的回退**：在與生產環境交換之後，具有先前預備應用程式的位置現在會有先前的生產應用程式。 如果交換到生產位置的變更不是您預期的，您可以立即反轉交換以取得「最後一個已知的良好實例」。
 
@@ -36,7 +36,7 @@ Azure Functions 部署位置可讓您的函數應用程式執行不同的實例�
 
 交換期間會將一個位置視為來源，另一個則視為目標。 來源位置具有應用程式的實例，此應用程式會套用至目標位置。 下列步驟可確保在交換期間，目標位置不會遭遇停機時間：
 
-1. 套用**設定：** 來自目標位置的設定會套用至來源位置的所有實例。 例如，生產環境設定會套用至預備實例。 套用的設定包括下列類別：
+1. 套用 **設定：** 來自目標位置的設定會套用至來源位置的所有實例。 例如，生產環境設定會套用至預備實例。 套用的設定包括下列類別：
     - [特定位置的](#manage-settings) 應用程式設定和連接字串（若適用） (（如果適用）) 
     - [持續部署](../app-service/deploy-continuous-deployment.md) 設定 (啟用時) 
     - [App Service 驗證](../app-service/overview-authentication-authorization.md) 設定 (啟用) 
@@ -57,7 +57,38 @@ Azure Functions 部署位置可讓您的函數應用程式執行不同的實例�
 
 ## <a name="manage-settings"></a>管理設定
 
-[!INCLUDE [app-service-deployment-slots-settings](../../includes/app-service-deployment-slots-settings.md)]
+某些設定是位置特定的設定。 下列清單詳細說明當您交換位置時，哪些設定會變更，且維持不變。
+
+位置 **特定設定**：
+
+* 發行端點
+* 自訂網域名稱
+* 非公用憑證與 TLS/SSL 設定
+* 調整大小設定
+* WebJobs 排程器
+* IP 限制
+* 永遠開啟
+* 診斷設定
+* 跨原始來源資源分享 (CORS)
+
+**非位置特定設定**：
+
+* 一般設定，例如 framework 版本、32/64 位、web 通訊端
+* 應用程式設定 (可以設定為停在某一個位置)
+* 連接字串 (可以設定為停在某一個位置)
+* 處理常式對應
+* 公開憑證
+* WebJobs 內容
+* 混合式連接 *
+* 虛擬網路整合 *
+* 服務端點 *
+* Azure 內容傳遞網路 *
+
+以星號 ( * ) 標記的功能預計會 unswapped。 
+
+> [!NOTE]
+> 套用至 unswapped 設定的某些應用程式設定也不會交換。 例如，因為診斷設定不會交換，所以和等相關的應用程式設定 `WEBSITE_HTTPLOGGING_RETENTION_DAYS` `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` 也不會交換，即使它們沒有顯示為位置設定亦同。
+>
 
 ### <a name="create-a-deployment-setting"></a>建立部署設定
 
@@ -71,17 +102,17 @@ Azure Functions 部署位置可讓您的函數應用程式執行不同的實例�
 
     :::image type="content" source="./media/functions-deployment-slots/functions-navigate-slots.png" alt-text="尋找 Azure 入口網站中的位置。" border="true":::
 
-1. 選取 [設定 **]，然後選取要**與目前位置保持在一起的設定名稱。
+1. 選取 [設定 **]，然後選取要** 與目前位置保持在一起的設定名稱。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-configure-deployment-slot.png" alt-text="尋找 Azure 入口網站中的位置。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-configure-deployment-slot.png" alt-text="在 Azure 入口網站中設定位置的應用程式設定。" border="true":::
 
 1. 選取 [部署位置] **設定**，然後選取 **[確定]**。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-setting.png" alt-text="尋找 Azure 入口網站中的位置。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-setting.png" alt-text="設定部署位置設定。" border="true":::
 
 1. 設定區段消失之後，請選取 [ **儲存** ] 以保留變更
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-save-deployment-slot-setting.png" alt-text="尋找 Azure 入口網站中的位置。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-save-deployment-slot-setting.png" alt-text="儲存部署位置設定。" border="true":::
 
 ## <a name="deployment"></a>部署
 
@@ -100,26 +131,26 @@ Azure Functions 部署位置可讓您的函數應用程式執行不同的實例�
 
 1. 流覽至您的函數應用程式。
 
-1. 選取 [ **部署**位置]，然後選取 [ **+ 新增**位置]。
+1. 選取 [ **部署** 位置]，然後選取 [ **+ 新增** 位置]。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add.png" alt-text="尋找 Azure 入口網站中的位置。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add.png" alt-text="新增 Azure Functions 部署位置。" border="true":::
 
 1. 輸入位置的名稱，然後選取 [ **新增**]。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add-name.png" alt-text="尋找 Azure 入口網站中的位置。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add-name.png" alt-text="將 Azure Functions 部署位置命名為。" border="true":::
 
 ## <a name="swap-slots"></a>交換位置
 
 您可以透過 [CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap) 或透過入口網站交換插槽。 下列步驟示範如何在入口網站中交換位置：
 
 1. 巡覽至函式應用程式。
-1. 選取 [ **部署**位置]，然後選取 [ **交換**]。
+1. 選取 [ **部署** 位置]，然後選取 [ **交換**]。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-swap-deployment-slot.png" alt-text="尋找 Azure 入口網站中的位置。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-swap-deployment-slot.png" alt-text="顯示 [部署位置] 頁面的螢幕擷取畫面，其中已選取 [新增位置] 動作。" border="true":::
 
 1. 確認交換的設定，然後選取 [**交換**]
     
-    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png" alt-text="尋找 Azure 入口網站中的位置。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png" alt-text="交換部署位置。" border="true":::
 
 執行交換作業時，作業可能需要一些時間。
 
@@ -135,17 +166,17 @@ Azure Functions 部署位置可讓您的函數應用程式執行不同的實例�
 
     :::image type="content" source="./media/functions-deployment-slots/functions-navigate-slots.png" alt-text="尋找 Azure 入口網站中的位置。" border="true":::
 
-1. 選取 [刪除]  。
+1. 選取 [刪除]。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot.png" alt-text="尋找 Azure 入口網站中的位置。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot.png" alt-text="顯示 [總覽] 頁面的螢幕擷取畫面，其中已選取 [刪除] 動作。" border="true":::
 
 1. 輸入您想要刪除的部署位置名稱，然後選取 [ **刪除**]。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot-details.png" alt-text="尋找 Azure 入口網站中的位置。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot-details.png" alt-text="刪除 Azure 入口網站中的部署位置。" border="true":::
 
 1. 關閉 [刪除確認] 窗格。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-deleted.png" alt-text="尋找 Azure 入口網站中的位置。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-deleted.png" alt-text="部署位置刪除確認。" border="true":::
 
 ## <a name="automate-slot-management"></a>自動插槽管理
 
@@ -174,9 +205,9 @@ Azure Functions 部署位置可讓您的函數應用程式執行不同的實例�
 
 1. 選取您要升級的方案，或建立新的方案。
 
-    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-apply.png" alt-text="尋找 Azure 入口網站中的位置。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-apply.png" alt-text="變更 Azure 入口網站中的 App Service 方案。" border="true":::
 
-1. 選取 [確定]  。
+1. 選取 [確定]。
 
 ## <a name="limitations"></a>限制
 
@@ -190,7 +221,7 @@ Azure Functions 部署位置有下列限制：
 
 部署位置有兩個支援層級：
 
-- **正式運作 (GA) **：完全支援並核准供生產環境使用。
+- **正式運作 (GA)**：完全支援並核准供生產環境使用。
 - **預覽**：尚未支援，但預期會在未來達到 GA 狀態。
 
 | 作業系統/主控方案           | 支援層級     |

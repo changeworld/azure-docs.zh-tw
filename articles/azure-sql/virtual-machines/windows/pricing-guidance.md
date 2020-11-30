@@ -15,12 +15,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c64ab815572af0f6c76a5076c9d4cf03586f242d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 57e9c82e5685171cff994aca7985f6a4211f00e7
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784995"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327282"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Azure Vm 上的 SQL Server 定價指導方針
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,9 +36,9 @@ ms.locfileid: "92784995"
 
 ## <a name="free-licensed-sql-server-editions"></a>免費授權的 SQL Server 版本
 
-如果您想要開發、測試或建置某項概念證明，請使用免費授權的 **SQL Server Developer Edition** 。 此版本包含 SQL Server Enterprise Edition 的所有功能，可讓您建置並測試任何類型的應用程式。 不過，您無法在生產環境中執行 Developer Edition。 SQL Server Developer Edition VM 只會產生 VM 成本的費用，因為沒有任何相關聯的 SQL Server 授權成本。
+如果您想要開發、測試或建置某項概念證明，請使用免費授權的 **SQL Server Developer Edition**。 此版本包含 SQL Server Enterprise Edition 的所有功能，可讓您建置並測試任何類型的應用程式。 不過，您無法在生產環境中執行 Developer Edition。 SQL Server Developer Edition VM 只會產生 VM 成本的費用，因為沒有任何相關聯的 SQL Server 授權成本。
 
-如果您希望以生產環境執行輕量型工作負載 (< 4 個核心、< 1 GB 記憶體、< 10 GB/資料庫)，請使用免費授權的 **SQL Server Express Edition** 。 SQL Server Express Edition VM 也只會產生 VM 成本的費用。
+如果您希望以生產環境執行輕量型工作負載 (< 4 個核心、< 1 GB 記憶體、< 10 GB/資料庫)，請使用免費授權的 **SQL Server Express Edition**。 SQL Server Express Edition VM 也只會產生 VM 成本的費用。
 
 針對這些開發/測試和輕量型生產環境工作負載，您也可以選擇符合這些工作負載的較小 VM 大小來節省成本。 在某些情況下，DS1v2 可能是理想的選擇。
 
@@ -61,19 +61,19 @@ ms.locfileid: "92784995"
 | 標準 | 小型到中型工作負載 |
 | Enterprise | 大型或任務關鍵性工作負載|
 
-您有兩個選項來支付這些版本的 SQL Server 授權： *依使用量付費* 或 *自備授權 (BYOL)* 。
+您有兩個選項來支付這些版本的 SQL Server 授權：*依使用量付費* 或 *自備授權 (BYOL)* 。
 
 ## <a name="pay-per-usage"></a>依使用量付費
 
-**依使用量支付 SQL Server 授權費用** (亦稱為 **隨用隨付** ) 意謂著執行 Azure VM 的每秒鐘費用都包含 SQL Server 授權的費用。 您可以在 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) 或 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux)的 Azure 虛擬機器定價頁面中，看到不同 SQL Server 版本 (Web、Standard、Enterprise) 的定價。
+**依使用量支付 SQL Server 授權費用** (亦稱為 **隨用隨付**) 意謂著執行 Azure VM 的每秒鐘費用都包含 SQL Server 授權的費用。 您可以在 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) 或 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux)的 Azure 虛擬機器定價頁面中，看到不同 SQL Server 版本 (Web、Standard、Enterprise) 的定價。
 
 所有版本的 SQL Server (2012 SP3 至 2019) 的費用都相同。 每秒鐘的授權費用取決於 VM vCPU 數目。
 
 針對下列情況，建議採用依使用量支付 SQL Server 授權費用：
 
-- **暫時或定期的工作負載** 。 例如，每年有幾個月需要支援某個事件或每週一需要支援業務分析的應用程式。
+- **暫時或定期的工作負載**。 例如，每年有幾個月需要支援某個事件或每週一需要支援業務分析的應用程式。
 
-- **存留期或規模不明的工作負載** 。 例如，有幾個月不需用到或依需求可能需要較多或較少運算能力的應用程式。
+- **存留期或規模不明的工作負載**。 例如，有幾個月不需用到或依需求可能需要較多或較少運算能力的應用程式。
 
 若要使用其中一個隨用隨付映射來建立執行 SQL Server 2017 的 Azure VM，請參閱下列連結：
 
@@ -96,7 +96,7 @@ ms.locfileid: "92784995"
 
 ## <a name="bring-your-own-license-byol"></a><a id="byol"></a> 自備授權 (BYOL)
 
-**透過「授權行動性」自備 SQL Server 授權** (也稱為 **BYOL** ) 意謂著在 Azure VM 中使用現有的「SQL Server 大量授權」搭配「軟體保證」。 使用 BYOL 的 SQL Server VM 只會收取執行 VM 的費用，不會收取 SQL Server 授權費用，但前提是您已經透過「大量授權」方案取得授權和「軟體保證」。
+**透過「授權行動性」自備 SQL Server 授權** (也稱為 **BYOL**) 意謂著在 Azure VM 中使用現有的「SQL Server 大量授權」搭配「軟體保證」。 使用 BYOL 的 SQL Server VM 只會收取執行 VM 的費用，不會收取 SQL Server 授權費用，但前提是您已經透過「大量授權」方案取得授權和「軟體保證」。
 
 > [!IMPORTANT]
 > BYOL 映像需要具有軟體保證的 Enterprise 合約。 Azure 雲端解決方案合作夥伴 (CSP) 目前不會提供這類映像。 CSP 客戶可以藉由部署隨用隨付映像，然後啟用 [Azure Hybrid Benefit](licensing-model-azure-hybrid-benefit-ahb-change.md)，來攜帶自己的授權。
@@ -106,9 +106,9 @@ ms.locfileid: "92784995"
 
 建議您透過授權行動性提供自己的 SQL Server 授權給：
 
-- **持續性工作負載** 。 例如，需要全年無休支援業務營運的應用程式。
+- **持續性工作負載**。 例如，需要全年無休支援業務營運的應用程式。
 
-- **存留期和規模已知的工作負載** 。 例如，一整年都需要使用且已預測好需求的應用程式。
+- **存留期和規模已知的工作負載**。 例如，一整年都需要使用且已預測好需求的應用程式。
 
 若要搭配 SQL Server VM 使用 BYOL，您必須具備 SQL Server Standard 或 Enterprise 的授權及[軟體保證](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1)，這是透過某些大量授權方案時的必要選項，也是搭配其他方案時的選購項目。 根據合約的類型及數量和 (或) 對 SQL Server 之承諾的不同，透過「大量授權」方案提供的定價層級也會不同。 但根據經驗法則，自備授權可為持續性生產環境工作負載提供下列優點：
 
@@ -136,7 +136,7 @@ ms.locfileid: "92784995"
 
 ### <a name="correctly-size-your-vm"></a><a id="machinesize"></a> 選擇適當的 VM 大小
 
-SQL Server 的授權成本與 vCPU 數目直接相關。 選擇符合預期的 CPU、記憶體、儲存和 I/O 頻寬需求的 VM 大小。 如需機器大小選項的完整清單，請參閱 [Windows VM 大小](../../../virtual-machines/sizes.md)和 [Linux VM 大小](../../../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)。
+SQL Server 的授權成本與 vCPU 數目直接相關。 選擇符合預期的 CPU、記憶體、儲存和 I/O 頻寬需求的 VM 大小。 如需機器大小選項的完整清單，請參閱 [Windows VM 大小](../../../virtual-machines/sizes.md)和 [Linux VM 大小](../../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 有一些新的機器大小適用於特定類型的 SQL Server 工作負載。 這些機器的大小可維持高等級的記憶體、儲存以及 I/O 頻寬，但是它們具有較低的虛擬化核心計數。 例如，請考慮下列範例：
 
@@ -148,7 +148,7 @@ SQL Server 的授權成本與 vCPU 數目直接相關。 選擇符合預期的 C
 > [!IMPORTANT]
 > 這是時間點的範例。 如需最新規格，請參閱 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 和 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) 的機器大小文章和 Azure 定價頁面。
 
-在上述範例中，您可以看到 **Standard_DS14v2** 和 **Standard_DS14 4v2** 的規格除了 vCPU 之外完全相同。 **Standard_DS14 4v2** 機器大小尾端的尾碼 **-4v2** ，表示有效 vCPU 的數目。 由於 SQL Server 授權成本與 vCPU 數目有關，因此這會大幅降低不需要額外 vCPU 時的 VM 成本。 這是一個範例，而且有許多機器大小，具有使用此尾碼模式識別的受限制 vCPU。 如需詳細資訊，請參閱部落格文章[針對更多符合成本效益的資料庫工作推出新的 Azure VM 大小](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/)。
+在上述範例中，您可以看到 **Standard_DS14v2** 和 **Standard_DS14 4v2** 的規格除了 vCPU 之外完全相同。 **Standard_DS14 4v2** 機器大小尾端的尾碼 **-4v2**，表示有效 vCPU 的數目。 由於 SQL Server 授權成本與 vCPU 數目有關，因此這會大幅降低不需要額外 vCPU 時的 VM 成本。 這是一個範例，而且有許多機器大小，具有使用此尾碼模式識別的受限制 vCPU。 如需詳細資訊，請參閱部落格文章[針對更多符合成本效益的資料庫工作推出新的 Azure VM 大小](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/)。
 
 ### <a name="shut-down-your-vm-when-possible"></a>若可能則關閉 VM
 

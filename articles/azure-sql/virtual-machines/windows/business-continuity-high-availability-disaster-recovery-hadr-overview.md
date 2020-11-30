@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 81d0bddbd62f9f2d15d8404fee63b15c8ab2c0a3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 194c6a5cead400e1bac78ba42cb7238b64bd3b7b
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102270"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327469"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上 SQL Server 的商務持續性和 HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -90,7 +90,7 @@ Azure 支援下列商務持續性 SQL Server 技術：
 
 如需詳細資訊，請參閱[產品授權條款](https://www.microsoft.com/licensing/product-licensing/products)。 
 
-若要啟用此權益，請移至您 [SQL Server 的虛擬機器資源](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)。 選取 [設定] 下的 [ **設定** ]， **然後選擇** [ **SQL Server 授權** ] 下的 [嚴重損壞 **修復** ] 選項。 選取核取方塊以確認此 SQL Server VM 將用來作為被動複本，然後選取 [套用 **] 以儲存** 您的設定。 
+若要啟用此權益，請移至您 [SQL Server 的虛擬機器資源](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)。 選取 [設定] 下的 [**設定**]，**然後選擇**[ **SQL Server 授權**] 下的 [嚴重損壞 **修復**] 選項。 選取核取方塊以確認此 SQL Server VM 將用來作為被動複本，然後選取 [套用 **] 以儲存** 您的設定。 
 
 ![在 Azure 中設定嚴重損壞修復複本](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/dr-replica-in-portal.png)
 
@@ -101,7 +101,7 @@ Azure 支援下列商務持續性 SQL Server 技術：
 ### <a name="high-availability-nodes-in-an-availability-set"></a>可用性設定組中的高可用性節點
 Azure 中的可用性設定組可讓您將高可用性節點放入不同的容錯網域和更新網域中。 Azure 平臺會為可用性設定組中的每部虛擬機器指派一個更新網域和一個容錯網域。 資料中心內的這項設定可確保在規劃或未規劃的維護事件發生期間，至少有一部虛擬機器可供使用，且符合99.95% 的 Azure SLA。 
 
-若要設定高可用性設定，請將所有參與 SQL Server 的虛擬機器放在相同的可用性設定組中，以避免在維護事件期間發生應用程式或資料遺失。 只有相同雲端服務內的節點可以參與相同的可用性設定組。 如需詳細資訊，請參閱[管理虛擬機器的可用性](../../../virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)。
+若要設定高可用性設定，請將所有參與 SQL Server 的虛擬機器放在相同的可用性設定組中，以避免在維護事件期間發生應用程式或資料遺失。 只有相同雲端服務內的節點可以參與相同的可用性設定組。 如需詳細資訊，請參閱[管理虛擬機器的可用性](../../../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ### <a name="high-availability-nodes-in-an-availability-zone"></a>可用性區域中的高可用性節點
 可用性區域是 Azure 地區內獨特的實體位置。 每個區域皆由一或多個配備獨立電力、冷卻系統及網路的資料中心所組成。 區域內可用性區域的實體區隔可確保至少有一部虛擬機器可供使用且符合99.99% 的 Azure SLA，以協助保護應用程式和資料不受資料中心失敗的影響。 
@@ -160,6 +160,6 @@ Azure 磁碟中的異地複寫不支援將相同資料庫的資料檔與記錄�
 
 如果您沒有在儲存體帳戶上停用異地複寫的選項，請將資料庫的所有資料和記錄檔保留在同一個磁片上。 如果您因為資料庫大小而必須使用一個以上的磁片，請部署先前所列的其中一個嚴重損壞修復解決方案，以確保資料的冗余。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 決定 [可用性群組](availability-group-overview.md) 或 [容錯移轉叢集實例](failover-cluster-instance-overview.md) 是否為您企業的最佳商務持續性解決方案。 然後，請參閱為您的環境設定高可用性和嚴重損壞修復的 [最佳作法](hadr-cluster-best-practices.md) 。

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/15/2020
-ms.openlocfilehash: 262e15754ba481ee37b6af9783e5a3bc82d9450c
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: ff4e6e0451b57046fb8f07f5a1051235e1f6d0f5
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556347"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325718"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上的 SQL Server 文件變更
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -96,7 +96,7 @@ Azure 可供使用內建的 SQL Server 映像部署虛擬機器 (VM)。 本文�
 | **具名執行個體的可支援性** | 若預設執行個體已透過適當方式解除安裝，則現在可搭配具名執行個體使用 [SQL Server IaaS 延伸模組](sql-server-iaas-agent-extension-automate-management.md#installation)。 | 
 | **入口網站增強** | 部署 SQL Server VM 的 Azure 入口網站體驗現在已經過改造，以改善可用性。 如需詳細資訊，請參閱簡短的部署 SQL Server VM [快速入門](sql-vm-create-portal-quickstart.md)，以及更完整的[操作指南](create-sql-vm-portal.md)。|
 | **入口網站改善** | 現在您可使用 [Azure 入口網站](licensing-model-azure-hybrid-benefit-ahb-change.md#change-license-model)將 SQL Server VM 的授權模型從隨用隨付變更為自備授權。|
-| **透過 Azure CLI 簡化可用性群組至 SQL Server VM 的部署** | 現在您可透過比以往更輕鬆的方式，以在 Azure 中將可用性群組部署到 SQL Server VM。 您可以使用 [Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid&preserve-view=true) 從命令列建立 Windows 容錯移轉叢集、內部負載平衡器和可用性群組接聽程式。 如需詳細資訊，請參閱 [使用 Azure CLI 為 AZURE VM 上的 SQL Server 設定 Always On 可用性群組](availability-group-az-cli-configure.md)。 | 
+| **透過 Azure CLI 簡化可用性群組至 SQL Server VM 的部署** | 現在您可透過比以往更輕鬆的方式，以在 Azure 中將可用性群組部署到 SQL Server VM。 您可以使用 [Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid&preserve-view=true) 從命令列建立 Windows 容錯移轉叢集、內部負載平衡器和可用性群組接聽程式。 如需詳細資訊，請參閱 [使用 Azure CLI 為 AZURE VM 上的 SQL Server 設定 Always On 可用性群組](./availability-group-az-commandline-configure.md)。 | 
 | &nbsp; | &nbsp; |
 
 ## <a name="2018"></a>2018 
@@ -112,7 +112,7 @@ Azure 可供使用內建的 SQL Server 映像部署虛擬機器 (VM)。 本文�
 
 ## <a name="additional-resources"></a>其他資源
 
-**Windows VM** ：
+**Windows VM**：
 
 * [Windows VM 上的 SQL Server 概觀](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [在 Windows VM 上布建 SQL Server](create-sql-vm-portal.md)
@@ -121,7 +121,7 @@ Azure 可供使用內建的 SQL Server 映像部署虛擬機器 (VM)。 本文�
 * [Azure 虛擬機器中的 SQL Server 效能最佳做法](performance-guidelines-best-practices.md)
 * [Azure 虛擬機器中的 SQL Server 應用程式模式和開發策略](application-patterns-development-strategies.md)
 
-**Linux VM** ：
+**Linux VM**：
 
 * [Linux VM 上的 SQL Server 概觀](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [在 Linux 虛擬機器上布建 SQL Server](../linux/sql-vm-create-portal-quickstart.md)

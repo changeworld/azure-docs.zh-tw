@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: cafb32e5bd91c6b7f3cfef4641828963e0731797
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 46216fe06e3d3425d5b237cdbb7326eed596945a
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496714"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326925"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>遷移總覽： SQL Server 至 SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -61,18 +61,18 @@ SQL Database 可提供多種 [部署模型](../../database/sql-database-paas-ove
 請考慮一般指導方針，以協助您選擇正確的部署模型和服務層級的 Azure SQL Database。 您可以在部署期間選擇計算和儲存體資源，然後在之後使用  [Azure 入口網站](../../database/scale-resources.md)  變更它們，而不會導致應用程式的停機時間。
 
 
-**部署模型** ：瞭解您的應用程式工作負載和使用模式，以決定單一資料庫或彈性集區。 
+**部署模型**：瞭解您的應用程式工作負載和使用模式，以決定單一資料庫或彈性集區。 
 
 - [單一資料庫](../../database/single-database-overview.md)代表適用于大部分新式雲端應用程式和微服務的完全受控資料庫。
 - [彈性集](../../database/elastic-pool-overview.md)區是單一資料庫的集合，其中包含一組共用的資源（例如 CPU 或記憶體），適用于結合集區中的資料庫與可預測的使用模式，可有效地共用相同的資源集。
 
-**購買模型** ：選擇 VCORE、DTU 或無伺服器購買模型。 
+**購買模型**：選擇 VCORE、DTU 或無伺服器購買模型。 
 
 - [VCore 模型](../../database/service-tiers-vcore.md)可讓您選擇 Azure SQL Database 的虛擬核心數目，使其在從內部部署 SQL Server 翻譯時成為最簡單的選擇。 這是唯一支援使用 [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)來節省授權成本的選項。 
 - [DTU 模型](../../database/service-tiers-dtu.md)會將基礎計算、記憶體和 IO 資源抽象化，以提供混合的 DTU。 
 - [無伺服器模型](../../database/serverless-tier-overview.md)適用于需要自動隨選調整的工作負載，以及每秒使用量計費的計算資源。 無伺服器計算層會在非使用期間自動暫停資料庫 (其中只會) 儲存體計費，並在活動傳回時自動繼續資料庫。 
 
-**服務層** ：為不同類型的應用程式選擇三個服務層級。
+**服務層**：為不同類型的應用程式選擇三個服務層級。
 
 - [一般用途/標準服務層](../../database/service-tier-general-purpose.md) 級提供平衡的預算導向選項，並提供適合用來提供中層級應用程式的計算和儲存體，並內建在儲存層的冗余，可從失敗中復原。 專為大部分的資料庫工作負載所設計。 
 - [商務關鍵性/高階服務層級](../../database/service-tier-business-critical.md) 適用于需要高交易率、低延遲 IO 和高等級復原的高階層應用程式，可用於容錯移轉和卸載讀取工作負載。
@@ -169,7 +169,7 @@ SQL Database 可提供多種 [部署模型](../../database/sql-database-paas-ove
 Azure SQL Database 不直接支援 SQL Agent 作業，而且必須部署至 [彈性資料庫工作 (預覽) ](../../database/job-automation-overview.md#elastic-database-jobs-preview)。
 
 #### <a name="logins-and-groups"></a>登入和群組
-將 SQL 登入從來源 SQL Server 移至 Azure SQL Database 使用資料庫移轉服務 (DMS) 處於離線模式。  使用 [ **遷移嚮導]** 中的 [ **選取** 的登入] 分頁，將登入遷移至目標 SQL Database。 
+將 SQL 登入從來源 SQL Server 移至 Azure SQL Database 使用資料庫移轉服務 (DMS) 處於離線模式。  使用 [**遷移嚮導]** 中的 [**選取** 的登入] 分頁，將登入遷移至目標 SQL Database。 
 
 您也可以在 [DMS 設定] 頁面中啟用對應的切換按鈕，以使用 DMS 來遷移 Windows 使用者和群組。 
 
@@ -183,7 +183,7 @@ Azure SQL Database 不直接支援 SQL Agent 作業，而且必須部署至 [彈
 
 請務必利用 SQL Database 所提供的先進雲端式功能。 例如，您不再需要擔心管理備份的方式，因為服務會為您執行此工作。 您可以還原至 [保留期限內的任何時間點](../../database/recovery-using-backups.md#point-in-time-restore)。 
 
-若要加強安全性，請考慮使用 [Azure Active Directory 驗證](../../database/authentication-aad-overview.md)、 [審核](../../database/auditing-overview.md)、 [威脅偵測](../../database/advanced-data-security.md)、資料 [列層級安全性](/sql/relational-databases/security/row-level-security)和 [動態資料遮罩](/sql/relational-databases/security/dynamic-data-masking)。
+若要加強安全性，請考慮使用 [Azure Active Directory 驗證](../../database/authentication-aad-overview.md)、 [審核](../../database/auditing-overview.md)、 [威脅偵測](../../database/azure-defender-for-sql.md)、資料 [列層級安全性](/sql/relational-databases/security/row-level-security)和 [動態資料遮罩](/sql/relational-databases/security/dynamic-data-masking)。
 
 除了先進的管理和安全性功能之外，SQL Database 還提供一組可協助您 [監視和微調工作負載](../../database/monitor-tune-overview.md)的 advanced tools。 [Azure SQL 分析 (Preview) ](../../../azure-monitor/insights/azure-sql.md) 是一種先進的雲端監視解決方案，可在單一視圖中大規模地監視 Azure SQL Database 和跨多個訂用帳戶的所有資料庫效能。 Azure SQL 分析會使用內建的智慧效能疑難排解，來收集關鍵效能計量並將其視覺化。
 

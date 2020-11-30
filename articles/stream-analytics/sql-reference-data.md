@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 1826b66b0548b7567af59de64549c7eb700025c3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 7e2826221bd9d15472467c4dd8676d3d0538e0d6
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130896"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326568"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>將來自 SQL Database 的參考資料用於 Azure 串流分析作業
 
@@ -34,11 +34,11 @@ Azure 串流分析支援以 Azure SQL Database 作為參考資料輸入的來源
 
 1. 在您的串流資料作業中，選取 [工作拓樸] 底下的 [輸入]。 按一下 [新增參考輸入] 並選擇 [SQL Database]。
 
-   ![串流分析工作輸入](./media/sql-reference-data/stream-analytics-inputs.png)
+   ![在左側流覽窗格中選取輸入。 在 [輸入] 上，選取 [+ 新增參考輸入]，並顯示顯示 Blob 儲存體和 SQL Database 值的下拉式清單。](./media/sql-reference-data/stream-analytics-inputs.png)
 
 2. 填寫串流分析輸入設定。 選擇資料庫名稱、伺服器名稱、使用者名稱和密碼。 如果您想要讓參考資料輸入定期重新整理，請選擇 [開啟] 來以 DD:HH:MM 格式指定重新整理頻率。 如果您具有重新整理頻率較短的大型資料集，則可以使用[差異查詢](sql-reference-data.md#delta-query)。
 
-   ![SQL Database 參考設定](./media/sql-reference-data/sql-input-config.png)
+   ![選取 SQL Database 時，SQL Database 新的輸入頁面隨即出現。 左窗格中有一個設定表單，在右窗格中有一個快照集查詢。](./media/sql-reference-data/sql-input-config.png)
 
 3. 在 SQL 查詢編輯器中測試快照集查詢。 如需詳細資訊，請參閱[使用 Azure 入口網站的 SQL 查詢編輯器進行連線並查詢資料](../azure-sql/database/connect-query-portal.md)
 
@@ -46,7 +46,7 @@ Azure 串流分析支援以 Azure SQL Database 作為參考資料輸入的來源
 
 瀏覽到 [設定] 底下的 [儲存體帳戶設定]，然後選取 [新增儲存體帳戶]。
 
-   ![串流分析 [儲存體帳戶設定]](./media/sql-reference-data/storage-account-settings.png)
+   ![在左窗格中選取 [儲存體帳戶設定]。 右窗格中有 [新增儲存體帳戶] 按鈕。](./media/sql-reference-data/storage-account-settings.png)
 
 ### <a name="start-the-job"></a>啟動工作
 
@@ -91,27 +91,27 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 3. 輸入專案的 [名稱]、[位置] 和 [解決方案名稱]，然後選取 [確定]。
 
-   ![Visual Studio 中的新串流分析專案](./media/sql-reference-data/stream-analytics-vs-new-project.png)
+   ![已選取串流分析範本、已選取 Azure 串流分析應用程式，且 [名稱]、[位置] 和 [方案名稱] 方塊已反白顯示。](./media/sql-reference-data/stream-analytics-vs-new-project.png)
 
 ### <a name="define-sql-database-reference-data-input"></a>定義 SQL Database 參考資料輸入
 
 1. 建立新輸入。
 
-   ![Visual Studio 中的新串流分析輸入](./media/sql-reference-data/stream-analytics-vs-input.png)
+   ![在 [加入新專案] 上，選取 [輸入]。](./media/sql-reference-data/stream-analytics-vs-input.png)
 
 2. 按兩下 [方案總管] 中的 [Input.json]。
 
 3. 填寫 [串流分析輸入設定]。 選擇資料庫名稱、伺服器名稱、重新整理類型，以及重新整理頻率。 以 `DD:HH:MM` 的格式指定重新整理頻率。
 
-   ![Visual Studio 中的串流分析輸入設定](./media/sql-reference-data/stream-analytics-vs-input-config.png)
+   ![在串流分析輸入設定中，會在下拉式清單中輸入或選取值。](./media/sql-reference-data/stream-analytics-vs-input-config.png)
 
    如果您選擇 [僅執行一次] 或 [定期執行]，系統會在 [Input.json] 檔案節點底下的專案中產生名為 **[Input Alias].snapshot.sql** 的 SQL 程式碼後置檔案。
 
-   ![Visual Studio 中的輸入程式碼後置](./media/sql-reference-data/once-or-periodically-codebehind.png)
+   ![SQL 程式碼後置檔案化學. .sql 已反白顯示。](./media/sql-reference-data/once-or-periodically-codebehind.png)
 
-   如果您選擇 [搭配差異定期重新整理]，系統會產生兩個 SQL 程式碼後置檔案： **[Input Alias].snapshot.sql** 和 **[Input Alias].delta.sql** 。
+   如果您選擇 [搭配差異定期重新整理]，系統會產生兩個 SQL 程式碼後置檔案： **[Input Alias].snapshot.sql** 和 **[Input Alias].delta.sql**。
 
-   ![方案總管中的程式碼後置](./media/sql-reference-data/periodically-delta-codebehind.png)
+   ![SQL 後置檔案化學. .sql 和化學. .sql 會反白顯示。](./media/sql-reference-data/periodically-delta-codebehind.png)
 
 4. 在編輯器中開啟該 SQL 檔案，並寫入 SQL 查詢。
 
@@ -121,7 +121,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 開啟 **JobConfig.json** 以指定儲存 SQL 參考快照集的儲存體帳戶。
 
-   ![Visual Studio 中的串流分析作業設定](./media/sql-reference-data/stream-analytics-job-config.png)
+   ![串流分析作業設定設定會顯示為預設值。 全域存放裝置設定會反白顯示。](./media/sql-reference-data/stream-analytics-job-config.png)
 
 ### <a name="test-locally-and-deploy-to-azure"></a>於本機測試並部署到 Azure
 
@@ -156,7 +156,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
  
 2. 撰寫差異查詢。 
    
-   此查詢會抓取在開始時間、 **\@ deltaStartTime** 和結束時間 **\@ deltaEndTime** 中插入或刪除之 SQL Database 中的所有資料列。 差異查詢必須傳回和快照集查詢相同的資料行，以集 **_operation_** 資料行。 此資料行會定義資料列是否是在 **\@deltaStartTime** 和 **\@deltaEndTime** 之間插入或刪除。 如果記錄已插入，結果的資料列會被標示為 **1** ；如果已刪除，則會被標示為 **2** 。 查詢也必須新增來自 SQL Server 端的 **浮水印** ，以確保系統能適當地擷取差異期間中的所有更新。 在沒有 **浮水印** 的情況下使用差異查詢，可能會導致不正確的參考資料集。  
+   此查詢會抓取在開始時間、 **\@ deltaStartTime** 和結束時間 **\@ deltaEndTime** 中插入或刪除之 SQL Database 中的所有資料列。 差異查詢必須傳回和快照集查詢相同的資料行，以集 **_operation_** 資料行。 此資料行會定義資料列是否是在 **\@deltaStartTime** 和 **\@deltaEndTime** 之間插入或刪除。 如果記錄已插入，結果的資料列會被標示為 **1**；如果已刪除，則會被標示為 **2**。 查詢也必須新增來自 SQL Server 端的 **浮水印**，以確保系統能適當地擷取差異期間中的所有更新。 在沒有 **浮水印** 的情況下使用差異查詢，可能會導致不正確的參考資料集。  
 
    針對已更新的記錄，時態表會透過擷取插入和刪除作業來進行記錄。 串流分析執行階段接著便會將差異查詢的結果套用到先前的快照集，以將參考資料保持為最新狀態。 差異查詢的範例如下所示：
 
@@ -181,27 +181,27 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 1. 設定您的 SQL 參考資料輸入。
    
-   ![設定 SQL 參考資料輸入](./media/sql-reference-data/configure-sql-reference-data-input.png)
+   ![Visual Studio Code 編輯器 (] 索引標籤) 會顯示 ReferenceSQLDatabase.js。](./media/sql-reference-data/configure-sql-reference-data-input.png)
 
-2. 選取 SQL Server 圖示，然後按一下 [ **新增連接** ]。
+2. 選取 SQL Server 圖示，然後按一下 [ **新增連接**]。
    
-   ![按一下 SQL Server 圖示，然後按一下 [新增連接]](./media/sql-reference-data/add-sql-connection.png)
+   ![[+ 新增連接] 會出現在左窗格中，並反白顯示。](./media/sql-reference-data/add-sql-connection.png)
 
 3. 填寫連接資訊。
    
-   ![Visual Studio 中的串流分析輸入設定](./media/sql-reference-data/fill-connection-information.png)
+   ![系統會反白顯示資料庫和伺服器資訊的兩個方塊。](./media/sql-reference-data/fill-connection-information.png)
 
-4. 以滑鼠右鍵按一下 [參考 SQL]，然後選取 [ **執行查詢** ]。
+4. 以滑鼠右鍵按一下 [參考 SQL]，然後選取 [ **執行查詢**]。
    
-   ![Visual Studio 中的串流分析輸入設定](./media/sql-reference-data/execute-query.png)
+   ![[執行查詢] 會在內容功能表中反白顯示。](./media/sql-reference-data/execute-query.png)
 
 5. 選擇您的連接。
    
-   ![Visual Studio 中的串流分析輸入設定](./media/sql-reference-data/choose-connection.png)
+   ![此對話方塊會顯示 [從下列清單建立連接設定檔]，而清單中有一個專案，也就是醒目提示。](./media/sql-reference-data/choose-connection.png)
 
 6. 檢查並驗證您的查詢結果。
    
-   ![Visual Studio 中的串流分析輸入設定](./media/sql-reference-data/verify-result.png)
+   ![查詢搜尋結果位於 VS Code 編輯器] 索引標籤中。](./media/sql-reference-data/verify-result.png)
 
 
 ## <a name="faqs"></a>常見問題集

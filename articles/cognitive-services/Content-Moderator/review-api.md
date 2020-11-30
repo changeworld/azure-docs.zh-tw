@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: d98f2390be3b3f4b3770125185cb33daa5ff6371
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: e2d87d4322ac6b91a19a4775c23ceec75d528030
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93143598"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325327"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>內容仲裁審核、工作流程和作業
 
@@ -26,11 +26,11 @@ ms.locfileid: "93143598"
 在評論中，會將內容上傳到審核工具。 您可以按一下儀表板上 [ **審核** ] 索引標籤下的內容類型來加以查看。 從審核畫面中，您可以修改套用的標籤，並視需要套用您自己的自訂標記。 當您提交評論時，會將結果傳送至指定的回呼端點，並從網站移除內容。
 
 > [!div class="mx-imgBorder"]
-> ![已選取 [審核] 索引標籤的審核工具網站](./Review-Tool-user-Guide/images/review-tab.png)
+> ![[評論] 下拉式功能表已反白顯示。 它會顯示下列內容類型：影像、文字和影片。](./Review-Tool-user-Guide/images/review-tab.png)
 
 ### <a name="manage-reviews"></a>管理評論
 
-從儀表板中，流覽至 [ **管理員**  ->  **管理審核** ] 以查看管理畫面。 在這裡，您可以看到所有評論的清單 (暫止和已完成的) 。
+從儀表板中，流覽至 [**管理員**  ->  **管理審核**] 以查看管理畫面。 在這裡，您可以看到所有評論的清單 (暫止和已完成的) 。
 
 每個審核的三點 **動作** 按鈕可讓您移至審核畫面，或檢查該評論的歷程記錄。
 
@@ -40,7 +40,7 @@ ms.locfileid: "93143598"
 您可以使用 [ **搜尋** ] 工具列，依各種類別來排序評論，例如審核狀態、標記、內容類型、子小組、指派的使用者，以及建立/修改日期。
 
 > [!div class="mx-imgBorder"]
-> ![已選取 [審核] 索引標籤的審核工具網站](./Review-Tool-user-Guide/images/review-search.png)
+> ![[搜尋] 工具列會顯示。 它有各種用來輸入搜尋準則的下拉式方塊，例如檢查狀態和標記。](./Review-Tool-user-Guide/images/review-search.png)
 
 請參閱 [審核工具指南](./review-tool-user-guide/review-moderated-images.md) 以開始建立評論，或參閱 [REST API 指南](./try-review-api-review.md) ，以瞭解如何以程式設計方式進行。
 
@@ -50,7 +50,7 @@ ms.locfileid: "93143598"
 
 ### <a name="view-workflows"></a>查看工作流程
 
-若要查看您現有的工作流程，請移至 [ [審核] 工具](https://contentmoderator.cognitive.microsoft.com/)，然後選取 [ **管理**  >  **工作流程** ]。
+若要查看您現有的工作流程，請移至 [[審核] 工具](https://contentmoderator.cognitive.microsoft.com/)，然後選取 [**管理**  >  **工作流程**]。
 
 > [!div class="mx-imgBorder"]
 > ![預設工作流程](images/default-workflow-list.png)
@@ -88,7 +88,7 @@ ms.locfileid: "93143598"
 
 若要開始使用作業，請參閱 [REST API 指南](./try-review-api-job.md) 。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 試用[作業 API 主控台](try-review-api-job.md)，並使用 REST API 程式碼範例。 如果您已熟悉 Visual Studio 和 C#，也請參閱[作業 .NET 快速入門](moderation-jobs-quickstart-dotnet.md)。 
 * 若為檢閱者，請開始使用[檢閱 API 主控台](try-review-api-review.md)，並使用 REST API 程式碼範例。 然後查看 [.net 快速入門](./client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)的 [評論] 區段。

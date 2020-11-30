@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 0522f677c731aa1cd218a14429791db14179686a
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 5312ee08bad9d0b84e13c53fe4b1de59fad896f1
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496623"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326041"
 ---
 # <a name="migration-guide-db2-to-sql-server-on-azure-vms"></a>遷移指南： DB2 至 Azure Vm 上的 SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -119,7 +119,7 @@ ms.locfileid: "94496623"
    :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/migrate-data.png" alt-text="以滑鼠右鍵按一下結構描述，然後選擇 [移轉資料]":::
 
 1. 提供 DB2 及 SQL Server 執行個體的連線詳細資料。 
-1. 查看 **資料移轉報表** 。 
+1. 查看 **資料移轉報表**。 
 
    :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/data-migration-report.png" alt-text="檢閱資料移轉報表":::
 
@@ -139,10 +139,10 @@ ms.locfileid: "94496623"
 
 資料庫移轉的測試方法包含下列活動：
 
-1. **開發驗證測試** ：若要測試資料庫移轉，則需要使用 SQL 查詢。 您必須建立驗證查詢，以針對來源及目標資料庫執行。 驗證查詢應涵蓋已定義的範圍。
-1. **設定測試環境** ：測試環境應該包含來源資料庫及目標資料庫的複本。 請務必隔離測試環境。
-1. **執行驗證測試** ：對來源及目標執行驗證測試，然後分析結果。
-1. **執行效能測試** ：對來源及目標執行效能測試，然後分析並比較結果。
+1. **開發驗證測試**：若要測試資料庫移轉，則需要使用 SQL 查詢。 您必須建立驗證查詢，以針對來源及目標資料庫執行。 驗證查詢應涵蓋已定義的範圍。
+1. **設定測試環境**：測試環境應該包含來源資料庫及目標資料庫的複本。 請務必隔離測試環境。
+1. **執行驗證測試**：對來源及目標執行驗證測試，然後分析結果。
+1. **執行效能測試**：對來源及目標執行效能測試，然後分析並比較結果。
 
    > [!NOTE]
    > 如需開發及執行後續移轉驗證測試的協助，請考慮合作夥伴 [QuerySurge](https://www.querysurge.com/company/partners/microsoft) 所提供的資料品質解決方案。 
@@ -164,7 +164,7 @@ ms.locfileid: "94496623"
 
 移轉之後，請參閱[移轉後驗證和最佳化指南](/sql/relational-databases/post-migration-validation-and-optimization-guide)。 
 
-如需 Microsoft 及協力廠商所提供服務的矩陣，以及可協助處理各種資料庫與資料移轉情節及特殊工作的工具，請參閱[資料移轉服務與工具](/azure/dms/dms-tools-matrix)。
+如需 Microsoft 及協力廠商所提供服務的矩陣，以及可協助處理各種資料庫與資料移轉情節及特殊工作的工具，請參閱[資料移轉服務與工具](../../../dms/dms-tools-matrix.md)。
 
 如需其他移轉指南，請參閱[資料庫移轉](https://datamigration.microsoft.com/)。 
 

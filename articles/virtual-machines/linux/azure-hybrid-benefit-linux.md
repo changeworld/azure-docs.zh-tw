@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 1459c80c857a436c8369d3ebe89794e0b69c33b1
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 35bed58f95deebb78d8e787c8bc3f522ce7004df
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980876"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326964"
 ---
 # <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Azure Hybrid Benefit –適用于 Linux 虛擬機器的方式
 
@@ -155,9 +155,13 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 答：不可以。 Azure Hybrid Benefit 僅支援隨用隨付映射的轉換。
 
-*問：我已經從內部內部部署 (via ASR 上傳自己的 RHEL 映射，或) 到 Azure。我可以將這些映射的帳單從 BYOS 轉換成 PAYG 嗎？*
+*問：我已從內部內部部署 (透過 Azure Migrate、ASR 或) 至 Azure，上傳了自己的 RHEL 映射。我可以將這些映射的帳單從 BYOS 轉換成 PAYG 嗎？*
 
 答：不可以。 Azure Hybrid Benefit 功能目前僅適用于 RHEL 和 SLES Marketplace 映射。 
+
+*問：我已從內部內部部署 (透過 Azure Migrate、ASR 或) 至 Azure，上傳了自己的 RHEL 映射。我是否需要進行任何動作，以 Azure Hybrid Benefit 的好處？*
+
+答：否。 您上傳的 RHEL 映射已被視為 BYOS，而您只需支付 Azure 基礎結構成本。 您必須負責 RHEL 訂用帳戶的成本，就像您在內部部署環境中所做的一樣。 
 
 *問：我可以在從 Marketplace RHEL 和 SLES SAP 映射部署的 Vm 上使用 Azure Hybrid Benefit 嗎？*
 

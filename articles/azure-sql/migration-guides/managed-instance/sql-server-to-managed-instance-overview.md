@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 2c143c299cec1d48dd5438d5350c818d5cc93800
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2241049e5c3cb5039a73c0f7637f7e3553d2e227
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023713"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326864"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>遷移總覽： SQL Server 至 SQL 受控執行個體
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -63,7 +63,7 @@ ms.locfileid: "95023713"
 您可以在部署期間選擇計算和儲存體資源，然後在使用 [Azure 入口網站](../../database/scale-resources.md) 之後變更它們，而不會導致您的應用程式停機。 
 
 > [!IMPORTANT]
-> [受控實例虛擬網路需求](/azure/azure-sql/managed-instance/connectivity-architecture-overview#network-requirements)中的任何差異都可能會讓您無法建立新的實例，或使用現有的實例。 深入瞭解如何 [建立新](/azure/azure-sql/managed-instance/virtual-network-subnet-create-arm-template?branch=release-ignite-arc-data)   的網路和設定 [現有](/azure/azure-sql/managed-instance/vnet-existing-add-subnet?branch=release-ignite-arc-data)的   網路。 
+> [受控實例虛擬網路需求](../../managed-instance/connectivity-architecture-overview.md#network-requirements)中的任何差異都可能會讓您無法建立新的實例，或使用現有的實例。 深入瞭解如何 [建立新](../../managed-instance/virtual-network-subnet-create-arm-template.md?branch=release-ignite-arc-data)   的網路和設定 [現有](../../managed-instance/vnet-existing-add-subnet.md?branch=release-ignite-arc-data)的   網路。 
 
 ### <a name="sql-server-vm-alternative"></a>SQL Server VM 替代方案
 
@@ -88,7 +88,7 @@ ms.locfileid: "95023713"
 
 |技術 | 描述|
 |---------|---------|
-|[Azure 資料庫移轉服務 (DMS)](/azure/dms/tutorial-sql-server-to-managed-instance) \(部分機器翻譯\)  | 第一方 Azure 服務支援在離線模式下針對可在遷移過程中承受停機的應用程式，進行遷移。 不同于線上模式的連續遷移，離線模式遷移會執行從來源到目標的完整資料庫備份的一次性還原。 | 
+|[Azure 資料庫移轉服務 (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) \(部分機器翻譯\)  | 第一方 Azure 服務支援在離線模式下針對可在遷移過程中承受停機的應用程式，進行遷移。 不同于線上模式的連續遷移，離線模式遷移會執行從來源到目標的完整資料庫備份的一次性還原。 | 
 |[原生備份和還原](../../managed-instance/restore-sample-database-quickstart.md) | SQL 受控執行個體支援 () .bak 檔案還原原生 SQL Server 資料庫備份，讓可將完整資料庫備份提供給 Azure 儲存體的客戶成為最簡單的遷移選項。 在本文稍後的「 [遷移資產」一節](#migration-assets) 中，也支援並記載完整和差異備份。| 
 | | |
 
@@ -100,8 +100,8 @@ ms.locfileid: "95023713"
 |---------|---------|
 |[異動複寫](../../managed-instance/replication-transactional-overview.md) | 提供發行者-訂閱者類型遷移選項，同時維持交易一致性，以將資料從來源 SQL Server 資料庫資料表 (s) 複寫至 SQL 受控執行個體。 |  |
 |[大量複製](/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server)| [大量複製程式 (bcp) 公用](/sql/tools/bcp-utility)程式會將 SQL Server 實例的資料複製到資料檔案中。 使用 BCP 公用程式從來源匯出資料，並將資料檔案匯入目標 SQL 受控執行個體。</br></br> 針對將資料移至 Azure SQL Database 的高速大量複製作業， [智慧型大量複製工具](/samples/azure-samples/smartbulkcopy/smart-bulk-copy/) 可用來利用平行複製工作，將傳送速率最大化。 | 
-|[匯入匯出 Wizard/BACPAC](/azure/azure-sql/database/database-import?tabs=azure-powershell)| [BACPAC](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) 是一個 Windows 檔案，其 `.bacpac` 副檔名會封裝資料庫的架構和資料。 BACPAC 可以用來從來源 SQL Server 匯出資料，以及將檔案匯回 Azure SQL 受控執行個體。  |  
-|[Azure Data Factory (ADF)](/azure/data-factory/connector-azure-sql-managed-instance)| Azure Data Factory 中的 [複製活動](/azure/data-factory/copy-activity-overview) 會使用內建的連接器和 [受控執行個體](/azure/data-factory/concepts-integration-runtime)，將資料從來源 SQL Server 資料庫 (s) 遷移至 SQL Integration Runtime。</br> </br> ADF 支援各種不同的 [連接器](/azure/data-factory/connector-overview) ，可將資料從 SQL Server 來源移至 SQL 受控執行個體。 |
+|[匯入匯出 Wizard/BACPAC](../../database/database-import.md?tabs=azure-powershell)| [BACPAC](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) 是一個 Windows 檔案，其 `.bacpac` 副檔名會封裝資料庫的架構和資料。 BACPAC 可以用來從來源 SQL Server 匯出資料，以及將檔案匯回 Azure SQL 受控執行個體。  |  
+|[Azure Data Factory (ADF)](../../../data-factory/connector-azure-sql-managed-instance.md)| Azure Data Factory 中的 [複製活動](../../../data-factory/copy-activity-overview.md) 會使用內建的連接器和 [受控執行個體](../../../data-factory/concepts-integration-runtime.md)，將資料從來源 SQL Server 資料庫 (s) 遷移至 SQL Integration Runtime。</br> </br> ADF 支援各種不同的 [連接器](../../../data-factory/connector-overview.md) ，可將資料從 SQL Server 來源移至 SQL 受控執行個體。 |
 | | |
 
 ## <a name="compare-migration-options"></a>比較遷移選項
@@ -114,7 +114,7 @@ ms.locfileid: "95023713"
 
 |移轉選項  |使用時機  |考量  |
 |---------|---------|---------|
-|[Azure 資料庫移轉服務 (DMS)](/azure/dms/tutorial-sql-server-to-managed-instance) \(部分機器翻譯\) | -大規模遷移單一資料庫或多個資料庫。 </br> -可在遷移過程中容納停機時間。 </br> </br> 支援的來源： </br> -SQL Server (2005-2019) 內部部署或 Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP Compute SQL Server VM |  -大規模的大規模遷移可透過 [PowerShell](/azure/dms/howto-sql-server-to-azure-sql-mi-powershell)自動進行。 </br> -完成遷移的時間取決於資料庫大小，並且受備份和還原時間的影響。 </br> -可能需要足夠的停機時間。 |
+|[Azure 資料庫移轉服務 (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) \(部分機器翻譯\) | -大規模遷移單一資料庫或多個資料庫。 </br> -可在遷移過程中容納停機時間。 </br> </br> 支援的來源： </br> -SQL Server (2005-2019) 內部部署或 Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP Compute SQL Server VM |  -大規模的大規模遷移可透過 [PowerShell](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md)自動進行。 </br> -完成遷移的時間取決於資料庫大小，並且受備份和還原時間的影響。 </br> -可能需要足夠的停機時間。 |
 |[原生備份和還原](../../managed-instance/restore-sample-database-quickstart.md) | -遷移個別的企業營運應用程式資料庫 (s) 。  </br> -快速且輕鬆地進行遷移，而不需要個別的遷移服務或工具。  </br> </br> 支援的來源： </br> -SQL Server (2005-2019) 內部部署或 Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP Compute SQL Server VM | -資料庫備份會使用多個執行緒來優化資料傳輸至 Azure Blob 儲存體，但 ISV 頻寬和資料庫大小可能會影響傳送速率。 </br> -停機時間應能容納執行完整備份和還原 (所需的時間，這是) 資料作業的大小。| 
 | | | |
 
@@ -126,8 +126,8 @@ ms.locfileid: "95023713"
 |---------|---------|---------|
 |[異動複寫](../../managed-instance/replication-transactional-overview.md) | -持續將源資料庫資料表的變更發佈至目標 SQL 受控執行個體資料庫資料表，以進行遷移。 </br> -所選資料表的完整或部分資料庫移轉 (資料庫) 的子集。  </br> </br> 支援的來源： </br> -SQL Server (2012-2019) 但有一些限制 </br> -AWS EC2  </br> -GCP Compute SQL Server VM | </br> -相較于其他遷移選項，安裝程式相當複雜。   </br> -提供連續複寫選項來遷移資料 (而不需要讓資料庫離線) 。</br> -在來源 SQL Server 上設定「發行者」時，異動複寫有一些要考慮的限制。 若要深入瞭解，請參閱 [發佈物件的限制](/sql/relational-databases/replication/publish/publish-data-and-database-objects#limitations-on-publishing-objects) 。  </br> -可以使用 [監視複寫活動](/sql/relational-databases/replication/monitor/monitoring-replication) 的功能。    |
 |[大量複製](/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server)| -遷移完整或部分資料移轉。 </br> -可以容納停機時間。 </br> </br> 支援的來源： </br> -SQL Server (2005-2019) 內部部署或 Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP Compute SQL Server VM   | -需要從來源匯出資料並匯入目標的停機時間。 </br> -匯出/匯入中所使用的檔案格式和資料類型必須與資料表架構一致。 |
-|[匯入匯出 Wizard/BACPAC](/azure/azure-sql/database/database-import)| -遷移個別的企業營運應用程式資料庫 (s) 。 </br>-適用于較小的資料庫。  </br>  不需要個別的遷移服務或工具。 </br> </br> 支援的來源： </br> -SQL Server (2005-2019) 內部部署或 Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP Compute SQL Server VM  |   </br> -需要停機，因為資料需要在來源匯出並匯入目的地。   </br> -匯出/匯入中所使用的檔案格式和資料類型必須與資料表架構一致，以避免截斷/資料類型不符的錯誤。 </br> -匯出具有大量物件的資料庫所花費的時間，可能會大幅增加。 |
-|[Azure Data Factory (ADF)](/azure/data-factory/connector-azure-sql-managed-instance)| -從 SQL Server 資料庫 (s) 的來源遷移和/或轉換資料。</br> -將資料從多個資料來源合併到 Azure SQL 受控執行個體通常適用于商業智慧 (BI) 工作負載。   </br> -需要在 ADF 中建立資料移動管線，以將資料從來源移至目的地。   </br> - [成本](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) 是很重要的考慮，而且是以管線觸發程式、活動執行、資料移動的持續時間等為基礎。 |
+|[匯入匯出 Wizard/BACPAC](../../database/database-import.md)| -遷移個別的企業營運應用程式資料庫 (s) 。 </br>-適用于較小的資料庫。  </br>  不需要個別的遷移服務或工具。 </br> </br> 支援的來源： </br> -SQL Server (2005-2019) 內部部署或 Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP Compute SQL Server VM  |   </br> -需要停機，因為資料需要在來源匯出並匯入目的地。   </br> -匯出/匯入中所使用的檔案格式和資料類型必須與資料表架構一致，以避免截斷/資料類型不符的錯誤。 </br> -匯出具有大量物件的資料庫所花費的時間，可能會大幅增加。 |
+|[Azure Data Factory (ADF)](../../../data-factory/connector-azure-sql-managed-instance.md)| -從 SQL Server 資料庫 (s) 的來源遷移和/或轉換資料。</br> -將資料從多個資料來源合併到 Azure SQL 受控執行個體通常適用于商業智慧 (BI) 工作負載。   </br> -需要在 ADF 中建立資料移動管線，以將資料從來源移至目的地。   </br> - [成本](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) 是很重要的考慮，而且是以管線觸發程式、活動執行、資料移動的持續時間等為基礎。 |
 | | | |
 
 ## <a name="feature-interoperability"></a>功能互通性 
@@ -136,7 +136,7 @@ ms.locfileid: "95023713"
 
 #### <a name="sql-server-integration-services"></a>SQL Server Integration Services
 
-使用 [Azure 資料庫移轉服務 (DMS) ](/azure/dms/how-to-migrate-ssis-packages-managed-instance)，將 SSISDB 中的 SQL SERVER INTEGRATION SERVICES (SSIS) 套件和專案遷移至 azure SQL 受控執行個體。 
+使用 [Azure 資料庫移轉服務 (DMS) ](../../../dms/how-to-migrate-ssis-packages-managed-instance.md)，將 SSISDB 中的 SQL SERVER INTEGRATION SERVICES (SSIS) 套件和專案遷移至 azure SQL 受控執行個體。 
 
 僅支援從 SQL Server 2012 開始的 SSISDB 中的 SSIS 套件來進行遷移。 在遷移之前轉換舊版 SSIS 套件。 若要深入瞭解，請參閱 [專案轉換教學](/sql/integration-services/lesson-6-2-converting-the-project-to-the-project-deployment-model) 課程。 
 
@@ -149,7 +149,7 @@ SQL Server Reporting Services (SSRS) 報表可以遷移至 Power BI 中的分頁
 
 從 SQL Server 2012 和更新版本 SQL Server Analysis Services 表格式模型可以遷移至 Azure Analysis Services，這是在 Azure 中 Analysis Services 表格式模型的 PaaS 部署模型。 您可以在這段 [影片教學](https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/)課程中深入瞭解如何將內部內部部署模型遷移至 Azure Analysis Services。
 
-或者，您也可以考慮 [使用新的 XMLA 讀取/寫入端點](https://docs.microsoft.com/power-bi/admin/service-premium-connect-tools)，將內部部署 Analysis Services 表格式模型遷移至 Power BI Premium。 
+或者，您也可以考慮 [使用新的 XMLA 讀取/寫入端點](/power-bi/admin/service-premium-connect-tools)，將內部部署 Analysis Services 表格式模型遷移至 Power BI Premium。 
 > [!NOTE]
 > Power BI XMLA 讀取/寫入端點功能目前處於公開預覽狀態，在功能正式推出之前，不應考慮生產工作負載。
 
@@ -161,7 +161,7 @@ SQL Server 高可用性功能 Always On 容錯移轉叢集實例和 Always On �
 
 #### <a name="sql-agent-jobs"></a>SQL Agent 作業
 
-使用離線 Azure 資料庫移轉服務 (DMS) 選項來遷移 [SQL Agent 工作](/azure/dms/howto-sql-server-to-azure-sql-mi-powershell#offline-migrations)。 否則，請使用 SQL Server Management Studio 編寫 Transact-sql (T-sql) 中的作業腳本，然後在目標 SQL 受控執行個體上手動重新建立它們。 
+使用離線 Azure 資料庫移轉服務 (DMS) 選項來遷移 [SQL Agent 工作](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md#offline-migrations)。 否則，請使用 SQL Server Management Studio 編寫 Transact-sql (T-sql) 中的作業腳本，然後在目標 SQL 受控執行個體上手動重新建立它們。 
 
 > [!IMPORTANT]
 > Azure DMS 目前僅支援具有 T-sql 子系統步驟的作業。 具有 SSIS 封裝步驟的作業必須以手動方式遷移。 
@@ -193,7 +193,7 @@ SQL Server 高可用性功能 Always On 容錯移轉叢集實例和 Always On �
 
 請務必利用 SQL 受控執行個體所提供的先進雲端式功能。 例如，您不再需要擔心管理備份的方式，因為服務會為您執行此工作。 您可以還原至 [保留期限內的任何時間點](../../database/recovery-using-backups.md#point-in-time-restore)。 此外，您不需要擔心如何設定高可用性，因為 [內建高可用性](../../database/high-availability-sla.md)。 
 
-若要加強安全性，請考慮使用 [Azure Active Directory 驗證](../../database/authentication-aad-overview.md)、 [審核](../../managed-instance/auditing-configure.md)、 [威脅偵測](../../database/advanced-data-security.md)、資料 [列層級安全性](/sql/relational-databases/security/row-level-security)和 [動態資料遮罩](/sql/relational-databases/security/dynamic-data-masking)。
+若要加強安全性，請考慮使用 [Azure Active Directory 驗證](../../database/authentication-aad-overview.md)、 [審核](../../managed-instance/auditing-configure.md)、 [威脅偵測](../../database/azure-defender-for-sql.md)、資料 [列層級安全性](/sql/relational-databases/security/row-level-security)和 [動態資料遮罩](/sql/relational-databases/security/dynamic-data-masking)。
 
 除了先進的管理和安全性功能之外，SQL 受控執行個體還提供一組可協助您 [監視和微調工作負載](../../database/monitor-tune-overview.md)的 advanced tools。 [Azure SQL 分析](../../../azure-monitor/insights/azure-sql.md)可讓您以集中方式監視大型的受控實例集。 [自動調整](/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction)  在受控實例中，會持續監視 SQL 計畫執行統計資料的效能，並自動修正已識別的效能問題。 
 
@@ -214,7 +214,7 @@ SQL Server 高可用性功能 Always On 容錯移轉叢集實例和 Always On �
 這些資源是在資料 SQL Ninja 計畫中開發，由 Azure 資料群組工程小組贊助。 資料 SQL Ninja 計畫其核心宗旨是要為複雜的現代化步驟除去障礙並加速其過程，並將資料平台移轉機會與 Microsoft 的 Azure 資料平台相比較。 如果您認為組織想參與資料 SQL Ninja 計畫，請連絡帳戶小組並要求其提交提名。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要開始將您的 SQL Server 遷移至 Azure SQL 受控執行個體，請參閱 [SQL Server 至 SQL 受控執行個體遷移指南](sql-server-to-managed-instance-guide.md)。
 

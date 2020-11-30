@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mokabiru
 ms.date: 11/06/2020
-ms.openlocfilehash: e9fb004df5fdf8a955312ebcf16b8b60fd7c9b6a
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: c47e4c1278f222feac35a2c6ab0b067c916c0217
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592187"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326840"
 ---
 # <a name="migration-performance-sql-server-to-sql-managed-instance-performance-analysis"></a>遷移效能： SQL Server 至 SQL 受控執行個體效能分析
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -86,4 +86,4 @@ SQL 受控執行個體提供用於監視和疑難排解的 advanced tools，您�
 - [如何識別 Azure SQL 受控執行個體上的工作負載效能與 SQL Server 不同？](https://medium.com/azure-sqldb-managed-instance/what-to-do-when-azure-sql-managed-instance-is-slower-than-sql-server-dd39942aaadd)
 - [SQL 受控執行個體和 SQL Server 之間效能差異的主要原因](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)
 - [適用于 Azure SQL 受控執行個體 (一般用途) 的儲存體效能最佳做法和考慮 ](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525)
-- [Azure SQL 受控執行個體的即時效能監視 (這是封存的，這是預期的目標嗎？ ) ](https://docs.microsoft.com/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)
+- [Azure SQL 受控執行個體的即時效能監視 (這是封存的，這是預期的目標嗎？ ) ](/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)

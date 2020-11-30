@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: bc7db167ed1d1d8823e90bf422f17428a7ed4e48
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 369f17a39b9d7b2f85fffb8b72a293558d16416e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496646"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325157"
 ---
 # <a name="migration-guide-db2-to-sql-database"></a>遷移指南： DB2 至 SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "94496646"
 
 如需其他案例，請參閱 [資料庫移轉指南](https://datamigration.microsoft.com/)。
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>必要條件 
 
 若要將您的 DB2 資料庫移轉至 SQL Database，您需要：
 
@@ -83,7 +83,7 @@ ms.locfileid: "94496646"
 若要轉換結構描述，請遵循以下步驟：
 
 1. (選擇性) 將動態或臨機操作查詢新增至陳述式。 以滑鼠右鍵按一下節點，然後選擇 [新增陳述式]。 
-1. 選取 **[連接到 Azure SQL Database]** 。 
+1. 選取 **[連接到 Azure SQL Database]**。 
     1. 輸入連線詳細資料，以便在 Azure SQL Database 中連接您的資料庫。 
     1. 從下拉式清單中選擇您的目標 SQL Database。 
     1. 選取 [連接]  。 
@@ -108,7 +108,7 @@ ms.locfileid: "94496646"
 
 若要發佈結構描述並移轉資料，請遵循以下步驟：
 
-1. 發行架構：以滑鼠右鍵按一下 **Azure SQL Database 中繼資料瀏覽器** 之 [ **資料庫** ] 節點中的資料庫，然後選擇 [ **與資料庫同步** ]。
+1. 發行架構：以滑鼠右鍵按一下 **Azure SQL Database 中繼資料瀏覽器** 之 [**資料庫**] 節點中的資料庫，然後選擇 [**與資料庫同步**]。
 
    :::image type="content" source="media/db2-to-sql-database-guide/synchronize-with-database.png" alt-text="以滑鼠右鍵按一下資料庫，然後選擇 [與資料庫同步處理]":::
 
@@ -117,7 +117,7 @@ ms.locfileid: "94496646"
    :::image type="content" source="media/db2-to-sql-database-guide/migrate-data.png" alt-text="以滑鼠右鍵按一下結構描述，然後選擇 [移轉資料]":::
 
 1. 提供 DB2 和 Azure SQL Database 的連接詳細資料。 
-1. 查看 **資料移轉報表** 。 
+1. 查看 **資料移轉報表**。 
 
    :::image type="content" source="media/db2-to-sql-database-guide/data-migration-report.png" alt-text="檢閱資料移轉報表":::
 
@@ -138,10 +138,10 @@ ms.locfileid: "94496646"
 
 資料庫移轉的測試方法包含下列活動：
 
-1. **開發驗證測試** ：若要測試資料庫移轉，則需要使用 SQL 查詢。 您必須建立驗證查詢，以針對來源及目標資料庫執行。 驗證查詢應涵蓋已定義的範圍。
-1. **設定測試環境** ：測試環境應該包含來源資料庫及目標資料庫的複本。 請務必隔離測試環境。
-1. **執行驗證測試** ：對來源及目標執行驗證測試，然後分析結果。
-1. **執行效能測試** ：對來源及目標執行效能測試，然後分析並比較結果。
+1. **開發驗證測試**：若要測試資料庫移轉，則需要使用 SQL 查詢。 您必須建立驗證查詢，以針對來源及目標資料庫執行。 驗證查詢應涵蓋已定義的範圍。
+1. **設定測試環境**：測試環境應該包含來源資料庫及目標資料庫的複本。 請務必隔離測試環境。
+1. **執行驗證測試**：對來源及目標執行驗證測試，然後分析結果。
+1. **執行效能測試**：對來源及目標執行效能測試，然後分析並比較結果。
 
    > [!NOTE]
    > 如需開發及執行後續移轉驗證測試的協助，請考慮合作夥伴 [QuerySurge](https://www.querysurge.com/company/partners/microsoft) 所提供的資料品質解決方案。 
@@ -149,7 +149,7 @@ ms.locfileid: "94496646"
 
 ## <a name="leverage-advanced-features"></a>利用先進的功能 
 
-請務必利用 SQL Database 所提供的先進雲端式功能，例如 [內建的高可用性](../../database/high-availability-sla.md)、 [威脅偵測](../../database/advanced-data-security.md)，以及 [監視和調整您的工作負載](../../database/monitor-tune-overview.md)。 
+請務必利用 SQL Database 所提供的先進雲端式功能，例如 [內建的高可用性](../../database/high-availability-sla.md)、 [威脅偵測](../../database/azure-defender-for-sql.md)，以及 [監視和調整您的工作負載](../../database/monitor-tune-overview.md)。 
 
 
 只有當 [資料庫相容性層級](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database) 變更為最新的相容性層級時，才可使用部分 SQL Server 的功能 (150) 。 

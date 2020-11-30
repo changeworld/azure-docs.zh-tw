@@ -3,12 +3,12 @@ title: 備份和還原已加密的 Azure Vm
 description: 說明如何使用 Azure 備份服務來備份和還原已加密的 Azure Vm。
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: 67c0e879fe2acf241b1ed08a5658209bf70b1b9c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c4760a54d0200e48b2d6a38c963e9fc23925f7ff
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95978109"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324916"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>備份和還原已加密的 Azure 虛擬機器
 
@@ -16,13 +16,13 @@ ms.locfileid: "95978109"
 
 ## <a name="encryption-using-platform-managed-keys"></a>使用平臺管理的金鑰進行加密
 
-根據預設，Vm 中的所有磁片都會使用平臺管理的金鑰自動加密， (使用 [儲存體服務加密](../storage/common/storage-service-encryption.md)的 PMK) 。 您可以使用 Azure 備份來備份這些 Vm，而不需要任何特定的動作，以在您的結尾支援加密。 如需使用平臺管理的金鑰進行加密的詳細資訊， [請參閱這篇文章](../virtual-machines/windows/disk-encryption.md#platform-managed-keys)。
+根據預設，Vm 中的所有磁片都會使用平臺管理的金鑰自動加密， (使用 [儲存體服務加密](../storage/common/storage-service-encryption.md)的 PMK) 。 您可以使用 Azure 備份來備份這些 Vm，而不需要任何特定的動作，以在您的結尾支援加密。 如需使用平臺管理的金鑰進行加密的詳細資訊， [請參閱這篇文章](../virtual-machines/disk-encryption.md#platform-managed-keys)。
 
 ![加密磁碟](./media/backup-encryption/encrypted-disks.png)
 
 ## <a name="encryption-using-customer-managed-keys"></a>使用客戶管理的金鑰進行加密
 
-當您使用自訂管理的金鑰來加密磁片時 (CMK) ，用來加密磁片的金鑰會儲存在 Azure Key Vault 中，並由您管理。 儲存體服務加密使用 CMK (SSE) 不同于 Azure 磁碟加密 (ADE) 加密。 ADE 會使用作業系統的加密工具。 SSE 會加密儲存體服務中的資料，讓您可以使用 Vm 的任何 OS 或映射。 如需使用客戶管理的金鑰來加密受控磁片的詳細資訊，請參閱 [這篇文章](../virtual-machines/windows/disk-encryption.md#customer-managed-keys)。
+當您使用自訂管理的金鑰來加密磁片時 (CMK) ，用來加密磁片的金鑰會儲存在 Azure Key Vault 中，並由您管理。 儲存體服務加密使用 CMK (SSE) 不同于 Azure 磁碟加密 (ADE) 加密。 ADE 會使用作業系統的加密工具。 SSE 會加密儲存體服務中的資料，讓您可以使用 Vm 的任何 OS 或映射。 如需使用客戶管理的金鑰來加密受控磁片的詳細資訊，請參閱 [這篇文章](../virtual-machines/disk-encryption.md#customer-managed-keys)。
 
 ## <a name="encryption-support-using-ade"></a>使用 ADE 的加密支援
 
@@ -71,7 +71,7 @@ Azure 備份可以使用具有和沒有 Azure AD 應用程式的 ADE 來備份�
 
       ![案例窗格](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
 
-1. 在 [**備份原則**] 中  >  ，**選擇 [備份原則**]，選取您要與保存庫相關聯的原則。 然後選取 [確定]  。
+1. 在 [**備份原則**] 中  >  ，**選擇 [備份原則**]，選取您要與保存庫相關聯的原則。 然後選取 [確定]。
     - 備份原則會指定執行備份的時間，以及它們的儲存時間長度。
     - 預設原則的詳細資料便會列在下拉式功能表之下。
 
@@ -107,7 +107,7 @@ Azure 備份可以使用具有和沒有 Azure AD 應用程式的 ADE 來備份�
 2. 在 [ **備份專案**] 中，選取 [ **Azure 虛擬機器**]。
 3. 在 [ **備份專案** ] 清單中，選取省略號 ( ... ) 。
 4. 選取 [ **立即備份**]。
-5. 在 [立即備份] 中，使用行事曆控制項來選取復原點應該保留的最後一天。 然後選取 [確定]  。
+5. 在 [立即備份] 中，使用行事曆控制項來選取復原點應該保留的最後一天。 然後選取 [確定]。
 6. 監視入口網站通知。 您可以在保存庫儀表板中監視作業進度 > [備份作業] > [進行中]。 根據您的 VM 大小，建立初始備份可能需要花一點時間。
 
 ## <a name="provide-permissions"></a>提供許可權
@@ -131,7 +131,7 @@ Azure 備份需要唯讀存取權來備份金鑰和密碼，以及相關聯的 V
 
     ![Azure 備份選取範圍](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-1. 選取 [新增]  。 **備份管理服務** 已新增至 **存取原則**。
+1. 選取 [新增]。 **備份管理服務** 已新增至 **存取原則**。
 
     ![存取原則](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 

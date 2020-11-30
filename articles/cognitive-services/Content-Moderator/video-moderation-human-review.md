@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: pafarley
-ms.openlocfilehash: 392cc06c6e0bce7ec2304da61033fc508d940bbb
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 079d5ea0259a436100b81489043b71a81ec1a330
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93143715"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327214"
 ---
 # <a name="video-moderation-with-the-review-tool"></a>使用審核工具的影片仲裁
 
@@ -26,7 +26,7 @@ ms.locfileid: "93143715"
 在儀表板上，選取影片內容類型內的任何審核佇列。 這將會開始審核，並開啟 [影片內容審核] 頁面。
 
 > [!div class="mx-imgBorder"]
-> ![審核工具中的影片仲裁詳細觀點](./Review-Tool-User-Guide/images/video-moderation-detailed.png)
+> ![在內容仲裁 (預覽) 上，滑杆會反白顯示並設定為4個評論。 [全部模糊] 和 [黑色] 和 [白色] 參數都已反白顯示，而且兩者都已設定。](./Review-Tool-User-Guide/images/video-moderation-detailed.png)
 
 ### <a name="review-count"></a>評論計數
 
@@ -55,7 +55,7 @@ ms.locfileid: "93143715"
 * 選取 [歷程 **記錄** ] 索引標籤，以查看評論的歷程記錄，例如建立和修改的時間。
 
 > [!div class="mx-imgBorder"]
-> ![影片仲裁大量標記按鈕](./Review-Tool-User-Guide/images/video-moderation-video-details.png)
+> ![右側窗格會反白顯示，並選取 [附注] 索引標籤。 有一個測試區域加上附注。](./Review-Tool-User-Guide/images/video-moderation-video-details.png)
 
 ## <a name="apply-moderation-tags"></a>套用仲裁標記
 
@@ -63,10 +63,10 @@ ms.locfileid: "93143715"
 
 ### <a name="bulk-tagging"></a>大量標記
 
-**大量** 標籤工具列可讓您一次將標記新增至多個選取的影片。 選取一或多個影片，然後選取您想要套用的標籤，然後按一下 [ **提交** ]。 
+**大量** 標籤工具列可讓您一次將標記新增至多個選取的影片。 選取一或多個影片，然後選取您想要套用的標籤，然後按一下 [ **提交**]。 
 
 > [!div class="mx-imgBorder"]
-> ![影片仲裁大量標記按鈕](./Review-Tool-User-Guide/images/video-moderation-bulk-tags.png)
+> ![[大量標記] 窗格中的 [+] 按鈕會反白顯示。](./Review-Tool-User-Guide/images/video-moderation-bulk-tags.png)
 
 
 ### <a name="key-frame-tagging"></a>主要畫面格標記
@@ -77,7 +77,7 @@ ms.locfileid: "93143715"
 > 如果服務無法將主要畫面格解壓縮，主要畫面格磚窗格將 **不會顯示任何可用的畫面** ，而選取主要畫面格的選項將會呈現灰色。在此情況下，您只能使用 [ **影片標記 +** ] 按鈕) ，將標籤套用至影片作為整體 (。
 
 > [!div class="mx-imgBorder"]
-> ![審核工具中的影片仲裁詳細觀點](./Review-Tool-User-Guide/images/video-moderation-tagging-options.png)
+> ![[磚] 窗格、[影片播放]、[主要畫面格標籤] 窗格和 [影片標籤] 窗格都會顯示。 主要畫面格標記 + 和影片標記 + 按鈕會反白顯示。](./Review-Tool-User-Guide/images/video-moderation-tagging-options.png)
 
 ## <a name="put-a-review-on-hold"></a>召開審核
 
@@ -86,7 +86,7 @@ ms.locfileid: "93143715"
 您可以按一下畫面頂端的 [ **按住** ] 按鈕來觀看影片。 [保留] 窗格會出現在右側。 從這裡，您可以選取多個保留的評論，並將它們釋放回佇列，或設定其到期時間。 經過預先設定的時間之後，就會將保留的評論釋回佇列中。 選取 [ **儲存** ] 以從目前選取的到期時間開始計數。
 
 > [!div class="mx-imgBorder"]
-> ![審核工具中的影片仲裁詳細觀點](./Review-Tool-User-Guide/images/video-moderation-hold.png)
+> ![在 [影片] 窗格中，會反白顯示 [保存] 按鈕。 在窗格底部，會反白顯示 [按住 Time] 下拉式方塊，以及 [發行] 和 [儲存] 按鈕。](./Review-Tool-User-Guide/images/video-moderation-hold.png)
 
 ## <a name="submit-a-review"></a>提交評論
 
@@ -98,7 +98,7 @@ ms.locfileid: "93143715"
 
 影片從 limbo 到期後，他們的評論會標示為完成。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 開始使用[影片審查快速入門](video-moderation-api.md)。
 - 了解如何從已審核的輸出為您的人力審查者產生[影片審查](video-reviews-quickstart-dotnet.md)。

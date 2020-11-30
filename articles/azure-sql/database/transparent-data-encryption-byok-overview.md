@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 76ecd811ab0bffe20b4bddcc4dc2eacaffaed588
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2a7d77579eaebd3ee951d0184e25937783420806
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308331"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325191"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>搭配使用 Azure SQL 透明資料加密與客戶管理的金鑰
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -78,11 +78,11 @@ Key vault 系統管理員也可以 [啟用金鑰保存庫審核事件的記錄](
 
 - Key vault 和 SQL Database/受控實例必須屬於相同的 Azure Active Directory 租使用者。 不支援跨租用戶金鑰保存庫與伺服器的互動。 若要在之後移動資源，則必須重新設定 TDE with AKV。 深入瞭解如何 [移動資源](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
-- 必須在金鑰保存庫上啟用虛[刪除](../../key-vault/general/soft-delete-overview.md)功能，以防止資料遺失意外的金鑰 (或金鑰保存庫) 刪除發生。 除非客戶同時復原或清除虛刪除的資源，否則會保留90天。 *復原* 和 *清除* 動作本身的權限已在金鑰保存庫的存取原則中建立關聯。 虛刪除功能預設為關閉，並可透過 [PowerShell](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) 或 [CLI](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete)來啟用。 無法透過 Azure 入口網站啟用。  
+- 必須在金鑰保存庫上啟用虛[刪除](../../key-vault/general/soft-delete-overview.md)功能，以防止資料遺失意外的金鑰 (或金鑰保存庫) 刪除發生。 除非客戶同時復原或清除虛刪除的資源，否則會保留90天。 *復原* 和 *清除* 動作本身的權限已在金鑰保存庫的存取原則中建立關聯。 虛刪除功能預設為關閉，並可透過 [PowerShell](../../key-vault/general/key-vault-recovery.md?tabs=azure-powershell) 或 [CLI](../../key-vault/general/key-vault-recovery.md?tabs=azure-cli)來啟用。 無法透過 Azure 入口網站啟用。  
 
 - 將金鑰保存庫 (get、wrapKey、unwrapKey) 的存取權授與伺服器或受控實例，並使用其 Azure Active Directory 身分識別。 使用 Azure 入口網站時，會自動建立 Azure AD 身分識別。 使用 PowerShell 或 CLI 時，必須明確建立 Azure AD 身分識別，並驗證完成。 如需使用 PowerShell 時的詳細逐步指示，請參閱使用 [BYOK 設定 TDE](transparent-data-encryption-byok-configure.md) 和 [設定 TDE WITH BYOK for SQL 受控執行個體](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) 。
 
-- 搭配使用防火牆與 AKV 時，您必須啟用 *[允許信任的 Microsoft 服務] 選項來略過防火牆* 。
+- 搭配使用防火牆與 AKV 時，您必須啟用 *[允許信任的 Microsoft 服務] 選項來略過防火牆*。
 
 ### <a name="requirements-for-configuring-tde-protector"></a>設定 TDE 保護裝置的需求
 
@@ -135,7 +135,7 @@ Key vault 系統管理員也可以 [啟用金鑰保存庫審核事件的記錄](
 
 - 如果在8小時內還原金鑰存取，資料庫會在接下來的一小時內自動修復。
 
-- 如果在超過 8 個小時後還原金鑰存取，則無法自動修復，且讓資料庫重新上線需要在入口網站上採取額外步驟，視資料庫大小而定可能需要相當長的時間。 一旦資料庫重新上線，先前設定的伺服器層級設定（例如 [容錯移轉群組](auto-failover-group-overview.md) 設定、時間點還原歷程記錄，以及標記）將會 **遺失** 。 因此，建議您執行通知系統，讓您識別並解決8小時內的基礎金鑰存取問題。
+- 如果在超過 8 個小時後還原金鑰存取，則無法自動修復，且讓資料庫重新上線需要在入口網站上採取額外步驟，視資料庫大小而定可能需要相當長的時間。 一旦資料庫重新上線，先前設定的伺服器層級設定（例如 [容錯移轉群組](auto-failover-group-overview.md) 設定、時間點還原歷程記錄，以及標記）將會 **遺失**。 因此，建議您執行通知系統，讓您識別並解決8小時內的基礎金鑰存取問題。
 
 以下是在入口網站上顯示無法存取的資料庫重新上線所需的其他步驟。
 
@@ -146,7 +146,7 @@ Key vault 系統管理員也可以 [啟用金鑰保存庫審核事件的記錄](
 
 有足夠的許可權可存取金鑰保存庫時，可能會意外停用伺服器對金鑰的存取：
 
-- 從伺服器撤銷金鑰保存庫的 *get* 、 *wrapKey* 、 *unwrapKey* 許可權
+- 從伺服器撤銷金鑰保存庫的 *get*、 *wrapKey*、 *unwrapKey* 許可權
 
 - 正在刪除金鑰
 

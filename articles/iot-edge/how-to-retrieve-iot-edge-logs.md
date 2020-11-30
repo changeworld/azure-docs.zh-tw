@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 97cdc4ad0b1d5e7dfb6642fa0163f810be5d7171
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: ad990f10c611c5ca5bb8a8d053ee4d59b6f05c83
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966916"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326993"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>從 IoT Edge 的部署取出記錄
 
@@ -50,10 +50,10 @@ ms.locfileid: "94966916"
           {
              "id": "regex string",
              "filter": {
-                "tail": int,
-                "since": int,
-                "until": int,
-                "loglevel": int,
+                "tail": "int",
+                "since": "int",
+                "until": "int",
+                "loglevel": "int",
                 "regex": "regex string"
              }
           }
@@ -63,11 +63,11 @@ ms.locfileid: "94966916"
     }
 ```
 
-| 名稱 | 類型 | 描述 |
+| 名稱 | 類型 | 說明 |
 |-|-|-|
 | schemaVersion | 字串 | 設定為 `1.0` |
 | 項目 | JSON 陣列 | 具有 `id` 和 `filter` 元組的陣列。 |
-| ID | 字串 | 提供模組名稱的正則運算式。 它可以符合 edge 裝置上的多個模組。 需要[.Net 正則運算式](/dotnet/standard/base-types/regular-expressions)格式。 |
+| 識別碼 | 字串 | 提供模組名稱的正則運算式。 它可以符合 edge 裝置上的多個模組。 需要[.Net 正則運算式](/dotnet/standard/base-types/regular-expressions)格式。 |
 | filter | JSON 區段 | 要套用至符合 `id` 元組中正則運算式之模組的記錄篩選。 |
 | 尾巴 | integer | 過去從最新的開始取出的記錄行數。 選擇性。 |
 | 自 | integer | 只會在這段時間之後傳回記錄， (1 d、90 m、2天3小時2分鐘) 、rfc3339 時間戳記或 UNIX 時間戳記。  如果同時 `tail` 指定了和 `since` ，則會先使用值抓取記錄 `since` 。 然後，此 `tail` 值會套用到結果，並傳回最終結果。 選擇性。 |
@@ -159,10 +159,10 @@ az iot hub invoke-module-method \
           {
              "id": "regex string",
              "filter": {
-                "tail": int,
-                "since": int,
-                "until": int,
-                "loglevel": int,
+                "tail": "int",
+                "since": "int",
+                "until": "int",
+                "loglevel": "int",
                 "regex": "regex string"
              }
           }
@@ -172,7 +172,7 @@ az iot hub invoke-module-method \
     }
 ```
 
-| 名稱 | 類型 | 描述 |
+| 名稱 | 類型 | 說明 |
 |-|-|-|
 | sasURL | 字串 (URI)  | [具有 Azure Blob 儲存體容器之寫入存取權的共用存取](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer)簽章 URL。 |
 
@@ -289,7 +289,7 @@ az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d 
     }
 ```
 
-| 名稱 | 類型 | 描述 |
+| 名稱 | 類型 | 說明 |
 |-|-|-|
 | schemaVersion | 字串 | 設定為 `1.0` |
 | sasURL | 字串 (URI)  | [具有 Azure Blob 儲存體容器之寫入存取權的共用存取簽章 URL](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |

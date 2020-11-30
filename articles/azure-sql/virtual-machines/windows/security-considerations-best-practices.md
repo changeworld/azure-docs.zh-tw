@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e6f6d1960c07dc23c584dec5bb424f91630fc1bb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 92cd20f9e636c50416a72ec974a33c87da1ae2cb
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785063"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327265"
 ---
 # <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上的 SQL Server 安全性考量
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -59,7 +59,7 @@ Azure 符合多種業界規範及標準，可讓您使用在虛擬機器中執�
 
 ## <a name="encryption"></a>加密
 
-受控磁片提供 Server-Side 加密及 Azure 磁碟加密。 [伺服器端加密](../../../virtual-machines/windows/disk-encryption.md) 提供待用加密，並保護資料安全，以符合組織的安全性和合規性承諾。 [Azure 磁碟加密](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md)會使用 Bitlocker 或 DM Crypt 技術並與 Azure Key Vault 整合，以加密 OS 和資料磁碟。 
+受控磁片提供 Server-Side 加密及 Azure 磁碟加密。 [伺服器端加密](../../../virtual-machines/disk-encryption.md) 提供待用加密，並保護資料安全，以符合組織的安全性和合規性承諾。 [Azure 磁碟加密](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md)會使用 Bitlocker 或 DM Crypt 技術並與 Azure Key Vault 整合，以加密 OS 和資料磁碟。 
 
 ## <a name="use-a-non-default-port"></a>使用非預設連接埠
 
@@ -90,10 +90,10 @@ Azure 符合多種業界規範及標準，可讓您使用在虛擬機器中執�
 
 - 根據預設，Azure 會在 SQL Server 虛擬機器安裝期間選取 Windows 驗證。 因此，系統會停用 **SA** 登入，並由安裝程式指派密碼。 我們建議不要使用或啟用 **SA** 登入。 如果您必須具有 SQL 登入，請使用下列其中一個策略：
 
-  - 使用具有 **sysadmin** 成員資格的唯一名稱建立 SQL 帳戶。 在佈建期間啟用 **SQL 驗證** ，即可從入口網站執行此作業。
+  - 使用具有 **sysadmin** 成員資格的唯一名稱建立 SQL 帳戶。 在佈建期間啟用 **SQL 驗證**，即可從入口網站執行此作業。
 
     > [!TIP] 
-    > 如果您未在佈建期間啟用 SQL 驗證，您必須將驗證模式手動變更為 **SQL Server 和 Windows 驗證模式** 。 如需詳細資訊，請參閱 [變更伺服器驗證模式](/sql/database-engine/configure-windows/change-server-authentication-mode)。
+    > 如果您未在佈建期間啟用 SQL 驗證，您必須將驗證模式手動變更為 **SQL Server 和 Windows 驗證模式**。 如需詳細資訊，請參閱 [變更伺服器驗證模式](/sql/database-engine/configure-windows/change-server-authentication-mode)。
 
   - 如果您必須使用 **SA** 登入，請在佈建後啟用此登入，然後指派新的強式密碼。
 

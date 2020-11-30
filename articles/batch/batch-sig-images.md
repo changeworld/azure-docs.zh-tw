@@ -4,12 +4,12 @@ description: 自訂映射集區是設定計算節點以執行 Batch 工作負載
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: c24da435540f62a793620fe6005d176ce10c7b05
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: eb21a9e0d355274142e34fbb5c90a4d293c88ef1
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917778"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327299"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>使用共用映射庫來建立自訂映射集區
 
@@ -58,7 +58,7 @@ ms.locfileid: "94917778"
 - 已上傳至雲端的一般化內部部署 VHD
 
 > [!NOTE]
-> Batch 目前僅支援一般化共用映像。 您目前無法從特製化的共用映像建立自訂映像集區。
+> Batch 僅支援一般化共用映射;特製化共用映射無法用來建立集區。
 
 下列步驟將說明如何準備 VM、建立快照集，然後從快照集建立映像。
 

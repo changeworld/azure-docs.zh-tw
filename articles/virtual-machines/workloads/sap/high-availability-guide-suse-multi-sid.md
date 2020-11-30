@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 3827fa7a98cef9358db0ee102925586bce97fae6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cf0703406b71cb56bdd75a04746dfce7db6af471
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188678"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327129"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>Azure Vm 上的 SAP NetWeaver 的高可用性，適用于 SAP 應用程式的多 SID 指南 SUSE Linux Enterprise Server
 
@@ -90,11 +90,11 @@ ms.locfileid: "96188678"
 * [使用 Azure NetApp Files 在 Microsoft Azure 上的 NetApp SAP 應用程式][anf-sap-applications-azure]
 ## <a name="overview"></a>概觀
 
-如果發生容錯移轉，則參與叢集的虛擬機器必須調整大小，才能執行所有資源。 每個 SAP SID 都可在多重 SID 高可用性叢集中彼此獨立地進行容錯移轉。  如果使用 SBD 隔離，可以在多個叢集之間共用 SBD 裝置。  
+如果發生容錯移轉，就必須將參與叢集的虛擬機器調整大小，以便能夠執行所有資源。 每個 SAP SID 都可在多重 SID 高可用性叢集中彼此獨立地進行容錯移轉。  如果使用 SBD 隔離，可以在多個叢集之間共用 SBD 裝置。  
 
 為了達到高可用性，SAP NetWeaver 需要高度可用的 NFS 共用。 在此範例中，我們假設 SAP NFS 共用裝載于高可用性 [NFS 檔案伺服器](./high-availability-guide-suse-nfs.md)，可供多個 SAP 系統使用。 或共用會部署在 [Azure NetApp FILES NFS 磁片](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)區上。  
 
-![SAP NetWeaver 高可用性概觀](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
+![Pacemaker 叢集會顯示兩個多重 SID 叢集（msidcl1 和 msidcl2）的詳細資訊。](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
 
 > [!IMPORTANT]
 > 在 Azure Vm 中，支援以 SUSE Linux 作為客體作業系統的 SAP ASCS/ERS 多重 SID 叢集，在相同的叢集上受限於 **五個** sap sid。 每個新的 SID 都會增加複雜度。 **不支援** 在相同的叢集上混用 SAP 排入佇列複寫伺服器1和排入佇列複寫伺服器2。 多重 SID 叢集描述在一個 Pacemaker 叢集中安裝具有不同 Sid 的多個 SAP ASCS/ERS 實例。 目前只支援 ASCS/ERS 的多重 SID 叢集。  
@@ -179,7 +179,7 @@ SAP NetWeaver 需要傳輸和設定檔目錄等的共用儲存體。 若為高�
 
 下列項目會加上下列其中一個前置詞： **[A]** - 適用於所有節點、 **[1]** - 僅適用於節點 1 或 **[2]** - 僅適用於節點 2。
 
-### <a name="prerequisites"></a>Prerequisites 
+### <a name="prerequisites"></a>必要條件 
 
 > [!IMPORTANT]
 > 依照指示，在叢集中部署其他 SAP 系統之前，請遵循指示，在叢集中部署第一個 SAP 系統，因為只有在第一次部署系統時才需要執行這些步驟。  

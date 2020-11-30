@@ -8,12 +8,12 @@ author: ShaneBala-keyvault
 ms.author: sudbalas
 manager: ravijan
 ms.date: 09/30/2020
-ms.openlocfilehash: fbeb6f5f223642c09183c149188c6717c1f33a8e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 86190fa307133360c411aafc070412e7d527039e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748499"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324953"
 ---
 # <a name="how-to-enable-soft-delete-and-purge-protection"></a>如何啟用虛刪除和清除保護
 
@@ -44,7 +44,7 @@ ms.locfileid: "92748499"
 1. 確認虛刪除旁邊的選項按鈕是否設定為「啟用復原」。
 1. 如果未在金鑰保存庫上啟用虛刪除，請按一下選項按鈕以啟用虛刪除，然後按一下 [儲存]。
 
-:::image type="content" source="../media/key-vault-recovery-1.png" alt-text="<Azure 入口網站的螢幕擷取畫面>":::
+:::image type="content" source="../media/key-vault-recovery-1.png" alt-text="在 [屬性] 上，[虛刪除] 會反白顯示，也就是啟用它的值。":::
 
 ## <a name="grant-access-to-a-service-principal-to-purge-and-recover-deleted-secrets"></a>授與服務主體的存取權，以清除和復原已刪除的秘密
 
@@ -56,7 +56,7 @@ ms.locfileid: "92748499"
 1. 滾動至下拉式清單底部，然後按一下 [復原] 和 [清除]
 1. 安全性主體也需要取得和列出功能，才能執行大部分的作業。
 
-:::image type="content" source="../media/key-vault-recovery-2.png" alt-text="<Azure 入口網站的螢幕擷取畫面>":::
+:::image type="content" source="../media/key-vault-recovery-2.png" alt-text="在左側流覽窗格中，會反白顯示存取原則。在 [存取原則] 上，會顯示 [秘密位置] 下拉式清單，並選取四個專案：取得、列出、復原和清除。":::
 
 ## <a name="list-recover-or-purge-a-soft-deleted-key-vault"></a>列出、復原或清除虛刪除的金鑰保存庫
 
@@ -72,9 +72,9 @@ ms.locfileid: "92748499"
 1. 如果您想要復原金鑰保存庫，請選取內容窗格底部的 [復原] 選項。
 1. 如果您想要永久刪除金鑰保存庫，請選取 [清除] 選項。
 
-:::image type="content" source="../media/key-vault-recovery-3.png" alt-text="<Azure 入口網站的螢幕擷取畫面>":::
+:::image type="content" source="../media/key-vault-recovery-3.png" alt-text="在金鑰保存庫上，會反白顯示 [管理已刪除的保存庫] 選項。":::
 
-:::image type="content" source="../media/key-vault-recovery-4.png" alt-text="<Azure 入口網站的螢幕擷取畫面>":::
+:::image type="content" source="../media/key-vault-recovery-4.png" alt-text="在 [管理已刪除的金鑰保存庫] 上，會反白顯示並選取唯一列出的金鑰保存庫，並醒目提示 [復原] 按鈕。":::
 
 ## <a name="list-recover-or-purge-soft-deleted-secrets-keys-and-certificates"></a>列出、復原或清除虛刪除的秘密、金鑰和憑證
 
@@ -87,7 +87,7 @@ ms.locfileid: "92748499"
 1. 選取您要管理的秘密、金鑰或憑證。
 1. 在內容窗格的底部，選取要復原或清除的選項。
 
-:::image type="content" source="../media/key-vault-recovery-5.png" alt-text="<Azure 入口網站的螢幕擷取畫面>":::
+:::image type="content" source="../media/key-vault-recovery-5.png" alt-text="在 [金鑰] 上，會反白顯示 [管理已刪除的金鑰] 選項。":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

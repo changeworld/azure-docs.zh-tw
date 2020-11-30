@@ -3,12 +3,12 @@ title: 設定 Azure 備份報告
 description: 使用 Log Analytics 和 Azure 活頁簿來設定及檢視 Azure 備份的報告
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 11893488c59781bb78cf913a30069e920c66bc71
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 2565fa1183635c10e45b247f723788b6fe371c14
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172462"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325242"
 ---
 # <a name="configure-azure-backup-reports"></a>設定 Azure 備份報告
 
@@ -18,7 +18,7 @@ ms.locfileid: "92172462"
 - 稽核備份和還原。
 - 找出不同細微性層級的主要趨勢。
 
-現今，Azure 備份提供的報告解決方案會使用 [Azure 監視器記錄](../azure-monitor/log-query/get-started-portal.md)和 [Azure 活頁簿](../azure-monitor/platform/workbooks-overview.md)。 這些資源可協助您取得有關整個備份資產中備份的豐富見解。 本文說明如何設定及檢視 Azure 備份報告。
+現今，Azure 備份提供的報告解決方案會使用 [Azure 監視器記錄](../azure-monitor/log-query/log-analytics-tutorial.md)和 [Azure 活頁簿](../azure-monitor/platform/workbooks-overview.md)。 這些資源可協助您取得有關整個備份資產中備份的豐富見解。 本文說明如何設定及檢視 Azure 備份報告。
 
 ## <a name="supported-scenarios"></a>支援的案例
 
@@ -73,7 +73,7 @@ Azure 備份也提供內建的 Azure 原則定義，可自動設定指定範圍�
 
 此報告包含各種索引標籤：
 
-##### <a name="summary"></a>總結
+##### <a name="summary"></a>摘要
 
 您可以使用此索引標籤來取得備份資產的概要說明。 您可以快速概覽備份項目總數、已取用的雲端儲存體總量、受保護的執行個體數目，以及每個工作負載類型的作業成功率。 如需特定備份成品類型的詳細資訊，請移至個別的索引標籤。
 

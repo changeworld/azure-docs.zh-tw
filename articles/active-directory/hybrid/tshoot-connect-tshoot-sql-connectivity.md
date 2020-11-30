@@ -10,16 +10,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/14/2018
+ms.date: 11/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5f8b87684847089a05341a5a68f6ad3e2ac86b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c29087ee1f74e2abed8c9fb2449a222469c82848
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85355857"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325122"
 ---
 # <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>對 Azure AD Connect 的 SQL 連線問題進行疑難排解
 本文說明如何針對 Azure AD Connect 和 SQL Server 間的連線問題進行疑難排解。 
@@ -29,10 +29,12 @@ ms.locfileid: "85355857"
 ![SQL 錯誤](./media/tshoot-connect-tshoot-sql-connectivity/sql1.png)
 
 ## <a name="troubleshooting-steps"></a>疑難排解步驟
-開啟 PowerShell 視窗，匯入 ADSyncTools Powershell 模組
+開啟 PowerShell 視窗並匯入 ADSyncTools Powershell 模組
 
 ``` powershell
-Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\Tools\AdSyncTools.psm1" 
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+Install-PackageProvider -Name NuGet -MinimumVersion2.8.5.201 -Force
+Import-module -Name "C:\Program Files\Microsoft Azure Active Directory Connect\Tools\AdSyncTools"
 ```
 
 >[!NOTE]
@@ -40,13 +42,13 @@ Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\Tools\A
 或安裝l [PackageManagement PowerShell Modules Preview - 2016 年 3 月 (適用於PowerShell 3.0/4.0)](/powershell/module/PackageManagement) 
 
 - **顯示所有命令**： `Get-Command -Module AdSyncTools` 
-- 使用下列參數**執行 powershell**函式： `Connect-ADSyncDatabase`
+- 使用下列參數 **執行 PowerShell** 函式： `Connect-ADSyncDatabase`
     - 伺服器。 SQL Server 名稱。
     - 執行個體。 (選擇性) SQL Server 執行個體名稱和您想要使用的連接埠號碼 (選擇性)。 請勿指定這個參數使用預設執行個體。
-    - 使用者名稱。 (選擇性) 要連線的使用者帳戶。 若留白，將使用目前登入的使用者。 如果您要連線到遠端的 SQL Server，則應是您為 Azure AD Connect 的 SQL 連線能力所建立的自訂服務帳戶。 Azure AD Connect 會使用 Azure AD Connect 同步處理服務帳戶，以驗證遠端的 SQL Server。
+    - 使用者名稱。 (選擇性) 要連線的使用者帳戶。 若留白，將使用目前登入的使用者。 如果您要連接到遠端 SQL Server 這應該是您為 Azure AD Connect SQL 連線能力建立的自訂服務帳戶。 Azure AD Connect 會使用 Azure AD Connect 同步處理服務帳戶，以驗證遠端的 SQL Server。
     - 密碼。 (選擇性) 所提供的使用者名稱的密碼。
 
-此 PowerShell 函式會嘗試使用傳入的認證或目前使用者的認證，繫結至指定的 SQL Server 和執行個體。 如果找不到 SQL Server，指定碼便會嘗試連線至 SQL Browser 服務，以判斷啟用的通訊協定和連接埠。
+這個 PowerShell 函式會嘗試系結至指定的 SQL Server 和實例，使用傳入的認證或使用目前使用者的認證。 如果找不到 SQL Server，指定碼便會嘗試連線至 SQL Browser 服務，以判斷啟用的通訊協定和連接埠。
 
 僅使用伺服器名稱的範例：
 ```

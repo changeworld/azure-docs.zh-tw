@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 59eae5303d9eca48fa4cec30fe622faf19ffba1f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8572a73586b01967c8aef7f6c4947b5ce96146b4
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961882"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324851"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>教學課程：在 Azure 虛擬機器上的 SQL Server 上建立可用性群組的必要條件
 
@@ -56,7 +56,7 @@ ms.locfileid: "94961882"
    ![資源群組](./media/availability-group-manually-configure-prerequisites-tutorial-/01-resourcegroupsymbol.png)
 
 4. 選取 **資源群組**。
-5. 選取 [建立]。
+5. 選取 [建立]  。
 6. 在 [資源群組名稱] 下方，輸入資源群組的名稱。 例如，輸入 **sql-ha-rg**。
 7. 如果您有多個 Azure 訂用帳戶，請確認此訂用帳戶是您要在其中建立可用性群組的 Azure 訂用帳戶。
 8. 選取位置。 此位置是您要建立可用性群組的 Azure 區域。 本文會在一個 Azure 位置建置所有資源。
@@ -101,7 +101,7 @@ Azure 會建立資源群組，並在入口網站中釘選資源群組的捷徑�
 
    此範例會使用子網路名稱 **Admin**。此子網路用於網域控制站。
 
-5. 選取 [建立]。
+5. 選取 [建立]  。
 
    ![設定虛擬網路](./media/availability-group-manually-configure-prerequisites-tutorial-/06-configurevirtualnetwork.png)
 
@@ -144,7 +144,7 @@ Azure 會讓您回到入口網站儀表板，並在建立完新網路時通知�
 
 ## <a name="create-availability-sets"></a>建立可用性設定組
 
-建立虛擬機器之前，您必須建立可用性設定組。 可用性設定組可縮短計劃性或非計劃性維護事件的停機時間。 Azure 可用性設定組是 Azure 置於實體容錯網域和更新網域上的邏輯資源群組。 容錯網域會確保可用性設定組的成員具有個別的電源和網路資源。 更新網域會確保可用性設定組的成員不會同時停機來進行維護。 如需詳細資訊，請參閱[管理虛擬機器的可用性](../../../virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)。
+建立虛擬機器之前，您必須建立可用性設定組。 可用性設定組可縮短計劃性或非計劃性維護事件的停機時間。 Azure 可用性設定組是 Azure 置於實體容錯網域和更新網域上的邏輯資源群組。 容錯網域會確保可用性設定組的成員具有個別的電源和網路資源。 更新網域會確保可用性設定組的成員不會同時停機來進行維護。 如需詳細資訊，請參閱[管理虛擬機器的可用性](../../../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 您需要兩個可用性設定組。 一個用於網域控制站。 第二個用於 SQL Server VM。
 
@@ -169,7 +169,7 @@ Azure 會讓您回到入口網站儀表板，並在建立完新網路時通知�
 
 若要建立和設定網域控制站，請回到 **SQL-HA-RG** 資源群組。
 
-1. 選取 [新增]  。 
+1. 選取 [新增]。 
 2. 輸入 **Windows Server 2016 資料中心**。
 3. 選取 [ **Windows Server 2016 Datacenter**]。 在 **Windows Server 2016 Datacenter** 中，確認部署模型 **Resource Manager**，然後選取 [ **建立**]。 
 
@@ -562,7 +562,7 @@ Azure 會建立虛擬機器。
 
    ![SQL 防火牆](./media/availability-group-manually-configure-prerequisites-tutorial-/35-tcpports.png)
 
-5. 選取 [下一步]。
+5. 選取 [下一步] 。
 6. 在 [ **動作** ] 頁面上，保持選取 **[允許連接** ]，然後選取 **[下一步]**。
 7. 在 [ **設定檔** ] 頁面上，接受預設設定，然後選取 **[下一步]**。
 8. 在 [**名稱**] 頁面上，在 [**名稱**] 文字方塊中指定規則名稱 (例如 **Azure LB 探查**) ，然後選取 **[完成]**。

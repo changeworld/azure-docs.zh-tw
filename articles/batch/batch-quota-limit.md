@@ -4,12 +4,12 @@ description: 了解預設的 Azure Batch 配額、限制和條件約束，以及
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8ca08d43f07633b58cf6f7067c1a8fcd58350678
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: b2039794a0c8a13070c9d81b83869ca4097bd02e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107533"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325958"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服務配額和限制
 
@@ -23,15 +23,33 @@ ms.locfileid: "92107533"
 
 ## <a name="resource-quotas"></a>資源配額
 
-配額是一種信用限制，不是容量保證。 如果您有大規模的容量需求，請連絡 Azure 支援。
+配額是限制，而不是容量保證。 如果您有大規模的容量需求，請連絡 Azure 支援。
 
 另請注意，配額不是保證的值。 根據 Batch 服務的變更，或使用者要求變更配額值，配額會有所不同。
 
 [!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
+## <a name="core-quotas"></a>核心配額
+
+### <a name="cores-quotas-in-batch-service-mode"></a>Batch 服務模式的核心配額
+
+系統會改善專用核心配額的強制執行，並在2020年12月底將所有 Batch 帳戶的變更提供給這些變更，並已完成。
+
+Batch 所支援的每個 VM 系列都有核心配額，而且會顯示在入口網站的 [ **配額** ] 頁面上。 您可以使用支援要求來更新 VM 系列配額限制，如下所述。
+
+由於現有的機制即將推出，因此不會檢查 VM 系列的配額限制，只會強制執行帳戶的總配額限制。 這表示，您可能會為 VM 系列配置更多的核心，而非由 VM 系列配額所表示，最多可達總帳戶配額限制。
+
+除了總帳戶配額之外，更新的機制還會強制執行 VM 系列配額。 在轉換至新的機制時，VM 系列配額值可能會更新以避免配置失敗，最近幾個月內使用的任何 VM 系列將會更新其 VM 系列配額，以符合總帳戶配額。 這項變更不會讓使用的容量比已有的還多。
+
+您可以藉由檢查下列各項來判斷 Batch 帳戶是否已啟用 VM 系列配額強制執行：
+
+* Batch 帳戶 [dedicatedCoreQuotaPerVMFamilyEnforced](/rest/api/batchmanagement/batchaccount/get#batchaccount) API 屬性。
+
+* 入口網站中 Batch 帳戶 **配額** 頁面上的文字。
+
 ### <a name="cores-quotas-in-user-subscription-mode"></a>使用者訂用帳戶模式中的核心配額
 
-如果建立 [Batch 帳戶](accounts.md)時所用的集區配置模式設為**使用者訂用帳戶**，則配額會以不同的方式套用。 在這個模式中，建立集區時，Batch VM 和其他資源會直接建立在您的訂用帳戶中。 Azure Batch 核心配額不適用於在此模式中建立的帳戶。 相反地，會套用您在地區計算核心和其他資源之訂用帳戶中的配額。
+如果您建立的 [Batch 帳戶](accounts.md) 的集區配置模式設定為「 **使用者訂** 用帳戶」，則建立或調整集區時，batch vm 和其他資源會直接建立在您的訂用帳戶中。 Azure Batch 核心配額不適用於區域計算核心、個別系列計算核心和其他資源的訂用帳戶中的配額。
 
 若要深入了解這些配額，請參閱 [Azure 訂用帳戶和服務限制、配額與限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
@@ -73,7 +91,7 @@ Batch 服務所設定的其他限制。 不同於[資源配額](#resource-quotas
 1. 在 Batch 帳戶的功能表上選取 [配額]。
 1. 檢視目前套用至 Batch 帳戶的配額。
 
-    ![Batch 帳戶配額][account_quotas]
+:::image type="content" source="./media/batch-quota-limit/account-quota-portal.png" alt-text="Batch 帳戶配額":::
 
 ## <a name="increase-a-quota"></a>增加配額
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 461d3800491dbe382beecbcdfe1f2a93bd6b2e5c
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 85638d2ef3499ca71057879852eb582b950b7e2c
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301562"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325671"
 ---
 # <a name="azure-security-baseline-for-azure-bastion"></a>適用于 Azure 防禦的 azure 安全性基準
 
@@ -22,7 +22,7 @@ ms.locfileid: "96301562"
 
 ## <a name="network-security"></a>網路安全性
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：網路安全性](/azure/security/benchmarks/security-controls-v2-network-security)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：網路安全性](../security/benchmarks/security-controls-v2-network-security.md)。*
 
 ### <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1：執行內部流量的安全性
 
@@ -63,7 +63,7 @@ Azure 防禦服務需要開啟下列埠，服務才能正常運作：
 
 ## <a name="identity-management"></a>身分識別管理
 
-*如需詳細資料，請參閱 [Azure 安全性效能評定：身分識別管理](/azure/security/benchmarks/security-controls-v2-identity-management)。*
+*如需詳細資料，請參閱 [Azure 安全性效能評定：身分識別管理](../security/benchmarks/security-controls-v2-identity-management.md)。*
 
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：將 Azure Active Directory 標準化為中央身分識別和驗證系統
 
@@ -149,7 +149,7 @@ Azure 防禦服務需要開啟下列埠，服務才能正常運作：
 
 ## <a name="privileged-access"></a>特殊權限存取
 
-*如需詳細資料，請參閱 [Azure 安全性效能評定：特殊權限存取](/azure/security/benchmarks/security-controls-v2-privileged-access)。*
+*如需詳細資料，請參閱 [Azure 安全性效能評定：特殊權限存取](../security/benchmarks/security-controls-v2-privileged-access.md)。*
 
 ### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2：限制對商務關鍵性系統的系統管理存取
 
@@ -193,7 +193,7 @@ Azure 防禦服務需要開啟下列埠，服務才能正常運作：
 
 您應該確保緊急存取帳戶的認證 (（例如密碼、憑證或智慧卡) ）保持安全，而且只有獲授權可在緊急情況下使用這些認證的人員才知道。
 
-- [在 Azure AD 中管理緊急存取帳戶](/azure/active-directory/users-groups-roles/directory-emergency-access)
+- [在 Azure AD 中管理緊急存取帳戶](../active-directory/roles/security-emergency-access.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -246,7 +246,7 @@ Azure 防禦服務需要開啟下列埠，服務才能正常運作：
 
 ## <a name="asset-management"></a>資產管理
 
-*如需詳細資料，請參閱 [Azure 安全性效能評定：資產管理](/azure/security/benchmarks/security-controls-v2-asset-management)。*
+*如需詳細資料，請參閱 [Azure 安全性效能評定：資產管理](../security/benchmarks/security-controls-v2-asset-management.md)。*
 
 ### <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1：確保安全性小組能夠看到資產的風險
 
@@ -274,7 +274,7 @@ Azure 防禦服務需要開啟下列埠，服務才能正常運作：
 
 - [Azure 資訊安全中心資產庫存管理](../security-center/asset-inventory.md)
 
-- [如需標記資產的詳細資訊，請參閱資源命名和標記決策指南](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
+- [如需標記資產的詳細資訊，請參閱資源命名和標記決策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
 **Azure 資訊安全中心監視**：是
 
@@ -300,7 +300,7 @@ Azure 防禦服務需要開啟下列埠，服務才能正常運作：
 
 - [刪除強制中斷連線遠端會話](session-monitoring.md#view)
 
-- [Azure 網路 CLI](https://docs.microsoft.com/powershell/module/az.network/?view=azps-5.1.0#networking&amp;preserve-view=true)
+- [Azure 網路 CLI](/powershell/module/az.network/?amp;preserve-view=true&view=azps-5.1.0#networking)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -341,7 +341,7 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 
 - [啟用 Azure Identity Protection](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Azure 資訊安全中心內的威脅防護](/azure/security-center/threat-protection)
+- [Azure 資訊安全中心內的威脅防護](../security-center/azure-defender.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -407,7 +407,7 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 
 - [如何設定 Log Analytics 工作區保留期限](../azure-monitor/platform/manage-cost-storage.md)
 
-- [在 Azure 儲存體帳戶中儲存資源記錄](/azure/azure-monitor/platform/resource-logs-collect-storage)
+- [在 Azure 儲存體帳戶中儲存資源記錄](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 
 - [啟用及使用 Azure Bastion 記錄](diagnostic-logs.md)
 
@@ -417,7 +417,7 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 
 ## <a name="incident-response"></a>事件回應
 
-[如需詳細資料，請參閱 *Azure 安全性效能評定：* 事件回應](/azure/security/benchmarks/security-controls-v2-incident-response) (機器翻譯)。
+[如需詳細資料，請參閱 *Azure 安全性效能評定：* 事件回應](../security/benchmarks/security-controls-v2-incident-response.md) (機器翻譯)。
 
 ### <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1：準備 – 更新 Azure 的事件回應程序
 
@@ -499,7 +499,7 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 - [Azure 資訊安全中心的安全性警示](../security-center/security-center-alerts-overview.md)
 
-- [使用標記來組織 Azure 資源](/azure/azure-resource-manager/resource-group-using-tags)
+- [使用標記來組織 Azure 資源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -527,7 +527,7 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 **指導** 方針：使用 Azure 原則定義和實行適用于 Azure 防禦的標準安全性設定。 使用 "Microsoft. Network" 命名空間中 Azure 原則別名來建立自訂原則，以審核或強制執行 Azure 防禦的網路設定。 客戶也可以利用 Azure 藍圖或 ARM 範本來建立安全的設定，以安全且一致的方式部署防禦資源。
 
-- [如何檢視可用的 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [如何檢視可用的 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
@@ -543,7 +543,7 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 **指導** 方針：使用 Azure 原則定義和實行適用于 Azure 防禦的標準安全性設定。 使用 "Microsoft. Network" 命名空間中 Azure 原則別名來建立自訂原則，以審核或強制執行防禦資源的網路設定。
 
-- [如何檢視可用的 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [如何檢視可用的 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
@@ -569,7 +569,7 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 ## <a name="governance-and-strategy"></a>控管與策略
 
-*如需詳細資料，請參閱 [Azure 安全性效能評定：控管與策略](/azure/security/benchmarks/security-controls-v2-governance-strategy)。*
+*如需詳細資料，請參閱 [Azure 安全性效能評定：控管與策略](../security/benchmarks/security-controls-v2-governance-strategy.md)。*
 
 ### <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1：定義資產管理和資料保護策略 
 
@@ -594,11 +594,11 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 -   適當的密碼編譯標準
 
 如需詳細資訊，請參閱下列參考資料：
-- [Azure 安全性架構建議 - 儲存體、資料和加密](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
+- [Azure 安全性架構建議 - 儲存體、資料和加密](/azure/architecture/framework/security/storage-data-encryption?amp;bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
 
 - [Azure 安全性基本要素 - Azure 資料安全性、加密和儲存體](../security/fundamentals/encryption-overview.md)
 
-- [雲端採用架構 - Azure 資料安全性和加密最佳做法](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
+- [雲端採用架構 - Azure 資料安全性和加密最佳做法](../security/fundamentals/data-encryption-best-practices.md?amp;bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
 - [Azure 安全性效能評定 - 資產管理](/azure/security/benchmarks/security-controls-v2-asset-management)
 
@@ -749,5 +749,5 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定 V2 概觀](/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定 V2 概觀](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

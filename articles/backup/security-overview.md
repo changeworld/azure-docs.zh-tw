@@ -3,12 +3,12 @@ title: 安全性功能概觀
 description: 了解 Azure 備份中的安全性功能，協助保護您的備份資料，並符合您企業的安全性需求。
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 8c4d3af9205df43c3596da64d7fcad2a9eb82500
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 9aa1909f1590b477d9a7f7a09ad0c2b1936e3e29
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093339"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325650"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure 備份中的安全性功能概觀
 
@@ -26,7 +26,7 @@ Azure 備份提供三種用來控制備份管理作業的[內建角色](../role-
 
 深入瞭解 [Azure 角色型存取控制來管理 Azure 備份](./backup-rbac-rs-vault.md)。
 
-Azure 備份有數個服務內建的安全性控制項，可防止、偵測及回應安全性弱點。 深入了解 [Azure 備份的安全性控制項](./backup-security-controls.md)。
+Azure 備份有數個服務內建的安全性控制項，可防止、偵測及回應安全性弱點。 深入了解 [Azure 備份的安全性控制項](./security-baseline.md)。
 
 ## <a name="separation-between-guest-and-azure-storage"></a>來賓與 Azure 儲存體之間的分隔
 

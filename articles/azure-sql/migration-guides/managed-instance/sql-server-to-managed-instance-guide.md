@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 5c20fbbe25b51160f42f233d30c39ccaec0f5cac
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5d5404537ad107a54bd32110727e5a7d0f74ebea
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026039"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326891"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>遷移指南： SQL Server 至 SQL 受控執行個體
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -99,7 +99,7 @@ Data Migration Assistant 支援執行調整規模評定和匯總評估報告以�
 
 ### <a name="create-sql-managed-instance"></a>建立 SQL 受控執行個體 
 
-根據探索和評估階段中的資訊，建立適當大小的目標 SQL 受控執行個體。 您可以使用 [Azure 入口網站](../../managed-instance/instance-create-quickstart.md)、 [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)或 [Azure Resource Manager (ARM) 範本](/azure/azure-sql/managed-instance/create-template-quickstart)來這麼做。 
+根據探索和評估階段中的資訊，建立適當大小的目標 SQL 受控執行個體。 您可以使用 [Azure 入口網站](../../managed-instance/instance-create-quickstart.md)、 [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)或 [Azure Resource Manager (ARM) 範本](../../managed-instance/create-template-quickstart.md)來這麼做。 
 
 
 ## <a name="migrate"></a>移轉
@@ -117,14 +117,14 @@ Data Migration Assistant 支援執行調整規模評定和匯總評估報告以�
 1. 如果您是第一次執行此工作，請在您的訂用帳戶中註冊 **microsoft.datamigration** 資源提供者。
 1. 在您選擇的所需位置中建立 Azure 資料庫移轉服務實例 (最好在與目標 Azure SQL 受控執行個體相同的區域中) 然後選取現有的虛擬網路，或建立新的虛擬網路來裝載 DMS 實例。
 1. 建立 DMS 實例之後，請建立新的遷移專案並將來源伺服器類型指定為 **SQL Server** ，並將目標伺服器類型指定為 **Azure SQL Database 受控執行個體**。 在 [專案建立] 分頁（線上或離線資料移轉）中選擇活動類型。 
-1.  在 [遷移 **來源** 詳細資料] 頁面上指定來源 SQL Server 詳細資料，並在 [ **遷移目標** 詳細資料] 頁面上指定目標 Azure SQL 受控執行個體詳細資料。 選取 [下一步]。
+1.  在 [遷移 **來源** 詳細資料] 頁面上指定來源 SQL Server 詳細資料，並在 [ **遷移目標** 詳細資料] 頁面上指定目標 Azure SQL 受控執行個體詳細資料。 選取 [下一步] 。
 1. 選擇您想要遷移的資料庫。 
 1. 提供設定以指定包含資料庫備份檔案的 **SMB 網路共用** 。 使用可存取網路共用之 DMS 的 Windows 使用者認證。 提供您的 **Azure 儲存體帳戶詳細資料**。 
 1. 檢查遷移摘要，然後選擇 [ **執行遷移**]。 然後，您可以監視「遷移」活動，並檢查您的資料庫移轉進度。
 1. 還原資料庫之後，選擇 [ **開始** 轉換]。 當您將尾記錄備份提供給 SMB 網路共用，並在目標上還原時，遷移程式就會複製尾記錄備份。 
 1. 停止您源資料庫的所有連入流量，並將連接字串更新為新的 Azure SQL 受控執行個體資料庫。 
 
-如需此遷移選項的詳細逐步教學課程，請參閱 [使用 DMS 將 SQL Server 遷移至 AZURE SQL 受控執行個體線上](/azure/dms/tutorial-sql-server-managed-instance-online)。 
+如需此遷移選項的詳細逐步教學課程，請參閱 [使用 DMS 將 SQL Server 遷移至 AZURE SQL 受控執行個體線上](../../../dms/tutorial-sql-server-managed-instance-online.md)。 
    
 
 
@@ -160,7 +160,7 @@ Azure SQL 受控執行個體的其中一項重要功能，就是能夠快速輕�
 
 1. 還原完成後，請在 SQL Server Management Studio 內 **物件總管** 查看資料庫。 
 
-若要深入瞭解此遷移選項，請參閱 [使用 SSMS 將資料庫還原至 AZURE SQL 受控執行個體](https://docs.microsoft.com/azure/azure-sql/managed-instance/restore-sample-database-quickstart)。
+若要深入瞭解此遷移選項，請參閱 [使用 SSMS 將資料庫還原至 AZURE SQL 受控執行個體](../../managed-instance/restore-sample-database-quickstart.md)。
 
 > [!NOTE]
 > 資料庫還原作業是非同步的，而且可以重試。 如果連線中斷或逾時已過期，您可能會在 SQL Server Management Studio 中收到錯誤。 Azure SQL Database 將會繼續嘗試在背景還原資料庫，而且您可以使用 [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 和 [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) 檢視追蹤還原進度。
@@ -203,14 +203,14 @@ Azure SQL 受控執行個體的其中一項重要功能，就是能夠快速輕�
 
 ## <a name="leverage-advanced-features"></a>利用先進的功能 
 
-請務必利用 SQL 受控執行個體所提供的先進雲端式功能，例如 [內建的高可用性](../../database/high-availability-sla.md)、 [威脅偵測](../../database/advanced-data-security.md)，以及 [監視和調整您的工作負載](../../database/monitor-tune-overview.md)。 
+請務必利用 SQL 受控執行個體所提供的先進雲端式功能，例如 [內建的高可用性](../../database/high-availability-sla.md)、 [威脅偵測](../../database/azure-defender-for-sql.md)，以及 [監視和調整您的工作負載](../../database/monitor-tune-overview.md)。 
 
 [Azure SQL 分析](../../../azure-monitor/insights/azure-sql.md) 可讓您以集中方式監視大型的受控實例集。
 
 只有當 [資料庫相容性層級](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database) 變更為最新的相容性層級時，才可使用部分 SQL Server 的功能 (150) 。 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 如需 Microsoft 和協力廠商服務的矩陣，以及可用來協助您進行各種資料庫和資料移轉案例以及專長工作的工具，請參閱 [資料移轉的服務和工具](../../../dms/dms-tools-matrix.md)。
 

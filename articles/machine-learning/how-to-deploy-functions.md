@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
 ms.custom: how-to, racking-python, devx-track-azurecli
-ms.openlocfilehash: d17967c24fbbb127c1d3eaee5acd5b78c3e3b902
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 901e4d458cc2d77d4e7f13c1782b86c8532ca499
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630340"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327163"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>將機器學習模型部署至 Azure Functions (preview) 
 
@@ -47,7 +47,7 @@ ms.locfileid: "94630340"
 
 在部署之前，您必須定義以 web 服務的形式執行模型所需的內容。 下列清單描述部署所需的核心專案：
 
-* __輸入腳本__ 。 此腳本會接受要求、使用模型來評分要求，並傳回結果。
+* __輸入腳本__。 此腳本會接受要求、使用模型來評分要求，並傳回結果。
 
     > [!IMPORTANT]
     > 專案腳本為您的模型所特有;它必須瞭解傳入要求資料的格式、您的模型所預期的資料格式，以及傳回給用戶端的資料格式。
@@ -277,7 +277,7 @@ print(blob.location)
     }
     ```
 
-3. 若要查看函數所產生的輸出，請使用下列命令來列出產生的輸出檔。 取代 `<triggerConnectionString>` 為先前傳回的連接字串。 在此範例中， `output` 是稍早建立之輸出容器的名稱。 如果您使用不同的名稱，請將此值取代為：
+3. 若要查看函數所產生的輸出，請使用下列命令來列出產生的輸出檔。 取代 `<triggerConnectionString>` 為先前傳回的連接字串。 在此範例中， `output` 是稍早建立之輸出容器的名稱。 如果您使用不同的名稱，請取代此值：
 
     ```azurecli-interactive
     az storage blob list --container-name output --connection-string <triggerConnectionString> --query '[].name' --output tsv

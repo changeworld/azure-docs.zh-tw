@@ -4,12 +4,12 @@ description: 如何跨 Azure 訂用帳戶和資源群組移動復原服務保存
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 5a73963970b5fad7b3992d501d9aac5cc7229622
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 12c276b861e7db8e93e60eea7e9cd7f3aba04860
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926677"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325769"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>跨 Azure 訂用帳戶和資源群組移動復原服務保存庫
 
@@ -30,7 +30,7 @@ ms.locfileid: "92926677"
 - 如果 VM 未跨訂用帳戶或新的資源群組移動復原服務保存庫，則目前的 VM 復原點會在保存庫中保持不變，直到過期為止。
 - 無論 VM 是否隨著保存庫移動，您一律可以從保留在保存庫內的備份記錄還原 VM。
 - Azure 磁碟加密要求金鑰保存庫和 Vm 位於相同的 Azure 區域和訂用帳戶中。
-- 若要移動具有受控磁碟的虛擬機器，請參閱這篇[文章](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription)。
+- 若要移動具有受控磁碟的虛擬機器，請參閱這篇[文章](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 - 移動透過傳統模型所部署之資源的選項，會根據您是要移動訂用帳戶內的資源還是新的訂用帳戶而有所不同。 如需詳細資訊，請參閱這篇[文章](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 - 在保存庫跨訂用帳戶或往新的資源群組移動之後，為保存庫所定義的備份原則會保留下來。
 - 您只能移動包含下列任何類型之備份專案的保存庫。 以下未列出之類型的任何備份專案都必須停止，並在移動保存庫之前永久刪除資料。
@@ -57,7 +57,7 @@ ms.locfileid: "92926677"
 
    ![[基本資訊] 索引標籤](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
-3. 在保存庫總覽功能表中，選取 **資源群組** 旁的 [ **變更** ]，以開啟 [ **移動資源** ] 窗格。
+3. 在保存庫總覽功能表中，選取 **資源群組** 旁的 [**變更**]，以開啟 [**移動資源**] 窗格。
 
    ![變更資源群組](./media/backup-azure-move-recovery-services/change-resource-group.png)
 
@@ -86,20 +86,20 @@ ms.locfileid: "92926677"
 
     ![[基本資訊] 索引標籤](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
-3. 在保存庫總覽功能表中，選取 [ **訂** 用帳戶] 旁的 [ **變更** ]，以開啟 [ **移動資源** ] 窗格。
+3. 在保存庫總覽功能表中，選取 [**訂** 用帳戶] 旁的 [**變更**]，以開啟 [**移動資源**] 窗格。
 
    ![變更訂用帳戶](./media/backup-azure-move-recovery-services/change-resource-subscription.png)
 
-4. 選取要移動的資源，建議您在這裡使用 [全選]  選項來選取所有列出的選擇性資源。
+4. 選取要移動的資源，建議您在這裡使用 [全選] 選項來選取所有列出的選擇性資源。
 
    ![移動資源](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
 
-5. 從 [訂用帳戶]  下拉式清單選取您想要作為保存庫移動目的地的目標訂用帳戶。
+5. 從 [訂用帳戶] 下拉式清單選取您想要作為保存庫移動目的地的目標訂用帳戶。
 6. 若要新增目標資源群組，請在 [ **資源群組** ] 下拉式清單中選取現有的資源群組，或選取 [ **建立新群組** ] 選項。
 
    ![新增訂用帳戶](./media/backup-azure-move-recovery-services/add-subscription.png)
 
-7. 選取 [ **我瞭解與移動的資源相關聯的工具和腳本在更新為使用新的資源識別碼] 選項之前將無法運作** ，然後選取 **[確定]** 。
+7. 選取 [ **我瞭解與移動的資源相關聯的工具和腳本在更新為使用新的資源識別碼] 選項之前將無法運作** ，然後選取 **[確定]**。
 
 > [!NOTE]
 > 跨訂用帳戶備份 (RS 保存庫和受保護的 Vm 位於不同的訂用帳戶，) 不是支援的案例。 此外，在保存庫移動作業期間，無法修改本機冗余儲存體中的儲存體冗余選項 (LRS) 至全域冗余儲存體 (GRS) ，反之亦然。
@@ -157,9 +157,9 @@ az resource move --destination-group <destinationResourceGroupName> --ids <Vault
 
 1. 停用保存庫屬性中的虛刪除。 請遵循下列 [步驟](backup-azure-security-feature-cloud.md#disabling-soft-delete-using-azure-portal) 來停用虛刪除。
 
-2. 停止保護並刪除目前保存庫中的備份。 在保存庫儀表板功能表中，選取 [ **備份專案** ]。 此處所列的專案必須移至新的保存庫，並與其備份資料一起移除。 瞭解如何 [在雲端中刪除受保護的專案](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) ，以及 [刪除內部部署的受保護專案](backup-azure-delete-vault.md#delete-protected-items-on-premises)。
+2. 停止保護並刪除目前保存庫中的備份。 在保存庫儀表板功能表中，選取 [ **備份專案**]。 此處所列的專案必須移至新的保存庫，並與其備份資料一起移除。 瞭解如何 [在雲端中刪除受保護的專案](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) ，以及 [刪除內部部署的受保護專案](backup-azure-delete-vault.md#delete-protected-items-on-premises)。
 
-3. 如果您打算將 AFS (Azure 檔案共用) 、SQL server 或 SAP Hana 伺服器，則您也需要將其取消註冊。 在保存庫儀表板功能表中，選取 [ **備份基礎結構** ]。 瞭解如何 [取消註冊 SQL server](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance)、 [取消登錄與 Azure 檔案共用相關聯的儲存體帳戶](manage-afs-backup.md#unregister-a-storage-account)，以及 [取消註冊 SAP Hana 實例](sap-hana-db-manage.md#unregister-an-sap-hana-instance)。
+3. 如果您打算將 AFS (Azure 檔案共用) 、SQL server 或 SAP Hana 伺服器，則您也需要將其取消註冊。 在保存庫儀表板功能表中，選取 [ **備份基礎結構**]。 瞭解如何 [取消註冊 SQL server](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance)、 [取消登錄與 Azure 檔案共用相關聯的儲存體帳戶](manage-afs-backup.md#unregister-a-storage-account)，以及 [取消註冊 SAP Hana 實例](sap-hana-db-manage.md#unregister-an-sap-hana-instance)。
 
 4. 移除舊的保存庫後，請繼續在新的保存庫中為您的工作負載設定備份。
 

@@ -3,12 +3,12 @@ title: 範本概觀
 description: 說明使用 Azure Resource Manager 範本來部署資源的優點。
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 1873c737d17fc8774ddd1276d1375799ca2da35e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 188fd5782795a4fb5456978a2a596cabc6dfd874
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280048"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325055"
 ---
 # <a name="what-are-arm-templates"></a>什麼是 ARM 範本？
 
@@ -24,17 +24,17 @@ ms.locfileid: "92280048"
 
 * **宣告式語法**： ARM 範本可讓您以宣告方式建立和部署整個 Azure 基礎結構。 例如，您不僅可以部署虛擬機器，也可以部署網路基礎結構、儲存體系統以及您可能需要的任何其他資源。
 
-* 可**重複的結果**：在整個開發生命週期中重複部署您的基礎結構，並確信您的資源會以一致的方式部署。 範本具有等冪性，這表示您可以部署相同的範本多次，並取得相同狀態的相同資源類型。 您可以開發一個代表所需狀態的範本，而不是開發許多不同的範本來表示更新。
+* 可 **重複的結果**：在整個開發生命週期中重複部署您的基礎結構，並確信您的資源會以一致的方式部署。 範本具有等冪性，這表示您可以部署相同的範本多次，並取得相同狀態的相同資源類型。 您可以開發一個代表所需狀態的範本，而不是開發許多不同的範本來表示更新。
 
 * **協調流程**：您不必擔心訂購作業的複雜性。 Resource Manager 會協調相互依存資源的部署，使其以正確的順序建立。 可能的話，Resource Manager 會以平行方式部署資源，讓您的部署比序列部署更快完成。 您可以透過單一命令來部署範本，而不是透過多個命令式命令。
 
    ![範本部署比較](./media/overview/template-processing.png)
 
-* **模組化**檔案：您可以將範本分成較小、可重複使用的元件，並在部署時將它們連結在一起。 您也可以將一個範本內嵌在另一個範本內。
+* **模組化** 檔案：您可以將範本分成較小、可重複使用的元件，並在部署時將它們連結在一起。 您也可以將一個範本內嵌在另一個範本內。
 
 * **建立任何 azure 資源**：您可以立即在範本中使用新的 azure 服務和功能。 一旦資源提供者引進新資源，您就可以透過範本部署這些資源。 使用新服務之前，您不需要等待工具或模組更新。
 
-* 擴充**性：透過**[部署腳本](deployment-script-template.md)，您可以將 PowerShell 或 Bash 腳本新增至您的範本。 部署腳本會擴充您在部署期間設定資源的能力。 腳本可以包含在範本中，也可以儲存在外部來源中，並在範本中參考。 部署腳本讓您能夠在單一 ARM 範本中完成端對端環境設定。
+* 擴充 **性：透過**[部署腳本](deployment-script-template.md)，您可以將 PowerShell 或 Bash 腳本新增至您的範本。 部署腳本會擴充您在部署期間設定資源的能力。 腳本可以包含在範本中，也可以儲存在外部來源中，並在範本中參考。 部署腳本讓您能夠在單一 ARM 範本中完成端對端環境設定。
 
 * **測試**：您可以使用 arm 範本工具套件 (arm ttk) 來測試，以確定您的範本遵循建議的指導方針。 此測試套件是您可以從 [GitHub](https://github.com/Azure/arm-ttk)下載的 PowerShell 腳本。 此工具套件可讓您更輕鬆地使用範本語言開發專業知識。
 
@@ -52,7 +52,7 @@ ms.locfileid: "92280048"
 
 * **Ci/cd 整合**：您可以將範本整合至持續整合和持續部署 (CI/cd) 工具，這可將您的發行管線自動化，以進行快速且可靠的應用程式和基礎結構更新。 藉由使用 Azure DevOps 和 Resource Manager 範本工作，您可以使用 Azure Pipelines 持續建立和部署 ARM 範本專案。 若要深入瞭解，請參閱 [VS project with](add-template-to-azure-pipelines.md) Pipeline and [教學課程： Azure Resource Manager 範本與 Azure Pipelines 的持續整合](./deployment-tutorial-pipeline.md)。
 
-* 可匯出的程式**代碼**：您可以藉由匯出資源群組的目前狀態，或查看用於特定部署的範本，來取得現有資源群組的範本。 查看 [匯出的範本](export-template-portal.md) 是瞭解範本語法的實用方法。
+* 可匯出的程式 **代碼**：您可以藉由匯出資源群組的目前狀態，或查看用於特定部署的範本，來取得現有資源群組的範本。 查看 [匯出的範本](export-template-portal.md) 是瞭解範本語法的實用方法。
 
 * **撰寫工具**：您可以使用 [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) 和範本工具延伸模組來撰寫範本。 您可以取得 intellisense、語法反白顯示、內嵌說明，以及許多其他語言函數。 除了 Visual Studio Code 之外，您也可以使用 [Visual Studio](create-visual-studio-deployment-project.md)。
 

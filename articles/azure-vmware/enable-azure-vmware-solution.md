@@ -3,12 +3,12 @@ title: 如何啟用您的 Azure VMware 解決方案資源
 description: 瞭解如何提交支援要求，以啟用您的 Azure VMware 解決方案資源。 您也可以在現有的 Azure VMware 解決方案私人雲端中要求更多主機。
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 68f8fe38c67ec5ddad7cf662a7996330ee2a1e73
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 526d6b38f4b4e3f6c4806b71b4728dee90cf558a
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95794721"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325072"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>如何啟用 Azure VMware 解決方案資源
 瞭解如何提交支援要求，以啟用您的 [Azure VMware 解決方案](introduction.md) 資源。 您也可以在現有的 Azure VMware 解決方案私人雲端中要求更多主機。
@@ -76,7 +76,7 @@ Csp 必須使用 [Microsoft 合作夥伴中心](https://partner.microsoft.com) �
 
 1. 選取 [ **Azure 方案** ]，然後選取 [ **新增至購物車**]。 
 
-1. 檢查並完成客戶的 Azure 方案訂用帳戶一般設定。 如需詳細資訊，請參閱 [Microsoft 合作夥伴中心檔](https://docs.microsoft.com/partner-center/azure-plan-manage)。
+1. 檢查並完成客戶的 Azure 方案訂用帳戶一般設定。 如需詳細資訊，請參閱 [Microsoft 合作夥伴中心檔](/partner-center/azure-plan-manage)。
 
 設定好 Azure 方案和所需的 vSphere RBAC 許可權之後，您將會參與 Microsoft，以啟用 Azure 方案訂用帳戶的配額。 使用系統 **管理員代表** (AOBO) 程式存取合作夥伴中心的 Azure 入口網站。
 

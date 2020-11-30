@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 06/03/2020
-ms.openlocfilehash: c5392c822c42c2e0ee3f6ce9edffc6229d572165
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c805bacbd4a2219fb79168ad6426efd8b0a390df
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782411"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324511"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Azure SQL 中的 Machine Learning 服務受控執行個體 (preview) 
 
@@ -38,7 +38,7 @@ Azure SQL 受控執行個體中的 Machine Learning 服務可讓您在資料庫�
 
 使用 Machine Learning 服務搭配 Azure SQL 受控執行個體中的 R/Python 支援來：
 
-- 執行 **r 和 Python 腳本以進行資料準備和一般用途的資料處理** -您現在可以將 R/python 腳本帶到 Azure SQL 受控執行個體您的資料所在位置，而不需要將資料移到其他伺服器來執行 R 和 Python 腳本。 您可以消除與延遲、安全性和合規性相關的資料移動和相關問題的需求。
+- 執行 **r 和 Python 腳本以進行資料準備和一般用途的資料處理**-您現在可以將 R/python 腳本帶到 Azure SQL 受控執行個體您的資料所在位置，而不需要將資料移到其他伺服器來執行 R 和 Python 腳本。 您可以消除與延遲、安全性和合規性相關的資料移動和相關問題的需求。
 
 - **在資料庫中訓練機器學習模型** -您可以使用任何開放原始碼演算法來定型模型。 您可以輕鬆地將訓練調整至整個資料集，而不需依賴從資料庫提取的範例資料集。
 
@@ -54,29 +54,29 @@ Azure SQL 受控執行個體中的 Machine Learning 服務可讓您在資料庫�
 
 如果您想要加入預覽計畫並接受這些條款，您可以在上建立 Azure 支援票證以要求註冊 [**https://azure.microsoft.com/support/create-ticket/**](https://azure.microsoft.com/support/create-ticket/) 。 
 
-1. 在 [ **建立支援票證** ] 頁面上，按一下 [ **建立事件** ]。
+1. 在 [ **建立支援票證** ] 頁面上，按一下 [ **建立事件**]。
 
 1. 在 [說明 **+ 支援** ] 頁面上，按一下 [ **新增支援要求** ] 以建立新的票證。
 
 1. 選取下列選項：
    - 問題類型- **技術**
-   - 訂用帳戶- *選取您的訂* 用帳戶
+   - 訂用帳戶-*選取您的訂* 用帳戶
    - Service- **SQL 受控執行個體**
    - 資源- *選取您的受控實例*
    - 摘要- *輸入要求的簡短描述*
    - 問題類型- **Machine Learning Services FOR SQL 受控執行個體 (Preview)**
-   - 問題子類型- **其他問題或** 「操作說明」問題
+   - 問題子類型-**其他問題或**「操作說明」問題
 
-1. 按一下 **[下一步：方案]** 。
+1. 按一下 **[下一步：方案]**。
 
-1. 閱讀預覽的相關資訊，然後按 [ **下一步：詳細資料]** 。
+1. 閱讀預覽的相關資訊，然後按 [ **下一步：詳細資料]**。
 
 1. 在此頁面上：
-   - 對於 **您嘗試註冊預覽版** 的問題，請選取 [ **是]** 。 
-   - 在 [ **描述** ] 中，輸入要求的詳細資訊，包括您想要在預覽版中註冊的邏輯伺服器名稱、區域和訂用帳戶識別碼。 視需要輸入其他詳細資料。
+   - 對於 **您嘗試註冊預覽版** 的問題，請選取 [ **是]**。 
+   - 在 [ **描述**] 中，輸入要求的詳細資訊，包括您想要在預覽版中註冊的邏輯伺服器名稱、區域和訂用帳戶識別碼。 視需要輸入其他詳細資料。
    - 選取您慣用的連絡人方法。 
 
-1. 當您完成時，請按 **[下一步]： [檢查 + 建立]** ，然後按一下 [ **建立** ]。
+1. 當您完成時，請按 **[下一步]： [檢查 + 建立]**，然後按一下 [ **建立**]。
 
 註冊方案後，Microsoft 即會將您加入公開預覽版，並為您現有或新的資料庫啟用機器學習服務。
 
@@ -85,6 +85,6 @@ Azure SQL 受控執行個體中的 Machine Learning 服務可讓您在資料庫�
 ## <a name="next-steps"></a>後續步驟
 
 - 請參閱 [SQL Server Machine Learning 服務的主要差異](machine-learning-services-differences.md)。
-- 若要瞭解如何在 Machine Learning 服務中使用 Python，請參閱 [執行 python 腳本](/sql/machine-learning/tutorials/quickstart-python-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&view=sql-server-ver15)。
-- 若要瞭解如何在 Machine Learning 服務中使用 R，請參閱 [執行 r 腳本](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&view=sql-server-ver15)。
+- 若要瞭解如何在 Machine Learning 服務中使用 Python，請參閱 [執行 python 腳本](/sql/machine-learning/tutorials/quickstart-python-create-script?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&view=sql-server-ver15)。
+- 若要瞭解如何在 Machine Learning 服務中使用 R，請參閱 [執行 r 腳本](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&view=sql-server-ver15)。
 - 如需有關其他 SQL 平臺機器學習的詳細資訊，請參閱 [SQL machine learning 檔](/sql/machine-learning/)。

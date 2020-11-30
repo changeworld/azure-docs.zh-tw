@@ -3,12 +3,12 @@ title: 將 SQL Server 備份至 Azure 做為 DPM 工作負載
 description: 使用 Azure 備份服務備份 SQL Server 資料庫的簡介
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 8130990f86311221ae6d097137a66a6e9b81be73
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 592a51051a0d02a6c1d491db0fe559e2e62babb2
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218080"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327044"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>將 SQL Server 備份至 Azure 做為 DPM 工作負載
 
@@ -24,7 +24,7 @@ ms.locfileid: "92218080"
 
 >[!NOTE]
 >DPM 2019 UR2 支援使用叢集共用磁片區 (CSV) SQL Server 容錯移轉叢集實例 (FCI) 。<br><br>
->這項功能支援使用 [azure 上的儲存空間直接存取來保護 SQL Server 容錯移轉叢集實例](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure)  ，以及 [使用 azure 共用磁片的 SQL Server 容錯移轉叢集實例](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure) 。 DPM 服務器必須部署在 Azure 虛擬機器中，以保護部署在 Azure Vm 上的 SQL FCI 實例。 
+>這項功能支援使用 [azure 上的儲存空間直接存取來保護 SQL Server 容錯移轉叢集實例](../azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md)  ，以及 [使用 azure 共用磁片的 SQL Server 容錯移轉叢集實例](../azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md) 。 DPM 服務器必須部署在 Azure 虛擬機器中，以保護部署在 Azure Vm 上的 SQL FCI 實例。 
 
 ## <a name="prerequisites-and-limitations"></a>必要條件和限制
 
@@ -54,7 +54,7 @@ ms.locfileid: "92218080"
   * SQL Server 2014 加入了新功能，可為 [Windows Azure Blob 儲存空間的內部部署 SQL Server 建立資料庫](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure)。 DPM 無法用來保護此設定。
   * SQL AlwaysOn 選項的「偏好次要」備份喜好設定有一些已知問題。 DPM 一律會從次要複本進行備份。 如果找不到次要複本，則備份會失敗。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 開始之前，請確定您已符合使用 Azure 備份保護工作負載的 [必要條件](backup-azure-dpm-introduction.md#prerequisites-and-limitations) 。 以下是一些必要的工作：
 
@@ -71,11 +71,11 @@ ms.locfileid: "92218080"
 1. 選取 [ **新增** ] 以建立保護群組。
 
     ![建立保護群組](./media/backup-azure-backup-sql/protection-group.png)
-1. 在 [開始] 頁面上，檢查有關建立保護群組的指引。 然後選取 [下一步]  。
+1. 在 [開始] 頁面上，檢查有關建立保護群組的指引。 然後選取 [下一步]。
 1. 選取 [ **伺服器**]。
 
     ![選取伺服器保護群組類型](./media/backup-azure-backup-sql/pg-servers.png)
-1. 展開您要備份的資料庫所在的 SQL Server 虛擬機器。 您會看到可從該伺服器備份的資料來源。 展開 [ **所有 SQL 共用** ]，然後選取您要備份的資料庫。 在此範例中，我們選取 ReportServer $ MSDPM2012 和 ReportServer $ MSDPM2012TempDB。 然後選取 [下一步]  。
+1. 展開您要備份的資料庫所在的 SQL Server 虛擬機器。 您會看到可從該伺服器備份的資料來源。 展開 [ **所有 SQL 共用** ]，然後選取您要備份的資料庫。 在此範例中，我們選取 ReportServer $ MSDPM2012 和 ReportServer $ MSDPM2012TempDB。 然後選取 [下一步]。
 
     ![選取 SQL Server 資料庫](./media/backup-azure-backup-sql/pg-databases.png)
 1. 將保護群組命名為，然後選取 [ **我想要線上保護**]。
@@ -83,12 +83,12 @@ ms.locfileid: "92218080"
     ![選擇資料保護方法-短期磁片保護或線上 Azure 保護](./media/backup-azure-backup-sql/pg-name.png)
 1. 在 [ **指定 Short-Term 目標** ] 頁面上，包含建立備份點至磁片所需的輸入。
 
-    在此範例中， **保留範圍** 設定為 *5 天*。 備份 **同步處理頻率** 會設定為每隔 *15 分鐘*一次。 **快速完整備份** 已設定為 *下午 8:00*。
+    在此範例中， **保留範圍** 設定為 *5 天*。 備份 **同步處理頻率** 會設定為每隔 *15 分鐘* 一次。 **快速完整備份** 已設定為 *下午 8:00*。
 
     ![設定備份保護的短期目標](./media/backup-azure-backup-sql/pg-shortterm.png)
 
    > [!NOTE]
-   > 在此範例中，會在每天的下午8:00 建立備份點。 傳送自前一天 8:00 PM 備份點以來修改過的資料。 這個程序稱為 [快速完整備份] ****。 雖然交易記錄會每隔15分鐘同步處理一次，但如果我們需要在下午9:00 復原資料庫，則會從最後一個快速完整備份點（此範例中的 8:00 PM）重新執行記錄來建立該點。
+   > 在此範例中，會在每天的下午8:00 建立備份點。 傳送自前一天 8:00 PM 備份點以來修改過的資料。 這個程序稱為 [快速完整備份] 。 雖然交易記錄會每隔15分鐘同步處理一次，但如果我們需要在下午9:00 復原資料庫，則會從最後一個快速完整備份點（此範例中的 8:00 PM）重新執行記錄來建立該點。
    >
    >
 
@@ -96,25 +96,25 @@ ms.locfileid: "92218080"
 
     ![設定磁片配置](./media/backup-azure-backup-sql/pg-storage.png)
 
-    根據預設，DPM 會為每個資料來源建立一個磁片區 (SQL Server 資料庫) 。 磁片區用於初始備份複本。 在此設定中，邏輯磁片管理員 (LDM) 將 DPM 保護限制為300資料來源 (SQL Server 資料庫) 。 若要因應這項限制，請選取 [將資料共置在 DPM 存放集區中]****。 如果您使用此選項，DPM 會針對多個資料來源使用單一磁片區。 此安裝程式可讓 DPM 保護最多 2000 SQL Server 資料庫。
+    根據預設，DPM 會為每個資料來源建立一個磁片區 (SQL Server 資料庫) 。 磁片區用於初始備份複本。 在此設定中，邏輯磁片管理員 (LDM) 將 DPM 保護限制為300資料來源 (SQL Server 資料庫) 。 若要因應這項限制，請選取 [將資料共置在 DPM 存放集區中]。 如果您使用此選項，DPM 會針對多個資料來源使用單一磁片區。 此安裝程式可讓 DPM 保護最多 2000 SQL Server 資料庫。
 
-    如果您選取 **[自動擴大磁片**區]，DPM 可以在生產資料成長時，考慮增加的備份磁片區。 如果您未選取 **[自動擴大磁片**區]，DPM 會將備份存放裝置限制在保護群組中的資料來源。
+    如果您選取 **[自動擴大磁片** 區]，DPM 可以在生產資料成長時，考慮增加的備份磁片區。 如果您未選取 **[自動擴大磁片** 區]，DPM 會將備份存放裝置限制在保護群組中的資料來源。
 
-1. 如果您是系統管理員，您可以選擇透過 **網路自動** 傳送此初始備份，然後選擇傳輸時間。 或選擇 **手動** 傳輸備份。 然後選取 [下一步]  。
+1. 如果您是系統管理員，您可以選擇透過 **網路自動** 傳送此初始備份，然後選擇傳輸時間。 或選擇 **手動** 傳輸備份。 然後選取 [下一步]。
 
     ![選擇複本建立方法](./media/backup-azure-backup-sql/pg-manual.png)
 
-    初始備份複本需要傳送整個資料來源 (SQL Server 資料庫) 。 備份資料會從實際執行伺服器 (SQL Server 電腦) 移至 DPM 服務器。 如果此備份很大，則透過網路傳輸資料可能會造成頻寬擁塞。 基於這個理由，系統管理員可以選擇使用卸載式媒體來 **手動**傳送初始備份。 或者，他們可以在指定時間 **自動透過網路** 傳輸資料。
+    初始備份複本需要傳送整個資料來源 (SQL Server 資料庫) 。 備份資料會從實際執行伺服器 (SQL Server 電腦) 移至 DPM 服務器。 如果此備份很大，則透過網路傳輸資料可能會造成頻寬擁塞。 基於這個理由，系統管理員可以選擇使用卸載式媒體來 **手動** 傳送初始備份。 或者，他們可以在指定時間 **自動透過網路** 傳輸資料。
 
     初始備份完成後，備份會以累加方式在初始備份複本上繼續進行。 增量備份通常都非常小，因此有利於透過網路傳輸。
 
-1. 選擇執行一致性檢查的時間。 然後選取 [下一步]  。
+1. 選擇執行一致性檢查的時間。 然後選取 [下一步]。
 
     ![選擇何時執行一致性檢查](./media/backup-azure-backup-sql/pg-consistent.png)
 
     DPM 可以針對備份點的完整性執行一致性檢查。 它會計算生產伺服器上備份檔案的總和檢查碼 (此範例中的 SQL Server 電腦) 以及 DPM 中該檔案的備份資料。 如果檢查找到衝突，則會假設 DPM 中的備份檔案已損毀。 DPM 藉由傳送與總和檢查碼不符的區塊來修正備份的資料。 因為一致性檢查是需要大量效能的作業，所以系統管理員可以選擇排程一致性檢查或自動執行。
 
-1. 選取要在 Azure 中保護的資料來源。 然後選取 [下一步]  。
+1. 選取要在 Azure 中保護的資料來源。 然後選取 [下一步]。
 
     ![選取要在 Azure 中保護的資料來源](./media/backup-azure-backup-sql/pg-sqldatabases.png)
 1. 如果您是系統管理員，您可以選擇符合您組織原則的備份排程和保留原則。
@@ -145,7 +145,7 @@ ms.locfileid: "92218080"
 1. 選擇將初始備份複本傳送至 Azure 的方式。
 
     * [ **自動透過網路** ] 選項會遵循您的備份排程，將資料傳輸至 Azure。
-    * 如需 **離線備份**的詳細資訊，請參閱 [離線備份的總覽](offline-backup-overview.md)。
+    * 如需 **離線備份** 的詳細資訊，請參閱 [離線備份的總覽](offline-backup-overview.md)。
 
     選擇傳輸機制之後，請選取 **[下一步]**。
 
@@ -174,18 +174,18 @@ ms.locfileid: "92218080"
 
 若要從 Azure 復原受保護的實體，例如 SQL Server 資料庫：
 
-1. 開啟 DPM 服務器管理主控台。 移至 [復原 **] 工作區** ，查看 DPM 備份的伺服器。 在此範例中選取資料庫 (，ReportServer $ MSDPM2012) 。 選取以**線上**結束的復原**時間**。
+1. 開啟 DPM 服務器管理主控台。 移至 [復原 **] 工作區** ，查看 DPM 備份的伺服器。 在此範例中選取資料庫 (，ReportServer $ MSDPM2012) 。 選取以 **線上** 結束的復原 **時間**。
 
     ![選取復原點](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
 1. 以滑鼠右鍵按一下資料庫名稱，然後選取 [ **復原**]。
 
     ![從 Azure 復原資料庫](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-1. DPM 會顯示復原點的詳細資料。 選取 [下一步] 。 若要覆寫資料庫，請選取復原類型 [復原到原始的 SQL Server 執行個體] ****。 然後選取 [下一步]  。
+1. DPM 會顯示復原點的詳細資料。 選取 [下一步] 。 若要覆寫資料庫，請選取復原類型 [復原到原始的 SQL Server 執行個體] 。 然後選取 [下一步]。
 
     ![將資料庫復原到其原始位置](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
     在此範例中，DPM 可讓您將資料庫復原到另一個 SQL Server 實例或獨立的網路資料夾。
-1. 在 [ **指定復原選項** ] 頁面上，您可以選取修復選項。 例如，您可以選擇 [ **網路頻寬使用節流** 設定] 來節流復原所使用的頻寬。 然後選取 [下一步]  。
+1. 在 [ **指定復原選項** ] 頁面上，您可以選取修復選項。 例如，您可以選擇 [ **網路頻寬使用節流** 設定] 來節流復原所使用的頻寬。 然後選取 [下一步]。
 1. 在 [ **摘要** ] 頁面上，您會看到目前的復原設定。 選取 [ **復原**]。
 
     [復原狀態] 會顯示正在復原的資料庫。 您可以選取 [ **關閉** ] 以關閉嚮導，並在 [ **監視** ] 工作區中查看進度。

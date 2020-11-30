@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d23560e8ee387ca8bc9cb4bba4211f6c8272addd
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 07f1a6ff5d15ee552680c59c86a194aeabe5b866
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490877"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326381"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>使用 Azure 匯入/匯出服務將資料匯入 Azure Blob 儲存體
 
 本文提供的逐步指示會說明如何使用 Azure 匯入/匯出服務，安全地將大量資料匯入 Azure Blob 儲存體。 若要將資料匯入到 Azure Blob，服務會要求您將包含資料的加密磁碟機寄送到 Azure 資料中心。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在建立匯入作業來將資料傳入 Azure Blob 儲存體之前，請仔細檢閱並完成此服務的下列必要條件清單。
 您必須：
@@ -34,7 +34,7 @@ ms.locfileid: "94490877"
 * 在 Windows 系統上啟用 BitLocker。 請參閱[如何啟用 BitLocker](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/)。
 * 下載 Windows 系統上[最新的 WAImportExport 第1版](https://www.microsoft.com/download/details.aspx?id=42659)。 此工具的最新版本具有安全性更新，可允許適用于 BitLocker 金鑰的外部保護裝置，以及更新的解除鎖定模式功能。
 
-  * 將檔案解壓縮至預設資料夾 `waimportexportv1`。 例如 `C:\WaImportExportV1`。
+  * 將檔案解壓縮至預設資料夾 `waimportexportv1`。 例如： `C:\WaImportExportV1` 。
 * 擁有 FedEx/DHL 帳戶。 如果您想要使用 FedEx/DHL 以外的電訊廠商，請聯絡 Azure 資料箱營運團隊 `adbops@microsoft.com` 。
   * 帳戶必須是有效的、需要有餘額，且必須有退貨運送功能。
   * 產生匯出作業的追蹤號碼。
@@ -52,7 +52,7 @@ ms.locfileid: "94490877"
 1. 透過 SATA 連接器將磁碟機連線到 Windows 系統。
 2. 在每個磁碟機上建立單一 NTFS 磁碟區。 指派磁碟機代號給磁碟區。 請勿使用掛接點。
 3. 在 NTFS 磁碟區上啟用 BitLocker 加密。 如果使用 Windows Server 系統，請使用[如何在 Windows Server 2012 R2 上啟用 BitLocker](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/) 中的指示。
-4. 將資料複製到加密磁碟區。 使用拖放或 Robocopy，或是任何這類的複製工具。 系統會在您執行此工具的相同資料夾中建立日誌 ( *jrn* ) 檔案。
+4. 將資料複製到加密磁碟區。 使用拖放或 Robocopy，或是任何這類的複製工具。 系統會在您執行此工具的相同資料夾中建立日誌 (*jrn*) 檔案。
 
    如果磁片磁碟機已鎖定，而您需要解除鎖定磁片磁碟機，則根據您的使用案例而定，解除鎖定的步驟可能會有所不同。
 
@@ -78,13 +78,13 @@ ms.locfileid: "94490877"
 
     下表會說明使用的參數：
 
-    |選項  |描述  |
+    |選項  |說明  |
     |---------|---------|
     |/j:     |日誌檔案的名稱 (具有 .jrn 副檔名)。 每個磁碟機都會產生日誌檔案。 我們建議您使用磁碟序號作為日誌檔案名稱。         |
     |/id:     |工作階段識別碼。 針對命令的每個執行個體使用唯一的工作階段號碼。      |
     |/t:     |要寄送之磁碟的磁碟機代號。 例如，磁碟機 `D`。         |
     |/bk:     |磁碟機的 BitLocker 金鑰。 其數字密碼來自 `manage-bde -protectors -get D:` 的輸出      |
-    |/srcdir:     |要寄送之磁碟的磁碟機代號，其後緊接著 `:\`。 例如 `D:\`。         |
+    |/srcdir:     |要寄送之磁碟的磁碟機代號，其後緊接著 `:\`。 例如： `D:\` 。         |
     |/dstdir:     |Azure 儲存體中目的地容器的名稱。         |
     |/blobtype     |此選項會指定您想要匯入資料的 blob 類型。 針對區塊 blob，這是 `BlockBlob` 分頁 blob 的和 `PageBlob` 。         |
     |/skipwrite：     |此選項表示不需要複製新資料，且即將準備磁碟上的現有資料。          |
@@ -105,7 +105,7 @@ ms.locfileid: "94490877"
 
     ![移至匯入/匯出作業](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
-3. 按一下 [ **建立匯入/匯出作業** ]。
+3. 按一下 [ **建立匯入/匯出作業**]。
 
     ![按一下 [建立匯入/匯出作業]](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 

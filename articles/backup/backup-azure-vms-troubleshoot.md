@@ -4,12 +4,12 @@ description: 在本文中，了解如何針對備份和還原 Azure 虛擬機器
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 343ad80a6b68de352424fa8f16686fcece921954
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: cb25d9263648fbd92bc075751c1a8e627d03bd44
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840911"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325208"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>針對 Azure 虛擬機器上的備份失敗進行疑難排解
 
@@ -246,7 +246,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 **步驟 2**：嘗試將備份排程變更為 VM 低於負載 (（例如較少 CPU 或 IOPS）的時間) 
 
-**步驟 3**：嘗試 [增加 VM 的大小](https://docs.microsoft.com/azure/virtual-machines/windows/resize-vm) ，然後再次嘗試操作
+**步驟 3**：嘗試 [增加 VM 的大小](../virtual-machines/windows/resize-vm.md) ，然後再次嘗試操作
 
 ### <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001，ResourceNotFound-無法執行作業，因為 VM 已不存在/400094、BCMV2VMNotFound-虛擬機器不存在/找不到 Azure 虛擬機器
 

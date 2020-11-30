@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 60f781ddfa5717bbe5bcbb05ec8c236c8594c587
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c6d03c896242d02e147e880a99eb9f1e7bb15da8
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793087"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326857"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>什麼是 Azure 虛擬機器上的 SQL Server (Windows)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -147,7 +147,7 @@ Azure 只會針對每個支援的作業系統、版本和版次組合，維護�
 ### <a name="networking"></a>網路功能
 * [虛擬網路概觀](../../../virtual-network/virtual-networks-overview.md)
 * [Azure 中的 IP 位址](../../../virtual-network/public-ip-addresses.md)
-* [在 Azure 入口網站中建立完整格式的網域名稱](../../../virtual-machines/linux/portal-create-fqdn.md)
+* [在 Azure 入口網站中建立完整格式的網域名稱](../../../virtual-machines/create-fqdn.md)
 
 ### <a name="sql"></a>SQL
 * [SQL Server 文件](/sql/index)

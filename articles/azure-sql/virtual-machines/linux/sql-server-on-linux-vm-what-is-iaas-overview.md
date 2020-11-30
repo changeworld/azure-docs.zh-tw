@@ -11,12 +11,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: be063105db2384f566e7c94d9f2e7a2bd808b15f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c394fe2aa7639d32e5d79bcb22a01151f7666f5b
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790129"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324613"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Azure 虛擬機器上的 SQL Server 概觀 (Linux)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -75,7 +75,7 @@ Azure 虛擬機器會在全球許多不同的[地理區域](https://azure.micros
 
 * [虛擬網路概觀](../../../virtual-network/virtual-networks-overview.md)
 * [Azure 中的 IP 位址](../../../virtual-network/public-ip-addresses.md)
-* [在 Azure 入口網站中建立完整格式的網域名稱](../../../virtual-machines/windows/portal-create-fqdn.md)
+* [在 Azure 入口網站中建立完整格式的網域名稱](../../../virtual-machines/create-fqdn.md)
 
 ### <a name="sql"></a>SQL
 

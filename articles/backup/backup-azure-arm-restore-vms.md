@@ -4,12 +4,12 @@ description: 使用 Azure 入口網站從復原點還原 Azure 虛擬機器，�
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 335dfc665cc7fb9727e4eff3e65a18a2aa5c3f94
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1c28de679bd957a472e543489a2dd15b3883aed5
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002982"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327180"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 入口網站中還原 Azure VM 資料
 
@@ -203,7 +203,7 @@ Azure 備份提供數種方式來還原 VM。
 **NIC/子網上 (NSG) 的網路安全性群組** | Azure VM 備份支援在 vnet、子網和 NIC 層級備份和還原 NSG 資訊。
 **區域固定的 Vm** | 如果您備份的 Azure VM 已釘選到具有 Azure 備份) 的區域 (，則您可以在其釘選所在的相同區域中進行還原。 [深入了解](../availability-zones/az-overview.md)
 **還原任何可用性設定組中的 VM** | 從入口網站還原 VM 時，沒有選擇可用性設定組的選項。 還原的 VM 不會有可用性設定值組。 如果您使用 [復原磁碟] 選項，則您可以在使用提供的範本或 PowerShell 從磁片建立 VM 時， [指定可用性設定組](../virtual-machines/windows/tutorial-availability-sets.md) 。
-**還原特殊 Vm，例如 SQL Vm** | 如果您要使用 Azure VM 備份來備份 SQL VM，然後在復原磁碟之後使用 [還原 VM] 選項或建立 VM，則必須向 SQL 提供者註冊新建立的 VM [，如下所述。](../azure-sql/virtual-machines/windows/sql-vm-resource-provider-register.md?tabs=azure-cli%2Cbash) 這會將還原的 VM 轉換成 SQL VM。
+**還原特殊 Vm，例如 SQL Vm** | 如果您要使用 Azure VM 備份來備份 SQL VM，然後在復原磁碟之後使用 [還原 VM] 選項或建立 VM，則必須向 SQL 提供者註冊新建立的 VM [，如下所述。](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md?tabs=azure-cli%2cbash) 這會將還原的 VM 轉換成 SQL VM。
 
 ### <a name="restore-domain-controller-vms"></a>還原網域控制站 VM
 

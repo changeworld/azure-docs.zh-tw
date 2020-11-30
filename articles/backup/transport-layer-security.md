@@ -3,12 +3,12 @@ title: Azure 備份中的傳輸層安全性
 description: 瞭解如何啟用 Azure 備份使用加密通訊協定傳輸層安全性 (TLS) ，在透過網路傳輸時保護資料的安全。
 ms.topic: conceptual
 ms.date: 11/01/2020
-ms.openlocfilehash: 9881fd3532cbc7d67c7d5adbce75e02fc62e0bcf
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: ba9c9d91f562f54695a0739908c8a409d14d5852
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280671"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327112"
 ---
 # <a name="transport-layer-security-in-azure-backup"></a>Azure 備份中的傳輸層安全性
 
@@ -45,7 +45,7 @@ ms.locfileid: "93280671"
 
 ### <a name="configuring-net-framework"></a>設定 .NET Framework
 
-下列登錄機碼會設定 .NET Framework 以支援強式加密。 您可以在這裡閱讀更多有關設定 [.NET Framework](https://docs.microsoft.com/dotnet/framework/network-programming/tls#configuring-schannel-protocols-in-the-windows-registry)的資訊。
+下列登錄機碼會設定 .NET Framework 以支援強式加密。 您可以在這裡閱讀更多有關設定 [.NET Framework](/dotnet/framework/network-programming/tls#configuring-schannel-protocols-in-the-windows-registry)的資訊。
 
 ```reg
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
@@ -65,7 +65,7 @@ TLS 1.2 比先前的密碼編譯通訊協定更安全，例如 SSL 2.0、SSL 3.0
 
 ### <a name="what-determines-the-encryption-protocol-used"></a>如何判斷使用的加密通訊協定？
 
-用戶端和伺服器所支援的最高通訊協定版本會進行協商，以建立加密的交談。 如需 TLS 交握通訊協定的詳細資訊，請參閱 [使用 Tls 建立安全會話](https://docs.microsoft.com/windows/win32/secauthn/tls-handshake-protocol#establishing-a-secure-session-by-using-tls)。
+用戶端和伺服器所支援的最高通訊協定版本會進行協商，以建立加密的交談。 如需 TLS 交握通訊協定的詳細資訊，請參閱 [使用 Tls 建立安全會話](/windows/win32/secauthn/tls-handshake-protocol#establishing-a-secure-session-by-using-tls)。
 
 ### <a name="what-is-the-impact-of-not-enabling-tls-12"></a>未啟用 TLS 1.2 的影響為何？
 
@@ -77,6 +77,6 @@ TLS 1.2 比先前的密碼編譯通訊協定更安全，例如 SSL 2.0、SSL 3.0
 
 ## <a name="additional-resources"></a>其他資源
 
-- [傳輸層安全性通訊協定](https://docs.microsoft.com/windows/win32/secauthn/transport-layer-security-protocol)
-- [確保在部署的作業系統間支援 TLS 1。2](https://docs.microsoft.com/security/engineering/solving-tls1-problem#ensuring-support-for-tls-12-across-deployed-operating-systems)
-- [.NET Framework 的傳輸層安全性 (TLS) 最佳做法](https://docs.microsoft.com/dotnet/framework/network-programming/tls)
+- [傳輸層安全性通訊協定](/windows/win32/secauthn/transport-layer-security-protocol)
+- [確保在部署的作業系統間支援 TLS 1。2](/security/engineering/solving-tls1-problem#ensuring-support-for-tls-12-across-deployed-operating-systems)
+- [.NET Framework 的傳輸層安全性 (TLS) 最佳做法](/dotnet/framework/network-programming/tls)
