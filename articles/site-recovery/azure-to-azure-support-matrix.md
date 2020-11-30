@@ -2,14 +2,14 @@
 title: 使用 Azure Site Recovery 進行 Azure VM 災害復原的支援矩陣
 description: 摘要說明如何使用 Azure Site Recovery 將 Azure VM 災害復原進行至次要區域的支援。
 ms.topic: article
-ms.date: 07/14/2020
+ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: 2391a4056d5c0c952677b57e7d37a181ef0eacc0
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 25fb28c8f420a64f60ab0d058c374f5de74ed883
+ms.sourcegitcommit: b849ecdc8aa97337299b0f09970b7810c59cd044
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95808869"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96310320"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure 區域之間的 Azure VM 災害復原支援矩陣
 
@@ -98,8 +98,8 @@ Windows 7 (x64)，含 SP1 和更新版本 | 從適用於 Azure Vm 的行動服�
 
 **作業系統** | **詳細資料**
 --- | ---
-Red Hat Enterprise Linux | 6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery)、 [7.8](https://support.microsoft.com/help/4564347/)、 [7.9](https://support.microsoft.com/help/4578241/)、 [8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)、8.1、 [8.2](https://support.microsoft.com/help/4570609/)
-CentOS | 6.5、6.6、6.7、6.8、6.9、6.10 </br> 7.0、7.1、7.2、7.3、7.4、7.5、7.6、7.7、 [7.8](https://support.microsoft.com/help/4564347/)、 [7.9 預先 GA 版本](https://support.microsoft.com/help/4578241/)、7.9 熱修正程式支援 9.37 ga 版本 * * </br> 8.0、8.1、 [8.2](https://support.microsoft.com/en-us/help/4570609)
+Red Hat Enterprise Linux | 6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery)、 [7.8](https://support.microsoft.com/help/4564347/)、 [7.9](https://support.microsoft.com/help/4578241/)、 [8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)、8.1、 [8.2](https://support.microsoft.com/help/4570609/)、 [8.3](https://support.microsoft.com/help/4597409)。
+CentOS | 6.5、6.6、6.7、6.8、6.9、6.10 </br> 7.0、7.1、7.2、7.3、7.4、7.5、7.6、7.7、 [7.8](https://support.microsoft.com/help/4564347/)、 [7.9 預先 GA 版本](https://support.microsoft.com/help/4578241/)、7.9 (ga 版本可從「修正程式9.37」（) 、8.0、8.1、 [8.2](https://support.microsoft.com/en-us/help/4570609) ）支援
 Ubuntu 14.04 LTS 伺服器 | 包含所有14.04 的支援。*x* 版本; [支援的核心版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines); 
 Ubuntu 16.04 LTS 伺服器 | 包含所有16.04 的支援。*x* 版本; [支援的核心版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> 使用密碼型驗證和登入並使用雲端 init 封裝來設定雲端 VM 的 Ubuntu 伺服器，可能對容錯移轉停用密碼型登入 (取決於 cloudinit 組態)。 針對已容錯移轉的 VM，從 Azure 入口網站中的 [支援] > [疑難排解] > [設定功能表] 中重設密碼，即可在虛擬機器上重新啟用密碼型登入。
 Ubuntu 18.04 LTS 伺服器 | 包含所有18.04 的支援。*x* 版本; [支援的核心版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines) |
@@ -111,10 +111,10 @@ SUSE Linux Enterprise Server 12 | SP1、SP2、SP3、SP4、SP5  [ (支援的核�
 SUSE Linux Enterprise Server 15 | 15、SP1、SP2[ (支援的核心版本) ](#supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> 不支援將複寫機器從 SP3 升級至 SP4。 如果已升級複寫的機器，您需要在升級後停用複寫，然後再重新啟用複寫。
 SUSE Linux Enterprise Server 11 | SP4
-Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、 [7.7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)、 [7.8](https://support.microsoft.com/help/4573888/)、 [8.0](https://support.microsoft.com/help/4573888/)、 [8.1](https://support.microsoft.com/help/4573888/)  <br/> 執行 Red Hat 相容核心或 Unbreakable Enterprise Kernel 第 3、4 及 5 版 (UEK3、UEK4、UEK5)<br/><br/>8.1<br/>在所有 UEK 核心和 RedHat 核心上執行 <= 3.10.0-1062. * [9.35](https://support.microsoft.com/help/4573888/)支援可支援 RedHat 核心的其餘部分，可在[9.36](https://support.microsoft.com/help/4578241/)中取得
+Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、 [7.4、7.5](https://support.microsoft.com/help/4573888/) [、](https://support.microsoft.com/help/4573888/) [7.6、7.7、7.8](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)、7.9 [、8.0](https://support.microsoft.com/help/4597409) (執行 Red Hat 相容核心或 Unbreakable Enterprise kernel 第 3[版、4](https://support.microsoft.com/help/4573888/) & 5 (UEK3、UEK4、UEK5) <br/><br/>8.1 (在所有 UEK 核心和 RedHat 核心上執行 <= 3.10.0-1062. * 在 [9.35](https://support.microsoft.com/help/4573888/)中受到支援。 [9.36](https://support.microsoft.com/help/4578241/)) 提供對其餘 RedHat 核心的支援
 
 > [!NOTE]
-> 請確定 Linux 版本的 Azure Site Recovery 不支援自訂的 OS 映射。 只支援屬於散發次要版本發行/更新一部分的股票核心。
+> 針對 Linux 版本，Azure Site Recovery 不支援自訂的 OS 映射。 只支援屬於散發次要版本發行/更新一部分的股票核心。
 
 * * 注意：若要在發行後的15天內支援最新的 Linux 核心，Azure Site Recovery 在最新的行動代理程式版本之上推出熱修正修補程式。 這項修正會在兩個主要版本版本之間推出。 若要更新為最新版本的行動代理程式 (包括熱修正修補程式) 請遵循 [本文中所述的步驟](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)。 此修補程式目前已針對 Azure 中使用的行動代理程式推出，適用于 azure DR 案例。
 
@@ -191,7 +191,7 @@ Azure 資源庫映像 - Microsoft 發行 | 支援 | 只要 VM 在支援的作業
 Azure 資源庫映像 - 第三方發行 | 支援 | 只要 VM 在支援的作業系統上執行即支援。
 自訂映像 - 第三方發行 | 支援 | 只要 VM 在支援的作業系統上執行即支援。
 使用 Site Recovery 移轉 VM | 支援 | 如果使用 Site Recovery 將 VMware VM 或實體機器遷移到 Azure，您需要將機器上執行的舊版行動服務解除安裝，然後重新啟動機器，再複寫到另一個 Azure 區域。
-Azure RBAC 原則 | 不受支援 | Azure 角色型存取控制 (Vm 上的 Azure RBAC) 原則，不會複寫到目的地區域中的容錯移轉 VM。
+Azure RBAC 原則 | 不支援 | Azure 角色型存取控制 (Vm 上的 Azure RBAC) 原則，不會複寫到目的地區域中的容錯移轉 VM。
 延伸模組 | 不支援 | 延伸模組不會複寫至目標區域中的容錯移轉 VM。 在容錯移轉之後必須手動安裝延伸模組。
 鄰近放置群組 | 支援 | 位於鄰近位置群組內的虛擬機器可以使用 Site Recovery 來保護。
 
@@ -249,7 +249,7 @@ ZRS | 不支援 |
 一般用途 V2 儲存體帳戶 (經常性存取層和非經常性存取層) | 支援 | 與一般用途 V1 儲存體帳戶相比，交易成本大幅增加
 第2代 (UEFI 開機) | 支援
 NVMe 磁碟 | 不支援
-Azure 共用磁碟 | 不受支援
+Azure 共用磁碟 | 不支援
 安全傳輸選項 | 支援
 已啟用寫入加速器的磁片 | 不支援
 
@@ -278,7 +278,7 @@ Azure 共用磁碟 | 不受支援
 **設定** | **支援** | **詳細資料**
 --- | --- | ---
 NIC | 針對特定 Azure VM 大小支援的數目上限 | 在容錯移轉期間建立 VM 時，系統會建立 NIC。<br/><br/> 容錯移轉 VM 的 NIC 數目取決於啟用複寫時來源 VM 具有的 NIC 數量。 如果您在啟用複寫後新增或移除 NIC，不會影響容錯移轉後複寫 VM 上的 NIC 數目。 <br/><br/> 在容錯移轉之後，Nic 的順序不保證會與原始順序相同。 <br/><br/> 您可以根據組織的命名慣例，重新命名目的地區域中的 Nic。 使用 PowerShell 可支援重新命名 NIC。
-網際網路負載平衡器 | 不受支援 | 您可以在主要區域中設定公用/網際網路負載平衡器。 不過，DR 區域中的 Azure Site Recovery 不支援公用/網際網路負載平衡器。
+網際網路負載平衡器 | 不支援 | 您可以在主要區域中設定公用/網際網路負載平衡器。 不過，DR 區域中的 Azure Site Recovery 不支援公用/網際網路負載平衡器。
 內部負載平衡器 | 支援 | 使用復原方案中的 Azure 自動化指令碼，使預先設定的負載平衡器產生關聯。
 公用 IP 位址 | 支援 | 將現有公用 IP 位址與 NIC 產生關聯。 或者，建立公用 IP 位址，然後使用復原方案中的 Azure 自動化指令碼讓它與 NIC 產生關聯。
 NIC 上的 NSG | 支援 | 使用復原方案中的 Azure 自動化指令碼，使 NSG 與 NIC 產生關聯。

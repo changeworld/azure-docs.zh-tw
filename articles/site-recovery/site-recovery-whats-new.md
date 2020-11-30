@@ -3,12 +3,12 @@ title: Azure Site Recovery 的新功能
 description: 提供新功能的摘要，以及 Azure Site Recovery 服務中的最新更新。
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 2e85ee19012f6ae13c18e26b3aa0b5ae28bcaade
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 3667f963eac0ebc719872db00ac069c7da70ec91
+ms.sourcegitcommit: b849ecdc8aa97337299b0f09970b7810c59cd044
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341343"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96310352"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 最新功能
 
@@ -22,14 +22,27 @@ ms.locfileid: "93341343"
 
 **更新** |  **統一安裝** | **設定伺服器 ova** | **行動服務代理程式** | **站台復原提供者** | **復原服務代理程式**
 --- | --- | --- | --- | --- | ---
+[匯總套件52](https://support.microsoft.com/help/4597409/)  | 9.39.5796.1 | 5.1.6458.0 | 9.39.5796.1 | 5.1.6458.0  | 2.0.9196.0
 [匯總套件51](https://support.microsoft.com/help/4590304)  | 9.38.5761.1 | 5.1.6400.0 | 9.38.5761.1 | 5.1.6400.0  | 2.0.9193.0
 [匯總套件50](https://support.microsoft.com/help/4582666/) | 9.37.5724.1 | 5.1.6347.0 | 9.37.5724.1 | 5.1.6347.0  | 2.0.9192.0
 [匯總套件49](https://support.microsoft.com/help/4578241/) | 9.36.5696.1 | 5.1.6315.0 | 9.36.5696.1 | 5.1.6315.0 | 2.0.9188.0
 [匯總套件48](https://support.microsoft.com/help/4573888/) | 9.35.5659.1 | 5.1.6200.0 | 9.35.5659.1 | 5.1.6200.0 | 2.0.9186.0
-[匯總套件47](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | HyperV 電腦-2.0.9183。0 <br> VMware 機器-2.0.9177。0
-
 
 [深入瞭解](service-updates-how-to.md) 更新的安裝與支援。
+
+
+## <a name="updates-november-2020"></a>更新 (2020 年11月) 
+
+### <a name="update-rollup-52"></a>更新彙總套件52
+
+[更新彙總套件 52](https://support.microsoft.com/help/4597409/update-rollup-52-for-azure-site-recovery) 提供下列更新：
+
+**更新** | **詳細資料**
+--- | ---
+**提供者和代理程式** | Site Recovery 代理程式和提供者的更新，如匯總中所述。
+**問題修正/改善** | 匯總中詳述的一些修正和改進，包括行動服務的新 Linux 支援。
+**Azure VM 嚴重損壞修復** | 現在支援執行 RHEL 8.3 和 Oracle Linux 7.9 的 Vm
+**VMware VM/實體災難復原至 Azure** | 現在支援執行 RHEL 8.3 Oracle Linux 7.9/8.3 的 Vm。
 
 ## <a name="updates-october-2020"></a>2020年10月 (更新) 
 
