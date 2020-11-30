@@ -10,10 +10,10 @@ ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: b70beb90fae794eb5512cb8b466524169c4c7b53
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 11/29/2020
 ms.locfileid: "92792985"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>將 Azure 儲存體帳戶移至另一個區域
@@ -55,9 +55,9 @@ ms.locfileid: "92792985"
 
 2. 選取 [ **所有資源** ]，然後選取您的儲存體帳戶。
 
-3. 選取 > **設定**  >  **匯出範本** 。
+3. 選取 >**設定**  >  **匯出範本**。
 
-4. 選擇 [ **匯出範本** ] 分頁中的 [ **下載** ]。
+4. 選擇 [**匯出範本**] 分頁中的 [**下載**]。
 
 5. 找出您從入口網站下載的 .zip 檔案，並將該檔案解壓縮至您選擇的資料夾。
 
@@ -101,15 +101,15 @@ ms.locfileid: "92792985"
 
 使用 Azure 入口網站來部署範本：
 
-1. 在 [Azure 入口網站中，選取 [ **建立資源** ]。
+1. 在 [Azure 入口網站中，選取 [ **建立資源**]。
 
-2. 在 **[搜尋 Marketplace** ] 中，輸入 **範本部署** ，然後按 **enter** 。
+2. 在 **[搜尋 Marketplace**] 中，輸入 **範本部署**，然後按 **enter**。
 
-3. 選取 **範本部署** 。
+3. 選取 **範本部署**。
 
     ![Azure Resource Manager 範本程式庫](./media/storage-account-move/azure-resource-manager-template-library.png)
 
-4. 選取 [建立]。
+4. 選取 [建立]  。
 
 5. 選取 [在編輯器中組建您自己的範本]。
 
@@ -137,7 +137,7 @@ ms.locfileid: "92792985"
          "location": "centralus"
          }]          
     ```
-    若要取得區域位置代碼，請參閱 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  區域的程式碼是區功能變數名稱稱，不含空格、 **美國中部**  =  **centralus** 。
+    若要取得區域位置代碼，請參閱 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  區域的程式碼是區功能變數名稱稱，不含空格、**美國中部**  =  **centralus**。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -188,9 +188,9 @@ ms.locfileid: "92792985"
 
 - 訂用帳戶：選取 Azure 訂用帳戶。
 
--  並指定資源群組名稱。
+- **資源群組**：選取 [新建] 並指定資源群組名稱。
 
-- **位置** ：選取 Azure 位置。
+- **位置**：選取 Azure 位置。
 
 3. 按一下 [ **我同意上方所述的條款及條件** ] 核取方塊，然後按一下 [ **選取購買** ] 按鈕。
 
@@ -225,7 +225,7 @@ ms.locfileid: "92792985"
 | **靜態網站** | [在 Azure 儲存體中託管靜態網站](../blobs/storage-blob-static-website-how-to.md) |
 | **事件訂閱** | [回應 Blob 儲存體事件](../blobs/storage-blob-event-overview.md) |
 | **警示** | [使用 Azure 監視器中建立、檢視及管理活動記錄警示](../../azure-monitor/platform/alerts-activity-log.md) |
-| **內容傳遞網路 (CDN)** | [使用 Azure CDN 透過 HTTPS 以自訂網域存取 Blob](../blobs/storage-https-custom-domain-cdn.md) |
+| **(CDN) 的內容傳遞網路** | [使用 Azure CDN 透過 HTTPS 以自訂網域存取 Blob](../blobs/storage-https-custom-domain-cdn.md) |
 
 > [!NOTE] 
 > 如果您為來源儲存體帳戶設定 CDN，只要將現有的 CDN 來源變更為主要 blob 服務端點 (或新帳戶的主要靜態網站端點) 。 
@@ -255,9 +255,9 @@ AzCopy 是移動資料的慣用工具。 已針對效能最佳化。  其中一�
 
 1. 在 Azure 入口網站中，展開左側功能表以開啟服務的功能表，然後選擇 [ **儲存體帳戶** ] 以顯示您的儲存體帳戶清單。
 
-2. 找出要刪除的目標儲存體帳戶，然後以滑鼠右鍵按一下清單右側的 [ **更多** ] 按鈕 ( **...** ) 。
+2. 找出要刪除的目標儲存體帳戶，然後以滑鼠右鍵按一下清單右側的 [ **更多** ] 按鈕 (**...**) 。
 
-3. 選取 [ **刪除** ]，然後確認。
+3. 選取 [ **刪除**]，然後確認。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
