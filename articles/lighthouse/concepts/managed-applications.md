@@ -3,12 +3,12 @@ title: Azure Lighthouse 和 Azure 受控應用程式
 description: 瞭解 Azure Lighthouse 和 Azure 受控應用程式如何協助啟用不同的案例，以及如何搭配使用它們。
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 144917716da38cc99078f663cc2f4cb8ba0199c8
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b3d6c83a50f1da006f2618f7f4ff59759dac2555
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014982"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436516"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse 和 Azure 受控應用程式
 
@@ -35,7 +35,7 @@ Azure 受控應用程式和 Azure Lighthouse 的運作方式是讓服務提供�
 
 受控應用程式支援自訂的 [Azure 入口網站體驗](../../azure-resource-manager/managed-applications/concepts-view-definition.md) 以及 [與自訂提供者的整合](../../azure-resource-manager/managed-applications/tutorial-create-managed-app-with-custom-provider.md)。 這些選項可以用來提供更自訂和整合的體驗，讓客戶更容易執行一些管理工作。
 
-受控應用程式可以 [發佈至 Azure Marketplace](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)，可作為特定客戶使用的私人供應專案，或作為多個客戶可購買的公用供應專案。 您也可以將 [受控應用程式發佈至您的服務類別目錄](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md)，以將它們傳遞給您組織中的使用者。 您可以使用 ARM 範本部署服務類別目錄和 Marketplace 實例，其中可包含商業市場夥伴的唯一識別碼，以追蹤 [客戶使用](../../marketplace/azure-partner-customer-usage-attribution.md)方式的屬性。
+受控應用程式可以 [發佈至 Azure Marketplace](../../marketplace/create-new-azure-apps-offer.md)，可作為特定客戶使用的私人供應專案，或作為多個客戶可購買的公用供應專案。 您也可以將 [受控應用程式發佈至您的服務類別目錄](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md)，以將它們傳遞給您組織中的使用者。 您可以使用 ARM 範本部署服務類別目錄和 Marketplace 實例，其中可包含商業市場夥伴的唯一識別碼，以追蹤 [客戶使用](../../marketplace/azure-partner-customer-usage-attribution.md)方式的屬性。
 
 Azure 受控應用程式通常用於特定客戶的需求，可透過完全由服務提供者管理的現成解決方案來達成。
 

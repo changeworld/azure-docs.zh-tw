@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: ad990f10c611c5ca5bb8a8d053ee4d59b6f05c83
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: dccb734ef4eaa9f22b70488918f14ad94f723453
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326993"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437128"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>從 IoT Edge 的部署取出記錄
 
@@ -33,7 +33,7 @@ ms.locfileid: "96326993"
 <{Log Level}> {Timestamp} {Message Text}
 ```
 
-`{Log Level}` 應遵循 [Syslog 嚴重性層級格式](https://wikipedia.org/wiki/Syslog#Severity_lnevel) ，且 `{Timestamp}` 應格式化為 `yyyy-mm-dd hh:mm:ss.fff zzz` 。
+`{Log Level}` 應遵循 [Syslog 嚴重性層級格式](https://wikipedia.org/wiki/Syslog#Severity_level) ，且 `{Timestamp}` 應格式化為 `yyyy-mm-dd hh:mm:ss.fff zzz` 。
 
 [IoT Edge 中的記錄器類別](https://github.com/Azure/iotedge/blob/master/edge-util/src/Microsoft.Azure.Devices.Edge.Util/Logger.cs)可作為標準的實作為。
 
@@ -63,7 +63,7 @@ ms.locfileid: "96326993"
     }
 ```
 
-| 名稱 | 類型 | 說明 |
+| 名稱 | 類型 | 描述 |
 |-|-|-|
 | schemaVersion | 字串 | 設定為 `1.0` |
 | 項目 | JSON 陣列 | 具有 `id` 和 `filter` 元組的陣列。 |
@@ -172,7 +172,7 @@ az iot hub invoke-module-method \
     }
 ```
 
-| 名稱 | 類型 | 說明 |
+| 名稱 | 類型 | 描述 |
 |-|-|-|
 | sasURL | 字串 (URI)  | [具有 Azure Blob 儲存體容器之寫入存取權的共用存取](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer)簽章 URL。 |
 
@@ -289,7 +289,7 @@ az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d 
     }
 ```
 
-| 名稱 | 類型 | 說明 |
+| 名稱 | 類型 | 描述 |
 |-|-|-|
 | schemaVersion | 字串 | 設定為 `1.0` |
 | sasURL | 字串 (URI)  | [具有 Azure Blob 儲存體容器之寫入存取權的共用存取簽章 URL](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |

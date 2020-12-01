@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 23cf8a79c4978ccb3a65ad968b2ed5a01bb3d0ec
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 554b3ad1dbe1e736300387aefde195b9054ab326
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242325"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437094"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>適用於 MySQL 的 Azure 資料庫資料加密 (使用客戶管理的金鑰)
 
@@ -48,9 +48,9 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 
 針對使用儲存於 Key Vault 中的客戶管理金鑰來加密 DEK 的 MySQL 伺服器，Key Vault 系統管理員會授與伺服器下列存取權限：
 
-* **get** ：用於在金鑰保存庫中，擷取金鑰的公開部分和屬性。
-* **wrapKey** ：可以加密 DEK。 加密的 DEK 會儲存在適用於 MySQL 的 Azure 資料庫中。
-* **unwrapKey** ：可以解密 DEK。 適用於 MySQL 的 Azure 資料庫需要解密 DEK 來加密/解密資料
+* **get**：用於在金鑰保存庫中，擷取金鑰的公開部分和屬性。
+* **wrapKey**：可以加密 DEK。 加密的 DEK 會儲存在適用於 MySQL 的 Azure 資料庫中。
+* **unwrapKey**：可以解密 DEK。 適用於 MySQL 的 Azure 資料庫需要解密 DEK 來加密/解密資料
 
 金鑰保存庫管理員也可以[啟用 Key Vault 稽核事件的記錄](../azure-monitor/insights/key-vault-insights-overview.md)，以便稍後再進行稽核。
 
@@ -61,14 +61,17 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 下列是設定 Key Vault 的需求：
 
 * Key Vault 和適用於 MySQL 的 Azure 資料庫必須屬於相同的 Azure Active Directory (Azure AD) 租用戶。 目前不支援跨租用戶 Key Vault 與伺服器互動。 之後移動 Key Vault 資源會要求您重新設定資料加密。
-* 在金鑰保存庫上啟用虛刪除功能，可在意外刪除金鑰 (或 Key Vault) 時防止資料遺失。 除非使用者同時復原或清除虛刪除的資源，否則這些資源將會保留 90 天。 Key Vault 存取原則中已建立復原和清除動作本身權限的關聯。 虛刪除功能預設為關閉，但可透過 PowerShell 或 Azure CLI 啟用 (請注意，您無法透過 Azure 入口網站啟用)。
+* 啟用 [虛刪除] ( # A1。在保留期限設定為 **90 天** 的金鑰保存庫上/key-vault/general/soft-delete-overview.md) 功能，以防止在意外的金鑰 (或 Key Vault) 刪除時發生資料遺失。 除非保留期限明確設定為 <= 90 天，否則已虛刪除的資源預設會保留90天。 Key Vault 存取原則中已建立復原和清除動作本身權限的關聯。 虛刪除功能預設為關閉，但可透過 PowerShell 或 Azure CLI 啟用 (請注意，您無法透過 Azure 入口網站啟用)。
+* 在保留期限設為 **90 天** 的金鑰保存庫上啟用 [清除保護](../key-vault/general/soft-delete-overview.md#purge-protection)功能。 只有啟用虛刪除之後，才能啟用清除保護。 您可以透過 Azure CLI 或 PowerShell 來開啟它。 當清除保護開啟時，已刪除狀態的保存庫或物件就無法清除，直到保留期限經過為止。 虛刪除的保存庫和物件仍可復原，以確保會遵循保留原則。 
 * 使用其唯一的受控識別授與「適用於 MySQL 的 Azure 資料庫」對金鑰保存庫的存取權限，使其具有 get、wrapKey 和 unwrapKey 權限。 在 Azure 入口網站中，在 MySQL 上啟用資料加密時，會自動建立唯一的「服務」身分識別。 如需使用 Azure 入口網站的詳細逐步指示，請參閱[設定 MySQL 的資料加密](howto-data-encryption-portal.md)。
 
 下列是設定客戶管理金鑰的需求：
 
 * 用來加密 DEK 的客戶管理金鑰，只能是非對稱的 RSA 2048。
-* 金鑰啟用日期 (若已設定) 必須是過去的日期和時間。 到期日 (若已設定) 必須是未來的日期和時間。
+* 金鑰啟用日期 (若已設定) 必須是過去的日期和時間。 未設定到期日。
 * 金鑰必須處於「已啟用」狀態。
+* 金鑰必須具有將保留期限設為 **90 天** 的虛 [刪除](../key-vault/general/soft-delete-overview.md)。
+* Kay 必須 [啟用清除保護](../key-vault/general/soft-delete-overview.md#purge-protection)。
 * 如果您要將 [現有金鑰匯入](/rest/api/keyvault/ImportKey/ImportKey) 至金鑰保存庫，請務必以支援的檔案格式提供， (`.pfx` 、 `.byok` `.backup`) 。
 
 ## <a name="recommendations"></a>建議
@@ -78,9 +81,9 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 * 在 Key Vault 上設定資源鎖定，藉此控制可刪除這個重要資源的人員，並防止意外或未經授權的刪除發生。
 * 啟用所有加密金鑰的稽核和報告功能。 Key Vault 提供可輕易插入其他安全性資訊和事件管理工具中的記錄。 例如，Azure 監視器 Log Analytics 即是已整合的服務之一。
 * 請確定 Key Vault 和適用於 MySQL 的 Azure 資料庫都位於相同的區域，以確保 DEK 包裝和解除包裝作業的存取速度更快。
-* 鎖定 Azure KeyVault 為只限 **私人端點和選取的網路** ，並僅允許「信任的 Microsoft」服務以保護資源。
+* 鎖定 Azure KeyVault 為只限 **私人端點和選取的網路**，並僅允許「信任的 Microsoft」服務以保護資源。
 
-    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="顯示「攜帶您自己的金鑰」概觀的圖表":::
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="trusted-service-with-AKV":::
 
 以下是設定客戶管理的金鑰的建議：
 
@@ -142,4 +145,4 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 
 ## <a name="next-steps"></a>後續步驟
 
-了解如何[使用 Azure 入口網站，針對適用於 MySQL 的 Azure 資料庫使用客戶管理的金鑰設定資料加密](howto-data-encryption-portal.md)。
+瞭解如何使用 [Azure 入口網站](howto-data-encryption-portal.md) 和 [Azure CLI](howto-data-encryption-cli.md)，針對適用于 MySQL 的 Azure 資料庫使用客戶管理的金鑰來設定資料加密。

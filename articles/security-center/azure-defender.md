@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 002c718466b9e13d2f92fbea6dd055eb13d4d3a7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 41d98750f3c869eff5abf7482a9bb04435407318
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789109"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436754"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender 簡介
 
@@ -20,7 +20,7 @@ Azure 資訊安全中心的功能涵蓋雲端安全性的兩大要素：
 
 - **雲端安全性態勢管理 (CSPM)** - 資訊安全中心對於所有 Azure 使用者都是 **免費** 提供的。 免費體驗包括 CSPM 功能，例如安全分數、偵測 Azure 機器中的安全性設定錯誤、資產清查等等。 使用這些 CSPM 功能來強化您的混合式雲端態勢，並且追蹤內建原則的合規性。
 
-- **雲端工作負載保護 (CWP)** - 資訊安全中心的整合雲端工作負載保護平台 (CWPP)， **Azure Defender** ，為您的 Azure 和混合式資源和工作負載提供進階、智慧型的保護。 啟用 Azure Defender 提供了一系列額外的安全性功能，如本頁面所述。 除了內建原則之外，當您啟用任何 Azure Defender 方案時，您可以新增自訂原則和計畫。 您可以新增法規標準 (例如 NIST 和 Azure CI) 和 Azure 安全性效能評定，以取得合規性的真正自訂檢視。
+- **雲端工作負載保護 (CWP)** - 資訊安全中心的整合雲端工作負載保護平台 (CWPP)，**Azure Defender**，為您的 Azure 和混合式資源和工作負載提供進階、智慧型的保護。 啟用 Azure Defender 提供了一系列額外的安全性功能，如本頁面所述。 除了內建原則之外，當您啟用任何 Azure Defender 方案時，您可以新增自訂原則和計畫。 您可以新增法規標準 (例如 NIST 和 Azure CI) 和 Azure 安全性效能評定，以取得合規性的真正自訂檢視。
 
 資訊安全中心的 Azure Defender 儀表板可為您的環境提供 CWP 功能的可見度和控制權：
 
@@ -61,7 +61,7 @@ Azure Defender 可為虛擬機器、SQL 資料庫、容器、Web 應用程式及
 
 
 
-## <a name="azure-defender-alerts"></a>Azure Defender 警示 
+## <a name="security-alerts"></a>安全性警示 
 
 Azure Defender 在您環境的任何區域中偵測到威脅時，將會產生警示。 這些警示會說明受影響資源的詳細資料、建議的補救步驟，以及在某些情況下會說明觸發邏輯應用程式以進行回應的選項。
 

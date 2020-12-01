@@ -3,18 +3,16 @@ title: 對應資料流程中的運算式函式
 description: 了解對應資料流程中的運算式函式。
 author: kromerm
 ms.author: makromer
-manager: anandsub
-ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/06/2020
-ms.openlocfilehash: 5645bd37ec466619a4093d767db1c846b90a4365
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/01/2020
+ms.openlocfilehash: 875b84613bede922b01b1043f2d6dab9aedbc2e8
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997849"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436924"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>對應資料流程中的資料轉換運算式
 
@@ -86,48 +84,6 @@ ___
 <code><b>atan2(<i>&lt;value1&gt;</i> : number, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
 傳回平面的正 X 軸和座標所指定的點之間的角度（以弧度為單位）。  
 * ``atan2(0, 0) -> 0.0``  
-___
-### <code>byOrigin</code>
-<code><b>byOrigin(<i>&lt;column name&gt;</i> : string, [<i>&lt;origin stream name&gt;</i> : string]) => any</b></code><br/><br/>
-依名稱選取原始資料流程中的資料行值。 第二個引數是原始資料流程名稱。 如有多個相符項目，則傳回第一個相符項目。 如果沒有相符項目，則會傳回 Null 值。 傳回的值必須是類型轉換函數之一轉換的類型 (TO_DATE，TO_STRING ... ) 。在設計階段已知的資料行名稱，應該只由其名稱定址。 不支援計算的輸入，但您可使用參數替換。  
-* ``toString(byOrigin('ancestor', 'ancestorStream'))``
-___
-### <code>byOrigins</code>
-<code><b>byOrigins(<i>&lt;column names&gt;</i> : array, [<i>&lt;origin stream name&gt;</i> : string]) => any</b></code><br/><br/>
-依名稱選取資料流程中的資料行陣列。 第二個引數是其來源的資料流程。 如有多個相符項目，則傳回第一個相符項目。 如果沒有相符項目，則會傳回 Null 值。 傳回的值必須是類型轉換函式所轉換的型別 (TO_DATE，TO_STRING ... 在設計階段所知道的資料行名稱 ) 應該只由其名稱定址。 不支援計算的輸入，但您可使用參數替換。
-* ``toString(byOrigins(['ancestor1', 'ancestor2'], 'ancestorStream'))``
-___
-### <code>byName</code>
-<code><b>byName(<i>&lt;column name&gt;</i> : string, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
-依名稱選取資料流中的資料行值。 您可以傳遞選擇性資料流名稱作為第二個引數。 如有多個相符項目，則傳回第一個相符項目。 如果沒有相符項目，則會傳回 Null 值。 傳回的值必須是由其中一個類型轉換函數 (TO_DATE、TO_STRING ...) 所轉換的類型。在設計階段已知的資料行名稱，應該只依據其名稱來處理。 不支援計算的輸入，但您可使用參數替換。  
-* ``toString(byName('parent'))``  
-* ``toLong(byName('income'))``  
-* ``toBoolean(byName('foster'))``  
-* ``toLong(byName($debtCol))``  
-* ``toString(byName('Bogus Column'))``  
-* ``toString(byName('Bogus Column', 'DeriveStream'))``  
-___
-### <code>byNames</code>
-<code><b>byNames(<i>&lt;column names&gt;</i> : array, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
-在資料流中依名稱選取資料行陣列。 您可以傳遞選擇性資料流名稱作為第二個引數。 如有多個相符項目，則傳回第一個相符項目。 如果資料行沒有相符項目，則整個輸出會是 NULL 值。 傳回的值需要類型轉換函式 (toDate、toString、...)。在設計階段已知的資料行名稱，應該只依據其名稱來處理。 不支援計算的輸入，但您可使用參數替換。
-* ``toString(byNames(['parent', 'child']))``
-* ``byNames(['parent']) ? string``
-* ``toLong(byNames(['income']))``
-* ``byNames(['income']) ? long``
-* ``toBoolean(byNames(['foster']))``
-* ``toLong(byNames($debtCols))``
-* ``toString(byNames(['a Column']))``
-* ``toString(byNames(['a Column'], 'DeriveStream'))``
-* ``byNames(['orderItem']) ? (itemName as string, itemQty as integer)``
-___
-### <code>byPosition</code>
-<code><b>byPosition(<i>&lt;position&gt;</i> : integer) => any</b></code><br/><br/>
-依其在資料流中的相對位置 (從 1 開始) 來選取資料行值。 如果位置超出範圍，則會傳回 Null 值。 傳回的值必須是類型轉換函式的轉換類型 (TO_DATE，TO_STRING ... ) 計算輸入不受支援，但您可以使用參數替代。  
-* ``toString(byPosition(1))``  
-* ``toDecimal(byPosition(2), 10, 2)``  
-* ``toBoolean(byName(4))``  
-* ``toString(byName($colName))``  
-* ``toString(byPosition(1234))``  
 ___
 ### <code>case</code>
 <code><b>case(<i>&lt;condition&gt;</i> : boolean, <i>&lt;true_expression&gt;</i> : any, <i>&lt;false_expression&gt;</i> : any, ...) => any</b></code><br/><br/>
@@ -480,7 +436,7 @@ ___
 * ``levenshtein('boys', 'girls') -> 4``  
 ___
 ### <code>like</code>
-<code><b>like(<i>&lt;string&gt;</i> : string, <i>&lt;pattern match&gt;</i> : string) => boolean</b></程式碼><br/><br/> 模式是完全相符的字串。 下列特殊符號則屬例外： _ 符合輸入中的任何一個字元 (類似於 在 posix regu l ar 運算式中) % 符合輸入 (中的零或多個字元，) 類似于 posix regul 運算式中的. * a r 。
+<code><b>like(<i>&lt;string&gt;</i> : string, <i>&lt;pattern match&gt;</i> : string) => boolean</b></程式碼><br/><br/> 模式是完全相符的字串。 例外狀況為下列特殊符號： _ 符合 ' ' posix ' ' ' regu 運算式中輸入中的任何一個字元， (similar to  . l ar) % 符合 similar to . * ' ' posix ' ' ' regul a r 運算式) 中輸入 (的零或多個字元。
 逸出字元為 ''。 如果特殊符號或另一個逸出字元前面有逸出字元，就會逐字比對下列字元。 將任何 other character.  
 * ``like('icecream', 'ice%') -> true``  
 ___
@@ -730,7 +686,8 @@ ___
 * ``sort(['a3', 'b2', 'c1'], iif(right(#item1, 1) >= right(#item2, 1), 1, -1)) -> ['c1', 'b2', 'a3']``  
 ___
 ### <code>soundex</code>
-<code><b>soundex(<i>&lt;value1&gt;</i> : string) => string</b></程式碼><br/><br/> 取得 soundex 程式碼 for the string.  
+<code><b>soundex(<i>&lt;value1&gt;</i> : string) => string</b></code><br /><br/>
+Gets t h e ' ' soundex ' ' ' 程式碼for the string.  
 * ``soundex('genius') -> 'G520'``  
 ___
 ### <code>split</code>
@@ -773,86 +730,6 @@ ___
 ### <code>tanh</code>
 <code><b>tanh(<i>&lt;value1&gt;</i> : number) => double</b></程式碼><br/><br/> 計算 hyperbolic tangent value.  
 * ``tanh(0) -> 0.0``  
-___
-### <code>toBase64</code>
-<code><b>toBase64(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/> 將指定的編碼tring in base64.  
-* ``toBase64('bojjus') -> 'Ym9qanVz'``  
-___
-### <code>toBinary</code>
-<code><b>toBinary(<i>&lt;value1&gt;</i> : any) => binary</b></code><br/><br/> 將任何數值/日期/時間戳記/字串轉換為二進位 representation.  
-* ``toBinary(3) -> [0x11]``  
-___
-### <code>toBoolean</code>
-<code><b>toBoolean(<i>&lt;value1&gt;</i> : string) => boolean</b></code><br/><br/> 將 ( t '、' true '、' y '、' yes '、' 1 ' 的值轉換為 true，並將 ) ' f '、' false '、' n '、' no '、' 0 ' ( 為 false，並將 Null 設為 Null any other value.  
-* ``toBoolean('true') -> true``  
-* ``toBoolean('n') -> false``  
-* ``isNull(toBoolean('truthy')) -> true``  
-___
-### <code>toDate</code>
-<code><b>toDate(<i>&lt;string&gt;</i> : any, [<i>&lt;date format&gt;</i> : string]) => date</b></程式碼><br/><br/> 將輸入日期字串轉換為日期，並使用選擇性的輸入日期表單 at. Refer Java's `S i mpleDateFormat ' 類別來取得可用的格式。 如果省略輸入日期格式，則預設格式為 yyyy-[M]M-[d]d。 接受的格式為： [yyyy，yyyy-[M] M，yyyy-[M] M-[d] d，yyyy-[M]M-[d]dT* ].  
-* ``toDate('2012-8-18') -> toDate('2012-08-18')``  
-* ``toDate('12/18/2012', 'MM/dd/yyyy') -> toDate('2012-12-18')``  
-___
-### <code>toDecimal</code>
-<code><b>toDecimal(<i>&lt;value&gt;</i> : any, [<i>&lt;precision&gt;</i> : integral], [<i>&lt;scale&gt;</i> : integral], [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => decimal(10,0)</b></code><br/><br/> 將任何數值或字串轉換成十進位值。 若未指定有效位數和小數位數，則預設為 (10,2)。可使用選用的 Java 十進位格式進行轉換。 格式為 >BCP47 語言的選擇性地區設定格式，例如 en-US, de, zh-CN.  
-* ``toDecimal(123.45) -> 123.45``  
-* ``toDecimal('123.45', 8, 4) -> 123.4500``  
-* ``toDecimal('$123.45', 8, 4,'$###.00') -> 123.4500``  
-* ``toDecimal('Ç123,45', 10, 2, 'Ç###,##', 'de') -> 123.45``  
-___
-### <code>toDouble</code>
-<code><b>toDouble(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => double</b></code><br/><br/> 將任何數值或字串轉換成雙精度浮點數。 可使用選擇性的 Java 十進位格式進行轉換。 格式為 >BCP47 語言的選擇性地區設定格式，例如 en-US, de, zh-CN.  
-* ``toDouble(123.45) -> 123.45``  
-* ``toDouble('123.45') -> 123.45``  
-* ``toDouble('$123.45', '$###.00') -> 123.45``  
-* ``toDouble('Ç123,45', 'Ç###,##', 'de') -> 123.45``  
-___
-### <code>toFloat</code>
-<code><b>toFloat(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => float</b></code><br/><br/> 將任何數值或字串轉換成 float 值。 可使用選擇性的 Java 十進位格式進行轉換。 Truncates any double.  
-* ``toFloat(123.45) -> 123.45f``  
-* ``toFloat('123.45') -> 123.45f``  
-* ``toFloat('$123.45', '$###.00') -> 123.45f``  
-___
-### <code>toInteger</code>
-<code><b>toInteger(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => integer</b></code><br/><br/> 將任何數值或字串轉換成整數值。 可使用選擇性的 Java 十進位格式進行轉換。 截斷任何 long, float, double.  
-* ``toInteger(123) -> 123``  
-* ``toInteger('123') -> 123``  
-* ``toInteger('$123', '$###') -> 123``  
-___
-### <code>toLong</code>
-<code><b>toLong(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => long</b></code><br/><br/> 將任何數值或字串轉換為 long 值。 可使用選擇性的 Java 十進位格式進行轉換。 截斷y float, double.  
-* ``toLong(123) -> 123``  
-* ``toLong('123') -> 123``  
-* ``toLong('$123', '$###') -> 123``  
-___
-### <code>toShort</code>
-<code><b>toShort(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => short</b></code><br/><br/> 將任何數值或字串轉換為短值。 可使用選擇性的 Java 十進位格式進行轉換。 截斷任何整數，long, float, double.  
-* ``toShort(123) -> 123``  
-* ``toShort('123') -> 123``  
-* ``toShort('$123', '$###') -> 123``  
-___
-### <code>toString</code>
-<code><b>toString(<i>&lt;value&gt;</i> : any, [<i>&lt;number format/date format&gt;</i> : string]) => string</b></code><br/><br/> 將基本資料類型轉換為字串。 針對數字和日期，可以指定格式。 若未指定，則會選擇系統預設值。對於數字會使用 Java 十進位格式。 請參閱 JAVA SimpleDateFormat 以取得所有可能的日期格式;t is yyyy-MM-dd.  
-* ``toStri ng(10) -> '10'``  
-* ``toString('engineer') -> 'engineer'``  
-* ``toString(123456.789, '##,###.##') - 預設 > '123,456.79'``  
-* ``toString(123.78, '000000.000') - 估價 > '000123.780'``  
-* ``toString(12345, '##0.#####E0')-> '12.345E3'``  
-* ``toString(toDate('2018-12-31')) -> '2018-12-31'``  
-* ``isNull(toString(toDate('2018-12-31', 'MM/dd/yy'))) -> true``  
-* ``toString(4 == 20) -> 'false'``  
-___
-### <code>toTimestamp</code>
-<code><b>toTimestamp(<i>&lt;string&gt;</i> : any, [<i>&lt;timestamp format&gt;</i> : string], [<i>&lt;time zone&gt;</i> : string]) => timestamp</b></code><br/><br/> 會將字串轉換為指定的時間戳記格式的時間戳記。 如果省略時間戳記，則會使用預設模式 yyyy-[M] M-[d] d hh： mm： ss [f. ...]。 您可以用 'GMT'、'PST'、'UTC'、'America/Cayman' 的格式傳遞選擇性的時區。 時間戳記支援最高毫秒的精確度，而且值為 9 99. Refer Java's `S i mpleDateFormat ' 類別可用的格式。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``toTimestamp('2016-12-31 00:12:00') -> toTimestamp('2016-12-31 00:12:00')``  
-* ``toTimestamp('2016-12-31T00:12:00', 'yyyy-MM-dd\'T\'HH:mm:ss', 'PST') -> toTimestamp('2016-12-31 00:12:00')``  
-* ``toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss') -> toTimestamp('2016-12-31 00:12:00')``  
-* ``millisecond(toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``  
-___
-### <code>toUTC</code>
-<code><b>toUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/> 會將時間戳記轉換為 UTC。 您可以用 'GMT'、'PST'、'UTC'、'America/Cayman' 的格式傳遞選擇性的時區。 它預設為目前 timezo mpleDateFormat 的類別，以 ne. Refer Java's `S i 取得可用的格式。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``toUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
-* ``toUTC(currentTimeStamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
 ___
 ### <code>translate</code>
 <code><b>translate(<i>&lt;string to translate&gt;</i> : string, <i>&lt;lookup characters&gt;</i> : string, <i>&lt;replace characters&gt;</i> : string) => string</b></code><br/><br/> 以字串中的另一組字元取代一組字元。 字元具有 1 t o 1 replacement.  
@@ -1051,38 +928,8 @@ ___
 * ``varianceSample(sales)``  
 ___
 ### <code>varianceSampleIf</code>
-<code><b>varianceSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></程式碼><br/><br/> 根據準則，取得非偏誤的 varia nce of a column.  
-* ``varianceSampleIf(region ==  'West' 、sales) ' ' # # 視窗 ... 函式，下列函式 W 只能在視窗中使用transformations.
-___
-### <code>cumeDist</code>
-<code><b>cumeDist() => integer</b></code><br/><br/> CumeDist 函式會計算值相對於資料分割中所有值的位置。 依照分割區的排序，將目前資料列 (含此列) 之前的列數，除以視窗分割區中的總列數，即為結果。 順序中的任何系結值都會評估為 the same position.  
-* ``cumeDist()``  
-___
-### <code>denseRank</code>
-<code><b>denseRank() => integer</b></code><br/><br/> 會計算在視窗的 order by 子句中指定的值群組中值的次序。 依照分割區的排序，將目前資料列 (含此列) 之前的列數加一，即為結果。 這些值不會在序列中產生間距。 即使資料未排序且尋找 c 時，密集排名仍可運作hange in values.  
-* ``denseRank()``  
-___
-### <code>lag</code>
-<code><b>lag(<i>&lt;value&gt;</i> : any, [<i>&lt;number of rows to look before&gt;</i> : number], [<i>&lt;default value&gt;</i> : any]) => any</b></code><br/><br/> 取得第一個參數的值，此值會在目前資料列之前評估 n 個數據列。 第二個參數是要回溯查看的資料列數目，預設值為 1。 如果沒有太多資料列，則會傳回 null 值，除非預設的 value is specified.  
-* ``lag(amount, 2)``  
-* ``lag(amount, 2000, 100)``  
-___
-### <code>lead</code>
-<code><b>lead(<i>&lt;value&gt;</i> : any, [<i>&lt;number of rows to look after&gt;</i> : number], [<i>&lt;default value&gt;</i> : any]) => any</b></code><br/><br/> 取得第一個參數的值，此值會在目前資料列之後評估 n 個數據列。 第二個參數是要正向查看的資料列數目，預設值為 1。 如果沒有太多資料列，則會傳回 null 值，除非預設的 value is specified.  
-* ``lead(amount, 2)``  
-* ``lead(amount, 2000, 100)``  
-___
-### <code>nTile</code>
-<code><b>nTile([<i>&lt;value1&gt;</i> : integer]) => integer</b></code><br/><br/> NTile 函式會將每個 windo tition 的資料列分割為 w pa r ' n ' 值區，範圍介於 f rom 到最多 ' n '。 貯體值的最大差異為 1。 如果分割區中的資料列數目無法平均分成貯體數，其餘值將會逐一均分給各個貯體，從第一個貯體開始。 在計算三分位數、四分位數、十分位數和其他常見的摘要統計資料時，NTile 函式有效用。 此函式會在初始化期間計算兩個變數：一般貯體的大小會新增一個額外的資料列。 這兩個變數都是以目前分割區的大小為基礎。 在計算過程中，此函式會追蹤目前的資料列數目、目前的貯體數目，和貯體將有所變更的資料列號碼 (bucketThreshold)。 當目前的資料列編號達到值區閾值時，值區的值會增加一，而閾值會以值區大小增加 (加一個額外值（如果目前的 bu cket is padded).* ``nTile()``  
-* ``nTile(numOfBuckets)``  
-___
-### <code>rank</code>
-<code><b>rank() => integer</b></code><br/><br/> 會計算在視窗的 order by 子句中指定的值群組中值的次序。 依照分割區的排序，將目前資料列 (含此列) 之前的列數加一，即為結果。 這些值會在序列中產生間距。 即使資料未排序且尋找 c 時，排名仍可運作hange in values.  
-* ``rank()``  
-___
-### <code>rowNumber</code>
-<code><b>rowNumber() => integer</b></程式碼><br/><br/> 指派視窗中資料列的連續資料列編號 starting with 1.  
-* ``rowNumber()``* ``
+<code><b>varianceSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></程式碼><br/><br/> 根據準則，取得非偏誤的 variance of a column.  
+* ``varianceSampleIf(region == 'West', sales)``* ``
  @(
        name = 'Mark',
        types = [
@@ -1268,8 +1115,8 @@ Gets the levenshtein distance between two strings.
 ___
 ### <code>like</code>
 <code><b>like(<i>&lt;string&gt;</i> : string, <i>&lt;pattern match&gt;</i> : string) => boolean</b></code><br/><br/>
-The pattern is a string that is matched literally. The exceptions are the following special symbols:  _ matches any one character in the input (similar to . in posix regular expressions)
-  % matches zero or more characters in the input (similar to .* in posix regular expressions).
+The pattern is a string that is matched literally. The exceptions are the following special symbols:  _ matches any one character in the input (similar to . in ```posix``` regular expressions)
+  % matches zero or more characters in the input (similar to .* in ```posix``` regular expressions).
   The escape character is ''. If an escape character precedes a special symbol or another escape character, the following character is matched literally. It is invalid to escape any other character.  
 * ``like('icecream', 'ice%') -> true``  
 ___
@@ -1582,7 +1429,7 @@ Sorts the array using the provided predicate function. Sort expects a reference 
 ___
 ### <code>soundex</code>
 <code><b>soundex(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
-Gets the soundex code for the string.  
+Gets the ```soundex``` code for the string.  
 * ``soundex('genius') -> 'G520'``  
 ___
 ### <code>split</code>
@@ -1633,99 +1480,6 @@ ___
 <code><b>tanh(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
 Calculates a hyperbolic tangent value.  
 * ``tanh(0) -> 0.0``  
-___
-### <code>toBase64</code>
-<code><b>toBase64(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
-Encodes the given string in base64.  
-* ``toBase64('bojjus') -> 'Ym9qanVz'``  
-___
-### <code>toBinary</code>
-<code><b>toBinary(<i>&lt;value1&gt;</i> : any) => binary</b></code><br/><br/>
-Converts any numeric/date/timestamp/string to binary representation.  
-* ``toBinary(3) -> [0x11]``  
-___
-### <code>toBoolean</code>
-<code><b>toBoolean(<i>&lt;value1&gt;</i> : string) => boolean</b></code><br/><br/>
-Converts a value of ('t', 'true', 'y', 'yes', '1') to true and ('f', 'false', 'n', 'no', '0') to false and NULL for any other value.  
-* ``toBoolean('true') -> true``  
-* ``toBoolean('n') -> false``  
-* ``isNull(toBoolean('truthy')) -> true``  
-___
-### <code>toDate</code>
-<code><b>toDate(<i>&lt;string&gt;</i> : any, [<i>&lt;date format&gt;</i> : string]) => date</b></code><br/><br/>
-Converts input date string to date using an optional input date format. Refer Java's `SimpleDateFormat` class for available formats. If the input date format is omitted, default format is yyyy-[M]M-[d]d. Accepted formats are :[ yyyy, yyyy-[M]M, yyyy-[M]M-[d]d, yyyy-[M]M-[d]dT* ].  
-* ``toDate('2012-8-18') -> toDate('2012-08-18')``  
-* ``toDate('12/18/2012', 'MM/dd/yyyy') -> toDate('2012-12-18')``  
-___
-### <code>toDecimal</code>
-<code><b>toDecimal(<i>&lt;value&gt;</i> : any, [<i>&lt;precision&gt;</i> : integral], [<i>&lt;scale&gt;</i> : integral], [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => decimal(10,0)</b></code><br/><br/>
-Converts any numeric or string to a decimal value. If precision and scale are not specified, it is defaulted to (10,2).An optional Java decimal format can be used for the conversion. An optional locale format in the form of BCP47 language like en-US, de, zh-CN.  
-* ``toDecimal(123.45) -> 123.45``  
-* ``toDecimal('123.45', 8, 4) -> 123.4500``  
-* ``toDecimal('$123.45', 8, 4,'$###.00') -> 123.4500``  
-* ``toDecimal('Ç123,45', 10, 2, 'Ç###,##', 'de') -> 123.45``  
-___
-### <code>toDouble</code>
-<code><b>toDouble(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => double</b></code><br/><br/>
-Converts any numeric or string to a double value. An optional Java decimal format can be used for the conversion. An optional locale format in the form of BCP47 language like en-US, de, zh-CN.  
-* ``toDouble(123.45) -> 123.45``  
-* ``toDouble('123.45') -> 123.45``  
-* ``toDouble('$123.45', '$###.00') -> 123.45``  
-* ``toDouble('Ç123,45', 'Ç###,##', 'de') -> 123.45``  
-___
-### <code>toFloat</code>
-<code><b>toFloat(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => float</b></code><br/><br/>
-Converts any numeric or string to a float value. An optional Java decimal format can be used for the conversion. Truncates any double.  
-* ``toFloat(123.45) -> 123.45f``  
-* ``toFloat('123.45') -> 123.45f``  
-* ``toFloat('$123.45', '$###.00') -> 123.45f``  
-___
-### <code>toInteger</code>
-<code><b>toInteger(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => integer</b></code><br/><br/>
-Converts any numeric or string to an integer value. An optional Java decimal format can be used for the conversion. Truncates any long, float, double.  
-* ``toInteger(123) -> 123``  
-* ``toInteger('123') -> 123``  
-* ``toInteger('$123', '$###') -> 123``  
-___
-### <code>toLong</code>
-<code><b>toLong(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => long</b></code><br/><br/>
-Converts any numeric or string to a long value. An optional Java decimal format can be used for the conversion. Truncates any float, double.  
-* ``toLong(123) -> 123``  
-* ``toLong('123') -> 123``  
-* ``toLong('$123', '$###') -> 123``  
-___
-### <code>toShort</code>
-<code><b>toShort(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => short</b></code><br/><br/>
-Converts any numeric or string to a short value. An optional Java decimal format can be used for the conversion. Truncates any integer, long, float, double.  
-* ``toShort(123) -> 123``  
-* ``toShort('123') -> 123``  
-* ``toShort('$123', '$###') -> 123``  
-___
-### <code>toString</code>
-<code><b>toString(<i>&lt;value&gt;</i> : any, [<i>&lt;number format/date format&gt;</i> : string]) => string</b></code><br/><br/>
-Converts a primitive datatype to a string. For numbers and date a format can be specified. If unspecified the system default is picked.Java decimal format is used for numbers. Refer to Java SimpleDateFormat for all possible date formats; the default format is yyyy-MM-dd.  
-* ``toString(10) -> '10'``  
-* ``toString('engineer') -> 'engineer'``  
-* ``toString(123456.789, '##,###.##') -> '123,456.79'``  
-* ``toString(123.78, '000000.000') -> '000123.780'``  
-* ``toString(12345, '##0.#####E0') -> '12.345E3'``  
-* ``toString(toDate('2018-12-31')) -> '2018-12-31'``  
-* ``isNull(toString(toDate('2018-12-31', 'MM/dd/yy'))) -> true``  
-* ``toString(4 == 20) -> 'false'``  
-___
-### <code>toTimestamp</code>
-<code><b>toTimestamp(<i>&lt;string&gt;</i> : any, [<i>&lt;timestamp format&gt;</i> : string], [<i>&lt;time zone&gt;</i> : string]) => timestamp</b></code><br/><br/>
-Converts a string to a timestamp given an optional timestamp format. If the timestamp is omitted the default pattern yyyy-[M]M-[d]d hh:mm:ss[.f...] is used. You can pass an optional timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. Timestamp supports up to millisecond accuracy with value of 999. Refer Java's `SimpleDateFormat` class for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``toTimestamp('2016-12-31 00:12:00') -> toTimestamp('2016-12-31 00:12:00')``  
-* ``toTimestamp('2016-12-31T00:12:00', 'yyyy-MM-dd\'T\'HH:mm:ss', 'PST') -> toTimestamp('2016-12-31 00:12:00')``  
-* ``toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss') -> toTimestamp('2016-12-31 00:12:00')``  
-* ``millisecond(toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``  
-___
-### <code>toUTC</code>
-<code><b>toUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/>
-Converts the timestamp to UTC. You can pass an optional timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. It is defaulted to the current timezone. Refer Java's `SimpleDateFormat` class for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``toUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
-* ``toUTC(currentTimeStamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
 ___
 ### <code>translate</code>
 <code><b>translate(<i>&lt;string to translate&gt;</i> : string, <i>&lt;lookup characters&gt;</i> : string, <i>&lt;replace characters&gt;</i> : string) => string</b></code><br/><br/>
@@ -1976,45 +1730,206 @@ ___
 <code><b>varianceSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
 Based on a criteria, gets the unbiased variance of a column.  
 * ``varianceSampleIf(region == 'West', sales)``  
-## Window functions
-The following functions are only available in window transformations.
+
+## <a name="conversion-functions"></a>轉換函數
+
+轉換函數可用來轉換資料和資料類型
+
+### <code>toBase64</code>
+<code><b>toBase64(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
+以 base64 編碼指定的字串。  
+* ``toBase64('bojjus') -> 'Ym9qanVz'``  
+___
+### <code>toBinary</code>
+<code><b>toBinary(<i>&lt;value1&gt;</i> : any) => binary</b></code><br/><br/>
+將任何數值/日期/時間戳記/字串轉換為二進位標記法。  
+* ``toBinary(3) -> [0x11]``  
+___
+### <code>toBoolean</code>
+<code><b>toBoolean(<i>&lt;value1&gt;</i> : string) => boolean</b></code><br/><br/>
+將 ( t '、' true '、' y '、' yes '、' 1 ' ) 的值轉換為 true，並 ( ' f '、' false '、' n '、' no '、' 0 ' ) 設為 false，並將 Null 用於任何其他值。  
+* ``toBoolean('true') -> true``  
+* ``toBoolean('n') -> false``  
+* ``isNull(toBoolean('truthy')) -> true``  
+___
+### <code>toByte</code>
+<code><b>toByte(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => byte</b></code><br/><br/>
+將任何數值或字串轉換為位元組值。 可使用選擇性的 Java 十進位格式進行轉換。  
+* ``toByte(123)``
+* ``123``
+* ``toByte(0xFF)``
+* ``-1``
+* ``toByte('123')``
+* ``123``
+___
+### <code>toDate</code>
+<code><b>toDate(<i>&lt;string&gt;</i> : any, [<i>&lt;date format&gt;</i> : string]) => date</b></code><br/><br/>
+使用選擇性輸入日期格式，將輸入日期字串轉換為日期。 請參閱 JAVA 的 `SimpleDateFormat` 類別以取得可用的格式。 如果省略輸入日期格式，則預設格式為 yyyy-[M]M-[d]d。 接受的格式為： [yyyy，yyyy-[M] M，yyyy-[M] M-[d] d，yyyy-[M] M-[d] dT *]。  
+* ``toDate('2012-8-18') -> toDate('2012-08-18')``  
+* ``toDate('12/18/2012', 'MM/dd/yyyy') -> toDate('2012-12-18')``  
+___
+### <code>toDecimal</code>
+<code><b>toDecimal(<i>&lt;value&gt;</i> : any, [<i>&lt;precision&gt;</i> : integral], [<i>&lt;scale&gt;</i> : integral], [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => decimal(10,0)</b></code><br/><br/>
+將任何數值或字串轉換為小數值。 若未指定有效位數和小數位數，則預設為 (10,2)。可使用選用的 Java 十進位格式進行轉換。 >BCP47 語言格式的選擇性地區設定格式，例如 en-us、de、zh-CN。  
+* ``toDecimal(123.45) -> 123.45``  
+* ``toDecimal('123.45', 8, 4) -> 123.4500``  
+* ``toDecimal('$123.45', 8, 4,'$###.00') -> 123.4500``  
+* ``toDecimal('Ç123,45', 10, 2, 'Ç###,##', 'de') -> 123.45``  
+___
+### <code>toDouble</code>
+<code><b>toDouble(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => double</b></code><br/><br/>
+將任何數值或字串轉換為雙精準數值。 可使用選擇性的 Java 十進位格式進行轉換。 >BCP47 語言格式的選擇性地區設定格式，例如 en-us、de、zh-CN。  
+* ``toDouble(123.45) -> 123.45``  
+* ``toDouble('123.45') -> 123.45``  
+* ``toDouble('$123.45', '$###.00') -> 123.45``  
+* ``toDouble('Ç123,45', 'Ç###,##', 'de') -> 123.45``  
+___
+### <code>toFloat</code>
+<code><b>toFloat(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => float</b></code><br/><br/>
+將任何數值或字串轉換為浮點值。 可使用選擇性的 Java 十進位格式進行轉換。 截斷任何雙精度浮點數。  
+* ``toFloat(123.45) -> 123.45f``  
+* ``toFloat('123.45') -> 123.45f``  
+* ``toFloat('$123.45', '$###.00') -> 123.45f``  
+___
+### <code>toInteger</code>
+<code><b>toInteger(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => integer</b></code><br/><br/>
+將任何數值或字串轉換為整數值。 可使用選擇性的 Java 十進位格式進行轉換。 截斷任何 long、float、double。  
+* ``toInteger(123) -> 123``  
+* ``toInteger('123') -> 123``  
+* ``toInteger('$123', '$###') -> 123``  
+___
+### <code>toLong</code>
+<code><b>toLong(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => long</b></code><br/><br/>
+將任何數值或字串轉換為長值。 可使用選擇性的 Java 十進位格式進行轉換。 截斷任何浮點數、雙精度浮點數。  
+* ``toLong(123) -> 123``  
+* ``toLong('123') -> 123``  
+* ``toLong('$123', '$###') -> 123``  
+___
+### <code>toShort</code>
+<code><b>toShort(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => short</b></code><br/><br/>
+將任何數值或字串轉換為短值。 可使用選擇性的 Java 十進位格式進行轉換。 截斷任何整數、長值、浮點數、雙精度浮點數。  
+* ``toShort(123) -> 123``  
+* ``toShort('123') -> 123``  
+* ``toShort('$123', '$###') -> 123``  
+___
+### <code>toString</code>
+<code><b>toString(<i>&lt;value&gt;</i> : any, [<i>&lt;number format/date format&gt;</i> : string]) => string</b></code><br/><br/>
+將基本資料類型轉換為字串。 針對數字和日期，可以指定格式。 若未指定，則會選擇系統預設值。對於數字會使用 Java 十進位格式。 請參閱 JAVA SimpleDateFormat 以取得所有可能的日期格式;預設格式為 yyyy-mm-dd。  
+* ``toString(10) -> '10'``  
+* ``toString('engineer') -> 'engineer'``  
+* ``toString(123456.789, '##,###.##') -> '123,456.79'``  
+* ``toString(123.78, '000000.000') -> '000123.780'``  
+* ``toString(12345, '##0.#####E0') -> '12.345E3'``  
+* ``toString(toDate('2018-12-31')) -> '2018-12-31'``  
+* ``isNull(toString(toDate('2018-12-31', 'MM/dd/yy'))) -> true``  
+* ``toString(4 == 20) -> 'false'``  
+___
+### <code>toTimestamp</code>
+<code><b>toTimestamp(<i>&lt;string&gt;</i> : any, [<i>&lt;timestamp format&gt;</i> : string], [<i>&lt;time zone&gt;</i> : string]) => timestamp</b></code><br/><br/>
+以指定的選擇性時間戳記格式將字串轉換為時間戳記。 如果省略時間戳記，則會使用預設模式 yyyy-[M] M-[d] d hh： mm： ss [f. ...]。 您可以用 'GMT'、'PST'、'UTC'、'America/Cayman' 的格式傳遞選擇性的時區。 Timestamp 支援最高毫秒的精確度，且值為999。 請參閱 JAVA 的 `SimpleDateFormat` 類別以取得可用的格式。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+* ``toTimestamp('2016-12-31 00:12:00') -> toTimestamp('2016-12-31 00:12:00')``  
+* ``toTimestamp('2016-12-31T00:12:00', 'yyyy-MM-dd\'T\'HH:mm:ss', 'PST') -> toTimestamp('2016-12-31 00:12:00')``  
+* ``toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss') -> toTimestamp('2016-12-31 00:12:00')``  
+* ``millisecond(toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``  
+___
+### <code>toUTC</code>
+<code><b>toUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/>
+將時間戳記轉換為 UTC。 您可以用 'GMT'、'PST'、'UTC'、'America/Cayman' 的格式傳遞選擇性的時區。 其預設值為目前的時區。 請參閱 JAVA 的 `SimpleDateFormat` 類別以取得可用的格式。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+* ``toUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
+* ``toUTC(currentTimeStamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
+
+## <a name="metafunctions"></a>Metafunctions
+
+Metafunctions 主要是在資料流程的中繼資料上運作
+
+### <code>byItem</code>
+<code><b>byItem(<i>&lt;parent column&gt;</i> : any, <i>&lt;column name&gt;</i> : string) => any</b></code><br/><br/>
+如果有多個相符專案，請在結構或結構陣列中尋找子專案，然後傳回第一個相符專案。 如果沒有相符項目，則會傳回 Null 值。 傳回的值必須是類型轉換動作 ( 的轉換類型？ 日期？ 字串 ... ) 。 在設計階段已知的資料行名稱，應該只由其名稱定址。 不支援計算的輸入，但您可以使用參數替代 * ``byItem( byName('customer'), 'orderItems') ? (itemName as string, itemQty as integer)``
+* ````
+* ``byItem( byItem( byName('customer'), 'orderItems'), 'itemName') ? string``
+* ````
+___
+### <code>byOrigin</code>
+<code><b>byOrigin(<i>&lt;column name&gt;</i> : string, [<i>&lt;origin stream name&gt;</i> : string]) => any</b></code><br/><br/>
+依名稱選取原始資料流程中的資料行值。 第二個引數是原始資料流程名稱。 如有多個相符項目，則傳回第一個相符項目。 如果沒有相符項目，則會傳回 Null 值。 傳回的值必須是類型轉換函數之一轉換的類型 (TO_DATE，TO_STRING ... ) 。在設計階段已知的資料行名稱，應該只由其名稱定址。 不支援計算的輸入，但您可使用參數替換。  
+* ``toString(byOrigin('ancestor', 'ancestorStream'))``
+___
+### <code>byOrigins</code>
+<code><b>byOrigins(<i>&lt;column names&gt;</i> : array, [<i>&lt;origin stream name&gt;</i> : string]) => any</b></code><br/><br/>
+依名稱選取資料流程中的資料行陣列。 第二個引數是其來源的資料流程。 如有多個相符項目，則傳回第一個相符項目。 如果沒有相符項目，則會傳回 Null 值。 傳回的值必須是類型轉換函式所轉換的型別 (TO_DATE，TO_STRING ... 在設計階段所知道的資料行名稱 ) 應該只由其名稱定址。 不支援計算的輸入，但您可使用參數替換。
+* ``toString(byOrigins(['ancestor1', 'ancestor2'], 'ancestorStream'))``
+___
+### <code>byName</code>
+<code><b>byName(<i>&lt;column name&gt;</i> : string, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
+依名稱選取資料流中的資料行值。 您可以傳遞選擇性資料流名稱作為第二個引數。 如有多個相符項目，則傳回第一個相符項目。 如果沒有相符項目，則會傳回 Null 值。 傳回的值必須是由其中一個類型轉換函數 (TO_DATE、TO_STRING ...) 所轉換的類型。在設計階段已知的資料行名稱，應該只依據其名稱來處理。 不支援計算的輸入，但您可使用參數替換。  
+* ``toString(byName('parent'))``  
+* ``toLong(byName('income'))``  
+* ``toBoolean(byName('foster'))``  
+* ``toLong(byName($debtCol))``  
+* ``toString(byName('Bogus Column'))``  
+* ``toString(byName('Bogus Column', 'DeriveStream'))``  
+___
+### <code>byNames</code>
+<code><b>byNames(<i>&lt;column names&gt;</i> : array, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
+在資料流中依名稱選取資料行陣列。 您可以傳遞選擇性資料流名稱作為第二個引數。 如有多個相符項目，則傳回第一個相符項目。 如果資料行沒有相符項目，則整個輸出會是 NULL 值。 傳回的值需要類型轉換函式 (toDate、toString、...)。在設計階段已知的資料行名稱，應該只依據其名稱來處理。 不支援計算的輸入，但您可使用參數替換。
+* ``toString(byNames(['parent', 'child']))``
+* ``byNames(['parent']) ? string``
+* ``toLong(byNames(['income']))``
+* ``byNames(['income']) ? long``
+* ``toBoolean(byNames(['foster']))``
+* ``toLong(byNames($debtCols))``
+* ``toString(byNames(['a Column']))``
+* ``toString(byNames(['a Column'], 'DeriveStream'))``
+* ``byNames(['orderItem']) ? (itemName as string, itemQty as integer)``
+___
+### <code>byPosition</code>
+<code><b>byPosition(<i>&lt;position&gt;</i> : integer) => any</b></code><br/><br/>
+依其在資料流中的相對位置 (從 1 開始) 來選取資料行值。 如果位置超出範圍，則會傳回 Null 值。 傳回的值必須是類型轉換函式的轉換類型 (TO_DATE，TO_STRING ... ) 計算輸入不受支援，但您可以使用參數替代。  
+* ``toString(byPosition(1))``  
+* ``toDecimal(byPosition(2), 10, 2)``  
+* ``toBoolean(byName(4))``  
+* ``toString(byName($colName))``  
+* ``toString(byPosition(1234))``  
+
+## <a name="window-functions"></a>視窗函式
+下列函數僅適用于視窗轉換。
 ___
 ### <code>cumeDist</code>
 <code><b>cumeDist() => integer</b></code><br/><br/>
-The CumeDist function computes the position of a value relative to all values in the partition. The result is the number of rows preceding or equal to the current row in the ordering of the partition divided by the total number of rows in the window partition. Any tie values in the  ordering will evaluate to the same position.  
+CumeDist 函式會計算某個值與分割區中所有值的相對位置。 依照分割區的排序，將目前資料列 (含此列) 之前的列數，除以視窗分割區中的總列數，即為結果。 排序中的任何相等值都會評估為相同的位置。  
 * ``cumeDist()``  
 ___
 ### <code>denseRank</code>
 <code><b>denseRank() => integer</b></code><br/><br/>
-Computes the rank of a value in a group of values specified in a window's order by clause. The result is one plus the number of rows preceding or equal to the current row in the ordering of the partition. The values will not produce gaps in the sequence. Dense Rank works even when data is not sorted and looks for change in values.  
+在視窗的 order by 子句中指定的值群組中，計算某個值的順位。 依照分割區的排序，將目前資料列 (含此列) 之前的列數加一，即為結果。 這些值不會在序列中產生間距。 即使資料未排序，且在值中尋找變更，密集排名仍可運作。  
 * ``denseRank()``  
 ___
 ### <code>lag</code>
 <code><b>lag(<i>&lt;value&gt;</i> : any, [<i>&lt;number of rows to look before&gt;</i> : number], [<i>&lt;default value&gt;</i> : any]) => any</b></code><br/><br/>
-Gets the value of the first parameter evaluated n rows before the current row. The second parameter is the number of rows to look back and the default value is 1. If there are not as many rows a value of null is returned unless a default value is specified.  
+取得第一個參數對目前資料列之前的 n 個資料列評估的值。 第二個參數是要回溯查看的資料列數目，預設值為 1。 如果沒有任何資料列，除非指定了預設值，否則會傳回 null 值。  
 * ``lag(amount, 2)``  
 * ``lag(amount, 2000, 100)``  
 ___
 ### <code>lead</code>
 <code><b>lead(<i>&lt;value&gt;</i> : any, [<i>&lt;number of rows to look after&gt;</i> : number], [<i>&lt;default value&gt;</i> : any]) => any</b></code><br/><br/>
-Gets the value of the first parameter evaluated n rows after the current row. The second parameter is the number of rows to look forward and the default value is 1. If there are not as many rows a value of null is returned unless a default value is specified.  
+取得第一個參數對目前資料列之後的 n 個資料列評估的值。 第二個參數是要正向查看的資料列數目，預設值為 1。 如果沒有任何資料列，除非指定了預設值，否則會傳回 null 值。  
 * ``lead(amount, 2)``  
 * ``lead(amount, 2000, 100)``  
 ___
 ### <code>nTile</code>
 <code><b>nTile([<i>&lt;value1&gt;</i> : integer]) => integer</b></code><br/><br/>
-The NTile function divides the rows for each window partition into `n` buckets ranging from 1 to at most `n`. Bucket values will differ by at most 1. If the number of rows in the partition does not divide evenly into the number of buckets, then the remainder values are distributed one per bucket, starting with the first bucket. The NTile function is useful for the calculation of tertiles, quartiles, deciles, and other common summary statistics. The function calculates two variables during initialization: The size of a regular bucket will have one extra row added to it. Both variables are based on the size of the current partition. During the calculation process the function keeps track of the current row number, the current bucket number, and the row number at which the bucket will change (bucketThreshold). When the current row number reaches bucket threshold, the bucket value is increased by one and the threshold is increased by the bucket size (plus one extra if the current bucket is padded).  
+函式會將 ```NTile``` 每個視窗分割區的資料列分割成 `n` 介於1到最多的 bucket `n` 。 貯體值的最大差異為 1。 如果分割區中的資料列數目無法平均分成貯體數，其餘值將會逐一均分給各個貯體，從第一個貯體開始。 ```NTile```函數適用于計算 ```tertiles``` 、分量、十分位數和其他常見的摘要統計資料。 此函式會在初始化期間計算兩個變數：一般貯體的大小會新增一個額外的資料列。 這兩個變數都是以目前分割區的大小為基礎。 在計算過程中，此函式會追蹤目前的資料列數目、目前的貯體數目，和貯體將有所變更的資料列號碼 (bucketThreshold)。 當目前的資料列數目達到貯體閾值時，貯體值將會加一，而閾值會依貯體大小增加 (如果目前的貯體已填補，則額外再加一)。  
 * ``nTile()``  
 * ``nTile(numOfBuckets)``  
 ___
 ### <code>rank</code>
 <code><b>rank() => integer</b></code><br/><br/>
-Computes the rank of a value in a group of values specified in a window's order by clause. The result is one plus the number of rows preceding or equal to the current row in the ordering of the partition. The values will produce gaps in the sequence. Rank works even when data is not sorted and looks for change in values.  
+在視窗的 order by 子句中指定的值群組中，計算某個值的順位。 依照分割區的排序，將目前資料列 (含此列) 之前的列數加一，即為結果。 這些值會在序列中產生間距。 即使資料未排序，並在值中尋找變更，排名仍可運作。  
 * ``rank()``  
 ___
 ### <code>rowNumber</code>
 <code><b>rowNumber() => integer</b></code><br/><br/>
-Assigns a sequential row numbering for rows in a window starting with 1.  
+為視窗中的資料列指派以1為開頭的連續資料列編號。  
 * ``rowNumber()``  
 
 ## <a name="next-steps"></a>後續步驟

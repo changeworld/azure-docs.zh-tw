@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: 2f262b328efcc341c93f1e5c31cab8cbd3ecbf6b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5a2238f5c1561abb1e11d69aa6d0bfe761097c64
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184632"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437298"
 ---
 # <a name="azure-monitor-for-networks"></a>適用於網路的 Azure 監視器
 適用于網路的 Azure 監視器可針對所有已部署的網路資源全面查看 [健康](../../service-health/resource-health-checks-resource-types.md) 情況和計量，而不需要任何 [設定](../platform/metrics-supported.md) 。 它也可讓您存取網路監視功能，例如連線 [監視器](../../network-watcher/connection-monitor-preview.md)、 [網路安全性群組的流量記錄 (nsg) ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)和使用 [分析](../../network-watcher/traffic-analytics.md)。 它還提供其他網路 [診斷](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) 功能。
@@ -26,7 +26,7 @@ ms.locfileid: "96184632"
 
 [網路的 Azure 監視器 **總覽** ] 頁面提供簡單的方式來視覺化網路資源的清查，以及資源健康狀態和警示。 它分成四個主要功能區域：搜尋和篩選、資源健康狀態和度量、警示和相依性視圖。
 
-[ ![ 顯示 [總覽] 頁面 #lightbox) 的螢幕擷取畫面](media/network-insights-overview/overview.png)](media/network-insights-overview/overview.png)
+[![顯示 [概觀] 頁面的螢幕擷取畫面](media/network-insights-overview/overview.png)](media/network-insights-overview/overview.png#lightbox)
 
 ### <a name="search-and-filtering"></a>搜尋和篩選
 您可以使用 **訂** 用帳戶、 **資源群組** 和 **類型** 等篩選準則來自訂資源健康狀態和警示的觀點。

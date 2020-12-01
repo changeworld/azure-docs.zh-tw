@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: e8f9a8e1d10e39e37480e06a25fcc0e203a104ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ddcd7e5c3e5651062f88b261e7003fb0dd2ef3b
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378724"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435989"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Marketplace 計量服務驗證策略
 
@@ -155,5 +155,5 @@ Marketplace 計量服務支援兩種驗證策略：
 
 ## <a name="next-steps"></a>後續步驟
 
-* [建立 Azure 應用程式供應項目](./create-new-azure-apps-offer.md)
+* [建立 Azure 應用程式供應項目](../create-new-azure-apps-offer.md)
 * [計畫 SaaS 供應項目](../plan-saas-offer.md)

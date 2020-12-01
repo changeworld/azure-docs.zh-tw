@@ -1,6 +1,6 @@
 ---
 title: 使用警示歸併規則，在 Azure 資訊安全中心中隱藏誤判為真或其他不必要的安全性警示。
-description: 本文說明如何使用 Azure 資訊安全中心的隱藏規則來隱藏不需要的 Azure Defender 警示
+description: 本文說明如何使用 Azure 資訊安全中心的隱藏規則來隱藏不必要的安全性警示
 author: memildin
 manager: rkarlin
 services: security-center
@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: b954d6ed29074aa9261611f0d1bb79b5917d03f2
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 4f5049d1589b741e60db69c782107cab1f047b77
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372654"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436788"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>隱藏來自 Azure Defender 的警示
 
@@ -127,9 +127,9 @@ ms.locfileid: "94372654"
 
 REST API 中歸併規則的相關 HTTP 方法為：
 
-- **PUT** ：在指定的訂用帳戶中建立或更新歸併規則。
+- **PUT**：在指定的訂用帳戶中建立或更新歸併規則。
 
-- **GET** ：
+- **GET**：
 
     - 列出針對所指定訂用帳戶設定的所有規則。 這個方法會傳回適用規則的陣列。
 
@@ -137,7 +137,7 @@ REST API 中歸併規則的相關 HTTP 方法為：
 
     - 模擬歸併規則仍在設計階段的影響。 此呼叫會識別當規則已在使用中時，會關閉哪些現有警示。
 
-- **DELETE** ：刪除現有的規則 (但不會變更其已關閉的警示狀態)。
+- **DELETE**：刪除現有的規則 (但不會變更其已關閉的警示狀態)。
 
 如需完整詳細資料和使用方式範例，請參閱 [API 文件](/rest/api/securitycenter/)。 
 

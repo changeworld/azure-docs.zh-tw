@@ -1,16 +1,16 @@
 ---
 title: 針對 Azure 實驗室服務中的教室實驗室 Vm 重設密碼 |Microsoft Docs
-description: 瞭解如何在 Azure 實驗室服務的教室實驗室中，為虛擬機器 (Vm) 重設密碼。
+description: 瞭解如何在 Azure 實驗室服務的實驗室中，為虛擬機器 (Vm) 重設密碼。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d63d14da8859c12fa797a04fa9a3c3230219adab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b0b13862ca4620da15606138c0a80adeac8056a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85445333"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436805"
 ---
-# <a name="set-or-reset-password-for-virtual-machines-in-classroom-labs-students"></a>為教室實驗室中的虛擬機器設定或重設密碼 (學生) 
+# <a name="set-or-reset-password-for-virtual-machines-in-labs-students"></a>為實驗室中的虛擬機器設定或重設密碼 (學生) 
 本文會說明學生如何設定/重設其 Vm 的密碼。 
 
 ## <a name="enable-resetting-of-passwords"></a>啟用密碼重設
@@ -19,7 +19,7 @@ ms.locfileid: "85445333"
 如果停用此選項，使用者將必須在第一次嘗試連線到 VM 時設定密碼。 學生也可以稍後再重設密碼，如本文最後一節所示。 
 
 ## <a name="reset-password-for-the-first-time"></a>第一次重設密碼
-如果已停**用 [針對所有虛擬機器使用相同的密碼**] 選項，當使用者 (學生) 選取 [我的**虛擬機器**] 頁面上 [實驗室 **]** 磚上的 [連線] 按鈕時，使用者會看到下列對話方塊來設定 VM 的密碼： 
+如果已停 **用 [針對所有虛擬機器使用相同的密碼**] 選項，當使用者 (學生) 選取 [我的 **虛擬機器**] 頁面上 [實驗室 **]** 磚上的 [連線] 按鈕時，使用者會看到下列對話方塊來設定 VM 的密碼： 
 
 ![重設學生的密碼](./media/how-to-set-virtual-machine-passwords/student-set-password.png)
 

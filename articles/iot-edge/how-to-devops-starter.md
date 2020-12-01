@@ -1,18 +1,18 @@
 ---
 title: 具有 Azure DevOps 入門 Azure IoT Edge 的 CI/CD 管線 |Microsoft Docs
 description: Azure DevOps 入門版可供輕鬆地開始使用 Azure。 它可協助您透過幾個簡單的步驟啟動您所選擇的 Azure IoT Edge 應用程式。
-author: shizn
+author: kgremban
 ms.author: kgremban
 ms.date: 08/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d57c1828b9456851d37a65b88eb5f8ea860a80fe
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 97dc0fe5a3720a41dd63583c222762d832d636ea
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045851"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436992"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>使用 Azure DevOps Starter 建立 IoT Edge 的 CI/CD 管線
 
@@ -74,14 +74,14 @@ DevOps 入門會在 Azure Repos 中為您的專案建立 Git 存放庫。 在這
 
    ![檢視在 Azure Repos 中產生的存放庫](./media/how-to-devops-starter/view-repositories.png)
 
-> [!NOTE]
-> 下列步驟會逐步引導您使用網頁瀏覽器來變更應用程式的程式碼。 如果您想要改為於本機複製您的存放庫，請選取視窗右上角的 [複製]。 使用所提供的 URL 來在 Visual Studio Code 或您偏好的開發工具中複製您的 Git 存放庫。
+   > [!NOTE]
+   > 下列步驟會逐步引導您使用網頁瀏覽器來變更應用程式的程式碼。 如果您想要改為於本機複製您的存放庫，請選取視窗右上角的 [複製]。 使用所提供的 URL 來在 Visual Studio Code 或您偏好的開發工具中複製您的 Git 存放庫。
 
 2. 根據在建立程序中所選的應用程式語言，存放庫已經包含適用於稱為 **FilterModule** 模組的程式碼。 開啟 **modules/FilterModule/module.json** 檔案。
 
    ![在 Azure Repos 中開啟 module.json 檔案](./media/how-to-devops-starter/open-module-json.png)
 
-3. 請注意，此檔案會使用 **version** 參數中的 [Azure DevOps 組建變數](/azure/devops/pipelines/build/variables?view=vsts#build-variables) (英文)。 此設定可確保每次執行新組建時，都會建立新版本的模組。
+3. 請注意，此檔案會使用 **version** 參數中的 [Azure DevOps 組建變數](/azure/devops/pipelines/build/variables#build-variables) (英文)。 此設定可確保每次執行新組建時，都會建立新版本的模組。
 
 ## <a name="examine-the-cicd-pipeline"></a>檢查 CI/CD 管線
 

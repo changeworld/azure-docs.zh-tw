@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1866f3360b90a96b5e3f215eb7669a1451262bd8
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: b9b842b94d66cf91ad836b8ae61df1b3d3f34293
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046004"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435938"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>Azure IoT Edge 裝置的持續整合和持續部署 (傳統編輯器) 
 
@@ -32,16 +32,16 @@ ms.locfileid: "92046004"
 
 除非另有說明，否則本文中的程式不會探索透過工作參數提供的所有功能。 如需詳細資訊，請參閱下列：
 
-* [工作版本](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-versions)
+* [工作版本](/azure/devops/pipelines/process/tasks?tabs=classic#task-versions)
 * **Advanced** -如果適用，請指定您不想要建立的模組。
-* [控制項選項](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-control-options)
-* [環境變數](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#environment-variables)
-* [輸出變數](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#use-output-variables-from-tasks)
+* [控制項選項](/azure/devops/pipelines/process/tasks?tabs=classic#task-control-options)
+* [環境變數](/azure/devops/pipelines/process/variables?tabs=classic#environment-variables)
+* [輸出變數](/azure/devops/pipelines/process/variables?tabs=classic#use-output-variables-from-tasks)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-* Azure Repos 存放庫。 如果您沒有存放庫，可以[在專案中建立新的 Git 存放庫](/azure/devops/repos/git/create-new-repo?tabs=new-nav&view=vsts) \(英文\)。 針對本文，我們建立了名為 **IoTEdgeRepo** 的存放庫。
-* 已認可並推送至您存放庫的 IoT Edge 解決方案。 若要建立用於測試本文的新範例解決方案，請遵循[在 Visual Studio Code 中針對模組進行開發與偵錯](how-to-vs-code-develop-module.md)，或[在 Visual Studio Code 中對 C# 模組進行開發與偵錯](./how-to-visual-studio-develop-module.md)中的步驟。 在本文中，我們在存放庫中建立了名為 **IoTEdgeSolution**的解決方案，其中包含名為 **filtermodule**的模組程式碼。
+* Azure Repos 存放庫。 如果您沒有存放庫，可以[在專案中建立新的 Git 存放庫](/azure/devops/repos/git/create-new-repo) \(英文\)。 針對本文，我們建立了名為 **IoTEdgeRepo** 的存放庫。
+* 已認可並推送至您存放庫的 IoT Edge 解決方案。 若要建立用於測試本文的新範例解決方案，請遵循[在 Visual Studio Code 中針對模組進行開發與偵錯](how-to-vs-code-develop-module.md)，或[在 Visual Studio Code 中對 C# 模組進行開發與偵錯](./how-to-visual-studio-develop-module.md)中的步驟。 在本文中，我們在存放庫中建立了名為 **IoTEdgeSolution** 的解決方案，其中包含名為 **filtermodule** 的模組程式碼。
 
    針對本文，您只需要在 Visual Studio Code 或 Visual Studio 中由 IoT Edge 範本所建立的解決方案資料夾。 在進行之前，您並不需要針對此程式碼進行建置、推送、部署或偵錯。 您將在 Azure Pipelines 中設定這些處理常式。
 
@@ -68,11 +68,11 @@ ms.locfileid: "92046004"
 
 4. 遵循提示以建立管線。
 
-   1. 提供新建置管線的來源資訊。 選取 [Azure Repos Git]**** 作為來源，然後選取 IoT Edge 解決方案程式碼所在的專案、存放庫及分支。 然後選取 [ **繼續**]。
+   1. 提供新建置管線的來源資訊。 選取 [Azure Repos Git] 作為來源，然後選取 IoT Edge 解決方案程式碼所在的專案、存放庫及分支。 然後選取 [ **繼續**]。
 
       ![選取您的管線來源](./media/how-to-continuous-integration-continuous-deployment-classic/pipeline-source.png)
 
-   2. 選取 [空白作業]****，而非範本。
+   2. 選取 [空白作業]，而非範本。
 
       ![從您的組建管線的空白作業開始](./media/how-to-continuous-integration-continuous-deployment-classic/start-with-empty-build-job.png)
 
@@ -84,13 +84,13 @@ ms.locfileid: "92046004"
 
    * 如果您想要在適用于 Linux 容器的 platform amd64 中建立模組，請選擇 **ubuntu-16.04**
 
-   * 如果您想要在 amd64 平台中建置適用於 Windows 1809 容器的模組，您必須[在 Windows 上設定自我裝載的代理程式](/azure/devops/pipelines/agents/v2-windows?view=vsts) \(英文\)。
+   * 如果您想要在 amd64 平台中建置適用於 Windows 1809 容器的模組，您必須[在 Windows 上設定自我裝載的代理程式](/azure/devops/pipelines/agents/v2-windows) \(英文\)。
 
    * 如果您想要在適用于 Linux 容器的 platform arm32v7 或 arm64 中建立模組，您必須在 [linux 上設定自我裝載代理程式](https://devblogs.microsoft.com/iotdev/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent)。
 
     ![設定組建代理程式規格](./media/how-to-continuous-integration-continuous-deployment-classic/configure-env.png)
 
-6. 您的管線已預先設定名為**代理程式作業 1** 的作業。 選取加號 () 將 **+** 四個工作新增至作業： **Azure IoT Edge** 兩次、只 **複製** 檔案一次，然後 **發行組建** 成品一次。 搜尋每項工作，並將滑鼠停留在工作名稱上方，以查看 [ **加入** ] 按鈕。
+6. 您的管線已預先設定名為 **代理程式作業 1** 的作業。 選取加號 () 將 **+** 四個工作新增至作業： **Azure IoT Edge** 兩次、只 **複製** 檔案一次，然後 **發行組建** 成品一次。 搜尋每項工作，並將滑鼠停留在工作名稱上方，以查看 [ **加入** ] 按鈕。
 
    ![新增 Azure IoT Edge 工作](./media/how-to-continuous-integration-continuous-deployment-classic/add-iot-edge-task.png)
 
@@ -98,7 +98,7 @@ ms.locfileid: "92046004"
 
    ![組建管線中的四個工作](./media/how-to-continuous-integration-continuous-deployment-classic/add-tasks.png)
 
-7. 選取第一個 [Azure IoT Edge]**** 工作來編輯它。 此工作會使用您指定的目標平臺，建立解決方案中的所有模組。 使用下列值編輯工作：
+7. 選取第一個 [Azure IoT Edge] 工作來編輯它。 此工作會使用您指定的目標平臺，建立解決方案中的所有模組。 使用下列值編輯工作：
 
     | 參數 | 說明 |
     | --- | --- |
@@ -114,7 +114,7 @@ ms.locfileid: "92046004"
 
     如果您的專案中有其他變數，您可以在此索引標籤上指定名稱和值。 **組建模組映射** 只會辨識採用 `${VARIABLE}` 格式的變數。 請務必在您的檔案中使用此格式 `**/module.json` 。
 
-8. 選取第二個 [Azure IoT Edge]**** 工作來編輯它。 此工作會將所有模組映像推送到您選取的容器登錄。
+8. 選取第二個 [Azure IoT Edge] 工作來編輯它。 此工作會將所有模組映像推送到您選取的容器登錄。
 
     | 參數 | 說明 |
     | --- | --- |
@@ -122,12 +122,12 @@ ms.locfileid: "92046004"
     | 動作 | 選取 **推送模組映射**。 |
     | Container registry 類型 | 使用預設類型： `Azure Container Registry` 。 |
     | Azure 訂用帳戶 | 選擇您的訂用帳戶。 |
-    | Azure Container Registry | 選取您用來儲存模組映像的容器登錄類型。 表單會根據您所選擇的登錄類型而變更。 如果您選擇 [Azure Container Registry]****，請使用下拉式清單來選取 Azure 訂用帳戶和容器登錄的名稱。 如果您選擇 [泛型容器登錄]****，請選取 [新增]**** 以建立登錄服務連線。 |
+    | Azure Container Registry | 選取您用來儲存模組映像的容器登錄類型。 表單會根據您所選擇的登錄類型而變更。 如果您選擇 [Azure Container Registry]，請使用下拉式清單來選取 Azure 訂用帳戶和容器登錄的名稱。 如果您選擇 [泛型容器登錄]，請選取 [新增] 以建立登錄服務連線。 |
     | 檔案上的 .template.js | 選取省略符號 (**...**) 並瀏覽至存放庫中的 **deployment.template.json** 檔案，其包含您的 IoT Edge 解決方案。 |
     | 預設平臺 | 根據您的目標 IoT Edge 裝置，為您的模組選取適當的作業系統。 |
     | 將登錄認證新增至部署資訊清單 | 指定 true 以新增將 docker 映射推送至部署資訊清單的登錄認證。 |
 
-   如果您有多個容器登錄來裝載模組映射，您需要複製此工作、選取不同的容器登錄，並使用 [ **Advanced** settings] 中的 [**略過模組 (s]) ** ，以略過不是此特定登錄的映射。
+   如果您有多個容器登錄來裝載模組映射，您需要複製此工作、選取不同的容器登錄，並使用 [ **Advanced** settings] 中的 [**略過模組 (s])** ，以略過不是此特定登錄的映射。
 
 9. 選取 [ **複製** 檔案] 工作來編輯它。 使用此工作可將檔案複製到成品臨時目錄。
 
@@ -136,18 +136,18 @@ ms.locfileid: "92046004"
     | 顯示名稱 | 使用預設名稱或自訂 |
     | 源資料夾 | 包含要複製之檔案的資料夾。 |
     | 目錄 | 新增兩行： `deployment.template.json` 和 `**/module.json` 。 這兩個檔案可作為輸入，以產生 IoT Edge 部署資訊清單。 |
-    | 目的檔案夾 | 指定變數 `$(Build.ArtifactStagingDirectory)` 。 請參閱 [組建變數](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables) 以瞭解描述。 |
+    | 目的檔案夾 | 指定變數 `$(Build.ArtifactStagingDirectory)` 。 請參閱 [組建變數](/azure/devops/pipelines/build/variables#build-variables) 以瞭解描述。 |
 
-10. 選取 [發行組建成品]**** 工作來編輯它。 提供工作的構件臨時目錄路徑，讓路徑可以發佈至發行管線。
+10. 選取 [發行組建成品] 工作來編輯它。 提供工作的構件臨時目錄路徑，讓路徑可以發佈至發行管線。
 
     | 參數 | 說明 |
     | --- | --- |
     | 顯示名稱 | 使用預設名稱或自訂。 |
-    | 要發佈的路徑 | 指定變數 `$(Build.ArtifactStagingDirectory)` 。 若要深入瞭解，請參閱 [建立變數](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables) 。 |
+    | 要發佈的路徑 | 指定變數 `$(Build.ArtifactStagingDirectory)` 。 若要深入瞭解，請參閱 [建立變數](/azure/devops/pipelines/build/variables#build-variables) 。 |
     | 成品名稱 | 使用預設名稱： **drop** |
     | 成品發行位置 | 使用預設位置： **Azure Pipelines** |
 
-11. 開啟 [觸發程序]**** 索引標籤，然後核取 [啟用持續整合]**** 方塊。 請確定已納入包含程式碼的分支。
+11. 開啟 [觸發程序] 索引標籤，然後核取 [啟用持續整合] 方塊。 請確定已納入包含程式碼的分支。
 
     ![開啟持續整合觸發程序](./media/how-to-continuous-integration-continuous-deployment-classic/configure-trigger.png)
 

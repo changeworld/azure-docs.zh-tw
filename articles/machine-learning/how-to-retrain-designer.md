@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d8ef4d9f768d6fdcf976c9317d1abec3d4533824
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: d754674fe3aa65fa9fd8540b05083979ce96aff8
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554796"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437111"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer"></a>使用 Azure Machine Learning 設計工具重新定型模型
 
@@ -47,7 +47,11 @@ ms.locfileid: "94554796"
 
 ## <a name="create-a-pipeline-parameter"></a>建立管線參數
 
-建立管線參數，以在執行階段動態設定變數。 在此範例中，您會將定型資料路徑從固定值變更為參數，以便使用不同的資料重新定型模型。
+管線參數是用來建立可在稍後使用不同的參數值重新提交的多功能管線。 某些常見的案例是更新資料集或某些用來重新定型的超參數。 建立管線參數，以在執行階段動態設定變數。 
+
+管線參數可以加入至管線中的資料來源或模組參數。 重新提交管線時，可以指定這些參數的值。
+
+在此範例中，您會將定型資料路徑從固定值變更為參數，以便使用不同的資料重新定型模型。 您也可以根據您的使用案例，將其他模組參數新增為管線參數。
 
 1. 選取 **匯入資料** 模組。
 
@@ -60,31 +64,22 @@ ms.locfileid: "94554796"
 
 1. 將滑鼠放在 [路徑] 欄位上方，然後選取出現在 [路徑] 欄位上方的省略符號。
 
-    ![顯示如何建立管線參數的螢幕擷取畫面](media/how-to-retrain-designer/add-pipeline-parameter.png)
-
 1. 選取 [新增至管線參數]。
 
 1. 提供參數名稱和預設值。
 
-   > [!NOTE]
-   > 您可以選取管線草稿標題旁的 [設定] 齒輪圖示，以檢查和編輯管線參數。 
+   ![顯示如何建立管線參數的螢幕擷取畫面](media/how-to-retrain-designer/add-pipeline-parameter.png)
 
 1. 選取 [儲存]。
 
+   > [!NOTE]
+   > 您也可以從 [模組詳細資料] 窗格中的 [管線參數] 卸離模組參數，類似于新增管線參數。
+   >
+   > 您可以選取管線草稿標題旁的 [設定] 齒輪圖示，以檢查和編輯管線參數。 
+   >    - 卸離之後，您可以在 [ **設定** ] 窗格中刪除管線參數。
+   >    - 您也可以在 [ **設定** ] 窗格中新增管線參數，然後將它套用至某些模組參數。
+
 1. 提交管線執行。
-
-## <a name="find-a-trained-model"></a>尋找定型的模型
-
-設計工具會將所有管線輸出 (包括已定型的模型) 儲存至預設的工作區儲存體帳戶。 您也可以直接在設計工具中存取已定型的模型：
-
-1. 等候管線執行完成。
-1. 選取 **訓練模型** 模組。
-1. 在畫布右側的 [模組詳細資料] 窗格中，選取 [輸出 + 記錄]。
-1. 您可以在 [其他輸出] 中找到您的模型以及執行記錄。
-1. 或者，選取 [檢視輸出] 圖示。 在此處，您可以依照對話方塊中的指示直接瀏覽至資料存放區。 
-
-> [!div class="mx-imgBorder"]
-> ![此螢幕擷取畫面顯示如何下載已定型的模型](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="publish-a-training-pipeline"></a>發佈定型管線
 

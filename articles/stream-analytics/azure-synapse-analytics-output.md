@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 0b3bec9c4d4476b95279e35953ff89177f4488d4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 63d03559b2a30020ed2e8bd1cd030855b8fb20b7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305834"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445097"
 ---
 # <a name="azure-synapse-analytics-output-from-azure-stream-analytics"></a>Azure 串流分析的 Azure Synapse Analytics 輸出
 
-[Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) (先前為 SQL 資料倉儲) 是一種無限制的分析服務，可將企業資料倉儲和巨量資料分析整合在一起。 
+[Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) 是一種無限制的分析服務，可將企業資料倉儲和大型資料分析整合在一起。 
 
 Azure 串流分析作業可以輸出至 Azure Synapse Analytics 中的專用 SQL 集區資料表，且最多可處理 200MB/秒的輸送量速率。這可為工作負載（例如報告和儀表板）支援最嚴苛的即時分析和經常性路徑資料處理需求。  
 

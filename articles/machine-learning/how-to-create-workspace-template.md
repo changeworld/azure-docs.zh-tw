@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: f07efcc18f3eff7e40232941befb563cd236266b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: bd9199bc73e56ec36343b30d9b24f0b48799835e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95013033"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445203"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure Resource Manager 範本建立 Azure Machine Learning 的工作區
 
@@ -41,7 +41,7 @@ ms.locfileid: "95013033"
 
 ## <a name="limitations"></a>限制
 
-* 建立新的工作區時，您可以允許工作區自動建立所需的 Azure 服務，或提供現有的服務。 提供現有的服務時，這些服務必須與工作區位於相同的 Azure 訂用帳戶中。
+[!INCLUDE [register-namespace](../../includes/machine-learning-register-namespace.md)]
 
 ## <a name="workspace-resource-manager-template"></a>工作區 Resource Manager 範本
 

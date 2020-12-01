@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: negoe
-ms.reviewer: negoe,celested
+ms.reviewer: marsma, negoe,celested
 ms.custom: aaddev,references_regions
-ms.openlocfilehash: d27498748f03fb101d165351ec80c77d57f78f1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da1ea6462d22242d23629bcec192d7760314dfed
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88141494"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444809"
 ---
 # <a name="national-clouds"></a>國家雲端
 
@@ -60,8 +60,8 @@ ms.locfileid: "88141494"
 
 您可以使用合適的區域專屬基底 URL，形成對 Azure AD 授權或權杖端點的要求。 例如，對於 Azure Germany：
 
-  - 授權通用端點為 `https://login.microsoftonline.de/common/oauth2/v2.0/authorize`。
-  - 權杖通用端點為 `https://login.microsoftonline.de/common/oauth2/v2.0/token`。
+- 授權通用端點為 `https://login.microsoftonline.de/common/oauth2/v2.0/authorize`。
+- 權杖通用端點為 `https://login.microsoftonline.de/common/oauth2/v2.0/token`。
 
 對於單一租用戶應用程式，請將先前 URL 的 common 取代為租用戶識別碼或名稱。 例如 `https://login.microsoftonline.de/contoso.com`。
 
@@ -76,9 +76,10 @@ ms.locfileid: "88141494"
 
 ## <a name="next-steps"></a>後續步驟
 
-深入了解：
+瞭解如何 [在國家雲端環境中使用 Microsoft 驗證程式庫 (MSAL) ](msal-national-cloud.md)。
+
+國家/地區雲端檔：
 
 - [Azure Government](../../azure-government/index.yml)
 - [Azure China 21Vianet](/azure/china/)
 - [Azure Germany](../../germany/index.yml)
-- [Azure AD 驗證基本資訊](./authentication-vs-authorization.md)

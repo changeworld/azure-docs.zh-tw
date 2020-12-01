@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
-ms.openlocfilehash: 647256949d1f8f13439a0a5db87f3b02d697d32b
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 20d38e5caee67ca8bb13877d3162401fa245dc2d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95318128"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444781"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>啟用適用於 VM 的 Azure 監視器來賓健全狀況 (preview) 
 適用於 VM 的 Azure 監視器來賓健康狀態可讓您依定期取樣的一組效能測量所定義，來查看虛擬機器的健康情況。 本文說明如何在您的訂用帳戶中啟用這項功能，以及如何啟用每部虛擬機器的來賓監視。
@@ -87,7 +87,7 @@ POST https://management.azure.com/subscriptions/[subscriptionId]/providers/Micro
 > [!NOTE]
 > 如果您使用 Azure 入口網站啟用虛擬機器，則會為您建立此處所述的資料收集規則。 在此情況下，您不需要執行此步驟。
 
-適用於 VM 的 Azure 監視器來賓健全狀況中的監視設定會儲存在 [資料集合規則 (DCR) ](../platform/data-collection-rule-overview.md)中。 安裝下列 Resource Manager 範本中定義的資料收集規則，以啟用具有來賓健康情況擴充功能的虛擬機器的所有監視。 具有來賓健康情況擴充功能的每部虛擬機器都需要與此規則相關聯。
+適用於 VM 的 Azure 監視器來賓健全狀況中的監視設定會儲存在 [資料集合規則 (DCR) ](../platform/data-collection-rule-overview.md)中。 具有來賓健康情況擴充功能的每部虛擬機器都需要與此規則相關聯。
 
 > [!NOTE]
 > 您可以建立其他資料收集規則來修改預設的監視設定，如 [設定監視適用於 VM 的 Azure 監視器來賓健康情況 (預覽) ](vminsights-health-configure.md)中所述。
@@ -115,7 +115,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
 
 ---
 
-
+下列 Resource Manager 範本中定義的資料收集規則，可啟用具有來賓健康情況擴充功能的虛擬機器的所有監視器。 它必須包含監視所使用的每個效能計數器的資料來源。
 
 ```json
 {
@@ -138,7 +138,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
     "dataCollectionRuleLocation": {
       "type": "string",
       "metadata": {
-        "description": "The location code in which the data colleciton rule should be deployed. Examples: eastus, westeurope, etc"
+        "description": "The location code in which the data collection rule should be deployed. Examples: eastus, westeurope, etc"
       }
     }
   },
@@ -151,6 +151,19 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
       "properties": {
         "description": "Data collection rule for VM Insights health.",
         "dataSources": {
+          "performanceCounters": [
+              {
+                  "name": "VMHealthPerfCounters",
+                  "streams": [ "Microsoft-Perf" ],
+                  "scheduledTransferPeriod": "PT1M",
+                  "samplingFrequencyInSeconds": 60,
+                  "counterSpecifiers": [
+                      "\\LogicalDisk(*)\\% Free Space",
+                      "\\Memory\\Available Bytes",
+                      "\\Processor(_Total)\\% Processor Time"
+                  ]
+              }
+          ],
           "extensions": [
             {
               "name": "Microsoft-VMInsights-Health",
@@ -170,7 +183,11 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
                     }
                   }
                 ]
-              }
+              },
+              "inputDataSources": [
+                  "VMHealthPerfCounters"
+              ]
+
             }
           ]
         },
@@ -181,7 +198,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
               "name": "Microsoft-HealthStateChange-Dest"
             }
           ]
-        },
+        },                  
         "dataFlows": [
           {
             "streams": [
@@ -205,7 +222,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-      "healthDataCollectionRuleResourceId": {
+      "destinationWorkspaceResourceId": {
         "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"
       },
       "dataCollectionRuleLocation": {
@@ -217,7 +234,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
 
 
 
-## <a name="install-guest-health-extension-and-associate-with-data-collection-rule"></a>安裝來賓健全狀況延伸模組並與資料收集規則產生關聯
+### <a name="install-guest-health-extension-and-associate-with-data-collection-rule"></a>安裝來賓健全狀況延伸模組並與資料收集規則產生關聯
 使用下列 Resource Manager 範本來啟用虛擬機器的來賓健全狀況。 這會安裝 guest 健康情況擴充功能，並建立與資料集合規則的關聯。 您可以使用 [Resource Manager 範本的任何部署方法](../../azure-resource-manager/templates/deploy-powershell.md)來部署此範本。
 
 
@@ -370,9 +387,6 @@ az deployment group create --name GuestHealthDeployment --resource-group my-reso
       },
       "healthDataCollectionRuleResourceId": {
         "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/Microsoft.Insights/dataCollectionRules/Microsoft-VMInsights-Health"
-      },
-      "healthExtensionVersion": {
-        "value": "private-preview"
       }
   }
 }

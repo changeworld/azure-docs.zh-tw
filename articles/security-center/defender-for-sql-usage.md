@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 236a604c2c1cecfb18a2d82c3796a88cc4341a34
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: d37c362da484a2a7e400da8f87dd0a37f0f80d3a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636379"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436720"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>電腦上適用于 SQL server 的 Azure Defender 
 
@@ -64,11 +64,11 @@ ms.locfileid: "94636379"
 
     - 如果您使用 **Azure 資訊安全中心的預設工作區** (名稱為 "defaultworkspace-[您的訂用帳戶識別碼]-[區域]" ) ，請選取相關的 **訂** 用帳戶。
 
-    - 如果您使用 **非預設工作區** ，請選取相關的 **工作區** (在 [必要時，在篩選中輸入工作區的名稱]) ：
+    - 如果您使用 **非預設工作區**，請選取相關的 **工作區** (在 [必要時，在篩選中輸入工作區的名稱]) ：
 
         ![依標題尋找您的非預設工作區](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
 
-1. 針對 **電腦上的 SQL server 設定 Azure Defender 的選項 (Preview)** 方案設定為 **開啟** 。 
+1. 針對 **電腦上的 SQL server 設定 Azure Defender 的選項 (Preview)** 方案設定為 **開啟**。 
 
     ![具有選擇性方案的 [安全性中心定價] 頁面](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png)
 
@@ -91,7 +91,7 @@ ms.locfileid: "94636379"
 
 您可以直接從 [安全性中心] 查看弱點評定結果。
 
-1. 從資訊安全中心的提要欄位中，開啟 [ **建議** ] 頁面，然後選取 **您的 SQL server 上應補救的建議弱點 (預覽)** 。 如需詳細資訊，請參閱資訊 [安全中心建議](security-center-recommendations.md)。 
+1. 從資訊安全中心的提要欄位中，開啟 [ **建議** ] 頁面，然後選取 **您的 SQL server 上應補救的建議弱點 (預覽)**。 如需詳細資訊，請參閱資訊 [安全中心建議](security-center-recommendations.md)。 
 
     :::image type="content" source="./media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png" alt-text="您應補救電腦上 SQL server 的弱點評定結果 (預覽版) ":::
 
@@ -105,14 +105,14 @@ ms.locfileid: "94636379"
 
     * 如需依特定 SQL database 分組的弱點總覽，請選取您感興趣的資料庫。
 
-    在每個觀點中，安全性檢查會依 **嚴重性** 排序。 按一下特定的安全性檢查，以查看具有 **描述** 的詳細資料窗格、如何進行 **修復** ，以及其他相關資訊，例如 **影響** 或 **基準測試** 。
+    在每個觀點中，安全性檢查會依 **嚴重性** 排序。 按一下特定的安全性檢查，以查看具有 **描述** 的詳細資料窗格、如何進行 **修復** ，以及其他相關資訊，例如 **影響** 或 **基準測試**。
 
 ## <a name="azure-defender-for-sql-alerts"></a>適用于 SQL 的 Azure Defender 警示
 警示是由不尋常且可能有害的嘗試存取或惡意探索 SQL 電腦所產生。 這些事件可以在 [ [警示參考] 頁面的 [SQL Database 和 Azure Synapse Analytics (先前的 SQL 資料倉儲) 區段](alerts-reference.md#alerts-sql-db-and-warehouse)中，觸發顯示的警示。
 
 ## <a name="explore-and-investigate-security-alerts"></a>探索和調查安全性警示
 
-您可以在 [安全性中心的警示] 頁面、資源的 [安全性] 索引標籤、 [Azure Defender 儀表板](azure-defender-dashboard.md)，或透過警示電子郵件中的直接連結取得 Azure Defender 警示。
+您可以在 [安全性中心的警示] 頁面、資源的 [安全性] 索引標籤、 [Azure Defender 儀表板](azure-defender-dashboard.md)，或透過警示電子郵件中的直接連結取得適用于 SQL 的 Azure Defender 警示。
 
 1. 若要查看警示，請從 [安全性中心] 功能表選取 [ **安全性警示** ]，然後選取警示。
 

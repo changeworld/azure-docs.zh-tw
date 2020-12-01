@@ -2,13 +2,13 @@
 title: Azure 服務的資源提供者
 description: 列出 Azure Resource Manager 的所有資源提供者命名空間，並顯示該命名空間的 Azure 服務。
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 7c8e535978bff38146caee1a3b5177d5befaa6a1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 11/30/2020
+ms.openlocfilehash: fffac8fef8742cf1f151de06ba6b528035a6668d
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185856"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436822"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服務的資源提供者 \(部分機器翻譯\)
 
@@ -20,7 +20,7 @@ ms.locfileid: "96185856"
 | --------------------------- | ------------- |
 | Microsoft.AAD | [Azure Active Directory 網域服務](../../active-directory-domain-services/index.yml) |
 | Microsoft.Addons | core |
-| ADHybridHealthService<sup>1</sup> | [Azure Active Directory](../../active-directory/index.yml) |
+| ADHybridHealthService- [已註冊](#registration) | [Azure Active Directory](../../active-directory/index.yml) |
 | Microsoft.Advisor | [Azure Advisor](../../advisor/index.yml) |
 | Microsoft.AlertsManagement | [Azure 監視器](../../azure-monitor/index.yml) |
 | Microsoft.AnalysisServices | [Azure Analysis Services](../../analysis-services/index.yml) |
@@ -28,7 +28,7 @@ ms.locfileid: "96185856"
 | Microsoft.AppConfiguration | [Azure 應用程式組態](../../azure-app-configuration/index.yml) |
 | Microsoft.AppPlatform | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
 | Microsoft.Attestation | Azure 證明服務 |
-| Microsoft. 授權<sup>1</sup> | [Azure Resource Manager](../index.yml) |
+| [已註冊](#registration)的 Microsoft 授權 | [Azure Resource Manager](../index.yml) |
 | Microsoft.Automation | [自動化](../../automation/index.yml) |
 | AutonomousSystems | [自主系統](https://www.microsoft.com/ai/autonomous-systems) |
 | Microsoft.AVS | [Azure VMware 解決方案](../../azure-vmware/index.yml) |
@@ -37,12 +37,12 @@ ms.locfileid: "96185856"
 | Microsoft.AzureStack | core |
 | Microsoft.AzureStackHCI | [Azure Stack HCI](/azure-stack/hci/overview) |
 | Microsoft.Batch | [Batch](../../batch/index.yml) |
-| Microsoft 帳單<sup>1</sup> | [成本管理和計費](/azure/billing/) |
+| [已註冊](#registration)Microsoft 帳單 | [成本管理和計費](/azure/billing/) |
 | Microsoft.BingMaps | [Bing 地圖](/BingMaps/#pivot=main&panel=BingMapsAPI) |
 | Microsoft.Blockchain | [Azure 區塊鏈服務](../../blockchain/workbench/index.yml) |
 | Microsoft.BlockchainTokens | [Azure 區塊鏈服務權杖](https://azure.microsoft.com/services/blockchain-tokens/) |
 | Microsoft.Blueprint | [Azure 藍圖](../../governance/blueprints/index.yml) |
-| Microsoft.BotService | [Azure Bot Service](/azure/bot-service/) |
+| Microsoft.BotService | [Azure Bot 服務](/azure/bot-service/) |
 | Microsoft.Cache | [Azure Cache for Redis](../../azure-cache-for-redis/index.yml) |
 | Microsoft.Capacity | core |
 | Microsoft.Cdn | [內容傳遞網路](../../cdn/index.yml) |
@@ -52,15 +52,15 @@ ms.locfileid: "96185856"
 | Microsoft.ClassicInfrastructureMigrate | 傳統部署模型遷移 |
 | Microsoft.ClassicNetwork | 傳統部署模型虛擬網路 |
 | Microsoft.ClassicStorage | 傳統部署模型儲存體 |
-| ClassicSubscription<sup>1</sup> | 傳統部署模型 |
+| ClassicSubscription- [已註冊](#registration) | 傳統部署模型 |
 | Microsoft.CognitiveServices | [認知服務](../../cognitive-services/index.yml) |
-| Microsoft Commerce<sup>1</sup> | core |
+| Microsoft Commerce- [已註冊](#registration) | core |
 | Microsoft.Compute | [虛擬機器](../../virtual-machines/index.yml)<br />[虛擬機器擴展集](../../virtual-machine-scale-sets/index.yml) |
-| Microsoft. 耗用量<sup>1</sup> | [成本管理](/azure/cost-management/) |
+| [已註冊](#registration)Microsoft | [成本管理](/azure/cost-management/) |
 | Microsoft.ContainerInstance | [容器執行個體](../../container-instances/index.yml) |
 | Microsoft.ContainerRegistry | [Container Registry](../../container-registry/index.yml) |
 | Microsoft.ContainerService | [Azure Kubernetes Service (AKS)](../../aks/index.yml) |
-| CostManagement<sup>1</sup> | [成本管理](/azure/cost-management/) |
+| CostManagement- [已註冊](#registration) | [成本管理](/azure/cost-management/) |
 | Microsoft.CostManagementExports | [成本管理](/azure/cost-management/) |
 | Microsoft.CustomerLockbox | [適用於 Microsoft Azure 的客戶加密箱](../../security/fundamentals/customer-lockbox-overview.md) |
 | Microsoft.CustomProviders | [Azure 自訂提供者](../custom-providers/overview.md) |
@@ -90,7 +90,7 @@ ms.locfileid: "96185856"
 | Microsoft.EnterpriseKnowledgeGraph | 企業知識圖表 |
 | Microsoft.EventGrid | [Event Grid](../../event-grid/index.yml) |
 | Microsoft.EventHub | [事件中樞](../../event-hubs/index.yml) |
-| Microsoft. 功能<sup>1</sup> | [Azure Resource Manager](../index.yml) |
+| Microsoft。功能- [已註冊](#registration) | [Azure Resource Manager](../index.yml) |
 | Microsoft.GuestConfiguration | [Azure 原則](../../governance/policy/index.yml) |
 | Microsoft.HanaOnAzure | [Azure 上的 SAP HANA 大型執行個體](../../virtual-machines/workloads/sap/hana-overview-architecture.md) |
 | Microsoft.HardwareSecurityModules | [Azure 專用 HSM](../../dedicated-hsm/index.yml) |
@@ -120,7 +120,7 @@ ms.locfileid: "96185856"
 | Microsoft.Maps | [Azure 地圖服務](../../azure-maps/index.yml) |
 | Microsoft.Marketplace | core |
 | Microsoft.MarketplaceApps | core |
-| MarketplaceOrdering<sup>1</sup> | core |
+| MarketplaceOrdering- [已註冊](#registration) | core |
 | Microsoft.Media | [媒體服務](../../media-services/index.yml) |
 | Microsoft.Microservices4Spring | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
 | Microsoft.Migrate | [Azure Migrate](../../migrate/migrate-services-overview.md) |
@@ -135,7 +135,7 @@ ms.locfileid: "96185856"
 | Microsoft.OperationsManagement | [Azure 監視器](../../azure-monitor/index.yml) |
 | Microsoft.Peering | [Azure 對等互連服務](../../peering-service/index.yml) |
 | Microsoft.PolicyInsights | [Azure 原則](../../governance/policy/index.yml) |
-| Microsoft. 入口網站<sup>1</sup> | [Azure 入口網站](../../azure-portal/index.yml) |
+| Microsoft 入口網站- [已註冊](#registration) | [Azure 入口網站](../../azure-portal/index.yml) |
 | Microsoft.PowerBI | [Power BI](/power-bi/power-bi-overview) |
 | Microsoft.PowerBIDedicated | [Power BI Embedded](/azure/power-bi-embedded/) |
 | >admin.powerplatform.microsoft.com | [Power Platform](/power-platform/) |
@@ -144,15 +144,15 @@ ms.locfileid: "96185856"
 | Microsoft.RecoveryServices | [Azure Site Recovery](../../site-recovery/index.yml) |
 | Microsoft.RedHatOpenShift | [Azure Red Hat OpenShift](../../virtual-machines/linux/openshift-get-started.md) |
 | Microsoft.Relay | [Azure 轉送](../../azure-relay/relay-what-is-it.md) |
-| >az.resourcegraph<sup>1</sup> | [Azure Resource Graph](../../governance/resource-graph/index.yml) |
+| >az.resourcegraph- [已註冊](#registration) | [Azure Resource Graph](../../governance/resource-graph/index.yml) |
 | Microsoft.ResourceHealth | [Azure 服務健康狀態](../../service-health/index.yml) |
-| Microsoft .Resources<sup>1</sup> | [Azure Resource Manager](../index.yml) |
+| Microsoft .Resources- [已註冊](#registration) | [Azure Resource Manager](../index.yml) |
 | Microsoft.SaaS | core |
 | Microsoft.Scheduler | [排程器](../../scheduler/index.yml) |
 | Microsoft.Search | [Azue 認知搜尋](../../search/index.yml) |
 | Microsoft.Security | [資訊安全中心](../../security-center/index.yml) |
 | Microsoft.SecurityInsights | [Azure Sentinel](../../sentinel/index.yml) |
-| SerialConsole<sup>1</sup> | [適用於 Windows 的 Azure 序列主控台](../../virtual-machines/troubleshooting/serial-console-windows.md) |
+| SerialConsole- [已註冊](#registration) | [適用於 Windows 的 Azure 序列主控台](../../virtual-machines/troubleshooting/serial-console-windows.md) |
 | Microsoft.ServiceBus | [服務匯流排](/azure/service-bus/) |
 | Microsoft.ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
 | Microsoft.ServiceFabricMesh | [Service Fabric Mesh](../../service-fabric-mesh/index.yml) |
@@ -162,13 +162,13 @@ ms.locfileid: "96185856"
 | Microsoft.Solutions | [Azure 受控應用程式](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL Database](../../azure-sql/database/index.yml)<br /> [Azure SQL 受控執行個體](../../azure-sql/managed-instance/index.yml) <br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
 | Microsoft.SqlVirtualMachine | [Azure 虛擬機器上的 SQL Server](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) |
-| Microsoft.Storage | [儲存體](../../storage/index.yml) |
+| Microsoft.Storage | [Storage](../../storage/index.yml) |
 | Microsoft.StorageCache | [Azure HPC Cache](../../hpc-cache/index.yml) |
-| Microsoft.StorageSync | [儲存體](../../storage/index.yml) |
+| Microsoft.StorageSync | [Storage](../../storage/index.yml) |
 | Microsoft.StorSimple | [StorSimple](../../storsimple/index.yml) |
 | Microsoft.StreamAnalytics | [Azure 串流分析](../../stream-analytics/index.yml) |
 | Microsoft.Subscription | core |
-| microsoft。支援<sup>1</sup> | core |
+| microsoft. 支援- [已註冊](#registration) | core |
 | Microsoft.Synapse | [Azure Synapse Analytics](/azure/sql-data-warehouse/) |
 | Microsoft.TimeSeriesInsights | [Azure 時間序列深入解析](../../time-series-insights/index.yml) |
 | Microsoft.Token | Token |
@@ -181,9 +181,14 @@ ms.locfileid: "96185856"
 | Microsoft.WindowsDefenderATP | [Microsoft Defender 進階威脅防護](../../security-center/security-center-wdatp.md) |
 | Microsoft.WindowsESU | 延伸安全性更新 |
 | Microsoft.WindowsIoT | [Windows 10 IoT 核心版服務](/windows-hardware/manufacture/iot/iotcoreservicesoverview) |
-| WorkloadMonitor<sup>1</sup> | [Azure 監視器](../../azure-monitor/index.yml) |
+| Microsoft.WorkloadMonitor | [Azure 監視器](../../azure-monitor/index.yml) |
 
-預設註冊<sup>1</sup>
+## <a name="registration"></a>註冊
+
+以上標示為 **已註冊** 的資源提供者預設會針對您的訂用帳戶註冊。 若要使用其他資源提供者，您必須 [註冊它們](resource-providers-and-types.md)。 不過，當您採取特定動作時，許多資源提供者都會註冊給您。 例如，如果您透過入口網站建立資源，入口網站會自動註冊所需的任何未註冊資源提供者。 透過 [Azure Resource Manager 範本](../templates/overview.md)部署資源時，也會註冊任何必要的資源提供者。
+
+> [!IMPORTANT]
+> 當您準備好要使用資源提供者時，請只註冊資源提供者。 註冊步驟可讓您在訂用帳戶內維持最低許可權。 惡意使用者無法使用未註冊的資源提供者。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: 8bce19e384e600e95b8306dcbba38652b4432bc9
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 90af33a01450002c7d36a4ab4cf4a3da647068c5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340524"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444573"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>針對 Azure HPC Cache 使用客戶管理的加密金鑰
 
@@ -20,7 +20,7 @@ ms.locfileid: "92340524"
 > [!NOTE]
 > 所有儲存在 Azure 中的資料（包括在快取磁片上）預設會使用 Microsoft 管理的金鑰進行靜態加密。 如果您想要管理用來加密資料的金鑰，您只需要遵循本文中的步驟。
 
-即使您為快取磁片新增客戶金鑰，Azure HPC Cache 也會在保存您快取資料的受控磁片上受到 [VM 主機加密](../virtual-machines/linux/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data) 的保護。 新增客戶管理的金鑰進行雙重加密，為具有高安全性需求的客戶提供額外的安全性層級。 如需詳細資料，請參閱 [Azure 磁片儲存體的伺服器端加密](../virtual-machines/linux/disk-encryption.md) 。
+即使您為快取磁片新增客戶金鑰，Azure HPC Cache 也會在保存您快取資料的受控磁片上受到 [VM 主機加密](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data) 的保護。 新增客戶管理的金鑰進行雙重加密，為具有高安全性需求的客戶提供額外的安全性層級。 如需詳細資料，請參閱 [Azure 磁片儲存體的伺服器端加密](../virtual-machines/disk-encryption.md) 。
 
 這項功能僅適用于一些可用 Azure HPC Cache 的 Azure 區域。 請參閱 [區域可用性](hpc-cache-overview.md#region-availability) 清單以取得詳細資料。
 
@@ -43,10 +43,10 @@ Key vault 屬性：
 * **訂** 用帳戶-使用用於快取的相同訂用帳戶。
 * **區域** -金鑰保存庫必須位於與 Azure HPC Cache 相同的區域中。
 * **定價層** -標準層足以搭配 Azure HPC Cache 使用。
-* 虛**刪除**-Azure HPC Cache 將會啟用虛刪除（如果尚未在金鑰保存庫上設定）。
+* 虛 **刪除**-Azure HPC Cache 將會啟用虛刪除（如果尚未在金鑰保存庫上設定）。
 * **清除保護** -必須啟用清除保護。
 * **存取原則** -預設設定已足夠。
-* **Network connectivity**無論您選擇的端點設定為何，Azure HPC Cache 都必須能夠存取金鑰保存庫。
+* **Network connectivity** 無論您選擇的端點設定為何，Azure HPC Cache 都必須能夠存取金鑰保存庫。
 
 索引鍵屬性：
 
@@ -109,7 +109,7 @@ Key vault 存取權限：
 > [!NOTE]
 > 建立快取之後，您必須在90分鐘內授權加密。 如果您未完成此步驟，快取將會超時且失敗。 無法重新建立失敗的快取，無法修正。
 
-快取會顯示 **等待金鑰**的狀態。 按一下頁面頂端的 [ **啟用加密** ] 按鈕，以授權快取存取指定的金鑰保存庫。
+快取會顯示 **等待金鑰** 的狀態。 按一下頁面頂端的 [ **啟用加密** ] 按鈕，以授權快取存取指定的金鑰保存庫。
 
 ![入口網站中快取總覽頁面的螢幕擷取畫面，其中顯示 [啟用加密] 按鈕 (頂端資料列) 和狀態：等候金鑰](media/waiting-for-key.png)
 
@@ -144,7 +144,7 @@ Key vault 存取權限：
 這些文章會詳細說明如何使用 Azure Key Vault 和客戶管理的金鑰來加密 Azure 中的資料：
 
 * [Azure 儲存體加密總覽](../storage/common/storage-service-encryption.md)
-* 使用[客戶管理的金鑰進行磁片加密](../virtual-machines/linux/disk-encryption.md#customer-managed-keys)-搭配受控磁片使用 Azure Key Vault 的檔，這是類似于 Azure HPC Cache 的案例
+* 使用[客戶管理的金鑰進行磁片加密](../virtual-machines/disk-encryption.md#customer-managed-keys)-搭配受控磁片使用 Azure Key Vault 的檔，這是類似于 Azure HPC Cache 的案例
 
 ## <a name="next-steps"></a>後續步驟
 

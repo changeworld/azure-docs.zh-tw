@@ -3,12 +3,12 @@ title: 範本中的使用者定義函數
 description: 描述如何在 Azure Resource Manager 範本中定義和使用使用者定義函數 (ARM 範本) 。
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: c0d62abb5362d51a77db872c11416b04dcfb3f97
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 12199aca788438e4558ed2c607b866f0dc723e2a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353471"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436958"
 ---
 # <a name="user-defined-functions-in-arm-template"></a>ARM 範本中的使用者定義函數
 
@@ -103,8 +103,7 @@ ms.locfileid: "96353471"
 * 函數無法使用 [參考](template-functions-resource.md#reference) 函式或任何 [清單](template-functions-resource.md#list) 函數。
 * 函式的參數不能有預設值。
 
-
 ## <a name="next-steps"></a>後續步驟
 
-* 若要瞭解使用者定義函數的可用屬性，請參閱 [瞭解 Azure Resource Manager 範本的結構和語法](template-syntax.md)。
-* 如需可用範本函式的清單，請參閱 [Azure Resource Manager 範本函數](template-functions.md)。
+* 若要深入瞭解使用者定義函數的可用屬性，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
+* 如需可用範本函式的清單，請參閱 [ARM 範本](template-functions.md)函式。

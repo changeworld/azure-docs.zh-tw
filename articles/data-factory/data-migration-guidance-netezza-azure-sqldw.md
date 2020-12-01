@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
-ms.openlocfilehash: 8192b1351d54acbb553bacb8b36474cba271cb05
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 89e4b1c7d7499a0d6e38a0a662bc610b3914bdfa
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638069"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444895"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>使用 Azure Data Factory 將資料從內部部署 Netezza 伺服器遷移至 Azure 
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Data Factory 提供高效能、穩固且符合成本效益的機制，可將大規模的資料從內部部署 Netezza 伺服器遷移至 Azure 儲存體帳戶，或 Azure Synapse Analytics (先前的 SQL 資料倉儲) 資料庫中。 
+Azure Data Factory 提供高效能、穩固且符合成本效益的機制，可將大規模的資料從內部部署 Netezza 伺服器遷移至 Azure 儲存體帳戶或 Azure Synapse Analytics 資料庫。 
 
 本文為資料工程師和開發人員提供下列資訊：
 

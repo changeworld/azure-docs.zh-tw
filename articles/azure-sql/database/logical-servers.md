@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 38133a63d65e45a4d1c83e9752dcaa01a86da33e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e0736e58983d4c28b8f2f4a20241cd36ac84fdfa
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782887"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445391"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>什麼是 Azure SQL Database 和 Azure Synapse 中的邏輯 SQL server？
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "92782887"
 
 此伺服器不同于您可能在內部部署環境中熟悉的 SQL Server 實例。 具體而言，與管理資料庫或資料倉儲資料庫的伺服器相關的資料庫或資料倉儲資料庫的位置並無任何保證。 此外，Azure SQL Database 和 Azure Synapse 都不會公開任何實例層級的存取或功能。 相反地，受控實例中的實例資料庫實際上是以您熟悉內部部署或虛擬機器世界 SQL Server 的相同方式存在。
 
-當您建立伺服器時，您會提供伺服器登入帳戶和密碼，該帳戶和密碼具有該伺服器上 master 資料庫的系統管理許可權，以及在該伺服器上建立之所有資料庫的系統管理許可權。 這個初始帳戶是 SQL 登入帳戶。 Azure SQL Database 和 Synapse Analytics 支援 SQL 驗證和 Azure Active Directory 驗證以進行驗證。 如需登入和驗證的相關資訊，請參閱[管理 Azure SQL Database 的資料庫和登入](logins-create-manage.md)。 不支援 Windows 驗證。
+當您建立伺服器時，您會提供伺服器登入帳戶和密碼，該帳戶和密碼具有該伺服器上 master 資料庫的系統管理許可權，以及在該伺服器上建立之所有資料庫的系統管理許可權。 這個初始帳戶是 SQL 登入帳戶。 Azure SQL Database 和 Azure Synapse Analytics 支援 SQL 驗證和 Azure Active Directory 驗證以進行驗證。 如需登入和驗證的相關資訊，請參閱[管理 Azure SQL Database 的資料庫和登入](logins-create-manage.md)。 不支援 Windows 驗證。
 
 SQL Database 和 Azure Synapse 中的伺服器：
 
@@ -70,7 +70,7 @@ SQL Database 和 Azure Synapse 中的伺服器：
 
 若要管理現有的伺服器，請使用多種方法（例如從特定的資料庫頁面、[ **SQL server** ] 頁面或 [ **所有資源** ] 頁面）來流覽至伺服器。
 
-若要管理現有的資料庫，請瀏覽至 [SQL 資料庫]  頁面，按一下您想要管理的資料庫。 下列螢幕擷取畫面顯示如何從資料庫的 [概觀]  頁面，開始設定資料庫的伺服器層級防火牆。
+若要管理現有的資料庫，請瀏覽至 [SQL 資料庫] 頁面，按一下您想要管理的資料庫。 下列螢幕擷取畫面顯示如何從資料庫的 [概觀] 頁面，開始設定資料庫的伺服器層級防火牆。
 
    ![伺服器防火牆規則](./media/single-database-create-quickstart/server-firewall-rule.png)
 
@@ -145,7 +145,7 @@ SQL Database 和 Azure Synapse 中的伺服器：
 > [!IMPORTANT]
 > 您無法使用 Transact-SQL 建立或刪除伺服器。
 
-| Command | 描述 |
+| 命令 | 描述 |
 | --- | --- |
 |[CREATE DATABASE (Azure SQL Database)](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) | 在 Azure SQL Database 中建立新的資料庫。 您必須連接到 master 資料庫才能建立新的資料庫。|
 |[ (Azure Synapse) 建立資料庫 ](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest) | 在 Azure Synapse 中建立新的資料倉儲資料庫。 您必須連接到 master 資料庫才能建立新的資料庫。|
@@ -171,7 +171,7 @@ SQL Database 和 Azure Synapse 中的伺服器：
 
 若要建立和管理伺服器、資料庫和防火牆，請使用這些 REST API 要求。
 
-| Command | 描述 |
+| 命令 | 描述 |
 | --- | --- |
 |[伺服器-建立或更新](/rest/api/sql/servers/createorupdate)|建立或更新新的伺服器。|
 |[伺服器 - 刪除](/rest/api/sql/servers/delete)|刪除伺服器。|

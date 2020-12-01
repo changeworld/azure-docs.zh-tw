@@ -3,16 +3,16 @@ title: Azure 實驗室服務的範例課程類型 | Microsoft Docs
 description: 提供一些您可以使用 Azure 實驗室服務為其設定實驗室的課程類型。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 1c2caac35125c3f69c2257750bac417971af5dbd
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 7ebc89c040be732c230f0c3f54f68fb91466eb68
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490979"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436397"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>課程類型概觀 - Azure 實驗室服務
 
-Azure 實驗室服務可讓您在雲端中快速設定教室實驗室環境。 本節中的文章提供如何使用 Azure 實驗室服務設定數種課堂實驗室的指引。
+Azure 實驗室服務可讓您在雲端中快速設定教室實驗室環境。 本節中的文章提供如何使用 Azure 實驗室服務設定數種實驗室類型的指導方針。
 
 ## <a name="big-data-analytics"></a>巨量資料分析
 您可以設定 GPU 實驗室，以教授大型資料分析類別。 藉由這種類型的課程，學員將瞭解如何處理大量資料，並套用機器和統計學習演算法來衍生資料見解。 學生的主要目標是瞭解如何使用資料分析工具，例如 Apache Hadoop 的開放原始碼軟體套件，它提供儲存、管理及處理大量資料的工具。 

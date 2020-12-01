@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: f82c3b894a54dc08b0f6dd73108d6f4b2c17f8d6
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: e8388832985ca3b27baea008ff1a9bdd5df06964
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359828"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445112"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>建立 Azure Machine Learning 資料集
 
@@ -37,7 +37,7 @@ ms.locfileid: "93359828"
 
 * 共用資料並與其他使用者共同作業。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要建立及使用資料集，您需要：
 
@@ -124,7 +124,7 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 若要在工作區中重複使用並共用實驗中的資料集，請 [註冊您的資料集](#register-datasets)。 
 
 > [!TIP] 
-> 從本機目錄上傳檔案，並使用公用預覽方法在單一方法中建立 FileDataset， [upload_directory ( # B1 ](/python/api/azureml-core/azureml.data.filedataset?preserve-view=true&view=azure-ml-py#methods)。 此方法是 [實驗](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) 性預覽功能，而且可能隨時變更。 
+> 從本機目錄上傳檔案，並使用公用預覽方法在單一方法中建立 FileDataset， [upload_directory ( # B1 ](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?preserve-view=true&view=azure-ml-py#upload-directory-src-dir--target--pattern-none--overwrite-false--show-progress-true-)。 此方法是 [實驗](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) 性預覽功能，而且可能隨時變更。 
 > 
 >  此方法會將資料上傳至您的基礎儲存體，因此會產生儲存體成本。 
 ### <a name="create-a-tabulardataset"></a>建立 TabularDataset
@@ -169,7 +169,7 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| (索引) |PassengerId|存活的|Pclass|Name|性|年齡|SibSp|Parch|票證|費用|小屋|著手
+| (索引) |PassengerId|存活的|Pclass|名稱|性|年齡|SibSp|Parch|票證|費用|小屋|著手
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|False|3|Braund，Owen Harris|male|22.0|1|0|A/5 21171|7.2500||S
 1|2|True|1|Cumings，Mrs John Bradley (Florence Briggs Th .。。|female|38.0|1|0|電腦17599|71.2833|C85|C
@@ -208,7 +208,7 @@ dataset = Dataset.Tabular.from_delimited_files(path = [(datastore, ('data/prepar
 ```
 
 > [!TIP]
-> 使用具有公用預覽方法和的單一方法，從記憶體中的 spark 或 pandas 資料框架建立和註冊 TabularDataset [`register_spark_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#methods) [`register_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#methods) 。 這些註冊方法是 [實驗](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) 性預覽功能，而且可能隨時變更。 
+> 使用具有公用預覽方法和的單一方法，從記憶體中的 spark 或 pandas 資料框架建立和註冊 TabularDataset [`register_spark_dataframe()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?preserve-view=true&view=azure-ml-py#methods) [`register_pandas_dataframe()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?preserve-view=true&view=azure-ml-py#methods) 。 這些註冊方法是 [實驗](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) 性預覽功能，而且可能隨時變更。 
 > 
 >  這些方法會將資料上傳至您的基礎儲存體，因此會產生儲存體成本。 
 

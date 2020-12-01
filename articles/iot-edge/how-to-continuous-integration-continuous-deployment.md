@@ -1,19 +1,19 @@
 ---
 title: 持續整合和持續部署到 Azure IoT Edge 裝置-Azure IoT Edge
 description: 使用 YAML-Azure IoT Edge 搭配 Azure DevOps 來設定持續整合和持續部署 Azure Pipelines
-author: shizn
+author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 57031d4ccdfdba73b8b36c8dc943280a8280ffcc
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 444ab8ccfe5a8441a4fd7d280e33d8e929d9387d
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048520"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435884"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices"></a>持續整合和持續部署到 Azure IoT Edge 裝置
 
@@ -32,16 +32,16 @@ ms.locfileid: "92048520"
 
 除非另有說明，否則本文中的程式不會探索透過工作參數提供的所有功能。 如需詳細資訊，請參閱下列：
 
-* [工作版本](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-versions)
+* [工作版本](/azure/devops/pipelines/process/tasks?tabs=yaml#task-versions)
 * **Advanced** -如果適用，請指定您不想要建立的模組。
-* [控制項選項](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-control-options)
-* [環境變數](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#environment-variables)
-* [輸出變數](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#use-output-variables-from-tasks)
+* [控制項選項](/azure/devops/pipelines/process/tasks?tabs=yaml#task-control-options)
+* [環境變數](/azure/devops/pipelines/process/variables?tabs=yaml#environment-variables)
+* [輸出變數](/azure/devops/pipelines/process/variables?tabs=yaml#use-output-variables-from-tasks)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-* Azure Repos 存放庫。 如果您沒有存放庫，可以[在專案中建立新的 Git 存放庫](/azure/devops/repos/git/create-new-repo?tabs=new-nav&view=vsts) \(英文\)。 針對本文，我們建立了名為 **IoTEdgeRepo** 的存放庫。
-* 已認可並推送至您存放庫的 IoT Edge 解決方案。 若要建立用於測試本文的新範例解決方案，請遵循[在 Visual Studio Code 中針對模組進行開發與偵錯](how-to-vs-code-develop-module.md)，或[在 Visual Studio Code 中對 C# 模組進行開發與偵錯](./how-to-visual-studio-develop-module.md)中的步驟。 在本文中，我們在存放庫中建立了名為 **IoTEdgeSolution**的解決方案，其中包含名為 **filtermodule**的模組程式碼。
+* Azure Repos 存放庫。 如果您沒有存放庫，可以[在專案中建立新的 Git 存放庫](/azure/devops/repos/git/create-new-repo) \(英文\)。 針對本文，我們建立了名為 **IoTEdgeRepo** 的存放庫。
+* 已認可並推送至您存放庫的 IoT Edge 解決方案。 若要建立用於測試本文的新範例解決方案，請遵循[在 Visual Studio Code 中針對模組進行開發與偵錯](how-to-vs-code-develop-module.md)，或[在 Visual Studio Code 中對 C# 模組進行開發與偵錯](./how-to-visual-studio-develop-module.md)中的步驟。 在本文中，我們在存放庫中建立了名為 **IoTEdgeSolution** 的解決方案，其中包含名為 **filtermodule** 的模組程式碼。
 
    針對本文，您只需要在 Visual Studio Code 或 Visual Studio 中由 IoT Edge 範本所建立的解決方案資料夾。 在進行之前，您並不需要針對此程式碼進行建置、推送、部署或偵錯。 您將在 Azure Pipelines 中設定這些處理常式。
 
@@ -50,7 +50,7 @@ ms.locfileid: "92048520"
 * 可對它推送模組映像的容器登錄。 您可以使用 [Azure Container Registry](../container-registry/index.yml) 或協力廠商登錄。
 * 使用中的 Azure [IoT 中樞](../iot-hub/iot-hub-create-through-portal.md) ，至少有兩個 IoT Edge 裝置可用來測試個別的測試和生產部署階段。 您可以遵循快速入門文章來在 [Linux](quickstart-linux.md) 或 [Windows](quickstart.md) 上建立 IoT Edge 裝置
 
-如需使用 Azure Repos 的詳細資訊，請參閱 [Visual Studio 和 Azure Repos 共用您的程式碼](/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts)
+如需使用 Azure Repos 的詳細資訊，請參閱 [Visual Studio 和 Azure Repos 共用您的程式碼](/azure/devops/repos/git/share-your-code-in-git-vs)
 
 ## <a name="create-a-build-pipeline-for-continuous-integration"></a>建立持續整合的組建管線
 
@@ -64,7 +64,7 @@ ms.locfileid: "92048520"
 
     ![使用 [新增管線] 按鈕建立新的組建管線](./media/how-to-continuous-integration-continuous-deployment/add-new-pipeline.png)
 
-3. 在 [**您的程式碼在哪裡？** ] 頁面上，選取 [ **Azure Repos Git `YAML` **]。 如果您想要使用傳統編輯器來建立專案的組建管線，請參閱 [傳統編輯器指南](how-to-continuous-integration-continuous-deployment-classic.md)。
+3. 在 [**您的程式碼在哪裡？** ] 頁面上，選取 [ **Azure Repos Git `YAML`**]。 如果您想要使用傳統編輯器來建立專案的組建管線，請參閱 [傳統編輯器指南](how-to-continuous-integration-continuous-deployment-classic.md)。
 
 4. 選取您要建立管線的儲存機制。
 
@@ -76,7 +76,7 @@ ms.locfileid: "92048520"
 
 6. 在 [ **審核您的管線 YAML** ] 頁面上，您可以按一下預設名稱 `azure-pipelines.yml` 來重新命名管線的設定檔。
 
-   選取 [**顯示**小幫手] **Tasks**以開啟 [工作] 調色板。
+   選取 [**顯示** 小幫手] **Tasks** 以開啟 [工作] 調色板。
 
     ![選取 [顯示小幫手] 以開啟 [工作] 選擇區](./media/how-to-continuous-integration-continuous-deployment/show-assistant.png)
 
@@ -106,25 +106,25 @@ ms.locfileid: "92048520"
        | 檔案上的 .template.js | 提供存放庫中的 **deployment.template.js** 檔案路徑，其中包含您的 IoT Edge 解決方案。 |
        | 預設平臺 | 根據您的目標 IoT Edge 裝置，為您的模組選取適當的作業系統。 |
 
-   * 工作：**複製**檔案
+   * 工作：**複製** 檔案
 
        | 參數 | 描述 |
        | --- | --- |
        | 來源資料夾 | 要複製的來源資料夾。 空白是存放庫的根目錄。 如果檔案不在存放庫中，請使用變數。 範例： `$(agent.builddirectory)`.
        | 目錄 | 新增兩行： `deployment.template.json` 和 `**/module.json` 。 |
-       | 目的檔案夾 | 指定變數 `$(Build.ArtifactStagingDirectory)` 。 請參閱 [組建變數](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables) 以瞭解描述。 |
+       | 目的檔案夾 | 指定變數 `$(Build.ArtifactStagingDirectory)` 。 請參閱 [組建變數](/azure/devops/pipelines/build/variables?tabs=yaml#build-variables) 以瞭解描述。 |
 
-   * 工作：**發行組建**成品
+   * 工作：**發行組建** 成品
 
        | 參數 | 描述 |
        | --- | --- |
-       | 要發佈的路徑 | 指定變數 `$(Build.ArtifactStagingDirectory)` 。 請參閱 [組建變數](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables) 以瞭解描述。 |
+       | 要發佈的路徑 | 指定變數 `$(Build.ArtifactStagingDirectory)` 。 請參閱 [組建變數](/azure/devops/pipelines/build/variables?tabs=yaml#build-variables) 以瞭解描述。 |
        | 成品名稱 | 指定預設名稱： `drop` |
        | 成品發行位置 | 使用預設位置： `Azure Pipelines` |
 
 9. 從右上方的 [**儲存並執行**] 下拉式清單中選取 [**儲存**]。
 
-10. 針對您的 YAML 管線，預設會啟用持續整合的觸發程式。 如果您想要編輯這些設定，請選取您的管線，然後按一下右上方的 [ **編輯** ]。 在右上方的 [**執行**] 按鈕旁邊選取 [**其他動作**]，然後移至 [**觸發**程式]。 **持續整合** 會在您的管線名稱下顯示為已啟用。 如果您想要查看觸發程式的詳細資料，請核取 [ **從這裡覆寫 YAML 持續整合觸發** 程式] 方塊。
+10. 針對您的 YAML 管線，預設會啟用持續整合的觸發程式。 如果您想要編輯這些設定，請選取您的管線，然後按一下右上方的 [ **編輯** ]。 在右上方的 [**執行**] 按鈕旁邊選取 [**其他動作**]，然後移至 [**觸發** 程式]。 **持續整合** 會在您的管線名稱下顯示為已啟用。 如果您想要查看觸發程式的詳細資料，請核取 [ **從這裡覆寫 YAML 持續整合觸發** 程式] 方塊。
 
     ![若要檢查管線的觸發程式設定，請在 [其他動作] 下查看觸發程式](./media/how-to-continuous-integration-continuous-deployment/check-trigger-settings.png)
 

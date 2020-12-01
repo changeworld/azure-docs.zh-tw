@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 3728fdd07172f2402ddb1dc7434ddb1993b984b1
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e9e630f4199e0bfb67509f008f403c0a7a490887
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95999870"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436686"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商業 marketplace 夥伴和客戶使用方式屬性
 
@@ -32,7 +32,7 @@ ms.locfileid: "95999870"
 >
 >- 客戶使用狀況歸因適用於新的部署，「不」支援標記已部署的現有資源。
 >
->- 發佈至 Azure Marketplace 的 [Azure 應用程式](./partner-center-portal/create-new-azure-apps-offer.md)供應項目需要客戶使用狀況歸因。
+>- 發佈至 Azure Marketplace 的 [Azure 應用程式](./create-new-azure-apps-offer.md)供應項目需要客戶使用狀況歸因。
 >
 >- 並非所有 Azure 服務都與客戶使用方式屬性相容。 Azure Kubernetes Services (AKS) 和 VM 擴展集目前有已知的問題，這些問題會導致使用中的報告。
 
@@ -64,7 +64,7 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立�
 將 GUID 新增至範本或使用者代理程式，並在合作夥伴中心註冊 GUID 之後，就會追蹤未來的部署。
 
 > [!NOTE]
-> 如果您要透過合作夥伴中心將 [Azure 應用程式](./partner-center-portal/create-new-azure-apps-offer.md) 供應專案發佈到 Azure Marketplace，在範本內使用的任何新 GUID 都會在上傳範本時自動註冊到您的合作夥伴中心設定檔。  
+> 如果您要透過合作夥伴中心將 [Azure 應用程式](./create-new-azure-apps-offer.md) 供應專案發佈到 Azure Marketplace，在範本內使用的任何新 GUID 都會在上傳範本時自動註冊到您的合作夥伴中心設定檔。  
 
 1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard)。
 
@@ -90,7 +90,7 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立�
 > [!NOTE]
 > 如需有關建立及發佈「解決方案範本」的詳細資訊，請參閱
 > * [建立及部署第一個 Resource Manager 範本](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
->* [Azure 應用程式供應項目](./partner-center-portal/create-new-azure-apps-offer.md)。
+>* [Azure 應用程式供應項目](./create-new-azure-apps-offer.md)。
 >* 影片： [為 Azure Marketplace 建立解決方案範本和受控應用程式](https://channel9.msdn.com/Events/Build/2018/BRK3603)。
 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: e80f7d26fb7ab598651d08b4c1b6478b2ae75e3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7405824d2477d2d39c45a56ae545e58a090c321
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87563053"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436601"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>將 Azure Sentinel 連線至 AWS CloudTrail
 
@@ -40,7 +40,7 @@ ms.locfileid: "87563053"
 
 1. 在 Azure Sentinel 中，選取 [ **資料連線器** ]，然後選取資料表中的 **Amazon Web Services** 行，然後在右側的 [AWS] 窗格中，按一下 [ **開啟連接器] 頁面**。
 
-1. **使用下列**步驟，依照設定下的指示進行。
+1. **使用下列** 步驟，依照設定下的指示進行。
  
 1.  在 Amazon Web Services 主控台的 [ **安全性、身分識別 & 合規性**] 下，選取 [ **IAM**]。
 
@@ -80,11 +80,11 @@ ms.locfileid: "87563053"
 
 1. 若要在 Log Analytics 中針對 AWS 事件使用相關的架構，請搜尋 **AWSCloudTrail**。
 
-
+    > [!IMPORTANT]
+    > 從2020年12月1日起， **AwsRequestId** 欄位已被 **AwsRequestId_** 欄位取代 (請注意新增的底線) 。 舊 **AwsRequestId** 欄位中的資料將會保留到客戶指定的資料保留期間結束。
 
 ## <a name="next-steps"></a>後續步驟
 在本檔中，您已瞭解如何將 AWS CloudTrail 連線至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。
 - [使用活頁簿](tutorial-monitor-your-data.md)監視資料。
-

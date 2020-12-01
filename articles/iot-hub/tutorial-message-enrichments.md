@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 030a69c7eca70c081a1d9392bfa527f3386d7c2b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 60bd416cf330676485f83720be4365b56c56baaf
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150604"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436703"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>教學課程：使用 Azure IoT 中樞 message 擴充
 
@@ -38,13 +38,13 @@ ms.locfileid: "92150604"
 
 ## <a name="prerequisites"></a>必要條件
 
-* 您必須擁有 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 安裝 [Visual Studio](https://www.visualstudio.com/)。
+- 您必須擁有 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 請確定您的防火牆已開啟連接埠 8883。 本教學課程中的裝置範例會使用 MQTT 通訊協定，其會透過連接埠 8883 進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+- 安裝 [Visual Studio](https://www.visualstudio.com/)。
 
+- 請確定您的防火牆已開啟連接埠 8883。 本教學課程中的裝置範例會使用 MQTT 通訊協定，其會透過連接埠 8883 進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="retrieve-the-iot-c-samples-repository"></a>取出 IoT c # 範例儲存機制
 
@@ -73,11 +73,11 @@ ms.locfileid: "92150604"
 
 有幾個資源名稱必須是全域唯一的，例如 IoT 中樞名稱和儲存體帳戶名稱。 為了更輕鬆地執行腳本，這些資源名稱會以隨機的英數位元值（稱為 *randomValue*）附加。 隨機值會在腳本頂端產生一次。 它會在腳本中視需要附加到資源名稱。 如果您不想要讓值成為隨機值，您可以將它設定為空字串或特定值。
 
-如果您尚未這麼做，請開啟 Azure [Cloud Shell 視窗](https://shell.azure.com) ，並確定它已設定為 Bash。 在解壓縮的存放庫中開啟腳本，選取 Ctrl + A 選取所有檔案，然後選取 Ctrl + C 來複製它。 或者，您可以複製下列 CLI 腳本，或直接在 Cloud Shell 中開啟它。 在 [Cloud Shell] 視窗中，以滑鼠右鍵按一下命令列並選取 [ **貼**上]，將腳本貼上。 腳本會一次執行一個語句。 腳本停止執行之後，請選取 **Enter** 以確定它執行最後一個命令。 下列程式碼區塊會顯示所使用的腳本，以及說明其執行內容的批註。
+如果您尚未這麼做，請開啟 Azure [Cloud Shell 視窗](https://shell.azure.com) ，並確定它已設定為 Bash。 在解壓縮的存放庫中開啟腳本，選取 Ctrl + A 選取所有檔案，然後選取 Ctrl + C 來複製它。 或者，您可以複製下列 CLI 腳本，或直接在 Cloud Shell 中開啟它。 在 [Cloud Shell] 視窗中，以滑鼠右鍵按一下命令列並選取 [ **貼** 上]，將腳本貼上。 腳本會一次執行一個語句。 腳本停止執行之後，請選取 **Enter** 以確定它執行最後一個命令。 下列程式碼區塊會顯示所使用的腳本，以及說明其執行內容的批註。
 
-以下是腳本所建立的資源。 擴充*表示資源*適用于具有擴充的訊息。 *原始* 表示資源適用于未擴充的訊息。
+以下是腳本所建立的資源。 擴充 *表示資源* 適用于具有擴充的訊息。 *原始* 表示資源適用于未擴充的訊息。
 
-| Name | 值 |
+| 名稱 | 值 |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | 容器名稱 | 原始  |
@@ -279,7 +279,7 @@ az iot hub route create \
 ## <a name="create-and-configure-by-using-a-resource-manager-template"></a>使用 Resource Manager 範本來建立和設定
 您可以使用 Resource Manager 範本來建立和設定資源、訊息路由和訊息擴充。
 
-1. 登入 Azure 入口網站。 選取 [ **+ 建立資源** ] 以顯示搜尋方塊。 輸入 *範本部署*並進行搜尋。 在結果窗格中，選取 [ **使用自訂範本) 部署範本部署 (**]。
+1. 登入 Azure 入口網站。 選取 [ **+ 建立資源** ] 以顯示搜尋方塊。 輸入 *範本部署* 並進行搜尋。 在結果窗格中，選取 [ **使用自訂範本) 部署範本部署 (**]。
 
    ![Azure 入口網站中的範本部署](./media/tutorial-message-enrichments/template-select-deployment.png)
 
@@ -287,7 +287,7 @@ az iot hub route create \
 
 1. 在 [ **自訂部署** ] 窗格中，選取 **[在編輯器中建立您自己的範本**]。
 
-1. 在 [ **編輯範本** ] 窗格中，選取 [ **載入**檔案]。 Windows 檔案總管隨即出現。 在 **/iot-hub/Tutorials/Routing/SimulatedDevice/resources**的解壓縮存放庫檔案中，找出檔案**template_messageenrichments.js** 。 
+1. 在 [ **編輯範本** ] 窗格中，選取 [ **載入** 檔案]。 Windows 檔案總管隨即出現。 在 **/iot-hub/Tutorials/Routing/SimulatedDevice/resources** 的解壓縮存放庫檔案中，找出檔案 **template_messageenrichments.js** 。 
 
    ![從本機電腦選取範本](./media/tutorial-message-enrichments/template-select.png)
 
@@ -295,9 +295,9 @@ az iot hub route create \
 
    此範本設定為使用全域唯一的 IoT 中樞名稱和儲存體帳戶名稱，方法是在預設名稱的結尾加上隨機值，因此您可以使用該範本，而不需要對其進行任何變更。
 
-   以下是載入範本所建立的資源。 擴充**表示資源**適用于具有擴充的訊息。 **原始** 表示資源適用于未擴充的訊息。 這些是 Azure CLI 腳本中使用的相同值。
+   以下是載入範本所建立的資源。 擴充 **表示資源** 適用于具有擴充的訊息。 **原始** 表示資源適用于未擴充的訊息。 這些是 Azure CLI 腳本中使用的相同值。
 
-   | Name | 值 |
+   | 名稱 | 值 |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | 容器名稱 | 原始  |
@@ -356,9 +356,9 @@ az iot hub route create \
 
 傳送數個儲存訊息之後，請查看資料。
 
-1. 選取 **資源群組**。 尋找您的資源群組、 **ContosoResourcesMsgEn**，然後選取它。
+1. 選取 [資源群組]。 尋找您的資源群組、 **ContosoResourcesMsgEn**，然後選取它。
 
-2. 選取您的儲存體帳戶，也就是 **contosostorage**。 然後選取左窗格中的 [ **儲存體總管 (預覽]) ** 。
+2. 選取您的儲存體帳戶，也就是 **contosostorage**。 然後選取左窗格中的 [ **儲存體總管 (預覽])** 。
 
    ![選取儲存體總管](./media/tutorial-message-enrichments/select-storage-explorer.png)
 

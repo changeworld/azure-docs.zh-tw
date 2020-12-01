@@ -6,14 +6,14 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 11/30/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 936e98b3efa27f2d0a85c373ccae0ab223f4fd95
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 7d50185169b22a136ce81bd3aebae235cf49498b
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340901"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436618"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>安全存取 Azure Cosmos DB 中的資料
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -111,7 +111,7 @@ User user = await database.CreateUserAsync("User 1");
 > [!NOTE]
 > 每個 Cosmos DB 使用者都有一個 System.io.stream.readasync ( # A1 方法，可用來取得與使用者相關聯的 [許可權](#permissions) 清單。
 
-## <a name="permissions"></a>權限<a id="permissions"></a>
+## <a name="permissions"></a>許可權<a id="permissions"></a>
 
 許可權資源會與使用者建立關聯，並在容器和分割區索引鍵層級指派。 每位使用者可能包含零個或更多的許可權。 許可權資源可讓您存取使用者嘗試存取特定資料分割索引鍵中的特定容器或資料時所需的安全性權杖。 權限資源可能提供兩種可用的存取等級：
 
@@ -160,16 +160,16 @@ CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrR
 1. 開啟 Azure 入口網站，選取您的 Azure Cosmos DB 帳戶。
 2. 按一下 [存取控制 (IAM)] 索引標籤，然後按一下 [+ 新增角色指派]。
 3. 在 [新增角色指派] 窗格的 [角色] 方塊中，選取 [Cosmos DB 帳戶讀者角色]。
-4. 在 [ **指派存取權** ] 方塊中，選取 [ **Azure AD 使用者、群組或應用程式** ]。
+4. 在 [ **指派存取權**] 方塊中，選取 [ **Azure AD 使用者、群組或應用程式**]。
 5. 選取目錄中您要為其授與存取權的使用者、群組或應用程式。  您可以依顯示名稱、電子郵件地址或物件識別碼來搜尋目錄。
     選取的使用者、群組或應用程式會出現在選取的成員清單中。
-6. 按一下 [檔案]  。
+6. 按一下 [儲存]。
 
 實體現在已可讀取 Azure Cosmos DB 資源。
 
 ## <a name="delete-or-export-user-data"></a>刪除或匯出使用者資料
 
-Azure Cosmos DB 可讓您搜尋、選取、修改和刪除資料庫或集合中的任何個人資料。 Azure Cosmos DB 會提供可尋找和刪除個人資料的 API，不過，您必須負責使用 API，並定義清除個人資料時所需的邏輯。 每個多模型 API (SQL、MongoDB、Gremlin、Cassandra、資料表) 皆會提供不同的語言 SDK，其中包含搜尋和刪除個人資料的方法。 您也可以啟用[存留時間 (TTL)](time-to-live.md) 功能，在指定期間後自動刪除資料，完全不會產生任何額外的費用。
+做為資料庫服務，Azure Cosmos DB 可讓您搜尋、選取、修改和刪除位於資料庫或容器中的任何資料。 不過，您必須負責使用提供的 Api，並視需要定義尋找和清除任何個人資料所需的邏輯。 每個多模型 API (SQL、MongoDB、Gremlin、Cassandra、Table) 提供不同的語言 Sdk，其中包含根據自訂述詞來搜尋和刪除資料的方法。 您也可以啟用[存留時間 (TTL)](time-to-live.md) 功能，在指定期間後自動刪除資料，完全不會產生任何額外的費用。
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 

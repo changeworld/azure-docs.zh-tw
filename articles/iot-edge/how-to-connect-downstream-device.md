@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 78600b7b57a7c30fc609434a700f13fa21e079ce
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 35bb17a5cdfcc6aff4a513a594a08283ab1f1305
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019254"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437026"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>將下游裝置連線到 Azure IoT Edge 閘道
 
@@ -100,7 +100,7 @@ sudo update-ca-certificates
 
 下列步驟是如何在 Windows 主機上安裝 CA 憑證的範例。 此範例假設您使用的是必要條件文章中的 **azure-iot-test-only.root.ca.cert.pem** 憑證，而且您已將憑證複製到下游裝置上的位置。
 
-您可以使用 PowerShell 的匯 [入憑證](/powershell/module/pkiclient/import-certificate?view=win10-ps) 以系統管理員身分安裝憑證：
+您可以使用 PowerShell 的匯 [入憑證](/powershell/module/pkiclient/import-certificate) 以系統管理員身分安裝憑證：
 
 ```powershell
 import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorelocation cert:\LocalMachine\root

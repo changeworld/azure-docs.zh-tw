@@ -3,14 +3,14 @@ title: 應用程式設定
 description: 在 LUIS 入口網站中設定您的應用程式和版本設定，例如表達正規化和應用程式隱私權。
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: quickstart
-ms.date: 05/17/2020
-ms.openlocfilehash: 0a07e423b5307934938727cd8ccc475989e04362
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.topic: conceptual
+ms.date: 11/30/2020
+ms.openlocfilehash: aabe05924e781fbab5f92bd620ddcd566365f7e8
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91309620"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436635"
 ---
 # <a name="application-and-version-settings"></a>應用程式和版本設定
 

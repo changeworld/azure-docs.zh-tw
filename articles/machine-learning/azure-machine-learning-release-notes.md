@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 53a30f92adaf25d87897e98834cda2d5f92b874c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 03825e0f091df01b98355dd6789eb5c9cb2897b0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012266"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444543"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning 版本資訊
 
@@ -43,7 +43,7 @@ ms.locfileid: "96012266"
     + 的改進檔， `OutputDatasetConfig.register_on_complete` 包括名稱已存在時所發生的行為。
     + 指定可能與常見環境變數衝突的資料集輸入和輸出名稱，現在會產生警告
     + `grant_workspace_access`註冊資料存放區時的重新用途參數。 將它設定為 `True` ，以從 Machine Learning Studio 存取虛擬網路背後的資料。
-      [深入了解](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
+      [深入了解](./how-to-enable-studio-virtual-network.md)
     + 已調整連結服務 API。 我們不會提供資源識別碼，而是在設定中定義3個不同的參數 sub_id、rg 和名稱。
     + 為了讓客戶能夠自行解決權杖損毀問題，請啟用工作區權杖同步處理成為公用方法。
     + 這種變更可讓您使用空字串做為 script_param 的值
@@ -109,8 +109,8 @@ ms.locfileid: "96012266"
 
 ### <a name="azure-machine-learning-studio-notebooks-experience-october-update"></a>Azure Machine Learning Studio 筆記本體驗 (10 月更新) 
 + **新功能**
-  + [完整的虛擬網路支援](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
-  + [焦點模式](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#focus-mode)
+  + [完整的虛擬網路支援](./how-to-enable-studio-virtual-network.md)
+  + [焦點模式](./how-to-run-jupyter-notebooks.md#focus-mode)
   + 儲存筆記本 Ctrl-S
   + 行號
 

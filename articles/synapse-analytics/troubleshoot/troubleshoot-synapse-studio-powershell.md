@@ -1,5 +1,5 @@
 ---
-title: 針對 Synapse Studio 連線能力進行疑難排解
+title: 針對 Synapse Studio 連線進行疑難排解
 description: 使用 PowerShell 對 Azure Synapse Studio 連線能力進行疑難排解
 author: saveenr
 ms.service: synapse-analytics
@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: e5e433fd857f638c1c13e4545c19e0b6314ee62e
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 5f0dc73877d7742d4fc6a0c5b9bcf0529d475e0a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146501"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445264"
 ---
 # <a name="troubleshoot-synapse-studio-connectivity-with-powershell"></a>使用 PowerShell 對 Synapse Studio 連線能力進行疑難排解
 
-Azure Synapse Studio (預覽版) 相依于一組 Web API 端點，才能正常運作。 當您在下列情況時，本指南將協助您找出連接問題的原因：
+Azure Synapse Studio 相依于一組 Web API 端點，才能正常運作。 當您在下列情況時，本指南將協助您找出連接問題的原因：
 - 設定局域網路 (例如公司防火牆後方的網路，) 以存取 Azure Synapse Studio。
 - 使用 Azure Synapse Studio 遇到連線問題。
 
@@ -57,5 +57,5 @@ Azure Synapse Studio (預覽版) 相依于一組 Web API 端點，才能正常�
  針對失敗的要求，原因會以黃色顯示，例如 `NamedResolutionFailure` 或 `ConnectFailure` 。 這些原因可協助您找出網路環境是否有任何錯誤。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 如果先前的步驟無法協助您解決問題，請 [建立支援票證](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md)。

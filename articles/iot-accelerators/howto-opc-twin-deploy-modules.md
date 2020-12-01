@@ -9,12 +9,12 @@ ms.service: industrial-iot
 ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 075f6f83e5af43cde3886f637a8ee326309e4218
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1c12b1c7fd393227cb22d011f8b88f914cfded59
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015038"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445490"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>從頭開始部署 OPC 對應項模組和相依性
 
@@ -113,11 +113,11 @@ OPC 對應項模組會在 IoT Edge 上執行，並為 OPC 裝置對應項和登�
 
 將模組部署到 Azure IoT Edge 閘道裝置最簡單的方式是透過 Azure 入口網站。  
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 1. 部署 OPC 對應 [項](howto-opc-twin-deploy-dependencies.md) 相依性，並取得產生的檔案 `.env` 。 請注意產生的檔案中已部署的 `hub name` `PCS_IOTHUBREACT_HUB_NAME` 變數 `.env` 。
 
-2. 註冊並啟動 [Linux](../iot-edge/how-to-install-iot-edge-linux.md) 或 [Windows](../iot-edge/how-to-install-iot-edge-windows.md) IoT Edge 閘道，並記下它 `device id` 。
+2. 註冊並啟動 [Linux](../iot-edge/how-to-install-iot-edge.md) 或 [Windows](../iot-edge/how-to-install-iot-edge.md) IoT Edge 閘道，並記下它 `device id` 。
 
 ### <a name="deploy-to-an-edge-device"></a>部署至 edge 裝置
 
@@ -174,13 +174,13 @@ OPC 對應項模組會在 IoT Edge 上執行，並為 OPC 裝置對應項和登�
 
     然後選取 **[下一步]**
 
-11. 檢查您的部署資訊與資訊清單。  它看起來應該像上述的部署資訊清單。  選取 [提交]  。
+11. 檢查您的部署資訊與資訊清單。  它看起來應該像上述的部署資訊清單。  選取 [提交]。
 
 12. 一旦您將模組部署到您的裝置，就可以在入口網站的 [裝置詳細資料] 頁面中檢視所有項目。 此頁面會顯示每個已部署模組的名稱，以及像是部署狀態和結束代碼的實用資訊。
 
 ## <a name="deploying-using-azure-cli"></a>使用 Azure CLI 部署
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 1. 從[這裡](/cli/azure/install-azure-cli?view=azure-cli-latest)安裝最新版本的[Azure 命令列介面 (AZ) ](/cli/azure/?view=azure-cli-latest) 。
 

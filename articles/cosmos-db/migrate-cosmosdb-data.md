@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: 02fd0a4c7d931f439ab85af8d90de323105e21f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c45445415f3eaa7cb0f9069dd5f64b57c19e5836
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096694"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437145"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>將數百 TB 的資料遷移至 Azure Cosmos DB 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -29,11 +29,11 @@ Azure Cosmos DB 的遷移策略目前會根據 API 選擇和資料大小而有�
 
 用來將資料移轉至 Azure Cosmos DB 的現有工具有一些限制，在大型規模中特別明顯：
 
- * **有限的 scale out 功能** ：為了盡可能快速地將數 tb 的資料移轉至 Azure Cosmos DB，並有效取用整個布建的輸送量，遷移用戶端應該能夠無限期地相應放大。  
+ * **有限的 scale out 功能**：為了盡可能快速地將數 tb 的資料移轉至 Azure Cosmos DB，並有效取用整個布建的輸送量，遷移用戶端應該能夠無限期地相應放大。  
 
 * **缺少進度追蹤和檢查** 點：請務必追蹤遷移進度，並且在遷移大型資料集時有檢查點。 否則，在遷移期間發生的任何錯誤都會停止遷移，而您必須從頭開始處理。 當99% 的時間已完成時，重新開機整個遷移程式並不具生產力。  
 
-* 缺少寄不出 **的信件佇列** ：在大型資料集中，某些情況下可能會有來源資料的部分問題。 此外，用戶端或網路可能會有暫時性的問題。 這兩種情況都不應該讓整個遷移失敗。 雖然大部分的遷移工具都具有可抵禦間歇性問題的強大重試功能，但並不一定足夠。 例如，如果源資料檔案的小於0.01% 大小超過 2 MB，則會導致檔寫入在 Azure Cosmos DB 失敗。 在理想的情況下，遷移工具會將這些「失敗」的檔保存到另一個無效信件佇列，以在遷移後進行處理。 
+* 缺少寄不出 **的信件佇列**：在大型資料集中，某些情況下可能會有來源資料的部分問題。 此外，用戶端或網路可能會有暫時性的問題。 這兩種情況都不應該讓整個遷移失敗。 雖然大部分的遷移工具都具有可抵禦間歇性問題的強大重試功能，但並不一定足夠。 例如，如果源資料檔案的小於0.01% 大小超過 2 MB，則會導致檔寫入在 Azure Cosmos DB 失敗。 在理想的情況下，遷移工具會將這些「失敗」的檔保存到另一個無效信件佇列，以在遷移後進行處理。 
 
 這些限制中有許多是針對 Azure Data factory、Azure 資料移轉服務等工具進行修正。 
 
@@ -143,13 +143,7 @@ Azure Cosmos DB 的遷移策略目前會根據 API 選擇和資料大小而有�
 
 完成遷移之後，您可以驗證 Azure Cosmos DB 中的檔計數是否與源資料庫中的檔計數相同。 在此範例中，Azure Cosmos DB 中的總大小已轉換為 65 tb。 遷移後，您可以選擇性地開啟索引，而且可以將 ru 降至工作負載作業所需的層級。
 
-## <a name="contact-the-azure-cosmos-db-team"></a>聯絡 Azure Cosmos DB 小組
-雖然您可以遵循本指南來成功地將大型資料集遷移至 Azure Cosmos DB，但針對大規模遷移，建議您與 Azure Cosmos DB 產品小組聯繫，以驗證資料模型和一般的架構審查。 根據您的資料集和工作負載，產品小組也可以建議適用于您的其他效能和成本優化。 若要聯絡 Azure Cosmos DB 小組以取得大規模遷移的協助，您可以在「一般諮詢」問題類型和「大型 (TB +) 遷移」問題子類別下開啟支援票證，如下所示。
-
-:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="遷移工具設定":::
-
-
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 試用使用 [.net](bulk-executor-dot-net.md) 和 [JAVA](bulk-executor-java.md)大量執行程式程式庫的範例應用程式，以深入瞭解。 
 * 大量執行程式程式庫已整合到 Cosmos DB Spark 連接器中，若要深入瞭解，請參閱 [Azure Cosmos DB Spark 連接器](spark-connector.md) 文章。  

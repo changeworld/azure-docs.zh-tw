@@ -3,22 +3,22 @@ title: 將使用者新增為 Azure 實驗室服務中的實驗室建立者
 description: 本文說明如何在 Azure 實驗室服務中，將使用者新增至實驗室帳戶的實驗室建立者角色。 實驗室建立者可以在此實驗室帳戶中建立實驗室。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 5fdeb33dab60a2fb9f1680295c355e2c7c0e775a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6c89483744f943926f126701d28988358627a27
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399477"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435955"
 ---
 # <a name="add-lab-creators-to-a-lab-account-in-azure-lab-services"></a>將實驗室建立者新增至 Azure 實驗室服務中的實驗室帳戶
-本文說明如何在 Azure 實驗室服務中，將使用者以實驗室建立者的形式新增至實驗室帳戶。 這些用途接著可在實驗室帳戶中建立教室實驗室。 
+本文說明如何在 Azure 實驗室服務中，將使用者以實驗室建立者的形式新增至實驗室帳戶。 然後，這些用途可在實驗室帳戶中建立實驗室。 
 
 ## <a name="add-microsoft-user-account-to-lab-creator-role"></a>將 Microsoft 使用者帳戶新增至實驗室建立者角色
 若要在實驗室帳戶中設定教室實驗室，使用者必須是實驗室帳戶中的 [實驗室建立者] 角色的成員。 您用來建立實驗室帳戶的帳戶會自動新增至此角色。 如果您打算使用相同的使用者帳戶建立教室實驗室，您可以略過此步驟。 若要使用其他使用者帳戶來建立教室實驗室，請執行下列步驟： 
 
 若要提供授課者為其班級建立實驗室的權限，請將他們新增至 [實驗室建立者] 角色：
 
-1. 在 [實驗室帳戶]**** 頁面上，選取 [存取控制] \(IAM\)****，然後按一下工具列上的 [+新增角色指派]****。 
+1. 在 [實驗室帳戶] 頁面上，選取 [存取控制] \(IAM\)，然後按一下工具列上的 [+新增角色指派]。 
 
     ![[存取控制] -> [新增角色指派] 按鈕](./media/tutorial-setup-lab-account/add-role-assignment-button.png)
 1. 在 [新增角色指派] 頁面上，針對 [角色] 選取 [實驗室建立者]，選取您要新增到實驗室建立者角色的使用者，然後選取 [儲存]。 
@@ -66,4 +66,4 @@ ms.locfileid: "91399477"
 - [以實驗室擁有者身分建立及管理實驗室](how-to-manage-classroom-labs.md)
 - [以實驗室擁有者身分設定及發佈範本](how-to-create-manage-template.md)
 - [以實驗室擁有者身分設定及控制實驗室的使用方式](how-to-configure-student-usage.md)
-- [以實驗室使用者的身分存取教室實驗室](how-to-use-classroom-lab.md)
+- [以實驗室使用者的身份存取實驗室](how-to-use-classroom-lab.md)

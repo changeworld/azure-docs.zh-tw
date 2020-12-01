@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: c277525927f7f74f281220bf5e593e98509d8237
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 40bae584e673e8885416bd1ae08dd808071034e7
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126680"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436125"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>商業市集的地理可用性和貨幣支援
 
@@ -194,7 +194,7 @@ Microsoft 會以當地貨幣接收客戶的款項，並以您在合作夥伴中�
 
 如需有關如何輸入特定供應專案類型價格的詳細資訊，請參閱下列文章：
 
-- [建立 Azure 應用程式供應項目](partner-center-portal/create-new-azure-apps-offer.md)
+- [建立 Azure 應用程式供應項目](create-new-azure-apps-offer.md)
 - [建立 Azure 容器供應專案](partner-center-portal/create-azure-container-offer.md)
 - [建立 Azure 虛擬機器供應項目](azure-vm-create.md)
 - [建立諮詢服務供應項目](partner-center-portal/create-consulting-service-offer.md)

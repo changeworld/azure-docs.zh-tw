@@ -6,14 +6,16 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 2a9a8f3fe7422468ff2c8886dff7415322cf70f0
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f7d69c4e112ded678c70a516202492d37ee8f60a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676879"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436856"
 ---
-# <a name="how-to-manually-fix-servicenow-sync-problems"></a>如何手動修正 ServiceNow 同步問題
+# <a name="troubleshooting-problems-in-itsm-connector"></a>針對 ITSM 連接器中的問題進行疑難排解
+
+## <a name="how-to-manually-fix-servicenow-sync-problems"></a>如何手動修正 ServiceNow 同步問題
 
 Azure 監視器可以連接至協力廠商 IT 服務管理 (ITSM) 提供者。 ServiceNow 是其中一個提供者。
 

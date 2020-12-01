@@ -2,17 +2,17 @@
 title: 應用程式閘道的 Azure 監視器計量
 description: 瞭解如何使用計量來監視應用程式閘道的效能
 services: application-gateway
-author: abshamsft
+author: surajmb
 ms.service: application-gateway
 ms.topic: article
 ms.date: 06/06/2020
-ms.author: absha
-ms.openlocfilehash: c072e7c1339a2217a3c167be3237029bd71429c2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.author: surmb
+ms.openlocfilehash: be629d9f8441ad40fe15f005f4aeb0ec5565a7ec
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397734"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437060"
 ---
 # <a name="metrics-for-application-gateway"></a>應用程式閘道的計量
 
@@ -52,7 +52,7 @@ ms.locfileid: "93397734"
 
   接收、處理要求以及傳送回應所需的平均時間。 
 
-  這是來自應用程式閘道接收 HTTP 要求的第一個位元組到最後一個回應位元組傳送給用戶端的時間的間隔。 這包括應用程式閘道所花費的處理時間、 *後端最後位元組回應時間* 、應用程式閘道傳送所有回應和 *用戶端 RTT* 所花費的時間。
+  這是來自應用程式閘道接收 HTTP 要求的第一個位元組到最後一個回應位元組傳送給用戶端的時間的間隔。 這包括應用程式閘道所花費的處理時間、 *後端最後位元組回應時間*、應用程式閘道傳送所有回應和 *用戶端 RTT* 所花費的時間。
 
 - **用戶端 RTT**
 
@@ -162,7 +162,7 @@ ms.locfileid: "93397734"
 
 - **失敗的要求**
 
-  應用程式閘道提供5xx 伺服器錯誤碼的要求數目。 這包括從應用程式閘道產生的5xx 程式碼，以及從後端產生的5xx 代碼。 您可以進一步篩選要求計數，以顯示每個/特定後端集區的計數-HTTP 設定組合。
+  由於連接問題而失敗的要求數目。 此計數包含因為超過「要求超時」 HTTP 設定和因為應用程式閘道與後端之間的連線問題而失敗的要求而失敗的要求。 因為沒有狀況良好的後端可用，所以此計數不包括失敗。 來自後端的4xx 和5xx 回應也不會被視為此計量的一部分。
 
 - **回應狀態**
 
@@ -194,7 +194,7 @@ ms.locfileid: "93397734"
 
 ## <a name="metrics-visualization"></a>計量視覺效果
 
-流覽至應用程式閘道，在 [ **監視** 選取的 **計量** ] 底下。 若要檢視可用的值，請選取 [計量] 下拉式清單。
+流覽至應用程式閘道，在 [ **監視** 選取的 **計量**] 底下。 若要檢視可用的值，請選取 [計量] 下拉式清單。
 
 下圖中的範例顯示了最近 30 分鐘內的三項計量：
 
@@ -212,7 +212,7 @@ ms.locfileid: "93397734"
 
    ![新增計量警示按鈕][6]
 
-2. 在 [ **新增規則** ] 頁面上，填寫 [名稱]、[條件] 和 [通知] 區段，然後選取 **[確定]** 。
+2. 在 [ **新增規則** ] 頁面上，填寫 [名稱]、[條件] 和 [通知] 區段，然後選取 **[確定]**。
 
    * 在 [條件] 選取器中，選取這 4 個值之一：[大於]、[大於或等於]、[小於] 或 [小於或等於]。
 

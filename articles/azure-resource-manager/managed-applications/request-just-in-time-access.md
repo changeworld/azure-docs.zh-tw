@@ -5,12 +5,12 @@ author: MSEvanhi
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: evanhi
-ms.openlocfilehash: 5e1a929924e2c291e0044da99f3ae5d7d1c3b894
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f839eb04e0c036b5059e35fac16d9c702646cbd7
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371555"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435683"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>啟用和要求即時存取 Azure 受控應用程式
 
@@ -72,7 +72,7 @@ JIT 存取可讓您對受控應用程式的資源要求更高的存取權，以�
 
 1. 在 [合作夥伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)中登入商用 Marketplace 入口網站。
 
-1. 如需建立新受控應用程式的指引，請遵循 [建立 Azure 應用程式供應](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)專案中的步驟。
+1. 如需建立新受控應用程式的指引，請遵循 [建立 Azure 應用程式供應](../../marketplace/create-new-azure-apps-offer.md)專案中的步驟。
 
 1. 在 [ **技術** 設定] 頁面上，選取 [ **啟用即時 (JIT) 存取** ] 核取方塊。
 

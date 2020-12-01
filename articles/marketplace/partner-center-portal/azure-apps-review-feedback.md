@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 351a9742e9d839a8e217fdea35cad922acc3339f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ede4e5dd781851c781407a8acea640e3e501f259
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095667"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436380"
 ---
 # <a name="handling-review-feedback-for-azure-application-offers"></a>處理 Azure 應用程式供應項目的檢閱意見反應
 
@@ -39,7 +39,7 @@ ms.locfileid: "93095667"
     [![](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)提取要求首頁
     <br/> 按一下以展開此影像。
 
-1. (選擇性) 在視窗右側的 [原則] 區段中，選取問題訊息 (在此範例中： **原則驗證失敗** ) 調查問題的低層級詳細資料，包括相關的記錄檔。 錯誤通常會顯示在記錄檔的底部。
+1. (選擇性) 在視窗右側的 [原則] 區段中，選取問題訊息 (在此範例中：**原則驗證失敗**) 調查問題的低層級詳細資料，包括相關的記錄檔。 錯誤通常會顯示在記錄檔的底部。
 
 1. 在首頁左側的功能表中，選取 [檔案] 以顯示包含此供應項目之技術資產的清單檔案。 Microsoft 檢閱者應該加上描述發現的重大問題的註解。 在下列範例中，已發現兩個問題。
 
@@ -57,4 +57,4 @@ ms.locfileid: "93095667"
 
 ## <a name="next-steps"></a>後續步驟
 
-在更正檢閱 PR 中記錄的重大問題之後，您必須[重新發行 Azure 應用程式供應項目](./create-new-azure-apps-offer.md#publish)。
+在更正檢閱 PR 中記錄的重大問題之後，您必須[重新發行 Azure 應用程式供應項目](../create-new-azure-apps-offer.md)。

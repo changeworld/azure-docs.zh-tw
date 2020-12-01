@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 07d2e9fa98c24695a119c651539d4003ecd8524a
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: ac87e8394eaa609f7c57eaf9d83fe11a2bdb04f6
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242087"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435819"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>使用 Azure CLI 適用於 MySQL 的 Azure 資料庫的資料加密
 
@@ -46,11 +46,22 @@ ms.locfileid: "93242087"
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
     ```
+  * 保留天數設定為90天
+  ```azurecli-interactive
+    az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --retention-days 90
+    ```
 
 * 金鑰必須具有下列屬性，才能做為客戶管理的金鑰：
   * 沒有到期日
   * 未停用
-  * 執行 **取得** 、 **包裝** 、 **解除** 包裝作業
+  * 執行 **取得**、 **包裝**、 **解除** 包裝作業
+  * recoverylevel 屬性設定為 **可** 復原。
+
+您可以使用下列命令來驗證金鑰的上述屬性：
+
+```azurecli-interactive
+az keyvault key show --vault-name <key_vault_name> -n <key_name>
+```
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>設定金鑰作業的正確許可權
 
@@ -68,7 +79,7 @@ ms.locfileid: "93242087"
    az mysql server update --name  <server name>  -g <resource_group> --assign-identity
    ```
 
-2. 為 **主體** 設定 ( **取得** 、包裝 **、解除****包裝** ) 的 **金鑰許可權** ，這是 MySQL 伺服器的名稱。
+2. 為 **主體** 設定 (**取得**、包裝 **、解除****包裝**) 的 **金鑰許可權**，這是 MySQL 伺服器的名稱。
 
     ```azurecli-interactive
     az keyvault set-policy --name -g <resource_group> --key-permissions get unwrapKey wrapKey --object-id <principal id of the server>
@@ -266,6 +277,6 @@ az mysql server key delete -g <resource_group> --kid <key url>
 
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
  若要深入瞭解資料加密，請參閱 [使用客戶管理的金鑰適用於 MySQL 的 Azure 資料庫資料加密](concepts-data-encryption-mysql.md)。

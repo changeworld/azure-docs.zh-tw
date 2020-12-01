@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: e29aeb7570ad6daba9d6fc652291471fa246bf0a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: b75964f8cfc41efc35858284dbffded3aa406eb6
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674621"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436057"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Marketplace 計量付費 Api
 
@@ -20,7 +20,7 @@ ms.locfileid: "92674621"
 
 如需建立 SaaS 自訂計量維度的詳細資訊，請參閱 [saas 計量付費](saas-metered-billing.md)。
 
-如需有關使用受管理的應用程式方案為 Azure 應用程式供應專案建立自訂計量維度的詳細資訊，請參閱 [建立新的 Azure 應用程式供應](create-new-azure-apps-offer.md#technical-configuration) 專案) 的技術設定一節。
+如需有關使用受管理的應用程式方案為 Azure 應用程式供應專案建立自訂計量維度的詳細資訊，請參閱 [設定您的 Azure 應用程式供應專案設定詳細資料](../create-new-azure-apps-offer.md#configure-your-azure-application-offer-setup-details)。
 
 ## <a name="enforcing-tls-12-note"></a>強制執行 TLS 1.2 附注
 
@@ -34,7 +34,7 @@ TLS 1.2 版是以 HTTPS 通訊的最基本版本來強制執行。 請務必在�
 
 每個資源的日曆日每小時只能發出一個使用事件。 如果一小時內耗用一個以上的單位，則會累積該小時內耗用的所有單位，然後在單一事件中發出。 使用事件只能在過去24小時內發出。 如果您在8:00 和8:59:59 之間的任何時間都發出使用事件 (並且接受) 並在8:00 和8:59:59 之間的相同日期傳送額外事件，則會被拒絕為重複專案。
 
-**POST** ：`https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**POST**：`https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 查詢參數：
 

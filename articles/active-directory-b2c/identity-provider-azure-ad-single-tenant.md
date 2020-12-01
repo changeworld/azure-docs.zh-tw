@@ -12,12 +12,12 @@ ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e4fa4b64c6519df90d5883e8c5760b3ed2ce0337
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a079cfe155119a6afe8575767dd3e7c09a564f9a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90004454"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445625"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中設定特定 Azure Active Directory 組織的登入
 
@@ -43,14 +43,14 @@ ms.locfileid: "90004454"
 1. 在 [用戶端識別碼]中，輸入您先前記錄的應用程式識別碼。
 1. 在 [用戶端密碼] 中，輸入您先前記錄的用戶端密碼。
 1. 在 [ **範圍**] 中，輸入 `openid profile` 。
-1. 保留 **回應類型**的預設值，以及 **回應模式**。
-1.  (**網域提示**的選擇性) ，請輸入 `contoso.com` 。 如需詳細資訊，請參閱[使用 Azure Active Directory B2C 設定直接登入](direct-signin.md#redirect-sign-in-to-a-social-provider)。
+1. 保留 **回應類型** 的預設值，以及 **回應模式**。
+1.  (**網域提示** 的選擇性) ，請輸入 `contoso.com` 。 如需詳細資訊，請參閱[使用 Azure Active Directory B2C 設定直接登入](direct-signin.md#redirect-sign-in-to-a-social-provider)。
 1. 在 [ **識別提供者宣告對應**] 下，選取下列宣告：
 
     * **使用者識別碼**：oid
     * **顯示名稱**：name
     * **指定的名稱**：given_name
     * **姓氏**：family_name
-    * **電子郵件**：unique_name
+    * **電子郵件**： *preferred_username*
 
 1. 選取 [儲存]。

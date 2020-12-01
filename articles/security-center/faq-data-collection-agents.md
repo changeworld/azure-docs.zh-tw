@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 2ea9fdcb11bd88755c0972fa166d1d94068ce60e
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: 64fa6c72e3bc37276dd108e3981bbefb5a2021a7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638785"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444514"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>常見問題集 - 資料收集、代理程式和工作區的相關問題
 
@@ -86,9 +86,9 @@ ms.locfileid: "94638785"
 - 位於澳大利亞的 VM，工作區位置為澳大利亞
 
 
-## <a name="what-data-is-collected-by-the-log-analytics-agent"></a>Log Analytics 代理程式會收集哪些資料？
+## <a name="what-security-events-are-collected-by-the-log-analytics-agent"></a>Log Analytics 代理程式會收集哪些安全性事件？
 
-如需代理程式所監視之應用程式和服務的完整清單，請參閱 [Azure 監視器所監視的內容](../azure-monitor/monitor-reference.md#azure-services)。
+如需代理程式所收集之安全性事件的完整清單，請參閱 [針對「一般」和「最短」安全性事件設定儲存哪些事件種類？](security-center-enable-data-collection.md#what-event-types-are-stored-for-common-and-minimal)。
 
 > [!IMPORTANT]
 > 請注意，對於某些服務（例如 Azure 防火牆），如果您已啟用記錄功能，並選擇多對話資源來記錄 (例如，將記錄檔設定為 *詳細* 資訊) 您可能會看到對 log Analytics 工作區儲存體需求的重大影響。 
@@ -125,8 +125,8 @@ ms.locfileid: "94638785"
 
 1. 選取 [儲存]。 系統會詢問您是否要重新設定受監視的 VM。
 
-    - 如果您希望新的工作區設定 **僅套用在新的虛擬機器** ，請選取 [否]。 新的工作區設定只會套用在新安裝的代理程式，以及新探索到的未安裝 Log Analytics 代理程式的 VM。
-    - 如果您希望新的工作區設定 **套用在所有虛擬機器** ，請選取 [是]。 此外，每個連線到資訊安全中心建立之工作區的虛擬機器會重新連線到新的目標工作區。
+    - 如果您希望新的工作區設定 **僅套用在新的虛擬機器**，請選取 [否]。 新的工作區設定只會套用在新安裝的代理程式，以及新探索到的未安裝 Log Analytics 代理程式的 VM。
+    - 如果您希望新的工作區設定 **套用在所有虛擬機器**，請選取 [是]。 此外，每個連線到資訊安全中心建立之工作區的虛擬機器會重新連線到新的目標工作區。
 
     > [!NOTE]
     > 如果您選取 [是]，在所有 VM 均重新連線至新的目標工作區之前，請不要刪除資訊安全中心所建立的任何工作區。 如果過早刪除工作區，這項作業將會失敗。
@@ -170,7 +170,7 @@ ms.locfileid: "94638785"
 
 1. 在資訊安全中心功能表中，選取 [定價和設定]。
 1. 選取相關的訂用帳戶。
-1. 如果您的訂用帳戶已啟用 Azure Defender，請開啟 **Azure defender 方案** ，然後選取 [ **關閉 azure defender** ]。
+1. 如果您的訂用帳戶已啟用 Azure Defender，請開啟 **Azure defender 方案** ，然後選取 [ **關閉 azure defender**]。
 
     :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="啟用或停用 Azure Defender":::
 
@@ -178,7 +178,7 @@ ms.locfileid: "94638785"
 
     :::image type="content" source="./media/security-center-enable-data-collection/agent-toggles.png" alt-text="啟用 Log Analytics 代理程式的自動部署":::
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 
 ## <a name="should-i-opt-out-of-the-automatic-agent-installation-and-workspace-creation"></a>我應該要退出自動安裝代理程式和建立工作區嗎？
@@ -223,7 +223,7 @@ ms.locfileid: "94638785"
 
 若要手動移除代理程式：
 
-1.    在入口網站中，開啟 **Log Analytics** 。
+1.    在入口網站中，開啟 **Log Analytics**。
 
 1.    在 [Log Analytics] 頁面上，選取工作區：
 
@@ -241,7 +241,7 @@ ms.locfileid: "94638785"
 
 如果您已啟用，但現在想要停用它：
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，開啟 [ **安全性中心** ]，然後選取 [ **定價和設定** ]。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，開啟 [ **安全性中心** ]，然後選取 [ **定價和設定**]。
 
 1. 選取您要停用自動布建的訂用帳戶。
 

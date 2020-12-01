@@ -6,16 +6,16 @@ author: brahmnes
 ms.author: bfung
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6928da704236c4bb5492f99a4a5327bf297a323d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d111379cbeb0ea4eeac9ea0868b6d263a0a540c
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84676832"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435717"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>在 Azure App Service 中啟用 .NET 應用程式的快照偵錯工具
 
-快照偵錯工具目前適用于在 Windows 服務方案 Azure App Service 上執行的 ASP.NET 和 ASP.NET Core 應用程式。
+快照偵錯工具目前適用于在 Windows 服務方案 Azure App Service 上執行的 ASP.NET 和 ASP.NET Core 應用程式。 使用快照偵錯工具時，建議您在基本服務層級或更高版本上執行您的應用程式。 在大部分的應用程式中，免費和共用的服務層級沒有足夠的記憶體來儲存快照集。
 
 ## <a name="enable-snapshot-debugger"></a><a id="installation"></a> 啟用快照偵錯工具
 若要為應用程式啟用快照偵錯工具，請遵循下列指示。 如果您正在執行不同類型的 Azure 服務，則以下是在其他支援的平臺上啟用快照偵錯工具的指示：
@@ -43,7 +43,7 @@ Application Insights 快照偵錯工具會預先安裝為 App Service 執行時�
 
 ## <a name="disable-snapshot-debugger"></a>停用快照偵錯工具
 
-遵循與 **啟用快照偵錯工具**相同的步驟，但將這兩個參數切換為 [ **關閉**] 快照偵錯工具。
+遵循與 **啟用快照偵錯工具** 相同的步驟，但將這兩個參數切換為 [ **關閉**] 快照偵錯工具。
 建議您在所有應用程式上都已啟用快照偵錯工具，以簡化應用程式例外狀況的診斷。
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager 範本
@@ -88,7 +88,7 @@ Application Insights 快照偵錯工具會預先安裝為 App Service 執行時�
 },
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 產生可觸發例外狀況的應用程式流量。 然後，等候10到15分鐘，將快照集傳送至 Application Insights 實例。
 - 請參閱 Azure 入口網站中的 [快照](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal) 集。

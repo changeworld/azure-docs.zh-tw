@@ -9,12 +9,12 @@ ms.date: 06/22/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3916855a62e506b12f72de713ccb56e89f846938
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 797b5f569f081065eb950f7c10bf6449002f733b
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96171801"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436975"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>更新 IoT Edge 安全性精靈和執行階段
 
@@ -194,7 +194,7 @@ IoT Edge 服務將會提取執行階段映像的最新版本，並自動在您�
 
 3. 如果您下載的 .cab 檔案中有架構尾碼，請將檔案重新命名為只 **Microsoft-Azure-IoTEdge.cab**。
 
-4. 若要使用離線元件進行更新，請使用 [點來源](/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) 作為 PowerShell 腳本的本機複本。 然後，使用 `-OfflineInstallationPath` 參數做為命令的一部分， `Update-IoTEdge` 並提供檔案目錄的絕對路徑。 例如，
+4. 若要使用離線元件進行更新，請使用 [點來源](/powershell/module/microsoft.powershell.core/about/about_scripts#script-scope-and-dot-sourcing) 作為 PowerShell 腳本的本機複本。 然後，使用 `-OfflineInstallationPath` 參數做為命令的一部分， `Update-IoTEdge` 並提供檔案目錄的絕對路徑。 例如，
 
    ```powershell
    . <path>\IoTEdgeSecurityDaemon.ps1
