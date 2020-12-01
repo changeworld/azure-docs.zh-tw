@@ -1,14 +1,14 @@
 ---
 title: 範本概觀
-description: 說明使用 Azure Resource Manager 範本來部署資源的優點。
+description: 說明使用 Azure Resource Manager 範本的優點， (ARM 範本) 用來部署資源。
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 188fd5782795a4fb5456978a2a596cabc6dfd874
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: e25404fc74456f99a4d41c25786b34b6e1f3edda
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325055"
+ms.locfileid: "96342323"
 ---
 # <a name="what-are-arm-templates"></a>什麼是 ARM 範本？
 
@@ -16,7 +16,7 @@ ms.locfileid: "96325055"
 
 若要符合這些挑戰，您可以自動化部署，並使用基礎結構即程式碼的做法。 在程式碼中，您可以定義需要部署的基礎結構。 基礎結構程式碼會成為專案的一部分。 就像應用程式程式碼一樣，您會將基礎結構程式碼儲存在來源存放庫中，並將其版本。 您小組中的任何人都可以執行程式碼並部署類似的環境。
 
-若要為您的 Azure 解決方案執行基礎結構即程式碼，請使用 Azure Resource Manager (ARM) 範本。 範本是 JavaScript 物件標記法 (JSON) 檔，可定義專案的基礎結構和設定。 範本會使用宣告式語法，可讓您陳述您要部署的項目，而不需要撰寫一連串程式設計命令來加以建立。 在範本中，您可以指定要部署的資源，以及這些資源的屬性。
+若要為您的 Azure 解決方案執行基礎結構即程式碼，請使用 (ARM 範本的 Azure Resource Manager 範本) 。 範本是 JavaScript 物件標記法 (JSON) 檔，可定義專案的基礎結構和設定。 範本會使用宣告式語法，可讓您陳述您要部署的項目，而不需要撰寫一連串程式設計命令來加以建立。 在範本中，您可以指定要部署的資源，以及這些資源的屬性。
 
 ## <a name="why-choose-arm-templates"></a>為何選擇 ARM 範本？
 

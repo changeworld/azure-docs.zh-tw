@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/25/2020
 ms.author: allensu
-ms.openlocfilehash: 2fbefd3b7761976cffbd6be8714cb849e1253aec
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e73b4b2eefeb26dad4d028f617cbe453dbd1870d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778037"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96342442"
 ---
 # <a name="monitoring-metrics-and-raw-logs-for-azure-cdn-from-microsoft"></a>針對來自 Microsoft 的 Azure CDN 監視計量和原始記錄
 透過 Microsoft 提供的 Azure CDN，您可以透過下列方式監視資源，以協助您疑難排解、追蹤和偵測問題。 
@@ -38,7 +38,7 @@ ms.locfileid: "92778037"
 
 若要為 Microsoft 設定檔中的 Azure CDN 設定原始記錄： 
 
-1. 從 Azure 入口網站] 功能表中，選取 [ **所有資源** ]  >>  **\<your-CDN-profile>** 。
+1. 從 Azure 入口網站] 功能表中，選取 [**所有資源**]  >>  **\<your-CDN-profile>** 。
 
 2. 在 [監視] 下方選取 [診斷設定]。
 
@@ -61,7 +61,7 @@ ms.locfileid: "92778037"
     * **串流至事件中樞**
         * 選取 [訂用帳戶]、[事件中樞命名空間]、\[事件中樞名稱 \(選擇性\)\] 及 [事件中樞原則名稱]。
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="新增 CDN 設定檔的診斷設定。" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="設定記錄檔設定的目的地。" border="true":::
 
 7. 選取 [儲存]。
 
@@ -215,7 +215,7 @@ AzureDiagnostics
 
 **來自 Microsoft 的 Azure CDN 所支援的計量**
 
-| 計量         | 描述                                                                                                      | 維度                                                                                   |
+| 計量         | 說明                                                                                                      | 維度                                                                                   |
 |-----------------|------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
 | 位元組點擊率 * | CDN 快取的輸出百分比，針對輸出總計進行計算。                                      | 端點                                                                                    |
 | RequestCount    | CDN 所服務的用戶端要求數目。                                                                     | 端點 </br> 用戶端國家/地區。 </br> 用戶端區域。 </br> HTTP 狀態。 </br> HTTP 狀態群組。 |
@@ -231,35 +231,35 @@ AzureDiagnostics
 
 ### <a name="metrics-configuration"></a>計量設定
 
-1. 從 Azure 入口網站] 功能表中，選取 [ **所有資源** ]  >>  **\<your-CDN-profile>** 。
+1. 從 Azure 入口網站] 功能表中，選取 [**所有資源**]  >>  **\<your-CDN-profile>** 。
 
-2. 在 [ **監視** ] 底下，選取 [ **計量** ：
+2. 在 [ **監視**] 底下，選取 [ **計量**：
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="新增 CDN 設定檔的診斷設定。" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="CDN 設定檔的計量。" border="true":::
 
-3. 選取 [ **新增度量** ]，選取要新增的度量：
+3. 選取 [ **新增度量**]，選取要新增的度量：
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="新增 CDN 設定檔的診斷設定。" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="新增並選取 CDN 設定檔的度量。" border="true":::
 
 4. 選取 [ **新增篩選** ] 以新增篩選準則：
     
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-05.png" alt-text="新增 CDN 設定檔的診斷設定。" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-05.png" alt-text="將篩選套用至度量。" border="true":::
 
 5. 選取 **[** 套用分割] 以查看依不同維度的趨勢：
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-06.png" alt-text="新增 CDN 設定檔的診斷設定。" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-06.png" alt-text="將分割套用至度量。" border="true":::
 
 6. 選取 [ **新增圖表** ] 以加入新的圖表：
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-07.png" alt-text="新增 CDN 設定檔的診斷設定。" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-07.png" alt-text="將新的圖表新增至度量視圖。" border="true":::
 
 ### <a name="alerts"></a>警示
 
-您可以選取 [  。
+您可以選取 [**監視** 警示]，在 Microsoft CDN 上設定警示  >>  ****。
 
 針對 [計量] 區段中所列的計量，選取 **新的警示規則** ：
 
-:::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="新增 CDN 設定檔的診斷設定。" border="true":::
+:::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="設定 CDN 端點的警示。" border="true":::
 
 警示將依據 Azure 監視器收費。 如需警示的詳細資訊，請參閱 [Azure 監視器警示](../azure-monitor/platform/alerts-overview.md)。
 
@@ -270,21 +270,21 @@ AzureDiagnostics
 
 2. 選取您所建立的 Log Analytics 工作區：
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="新增 CDN 設定檔的診斷設定。" border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="選取 log analytics 工作區" border="true":::   
 
-3. 在 log analytics 工作區中，選取 **[一般** ] 底下的 [ **記錄** ]。  然後選取 **開始** ：
+3. 在 log analytics 工作區中，選取 **[一般**] 底下的 [**記錄**]。  然後選取 **開始**：
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="新增 CDN 設定檔的診斷設定。" border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="Log analytics 資源工作區。" border="true":::   
  
-4. 選取 [ **CDN 設定檔** ]。  選取要執行的範例查詢，或關閉範例畫面來輸入自訂查詢：
+4. 選取 [ **CDN 設定檔**]。  選取要執行的範例查詢，或關閉範例畫面來輸入自訂查詢：
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="新增 CDN 設定檔的診斷設定。" border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="範例查詢畫面。" border="true":::   
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="新增 CDN 設定檔的診斷設定。" border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="查詢執行。" border="true":::   
 
-4. 若要依圖表來查看資料，請選取 [ **圖表** ]。  選取 [ **釘選到儀表板** ]，將圖表釘選到 Azure 儀表板：
+4. 若要依圖表來查看資料，請選取 [ **圖表**]。  選取 [ **釘選到儀表板** ]，將圖表釘選到 Azure 儀表板：
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="新增 CDN 設定檔的診斷設定。" border="true"::: 
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="將圖表釘選到儀表板。" border="true"::: 
 
 ## <a name="next-steps"></a>後續步驟
 在本文中，您已啟用 Microsoft CDN 服務的 HTTP 原始記錄。
@@ -295,4 +295,4 @@ AzureDiagnostics
 
 * 深入了解 [Azure 監視器](../azure-monitor/overview.md)。
 
-* 設定 [Azure 監視器中的 Log Analytics](../azure-monitor/log-query/get-started-portal.md)。
+* 設定 [Azure 監視器中的 Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)。

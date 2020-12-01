@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 99594ad5fe07f18f639b4870f4e0faa59a697afc
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: a92802f0b121a332afccf7f6c12e876b3263bd82
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843174"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96343938"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>適用于 ExpressRoute 的 Azure 安全性基準
 
 適用于 ExpressRoute 的 Azure 安全性基準包含可協助您改善部署安全性狀態的建議。
 
-此服務的基準取自 [Azure 安全性效能評定 1.0 版](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
+此服務的基準取自 [Azure 安全性基準測試版本 1.0](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
 如需詳細資訊，請參閱 [Azure 安全性基準概觀](../security/benchmarks/security-baselines-overview.md)。
 
@@ -56,9 +56,9 @@ ms.locfileid: "94843174"
 
 **指導** 方針：不適用;每個客戶的 Expressroute 都包含在自己的路由網域內，並通道傳送至其自己的虛擬網路。 雖然 Expressroute 是隔離的，若要額外保護共用相同虛擬網路的其他資源，您可以啟用 DDoS 保護標準來防範 DDoS 攻擊。
 
-* [瞭解 Azure ExpressRoute 的安全性控制措施](./expressroute-security-controls.md)
+* [瞭解 Azure ExpressRoute 的安全性控制措施]()
 
-* [如何設定 DDoS 保護](../virtual-network/manage-ddos-protection.md)
+* [如何設定 DDoS 保護](../ddos-protection/manage-ddos-protection.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -76,7 +76,7 @@ ms.locfileid: "94843174"
 
 **指導** 方針：不適用;每個客戶的 Expressroute 都包含在自己的路由網域內，並通道傳送至其自己的虛擬網路。
 
-* [瞭解 Azure ExpressRoute 的安全性控制措施](./expressroute-security-controls.md)
+* [瞭解 Azure ExpressRoute 的安全性控制措施]()
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -337,7 +337,7 @@ ms.locfileid: "94843174"
 
 **指導** 方針：使用 AZURE ACTIVE DIRECTORY (AD) 作為 Azure Sentinel 實例的中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
 
-* [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+* [如何建立和設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -447,7 +447,7 @@ ms.locfileid: "94843174"
 
 **指導** 方針：不適用;Azure ExpressRoute 不會儲存客戶資料。
 
-* [瞭解 Azure ExpressRoute 的安全性控制措施](./expressroute-security-controls.md)
+* [瞭解 Azure ExpressRoute 的安全性控制措施]()
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -861,7 +861,7 @@ Azure ExpressRoute 也有線路擁有者和線路使用者角色。 線路使用
 
 **指導** 方針：不適用;Azure ExpressRoute 不會儲存客戶資料。
 
-* [瞭解 Azure ExpressRoute 的安全性控制措施](./expressroute-security-controls.md)
+* [瞭解 Azure ExpressRoute 的安全性控制措施]()
 
 **Azure 資訊安全中心監視**：不適用
 

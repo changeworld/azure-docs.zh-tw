@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/25/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5cbedad360e5270238225503e7802d571820c871
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 084a8e247ab8bb3e6e6c75cf8cfe8e204384f549
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388148"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345145"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定以 LinkedIn 帳戶進行登入
 
@@ -44,7 +44,7 @@ ms.locfileid: "85388148"
 1. 輸入 **公司電子郵件**。
 1. 上傳 **應用程式標誌** 影像。 標誌影像必須是正方形，且其尺寸必須至少為100x100 圖元。
 1. 保留 [ **產品** ] 區段中的預設設定。
-1. 請參閱 **法律條款**中提供的資訊。 如果您同意條款，請核取此方塊。
+1. 請參閱 **法律條款** 中提供的資訊。 如果您同意條款，請核取此方塊。
 1. 選取 [建立應用程式]  。
 
 ### <a name="configure-auth"></a>設定驗證
@@ -77,8 +77,8 @@ ms.locfileid: "85388148"
 
 將 LinkedIn 帳戶定義為宣告提供者，方法是將它新增至原則擴充檔中的 **claimsprovider** 元素。
 
-1. 在編輯器中開啟 *SocialAndLocalAccounts/* * TrustFrameworkExtensions.xml** * 檔案。 此檔案位於您在其中一個必要條件中下載的 [自訂原則入門套件][starter-pack] 中。
-1. 尋找 **ClaimsProviders** 元素。 如果不存在，請在根元素下新增。
+1. 在編輯器中開啟 * SocialAndLocalAccounts/**TrustFrameworkExtensions.xml** _ 檔案。 此檔案位於您在其中一個必要條件中下載的 [自訂原則入門套件][starter-pack] 中。
+1. 尋找 _ *claimsprovider** 元素。 如果不存在，請在根元素下新增。
 1. 新增新的 **ClaimsProvider**，如下所示：
 
     ```xml
@@ -99,7 +99,7 @@ ms.locfileid: "85388148"
             <Item Key="external_user_identity_claim_id">id</Item>
             <Item Key="BearerTokenTransmissionMethod">AuthorizationHeader</Item>
             <Item Key="ResolveJsonPathsInJsonTokens">true</Item>
-            <Item Key="UsePolicyInRedirectUri">0</Item>
+            <Item Key="UsePolicyInRedirectUri">false</Item>
             <Item Key="client_id">Your LinkedIn application client ID</Item>
           </Metadata>
           <CryptographicKeys>
@@ -132,7 +132,7 @@ ms.locfileid: "85388148"
 
 ### <a name="add-the-claims-transformations"></a>新增宣告轉換
 
-LinkedIn 技術設定檔需要將 **ExtractGivenNameFromLinkedInResponse** 和 **ExtractSurNameFromLinkedInResponse** 宣告轉換新增至 ClaimsTransformations 清單。 如果您的檔案中未定義 **ClaimsTransformations** 專案，請新增父 XML 元素，如下所示。 宣告轉換也需要一個名為 **nullStringClaim**的新宣告型別。
+LinkedIn 技術設定檔需要將 **ExtractGivenNameFromLinkedInResponse** 和 **ExtractSurNameFromLinkedInResponse** 宣告轉換新增至 ClaimsTransformations 清單。 如果您的檔案中未定義 **ClaimsTransformations** 專案，請新增父 XML 元素，如下所示。 宣告轉換也需要一個名為 **nullStringClaim** 的新宣告型別。
 
 將 **BuildingBlocks** 專案新增至 *TrustFrameworkExtensions.xml* 檔案的頂端附近。 如需範例，請參閱 *TrustFrameworkBase.xml* 。
 
@@ -239,7 +239,7 @@ LinkedIn 最近 [將其 api 從 v1.0 更新至](https://engineering.linkedin.com
 
 ### <a name="replace-items-in-the-metadata"></a>取代中繼資料中的專案
 
-在**TechnicalProfile**的現有**中繼資料**元素中，更新下列**專案**元素：
+在 **TechnicalProfile** 的現有 **中繼資料** 元素中，更新下列 **專案** 元素：
 
 ```xml
 <Item Key="ClaimsEndpoint">https://api.linkedin.com/v1/people/~:(id,first-name,last-name,email-address,headline)</Item>
@@ -255,7 +255,7 @@ LinkedIn 最近 [將其 api 從 v1.0 更新至](https://engineering.linkedin.com
 
 ### <a name="add-items-to-the-metadata"></a>將專案新增至中繼資料
 
-在**TechnicalProfile**的**中繼資料**中，加入下列**專案**元素：
+在 **TechnicalProfile** 的 **中繼資料** 中，加入下列 **專案** 元素：
 
 ```xml
 <Item Key="external_user_identity_claim_id">id</Item>
@@ -265,7 +265,7 @@ LinkedIn 最近 [將其 api 從 v1.0 更新至](https://engineering.linkedin.com
 
 ### <a name="update-the-outputclaims"></a>更新 OutputClaims
 
-在**TechnicalProfile**的現有**OutputClaims**中，更新下列**OutputClaim**元素：
+在 **TechnicalProfile** 的現有 **OutputClaims** 中，更新下列 **OutputClaim** 元素：
 
 ```xml
 <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName" />
@@ -281,7 +281,7 @@ LinkedIn 最近 [將其 api 從 v1.0 更新至](https://engineering.linkedin.com
 
 ### <a name="add-new-outputclaimstransformation-elements"></a>新增 >outputclaimstransformation 元素
 
-在**TechnicalProfile**的**OutputClaimsTransformations**中，新增下列 **>outputclaimstransformation**元素：
+在 **TechnicalProfile** 的 **OutputClaimsTransformations** 中，新增下列 **>outputclaimstransformation** 元素：
 
 ```xml
 <OutputClaimsTransformation ReferenceId="ExtractGivenNameFromLinkedInResponse" />
@@ -290,9 +290,9 @@ LinkedIn 最近 [將其 api 從 v1.0 更新至](https://engineering.linkedin.com
 
 ### <a name="define-the-new-claims-transformations-and-claim-type"></a>定義新的宣告轉換和宣告類型
 
-在最後一個步驟中，您已新增需要定義的宣告轉換。 若要定義宣告轉換，請將它們新增至 **ClaimsTransformations**清單。 如果您的檔案中未定義 **ClaimsTransformations** 專案，請新增父 XML 元素，如下所示。 宣告轉換也需要一個名為 **nullStringClaim**的新宣告型別。
+在最後一個步驟中，您已新增需要定義的宣告轉換。 若要定義宣告轉換，請將它們新增至 **ClaimsTransformations** 清單。 如果您的檔案中未定義 **ClaimsTransformations** 專案，請新增父 XML 元素，如下所示。 宣告轉換也需要一個名為 **nullStringClaim** 的新宣告型別。
 
-**BuildingBlocks**元素應新增至檔案頂端附近。 如需範例，請參閱 *TrustframeworkBase.xml* 。
+**BuildingBlocks** 元素應新增至檔案頂端附近。 如需範例，請參閱 *TrustframeworkBase.xml* 。
 
 ```xml
 <BuildingBlocks>

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 349f57299387b616373bb5fb4d295da8df8ee493
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: d62e7566038af6647cab2992b02184a4ea5ba30b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279900"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344142"
 ---
 # <a name="secure-azure-digital-twins"></a>保護 Azure 數位 Twins
 
@@ -26,9 +26,9 @@ Azure RBAC 透過整合 [Azure Active Directory](../active-directory/fundamental
 
 您可以使用 Azure RBAC 將許可權授與 *安全性主體，該安全性主體* 可能是使用者、群組或應用程式服務主體。 安全性主體是由 Azure AD 進行驗證，並接收傳回的 OAuth 2.0 權杖。 此權杖可以用來授權對 Azure 數位 Twins 實例的存取要求。
 
-### <a name="authentication-and-authorization"></a>驗證和授權
+### <a name="authentication-and-authorization"></a>驗證與授權
 
-使用 Azure AD，存取會有兩個步驟的程式。 當安全性主體 (使用者、群組或應用程式) 嘗試存取 Azure 數位 Twins 時，要求必須 *經過驗證* 和 *授權* 。 
+使用 Azure AD，存取會有兩個步驟的程式。 當安全性主體 (使用者、群組或應用程式) 嘗試存取 Azure 數位 Twins 時，要求必須 *經過驗證* 和 *授權*。 
 
 1. 首先，會驗證安全性主體的 *身分* 識別，並傳回 OAuth 2.0 權杖。
 2. 接下來，權杖會作為要求的一部分傳遞至 Azure 數位 Twins 服務，以 *授權* 存取指定的資源。
@@ -57,7 +57,7 @@ Azure 提供 **兩個 azure 內建角色** ，以授權存取 Azure 數位 Twins
 >[!NOTE]
 > 這些角色最近在預覽版中已重新命名為先前的名稱：
 > * *Azure Digital Twins 資料擁有者* 先前稱為 *Azure Digital Twins 擁有者 (預覽)* 。
-> * *Azure 數位 Twins 資料讀取器* 先前為 *Azure 數位 Twins 讀者 (預覽版)* 。
+> * *Azure 數位 Twins 資料讀取器* 先前為 *Azure 數位 Twins 讀者 (預覽版)*。
 
 您可以透過兩種方式來指派角色：
 * 透過 Azure 入口網站 (中 Azure 數位 Twins 的 [存取控制] (IAM) 窗格，請參閱 [*使用 Azure 入口網站新增或移除 azure 角色指派*](../role-based-access-control/role-assignments-portal.md)) 
@@ -93,7 +93,7 @@ Azure 提供 **兩個 azure 內建角色** ，以授權存取 Azure 數位 Twins
 
 **服務** 標籤代表來自指定 Azure 服務的一組 IP 位址首碼。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤，而盡可能簡化網路安全性規則頻繁的更新。 如需服務標記的詳細資訊，請參閱  [*虛擬網路標記*](../virtual-network/service-tags-overview.md)。 
 
-您可以使用服務標籤來定義 [網路安全性群組](../virtual-network/network-security-groups-overview.md#security-rules)   或 [Azure 防火牆](../firewall/service-tags.md)上的網路存取控制，方法是在建立安全性規則時使用服務標記來取代特定的 IP 位址。 藉由指定服務標籤名稱 (在此案例中， **AzureDigitalTwins** ) 在規則的適當 *來源*   或 *目的地*   欄位中，您可以允許或拒絕對應服務的流量。 
+您可以使用服務標籤來定義 [網路安全性群組](../virtual-network/network-security-groups-overview.md#security-rules)   或 [Azure 防火牆](../firewall/service-tags.md)上的網路存取控制，方法是在建立安全性規則時使用服務標記來取代特定的 IP 位址。 藉由指定服務標籤名稱 (在此案例中， **AzureDigitalTwins**) 在規則的適當 *來源*   或 *目的地*   欄位中，您可以允許或拒絕對應服務的流量。 
 
 以下是 **AzureDigitalTwins** 服務標記的詳細資料。
 
@@ -121,7 +121,7 @@ Azure 數位 Twins 會將待用資料和傳輸中的資料加密提供給資料�
 
 ## <a name="cross-origin-resource-sharing-cors"></a>跨原始來源資源分享 (CORS)
 
-Azure 數位 Twins 目前不支援 **跨原始來源資源分享 (CORS)** 。 因此，如果您是從瀏覽器應用程式呼叫 REST API、 [API 管理 (APIM) ](../api-management/api-management-key-concepts.md) 介面或 [Power Apps](https://docs.microsoft.com/powerapps/powerapps-overview) 連接器，您可能會看到原則錯誤。
+Azure 數位 Twins 目前不支援 **跨原始來源資源分享 (CORS)**。 因此，如果您是從瀏覽器應用程式呼叫 REST API、 [API 管理 (APIM) ](../api-management/api-management-key-concepts.md) 介面或 [Power Apps](/powerapps/powerapps-overview) 連接器，您可能會看到原則錯誤。
 
 若要解決這個錯誤，您可以執行下列其中一項：
 * 從訊息中去除 CORS 標頭 `Access-Control-Allow-Origin` 。 此標頭會指出是否可以共用回應。 

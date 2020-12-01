@@ -10,14 +10,14 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: ded332813a840892f640aa6f6e48debbfe381b4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5d182276cd77493be5184503a1afc47934bf8ea
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90889278"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344188"
 ---
-# <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>使用 Jupyter Notebook 尋找安全性威脅
+# <a name="use-jupyter-notebook-to-hunt-for-security-threats"></a>使用 Jupyter Notebook 來搜尋安全性威脅
 
 Azure Sentinel 的基礎是資料存放區;它結合高效能查詢、動態架構，以及調整為大量資料磁片區。 Azure 入口網站和所有 Azure Sentinel 工具都會使用通用 API 來存取此資料存放區。 相同的 API 也適用於外部工具，例如 [Jupyter](https://jupyter.org/) Notebook 和 Python。 雖然在入口網站中可以執行許多常見工作，但 Jupyter 會擴充您可使用此資料來執行的作業範圍。 其結合了完整的可程式性與大量程式庫集合，以便進行機器學習、視覺化和資料分析。 這些屬性讓 Jupyter 成為安全性調查和搜捕的強大工具。
 
@@ -49,12 +49,12 @@ Azure Sentinel Notebook 會使用許多熱門的 Python 程式庫，例如 panda
 
 ## <a name="create-an-azure-ml-workspace"></a>建立 Azure ML 工作區
 
-1. 在 Azure 入口網站中，流覽至**Azure Sentinel**  >  **威脅管理**  >  **筆記本**，然後選取 [**啟動筆記本**]。
+1. 在 Azure 入口網站中，流覽至 **Azure Sentinel**  >  **威脅管理**  >  **筆記本**，然後選取 [**啟動筆記本**]。
 
     > [!div class="mx-imgBorder"]
     > ![啟動筆記本以啟動 azure ml 工作區](./media/notebooks/sentinel-notebooks-launch.png)
 
-1. 在 [ **AzureML] 工作區**底下，選取 [ **建立新**的]。
+1. 在 [ **AzureML] 工作區** 底下，選取 [ **建立新** 的]。
 
     > [!div class="mx-imgBorder"]
     > ![建立工作區](./media/notebooks/sentinel-notebooks-azureml-create.png)
@@ -140,7 +140,7 @@ Azure Sentinel Notebook 會使用許多熱門的 Python 程式庫，例如 panda
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已了解如何開始在 Azure Sentinel 中使用 Jupyter Notebook。 若要深入了解 Azure Sentinel，請參閱下列文章：
+在本文中，您已瞭解如何開始使用 Azure Sentinel 中的 Jupyter Notebook。 若要深入了解 Azure Sentinel，請參閱下列文章：
 
 - [主動搜捕威脅](hunting.md)
 - [搜捕時使用書籤來儲存感興趣的資訊](bookmarks.md)

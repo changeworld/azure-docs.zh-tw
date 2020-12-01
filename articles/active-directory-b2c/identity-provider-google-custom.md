@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/20/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 91a55782492c1b2612652b147e0aca37941bf4db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 635e33223b054aafb1d91c217a44fdd6d9b369b9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388199"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345162"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定以 Google 帳戶進行登入
 
@@ -24,7 +24,7 @@ ms.locfileid: "85388199"
 
 本文說明如何使用 Azure Active Directory B2C (Azure AD B2C) 中的 [自訂原則](custom-policy-overview.md) ，為具有 Google 帳戶的使用者啟用登入。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 完成[在 Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
 - 如果您還沒有 Google 帳戶，可以在[建立您的 Google 帳戶](https://accounts.google.com/SignUp)中建立一個。
@@ -34,15 +34,15 @@ ms.locfileid: "85388199"
 若要讓使用者能夠從 Google 帳戶登入，您必須建立 Google 應用程式專案。
 
 1. 以您的帳戶認證登入 [Google 開發人員主控台](https://console.developers.google.com/)。
-2. 輸入**專案名稱**、按一下 [建立]****，然後確定您使用的是新專案。
-3. 在左側功能表選取 [認證]****，然後選取 [建立認證] > [Oauth 用戶端識別碼]****。
-4. 選取 [設定同意畫面]****。
-5. 選取或指定有效的**電子郵件地址**、提供向使用者顯示的**產品名稱**、在**授權的網域**中輸入 `b2clogin.com`，然後按一下 [儲存]****。
-6. 在 [應用程式類型]**** 下方，選取 [Web 應用程式]****。
-7. 輸入應用程式的**名稱**。
-8. 在 [授權 JavaScript 來源]**** 中輸入 `https://your-tenant-name.b2clogin.com`，接著在 [授權重新導向 URI]**** 中輸入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 以您的租用戶名稱取代 your-tenant-name。 即使租用戶在 Azure AD B2C 中是使用大寫字母來定義的，您還是需要在輸入租用戶名稱時，全部使用小寫字母。
-8. 按一下 [建立]。
-9. 複製 **用戶端識別碼** 和 **用戶端密碼**的值。 您必須使用這兩個值，將 Google 設為租用戶中的身分識別提供者。 用戶端密碼是重要的安全性認證。
+2. 輸入 **專案名稱**、按一下 [建立]，然後確定您使用的是新專案。
+3. 在左側功能表選取 [認證]，然後選取 [建立認證] > [Oauth 用戶端識別碼]。
+4. 選取 [設定同意畫面]。
+5. 選取或指定有效的 **電子郵件地址**、提供向使用者顯示的 **產品名稱**、在 **授權的網域** 中輸入 `b2clogin.com`，然後按一下 [儲存]。
+6. 在 [應用程式類型] 下方，選取 [Web 應用程式]。
+7. 輸入應用程式的 **名稱**。
+8. 在 [授權 JavaScript 來源] 中輸入 `https://your-tenant-name.b2clogin.com`，接著在 [授權重新導向 URI] 中輸入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 以您的租用戶名稱取代 your-tenant-name。 即使租用戶在 Azure AD B2C 中是使用大寫字母來定義的，您還是需要在輸入租用戶名稱時，全部使用小寫字母。
+8. 按一下 [建立]  。
+9. 複製 **用戶端識別碼** 和 **用戶端密碼** 的值。 您必須使用這兩個值，將 Google 設為租用戶中的身分識別提供者。 用戶端密碼是重要的安全性認證。
 
 ## <a name="create-a-policy-key"></a>建立原則金鑰
 
@@ -84,7 +84,7 @@ ms.locfileid: "85388199"
             <Item Key="ClaimsEndpoint">https://www.googleapis.com/oauth2/v1/userinfo</Item>
             <Item Key="scope">email profile</Item>
             <Item Key="HttpBinding">POST</Item>
-            <Item Key="UsePolicyInRedirectUri">0</Item>
+            <Item Key="UsePolicyInRedirectUri">false</Item>
             <Item Key="client_id">Your Google application ID</Item>
           </Metadata>
           <CryptographicKeys>
@@ -168,7 +168,7 @@ ms.locfileid: "85388199"
 
 更新信賴憑證者 (RP) 檔案，此檔案將起始您剛才建立的使用者旅程圖。
 
-1. 在您的工作目錄中建立一份 SignUpOrSignIn.xml 複本，並將它重新命名。 例如，將它重新命名為 SignUpSignInGoogle.xml**。
+1. 在您的工作目錄中建立一份 SignUpOrSignIn.xml 複本，並將它重新命名。 例如，將它重新命名為 SignUpSignInGoogle.xml。
 2. 開啟新檔案，並將 **TrustFrameworkPolicy** 的 **PolicyId** 屬性更新成唯一值。 例如： `SignUpSignInGoogle` 。
 3. 將 **PublicPolicyUri** 的值更新成原則的 URI。 例如：`http://contoso.com/B2C_1A_signup_signin_google`
 4. 更新 **DefaultUserJourney** 中 **ReferenceId** 屬性的值，以符合您所建立新使用者旅程圖 (SignUpSignGoogle) 的識別碼。

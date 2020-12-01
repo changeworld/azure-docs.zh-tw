@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c14f406e5671e1eefb43f0208044f9945e446267
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a775ce6b7c560783a22697c5dd92288c5d5b7d4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226568"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96343700"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>在 Azure Active Directory 中撰寫屬性對應的運算式
 在設定雲端佈建時，運算式對應將是您可以指定的屬性對應類型之一。 
@@ -289,7 +289,7 @@ InStr 函式會在字串中尋找第一個出現的子字串
 
 `num InStr(str stringcheck, str stringmatch)`  
 `num InStr(str stringcheck, str stringmatch, num start)`  
-`num InStr(str stringcheck, str stringmatch, num start , enum compare)`
+`num InStr(str stringcheck, str stringmatch, num start, enum compare)`
 
 * stringcheck：要搜尋的字串
 * stringmatch：要尋找的字串
@@ -501,8 +501,8 @@ RemoveDuplicates 函式會接受多重值的字串，並確定每個值都是唯
    | --- | --- | --- | --- |
    | **來源** |必要 |String |通常為 **source** 物件的屬性名稱。 |
    | **oldValue** |選用 |String |在 **source** 或 **template** 中要被取代的值。 |
-   | **regexPattern** |選用 |String |在 **source**中要被取代的值的規則運算式模式。 或者，如果使用了 **replacementPropertyName**，則為從 **replacementPropertyName** 擷取值的模式。 |
-   | **regexGroupName** |選用 |String |**regexPattern**內的群組名稱。 只有在使用了 **replacementPropertyName** 時，我們才會從 **replacementPropertyName** 擷取此群組的值作為 **replacementValue**。 |
+   | **regexPattern** |選用 |String |在 **source** 中要被取代的值的規則運算式模式。 或者，如果使用了 **replacementPropertyName**，則為從 **replacementPropertyName** 擷取值的模式。 |
+   | **regexGroupName** |選用 |String |**regexPattern** 內的群組名稱。 只有在使用了 **replacementPropertyName** 時，我們才會從 **replacementPropertyName** 擷取此群組的值作為 **replacementValue**。 |
    | **replacementValue** |選用 |String |要取代舊值的新值。 |
    | **replacementAttributeName** |選用 |String |要用於取代值的屬性名稱 |
    | **template** |選用 |String |提供 **template** 值時，我們會尋找範本內的 **oldValue**，並將其取代為 **source** 值。 |
@@ -582,7 +582,7 @@ StringFromSid 函式會將包含安全性識別碼的位元組陣列轉換為字
 
    | 名稱 | 必要 / 重複 | 類型 | 注意 |
    | --- | --- | --- | --- |
-   | **來源** |必要 |String |要檢查的**來源**值。 |
+   | **來源** |必要 |String |要檢查的 **來源** 值。 |
    | **defaultValue** |選用 |String |當 source 不符合任何 key 時要使用的預設值。 可以是空字串 ("")。 |
    | **key** |必要 |String |要與 **source** 值比較的 **key**。 |
    | **value** |必要 |String |符合 key 的 **source** 的取代值。 |
@@ -712,7 +712,7 @@ Split([extensionAttribute5], ",")
 
 **範例輸入/輸出：** <br>
 
-* **輸入** (extensionAttribute5)："PermissionSetOne, PermisionSetTwo"
+* **輸入** (extensionAttribute5) ： "PermissionSetOne，PermissionSetTwo"
 * **輸出**：["PermissionSetOne", "PermissionSetTwo"]
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>以特定格式將日期輸出為字串

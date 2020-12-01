@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/05/2020
 ms.author: kenwith
 ms.custom: contperfq2
-ms.openlocfilehash: 4c37923b0955652a0627808b19762095c18bdedc
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: a1d83f91ad82bddacb7e806e31151b8e4a7ab612
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737671"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344924"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>在 Azure AD 中撰寫屬性對應之運算式的參考
 
@@ -41,7 +41,7 @@ ms.locfileid: "92737671"
 [Append](#append) &nbsp; &nbsp; 附加 &nbsp; &nbsp;[BitAnd](#bitand) &nbsp; &nbsp; BitAnd &nbsp; &nbsp;[CBool](#cbool) &nbsp; &nbsp; CBool &nbsp; &nbsp;[Coalesce](#coalesce) &nbsp; &nbsp; 聯合 &nbsp; &nbsp;[ConvertToBase64](#converttobase64) &nbsp; &nbsp; ConvertToBase64 &nbsp; &nbsp;[ConvertToUTF8Hex](#converttoutf8hex) &nbsp; &nbsp; ConvertToUTF8Hex &nbsp; &nbsp;[Count](#count) &nbsp; &nbsp; 計數 &nbsp; &nbsp;[CStr](#cstr) &nbsp; &nbsp; CStr &nbsp; &nbsp;[DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp; &nbsp; FormatDateTime &nbsp; &nbsp;[Guid](#guid) &nbsp; &nbsp; Guid &nbsp; &nbsp;[IIF](#iif) &nbsp; &nbsp; IIF &nbsp; &nbsp;[InStr](#instr) &nbsp; &nbsp; InStr &nbsp; &nbsp;[IsNull](#isnull) &nbsp; &nbsp; IsNull &nbsp; &nbsp;[IsNullOrEmpty](#isnullorempty) &nbsp; &nbsp; IsNullOrEmpty &nbsp; &nbsp;[IsPresent](#ispresent) &nbsp; &nbsp; IsPresent &nbsp; &nbsp;[IsString](#isstring) &nbsp; &nbsp; IsString &nbsp; &nbsp;[Item](#item) &nbsp; &nbsp; 專案 &nbsp; &nbsp;[Join](#join) &nbsp; &nbsp; 聯結 &nbsp; &nbsp;[Left](#left) &nbsp; &nbsp; 左方 &nbsp; &nbsp;[Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp; &nbsp; &nbsp; &nbsp; [RemoveDuplicates](#removeduplicates) &nbsp; &nbsp; &nbsp; &nbsp; [Replace](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [Split](#split) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Switch](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper) &nbsp; &nbsp; &nbsp; &nbsp; [Word](#word)
 
 ---
-### <a name="append"></a>附加
+### <a name="append"></a>Append
 
 **函數：** 附加 (來源，尾碼) 
 
@@ -83,7 +83,7 @@ ms.locfileid: "92737671"
 `CBool(Expression)`
 
 **描述：**  
- `CBool`根據評估的運算式傳回布林值。 如果運算式評估為非零值，則傳回 `CBool` *True* ，否則會傳回 *False* 。
+ `CBool`根據評估的運算式傳回布林值。 如果運算式評估為非零值，則傳回 `CBool` *True*，否則會傳回 *False*。
 
 **參數：** 
 
@@ -143,7 +143,7 @@ ms.locfileid: "92737671"
  傳回 48656C6C6F20776F726C6421
 
 ---
-### <a name="count"></a>Count
+### <a name="count"></a>計數
 **函數：** Count (屬性) 
 
 **描述：** Count 函數會傳回多重值屬性中的元素數目。
@@ -240,7 +240,7 @@ ms.locfileid: "92737671"
 | **value1** |必要 |String |要搜尋的字串 |
 | **value2** |必要 |String |要尋找的字串 |
 | **開始** |選用 |整數 |尋找子字串的起始位置|
-| **compareType** |選用 |列舉 |可以是 vbTextCompare 或 vbBinaryCompare |
+| **compareType** |選擇性 |列舉 |可以是 vbTextCompare 或 vbBinaryCompare |
 
 **例子：**
 `InStr("The quick brown fox","quick")`
@@ -444,19 +444,19 @@ ms.locfileid: "92737671"
 
 **描述：** 以區分大小寫的方式取代字串中的值。 函數會根據提供的參數而有不同的行為：
 
-* 若提供 **oldValue** 及 **replacementValue** ：
+* 若提供 **oldValue** 及 **replacementValue**：
   
   * 使用 **replacementValue** 取代 **來源** 中所有出現的 **oldValue**
-* 若提供 **oldValue** 及 **範本** ：
+* 若提供 **oldValue** 及 **範本**：
   
   * 將 **範本** 中全部出現的 **oldValue** 取代為 **來源** 值
 * 提供 **regexPattern** 和 **replacementValue** 時：
 
   * 函式會將 **regexPattern** 套用至 **source** 字串，而您可以使用 regex 群組名稱來建構 **replacementValue** 的字串
-* 提供 **regexPattern** 、 **regexGroupName** 、 **replacementValue** 時：
+* 提供 **regexPattern**、**regexGroupName**、**replacementValue** 時：
   
   * 函式會將 **regexPattern** 套用至 **source** 字串，並將所有符合 **regexGroupName** 的值取代為 **replacementValue**
-* 提供 **regexPattern** 、 **regexGroupName** 、 **replacementAttributeName** 時：
+* 提供 **regexPattern**、**regexGroupName**、**replacementAttributeName** 時：
   
   * 如果 **source** 沒有值，則傳回 **source**
   * 如果 **source** 具有值，則函式會將 **regexPattern** 套用至 **source** 字串，並將所有符合 **regexGroupName** 的值取代為與 **replacementAttributeName** 相關聯的值
@@ -467,8 +467,8 @@ ms.locfileid: "92737671"
 | --- | --- | --- | --- |
 | **source** |必要 |String |通常是來自 **來源** 物件的屬性名稱。 |
 | **oldValue** |選用 |String |在 **source** 或 **template** 中要被取代的值。 |
-| **regexPattern** |選用 |String |用於比對 **來源** 中要取代之值的 Regex 模式。 或者，如果使用了 **replacementPropertyName** ，則為從 **replacementPropertyName** 擷取值的模式。 |
-| **regexGroupName** |選用 |String |**regexPattern** 內的群組名稱。 只有在使用了 **replacementPropertyName** 時，我們才會從 **replacementPropertyName** 擷取此群組的值作為 **replacementValue** 。 |
+| **regexPattern** |選用 |String |用於比對 **來源** 中要取代之值的 Regex 模式。 或者，如果使用了 **replacementPropertyName**，則為從 **replacementPropertyName** 擷取值的模式。 |
+| **regexGroupName** |選用 |String |**regexPattern** 內的群組名稱。 只有在使用了 **replacementPropertyName** 時，我們才會從 **replacementPropertyName** 擷取此群組的值作為 **replacementValue**。 |
 | **replacementValue** |選用 |String |要取代舊值的新值。 |
 | **replacementAttributeName** |選用 |String |要用於取代值的屬性名稱 |
 | **範本** |選用 |String |提供 **範本** 值時，我們會尋找範本內部的 **oldValue** ，並以 **來源** 值取代。 |
@@ -482,7 +482,7 @@ ms.locfileid: "92737671"
 
  - 這是最上層函式，無法巢狀處理。
  - 此函式無法套用至具有相符優先順序的屬性。   
- - 此函式只能用於建立項目。 搭配屬性使用此函式時，請將 [套用對應]  屬性設定為 [僅限物件建立期間]  。
+ - 此函式只能用於建立項目。 搭配屬性使用此函式時，請將 [套用對應] 屬性設定為 [僅限物件建立期間]。
  - 此函式目前僅支援「Workday 到 Active Directory 的使用者佈建」。 您無法將其與其他佈建應用程式搭配使用。 
 
 
@@ -534,7 +534,7 @@ ms.locfileid: "92737671"
 ### <a name="switch"></a>參數
 **函數：** Switch (source、defaultValue、key1、value1、key2、value2、... ) 
 
-**描述：** 當 **來源** 值符合索引 **鍵** 時，會傳回該索引 **鍵** 的 **值** 。 若 **來源** 值不符合任何 key，則傳回 **defaultValue** .。  **key** 和 **value** 參數必須永遠成對出現。 函式必須要有偶數數目的參數。 函數不能用於參考屬性，例如 manager。 
+**描述：** 當 **來源** 值符合索引 **鍵** 時，會傳回該索引 **鍵** 的 **值**。 若 **來源** 值不符合任何 key，則傳回 **defaultValue**.。  **key** 和 **value** 參數必須永遠成對出現。 函式必須要有偶數數目的參數。 函數不能用於參考屬性，例如 manager。 
 
 **參數：** 
 
@@ -542,7 +542,7 @@ ms.locfileid: "92737671"
 | --- | --- | --- | --- |
 | **source** |必要 |String |**Source** 值。 |
 | **defaultValue** |選用 |String |當 source 不符合任何 key 時要使用的預設值。 可以是空字串 ("")。 |
-| **key** |必要 |String |要與 **source** 值比較的 **key** 。 |
+| **key** |必要 |String |要與 **source** 值比較的 **key**。 |
 | **value** |必要 |String |符合 key 的 **source** 的取代值。 |
 
 ---
@@ -556,7 +556,7 @@ ms.locfileid: "92737671"
 | 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **source** |必要 |String |通常為 source 物件的屬性名稱 |
-| **culture** |選用 |String |根據 RFC 4646，文化特性 (Culture) 名稱的格式為 *languagecode2-country/regioncode2* ，其中 *languagecode2* 是兩個字母的語言代碼，而 *country/regioncode2* 則是兩個字母的子文化特性代碼。 範例包括 ja-JP 代表日文 (日本)，en-US 代表英文 (美國)。 如果沒有兩個字母的語言代碼可供使用，則會使用衍生自 ISO 639-2 的三個字母代碼。|
+| **culture** |選用 |String |根據 RFC 4646，文化特性 (Culture) 名稱的格式為 *languagecode2-country/regioncode2*，其中 *languagecode2* 是兩個字母的語言代碼，而 *country/regioncode2* 則是兩個字母的子文化特性代碼。 範例包括 ja-JP 代表日文 (日本)，en-US 代表英文 (美國)。 如果沒有兩個字母的語言代碼可供使用，則會使用衍生自 ISO 639-2 的三個字母代碼。|
 
 ---
 ### <a name="toupper"></a>ToUpper
@@ -569,7 +569,7 @@ ms.locfileid: "92737671"
 | 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **source** |必要 |String |通常為 source 物件的屬性名稱。 |
-| **culture** |選用 |String |根據 RFC 4646，文化特性 (Culture) 名稱的格式為 *languagecode2-country/regioncode2* ，其中 *languagecode2* 是兩個字母的語言代碼，而 *country/regioncode2* 則是兩個字母的子文化特性代碼。 範例包括 ja-JP 代表日文 (日本)，en-US 代表英文 (美國)。 如果沒有兩個字母的語言代碼可供使用，則會使用衍生自 ISO 639-2 的三個字母代碼。|
+| **culture** |選用 |String |根據 RFC 4646，文化特性 (Culture) 名稱的格式為 *languagecode2-country/regioncode2*，其中 *languagecode2* 是兩個字母的語言代碼，而 *country/regioncode2* 則是兩個字母的子文化特性代碼。 範例包括 ja-JP 代表日文 (日本)，en-US 代表英文 (美國)。 如果沒有兩個字母的語言代碼可供使用，則會使用衍生自 ISO 639-2 的三個字母代碼。|
 
 ---
 ### <a name="word"></a>Word
@@ -610,7 +610,7 @@ ms.locfileid: "92737671"
 **範例輸入/輸出：** 
 
 * **輸入** (mail)："john.doe@contoso.com"
-* **輸出** ："john.doe"
+* **輸出**："john.doe"
 
 ### <a name="append-constant-suffix-to-user-name"></a>附加常數尾碼到使用者名稱
 如果您使用 Salesforce 沙箱，您可能需要附加額外的尾碼到您所有的使用者名稱，才能進行同步處理。
@@ -620,8 +620,8 @@ ms.locfileid: "92737671"
 
 **範例輸入/輸出：** 
 
-* **輸入** ：(userPrincipalName)："John.Doe@contoso.com"
-* **輸出** ： " John.Doe@contoso.com.test "
+* **輸入**：(userPrincipalName)："John.Doe@contoso.com"
+* **輸出**： " John.Doe@contoso.com.test "
 
 ### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>串連部分名字和姓氏產生使用者別名
 您必須取出使用者名字的前 3 個字母和使用者姓氏的前 5 個字母來產生使用者別名。
@@ -633,7 +633,7 @@ ms.locfileid: "92737671"
 
 * **輸入** (givenName)："John"
 * **輸入** (surname)："Doe"
-* **輸出** ： "JohDoe"
+* **輸出**： "JohDoe"
 
 ### <a name="remove-diacritics-from-a-string"></a>移除字串中的變音符號
 您必須以不含重音符號的同等字元取代含重音符號的字元。
@@ -643,7 +643,7 @@ ms.locfileid: "92737671"
 **範例輸入/輸出：** 
 
 * **輸入** (givenName)： "Zoë"
-* **輸出** ： "Zoe"
+* **輸出**： "Zoe"
 
 ### <a name="split-a-string-into-a-multi-valued-array"></a>將字串分割成多重值陣列
 您必須採用以逗號分隔的字串清單，然後將其分割成可插入到多重值屬性 (例如 Salesforce 的 PermissionSets 屬性) 的陣列。 在此範例中，已在 Azure AD 的 extensionAttribute5 中填入權限集合清單。
@@ -652,8 +652,8 @@ ms.locfileid: "92737671"
 
 **範例輸入/輸出：** 
 
-* **輸入** (extensionAttribute5) ： "PermissionSetOne，PermisionSetTwo"
-* **輸出** ：["PermissionSetOne", "PermissionSetTwo"]
+* **輸入** (extensionAttribute5) ： "PermissionSetOne，PermissionSetTwo"
+* **輸出**：["PermissionSetOne", "PermissionSetTwo"]
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>以特定格式將日期輸出為字串
 您想要以特定格式傳送日期到 SaaS 應用程式。 例如，您要格式化 ServiceNow 的日期。
@@ -665,7 +665,7 @@ ms.locfileid: "92737671"
 **範例輸入/輸出：**
 
 * **輸入** (extensionAttribute1)："20150123105347.1Z"
-* **輸出** ： "2015-01-23"
+* **輸出**： "2015-01-23"
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>根據預先定義的一組選項取代值
 
@@ -677,7 +677,7 @@ ms.locfileid: "92737671"
 **範例輸入/輸出：**
 
 * **輸入** (state)："QLD"
-* **輸出** ："Australia/Brisbane"
+* **輸出**："Australia/Brisbane"
 
 ### <a name="replace-characters-using-a-regular-expression"></a>使用規則運算式來取代字元
 您需要尋找符合規則運算式的字元，然後將它們移除。
@@ -689,7 +689,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 **範例輸入/輸出：**
 
 * **輸入** (mailNickname: "john_doe72"
-* **輸出** ： "72"
+* **輸出**： "72"
 
 ### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>將產生的 userPrincipalName (UPN) 值轉換成小寫
 在以下範例中，會將 PreferredFirstName 與 PreferredLastName 來源欄位串連來產生 UPN 值，然後 ToLower 函式會對產生的字串進行操作以將所有字元轉換成小寫。 
@@ -700,7 +700,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
 * **輸入** (PreferredFirstName)："John"
 * **輸入** (PreferredLastName)："Smith"
-* **輸出** ： " john.smith@contoso.com "
+* **輸出**： " john.smith@contoso.com "
 
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>產生 userPrincipalName (UPN) 屬性的唯一值
 根據使用者的名字、中間名和姓氏，您必須先產生 UPN 屬性的值並檢查其在目標 AD 目錄中的唯一性，再將此值指派給 UPN 屬性。
@@ -719,9 +719,9 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
 * **輸入** (PreferredFirstName)："John"
 * **輸入** (PreferredLastName)："Smith"
-* **輸出** ： " John.Smith@contoso.com " 如果的 UPN 值 John.Smith@contoso.com 尚未存在於目錄中
-* **輸出** ： " J.Smith@contoso.com " 如果的 UPN 值 John.Smith@contoso.com 已存在於目錄中
-* **輸出** ： Jo.Smith@contoso.com 如果上述兩個 UPN 值已存在於目錄中，則為 ""
+* **輸出**： " John.Smith@contoso.com " 如果的 UPN 值 John.Smith@contoso.com 尚未存在於目錄中
+* **輸出**： " J.Smith@contoso.com " 如果的 UPN 值 John.Smith@contoso.com 已存在於目錄中
+* **輸出**： Jo.Smith@contoso.com 如果上述兩個 UPN 值已存在於目錄中，則為 ""
 
 ### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>如果不是 Null，則為 flow 郵件值，否則為 flow userPrincipalName
 您想要傳送郵件屬性（如果有的話）。 如果不是，則您想要改為傳送 userPrincipalName 值。
@@ -733,7 +733,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
 * **輸入** (mail) ： Null
 * **輸入** (userPrincipalName) ： " John.Doe@contoso.com "
-* **輸出** ： " John.Doe@contoso.com "
+* **輸出**： " John.Doe@contoso.com "
 
 ## <a name="related-articles"></a>相關文章
 * [自動化 SaaS 應用程式使用者佈建/解除佈建](../app-provisioning/user-provisioning.md)

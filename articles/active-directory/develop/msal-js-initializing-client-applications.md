@@ -13,12 +13,12 @@ ms.date: 07/17/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: ea8629e53ec793b4a63c817b6ec83278a2d23871
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 6b5093c5a1a45aed3493fabd7a362b0579998171
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674077"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96343581"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>使用 MSAL.js 初始化用戶端應用程式
 
@@ -34,16 +34,16 @@ ms.locfileid: "92674077"
 
 註冊您的應用程式之後，您將需要可在 Azure 入口網站中找到的部分或所有下列值。
 
-| 值 | 必要 | 描述 |
+| 值 | 必要 | 說明 |
 |:----- | :------: | :---------- |
 | 應用程式 (用戶端) 識別碼 | 必要 | 可在 Microsoft 身分識別平臺中唯一識別您應用程式的 GUID。 |
-| 授權單位 | 選用 | 身分識別提供者 URL ( *實例* ) 和您應用程式的登 *入物件* 。 當使用者串連時，實例和登入物件會構成 *授權* 單位。 |
-| 目錄 (租用戶) 識別碼 | 選用 | 如果您要建立僅供組織使用的企業營運應用程式（通常稱為 *單一租使用者應用程式* ），請指定此項。 |
-| 重新導向 URI | 選用 | 如果您要建立 web 應用程式，則 `redirectUri` 會指定身分識別提供者 (Microsoft 身分識別平臺) 應傳回其所發出的安全性權杖。 |
+| 授權單位 | 選擇性 | 身分識別提供者 URL (*實例*) 和您應用程式的登 *入物件* 。 當使用者串連時，實例和登入物件會構成 *授權* 單位。 |
+| 目錄 (租用戶) 識別碼 | 選擇性 | 如果您要建立僅供組織使用的企業營運應用程式（通常稱為 *單一租使用者應用程式*），請指定此項。 |
+| 重新導向 URI | 選擇性 | 如果您要建立 web 應用程式，則 `redirectUri` 會指定身分識別提供者 (Microsoft 身分識別平臺) 應傳回其所發出的安全性權杖。 |
 
 ## <a name="initialize-msaljs-2x-apps"></a>初始化 MSAL.js 2.x 應用程式
 
-使用[設定物件具][msal-js-configuration]現化[PublicClientApplication][msal-js-publicclientapplication] ，以初始化 MSAL authentication 內容。 [必要的最小設定] 屬性是 `clientID` 您應用程式的，在 Azure 入口網站的應用程式註冊的 [ **總覽** ] 頁面上顯示為 **應用程式 (用戶端) 識別碼** 。
+使用[設定物件具][msal-js-configuration]現化[PublicClientApplication][msal-js-publicclientapplication] ，以初始化 MSAL authentication 內容。 [必要的最小設定] 屬性是 `clientID` 您應用程式的，在 Azure 入口網站的應用程式註冊的 [**總覽**] 頁面上顯示為 **應用程式 (用戶端) 識別碼**。
 
 以下是範例設定物件和具現化 `PublicClientApplication` ：
 
@@ -108,12 +108,12 @@ msalInstance.handleRedirectPromise().then((tokenResponse) => {
 承諾有三個可能的結果：
 
 - `.then` 已叫用且 `tokenResponse` 為 truthy：應用程式從成功的重新導向作業傳回。
-- `.then` 會叫用，且 `tokenResponse` falsey (`null`) ：應用程式不會從重新導向作業傳回。
+- `.then` 會叫用，且 `tokenResponse` 假 (`null`) ：應用程式不會從重新導向作業傳回。
 - `.catch` 叫用：應用程式從重新導向作業傳回，而且發生錯誤。
 
 ## <a name="initialize-msaljs-1x-apps"></a>初始化 MSAL.js 1.x 應用程式
 
-使用設定物件具現化 [UserAgentApplication][msal-js-useragentapplication] ，以初始化 MSAL 1.x 驗證內容。 [必要的最小設定] 屬性是 `clientID` 您應用程式的，在 Azure 入口網站的應用程式註冊的 [ **總覽** ] 頁面上顯示為 **應用程式 (用戶端) 識別碼** 。
+使用設定物件具現化 [UserAgentApplication][msal-js-useragentapplication] ，以初始化 MSAL 1.x 驗證內容。 [必要的最小設定] 屬性是 `clientID` 您應用程式的，在 Azure 入口網站的應用程式註冊的 [**總覽**] 頁面上顯示為 **應用程式 (用戶端) 識別碼**。
 
 針對在 MSAL.js 1.2. x 或更早版本中具有重新導向流程 ([loginRedirect][msal-js-loginredirect] 和 [>acquiretokenredirect][msal-js-acquiretokenredirect]) 的驗證方法，您必須透過方法明確地註冊成功或錯誤的回呼 `handleRedirectCallback()` 。 MSAL.js 1.2. x 和更早版本中需要明確註冊回呼，因為重新導向流程不會傳回像是具有快顯體驗的方法的承諾。 在 MSAL.js 版本 1.3. x 和更新版本中，註冊回呼是 *選擇性* 的。
 

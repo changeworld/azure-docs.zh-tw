@@ -8,12 +8,12 @@ keywords: hadoop 高可用性
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: c322380d6a41e69baa8f753b84c0bc074f334647
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0275fa4cc46dff8781d73563fd250b1ec62ddd56
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547022"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344108"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Azure HDInsight 商務持續性架構
 
@@ -50,13 +50,13 @@ ms.locfileid: "92547022"
 
 在 *具有隨選次要* 架構的作用中主要區域中，應用程式會寫入至使用中的主要區域，而不會在正常作業期間于次要區域中布建任何叢集。 次要區域中的 SQL 中繼存放區和儲存體是持續性的，而 HDInsight 叢集只會在排程的 Hive 複寫執行之前，視需要進行編寫和部署。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary.png" alt-text="Hive 和互動式查詢架構":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary.png" alt-text="使用隨選次要的 active primary":::
 
 #### <a name="hive-active-primary-with-standby-secondary"></a>具有待命次要資料庫的 Hive 主動主要
 
 在 *具有待命次要資料庫* 的作用中主要區域中，應用程式會寫入至使用中的主要區域，而在唯讀模式中的待命相應減少次要叢集則會在正常作業期間執行。 在正常作業期間，您可以選擇將區域特定的讀取作業卸載至次要。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="Hive 和互動式查詢架構":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="作用中主要與待命次要資料庫":::
 
 如需 Hive 複寫和程式碼範例的詳細資訊，請參閱[Azure HDInsight 叢集中的 Apache Hive](./interactive-query/apache-hive-replication.md)複寫
 
@@ -85,13 +85,13 @@ Spark 工作負載不一定會涉及 Hive 元件。 為了讓 Spark SQL 工作�
 
 在一般作業期間，應用程式會在主要區域中讀取和寫入 Spark 和 Hive 叢集，而不會在次要區域中布建任何叢集。 SQL 中繼存放區、Hive 儲存體和 Spark 儲存體在次要區域中是持續性的。 Spark 和 Hive 叢集會依需求進行編寫和部署。 當 Azure Data Factory `DistCP` 可以用來複製獨立 Spark 儲存體時，會使用 hive 複寫來複寫 Hive 儲存體和 hive 中繼存放區。 由於相依性計算的關係，hive 叢集必須在每個 Hive 複寫執行之前部署 `DistCp` 。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary-spark.png" alt-text="Hive 和互動式查詢架構":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary-spark.png" alt-text="具有隨選次要 Apache Spark 架構的 active primary":::
 
 #### <a name="spark-active-primary-with-standby-secondary"></a>具有待命次要資料庫的 Spark active primary
 
 在一般作業期間，應用程式會讀取及寫入主要區域中的 Spark 和 Hive 叢集，而在唯讀模式中，則會在次要區域中執行，以唯讀模式來擴充 Hive 和 Spark 叢集。 在正常作業期間，您可以選擇將區域特定的 Hive 和 Spark 讀取作業卸載至次要。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary-spark.png" alt-text="Hive 和互動式查詢架構":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary-spark.png" alt-text="作用中的主要待命次要 Apache Spark ":::
 
 ## <a name="apache-hbase"></a>Apache HBase (英文)
 
@@ -131,19 +131,19 @@ HBase 複寫會使用完全自動化的方式，在 HBase 叢集之間使用近�
 
 次要叢集會以一般 HBase 叢集的形式運作，該叢集可裝載自己的資料表，並可提供來自區域應用程式的讀取和寫入。 不過，寫入至次要複本的複寫資料表或資料表不會複寫回主要複本。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-follower.png" alt-text="Hive 和互動式查詢架構":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-follower.png" alt-text="HBase 領導人的進行者模型":::
 
 #### <a name="hbase-replication--leader--leader-model"></a>HBase Replication：領導者–領導人模型
 
 此跨區域設定與單向設定非常類似，不同之處在于複寫會在主要區域和次要區域之間雙向。 應用程式可以使用讀取-寫入模式中的兩個叢集，而更新則會以非同步方式在兩者之間交換。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-leader.png" alt-text="Hive 和互動式查詢架構":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-leader.png" alt-text="HBase 領導人領導人模型":::
 
 #### <a name="hbase-replication-multi-region-or-cyclic"></a>HBase 複寫：多區域或迴圈
 
 多區域/迴圈複寫模型是 HBase 複寫的延伸模組，可用來建立具有多個應用程式的全域重複 HBase 架構，以讀取和寫入區域特定的 HBase 叢集。 您可以根據商務需求，根據領導者/領導人或領導人/等的各種組合來設定叢集。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-cyclic.png" alt-text="Hive 和互動式查詢架構":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-cyclic.png" alt-text="HBase 迴圈模型":::
 
 ## <a name="apache-kafka"></a>Apache Kafka
 
@@ -151,7 +151,7 @@ HBase 複寫會使用完全自動化的方式，在 HBase 叢集之間使用近�
 
 根據在複寫開始時的主題存留期，MirrorMaker 主題複寫可能會導致來源與複本主題之間有不同的位移。 HDInsight Kafka 叢集也支援主題資料分割複寫，這是在個別叢集層級的高可用性功能。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-replication.png" alt-text="Hive 和互動式查詢架構":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-replication.png" alt-text="Apache Kafka 複寫":::
 
 ### <a name="apache-kafka-architectures"></a>Apache Kafka 架構
 
@@ -172,7 +172,7 @@ Active-Passive 安裝程式會啟用從主動到被動的非同步單向鏡像�
 * 主動與被動叢集之間的主題之間的最終一致性。
 * 容錯回復至主要可能會導致主題中的訊息不一致。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-passive.png" alt-text="Hive 和互動式查詢架構":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-passive.png" alt-text="Apache Kafka 主動被動模型":::
 
 #### <a name="kafka-replication-active--active"></a>Kafka Replication： Active-Active
 
@@ -188,7 +188,7 @@ Active-Active 設定牽涉到兩個地區分隔的 VNet 對等互連 HDInsight K
 * 迴圈複寫的問題必須解決。  
 * 雙向複寫會導致較高的區域資料出口成本。
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-active.png" alt-text="Hive 和互動式查詢架構":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-active.png" alt-text="Apache Kafka 使用中的現用模型":::
 
 ## <a name="hdinsight-enterprise-security-package"></a>HDInsight 企業安全性套件
 
@@ -198,13 +198,13 @@ Ranger 中繼存放區 replication：
 
 Ranger 中繼存放區是用來持續儲存和提供 Ranger 原則來控制資料授權。 建議您在主要和次要中維護獨立的 Ranger 原則，並將次要複本維護為讀取複本。
   
-如果需要在主要和次要之間保持 Ranger 原則的同步，請使用 [Ranger 匯入/匯出](https://cwiki.apache.org/confluence/display/RANGER/User+Guide+For+Import-Export#:~:text=Ranger%20has%20introduced%20a%20new,can%20import%20and%20export%20policies.&text=Also%20can%20export%2Fimport%20a,repositories\)%20via%20Ranger%20Admin%20UI) 定期備份，並將 Ranger 原則從主要備份匯入到次要。
+如果需要在主要和次要之間保持 Ranger 原則的同步，請使用 [Ranger 匯入/匯出](https://cwiki.apache.org/confluence/display/RANGER/User+Guide+For+Import-Export) 定期備份，並將 Ranger 原則從主要備份匯入到次要。
 
 在主要和次要之間複寫 Ranger 原則可能會導致次要複本變成啟用寫入，而導致資料不一致的次要複本上發生意外的寫入。  
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hdinsight-enterprise-security-package.png" alt-text="Hive 和互動式查詢架構":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hdinsight-enterprise-security-package.png" alt-text="HDInsight 企業安全性套件架構":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解本文中討論的專案，請參閱：
 

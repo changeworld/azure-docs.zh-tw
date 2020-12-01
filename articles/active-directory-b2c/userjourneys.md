@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 10/13/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fda57ae152efbb04a793c6acf63465fe8d406a1a
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 5b89126b837f9c197a8babf81abb17bfd98002e4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998646"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344992"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -29,19 +29,19 @@ ms.locfileid: "91998646"
 
 **UserJourneys** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 說明 |
 | ------- | ----------- | ----------- |
 | UserJourney | 1:n | 使用者旅程圖，可定義完整使用者流程所需的所有建構。 |
 
 **UserJourney** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
 | Id | 是 | 使用者旅程圖的識別碼，可用來從原則中的其他元素參考它。 [信賴憑證者原則](relyingparty.md)的 **DefaultUserJourney** 元素會指向這個屬性。 |
 
 **UserJourney** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 說明 |
 | ------- | ----------- | ----------- |
 | OrchestrationSteps | 1:n | 必須遵循才能獲得成功交易的協調流程序列。 每個使用者旅程圖都由依序執行的已排序協調流程步驟清單所組成。 如果有任何步驟失敗，交易就會失敗。 |
 
@@ -55,7 +55,7 @@ ms.locfileid: "91998646"
 
 **OrchestrationSteps** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 說明 |
 | ------- | ----------- | ----------- |
 | OrchestrationStep | 1:n | 已排序的協調流程步驟。 |
 
@@ -70,7 +70,7 @@ ms.locfileid: "91998646"
 
 **OrchestrationStep** 元素可以包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 說明 |
 | ------- | ----------- | ----------- |
 | 先決條件 | 0:n | 必須基於要執行的協調流程步驟滿足的先決條件清單。 |
 | ClaimsProviderSelections | 0:n | 適用於協調流程步驟的宣告提供者選取項目清單。 |
@@ -81,14 +81,14 @@ ms.locfileid: "91998646"
 
 **Preconditions** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 說明 |
 | ------- | ----------- | ----------- |
 | 先決條件 | 1:n | 根據所使用的技術設定檔，系統會依據宣告提供者選取項目來將用戶端重新導向，或進行伺服器呼叫來交換宣告。 |
 
 
 #### <a name="precondition"></a>先決條件
 
-**先決條件**元素包含下列屬性：
+**先決條件** 元素包含下列屬性：
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
@@ -162,21 +162,21 @@ ms.locfileid: "91998646"
 
 類型 `ClaimsProviderSelection` 或 `CombinedSignInAndSignUp` 的協調流程步驟可能包含使用者可用以登入的宣告提供者清單。 `ClaimsProviderSelections` 元素內部的元素順序會控制呈現給使用者的識別提供者順序。
 
-**>claimsproviderselections >claimsproviderselection**元素包含下列元素：
+**>claimsproviderselections >claimsproviderselection** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 說明 |
 | ------- | ----------- | ----------- |
 | ClaimsProviderSelection | 1:n | 提供可選取的宣告提供者清單。|
 
-**>claimsproviderselections >claimsproviderselection**元素包含下列屬性：
+**>claimsproviderselections >claimsproviderselection** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| DisplayOption| 否 | 控制案例的行為，其中提供單一宣告提供者選取專案。 可能的值：  `DoNotShowSingleProvider`   (預設) ，使用者會立即重新導向至同盟身分識別提供者。 或  `ShowSingleProvider`   Azure AD B2C 使用單一身分識別提供者選取專案來顯示登入頁面。 若要使用這個屬性， [內容定義版本](page-layout.md) 必須是  `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` 和更新版本。|
+| DisplayOption| 否 | 控制案例的行為，其中提供單一宣告提供者選取專案。 可能的值： `DoNotShowSingleProvider` (預設) ，使用者會立即重新導向至同盟身分識別提供者。 或 `ShowSingleProvider` Azure AD B2C 使用單一身分識別提供者選取專案來顯示登入頁面。 若要使用這個屬性， [內容定義版本](page-layout.md) 必須是 `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` 和更新版本。|
 
 **ClaimsProviderSelection** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
 | TargetClaimsExchangeId | 否 | 宣告交換的識別碼，這會在宣告提供者選取項目的下一個協調流程步驟中執行。 您必須指定這個屬性或 ValidationClaimsExchangeId 屬性，但不需同時指定。 |
 | ValidationClaimsExchangeId | 否 | 宣告交換的識別碼，這會在目前協調流程步驟中執行以驗證宣告提供者選取項目。 您必須指定這個屬性或 TargetClaimsExchangeId 屬性，但不需同時指定。 |
@@ -222,29 +222,29 @@ ms.locfileid: "91998646"
 
 **ClaimsExchanges** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 說明 |
 | ------- | ----------- | ----------- |
 | ClaimsExchange | 1:n | 根據所使用的技術設定檔，系統會依據所選取的 ClaimsProviderSelection 來將用戶端重新導向，或進行伺服器呼叫來交換宣告。 |
 
 **ClaimsExchange** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
 | Id | 是 | 宣告交換步驟的識別碼。 識別碼會用於參考原則中來自宣告提供者選取步驟的宣告交換。 |
 | TechnicalProfileReferenceId | 是 | 要執行的技術設定檔識別碼。 |
 
 ## <a name="journeylist"></a>JourneyList
 
-**JourneyList**元素包含下列元素：
+**JourneyList** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 說明 |
 | ------- | ----------- | ----------- |
 | 候選項目 | 1:1 | 要呼叫之 sub 旅程的參考。 |
 
 ### <a name="candidate"></a>候選項目
 
-**候選**元素包含下列屬性：
+**候選** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
 | SubJourneyReferenceId | 是 | 要執行之 [sub 旅程](subjourneys.md) 的識別碼。 |

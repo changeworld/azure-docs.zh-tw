@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/17/2020
 ms.author: lle
-ms.openlocfilehash: 8195c4d072acce5345fa9752f97713aed22d962f
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 635178999398287649d8630fc5262a385afc48b2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296949"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341762"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>針對自我裝載整合執行階段進行疑難排解
 
@@ -752,7 +752,7 @@ ADF V1 客戶：
 - 基於原因1，請確定 ADF 伺服器憑證及其憑證鏈是否受安裝 SHIR 的電腦所信任。
 - 基於原因2，請信任 SHIR 電腦上取代的根 CA，或將 proxy 設定為不要取代 ADF 伺服器憑證。
 
-請參閱 [這篇文章](https://docs.microsoft.com/skype-sdk/sdn/articles/installing-the-trusted-root-certificate) ，以取得在 Windows 上信任憑證的詳細資料。
+請參閱 [這篇文章](/skype-sdk/sdn/articles/installing-the-trusted-root-certificate) ，以取得在 Windows 上信任憑證的詳細資料。
 
 #### <a name="additional-info"></a>其他資訊
 我們即將推出從 DigiCert 簽署的新 SSL 憑證，請檢查 DigiCert 的全域根目錄 G2 是否位於受信任的根 CA 中。
@@ -776,7 +776,7 @@ ADF V1 客戶：
 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需疑難排解的詳細資訊，請嘗試下列資源：
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: db81f8b60cf4883223f6fc084c19c8da1d07bc9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 282d60b1894ffa186a6b5b6b5630aefa9e961572
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388097"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345128"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定以 Microsoft 帳戶進行登入
 
@@ -37,14 +37,14 @@ ms.locfileid: "85388097"
 1. 選取頂端功能表中的 [目錄 + 訂用帳戶] 篩選，然後選擇包含您 Azure AD 租用戶的目錄，以確定您使用的是包含 Azure AD 租用戶的目錄。
 1. 選擇 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [應用程式註冊]。
 1. 選取 [新增註冊]。
-1. 輸入應用程式的**名稱**。 例如 *MSAapp1*。
+1. 輸入應用程式的 **名稱**。 例如 *MSAapp1*。
 1. 在 [支援的帳戶類型] 底下，選取 [任何組織目錄中的帳戶 (任何 Azure AD 目錄 - 多租用戶) 和個人 Microsoft 帳戶 (例如 Skype、Xbox)]。
 1. 在 [重新導向 URI (選擇性)] 底下，選取 [Web]，然後在文字方塊中輸入 `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/oauth2/authresp`。 以您的 Azure AD B2C 租用戶名稱取代 `<tenant-name>`。
 1. 選取 [註冊]
-1. 記錄應用程式 [概觀] 頁面上所顯示的**應用程式 (用戶端) 識別碼**。 當您在後續小節中設定宣告提供者時，就需要用到此識別碼。
+1. 記錄應用程式 [概觀] 頁面上所顯示的 **應用程式 (用戶端) 識別碼**。 當您在後續小節中設定宣告提供者時，就需要用到此識別碼。
 1. 選取 [憑證及祕密]
 1. 按一下 [新增用戶端密碼]
-1. 輸入該密碼的**描述**，例如 *MSA 應用程式用戶端密碼*，然後按一下 [新增]。
+1. 輸入該密碼的 **描述**，例如 *MSA 應用程式用戶端密碼*，然後按一下 [新增]。
 1. 記錄 [值] 欄中顯示的應用程式密碼。 您將在下一節中使用此值。
 
 ## <a name="configuring-optional-claims"></a>設定選擇性宣告
@@ -100,7 +100,7 @@ ms.locfileid: "85388097"
             <Item Key="response_mode">form_post</Item>
             <Item Key="scope">openid profile email</Item>
             <Item Key="HttpBinding">POST</Item>
-            <Item Key="UsePolicyInRedirectUri">0</Item>
+            <Item Key="UsePolicyInRedirectUri">false</Item>
             <Item Key="client_id">Your Microsoft application client ID</Item>
           </Metadata>
           <CryptographicKeys>

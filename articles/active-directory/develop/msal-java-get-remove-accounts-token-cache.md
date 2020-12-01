@@ -13,12 +13,12 @@ ms.date: 11/07/2019
 ms.author: sagonzal
 ms.reviewer: navyasri.canumalla
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 6267c2118b7bac9befb42102d1118faac639bf49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc039e06c8c9d75608b60c2f48e86bc5503e5aec
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87312549"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344856"
 ---
 # <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java"></a>使用 MSAL for JAVA 從權杖快取取得和移除帳戶
 
@@ -39,7 +39,7 @@ Set<IAccount> accounts = pca.getAccounts().join();
 
 ## <a name="remove-accounts-from-the-cache"></a>從快取中移除帳戶
 
-若要從快取中移除帳戶，請尋找需要移除的帳戶，然後呼叫， `PublicClientApplicatoin.removeAccount()` 如下列範例所示：
+若要從快取中移除帳戶，請尋找需要移除的帳戶，然後呼叫， `PublicClientApplication.removeAccount()` 如下列範例所示：
 
 ```java
 Set<IAccount> accounts = pca.getAccounts().join();

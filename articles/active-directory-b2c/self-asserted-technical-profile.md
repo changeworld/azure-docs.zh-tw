@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a4e76e3924b1b14660dce8a3b58f7dd5b2715eec
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e17c390dddcb2af9fdc83b45ae812ef1fff7f1c3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670116"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345077"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義自我判斷技術設定檔
 
@@ -114,7 +114,7 @@ Azure Active Directory B2C (Azure AD B2C) 中的所有互動都必須提供自�
 </TechnicalProfile>
 ```
 
-`age`基底原則中的宣告不會再顯示在使用者的畫面上，它實際上是「隱藏」。 若要顯示宣告 `age` 並從使用者收集存留期值，您必須新增 `age` **DisplayClaim** 。
+`age`基底原則中的宣告不會再顯示在使用者的畫面上，它實際上是「隱藏」。 若要顯示宣告 `age` 並從使用者收集存留期值，您必須新增 `age` **DisplayClaim**。
 
 ## <a name="output-claims"></a>輸出宣告
 
@@ -133,9 +133,9 @@ Azure Active Directory B2C (Azure AD B2C) 中的所有互動都必須提供自�
 
 使用輸出宣告的時機：
 
-- **宣告是由輸出宣告轉換輸出** 。
+- **宣告是由輸出宣告轉換輸出**。
 - **在輸出宣告中設定預設值** ，而不需要從使用者收集資料，或從驗證技術設定檔傳回資料。 `LocalAccountSignUpWithLogonEmail` 自我判斷提示技術設定檔會將 **executed-SelfAsserted-Input** 宣告設定為 `true`。
-- **驗證技術設定檔會傳回輸出宣告** ：您的技術設定檔可能會呼叫驗證技術設定檔來傳回某些宣告。 您可能想要提升宣告，並將其傳回到使用者旅程圖中的下一個協調流程步驟。 例如，使用本機帳戶登入時，名為 `SelfAsserted-LocalAccountSignin-Email` 的自我判斷技術設定檔會呼叫名為 `login-NonInteractive` 的驗證技術設定檔。 此技術設定檔會驗證使用者認證，也會傳回使用者設定檔。 例如，'userPrincipalName'、'displayName'、'givenName' 與 'surName'。
+- **驗證技術設定檔會傳回輸出宣告**：您的技術設定檔可能會呼叫驗證技術設定檔來傳回某些宣告。 您可能想要提升宣告，並將其傳回到使用者旅程圖中的下一個協調流程步驟。 例如，使用本機帳戶登入時，名為 `SelfAsserted-LocalAccountSignin-Email` 的自我判斷技術設定檔會呼叫名為 `login-NonInteractive` 的驗證技術設定檔。 此技術設定檔會驗證使用者認證，也會傳回使用者設定檔。 例如，'userPrincipalName'、'displayName'、'givenName' 與 'surName'。
 - **顯示控制項會傳回輸出宣告** ，您的技術設定檔可能會有 [顯示控制項](display-controls.md)的參考。 顯示控制項會傳回一些宣告，例如已驗證的電子郵件地址。 您可能想要提升宣告，並將其傳回到使用者旅程圖中的下一個協調流程步驟。 顯示控制項功能目前為 **預覽** 狀態。
 
 下列範例示範如何使用可同時使用顯示宣告和輸出宣告的自我判斷技術設定檔。
@@ -197,7 +197,7 @@ Azure Active Directory B2C (Azure AD B2C) 中的所有互動都必須提供自�
 
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
 | 設定. operatingMode <sup>1</sup>| 否 | 對於登入頁面，此屬性會控制使用者名稱欄位的行為，例如輸入驗證和錯誤訊息。 預期的值：`Username` 或 `Email`。  |
 | AllowGenerationOfClaimsWithNullValues| 否| 允許產生具有 null 值的宣告。 例如，在案例中，使用者不會選取核取方塊。|
@@ -209,7 +209,7 @@ Azure Active Directory B2C (Azure AD B2C) 中的所有互動都必須提供自�
 | setting.showContinueButton | 否 | 顯示繼續按鈕。 可能的值：`true` (預設) 或 `false` |
 | 設定. showSignupLink <sup>2</sup>| 否 | 顯示註冊按鈕。 可能的值：`true` (預設) 或 `false` |
 | 設定. forgotPasswordLinkLocation <sup>2</sup>| 否| 顯示忘記的密碼連結。 可能的值： `AfterInput` (預設值) 連結會顯示在頁面底部，或 `None` 移除 [忘記密碼] 連結。|
-| 設定. enableRememberMe <sup>2</sup>| 否| 顯示 [ [讓我保持登入](custom-policy-keep-me-signed-in.md) ] 核取方塊。 可能的值： `true` 或 `false` (預設) 。 |
+| 設定. enableRememberMe <sup>2</sup>| 否| 顯示 [ [讓我保持登入](custom-policy-keep-me-signed-in.md) ] 核取方塊。 可能的值為：`true` 或 `false` (預設)。 |
 | 設定. inputVerificationDelayTimeInMilliseconds <sup>3</sup>| 否| 藉由等待使用者停止輸入，然後驗證值，來改善使用者體驗。 預設值為2000毫秒。 |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含 [宣告解析](claim-resolver-overview.md) 。 可能的值為：`true` 或 `false` (預設)。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 `true` 。 |
 

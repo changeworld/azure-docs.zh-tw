@@ -11,19 +11,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 6fb1bdbad4455b55c3f6cc3b395526f637339847
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 2566b2cf950df915f8ea843c34ea1fb6f8e7ea21
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592153"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96342000"
 ---
 # <a name="customize-and-suggest-image-search-queries"></a>自訂和建議影像搜尋查詢
 
 > [!WARNING]
-> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的程序進行佈建。
 > 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
-> 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 您可以使用本文來瞭解如何自訂查詢，以及建議要傳送至 Bing 影像搜尋 API 的搜尋字詞。
 
@@ -106,11 +106,11 @@ The following shows an example of the pivot queries.
 
 ## <a name="expand-the-query"></a>擴展查詢
 
-如果 Bing 可以擴展查詢來縮小原始搜尋範圍，則 [Images](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 物件會包含 `queryExpansions` 欄位。 例如，如果查詢為 *Microsoft Surface* ，則擴展後的查詢可能會是：
-- Microsoft Surface **Pro 3** 。
-- Microsoft Surface **RT** 。
-- Microsoft Surface **Phone** 。
-- Microsoft Surface **Hub** 。
+如果 Bing 可以擴展查詢來縮小原始搜尋範圍，則 [Images](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 物件會包含 `queryExpansions` 欄位。 例如，如果查詢為 *Microsoft Surface*，則擴展後的查詢可能會是：
+- Microsoft Surface **Pro 3**。
+- Microsoft Surface **RT**。
+- Microsoft Surface **Phone**。
+- Microsoft Surface **Hub**。
 
 下列範例示範 *Microsoft Surface* 的擴展查詢。
 
