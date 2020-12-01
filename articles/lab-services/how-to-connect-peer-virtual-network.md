@@ -3,12 +3,12 @@ title: 連線到 Azure Lab Services 中的對等網路 | Microsoft Docs
 description: 了解如何將實驗室網路與其他網路連線，成為對等項目。 例如，在 Azure 中將內部部署組織/大學網路與實驗室的虛擬網路連線。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 169160005b27f6ab9575749e4a72a26d2df4000b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 99ea72f11c8f389a15171a1fe3b376646494903a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647982"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434238"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>將實驗室的網路與 Azure Lab Services 中的對等虛擬網路連線
 
@@ -26,7 +26,7 @@ ms.locfileid: "94647982"
 某些內部部署網路會透過 [ExpressRoute](../expressroute/expressroute-introduction.md) 或[虛擬網路閘道](../vpn-gateway/vpn-gateway-about-vpngateways.md)連線到 Azure 虛擬網路。 這些服務必須在 Azure Lab Services 外部設定。 若要深入瞭解如何使用 ExpressRoute 將內部部署網路連線到 Azure，請參閱 [ExpressRoute 概觀](../expressroute/expressroute-introduction.md)。 如需使用虛擬網路閘道進行內部部署連線，閘道、指定的虛擬網路和實驗室帳戶必須全都位於相同的區域中。
 
 > [!NOTE]
-> 建立將與實驗室帳戶對等互連的 Azure 虛擬網路時，請務必了解虛擬網路的區域對於教室實驗室的建立位置有何影響。  如需詳細資訊，請參閱系統管理員指南的[區域\位置](./administrator-guide.md#regionslocations)一節。
+> 當您建立將使用實驗室帳戶對等互連的 Azure 虛擬網路時，請務必瞭解虛擬網路的區域對實驗室建立的影響。  如需詳細資訊，請參閱系統管理員指南的[區域\位置](./administrator-guide.md#regionslocations)一節。
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>在建立實驗室帳戶時設定
 

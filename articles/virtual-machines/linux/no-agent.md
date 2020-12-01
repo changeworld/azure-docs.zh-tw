@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 30e76ec3085922ec2a1d4693681eb97c9052c026
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9f0309f4e8273c2ef19ea86636de8e3aa6b6c4bc
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978725"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435095"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>在沒有布建代理程式的情況下建立一般化映射
 
@@ -199,7 +199,7 @@ WantedBy=multi-user.target
 這項 systemd 服務會執行基本布建的三項作業：
 
 1. 已準備好 Azure (的報告，指出已成功) 。
-1. 從 [Azure Instance Metadata Service (IMDS) ](./instance-metadata-service.md)提取此資料，以根據使用者提供的 vm 名稱來重新命名 VM。 **注意** IMDS 也提供其他的 [實例中繼資料](./instance-metadata-service.md#accessing-azure-instance-metadata-service)（例如 SSH 公開金鑰），因此您可以設定超過主機名稱。
+1. 從 [Azure Instance Metadata Service (IMDS) ](./instance-metadata-service.md)提取此資料，以根據使用者提供的 vm 名稱來重新命名 VM。 **注意** IMDS 也提供其他的 [實例中繼資料](./instance-metadata-service.md#access-azure-instance-metadata-service)（例如 SSH 公開金鑰），因此您可以設定超過主機名稱。
 1. 停用本身，使其只在第一次開機時執行，而不是在後續重新開機時執行。
 
 在檔案系統上，執行下列步驟以啟用該單元：

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: d2db8eb5b93d84a5ece182fffbca5870762ee89e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e4f002d038820edf128e3fefb229a0918a8ac55
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84703871"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433519"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>新增或移除子網委派
 
@@ -72,14 +72,16 @@ ms.locfileid: "84703871"
 
 ## <a name="azure-cli"></a>Azure CLI
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+備妥環境以使用 Azure CLI。
 
-如果您決定要改為在本機安裝和使用 Azure CLI，本文會要求您使用 Azure CLI 版本2.0.28 版或更新版本。 若要尋找您安裝的版本，請執行 `az --version`。 如需安裝或升級的資訊，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- 本文需要 2.0.28 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ### <a name="create-a-resource-group"></a>建立資源群組
 使用 [az group create](https://docs.microsoft.com/cli/azure/group) 來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
-下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組：
+下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組：
 
 ```azurecli-interactive
 
@@ -121,7 +123,7 @@ ms.locfileid: "84703871"
   --delegations Microsoft.DBforPostgreSQL/serversv2
 ```
 
-若要確認已套用委派，請使用 [az network vnet subnet show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)。 確認服務已委派給屬性 **serviceName**下的子網：
+若要確認已套用委派，請使用 [az network vnet subnet show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)。 確認服務已委派給屬性 **serviceName** 下的子網：
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -150,7 +152,7 @@ ms.locfileid: "84703871"
 
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>從 Azure 服務移除子網委派
 
-使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 從名為 **>mysubnet**的子網中移除委派：
+使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 從名為 **>mysubnet** 的子網中移除委派：
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -159,7 +161,7 @@ ms.locfileid: "84703871"
   --vnet-name myVnet \
   --remove delegations
 ```
-若要確認已移除委派，請使用 [az network vnet subnet show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)。 確認服務已從屬性 **serviceName**的子網中移除：
+若要確認已移除委派，請使用 [az network vnet subnet show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)。 確認服務已從屬性 **serviceName** 的子網中移除：
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -186,7 +188,7 @@ ms.locfileid: "84703871"
 ### <a name="create-a-resource-group"></a>建立資源群組
 使用 [New-AzResourceGroup](https://docs.microsoft.com/cli/azure/group) 來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
-下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組：
+下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組：
 
 ```azurepowershell-interactive
   New-AzResourceGroup -Name myResourceGroup -Location eastus
@@ -234,7 +236,7 @@ ms.locfileid: "84703871"
 ```
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>從 Azure 服務移除子網委派
 
-使用 [AzDelegation](https://docs.microsoft.com/powershell/module/az.network/remove-azdelegation?view=latest) 從名為 **>mysubnet**的子網中移除委派：
+使用 [AzDelegation](https://docs.microsoft.com/powershell/module/az.network/remove-azdelegation?view=latest) 從名為 **>mysubnet** 的子網中移除委派：
 
 ```azurepowershell-interactive
   $vnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup"
@@ -252,5 +254,5 @@ ms.locfileid: "84703871"
 
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - 瞭解如何 [在 Azure 中管理子網](virtual-network-manage-subnet.md)。

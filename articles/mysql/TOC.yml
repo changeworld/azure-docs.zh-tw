@@ -124,6 +124,8 @@
           href: concepts-supported-versions.md
         - name: 限制
           href: concepts-limits.md
+        - name: 作業的最佳作法
+          href: concept-operation-excellence-best-practices.md
         - name: 定價層
           items:
             - name: 定價層
@@ -195,6 +197,10 @@
             - name: 效能建議
               href: concepts-performance-recommendations.md
               displayName: recommendation
+            - name: 監視最佳做法
+              href: concept-monitoring-best-practices.md
+            - name: 效能最佳做法
+              href: concept-performance-best-practices.md
         - name: XBOX Video Application Development
           items:
             - name: 應用程式開發概觀

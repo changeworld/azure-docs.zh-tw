@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 2ed5cbc8c855d2f81986964c93009d75ed28fb8e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 86c5c6fff06f43bf66427ba1935852fcf97a71c6
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96028076"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356205"
 ---
 **資料收集磁碟區和保留** 
 
@@ -66,9 +66,9 @@ ms.locfileid: "96028076"
 
 **<a name="data-ingestion-volume-rate">資料擷取磁碟區速率</a>**
 
-Azure 監視器是一種大規模的資料服務，服務對象為每月需傳送數 TB 資料 (且不斷成長) 的上千名客戶。 磁碟區速率限制旨在將 Azure 監視器客戶隔離，避免其受到多租用戶環境中突然激增的尖峰所影響。 定義於工作區的預設擷取磁碟區速率閾值為 500 MB (已壓縮)，解壓縮大約 **6 GB/分鐘** -- 根據記錄長度和其壓縮率的不同，實際大小在資料類型之間可能會有所不同。 不論是使用[診斷設定](../articles/azure-monitor/platform/diagnostic-settings.md)、[資料收集器 API](../articles/azure-monitor/platform/data-collector-api.md) 或代理程式，從 Azure 資源傳送的所有內嵌資料皆適用磁碟區速率限制。
+Azure 監視器是一種大規模的資料服務，服務對象為每月需傳送數 TB 資料 (且不斷成長) 的上千名客戶。 磁碟區速率限制旨在將 Azure 監視器客戶隔離，避免其受到多租用戶環境中突然激增的尖峰所影響。 定義於工作區的預設擷取磁碟區速率閾值為 500 MB (已壓縮)，解壓縮大約 **6 GB/分鐘** -- 根據記錄長度和其壓縮率的不同，實際大小在資料類型之間可能會有所不同。 磁碟區速率限制適用於透過 [診斷設定](../articles/azure-monitor/platform/diagnostic-settings.md) 從 Azure 資源內嵌的資料。 達到磁碟區速率限制時，重試機制會嘗試在 30 分鐘內內嵌資料 4 次，並在作業失敗後將其卸載。 其不適用於從 [代理程式](../articles/azure-monitor/platform/agents-overview.md) 或 [資料收集器 API](../articles/azure-monitor/platform/data-collector-api.md) 中內嵌的資料。
 
-如果您以高於工作區中所設定閾值的 80% 速率將資料傳送至工作區時，則每隔 6 小時會將事件傳送至工作區中的 [作業] 資料表，同時會持續超過閾值。 當內嵌的磁碟區速率高於閾值時，則系統會卸除某些資料，且每隔 6 小時會將事件傳送至工作區中的 [作業] 資料表，同時會持續超過閾值。 如果您的擷取磁碟區速率持續超過閾值，或您希望很快能達到某個閾值，則可以透過開啟支援要求，要求增加速率。 
+如果以高於工作區中所設定閾值的 80% 速率將資料傳送至您的工作區時，則每隔 6 小時會將事件傳送至工作區中的 [作業] 資料表，同時會持續超過閾值。 當內嵌的磁碟區速率高於閾值時，則系統會卸除某些資料，且每隔 6 小時會將事件傳送至工作區中的 [作業] 資料表，同時會持續超過閾值。 如果您的擷取磁碟區速率持續超過閾值，或您希望很快能達到某個閾值，則可以透過開啟支援要求，要求增加速率。 
 
 請參閱[在 Azure 監視器中監視 Log Analytics 工作區的健康情況](../articles/azure-monitor/platform/monitor-workspace.md)，以建立要在您達到任何擷取限制時主動發出通知的警示規則。
 

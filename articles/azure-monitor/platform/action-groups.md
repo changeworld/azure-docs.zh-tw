@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 17e01844463b6d18bd7d2c3b56ee86d938682b8e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a2144827cd27c0af6610dabdf5ad205359f550cc
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536314"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435479"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理動作群組
-動作群組是 Azure 訂用帳戶擁有者定義的通知喜好設定集合。 Azure 監視器和服務健康狀態警示使用動作群組來通知使用者警示已被觸發。 根據使用者的需求而定，不同的警示可能使用相同的動作群組或不同的動作群組。 一個訂用帳戶中最多可設定 2,000 個動作群組。
+動作群組是 Azure 訂用帳戶擁有者定義的通知喜好設定集合。 Azure 監視器和服務健康狀態警示使用動作群組來通知使用者警示已被觸發。 根據使用者的需求而定，不同的警示可能使用相同的動作群組或不同的動作群組。 
 
 本文將說明如何在 Azure 入口網站中建立和管理動作群組。
 
@@ -404,7 +404,7 @@ Webhook 會使用下列規則來處理
 4. 新視窗會在右窗格中開啟。
     1.  選取來源： **服務標記**
     1.  來源服務標記： **ActionGroup**
-    1.  按一下 [新增] 。
+    1.  按一下 [加入]  。
     
     :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="如何新增服務標記的範例。"border="true":::
 

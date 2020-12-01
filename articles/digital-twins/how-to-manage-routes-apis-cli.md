@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6b767a2cf4739a0b36b9f5c5c960e3e3ead58262
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: fc260736a740362db2c19730afc93dd4f3d22c2e
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353079"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435398"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>管理 Azure 數位 Twins 中的端點和路由 (Api 和 CLI) 
 
@@ -24,7 +24,7 @@ ms.locfileid: "96353079"
 
 或者，您也可以使用 [Azure 入口網站](https://portal.azure.com)來管理端點和路由。 如需使用入口網站的文章版本，請參閱 [*如何： (入口網站) 管理端點和路由*](how-to-manage-routes-portal.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 您將需要 **Azure 帳戶** (您可以在 [這裡](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 免費設定一個帳戶) 
 * 您將需要 azure 訂用帳戶中的 **Azure 數位 Twins 實例** 。 如果您還沒有實例，可以使用 how [*to：設定實例和驗證*](how-to-set-up-instance-cli.md)中的步驟來建立一個實例。 設定中的下列值可方便用於本文稍後：
@@ -90,18 +90,31 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 當端點無法在某段時間內或在嘗試傳遞事件一段特定的次數之後傳遞事件時，它可以將未傳遞的事件傳送至儲存體帳戶。 此處理程式稱為無效 **信件。**
 
-若要建立已啟用無效信件的端點，您必須使用 [ARM api](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) 來建立您的端點。 
-
-在設定無效信件位置之前，您必須先有具備容器的儲存體帳戶。 建立端點時，您會提供此容器的 URL。 寄不出的信件是以具有 SAS 權杖的容器 URL 提供。 該權杖只需要 `write` 儲存體帳戶內目的地容器的許可權。 完整格式的 URL 將採用下列格式： `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
-
-若要深入瞭解 SAS 權杖，請參閱： [使用共用存取簽章 (SAS 將有限存取權授與 Azure 儲存體資源) ](../storage/common/storage-sas-overview.md)
-
 若要深入瞭解無效信件，請參閱 [*概念：事件路由*](concepts-route-events.md#dead-letter-events)。
 
-#### <a name="configuring-the-endpoint"></a>設定端點
+#### <a name="set-up-storage-resources"></a>設定儲存體資源
 
-建立端點時，請將新增 `deadLetterSecret` 至 `properties` 要求主體中的物件，其中包含您的儲存體帳戶的容器 URL 和 SAS 權杖。
+在設定寄不出的信件位置之前，您必須擁有在 Azure 帳戶中設定[容器](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)的[儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-portal)。 您稍後會在建立端點時，提供此容器的 URL。
+寄不出的信件是以具有 [SAS 權杖](../storage/common/storage-sas-overview.md)的容器 URL 提供。 該權杖只需要 `write` 儲存體帳戶內目的地容器的許可權。 完整格式的 URL 將採用下列格式： `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
+請遵循下列步驟，在您的 Azure 帳戶中設定這些儲存體資源，以準備在下一節中設定端點連接。
+
+1. 遵循 [這篇文章](../storage/common/storage-account-create.md?tabs=azure-portal) 來建立儲存體帳戶，並儲存儲存體帳戶名稱，以供稍後使用。
+2. 使用 [這篇文章](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) 建立容器，並儲存容器名稱，以便稍後在設定容器與端點之間的連接時使用。
+3. 接下來，為您的儲存體帳戶建立 SAS 權杖。 首先，在 [Azure 入口網站](https://ms.portal.azure.com/#home) 中流覽至您的儲存體帳戶， (您可以使用入口網站搜尋列) 來依名稱尋找它。
+4. 在 [儲存體帳戶] 頁面中，選擇左側導覽列中的 [ _共用存取_ 簽章] 連結，以選取產生 SAS 權杖的正確許可權。
+5. 針對 _允許的服務_ 和 _允許的資源類型_，請選取您想要的設定。 您必須在每個類別中至少選取一個方塊。 針對 [允許的許可權]，選擇 [ **寫入** ] (如果要) ，您也可以選取其他許可權。
+請視需要設定其餘設定。
+6. 然後，選取 [ _產生 sas 與連接字串_ ] 按鈕以產生 sas 權杖。 這將會在相同頁面底部的設定選項底下產生數個 SAS 和連接字串值。 向下滾動以查看值，並使用 [複製到剪貼簿] 圖示複製 **SAS 權杖** 值。 將其儲存以供稍後使用。
+
+:::image type="content" source="./media/how-to-manage-routes-apis-cli/generate-sas-token.png" alt-text="Azure 入口網站中的 [儲存體帳戶] 頁面，其中顯示用來產生 SAS 權杖的所有設定選項。" lightbox="./media/how-to-manage-routes-apis-cli/generate-sas-token.png":::
+
+:::image type="content" source="./media/how-to-manage-routes-apis-cli/copy-sas-token.png" alt-text="複製要在寄不出的信件秘密中使用的 SAS 權杖。" lightbox="./media/how-to-manage-routes-apis-cli/copy-sas-token.png":::
+
+#### <a name="configure-the-endpoint"></a>設定端點
+
+死信端點是使用 Azure Resource Manager Api 所建立。 建立端點時，請使用 [Azure Resource Manager api 檔](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) 來填滿必要的要求參數。 此外，將新增 `deadLetterSecret` 至要求 **主體** 中的屬性物件，其中包含適用于儲存體帳戶的容器 URL 和 SAS 權杖。
+      
 ```json
 {
   "properties": {
@@ -113,8 +126,7 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
   }
 }
 ```
-
-如需詳細資訊，請參閱 Azure 數位 Twins REST API 檔： [端點-DigitalTwinsEndpoint CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate)。
+如需有關結構化此要求的詳細資訊，請參閱 Azure 數位 Twins REST API 檔： [端點-DigitalTwinsEndpoint CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate)。
 
 ### <a name="message-storage-schema"></a>訊息儲存架構
 

@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 4438ceaa7bb4e9c29a05de0481acdad571e3bb64
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 05cc6579d83fe0cd861f3f91b8d44297963f8101
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542332"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433269"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>在適用於 MySQL 的 Azure 資料庫中備份與還原
 
@@ -43,8 +43,6 @@ ms.locfileid: "94542332"
 #### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>一般用途儲存體伺服器，最多可達 16 TB 的儲存空間
 
 在 [Azure 區域](/azure/mysql/concepts-pricing-tiers#storage)的子集中，所有新布建的伺服器都可支援一般用途儲存體，最多可達 16 TB 的儲存體。 換句話說，儲存體最多可達 16 TB 的儲存空間，是所有支援 [區域](concepts-pricing-tiers.md#storage) 的預設一般用途儲存體。 這些 16 TB 儲存體伺服器上的備份是以快照集為基礎。 建立伺服器之後，會立即排程第一次完整快照集備份。 第一次完整快照集備份會保留為伺服器的基礎備份。 後續的快照集備份只是差異備份。
-
-在 [Azure 區域](concepts-pricing-tiers.md#storage)的子集中，所有新布建的伺服器都可支援一般用途儲存體，最多可達 16 TB 的儲存體。 換句話說，儲存體最多可達 16 TB 的儲存空間，是所有支援 [區域](concepts-pricing-tiers.md#storage) 的預設一般用途儲存體。 這些 16 TB 儲存體伺服器上的備份是以快照集為基礎。 建立伺服器之後，會立即排程第一次完整快照集備份。 第一次完整快照集備份會保留為伺服器的基礎備份。 後續的快照集備份只是差異備份。
 
 差異快照集備份一天至少會執行一次。 差異快照集備份不會依固定排程執行。 差異快照集備份會每隔24小時執行一次，除非 MySQL 中的交易記錄 (binlog) 自上次差異備份起算超過 50 GB。 一天內最多允許六個差異快照集。
 
@@ -86,7 +84,7 @@ ms.locfileid: "94542332"
 有兩種類型的還原可使用：
 
 - **時間點還原** 適用于備份冗余選項，並且會在與您的源伺服器相同的區域中建立新的伺服器，並使用完整和交易記錄備份的組合。
-- 只有當您將伺服器設定為異地多餘的儲存體，並可讓您將伺服器還原至採用最近建立之備份的不同區域時，才可使用 **異地還原** 。
+- 只有當您將伺服器設定為異地多餘的儲存體，並可讓您將伺服器還原至採用最近建立之備份的不同區域時，才可使用 **異地還原**。
 
 預估的復原時間取決於數個因素，包括資料庫大小、交易記錄大小、網路頻寬，以及在相同區域中同時進行復原的資料庫總數。 復原時間通常不到 12 小時。
 

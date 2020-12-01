@@ -676,6 +676,8 @@
                       href: app/java-standalone-telemetry-processors.md
                     - name: JVM 引數設定
                       href: app/java-standalone-arguments.md
+                    - name: 從 2.x 升級
+                      href: app/java-standalone-upgrade-from-2x.md
             - name: 內部部署伺服器
               items:
                 - name: ASP.NET

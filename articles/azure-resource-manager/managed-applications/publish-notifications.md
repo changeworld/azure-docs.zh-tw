@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: 3632a34678c7a0f0e6fa93e5ce8000b07bb413a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cec17b98daa8eca31cda076921288e2838960511
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86054520"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434527"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>具有通知的 Azure 受控應用程式
 
@@ -61,7 +61,7 @@ Azure 受控代理程式更新可讓發行者根據受控應用程式實例的�
 
 ```
 ## <a name="add-azure-marketplace-managed-application-notifications"></a>新增 Azure Marketplace 受控代理程式更新
-如需詳細資訊，請參閱 [建立 Azure 應用程式供應](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)專案。
+如需詳細資訊，請參閱 [建立 Azure 應用程式供應](../../marketplace/create-new-azure-apps-offer.md)專案。
 
 ![在 Azure 入口網站中 Azure Marketplace 受控代理程式更新](./media/publish-notifications/marketplace-notifications.png)
 ## <a name="event-triggers"></a>事件觸發程序
@@ -71,11 +71,11 @@ EventType | ProvisioningState | 通知的觸發程式
 ---|---|---
 PUT | 已接受 | 受控資源群組已在應用程式 PUT (之後成功建立並投射，) 開始進行受控資源群組中的部署。
 PUT | 成功 | 在 PUT 之後，受控應用程式的完整布建成功。
-PUT | Failed | 在任何時間點都無法布建應用程式實例。
+PUT | 失敗 | 在任何時間點都無法布建應用程式實例。
 PATCH | 成功 | 在受控應用程式實例上成功修補之後，更新標記、JIT 存取原則或受控識別。
-刪除 | 刪除 | 一旦使用者開始刪除受管理的應用程式實例。
-刪除 | 已刪除 | 完整和成功刪除受控應用程式之後。
-刪除 | Failed | 在解除布建程式中封鎖刪除的任何錯誤之後。
+DELETE | 刪除 | 一旦使用者開始刪除受管理的應用程式實例。
+DELETE | 已刪除 | 完整和成功刪除受控應用程式之後。
+DELETE | 失敗 | 在解除布建程式中封鎖刪除的任何錯誤之後。
 ## <a name="notification-schema"></a>通知架構
 當您啟動 webhook 端點來處理通知時，您將需要剖析承載以取得重要屬性，然後在通知上採取動作。 服務類別目錄和 Azure Marketplace 受控代理程式更新提供許多相同的屬性。 以下是範例中的表格所述的兩個小差異。
 
@@ -176,7 +176,7 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 ```
 
-參數 | 說明
+參數 | 描述
 ---|---
 eventType | 觸發通知的事件種類。  (例如 PUT、PATCH、DELETE。 ) 
 applicationId | 觸發通知之受控應用程式的完整資源識別碼。

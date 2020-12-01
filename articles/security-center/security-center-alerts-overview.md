@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: memildin
-ms.openlocfilehash: 033f06aa61baf04b5c74fbbe9cc8f925d5d4e3d3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c1406e6a1f2f36c5d42544c52ade3f991fe2ba0a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182303"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433014"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure 資訊安全中心的安全性警示
 
@@ -91,7 +91,7 @@ Azure 資訊安全中心的優勢在於 Microsoft 上上下下都設有資訊安
 
 - [警示] 儀表板上的 [**下載 csv 報表**] 可提供一次性匯出至 CSV。
 - 從定價的 **連續匯出**& 設定可讓您將安全性警示和建議的串流設定至 Log Analytics 工作區和事件中樞。 [深入瞭解連續匯出](continuous-export.md)
-- **Azure Sentinel 連接器** 會將 Azure Defender 警示從 Azure 資訊安全中心串流至 Azure Sentinel。 [深入瞭解如何使用 Sentinel 連接 Azure 資訊安全中心](../sentinel/connect-azure-security-center.md)
+- **Azure Sentinel 連接器** 會將安全性警示從 Azure 資訊安全中心串流至 Azure Sentinel。 [深入瞭解如何使用 Sentinel 連接 Azure 資訊安全中心](../sentinel/connect-azure-security-center.md)
 
 
 ## <a name="next-steps"></a>後續步驟

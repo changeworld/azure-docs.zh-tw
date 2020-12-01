@@ -189,10 +189,13 @@
             - name: Blob 儲存體
               href: blob-output-managed-identity.md
               displayName: 'managed identity, identities, authenticate'
+            - name: 事件中樞
+              href: event-hubs-managed-identity.md
+              displayName: 'managed identity, identities, authenticate'
             - name: Power BI
               href: powerbi-output-managed-identity.md
               displayName: 'managed identity, identities, authenticate'
-            - name: Azure SQL DB
+            - name: Azure SQL 和 Azure Synapse
               href: sql-database-output-managed-identity.md
               displayName: 'managed identity, identities, authenticate'
         - name: 將資料進行加密

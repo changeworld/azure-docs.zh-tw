@@ -3,12 +3,12 @@ title: 使用適用于駭客松的 Azure 實驗室服務
 description: 本文說明如何使用 Azure 實驗室服務來建立可供您用來執行駭客松的實驗室。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8727fad6f37d1365983127a1a514e87e3a5003b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 561351636a37c2cd5c3070dbfef2a3122e5c29b0
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85445877"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434255"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>為您的下一個駭客松使用 Azure 實驗室服務
 Azure 實驗室服務的設計可供輕量且容易使用，讓您可以快速啟動虛擬機器的新實驗室， (Vm) 駭客松。  使用下列檢查清單，以確保您的駭客松盡可能順暢。 這份檢查清單應由您的 IT 部門或教職員完成，負責建立及管理您的駭客松實驗室。 
@@ -51,7 +51,7 @@ Azure 實驗室服務的設計可供輕量且容易使用，讓您可以快速�
 
     **自動關機**：啟用時， [自動關機](how-to-enable-shutdown-disconnect.md) 設定會讓 Windows 虛擬機器在一段時間後，在學生從其 RDP 會話中斷連線之後，自動關閉。 根據預設，此設定為停用。
 
-- **設定防火牆設定以允許與實驗室 vm**的連線。 
+- **設定防火牆設定以允許與實驗室 vm** 的連線。 
 
     確定您學校或組織的防火牆設定允許使用 RDP\SSH. 連線至實驗室 Vm 如需詳細資訊，請參閱 [設定網路防火牆設定](how-to-configure-firewall-settings.md)的操作指南。
 
@@ -86,4 +86,4 @@ Azure 實驗室服務的設計可供輕量且容易使用，讓您可以快速�
         如需詳細資訊，請參閱將 [邀請傳送給使用者](how-to-configure-student-usage.md?branch=master#send-invitations-to-users) 以及連線 [至 Linux vm](how-to-use-remote-desktop-linux-student.md?branch=master)的操作指南。 
 
 ## <a name="next-steps"></a>後續步驟
-遵循下列文章中的指示，開始在教室實驗室中建立實驗室帳戶：[教學課程：使用 Azure Lab Services 設定實驗室帳戶](tutorial-setup-lab-account.md)。
+遵循下列文章中的指示，開始在實驗室中建立實驗室帳戶： [教學課程：使用 Azure 實驗室服務設定實驗室帳戶](tutorial-setup-lab-account.md)。

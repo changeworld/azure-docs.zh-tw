@@ -1,16 +1,16 @@
 ---
-title: 在 Azure 實驗室服務中建立教室實驗室的排程 | Microsoft Docs
-description: 了解如何在 Azure 實驗室服務中建立教室實驗室的排程，使實驗室中的 VM 可在指定的時間啟動和關閉。
+title: 在 Azure 實驗室服務中建立實驗室的排程 |Microsoft Docs
+description: 瞭解如何在 Azure 實驗室服務中建立實驗室的排程，讓實驗室中的 Vm 在指定的時間啟動並關閉。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4eb4e2459069b61990f51f8d8de76522b736723e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a827c3d9f3022cb7d27ee43c9c95227c44f97e7
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326434"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434019"
 ---
-# <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>在 Azure 實驗室服務中建立和管理教室實驗室的排程 
+# <a name="create-and-manage-schedules-for-labs-in-azure-lab-services"></a>在 Azure 實驗室服務中建立和管理實驗室的排程 
 排程可讓您設定教室實驗室，使實驗室中的 VM 可在指定的時間自動啟動和關閉。 您可以定義一次性排程或週期性排程。 下列程序將為您提供建立和管理教室實驗室排程的步驟： 
 
 > [!IMPORTANT]
@@ -28,16 +28,16 @@ ms.locfileid: "91326434"
 1. 切換至 [排程] 頁面，然後選取工具列上的 [新增已排定事件]。 
 
     ![顯示 Azure 實驗室服務 [排程] 頁面的螢幕擷取畫面，其中已選取 [新增排程] 按鈕。](./media/how-to-create-schedules/add-schedule-button.png)
-2. 確認已為 [事件類型] 選取 [標準]。 您可以選取 [僅啟動]****，以便僅指定 VM 的啟動時間。 您可以選取 [僅停止]****，以便僅指定 VM 的停止時間。 
-7. 在 [重複]**** 區段中，選取目前的排程。 
+2. 確認已為 [事件類型] 選取 [標準]。 您可以選取 [僅啟動]，以便僅指定 VM 的啟動時間。 您可以選取 [僅停止]，以便僅指定 VM 的停止時間。 
+7. 在 [重複] 區段中，選取目前的排程。 
 
     ![[排程] 頁面上的 [新增排程] 按鈕](./media/how-to-create-schedules/select-current-schedule.png)
 5. 在 [重複] 對話方塊中，執行下列步驟：
     1. 確認已為 [重複] 欄位設定 [每週]。 
-    3. 指定 [啟動日期]****。
-    4. 指定您想要讓 VM 啟動的 [啟動時間]****。
-    5. 指定要關閉 VM 的 [停止時間]****。 
-    6. 針對您指定的啟動和停止時間指定 [時區]****。 
+    3. 指定 [啟動日期]。
+    4. 指定您想要讓 VM 啟動的 [啟動時間]。
+    5. 指定要關閉 VM 的 [停止時間]。 
+    6. 針對您指定的啟動和停止時間指定 [時區]。 
     2. 選取您想要讓排程生效的日期。 下列範例中選取了星期一至星期四。 
     8. 選取 [儲存]。 
 
@@ -53,7 +53,7 @@ ms.locfileid: "91326434"
 
 ![行事曆檢視中的排程](./media/how-to-create-schedules/schedules-calendar.png)
 
-選取右上角的 [今天]**** 按鈕，可在行事曆中切換至目前的日期。 選取 [向左箭號]**** 可在行事曆中切換至上一週，[向右箭號]**** 則會切換至下一週。 
+選取右上角的 [今天] 按鈕，可在行事曆中切換至目前的日期。 選取 [向左箭號] 可在行事曆中切換至上一週，[向右箭號] 則會切換至下一週。 
 
 ## <a name="edit-a-schedule"></a>編輯排程
 當您在行事曆中選取反白顯示的排程時，您會看到 **編輯** 或 **刪除** 排程的按鈕。 
@@ -77,4 +77,4 @@ ms.locfileid: "91326434"
 - [以管理員身分建立及管理實驗室帳戶](how-to-manage-lab-accounts.md)
 - [以實驗室擁有者身分建立及管理實驗室](how-to-manage-classroom-labs.md)
 - [以實驗室擁有者身分設定及控制實驗室的使用方式](how-to-configure-student-usage.md)
-- [以實驗室使用者的身分存取教室實驗室](how-to-use-classroom-lab.md)
+- [以實驗室使用者的身份存取實驗室](how-to-use-classroom-lab.md)

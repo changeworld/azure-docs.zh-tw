@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: f45e8435ea26e575398801471904b5038a518a44
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: f76d3b81c2d5425f7bb91c5c86a79faa097794e3
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948828"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434995"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>針對 Azure 受控應用程式測試您的入口網站介面
 
@@ -28,7 +28,7 @@ ms.locfileid: "91948828"
 
    ![顯示沙箱](./media/test-createuidefinition/show-sandbox.png)
 
-1. 將空的定義取代為檔案 createUiDefinition.js的內容。 選取 [預覽]****。
+1. 將空的定義取代為檔案 createUiDefinition.js的內容。 選取 [預覽]  。
 
    ![選取預覽](./media/test-createuidefinition/select-preview.png)
 
@@ -42,7 +42,7 @@ ms.locfileid: "91948828"
 
 ![顯示語法錯誤](./media/test-createuidefinition/show-syntax-error.png)
 
-如果您的表單未顯示，而您看到的是具有卸載卸載的雲端圖示，則您的表單有錯誤，例如遺漏的屬性。 在您的瀏覽器中開啟 Web 開發人員工具。 [主控台]**** 會顯示關於介面的重要訊息。
+如果您的表單未顯示，而您看到的是具有卸載卸載的雲端圖示，則您的表單有錯誤，例如遺漏的屬性。 在您的瀏覽器中開啟 Web 開發人員工具。 [主控台] 會顯示關於介面的重要訊息。
 
 ![顯示錯誤](./media/test-createuidefinition/show-error.png)
 
@@ -104,4 +104,4 @@ ms.locfileid: "91948828"
 
 ## <a name="next-steps"></a>後續步驟
 
-驗證入口網站介面後，請了解如何建立[在 Marketplace 中提供的 Azure 受控應用程式](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)。
+驗證入口網站介面後，請了解如何建立[在 Marketplace 中提供的 Azure 受控應用程式](../../marketplace/create-new-azure-apps-offer.md)。

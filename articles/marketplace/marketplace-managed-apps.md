@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: msjogarrig
 ms.author: jogarrig
 ms.date: 09/04/2020
-ms.openlocfilehash: 10ca7602dd3cf5a80e371ceda845977bcd8f218a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4fb3354b7035149b80191528b2f5335b593b764
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89484234"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433550"
 ---
 # <a name="publishing-guide-for-azure-managed-applications"></a>Azure 受控應用程式發佈指南
 
@@ -34,7 +34,7 @@ Azure *受控應用程式* 供應專案是在 Azure Marketplace 中發佈 azure 
 |---------|---------|
 |Azure 訂用帳戶 | 受控應用程式必須部署至客戶的訂用帳戶，但可由協力廠商管理。 |
 |計費和計量    |  這些資源會在客戶的 Azure 訂用帳戶中提供。 使用隨用隨付付款模型的 Vm 會透過 Microsoft 與客戶交易，並透過客戶的 Azure 訂用帳戶計費。 <br><br> 針對自備授權 Vm，Microsoft 會針對客戶訂用帳戶中所產生的任何基礎結構費用進行計費，但您會向客戶收取軟體授權費用。        |
-|Azure 相容的虛擬硬碟 (VHD)     |   VM 必須建置在 Windows 或 Linux 上。<br><br>如需建立 Linux VHD 的詳細資訊，請參閱 [Azure 背書的 Linux 散發套件](../virtual-machines/linux/endorsed-distros.md)。<br><br>如需建立 Windows VHD 的詳細資訊，請參閱 [建立 Azure 應用程式供應](./partner-center-portal/create-new-azure-apps-offer.md)專案。 |
+|Azure 相容的虛擬硬碟 (VHD)     |   VM 必須建置在 Windows 或 Linux 上。<br><br>如需建立 Linux VHD 的詳細資訊，請參閱 [Azure 背書的 Linux 散發套件](../virtual-machines/linux/endorsed-distros.md)。<br><br>如需建立 Windows VHD 的詳細資訊，請參閱 [建立 Azure 應用程式供應](./create-new-azure-apps-offer.md)專案。 |
 
 ---
 
@@ -51,4 +51,4 @@ Azure *受控應用程式* 供應專案是在 Azure Marketplace 中發佈 azure 
 若要註冊並開始使用合作夥伴中心：
 
 - [登入合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)，以建立或完成您的供應項目。
-- 如需詳細資訊，請參閱 [建立 Azure 應用程式供應](./partner-center-portal/create-new-azure-apps-offer.md) 專案。
+- 如需詳細資訊，請參閱 [建立 Azure 應用程式供應](./create-new-azure-apps-offer.md) 專案。

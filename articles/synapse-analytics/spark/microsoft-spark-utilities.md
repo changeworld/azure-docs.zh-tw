@@ -1,6 +1,6 @@
 ---
 title: Microsoft Spark 公用程式簡介
-description: 在 Azure Synapse Analytics 筆記本中使用 MSSparkutils 的教學課程。
+description: 教學課程： Azure Synapse Analytics 筆記本中的 MSSparkutils
 author: ruxu
 services: synapse-analytics
 ms.service: synapse-analytics
@@ -10,14 +10,14 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 3c4e062393f9d75d478720041436c2e0f54485a3
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: ff294c0227bb6a830a5aef2379248714a7f2f64a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95795078"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435190"
 ---
-# <a name="introduction-of-microsoft-spark-utilities"></a>Microsoft Spark 公用程式簡介
+# <a name="introduction-to-microsoft-spark-utilities"></a>Microsoft Spark 公用程式簡介
 
 Microsoft Spark 公用程式 (MSSparkUtils) 是一種內建套件，可協助您輕鬆地執行一般工作。 您可以使用 MSSparkUtils 來處理檔案系統、取得環境變數，以及處理秘密。 MSSparkUtils 可在 `PySpark (Python)` 、 `Scala` 和 `.NET Spark (C#)` 筆記本以及 Synapse 管線中使用。
 

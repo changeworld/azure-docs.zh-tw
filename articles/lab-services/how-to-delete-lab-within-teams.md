@@ -3,25 +3,25 @@ title: 從小組刪除 Azure 實驗室服務實驗室
 description: 瞭解如何從小組刪除 Azure 實驗室服務實驗室。
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: 1d2fe73d33a88e595f42b47c1e7122dcbdfe1063
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 8d1e20f8f676eb9863187b550a3c0400871d670c
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094333"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433949"
 ---
 # <a name="delete-labs-within-teams"></a>在小組內刪除實驗室
 
 本文說明如何從 **Azure 實驗室服務** 應用程式刪除實驗室。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 在 Azure 入口網站中[建立實驗室服務帳戶](tutorial-setup-lab-account.md#create-a-lab-account)。
 * [開始使用並在小組內建立實驗室服務實驗室](how-to-get-started-create-lab-within-teams.md)。
 
 ## <a name="delete-labs"></a>刪除實驗室
 
-您可以藉由直接刪除實驗室（如[管理 Azure 實驗室服務中的教室實驗室](how-to-manage-classroom-labs.md)中所述），在[實驗室服務網站](https://labs.azure.com)中刪除小組內建立的實驗室。 
+您可以藉由直接刪除實驗室（如[Azure 實驗室服務中的管理實驗室](how-to-manage-classroom-labs.md)中所述），在[實驗室服務網站](https://labs.azure.com)中刪除小組內建立的實驗室。 
 
 刪除小組時，也會觸發實驗室刪除。 如果已刪除實驗室建立所在的小組，則會在觸發自動使用者清單同步處理之後24小時自動刪除實驗室。 
 

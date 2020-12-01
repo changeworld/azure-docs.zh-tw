@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/21/2020
+ms.date: 11/10/2020
 ms.author: memildin
-ms.openlocfilehash: b7c4c0565d17e62226a518bc443223df8339faec
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0e853a4ce1e3891ddffd2f9fb1315da49a896933
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949372"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433162"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure 資訊安全中心的安全分數
 
@@ -70,8 +70,6 @@ Azure 資訊安全中心有兩個主要目標：
 
     :::image type="content" source="./media/secure-score-security-controls/score-on-recommendations-page.png" alt-text="資訊安全中心的建議頁面上的安全分數":::
 
-
-
 ### <a name="get-your-secure-score-from-the-rest-api"></a>從 REST API 取得您的安全分數
 
 您可以透過安全分數 API 來存取您的分數， (目前為預覽) 。 API 方法可讓您靈活地查詢資料，並在一段時間後建立您自己的安全分數報告機制。 例如，您可以使用 [安全分數 API](/rest/api/securitycenter/securescores) 來取得特定訂用帳戶的分數。 此外，您可以使用 [安全分數控制項 API](/rest/api/securitycenter/securescorecontrols) 來列出安全性控制項和您的訂用帳戶的目前分數。
@@ -79,8 +77,6 @@ Azure 資訊安全中心有兩個主要目標：
 ![透過 API 來抓取單一安全分數](media/secure-score-security-controls/single-secure-score-via-api.png)
 
 如需以安全分數 API 為基礎之工具的範例，請參閱 [GitHub 社區的安全分數區域](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)。 
-
-
 
 ### <a name="get-your-secure-score-from-azure-resource-graph-arg"></a>從 Azure Resource Graph (ARG 取得您的安全分數) 
 
@@ -114,13 +110,34 @@ Azure Resource Graph 可讓您透過強大的篩選、分組和排序功能，�
 
 1. 選取 [ **執行查詢**]。
 
+
+
+
+## <a name="tracking-your-secure-score-over-time"></a>追蹤一段時間的安全分數
+
+如果您是具有 Pro 帳戶的 Power BI 使用者，您可以在一段 **時間內使用安全分數** Power BI 儀表板，以追蹤一段時間的安全分數，並調查任何變更。
+
+> [!TIP]
+> 您可以在 GitHub 上 Azure 資訊安全中心社區的私人區域中找到此儀表板，以及使用安全分數以程式設計方式運作的其他工具： https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score
+
+儀表板包含下列兩份報告，可協助您分析安全性狀態：
+
+- **資源摘要** ：提供資源健康情況的相關摘要資料。
+- **安全分數摘要** -提供有關分數進度的摘要資料。 使用「每個訂用帳戶的安全分數」圖表來查看分數中的變更。 如果您注意到分數有顯著的變更，請檢查「偵測到的變更可能會影響您的安全分數」表格，以取得可能造成變更的變更。 此表格顯示已刪除的資源、新部署的資源，或其安全性狀態針對其中一個建議所變更的資源。
+
+:::image type="content" source="./media/secure-score-security-controls/power-bi-secure-score-dashboard.png" alt-text="隨時間 PowerBI 儀表板的選擇性安全分數，可追蹤一段時間的安全分數並調查變更":::
+
+
+
+
+
 ## <a name="how-your-secure-score-is-calculated"></a>如何計算您的安全分數 
 
 每個安全性控制項對整體安全分數的貢獻，會清楚地顯示在建議頁面上。
 
 [![增強的安全分數引進了安全性控制項](media/secure-score-security-controls/security-controls.png)](media/secure-score-security-controls/security-controls.png#lightbox)
 
-若要獲得安全性控制項的所有可能點數，您所有的資源都必須符合安全性控制項中的所有安全性建議。 例如，資訊安全中心有多個關於如何保護管理連接埠的建議。 在過去，您可以只補救一些相關和相互依存的建議，其餘的留著不補救，您的安全分數也會改善。 客觀地看，直到您解決所有問題，安全性才會得到改善，這一點難以反駁。 現在，您必須補救所有建議，您的安全分數才會產生變化。
+若要獲得安全性控制項的所有可能點數，您所有的資源都必須符合安全性控制項中的所有安全性建議。 例如，資訊安全中心有多個關於如何保護管理連接埠的建議。 您將需要補救它們，以使您的安全分數有所差異。
 
 例如，名為「套用系統更新」的安全性控制項的最高分數為六點，您可以在工具提示中看到控制項的可能增加值：
 
@@ -137,9 +154,9 @@ Azure Resource Graph 可讓您透過強大的篩選、分組和排序功能，�
 
 |計量|公式和範例|
 |-|-|
-|**安全性控制項的目前分數**|<br>![用於計算安全性控制項目前分數的等式](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>每個個別安全性控制項都對安全性分數有所貢獻。 受到控制項中建議影響的每個資源，都對控制項的目前分數有所貢獻。 每個控制項的目前分數都是該控制項「內」資源狀態的量值。<br>![顯示計算安全性控制項目前分數時使用之值的工具提示](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>在此範例中，最高分數 6 會除以 78，因為這是狀況良好和狀況不良的資源數總和。<br>6 / 78 = 0.0769<br>再乘以狀況良好的資源數目 (4)，得到目前的分數：<br>0.0769 * 4 = **0.31**<br><br>|
-|**安全分數**<br>單一訂用帳戶|<br>![用於計算目前安全分數的等式](media/secure-score-security-controls/secure-score-equation.png)<br><br>![已啟用所有控制項的單一訂用帳戶安全分數](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>此範例中有一個訂用帳戶，採用所有可用的安全性控制項 (可能的最高分數為 60 點)。 分數顯示出獲得 60 點中的 28 點，其餘的 32 點會反映在安全性控制項的「可能增加的分數」圖中。<br>![控制項清單和可能增加的分數](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
-|**安全分數**<br>多重訂閱|<br>將所有訂用帳戶中所有資源的目前分數相加，然後計算方式與單一訂用帳戶相同<br><br>在檢視多個訂用帳戶時，安全分數會評估所有已啟用原則中的所有資源，並將其對每個安全性控制項的最高分數所造成的綜合影響加以分組。<br>![多個訂用帳戶已啟用所有控制項時的安全分數](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>綜合的分數「不」是平均值，而是所有訂用帳戶中所有資源狀態的評估狀態。<br>在這裡，如果您移至 [建議] 頁面，將可能獲得的點數相加，會發現這就是目前分數 (24) 和可能獲得的最高分數 (60) 之間的差異。|
+|**安全性控制項的目前分數**|<br>![用來計算安全性控制項分數的方程式](media/secure-score-security-controls/secure-score-equation-single-control.png)<br><br>每個個別安全性控制項都對安全性分數有所貢獻。 受到控制項中建議影響的每個資源，都對控制項的目前分數有所貢獻。 每個控制項的目前分數都是該控制項「內」資源狀態的量值。<br>![顯示計算安全性控制項目前分數時使用之值的工具提示](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>在此範例中，最高分數 6 會除以 78，因為這是狀況良好和狀況不良的資源數總和。<br>6 / 78 = 0.0769<br>再乘以狀況良好的資源數目 (4)，得到目前的分數：<br>0.0769 * 4 = **0.31**<br><br>|
+|**安全分數**<br>單一訂用帳戶|<br>![計算訂用帳戶的安全分數的方程式](media/secure-score-security-controls/secure-score-equation-single-sub.png)<br><br>![已啟用所有控制項的單一訂用帳戶安全分數](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>此範例中有一個訂用帳戶，採用所有可用的安全性控制項 (可能的最高分數為 60 點)。 分數顯示出獲得 60 點中的 28 點，其餘的 32 點會反映在安全性控制項的「可能增加的分數」圖中。<br>![控制項清單和可能增加的分數](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
+|**安全分數**<br>多重訂閱|<br>![用於計算多個訂用帳戶之安全分數的方程式](media/secure-score-security-controls/secure-score-equation-multiple-subs.png)<br><br>計算多個訂用帳戶的合併分數時，「安全性中心」會針對每個訂用帳戶包含 *權數* 。 您訂用帳戶的相對權數取決於資訊安全中心，例如資源數量等因素。<br>每個訂用帳戶的目前分數計算方式與單一訂用帳戶的計算方式相同，但接著會套用加權，如方程式所示。<br>在檢視多個訂用帳戶時，安全分數會評估所有已啟用原則中的所有資源，並將其對每個安全性控制項的最高分數所造成的綜合影響加以分組。<br>![多個訂用帳戶已啟用所有控制項時的安全分數](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>綜合的分數「不」是平均值，而是所有訂用帳戶中所有資源狀態的評估狀態。<br>在這裡，如果您移至 [建議] 頁面，將可能獲得的點數相加，會發現這就是目前分數 (24) 和可能獲得的最高分數 (60) 之間的差異。|
 ||||
 
 ### <a name="which-recommendations-are-included-in-the-secure-score-calculations"></a>哪些建議包含在安全分數計算中？
@@ -271,3 +288,4 @@ Azure Resource Graph 可讓您透過強大的篩選、分組和排序功能，�
 
 - [瞭解建議的不同元素](security-center-recommendations.md)
 - [瞭解如何補救建議](security-center-remediate-recommendations.md)
+- [觀看以程式設計方式使用安全分數的 GitHub 型工具](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)

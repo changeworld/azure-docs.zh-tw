@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 8bedecd4a050c445af0ab0ae0250197369b9173b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f0546a76974e429b625ba03fdf4598da7d32c990
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131406"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433363"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>從 Cloud Partner 入口網站轉換到合作夥伴中心的常見問題
 
@@ -58,16 +58,16 @@ Cloud Partner 入口網站已轉換為合作夥伴中心。 合作夥伴中心�
 
 | 雲端合作夥伴入口網站 | 合作夥伴中心 |
 | --- | --- |
-| **連結** ： https://cloudpartner.azure.com/ | **連結** ： https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory 和 https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
-| **Navigation** ：見解支付中提供的支付報告 | **Navigation** ：合作夥伴中心提供的支付報告 – 支付圖示 |
-| **範圍** ：<ul><li>針對進行中、已收取和已支付的收款，可看到每個明細項目的交易。</li><li>報表 – 顯示建立訂購單後的所有明細項目，包括進行中的收款和計費，以及收款狀態和尚未符合付費資格的明細項目。</li></ul> | **範圍** ：<ul><li>顯示在視為合格收益後的明細項目。</li><li>客戶必須先支付給 Microsoft，然後 ISV 才會看到支付報告開始。</li><li>支付報告不會顯示進行中的收款和進行中的計費。</li></ul> |
-| **尚未準備支付的交易** ：進行中的計費 | **尚未準備支付的交易** ：下一個預估支付：支付狀態為尚未處理狀態。 |
-| **支付狀態** ：無 | **支付狀態** ：<ul><li>尚未處理：收益符合付款資格。</li><li>近期：收益將在下次每月支付中送交至「發佈者」。</li><li>已送交：付款已送交至銀行。</li></ul> |
+| **連結**： https://cloudpartner.azure.com/ | **連結**： https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory 和 https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
+| **Navigation**：見解支付中提供的支付報告 | **Navigation**：合作夥伴中心提供的支付報告 – 支付圖示 |
+| **範圍**：<ul><li>針對進行中、已收取和已支付的收款，可看到每個明細項目的交易。</li><li>報表 – 顯示建立訂購單後的所有明細項目，包括進行中的收款和計費，以及收款狀態和尚未符合付費資格的明細項目。</li></ul> | **範圍**：<ul><li>顯示在視為合格收益後的明細項目。</li><li>客戶必須先支付給 Microsoft，然後 ISV 才會看到支付報告開始。</li><li>支付報告不會顯示進行中的收款和進行中的計費。</li></ul> |
+| **尚未準備支付的交易**：進行中的計費 | **尚未準備支付的交易**：下一個預估支付：支付狀態為尚未處理狀態。 |
+| **支付狀態**：無 | **支付狀態**：<ul><li>尚未處理：收益符合付款資格。</li><li>近期：收益將在下次每月支付中送交至「發佈者」。</li><li>已送交：付款已送交至銀行。</li></ul> |
 |||
 
 ## <a name="what-about-offers-i-published-in-the-cloud-partner-portal"></a>我在 Cloud Partner 入口網站中發佈的優惠如何？
 
-這些供應專案已移至合作夥伴中心，當您登入合作夥伴中心之後，將可供您存取，但 Dynamics Nav 受控服務和 Cortana 情報提供的功能除外。 如果您的供應專案已在商用市集中上線，則會持續上線，而且您的客戶將繼續在不中斷的情況下購買及部署。 如需詳細資訊，請參閱下一個問題， **哪些供應專案已移至合作夥伴中心？** 。
+這些供應專案已移至合作夥伴中心，當您登入合作夥伴中心之後，將可供您存取，但 Dynamics Nav 受控服務和 Cortana 情報提供的功能除外。 如果您的供應專案已在商用市集中上線，則會持續上線，而且您的客戶將繼續在不中斷的情況下購買及部署。 如需詳細資訊，請參閱下一個問題， **哪些供應專案已移至合作夥伴中心？**。
 
 ## <a name="what-offers-were-moved-to-partner-center"></a>哪些供應專案已移至合作夥伴中心？
 
@@ -79,7 +79,7 @@ Cloud Partner 入口網站先前支援的所有供應專案類型都可在合作
 | --- | --- | --- |
 | SaaS | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解 [商用 marketplace 的 SaaS 供應專案方案](plan-saas-offer.md)。 |
 | 虛擬機器 | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請參閱 [虛擬機器供應](marketplace-virtual-machines.md)專案。 |
-| Azure 應用程式 | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何 [建立 Azure 應用程式供應](partner-center-portal/create-new-azure-apps-offer.md)專案。 |
+| Azure 應用程式 | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何 [建立 Azure 應用程式供應](create-new-azure-apps-offer.md)專案。 |
 | Dynamics 365 Business Central | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何 [建立 Dynamics 365 Business Central 供應](partner-center-portal/create-new-business-central-offer.md)專案。 |
 | Dynamics 365 for Customer Engagement & PowerApps | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何 [建立 Dynamics 365 For Customer Engagement & PowerApps 供應專案](partner-center-portal/create-new-customer-engagement-offer.md)。 |
 | Dynamics 365 for Operations | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何 [建立適用于作業的 Dynamics 365 供應](partner-center-portal/create-new-operations-offer.md)專案。 |
@@ -87,7 +87,7 @@ Cloud Partner 入口網站先前支援的所有供應專案類型都可在合作
 | IoT Edge 模組 | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請參閱 [Azure Marketplace 中的建立、設定及發佈 IoT Edge 模組供應](partner-center-portal/azure-iot-edge-module-creation.md)專案。 |
 | 容器 | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何 [建立 Azure 容器供應](partner-center-portal/create-azure-container-offer.md)專案。 |
 | 諮詢服務 | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請參閱 [建立諮詢服務供應](partner-center-portal/create-consulting-service-offer.md)專案。 |
-| 受管理的服務 | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何 [建立受控服務供應](partner-center-portal/create-new-managed-service-offer.md)專案。 |
+| 受控服務 | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何 [建立受控服務供應](partner-center-portal/create-new-managed-service-offer.md)專案。 |
 | Dynamics Nav 受控服務 | 否 | Microsoft 已將 Dynamics NAV 受控服務發展為 [dynamics 365 Business Central](/dynamics365/business-central/)，因此我們從 AppSource 中移除了 Dynamics Nav 受控服務的即時優惠。 這些供應專案不再由客戶探索，也未移至合作夥伴中心。 若要在 AppSource 中提供您的供應專案，請將其調整為 Dynamics 365 Business Central 供應專案，並在 [合作夥伴中心](https://partner.microsoft.com/)中提交。 深入瞭解如何 [建立 Dynamics 365 Business Central 供應](partner-center-portal/create-new-business-central-offer.md)專案。 |
 | Cortana Intelligence | 否 | Microsoft 已發展出 Cortana 情報的產品藍圖，因此我們從 AppSource 中移除了 Cortana 情報的即時優惠。 這些供應專案不再由客戶探索，也未移至合作夥伴中心。 若要讓您的供應專案可在商業市集中使用，請將您的供應專案調整為「軟體即服務」 (SaaS) 優惠，並在 [合作夥伴中心](https://partner.microsoft.com/)中提交。 在 [合作夥伴中心中深入瞭解 SaaS 供應專案建立檢查清單](./plan-saas-offer.md)。 |
 
@@ -103,7 +103,7 @@ Cloud Partner 入口網站先前支援的所有供應專案類型都可在合作
 
     範例：假設您有三個程式的存取權： MPN 方案、參考計畫和商用 Marketplace 方案。 當您登入合作夥伴中心時，您會在導覽窗格中看到這三個程式。
 
-2. 選取 [ **商業 Marketplace**  >  **總覽** ] 以存取您的供應專案。
+2. 選取 [**商業 Marketplace**  >  **總覽**] 以存取您的供應專案。
 
     如果您在左側的流覽窗格中看不到 [商業 Marketplace] 方案，則您可能是在錯誤的帳戶中。 遵循下一節中的步驟，以存取正確的帳戶。
 
@@ -127,7 +127,7 @@ Cloud Partner 入口網站先前支援的所有供應專案類型都可在合作
 
 ## <a name="where-are-instructions-for-using-partner-center"></a>使用合作夥伴中心的指示在哪裡？
 
-移至 [商用 marketplace 檔](index.yml)，然後展開 **合作夥伴中心中的 [商用 marketplace 入口網站** ]。 若要查看合作夥伴中心中建立供應專案的說明文章，請展開 [ **建立新供應** 專案]。
+移至 [商用 marketplace 檔](index.yml)，然後展開 **合作夥伴中心中的 [商用 marketplace 入口網站**]。 若要查看合作夥伴中心中建立供應專案的說明文章，請展開 [ **建立新供應** 專案]。
 
 ## <a name="what-are-the-publishing-and-offer-management-differences"></a>發佈和供應專案管理有何不同？
 

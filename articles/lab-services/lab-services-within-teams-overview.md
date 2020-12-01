@@ -3,12 +3,12 @@ title: Microsoft 小組內的 Azure 實驗室服務
 description: 概述如何在 Microsoft 小組內使用 Azure 實驗室服務。
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 0c7defdb6f801a10c5fadfdca805381a31f39378
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f39613427ed174dfca80d4a48be9473ab7025e79
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047823"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433918"
 ---
 # <a name="azure-lab-services-within-microsoft-teams"></a>Microsoft 小組內的 Azure 實驗室服務
 
@@ -23,7 +23,7 @@ ms.locfileid: "92047823"
 
 Azure Lab Services 與 Microsoft 團隊的整合可協助教師設定課堂環境，並在小組內提供虛擬實驗室環境 (類別) ： 
 
-* 教師可以設定教室實驗室，讓學生可以從小組內部存取其 Vm，而不需要離開小組，也不需要流覽至 [Azure 實驗室服務網站](https://labs.azure.com)。
+* 教師可以設定實驗室，讓學生可以從小組內部存取其 Vm，而不需要離開小組，也不需要流覽至 [Azure 實驗室服務網站](https://labs.azure.com)。
 * 單一登入 (從小組到 Azure 實驗室服務的 SSO) 。
 * 小組和實驗室擁有者不需要在兩個不同的系統中維護類別名冊-實驗室使用者清單是從小組成員資格自動填入，且每隔24小時會自動執行一次同步處理。 
 * 初始發佈範本 VM 之後，實驗室容量 (也就是實驗室中的 Vm 數目) 會根據小組成員資格的使用者新增/刪除，自動調整。 

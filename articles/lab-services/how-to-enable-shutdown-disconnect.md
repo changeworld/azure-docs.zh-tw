@@ -3,19 +3,19 @@ title: 在 Azure 實驗室服務中設定實驗室的 Vm 自動關機
 description: 了解如何在遠端桌面連線已中斷時，啟用或停用 VM 的自動關機。
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: 67b51941207fdd4913df9a92362959bbd468d336
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f9080f3b7b762d3b9fa448a903a4167cd2cec4a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91649876"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433932"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab"></a>設定實驗室的 Vm 自動關機
 
 本文說明如何設定實驗室的 Vm 自動關機。
 
 您可以啟用數個自動關機成本控制功能，以在虛擬機器未主動使用時主動預防額外的成本。 下列三個自動關機和中斷連線功能的組合，會攔截使用者不小心讓虛擬機器執行的大部分情況：
- 
+ 
 * 自動中斷使用者與作業系統認為閒置的虛擬機器的連線。
 * 當使用者中斷連線時，自動關閉虛擬機器。
 * 自動關閉已啟動但使用者未連接的虛擬機器。
@@ -40,4 +40,4 @@ ms.locfileid: "91649876"
 > 如果您在將 RDP 會話中斷連線至 VM 之前，關閉了 Linux 或 Windows 作業系統 (OS) VM，自動關機功能將無法正常運作。  
 ## <a name="next-steps"></a>後續步驟
 
-[教室實驗室的儀表板](use-dashboard.md)
+[實驗室的儀表板](use-dashboard.md)

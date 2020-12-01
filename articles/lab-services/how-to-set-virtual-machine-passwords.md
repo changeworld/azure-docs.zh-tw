@@ -1,14 +1,14 @@
 ---
 title: 在 Azure 實驗室服務中設定 VM 的密碼 | Microsoft Docs
-description: 了解如何在 Azure 實驗室服務的教室實驗室中設定和重設虛擬機器 (VM) 的密碼。
+description: 瞭解如何在 Azure 實驗室服務的實驗室中，為虛擬機器 (Vm) 設定和重設密碼。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e24fee26670a664012ec5f0216b0638d6149453f
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 6ae577ee4c0c7e31760e0fb12afeaeac1ef8b7e2
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379684"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434221"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>設定和管理虛擬機器集區 
 本文示範如何執行下列工作：
@@ -21,7 +21,7 @@ ms.locfileid: "93379684"
 若要增加或減少實驗室容量 (實驗室中的虛擬機器數目)，請執行下列步驟：
 
 1. 在 [虛擬機器集區] 頁面上，選取 [實驗室容量: &lt;number&gt; 個機器]。
-2. 輸入您要在實驗室中擁有的新 **VM 數目** 。 此數目必須大於或等於實驗室中所註冊的使用者數目。 
+2. 輸入您要在實驗室中擁有的新 **VM 數目**。 此數目必須大於或等於實驗室中所註冊的使用者數目。 
 3. 然後選取 [儲存]。 
 
     ![顯示 [實驗室容量] 視窗的螢幕擷取畫面，其中已選取 [實驗室中的最大電腦] 和 [儲存] 按鈕。](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
@@ -102,4 +102,4 @@ ms.locfileid: "93379684"
 ## <a name="next-steps"></a>後續步驟
 若要了解您 (身為實驗室擁有者) 可以設定的其他學生使用方式選項，請參閱下列文章：[設定學生使用方式](how-to-configure-student-usage.md)。
 
-若要了解學生該如何為其 VM 重設密碼，請參閱[為教室實驗室 (學生) 中的虛擬機器設定或重設密碼](how-to-set-virtual-machine-passwords-student.md)。
+若要瞭解學生如何重設其 Vm 的密碼，請參閱 [在實驗室中設定或重設虛擬機器的密碼 (學生) ](how-to-set-virtual-machine-passwords-student.md)。

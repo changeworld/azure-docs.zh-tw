@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3587ef6be9d6c9969dff5d1af2181ed51aea7d29
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3acaf4929158b24ff50655aa18c05b41aeec4b53
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308291"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435445"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>如何：規劃 Azure AD Join 實作
 
@@ -90,10 +90,12 @@ Azure AD Join 在受控和同盟環境中均可運作。
 
 如果您將使用者建立於：
 
-- **內部部署 Active Directory** ，您必須使用 [Azure AD Connect](../hybrid/how-to-connect-sync-whatis.md) 將其同步至 Azure AD。 
-- **Azure AD** ，則不需另行設定。
+- **內部部署 Active Directory**，您必須使用 [Azure AD Connect](../hybrid/how-to-connect-sync-whatis.md) 將其同步至 Azure AD。 
+- **Azure AD**，則不需另行設定。
 
 內部部署 UPN 與 Azure AD UPN 不同，加入 Azure AD 的裝置上並不支援它。 如果您使用內部部署 UPN，您應規劃改為使用它們在 Azure AD 中的主要 UPN。
+
+只有從 Windows 10 2004 更新開始才支援 UPN 變更。 具有此更新之裝置上的使用者在變更其 Upn 之後，將不會有任何問題。 針對 Windows 10 2004 更新之前的裝置，使用者會在其裝置上有 SSO 和條件式存取問題。 他們必須使用新的 UPN 來透過「其他使用者」磚登入 Windows，才能解決此問題。 
 
 ## <a name="assess-your-device-management"></a>存取您的裝置管理
 
@@ -187,7 +189,7 @@ Azure AD 聯結裝置的裝置管理是以 MDM 平臺（例如 Intune）和 MDM 
 從 Windows 10 2004 更新開始，使用者也可以使用遠端桌面，從 Azure AD 註冊的 Windows 10 裝置到 Azure AD 加入的裝置。 
 
 ## <a name="understand-your-provisioning-options"></a>了解您的佈建選項
-**注意** ： Azure AD 加入的裝置無法使用系統準備工具部署 (Sysprep) 或類似的映射工具
+**注意**： Azure AD 加入的裝置無法使用系統準備工具部署 (Sysprep) 或類似的映射工具
 
 您可以使用下列方法來佈建 Azure AD Join：
 
@@ -197,7 +199,7 @@ Azure AD 聯結裝置的裝置管理是以 MDM 平臺（例如 Intune）和 MDM 
  
 以下是這三種方法的比較 
  
-| 項目 | 自助式設定 | Windows Autopilot | 大量註冊 |
+| 元素 | 自助式設定 | Windows Autopilot | 大量註冊 |
 | --- | --- | --- | --- |
 | 需要使用者手動設定 | 是 | 是 | 否 |
 | 需要 IT 工作 | 否 | 是 | 是 |
@@ -243,7 +245,7 @@ Azure 入口網站可讓您控制如何將已加入 Azure AD 的裝置部署到�
 
 您可能必須先新增 MDM 提供者，才能設定行動性設定。
 
-**若要新增 MDM 提供者** ：
+**若要新增 MDM 提供者**：
 
 1. 在 [Azure Active Directory] 頁面的 [管理] 區段中，按一下 `Mobility (MDM and MAM)`。 
 1. 按一下 [新增應用程式]。
@@ -261,8 +263,8 @@ Azure 入口網站可讓您控制如何將已加入 Azure AD 的裝置部署到�
 
 根據您的範圍，會出現下列其中一種情況： 
 
-- **使用者在 MDM 範圍內** ：如果您具有 Azure AD Premium 訂用帳戶，則會隨著 Azure AD Join 自動執行 MDM 註冊。 範圍內的所有使用者皆必須具有適當的 MDM 授權。 在此情況下，如果 MDM 註冊失敗，Azure AD Join 也將回復。
-- **使用者不在 MDM 範圍內** ：如果使用者不在 MDM 範圍內，則 Azure AD Join 會逕自完成而不進行 MDM 註冊。 這會導致裝置未受管理。
+- **使用者在 MDM 範圍內**：如果您具有 Azure AD Premium 訂用帳戶，則會隨著 Azure AD Join 自動執行 MDM 註冊。 範圍內的所有使用者皆必須具有適當的 MDM 授權。 在此情況下，如果 MDM 註冊失敗，Azure AD Join 也將回復。
+- **使用者不在 MDM 範圍內**：如果使用者不在 MDM 範圍內，則 Azure AD Join 會逕自完成而不進行 MDM 註冊。 這會導致裝置未受管理。
 
 ### <a name="mdm-urls"></a>MDM URL
 
@@ -284,7 +286,7 @@ MAM 不適用於 Azure AD Join。
 
 如果您想要啟用 Azure AD 的狀態漫遊，讓使用者可在裝置間同步其設定，請參閱[在 Azure Active Directory 中啟用企業狀態漫遊](enterprise-state-roaming-enable.md)。 
 
-**建議** ：即使對混合式 Azure AD Join 裝置也可啟用此設定。
+**建議**：即使對混合式 Azure AD Join 裝置也可啟用此設定。
 
 ## <a name="configure-conditional-access"></a>設定條件式存取
 

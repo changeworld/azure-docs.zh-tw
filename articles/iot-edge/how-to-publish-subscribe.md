@@ -10,16 +10,16 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 1ace40098e1d53c6199accea755ffb6969781663
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: ecb034ae621c935c3ebcd5b480e116c2cb1d864f
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015658"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435530"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>發佈和訂閱 Azure IoT Edge
 
-您可以使用 Azure IoT Edge MQTT 訊息代理程式來發佈和訂閱訊息。 本文說明如何連線到此訊息代理程式、如何透過使用者定義的主題發佈和訂閱訊息，以及如何使用 IoT 中樞訊息原件。 IoT Edge 的 MQTT 訊息代理程式 IoT Edge 中樞內建。 如需詳細資訊，請參閱 [IoT Edge 中樞的代理功能](iot-edge-runtime.md)。
+您可以使用 Azure IoT Edge MQTT 訊息代理程式來發佈和訂閱訊息。 本文說明如何連接到此訊息代理程式、如何透過使用者定義的主題發佈和訂閱訊息，以及如何使用 IoT 中樞訊息基本專案。 IoT Edge 的 MQTT 訊息代理程式 IoT Edge 中樞內建。 如需詳細資訊，請參閱 [IoT Edge 中樞的代理功能](iot-edge-runtime.md)。
 
 > [!NOTE]
 > IoT Edge MQTT broker 目前處於公開預覽狀態。
@@ -27,16 +27,16 @@ ms.locfileid: "95015658"
 ## <a name="pre-requisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶
-- [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) `azure-iot` 已安裝 CLI 擴充功能。 如需詳細資訊，請參閱 [適用于 azure Azure CLI 的 Azure IoT 擴充功能安裝步驟](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-iot)。
+- [Azure CLI](/cli/azure/) `azure-iot` 已安裝 CLI 擴充功能。 如需詳細資訊，請參閱 [適用于 azure Azure CLI 的 Azure IoT 擴充功能安裝步驟](/cli/azure/azure-cli-reference-for-iot)。
 - SKU 的 **IoT 中樞** ，也就是 F1、S1、S2 或 S3。
 - 具有 **1.2 版或更新版本的 IoT Edge 裝置**。 由於 IoT Edge MQTT broker 目前處於公開預覽狀態，因此請在 edgeHub 容器上將下列環境變數設為 true，以啟用 MQTT 訊息代理程式：
 
-   | Name | 值 |
+   | 名稱 | 值 |
    | - | - |
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__mqttBrokerEnabled` | `true` |
 
-- Mosquitto 安裝在 IoT Edge 裝置上的 **用戶端**。 本文使用包含 [MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) 和 [MOSQUITTO_SUB](https://mosquitto.org/man/mosquitto_sub-1.html)的熱門 Mosquitto 用戶端。 您可以改為使用其他 MQTT 用戶端。 若要在 Ubuntu 裝置上安裝 Mosquitto 用戶端，請執行下列命令：
+- Mosquitto 安裝在 IoT Edge 裝置上的 **用戶端**。 本文使用 [MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) 和 [MOSQUITTO_SUB](https://mosquitto.org/man/mosquitto_sub-1.html)的熱門 Mosquitto 用戶端。 您可以改為使用其他 MQTT 用戶端。 若要在 Ubuntu 裝置上安裝 Mosquitto 用戶端，請執行下列命令：
 
     ```cmd
     sudo apt-get update && sudo apt-get install mosquitto-clients
@@ -62,42 +62,42 @@ ms.locfileid: "95015658"
 
 ### <a name="authentication"></a>驗證
 
-若要讓 MQTT 用戶端自行驗證，必須先將 CONNECT 封包傳送給 MQTT 訊息代理程式，以在其名稱中起始連線。 此封包提供三項驗證資訊： a `client identifier` 、a `username` 和 `password` ：
+若要讓 MQTT 用戶端自行驗證，必須先將 CONNECT 封包傳送給 MQTT 訊息代理程式，以在其名稱中起始連線。 此封包提供三項驗證資訊： a `client identifier` 、a `username` 和 a `password` ：
 
--   此 `client identifier` 欄位是 IoT 中樞內的裝置名稱或模組名稱。 其使用下列語法：
+- 此 `client identifier` 欄位是 IoT 中樞內的裝置名稱或模組名稱。 其使用下列語法：
 
-    - 針對裝置： `<device_name>`
+  - 針對裝置： `<device_name>`
 
-    - 針對模組： `<device_name>/<module_name>`
+  - 針對模組： `<device_name>/<module_name>`
 
    若要連線到 MQTT 訊息代理程式，必須在 IoT 中樞註冊裝置或模組。
 
-   請注意，訊息代理程式不允許使用相同的認證來連接兩個用戶端。 如果第二個用戶端使用相同的認證進行連接，訊息代理程式會中斷已連線的用戶端連線。
+   訊息代理程式不允許來自多個使用相同認證之用戶端的連接。 如果第二個用戶端使用相同的認證進行連接，訊息代理程式會中斷已連線的用戶端連線。
 
 - 此 `username` 欄位衍生自裝置或模組名稱，以及裝置所屬的 IoTHub 名稱使用下列語法：
 
-    - 針對裝置： `<iot_hub_name>.azure-devices.net/<device_name>/?api-version=2018-06-30`
+  - 針對裝置： `<iot_hub_name>.azure-devices.net/<device_name>/?api-version=2018-06-30`
 
-    - 針對模組： `<iot_hub_name>.azure-devices.net/<device_name>/<module_name>/?api-version=2018-06-30`
+  - 針對模組： `<iot_hub_name>.azure-devices.net/<device_name>/<module_name>/?api-version=2018-06-30`
 
 - `password`CONNECT 封包的欄位取決於驗證模式：
 
-    - 在 [對稱金鑰驗證](how-to-authenticate-downstream-device.md#symmetric-key-authentication)的情況下，此 `password` 欄位是 SAS 權杖。
-    - 如果是 [x.509 自我簽署驗證](how-to-authenticate-downstream-device.md#x509-self-signed-authentication)，則 `password` 欄位不存在。 在此驗證模式中，需要 TLS 通道。 用戶端必須連接到埠8883以建立 TLS 連線。 在 TLS 信號交換期間，MQTT 訊息代理程式會要求用戶端憑證。 此憑證是用來驗證用戶端的身分識別，因此 `password` 稍後在傳送 CONNECT 封包時，不需要此欄位。 同時傳送用戶端憑證和密碼欄位將會導致錯誤，而且將會關閉連接。 MQTT 程式庫和 TLS 用戶端程式庫在起始連線時，通常會有一種方式來傳送用戶端憑證。 您可以在 [使用 X509 憑證進行用戶端驗證](how-to-authenticate-downstream-device.md#x509-self-signed-authentication)一節中看到逐步範例。
+  - 使用 [對稱金鑰驗證](how-to-authenticate-downstream-device.md#symmetric-key-authentication)時，此 `password` 欄位是 SAS 權杖。
+  - 使用 [x.509 自我簽署驗證](how-to-authenticate-downstream-device.md#x509-self-signed-authentication)時， `password` 欄位不存在。 在此驗證模式中，需要 TLS 通道。 用戶端必須連接到埠8883以建立 TLS 連線。 在 TLS 信號交換期間，MQTT 訊息代理程式會要求用戶端憑證。 此憑證是用來驗證用戶端的身分識別，因此 `password` 稍後在傳送 CONNECT 封包時，不需要此欄位。 同時傳送用戶端憑證和密碼欄位將會導致錯誤，而且將會關閉連接。 MQTT 程式庫和 TLS 用戶端程式庫在起始連線時，通常會有一種方式來傳送用戶端憑證。 您可以在 [使用 X509 憑證進行用戶端驗證](how-to-authenticate-downstream-device.md#x509-self-signed-authentication)一節中看到逐步範例。
 
 IoT Edge 部署的模組會使用 [對稱金鑰驗證](how-to-authenticate-downstream-device.md#symmetric-key-authentication) ，而且可以呼叫本機 [IOT EDGE 工作負載 API](https://github.com/Azure/iotedge/blob/40f10950dc65dd955e20f51f35d69dd4882e1618/edgelet/workload/README.md) ，以程式設計方式取得 SAS 權杖（即使離線時也一樣）。
 
 ### <a name="authorization"></a>授權
 
-一旦 MQTT 用戶端通過 IoT Edge hub 的驗證，就必須獲得授權才能連線。 一旦連線後，就必須獲得授權，才能發佈或訂閱特定主題。 這些授權是由 IoT Edge 中樞根據其授權原則來授與。 授權原則是一組以 JSON 結構表示的語句，會透過對應項傳送至 IoT Edge 中樞。 編輯 IoT Edge hub 對應項以設定其授權原則。
+一旦 MQTT 用戶端通過 IoT Edge hub 的驗證，就必須獲得授權才能連接。 一旦連線後，就必須獲得授權，才能發佈或訂閱特定主題。 這些授權是由 IoT Edge 中樞根據其授權原則來授與。 授權原則是一組以 JSON 結構表示的語句，會透過對應項傳送至 IoT Edge 中樞。 編輯 IoT Edge hub 對應項以設定其授權原則。
 
 > [!NOTE]
 > 針對公開預覽版，MQTT 訊息代理程式的授權原則編輯只能透過 Visual Studio、Visual Studio Code 或 Azure CLI 提供。 Azure 入口網站目前不支援編輯 IoT Edge 中樞對應項及其授權原則。
 
-每個授權原則語句都是由或的組合所組成 `identities` `allow` `deny` `operations` `resources` ：
+每個授權原則語句都是由 `identities` 、 `allow` 或 `deny` 效果、和 `operations` `resources` 等組合所組成：
 
 - `identities` 描述原則的主體。 它必須對應至 `client identifier` 用戶端在其 CONNECT 封包中傳送的。
-- `allow` 或 `deny` 效果定義是要允許還是拒絕作業。
+- `allow` 或 `deny` 效果定義是否要允許或拒絕作業。
 - `operations` 定義要授權的動作。 `mqtt:connect``mqtt:publish`和 `mqtt:subscribe` 現在是三個支援的動作。
 - `resources` 定義原則的物件。 它可以是主題或以 [MQTT 萬用字元](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718107)定義的主題模式。
 
@@ -163,16 +163,18 @@ IoT Edge 部署的模組會使用 [對稱金鑰驗證](how-to-authenticate-downs
 ```
 
 撰寫您的授權原則時，有幾件事要牢記在心：
+
 - 它需要對應項 `$edgeHub` 架構版本1。2
 - 依預設，所有作業都會遭到拒絕。
-- 授權語句的評估順序會與它們出現在 JSON 定義中的順序不同。 它一開始先查看 `identities` ，然後選取符合要求的第一個允許或拒絕語句。 如果允許和拒絕語句之間發生衝突，deny 語句會獲勝。
+- 授權語句會依照它們出現在 JSON 定義中的順序進行評估。 它一開始先查看 `identities` ，然後選取符合要求的第一個允許或拒絕語句。 如果允許和拒絕語句之間發生衝突，deny 語句會獲勝。
 - 有幾個變數 (例如，可在授權原則中使用替代) ：
-    - `{{iot:identity}}` 表示目前連接之用戶端的身分識別。 例如，在有模組的情況下為 `myDevice` 裝置 `myEdgeDevice/SampleModule` 。
-    - `{{iot:device_id}}` 代表目前連接之裝置的身分識別。 例如，在有模組的情況下為 `myDevice` 裝置 `myEdgeDevice` 。
-    - `{{iot:module_id}}` 表示目前連接之模組的身分識別。 例如，如果是在某個模組的情況下，則為「裝置」 `SampleModule` 。
-    - `{{iot:this_device_id}}` 代表執行授權原則之 IoT Edge 裝置的身分識別。 例如 `myIoTEdgeDevice` 。
+    - `{{iot:identity}}` 表示目前連接之用戶端的身分識別。 例如，類似的裝置身分識別 `myDevice` 或模組身分識別 `myEdgeDevice/SampleModule` 。
+    - `{{iot:device_id}}` 代表目前連接之裝置的身分識別。 例如，類似的裝置身分識別， `myDevice` 或執行模組的裝置身分識別 `myEdgeDevice` 。
+    - `{{iot:module_id}}` 表示目前連接之模組的身分識別。 此變數空白適用于已連線的裝置，或類似的模組身分識別 `SampleModule` 。
+    - `{{iot:this_device_id}}` 代表執行授權原則之 IoT Edge 裝置的身分識別。 例如： `myIoTEdgeDevice` 。
 
 IoT 中樞的授權與使用者自訂主題的處理方式稍有不同。 以下是要記住的重點：
+
 - Azure IoT 裝置或模組需要明確的授權規則，才能連線至 IoT Edge hub MQTT 訊息代理程式。 以下提供預設的 connect 授權原則。
 - 依預設，Azure IoT 裝置或模組可以存取自己的 IoT 中樞主題，而不需要任何明確的授權規則。 不過，在該情況下，授權源自于父/子關聯性，而且必須設定這些關聯性。 IoT Edge 模組會自動設定為其 IoT Edge 裝置的子系，但必須將裝置明確設定為其 IoT Edge 閘道的子系。
 - Azure IoT 裝置或模組可以存取其他裝置或模組的相關主題，這些主題包括定義適當的明確授權規則。
@@ -240,7 +242,7 @@ IoT 中樞的授權與使用者自訂主題的處理方式稍有不同。 以下
     
        其中3600是 SAS 權杖的持續時間（以秒為單位） (例如 3600 = 1 小時) 。
 
-3. 複製 SAS 權杖，這是對應至輸出中 "SAS" 機碼的值。 以下是上述 Azure CLI 命令的輸出範例：
+3. 複製 SAS 權杖，這是輸出中對應至 "SAS" 機碼的值。 以下是上述 Azure CLI 命令的輸出範例：
 
     ```
     {
@@ -327,11 +329,11 @@ mosquitto_sub \
 
 `<edge_device_address>`  =  `localhost` 在此範例中，由於用戶端是在與 IoT Edge 相同的裝置上執行。
 
-請注意，在第一個範例中，會使用埠 1883 (MQTT) （例如沒有 TLS）。 使用埠 8883 (MQTTS) 的另一個範例（例如啟用 TLS）會顯示在下一節中。
+請注意，在此第一個範例中，會使用埠 1883 (MQTT) （沒有 TLS）。 下一節顯示使用埠 8883 (MQTTS) 的另一個範例（已啟用 TLS）。
 
 **Sub_client** 的 MQTT 用戶端現在已啟動，且正在等候傳入訊息 `test_topic` 。
 
-#### <a name="publish"></a>發佈
+#### <a name="publish"></a>發行
 
 在您的 IoT Edge 裝置上，從另一個終端機執行下列命令，以將 **pub_client** MQTT 用戶端連線至 MQTT 訊息代理程式，並將訊息發佈至與上述相同的訊息 `test_topic` ：
 
@@ -384,7 +386,7 @@ mosquitto_pub \
 
 ### <a name="receive-direct-methods"></a>接收直接方法
 
-接收直接方法與接收完整 twins 很類似，因為用戶端必須先確認它已收到呼叫。 首先，用戶端訂閱 IoT 中樞特殊主題 `$iothub/methods/POST/#` 。 然後，在此主題收到直接方法之後，用戶端就必須 `rid` 從收到直接方法的子主題中解壓縮要求識別碼，最後在 IoT 中樞特殊主題上發佈確認訊息 `$iothub/methods/res/200/<request_id>` 。
+接收直接方法類似于接收完整 twins，並加入用戶端需要確認它已收到呼叫的完整。 首先，用戶端會訂閱 IoT 中樞特殊主題 `$iothub/methods/POST/#` 。 然後，在此主題收到直接方法之後，用戶端就必須 `rid` 從收到直接方法的子主題中解壓縮要求識別碼，最後在 IoT 中樞特殊主題上發佈確認訊息 `$iothub/methods/res/200/<request_id>` 。
 
 ### <a name="send-direct-methods"></a>傳送直接方法
 
@@ -410,8 +412,8 @@ MQTT 橋接器可以設定為將 IoT Edge hub MQTT 訊息代理程式連接到�
 - `settings` 定義要為端點橋接的主題。 每個端點可以有多個設定，並使用下列值來進行設定：
     - `direction`： `in` 訂閱遠端訊息代理程式的主題，或 `out` 發佈至遠端訊息代理程式的主題
     - `topic`：要比對的核心主題模式。 您可以使用[MQTT 萬用字元](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718107)來定義此模式。 您可以將不同的前置詞套用至本機訊息代理程式和遠端訊息代理程式上的此主題模式。
-    - `outPrefix`：套用至遠端訊息代理程式之 `topic` 模式的前置詞。
-    - `inPrefix`：套用至本機訊息代理程式之 `topic` 模式的前置詞。
+    - `outPrefix`：套用至遠端訊息代理程式之模式的前置 `topic` 詞。
+    - `inPrefix`：套用至本機訊息代理程式之模式的前置 `topic` 詞。
 
 以下是 IoT Edge MQTT 橋接器設定的範例，此設定會將父 IoT Edge 裝置主題上所收到的所有訊息 `alerts/#` ，將至相同主題的子 IoT Edge 裝置，並將在子 IoT Edge 裝置主題上傳送的所有訊息 `/local/telemetry/#` 到主題的上層 IoT Edge 裝置 `/remote/messages/#` 。
 
@@ -437,8 +439,8 @@ MQTT 橋接器可以設定為將 IoT Edge hub MQTT 訊息代理程式連接到�
 }
 ```
 IoT Edge hub MQTT bridge 上的其他注意事項：
-- 使用 MQTT 訊息代理程式時，會自動使用 MQTT 通訊協定做為上游通訊協定，而 IoT Edge 用於嵌套設定，例如使用 `parent_hostname` 指定的。 若要深入瞭解上游通訊協定，請參閱 [雲端通訊](iot-edge-runtime.md#cloud-communication)。 若要深入瞭解嵌套設定，請參閱 [將下游 IoT Edge 裝置連線到 Azure IoT Edge 閘道](how-to-connect-downstream-iot-edge-device.md#configure-iot-edge-on-devices)。
+- 使用 MQTT 訊息代理程式時，MQTT 通訊協定會自動做為上游通訊協定，而 IoT Edge 用於嵌套設定，例如具有 `parent_hostname` 指定的。 若要深入瞭解上游通訊協定，請參閱 [雲端通訊](iot-edge-runtime.md#cloud-communication)。 若要深入瞭解嵌套設定，請參閱 [將下游 IoT Edge 裝置連線到 Azure IoT Edge 閘道](how-to-connect-downstream-iot-edge-device.md#configure-iot-edge-on-devices)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [瞭解 IoT Edge 中樞](iot-edge-runtime.md#iot-edge-hub)

@@ -1,17 +1,17 @@
 ---
-title: 管理 Azure 實驗室服務中的教室實驗室 | Microsoft Docs
-description: 了解如何建立和設定教室實驗室、檢視所有教室實驗室、與實驗室使用者共用註冊連結，或刪除實驗室。
+title: 管理 Azure 實驗室服務中的實驗室 |Microsoft Docs
+description: 瞭解如何建立和設定教室實驗室、觀看所有實驗室、與實驗室使用者共用註冊連結，或刪除實驗室。
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: dd05b13a34e2be1a9d6bdc011a9aa24e79bc8dd1
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: db7a2f58f99252a7e5076dd86c37b65bbe8ea37a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148366"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434204"
 ---
-# <a name="manage-classroom-labs-in-azure-lab-services"></a>管理 Azure 實驗室服務中的教室實驗室 
-本文說明如何建立和刪除教室實驗室。 它也示範如何檢視實驗室帳戶中的所有教室實驗室。 
+# <a name="manage-labs-in-azure-lab-services"></a>管理 Azure 實驗室服務中的實驗室 
+本文說明如何建立和刪除教室實驗室。 它也會說明如何在實驗室帳戶中查看所有實驗室。 
 
 ## <a name="prerequisites"></a>Prerequisites
 若要在實驗室帳戶中設定教室實驗室，您必須是實驗室帳戶中 [實驗室建立者] 角色的成員。 您用來建立實驗室帳戶的帳戶會自動新增至此角色。 實驗室擁有者可以使用下列文章中的步驟，將其他使用者新增至「實驗室建立者」角色：[將使用者新增至實驗室建立者角色](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)。
@@ -24,12 +24,12 @@ ms.locfileid: "93148366"
     
     ![建立教室實驗室](./media/tutorial-setup-classroom-lab/new-lab-button.png)
 1. 在 [新增實驗室] 視窗中，執行下列動作： 
-    1. 指定實驗室的 **名稱** 。 
-    1. 選取類別所需的 **虛擬機器大小** 。 如需可用的大小清單，請參閱 [VM 大小](#vm-sizes)一節。 
-    1. 選取您想用於教室實驗室的 **虛擬機器映像** 。 如果您選取 Linux 映像，您會看到 **啟用遠端桌面連線** 的選項。 如需詳細資料，請參閱[啟用 Linux 遠端桌面連線](how-to-enable-remote-desktop-linux.md)。
+    1. 指定實驗室的 **名稱**。 
+    1. 選取類別所需的 **虛擬機器大小**。 如需可用的大小清單，請參閱 [VM 大小](#vm-sizes)一節。 
+    1. 選取您想用於教室實驗室的 **虛擬機器映像**。 如果您選取 Linux 映像，您會看到 **啟用遠端桌面連線** 的選項。 如需詳細資料，請參閱[啟用 Linux 遠端桌面連線](how-to-enable-remote-desktop-linux.md)。
 
         如果您使用實驗室帳戶擁有者認證進行登入，將會看到為實驗室啟用更多映像的選項。 如需詳細資訊，請參閱[在建立實驗室時啟用映像](specify-marketplace-images.md#enable-images-at-the-time-of-lab-creation)。
-    1. 檢閱頁面上顯示的 **每小時總價** 。 
+    1. 檢閱頁面上顯示的 **每小時總價**。 
     1. 選取 [儲存]。
 
         ![顯示 [新增實驗室] 視窗的螢幕擷取畫面。](./media/tutorial-setup-classroom-lab/new-lab-window.png)
@@ -49,7 +49,7 @@ ms.locfileid: "93148366"
         ![[新增實驗室] 視窗](./media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
     4. 然後，選取 [虛擬機器認證] 頁面上的 [下一步]。 
 5. 在 [實驗室原則] 頁面上，執行下列步驟：
-    1. 輸入在實驗室的排程時間外所配置給每位使用者的時數 ( **每位使用者的配額** )。 
+    1. 輸入在實驗室的排程時間外所配置給每位使用者的時數 (**每位使用者的配額**)。 
     2. 在 [自動關閉虛擬機器] 選項中，指定是否要在使用者中斷連線時自動關閉 VM。 您也可以指定 VM 在自動關閉之前，應該等候使用者重新連線的時間長度。 如需詳細資訊，請參閱[在中斷連線時啟用自動關閉 VM](how-to-enable-shutdown-disconnect.md)。
     3. 然後，選取 [完成]。 
 
@@ -74,7 +74,7 @@ ms.locfileid: "93148366"
 10. 在 [發佈範本] 頁面上，輸入您要在實驗室中建立的虛擬機器數目，然後選取 [發佈]。 
 
     ![發佈範本 - VM 的數目](./media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
-11. 您會在頁面上看到範本的 **發佈狀態** 。 此程序最多可能需要一小時。 
+11. 您會在頁面上看到範本的 **發佈狀態**。 此程序最多可能需要一小時。 
 
     ![發佈範本 - 進度](./media/tutorial-setup-classroom-lab/publish-template-progress.png)
 12. 選取左側功能表上的 [虛擬機器] 或選取 [虛擬機器] 圖格，以切換到 [虛擬機器集區] 頁面。 確認您看到處於 [未指派] 狀態的虛擬機器。 這些虛擬機器尚未指派給任何學生。 它們應處於 [已停止] 狀態。 您可以在此頁面上啟動學生 VM、連線到 VM、停止 VM，以及刪除 VM。 您可以在此頁面啟動 VM，或是讓學生啟動 VM。 
@@ -103,7 +103,7 @@ ms.locfileid: "93148366"
 > [!NOTE]
 > 建立教室實驗室時，您可能不會在清單中看到這些 VM 大小。 此清單會根據實驗室位置的目前容量填入。 如果實驗室帳戶建立者[允許實驗室建立者挑選實驗室位置](allow-lab-creator-pick-lab-location.md)，您可以嘗試為實驗室選擇不同的位置，並查看 VM 大小是否可用。 
 
-## <a name="view-all-classroom-labs"></a>檢視所有教室實驗室
+## <a name="view-all-labs"></a>檢視所有連結
 
 1. 瀏覽至 [Azure 實驗室服務入口網站](https://labs.azure.com)。
 1. 選取 [登入]。 選取或輸入 **使用者識別碼** (其為實驗室帳戶中具有 **實驗室建立者** 角色的成員)，然後輸入密碼。 Azure 實驗室服務支援組織帳戶和 Microsoft 帳戶。 
@@ -139,5 +139,5 @@ ms.locfileid: "93148366"
 
 - [以實驗室擁有者身分設定及發佈範本](how-to-create-manage-template.md)
 - [以實驗室擁有者身分設定及控制實驗室的使用方式](how-to-configure-student-usage.md)
-- [以實驗室使用者的身分存取教室實驗室](how-to-use-classroom-lab.md)
+- [以實驗室使用者的身份存取實驗室](how-to-use-classroom-lab.md)
 

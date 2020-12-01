@@ -192,8 +192,16 @@
           href: application-proxy-remove-personal-data.md
         - name: 設定自訂網域
           href: application-proxy-configure-custom-domain.md
-        - name: 使用應用程式傳遞控制器或網路保護舊版應用程式
-          href: secure-hybrid-access.md
+        - name: 保護舊版應用程式
+          items:
+            - name: 使用 Azure AD 保護混合式存取
+              href: secure-hybrid-access.md
+            - name: F5 和 Azure AD 整合
+              href: f5-aad-integration.md
+            - name: 在 Azure IaaS 中部署 F5 BIG-IP VE
+              href: f5-bigip-deployment-guide.md
+            - name: 無密碼 VPN 的具有 Azure AD 的 F5 Big-IP
+              href: f5-aad-password-less-vpn.md
         - name: 發佈逐步解說
           items:
             - name: 與 NDES 伺服器上的應用程式 Proxy 整合

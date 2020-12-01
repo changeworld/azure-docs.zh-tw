@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Synapse Analytics 中管理 Apache Spark 的程式庫
+title: 管理 Apache Spark 的程式庫
 description: 瞭解如何在 Azure Synapse Analytics 中新增和管理 Apache Spark 所使用的程式庫。
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.date: 10/16/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 8d478b35b702e02f303358972526c091ceb3657e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 27881b048a738d4de2acb57dcc4c2dad1f4d5b24
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95917120"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435360"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中管理 Apache Spark 的程式庫
 

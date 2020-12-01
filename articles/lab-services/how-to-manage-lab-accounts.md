@@ -3,15 +3,15 @@ title: 管理 Azure 實驗室服務中的實驗室帳戶 | Microsoft Docs
 description: 了解如何在 Azure 訂用帳戶中建立實驗室帳戶、檢視所有實驗室帳戶，或刪除實驗室帳戶。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 33e5e42f65fdd34bb37b12947b5173700ad7970c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 65ff28401b73698e320735613b32c96bf3de58f2
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999496"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434085"
 ---
 # <a name="create-and-manage-lab-accounts"></a>建立及管理實驗室帳戶
-在 Azure Lab Services 中，實驗室帳戶是受控實驗室類型 (例如教室實驗室) 的容器。 系統管理員會使用 Azure 實驗室服務來設定實驗室帳戶，並向可以在帳戶中建立實驗室的實驗室擁有者提供存取權。 本文說明如何建立實驗室帳戶、檢視所有實驗室帳戶，或刪除實驗室帳戶。
+在 Azure 實驗室服務中，實驗室帳戶是受控實驗室類型（例如 labs）的容器。 系統管理員會使用 Azure 實驗室服務來設定實驗室帳戶，並向可以在帳戶中建立實驗室的實驗室擁有者提供存取權。 本文說明如何建立實驗室帳戶、檢視所有實驗室帳戶，或刪除實驗室帳戶。
 
 ## <a name="create-a-lab-account"></a>建立實驗室帳戶
 下列步驟將說明如何透過 Azure 入口網站使用 Azure 實驗室服務，來建立實驗室。 

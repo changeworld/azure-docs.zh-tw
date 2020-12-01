@@ -453,7 +453,7 @@
                       href: ../image-version-vm-powershell.md
                     - name: 從受控磁碟或快照集
                       href: ../image-version-snapshot-powershell.md
-                    - name: 從受控映像遷移
+                    - name: 複製受控映像
                       href: ../image-version-managed-image-powershell.md
                     - name: 從另一個資源庫複製
                       href: ../image-version-another-gallery-powershell.md
@@ -475,7 +475,7 @@
                       href: ../image-version-vm-cli.md
                     - name: 從受控磁碟或快照集
                       href: ../image-version-snapshot-cli.md
-                    - name: 從受控映像遷移
+                    - name: 複製受控映像
                       href: ../image-version-managed-image-cli.md
                     - name: 從另一個資源庫複製
                       href: ../image-version-another-gallery-cli.md

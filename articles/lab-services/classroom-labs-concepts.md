@@ -1,16 +1,16 @@
 ---
-title: 教室實驗室概念 - Azure Lab Services | Microsoft Docs
+title: 實驗室概念-Azure 實驗室服務 |Microsoft Docs
 description: 了解 Lab Services 的基本概念，以及其如何讓您輕鬆地建立和管理實驗室。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 38dd77df7a80ad252b553b6afa8b52d7fee753a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa3a8dad195b4b3cbf0786c8923c8b330d148898
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85443701"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435513"
 ---
-# <a name="classroom-labs-concepts"></a>教室實驗室概念
+# <a name="labs-concepts"></a>實驗室概念
 
 下列清單包含重要的 Lab Services 概念和定義：
 
@@ -48,7 +48,7 @@ ms.locfileid: "85443701"
 
 ### <a name="educator"></a>教育工作者
 
-通常，教師或線上訓練人員等使用者會在實驗室帳戶下建立教室實驗室。 教育工作者會執行下列工作：
+一般而言，老師或線上訓練人員等使用者在實驗室帳戶下建立實驗室。 教育工作者會執行下列工作：
 
 - 建立教室實驗室。
 - 在實驗室中建立虛擬機器。

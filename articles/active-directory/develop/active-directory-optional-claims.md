@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 10/30/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 7eedb9ce30be236e8d47152f0e114b7bc5ae2304
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e71ab0293dade56c14dce7318fc96021a040b102
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348087"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433315"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：為您的應用程式提供選擇性宣告
 
@@ -58,7 +58,7 @@ ms.locfileid: "96348087"
 | `verified_secondary_email` | 源自使用者的 SecondaryAuthoritativeEmail   | JWT        |           |        |
 | `vnet`                     | VNET 規範資訊。 | JWT        |           |      |
 | `fwd`                      | IP 位址。| JWT    |   | 新增發出要求之用戶端的原始 IPv4 位址 (位於 VNET 內部時) |
-| `ctry`                     | 使用者的國家/地區 | JWT、SAML |  | Azure AD 會傳回選用的宣告（ `ctry` 如果有的話），而欄位的值是標準的兩個字母的國家/地區代碼，例如 FR、JP、SZ 等等。 |
+| `ctry`                     | 使用者的國家/地區 | JWT |  | Azure AD 會傳回選用的宣告（ `ctry` 如果有的話），而欄位的值是標準的兩個字母的國家/地區代碼，例如 FR、JP、SZ 等等。 |
 | `tenant_ctry`              | 資源租使用者的國家/地區 | JWT | | 與系統 `ctry` 管理員在租使用者層級設定的不同。 也必須是標準的兩個字母值。 |
 | `xms_pdl`             | 慣用資料位置   | JWT | | 若為多地理位置租用戶，慣用的資料位置是三個字母的代碼，顯示使用者所在的地理區域。 如需詳細資訊，請參閱 [Azure AD Connect 慣用資料位置的相關文件](../hybrid/how-to-connect-sync-feature-preferreddatalocation.md)。<br/>例如：`APC` 是指亞太地區。 |
 | `xms_pl`                   | 使用者慣用語言  | JWT ||使用者的慣用語言 (如果已設定)。 在來賓存取案例中，來源是其主租用戶。 格式化 LL-CC ("en-us")。 |
@@ -76,7 +76,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 **表 3：僅限 v2.0 的選擇性宣告**
 
-| JWT 宣告     | 名稱                            | 說明                                | 注意 |
+| JWT 宣告     | 名稱                            | 描述                                | 注意 |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP 位址                      | 用戶端的登入來源 IP 位址。   |       |
 | `onprem_sid`  | 內部部署安全性識別碼 |                                             |       |
