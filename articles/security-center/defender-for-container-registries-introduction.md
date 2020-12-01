@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d587c4dbdd8f46d6e098ff96f464d456fffc9ccf
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ad880b7c23c687530a79ca1123474e94c923e150
+ms.sourcegitcommit: b849ecdc8aa97337299b0f09970b7810c59cd044
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95529975"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96310386"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>適用於容器登錄的 Azure Defender 簡介
 
@@ -85,6 +85,8 @@ Azure Container Registry (ACR) 是受控的私人 Docker 登錄服務，可在�
 
 [深入了解建立規則以停用來自整合式弱點評估工具的結果](defender-for-container-registries-usage.md#disable-specific-findings-preview)。
 
+### <a name="why-is-security-center-alerting-me-to-vulnerabilities-about-an-image-that-isnt-in-my-registry"></a>為什麼資訊安全中心會向我發出並非我登錄中映像的弱點警示？
+資訊安全中心會針對在登錄中推送或提取的每個映像提供弱點評量。 有些映像可能會重複使用已掃描映像中的標籤。 例如，您可能會在每次將映像新增至摘要時，重新指派「最新」標籤。 在這種情況下，「舊」映像仍然存在於登錄中，而且可能仍會由其摘要提取。 如果映像具有安全性問題，並且已提取，則會暴露安全性弱點。
 
 
 ## <a name="next-steps"></a>後續步驟
