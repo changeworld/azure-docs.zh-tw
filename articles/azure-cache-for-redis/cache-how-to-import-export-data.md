@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: e8bb1457bbf5d610518c3bc84768186972734099
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 9ee3b447b2b5f6dfa8972749c3c46ae01f79bfdc
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536856"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327503"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>在 Azure Cache for Redis 中匯入與匯出資料
 「匯入/匯出」是 Azure Cache for Redis 的資料管理作業，可讓您從進階快取將「Azure Cache for Redis 資料庫」(RDB) 快照集匯入和匯出至 Azure 儲存體帳戶中的 Blob，以將資料匯入 Azure Cache for Redis 或從 Azure Cache for Redis 匯出資料。
@@ -36,7 +36,7 @@ ms.locfileid: "92536856"
 >
 >
 
-1. 若要匯入一或多個匯出的快取 Blob，請  按一下 [匯入資料]  。
+1. 若要匯入一或多個匯出的快取 Blob，請[瀏覽至 Azure 入口網站中的快取](cache-configure.md#configure-azure-cache-for-redis-settings)，然後從 [資源功能表] 按一下 [匯入資料]。
 
     ![匯入資料](./media/cache-how-to-import-export-data/cache-import-data.png)
 2. 按一下 [選擇 Blob]  ，然後選取包含要匯入之資料的儲存體帳戶。
@@ -45,7 +45,7 @@ ms.locfileid: "92536856"
 3. 按一下包含要匯入之資料的容器。
 
     ![選擇容器](./media/cache-how-to-import-export-data/cache-import-choose-container.png)
-4. 按一下 blob 名稱左側的區域以選取一或多個 blob，即可加以匯入，然後按一下 [選取]  。
+4. 按一下 blob 名稱左側的區域以選取一或多個 blob，即可加以匯入，然後按一下 [選取] 。
 
     ![選擇 blob](./media/cache-how-to-import-export-data/cache-import-choose-blobs.png)
 5. 按一下 [匯入]  開始匯入程序。
@@ -64,9 +64,9 @@ ms.locfileid: "92536856"
 ## <a name="export"></a>匯出
 匯出可讓您將儲存在 Azure Cache for Redis 中的資料匯出至與 Redis 相容的 RDB 檔案。 您可以使用這項功能，將資料從一個 Azure Cache for Redis 執行個體移到另一個執行個體，或移到另一個 Redis 伺服器。 在進行匯出程序的期間，會在裝載 Azure Cache for Redis 伺服器執行個體的 VM 上建立暫存檔案，然後將檔案上傳至指定的儲存體帳戶。 當匯出作業完成時的狀態為成功或失敗時，都會刪除暫存檔案。
 
-1. 若要將目前的快取內容匯出至儲存體，請  按一下 [匯出資料]  。
+1. 若要將目前的快取內容匯出至儲存體，請[瀏覽至 Azure 入口網站中的快取](cache-configure.md#configure-azure-cache-for-redis-settings)，然後從 [資源功能表] 按一下 [匯出資料]。
 
-    ![選擇儲存體容器](./media/cache-how-to-import-export-data/cache-export-data-choose-storage-container.png)
+    ![在 contoso5premium 的流覽窗格中，系統管理清單上的 [匯出資料] 選項已反白顯示。](./media/cache-how-to-import-export-data/cache-export-data-choose-storage-container.png)
 2. 按一下 [選擇儲存體容器]  ，然後選取所需的儲存體帳戶。 儲存體帳戶必須與您的快取位於相同的訂用帳戶和區域中。
 
    > [!IMPORTANT]
@@ -74,10 +74,10 @@ ms.locfileid: "92536856"
    >
 
     ![儲存體帳戶](./media/cache-how-to-import-export-data/cache-export-data-choose-account.png)
-3. 選擇所需的 blob 容器，然後按一下 [選取]  。 若要使用新的容器，請按一下 [新增容器]  先加以新增，然後從清單中選取它。
+3. 選擇所需的 blob 容器，然後按一下 [選取] 。 若要使用新的容器，請按一下 [新增容器]  先加以新增，然後從清單中選取它。
 
-    ![選擇儲存體容器](./media/cache-how-to-import-export-data/cache-export-data-container.png)
-4. 輸入 [Blob 名稱前置詞]  ，然後按一下 [匯出]  以啟動匯出程序。 Blob 名稱前置詞可用來做為此匯出作業所產生之檔案名稱的前置詞。
+    ![在 contoso55 的容器上，會反白顯示 [+ 容器] 選項。 清單中有一個容器 cachesaves，而且已選取並反白顯示。 選取選項會被選取並反白顯示。](./media/cache-how-to-import-export-data/cache-export-data-container.png)
+4. 輸入 [Blob 名稱前置詞]，然後按一下 [匯出] 以啟動匯出程序。 Blob 名稱前置詞可用來做為此匯出作業所產生之檔案名稱的前置詞。
 
     ![匯出](./media/cache-how-to-import-export-data/cache-export-data.png)
 
@@ -140,7 +140,7 @@ Azure Cache for Redis 持續性讓您將儲存在 Redis 快取中的資料存留
 可以。如需 PowerShell 指示，請參閱[匯入 Azure Cache for Redis](cache-how-to-manage-redis-cache-powershell.md#to-import-an-azure-cache-for-redis) 和[匯出 Azure Cache for Redis](cache-how-to-manage-redis-cache-powershell.md#to-export-an-azure-cache-for-redis)。
 
 ### <a name="i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean"></a>我在匯入/匯出作業期間收到逾時錯誤。 這代表什麼意思？
-如果您在初始化作業之前停留在 [匯入資料]  或 [匯出資料]  刀鋒視窗超過 15 分鐘，您會收到類似下列範例錯誤訊息的錯誤：
+如果您在初始化作業之前停留在 [匯入資料] 或 [匯出資料] 刀鋒視窗超過 15 分鐘，您會收到類似下列範例錯誤訊息的錯誤：
 
 ```output
 The request to import data into cache 'contoso55' failed with status 'error' and error 'One of the SAS URIs provided could not be used for the following reason: The SAS token end time (se) must be at least 1 hour from now and the start time (st), if given, must be at least 15 minutes in the past.
@@ -151,7 +151,7 @@ The request to import data into cache 'contoso55' failed with status 'error' and
 ### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>我將資料匯出至 Azure Blob 儲存體時收到錯誤。 發生什麼事？
 匯出只能使用儲存為分頁 blob 的 RDB 檔案。 目前不支援其他的 Blob 類型，包括經常性存取及非經常性存取層的 Blob 儲存體帳戶。 如需詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../storage/common/storage-account-overview.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 深入瞭解 Azure Cache for Redis 功能。
 
 * [Azure Cache for Redis 服務層級](cache-overview.md#service-tiers)

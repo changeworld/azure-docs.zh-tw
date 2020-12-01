@@ -3,14 +3,14 @@ title: Azure 自動化更新管理概觀
 description: 此文章提供可對 Windows 和 Linux 機器實作更新的更新管理功能概觀。
 services: automation
 ms.subservice: update-management
-ms.date: 11/23/2020
+ms.date: 11/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: eadceb17d01b40deab656bdd6223cb8f0844f54f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 37ab05ce7e963ab7fdc4d2b02e254adaa205446c
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95528239"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327486"
 ---
 # <a name="update-management-overview"></a>更新管理概觀
 
@@ -79,7 +79,7 @@ ms.locfileid: "95528239"
 |CentOS 6 和 7 (x64)       | Linux 代理程式需要存取更新存放庫。 分類型修補需要 `yum`，才能傳回 CentOS 在其 RTM 版本中沒有的安全性資料。 如需 CentOS 上分類型修補的詳細資訊，請參閱 [Linux 上的更新分類](view-update-assessments.md#linux)。          |
 |Red Hat Enterprise 6 和 7 (x64)      | Linux 代理程式需要存取更新存放庫。        |
 |SUSE Linux Enterprise Server 12 (x64)     | Linux 代理程式需要存取更新存放庫。        |
-|Ubuntu 14.04 LTS、16.04 LTS 和 18.04 (x64)       |Linux 代理程式需要存取更新存放庫。         |
+|Ubuntu 14.04 LTS、16.04 LTS 和 18.04 LTS (x64)       |Linux 代理程式需要存取更新存放庫。         |
 
 > [!NOTE]
 > 您可以透過更新管理來管理 Azure 虛擬機器擴展集。 更新管理適用於執行個體本身，而不是基礎映像。 您將必須以累加方式排程更新，如此一來，就不會一次更新所有 VM 執行個體。 您可以遵循[將非 Azure 電腦新增至變更追蹤和清查](../automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory)中的步驟，來新增虛擬機器擴展集的節點。

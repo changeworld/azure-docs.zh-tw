@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: db270224a753f815a2d94e6a1fa79ebbedf49278
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: f3723c792dfe962f2cbf16e3b167faf66c50a92e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94991531"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327452"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Azure VM 上的 SQL Server 備份與還原
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -93,7 +93,7 @@ SQL Server 2016 和更新版本的 VM，會透過自動備份 v2 提供更多自
 
 ### <a name="backup-to-attached-disks"></a>備份至已連接磁碟
 
-針對 Azure VM 上的 SQL Server，您可以使用原生備份和還原技術，使用 VM 上的已連接磁碟作為備份檔案的目的地。 不過，根據該 [虛擬機器的大小](../../../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)而定，您可以連接到 Azure 虛擬機器的磁碟數有所限制。 磁碟管理的負擔也需要加以考量。
+針對 Azure VM 上的 SQL Server，您可以使用原生備份和還原技術，使用 VM 上的已連接磁碟作為備份檔案的目的地。 不過，根據該 [虛擬機器的大小](../../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)而定，您可以連接到 Azure 虛擬機器的磁碟數有所限制。 磁碟管理的負擔也需要加以考量。
 
 如需如何使用 Server Management Studio (SSMS) 或 Transact-SQL 手動建立完整資料庫備份的範例，請參閱[建立完整資料庫備份](/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server)。
 
