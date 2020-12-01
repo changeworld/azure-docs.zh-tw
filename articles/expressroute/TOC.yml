@@ -101,7 +101,7 @@
         - name: 安全性基準
           href: security-baseline.md
     - name: 安全性屬性
-      href: expressroute-security-controls.md
+      href: ./security-baseline.md
     - name: 透過 ExpressRoute 的 BFD
       href: expressroute-bfd.md
     - name: QoS 需求

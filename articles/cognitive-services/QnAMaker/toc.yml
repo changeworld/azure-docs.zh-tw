@@ -120,15 +120,15 @@
     - name: REST API 參考
       items:
         - name: QnA Maker 4.0
-          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/alterations'
+          href: /rest/api/cognitiveservices/qnamaker4.0/alterations
         - name: QnA Maker 5.0 Preview 1
-          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerv5.0-preview.1/alterations'
+          href: /rest/api/cognitiveservices/qnamakerv5.0-preview.1/alterations
     - name: SDK
       items:
         - name: C#
           items:
             - name: 參考文件
-              href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet'
+              href: /dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet
             - name: Nuget 套件
               href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/'
             - name: 範例
@@ -144,7 +144,7 @@
         - name: JavaScript
           items:
             - name: 參考文件
-              href: 'https://docs.microsoft.com/javascript/api/%40azure/cognitiveservices-qnamaker/index?view=azure-node-latest'
+              href: /javascript/api/%40azure/cognitiveservices-qnamaker/index?view=azure-node-latest
             - name: NPM - 製作
               href: 'https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker'
             - name: NPM - 查詢執行階段
@@ -154,7 +154,7 @@
         - name: Python
           items:
             - name: 參考文件
-              href: 'https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python'
+              href: /python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python
             - name: Pip
               href: 'https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/'
             - name: 範例
@@ -176,7 +176,7 @@
     - name: 價格和限制
       href: 'https://aka.ms/qnamaker-pricing'
     - name: 搜尋
-      href: 'https://docs.microsoft.com/search/index?search=QnAMaker'
+      href: /search/index?search=QnAMaker
     - name: 部落格
       href: 'https://blog.botframework.com/category/QnAMaker/'
 - name: QnA Maker 入口網站

@@ -1329,7 +1329,7 @@
         - name: 設定來自私人端點的存取
           href: how-to-configure-private-endpoints.md
         - name: 私下連線至 Cosmos DB 帳戶
-          href: ../private-link/create-private-endpoint-cosmosdb-portal.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+          href: ../private-link/tutorial-private-endpoint-cosmosdb-portal.md?bc=%2fazure%2fcosmos-db%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcosmos-db%2ftoc.json
         - name: 使用 Azure Key Vault 來存取資料
           href: access-secrets-from-keyvault.md
         - name: 限制使用者只能存取資料作業
