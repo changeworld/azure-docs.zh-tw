@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7caeefb741e6916d69894ede3a7c64eb2e8f623f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b79eb842105734f0f6c145884d73f886a02dbbbc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174491"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348153"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>自助式密碼重設的常見問題
 
@@ -263,7 +263,7 @@ ms.locfileid: "96174491"
   >
 * **問：密碼回寫適用於哪些類型的帳戶？**
 
-  > **答：** 密碼回寫適用於從內部部署 Active Directory 同步處理至 Azure AD 的使用者帳戶，包括同盟、密碼雜湊同步處理和傳遞驗證使用者。
+  > **答：** 密碼回寫適用于從內部部署 Active Directory 同步處理至 Azure AD 的使用者帳戶，包括同盟、密碼雜湊同步處理和 Pass-Through Authentication 使用者。
   >
   >
 * **問：密碼回寫是否會強制執行網域的密碼原則？**

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 458fbdf4cdfa40da871d34a62101020330c79265
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 4ac878db8d81cc7d9d9dfc6d7c3a4ba63f966110
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95488788"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348359"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>在 Azure Active Directory 的 Microsoft 365 群組上強制執行命名原則
 
@@ -47,7 +47,7 @@ ms.locfileid: "95488788"
 
 #### <a name="fixed-strings"></a>固定字串
 
-您可以使用字串來方便掃描和區分全域通訊清單中與群組工作負載左側導覽連結中的群組。 某些常見的前置詞是「Grp\_Name」、「\#Name」、「\_Name」之類的關鍵字
+您可以使用字串來方便掃描和區分全域通訊清單中與群組工作負載左側導覽連結中的群組。 某些常見的前置詞為關鍵字，例如 ' Grp \_ Name '、' \# name '、' \_ name '
 
 #### <a name="user-attributes"></a>使用者屬性
 

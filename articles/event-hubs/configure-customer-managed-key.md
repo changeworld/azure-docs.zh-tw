@@ -3,12 +3,12 @@ title: 設定您自己的金鑰來加密待用 Azure 事件中樞資料
 description: 本文提供有關如何設定您自己的金鑰來加密 Azure 事件中樞資料 rest 的資訊。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 9f073c42373e75fc1cb34d1c752350f9d2c61872
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1b0469a2f25b7f2bec2668b6ab33ff99eb1df809
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006127"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348206"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>使用 Azure 入口網站，設定客戶管理的金鑰來加密 Azure 事件中樞待用資料
 Azure 事件中樞使用 Azure 儲存體的服務加密 (Azure SSE) 提供待用資料加密。 事件中樞依賴 Azure 儲存體儲存資料，而以 Azure 儲存體儲存的所有資料都會使用 Microsoft 管理的金鑰進行加密。 
@@ -39,7 +39,7 @@ Azure 事件中樞現在支援使用 Microsoft 管理的金鑰或由客戶管理
     ![啟用客戶管理的金鑰](./media/configure-customer-managed-key/enable-customer-managed-key.png)
 
 ## <a name="set-up-a-key-vault-with-keys"></a>使用金鑰設定金鑰保存庫
-啟用客戶管理的金鑰之後，您必須將客戶管理的金鑰與您的 Azure 事件中樞命名空間建立關聯。 事件中樞僅支援 Azure Key Vault。 如果您在上一節中 **使用客戶管理的金鑰啟用加密** ，您必須將金鑰匯入 Azure Key Vault。 此外，索引鍵必須具有虛 **刪除** ，且不 **會清除** 為金鑰設定。 您可以使用 [PowerShell](../key-vault/general/soft-delete-powershell.md) 或 [CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection)來設定這些設定。
+啟用客戶管理的金鑰之後，您必須將客戶管理的金鑰與您的 Azure 事件中樞命名空間建立關聯。 事件中樞僅支援 Azure Key Vault。 如果您在上一節中 **使用客戶管理的金鑰啟用加密** ，您必須將金鑰匯入 Azure Key Vault。 此外，索引鍵必須具有虛 **刪除** ，且不 **會清除** 為金鑰設定。 您可以使用 [PowerShell](../key-vault/general/key-vault-recovery.md) 或 [CLI](../key-vault/general/key-vault-recovery.md)來設定這些設定。
 
 1. 若要建立新的金鑰保存庫，請遵循 Azure Key Vault [快速入門](../key-vault/general/overview.md)。 如需有關匯入現有金鑰的詳細資訊，請參閱 [關於金鑰、秘密和憑證](../key-vault/general/about-keys-secrets-certificates.md)。
 1. 若要在建立保存庫時開啟虛刪除和清除保護，請使用 [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) 命令。

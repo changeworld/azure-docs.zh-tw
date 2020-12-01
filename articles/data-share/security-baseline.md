@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 88feb08851e0b69e31218a42fe877112561bddba
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: ef516e021b33c465139ecab621369223f61608f4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301656"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348546"
 ---
 # <a name="azure-security-baseline-for-azure-data-share"></a>適用于 Azure Data Share 的 azure 安全性基準
 
@@ -78,7 +78,7 @@ ms.locfileid: "96301656"
 
 - [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md) 
 
-- [開始使用 Log Analytics 查詢](/azure/azure-monitor/log-query/get-started-portal) 
+- [開始使用 Log Analytics 查詢](../azure-monitor/log-query/log-analytics-tutorial.md) 
 
 - [如何在 Azure 監視器中執行自訂查詢](../azure-monitor/log-query/get-started-queries.md) 
 
@@ -155,7 +155,7 @@ ms.locfileid: "96301656"
 
 **指引**：Azure AD 會提供記錄來協助探索過時的帳戶。 此外，使用 Azure AD 身分識別和存取評論，有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢查使用者存取權，以確定只有適當的使用者可以繼續存取。
 
-- [瞭解 Azure AD 報告](/azure/active-directory/reports-monitoring/) 
+- [瞭解 Azure AD 報告](../active-directory/reports-monitoring/index.yml) 
 
 - [如何使用 Azure AD 身分識別和存取權檢閱](../active-directory/governance/access-reviews-overview.md) 
 
@@ -171,7 +171,7 @@ ms.locfileid: "96301656"
 
 您可以建立 Azure AD 使用者帳戶的診斷設定，並將審核記錄和登入記錄傳送至 Log Analytics 工作區，以簡化此程式。 您可以在 Log Analytics 工作區中設定所需的警示。
 
-- [如何整合 Azure 活動記錄與 Azure 監視器](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics) 
+- [如何整合 Azure 活動記錄與 Azure 監視器](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) 
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -181,7 +181,7 @@ ms.locfileid: "96301656"
 
 **指導** 方針：使用 Azure AD Identity Protection 功能，對偵測到與使用者身分識別相關的可疑動作設定自動回應。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
 
-- [如何檢視有風險的 Azure AD 登入](/azure/active-directory/reports-monitoring/concept-risky-sign-ins) 
+- [如何檢視有風險的 Azure AD 登入](../active-directory/identity-protection/overview-identity-protection.md) 
 
 - [如何設定和啟用身分識別保護風險原則](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) 
 
@@ -227,7 +227,7 @@ ms.locfileid: "96301656"
 
 使用協力廠商解決方案來執行網路裝置和 web 應用程式的弱點評定。 進行遠端掃描時，請勿使用單一、永久的系統管理帳戶。 請考慮針對掃描帳戶執行 JIT 布建方法。 掃描帳戶的認證應受保護、監視，且僅用於弱點掃描。
 
-- [如何實行 Azure 資訊安全中心弱點評定建議](/azure/security-center/security-center-vulnerability-assessment-recommendations) 
+- [如何實行 Azure 資訊安全中心弱點評定建議](../security-center/deploy-vulnerability-assessment-vm.md) 
 
 **Azure 資訊安全中心監視**：是
 
@@ -257,11 +257,11 @@ ms.locfileid: "96301656"
 
 **指導** 方針：在適當的情況下使用標記、管理群組和個別訂用帳戶來組織和追蹤資產。 請定期調節清查，並確保會及時刪除訂用帳戶中未經授權的資源。
 
-- [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription) 
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md) 
 
-- [如何建立管理群組](/azure/governance/management-groups/create) 
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md) 
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -292,7 +292,7 @@ ms.locfileid: "96301656"
 
 **指導** 方針：移除不再需要的 Azure 資源時，您可以透過 Azure 入口網站、POWERSHELL 或 CLI 來完成。
 
-- [Azure 資源群組和資源刪除](https://docs.microsoft.com/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-powershell)
+- [Azure 資源群組和資源刪除](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell)
 
 Azure Data Share 不會公開 OS，或可讓您在其資源上安裝協力廠商軟體應用程式。
 
@@ -330,7 +330,7 @@ Azure Data Share 不會公開 OS，或可讓您在其資源上安裝協力廠商
 
 **指導** 方針：使用 Azure DevOps 安全地儲存和管理您的程式碼，例如自訂 Azure 原則定義、Azure Resource Manager 範本和 desired state configuration 腳本。 若要存取您在 Azure DevOps 中管理的資源，您可以授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory (Azure AD) （如果與 Azure DevOps 整合）中定義的群組，或與 TFS 整合的 Active Directory。
 
-- [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
 
 - [關於 Azure DevOps 中的許可權和群組](/azure/devops/organizations/security/about-permissions) 
 
@@ -362,5 +362,5 @@ Azure Data Share 不會公開 OS，或可讓您在其資源上安裝協力廠商
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

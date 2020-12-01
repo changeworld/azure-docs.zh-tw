@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 900021e258bb96c0d0c83ef182262515449ad5df
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 982f4a9cdf3984bae79cd11dad2bd637a1772f05
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912581"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348495"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中可用的 Blob 儲存體功能
 
@@ -44,10 +44,12 @@ Blob 儲存體功能，例如 [診斷記錄](../common/storage-analytics-logging
 |靜態網站|預覽|預覽|[Azure 儲存體中的靜態網站裝載](storage-blob-static-website.md) \(機器翻譯\)|
 |固定儲存體|預覽|預覽|[使用不可變儲存體儲存業務關鍵 Blob 資料](storage-blob-immutable-storage.md)|
 |容器虛刪除|預覽|預覽|[適用于容器的虛刪除 (預覽) ](soft-delete-container-overview.md)|
+|Azure 儲存體清查|預覽|預覽|[使用 Azure 儲存體清查來管理 blob 資料 (預覽) ](blob-inventory.md)|
+|Blob 虛刪除|尚不支援|尚不支援|[Blob 的虛刪除](storage-blob-soft-delete.md)|
 |Blob 虛刪除|尚不支援|尚不支援|[Blob 的虛刪除](./soft-delete-blob-overview.md)|
 |Blobfuse|正式推出|正式推出|[如何使用 Blobfuse 將 Blob 儲存體掛接為檔案系統](storage-how-to-mount-container-linux.md)|
-|帳戶容錯移轉|尚不支援|尚不支援|[災害復原和帳戶容錯移轉](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Blob 容器 ACL|不受支援<div role="complementary" aria-labelledby="blob-container-ACL"><sup>1</sup></div>|不受支援<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|請參閱下表中的相關附注。|
+|客戶管理的帳戶容錯移轉|尚不支援|尚不支援|[災害復原和帳戶容錯移轉](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Blob 容器 ACL|不支援<div role="complementary" aria-labelledby="blob-container-ACL"><sup>1</sup></div>|不支援<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|請參閱下表中的相關附注。|
 |客戶提供的金鑰|尚不支援|尚不支援|[針對 Blob 儲存體的要求提供加密金鑰](encryption-customer-provided-keys.md)|
 |自訂網域|尚不支援|尚不支援|[將自訂網域對應至 Azure Blob 儲存體端點](storage-custom-domain-name.md)|
 |加密範圍|尚不支援|尚不支援|[建立及管理加密範圍 (預覽) ](encryption-scope-manage.md)|

@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 11/09/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperfq2
-ms.openlocfilehash: 90abd46e73ecb50b5e6de40218571d0ec899752e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8af3da5d04f9aaafc18299f4837660694ee34b51
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012970"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345264"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理對 Azure Machine Learning 工作區的存取
 
@@ -175,7 +175,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
 | 建立新的計算叢集 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許： `/workspaces/computes/write` |
 | 建立新的計算實例 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許： `/workspaces/computes/write` |
 | 提交任何類型的執行 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許： `"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` |
-| 發佈管線端點 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許： `"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
+| 發佈管線和端點 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許： `"/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
 | 在 AKS/ACI 資源上部署已註冊的模型 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許： `"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
 | 針對已部署的 AKS 端點評分 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許： `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` 當您在使用權杖驗證時，不使用 Azure Active Directory auth) 或 `"/workspaces/read"` (時 ()  |
 | 使用互動式筆記本存取儲存體 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許： `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*", "/workspaces/listKeys/action"` |
@@ -467,7 +467,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
 
 - 有時可能需要1小時的時間，新的角色指派才會對整個堆疊的快取許可權生效。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [企業安全性概觀](concept-enterprise-security.md)
 - [虛擬網路隔離和隱私權總覽](how-to-network-security-overview.md)

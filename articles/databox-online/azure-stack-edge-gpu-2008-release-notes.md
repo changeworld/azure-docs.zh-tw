@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: cfb20b3bf9db9e02ed9820232f1f252379660dca
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 25db4e7f3e4e1f7056979c4c40c6ffc61f340439
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579267"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345366"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-preview-release-notes"></a>使用 GPU Preview 版本資訊 Azure Stack Edge Pro
 
@@ -21,11 +21,11 @@ ms.locfileid: "94579267"
 
 版本資訊會持續更新，並在發現需要提出因應措施的重大問題時有所增補。 在您部署 Azure Stack Edge Pro 裝置之前，請仔細檢查版本資訊中所包含的資訊。
 
-本文適用于下列軟體版本- **Azure Stack Edge Pro 2008** 。 
+本文適用于下列軟體版本- **Azure Stack Edge Pro 2008**。 
 
 <!--- **2.1.1328.1904**-->
 
-## <a name="whats-new"></a>新功能
+## <a name="whats-new"></a>最新消息
 
 Azure Stack Edge 2008 版本中新增了下列新功能。 根據您正在執行的特定預覽軟體版本，您可能會看到這些功能的子集。 
 
@@ -37,9 +37,9 @@ Azure Stack Edge 2008 版本中新增了下列新功能。 根據您正在執行
 
 下表提供 Azure Stack Edge Pro 裝置已知問題的摘要。
 
-| 不正確。 | 功能 | 問題 | 因應措施/註解 |
+| 否。 | 功能 | 問題 | 因應措施/註解 |
 | --- | --- | --- | --- |
-| **1.** |Azure Stack Edge Pro + Azure SQL | 建立 SQL database 需要系統管理員存取權。   |請執行下列步驟，而不是中的步驟 1-2 [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database) 。 <ul><li>在裝置的本機 UI 中，啟用計算介面。 選取計算 **> 適用的計算 > 埠 # > 啟用。**</li><li>`sqlcmd`從您的用戶端電腦下載https://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>連接到您的計算介面 IP 位址 (已啟用) 的埠，並將 "，1401" 新增至位址的結尾。</li><li>最後一個命令看起來會像這樣： sqlcmd-S {Interface IP}，1401-U SA-P "強！Passw0rd」。</li>在此之後，來自目前檔的步驟3-4 應該相同。 </li></ul> |
+| **1.** |Azure Stack Edge Pro + Azure SQL | 建立 SQL database 需要系統管理員存取權。   |請執行下列步驟，而不是中的步驟 1-2 [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](../iot-edge/tutorial-store-data-sql-server.md#create-the-sql-database) 。 <ul><li>在裝置的本機 UI 中，啟用計算介面。 選取計算 **> 適用的計算 > 埠 # > 啟用。**</li><li>`sqlcmd`從您的用戶端電腦下載https://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>連接到您的計算介面 IP 位址 (已啟用) 的埠，並將 "，1401" 新增至位址的結尾。</li><li>最後一個命令看起來會像這樣： sqlcmd-S {Interface IP}，1401-U SA-P "強！Passw0rd」。</li>在此之後，來自目前檔的步驟3-4 應該相同。 </li></ul> |
 | **2.** |重新整理| 不支援透過重新整理還原 **的 blob** 增量變更 |在重新整理之後，Blob 端點（blob 的部分更新）可能會導致更新未上傳至雲端。 例如，動作的順序如下：<ul><li>在雲端中建立 blob。 或從裝置刪除先前上傳的 blob。</li><li>使用重新整理功能將 blob 從雲端重新整理至設備。</li><li>使用 Azure SDK REST Api 只更新 blob 的一部分。</li></ul>這些動作可能會導致 blob 的更新區段無法在雲端中更新。 <br>因應 **措施：透過** Explorer 或命令列使用 robocopy 之類的工具或一般檔案複製來取代整個 blob。|
 |**3.**|節流|在節流期間，如果裝置不允許新的寫入，NFS 用戶端所完成的寫入會失敗，並出現「許可權被拒」錯誤。| 錯誤會顯示如下：<br>`hcsuser@ubuntu-vm:~/nfstest$ mkdir test`<br>mkdir：無法建立目錄 ' test '：已拒絕許可權|
 |**4.**|Blob 儲存體內嵌|針對 Blob 儲存體內嵌使用 AzCopy 第10版時，請使用下列引數來執行 AzCopy： `Azcopy <other arguments> --cap-mbps 2000`| 如果未針對 AzCopy 提供這些限制，則可能會將大量的要求傳送至裝置，並導致服務發生問題。|
@@ -53,9 +53,8 @@ Azure Stack Edge 2008 版本中新增了下列新功能。 根據您正在執行
 |**全年.**|Kubernetes 叢集|現有 Azure IoT Edge marketplace 模組無法在 Kubernetes 叢集上執行，作為 Azure Stack Edge 裝置上 IoT Edge 的裝載平臺。|在 Azure Stack Edge 裝置上部署模組之前，必須先修改模組。 如需詳細資訊，請參閱從 marketplace 修改 Azure IoT Edge 模組，以便在 Azure Stack Edge 裝置上執行。<!-- insert link-->|
 |**.13.**|Kubernetes |在 Azure Stack Edge 裝置上，Kubernetes 上的 Azure IoT Edge 不支援以檔案為基礎的系結裝載。|IoT Edge 使用轉譯層來將 `ContainerCreate` 選項轉譯為 Kubernetes 的結構。 建立 `Binds` 對應至 hostpath 目錄或建立，因此以檔案為基礎的系結裝載無法系結至 IoT Edge 容器中的路徑。|
 |**日.**|Kubernetes |如果您將自己的憑證帶入 IoT Edge，並將其新增至 Azure Stack Edge 裝置，則不會在 Helm 圖更新中挑選新的憑證。|若要解決這個問題，請 [連接到裝置的 PowerShell 介面](azure-stack-edge-gpu-connect-powershell-interface.md)。 重新開機 `iotedged` 和 pod `edgehub` 。|
-|**長.**|憑證 |在某些情況下，本機 UI 中的憑證狀態可能需要數秒鐘的時間來更新。 |本機 UI 中的下列案例可能會受到影響。<ul><li>[ **憑證** ] 頁面中的 [ **狀態** ] 資料行。</li><li>[ **開始** 使用] 頁面中的 [ **安全性** ] 磚。</li><li>**[總覽** ] 頁面中的 [設定 **] 磚。**</li></ul>  |
+|**長.**|憑證 |在某些情況下，本機 UI 中的憑證狀態可能需要數秒鐘的時間來更新。 |本機 UI 中的下列案例可能會受到影響。<ul><li>[**憑證**] 頁面中的 [**狀態**] 資料行。</li><li>[**開始** 使用] 頁面中的 [**安全性**] 磚。</li><li>**[總覽**] 頁面中的 [設定 **] 磚。**</li></ul>  |
 
 ## <a name="next-steps"></a>後續步驟
 
 - [準備使用 GPU 部署 Azure Stack Edge Pro 裝置](azure-stack-edge-gpu-deploy-prep.md)
-

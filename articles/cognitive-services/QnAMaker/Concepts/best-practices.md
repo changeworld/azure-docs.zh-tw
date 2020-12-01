@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 2f87f5c7e43757db476153db93d6ecc5082dde89
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: ee8d838ba315c2e261a61699948b71a710341165
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376752"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346353"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker 知識庫的最佳做法
 
@@ -18,7 +18,7 @@ ms.locfileid: "94376752"
 
 ## <a name="extraction"></a>擷取
 
-QnA Maker 服務會持續改進從內容中擷取 QnA 的演算法，並擴充支援的檔案和 HTML 格式清單。 請遵循[指導方針](../Concepts/content-types.md)，以根據您的文件類型擷取資料。
+QnA Maker 服務會持續改進從內容中擷取 QnA 的演算法，並擴充支援的檔案和 HTML 格式清單。 請遵循[指導方針](../index.yml)，以根據您的文件類型擷取資料。
 
 一般情況下，常見問題集頁面應獨立存在，而不會與其他資訊結合。 產品手冊應有清楚的標題，且最好有索引頁面。
 
@@ -116,11 +116,11 @@ GenerateAnswer API 會使用這兩個問題和答案來搜尋使用者查詢的�
 [中繼資料](../How-To/edit-knowledge-base.md) 可讓用戶端應用程式知道它不應該採取所有的答案，而是根據元資料標記來縮小使用者查詢結果的範圍。 即使查詢相同，知識庫解答也可能根據中繼資料標記而不同。 例如，如果餐廳分店的地點不同 (亦即，中繼資料為「地點：西雅圖」和「地點：雷德蒙」的不同)，「停車場在哪裡」就可能有不同的回答。
 
 ### <a name="use-synonyms"></a>使用同義字
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
-雖然有某些支援英文語言的同義字，但請透過變異 [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) 使用不區分大小寫的字組改變，將同義字新增至採用不同表單的關鍵字。 同義字會加入至 QnA Maker 服務層級，並 **由服務中的所有知識庫所共用** 。
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker 正式發行 (穩定版本)](#tab/v1)
+雖然有某些支援英文語言的同義字，但請透過變異 [API](/rest/api/cognitiveservices/qnamaker/alterations/replace) 使用不區分大小寫的字組改變，將同義字新增至採用不同表單的關鍵字。 同義字會加入至 QnA Maker 服務層級，並 **由服務中的所有知識庫所共用**。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
-雖然有某些支援英文語言的同義字，但請透過變異 [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) 使用不區分大小寫的字組改變，將同義字新增至採用不同表單的關鍵字。 QnA Maker 受控 (預覽) 中的同義字是 **針對每個知識庫新增** 的。
+# <a name="qna-maker-managed-preview-release"></a>[受控 QnA Maker (預覽版本)](#tab/v2)
+雖然有某些支援英文語言的同義字，但請透過變異 [API](/rest/api/cognitiveservices/qnamaker/alterations/replace) 使用不區分大小寫的字組改變，將同義字新增至採用不同表單的關鍵字。 QnA Maker 受控 (預覽) 中的同義字是 **針對每個知識庫新增** 的。
 
 |原始字組|同義字|
 |--|--|
@@ -141,7 +141,7 @@ QnA Maker 排名演算法會比對使用者查詢與知識庫中的所含問題�
 因為這兩個 QnA 是以非常類似的字組表達，此相似性可能會對以 *"where is the `<x>` location"* 這類方式表達的許多使用者查詢，造成非常類似的分數。 相反地，請儘量  *避免像是* 「位置」之類的像是「位置」的 *文字，而* 不是在您的知識庫中可能遇到的許多問題。
 
 ## <a name="collaborate"></a>共同作業
-QnA Maker 可讓使用者對知識庫進行[共同作業](../How-to/collaborate-knowledge-base.md)。 使用者需要有 Azure QnA Maker 資源群組的存取權，才能存取知識庫。 有些組織可能想要將知識庫的編輯和維護委外處理，但同時仍能夠保護其 Azure 資源的存取權。 若要完成此「編輯者-核准者」模型，可以在不同的訂用帳戶中設定兩個相同的 [QnA Maker 服務](../How-to/set-up-qnamaker-service-azure.md)，並選取其中一個用於編輯測試週期。 測試完成之後，就會使用[匯入-匯出](../Tutorials/migrate-knowledge-base.md)程序將知識庫內容轉移至核准者的 QnA Maker 服務，由他來執行最終的知識庫發佈和端點更新。
+QnA Maker 可讓使用者對知識庫進行[共同作業](../index.yml)。 使用者需要有 Azure QnA Maker 資源群組的存取權，才能存取知識庫。 有些組織可能想要將知識庫的編輯和維護委外處理，但同時仍能夠保護其 Azure 資源的存取權。 若要完成此「編輯者-核准者」模型，可以在不同的訂用帳戶中設定兩個相同的 [QnA Maker 服務](../How-to/set-up-qnamaker-service-azure.md)，並選取其中一個用於編輯測試週期。 測試完成之後，就會使用[匯入-匯出](../Tutorials/migrate-knowledge-base.md)程序將知識庫內容轉移至核准者的 QnA Maker 服務，由他來執行最終的知識庫發佈和端點更新。
 
 
 

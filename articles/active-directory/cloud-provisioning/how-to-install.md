@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3960b8afeb9d7ecc80aa49fc13eee4977fa5494
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4c4ba11dabc8e805f3604afc2fc4388840ac67cf
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173965"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348529"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>安裝 Azure AD Connect 雲端佈建代理程式
 本文件會逐步引導您完成 Azure Active Directory (Azure AD) Connect 佈建代理程式的安裝程序，以及如何在 Azure 入口網站中進行初始設定。
@@ -58,11 +58,11 @@ ms.locfileid: "96173965"
    ![建立 gMSA](media/how-to-install/install-12.png)</br>
  11. 在 [連線 Active Directory] 畫面上，選取 [新增目錄]。 然後使用您的 Active Directory 系統管理員帳戶登入。 此作業會新增您的內部部署目錄。 
  12. （選擇性）您可以選取 [ **選取網域控制站優先權** ] 和 [排序網域控制站清單]，以管理代理程式將使用之網域控制站的喜好設定。   按一下 [確定]。
-  ![訂購網域 controlllers](media/how-to-install/install-2a.png)</br>
+  ![訂購網域控制站](media/how-to-install/install-2a.png)</br>
  13. 選取 [下一步] 。
   ![連線 Active Directory 畫面](media/how-to-install/install-3a.png)</br>
  14.  在 [ **代理程式安裝** ] 畫面上，確認設定和將建立的帳戶，然後按一下 [ **確認**]。
-  ![確認 settings](media/how-to-install/install-11.png)</br>
+  ![確認設定](media/how-to-install/install-11.png)</br>
  15. 完成此作業之後，您應該會看到 **代理程式安裝已完成。** 選取 [結束]。
   ![設定完成畫面](media/how-to-install/install-4a.png)</br>
 1. 如果您仍然看到一開始的 [Microsoft Azure AD Connect 佈建代理程式套件] 畫面，請選取 [關閉]。

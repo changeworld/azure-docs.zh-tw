@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 4d899fe7f84a8708bb8ee32cc008567b272a885c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 566c429fc70ae3f0fc18f024b745d8142535932c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169370"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348402"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>在國家雲端環境中使用 MSAL
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) 部署在下列國家雲端中，包括全域�
 
 本指南示範如何登入公司和學校帳戶、取得存取權杖，以及在 [Azure Government 雲端](https://azure.microsoft.com/global-infrastructure/government/) 環境中呼叫 Microsoft Graph API。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請確定您符合這些必要條件。
 
@@ -55,7 +55,7 @@ Azure Active Directory (Azure AD) 部署在下列國家雲端中，包括全域�
 
 如需使用國家雲端搭配特定程式設計語言的詳細資訊，請選擇符合您語言的索引標籤：
 
-## <a name="net"></a>[.NET](#tab/donet)
+## <a name="net"></a>[.NET](#tab/dotnet)
 
 您可以使用 MSAL.NET 來登入使用者、取得權杖，並在國家雲端中呼叫 Microsoft Graph API。
 

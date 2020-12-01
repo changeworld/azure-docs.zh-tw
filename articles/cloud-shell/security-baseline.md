@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 10/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 463bbe637eee26ab098d1531976a18999497d12f
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 24856e458858ad86d953b50709669823b35794fc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209576"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348257"
 ---
 # <a name="azure-security-baseline-for-cloud-shell"></a>適用于 Cloud Shell 的 Azure 安全性基準
 
 此安全性基準會將 [Azure 安全性基準測試版本 1.0](../security/benchmarks/overview-v1.md) 的指引套用至 Cloud Shell。 Azure 安全性基準提供如何在 Azure 上保護雲端解決方案的建議。
-內容會依 Azure 安全性基準測試所定義的 **安全性控制** ，以及適用于 Cloud Shell 的相關指引來分組。 已排除不適用 Cloud Shell 的**控制項**。
+內容會依 Azure 安全性基準測試所定義的 **安全性控制** ，以及適用于 Cloud Shell 的相關指引來分組。 已排除不適用 Cloud Shell 的 **控制項**。
 
  
 若要查看 Cloud Shell 如何完全對應至 Azure 安全性基準測試，請參閱 [完整的 Cloud Shell 安全性基準對應](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)檔案。
@@ -28,7 +28,7 @@ ms.locfileid: "92209576"
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保護虛擬網路內的 Azure 資源
 
-**指導**方針：客戶可以將 Azure Cloud Shell 部署至客戶擁有的虛擬網路。
+**指導** 方針：客戶可以將 Azure Cloud Shell 部署至客戶擁有的虛擬網路。
 
 當您將 Azure Cloud Shell 部署至客戶擁有的虛擬網路時，您必須建立或使用現有的虛擬網路。 確定所選的虛擬網路已將網路安全性群組套用到其子網，以及針對應用程式的受信任埠和來源設定的網路存取控制。
 
@@ -48,7 +48,7 @@ ms.locfileid: "92209576"
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：使用單一登入 (SSO) 搭配 Azure Active Directory
 
-**指導**方針： Azure Cloud Shell 是以瀏覽器為基礎的命令列體驗，其使用用來存取 Azure 入口網站的相同授權，在此案例中，SSO 進入 Azure 入口網站也會向您驗證 Cloud Shell。 
+**指導** 方針： Azure Cloud Shell 是以瀏覽器為基礎的命令列體驗，其使用用來存取 Azure 入口網站的相同授權，在此案例中，SSO 進入 Azure 入口網站也會向您驗證 Cloud Shell。 
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -56,7 +56,7 @@ ms.locfileid: "92209576"
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：針對所有以 Azure Active Directory 為基礎的存取使用多重要素驗證
 
-**指導**方針： Azure Cloud Shell 是以瀏覽器為基礎的命令列體驗，其使用用來存取 Azure 入口網站的相同授權，在此情況下，Cloud Shell 也需要連線至 Azure 入口網站所需的任何 MFA。 
+**指導** 方針： Azure Cloud Shell 是以瀏覽器為基礎的命令列體驗，其使用用來存取 Azure 入口網站的相同授權，在此情況下，Cloud Shell 也需要連線至 Azure 入口網站所需的任何 MFA。 
 
 **Azure 資訊安全中心監視**：是
 
@@ -68,7 +68,7 @@ ms.locfileid: "92209576"
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：執行自動化弱點掃描工具
 
-**指導**方針： Azure Cloud Shell 是以瀏覽器為基礎的命令列體驗，可用來進行雲端資源的互動式管理。  每個客戶容器都是暫時的，每個會話都會使用新的容器。  Cloud Shell 的小組會監視和更新容器映射。
+**指導** 方針： Azure Cloud Shell 是以瀏覽器為基礎的命令列體驗，可用來進行雲端資源的互動式管理。  每個客戶容器都是暫時的，每個會話都會使用新的容器。  Cloud Shell 的小組會監視和更新容器映射。
 
 Azure Cloud Shell 可讓客戶根據其組織需求，在自己的映射中安裝自己的工具或軟體。
 
@@ -80,7 +80,7 @@ Azure Cloud Shell 可讓客戶根據其組織需求，在自己的映射中安�
 
 ### <a name="53-deploy-an-automated-patch-management-solution-for-third-party-software-titles"></a>5.3：為協力廠商軟體專案部署自動化的修補程式管理解決方案
 
-**指導**方針：不適用;Azure Cloud Shell 是以瀏覽器為基礎的命令列體驗，可用來進行雲端資源的互動式管理。  每個客戶容器都是暫時的，每個會話都會使用新的容器。  Cloud Shell 的小組會監視和更新容器映射。
+**指導** 方針：不適用;Azure Cloud Shell 是以瀏覽器為基礎的命令列體驗，可用來進行雲端資源的互動式管理。  每個客戶容器都是暫時的，每個會話都會使用新的容器。  Cloud Shell 的小組會監視和更新容器映射。
 
 Azure Cloud Shell 可讓客戶根據其組織需求，在自己的映射中安裝自己的工具或軟體。
 
@@ -92,7 +92,7 @@ Azure Cloud Shell 可讓客戶根據其組織需求，在自己的映射中安�
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4：比較連續性弱點掃描
 
-**指導**方針： Azure Cloud Shell 是以瀏覽器為基礎的命令列體驗，可用來進行雲端資源的互動式管理。  每個客戶容器都是暫時的，每個會話都會使用新的容器。  Cloud Shell 的小組會監視和更新容器映射。
+**指導** 方針： Azure Cloud Shell 是以瀏覽器為基礎的命令列體驗，可用來進行雲端資源的互動式管理。  每個客戶容器都是暫時的，每個會話都會使用新的容器。  Cloud Shell 的小組會監視和更新容器映射。
 
 Azure Cloud Shell 可讓客戶根據其組織需求，在自己的映射中安裝自己的工具或軟體。
 
@@ -104,7 +104,7 @@ Azure Cloud Shell 可讓客戶根據其組織需求，在自己的映射中安�
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用風險評等程序來排定所發現弱點的補救優先順序
 
-**指導**方針： Azure Cloud Shell 是以瀏覽器為基礎的命令列體驗，可用來進行雲端資源的互動式管理。  每個客戶容器都是暫時的，每個會話都會使用新的容器。  Cloud Shell 的小組會監視和更新容器映射。
+**指導** 方針： Azure Cloud Shell 是以瀏覽器為基礎的命令列體驗，可用來進行雲端資源的互動式管理。  每個客戶容器都是暫時的，每個會話都會使用新的容器。  Cloud Shell 的小組會監視和更新容器映射。
 
 Azure Cloud Shell 可讓客戶根據其組織需求，在自己的映射中安裝自己的工具或軟體。
 
@@ -122,7 +122,7 @@ Azure Cloud Shell 可讓客戶根據其組織需求，在自己的映射中安�
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4：定義和維護已核准 Azure 資源的清查
 
-**指導**方針： Azure Cloud Shell 是以瀏覽器為基礎的命令列體驗，可用來進行雲端資源的互動式管理。  每個客戶容器都是暫時的，每個會話都會使用新的容器。  Cloud Shell 的小組會監視和更新容器映射和工具。  客戶可以根據組織需求，在自己的映射中安裝自己的工具，而這些工具在 `sudo` 安裝期間不需要許可權。
+**指導** 方針： Azure Cloud Shell 是以瀏覽器為基礎的命令列體驗，可用來進行雲端資源的互動式管理。  每個客戶容器都是暫時的，每個會話都會使用新的容器。  Cloud Shell 的小組會監視和更新容器映射和工具。  客戶可以根據組織需求，在自己的映射中安裝自己的工具，而這些工具在 `sudo` 安裝期間不需要許可權。
 
 建議客戶依據您的組織需求，建立透過 Azure Cloud Shell 安裝的已核准軟體清查。
 
@@ -132,7 +132,7 @@ Azure Cloud Shell 可讓客戶根據其組織需求，在自己的映射中安�
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：監視計算資源內未經核准的軟體應用程式
 
-**指導**方針： Azure Cloud Shell 是免費服務，沒有任何客戶擁有的資產。  Cloud Shell 的小組會監視和更新容器映射和工具。 
+**指導** 方針： Azure Cloud Shell 是免費服務，沒有任何客戶擁有的資產。  Cloud Shell 的小組會監視和更新容器映射和工具。 
 
 Azure Cloud Shell 可讓客戶根據其組織需求，在自己的映射中安裝自己的工具或軟體。
 
@@ -144,7 +144,7 @@ Azure Cloud Shell 可讓客戶根據其組織需求，在自己的映射中安�
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：移除未經核准的 Azure 資源和軟體應用程式
 
-**指導**方針： Azure Cloud Shell 是免費服務，沒有任何客戶擁有的資產。  Cloud Shell 的小組會監視和更新容器映射和工具。 
+**指導** 方針： Azure Cloud Shell 是免費服務，沒有任何客戶擁有的資產。  Cloud Shell 的小組會監視和更新容器映射和工具。 
 
 Azure Cloud Shell 可讓客戶根據其組織需求，在自己的映射中安裝自己的工具或軟體。
 
@@ -156,7 +156,7 @@ Azure Cloud Shell 可讓客戶根據其組織需求，在自己的映射中安�
 
 ### <a name="68-use-only-approved-applications"></a>6.8：僅使用已核准的應用程式
 
-**指導**方針： Azure Cloud Shell 是免費服務，沒有任何客戶擁有的資產。  Cloud Shell 的小組會監視和更新容器映射和工具。  客戶可能不會移除特定的工具。
+**指導** 方針： Azure Cloud Shell 是免費服務，沒有任何客戶擁有的資產。  Cloud Shell 的小組會監視和更新容器映射和工具。  客戶可能不會移除特定的工具。
 
 Azure Cloud Shell 可讓客戶根據其組織需求，在自己的映射中安裝自己的工具或應用程式。
 
@@ -168,7 +168,7 @@ Azure Cloud Shell 可讓客戶根據其組織需求，在自己的映射中安�
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10：維護已核准軟體標題的清查
 
-**指導**方針：不適用;Azure Cloud Shell 是以瀏覽器為基礎的命令列體驗，可用來進行雲端資源的互動式管理。  每個客戶容器都是暫時的，每個會話都會使用新的容器。  Cloud Shell 的小組會監視和更新容器映射。
+**指導** 方針：不適用;Azure Cloud Shell 是以瀏覽器為基礎的命令列體驗，可用來進行雲端資源的互動式管理。  每個客戶容器都是暫時的，每個會話都會使用新的容器。  Cloud Shell 的小組會監視和更新容器映射。
 
 Azure Cloud Shell 可讓客戶根據其組織需求，在自己的映射中安裝自己的工具或軟體。
 
@@ -180,7 +180,7 @@ Azure Cloud Shell 可讓客戶根據其組織需求，在自己的映射中安�
 
 ### <a name="612-limit-users-ability-to-execute-scripts-in-compute-resources"></a>6.12：限制使用者在計算資源中執行腳本的能力
 
-**指導**方針： Azure Cloud Shell 是以瀏覽器為基礎的命令列體驗，可用來進行雲端資源的互動式管理。  在 Cloud Shell 中採取的動作與在本機環境中執行的相同工具或語言所採取的動作相同。  來自個別工具和語言的動作應受到限制，客戶無法限制對 Cloud Shell 的存取，或限制可供使用者使用的功能。
+**指導** 方針： Azure Cloud Shell 是以瀏覽器為基礎的命令列體驗，可用來進行雲端資源的互動式管理。  在 Cloud Shell 中採取的動作與在本機環境中執行的相同工具或語言所採取的動作相同。  來自個別工具和語言的動作應受到限制，客戶無法限制對 Cloud Shell 的存取，或限制可供使用者使用的功能。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -188,7 +188,7 @@ Azure Cloud Shell 可讓客戶根據其組織需求，在自己的映射中安�
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以實體或邏輯方式隔離高風險的應用程式
 
-**指導**方針： Azure Cloud Shell 可以在客戶虛擬網路中隔離。
+**指導** 方針： Azure Cloud Shell 可以在客戶虛擬網路中隔離。
 
 - [將 Cloud Shell 部署到 Azure 虛擬網路](private-vnet.md)
 
@@ -202,7 +202,7 @@ Azure Cloud Shell 可讓客戶根據其組織需求，在自己的映射中安�
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除非預期的認證公開
 
-**指導**方針： Cloud Shell 可讓腳本在中執行、撰寫並上傳至 Cloud Shell 環境。  將認證移至 Azure Key Vault 是我們的建議。
+**指導** 方針： Cloud Shell 可讓腳本在中執行、撰寫並上傳至 Cloud Shell 環境。  將認證移至 Azure Key Vault 是我們的建議。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -214,7 +214,7 @@ Azure Cloud Shell 可讓客戶根據其組織需求，在自己的映射中安�
 
 ### <a name="81-use-centrally-managed-antimalware-software"></a>8.1：使用集中管理的反惡意程式碼軟體
 
-**指導**方針： Azure Cloud Shell 是以瀏覽器為基礎的命令列體驗，可用來進行雲端資源的互動式管理。  每個客戶容器都是暫時的，每個會話都會使用新的容器。  Cloud Shell 的小組會監視和更新容器映射和工具。  客戶可以根據組織需求，在自己的映射中安裝自己的工具，而這些工具在 `sudo` 安裝期間不需要許可權。
+**指導** 方針： Azure Cloud Shell 是以瀏覽器為基礎的命令列體驗，可用來進行雲端資源的互動式管理。  每個客戶容器都是暫時的，每個會話都會使用新的容器。  Cloud Shell 的小組會監視和更新容器映射和工具。  客戶可以根據組織需求，在自己的映射中安裝自己的工具，而這些工具在 `sudo` 安裝期間不需要許可權。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -222,7 +222,7 @@ Azure Cloud Shell 可讓客戶根據其組織需求，在自己的映射中安�
 
 ### <a name="83-ensure-antimalware-software-and-signatures-are-updated"></a>8.3：確定已更新反惡意程式碼軟體和簽章
 
-**指導**方針： Azure Cloud Shell 是以瀏覽器為基礎的命令列體驗，可用來進行雲端資源的互動式管理。  每個客戶容器都是暫時的，每個會話都會使用新的容器。  Cloud Shell 的小組會監視和更新容器映射和工具。  客戶可以根據組織需求，在自己的映射中安裝自己的工具，而這些工具在 `sudo` 安裝期間不需要許可權。
+**指導** 方針： Azure Cloud Shell 是以瀏覽器為基礎的命令列體驗，可用來進行雲端資源的互動式管理。  每個客戶容器都是暫時的，每個會話都會使用新的容器。  Cloud Shell 的小組會監視和更新容器映射和工具。  客戶可以根據組織需求，在自己的映射中安裝自己的工具，而這些工具在 `sudo` 安裝期間不需要許可權。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -298,9 +298,9 @@ Azure Cloud Shell 可讓客戶根據其組織需求，在自己的映射中安�
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
-**指導**方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對受 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 的策略和執行的 Red 小組和即時網站滲透測試。
-- [滲透測試的參與規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) 
-- [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e) 
+**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 對於 Red Teaming 和即時網站滲透測試的策略與執行方法。
+- [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) 
+- [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e) 
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -308,5 +308,5 @@ Azure Cloud Shell 可讓客戶根據其組織需求，在自己的映射中安�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

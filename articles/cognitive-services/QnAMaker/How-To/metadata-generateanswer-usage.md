@@ -9,18 +9,18 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 85abefc8437936ffaedc4811bdd9bed0be32786f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c250868c9d470ee85f765f693aff3e21320fc45e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020682"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346183"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>使用 GenerateAnswer API 和中繼資料取得答案
 
 若要取得使用者問題的預測答案，請使用 GenerateAnswer API。 當您發佈知識庫時，您可以在 [ **發行** ] 頁面上看到有關如何使用此 API 的資訊。 您也可以設定 API 來根據元資料標記篩選答案，並使用測試查詢字串參數從端點測試知識庫。
 
-QnA Maker 可讓您將中繼資料（以索引鍵和值組的形式）新增至您的問題和答案配對。 然後，您可以使用這項資訊來篩選使用者查詢的結果，以及儲存可在後續交談中使用的其他資訊。 如需詳細資訊，請參閱[知識庫](../Concepts/knowledge-base.md)。
+QnA Maker 可讓您將中繼資料（以索引鍵和值組的形式）新增至您的問題和答案配對。 然後，您可以使用這項資訊來篩選使用者查詢的結果，以及儲存可在後續交談中使用的其他資訊。 如需詳細資訊，請參閱[知識庫](../index.yml)。
 
 <a name="qna-entity"></a>
 
@@ -36,13 +36,13 @@ QnA Maker 可讓您將中繼資料（以索引鍵和值組的形式）新增至�
 
 ## <a name="get-answer-predictions-with-the-generateanswer-api"></a>使用 GenerateAnswer API 取得答案預測
 
-您可以在 bot 或應用程式中使用 [GENERATEANSWER API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) ，以使用者問題查詢您的知識庫，以充分符合問題和答案配對。
+您可以在 bot 或應用程式中使用 [GENERATEANSWER API](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) ，以使用者問題查詢您的知識庫，以充分符合問題和答案配對。
 
 <a name="generateanswer-endpoint"></a>
 
 ## <a name="publish-to-get-generateanswer-endpoint"></a>發佈以取得 GenerateAnswer 端點
 
-從 [QnA Maker 入口網站](https://www.qnamaker.ai)或使用 [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)發佈知識庫之後，您可以取得 GenerateAnswer 端點的詳細資料。
+從 [QnA Maker 入口網站](https://www.qnamaker.ai)或使用 [API](/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)發佈知識庫之後，您可以取得 GenerateAnswer 端點的詳細資料。
 
 若要取得端點詳細資料：
 1. 登入 [https://www.qnamaker.ai](https://www.qnamaker.ai)。
@@ -70,9 +70,9 @@ QnA Maker 可讓您將中繼資料（以索引鍵和值組的形式）新增至�
 
 POST 要求會使用：
 
-* 必要的 [URI 參數](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
+* 必要的 [URI 參數](/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
 * 必要的標頭屬性， `Authorization` 用於安全性
-* 必要的 [主體屬性](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto)。
+* 必要的 [主體屬性](/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto)。
 
 GenerateAnswer URL 的格式如下：
 
@@ -108,7 +108,7 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 
 ## <a name="generateanswer-response-properties"></a>GenerateAnswer 回應屬性
 
-[回應](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#successful-query)是一個 JSON 物件，其中包括顯示答案所需的所有資訊，以及對話中的下一個回合（如果有的話）。
+[回應](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#successful-query)是一個 JSON 物件，其中包括顯示答案所需的所有資訊，以及對話中的下一個回合（如果有的話）。
 
 ```json
 {
@@ -136,7 +136,7 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 
 ## <a name="use-qna-maker-with-a-bot-in-c"></a>搭配使用 QnA Maker 與 C 中的 bot#
 
-Bot framework 可讓您使用 [GETANSWER API](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.ai.qna.qnamaker.getanswersasync?view=botbuilder-dotnet-stable#Microsoft_Bot_Builder_AI_QnA_QnAMaker_GetAnswersAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Builder_AI_QnA_QnAMakerOptions_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_Double__&preserve-view=true)存取 QnA Maker 的屬性：
+Bot framework 可讓您使用 [GETANSWER API](/dotnet/api/microsoft.bot.builder.ai.qna.qnamaker.getanswersasync?preserve-view=true&view=botbuilder-dotnet-stable#Microsoft_Bot_Builder_AI_QnA_QnAMaker_GetAnswersAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Builder_AI_QnA_QnAMakerOptions_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_Double__)存取 QnA Maker 的屬性：
 
 ```csharp
 using Microsoft.Bot.Builder.AI.QnA;
@@ -155,7 +155,7 @@ var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnCont
 
 ## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>使用 QnA Maker 與 Node.js 中的 bot
 
-Bot framework 可讓您使用 [GETANSWER API](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-&preserve-view=true)存取 QnA Maker 的屬性：
+Bot framework 可讓您使用 [GETANSWER API](/javascript/api/botbuilder-ai/qnamaker?preserve-view=true&view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-)存取 QnA Maker 的屬性：
 
 ```javascript
 const { QnAMaker } = require('botbuilder-ai');

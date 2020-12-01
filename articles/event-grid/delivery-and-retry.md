@@ -3,12 +3,12 @@ title: Azure Event Grid 傳遞與重試
 description: 說明 Azure Event Grid 如何傳遞事件，以及如何處理未傳遞的訊息。
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 7bf8fd3a647e28d18a7ca1e658761f9226d1153a
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 9a7bde33e322183f86c3c51d30bb004d06fa1406
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981097"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345348"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid 訊息傳遞與重試
 
@@ -54,6 +54,22 @@ az eventgrid event-subscription create \
 如需有關搭配事件方格使用 Azure CLI 的詳細資訊，請參閱使用 [Azure CLI 將儲存體事件路由至 web 端點](../storage/blobs/storage-blob-event-quickstart.md)。
 
 ## <a name="retry-schedule-and-duration"></a>重試排程和持續時間
+
+當 EventGrid 收到事件傳遞嘗試的錯誤時，EventGrid 會決定是否應該重試傳遞或寄不出的信件，或根據錯誤的類型來卸載事件。 
+
+如果訂用的端點所傳回的錯誤是設定相關的錯誤，但無法以重試修正 (例如，如果) 刪除端點，EventGrid 會執行死信件事件，或在未設定寄不出的信件時卸載事件。
+
+以下是不會進行重試的端點類型：
+
+| 端點類型 | 錯誤碼 |
+| --------------| -----------|
+| Azure 資源 | 400錯誤的要求、413要求實體太大、403禁止 | 
+| Webhook | 400不正確的要求、413要求實體太大、403禁止、找不到404、401未經授權 |
+ 
+> [!NOTE]
+> 如果未針對端點設定 Dead-Letter，則在發生上述錯誤時就會捨棄事件，因此，如果您不想要卸載這類事件，請考慮設定死信。
+
+如果訂用的端點所傳回的錯誤不在上述清單中，EventGrid 會使用如下所述的原則來執行重試：
 
 事件方格會在傳遞訊息之後等候30秒的回應。 30秒之後，如果端點未回應，則會將訊息排入佇列等候重試。 Event Grid 針對事件傳遞使用指數輪詢重試原則。 事件方格會依下列排程重試傳遞：
 
@@ -256,16 +272,16 @@ Event Grid 使用 HTTP 回應碼以確認接收事件。
 
 ### <a name="failure-codes"></a>失敗碼
 
-不在上述集合中的所有其他代碼 (200-204) 會視為失敗，並會重試。 有些特定的重試原則會系結至下面所述的原則，而其他則會遵循標準指數的復原模式。 請務必記住，由於事件方格架構的高度平行化本質，因此重試行為不具決定性。 
+所有不在上述集合中的其他代碼 (200-204) 都會被視為失敗，並視需要)  (重試。 有些特定的重試原則會系結至下面所述的原則，而其他則會遵循標準指數的復原模式。 請務必記住，由於事件方格架構的高度平行化本質，因此重試行為不具決定性。 
 
 | 狀態碼 | 重試行為 |
 | ------------|----------------|
-| 400 不正確的要求 | 在5分鐘後重試一次或更多 (在 Deadletter 安裝) 時立即 Deadletter |
-| 401 未經授權 | 在5分鐘後重試 |
-| 403 禁止 | 在5分鐘後重試 |
-| 404 找不到 | 在5分鐘後重試 |
+| 400 不正確的要求 | 不重試 |
+| 401 未經授權 | 在5分鐘後重試 Azure 資源端點 |
+| 403 禁止 | 不重試 |
+| 404 找不到 | 在5分鐘後重試 Azure 資源端點 |
 | 408 要求逾時 | 2分鐘後重試 |
-| 413 要求實體太大 | 如果 Deadletter 安裝) ，請在10秒後重試 (Deadletter |
+| 413 要求實體太大 | 不重試 |
 | 503 服務無法使用 | 30秒後再重試 |
 | All others | 10秒後重試 |
 

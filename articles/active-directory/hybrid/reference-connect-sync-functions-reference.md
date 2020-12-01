@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d8ec8eec28d66cf93608393ddca45f78460d831
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6c8be064ade8182355c320e948b3b60b846033d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279766"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348053"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同步處理：函式參考
 在 Azure AD Connect 中，函數是用來在同步處理期間操作屬性值。  
@@ -122,7 +122,7 @@ ms.locfileid: "89279766"
   * [分割](#split)
 * **程式流程**
   * [錯誤](#error)
-  * [IIF](#iif)
+  * [Iif](#iif)
   * [選取](#select)
   * [開關](#switch)
   * [其中](#where)
@@ -231,7 +231,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 ---
 ### <a name="certformat"></a>CertFormat
 **描述：**  
-傳回此 X.509v3 憑證的格式名稱。
+傳回這個 X.509v3 憑證的格式名稱。
 
 **語法：**  
 `str CertFormat(binary certificateRawData)`  
@@ -249,7 +249,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 ---
 ### <a name="certhashstring"></a>CertHashString
 **描述：**  
-為傳回 X.509v3 憑證的 SHA1 雜湊值作為十六進位字串。
+將 X.509v3 憑證的 SHA1 雜湊值傳回為十六進位的字串。
 
 **語法：**  
 `str CertHashString(binary certificateRawData)`  
@@ -285,7 +285,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 ---
 ### <a name="certkeyalgorithm"></a>CertKeyAlgorithm
 **描述：**  
-傳回此 X.509v3 憑證的金鑰演算法資訊作為字串。
+傳回做為字串的這個 X.509v3 憑證金鑰演算法資訊。
 
 **語法：**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
@@ -294,7 +294,7 @@ CDate 函式會傳回字串的 UTC DateTime。 DateTime 不是同步處理中的
 ---
 ### <a name="certkeyalgorithmparams"></a>CertKeyAlgorithmParams
 **描述：**  
-傳回此 X.509v3 憑證的金鑰演算法參數作為十六進位字串。
+傳回做為十六進位字串的 X.509v3 憑證金鑰演算法參數。
 
 **語法：**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
@@ -509,7 +509,7 @@ Azure Active Directory 會使用此函式的輸出格式做為 DN 屬性格式�
  傳回 48656C6C6F20776F726C6421
 
 ---
-### <a name="count"></a>Count
+### <a name="count"></a>計數
 **描述：**  
 Count 函式會傳回多重值屬性中的元素個數
 
@@ -703,7 +703,7 @@ InStr 函式會在字串中尋找第一個出現的子字串
 
 `num InStr(str stringcheck, str stringmatch)`  
 `num InStr(str stringcheck, str stringmatch, num start)`  
-`num InStr(str stringcheck, str stringmatch, num start , enum compare)`
+`num InStr(str stringcheck, str stringmatch, num start, enum compare)`
 
 * stringcheck：要搜尋的字串
 * stringmatch：要尋找的字串
@@ -1224,7 +1224,7 @@ RTrim 函式會從字串移除結尾空白字元。
  傳回 "Test"。
 
 ---
-### <a name="select"></a>Select
+### <a name="select"></a>選取
 **描述：**  
 在以指定函式為基礎的多重值屬性 (或運算式的輸出) 中處理所有值。
 

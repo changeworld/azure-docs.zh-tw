@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b3bd6a71898576ac23cdd10c1eb52e1ef3a39b95
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: cfef6ce0fb38f074f854d5ceb77677843e44b91b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336583"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345724"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>使用系統指派的受控識別來存取 Azure Cosmos DB 資料
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -31,11 +31,11 @@ ms.locfileid: "93336583"
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，開啟 [ **Azure** 函式] 窗格，並移至您的函式應用程式。 
 
-1. 開啟 [ **平臺功能**  >  **識別** ] 索引標籤： 
+1. 開啟 [**平臺功能**  >  **識別**] 索引標籤： 
 
    :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-selection.png" alt-text="顯示函數應用程式平臺功能和識別選項的螢幕擷取畫面。":::
 
-1. 在 [身分 **識別** ] 索引卷 **標上，** 開啟 [系統識別] **狀態** ，然後選取 [ **儲存** ]。 [身分 **識別** ] 窗格看起來應該如下所示：  
+1. 在 [身分 **識別** ] 索引卷 **標上，** 開啟 [系統識別] **狀態** ，然後選取 [ **儲存**]。 [身分 **識別** ] 窗格看起來應該如下所示：  
 
    :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="顯示 [系統身分識別狀態] 設為 [開啟] 的螢幕擷取畫面。":::
 
@@ -68,13 +68,13 @@ ms.locfileid: "93336583"
 
    :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="顯示 [新增角色指派] 窗格的螢幕擷取畫面。":::
 
-   * **角色** ：選取 **DocumentDB 帳戶參與者**
-   * **將存取權指派給** ：在 [ **選取系統指派的受控識別** ] 子區段下，選取 [ **函數應用程式** ]。
-   * **選取** ：此窗格將會填入訂用帳戶中具有 **受控系統身分識別** 的所有函式應用程式。 在此情況下，請選取 **FishTankTemperatureService** 函式應用程式： 
+   * **角色**：選取 **DocumentDB 帳戶參與者**
+   * **將存取權指派給**：在 [ **選取系統指派的受控識別** ] 子區段下，選取 [ **函數應用程式**]。
+   * **選取**：此窗格將會填入訂用帳戶中具有 **受控系統身分識別** 的所有函式應用程式。 在此情況下，請選取 **FishTankTemperatureService** 函式應用程式： 
 
       :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="螢幕擷取畫面，其中顯示已填入範例的 [新增角色指派] 窗格。":::
 
-1. 當您選取函數應用程式之後，請選取 [ **儲存** ]。
+1. 當您選取函數應用程式之後，請選取 [ **儲存**]。
 
 ### <a name="assign-the-role-using-azure-cli"></a>使用 Azure CLI 指派角色
 
@@ -214,7 +214,7 @@ namespace Monitor
 }
 ```
 
-您現在已準備好 [部署函數應用程式](../azure-functions/functions-create-first-function-vs-code.md)。
+您現在已準備好 [部署函數應用程式](../azure-functions/create-first-function-vs-code-csharp.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

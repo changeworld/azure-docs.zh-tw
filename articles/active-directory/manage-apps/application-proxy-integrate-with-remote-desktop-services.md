@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 03e89b0da25a915a00c70a9a87bd0f675b8e12d6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bfa9367e06c099e21a54ad8c03f8d5ab853aaafb
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997523"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348070"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 發佈遠端桌面
 
@@ -39,7 +39,7 @@ ms.locfileid: "95997523"
 >[!TIP]
 >如果您之前從未部署過 RDS，或在您開始前需要更多資訊，請了解如何[使用 Azure Resource Manager 和 Azure Marketplace 順暢地部署 RDS](/windows-server/remote/remote-desktop-services/rds-in-azure)。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
 - RD Web 和 RD 閘道端點必須位於相同的電腦上，並具有一般的根。 將 RD Web 和 RD 閘道發佈為單一應用程式並搭配應用程式 Proxy，如此便能在這兩個應用程式之間擁有單一登入的體驗。
 
@@ -130,7 +130,7 @@ ms.locfileid: "95997523"
 
 | 驗證方法 | 支援的用戶端設定 |
 | --------------------- | ------------------------------ |
-| 預先驗證    | RD Web-使用 Internet Explorer 或 [Edge CHROMIUM IE 模式](/deployedge/edge-ie-mode) + RDS ActiveX 附加元件的 Windows 7/10 |
+| 預先驗證    | RD Web-使用 Internet Explorer 或 [Edge CHROMIUM IE 模式](/deployedge/edge-ie-mode) + RDS ActiveX 附加元件的 Windows 7/10 <br /> *請注意，我的應用程式入口網站只支援 Edge。* |
 | 預先驗證    | RD Web 用戶端-與 HTML5 相容的網頁瀏覽器，例如 Microsoft Edge、Internet Explorer 11、Google Chrome、Safari 或 Mozilla Firefox (v 55.0 和更新版本)  |
 | 通道 | 支援 Microsoft 遠端桌面應用程式的任何其他作業系統 |
 
