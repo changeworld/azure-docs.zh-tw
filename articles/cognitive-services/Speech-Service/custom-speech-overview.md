@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 6dbe97d615753f0a90c8ba80aa7afa6dafa15eb2
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 7f8fb0488c863868b1076ad5b3fa7868d1880a6b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658463"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353777"
 ---
 # <a name="what-is-custom-speech"></a>什麼是自訂語音？
 
@@ -31,7 +31,7 @@ ms.locfileid: "94658463"
 
 1. [訂閱並建立專案](#set-up-your-azure-account) -建立 Azure 帳戶，並訂閱語音服務。 此整合訂用帳戶可讓您存取語音轉換文字、文字轉換語音、語音翻譯和 [自訂語音入口網站](https://speech.microsoft.com/customspeech)。 然後，使用您的語音服務訂用帳戶，建立您的第一個自訂語音專案。
 
-1. [上傳測試資料](how-to-custom-speech-test-data.md) -將測試資料上傳 (的音訊檔案) ，以針對您的應用程式、工具和產品評估 Microsoft 的語音轉換文字供應專案。
+1. [上傳測試資料](./how-to-custom-speech-test-and-train.md) -將測試資料上傳 (的音訊檔案) ，以針對您的應用程式、工具和產品評估 Microsoft 的語音轉換文字供應專案。
 
 1. [檢查辨識品質](how-to-custom-speech-inspect-data.md) -使用 [自訂語音入口網站](https://speech.microsoft.com/customspeech) 播放上傳的音訊，並檢查測試資料的語音辨識品質。 如需量化度量的詳細資料，請參閱 [檢查資料](how-to-custom-speech-inspect-data.md)。
 
@@ -101,7 +101,7 @@ ms.locfileid: "94658463"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [準備及測試您的資料](how-to-custom-speech-test-data.md)
+* [準備及測試您的資料](./how-to-custom-speech-test-and-train.md)
 * [檢查您的資料](how-to-custom-speech-inspect-data.md)
 * [評估及改善模型精確度](how-to-custom-speech-evaluate-data.md)
 * [定型和部署模型](how-to-custom-speech-train-model.md)

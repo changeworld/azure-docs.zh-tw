@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 0be2fecfad4d2a2b829266fa1d9574bcc4c50eee
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 048b53186aa0be388d9d801cd6590d4295a4faa7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376669"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353165"
 ---
 # <a name="plan-your-qna-maker-app"></a>規劃您的 QnA Maker 應用程式
 
@@ -20,7 +20,7 @@ ms.locfileid: "94376669"
 
 使用 QnA Maker 建立的每個 [Azure 資源](azure-resources.md#resource-purposes) 都有特定用途。 每個資源都有自己的用途、限制和 [定價層](azure-resources.md#pricing-tier-considerations)。 請務必瞭解這些資源的功能，讓您可以在規劃程式中使用該知識。
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker 正式發行 (穩定版本)](#tab/v1)
 
 | 資源 | 目的 |
 |--|--|
@@ -29,7 +29,7 @@ ms.locfileid: "94376669"
 | [App Service 資源和 App 方案服務](azure-resources.md#app-service-and-app-service-plan) 資源 | 查詢預測端點 |
 | [Application Insights](azure-resources.md#application-insights) 資源 | 查詢預測遙測 |
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
+# <a name="qna-maker-managed-preview-release"></a>[受控 QnA Maker (預覽版本)](#tab/v2)
 
 | 資源 | 目的 |
 |--|--|
@@ -75,13 +75,13 @@ ms.locfileid: "94376669"
 
 ### <a name="language-considerations"></a>語言考量因素
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker 正式發行 (穩定版本)](#tab/v1)
 
 在 QnA Maker 資源上建立的第一個知識庫會設定資源的語言。 QnA Maker 資源只能有一種語言。
 
 您可以依語言來結構 QnA Maker 資源，也可以使用 [翻譯工具](../../translator/translator-info-overview.md) 將查詢從另一種語言變更為知識庫的語言，再將查詢傳送至查詢預測端點。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
+# <a name="qna-maker-managed-preview-release"></a>[受控 QnA Maker (預覽版本)](#tab/v2)
 
 您現在可以在相同的 QnA Maker 資源內擁有不同語言的知識庫。 當您建立第一個知識庫時，您可以選擇是否要使用單一語言或多種語言的知識庫資源。
 
@@ -94,13 +94,13 @@ ms.locfileid: "94376669"
 
 ### <a name="ingest-data-sources"></a>內嵌資料來源
 
-您可以使用下列其中一種內嵌 [資料來源](knowledge-base.md) 來建立知識庫：
+您可以使用下列其中一種內嵌 [資料來源](../index.yml) 來建立知識庫：
 
 * 公用 URL
 * 私用 SharePoint URL
 * 檔案
 
-內嵌進程會將 [支援的內容類型](content-types.md) 轉換為 markdown。 所有進一步的 *答案* 編輯都是使用 markdown 完成。 建立知識庫之後，您可以在 QnA Maker 入口網站中編輯 [QnA](question-answer-set.md) 組，並提供 [豐富的文字撰寫](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer)。
+內嵌進程會將 [支援的內容類型](../index.yml) 轉換為 markdown。 所有進一步的 *答案* 編輯都是使用 markdown 完成。 建立知識庫之後，您可以在 QnA Maker 入口網站中編輯 [QnA](question-answer-set.md) 組，並提供 [豐富的文字撰寫](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer)。
 
 ### <a name="data-format-considerations"></a>資料格式考慮
 
@@ -110,7 +110,7 @@ ms.locfileid: "94376669"
 
 ### <a name="bot-personality"></a>Bot 個人化
 
-使用 [閒聊聊天](../how-to/chit-chat-knowledge-base.md)將 bot 個人化新增至您的知識庫。 這項特性是透過特定對話語氣（例如 *professional* 和 *易記* ）提供的解答。 這項閒聊的交談是以對話設定的方式提供，您可以在其中加入、編輯和移除所有的控制權。
+使用 [閒聊聊天](../how-to/chit-chat-knowledge-base.md)將 bot 個人化新增至您的知識庫。 這項特性是透過特定對話語氣（例如 *professional* 和 *易記*）提供的解答。 這項閒聊的交談是以對話設定的方式提供，您可以在其中加入、編輯和移除所有的控制權。
 
 如果您的 bot 連接到您的知識庫，建議使用 bot 特性。 即使您也連接到其他服務，您也可以選擇在您的知識庫中使用閒聊聊天，但您應該檢查 bot 服務如何互動，以瞭解這是否為您使用的正確架構設計。
 
@@ -124,17 +124,17 @@ ms.locfileid: "94376669"
 
 共同作業者可能是共用知識庫應用程式之完整開發堆疊的其他開發人員，或可能僅限於撰寫知識庫。
 
-知識庫撰寫支援您在 Azure 入口網站中套用的數個 [角色型存取權限](../how-to/collaborate-knowledge-base.md) ，以限制共同作業者的能力。
+知識庫撰寫支援您在 Azure 入口網站中套用的數個 [角色型存取權限](../index.yml) ，以限制共同作業者的能力。
 
 ## <a name="integration-with-client-applications"></a>與用戶端應用程式整合
 
-[用戶端應用程式](integration-with-other-applications.md)的整合是透過將查詢傳送至預測執行時間端點來完成。 查詢會使用 SDK 或以 REST 為基礎的要求傳送至您 QnA Maker 的 web 應用程式端點，以傳送至您的特定知識庫。
+[用戶端應用程式](../index.yml)的整合是透過將查詢傳送至預測執行時間端點來完成。 查詢會使用 SDK 或以 REST 為基礎的要求傳送至您 QnA Maker 的 web 應用程式端點，以傳送至您的特定知識庫。
 
 若要正確驗證用戶端要求，用戶端應用程式必須傳送正確的認證和知識庫識別碼。 如果您使用 Azure Bot Service，請在 Azure 入口網站中，將這些設定設定為 Bot 設定的一部分。
 
 ### <a name="conversation-flow-in-a-client-application"></a>用戶端應用程式中的對話流程
 
-[用戶端應用程式](integration-with-other-applications.md)（例如 Azure bot）中的對話流程，可能需要與知識庫互動之前和之後的功能。
+[用戶端應用程式](../index.yml)（例如 Azure bot）中的對話流程，可能需要與知識庫互動之前和之後的功能。
 
 您的用戶端應用程式是否支援交談流程，方法是提供替代的方法來處理後續提示或包含閒聊閒聊？ 若是如此，請及早設計這些服務，並確定用戶端應用程式查詢是由另一項服務或傳送至您的知識庫時正確處理。
 
@@ -152,7 +152,7 @@ QnA Maker 使用 _主動式學習_ 來改善您的知識庫，方法是向答案
 
 ### <a name="providing-a-default-answer"></a>提供預設答案
 
-如果您的知識庫找不到答案，則會傳回 _預設答案_ 。 此答案可在 QnA Maker 入口網站或 [api](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body)中的 [設定] 頁面上 **設定** 。
+如果您的知識庫找不到答案，則會傳回 _預設答案_。 此答案可在 QnA Maker 入口網站或 [api](/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body)中的 [設定] 頁面上 **設定**。
 
 此預設答案不同于 Azure bot 的預設答案。 您可以在 Azure 入口網站中設定 Azure bot 的預設答案作為設定的一部分。 當分數閾值不符合時，就會傳回此值。
 
@@ -175,11 +175,11 @@ QnA Maker 使用 _主動式學習_ 來改善您的知識庫，方法是向答案
 
 ### <a name="service-updates"></a>服務更新
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker 正式發行 (穩定版本)](#tab/v1)
 
 套用 [最新的執行時間更新](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) ，以自動管理服務更新。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
+# <a name="qna-maker-managed-preview-release"></a>[受控 QnA Maker (預覽版本)](#tab/v2)
 
 在 QnA Maker managed (Preview) 中，執行時間是由 QnA Maker 服務本身管理。 因此不適用服務更新。
 
@@ -191,13 +191,13 @@ QnA Maker 使用 _主動式學習_ 來改善您的知識庫，方法是向答案
 
 ### <a name="analytics-with-application-insights"></a>使用 Application Insights 分析
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker 正式發行 (穩定版本)](#tab/v1)
 
 您知識庫的所有查詢都會儲存在 Application Insights 中。 使用我們的 [最佳查詢](../how-to/get-analytics-knowledge-base.md) 來瞭解您的計量。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
+# <a name="qna-maker-managed-preview-release"></a>[受控 QnA Maker (預覽版本)](#tab/v2)
 
-在受控部署中，遙測會透過 [Azure 監視器服務](https://docs.microsoft.com/azure/azure-monitor/)提供。 使用我們的 [最佳查詢](../how-to/get-analytics-knowledge-base.md) 來瞭解您的計量。
+在受控部署中，遙測會透過 [Azure 監視器服務](../../../azure-monitor/index.yml)提供。 使用我們的 [最佳查詢](../how-to/get-analytics-knowledge-base.md) 來瞭解您的計量。
 
 
 ---
@@ -217,7 +217,7 @@ QnA Maker 使用 _主動式學習_ 來改善您的知識庫，方法是向答案
 
 ### <a name="devops-development"></a>DevOps 開發
 
-您必須在 [批次測試](../quickstarts/batch-testing.md)期間隔離知識庫，才能開發要插入至 DevOps 管線的知識庫。
+您必須在 [批次測試](../index.yml)期間隔離知識庫，才能開發要插入至 DevOps 管線的知識庫。
 
 知識庫會與 QnA Maker 資源上的所有其他知識庫共用認知搜尋索引。 雖然知識庫是依資料分割隔離，但相較于已發佈的知識庫，共用索引可能會導致分數的差異。
 

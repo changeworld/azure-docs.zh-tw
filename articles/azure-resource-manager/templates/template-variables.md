@@ -1,18 +1,18 @@
 ---
 title: 範本中的變數
-description: 描述如何在 Azure Resource Manager 範本中定義變數。
+description: 描述如何在 Azure Resource Manager 範本中定義 (ARM 範本) 的變數。
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 7758451747503cb8c42566dc081a91f84bafa375
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5d9b58d63e96656c45d3494d24099bbeadc46b11
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95915998"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353454"
 ---
-# <a name="variables-in-azure-resource-manager-template"></a>Azure Resource Manager 範本中的變數 \(部分機器翻譯\)
+# <a name="variables-in-arm-template"></a>ARM 範本中的變數
 
-本文說明如何在 Azure Resource Manager 範本中定義和使用變數。 您可以使用變數來簡化您的範本。 您可以定義包含複雜運算式的變數，而不是在整個範本中重複複雜的運算式。 然後，您可以在整個範本中視需要參考該變數。
+本文說明如何在 Azure Resource Manager 範本中定義和使用變數 (ARM 範本) 。 您可以使用變數來簡化您的範本。 您可以定義包含複雜運算式的變數，而不是在整個範本中重複複雜的運算式。 然後，您可以在整個範本中視需要參考該變數。
 
 Resource Manager 在開始部署作業之前解析變數。 只要在範本中使用變數，Resource Manager 就會以已解析的值來加以取代。
 
@@ -87,7 +87,7 @@ Resource Manager 在開始部署作業之前解析變數。 只要在範本中�
 
 下列範例示範使用變數的案例。
 
-|範本  |描述  |
+|範本  |說明  |
 |---------|---------|
 | [變數定義](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | 示範不同類型的變數。 範本不會部署任何資源。 它會建構變數值並傳回這些值。 |
 | [組態變數](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | 示範如何使用可定義組態值的變數。 範本不會部署任何資源。 它會建構變數值並傳回這些值。 |
@@ -95,5 +95,5 @@ Resource Manager 在開始部署作業之前解析變數。 只要在範本中�
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要瞭解變數的可用屬性，請參閱 [瞭解 Azure Resource Manager 範本的結構和語法](template-syntax.md)。
+* 若要瞭解變數的可用屬性，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
 * 如需有關建立變數的建議，請參閱 [最佳做法-變數](template-best-practices.md#variables)。

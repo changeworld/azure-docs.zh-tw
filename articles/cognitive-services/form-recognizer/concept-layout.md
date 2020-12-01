@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: b489964e5ef8ea483cbe203be1ff665078a6d66a
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 60ef490bbba4dca4f01b82967ad6ea8636e7bd4e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95741724"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353692"
 ---
 # <a name="form-recognizer-layout-service"></a>表單辨識器版面佈建服務
 
-Azure 表單辨識器可以使用其版面佈建服務，從檔中解壓縮文字、資料表、選取專案標記和結構資訊。 版面配置 API 可讓客戶採用各種格式的檔，並傳回結構化資料和檔的標記法。 它結合了強大的光學字元辨識與檔理解深度學習模型， [ (OCR) ](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) 功能，以將文字、資料表、選取專案標記和檔結構解壓縮。 
+Azure 表單辨識器可以使用其版面佈建服務，從檔中解壓縮文字、資料表、選取專案標記和結構資訊。 版面配置 API 可讓客戶採用各種格式的檔，並傳回結構化資料和檔的標記法。 它結合了強大的光學字元辨識與檔理解深度學習模型， [ (OCR) ](../computer-vision/concept-recognizing-text.md) 功能，以將文字、資料表、選取專案標記和檔結構解壓縮。 
 
 ## <a name="what-does-the-layout-service-do"></a>版面佈建服務的用途為何？
 
@@ -96,7 +96,3 @@ JSON 輸出有兩個部分：
 
 * [什麼是表單辨識器？](./overview.md)
 * [REST API 參考檔](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeLayoutAsync)
-
-
-
-

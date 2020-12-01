@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 10a2ae71d8c26d82a4a730bab3ba16e7c62d1243
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2b27da096ed18170ca8c9d70f31dc955fb74950
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911731"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352825"
 ---
 # <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>在 Azure 監視器中使用 Log Analytics 代理程式收集自訂記錄
 
@@ -30,7 +30,7 @@ Azure 監視器中的 Log Analytics 代理程式的自訂記錄資料來源，�
 
 - 記錄檔不得使用會以新的項目覆寫檔案的循環記錄或記錄輪替。
 - 記錄檔必須使用 ASCII 或 UTF-8 編碼。  不支援其他格式，例如 UTF-16。
-- 針對 Linux，記錄中的時間戳記不支援時區 converesion。
+- 針對 Linux，記錄中的時間戳記不支援時區轉換。
 
 >[!NOTE]
 > 如果記錄檔中有重複的項目，Azure 監視器會收集這些項目。 不過，查詢結果會不一致，篩選結果所顯示的事件會比結果計數更多。 您必須驗證記錄，以判定建立該記錄的應用程式是否導致此行為，若可以的話，請先處理此問題，再建立自訂記錄集合定義。  
@@ -66,10 +66,10 @@ Azure 監視器中的 Log Analytics 代理程式的自訂記錄資料來源，�
 如果使用時間戳記分隔符號，則儲存在 Azure 監視器中的每一筆記錄的 TimeGenerated 屬性將會填入針對記錄檔中的該項目指定的日期/時間。  如果使用新行字元分隔符號，則 TimeGenerated 會填入 Azure 監視器收集項目的日期和時間。
 
 1. 按一下 [瀏覽]  並瀏覽至範例檔案。  請注意，在某些瀏覽器中，這個按鈕可能標示為 [選擇檔案]  。
-2. 按 [下一步] 。
+2. 按 [下一步]  。
 3. 自訂記錄檔精靈會上傳檔案並列出其識別的記錄。
 4. 變更用來識別新記錄的分隔符號，並選取最能識別記錄檔中的記錄的分隔符號。
-5. 按 [下一步] 。
+5. 按 [下一步]  。
 
 ### <a name="step-3-add-log-collection-paths"></a>步驟 3： 新增記錄檔收集路徑
 您必須在代理程式上定義一個或多個它可以在其中找到自訂記錄檔的路徑。  您可以提供該記錄檔的特定路徑和名稱，或者您可以使用萬用字元為該名稱指定路徑。 這可支援每天會建立一個新檔案的應用程式或在一個檔案到達特定大小時提供支援。 您也可以為單一記錄檔提供多個路徑。
@@ -78,7 +78,7 @@ Azure 監視器中的 Log Analytics 代理程式的自訂記錄資料來源，�
 
 下表提供可用來指定不同記錄檔的有效模式範例。
 
-| 描述 | 路徑 |
+| 說明 | 路徑 |
 |:--- |:--- |
 | Windows 代理程式上的 *C:\Logs* 中，副檔名為 .txt 的所有檔案 |C:\Logs\\\*.txt |
 | Windows 代理程式上的 *C:\Logs* 中，名稱開頭為 log 且副檔名為 .txt 的所有檔案 |C:\Logs\log\*.txt |

@@ -3,12 +3,12 @@ title: Azure DevTest Labs 中的網路隔離
 description: 瞭解 Azure DevTest Labs 中的網路隔離。
 ms.topic: article
 ms.date: 08/25/2020
-ms.openlocfilehash: aafa6bf94c7963d69bfb67a28a520b811c4fbacf
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 28bfa048a8a6666deb58a8ecfff38779c91d95b8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149155"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352927"
 ---
 # <a name="network-isolation-in-devtest-labs"></a>DevTest Labs 中的網路隔離
 
@@ -49,7 +49,7 @@ ms.locfileid: "92149155"
 
 ### <a name="steps-to-follow-post-lab-creation"></a>在實驗室建立後遵循的步驟
 
-1. 在實驗室的首頁上，選取 [**總覽**] 頁面上的**資源群組**。 您應該會看到包含實驗室之資源群組的 [ **資源群組** ] 頁面。 
+1. 在實驗室的首頁上，選取 [**總覽**] 頁面上的 **資源群組**。 您應該會看到包含實驗室之資源群組的 [ **資源群組** ] 頁面。 
  
    > [!div class="mx-imgBorder"]
    > ![Contoso 實驗室](./media/network-isolation/contoso-lab.png)
@@ -74,7 +74,7 @@ ms.locfileid: "92149155"
 
 您也可以選擇將這些步驟自動化，以針對多個實驗室設定此設定。 
 
-[深入瞭解如何使用 PowerShell 和 CLI 來管理 Azure 儲存體的預設網路存取規則](../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#powershell)
+[深入瞭解如何使用 PowerShell 和 CLI 來管理 Azure 儲存體的預設網路存取規則](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#powershell)
 
 ## <a name="things-to-remember-while-using-a-lab-in-a-network-isolated-mode"></a>在網路隔離模式中使用實驗室時要記住的事項
 

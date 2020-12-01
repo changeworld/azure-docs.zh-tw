@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: af3935bab5cd4d6a2aa4a9e3250f6beec19a8ea4
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 5c8af8ddb7a0870de37b73cbe09965ee63c88ba1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736662"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353743"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>表單辨識器預建發票模型
 
-Azure 表單辨識器可以使用其預先建立的發票模型，分析和解壓縮銷售發票的資訊。 發票 API 可讓客戶以各種不同的格式取得發票，並傳回結構化資料，以自動化發票處理。 它結合了強大的 [光學字元辨識 (OCR) ](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) 功能，以及瞭解深度學習模型，以英文的發票來解壓縮重要資訊。 它會將文字、資料表和資訊（例如客戶、供應商、發票識別碼、發票到期日、總計、發票金額到期、稅額、出貨、帳單等等）解壓縮。 預先建立的發票 API 可在表單辨識器2.1 版 preview 中公開使用。
+Azure 表單辨識器可以使用其預先建立的發票模型，分析和解壓縮銷售發票的資訊。 發票 API 可讓客戶以各種不同的格式取得發票，並傳回結構化資料，以自動化發票處理。 它結合了強大的 [光學字元辨識 (OCR) ](../computer-vision/concept-recognizing-text.md) 功能，以及瞭解深度學習模型，以英文的發票來解壓縮重要資訊。 它會將文字、資料表和資訊（例如客戶、供應商、發票識別碼、發票到期日、總計、發票金額到期、稅額、出貨、帳單等等）解壓縮。 預先建立的發票 API 可在表單辨識器2.1 版 preview 中公開使用。
 
 ## <a name="what-does-the-invoice-service-do"></a>發票服務的用途為何？
 
@@ -74,7 +74,7 @@ JSON 輸出有3個部分：
 
 發票服務將會將文字、資料表和26張發票欄位解壓縮。 以下是從 JSON 輸出回應中的發票解壓縮的欄位 (下列輸出使用此 [範例發票](./media/sample-invoice.jpg))   
 
-|名稱| 類型 | 描述 | 文字 | 值 (標準化輸出)  |
+|名稱| 類型 | 說明 | 文字 | 值 (標準化輸出)  |
 |:-----|:----|:----|:----| :----|
 | CustomerName | 字串 | 客戶的發票 | Microsoft Corp |  |
 | CustomerId | 字串 | 客戶的參考識別碼 | CID-12345 |  |
@@ -113,4 +113,3 @@ JSON 輸出有3個部分：
 
 * [什麼是表單辨識器？](./overview.md)
 * [REST API 參考檔](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeInvoiceAsync)
-

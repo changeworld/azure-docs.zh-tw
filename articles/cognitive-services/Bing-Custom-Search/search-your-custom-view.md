@@ -10,26 +10,26 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: aahi
-ms.openlocfilehash: a27f252f401d0fcf863391a0d45538b01b1141e9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 07b0dd68e39f555171e5606b71cd1eec92a4035c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94367279"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353335"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>從入口網站呼叫 Bing 自訂搜尋執行個體
 
 > [!WARNING]
-> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
-> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
-> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的程序進行佈建。
+> 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 設定自訂搜尋體驗之後，您可以在 Bing 自訂搜尋[入口網站](https://customsearch.ai)中測試。 
 
 ![Bing 自訂搜尋入口網站的螢幕擷取畫面](media/portal-search-screen.png)
 ## <a name="create-a-search-query"></a>建立搜尋查詢 
 
-登入 Bing 自訂搜尋 [入口網站](https://customsearch.ai)之後，請選取您的搜尋實例，然後按一下 [生產] 索引 **卷** 標。在 [ **端點** ] 底下，選取 API 端點 (例如 Web API) 。 您的訂用帳戶可決定顯示的端點。
+登入 Bing 自訂搜尋 [入口網站](https://customsearch.ai)之後，請選取您的搜尋實例，然後按一下 [生產] 索引 **卷** 標。在 [ **端點**] 底下，選取 API 端點 (例如 Web API) 。 您的訂用帳戶可決定顯示的端點。
 
 若要建立搜尋查詢，請輸入您端點的參數值。 請注意，入口網站中顯示的參數可能會隨著您所選的端點而改變。 如需詳細資訊，請參閱 [自訂搜尋 API 參考](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) 。 若要變更搜尋實例使用的訂用帳戶，請新增適當的訂用帳戶金鑰，並更新適當的市場和/或語言參數。
 

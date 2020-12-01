@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 5185e7d0bd60eec239f1233db7f9789cbefc2c10
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 83917214705546b21553e997ccab11a7511f77fd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006161"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353301"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 資源
 
@@ -81,7 +81,7 @@ ms.locfileid: "96006161"
 
  當您的知識庫需要從用戶端應用程式提供更多要求時，請升級您的 App Service 定價層。
 
-您可以 [擴大](https://docs.microsoft.com/azure/app-service/manage-scale-up) 或縮小 App Service。
+您可以 [擴大](../../../app-service/manage-scale-up.md) 或縮小 App Service。
 
 移至 Azure 入口網站中的 App Service 資源，然後視需要選取 [ **擴大** ] 或 [ **scale out** ] 選項。
 
@@ -154,13 +154,13 @@ QnA Maker 認知服務使用服務標記： `CognitiveServicesManagement` 。 �
 
 以上呈現的高階構想如下所示：
 
-1. 在 [Azure 配對區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)中設定兩個平行的 [QnA Maker 服務](set-up-qnamaker-service-azure.md)。
+1. 在 [Azure 配對區域](../../../best-practices-availability-paired-regions.md)中設定兩個平行的 [QnA Maker 服務](set-up-qnamaker-service-azure.md)。
 
 1. [備份](../../../app-service/manage-backup.md) 您的主要 QnA Maker App service，並在次要設定中加以 [還原](../../../app-service/web-sites-restore.md) 。 這可確保這兩個程式都使用相同的主機名稱和金鑰。
 
 1. 讓主要和次要 Azure 搜尋服務索引保持同步。您可以使用 [這裡](https://github.com/pchoudhari/QnAMakerBackupRestore) 的 GitHub 範例來瞭解如何備份-還原 Azure 索引。
 
-1. 使用[連續匯出](../../../application-insights/app-insights-export-telemetry.md)備份 Application Insights。
+1. 使用[連續匯出](../../../azure-monitor/app/export-telemetry.md)備份 Application Insights。
 
 1. 設定主要和次要堆疊後，使用[流量管理員](../../../traffic-manager/traffic-manager-overview.md)設定兩個端點，並設定路由方法。
 
@@ -256,7 +256,7 @@ QnA Maker 認知服務使用服務標記： `CognitiveServicesManagement` 。 �
 
 如果您打算有許多知識庫，請升級您的 Azure 認知搜尋服務定價層。
 
-目前，您無法執行 Azure 搜尋服務 SKU 的就地升級。 不過，您可以使用所需的 SKU 建立新的 Azure 搜尋服務資源，並將資料還原到新的資源，然後再將新的資源連結至 QnA Maker 堆疊。 若要這樣做，請遵循下列步驟：
+目前，您無法執行 Azure 搜尋服務 SKU 的就地升級。 不過，您可以使用所需的 SKU 建立新的 Azure 搜尋服務資源，並將資料還原到新的資源，然後再將新的資源連結至 QnA Maker 堆疊。 若要執行此動作，請依照下列步驟執行：
 
 1. 在 Azure 入口網站中建立新的 Azure 搜尋服務資源，然後選取所需的 SKU。
 
@@ -345,7 +345,7 @@ QnA Maker 的 **App Service** 資源使用認知搜尋資源。 為了變更 QnA
 
 如果您打算有許多知識庫，請升級您的 Azure 認知搜尋服務定價層。
 
-目前，您無法執行 Azure 搜尋服務 SKU 的就地升級。 不過，您可以使用所需的 SKU 建立新的 Azure 搜尋服務資源，並將資料還原到新的資源，然後再將新的資源連結至 QnA Maker 堆疊。 若要這樣做，請遵循下列步驟：
+目前，您無法執行 Azure 搜尋服務 SKU 的就地升級。 不過，您可以使用所需的 SKU 建立新的 Azure 搜尋服務資源，並將資料還原到新的資源，然後再將新的資源連結至 QnA Maker 堆疊。 若要執行此動作，請依照下列步驟執行：
 
 1. 在 Azure 入口網站中建立新的 Azure 搜尋服務資源，然後選取所需的 SKU。
 
@@ -386,4 +386,4 @@ QnA Maker 的 **App Service** 資源使用認知搜尋資源。 為了變更 QnA
 深入瞭解 [App service](../../../app-service/index.yml) 及 [搜尋服務](../../../search/index.yml)。
 
 > [!div class="nextstepaction"]
-> [瞭解如何與其他人進行撰寫](../how-to/collaborate-knowledge-base.md)
+> [瞭解如何與其他人進行撰寫](../index.yml)

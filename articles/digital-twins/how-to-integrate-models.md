@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1866e9b233a1379474c061779ada09fd6d119107
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: f5bfe128ddc04e8048bb89a8e39035434dfd2b92
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94338389"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352876"
 ---
 # <a name="integrate-industry-standard-models-with-dtdl-for-azure-digital-twins"></a>使用 DTDL for Azure 數位 Twins 整合產業標準模型
 
@@ -21,9 +21,9 @@ ms.locfileid: "94338389"
 若要搭配 Azure 數位 Twins 使用，模型必須以以 JSON-LD 為基礎的 [**數位 Twins 定義語言表示， (DTDL)**](concepts-models.md)。 因此，本文說明如何在 DTDL 中呈現您的產業標準模型，並將現有的產業概念與 DTDL 語義整合，讓 Azure 數位 Twins 可以使用它們。 然後，DTDL 模型會作為 Azure 數位 Twins 內模型的真實來源。
 
 整合產業標準模型與 DTDL 有三個可能的途徑：
-* **採用** ：您可以使用已建基於廣泛採用產業標準的開放原始碼 DTDL 本體來啟動您的解決方案。 
-* **轉換** ：如果您已經有現有的模型，您必須將它們轉換成 DTDL。
-* **作者** ：您一律可以從頭開始開發自己的自訂 DTDL 模型，如 [*如何：管理自訂模型*](how-to-manage-model.md)中所述。
+* **採用**：您可以使用已建基於廣泛採用產業標準的開放原始碼 DTDL 本體來啟動您的解決方案。 
+* **轉換**：如果您已經有現有的模型，您必須將它們轉換成 DTDL。
+* **作者**：您一律可以從頭開始開發自己的自訂 DTDL 模型，如 [*如何：管理自訂模型*](how-to-manage-model.md)中所述。
 
 ## <a name="adopt-an-open-source-dtdl-ontology"></a>採用開放原始碼 DTDL 本體
 
@@ -35,7 +35,7 @@ ms.locfileid: "94338389"
 
 ## <a name="convert-existing-models-to-dtdl"></a>將現有模型轉換成 DTDL
 
-大部分的產業模型 (也稱為 **本體** ) 是以語義 web 標準（例如 [OWL](https://www.w3.org/OWL/)、 [RDF](https://www.w3.org/2001/sw/wiki/RDF)和 [RDFS](https://www.w3.org/2001/sw/wiki/RDFS)）為基礎。 
+大部分的產業模型 (也稱為 **本體**) 是以語義 web 標準（例如 [OWL](https://www.w3.org/OWL/)、 [RDF](https://www.w3.org/2001/sw/wiki/RDF)和 [RDFS](https://www.w3.org/2001/sw/wiki/RDFS)）為基礎。 
 
 若要搭配使用模型與 Azure 數位 Twins，它必須是 DTDL 格式。 本節說明將以 RDF 為基礎的模型轉換成 DTDL，以將其用於 Azure 數位 Twins 的 **轉換模式** 一般設計指引。 
 
@@ -111,7 +111,7 @@ var json = JsonConvert.SerializeObject(_interfaceList);
 
 此範例是名為 **RdfToDtdlConverter** 的 .net Core 命令列應用程式。
 
-您可以在這裡取得範例： [**RdfToDtdlConverter**](https://docs.microsoft.com/samples/azure-samples/rdftodtdlconverter/digital-twins-model-conversion-samples/)。 
+您可以在這裡取得範例： [**RdfToDtdlConverter**](/samples/azure-samples/rdftodtdlconverter/digital-twins-model-conversion-samples/)。 
 
 若要將程式碼下載到您的電腦，請按範例登陸頁面標題底下的 [ *下載 ZIP* ] 按鈕。 這會下載名稱 *RdfToDtdlConverter_sample_application_to_convert_RDF_to_DTDL.zip* 下的 *ZIP* 檔案，然後您可以解壓縮和探索。
 
@@ -121,7 +121,7 @@ var json = JsonConvert.SerializeObject(_interfaceList);
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
-一旦模型轉換和驗證之後，您就可以將 **它上傳至您的 Azure 數位 Twins 實例** 。 如需此程式的詳細資訊，請參閱 how *to：管理自訂模型* 的「 [*上傳模型*](how-to-manage-model.md#upload-models)」一節。
+一旦模型轉換和驗證之後，您就可以將 **它上傳至您的 Azure 數位 Twins 實例**。 如需此程式的詳細資訊，請參閱 how *to：管理自訂模型* 的「[*上傳模型*](how-to-manage-model.md#upload-models)」一節。
 
 ## <a name="next-steps"></a>後續步驟 
 

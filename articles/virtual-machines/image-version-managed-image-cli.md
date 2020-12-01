@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure CLI 從受控映射遷移至映射版本
-description: 瞭解如何使用 Azure CLI，從受控映射遷移至共用映射庫中的映射版本。
+title: 使用 Azure CLI 將受控映射複製到映射版本
+description: 瞭解如何使用 Azure CLI 將受控映射複製到共用映射庫中的映射版本。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
@@ -10,19 +10,19 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8631a411b26f91bc72e23ac7ff9fb2278f61168c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e53bebf9cdb8c0fc084d04550c7444c1c01be50
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87502880"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352859"
 ---
-# <a name="migrate-from-a-managed-image-to-an-image-version-using-the-azure-cli"></a>使用 Azure CLI 從受控映射遷移至映射版本
-如果您想要將現有的受控映射遷移至共用映射庫，您可以直接從受控映射建立共用映射庫映射。 當您測試新映射之後，就可以刪除來源受控映射。 您也可以使用 [PowerShell](image-version-managed-image-powershell.md)，從受控映射遷移至共用映射庫。
+# <a name="clone-a-managed-image-to-an-image-version-using-the-azure-cli"></a>使用 Azure CLI 將受控映射複製到映射版本
+如果您有想要複製到共用映射庫中的現有受控映射，您可以直接從受控映射建立共用映射庫映射。 當您測試新映射之後，就可以刪除來源受控映射。 您也可以使用 [PowerShell](image-version-managed-image-powershell.md)，從受控映射遷移至共用映射庫。
 
 映射庫中的影像有兩個元件，我們將在此範例中建立這些元件：
-- **映射定義**會攜帶映射的相關資訊，以及使用它的需求。 這包括映射是 Windows 或 Linux、特製化或一般化、版本資訊，以及最小和最大記憶體需求。 這是映像類型的定義。 
-- **映射版本**是用來在使用共用映射庫時建立 VM 的版本。 您可以視需要為環境準備多個映像版本。 當您建立 VM 時，映射版本會用來建立 VM 的新磁片。 映像版本可以使用多次。
+- **映射定義** 會攜帶映射的相關資訊，以及使用它的需求。 這包括映射是 Windows 或 Linux、特製化或一般化、版本資訊，以及最小和最大記憶體需求。 這是映像類型的定義。 
+- **映射版本** 是用來在使用共用映射庫時建立 VM 的版本。 您可以視需要為環境準備多個映像版本。 當您建立 VM 時，映射版本會用來建立 VM 的新磁片。 映像版本可以使用多次。
 
 
 ## <a name="before-you-begin"></a>開始之前
@@ -96,7 +96,7 @@ az sig image-version create \
 > 您也可以在建立映射版本時新增，以將所有的映射版本複本儲存在 [區域重複的儲存體](../storage/common/storage-redundancy.md) 中 `--storage-account-type standard_zrs` 。
 >
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 從 [一般化映射版本](vm-generalized-image-version-cli.md)建立 VM。
 

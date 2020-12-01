@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2c088bce3bc763bf813298ef91b4e07f0b20c50c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7deee88210acf700916961be7c4ccaf9477accf8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93328684"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353437"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>適用于 Azure 雲端服務的 Azure 安全性基準
 
 此安全性基準會將 [Azure 安全性基準測試版本 1.0](../security/benchmarks/overview-v1.md) 的指引套用至 Microsoft Azure 雲端服務。 Azure 安全性基準提供如何在 Azure 上保護雲端解決方案的建議。
-內容會依 Azure 安全性基準測試所定義的 **安全性控制** ，以及適用于雲端服務的相關指引來分組。 已排除不適用雲端服務的 **控制項** 。
+內容會依 Azure 安全性基準測試所定義的 **安全性控制** ，以及適用于雲端服務的相關指引來分組。 已排除不適用雲端服務的 **控制項**。
 
  
 若要瞭解雲端服務如何完全對應至 Azure 安全性基準測試，請參閱 [完整的雲端服務安全性基準對應](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)檔案。
@@ -36,11 +36,11 @@ Microsoft Azure 雲端服務 (傳統) 不能放在 Azure Resource Manager 的虛
 
 - [網路安全性群組概觀](../virtual-network/network-security-groups-overview.md)
 
-- [虛擬網路對等互連](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq?&amp;preserve-view=true#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
+- [虛擬網路對等互連](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2：監視和記錄虛擬網路、子網和 Nic 的設定和流量
 
@@ -58,11 +58,11 @@ Microsoft Azure 雲端服務 (傳統) 不能放在 Azure Resource Manager 的虛
 
 - [雲端服務設定檔案](schema-cscfg-file.md)
 
-- [Azure 原則支援的服務清單](https://docs.microsoft.com/cli/azure/azure-services-the-azure-cli-can-manage?&amp;preserve-view=true)
+- [Azure 原則支援的服務清單](/cli/azure/azure-services-the-azure-cli-can-manage?amp;preserve-view=)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保護重要的 Web 應用程式
 
@@ -72,9 +72,9 @@ Microsoft Azure 雲端服務 (傳統) 不能放在 Azure Resource Manager 的虛
 
 - [設定 TLS/SSL 憑證](cloud-services-configure-ssl-certificate-portal.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址的通訊
 
@@ -85,19 +85,19 @@ Microsoft Azure 雲端服務 (傳統) 不能放在 Azure Resource Manager 的虛
 -  建立啟動工作，選擇性地封鎖一些特定的 IP 位址
 -  藉由修改 IIS web.config 檔案，將 Azure web 角色存取許可權制為一組指定的 IP 位址
 
-防止連入流量指向預設 URL 或您的雲端服務名稱，例如， *cloudapp.net。在雲端服務定義中的 [網站系結設定] 下，將主機標頭設定為自訂 DNS 名稱， (* ]) 檔案。
+防止連入流量指向預設 URL 或您的雲端服務名稱，例如， *cloudapp.net。在雲端服務定義中的 [網站系結設定] 下，將主機標頭設定為自訂 DNS 名稱， (*]) 檔案。
 
 將拒絕套用規則設定為傳統訂用帳戶系統管理員指派。 根據預設，定義內部端點之後，來自任何角色的通訊都可以在沒有任何限制的情況下流向角色的內部端點。 若要限制通訊，您必須在服務定義檔中將 NetworkTrafficRules 元素加入至 ServiceDefinition 元素。
 
-- [如何封鎖/停用我雲端服務的預設 URL 的連入流量](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq?&amp;preserve-view=true#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
+- [如何封鎖/停用我雲端服務的預設 URL 的連入流量](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
 
-- [Azure DDOS 保護](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq?&amp;preserve-view=true#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
+- [Azure DDOS 保護](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
 
 - [封鎖特定的 IP 位址](cloud-services-startup-tasks-common.md#block-a-specific-ip-address)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="15-record-network-packets"></a>1.5：記錄網路封包
 
@@ -107,11 +107,11 @@ Microsoft Azure 雲端服務 (傳統) 不能放在 Azure Resource Manager 的虛
 
 - [設定網路安全性群組的流量記錄](../virtual-machines/extensions/network-watcher-linux.md)
 
-- [如需設定流程記錄的詳細資訊，請造訪](https://docs.microsoft.com/cli/azure/azure-services-the-azure-cli-can-manage?&amp;preserve-view=true)
+- [如需設定流程記錄的詳細資訊，請造訪](/cli/azure/azure-services-the-azure-cli-can-manage?amp;preserve-view=)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署以網路為基礎的入侵偵測/入侵防護系統 (IDS/IPS) 
 
@@ -119,9 +119,9 @@ Microsoft Azure 雲端服務 (傳統) 不能放在 Azure Resource Manager 的虛
 
 - [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall) 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理 Web 應用程式的流量
 
@@ -139,9 +139,9 @@ Microsoft Azure 雲端服務 (傳統) 不能放在 Azure Resource Manager 的虛
 
 - [如何部署應用程式閘道](../application-gateway/quick-create-portal.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：維護網路裝置的標準安全性設定
 
@@ -151,9 +151,9 @@ Microsoft Azure 雲端服務 (傳統) 不能放在 Azure Resource Manager 的虛
 
 請注意，設定強制執行 Azure 雲端服務不支援 Azure 原則。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：文件流量設定規則
 
@@ -163,9 +163,9 @@ Microsoft Azure 雲端服務 (傳統) 不能放在 Azure Resource Manager 的虛
 
 - [如何使用網路安全性群組規則來篩選網路流量](../virtual-network/tutorial-filter-network-traffic.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自動化工具來監視網路資源設定並偵測變更
 
@@ -181,9 +181,9 @@ Microsoft Azure 雲端服務 (傳統) 不能放在 Azure Resource Manager 的虛
 
 - [流量管理員監視](../traffic-manager/traffic-manager-monitoring.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
@@ -195,9 +195,9 @@ Microsoft Azure 雲端服務 (傳統) 不能放在 Azure Resource Manager 的虛
 
 - [NTP 伺服器存取](../firewall/protect-windows-virtual-desktop.md#additional-considerations)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：共用
+**責任**：共用
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 
@@ -218,9 +218,9 @@ Microsoft Azure 雲端服務 (傳統) 不能放在 Azure Resource Manager 的虛
 
 - [透過 Azure 事件中樞設定 SIEM 整合](../security-center/continuous-export.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：啟用 Azure 資源的稽核記錄
 
@@ -231,17 +231,17 @@ Microsoft Azure 雲端服務 (傳統) 不能放在 Azure Resource Manager 的虛
 
 Azure 雲端服務可以透過 Application Insights 來監視可用性、效能、失敗和使用方式。 自訂圖表可以新增至 Application Insights，因此您可以看到最重要的資料。 您可以使用 Azure 雲端服務專案中的 Application Insights SDK 來收集角色實例資料。 
 
-- [在部署之前開啟 Visual Studio 中的診斷](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?&amp;preserve-view=true#to-turn-on-diagnostics-in-visual-studio-before-deployment)
+- [在部署之前開啟 Visual Studio 中的診斷](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?amp;preserve-view=#to-turn-on-diagnostics-in-visual-studio-before-deployment)
 
 - [檢視變更歷程記錄](../azure-monitor/platform/activity-log.md#view-change-history)
 
 - [適用于 Azure 雲端服務 (傳統) 的 Application Insights ](../azure-monitor/app/cloudservices.md)
 
-- [設定 Azure 雲端服務 (傳統) 和虛擬機器的診斷](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?toc=%2Fazure%2Fcloud-services%2Ftoc.json&amp;preserve-view=true)
+- [設定 Azure 雲端服務 (傳統) 和虛擬機器的診斷](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?amp;preserve-view=true&toc=%2fazure%2fcloud-services%2ftoc.json)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：設定安全性記錄儲存體保留期
 
@@ -251,9 +251,9 @@ Azure 雲端服務可以透過 Application Insights 來監視可用性、效能�
 
 - [雲端服務監視簡介](cloud-services-how-to-monitor.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：監視和檢閱記錄
 
@@ -271,9 +271,9 @@ Azure 診斷延伸模組會收集資料並且儲存在 Azure 儲存體帳戶。 
 
 - [在 Azure 儲存體中儲存和檢視診斷資料](diagnostics-extension-to-storage.md?&amp;preserve-view=true)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：啟用異常活動的警示
 
@@ -281,19 +281,19 @@ Azure 診斷延伸模組會收集資料並且儲存在 Azure 儲存體帳戶。 
 
 - [與 SIEM 整合](../security-center/continuous-export.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8：集中化反惡意程式碼記錄
 
 **指導** 方針：適用于 Azure 的 Microsoft Antimalware 可保護 Azure 雲端服務和虛擬機器。 您可以選擇部署協力廠商安全性解決方案，例如 web 應用程式的火警、網路防火牆、反惡意程式碼、入侵偵測和防護系統 (識別碼或 IP) 等等。
 
-- [Azure 基本 IP/識別碼和 DDOS 提供的特性和功能有哪些](https://docs.microsoft.com/azure/cloud-services/cloud-services-configuration-and-management-faq?&amp;preserve-view=true#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
+- [Azure 基本 IP/識別碼和 DDOS 提供的特性和功能有哪些](./cloud-services-configuration-and-management-faq.md?amp;preserve-view=#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
@@ -317,9 +317,9 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [三個傳統訂用帳戶系統管理角色之間的差異](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用專用的系統管理帳戶
 
@@ -327,9 +327,9 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [傳統訂用帳戶系統管理角色之間的差異](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：使用單一登入 (SSO) 搭配 Azure Active Directory
 
@@ -337,9 +337,9 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [什麼是單一登入 (SSO) ](../active-directory/manage-apps/what-is-single-sign-on.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：使用專用電腦 (特殊權限存取工作站) 進行所有系統管理工作
 
@@ -349,9 +349,9 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [如何啟用 Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="data-protection"></a>資料保護
 
@@ -375,9 +375,9 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [取得封裝](/rest/api/compute/cloudservices/rest-get-package)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
@@ -385,15 +385,15 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 您也可以在 Azure 雲端服務的憑證元素中編輯 "permissionLevel"，以指定提供給角色進程的存取權限。 如果您只希望提高許可權的進程能夠存取私密金鑰，請指定較高的許可權。 limitedOrElevated 許可權可讓所有角色進程存取私密金鑰。 可能的值為 limitedOrElevated 或提高許可權。 預設值為 limitedOrElevated。
 
-- [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](/azure/governance/management-groups/create)
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
 - [WebRole 結構描述](schema-csdef-webrole.md#Certificate)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：監視並封鎖未經授權的敏感性資訊傳輸
 
@@ -401,9 +401,9 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：共用
+**責任**：共用
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有敏感性資訊
 
@@ -419,9 +419,9 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [從 Python 使用服務管理](cloud-services-python-how-to-use-service-management.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：共用
+**責任**：共用
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用作用中探索工具來識別敏感性資料
 
@@ -429,9 +429,9 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：共用
+**責任**：共用
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用主機型資料外洩防護來強制執行存取控制
 
@@ -443,9 +443,9 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：共用
+**責任**：共用
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密待用的敏感性資訊
 
@@ -453,11 +453,11 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 暫存磁片中儲存的應用程式資料不會加密。 客戶必須視需要負責管理和加密此資料。  
 
-- [瞭解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md)
+- [了解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：針對重要 Azure 資源的變更留下記錄和發出警示
 
@@ -471,9 +471,9 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [適用于 Azure 雲端服務 (傳統) 的 Application Insights ](../azure-monitor/app/cloudservices.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="vulnerability-management"></a>弱點管理
 
@@ -495,9 +495,9 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [管理客體作業系統版本](cloud-services-how-to-configure-portal.md#manage-guest-os-version)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：共用
+**責任**：共用
 
 ### <a name="53-deploy-an-automated-patch-management-solution-for-third-party-software-titles"></a>5.3：為協力廠商軟體專案部署自動化的修補程式管理解決方案
 
@@ -505,9 +505,9 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 這可讓更新管理修補使用 Configuration Manager 作為其更新存放庫（具有協力廠商軟體）的機器。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用風險評等程序來排定所發現弱點的補救優先順序
 
@@ -525,9 +525,9 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [Azure 資源的風險評估](../security/fundamentals/ddos-best-practices.md#risk-evaluation-of-your-azure-resources)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
@@ -537,25 +537,25 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 **指導** 方針：不適用 Azure 雲端服務。 這項建議適用于 IaaS 計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：刪除未經授權的 Azure 資源
 
 **指導** 方針：建議定期協調清查，並確保及時從訂用帳戶中刪除未經授權的資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4：定義和維護已核准 Azure 資源的清查
 
 **指導** 方針：客戶應為計算資源定義核准的 Azure 資源和已核准的軟體。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：監視未經核准的 Azure 資源
 
@@ -576,9 +576,9 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [自適性應用程式控制](../security-center/security-center-adaptive-application.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：監視計算資源內未經核准的軟體應用程式
 
@@ -604,9 +604,9 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [自適性應用程式控制](../security-center/security-center-adaptive-application.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：移除未經核准的 Azure 資源和軟體應用程式
 
@@ -632,9 +632,9 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [自適性應用程式控制](../security-center/security-center-adaptive-application.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="68-use-only-approved-applications"></a>6.8：僅使用已核准的應用程式
 
@@ -660,9 +660,9 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [自適性應用程式控制](../security-center/security-center-adaptive-application.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10：維護已核准軟體標題的清查
 
@@ -683,9 +683,9 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [自適性應用程式控制](../security-center/security-center-adaptive-application.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="612-limit-users-ability-to-execute-scripts-in-compute-resources"></a>6.12：限制使用者在計算資源中執行腳本的能力
 
@@ -711,9 +711,9 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [自適性應用程式控制](../security-center/security-center-adaptive-application.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以實體或邏輯方式隔離高風險的應用程式
 
@@ -725,9 +725,9 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [教學課程-使用 Azure 入口網站的網路安全性群組來篩選網路流量](../virtual-network/tutorial-filter-network-traffic.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="secure-configuration"></a>安全設定
 
@@ -741,41 +741,41 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [安全性建議 - 參考指南](../security-center/recommendations-reference.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：維護安全的 Azure 資源設定
 
 **指導** 方針：不適用 Azure 雲端服務。 它是以傳統部署模型為基礎。 建議使用協力廠商解決方案來維護安全的 Azure 資源設定
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地儲存 Azure 資源的設定
 
 **指導** 方針： Azure 雲端服務的設定檔會儲存資源的操作屬性。 您可以將設定檔的複本儲存至安全的儲存體帳戶。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署適用于 Azure 資源的設定管理工具
 
 **指導** 方針：不適用 Azure 雲端服務。 它是以傳統部署模型為基礎，而且無法透過 Azure Resource Manager 部署式設定工具來管理。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8：部署作業系統的設定管理工具
 
 **指導** 方針：不適用 Azure 雲端服務。 這項建議適用于基礎結構即服務 (IaaS) 為基礎的計算資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：執行 Azure 資源的自動化設定監視
 
@@ -783,19 +783,19 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [如何修復 Azure 資訊安全中心中的建議](../security-center/security-center-remediate-recommendations.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：為作業系統實作自動化的設定監視
 
 **指導** 方針：在 Azure 資訊安全中心中，選擇 [計算 &amp; 應用程式] 功能，並遵循虛擬機器、伺服器和容器的建議。
 
-- [了解 Azure 資訊安全中心容器建議](/azure/security-center/security-center-container-recommendations)
+- [了解 Azure 資訊安全中心容器建議](../security-center/container-security.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11：安全地管理 Azure 秘密
 
@@ -807,9 +807,9 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [從 PowerShell 設定遠端桌面](cloud-services-role-enable-remote-desktop-powershell.md#configure-remote-desktop-from-powershell)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除非預期的認證公開
 
@@ -822,9 +822,9 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [從 PowerShell 設定遠端桌面](cloud-services-role-enable-remote-desktop-powershell.md#configure-remote-desktop-from-powershell)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="malware-defense"></a>惡意程式碼防禦
 
@@ -840,15 +840,15 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 選擇 Azure 資訊安全中心中的適應性應用程式控制功能，這是一個智慧型、自動化的端對端解決方案。 它有助於強化您的機器免于惡意軟體的攻擊，並可讓您封鎖或警示執行惡意應用程式的嘗試，包括反惡意程式碼解決方案可能遺漏的應用程式。
 
-- [如何以自動化的方式為我的 Azure 雲端服務新增反惡意程式碼擴充功能](https://docs.microsoft.com/azure/cloud-services/cloud-services-configuration-and-management-faq?&amp;preserve-view=true#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
+- [如何以自動化的方式為我的 Azure 雲端服務新增反惡意程式碼擴充功能](./cloud-services-configuration-and-management-faq.md?amp;preserve-view=#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
 
 - [反惡意程式碼部署案例](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)
 
 - [自適性應用程式控制](../security-center/security-center-adaptive-application.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="incident-response"></a>事件回應
 
@@ -856,7 +856,7 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：建立事件回應指南
 
-**指引** ：為組織製作事件回應指南。 請確定有書面的事件回應計畫，其中定義人員的所有角色，以及從偵測到事件後檢討的事件處理/管理階段。
+**指引**：為組織製作事件回應指南。 請確定有書面的事件回應計畫，其中定義人員的所有角色，以及從偵測到事件後檢討的事件處理/管理階段。
 
 - [如何設定 Azure 資訊安全中心內的工作流程自動化](../security-center/security-center-planning-and-operations-guide.md)
 
@@ -866,9 +866,9 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 - [客戶也可以利用 NIST 的電腦安全性性事件處理指南來協助建立自己的事件回應計畫](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：建立事件評分和優先順序程序
 
@@ -876,51 +876,51 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 清楚地將訂用帳戶標示 (例如生產、非生產) ，以及建立命名系統來清楚識別和分類 Azure 資源。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="103-test-security-response-procedures"></a>10.3：測試安全性回應程序
 
-**指引** ：進行練習以定期測試系統的事件回應功能。 找出弱點和落差，並視需要修訂計畫。 
+**指引**：進行練習以定期測試系統的事件回應功能。 找出弱點和落差，並視需要修訂計畫。 
 
 - [請參閱 NIST 的發行集：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全性事件連絡人詳細資料，並設定安全性事件的警示通知
 
-**指引** ：如果 Microsoft 安全性回應中心 (MSRC) 發現客戶的資料遭到非法或未經授權的對象存取，Microsoft 將使用安全性事件連絡人資訊來連絡您。 事後檢討事件，確保問題已解決。 
+**指引**：如果 Microsoft 安全性回應中心 (MSRC) 發現客戶的資料遭到非法或未經授權的對象存取，Microsoft 將使用安全性事件連絡人資訊來連絡您。 事後檢討事件，確保問題已解決。 
 
 - [如何設定 Azure 資訊安全中心的安全性連絡人](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：將安全性警示併入事件回應系統
 
-**指引** ：使用「連續匯出」功能來匯出 Azure 資訊安全中心的警示和建議。 「連續匯出」可供以手動或持續不斷的方式來匯出警示和建議。 您可以使用「安全性中心」資料連線器，將警示串流至 Azure Sentinel。 
+**指引**：使用「連續匯出」功能來匯出 Azure 資訊安全中心的警示和建議。 「連續匯出」可供以手動或持續不斷的方式來匯出警示和建議。 您可以使用「安全性中心」資料連線器，將警示串流至 Azure Sentinel。 
 
 - [如何設定連續匯出](../security-center/continuous-export.md) 
 
 - [如何將警示串流至 Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自動回應安全性警示
 
-**指引** ：利用 Azure 資訊安全中心的工作流程自動化功能，透過「Logic Apps」自動觸發對安全性警示和建議的回應。
+**指引**：利用 Azure 資訊安全中心的工作流程自動化功能，透過「Logic Apps」自動觸發對安全性警示和建議的回應。
 
 - [如何設定工作流程自動化和 Logic Apps](../security-center/workflow-automation.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
@@ -928,15 +928,15 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
-**指引** ：遵循 Microsoft 參與規則，以確保滲透測試不會違反 Microsoft 原則： https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 
+**指引**：遵循 Microsoft 參與規則，以確保滲透測試不會違反 Microsoft 原則： https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 
 
 - [對於 Microsoft 管理的雲端基礎結構、服務和應用程式，您可在此找到 Microsoft 對於 Red Teaming 和即時網站滲透測試的策略與執行詳細資訊：](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：共用
+**責任**：共用
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

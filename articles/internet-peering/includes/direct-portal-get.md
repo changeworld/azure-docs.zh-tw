@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: e50f53c65c330265d3d9ec1b1804a7910b632b1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3507aacc68de25f7368cbe3cda917077564c56eb
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81678834"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356239"
 ---
 1. 移至 [ **資源群組**]，然後選取您在建立對 **等互連** 資源時選取的資源群組。 如果您的資源群組太多，請使用 [ **篩選** ] 方塊。
 
@@ -23,7 +23,7 @@ ms.locfileid: "81678834"
 1. 選取您所建立的對 **等互連** 資源。
 
     > [!div class="mx-imgBorder"]
-    > ![對等互連資源查看](../media/setup-direct-get-open.png)
+    > ![您可以在左窗格中選取 [總覽] 頁面。 它會顯示 PeeringResourceGroup 的相關資訊。 在對等清單中，AshburnPeering 已反白顯示。](../media/setup-direct-get-open.png)
 
 1. [ **總覽** ] 頁面會顯示高層級的資訊，如下所示。
 

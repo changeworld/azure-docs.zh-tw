@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/01/2020
 ms.author: glenga
-ms.openlocfilehash: 39c0556350482e171234a3ff9dce0c16ed88d110
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2ccff72be66a88b9bf0a5e9eb9c29ade8397804b
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93406663"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356188"
 ---
 在 Azure Functions 中引發的錯誤可能來自下列任何來源：
 
@@ -41,7 +41,7 @@ ms.locfileid: "93406663"
 
 **重試策略** 會控制重試的行為。  以下是兩個支援的重試選項：
 
-| 選項 | 描述|
+| 選項 | 說明|
 |---|---|
 |**`fixedDelay`**| 每次重試之間可以經過一段指定的時間，|
 | **`exponentialBackoff`**| 第一次重試會等待最小延遲。 在後續重試時，時間會以指數方式新增至每次重試的初始持續時間，直到達到延遲上限為止。  指數反向會新增一些小型的隨機載入，以在高輸送量案例中錯開重試。|
@@ -130,6 +130,27 @@ public static async Task Run([EventHubTrigger("myHub", Connection = "EventHubCon
 ```
 
 # <a name="java"></a>[Java](#tab/java)
+
+以下是檔案 *function.js* 的重試原則：
+
+
+```json
+{
+    "disabled": false,
+    "bindings": [
+        {
+            ....
+        }
+    ],
+    "retry": {
+        "strategy": "fixedDelay",
+        "maxRetryCount": 4,
+        "delayInterval": "00:00:10"
+    }
+}
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 以下是檔案 *function.js* 的重試原則：
 
@@ -249,9 +270,30 @@ public static async Task Run([EventHubTrigger("myHub", Connection = "EventHubCon
     }
 }
 ```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+以下是檔案 *function.js* 的重試原則：
+
+```json
+{
+    "disabled": false,
+    "bindings": [
+        {
+            ....
+        }
+    ],
+    "retry": {
+        "strategy": "exponentialBackoff",
+        "maxRetryCount": 5,
+        "minimumInterval": "00:00:10",
+        "maximumInterval": "00:15:00"
+    }
+}
+```
 ---
 
-|function.json 屬性  |Attribute 屬性 | 描述 |
+|function.json 屬性  |Attribute 屬性 | 說明 |
 |---------|---------|---------| 
 |策略|n/a|必要。 要使用的重試策略。 有效值為 `fixedDelay` 或 `exponentialBackoff`。|
 |maxRetryCount|n/a|必要。 每個函數執行所允許的重試次數上限。 `-1` 表示要無限期地重試。|

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: d39e34bd85c4524a6f28d188f977a7ab37eecc58
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e1a8043912c984be46f85bd384a7049da27028b3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445008"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353233"
 ---
 # <a name="active-learning-suggestions"></a>主動式學習建議
 
@@ -37,14 +37,14 @@ QnA Maker 可透過隱含和明確的意見反應學習新演變出來的問題�
 
 ## <a name="turn-on-active-learning"></a>開啟主動式學習
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker 正式發行 (穩定版本)](#tab/v1)
 
-主動學習預設為 **關閉** 。
+主動學習預設為 **關閉**。
 若要使用主動式學習：
 * 您必須 [開啟主動式學習](../How-To/use-active-learning.md#turn-on-active-learning-for-alternate-questions) ，讓 QnA Maker 為您的知識庫收集替代問題。
 * 若要查看建議的替代問題，請使用 [編輯] 頁面上的 [ [視圖選項](../How-To/improve-knowledge-base.md#view-suggested-questions) ]。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
+# <a name="qna-maker-managed-preview-release"></a>[受控 QnA Maker (預覽版本)](#tab/v2)
 
 主動學習預設會在 QnA Maker 受控 (預覽) 中 **開啟** 。 若要查看建議的替代問題，請使用 [編輯] 頁面上的 [ [視圖選項](../How-To/improve-knowledge-base.md#view-suggested-questions) ]。
 
@@ -137,7 +137,7 @@ QnA Maker 需要明確的意見反應，指出哪些答案是最佳答案。 判
 * 商務邏輯，例如判斷可接受的分數範圍。
 * 使用者意見反應和商務邏輯的組合。
 
-使用 [定型 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/runtime/train) ，在使用者選取之後，將正確的答案傳送至 QnA Maker。
+使用 [定型 API](/rest/api/cognitiveservices/qnamaker4.0/runtime/train) ，在使用者選取之後，將正確的答案傳送至 QnA Maker。
 
 ## <a name="next-step"></a>後續步驟
 

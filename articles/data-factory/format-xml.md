@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: jingwang
-ms.openlocfilehash: 0e34ee7ae47358c7de95298dd245e77690bb15cf
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 1555d8b97f89b567cb1769c0ba10ecf50bca4366
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928071"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352588"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>Azure Data Factory 中的 XML 格式
 
@@ -28,15 +28,15 @@ ms.locfileid: "92928071"
 
 如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 XML 資料集所支援的屬性清單。
 
-| 屬性         | 描述                                                  | 必要 |
+| 屬性         | 說明                                                  | 必要 |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | 資料集的 type 屬性必須設定為 **Xml** 。 | 是      |
-| location         | 檔案 (s) 的位置設定。 每個以檔案為基礎的連接器都有自己的位置類型和支援的屬性 `location` 。 **請參閱連接器文章中的詳細資料-> 資料集屬性一節** 。 | 是      |
+| type             | 資料集的 type 屬性必須設定為 **Xml**。 | 是      |
+| location         | 檔案 (s) 的位置設定。 每個以檔案為基礎的連接器都有自己的位置類型和支援的屬性 `location` 。 **請參閱連接器文章中的詳細資料-> 資料集屬性一節**。 | 是      |
 | encodingName     | 用來讀取/寫入測試檔的編碼類型。 <br>允許的值如下：「UTF-8」、「UTF-16」、「UTF-16BE」、「32 UTF-8」、「UTF-32BE」、「美國-ASCII」、「UTF-7」、「BIG5」、「EUC-JP」、「EUC-KR」、」 GB2312 "、" GB18030 "、" JOHAB "、" SHIFT-JIS "、" CP875 "、" CP866 "、" IBM00858 "、" IBM037 "、" IBM273 "、" IBM437 "、" IBM500 "、" IBM737 "、" IBM775 "、" IBM850 "、" IBM852 "、" IBM855 "、" IBM857 "、" IBM860 "和" IBM861 "、" IBM863 "、" IBM864 "、" IBM865 "、" IBM869 "、" IBM870 "、" IBM01140 "、" IBM01141 "、" IBM01142 "、" IBM01143 "、" IBM01144 "、" IBM01145 "、" IBM01146 "、" IBM01147 "、" IBM01148 "、" IBM01149 "、" ISO-2022-JP "，" ISO-2022-KR "，" ISO-8859-1 "，" ISO-8859-2 "，" ISO-8859-3 "，" ISO-8859-4 "，" ISO-8859-5 "，" ISO-8859-6 "，" ISO-8859-7 "，" iso-8859-8 "，" ISO-8859-9 "，" iso-8859-13 "，"ISO-8859-15"、"WINDOWS-874"、"WINDOWS-1250"、"WINDOWS-1251"、"WINDOWS-1252"、"WINDOWS-1253"、"WINDOWS-1254"、"WINDOWS-1255"、"WINDOWS-1256"、"WINDOWS-1257"、"WINDOWS-1258"。| 否       |
-| nullValue | 指定 null 值的字串表示。<br/>預設值為 **空字串** 。 | 否 |
+| nullValue | 指定 null 值的字串表示。<br/>預設值為 **空字串**。 | 否 |
 | compression | 用來設定檔案壓縮的屬性群組。 當您想要在活動執行期間執行壓縮/解壓縮時，請設定此區段。 | 否 |
-| type<br>) *下 `compression`* 的 ( | 用來讀取/寫入 XML 檔案的壓縮編解碼器。 <br>允許的值為 **bzip2** 、 **gzip** 、 **deflate** 、 **ZipDeflate** 、 **TarGzip** 、 **Tar** 、 **snappy** 或 **lz4** 。 預設值不會壓縮。<br>**注意：** 目前的複製活動不支援 "snappy" & "lz4"，而且對應資料流程不支援 "ZipDeflate"、"TarGzip" 和 "Tar"。<br>**請注意** ，使用「複製活動」將 **ZipDeflate** / **TarGzip** /)  ( **Tar** 檔案解壓縮，並將其寫入檔案型接收資料存放區時，根據預設，檔案會解壓縮到資料夾： `<path specified in dataset>/<folder named as source compressed file>/` ，請 `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` 在 [複製活動來源](#xml-as-source)上使用，以控制是否要將壓縮檔案的名稱保留為資料夾結構 () 。 | 否。  |
-| 等級<br/>) *下 `compression`* 的 ( | 壓縮比例。 <br>允許的值為 **最佳** 或 **最快速** 。<br>- **最快：** 即使產生的檔案未以最佳方式壓縮，壓縮作業也應該儘快完成。<br>- **最佳** ：即使作業需要較長的時間才能完成，壓縮作業也應以最佳方式壓縮。 如需詳細資訊，請參閱 [壓縮層級](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) 主題。 | 否       |
+| type<br>) *下 `compression`* 的 ( | 用來讀取/寫入 XML 檔案的壓縮編解碼器。 <br>允許的值為 **bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**、 **TarGzip**、 **Tar**、 **snappy** 或 **lz4**。 預設值不會壓縮。<br>**注意：** 目前的複製活動不支援 "snappy" & "lz4"，而且對應資料流程不支援 "ZipDeflate"、"TarGzip" 和 "Tar"。<br>**請注意**，使用「複製活動」將 **ZipDeflate** / **TarGzip** /)  (**Tar** 檔案解壓縮，並將其寫入檔案型接收資料存放區時，根據預設，檔案會解壓縮到資料夾： `<path specified in dataset>/<folder named as source compressed file>/` ，請 `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` 在 [複製活動來源](#xml-as-source)上使用，以控制是否要將壓縮檔案的名稱保留為資料夾結構 () 。 | 否。  |
+| 等級<br/>) *下 `compression`* 的 ( | 壓縮比例。 <br>允許的值為 **最佳** 或 **最快速**。<br>- **最快：** 即使產生的檔案未以最佳方式壓縮，壓縮作業也應該儘快完成。<br>- **最佳**：即使作業需要較長的時間才能完成，壓縮作業也應以最佳方式壓縮。 如需詳細資訊，請參閱 [壓縮層級](/dotnet/api/system.io.compression.compressionlevel) 主題。 | 否       |
 
 以下是 Azure Blob 儲存體上的 XML 資料集範例：
 
@@ -71,26 +71,26 @@ ms.locfileid: "92928071"
 
 ### <a name="xml-as-source"></a>XML 作為來源
 
-複製活動 **_ \_ 來源 \*** * 區段支援下列屬性。 深入瞭解 [XML 連接器行為](#xml-connector-behavior)。
+複製活動 **_ \_ 來源 \**** 區段支援下列屬性。 深入瞭解 [XML 連接器行為](#xml-connector-behavior)。
 
-| 屬性      | 描述                                                  | 必要 |
+| 屬性      | 說明                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | 複製活動來源的 type 屬性必須設為 **XmlSource** 。 | 是      |
+| type          | 複製活動來源的 type 屬性必須設為 **XmlSource**。 | 是      |
 | formatSettings | 屬性的群組。 請參閱下方的 **XML 讀取設定** 表格。 | 否       |
-| storeSettings | 一組屬性，說明如何從資料存放區讀取資料。 每個以檔案為基礎的連接器在下都有自己支援的讀取設定 `storeSettings` 。 **請參閱連接器文章中的詳細資料-> 複製活動屬性一節** 。 | 否       |
+| storeSettings | 一組屬性，說明如何從資料存放區讀取資料。 每個以檔案為基礎的連接器在下都有自己支援的讀取設定 `storeSettings` 。 **請參閱連接器文章中的詳細資料-> 複製活動屬性一節**。 | 否       |
 
 支援的 **XML 讀取設定** `formatSettings` ：
 
-| 屬性      | 描述                                                  | 必要 |
+| 屬性      | 說明                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | FormatSettings 的類型必須設定為 **XmlReadSettings** 。 | 是      |
+| type          | FormatSettings 的類型必須設定為 **XmlReadSettings**。 | 是      |
 | validationMode | 指定是否要驗證 XML 架構。<br>允許的值為 **none** (預設值、無驗證) 、 **XSD** (使用 xsd) 進行驗證、 **dtd** (使用 dtd) 進行驗證。 | 否 |
-| 命名空間 | 剖析 XML 檔案時是否啟用命名空間。 允許的值為： **true** (預設值)、 **false** 。 | 否 |
+| 命名空間 | 剖析 XML 檔案時是否啟用命名空間。 允許的值為：**true** (預設值)、**false**。 | 否 |
 | namespacePrefixes | 命名空間 URI 與前置詞的對應，用來在剖析 xml 檔案時為欄位命名。<br/>如果 XML 檔案已啟用命名空間和命名空間，則根據預設，功能變數名稱會與 XML 檔中的名稱相同。<br>如果此對應中有定義命名空間 URI 的專案，則功能變數名稱為 `prefix:fieldName` 。 | 否 |
-| detectDataType | 是否要偵測整數、雙精度浮點數和布林資料類型。 允許的值為： **true** (預設值)、 **false** 。| 否 |
+| detectDataType | 是否要偵測整數、雙精度浮點數和布林資料類型。 允許的值為：**true** (預設值)、**false**。| 否 |
 | compressionProperties | 一組屬性，說明如何將指定壓縮編解碼器的資料解壓縮。 | 否       |
-| preserveZipFileNameAsFolder<br> ( *下 `compressionProperties` -> `type` 的 `ZipDeflateReadSettings`* )   | 適用于設定 **ZipDeflate** 壓縮的輸入資料集時。 指出複製期間是否要將來源 ZIP 檔案名保留為資料夾結構。<br>-當設定為 **true (預設)** 時，Data Factory 會將解壓縮的檔案寫入 `<path specified in dataset>/<folder named as source zip file>/` 。<br>-當設定為 **false** 時，Data Factory 會將解壓縮的檔案直接寫入至 `<path specified in dataset>` 。 請確定您在不同的來源 zip 檔案中沒有重複的檔案名，以避免發生賽車或非預期的行為。  | 否 |
-| preserveCompressionFileNameAsFolder<br> ( *下 `compressionProperties` -> `type` 的 `TarGZipReadSettings` 或 `TarReadSettings`* )  | 適用于使用 **TarGzip** / **Tar** 壓縮設定輸入資料集時。 指出複製期間是否要將來源壓縮檔案名稱保留為資料夾結構。<br>-當設定為 **true (預設)** 時，Data Factory 會將解壓縮檔案寫入至 `<path specified in dataset>/<folder named as source compressed file>/` 。 <br>-當設定為 **false** 時，Data Factory 會將解壓縮的檔案直接寫入至 `<path specified in dataset>` 。 請確定您在不同的來源檔案中沒有重複的檔案名，以避免發生賽車或非預期的行為。 | 否 |
+| preserveZipFileNameAsFolder<br> (*下 `compressionProperties` -> `type` 的 `ZipDeflateReadSettings`*)   | 適用于設定 **ZipDeflate** 壓縮的輸入資料集時。 指出複製期間是否要將來源 ZIP 檔案名保留為資料夾結構。<br>-當設定為 **true (預設)** 時，Data Factory 會將解壓縮的檔案寫入 `<path specified in dataset>/<folder named as source zip file>/` 。<br>-當設定為 **false** 時，Data Factory 會將解壓縮的檔案直接寫入至 `<path specified in dataset>` 。 請確定您在不同的來源 zip 檔案中沒有重複的檔案名，以避免發生賽車或非預期的行為。  | 否 |
+| preserveCompressionFileNameAsFolder<br> (*下 `compressionProperties` -> `type` 的 `TarGZipReadSettings` 或 `TarReadSettings`*)  | 適用于使用 **TarGzip** / **Tar** 壓縮設定輸入資料集時。 指出複製期間是否要將來源壓縮檔案名稱保留為資料夾結構。<br>-當設定為 **true (預設)** 時，Data Factory 會將解壓縮檔案寫入至 `<path specified in dataset>/<folder named as source compressed file>/` 。 <br>-當設定為 **false** 時，Data Factory 會將解壓縮的檔案直接寫入至 `<path specified in dataset>` 。 請確定您在不同的來源檔案中沒有重複的檔案名，以避免發生賽車或非預期的行為。 | 否 |
 
 ## <a name="mapping-data-flow-properties"></a>對應資料流程屬性
 
@@ -100,7 +100,7 @@ ms.locfileid: "92928071"
 
 下表列出 XML 來源所支援的屬性。 您可以在 [ **來源選項** ] 索引標籤中編輯這些屬性。深入瞭解 [XML 連接器行為](#xml-connector-behavior)。 使用內嵌資料集時，您將會看到其他檔案設定，這與 [ [資料集屬性](#dataset-properties) ] 區段中所述的屬性相同。 
 
-| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| 名稱 | 說明 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 萬用字元路徑 | 將會處理所有符合萬用字元路徑的檔案。 覆寫資料集中設定的資料夾和檔案路徑。 | 否 | String[] | wildcardPaths |
 | 分割區根路徑 | 針對已分割的檔案資料，您可以輸入磁碟分割根路徑，以便將分割的資料夾讀取為數據行 | 否 | String | partitionRootPath |

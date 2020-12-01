@@ -1,20 +1,20 @@
 ---
 title: 範本中的使用者定義函數
-description: 描述如何在 Azure Resource Manager 範本中定義和使用使用者定義函數。
+description: 描述如何在 Azure Resource Manager 範本中定義和使用使用者定義函數 (ARM 範本) 。
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 69f4e98d389cc8dbe5cd3f4b628189676c501106
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0d62abb5362d51a77db872c11416b04dcfb3f97
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84672930"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353471"
 ---
-# <a name="user-defined-functions-in-azure-resource-manager-template"></a>Azure Resource Manager 範本中的使用者定義函數
+# <a name="user-defined-functions-in-arm-template"></a>ARM 範本中的使用者定義函數
 
 在您的範本內，您可以建立自己的函式。 這些函式可供您在範本中使用。 使用者定義函式與您範本中自動提供的 [標準範本](template-functions.md) 函式不同。 當您有在範本中重複使用的複雜運算式時，請建立您自己的函式。
 
-本文說明如何在 Azure Resource Manager 範本中新增使用者自訂函數。
+本文說明如何在 Azure Resource Manager 範本中新增使用者定義函數 (ARM 範本) 。
 
 ## <a name="define-the-function"></a>定義函數
 
@@ -104,7 +104,7 @@ ms.locfileid: "84672930"
 * 函式的參數不能有預設值。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 若要瞭解使用者定義函數的可用屬性，請參閱 [瞭解 Azure Resource Manager 範本的結構和語法](template-syntax.md)。
 * 如需可用範本函式的清單，請參閱 [Azure Resource Manager 範本函數](template-functions.md)。

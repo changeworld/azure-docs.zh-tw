@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/22/2020
 ms.author: makromer
-ms.openlocfilehash: 49d11dfe3d42d99c610fae9fa64079a5fd87501f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: c8b0ae7058aecc1813d720a3fbb2a1a1f967cf40
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96006777"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352591"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>處理 Data Factory 對應資料流程中的 SQL 截斷錯誤資料列
 
@@ -23,13 +23,13 @@ ms.locfileid: "96006777"
 
 有兩個主要方法可在將資料寫入 ADF 資料流程中的資料庫接收時，妥善處理錯誤：
 
-* 處理資料庫資料時，將接收 [錯誤資料列處理](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#error-row-handling) 設定為 [發生錯誤時仍繼續]。 這是自動化的全部攔截方法，不需要在您的資料流程中使用自訂邏輯。
+* 處理資料庫資料時，將接收 [錯誤資料列處理](./connector-azure-sql-database.md#error-row-handling) 設定為 [發生錯誤時仍繼續]。 這是自動化的全部攔截方法，不需要在您的資料流程中使用自訂邏輯。
 * 或者，請遵循下列步驟，以提供不符合目標字串資料行的資料行記錄，讓您的資料流程繼續進行。
 
 > [!NOTE]
 > 當啟用自動錯誤資料列處理，而不是撰寫您自己的錯誤處理邏輯的方法時，將會產生較小的效能負面影響，而且 ADF 會採取額外的步驟來執行2階段作業來攔截錯誤。
 
-## <a name="scenario"></a>狀況
+## <a name="scenario"></a>案例
 
 1. 我們的目標資料庫資料表有一個名為 ```nvarchar(5)``` "name" 的資料行。
 

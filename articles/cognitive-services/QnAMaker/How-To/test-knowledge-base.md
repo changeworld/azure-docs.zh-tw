@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 21984a03947e4f9f60e705955cb1be3b2df8933c
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 273548ec095ce04772438a2d732b914d80d976cc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376120"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353148"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>在 QnA Maker 中測試您的知識庫
 
@@ -18,7 +18,7 @@ QnA Maker 知識庫測試，對於用以改善傳回回應正確度的互動流�
 
 ## <a name="interactively-test-in-qna-maker-portal"></a>在 QnA Maker 入口網站中以互動方式測試
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker 正式發行 (穩定版本)](#tab/v1)
 
 1. 選取 [我的知識庫] 頁面上的資料庫名稱來存取知識庫。
 1. 若要存取測試滑出面板，請選取應用程式上方面板中的 [測試]。
@@ -66,15 +66,15 @@ QnA Maker 知識庫測試，對於用以改善傳回回應正確度的互動流�
 > [!NOTE]
 > 只有在您按下 [Save and train]\(儲存並訓練\) 按鈕時，才會儲存對於知識庫進行的所有編輯。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
+# <a name="qna-maker-managed-preview-release"></a>[受控 QnA Maker (預覽版本)](#tab/v2)
 
 1. 選取 [我的知識庫] 頁面上的資料庫名稱來存取知識庫。
 1. 若要存取測試滑出面板，請選取應用程式上方面板中的 [測試]。 
 1. 您會在最上方的 **顯示簡短答案** 中看到一個核取方塊（預設為已選取）。 此選項可用來在您的測試面板中啟用以 MRC 為基礎的回應範圍偵測。 
 1. 在文字方塊中輸入查詢，並選取 [輸入]。 
 1. 針對每個查詢，如果回應中有精確的答案/簡短答案，而且有最符合規範的答案段（存在於知識庫中），則您的查詢也會有簡短的答案。
-    ![受管理啟用的測試窗格](../media/qnamaker-how-to-test-knowledge-bases/test-pane-with-managed-detail.png)
-1. 如果您取消選取 **顯示簡短的答案** ，則只會傳回知識庫中最符合的答案，作為回應。
+    ![受控的已啟用測試窗格](../media/qnamaker-how-to-test-knowledge-bases/test-pane-with-managed-detail.png)
+1. 如果您取消選取 **顯示簡短的答案**，則只會傳回知識庫中最符合的答案，作為回應。
 
 ### <a name="clear-test-panel"></a>清除測試面板
 
@@ -144,7 +144,7 @@ QnA Maker 知識庫測試，對於用以改善傳回回應正確度的互動流�
 ### <a name="create-a-new-knowledge-base-from-the-multi-turn-sampledocx-file"></a>透過多回合 sample.docx 檔案建立新的知識庫
 
 1. 從工具列中選取 [建立知識庫]。
-1. 您應該已經有 QnA Maker 資源，因此請略過 **步驟 1** ，前往 **步驟 2** 以選取現有資源的資訊：
+1. 您應該已經有 QnA Maker 資源，因此請略過 **步驟 1**，前往 **步驟 2** 以選取現有資源的資訊：
     * Azure Active Directory 識別碼
     * Azure 訂用帳戶名稱
     * Azure QnA 服務名稱
@@ -323,4 +323,4 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [發佈知識庫](./publish-knowledge-base.md)
+> [發佈知識庫](../quickstarts/create-publish-knowledge-base.md)

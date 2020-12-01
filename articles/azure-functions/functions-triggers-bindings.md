@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: e00fd3d1dac0a18ac7f7377e08ae8d20ae132c56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa0d78d52ec13c91b82e6a8d10720269076f59a1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652602"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353539"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 觸發程序和繫結概念
 
@@ -18,7 +18,7 @@ ms.locfileid: "91652602"
 
 觸發程式是導致函式執行的原因。 觸發程式會定義叫用函式的方式，以及函式必須剛好有一個觸發程式。 觸發程序具有相關聯的資料，它通常提供作為函式的承載。 
 
-系結至函式是以宣告方式將其他資源連接到函式的方式;系結可連接為 *輸入*系結、 *輸出*系結或兩者。 來自繫結的資料是作為參數提供給函式。
+系結至函式是以宣告方式將其他資源連接到函式的方式;系結可連接為 *輸入* 系結、 *輸出* 系結或兩者。 繫結中的資料會提供給函式作為參數。
 
 您可以混合使用不同繫結，以符合您的需求。 繫結是選擇性的，而且一個函數可能有一或多個輸入和/或輸出繫結。
 
@@ -28,10 +28,10 @@ ms.locfileid: "91652602"
 
 | 範例案例 | 觸發程序 | 輸入系結 | 輸出系結 |
 |-------------|---------|---------------|----------------|
-| 新的佇列訊息抵達，它會執行函式以寫入至另一個佇列。 | 佇列<sup>*</sup> | *None* | 佇列<sup>*</sup> |
+| 新的佇列訊息抵達，它會執行函式以寫入至另一個佇列。 | 佇列<sup>*</sup> | *無* | 佇列<sup>*</sup> |
 |排程工作會讀取 Blob 儲存體內容，並建立新的 Cosmos DB 檔。 | 計時器 | Blob 儲存體 | Cosmos DB |
 |事件方格可用來從 Blob 儲存體讀取影像，並使用 Cosmos DB 中的檔來傳送電子郵件。 | 事件方格 | Blob 儲存體和 Cosmos DB | SendGrid |
-| 使用 Microsoft Graph 更新 Excel 工作表的 webhook。 | HTTP | *None* | Microsoft Graph |
+| 使用 Microsoft Graph 更新 Excel 工作表的 webhook。 | HTTP | *無* | Microsoft Graph |
 
 <sup>\*</sup> 代表不同的佇列
 
@@ -46,7 +46,7 @@ ms.locfileid: "91652602"
 | C# 類別庫 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用 c # 屬性裝飾方法和參數 |
 | 所有其他 (包括 Azure 入口網站)  | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更新 ([架構](http://json.schemastore.org/function)) [上的function.js](./functions-reference.md) |
 
-入口網站提供此設定的 UI，但您可以透過函式的 [**整合**] 索引標籤開啟可用的**Advanced editor** ，直接編輯檔案。
+入口網站提供此設定的 UI，但您可以透過函式的 [**整合**] 索引標籤開啟可用的 **Advanced editor** ，直接編輯檔案。
 
 在 .NET 中，參數類型會定義輸入資料的資料類型。 例如，使用系結 `string` 至佇列觸發程式的文字、要讀取為二進位的位元組陣列，以及要還原序列化為物件的自訂類型。
 
@@ -88,6 +88,10 @@ ms.locfileid: "91652602"
 使用下表來尋找特定系結類型的範例，這些範例會示範如何在您的函式中使用系結。 首先，選擇對應至您專案的 [語言] 索引標籤。 
 
 [!INCLUDE [functions-bindings-code-example-chooser](../../includes/functions-bindings-code-example-chooser.md)]
+
+## <a name="custom-bindings"></a>自訂繫結
+
+您可以建立自訂輸入和輸出系結。 系結必須在 .NET 中撰寫，但可以從任何支援的語言中使用。 如需建立自訂系結的詳細資訊，請參閱 [建立自訂輸入和輸出](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings)系結。
 
 ## <a name="resources"></a>資源
 - [繫結運算式和模式](./functions-bindings-expressions-patterns.md)

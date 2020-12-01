@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 57e878f11f5857f4c5b629a8069f64de259e8e7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26fc976983fc08857e7771d58f15d0abcd9a1d3c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777795"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353216"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>使用後續追蹤提示來建立多回合對話
 
@@ -35,7 +35,7 @@ ms.locfileid: "91777795"
 
 ![包含提示的多重回合對話方塊，可引導使用者進行對話](../media/conversational-context/conversation-in-bot.png)
 
-在上圖中，使用者已輸入 **我的帳戶**來開始交談。 知識庫有三個連結的問題和答案配對。 若要精簡答案，使用者可以選取知識庫中的三個選項之一。  ( # 1) 的問題，有三個後續的提示，在聊天機器人中提供三個選項 ( # 2) 。
+在上圖中，使用者已輸入 **我的帳戶** 來開始交談。 知識庫有三個連結的問題和答案配對。 若要精簡答案，使用者可以選取知識庫中的三個選項之一。  ( # 1) 的問題，有三個後續的提示，在聊天機器人中提供三個選項 ( # 2) 。
 
 當使用者選取 ( # 3) 的選項時，就會顯示下一個精簡選項清單 ( # 4) 。 此順序會繼續 ( # 5) ，直到使用者判斷正確的最終答案 ( # 6) 為止。
 
@@ -77,12 +77,12 @@ ms.locfileid: "91777795"
 1. **儲存並定型** 知識庫。
 
 > [!Caution]
-> 不支援使用匯出的 TSV 或 .XLS 多重回合知識庫檔案作為新的或空白知識庫的資料來源。 您必須從 QnA Maker 入口網站的 [**設定**] 頁面匯**入**該檔案類型，才能將匯出的多回合提示新增至知識庫。
+> 不支援使用匯出的 TSV 或 .XLS 多重回合知識庫檔案作為新的或空白知識庫的資料來源。 您必須從 QnA Maker 入口網站的 [**設定**] 頁面匯 **入** 該檔案類型，才能將匯出的多回合提示新增至知識庫。
 
 
 ## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>使用 Create API 建立具有多回合提示的知識庫
 
-您可以使用 [QnA Maker CREATE API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)來建立具有多回合提示的知識案例。 提示會在 `context` 屬性的陣列中新增 `prompts` 。
+您可以使用 [QnA Maker CREATE API](/rest/api/cognitiveservices/qnamaker/knowledgebase/create)來建立具有多回合提示的知識案例。 提示會在 `context` 屬性的陣列中新增 `prompts` 。
 
 ## <a name="show-questions-and-answers-with-context"></a>以內容顯示問題和解答
 
@@ -94,7 +94,7 @@ ms.locfileid: "91777795"
 
 多回合內容會顯示在第一個資料行中。
 
-:::image type="content" source="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png" alt-text="螢幕擷取畫面顯示使用者手冊中的結構範例。" lightbox="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png":::
+:::image type="content" source="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png" alt-text="螢幕擷取畫面顯示反白顯示的內容區段。" lightbox="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png":::
 
 在上圖中， **#1** 表示資料行中的粗體文字，這表示目前的問題。 父問題是資料列中的最上層專案。 下列任何問題都是連結的問答配對。 這些專案是可選取的，因此您可以立即移至其他內容專案。
 
@@ -107,7 +107,7 @@ ms.locfileid: "91777795"
 將後續提示新增至目前未連結的現有問答組。 由於問題未連結到任何問答組，因此必須變更目前的視圖設定。
 
 1. 若要將現有問答組連結至後續提示，請選取問答組的資料列。 若為介面手冊，請搜尋 **登出** 以縮減清單。
-1. 在 **Signout**的資料列中，選取 [ **回答** ] 資料行中的 [ **加入後續追蹤] 提示**。
+1. 在 **Signout** 的資料列中，選取 [ **回答** ] 資料行中的 [ **加入後續追蹤] 提示**。
 1. 在 [ **追蹤提示** ] 快顯視窗的欄位中，輸入下列值：
 
     |欄位|值|
@@ -125,7 +125,7 @@ ms.locfileid: "91777795"
 
 ### <a name="edit-the-display-text"></a>編輯顯示文字
 
-當您建立後續的提示，並將現有問答組輸入為 **要回答的連結**時，您可以輸入新的 **顯示文字**。 此文字不會取代現有的問題，也不會加入新的替代問題。 它與這些值不同。
+當您建立後續的提示，並將現有問答組輸入為 **要回答的連結** 時，您可以輸入新的 **顯示文字**。 此文字不會取代現有的問題，也不會加入新的替代問題。 它與這些值不同。
 
 1. 若要編輯顯示文字，請在 **內容** 欄位中搜尋並選取問題。
 1. 在該問題的資料列中，選取 [解答] 資料行中的後續提示。
@@ -145,23 +145,23 @@ ms.locfileid: "91777795"
 1. 在 [知識庫] 工具列上，搜尋並選取帳戶的現有問答組 **並登入**。
 
 1. 在這個問題的 [ **回答** ] 欄中，選取 [ **新增後續追蹤] 提示**。
-1. 在 [ **後續提示 (預覽]) **中，輸入下列值以建立新的後續提示：
+1. 在 [ **後續提示 (預覽])** 中，輸入下列值以建立新的後續提示：
 
     |欄位|值|
     |--|--|
     |顯示文字|*建立 Windows 帳戶*。 要在後續提示中顯示的自訂文字。|
     |僅限內容|選取此核取方塊。 只有當問題指定了內容時，才會傳回此回應。|
-    |回應的連結|輸入下列文字作為答案：<br>*使用新的或現有的電子郵件帳戶[建立](https://account.microsoft.com/)Windows 帳戶*。<br>當您儲存和定型資料庫時，將會轉換此文字。 |
+    |回應的連結|輸入下列文字作為答案：<br>*使用新的或現有的電子郵件帳戶 [建立](https://account.microsoft.com/)Windows 帳戶*。<br>當您儲存和定型資料庫時，將會轉換此文字。 |
     |||
 
     ![建立新的提示問題和解答](../media/conversational-context/create-child-prompt-from-parent.png)
 
 
-1. 選取 [ **建立新**的]，然後選取 [ **儲存**]。
+1. 選取 [ **建立新** 的]，然後選取 [ **儲存**]。
 
     此動作會建立新的問答組，並將選取的問題連結為後續的提示。 這兩個問題的 **內容** 資料行表示後續的提示關聯性。
 
-1. 選取 [ **視圖選項**]，然後選取 [ [**顯示內容 (預覽]) **](#show-questions-and-answers-with-context)。
+1. 選取 [ **視圖選項**]，然後選取 [ [**顯示內容 (預覽])**](#show-questions-and-answers-with-context)。
 
     新的問題會顯示其連結的方式。
 
@@ -169,7 +169,7 @@ ms.locfileid: "91777795"
 
     父問題會將新問題顯示為其中一個選項。
 
-    :::image type="content" source="../media/conversational-context/child-prompt-created.png" alt-text="螢幕擷取畫面顯示使用者手冊中的結構範例。" lightbox="../media/conversational-context/child-prompt-created.png":::
+    :::image type="content" source="../media/conversational-context/child-prompt-created.png" alt-text="螢幕擷取畫面顯示這兩個問題的內容資料行，指出後續的提示關聯性。" lightbox="../media/conversational-context/child-prompt-created.png":::
 
 1. 新增後續的提示之後，請選取頂端導覽列中的 [ **儲存並定型** ]。
 
@@ -357,11 +357,11 @@ QnA Maker 的 _GenerateAnswer_ JSON 回應包含 `context` 物件中第一個專
 
 ## <a name="display-order-is-supported-in-the-update-api"></a>更新 API 中支援顯示順序
 
-[更新 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)可支援在 JSON 回應中傳回的[顯示文字和顯示順序](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto)。
+[更新 API](/rest/api/cognitiveservices/qnamaker/knowledgebase/update)可支援在 JSON 回應中傳回的[顯示文字和顯示順序](/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto)。
 
 ## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>使用更新 API 新增或刪除多回合提示
 
-您可以使用 [QnA Maker 更新 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)來新增或刪除多回合提示。  提示會在 `context` 屬性的 `promptsToAdd` 陣列和陣列中新增 `promptsToDelete` 。
+您可以使用 [QnA Maker 更新 API](/rest/api/cognitiveservices/qnamaker/knowledgebase/update)來新增或刪除多回合提示。  提示會在 `context` 屬性的 `promptsToAdd` 陣列和陣列中新增 `promptsToDelete` 。
 
 ## <a name="export-knowledge-base-for-version-control"></a>匯出版本控制的知識庫
 
@@ -369,7 +369,7 @@ QnA Maker 藉由在匯出的檔案中包含多回合對話步驟來支援版本�
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解此 [對話方塊範例](https://github.com/microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/adaptive-dialog/07.qnamaker/QnAMaker.csproj) 中的內容交談，或深入瞭解 [多回合交談的概念 bot 設計](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0)。
+深入瞭解此 [對話方塊範例](https://github.com/microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/adaptive-dialog/07.qnamaker/QnAMaker.csproj) 中的內容交談，或深入瞭解 [多回合交談的概念 bot 設計](/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0)。
 
 > [!div class="nextstepaction"]
 > [移轉知識庫](../Tutorials/migrate-knowledge-base.md)

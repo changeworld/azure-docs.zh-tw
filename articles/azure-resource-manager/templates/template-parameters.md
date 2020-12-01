@@ -1,18 +1,18 @@
 ---
 title: 範本中的參數
-description: 描述如何在 Azure Resource Manager 範本中定義參數。
+description: 描述如何在 Azure Resource Manager 範本中定義 (ARM 範本) 的參數。
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 8cdc95037967a32c2d8464f4dc39b1e7369102bb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4ac1aeb579040b35b2a9b4cb90fb5687f91ebd3b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911408"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353505"
 ---
-# <a name="parameters-in-azure-resource-manager-templates"></a>Azure Resource Manager 範本中的參數 \(部分機器翻譯\)
+# <a name="parameters-in-arm-templates"></a>ARM 範本中的參數
 
-本文說明如何在 Azure Resource Manager 範本中定義和使用參數。 藉由提供不同的參數值，您可以針對不同的環境重複使用範本。
+本文說明如何在 Azure Resource Manager 範本中定義和使用參數 (ARM 範本) 。 藉由提供不同的參數值，您可以針對不同的環境重複使用範本。
 
 Resource Manager 在開始部署作業之前解析參數值。 在範本中使用參數的任何地方，Resource Manager 會將它取代為已解析的值。
 
@@ -154,14 +154,13 @@ Resource Manager 在開始部署作業之前解析參數值。 在範本中使�
 
 下列範例示範使用參數的案例。
 
-|範本  |描述  |
+|範本  |說明  |
 |---------|---------|
 |[具有預設值之帶有函式的參數](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | 示範定義參數的預設值時，如何使用範本函式。 範本不會部署任何資源。 它會建構參數值，並傳回這些值。 |
 |[parameter 物件](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | 示範如何針對參數使用物件。 範本不會部署任何資源。 它會建構參數值，並傳回這些值。 |
 
-
 ## <a name="next-steps"></a>後續步驟
 
-* 若要瞭解參數的可用屬性，請參閱 [瞭解 Azure Resource Manager 範本的結構和語法](template-syntax.md)。
+* 若要瞭解參數的可用屬性，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
 * 若要瞭解如何以檔案形式傳遞參數值，請參閱 [建立 Resource Manager 參數](parameter-files.md)檔。
 * 如需有關建立參數的建議，請參閱 [最佳做法-參數](template-best-practices.md#parameters)。

@@ -8,24 +8,24 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2019
-ms.openlocfilehash: dc910c01c401468a3dae392a6318344bee25efb7
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 5035a81838ace0678f0cbb68ad2b9325de498003
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375632"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353114"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA Maker 資源和知識庫的語言支援
 
 本文說明 QnA Maker 資源和知識庫的語言支援選項。 
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker 正式發行 (穩定版本)](#tab/v1)
 
 當您在資源中建立第一個知識庫時，會選取服務的語言。 資源中的所有其他知識庫都必須採用相同的語言。 
 
 語言會決定 QnA Maker 提供來回應使用者查詢的結果相關性。 QnA Maker 資源和該資源內的所有知識庫都支援單一語言。 您必須使用單一語言來提供查詢的最佳解答結果。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
+# <a name="qna-maker-managed-preview-release"></a>[受控 QnA Maker (預覽版本)](#tab/v2)
 
 在 QnA Maker 管理的中，您可以選擇在個別的知識庫層級進行語言設定。 只有在服務的知識庫中，才能啟用此設定。 設定之後，就無法變更服務的語言設定。 
 
@@ -35,7 +35,7 @@ ms.locfileid: "94375632"
 
 ## <a name="single-language-per-resource"></a>每個資源的單一語言
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker 正式發行 (穩定版本)](#tab/v1)
 
 請考慮下列事項：
 
@@ -48,7 +48,7 @@ ms.locfileid: "94375632"
 # <a name="qnamaker-managed-preview"></a>[QnAMaker 受控 (預覽) ](#tab/v2)
 ![QnA Maker 管理的語言設定](../media/language-support/language-setting-managed.png)
 
-如果您 **未選取核取方塊以啟用每個知識庫的語言設定** ，請考慮下列各項： 
+如果您 **未選取核取方塊以啟用每個知識庫的語言設定**，請考慮下列各項： 
 * QnA Maker 服務及其所有知識庫都只支援一種語言。
 * 建立服務的第一個知識庫時，會明確設定語言
 * 語言取決於建立知識庫時新增的檔案和 Url。
@@ -59,10 +59,10 @@ ms.locfileid: "94375632"
 
 ## <a name="supporting-multiple-languages-in-one-qna-maker-resource"></a>在一個 QnA Maker 資源中支援多種語言
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (穩定版本) ](#tab/v1)
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker 正式發行 (穩定版本)](#tab/v1)
 目前正式推出的 (GA) 穩定版本中不支援這項功能。 簽出 QnA Maker 管理] 以測試此功能。 
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 受控 (預覽版本) ](#tab/v2)
+# <a name="qna-maker-managed-preview-release"></a>[受控 QnA Maker (預覽版本)](#tab/v2)
 * 當您在服務中建立第一個知識庫時，您可以選擇啟用每個知識庫的語言設定。 選取此核取方塊，以在單一服務內建立屬於不同語言的知識庫。
 * 建立第一個知識庫之後，就無法修改服務的 [語言] 設定選項。
 * 如果您啟用每個知識庫專屬的語言設定，則不會有服務的一個測試索引，而是每個知識庫都有一個測試索引。 
@@ -83,7 +83,7 @@ ms.locfileid: "94375632"
 
 下列清單包含 QnA Maker 資源支援的語言。 
 
-|語言|
+|Language|
 |--|
 |阿拉伯文|
 |亞美尼亞文|
@@ -101,7 +101,7 @@ ms.locfileid: "94375632"
 |愛沙尼亞文|
 |芬蘭文|
 |法文|
-|加利西亞文|
+|加里斯亞文|
 |德文|
 |希臘文|
 |古吉拉特文|
@@ -140,7 +140,7 @@ ms.locfileid: "94375632"
 |越南文|
 
 ## <a name="query-matching-and-relevance"></a>查詢比對和相關性
-QnA Maker 相依于 [Azure 認知搜尋語言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support) 來提供結果。
+QnA Maker 相依于 [Azure 認知搜尋語言分析器](/rest/api/searchservice/language-support) 來提供結果。
 
 雖然 Azure 認知搜尋功能與支援的語言相等，但 QnA Maker 具有位於 Azure 搜尋服務結果上方的額外 ranker。 在此 ranker 模型中，我們會以下列語言使用一些特殊的語義和單字型功能。
 
@@ -166,4 +166,4 @@ QnA Maker 相依于 [Azure 認知搜尋語言分析器](https://docs.microsoft.c
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [語言選擇](../how-to/language-knowledge-base.md)
+> [語言選擇](../index.yml)

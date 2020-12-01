@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b836038aa2f8f60e25c51d1d5674d22497b3ce44
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6b767a2cf4739a0b36b9f5c5c960e3e3ead58262
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "96018950"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353079"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>管理 Azure 數位 Twins 中的端點和路由 (Api 和 CLI) 
 
@@ -24,7 +24,7 @@ ms.locfileid: "96018950"
 
 或者，您也可以使用 [Azure 入口網站](https://portal.azure.com)來管理端點和路由。 如需使用入口網站的文章版本，請參閱 [*如何： (入口網站) 管理端點和路由*](how-to-manage-routes-portal.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 您將需要 **Azure 帳戶** (您可以在 [這裡](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 免費設定一個帳戶) 
 * 您將需要 azure 訂用帳戶中的 **Azure 數位 Twins 實例** 。 如果您還沒有實例，可以使用 how [*to：設定實例和驗證*](how-to-set-up-instance-cli.md)中的步驟來建立一個實例。 設定中的下列值可方便用於本文稍後：
@@ -94,7 +94,7 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 在設定無效信件位置之前，您必須先有具備容器的儲存體帳戶。 建立端點時，您會提供此容器的 URL。 寄不出的信件是以具有 SAS 權杖的容器 URL 提供。 該權杖只需要 `write` 儲存體帳戶內目的地容器的許可權。 完整格式的 URL 將採用下列格式： `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
-若要深入瞭解 SAS 權杖，請參閱： [使用共用存取簽章 (SAS 將有限存取權授與 Azure 儲存體資源) ](/azure/storage/common/storage-sas-overview)
+若要深入瞭解 SAS 權杖，請參閱： [使用共用存取簽章 (SAS 將有限存取權授與 Azure 儲存體資源) ](../storage/common/storage-sas-overview.md)
 
 若要深入瞭解無效信件，請參閱 [*概念：事件路由*](concepts-route-events.md#dead-letter-events)。
 
