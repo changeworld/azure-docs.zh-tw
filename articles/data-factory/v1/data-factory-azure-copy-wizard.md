@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 55a27dbb6c2ec3569bae9d6fb96fcd8087f08daf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d2d6ee8357698e4af59f44579ce7f2c3aa82991c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001672"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340317"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Azure Data Factory 複製精靈
 
@@ -94,7 +94,7 @@ Azure Data Factory 複製精靈簡化內嵌資料的程序，這通常是端對�
 本節探討 Azure Data Factory 中複製嚮導的常見疑難排解方法。
 
 > [!NOTE] 
-> 這些疑難排解秘訣適用于第1版 Data Factory 的複製 wizard。 如 Data Factory v2，請參閱疑難排解 [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-ux-troubleshoot-guide)的疑難排解指南。
+> 這些疑難排解秘訣適用于第1版 Data Factory 的複製 wizard。 如 Data Factory v2，請參閱疑難排解 [Azure Data Factory](../data-factory-ux-troubleshoot-guide.md)的疑難排解指南。
 
 ### <a name="error-code-unable-to-validate-in-copy-wizard"></a>錯誤碼：無法在複製嚮導中進行驗證
 

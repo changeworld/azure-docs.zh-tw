@@ -1,5 +1,5 @@
 ---
-title: 在搜尋方塊中新增自動完成和建議
+title: 在搜尋方塊中新增自動完成
 titleSuffix: Azure Cognitive Search
 description: 藉由建立建議工具，並以完成的字詞或片語來產生自動完成搜尋方塊的要求，在 Azure 認知搜尋中啟用搜尋型別查詢動作。 您也可以傳回建議的相符專案。
 manager: nitinme
@@ -9,14 +9,14 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 5b498b8f49f2f0636b010e3c4d86f13ad44ac090
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 25c87971455ed3c5f59c92748794720d61e599e3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029008"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339603"
 ---
-# <a name="add-autocomplete-and-suggestions-to-client-apps"></a>將自動完成和建議新增至用戶端應用程式
+# <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>使用 Azure 認知搜尋將自動完成和建議新增至用戶端應用程式
 
 搜尋即您類型是改善使用者起始查詢生產力的常見技術。 在 Azure 認知搜尋中，您可以透過 *自動完成* 來支援此體驗，這項功能會根據部分輸入完成詞彙或片語， (以「microsoft」 ) 完成「微」。 第二個使用者體驗是 *建議*，或比對檔的簡短清單 (以識別碼傳回書籍標題，以便您可以連結到該書籍) 的詳細資料頁面。 自動完成和建議都會針對索引中的相符前提。 服務不會提供傳回零結果的查詢。
 

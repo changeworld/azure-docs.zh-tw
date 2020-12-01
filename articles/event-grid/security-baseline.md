@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ccc39513505f299e85cbc270e2daeafeac6ca6fd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 575742ab0d886a69dc5acccf4a65ac8c91b5a871
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94845181"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341030"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>適用于事件方格的 Azure 安全性基準
 
@@ -74,7 +74,7 @@ Azure 事件方格也支援公用 IP 型存取控制，可用於發佈至主題�
 
 - [如何設定 Azure 事件方格主題或網域的私人端點](configure-private-endpoints.md)
 
-- [如何設定 DDoS 保護](../virtual-network/manage-ddos-protection.md)
+- [如何設定 DDoS 保護](../ddos-protection/manage-ddos-protection.md)
 
 - [如需 Azure 資訊安全中心整合式威脅情報的詳細資訊](../security-center/azure-defender.md)
 
@@ -227,7 +227,7 @@ Azure 事件方格也支援公用 IP 型存取控制，可用於發佈至主題�
 
 - [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
-- [開始使用 Log Analytics 查詢](../azure-monitor/log-query/get-started-portal.md)
+- [開始使用 Log Analytics 查詢](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [如何在 Azure 監視器中執行自訂查詢](../azure-monitor/log-query/get-started-queries.md)
 
@@ -289,7 +289,7 @@ Azure 事件方格也支援公用 IP 型存取控制，可用於發佈至主題�
 
 **指導** 方針： Azure 事件方格可讓您控制為不同的使用者提供的存取層級，以進行各種管理作業，例如列出事件訂閱、建立新的訂用帳戶，以及產生金鑰。 事件方格會使用 Azure 角色型存取控制 (Azure RBAC) 。 事件方格支援內建角色和自訂角色。
 
-Azure 角色型存取控制 (Azure RBAC) 可讓您透過角色指派來管理 Azure 資源的存取權。 您可以將這些角色指派給使用者、群組服務主體和受控識別。 某些資源有預先定義的內建角色，而這些角色可透過 Azure CLI、Azure PowerShell 或 Azure 入口網站等工具進行清查或查詢。
+Azure 角色型存取控制 (Azure RBAC) 可讓您透過角色指派來管理 Azure 資源的存取權。 您可以將這些角色指派給使用者、群組服務主體和受控識別。 某些資源有預先定義的內建角色，這些角色可透過 Azure CLI、Azure PowerShell 或 Azure 入口網站之類的工具進行清查或查詢。
 
 - [授權存取事件方格資源](security-authorization.md)
 
@@ -381,7 +381,7 @@ Azure 角色型存取控制 (Azure RBAC) 可讓您透過角色指派來管理 Az
 
 - [ (Azure 事件方格) 驗證發佈用戶端 ](security-authenticate-publishing-clients.md)
 
-- [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何建立和設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -395,7 +395,7 @@ Azure 角色型存取控制 (Azure RBAC) 可讓您透過角色指派來管理 Az
 
 - [瞭解 Azure AD 報告](../active-directory/reports-monitoring/index.yml)
 
-- [如何使用 Azure AD 身分識別和存取權評論](../active-directory/governance/access-reviews-overview.md)
+- [如何使用 Azure AD 身分識別和存取權檢閱](../active-directory/governance/access-reviews-overview.md)
 
 - [部署 Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
@@ -984,11 +984,11 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (JSON) 中匯出範�
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
-**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對受 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 的策略和執行的 Red 小組和即時網站滲透測試。
+**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 對於 Red Teaming 和即時網站滲透測試的策略與執行方法。
 
 - [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-- [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 資訊安全中心監視**：不適用
 

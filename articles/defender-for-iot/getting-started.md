@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: e3de253ee6f45f9296d6b09189fe4bc488be36ad
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 6aa525fd7f2d82194baa2e2a0c910cb71509c2d5
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090058"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340011"
 ---
 # <a name="getting-started-with-azure-defender-for-iot"></a>開始使用適用于 IoT 的 Azure Defender
 
@@ -30,9 +30,9 @@ ms.locfileid: "92090058"
 
 ## <a name="1-set-up-azure"></a>1. 設定 Azure
 
-- 設定 Azure 帳戶。 如需詳細資訊，請參閱 [建立 Azure 帳戶](https://docs.microsoft.com/learn/modules/create-an-azure-account/)。
+- 設定 Azure 帳戶。 如需詳細資訊，請參閱 [建立 Azure 帳戶](/learn/modules/create-an-azure-account/)。
 
-- 防火牆或 proxy：如果您有設定為允許特定連線的防火牆或類似的中間網路裝置，請確認已開啟防火牆或 proxy 的 *. azure-devices.net:443。 如果不支援萬用字元，或您想要更多控制，則應在您的 FW 或 proxy 中開啟特定的 IoT 中樞 FQDN。 如需詳細資訊，請參閱 [參考-IoT 中樞端點](/azure/iot-hub/iot-hub-devguide-endpoints)。
+- 防火牆或 proxy：如果您有設定為允許特定連線的防火牆或類似的中間網路裝置，請確認已開啟防火牆或 proxy 的 *. azure-devices.net:443。 如果不支援萬用字元，或您想要更多控制，則應在您的 FW 或 proxy 中開啟特定的 IoT 中樞 FQDN。 如需詳細資訊，請參閱 [參考-IoT 中樞端點](../iot-hub/iot-hub-devguide-endpoints.md)。
 
 ## <a name="2-deploy-hardware-software-and-onboard-to-sensor"></a>2. 部署硬體、軟體和上架至感應器
 

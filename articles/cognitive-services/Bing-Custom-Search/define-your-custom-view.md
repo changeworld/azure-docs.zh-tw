@@ -10,19 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: e8747b822916ba2c9ef7b45cc3cbbaa88d16dcb1
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: b2d4eb75002474bbec57753bbf0255cc4c2b4a16
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565784"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338634"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>設定 Bing 自訂搜尋體驗
 
 > [!WARNING]
-> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的程序進行佈建。
 > 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
-> 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 自訂搜尋執行個體可讓您量身訂做搜尋體驗，以便只包含使用者感興趣的網站內容。 Bing 不會執行全網路搜尋，只會搜尋您感興趣的網路配量。 若要建立自訂的網頁檢視，請使用 Bing 自訂搜尋[入口網站](https://www.customsearch.ai)。
 
@@ -30,9 +30,9 @@ ms.locfileid: "94565784"
 
 定義 Web 配量時，請使用下列項目：
 
-| 配量名稱 | 描述                                                                                                                                                                                                                                                                                                |
+| 配量名稱 | 說明                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Domain     | 網域配量包括在某個網際網路網域內找到的所有內容。 例如，`www.microsoft.com`。 省略 `www.` 會使得 Bing 也搜尋該網域的子網域。 例如，如果您指定 `microsoft.com` ，Bing 也會從或傳回 `support.microsoft.com` 結果 `technet.microsoft.com` 。 |
+| Domain     | 網域配量包括在某個網際網路網域內找到的所有內容。 例如： `www.microsoft.com` 。 省略 `www.` 會使得 Bing 也搜尋該網域的子網域。 例如，如果您指定 `microsoft.com` ，Bing 也會從或傳回 `support.microsoft.com` 結果 `technet.microsoft.com` 。 |
 | 子頁面    | 子頁面配量包括在子頁面及其下的路徑中找到的所有內容。 您在路徑中最多可以指定兩個子頁面。 例如， `www.microsoft.com/en-us/windows/`                                                                                                                       |
 | 網頁    | 網頁配量在自訂搜尋中只能包括該網頁。 您可以選擇性地指定是否要包括子頁面。                                                                                                                                                                                  |
 
@@ -87,7 +87,7 @@ ms.locfileid: "94565784"
 
 您可以使用入口網站右側的預覽窗格送出搜尋查詢，以測試搜尋執行個體，而後檢視結果。 
 
-1. 在搜尋方塊下方，選取 [我的執行個體]。 您可藉由選取 **Bing** ，比較您的搜尋體驗與 Bing 的結果。 
+1. 在搜尋方塊下方，選取 [我的執行個體]。 您可藉由選取 **Bing**，比較您的搜尋體驗與 Bing 的結果。 
 2. 選取安全搜尋篩選條件以及要搜尋的市場 (請參閱[查詢參數](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters))。
 3. 輸入查詢並按下 Enter，或按一下搜尋圖示以檢視目前設定的結果。 按一下 [Web]、[影像] 或 [影片] 來取得對應的結果，即可變更您執行的搜尋類型。 
 
@@ -97,7 +97,7 @@ ms.locfileid: "94565784"
 
 入口網站可讓您調整特定網域、子頁面和網頁內容的搜尋順位。 在預覽窗格中傳送搜尋查詢之後，每個搜尋結果都會包含您可以進行的調整清單：  
 
-| 調整 | 描述 |
+| 調整 | 說明 |
 |------------|-------------|
 | 封鎖      | 將網域、子頁面或網頁移到 [已封鎖] 清單中。 Bing 會在搜尋結果中排除來自所選網站的內容。                    |
 | 提升      | 將搜尋結果中的網域或子頁面的內容提升到較高的順位。                                                                                        |
@@ -125,7 +125,7 @@ ms.locfileid: "94565784"
 
 * 在 [已 **釘** 選] 索引標籤中，輸入要釘選到頂端的網頁 URL，以及其對應的查詢。
 
-* 在 [預覽] 窗格中輸入搜尋查詢，然後按一下搜尋。 尋找您要為查詢釘選的網頁，然後按一下 [ **釘選到頁首** ]。 網頁和查詢都會新增至 [已釘選] 清單。
+* 在 [預覽] 窗格中輸入搜尋查詢，然後按一下搜尋。 尋找您要為查詢釘選的網頁，然後按一下 [ **釘選到頁首**]。 網頁和查詢都會新增至 [已釘選] 清單。
 
 ### <a name="specify-the-pins-match-condition"></a>指定釘選的比對條件
 
@@ -134,7 +134,7 @@ ms.locfileid: "94565784"
 > [!NOTE]
 > 使用者的搜尋查詢與釘選的搜尋查詢之間的所有比較都不區分大小寫。
 
-| 值 | 描述                                                                          |
+| 值 | 說明                                                                          |
 |---------------|----------------------------------------------------------------------------------|
 | 開始於 | 如果使用者的查詢字串開頭為釘選查詢字串，該釘選即為相符項目。 |
 | 結束於   | 如果使用者的查詢字串結尾為釘選查詢字串，該釘選即為相符項目。  |

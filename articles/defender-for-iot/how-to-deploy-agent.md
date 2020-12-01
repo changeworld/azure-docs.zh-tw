@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 8e18b79cc14fe98879ec97361f6e275d8fd918bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2634ed819b8818632c58b9e471b0f26190e5f16b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936868"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339960"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>在 IoT 裝置上選取並部署安全性代理程式
 
@@ -45,15 +45,15 @@ IoT 安全性代理程式的每個 Defender 類別都提供相同的功能集，
 | **開放原始碼** | 在[GitHub](https://aka.ms/iot-security-github-c)中的[MIT 授權](https://en.wikipedia.org/wiki/MIT_License)下提供 | 在[GitHub](https://aka.ms/iot-security-github-cs)中的[MIT 授權](https://en.wikipedia.org/wiki/MIT_License)下提供 |
 | **開發語言**    | C | C# |
 | **支援的 Windows 平臺？** | 否 | 是 |
-| **Windows 必要條件** | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
+| **Windows 必要條件** | --- | [WMI](/windows/desktop/wmisdk/) |
 | **支援的 Linux 平臺？** | 是、x64 和 x86 | 是，僅限 x64 |
 | **Linux 必要條件** | libunwind8、libcurl3、uuid-runtime、auditd、audispd-外掛程式 | libunwind8、libcurl3、uuid-runtime、auditd、audispd-外掛程式、sudo、netstat、iptables |
 | **磁片使用量** | 10.5 MB | 90 MB |
-| **平均記憶體使用量 () ** | 5.5 MB | 33 MB |
-| **IoT 中樞的[驗證](concept-security-agent-authentication-methods.md)** | 是 | 是 |
+| **平均記憶體使用量 ()** | 5.5 MB | 33 MB |
+| **IoT 中樞的 [驗證](concept-security-agent-authentication-methods.md)** | 是 | 是 |
 | **安全性資料 [收集](how-to-agent-configuration.md#supported-security-events)** | 是 | 是 |
 | **事件彙總** | 是 | 是 |
-| **透過[安全性模組](concept-security-module.md)對應項進行遠端設定** | 是 | 是 |
+| **透過 [安全性模組](concept-security-module.md)對應項進行遠端設定** | 是 | 是 |
 
 ## <a name="security-agent-installation-guidelines"></a>安全性代理程式安裝指導方針
 
@@ -65,7 +65,7 @@ IoT 安全性代理程式的每個 Defender 類別都提供相同的功能集，
 
 請回答下列有關 IoT 裝置的問題，以選取正確的代理程式：
 
-- 您使用的是 _Windows Server_ 或 _windows IoT 核心_嗎？
+- 您使用的是 _Windows Server_ 或 _windows IoT 核心_ 嗎？
 
     [為 Windows 部署以 c # 為基礎的安全性代理程式](how-to-deploy-windows-cs.md)。
 

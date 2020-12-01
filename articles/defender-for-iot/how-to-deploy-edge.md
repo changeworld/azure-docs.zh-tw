@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: dd68fd79d25e839876180ff25cacfa1ddf64eb2b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 75a9d1267a8824801e3c24fc25c687f29a808187
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368803"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339926"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>在您的 IoT Edge 裝置上部署安全性模組
 
@@ -32,9 +32,9 @@ ms.locfileid: "92368803"
 
 使用下列步驟來為 IoT Edge 部署適用于 IoT 的 Defender 安全性模組。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
-1. 在 IoT 中樞中，確定您的裝置已 [註冊為 IoT Edge 裝置](https://docs.microsoft.com/azure/iot-edge/how-to-manual-provision-symmetric-key#register-a-new-device)。
+1. 在 IoT 中樞中，確定您的裝置已 [註冊為 IoT Edge 裝置](../iot-edge/how-to-manual-provision-symmetric-key.md#register-a-new-device)。
 
 1. IoT Edge 模組的 Defender 需要在 IoT Edge 裝置上安裝 [AuditD framework](https://linux.die.net/man/8/auditd) 。
 
@@ -57,7 +57,7 @@ ms.locfileid: "92368803"
 
 1. 按一下 [ **建立** ] 以設定部署。
 
-1. 選擇 IoT 中樞的 Azure **訂** 用帳戶，然後選取您的 **iot 中樞**。<br>選取 [ **部署至裝置** 以單一裝置為目標]，或選取 [ **大規模部署** 至目標多個裝置]，然後按一下 [ **建立**]。 如需大規模部署的詳細資訊，請參閱 [如何部署](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor)。
+1. 選擇 IoT 中樞的 Azure **訂** 用帳戶，然後選取您的 **iot 中樞**。<br>選取 [ **部署至裝置** 以單一裝置為目標]，或選取 [ **大規模部署** 至目標多個裝置]，然後按一下 [ **建立**]。 如需大規模部署的詳細資訊，請參閱 [如何部署](../iot-edge/how-to-deploy-at-scale.md)。
 
     >[!Note]
     >如果您選取 [ **大規模部署**]，請先新增裝置名稱和詳細資料，然後再繼續進行下列指示中的 [ **新增模組** ] 索引標籤。
@@ -105,7 +105,7 @@ ms.locfileid: "92368803"
      }
    ```
     
-   如需設定代理程式的詳細資訊，請參閱 [設定安全性代理](https://docs.microsoft.com/azure/defender-for-iot/how-to-agent-configuration)程式。
+   如需設定代理程式的詳細資訊，請參閱 [設定安全性代理](./how-to-agent-configuration.md)程式。
 
 1. 選取 [更新]。
 
@@ -175,7 +175,7 @@ ms.locfileid: "92368803"
 
 1. 確認下列容器正在執行：
 
-   | Name | IMAGE |
+   | 名稱 | IMAGE |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.2 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |

@@ -3,12 +3,12 @@ title: 功能概觀 - Azure 事件中樞 | Microsoft Docs
 description: 本文將詳細說明 Azure 事件中樞的相關功能與術語。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: db7c0244fd4e9e04f9cfbcbba8748ec8190fc5c5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a38cf4ba6a06dc6e977f9ea168fcf67ce83ff5de
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96007423"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339977"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中樞的功能與術語
 
@@ -33,7 +33,7 @@ ms.locfileid: "96007423"
 
 ### <a name="publishing-an-event"></a>發佈事件
 
-您可以透過 AMQP 1.0、Kafka 1.0 (和更新版本) 或 HTTPS 來發佈事件。 事件中樞服務會提供 [REST API](https://docs.microsoft.com/rest/api/eventhub/) 和 [.net](event-hubs-dotnet-standard-getstarted-send.md)、 [JAVA](event-hubs-java-get-started-send.md)、 [Python](event-hubs-python-get-started-send.md)、 [JavaScript](event-hubs-node-get-started-send.md)和 [Go](event-hubs-go-get-started-send.md) 用戶端程式庫，以將事件發佈至事件中樞。 對於其他執行階段和平台，您可以使用任何 AMQP 1.0 用戶端 (如 [Apache Qpid](https://qpid.apache.org/))。 
+您可以透過 AMQP 1.0、Kafka 1.0 (和更新版本) 或 HTTPS 來發佈事件。 事件中樞服務會提供 [REST API](/rest/api/eventhub/) 和 [.net](event-hubs-dotnet-standard-getstarted-send.md)、 [JAVA](event-hubs-java-get-started-send.md)、 [Python](event-hubs-python-get-started-send.md)、 [JavaScript](event-hubs-node-get-started-send.md)和 [Go](event-hubs-go-get-started-send.md) 用戶端程式庫，以將事件發佈至事件中樞。 對於其他執行階段和平台，您可以使用任何 AMQP 1.0 用戶端 (如 [Apache Qpid](https://qpid.apache.org/))。 
 
 您可以單獨發佈事件，或以批次方式進行。 不論是單一事件或批次，單次發佈 (事件資料執行個體) 的上限為 1 MB。 發佈大於此臨界值的事件會導致錯誤。 發行者最好不要察覺事件中樞內的資料分割，並只指定 (下一節) 所引進的分割區索引 *鍵* ，或透過其 SAS 權杖的身分識別。
 
@@ -41,7 +41,7 @@ ms.locfileid: "96007423"
 
 ![資料分割索引鍵](./media/event-hubs-features/partition_keys.png)
 
-事件中樞能確保所有共用資料分割索引鍵值的事件依序傳遞至同一個資料分割。 如果資料分割索引鍵與發佈者原則搭配使用，發佈者的身分識別與資料分割索引鍵的值必須相符， 否則，系統將發生錯誤。
+事件中樞能確保所有共用資料分割索引鍵值的事件依序傳遞至同一個資料分割。 如果資料分割索引鍵與發佈者原則搭配使用，發佈者的身分識別與資料分割索引鍵的值必須相符， 否則就會發生錯誤。
 
 ### <a name="publisher-policy"></a>發佈者原則
 

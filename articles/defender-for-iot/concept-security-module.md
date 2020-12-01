@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
-ms.openlocfilehash: a5382313c837482f116f498f3a05c36447062b0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b33c456d47426a3721e8582f24ffd603db0429c9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936879"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340028"
 ---
 # <a name="security-module"></a>安全性模組
 
@@ -30,7 +30,7 @@ ms.locfileid: "90936879"
 
 適用於 IoT 的 Defender 可與您現有的 IoT 裝置管理平台完全整合，讓您能夠管理裝置的安全性狀態，以及利用現有的裝置控制功能。 藉由使用 IoT 中樞對應項機制來達成整合。
 
-深入瞭解 Azure IoT 中樞中 [裝置 twins](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) 的概念。
+深入瞭解 Azure IoT 中樞中 [裝置 twins](../iot-hub/iot-hub-devguide-device-twins.md) 的概念。
 
 ## <a name="security-module-twins"></a>安全性模組 twins
 
@@ -38,7 +38,7 @@ Defender for IoT 會為服務中的每個裝置維護安全性模組對應項。
 安全性模組對應項會針對您解決方案中的每個特定裝置，保存與裝置安全性相關的所有資訊。
 裝置安全性屬性是在專用的安全性模組對應項中維護，以便進行更安全的通訊，以及啟用需要較少資源的更新與維護。
 
-請參閱 [建立安全性模組](quickstart-create-security-twin.md) 對應項及 [設定安全性代理](how-to-agent-configuration.md) 程式，以瞭解如何建立、自訂和設定對應項。 若要深入瞭解 IoT 中樞內模組 twins 的概念，請參閱 [瞭解模組 twins](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) 。
+請參閱 [建立安全性模組](quickstart-create-security-twin.md) 對應項及 [設定安全性代理](how-to-agent-configuration.md) 程式，以瞭解如何建立、自訂和設定對應項。 若要深入瞭解 IoT 中樞內模組 twins 的概念，請參閱 [瞭解模組 twins](../iot-hub/iot-hub-devguide-module-twins.md) 。
 
 ## <a name="see-also"></a>另請參閱
 

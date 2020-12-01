@@ -5,12 +5,12 @@ author: batrived
 ms.topic: article
 ms.date: 06/21/2020
 ms.author: batrived
-ms.openlocfilehash: 7b93d7a110889192bb5be6fffa56a73758d6faa2
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: fa119784715b8c88ef3c9f2700b2cac1cc467234
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892310"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339740"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>針對連線能力問題進行疑難排解-Azure 事件方格
 
@@ -50,7 +50,7 @@ telnet {sampletopicname}.{region}-{suffix}.eventgrid.azure.net 443
 
 當您使用 Azure 時，有時您必須允許公司防火牆或 proxy 中的特定 IP 位址範圍或 Url 存取您使用的所有 Azure 服務，或嘗試使用的所有服務。 確認事件方格所使用的 IP 位址上允許流量。 針對 Azure 事件方格所使用的 IP 位址：請參閱 [AZURE Ip 範圍和服務標籤-公用雲端](https://www.microsoft.com/download/details.aspx?id=56519) 和 [服務標記-AzureEventGrid](network-security.md#service-tags)。
 
-[AZURE IP 範圍和服務標記-公用雲端](https://www.microsoft.com/download/details.aspx?id=56519)檔也會 **依區域** 列出 IP 位址。 您可以在公司防火牆或 proxy 中允許 **主題區域** 和 **配對區域** 的位址範圍。 針對區域的配對區域，請參閱 [商務持續性和嚴重損壞修復 (BCDR) ： Azure 配對的區域](/azure/best-practices-availability-paired-regions)。 
+[AZURE IP 範圍和服務標記-公用雲端](https://www.microsoft.com/download/details.aspx?id=56519)檔也會 **依區域** 列出 IP 位址。 您可以在公司防火牆或 proxy 中允許 **主題區域** 和 **配對區域** 的位址範圍。 針對區域的配對區域，請參閱 [商務持續性和嚴重損壞修復 (BCDR) ： Azure 配對的區域](../best-practices-availability-paired-regions.md)。 
 
 > [!NOTE]
 > 您可以將新的 IP 位址新增至 AzureEventGrid 服務標籤，但這並不是一般的。 因此，建議您對服務標籤進行每週檢查一次。

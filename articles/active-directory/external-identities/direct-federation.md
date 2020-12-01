@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb0223b338457ad5eeea0b0bb40593f57a0d3aa
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a23056445331c82aded878a77d1e0e730e4e2ceb
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442077"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339467"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>直接與來賓使用者的 AD FS 和第三方提供者同盟 (預覽)
 
@@ -45,7 +45,7 @@ ms.locfileid: "92442077"
 ## <a name="limitations"></a>限制
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>Azure AD 中的 DNS 驗證網域
-您要與同盟的網域，在 Azure AD**not**中必須以 DNS 驗證。 您可以設定與非受控 (透過電子郵件驗證或「病毒式」) Azure AD 租用戶直接同盟，因為這些租用戶未進行過 DNS 驗證。
+您要與同盟的網域，在 Azure AD **not** 中必須以 DNS 驗證。 您可以設定與非受控 (透過電子郵件驗證或「病毒式」) Azure AD 租用戶直接同盟，因為這些租用戶未進行過 DNS 驗證。
 
 ### <a name="authentication-url"></a>驗證 URL
 驗證 URL 的網域符合目標網域的原則，或驗證 URL 是其中一個所允許識別提供者 (此清單可能會變更) 的原則時，才允許直接同盟：
@@ -146,7 +146,7 @@ IdP 所簽發 WS-Fed 權杖所需的宣告：
 
 1. 移至 [Azure 入口網站](https://portal.azure.com/)。 在左窗格中，選取 [Azure Active Directory]。 
 2. 選取 [外部身分識別] > [所有識別提供者]。
-3. 選取 []，然後選取 [新增 SAML/WS-Fed IdP]。
+3. 選取，然後選取 [ **新增 SAML/WS-饋送 IdP**]。
 
     ![螢幕擷取畫面：顯示用來新增 SAML 或 WS-Fed IdP 的按鈕](media/direct-federation/new-saml-wsfed-idp.png)
 

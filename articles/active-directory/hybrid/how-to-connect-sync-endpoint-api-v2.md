@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 779b29c8d31dffa495926a7f2ca5e1f77870078c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4b9b73e30094ed7d07e19f4b93f2fe8ab8f6af3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319906"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339416"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect sync V2 端點 API (公開預覽) 
 Microsoft 已為 Azure AD Connect 部署了新的端點 (API)，以提升 Azure Active Directory 同步處理服務作業的效能。 藉由使用新的 V2 端點，您將會在匯出和匯入至 Azure AD 時，遇到顯著的效能提升。 這個新的端點支援下列項目：
@@ -50,12 +50,12 @@ Microsoft 已為 Azure AD Connect 部署了新的端點 (API)，以提升 Azure 
 下列步驟將引導您使用變換方法來部署 V2 端點。
 
 1. 在目前的暫存伺服器上部署 V2 端點。 在下列步驟中，此伺服器將會稱為 **V2 伺服器**。 目前作用中的伺服器將會繼續使用 V1 端點來處理生產工作負載，其將會稱為以下的 **V1 伺服器**。
-1. 驗證 **V2 伺服器**仍如預期般處理匯入。 在這個階段中，大型群組將不會佈建到 Azure AD 或內部部署 AD，但是您可以確認升級未導致對現有同步處理程序造成任何其他非預期的影響。 
-2. 驗證完成後，請將 **V2 伺服器**切換為作用中伺服器，而 **V1 伺服器**為暫存伺服器。 此時，要同步處理範圍內的大型群組將會布建到 Azure AD，而且如果啟用群組回寫，則會將大型 Microsoft 365 整合群組布建到 AD。
-3. 驗證 **V2 伺服器**是否成功執行及處理大型群組。 您可以選擇繼續進行此步驟，並監視同步處理程序一段期間。
+1. 驗證 **V2 伺服器** 仍如預期般處理匯入。 在這個階段中，大型群組將不會佈建到 Azure AD 或內部部署 AD，但是您可以確認升級未導致對現有同步處理程序造成任何其他非預期的影響。 
+2. 驗證完成後，請將 **V2 伺服器** 切換為作用中伺服器，而 **V1 伺服器** 為暫存伺服器。 此時，要同步處理範圍內的大型群組將會布建到 Azure AD，而且如果啟用群組回寫，則會將大型 Microsoft 365 整合群組布建到 AD。
+3. 驗證 **V2 伺服器** 是否成功執行及處理大型群組。 您可以選擇繼續進行此步驟，並監視同步處理程序一段期間。
   >[!NOTE]
-  > 如果您需要轉換回先前的設定，可以從 **V2 伺服器**執行變換移轉回到 **V1 伺服器**。 由於 V1 端點不支援具有超過 50k 個成員的群組，因此任何由 Azure AD Connect 所佈建的大型群組 (在 Azure AD 或內部部署 AD 中) 隨後都會予以刪除。 
-4. 一旦您確信使用 V2 端點後，請升級 **V1 伺服器**以開始使用 V2 端點。 
+  > 如果您需要轉換回先前的設定，可以從 **V2 伺服器** 執行變換移轉回到 **V1 伺服器**。 由於 V1 端點不支援具有超過 50k 個成員的群組，因此任何由 Azure AD Connect 所佈建的大型群組 (在 Azure AD 或內部部署 AD 中) 隨後都會予以刪除。 
+4. 一旦您確信使用 V2 端點後，請升級 **V1 伺服器** 以開始使用 V2 端點。 
  
 
 ## <a name="expectations-of-performance-impact"></a>對效能影響的期望  
@@ -141,7 +141,7 @@ Microsoft 已為 Azure AD Connect 部署了新的端點 (API)，以提升 Azure 
 > 如果未啟用 Azure AD Connect Health，請將 Windows 應用程式事件記錄檔設定變更為封存記錄，而非加以覆寫。 記錄可用來協助未來的疑難排解投入量。 
 
 >[!NOTE]
-> 啟用新端點之後，您可能會在 AAD 連接器上看到名為「dn-attributes-failur」的其他匯出錯誤。 針對識別碼為 6949 的每個錯誤，將會有對應的事件記錄項目。 錯誤僅供參考且不會指出您安裝上的問題，而是同步處理程序無法將特定成員新增至 Azure AD 中的群組，因為成員物件本身並未同步到 Azure AD。 
+> 啟用新端點之後，您可能會在 AAD 連接器上看到名為「dn-attributes-failur」的其他匯出錯誤。 每個識別碼為6949的錯誤都會有對應的事件記錄檔專案。 錯誤僅供參考且不會指出您安裝上的問題，而是同步處理程序無法將特定成員新增至 Azure AD 中的群組，因為成員物件本身並未同步到 Azure AD。 
 
 新的 V2 端點程式碼處理某些類型匯出錯誤的方式，會與 V1 程式碼的執行方式稍有不同。  當您使用 V2 端點時，可能會看到更多的參考用錯誤訊息。 
 

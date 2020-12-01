@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 8a4f9a5df8def928c06fe95a53c7be0d93ec76c4
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: c6bc5ca748a35b17c61d314e96f7284d30e7fc3b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302675"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338124"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight 識別碼代理程式 (HIB) 
 
@@ -146,7 +146,7 @@ curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application
 在 AAD 中，所有協力廠商應用程式都需要同意，才能驗證使用者或存取資料。
 
 ### <a name="can-the-consent-be-approved-programatically"></a>同意會以程式設計方式核准嗎？
-Microsoft Graph api 可讓您將同意自動化，請參閱 [api 檔](https://docs.microsoft.com/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0) ，以將同意自動化的順序如下：
+Microsoft Graph api 可讓您將同意自動化，請參閱 [api 檔](/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0) ，以將同意自動化的順序如下：
 
 * 註冊應用程式，並將應用程式的擁有權限授與應用程式，以存取 Microsoft Graph
 * 建立叢集之後，請根據識別碼 uri 查詢叢集應用程式

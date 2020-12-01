@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: b8ef1c14089744defaf6de5b3cf9e72d281452b6
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 7b7362d9315d8228e56dc85b2da22e0d507fa8ae
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027103"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339784"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常見問題集
 
@@ -46,7 +46,7 @@ ExpressRoute 連線不會經過公用網際網路。 相較於網際網路一般
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-use-more-than-my-procured-bandwidth"></a>如果我支付指定頻寬的 ExpressRoute 線路，是否能夠使用超過購買頻寬的能力？
 
-是，您可以使用 ExpressRoute 線路的次要連線上可用的頻寬，最多可使用您所購買之頻寬限制的兩倍。 您線路的內建冗余設定是使用主要和次要連線（每個採購頻寬）設定為兩個 Microsoft Enterprise Edge 路由器 (Msee) 。 如有必要，可透過次要連線使用的頻寬可用於額外的流量。 因為次要連線是用來進行冗余，所以不保證，且不應該用於持續時間的額外流量。 若要深入瞭解如何使用這兩個 connnections 來傳輸流量，請參閱 [這裡](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending)。
+是，您可以使用 ExpressRoute 線路的次要連線上可用的頻寬，最多可使用您所購買之頻寬限制的兩倍。 您線路的內建冗余設定是使用主要和次要連線（每個採購頻寬）設定為兩個 Microsoft Enterprise Edge 路由器 (Msee) 。 如有必要，可透過次要連線使用的頻寬可用於額外的流量。 因為次要連線是用來進行冗余，所以不保證，且不應該用於持續時間的額外流量。 若要深入瞭解如何使用這兩個 connnections 來傳輸流量，請參閱 [這裡](./expressroute-optimize-routing.md#solution-use-as-path-prepending)。
 如果您打算只使用您的主要連線來傳輸流量，則連線的頻寬是固定的，而且嘗試超額訂閱會導致封包遺失。 如果流量流經 ExpressRoute 閘道，則 SKU 的頻寬是固定的，而且不會高載。
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>我是否可以在虛擬網路和其他 Azure 服務中同時使用相同的私人網路連線？
@@ -55,7 +55,7 @@ ExpressRoute 連線不會經過公用網際網路。 相較於網際網路一般
 
 ### <a name="how-are-vnets-advertised-on-expressroute-private-peering"></a>如何在 ExpressRoute 私人對等互連上公告 Vnet？
 
-ExpressRoute 閘道會公告 Azure VNet 的 *位址空間* ，您無法在子網層級包含/排除這些位址空間。 其一律是公告的 VNet 位址空間。 此外，如果使用 VNet 對等互連，且對等互連 VNet 已啟用「使用遠端閘道」，則也會公告對等互連 VNet 的位址空間。
+ExpressRoute 閘道會公告 Azure VNet 的 *位址空間*，您無法在子網層級包含/排除這些位址空間。 其一律是公告的 VNet 位址空間。 此外，如果使用 VNet 對等互連，且對等互連 VNet 已啟用「使用遠端閘道」，則也會公告對等互連 VNet 的位址空間。
 
 ### <a name="how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering"></a>在 ExpressRoute 私人對等互連上，有多少首碼可以從 VNet 公告至內部部署？
 

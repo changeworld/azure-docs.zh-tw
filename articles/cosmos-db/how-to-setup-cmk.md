@@ -6,17 +6,17 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 08/05/2020
 ms.author: thweiss
-ms.openlocfilehash: 21bb594f4e374d41cfc4184f3a72aea1717c85d8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e87f6f158265fd8ac210a0a071e35b0bb77df4d9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93086137"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338248"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>使用 Azure Key Vault 為您的 Azure Cosmos 帳戶設定客戶管理的金鑰
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-儲存在 Azure Cosmos 帳戶中的資料，會使用由 Microsoft 管理的金鑰 ( **服務管理的金鑰** ) 自動進行縝密的加密。 (選擇性) 您可以選擇使用您所管理的金鑰 ( **客戶管理的金鑰** ) 來新增第二層加密。
+儲存在 Azure Cosmos 帳戶中的資料，會使用由 Microsoft 管理的金鑰 (**服務管理的金鑰**) 自動進行縝密的加密。 (選擇性) 您可以選擇使用您所管理的金鑰 (**客戶管理的金鑰**) 來新增第二層加密。
 
 :::image type="content" source="./media/how-to-setup-cmk/cmk-intro.png" alt-text="客戶資料周圍的加密層":::
 
@@ -29,40 +29,40 @@ ms.locfileid: "93086137"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)，移至您的 Azure 訂用帳戶，然後在 [設定] 索引標籤下選取 [資源提供者]：
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-rp.png" alt-text="客戶資料周圍的加密層":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-rp.png" alt-text="左側功能表中的資源提供者專案":::
 
 1. 搜尋 **Microsoft.DocumentDB** 資源提供者。 確認資源提供者標示為已註冊。 如果不是，請選擇資源提供者，然後選取 [註冊]：
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-rp-register.png" alt-text="客戶資料周圍的加密層":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-rp-register.png" alt-text="註冊 Microsoft.DocumentDB 資源提供者":::
 
 ## <a name="configure-your-azure-key-vault-instance"></a>設定您的 Azure Key Vault 執行個體
 
-若要將客戶管理的金鑰用於 Azure Cosmos DB，您必須在您打算用來裝載加密金鑰的 Azure Key Vault 執行個體上設定兩個屬性： **虛刪除** 和 **清除保護** 。
+若要將客戶管理的金鑰用於 Azure Cosmos DB，您必須在您打算用來裝載加密金鑰的 Azure Key Vault 執行個體上設定兩個屬性：**虛刪除** 和 **清除保護**。
 
 如果您建立新的 Azure Key Vault 執行個體，請在建立期間啟用這些屬性：
 
-:::image type="content" source="./media/how-to-setup-cmk/portal-akv-prop.png" alt-text="客戶資料周圍的加密層":::
+:::image type="content" source="./media/how-to-setup-cmk/portal-akv-prop.png" alt-text="為新的 Azure Key Vault 執行個體啟用虛刪除和清除保護":::
 
 如果您使用現有的 Azure Key Vault 執行個體，您可以查看 Azure 入口網站上的 [屬性] 區段，以確認這些屬性是否已啟用。 如果這些屬性皆未啟用，請參閱下列其中一篇文章中的「啟用虛刪除」和「啟用清除保護」小節：
 
-- [透過 PowerShell 使用虛刪除](../key-vault/general/soft-delete-powershell.md)
-- [如何透過 Azure CLI 使用虛刪除](../key-vault/general/soft-delete-cli.md)
+- [透過 PowerShell 使用虛刪除](../key-vault/general/key-vault-recovery.md)
+- [如何透過 Azure CLI 使用虛刪除](../key-vault/general/key-vault-recovery.md)
 
 ## <a name="add-an-access-policy-to-your-azure-key-vault-instance"></a>將存取原則新增至您的 Azure Key Vault 執行個體
 
 1. 在 Azure 入口網站中，移至您打算用來裝載加密金鑰的 Azure Key Vault 執行個體。 從左側功能表中選取 [存取原則]：
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-ap.png" alt-text="客戶資料周圍的加密層":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-ap.png" alt-text="從左側功能表存取原則":::
 
 1. 選取 [+ 新增存取原則]。
 
 1. 在 [金鑰權限] 下拉式功能表中，選取 [取得]、[將金鑰解除包裝] 和 [包裝金鑰] 權限：
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png" alt-text="客戶資料周圍的加密層":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png" alt-text="選取正確的權限":::
 
 1. 在 [選取主體] 底下，選取 [未選取任何項目]。 然後，搜尋 **Azure Cosmos DB** 主體並加以選取 (您也可以依主體識別碼搜尋，以便找出：任何 Azure 區域的識別碼皆為 `a232010e-820c-4083-83bb-3ace5fc29d0b`，但 Azure Government 區域除外，其主體識別碼為 `57506a73-e302-42a9-b869-6f12d9ec29e9`)。 最後，選擇底部的 [選取]。 如果 **Azure Cosmos DB** 主體不在清單中，您可能必須重新註冊 **Microsoft.DocumentDB** 資源提供者，如本文的 [註冊資源提供者](#register-resource-provider)一節所說明。
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap.png" alt-text="客戶資料周圍的加密層":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap.png" alt-text="選取 Azure Cosmos DB 主體":::
 
 1. 選取 [新增] 以新增存取原則。
 
@@ -72,17 +72,17 @@ ms.locfileid: "93086137"
 
 1. 在 Azure 入口網站中，移至您打算用來裝載加密金鑰的 Azure Key Vault 執行個體。 然後，從左側功能表中選取 [金鑰]：
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keys.png" alt-text="客戶資料周圍的加密層":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keys.png" alt-text="左側功能表中的索引鍵專案":::
 
 1. 選取 [產生/匯入]、提供新金鑰的名稱，然後選取 RSA 金鑰大小。 建議至少要有 3072，以達到最佳安全性。 然後，選取 [建立]：
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-gen.png" alt-text="客戶資料周圍的加密層":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-gen.png" alt-text="建立新的金鑰":::
 
 1. 在金鑰建立後，選取新建立的金鑰，然後選取其目前的版本。
 
 1. 複製金鑰的 [金鑰識別碼]，但最後一個正斜線後面的部分除外：
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keyid.png" alt-text="客戶資料周圍的加密層":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keyid.png" alt-text="複製金鑰的金鑰識別碼":::
 
 ## <a name="create-a-new-azure-cosmos-account"></a>建立新的 Azure Cosmos 帳戶
 
@@ -90,7 +90,7 @@ ms.locfileid: "93086137"
 
 當您從 Azure 入口網站建立新的 Azure Cosmos DB 帳戶時，請在 [加密] 步驟中選擇 [客戶管理的金鑰]。 在 [金鑰 URI] 欄位中，貼上您在先前的步驟中複製的 Azure Key Vault 金鑰的 URI/金鑰識別碼：
 
-:::image type="content" source="./media/how-to-setup-cmk/portal-cosmos-enc.png" alt-text="客戶資料周圍的加密層":::
+:::image type="content" source="./media/how-to-setup-cmk/portal-cosmos-enc.png" alt-text="在 Azure 入口網站中設定 CMK 參數":::
 
 ### <a name="using-azure-powershell"></a><a id="using-powershell"></a>使用 Azure PowerShell
 
@@ -229,15 +229,15 @@ az cosmosdb show \
 
 - 建立目前從 Azure Key Vault 使用的新金鑰版本：
 
-  :::image type="content" source="./media/how-to-setup-cmk/portal-akv-rot.png" alt-text="客戶資料周圍的加密層":::
+  :::image type="content" source="./media/how-to-setup-cmk/portal-akv-rot.png" alt-text="建立新的金鑰版本":::
 
 - 藉由更新您帳戶上的金鑰 URI，將目前使用的金鑰與完全不同的金鑰交換。 從 Azure 入口網站中，移至您的 Azure Cosmos 帳戶，然後從左側功能表中選取 [ **資料加密** ]：
 
-    :::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="客戶資料周圍的加密層":::
+    :::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="資料加密功能表項目":::
 
-    然後，將 **金鑰 URI** 取代為您想要使用的新金鑰，然後選取 [ **儲存** ]：
+    然後，將 **金鑰 URI** 取代為您想要使用的新金鑰，然後選取 [ **儲存**]：
 
-    :::image type="content" source="./media/how-to-setup-cmk/portal-key-swap.png" alt-text="客戶資料周圍的加密層":::
+    :::image type="content" source="./media/how-to-setup-cmk/portal-key-swap.png" alt-text="更新金鑰 URI":::
 
     以下是如何在 PowerShell 中達成相同結果的方法：
 
@@ -300,7 +300,7 @@ az cosmosdb show \
 
 在 Azure 入口網站中，移至您的 Azure Cosmos 帳戶，並監看左側功能表中的 [ **資料加密** ] 專案。如果這個專案存在，就會在您的帳戶上啟用客戶管理的金鑰：
 
-:::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="客戶資料周圍的加密層":::
+:::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="資料加密功能表項目":::
 
 您也可以透過程式設計方式提取 Azure Cosmos 帳戶的詳細資料，並尋找屬性是否存在 `keyVaultKeyUri` 。 如需[在 PowerShell 中](#using-powershell)以及[使用 Azure CLI](#using-azure-cli) 執行該作業的方式，請參閱前述資訊。
 
@@ -312,11 +312,11 @@ Azure Cosmos DB 會對儲存在您帳戶中的資料進行[定期和自動備份
 
 金鑰撤銷可藉由停用最新版本的金鑰來完成：
 
-:::image type="content" source="./media/how-to-setup-cmk/portal-akv-rev2.png" alt-text="客戶資料周圍的加密層":::
+:::image type="content" source="./media/how-to-setup-cmk/portal-akv-rev2.png" alt-text="停用金鑰的版本":::
 
 或者，若要撤銷 Azure Key Vault 執行個體中的所有金鑰，您可以刪除為 Azure Cosmos DB 主體授與的存取原則：
 
-:::image type="content" source="./media/how-to-setup-cmk/portal-akv-rev.png" alt-text="客戶資料周圍的加密層":::
+:::image type="content" source="./media/how-to-setup-cmk/portal-akv-rev.png" alt-text="刪除 Azure Cosmos DB 主體的存取原則":::
 
 ### <a name="what-operations-are-available-after-a-customer-managed-key-is-revoked"></a>客戶管理的金鑰撤銷後，可以執行哪些作業？
 
