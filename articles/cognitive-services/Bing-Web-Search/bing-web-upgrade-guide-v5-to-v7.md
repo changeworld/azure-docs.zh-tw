@@ -11,19 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 39848bcaded1669c6a6efd5b649ecf8e8343a596
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: d930543671a5328d76a38aa7e1b421c111e89e39
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381111"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349515"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>從 Bing Web 搜尋 API v5 升級至 v7
 
 > [!WARNING]
-> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的程序進行佈建。
 > 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
-> 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 本升級指南會識別 Bing Web 搜尋 API 第 5 版和第 7 版之間的變更。 本指南可協助您識別出應用程式有哪些部分需要更新以使用第 7 版。
 
@@ -31,7 +31,7 @@ ms.locfileid: "94381111"
 
 ### <a name="endpoints"></a>端點
 
-- 端點的版本號碼已從 v5 變更為 v7。 例如，https:\/\/api.cognitive.microsoft.com/bing/ **v7.0** /search。
+- 端點的版本號碼已從 v5 變更為 v7。 例如，https:\/\/api.cognitive.microsoft.com/bing/**v7.0**/search。
 
 ### <a name="error-response-objects-and-error-codes"></a>錯誤回應物件和錯誤碼
 
@@ -44,7 +44,7 @@ ms.locfileid: "94381111"
 
 - 將 v5 錯誤碼取代為下列可能的 `code` 和 `subCode` 值。
 
-|程式碼|子代碼|描述
+|程式碼|子代碼|說明
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|只要出現任何子代碼條件，Bing 會傳回 ServerError。 如果 HTTP 狀態碼為 500，則回應會包含這些錯誤。
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>封鎖|只要要求的任何部分無效，Bing 就會傳回 InvalidRequest。 例如缺少必要的參數或參數值無效。<br/><br/>如果錯誤是 ParameterMissing 或 ParameterInvalidValue，則 HTTP 狀態碼為 400。<br/><br/>如果錯誤是 HttpNotAllowed，則 HTTP 狀態碼為 410。
@@ -86,7 +86,7 @@ InsufficientScope|InsufficientAuthorization
 
 - 已新增 [answerCount](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) 查詢參數。 使用此參數可指定您要讓回應包含的解答數目。 系統會根據排名選擇解答。 例如，如果您將此參數設定為三 (3)，則回應會包含最高排名的前三個解答。  
 
-- 已新增 [promote](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) 查詢參數。 搭配使用此參數與 `answerCount` 可明確包含一或多個回應類型，無論其排名為何。 例如，若要將影片和影像升階為回應，您可以將 [升階至影片] *、[影像* ]。 您想要升階的解答清單不會計入 `answerCount` 限制。 例如，如果 `answerCount` 是2，並 `promote` 設定為影片 *、影像* ，則回應可能會包含網頁、新聞、影片和影像。
+- 已新增 [promote](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) 查詢參數。 搭配使用此參數與 `answerCount` 可明確包含一或多個回應類型，無論其排名為何。 例如，若要將影片和影像升階為回應，您可以將 [升階至影片] *、[影像*]。 您想要升階的解答清單不會計入 `answerCount` 限制。 例如，如果 `answerCount` 是2，並 `promote` 設定為影片 *、影像*，則回應可能會包含網頁、新聞、影片和影像。
 
 ### <a name="object-changes"></a>物件變更
 

@@ -3,12 +3,12 @@ title: 適用于 Azure DevTest Labs 的 Azure 安全性基準
 description: 適用于 Azure DevTest Labs 的 Azure 安全性基準
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 64e5ac46fbeb71706f7b1ae2d3682260e3cbc651
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4ae3886e1c47b1d6835dc348b474e3d9e82a8f41
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993647"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348818"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>適用于 Azure DevTest Labs 的 Azure 安全性基準
 
@@ -212,7 +212,7 @@ _ *責任：** 客戶
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 **指導方針：** 使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
 
-- [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)  
+- [如何建立和設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)  
 
 **Azure 資訊安全中心監視：** 目前無法使用
 
@@ -379,7 +379,7 @@ Microsoft 會對支援 Azure DevTest Labs 的基礎資源執行弱點管理。
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自動化的作業系統修補程式管理解決方案
 **指導方針：** 使用 Azure 更新管理，以確保在裝載于 DevTest Labs 中的 Windows 和 Linux Vm 上安裝最新的安全性更新。 針對 Windows Vm，請確定已啟用 Windows Update，並將其設定為自動更新。 這項設定目前無法透過 DevTest Labs 進行設定，但實驗室系統管理員/訂用帳戶管理員可以在其訂用帳戶中的基礎計算 Vm 上設定此設定。 
 
-- [如何在 Azure 中設定 Vm 的更新管理](../automation/update-management/update-mgmt-overview.md)
+- [如何在 Azure 中設定 Vm 的更新管理](../automation/update-management/overview.md)
 - [瞭解由安全性中心監視的 Azure 安全性原則](../security-center/policy-reference.md)
 
 **Azure 資訊安全中心監視：** 不適用
@@ -393,8 +393,8 @@ Microsoft 會對支援 Azure DevTest Labs 的基礎資源執行弱點管理。
 
 訂用帳戶管理員也可以使用 Azure 更新管理解決方案來管理 DevTest Labs Vm 的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 System Center Updates Publisher (Updates Publisher) 之類的工具可讓您將自訂更新發佈至 Windows Server Update Services (WSUS) 。 此案例可讓更新管理修補使用 Configuration Manager 作為其更新存放庫（具有協力廠商軟體）的機器。
 
-- [Azure 中的更新管理解決方案](../automation/update-management/update-mgmt-overview.md)
-- [管理 Vm 的更新和修補程式](../automation/update-management/update-mgmt-overview.md)
+- [Azure 中的更新管理解決方案](../automation/update-management/overview.md)
+- [管理 Vm 的更新和修補程式](../automation/update-management/overview.md)
 
 _ *Azure 資訊安全中心監視：** 不適用
 
@@ -877,7 +877,7 @@ Azure 資訊安全中心監視： * * * * 不適用
 
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1：進行 Azure 資源的定期滲透測試，並確保在 60 天內補救所有重大安全性發現
-**指導方針：** 遵循 Microsoft 的參與規則，以確保您的滲透測試不會違反 Microsoft 原則。 針對受 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 的策略和執行的 Red 小組和即時網站滲透測試。
+**指導方針：** 遵循 Microsoft 的參與規則，以確保您的滲透測試不會違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 對於 Red Teaming 和即時網站滲透測試的策略與執行方法。
 
 - [滲透測試的參與規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 - [Microsoft cloud red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)

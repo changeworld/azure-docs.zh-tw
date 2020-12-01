@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 04/06/2020
-ms.openlocfilehash: d35ea57a68e500deffa99033b83114ec518dd5e3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1bf6eebcfc43452dd9a62e4a49f9aacbcd517ffc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993800"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352230"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>匯入檔和 Url 的格式指導方針
 
@@ -22,7 +22,7 @@ ms.locfileid: "95993800"
 
 如果您直接在知識庫中新增或編輯內容，請使用 **markdown 格式** 來建立 rich text 內容，或變更已在答案中的 markdown 格式內容。 QnA Maker 支援大部分的 markdown 格式，可將豐富的文字功能帶到您的內容。 不過，用戶端應用程式（例如聊天機器人）可能不支援一組相同的 markdown 格式。 測試用戶端應用程式的答案顯示是很重要的。
 
-查看 [內容類型與範例](./Concepts/content-types.md#file-and-url-data-types)的完整清單。
+查看 [內容類型與範例](./concepts/data-sources-and-content.md#content-types-of-documents-you-can-add-to-a-knowledge-base)的完整清單。
 
 ## <a name="basic-document-formatting"></a>基本檔案格式設定
 
@@ -118,4 +118,4 @@ Answer2
 
 ## <a name="next-steps"></a>後續步驟
 
-查看[內容類型與範例](./Concepts/content-types.md#file-and-url-data-types)的完整清單
+查看[內容類型與範例](./concepts/data-sources-and-content.md#content-types-of-documents-you-can-add-to-a-knowledge-base)的完整清單

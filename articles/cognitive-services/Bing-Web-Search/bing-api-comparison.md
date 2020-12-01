@@ -10,19 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: a982c150349ca31fdf93a38b38910c3572b14d2f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 72b4755c6f01a10851e79cf274842f1599bc2c55
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078759"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349532"
 ---
 # <a name="what-are-the-bing-search-apis"></a>Bing 搜尋 API 是什麼？
 
 > [!WARNING]
-> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
-> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
-> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的程序進行佈建。
+> 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 Bing 搜尋 API 可讓您建置網路連線的應用程式和服務來尋找網頁、影像、新聞、位置等等，完全沒有廣告。 藉由使用 Bing 搜尋 REST API 或 SDK 傳送搜尋要求，您可以取得網路搜尋的相關資訊和內容。 您可以使用本文來瞭解不同的 Bing 搜尋 Api，以及如何將認知搜尋整合到您的應用程式和服務中。 API 之間可能有不同的定價與速率限制。
 
@@ -36,7 +36,7 @@ Bing 搜尋 API 可讓您建置網路連線的應用程式和服務來尋找網�
 
 下列 Bing 搜尋 Api 會從 web 傳回特定內容，例如影像、新聞、當地商家和影片。
 
-| Bing API | 描述 |
+| Bing API | 說明 |
 | -- | -- |
 | [實體搜尋](../Bing-Entities-Search/overview.md) | Bing 實體搜尋 API 會傳回內含人員、地點或事物等等實體的搜尋結果。 視查詢而定，API 會傳回一或多個滿足搜尋查詢的實體。 搜尋查詢可能包含值得注意的個人、當地商家、地標、目的地等等。 |
 | [影像搜尋](../Bing-Image-Search/overview.md) | Bing 影像搜尋 API 可讓您搜尋和尋找高品質的靜態和動畫影像，類似于 [Bing.com/images](https://www.Bing.com/images)。 您可以精簡搜尋來依屬性包含或排除影像，包括大小、色彩、授權和有效期限。 您也可以搜尋趨勢影像、上傳影像以深入了解影像，以及顯示縮圖預覽。 |
@@ -53,12 +53,12 @@ Bing 搜尋 API 可讓您建置網路連線的應用程式和服務來尋找網�
 
 下列 Bing 搜尋 Api 可讓您藉由結合其他 Bing 搜尋 Api 來改善搜尋體驗。
 
-| API | 描述 |
+| API | 說明 |
 | -- | -- |
 | [Bing 自動建議](../Bing-Autosuggest/get-suggested-search-terms.md) | 藉由即時傳回建議的搜尋，來改善應用程式的 Bing 自動建議 API 搜尋體驗。  |
 | [Bing 統計資料](bing-web-stats.md) | Bing 統計資料可為應用程式使用的 Bing 搜尋 API 提供分析。 可用的分析包括呼叫量、熱門查詢字串及地理分佈。 |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * Bing 搜尋 API [定價詳細資料](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
 * [Bing 使用和顯示需求](./use-display-requirements.md)指定了透過 Bing 搜尋 API 取得的內容和資訊可行的用法。

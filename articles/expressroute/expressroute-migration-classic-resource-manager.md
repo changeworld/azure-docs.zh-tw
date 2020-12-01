@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: duau
-ms.openlocfilehash: ac6fe619fc1c65b9ced18227d08cde50997eb7d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57c439cf8ac52d93d231d6ff33f72a5a942dec6a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89395244"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351600"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>將 ExpressRoute 相關虛擬網路從傳統移轉至 Resource Manager
 
@@ -29,10 +29,10 @@ ms.locfileid: "89395244"
 * 請確定您擁有建立在 Resource Manager 部署模型中建立的資源群組。
 * 檢閱下列資源移轉文件︰
 
-    * [平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager)](../virtual-machines/windows/migration-classic-resource-manager-overview.md)
+    * [平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager)](../virtual-machines/migration-classic-resource-manager-overview.md)
     * [平台支援的從傳統移轉至 Azure Resource Manager 的技術深入探討](../virtual-machines/migration-classic-resource-manager-deep-dive.md)
     * [常見問題集：平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager)](../virtual-machines/migration-classic-resource-manager-faq.md)
-    * [檢閱最常見的移轉錯誤和避免方式](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+    * [檢閱最常見的移轉錯誤和避免方式](../virtual-machines/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="supported-and-unsupported-scenarios"></a>支援和不支援的案例
 
@@ -82,7 +82,7 @@ ms.locfileid: "89395244"
    ```
 
 ## <a name="next-steps"></a>後續步驟
-* [平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager)](../virtual-machines/windows/migration-classic-resource-manager-overview.md)
+* [平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager)](../virtual-machines/migration-classic-resource-manager-overview.md)
 * [平台支援的從傳統移轉至 Azure Resource Manager 的技術深入探討](../virtual-machines/migration-classic-resource-manager-deep-dive.md)
 * [常見問題集：平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager)](../virtual-machines/migration-classic-resource-manager-faq.md)
-* [檢閱最常見的移轉錯誤和避免方式](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [檢閱最常見的移轉錯誤和避免方式](../virtual-machines/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 11/19/2020
-ms.openlocfilehash: a79055a77ec73ce2b267bb4f16fa91f37e22ea75
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 82cc58d46061ec7b623d062ab0b0e5a1fdae7ddd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916775"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352213"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>將自我裝載 IR 設定為 Azure Data Factory 中 Azure-SSIS IR 的 proxy
 
@@ -70,7 +70,7 @@ ms.locfileid: "94916775"
 - 針對 [ **驗證方法**]，選取 [ **帳戶金鑰**]、[ **SAS URI**]、[ **服務主體**] 或 [ **受控識別**]。  
 
 >[!TIP]
->如果您選取 **服務主體** 方法，請至少將 *儲存體 Blob 資料參與者* 角色授與服務主體。 如需詳細資訊，請參閱 [Azure Blob 儲存體連接器](connector-azure-blob-storage.md#linked-service-properties)。 如果您選取 [ **受控識別** ] 方法，請將您的 ADF 受控識別授與適當的角色，以存取 Azure Blob 儲存體。 如需詳細資訊，請參閱 [使用 Azure Active Directory 驗證搭配 ADF 受控身分識別存取 Azure Blob 儲存體](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)。
+>如果您選取 **服務主體** 方法，請至少將 *儲存體 Blob 資料參與者* 角色授與服務主體。 如需詳細資訊，請參閱 [Azure Blob 儲存體連接器](connector-azure-blob-storage.md#linked-service-properties)。 如果您選取 [ **受控識別** ] 方法，請將您的 ADF 受控識別授與適當的角色，以存取 Azure Blob 儲存體。 如需詳細資訊，請參閱 [使用 Azure Active Directory 驗證搭配 ADF 受控身分識別存取 Azure Blob 儲存體](/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)。
 
 ![準備 Azure Blob 儲存體連結服務以進行預備](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -157,7 +157,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ## <a name="debug-the-on-premises-and-cloud-staging-tasks"></a>對內部部署和雲端預備工作進行調試
 
-在自我裝載 IR 上，您可以在 *C:\ProgramData\SSISTelemetry* 資料夾中找到執行時間記錄，並在 *C:\ProgramData\SSISTelemetry\ExecutionLog* 資料夾中找到內部部署暫存工作的執行記錄。  您可以在 SSISDB 中尋找雲端預備工作的執行記錄、指定的記錄檔路徑，或根據您是否將套件儲存在 SSISDB 中、啟用 [Azure 監視器整合](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#monitor-ssis-operations-with-azure-monitor)等等，來 Azure 監視器。您也可以在雲端預備工作的執行記錄中，尋找內部部署預備工作的唯一識別碼。 
+在自我裝載 IR 上，您可以在 *C:\ProgramData\SSISTelemetry* 資料夾中找到執行時間記錄，並在 *C:\ProgramData\SSISTelemetry\ExecutionLog* 資料夾中找到內部部署暫存工作的執行記錄。  您可以在 SSISDB 中尋找雲端預備工作的執行記錄、指定的記錄檔路徑，或根據您是否將套件儲存在 SSISDB 中、啟用 [Azure 監視器整合](./monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor)等等，來 Azure 監視器。您也可以在雲端預備工作的執行記錄中，尋找內部部署預備工作的唯一識別碼。 
 
 ![第一個暫存工作的唯一識別碼](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
 
@@ -173,7 +173,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 若要讓您的自訂/協力廠商元件使用自我裝載 IR 來存取內部部署資料，以做為 Azure-SSIS IR 的 proxy，請遵循下列指示：
 
-1. 透過 [標準/快速自訂](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)設定，在 Azure-SSIS IR 上安裝以 SQL Server 2017 為目標的自訂/協力廠商元件。
+1. 透過 [標準/快速自訂](./how-to-configure-azure-ssis-ir-custom-setup.md)設定，在 Azure-SSIS IR 上安裝以 SQL Server 2017 為目標的自訂/協力廠商元件。
 
 1. 在自我裝載 IR 上建立下列 DTSPath 登錄機碼（如果尚未存在）：
    1. 請將 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` 設為 `C:\Program Files\Microsoft SQL Server\140\DTS\`
@@ -197,7 +197,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ## <a name="current-limitations"></a>目前的限制
 
-- 目前只支援在 Azure-SSIS IR Standard Edition 上內建/預先安裝的資料流程元件（Hadoop/HDFS/DQS 元件除外），請參閱 [Azure-SSIS IR 上的所有內建/預先安裝元件](https://docs.microsoft.com/azure/data-factory/built-in-preinstalled-components-ssis-integration-runtime)。
+- 目前只支援在 Azure-SSIS IR Standard Edition 上內建/預先安裝的資料流程元件（Hadoop/HDFS/DQS 元件除外），請參閱 [Azure-SSIS IR 上的所有內建/預先安裝元件](./built-in-preinstalled-components-ssis-integration-runtime.md)。
 - 目前僅支援以 managed 程式碼撰寫的自訂/協力廠商資料流程元件 ( .NET Framework) ，但目前不支援以機器碼撰寫的自訂/協力廠商資料流程元件 (c + +) 。
 - 目前不支援在內部部署和雲端暫存工作中變更變數值。
 - 在內部部署暫存工作中變更類型 object 的變數值，將不會反映在其他工作中。

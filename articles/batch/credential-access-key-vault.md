@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Batch，以程式設計方式從 Key Vault
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 25cb05374fc0667306e2b1004b3cd237413b4409
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: b8b3d2655e79862c068aa48c29c7e89b7df85482
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337486"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350682"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>使用 Batch 安全地存取 Key Vault
 
@@ -46,7 +46,7 @@ pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificat
 
 ## <a name="create-a-service-principal"></a>建立服務主體
 
-Key Vault 的存取權會授與 **使用者** 或 **服務主體** 。 若要以程式設計方式存取 Key Vault，請使用您在上一個步驟中建立之憑證的 [服務主體](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) 。 服務主體必須與 Key Vault 位於相同的 Azure AD 租用戶中。
+Key Vault 的存取權會授與 **使用者** 或 **服務主體**。 若要以程式設計方式存取 Key Vault，請使用您在上一個步驟中建立之憑證的 [服務主體](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) 。 服務主體必須與 Key Vault 位於相同的 Azure AD 租用戶中。
 
 ```powershell
 $now = [System.DateTime]::Parse("2020-02-10")
@@ -67,7 +67,7 @@ $newAzureAdPrincipal = New-AzureRmADServicePrincipal -ApplicationId $newADApplic
 
 ## <a name="grant-rights-to-key-vault"></a>將權限授與 Key Vault
 
-在上一個步驟中建立的服務主體需要從 Key Vault 擷取密碼的權限。 您可以透過 [Azure 入口網站](/azure/key-vault/general/assign-access-policy-portal) 或使用下列 PowerShell 命令來授與許可權。
+在上一個步驟中建立的服務主體需要從 Key Vault 擷取密碼的權限。 您可以透過 [Azure 入口網站](../key-vault/general/assign-access-policy-portal.md) 或使用下列 PowerShell 命令來授與許可權。
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"https://batch.mydomain.com' -PermissionsToSecrets 'Get'
@@ -79,7 +79,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"
 
 接下來，將憑證指派給 Batch 帳戶。 將憑證指派給帳戶，可讓 Batch 將它指派給集區，然後再指派給節點。 若要這麼做，最簡單的方式是在入口網站中移至您的 Batch 帳戶、瀏覽至 [憑證]，然後選取 [新增]。 上傳 `.pfx` 您稍早產生的檔案，並提供密碼。 完成後，憑證就會新增至清單，而且您可以驗證指紋。
 
-現在當您建立 Batch 集區時，您可以流覽至集區內的 **憑證** ，並將您建立的憑證指派給該集區。 當您這麼做時，請確定您選取的是存放區位置的 **LocalMachine** 。 憑證會載入到集區中的所有 Batch 節點上。
+現在當您建立 Batch 集區時，您可以流覽至集區內的 **憑證** ，並將您建立的憑證指派給該集區。 當您這麼做時，請確定您選取的是存放區位置的 **LocalMachine**。 憑證會載入到集區中的所有 Batch 節點上。
 
 ## <a name="install-azure-powershell"></a>安裝 Azure PowerShell
 

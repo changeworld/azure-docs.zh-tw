@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 11/25/2020
-ms.openlocfilehash: 22155083a71a9cbf615293a4f86a179aaefce2a9
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 4a58f25e6183c674990d1d7722ce3196cce0f47c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96023343"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350461"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>建立和設定自我裝載整合執行階段
 
@@ -107,7 +107,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 以下是應用程式參數和屬性的詳細資料： 
 
-| 屬性                                                    | 描述                                                  | 必要 |
+| 屬性                                                    | 說明                                                  | 必要 |
 | ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
 | **RegisterNewNode** "`<AuthenticationKey>`"                     | 使用指定的驗證金鑰註冊自我裝載整合執行時間節點。 | 否       |
 | **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | 使用指定的驗證金鑰和節點名稱註冊自我裝載的整合執行時間節點。 | 否       |
@@ -150,9 +150,9 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 - 使用自我裝載整合執行時間支援 Azure 虛擬網路內的資料整合。
 - 即使您使用 Azure ExpressRoute，也應該將資料來源視為在防火牆後的內部部署資料來源。 使用自我裝載整合執行時間，將服務連接到資料來源。
 - 即使資料存放區位於 Azure 基礎結構即服務 (IaaS) 虛擬機器的雲端中，仍請使用自我裝載整合執行時間。
-- 在已啟用 FIPS 相容加密的 Windows server 上安裝的自我裝載整合執行時間中，工作可能會失敗。 若要解決此問題，您有兩個選項：在 Azure Key Vault 中儲存認證/密碼值，或在伺服器上停用符合 FIPS 規範的加密。 若要停用符合 FIPS 規範的加密，請將下列登錄子機碼值從 1 (已啟用) 變更為 0 (停用) ： `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` 。 如果您使用 [自我裝載整合執行時間作為 SSIS 整合執行時間的 proxy](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)，則可啟用 FIPS 相容的加密，並在將資料從內部部署移至 Azure Blob 儲存體作為臨時區域時使用。
+- 在已啟用 FIPS 相容加密的 Windows server 上安裝的自我裝載整合執行時間中，工作可能會失敗。 若要解決此問題，您有兩個選項：在 Azure Key Vault 中儲存認證/密碼值，或在伺服器上停用符合 FIPS 規範的加密。 若要停用符合 FIPS 規範的加密，請將下列登錄子機碼值從 1 (已啟用) 變更為 0 (停用) ： `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` 。 如果您使用 [自我裝載整合執行時間作為 SSIS 整合執行時間的 proxy](./self-hosted-integration-runtime-proxy-ssis.md)，則可啟用 FIPS 相容的加密，並在將資料從內部部署移至 Azure Blob 儲存體作為臨時區域時使用。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 支援的 Windows 版本為：
   + Windows 7 Service Pack 1
@@ -362,7 +362,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 1. 開啟 [Microsoft Integration Runtime 管理員]。
 1. 選取 [Settings] \(設定\) 索引標籤。
 1. 在 [ **Http proxy**] 底下，選取 [ **變更** ] 連結以開啟 [ **設定 HTTP proxy** ] 對話方塊。
-1. 選取 [下一步]。 接著，您會看到一則警告，要求您儲存 proxy 設定並重新啟動 integration runtime 主機服務的許可權。
+1. 選取 [下一步] 。 接著，您會看到一則警告，要求您儲存 proxy 設定並重新啟動 integration runtime 主機服務的許可權。
 
 您可以使用 configuration manager 工具來查看和更新 HTTP proxy。
 

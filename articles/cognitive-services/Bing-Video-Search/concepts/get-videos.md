@@ -10,19 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 2fab4a57a939f9516140562cb8b8508b2ba69dc0
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 10277efe1f06de3633b2d614e2ee5ec0cc351c76
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379883"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351924"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>使用 Bing 影片搜尋 API 來搜尋影片
 
 > [!WARNING]
-> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的程序進行佈建。
 > 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
-> 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 Bing 影片搜尋 API 可讓您輕鬆地將 Bing 的認知新聞搜尋功能整合到應用程式中。 API 主要用於從 Web 尋找及傳回相關的影片，同時也提供多個在 Web 上智慧擷取重點影片的功能。
 
@@ -149,7 +149,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>擴展查詢
 
-如果 Bing 可以擴展查詢來縮小原始搜尋範圍，則 [Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) 物件會包含 `queryExpansions` 欄位。 例如，如果原本的查詢是 *Cleaning Gutters* ，擴展的查詢可能是：Gutter Cleaning **Tools** 、Cleaning Gutters **From the Ground** 、Gutter Cleaning **Machine** 和 **Easy** Gutter Cleaning。
+如果 Bing 可以擴展查詢來縮小原始搜尋範圍，則 [Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) 物件會包含 `queryExpansions` 欄位。 例如，如果原本的查詢是 *Cleaning Gutters*，擴展的查詢可能是：Gutter Cleaning **Tools**、Cleaning Gutters **From the Ground**、Gutter Cleaning **Machine** 和 **Easy** Gutter Cleaning。
 
 下列範例說明 *Cleaning Gutters* 的擴展查詢。
 
@@ -180,7 +180,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="pivoting-the-query"></a>樞紐分析查詢
 
-如果 Bing 可以分割原始搜尋查詢，則 [Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) 物件會包含 `pivotSuggestions` 欄位。 例如，如果原始查詢為 *Cleaning Gutters* ，則 Bing 可能會將查詢分割為 *Cleaning* 和 *Gutters* 。
+如果 Bing 可以分割原始搜尋查詢，則 [Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) 物件會包含 `pivotSuggestions` 欄位。 例如，如果原始查詢為 *Cleaning Gutters*，則 Bing 可能會將查詢分割為 *Cleaning* 和 *Gutters*。
 
 下列範例說明 *Cleaning Gutters* 的樞紐建議。
 

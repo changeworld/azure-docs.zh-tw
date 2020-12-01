@@ -11,19 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: aahi
-ms.openlocfilehash: 1a52471240ca80335690568faed7849eabc30baf
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 670460759a9495de735da35ae9f3d8388e59e0e5
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381060"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350614"
 ---
 # <a name="how-to-page-through-results-from-the-bing-search-apis"></a>如何逐頁流覽 Bing 搜尋 Api 的結果
 
 > [!WARNING]
-> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的程序進行佈建。
 > 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
-> 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 當您將呼叫傳送至 Bing Web、自訂、影像、新聞或影片搜尋 Api 時，Bing 會傳回可能與查詢相關之結果總數的子集。 若要取得估計的可用結果總數，請存取回應物件的 `totalEstimatedMatches` 欄位。 
 
@@ -49,7 +49,7 @@ ms.locfileid: "94381060"
 > * 使用 Bing 影片、影像和新聞 Api 進行分頁只適用于一般影片 (`/video/search`) 、新聞 (`/news/search`) 和影像 (`/image/search`) 搜尋。 不支援透過趨勢主題和類別進行分頁。  
 > * 此 `TotalEstimatedMatches` 欄位是目前查詢之搜尋結果總數的估計值。 當您設定 `count` 和 `offset` 參數時，此預估值可能會變更。
 
-| 參數 | 描述                                                                                                                                                                |
+| 參數 | 說明                                                                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `count`   | 指定要在回應中傳回的結果數目。 請注意，的預設值 `count` 和您可能要求的結果數目上限會依 API 而有所不同。 您可以在 [後續步驟](#next-steps)下的參考檔中找到這些值。 |
 | `offset`  | 指定要略過的結果數目。 `offset` 是以零為起始，而且應該小於 (`totalEstimatedMatches` - `count`)。                                           |

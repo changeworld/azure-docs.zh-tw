@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9781196690c689036bfb69e1fa769112b5f69b2b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: af41f03a1ac0ea65d72d9af47b175bb78f9e1bc2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964973"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348774"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>自助式密碼重設回寫如何在 Azure Active Directory 中運作？
 
@@ -90,7 +90,7 @@ Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者�
 * **租用戶特定的服務匯流排轉送**
    * 當您設定服務時，便會設定一個以隨機產生強式密碼保護的租用戶特定服務匯流排轉送，且 Microsoft 永遠無法得知該密碼。
 * **受到鎖定的密碼編譯強式密碼加密金鑰**
-   * 建立服務匯流排轉送之後，即會建立強式對稱金鑰，以在透過線路傳送密碼時予以加密。 此金鑰只會存在於您公司的雲端密碼存放區中，並受到嚴密鎖定和稽核，就像目錄中的任何其他密碼一樣。
+   * 建立服務匯流排轉送之後，便會建立強式對稱金鑰，以在透過線路傳送密碼時予以加密。 此金鑰只會存在於您公司的雲端密碼存放區中，並受到嚴密鎖定和稽核，就像目錄中的任何其他密碼一樣。
 * **業界標準傳輸層安全性 (TLS)**
    1. 當雲端上發生密碼重設或變更作業時，系統便會以公開金鑰將純文字密碼加密。
    1. 加密密碼會放入 HTTPS 訊息中，使用 Microsoft TLS/SSL 憑證透過加密通道傳送到服務匯流排轉送。

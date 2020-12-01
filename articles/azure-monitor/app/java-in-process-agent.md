@@ -3,12 +3,12 @@ title: Azure 監視器 Application Insights JAVA
 description: 針對在任何環境中執行的 JAVA 應用程式進行應用程式效能監視，而不需要修改程式碼。 分散式追蹤和應用程式對應。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 8423443abac90b87349a4a80fce0ec33a8b686da
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 36e2b419da2bccdf2f5f13227457172cf644994c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444736"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351532"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>JAVA 無程式碼應用程式監視 Azure 監視器 Application Insights
 
@@ -143,7 +143,7 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 | **自訂計量**  |  是       |                     |  是    |
 | **Dependencies** (相依性)    |            |                     |  是    |
 | **例外狀況**      |            |  是                |  是    |
-| **頁面檢視**      |            |                     |  是    |
+| **頁面流覽**      |            |                     |  是    |
 | **要求**        |            |                     |  是    |
 | **追蹤**          |            |  是                |  是    |
 
@@ -228,17 +228,3 @@ telemetryClient.trackEvent("WinGame");
       telemetryClient.trackException(e);
   }
 ```
-
-## <a name="upgrading-from-application-insights-java-sdk-2x"></a>從 Application Insights JAVA SDK 2.x 升級
-
-如果您已經在應用程式中使用 Application Insights JAVA SDK 2.x，則不需要將它移除。
-JAVA 3.0 代理程式會偵測到它，並將您透過 JAVA SDK 2.x 傳送的任何自訂遙測進行抓取和相互關聯，同時隱藏 JAVA SDK 2.x 所執行的任何自動收集，以避免重複的遙測。
-
-如果您使用 Application Insights 2.x 代理程式，則必須移除 `-javaagent:` 指向2.x 代理程式的 JVM 參數。
-
-> [!NOTE]
-> 使用3.0 代理程式時，將不會執行 JAVA SDK 2.x TelemetryInitializers 和 TelemetryProcessors。
-> 許多先前需要這些案例的使用案例，可以藉由設定 [自訂維度](./java-standalone-config.md#custom-dimensions) 或設定 [遙測處理器](./java-standalone-telemetry-processors.md)來在3.0 中解決。
-
-> [!NOTE]
-> 3.0 在單一 JVM 中尚不支援多個檢測金鑰。

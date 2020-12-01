@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de255836cb269f5077a417a203e136f9e903f05d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d121e6280b83265a742736f9b8dd3aee96a8b32e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441669"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351754"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>將 API 連接器新增至使用者流程
 
@@ -27,7 +27,7 @@ ms.locfileid: "92441669"
 1. 以 Azure AD 系統管理員身分登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 在 [Azure 服務] 底下，選取 [Azure Active Directory]。
 3. 在左側功能表中，選取 [外部身分識別]。
-4. 選取 [ **所有 api 連接器 (預覽]) **，然後選取 [ **新增 api 連接器**]。
+4. 選取 [ **所有 api 連接器 (預覽])**，然後選取 [ **新增 api 連接器**]。
 
    ![新增 API 連接器](./media/self-service-sign-up-add-api-connector/api-connector-new.png)
 
@@ -35,7 +35,7 @@ ms.locfileid: "92441669"
 6. 提供 API 呼叫的 **端點 URL** 。
 7. 提供 API 的驗證資訊。
 
-   - 目前僅支援基本驗證。 如果您想要在開發用途不使用基本驗證的情況下使用 API，只要輸入您的 API 可以忽略的虛擬使用者 **名稱** 和 **密碼** 即可。 若要搭配使用 Azure 函式與 API 金鑰，您可以在 **端點 URL** 中包含程式碼做為查詢參數 (例如 HTTPs： []() //contoso.azurewebsites.net/api/endpoint<b>？ code = 0123456789</b>) 。
+   - 目前僅支援基本驗證。 如果您想要在開發用途不使用基本驗證的情況下使用 API，只要輸入您的 API 可以忽略的虛擬使用者 **名稱** 和 **密碼** 即可。 若要搭配使用 Azure 函式與 API 金鑰，您可以在 **端點 URL** 中包含程式碼做為查詢參數 (例如 HTTPs： []() //contoso.azurewebsites.net/api/endpoint <b>？ code = 0123456789</b>) 。
 
    ![設定新的 API 連接器](./media/self-service-sign-up-add-api-connector/api-connector-config.png)
 8. 選取 [儲存]。
@@ -75,17 +75,17 @@ Content-type: application/json
 }
 ```
 
-只有**Azure Active Directory**  >  **外部**身分識別  >  **自訂使用者屬性**體驗中列出的使用者屬性和自訂屬性，才可在要求中傳送。
+只有 **Azure Active Directory**  >  **外部** 身分識別  >  **自訂使用者屬性** 體驗中列出的使用者屬性和自訂屬性，才可在要求中傳送。
 
 自訂屬性存在於目錄中 **extension_ \<extensions-app-id> _AttributeName**  格式。 您的 API 預期會以相同的序列化格式接收宣告。 如需自訂屬性的詳細資訊，請參閱 [定義自助註冊流程的自訂屬性](user-flow-add-custom-attributes.md)。
 
-此外，預設會在所有要求中傳送 ** ( ' ui_locales ' ) 宣告的 UI 地區 ** 設定。 它會提供使用者的地區設定 (s) 如其裝置上所設定，可供 API 用來傳回國際化回應。
+此外，預設會在所有要求中傳送 **( ' ui_locales ' ) 宣告的 UI 地區** 設定。 它會提供使用者的地區設定 (s) 如其裝置上所設定，可供 API 用來傳回國際化回應。
 
 > [!IMPORTANT]
 > 如果在呼叫 API 端點時，要傳送的宣告沒有值，則不會將宣告傳送至 API。 您的 API 應設計為明確檢查其預期的值。
 
 > [!TIP] 
-> 身分識別 ( 「身分識別」 [**) **](/graph/api/resources/objectidentity)和**電子郵件地址 ( 「電子郵件」 ) **宣告可供您的 API 用來識別使用者，然後他們在您的租使用者中具有帳戶。 當使用者使用身分識別提供者（例如 Google 或 Facebook）進行驗證時，會傳送「身分識別」宣告。 一律會傳送「電子郵件」。
+> 身分識別 ( 「身分識別」 [**)**](/graph/api/resources/objectidentity)和 **電子郵件地址 ( 「電子郵件」 )** 宣告可供您的 API 用來識別使用者，然後他們在您的租使用者中具有帳戶。 當使用者使用身分識別提供者（例如 Google 或 Facebook）進行驗證時，會傳送「身分識別」宣告。 一律會傳送「電子郵件」。
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>在使用者流程中啟用 API 連接器
 
@@ -94,7 +94,7 @@ Content-type: application/json
 1. 以 Azure AD 系統管理員身分登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 在 [Azure 服務] 底下，選取 [Azure Active Directory]。
 3. 在左側功能表中，選取 [外部身分識別]。
-4. 選取 [ **使用者流程 (預覽]) **，然後選取您想要新增 API 連接器的使用者流程。
+4. 選取 [ **使用者流程 (預覽])**，然後選取您想要新增 API 連接器的使用者流程。
 5. 選取 [ **api 連接器**]，然後選取您想要在使用者流程的下列步驟中叫用的 api 端點：
 
    - **使用身分識別提供者登入之後**
@@ -106,7 +106,7 @@ Content-type: application/json
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>使用身分識別提供者登入之後
 
-當使用者向身分識別提供者驗證 (Google、Facebook Azure AD) 時，會立即叫用註冊程式中這個步驟的 API 連接器。 此步驟位於 **_屬性集合頁面_*_ 上方，這是向使用者顯示的表單，以收集使用者屬性。 
+當使用者向身分識別提供者驗證 (Google、Facebook Azure AD) 時，會立即叫用註冊程式中這個步驟的 API 連接器。 此步驟位於 **_屬性集合頁面_* _ 上方，這是向使用者顯示的表單，以收集使用者屬性。 
 
 <!-- The following are examples of API connector scenarios you may enable at this step:
 - Use the email or federated identity that the user provided to look up claims in an existing system. Return these claims from the existing system, pre-fill the attribute collection page, and make them available to return in the token.
@@ -248,7 +248,7 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | version                                            | String            | 是      | API 的版本。                                                                                                                                                                                                                                                                |
 | 動作                                             | String            | 是      | 值必須為 `Continue`。                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | 否       | 如果值在 [API 連接器設定] 和 [使用者流程] 的 [**使用者屬性**] 中選取為 [*要接收** 的 _ 宣告]，則可以儲存在目錄中。 如果選取做為 **應用程式**宣告，則可在權杖中傳回值。                                              |
+| \<builtInUserAttribute>                            | \<attribute-type> | 否       | 如果值在 [API 連接器設定] 和 [使用者流程] 的 [**使用者屬性**] 中選取為 [*要接收** 的 _ 宣告]，則可以儲存在目錄中。 如果選取做為 **應用程式** 宣告，則可在權杖中傳回值。                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | 否       | 傳回的宣告不需要包含 `_<extensions-app-id>_` 。 如果值選取為要在 API 連接器設定中 **接收** 的宣告和使用者流程的 **使用者屬性** ，則這些值會儲存在目錄中。 自訂屬性不能在權杖中傳送回來。 |
 
 ### <a name="example-of-a-blocking-response"></a>封鎖回應的範例

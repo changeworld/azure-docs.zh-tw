@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: jingwang
-ms.openlocfilehash: db0808edae2baf3aec3f524bcbe92bb544925dfe
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bb284db102ea2fcb9086f65f9d19bdfee2c2936c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019934"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348881"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Azure Data Factory 中的分隔文字格式
 
@@ -28,7 +28,7 @@ ms.locfileid: "96019934"
 
 如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供分隔的文字資料集所支援的屬性清單。
 
-| 屬性         | 描述                                                  | 必要 |
+| 屬性         | 說明                                                  | 必要 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 資料集的 type 屬性必須設為 **DelimitedText**。 | 是      |
 | location         | 檔案 (s) 的位置設定。 每個以檔案為基礎的連接器都有自己的位置類型和支援的屬性 `location` 。  | 是      |
@@ -40,7 +40,7 @@ ms.locfileid: "96019934"
 | nullValue        | 指定 null 值的字串表示。 <br>預設值為 **空字串**。 | 否       |
 | encodingName     | 用來讀取/寫入測試檔的編碼類型。 <br>允許的值如下：「UTF-8」、「UTF-16」、「UTF-16BE」、「32 UTF-8」、「UTF-32BE」、「美國-ASCII」、「UTF-7」、「BIG5」、「EUC-JP」、「EUC-KR」、」 GB2312 "、" GB18030 "、" JOHAB "、" SHIFT-JIS "、" CP875 "、" CP866 "、" IBM00858 "、" IBM037 "、" IBM273 "、" IBM437 "、" IBM500 "、" IBM737 "、" IBM775 "、" IBM850 "、" IBM852 "、" IBM855 "、" IBM857 "、" IBM860 "和" IBM861 "、" IBM863 "、" IBM864 "、" IBM865 "、" IBM869 "、" IBM870 "、" IBM01140 "、" IBM01141 "、" IBM01142 "、" IBM01143 "、" IBM01144 "、" IBM01145 "、" IBM01146 "、" IBM01147 "、" IBM01148 "、" IBM01149 "、" ISO-2022-JP "，" ISO-2022-KR "，" ISO-8859-1 "，" ISO-8859-2 "，" ISO-8859-3 "，" ISO-8859-4 "，" ISO-8859-5 "，" ISO-8859-6 "，" ISO-8859-7 "，" iso-8859-8 "，" ISO-8859-9 "，" iso-8859-13 "，"ISO-8859-15"、"WINDOWS-874"、"WINDOWS-1250"、"WINDOWS-1251"、"WINDOWS-1252"、"WINDOWS-1253"、"WINDOWS-1254"、"WINDOWS-1255"、"WINDOWS-1256"、"WINDOWS-1257"、"WINDOWS-1258"。<br>注意：對應資料流程不支援 UTF-7 編碼。 | 否       |
 | compressionCodec | 用來讀取/寫入文字檔的壓縮編解碼器。 <br>允許的值為 **bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**、 **TarGzip**、 **Tar**、 **snappy** 或 **lz4**。 預設值不會壓縮。 <br>**注意：** 目前的複製活動不支援 "snappy" & "lz4"，而且對應資料流程不支援 "ZipDeflate"、"TarGzip" 和 "Tar"。 <br>**請注意**，使用「複製活動」將 **ZipDeflate** / **TarGzip** /)  (**Tar** 檔案解壓縮，並將其寫入檔案型接收資料存放區時，根據預設，檔案會解壓縮到資料夾： `<path specified in dataset>/<folder named as source compressed file>/` ，請 `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` 在 [複製活動來源](#delimited-text-as-source)上使用，以控制是否要將壓縮檔案的名稱保留為資料夾結構 () 。 | 否       |
-| compressionLevel | 壓縮比例。 <br>允許的值為 **最佳** 或 **最快速**。<br>- **最快：** 即使產生的檔案未以最佳方式壓縮，壓縮作業也應該儘快完成。<br>- **最佳**：即使作業需要較長的時間才能完成，壓縮作業也應以最佳方式壓縮。 如需詳細資訊，請參閱 [壓縮層級](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) 主題。 | 否       |
+| compressionLevel | 壓縮比例。 <br>允許的值為 **最佳** 或 **最快速**。<br>- **最快：** 即使產生的檔案未以最佳方式壓縮，壓縮作業也應該儘快完成。<br>- **最佳**：即使作業需要較長的時間才能完成，壓縮作業也應以最佳方式壓縮。 如需詳細資訊，請參閱 [壓縮層級](/dotnet/api/system.io.compression.compressionlevel) 主題。 | 否       |
 
 以下是 Azure Blob 儲存體上的分隔文字資料集範例：
 
@@ -78,7 +78,7 @@ ms.locfileid: "96019934"
 
 複製活動 **_ \_ 來源 \**** 區段支援下列屬性。
 
-| 屬性       | 描述                                                  | 必要 |
+| 屬性       | 說明                                                  | 必要 |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | 複製活動來源的 type 屬性必須設為 **DelimitedTextSource**。 | 是      |
 | formatSettings | 屬性的群組。 請參閱下方的 **分隔文字讀取設定** 表格。 |  否       |
@@ -86,7 +86,7 @@ ms.locfileid: "96019934"
 
 支援的 **分隔文字讀取設定** `formatSettings` 如下：
 
-| 屬性      | 描述                                                  | 必要 |
+| 屬性      | 說明                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | FormatSettings 的類型必須設定為 **DelimitedTextReadSettings**。 | 是      |
 | skipLineCount | 指出從輸入檔讀取資料時，要略過的 **非空白** 資料列數。 <br>如果同時指定 skipLineCount 和 firstRowAsHeader，則會先略過行，然後從輸入檔讀取標頭資訊。 | 否       |
@@ -126,7 +126,7 @@ ms.locfileid: "96019934"
 
 複製活動 **_ \_ 接收 \**** 區段支援下列屬性。
 
-| 屬性       | 描述                                                  | 必要 |
+| 屬性       | 說明                                                  | 必要 |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | 複製活動來源的 type 屬性必須設為 **DelimitedTextSink**。 | 是      |
 | formatSettings | 屬性的群組。 請參閱下面的 **分隔文字寫入設定** 表格。 |    否      |
@@ -134,7 +134,7 @@ ms.locfileid: "96019934"
 
 以下是支援的 **分隔文字寫入設定** `formatSettings` ：
 
-| 屬性      | 描述                                                  | 必要                                              |
+| 屬性      | 說明                                                  | 必要                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | FormatSettings 的類型必須設定為 **DelimitedTextWriteSettings**。 | 是                                                   |
 | fileExtension | 用來命名輸出檔的副檔名，例如， `.csv` `.txt` 。 當在 `fileName` Output DelimitedText 資料集中未指定時，必須指定此資料集。 在輸出資料集中設定檔案名時，將會使用此名稱做為接收檔案名，而且會忽略副檔名設定。  | 如果未在輸出資料集中指定檔案名，則為 Yes |
@@ -149,7 +149,7 @@ ms.locfileid: "96019934"
 
 下表列出分隔文字來源所支援的屬性。 您可以在 [ **來源選項** ] 索引標籤中編輯這些屬性。
 
-| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| 名稱 | 說明 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 萬用字元路徑 | 將會處理所有符合萬用字元路徑的檔案。 覆寫資料集中設定的資料夾和檔案路徑。 | 否 | String[] | wildcardPaths |
 | 分割區根路徑 | 針對已分割的檔案資料，您可以輸入磁碟分割根路徑，以便將分割的資料夾讀取為數據行 | 否 | String | partitionRootPath |
@@ -180,7 +180,7 @@ source(
 
 下表列出分隔的文字接收所支援的屬性。 您可以在 [ **設定** ] 索引標籤中編輯這些屬性。
 
-| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| 名稱 | 說明 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 清除資料夾 | 如果在寫入之前清除目的資料夾 | 否 | `true` 或 `false` | truncate |
 | [檔案名] 選項 | 寫入之資料的命名格式。 依預設，每個資料分割的一個檔案格式為 `part-#####-tid-<guid>` | 否 | 模式：字串 <br> 每個分割區：字串 [] <br> 做為資料行中的資料：字串 <br> 輸出至單一檔案： `['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |

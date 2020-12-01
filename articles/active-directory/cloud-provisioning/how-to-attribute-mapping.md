@@ -11,14 +11,14 @@ ms.date: 09/22/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58b7aa0bf8c82990a00b4e41041145a67ee2f02b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e272c402cac803d10d9998298ce6d3370d0e000
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91637122"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348798"
 ---
-# <a name="azure-ad-connect-cloud-provisioning-attibute-mapping"></a>Azure AD Connect 雲端布建屬性對應
+# <a name="azure-ad-connect-cloud-provisioning-attribute-mapping"></a>Azure AD Connect 雲端布建屬性對應
 
 Azure AD Connect 雲端布建推出了一項新功能，可讓您輕鬆地對應內部部署使用者/群組物件與 Azure AD 中物件之間的屬性。  這項功能已新增至雲端布建設定。
 
@@ -34,7 +34,7 @@ Azure AD Connect 雲端布建推出了一項新功能，可讓您輕鬆地對應
   如需詳細資訊，請參閱 [撰寫屬性對應的運算式](reference-expressions.md)。
 - **無** - 目標屬性保留未修改。 不過，如果目標屬性是空的，就會填入您所指定的預設值。
 
-除了這四個基本類型以外，自訂屬性對應還支援選擇性的**預設**值指派的概念。 預設值指派可確保當 Azure AD 中和目標物件都沒有值時，目標屬性會填入某個值。 最常見的設定是將其保留空白。
+除了這四個基本類型以外，自訂屬性對應還支援選擇性的 **預設** 值指派的概念。 預設值指派可確保當 Azure AD 中和目標物件都沒有值時，目標屬性會填入某個值。 最常見的設定是將其保留空白。
 
 ## <a name="understanding-attribute-mapping-properties"></a>了解屬性對應屬性
 
@@ -54,14 +54,14 @@ Azure AD Connect 雲端布建推出了一項新功能，可讓您輕鬆地對應
 ## <a name="using-attribute-mapping"></a>使用屬性對應
 若要使用新功能，請遵循下列步驟。
 
- 1.  在 [Azure 入口網站中，選取 [ **Azure Active Directory**]。
- 2.  選取 [Azure AD Connect]****。
- 3.  選取 [ **管理**布建]。
+ 1.  在 Azure 入口網站中，選取 [Azure Active Directory]  。
+ 2.  選取 [Azure AD Connect]。
+ 3.  選取 [ **管理** 布建]。
 
    ![管理布建](media/how-to-configure/manage1.png)
  
  4. 在 [設定] **底下，選取您的設定**。
- 5. 選取 [ **按一下以編輯**對應]。  這會開啟 [屬性對應] 畫面。
+ 5. 選取 [ **按一下以編輯** 對應]。  這會開啟 [屬性對應] 畫面。
 
  ![加入屬性](media/how-to-attribute-mapping/mapping6.png)
  6.  按一下 [ **加入屬性**]。
@@ -82,12 +82,12 @@ Azure AD Connect 雲端布建推出了一項新功能，可讓您輕鬆地對應
 ## <a name="test-your-attribute-mapping"></a>測試您的屬性對應
 若要測試您的屬性對應，您可以使用 [隨選布建](how-to-on-demand-provision.md)。  從 
 
-1.  在 [Azure 入口網站中，選取 [ **Azure Active Directory**]。
-2.  選取 [Azure AD Connect]****。
-3.  選取 [ **管理**布建]。
+1.  在 Azure 入口網站中，選取 [Azure Active Directory]  。
+2.  選取 [Azure AD Connect]。
+3.  選取 [ **管理** 布建]。
 4. 在 [設定] **底下，選取您的設定**。
 5. 在 [ **驗證** ] 下，按一下 [布建 **使用者** ] 按鈕。 
-6. 在 [隨選布建] 畫面上。  輸入使用者或群組的**分辨名稱**，然後按一下 [布建 **] 按鈕。**  
+6. 在 [隨選布建] 畫面上。  輸入使用者或群組的 **分辨名稱**，然後按一下 [布建 **] 按鈕。**  
 7. 完成之後，您應該會看到成功畫面，以及4個綠色的核取方塊，指出已成功布建。  
   ![布建成功](media/how-to-attribute-mapping/mapping4.png)
 1. 在 [ **執行動作** ] 下，按一下 [ **查看詳細資料**]。  在右側，您應該會看到新的屬性 syncrhonized 和套用的運算式。

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d085d59dc1dbe09c014dcaf5aa239805824354f0
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 6559de2b94879ac8643f4945fd5adcf4fc7e1045
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279970"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350818"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>在 Azure 數位 Twins 內外路由傳送事件
 
@@ -103,7 +103,7 @@ await client.CreateOrReplaceEventRouteAsync("routeName", er);
 
 在設定無效信件位置之前，您必須先有具備容器的儲存體帳戶。 建立端點時，您會提供此容器的 URL。 寄不出的信件是以具有 SAS 權杖的容器 URL 提供。 該權杖只需要 `write` 儲存體帳戶內目的地容器的許可權。 完整格式的 URL 將採用下列格式： `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
-若要深入瞭解 SAS 權杖，請參閱： [*使用共用存取簽章 (SAS 將有限存取權授與 Azure 儲存體資源)*](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
+若要深入瞭解 SAS 權杖，請參閱： [*使用共用存取簽章 (SAS 將有限存取權授與 Azure 儲存體資源)*](../storage/common/storage-sas-overview.md)
 
 若要瞭解如何使用無效信件來設定端點，請參閱作法 [*：在 Azure 數位 Twins 中管理端點和路由 (api 和 CLI)*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering)。
 

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: bd2032d565f5bd1fb430449be8b8c08e222f531d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 085dd18214f795566669fb862bba63b67eb9115d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025727"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350359"
 ---
 # <a name="build-an-enrollment-app-for-android-with-react"></a>使用回應建立適用于 Android 的註冊應用程式
 
@@ -74,7 +74,7 @@ ms.locfileid: "95025727"
 
 ### <a name="android"></a>Android
 
-首先，請確定您的應用程式已準備好進行生產環境部署：請從應用程式程式碼中移除任何金鑰或秘密，並確定您已遵循 [安全性最佳作法](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp)。
+首先，請確定您的應用程式已準備好進行生產環境部署：請從應用程式程式碼中移除任何金鑰或秘密，並確定您已遵循 [安全性最佳作法](../cognitive-services-security.md?tabs=command-line%2ccsharp)。
 
 當您準備好要發行應用程式以進行生產時，您將會產生可供發行的 APK 檔案，這是適用于 Android 應用程式的套件檔案格式。 這個 APK 檔必須以私密金鑰簽署。 在此版本組建中，您可以開始將應用程式直接散發至您的裝置。 
 
@@ -82,6 +82,6 @@ ms.locfileid: "95025727"
 
 一旦您建立了已簽署的 APK，請參閱發行您的應用程式 <a href="https://developer.android.com/studio/publish"  title=" "  target="_blank"> 發佈應用程式 <span class="docon docon-navigate-external x-hidden-focus"></span> </a> 檔，以深入瞭解如何發行您的應用程式。
 
-## <a name="next-steps"></a>下一步  
+## <a name="next-steps"></a>後續步驟  
 
 在本指南中，您已瞭解如何設定開發環境，並開始使用範例註冊應用程式。 如果您不熟悉 React Native，可以 [閱讀他們的「開始使用](https://reactnative.dev/docs/getting-started) 」檔，以深入瞭解背景資訊。 熟悉 [臉部 API](Overview.md)也可能很有説明。 開始開發之前，請閱讀註冊應用程式檔的其他章節。

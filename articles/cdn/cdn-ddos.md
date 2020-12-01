@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: allensu
-ms.openlocfilehash: befd0658c79ac6b395b82b65b935a7bc4c735c2d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ac00491a34e6e7d18c74827afc6647358794a8be
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778684"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351685"
 ---
 # <a name="azure-cdn-ddos-protection"></a>Azure CDN DDoS 保護
 
@@ -27,7 +27,7 @@ ms.locfileid: "92778684"
 
 ## <a name="azure-cdn-from-microsoft"></a>來自 Microsoft 的 Azure CDN
 
-來自 Microsoft 的 azure CDN 受 [Azure 基本 DDoS](../virtual-network/ddos-protection-overview.md)保護。 根據預設，它會整合到 Microsoft 平臺的 Azure CDN，而且不會產生額外費用。 從 Microsoft 的全球部署網路，Azure CDN 的完整規模和容量可讓您透過永遠可用的流量監視和即時風險降低來防禦常見的網路層攻擊。 基本的 DDoS 保護也可以抵禦最常見、經常發生的第7層 DNS 查詢氾濫，以及以 CDN 端點為目標的第3層和第4體積型攻擊。 這項服務也有經過證實的追蹤記錄，可保護 Microsoft 的企業和取用者服務免于大規模的攻擊。
+來自 Microsoft 的 azure CDN 受 [Azure 基本 DDoS](../ddos-protection/ddos-protection-overview.md)保護。 根據預設，它會整合到 Microsoft 平臺的 Azure CDN，而且不會產生額外費用。 從 Microsoft 的全球部署網路，Azure CDN 的完整規模和容量可讓您透過永遠可用的流量監視和即時風險降低來防禦常見的網路層攻擊。 基本的 DDoS 保護也可以抵禦最常見、經常發生的第7層 DNS 查詢氾濫，以及以 CDN 端點為目標的第3層和第4體積型攻擊。 這項服務也有經過證實的追蹤記錄，可保護 Microsoft 的企業和取用者服務免于大規模的攻擊。
 
 ## <a name="azure-cdn-from-verizon"></a>Azure CDN from Verizon
 
@@ -39,4 +39,4 @@ ms.locfileid: "92778684"
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解 [Azure DDoS](../virtual-network/ddos-protection-overview.md)。
+深入瞭解 [Azure DDoS](../ddos-protection/ddos-protection-overview.md)。

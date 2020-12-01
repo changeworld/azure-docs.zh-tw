@@ -7,12 +7,12 @@ ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-js
 ms.topic: how-to
-ms.openlocfilehash: ef17f08677d715292a8ee49621156d130e2f5a6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 645f9ffb1d907eb576f5414b593ef57679d26daa
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777489"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351141"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>快速入門：適用于 Node.js QnA Maker REST Api
 
@@ -27,7 +27,7 @@ ms.locfileid: "91777489"
 * 下載知識庫
 * 取得作業的狀態
 
-[參考檔](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  | [Node.js 範例](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
+[參考檔](/rest/api/cognitiveservices/qnamaker/knowledgebase)  | [Node.js 範例](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -35,15 +35,15 @@ ms.locfileid: "91777489"
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services)
 * 最新版的 [Node.js](https://nodejs.org)。
-* 您必須有 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰和端點 (其中包含資源名稱)，請在 Azure 入口網站中選取資源的 [快速入門]****。
+* 您必須有 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰和端點 (其中包含資源名稱)，請在 Azure 入口網站中選取資源的 [快速入門]。
 
 ## <a name="setting-up"></a>設定
 
 ### <a name="create-a-qna-maker-azure-resource"></a>建立 QnA Maker Azure 資源
 
-Azure 認知服務會由您訂閱的 Azure 資源呈現。 請使用 [Azure 入口網站](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本機電腦上建立 QnA Maker 的資源。
+Azure 認知服務會由您訂閱的 Azure 資源呈現。 請使用 [Azure 入口網站](../../cognitive-services-apis-create-account.md)或 [Azure CLI](../../cognitive-services-apis-create-account-cli.md) 在本機電腦上建立 QnA Maker 的資源。
 
-從資源取得金鑰後，請為資源[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) (名為 `QNAMAKER_RESOURCE_KEY` 和 `QNAMAKER_AUTHORING_ENDPOINT`)。 使用在 Azure 入口網站中位於資源的 [快速入門]**** 頁面中的金鑰和端點值。
+從資源取得金鑰後，請為資源[建立環境變數](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) (名為 `QNAMAKER_RESOURCE_KEY` 和 `QNAMAKER_AUTHORING_ENDPOINT`)。 使用在 Azure 入口網站中位於資源的 [快速入門] 頁面中的金鑰和端點值。
 
 ### <a name="create-a-new-nodejs-application"></a>建立新的 Node.js 應用程式
 
@@ -95,7 +95,7 @@ npm install requestretry request --save
 設定下列環境值：
 
 * `QNAMAKER_RESOURCE_KEY` -索引 **鍵** 是32字元字串，且可在 [ **快速入門** ] 頁面上的 [QnA Maker 資源] Azure 入口網站中使用。 這與預測端點金鑰不同。
-* `QNAMAKER_AUTHORING_ENDPOINT` - 您的撰寫端點 (格式為 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`) 包含您的**資源名稱**。 這與用於查詢預測端點的 URL 不同。
+* `QNAMAKER_AUTHORING_ENDPOINT` - 您的撰寫端點 (格式為 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`) 包含您的 **資源名稱**。 這與用於查詢預測端點的 URL 不同。
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="authorization":::
 
@@ -107,13 +107,13 @@ npm install requestretry request --save
 * **檔案** - 不需要任何權限的本機檔案。
 * **URL** - 公用的 URL。
 
-使用 [REST API 建立知識庫](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)。
+使用 [REST API 建立知識庫](/rest/api/cognitiveservices/qnamaker/knowledgebase/create)。
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="createKb":::
 
 ## <a name="replace-a-knowledge-base"></a>取代知識庫
 
-使用 [REST API 取代知識庫](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)。
+使用 [REST API 取代知識庫](/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)。
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="replaceKb":::
 
@@ -121,13 +121,13 @@ npm install requestretry request --save
 
 發佈知識庫。 此程序可讓使用者從 HTTP 查詢預測端點存取知識庫。
 
-使用 [REST API 發佈知識庫](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)。
+使用 [REST API 發佈知識庫](/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)。
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="publishKb":::
 
 ## <a name="download-the-knowledge-base"></a>下載知識庫
 
-使用 [REST API 下載知識庫](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)。
+使用 [REST API 下載知識庫](/rest/api/cognitiveservices/qnamaker/knowledgebase/download)。
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="downloadKb":::
 
@@ -135,7 +135,7 @@ npm install requestretry request --save
 
 知識庫使用完畢後，請加以刪除。
 
-使用 [REST API 刪除知識庫](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/delete)。
+使用 [REST API 刪除知識庫](/rest/api/cognitiveservices/qnamaker/knowledgebase/delete)。
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="deleteKb":::
 
@@ -143,7 +143,7 @@ npm install requestretry request --save
 
 長時間執行的程序 (例如建立程序) 會傳回作業識別碼，此識別碼必須以個別的 REST API 呼叫來查看。 此函式會取得建立回應的本文。 重點在於 `operationState`，它可確認您是否需要繼續輪詢。
 
-使用 [REST API 監視知識庫的作業](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)。
+使用 [REST API 監視知識庫的作業](/rest/api/cognitiveservices/qnamaker/operations/getdetails)。
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="operationDetails":::
 
@@ -171,7 +171,7 @@ node rest-apis.js
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
->[教學課程：建立及回答 KB](../tutorials/create-publish-query-in-portal.md)
+>[教學課程：建立及回答 KB](./create-publish-knowledge-base.md)
 
 * [QnA Maker API 是什麼？](../Overview/overview.md)
 * [編輯知識庫](../how-to/edit-knowledge-base.md)

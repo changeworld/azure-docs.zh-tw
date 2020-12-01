@@ -2,14 +2,14 @@
 title: 資源提供者和資源類型
 description: 描述支援 Azure Resource Manager 的資源提供者。 它描述其架構、可用的 API 版本，以及可裝載資源的區域。
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 702836e0dc98b06ccf6e0eeb0d0f373374c4e783
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a8adbce80d5e8f9ee9df2050d8f43363cbf57dc3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95972533"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352094"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure 資源提供者和類型
 
@@ -36,6 +36,9 @@ ms.locfileid: "95972533"
 
 本文說明如何檢查資源提供者的註冊狀態，並視需要進行註冊。 您必須擁有對資源提供者進行作業的許可權 `/register/action` 。 許可權包含在「參與者」和「擁有者」角色中。
 
+> [!IMPORTANT]
+> 當您準備好要使用資源提供者時，請只註冊資源提供者。 註冊步驟可讓您在訂用帳戶內維持最低許可權。 惡意使用者無法使用未註冊的資源提供者。
+
 您的應用程式程式碼不應針對處於 **註冊** 狀態的資源提供者封鎖資源的建立。 當您註冊資源提供者時，會針對每個支援的區域個別執行此作業。 若要在區域中建立資源，註冊只需要在該區域中完成。 藉由不封鎖註冊狀態的資源提供者，您的應用程式可以比等候所有區域完成更快。
 
 當您的訂用帳戶中仍有來自該資源提供者的資源類型時，您無法取消註冊資源提供者。
@@ -55,7 +58,7 @@ ms.locfileid: "95972533"
 
     ![顯示資源提供者](./media/resource-providers-and-types/show-resource-providers.png)
 
-6. 若要註冊資源提供者，請選取 [註冊]。 在前一個螢幕擷取畫面中，已針對 **Microsoft.Blueprint** 醒目提示 [註冊] 連結。
+6. 若要註冊資源提供者，請選取 [註冊]。 在前一個螢幕擷取畫面中，已針對 **Microsoft.Blueprint** 醒目提示 [註冊] 連結。 若要在您的訂用帳戶中維持最低許可權，請只註冊您已備妥可使用的資源提供者。
 
 若要查看特定資源提供者的資訊：
 
@@ -107,7 +110,7 @@ Microsoft.CognitiveServices      Registered
  Get-AzResourceProvider -ListAvailable | Where-Object RegistrationState -eq "Registered" | Select-Object ProviderNamespace, RegistrationState | Sort-Object ProviderNamespace
 ```
 
-若要註冊資源提供者，請使用：
+若要在您的訂用帳戶中維持最低許可權，請只註冊您已備妥可使用的資源提供者。 若要註冊資源提供者，請使用：
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
@@ -216,7 +219,7 @@ Microsoft.CognitiveServices      Registered
 az provider list --query "sort_by([?registrationState=='Registered'].{Provider:namespace, Status:registrationState}, &Provider)" --out table
 ```
 
-若要註冊資源提供者，請使用：
+若要在您的訂用帳戶中維持最低許可權，請只註冊您已備妥可使用的資源提供者。 若要註冊資源提供者，請使用：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Batch

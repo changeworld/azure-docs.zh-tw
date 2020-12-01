@@ -5,30 +5,30 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 03/19/2020
-ms.openlocfilehash: f5f640f8895cd6defe31a68b790ce841c4679a6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f49e05578f55a38845acbd4010f928fb17c51606
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777368"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352264"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>QnA Maker 解答文字中支援的 Markdown 格式
 
 QnA Maker 會將回應文字儲存為 markdown。 Markdown 有許多種。 為了確保正確地傳回並顯示答案文字，請使用此參考。
 
-請使用 **[CommonMark](https://commonmark.org/help/tutorial/index.html)** \(英文\) 教學課程來驗證您的 Markdown。 此教學課程具有 [Try it] \(試用\)**** 功能，可快速進行複製/貼上驗證。
+請使用 **[CommonMark](https://commonmark.org/help/tutorial/index.html)** \(英文\) 教學課程來驗證您的 Markdown。 此教學課程具有 [Try it] \(試用\) 功能，可快速進行複製/貼上驗證。
 
 ## <a name="when-to-use-rich-text-editing-versus-markdown"></a>何時使用 rich text 編輯與 markdown
 
 您可以使用 [格式化] 工具列來快速選取並格式化文字，以方便您使用[文字編輯](How-To/edit-knowledge-base.md#add-an-editorial-qna-set)答案。
 
-當您需要自動產生內容以建立要匯入做為 CI/CD 管線一部分或進行 [批次測試](Quickstarts/batch-testing.md)的知識庫時，Markdown 是較好的工具。
+當您需要自動產生內容以建立要匯入做為 CI/CD 管線一部分或進行 [批次測試](./index.yml)的知識庫時，Markdown 是較好的工具。
 
 ## <a name="supported-markdown-format"></a>支援的 markdown 格式
 
 以下是您可以在 QnA Maker 的解答文字中使用的 markdown 格式清單。
 
-|目的|[格式]|範例 Markdown|轉譯<br>在聊天機器人中顯示|
+|目的|格式|範例 Markdown|轉譯<br>在聊天機器人中顯示|
 |--|--|--|--|
 2個句子之間的新行。|`\n\n`|`How can I create a bot with \n\n QnA Maker?`|![將兩個句子的新行格式化](./media/qnamaker-concepts-datasources/format-newline.png)|
 |從 h1 到 h6 的標頭，的數目 `#` 表示所要的標頭。 1 `#` 是 h1。|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![具有 markdown 標頭的格式](./media/qnamaker-concepts-datasources/format-headers.png)<br>![使用 markdown 標頭 H1 至 H5 的格式](./media/qnamaker-concepts-datasources/format-h1-h5.png)|
@@ -37,8 +37,8 @@ QnA Maker 會將回應文字儲存為 markdown。 Markdown 有許多種。 為�
 |連結的 URL|`[text](https://www.my.com)`|`How do I create a bot with [QnA Maker](https://www.qnamaker.ai)?`|![URL (超連結的格式) ](./media/qnamaker-concepts-datasources/format-url.png)|
 |* 公用影像的 URL|`![text](https://www.my.com/image.png)`|`How can I create a bot with ![QnAMaker](https://review.docs.microsoft.com/azure/cognitive-services/qnamaker/media/qnamaker-how-to-key-management/qnamaker-resource-list.png)`|![公用影像 URL 的格式 ](./media/qnamaker-concepts-datasources/format-image-url.png)|
 |刪除線|`~~text~~`|`some ~~questoins~~ questions need to be asked`|![刪除線的格式](./media/qnamaker-concepts-datasources/format-strikethrough.png)|
-|粗體和斜體|`***text***`|`How can I create a ***QnA Maker*** bot?`|![粗體和斜體的格式](./media/qnamaker-concepts-datasources/format-bold-italics.png)|
-|連結的粗體 URL|`[**text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![粗體 URL 的格式](./media/qnamaker-concepts-datasources/format-bold-url.png)|
+|粗體和斜體|`***text**_`|`How can I create a _*_QnA Maker_*_ bot?`|![粗體和斜體的格式](./media/qnamaker-concepts-datasources/format-bold-italics.png)|
+|連結的粗體 URL|`[_*text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![粗體 URL 的格式](./media/qnamaker-concepts-datasources/format-bold-url.png)|
 |連結的斜體 URL|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![斜體 URL 的格式](./media/qnamaker-concepts-datasources/format-url-italics.png)|
 |Escape markdown 符號|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![Escape markdown 符號的格式。](./media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
 |已排序清單|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>上述範例會使用內建于 markdown 中的自動編號。<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>上述範例使用明確的編號。|![排序清單的格式](./media/qnamaker-concepts-datasources/format-ordered-list.png)|

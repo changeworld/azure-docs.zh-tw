@@ -10,19 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: fe9511df5fb290853dbd6cb8d39fed4e289fca4d
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: a114cb24d79189f9e370fae1962f60ca97241d90
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366412"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351362"
 ---
 # <a name="news-search-api-upgrade-guide"></a>新聞搜尋 API 升級指南
 
 > [!WARNING]
-> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
-> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
-> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的程序進行佈建。
+> 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 本升級指南會識別 Bing 新聞搜尋 API 第 5 版和第 7 版之間的變更。 本指南可協助您識別出應用程式有哪些部分需要更新以使用第 7 版。
 
@@ -30,7 +30,7 @@ ms.locfileid: "94366412"
 
 ### <a name="endpoints"></a>端點
 
-- 從 v5 變更為 v7 的端點版本號碼。 例如 `https://api.cognitive.microsoft.com/bing/v7.0/news/search`。
+- 從 v5 變更為 v7 的端點版本號碼。 例如： `https://api.cognitive.microsoft.com/bing/v7.0/news/search` 。
 
 ### <a name="error-response-objects-and-error-codes"></a>錯誤回應物件和錯誤碼
 
@@ -95,4 +95,4 @@ InsufficientScope|InsufficientAuthorization
 
 - 已將 `sort` 欄位新增至 [News](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) 物件。 `sort` 欄位會顯示文章的排序順序。 例如，文章依關聯性 (預設值) 或日期來排序。
 
-- 已新增 [SortValue](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) 物件，以便定義排序次序。 `isSelected` 欄位會指出回應是否使用排序次序。 若為 **true** ，則表示回應使用了排序次序。 如果 `isSelected` 是 **false** ，則可以在 `url` 欄位中使用 URL，來要求不同的排序次序。
+- 已新增 [SortValue](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) 物件，以便定義排序次序。 `isSelected` 欄位會指出回應是否使用排序次序。 若為 **true**，則表示回應使用了排序次序。 如果 `isSelected` 是 **false**，則可以在 `url` 欄位中使用 URL，來要求不同的排序次序。

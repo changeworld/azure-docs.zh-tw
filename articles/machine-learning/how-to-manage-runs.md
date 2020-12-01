@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 0da4127960450a13b64ec23908b4a4fd4c69bd7e
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 921c88f4771fedb910dc41983d559987a8cdfb0c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542009"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349328"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>在 Python 中啟動、監視及取消定型回合
 
@@ -244,7 +244,7 @@ az ml run cancel -r runid -w workspace_name -e experiment_name
 
 1. 選取您要取消的管線執行編號。
 
-1. 在工具列中選取 [ **取消** ]
+1. 在工具列中選取 [**取消**]
 
 ---
 
@@ -278,7 +278,7 @@ with exp.start_logging() as parent_run:
 
 ### <a name="submit-child-runs"></a>提交子執行
 
-您也可以從父代執行提交子執行。 這可讓您建立父系和子執行的階層。 
+您也可以從父代執行提交子執行。 這可讓您建立父系和子執行的階層。 您無法建立 parentless 子回合：即使父代執行不會執行任何動作，而是啟動子執行，還是必須建立階層。 所有執行的狀態都是獨立的： `"Completed"` 即使一個或多個子執行已取消或失敗，父項也可以處於成功狀態。  
 
 您可能會想要讓子系執行的執行設定與父執行不同。 例如，您可能會針對父系使用較不強大、以 CPU 為基礎的設定，同時針對您的子女使用 GPU 型設定。 另一種常見的需求是傳遞每個子系不同的引數和資料。 若要自訂子執行，請建立 `ScriptRunConfig` 子執行的物件。 下列程式碼會執行下列動作：
 
@@ -327,6 +327,24 @@ child_run.parent.id
 ```python
 print(parent_run.get_children())
 ```
+
+### <a name="log-to-parent-or-root-run"></a>記錄到父系或根執行
+
+您可以使用 `Run.parent` 欄位來存取啟動目前子執行的回合。 常見的使用案例是當您想要在單一位置合併記錄結果時。 請注意，子回合會以非同步方式執行，而且不保證會在父系等候其子回合完成的能力之後進行排序或同步處理。
+
+```python
+# in child (or even grandchild) run
+
+def root_run(self : Run) -> Run :
+    if self.parent is None : 
+        return self
+    return root_run(self.parent)
+
+current_child_run = Run.get_context()
+root_run(current_child_run).log("MyMetric", f"Data from child run {current_child_run.id}")
+
+```
+
 
 ## <a name="tag-and-find-runs"></a>標記和尋找執行
 

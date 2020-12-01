@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: cb828eeb408a170b93ffc73b58f14b3f7a883cc4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: bef5942707c1ded22ba82bdb0d945b9fdb23fffa
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95247229"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349345"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>使用 Azure Active Directory 設定應用程式的群組宣告
 
@@ -58,7 +58,7 @@ Azure Active Directory 可以在權杖中提供使用者群組成員資格資訊
 
 - 使用群組成員資格進行應用程式內授權時，最好使用群組 ObjectID。 群組 ObjectID 是不可變的，且在 Azure Active Directory 中是唯一的，而且適用于所有群組。
 - 如果使用內部部署群組 sAMAccountName 進行授權，請使用網域限定名稱; 名稱的機率較低衝突。 sAMAccountName 在 Active Directory 網域內可能是唯一的，但如果有一個以上的 Active Directory 網域與 Azure Active Directory 租使用者同步，則可能有一個以上的群組具有相同的名稱。
-- 請考慮使用 [應用程式角色](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) ，以提供群組成員資格和應用程式之間的間接取值層。   然後，應用程式會根據權杖中的角色 clams 來進行內部授權決策。
+- 請考慮使用 [應用程式角色](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) ，以提供群組成員資格和應用程式之間的間接取值層。   然後，應用程式會根據權杖中的角色宣告進行內部授權決策。
 - 如果應用程式設定為取得從 Active Directory 同步處理的群組屬性，而群組未包含這些屬性，則宣告中將不會包含該屬性。
 - 除非使用選項將群組宣告限制為指派給應用程式的群組，否則權杖中的群組宣告會包含嵌套群組。  如果使用者是 GroupB 的成員，而 GroupB 是 GroupA 的成員，則使用者的群組宣告會包含 GroupA 和 GroupB。 當組織的使用者有大量的群組成員資格時，權杖中列出的群組數目可能會成長權杖大小。  Azure Active Directory 會將在權杖中發出的群組數目限制為 SAML 判斷提示的150和200（JWT）。  如果使用者是更大量群組的成員，則會省略這些群組，而是會包含圖形端點的連結以取得群組資訊。
 

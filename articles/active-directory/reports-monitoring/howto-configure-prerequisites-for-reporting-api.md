@@ -17,12 +17,12 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cabf5f40bc17828bc37b5c094de7b90de3ec8b26
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4ca618dc234ff4383083ff5eb21299fb1e3e7128
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013049"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348733"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>存取 Azure Active Directory 報告 API 的必要條件
 
@@ -114,7 +114,7 @@ ms.locfileid: "96013049"
 
     ![螢幕擷取畫面顯示 [要求 P I 許可權] 頁面，您可以在其中選取 Azure Active Directory Graph。](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
-3. 在 [ **必要許可權** ] 頁面上，依序選取 [ **應用程式許可權**]、[ **目錄** ] 和 [目錄] **ReadAll**。  選取 [新增權限]  。
+3. 在 [ **必要許可權** ] 頁面上，依序選取 [ **應用程式許可權**]、[ **目錄** ] 和 [目錄] **ReadAll**。  選取 [新增權限]。
 
     ![螢幕擷取畫面顯示 [要求 P I 許可權] 頁面，您可以在其中選取應用程式許可權。](./media/howto-configure-prerequisites-for-reporting-api/07.png)
 

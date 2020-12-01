@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 2716f037de533e14ae8e57706134c8a2b135b440
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2fd7a3e512b79651fdcf6a6ac0c14822361fc263
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322386"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350189"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 概觀
 
@@ -102,9 +102,9 @@ Apache Oozie 4.3.1 隨附於 HDI 4.0，並包含下列變更：
 
 ## <a name="next-steps"></a>後續步驟
 
-* [HBase 遷移指南](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-migrate-new-version)
-* [Hive 遷移指南](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-migrate-workloads)
-* [Kafka 遷移指南](https://docs.microsoft.com/azure/hdinsight/kafka/migrate-versions)
-* [Spark 遷移指南](https://docs.microsoft.com/azure/hdinsight/spark/migrate-versions)
+* [HBase 遷移指南](./hbase/apache-hbase-migrate-new-version.md)
+* [Hive 遷移指南](./interactive-query/apache-hive-migrate-workloads.md)
+* [Kafka 遷移指南](./kafka/migrate-versions.md)
+* [Spark 遷移指南](./spark/migrate-versions.md)
 * [Azure HDInsight 文件](index.yml)
 * [版本資訊](hdinsight-release-notes.md)

@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: a80082ac524a4777b3b5ee32d946e9db8ec6e7f5
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 85f0a42cdfcbea2223d202a9dc35f58746580e85
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681613"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350121"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>存取 Azure Kubernetes Service (AKS) 中的 Kubernetes Web 儀表板
 
@@ -41,6 +41,10 @@ az aks disable-addons -g myRG -n myAKScluster -a kube-dashboard
 ```
 
 ## <a name="start-the-kubernetes-dashboard"></a>啟動 Kubernetes 儀表板
+
+> [!WARNING]
+> AKS 儀表板附加元件已針對版本 1.19 + 淘汰。 請改 [為使用 Azure 入口網站 (預覽) 中的 Kubernetes 資源檢視 ][kubernetes-portal] 。 
+> * 下列命令現在會開啟 Azure 入口網站資源查看，而不是1.19 版和更新版本的 kubernetes 儀表板。
 
 若要在叢集上啟動 Kubernetes 儀表板，請使用 [az aks browse][az-aks-browse] 命令。 此命令需要在叢集上安裝 kube 儀表板附加元件，此附加元件預設會在執行任何版本超過 Kubernetes 1.18 的叢集上包含。
 

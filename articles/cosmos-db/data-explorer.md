@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure Cosmos DB 總管來管理資料
-description: Azure Cosmos DB 總管是一個獨立的 Web 介面，可讓您檢視和管理 Azure Cosmos DB 中儲存的資料。
+title: 使用 Azure Cosmos DB 總管來管理您的資料
+description: Azure Cosmos DB 總管是一種獨立的 web 型介面，可讓您查看和管理 Azure Cosmos DB 中所儲存的資料。
 author: deborahc
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: dech
-ms.openlocfilehash: 691a2e56230d312416aed3d68bffd361f1d63558
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d4baa92fe4aa2ed402c394198684c4deec2bf9f1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008577"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348597"
 ---
-# <a name="work-with-data-using-azure-cosmos-explorer"></a>使用 Azure Cosmos 總管處理資料 
+# <a name="work-with-data-using-azure-cosmos-db-explorer"></a>使用 Azure Cosmos DB 總管來處理資料 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB 總管是一個獨立的 Web 介面，可讓您檢視和管理 Azure Cosmos DB 中儲存的資料。 Azure Cosmos DB 總管相當於現有的 **資料總管** 索引標籤，可在您於 Azure 入口網站中建立 Azure Cosmos DB 帳戶時使用。 Azure Cosmos DB 總管優於現有資料總管的主要優點如下：
+Azure Cosmos DB 總管是一種獨立的 web 型介面，可讓您查看和管理 Azure Cosmos DB 中所儲存的資料。 Azure Cosmos DB 總管相當於您在建立 Azure Cosmos DB 帳戶時，Azure 入口網站中提供的現有 **資料總管** 索引標籤。 在現有的資料 Explorer Azure Cosmos DB 總管的主要優點如下：
 
 * 您可以使用全螢幕畫面來檢視資料，執行查詢、預存程序、觸發程序，並檢視其結果。  
 
@@ -30,7 +30,7 @@ Azure Cosmos DB 總管是一個獨立的 Web 介面，可讓您檢視和管理 A
 
 2. 從 [所有資源] 中，尋找並瀏覽至您的 Azure Cosmos DB 帳戶、選取 [金鑰]，然後複製 [主要連接字串]。  
 
-3. 移至 https://cosmos.azure.com/、貼上連接字串，然後選取 [連線]。 藉由使用連接字串，您就能存取 Azure Cosmos DB 總管，而且完全沒有時間限制。  
+3. 移至 https://cosmos.azure.com/、貼上連接字串，然後選取 [連線]。 藉由使用連接字串，您可以存取 Azure Cosmos DB 總管，而不會有任何時間限制。  
 
    如果您想要為其他使用者提供您 Azure Cosmos DB 帳戶的暫時存取權，則可使用讀寫和讀取存取 URL 來達成此目的。 
 
@@ -42,7 +42,7 @@ Azure Cosmos DB 總管是一個獨立的 Web 介面，可讓您檢視和管理 A
 
    選擇您想要用來開啟帳戶的存取權類型，然後按一下 [開啟]。 當您開啟總管之後，體驗會與您在 Azure 入口網站中使用 [資料總管] 索引標籤的體驗相同。
 
-   :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="開啟 Azure Cosmos DB explorer":::
+   :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="開啟 Azure Cosmos DB Explorer":::
 
 ## <a name="known-issues"></a>已知問題
 
@@ -54,6 +54,6 @@ Azure Cosmos DB Gremlin 和資料表 API 帳戶目前尚未支援可讓您暫時
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您已了解如何開始使用 Azure Cosmos DB 總管來管理資料，接著您可以：
+現在您已瞭解如何開始使用 Azure Cosmos DB 總管來管理您的資料，接下來您可以：
 
 * 開始使用 SQL 語法來定義[查詢](./sql-query-getting-started.md)，並使用預存程序、UDF、觸發程序來執行[伺服器端程式設計](stored-procedures-triggers-udfs.md)。

@@ -4,12 +4,12 @@ description: 了解如何在 Azure Batch 中使用多重執行個體工作類來
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: 3dc52d13cf41347e7382872e887d87fc9b25a95b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 6aa6a910dd57a255d9ec9292119bc692edf4946f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108077"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351515"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>在 Batch 中使用多重執行個體工作來執行訊息傳遞介面 (MPI) 應用程式
 
@@ -21,17 +21,17 @@ ms.locfileid: "92108077"
 >
 
 ## <a name="multi-instance-task-overview"></a>多重執行個體工作概觀
-在 Batch 中，每個工作通常是在單一計算節點上執行 -- 您將多個工作提交給作業，而 Batch 服務會將每個工作排定在節點上執行。 不過，藉由設定工作的**多重執行個體設定**，即可告知 Batch 改為建立一個主要工作，以及數個會接著在多個節點上執行的子工作。
+在 Batch 中，每個工作通常是在單一計算節點上執行 -- 您將多個工作提交給作業，而 Batch 服務會將每個工作排定在節點上執行。 不過，藉由設定工作的 **多重執行個體設定**，即可告知 Batch 改為建立一個主要工作，以及數個會接著在多個節點上執行的子工作。
 
 ![多重執行個體工作概觀][1]
 
 將具有多重執行個體設定的工作提交給作業時，Batch 會執行多重執行個體工作特有的幾個步驟：
 
-1. Batch 服務會根據多重執行個體設定，建立一個**主要**工作和數個**子工作**。 工作總數 (主要工作加上所有子工作) 與您在多重執行個體設定中指定的**執行個體** (計算節點) 數目相符。
-2. Batch 能將一個計算節點指定為**主要**節點，然後將主要工作排程在主要節點上執行。 它會將子工作排程在配置給多重執行個體工作所剩餘的計算節點上執行，每個節點一個子工作。
-3. 主要工作和子工作會下載您在多重執行個體設定中指定的任何**一般資源檔**。
+1. Batch 服務會根據多重執行個體設定，建立一個 **主要** 工作和數個 **子工作**。 工作總數 (主要工作加上所有子工作) 與您在多重執行個體設定中指定的 **執行個體** (計算節點) 數目相符。
+2. Batch 能將一個計算節點指定為 **主要** 節點，然後將主要工作排程在主要節點上執行。 它會將子工作排程在配置給多重執行個體工作所剩餘的計算節點上執行，每個節點一個子工作。
+3. 主要工作和子工作會下載您在多重執行個體設定中指定的任何 **一般資源檔**。
 4. 下載一般資源檔之後，主要工作和子工作會執行您在多重執行個體設定中指定的 **協調命令** 。 協調命令通常用來準備執行工作所需的節點。 其中包括啟動背景服務 (如 [Microsoft MPI][msmpi_msdn] 的 `smpd.exe`)，以及確認節點已準備好處理節點間的訊息。
-5. 主要工作及所有子工作順利完成協調命令「之後」，主要工作會在主要節點上執行**應用程式命令**。 應用程式命令是多重執行個體工作自有的命令列，而且只有主要工作能執行。 在 [MS-MPI][msmpi_msdn] 架構的方案中，您會在這裡使用 `mpiexec.exe` 執行已啟用 MPI 的應用程式。
+5. 主要工作及所有子工作順利完成協調命令「之後」，主要工作會在主要節點上執行 **應用程式命令**。 應用程式命令是多重執行個體工作自有的命令列，而且只有主要工作能執行。 在 [MS-MPI][msmpi_msdn] 架構的方案中，您會在這裡使用 `mpiexec.exe` 執行已啟用 MPI 的應用程式。
 
 > [!NOTE]
 > 雖然「多重執行個體工作」在功能上不同，但不是特殊的工作類型，例如 [StartTask][net_starttask] 或 [JobPreparationTask][net_jobprep]。 多重執行個體工作只是已設定多重執行個體設定的 Standard Batch 工作 (Batch .NET 中的 [CloudTask][net_task])。 在本文中，我們將它稱為 **多重執行個體工作**。
@@ -39,7 +39,7 @@ ms.locfileid: "92108077"
 >
 
 ## <a name="requirements-for-multi-instance-tasks"></a>多重執行個體工作的需求
-多重執行個體工作需要有**已啟用節點間通訊**和**已停用並行工作執行**的集區。 若要停用並行工作執行，請將 [>cloudpool.maxtaskspercomputenode. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) 屬性設定為1。
+多重執行個體工作需要有 **已啟用節點間通訊** 和 **已停用並行工作執行** 的集區。 若要停用並行工作執行，請將 [>cloudpool.maxtaskspercomputenode. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) 屬性設定為1。
 
 > [!NOTE]
 > 批次[限制](batch-quota-limit.md#pool-size-limits)已啟用節點間通訊之集區的大小。
@@ -95,8 +95,8 @@ await myCloudPool.CommitAsync();
   * [雲端服務的大小](../cloud-services/cloud-services-sizes-specs.md) (僅限 Windows)
 * **VirtualMachineConfiguration** 集區
 
-  * [Azure 中的虛擬機器大小](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) (Linux)
-  * [Azure 中的虛擬機器大小](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) (Windows)
+  * [Azure 中的虛擬機器大小](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux)
+  * [Azure 中的虛擬機器大小](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
 
 > [!NOTE]
 > 若要在 [Linux 計算節點](batch-linux-nodes.md)上利用 RDMA，您必須在節點上使用 **Intel MPI**。
@@ -129,7 +129,7 @@ await myBatchClient.JobOperations.AddTaskAsync("mybatchjob", myMultiInstanceTask
 ```
 
 ## <a name="primary-task-and-subtasks"></a>主要工作和子工作
-當您建立工作的多重執行個體設定時，您需要指定用來執行工作的計算節點數目。 當您將工作提交給作業時，Batch 服務會建立一個**主要工作**和足夠的**子工作**，而且合計符合您指定的節點數。
+當您建立工作的多重執行個體設定時，您需要指定用來執行工作的計算節點數目。 當您將工作提交給作業時，Batch 服務會建立一個 **主要工作** 和足夠的 **子工作**，而且合計符合您指定的節點數。
 
 系統會指派範圍介於 0 到 *numberOfInstances* - 1 的整數識別碼給這些工作。 識別碼 0 的工作是主要工作，其他所有識別碼都是子工作。 比方說，如果您為工作建立下列多重執行個體設定，則主要工作的識別碼為 0，而子工作的識別碼為 1 到 9。
 
@@ -184,9 +184,9 @@ Batch 會在配置給多重執行個體工作的計算節點上建立幾個多�
 > Batch Linux MPI 程式碼範例含有幾個如何使用這些環境變數的範例。
 
 ## <a name="resource-files"></a>資源檔
-多重執行個體工作需要考量兩組資源檔：「所有」工作 (主要工作和子工作) 下載的**一般資源檔**，以及為多重執行個體工作本身指定的**資源檔** (「只有主要工作」會下載)。
+多重執行個體工作需要考量兩組資源檔：「所有」工作 (主要工作和子工作) 下載的 **一般資源檔**，以及為多重執行個體工作本身指定的 **資源檔** (「只有主要工作」會下載)。
 
-您可以在工作的多重執行個體設定中指定一或多個 **一般資源檔** 。 主要工作及所有子工作會從 [Azure 儲存體](../storage/common/storage-introduction.md)，將這些一般資源檔下載到每個節點的**工作共用目錄**。 您可以使用 `AZ_BATCH_TASK_SHARED_DIR` 環境變數從應用程式命令和協調命令列存取工作共用目錄。 每個配置給多重執行個體工作之節點上的 `AZ_BATCH_TASK_SHARED_DIR` 路徑均完全相同，因此您可以讓主要工作和所有子工作共用一個協調命令。 從遠端存取方面來看，Batch 不會「共用」目錄，不過您可以將它當做掛接點或共用點，如同先前有關環境變數的提示所述。
+您可以在工作的多重執行個體設定中指定一或多個 **一般資源檔** 。 主要工作及所有子工作會從 [Azure 儲存體](../storage/common/storage-introduction.md)，將這些一般資源檔下載到每個節點的 **工作共用目錄**。 您可以使用 `AZ_BATCH_TASK_SHARED_DIR` 環境變數從應用程式命令和協調命令列存取工作共用目錄。 每個配置給多重執行個體工作之節點上的 `AZ_BATCH_TASK_SHARED_DIR` 路徑均完全相同，因此您可以讓主要工作和所有子工作共用一個協調命令。 從遠端存取方面來看，Batch 不會「共用」目錄，不過您可以將它當做掛接點或共用點，如同先前有關環境變數的提示所述。
 
 依預設，您為多重執行個體工作本身所指定的資源檔會下載到工作的工作目錄 ( `AZ_BATCH_TASK_WORKING_DIR`) 中。 如前文所述，相較於一般資源檔，只有主要工作會下載為多重執行個體工作本身所指定的資源檔。
 
@@ -258,7 +258,7 @@ GitHub 上的 [MultiInstanceTasks][github_mpi] 程式碼範例示範如何使用
 
 ### <a name="preparation"></a>準備
 1. 遵循[如何編譯及執行簡單的 MS-MPI 程式][msmpi_howto]中的前兩個步驟。 這可滿足下一個步驟的必要條件。
-2. 建置 [MPIHelloWorld][helloworld_proj] 範例 MPI 程式的*發行*版本。 這是多重執行個體工作將在計算節點上執行的程式。
+2. 建置 [MPIHelloWorld][helloworld_proj] 範例 MPI 程式的 *發行* 版本。 這是多重執行個體工作將在計算節點上執行的程式。
 3. 建立包含 `MPIHelloWorld.exe` (您在步驟 2 所建置) 和 `MSMpiSetup.exe` (您在步驟 1 所下載) 的 zip 檔案。 您會在下一個步驟中，將此 zip 檔案上傳為應用程式套件。
 4. 使用 [Azure 入口網站][portal]建立稱為「MPIHelloWorld」的 Batch [應用程式](batch-application-packages.md)，並將您在上一個步驟所建立的 zip 檔案指定為應用程式套件「1.0」版。 如需詳細資訊，請參閱[上傳及管理應用程式](batch-application-packages.md#upload-and-manage-applications)。
 

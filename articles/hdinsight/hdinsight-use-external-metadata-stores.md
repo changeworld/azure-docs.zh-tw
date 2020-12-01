@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 08/06/2020
-ms.openlocfilehash: bcfd14572b632cdc455babf7b9f8d67be904406c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: a001f3a13daf40a1af712f09e35d93fd045ea133
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629949"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350240"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>在 Azure HDInsight 中使用外部中繼資料存放區
 
@@ -41,7 +41,7 @@ HDInsight 中的 Apache Hive 中繼存放區是 Apache Hadoop 架構不可或缺
 * 針對簡單的工作負載，建議使用預設中繼存放區。 不需要多個叢集，且不需要在叢集生命週期之外保留中繼資料的工作負載。
 
 > [!IMPORTANT]
-> 預設中繼存放區會提供具有 **基本層 5 DTU 限制的 Azure SQL Database， (無法升級)** ！ 適用于基本測試用途。 針對大型或生產工作負載，建議您遷移至外部中繼存放區。
+> 預設中繼存放區會提供具有 **基本層 5 DTU 限制的 Azure SQL Database， (無法升級)**！ 適用于基本測試用途。 針對大型或生產工作負載，建議您遷移至外部中繼存放區。
 
 ## <a name="custom-metastore"></a>自訂中繼存放區
 
@@ -65,9 +65,9 @@ HDInsight 也支援自訂中繼存放區，這是針對生產叢集建議的中�
 
 在設定 HDInsight 叢集的自訂 Hive 中繼存放區之前，請先建立或擁有現有的 Azure SQL Database。  如需詳細資訊，請參閱 [快速入門：在 Azure SQL Database 中建立單一資料庫](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal)。
 
-建立叢集時，HDInsight 服務需要連接到外部中繼存放區並驗證您的認證。 設定 Azure SQL Database 防火牆規則，以允許 Azure 服務和資源存取伺服器。 選取 [ **設定伺服器防火牆** ]，在 Azure 入口網站中啟用此選項。 然後， **選取** [ **拒絕公用網路存取** ] 下方， **[是] 下的 [是]** **可讓 Azure 服務和資源存取此伺服器** 以進行 Azure SQL Database。 如需詳細資訊，請參閱 [建立和管理 IP 防火牆規則](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
+建立叢集時，HDInsight 服務需要連接到外部中繼存放區並驗證您的認證。 設定 Azure SQL Database 防火牆規則，以允許 Azure 服務和資源存取伺服器。 選取 [ **設定伺服器防火牆**]，在 Azure 入口網站中啟用此選項。 然後， **選取** [ **拒絕公用網路存取**] 下方， **[是] 下的 [是]** **可讓 Azure 服務和資源存取此伺服器** 以進行 Azure SQL Database。 如需詳細資訊，請參閱 [建立和管理 IP 防火牆規則](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
 
-只有使用 ResourceProviderConnection 建立的叢集才支援 SQL 存放區的私人端點 `outbound` 。 若要深入瞭解，請參閱此 [documentationa](https://docs.microsoft.com/azure/hdinsight/hdinsight-private-link)。
+只有使用 ResourceProviderConnection 建立的叢集才支援 SQL 存放區的私人端點 `outbound` 。 若要深入瞭解，請參閱此 [documentationa](./hdinsight-private-link.md)。
 
 ![[設定伺服器防火牆] 按鈕](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 

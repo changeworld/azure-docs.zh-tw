@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: encorona
-ms.openlocfilehash: a24f1337a68f38db273688e9a91c65ac2f4736b4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 737b6e0534111924a31204d4548dfa59805c2fe5
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963601"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352570"
 ---
 # <a name="update-a-command-from-a-web-endpoint"></a>從 Web 端點更新命令
 
@@ -23,13 +23,13 @@ ms.locfileid: "94963601"
 
 在本文中，您將瞭解如何從 web 端點更新進行中的命令。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 > [!div class = "checklist"]
 > * 先前[建立的自訂命令應用程式](quickstart-custom-commands-application.md)
 
 ## <a name="create-an-azure-function"></a>建立 Azure 函式 
 
-在此範例中，您需要 HTTP 觸發的 [Azure](https://docs.microsoft.com/azure/azure-functions/) 函式，以支援下列輸入 (或此輸入) 的子集：
+在此範例中，您需要 HTTP 觸發的 [Azure](../../azure-functions/index.yml) 函式，以支援下列輸入 (或此輸入) 的子集：
 
 ```JSON
 {

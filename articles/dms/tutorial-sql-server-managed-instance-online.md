@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 08/04/2020
-ms.openlocfilehash: 3674c6a0579eb901cc490d08bb8a4893296884c4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0041779abcd97901fb9315125a287a1d45cff133
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020648"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350104"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>教學課程：使用 DMS 將 SQL Server 線上移轉至 Azure SQL 受控執行個體
 
@@ -220,7 +220,7 @@ ms.locfileid: "96020648"
     ![設定移轉設定](media/tutorial-sql-server-to-managed-instance-online/dms-configure-migration-settings4.png)
 
     > [!NOTE]
-    > 如果 Azure 資料庫移轉服務顯示「系統錯誤 53」或「系統錯誤 57」錯誤，其原因可能是 Azure 資料庫移轉服務無法存取 Azure 檔案共用。 如果發生上述其中一個錯誤，請使用[這裡](../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#grant-access-from-a-virtual-network)的指示，授與虛擬網路對儲存體帳戶的存取權。
+    > 如果 Azure 資料庫移轉服務顯示「系統錯誤 53」或「系統錯誤 57」錯誤，其原因可能是 Azure 資料庫移轉服務無法存取 Azure 檔案共用。 如果發生上述其中一個錯誤，請使用[這裡](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)的指示，授與虛擬網路對儲存體帳戶的存取權。
 
     > [!IMPORTANT]
     > 如果已啟用回送檢查功能，而且來源 SQL Server 和檔案共用位於相同的電腦上，則來源將無法使用 FQDN 存取檔案共用。 若要修正此問題，請使用[此處](https://support.microsoft.com/help/926642/error-message-when-you-try-to-access-a-server-locally-by-using-its-fqd)的指示來停用回送檢查功能。

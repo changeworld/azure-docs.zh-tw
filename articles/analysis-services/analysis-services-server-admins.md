@@ -4,35 +4,37 @@ description: 本文說明如何使用 Azure 入口網站、PowerShell 或 REST A
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 11/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8c876e27165eba30b17874eca600ba81be2e9354
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 9fdd6b6a195d0c6d4c4bf0489a037cb138a23a42
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019424"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351719"
 ---
 # <a name="manage-server-administrators"></a>管理伺服器管理員
 
-伺服器系統管理員必須是伺服器所在租使用者的 Azure Active Directory (Azure AD) 中有效的使用者、服務主體或安全性群組。 在 Azure 入口網站、SSMS 的 [伺服器屬性]、PowerShell 或 REST API 中，您可以使用伺服器的 **Analysis Services 管理員**來管理伺服器管理員。 
+伺服器系統管理員必須是伺服器所在租使用者的 Azure Active Directory (Azure AD) 中有效的使用者、服務主體或安全性群組。 在 Azure 入口網站、SSMS 的 [伺服器屬性]、PowerShell 或 REST API 中，您可以使用伺服器的 **Analysis Services 管理員** 來管理伺服器管理員。 
 
-新增 **安全性群組**時，請使用 `obj:groupid@tenantid` 。 新增至伺服器管理員角色的安全性群組不支援服務主體。
+新增 **安全性群組** 時，請使用 `obj:groupid@tenantid` 。 新增至伺服器管理員角色的安全性群組不支援服務主體。
+
+如果伺服器防火牆已啟用，則防火牆規則中必須包含伺服器管理員用戶端電腦 IP 位址。 若要深入瞭解，請參閱 [設定伺服器防火牆](analysis-services-qs-firewall.md)。
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>使用 Azure 入口網站來新增伺服器管理員
 
-1. 在入口網站中，針對您的伺服器按一下 [Analysis Services 管理員]****。
-2. ** \<servername> Analysis Services 管理員**] 中，按一下 [**新增**]。
-3. 在 [新增伺服器管理員]**** 中，選取 Azure AD 中的使用者帳戶，或透過電子郵件地址邀請外部使用者。
+1. 在入口網站中，針對您的伺服器按一下 [Analysis Services 管理員]。
+2. **\<servername> Analysis Services 管理員**] 中，按一下 [**新增**]。
+3. 在 [新增伺服器管理員] 中，選取 Azure AD 中的使用者帳戶，或透過電子郵件地址邀請外部使用者。
 
     ![Azure 入口網站的伺服器管理員](./media/analysis-services-server-admins/aas-manage-users-admins.png)
 
 ## <a name="to-add-server-administrators-by-using-ssms"></a>使用 SSMS 來新增伺服器管理員
 
-1. 以滑鼠右鍵按一下伺服器 > [屬性]****。
-2. 在 [Analysis Server 屬性]**** 中，按一下 [安全性]****。
-3. 按一下 [新增]****，然後在 Azure AD 中輸入使用者或群組的電子郵件地址。
+1. 以滑鼠右鍵按一下伺服器 > [屬性]。
+2. 在 [Analysis Server 屬性] 中，按一下 [安全性]。
+3. 按一下 [新增]，然後在 Azure AD 中輸入使用者或群組的電子郵件地址。
    
     ![在 SSMS 中新增伺服器管理員](./media/analysis-services-server-admins/aas-manage-users-ssms.png)
 

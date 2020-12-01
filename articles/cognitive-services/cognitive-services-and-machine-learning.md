@@ -7,12 +7,12 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 96cca89b1206aaa7890648def694074a18b2aa17
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 4ab32cd37d732cd9f177363da547edd22bd5af77
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368860"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349260"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>認知服務和機器學習
 
@@ -20,11 +20,11 @@ ms.locfileid: "94368860"
 
 [認知服務](./what-are-cognitive-services.md) 是一組服務，每個服務都支援不同的一般化預測功能。 這些服務分為不同的類別，可協助您找出正確的服務。 
 
-|服務類別|用途|
+|服務類別|目的|
 |--|--|
 |[決策](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|建置應用程式，以顯示有助於做出明智與高效決策的建議。|
-|[語言](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|允許您的應用程式使用預先建立的指令碼處理自然語言、評估情感，以及了解如何辨識使用者想要的內容。|
-|[搜尋](https://azure.microsoft.com/services/cognitive-services/directory/search/)|將 Bing 搜尋 API 新增至您的應用程式，並充分利用以單一 API 呼叫合併數十億個網頁、影像、影片和新聞的能力。|
+|[語言](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|可讓您的應用程式使用預先建置的指令碼處理自然語言、評估情感，以及了解如何辨識使用者想要的內容。|
+|[搜尋](https://azure.microsoft.com/services/cognitive-services/directory/search/)|將 Bing 搜尋 API 新增至您的應用程式，並透過單一 API 呼叫，充分利用搜查數十億個網頁、影像、視訊和新聞的能力。|
 |[語音](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|將語音轉換成文字，並將文字轉換成自然發音語音。 從一種語言翻譯成另一種語言，並啟用說話者驗證和辨識。|
 |[視覺](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|辨識、識別、仲裁您的圖片、影片和數位筆跡內容，並為其製作標題及編製索引。|
 ||||
@@ -38,13 +38,13 @@ ms.locfileid: "94368860"
 
 * 需要選擇演算法，且需要針對非常特定的資料進行定型。
 
-## <a name="what-is-machine-learning"></a>什麼是機器學習？
+## <a name="what-is-machine-learning"></a>什麼是機器學習服務？
 
 機器學習是一種概念，可讓您整合資料和演算法來解決特定需求。 一旦資料和演算法經過定型，輸出就會是您可以使用不同資料再次使用的模型。 定型的模型會根據新的資料提供見解。 
 
 建立機器學習系統的程式需要瞭解機器學習或資料科學。
 
-您可以使用 [Azure Machine Learning (AML) 產品與服務](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure%252fmachine-learning%252fstudio%252fcontext%252fml-context)來提供機器學習服務。
+您可以使用 [Azure Machine Learning (AML) 產品與服務](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure%2fmachine-learning%2fstudio%2fcontext%2fml-context)來提供機器學習服務。
 
 ## <a name="what-is-a-cognitive-service"></a>什麼是認知服務？
 

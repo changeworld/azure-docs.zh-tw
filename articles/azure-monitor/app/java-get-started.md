@@ -6,24 +6,24 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/22/2020
-ms.openlocfilehash: 1a68cea423678dd8582d65b839d57076e84de940
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 288b7463098b1c63b816f5544581e6222c7548c9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029535"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351549"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>快速入門：開始使用 JAVA Web 專案中的 Application Insights
 
 
 > [!CAUTION]
-> 自2020年11月起，為了監視 JAVA 應用程式，我們建議使用 Azure 監視器 Application Insights 3.0 代理程式進行自動檢測。 如需如何開始使用的詳細資訊，請參閱 [Application Insights JAVA 3.0 代理程式](./java-in-process-agent.md)。
+> 自2020年11月起，為了監視 JAVA 應用程式，我們建議使用 Azure 監視器 Application Insights JAVA 3.0 代理程式來進行自動檢測。 如需如何開始使用的詳細資訊，請參閱 [Application Insights JAVA 3.0 代理程式](./java-in-process-agent.md)。
 
 在本快速入門中，您會使用 Application Insights SDK 來檢測要求、追蹤相依性，以及收集效能計數器、診斷效能問題和例外狀況，以及撰寫程式碼來追蹤使用者對應用程式執行的動作。
 
 Application Insights 是一項 Web 開發人員可延伸的分析服務，可幫助您了解即時應用程式的效能和使用情形。 Application Insights 支援 Linux、Unix 或 Windows 上執行的 Java 應用程式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 * 運作正常的 JAVA 應用程式。

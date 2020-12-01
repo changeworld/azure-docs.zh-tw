@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: e0af8e0674a15c98fadbedfa42f735d269b3de2b
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 53be2ee9b6b3ab46f081747aec58b9c99fc54f0d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920486"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349951"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>使用 Azure Functions 將 API 新增至 Azure 靜態 Web Apps 預覽版
 
@@ -32,7 +32,7 @@ ms.locfileid: "94920486"
 
 下列步驟示範如何建立新的存放庫，並將檔案複製到您的電腦。
 
-1. 請確定您已登入 GitHub，然後流覽至 https://github.com/staticwebdev/vanilla-basic/generate 以建立新的存放庫。
+1. 請確定您已登入 GitHub，然後流覽至 [https://github.com/staticwebdev/vanilla-basic/generate](https://github.com/login?return_to=/staticwebdev/vanilla-basic/generate) 以建立新的存放庫。
 1. 在 [存放庫名稱] 方塊中，輸入 **my-vanilla-api**。
 1. 按一下 [從範本建立存放庫]。
 

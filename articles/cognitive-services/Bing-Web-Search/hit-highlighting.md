@@ -11,19 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
-ms.openlocfilehash: 5c0bed04fccfba1ac06a54d5ddba9033ef05761b
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 32c3279cacddf10e77e8d245ba525ab766efd6fd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380703"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351873"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>使用裝飾標記醒目提示文字
 
 > [!WARNING]
-> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的程序進行佈建。
 > 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
-> 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 Bing 支援搜尋結果醒目提示，這會將查詢詞彙標示 (或 Bing 在某些答案的顯示字串中找到相關) 的其他詞彙。 例如，網頁結果的 `name` 、 `displayUrl` 和 `snippet` 欄位可能包含標示的查詢詞彙。 
 
@@ -56,7 +56,7 @@ Bing 可以傳回數種不同的文字裝飾。 例如， `Computation` 答案�
 
 如果 `textDecorations` 為 `true` ，Bing 可能會在回應的顯示字串中包含下列標記。 如果沒有對等的 HTML 標籤，資料表單元格會是空的。
 
-|Unicode|HTML|描述
+|Unicode|HTML|說明
 |-|-|-
 |U+E000|\<b>|標示查詢詞彙的開頭 (搜尋結果醒目提示)
 |U+E001|\</b>|標示查詢詞彙的結尾

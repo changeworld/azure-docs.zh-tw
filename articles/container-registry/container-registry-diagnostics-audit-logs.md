@@ -3,16 +3,16 @@ title: 收集 & 分析資源記錄
 description: 記錄並分析 Azure Container Registry 的資源記錄檔事件，例如驗證、映射推送和影像提取。
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: 63ccb944b9c3de9941acf55ca5ea85fda70a7008
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b05d34e6c50fea3760e30d28f59e55d8c5f211a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87553371"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348580"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>用於診斷評估和審核的 Azure Container Registry 記錄
 
-本文說明如何使用 [Azure 監視器](../azure-monitor/overview.md)的功能，收集 Azure container registry 的記錄資料。 Azure 監視器會針對您登錄中的使用者驅動事件，收集先前稱為*診斷記錄*) 的[資源記錄](../azure-monitor/platform/platform-logs-overview.md)檔 (。 收集和使用此資料以符合需求，例如：
+本文說明如何使用 [Azure 監視器](../azure-monitor/overview.md)的功能，收集 Azure container registry 的記錄資料。 Azure 監視器會針對您登錄中的使用者驅動事件，收集先前稱為 *診斷記錄*) 的 [資源記錄](../azure-monitor/platform/platform-logs-overview.md)檔 (。 收集和使用此資料以符合需求，例如：
 
 * Audit registry authentication 事件以確保安全性與合規性 
 
@@ -68,9 +68,9 @@ ms.locfileid: "87553371"
 
 ## <a name="view-data-in-azure-monitor"></a>在 Azure 監視器中查看資料
 
-在 Log Analytics 中啟用診斷記錄的收集之後，可能需要幾分鐘的時間，資料才會出現在 Azure 監視器中。 若要在入口網站中查看資料，請選取登錄，然後選取 [ **監視] > 記錄**檔。 選取其中一個包含登錄資料的資料表。 
+在 Log Analytics 中啟用診斷記錄的收集之後，可能需要幾分鐘的時間，資料才會出現在 Azure 監視器中。 若要在入口網站中查看資料，請選取登錄，然後選取 [ **監視] > 記錄** 檔。 選取其中一個包含登錄資料的資料表。 
 
-執行查詢以查看資料。 提供數個範例查詢，或執行您自己的查詢。 例如，下列查詢會從 **ContainerRegistryRepositoryEvents** 資料表中取出最近24小時的資料：
+執行查詢以檢視資料。 您可以使用數個隨附的範例查詢，或執行您自己的查詢。 例如，下列查詢會從 **ContainerRegistryRepositoryEvents** 資料表中取出最近24小時的資料：
 
 ```Kusto
 ContainerRegistryRepositoryEvents
@@ -81,7 +81,7 @@ ContainerRegistryRepositoryEvents
 
 ![查詢記錄檔資料](media/container-registry-diagnostics-audit-logs/azure-monitor-query.png)
 
-如需在 Azure 入口網站中使用 Log Analytics 的教學課程，請參閱 [開始使用 Azure 監視器 Log analytics](../azure-monitor/log-query/get-started-portal.md)，或嘗試使用 Log analytics [示範環境](https://portal.loganalytics.io/demo)。 
+如需在 Azure 入口網站中使用 Log Analytics 的教學課程，請參閱 [開始使用 Azure 監視器 Log analytics](../azure-monitor/log-query/log-analytics-tutorial.md)，或嘗試使用 Log analytics [示範環境](https://portal.loganalytics.io/demo)。 
 
 如需有關記錄查詢的詳細資訊，請參閱 [Azure 監視器中的記錄查詢總覽](../azure-monitor/log-query/log-query-overview.md)。
 
@@ -146,5 +146,5 @@ ContainerRegistryLoginEvents
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解如何使用 [Log Analytics](../azure-monitor/log-query/get-started-portal.md) 和建立 [記錄查詢](../azure-monitor/log-query/get-started-queries.md)。
+* 深入瞭解如何使用 [Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) 和建立 [記錄查詢](../azure-monitor/log-query/get-started-queries.md)。
 * 請參閱 [azure 平臺記錄的總覽](../azure-monitor/platform/platform-logs-overview.md) ，以瞭解不同 azure 層級可用的平臺記錄。

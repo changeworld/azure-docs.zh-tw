@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.openlocfilehash: 6e7e4dd6383b1f264ff2da7893d9f86a3708217d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47b036f558628d51242a78c00d2ee17332816d25
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89227911"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348754"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft 身分識別平台和 OAuth 2.0 SAML 持有人判斷提示流程
 OAuth 2.0 SAML 持有人判斷提示流程可供在用戶端需要使用現有的信任關係時，使用 SAML 判斷提示來要求 OAuth 存取權杖。 套用至 SAML 判斷提示的簽章會提供授權應用程式其驗證。 SAML 判斷提示是一種由識別提供者發行，並由服務提供者取用的 XML 安全性權杖。 服務提供者會針對與安全性相關的用途，依賴其內容來識別判斷提示的主旨。
@@ -32,7 +32,7 @@ SAML 持有人判斷提示流程在從 Microsoft Graph API (僅支援委派權�
 ![OAuth 流程](./media/v2-saml-bearer-assertion/1.png)
 
 ## <a name="call-graph-using-saml-bearer-assertion"></a>使用 SAML 持有人判斷提示呼叫 Graph
-現在讓我們了解如何實際地以程式設計方式來擷取 SAML 判斷提示。 這種方法已使用 ADFS 進行測試。 但是，這適用於任何支援以程式設計方式傳回 SAML 判斷提示的識別提供者。 基本程序為：取得 SAML 判斷提示、取得存取權杖，然後存取 Microsoft Graph。
+現在讓我們瞭解如何以程式設計的方式來實際提取 SAML 判斷提示。 這種方法已使用 ADFS 進行測試。 不過，這適用于支援以程式設計方式傳回 SAML 判斷提示的任何身分識別提供者。 基本程序為：取得 SAML 判斷提示、取得存取權杖，然後存取 Microsoft Graph。
 
 ### <a name="prerequisites"></a>必要條件
 

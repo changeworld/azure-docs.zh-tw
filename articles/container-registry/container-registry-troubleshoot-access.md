@@ -3,18 +3,18 @@ title: 針對登錄的網路問題進行疑難排解
 description: 存取虛擬網路或防火牆後方的 Azure container registry 時，常見問題的徵兆、原因和解決方式
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: 5f2cf2d72e6641d4871b7acccdbd7cc37c653f74
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 95b32b839d1b3b804a2035b797e1146a09d5236a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148458"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351788"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>針對登錄的網路問題進行疑難排解
 
 本文可協助您針對存取虛擬網路或防火牆後方的 Azure container registry 時可能遇到的問題進行疑難排解。 
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 可能包含下列一或多項：
 
@@ -103,10 +103,10 @@ ContainerRegistryLoginEvents 資料表中的登錄資源記錄檔可協助診斷
 
 ### <a name="configure-service-access"></a>設定服務存取
 
-目前，Azure 資訊安全中心無法在登錄中執行 [映射弱點掃描](../security-center/defender-for-container-registries-introduction.md?bc=%252fazure%252fcontainer-registry%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fcontainer-registry%252ftoc.json) ，以限制對私人端點、選取的子網或 IP 位址的存取。 此外，下列服務的資源無法存取具有網路限制的容器登錄：
+目前，Azure 資訊安全中心無法在登錄中執行 [映射弱點掃描](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json) ，以限制對私人端點、選取的子網或 IP 位址的存取。 此外，下列服務的資源無法存取具有網路限制的容器登錄：
 
 * Azure DevOps Services 
-* Azure 容器執行個體
+* Azure Container Instances
 * Azure Container Registry 工作
 
 如果需要將這些 Azure 服務與您的容器登錄進行存取或整合，請移除網路限制。 例如，移除登錄的私人端點，或移除或修改登錄的公用存取規則。

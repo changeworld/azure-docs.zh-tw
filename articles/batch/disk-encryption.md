@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 55a7e117ebd49f268d4b075d58791df4e9223fdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a61e87c660bf2d2f0f4c8d02bd1699c58f8da667
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849257"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350665"
 ---
 # <a name="create-a-pool-with-disk-encryption-enabled"></a>建立已啟用磁碟加密的集區
 
@@ -25,8 +25,8 @@ ms.locfileid: "91849257"
 
 Batch 會根據集區設定和區域支援，在計算節點上套用這些磁片加密技術的其中一種。
 
-- [使用平臺管理的金鑰進行靜態受控磁片加密](../virtual-machines/windows/disk-encryption.md#platform-managed-keys)
-- [使用平臺管理的金鑰在主機上加密](../virtual-machines/windows/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
+- [使用平臺管理的金鑰進行靜態受控磁片加密](../virtual-machines/disk-encryption.md#platform-managed-keys)
+- [使用平臺管理的金鑰在主機上加密](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
 - [Azure 磁碟加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)
 
 > [!IMPORTANT]
@@ -38,13 +38,13 @@ Batch 會根據集區設定和區域支援，在計算節點上套用這些磁�
 
 ## <a name="azure-portal"></a>Azure 入口網站
 
-在 Azure 入口網站中建立 Batch 集區時，請選取 [**磁片加密**設定] 下的 [ **TemporaryDisk** ] 或 [ **OsAndTemporaryDisk** ]。
+在 Azure 入口網站中建立 Batch 集區時，請選取 [**磁片加密** 設定] 下的 [ **TemporaryDisk** ] 或 [ **OsAndTemporaryDisk** ]。
 
 :::image type="content" source="media/disk-encryption/portal-view.png" alt-text="Azure 入口網站中 [磁片加密] 設定選項的螢幕擷取畫面。":::
 
 建立集區之後，您可以在集區的 [ **屬性** ] 區段中看到磁片加密設定目標。
 
-:::image type="content" source="media/disk-encryption/configuration-target.png" alt-text="Azure 入口網站中 [磁片加密] 設定選項的螢幕擷取畫面。":::
+:::image type="content" source="media/disk-encryption/configuration-target.png" alt-text="顯示 Azure 入口網站中磁片加密設定目標的螢幕擷取畫面。":::
 
 ## <a name="examples"></a>範例
 
@@ -107,5 +107,5 @@ az batch pool create \
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解 [Azure 磁碟儲存體的伺服器端加密](../virtual-machines/windows/disk-encryption.md)。
+- 深入瞭解 [Azure 磁碟儲存體的伺服器端加密](../virtual-machines/disk-encryption.md)。
 - 如需更深入的 Batch 概觀，請參閱 [Batch 服務工作流程和資源](batch-service-workflow-features.md)。

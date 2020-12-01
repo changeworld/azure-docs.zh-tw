@@ -12,12 +12,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9a082270e2c113bcdf31ed6bd6db3d38a7117500
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62bfc528886767bc09159ca2a2696c8c9264b307
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279290"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349934"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect： 設定 AD DS 連接器帳戶權限 
 
@@ -41,7 +41,7 @@ ms.locfileid: "89279290"
 | Exchange 郵件公用資料夾 |公用資料夾屬性 (詳情記載於 [Exchange 郵件公用資料夾](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)) 的讀取權限。 | 
 | 密碼回寫 |[開始使用密碼管理](../authentication/tutorial-enable-sspr-writeback.md)中記載了使用者屬性的讀取和寫入權限。 |
 | 裝置回寫 |[裝置回寫](how-to-connect-device-writeback.md)中記載了裝置物件和容器的讀取和寫入權限。 |
-| 群組回寫 |讀取、建立、更新和刪除已同步處理之 **Office 365 群組**的群組物件。|
+| 群組回寫 |讀取、建立、更新和刪除已同步處理之 **Office 365 群組** 的群組物件。|
 
 ## <a name="using-the-adsyncconfig-powershell-module"></a>使用 ADSyncConfig PowerShell 模組 
 ADSyncConfig 模組需要[適用於 AD DS 的遠端伺服器管理工具 (RSAT)](/windows-server/remote/remote-server-administration-tools)，因為它依存於 AD DS PowerShell 模組和工具。 若要安裝適用於 AD DS 的 RSAT，請使用 [以系統管理員身分執行] 開啟 Windows PowerShell 視窗並執行： 
@@ -149,7 +149,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 
  
 ### <a name="configure-ms-ds-consistency-guid-permissions"></a>設定 MS-DS-Consistency-Guid 權限 
-若要在使用 ms-Ds-Consistency-Guid 屬性作為來源錨點 (也稱為「讓 Azure 代為管理來源錨點」選項) 來設定 AD DS 連接器的權限，請執行： 
+若要在使用 ms Ds 一致性 Guid 屬性作為來源錨點時，設定 AD DS 連接器帳戶的許可權 (也稱為「讓 Azure 為我管理來源錨點」選項) ，請執行： 
 
 ``` powershell
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 

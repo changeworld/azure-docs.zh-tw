@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: dcf912f431d578a6e678801d3dc8f4e11484ea78
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a77083c721328a8df9facd2f4b320b863aa03c68
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997013"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352400"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>接受知識庫中的主動式學習建議問題
 
@@ -22,7 +22,7 @@ ms.locfileid: "95997013"
 
 ## <a name="turn-on-active-learning"></a>開啟主動式學習
 
-為了查看建議的問題，您必須開啟 QnA Maker 資源的 [主動式學習](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/active-learning-suggestions) 。
+為了查看建議的問題，您必須開啟 QnA Maker 資源的 [主動式學習](../concepts/active-learning-suggestions.md) 。
 
 ## <a name="view-suggested-questions"></a>查看建議的問題
 

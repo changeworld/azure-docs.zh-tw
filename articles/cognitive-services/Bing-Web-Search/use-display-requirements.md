@@ -10,19 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 93be72f2afcda90dde1b74c5ee317a7ad3350be1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4300860039b76bd076f19acfc252f59ef10d462b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075682"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351839"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Bing 搜尋 API 使用和顯示需求
 
 > [!WARNING]
-> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
-> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
-> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的程序進行佈建。
+> 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 這些使用和顯示需求適用於下列 Bing 搜尋 API 的內容和相關資訊的任何實作，包括關聯性、中繼資料，以及其他訊號。
 
@@ -104,7 +104,7 @@ ms.locfileid: "93075682"
 ### <a name="notices-and-branding"></a>注意事項和商標 
 可行事項：
 
-- 在提供使用者輸入搜尋查詢能力的各個使用者體驗 (UX) 點附近，以醒目方式包含 [Microsoft 隱私權聲明](https://go.microsoft.com/fwlink/?LinkId=521839)的功能性超連結。 標示超連結 **Microsoft 隱私權聲明** 。
+- 在提供使用者輸入搜尋查詢能力的各個使用者體驗 (UX) 點附近，以醒目方式包含 [Microsoft 隱私權聲明](https://go.microsoft.com/fwlink/?LinkId=521839)的功能性超連結。 標示超連結 **Microsoft 隱私權聲明**。
 
 - 在提供使用者輸入搜尋查詢能力的各個 UX 點附近，以醒目方式顯示 Bing 商標，與 [Bing 商標使用方式指導方針](https://go.microsoft.com/fwlink/?linkid=833278)一致。 該商標必須清楚向使用者表示是由 Microsoft 提供網際網路搜尋體驗。
 
@@ -172,5 +172,4 @@ ms.locfileid: "93075682"
 
 ## <a name="gdpr-compliance"></a>GDPR 合規性  
 
-關於受限於歐盟一般資料保護規定 (GDPR) 的任何個人資料，以及與呼叫搜尋 API、Bing 拼字檢查 API 或 Bing 自動建議 API 相關而處理的任何個人資料，您了解您與 Microsoft 在 GDPR 規範下是獨立的資料控制者。 您獨立負責您的 GDPR 合規性。  
-
+關於受限於歐盟一般資料保護規定 (GDPR) 的任何個人資料，以及與呼叫搜尋 API、Bing 拼字檢查 API 或 Bing 自動建議 API 相關而處理的任何個人資料，您了解您與 Microsoft 在 GDPR 規範下是獨立的資料控制者。 您獨立負責您的 GDPR 合規性。

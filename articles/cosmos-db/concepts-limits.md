@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: de74d7e3cf854f36d122be6a32c7fb4d449c5fe5
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f591a9781cb81ec735d22f4f687f8d413923dc93
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175895"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349124"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服務配額
 
@@ -78,8 +78,8 @@ Cosmos 容器 (或共用輸送量資料庫) 的最小輸送量必須為 400 RU/�
 
 | 資源 | 預設限制 |
 | --- | --- |
-| 每個容器的 ru 下限 ([專用輸送量布建模式](databases-containers-items.md#azure-cosmos-containers))  | 400 |
-| 每個資料庫的最小 ru ([共用輸送量布建模式](databases-containers-items.md#azure-cosmos-containers))  | 前25個容器的 400 RU/秒。 每個容器的額外 100 RU/秒。 |
+| 每個容器的 ru 下限 ([專用輸送量布建模式](./account-databases-containers-items.md#azure-cosmos-containers))  | 400 |
+| 每個資料庫的最小 ru ([共用輸送量布建模式](./account-databases-containers-items.md#azure-cosmos-containers))  | 前25個容器的 400 RU/秒。 每個容器的額外 100 RU/秒。 |
 
 Cosmos DB 支援透過 Sdk 或入口網站，以程式設計方式調整每個容器或資料庫的輸送量 (RU/秒) 。    
 

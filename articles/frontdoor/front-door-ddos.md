@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: jodowns
-ms.openlocfilehash: 58efeaebcc9f643c725cde54fcbda6f65c4bd700
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 24a8a559d72eae4dab0b6e740b34890f1d7ff114
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94414494"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350778"
 ---
 # <a name="ddos-protection-on-front-door"></a>Front Door 上的 DDoS 保護
 
@@ -34,9 +34,9 @@ Front Door 只接受 HTTP 和 HTTPS 通訊協定上的流量，而且只會處�
 
 Front Door 是大規模規模的全球分散式服務。 我們有許多客戶，包括 Microsoft 本身的大規模雲端產品，每秒都會收到數十萬個要求。 Front Door 位於 Azure 網路的邊緣，吸收和地理位置隔離大量的攻擊。 這可防止惡意流量超出 Azure 網路的邊緣。
 
-## <a name="caching"></a>Caching
+## <a name="caching"></a>快取
 
-[Front Door 的](./front-door-caching.md) 快取功能可以用來保護後端，使其免于遭受攻擊所產生的大型流量。 快取的資源會從 Front Door 邊緣節點傳回，因此不會轉送到您的後端。 快取的快取到期時間 (秒或分鐘) 動態回應可能會大幅減少後端服務的負載。 如需快取概念和模式的詳細資訊，請參閱快取 [考慮](https://docs.microsoft.com/azure/architecture/best-practices/caching) 和另行快取 [模式](https://docs.microsoft.com/azure/architecture/patterns/cache-aside)。
+[Front Door 的](./front-door-caching.md) 快取功能可以用來保護後端，使其免于遭受攻擊所產生的大型流量。 快取的資源會從 Front Door 邊緣節點傳回，因此不會轉送到您的後端。 快取的快取到期時間 (秒或分鐘) 動態回應可能會大幅減少後端服務的負載。 如需快取概念和模式的詳細資訊，請參閱快取 [考慮](/azure/architecture/best-practices/caching) 和另行快取 [模式](/azure/architecture/patterns/cache-aside)。
 
 ## <a name="web-application-firewall-waf"></a>Web 應用程式防火牆 (WAF)
 

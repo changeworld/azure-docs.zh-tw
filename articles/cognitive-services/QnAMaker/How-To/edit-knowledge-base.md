@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 3940f060209ea5ba55957a3673020656d45de9e4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9541320f65060a0b1f2b5c84a131c08e92554e9e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000091"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351702"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>在知識庫中編輯 QnA 組
 
@@ -128,11 +128,11 @@ QnA 組是從資料來源（例如檔案或 URL）新增，或新增為編輯來
 
 您可以使用 [格式化] 工具列來快速選取並格式化文字，以方便您使用[文字編輯](#add-an-editorial-qna-set)答案。
 
-當您需要自動產生內容以建立要匯入做為 CI/CD 管線一部分或進行[批次測試](../Quickstarts/batch-testing.md)的知識庫時， [Markdown](../reference-markdown-format.md)是較好的工具。
+當您需要自動產生內容以建立要匯入做為 CI/CD 管線一部分或進行[批次測試](../index.yml)的知識庫時， [Markdown](../reference-markdown-format.md)是較好的工具。
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [在知識庫上共同作業](./collaborate-knowledge-base.md)
+> [在知識庫上共同作業](../index.yml)
 
 * [管理 QnA Maker 所使用的 Azure 資源](set-up-qnamaker-service-azure.md)

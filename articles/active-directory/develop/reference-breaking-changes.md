@@ -12,12 +12,12 @@ ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0c5abf345fda9db4cc5123360245e42ea0ef40e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94c34e6f7cb24ff749e5de95f1c28a496700af80
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88115028"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348716"
 ---
 # <a name="whats-new-for-authentication"></a>驗證有什麼新功能？
 
@@ -115,7 +115,7 @@ ms.locfileid: "88115028"
 
 **受影響的端點**： [1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md) [版](./v2-oauth2-client-creds-grant-flow.md)和 v2。0
 
-**受影響的通訊協定**： [用戶端認證 (僅限應用程式權杖) ](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)
+**受影響的通訊協定**： [用戶端認證 (僅限應用程式權杖)](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)
 
 安全性變更已于7月26日推出，這會變更透過用戶端認證授與) 發出的僅限應用程式權杖 (方式。 之前，允許應用程式取得權杖來呼叫任何其他應用程式，而不論租使用者中是否有同意該應用程式的存在。  此行為已更新，因此資源 (有時也稱為 web Api) 設定為單一租使用者 (預設) ，用戶端應用程式必須存在於資源租使用者中。  請注意，用戶端與 API 之間的現有同意仍不是必要的，而且應用程式仍應執行自己的授權檢查，以確保宣告 `roles` 存在且包含 API 的預期值。
 

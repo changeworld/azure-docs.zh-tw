@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/17/2020
-ms.openlocfilehash: fa048473f0f285b793dad88c7defdb6189ca1ccd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 63be912986542741359cd5e88227f06905d42647
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023001"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350869"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>對應資料流程中的接收轉換
 
@@ -100,7 +100,7 @@ Azure Data Factory 可以存取90以上的 [原生連接器](connector-overview.
 ![顯示自訂接收順序的螢幕擷取畫面。](media/data-flow/custom-sink-ordering.png "顯示自訂接收順序的螢幕擷取畫面。")
 
 > [!NOTE]
-> 使用快取 [查閱](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-expression-builder#cached-lookup)時，請確定您的接收順序將快取的接收設定為1、最低的 (或依序排序的第一個) 。
+> 使用快取 [查閱](./concepts-data-flow-expression-builder.md#cached-lookup)時，請確定您的接收順序將快取的接收設定為1、最低的 (或依序排序的第一個) 。
 
 ![自訂接收順序](media/data-flow/cache-2.png "自訂接收順序")
 

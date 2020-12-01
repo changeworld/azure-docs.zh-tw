@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: thvankra
 ms.reviewer: thvankra
-ms.openlocfilehash: 877aa96b189de47d158721df6585cb94ace4a855
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 827abcdb9eb2eb8b7328eb3e3a78f49d51e87e6b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94932890"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349175"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-azure-databricks"></a>使用 Azure Databricks 將資料從 Cassandra 遷移至 Azure Cosmos DB Cassandra API 帳戶
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -28,7 +28,7 @@ Azure Cosmos DB 中的 Cassandra API 已成為在 Apache Cassandra 上執行之�
 
 有多種方式可將資料庫工作負載從某個平臺遷移至另一個平臺。 [Azure Databricks](https://azure.microsoft.com/services/databricks/) 是一種平臺即 [Apache Spark](https://spark.apache.org/) 服務供應專案，可提供一種方式來大規模執行離線遷移。 本文說明使用 Azure Databricks 將資料從原生 Apache Cassandra keyspace/資料表遷移至 Azure Cosmos DB Cassandra API 所需的步驟。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [佈建 Azure Cosmos DB Cassandra API 帳戶](create-cassandra-dotnet.md#create-a-database-account)
 
@@ -114,7 +114,7 @@ DFfromNativeCassandra
 ```
 
 > [!NOTE]
-> `spark.cassandra.output.concurrent.writes`和設定 `connections_per_executor_max` 對於避免[速率限制](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/)很重要，這會在 Cosmos DB 的要求超過布建的輸送量 ([要求單位](https://docs.microsoft.com/azure/cosmos-db/request-units)) 時才會發生。 您可能需要根據 Spark 叢集中的執行程式數目來調整這些設定，而且可能的大小 (，因此會將每個記錄寫入目標資料表的 RU 成本) 。
+> `spark.cassandra.output.concurrent.writes`和設定 `connections_per_executor_max` 對於避免[速率限制](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/)很重要，這會在 Cosmos DB 的要求超過布建的輸送量 ([要求單位](./request-units.md)) 時才會發生。 您可能需要根據 Spark 叢集中的執行程式數目來調整這些設定，而且可能的大小 (，因此會將每個記錄寫入目標資料表的 RU 成本) 。
 
 ## <a name="next-steps"></a>後續步驟
 

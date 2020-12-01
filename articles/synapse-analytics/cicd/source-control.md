@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 111b2b5b660133c20afdb3c56e1c3e3ed607398c
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: b6cadbf5c3a33c1a954a47f37b33ad8703f40b69
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296988"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350733"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Azure Synapse Studio 中的原始檔控制
 
@@ -192,7 +192,7 @@ Azure Synapse Studio 一次只能有一個發佈分支。 當您指定新的發�
 
 ## <a name="best-practices-for-git-integration"></a>Git 整合的最佳做法
 
--   **權限**。 當您的 git 存放庫已連線到您的工作區之後，任何可以存取您的 git 存放庫（具有您工作區中任何角色）的人，都能夠以 git 模式更新成品，例如 sql 腳本、筆記本、spark 作業定義、資料集、資料流程和管線。 一般來說，您不希望每個小組成員都具有更新工作區的許可權。 只授與 Synapse 工作區成品作者的 git 存放庫許可權。 
+-   **權限**。 將 git 存放庫連線到您的工作區之後，任何可存取您工作區中任何角色之 git 存放庫的人，都能夠以 git 模式更新成品，例如 sql 腳本、筆記本、spark 作業定義、資料集、資料流程和管線。 一般來說，您不希望每個小組成員都具有更新工作區的許可權。 只授與 Synapse 工作區成品作者的 git 存放庫許可權。 
 -   共同 **作業。** 建議您不要允許直接簽入至共同作業分支。 此限制可協助避免錯誤 (bug)，因為每個簽入都會經歷[建立功能分支](source-control.md#creating-feature-branches)所述的提取要求檢閱程序。
 -   **Synapse 即時模式**。 在 git 模式下發布之後，所有變更都會反映在 Synapse live 模式中。 在 Synapse live 模式中，發佈已停用。 而且，如果您已授與正確的許可權，您可以在即時模式中執行成品。 
 -   **編輯 Studio 中的構件**。 Synapse studio 是唯一可讓您啟用工作區原始檔控制，以及自動將變更同步至 git 的位置。 任何透過 SDK、PowerShell 進行的變更都不會同步至 git。 建議您在啟用 git 時，一律在 Studio 中編輯成品。
@@ -223,6 +223,6 @@ Azure Synapse Studio 一次只能有一個發佈分支。 當您指定新的發�
 - Synapse Studio 不支援自訂認可訊息。
 - 根據設計，Studio 中的刪除動作將直接認可至 git
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 若要執行持續整合和部署，請參閱 [ (CI/CD) 的持續整合與傳遞 ](continuous-integration-deployment.md)。
