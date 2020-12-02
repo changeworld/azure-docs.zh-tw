@@ -3,20 +3,20 @@ title: Azure Data Factory 中的 Web 活動
 description: 了解如何使用 Web 活動 (Data Factory 支援的其中一個控制流程活動) 從管線叫用 REST 端點。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: e74361d6fb3eb1f9708f39f198506d16c7c046c4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8ee23adf569a6afafc57dac786cd907a3481abde
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635094"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485786"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory 中的 Web 活動
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -73,7 +73,7 @@ ms.locfileid: "92635094"
 屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
 NAME | Web 活動的名稱 | String | 是
-type | 必須設定為 **WebActivity** 。 | String | 是
+type | 必須設定為 **WebActivity**。 | String | 是
 method | 目標端點的 Rest API 方法。 | 字串。 <br/><br/>支援的類型："GET"、"POST"、"PUT" | 是
 url | 目標端點和路徑 | 字串 (或含有字串之 resultType 的運算式)。 如果活動未在 1 分鐘內收到來自端點的回應，就會發生逾時並出現錯誤。 | 是
 headers | 傳送至要求的標頭。 例如，若要對要求設定語言和類型︰`"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`。 | 字串 (或含有字串之 resultType 的運算式) | 是，Content-type 標頭是必要的。 `"headers":{ "Content-Type":"application/json"}`
@@ -100,7 +100,7 @@ connectVia | 用來連線到資料存放區的[整合執行階段](./concepts-in
 
 以下是 web 活動中支援的驗證類型。
 
-### <a name="none"></a>None
+### <a name="none"></a>無
 
 如果不需要驗證，請勿包含 authentication 屬性。
 

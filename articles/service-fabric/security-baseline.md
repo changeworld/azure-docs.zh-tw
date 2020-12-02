@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dc66de09a5918b19c60aaa0d3e9ab662876dc31a
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 9eab908d2767bcdc9305daa625c70be9b63b9756
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684316"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485541"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>適用于 Service Fabric 的 Azure 安全性基準
 
@@ -76,7 +76,7 @@ ms.locfileid: "94684316"
 
 **指導** 方針：若要防範 DDoS 攻擊，請在部署 azure Service Fabric 叢集的虛擬網路上啟用 Azure DDoS 標準保護。 使用 Azure 資訊安全中心整合式威脅情報，以拒絕與已知惡意或未使用的網際網路 IP 位址的通訊。
 
-* [如何設定 DDoS 保護](../virtual-network/manage-ddos-protection.md)
+* [如何設定 DDoS 保護](../ddos-protection/manage-ddos-protection.md)
 
 * [了解 Azure 資訊安全中心的整合式威脅情報](../security-center/azure-defender.md)
 
@@ -314,7 +314,7 @@ ms.locfileid: "94684316"
 
 *如需詳細資訊，請參閱 [安全性控制：身分識別與存取控制](../security/benchmarks/security-control-identity-access-control.md)。*
 
-### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
+### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的詳細目錄
 
 **指導**：維護在叢集布建期間建立的本機系統管理客戶紀錄，以及在 Azure Service Fabric 叢集和您建立的任何其他帳戶期間所建立的帳戶。 此外，如果使用 Azure AD 整合，Azure AD 內建角色必須明確指派，因此可供查詢。 使用 Azure AD PowerShell 模組執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
 
@@ -570,7 +570,7 @@ ms.locfileid: "94684316"
 
 **指導** 方針：在所有 Azure 資源上使用待用加密。 Microsoft 建議讓 Azure 管理您的加密金鑰，但在某些情況下，您可以選擇管理您自己的金鑰。
 
-* [瞭解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md)
+* [了解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md)
 
 * [如何設定客戶管理的加密金鑰](../storage/common/customer-managed-keys-configure-key-vault.md)
 
@@ -626,7 +626,7 @@ ms.locfileid: "94684316"
 
 * [如何藉由最新的擴展集模型將 VM 更新至最新狀態](../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)
 
-* [Azure 自動化更新管理概觀](../automation/update-management/update-mgmt-overview.md)
+* [Azure 自動化更新管理概觀](../automation/update-management/overview.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -1128,11 +1128,11 @@ ms.locfileid: "94684316"
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
-**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對受 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 的策略和執行的 Red 小組和即時網站滲透測試。
+**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 對於紅隊和即時網站滲透測試的策略和執行方法。
 
 * [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-* [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+* [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 資訊安全中心監視**：目前無法使用
 

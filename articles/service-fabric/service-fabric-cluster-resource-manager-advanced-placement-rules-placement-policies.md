@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fbfec218c1bf1d018157fc6d78c700991f332a13
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 5a4586c9c1be51b0ebbdebcf0c23289fc39f9eda
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172802"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485496"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Service Fabric 服務的放置原則
 放置原則是在一些較罕見的特定情況下可用來掌管服務放置的額外規則。 這些情況的一些例子如下︰
@@ -98,7 +98,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ```
 
 ## <a name="requiring-replica-distribution-and-disallowing-packing"></a>要求複本散佈，且不允許封裝
-叢集狀況良好時，複本「通常」__ 會散佈在容錯和升級網域之間。 不過，指定資料分割的多個複本有時會暫時封裝到單一網域。 例如，假設叢集有九個節點在三個容錯網域中 (fd:/0、fd:/1 和 fd:/2)。 假設您的服務有三個複本。 假設 fd:/1 和 fd:/2 中用於這些複本的節點停止運作。 叢集資源管理員通常會選擇這些相同容錯網域中的其他節點。 在此情況下，假設因為容量問題，這些網域中的其他節點都無效。 如果叢集資源管理員為這些複本建立替代項目，則必須選擇 fd:/0 中的節點。 不過，「這樣做」__ 會導致違反容錯網域條件約束。 封裝複本會增加整個複本集停止運作或遺失的可能性。 
+叢集狀況良好時，複本「通常」會散佈在容錯和升級網域之間。 不過，指定資料分割的多個複本有時會暫時封裝到單一網域。 例如，假設叢集有九個節點在三個容錯網域中 (fd:/0、fd:/1 和 fd:/2)。 假設您的服務有三個複本。 假設 fd:/1 和 fd:/2 中用於這些複本的節點停止運作。 叢集資源管理員通常會選擇這些相同容錯網域中的其他節點。 在此情況下，假設因為容量問題，這些網域中的其他節點都無效。 如果叢集資源管理員為這些複本建立替代項目，則必須選擇 fd:/0 中的節點。 不過，「這樣做」會導致違反容錯網域條件約束。 封裝複本會增加整個複本集停止運作或遺失的可能性。 
 
 > [!NOTE]
 > 如需一般情況下條件約束和條件約束優先順序的詳細資訊，請參閱[本主題](service-fabric-cluster-resource-manager-management-integration.md#constraint-priorities)。
@@ -126,7 +126,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 現在，是否可針對未跨越地理區域的叢集中的服務使用這些組態？ 可以，但也沒有充分的理由。 除非情況要求，否則請避免所需、無效和慣用的網域設定。 如果試著強制在單一機架中執行指定的工作負載，或偏好本機叢集的某些區段而不是其他區段，這樣並沒有任何意義。 不同的硬體設定應該分散至容錯網域，並透過一般放置條件約束和節點屬性來處理。
 
 ## <a name="placement-of-multiple-stateless-instances-of-a-partition-on-single-node"></a>在單一節點上放置分割區的多個無狀態實例
-**AllowMultipleStatelessInstancesOnNode**放置原則允許在單一節點上放置分割區的多個無狀態實例。 依預設，單一分割區的多個實例不能放在節點上。 即使使用-1 服務，也無法針對指定的已命名服務，將叢集的節點數目調整為超過叢集中的節點數目。 此放置原則會移除此限制，並允許指定的 InstanceCount 高於節點計數。
+**AllowMultipleStatelessInstancesOnNode** 放置原則允許在單一節點上放置分割區的多個無狀態實例。 依預設，單一分割區的多個實例不能放在節點上。 即使使用-1 服務，也無法針對指定的已命名服務，將叢集的節點數目調整為超過叢集中的節點數目。 此放置原則會移除此限制，並允許指定的 InstanceCount 高於節點計數。
 
 如果您曾看過類似「`The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: ReplicaExclusion`」的健康狀態訊息，表示您已遇到此狀況或類似的情況。 
 
@@ -150,7 +150,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 >
 
 > [!NOTE]
-> 目前只有具有 ExclusiveProcess [服務套件啟用模式](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicepackageactivationmode?view=azure-dotnet)的無狀態服務支援此原則。
+> 目前只有具有 ExclusiveProcess [服務套件啟用模式](/dotnet/api/system.fabric.description.servicepackageactivationmode?view=azure-dotnet)的無狀態服務支援此原則。
 >
 
 > [!WARNING]
@@ -158,7 +158,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 >
 
 > [!NOTE]
-> 使用高價值的 [MinInstanceCount](https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount?view=azure-dotnet) 搭配此放置原則可能會導致應用程式無法升級。 例如，如果您有五個節點的叢集，並設定 InstanceCount = 10，您將會在每個節點上有兩個實例。 如果您設定 MinInstanceCount = 9，嘗試的應用程式升級可能會停滯;若使用 MinInstanceCount = 8，則可以避免此情況。
+> 使用高價值的 [MinInstanceCount](/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount?view=azure-dotnet) 搭配此放置原則可能會導致應用程式無法升級。 例如，如果您有五個節點的叢集，並設定 InstanceCount = 10，您將會在每個節點上有兩個實例。 如果您設定 MinInstanceCount = 9，嘗試的應用程式升級可能會停滯;若使用 MinInstanceCount = 8，則可以避免此情況。
 >
 
 ## <a name="next-steps"></a>後續步驟

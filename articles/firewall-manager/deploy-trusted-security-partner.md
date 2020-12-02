@@ -5,23 +5,27 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: how-to
-ms.date: 06/30/2020
+ms.date: 12/01/2020
 ms.author: victorh
-ms.openlocfilehash: 3323f73c137905fbe677c68d3830d7f609fa0172
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 906687e08c9f31890a9ecec9154079e704512832
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85611572"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485717"
 ---
 # <a name="deploy-a-security-partner-provider"></a>部署安全性合作夥伴提供者
 
-Azure 防火牆管理員中的*安全性合作夥伴提供者*，可讓您使用熟悉、最知名的協力廠商安全性即服務 (SECaaS) 供應專案，以保護使用者的網際網路存取。
+Azure 防火牆管理員中的 *安全性合作夥伴提供者*，可讓您使用熟悉、最知名的協力廠商安全性即服務 (SECaaS) 供應專案，以保護使用者的網際網路存取。
 
 若要深入瞭解支援的案例和最佳做法指導方針，請參閱 [什麼是安全性合作夥伴提供者？](trusted-security-partners.md)
 
 
-整合的協力廠商安全性即服務 (SECaaS) 合作夥伴現在可在所有 Azure 公用雲端區域中使用。 **Zscaler** 整合將于2020年7月3日正式推出。 **Check Point** 是支援的 SECaaS 合作夥伴，將于2020年7月3日推出預覽。 **iboss** 整合將于2020年7月31日正式推出。
+整合的協力廠商安全性即服務 (SECaaS) 合作夥伴現已推出： 
+
+- **Zscaler**
+- **[Check Point](check-point-overview.md)**
+- **iboss**
 
 ## <a name="deploy-a-third-party-security-provider-in-a-new-hub"></a>在新的中樞部署協力廠商安全性提供者
 
@@ -42,7 +46,7 @@ Azure 防火牆管理員中的*安全性合作夥伴提供者*，可讓您使用
 11. 選取  **[下一步：安全性合作夥伴提供者]**。
 12. 將 **安全性合作夥伴提供者** 設定為 **啟用**。 
 13. 選取合作夥伴。 
-14. 選取 [下一步：檢閱 + 建立]。 
+14. 完成時，選取 [下一步:檢閱 + 建立]。 
 15. 檢查內容，然後選取 [ **建立**]。
 
 VPN 閘道部署可能需要30分鐘以上的時間。
@@ -55,7 +59,7 @@ VPN 閘道部署可能需要30分鐘以上的時間。
 
 您也可以在虛擬 WAN 中選取現有的中樞，並將其轉換為 *安全的虛擬中樞*。
 
-1. 在 **消費者入門**中，選取 [ **View 安全虛擬中樞**]。
+1. 在 **消費者入門** 中，選取 [ **View 安全虛擬中樞**]。
 2. 選取 [ **轉換現有的中樞**]。
 3. 選取訂用帳戶和現有的中樞。 遵循其餘的步驟，在新的中樞部署協力廠商提供者。
 
@@ -81,15 +85,15 @@ VPN 閘道部署可能需要30分鐘以上的時間。
 1. 請依照您的合作夥伴提供的指示來完成設定。 這包括提交 AAD 資訊以偵測並聯機至中樞、更新輸出原則，以及檢查線上狀態和記錄。
 
    - [Zscaler：設定 Microsoft Azure 的虛擬 WAN 整合](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration)。
-   - [Check Point (preview) ：設定 Microsoft Azure 的虛擬 WAN 整合](https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/CloudGuard-Connect-Azure-Virtual-WAN/Default.htm)。
-   - [iboss (preview) ：設定 Microsoft Azure 的虛擬 WAN 整合](https://www.iboss.com/blog/securing-microsoft-azure-with-iboss-saas-network-security)。 
+   - [Check Point：設定 Microsoft Azure 虛擬 WAN 整合](https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/CloudGuard-Connect-Azure-Virtual-WAN/Default.htm)。
+   - [iboss：設定 Microsoft Azure 的虛擬 WAN 整合](https://www.iboss.com/blog/securing-microsoft-azure-with-iboss-saas-network-security)。 
    
 2. 您可以在 Azure 中的 Azure 虛擬 WAN 入口網站上查看通道建立狀態。 一旦通道顯示在 Azure 和合作夥伴入口網站上 **連線** ，請繼續進行後續步驟來設定路由，以選取要將網際網路流量傳送給夥伴的分支和 vnet。
 
 ## <a name="configure-route-settings"></a>設定路由設定
 
 1. 流覽至 Azure 防火牆管理員 > 安全中樞。 
-2. 選取中樞。 中樞狀態現在應該會顯示已布 **建** ，而不是 **擱置安全性**連線。
+2. 選取中樞。 中樞狀態現在應該會顯示已布 **建** ，而不是 **擱置安全性** 連線。
 
    確定協力廠商提供者可以連接到中樞。 VPN 閘道上的通道應該處於 **已連線** 狀態。 相較于先前的狀態，此狀態會更反映中樞與協力廠商夥伴之間的連線健康情況。
 3. 選取中樞，然後流覽至 [ **路由設定**]。
