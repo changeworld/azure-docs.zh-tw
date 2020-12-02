@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 37b2414252a7011444617ecc08c9dd7d081b7441
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d45ab771f90c0174f24d5f0d39921f93f72be850
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425499"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451064"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>針對適用於 PostgreSQL 的 Azure 資料庫單一伺服器使用虛擬網路服務端點和規則
 
@@ -32,7 +32,7 @@ ms.locfileid: "92425499"
 
 **虛擬網路：** Azure 訂用帳戶可以有相關聯的虛擬網路。
 
-**子網路：** 虛擬網路包含**子網路**。 您有的任何 Azure 虛擬機器 (VM) 會指派給子網路。 一個子網路可以包含多個 VM 或其他計算節點。 計算虛擬網路外部的節點無法存取虛擬網路，除非您設定安全性來允許存取。
+**子網路：** 虛擬網路包含 **子網路**。 您有的任何 Azure 虛擬機器 (VM) 會指派給子網路。 一個子網路可以包含多個 VM 或其他計算節點。 計算虛擬網路外部的節點無法存取虛擬網路，除非您設定安全性來允許存取。
 
 **虛擬網路服務端點：** [虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]是一個子網路，其屬性值包含一或多個正式的 Azure 服務類型名稱。 本文中我們探討類型名稱 **Microsoft.Sql**，它參考名為 SQL Database 的 Azure 服務。 此服務標記也會套用至適用於 PostgreSQL 和 MySQL 服務的 Azure 資料庫。 請務必注意，當您將 **Microsoft.Sql** 服務標記套用到 VNet 服務端點時，它會設定子網路上所有 Azure SQL Database、適用於 PostgreSQL 的 Azure 資料庫和適用於 MySQL 伺服器的 Azure 資料庫的服務端點流量。 
 
@@ -48,13 +48,13 @@ ms.locfileid: "92425499"
 
 ### <a name="a-allow-access-to-azure-services"></a>A. 允許存取 Azure 服務
 
-連線安全性窗格有一個標示為 [允許存取 Azure 服務]**** 的 [開啟/關閉]**** 按鈕。 [開啟]**** 設定允許來自所有 Azure IP 位址和所有 Azure 子網路的通訊。 這些 Azure IP 或子網路可能不是您所擁有。 此 [開啟]**** 設定可能超過您預計適用於 PostgreSQL 資料庫的 Azure 資料庫應該開放的幅度。 虛擬網路規則功能提供更細微的控制。
+連線安全性窗格有一個標示為 [允許存取 Azure 服務] 的 [開啟/關閉] 按鈕。 [開啟] 設定允許來自所有 Azure IP 位址和所有 Azure 子網路的通訊。 這些 Azure IP 或子網路可能不是您所擁有。 此 [開啟] 設定可能超過您預計適用於 PostgreSQL 資料庫的 Azure 資料庫應該開放的幅度。 虛擬網路規則功能提供更細微的控制。
 
 ### <a name="b-ip-rules"></a>B. IP 規則
 
-適用於 PostgreSQL 的 Azure 資料庫防火牆可讓您指定 IP 位址範圍，以接受來自此範圍內的通訊進入適用於 PostgreSQL 資料庫的 Azure 資料庫。 此方法對 Azure 私人網路外部的穩定 IP 位址很適合。 但 Azure 私人網路內部的許多節點都以「動態」** IP 位址設定。 動態 IP 位址可能變更，例如當 VM 重新啟動時。 在生產環境中，請勿在防火牆規則中指定動態 IP 位址。
+適用於 PostgreSQL 的 Azure 資料庫防火牆可讓您指定 IP 位址範圍，以接受來自此範圍內的通訊進入適用於 PostgreSQL 資料庫的 Azure 資料庫。 此方法對 Azure 私人網路外部的穩定 IP 位址很適合。 但 Azure 私人網路內部的許多節點都以「動態」IP 位址設定。 動態 IP 位址可能變更，例如當 VM 重新啟動時。 在生產環境中，請勿在防火牆規則中指定動態 IP 位址。
 
-您可以取得 VM 的「靜態」** IP 位址，以挽回 IP 選項。 如需詳細資料，請參閱[使用 Azure 入口網站設定虛擬機器的私人 IP 位址][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]。
+您可以取得 VM 的「靜態」IP 位址，以挽回 IP 選項。 如需詳細資料，請參閱[使用 Azure 入口網站設定虛擬機器的私人 IP 位址][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]。
 
 不過，靜態 IP 方法可能變得難以管理，在大規模使用時成本很高。 虛擬網路規則較容易建立和管理。
 
@@ -106,7 +106,7 @@ ms.locfileid: "92425499"
 
 - 虛擬網路規則只套用至 Azure Resource Manager 虛擬網路，而不是[傳統部署模型][arm-deployment-model-568f]網路。
 
-- 使用 **Microsoft. Sql** 服務標記開啟虛擬網路服務端點以適用於 PostgreSQL 的 Azure 資料庫，也會啟用所有 Azure 資料庫服務的端點：適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫、Azure SQL Database 和 Azure Synapse Analytics 先前的 Sql 資料倉儲 (。
+- 使用 **Microsoft Sql** 服務標記開啟虛擬網路服務端點以適用於 PostgreSQL 的 Azure 資料庫，也會啟用所有 Azure 資料庫服務的端點：適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫、Azure SQL Database 和 Azure Synapse Analytics。
 
 - VNet 服務端點的支援僅適用於一般用途伺服器和記憶體最佳化伺服器。
 
@@ -124,7 +124,7 @@ ms.locfileid: "92425499"
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>在不開啟 VNET 服務端點的情況下將 VNET 防火牆規則新增至伺服器
 
-僅設定 VNet 防火牆規則無法協助保護伺服器對 VNet 的安全。 您也必須**開啟** VNet 服務端點，安全性才會生效。 當您**開啟**服務端點時，您的 VNet 子網路會停機，直到完成**關閉**到**開啟**的轉換。 特別是大型的 VNet，這會更明顯。 您可以使用 **IgnoreMissingServiceEndpoint** 旗標來減少或排除在轉換期間的停機時間。
+僅設定 VNet 防火牆規則無法協助保護伺服器對 VNet 的安全。 您也必須 **開啟** VNet 服務端點，安全性才會生效。 當您 **開啟** 服務端點時，您的 VNet 子網路會停機，直到完成 **關閉** 到 **開啟** 的轉換。 特別是大型的 VNet，這會更明顯。 您可以使用 **IgnoreMissingServiceEndpoint** 旗標來減少或排除在轉換期間的停機時間。
 
 您可以使用 Azure CLI 或入口網站設定 **IgnoreMissingServiceEndpoint** 旗標。
 

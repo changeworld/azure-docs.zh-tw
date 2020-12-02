@@ -11,16 +11,16 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: b3e1c4b8dec0e62bb2a77939a36e38b61837033a
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: 52e3ea3e07a81495f64f70f72686154a02a654af
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638847"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451789"
 ---
 # <a name="statistics-in-synapse-sql"></a>Synapse SQL 中的統計資料
 
-本文提供的建議和範例，可讓您使用 Synapse SQL 資源來建立及更新查詢優化統計資料：專用的 SQL 集區和無伺服器 SQL 集區 (預覽) 。
+本文提供使用 Synapse SQL 資源建立和更新查詢優化統計資料的建議和範例：專用的 SQL 集區和無伺服器 SQL 集區。
 
 ## <a name="statistics-in-dedicated-sql-pool"></a>專用 SQL 集區中的統計資料
 
@@ -74,7 +74,7 @@ SET AUTO_CREATE_STATISTICS ON
 > [!NOTE]
 > 統計資料的建立會記錄在不同使用者內容下的 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
-當自動統計資料建立完成時，將採用以下格式： _WA_Sys_ <十六進位的 8 位數資料行識別碼>_<十六進位的 8 位數資料表識別碼>。 您可以執行 [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 命令，來檢視已建立的統計資料：
+當自動統計資料建立完成時，將採用以下格式：_WA_Sys_<十六進位的 8 位數資料行識別碼>_<十六進位的 8 位數資料表識別碼>。 您可以執行 [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 命令，來檢視已建立的統計資料：
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -245,7 +245,7 @@ CREATE STATISTICS stats_col1
 > [!NOTE]
 > 用來估計查詢結果中資料列數目的長條圖，只適用於統計資料物件定義中所列的第一個資料行。
 
-在此範例中，長條圖位於 *product\_category* 。 跨資料行統計資料會依據 *product\_category* 和 *product\_sub_category* 計算：
+在此範例中，長條圖位於 *product\_category*。 跨資料行統計資料會依據 *product\_category* 和 *product\_sub_category* 計算：
 
 ```sql
 CREATE STATISTICS stats_2cols
@@ -557,7 +557,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 - 不支援自訂錯誤 2767。
 
 
-## <a name="statistics-in-serverless-sql-pool-preview"></a>無伺服器 SQL 集區中的統計資料 (預覽) 
+## <a name="statistics-in-serverless-sql-pool"></a>無伺服器 SQL 集區中的統計資料
 
 統計資料是依特定資料集的特殊資料行 (儲存體路徑) 建立的。
 
@@ -566,7 +566,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 
 ### <a name="why-use-statistics"></a>為何使用統計資料
 
-更多無伺服器的 SQL 集區 (預覽版) 瞭解您的資料，它可以更快執行查詢。 從資料中收集統計資料是將查詢最佳化最重要的工作之一。 
+更多無伺服器的 SQL 集區知道您的資料，它對其執行查詢的速度愈快。 從資料中收集統計資料是將查詢最佳化最重要的工作之一。 
 
 無伺服器 SQL 集區查詢最佳化工具是以成本為基礎的優化工具。 它會比較各種查詢方案的成本，然後選擇成本最低的方案。 在大部分的情況下，它會選擇執行最快的方案。 
 

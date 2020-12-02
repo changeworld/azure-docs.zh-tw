@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: dac2a60b6b9db082a10d2473eb22b86d8097eee0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7f0eff28533d8cf736d032aff61454a49bcf379e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313145"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449726"
 ---
 # <a name="capacity-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的容量限制
 
@@ -26,7 +26,7 @@ Azure Synapse Analytics 中專用 SQL 集區的各種元件允許的最大值。
 
 | 類別 | 描述 | 最大值 |
 |:--- |:--- |:--- |
-| [資料倉儲單位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |單一專用 SQL 集區 (資料倉儲) 單位的最大 DWU | Gen1：DW6000<br></br>Gen2：DW30000c |
+| [資料倉儲單位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |單一專用 SQL 集區的 DWU 上限  | Gen1：DW6000<br></br>Gen2：DW30000c |
 | [資料倉儲單位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |每一部伺服器的預設 DTU |54,000<br></br>根據預設，每個 SQL server (例如，myserver.database.windows.net) 的 DTU 配額為54000，這允許最高的 DW5000c。 此配額僅是安全限制。 您可以藉由 [建立支援票證](sql-data-warehouse-get-started-create-support-ticket.md) ，並選取 [ *配額* ] 作為要求類型來增加配額。  若要計算 DTU 需求，請將7.5 乘以所需的總 DWU，或將9.5 乘以所需的 cDWU 總數。 例如：<br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW5000c x 9.5 = 47500 Dtu。<br></br>您可以在入口網站的 [SQL Server] 選項中檢視目前的 DTU 耗用量。 已暫停和未暫停的資料庫都會計入 DTU 配額。 |
 | 資料庫連接 |並行開啟的會話數上限 |1024<br/><br/>並行開啟的會話數目會根據選取的 DWU 而有所不同。 DWU600c 和更新版本最多支援1024個開啟中的會話。 DWU500c 和以下支援最大並行開啟會話限制512。 請注意，可同時執行的查詢數目有所限制。 超過並行存取限制時，要求會進入內部佇列以等待處理。 |
 | 資料庫連接 |準備陳述式的最大記憶體 |20 MB |
@@ -62,7 +62,7 @@ Azure Synapse Analytics 中專用 SQL 集區的各種元件允許的最大值。
 | 類別 | 描述 | 最大值 |
 |:--- |:--- |:--- |
 | PolyBase 載入 |每列 MB 數 |1<br/><br/>Polybase 會載入小於 1 MB 的資料列。 不支援將 LOB 資料類型載入具有叢集資料行存放區索引的資料表 (CCI) 。<br/> |
-|PolyBase 載入|檔案總數|1,000,000<br/><br/>Polybase 載入不能超過1M 個以上的檔案。 您可能會遇到下列錯誤： **因為分割計數超過1000000的上限** ，所以作業失敗。|
+|PolyBase 載入|檔案總數|1,000,000<br/><br/>Polybase 載入不能超過1M 個以上的檔案。 您可能會遇到下列錯誤： **因為分割計數超過1000000的上限**，所以作業失敗。|
 
 ## <a name="queries"></a>查詢
 

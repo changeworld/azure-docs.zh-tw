@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 02772ff6279ee813b86f92984742ba8301bdf74e
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 78829ae52d74cf6ec58c12779c51bca9a98e0af1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357941"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450790"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>重新產生儲存體帳戶存取金鑰
 
@@ -27,7 +27,7 @@ ms.locfileid: "93357941"
 
 > [!IMPORTANT]
 
-> 以資料存放區註冊的認證會儲存在與工作區相關聯的 Azure Key Vault 中。 如果您已啟用 Key Vault 的虛 [刪除](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) 功能，本文會提供更新認證的指示。 如果您取消註冊資料存放區，並嘗試以相同名稱重新註冊，此動作將會失敗。 如需如何在此案例中啟用虛刪除，請參閱針對 [現有的金鑰保存庫開啟虛刪除]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault) 。
+> 以資料存放區註冊的認證會儲存在與工作區相關聯的 Azure Key Vault 中。 如果您已啟用 Key Vault 的虛 [刪除](../key-vault/general/soft-delete-overview.md) 功能，本文會提供更新認證的指示。 如果您取消註冊資料存放區，並嘗試以相同名稱重新註冊，此動作將會失敗。 如需如何在此案例中啟用虛刪除，請參閱針對 [現有的金鑰保存庫開啟虛刪除]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault) 。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -111,7 +111,7 @@ for name, ds in datastores.items():
         此命令會自動為工作區所使用的 Azure 儲存體帳戶同步處理新的金鑰。
 
 1. 您可以透過 SDK 或 [Azure Machine Learning studio](https://ml.azure.com)，重新註冊使用儲存體帳戶的資料存放區 (s) 。
-    1. **若要透過 PYTHON SDK 重新註冊資料存放區** ，請使用 [ [需要更新的內容](#whattoupdate) ] 區段中的值，以及步驟1中具有下列程式碼的金鑰。 
+    1. **若要透過 PYTHON SDK 重新註冊資料存放區**，請使用 [ [需要更新的內容](#whattoupdate) ] 區段中的值，以及步驟1中具有下列程式碼的金鑰。 
     
         由於 `overwrite=True` 已指定，此程式碼會覆寫現有的註冊，並將其更新為使用新的金鑰。
     
@@ -133,10 +133,10 @@ for name, ds in datastores.items():
         
         ```
     
-    1. **若要透過 studio 重新註冊資料存放區** ，請從 studio 的左窗格中選取 [ **資料存放區** ]。 
+    1. **若要透過 studio 重新註冊資料存放區**，請從 studio 的左窗格中選取 [ **資料存放區** ]。 
         1. 選取您要更新的資料存放區。
         1. 選取左上方的 [ **更新認證** ] 按鈕。 
-        1. 使用步驟1中的新存取金鑰填入表單，然後按一下 [ **儲存** ]。
+        1. 使用步驟1中的新存取金鑰填入表單，然後按一下 [ **儲存**]。
         
             如果您要更新 **預設資料** 存放區的認證，請完成此步驟，並重複步驟2b 以重新同步處理新的金鑰與工作區的預設資料存放區。 
 

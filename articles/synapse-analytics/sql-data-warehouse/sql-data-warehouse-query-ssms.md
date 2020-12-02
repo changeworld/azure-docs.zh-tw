@@ -1,6 +1,6 @@
 ---
-title: 使用 SSMS 連線
-description: 使用 SQL Server Management Studio (SSMS) 連接到 Azure Synapse Analytics 中的專用 SQL 集區並進行查詢。
+title: '使用 SSMS 連線到專用的 SQL 集區 (先前的 SQL DW) '
+description: 使用 SQL Server Management Studio (SSMS) 來連接和查詢先前在) 中 (SQL DW Azure Synapse Analytics 的專用 SQL 集區。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c2fab8f02f31897a2e3d38094b9bd365f8e921e9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 950cb4c40a534f252ec8b0daa5a57eb87c098450
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325332"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450479"
 ---
-# <a name="connect-to-a-dedicated-sql-pool-in-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 連接到 Azure Synapse Analytics 中的專用 SQL 集區
+# <a name="connect-to-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS，連接到 Azure Synapse Analytics 中的專用 SQL 集區 (先前的 SQL DW) ) 
 
 > [!div class="op_single_selector"]
 >
@@ -28,17 +28,17 @@ ms.locfileid: "93325332"
 > * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 
-使用 SQL Server Management Studio (SSMS) 來連線至 Azure Synapse 內的資料倉儲並進行查詢。
+使用 SQL Server Management Studio (SSMS) 來連接和查詢先前 SQL DW)  (的專用 SQL 集區。
 
 ## <a name="prerequisites"></a>必要條件
 
 若要使用本教學課程，您需要：
 
-* 現有的專用 SQL 集區。 若要建立一個，請參閱 [建立專用的 SQL 集](create-data-warehouse-portal.md)區。
+* 現有的專用 SQL 集區。 若要建立一個，請參閱 [ (先前的 SQL DW) 建立專用的 sql 集 ](create-data-warehouse-portal.md)區。
 * SQL Server Management Studio (SSMS) 已安裝。 如果您還沒有 SSMS，可免費[下載](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
-* 完整的 SQL 伺服器名稱。 若要尋找此資訊，請參閱 [連接到專用的 SQL 集](sql-data-warehouse-connect-overview.md)區。
+* 完整的 SQL 伺服器名稱。 若要尋找此資訊，請參閱 [先前的 SQL DW (專用的 sql 集區) ](sql-data-warehouse-connect-overview.md)。
 
-## <a name="1-connect-to-your-dedicated-sql-pool"></a>1. 連接到您專用的 SQL 集區
+## <a name="1-connect-to-your-dedicated-sql-pool-formerly-sql-dw"></a>1. 連接到您先前的 SQL DW (專用的 SQL 集區) 
 
 1. 開啟 SSMS。
 2. **選取**  >  **[檔案連接物件總管** 以開啟物件總管。
@@ -48,10 +48,10 @@ ms.locfileid: "93325332"
 
    ![連線到伺服器](./media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
 
-   * **伺服器名稱** 。 輸入先前找到的 **伺服器名稱** 。
-   * **驗證** 。 選取 [SQL Server 驗證] 或 [Active Directory 整合式驗證]。
-   * **使用者名稱** 和 **密碼** 。 如果上面已選取 [SQL Server 驗證]，請輸入使用者名稱和密碼。
-   * 按一下 [ **連接** ]。
+   * **伺服器名稱**。 輸入先前找到的 **伺服器名稱** 。
+   * **驗證**。 選取 [SQL Server 驗證] 或 [Active Directory 整合式驗證]。
+   * **使用者名稱** 和 **密碼**。 如果上面已選取 [SQL Server 驗證]，請輸入使用者名稱和密碼。
+   * 按一下 [ **連接**]。
 4. 若要瀏覽，請展開您的 Azure SQL 伺服器。 您可以檢視與伺服器相關聯的資料庫。 展開 AdventureWorksDW 以查看範例資料庫中的資料表。
 
    ![探索 AdventureWorksDW](./media/sql-data-warehouse-query-ssms/explore-tables.png)

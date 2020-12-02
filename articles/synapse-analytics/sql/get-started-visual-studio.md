@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: a284e453a621860c0aebf68bef13d30e77971f88
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ef8e2a3d1a6b78e8f2b6b9a900ed2485c1a4a5d7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686152"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451600"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>使用 Visual Studio 和 SSDT 連線至 Synapse SQL
 
@@ -30,7 +30,7 @@ ms.locfileid: "94686152"
 使用 Visual Studio，使用 Azure Synapse Analytics 來查詢專用的 SQL 集區。 這個方法會在 Visual Studio 2019 中使用 SQL Server Data Tools (SSDT) 擴充功能。 
 
 > [!NOTE]
-> SSDT 不支援無伺服器 SQL 集區 (預覽) 。
+> SSDT 不支援無伺服器 SQL 集區。
 
 ## <a name="prerequisites"></a>Prerequisites
 

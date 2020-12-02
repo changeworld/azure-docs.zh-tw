@@ -1,6 +1,6 @@
 ---
 title: Synapse Studio 筆記本
-description: 在本文中，您將瞭解如何建立及開發 Azure Synapse Studio (預覽) 筆記本，以進行資料準備和視覺化。
+description: 在本文中，您將瞭解如何建立及開發 Azure Synapse Studio 筆記本，以進行資料準備和視覺效果。
 services: synapse analytics
 author: ruixinxu
 ms.service: synapse-analytics
@@ -10,16 +10,16 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: c35ee7bcdefa5091d9c887430182638f066cb9fa
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bfb822481e00e84fa17bd4b1fcb58c1d4b89a124
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95900874"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450857"
 ---
-# <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中建立、開發及維護 Synapse Studio (預覽版) 筆記本
+# <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中建立、開發及維護 Synapse Studio 筆記本
 
-Synapse Studio (preview) 筆記本是一個 web 介面，可讓您建立包含即時程式碼、視覺效果和敘述文字的檔案。 筆記本是驗證想法和使用快速實驗從您的資料取得見解的絕佳位置。 筆記本也廣泛用於資料準備、資料視覺效果、機器學習和其他巨量資料案例。
+Synapse Studio 筆記本是一個 web 介面，可讓您建立包含即時程式碼、視覺效果和敘述文字的檔案。 筆記本是驗證想法和使用快速實驗從您的資料取得見解的絕佳位置。 筆記本也廣泛用於資料準備、資料視覺效果、機器學習和其他巨量資料案例。
 
 使用 Azure Synapse Studio 筆記本，您可以：
 
@@ -33,13 +33,13 @@ Synapse Studio (preview) 筆記本是一個 web 介面，可讓您建立包含�
 ## <a name="preview-of-the-new-notebook-experience"></a>新筆記本體驗的預覽
 Synapse 團隊將新的筆記本元件帶入 Synapse Studio 中，為 Microsoft 客戶提供一致的筆記本體驗，並最大化探索能力、生產力、共用和共同作業。 新的筆記本體驗已備妥可供預覽。 檢查筆記本工具列中的 [ **預覽功能** ] 按鈕以開啟。 下表會捕捉現有筆記本 (的功能比較，因此稱為「傳統筆記本」 ) 新的預覽版本。  
 
-|功能|傳統筆記本|預覽筆記本|
+|特徵|傳統筆記本|預覽筆記本|
 |--|--|--|
-|% 執行| 不受支援 | &#9745;|
-|% 歷程記錄| 不受支援 |&#9745;
-|% 載入| 不受支援 |&#9745;|
-|%% html| 不受支援 |&#9745;|
-|拖放以移動儲存格| 不受支援 |&#9745;|
+|% 執行| 不支援 | &#9745;|
+|% 歷程記錄| 不支援 |&#9745;
+|% 載入| 不支援 |&#9745;|
+|%% html| 不支援 |&#9745;|
+|拖放以移動儲存格| 不支援 |&#9745;|
 |持續顯示 ( # A1 輸出|&#9745;| 無法使用 |
 |全部取消| &#9745;| 無法使用|
 |執行上述所有資料格|&#9745;| 無法使用 |
@@ -549,7 +549,7 @@ Azure Data Factory 會尋找參數儲存格，並將此資料格視為在執行�
 
 ## <a name="next-steps"></a>後續步驟
 - [查看 Synapse 範例筆記本](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
-- [快速入門：使用 Web 工具在 Azure Synapse Analytics 中建立 Apache Spark 集區 (預覽)](../quickstart-apache-spark-notebook.md)
+- [快速入門：使用 Web 工具在 Azure Synapse Analytics 中建立 Apache Spark 集區](../quickstart-apache-spark-notebook.md)
 - [什麼是 Azure Synapse Analytics 中的 Apache Spark](apache-spark-overview.md)
 - [使用適用於 Apache Spark 的 .NET 搭配 Azure Synapse Analytics](spark-dotnet.md)
 - [適用於 Apache Spark 的 .NET 文件](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

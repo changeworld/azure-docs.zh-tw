@@ -10,18 +10,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: dd285e8029d8e140380b0f90c60081d0e1f8dd56
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 06faa1da71331c299245a93af96166880e7732de
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305041"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451781"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Synapse SQL 中的臨時表
 
 本文包含使用臨時表的基本指引，並強調 Synapse SQL 內工作階段層級臨時表的原則。 
 
-專用的 SQL 集區和無伺服器 SQL 集區 (預覽版) 資源都可以使用臨時表。 無伺服器 SQL 集區具有本文最後討論的限制。 
+專用的 SQL 集區和無伺服器的 SQL 集區資源都可以使用臨時表。 無伺服器 SQL 集區具有本文最後討論的限制。 
 
 ## <a name="temporary-tables"></a>暫存資料表
 
@@ -226,7 +226,7 @@ DROP TABLE #stats_ddl;
 - 無法在臨時表上建立 Views。
 - 只能使用雜湊或循環配置資源散發來建立暫存資料表。  不支援複寫的暫存資料表散發。 
 
-## <a name="temporary-tables-in-serverless-sql-pool-preview"></a>無伺服器 SQL 集區中的臨時表 (預覽) 
+## <a name="temporary-tables-in-serverless-sql-pool"></a>無伺服器 SQL 集區中的臨時表
 
 支援無伺服器 SQL 集區中的臨時表，但其使用方式有限。 它們不能用在以檔案為目標的查詢中。 
 

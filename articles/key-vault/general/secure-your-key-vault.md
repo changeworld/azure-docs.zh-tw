@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 91a3a0c2ae066fde55892af90a3d666a3c1221a3
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 3f28c50be73b2b87ed8b25429cfa2dee9a663f1b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445484"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452171"
 ---
 # <a name="secure-access-to-a-key-vault"></a>針對金鑰保存庫的存取進行保護
 
@@ -30,13 +30,13 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 
 若要在任一平面存取金鑰保存庫，所有呼叫者 (使用者或應用程式) 都必須有適當的驗證和授權。 驗證會建立呼叫者的身分識別。 授權則會判斷呼叫者可以執行哪些作業。 使用 Key Vault 進行驗證時，會與 [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) 搭配使用，其會負責驗證任何指定 **安全性主體** 的身分識別。
 
-安全性主體是一個物件，代表要求存取 Azure 資源的使用者、群組、服務或應用程式。 Azure 會為每個安全性主體指派唯一的 **物件識別碼** 。
+安全性主體是一個物件，代表要求存取 Azure 資源的使用者、群組、服務或應用程式。 Azure 會為每個安全性主體指派唯一的 **物件識別碼**。
 
 * **使用者** 安全性主體會識別在 Azure Active Directory 中具有設定檔的個人。
 
 * **群組** 安全性主體會識別在 Azure Active Directory 中建立的一組使用者。 指派給群組的任何角色或權限都會授與群組中的所有使用者。
 
-* **服務主體** 是一種安全性主體，會識別應用程式或服務 (也就是一段程式碼，而不是使用者或群組)。 服務主體的物件識別碼稱為其 **用戶端識別碼** ，作用就像其使用者名稱。 服務主體的 **用戶端** 密碼或 **憑證** 的作用就像其密碼。 許多 Azure 服務都支援使用 **用戶端識別碼** 和 **憑證** 的自動化管理來指派 [受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。 受控識別是在 Azure 內進行驗證最安全且最建議的選項。
+* **服務主體** 是一種安全性主體，會識別應用程式或服務 (也就是一段程式碼，而不是使用者或群組)。 服務主體的物件識別碼稱為其 **用戶端識別碼**，作用就像其使用者名稱。 服務主體的 **用戶端** 密碼或 **憑證** 的作用就像其密碼。 許多 Azure 服務都支援使用 **用戶端識別碼** 和 **憑證** 的自動化管理來指派 [受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。 受控識別是在 Azure 內進行驗證最安全且最建議的選項。
 
 如需 Key Vault 驗證的詳細資訊，請參閱 [Azure Key Vault 驗證](authentication.md)
 
@@ -44,9 +44,9 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 
 當您在 Azure 訂用帳戶中建立金鑰保存庫時，它會自動與該訂用帳戶的 Azure AD 租用戶建立關聯。 這兩個平面中的所有呼叫者都必須在此租用戶中註冊，並經過驗證才能存取金鑰保存庫。 在這兩種情況下，應用程式都可以透過三種方式存取 Key Vault：
 
-- **僅限應用程式** ：應用程式代表服務主體或受控識別。 對於定期需要從金鑰保存庫存取憑證、金鑰或密碼的應用程式，此身分識別是最常見的案例。 若要讓此案例正常運作， `objectId` 必須在存取原則中指定應用程式的，且 `applicationId` 不得 _not_ 指定或必須是 `null` 。
-- **僅限使用者** ：使用者從租使用者中註冊的任何應用程式存取金鑰保存庫。 舉例來說，這類存取包括 Azure PowerShell 和 Azure 入口網站。 若要讓此案例正常運作， `objectId` 必須在存取原則中指定使用者的，且 `applicationId` 不得指定 _not_ 或必須是 `null` 。
-- **應用程式 plus-使用者** (有時稱為 _複合身分識別_ ) ：使用者必須從特定應用程式存取金鑰保存庫 _，而且_ 應用程式必須使用代理者驗證 (OBO) 流程來模擬使用者。 若要讓此案例正常運作 `applicationId` ， `objectId` 必須在存取原則中指定和。 會 `applicationId` 識別所需的應用程式，並 `objectId` 識別使用者。 目前，此選項不適用於資料平面 Azure RBAC (預覽版) 。
+- **僅限應用程式**：應用程式代表服務主體或受控識別。 對於定期需要從金鑰保存庫存取憑證、金鑰或密碼的應用程式，此身分識別是最常見的案例。 若要讓此案例正常運作， `objectId` 必須在存取原則中指定應用程式的，且 `applicationId` 不得 _not_ 指定或必須是 `null` 。
+- **僅限使用者**：使用者從租使用者中註冊的任何應用程式存取金鑰保存庫。 舉例來說，這類存取包括 Azure PowerShell 和 Azure 入口網站。 若要讓此案例正常運作， `objectId` 必須在存取原則中指定使用者的，且 `applicationId` 不得指定 _not_ 或必須是 `null` 。
+- **應用程式 plus-使用者** (有時稱為 _複合身分識別_) ：使用者必須從特定應用程式存取金鑰保存庫 _，而且_ 應用程式必須使用代理者驗證 (OBO) 流程來模擬使用者。 若要讓此案例正常運作 `applicationId` ， `objectId` 必須在存取原則中指定和。 會 `applicationId` 識別所需的應用程式，並 `objectId` 識別使用者。 目前，此選項不適用於資料平面 Azure RBAC (預覽版) 。
 
 在所有類型的存取中，應用程式會使用 Azure AD 進行驗證。 應用程式會根據應用程式類型使用任何[支援的驗證方法](../../active-directory/develop/authentication-vs-authorization.md)。 應用程式會取得平面中資源的權杖以便授與存取權。 視 Azure 環境而定，資源會是管理或資料平面中的端點。 應用程式會使用此權杖，對 Key Vault 傳送 REST API 要求。 若要深入了解，請參閱[整個驗證流程](../../active-directory/develop/v2-oauth2-auth-code-flow.md)。
 
@@ -74,8 +74,8 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 您可以使用 Azure AD 在資源群組中建立金鑰保存庫和管理存取權。 您可以對使用者或群組授與在資源群組中管理金鑰保存庫的能力。 您可以藉由指派適當的 Azure 角色，授與特定範圍層級的存取權。 若要授與使用者存取權以管理金鑰保存庫，您可以將預先定義的 [Key Vault 參與者](../../role-based-access-control/built-in-roles.md#key-vault-contributor) 角色指派給特定範圍的使用者。 下列範圍層級可以指派給 Azure 角色：
 
 - **訂** 用帳戶：在訂用帳戶層級指派的 Azure 角色會套用到該訂用帳戶內的所有資源群組和資源。
-- **資源群組** ：在資源群組層級指派的 Azure 角色會套用至該資源群組中的所有資源。
-- **特定資源** ：指派給特定資源的 Azure 角色會套用至該資源。 在此情況下，資源會是特定的金鑰保存庫。
+- **資源群組**：在資源群組層級指派的 Azure 角色會套用至該資源群組中的所有資源。
+- **特定資源**：指派給特定資源的 Azure 角色會套用至該資源。 在此情況下，資源會是特定的金鑰保存庫。
 
 有數個預先定義的角色。 如果預先定義的角色不符合您的需求，您可以定義您自己的角色。 如需詳細資訊，請參閱 [Azure 內建角色](../../role-based-access-control/built-in-roles.md)。 
 
@@ -130,19 +130,19 @@ Azure 角色型存取控制是一個替代的許可權模型，用來控制可�
 
 ## <a name="private-endpoint-connection"></a>私人端點連接
 
-如果需要完全封鎖公開 Key Vault 的風險，則可以使用 [Azure 私人端點](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) 。 Azure 私人端點是一種網路介面，可讓您以私人且安全地方式連線至 Azure Private Link 所支援的服務。 私人端點會使用您 VNet 中的私人 IP 位址，有效地將服務帶入您的 VNet 中。 服務的所有流量都可以透過私人端點路由傳送，因此不需要閘道、NAT 裝置、ExpressRoute 或 VPN 連線或公用 IP 位址。 虛擬網路和服務間的流量會在通過 Microsoft 骨幹網路時隨之減少，降低資料在網際網路中公開的風險。 您可連線到 Azure 資源的執行個體，以取得最高層級的存取控制細微性。
+如果需要完全封鎖公開 Key Vault 的風險，則可以使用 [Azure 私人端點](../../private-link/private-endpoint-overview.md) 。 Azure 私人端點是一種網路介面，可讓您以私人且安全地方式連線至 Azure Private Link 所支援的服務。 私人端點會使用您 VNet 中的私人 IP 位址，有效地將服務帶入您的 VNet 中。 服務的所有流量都可以透過私人端點路由傳送，因此不需要閘道、NAT 裝置、ExpressRoute 或 VPN 連線或公用 IP 位址。 虛擬網路和服務間的流量會在通過 Microsoft 骨幹網路時隨之減少，降低資料在網際網路中公開的風險。 您可連線到 Azure 資源的執行個體，以取得最高層級的存取控制細微性。
 
 針對 Azure 服務使用 Private Link 的常見案例：
 
-- **私下存取 Azure 平台上的服務** ：將您的虛擬網路連線至 Azure 中的服務，而不需要來源或目的地的公用 IP 位址。 服務提供者可以在自己的虛擬網路中呈現其服務，而取用者可以在其本機虛擬網路中存取這些服務。 Private Link 平台會透過 Azure 骨幹網路處理取用者與服務之間的連線。 
+- **私下存取 Azure 平台上的服務**：將您的虛擬網路連線至 Azure 中的服務，而不需要來源或目的地的公用 IP 位址。 服務提供者可以在自己的虛擬網路中呈現其服務，而取用者可以在其本機虛擬網路中存取這些服務。 Private Link 平台會透過 Azure 骨幹網路處理取用者與服務之間的連線。 
  
-- **內部部署及對等互連的網路** ：使用私人端點透過 ExpressRoute 私人對等互連、VPN 通道及對等互連虛擬網路，從內部部署裝置存取在 Azure 中執行的服務。 不需要設定公用對等互連或透過網際網路來連線至服務。 Private Link 可安全地將工作負載遷移至 Azure。
+- **內部部署及對等互連的網路**：使用私人端點透過 ExpressRoute 私人對等互連、VPN 通道及對等互連虛擬網路，從內部部署裝置存取在 Azure 中執行的服務。 不需要設定公用對等互連或透過網際網路來連線至服務。 Private Link 可安全地將工作負載遷移至 Azure。
  
-- **防止資料外洩** ：私人端點會對應到 PaaS 資源的執行個體，而不是整個服務。 取用者只能連線至特定資源。 服務中任何其他資源的存取都會遭到封鎖。 此機制可防範資料外洩風險。 
+- **防止資料外洩**：私人端點會對應到 PaaS 資源的執行個體，而不是整個服務。 取用者只能連線至特定資源。 服務中任何其他資源的存取都會遭到封鎖。 此機制可防範資料外洩風險。 
  
-- **觸及全球** ：私下連線至其他區域中執行的服務。 取用者的虛擬網路可能在區域 A 中，但可以連線至區域 B 中 Private Link 後方的服務。  
+- **觸及全球**：私下連線至其他區域中執行的服務。 取用者的虛擬網路可能在區域 A 中，但可以連線至區域 B 中 Private Link 後方的服務。  
  
-- **延伸至您自己的服務** ：啟用相同的體驗和功能，將您的服務私下呈現給 Azure 中的取用者。 藉由將您的服務放在標準 Azure Load Balancer 後方，您就可以將其用於 Private Link。 然後，取用者就可以使用本身虛擬網路中的私人端點，直接連線至您的服務。 您可以使用核准呼叫流程來管理連線要求。 Azure Private Link 可用於屬於不同 Azure Active Directory 租用戶的取用者和服務。 
+- **延伸至您自己的服務**：啟用相同的體驗和功能，將您的服務私下呈現給 Azure 中的取用者。 藉由將您的服務放在標準 Azure Load Balancer 後方，您就可以將其用於 Private Link。 然後，取用者就可以使用本身虛擬網路中的私人端點，直接連線至您的服務。 您可以使用核准呼叫流程來管理連線要求。 Azure Private Link 可用於屬於不同 Azure Active Directory 租用戶的取用者和服務。 
 
 如需私人端點的詳細資訊，請參閱 [Key Vault 與 Azure Private Link](./private-link-service.md)
 
@@ -151,15 +151,15 @@ Azure 角色型存取控制是一個替代的許可權模型，用來控制可�
 在此範例中，我們要開發一個應用程式，以使用 TLS/SSL 的憑證、Azure 儲存體儲存資料，以及使用 RSA 2048 位金鑰來加密 Azure 儲存體中的資料。 我們的應用程式會在 Azure 虛擬機器 (VM) (或虛擬機器擴展集) 中執行。 我們可以使用金鑰保存庫來儲存應用程式祕密。 我們可以儲存供應用程式用來向 Azure AD 進行驗證的啟動程序憑證。
 
 我們需要存取下列預存金鑰和祕密：
-- **TLS/SSL 憑證** ：用於 TLS/SSL。
-- **儲存體金鑰** ：用來存取儲存體帳戶。
-- **RSA 2048 位金鑰** ： Azure 儲存體用來包裝/解除包裝資料加密金鑰。
-- **應用程式受控識別** ：用來向 Azure AD 進行驗證。 授與 Key Vault 的存取權之後，應用程式就可以提取儲存體金鑰和憑證。
+- **TLS/SSL 憑證**：用於 TLS/SSL。
+- **儲存體金鑰**：用來存取儲存體帳戶。
+- **RSA 2048 位金鑰**： Azure 儲存體用來包裝/解除包裝資料加密金鑰。
+- **應用程式受控識別**：用來向 Azure AD 進行驗證。 授與 Key Vault 的存取權之後，應用程式就可以提取儲存體金鑰和憑證。
 
 我們必須定義下列角色，以指定誰可以管理、部署及稽核我們的應用程式：
-- **安全性小組** ：CSO (首席安全官) 辦公室的 IT 人員或類似的參與者。 安全性小組負責妥善保管祕密。 秘密可以包含 TLS/SSL 憑證、用於加密的 RSA 金鑰、連接字串和儲存體帳戶金鑰。
-- **開發人員和操作員** ：這些人負責開發應用程式，並將其部署在 Azure 中。 此小組的成員不屬於安全性工作人員。 這些人不應具備敏感性資料 (例如 TLS/SSL 憑證與 RSA 金鑰) 的存取權。 其所部署的應用程式才應具備敏感性資料的存取權。
-- **稽核員** ：此角色適用於不是開發小組成員或一般 IT 人員的參與者。 其會檢閱憑證、金鑰和祕密的使用與維護情形，以確保各項作業符合安全性標準。
+- **安全性小組**：CSO (首席安全官) 辦公室的 IT 人員或類似的參與者。 安全性小組負責妥善保管祕密。 秘密可以包含 TLS/SSL 憑證、用於加密的 RSA 金鑰、連接字串和儲存體帳戶金鑰。
+- **開發人員和操作員**：這些人負責開發應用程式，並將其部署在 Azure 中。 此小組的成員不屬於安全性工作人員。 這些人不應具備敏感性資料 (例如 TLS/SSL 憑證與 RSA 金鑰) 的存取權。 其所部署的應用程式才應具備敏感性資料的存取權。
+- **稽核員**：此角色適用於不是開發小組成員或一般 IT 人員的參與者。 其會檢閱憑證、金鑰和祕密的使用與維護情形，以確保各項作業符合安全性標準。
 
 另外還有一個不在我們應用程式範圍內的角色：訂用帳戶 (或資源群組) 系統管理員。 訂用帳戶管理員會設定安全性小組的初始存取權限。 其會使用資源群組 (具有此應用程式所需的資源)，將存取權授與安全性小組。
 
@@ -185,8 +185,8 @@ Azure 角色型存取控制是一個替代的許可權模型，用來控制可�
 | 角色 | 管理平面權限 | 資料平面許可權-保存庫存取原則 | 資料平面許可權-Azure RBAC (預覽版)   |
 | --- | --- | --- | --- |
 | 安全性小組 | [Key Vault 參與者](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | 憑證：所有作業 <br> 金鑰：所有作業 <br> 祕密：所有作業 | [Key Vault 系統管理員 (預覽) ](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) |
-| 開發人員和&nbsp;操作員 | Key Vault 部署權限<br><br> **注意** ：此權限可讓已部署的 VM 從金鑰保存庫擷取祕密。 | None | None |
-| 稽核員 | None | 憑證：清單 <br> 金鑰︰列出<br>密碼︰列出<br><br> **注意** ：此權限可讓稽核員檢查未在記錄中顯現的金鑰和密碼所具有的屬性 (標籤、啟用日和到期日)。 | [Key Vault 讀者 (預覽) ]https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview |
+| 開發人員和&nbsp;操作員 | Key Vault 部署權限<br><br> **注意**：此權限可讓已部署的 VM 從金鑰保存庫擷取祕密。 | None | None |
+| 稽核員 | None | 憑證：清單 <br> 金鑰︰列出<br>密碼︰列出<br><br> **注意**：此權限可讓稽核員檢查未在記錄中顯現的金鑰和密碼所具有的屬性 (標籤、啟用日和到期日)。 | [Key Vault 讀者 (預覽) ]https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview |
 | Azure 儲存體帳戶 | 無 | 索引鍵： get、list、wrapKey、unwrapKey <br> | [Key Vault 加密服務加密](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-preview) |
 | Application | None | 秘密： get、list <br> 憑證： get、list | [Key Vault 讀者 (預覽) ](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview)、 [Key Vault Secret 使用者 (preview) ](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
 

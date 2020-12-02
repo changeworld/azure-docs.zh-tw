@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 8957d8982a3bfe1da2811dc10d0c3e77a72fc288
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ec7a32739940d53d976e73a7e170df96a0acc245
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367596"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449511"
 ---
 # <a name="azure-key-vault-integration-with-azure-stack-edge"></a>Azure Key Vault 與 Azure Stack Edge 整合 
 
@@ -49,7 +49,7 @@ Azure Key Vault 雲端服務可用來安全地儲存及控制權杖、密碼、�
 
 - 為了防止意外刪除，金鑰保存庫上已啟用資源鎖定。 在金鑰保存庫上也會啟用虛刪除，如果意外刪除，則會在90天內還原金鑰保存庫。 如需詳細資訊，請參閱 [Azure Key Vault 虛刪除總覽](../key-vault/general/soft-delete-overview.md)
 
-    如果意外刪除金鑰保存庫，且未經過90天的清除保護持續時間，請遵循下列步驟來 [復原您的金鑰保存庫](../key-vault/general/soft-delete-powershell.md#recovering-a-key-vault)。 
+    如果意外刪除金鑰保存庫，且未經過90天的清除保護持續時間，請遵循下列步驟來 [復原您的金鑰保存庫](../key-vault/general/key-vault-recovery.md#list-recover-or-purge-soft-deleted-secrets-keys-and-certificates)。 
 
 - 如果您有現有的 Azure Stack Edge 資源，且 Azure Key Vault 與 Azure Stack Edge 資源整合，則不會受到影響。 您可以繼續使用現有的 Azure Stack Edge 資源。 
 
@@ -73,4 +73,3 @@ When you generate an activation key, the following events occur:
 ## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解如何 [產生啟用金鑰](azure-stack-edge-gpu-deploy-prep.md#get-the-activation-key)。
-

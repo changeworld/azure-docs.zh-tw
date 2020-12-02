@@ -2,14 +2,14 @@
 title: 資源提供者和資源類型
 description: 描述支援 Azure Resource Manager 的資源提供者。 它描述其架構、可用的 API 版本，以及可裝載資源的區域。
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 12/01/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a8adbce80d5e8f9ee9df2050d8f43363cbf57dc3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6413a1279c9c7a995bb144097e3db55d5f3a90d2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352094"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452100"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure 資源提供者和類型
 
@@ -32,7 +32,7 @@ ms.locfileid: "96352094"
 
 ## <a name="register-resource-provider"></a>註冊資源提供者
 
-使用資源提供者之前，必須先為資源提供者註冊您的 Azure 訂用帳戶。 註冊會將您的訂用帳戶設定為使用資源提供者。 預設會註冊某些資源提供者。 當您採取特定動作時，會自動註冊其他資源提供者。 例如，當您透過入口網站建立資源時，通常會為您註冊資源提供者。 若是其他情況，您可能需要手動註冊資源提供者。
+使用資源提供者之前，必須先為資源提供者註冊您的 Azure 訂用帳戶。 註冊會將您的訂用帳戶設定為使用資源提供者。 預設會註冊某些資源提供者。 當您採取特定動作時，會自動註冊其他資源提供者。 例如，當您透過入口網站建立資源時，通常會為您註冊資源提供者。 若是其他情況，您可能需要手動註冊資源提供者。 如需依預設註冊的資源提供者清單，請參閱 [Azure 服務的資源提供者](azure-services-resource-providers.md)。
 
 本文說明如何檢查資源提供者的註冊狀態，並視需要進行註冊。 您必須擁有對資源提供者進行作業的許可權 `/register/action` 。 許可權包含在「參與者」和「擁有者」角色中。
 

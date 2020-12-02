@@ -1,6 +1,6 @@
 ---
-title: 專用 SQL 集區中的資料表資料類型
-description: 在專用 SQL 集區中定義資料表資料類型的建議。
+title: '專用 SQL 集區中的資料表資料類型 (先前為 SQL DW) '
+description: 針對 Azure Synapse Analytics 中先前為 SQL DW) 的專用 SQL 集區 (定義資料表資料類型的建議。
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 01/06/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 5bb1d10978171b93ee697b37ee9ac0702d3f898c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6526ae2c15bd53af69854309632c83fa65af8d85
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313081"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449685"
 ---
-# <a name="table-data-types-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的資料表資料類型 
+# <a name="table-data-types-for-dedicated-sql-pool-formerly--sql-dw-in-azure-synapse-analytics"></a>專用 SQL 集區的資料表資料類型 (先前的 SQL DW) Azure Synapse Analytics 
 
 本文包含在專用 SQL 集區中定義資料表資料類型的建議。
 
 ## <a name="supported-data-types"></a>支援的資料類型
 
-專用的 SQL 集區支援最常使用的資料類型。 如需支援的資料類型清單，請參閱 CREATE TABLE 陳述式中的[資料類型](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#DataTypes)。
+專用的 SQL 集區 (先前的 SQL DW) 支援最常使用的資料類型。 如需支援的資料類型清單，請參閱 CREATE TABLE 陳述式中的[資料類型](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#DataTypes)。
 
 ## <a name="minimize-row-length"></a>將資料列長度最小化
 
@@ -51,7 +51,7 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
 
 ## <a name="workarounds-for-unsupported-data-types"></a><a name="unsupported-data-types"></a>不支援的資料類型可用的因應措施
 
-下列清單顯示專用 SQL 集區不支援的資料類型，並為不支援的資料類型提供有用的替代方案。
+下列清單顯示專用 SQL 集區 (先前的 SQL DW) 不支援的資料類型，並為不支援的資料類型提供有用的替代方案。
 
 | 不支援的資料類型 | 因應措施 |
 | --- | --- |

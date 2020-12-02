@@ -1,6 +1,6 @@
 ---
-title: 版本資訊
-description: Azure Synapse Analytics 的版本資訊。
+title: '專用 SQL 集區的版本資訊 (先前為 SQL DW) '
+description: 專用 SQL 集區的版本資訊 (先前的 SQL DW) Azure Synapse Analytics。
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
@@ -12,20 +12,20 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: b3c941139b12fdf19bf1080b4dddecb8ab761568
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 18f8df90cd59a1fb32024ec93674fed7eb49519a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676123"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451983"
 ---
-# <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics 版本資訊
+# <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics 版本資訊中先前 (SQL DW) 專用 SQL 集區
 
-本文摘要說明 Azure SQL 中 [Synapse SQL](sql-data-warehouse-overview-what-is.md) 最新版本的新功能與改進功能。 本文也會列出值得注意的內容更新，這些更新並未與該版本直接相關，但會在同一個時間範圍內發佈。 如需其他 Azure 服務的改進功能，請參閱[服務更新](https://azure.microsoft.com/updates)。
+本文將摘要說明最新版本的專用 SQL 集區的新功能和增強功能， [ (先前的 SQL DW) ](sql-data-warehouse-overview-what-is.md) Azure Synapse Analytics。 本文也會列出值得注意的內容更新，這些更新並未與該版本直接相關，但會在同一個時間範圍內發佈。 如需其他 Azure 服務的改進功能，請參閱[服務更新](https://azure.microsoft.com/updates)。
 
-## <a name="check-your-azure-synapse-version"></a>檢查您的 Azure Synapse 版本
+## <a name="check-your-dedicated-sql-pool-formerly-sql-dw-version"></a>檢查您專用的 SQL 集區 (先前的 SQL DW) 版本
 
-新功能會推出到所有區域，請檢查部署至您執行個體的版本和最新版本資訊是否提供此功能。 若要檢查版本，請透過 SQL Server Management Studio (SSMS) 連線至您的 SQL 集區，並執行 `SELECT @@VERSION;` 以傳回目前的版本。 使用此版本以確認 SQL 集區已套用哪個版本。 輸出中的日期會識別套用至您 SQL 集區的版本月份。 這僅適用於服務層級的改進。 
+新功能會推出到所有區域，請檢查部署至您執行個體的版本和最新版本資訊是否提供此功能。 若要檢查版本，請連接到您專用的 SQL 集區 (先前的 SQL DW) 透過 SQL Server Management Studio (SSMS) ，然後執行 `SELECT @@VERSION;` 以傳回目前的版本。 使用此版本來確認已將哪個版本套用至您的專用 SQL 集區 (先前為 SQL DW) 。 輸出中的日期會識別套用至您專用 SQL 集區 (先前為 SQL DW) 的月份。 這僅適用於服務層級的改進。 
 
 如需工具改進，請確定您已安裝在版本資訊中指定的正確版本。 
 
@@ -35,7 +35,7 @@ ms.locfileid: "92676123"
 > ```sql
 > SELECT SERVERPROPERTY('ProductVersion')
 >
-> --To return engine edition, use this command that returns 6 for Azure Synapse Analytics (formerly SQL Data Warehouse):
+> --To return engine edition, use this command that returns 6 for Azure Synapse Analytics:
 >
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
@@ -73,8 +73,8 @@ ms.locfileid: "92676123"
 |**使用複製命令 (預覽) 自動偵測 Parquet 檔案的架構**|[COPY 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)現在支援在載入 Parquet 檔案時進行自動結構描述偵測。 此命令會自動偵測 Parquet 檔案結構描述，並且在載入之前建立資料表。 前往下列電子郵件通訊群組清單，以啟用此功能： sqldwcopypreview@service.microsoft.com 。 |
 |**使用複製命令 (預覽版載入複雜的 Parquet 資料類型)**|[COPY 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)現在支援載入複雜的 Parquet 類型。 您可以將例如「地圖」和「清單」的複雜類型載入至字串資料行。  前往下列電子郵件通訊群組清單，以啟用此功能： sqldwcopypreview@service.microsoft.com 。 |
 |**使用 COPY 命令進行 Parquet 檔案的自動壓縮偵測**|[COPY 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)現在支援 Parquet 檔案的壓縮方法自動偵測。 前往下列電子郵件通訊群組清單，以啟用此功能： sqldwcopypreview@service.microsoft.com 。|
-|**其他載入建議**|[載入建議](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations)現在適用於 Synapse SQL。 當您應該分割檔案以取得最大輸送量時，請將您的儲存體帳戶與您的 SQL 集區共置，或在使用 SQLBulkCopy API 或 BCP 等載入公用程式時增加批次大小，以取得主動式通知|
-|**T-SQL 可更新散發資料行 (GA)**|使用者現在可以更新儲存在散發資料行中的資料。 如需詳細資訊，請參閱[在 Synapse SQL 集區中設計分散式資料表的指引](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute)。|
+|**其他載入建議**|[載入建議](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations)現在適用於 Synapse SQL。 當您應該分割您的檔案以取得最大輸送量時，請取得主動式通知、將您的儲存體帳戶與專用 SQL 集區共置 (先前為 SQL DW) ，或在使用 SQLBulkCopy API 或 BCP 等載入公用程式時，增加批次大小|
+|**T-SQL 可更新散發資料行 (GA)**|使用者現在可以更新儲存在散發資料行中的資料。 如需詳細資料，請參閱 [ (先前的 SQL DW) 在專用 sql 集區中設計分散式資料表的指引 ](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute) 。|
 |**T-SQL 更新/刪除來源...聯結 (GA)**|現在可以根據與其他資料表聯結的結果更新和刪除。 如需詳細資訊，請參閱[更新](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql?view=azure-sqldw-latest)和[刪除](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql?view=azure-sqldw-latest)文件。|
 |**T-SQL PREDICT (預覽)**|您現在可以在資料倉儲中預測機器學習模型，而不需要進行大型且複雜的資料移動。 T-SQL PREDICT 函式依賴開放式模型架構，並且會採用資料和機器學習模型作為輸入來產生預測。 如需詳細資訊，請參閱[文件](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)。|
 
@@ -120,7 +120,7 @@ ms.locfileid: "92676123"
 
 | 服務改進功能 | 詳細資料 |
 | --- | --- |
-|**Azure Private Link (預覽)**|使用 [Azure Private Link](https://azure.microsoft.com/blog/announcing-azure-private-link/)，您可以在您的虛擬網路 (VNet) 中建立私人端點，並且將其對應至您的 SQL 集區。 接著，您可以透過 VNet 中的私人 IP 位址來存取這些資源，以啟用透過 Azure ExpressRoute 私人對等互連和/或 VPN 閘道的內部部署連線。 整體來說，因為不需要您將其開啟到公用 IP 位址，所以可以簡化網路設定。 也可以保護資料外洩風險。 如需詳細資訊，請參閱[概觀](../../private-link/private-link-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)和 [SQL Analytics 文件](../../azure-sql/database/private-endpoint-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。|
+|**Azure Private Link (預覽)**|使用 [Azure Private Link](https://azure.microsoft.com/blog/announcing-azure-private-link/)，您可以在虛擬網路中建立私人端點 (VNet) ，並將其對應至您專用的 SQL 集區。 接著，您可以透過 VNet 中的私人 IP 位址來存取這些資源，以啟用透過 Azure ExpressRoute 私人對等互連和/或 VPN 閘道的內部部署連線。 整體來說，因為不需要您將其開啟到公用 IP 位址，所以可以簡化網路設定。 也可以保護資料外洩風險。 如需詳細資訊，請參閱[概觀](../../private-link/private-link-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)和 [SQL Analytics 文件](../../azure-sql/database/private-endpoint-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。|
 |**資料探索與分類 (GA)**|[資料探索與分類](../../azure-sql/database/data-discovery-and-classification-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)功能現已正式推出。 這項功能提供 **探索、分類、標記與保護** 資料庫中敏感性資料的進階功能。|
 |**Azure Advisor 單鍵整合**|Azure Synapse 中的 SQL Analytics 現在會直接與概觀刀鋒視窗中的 Azure Advisor 建議整合，並提供單鍵體驗。 您現在可以在概觀刀鋒視窗中探索建議，而不用瀏覽至 Azure Advisor 刀鋒視窗。 在[這裡](sql-data-warehouse-concept-recommendations.md)了解更多建議。|
 |**讀取認可快照隔離 (預覽)**|您可以使用 ALTER DATABASE 來啟用或停用使用者資料庫的快照隔離。  若要避免影響目前的工作負載，您可以在資料庫維護期間設定此選項，或等到資料庫沒有其他作用中連線時進行設定。 如需詳細資訊，請參閱 [ALTER DATABASE SET 選項](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。|
@@ -208,13 +208,13 @@ ms.locfileid: "92676123"
 |**加速資料庫復原 (ADR)**|Azure Synapse 加速資料庫復原 (ADR) 現在處於公開預覽狀態。 ADR 是新的 SQL 資料庫引擎功能，藉由完整重新設計目前的復原程序，來大幅改善資料庫可用性 (特別是在有長時間執行的交易時)。 ADR 的主要優點是快速且一致的資料庫復原，以及即時的交易回復。|
 |**Azure 監視器資源記錄**|藉由直接與 Azure 監視器資源記錄整合，Azure Synapse 現在提供更強的分析工作負載深入解析。 這項新功能可讓開發人員分析更長一段時間內的工作負載行為，並在充分了解資訊的情況下，做出查詢最佳化或容量管理決策。 我們現在透過 [Azure 監視器資源記錄](../../azure-monitor/platform/data-platform.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#logs)引進了外部的記錄處理程序，這些記錄提供了有關資料倉儲工作負載的額外深入解析。 只要按一下按鈕，您就可以使用 [Log Analytics](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 為歷程查詢效能疑難排解功能設定資源記錄。 Azure 監視器資源記錄透過將記錄儲存至儲存體帳戶以供稽核，來支援可自訂的保留期間；也支援將記錄串流至事件中樞，以獲得近乎即時的遙測深入解析功能；以及使用具有記錄查詢的 Log Analytics 來分析記錄的功能。 資源記錄是由您資料倉儲的遙測檢視所組成，其等同於Azure Synapse 中的 Synapse SQL 最常使用的效能疑難排解 DMV。 我們已為此初始版本啟用下列系統動態管理檢視的檢視：<br/><br/>&bull; &nbsp; [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
 |**資料行存放區記憶體管理**|隨著壓縮的資料行存放區資料列群組數目增加，管理這些資料列群組的內部資料行區段中繼資料所需的記憶體會隨之增加。  因此，查詢效能和針對某些資料行存放區動態管理檢視 (Dmv) 所執行的查詢可能會降級。  此版本已進行改善，讓這些情況的內部中繼資料大小達到最佳化，進而改善這類查詢的體驗和效能。|
-|**Azure Data Lake Storage Gen2 整合 (GA)**|Synapse Analytics 現在已與 Azure Data Lake Storage Gen2 原生整合。 客戶現在可以使用 ABFS 中的外部資料表將資料載入至 Synapse SQL 集區。 這項功能可讓客戶與其 Data Lake Storage Gen2 中的 Data Lake 整合。|
+|**Azure Data Lake Storage Gen2 整合 (GA)**|Synapse Analytics 現在已與 Azure Data Lake Storage Gen2 原生整合。 客戶現在可以使用 ABFS 中的外部資料表，將資料載入 (先前為 SQL DW) 的專用 SQL 集區。 這項功能可讓客戶與其 Data Lake Storage Gen2 中的 Data Lake 整合。|
 |**值得注意的錯誤 (bug)**|資料倉儲 DW2000 上小型資源類別中的 CETAS to Parquet 失敗及其他 - 此修正程式正確地識別出 Create External Table As to Parquet 程式碼路徑中的 Null 參考。<br/><br/>在某些 CTAS 作業中，識別欄位值可能會遺失 - 在 CTASed 至另一個資料表時，可能不會保留識別欄位的值。 在[部落格](https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/)中報告。<br/><br/>當查詢仍在執行時，在某些情況下終止工作階段會發生內部失敗 - 如果在查詢仍在執行時終止工作階段，則此修正會觸發 InvalidOperationException。<br/><br/>(已在 2018 年 11 月部署) 當客戶嘗試使用 PolyBase 從 ADLS (Gen1) 載入多個小型檔案時，會有次佳的效能體驗。 - 系統效能會在 AAD 安全性權杖驗證期間受到阻礙。 效能問題已藉由啟用安全性權杖的快取來降低影響。 |
 | | |
 
 ## <a name="next-steps"></a>後續步驟
 
-- [建立 SQL 集區](create-data-warehouse-portal.md)
+- [建立專用的 SQL 集區 (先前的 SQL DW) ](create-data-warehouse-portal.md)
 
 ## <a name="more-information"></a>詳細資訊
 

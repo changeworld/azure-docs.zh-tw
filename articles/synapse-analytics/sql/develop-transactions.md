@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a2597a4bc6c5ed44f0e0050be3f69d7e840665e5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c4fe512ff6db24498148ffa724c3144a2f61823f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323838"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451713"
 ---
 # <a name="use-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用具有專用 SQL 集區的交易
 
@@ -27,7 +27,7 @@ ms.locfileid: "93323838"
 
 ## <a name="transaction-isolation-levels"></a>交易隔離層級
 
-SQL 集區實作 ACID 交易。 交易式支援的隔離等級預設為 READ UNCOMMITTED。  您可在連線至 master 資料庫時，開啟使用者資料庫的 [READ_COMMITTED_SNAPSHOT] 資料庫選項，將其變更為 [READ COMMITTED SNAPSHOT ISOLATION]。  
+專用的 SQL 集區會實行 ACID 交易。 交易式支援的隔離等級預設為 READ UNCOMMITTED。  您可在連線至 master 資料庫時，開啟使用者資料庫的 [READ_COMMITTED_SNAPSHOT] 資料庫選項，將其變更為 [READ COMMITTED SNAPSHOT ISOLATION]。  
 
 啟用之後，此資料庫中所有交易都會在 READ COMMITTED SNAPSHOT ISOLATION 的狀態下執行，且將不會接受在工作階段層級上設定為 READ UNCOMMITTED。 如需詳細資料，請參閱 [ALTER DATABASE SET 選項 (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest&preserve-view=true)。
 
@@ -89,7 +89,7 @@ SQL 集區實作 ACID 交易。 交易式支援的隔離等級預設為 READ UNC
 
 ## <a name="transaction-state"></a>交易狀態
 
-SQL 集區會使用 XACT_STATE() 函式 (採用值 -2) 來報告失敗的交易。 這個值表示交易已失敗並標示為僅可復原。
+專用的 SQL 集區會使用 XACT_STATE ( # A1 函式，使用值-2 來報告失敗的交易。 這個值表示交易已失敗並標示為僅可復原。
 
 > [!NOTE]
 > XACT_STATE 函式使用 -2 表示失敗的交易，以代表 SQL Server 中不同的行為。 SQL Server 使用值 -1 來代表無法認可的交易。 SQL Server 可以容忍交易內的某些錯誤，而不需將其標示為無法認可。 例如，`SELECT 1/0` 會導致錯誤，但不會強制交易進入無法認可的狀態。 SQL Server 也允許讀取無法認可的交易。 不過，專用的 SQL 集區並不會讓您這麼做。 如果在專用的 SQL 集區交易中發生錯誤，則會自動進入-2 狀態，而且您將無法再進行任何 select 語句，直到該語句回復為止。 因此，檢查您的應用程式程式碼是否使用 XACT_STATE() 就相當重要，因為您可能需要修改程式碼。
@@ -193,7 +193,7 @@ THROW 是在專用 SQL 集區中引發例外狀況的新式實作為，但也支
 
 ## <a name="limitations"></a>限制
 
-SQL 集區有一些與交易相關的其他限制。 如下所示：
+專用的 SQL 集區有一些與交易相關的其他限制。 如下所示：
 
 * 沒有分散式交易
 * 不允許巢狀交易
@@ -204,4 +204,4 @@ SQL 集區有一些與交易相關的其他限制。 如下所示：
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解最佳化交易，請參閱[交易的最佳做法](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。 另外也提供 [sql 集](best-practices-sql-pool.md) 區和 [無伺服器 sql 集區 (preview) ](best-practices-sql-on-demand.md)的其他最佳做法指南。
+若要深入了解最佳化交易，請參閱[交易的最佳做法](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。 另外也提供適用于 [專用 sql 集](best-practices-sql-pool.md) 區和 [無伺服器 SQL 集](best-practices-sql-on-demand.md)區的其他最佳做法指南。

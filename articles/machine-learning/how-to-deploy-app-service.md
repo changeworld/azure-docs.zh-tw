@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 491fa39bed9e73a41f5a29a9040df052b6945552
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 5f3861d43715ed68116d25206efe4347ea96805c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578020"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452137"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>將機器學習模型部署至 Azure App Service (preview) 
 
@@ -29,7 +29,7 @@ ms.locfileid: "94578020"
 使用 Azure Machine Learning，您就可以從已定型的機器學習模型建立 Docker 映射。 此影像包含可接收資料的 web 服務，將資料提交至模型，然後傳迴響應。 Azure App Service 可以用來部署映射，並提供下列功能：
 
 * 增強安全性的 Advanced [authentication](../app-service/configure-authentication-provider-aad.md) 。 驗證方法包括 Azure Active Directory 和多重要素驗證。
-* [自動](../azure-monitor/platform/autoscale-get-started.md?toc=%252fazure%252fapp-service%252ftoc.json) 調整，而不需要重新部署。
+* [自動](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json) 調整，而不需要重新部署。
 * 用戶端與服務之間安全通訊的[TLS 支援](../app-service/configure-ssl-certificate-in-code.md)。
 
 如需 Azure App Service 所提供之功能的詳細資訊，請參閱 [App Service 總覽](../app-service/overview.md)。
@@ -56,7 +56,7 @@ ms.locfileid: "94578020"
 
 在部署之前，您必須定義以 web 服務的形式執行模型所需的內容。 下列清單描述部署所需的主要專案：
 
-* __輸入腳本__ 。 此腳本會接受要求、使用模型來評分要求，並傳回結果。
+* __輸入腳本__。 此腳本會接受要求、使用模型來評分要求，並傳回結果。
 
     > [!IMPORTANT]
     > 專案腳本為您的模型所特有;它必須瞭解傳入要求資料的格式、您的模型所預期的資料格式，以及傳回給用戶端的資料格式。
@@ -115,7 +115,7 @@ package.wait_for_creation(show_output=True)
 print(package.location)
 ```
 
-若 `show_output=True` 為，則會顯示 Docker 組建進程的輸出。 程式完成後，就會在您工作區的 Azure Container Registry 中建立映射。 建立映射之後，就會顯示 Azure Container Registry 中的位置。 傳回的位置格式為 `<acrinstance>.azurecr.io/package@sha256:<imagename>` 。 例如，`myml08024f78fd10.azurecr.io/package@sha256:20190827151241`。
+若 `show_output=True` 為，則會顯示 Docker 組建進程的輸出。 程式完成後，就會在您工作區的 Azure Container Registry 中建立映射。 建立映射之後，就會顯示 Azure Container Registry 中的位置。 傳回的位置格式為 `<acrinstance>.azurecr.io/package@sha256:<imagename>` 。 例如： `myml08024f78fd10.azurecr.io/package@sha256:20190827151241` 。
 
 > [!IMPORTANT]
 > 儲存位置資訊，因為它會在部署映射時使用。
@@ -247,7 +247,7 @@ az webapp show --name <app-name> --resource-group myresourcegroup
 
 ## <a name="use-the-web-app"></a>使用 Web 應用程式
 
-將要求傳遞給模型的 web 服務位於 `{baseurl}/score` 。 例如，`https://<app-name>.azurewebsites.net/score`。 下列 Python 程式碼示範如何將資料提交至 URL，並顯示回應：
+將要求傳遞給模型的 web 服務位於 `{baseurl}/score` 。 例如： `https://<app-name>.azurewebsites.net/score` 。 下列 Python 程式碼示範如何將資料提交至 URL，並顯示回應：
 
 ```python
 import requests
@@ -271,7 +271,7 @@ print(response.json())
 ## <a name="next-steps"></a>後續步驟
 
 * 瞭解如何在 [Linux 上的 App Service](/azure/app-service/containers/) 檔中設定您的 Web 應用程式。
-* 深入瞭解如何 [在 Azure 中開始使用自動](../azure-monitor/platform/autoscale-get-started.md?toc=%252fazure%252fapp-service%252ftoc.json)調整規模。
+* 深入瞭解如何 [在 Azure 中開始使用自動](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)調整規模。
 * [在您的 Azure App Service 中使用 TLS/SSL 憑證](../app-service/configure-ssl-certificate-in-code.md)。
 * [設定您的 App Service 應用程式以使用 Azure Active Directory 登入](../app-service/configure-authentication-provider-aad.md)。
 * [取用部署為 Web 服務的 ML 模型](how-to-consume-web-service.md)

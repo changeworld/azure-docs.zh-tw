@@ -1,6 +1,6 @@
 ---
-title: 驗證
-description: 了解如何使用 Azure Active Directory (Azure AD) 或 SQL Server 驗證來驗證 Azure Synapse Analytics。
+title: '專用 SQL 集區的驗證 (先前為 SQL DW) '
+description: 瞭解如何使用 Azure Active Directory (Azure AD) 或 SQL Server 驗證，在 Azure Synapse Analytics 中 (先前的 SQL DW) 驗證專用的 SQL 集區。
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -12,24 +12,24 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: 29709dc03ee3a06bdf2aec2587909a08ee13504e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2b5ca024046c5bc46fff756c55688d3ff0cfea1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85206725"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451964"
 ---
-# <a name="authenticate-to-azure-synapse-analytics"></a>向 Azure Synapse Analytics 進行驗證
+# <a name="authenticate-to-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中 (先前的 SQL DW) 驗證專用的 SQL 集區
 
-了解如何使用 Azure Active Directory (AAD) 或 SQL Server 驗證來向 Azure Synapse 中的 Synapse SQL 進行驗證。
+瞭解如何使用 Azure Active Directory (Azure AD) 或 SQL Server 驗證，在 Azure Synapse 中驗證專用 SQL 集區 (先前的 SQL DW) 。
 
-若要連線到 SQL 集區，您必須傳入安全性認證進行驗證用途。 建立連線時，會設定特定的連線設定，以做為建立查詢工作階段的一部分。  
+若要連線到專用的 SQL 集區 (先前的 SQL DW) ，您必須傳入安全性認證以供驗證之用。 建立連線時，會設定特定的連線設定，以做為建立查詢工作階段的一部分。  
 
-如需安全性以及如何啟用資料倉儲連線的詳細資訊，請參閱[保護資料庫文件](sql-data-warehouse-overview-manage-security.md)。
+如需安全性的詳細資訊，以及如何啟用與您專用的 SQL 集區的連接 (先前為 SQL DW) ，請參閱 [保護資料庫檔案](sql-data-warehouse-overview-manage-security.md)集。
 
 ## <a name="sql-authentication"></a>SQL 驗證
 
-若要連線到 SQL 集區，則必須提供下列資訊：
+若要連接到先前 SQL DW)  (專用 SQL 集區，您必須提供下列資訊：
 
 * 完整伺服器名稱
 * 指定 SQL 驗證
@@ -45,9 +45,9 @@ ms.locfileid: "85206725"
 > [!NOTE]
 > 變更連線的資料庫時，Transact-SQL 陳述式 **USE MyDatabase;** 不受支援。 如需使用 SSDT 連線到 SQL 集區的指引，請參閱[使用 Visual Studio 查詢](sql-data-warehouse-query-visual-studio.md)一文。
 
-## <a name="azure-active-directory-aad-authentication"></a>Azure Active Directory (AAD) 驗證
+## <a name="azure-active-directory-authentication"></a>Azure Active Directory 驗證
 
-[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 驗證機制使用 Azure Active Directory (Azure AD) 中的身分識別連線至 SQL 集區。 您可以使用 Azure Active Directory 驗證，在單一中央位置集中管理資料庫使用者和其他 Microsoft 服務的身分識別。 中央識別碼管理提供單一位置以管理 Azure Synapse 使用者並簡化權限管理。
+[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 驗證機制使用 Azure Active Directory (Azure AD) 中的身分識別連線至 SQL 集區。 您可以使用 Azure Active Directory 驗證，在單一中央位置集中管理資料庫使用者和其他 Microsoft 服務的身分識別。 中央識別碼管理提供單一位置來管理專用的 SQL 集區 (先前為 SQL DW) 使用者，並簡化版權管理。
 
 ### <a name="benefits"></a>優點
 
@@ -57,7 +57,7 @@ Azure Active Directory 的優點包括：
 * 協助停止跨伺服器使用過多的使用者身分識別。
 * 允許在單一位置的密碼替換
 * 使用外部 (Azure AD) 群組來管理資料庫權限。
-* 藉由啟用 Azure Active Directory 所支援的整合式 Windows 驗證和 o 檔案形式的驗證，來消除儲存密碼的程式。
+* 藉由啟用整合式 Windows 驗證和 Azure Active Directory 支援的其他形式驗證來避免儲存密碼。
 * 使用自主資料庫使用者，在資料庫層級驗證身分。
 * 針對連線到 SQL 集區的應用程式支援權杖型驗證。
 * 針對包括 [SQL Server Management Studio](../../azure-sql/database/authentication-mfa-ssms-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 和 [SQL Server Data Tools](/sql/ssdt/azure-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 的各種工具，透過 Active Directory 通用驗證支援多重要素驗證。

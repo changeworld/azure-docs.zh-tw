@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 10/13/2020
+ms.date: 11/30/2020
 ms.author: alkohli
-ms.openlocfilehash: b0377d7b209da76b03a115dc82831eeb00e1ff95
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 8d17528728c5519244210217b35d6cd6a3afe715
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047075"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449130"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>更新您的 Azure Stack Edge Pro GPU 
 
@@ -22,9 +22,9 @@ ms.locfileid: "92047075"
 本文中所述的程式是使用不同版本的軟體來執行，但程式對於目前的軟體版本會維持不變。
 
 > [!IMPORTANT]
-> - 更新 **2010** 對應于裝置上的 **2.1.1377.2170** 軟體版本。 如需此更新的詳細資訊，請參閱 [版本](azure-stack-edge-gpu-2009-release-notes.md)資訊。
+> - 更新 **2011** 是目前的更新。 <!--and corresponds to **2.1.1377.2170** software version on your device.--> 如需此更新的詳細資訊，請參閱 [版本](azure-stack-edge-gpu-2011-release-notes.md)資訊。
 >
-> - 請記住，安裝更新或 Hotfix 會重新啟動您的裝置。 此更新需要您依序套用兩個更新。 首先，套用裝置軟體更新，然後 Kubernetes 更新。 假設 Azure Stack Edge Pro 是單一節點裝置，任何進行中的 i/o 都會中斷，而您的裝置會在裝置軟體更新時遇到最多30分鐘的停機時間。
+> - 請記住，安裝更新或 Hotfix 會重新啟動您的裝置。 此更新包含裝置軟體更新和 Kubernetes 更新。 假設 Azure Stack Edge Pro 是單一節點裝置，任何進行中的 i/o 都會中斷，而您的裝置會在更新時遇到最多30分鐘的停機時間。
 
 若要在裝置上安裝更新，您必須先設定補救伺服器的位置。 設定補救伺服器之後，您可以透過 Azure 入口網站 UI 或本機 web UI 來套用更新。
 
@@ -44,11 +44,11 @@ ms.locfileid: "92047075"
     
     WSUS 伺服器是用來透過管理主控台來管理和發佈更新。 WSUS 伺服器也可以是組織內其他 WSUS 伺服器的更新來源。 做為更新來源的 WSUS 伺服器稱為「上游伺服器」。 在 WSUS 實作中，網路中至少要有一部 WSUS 伺服器必須能夠連線到 Microsoft Update，以取得可用的更新資訊。 身為系統管理員，您可以根據網路安全性和設定，決定有多少其他 WSUS 伺服器可以與 Microsoft Update 直接連線。
     
-    如需詳細資訊，請移至 [Windows Server Update Services (WSUS) ](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus)
+    如需詳細資訊，請移至 [Windows Server Update Services (WSUS) ](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus)
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
-建議您透過 Azure 入口網站安裝更新。 裝置會自動掃描一天一次的更新。 一旦有可用的更新，您就會在入口網站中看到通知。 然後您就可以下載並安裝更新。 
+建議您透過 Azure 入口網站安裝更新。 裝置會每天自動掃描更新一次。 一旦有可用的更新，您就會在入口網站中看到通知。 接著，您可以下載並安裝更新。 
 
 > [!NOTE]
 > 在您繼續安裝更新之前，請確定裝置狀況良好且狀態顯示為 [ **線上** ]。
@@ -84,19 +84,19 @@ ms.locfileid: "92047075"
 
     ![更新7之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-6.png)
 
-    如果您選擇只下載更新，請選取通知以開啟 [ **裝置更新** ] 分頁。 選取 [安裝]  。
+    如果您選擇只下載更新，請選取通知以開啟 [ **裝置更新** ] 分頁。 選取 [安裝]。
   
     ![Update 8 之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-7.png)
 
-5. 您會看到安裝正在進行中的通知。
+5. 您會看到安裝正在進行中的通知。 
 
     ![Update 9 之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-8.png)
-
+ 
     入口網站也會顯示資訊警示，指出正在進行安裝。 裝置已離線且處於維護模式。
-    
+   
     ![更新10之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-9.png)
 
-6. 由於這是1個節點的裝置，因此裝置會在安裝更新之後重新開機。 重新開機期間的重大警示會指出裝置的信號遺失。
+6. 由於這是1個節點的裝置，因此裝置會在安裝更新之後重新開機。 重新開機期間的重大警示表示裝置的信號遺失。
 
     ![Update 11 之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-10.png)
 
@@ -117,27 +117,25 @@ ms.locfileid: "92047075"
 
     ![Update 14 之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-15.png)
 
-9. 您會再次看到有可用更新的通知。 這些是 Kubernetes 更新。 選取通知，或從頂端命令列中選取 [ **更新裝置** ]。
+<!--9. You will again see a notification that updates are available. These are the Kubernetes updates. Select the notification or select **Update device** from the top command bar.
 
-    ![Update 15 之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-16.png)
+    ![Software version after update 15](./media/azure-stack-edge-gpu-install-update/portal-update-16.png)
 
-10. 下載 Kubernetes 更新。 相較于先前的更新套件，您可以看到套件大小不同。
+10. Download the Kubernetes updates. You can see that the package size is different when compared to the previous update package.
 
-    ![Update 16 之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-17.png)
+    ![Software version after update 16](./media/azure-stack-edge-gpu-install-update/portal-update-17.png)
 
-    安裝程式與裝置更新的程式相同。 首先會下載更新。
+    The process of installation is identical to that of device updates. First the updates are downloaded.
 
-    ![Update 17 之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-18.png)    
+    ![Software version after update 17](./media/azure-stack-edge-gpu-install-update/portal-update-18.png)    
     
-11. 下載更新之後，您就可以安裝更新。 
+11. Once the updates are downloaded, you can then install the updates. 
 
-    ![Update 18 之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-19.png)
+    ![Software version after update 18](./media/azure-stack-edge-gpu-install-update/portal-update-19.png)
 
-    安裝更新時，裝置會進入維護模式。 裝置不會重新開機以進行 Kubernetes 更新。 
+    As the updates are installed, the device is put into maintenance mode. The device does not restart for the Kubernetes updates. -->
 
-    成功安裝 Kubernetes 更新之後，橫幅通知就會消失，因為不需要進一步的更新。 您的裝置現在已有最新版本的裝置軟體和 Kubernetes。
-
-    ![更新19之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-20.png)
+成功安裝裝置軟體和 Kubernetes 更新後，橫幅通知就會消失。 您的裝置現在已有最新版本的裝置軟體和 Kubernetes。
 
 
 ## <a name="use-the-local-web-ui"></a>使用本機 Web UI
@@ -163,7 +161,7 @@ ms.locfileid: "92047075"
 
 2. 在 [Microsoft Update 目錄] 的 [搜尋] 方塊中，輸入知識庫 (KB) 您要下載之更新的修正程式號碼或條款。 例如，輸入 **Azure Stack Edge Pro**]，然後按一下 [ **搜尋**]。
    
-    更新清單會顯示為 **Azure Stack Edge 更新 2010**。
+    更新清單會顯示為 **Azure Stack Edge 更新 2011**。
    
     <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)-->
 
@@ -198,7 +196,7 @@ ms.locfileid: "92047075"
 
 5. 更新會開始進行。 成功更新裝置之後，裝置就會重新啟動。 在這段持續時間會無法存取本機 UI。
    
-6. 重新啟動完成後，您就會進入 [登入]**** 頁面。 若要確認裝置軟體是否已更新，請在本機 web UI 中，移至 [**維護**  >  **軟體更新**]。 在目前的版本中，顯示的軟體版本應該是 **2.1.1377.2170**。
+6. 重新啟動完成後，您就會進入 [登入] 頁面。 若要確認裝置軟體是否已更新，請在本機 web UI 中，移至 [**維護**  >  **軟體更新**]。 針對目前版本，所顯示的軟體版本應該是 **Azure Stack Edge 2011**。
 
    <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)--> 
 

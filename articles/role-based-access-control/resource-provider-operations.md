@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 11/18/2020
 ms.custom: generated
-ms.openlocfilehash: ceb1aea1edcc4916fdd802673c3145b12de01801
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 8225d50e9991ff632fb831c63e194551dbe02b31
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980910"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451882"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure 資源提供者作業
 
@@ -3862,7 +3862,7 @@ Azure 服務： [Azure Cosmos DB](../cosmos-db/index.yml)
 
 ### <a name="microsoftsql"></a>Microsoft.Sql
 
-Azure 服務： [Azure SQL Database](../azure-sql/database/index.yml)、 [azure SQL 受控執行個體](../azure-sql/managed-instance/index.yml) [Azure Synapse Analytics (先前的 SQL 資料倉儲) ](../synapse-analytics/sql-data-warehouse/index.yml)
+Azure 服務： [Azure SQL Database](../azure-sql/database/index.yml)、 [azure SQL 受控執行個體](../azure-sql/managed-instance/index.yml) [Azure Synapse Analytics](../synapse-analytics/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -7490,7 +7490,7 @@ Azure 服務： [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft.OffAzure/VMwareSites/vcenters/read | 取得 VMware vCenter 的屬性 |
 > | Microsoft.OffAzure/VMwareSites/vcenters/write | 建立或更新 VMware vCenter |
 
-## <a name="monitor"></a>監視器
+## <a name="monitor"></a>監視
 
 ### <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 

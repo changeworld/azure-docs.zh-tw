@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 4cb707896aa7874aa2bf287723e8a53d7d6d974c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: bcb8cc6da3d2fc631058386103575549e376a32c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577782"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452159"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>規劃商用 marketplace 的 Azure 應用程式供應專案
 
@@ -33,18 +33,18 @@ ms.locfileid: "94577782"
 
 當您針對商用 marketplace 規劃 Azure 應用程式供應專案時，請參閱下列資源。
 
-- [了解 Azure Resource Manager 範本](/azure/azure-resource-manager/templates/template-syntax)
+- [了解 Azure Resource Manager 範本](../azure-resource-manager/templates/template-syntax.md)
 - 快速入門：
     - [Azure 快速入門範本](https://azure.microsoft.com/documentation/templates/)
     - [Azure 範本最佳作法指南](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
-    - [發佈應用程式定義](/azure/managed-applications/publish-service-catalog-app)
-    - [部署服務目錄應用程式](/azure/managed-applications/deploy-service-catalog-quickstart)
+    - [發佈應用程式定義](../azure-resource-manager/managed-applications/publish-service-catalog-app.md)
+    - [部署服務目錄應用程式](../azure-resource-manager/managed-applications/deploy-service-catalog-quickstart.md)
 - 教學課程：
-    - [建立定義檔案](/azure/managed-applications/publish-service-catalog-app)
+    - [建立定義檔案](../azure-resource-manager/managed-applications/publish-service-catalog-app.md)
 - 範例：
-    - [Azure CLI](/azure/managed-applications/cli-samples)
-    - [Azure PowerShell](/azure/managed-applications/powershell-samples)
-    - [受控應用程式解決方案](/azure/managed-applications/sample-projects)
+    - [Azure CLI](../azure-resource-manager/managed-applications/cli-samples.md)
+    - [Azure PowerShell](../azure-resource-manager/managed-applications/powershell-samples.md)
+    - [受控應用程式解決方案](../azure-resource-manager/managed-applications/sample-projects.md)
 
 [為 Azure Marketplace 建置解決方案範本和受控應用程式](https://channel9.msdn.com/Events/Build/2018/BRK3603) \(英文\) 這部影片可針對 Azure 應用程式供應項目類型提供完整的介紹：
 
@@ -59,12 +59,12 @@ ms.locfileid: "94577782"
 
 選擇下列其中一種指令碼環境，或兩者均使用，以協助管理 Azure 應用程式：
 
-- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Azure PowerShell](/powershell/azure/)
+- [Azure CLI](/cli/azure)
 
 建議您將下列工具新增至開發環境：
 
-- [Azure 儲存體總管](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+- [Azure 儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md)
 - 具有下列擴充功能的 [Visual Studio Code](https://code.visualstudio.com/) \(英文\)：
     - 擴充功能：[Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) \(英文\)
     - 擴充功能：[Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify) \(英文\)
@@ -140,21 +140,21 @@ ms.locfileid: "94577782"
 
 為了讓您更輕鬆地建立您的供應專案，請事先準備一些專案。 除非另有說明，否則需要下列專案。
 
-- **名稱** ：此名稱會顯示為商業市集中您的供應專案清單標題。 名稱可能是商標， 不能包含表情符號 (除非屬於是商標和著作權符號)，且有 50 個字元的上限。
-- **搜尋結果摘要** ：以100個字元或更少的純文字，將供應專案的用途或功能描述為單一句子（不含分行符號的純文字）。 此摘要可用於 (s) 搜尋結果的商業市場清單。
-- **簡短描述** ：提供最多256個字元的純文字。 此摘要會顯示在供應專案的詳細資料頁面上。
-- **描述** ：此描述會顯示在 Azure Marketplace 清單 (s) 總覽中。 請考慮包括價值主張、主要優點、預定的使用者群、任何類別或產業關聯、應用程式內購買商機、供應專案所能解決的客戶需求或難題、任何必要的洩漏，以及深入瞭解的連結。
+- **名稱**：此名稱會顯示為商業市集中您的供應專案清單標題。 名稱可能是商標， 不能包含表情符號 (除非屬於是商標和著作權符號)，且有 50 個字元的上限。
+- **搜尋結果摘要**：以100個字元或更少的純文字，將供應專案的用途或功能描述為單一句子（不含分行符號的純文字）。 此摘要可用於 (s) 搜尋結果的商業市場清單。
+- **簡短描述**：提供最多256個字元的純文字。 此摘要會顯示在供應專案的詳細資料頁面上。
+- **描述**：此描述會顯示在 Azure Marketplace 清單 (s) 總覽中。 請考慮包括價值主張、主要優點、預定的使用者群、任何類別或產業關聯、應用程式內購買商機、供應專案所能解決的客戶需求或難題、任何必要的洩漏，以及深入瞭解的連結。
 
     這個文字方塊具有 rich text 編輯器控制項，可用來讓您的描述更吸引人。 您也可以使用 HTML 標籤來格式化您的描述。 您最多可以在此方塊中輸入3000個字元的文字，其中包含 HTML 標籤與空格。 如需更多秘訣，請參閱「 [撰寫絕佳的應用程式描述](/windows/uwp/publish/write-a-great-app-description) 」和「 [商業 marketplace 供應專案描述」中支援的 HTML 標籤](supported-html-tags.md)。
 
-- **搜尋關鍵字** (選擇性) ：提供最多三個搜尋關鍵字，讓客戶可以用來在線上商店尋找您的供應專案。 為了獲得最佳結果，也請在您的描述中使用這些關鍵字。 您不需要包含供應專案 **名稱** 和 **描述** 。 該文字會自動包含在搜尋中。
-- **隱私權原則連結** ：公司隱私權原則的 URL。 您必須提供有效的隱私權原則，並負責確保您的應用程式符合隱私權法律和規定。
+- **搜尋關鍵字** (選擇性) ：提供最多三個搜尋關鍵字，讓客戶可以用來在線上商店尋找您的供應專案。 為了獲得最佳結果，也請在您的描述中使用這些關鍵字。 您不需要包含供應專案 **名稱** 和 **描述**。 該文字會自動包含在搜尋中。
+- **隱私權原則連結**：公司隱私權原則的 URL。 您必須提供有效的隱私權原則，並負責確保您的應用程式符合隱私權法律和規定。
 - **有用的連結** (選擇性) ：您可以為供應專案的使用者提供各種資源的連結。 例如，論壇、常見問題和版本資訊。
-- **連絡人資訊** ：您必須指定組織中的下列連絡人：
-  - **支援連絡人** ：提供客戶開啟票證時，Microsoft 合作夥伴所使用的名稱、電話和電子郵件。 您也必須包含支援網站的 URL。
-  - **工程連絡人** ：提供 Microsoft 的名稱、電話和電子郵件，以在您的供應專案發生問題時直接使用。 此連絡人資訊未列在商業 marketplace 中。
+- **連絡人資訊**：您必須指定組織中的下列連絡人：
+  - **支援連絡人**：提供客戶開啟票證時，Microsoft 合作夥伴所使用的名稱、電話和電子郵件。 您也必須包含支援網站的 URL。
+  - **工程連絡人**：提供 Microsoft 的名稱、電話和電子郵件，以在您的供應專案發生問題時直接使用。 此連絡人資訊未列在商業 marketplace 中。
   - **CSP 方案聯絡** (選用) ：如果您選擇使用雲端解決方案提供者 (CSP) 方案，請提供名稱、電話和電子郵件，讓這些合作夥伴可以與您聯繫任何問題。 您也可以將 URL 包含在行銷資料中。
-- **媒體–標誌** ：提供 **大** 尺寸標誌的 PNG 檔案。 合作夥伴中心將使用這個來建立 **小型** 和 **中型** 標誌。 您可以選擇性地使用不同的映射取代這些映射。
+- **媒體–標誌**：提供 **大** 尺寸標誌的 PNG 檔案。 合作夥伴中心將使用這個來建立 **小型** 和 **中型** 標誌。 您可以選擇性地使用不同的映射取代這些映射。
   - 從 216 x 216 到 350 x 350 px 的大型 (，需要) 
   - 中型 (90 x 90 px，選擇性) 
   - Small (48 x 48 px，選擇性) 
@@ -197,10 +197,10 @@ ms.locfileid: "94577782"
 
 針對使用 [Marketplace 計量服務 api](partner-center-portal/marketplace-metering-service-apis.md)發出計量事件的 managed 應用程式，您必須提供您的服務在發出計量事件時將使用的身分識別。
 
-如果您想要使用 [Batch 使用量事件](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-batch-usage-event) \(部分機器翻譯\)，則需要進行此設定。 如果您想要提交 [使用事件](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-single-usage-event)，您也可以使用 [實例中繼資料服務](/azure/active-directory/managed-identities-azure-resources/overview) 來取得 [ (JWT) 持有人權杖) 的 JSON web 權杖](partner-center-portal/pc-saas-registration.md#how-to-get-the-publishers-authorization-token) 。
+如果您想要使用 [Batch 使用量事件](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-batch-usage-event) \(部分機器翻譯\)，則需要進行此設定。 如果您想要提交 [使用事件](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-single-usage-event)，您也可以使用 [實例中繼資料服務](../active-directory/managed-identities-azure-resources/overview.md) 來取得 [ (JWT) 持有人權杖) 的 JSON web 權杖](partner-center-portal/pc-saas-registration.md#how-to-get-the-publishers-authorization-token) 。
 
-- **Azure Active Directory 租使用者識別碼** (必要) ：在 Azure 入口網站內，您必須 [建立 Azure Active Directory (AD) 應用程式](/azure/active-directory/develop/howto-create-service-principal-portal) ，讓我們可以驗證這兩個服務之間的連線是否在經過驗證的通訊之後。 若要尋找 Azure Active Directory (Azure AD) 應用程式的 [租使用者識別碼](/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-and-app-id-values-for-signing-in) ，請到應用程式註冊中 [Azure Active Directory 的分頁](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) 。 在 [ **顯示名稱** ] 欄中，選取應用程式。 然後尋找 **屬性** ，然後針對 **目錄 (租使用者) 識別碼** (例如 `50c464d3-4930-494c-963c-1e951d15360e`) 。
-- **Azure Active Directory 應用程式識別碼** (必要) ：您也需要 [應用程式識別碼](/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-and-app-id-values-for-signing-in.md) 和驗證金鑰。 若要尋找您的應用程式識別碼，請移至您所 Azure Active Directory 的 [應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) 分頁。 在 [ **顯示名稱** ] 欄中選取應用程式，然後尋找 **應用程式 (用戶端) 識別碼** (例如 `50c464d3-4930-494c-963c-1e951d15360e`) 。 若要尋找驗證金鑰，請移至 [設定] 並選取 [金鑰]。 您必須提供描述和持續時間，然後才會獲得數值。
+- **Azure Active Directory 租使用者識別碼** (必要) ：在 Azure 入口網站內，您必須 [建立 Azure Active Directory (AD) 應用程式](../active-directory/develop/howto-create-service-principal-portal.md) ，讓我們可以驗證這兩個服務之間的連線是否在經過驗證的通訊之後。 若要尋找 Azure Active Directory (Azure AD) 應用程式的 [租使用者識別碼](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) ，請到應用程式註冊中 [Azure Active Directory 的分頁](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) 。 在 [ **顯示名稱** ] 欄中，選取應用程式。 然後尋找 **屬性**，然後針對 **目錄 (租使用者) 識別碼** (例如 `50c464d3-4930-494c-963c-1e951d15360e`) 。
+- **Azure Active Directory 應用程式識別碼** (必要) ：您也需要 [應用程式識別碼](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) 和驗證金鑰。 若要尋找您的應用程式識別碼，請移至您所 Azure Active Directory 的 [應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) 分頁。 在 [ **顯示名稱** ] 欄中選取應用程式，然後尋找 **應用程式 (用戶端) 識別碼** (例如 `50c464d3-4930-494c-963c-1e951d15360e`) 。 若要尋找驗證金鑰，請移至 [設定] 並選取 [金鑰]。 您必須提供描述和持續時間，然後才會獲得數值。
 
 > [!NOTE]
 > Azure 應用程式識別碼會與您的發行者識別碼相關聯，而且只能在這個發行者帳戶內重複使用。
@@ -209,8 +209,8 @@ ms.locfileid: "94577782"
 
 您可以加入宣告 Microsoft 支援的行銷和銷售通路。 在合作夥伴中心中建立供應專案時，您會在程式結束時看到兩個索引標籤：
 
-- **透過 Csp 轉售** ：使用此選項可讓 Microsoft 雲端解決方案提供者 (CSP) 合作夥伴將您的解決方案轉售為配套供應專案的一部分。 如需詳細資訊，請參閱 [雲端解決方案提供者程式](/azure/marketplace/cloud-solution-providers) 。
-- **與 Microsoft 共同銷售** ：此選項可讓 microsoft 銷售團隊在評估客戶的需求時，考慮您的 IP 共同銷售合格解決方案。 如需如何準備您的供應專案以進行評估的詳細資訊，請參閱 [合作夥伴中心中的共同銷售選項](partner-center-portal/commercial-marketplace-co-sell.md) 。 如需透過 Microsoft CSP 合作夥伴通路行銷供應專案的詳細資訊，請參閱 [雲端解決方案提供者](cloud-solution-providers.md)。
+- **透過 Csp 轉售**：使用此選項可讓 Microsoft 雲端解決方案提供者 (CSP) 合作夥伴將您的解決方案轉售為配套供應專案的一部分。 如需詳細資訊，請參閱 [雲端解決方案提供者程式](./cloud-solution-providers.md) 。
+- **與 Microsoft 共同銷售**：此選項可讓 microsoft 銷售團隊在評估客戶的需求時，考慮您的 IP 共同銷售合格解決方案。 如需如何準備您的供應專案以進行評估的詳細資訊，請參閱 [合作夥伴中心中的共同銷售選項](partner-center-portal/commercial-marketplace-co-sell.md) 。 如需透過 Microsoft CSP 合作夥伴通路行銷供應專案的詳細資訊，請參閱 [雲端解決方案提供者](cloud-solution-providers.md)。
 
 若要深入瞭解，請參閱 [使用 Azure Marketplace 拓展您的雲端業務](https://azuremarketplace.microsoft.com/sell)。
 
@@ -222,14 +222,14 @@ Azure 應用程式供應專案至少需要一個方案。 方案會定義方案�
 
 ### <a name="types-of-plans"></a>方案類型
 
-有兩種 Azure 應用程式方案： _解決方案範本_ 和 _受控應用程式_ 。 這兩種方案類型都支援將解決方案的部署和設定自動化，但 (VM) 以外的單一虛擬機器。 您可以自動化提供多個資源的程式，包括 Vm、網路和儲存體資源，以提供複雜的解決方案，例如 IaaS 解決方案。 這兩種方案類型都可以採用許多不同類型的 Azure 資源，包括但不限於 Vm。
+有兩種 Azure 應用程式方案： _解決方案範本_ 和 _受控應用程式_。 這兩種方案類型都支援將解決方案的部署和設定自動化，但 (VM) 以外的單一虛擬機器。 您可以自動化提供多個資源的程式，包括 Vm、網路和儲存體資源，以提供複雜的解決方案，例如 IaaS 解決方案。 這兩種方案類型都可以採用許多不同類型的 Azure 資源，包括但不限於 Vm。
 
-- **解決方案範本** 方案是在商業 marketplace 中發佈解決方案的其中一種主要方式。 解決方案範本方案不會可交易在商業 marketplace 中，但可以用來部署透過商業市場計費的付費 VM 供應專案。 當客戶將管理解決方案，而且交易是透過另一個方案計費時，請使用方案範本方案類型。 如需建立解決方案範本的詳細資訊，請參閱 [什麼是 Azure Resource Manager？](/azure/azure-resource-manager/resource-group-overview)
+- **解決方案範本** 方案是在商業 marketplace 中發佈解決方案的其中一種主要方式。 解決方案範本方案不會可交易在商業 marketplace 中，但可以用來部署透過商業市場計費的付費 VM 供應專案。 當客戶將管理解決方案，而且交易是透過另一個方案計費時，請使用方案範本方案類型。 如需建立解決方案範本的詳細資訊，請參閱 [什麼是 Azure Resource Manager？](../azure-resource-manager/management/overview.md)
 - **受控應用程式** 方案可讓您輕鬆地為客戶建立並提供完全受控的現成應用程式。 它們具有與解決方案範本方案相同的功能，但有一些主要差異：
     - 資源會部署至資源群組，並由應用程式的發行者管理。 資源群組存在於客戶的訂用帳戶，但發行者租用戶中的身分識別可以存取資源群組。 
     - 您可以使用「發行者」來指定持續支援解決方案的成本，並透過商業市場支援交易。
  
-    當您或您的客戶要求解決方案由夥伴管理，或您將部署以訂用帳戶為基礎的解決方案時，請使用受控應用程式方案類型。 如需受控應用程式的優點和類型的詳細資訊，請參閱 [Azure 受控應用程式總覽](/azure/managed-applications/overview)。
+    當您或您的客戶要求解決方案由夥伴管理，或您將部署以訂用帳戶為基礎的解決方案時，請使用受控應用程式方案類型。 如需受控應用程式的優點和類型的詳細資訊，請參閱 [Azure 受控應用程式總覽](../azure-resource-manager/managed-applications/overview.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

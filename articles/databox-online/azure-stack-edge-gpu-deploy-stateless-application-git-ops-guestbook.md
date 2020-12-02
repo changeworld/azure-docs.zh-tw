@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: d323504a46cd35525c889a94d2d044193c1471ac
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8637b33ebc4b697ee6f498acb84ee33718c53f6d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535940"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448855"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>在 Azure Stack Edge Pro GPU 上，使用啟用 Redis on Arc 的 Kubernetes 叢集來部署 PHP 意見簿無狀態應用程式
 
@@ -25,7 +25,7 @@ ms.locfileid: "94535940"
 
 部署是使用 Gitops) 將，在您 Azure Stack Edge Pro 裝置上啟用 Arc 的 Kubernetes 叢集上完成。 
 
-此程式適用于已 [在 Azure Stack Edge Pro 裝置上審核 Kubernetes 工作負載](azure-stack-edge-gpu-kubernetes-workload-management.md) ，並熟悉 [Azure Arc 啟用的概念 (預覽) ](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)的概念。
+此程式適用于已 [在 Azure Stack Edge Pro 裝置上審核 Kubernetes 工作負載](azure-stack-edge-gpu-kubernetes-workload-management.md) ，並熟悉 [Azure Arc 啟用的概念 (預覽) ](../azure-arc/kubernetes/overview.md)的概念。
 
 
 ## <a name="prerequisites"></a>必要條件
@@ -44,7 +44,7 @@ ms.locfileid: "94535940"
 
 1. 您有將用來存取 Azure Stack Edge Pro 裝置的 Windows 用戶端系統。
   
-    - 用戶端正在執行 Windows PowerShell 5.0 或更新版本。 若要下載 Windows PowerShell 的最新版本，請移至 [ [安裝 Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
+    - 用戶端正在執行 Windows PowerShell 5.0 或更新版本。 若要下載 Windows PowerShell 的最新版本，請移至 [ [安裝 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
     
     - 您也可以讓任何其他用戶端使用 [支援的作業系統](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) 。 本文說明使用 Windows 用戶端的程式。 
     
@@ -89,10 +89,10 @@ ms.locfileid: "94535940"
     |運算子實例名稱     |用來識別特定設定之操作員的實例名稱。 Name 是最多253個字元的字串，必須是小寫、英數位元、連字號和句點。         |
     |Operator 命名空間     | 設定為 **demotestguestbook** ，因為這符合部署中指定的命名空間 `yaml` 。 <br> 欄位會定義操作員安裝所在的命名空間。 Name 是最多253個字元的字串，必須是小寫、英數位元、連字號和句點。         |
     |存放庫 URL     |<br>Git 存放庫的路徑， `http://github.com/username/repo` 或 `git://github.com/username/repo` 格式設定 gitops) 將設定所在的位置。         |
-    |運算子範圍     | 選取 [ **命名空間** ]。 <br>這會定義操作員的安裝範圍。 選取此名稱做為命名空間。 您的操作員將安裝在部署 yaml 檔所指定的命名空間中。       |
+    |運算子範圍     | 選取 [ **命名空間**]。 <br>這會定義操作員的安裝範圍。 選取此名稱做為命名空間。 您的操作員將安裝在部署 yaml 檔所指定的命名空間中。       |
     |運算子類型     | 保留預設值。 <br>這會指定運算子的類型（依預設，設定為 flux）。        |
     |Operator 參數     | 將此留白。 <br>此欄位包含要傳遞給 flux 運算子的參數。        |
-    |Helm     | 將此設定為 **停用** 。 <br>如果您要進行以圖表為基礎的部署，請啟用此選項。        |
+    |Helm     | 將此設定為 **停用**。 <br>如果您要進行以圖表為基礎的部署，請啟用此選項。        |
 
 
     ![新增設定](media/azure-stack-edge-gpu-connect-powershell-interface/add-configuration-1.png)
@@ -102,7 +102,7 @@ ms.locfileid: "94535940"
 
     ![螢幕擷取畫面顯示在重新整理時，處於擱置狀態的 Azure Arc 啟用 Kubernetes 叢集。](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-1.png)
 
-1. 部署需要幾分鐘的時間。 當部署完成時， **操作員狀態** 會顯示為 **已安裝** 。
+1. 部署需要幾分鐘的時間。 當部署完成時， **操作員狀態** 會顯示為 **已安裝**。
 
     ![螢幕擷取畫面顯示已安裝狀態的 Azure Arc 啟用 Kubernetes 叢集。](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-2.png)
 
@@ -154,7 +154,7 @@ ms.locfileid: "94535940"
 若要刪除部署，您可以從 Azure 入口網站中刪除設定。 這會刪除所建立的物件，包括部署和服務。
 
 1. 在 Azure 入口網站中，移至 Azure Arc 資源 > 設定。 
-1. 找出您想要刪除的設定。 選取 .。。以叫用操作功能表，然後選取 [ **刪除** ]。
+1. 找出您想要刪除的設定。 選取 .。。以叫用操作功能表，然後選取 [ **刪除**]。
     ![刪除設定](media/azure-stack-edge-gpu-connect-powershell-interface/delete-configuration-1.png)
 
 刪除設定可能需要幾分鐘的時間。

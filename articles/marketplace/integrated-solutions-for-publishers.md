@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: 2e976b895c6aa63b73c55b458668c00b64c6f960
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 705b0f02682b6aa41cb5c8e77d8da39faa5edb1f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91660899"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450122"
 ---
 # <a name="publish-an-integrated-solution"></a>發佈整合式解決方案
 
-本文說明可將整合式解決方案發佈到商業市集的整體流程和需求。 在單一的配套供應項目中，整合式解決方案會結合軟體廠商的單點解決方案技術與服務合作夥伴的部署和支援。 在 Microsoft AppSource 或 Azure Marketplace 中，服務合作夥伴會將供應項目列為[諮詢服務](./consulting-services.md)。
+本文說明可將整合式解決方案發佈到商業市集的整體流程和需求。 在單一的配套供應項目中，整合式解決方案會結合軟體廠商的單點解決方案技術與服務合作夥伴的部署和支援。 在 Microsoft AppSource 或 Azure Marketplace 中，服務合作夥伴會將供應項目列為[諮詢服務](./plan-consulting-service-offer.md)。
 
 整合式解決方案的目標是解決特定的客戶需求或案例。 提供者會從了解產業的挑戰或痛點來開始。 然後會整合兩個以上的最佳技術，來為客戶建立統一且可重複的部署體驗。 提供者可讓客戶快速啟動並執行。 其會為客戶提供單一連絡點，以提供相關的自訂、諮詢及解決方案支援。 最後會得到一個包含技術和服務的整合式解決方案。
 
@@ -104,7 +104,7 @@ ms.locfileid: "91660899"
 
 ## <a name="publish-your-integrated-solution"></a>發佈整合式解決方案
 
-完成技術整合和行銷關聯資料後，請參閱 [Microsoft AppSource 和 Azure Marketplace 的諮詢服務](./consulting-services.md)發行者指南。 請使用此資源來判斷您的解決方案是否會在 Microsoft AppSource 或 Azure Marketplace 中發佈。 也請使用此指南來準備您的發佈成品，並完成發佈流程。
+完成技術整合和行銷關聯資料後，請參閱 [Microsoft AppSource 和 Azure Marketplace 的諮詢服務](./plan-consulting-service-offer.md)發行者指南。 請使用此資源來判斷您的解決方案是否會在 Microsoft AppSource 或 Azure Marketplace 中發佈。 也請使用此指南來準備您的發佈成品，並完成發佈流程。
 
 雖然有五種服務類型適用於諮詢服務供應項目，但整合式解決方案必須是概念證明或完整實作。
 

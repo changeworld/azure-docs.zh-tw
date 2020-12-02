@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/04/2020
+ms.date: 11/16/2020
 ms.author: alkohli
-ms.openlocfilehash: d0d02532f39d676772e5ee5d6414b802faffba7c
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 93df80cd6fcd6f5553ea509a4778a155299bb057
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505932"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449062"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>透過範本在您的 Azure Stack Edge Pro GPU 裝置上部署 Vm
 
@@ -76,10 +76,10 @@ ms.locfileid: "94505932"
     
 ### <a name="create-a-resource-group"></a>建立資源群組
 
-使用 [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 建立 Azure 資源群組。 資源群組是一個邏輯容器，可在其中部署及管理 Azure 資源（例如儲存體帳戶、磁片、受控磁片）。
+使用 [New-AzureRmResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 建立 Azure 資源群組。 資源群組是一個邏輯容器，可在其中部署及管理 Azure 資源（例如儲存體帳戶、磁片、受控磁片）。
 
 > [!IMPORTANT]
-> 所有資源會建立在與裝置相同的位置中，且位置會設定為 **DBELocal** 。
+> 所有資源會建立在與裝置相同的位置中，且位置會設定為 **DBELocal**。
 
 ```powershell
 New-AzureRmResourceGroup -Name <Resource group name> -Location DBELocal
@@ -149,7 +149,7 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
 ### <a name="optional-install-certificates"></a> (選用) 安裝憑證
 
-如果您將透過儲存體總管使用 *HTTP* 連線，請略過此步驟。 如果您使用 *HTTPs* ，則需要在儲存體總管中安裝適當的憑證。 在此情況下，請安裝 blob 端點憑證。 如需詳細資訊，請參閱如何在 [管理憑證](azure-stack-edge-j-series-manage-certificates.md)中建立和上傳憑證。 
+如果您將透過儲存體總管使用 *HTTP* 連線，請略過此步驟。 如果您使用 *HTTPs*，則需要在儲存體總管中安裝適當的憑證。 在此情況下，請安裝 blob 端點憑證。 如需詳細資訊，請參閱如何在 [管理憑證](azure-stack-edge-j-series-manage-certificates.md)中建立和上傳憑證。 
 
 ### <a name="create-and-upload-a-vhd"></a>建立和上傳 VHD
 
@@ -159,11 +159,11 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
 ### <a name="use-storage-explorer-for-upload"></a>使用儲存體總管進行上傳
 
-1. 開啟儲存體總管。 移至 [ **編輯** ]，並確定應用程式已設為 **目標 Azure Stack api** 。
+1. 開啟儲存體總管。 移至 [ **編輯** ]，並確定應用程式已設為 **目標 Azure Stack api**。
 
     ![將目標設定為 Azure Stack Api](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/set-target-apis-1.png)
 
-2. 以 PEM 格式安裝用戶端憑證。 移至 **> 匯入憑證來編輯 > SSL 憑證** 。 指向用戶端憑證。
+2. 以 PEM 格式安裝用戶端憑證。 移至 **> 匯入憑證來編輯 > SSL 憑證**。 指向用戶端憑證。
 
     ![匯入 blob 儲存體端點憑證](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/import-blob-storage-endpoint-certificate-1.png)
 
@@ -181,31 +181,31 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
     ![重新啟動儲存體總管](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/restart-storage-explorer-1.png)
 
-4. 在左窗格中，以滑鼠右鍵按一下 [ **儲存體帳戶** ]，然後選取 **[連接到 Azure 儲存體]** 。 
+4. 在左窗格中，以滑鼠右鍵按一下 [ **儲存體帳戶** ]，然後選取 **[連接到 Azure 儲存體]**。 
 
     ![連接到 Azure 儲存體1](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-1.png)
 
-5. 選取 [使用儲存體帳戶名稱和金鑰]。 選取 [下一步]。
+5. 選取 [使用儲存體帳戶名稱和金鑰]。 選取 [下一步] 。
 
     ![連接到 Azure 儲存體2](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-2.png)
 
-6. 在 [ **使用名稱和金鑰連接]** 中，提供 **顯示名稱** 、 **儲存體帳戶名稱** Azure 儲存體 **帳戶金鑰** 。 選取 **其他** 儲存體網域，然後提供 `<device name>.<DNS domain>` 連接字串。 如果您未在儲存體總管中安裝憑證，請核取 [ **使用 HTTP** ] 選項。 選取 [下一步]。
+6. 在 [ **使用名稱和金鑰連接]** 中，提供 **顯示名稱**、 **儲存體帳戶名稱** Azure 儲存體 **帳戶金鑰**。 選取 **其他** 儲存體網域，然後提供 `<device name>.<DNS domain>` 連接字串。 如果您未在儲存體總管中安裝憑證，請核取 [ **使用 HTTP** ] 選項。 選取 [下一步] 。
 
     ![使用名稱和金鑰連接](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-name-key-1.png)
 
-7. 檢查 **連接摘要** ，然後選取 **[連接]** 。
+7. 檢查 **連接摘要** ，然後選取 **[連接]**。
 
-8. 儲存體帳戶會出現在左窗格中。 選取並展開儲存體帳戶。 選取 [ **blob 容器** ]，以滑鼠右鍵按一下並選取 [ **建立 blob 容器** ]。 提供 blob 容器的名稱。
+8. 儲存體帳戶會出現在左窗格中。 選取並展開儲存體帳戶。 選取 [ **blob 容器**]，以滑鼠右鍵按一下並選取 [ **建立 blob 容器**]。 提供 blob 容器的名稱。
 
 9. 選取您剛才建立的容器，並在右窗格中選取 [ **上傳] > 上傳** 檔案。 
 
     ![上傳 VHD 檔案1](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/upload-vhd-file-1.png)
 
-10. 流覽並指向您想要在 **選取** 的檔案中上傳的 VHD。 選取 **blob 類型** 作為 **分頁 blob** ，然後選取 **[上傳** ]。
+10. 流覽並指向您想要在 **選取** 的檔案中上傳的 VHD。 選取 **blob 類型** 作為 **分頁 blob** ，然後選取 **[上傳**]。
 
     ![上傳 VHD 檔案2](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/upload-vhd-file-2.png)
 
-11. 將 VHD 載入至 blob 容器之後，請選取 VHD、按一下滑鼠右鍵，然後選取 [ **屬性** ]。 
+11. 將 VHD 載入至 blob 容器之後，請選取 VHD、按一下滑鼠右鍵，然後選取 [ **屬性**]。 
 
     ![上傳 VHD 檔案3](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/upload-vhd-file-3.png)
 
@@ -249,7 +249,7 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
               "value": "<Operating system corresponding to the VHD you upload can be Windows or Linux>"
         },
         "imageName": {
-            "value": "<Name for the VM iamge>"
+            "value": "<Name for the VM image>"
         },
         "imageUri": {
               "value": "<Path to the VHD that you uploaded in the Storage account>"
@@ -441,7 +441,7 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
 
 1. 提供唯一的名稱、網路介面名稱和 ipconfig 名稱。 
 1. 輸入使用者名稱、密碼和支援的 VM 大小。
-1. 為 **VnetName** 、 **subnetName** 和 **ImageName** 提供相同的名稱，如同的參數中所指定 `CreateImageAndVnet.parameters.json` 。 例如，如果您將 VnetName、subnetName 和 ImageName 指定為 **vnet1** 、 **subnet1** 和 **image1** ，也請將這些值與此範本中的參數保持相同。
+1. 為 **VnetName**、 **subnetName** 和 **ImageName** 提供相同的名稱，如同的參數中所指定 `CreateImageAndVnet.parameters.json` 。 例如，如果您將 VnetName、subnetName 和 ImageName 指定為 **vnet1**、 **subnet1** 和 **image1**，也請將這些值與此範本中的參數保持相同。
 1. 現在您將需要一個靜態 IP 位址，以指派給上面定義之子網網路中的 VM。 將 **PrivateIPAddress** 取代為參數檔案中的這個位址。 若要讓 VM 從您的本機 DCHP 伺服器取得 IP 位址，請將此 `privateIPAddress` 值保留空白。  
     
     ```json
@@ -629,4 +629,4 @@ To verify if the environment variable for AzCopy was set correctly, take the fol
 
 ## <a name="next-steps"></a>後續步驟
 
-[Azure Resource Manager Cmdlet](https://docs.microsoft.com/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager Cmdlet](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)

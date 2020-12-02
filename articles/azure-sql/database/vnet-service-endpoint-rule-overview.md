@@ -11,17 +11,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 97be3bf0ecec20c4bf2e1633f893c9aa0d9ba49d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2ff8f6134f74e0eda355342a7282e8be81a3d8df
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020277"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450232"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>在 Azure SQL Database 中使用伺服器的虛擬網路服務端點和規則
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-*虛擬網路規則* 是一項防火牆安全性功能，可控制 [Azure SQL Database](sql-database-paas-overview.md) 中的資料庫和彈性集區的伺服器，或 [Azure Synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 中的資料庫，是否接受從虛擬網路中的特定子網傳送的通訊。 本文說明為何虛擬網路規則功能有時是在 Azure SQL Database 中安全地允許與您的資料庫進行通訊的最佳選項，並 Azure Synapse Analytics (先前的 SQL 資料倉儲) 。
+*虛擬網路規則* 是一項防火牆安全性功能，可控制 [Azure SQL Database](sql-database-paas-overview.md) 中的資料庫和彈性集區的伺服器，或 [Azure Synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 中的資料庫，是否接受從虛擬網路中的特定子網傳送的通訊。 本文說明為何虛擬網路規則功能有時是安全的選項，可讓您安全地在 Azure SQL Database 和 Azure Synapse Analytics 中對資料庫進行通訊。
 
 > [!NOTE]
 > 本文同時適用于 Azure SQL Database 和 Azure Synapse Analytics。 簡單來說，「資料庫」一詞同時指稱 Azure SQL Database 和 Azure Synapse Analytics 中的資料庫。 同樣地，只要提到「伺服器」，也都是指裝載 Azure SQL Database 和 Azure Synapse Analytics 的[邏輯 SQL 伺服器](logical-servers.md)。
@@ -281,7 +281,7 @@ SQL VNet 動作的 PowerShell cmdlet 會在內部呼叫 REST API。 您可以直
 - [Azure 虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]
 - [伺服器層級和資料庫層級防火牆規則][sql-db-firewall-rules-config-715d]
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [使用 PowerShell 來建立虛擬網路服務端點，然後使用 Azure SQL Database 的虛擬網路規則。][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
 - [虛擬網路規則：的作業][rest-api-virtual-network-rules-operations-862r] (使用 REST API)

@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: ba3cc376edef1e6dc8fbf859e456219a1fd3ca60
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: f65ee85b37e74f0ca16ccf6988eb2117231c3bc5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635757"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452197"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory 常見問題集
 
@@ -22,7 +22,7 @@ ms.locfileid: "92635757"
 
 本文提供 Azure Data Factory 常見問題集的解答。  
 
-## <a name="what-is-azure-data-factory"></a>什麼是 Azure Data Factory？ 
+## <a name="what-is-azure-data-factory"></a>Azure 資料處理站是什麼？ 
 Data Factory 是完全受控的雲端式資料整合 ETL 服務，可自動化資料的移動和轉換。 就像會運轉設備以將原物料轉換成成品的工廠一樣，Azure Data Factory 會協調現有的服務來收集未經處理資料，並將其轉換成隨時可用的資訊。 
 
 您可使用 Azure Data Factory 建立資料驅動工作流程，以在內部部署與雲端資料存放區之間移動資料。 您可以使用資料流程來處理和轉換資料。 ADF 也支援使用計算服務（例如 Azure HDInsight、Azure Databricks 和 SQL Server Integration Services (SSIS) Integration runtime）進行手動編碼轉換的外部計算引擎。 
@@ -95,9 +95,9 @@ Azure Data Factory 的視覺效果工具可進行反復式開發和調試。 您
 ## <a name="what-is-the-integration-runtime"></a>什麼是整合執行時間？
 整合執行時間是一種計算基礎結構，Azure Data Factory 用來跨各種網路環境提供下列資料整合功能：
 
-- **資料移動** ：針對資料移動，整合執行時間會在來源與目的地資料存放區之間移動資料，同時提供內建連接器、格式轉換、資料行對應，以及高效能且可調整規模的資料傳輸支援。
-- **分派活動** ：針對轉換，整合執行時間提供原生執行 SSIS 套件的功能。
-- **執行 ssis 套件** ：整合執行時間會以原生方式在受控 Azure 計算環境中執行 SSIS 套件。 整合執行時間也支援分派和監視在各種計算服務上執行的轉換活動，例如 Azure HDInsight、Azure Machine Learning、SQL Database 和 SQL Server。
+- **資料移動**：針對資料移動，整合執行時間會在來源與目的地資料存放區之間移動資料，同時提供內建連接器、格式轉換、資料行對應，以及高效能且可調整規模的資料傳輸支援。
+- **分派活動**：針對轉換，整合執行時間提供原生執行 SSIS 套件的功能。
+- **執行 ssis 套件**：整合執行時間會以原生方式在受控 Azure 計算環境中執行 SSIS 套件。 整合執行時間也支援分派和監視在各種計算服務上執行的轉換活動，例如 Azure HDInsight、Azure Machine Learning、SQL Database 和 SQL Server。
 
 您可以視需要部署一或多個整合執行時間實例，以移動和轉換資料。 整合執行時間可以在 Azure 公用網路或私人網路上 (內部部署、Azure 虛擬網路或 Amazon Web Services 虛擬私用雲端 [VPC] ) 上執行。 
 
@@ -190,7 +190,7 @@ Dataset 是強型別參數，以及您可以重複使用或參考的實體。 �
 
 ### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>如何? 在 Data Factory 中使用其他90資料集類型來存取資料嗎？
 
-對應資料流程功能目前允許 Azure SQL Database、Azure Synapse Analytics (先前的 SQL 資料倉儲) 、Azure Blob 儲存體或 Azure Data Lake Storage Gen2 中的分隔文字檔，以及從 Blob 儲存體 Parquet 檔案，或以原生方式為來源和接收進行 Data Lake Storage Gen2。 
+對應資料流程功能目前允許來自 Azure Blob 儲存體或 Azure Data Lake Storage Gen2 的 Azure SQL Database、Azure Synapse Analytics、分隔符號文字檔，以及從 Blob 儲存體 Parquet 檔案，或以原生方式 Data Lake Storage Gen2 來源和接收。 
 
 使用複製活動來暫存任何其他連接器的資料，然後執行資料流程活動以在暫存資料之後進行轉換。 例如，您的管線會先複製到 Blob 儲存體，然後資料流程活動會使用來源中的資料集來轉換該資料。
 

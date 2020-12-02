@@ -1,6 +1,6 @@
 ---
 title: 使用 SQL 集區的 t-sql 視圖
-description: 使用 T-sql 視圖的秘訣，以及使用專用 SQL 集區和無伺服器 SQL 集區開發解決方案的秘訣 (預覽版 ) 在 Azure Synapse Analytics 中。
+description: 在 Azure Synapse Analytics 中使用 T-sql 視圖和開發具有專用 SQL 集區和無伺服器 SQL 集區之解決方案的秘訣。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5097c35d97e33ef2d6fa0be12c796bf7e4e06950
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 6fb75257a86e9e46d6c180a2a38193adecb2b36a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685727"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451670"
 ---
-# <a name="t-sql-views-with-dedicated-sql-pool-and-serverless-sql-pool-preview--in-azure-synapse-analytics"></a>Azure Synapse Analytics 中具有專用 SQL 集區和無伺服器 SQL 集區的 t-sql 視圖 (預覽 ) 
+# <a name="t-sql-views-with-dedicated-sql-pool-and-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中具有專用 SQL 集區和無伺服器 SQL 集區的 t-sql 視圖
 
-在本文中，您將找到使用 T-sql 視圖的秘訣，以及使用專用 SQL 集區和無伺服器 SQL 集區開發解決方案的秘訣， (預覽版 ) 在 Azure Synapse Analytics 中。
+在本文中，您將找到使用 T-sql 視圖的秘訣，以及使用 Azure Synapse Analytics 中的專用 SQL 集區和無伺服器 SQL 集區來開發解決方案的秘訣。
 
 ## <a name="why-use-views"></a>為何要使用 views
 
