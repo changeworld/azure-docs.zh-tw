@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 2f7d2df8561efe7188fc2d070c57dcb0236fefb1
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: ac5106aa661cb2baea31ee15d57e9c6fac8c7192
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95029356"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350325"
 ---
 # <a name="face-api-enrollment"></a>臉部 API 註冊
 
@@ -44,7 +44,7 @@ ms.locfileid: "95029356"
 |---|---|
 |硬體 | 請考慮註冊裝置的相機品質。 |
 |建議的註冊功能 | 納入使用多重要素驗證的登入步驟。</br></br>將使用者資訊 (例如化名或身分證號碼) 與其臉部 API 的臉部範本識別碼 (稱為人員識別碼) 連結起來。 必須進行此對應才能擷取和管理使用者的註冊。 注意：請將人員識別碼視為應用程式中的秘密。</br></br>設定自動化程序來刪除所有註冊資料，包括不再是臉部辨識技術使用者本人的臉部範本和註冊相片，例如已離職的員工。</br></br>請避免採用自動註冊，因為此方法無法如同建議所說，向使用者提供認知、了解、選擇自由或控制以取得其同意。 </br></br>向使用者要求權限以便儲存用於註冊的影像。 當模型有所更新時，這麼做會很有用，因為大約每 10 個月就必須提供新的註冊相片才能重新註冊使用新的模型。 如果未儲存原始影像，使用者就必須從頭開始進行一次註冊程序。</br></br>允許使用者選擇不將相片儲存在系統中。 若要讓選擇更加清楚，您可以新增用來儲存註冊相片的第二個同意要求畫面。 </br></br>如果已儲存相片，則請建立自動化程序，以便在模型更新時重新註冊所有使用者。 已儲存其註冊相片的人員就不需要再次註冊。 </br></br>建立應用程式功能，讓指定的管理員可以在使用者遇到註冊問題時，覆寫某些品質篩選條件。 |
-|安全性 | 認知服務會遵循用於加密待用和傳輸中使用者資料的[最佳做法](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)。 以下是一些額外的做法，可協助您維護在註冊體驗期間對使用者做出的安全性承諾。 </br></br>採取安全性措施，以確保沒有人可以在註冊期間的任何時間點存取人員識別碼。 注意：請將人員識別碼視為註冊系統中的秘密。 </br></br>請搭配使用[角色型存取控制](https://docs.microsoft.com/azure/role-based-access-control/overview)與認知服務。 </br></br>請使用會透過金鑰和祕密來存取資源 (如資料庫) 的權杖型驗證和/或共用存取簽章 (SAS)。 藉由使用要求或 SAS 權杖，您可以授與有限的資料存取權，而不會危害您的帳戶金鑰，而且您可以指定權杖的到期時間。 </br></br>請絕對不要將任何秘密、金鑰或密碼儲存在您的應用程式中。 |
+|安全性 | 認知服務會遵循用於加密待用和傳輸中使用者資料的[最佳做法](../cognitive-services-virtual-networks.md?tabs=portal)。 以下是一些額外的做法，可協助您維護在註冊體驗期間對使用者做出的安全性承諾。 </br></br>採取安全性措施，以確保沒有人可以在註冊期間的任何時間點存取人員識別碼。 注意：請將人員識別碼視為註冊系統中的秘密。 </br></br>請搭配使用[角色型存取控制](../../role-based-access-control/overview.md)與認知服務。 </br></br>請使用會透過金鑰和祕密來存取資源 (如資料庫) 的權杖型驗證和/或共用存取簽章 (SAS)。 藉由使用要求或 SAS 權杖，您可以授與有限的資料存取權，而不會危害您的帳戶金鑰，而且您可以指定權杖的到期時間。 </br></br>請絕對不要將任何秘密、金鑰或密碼儲存在您的應用程式中。 |
 |使用者隱私權 |請提供各種註冊選項，以因應不同層級的隱私權疑慮。 不要強制使用者使用其個人裝置來註冊臉部辨識系統。 </br></br>允許使用者隨時以各種理由重新註冊、撤銷同意，以及刪除註冊應用程式中的資料。 |
 |Accessibility |請遵循協助工具標準 (例如，[ADA](https://www.ada.gov/regs2010/2010ADAStandards/2010ADAstandards.htm) 或 [W3C](https://www.w3.org/TR/WCAG21/))，以確保行動或視覺障礙者可以使用應用程式。 |
 

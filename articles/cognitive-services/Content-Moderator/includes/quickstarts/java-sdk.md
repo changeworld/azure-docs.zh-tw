@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 6f5d1fd8a179f88677ddd6d7b1875f60836ade51
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 30360253c0b1aa34c4af1e5efdf3cf9b4d8baaa0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92918677"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356489"
 ---
 開始使用適用於 Java 的 Azure Content Moderator 用戶端程式庫。 請遵循下列步驟來安裝 Maven 套件，並試用基本工作的程式碼範例。 
 
@@ -48,7 +48,7 @@ Content Moderator 是一種 AI 服務，可讓您處理可能具冒犯意味、�
 mkdir myapp && cd myapp
 ```
 
-從您的工作目錄執行 `gradle init` 命令。 此命令會建立 Gradle 的基本組建檔案，包括 *build.gradle.kts* ，此檔案將在執行階段用來建立及設定您的應用程式。
+從您的工作目錄執行 `gradle init` 命令。 此命令會建立 Gradle 的基本組建檔案，包括 *build.gradle.kts*，此檔案將在執行階段用來建立及設定您的應用程式。
 
 ```console
 gradle init --type basic
@@ -58,7 +58,7 @@ gradle init --type basic
 
 ## <a name="install-the-client-library"></a>安裝用戶端程式庫
 
-找出 *build.gradle.kts* ，並使用您慣用的 IDE 或文字編輯器加以開啟。 然後，在其中複製下列組建組態。 此組態會將專案定義為進入點為 **ContentModeratorQuickstart** 類別的 Java 應用程式。 其會匯入 Content Moderator 用戶端程式庫以及 GSON SDK，以進行 JSON 序列化。
+找出 *build.gradle.kts*，並使用您慣用的 IDE 或文字編輯器加以開啟。 然後，在其中複製下列組建組態。 此組態會將專案定義為進入點為 **ContentModeratorQuickstart** 類別的 Java 應用程式。 其會匯入 Content Moderator 用戶端程式庫以及 GSON SDK，以進行 JSON 序列化。
 
 ```kotlin
 plugins {
@@ -103,7 +103,7 @@ In the application's **ContentModeratorQuickstart** class, create variables for 
 > [!IMPORTANT]
 > 前往 Azure 入口網站。 如果您在 [必要條件] 區段中建立的 [產品名稱] 資源成功部署，請按一下 [後續步驟] 底下的 [前往資源] 按鈕。 您可以在 [資源管理] 底下的 [金鑰和端點] 頁面中找到金鑰和端點。 
 >
-> 完成時，請記得從程式碼中移除金鑰，且不要公開張貼金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)一文。
+> 完成時，請記得從程式碼中移除金鑰，且不要公開張貼金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](../../../cognitive-services-security.md)一文。
 
 在應用程式的 **main** 方法中，針對本快速入門中使用的方法新增呼叫。 稍後您會定義這些項目。
 
@@ -173,7 +173,7 @@ In the application's **ContentModeratorQuickstart** class, create variables for 
 
 ### <a name="print-results"></a>列印結果
 
-在 `while` 迴圈後面新增下列程式碼，以將結果列印至主控台和輸出檔案 *src/main/resources/ModerationOutput.json* 。
+在 `while` 迴圈後面新增下列程式碼，以將結果列印至主控台和輸出檔案 *src/main/resources/ModerationOutput.json*。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_printdata)]
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: b22c73b3f0626b9938608e88c3382e3f5e8d97fc
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: f1712a51fcd35c348f6177b670a7686898a0c78b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427474"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346133"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入門：建立、訓練及發佈您的 QnA Maker 知識庫
 
@@ -40,7 +40,7 @@ ms.locfileid: "94427474"
 
     :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/qnaservice-selection.png" alt-text="選取 QnA Maker 服務知識庫的螢幕擷取畫面":::
 
-5. 在 [步驟 3] 中，將知識庫命名為 **我的範例 QnA KB** 。
+5. 在 [步驟 3] 中，將知識庫命名為 **我的範例 QnA KB**。
 
 6. 在 [步驟 4] 中，使用下表進行設定：
 
@@ -75,7 +75,7 @@ ms.locfileid: "94427474"
 
 5. 在 [步驟 2] 中，如果您要為服務建立第一個知識庫，您可以選擇為每個知識庫提供專屬的語言設定。 針對第一個知識庫定義了語言設定之後，稍後就無法為服務修改設定。
 
-6. 在 [步驟 3] **** 中，將知識庫命名為 **我的範例 QnA KB** 。 
+6. 在 [步驟 3] **** 中，將知識庫命名為 **我的範例 QnA KB**。 
 
 7. 在 [步驟 4] 中，使用下表進行設定：
 
@@ -212,5 +212,4 @@ ms.locfileid: "94427474"
 其他資訊：
 
 * [ Markdown 格式](../reference-markdown-format.md)
-* QnA Maker [資料來源](../concepts/knowledge-base.md)。
-
+* QnA Maker [資料來源](../index.yml)。

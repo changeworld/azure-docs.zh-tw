@@ -9,14 +9,14 @@ ms.subservice: metrics-advisor
 ms.topic: include
 ms.date: 11/09/2020
 ms.author: mbullwin
-ms.openlocfilehash: 121f6a876507b84de7a4613fe2158c1953e2d250
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 9222098f719241a6b3d6e50d4181106101c6d912
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94523960"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356370"
 ---
-[參考文件](https://docs.microsoft.com/javascript/api/overview/azure/ai-metrics-advisor-readme-pre?view=azure-node-preview&preserve-view=true) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/metricsadvisor/ai-metrics-advisor/README.md) | [套件 (npm)](https://www.npmjs.com/package/@azure/ai-metrics-advisor) | [範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/metricsadvisor/ai-metrics-advisor/samples)
+[參考文件](/javascript/api/overview/azure/ai-metrics-advisor-readme-pre?preserve-view=true&view=azure-node-preview) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/metricsadvisor/ai-metrics-advisor/README.md) | [套件 (npm)](https://www.npmjs.com/package/@azure/ai-metrics-advisor) | [範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/metricsadvisor/ai-metrics-advisor/samples)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -67,7 +67,7 @@ npm install @azure/ai-metrics-advisor@1.0.0-beta.2
 > [!IMPORTANT]
 > 前往 Azure 入口網站。 如果您在 [必要條件] 區段中建立的 Metrics Advisor 資源成功部署，請按一下 [後續步驟] 底下的 [前往資源] 按鈕。 您可以在資源的 [金鑰和端點] 頁面中 (位於 [資源管理] 底下) 找到訂用帳戶金鑰和端點。 <br><br>若要擷取您的 API 金鑰，您必須移至 [https://metricsadvisor.azurewebsites.net](https://metricsadvisor.azurewebsites.net)。 選取適當的：資源 [目錄]、[訂用帳戶] 和 [工作區]，然後選擇 [開始使用]。 接著，您將能夠從 [https://metricsadvisor.azurewebsites.net/api-key](https://metricsadvisor.azurewebsites.net/api-key) 擷取您的 API 金鑰。   
 >
-> 完成時，請記得從程式碼中移除金鑰，且不要公開張貼金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)一文。
+> 完成時，請記得從程式碼中移除金鑰，且不要公開張貼金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](../../../cognitive-services-security.md)一文。
 
 ```javascript
 subscriptionKey = "<paste-your-metrics-advisor-key-here>";

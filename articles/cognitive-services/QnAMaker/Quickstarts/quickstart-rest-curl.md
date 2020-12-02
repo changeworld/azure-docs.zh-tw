@@ -7,16 +7,16 @@ ms.date: 11/09/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
-ms.openlocfilehash: 021628b92f1068743b097a455306df742f308f86
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 7592b9fb509f39504ad2399d0e939ceca1156221
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427678"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351090"
 ---
 # <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>快速入門：使用 cURL 和 REST 來管理知識庫
 
-本快速入門會逐步引導您建立、發佈和查詢知識庫。 QnA Maker 會從[資料來源](../Concepts/knowledge-base.md)中的半結構化內容 (如常見問題集) 自動擷取問題和答案。 知識庫的模型是在 JSON (在 API 要求的本體中傳送) 中定義的。
+本快速入門會逐步引導您建立、發佈和查詢知識庫。 QnA Maker 會從[資料來源](../index.yml)中的半結構化內容 (如常見問題集) 自動擷取問題和答案。 知識庫的模型是在 JSON (在 API 要求的本體中傳送) 中定義的。
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -25,7 +25,7 @@ ms.locfileid: "94427678"
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker 正式發行 (穩定版本)](#tab/v1)
 
 * 最新版的 [cURL](https://curl.haxx.se/)。 快速入門會使用數個命令列參數，其記載於 [cURL 文件](https://curl.haxx.se/docs/manpage.html)中。
-* 您必須擁有 [QnA Maker 資源](../How-To/set-up-qnamaker-service-azure.md)，才能使用金鑰和資源名稱。 您已在資源建立期間輸入資源 **名稱** ，接下來系統會為您建立金鑰。 資源名稱會用來作為端點的子網域。 若要擷取您的金鑰和資源名稱，請在 Azure 入口網站中針對您的資源選取 [快速入門]  。 資源名稱是端點 URL 的第一個子網域：
+* 您必須擁有 [QnA Maker 資源](../How-To/set-up-qnamaker-service-azure.md)，才能使用金鑰和資源名稱。 您已在資源建立期間輸入資源 **名稱**，接下來系統會為您建立金鑰。 資源名稱會用來作為端點的子網域。 若要擷取您的金鑰和資源名稱，請在 Azure 入口網站中針對您的資源選取 [快速入門]  。 資源名稱是端點 URL 的第一個子網域：
 
     `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
 
@@ -35,7 +35,7 @@ ms.locfileid: "94427678"
 # <a name="qna-maker-managed-preview-release"></a>[受控 QnA Maker (預覽版本)](#tab/v2)
 
 * 最新版的 [cURL](https://curl.haxx.se/)。 快速入門會使用數個命令列參數，其記載於 [cURL 文件](https://curl.haxx.se/docs/manpage.html)中。
-* 您必須擁有 [QnA Maker 資源](../How-To/set-up-qnamaker-service-azure.md)，才能使用金鑰和資源名稱。 您已在資源建立期間輸入資源 **名稱** ，接下來系統會為您建立金鑰。 資源名稱會用來作為端點的子網域。 若要擷取您的金鑰和資源名稱，請在 Azure 入口網站中針對您的資源選取 [快速入門]  。 資源名稱是端點 URL 的第一個子網域：
+* 您必須擁有 [QnA Maker 資源](../How-To/set-up-qnamaker-service-azure.md)，才能使用金鑰和資源名稱。 您已在資源建立期間輸入資源 **名稱**，接下來系統會為您建立金鑰。 資源名稱會用來作為端點的子網域。 若要擷取您的金鑰和資源名稱，請在 Azure 入口網站中針對您的資源選取 [快速入門]  。 資源名稱是端點 URL 的第一個子網域：
 
     `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v5.0-preview.1`
 
@@ -54,7 +54,7 @@ ms.locfileid: "94427678"
 |--|--|--|
 |QnA Maker 資源名稱|URL|用於建構 URL|
 |QnA Maker 資源金鑰|`Ocp-Apim-Subscription-Key` 標頭的 `-h` 參數|驗證 QnA Maker 服務|
-|描述知識庫的 JSON|`-d` 參數|JSON 的[範例](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples)|
+|描述知識庫的 JSON|`-d` 參數|JSON 的[範例](/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples)|
 |JSON 的大小 (以位元組為單位)|`Content-Size` 標頭的 `-h` 參數||
 
 cURL 命令是從 BASH 殼層執行。 使用您自己的資源名稱、資源金鑰，以及 JSON 值和 JSON 大小來編輯此命令。
@@ -89,7 +89,7 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 |--|--|--|
 |QnA Maker 資源名稱|URL|用於建構 URL|
 |QnA Maker 資源金鑰|`Ocp-Apim-Subscription-Key` 標頭的 `-h` 參數|驗證 QnA Maker 服務|
-|描述知識庫的 JSON|`-d` 參數|JSON 的[範例](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples)|
+|描述知識庫的 JSON|`-d` 參數|JSON 的[範例](/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples)|
 |JSON 的大小 (以位元組為單位)|`Content-Size` 標頭的 `-h` 參數||
 
 cURL 命令是從 BASH 殼層執行。 使用您自己的資源名稱、資源金鑰，以及 JSON 值和 JSON 大小來編輯此命令。
@@ -322,7 +322,7 @@ cURL 回應包含執行階段端點金鑰。 查詢時只要使用其中一個�
 |QnA Maker 資源名稱|URL|用於建構 URL|
 |QnA Maker 執行階段金鑰|`Authorization` 標頭的 `-h` 參數|金鑰是字串的一部分，其中包含 `Endpointkey `這個字。 驗證 QnA Maker 服務|
 |知識庫識別碼|URL 路由|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
-|描述查詢的 JSON|`-d` 參數|JSON 的[要求本文參數](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body)和[範例](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
+|描述查詢的 JSON|`-d` 參數|JSON 的[要求本文參數](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body)和[範例](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
 |JSON 的大小 (以位元組為單位)|`Content-Size` 標頭的 `-h` 參數||
 
 cURL 命令是從 BASH 殼層執行。 使用您自己的資源名稱、資源金鑰和知識庫識別碼來編輯此命令。
@@ -347,7 +347,7 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker/knowledg
 |QnA Maker 資源名稱|URL|用於建構 URL|
 |QnA Maker 資源金鑰|`Ocp-Apim-Subscription-Key` 標頭的 `-h` 參數|驗證 QnA Maker 服務|
 |知識庫識別碼|URL 路由|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
-|描述查詢的 JSON|`-d` 參數|JSON 的[要求本文參數](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body)和[範例](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
+|描述查詢的 JSON|`-d` 參數|JSON 的[要求本文參數](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body)和[範例](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
 |JSON 的大小 (以位元組為單位)|`Content-Size` 標頭的 `-h` 參數||
 
 cURL 命令是從 BASH 殼層執行。 使用您自己的資源名稱、資源金鑰和知識庫識別碼來編輯此命令。
@@ -414,11 +414,11 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 
 ## <a name="additional-resources"></a>其他資源
 
-* [撰寫](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)參考文件
-* [執行階段](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/runtime)參考文件
+* [撰寫](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)參考文件
+* [執行階段](/rest/api/cognitiveservices/qnamaker4.0/runtime)參考文件
 * [使用 cURL 的範例 BASH 指令碼](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/curl/QnAMaker)
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API 參考](https://go.microsoft.com/fwlink/?linkid=2092179)
+> [QnA Maker (V4) REST API 參考](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)

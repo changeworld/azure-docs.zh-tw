@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: quickstart
 ms.date: 09/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 0afd8fab6072e1563d2b2f277e8a53b56a8161c2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 5dbf98d363429e6d22a0b7719cdc669deebd21a0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048231"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348631"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>快速入門：使用入口網站監視您的第一個計量
 
@@ -155,5 +155,5 @@ Webhook 是一種進入點，可讓您以程式設計方式從 Metrics Advisor �
 - [將資料摘要上線](../how-tos/onboard-your-data.md)
     - [管理資料摘要](../how-tos/manage-data-feeds.md)
     - [不同資料來源的組態](../data-feeds-from-different-sources.md)
-- [使用 REST API 或用戶端程式庫](rest-api.md)
+- [使用 REST API 或用戶端程式庫](./rest-api-and-client-library.md)
 - [設定計量和微調偵測組態](../how-tos/configure-metrics.md)

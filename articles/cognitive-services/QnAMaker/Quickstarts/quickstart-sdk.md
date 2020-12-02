@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 zone_pivot_groups: programming-languages-set-sixteen
-ms.openlocfilehash: 36a38c69c68613e912e7c598495b9370044f13a6
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: d9e984d4384b59fa13bc59e09e29939457dad37c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777468"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350986"
 ---
 # <a name="quickstart-qna-maker-client-library"></a>快速入門：QnA Maker 用戶端程式庫
 
@@ -52,9 +52,8 @@ ms.locfileid: "91777468"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
->[教學課程：使用批次檔案來測試知識庫](./batch-testing.md)
+>[教學課程：使用批次檔案來測試知識庫](../index.yml)
 
 * [QnA Maker API 是什麼？](../Overview/overview.md)
 * [編輯知識庫](../how-to/edit-knowledge-base.md)
 * [取得使用情況分析](../how-to/get-analytics-knowledge-base.md)
-

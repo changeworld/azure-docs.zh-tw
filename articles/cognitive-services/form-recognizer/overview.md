@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 自動化資料處理, 文件處理, 自動化資料輸入, 表單處理
-ms.openlocfilehash: 05024b8d7f4cf76024d71a79cb1fce489d58ee70
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 39243f4428d055ee5d4491c3e87b4b91213f63f1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519518"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353675"
 ---
 # <a name="what-is-form-recognizer"></a>什麼是表單辨識器？
 
@@ -76,7 +76,7 @@ Azure 表單辨識器是一種認知服務，可讓您使用機器學習技術�
 
 表單辨識器會使用[版面配置 API](#layout-api) 來學習所列印和手寫文字元素的預期大小和位置。 然後，其會使用使用者指定的標籤來學習文件中的索引鍵/值關聯。 建議您使用相同類型 (相同結構) 的五個手動標記表單，以便在定型新模型時開始使用，並視需要新增更多標記資料，以改善模型精確度。
 
-[開始使用標籤進行定型](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)
+[開始使用標籤進行定型](./quickstarts/label-tool.md)
 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]

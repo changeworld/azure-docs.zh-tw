@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: qna maker, 低程式碼聊天機器人, 多回合交談
-ms.openlocfilehash: 6a5ea51086e3ab532966c9cea9eb866334494bba
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 9655f64da455fb7a7124a97e6dc2d1d8437d05b7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874419"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353131"
 ---
 # <a name="what-is-qna-maker"></a>什麼是 QnA Maker？
 
@@ -22,14 +22,14 @@ QnA Maker 通常用來建立交談式用戶端應用程式，其中包括社交�
 
 ## <a name="when-to-use-qna-maker"></a>QnA Maker 的使用時機
 
-* **當您有靜態資訊時** - 當回答知識庫中有靜態資訊時，請使用 QnA Maker。 此知識庫是依據需求所自訂的，且您已使用 [PDF 和 URL](../concepts/content-types.md) 等文件建置好。
+* **當您有靜態資訊時** - 當回答知識庫中有靜態資訊時，請使用 QnA Maker。 此知識庫是依據需求所自訂的，且您已使用 [PDF 和 URL](../index.yml) 等文件建置好。
 * **當您想要為要求、問題或命令提供相同的答案時** - 當不同使用者提交相同問題時，系統會傳回相同的答案。
-* **當您想要根據中繼資訊來篩選靜態資訊時** - 新增[中繼資料](../how-to/metadata-generateanswer-usage.md)標籤，以提供與用戶端應用程式使用者和資訊相關的其他篩選選項。 常見的中繼資料資訊包括[閒聊](../how-to/chit-chat-knowledge-base.md)、內容類型或格式、內容用途和內容有效期限。
+* **當您想要根據中繼資訊來篩選靜態資訊時** - 新增 [中繼資料](../how-to/metadata-generateanswer-usage.md)標籤，以提供與用戶端應用程式使用者和資訊相關的其他篩選選項。 常見的中繼資料資訊包括[閒聊](../how-to/chit-chat-knowledge-base.md)、內容類型或格式、內容用途和內容有效期限。
 * **當您想要管理包含靜態資訊的聊天機器人對話時** - 您的知識庫會取得使用者的交談文字或命令，並做出回答。 如果答案是預先決定對話流程的一部分 (在您的知識庫中會以[多回合內容](../how-to/multiturn-conversation.md)來表示)，則聊天機器人可以輕鬆地提供此流程。
 
 ## <a name="what-is-a-knowledge-base"></a>什麼是知識庫？
 
-QnA Maker 會在問答組的知識庫中[匯入您的內容](../concepts/knowledge-base.md)。 匯入程序會擷取結構化和半結構化內容各部分之間關聯性的相關資訊，來表示問答組之間的關聯性。 您可以編輯這些問答組或新增問答組。
+QnA Maker 會在問答組的知識庫中[匯入您的內容](../index.yml)。 匯入程序會擷取結構化和半結構化內容各部分之間關聯性的相關資訊，來表示問答組之間的關聯性。 您可以編輯這些問答組或新增問答組。
 
 問答組的內容包括：
 * 問題的所有替代形式
@@ -67,9 +67,9 @@ QnA Maker 的系統是分層排名方法。 資料會儲存在 Azure 搜尋服�
 
 QnA Maker 提供多回合提示和主動式學習，可協助您改善基本的問答組。
 
-**多回合提示**讓您有機會連結問題和答案配對。 此連結可讓用戶端應用程式提供最佳答案，並提供更多問題來精簡搜尋以獲得最終答案。
+**多回合提示** 讓您有機會連結問題和答案配對。 此連結可讓用戶端應用程式提供最佳答案，並提供更多問題來精簡搜尋以獲得最終答案。
 
-知識庫從已發佈端點的使用者收到問題後，QnA Maker 會將**主動式學習**套用到這些真實世界的問題，以建議您變更知識庫來改善品質。
+知識庫從已發佈端點的使用者收到問題後，QnA Maker 會將 **主動式學習** 套用到這些真實世界的問題，以建議您變更知識庫來改善品質。
 
 ## <a name="development-lifecycle"></a>開發生命週期
 
