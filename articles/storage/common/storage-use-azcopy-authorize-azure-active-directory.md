@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/03/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 89aab37b750a61bd21ba9af23875536a8cfbff4a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: b13b5e1e27e9717066ff8f1aa8e245e8d9f54bbb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94414415"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498110"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>使用 AzCopy 和 Azure Active Directory (Azure AD 授與 blob 的存取權) 
 
@@ -42,7 +42,7 @@ ms.locfileid: "94414415"
 - 資源群組
 - 訂用帳戶
 
-若要瞭解如何驗證和指派角色，請參閱 [使用 Azure 入口網站指派 Azure 角色以存取 blob 和佇列資料](./storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)。
+若要瞭解如何驗證和指派角色，請參閱 [使用 Azure 入口網站指派 Azure 角色以存取 blob 和佇列資料](./storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 > [!NOTE]
 > 請記住，Azure 角色指派最多可能需要五分鐘的時間來傳播。

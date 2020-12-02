@@ -54,7 +54,7 @@
       href: api-management-terminology.md
     - name: 原則
       items:
-        - name: 總覽
+        - name: 概觀
           href: api-management-howto-policies.md
         - name: 原則參考索引
           href: api-management-policies.md
@@ -80,6 +80,8 @@
       href: observability.md
     - name: 使用 ARM 範本的 CI/CD
       href: devops-api-development-templates.md
+    - name: 虛刪除
+      href: soft-delete.md
 - name: 操作指南
   items:
     - name: 定義 API

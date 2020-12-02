@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ad45d5f0e313c06619fa9c998515e434de957ea
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 08c4020fc03f89b2c583a2458c70e18ecbbe0ba1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997557"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498059"
 ---
 # <a name="redirect-hard-coded-links-for-apps-published-with-azure-ad-application-proxy"></a>重新導向使用 Azure AD 應用程式 Proxy 發佈之應用程式的硬式編碼連結
 
@@ -86,28 +86,28 @@ Azure AD Application Proxy 讓您的內部部署應用程式可供遠端使用�
 - **相對內部連結**，其指向本機檔案結構中的共用資源，例如 `/claims/claims.html`。 這些連結會自動在透過應用程式 Proxy 發佈的應用程式中運作，並且持續運作 (不論是否啟用連結轉譯)。 
 - **硬式編碼的內部連結** ，可連至其他內部部署應用程式，例如 `http://expenses` 或已發佈的檔案 `http://expenses/logo.jpg` 。 連結轉譯功能適用于硬式編碼的內部連結，並將其變更為指向遠端使用者需要流覽的外部 Url。
 
-應用程式 Proxy 支援連結轉譯的 HTML 程式碼標記完整清單包括：
-* a
-* 音訊
-* base
-* 按鈕
-* div
-* embed
-* 表單
-* 框架
-* head
-* html
-* iframe
-* img
-* input
-* link
-* menuitem
-* meta
-* 物件 (object)
-* 指令碼
-* source
-* 追蹤
-* 影片
+HTML 程式碼標記中應用程式 Proxy 支援連結轉譯的完整屬性清單包括：
+*  (href) 
+* 音訊 (src) 
+* 基底 (href) 
+* 按鈕 (formaction) 
+* div (資料-背景、樣式、資料-src) 
+* 內嵌 (src) 
+* 表單 (動作) 
+*  (src 的框架) 
+* head (設定檔) 
+* html (資訊清單) 
+* iframe (longdesc、src) 
+* img (longdesc、src) 
+* 輸入 (formaction、src、value) 
+* 連結 (href) 
+* menuitem (圖示) 
+* 元 (內容) 
+* 物件 (保存、資料、程式碼基底) 
+*  (src 的腳本) 
+* 來源 (src) 
+* 追蹤 (src) 
+* 影片 (src、海報) 
 
 此外，在 CSS 內也會轉譯 URL 屬性。
 

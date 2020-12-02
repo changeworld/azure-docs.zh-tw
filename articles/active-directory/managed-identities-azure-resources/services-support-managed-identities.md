@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: eee711917a732bfc24b10db82c75786fd9734b57
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: c77f0e93e9f0084f335df39d2878871d66af0aac
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555680"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498025"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支援適用於 Azure 資源的受控識別服務
 
@@ -98,7 +98,7 @@ Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](../../azure-arc/kuber
 - [REST API - 藍圖指派](../../governance/blueprints/create-blueprint-rest-api.md#assign-a-blueprint)
 
 
-### <a name="azure-cognitive-search"></a>Azure 認知搜尋
+### <a name="azure-cognitive-search"></a>Azue 認知搜尋
 
 受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
@@ -161,7 +161,7 @@ Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](../../azure-arc/kuber
 
 
 
-### <a name="azure-event-grid"></a>Azure Event Grid
+### <a name="azure-event-grid"></a>Azure 事件方格
 
 受控識別類型 |全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
@@ -291,8 +291,8 @@ Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](../../azure-arc/kuber
 
 |受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| 系統指派 | ![可用][check] | ![可用][check] | 預覽 | 預覽 |
-| 使用者指派 | ![可用][check] | ![可用][check] | 預覽 | 預覽 |
+| 系統指派 | ![可用][check] | ![可用][check] | 預覽 | ![可用][check] |
+| 使用者指派 | ![可用][check] | ![可用][check] | 預覽 | ![可用][check] |
 
 請參閱下列清單來設定 Azure 虛擬機器擴展集的受控識別 (若區域提供)：
 
@@ -308,8 +308,8 @@ Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](../../azure-arc/kuber
 
 | 受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| 系統指派 | ![可用][check] | ![可用][check] | 預覽 | 預覽 |
-| 使用者指派 | ![可用][check] | ![可用][check] | 預覽 | 預覽 |
+| 系統指派 | ![可用][check] | ![可用][check] | 預覽 | ![可用][check] |
+| 使用者指派 | ![可用][check] | ![可用][check] | 預覽 | ![可用][check] |
 
 請參閱下列清單來設定 Azure 虛擬機器的受控識別 (若區域提供)：
 
@@ -329,7 +329,7 @@ Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](../../azure-arc/kuber
 | 使用者指派 | [可在支援的區域中使用](../../virtual-machines/windows/image-builder-overview.md#regions) | 無法使用 | 無法使用 | 無法使用 |
 
 若要瞭解如何為 Azure VM 映射產生器設定受控識別 (在可用) 的區域中，請參閱影像產生器 [總覽](../../virtual-machines/windows/image-builder-overview.md#permissions)。
-### <a name="azure-signalr-service"></a>Azure SignalR 服務
+### <a name="azure-signalr-service"></a>Azure SignalR Service
 
 受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |

@@ -7,15 +7,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/11/2020
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: 3c7765d65b63c9cee83a76a13448506f61aa8472
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 4eb9b0077d1d0591953a40d98a220d7aa0683de7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637151"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497940"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure Data Factory 中監視整合執行階段
 
@@ -48,8 +48,8 @@ Cmdlet 會為不同類型的整合執行階段傳回不同的資訊。 本文說
 | 屬性 | 描述 |
 -------- | ------------- | 
 | 名稱 | Azure 整合執行階段的名稱。 |  
-| 狀態 | Azure 整合執行階段的狀態。 | 
-| 位置 | Azure 整合執行階段的位置。 如需 Azure 整合執行階段的位置詳細資訊，請參閱[整合執行階段簡介](concepts-integration-runtime.md)。 |
+| 州 | Azure 整合執行階段的狀態。 | 
+| Location | Azure 整合執行階段的位置。 如需 Azure 整合執行階段的位置詳細資訊，請參閱[整合執行階段簡介](concepts-integration-runtime.md)。 |
 | DataFactoryName | Azure 整合執行階段所屬的資料處理站名稱。 | 
 | resourceGroupName | 資料處理站所屬的資源群組名稱。  |
 | 描述 | 整合執行階段的說明。  |
@@ -82,7 +82,7 @@ Cmdlet 會為不同類型的整合執行階段傳回不同的資訊。 本文說
 | 可用的記憶體 | 自我裝載整合執行階段節點上的可用記憶體。 這個值是近乎即時的快照集。 | 
 | CPU 使用率 | 自我裝載整合執行階段節點的 CPU 使用率。 這個值是近乎即時的快照集。 |
 | 網路功能 (輸入/輸出) | 自我裝載整合執行階段節點的網路使用率。 這個值是近乎即時的快照集。 | 
-| 並行作業 (執行中/限制) | **正在** 執行。 每個節點上執行的作業或工作數目。 這個值是近乎即時的快照集。 <br/><br/>**限制** 。 限制表示每個節點的最大並行作業數。 這個值會根據機器大小來定義。 您可以提高限制以在進階案例 (即便 CPU、記憶體或網路並未充分使用，而活動照樣會逾時的案例) 中相應增加並行作業執行能力。 這項功能也可與單一節點的自我裝載整合執行階段搭配使用。 |
+| 並行作業 (執行中/限制) | **正在** 執行。 每個節點上執行的作業或工作數目。 這個值是近乎即時的快照集。 <br/><br/>**限制**。 限制表示每個節點的最大並行作業數。 這個值會根據機器大小來定義。 您可以提高限制以在進階案例 (即便 CPU、記憶體或網路並未充分使用，而活動照樣會逾時的案例) 中相應增加並行作業執行能力。 這項功能也可與單一節點的自我裝載整合執行階段搭配使用。 |
 | 角色 | 多節點的自我裝載整合執行階段中的角色有兩種 – 發送器和背景工作角色。 所有節點都是背景工作角色，這表示它們全都能用來執行作業。 發送器節點只有一個，可用來提取雲端服務中的工作/作業，並發送到不同的背景工作節點。 發送器節點也是背景工作角色節點。 |
 
 當自我裝載整合執行階段中有兩個或多個節點 (也就是相應放大的案例) 時，屬性的某些設定會比較合理。
@@ -181,8 +181,8 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 | 節點                        | 您 Azure-SSIS IR 具有節點特定狀態的已配置/可用節點 (啟動/可用/回收/無法使用) 和可採取動作的錯誤。 |
 | OtherErrors                  | 您 Azure-SSIS IR 上的非節點特定可操作錯誤。 |
 | LastOperation                | 在您的 Azure-SSIS IR 上，最後一次啟動/停止作業的結果具有可採取動作的錯誤 (s) 如果失敗的話）。 |
-| 狀態                        | 整體狀態 (Azure-SSIS IR 的初始/啟動/啟動/停止/停止) 。 |
-| 位置                     | Azure-SSIS IR 的位置。 |
+| 州                        | 整體狀態 (Azure-SSIS IR 的初始/啟動/啟動/停止/停止) 。 |
+| Location                     | Azure-SSIS IR 的位置。 |
 | NodeSize                     | 您 Azure-SSIS IR 中每個節點的大小。 |
 | NodeCount                    | 您 Azure-SSIS IR 中的節點數目。 |
 | MaxParallelExecutionsPerNode | 您 Azure-SSIS IR 中每個節點的平行執行數目上限。 |
@@ -208,7 +208,7 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 | 啟動中             | 正在準備此節點。 |
 | 可用            | 此節點已準備好部署/執行 SSIS 套件。 |
 | 回收中            | 此節點正在修復/重新啟動。 |
-| 無法使用          | 此節點尚未準備好部署/執行 SSIS 套件，且具有可採取動作的錯誤/問題可供您解決。 |
+| [無法使用]          | 此節點尚未準備好部署/執行 SSIS 套件，且具有可採取動作的錯誤/問題可供您解決。 |
 
 #### <a name="status-overall-azure-ssis-ir"></a>狀態 (整體 Azure-SSIS IR) 
 
@@ -224,7 +224,7 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 
 ### <a name="monitor-the-azure-ssis-integration-runtime-in-azure-portal"></a>監視 Azure 入口網站中的 Azure SSIS 整合執行時間
 
-若要監視 Azure 入口網站中的 Azure-SSIS IR，請移至 ADF UI 上 [ **監視** 中樞] 的 [ **整合運行** 時間] 頁面，您可以在其中查看所有整合執行時間。
+若要監視 Azure 入口網站中的 Azure-SSIS IR，請移至 ADF UI 上 [**監視** 中樞] 的 [**整合運行** 時間] 頁面，您可以在其中查看所有整合執行時間。
 
 ![監視所有整合執行時間](media/monitor-integration-runtime/monitor-integration-runtimes.png)
 
@@ -234,7 +234,7 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 
 #### <a name="status-tile"></a>狀態磚
 
-在 Azure-SSIS IR 監視] 頁面的 [ **狀態** ] 磚上，您可以看到其整體狀態，例如 [執行中 **] 或 [** **已停止** ]。 選取 [ **執行中]** 狀態時，會出現一個視窗，其中含有 [即時 **停止** ] 按鈕以停止您的 Azure-SSIS IR。 選取 [ **已停止** ] 狀態會出現一個視窗，其中含有 [即時 **啟動** ] 按鈕來啟動您的 Azure-SSIS IR。 快顯視窗也有 [ **執行 ssis 套件** ] 按鈕，可使用在 Azure-SSIS IR 上執行的「執行 ssis 套件」活動來自動產生 ADF 管線， (請參閱在 [ADF 管線中執行 Ssis 套件的執行 ssis 套件活動](./how-to-invoke-ssis-package-ssis-activity.md)) 和 **資源識別碼** 文字方塊，您可以從中複製 Azure-SSIS IR 資源識別碼 (`/subscriptions/YourAzureSubscripton/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourADF/integrationruntimes/YourAzureSSISIR`) 。 包含 ADF 和 Azure-SSIS IR 名稱 Azure-SSIS IR 資源識別碼的尾碼會形成一個叢集識別碼，可用來向獨立軟體廠商購買額外的高階/授權 SSIS 元件 (Isv) 並將其系結至您的 Azure-SSIS IR (請參閱在 [您的 Azure-SSIS IR) 上安裝 premium/授權元件](./how-to-develop-azure-ssis-ir-licensed-components.md) 。
+在 Azure-SSIS IR 監視] 頁面的 [ **狀態** ] 磚上，您可以看到其整體狀態，例如 [執行中 **] 或 [** **已停止**]。 選取 [ **執行中]** 狀態時，會出現一個視窗，其中含有 [即時 **停止** ] 按鈕以停止您的 Azure-SSIS IR。 選取 [ **已停止** ] 狀態會出現一個視窗，其中含有 [即時 **啟動** ] 按鈕來啟動您的 Azure-SSIS IR。 快顯視窗也有 [ **執行 ssis 套件** ] 按鈕，可使用在 Azure-SSIS IR 上執行的「執行 ssis 套件」活動來自動產生 ADF 管線， (請參閱在 [ADF 管線中執行 Ssis 套件的執行 ssis 套件活動](./how-to-invoke-ssis-package-ssis-activity.md)) 和 **資源識別碼** 文字方塊，您可以從中複製 Azure-SSIS IR 資源識別碼 (`/subscriptions/YourAzureSubscripton/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourADF/integrationruntimes/YourAzureSSISIR`) 。 包含 ADF 和 Azure-SSIS IR 名稱 Azure-SSIS IR 資源識別碼的尾碼會形成一個叢集識別碼，可用來向獨立軟體廠商購買額外的高階/授權 SSIS 元件 (Isv) 並將其系結至您的 Azure-SSIS IR (請參閱在 [您的 Azure-SSIS IR) 上安裝 premium/授權元件](./how-to-develop-azure-ssis-ir-licensed-components.md) 。
 
 ![監視您的 Azure-SSIS IR 狀態磚](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-status.png)
 

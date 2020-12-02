@@ -6,12 +6,12 @@ ms.author: jumeder
 ms.date: 11/09/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0596d118d1f3c09bc295891f023fe9990f3f1e05
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: c8ecd3afc95cf4b8054cd7db3530c15afebea3ce
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557590"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498229"
 ---
 # <a name="fresnel-effect"></a>Fresnel 效果
 
@@ -21,7 +21,7 @@ Fresnel 效果可讓受影響的物件在其邊緣周圍具有彩色的照射。
 
 ## <a name="enabling-the-fresnel-effect"></a>啟用 fresnel 效果
 
-若要使用 fresnel 效果功能，必須在有問題的資料上啟用。 您可以藉由在[.pbr 材質](../../overview/features/pbr-materials.md)上設定[PbrMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures)的 FresnelEffect 位來啟用它。 相同的模式適用于 [ColorMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering) 和 [色彩材質](../../overview/features/color-materials.md)。 如需使用方式示範，請參閱程式碼範例一節。
+若要使用 fresnel 效果功能，必須在有問題的資料上啟用。 您可以藉由在[.pbr 材質](../../overview/features/pbr-materials.md)上設定[PbrMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures)的 FresnelEffect 位來啟用它。 相同的模式適用于 [ColorMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering) 和 [色彩材質](../../overview/features/color-materials.md)。 如需使用方式示範，請參閱程式碼範例一節。
 
 啟用之後，fresnel 效果就會立即顯示。 根據預設，會有白色 (1，1，1，1) ，而指數為1。 您可以使用以下的參數 setter 自訂這些設定。
 
@@ -93,10 +93,10 @@ void SetFresnelEffect(ApiHandle<AzureSession> session, ApiHandle<Material> mater
 
 ## <a name="api-documentation"></a>API 文件
 
-* [C # PbrMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures)
-* [C + + PbrMaterialFeatures](https://docs.microsoft.com/cpp/api/remote-rendering/pbrmaterialfeatures)
-* [C # ColorMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.colormaterialfeatures)
-* [C + + ColorMaterialFeatures](https://docs.microsoft.com/cpp/api/remote-rendering/colormaterialfeatures)
+* [C # PbrMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures)
+* [C + + PbrMaterialFeatures](/cpp/api/remote-rendering/pbrmaterialfeatures)
+* [C # ColorMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering.colormaterialfeatures)
+* [C + + ColorMaterialFeatures](/cpp/api/remote-rendering/colormaterialfeatures)
 
 ## <a name="next-steps"></a>後續步驟
 

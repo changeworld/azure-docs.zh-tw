@@ -2,13 +2,13 @@
 title: 範本結構和語法
 description: 使用宣告式 JSON 語法來描述 (ARM) 範本的 Azure Resource Manager 範本的結構和屬性。
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: c0e1e3225d63d0463164a3ed599fb0b760367123
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 12/01/2020
+ms.openlocfilehash: ce36d725b3844fcd4c8d43a9f044423611d44fbd
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353488"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497872"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>了解 ARM 範本的結構和語法 \(部分機器翻譯\)
 
@@ -33,7 +33,7 @@ ms.locfileid: "96353488"
 }
 ```
 
-| 元素名稱 | 必要 | 說明 |
+| 元素名稱 | 必要 | 描述 |
 |:--- |:--- |:--- |
 | $schema |是 |JSON 結構描述檔案的位置，說明範本語言的版本。 您所使用的版本號碼取決於部署範圍以及您的 JSON 編輯器。<br><br>如果您使用 [VS Code 搭配 Azure Resource Manager 工具擴充](quickstart-create-templates-use-visual-studio-code.md)功能，請使用最新版本進行資源群組部署：<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>其他編輯器 (包括 Visual Studio) 可能無法處理此架構。 針對這些編輯器，請使用：<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>針對訂用帳戶部署，使用：<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>針對管理群組部署，請使用：<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>針對租使用者部署，請使用：<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
 | contentVersion |是 |範本版本 (例如 1.0.0.0)。 您可以為此元素提供任何值。 使用此值在範本中記載重大變更。 使用範本部署資源時，這個值可用來確定使用的是正確的範本。 |
@@ -125,7 +125,7 @@ ms.locfileid: "96353488"
 }
 ```
 
-| 元素名稱 | 必要 | 說明 |
+| 元素名稱 | 必要 | 描述 |
 |:--- |:--- |:--- |
 | 參數-名稱 |是 |參數的名稱。 必須是有效的 JavaScript 識別碼。 |
 | 類型 |是 |參數值類型。 允許的類型和值為 **string**、**securestring**、**int**、**bool**、**object**、**secureObject**，以及 **array**。 請參閱 [資料類型](#data-types)。 |
@@ -174,7 +174,7 @@ ms.locfileid: "96353488"
 
 如需如何使用變數的範例，請參閱 [ARM 範本中的變數](template-variables.md)。
 
-## <a name="functions"></a>函數
+## <a name="functions"></a>函式
 
 在您的範本內，您可以建立自己的函式。 這些函式可供您在範本中使用。 一般而言，您會定義不想在整個範本中重複的複雜運算式。 您會從範本中支援的運算式和[函式](template-functions.md)建立使用者定義的函式。
 
@@ -208,7 +208,7 @@ ms.locfileid: "96353488"
 ],
 ```
 
-| 元素名稱 | 必要 | 說明 |
+| 元素名稱 | 必要 | 描述 |
 |:--- |:--- |:--- |
 | namespace |是 |自訂函式的命名空間。 使用以避免與範本函式發生名稱衝突。 |
 | 函數名稱 |是 |自訂函數的名稱。 呼叫函式時，請將函數名稱與命名空間合併。 例如，若要在 contoso 命名空間中呼叫名為 uniqueName 的函式，請使用 `"[contoso.uniqueName()]"` 。 |
@@ -279,11 +279,11 @@ ms.locfileid: "96353488"
 ]
 ```
 
-| 元素名稱 | 必要 | 說明 |
+| 元素名稱 | 必要 | 描述 |
 |:--- |:--- |:--- |
 | condition (條件) | 否 | 布林值，指出是否會在此部署期間佈建資源。 若為 `true`，就會在部署期間建立資源。 若為 `false`，則會略過此部署的資源。 請參閱 [條件](conditional-resource-deployment.md)。 |
 | 類型 |是 |資源類型。 此值是資源提供者的命名空間與資源類型 (的組合，例如 **Microsoft. Storage/storageAccounts**) 。 若要判斷可用的值，請參閱 [範本參考](/azure/templates/)。 針對子資源，類型的格式取決於其是否在父資源內進行嵌套，或在父資源外部定義。 請參閱[設定子資源的名稱和類型](child-resource-name-type.md)。 |
-| apiVersion |是 |要用來建立資源的 REST API 版本。 若要判斷可用的值，請參閱 [範本參考](/azure/templates/)。 |
+| apiVersion |是 |要用來建立資源的 REST API 版本。 建立新的範本時，請將此值設定為您要部署之資源的最新版本。 只要範本視需要運作，請繼續使用相同的 API 版本。 藉由繼續使用相同的 API 版本，您可以將新 API 版本的風險降至最低，以變更範本的運作方式。 只有當您想要使用在較新版本中引進的新功能時，才需要更新 API 版本。 若要判斷可用的值，請參閱 [範本參考](/azure/templates/)。 |
 | NAME |是 |資源名稱。 此名稱必須遵循在 RFC3986 中定義的 URI 元件限制。 將資源名稱公開到外部合作物件的 Azure 服務會驗證該名稱，以確保它不會嘗試偽造其他身分識別。 針對子資源，名稱的格式取決於其是否在父資源內進行嵌套，或在父資源外部定義。 請參閱[設定子資源的名稱和類型](child-resource-name-type.md)。 |
 | comments |否 |您在範本中記錄資源的註解。 如需詳細資訊，請參閱[範本中的註解](template-syntax.md#comments)。 |
 | location |不定 |所提供資源的支援地理位置。 您可以選取任何可用的位置，但通常選擇接近您的使用者的位置很合理。 通常，將彼此互動的資源放在相同區域也合乎常理。 大部分的資源類型都需要有位置，但某些類型 (例如角色指派) 不需要位置。 請參閱 [設定資源位置](resource-location.md)。 |
@@ -316,7 +316,7 @@ ms.locfileid: "96353488"
 }
 ```
 
-| 元素名稱 | 必要 | 說明 |
+| 元素名稱 | 必要 | 描述 |
 |:--- |:--- |:--- |
 | 輸出-名稱 |是 |輸出值的名稱。 必須是有效的 JavaScript 識別碼。 |
 | condition (條件) |否 | 布林值，指出是否傳回此輸出值。 當為 `true` 時，該值會包含在部署的輸出中。 若為 `false`，則會略過此部署的輸出值。 未指定時，預設值為 `true`。 |
@@ -351,7 +351,7 @@ ms.locfileid: "96353488"
   ],
 ```
 
-在 Visual Studio Code 中， [Azure Resource Manager 工具延伸](quickstart-create-templates-use-visual-studio-code.md) 模組可以自動偵測 Resource Manager 範本，並據以變更語言模式。 如果您在 VS Code 右下角看到 **Azure Resource Manager 範本** ，則可以使用內嵌批註。 內嵌註解不再被標示為無效。
+在 Visual Studio Code 中， [Azure Resource Manager Tools 擴充](quickstart-create-templates-use-visual-studio-code.md) 功能可以自動偵測 ARM 範本並變更語言模式。 如果您在 VS Code 右下角看到 **Azure Resource Manager 範本** ，則可以使用內嵌批註。 內嵌註解不再被標示為無效。
 
 ![Visual Studio Code Azure Resource Manager 範本模式](./media/template-syntax/resource-manager-template-editor-mode.png)
 

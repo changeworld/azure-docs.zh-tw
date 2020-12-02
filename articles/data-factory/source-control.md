@@ -4,19 +4,19 @@ description: 了解如何在 Azure Data Factory 中設定原始檔控制
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
 ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 37982d1c28d445d40fa9d53a2a1eb076fbbf7f2f
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: d219ff8469c471a37deb47e0f217292d70e8f0f9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566702"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497107"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory 中的原始檔控制
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -54,11 +54,11 @@ ms.locfileid: "94566702"
 
 ## <a name="connect-to-a-git-repository"></a>連接到 Git 存放庫
 
-有四種不同的方式可將 Git 存放庫連線至您的 data factory，Azure Repos 和 GitHub。 連線到 Git 存放庫之後，您可以在 [ **原始檔控制** ] 區段中的 [ **Git** 設定] 下，于 [管理中樞](author-management-hub.md)內查看及管理您的設定。
+有四種不同的方式可將 Git 存放庫連線至您的 data factory，Azure Repos 和 GitHub。 連線到 Git 存放庫之後，您可以在 [**原始檔控制**] 區段中的 [ **Git** 設定] 下，于 [管理中樞](author-management-hub.md)內查看及管理您的設定。
 
 ### <a name="configuration-method-1-home-page"></a>設定方法1：首頁
 
-在 Azure Data Factory 首頁] 中，選取 [ **設定程式碼存放庫** ]。
+在 Azure Data Factory 首頁] 中，選取 [ **設定程式碼存放庫**]。
 
 ![從首頁設定程式碼存放庫](media/author-visually/configure-repo.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "94566702"
 
 ### <a name="configuration-method-3-management-hub"></a>設定方法3：管理中樞
 
-移至 ADF UX 中的管理中樞。 在 [ **原始檔控制** ] 區段中，選取 [ **Git** 設定]。 如果您沒有任何已連線的儲存機制，請按一下 [ **設定程式碼存放庫** ]。
+移至 ADF UX 中的管理中樞。 在 [**原始檔控制**] 區段中，選取 [ **Git** 設定]。 如果您沒有任何已連線的儲存機制，請按一下 [ **設定程式碼存放庫**]。
 
 ![從管理中樞設定程式碼存放庫設定](media/author-visually/configure-repo-3.png)
 
@@ -176,11 +176,11 @@ GitHub 與 Data Factory 的整合支援公用 GitHub (即 [https://github.com](h
 
 如果您已連線至 GitHub，而且只授與存取個人帳戶的許可權，請遵循下列步驟來授與許可權給組織。 
 
-1. 移至 GitHub 並開啟 [ **設定** ]。
+1. 移至 GitHub 並開啟 [ **設定**]。
 
     ![開啟 GitHub 設定](media/author-visually/github-settings.png)
 
-1. 選取 **應用程式** 。 在 [ **授權的 OAuth 應用程式** ] 索引標籤中，您應該會看到 *AzureDataFactory* 。
+1. 選取 **應用程式**。 在 [ **授權的 OAuth 應用程式** ] 索引標籤中，您應該會看到 *AzureDataFactory*。
 
     ![選取 OAuth 應用程式](media/author-visually/github-organization-select-application.png)
 
@@ -203,7 +203,7 @@ GitHub 與 Data Factory 的整合支援公用 GitHub (即 [https://github.com](h
 
 ## <a name="version-control"></a>版本控制
 
-版本控制系統 (也稱為 _原始檔控制_ ) 可讓開發人員在程式碼上共同作業，並追蹤對程式碼基底所進行的變更。 來源控制是多開發人員專案的必要工具。
+版本控制系統 (也稱為 _原始檔控制_) 可讓開發人員在程式碼上共同作業，並追蹤對程式碼基底所進行的變更。 來源控制是多開發人員專案的必要工具。
 
 ### <a name="creating-feature-branches"></a>建立功能分支
 
@@ -278,7 +278,7 @@ Azure Data Factory 一次只能有一個發佈分支。 當您指定新的發佈
 
 ## <a name="switch-to-a-different-git-repository"></a>切換至不同的 Git 存放庫
 
-若要切換至不同的 Git 存放庫，請移至 [ **原始檔控制** ] 下 [管理中樞] 中的 [Git 設定] 頁面。 選取 **[中斷連線]** 。 
+若要切換至不同的 Git 存放庫，請移至 [ **原始檔控制**] 下 [管理中樞] 中的 [Git 設定] 頁面。 選取 **[中斷連線]**。 
 
 ![Git 圖示](media/author-visually/remove-repository.png)
 

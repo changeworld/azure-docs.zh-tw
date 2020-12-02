@@ -2,13 +2,13 @@
 title: 範本的最佳做法
 description: 說明用於製作 Azure Resource Manager 範本的建議方法。 提供建議來避免使用範本時的常見問題。
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: 1121c66e0bcd7de39afd5bea85866fd9ad007ce4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/01/2020
+ms.openlocfilehash: c62bde8fc8cfc79330d13b7b2ff4f778dadf1339
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87809250"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497974"
 ---
 # <a name="arm-template-best-practices"></a>ARM 範本的最佳作法
 
@@ -87,8 +87,6 @@ ms.locfileid: "87809250"
    },
    ```
 
-* 針對資源類型的 API 版本，請勿使用參數。 資源屬性和值可能會隨版本號碼而不同。 將 API 版本設定為參數時，程式碼編輯器中的 Intellisense 會無法判斷正確的結構描述。 請改為將 API 版本硬式編碼在範本中。
-
 * 請謹慎使用 `allowedValues`。 只有當您必須確保允許的選項中不會包含某些值時才可使用。 如果您 `allowedValues` 太廣泛地使用，可能會因為不讓清單保持在最新狀態而封鎖有效的部署。
 
 * 當範本中的參數名稱與 PowerShell 部署命令中的參數相符時，Resource Manager 會在範本參數加上後置詞 **FromTemplate** 以避免命名衝突。 例如，如果您在範本中包含名為 **ResourceGroupName** 的參數，它會與 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) Cmdlet 中的 **ResourceGroupName** 參數發生衝突。 部署期間，系統會提示您為 **ResourceGroupNameFromTemplate** 提供值。
@@ -146,8 +144,6 @@ ms.locfileid: "87809250"
 
 * 針對用複雜方式排列範本函式所建構的值，請使用變數。 當複雜的運算式只以變數形式顯示時，範本會較容易看懂。
 
-* 針對資源上的 `apiVersion`，請勿使用變數。 API 版本會決定資源的結構描述。 變更版本往往就必須變更資源的屬性。
-
 * 您不能在範本的 **variables** 區段使用 [reference](template-functions-resource.md#reference) 函式。 **reference** 函式的值是從資源的執行階段狀態所衍生。 不過，將範本初始剖析時，會將變數加以解析。 請直接在範本的 **resources** 或 **outputs** 區段中，建構需要 **reference** 函式的值。
 
 * 包含變數以用於必須是唯一的資源名稱。
@@ -155,6 +151,16 @@ ms.locfileid: "87809250"
 * 請[在變數中使用複製迴圈](copy-variables.md)來建立重複的 JSON 物件模式。
 
 * 請移除未使用的變數。
+
+## <a name="api-version"></a>API 版本
+
+將此 `apiVersion` 屬性設定為資源類型的硬式編碼 API 版本。 建立新的範本時，建議您針對資源類型使用最新的 API 版本。 若要判斷可用的值，請參閱 [範本參考](/azure/templates/)。
+
+當您的範本如預期般運作時，建議您繼續使用相同的 API 版本。 藉由使用相同的 API 版本，您不必擔心可能會在較新版本中引進的重大變更。
+
+請勿使用 API 版本的參數。 資源屬性和值可能會因 API 版本而異。 將 API 版本設定為參數時，程式碼編輯器中的 Intellisense 會無法判斷正確的結構描述。 如果您傳入的 API 版本不符合範本中的屬性，部署將會失敗。
+
+請勿使用 API 版本的變數。 尤其是，請勿使用 [provider](template-functions-resource.md#providers) 函式，在部署期間動態取得 API 版本。 動態抓取的 API 版本可能不符合範本中的屬性。
 
 ## <a name="resource-dependencies"></a>資源相依性
 
@@ -189,7 +195,7 @@ ms.locfileid: "87809250"
    ]
    ```
 
-* 如果您使用範本中的公用端點** (例如 Azure Blob 儲存體公用端點)，請勿將命名空間硬式編碼**。 使用 **reference** 函式，動態擷取命名空間。 您可以使用此方法可將範本部署到不同的公用命名空間環境中，而不需要將範本中的端點手動變更。 將 API 版本設定成與您在範本中用於儲存體帳戶相同的版本：
+* 如果您使用範本中的公用端點 (例如 Azure Blob 儲存體公用端點)，請勿將命名空間硬式編碼。 使用 **reference** 函式，動態擷取命名空間。 您可以使用此方法可將範本部署到不同的公用命名空間環境中，而不需要將範本中的端點手動變更。 將 API 版本設定成與您在範本中用於儲存體帳戶相同的版本：
    
    ```json
    "diagnosticsProfile": {

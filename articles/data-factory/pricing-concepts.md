@@ -2,20 +2,20 @@
 title: 透過範例瞭解 Azure Data Factory 定價
 description: 此文章透過詳細範例說明及示範 Azure Data Factory 的定價模型
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: 13a05089ae6365bb5d279105f8c010278bd0adb8
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: cea8ae07585f09c644f0ef6e1e6142998ddc7f08
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93396000"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497496"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>透過範例了解 Data Factory 定價
 

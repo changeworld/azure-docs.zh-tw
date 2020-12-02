@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7bb4cca6f58cb4ad0722c1407d2ef3062c3747e2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: b49e780714bd5e0662c6cb7ef208c473a8b45ccc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781952"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498144"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>核心 Azure 儲存體服務簡介
 
@@ -41,7 +41,7 @@ Azure 儲存體平臺包含下列資料服務：
 
 下表比較檔案、Blob、磁片、佇列和資料表，並顯示每個檔案、Blob、磁片、佇列和資料表的範例案例。
 
-| 功能 | 描述 | 使用時機 |
+| 特徵 | 描述 | 使用時機 |
 |--------------|-------------|-------------|
 | **Azure 檔案** |提供完全受控的雲端檔案共用，您可以從任何地方透過業界標準伺服器訊息區 (SMB) 通訊協定來存取。<br><br>您可以從 Windows、Linux 和 macOS 的雲端或內部部署環境掛接 Azure 檔案共用。 | 您想要將應用程式「隨即轉移」至已使用原生檔案系統 Api 的雲端，以在其和在 Azure 中執行的其他應用程式之間共用資料。<br/><br/>您想要取代或補充內部部署檔案伺服器或 NAS 裝置。<br><br> 您想要儲存需要從許多虛擬機器存取的開發和偵錯工具。 |
 | **Azure Blob** | 允許在區塊 blob 中大規模地儲存和存取非結構化資料。<br/><br/>也支援將 [Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md) 用於企業巨量資料分析解決方案。 | 您想要應用程式支援串流及隨機存取案例。<br/><br/>您想要能夠從任何位置存取應用程式資料。<br/><br/>您想要在 Azure 上建置企業 Data Lake，並執行巨量資料分析。 |
@@ -91,7 +91,7 @@ Azure 佇列服務用來儲存及擷取訊息。 佇列訊息的大小上限為 
 
 如需 Azure 佇列的詳細資訊，請參閱[佇列簡介](../queues/storage-queues-introduction.md)。
 
-## <a name="table-storage"></a>表格儲存體
+## <a name="table-storage"></a>資料表儲存體
 
 Azure 資料表儲存體現在屬於 Azure Cosmos DB。 若要查看 Azure 資料表儲存體文件，請參閱 [Azure 資料表儲存體概觀](../tables/table-storage-overview.md)。 除了現有的 Azure 資料表儲存體服務，有新的 Azure Cosmos DB 資料表 API 供應項目，可提供輸送量最佳化的資料表、全域發佈，以及自動次要索引。 若要深入瞭解並試用新的 premium 體驗，請參閱 [Azure Cosmos DB 資料表 API](../../cosmos-db/table-introduction.md)。
 
@@ -131,7 +131,7 @@ Azure 儲存體的用戶端程式庫會提供方法，以便在透過網路傳�
 
 ## <a name="redundancy"></a>備援性
 
-為了確保您的資料持久，Azure 儲存體儲存資料的多個複本。 當您設定儲存體帳戶時，您可選取備援選項。 如需詳細資訊，請參閱 [Azure 儲存體備援](./storage-redundancy.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) \(部分機器翻譯\)。
+為了確保您的資料持久，Azure 儲存體儲存資料的多個複本。 當您設定儲存體帳戶時，您可選取備援選項。 如需詳細資訊，請參閱 [Azure 儲存體備援](./storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) \(部分機器翻譯\)。
 
 ## <a name="transfer-data-to-and-from-azure-storage"></a>將資料傳入和傳出 Azure 儲存體
 

@@ -10,12 +10,12 @@ ms.date: 11/20/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: cc3a2a1ee28ad3c1fdefad08c8ec133ad45cb408
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 118aaa368f48838a33d130d8dddc89bb8dce3f3e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435054"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498178"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>使用 (SAS) 的共用存取簽章來授與 Azure 儲存體資源的有限存取權
 
@@ -191,7 +191,7 @@ SAS 權杖是您在用戶端產生的字串，例如，使用其中一個 Azure 
 
 ### <a name="service-sas"></a>服務 SAS
 
-- [使用 .NET 建立容器或 blob 的服務 SAS](../blobs/storage-blob-service-sas-create-dotnet.md)
+- [使用 .NET 建立容器或 blob 的服務 SAS](../blobs/sas-service-create.md)
 
 ### <a name="account-sas"></a>帳戶 SAS
 

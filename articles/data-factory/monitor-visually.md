@@ -3,19 +3,19 @@ title: 以視覺化方式監視 Azure Data Factory
 description: 了解如何以視覺化方式監視 Azure 資料處理站
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 45ebd793d96ed8cf0edf88d5631353fb6cd6a982
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: f2bf1b1a16660b4e80bc0acc5c6e4201b452098f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96008764"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497906"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>以視覺化方式監視 Azure Data Factory
 

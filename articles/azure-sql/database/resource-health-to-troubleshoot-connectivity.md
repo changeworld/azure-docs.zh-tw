@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 02/26/2019
-ms.openlocfilehash: 8be537fd28adce45b7fc106cc3798688ee4c54ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a51840daa2c8b19c323ad761ff6e6d1dcef15f75
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321572"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497957"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database-and-azure-sql-managed-instance"></a>使用資源健康狀態針對 Azure SQL Database 和 Azure SQL 受控執行個體的連線能力進行疑難排解
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -45,13 +45,13 @@ ms.locfileid: "91321572"
 
 ### <a name="unavailable"></a>無法使用
 
-若狀態為 [無法使用]****，表示資源健康情況偵測到持續性的 SQL 資源登入失敗。 如果您的資源持續處於此狀態一段長時間，請聯絡支援人員。
+若狀態為 [無法使用]，表示資源健康情況偵測到持續性的 SQL 資源登入失敗。 如果您的資源持續處於此狀態一段長時間，請聯絡支援人員。
 
 ![[無法使用]](./media/resource-health-to-troubleshoot-connectivity/sql-resource-health-unavailable.jpg)
 
 ### <a name="unknown"></a>Unknown
 
-[不明]**** 健康狀態表示資源健康狀態超過 10 分鐘未收到此資源的相關資訊。 雖然此狀態並非資源狀態的明確指示，卻是疑難排解程序中的重要資料點。 如果資源如預期般執行，幾分鐘後資源的狀態會變更為 [可用]。 如果您遇到資源問題，[不明] 健康狀態可能暗示資源受到平台事件影響。
+[不明] 健康狀態表示資源健康狀態超過 10 分鐘未收到此資源的相關資訊。 雖然此狀態並非資源狀態的明確指示，卻是疑難排解程序中的重要資料點。 如果資源如預期般執行，幾分鐘後資源的狀態會變更為 [可用]。 如果您遇到資源問題，[不明] 健康狀態可能暗示資源受到平台事件影響。
 
 ![Unknown](./media/resource-health-to-troubleshoot-connectivity/sql-resource-health-unknown.jpg)
 

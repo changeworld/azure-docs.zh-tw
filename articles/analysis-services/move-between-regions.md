@@ -4,16 +4,16 @@ description: 說明如何將 Azure Analysis Services 資源移至不同的區域
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: how-to
-ms.date: 06/09/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 1f7ecf960ae94fae4d829e73daf051b9062e478d
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 049ff6d14c3967481eb73037814082fa261154e3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018189"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497923"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>將 Analysis Services 移至不同的區域
 
@@ -37,7 +37,7 @@ ms.locfileid: "92018189"
 將伺服器移到不同區域之前，建議您建立詳細的方案。 請考慮額外的資源，例如可能也需要移動的閘道和存放裝置。 有了任何計畫，請務必在移動實際執行伺服器之前，先使用測試伺服器完成一或多個試用移動作業。
 
 > [!IMPORTANT]
-> 用戶端應用程式和連接字串會使用完整伺服器名稱連接到 Analysis Services，這是包含伺服器所在區域的 Uri。 例如，`asazure://westcentralus.asazure.windows.net/advworks01`。 將伺服器移到不同的區域時，您實際上是在不同的區域中建立新的伺服器資源，在伺服器名稱 Uri 中會有不同的區域。 腳本中使用的用戶端應用程式和連接字串必須使用新的伺服器名稱 Uri 連接到新的伺服器。 使用 [伺服器名稱別名](analysis-services-server-alias.md) 可減輕伺服器名稱 Uri 必須變更的位置數目，但必須在區域移動之前先執行。
+> 用戶端應用程式和連接字串會使用完整伺服器名稱連接到 Analysis Services，這是包含伺服器所在區域的 Uri。 例如： `asazure://westcentralus.asazure.windows.net/advworks01` 。 將伺服器移到不同的區域時，您實際上是在不同的區域中建立新的伺服器資源，在伺服器名稱 Uri 中會有不同的區域。 腳本中使用的用戶端應用程式和連接字串必須使用新的伺服器名稱 Uri 連接到新的伺服器。 使用 [伺服器名稱別名](analysis-services-server-alias.md) 可減輕伺服器名稱 Uri 必須變更的位置數目，但必須在區域移動之前先執行。
 
 > [!IMPORTANT]
 > Azure 區域使用不同的 IP 位址範圍。 如果您針對伺服器和/或儲存體帳戶所在的區域設定防火牆例外，可能需要設定不同的 IP 位址範圍。 若要深入瞭解，請參閱 [關於 Analysis Services 網路連線能力](analysis-services-network-faq.md)的常見問題。
@@ -48,11 +48,11 @@ ms.locfileid: "92018189"
 > [!NOTE]
 > 如果使用內部部署資料閘道連接到資料來源，您也必須將閘道資源移至目標伺服器區域。 若要深入瞭解，請參閱 [安裝和設定內部部署資料閘道](analysis-services-gateway-install.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - **Azure 儲存體帳戶**：儲存 .abf 備份檔案所需。
-- **SQL Server Management Studio (SSMS) **：備份和還原模型資料庫的必要參數。
-- **Azure PowerShell**(英文)。 只有當您選擇使用 PowerShell 來完成此工作時，才需要此項。
+- **SQL Server Management Studio (SSMS)**：備份和還原模型資料庫的必要參數。
+- **Azure PowerShell**。 只有當您選擇使用 PowerShell 來完成此工作時，才需要此項。
 
 ## <a name="prepare"></a>準備
 
@@ -88,7 +88,7 @@ ms.locfileid: "92018189"
 
 使用 PowerShell 匯出範本：
 
-1. 使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) 命令登入 Azure 訂用帳戶，並遵循畫面上的指示操作：
+1. 使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 命令登入 Azure 訂用帳戶，並遵循畫面上的指示操作：
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -125,11 +125,11 @@ ms.locfileid: "92018189"
 
 2. 選取 **儲存體總管**，然後展開 [ **BLOB 容器**]。 
 
-3. 以滑鼠右鍵按一下您的儲存體容器，然後選取 [ **取得共用存取**簽章]。
+3. 以滑鼠右鍵按一下您的儲存體容器，然後選取 [ **取得共用存取** 簽章]。
 
     :::image type="content" source="media/move-between-regions/get-sas.png" alt-text="取得 SAS":::
 
-4. 在 [ **共用存取**簽章] 中，選取 [ **建立**]。 根據預設，SAS 將在24小時內到期。
+4. 在 [ **共用存取** 簽章] 中，選取 [ **建立**]。 根據預設，SAS 將在24小時內到期。
 
 5. 複製並儲存 **URI**。 
 
@@ -177,7 +177,7 @@ ms.locfileid: "92018189"
 
 #### <a name="regions"></a>區域
 
-若要取得 Azure 區域，請參閱 [azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 若要使用 PowerShell 來取得區域，請執行 [>get-azlocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) 命令。
+若要取得 Azure 區域，請參閱 [azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 若要使用 PowerShell 來取得區域，請執行 [>get-azlocation](/powershell/module/az.resources/get-azlocation) 命令。
 
 ```azurepowershell-interactive
    Get-AzLocation | format-table 
@@ -185,7 +185,7 @@ ms.locfileid: "92018189"
 
 ## <a name="move"></a>移動
 
-若要在不同的區域中部署新的伺服器資源，您將使用在上一節中匯出和修改之檔案 ** 上的template.js** 。
+若要在不同的區域中部署新的伺服器資源，您將使用在上一節中匯出和修改之檔案 **上的template.js** 。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -199,7 +199,7 @@ ms.locfileid: "92018189"
 
 5. 選取 [在編輯器中組建您自己的範本]。
 
-6. 選取 [ **載入**檔案]，然後依照指示載入您匯出和修改的檔案 **template.js** 。
+6. 選取 [ **載入** 檔案]，然後依照指示載入您匯出和修改的檔案 **template.js** 。
 
 7. 確認範本編輯器顯示新目標伺服器的正確屬性。
 
@@ -209,7 +209,7 @@ ms.locfileid: "92018189"
 
     - **訂用帳戶**：選取 Azure 訂用帳戶。
     
-    - **資源群組**：選取 [ **建立新**的]，然後輸入資源組名。 您可以選取現有的資源群組，但前提是該資源群組尚未包含名稱相同的 Analysis Services 伺服器。
+    - **資源群組**：選取 [ **建立新** 的]，然後輸入資源組名。 您可以選取現有的資源群組，但前提是該資源群組尚未包含名稱相同的 Analysis Services 伺服器。
     
     - **位置**：選取您在範本中指定的相同區域。
 
@@ -264,7 +264,7 @@ ms.locfileid: "92018189"
 
 1. 在 SSMS 中，以滑鼠右鍵按一下模型資料庫 > **處理資料庫**。
 
-2. 展開 [ **資料表]**，以滑鼠右鍵按一下資料表。 在 [ **處理資料表 (s]) **中，選取 [所有資料表]，然後選取 **[確定]**。
+2. 展開 [ **資料表]**，以滑鼠右鍵按一下資料表。 在 [ **處理資料表 (s])** 中，選取 [所有資料表]，然後選取 **[確定]**。
 
 ## <a name="verify"></a>Verify
 
@@ -278,7 +278,7 @@ ms.locfileid: "92018189"
 
 選擇性： [ALM](http://alm-toolkit.com/) 工具組是一種 *開放原始* 碼工具，可用於比較和管理 Power BI 資料集 *和* Analysis Services 表格式模型資料庫。 使用工具組來連接到來源和目標伺服器資料庫，並進行比較。 如果您的資料庫移轉成功，模型物件將會是相同的定義。 
 
-:::image type="content" source="media/move-between-regions/alm-toolkit.png" alt-text="取得 SAS":::
+:::image type="content" source="media/move-between-regions/alm-toolkit.png" alt-text="ALM Toolkit":::
 
 ## <a name="clean-up-resources"></a>清除資源
 

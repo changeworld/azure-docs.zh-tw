@@ -2,13 +2,13 @@
 title: 範本概觀
 description: 說明使用 Azure Resource Manager 範本的優點， (ARM 範本) 用來部署資源。
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: e25404fc74456f99a4d41c25786b34b6e1f3edda
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 12/01/2020
+ms.openlocfilehash: da091d09f6d242d4b98903a8dcd76fe305e578b8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96342323"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497991"
 ---
 # <a name="what-are-arm-templates"></a>什麼是 ARM 範本？
 
@@ -80,13 +80,13 @@ ms.locfileid: "96342323"
 "resources": [
   {
     "type": "Microsoft.Storage/storageAccounts",
-    "apiVersion": "2016-01-01",
+    "apiVersion": "2019-04-01",
     "name": "mystorageaccount",
     "location": "westus",
     "sku": {
       "name": "Standard_LRS"
     },
-    "kind": "Storage",
+    "kind": "StorageV2",
     "properties": {}
   }
 ]
@@ -96,17 +96,19 @@ ms.locfileid: "96342323"
 
 ```HTTP
 PUT
-https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/mystorageaccount?api-version=2016-01-01
+https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/mystorageaccount?api-version=2019-04-01
 REQUEST BODY
 {
   "location": "westus",
   "sku": {
     "name": "Standard_LRS"
   },
-  "kind": "Storage",
+  "kind": "StorageV2",
   "properties": {}
 }
 ```
+
+請注意，您在此資源範本中設定的 **apiVersion** 會用來做為 REST 作業的 API 版本。 您可以重複部署範本，並讓它能夠繼續運作。 藉由使用相同的 API 版本，您不必擔心可能會在較新版本中引進的重大變更。
 
 ## <a name="template-design"></a>範本設計
 
@@ -114,7 +116,7 @@ REQUEST BODY
 
 ![三層式範本](./media/overview/3-tier-template.png)
 
-但您不需要在單一的範本中定義整個基礎結構。 通常的合理作法是將您的部署需求分成一組有目標及特定目的的範本。 您可以輕鬆地將這些範本重複使用於不同的方案。   若要部署特定的方案，您會建立連結所有必要範本的主版範本。 下圖顯示如何透過包含三個巢狀範本的父範本部署三層式方案。
+但您不需要在單一的範本中定義整個基礎結構。 通常的合理作法是將您的部署需求分成一組有目標及特定目的的範本。 您可以輕鬆地將這些範本重複使用於不同的方案。   若要部署特定解決方案，您可以建立一個連結所有必要範本的主要範本。 下圖顯示如何透過包含三個巢狀範本的父範本部署三層式方案。
 
 ![巢狀階層範本](./media/overview/nested-tiers-template.png)
 

@@ -1,19 +1,19 @@
 ---
 title: 使用對應資料流程來轉換資料
 description: 本教學課程提供逐步指示，說明如何使用 Azure Data Factory 來轉換資料與對應資料流程
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/09/2019
-ms.openlocfilehash: fa516f577254f827a6437697df82010bd9b631ee
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: b0f564f68a638e7efd1cd1ce9116a26f4d19f277
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555905"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497039"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>使用對應資料流程來轉換資料
 
@@ -33,27 +33,27 @@ ms.locfileid: "94555905"
 > * 監視資料流程活動
 
 ## <a name="prerequisites"></a>必要條件
-* **Azure 訂用帳戶** 。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
-* **Azure 儲存體帳戶** 。 您可以使用 ADLS 儲存體作為 *來源* 和 *接收* 資料存放區。 如果您沒有儲存體帳戶，請參閱[建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md)，按照步驟建立此帳戶。
+* **Azure 訂用帳戶**。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
+* **Azure 儲存體帳戶**。 您可以使用 ADLS 儲存體作為 *來源* 和 *接收* 資料存放區。 如果您沒有儲存體帳戶，請參閱[建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md)，按照步驟建立此帳戶。
 
 我們在本教學 [課程](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)中轉換的檔案是 MoviesDB.csv，可在此找到。 若要從 GitHub 取出檔案，請將內容複寫到您選擇的文字編輯器，以將本機儲存為 .csv 檔案。 若要將檔案上傳至您的儲存體帳戶，請參閱 [使用 Azure 入口網站上傳 blob](../storage/blobs/storage-quickstart-blobs-portal.md)。 這些範例會參考名為「範例-資料」的容器。
 
-## <a name="create-a-data-factory"></a>建立 Data Factory
+## <a name="create-a-data-factory"></a>建立資料處理站
 
 在此步驟中，您會建立資料處理站，並開啟 Data Factory UX 在 data factory 中建立管線。
 
-1. 開啟 **Microsoft Edge** 或 **Google Chrome** 。 目前，只有在 Microsoft Edge 和 Google Chrome 網頁瀏覽器中才支援 Data Factory 的 UI。
-2. 在左側功能表中，選取 [ **建立資源**  >  **整合**  >  **Data Factory** ：
+1. 開啟 **Microsoft Edge** 或 **Google Chrome**。 目前，只有在 Microsoft Edge 和 Google Chrome 網頁瀏覽器中才支援 Data Factory 的 UI。
+2. 在左側功能表上，選取 [建立資源] > [整合] > [Data Factory]：
 
    ![在 [新增] 窗格中選取資料處理站](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-3. 在 [新增資料處理站] 頁面的 [名稱] 下，輸入 **ADFTutorialDataFactory** 。
+3. 在 [新增資料處理站] 頁面的 [名稱] 下，輸入 **ADFTutorialDataFactory**。
 
-   Azure Data Factory 的名稱必須是 *全域唯一的* 。 如果您收到有關名稱值的錯誤訊息，請輸入不同的資料處理站名稱。 (例如，使用 yournameADFTutorialDataFactory)。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](naming-rules.md)。
+   Azure Data Factory 的名稱必須是 *全域唯一的*。 如果您收到有關名稱值的錯誤訊息，請輸入不同的資料處理站名稱。 (例如，使用 yournameADFTutorialDataFactory)。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](naming-rules.md)。
 
      ![新增 Data Factory](./media/doc-common-process/name-not-available-error.png)
-4. 選取您要在其中建立資料處理站的 Azure **訂用帳戶** 。
-5. 針對 [資源群組]  ，採取下列其中一個步驟︰
+4. 選取您要在其中建立資料處理站的 Azure **訂用帳戶**。
+5. 針對 [資源群組]，採取下列其中一個步驟︰
 
     a. 選取 [使用現有的] ，然後從下拉式清單選取現有的資源群組。
 
@@ -81,7 +81,7 @@ ms.locfileid: "94555905"
 1. 在 [ **活動** ] 窗格中，展開 [ **移動和轉換** ] 可折疊。 將 [ **資料流程** ] 活動從窗格拖放到管線畫布。
 
     ![顯示管線畫布的螢幕擷取畫面，您可以在其中放置「資料流程」活動。](media/tutorial-data-flow/activity1.png)
-1. 在 [ **加入** 資料流程] 快顯視窗中，選取 [ **建立新** 的資料流程]，然後為您的資料流程命名 **TransformMovies** 。 完成時按一下 [完成]。
+1. 在 [ **加入** 資料流程] 快顯視窗中，選取 [ **建立新** 的資料流程]，然後為您的資料流程命名 **TransformMovies**。 完成時按一下 [完成]。
 
     ![螢幕擷取畫面，顯示當您建立新的資料流程時，您為數據流命名的位置。](media/tutorial-data-flow/activity2.png)
 
@@ -92,31 +92,31 @@ ms.locfileid: "94555905"
 1. 在 [資料流程] 畫布中，按一下 [ **加入來源** ] 方塊來新增來源。
 
     ![顯示 [新增來源] 方塊的螢幕擷取畫面。](media/tutorial-data-flow/dataflow2.png)
-1. 命名您的來源 **MoviesDB** 。 按一下 [ **新增** ] 以建立新的源資料集。
+1. 命名您的來源 **MoviesDB**。 按一下 [ **新增** ] 以建立新的源資料集。
 
     ![顯示在命名來源之後，您選取 [新增] 的螢幕擷取畫面。](media/tutorial-data-flow/dataflow3.png)
-1. 選擇 [ **Azure Data Lake Storage Gen2** ]。 按一下 [繼續]。
+1. 選擇 [ **Azure Data Lake Storage Gen2**]。 按一下 [繼續]。
 
     ![顯示 Azure Data Lake Storage Gen2 圖格的螢幕擷取畫面。](media/tutorial-data-flow/dataset1.png)
-1. 選擇 [ **DelimitedText** ]。 按一下 [繼續]。
+1. 選擇 [ **DelimitedText**]。 按一下 [繼續]。
 
     ![顯示 [DelimitedText] 磚的螢幕擷取畫面。](media/tutorial-data-flow/dataset2.png)
-1. 將您的資料集命名為 **MoviesDB** 。 在 [連結服務] 下拉式清單中，選擇 [ **新增** ]。
+1. 將您的資料集命名為 **MoviesDB**。 在 [連結服務] 下拉式清單中，選擇 [ **新增**]。
 
     ![顯示連結服務下拉式清單的螢幕擷取畫面。](media/tutorial-data-flow/dataset3.png)
 1. 在 [已連結的服務建立] 畫面中，為您的 ADLS gen2 連結服務 **ADLSGen2** 命名，並指定驗證方法。 然後輸入您的連接認證。 在本教學課程中，我們將使用帳戶金鑰來連線到儲存體帳戶。 您可以按一下 [ **測試連接** ]，確認您的認證是否輸入正確。 在完成作業後，按一下 [建立]。
 
     ![連結服務](media/tutorial-data-flow/ls1.png)
-1. 當您回到 [資料集建立] 畫面之後，請在 [檔案 **路徑** ] 欄位下輸入檔案的所在位置。 在本教學課程中，檔案 moviesDB.csv 位於容器範例-資料中。 當檔案有標頭時，請核取 **第一個資料列做為標頭** 。 **從連線/存放區** 選取，直接從儲存體中的檔案匯入標頭架構。 完成時按一下 [確定]。
+1. 當您回到 [資料集建立] 畫面之後，請在 [檔案 **路徑** ] 欄位下輸入檔案的所在位置。 在本教學課程中，檔案 moviesDB.csv 位於容器範例-資料中。 當檔案有標頭時，請核取 **第一個資料列做為標頭**。 **從連線/存放區** 選取，直接從儲存體中的檔案匯入標頭架構。 完成時按一下 [確定]。
 
     ![資料集](media/tutorial-data-flow/dataset4.png)
 1. 如果您的 debug 叢集已啟動，請移至來源轉換的 [ **資料預覽** ] 索引標籤， **然後按一下 [** 重新整理] 以取得資料的快照集。 您可以使用 [資料預覽] 來確認是否已正確設定轉換。
 
     ![顯示您可以預覽資料以確認轉換是否正確設定的螢幕擷取畫面。](media/tutorial-data-flow/dataflow4.png)
-1. 在 [資料流程] 畫布的來源節點旁，按一下加號圖示以新增轉換。 您要新增的第一個轉換是 **篩選準則** 。
+1. 在 [資料流程] 畫布的來源節點旁，按一下加號圖示以新增轉換。 您要新增的第一個轉換是 **篩選準則**。
 
     ![資料流程畫布](media/tutorial-data-flow/dataflow5.png)
-1. 命名您的篩選轉換 **FilterYears** 。 按一下 [ **篩選開啟** ] 旁的 [運算式] 方塊，以開啟 [運算式產生器]。 您將在這裡指定篩選準則。
+1. 命名您的篩選轉換 **FilterYears**。 按一下 [ **篩選開啟** ] 旁的 [運算式] 方塊，以開啟 [運算式產生器]。 您將在這裡指定篩選準則。
 
     ![顯示 [運算式] 方塊的螢幕擷取畫面。](media/tutorial-data-flow/filter1.png)
 1. 資料流程運算式產生器可讓您以互動方式建立要在各種轉換中使用的運算式。 運算式可以包含內建函數、輸入架構中的資料行，以及使用者定義的參數。 如需有關如何建立運算式的詳細資訊，請參閱 [資料流程運算式](concepts-data-flow-expression-builder.md)產生器。
@@ -141,10 +141,10 @@ ms.locfileid: "94555905"
 1. 您將新增的下一個轉換是 **架構修飾** 詞下的 **匯總** 轉換。
 
     ![顯示匯總架構修飾詞的螢幕擷取畫面。](media/tutorial-data-flow/agg1.png)
-1. 命名您的匯總轉換 **AggregateComedyRatings** 。 在 [ **分組方式** ] 索引標籤中，從下拉式清單中選取 [ **年** ]，以將匯總的年份依電影出的年份分組。
+1. 命名您的匯總轉換 **AggregateComedyRatings**。 在 [ **分組方式** ] 索引標籤中，從下拉式清單中選取 [ **年** ]，以將匯總的年份依電影出的年份分組。
 
     ![顯示 [匯總設定] 下 [群組依據] 索引標籤中年份選項的螢幕擷取畫面。](media/tutorial-data-flow/agg2.png)
-1. 移至 [ **匯總** ] 索引標籤。在左邊的文字方塊中，將匯總資料行命名為 **AverageComedyRating** 。 按一下右邊的 [運算式] 方塊，透過運算式產生器輸入匯總運算式。
+1. 移至 [ **匯總** ] 索引標籤。在左邊的文字方塊中，將匯總資料行命名為 **AverageComedyRating**。 按一下右邊的 [運算式] 方塊，透過運算式產生器輸入匯總運算式。
 
     ![顯示 [匯總設定] 下 [匯總] 索引標籤中 [年份] 選項的螢幕擷取畫面。](media/tutorial-data-flow/agg3.png)
 1. 若要取得資料行 **分級** 的平均值，請使用 ```avg()``` 彙總函式。 由於 **評** 等是字串並 ```avg()``` 接受數位輸入，因此我們必須透過函數將值轉換成數位 ```toInteger()``` 。 這是運算式看起來像這樣：
@@ -154,22 +154,22 @@ ms.locfileid: "94555905"
     按一下 **[儲存並完成]** 。
 
     ![顯示已儲存運算式的螢幕擷取畫面。](media/tutorial-data-flow/agg4.png)
-1. 移至 [ **資料預覽** ] 索引標籤，以查看轉換輸出。 請注意，其中只有兩個數據行： **year** 和 **AverageComedyRating** 。
+1. 移至 [ **資料預覽** ] 索引標籤，以查看轉換輸出。 請注意，其中只有兩個數據行： **year** 和 **AverageComedyRating**。
 
     ![Aggregate](media/tutorial-data-flow/agg3.png)
 1. 接下來，您想要在 **目的地** 下新增 **接收** 轉換。
 
     ![顯示要在 [目的地] 底下新增接收轉換的螢幕擷取畫面。](media/tutorial-data-flow/sink1.png)
-1. 命名接收 **接收器** 。 按一下 [ **新增** ] 以建立接收資料集。
+1. 命名接收 **接收器**。 按一下 [ **新增** ] 以建立接收資料集。
 
     ![顯示您可以為接收器命名並建立新接收資料集的螢幕擷取畫面。](media/tutorial-data-flow/sink2.png)
-1. 選擇 [ **Azure Data Lake Storage Gen2** ]。 按一下 [繼續]。
+1. 選擇 [ **Azure Data Lake Storage Gen2**]。 按一下 [繼續]。
 
     ![顯示您可以選擇的 Azure Data Lake Storage Gen2 圖格的螢幕擷取畫面。](media/tutorial-data-flow/dataset1.png)
-1. 選擇 [ **DelimitedText** ]。 按一下 [繼續]。
+1. 選擇 [ **DelimitedText**]。 按一下 [繼續]。
 
     ![資料集](media/tutorial-data-flow/dataset2.png)
-1. 將接收資料集命名為 **MoviesSink** 。 針對 [已連結的服務]，選擇您在步驟6中建立的 ADLS gen2 連結服務。 輸入要寫入資料的輸出檔案夾。 在本教學課程中，我們會寫入容器「範例資料」中的「輸出」資料夾。 資料夾不需要事先存在，而且可以動態建立。 將 **第一個資料列設定為標頭** 為 true，並針對匯 **入架構** 選取 [ **無** ]。 按一下 [完成]。
+1. 將接收資料集命名為 **MoviesSink**。 針對 [已連結的服務]，選擇您在步驟6中建立的 ADLS gen2 連結服務。 輸入要寫入資料的輸出檔案夾。 在本教學課程中，我們會寫入容器「範例資料」中的「輸出」資料夾。 資料夾不需要事先存在，而且可以動態建立。 將 **第一個資料列設定為標頭** 為 true，並針對匯 **入架構** 選取 [**無**]。 按一下 [完成]。
 
     ![接收](media/tutorial-data-flow/sink3.png)
 

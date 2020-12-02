@@ -9,12 +9,12 @@ ms.date: 11/13/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: a30fe70943c5329b36cbe10b75d47cc0ee3827fc
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 6942c3ecd631a141f1df741ff827a6889605e536
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630408"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498195"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>規劃和管理 Azure Blob 儲存體的成本
 
@@ -90,11 +90,11 @@ ms.locfileid: "94630408"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 開啟 [ **成本管理 + 計費** ] 視窗，從功能表中選取 [ **成本管理** ]，然後選取 [ **成本分析** ]。 然後，您可以從 [ **領域** ] 下拉式清單中變更特定訂用帳戶的範圍。
+2. 開啟 [ **成本管理 + 計費** ] 視窗，從功能表中選取 [ **成本管理** ]，然後選取 [ **成本分析**]。 然後，您可以從 [ **領域** ] 下拉式清單中變更特定訂用帳戶的範圍。
 
    ![顯示範圍的螢幕擷取畫面](./media/storage-plan-manage-costs/cost-analysis-pane.png)
 
-4. 若只要查看 Azure 儲存體的成本，請選取 [ **加入篩選** ]，然後選取 [ **服務名稱** ]。 然後，從清單中選擇 [ **儲存體** ]。 
+4. 若只要查看 Azure 儲存體的成本，請選取 [ **加入篩選** ]，然後選取 [ **服務名稱**]。 然後，從清單中選擇 [ **儲存體** ]。 
 
    以下範例顯示只 Azure 儲存體的成本：
 
@@ -104,13 +104,13 @@ ms.locfileid: "94630408"
 
 ## <a name="export-cost-data"></a>匯出成本資料
 
-您也可以將 [成本資料匯出](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 至儲存體帳戶。 當您需要或其他人對成本進行額外的資料分析時，這會很有説明。 例如，財務小組可以使用 Excel 或 Power BI 來分析資料。 您可以根據每日、每週或每月排程來匯出成本，並設定自訂日期範圍。 匯出成本資料集是建議的方式，以取得成本資料集。
+您也可以將 [成本資料匯出](../../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 至儲存體帳戶。 當您需要或其他人對成本進行額外的資料分析時，這會很有説明。 例如，財務小組可以使用 Excel 或 Power BI 來分析資料。 您可以根據每日、每週或每月排程來匯出成本，並設定自訂日期範圍。 匯出成本資料集是建議的方式，以取得成本資料集。
 
 ## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解定價與 Azure 儲存體的運作方式。 請參閱 [Azure 儲存體總覽定價](https://azure.microsoft.com/pricing/details/storage/)。
 - [使用保留容量將 Blob 儲存體的成本優化](../blobs/storage-blob-reserved-capacity.md)。
-- 瞭解 [如何使用 Azure 成本管理來優化您的雲端投資](https://docs.microsoft.com/azure/cost-management-billing/costs/cost-mgt-best-practices?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
-- 深入瞭解如何使用 [成本分析](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)來管理成本。
-- 瞭解如何避免非 [預期的成本](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
-- 採用 [成本管理](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 引導式學習課程。
+- 瞭解 [如何使用 Azure 成本管理來優化您的雲端投資](../../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+- 深入瞭解如何使用 [成本分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)來管理成本。
+- 瞭解如何避免非 [預期的成本](../../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+- 採用 [成本管理](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 引導式學習課程。

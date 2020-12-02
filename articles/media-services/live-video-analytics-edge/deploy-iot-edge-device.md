@@ -3,12 +3,12 @@ title: 在 IoT Edge 裝置上部署即時影片分析-Azure
 description: 本文列出可協助您在 IoT Edge 裝置上部署即時影片分析的步驟。 例如，如果您有本機 Linux 電腦的存取權，以及（或）先前已建立 Azure 媒體服務帳戶，您就可以這麼做。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: a64fc11d7afa70d5200fdbd24bd3facdb8a95a7e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 4fa4a9643976ba513b025706cacec26b2a50afb5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019574"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498314"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>在 IoT Edge 裝置上部署即時影片分析
 
@@ -18,13 +18,13 @@ ms.locfileid: "92019574"
 > ARM64 裝置的支援可在 IoT Edge 組建和更新版本的即時影片分析中取得 `1.0.4` 。
 > 在 ARM64 裝置上執行 Azure IoT Edge 執行階段的支援處於[公開預覽](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)狀態。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 執行其中一種[支援的 Linux 作業系統](../../iot-edge/support.md#operating-systems)的 x86-64 或 ARM64 裝置
 * 您具有擁有者[許可權](../../role-based-access-control/built-in-roles.md#owner)的 Azure 訂用帳戶
 * [建立並設定 IoT 中樞](../../iot-hub/iot-hub-create-through-portal.md)
-* [註冊 IoT Edge 裝置](../../iot-edge/how-to-register-device.md)
-* [在以 Debian 為基礎的 Linux 系統上安裝 Azure IoT Edge 執行時間](../../iot-edge/how-to-install-iot-edge-linux.md)
+* [註冊 IoT Edge 裝置](../../iot-edge/how-to-manual-provision-symmetric-key.md)
+* [在以 Debian 為基礎的 Linux 系統上安裝 Azure IoT Edge 執行時間](../../iot-edge/how-to-install-iot-edge.md)
 * [建立 Azure 媒體服務帳戶](../latest/create-account-howto.md)
 
     * 使用下列其中一種區域：美國東部2、美國東部、美國中部、美國中北部、日本東部、美國西部、美國西部2、美國中西部、加拿大東部、英國南部、法國中部、法國南部、瑞士北部、瑞士西部和日本西部。
@@ -93,13 +93,13 @@ Azure 入口網站會引導您建立部署資訊清單，並將部署推送至 I
 #### <a name="select-your-device-and-set-modules"></a>選取您的裝置並設定模組
 
 1. 登入 [Azure 入口網站](https://ms.portal.azure.com/)，然後瀏覽至 IoT 中樞。
-1. 選取功能表中的 [IoT Edge]****。
+1. 選取功能表中的 [IoT Edge]。
 1. 按一下裝置清單中目標裝置的識別碼。
 1. 選取 [ **設定模組**]。
 
 #### <a name="configure-a-deployment-manifest"></a>設定部署資訊清單
 
-部署資訊清單為 JSON 文件，說明應部署的模組、資料如何在模組之間流動，以及想要的模組對應項需要的屬性。 此 Azure 入口網站有一個嚮導，可逐步引導您建立部署資訊清單。 它會將三個步驟分成多個索引標籤： **模組**、 **路由**和 **審核 + 建立**。
+部署資訊清單為 JSON 文件，說明應部署的模組、資料如何在模組之間流動，以及想要的模組對應項需要的屬性。 此 Azure 入口網站有一個嚮導，可逐步引導您建立部署資訊清單。 它會將三個步驟分成多個索引標籤： **模組**、 **路由** 和 **審核 + 建立**。
 
 #### <a name="add-modules"></a>新增模組
 
@@ -113,7 +113,7 @@ Azure 入口網站會引導您建立部署資訊清單，並將部署推送至 I
     ![螢幕擷取畫面顯示 [模組設定] 索引標籤。](./media/deploy-iot-edge-device/add.png)
     
     > [!TIP]
-    > 除非您已在 [**模組設定**]、[**容器建立選項**] 和 [模組對應項**設定**] 索引標籤上指定值，如下列程式所述，請勿選取 [**新增**]。
+    > 除非您已在 [**模組設定**]、[**容器建立選項**] 和 [模組對應項 **設定**] 索引標籤上指定值，如下列程式所述，請勿選取 [**新增**]。
     
     > [!WARNING]
     > 當您對模組進行呼叫時，Azure IoT Edge 會區分大小寫。 記下您用來作為模組名稱的確切字串。
@@ -215,7 +215,7 @@ Azure 入口網站會引導您建立部署資訊清單，並將部署推送至 I
 建立部署之後，您會返回 IoT 中樞的 [IoT Edge] 頁面。
 
 1. 選取您使用部署設定為目標的 IoT Edge 裝置，以開啟其詳細資料。
-2. 在裝置詳細資料中，確認 Blob 儲存體模組列為 [指定於部署中]** 和 [由裝置回報]**。
+2. 在裝置詳細資料中，確認 Blob 儲存體模組列為 [指定於部署中]**和 [由裝置回報]**。
 
 模組在裝置上啟動然後向 IoT 中樞回報可能需要一點時間。 重新整理頁面來查看更新狀態。
 狀態碼：200– OK 表示 [IoT Edge 運行](../../iot-edge/iot-edge-runtime.md) 時間狀況良好且正常運作。
