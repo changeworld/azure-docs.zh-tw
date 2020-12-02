@@ -1,6 +1,6 @@
 ---
-title: 保護資料庫
-description: 保護專用 SQL 集區，以及在 Azure Synapse Analytics 中開發解決方案的秘訣。
+title: '保護先前 SQL DW (專用的 SQL 集區) '
+description: 保護專用 SQL 集區的秘訣 (先前為 SQL DW) ，以及在 Azure Synapse Analytics 中開發解決方案。
 author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
@@ -11,14 +11,14 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: f6c1370cab573926183a937b8e749ef490c19334
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ce09488e2323aada5f99494ef3920681b685ec0b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317707"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453635"
 ---
-# <a name="secure-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中保護專用的 SQL 集區
+# <a name="secure-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中 (先前的 SQL DW) 保護專用的 SQL 集區
 
 > [!div class="op_single_selector"]
 >
@@ -27,7 +27,7 @@ ms.locfileid: "93317707"
 > * [加密 (入口網站)](sql-data-warehouse-encryption-tde.md)
 > * [加密 (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
-本文將逐步引導您瞭解如何保護您專用的 SQL 集區。 尤其是，本文會讓您開始使用資源來限制存取、保護資料，以及使用專用的 SQL 集區來監視活動。
+本文將逐步引導您瞭解如何 (先前的 SQL DW) 保護您專用的 SQL 集區。 特別是，本文會讓您開始使用資源，以使用專用的 SQL 集區 (先前的 SQL DW) 來限制存取、保護資料，以及監視活動。
 
 ## <a name="connection-security"></a>連接安全性
 
@@ -35,15 +35,15 @@ ms.locfileid: "93317707"
 
 [邏輯 SQL server](../../azure-sql/database/logical-servers.md)及其資料庫都會使用防火牆規則，來拒絕未明確核准的 IP 位址的連線嘗試。 若要允許來自應用程式或用戶端機器之公用 IP 位址的連線，您必須先使用 Azure 入口網站、REST API 或 PowerShell 建立伺服器層級的防火牆規則。
 
-最佳做法是，您應該盡可能限制可透過伺服器層級防火牆所允許的 IP 位址範圍。  若要從本機電腦存取您專用的 SQL 集區，請確定您的網路和本機電腦上的防火牆允許 TCP 埠1433上的連出通訊。  
+最佳做法是，您應該盡可能限制可透過伺服器層級防火牆所允許的 IP 位址範圍。  若要從本機電腦存取專屬的 SQL 集區 (先前的 SQL DW) ，請確定您的網路和本機電腦上的防火牆允許 TCP 埠1433上的連出通訊。  
 
-Azure Synapse Analytics 使用伺服器層級 IP 防火牆規則。 它不支援資料庫層級 IP 防火牆規則。 如需詳細資訊，請參閱 [Azure SQL Database 防火牆規則](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+專用的 SQL 集區 (先前的 SQL DW) 會使用伺服器層級 IP 防火牆規則。 它不支援資料庫層級 IP 防火牆規則。 如需詳細資訊，請參閱 [Azure SQL Database 防火牆規則](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
-預設會加密您專用的 SQL 集區的連接。  停用加密的修改連線設定會被忽略。
+預設會將您專用 SQL 集區的連接 (先前的 SQL DW) 加密。  停用加密的修改連線設定會被忽略。
 
 ## <a name="authentication"></a>驗證
 
-「驗證」是指連線到資料庫時如何證明身分識別。 專用的 SQL 集區目前支援使用使用者名稱和密碼 SQL Server 驗證，以及使用 Azure Active Directory。
+「驗證」是指連線到資料庫時如何證明身分識別。 專用的 SQL 集區 (先前的 SQL DW) 目前支援使用使用者名稱和密碼 SQL Server 驗證，以及使用 Azure Active Directory。
 
 當您為資料庫建立伺服器時，您已使用使用者名稱和密碼指定了「伺服器管理員」登入。 使用這些認證，您就可以透過 SQL Server 驗證，使用資料庫擁有者或 "dbo" 的身分驗證該伺服器上的任何資料庫。
 
@@ -57,7 +57,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-然後，使用您的伺服器管理員登入連接到您 **專用的 SQL 集區資料庫** ，並根據您所建立的伺服器登入建立資料庫使用者。
+然後，使用您的伺服器管理員登入，連接到您 **專用的 sql 集區 (先前的 SQL DW)** ，並根據您所建立的伺服器登入建立資料庫使用者。
 
 ```sql
 -- Connect to the database and create a database user
@@ -104,4 +104,4 @@ GRANT SELECT ON SCHEMA::Test to ApplicationUser
 
 ## <a name="next-steps"></a>後續步驟
 
-如需使用不同通訊協定連接到您的倉儲的詳細資訊和範例，請參閱 [連接到專用的 SQL 集](../sql/connect-overview.md)區。
+如需使用不同通訊協定連接到您的倉儲的詳細資訊和範例，請參閱 [ (先前的 SQL DW) 連接到專用的 sql 集 ](sql-data-warehouse-connect-overview.md)區。

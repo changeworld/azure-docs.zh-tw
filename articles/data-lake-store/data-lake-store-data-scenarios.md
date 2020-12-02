@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: fe911ac8985f9997125eb5149348b50a7fa83222
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 702a59f768bfe978e1a7708d91c6b6b1bb9c92fe
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109250"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452244"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen1 處理巨量資料需求
 
@@ -130,5 +130,5 @@ ms.locfileid: "92109250"
 
 ![視覺化 Data Lake Storage Gen1 中的資料](./media/data-lake-store-data-scenarios/visualize-data.png "視覺化 Data Lake Storage Gen1 中的資料")
 
-* 您可以從使用 Azure Data Factory 開始，將 [資料從 Data Lake Storage Gen1 移至先前的 SQL 資料倉儲 Azure Synapse Analytics () ](../data-factory/copy-activity-overview.md)
+* 您可以開始使用 [Azure Data Factory 將資料從 Data Lake Storage Gen1 移至 Azure Synapse Analytics](../data-factory/copy-activity-overview.md)
 * 之後，您可以將 [Power BI 與 Azure Synapse Analytics 整合](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect) ，以建立資料的視覺標記法。

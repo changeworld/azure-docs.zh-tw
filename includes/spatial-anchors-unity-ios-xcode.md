@@ -1,22 +1,22 @@
 ---
-author: ramonarguelles
+author: msftradford
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.date: 08/14/2020
-ms.author: rgarcia
-ms.openlocfilehash: 9c20726ce412e651aba0fdd202031d342350c922
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: d969b1639dbb39b920c985964abe1239f068d740
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971287"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185262"
 ---
 選取 [組建]  。 在開啟的窗格上，選取要將 Xcode 專案匯出至其中的資料夾。
 
    匯出完成時，包含所匯出 Xcode 專案的資料夾便會出現。
 
    > [!NOTE]
-   > 如果出現一個視窗，詢問您要取代還是附加，我們建議您選取 [附加]，因為速度較快。 只在您是變更場景中的資產時，才應該選取 [取代]。 例如，您可能正在新增、移除或變更父/子關聯性，或者您可能正在新增、移除或變更屬性。 如果您只是變更原始程式碼，[附加]**** 應該就夠了。
+   > 如果出現一個視窗，詢問您要取代還是附加，我們建議您選取 [附加]，因為速度較快。 只在您是變更場景中的資產時，才應該選取 [取代]。 例如，您可能正在新增、移除或變更父/子關聯性，或者您可能正在新增、移除或變更屬性。 如果您只是變更原始程式碼，[附加] 應該就夠了。
 
 ## <a name="open-the-xcode-project"></a>開啟 Xcode 專案
 
@@ -28,7 +28,7 @@ ms.locfileid: "91971287"
 open ./Unity-iPhone.xcodeproj
 ```
 
-選取根 **Unity-iPhone** 節點以檢視專案設定，然後選取 [一般]**** 索引標籤。
+選取根 **Unity-iPhone** 節點以檢視專案設定，然後選取 [一般] 索引標籤。
 
 在 [簽署] 底下，確定 [自動管理簽署] 已啟用。 如果未啟用，請啟用它，然後在出現的窗格上選取 [啟用自動] 以重設組建設定。
 

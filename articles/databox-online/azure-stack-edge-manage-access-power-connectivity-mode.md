@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 9636c76caf2302b872a2ecbb8e2e4bacfc1408a6
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 6455e4c9fa9460e47e3be7c860f89be540a514b0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952126"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453076"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro"></a>管理 Azure Stack Edge Pro 的存取、電源和連線模式
 
@@ -35,7 +35,7 @@ ms.locfileid: "91952126"
 
 請在本機 UI 中執行下列步驟，以變更裝置密碼。
 
-1. 在本機 Web UI 中，移至 [維護] > [密碼變更]****。
+1. 在本機 Web UI 中，移至 [維護] > [密碼變更]。
 2. 輸入目前的密碼，然後輸入新密碼。 所提供的密碼必須介於 8 到 16 個字元。 此密碼必須有下列其中 3 種字元：大寫、小寫、數字和特殊字元。 確認新的密碼。
 
     ![變更密碼](media/azure-stack-edge-manage-access-power-connectivity-mode/change-password-1.png)
@@ -46,12 +46,12 @@ ms.locfileid: "91952126"
 
 重設工作流程不需要使用者重新叫用舊密碼，在密碼遺失時很好用。 此工作流程會在 Azure 入口網站中執行。
 
-1. 在 Azure 入口網站中，移至 [概觀] > [重設管理員密碼]****。
+1. 在 Azure 入口網站中，移至 [概觀] > [重設管理員密碼]。
 
     ![重設密碼](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
 
 
-2. 輸入新密碼並加以確認。 所提供的密碼必須介於 8 到 16 個字元。 此密碼必須有下列其中 3 種字元：大寫、小寫、數字和特殊字元。 選取 [重設]****。
+2. 輸入新密碼並加以確認。 所提供的密碼必須介於 8 到 16 個字元。 此密碼必須有下列其中 3 種字元：大寫、小寫、數字和特殊字元。 選取 [重設]。
 
     ![重設密碼2](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
@@ -68,7 +68,7 @@ ms.locfileid: "91952126"
 
 您應該可以視 `User` 需要存取 Active Directory 租使用者 `Read all directory objects` 。 您不能是來賓使用者，因為他們沒有許可權 `Read all directory objects` 。 如果您是來賓，則作業（例如產生啟用金鑰、在 Azure Stack Edge Pro 裝置上建立共用、建立使用者、設定 Edge 計算角色、重設裝置密碼）都會失敗。
 
-如需如何提供存取權給使用者 Microsoft Graph API 的詳細資訊，請參閱 [Microsoft Graph 許可權參考](https://docs.microsoft.com/graph/permissions-reference)。
+如需如何提供存取權給使用者 Microsoft Graph API 的詳細資訊，請參閱 [Microsoft Graph 許可權參考](/graph/permissions-reference)。
 
 ### <a name="register-resource-providers"></a>註冊資源提供者
 
@@ -113,8 +113,8 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 
 若要變更裝置模式，請遵循下列步驟：
 
-1. 在裝置的本機 Web UI 中，移至 [組態] > [雲端設定]****。
-2. 從下拉式清單中，選取您要在其中操作裝置的模式。 您可以選取 [ **完全連接**]、[ **部分連接**] 和 [ **完全中斷**連線]。 若要在已部分中斷連線的模式中執行裝置，請啟用 [Azure 入口網站管理]****。
+1. 在裝置的本機 Web UI 中，移至 [組態] > [雲端設定]。
+2. 從下拉式清單中，選取您要在其中操作裝置的模式。 您可以選取 [ **完全連接**]、[ **部分連接**] 和 [ **完全中斷** 連線]。 若要在已部分中斷連線的模式中執行裝置，請啟用 [Azure 入口網站管理]。
 
     ![連線模式](media/azure-stack-edge-manage-access-power-connectivity-mode/connectivity-mode.png)
  

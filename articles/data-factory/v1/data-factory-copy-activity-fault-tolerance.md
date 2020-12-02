@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 742c69709eee19a37abdb3e5330cd7fb8ce315b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65584b2a6a3bdfbb863c26dac688b20279c4b54d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89436386"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452297"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>跳過不相容的資料列以在複製活動中新增容錯
 
@@ -48,7 +48,7 @@ Azure Data Factory [複製活動](data-factory-data-movement-activities.md)可�
     例如：從 SQL Server 將資料複製到 SQL 資料庫。 會在接收 SQL 資料庫中定義主索引鍵，但是在來源 SQL Server 中不會定義這類主索引鍵。 無法將來源中的重複資料列複製到接收。 複製活動只會將來源資料中的第一個資料列複製到接收。 包含重複主索引鍵值的後續來源資料列會偵測為不相容，並加以跳過。
 
 >[!NOTE]
->當複製活動設定為叫用外部資料載入機制（包括 [Azure Synapse Analytics (先前的 SQL 資料倉儲) PolyBase](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) 或 [Amazon Redshift Unload](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift)）時，此功能就不適用。 若要使用 PolyBase 將資料載入 Azure Synapse Analytics，請在複製活動中指定 "[polyBaseSettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink)"，以使用 polybase 的原生容錯支援。
+>當複製活動設定為叫用外部資料載入機制（包括 [Azure Synapse Analytics PolyBase](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) 或 [Amazon Redshift Unload](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift)）時，這項功能就不適用。 若要使用 PolyBase 將資料載入 Azure Synapse Analytics，請在複製活動中指定 "[polyBaseSettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink)"，以使用 polybase 的原生容錯支援。
 
 ## <a name="configuration"></a>組態
 下列範例提供的 JSON 定義，可設定在複製活動中跳過不相容資料列：

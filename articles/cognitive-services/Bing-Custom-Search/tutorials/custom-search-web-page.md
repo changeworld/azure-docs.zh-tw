@@ -10,19 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: 25d716513c7ceb9311588b75b0fad1c68bf71bfd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a789cb3fde05d12a8793196043f1c246bbab6559
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081105"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96342408"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>教學課程：建置自訂搜尋網頁
 
 > [!WARNING]
-> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照[這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的程序進行佈建。
 > 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
-> 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋經驗。 例如，如果您的武術網站提供搜尋體驗，可以指定 Bing 搜尋的網域、子網站及網頁。 您的使用者會看到針對他們感興趣的內容而量身訂做的搜尋結果，不需要逐頁查看可能包含不相關內容的一般搜尋結果。 
 
@@ -135,11 +135,11 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
 - 選項 1：將提供的 JavaScript 程式碼片段整合到您的應用程式中。
 - 選項 2：使用提供的 HTML 端點。
 
-本教學課程的其餘部分說明 **選項 1：JavaScript 程式碼片段** 。  
+本教學課程的其餘部分說明 **選項 1：JavaScript 程式碼片段**。  
 
 ## <a name="set-up-your-visual-studio-solution"></a>設定您的 Visual Studio 方案
 
-1. 在電腦上開啟 **Visual Studio** 。  
+1. 在電腦上開啟 **Visual Studio**。  
   
 2. 從 [檔案] 功能表中，選取 [新增]，然後選擇 [專案]。  
   

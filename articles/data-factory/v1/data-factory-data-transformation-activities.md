@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 91755dd1b5eea9f72978e09a605fc47d41ff3dee
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: dfe8863f38da0aeb701b063f051a199e27745eeb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371710"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453368"
 ---
 # <a name="transform-data-in-azure-data-factory-version-1"></a>Azure Data Factory 第1版轉換資料
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Azure Data Factory 可讓您輕鬆地建立管線，使用已發佈的 Azure Mac
 如需這些 Studio (傳統) 活動的詳細資訊，請參閱 [使用 Azure Machine Learning Studio (傳統) 活動](data-factory-azure-ml-batch-execution-activity.md) 。 
 
 ## <a name="stored-procedure-activity"></a>預存程序活動
-您可以在 Data Factory 管線中使用 SQL Server 預存程式活動，以叫用下列其中一個資料存放區中的預存程式： Azure SQL Database、Azure Synapse Analytics (先前的 SQL 資料倉儲) ，SQL Server 您的企業或 Azure VM 中的資料庫。 如需詳細資訊，請參閱 [預存程式活動](data-factory-stored-proc-activity.md) 文章。  
+您可以在 Data Factory 管線中使用 SQL Server 預存程式活動，以叫用下列其中一個資料存放區中的預存程式： Azure SQL Database、Azure Synapse Analytics、SQL Server 企業或 Azure VM 中的資料庫。 如需詳細資訊，請參閱 [預存程式活動](data-factory-stored-proc-activity.md) 文章。  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL 活動
 Data Lake Analytics U-SQL 活動會在 Azure Data Lake Analytics 叢集上執行 U-SQL 指令碼。 如需詳細資料，請參閱 [資料分析 U-SQL 活動](data-factory-usql-activity.md) 文章。 
@@ -92,7 +92,7 @@ Azure Data Factory 支援下列資料轉換活動和活動計算環境。 可將
 | [Pig](data-factory-pig-activity.md) |HDInsight [Hadoop] |
 | [MapReduce](data-factory-map-reduce.md) |HDInsight [Hadoop] |
 | [Hadoop 串流](data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
-| [Azure Machine Learning Studio (傳統) 活動：批次執行和更新資源](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
+| [Azure Machine Learning Studio (傳統版) 活動：批次執行和更新資源](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
 | [預存程序](data-factory-stored-proc-activity.md) |Azure SQL、Azure Synapse Analytics 或 SQL Server |
 | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |Azure Data Lake Analytics |
 | [DotNet](data-factory-use-custom-activities.md) |HDInsight [Hadoop] 或 Azure Batch |

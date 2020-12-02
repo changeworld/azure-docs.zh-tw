@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9e00e0e5a34eecd6974e8919ce0d0e16f48757f3
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ba444a497fa4fccab6b8dec1fadb3383420e4d49
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540962"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452977"
 ---
 # <a name="manage-digital-twins"></a>管理 Digital Twins
 
@@ -99,7 +99,7 @@ Console.WriteLine("The twin is created successfully");
 ```csharp
 object result = await client.GetDigitalTwin(id);
 ```
-這個呼叫會以強型別物件類型（例如）傳回對應項資料 `BasicDigitalTwin` 。 以下是如何使用此方法來查看對應項詳細資料的範例：
+這個呼叫會以強型別物件類型（例如）傳回對應項資料 `BasicDigitalTwin` 。 `BasicDigitalTwin` 是 SDK 隨附的序列化 helper 類別，會以預先剖析的格式傳回核心對應項中繼資料和屬性。 以下是如何使用此方法來查看對應項詳細資料的範例：
 
 ```csharp
 Response<BasicDigitalTwin> twin = client.GetDigitalTwin("myRoomId");
@@ -117,7 +117,7 @@ foreach (string prop in twin.Contents.Keys)
 
 若要使用單一 API 呼叫來取出多個 twins，請參閱 [*如何：查詢*](how-to-query-graph.md)對應項圖形中的查詢 API 範例。
 
-請考慮下列模型 (以 [數位 Twins 定義語言撰寫 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)) 定義 *月亮* ：
+請考慮下列模型 (以 [數位 Twins 定義語言撰寫 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)) 定義 *月亮*：
 
 ```json
 {
@@ -176,21 +176,7 @@ foreach (string prop in twin.Contents.Keys)
     - 每個可寫入屬性的同步處理狀態。 這最適用于裝置，在這種情況下，服務和裝置有可能具有發散狀態 (例如，當裝置離線時) 。 此屬性目前僅適用于連線到 IoT 中樞的實體裝置。 有了中繼資料區段中的資料之後，就可以瞭解屬性的完整狀態，以及上次修改的時間戳記。 如需同步處理狀態的詳細資訊，請參閱關於同步處理裝置狀態的 [IoT 中樞教學](../iot-hub/tutorial-device-twins.md) 課程。
     - 服務特定的中繼資料，例如來自 IoT 中樞或 Azure 數位 Twins。 
 
-您可以使用您選擇的 JSON 剖析程式庫（例如），為對應項剖析傳回的 JSON `System.Text.Json` 。
-
-您也可以使用 SDK 隨附的序列化 helper 類別 `BasicDigitalTwin` ，這會以預先剖析的表單傳回核心對應項中繼資料和屬性。 範例如下：
-
-```csharp
-Response<BasicDigitalTwin> twin = client.GetDigitalTwin(twin_Id);
-Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-foreach (string prop in twin.Contents.Keys)
-{
-    if (twin.Contents.TryGetValue(prop, out object value))
-        Console.WriteLine($"Property '{prop}': {value}");
-}
-```
-
-您可以參閱 [*如何：使用 Azure 數位 Twins api 和 sdk*](how-to-use-apis-sdks.md)，以深入瞭解序列化協助程式類別。
+您可以閱讀更多有關序列化協助程式類別的資訊，例如 `BasicDigitalTwin` [*：使用 Azure 數位 Twins Api 和 sdk*](how-to-use-apis-sdks.md)。
 
 ## <a name="view-all-digital-twins"></a>查看所有數位 twins
 
@@ -275,8 +261,8 @@ await client.UpdateDigitalTwinAsync(twin_Id, updateTwinData);
 只有當修補程式所修改的數位對應項符合新的模型時，這項作業才會成功。 
 
 請考慮下列範例：
-1. 想像一個具有 *foo_old* 模型的數位對應項。 *foo_old* 定義必要的屬性 *品質* 。
-2. 新模型 *foo_new* 定義屬性品質，並新增必要的屬性 *溫度* 。
+1. 想像一個具有 *foo_old* 模型的數位對應項。 *foo_old* 定義必要的屬性 *品質*。
+2. 新模型 *foo_new* 定義屬性品質，並新增必要的屬性 *溫度*。
 3. 在修補之後，數位對應項必須同時有大量和溫度屬性。 
 
 這種情況的修補程式必須更新模型和對應項的溫度屬性，如下所示：

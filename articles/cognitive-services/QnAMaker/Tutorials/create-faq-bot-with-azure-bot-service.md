@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 08/31/2020
-ms.openlocfilehash: aa2530f817bf20af40ab2913df9f16e7d1974ef3
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 356b954c65086ff65264ce7a62b038cd7a8eac3d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375447"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350954"
 ---
 # <a name="tutorial-create-an-faq-bot-with-azure-bot-service"></a>教學課程：使用 Azure Bot Service 建立常見問題 Bot
 使用 QnA Maker 和 Azure [Bot Service](https://azure.microsoft.com/services/bot-service/) 建立無程式碼的常見問題 Bot。
@@ -80,4 +80,4 @@ ms.locfileid: "94375447"
     聊天 Bot 會使用來自您知識庫的答案來回應。
 
     :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="在測試網頁聊天中輸入使用者查詢。":::
-1. 在其他[支援的通道](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0&preserve-view=true)中使用 Bot。
+1. 在其他[支援的通道](/azure/bot-service/bot-service-manage-channels?preserve-view=true&view=azure-bot-service-4.0)中使用 Bot。

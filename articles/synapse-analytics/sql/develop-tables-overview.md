@@ -10,18 +10,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1c12727e08c6ec9075aa6c1e256279ab7596417b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 33eb5977ecb373a0dba87c26cacea247f541be8f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324520"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452724"
 ---
 # <a name="design-tables-using-synapse-sql-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用 Synapse SQL 設計資料表
 
-本檔包含設計具有專用 SQL 集區和無伺服器 SQL 集區之資料表的重要概念 (預覽) 。  
+本檔包含設計具有專用 SQL 集區和無伺服器 SQL 集區之資料表的重要概念。  
 
-[無伺服器 SQL 集區 (預覽版) ](on-demand-workspace-overview.md) 是 data lake 中資料的查詢服務。 它沒有用於資料內嵌的本機儲存體。 [專用的 SQL 集](best-practices-sql-pool.md) 區代表使用 Synapse SQL 時所布建的分析資源集合。 專用 SQL 集區的大小取決於資料倉儲單位 (DWU) 。
+[無伺服器 SQL 集](on-demand-workspace-overview.md) 區是 data lake 中資料的查詢服務。 它沒有用於資料內嵌的本機儲存體。 [專用的 SQL 集](best-practices-sql-pool.md) 區代表使用 Synapse SQL 時所布建的分析資源集合。 專用 SQL 集區的大小取決於資料倉儲單位 (DWU)。
 
 下表列出與專用 SQL 集區或無伺服器 SQL 集區相關的主題：
 
@@ -37,7 +37,7 @@ ms.locfileid: "93324520"
 | [資料類型](#data-types)                                    | 是                | 是                     |
 | [分散式資料表](#distributed-tables)                    | 是                | 否                      |
 | [雜湊分散式資料表](#hash-distributed-tables)          | 是                | 否                      |
-| [複寫資料表](#replicated-tables)                      | 是                | 否                      |
+| [複寫的資料表](#replicated-tables)                      | 是                | 否                      |
 | [循環配置資源資料表](#round-robin-tables)                    | 是                | 否                      |
 | [資料表常用的散發方法](#common-distribution-methods-for-tables) | 是                | 否                      |
 | [資料分割](#partitions)                                    | 是                | 是                     |
@@ -76,7 +76,7 @@ CREATE SCHEMA wwi;
 | WideWorldImportersDW 資料表  | 資料表類型 | 專用的 SQL 集區 |
 |:-----|:-----|:------|:-----|
 | City | 維度 | wwi.DimCity |
-| 單 | 事實 | wwi.FactOrder |
+| 順序 | 事實 | wwi.FactOrder |
 
 ## <a name="table-persistence"></a>資料表持續性
 

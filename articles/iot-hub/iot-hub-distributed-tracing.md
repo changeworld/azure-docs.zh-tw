@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: efc4d07e9e3a64a36f2ecf3fa0000379bef380f9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f8d37cf8f23de1d0535c7a9ff4a95ac217eddf74
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538573"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452389"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>透過分散式追蹤來追蹤 Azure IoT 裝置到雲端的訊息 (預覽)
 
@@ -55,25 +55,25 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中流覽至您的 IoT 中樞。
 
-1. 在 IoT 中樞的左窗格中，向下捲動至 [監視]  區段，然後按一下 [診斷設定]  。
+1. 在 IoT 中樞的左窗格中，向下捲動至 [監視] 區段，然後按一下 [診斷設定]。
 
 1. 按一下「新增診斷設定」  。
 
-1. 在 [名稱]  欄位中，輸入新診斷設定的名稱。 例如， **DistributedTracingSettings** 。
+1. 在 [名稱] 欄位中，輸入新診斷設定的名稱。 例如，**DistributedTracingSettings**。
 
 1. 選擇下列其中一個或多個選項，以決定記錄要傳送到哪裡：
 
-    - 封存 **至儲存體帳戶** ：設定儲存體帳戶以包含記錄資訊。
-    - **串流至事件中樞** ：設定事件中樞以包含記錄資訊。
-    - **傳送至 Log analytics** ：設定 log analytics 工作區以包含記錄資訊。
+    - 封存 **至儲存體帳戶**：設定儲存體帳戶以包含記錄資訊。
+    - **串流至事件中樞**：設定事件中樞以包含記錄資訊。
+    - **傳送至 Log analytics**：設定 log analytics 工作區以包含記錄資訊。
 
-1. 在 [記錄]  區段中，選取您希望記錄資訊用於的作業。
+1. 在 [記錄] 區段中，選取您希望記錄資訊用於的作業。
 
-    請務必包含  。 記錄保留期會影響儲存成本。
+    請務必包含 **DistributedTracing**，並針對您想要保留記錄的天數設定 [保留期]。 記錄保留期會影響儲存成本。
 
     ![螢幕擷取畫面，其中顯示 IoT 診斷設定的 DistributedTracing 類別](./media/iot-hub-distributed-tracing/diag-logs.png)
 
-1. 針對新設定按一下 [儲存]  。
+1. 針對新設定按一下 [儲存]。
 
 1. (選擇性) 若要查看流向不同地方的訊息，請設定[送到至少兩個不同端點的路由規則](iot-hub-devguide-messages-d2c.md)。
 
@@ -183,7 +183,7 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
 
 在不使用 C SDK 的情況下預覽分散式追蹤功能並 **不** 容易。 因此，不建議使用此方法。
 
-首先，您必須遵循開發指南 [建立和讀取 Iot 中樞訊息](iot-hub-devguide-messages-construct.md)，以在您的訊息中執行所有 IoT 中樞通訊協定基本資訊。 然後，在 MQTT/AMQP 訊息中編輯通訊協定屬性，以新增 `tracestate` 為 **系統屬性** 。 具體而言，
+首先，您必須遵循開發指南 [建立和讀取 Iot 中樞訊息](iot-hub-devguide-messages-construct.md)，以在您的訊息中執行所有 IoT 中樞通訊協定基本資訊。 然後，在 MQTT/AMQP 訊息中編輯通訊協定屬性，以新增 `tracestate` 為 **系統屬性**。 具體而言，
 
 * 若為 MQTT，請新增 `%24.tracestate=timestamp%3d1539243209` 至訊息主題，其中 `1539243209` 應取代為 unix 時間戳記格式之訊息的建立時間。 例如，請參閱[C SDK 中](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761)的實作為
 * 若為 AMQP，請加入 `key("tracestate")` 和 `value("timestamp=1539243209")` 做為訊息注釋。 如需參考的執行，請參閱 [這裡](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527)。
@@ -196,19 +196,19 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
 
 ### <a name="update-using-the-portal"></a>使用入口網站更新
 
-1. 在  。
+1. 在 [Azure 入口網站](https://portal.azure.com/)中瀏覽至您的 IoT 中樞，然後按一下 [IoT 裝置]。
 
 1. 按一下您的裝置。
 
-1. 尋找 [啟用分散式追蹤 (預覽)]  ，然後選取 [啟用]  。
+1. 尋找 [啟用分散式追蹤 (預覽)]，然後選取 [啟用]。
 
     ![在 Azure 入口網站中啟用分散式追蹤](./media/iot-hub-distributed-tracing/azure-portal.png)
 
-1. 選擇介於 0%和 100%之間的 [取樣率]  。
+1. 選擇介於 0%和 100%之間的 [取樣率]。
 
-1. 按一下 **[儲存]** 。
+1. 按一下 [儲存]。
 
-1. 等候幾秒鐘，然後按 [重新整理]  ，如果由裝置成功認可，隨即出現具有核取記號的同步圖示。
+1. 等候幾秒鐘，然後按 [重新整理]，如果由裝置成功認可，隨即出現具有核取記號的同步圖示。
 
 1. 回到遙測訊息應用程式的主控台視窗。 您會看到正在傳送的訊息在應用程式屬性中包含 `tracestate`。
 
@@ -222,11 +222,11 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
 
 1. 開啟 VS Code 並[設定 IoT 中樞連接字串](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit#user-content-prerequisites)。
 
-1. 展開裝置並尋找 [分散式追蹤設定 (預覽)]  。 在其下方，按一下子節點的 [更新分散式追蹤設定 (預覽)]  。
+1. 展開裝置並尋找 [分散式追蹤設定 (預覽)]。 在其下方，按一下子節點的 [更新分散式追蹤設定 (預覽)]。
 
     ![在 Azure IoT 中樞擴充功能中啟用分散式追蹤](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
 
-1. 在快顯視窗中，選取 [啟用]  ，然後按 Enter 以確認取樣率為 100。
+1. 在快顯視窗中，選取 [啟用]，然後按 Enter 以確認取樣率為 100。
 
     ![更新取樣模式](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-2.png)
 
@@ -295,11 +295,11 @@ Log Analytics 所顯示的範例記錄：
 
 ### <a name="context"></a>Context
 
-許多 IoT 解決方案 (包括我們自己的[參考架構](https://aka.ms/iotrefarchitecture) (僅限英文)) 通常都會遵循[微服務架構](/azure/architecture/microservices/)的變體。 隨著 IoT 解決方案日益複雜，您終究會使用數十個或更多微服務。 這些微服務或許來自 Azure。 指出 IoT 訊息卸除或變慢的位置可能變得很有挑戰性。 例如，您有使用 5 個不同 Azure 服務和 1500 個作用中裝置的 IoT 解決方案。 每個裝置每秒會傳送 10 則裝置到雲端的訊息 (總計每秒 15,000 則訊息)，但您會注意到您的 Web 應用程式每秒只看到 10,000 則訊息。 問題出在哪裡？ 如何找到罪魁禍首？
+許多 IoT 解決方案 (包括我們自己的[參考架構](/azure/architecture/reference-architectures/iot) (僅限英文)) 通常都會遵循[微服務架構](/azure/architecture/microservices/)的變體。 隨著 IoT 解決方案日益複雜，您終究會使用數十個或更多微服務。 這些微服務或許來自 Azure。 指出 IoT 訊息卸除或變慢的位置可能變得很有挑戰性。 例如，您有使用 5 個不同 Azure 服務和 1500 個作用中裝置的 IoT 解決方案。 每個裝置每秒會傳送 10 則裝置到雲端的訊息 (總計每秒 15,000 則訊息)，但您會注意到您的 Web 應用程式每秒只看到 10,000 則訊息。 問題出在哪裡？ 如何找到罪魁禍首？
 
 ### <a name="distributed-tracing-pattern-in-microservice-architecture"></a>微服務架構中的分散式追蹤模式
 
-若要跨越不同的服務重新建構 IoT 訊息的流程，則每項服務都應該傳播可唯一識別訊息的「相互關聯識別碼」  。 收集到集中式系統後，相互關聯識別碼即可讓您查看訊息流程。 這種方法稱為[分散式追蹤模式](/azure/architecture/microservices/logging-monitoring#distributed-tracing)。
+若要跨越不同的服務重新建構 IoT 訊息的流程，則每項服務都應該傳播可唯一識別訊息的「相互關聯識別碼」。 收集到集中式系統後，相互關聯識別碼即可讓您查看訊息流程。 這種方法稱為[分散式追蹤模式](/azure/architecture/microservices/logging-monitoring#distributed-tracing)。
 
 為了支持更廣泛的分散式追蹤採用，Microsoft 一直致力於提供[分散式追蹤的 W3C 標準提案](https://w3c.github.io/trace-context/)。
 
@@ -325,7 +325,7 @@ Log Analytics 所顯示的範例記錄：
 - 雲端到裝置的對應項功能不適用於 [IoT 中樞基本層](iot-hub-scaling.md#basic-and-standard-tiers)。 不過，如果 IoT 中樞發現正確撰寫的追蹤內容標頭，仍會記錄到 Azure 監視器。
 - 為了確保有效運作，IoT 中樞會對記錄速率加以節流，這可能是分散式追蹤的一部分。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 若要深入了解微服務中的一般分散式追蹤模式，請參閱[微服務架構模式：分散式追蹤](https://microservices.io/patterns/observability/distributed-tracing.html)。
 - 若要設定可將分散式追蹤設定套用至大量裝置的組態，請參閱[設定和監視大規模的 IoT 裝置](./iot-hub-automatic-device-management.md)。

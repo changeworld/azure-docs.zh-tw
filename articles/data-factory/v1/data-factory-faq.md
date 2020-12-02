@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: de4661bcfd7106d515480e39dc4660f44f469a3d
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 81c1b84bff04e62f2dabeb3880f4103112139ee0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631694"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453573"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure 資料處理站-常見問題集
 > [!NOTE]
@@ -25,8 +25,8 @@ ms.locfileid: "92631694"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="general-questions"></a>一般問題
-### <a name="what-is-azure-data-factory"></a>什麼是 Azure Data Factory？
-Data Factory 是雲端架構資料整合服務，用來 **自動移動和轉換資料** 。 就像會運轉設備以將原物料轉換成成品的工廠一樣，Data Factory 會協調現有的服務來收集未經處理資料，並將之轉換成隨時可用的資訊。
+### <a name="what-is-azure-data-factory"></a>Azure 資料處理站是什麼？
+Data Factory 是雲端架構資料整合服務，用來 **自動移動和轉換資料**。 就像會運轉設備以將原物料轉換成成品的工廠一樣，Data Factory 會協調現有的服務來收集未經處理資料，並將之轉換成隨時可用的資訊。
 
 Data Factory 可讓您建立資料導向工作流程，不僅可透過計算服務 (例如 Azure HDInsight 和 Azure Data Lake Analytics) 來處理/轉換資料，還能在內部部署與雲端資料存放區之間移動資料。 建立可執行您所需動作的管線之後，您可以排定讓它定期執行 (每小時、每天、每週等)。   
 
@@ -72,7 +72,7 @@ Data Factory 可在 **美國西部** 和 **北歐** 地區使用。 資料處理
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
 | [Azure Machine Learning Studio (傳統) ](data-factory-compute-linked-services.md#azure-machine-learning-studio-classic-linked-service) |[Studio (傳統) 活動：批次執行和更新資源](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
-| [AZURE sql](data-factory-compute-linked-services.md#azure-sql-linked-service)， [Azure Synapse Analytics (先前的 SQL 資料倉儲) ](data-factory-compute-linked-services.md#azure-synapse-analytics-linked-service)， [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[預存程序](data-factory-stored-proc-activity.md) |
+| [AZURE SQL](data-factory-compute-linked-services.md#azure-sql-linked-service)， [Azure Synapse Analytics](data-factory-compute-linked-services.md#azure-synapse-analytics-linked-service)， [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[預存程序](data-factory-stored-proc-activity.md) |
 
 ### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Azure Data Factory 相較於 SQL Server Integration Services (SSIS) 有何異同？ 
 請參閱我們的其中一位 Mvp 的 [Azure Data Factory 與 SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) 簡報 (最重要的專業人員) ： Reza Rad。 Data Factory 中的某些最近變更可能未列於投影片組中。 我們會持續新增更多功能到 Azure Data Factory。 我們會持續新增更多功能到 Azure Data Factory。 我們會在今年將這些更新整合到 Microsoft 的資料整合技術比較中。   
@@ -139,7 +139,7 @@ Data Factory 中的複製活動會將資料從來源資料存放區複製到接�
 
 ## <a name="slices---faq"></a>配量 - 常見問題集
 ### <a name="why-are-my-input-slices-not-in-ready-state"></a>為什麼我的輸入配量不是處於「就緒」狀態？
-常見的錯誤是當輸入資料是 Data Factory 的外部資料 (不是由 Data Factory 產生) 時，未將輸入資料集上的 **external** 屬性設定為 **true** 。
+常見的錯誤是當輸入資料是 Data Factory 的外部資料 (不是由 Data Factory 產生) 時，未將輸入資料集上的 **external** 屬性設定為 **true**。
 
 在下列範例中，您只需要將 **dataset1** 上的 **external** 設定為 true 即可。  
 
@@ -169,7 +169,7 @@ Pipeline 1: dataset4->activity4->dataset5
 您可以利用下列方式之一來重新執行配量：
 
 * 使用「監視及管理應用程式」來重新執行活動時段或配量。 如需相關指示，請參閱 [重新執行已選取的活動時段](data-factory-monitor-manage-app.md#perform-batch-actions) 。   
-* 在 Azure 入口網站中，於該配量的 [資料配量]  刀鋒視窗上，按一下命令列中的 [執行]  。
+* 在 Azure 入口網站中，於該配量的 [資料配量] 刀鋒視窗上，按一下命令列中的 [執行]。
 * 執行 **AzDataFactorySliceStatus** Cmdlet，並將狀態設定為 **等候** 配量。   
 
     ```powershell
@@ -182,11 +182,11 @@ Pipeline 1: dataset4->activity4->dataset5
 
 您也可以在 Azure 入口網站中執行下列操作：  
 
-1. 在您 Data Factory 的 [DATA FACTORY]  刀鋒視窗中，按一下 [資料集]  圖格。
+1. 在您 Data Factory 的 [DATA FACTORY] 刀鋒視窗中，按一下 [資料集] 圖格。
 2. 在 [ **資料集** ] 刀鋒視窗中，按一下特定資料集。
-3. 從 [資料表]  刀鋒視窗的 [最近配量]  清單中，選取您感興趣的配量。
-4. 從 [資料配量]  刀鋒視窗的 [活動執行]  清單中，按一下活動執行。
-5. 在 [活動執行詳細資料]  刀鋒視窗中，按一下 [屬性]  圖格。
+3. 從 [資料表] 刀鋒視窗的 [最近配量] 清單中，選取您感興趣的配量。
+4. 從 [資料配量] 刀鋒視窗的 [活動執行] 清單中，按一下活動執行。
+5. 在 [活動執行詳細資料] 刀鋒視窗中，按一下 [屬性] 圖格。
 6. 您應該會看到 [持續時間]  欄位與值。 這個值是處理配量所花費的時間。   
 
 ### <a name="how-to-stop-a-running-slice"></a>如何停止執行中配量？

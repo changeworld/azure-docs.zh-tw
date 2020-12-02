@@ -1,26 +1,26 @@
 ---
-title: 將 Contoso 零售資料載入至 Synapse SQL
-description: 使用 PolyBase 和 T-sql 命令將兩個數據表從 Contoso 零售資料載入至 Synapse SQL。
+title: 將 Contoso 零售資料載入專用的 SQL 集區
+description: 使用 PolyBase 和 T-sql 命令將兩個數據表從 Contoso 零售資料載入至專用的 SQL 集區。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/17/2018
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 904ce55f376e42156b014056b1226512b2784742
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbe61444404b16a09a1e0d2bdead72ac53a60744
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461692"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452886"
 ---
-# <a name="load-contoso-retail-data-to-synapse-sql"></a>將 Contoso 零售資料載入至 Synapse SQL 
+# <a name="load-contoso-retail-data-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>將 Contoso 零售資料載入 Azure Synapse Analytics 中的專用 SQL 集區
 
-在本教學課程中，您將瞭解如何使用 PolyBase 和 T-sql 命令將兩個數據表從 Contoso 零售資料載入至 Synapse SQL。
+在本教學課程中，您將瞭解如何使用 PolyBase 和 T-sql 命令將兩個數據表從 Contoso 零售資料載入專用的 SQL 集區。
 
 在本教學課程中，您將：
 
@@ -30,11 +30,11 @@ ms.locfileid: "89461692"
 
 ## <a name="before-you-begin"></a>開始之前
 
-若要執行本教學課程，您需要已有 Synapse SQL 的 Azure 帳戶。 如果您沒有布建資料倉儲，請參閱 [建立資料倉儲並設定伺服器層級防火牆規則](create-data-warehouse-portal.md)。
+若要執行本教學課程，您需要已有專用 SQL 集區的 Azure 帳戶。 如果您沒有布建資料倉儲，請參閱 [建立資料倉儲並設定伺服器層級防火牆規則](create-data-warehouse-portal.md)。
 
 ## <a name="configure-the-data-source"></a>設定資料來源
 
-PolyBase 使用 T-SQL 外部物件以定義外部資料的位置和屬性。 外部物件定義會儲存在 Synapse SQL 中。 資料會儲存在外部。
+PolyBase 使用 T-SQL 外部物件以定義外部資料的位置和屬性。 外部物件定義會儲存在專用的 SQL 集區中。 資料會儲存在外部。
 
 ## <a name="create-a-credential"></a>建立認證
 
@@ -122,7 +122,7 @@ GO
 
 執行下列腳本來建立 DimProduct 和 FactOnlineSales 外部資料表。 您在這裡所做的只是定義資料行名稱和資料類型，並將它們系結至 Azure blob 儲存體檔案的位置和格式。 定義會儲存在資料倉儲中，而資料仍位於 Azure 儲存體 Blob 中。
 
-**LOCATION**參數是 Azure 儲存體 Blob 中根資料夾下的資料夾。 每個資料表都位於不同的資料夾中。
+**LOCATION** 參數是 Azure 儲存體 Blob 中根資料夾下的資料夾。 每個資料表都位於不同的資料夾中。
 
 ```sql
 --DimProduct
@@ -274,7 +274,7 @@ ORDER BY
 
 ## <a name="optimize-columnstore-compression"></a>最佳化資料行存放區壓縮
 
-根據預設，Synapse SQL 會將資料表儲存為叢集資料行存放區索引。 載入完成後，某些資料列可能不會被壓縮為資料行存放區。  發生這種情況的原因有很多種。 若要深入了解，請參閱[管理資料行存放區索引](sql-data-warehouse-tables-index.md)。
+根據預設，專用的 SQL 集區會將資料表儲存為叢集資料行存放區索引。 載入完成後，某些資料列可能不會被壓縮為資料行存放區。  發生這種情況的原因有很多種。 若要深入了解，請參閱[管理資料行存放區索引](sql-data-warehouse-tables-index.md)。
 
 若要最佳化載入後的查詢效能和資料行存放區壓縮，請重建資料表以強制資料行存放區索引對所有資料列進行壓縮。
 

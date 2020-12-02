@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: cavoeg
-ms.openlocfilehash: 3aea2322129c383a385168c54001464da5dae276
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 9a4c331d82695aecb53990fd604ade82f3361959
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95520079"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452919"
 ---
 # <a name="features"></a>特性
 
@@ -59,7 +59,7 @@ Azure API for FHIR 可為 Azure 提供完全受控的 Microsoft FHIR Server 部�
 | Date/DateTime         | 是       | 是       | 是       |         |
 | String                | 是       | 是       | 是       |         |
 | Token                 | 是       | 是       | 是       |         |
-| 參考資料             | 是       | 是       | 是       |         |
+| 參考             | 是       | 是       | 是       |         |
 | 複合             | 是       | 是       | 是       |         |
 | 數量              | 是       | 是       | 是       |         |
 | URI                   | 是       | 是       | 是       |         |
@@ -135,7 +135,7 @@ FHIR 伺服器使用 [Azure Active Directory](https://azure.microsoft.com/servic
 
 ## <a name="service-limits"></a>服務限制
 
-* [**要求單位 (ru)**](https://docs.microsoft.com/azure/cosmos-db/concepts-limits) -您最多可以在入口網站中為 Azure API for FHIR 設定 10000 ru。 您至少需要 400 ru 或 10 ru/GB （以較大者為准）。 如果您需要超過 10000 ru，您可以放入支援票證，以增加這項功能。 可用的最大值為1000000。
+* [**要求單位 (ru)**](../cosmos-db/concepts-limits.md) -您最多可以在入口網站中為 Azure API for FHIR 設定 10000 ru。 您至少需要 400 ru 或 10 ru/GB （以較大者為准）。 如果您需要超過 10000 ru，您可以放入支援票證，以增加這項功能。 可用的最大值為1000000。
 
 * **並行連接** 和 **實例** -dafault，您在叢集的兩個實例上有五個並行連線 (總共) 個並行要求。 如果您認為您需要更多的並行要求，請開啟支援票證，並提供您需求的詳細資料。
 

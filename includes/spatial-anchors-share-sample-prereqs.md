@@ -1,15 +1,15 @@
 ---
-author: ramonarguelles
+author: msftradford
 ms.service: spatial-anchors
 ms.topic: include
-ms.date: 07/31/2020
-ms.author: rgarcia
-ms.openlocfilehash: 9e085c122c196de735cae26a4ea2f04b2da73899
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: 98ff5f09b4c972b8a5e23112aa955bdfee887cfd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971281"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185290"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -22,6 +22,6 @@ ms.locfileid: "91971281"
 * 下列項目的基本知識：
   *  <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> (如果您使用的是 Android)。
   *  <a href="https://developer.apple.com/arkit/" target="_blank">ARKit</a> (如果您使用的是 iOS)。
-* 具備 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> 或更新版本和 **ASP.NET 與網頁程式開發**工作負載的 Windows 電腦。
+* 具備 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> 或更新版本和 **ASP.NET 與網頁程式開發** 工作負載的 Windows 電腦。
 * [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download)。
 * 下列一或多個要部署和執行應用程式的裝置：HoloLens、HoloLens 2、iOS 或 Android。

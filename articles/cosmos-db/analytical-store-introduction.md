@@ -1,24 +1,21 @@
 ---
-title: 什麼是 Azure Cosmos DB 分析存放區 (預覽)？
+title: 什麼是 Azure Cosmos DB 分析存放區？
 description: 深入了解 Azure Cosmos DB 交易 (以資料列為基礎) 和分析 (以資料行為基礎) 存放區。 分析存放區的優點、大規模工作負載的效能影響，以及將資料從交易存放區自動同步至分析存放區
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 9cde9586d453632ceaa61de7c095a5f95d1ea2e4
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 5dc233348188791404f826870b235d2bdfa4c202
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337401"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452849"
 ---
-# <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>什麼是 Azure Cosmos DB 分析存放區 (Preview) ？
+# <a name="what-is-azure-cosmos-db-analytical-store"></a>什麼是 Azure Cosmos DB 分析存放區？
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
-
-> [!IMPORTANT]
-> Azure Cosmos DB 分析存放區目前為預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Azure Cosmos DB 分析存放區是完全隔離的資料行存放區，可針對您 Azure Cosmos DB 中的運算元據啟用大規模分析，而不會影響您的交易式工作負載。 
 
@@ -36,7 +33,7 @@ Azure Cosmos DB 容器中的多模型操作資料會在內部儲存於以索引�
 
 Azure Cosmos DB 分析存放區可解決傳統 ETL 管線所發生的複雜性和延遲挑戰。 Azure Cosmos DB 分析存放區可以將您的操作資料自動同步處理到個別的資料行存放區。 資料行存放區格式適合以優化方式執行大規模分析查詢，進而改善這類查詢的延遲。
 
-您現在可以使用 Azure Synapse Link，直接從 Synapse Analytics 連結至 Azure Cosmos DB 分析存放區，來建置無 ETL HTAP 解決方案。 其可讓您針對操作資料執行接近即時的大規模分析。
+您現在可以使用 Azure Synapse 連結，直接從 Azure Synapse Analytics 連結到 Azure Cosmos DB 分析存放區，以建立無 ETL HTAP 解決方案。 其可讓您針對操作資料執行接近即時的大規模分析。
 
 ## <a name="features-of-analytical-store"></a>分析存放區的功能 
 
@@ -153,11 +150,11 @@ salary: 1000000
 | Double |  "float64" |    24.99|
 | Array | ". array" |    ["a"，"b"]|
 |Binary | "binary" |0|
-|布林值    | "bool"   |是|
+|Boolean    | "bool"   |是|
 |Int32  | "int32"  |123|
 |Int64  | "int64"  |255486129307|
 |Null   | ". null"   | null|
-|字串|    "system.string" | "ABC"|
+|String|    "system.string" | "ABC"|
 |時間戳記 |    ". timestamp" |  時間戳記 (0，0) |
 |Datetime   |". date"    | ISODate ( "2020-08-21T07：43： 07.375 Z" ) |
 |ObjectId   |"objectId"    | ObjectId ( "5f3f7b59330ec25c132623a2" ) |
@@ -181,10 +178,10 @@ salary: 1000000
 
 分析存放區已最佳化，可提供分析工作負載的可擴縮性、彈性、效能，而不會對計算執行時間產生任何相關性。 儲存技術會進行自我管理，可將您的分析工作負載最佳化，而無須手動進行。
 
-藉由將分析儲存系統與分析計算系統分離，可以從 Azure Synapse Analytics 所支援的不同分析執行階段同時查詢 Azure Cosmos DB 分析存放區中的資料。 即日起，Synapse Analytics 支援 Apache Spark 和 SQL 無伺服器，搭配 Azure Cosmos DB 分析存放區。
+藉由將分析儲存系統與分析計算系統分離，可以從 Azure Synapse Analytics 所支援的不同分析執行階段同時查詢 Azure Cosmos DB 分析存放區中的資料。 從今天開始，Azure Synapse Analytics 使用 Azure Cosmos DB 分析存放區支援 Apache Spark 和無伺服器的 SQL 集區。
 
 > [!NOTE]
-> 您只能使用 Synapse Analytics 執行階段從分析存放區進行讀取。 您可以將資料寫回至交易存放區以做為服務層。
+> 您只能使用 Azure Synapse Analytics 執行時間從分析存放區讀取。 您可以將資料寫回至交易存放區以做為服務層。
 
 ## <a name="pricing"></a><a id="analytical-store-pricing"></a> 定價
 
@@ -194,10 +191,7 @@ salary: 1000000
 
 * 分析寫入作業：從交易存放區將完全管理的操作資料更新同步至分析存放區 (自動同步)
 
-* 分析讀取作業：針對分析存放區，從 Synapse Analytics Spark 和 SQL 無伺服器執行時間執行的讀取作業。
-
-> [!NOTE]
-> Azure Cosmos DB 分析存放區目前免費提供公開預覽。
+* 分析讀取作業：針對分析存放區，從 Azure Synapse Analytics Spark 集區和無伺服器 SQL 集區執行時間執行的讀取作業。
 
 分析存放區定價與交易存放區定價模式不同。 分析存放區中沒有已佈建 RU 的概念。 如需分析存放區定價模式的完整詳細資料，請參閱 [Azure Cosmos DB 定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)。
 

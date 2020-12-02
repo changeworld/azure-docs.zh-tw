@@ -2,19 +2,21 @@
 title: Azure 服務的資源提供者
 description: 列出 Azure Resource Manager 的所有資源提供者命名空間，並顯示該命名空間的 Azure 服務。
 ms.topic: conceptual
-ms.date: 11/30/2020
-ms.openlocfilehash: fffac8fef8742cf1f151de06ba6b528035a6668d
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.date: 12/01/2020
+ms.openlocfilehash: faea6badc24d0152e94fc507cafdb15932d1ea3e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436822"
+ms.locfileid: "96452637"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服務的資源提供者 \(部分機器翻譯\)
 
 本文說明資源提供者命名空間對應至 Azure 服務的方式。
 
 ## <a name="match-resource-provider-to-service"></a>將資源提供者與服務配對
+
+標示為 **已註冊** 的資源提供者預設會針對您的訂用帳戶註冊。 如需詳細資訊，請參閱 [註冊](#registration)。
 
 | 資源提供者命名空間 | Azure 服務 |
 | --------------------------- | ------------- |

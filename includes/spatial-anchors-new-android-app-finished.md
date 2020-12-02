@@ -1,17 +1,17 @@
 ---
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.date: 06/22/2020
+ms.date: 11/20/2020
 ms.topic: include
-ms.author: rgarcia
+ms.author: parkerra
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4d20b7dee533dae17cfb1c6138e336b91c7e2b0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d57167a9a4713e268c6864f3f1b3f2b1498b4ddb
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85296180"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95998377"
 ---
 ## <a name="putting-everything-together"></a>合併所有元素
 
@@ -248,4 +248,4 @@ public class MainActivity extends AppCompatActivity {
 在本教學課程中，您已了解如何建立可整合 ARCore 功能與 Azure Spatial Anchors 的新 Android 應用程式。 若要深入了解 Azure Spatial Anchors 程式庫，請繼續參考關於如何建立和尋找錨點的指南。
 
 > [!div class="nextstepaction"]
-> [使用 Azure Spatial Anchors 建立和尋找錨點](/azure/spatial-anchors/create-locate-anchors-overview)
+> [使用 Azure Spatial Anchors 建立和尋找錨點](../articles/spatial-anchors/create-locate-anchors-overview.md)

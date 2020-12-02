@@ -1,6 +1,6 @@
 ---
 title: 資料倉儲定序類型
-description: Azure Synapse Analytics 中的專用 SQL 集區支援定序類型。
+description: 在 Azure Synapse Analytics 中， (先前為 SQL DW) 的專用 SQL 集區支援定序類型。
 services: synapse-analytics
 author: antvgski
 manager: igorstan
@@ -11,16 +11,16 @@ ms.date: 12/04/2019
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8d76d70c4c84f1d63d4643e1fba3f66d3541beff
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 39b89f8d303c10eead63839420141a74d3d3c74c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305260"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452762"
 ---
-# <a name="database-collation-support-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的資料庫定序支援 
+# <a name="database-collation-support-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中先前 (SQL DW) 的專用 SQL 集區的資料庫定序支援 
 
-當您建立新的專用 SQL 集區資料庫時，您可以從 Azure 入口網站變更預設資料庫定序。 這項功能可讓您更輕鬆地使用3800支援的其中一個資料庫定序來建立新的資料庫。
+當您建立新的專用 SQL 集區時，您可以從 Azure 入口網站變更預設資料庫定序 (先前的 SQL DW) 。 這項功能可讓您更輕鬆地使用3800支援的其中一個資料庫定序來建立新的資料庫。
 
 定序提供以字元為基礎之資料類型的地區設定、字碼頁、排序次序和字元敏感度規則。 一旦選擇之後，所有需要定序資訊的資料行和運算式都會從資料庫設定繼承所選擇的定序。 您可以明確地針對以字元為基礎的資料類型陳述不同的定序，來覆寫預設的繼承。
 

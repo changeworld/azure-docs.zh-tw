@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: d013af82a862f1bc6b5324e7523aeea5593a4f94
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 31ae5b780bf451e29a97f04202f804db27fc387a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030657"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452936"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Azure API for FHIR 的常見問題
 
@@ -31,7 +31,7 @@ ms.locfileid: "96030657"
 我們目前支援 Microsoft Azure Active Directory 作為身分識別提供者。
 
 ### <a name="what-is-the-recovery-point-objective-rpo-for-the-azure-api-for-fhir"></a>Azure API for FHIR 的 RPO)  (RPO 的復原點目標為何？
-Azure API for FHIR 是由 Cosmos DB 的持續性提供者所支援。 因此，服務的 RPO 等於 [Cosmos DB (單一區域) ](https://docs.microsoft.com/azure/cosmos-db/consistency-levels) 且 < 240 分鐘。
+Azure API for FHIR 是由 Cosmos DB 的持續性提供者所支援。 因此，服務的 RPO 等於 [Cosmos DB (單一區域) ](../cosmos-db/consistency-levels.md) 且 < 240 分鐘。
 
 ### <a name="what-fhir-version-do-you-support"></a>您支援的 FHIR 版本為何？
 

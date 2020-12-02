@@ -1,19 +1,19 @@
 ---
 title: 教學課程：建立新的 HoloLens Unity 應用程式
 description: 在本教學課程中，您將了解如何使用 Azure Spatial Anchors 建立新的 HoloLens Unity 應用程式。
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 08/17/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e94ced70ad17286612328884d03d4d1253b7818b
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: ee0bf9b4ce009f37dd1931d4ed030defa24e7d38
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096533"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95996250"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>教學課程：使用 Azure Spatial Anchors 新建 HoloLens Unity 應用程式的逐步指示
 
@@ -23,9 +23,9 @@ ms.locfileid: "92096533"
 
 若要完成本教學課程，請確定您具有下列項目︰
 
-1. 已安裝 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017+</a> 的 Windows 機器，並且具有**通用 Windows 平台開發**工作負載和 **Windows 10 SDK (10.0.18362.0 或更新版本)** 元件，以及 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>。
+1. 已安裝 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017+</a> 的 Windows 機器，並且具有 **通用 Windows 平台開發** 工作負載和 **Windows 10 SDK (10.0.18362.0 或更新版本)** 元件，以及 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>。
 2. 從 [Visual Studio Marketplace](https://marketplace.visualstudio.com/) 安裝 Visual Studio 的 [C++/WinRT Visual Studio 延伸模組 (VSIX)](https://aka.ms/cppwinrt/vsix)。
-3. 已啟用[開發人員模式](/windows/mixed-reality/using-visual-studio)的 HoloLens 裝置。 本文需要具有 [Windows 10 2020 年 5 月更新](/windows/mixed-reality/whats-new/release-notes-may-2020)的 HoloLens 裝置。 若要在 HoloLens 上更新至最新版本，請開啟**設定**應用程式，移至 [更新與安全性]，然後選取 [檢查更新] 按鈕。
+3. 已啟用[開發人員模式](/windows/mixed-reality/using-visual-studio)的 HoloLens 裝置。 本文需要具有 [Windows 10 2020 年 5 月更新](/windows/mixed-reality/whats-new/release-notes-may-2020)的 HoloLens 裝置。 若要在 HoloLens 上更新至最新版本，請開啟 **設定** 應用程式，移至 [更新與安全性]，然後選取 [檢查更新] 按鈕。
 
 ## <a name="getting-started"></a>開始使用
 
@@ -33,10 +33,10 @@ ms.locfileid: "92096533"
 1. 啟動 Unity。
 2. 選取 [ **新增**]。
 4. 確定已選取 **3D**。
-5. 為您的專案命名，然後輸入儲存**位置**。
+5. 為您的專案命名，然後輸入儲存 **位置**。
 6. 選取 [建立專案]  。
 7. 使用下列途徑，將空的預設場景儲存至新檔案：[檔案] > [另存新檔]。
-8. 將新場景命名為**主要**，然後按 [儲存] 按鈕。
+8. 將新場景命名為 **主要**，然後按 [儲存] 按鈕。
 
 **設定專案設定**
 
@@ -44,7 +44,7 @@ ms.locfileid: "92096533"
 
 首先，我們將設定應用程式的品質設定。
 1. 選取 [編輯] > [專案設定] > [品質]
-2. 在 **Windows 市集**標誌下方的資料行中，按一下 [預設] 資料列上的箭號，然後選取 [非常低]。 當 [Windows 市集] 資料行和 [非常低] 資料列中的方塊呈現為綠色時，即表示已正確套用設定。
+2. 在 **Windows 市集** 標誌下方的資料行中，按一下 [預設] 資料列上的箭號，然後選取 [非常低]。 當 [Windows 市集] 資料行和 [非常低] 資料列中的方塊呈現為綠色時，即表示已正確套用設定。
 
 我們需要以沉浸式檢視 (而非2D 檢視) 來設定 Unity 應用程式。 我們可在以 Windows 10 SDK 為目標的 Unity 上啟用虛擬實境支援，以建立沉浸式檢視。
 1. 移至 [編輯] > [專案設定] > [播放器]。
@@ -57,13 +57,13 @@ ms.locfileid: "92096533"
 > 若未看到 Windows 圖示，請仔細檢查以確定您在安裝之前已選取 Windows .NET 指令碼後端。 如果沒有，您可能需要以正確的 Windows 安裝重新安裝 Unity。
 
 **確認指令碼後端組態**
-1. 移至 [編輯] > [專案設定] > [播放器] (先前步驟中的**播放器**可能仍開啟)。
-2. 在 [播放程式設定] 的 [偵測器面板] 中，選取 **Windows 市集**圖示。
+1. 移至 [編輯] > [專案設定] > [播放器] (先前步驟中的 **播放器** 可能仍開啟)。
+2. 在 [播放程式設定] 的 [偵測器面板] 中，選取 **Windows 市集** 圖示。
 3. 在 [其他設定] 組態區段中，確定 [指令碼後端] 設為 [IL2CPP]。
 
 **設定功能**
-1. 移至 [編輯] > [專案設定] > [播放器] (先前步驟中的**播放器**可能仍開啟)。
-2. 在 [播放程式設定] 的 [偵測器面板] 中，選取 **Windows 市集**圖示。
+1. 移至 [編輯] > [專案設定] > [播放器] (先前步驟中的 **播放器** 可能仍開啟)。
+2. 在 [播放程式設定] 的 [偵測器面板] 中，選取 **Windows 市集** 圖示。
 3. 在 [發行設定] 組態區段中，核取 **InternetClientServer** 和 **SpatialPerception**。
 
 **設定主要虛擬相機**
@@ -83,8 +83,8 @@ ms.locfileid: "92096533"
 **建立圓球預製項目**
 1. 移至 [GameObject] -> [3D 物件] -> [圓球]。
 2. 在 [偵測器] 中，將其標尺設為 **0.25、0.25、0.25**。
-3. 在 [階層] 窗格中找出**圓球**物件。 按住該物件並拖曳到 [專案] 窗格的 [資產] 資料夾中。
-4. 按一下滑鼠右鍵，並**刪除**您在 [階層] 窗格中建立的原始圓球。
+3. 在 [階層] 窗格中找出 **圓球** 物件。 按住該物件並拖曳到 [專案] 窗格的 [資產] 資料夾中。
+4. 按一下滑鼠右鍵，並 **刪除** 您在 [階層] 窗格中建立的原始圓球。
 
 您的 [專案] 窗格中現在應該會有圓球預製項目。
 
@@ -104,9 +104,9 @@ ms.locfileid: "92096533"
 
 在繼續之前，我們必須先在 spherePrefab 成員變數上設定我們已建立的圓球預製項目。 請返回 **Unity**。
 1. 在 **Unity** 中，選取 [階層] 窗格中的 **MixedRealityCloud** 物件。
-2. 按一下您在 [專案] 窗格中儲存的**圓球**預製項目。 將您按住的**圓球**拖曳到 [偵測器] 窗格中位於 [Azure Spatial Anchors 指令碼 (指令碼)] 下方的 [圓球預製項目] 區域上。
+2. 按一下您在 [專案] 窗格中儲存的 **圓球** 預製項目。 將您按住的 **圓球** 拖曳到 [偵測器] 窗格中位於 [Azure Spatial Anchors 指令碼 (指令碼)] 下方的 [圓球預製項目] 區域上。
 
-您現在應已將**圓球**設為指令碼上的預製項目。 從 **Unity** 進行建置，然後重新開啟產生的 **Visual Studio** 解決方案，如您[立即試用](#trying-it-out)中所做的。
+您現在應已將 **圓球** 設為指令碼上的預製項目。 從 **Unity** 進行建置，然後重新開啟產生的 **Visual Studio** 解決方案，如您 [立即試用](#trying-it-out)中所做的。
 
 在 **Visual Studio** 中，重新開啟 `AzureSpatialAnchorsScript.cs`。 在 `Start()` 方法中新增下列程式碼。 這段程式碼會連結 `GestureRecognizer`，並會在偵測到點擊時呼叫 `HandleTap`。
 
@@ -164,7 +164,7 @@ ms.locfileid: "92096533"
 > [!WARNING]
 > SDK 版本 2.5.0 之後，Azure 空間錨點 SDK 的 Unity 資產套件散發將會被取代。
 
-現在可以下載 Azure Spatial Anchors SDK。 移至 [Azure Spatial Anchors GitHub 發行頁面](https://github.com/Azure/azure-spatial-anchors-samples/releases)。 在**資產**下方，下載 **AzureSpatialAnchors.unitypackage**。 在 Unity 中移至**資產**，然後選取 [匯入套件] > [自訂套件...]。瀏覽至套件並選取 [開啟]。
+現在可以下載 Azure Spatial Anchors SDK。 移至 [Azure Spatial Anchors GitHub 發行頁面](https://github.com/Azure/azure-spatial-anchors-samples/releases)。 在 **資產** 下方，下載 **AzureSpatialAnchors.unitypackage**。 在 Unity 中移至 **資產**，然後選取 [匯入套件] > [自訂套件...]。瀏覽至套件並選取 [開啟]。
 
 在彈出的新 [匯入 Unity 套件] 視窗中，取消選取 [外掛程式]，然後選取右下角的 [匯入]。
 
@@ -208,10 +208,10 @@ ms.locfileid: "92096533"
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-397&highlight=26-77)]
 
-再次從 **Visual Studio** 執行您的應用程式。 動一動您的頭部，然後藉由空中點選放置圓球。 一旦有足夠的畫面格時，圓球就會變成黃色，並開始進行雲端上傳。 上傳完成後，圓球就會變成藍色。 (選擇性) 您也可以在 **Visual Studio** 內進行偵錯時使用[輸出視窗](/visualstudio/ide/reference/output-window)，來監視應用程式傳送的記錄訊息。 請務必從 Visual Studio 部署應用程式的 `Debug` 組態，以查看記錄訊息。 您可以觀賞 `RecommendedForCreateProgress`，一旦上傳完成，您就能夠看到從雲端傳回的錨點識別碼。
+再次從 **Visual Studio** 執行您的應用程式。 動一動您的頭部，然後藉由空中點選放置圓球。 一旦有足夠的畫面格時，圓球就會變成黃色，並開始進行雲端上傳。 上傳完成後，圓球就會變成藍色。 (選擇性) 您也可以在 **Visual Studio** 內進行偵錯時使用 [輸出視窗](/visualstudio/ide/reference/output-window)，來監視應用程式傳送的記錄訊息。 請務必從 Visual Studio 部署應用程式的 `Debug` 組態，以查看記錄訊息。 您可以觀賞 `RecommendedForCreateProgress`，一旦上傳完成，您就能夠看到從雲端傳回的錨點識別碼。
 
 > [!NOTE]
-> 如果您收到「DllNotFoundException：無法載入 DLL 'AzureSpatialAnchors'：找不到指定的模組。」，您應**清除**解決方案並重新加以**建置**。
+> 如果您收到「DllNotFoundException：無法載入 DLL 'AzureSpatialAnchors'：找不到指定的模組。」，您應 **清除** 解決方案並重新加以 **建置**。
 
 ## <a name="locate-your-cloud-spatial-anchor"></a>找出您的雲端空間錨點
 
@@ -219,7 +219,7 @@ ms.locfileid: "92096533"
 
 * 呼叫 `ResetSession()`，這將會停止 `CloudSpatialAnchorSession`，並從螢幕中移除現有的藍色圓球。
 * 重新初始化 `CloudSpatialAnchorSession`。 這麼做可確保我們要找出的錨點會來自雲端，而不是我們所建立的本機錨點。
-* 建立**監看員**以尋找我們上傳至 Azure Spatial Anchors 的錨點。
+* 建立 **監看員** 以尋找我們上傳至 Azure Spatial Anchors 的錨點。
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=273-311&highlight=13-31,35-36)]
 

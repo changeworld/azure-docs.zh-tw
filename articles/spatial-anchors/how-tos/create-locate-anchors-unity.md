@@ -1,20 +1,20 @@
 ---
 title: 在 Unity 中建立及尋找錨點
 description: 深入說明如何在 Unity 中使用 Azure Spatial Anchors 建立和尋找錨點。
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 08/10/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 42598b6471ea29c779b1863852169c4a1025e229
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 9339b3f96c677488658713b94789069cabb1125d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097451"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95993058"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-unity"></a>如何在 Unity 中使用 Azure Spatial Anchors 建立和尋找錨點
 

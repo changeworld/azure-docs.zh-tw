@@ -12,19 +12,19 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6b6aea6a3b0856b3db345e20b87d2a12ad055e1
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 077c715616e377d8b296e53fdd5a861f944ab940
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380325"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349498"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>使用 C# 建置主控台應用程式搜尋用戶端
 
 > [!WARNING]
-> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的程序進行佈建。
 > 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
-> 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 本教學課程示範如何建置簡單的 .NET Core 主控台應用程式，讓使用者能夠查詢 Bing Web 搜尋 API 並顯示已設定順位的結果。
 
@@ -47,7 +47,7 @@ ms.locfileid: "94380325"
 
 在 [新增專案] 對話方塊中，按一下 [Visual C#] > [Windows 傳統桌面] > [主控台應用程式 (.NET Framework)]。
 
-將應用程式命名為 **MyConsoleSearchApp** ，然後按一下 [確定]。
+將應用程式命名為 **MyConsoleSearchApp**，然後按一下 [確定]。
 
 ## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>將 JSON.net NuGet 套件新增到專案
 
@@ -77,7 +77,7 @@ using System.Net.Http;
 
 ## <a name="ask-the-user-for-a-query"></a>要求使用者查詢
 
-在 [方案總管] 中開啟 **Program.cs** 。 更新 `Main()` 方法：
+在 [方案總管] 中開啟 **Program.cs**。 更新 `Main()` 方法：
 
 ```csharp
 static void Main()

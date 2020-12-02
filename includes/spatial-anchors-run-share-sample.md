@@ -1,15 +1,15 @@
 ---
-author: ramonarguelles
+author: msftradford
 ms.service: spatial-anchors
 ms.topic: include
-ms.date: 8/27/2020
-ms.author: rgarcia
-ms.openlocfilehash: 50e4799f09322eab05b4f8ddf7004c2e0078fdab
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: 9554e04c82299016076f09f85f604af10a94ab4a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971288"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185297"
 ---
 ## <a name="android"></a>[Android](#tab/Android)
 
@@ -85,7 +85,7 @@ Xamarin Android 和 iOS 範例都支援跨裝置共用。
 
 在 [組建中的場景] 底下，確定每個場景旁邊都有勾號。
 
-確定 [匯出專案] 沒有核取記號。 選取 [建置並執行]****。 系統將會提示您儲存 *.apk* 檔案。 您可以將檔案命名為任何名稱。
+確定 [匯出專案] 沒有核取記號。 選取 [建置並執行]。 系統將會提示您儲存 *.apk* 檔案。 您可以將檔案命名為任何名稱。
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
@@ -99,4 +99,4 @@ Xamarin Android 和 iOS 範例都支援跨裝置共用。
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
-在 Xcode 中，選取 [停止]**** 來停止應用程式。
+在 Xcode 中，選取 [停止] 來停止應用程式。

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 11/09/2020
-ms.openlocfilehash: 322db4e1535e763f4c3e7c87afaa370471ba0b66
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 3801bb44fed6bf24788957c41de77c89b3025ae8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376293"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351107"
 ---
 # <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>教學課程：將知識庫新增至 Power Virtual Agents
 建立並擴充 [Power Virtual Agents](https://powervirtualagents.microsoft.com/) Bot，以從您的知識庫提供解答。
@@ -53,7 +53,7 @@ ms.locfileid: "94376293"
     * 呼叫動作 (對 Power Automate 流程)。
 * 在 [Power Automate](https://us.flow.microsoft.com/) 入口網站中：
     * 搜尋「使用 QnA Maker 產生答案」範本
-    * 使用範本來設定流程，以使用 [QnA Maker 的 GenerateAnswer](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/) \(英文\)。
+    * 使用範本來設定流程，以使用 [QnA Maker 的 GenerateAnswer](/connectors/cognitiveservicesqnamaker/) \(英文\)。
         * QnA Maker 發佈的知識庫資訊：
             * 知識庫識別碼
             * QnA Maker 資源端點主機
@@ -79,7 +79,7 @@ ms.locfileid: "94376293"
 
 1. [登入 Power Virtual Agents](https://go.microsoft.com/fwlink/?LinkId=2108000&clcid=0x409)。 使用您的學校或公司電子郵件帳戶。
 
-1. 如果這是您的第一個 Bot，您應該位於代理程式的 **首頁** 。 如果這不是您的第一個 Bot，請從頁面右上方的區域選取 Bot，然後選取 [+ 新增 Bot]。
+1. 如果這是您的第一個 Bot，您應該位於代理程式的 **首頁**。 如果這不是您的第一個 Bot，請從頁面右上方的區域選取 Bot，然後選取 [+ 新增 Bot]。
 
     > [!div class="mx-imgBorder"]
     > ![Power Virtual Agents 首頁的螢幕擷取畫面](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-home.png)
@@ -154,7 +154,7 @@ ms.locfileid: "94376293"
 
     :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-qna-flow-template-continue.png" alt-text="QnA Maker 範本流程的部分螢幕擷取畫面，其中已醒目提示 [繼續] 按鈕。":::
 
-1. 選取 [產生答案] 動作方塊，然後填入來自先前標題為[建立和發佈知識庫](#create-and-publish-a-knowledge-base)之小節的 QnA Maker 設定。 下圖中的 **服務主機** 指的是您的知識庫主機 **Host** ，其格式為 `https://YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker`。
+1. 選取 [產生答案] 動作方塊，然後填入來自先前標題為[建立和發佈知識庫](#create-and-publish-a-knowledge-base)之小節的 QnA Maker 設定。 下圖中的 **服務主機** 指的是您的知識庫主機 **Host**，其格式為 `https://YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker`。
 
 
     :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fill-in-generate-answer-settings.png" alt-text="QnA Maker 範本流程的局部螢幕擷取畫面，其中已反白顯示 [產生答案 (預覽)]。":::
@@ -258,6 +258,6 @@ ms.locfileid: "94376293"
 [取得知識庫的分析](../How-To/get-analytics-knowledge-base.md)
 
 深入了解：
-* [Power Virtual Agents](https://docs.microsoft.com/power-virtual-agents/)
-* [Power Automate](https://docs.microsoft.com/power-automate/)
-* [QnA Maker 連接器](https://us.flow.microsoft.com/connectors/shared_cognitiveservicesqnamaker/qna-maker/)和[連接器設定](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/)
+* [Power Virtual Agents](/power-virtual-agents/)
+* [Power Automate](/power-automate/)
+* [QnA Maker 連接器](https://us.flow.microsoft.com/connectors/shared_cognitiveservicesqnamaker/qna-maker/)和[連接器設定](/connectors/cognitiveservicesqnamaker/)

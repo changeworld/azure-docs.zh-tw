@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: a1a0462b82629b16bd8ccbe269fb1a917357d542
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4deeec1b6c9db80c15b001efb7b40bdb4bb9d515
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883517"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452655"
 ---
 # <a name="azure-stack-edge-pro-system-requirements"></a>Azure Stack Edge Pro 系統需求
 
@@ -48,7 +48,7 @@ Azure Stack Edge Pro 的系統需求包括：
 
 ### <a name="port-requirements-for-azure-stack-edge-pro"></a>Azure Stack Edge Pro 的埠需求
 
-下表列出必須在您的防火牆中開啟的連接埠，以允許 SMB、雲端或管理流量。 在這個資料表中，in** 或 inbound** 指的是輸入用戶端要求存取裝置的方向。 *輸出* 或 *輸出* 是指您的 Azure Stack Edge Pro 裝置在外部傳送資料的方向，例如，輸出到網際網路。
+下表列出必須在您的防火牆中開啟的連接埠，以允許 SMB、雲端或管理流量。 在這個資料表中，in 或 inbound 指的是輸入用戶端要求存取裝置的方向。 *輸出* 或 *輸出* 是指您的 Azure Stack Edge Pro 裝置在外部傳送資料的方向，例如，輸出到網際網路。
 
 [!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 
@@ -62,7 +62,7 @@ Azure IoT Edge 允許使用支援的 IoT Hub 通訊協定，進行從內部部�
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| 外       | WAN        | 是      | 開啟來佈建 IoT Edge 的輸出。 使用手動指令碼或 Azure IoT 裝置佈建服務 (DPS) 時，就需要此設定。|
 
-如需完整資訊，請參閱[適用於 IoT Edge 部署的防火牆和連接埠設定規則](https://docs.microsoft.com/azure/iot-edge/troubleshoot)。
+如需完整資訊，請參閱[適用於 IoT Edge 部署的防火牆和連接埠設定規則](../iot-edge/troubleshoot.md)。
 
 ## <a name="url-patterns-for-firewall-rules"></a>防火牆規則的 URL 模式
 

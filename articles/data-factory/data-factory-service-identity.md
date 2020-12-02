@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 117b0db4f04c3fd631f6692d288945019507f5c6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 819f84eeb7540050fb001111690fb6d2ba484b2a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632799"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452310"
 ---
 # <a name="managed-identity-for-data-factory"></a>適用於 Data Factory 的受控身分識別
 
@@ -32,7 +32,7 @@ ms.locfileid: "92632799"
 Data Factory 的受控識別可享有下列功能：
 
 - [將認證儲存在 Azure Key Vault](store-credentials-in-key-vault.md)中，在此情況下會使用 data factory 受控識別來進行 Azure Key Vault 驗證。
-- 連接器包括 [Azure Blob 儲存體](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [Azure SQL Database](connector-azure-sql-database.md)和 [Azure Synapse Analytics (先前的 SQL 資料倉儲) ](connector-azure-sql-data-warehouse.md)。
+- 連接器包括 [Azure Blob 儲存體](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [Azure SQL Database](connector-azure-sql-database.md)和 [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md)。
 - [Web 活動](control-flow-web-activity.md)。
 
 ## <a name="generate-managed-identity"></a>產生受控識別
@@ -79,7 +79,7 @@ ProvisioningState : Succeeded
 PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2018-06-01
 ```
 
-**要求本文** ：新增 "identity": { "type": "SystemAssigned" }。
+**要求本文**：新增 "identity": { "type": "SystemAssigned" }。
 
 ```json
 {
@@ -92,7 +92,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-**回應** ：系統會自動建立受控識別，並據此填入「身分識別」區段。
+**回應**：系統會自動建立受控識別，並據此填入「身分識別」區段。
 
 ```json
 {
@@ -117,7 +117,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 
 ### <a name="generate-managed-identity-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本產生受控識別
 
-**Template** : add "identity": { "type": "SystemAssigned" }.
+**Template**: add "identity": { "type": "SystemAssigned" }.
 
 ```json
 {
@@ -201,7 +201,7 @@ Type                  : ServicePrincipal
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}?api-version=2018-06-01
 ```
 
-**回應** ：您將會收到如下列範例所示的回應。 [識別] 區段會據以填入。
+**回應**：您將會收到如下列範例所示的回應。 [識別] 區段會據以填入。
 
 ```json
 {

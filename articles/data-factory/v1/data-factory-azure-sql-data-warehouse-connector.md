@@ -1,6 +1,6 @@
 ---
-title: '將資料複製到 Azure Synapse Analytics (先前為 SQL 資料倉儲) '
-description: 瞭解如何使用 Azure Data Factory，將資料複製到 Azure Synapse Analytics (先前的 SQL 資料倉儲) 或從中複製資料
+title: 將資料複製到 Azure Synapse Analytics 或從中複製資料
+description: 瞭解如何使用 Azure Data Factory 將資料複製到 Azure Synapse Analytics 或從中複製資料
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 55582fb8c4fc80ab005a01ec015035963404e639
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 0d071599b72f6a71bdff815f514311fb87f53d5b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637406"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452364"
 ---
-# <a name="copy-data-to-and-from-azure-synapse-analytics-formerly-sql-data-warehouse-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製到 Azure Synapse Analytics (先前的 SQL 資料倉儲) ）
+# <a name="copy-data-to-and-from-azure-synapse-analytics-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製到 Azure Synapse Analytics 或從中複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [第 1 版](data-factory-azure-sql-data-warehouse-connector.md)
 > * [第 2 版 (目前的版本)](../connector-azure-sql-data-warehouse.md)
@@ -37,12 +37,12 @@ ms.locfileid: "92637406"
 
 [!INCLUDE [data-factory-supported-sinks](../../../includes/data-factory-supported-sinks.md)]
 
-您可以從下列資料存放區將資料複製 **到 Azure Synapse Analytics** ：
+您可以從下列資料存放區將資料複製 **到 Azure Synapse Analytics**：
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 > [!TIP]
-> 從 SQL Server 或 Azure SQL Database 複製資料到 Azure Synapse Analytics 時，如果資料表不存在於目的地存放區中，Data Factory 可以使用來源資料存放區中資料表的架構，在 Synapse Analytics 中自動建立資料表。 請參閱[自動建立資料表](#auto-table-creation)以取得詳細資料。
+> 從 SQL Server 或 Azure SQL Database 複製資料到 Azure Synapse Analytics 時，如果資料表不存在於目的地存放區中，Data Factory 可以使用來源資料存放區中資料表的架構，在 Azure Synapse Analytics 中自動建立資料表。 請參閱[自動建立資料表](#auto-table-creation)以取得詳細資料。
 
 ## <a name="supported-authentication-type"></a>支援的驗證類型
 Azure Synapse Analytics 連接器支援基本驗證。
@@ -50,14 +50,14 @@ Azure Synapse Analytics 連接器支援基本驗證。
 ## <a name="getting-started"></a>開始使用
 您可以使用不同的工具/Api，建立具有複製活動的管線，以將資料移進/移出 Azure Synapse Analytics。
 
-若要建立將資料複製到 Azure Synapse Analytics 或從中複製資料的管線，最簡單的方式是使用「複製資料嚮導」。 請參閱 [教學課程：使用 Data Factory 將資料載入 Synapse 分析](../load-azure-sql-data-warehouse.md) ，以取得使用複製資料嚮導建立管線的快速逐步解說。
+若要建立將資料複製到 Azure Synapse Analytics 或從中複製資料的管線，最簡單的方式是使用「複製資料嚮導」。 請參閱 [教學課程：將資料載入 Azure Synapse Analytics 與 Data Factory](../load-azure-sql-data-warehouse.md) ，以取得使用複製資料嚮導建立管線的快速逐步解說。
 
-您也可以使用下列工具來建立管線： **Visual Studio** 、 **Azure PowerShell** 、 **Azure Resource Manager 範本** 、 **.net API** 和 **REST API** 。 請參閱「 [複製活動」教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 課程，以取得使用複製活動建立管線的逐步指示。
+您也可以使用下列工具來建立管線： **Visual Studio**、 **Azure PowerShell**、 **Azure Resource Manager 範本**、 **.net API** 和 **REST API**。 請參閱「 [複製活動」教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 課程，以取得使用複製活動建立管線的逐步指示。
 
 不論您是使用工具還是 API，都需執行下列步驟來建立將資料從來源資料存放區移到接收資料存放區的管線：
 
 1. 建立 **資料** 處理站。 資料處理站可包含一或多個管線。 
-2. 建立 **連結服務** ，將輸入和輸出資料存放區連結到資料處理站。 例如，如果您要將資料從 Azure blob 儲存體複製到 Azure Synapse Analytics，您會建立兩個連結服務，以將您的 Azure 儲存體帳戶和 Azure Synapse Analytics 連結至您的 data factory。 針對 Azure Synapse Analytics 特定的連結服務屬性，請參閱 [連結的服務屬性](#linked-service-properties) 一節。 
+2. 建立 **連結服務**，將輸入和輸出資料存放區連結到資料處理站。 例如，如果您要將資料從 Azure blob 儲存體複製到 Azure Synapse Analytics，您會建立兩個連結服務，以將您的 Azure 儲存體帳戶和 Azure Synapse Analytics 連結至您的 data factory。 針對 Azure Synapse Analytics 特定的連結服務屬性，請參閱 [連結的服務屬性](#linked-service-properties) 一節。 
 3. 建立 **資料集** 以代表複製作業的輸入和輸出資料。 在上一個步驟所述的範例中，您會建立資料集來指定 blob 容器和包含輸入資料的資料夾。 此外，您會建立另一個資料集來指定 Azure Synapse Analytics 中的資料表，以保存從 blob 儲存體複製的資料。 針對 Azure Synapse Analytics 特定的資料集屬性，請參閱 [資料集屬性](#dataset-properties) 區段。
 4. 建立具有複製活動的 **管線** ，該活動會採用資料集做為輸入，並使用資料集做為輸出。 在稍早所述的範例中，您會使用 BlobSource 作為來源，以及使用 SqlDWSink 作為複製活動的接收器。 同樣地，如果您要從 Azure Synapse Analytics 複製到 Azure Blob 儲存體，您可以在複製活動中使用 SqlDWSource 和 BlobSink。 如需 Azure Synapse Analytics 特定的複製活動屬性，請參閱 [複製活動屬性](#copy-activity-properties) 一節。 如需有關如何使用資料存放區作為來源或接收器的詳細資訊，按一下上一節中資料存放區的連結。
 
@@ -71,7 +71,7 @@ Azure Synapse Analytics 連接器支援基本驗證。
 | 屬性 | 描述 | 必要 |
 | --- | --- | --- |
 | type |Type 屬性必須設定為： **>azuresqldw** |是 |
-| connectionString |指定連接到 connectionString 屬性 Azure Synapse Analytics 實例所需的資訊。 僅支援基本驗證。 |Yes |
+| connectionString |指定連接到 connectionString 屬性 Azure Synapse Analytics 實例所需的資訊。 僅支援基本驗證。 |是 |
 
 > [!IMPORTANT]
 > 設定 [Azure SQL Database 防火牆](/previous-versions/azure/ee621782(v=azure.100)#ConnectingFromAzure)和資料庫伺服器，以[允許 Azure 服務存取伺服器](/previous-versions/azure/ee621782(v=azure.100)#ConnectingFromAzure)。 此外，如果您要將資料從 Azure 外部（包括從使用 data factory 閘道的內部部署資料來源）複製到 Azure Synapse Analytics，請為傳送資料至 Azure Synapse Analytics 的電腦設定適當的 IP 位址範圍。
@@ -83,7 +83,7 @@ Azure Synapse Analytics 連接器支援基本驗證。
 
 | 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| tableName |連結服務所參考之 Azure Synapse Analytics 資料庫中的資料表或視圖名稱。 |Yes |
+| tableName |連結服務所參考之 Azure Synapse Analytics 資料庫中的資料表或視圖名稱。 |是 |
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 如需定義活動的區段和屬性完整清單，請參閱[建立管線](data-factory-create-pipelines.md)一文。 屬性 (例如名稱、描述、輸入和輸出資料表，以及原則) 適用於所有類型的活動。
@@ -94,7 +94,7 @@ Azure Synapse Analytics 連接器支援基本驗證。
 而活動的 typeProperties 區段中可用的屬性會隨著每個活動類型而有所不同。 就「複製活動」而言，這些屬性會根據來源和接收器的類型而有所不同。
 
 ### <a name="sqldwsource"></a>SqlDWSource
-如果來源類型為 **SqlDWSource** ，則 **typeProperties** 區段可使用下列屬性：
+如果來源類型為 **SqlDWSource**，則 **typeProperties** 區段可使用下列屬性：
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
@@ -144,15 +144,15 @@ GO
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| sqlWriterCleanupScript |指定要讓「複製活動」執行的查詢，以便清除特定分割的資料。 如需詳細資訊，請參閱 [可重複性](#repeatability-during-copy)一節。 |查詢陳述式。 |No |
+| sqlWriterCleanupScript |指定要讓「複製活動」執行的查詢，以便清除特定分割的資料。 如需詳細資訊，請參閱 [可重複性](#repeatability-during-copy)一節。 |查詢陳述式。 |否 |
 | allowPolyBase |指出是否使用 PolyBase (適用的話) 而不是使用 BULKINSERT 機制。 <br/><br/> **使用 PolyBase 是將資料載入 Azure Synapse Analytics 的建議方式。** 如需條件約束和詳細資料，請參閱 [使用 PolyBase 將資料載入 Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) 一節。 |True <br/>FALSE (預設值) |否 |
-| polyBaseSettings |可以在 **allowPolybase** 屬性設定為 **true** 時指定的一組屬性。 |&nbsp; |No |
+| polyBaseSettings |可以在 **allowPolybase** 屬性設定為 **true** 時指定的一組屬性。 |&nbsp; |否 |
 | rejectValue |指定在查詢失敗前可以拒絕的資料列數目或百分比。 <br/><br/>在 [CREATE EXTERNAL TABLE (transact-sql)](/sql/t-sql/statements/create-external-table-transact-sql)主題的 **引數** 區段中，深入瞭解 PolyBase 的拒絕選項。 |0 (預設值)、1、2、… |否 |
 | rejectType |指定要將 rejectValue 選項指定為常值或百分比。 |值 (預設值)、百分比 |否 |
 | rejectSampleValue |決定在 PolyBase 重新計算已拒絕的資料列百分比之前，所要擷取的資料列數目。 |1、2、… |是，如果 **rejectType** 是 **percentage** |
 | useTypeDefault |指定當 PolyBase 從文字檔擷取資料時，如何處理分隔符號文字檔中遺漏的值。<br/><br/>從 [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql) 的＜引數＞一節深入了解這個屬性。 |True/False (預設值為 False) |否 |
 | writeBatchSize |當緩衝區大小達到 writeBatchSize 時，將資料插入 SQL 資料表中 |整數 (資料列數目) |否 (預設值：10000) |
-| writeBatchTimeout |在逾時前等待批次插入作業完成的時間。 |時間範圍<br/><br/> 範例：「00:30:00」(30 分鐘)。 |No |
+| writeBatchTimeout |在逾時前等待批次插入作業完成的時間。 |時間範圍<br/><br/> 範例：「00:30:00」(30 分鐘)。 |否 |
 
 #### <a name="sqldwsink-example"></a>SqlDWSink 範例
 
@@ -193,14 +193,14 @@ Azure Synapse Analytics PolyBase 直接支援 Azure Blob 和 Azure Data Lake 存
 
 如果不符合需求，Azure Data Factory 會檢查設定，並自動切換回適用於資料移動的 BULKINSERT 機制。
 
-1. **來源連結服務** 的類型為： **AzureStorage** 或 **具有服務主體驗證的 >azuredatalakestore** 。
-2. 「輸入資料集」的類型為： **AzureBlob** 或 **AzureDataLakeStore** ，而 `type` 屬性底下的格式類型為 **OrcFormat** 、 **ParquetFormat** 或具備下列設定的 **TextFormat** ：
+1. **來源連結服務** 的類型為： **AzureStorage** 或 **具有服務主體驗證的 >azuredatalakestore**。
+2. 「輸入資料集」的類型為：**AzureBlob** 或 **AzureDataLakeStore**，而 `type` 屬性底下的格式類型為 **OrcFormat**、**ParquetFormat** 或具備下列設定的 **TextFormat**：
 
-   1. `rowDelimiter` 必須為 **\n** 。
-   2. `nullValue` 設定為「空字串」 ("") 或將 `treatEmptyAsNull` 設定為 **true** 。
-   3. `encodingName` 設定為 **utf-8** ，也就是「預設」值。
+   1. `rowDelimiter` 必須為 **\n**。
+   2. `nullValue` 設定為「空字串」 ("") 或將 `treatEmptyAsNull` 設定為 **true**。
+   3. `encodingName` 設定為 **utf-8**，也就是「預設」值。
    4. 未指定 `escapeChar`、`quoteChar`、`firstRowAsHeader` 和 `skipLineCount`。
-   5. `compression` 可以是「無壓縮」、 **GZip** 或 **Deflate** 。
+   5. `compression` 可以是「無壓縮」、**GZip** 或 **Deflate**。
 
       ```JSON
       "typeProperties": {
@@ -263,7 +263,7 @@ Azure Synapse Analytics PolyBase 直接支援 Azure Blob 和 Azure Data Lake 存
 若要使用 PolyBase，您必須使用使用者將資料載入 Azure Synapse Analytics 具有目標資料庫的「 [控制」許可權](/sql/relational-databases/security/permissions-database-engine) 。 達到此目標的其中一個方法是將該使用者新增為 "db_owner" 角色的成員。 依照[本節](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)了解如何進行這項動作。
 
 ### <a name="row-size-and-data-type-limitation"></a>資料列大小和資料類型限制
-PolyBase 載入被限制為只能載入小於 **1 MB** ，且不能載入至 VARCHR(MAX)、NVARCHAR(MAX) 或 VARBINARY(MAX) 的資料列。 請參閱[這裡](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads)。
+PolyBase 載入被限制為只能載入小於 **1 MB**，且不能載入至 VARCHR(MAX)、NVARCHAR(MAX) 或 VARBINARY(MAX) 的資料列。 請參閱[這裡](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads)。
 
 如果您的來源資料包含大於 1 MB 的資料列，建議您將來源資料表垂直分割成數個小型資料表，而每個資料表的最大資料列大小均不超過限制。 然後可以使用 PolyBase 載入較小的資料表，並在 Azure Synapse Analytics 中合併在一起。
 
@@ -314,10 +314,10 @@ Data Factory 會以和來源資料存放區中的資料表相同的名稱，在�
 | SmallMoney | SmallMoney |
 | Binary | Binary |
 | Varbinary | Varbinary (最多 8000) |
-| Date | Date |
+| 日期 | Date |
 | Datetime | Datetime |
 | DateTime2 | DateTime2 |
-| 時間 | 時間 |
+| Time | Time |
 | DateTimeOffset | DateTimeOffset |
 | SmallDateTime | SmallDateTime |
 | Text | Varchar (最多 8000) |
@@ -375,7 +375,7 @@ Data Factory 會以和來源資料存放區中的資料表相同的名稱，在�
 | UNIQUEIDENTIFIER |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
-| xml |Xml |
+| Xml |Xml |
 
 您也可以在複製活動定義中，將來自來源資料集的資料行與來自接收資料集的資料行對應。 如需詳細資料，請參閱[在 Azure Data Factory 中對應資料集資料行](data-factory-map-columns.md)。
 
@@ -511,7 +511,7 @@ Data Factory 會以和來源資料存放區中的資料表相同的名稱，在�
 
 **管線中使用 SqlDWSource 和 BlobSink 的複製活動：**
 
-此管線包含複製活動，該活動已設定為使用輸入和輸出資料集並排定為每小時執行。 在管線 JSON 定義中， **source** 類型設為 **SqlDWSource** ，而 **sink** 類型設為 **BlobSink** 。 針對 **SqlReaderQuery** 屬性指定的 SQL 查詢會選取過去一小時內要複製的資料。
+此管線包含複製活動，該活動已設定為使用輸入和輸出資料集並排定為每小時執行。 在管線 JSON 定義中，**source** 類型設為 **SqlDWSource**，而 **sink** 類型設為 **BlobSink**。 針對 **SqlReaderQuery** 屬性指定的 SQL 查詢會選取過去一小時內要複製的資料。
 
 ```JSON
 {
@@ -695,7 +695,7 @@ Data Factory 會以和來源資料存放區中的資料表相同的名稱，在�
 ```
 **具有 BlobSource 和 SqlDWSink 的管線中複製活動：**
 
-此管線包含複製活動，該活動已設定為使用輸入和輸出資料集並排定為每小時執行。 在管線 JSON 定義中， **source** 類型設為 **BlobSource** ，而 **sink** 類型設為 **SqlDWSink** 。
+此管線包含複製活動，該活動已設定為使用輸入和輸出資料集並排定為每小時執行。 在管線 JSON 定義中，**source** 類型設為 **BlobSource**，而 **sink** 類型設為 **SqlDWSink**。
 
 ```JSON
 {

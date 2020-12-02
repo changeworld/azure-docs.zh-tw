@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: e96fa932185a6689c360fe86d519a45581059118
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e988b88f222750bc7de505a24eb44877eea4d966
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912632"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452450"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>支援 Azure Data Lake Storage Gen2 的 Azure 服務
 
@@ -39,7 +39,7 @@ ms.locfileid: "95912632"
 |HDInsight |正式推出|是|是|[搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[使用 HDFS CLI 搭配 Data Lake Storage Gen2](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[教學課程：在 Azure HDInsight 上使用 Apache Hive 來解壓縮、轉換和載入資料](data-lake-storage-tutorial-extract-transform-load-hive.md)|
 |IoT 中樞 |正式推出|否|是|[使用 IoT 中樞訊息路由將裝置到雲端訊息傳送至不同的端點](../../iot-hub/iot-hub-devguide-messages-d2c.md)|
 |Power BI|正式推出|是|是|[使用 Power BI 分析 Data Lake Storage Gen2 中的資料](/power-query/connectors/datalakestorage)|
-|Azure Synapse Analytics (先前稱為 SQL 資料倉儲)|正式推出|是|是|[搭配先前的 SQL 資料倉儲使用 Azure Synapse Analytics () ](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure Synapse Analytics (先前稱為 SQL 資料倉儲)|正式推出|是|是|[搭配 Azure Synapse Analytics 使用](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |SQL Server Integration Services (SSIS)|正式推出|是|是|[Azure 儲存體連線管理員](/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-2017)|
 |Azure 資料總管|正式推出|是|是|[使用 Azure 資料總管在 Azure Data Lake 中查詢資料](/azure/data-explorer/data-lake-query-data)|
 |Azue 認知搜尋|預覽|是|是|[Azure Data Lake Storage Gen2 檔的索引和搜尋 (預覽) ](../../search/search-howto-index-azure-data-lake-storage.md)|

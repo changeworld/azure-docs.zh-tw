@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f8eab59d810fb825dbebf80d01d8efd2dd0a9841
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46e911ad6bdf5a478d46e425f8700740ece56c6e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76720532"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452661"
 ---
 # <a name="load-data-into-storage-environments-for-analytics"></a>將資料載入至儲存體環境以便進行分析
 
-小組資料科學程式要求資料必須在每個階段中以最適當的方式內嵌或載入。 資料目的地可以包含 Azure Blob 儲存體、SQL Azure 資料庫、Azure VM 上的 SQL Server、HDInsight (Hadoop) 、Synapse 分析和 Azure Machine Learning。 
+小組資料科學程式要求資料必須在每個階段中以最適當的方式內嵌或載入。 資料目的地可以包含 Azure Blob 儲存體、SQL Azure 資料庫、Azure VM 上的 SQL Server、HDInsight (Hadoop) 、Azure Synapse Analytics 和 Azure Machine Learning。 
 
 下列文章說明如何將資料內嵌至可儲存和處理資料的各種目標環境中。
 

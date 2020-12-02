@@ -1,21 +1,21 @@
 ---
 title: Connected Machine Windows 代理程式概觀
 description: 本文提供 Azure Arc 啟用的伺服器代理程式的詳細總覽，可支援監視混合式環境中裝載的虛擬機器。
-ms.date: 09/30/2020
+ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8a66f99f535013b8aac52fdee43b91a8c734b10a
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 1bc9546e6db35153424ba670f8157adb86d19b71
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577578"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452948"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 已啟用伺服器代理程式的總覽
 
 啟用 Azure Arc 的伺服器連線的機器代理程式，可讓您在公司網路或其他雲端提供者上，管理裝載于 Azure 外部的 Windows 和 Linux 機器。 本文將詳細說明代理程式的概觀、系統和網路需求以及不同的部署方法。
 
 >[!NOTE]
->從2020年9月開始 Azure Arc 已啟用伺服器的正式發行版本起，Azure Connected Machine 代理程式 (的所有發行前版本，將于) 1.0 **年2月 2 2021 日****淘汰** 。  此時間範圍可讓您升級至1.0 版或更高版本，然後預先發行的代理程式無法再與已啟用 Azure Arc 的伺服器服務進行通訊。
+>從2020年9月開始 Azure Arc 已啟用伺服器的正式發行版本起，Azure Connected Machine 代理程式 (的所有發行前版本，將于) 1.0 **年2月 2 2021 日****淘汰**。  此時間範圍可讓您升級至1.0 版或更高版本，然後預先發行的代理程式無法再與已啟用 Azure Arc 的伺服器服務進行通訊。
 
 ## <a name="agent-component-details"></a>代理程式元件詳細資料
 
@@ -31,7 +31,7 @@ Azure Connected Machine 代理程式套件包含數個邏輯元件，這些元�
     * 來賓指派會儲存在本機14天。 在14天的期間內，如果連接的機器代理程式重新連接到服務，則會重新套用原則指派。
     * 指派會在14天后刪除，在14天的期間內不會重新指派給電腦。
 
-* 擴充代理程式會管理 VM 擴充功能，包括安裝、卸載和升級。 系統會從 Azure 下載擴充功能，並將其複製到 `%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads` Windows 上的資料夾，以及從 Linux 複製到 `/opt/GC_Ext/downloads` 。 在 Windows 上，延伸模組會安裝到下列路徑 `%SystemDrive%\Packages\Plugins\<extension>` ，而在 Linux 上則是安裝擴充功能 `/var/lib/waagent/<extension>` 。
+* 擴充代理程式會管理 VM 擴充功能，包括安裝、卸載和升級。 系統會從 Azure 下載擴充功能，並將其複製到 `%SystemDrive%\%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads` Windows 上的資料夾，以及從 Linux 複製到 `/opt/GC_Ext/downloads` 。 在 Windows 上，延伸模組會安裝到下列路徑 `%SystemDrive%\Packages\Plugins\<extension>` ，而在 Linux 上則是安裝擴充功能 `/var/lib/waagent/<extension>` 。
 
 ## <a name="download-agents"></a>下載代理程式
 
@@ -170,9 +170,9 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     |%ProgramData%\AzureConnectedMachineAgent |包含代理程式組態檔。|
     |%ProgramData%\AzureConnectedMachineAgent\Tokens |包含取得的權杖。|
     |%ProgramData%\AzureConnectedMachineAgent\Config |包含代理程式組態檔 `agentconfig.json` 將其註冊資訊記錄到服務中。|
-    |%SystemDrive%\Program Files\ArcConnectedMachineAgent\ExtensionService\GC | 包含來賓設定代理程式檔案的安裝路徑。 |
+    |%ProgramFiles%\ArcConnectedMachineAgent\ExtensionService\GC | 包含來賓設定代理程式檔案的安裝路徑。 |
     |%ProgramData%\GuestConfig |包含從 Azure 套用) 原則的 (。|
-    |%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads | 延伸模組會從 Azure 下載並複製到此處。|
+    |%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads | 延伸模組會從 Azure 下載並複製到此處。|
 
 * 在安裝代理程式期間，會在目標電腦上建立下列 Windows 服務。
 
@@ -196,14 +196,14 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |使用 verbose (-v) 引數時，包含 azcmagent 工具命令的輸出。|
     |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent.log |記錄 DSC 服務活動的詳細資料，<br> 尤其是 HIMDS 服務與 Azure 原則之間的連線能力。|
     |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent_telemetry.txt |記錄有關 DSC 服務遙測和詳細資訊記錄的詳細資料。|
-    |%SystemDrive%\ProgramData\GuestConfig\ ext_mgr_logs|記錄有關延伸模組代理程式元件的詳細資料。|
-    |%SystemDrive%\ProgramData\GuestConfig\ extension_logs\<Extension>|記錄已安裝之延伸模組的詳細資料。|
+    |%ProgramData%\GuestConfig\ ext_mgr_logs|記錄有關延伸模組代理程式元件的詳細資料。|
+    |%ProgramData%\GuestConfig\ extension_logs\<Extension>|記錄已安裝之延伸模組的詳細資料。|
 
 * 會建立 **混合式代理程式延伸模組應用程式** 的本機安全性群組。
 
 * 解除安裝代理程式期間，不會移除下列成品。
 
-    * * 位於%programdata%\azureconnectedmachineagent\log
+    * 位於%programdata%\azureconnectedmachineagent\log
     * %ProgramData%\AzureConnectedMachineAgent 和子目錄
     * %ProgramData%\GuestConfig
 

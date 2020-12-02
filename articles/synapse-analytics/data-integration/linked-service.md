@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: feabfe505601276269c2774e3b39dd5cbaa32087
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fb3c7dd7b3d7e8e42e230eedcd0d1b43af104327
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022916"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452523"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>使用私用連結保護連結的服務
 
 在本文中，您將瞭解如何使用私人端點來保護 Synapse 中的連結服務。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * **Azure 訂** 用帳戶：如果您沒有 azure 訂用帳戶，請在開始前建立 [免費的 azure 帳戶](https://azure.microsoft.com/free/) 。
 * **Azure 儲存體帳戶**：您使用 Azure Data Lake Gen 2 做為 *源* 資料存放區。 如果您沒有儲存體帳戶，請參閱 [建立 Azure 儲存體帳戶](../../storage/blobs/data-lake-storage-quickstart-create-account.md) 以取得建立帳戶的步驟。 請確定儲存體帳戶具有 Synapse Studio IP 篩選可供存取，而且您只允許 **選取的網路** 存取儲存體帳戶。 分頁 **防火牆和虛擬網路** 下的設定看起來應該如下圖所示。
@@ -69,7 +69,7 @@ ms.locfileid: "96022916"
 ## <a name="next-steps"></a>後續步驟
 
 
-若要進一步瞭解 Synapse Analytics 中的受控私人端點，請參閱 [受控私人端點](../security/synapse-workspace-managed-private-endpoints.md)。
+若要進一步瞭解 Azure Synapse Analytics 中的 Managed 私用端點，請參閱 [受控私人端點](../security/synapse-workspace-managed-private-endpoints.md)。
 
 
-如需 Synapse 分析資料整合的詳細資訊，請參閱 [擷取資料為 Data Lake](data-integration-data-lake.md) 文章。
+如需有關 Azure Synapse Analytics 資料整合的詳細資訊，請參閱 [擷取資料到 Data Lake](data-integration-data-lake.md) 文章。

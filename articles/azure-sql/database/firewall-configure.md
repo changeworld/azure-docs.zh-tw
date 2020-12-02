@@ -12,17 +12,17 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: 72af066cbff809521c34bb8db88ab0b3e5092fc4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ce528e268e0ed1e34f53e32196bceef5ad8a2fcb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841099"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452491"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database 和 Azure Synapse IP 防火牆規則
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-例如，當您在 Azure SQL Database 中建立新的伺服器，或在名為 *mysqlserver* 的 Azure Synapse Analytics 中，伺服器層級防火牆會封鎖可在 *mysqlserver.database.windows.net*) 存取之伺服器 (的公用端點的所有存取權。 為了簡單起見， *SQL Database* 是用來參考先前在 SQL 資料倉儲)  (SQL Database 和 Azure Synapse Analytics。
+例如，當您在 Azure SQL Database 中建立新的伺服器，或在名為 *mysqlserver* 的 Azure Synapse Analytics 中，伺服器層級防火牆會封鎖可在 *mysqlserver.database.windows.net*) 存取之伺服器 (的公用端點的所有存取權。 為了簡單起見， *SQL Database* 是用來參考 SQL Database 和 Azure Synapse Analytics。
 
 > [!IMPORTANT]
 > 本文「不」適用於 *Azure SQL Database 受控執行個體*。 如需網路設定的相關資訊，請參閱 [將您的應用程式連線至 AZURE SQL 受控執行個體](../managed-instance/connect-application-instance.md)。

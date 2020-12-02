@@ -1,15 +1,15 @@
 ---
-author: shreyasharma
+author: msftradford
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.date: 10/23/2019
-ms.author: shreshar
-ms.openlocfilehash: 68dda321f0088a28f7f3ad1a80a02473fe0e7379
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: d73b3e0938d278e53648a6af7151cecb4ae67c70
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971282"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185283"
 ---
 透過 [建立及共用錨點]，您可以建立錨點，並將其儲存至您的共用服務。 而您則會得到錨點的識別碼，可用來從共用服務擷取錨點。 然後，您可以執行第二個案例，從您的裝置或不同的位置，選取 [尋找共用的錨點]。 
 

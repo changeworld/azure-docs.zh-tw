@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Synapse Analytics 中開發專用 SQL 集區的資源
-description: Azure Synapse Analytics 中專用 SQL 集區的開發概念、設計決策、建議和程式碼撰寫技巧。
+title: 用於開發專用 SQL 集區的資源 (先前的 SQL DW) Azure Synapse Analytics
+description: 專用 SQL 集區的開發概念、設計決策、建議和程式碼撰寫技術 (先前的 SQL DW) Azure Synapse Analytics。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,22 +10,22 @@ ms.subservice: sql-dw
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f158655cd7aeba647480325966c7f0cfcf65b13c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6b34c70b453c26fe27a51e1aa802564864640cb9
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322148"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453676"
 ---
-# <a name="design-decisions-and-coding-techniques-for-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的設計決策和程式碼撰寫技術 
+# <a name="design-decisions-and-coding-techniques-for-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>專用 SQL 集區的設計決策和程式碼撰寫技術 (先前的 SQL DW) Azure Synapse Analytics 
 
- 在本文中，您將找到其他資源，以協助您更瞭解 Azure Synapse 中專用 SQL 集區的重要設計決策、建議和程式碼撰寫技術。
+ 在本文中，您將找到其他資源，以協助您進一步瞭解專用 SQL 集區的重要設計決策、建議和程式碼撰寫技術， (先前在 Azure Synapse 中的 SQL DW) 。
 
 ## <a name="key-design-decisions"></a>主要的設計決策
 
-下列文章強調說明如何使用 Azure Synapse 中的專用 SQL 集區功能來開發分散式資料倉儲的概念和設計決策：
+下列文章強調說明使用專用的 SQL 集區開發分散式資料倉儲的概念和設計決策， (先前在 Azure Synapse 中的 SQL DW) 功能：
 
-* [連接](../sql/connect-overview.md)
+* [連接](sql-data-warehouse-connect-overview.md)
 * [concurrency](resource-classes-for-workload-management.md)
 * [交易](sql-data-warehouse-develop-transactions.md)
 * [使用者定義架構](sql-data-warehouse-develop-user-defined-schemas.md)
@@ -37,7 +37,7 @@ ms.locfileid: "93322148"
 
 ## <a name="development-recommendations-and-coding-techniques"></a>開發建議和程式碼撰寫技術
 
-下列文章提供開發專用 SQL 集區的特定程式碼撰寫技術、秘訣和建議：
+下列文章提供開發專用 SQL 集區的特定程式碼撰寫技術、秘訣和建議， (先前為 SQL DW) ：
 
 * [預存程式](sql-data-warehouse-develop-stored-procedures.md)
 * [標籤](sql-data-warehouse-develop-label.md)

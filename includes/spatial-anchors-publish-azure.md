@@ -1,15 +1,15 @@
 ---
-author: ramonarguelles
+author: msftradford
 ms.service: spatial-anchors
 ms.topic: include
-ms.date: 1/30/2019
-ms.author: rgarcia
-ms.openlocfilehash: 0e6f68daf22659b880827ad027268d9757c60063
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: 80685dee7907b81832c94044d1feb8fcf2e41bde
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971280"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185278"
 ---
 ### <a name="open-the-publish-wizard"></a>開啟發佈精靈
 
@@ -33,7 +33,7 @@ ms.locfileid: "91971280"
 
 [!INCLUDE [resource group intro text](resource-group.md)]
 
-選取 [資源群組]**** 旁邊的 [新增]****。
+選取 [資源群組] 旁邊的 [新增]。
 
 將資源群組命名為 **myResourceGroup**，然後選取 [確定]。
 
@@ -41,7 +41,7 @@ ms.locfileid: "91971280"
 
 [!INCLUDE [app-service-plan](app-service-plan.md)]
 
-選取 [主控方案]**** 旁的 [新增]****。
+選取 [主控方案]旁的 [新增]。
 
 在 [設定主控方案] 窗格中，使用以下設定：
 

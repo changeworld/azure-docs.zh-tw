@@ -1,19 +1,19 @@
 ---
 title: 教學課程：跨工作階段和裝置共用錨點
 description: 在本教學課程中，您將了解如何在 Unity 中透過後端服務於 Adroid/iOS 裝置之間共用 Azure Spatial Anchors 識別碼。
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 07/31/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b29873e161b64c52abbfdf3f2611714f6b012361
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 3048eb1ca7f9312a43bc1ab5885bf19d4c2e7931
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097281"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185284"
 ---
 # <a name="tutorial-share-spatial-anchors-across-sessions-and-devices"></a>教學課程：跨工作階段和裝置共用空間錨點
 
@@ -64,7 +64,7 @@ Azure Spatial Anchors 是一款跨平台開發人員服務，可讓您使用在�
 
 [!INCLUDE [resource group intro text](../../../includes/resource-group.md)]
 
-選取 [資源群組]**** 旁邊的 [新增]****。
+選取 [資源群組] 旁邊的 [新增]。
 
 將資源群組命名為 **myResourceGroup**，然後選取 [確定]。
 
@@ -72,7 +72,7 @@ Azure Spatial Anchors 是一款跨平台開發人員服務，可讓您使用在�
 
 [!INCLUDE [app-service-plan](../../../includes/app-service-plan.md)]
 
-選取 [主控方案]**** 旁的 [新增]****。
+選取 [主控方案]旁的 [新增]。
 
 在 [設定主控方案] 窗格中，使用以下設定：
 

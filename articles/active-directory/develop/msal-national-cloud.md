@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/22/2019
 ms.author: negoe
-ms.reviewer: nacanuma
+ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 566c429fc70ae3f0fc18f024b745d8142535932c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2f631ad650b20110084ff902043447f26c2d4ab3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348402"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453591"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>在國家雲端環境中使用 MSAL
 
@@ -150,9 +150,9 @@ const myMSALObj = new UserAgentApplication(msalConfig);
     "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
     ```
 
-- 若要呼叫 Microsoft graph，需要特定的圖表端點 URL，此 URL 取決於您所使用的雲端。 若要尋找所有國家雲端 Microsoft Graph 端點，請參閱 [Microsoft Graph 和 Graph Explorer 服務根端點](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)。
+- 呼叫 Microsoft Graph API 需要您所使用之雲端專用的端點 URL。 若要尋找所有國家雲端 Microsoft Graph 端點，請參閱 [Microsoft Graph 和 Graph Explorer 服務根端點](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)。
 
-    以下是具有範圍的圖形端點範例：
+    以下是 Microsoft Graph 端點的範例，其範圍如下：
 
     ```json
     "endpoint" : "https://graph.microsoft.us/v1.0/me"
@@ -173,7 +173,7 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
 ```
 
-- 若要呼叫 Microsoft graph，需要特定的圖表端點 URL，此 URL 取決於您所使用的雲端。 若要尋找所有國家雲端 Microsoft Graph 端點，請參閱 [Microsoft Graph 和 Graph Explorer 服務根端點](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)。
+- 呼叫 Microsoft Graph API 需要您所使用之雲端專用的端點 URL。 若要尋找所有國家雲端 Microsoft Graph 端點，請參閱 [Microsoft Graph 和 Graph Explorer 服務根端點](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)。
 
 以下是具有範圍的圖形端點範例：
 
@@ -222,9 +222,10 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 
 ## <a name="next-steps"></a>後續步驟
 
-深入了解：
+請參閱 [國家雲端驗證端點](authentication-national-cloud.md) ，以取得每個雲端的 Azure 入口網站 url 和權杖端點清單。
 
-- [國家雲端中的驗證](authentication-national-cloud.md)
+國家/地區雲端檔：
+
 - [Azure Government](../../azure-government/index.yml)
 - [Azure China 21Vianet](/azure/china/)
 - [Azure Germany](../../germany/index.yml)

@@ -1,6 +1,6 @@
 ---
-title: 改善資料行存放區索引效能
-description: 減少記憶體需求或增加可用記憶體，以將每個資料列群組內的資料列數目最大化。
+title: 改善專用 SQL 集區的資料行存放區索引效能
+description: 減少記憶體需求或增加可用記憶體，以最大化專用 SQL 集區中每個資料列群組內的資料列數目。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 5308599f43788b35dbe278ddbbea2253c2f94cb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6984ad41c07f7790a746dbd197c18dce2aa83e2f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797763"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453725"
 ---
-# <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化資料行存放區的資料列群組品質
+# <a name="maximizing-rowgroup-quality-for-columnstore-indexes-in-dedicated-sql-pool"></a>最大化專用 SQL 集區中資料行存放區索引的資料列群組品質 
 
 資料列群組品質取決於資料列群組中的資料列數目。 增加可用的記憶體可將資料行存放區索引壓縮成每個資料列群組的資料列數目最大化。  使用這些方法來改善壓縮率和查詢資料行存放區索引的效能。
 
@@ -97,9 +97,9 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 > [!NOTE]
 > 字串資料行使用 <= 32 位元組和長字串資料行的字串資料類型，會使用 > 32 位元組的字串資料類型。
 
-會使用專為壓縮文字的壓縮方法來壓縮長字串。 這個壓縮方法會使用字典** 來儲存文字模式。 字典的大小上限為 16 MB。 資料列群組中的每一個長字串資料行只有一個字典。
+會使用專為壓縮文字的壓縮方法來壓縮長字串。 這個壓縮方法會使用字典來儲存文字模式。 字典的大小上限為 16 MB。 資料列群組中的每一個長字串資料行只有一個字典。
 
-如需資料行存放區記憶體需求的深入討論，請參閱影片 [SYNAPSE SQL 集區調整：設定和指引](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)。
+如需資料行存放區記憶體需求的深入討論，請參閱影片 [專用的 SQL 集區調整：設定和指引](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)。
 
 ## <a name="ways-to-reduce-memory-requirements"></a>減少記憶體需求的方式
 
@@ -122,7 +122,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 ### <a name="avoid-over-partitioning"></a>避免過度分割
 
-資料行存放區索引針對每個資料分割會建立一個或多個資料列群組。 針對 Azure Synapse Analytics 中的 SQL 集區，資料分割數目會快速增加，因為資料已散發，而且每個散發都已分割。
+資料行存放區索引針對每個資料分割會建立一個或多個資料列群組。 針對 Azure Synapse Analytics 中的專用 SQL 集區，資料分割數目會快速成長，因為資料已散發，而且每個散發都已分割。
 
 如果資料表有太多資料分割，則可能沒有足夠的資料列可填滿資料列群組。 缺少資料列並不會在壓縮期間建立記憶體壓力。 但是，它會導致資料列群組無法達到最佳資料行存放區查詢效能。
 
@@ -163,6 +163,6 @@ DWU 大小和使用者資源類別會共同判斷有多少記憶體可供使用�
 - 若要增加 DWU，請參閱[如何調整效能？](quickstart-scale-compute-portal.md)
 - 若要變更查詢的資源類別，請參閱[變更使用者資源類別的範例](resource-classes-for-workload-management.md#change-a-users-resource-class)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-若要尋找更多改善 SQL 集區效能的方法，請參閱 [效能總覽](cheat-sheet.md)。
+若要尋找更多改善專用 SQL 集區效能的方法，請參閱 [效能總覽](cheat-sheet.md)。

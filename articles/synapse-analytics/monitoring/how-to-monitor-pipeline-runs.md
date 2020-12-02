@@ -6,19 +6,19 @@ author: matt1883
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: monitoring
-ms.date: 10/27/2020
+ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 61d860def7209908e65e9456a4bcde87eed522fc
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: dbd890117c78274392d5745e0563332371b404c5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746390"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452571"
 ---
 # <a name="use-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>使用 Synapse Studio 監視您的工作區管線執行
 
-使用 Azure Synapse Analytics，您可以建立複雜的管線，以自動化和整合您解決方案內的資料移動、資料轉換和計算活動。 您可以使用 Synapse Studio (preview) 來撰寫和監視這些管線。
+使用 Azure Synapse Analytics，您可以建立複雜的管線，以自動化和整合您解決方案內的資料移動、資料轉換和計算活動。 您可以使用 Synapse Studio 來撰寫和監視這些管線。
 
 本文說明如何監視您的管線執行，這可讓您留意管線的最新狀態、問題和進度。
 
@@ -41,8 +41,6 @@ ms.locfileid: "92746390"
 您可以將管線執行清單篩選至您感興趣的專案。 畫面頂端的篩選器可讓您指定想要篩選的欄位。
 
 例如，您可以篩選視圖，只查看名為「假日」之管線的管線執行：
-
-![[篩選] 按鈕](./media/common/filter-button.png)
 
 ![範例篩選](./media/how-to-monitor-pipeline-runs/filter-example.png)
 

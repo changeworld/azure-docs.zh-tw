@@ -1,19 +1,19 @@
 ---
 title: 教學課程：建立新的 Android 應用程式
 description: 在本教學課程中，您將了解如何使用 Azure Spatial Anchors 建立新的 Android 應用程式。
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 06/22/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3ef24e29e5dde90aa829c46d789256e6e5f3233b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af0d01a20728d2332d4a8d71819f73baf68a65a4
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85296197"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95998376"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>教學課程：使用 Azure Spatial Anchors 新建 Android 應用程式的逐步指示
 
@@ -30,7 +30,7 @@ ms.locfileid: "85296197"
 
 啟動 Android Studio。 在 [歡迎使用 Android Studio] 視窗中，按一下 [開始新的 Android Studio 專案]。 或者，如果您有已開啟的專案，請選取 [檔案]->[新增專案]。
 
-在 [建立新的專案] 視窗的 [手機和平板電腦] 區段下方，選擇 [空白活動]，然後按 [下一步]。 然後，在 [最低 API 層級] 下方選擇 `API 26: Android 8.0 (Oreo)`，並確定 [語言] 設為 `Java`。 您可以變更專案名稱和位置，以及套件名稱。 請將其他選項保留為原狀。 按一下 [完成] 。 **元件安裝程式**將會執行。 完成之後，請按一下 [完成]。 完成某些處理後，Android Studio 會開啟 IDE。
+在 [建立新的專案] 視窗的 [手機和平板電腦] 區段下方，選擇 [空白活動]，然後按 [下一步]。 然後，在 [最低 API 層級] 下方選擇 `API 26: Android 8.0 (Oreo)`，並確定 [語言] 設為 `Java`。 您可以變更專案名稱和位置，以及套件名稱。 請將其他選項保留為原狀。 按一下 [完成] 。 **元件安裝程式** 將會執行。 完成之後，請按一下 [完成]。 完成某些處理後，Android Studio 會開啟 IDE。
 
 ## <a name="trying-it-out"></a>立即試用
 

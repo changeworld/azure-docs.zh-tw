@@ -1,6 +1,6 @@
 ---
-title: 使用 VSTS 連接
-description: 具有 Visual Studio 的查詢 Azure Synapse Analytics。
+title: 使用 VSTS (先前的 SQL DW) 連線到專用的 SQL 集區
+description: 使用 Visual Studio 在 Azure Synapse Analytics 中查詢專用的 SQL 集區 (先前的 SQL DW) 。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 59e0aed3ceda369909c6a4aecd03637a82a2dd1b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c55f8483ba54ecf9778693b364603d642ddb3deb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305376"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452316"
 ---
-# <a name="connect-to-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>使用 Visual Studio 和 SSDT 連接到 Azure Synapse Analytics
+# <a name="connect-to-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>使用 Visual Studio 和 SSDT 連接到 Azure Synapse Analytics 中的專用 SQL 集區 (先前的 SQL DW) 
 
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](../sql/get-started-azure-data-studio.md)
@@ -29,18 +29,18 @@ ms.locfileid: "93305376"
 > 
 > 
 
-在短短幾分鐘內，使用 Visual Studio 在 Azure Synapse 中查詢專用的 SQL 集區。 這個方法會在 Visual Studio 2019 中使用 SQL Server Data Tools (SSDT) 擴充功能。 
+在短短幾分鐘內，使用 Visual Studio 來查詢 Azure Synapse 中 (先前 SQL DW) 的專用 SQL 集區。 這個方法會在 Visual Studio 2019 中使用 SQL Server Data Tools (SSDT) 擴充功能。 
 
 ## <a name="prerequisites"></a>必要條件
 若要使用本教學課程，您需要：
 
-* 現有的專用 SQL 集區。 若要建立一個，請參閱 [建立專用的 SQL 集](create-data-warehouse-portal.md)區。
+* 現有的專用 SQL 集區 (先前為 SQL DW) 。 若要建立一個，請參閱 [ (先前的 SQL DW) 建立專用的 sql 集 ](create-data-warehouse-portal.md)區。
 * 適用於 Visual Studio 的 SSDT。 如果您有 Visual Studio，可能已經有 Visual Studio 的 SSDT。 如需安裝指示和選項，請參閱 [安裝 Visual Studio 和 SSDT](sql-data-warehouse-install-visual-studio.md)。
-* 完整的 SQL 伺服器名稱。 若要尋找此資訊，請參閱 [連接到專用的 SQL 集](../sql/connect-overview.md)區。
+* 完整的 SQL 伺服器名稱。 若要尋找此資訊，請參閱 [ (先前的 SQL DW) 連接到專用的 sql 集 ](sql-data-warehouse-connect-overview.md)區。
 
-## <a name="1-connect-to-your-dedicated-sql-pool"></a>1. 連接到您專用的 SQL 集區
+## <a name="1-connect-to-your-dedicated-sql-pool-formerly-sql-dw"></a>1. 連接到您先前的 SQL DW (專用的 SQL 集區) 
 1. 開啟 Visual Studio 2019。
-2. 選取 [ **View** SQL Server 物件總管] 來開啟 SQL Server 物件總管  >  **** 。
+2. 選取 [ **View** SQL Server 物件總管] 來開啟 SQL Server 物件總管  >  ****。
    
     ![SQL Server 物件總管](./media/sql-data-warehouse-query-visual-studio/open-ssdt.png)
 3. 按一下 [加入 SQL Server]  圖示。
@@ -50,10 +50,10 @@ ms.locfileid: "93305376"
    
     ![連線到伺服器](./media/sql-data-warehouse-query-visual-studio/connection-dialog.png)
    
-   * **伺服器名稱** 。 輸入先前找到的 **伺服器名稱** 。
-   * **驗證** 。 選取 [SQL Server 驗證] 或 [Active Directory 整合式驗證]。
-   * **使用者名稱** 和 **密碼** 。 如果上面已選取 [SQL Server 驗證]，請輸入使用者名稱和密碼。
-   * 按一下 [ **連接** ]。
+   * **伺服器名稱**。 輸入先前找到的 **伺服器名稱** 。
+   * **驗證**。 選取 [SQL Server 驗證] 或 [Active Directory 整合式驗證]。
+   * **使用者名稱** 和 **密碼**。 如果上面已選取 [SQL Server 驗證]，請輸入使用者名稱和密碼。
+   * 按一下 [ **連接**]。
 5. 若要瀏覽，請展開您的 Azure SQL 伺服器。 您可以檢視與伺服器相關聯的資料庫。 展開 AdventureWorksDW 以查看範例資料庫中的資料表。
    
     ![探索 AdventureWorksDW](./media/sql-data-warehouse-query-visual-studio/explore-sample.png)
@@ -80,4 +80,4 @@ ms.locfileid: "93305376"
 ## <a name="next-steps"></a>後續步驟
 您現在可以連線並查詢，請嘗試[使用 Power BI 將資料視覺化](sql-data-warehouse-get-started-visualize-with-power-bi.md)。
 
-若要為 Azure Active Directory 驗證設定您的環境，請參閱 [驗證專用的 SQL 集](sql-data-warehouse-authentication.md)區。
+若要為 Azure Active Directory 驗證設定您的環境，請參閱 [先前的 SQL DW) 驗證專用的 sql 集區 (](sql-data-warehouse-authentication.md)。

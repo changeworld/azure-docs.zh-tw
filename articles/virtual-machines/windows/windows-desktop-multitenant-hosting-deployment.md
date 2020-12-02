@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: ceb8b8b31963317ccbbd1aee9f1b2606afc5a5db
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5631cbdd0b1eae343899be2147720d980e605dbb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010244"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452707"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>如何使用多租用戶主機權限在 Azure 上部署 Windows 10 
 對於每位使用者都具有 Windows 10 企業版 E3/E5 或每位使用者都具有 Windows 虛擬桌面存取 (使用者訂用帳戶授權或附加元件使用者訂用帳戶授權) 的客戶，適用於 Windows 10 的多租用戶主機權限可讓您將 Windows 10 授權帶到雲端，並在 Azure 上執行 Windows 10 虛擬機器，而不必付費取得其他授權。 如需詳細資訊，請參閱[適用於 Windows 10 的多租用戶主機](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)。
@@ -24,7 +24,7 @@ ms.locfileid: "96010244"
 >
 
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>從 Azure Marketplace 部署 Windows 10 映像 
-若要進行 PowerShell、CLI 和 Azure Resource Manager 範本的部署，您可以找到具有下列 PublisherName、供應項目和 SKU 的 Windows 10 映像。
+針對 PowerShell、CLI 和 Azure Resource Manager 範本部署，您可以使用下列 publishername、供應專案、sku 來找到 Windows 10 映射。
 
 | OS  |      PublisherName      |  供應項目 | SKU |
 |:----------|:-------------:|:------|:------|
@@ -33,6 +33,15 @@ ms.locfileid: "96010244"
 | Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS3-Pro   |
 | Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS3-ProN  |
 
+## <a name="qualify-for-multi-tenant-hosting-rights"></a>符合多租使用者裝載許可權的資格 
+若要符合多租使用者裝載許可權，並在 Azure 使用者上執行 Windows 10 映射必須有下列其中一個訂用帳戶： 
+
+-   Microsoft 365 E3/E5/F3/A3/A5
+-   Windows 10 企業版 E3/E5 
+-   Windows 10 教育版 A3/A5
+-   Windows VDA E3/E5
+
+
 ## <a name="uploading-windows-10-vhd-to-azure"></a>將 Windows 10 VHD 上傳到 Azure
 如果您要上傳一般化的 Windows 10 VHD，請注意 Windows 10 未預設啟用內建的 Administrator 帳戶。 若要啟用內建的 Administrator 帳戶，請在自訂指令碼擴充功能中加入下列命令。
 
@@ -40,7 +49,7 @@ ms.locfileid: "96010244"
 Net user <username> /active:yes
 ```
 
-下列 PowerShell 程式碼片段是要將所有 Administrator 帳戶標示為作用中，包括內建的系統管理員。 這個範例適用於不知道內建系統管理員使用者名稱的情況。
+下列 PowerShell 程式碼片段會將所有系統管理員帳戶標示為作用中，包括內建的系統管理員。 這個範例適用於不知道內建系統管理員使用者名稱的情況。
 ```powershell
 $adminAccount = Get-WmiObject Win32_UserAccount -filter "LocalAccount=True" | ? {$_.SID -Like "S-1-5-21-*-500"}
 if($adminAccount.Disabled)

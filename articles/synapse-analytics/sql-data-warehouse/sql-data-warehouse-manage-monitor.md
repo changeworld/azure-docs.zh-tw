@@ -1,6 +1,6 @@
 ---
-title: 使用 Dmv 監視您的 SQL 集區工作負載
-description: 瞭解如何使用 Dmv 來監視您的 Azure Synapse Analytics SQL 集區工作負載和查詢執行。
+title: 使用 Dmv 監視您專用的 SQL 集區工作負載
+description: 瞭解如何使用 Dmv 監視 Azure Synapse Analytics 專用的 SQL 集區工作負載和查詢執行。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 03/24/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: 70ce0d6aada2b03646500720b0eba980a1f2d8f8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 1992c3d525fc1f5a098e1969887a752233d47990
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515724"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453796"
 ---
-# <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>使用 Dmv 監視您 Azure Synapse Analytics 的 SQL 集區工作負載
+# <a name="monitor-your-azure-synapse-analytics-dedicated-sql-pool-workload-using-dmvs"></a>使用 Dmv 監視您 Azure Synapse Analytics 專用的 SQL 集區工作負載
 
 本文說明如何使用動態管理檢視 (Dmv) 來監視您的工作負載，包括調查 SQL 集區中的查詢執行。
 
@@ -100,10 +100,10 @@ ORDER BY step_index;
 
 當 DSQL 計劃所花的時間超出預期時，有可能是含有許多 DSQL 步驟的複雜計劃所導致，或只是某個步驟需要長時間處理。  如果計劃是含有數個移動作業的許多步驟，請考慮最佳化您的資料表散發以減少資料移動。 [資料表散發](sql-data-warehouse-tables-distribute.md)文章說明為何必須移動資料才能解決查詢。 本文也會說明將資料移動降至最低的一些散發策略。
 
-進一步調查單一步驟 (長時間執行查詢步驟的 *operation_type* 資料行) 的詳細資料，並且記下**步驟索引**：
+進一步調查單一步驟 (長時間執行查詢步驟的 *operation_type* 資料行) 的詳細資料，並且記下 **步驟索引**：
 
-* 繼續進行 **SQL 作業**的步驟3： OnOperation、RemoteOperation、ReturnOperation。
-* 繼續進行 **資料移動作業**的步驟4： ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation。
+* 繼續進行 **SQL 作業** 的步驟3： OnOperation、RemoteOperation、ReturnOperation。
+* 繼續進行 **資料移動作業** 的步驟4： ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation。
 
 ### <a name="step-3-investigate-sql-on-the-distributed-databases"></a>步驟3：調查分散式資料庫上的 SQL
 

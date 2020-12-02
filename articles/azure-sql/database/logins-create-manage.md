@@ -13,19 +13,19 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: 940ea0ac471604b22c64dc008eebd8b580121cf7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d03bce1566d4f56a576c980723571f587296236f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782734"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452427"
 ---
-# <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>授權資料庫存取 SQL Database、SQL 受控執行個體和 Azure Synapse Analytics
+# <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>將資料庫存取權限授與 SQL Database、SQL 受控執行個體和 Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 在本文中，您將瞭解：
 
-- 設定 Azure SQL Database、Azure SQL 受控執行個體和 Azure Synapse Analytics (先前的 SQL 資料) 倉儲的選項，可讓使用者執行系統管理工作，以及存取儲存在這些資料庫中的資料。
+- 設定 Azure SQL Database、Azure SQL 受控執行個體和 Azure Synapse Analytics 的選項，可讓使用者執行系統管理工作，以及存取儲存在這些資料庫中的資料。
 - 初次建立新伺服器之後的存取和授權設定。
 - 如何在 master 資料庫和使用者帳戶中新增登入和使用者帳戶，然後將系統管理許可權授與這些帳戶。
 - 如何新增使用者資料庫中的使用者帳戶（與登入相關聯或以包含的使用者帳戶建立關聯）。
@@ -46,7 +46,7 @@ ms.locfileid: "92782734"
 
   使用此驗證方法，使用者會提交使用者帳戶名稱，並要求服務使用儲存在 Azure Active Directory (Azure AD) 中的認證資訊。
 
-登入 **和使用者** ：資料庫中的使用者帳戶可以與儲存在 master 資料庫中的登入相關聯，也可以是儲存在個別資料庫中的使用者名稱。
+登入 **和使用者**：資料庫中的使用者帳戶可以與儲存在 master 資料庫中的登入相關聯，也可以是儲存在個別資料庫中的使用者名稱。
 
 - **登** 入是 master 資料庫中的個別帳戶，可在其中連結一或多個資料庫中的使用者帳戶。 登入時，使用者帳戶的認證資訊會與登入一起儲存。
 - **使用者帳戶** 是任何資料庫中的個別帳戶，但不一定要連結到登入。 使用未連結至登入的使用者帳戶時，認證資訊會與使用者帳戶一起儲存。
@@ -55,7 +55,7 @@ ms.locfileid: "92782734"
 
 ## <a name="existing-logins-and-user-accounts-after-creating-a-new-database"></a>建立新資料庫之後的現有登入和使用者帳戶
 
-當您第一次部署 Azure SQL 時，您會為該登入指定管理員登入和相關聯的密碼。 此系統管理帳戶稱為「 **伺服器管理員** 」。在部署期間，主資料庫和使用者資料庫中的登入和使用者會進行下列設定：
+當您第一次部署 Azure SQL 時，您會為該登入指定管理員登入和相關聯的密碼。 此系統管理帳戶稱為「 **伺服器管理員**」。在部署期間，主資料庫和使用者資料庫中的登入和使用者會進行下列設定：
 
 - 系統會使用您指定的登入名稱來建立具有系統管理許可權的 SQL 登入。 [登](/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login)入是個別的使用者帳戶，用於登入 SQL DATABASE、SQL 受控執行個體和 Azure Synapse。
 - 這個登入是以 [伺服器層級主體](/sql/relational-databases/security/authentication-access/principals-database-engine)的形式，授與所有資料庫的完整系統管理許可權。 登入具有所有可用的許可權，而且不受限制。 在 SQL 受控執行個體中，此登入會新增至 [系統管理員（sysadmin）固定伺服器角色](/sql/relational-databases/security/authentication-access/server-level-roles) ， (此角色不存在於 Azure SQL Database) 中。
@@ -68,7 +68,7 @@ ms.locfileid: "92782734"
 ![醒目顯示 [屬性] 功能表選項的螢幕擷取畫面。](./media/logins-create-manage/sql-admins2.png)
 
 > [!IMPORTANT]
-> 系統管理員登入名稱在建立後即無法變更。 若要重設伺服器管理員的密碼，請移至  、從清單中選取伺服器，然後按一下 [重設密碼]  。 若要重設 SQL 受控執行個體的密碼，請移至 [Azure 入口網站]，按一下該實例，然後按一下 [ **重設密碼** ]。 您也可以使用 PowerShell 或 Azure CLI。
+> 系統管理員登入名稱在建立後即無法變更。 若要重設伺服器管理員的密碼，請移至 [Azure 入口網站](https://portal.azure.com)、按一下 [SQL Server]、從清單中選取伺服器，然後按一下 [重設密碼]。 若要重設 SQL 受控執行個體的密碼，請移至 [Azure 入口網站]，按一下該實例，然後按一下 [ **重設密碼**]。 您也可以使用 PowerShell 或 Azure CLI。
 
 ## <a name="create-additional-logins-and-users-having-administrative-permissions"></a>建立具有系統管理許可權的其他登入和使用者
 
@@ -137,7 +137,7 @@ ms.locfileid: "92782734"
 
 - **固定資料庫角色**
 
-  將使用者帳戶加入至 [固定資料庫角色](/sql/relational-databases/security/authentication-access/database-level-roles)。 有9個固定資料庫角色，每個角色都有一組已定義的許可權。 最常見的固定資料庫角色包括： **db_owner** 、 **db_ddladmin** 、 **db_datawriter** 、 **db_datareader** 、 **db_denydatawriter** 和 **db_denydatareader** 。 **db_owner** 通常是用來將完整權限授與少數幾個使用者。 其他固定的資料庫角色適用於快速開發簡單的資料庫，但不建議用於大多數實際執行資料庫。 例如， **db_datareader** 固定資料庫角色會授與資料庫中每個資料表的讀取存取權，這是絕對必要的。
+  將使用者帳戶加入至 [固定資料庫角色](/sql/relational-databases/security/authentication-access/database-level-roles)。 有9個固定資料庫角色，每個角色都有一組已定義的許可權。 最常見的固定資料庫角色包括： **db_owner**、 **db_ddladmin**、 **db_datawriter**、 **db_datareader**、 **db_denydatawriter** 和 **db_denydatareader**。 **db_owner** 通常是用來將完整權限授與少數幾個使用者。 其他固定的資料庫角色適用於快速開發簡單的資料庫，但不建議用於大多數實際執行資料庫。 例如， **db_datareader** 固定資料庫角色會授與資料庫中每個資料表的讀取存取權，這是絕對必要的。
 
   - 若要將使用者加入至固定資料庫角色：
 
