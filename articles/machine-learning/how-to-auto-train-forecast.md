@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 57b54fbe20df4eb74ee17c7b5ac83d773114463b
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 8c6a27f0cfaafe7e6c1181651e672d0e828af855
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437366"
+ms.locfileid: "96444494"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>將時間序列預測模型自動定型
 
@@ -33,7 +33,7 @@ ms.locfileid: "96437366"
 
 不同于傳統的時間序列方法，在自動化 ML 中，過去的時間序列值會「轉換」為回歸輸入變數與其他預測指標的額外維度。 這個方法會在定型期間結合多個內容變數及其相互關聯性。 由於有多個因素可能會影響預測，因此此方法非常吻合真實世界的預測案例。 例如，在預測銷售額時，歷程記錄趨勢、匯率和價格的互動，全都共同推動銷售結果。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 針對本文，您需要 
 
@@ -154,7 +154,7 @@ ForecastTCN (預覽)| ForecastTCN 是一種神經網路模型，其設計目的�
 
 
 下列程式碼： 
-* 利用 [`ForecastingParameters`](https://docs.microsoft.com/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) 類別來定義實驗訓練的預測參數
+* 利用 [`ForecastingParameters`](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) 類別來定義實驗訓練的預測參數
 * 將設定 `time_column_name` 為 `day_datetime` 資料集中的欄位。 
 * 定義的 `time_series_id_column_names` 參數 `"store"` 。 這可確保針對資料建立了 **兩個不同的時間序列群組** ;一個用於 store A 和 B。
 * 將設定 `forecast_horizon` 為50，以便預測整個測試集。 

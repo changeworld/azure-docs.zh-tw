@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 10/08/2020
 ms.author: alkohli
-ms.openlocfilehash: 33254c170c309626ecfa9099bc4d86578148f4c1
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: e93a7fd7aec5463a3d77bd9d6bb17d7072097870
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91941303"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447632"
 ---
 # <a name="troubleshoot-activation-issues-on-your-azure-stack-edge-pro-gpu-device"></a>針對 Azure Stack Edge Pro GPU 裝置上的啟用問題進行疑難排解 
 
@@ -28,7 +28,7 @@ ms.locfileid: "91941303"
 
 | 錯誤訊息| 建議的解決方式 |
 |------------------------------------------------------|--------------------------------------|
-| 如果在使用啟用金鑰啟用裝置之前刪除用於啟用的 Azure Key Vault，則會收到此錯誤。 <br> ![Key vault 錯誤1](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-1.png)  | 如果已刪除金鑰保存庫，您可以在保存庫處於清除保護期間時復原金鑰保存庫。 請依照 [復原金鑰保存庫](/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault)中的步驟執行。 <br>如果清除保護持續時間已過，則無法復原金鑰保存庫。 連絡 Microsoft 支援服務以進行後續步驟。 |
+| 如果在使用啟用金鑰啟用裝置之前刪除用於啟用的 Azure Key Vault，則會收到此錯誤。 <br> ![Key vault 錯誤1](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-1.png)  | 如果已刪除金鑰保存庫，您可以在保存庫處於清除保護期間時復原金鑰保存庫。 請依照 [復原金鑰保存庫](../key-vault/general/key-vault-recovery.md#list-recover-or-purge-soft-deleted-secrets-keys-and-certificates)中的步驟執行。 <br>如果清除保護持續時間已過，則無法復原金鑰保存庫。 連絡 Microsoft 支援服務以進行後續步驟。 |
 | 如果在裝置啟動之後刪除了 Azure Key Vault，然後您嘗試執行任何涉及加密的作業，例如： **新增使用者**、 **新增共用**、 **設定計算**，則會收到此錯誤。 <br> ![金鑰保存庫錯誤2](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-2.png)    | 如果已刪除金鑰保存庫，您可以在保存庫處於清除保護期間時復原金鑰保存庫。 請依照復原金鑰保存庫中的步驟執行。 <br>如果清除保護持續時間已過，則無法復原金鑰保存庫。 連絡 Microsoft 支援服務以進行後續步驟。 |
 | 如果 Azure Key Vault 中的通道完整性金鑰遭到刪除，然後再嘗試執行任何涉及加密的作業，例如： **新增使用者**、 **新增共用**、 **設定計算** -然後您將會收到此錯誤。 <br> ![金鑰保存庫錯誤3](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-3.png) | 如果金鑰保存庫中的通道完整性金鑰遭到刪除，但仍在清除期間內，請依照 [復原金鑰保存庫金鑰移除](/powershell/module/az.keyvault/undo-azkeyvaultkeyremoval)中的步驟執行。 <br>如果清除保護持續時間已過，且您已備份金鑰，您可以從備份還原，否則無法復原金鑰。 連絡 Microsoft 支援服務以進行後續步驟。 |
 | 如果啟動金鑰產生因任何錯誤而失敗，則會收到此錯誤。 通知中有其他詳細資料。 <br> ![金鑰保存庫錯誤4](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-4.png)   | 請稍候幾分鐘，然後重試此作業。 如果問題持續發生，請連絡 Microsoft 支援服務。 |

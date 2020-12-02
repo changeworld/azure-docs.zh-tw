@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 11/04/2020
 ms.author: alkohli
-ms.openlocfilehash: ff2a473ca008e9b283d03ebb05f35122473d778a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34165071238ca3edf78ab9cca43639c23ce5ed2a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899268"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448700"
 ---
 # <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU 裝置上的 Kubernetes 儲存體管理
 
@@ -33,17 +33,17 @@ Kubernetes pod 是無狀態的，但它們執行的應用程式通常是具狀�
 
 若要瞭解如何管理儲存體以進行 Kubernetes，有一項需要瞭解兩個 API 資源： 
 
-- **PersistentVolume (PV) **：這是 Kubernetes 叢集中的一部分儲存體。 Kubernetes 儲存體可靜態布建為 `PersistentVolume` 。 也可以動態布建為  `StorageClass` 。
+- **PersistentVolume (PV)**：這是 Kubernetes 叢集中的一部分儲存體。 Kubernetes 儲存體可靜態布建為 `PersistentVolume` 。 也可以動態布建為  `StorageClass` 。
 
-- **PersistentVolumeClaim (PVC) **：這是使用者對儲存體的要求。 Pvc 使用 PV 資源。 Pvc 可以要求特定的大小和存取模式。 
+- **PersistentVolumeClaim (PVC)**：這是使用者對儲存體的要求。 Pvc 使用 PV 資源。 Pvc 可以要求特定的大小和存取模式。 
 
     由於使用者 `PersistentVolumes` 針對不同的問題需要具有不同的屬性，因此叢集管理員必須能夠提供不同于 `PersistentVolumes` 大小和存取模式的不同方式。 針對這些需求，您需要 `StorageClass` 資源。
 
 儲存體布建可以是靜態或動態的。 下列各節將討論每個布建類型。
 
-## <a name="staticprovisioning"></a>靜態布建
+## <a name="static-provisioning"></a>靜態布建
 
-Kubernetes cluster admins 可以靜態布建儲存體。 若要這樣做，他們可以使用以 SMB/NFS 檔案系統為基礎的儲存體後端，或使用在內部部署環境中透過網路連接到本機的 iSCSI 磁片，或甚至使用雲端中的 Azure 檔案儲存體或 Azure 磁片。 此類型的儲存體預設不會布建，而且叢集管理員必須規劃和管理此布建。 
+Kubernetes 叢集管理員可透過靜態方式佈建儲存體。 若要這樣做，他們可以使用以 SMB/NFS 檔案系統為基礎的儲存體後端，或使用在內部部署環境中透過網路連接到本機的 iSCSI 磁片，或甚至使用雲端中的 Azure 檔案儲存體或 Azure 磁片。 此類型的儲存體預設不會布建，而且叢集管理員必須規劃和管理此布建。 
  
 以下圖表說明如何在 Kubernetes 中使用靜態布建的儲存體： 
 
@@ -51,14 +51,14 @@ Kubernetes cluster admins 可以靜態布建儲存體。 若要這樣做，他�
 
 會進行下列步驟： 
 
-1. 布建**存放裝置**：叢集系統管理員會布建儲存體。 在此範例中，叢集系統管理員會建立一或多個 SMB 共用，以在對應至這些共用的 Kubernetes 叢集中自動建立永久性磁片區物件。 
+1. 布建 **存放裝置**：叢集系統管理員會布建儲存體。 在此範例中，叢集系統管理員會建立一或多個 SMB 共用，以在對應至這些共用的 Kubernetes 叢集中自動建立永久性磁片區物件。 
 
-1. 宣告**儲存體**：您提交要求儲存體的 PVC 部署。 此儲存體宣告是 (PVC) 的 PersistentVolumeClaim。 如果 PV 的大小和存取模式符合 PVC 的大小和存取模式，則 PVC 會系結至 PV。 PVC 和 PV map 一對一。
+1. 宣告 **儲存體**：您提交要求儲存體的 PVC 部署。 此儲存體宣告是 (PVC) 的 PersistentVolumeClaim。 如果 PV 的大小和存取模式符合 PVC 的大小和存取模式，則 PVC 會系結至 PV。 PVC 和 PV map 一對一。
 
-1. 將**Pvc 掛接到容器**：當 PVC 系結至 PV 之後，您就可以將此 pvc 掛接到容器中的路徑。 當容器中的應用程式邏輯讀取/寫入此路徑時，會將資料寫入 SMB 儲存體。
+1. 將 **Pvc 掛接到容器**：當 PVC 系結至 PV 之後，您就可以將此 pvc 掛接到容器中的路徑。 當容器中的應用程式邏輯讀取/寫入此路徑時，會將資料寫入 SMB 儲存體。
  
 
-## <a name="dynamicprovisioning"></a>動態佈建
+## <a name="dynamic-provisioning"></a>動態佈建
 
 以下圖表說明如何在 Kubernetes 中使用靜態布建的儲存體： 
 
@@ -68,11 +68,11 @@ Kubernetes cluster admins 可以靜態布建儲存體。 若要這樣做，他�
 
 1. **定義存放裝置類別**：叢集系統管理員會根據您 Kubernetes 叢集的作業環境定義儲存類別。 叢集系統管理員也會部署布建程式，也就是部署在 Kubernetes 叢集上的另一個 pod 或應用程式。 布建程式具有可動態布建共用的所有詳細資料。  
 
-1. 宣告**儲存體**：您提交會宣告儲存體的應用程式。 使用這個儲存類別參考建立 PVC 之後，便會叫用布建程式。 
+1. 宣告 **儲存體**：您提交會宣告儲存體的應用程式。 使用這個儲存類別參考建立 PVC 之後，便會叫用布建程式。 
 
-1. **動態**布建儲存體：布建程式會動態建立與本機磁片儲存體相關聯的共用。 建立共用之後，它也會自動建立與此共用對應的 PV 物件。
+1. **動態** 布建儲存體：布建程式會動態建立與本機磁片儲存體相關聯的共用。 建立共用之後，它也會自動建立與此共用對應的 PV 物件。
 
-1. 將**Pvc 掛接到容器**：當 PVC 系結至 PV 之後，您可以使用與靜態布建和讀取或寫入共用的相同方式，將 pvc 掛接到容器上的路徑。
+1. 將 **Pvc 掛接到容器**：當 PVC 系結至 PV 之後，您可以使用與靜態布建和讀取或寫入共用的相同方式，將 pvc 掛接到容器上的路徑。
 
 
 ## <a name="storage-provisioning-on-azure-stack-edge-pro"></a>Azure Stack Edge Pro 上的儲存體布建
@@ -104,6 +104,26 @@ spec:
 ```
 
 如需詳細資訊，請參閱透過 [kubectl 在您的 Azure Stack Edge Pro 上透過靜態布建部署具狀態應用程式](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md)。
+
+若要存取相同的靜態布建儲存體，適用于 IoT 的儲存體系結的對應磁片區掛接選項如下所示。 `/home/input`是可在容器記憶體取磁片區的路徑。
+
+```
+{
+"HostConfig": {
+"Mounts": [
+{
+"Target": "/home/input",
+"Source": "<nfs-or-smb-share-name-here>",
+"Type": "volume"
+},
+{
+"Target": "/home/output",
+"Source": "<nfs-or-smb-share-name-here>",
+"Type": "volume"
+}]
+}
+}
+```
 
 Azure Stack Edge Pro 也有一個名為的內建 `StorageClass` `ase-node-local` ，其使用連接至 Kubernetes 節點的資料磁片儲存體。 這 `StorageClass` 支援動態布建。 您可以 `StorageClass` 在 pod 應用程式中進行參考，並自動為您建立一個 PV。 如需詳細資訊，請參閱 [Kubernetes 儀表板](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md) 以查詢 `ase-node-local StorageClass` 。
 

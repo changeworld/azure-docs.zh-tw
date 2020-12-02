@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: cd877a91c7c082ce7845394f2636857f33b7940f
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 957274e6080ab4b77e6528386fe0b24b2d877219
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578751"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447308"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>透過 Azure PowerShell 腳本在您的 Azure Stack Edge Pro GPU 裝置上部署 Vm
 
@@ -21,7 +21,7 @@ ms.locfileid: "94578751"
 
 本教學課程說明如何使用 Azure PowerShell 腳本，在您的 Azure Stack Edge Pro 裝置上建立和管理 VM。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在您開始使用此腳本在 Azure Stack Edge Pro 裝置上建立和管理 VM 之前，您必須確定已完成下列步驟中所列的必要條件：
 
@@ -31,7 +31,7 @@ ms.locfileid: "94578751"
 
 2. 已啟用網路介面進行計算。 此網路介面 IP 用來建立 VM 部署的虛擬交換器。 下列步驟會逐步引導您進行程序：
 
-    1. 移至 [ **計算] 設定** 。 選取您將用來建立虛擬交換器的網路介面。
+    1. 移至 [ **計算] 設定**。 選取您將用來建立虛擬交換器的網路介面。
 
         > [!IMPORTANT] 
         > 您只能設定一個連接埠進行計算。
@@ -83,7 +83,7 @@ ms.locfileid: "94578751"
 
     `Uninstall-Module -Name Azure.Storage`
 
-5. 將[AzCopy 10 下載](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#download-azcopy)到您的 Windows 用戶端。 請記下這個位置，因為在執行腳本時，您會將它當作參數傳遞。
+5. 將[AzCopy 10 下載](../storage/common/storage-use-azcopy-v10.md#download-azcopy)到您的 Windows 用戶端。 請記下這個位置，因為在執行腳本時，您會將它當作參數傳遞。
 
 6. 確定您的 Windows 用戶端正在執行 TLS 1.2 或更新版本。
 

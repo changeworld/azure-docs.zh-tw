@@ -10,13 +10,13 @@ ms.subservice: sql-dw
 ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 3bdf234156c55e3c30df74c672866a118fd2f4f1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: ec62724b7aedbad4111a4882dd89f86d116b2a96
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323499"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448065"
 ---
 # <a name="design-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用專用的 SQL 集區來設計資料表
 
@@ -47,7 +47,7 @@ CREATE SCHEMA wwi;
 | WideWorldImportersDW 資料表  | 資料表類型 | 專用的 SQL 集區 |
 |:-----|:-----|:------|:-----|
 | City | 維度 | wwi.DimCity |
-| 單 | 事實 | wwi.FactOrder |
+| 順序 | 事實 | wwi.FactOrder |
 
 ## <a name="table-persistence"></a>資料表持續性
 
@@ -111,7 +111,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 ## <a name="table-partitions"></a>資料表的資料分割
 
-分割的資料表會並根據資料範圍儲存在資料表資料列上，並執行作業。 例如，資料表可能會依日、月或年進行分割。 您可以透過「資料分割消除」將查詢掃描限定於某個資料分割內的資料，進而提升查詢效能。 您也可以透過資料分割切換來維護資料。 因為 Azure Synapse Analytics 中的資料已經散發，所乙太多資料分割可能會降低查詢效能。 如需詳細資訊，請參閱[資料分割指引](sql-data-warehouse-tables-partition.md)。  當資料分割切換至非空白的資料表分割區時，如果要截斷現有的資料，請考慮在 [ALTER table](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 語句中使用 TRUNCATE_TARGET 選項。 下列程式碼會將轉換後的每日資料切換至 [Salesfact，以覆寫任何現有的資料。
+分割的資料表會並根據資料範圍儲存在資料表資料列上，並執行作業。 例如，資料表可能會依日、月或年進行分割。 您可以透過「資料分割消除」將查詢掃描限定於某個資料分割內的資料，進而提升查詢效能。 您也可以透過資料分割切換來維護資料。 因為 SQL 集區中的資料已經散發，所乙太多資料分割可能會降低查詢效能。 如需詳細資訊，請參閱[資料分割指引](sql-data-warehouse-tables-partition.md)。  當資料分割切換至非空白的資料表分割區時，如果要截斷現有的資料，請考慮在 [ALTER table](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 語句中使用 TRUNCATE_TARGET 選項。 下列程式碼會將轉換後的每日資料切換至 [Salesfact，以覆寫任何現有的資料。
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  

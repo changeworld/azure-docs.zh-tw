@@ -1,6 +1,6 @@
 ---
 title: 連線能力疑難排解
-description: 針對專用 SQL 集區中的連線能力進行疑難排解。
+description: 針對專用 SQL 集區中的連線能力進行疑難排解 (先前為 SQL DW) 。
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,47 +11,47 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-csharp
-ms.openlocfilehash: 82b9f988ef4a7f4a53cd0b451da28642b53bcb65
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ea99c2ce1963ec58649fd4c2fbb4d98768da8c6f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308372"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447969"
 ---
-# <a name="troubleshooting-connectivity-issues-in-dedicated-sql-pool"></a>針對專用 SQL 集區中的連線能力問題進行疑難排解
+# <a name="troubleshooting-connectivity-issues-in-dedicated-sql-pool-formerly-sql-dw"></a>針對專用 SQL 集區中的連線能力問題進行疑難排解 (先前為 SQL DW) 
 
-本文列出連接到您專用的 SQL 集區資料庫時，常見的疑難排解技巧。
+本文列出有關連接到您的專用 SQL 集區資料庫 (先前的 SQL DW) 的常見疑難排解技巧。
 
 ## <a name="check-service-availability"></a>檢查服務可用性
 
-檢查以了解服務是否可供使用。 在 Azure 入口網站中，移至您嘗試連接的專用 SQL 集區。 在左側 TOC 窗格中，按一下 [診斷並解決問題]。
+檢查以了解服務是否可供使用。 在 Azure 入口網站中，移至您要嘗試連線 (先前的 SQL DW) 專用 SQL 集區。 在左側 TOC 窗格中，按一下 [診斷並解決問題]。
 
 ![選取資源健康狀態](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-您專用的 SQL 集區的狀態將會顯示在此處。 如果服務未顯示為 **可用** ，請查看更進一步的步驟。
+您專用的 SQL 集區狀態 (先前的 SQL DW) 將會顯示于此處。 如果服務未顯示為 **可用**，請查看更進一步的步驟。
 
 ![可用的服務](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-如果您的資源健康狀態顯示您專用的 SQL 集區實例已暫停或正在調整，請依照指引繼續您的實例。
+如果您的資源健康狀態顯示您專用的 SQL 集區 (先前的 SQL DW) 實例已暫停或正在調整，請依照指引繼續您的實例。
 
-![螢幕擷取畫面顯示已暫停或調整的 SQL 資料倉儲實例。](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png)
+![螢幕擷取畫面顯示已暫停或調整的專用 SQL 集區實例。](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png)
 您可以在這裡找到資源健康狀態的其他相關資訊。
 
 ## <a name="check-for-paused-or-scaling-operation"></a>檢查已暫停或正在調整的作業
 
-請檢查入口網站，以查看您專用的 SQL 集區實例是否已暫停或調整。
+請檢查入口網站，以查看您專用的 SQL 集區 (先前的 SQL DW) 實例是否已暫停或調整。
 
 ![螢幕擷取畫面顯示如何檢查資料倉儲是否已暫停。](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-如果您看到服務已暫停或正在調整，請檢查服務是否不在維護排程期間。 在專用 SQL 集區 *總覽* 的入口網站上，您會看到所選擇的維護排程。
+如果您看到服務已暫停或正在調整，請檢查服務是否不在維護排程期間。 在專用 SQL 集區的入口網站上 (先前的 SQL DW) *總覽*，您將會看到選擇的維護排程。
 
 ![維護排程概觀](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-否則，請洽詢您的 IT 管理員，確認此維護不是已排定事件。 若要繼續專用的 SQL 集區實例，請遵循下列 [步驟](pause-and-resume-compute-portal.md)。
+否則，請洽詢您的 IT 管理員，確認此維護不是已排定事件。 若要繼續 (先前為 SQL DW) 實例的專用 SQL 集區，請遵循下列 [步驟](pause-and-resume-compute-portal.md)。
 
 ## <a name="check-your-firewall-settings"></a>檢查防火牆設定
 
-專用的 SQL 集區資料庫會透過埠1433進行通訊。如果您嘗試從公司網路內進行連線，您網路的防火牆可能不允許透過連接埠 1433 的輸出流量。 在此情況下，除非 IT 部門開啟埠1433，否則您無法連線到您的 [邏輯伺服器](../../azure-sql/database/logical-servers.md) 。 您可以在[這裡](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)找到防火牆組態的其他資訊。
+專用的 SQL 集區 (先前的 SQL DW) 資料庫會透過埠1433進行通訊。  如果您嘗試從公司網路內進行連線，您網路的防火牆可能不允許透過連接埠 1433 的輸出流量。 在此情況下，除非 IT 部門開啟埠1433，否則您無法連線到您的 [邏輯伺服器](../../azure-sql/database/logical-servers.md) 。 您可以在[這裡](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)找到防火牆組態的其他資訊。
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>檢查 VNet/服務端點設定
 
@@ -61,7 +61,7 @@ ms.locfileid: "93308372"
 
 ### <a name="software"></a>軟體
 
-請檢查以確定您使用的是最新的工具來連接到您的專用 SQL 集區：
+請檢查以確定您使用的是最新的工具，以連接到您先前的 SQL DW)  (專用的 SQL 集區：
 
 - SSMS
 - Azure Data Studio
@@ -106,7 +106,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>連線斷續的問題
 
-進行檢查以了解伺服器上是否因為有大量已排入佇列的要求而讓負載太高。 您可能需要擴大專屬的 SQL 集區，以取得額外的資源。
+進行檢查以了解伺服器上是否因為有大量已排入佇列的要求而讓負載太高。 您可能需要將專用的 SQL 集區擴大 (先前的 SQL DW) 來取得額外的資源。
 
 ## <a name="common-error-messages"></a>常見的錯誤訊息
 

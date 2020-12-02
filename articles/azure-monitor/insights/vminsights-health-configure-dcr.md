@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: 2bbc57d8ddc004c1926da7e0037efdc1fcf2d76e
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 55e5a587a0ad02fa1f8993027b46162a14a58832
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95318094"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448248"
 ---
 # <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-using-data-collection-rules-preview"></a>使用資料收集規則在適用於 VM 的 Azure 監視器來賓健康情況中設定監視 (預覽) 
 [適用於 VM 的 Azure 監視器來賓健康狀態](vminsights-health-overview.md) 可讓您依定期取樣的一組效能測量所定義，來查看虛擬機器的健康情況。 本文說明如何使用資料收集規則，在多部虛擬機器之間修改預設監視。
@@ -20,7 +20,7 @@ ms.locfileid: "95318094"
 ## <a name="monitors"></a>監視器
 虛擬機器的健全狀況狀態取決於每個監視的 [健全狀況匯總](vminsights-health-overview.md#health-rollup-policy) 套件。 適用於 VM 的 Azure 監視器來賓健康情況下有兩種監視類型，如下表所示。
 
-| 監視 | 說明 |
+| 監視 | 描述 |
 |:---|:---|
 | 單位監視 | 測量資源或應用程式的某些層面。 這可能是檢查效能計數器以判斷資源的效能或可用性。 |
 | 彙總監視器 | 將多個監視器分組，以提供單一匯總的健全狀況狀態。 匯總監視可包含一或多個單位監視和其他匯總監視。 |
@@ -30,7 +30,7 @@ ms.locfileid: "95318094"
 ## <a name="monitor-properties"></a>監視屬性
 下表說明可在每個監視器上設定的屬性。
 
-| 屬性 | 監視器 | 說明 |
+| 屬性 | 監視器 | 描述 |
 |:---|:---|:---|
 | 啟用 | Aggregate<br>單位 | 若為 true，則會計算狀態監視器，並貢獻虛擬機器的健全狀況。 它可能會觸發警示警示已啟用。 |
 | 警示 | Aggregate<br>單位 | 若為 true，當監視移至狀況不良狀態時，就會觸發警示。 若為 false，監視器的狀態仍會導致可能觸發警示的虛擬機器健全狀況。 |
@@ -49,9 +49,9 @@ ms.locfileid: "95318094"
 
 | 監視 | 啟用 | 警示 | 警告 | 重大 | 評估頻率 | 回顧 | 評估類型 | 最小取樣 | 樣本數上限 |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| CPU 使用率  | True | False | None | \> 90%    | 60 秒 | 240秒 | 最小值 | 2 | 3 |
-| 可用的記憶體 | True | False | None | \< 100 MB | 60 秒 | 240秒 | 最大值 | 2 | 3 |
-| 檔案系統      | True | False | None | \< 100 MB | 60 秒 | 120秒 | 最大值 | 1 | 1 |
+| CPU 使用率  | 是 | 否 | 無 | \> 90%    | 60 秒 | 240秒 | 最小值 | 2 | 3 |
+| 可用的記憶體 | 是 | 否 | 無 | \< 100 MB | 60 秒 | 240秒 | 最大值 | 2 | 3 |
+| 檔案系統      | 是 | 否 | 無 | \< 100 MB | 60 秒 | 120秒 | 最大值 | 1 | 1 |
 
 
 ## <a name="overrides"></a>覆寫
@@ -175,7 +175,7 @@ ms.locfileid: "95318094"
 
 下表列出目前可用的監視名稱。
 
-| 類型名稱 | Name | 描述 |
+| 類型名稱 | 名稱 | 描述 |
 |:---|:---|:---|
 | root | root | 代表虛擬機器健康情況的最上層監視。 | |
 | cpu 使用率 | cpu 使用率 | CPU 使用率監視器。 | |
@@ -198,7 +198,7 @@ ms.locfileid: "95318094"
 }
 ```
 
-| 項目 | 強制性 | 說明 | 
+| 元素 | 強制性 | 描述 | 
 |:---|:---|:---|
 | `isEnabled` | 否 | 如果設定為 true，監視將會在切換至重大或警告狀態時產生警示，並在返回狀況良好狀態時解決警示。 如果為 false 或省略，則不會產生警示。  |
 
@@ -224,7 +224,7 @@ ms.locfileid: "95318094"
 }
 ```
 
-| 項目 | 強制性 | 說明 | 
+| 元素 | 強制性 | 描述 | 
 |:---|:---|:---|
 | `evaluationFrequencySecs` | 否 | 定義健全狀況狀態評估的頻率。 每個監視器都會在代理程式啟動時進行評估，並在之後依此參數定義的定期間隔進行評估。 |
 | `lookbackSecs`   | 否 | 回顧視窗的大小（以秒為單位）。 |
@@ -246,7 +246,7 @@ ms.locfileid: "95318094"
 },
 ```
 
-| 屬性 | 強制性 | 說明 | 
+| 屬性 | 強制性 | 描述 | 
 |:---|:---|:---|
 | `isEnabled` | 否 | 指定是否啟用條件。 如果設定為 **false**，即使可以設定臨界值和運算子屬性，還是會停用條件。 |
 | `threshold` | 否 | 定義要比較評估值的臨界值。 |
@@ -264,113 +264,15 @@ ms.locfileid: "95318094"
 },
 ```
 
-| 屬性 | 強制性 | 說明 | 
+| 屬性 | 強制性 | 描述 | 
 |:---|:---|:---|
 | `isEnabled` | 否 | 指定是否啟用條件。 如果設定為 **false**，即使可以設定臨界值和運算子屬性，還是會停用條件。 |
 | `threshold` | 否 | 定義要比較評估值的臨界值。 |
 | `operator`  | 否 | 定義要在臨界值運算式中使用的比較運算子。 可能的值： >、<、>=、<=、= =。 |
 
 ## <a name="sample-data-collection-rule"></a>範例資料收集規則
-下列範例資料收集規則顯示用來設定監視的覆寫範例。
+如需啟用來賓監視的範例資料收集規則，請參閱 [使用 Resource Manager 範本啟用虛擬機器](vminsights-health-enable.md#enable-a-virtual-machine-using-resource-manager-template)。
 
-
-```json
-{
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "defaultHealthDataCollectionRuleName": {
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the name of the data collection rule to create."
-      },
-      "defaultValue": "Microsoft-VMInsights-Health"
-    },
-    "destinationWorkspaceResourceId": {
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the Azure resource ID of the Log Analytics workspace to use to store virtual machine health data."
-      }
-    },
-    "dataCollectionRuleLocation": {
-      "type": "string",
-      "metadata": {
-        "description": "The location code in which the data collection rule should be deployed. Examples: eastus, westeurope, etc"
-      }
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Insights/dataCollectionRules",
-      "name": "[parameters('defaultHealthDataCollectionRuleName')]",
-      "location": "[parameters('dataCollectionRuleLocation')]",
-      "apiVersion": "2019-11-01-preview",
-      "properties": {
-        "description": "Data collection rule for VM Insights health.",
-        "dataSources": {
-          "performanceCounters": [
-              {
-                  "name": "VMHealthPerfCounters",
-                  "streams": [ "Microsoft-Perf" ],
-                  "scheduledTransferPeriod": "PT1M",
-                  "samplingFrequencyInSeconds": 60,
-                  "counterSpecifiers": [
-                      "\\LogicalDisk(*)\\% Free Space",
-                      "\\Memory\\Available Bytes",
-                      "\\Processor(_Total)\\% Processor Time"
-                  ]
-              }
-          ],
-          "extensions": [
-            {
-              "name": "Microsoft-VMInsights-Health",
-              "streams": [
-                "Microsoft-HealthStateChange"
-              ],
-              "extensionName": "HealthExtension",
-              "extensionSettings": {
-                "schemaVersion": "1.0",
-                "contentVersion": "",
-                "healthRuleOverrides": [
-                  {
-                    "scopes": [ "*" ],
-                    "monitors": ["root"],
-                    "alertConfiguration": {
-                      "isEnabled": true
-                    }
-                  }
-                ]
-              },
-              "inputDataSources": [
-                  "VMHealthPerfCounters"
-              ]
-
-            }
-          ]
-        },
-        "destinations": {
-          "logAnalytics": [
-            {
-              "workspaceResourceId": "[parameters('destinationWorkspaceResourceId')]",
-              "name": "Microsoft-HealthStateChange-Dest"
-            }
-          ]
-        },                  
-        "dataFlows": [
-          {
-            "streams": [
-              "Microsoft-HealthStateChange"
-            ],
-            "destinations": [
-              "Microsoft-HealthStateChange-Dest"
-            ]
-          }
-        ]
-      }
-    }
-  ]
-}
-```
 
 ## <a name="next-steps"></a>後續步驟
 

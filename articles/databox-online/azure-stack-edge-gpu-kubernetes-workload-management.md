@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: d9e0da9e24a0bd32047d029879c4f0e110dc0c16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef840b3d9db4e82eeecea37079a08ccb0858a77b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320790"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448525"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-pro-device"></a>Kubernetes Azure Stack Edge Pro 裝置上的工作負載管理
 
-在您的 Azure Stack Edge Pro 裝置上，當您設定計算角色時，會建立 Kubernetes 叢集。 建立 Kubernetes 叢集之後，就可以將容器化應用程式部署到 pod 中的 Kubernetes 叢集。 有不同的方式可在您的 Kubernetes 叢集中部署工作負載。 
+在您的 Azure Stack Edge Pro 裝置上，當您設定計算角色時，會建立 Kubernetes 叢集。 建立 Kubernetes 叢集之後，就可以將容器化應用程式部署到 pod 中的 Kubernetes 叢集。 在您 Kubernetes 叢集中部署工作負載有不同的方式。 
 
 本文說明可用來在 Azure Stack Edge Pro 裝置上部署工作負載的各種方法。
 
@@ -29,7 +29,7 @@ ms.locfileid: "91320790"
 
     您可以建立 Kubernetes 部署，以在叢集上部署無狀態應用程式。 
 
-- 具**狀態應用程式**需要儲存其狀態。 具狀態應用程式會使用持續性的儲存體（例如持續性磁片區）來儲存資料，供伺服器或其他使用者使用。 具狀態應用程式的範例包括 [AZURE SQL Edge](../azure-sql-edge/overview.md) 和 MongoDB 等資料庫。
+- 具 **狀態應用程式** 需要儲存其狀態。 具狀態應用程式會使用持續性的儲存體（例如持續性磁片區）來儲存資料，供伺服器或其他使用者使用。 具狀態應用程式的範例包括 [AZURE SQL Edge](../azure-sql-edge/overview.md) 和 MongoDB 等資料庫。
 
     您可以建立 Kubernetes 部署來部署具狀態應用程式。 
 
@@ -39,7 +39,7 @@ ms.locfileid: "91320790"
  
 1. **設定存取**：首先，您將使用 PowerShell 執行空間來建立使用者、建立命名空間，以及授與使用者對該命名空間的存取權。
 2. **設定儲存體**：接下來，您將使用 Azure 入口網站中的 Azure Stack Edge 資源，為您將部署的具狀態應用程式，使用靜態或動態布建來建立永久性磁片區。
-3. **設定網路**功能：最後，您將使用這些服務，在外部和 Kubernetes 叢集中公開應用程式。
+3. **設定網路** 功能：最後，您將使用這些服務，在外部和 Kubernetes 叢集中公開應用程式。
  
 ## <a name="deployment-types"></a>部署類型
 
@@ -49,11 +49,11 @@ ms.locfileid: "91320790"
 
 - **本機部署**：此部署是透過命令列存取工具（例如，可 `kubectl` 讓您部署 Kubernetes） `yamls` 。 您可以透過檔案存取 Azure Stack Edge Pro 上的 Kubernetes 叢集 `kubeconfig` 。 如需詳細資訊，請移至透過 [Kubectl 存取 Kubernetes](azure-stack-edge-gpu-create-kubernetes-cluster.md)叢集。
 
-- **IoT Edge 部署**：這是透過連接到 Azure IoT 中樞的 IoT Edge。 您可以透過命名空間連接到 Azure Stack Edge Pro 裝置上的 Kubernetes 叢集 `iotedge` 。 部署在此命名空間中的 IoT Edge 代理程式，會負責與 Azure 的連線。 您可以 `IoT Edge deployment.json` 使用 AZURE DEVOPS CI/CD 來套用設定。 命名空間和 IoT Edge 管理是透過雲端操作員進行。
+- **IoT Edge 部署**：這是透過連接到 Azure IoT 中樞的 IoT Edge。 您可以透過命名空間連接到 Azure Stack Edge Pro 裝置上的 Kubernetes 叢集 `iotedge` 。 在此命名空間中部署的 IoT Edge 代理程式會負責連線至 Azure。 您可以 `IoT Edge deployment.json` 使用 AZURE DEVOPS CI/CD 來套用設定。 命名空間和 IoT Edge 管理是透過雲端操作員進行。
 
 - **Azure Arc 啟用的 Kubernetes 部署**： Azure Arc 啟用的 Kubernetes 是一種混合式管理工具，可讓您在 Kubernetes 叢集上部署應用程式。 您可以透過，連接到 Azure Stack Edge Pro 裝置上的 Kubernetes 叢集 `azure-arc namespace` 。 部署在此命名空間中的代理程式會負責與 Azure 的連線。 您可以使用以 Gitops) 將為基礎的設定管理來套用部署設定。 
     
-    Azure Arc 啟用的 Kubernetes 也可讓您使用 Azure 監視器容器來查看和監視您的叢集。 如需詳細資訊，請移至 [Azure Arc 啟用什麼 Kubernetes？](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)。
+    Azure Arc 啟用的 Kubernetes 也可讓您使用 Azure 監視器容器來查看和監視您的叢集。 如需詳細資訊，請移至 [Azure Arc 啟用什麼 Kubernetes？](../azure-arc/kubernetes/overview.md)。
 
 ## <a name="choose-the-deployment-type"></a>選擇部署類型
 

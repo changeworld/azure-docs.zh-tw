@@ -10,17 +10,17 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2a24a61e26bdfaba0619e3965e95b1828380a1c8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d47b4847a12b63532e44a8a1a47101dd065f811b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322104"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446602"
 ---
 # <a name="design-decisions-and-coding-techniques-for-synapse-sql-features-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中 Synapse SQL 功能的設計決策和程式碼撰寫技術
-在本文中，您可以找到專用 SQL 集區和無伺服器 SQL 集區的資源清單， (預覽版) Synapse SQL 的功能。 建議的文章分為兩個部分：主要設計決策和開發和程式碼撰寫技巧。
+在本文中，您可以找到專用 SQL 集區的資源清單，以及 Synapse SQL 的無伺服器 SQL 集區功能。 建議的文章分為兩個部分：主要設計決策和開發和程式碼撰寫技巧。
 
-這些文章的目標是協助您針對 Synapse 分析內的 Synapse SQL 元件開發最佳的技術方法。
+這些文章的目標是協助您為 Azure Synapse Analytics 內的 Synapse SQL 元件開發最佳的技術方法。
 
 ## <a name="key-design-decisions"></a>主要的設計決策
 下列文章強調 Synapse SQL 開發的概念和設計決策：

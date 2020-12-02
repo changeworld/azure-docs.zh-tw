@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 50f2515cee92ead8018ffaaf4b4574905f8007d5
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4d29d7401cf944e8d999db847ce2e1266169ea34
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844500"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448411"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>將 Key Vault 與 DigiCert 憑證授權單位整合
 
@@ -108,7 +108,7 @@ $org = New-AzKeyVaultCertificateOrganizationDetail -Id OrganizationIDfromDigiCer
 $secureApiKey = ConvertTo-SecureString DigiCertCertCentralAPIKey -AsPlainText –Force
 ```
 
-4. 設定 **簽發者**。 這會將 Digicert 新增為金鑰保存庫中的憑證授權單位。 若要深入了解參數，請[閱讀這裡](https://docs.microsoft.com/powershell/module/az.keyvault/Set-AzKeyVaultCertificateIssuer)
+4. 設定 **簽發者**。 這會將 Digicert 新增為金鑰保存庫中的憑證授權單位。 若要深入了解參數，請[閱讀這裡](/powershell/module/az.keyvault/Set-AzKeyVaultCertificateIssuer)
 ```azurepowershell-interactive
 Set-AzKeyVaultCertificateIssuer -VaultName "Contoso-Vaultname" -Name "TestIssuer01" -IssuerProvider DigiCert -AccountId $accountId -ApiKey $secureApiKey -OrganizationDetails $org -PassThru
 ```

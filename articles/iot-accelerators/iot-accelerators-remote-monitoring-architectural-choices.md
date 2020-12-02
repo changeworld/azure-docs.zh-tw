@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1bd08596a30db7322a72b4269fddfe0b9df19119
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27a65d8a499f6eba130dc9537de3cb2b3dc3abe8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61447163"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446765"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>遠端監視架構選擇
 
@@ -23,7 +23,7 @@ Azure IoT 遠端監視解決方案加速器是開放原始碼、MIT 授權的解
 - 裝置管理
 - 串流處理
 
-遠端監視解決方案會遵循建議的 [Azure IoT 參考架構](https://aka.ms/iotrefarchitecture)。
+遠端監視解決方案會遵循建議的 [Azure IoT 參考架構](/azure/architecture/reference-architectures/iot)。
 
 本文說明在每個遠端監視子系統中所做的架構及技術選擇。 不過，Microsoft 在遠端監視解決方案中所做的技術選擇，不是實作遠端監視 IoT 解決方案的唯一方式。 您應該將技術實作視為建置成功應用程式的基準，而且應該修改它以：
 
@@ -86,4 +86,4 @@ Docker 的替代方案包括在 PaaS 服務中裝載您的微服務，例如 Azu
 
 * 在[此處](https://www.azureiotsolutions.com/)部署遠端監視解決方案。
 * 在 [C#](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) \(英文\) 和[Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/) \(英文\) 中探索 GitHub 程式碼。  
-* 在[這裡](https://aka.ms/iotrefarchitecture) \(英文\) 深入了解 IoT 參考架構。
+* 在[這裡](/azure/architecture/reference-architectures/iot) \(英文\) 深入了解 IoT 參考架構。

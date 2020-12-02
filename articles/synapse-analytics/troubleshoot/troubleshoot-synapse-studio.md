@@ -1,5 +1,5 @@
 ---
-title: 針對 Synapse Studio (預覽版) 進行疑難排解
+title: 針對 Synapse Studio 進行疑難排解
 description: 針對 Azure Synapse Studio 進行疑難排解
 author: julieMSFT
 ms.service: synapse-analytics
@@ -8,18 +8,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3fe31f83ccc0dcbd2d61a7c70d40a64da08d13a1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a96709c7538bda6d6b338c29dc512902e9ca2c87
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321025"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445844"
 ---
-# <a name="azure-synapse-studio-preview-troubleshooting"></a>Azure Synapse Studio (預覽版) 疑難排解
+# <a name="azure-synapse-studio-troubleshooting"></a>Azure Synapse Studio 疑難排解
 
 此疑難排解指南提供有關在網路連線問題上開啟支援票證時所要提供之資訊的指示。 有了適當的資訊，我們可以更快速地解決問題。
 
-## <a name="serverless-sql-pool-preview-service-connectivity-issue"></a>無伺服器 SQL 集區 (預覽版) 服務連線問題
+## <a name="serverless-sql-pool-service-connectivity-issue"></a>無伺服器 SQL 集區服務連線能力問題
 
 ### <a name="symptom-1"></a>徵兆1
 
@@ -61,7 +61,7 @@ ms.locfileid: "93321025"
 
 `https://[*A*]-ondemand.database.windows.net:1443/databases/[*B*]/query?api-version=2018-08-01-preview&application=ArcadiaSqlOnDemandExplorer`
 
-其中 [ *A* ] 是您的工作區名稱，而 "-ondemand" 可以是 "-sqlod"，其中 [ *B* ] 應該是資料庫名稱，例如 "master"。 最多隻能有兩個專案具有相同的 URL 值，但有不同的方法值;選項和貼文。 檢查 [狀態] 資料行下的這兩個專案是否有 "200" 或 "20 倍"，其中 "x" 可以是任何單一位數。
+其中 [*A*] 是您的工作區名稱，而 "-ondemand" 可以是 "-sqlod"，其中 [*B*] 應該是資料庫名稱，例如 "master"。 最多隻能有兩個專案具有相同的 URL 值，但有不同的方法值;選項和貼文。 檢查 [狀態] 資料行下的這兩個專案是否有 "200" 或 "20 倍"，其中 "x" 可以是任何單一位數。
 
 如果其中一個專案有 "20 倍" 以外的專案，而且：
 

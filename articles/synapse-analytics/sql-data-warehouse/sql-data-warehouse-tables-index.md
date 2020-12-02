@@ -11,14 +11,14 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 05551f39203f2c070dd2ede0740135d6963aedcf
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: fea314d595fb39a1e35dec8ab24533ad4b893f98
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323572"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448066"
 ---
-# <a name="indexing-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的專用 SQL 集區來編制索引資料表
+# <a name="indexing-dedicated-sql-pool-tables-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中編制專用 SQL 集區資料表的索引
 
 在專用 SQL 集區中編制資料表索引的建議和範例。
 
@@ -206,7 +206,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 
 流入專用 SQL 集區的小型載入有時也稱為 trickle 負載。 它們通常代表系統接近連續擷取的串流。 不過，因為這個串流已接近連續狀態，所以資料列的容量並沒有特別大。 通常資料遠低於直接載入資料行存放區格式所需的閾值。
 
-在這些情況下，最好先將資料登陸到 Azure Blob 儲存體中，並讓它在載入之前累積。 這項技術通常稱為 *微批次處理* 。
+在這些情況下，最好先將資料登陸到 Azure Blob 儲存體中，並讓它在載入之前累積。 這項技術通常稱為 *微批次處理*。
 
 ### <a name="too-many-partitions"></a>太多資料分割
 

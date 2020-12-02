@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 9524577d40c3b6b65bb3c3c8ff9e257b015ed90d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 4425fdf488665ad555c73c59682041cb23a9ca66
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012942"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447329"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>建立和管理 Azure Machine Learning 工作區 
 
@@ -30,7 +30,7 @@ ms.locfileid: "95012942"
 
 ## <a name="limitations"></a>限制
 
-* 建立新的工作區時，您可以允許工作區自動建立所需的 Azure 服務，或提供現有的服務。 提供現有的服務時，這些服務必須與工作區位於相同的 Azure 訂用帳戶中。
+[!INCLUDE [register-namespace](../../includes/machine-learning-register-namespace.md)]
 
 ## <a name="create-a-workspace"></a>建立工作區
 
@@ -155,7 +155,7 @@ ms.locfileid: "95012942"
  
 ---
 
-### <a name="networking"></a>網路  
+### <a name="networking"></a>網路功能  
 
 > [!IMPORTANT]  
 > 如需搭配使用私人端點和虛擬網路與工作區的詳細資訊，請參閱 [網路隔離和隱私權](how-to-network-security-overview.md)。
@@ -390,6 +390,6 @@ Azure Machine Learning 工作區會使用 Azure Container Registry (ACR) 進行�
 * 使用 Azure 入口網站來 [建立工作區和計算實例](tutorial-1st-experiment-sdk-setup.md)
 * 使用 Python SDK [在您自己的環境中建立工作區](tutorial-1st-experiment-sdk-setup-local.md)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 擁有工作區之後，請瞭解如何 [定型和部署模型](tutorial-train-models-with-aml.md)。

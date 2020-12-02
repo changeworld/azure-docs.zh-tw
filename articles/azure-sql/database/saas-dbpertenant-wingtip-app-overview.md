@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 3abfffcfb47a9530b6a04762624eee9d6ee9bc81
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 09651ed5c7472c12d82108fdbd450cca6e84349f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780456"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447094"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>使用每一租使用者一個資料庫模式搭配 Azure SQL Database 的多租使用者 SaaS 應用程式簡介
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,7 +37,7 @@ Wingtip SaaS 應用程式會使用每一租用戶一個資料庫的模型。 它
 
 ## <a name="sql-database-wingtip-saas-tutorials"></a>SQL Database Wingtip SaaS 教學課程
 
-部署應用程式之後，請瀏覽下列以初始部署為基礎的教學課程。 這些教學課程會探索可利用 SQL Database 內建功能、Azure Synapse Analytics (先前的 SQL 資料倉儲) 和其他 Azure 服務的常見 SaaS 模式。 教學課程包括 PowerShell 指令碼及詳細的說明。 這些說明可讓您更容易了解及在您應用程式中實作相同的 SaaS 管理模式。
+部署應用程式之後，請瀏覽下列以初始部署為基礎的教學課程。 這些教學課程會探索可利用 SQL Database、Azure Synapse Analytics 和其他 Azure 服務內建功能的常見 SaaS 模式。 教學課程包括 PowerShell 指令碼及詳細的說明。 這些說明可讓您更容易了解及在您應用程式中實作相同的 SaaS 管理模式。
 
 
 | 教學課程 | 描述 |

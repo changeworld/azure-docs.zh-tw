@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: marayerm
-ms.openlocfilehash: bf9cda37e0cc8186938a316c87bcc69a7a7370b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 848db19fe855e3ce171fe54c7962309fab977ed5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90085275"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446332"
 ---
 # <a name="azure-storage-explorer-support-lifecycle-and-policy"></a>Azure 儲存體總管支援生命週期和原則
 
@@ -23,7 +23,7 @@ ms.locfileid: "90085275"
 
 每年發行四次至六次的 Azure 儲存體總管。 Microsoft 也可能會略過此排程，以針對重大問題進行修正。
 
-儲存體總管每小時檢查一次更新，並在可用時加以下載。 不過，若要開始安裝程式，則需要使用者接受。 如果使用者選擇在不同時間更新，則可以手動檢查更新。 在 Windows 和 Linux 上，使用者可以**從 [說明**] 功能表選取 [**檢查更新**] 來檢查更新。 在 macOS 上，您可以在 [**應用程式] 功能表**下**查看是否有更新**。 使用者也可以直接移至 [儲存體總管](https://azure.microsoft.com/features/storage-explorer/) 下載頁面，以下載並安裝最新版本。
+儲存體總管每小時檢查一次更新，並在可用時加以下載。 不過，若要開始安裝程式，則需要使用者接受。 如果使用者選擇在不同時間更新，則可以手動檢查更新。 在 Windows 和 Linux 上，使用者可以 **從 [說明**] 功能表選取 [**檢查更新**] 來檢查更新。 在 macOS 上，您可以在 [**應用程式] 功能表** 下 **查看是否有更新**。 使用者也可以直接移至 [儲存體總管](https://azure.microsoft.com/features/storage-explorer/) 下載頁面，以下載並安裝最新版本。
 
 強烈建議您一律使用最新版本的儲存體總管。 如果問題導致您無法更新至最新版本的儲存體總管，請在我們的 [GitHub](https://github.com/microsoft/AzureStorageExplorer)上開啟問題。
 
@@ -41,6 +41,7 @@ ms.locfileid: "90085275"
 
 | 儲存體總管版本  | 發行日期       | 結束支援日期 |
 |:-------------------------:|:------------------:|:-------------------:|
+| v 1.16。0                   | 2020 年 11 月 10 日  | 2021年11月10日   |
 | v 1.15。1                   | 2020年9月2日  | 2021年9月2日   |
 | v 1.15。0                   | 2020年8月27日    | 2021年8月27日     |
 | v 1.14。2                   | 2020 年 7 月 16 日      | 2021年7月16日       |

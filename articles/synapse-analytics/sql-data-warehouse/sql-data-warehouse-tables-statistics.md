@@ -10,13 +10,13 @@ ms.subservice: sql-dw
 ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: d9349c5d1c4e6255dc0854537bb7e93e3e636ce8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: e7fc89dcc0e7938ea2958d5c804abe82e20f186d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321062"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447940"
 ---
 # <a name="table-statistics-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的資料表統計資料
 
@@ -72,7 +72,7 @@ SET AUTO_CREATE_STATISTICS ON
 > [!NOTE]
 > 建立統計資料時，會以不同的使用者內容登入 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 。
 
-當自動統計資料建立完成時，會採用以下格式： _WA_Sys_ <8 digit column id in Hex>_<8 digit table id in Hex>。 您可以藉由執行 [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 命令來查看已建立的統計資料：
+當自動統計資料建立完成時，會採用以下格式：_WA_Sys_<8 digit column id in Hex>_<8 digit table id in Hex>。 您可以藉由執行 [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 命令來查看已建立的統計資料：
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -101,7 +101,7 @@ Table_name 是包含要顯示之統計資料的資料表名稱。 此資料表�
 
 沒有動態管理檢視可判斷資料表內的資料自從上次更新統計資料之後是否有所變更。  下列兩個查詢可協助您判斷統計資料是否已過時。
 
-**查詢1：**  找出 [統計資料] ( **stats_row_count** ) 的資料列計數，以及 ( **actual_row_count** ) 的實際資料列計數之間的差異。 
+**查詢1：**  找出 [統計資料] (**stats_row_count**) 的資料列計數，以及 (**actual_row_count**) 的實際資料列計數之間的差異。 
 
 ```sql
 select 
@@ -282,7 +282,7 @@ CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < 
 > [!NOTE]
 > 用來估計查詢結果中資料列數目的長條圖，只適用於統計資料物件定義中所列的第一個資料行。
 
-在此範例中，長條圖位於 *product\_category* 。 跨資料行統計資料會依據 *product\_category* 和 *product\_sub_category* 計算：
+在此範例中，長條圖位於 *product\_category*。 跨資料行統計資料會依據 *product\_category* 和 *product\_sub_category* 計算：
 
 ```sql
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
@@ -312,11 +312,11 @@ CREATE STATISTICS stats_col2 on dbo.table2 (col2);
 CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 ```
 
-### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>使用預存程序對資料庫中的所有資料行建立統計資料
+### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-sql-pool"></a>使用預存程式來建立 SQL 集區中所有資料行的統計資料
 
-專用的 SQL 集區沒有相當於 SQL Server 中 sp_create_stats 的系統預存程式。 此預存程序會對資料庫中還沒有統計資料的每個資料行建立單一資料行統計資料物件。
+專用的 SQL 集區沒有相當於 SQL Server 中 sp_create_stats 的系統預存程式。 這個預存程式會在 SQL 集區中的每個資料行上建立單一資料行統計資料物件，而該資料集還沒有統計資料
 
-以下範例會協助您開始進行資料庫設計。 請放心地依照您的需求進行調整。
+下列範例將協助您開始使用 SQL 集區設計。 請放心地依照您的需求進行調整。
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_create_stats]

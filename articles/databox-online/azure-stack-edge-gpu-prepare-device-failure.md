@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: f7c7caf6c01c2e7ea9aaf141a2597ef338735d3d
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 986a3c56a1e0dcc79ab472a7e18d7eeb7e2fddb5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173605"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448347"
 ---
 # <a name="prepare-for-an-azure-stack-edge-pro-gpu-device-failure"></a>準備 Azure Stack Edge Pro GPU 裝置失敗
 
@@ -77,7 +77,7 @@ Azure Stack Edge 可與 Azure 備份和其他協力廠商資料保護解決方�
 
 | 備份解決方案        | 支援的 OS   | 參考                                                                |
 |-------------------------|----------------|--------------------------------------------------------------------------|
-| Azure 備份 Microsoft Azure 復原服務 (MARS) 代理程式 | Windows        | [關於 MARS 代理程式](/azure/backup/backup-azure-about-mars)    |
+| Azure 備份 Microsoft Azure 復原服務 (MARS) 代理程式 | Windows        | [關於 MARS 代理程式](../backup/backup-azure-about-mars.md)    |
 | Cohesity                | Windows、Linux | [Microsoft Azure 整合、備份和修復解決方案簡介](https://www.cohesity.com/solution/cloud/azure) <br>如需詳細資訊，請聯絡 Cohesity。                          |
 | Commvault               | Windows、Linux | https://www.commvault.com/azure <br>如需詳細資訊，請聯絡 Commvault。                          |
 | Veritas                 | Windows、Linux | http://veritas.com/azure <br> 如需詳細資訊，請洽詢 Veritas。                    |

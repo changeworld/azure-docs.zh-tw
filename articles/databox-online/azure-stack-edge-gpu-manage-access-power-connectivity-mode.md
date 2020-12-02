@@ -6,18 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 11/04/2020
 ms.author: alkohli
-ms.openlocfilehash: b66a184abce53c31fade19fc9e10ffe4c7ff8415
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 38dcb32b2993838f8c3f13334e0bc44e9146f113
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532438"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448588"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>管理 Azure Stack Edge Pro GPU 的存取、電源和連線模式
 
 本文說明如何使用 GPU 裝置來管理 Azure Stack Edge Pro 的存取、電源和連線模式。 這些作業都是透過本機 Web UI 或 Azure 入口網站執行。
+
+本文適用于 Azure Stack Edge Pro GPU、Azure Stack Edge Pro R 和 Azure Stack Edge 迷你 R 裝置。
+
 
 在本文中，您將學會如何：
 
@@ -32,11 +35,13 @@ ms.locfileid: "94532438"
 
 您 Azure Stack Edge Pro 裝置的存取權是透過使用裝置密碼來控制。 您可以透過本機 web UI 來變更密碼。 您也可以在 Azure 入口網站中重設裝置密碼。
 
+存取裝置磁片上的資料也是由待用加密金鑰所控制。
+
 ### <a name="change-device-password"></a>變更裝置密碼
 
 請在本機 UI 中執行下列步驟，以變更裝置密碼。
 
-1. 在本機 web UI 中，移至 [ **維護 > 密碼** ]。
+1. 在本機 web UI 中，移至 [ **維護 > 密碼**]。
 2. 輸入目前的密碼，然後輸入新密碼。 所提供的密碼必須介於 8 到 16 個字元。 此密碼必須有下列其中 3 種字元：大寫、小寫、數字和特殊字元。 確認新的密碼。
 
     ![變更密碼](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/change-password-1.png)
@@ -54,6 +59,40 @@ ms.locfileid: "94532438"
 
 2. 輸入新密碼並加以確認。 所提供的密碼必須介於 8 到 16 個字元。 此密碼必須有下列其中 3 種字元：大寫、小寫、數字和特殊字元。 選取 [重設]。
 
+    ![重設密碼2](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
+
+### <a name="manage-access-to-device-data"></a>管理裝置資料的存取權
+
+針對 Azure Stack Edge Pro R 和 Azure Stack Edge 迷你 R 裝置，可使用裝置磁片磁碟機的待用加密金鑰來控制裝置資料的存取。 在您成功設定裝置以進行待用加密之後，[輪替加密待用金鑰] 選項會在裝置的本機 UI 中變成可用。 
+
+這項作業可讓您變更 BitLocker 磁片區的金鑰 `HcsData` ，以及 `HcsInternal` 您裝置上的所有自我加密磁片磁碟機。
+
+請遵循下列步驟來輪替靜態加密金鑰。
+
+1. 在裝置的本機 UI 中，移至 [ **開始** 使用] 頁面。 在 [ **安全性** ] 磚上，選取 [待用 **加密：輪替金鑰** ] 選項。 只有在您成功設定待用加密金鑰之後，才可以使用此選項。
+
+    ![選取 [開始使用] 頁面中的 [輪替加密金鑰]](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-1.png)
+
+1. 您可以使用自己的 BitLocker 金鑰，或使用系統產生的金鑰。  
+
+    若要提供您自己的金鑰，請輸入32個字元的完整 Base-64 編碼字串。 輸入的方式類似于第一次設定待用加密時所提供的內容。
+
+    ![攜帶您自己的靜態加密金鑰](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-2.png)
+
+    您也可以選擇使用系統產生的金鑰。
+
+    ![使用系統產生的靜態加密金鑰](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-3.png)
+
+1. 選取 [套用]。 金鑰保護裝置會輪替。
+
+    ![套用新的靜態加密金鑰](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-4.png)
+
+1. 當系統提示您下載並儲存金鑰檔案時，請選取 [ **下載後繼續**]。 
+
+    ![下載並繼續金鑰檔案](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-5.png)
+
+    將金鑰檔儲存 `.json` 在安全的位置。 此檔案可用來加速裝置的未來可能復原。
+
     ![螢幕擷取畫面顯示 [重設裝置密碼] 對話方塊。](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>管理資源存取
@@ -69,7 +108,7 @@ ms.locfileid: "94532438"
 
 您應該可以視 `User` 需要存取 Active Directory 租使用者 `Read all directory objects` 。 您不能是來賓使用者，因為他們沒有許可權 `Read all directory objects` 。 如果您是來賓，則作業（例如產生啟用金鑰、在 Azure Stack Edge Pro 裝置上建立共用、建立使用者、設定 Edge 計算角色、重設裝置密碼）都會失敗。
 
-如需如何提供存取權給使用者 Microsoft Graph API 的詳細資訊，請參閱 [Microsoft Graph 許可權參考](https://docs.microsoft.com/graph/permissions-reference)。
+如需如何提供存取權給使用者 Microsoft Graph API 的詳細資訊，請參閱 [Microsoft Graph 許可權參考](/graph/permissions-reference)。
 
 ### <a name="register-resource-providers"></a>註冊資源提供者
 
@@ -114,15 +153,15 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 
 若要變更裝置模式，請遵循下列步驟：
 
-1. 在裝置的本機 web UI 中，移至設定 **> 雲端** 。
-2. 從下拉式清單中，選取您要在其中操作裝置的模式。 您可以選取 [ **完全連接** ]、[ **部分連接** ] 和 [ **完全中斷** 連線]。 若要在已部分中斷連線的模式中執行裝置，請啟用 [Azure 入口網站管理]。
+1. 在裝置的本機 web UI 中，移至設定 **> 雲端**。
+2. 從下拉式清單中，選取您要在其中操作裝置的模式。 您可以選取 [ **完全連接**]、[ **部分連接**] 和 [ **完全中斷** 連線]。 若要在已部分中斷連線的模式中執行裝置，請啟用 [Azure 入口網站管理]。
 
  
 ## <a name="manage-power"></a>管理電源
 
 您可以使用本機 Web UI 關閉或重新啟動您的實體裝置。 我們建議在重新開機之前，先讓資料伺服器上的共用離線，然後再讓裝置離線。 此動作可讓資料損毀的可能性降至最低。
 
-1. 在本機 web UI 中，移至 [ **維護 > 電源** ]。
+1. 在本機 web UI 中，移至 [ **維護 > 電源**]。
 2. 根據您想要做的動作，選取 [ **關閉** ] 或 [ **重新開機** ]。
 
     ![電源設定](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/shut-down-restart-1.png)

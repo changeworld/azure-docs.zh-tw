@@ -1,6 +1,6 @@
 ---
 title: 教學課程：使用 Azure Functions 管理計算
-description: 如何使用 Azure Functions 管理 Azure Synapse Analytics 中的 SQL 集區計算。
+description: 如何使用 Azure Functions 來管理專屬 SQL 集區的計算， (先前的 SQL DW) Azure Synapse Analytics。
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: bc615322c11a456699d2364cf44cad40e086e851
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f0731f0deaf46ec419cfe43037804e10f2b73fd4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022474"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448378"
 ---
-# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>使用 Azure Functions 管理 Azure Synapse Analytics SQL 集區中的計算資源
+# <a name="use-azure-functions-to-manage-compute-resources-for-your-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>使用 Azure Functions 來管理專屬 SQL 集區的計算資源 (先前的 SQL DW) Azure Synapse Analytics
 
-本教學課程會使用 Azure Functions 來管理 Azure Synapse Analytics 中 SQL 集區的計算資源。
+本教學課程會使用 Azure Functions 來管理專屬 SQL 集區的計算資源， (先前的 SQL DW) Azure Synapse Analytics。
 
-若要搭配使用 Azure 函數應用程式與 SQL 集區，您必須在與您的 SQL 集區實例相同的訂用帳戶下，建立具有參與者存取權的 [服務主體帳戶](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 。
+若要使用具有專用 SQL 集區的 Azure 函數應用程式 (先前的 SQL DW) ，您必須建立 [服務主體帳戶](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 服務主體帳戶需要與您專用的 SQL 集區位於相同訂用帳戶下的參與者存取權， (先前的 SQL DW) 實例。
 
 ## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本部署以計時器為基礎的 Scaler
 
 部署此範本，您需要下列資訊：
 
-- 您的 SQL 集區實例所在的資源組名
-- 您的 SQL 集區實例所在的伺服器名稱
-- SQL 集區實例的名稱
+- 您專用的 SQL 集區 (先前的 SQL DW) 實例所在的資源組名
+- 您專用的 SQL 集區 (先前的 SQL DW) 實例所在的伺服器名稱
+- 您專用的 SQL 集區名稱 (先前為 SQL DW) 實例
 - Azure Active Directory 的租用戶識別碼 (目錄識別碼)
 - 訂用帳戶識別碼
 - 服務主體的應用程式識別碼
@@ -48,13 +48,13 @@ ms.locfileid: "96022474"
 
    ![使用範本部署的函式](./media/manage-compute-with-azure-functions/five-functions.png)
 
-2. 根據您是否要變更相應增加或相應減少時間，選取 [DWScaleDownTrigger] 或 [DWScaleUpTrigger]。 在下拉式功能表中，選取 [整合]。
+2. 選取 [ *DWScaleDownTrigger* ] 或 [ *DWScaleUpTrigger* ] 以擴大或縮小。 在下拉式功能表中，選取 [整合]。
 
    ![對函式選取整合](./media/manage-compute-with-azure-functions/select-integrate.png)
 
 3. 目前顯示的值應該為 %ScaleDownTime% 或 %ScaleUpTime%。 這些值表示排程是以[應用程式設定](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 中定義的值為基礎。 您現在可以忽略此值，並將排程變更為以後續步驟為基礎的慣用時間。
 
-4. 在 [排程] 區域中，新增您想要的 CRON 運算式時間，以反映您希望 Azure Synapse Analytics 向上擴充的頻率。
+4. 在 [排程] 區域中，新增您想要的 CRON 運算式，以反映您希望 Azure Synapse Analytics 向上擴充的頻率。
 
    ![變更函式排程](./media/manage-compute-with-azure-functions/change-schedule.png)
 
@@ -70,11 +70,11 @@ ms.locfileid: "96022474"
 
 1. 瀏覽到函式應用程式服務。 如果您部署的範本採用預設值，此服務應該命名為 DWOperations。 您的函式應用程式開啟後，您應會注意到有五個函式部署到您的函式應用程式服務。
 
-2. 根據您是否要變更相應增加或相應減少計算值，選取 DWScaleDownTrigger 或 DWScaleUpTrigger。 選取函式時，您的窗格應會顯示 index.js 檔案。
+2. 請選取 [ *DWScaleDownTrigger* ] 或 [ *DWScaleUpTrigger* ]，以擴大或縮小計算值。 選取函式時，您的窗格應會顯示 index.js 檔案。
 
    ![變更函式觸發程序計算層級](././media/manage-compute-with-azure-functions/index-js.png)
 
-3. 將 ServiceLevelObjective 的值變更為您想要的層級，然後按 [儲存]。 這個值是您的資料倉儲執行個體將根據 [整合] 區段中定義的排程而調整至的計算層級。
+3. 將 *ServiceLevelObjective* 的值變更為您想要的層級，然後選取 [儲存]。 *ServiceLevelObjective* 是您的資料倉儲實例將根據 [整合] 區段中定義的排程來調整規模的計算層級。
 
 ## <a name="use-pause-or-resume-instead-of-scale"></a>使用暫停或繼續，而不是調整
 
@@ -84,7 +84,7 @@ ms.locfileid: "96022474"
 
    ![函式窗格](./media/manage-compute-with-azure-functions/functions-pane.png)
 
-2. 針對您要啟用的對應觸發程序，按一下滑動切換開關。
+2. 針對您想要啟用的對應觸發程式，選取滑動切換。
 
 3. 瀏覽至個別觸發程序的 [整合] 索引標籤，以變更其排程。
 
@@ -114,17 +114,17 @@ ms.locfileid: "96022474"
 5. 將作業變數設定為所要的行為，如下所示：
 
    ```JavaScript
-   // Resume the SQL pool instance
+   // Resume the dedicated SQL pool (formerly SQL DW) instance
    var operation = {
        "operationType": "ResumeDw"
    }
 
-   // Pause the SQL pool instance
+   // Pause the dedicated SQL pool (formerly SQL DW) instance
    var operation = {
        "operationType": "PauseDw"
    }
 
-   // Scale the SQL pool instance to DW600c
+   // Scale the dedicated SQL pool (formerly SQL DW)l instance to DW600c
    var operation = {
        "operationType": "ScaleDw",
        "ServiceLevelObjective": "DW600c"
@@ -169,4 +169,4 @@ ms.locfileid: "96022474"
 
 深入瞭解 [計時器觸發](../../azure-functions/functions-create-scheduled-function.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 程式 Azure Functions。
 
-簽出 SQL 集區 [範例存放庫](https://github.com/Microsoft/sql-data-warehouse-samples)。
+請參閱先前 (SQL DW) 範例存放 [庫](https://github.com/Microsoft/sql-data-warehouse-samples)的專用 sql 集區。

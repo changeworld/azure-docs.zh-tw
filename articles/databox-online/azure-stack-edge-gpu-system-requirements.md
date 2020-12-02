@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: alkohli
-ms.openlocfilehash: d835507a17417f8b500c0fc13d0a662e606a37ff
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: d97f500bb84f816bacf44208ba305840e797b3bd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996409"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447701"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>使用 GPU Azure Stack Edge Pro 的系統需求 
 
@@ -40,7 +40,7 @@ Azure Stack Edge Pro 的系統需求包括：
 
 裝置的 REST 介面支援下列 Edge 儲存體帳戶。 Edge 儲存體帳戶會建立于裝置上。 如需詳細資訊，請參閱 [Edge 儲存體帳戶](azure-stack-edge-j-series-manage-storage-accounts.md#about-edge-storage-accounts)。
 
-|類型  |儲存體帳戶  |評價  |
+|類型  |儲存體帳戶  |註解  |
 |---------|---------|---------|
 |標準     |GPv1：區塊 Blob         |         |
 
@@ -50,7 +50,7 @@ Azure Stack Edge Pro 的系統需求包括：
 
 當您連接到本機 Azure Resource Manager 時，會透過裝置本機 Api 建立這些儲存體帳戶。 以下是支援的儲存體帳戶：
 
-|類型  |儲存體帳戶  |評價  |
+|類型  |儲存體帳戶  |註解  |
 |---------|---------|---------|
 |標準     |GPv1：區塊 Blob、分頁 Blob        | SKU 類型為 Standard_LRS       |
 |Premium     |GPv1：區塊 Blob、分頁 Blob        | SKU 類型為 Premium_LRS        |
@@ -69,7 +69,7 @@ Azure Stack Edge Pro 的系統需求包括：
 
 ### <a name="port-requirements-for-azure-stack-edge-pro"></a>Azure Stack Edge Pro 的埠需求
 
-下表列出必須在您的防火牆中開啟的連接埠，以允許 SMB、雲端或管理流量。 在這個資料表中，in** 或 inbound** 指的是輸入用戶端要求存取裝置的方向。 *輸出* 或 *輸出* 是指您的 Azure Stack Edge Pro 裝置在外部傳送資料的方向，例如，輸出到網際網路。
+下表列出必須在您的防火牆中開啟的連接埠，以允許 SMB、雲端或管理流量。 在這個資料表中，in 或 inbound 指的是輸入用戶端要求存取裝置的方向。 *輸出* 或 *輸出* 是指您的 Azure Stack Edge Pro 裝置在外部傳送資料的方向，例如，輸出到網際網路。
 
 [!INCLUDE [Port configuration for device](../../includes/azure-stack-edge-gateway-port-config.md)]
 
@@ -83,7 +83,7 @@ Azure IoT Edge 允許使用支援的 IoT Hub 通訊協定，進行從內部部�
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| 外       | WAN        | 是      | 開啟來佈建 IoT Edge 的輸出。 使用手動指令碼或 Azure IoT 裝置佈建服務 (DPS) 時，就需要此設定。|
 
-如需完整資訊，請參閱[適用於 IoT Edge 部署的防火牆和連接埠設定規則](https://docs.microsoft.com/azure/iot-edge/troubleshoot)。
+如需完整資訊，請參閱[適用於 IoT Edge 部署的防火牆和連接埠設定規則](../iot-edge/troubleshoot.md)。
 
 ## <a name="url-patterns-for-firewall-rules"></a>防火牆規則的 URL 模式
 

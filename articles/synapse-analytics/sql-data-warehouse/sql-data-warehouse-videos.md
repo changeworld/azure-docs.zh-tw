@@ -11,16 +11,16 @@ ms.date: 02/15/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b0b3a924008d4180c045455aecda8ec109845939
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: eaf41e903f1a55dd85c6b6282617564a32087707
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321001"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447824"
 ---
-# <a name="azure-synapse-analytics---dedicated-sql-pool-videos"></a>Azure Synapse Analytics 專用的 SQL 集區影片
+# <a name="azure-synapse-analytics---dedicated-sql-pool--formerly-sql-dw-videos"></a>Azure Synapse Analytics 專用的 SQL 集區 (先前的 SQL DW) 影片
 
-觀看最新的專用 SQL 集區影片，以瞭解新功能和效能改進。 
+觀看最新的專用 SQL 集區 (先前的 SQL DW) 影片，以瞭解新功能和效能改進。 
 
 若要開始使用，請選取下方的總覽影片，以瞭解專用 SQL 集區的新更新。 此外，您也可以瞭解新式資料倉儲模式如何用來處理真實世界的案例，例如網路犯罪。
 </br>

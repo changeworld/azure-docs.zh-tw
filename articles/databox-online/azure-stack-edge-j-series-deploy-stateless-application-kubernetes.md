@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 91a2d08bf9eea2f5af0f6893712515cb2feeab8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6356089daed02270a14903639afee8001153b195
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890727"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447384"
 ---
 # <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 裝置上透過 kubectl 部署 Kubernetes 無狀態應用程式
 
@@ -25,7 +25,7 @@ ms.locfileid: "90890727"
 
 - 您有1個節點 Azure Stack Edge Pro 裝置的登入認證。
 
-- Windows PowerShell 5.0 或更新版本已安裝在 Windows 用戶端系統上，以存取 Azure Stack Edge Pro 裝置。 您也可以讓任何其他用戶端使用支援的作業系統。 本文說明使用 Windows 用戶端的程式。 若要下載 Windows PowerShell 的最新版本，請移至 [安裝 Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
+- Windows PowerShell 5.0 或更新版本已安裝在 Windows 用戶端系統上，以存取 Azure Stack Edge Pro 裝置。 您也可以讓任何其他用戶端使用支援的作業系統。 本文說明使用 Windows 用戶端的程式。 若要下載 Windows PowerShell 的最新版本，請移至 [安裝 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
 
 - Azure Stack Edge Pro 裝置上會啟用計算。 若要啟用計算，請移至裝置本機 UI 中的 [ **計算** ] 頁面。 然後選取您想要為計算啟用的網路介面。 選取 [啟用]。 在該網路介面上的裝置上建立虛擬交換器時，啟用計算結果。 如需詳細資訊，請參閱在 [您的 Azure Stack Edge Pro 上啟用計算網路](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)。
 
@@ -83,7 +83,7 @@ ms.locfileid: "90890727"
 
    此命令會填入 \\ &lt; &gt; \\ 具有設定檔的 "C:\Users username. kube" 目錄結構 \" 。 Kubectl 命令列工具會使用這些檔案來建立和管理 Kubernetes 叢集上的無狀態應用程式。
 
-3. 請手動檢查 "C:\Users username. kube" 的目錄結構 \\ &lt; &gt; \\ \" ，以確認*kubectl*已填入下列子資料夾：
+3. 請手動檢查 "C:\Users username. kube" 的目錄結構 \\ &lt; &gt; \\ \" ，以確認 *kubectl* 已填入下列子資料夾：
 
    ```powershell
    PS C:\Users\username> ls .kube

@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Technical Support'
 - fasttrack-edit
 - iot
-ms.openlocfilehash: b179bb3566cc19b8033a56348db34cd1f05cee10
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 81558526500f3c01e975d9a963b4a6a98ec6d753
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506391"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446416"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>使用 Azure IoT 中樞來監視、診斷和排解連線中斷問題
 
@@ -34,7 +34,7 @@ IoT 裝置的連線問題可能因為有許多可能的失敗點而難以排解�
 
 ## <a name="event-grid-vs-azure-monitor"></a>事件方格與 Azure 監視器
 
-事件方格提供低延遲、每一裝置的監視解決方案，可讓您用來追蹤重要裝置和基礎結構的裝置連線。 Azure 監視器提供計量連接的 *裝置* ，您可以使用這些裝置來監視連線到 IoT 中樞的裝置數目，並在該數位低於靜態閾值時觸發警示。
+事件方格提供低延遲、每一裝置的監視解決方案，可讓您用來追蹤重要裝置和基礎結構的裝置連線。 Azure 監視器提供計量連接的 *裝置*，您可以使用這些裝置來監視連線到 IoT 中樞的裝置數目，並在該數位低於靜態閾值時觸發警示。
 
 決定是否要在特定案例中使用事件方格或 Azure 監視器時，請考慮下列事項：
 
@@ -58,7 +58,7 @@ IoT 裝置的連線問題可能因為有許多可能的失敗點而難以排解�
 
 * 如需有關訂購裝置線上活動的教學課程，請參閱 [使用 Azure Cosmos DB 從 Azure IoT 中樞訂購裝置線上活動](iot-hub-how-to-order-connection-state-events.md)。
 
-* 如需傳送電子郵件通知的教學課程，請參閱在事件方格檔中 [使用事件方格和 Logic Apps 傳送有關 Azure IoT 中樞事件的電子郵件通知](/azure/event-grid/publish-iot-hub-events-to-logic-apps) 。
+* 如需傳送電子郵件通知的教學課程，請參閱在事件方格檔中 [使用事件方格和 Logic Apps 傳送有關 Azure IoT 中樞事件的電子郵件通知](../event-grid/publish-iot-hub-events-to-logic-apps.md) 。
 
 ## <a name="azure-monitor-route-connection-events-to-logs"></a>Azure 監視器：將連接事件路由至記錄
 
@@ -92,9 +92,9 @@ IoT 中樞 [資源記錄連線類別](monitor-iot-hub-reference.md#connections) 
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中流覽至您的 IoT 中樞。
 
-1. 在 IoT 中樞左窗格的 [ **監視** ] 底下，選取 [ **記錄** ]。
+1. 在 IoT 中樞左窗格的 [ **監視** ] 底下，選取 [ **記錄**]。
 
-1. 若要隔離 IoT 中樞的連線錯誤記錄，請在查詢編輯器中輸入下列查詢，然後選取 [ **執行** ：
+1. 若要隔離 IoT 中樞的連線錯誤記錄，請在查詢編輯器中輸入下列查詢，然後選取 [ **執行**：
 
     ```kusto
     AzureDiagnostics

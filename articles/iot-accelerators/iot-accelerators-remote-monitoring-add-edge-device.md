@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: de060be7ace84ea309b71087a50fd572091bed43
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 88d732cc3feaa2c9a528443d4a783227f3d8e641
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004784"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446795"
 ---
 # <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>將 IoT Edge 裝置新增至遠端監視解決方案加速器
 
@@ -34,9 +34,9 @@ ms.locfileid: "96004784"
 
 您也可以在解決方案加速器中，直接向 IoT 中樞執行個體註冊 IoT Edge 裝置。 您必須先知道解決方案加速器中 IoT 中樞的名稱，才能依照下列任何操作指南執行作業：
 
-- [從 Azure 入口網站註冊新的 Azure IoT Edge 裝置](../iot-edge/how-to-register-device.md#register-in-the-azure-portal)
-- [使用 Azure CLI 來註冊新的 Azure IoT Edge 裝置](../iot-edge/how-to-register-device.md#register-with-the-azure-cli)
-- [從 Visual Studio Code 註冊新的 Azure IoT Edge 裝置](../iot-edge/how-to-register-device.md#register-with-visual-studio-code)
+- [從 Azure 入口網站註冊新的 Azure IoT Edge 裝置](../iot-edge/how-to-manual-provision-symmetric-key.md?tabs=azure-portal%2Cwindows)
+- [使用 Azure CLI 來註冊新的 Azure IoT Edge 裝置](../iot-edge/how-to-manual-provision-symmetric-key.md?tabs=azure-cli%2Cwindows)
+- [從 Visual Studio Code 註冊新的 Azure IoT Edge 裝置](../iot-edge/how-to-manual-provision-symmetric-key.md?tabs=visual-studio-code%2Cwindows)
 
 當您直接在遠端監視解決方案加速器中向 IoT 中樞註冊裝置時，該裝置會列在 web UI 中的 [ **Device Explorer** ] 頁面上。
 
@@ -44,11 +44,11 @@ ms.locfileid: "96004784"
 
 您必須先在真實裝置上安裝 IoT Edge 執行階段，才可以將模組部署到 Edge 裝置。 下列操作指南說明如何在常見裝置平台上安裝執行階段：
 
-- [在 Linux (x64) 上安裝 Azure IoT Edge 執行階段](../iot-edge/how-to-install-iot-edge-linux.md)
-- [在 Linux (ARM32v7/armhf) 上安裝 Azure IoT Edge 執行階段](../iot-edge/how-to-install-iot-edge-linux.md)
-- [在 Windows 上安裝要與 Windows 容器搭配使用的 Azure IoT Edge 執行階段](../iot-edge/how-to-install-iot-edge-windows.md)
-- [在 Windows 上安裝要與 Linux 容器搭配使用的 Azure IoT Edge 執行階段](../iot-edge/how-to-install-iot-edge-windows-with-linux.md)
-- [在 Windows IoT 核心版上安裝 IoT Edge 執行階段](../iot-edge/how-to-install-iot-edge-windows.md)
+- [在 Linux (x64) 上安裝 Azure IoT Edge 執行階段](../iot-edge/how-to-install-iot-edge.md)
+- [在 Linux (ARM32v7/armhf) 上安裝 Azure IoT Edge 執行階段](../iot-edge/how-to-install-iot-edge.md)
+- [在 Windows 上安裝要與 Windows 容器搭配使用的 Azure IoT Edge 執行階段](../iot-edge/how-to-install-iot-edge.md)
+- [在 Windows 上安裝要與 Linux 容器搭配使用的 Azure IoT Edge 執行階段](../iot-edge/how-to-install-iot-edge.md)
+- [在 Windows IoT 核心版上安裝 IoT Edge 執行階段](../iot-edge/how-to-install-iot-edge.md)
 
 ## <a name="next-steps"></a>後續步驟
 

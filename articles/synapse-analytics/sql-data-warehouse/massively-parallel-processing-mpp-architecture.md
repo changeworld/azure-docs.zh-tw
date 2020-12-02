@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Analytics (先前稱為 SQL DW) 架構
-description: 瞭解 Azure Synapse Analytics (先前的 SQL DW) 如何結合分散式查詢處理功能與 Azure 儲存體，以達到高效能和擴充性。
+title: 專用的 SQL 集區 (先前為 SQL DW) 架構
+description: 瞭解 Azure Synapse Analytics 的專用 SQL 集區 (先前的 SQL DW) 如何結合分散式查詢處理功能與 Azure 儲存體，以達到高效能和擴充性。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,49 +10,44 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1d32aa011e9e816f97b050d43f9558af0cf82e90
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 45c7f89f773095a102429c07f7441223de3c2dec
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319663"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448260"
 ---
-# <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics (先前稱為 SQL DW) 架構
+# <a name="dedicated-sql-pool-formerly-sql-dw-architecture-in-azure-synapse-analytics"></a>專用的 SQL 集區 (先前的 SQL DW) 架構 Azure Synapse Analytics
 
-Azure Synapse 是一種無限制的分析服務，可將企業資料倉儲和巨量資料分析整合在一起。 可讓您自由使用無伺服器隨選或佈建資源，隨意且大規模地查詢您的資料。 Azure Synapse 會將這兩個世界結合在一起，透過整合的經驗擷取、準備、管理和處理資料，以滿足立即的 BI 和機器學習需求。
+Azure Synapse Analytics 是一種分析服務，可將企業資料倉儲和巨量資料分析整合在一起。 它可讓您自由地依據您的條件來查詢資料。
 
- Azure Synapse 有四個元件：
+> [!NOTE]
+>探索 [Azure Synapse Analytics 檔](../overview-what-is.md)。
+>
 
-- Synapse SQL：完成以 T-SQL 為基礎的分析
-
-  - 專用的 SQL 集區 (依布建的 DWU 付費) –正式推出
-  - 無伺服器 SQL 集區 (支付每 TB 處理的) – (Preview) 
-- Spark：深入整合的 Apache Spark (預覽)
-- 資料整合：混合式資料整合 (預覽)
-- Studio：整合的使用者體驗。  (預覽)
 
 > [!VIDEO https://www.youtube.com/embed/PlyQ8yOb8kc]
 
 ## <a name="synapse-sql-architecture-components"></a>Synapse SQL 架構元件
 
-[Synapse SQL](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse) 會利用擴增架構，將資料的計算處理散發到多個節點。 縮放單位是稱為[資料倉儲單位](what-is-a-data-warehouse-unit-dwu-cdwu.md)之計算能力的抽象概念。 計算與儲存體分隔開來，讓您可以在系統中單獨調整資料的計算。
+[專用的 sql 集區 (先前的 SQL DW) ](sql-data-warehouse-overview-what-is.md) 會利用向外延展架構，將資料的計算處理散發到多個節點。 縮放單位是稱為[資料倉儲單位](what-is-a-data-warehouse-unit-dwu-cdwu.md)之計算能力的抽象概念。 計算與儲存體分隔開來，讓您可以在系統中單獨調整資料的計算。
 
-![Synapse SQL 架構](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
+![專用的 SQL 集區 (先前為 SQL DW) 架構](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-Synapse SQL 使用以節點為基礎的架構。 應用程式會連線到控制節點並發出 T-SQL 命令，這是 Synapse SQL 的單一進入點。 控制節點裝載分散式查詢引擎，可將查詢優化以進行平行處理，然後將作業傳遞到計算節點，以平行方式執行其工作。
+專用的 SQL 集區 (先前的 SQL DW) 使用以節點為基礎的架構。 應用程式會連接併發出 T-sql 命令到控制節點。 控制節點裝載分散式查詢引擎，可將查詢優化以進行平行處理，然後將作業傳遞到計算節點，以平行方式執行其工作。
 
 計算節點會在 Azure 儲存體中儲存所有使用者資料，並執行平行查詢。 資料移動服務 (DMS) 是系統層級的內部服務，其會視需要在節點之間移動資料，以平行方式執行查詢並傳回精確的結果。
 
-利用低耦合儲存體和計算，當使用 Synapse SQL 集區時，使用者可以：
+使用分離的儲存和計算時，使用專用的 SQL 集區時， (先前的 SQL DW) 一種：
 
 - 獨立估算計算能力，而不論您的儲存體需求為何。
-- 在 SQL 集區 (資料倉儲) 內增加或縮小計算能力，而不用移動資料。
+- 在專用的 SQL 集區中增加或減少計算能力， (先前的 SQL DW) ，而不需要移動資料。
 - 暫停計算容量，同時讓資料保持不變，因此您只需支付儲存體的費用。
 - 在營運時間期間繼續計算容量。
 
 ### <a name="azure-storage"></a>Azure 儲存體
 
-Synapse SQL 會利用 Azure 儲存體來保護您使用者資料的安全。  因為您的資料是由 Azure 儲存體儲存及管理的，所以您的儲存體耗用量會分開計費。 資料會分區化到 **散發** 中，以將系統效能最佳化。 當您定義資料表時，可以選擇要用來散發資料的分區化模式。 支援以下分區化模式：
+專用 SQL 集區 SQL (先前的 SQL DW) 利用 Azure 儲存體來保護您的使用者資料安全。  因為您的資料是由 Azure 儲存體儲存及管理的，所以您的儲存體耗用量會分開計費。 資料會分區化到 **散發** 中，以將系統效能最佳化。 當您定義資料表時，可以選擇要用來散發資料的分區化模式。 支援以下分區化模式：
 
 - 雜湊
 - 循環配置資源
@@ -76,7 +71,7 @@ Synapse SQL 會利用 Azure 儲存體來保護您使用者資料的安全。  �
 
 散發是儲存體的基本單位，可處理在分散式資料上執行的平行查詢。 當 Synapse SQL 執行查詢時，會將工作分成 60 個平行執行的較小查詢。
 
-這 60 個較小查詢中的每一個都會在其中一個資料散發中執行。 每個計算節點都會管理這 60 個散發中的一或多個。 具有最大計算資源的 SQL 集區，在每個計算節點上都有一個散發。 具有最小計算資源的 SQL 集區，其所有散發都會在一個計算節點上。  
+這 60 個較小查詢中的每一個都會在其中一個資料散發中執行。 每個計算節點都會管理這 60 個散發中的一或多個。 專用的 SQL 集區 (先前的 SQL DW) 具有最多計算資源，每個計算節點都有一個散發。 專用的 SQL 集區 (先前的 SQL DW) 具有最少的計算資源會在一個計算節點上擁有所有散發。  
 
 ## <a name="hash-distributed-tables"></a>雜湊分散式資料表
 
@@ -112,7 +107,7 @@ Synapse SQL 會利用 Azure 儲存體來保護您使用者資料的安全。  �
 
 ## <a name="next-steps"></a>後續步驟
 
-現在您已稍微了解 Azure Synapse，請了解如何快速[建立 SQL 集區](create-data-warehouse-portal.md)和[載入範例資料](load-data-from-azure-blob-storage-using-polybase.md)。 如果您不熟悉 Azure，您可能會發現 [Azure 詞彙](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 在您遇到新術語時很有幫助。 或者，您也可以看看以下其他 Azure Synapse 資源。  
+既然您已瞭解 Azure Synapse，請瞭解如何快速 [建立專用的 sql 集區 (先前的 SQL DW) ](create-data-warehouse-portal.md) 並 [載入範例資料](load-data-from-azure-blob-storage-using-polybase.md)。 如果您不熟悉 Azure，您可能會發現 [Azure 詞彙](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 在您遇到新術語時很有幫助。 或者，您也可以看看以下其他 Azure Synapse 資源。  
 
 - [客戶成功案例](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
 - [部落格](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)

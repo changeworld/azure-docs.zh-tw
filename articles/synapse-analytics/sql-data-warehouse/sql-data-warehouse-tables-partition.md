@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 39a1f41d97b1f4576d5877e4f35c99b3e189e3b2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f65c1d6fda09d7762a59fb5a932a72ad706a767a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314500"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448029"
 ---
 # <a name="partitioning-tables-in-dedicated-sql-pool"></a>在專用的 SQL 集區中分割資料表
 
@@ -30,7 +30,7 @@ ms.locfileid: "93314500"
 
 ### <a name="benefits-to-loads"></a>載入的優點
 
-在專用 SQL 集區中分割的主要優點是藉由使用分割區刪除、切換和合併，來改善載入資料的效率和效能。 在大部分情況下，會依照與資料載入到資料庫的順序密切相關的日期資料行來分割資料。 使用資料分割來維護資料的最大好處之一，就是避免交易記錄。 雖然插入、更新或刪除資料可能是最直接的方法，但只要付出一些關心和努力，在載入處理期間使用資料分割可以大幅改善效能。
+在專用 SQL 集區中分割的主要優點是藉由使用分割區刪除、切換和合併，來改善載入資料的效率和效能。 在大部分情況下，資料會在與資料載入至 SQL 集區的順序密切相關的日期資料行上進行資料分割。 使用資料分割來維護資料的最大好處之一，就是避免交易記錄。 雖然插入、更新或刪除資料可能是最直接的方法，但只要付出一些關心和努力，在載入處理期間使用資料分割可以大幅改善效能。
 
 切換分割區可用於快速移除或取得資料表的某個區段。  例如，銷售事實資料表可能僅包含過去 36 個月的資料。 在每個月月底，便會從資料表刪除最舊月份的銷售資料。  使用 delete 陳述式來刪除最舊月份的資料，即可刪除此資料。 
 
@@ -279,7 +279,7 @@ ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInterne
 
 ### <a name="table-partitioning-source-control"></a>資料表分割原始檔控制
 
-若要避免您的資料表定義在您的原始檔控制系統中 **失效** ，您可以考慮下列方法：
+若要避免您的資料表定義在您的原始檔控制系統中 **失效**，您可以考慮下列方法：
 
 1. 將資料表建立為分割資料表，但沒有分割值
 
@@ -355,7 +355,7 @@ ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInterne
     DROP TABLE #partitions;
     ```
 
-使用這個方法時，原始檔控制中的程式碼會保持靜態，而分割區界限值則允許動態;隨著時間隨著資料庫不斷演進。
+使用這個方法時，原始檔控制中的程式碼會保持靜態，而分割區界限值則允許動態;隨著時間使用 SQL 集區不斷演進。
 
 ## <a name="next-steps"></a>後續步驟
 

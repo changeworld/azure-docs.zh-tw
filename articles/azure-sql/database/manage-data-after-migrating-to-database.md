@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: fe49dce276a15d9d7bc8ddaa5618c0e43dec62e9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b34ac24cb26bf5db4a49a5ad5b531deb252f4695
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841218"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446120"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>雲端中的新 DBA-在遷移之後管理 Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -101,12 +101,12 @@ SQL Database 謹慎對待安全性和隱私權。 SQL Database 於資料庫層�
 
 SQL Database 提供兩個驗證方法：
 
-- [Azure Active Directory Authentication](authentication-aad-overview.md)
+- [Azure Active Directory 驗證](authentication-aad-overview.md)
 - [SQL 驗證](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
 不支援傳統 Windows 驗證。 Azure Active Directory (Azure AD) 是集中式身分識別和存取管理服務。 利用此服務，您可以非常輕鬆地為組織中的所有人員提供單一登入存取 (SSO)。 這表示認證會在所有 Azure 服務間共用，以簡化驗證。 
 
-Azure AD 支援 [Azure AD 的 Multi-Factor Authentication](authentication-mfa-ssms-overview.md) ，而且只要按 [幾下滑鼠](../../active-directory/hybrid/how-to-connect-install-express.md) ，Azure AD 就可以與 Windows Server Active Directory 整合。 SQL 驗證的運作方式正如同您過去使用它的方式。 您可以提供使用者名稱/密碼，也可以對指定伺服器上的任何資料庫驗證使用者。 這也可讓 SQL Database 和 Azure Synapse Analytics (先前的 SQL 資料倉儲) ，以在 Multi-Factor Authentication 網域內提供 Azure AD 和來賓使用者帳戶。 如果您已經有內部部署 Active Directory，您可以使目錄與 Azure Active Directory 結成同盟，將您的目錄延伸至 Azure。
+Azure AD 支援 [Azure AD 的 Multi-Factor Authentication](authentication-mfa-ssms-overview.md) ，而且只要按 [幾下滑鼠](../../active-directory/hybrid/how-to-connect-install-express.md) ，Azure AD 就可以與 Windows Server Active Directory 整合。 SQL 驗證的運作方式正如同您過去使用它的方式。 您可以提供使用者名稱/密碼，也可以對指定伺服器上的任何資料庫驗證使用者。 這也可讓 SQL Database 和 Azure Synapse Analytics 在 Azure AD 網域內提供 Multi-Factor Authentication 和來賓使用者帳戶。 如果您已經有內部部署 Active Directory，您可以使目錄與 Azure Active Directory 結成同盟，將您的目錄延伸至 Azure。
 
 |**如果您 .。。**|**SQL Database/Azure Synapse Analytics**|
 |---|---|

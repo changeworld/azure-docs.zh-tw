@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: d37c362da484a2a7e400da8f87dd0a37f0f80d3a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: a80747a88087e1ad3a70f198a260e41a6848e34f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436720"
+ms.locfileid: "96445652"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>電腦上適用于 SQL server 的 Azure Defender 
 
@@ -108,7 +108,7 @@ ms.locfileid: "96436720"
     在每個觀點中，安全性檢查會依 **嚴重性** 排序。 按一下特定的安全性檢查，以查看具有 **描述** 的詳細資料窗格、如何進行 **修復** ，以及其他相關資訊，例如 **影響** 或 **基準測試**。
 
 ## <a name="azure-defender-for-sql-alerts"></a>適用于 SQL 的 Azure Defender 警示
-警示是由不尋常且可能有害的嘗試存取或惡意探索 SQL 電腦所產生。 這些事件可以在 [ [警示參考] 頁面的 [SQL Database 和 Azure Synapse Analytics (先前的 SQL 資料倉儲) 區段](alerts-reference.md#alerts-sql-db-and-warehouse)中，觸發顯示的警示。
+警示是由不尋常且可能有害的嘗試存取或惡意探索 SQL 電腦所產生。 這些事件可在 [[警示參考] 頁面的 [SQL Database 的警示] 和 [Azure Synapse Analytics] 區段](alerts-reference.md#alerts-sql-db-and-warehouse)中，觸發顯示的警示。
 
 ## <a name="explore-and-investigate-security-alerts"></a>探索和調查安全性警示
 
@@ -128,7 +128,7 @@ ms.locfileid: "96436720"
 
 如需相關材質，請參閱下列文章：
 
-- [先前的 SQL 資料倉儲 SQL Database 和 Azure Synapse Analytics (的安全性警示) ](alerts-reference.md#alerts-sql-db-and-warehouse)
+- [SQL Database 和 Azure Synapse Analytics 的安全性警示](alerts-reference.md#alerts-sql-db-and-warehouse)
 - [設定安全性警示的電子郵件通知](security-center-provide-security-contact-details.md)
 - [深入瞭解 Azure Sentinel](../sentinel/index.yml)
 - [Azure 資訊安全中心的資料安全性封裝](../azure-sql/database/azure-defender-for-sql.md)

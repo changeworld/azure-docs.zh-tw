@@ -11,16 +11,16 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: cb10eb0f89ce37bc484c8570995ebaa098c696f1
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 492d1370a228fc4fc80880102899c9207a514f57
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541295"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447196"
 ---
 # <a name="configure-and-submit-training-runs"></a>設定和提交定型執行
 
-在本文中，您將瞭解如何設定和提交 Azure Machine Learning 回合以訓練您的模型。
+在本文中，您將瞭解如何設定和提交 Azure Machine Learning 回合以訓練您的模型。 程式碼程式碼片段說明設定和提交定型腳本的重要部分。  然後使用其中一個 [範例筆記本](#notebooks) 來尋找完整的端對端運作範例。
 
 定型時，通常會在您的本機電腦上啟動，然後再向外擴充到雲端式叢集。 有了 Azure Machine Learning，您就可以在各種計算目標上執行腳本，而不需要變更定型腳本。
 
@@ -38,10 +38,10 @@ ms.locfileid: "94541295"
 
 您可以使用 ScriptRunConfig 物件提交訓練實驗。  此物件包含：
 
-* **source_directory** ：包含定型指令碼的來源目錄
-* **腳本** ：要執行的定型腳本
-* **compute_target** ：要在其上執行的計算目標
-* **環境** ：執行腳本時要使用的環境
+* **source_directory**：包含定型指令碼的來源目錄
+* **腳本**：要執行的定型腳本
+* **compute_target**：要在其上執行的計算目標
+* **環境**：執行腳本時要使用的環境
 * 還有一些其他可設定的選項 (如需詳細資訊，請參閱 [參考檔](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)) 
 
 ## <a name="train-your-model"></a><a id="submit"></a>定型模型
@@ -94,7 +94,7 @@ myenv = Environment.get(workspace=ws, name="AzureML-Minimal")
   
 ### <a name="local-compute-target"></a><a name="local"></a>本機計算目標
 
-如果您的計算目標是您的 **本機電腦** ，您必須負責確保執行腳本的 Python 環境中有所有必要的套件可供使用。  使用您 `python.user_managed_dependencies` 目前的 python 環境 (或您指定) 路徑上的 python。
+如果您的計算目標是您的 **本機電腦**，您必須負責確保執行腳本的 Python 環境中有所有必要的套件可供使用。  使用您 `python.user_managed_dependencies` 目前的 python 環境 (或您指定) 路徑上的 python。
 
 ```python
 from azureml.core import Environment
@@ -152,7 +152,7 @@ run.wait_for_completion(show_output=True)
 > 如需快照集的詳細資訊，請參閱 [快照](concept-azure-machine-learning-architecture.md#snapshots)集。
 
 > [!IMPORTANT]
-> **特殊資料夾** Azure Machine Learning 會特別對待 *outputs* 與 *logs* , 這兩個資料夾。 在定型期間，當您將檔案寫入到相對於根目錄且名為 *outputs* 與 *logs* 的資料夾 (分別是 `./outputs` 與 `./logs`) 時，這些檔案會自動上傳到執行歷程記錄，因此當您的回合完成之後，您就能存取它們。
+> **特殊資料夾** Azure Machine Learning 會特別對待 *outputs* 與 *logs*, 這兩個資料夾。 在定型期間，當您將檔案寫入到相對於根目錄且名為 *outputs* 與 *logs* 的資料夾 (分別是 `./outputs` 與 `./logs`) 時，這些檔案會自動上傳到執行歷程記錄，因此當您的回合完成之後，您就能存取它們。
 >
 > 若要在定型期間建立成品 (例如模型檔案、檢查點、資料檔案或繪製的影像)，請將這些成品寫入到 `./outputs` 資料夾。
 >
@@ -164,7 +164,7 @@ run.wait_for_completion(show_output=True)
 
 當您啟動來源目錄是本機 Git 存放庫的定型回合時，該存放庫的相關資訊會儲存在回合歷程記錄中。 如需詳細資訊，請參閱 [Azure Machine Learning 的 Git 整合](concept-train-model-git-integration.md)。
 
-## <a name="notebook-examples"></a>筆記本範例
+## <a name="notebook-examples"></a><a name="notebooks"></a>筆記本範例
 
 請參閱這些筆記本，以取得設定各種定型案例執行的範例：
 * [在各種計算目標上定型](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)

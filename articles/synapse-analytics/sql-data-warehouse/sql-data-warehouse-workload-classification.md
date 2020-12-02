@@ -1,6 +1,6 @@
 ---
-title: 工作負載分類
-description: 使用分類來管理 Azure Synapse Analytics 中查詢的平行存取、重要性和計算資源的指引。
+title: 專用 SQL 集區的工作負載分類
+description: 針對 Azure Synapse Analytics 中的專用 SQL 集區，使用分類來管理查詢平行存取、重要性和計算資源的指引。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6b66b8a9fb3b5eb7dc78c00ba084e8609877dec7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bf19e2d1674d0a0c2102280b28b5549505c1dfab
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323876"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447773"
 ---
-# <a name="azure-synapse-analytics-workload-classification"></a>Azure Synapse Analytics 工作負載分類
+# <a name="workload-classification-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的工作負載分類
 
 本文說明使用 Azure Synapse 中的專用 SQL 集區，將工作負載群組和重要性指派給傳入要求的工作負載分類流程。
 
@@ -36,7 +36,7 @@ ms.locfileid: "93323876"
 
 ## <a name="classification-process"></a>分類程序
 
-目前，您可以將使用者指派給有對應資源類別（使用 [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)）的角色，以在 Azure Synapse 中取得專用 SQL 集區的分類。 在登入資源類別以外的情況下，對要求進行特性描述的能力，會受到這項功能的限制。 [建立工作負載分類器](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)語法現在提供更豐富的分類方法。  使用此語法時，專用的 SQL 集區使用者可以指派重要性，以及透過參數指派給要求的系統資源數量 `workload_group` 。
+針對專用 SQL 集區的分類，現在是藉由將使用者指派給具有使用 [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)指派給它的對應資源類別的角色。 在登入資源類別以外的情況下，對要求進行特性描述的能力，會受到這項功能的限制。 [建立工作負載分類器](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)語法現在提供更豐富的分類方法。  使用此語法時，專用的 SQL 集區使用者可以指派重要性，以及透過參數指派給要求的系統資源數量 `workload_group` 。
 
 > [!NOTE]
 > 分類是根據每個要求來評估。 單一會話中的多個要求可以不同的分類。

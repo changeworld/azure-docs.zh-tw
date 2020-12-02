@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperfq2
-ms.openlocfilehash: 7fa6beacf4456145e312494a72dad321dfef3754
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ca8a36584c09d850ed1daab8cba301b244f76526
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843922"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447018"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>設定 Azure Machine Learning 資源和工作流程的驗證
 
@@ -67,7 +67,7 @@ ms.locfileid: "94843922"
 
     如果 CLI 可以開啟預設瀏覽器，它會執行這項操作，並載入登入頁面。 否則，您需要開啟瀏覽器，並遵循命令列上的指示。 這些指示需要瀏覽至 [https://aka.ms/devicelogin](https://aka.ms/devicelogin)，並輸入授權碼。
 
-    如果您有多個 Azure 訂用帳戶，您可以使用 `az account set -s <subscription name or ID>` 命令來設定訂用帳戶。 如需詳細資訊，請參閱[使用多個 Azure 訂用帳戶](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。
+    如果您有多個 Azure 訂用帳戶，您可以使用 `az account set -s <subscription name or ID>` 命令來設定訂用帳戶。 如需詳細資訊，請參閱[使用多個 Azure 訂用帳戶](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。
 
     如需其他驗證方法，請參閱[使用 Azure CLI 登入](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest)。
 
@@ -184,7 +184,7 @@ ms.locfileid: "94843922"
 > interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
 > ```
 
-使用 Azure CLI 時， `az login` 命令是用來驗證 CLI 會話。 如需詳細資訊，請參閱 [開始使用 Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)。
+使用 Azure CLI 時， `az login` 命令是用來驗證 CLI 會話。 如需詳細資訊，請參閱 [開始使用 Azure CLI](/cli/azure/get-started-with-azure-cli)。
 
 > [!TIP]
 > 如果您是從先前使用 Azure CLI 以互動方式驗證的環境中使用 SDK，則可以使用此類別，透過 `AzureCliAuthentication` CLI 所快取的認證來驗證工作區：

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 9a01dabbd0a3e9d76caaead544be655b9505030d
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 55e9d2d1af863084b080c2de7833712413221050
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289201"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445640"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>使用 Just-In-Time 存取來保護管理連接埠
 
@@ -57,11 +57,11 @@ ms.locfileid: "93289201"
 
 您可以從「安全性中心」啟用和設定 JIT VM 存取。
 
-1. 開啟 Azure Defender 儀表板，並從 [advanced protection] 區域中，選取 [ **即時 VM 存取** ]。
+1. 開啟 Azure Defender 儀表板，並從 [advanced protection] 區域中，選取 [ **即時 VM 存取**]。
 
     [ **即時 VM 存取** ] 頁面隨即開啟，並將您的 vm 分組為下列索引標籤：
 
-    - 已 **設定** -已設定為支援即時 vm 存取的 vm。 針對每部 VM，[已設定] 索引標籤會顯示：
+    - 已 **設定**-已設定為支援即時 vm 存取的 vm。 針對每部 VM，[已設定] 索引標籤會顯示：
         - 過去七天內核准的 JIT 要求數目
         - 上次存取日期和時間
         - 已設定連接詳細資料
@@ -72,7 +72,7 @@ ms.locfileid: "93289201"
       - 傳統 VM-JIT 支援透過 Azure Resource Manager 部署的 Vm，而不是「傳統部署」。 [深入瞭解傳統與 Azure Resource Manager 部署模型](../azure-resource-manager/management/deployment-models.md)。
       - 其他-如果在訂用帳戶或資源群組的安全性原則中停用了 JIT 解決方案，則您的 VM 可能會在此索引標籤中。
 
-1. 從 [ **未設定** ] 索引標籤中，將 vm 標示為使用 jit 進行保護，然後選取 [ **在 VM 上啟用 JIT** ]。 
+1. 從 [ **未設定** ] 索引標籤中，將 vm 標示為使用 jit 進行保護，然後選取 [ **在 VM 上啟用 JIT**]。 
 
     [JIT VM 存取] 頁面隨即開啟，其中列出了安全性中心建議保護的埠：
     - 22 - SSH
@@ -80,7 +80,7 @@ ms.locfileid: "93289201"
     - 5985 - WinRM 
     - 5986 - WinRM
 
-    若要接受預設設定，請選取 [ **儲存** ]。
+    若要接受預設設定，請選取 [ **儲存**]。
 
 1. 自訂 JIT 選項：
 
@@ -89,15 +89,15 @@ ms.locfileid: "93289201"
 
     針對每個埠 (自訂和預設) [ **新增埠** 設定] 窗格提供下列選項：
 
-    - **通訊協定** -核准要求時在此埠上允許的通訊協定
-    - **允許的來源 ip** -核准要求時在此埠上允許的 IP 範圍
-    - **最大要求時間** -可以開啟特定埠的時間範圍上限
+    - **通訊協定**-核准要求時在此埠上允許的通訊協定
+    - **允許的來源 ip**-核准要求時在此埠上允許的 IP 範圍
+    - **最大要求時間**-可以開啟特定埠的時間範圍上限
 
      1. 設定埠安全性以滿足您的需求。
 
-     1. 選取 [確定]。
+     1. 選取 [確定]  。
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 
 
@@ -115,7 +115,7 @@ ms.locfileid: "93289201"
 
 1. 在 [JIT VM 存取設定] 下方，您可以對於已經保護的連接埠編輯現有設定，也可以新增自訂連接埠。
 
-1. 當您完成編輯埠之後，請選取 [ **儲存** ]。
+1. 當您完成編輯埠之後，請選取 [ **儲存**]。
  
 
 
@@ -130,13 +130,13 @@ ms.locfileid: "93289201"
 > [!TIP]
 > 如果 VM 已啟用即時功能，當您移至其 [設定] 頁面時，您會看到即時啟用，而且您可以使用此連結在 [安全中心] 開啟 [即時 VM 存取] 頁面，並查看和變更設定。
 
-1. 從 [Azure 入口網站](https://ms.portal.azure.com)中，搜尋並選取 [ **虛擬機器** ]。 
+1. 從 [Azure 入口網站](https://ms.portal.azure.com)中，搜尋並選取 [ **虛擬機器**]。 
 
 1. 選取您要使用 JIT 保護的虛擬機器。
 
 1. 在功能表中 **，選取 [** 設定]。
 
-1. 在 [ **即時存取** ] 下，選取 [ **立即啟用** ]。 
+1. 在 [ **即時存取**] 下，選取 [ **立即啟用**]。 
 
     這可讓您使用下列預設設定，以即時方式存取 VM：
 
@@ -151,7 +151,7 @@ ms.locfileid: "93289201"
 
 1. 若要編輯這些值中的任何一項，或在 JIT 設定中新增更多埠，請使用 Azure 資訊安全中心的即時頁面：
 
-    1. 在 [安全性中心] 功能表中，選取 [ **即時 VM 存取** ]。
+    1. 在 [安全性中心] 功能表中，選取 [ **即時 VM 存取**]。
 
     1. 在 [ **已設定** ] 索引標籤中，以滑鼠右鍵按一下您要新增埠的 VM，然後選取 [編輯]。 
 
@@ -159,7 +159,7 @@ ms.locfileid: "93289201"
 
     1. 在 [JIT VM 存取設定] 下方，您可以對於已經保護的連接埠編輯現有設定，也可以新增自訂連接埠。
 
-    1. 當您完成編輯埠之後，請選取 [ **儲存** ]。
+    1. 當您完成編輯埠之後，請選取 [ **儲存**]。
 
 
 ### <a name="powershell"></a>[**PowerShell**](#tab/jit-config-powershell)
@@ -300,7 +300,7 @@ Just-In-Time 虛擬機器存取功能可透過 Azure 資訊安全中心 API 使�
 
     ```azurepowershell
     $JitPolicyVm1 = (@{
-        id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";
+        id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";
         ports=(@{
            number=22;
            endTimeUtc="2020-07-15T17:00:00.3658798Z";
@@ -344,7 +344,7 @@ Just-In-Time 虛擬機器存取功能可透過 Azure 資訊安全中心 API 使�
 
 您可以使用記錄搜尋來深入了解 VM 活動。 若要檢視記錄：
 
-1. 從 **即時 VM 存取** ，選取 [ **已設定** ] 索引標籤。
+1. 從 **即時 VM 存取**，選取 [ **已設定** ] 索引標籤。
 
 1. 針對您想要進行審核的 VM，開啟資料列結尾的省略號功能表。
  
@@ -354,7 +354,7 @@ Just-In-Time 虛擬機器存取功能可透過 Azure 資訊安全中心 API 使�
 
    活動記錄會提供該 VM 先前作業的篩選視圖，以及時間、日期和訂用帳戶。
 
-1. 若要下載記錄資訊，請選取 [ **下載為 CSV** ]。
+1. 若要下載記錄資訊，請選取 [ **下載為 CSV**]。
 
 
 

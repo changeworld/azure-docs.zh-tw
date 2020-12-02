@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: c27f6ef47b8e4db83ceb63e308e318803800f8a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c12935a4b0b9cbbf088ba7b9c5ea804be0ce85a1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890715"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447358"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>使用 Azure CLI 和 Python 在 Azure Stack Edge Pro GPU 裝置上部署 VM
 
@@ -117,7 +117,7 @@ ms.locfileid: "90890715"
 
 ### <a name="verify-profile-and-install-azure-cli"></a>驗證設定檔並安裝 Azure CLI
 
-<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
+<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
 
 1. 在用戶端上安裝 Azure CLI。 在此範例中，已安裝 Azure CLI 2.0.80。 若要確認 Azure CLI 的版本，請執行 `az --version` 命令。
 
@@ -147,7 +147,7 @@ ms.locfileid: "90890715"
     PS C:\windows\system32>
     ```
 
-    如果您沒有 Azure CLI，請下載並[在 Windows 上安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)。 您可使用 Windows 命令提示字元或透過 Windows PowerShell 執行 Azure CLI。
+    如果您沒有 Azure CLI，請下載並[在 Windows 上安裝 Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)。 您可使用 Windows 命令提示字元或透過 Windows PowerShell 執行 Azure CLI。
 
 2. 記下 CLI 的 Python 位置。 您需要此資訊來判斷 Azure CLI 的信任根憑證存放區位置。
 
@@ -308,7 +308,7 @@ ms.locfileid: "90890715"
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
     ```
 
-4. 使用 `az login` 命令來登入 Azure Stack Edge Pro 環境。 您可以以使用者身分或以[服務主體](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)形式登入 Azure Stack Edge Pro 環境。
+4. 使用 `az login` 命令來登入 Azure Stack Edge Pro 環境。 您可以以使用者身分或以[服務主體](../active-directory/develop/app-objects-and-service-principals.md)形式登入 Azure Stack Edge Pro 環境。
 
    遵循下列步驟，以「使用者」身分登入：
 

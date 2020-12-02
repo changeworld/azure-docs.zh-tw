@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 0f67a36ac4ccb27d7b955158b7e4a9cf4f5185d0
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 5b96e568b57c34fec1c93727aabe8e739a2a45cd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636913"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448655"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU 裝置上的 Kubernetes
 
@@ -106,7 +106,7 @@ Kubernetes 也可以與 Azure Stack Edge Pro 裝置上 IoT Edge 工作負載整�
 
 ### <a name="kubernetes-and-azure-arc"></a>Kubernetes 和 Azure Arc
 
-Azure Arc 是一種混合式管理工具，可讓您在 Kubernetes 叢集上部署應用程式。 Azure Arc 也可讓您使用 Azure 監視器容器來查看和監視您的叢集。 如需詳細資訊，請移至 [Azure-Arc 啟用什麼 Kubernetes？](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)。 如需 Azure Arc 定價的詳細資訊，請移至 [Azure Arc 定價](https://azure.microsoft.com/services/azure-arc/#pricing)。
+Azure Arc 是一種混合式管理工具，可讓您在 Kubernetes 叢集上部署應用程式。 Azure Arc 也可讓您使用 Azure 監視器容器來查看和監視您的叢集。 如需詳細資訊，請移至 [Azure-Arc 啟用什麼 Kubernetes？](../azure-arc/kubernetes/overview.md)。 如需 Azure Arc 定價的詳細資訊，請移至 [Azure Arc 定價](https://azure.microsoft.com/services/azure-arc/#pricing)。
 
 
 ## <a name="next-steps"></a>後續步驟

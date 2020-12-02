@@ -1,16 +1,16 @@
 ---
 title: 已連結 Log Analytics 工作區的支援區域
 description: 本文說明自動化帳戶與 Log Analytics 工作區之間的支援區域對應，因為它與 Azure 自動化的特定功能有關。
-ms.date: 10/19/2020
+ms.date: 12/01/2020
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 23e5293301a2fc311565d0c1c8ec5fd92bebe9b2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 25ddf562f92ca96a505432a58f137657a2bbc4bd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183561"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446966"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>已連結 Log Analytics 工作區的支援區域
 
@@ -31,6 +31,7 @@ ms.locfileid: "96183561"
 |---|---|
 |**美國**||
 |EastUS<sup>1</sup>|EastUS2|
+|EastUS2<sup>2</sup>|EastUS|
 |WestUS2|WestUS2|
 |SouthCentralUS|SouthCentralUS|
 |WestCentralUS|WestCentralUS|
@@ -40,7 +41,7 @@ ms.locfileid: "96183561"
 |AustraliaSoutheast|AustraliaSoutheast|
 |SoutheastAsia|SoutheastAsia|
 |CentralIndia|CentralIndia|
-|ChinaEast2<sup>2</sup>|ChinaEast2|
+|ChinaEast2<sup>3</sup>|ChinaEast2|
 |JapanEast|JapanEast|
 |**歐洲**||
 |UKSouth|UKSouth|
@@ -48,11 +49,13 @@ ms.locfileid: "96183561"
 |SwitzerlandNorth|SwitzerlandNorth|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
-|USGovArizona<sup>2</sup>|USGovArizona|
+|USGovArizona<sup>3</sup>|USGovArizona|
 
 <sup>1</sup> Log Analytics 工作區與自動化帳戶的 EastUS 對應不是確切的區域對區域對應，但卻是正確的對應。
 
-<sup>2</sup> 在此區域中，僅支援更新管理，且目前無法使用變更追蹤和清查等其他功能。
+Log Analytics 工作區至自動化帳戶的<sup>2</sup>個 EastUS2 對應不是完全符合區域的對應，但是正確的對應。
+
+<sup>3</sup> 在此區域中，僅支援更新管理，但目前無法使用變更追蹤和清查等其他功能。
 
 ## <a name="unlink-a-workspace"></a>取消連結工作區
 

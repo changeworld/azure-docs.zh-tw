@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: jmartens
 author: j-martens
 ms.date: 11/16/2020
-ms.openlocfilehash: 2abad31173992a891e908bdbb61c37e905907d69
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 0afbf32f80a3d19f6db457f398a213a634cfa3d4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697573"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447046"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>在 Visual Studio Code (preview 中連接到 Azure Machine Learning 計算實例) 
 
@@ -41,7 +41,7 @@ ms.locfileid: "94697573"
 1. 當整合式筆記本體驗載入時，請選取 [ **Jupyter 伺服器**]。
 
     > [!div class="mx-imgBorder"]
-    > ![啟動 Azure Machine Learning 遠端 Jupyter 筆記本伺服器下拉式清單](media/how-to-set-up-vs-code-remote/launch-server-selection-dropdown.png)
+    > ![啟動 Azure Machine Learning 遠端 Jupyter Notebook 伺服器下拉式清單](media/how-to-set-up-vs-code-remote/launch-server-selection-dropdown.png)
 
     或者，您也可以使用命令選擇區：
 
@@ -58,7 +58,7 @@ ms.locfileid: "94697573"
 > [!IMPORTANT]
 > 您 **必須** 執行資料格才能建立連接。
 
-此時，您可以繼續在 Jupyter 筆記本中執行儲存格。
+此時，您可以繼續在 Jupyter Notebook 中執行儲存格。
 
 > [!TIP]
 > 您也可以使用 Python 腳本檔案 ( .py) 包含類似 Jupyter 的程式碼儲存格。 如需詳細資訊，請參閱 [Visual Studio Code Python 互動式檔](https://code.visualstudio.com/docs/python/jupyter-support-py)。
@@ -134,7 +134,7 @@ Host azmlci1
 |----|---------|
 |主機|針對計算實例使用您喜歡的任何速記 |
 |HostName|這是計算實例的 IP 位址 |
-|Port|這是上述 SSH 對話方塊中顯示的埠 |
+|連接埠|這是上述 SSH 對話方塊中顯示的埠 |
 |User|這必須是 `azureuser` |
 |IdentityFile|應指向您儲存私密金鑰的檔案 |
 

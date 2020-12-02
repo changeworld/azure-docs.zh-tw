@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 3087c209b844d691173edbbd8a993c1d0aae319b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be7d477d08b025fd450bfa859e8eb677ba680143
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903644"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446381"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-ordering-issues"></a>針對您的 Azure Stack Edge Pro 訂購問題進行疑難排解
 
@@ -33,7 +33,7 @@ ms.locfileid: "90903644"
 
 ![不支援的訂用帳戶或區域](media/azure-stack-edge-troubleshoot-ordering/azure-stack-edge-troubleshoot-ordering-01.png)
 
-**建議的解決方案：**  請確定您使用的是支援的訂用帳戶，例如 [Microsoft Enterprise 合約 (EA) ](https://azure.microsoft.com/overview/sales-number/)、 [雲端解決方案提供者 (CSP) ](https://docs.microsoft.com/partner-center/azure-plan-lp)或 [Microsoft Azure 贊助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支援隨用隨付訂用帳戶。 如需詳細資訊，請參閱 [Azure Stack Edge 資源必要條件](azure-stack-edge-deploy-prep.md#prerequisites)。
+**建議的解決方案：**  請確定您使用的是支援的訂用帳戶，例如 [Microsoft Enterprise 合約 (EA)](https://azure.microsoft.com/overview/sales-number/)、 [雲端解決方案提供者 (CSP)](/partner-center/azure-plan-lp)或 [Microsoft Azure 贊助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支援隨用隨付訂用帳戶。 如需詳細資訊，請參閱 [Azure Stack Edge 資源必要條件](azure-stack-edge-deploy-prep.md#prerequisites)。
 
 有可能是 Microsoft 可能允許依個案進行訂用帳戶類型升級。 請洽詢 [Microsoft 支援服務](https://azure.microsoft.com/support/options/) ，讓他們可以瞭解您的需求並適當地調整這些限制。
 

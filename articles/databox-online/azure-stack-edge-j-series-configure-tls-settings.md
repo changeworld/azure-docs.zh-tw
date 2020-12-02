@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 9a6b0910fcfd2a632f2520a2fe683b15592017cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15e2d7a144b54f443b8298b20dbfacf78a50f9e1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891174"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447539"
 ---
 # <a name="configure-tls-12-on-windows-clients-accessing-azure-stack-edge-pro-device"></a>在存取 Azure Stack Edge Pro 裝置的 Windows 用戶端上設定 TLS 1。2
 
@@ -38,11 +38,11 @@ ms.locfileid: "90891174"
 
 如果您想要為您的環境設定全系統的 TLS 1.2，請遵循這些檔中的指導方針：
 
-- [一般-如何啟用 TLS 1。2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12)
-- [如何在用戶端啟用 TLS 1.2](https://docs.microsoft.com/configmgr/core/plan-design/security/enable-tls-1-2-client)
-- [如何在站台伺服器與遠端站台系統啟用 TLS 1.2](https://docs.microsoft.com/configmgr/core/plan-design/security/enable-tls-1-2-server)
-- [TLS/SSL (Schannel SSP) 的通訊協定 ](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-ecc-curve-order)
-- [加密套件](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12)：特別設定 [TLS 加密套件順序](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order) ，請確定您列出目前的加密套件，並在下列清單中遺漏任何遺漏：
+- [一般-如何啟用 TLS 1。2](/windows-server/security/tls/tls-registry-settings#tls-12)
+- [如何在用戶端啟用 TLS 1.2](/configmgr/core/plan-design/security/enable-tls-1-2-client)
+- [如何在站台伺服器與遠端站台系統啟用 TLS 1.2](/configmgr/core/plan-design/security/enable-tls-1-2-server)
+- [TLS/SSL (Schannel SSP) 的通訊協定 ](/windows-server/security/tls/manage-tls#configuring-tls-ecc-curve-order)
+- [加密套件](/windows-server/security/tls/tls-registry-settings#tls-12)：特別設定 [TLS 加密套件順序](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order) ，請確定您列出目前的加密套件，並在下列清單中遺漏任何遺漏：
 
     - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
     - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
@@ -68,7 +68,7 @@ ms.locfileid: "90891174"
     New-ItemProperty -Path "$HklmSoftwarePath\Policies\Microsoft\Cryptography\Configuration\SSL\00010002" -Name "EccCurves" -PropertyType MultiString -Value @("NistP256", "NistP384")
     ```
     
-    - [將 [最小 RSA 金鑰交換大小] 設定為 2048](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#keyexchangealgorithm---client-rsa-key-sizes)。
+    - [將 [最小 RSA 金鑰交換大小] 設定為 2048](/windows-server/security/tls/tls-registry-settings#keyexchangealgorithm---client-rsa-key-sizes)。
 
 
 
