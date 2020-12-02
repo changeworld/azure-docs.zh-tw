@@ -1,30 +1,30 @@
 ---
 title: 使用動態 SQL
-description: 在 Synapse SQL 集區中使用動態 SQL 之開發解決方案的秘訣。
+description: 針對 Azure Synapse Analytics 中的專用 SQL 集區使用動態 SQL 的開發解決方案的秘訣。
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: bce79b8e18b3ec6f1fd139af280086281bbdda98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 52bc7bdc63f754d52bf4a69097c1dd309a6dc3ec
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213460"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462771"
 ---
-# <a name="dynamic-sql-in-synapse-sql-pool"></a>Synapse SQL 集區中的動態 SQL
+# <a name="dynamic-sql-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的動態 SQL
 
-本文包含在 SQL 集區中使用動態 SQL 的開發解決方案的秘訣。
+本文提供的秘訣適用于在專用 SQL 集區中使用動態 SQL 的開發解決方案。
 
 ## <a name="dynamic-sql-example"></a>動態 SQL 範例
 
-開發 SQL 集區的應用程式程式碼時，您可能需要使用動態 SQL，以協助提供有彈性、泛型和模組化的解決方案。 SQL 集區目前不支援 blob 資料類型。
+開發專用 SQL 集區的應用程式程式碼時，您可能需要使用動態 SQL，以協助提供有彈性、泛型和模組化的解決方案。 專用的 SQL 集區目前不支援 blob 資料類型。
 
 不支援 Blob 資料類型可能會限制字串大小，因為 Blob 資料類型包括 varchar(max) 與 nvarchar(max) 類型。
 

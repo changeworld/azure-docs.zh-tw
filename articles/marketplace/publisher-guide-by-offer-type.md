@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 10/06/2020
-ms.openlocfilehash: 897f16d84a3e1cf0ca747e90ce621a35ff326b2a
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 2191a4df5b319ec16a4a6116aa99cfac50c87d9b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488973"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462911"
 ---
 # <a name="publishing-guide-by-offer-type"></a>依供應項目類型的發行指南
 
@@ -30,10 +30,10 @@ ms.locfileid: "94488973"
 
 | **供應項目類型**    | **說明**  |
 | :------------------- | :-------------------|
-| [**Azure 應用程式**](plan-azure-application-offer.md) | 有兩種 Azure 應用程式方案： _解決方案範本_ 和 _受控應用程式_ 。 這兩種方案類型都支援將解決方案的部署和設定自動化，但 (VM) 以外的單一虛擬機器。 您可以自動化提供多個資源的程式，包括 Vm、網路和儲存體資源，以提供複雜的解決方案，例如 IaaS 解決方案。 這兩種方案類型都可以採用許多不同類型的 Azure 資源，包括但不限於 Vm。<ul><li>**解決方案範本** 方案是在商業 marketplace 中發佈解決方案的其中一種主要方式。 解決方案範本方案不會可交易在商業 marketplace 中，但可以用來部署透過商業市場計費的付費 VM 供應專案。 當客戶將管理解決方案，而且交易是透過另一個方案計費時，請使用方案範本方案類型。</li><br><li>**受控應用程式** 方案可讓您輕鬆地為客戶建立並提供完全受控的現成應用程式。 它們具有與解決方案範本方案相同的功能，但有一些主要差異：</li><ul><li> 資源會部署至資源群組，並由應用程式的發行者管理。 資源群組存在於客戶的訂用帳戶，但發行者租用戶中的身分識別可以存取資源群組。</li><li>您可以使用「發行者」來指定持續支援解決方案的成本，並透過商業市場支援交易。</li></ul>當您或您的客戶要求解決方案由夥伴管理，或您將部署以訂用帳戶為基礎的解決方案時，請使用受控應用程式方案類型。</ul> |
+| [**Azure 應用程式**](plan-azure-application-offer.md) | 有兩種 Azure 應用程式方案： _解決方案範本_ 和 _受控應用程式_。 這兩種方案類型都支援將解決方案的部署和設定自動化，但 (VM) 以外的單一虛擬機器。 您可以自動化提供多個資源的程式，包括 Vm、網路和儲存體資源，以提供複雜的解決方案，例如 IaaS 解決方案。 這兩種方案類型都可以採用許多不同類型的 Azure 資源，包括但不限於 Vm。<ul><li>**解決方案範本** 方案是在商業 marketplace 中發佈解決方案的其中一種主要方式。 解決方案範本方案不會可交易在商業 marketplace 中，但可以用來部署透過商業市場計費的付費 VM 供應專案。 當客戶將管理解決方案，而且交易是透過另一個方案計費時，請使用方案範本方案類型。</li><br><li>**受控應用程式** 方案可讓您輕鬆地為客戶建立並提供完全受控的現成應用程式。 它們具有與解決方案範本方案相同的功能，但有一些主要差異：</li><ul><li> 資源會部署至資源群組，並由應用程式的發行者管理。 資源群組存在於客戶的訂用帳戶，但發行者租用戶中的身分識別可以存取資源群組。</li><li>您可以使用「發行者」來指定持續支援解決方案的成本，並透過商業市場支援交易。</li></ul>當您或您的客戶要求解決方案由夥伴管理，或您將部署以訂用帳戶為基礎的解決方案時，請使用受控應用程式方案類型。</ul> |
 | [**Azure 容器**](marketplace-containers.md) | 當您的解決方案是布建為以 Kubernetes 為基礎的 Azure container service 的 Docker 容器映射時，請使用 Azure 容器供應專案類型。 |
 | [**Azure 虛擬機器**](marketplace-virtual-machines.md) | 當您要將虛擬設備部署到與客戶相關的訂用帳戶時，請使用「虛擬機器」供應項目類型。 |
-| [**諮詢服務**](consulting-services.md) | 諮詢服務可協助您將客戶與服務連線，以支援及擴充其 Azure、Dynamics 365 或 Power Suite 服務的使用。|
+| [**諮詢服務**](./plan-consulting-service-offer.md) | 諮詢服務可協助您將客戶與服務連線，以支援及擴充其 Azure、Dynamics 365 或 Power Suite 服務的使用。|
 | [**Dynamics 365**](appsource-offer-publishing-guide.md) | 您可以發佈建置於或擴充 Dynamics 365 Business Central、Dynamics 365 Customer Engagement、Power Apps 和財務和營運應用程式的 AppSource 供應專案。|
 | [**IoT Edge 模組**](iot-edge-module.md) | Azure IoT Edge 模組是 IoT Edge 所管理的最小計算單位，並可包含 Microsoft 服務 (例如「Azure 串流分析」)、第三方服務，或您自己的解決方案特定程式碼。 |
 | [**受控服務**](partner-center-portal/create-new-managed-service-offer.md) | 您可以透過 [Azure Lighthouse](../lighthouse/overview.md)建立受控服務供應專案，以及管理客戶委派的訂用帳戶或資源群組。|

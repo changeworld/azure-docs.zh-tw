@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Analytics (先前稱為 SQL DW) 中 Synapse SQL 集區的最佳做法
-description: 針對開發 Azure Synapse Analytics (先前稱為 SQL DW) 中 SQL 集區解決方案的建議和最佳做法。
+title: 專用 SQL 集區 (先前為 SQL DW) 的最佳作法
+description: 適用于開發專用 SQL 集區解決方案的建議和最佳作法 (先前的 SQL DW) Azure Synapse Analytics。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: cf841da85dc929366991d6aed8f3d400ab3b31cc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 9802e6553d553aae4f13194dc9951d1a17af6f66
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489637"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462873"
 ---
-# <a name="best-practices-for-synapse-sql-pool-in-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics (先前稱為 SQL DW) 中 Synapse SQL 集區的最佳做法
+# <a name="best-practices-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>專用 SQL 集區的最佳作法 (先前的 SQL DW) Azure Synapse Analytics
 
-本文集合讓您從 [SQL 集區](sql-data-warehouse-overview-what-is.md)部署獲得最佳效能的最佳做法。  本文旨在提供您一些基本指引，並強調重點的重要區域。  
+本文是最佳作法的集合，可協助您從 [SQL DW) 部署 (您專用的 sql 集 ](sql-data-warehouse-overview-what-is.md) 區達到最佳效能。  本文旨在提供您一些基本指引，並強調重點的重要區域。  
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>利用暫停和調整來降低成本
 
@@ -27,7 +27,7 @@ ms.locfileid: "92489637"
 
 ## <a name="maintain-statistics"></a>維護統計資料
 
-SQL 集區可以設定為自動偵測資料行並建立統計資料。  最佳化工具建立的查詢計劃只能利用可用的統計資料。  
+專用的 SQL 集區 (先前的 SQL DW) 可以設定為自動偵測及建立資料行的統計資料。  最佳化工具建立的查詢計劃只能利用可用的統計資料。  
 
 建議您為資料庫啟用 AUTO_CREATE_STATISTICS，並讓統計資料每天或每次載入之後更新，以確保查詢中所用資料行的統計資料一直為最新狀態。
 
@@ -40,7 +40,7 @@ SQL 集區可以設定為自動偵測資料行並建立統計資料。  最佳�
 
 ## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>使用 DMV 對查詢進行監視和最佳化
 
-SQL 集區有數個 DMV 可用來監視查詢執行。  「使用 DMV 監視工作負載」一文會逐步解說如何查看執行中查詢的詳細資料。  
+專用的 SQL 集區 (先前的 SQL DW) 有數個 Dmv 可用來監視查詢執行。  [使用 dmv 來監視您的工作負載](sql-data-warehouse-manage-monitor.md)會詳細說明如何查看執行中查詢詳細資料的逐步指示。  
 
 若要在這些 DMV 中快速找到查詢，可在您的查詢中使用 LABEL 選項。
 
@@ -62,7 +62,7 @@ SQL 集區有數個 DMV 可用來監視查詢執行。  「使用 DMV 監視工�
 
 ## <a name="use-polybase-to-load-and-export-data-quickly"></a>使用 PolyBase 將資料快速載入及匯出
 
-SQL 集區支援透過數種工具 (包括 Azure Data Factory、PolyBase、BCP) 來載入及匯出資料。  若是小量的資料，效能不是那麼重要，任何工具都可以滿足您的需求。  不過，當您要載入或匯出大量資料，或者需要快速的效能時，PolyBase 是最佳選擇。  
+專用的 SQL 集區 (先前的 SQL DW) 支援透過數個工具（包括 Azure Data Factory、PolyBase 和 BCP）載入和匯出資料。  若是小量的資料，效能不是那麼重要，任何工具都可以滿足您的需求。  不過，當您要載入或匯出大量資料，或者需要快速的效能時，PolyBase 是最佳選擇。  
 
 PolyBase 的設計目的是要利用系統的分散式本質，並以比其他任何工具更快的速度載入和匯出資料巨量。  您可使用 CTAS 或 INSERT INTO 來執行 PolyBase 載入。   
 
@@ -74,13 +74,13 @@ Azure Data Factory 也支援 PolyBase 載入，並且可以達到與 CTAS 類似
 > [!NOTE]
 > 若要在使用 gzip 文字檔案時獲得最大的輸送量，將檔案分成 60 個以上的檔案讓載入有最大化的平行處理。  如需更快的總輸送量，請考慮同時載入資料。
 
-另請參閱[載入資料](design-elt-data-loading.md)、[PolyBase 使用指南](guidance-for-loading-data.md)、[SQL 集區載入模式和策略](https://blogs.msdn.microsoft.com/sqlcat/20../../)、[使用 Azure Data Factory 載入資料]( ../../data-factory/load-azure-sql-data-warehouse.md)、[使用 Azure Data Factory 移動資料](../../data-factory/transform-data-using-machine-learning.md)、[CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 和 [Create table as select (CTAS)](sql-data-warehouse-develop-ctas.md)。
+另請參閱 [載入資料](design-elt-data-loading.md)、 [使用 PolyBase 的指南](guidance-for-loading-data.md)、 [專用的 SQL 集區載入模式和策略](https://blogs.msdn.microsoft.com/sqlcat/20../../)、 [使用 Azure Data Factory 來載入資料]( ../../data-factory/load-azure-sql-data-warehouse.md)、 [使用 Azure Data Factory 移動資料](../../data-factory/transform-data-using-machine-learning.md)、 [建立外部檔案格式](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，以及將 [資料表建立為 select (CTAS) ](sql-data-warehouse-develop-ctas.md)。
 
 ## <a name="load-then-query-external-tables"></a>載入並查詢外部資料表
 
 雖然 Polybase (也稱為外部資料表) 可能是載入資料最快的方法，卻並非最適合查詢。 Polybase 資料表目前僅支援 Azure blob 檔案和 Azure Data Lake 儲存體。 這些檔案沒有任何支援的計算資源。  
 
-因此，SQL 集區無法卸載此工作，因而必須將整個檔案載入 tempdb 以讀取資料。  所以，如果您有數個將會查詢此資料的查詢，最好能一次載入此資料，並讓查詢使用本機資料表。
+因此，專用的 SQL 集區無法卸載此工作，因此必須將整個檔案載入 tempdb，才能讀取資料。  所以，如果您有數個將會查詢此資料的查詢，最好能一次載入此資料，並讓查詢使用本機資料表。
 
 另請參閱 [PolyBase 使用指南](guidance-for-loading-data.md)。
 
@@ -101,9 +101,9 @@ Azure Data Factory 也支援 PolyBase 載入，並且可以達到與 CTAS 類似
 
 ## <a name="do-not-over-partition"></a>不要過度執行資料分割
 
-雖然分割資料可以讓資料維護變得有效率 (透過分割切換或最佳化掃描將分割消除)，但太多的資料分割會讓查詢變慢。  通常在 SQL Server 上運作良好的高資料粒度分割策略，可能無法在 SQL 集區上運作良好。  
+雖然分割資料可以讓資料維護變得有效率 (透過分割切換或最佳化掃描將分割消除)，但太多的資料分割會讓查詢變慢。  通常很高的資料分割策略，在 SQL Server 可能無法在專用的 SQL 集區中正常運作， (先前的 SQL DW) 。  
 
-如果每個資料分割的資料列少於 1 百萬，太多個資料分割也會減少叢集資料行存放區索引的效率。  請記住，SQL 集區在幕後為您將資料分割成 60 的資料庫，因此如果您建立有 100 個分割的資料表，實際上會導致 6000 個分割。  
+如果每個資料分割的資料列少於 1 百萬，太多個資料分割也會減少叢集資料行存放區索引的效率。  請記住，在幕後，專用的 SQL 集區會將您的資料分割成60資料庫，因此，如果您建立具有100分割區的資料表，這實際上會產生6000的資料分割。  
 
 每個工作負載都不同，因此最佳建議是嘗試不同的分割，找出最適合您工作負載的分割。  請考慮比您的 SQL Server 上運作良好的資料粒度更低的粒度。  例如，考慮使用每週或每月資料分割，而不是每日資料分割。
 
@@ -145,13 +145,13 @@ Azure Data Factory 也支援 PolyBase 載入，並且可以達到與 CTAS 類似
 
 ## <a name="optimize-clustered-columnstore-tables"></a>將叢集資料行存放區資料表最佳化
 
-叢集資料行存放區索引是將資料儲存在 SQL 集區中最有效率的方式之一。  根據預設，SQL 集區中的資料表會建立為「叢集資料行存放區」。  為了讓資料行存放區資料表的查詢獲得最佳效能，良好的區段品質很重要。  
+叢集資料行存放區索引是將資料儲存在專用 SQL 集區中最有效率的方式之一。  依預設，專用 SQL 集區中的資料表會建立為叢集資料行存放區。  為了讓資料行存放區資料表的查詢獲得最佳效能，良好的區段品質很重要。  
 
 當資料列在記憶體不足的狀態下寫入資料行存放區資料表時，資料行存放區區段品質可能會降低。  壓縮的資料列群組中的資料列數目可以測量區段品質。  如需偵測和改善叢集資料行存放區資料表區段品質的逐步指示，請參閱[資料表索引](sql-data-warehouse-tables-index.md)一文中的[資料行存放區索引品質不佳的原因](sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality)。  
 
 由於高品質的資料行存放區區段很重要，因此最好使用中型或大型資源類別中的使用者識別碼來載入資料。 使用較低的[資料倉儲單位](what-is-a-data-warehouse-unit-dwu-cdwu.md)，表示您想要將更大型的資源類別指派給正在載入的使用者。
 
-由於資料行存放區資料表通常要等到每個資料表有超過 1 百萬個資料列之後才會將資料推送到壓縮的資料行存放區區段，而且每個 SQL 集區資料表分割成 60 個資料表，根據經驗法則，資料行存放區資料表對於查詢沒有好處，除非資料表有超過 6 千萬個資料列。  小於 6 千萬列的資料表使用資料行存放區索引似乎不太合理，  但也無傷大雅。  
+由於資料行存放區資料表通常不會將資料推送至壓縮的資料行存放區區段，直到每個資料表有1000000個以上的資料列，而且每個專用的 SQL 集區資料表都會分割成60資料表（因為資料行存放區資料表有超過60000000個數據列）。  小於 6 千萬列的資料表使用資料行存放區索引似乎不太合理，  但也無傷大雅。  
 
 此外，如果您將資料分割，則您要考慮的是每個資料分割必須有 1 百萬個資料列，使用叢集資料行存放區索引才有益。  如果資料表有 100 個分割區，則其至少必須擁有 60 億個資料列才會受益於叢集資料行存放區 (60 個散發 100 個分割區 100 萬個資料列)。  
 
@@ -164,7 +164,7 @@ Azure Data Factory 也支援 PolyBase 載入，並且可以達到與 CTAS 類似
 
 ## <a name="use-larger-resource-class-to-improve-query-performance"></a>使用較大的資源類別來改善查詢效能
 
-SQL 集區會使用資源群組，作為將記憶體配置給查詢的一種方式。  根據預設，所有使用者都會被指派小型資源類別，此類別授予每個散發 100 MB 的記憶體。  因為永遠會有 60 個散發，每個散發有至少 100 MB，整個系統的總記憶體配置為 6000 MB 或是剛好接近 6 GB。  
+專用的 SQL 集區會使用資源群組作為配置記憶體給查詢的方式。  根據預設，所有使用者都會被指派小型資源類別，此類別授予每個散發 100 MB 的記憶體。  因為永遠會有 60 個散發，每個散發有至少 100 MB，整個系統的總記憶體配置為 6000 MB 或是剛好接近 6 GB。  
 
 有些查詢，像是大型聯結或載入叢集資料行存放區資料表，將受益於較大的記憶體配置。  有些查詢，像是純掃描，則沒有任何好處。  但是，使用較大的資源類別會減少並行存取，因此您將所有的使用者移到大型資源類別之前，要先將這個影響列入考慮。
 

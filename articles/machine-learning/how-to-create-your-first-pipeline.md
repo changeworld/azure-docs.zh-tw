@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 452904e18a0910c2dd4781ca978042e0cdd4996d
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 57806ecaf4b0e295457c78faaff6033126ddb2c8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630119"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463014"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>使用 Azure Machine Learning SDK 來建立及執行機器學習管線
 
@@ -24,7 +24,7 @@ ms.locfileid: "94630119"
 
 在本文中，您將瞭解如何使用[AZURE MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)來建立及執行[機器學習管線](concept-ml-pipelines.md)。 使用 **ML 管線** 來建立可將各種 ML 階段將在一起的工作流程。 然後發佈該管線以供稍後存取，或與其他人共用。 追蹤 ML 管線以查看您的模型在真實世界中的執行方式，以及偵測資料漂移。 ML 管線適用于批次評分案例，使用各種計算，重複使用步驟而不是重新執行步驟，以及與其他人共用 ML 工作流程。
 
-雖然您可以使用不同種類的管線（稱為 [Azure 管線](/azure/devops/pipelines/targets/azure-machine-learning?context=azure%252fmachine-learning%252fservice%252fcontext%252fml-context&preserve-view=true&tabs=yaml&view=azure-devops) ）來進行 ML 工作的 CI/CD 自動化，但該類型的管線不會儲存在您的工作區中。 [比較這些不同的管線](concept-ml-pipelines.md#which-azure-pipeline-technology-should-i-use)。
+雖然您可以使用不同種類的管線（稱為 [Azure 管線](/azure/devops/pipelines/targets/azure-machine-learning?context=azure%2fmachine-learning%2fservice%2fcontext%2fml-context&preserve-view=true&tabs=yaml&view=azure-devops) ）來進行 ML 工作的 CI/CD 自動化，但該類型的管線不會儲存在您的工作區中。 [比較這些不同的管線](concept-ml-pipelines.md#which-azure-pipeline-technology-should-i-use)。
 
 您 Azure Machine Learning [工作區](how-to-manage-workspace.md)的成員可以看到您所建立的 ML 管線。 
 
@@ -32,7 +32,7 @@ ML 管線是在計算目標上執行 (查看 [Azure Machine Learning) 中的計�
 
 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 建立 [Azure Machine Learning 工作區](how-to-manage-workspace.md)以保存您的所有管線資源。
 
@@ -110,7 +110,7 @@ output_data1 = PipelineData(
 ## <a name="set-up-a-compute-target"></a>設定計算目標
 
 
-在 Azure Machine Learning 中， __計算__ 一詞 (或 __計算目標__ ) 係指會在您機器學習管線中執行計算步驟的機器或叢集。   如需計算目標的完整清單，請參閱 [模型定型的計算目標](concept-compute-target.md#train) ，以及建立如何建立和附加至工作區的 [計算目標](how-to-create-attach-compute-studio.md) 。   無論您是定型模型或執行管線步驟，建立和或附加計算目標的程式都相同。 在您建立並連結計算目標之後，請在您的[管線步驟](#steps)中使用 `ComputeTarget` 物件。
+在 Azure Machine Learning 中，__計算__ 一詞 (或 __計算目標__) 係指會在您機器學習管線中執行計算步驟的機器或叢集。   如需計算目標的完整清單，請參閱 [模型定型的計算目標](concept-compute-target.md#train) ，以及建立如何建立和附加至工作區的 [計算目標](how-to-create-attach-compute-studio.md) 。   無論您是定型模型或執行管線步驟，建立和或附加計算目標的程式都相同。 在您建立並連結計算目標之後，請在您的[管線步驟](#steps)中使用 `ComputeTarget` 物件。
 
 > [!IMPORTANT]
 > 不支援從遠端作業內部對計算目標執行管理作業。 由於機器學習管線會作為遠端作業提交，因此請勿從管線內對計算目標使用管理作業。
@@ -230,7 +230,7 @@ train_step = PythonScriptStep(
 )
 ```
 
-上述程式碼與資料準備步驟的程式碼非常類似。 定型程式碼位於與資料準備程式碼不同的目錄中。 `PipelineData`資料準備步驟的輸出 `output_data1` 會用來做為定型步驟的 _輸入_ 。 建立新的 `PipelineData` 物件， `training_results` 以保存後續比較或部署步驟的結果。 
+上述程式碼與資料準備步驟的程式碼非常類似。 定型程式碼位於與資料準備程式碼不同的目錄中。 `PipelineData`資料準備步驟的輸出 `output_data1` 會用來做為定型步驟的 _輸入_。 建立新的 `PipelineData` 物件， `training_results` 以保存後續比較或部署步驟的結果。 
 
 
 > [!TIP]

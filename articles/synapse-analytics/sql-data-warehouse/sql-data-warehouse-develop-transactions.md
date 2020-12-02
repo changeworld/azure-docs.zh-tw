@@ -1,5 +1,5 @@
 ---
-title: 使用 Synapse SQL 集區中的交易
+title: 使用 Azure Synapse Analytics SQL 集區中的交易
 description: 本文包含在 Synapse SQL 集區中執行交易和開發解決方案的秘訣。
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 03/22/2019
 ms.author: xiaoyul
+ms.custom: azure-synapse
 ms.reviewer: igorstan
-ms.openlocfilehash: 40a9e5268b7fccc5c01775c10e55eee47f1aaf3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5a3c0863bb35f0988d7928bb9a2857f6aceded6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213375"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463210"
 ---
-# <a name="use-transactions-in-synapse-sql-pool"></a>使用 Synapse SQL 集區中的交易
+# <a name="use-transactions-in-a-sql-pool-in-azure-synapse"></a>在 Azure Synapse 中使用 SQL 集區中的交易 
 
 本文包含在 SQL 集區中執行交易和開發解決方案的秘訣。
 
@@ -27,7 +28,7 @@ ms.locfileid: "85213375"
 
 ## <a name="transaction-isolation-levels"></a>交易隔離層級
 
-SQL 集區實作 ACID 交易。 交易式支援的隔離等級預設為 READ UNCOMMITTED。  您可在連線至 master 資料庫時，開啟使用者資料庫的 [READ_COMMITTED_SNAPSHOT] 資料庫選項，將其變更為 [READ COMMITTED SNAPSHOT ISOLATION]。  
+SQL 集區實作 ACID 交易。 交易式支援的隔離等級預設為 READ UNCOMMITTED。  您可以在連接到 master 資料庫時，開啟使用者 SQL 集區的 READ_COMMITTED_SNAPSHOT 資料庫選項，將其變更為讀取認可的快照集隔離。  
 
 啟用之後，此資料庫中所有交易都會在 READ COMMITTED SNAPSHOT ISOLATION 的狀態下執行，且將不會接受在工作階段層級上設定為 READ UNCOMMITTED。 如需詳細資料，請參閱 [ALTER DATABASE SET 選項 (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: trkeya
 ms.author: trkeya
-ms.openlocfilehash: de85e4eb553f623790b472e79f8f97487ba96b48
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 553eba3898a5ea42e5d478603e35e82c68abcab1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95751108"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462890"
 ---
 # <a name="test-drive-technical-configuration"></a>試用產品技術設定
 
@@ -38,9 +38,9 @@ Microsoft 可以藉由裝載和維護服務布建和解除布建，來消除設�
 
 - **角色名稱** (必要) -提供您在自訂 Dynamics 365 試用產品中定義的安全性角色名稱，這將在其試用產品期間指派給使用者 (例如 test-drive-role)。
 
-如需有關如何設定您的 Dynamics 365 環境以進行試用產品和授與 AppSource 許可權，以在您的租使用者中布建和取消布建試用產品的相關資訊，請遵循下列 [指示](https://docs.microsoft.com/azure/marketplace/test-drive-azure-subscription-setup)。
+如需有關如何設定您的 Dynamics 365 環境以進行試用產品和授與 AppSource 許可權，以在您的租使用者中布建和取消布建試用產品的相關資訊，請遵循下列 [指示](./test-drive-azure-subscription-setup.md)。
 
-如需列出及設定託管試用產品的逐步指示，請流覽 [ [託管試用](https://docs.microsoft.com/azure/marketplace/test-drive-hosted-detailed-config) 產品的詳細設定] 頁面。
+如需列出及設定託管試用產品的逐步指示，請流覽 [ [託管試用](./test-drive-hosted-detailed-config.md) 產品的詳細設定] 頁面。
 
 ## <a name="logic-app-test-drive"></a>邏輯應用程式試用產品
 
@@ -95,7 +95,7 @@ Microsoft 可以藉由裝載和維護服務布建和解除布建，來消除設�
 
 如果您目前正在合作夥伴中心中建立您的試用產品，請選取 [ **儲存草稿** ]，然後再繼續。
 
-如需列出及設定託管試用產品的逐步指示，請流覽 [ [託管試用](https://docs.microsoft.com/azure/marketplace/test-drive-hosted-detailed-config) 產品的詳細設定] 頁面。
+如需列出及設定託管試用產品的逐步指示，請流覽 [ [託管試用](./test-drive-hosted-detailed-config.md) 產品的詳細設定] 頁面。
 
 ## <a name="additional-resources"></a>其他資源
 

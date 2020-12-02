@@ -3,12 +3,12 @@ title: Azure Event Grid 傳遞與重試
 description: 說明 Azure Event Grid 如何傳遞事件，以及如何處理未傳遞的訊息。
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 9a7bde33e322183f86c3c51d30bb004d06fa1406
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 51473cf457a1c713e6694edd23c344be8c4d439e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345348"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463240"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid 訊息傳遞與重試
 
@@ -57,7 +57,7 @@ az eventgrid event-subscription create \
 
 當 EventGrid 收到事件傳遞嘗試的錯誤時，EventGrid 會決定是否應該重試傳遞或寄不出的信件，或根據錯誤的類型來卸載事件。 
 
-如果訂用的端點所傳回的錯誤是設定相關的錯誤，但無法以重試修正 (例如，如果) 刪除端點，EventGrid 會執行死信件事件，或在未設定寄不出的信件時卸載事件。
+如果訂用的端點所傳回的錯誤是設定相關的錯誤，但無法以重試修正 (例如，如果) 刪除端點，EventGrid 會在事件中執行無效信件，如果未設定寄不出的信件，則會捨棄事件。
 
 以下是不會進行重試的端點類型：
 

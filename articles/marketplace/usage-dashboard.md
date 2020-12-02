@@ -7,25 +7,25 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 5e2bdec8b3c628f1d470acb3e27bb18eabbc71ac
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 563ccdb0633f94acccf3ade9faf1c40c28f108ac
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565533"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462938"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>商業市集分析中的使用量儀表板
 
 本文提供合作夥伴中心中使用方式儀表板的相關資訊。 此儀表板會顯示所有虛擬機器 (VM) 在三個不同的索引標籤中提供標準化的使用量、原始使用量和計量計費計量： VM 正規化使用量、VM 原始使用量和計量計費使用量。
 
-若要存取合作夥伴中心中的 [使用量] 儀表板，請在 [ **商業 Marketplace** ] 底下選取 [ **[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **使用量** ]。
+若要存取合作夥伴中心中的 [使用量] 儀表板，請在 [**商業 Marketplace**] 底下選取 [**[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **使用量**]。
 
 >[!NOTE]
-> 如需分析術語的詳細定義，請參閱 [商業市場分析術語和常見問題](./partner-center-portal/faq-terminology.md)。
+> 如需分析術語的詳細定義，請參閱 [商業市場分析術語和常見問題](./analytics-faq.md)。
 
 ## <a name="usage-dashboard"></a>使用量儀表板
 
-[ **分析** ] 功能表中的 [ **使用量** ] 儀表板會顯示您的所有軟體即服務 (SaaS) 優惠的目前訂單。 您可檢視下列項目的圖形表示：
+[**分析**] 功能表中的 [**使用量**] 儀表板會顯示您的所有軟體即服務 (SaaS) 優惠的目前訂單。 您可檢視下列項目的圖形表示：
 
 - 使用趨勢
 - 依優惠的標準化使用量
@@ -76,7 +76,7 @@ ms.locfileid: "94565533"
 
 依供應專案 **和 SKU 的訂單** 圖表會顯示所有供應專案的量值和趨勢。 請注意：
 
-- 最高的供應專案會顯示在圖形中，其餘的供應專案則會分組為 **rest** 。
+- 最高的供應專案會顯示在圖形中，其餘的供應專案則會分組為 **rest**。
 - 您可以選取圖例中的特定供應項目，以在圖形中只顯示這些供應項目。
 - 將滑鼠暫留在圖形中的配量上，會顯示與所有供應專案的訂單總數相較之下，該供應專案的訂單數目和百分比。
 - **依供應項目趨勢排序的訂單** 會顯示每月成長趨勢。 月份資料行代表依供應項目名稱排序的訂單數目。 折線圖會顯示以 Z 軸繪製的成長百分比趨勢。
@@ -122,7 +122,7 @@ _**表1：資料詞彙的字典**_
 | Marketplace 訂用帳戶識別碼 | Marketplace 訂用帳戶識別碼 | 與客戶用來購買商業 marketplace 供應專案的 Azure 訂用帳戶相關聯的唯一識別碼。 識別碼先前是 Azure 訂用帳戶 GUID。 |
 | MonthStartDate | 月開始日期 | 月開始日期代表購買月份。 |
 | 供應項目類型 | 供應項目類型 | 商業 marketplace 供應專案的類型。 |
-| Azure 授權類型 | Azure 授權類型 | 客戶用來購買 Azure 的授權合約類型。 也稱為通道。 可能的值包括：<ui><li>雲端解決方案提供者</li><li>Enterprise</li><li>企業透過轉銷商</li><li>隨用隨付</li></ul> |
+| Azure 授權類型 | Azure 授權類型 | 客戶用來購買 Azure 的授權合約類型。 也稱為通道。 可能的值包括：<ui><li>雲端解決方案提供者</li><li>企業</li><li>企業透過轉銷商</li><li>隨用隨付</li></ul> |
 | Marketplace 授權類型 | Marketplace 授權類型 | 商業 marketplace 供應專案的計費方法。 可能的值包括：<ul><li>透過 Azure 計費</li><li>攜帶您自己的授權</li><li>免費</li><li>Microsoft 成為轉銷商</li></ul> |
 | SKU | SKU | 與供應專案相關聯的方案。 |
 | 客戶國家/地區 | Customer Country/Region | 客戶提供的國家/地區名稱。 國家/地區可能與客戶的 Azure 訂用帳戶中的國家/地區不同。 |
@@ -171,13 +171,13 @@ VM 原始使用量的 widget 和匯出報告類似于 VM 正規化使用，但�
 
 [ **計量使用量** ] 索引標籤會顯示供應專案類型的使用量資訊，其中使用量是依每個計量維度來測量。 目前顯示的是 SaaS 供應項目類型超額部分。 此索引標籤會將 SaaS 計量付費使用量的超額趨勢以圖形表示：
 
-- **依計量維度的超額趨勢** ：顯示供應項目其所選計量維度的每月超額趨勢。 X 軸代表月份，而 Y 軸代表超額使用數量。 自訂計量的測量單位也會顯示在 Y 軸上。
+- **依計量維度的超額趨勢**：顯示供應項目其所選計量維度的每月超額趨勢。 X 軸代表月份，而 Y 軸代表超額使用數量。 自訂計量的測量單位也會顯示在 Y 軸上。
 
     :::image type="content" source="./media/usage-dashboard/metered-usage.png" alt-text="說明使用量儀表板上的 VM 標準化使用量圖表。":::
 
-- **依 sku 的超額趨勢** ：依 sku/方案表示所選計量維度的使用量趨勢。 顯示所選供應專案使用量最高的前五個方案。
+- **依 sku 的超額趨勢**：依 sku/方案表示所選計量維度的使用量趨勢。 顯示所選供應專案使用量最高的前五個方案。
 
-- **客戶的超額趨勢** ：客戶領導者面板代表具有最高使用時間的客戶堆疊清單，並顯示在 _領導者面板_ 上，並依自訂計量的最高使用量進行排名。 在領導者面板中選取客戶，以查看所選計量維度的超額使用趨勢。
+- **客戶的超額趨勢**：客戶領導者面板代表具有最高使用時間的客戶堆疊清單，並顯示在 _領導者面板_ 上，並依自訂計量的最高使用量進行排名。 在領導者面板中選取客戶，以查看所選計量維度的超額使用趨勢。
 
     :::image type="content" source="./media/usage-dashboard/metered-usage-by-customers.png" alt-text="說明 [使用量] 儀表板上的 [依客戶的計量使用量] 圖表。":::
 
@@ -194,4 +194,4 @@ VM 原始使用量的 widget 和匯出報告類似于 VM 正規化使用，但�
 - 針對 (VM) 提供使用量和計量付費計量的虛擬機器，請參閱 [商用 marketplace 分析中的使用量儀表板](usage-dashboard.md)。
 - 如需過去 30 天內的下載要求清單，請參閱[商業市集分析中的下載儀表板](./partner-center-portal/downloads-dashboard.md)。
 - 若要查看 Azure Marketplace 和 Microsoft AppSource 上提供的客戶意見反應的匯總觀點，請參閱 [合作夥伴中心 & 審核分析儀表板中的評](./partner-center-portal/ratings-reviews.md)等。
-- 如需有關商業市場分析以及完整的資料詞彙字典的常見問題，請參閱 [商業市場分析術語和常見問題](./partner-center-portal/faq-terminology.md)。
+- 如需有關商業市場分析以及完整的資料詞彙字典的常見問題，請參閱 [商業市場分析術語和常見問題](./analytics-faq.md)。

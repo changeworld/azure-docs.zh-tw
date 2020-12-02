@@ -1,6 +1,6 @@
 ---
-title: 持續整合與部署
-description: 適用于資料倉儲的企業級資料庫 DevOps 體驗，內建支援使用 Azure Pipelines 進行持續整合和部署。
+title: 專用 SQL 集區的持續整合和部署
+description: Azure Synapse Analytics 中的專用 SQL 集區的企業級資料庫 DevOps 體驗，並使用 Azure Pipelines 進行持續整合和部署的內建支援。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 061be5addd0c236db5d982e6103e3cf455b9c361
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 35f503e7214fa91962c91c35611fc9447302f9fc
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480525"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462817"
 ---
-# <a name="continuous-integration-and-deployment-for-data-warehousing"></a>資料倉儲的持續整合和部署
+# <a name="continuous-integration-and-deployment-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的持續整合和部署
 
 此簡易教學課程會概述如何將您的 SQL Server Data tools (SSDT) 資料庫專案與 Azure DevOps 整合，並運用 Azure Pipelines 來設定持續整合及部署。 本教學課程是為數據倉儲建立持續整合和部署管線的第二個步驟。
 
@@ -60,7 +60,7 @@ ms.locfileid: "92480525"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 探索 [SYNAPSE SQL 集區架構](massively-parallel-processing-mpp-architecture.md)
-- 快速[建立 SQL 集區](create-data-warehouse-portal.md)
+- 探索 [專用的 sql 集區 (先前的 SQL DW) 架構](massively-parallel-processing-mpp-architecture.md)
+- 快速 [建立專用的 sql 集區 (先前的 SQL DW) ](create-data-warehouse-portal.md)
 - [載入範例資料](load-data-from-azure-blob-storage-using-polybase.md)
 - 探索[影片](sql-data-warehouse-videos.md)

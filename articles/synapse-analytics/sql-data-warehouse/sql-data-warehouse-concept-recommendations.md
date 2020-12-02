@@ -1,5 +1,5 @@
 ---
-title: Synapse SQL 建議
+title: Azure Advisor 建議的專用 SQL 集區
 description: 深入了解 Synapse SQL 建議與其產生方式
 services: synapse-analytics
 author: kevinvngo
@@ -11,18 +11,18 @@ ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e4564005e3b9cc9673cc20596d4114d102174b9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 667629b7f613b11f40528b039c7525339b7a62d0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85482848"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462862"
 ---
-# <a name="synapse-sql-recommendations"></a>Synapse SQL 建議
+# <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的 Azure Advisor 建議
 
-此文章說明透過 Azure Advisor 所提供的 Synapse SQL 建議。  
+本文說明 Azure Advisor 中可用的專用 SQL 集區建議。  
 
-Synapse SQL 提供的建議可確保為了效能持續最佳化資料倉儲工作負載。 建議與 [Azure Advisor](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 緊密整合，直接在 [Azure 入口網站](https://aka.ms/Azureadvisor)內為您提供最佳做法。 Synapse SQL 每天都會收集遙測資料，並針對您的作用中工作負載提出建議。 下面說明支援的建議情節以及如何套用建議的動作。
+專用的 SQL 集區提供建議，以確保您的資料倉儲工作負載能針對效能進行一致的優化。 建議與 [Azure Advisor](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 緊密整合，直接在 [Azure 入口網站](https://aka.ms/Azureadvisor)內為您提供最佳做法。 專用的 SQL 集區會收集遙測資料，並針對您每日的作用中工作負載提供建議。 下面說明支援的建議情節以及如何套用建議的動作。
 
 您可以[立即查看建議](https://aka.ms/Azureadvisor)！ 
 
@@ -73,4 +73,4 @@ Advisor 會持續運用工作負載型啟發學習法 (例如資料表存取頻�
 
 ## <a name="data-loading-misconfiguration"></a>資料載入設定錯誤
 
-您應該一律從與 SQL 集區位於相同區域的儲存體帳戶載入資料，以將延遲降至最低。 [針對高輸送量資料內嵌使用 COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)，並將您的暫存檔案分割在儲存體帳戶中，以將輸送量最大化。 如果您無法使用 COPY 語句，您可以使用 SqlBulkCopy API 或 bcp 搭配高批次大小，以獲得更好的輸送量。 如需其他資料載入指引，請參閱下列 [檔](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)。 
+您應該一律從與您專用的 SQL 集區位於相同區域的儲存體帳戶載入資料，以將延遲降至最低。 [針對高輸送量資料內嵌使用 COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)，並將您的暫存檔案分割在儲存體帳戶中，以將輸送量最大化。 如果您無法使用 COPY 語句，您可以使用 SqlBulkCopy API 或 bcp 搭配高批次大小，以獲得更好的輸送量。 如需其他資料載入指引，請參閱下列 [檔](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)。 

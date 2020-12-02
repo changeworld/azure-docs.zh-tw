@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 11/06/2020
-ms.openlocfilehash: 9e8aecfe8b16d8af755d3f4c3c71b875d4e8ec40
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 88779f67a2fa9b18f0177a1459b32c672343bb57
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95751244"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462956"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>託管測試磁片磁碟機的詳細設定
 
@@ -29,7 +29,7 @@ ms.locfileid: "95751244"
 
     - **試用產品類型** -選擇 **Microsoft Hosted (Dynamics 365 for Customer Engagement & PowerApps)**。 這表示 Microsoft 將裝載及維護執行試用產品使用者布建和解除布建的服務。
 
-5. 使用 [這些指示](https://docs.microsoft.com/azure/marketplace/test-drive-azure-subscription-setup)，授與 Microsoft AppSource 許可權，以在您的租使用者中布建及取消布建試用產品使用者。 在此步驟中，您將會產生 **AZURE AD APP 識別碼** 和 Azure AD App 以下所述的索引 **鍵值** 。
+5. 使用 [這些指示](./test-drive-azure-subscription-setup.md)，授與 Microsoft AppSource 許可權，以在您的租使用者中布建及取消布建試用產品使用者。 在此步驟中，您將會產生 **AZURE AD APP 識別碼** 和 Azure AD App 以下所述的索引 **鍵值** 。
 6. 在 [ **試用產品技術** 設定] 頁面上完成這些欄位。
 
     [![試用產品技術設定頁面。](media/test-drive/technical-config-details.png)](media/test-drive/technical-config-details.png#lightbox)
@@ -81,7 +81,7 @@ ms.locfileid: "95751244"
     - **Azure Active Directory 租使用者名稱** –適用于您 Dynamics 365 實例的 Azure 租使用者名稱。 請使用 `<tenantname>.onmicrosoft.com` 格式。 範例值： `testdrive.onmicrosoft.com` 。
     - **Azure Active Directory 應用程式識別碼** –您在步驟5中建立之 AZURE ACTIVE DIRECTORY (AD) 應用程式的識別碼。 範例值： `53852862-a2ae-4e43-9461-faa49650a096` 。
     - **Azure Active Directory 應用程式用戶端密碼** –在步驟5中建立之 Azure AD 應用程式的秘密。 範例值： `IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=` 。
-    - **試用法律實體** –提供法律實體以指派試用版使用者。 您可以在 [建立或修改法律實體](https://technet.microsoft.com/library/hh242184.aspx)時建立一個新的。
+    - **試用法律實體** –提供法律實體以指派試用版使用者。 您可以在 [建立或修改法律實體](/dynamicsax-2012/appuser-itpro/create-or-modify-a-legal-entity)時建立一個新的。
     - **角色名稱** ：在您為試用產品建立的自訂 Dynamics 365 安全性角色中， (應用程式物件樹狀) 結構的 AOT 名稱。 這是在使用者的試用產品中，將指派給使用者的角色。
 
         :::image type="content" source="./media/test-drive/security-config.png" alt-text="[安全性設定] 頁面。":::

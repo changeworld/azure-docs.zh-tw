@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 7621a19b510d302454465f9fcbacec27a14dddf9
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9855a53ebdf7501907b3e1e63d59823d3a0b0209
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340170"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463116"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>適用於 Azure Cosmos DB 的 Synapse Link：近即時分析的使用案例
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -53,9 +53,9 @@ ms.locfileid: "93340170"
 
   適用於 Azure Cosmos DB 的 Synapse Link 可實現豐富的商業智慧 (BI)/報告案例：
 
-  * 使用與 Synapse SQL 無伺服器的原生整合以及 T-sql 語言的完整表達，查詢來自 Azure Cosmos DB 分析存放區的運算元據。
+  * 使用與無伺服器 SQL 集區的原生整合和 T-sql 語言的完整表達，查詢 Azure Cosmos DB 分析存放區中的運算元據。
 
-  * 透過適用于熟悉 BI 工具的 Synapse SQL 無伺服器支援，建立模型併發行自動重新整理 BI 儀表板的 Azure Cosmos DB。 例如，Azure Analysis Services、Power BI Premium 等。
+  * 透過適用于熟悉 BI 工具的無伺服器 SQL 集區支援，建立模型併發布自動重新整理 BI 儀表板的 Azure Cosmos DB。 例如，Azure Analysis Services、Power BI Premium 等。
 
 以下是一些將資料批次處理及串流至 Azure Cosmos DB 的資料整合指引：
 
@@ -143,4 +143,4 @@ Azure Synapse Link 可讓 Azure Cosmos DB 不只支援交易工作負載，也�
 
 * [Azure Synapse Analytics 中的 Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md)
 
-* [Azure Synapse Analytics 中的 SQL 無伺服器執行時間支援](../synapse-analytics/sql/on-demand-workspace-overview.md)
+* [Azure Synapse Analytics 中的無伺服器 SQL 集區執行時間支援](../synapse-analytics/sql/on-demand-workspace-overview.md)
