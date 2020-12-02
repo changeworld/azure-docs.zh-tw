@@ -1,32 +1,30 @@
 ---
 title: 使用標籤來檢測查詢
-description: 使用標籤來檢測 Synapse SQL 集區中的查詢以開發解決方案的秘訣。
+description: 使用標籤來檢測 Azure Synapse Analytics 中專用 SQL 集區查詢的秘訣。
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 91b6dac5fba4bb8dfd8cf4a3bb4e5952f8388bb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 7958caf71658dcdcbf31bac84697931e9049452f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89459142"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462740"
 ---
-# <a name="using-labels-to-instrument-queries-in-synapse-sql-pool"></a>使用標籤來檢測 Synapse SQL 集區中的查詢
+# <a name="using-labels-to-instrument-queries-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>使用標籤來檢測 Azure Synapse Analytics 中專用 SQL 集區的查詢
 
-本文提供的秘訣，可讓您使用標籤來檢測 SQL 集區中的查詢，以開發解決方案。
-
-使用標籤來檢測 Azure Synapse Analytics 中的查詢以開發解決方案的秘訣。
+本文提供的秘訣，可讓您使用標籤來檢測專用 SQL 集區中的查詢，以開發解決方案。
 
 ## <a name="what-are-labels"></a>什麼是標籤？
 
-SQL 集區支援稱為查詢標籤的概念。 繼續進行之前，讓我們看看一個範例：
+專用的 SQL 集區支援稱為查詢標籤的概念。 繼續進行之前，讓我們看看一個範例：
 
 ```sql
 SELECT *

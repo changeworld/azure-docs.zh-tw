@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: 225afcbafeaf7213b4f040a07d709d33e46b44f4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 364d9c20c0bfce1f31103ddf6df0c8d7b228eca2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996282"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461777"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>針對適用於 MySQL 的 Azure 資料庫使用虛擬網路服務端點和規則
 
@@ -112,7 +112,7 @@ ms.locfileid: "95996282"
 
 - 虛擬網路規則只套用至 Azure Resource Manager 虛擬網路，而不是[傳統部署模型][arm-deployment-model-568f]網路。
 
-- 使用 **Microsoft. Sql** 服務標記開啟虛擬網路服務端點以適用於 MySQL 的 Azure 資料庫，也會啟用所有 Azure 資料庫服務的端點：適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫、Azure SQL Database 和 Azure Synapse Analytics 先前的 Sql 資料倉儲 (。
+- 使用 **Microsoft Sql** 服務標記開啟虛擬網路服務端點以適用於 MySQL 的 Azure 資料庫，也會啟用所有 Azure 資料庫服務的端點：適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫、Azure SQL Database 和 Azure Synapse Analytics。
 
 - VNet 服務端點的支援僅適用於一般用途伺服器和記憶體最佳化伺服器。
 

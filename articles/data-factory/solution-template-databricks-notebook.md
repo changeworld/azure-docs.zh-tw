@@ -11,24 +11,24 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/27/2020
-ms.openlocfilehash: f9dc11bd046bdc3a8913b4b05f1b68b84c9736c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c20508d27d03c00a6842979731fb905bbaa9def
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89438444"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461242"
 ---
 # <a name="transformation-with-azure-databricks"></a>使用 Azure Databricks 進行轉換
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-在本教學課程中，您會在 Azure Data Factory 中建立包含 **驗證**、 **複製資料**和 **筆記本** 活動的端對端管線。
+在本教學課程中，您會在 Azure Data Factory 中建立包含 **驗證**、 **複製資料** 和 **筆記本** 活動的端對端管線。
 
 - **驗證** 可確保您的源資料集已準備好供下游取用，然後您才會觸發複製和分析作業。
 
 - **複製資料** 會將源資料集複製到接收儲存體，並在 Azure Databricks 筆記本中掛接為 DBFS。 如此一來，Spark 就可以直接使用資料集。
 
-- **筆記本** 會觸發可轉換資料集的 Databricks 筆記本。 它也會將資料集新增至已處理的資料夾或 Azure Azure Synapse Analytics (先前的 SQL 資料倉儲) 。
+- **筆記本** 會觸發可轉換資料集的 Databricks 筆記本。 它也會將資料集新增至已處理的資料夾或 Azure Azure Synapse Analytics。
 
 為了簡單起見，本教學課程中的範本不會建立排程的觸發程式。 如有必要，您可以新增一個。
 
@@ -56,29 +56,29 @@ ms.locfileid: "89438444"
 
    在匯入的筆記本中，移至 **命令 5** ，如下列程式碼片段所示。
 
-   - `<storage name>`將和取代 `<access key>` 為您自己的儲存體連接資訊。
+   - `<storage name>`將和取代 `<access key>` 為您自己的儲存體連接資訊。
    - 將儲存體帳戶與容器搭配使用 `sinkdata` 。
 
     ```python
-    # Supply storageName and accessKey values  
-    storageName = "<storage name>"  
-    accessKey = "<access key>"  
+    # Supply storageName and accessKey values  
+    storageName = "<storage name>"  
+    accessKey = "<access key>"  
 
-    try:  
-      dbutils.fs.mount(  
-        source = "wasbs://sinkdata\@"+storageName+".blob.core.windows.net/",  
-        mount_point = "/mnt/Data Factorydata",  
-        extra_configs = {"fs.azure.account.key."+storageName+".blob.core.windows.net": accessKey})  
+    try:  
+      dbutils.fs.mount(  
+        source = "wasbs://sinkdata\@"+storageName+".blob.core.windows.net/",  
+        mount_point = "/mnt/Data Factorydata",  
+        extra_configs = {"fs.azure.account.key."+storageName+".blob.core.windows.net": accessKey})  
 
-    except Exception as e:  
-      # The error message has a long stack track. This code tries to print just the relevant line indicating what failed.
+    except Exception as e:  
+      # The error message has a long stack track. This code tries to print just the relevant line indicating what failed.
 
-    import re
-    result = re.findall(r"\^\s\*Caused by:\s*\S+:\s\*(.*)\$", e.message, flags=re.MULTILINE)
-    if result:
-      print result[-1] \# Print only the relevant error message
-    else:  
-      print e \# Otherwise print the whole stack trace.  
+    import re
+    result = re.findall(r"\^\s\*Caused by:\s*\S+:\s\*(.*)\$", e.message, flags=re.MULTILINE)
+    if result:
+      print result[-1] \# Print only the relevant error message
+    else:  
+      print e \# Otherwise print the whole stack trace.  
     ```
 
 1. 產生供 Data Factory 用來存取 Databricks 的 **Databricks 存取權杖**。
@@ -126,17 +126,17 @@ ms.locfileid: "89438444"
 
 在新的管線中，大部分設定都會自動以預設值設定。 檢查管線的設定，並進行任何必要的變更。
 
-1. 在 [ **驗證** 活動 **可用性] 旗**標中，確認源 **資料集** 值設定為 `SourceAvailabilityDataset` 您稍早建立的值。
+1. 在 [ **驗證** 活動 **可用性] 旗** 標中，確認源 **資料集** 值設定為 `SourceAvailabilityDataset` 您稍早建立的值。
 
    ![源資料集值](media/solution-template-Databricks-notebook/validation-settings.png)
 
 1. 在 [ **複製資料** 活動 **檔到 blob**] 中，檢查 [ **來源** ] 和 [ **接收** ] 索引標籤。 視需要變更設定。
 
-   - **來源**索引標籤來源索引標籤 ![](media/solution-template-Databricks-notebook/copy-source-settings.png)
+   - **來源** 索引標籤來源索引標籤 ![](media/solution-template-Databricks-notebook/copy-source-settings.png)
 
-   - **接收**索引標籤接收索引標籤 ![](media/solution-template-Databricks-notebook/copy-sink-settings.png)
+   - **接收** 索引標籤接收索引標籤 ![](media/solution-template-Databricks-notebook/copy-sink-settings.png)
 
-1. 在 [ **筆記本** 活動] **轉換**中，檢查並視需要更新路徑和設定。
+1. 在 [ **筆記本** 活動] **轉換** 中，檢查並視需要更新路徑和設定。
 
    **Databricks 連結服務** 應預先填入上一個步驟中的值，如下所示：已 ![ 填入 Databricks 連結服務的值](media/solution-template-Databricks-notebook/notebook-activity.png)
 
@@ -169,7 +169,7 @@ ms.locfileid: "89438444"
 
      - **連結的服務**  -  `sinkBlob_LS` ，在上一個步驟中建立。
 
-     - 檔案**路徑**  -  `sinkdata/staged_sink` 。
+     - 檔案 **路徑**  -  `sinkdata/staged_sink` 。
 
        ![DestinationFilesDataset 連結服務和檔案路徑的選取專案](media/solution-template-Databricks-notebook/destination-dataset.png)
 

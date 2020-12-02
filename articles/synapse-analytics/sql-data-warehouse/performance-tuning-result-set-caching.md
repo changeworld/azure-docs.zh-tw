@@ -1,6 +1,6 @@
 ---
 title: 使用結果集快取進行效能微調
-description: Azure Synapse Analytics 中 Synapse SQL 集區的結果集快取功能概觀
+description: Azure Synapse Analytics 中專用 SQL 集區的結果集快取功能總覽
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 933ec541e358f1839c1b4d24acd19e439ea26375
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2b54277d0306244dc4ab6740fdd30e52668dd63c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541276"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460770"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>使用結果集快取進行效能微調
 
-啟用結果集快取時，Synapse SQL 會在使用者資料庫中自動快取查詢結果，以供重複使用。  這可讓後續的查詢執行直接從永續性快取取得結果，因此不需要重新計算。   結果集快取可改善查詢效能並減少計算資源使用量。  此外，使用快取結果集的查詢不會使用任何並行位置，因此不會計入現有的並行限制。 基於安全性，如果使用者與建立快取結果的使用者具有相同的資料存取權限，則只能存取快取的結果。  
+啟用結果集快取時，專用的 SQL 集區會自動將查詢結果快取到使用者資料庫中，以供重複使用。  這可讓後續的查詢執行直接從永續性快取取得結果，因此不需要重新計算。   結果集快取可改善查詢效能並減少計算資源使用量。  此外，使用快取結果集的查詢不會使用任何並行位置，因此不會計入現有的並行限制。 基於安全性，如果使用者與建立快取結果的使用者具有相同的資料存取權限，則只能存取快取的結果。  
 
 ## <a name="key-commands"></a>主要命令
 
@@ -47,7 +47,7 @@ ms.locfileid: "92541276"
 > - 如果 ORDER BY 資料行中的資料不是唯一的，則在 ORDER BY 資料行中具有相同值的資料列不會有 garanteed 資料列順序，不論結果集快取是啟用或停用。
 
 > [!IMPORTANT]
-> 建立結果集快取以及從快取擷取資料的作業會在 Synapse SQL 集區執行個體的控制節點上進行。
+> 建立結果集快取並從快取取出資料的作業會在專用 SQL 集區實例的控制節點上進行。
 > 當結果集快取開啟時，執行傳回大型結果集的查詢 (例如，>1GB) 可能會導致控制節點上的節流過高，並使執行個體的整體查詢回應變慢。  這些查詢通常會在資料探索或 ETL 作業期間使用。 若要避免對控制節點造成壓力並導致效能問題，使用者應該先關閉資料庫的結果集快取，再執行這些類型的查詢。  
 
 針對查詢的結果集快取作業所花費時間執行此查詢：
@@ -85,7 +85,7 @@ WHERE request_id = <'Your_Query_Request_ID'>
 
 結果集快取的大小上限是每個資料庫 1 TB。  當基礎查詢資料變更時，快取的結果會自動失效。  
 
-快取收回是由 Synapse SQL 依以下排程自動管理：
+快取收回是由依此排程自動執行的專用 SQL 集區所管理：
 
 - 若結果集尚未使用或已失效，則為每 48 小時收回一次。
 - 當結果集快取接近大小上限時。

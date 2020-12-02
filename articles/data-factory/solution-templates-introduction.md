@@ -11,12 +11,12 @@ author: djpmsft
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
-ms.openlocfilehash: 515de0fed987f412adb060a3ba58978f0400ae0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2725d498b6fded56ad28235b051b1e8f4fbadadb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441947"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461199"
 ---
 # <a name="templates"></a>範本
 
@@ -28,7 +28,7 @@ ms.locfileid: "89441947"
 
 您可以透過下列兩種方法從範本開始建立 Data Factory 管線：
 
-1.  選取 [概觀] 頁面上的 [從範本建立管線]**** 來開啟 [範本資源庫]。
+1.  選取 [概觀] 頁面上的 [從範本建立管線] 來開啟 [範本資源庫]。
 
     ![從 [概觀] 頁面開啟 [範本資源庫]](media/solution-templates-introduction/templates-intro-image1.png)
 
@@ -68,9 +68,9 @@ Data Factory 使用 Azure Resource Manager 範本來儲存 Data Factory 管線�
 
         -   從 SQL Server 內部部署複製到 Azure SQL Database
 
-        -   從內部部署 SQL Server Azure Synapse Analytics 先前的 SQL 資料倉儲 () 
+        -   從內部部署 SQL Server 到 Azure Synapse Analytics
 
-        -   從內部部署環境到 Azure Synapse Analytics (先前的 SQL 資料倉儲) 
+        -   從 Oracle 內部部署到 Azure Synapse Analytics
 
 -   SSIS 範本
 
@@ -82,11 +82,11 @@ Data Factory 使用 Azure Resource Manager 範本來儲存 Data Factory 管線�
 
 ### <a name="my-templates"></a>我的範本
 
-您也可以選取 [管線] 索引標籤上的 [儲存為範本]**** 來將管線儲存為範本。
+您也可以選取 [管線] 索引標籤上的 [儲存為範本] 來將管線儲存為範本。
 
 ![選取管線作為範本](media/solution-templates-introduction/templates-intro-image4.png)
 
-您可以在 [範本資源庫] 的 [我的範本]**** 區段檢視儲存為範本的管線。 您也可以在資源總管中的 [範本]**** 區段中看見它們。
+您可以在 [範本資源庫] 的 [我的範本] 區段檢視儲存為範本的管線。 您也可以在資源總管中的 [範本] 區段中看見它們。
 
 ![我的範本](media/solution-templates-introduction/templates-intro-image5.png)
 

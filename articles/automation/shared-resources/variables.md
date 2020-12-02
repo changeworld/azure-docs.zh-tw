@@ -3,14 +3,14 @@ title: 管理 Azure 自動化中的變數
 description: 本文說明如何在 Runbook 和 DSC 組態中使用變數。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 10/05/2020
+ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4749fcb6698ff1716f2cae257cc0efad458bf9a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5be0d45843eed8c7c0d7d9b6dc4655de01e914c3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766198"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461448"
 ---
 # <a name="manage-variables-in-azure-automation"></a>管理 Azure 自動化中的變數
 
@@ -26,10 +26,10 @@ ms.locfileid: "91766198"
 
 Azure 自動化會保存變數，並使其可供使用，即使 Runbook 或 DSC 組態失敗也一樣。 此行為可讓一個 Runbook 或 DSC 組態設定另一個 Runbook 所使用的值，或下一次其執行時的相同 Runbook 或 DSC 組態。
 
-Azure 自動化會安全地儲存每個加密變數。 當您建立變數時，您可以 Azure 自動化為安全資產來指定其加密和儲存。 建立變數之後，您就無法變更其加密狀態，而不需要重新建立變數。 Azure 資訊安全中心建議將所有 Azure 自動化變數加密，如 [自動化帳戶變數](../../security-center/recommendations-reference.md#recs-computeapp)中所述。
+Azure 自動化會安全地儲存每個加密變數。 當您建立變數時，您可以 Azure 自動化為安全資產來指定其加密和儲存。 建立變數之後，您就無法變更其加密狀態，而不需要重新建立變數。 如果您的自動化帳戶變數儲存了尚未加密的機密資料，您必須將其刪除，並將其重新建立為加密變數。 Azure 資訊安全中心建議將所有 Azure 自動化變數加密，如 [自動化帳戶變數](../../security-center/recommendations-reference.md#recs-computeapp)中所述。 如果您有想要從此安全性建議排除的未加密變數，請參閱 [豁免資源的建議和安全分數](../../security-center/exempt-resource.md) 以建立豁免規則。
 
 >[!NOTE]
->Azure 自動化中的安全資產包括認證、憑證、連接和加密的變數。 這些資產都會經過加密，並使用為每個自動化帳戶產生的唯一金鑰，儲存在 Azure 自動化中。 Azure 自動化會將金鑰儲存在系統管理的 Key Vault 中。 在儲存安全資產之前，自動化會從 Key Vault 載入金鑰，然後將其用來加密資產。 
+>Azure 自動化中的安全資產包括認證、憑證、連接和加密的變數。 這些資產都會經過加密，並使用為每個自動化帳戶產生的唯一金鑰，儲存在 Azure 自動化中。 Azure 自動化會將金鑰儲存在系統管理的 Key Vault 中。 在儲存安全資產之前，自動化會從 Key Vault 載入金鑰，然後將其用來加密資產。
 
 ## <a name="variable-types"></a>變數型別
 

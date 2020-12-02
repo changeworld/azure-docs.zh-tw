@@ -1,6 +1,6 @@
 ---
-title: '使用無伺服器 SQL 集區查詢 Parquet 的巢狀型別 (preview) '
-description: 在本文中，您將瞭解如何使用無伺服器 SQL 集區 (預覽) 來查詢 Parquet 的巢狀型別。
+title: 使用無伺服器 SQL 集區查詢 Parquet 的巢狀型別
+description: 在本文中，您將瞭解如何使用無伺服器 SQL 集區來查詢 Parquet 的巢狀型別。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 426c95638422fa4260508aa81bb47a7c9565e6eb
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 91f612ba7f19deb739dbb6004e275ea044a5a3d3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685710"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462565"
 ---
-# <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>使用無伺服器 SQL 集區在 Parquet 和 JSON 檔案中查詢巢狀型別 (預覽) Azure Synapse Analytics
+# <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用無伺服器 SQL 集區來查詢 Parquet 和 JSON 檔案中的巢狀型別
 
-在本文中，您將瞭解如何使用 Azure Synapse Analytics 的無伺服器 SQL 集區 (預覽版) 來撰寫查詢。 查詢將會讀取 Parquet 的巢狀型別。
+在本文中，您將瞭解如何使用 Azure Synapse Analytics 中的無伺服器 SQL 集區來撰寫查詢。 查詢將會讀取 Parquet 的巢狀型別。
 巢狀型別是代表物件或陣列的複雜結構。 巢狀型別可以儲存在： 
 - [Parquet](query-parquet-files.md)，您可以在其中包含包含陣列和物件的多個複雜資料行。
 - 階層式 Json 檔案，您可以在其中將複雜 JSON [檔](query-json-files.md)讀取為單一資料行。
@@ -47,7 +47,7 @@ FROM
 > [!IMPORTANT]
 > 此範例會使用 COVID-19-19 Open Research 資料集的檔案。 [請參閱此處的授權和資料結構](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 第一個步驟是建立將建立資料來源的資料庫。 然後，您將在資料庫上執行 [安裝腳本](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) 來初始化物件。 安裝腳本會建立範例中所使用的資料來源、資料庫範圍的認證，以及外部檔案格式。
 

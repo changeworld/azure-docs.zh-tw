@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: a879ac81859c855bb7b7bc2eddb1e3c9b62adb34
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 31298be4d50c7f562e2e2b9adbf889b165b197e5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321407"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461853"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>使用 PowerShell 移除透明資料加密 (TDE) 保護裝置
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "93321407"
 本主題說明如何使用 TDE 搭配客戶管理的金鑰，以 Azure Key Vault 攜帶您自己的金鑰 (BYOK) 支援，來回應可能遭盜用的 TDE 保護 Azure SQL Database 或 Azure Synapse Analytics。 若要深入了解 TDE 的 BYOK 支援，請參閱[概觀頁面](transparent-data-encryption-byok-overview.md)。
 
 > [!CAUTION]
-> 本文所述的程式應該只在極端案例或測試環境中完成。 請仔細檢查步驟，因為從 Azure Key Vault 中刪除主動使用的 TDE 保護裝置會導致 **資料庫變得無法使用** 。
+> 本文所述的程式應該只在極端案例或測試環境中完成。 請仔細檢查步驟，因為從 Azure Key Vault 中刪除主動使用的 TDE 保護裝置會導致 **資料庫變得無法使用**。
 
 如果金鑰遭到入侵，讓某個服務或使用者有未經授權的金鑰存取權，最好先刪除金鑰。
 
@@ -34,14 +34,14 @@ ms.locfileid: "93321407"
 
 本操作指南會根據所需的結果，在遭入侵的事件回應之後，提供兩種方法：
 
-- 使 Azure SQL Database/Azure Synapse Analytics 中的資料庫 **無法存取** 。
-- 若要讓 Azure SQL Database/Azure Azure Synapse Analytics 中的資料庫 (先前的 SQL 資料倉儲) **無法存取** 。
+- 使 Azure SQL Database/Azure Synapse Analytics 中的資料庫 **無法存取**。
+- 使 Azure SQL Database/Azure 中的資料庫 Azure Synapse Analytics **無法存取**。
 
 ## <a name="prerequisites"></a>必要條件
 
 - 您必須具有 Azure 訂用帳戶，並且是該訂用帳戶的系統管理員
 - 您必須已安裝且正在執行 Azure PowerShell。
-- 本操作指南假設您已經使用 Azure Key Vault 的金鑰作為 Azure SQL Database 的 TDE 保護裝置，或先前為 SQL 資料倉儲)  (的 Azure Synapse。 若要深入了解，請參閱[具有 BYOK 支援的透明資料加密](transparent-data-encryption-byok-overview.md)。
+- 本操作指南假設您已經使用 Azure Key Vault 中的金鑰作為 Azure SQL Database 或 Azure Synapse 的 TDE 保護裝置。 若要深入了解，請參閱[具有 BYOK 支援的透明資料加密](transparent-data-encryption-byok-overview.md)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

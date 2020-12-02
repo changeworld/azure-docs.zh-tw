@@ -3,12 +3,12 @@ title: 大規模監視委派的資源
 description: 瞭解如何在您所管理的客戶租使用者之間，以可擴充的方式有效地使用 Azure 監視器記錄。
 ms.date: 10/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 3e5c98b3b62a8fbc953a29cf51ac527e5de21110
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 96ca05faf2b3da8f214c14ae57eb186c7b71e1b3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735855"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461522"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>大規模監視委派的資源
 
@@ -44,7 +44,7 @@ ms.locfileid: "92735855"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 探索這份 [MVP 建立的範例活頁簿](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks)，藉由查詢多個 Log Analytics 工作區的 [更新管理記錄](../../automation/update-management/update-mgmt-query-logs.md) 來追蹤修補程式合規性報告。 
+- 探索這份 [MVP 建立的範例活頁簿](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks)，藉由查詢多個 Log Analytics 工作區的 [更新管理記錄](../../automation/update-management/query-logs.md) 來追蹤修補程式合規性報告。 
 - 了解 [Azure 監視器](../../azure-monitor/index.yml)。
 - 瞭解 [Azure 監視器記錄](../../azure-monitor/platform/data-platform-logs.md)。
 - 了解[跨租用戶管理體驗](../concepts/cross-tenant-management-experience.md)。

@@ -8,18 +8,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: eb53e7052db6d4de365864184b9bd2e6585b7e2d
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: dfd819d82f5e35183802e33e5d423cad4de36c38
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412101"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461587"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-azure-monitor-resource-logs"></a>將 IoT 中樞從作業監視遷移至 Azure 監視器資源記錄
 
 使用 [作業監視](iot-hub-operations-monitoring.md) 來追蹤 IoT 中樞作業狀態的客戶可以將該工作流程遷移至 [Azure 監視器資源記錄](../azure-monitor/platform/platform-logs-overview.md)，這是 Azure 監視器的功能。 資源記錄提供許多 Azure 服務的資源層級診斷資訊。
 
-**IoT 中樞的作業監視功能已被取代** ，並已從入口網站中移除。 本文提供將工作負載從作業監視移至 Azure 監視器資源記錄的步驟。 如需有關淘汰時間表的詳細資訊，請參閱[使用 Azure 監視器和 Azure 資源健康狀態來監視您的 Azure IoT 解決方案](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/)。
+**IoT 中樞的作業監視功能已被取代**，並已從入口網站中移除。 本文提供將工作負載從作業監視移至 Azure 監視器資源記錄的步驟。 如需有關淘汰時間表的詳細資訊，請參閱[使用 Azure 監視器和 Azure 資源健康狀態來監視您的 Azure IoT 解決方案](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/)。
 
 ## <a name="update-iot-hub"></a>更新 IoT 中樞
 
@@ -29,15 +29,15 @@ ms.locfileid: "94412101"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，然後瀏覽至 IoT 中樞。
 
-1. 在左窗格的 [ **監視** ] 底下，選取 [ **診斷設定** ]。 然後選取 [ **新增診斷設定** ]。
+1. 在左窗格的 [ **監視**] 底下，選取 [ **診斷設定**]。 然後選取 [新增診斷設定]。
 
    :::image type="content" source="media/iot-hub-migrate-to-diagnostics-settings/open-diagnostic-settings.png" alt-text="螢幕擷取畫面：醒目提示 [監視] 區段中的 [診斷設定]。":::
 
 1. 在 [ **診斷設定** ] 窗格中，提供診斷設定的名稱。
 
-1. 在 [ **類別目錄詳細資料** ] 底下，選取您要監視之作業的類別。 如需 IoT 中樞可用作業類別的詳細資訊，請參閱 [資源記錄](monitor-iot-hub-reference.md#resource-logs)檔。
+1. 在 [ **類別目錄詳細資料**] 底下，選取您要監視之作業的類別。 如需 IoT 中樞可用作業類別的詳細資訊，請參閱 [資源記錄](monitor-iot-hub-reference.md#resource-logs)檔。
 
-1. 在 [ **目的地詳細資料** ] 底下，選擇您要傳送記錄的位置。 您可以選取這些目的地的任意組合：
+1. 在 [ **目的地詳細資料**] 底下，選擇您要傳送記錄的位置。 您可以選取這些目的地的任意組合：
 
    * 封存至儲存體帳戶
    * 串流至事件中樞
@@ -49,9 +49,9 @@ ms.locfileid: "94412101"
 
 1. 選取 [儲存]  以儲存設定。
 
-新的設定大約會在 10 分鐘內生效。 之後，記錄會出現在設定的目的地中。 如需有關設定診斷的詳細資訊，請參閱 [收集和取用來自 Azure 資源的記錄資料](/azure/azure-monitor/platform/platform-logs-overview)。
+新的設定大約會在 10 分鐘內生效。 之後，記錄會出現在設定的目的地中。 如需有關設定診斷的詳細資訊，請參閱 [收集和取用來自 Azure 資源的記錄資料](../azure-monitor/platform/platform-logs-overview.md)。
 
-如需有關如何建立診斷設定的詳細資訊，包括 PowerShell 和 Azure CLI，請參閱 Azure 監視器檔中的 [診斷設定](/azure/azure-monitor/platform/diagnostic-settings) 。
+如需有關如何建立診斷設定的詳細資訊，包括 PowerShell 和 Azure CLI，請參閱 Azure 監視器檔中的 [診斷設定](../azure-monitor/platform/diagnostic-settings.md) 。
 
 ### <a name="turn-off-operations-monitoring"></a>關閉作業監視
 

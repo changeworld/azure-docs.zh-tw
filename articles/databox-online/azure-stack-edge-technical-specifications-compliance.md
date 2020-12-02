@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: c177de3a862370f4d1daa19c6560950b66b18352
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b36bb34f4c9081d807998cb8287797443625a6b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826836"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460303"
 ---
 # <a name="azure-stack-edge-pro-technical-specifications"></a>Azure Stack Edge Pro 技術規格
 
@@ -34,7 +34,7 @@ Azure Stack Edge Pro 裝置具有下列計算和記憶體的規格：
 
 | 規格           | 值                  |
 |-------------------------|----------------------------|
-| FPGA   | Intel Arria 10 <br> 可用的深度神經網路 (DNN) 模型與[雲端 FPGA 執行個體支援](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure)的那些模型相同。|
+| FPGA   | Intel Arria 10 <br> 可用的深度神經網路 (DNN) 模型與[雲端 FPGA 執行個體支援](../machine-learning/how-to-deploy-fpga-web-service.md#fpga-support-in-azure)的那些模型相同。|
 
 ## <a name="power-supply-unit-specifications"></a>電源供應器裝置規格
 

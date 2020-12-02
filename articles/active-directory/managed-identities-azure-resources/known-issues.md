@@ -13,16 +13,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 08/06/2020
+ms.date: 12/01/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref, devx-track-azurecli
-ms.openlocfilehash: c41ec06b1f985296377d27dcbe72b5f41224809b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4d7debce83928e21072c981b007e8048bfc4c594
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835402"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460945"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 資源適用受控識別的常見問題集與已知問題
 
@@ -74,7 +74,7 @@ az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  princi
 
 否。 如果您將訂用帳戶移至另一個目錄，則必須手動重新建立訂用帳戶，並再次授與 Azure 角色指派。
 - 若為系統指派的受控識別：停用然後重新啟用。 
-- 若為使用者指派的受控識別：加以刪除、重新建立，然後重新連結至所需的資源 (例如虛擬機器)
+- 針對使用者指派的受控識別：刪除、重新建立，然後再將其附加至必要的資源 (例如虛擬機器) 
 
 ### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>可以使用受控識別來存取不同目錄/租用戶中的資源嗎？
 
@@ -85,6 +85,46 @@ az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  princi
 - 系統指派的受控識別：您需要資源的寫入權限。 例如，針對虛擬機器，您需要 Microsoft.Compute/virtualMachines/write。 此動作包含在資源特定的內建角色中，例如[虛擬機器參與者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)。
 - 使用者指派的受控識別：您需要資源的寫入權限。 例如，針對虛擬機器，您需要 Microsoft.Compute/virtualMachines/write。 加上透過受控識別的[受控識別操作員](../../role-based-access-control/built-in-roles.md#managed-identity-operator)角色指派。
 
+### <a name="how-do-i-prevent-the-creation-of-user-assigned-managed-identities"></a>如何? 防止建立使用者指派的受控識別？
+
+您可以讓使用者使用[Azure 原則](../../governance/policy/overview.md)來建立使用者指派的受控識別
+
+- 流覽至 [Azure 入口網站](https://portal.azure.com) 並移至 [ **原則**]。
+- 選擇 **定義**
+- 選取 [ **+ 原則定義** ]，然後輸入必要的資訊。
+- 在 [原則規則] 區段中貼上
+
+```json
+{
+  "mode": "All",
+  "policyRule": {
+    "if": {
+      "field": "type",
+      "equals": "Microsoft.ManagedIdentity/userAssignedIdentities"
+    },
+    "then": {
+      "effect": "deny"
+    }
+  },
+  "parameters": {}
+}
+
+```
+
+建立原則之後，請將它指派給您想要使用的資源群組。
+
+- 流覽至資源群組。
+- 尋找您要用來測試的資源群組。
+- 從左側功能表中選擇 [ **原則** ]。
+- 選取 **指派原則**
+- 在 [ **基本** ] 區段中，提供：
+    - **範圍** 我們用來測試的資源群組
+    - **原則定義**：我們稍早建立的原則。
+- 將所有其他設定保留為預設值，然後選擇 [**審核 + 建立**]
+
+此時，在資源群組中建立使用者指派受控識別的任何嘗試都會失敗。
+
+  ![原則違規](./media/known-issues/policy-violation.png)
 
 ## <a name="known-issues"></a>已知問題
 
@@ -127,7 +167,7 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 在已移至另一個目錄的訂用帳戶中，受控識別的因應措施：
 
  - 若為系統指派的受控識別：停用然後重新啟用。 
- - 若為使用者指派的受控識別：加以刪除、重新建立，然後重新連結至所需的資源 (例如虛擬機器)
+ - 針對使用者指派的受控識別：刪除、重新建立，然後再將其附加至必要的資源 (例如虛擬機器) 
 
 如需詳細資訊，請參閱[將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄](../../role-based-access-control/transfer-subscription.md)。
 

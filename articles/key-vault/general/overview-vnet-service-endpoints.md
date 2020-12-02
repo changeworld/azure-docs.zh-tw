@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: e491b89ec5e6488228dd8befed669a13842f9d15
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a1159da782a8cb822bf726173ad0d0bcd9da844a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288559"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460885"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虛擬網路服務端點
 
@@ -54,7 +54,7 @@ Azure Key Vault 的虛擬網路服務端點可讓您將存取權限制為指定�
 > 請留意下列組態限制：
 > * 最多允許 127 條虛擬網路規則和 127 條 IPv4 規則。 
 > * 不支援使用 "/31" 或 "/32" 前置詞大小的小型位址範圍。 而是，使用個別 IP 位址規則設定這些範圍。
-> * 只有公用 IP 位址允許使用 IP 網路規則。 IP 規則中不允許保留私人網路的 IP 位址範圍 (如 RFC 1918 中所定義)。 私人網路包括以 **10.** 、 **172.16-31** 和 **192.168.** 開頭的位址。 
+> * 只有公用 IP 位址允許使用 IP 網路規則。 IP 規則中不允許保留私人網路的 IP 位址範圍 (如 RFC 1918 中所定義)。 私人網路包括以 **10.** 、**172.16-31** 和 **192.168.** 開頭的位址。 
 > * 目前僅支援 IPv4 位址。
 
 ## <a name="trusted-services"></a>信任的服務
@@ -71,7 +71,7 @@ Azure Key Vault 的虛擬網路服務端點可讓您將存取權限制為指定�
 |Exchange Online 和 SharePoint Online|允許使用[客戶金鑰](/microsoft-365/compliance/customer-key-overview)存取 Azure 儲存體服務加密的客戶金鑰。|
 |Azure 資訊保護|允許存取 [Azure 資訊保護](/azure/information-protection/what-is-information-protection)的租用戶金鑰|
 |Azure App Service|[透過 Key Vault 部署 Azure Web 應用程式憑證](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html)。|
-|Azure SQL Database|[透明資料加密的攜帶您自己的金鑰支援 Azure SQL Database 和 Azure Synapse Analytics (先前的 SQL 資料倉儲) ](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)。|
+|Azure SQL Database|[透明資料加密 Azure SQL Database 和 Azure Synapse Analytics 的攜帶您自己的金鑰支援](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)。|
 |Azure 儲存體|[儲存體服務加密在 Azure Key Vault 中使用客戶管理的金鑰](../../storage/common/customer-managed-keys-configure-key-vault.md)。|
 |Azure Data Lake Store|使用客戶管理的金鑰[在 Azure Data Lake Store 中加密資料](../../data-lake-store/data-lake-store-encryption.md)。|
 |Azure Databricks|[快速、簡單且可共同作業的 Apache Spark 型分析服務](/azure/databricks/scenarios/what-is-azure-databricks)|

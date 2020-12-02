@@ -1,34 +1,34 @@
 ---
 title: 使用 T-sql 迴圈
-description: 使用 T-sql 迴圈進行解決方案開發的秘訣，以及取代 Synapse SQL 集區中的資料指標。
+description: 使用 T-sql 迴圈進行解決方案開發的秘訣，以及在 Azure Synapse Analytics 中取代專用 SQL 集區的資料指標。
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 25dad01a54b6ffe08656379340f58e0fe70ec666
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 3477b3095414248afa9fbc7417ab707c94f35546
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213409"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462720"
 ---
-# <a name="using-t-sql-loops-in-synapse-sql-pool"></a>在 Synapse SQL 集區中使用 T-sql 迴圈
+# <a name="using-t-sql-loops-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>針對 Azure Synapse Analytics 中的專用 SQL 集區使用 T-sql 迴圈
 
-本文提供使用 T-sql 迴圈和取代資料指標進行 SQL 集區解決方案開發的秘訣。
+本文提供使用 T-sql 迴圈和取代資料指標進行專用 SQL 集區解決方案開發的秘訣。
 
 ## <a name="purpose-of-while-loops"></a>WHILE 迴圈的用途
 
-Synapse SQL 集區支援 [WHILE](/sql/t-sql/language-elements/while-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 迴圈，以重複執行語句區塊。 只要指定的條件都成立，或者在程式碼使用 BREAK 關鍵字特別終止迴圈之前，這個 WHILE 迴圈都會繼續下去。
+Azure Synapse 中的專用 SQL 集區可支援 [WHILE](/sql/t-sql/language-elements/while-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 迴圈，以重複執行語句區塊。 只要指定的條件都成立，或者在程式碼使用 BREAK 關鍵字特別終止迴圈之前，這個 WHILE 迴圈都會繼續下去。
 
 迴圈適用於取代 SQL 程式碼中定義的資料指標。 幸運的是，幾乎所有以 SQL 程式碼撰寫的資料指標都是向前快轉，並且只讀取多樣性。 因此，WHILE 迴圈是取代資料指標的絕佳替代方案。
 
-## <a name="replacing-cursors-in-synapse-sql-pool"></a>取代 Synapse SQL 集區中的資料指標
+## <a name="replacing-cursors-in-dedicated-sql-pool"></a>取代專用 SQL 集區中的資料指標
 
 不過，在開始之前，您應該先自問下列問題：「這個資料指標是否可以重寫以使用集合型作業？」
 

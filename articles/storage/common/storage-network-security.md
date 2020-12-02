@@ -9,12 +9,12 @@ ms.date: 10/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 2eed5a8ad783d325ef040b3a358e80a6517f08e8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9638d4f8a44b044bb02d3f77d259860128d2e9db
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783635"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462233"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>設定 Azure 儲存體防火牆和虛擬網路
 
@@ -246,7 +246,7 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您根據所使�
    > [!NOTE]
    > 不支援使用 "/31" 或 "/32" 前置詞大小的小型位址範圍。 這些範圍應該使用個別的 IP 位址規則設定。
 
-只有 **公用網際網路** IP 位址允許使用 IP 網路規則。 IP 規則中不允許保留私人網路的 IP 位址範圍 (如 [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) 中所定義)。 私人網路包括以 _10.*_ 、 _172.16.*_  - _172.31.*_ 和 _192.168.*_ 開頭的位址。
+只有 **公用網際網路** IP 位址允許使用 IP 網路規則。 IP 規則中不允許保留私人網路的 IP 位址範圍 (如 [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) 中所定義)。 私人網路包括以 _10.*_ 、_172.16.*_  - _172.31.*_ 和 _192.168.*_ 開頭的位址。
 
    > [!NOTE]
    > IP 網路規則不會影響源自儲存體帳戶所在 Azure 區域的要求。 使用[虛擬網路規則](#grant-access-from-a-virtual-network)來允許同一個區域的要求。
@@ -358,7 +358,7 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您根據所使�
 
 ## <a name="exceptions"></a>例外狀況
 
-對於大部分案例，網路規則可協助在您的應用程式與資料之間建立安全的連線環境。 不過，某些應用程式依賴無法透過虛擬網路或 IP 位址規則來唯一隔離的 Azure 服務。 但是，您必須將這類服務授與儲存體，才能啟用完整的應用程式功能。 在這種情況下，您可以使用 [ *_允許信任的 Microsoft 服務 ..._* _ 設定，可讓這類服務存取您的資料、記錄或分析。
+對於大部分案例，網路規則可協助在您的應用程式與資料之間建立安全的連線環境。 不過，某些應用程式依賴無法透過虛擬網路或 IP 位址規則來唯一隔離的 Azure 服務。 但是，您必須將這類服務授與儲存體，才能啟用完整的應用程式功能。 在這種情況下，您可以使用 [*_允許信任的 Microsoft 服務 ..._* _ 設定，可讓這類服務存取您的資料、記錄或分析。
 
 ### <a name="trusted-microsoft-services"></a>受信任的 Microsoft 服務
 
@@ -384,7 +384,7 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您根據所使�
 | Azure 網路         | Microsoft.Network          | 儲存及分析網路流量記錄，包括透過網路監看員和流量分析服務。 [深入了解](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)。 |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | 當使用已啟用防火牆的快取、來源或目標儲存體帳戶時，啟用複寫以進行 Azure IaaS 虛擬機器的災害復原。  [深入了解](../../site-recovery/azure-to-azure-tutorial-enable-replication.md)。 |
 
-如果您明確地 [將 Azure 角色指派](storage-auth-aad.md#assign-azure-roles-for-access-rights)給該資源實例的 [系統指派受控識別](../../active-directory/managed-identities-azure-resources/overview.md)，則 [ **允許信任的 Microsoft 服務** ] 設定也會允許下列服務的特定實例存取儲存體帳戶。 在此情況下，執行個體的存取範圍會對應至指派給受控識別的 Azure 角色。
+如果您明確地 [將 Azure 角色指派](storage-auth-aad.md#assign-azure-roles-for-access-rights)給該資源實例的 [系統指派受控識別](../../active-directory/managed-identities-azure-resources/overview.md)，則 [**允許信任的 Microsoft 服務**] 設定也會允許下列服務的特定實例存取儲存體帳戶。 在此情況下，執行個體的存取範圍會對應至指派給受控識別的 Azure 角色。
 
 | 服務                        | 資源提供者名稱                 | 目的            |
 | :----------------------------- | :------------------------------------- | :----------------- |
@@ -396,10 +396,10 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您根據所使�
 | Azure IoT 中樞                  | Microsoft.Devices/IotHubs              | 允許將來自 IoT 中樞的資料寫入至 Blob 儲存體。 [深入了解](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
 | Azure Logic Apps               | Microsoft.Logic/workflows              | 讓邏輯應用程式能夠存取儲存體帳戶。 [深入了解](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。 |
 | Azure Machine Learning 服務 | Microsoft.MachineLearningServices      | 已授權的 Azure Machine Learning 工作區會將實驗輸出、模型和記錄寫入至 Blob 儲存體，並讀取資料。 [深入了解](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources)。 | 
-| Azure Synapse Analytics (先前稱為 SQL 資料倉儲)       | Microsoft.Sql                          | 允許使用 COPY 語句或 PolyBase 從特定 SQL 資料庫匯入和匯出資料。 [深入了解](../../azure-sql/database/vnet-service-endpoint-rule-overview.md)。 |
+| Azure Synapse Analytics       | Microsoft.Sql                          | 允許使用 COPY 語句或 PolyBase 從特定 SQL 資料庫匯入和匯出資料。 [深入了解](../../azure-sql/database/vnet-service-endpoint-rule-overview.md)。 |
 | Azure SQL Database       | Microsoft.Sql                          | 允許從儲存體帳戶匯 [入](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) 資料，並將審核資料 [寫入](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md) 防火牆後方的儲存體帳戶。 |
 | Azure 串流分析         | Microsoft.StreamAnalytics             | 允許將串流作業中的資料寫入至 Blob 儲存體。 [深入了解](../../stream-analytics/blob-output-managed-identity.md)。 |
-| Azure Synapse Analytics        | Microsoft.Synapse/workspaces          | 可讓您從 Synapse Analytics 存取 Azure 儲存體中的資料。 |
+| Azure Synapse Analytics        | Microsoft.Synapse/workspaces          | 允許從 Azure Synapse Analytics 存取 Azure 儲存體中的資料。 |
 
 
 ### <a name="storage-analytics-data-access"></a>儲存體分析資料存取

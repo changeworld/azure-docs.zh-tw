@@ -1,25 +1,25 @@
 ---
 title: 使用使用者定義的架構
-description: 使用 T-sql 使用者定義架構在 Synapse SQL 集區中開發解決方案的秘訣。
+description: 使用 T-sql 使用者定義架構來開發 Azure Synapse Analytics 中專用 SQL 集區方案的秘訣。
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: fc5e035215e7cabd02861c6ee2498cadd1ef0534
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 3204c77dd076d9aac6eb5a60b489280caefcbf4b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213358"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460445"
 ---
-# <a name="user-defined-schemas-in-synapse-sql-pool"></a>Synapse SQL 集區中的使用者定義架構
-本文著重于提供使用 T-sql 使用者定義架構在 Synapse SQL 集區中開發解決方案的數個秘訣。
+# <a name="user-defined-schemas-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的使用者定義架構
+本文著重于提供數個使用 T-sql 使用者定義架構來開發專用 SQL 集區方案的秘訣。
 
 ## <a name="schemas-for-application-boundaries"></a>應用程式界限的結構描述
 
@@ -27,7 +27,7 @@ ms.locfileid: "85213358"
 
 例如，傳統的 SQL Server 資料倉儲可能包含臨時資料庫、資料倉儲資料庫和某些資料超市資料庫。 在此拓撲中，每個資料庫在架構中會以工作負載和安全性界限的形式運作。
 
-相反地，SQL 集區會在一個資料庫內執行整個資料倉儲工作負載。 不允許跨資料庫聯結。 SQL 集區預期倉儲所使用的所有資料表都會儲存在一個資料庫中。
+相反地，專用的 SQL 集區會在一個資料庫內執行整個資料倉儲工作負載。 不允許跨資料庫聯結。 專用的 SQL 集區預期倉儲所使用的所有資料表都會儲存在一個資料庫中。
 
 > [!NOTE]
 > SQL 集區不支援任何種類的跨資料庫查詢。 因此，需要修改運用此模式的資料倉儲實作。
@@ -37,11 +37,11 @@ ms.locfileid: "85213358"
 ## <a name="recommendations"></a>建議
 以下是使用使用者定義的架構來合併工作負載、安全性、網域和功能界限的建議：
 
-- 使用一個 SQL 集區資料庫來執行整個資料倉儲工作負載。
-- 將您現有的資料倉儲環境合併，以使用一個 SQL 集區資料庫。
+- 在專用的 SQL 集區中使用一個資料庫來執行整個資料倉儲工作負載。
+- 將您現有的資料倉儲環境合併，以使用一個專用的 SQL 集區資料庫。
 - 運用 **使用者定義的結構描述** 來提供先前使用資料庫實作的界限。
 
-如果之前未使用過使用者定義的架構，您就會有一個全新的平板。 使用舊的資料庫名稱做為 SQL 集區資料庫中的使用者定義架構的基礎。
+如果之前未使用過使用者定義的架構，您就會有一個全新的平板。 使用舊的資料庫名稱做為專用 SQL 集區資料庫中的使用者定義架構的基礎。
 
 如果已經使用架構，則您有幾個選項：
 
@@ -50,7 +50,7 @@ ms.locfileid: "85213358"
 - 在額外結構描述中的資料表上實作檢視來重建舊的結構描述結構，以保留舊版結構描述名稱。
 
 > [!NOTE]
-> 在第一次檢查時，選項 3 似乎像是最吸引人的選項。 不過，魔鬼就在細節裡。 Views 在 SQL 集區中是唯讀的。 必須對基底資料表執行任何的資料表或資料修改。 選項 3 還在您的系統中引進了一個檢視層。 如果您已在架構中使用檢視，您可以再仔細思考一下這個選項。
+> 在第一次檢查時，選項 3 似乎像是最吸引人的選項。 不過，魔鬼就在細節裡。 在專用的 SQL 集區中，只會讀取 Views。 必須對基底資料表執行任何的資料表或資料修改。 選項 3 還在您的系統中引進了一個檢視層。 如果您已在架構中使用檢視，您可以再仔細思考一下這個選項。
 > 
 > 
 

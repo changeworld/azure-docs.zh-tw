@@ -1,5 +1,5 @@
 ---
-title: 改善 (工作區預覽) 的資料行存放區索引效能
+title: 改善資料行存放區索引效能
 description: 減少記憶體需求或增加可用的記憶體，以最大化壓縮到每個資料列群組之資料行存放區索引的資料列數目。
 services: synapse-analytics
 author: kevinvngo
@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fecb78b240f5c983580d4bdb34535a879ffe3e2e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e4656531f1424c3414ab00afbbe241a532738400
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022542"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462268"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>將資料行存放區索引效能的資料列群組品質最大化
 

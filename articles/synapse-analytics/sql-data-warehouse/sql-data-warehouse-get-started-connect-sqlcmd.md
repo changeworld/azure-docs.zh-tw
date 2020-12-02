@@ -10,15 +10,15 @@ ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 2e76f48466d084d448cceea0490e44041e7d062e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: f61f2932ad9c6342a81ec05df335e9ea4d659fce
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85212134"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461982"
 ---
-# <a name="connect-to-synapse-sql-pool-with-sqlcmd"></a>使用 sqlcmd 連接到 Synapse SQL 集區
+# <a name="connect-to-sql-pool-in-azure-synapse-analytics-with-sqlcmd"></a>使用 sqlcmd 連接到 Azure Synapse Analytics 中的 SQL 集區
 
 > [!div class="op_single_selector"]
 >
@@ -32,10 +32,10 @@ ms.locfileid: "85212134"
 
 ## <a name="1-connect"></a>1.連線
 
-若要開始使用 [sqlcmd] [sqlcmd]，請開啟命令提示字元，然後輸入 **sqlcmd** ，後面接著您的 SQL 集區資料庫的連接字串。 連接字串需要下列參數：
+若要開始使用 [sqlcmd] [sqlcmd]，請開啟命令提示字元，然後輸入 **sqlcmd** ，後面接著您的 SQL 集區的連接字串。 連接字串需要下列參數：
 
 * **伺服器 (-S)：** 採用 `<`Server Name`>`.database.windows.net 格式的伺服器
-* **資料庫 (-d) ：** 資料庫名稱。
+* **資料庫 (-d) ：** SQL 集區名稱。
 * **啟用引號識別碼 (-I) ：** 必須啟用引號識別碼，才能連接到 SQL 集區實例。
 
 若要使用 SQL Server 驗證，您需要新增使用者名稱/密碼參數︰

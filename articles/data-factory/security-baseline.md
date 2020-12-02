@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6cda99bfcb883dd42aa813d6edb922f2701ed1fe
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e48b1357b8576baca0e8defca94f4c5248c6f74e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352196"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461283"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>適用于 Azure Data Factory 的 Azure 安全性基準
 
@@ -448,7 +448,7 @@ ms.locfileid: "96352196"
 
 如果您是在 Azure 虛擬機器上執行 Integration Runtime (IR) ，則可以使用受控識別向任何支援 Azure AD 驗證的服務進行驗證，包括 Key Vault，而不需要在您的程式碼中使用任何認證。 您在虛擬機器上執行的程式碼可以使用受控識別來要求支援 Azure AD authentication 之服務的存取權杖。
 
-* [如何建立和設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+* [如何建立及設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 * [什麼是 Azure 資源受控識別？](../active-directory/managed-identities-azure-resources/overview.md)
 
@@ -578,7 +578,7 @@ ms.locfileid: "96352196"
 
 **指導** 方針：如果雲端資料存放區支援 HTTPS 或 tls，則 Data Factory 中的資料移動服務與雲端資料存放區之間的所有資料傳輸，都會透過安全通道 HTTPS 或 tls。 使用的 TLS 版本為 1.2。
 
-Azure SQL Database 與 Azure Synapse Analytics (先前的 SQL 資料倉儲的所有連線，) 在資料與資料庫之間傳輸時，需要加密 (SSL/TLS) 。 當您使用 JSON 編輯器來編寫管線時，在連接字串中新增 encryption 屬性，並將它設定為 true。 針對「Azure 儲存體」，您可以在連接字串中使用 HTTPS。
+當資料與資料庫之間傳輸時，與 Azure SQL Database 和 Azure Synapse Analytics 的所有連接都需要加密 (SSL/TLS) 。 當您使用 JSON 編輯器來編寫管線時，在連接字串中新增 encryption 屬性，並將它設定為 true。 針對「Azure 儲存體」，您可以在連接字串中使用 HTTPS。
 
 * [瞭解 Azure Data Factory 中的傳輸加密](./data-movement-security-considerations.md)
 

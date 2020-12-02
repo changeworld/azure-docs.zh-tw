@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: 400dd66827e82c1ede496526c49977e6f5383487
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4ea1982e7545f4ac39a5ecd15dc9e19a582ae31c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780184"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459626"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database 超大規模常見問題
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -118,7 +118,7 @@ ms.locfileid: "92780184"
 
 如果您目前使用 SQL Server 作為資料倉儲來執行互動式分析查詢，超大規模是絕佳的選項，因為您可以將小型和中型的資料倉儲 (例如，以較低的成本) 高達 100 TB 的數 TB，且您可以將 SQL Server 資料倉儲工作負載遷移至超大規模，只需進行最少的 T-sql 程式碼變更。
 
-如果您使用大於 100 MB/s 的複雜查詢和持續的擴展速率來大規模執行資料分析，或使用平行資料倉儲 (PDW) 、Teradata 或其他大量平行處理 (MPP) 資料倉儲，Azure Synapse Analytics 先前的 SQL 資料倉儲 (可能是最佳選擇。
+如果您是以複雜的查詢和持續的擴大速率（大於 100 MB/s）來執行資料分析，或使用平行資料倉儲 (PDW) 、Teradata 或其他大量平行處理 (MPP) 資料倉儲，Azure Synapse Analytics 可能是最佳選擇。
   
 ## <a name="hyperscale-compute-questions"></a>超大規模計算問題
 

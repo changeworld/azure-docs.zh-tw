@@ -1,5 +1,5 @@
 ---
-title: '使用無伺服器 SQL 集區查詢 JSON 檔案 (預覽) '
+title: 使用無伺服器 SQL 集區查詢 JSON 檔案
 description: 本節說明如何在 Azure Synapse Analytics 中使用無伺服器 SQL 集區讀取 JSON 檔案。
 services: synapse-analytics
 author: azaricstefan
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: d071bbabf630dd326ae46f4c840f8e60f957f9fe
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 5703e4ac3d4a545041c7d258f0b1f0e7c79a33b5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685625"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462615"
 ---
-# <a name="query-json-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用無伺服器 SQL 集區的 (預覽) 來查詢 JSON 檔案
+# <a name="query-json-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的無伺服器 SQL 集區來查詢 JSON 檔案
 
-在本文中，您將瞭解如何在 Azure Synapse Analytics 中使用無伺服器 SQL 集區 (預覽版) 撰寫查詢。 查詢的目標是要使用 [OPENROWSET](develop-openrowset.md)來讀取 JSON 檔案。 
+在本文中，您將瞭解如何使用 Azure Synapse Analytics 中的無伺服器 SQL 集區來撰寫查詢。 查詢的目標是要使用 [OPENROWSET](develop-openrowset.md)來讀取 JSON 檔案。 
 - 將多個 JSON 檔儲存為 JSON 陣列的標準 JSON 檔案。
 - 以行分隔的 JSON 檔案，其中 JSON 檔會以分行符號分隔。 這些檔案類型的一般延伸模組為 `jsonl` 、 `ldjson` 和 `ndjson` 。
 

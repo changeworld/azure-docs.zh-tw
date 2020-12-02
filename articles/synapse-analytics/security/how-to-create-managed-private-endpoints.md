@@ -8,14 +8,14 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 919b8fb89e9189df7cb1964cbe0149dc6945ad2d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e0309b4c96b2ae25eb568e390717ba76cfd84fa5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323199"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461313"
 ---
-# <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>為您的資料來源建立受控私人端點 (預覽版) 
+# <a name="create-a-managed-private-endpoint-to-your-data-source"></a>為您的資料來源建立受控私人端點
 
 本文將指導您如何在 Azure 中為您的資料來源建立受控私人端點。 若要深入瞭解，請參閱 [受控私人端點](./synapse-workspace-managed-private-endpoints.md) 。
 
@@ -25,7 +25,7 @@ ms.locfileid: "93323199"
 
 ## <a name="step-2-navigate-to-the-managed-virtual-networks-tab-in-synapse-studio"></a>步驟2：流覽至 Synapse Studio 中的 [受控虛擬網路] 索引標籤
 
-在 Azure Synapse Studio 中，從左側導覽中選取 [ **管理** ] 索引標籤。 選取 [ **受管理的私人端點** ]，然後選取 [ **+ 新增** ]。
+在 Azure Synapse Studio 中，從左側導覽中選取 [ **管理** ] 索引標籤。 選取 [ **受管理的私人端點** ]，然後選取 [ **+ 新增**]。
 ![建立新的受控私人端點](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-2.png)
 
 ## <a name="step-3-select-the-data-source-type"></a>步驟3：選取資料來源類型
@@ -35,12 +35,12 @@ ms.locfileid: "93323199"
 
 ## <a name="step-4-enter-information-about-the-data-source"></a>步驟4：輸入資料來源的相關資訊
 
-在下一個視窗中，輸入資料來源的相關資訊。 在此範例中，我們要建立 ADLS Gen2 帳戶的受控私人端點。 輸入受控私人端點的 **名稱** 。 提供 **Azure 訂** 用帳戶和 **儲存體帳戶名稱** 。 選取 [建立]。
+在下一個視窗中，輸入資料來源的相關資訊。 在此範例中，我們要建立 ADLS Gen2 帳戶的受控私人端點。 輸入受控私人端點的 **名稱** 。 提供 **Azure 訂** 用帳戶和 **儲存體帳戶名稱**。 選取 [建立]。
 ![輸入目標資料來源詳細資料](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-4.png)
 
 ## <a name="step-5-verify-that-your-managed-private-endpoint-was-successfully-created"></a>步驟5：確認已成功建立您的受控私人端點
 
-提交要求之後，您會看到其狀態。 若要確認是否已建立成功建立受控私人端點，請檢查其布建 *狀態* 。 您可能需要等候 1 **分鐘，然後選取 [** 重新整理] 以更新布建狀態。 您可以看到已成功建立 ADLS Gen2 帳戶的受控私人端點。
+提交要求之後，您會看到其狀態。 若要確認是否已建立成功建立受控私人端點，請檢查其布建 *狀態*。 您可能需要等候 1 **分鐘，然後選取 [** 重新整理] 以更新布建狀態。 您可以看到已成功建立 ADLS Gen2 帳戶的受控私人端點。
 
 您也可以看到 *核准狀態* 為 [ *擱置* 中]。 目標資源的擁有者可以核准或拒絕私人端點連接要求。 如果擁有者核准私人端點連線要求，則會建立私人連結。 如果拒絕，則不會建立私人連結。
 ![受控私人端點建立要求狀態](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-5.png)

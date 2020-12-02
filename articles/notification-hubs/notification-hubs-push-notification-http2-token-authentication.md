@@ -16,12 +16,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/13/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e8258aeef33be9192608f0d4cb29b46f08da64e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f8de6389a04448579672b84e91f0bb4dd0f4ce2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89010625"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460459"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>適用于 APNS 的權杖型 (HTTP/2) 驗證
 
@@ -66,7 +66,7 @@ ms.locfileid: "89010625"
 
 ### <a name="configure-via-the-net-sdk-or-the-azure-portal"></a>透過 .NET SDK 或 Azure 入口網站設定
 
-您可以使用 [最新的用戶端 SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs)或 Azure 入口網站，將中樞設定為使用權杖型驗證。 若要在入口網站中啟用權杖型驗證，請登入 Azure 入口網站並移至您的通知中樞 **設定 > Apple (APNS) ** 面板。 從 [**驗證模式]** 屬性選取 [**權杖**]，以使用所有相關的權杖屬性來更新您的中樞。
+您可以使用 [最新的用戶端 SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs)或 Azure 入口網站，將中樞設定為使用權杖型驗證。 若要在入口網站中啟用權杖型驗證，請登入 Azure 入口網站並移至您的通知中樞 **設定 > Apple (APNS)** 面板。 從 [**驗證模式]** 屬性選取 [**權杖**]，以使用所有相關的權杖屬性來更新您的中樞。
 
 ![設定權杖](./media/notification-hubs-push-notification-http2-token-authentification/azure-portal-apns-settings.png)
 
@@ -76,9 +76,9 @@ ms.locfileid: "89010625"
 
 以權杖為基礎的認證由下欄欄位組成：
 
-* **金鑰**識別碼：在 Apple Developer 入口網站中產生之私密金鑰的識別碼;例如， `2USFGKSKLT` 。
+* **金鑰** 識別碼：在 Apple Developer 入口網站中產生之私密金鑰的識別碼;例如， `2USFGKSKLT` 。
 * **小組識別碼**：也稱為「前置詞」或「應用程式前置詞」。 這是 Apple Developer 入口網站中的組織識別碼;例如， `S4V3D7CHJR` 。
-* 套件組合**識別碼**：也稱為「應用程式識別碼」。 這是應用程式的套件組合識別碼;例如， `com.example.myapp` 。 請注意，您可以針對許多應用程式使用一個金鑰。 此值 `apns-topic` 會在傳送通知時對應至 HTTP 標頭，並用於以特定的應用程式為目標。 請注意，您無法明確地設定的值 `apns-topic` 。
+* 套件組合 **識別碼**：也稱為「應用程式識別碼」。 這是應用程式的套件組合識別碼;例如， `com.example.myapp` 。 請注意，您只能針對一個應用程式使用一個金鑰。 此值 `apns-topic` 會在傳送通知時對應至 HTTP 標頭，並用於以特定的應用程式為目標。 您無法明確設定的值 `apns-topic` 。
 * **Token**：也稱為「金鑰」或「私密金鑰」。 這是從 Apple 開發人員入口網站上產生的 p8 檔案取得。 金鑰必須已啟用 APNS (當產生金鑰) 時，會在 Apple 開發人員入口網站上選取此項。 當您將此值提供給 NH 入口網站/API 時，其值必須從其中移除 PEM 標頭/頁尾。
 * **端點**：這是通知中樞入口網站分頁中的切換，以及 API 中的字串欄位。 有效值為 `https://api.development.push.apple.com:443/3/device` 或 `https://api.sandbox.push.apple.com:443/3/device`。 通知中樞會針對生產或沙箱環境使用此值，以傳送通知。 這必須符合 `aps-environment` 應用程式中的權利，否則產生的 APNS 裝置權杖不符合環境，而且通知無法傳送。
 

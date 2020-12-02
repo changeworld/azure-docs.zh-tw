@@ -11,19 +11,19 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 0b2c03c5c7ea8c65cb1cde3cbdb73b6bb838dc06
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 59fa68d12f1d8be598810399fc5623c2af983979
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324463"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462247"
 ---
 # <a name="use-query-labels-in-synapse-sql"></a>在 Synapse SQL 中使用查詢標籤
 
 本文包含在 Synapse SQL 中使用查詢標籤的重要秘訣。
 
 > [!NOTE]
-> 無伺服器 SQL 集區 (預覽) 不支援標示查詢。
+> 無伺服器 SQL 集區不支援標示查詢。
 
 ## <a name="what-are-query-labels"></a>什麼是查詢標籤
 

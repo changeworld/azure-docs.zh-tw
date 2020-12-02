@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 11/06/2020
-ms.openlocfilehash: dc239843c4ed597949b4ba00c44ec84fc70741a8
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 2fabf75f74ccf57f57e7b47720ceda8885420842
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357601"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460902"
 ---
 # <a name="monitoring-azure-iot-hub"></a>監視 Azure IoT 中樞
 
@@ -29,9 +29,9 @@ ms.locfileid: "94357601"
 
 ## <a name="what-is-azure-monitor"></a>Azure 監視器是什麼？
 
-Azure IoT 中樞使用 [Azure 監視器](/azure/azure-monitor/overview)來建立監視資料，這是 Azure 中的完整堆疊監視服務，除了其他雲端和內部部署中的資源之外，還提供一組完整的功能來監視您的 azure 資源。
+Azure IoT 中樞使用 [Azure 監視器](../azure-monitor/overview.md)來建立監視資料，這是 Azure 中的完整堆疊監視服務，除了其他雲端和內部部署中的資源之外，還提供一組完整的功能來監視您的 azure 資源。
 
-請從 [使用 Azure 監視器來監視 Azure 資源](/azure/azure-monitor/insights/monitor-azure-resource)的文章開始，其中說明下列概念：
+請從 [使用 Azure 監視器來監視 Azure 資源](../azure-monitor/insights/monitor-azure-resource.md)的文章開始，其中說明下列概念：
 
 - Azure 監視器是什麼？
 - 與監視相關聯的成本
@@ -43,7 +43,7 @@ Azure IoT 中樞使用 [Azure 監視器](/azure/azure-monitor/overview)來建立
 
 ## <a name="monitoring-data"></a>監視資料
 
-Azure IoT 中樞會收集與 [azure 資源監視資料](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data-from-Azure-resources)中所述的其他 Azure 資源相同的監視資料類型。
+Azure IoT 中樞會收集與 [azure 資源監視資料](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)中所述的其他 Azure 資源相同的監視資料類型。
 
 如需 Azure IoT 中樞所建立的計量和記錄的詳細資訊，請參閱 [監視 Azure IoT 中樞資料參考](monitor-iot-hub-reference.md) 。
 
@@ -61,57 +61,57 @@ Azure IoT 中樞會收集與 [azure 資源監視資料](/azure/azure-monitor/ins
 - 用於封存和離線分析的 Azure 儲存體 
 - 可供外部應用程式讀取的事件中樞端點，例如協力廠商 SIEM 工具。
 
-在 Azure 入口網站中，您可以在 IoT 中樞的左側窗格中選取 [ **監視** ] 底下的 **診斷** 設定，然後選取 [ **新增診斷設定** ]，以建立您的 iot 中樞所發出的記錄和平臺計量範圍的診斷設定。
+在 Azure 入口網站中，您可以在 IoT 中樞的左側窗格中選取 [**監視**] 底下的 **診斷** 設定，然後選取 [**新增診斷設定**]，以建立您的 iot 中樞所發出的記錄和平臺計量範圍的診斷設定。
 
 下列螢幕擷取畫面顯示診斷設定，可將資源記錄類型的連線 *作業* 和所有平臺計量路由傳送至 log Analytics 工作區。
 
 :::image type="content" source="media/monitor-iot-hub/diagnostic-setting-portal.png" alt-text="IoT 中樞的 [診斷設定] 窗格。":::
 
-如需使用 Azure 入口網站、CLI 或 PowerShell 建立診斷設定的詳細程式，請參閱 [建立診斷設定以收集 Azure 中的平臺記錄和計量](/azure/azure-monitor/platform/diagnostic-settings) 。 當您建立診斷設定時，可以指定要收集的記錄類別。 Azure IoT 中樞的類別列在 [[監視 Azure IoT 中樞資料參考](monitor-iot-hub-reference.md#resource-logs)] 的 [資源記錄檔] 底下。
+如需使用 Azure 入口網站、CLI 或 PowerShell 建立診斷設定的詳細程式，請參閱 [建立診斷設定以收集 Azure 中的平臺記錄和計量](../azure-monitor/platform/diagnostic-settings.md) 。 當您建立診斷設定時，可以指定要收集的記錄類別。 Azure IoT 中樞的類別列在 [[監視 Azure IoT 中樞資料參考](monitor-iot-hub-reference.md#resource-logs)] 的 [資源記錄檔] 底下。
 
 將 IoT 中樞平臺計量路由至其他位置時，請注意：
 
-- 下列平臺計量無法透過診斷設定匯出： *已連線的裝置 (預覽)* 和 *裝置總數 (預覽)* 。
+- 下列平臺計量無法透過診斷設定匯出： *已連線的裝置 (預覽)* 和 *裝置總數 (預覽)*。
 
-- 多維度計量（例如某些 [路由計量](monitor-iot-hub-reference.md#routing-metrics)）目前會匯出為跨維度值匯總的簡維單一維度計量。 如需詳細資訊，請參閱 [將平臺計量匯出至其他位置](/azure/azure-monitor/platform/metrics-supported#exporting-platform-metrics-to-other-locations)。
+- 多維度計量（例如某些 [路由計量](monitor-iot-hub-reference.md#routing-metrics)）目前會匯出為跨維度值匯總的簡維單一維度計量。 如需詳細資訊，請參閱 [將平臺計量匯出至其他位置](../azure-monitor/platform/metrics-supported.md#exporting-platform-metrics-to-other-locations)。
 
 ## <a name="analyzing-metrics"></a>分析計量
 
-您可以從 [ **Azure 監視器** ] 功能表開啟 [ **計量** ]，以使用計量瀏覽器來分析來自其他 Azure 服務的計量 Azure IoT 中樞計量。 如需使用此工具的詳細資訊，請參閱[開始使用 Azure 計量瀏覽器](/azure/azure-monitor/platform/metrics-getting-started)。
+您可以從 [ **Azure 監視器**] 功能表開啟 [**計量**]，以使用計量瀏覽器來分析來自其他 Azure 服務的計量 Azure IoT 中樞計量。 如需使用此工具的詳細資訊，請參閱[開始使用 Azure 計量瀏覽器](../azure-monitor/platform/metrics-getting-started.md)。
 
-在 Azure 入口網站中，您可以在 IoT 中樞的左側窗格中選取 [ **監視** ] 底下的 **計量** ，以依預設將計量瀏覽器範圍設定為 iot 中樞所發出的平臺計量：
+在 Azure 入口網站中，您可以在 IoT 中樞的左側窗格中選取 [**監視**] 底下的 **計量**，以依預設將計量瀏覽器範圍設定為 iot 中樞所發出的平臺計量：
 
 :::image type="content" source="media/monitor-iot-hub/metrics-portal.png" alt-text="IoT 中樞的計量瀏覽器頁面。":::
 
-如需針對 Azure IoT 中樞收集的平臺度量清單，請參閱 [監視 Azure IoT 中樞資料參考中的計量](monitor-iot-hub-reference.md#metrics)。 如需針對所有 Azure 服務收集的平臺度量清單，請參閱 [支援的 Azure 監視器計量](/azure/azure-monitor/platform/metrics-supported)。
+如需針對 Azure IoT 中樞收集的平臺度量清單，請參閱 [監視 Azure IoT 中樞資料參考中的計量](monitor-iot-hub-reference.md#metrics)。 如需針對所有 Azure 服務收集的平臺度量清單，請參閱 [支援的 Azure 監視器計量](../azure-monitor/platform/metrics-supported.md)。
 
 針對以計數單位收集的 IoT 中樞平臺計量，某些匯總可能無法使用或無法使用。 若要深入瞭解，請參閱 [監視 Azure IoT 中樞資料參考中支援的](monitor-iot-hub-reference.md#supported-aggregations)匯總。
 
-某些 IoT 中樞計量（例如 [路由計量](monitor-iot-hub-reference.md#routing-metrics)）是多維度。 針對這些計量，您可以根據維度將 [篩選](/azure/azure-monitor/platform/metrics-charts#apply-filters-to-charts) 和 [分割](/azure/azure-monitor/platform/metrics-charts#apply-splitting-to-a-chart) 套用至您的圖表。
+某些 IoT 中樞計量（例如 [路由計量](monitor-iot-hub-reference.md#routing-metrics)）是多維度。 針對這些計量，您可以根據維度將 [篩選](../azure-monitor/platform/metrics-charts.md#apply-filters-to-charts) 和 [分割](../azure-monitor/platform/metrics-charts.md#apply-splitting-to-a-chart) 套用至您的圖表。
 
 ## <a name="analyzing-logs"></a>分析記錄
 
-Azure 監視器記錄檔中的資料會儲存在資料表中，其中每個資料表都有自己的唯一屬性集。 這些資料表中的資料會與 Log Analytics 工作區相關聯，並可在 Log Analytics 中查詢。 若要深入瞭解 Azure 監視器記錄，請參閱 Azure 監視器檔中的 [Azure 監視器記錄檔總覽](/azure/azure-monitor/platform/data-platform-logs) 。 
+Azure 監視器記錄檔中的資料會儲存在資料表中，其中每個資料表都有自己的唯一屬性集。 這些資料表中的資料會與 Log Analytics 工作區相關聯，並可在 Log Analytics 中查詢。 若要深入瞭解 Azure 監視器記錄，請參閱 Azure 監視器檔中的 [Azure 監視器記錄檔總覽](../azure-monitor/platform/data-platform-logs.md) 。 
 
 若要將資料路由傳送至 Azure 監視器記錄，您必須建立診斷設定，以將資源記錄或平臺計量傳送至 Log Analytics 工作區。 若要深入瞭解，請參閱 [收集和路由](#collection-and-routing)。
 
-在 Azure 入口網站中，您可以在 IoT 中樞的左側窗格中選取 [ **監視** ] 底下的 **[記錄檔** ]，依預設針對您的 iot 中樞 Azure 監視器記錄檔中所收集的記錄和計量執行 Log Analytics 查詢。
+在 Azure 入口網站中，您可以在 IoT 中樞的左側窗格中選取 [**監視**] 底下的 **[記錄檔**]，依預設針對您的 iot 中樞 Azure 監視器記錄檔中所收集的記錄和計量執行 Log Analytics 查詢。
 
 :::image type="content" source="media/monitor-iot-hub/logs-portal.png" alt-text="IoT 中樞的 [記錄] 頁面。":::
 
 如需 Log Analytics Azure 監視器記錄和可查詢的資料表清單，請參閱 [監視 Azure IoT 中樞資料參考中 Azure 監視器記錄資料表](monitor-iot-hub-reference.md#azure-monitor-logs-tables)。
 
-Azure 監視器中的所有資源記錄都有相同的欄位，後面接著服務特定的欄位。 一般架構 [Azure 監視器資源記錄架構](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-schema#top-level-resource-logs-schema)中所述。 您可以在 [監視 Azure IoT 中樞資料參考的資源記錄檔中](monitor-iot-hub-reference.md#resource-logs)，找到針對 Azure IoT 中樞收集的資源記錄的架構和類別。
+Azure 監視器中的所有資源記錄都有相同的欄位，後面接著服務特定的欄位。 一般架構 [Azure 監視器資源記錄架構](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema)中所述。 您可以在 [監視 Azure IoT 中樞資料參考的資源記錄檔中](monitor-iot-hub-reference.md#resource-logs)，找到針對 Azure IoT 中樞收集的資源記錄的架構和類別。
 
-[活動記錄](/azure/azure-monitor/platform/activity-log)是 Azure 中的平臺記錄，可提供訂用帳戶層級事件的見解。 您可以單獨加以查看，或將它路由傳送至 Azure 監視器記錄檔，您可以在其中使用 Log Analytics 來進行更複雜的查詢。  
+[活動記錄](../azure-monitor/platform/activity-log.md)是 Azure 中的平臺記錄，可提供訂用帳戶層級事件的見解。 您可以單獨加以查看，或將它路由傳送至 Azure 監視器記錄檔，您可以在其中使用 Log Analytics 來進行更複雜的查詢。  
 
 將 IoT 中樞平臺計量路由傳送至 Azure 監視器記錄時，請注意：
 
-- 下列平臺計量無法透過診斷設定匯出： *已連線的裝置 (預覽)* 和 *裝置總數 (預覽)* 。
+- 下列平臺計量無法透過診斷設定匯出： *已連線的裝置 (預覽)* 和 *裝置總數 (預覽)*。
 
-- 多維度計量（例如某些 [路由計量](monitor-iot-hub-reference.md#routing-metrics)）目前會匯出為跨維度值匯總的簡維單一維度計量。 如需詳細資訊，請參閱 [將平臺計量匯出至其他位置](/azure/azure-monitor/platform/metrics-supported#exporting-platform-metrics-to-other-locations)。
+- 多維度計量（例如某些 [路由計量](monitor-iot-hub-reference.md#routing-metrics)）目前會匯出為跨維度值匯總的簡維單一維度計量。 如需詳細資訊，請參閱 [將平臺計量匯出至其他位置](../azure-monitor/platform/metrics-supported.md#exporting-platform-metrics-to-other-locations)。
 
-如需使用 IoT 中樞的一些常見查詢，請參閱 [範例 Kusto 查詢](#sample-kusto-queries)。 如需使用 Log Analytics 查詢的詳細資訊，請參閱 [Azure 監視器中的記錄查詢總覽](/azure/azure-monitor/log-query/log-query-overview)。
+如需使用 IoT 中樞的一些常見查詢，請參閱 [範例 Kusto 查詢](#sample-kusto-queries)。 如需使用 Log Analytics 查詢的詳細資訊，請參閱 [Azure 監視器中的記錄查詢總覽](../azure-monitor/log-query/log-query-overview.md)。
 
 ### <a name="sdk-version-in-iot-hub-logs"></a>IoT 中樞記錄中的 SDK 版本
 
@@ -152,7 +152,7 @@ AzureDiagnostics
 ### <a name="sample-kusto-queries"></a>範例 Kusto 查詢
 
 > [!IMPORTANT]
-> 當您從 [IoT 中樞] 功能表選取 [ **記錄** ] 時，會開啟 Log Analytics，並將查詢範圍設定為目前的 IoT 中樞。 這表示記錄查詢只會包含來自該資源的資料。 如果您想要執行的查詢包含來自其他 IoT 中樞的資料，或來自其他 Azure 服務的資料，請從 [ **Azure 監視器** ] 功能表中選取 [ **記錄** ]。 如需詳細資訊，請參閱 [Azure 監視器 Log Analytics 中的記錄查詢範圍和時間範圍](/azure/azure-monitor/log-query/scope/)。
+> 當您從 [IoT 中樞] 功能表選取 [ **記錄** ] 時，會開啟 Log Analytics，並將查詢範圍設定為目前的 IoT 中樞。 這表示記錄查詢只會包含來自該資源的資料。 如果您想要執行的查詢包含來自其他 IoT 中樞的資料，或來自其他 Azure 服務的資料，請從 [ **Azure 監視器**] 功能表中選取 [**記錄**]。 如需詳細資訊，請參閱 [Azure 監視器 Log Analytics 中的記錄查詢範圍和時間範圍](../azure-monitor/log-query/scope.md)。
 
 以下是您可以用來協助監視 IoT 中樞的查詢。
 
@@ -288,13 +288,13 @@ class Program
 
 ## <a name="alerts"></a>警示
 
-當您在監視資料中找到重要的條件時，Azure 監視器警示會主動通知您。 它們可讓您識別並解決您的系統中的問題，然後客戶才會注意到這些問題。 您可以設定 [計量](/azure/azure-monitor/platform/alerts-metric-overview)、 [記錄](/azure/azure-monitor/platform/alerts-unified-log)和 [活動記錄](/azure/azure-monitor/platform/activity-log-alerts)的警示。 不同類型的警示有其優點和缺點。
+當您在監視資料中找到重要的條件時，Azure 監視器警示會主動通知您。 它們可讓您識別並解決您的系統中的問題，然後客戶才會注意到這些問題。 您可以設定 [計量](../azure-monitor/platform/alerts-metric-overview.md)、 [記錄](../azure-monitor/platform/alerts-unified-log.md)和 [活動記錄](../azure-monitor/platform/activity-log-alerts.md)的警示。 不同類型的警示有其優點和缺點。
 
 根據平臺計量建立警示規則時，請注意，針對以計數單位收集的 IoT 中樞平臺計量，某些匯總可能無法使用或無法使用。 若要深入瞭解，請參閱 [監視 Azure IoT 中樞資料參考中支援的](monitor-iot-hub-reference.md#supported-aggregations)匯總。
 
 ## <a name="monitor-per-device-disconnects-with-event-grid"></a>使用事件方格監視每個裝置的中斷連線
 
-Azure 監視器提供計量連接的 *裝置* ，您可以用來監視連線到 IoT 中樞的裝置數量，並在連線的裝置數目低於閾值時觸發警示。 雖然這對某些案例而言可能已足夠，但 [Azure 事件方格](/azure/event-grid/) 提供低延遲、每一裝置的監視解決方案，可用來追蹤重要裝置和基礎結構的裝置連線。
+Azure 監視器提供計量連接的 *裝置*，您可以用來監視連線到 IoT 中樞的裝置數量，並在連線的裝置數目低於閾值時觸發警示。 雖然這對某些案例而言可能已足夠，但 [Azure 事件方格](../event-grid/index.yml) 提供低延遲、每一裝置的監視解決方案，可用來追蹤重要裝置和基礎結構的裝置連線。
 
 您可以使用事件方格來訂閱 IoT 中樞 [ **DeviceConnected** 和 **DeviceDisconnected** 事件](iot-hub-event-grid.md#event-types)，以觸發警示並監視裝置線上狀態。 事件方格可提供比 Azure 監視器更低的事件延遲，而且您可以根據每個裝置來監視，而不是針對已連線的裝置總數進行監視。 這些因素讓事件方格成為監視重要裝置和基礎結構連線的慣用方法。 我們強烈建議使用事件方格來監視生產環境中的裝置連線。
 
@@ -304,4 +304,4 @@ Azure 監視器提供計量連接的 *裝置* ，您可以用來監視連線到 
 
 - 如需 [服務名稱] 所建立的計量、記錄和其他重要值的參考，請參閱 [監視 Azure IoT 中樞資料參考](monitor-iot-hub-reference.md) 。
 
-- 如需監視 Azure 資源的詳細資訊，請參閱[使用 Azure 監視器來監視 Azure 資源](/azure/azure-monitor/insights/monitor-azure-resource)。
+- 如需監視 Azure 資源的詳細資訊，請參閱[使用 Azure 監視器來監視 Azure 資源](../azure-monitor/insights/monitor-azure-resource.md)。

@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7155e1517ba5ff203f11ee834af3c0d1dd1fa065
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 8806ff41edabcd3c0875d3c02360dc9a275e3878
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289468"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460825"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault 客戶資料功能
 
@@ -54,7 +54,7 @@ Azure Key Vault 存取記錄是選擇性的功能，您可以針對每個 REST A
 
 - [Azure 金鑰保存庫記錄](logging.md)
 
-- [Azure Key Vault 虛刪除概觀](soft-delete-cli.md)
+- [Azure Key Vault 虛刪除概觀](./key-vault-recovery.md)
 
 - [Azure Key Vault 金鑰作業](/rest/api/keyvault/key-operations)
 

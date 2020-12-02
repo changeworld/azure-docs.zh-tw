@@ -1,6 +1,6 @@
 ---
 title: 使用 PREDICT 來評分機器學習模型
-description: 瞭解如何使用 Synapse SQL 中的 T-sql PREDICT 函數來評分機器學習模型。
+description: 瞭解如何在專用的 SQL 集區中使用 T-sql PREDICT 函數來評分機器學習模型。
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a8caf6cd5072b4c098adff57194784491c92bb0a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7b35997e763434d7ae4d849c33d358d1593d7e33
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325386"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460542"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>使用 PREDICT 來評分機器學習模型
 
-Synapse SQL 提供您使用熟悉的 T-sql 語言來評分機器學習模型的功能。 您可以使用 T-sql [預測](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)，讓現有的機器學習模型以歷程記錄資料進行定型，並在資料倉儲的安全界限內進行評分。 PREDICT 函數會採用 [ONNX (Open Neural Network Exchange) ](https://onnx.ai/) 模型和資料作為輸入。 這項功能消除了在資料倉儲外部移動重要資料以進行評分的步驟。 其目標是要讓資料專業人員能夠輕鬆地使用熟悉的 T-sql 介面部署機器學習服務模型，並與資料科學家完美地共同作業，並使用適合其工作的架構。
+專用的 SQL 集區可讓您使用熟悉的 T-sql 語言來對機器學習模型進行評分。 您可以使用 T-sql [預測](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)，讓現有的機器學習模型以歷程記錄資料進行定型，並在資料倉儲的安全界限內進行評分。 PREDICT 函數會採用 [ONNX (Open Neural Network Exchange) ](https://onnx.ai/) 模型和資料作為輸入。 這項功能消除了在資料倉儲外部移動重要資料以進行評分的步驟。 其目標是要讓資料專業人員能夠輕鬆地使用熟悉的 T-sql 介面部署機器學習服務模型，並與資料科學家完美地共同作業，並使用適合其工作的架構。
 
 > [!NOTE]
 > 無伺服器 SQL 集區目前不支援此功能。
@@ -31,9 +31,9 @@ Synapse SQL 提供您使用熟悉的 T-sql 語言來評分機器學習模型的�
 
 ## <a name="training-the-model"></a>定型模型
 
-Synapse SQL 需要預先定型的模型。 定型用來在 Synapse SQL 中執行預測的機器學習模型時，請記住下列因素。
+專用的 SQL 集區需要預先定型的模型。 定型用來在專用 SQL 集區中執行預測的機器學習模型時，請記住下列因素。
 
-- Synapse SQL 只支援 ONNX 格式模型。 ONNX 是一種開放原始碼模型格式，可讓您在各種架構之間交換模型，以實現互通性。 您可以將現有的模型轉換成 ONNX 格式，方法是使用以原生方式支援的架構，或可使用轉換的套件。 例如， [sklearn-onnx](https://github.com/onnx/sklearn-onnx) package 會將 scikit-learn-學習模型轉換為 onnx。 [ONNX GitHub 存放庫](https://github.com/onnx/tutorials#converting-to-onnx-format) 提供支援的架構和範例清單。
+- 專用的 SQL 集區只支援 ONNX 格式模型。 ONNX 是一種開放原始碼模型格式，可讓您在各種架構之間交換模型，以實現互通性。 您可以將現有的模型轉換成 ONNX 格式，方法是使用以原生方式支援的架構，或可使用轉換的套件。 例如， [sklearn-onnx](https://github.com/onnx/sklearn-onnx) package 會將 scikit-learn-學習模型轉換為 onnx。 [ONNX GitHub 存放庫](https://github.com/onnx/tutorials#converting-to-onnx-format) 提供支援的架構和範例清單。
 
    如果您使用 [自動化 ML](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) 進行定型，請務必將 *enable_onnx_compatible_models* 參數設為 TRUE，以產生 onnx 格式模型。 [自動 Machine Learning 筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) 顯示如何使用 AUTOML 建立 ONNX 格式的機器學習模型的範例。
 
@@ -47,7 +47,7 @@ Synapse SQL 需要預先定型的模型。 定型用來在 Synapse SQL 中執行
 
 ## <a name="loading-the-model"></a>載入模型
 
-模型會以十六進位字串的形式儲存在 Synapse SQL 使用者資料表中。 可以在模型資料表中加入其他資料行（例如識別碼和描述），以識別模型。 使用 Varbinary (max) 作為模型資料行的資料類型。 以下是可用於儲存模型之資料表的程式碼範例：
+模型會以十六進位字串的形式儲存在專用的 SQL 集區使用者資料表中。 可以在模型資料表中加入其他資料行（例如識別碼和描述），以識別模型。 使用 Varbinary (max) 作為模型資料行的資料類型。 以下是可用於儲存模型之資料表的程式碼範例：
 
 ```sql
 -- Sample table schema for storing a model and related data
@@ -66,7 +66,7 @@ GO
 
 ```
 
-一旦模型轉換為十六進位字串和指定的資料表定義之後，請使用 [COPY 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) 或 Polybase 將模型載入 Synapse SQL 資料表中。 下列程式碼範例會使用 Copy 命令來載入模型。
+一旦模型轉換為十六進位字串和指定的資料表定義之後，請使用 [COPY 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) 或 Polybase 將模型載入專用的 SQL 集區資料表中。 下列程式碼範例會使用 Copy 命令來載入模型。
 
 ```sql
 -- Copy command to load hexadecimal string of the model from Azure Data Lake storage location

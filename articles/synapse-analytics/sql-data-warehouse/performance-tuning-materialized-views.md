@@ -9,23 +9,23 @@ ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
-ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 0e807a01f575615967a039d360505a4f090cd1fd
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.reviewer: nibruno; jrasnick; azure-synapse
+ms.openlocfilehash: 902f0ac96349cf3e30ec12aeda02130afc2b800c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478315"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460748"
 ---
 # <a name="performance-tune-with-materialized-views"></a>使用具體化視圖進行效能調整
 
-Synapse SQL 集區中的具體化檢視提供低維護方法，可以在不變更任何查詢的情況下，讓複雜的分析查詢有快速的效能。 本文討論使用具體化檢視的一般指引。
+Azure Synapse SQL 集區中的具體化視圖提供低維護方法，讓複雜的分析查詢能獲得快速效能，而不需要任何查詢變更。 本文討論使用具體化檢視的一般指引。
 
 ## <a name="materialized-views-vs-standard-views"></a>具體化檢視與標準檢視的比較
 
-SQL 集區支援標準和具體化檢視。  兩者都是使用 SELECT 運算式建立的虛擬資料表，並以邏輯資料表形式呈現至查詢。  檢視會封裝一般資料計算的複雜性，並將抽象層新增至計算變更，因此不需要重新撰寫查詢。  
+Azure Synapse 中的 SQL 集區支援標準和具體化視圖。  兩者都是使用 SELECT 運算式建立的虛擬資料表，並以邏輯資料表形式呈現至查詢。  檢視會封裝一般資料計算的複雜性，並將抽象層新增至計算變更，因此不需要重新撰寫查詢。  
 
-標準檢視會在每次使用檢視時計算其資料。  磁碟上沒有儲存任何資料。 人們通常會使用標準檢視作為協助整理資料庫中邏輯物件和查詢的工具。  若要使用標準檢視，查詢必須與其建立直接參考。
+標準檢視會在每次使用檢視時計算其資料。  磁碟上沒有儲存任何資料。 人們通常會使用標準視圖作為工具，以協助組織 SQL 集區中的邏輯物件和查詢。  若要使用標準檢視，查詢必須與其建立直接參考。
 
 具體化檢視會在 SQL 集區中預先計算、儲存和維護其資料，就像資料表一樣。  每次使用具體化檢視時，都不需要重新計算。  這就是為什麼在具體化檢視中使用全部資料或資料子集的查詢其效能會加速的原因。  更棒的是，查詢可以使用具體化檢視，而無需建立直接參考，因此不需要變更應用程式程式碼。  
 
@@ -79,7 +79,7 @@ SQL 集區中結構描述和查詢變更通常保持在最低的狀況下，以�
 
 **需要不同的資料散發策略，以提供更快的查詢效能**
 
-Synapse SQL 是一種分散式查詢處理系統。  SQL 資料表中的資料會使用三個 [散發策略](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 的其中一種，在60節點之間散發 (雜湊、round_robin 或複寫) 。   
+Azure Synapse Analytics 是分散式查詢處理系統。  SQL 資料表中的資料會使用三個 [散發策略](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 的其中一種，在60節點之間散發 (雜湊、round_robin 或複寫) 。   
 
 資料散發是在資料表建立時指定的，並保持不變，直到卸載資料表為止。 具體化檢視在磁碟上是虛擬資料表，支援雜湊和 round_robin 資料散發。  使用者可以選擇與基底資料表不同但已針對使用檢視最多的查詢效能最佳化的資料散發。  
 
@@ -97,11 +97,11 @@ Synapse SQL 是一種分散式查詢處理系統。  SQL 資料表中的資料�
 
 **請留意在查詢速度加快與成本之間的取捨**
 
-每個具體化檢視都會有資料儲存成本，以及檢視維護成本。  當基底資料表中的資料改變時，具體化檢視的大小會增加，其實體結構也會改變。  為了避免查詢效能降低，每個具體化檢視都由 SQL 集區引擎分別維護。  
+每個具體化檢視都會有資料儲存成本，以及檢視維護成本。  當基底資料表中的資料改變時，具體化檢視的大小會增加，其實體結構也會改變。  為了避免查詢效能降低，SQL 分析引擎會分別維護每個具體化視圖。  
 
 當具體化檢視和基底資料表變更的數目增加時，維護工作負載會增加。   使用者應該檢查所有具體化檢視所產生的成本是否可以透過提升查詢效能來抵銷。  
 
-您可以針對資料庫中的具體化檢視清單執行此查詢：
+您可以針對 SQL 集區中的具體化視圖清單執行此查詢：
 
 ```sql
 SELECT V.name as materialized_view, V.object_id
@@ -141,7 +141,7 @@ GROUP BY A, C
 
 **並非所有效能調整都需要查詢變更**
 
-SQL 集區最佳化工具會自動使用已部署的具體化檢視來改善查詢效能。  這項支援是以透明的方式套用至不會參考檢視的查詢及使用彙總值 (在具體化檢視建立時不支援) 的查詢。  不需進行任何查詢變更。 您可以檢查查詢的估計執行計畫，以確認是否有使用具體化檢視。  
+SQL 分析優化工具可以自動使用已部署的具體化視圖來改善查詢效能。  這項支援是以透明的方式套用至不會參考檢視的查詢及使用彙總值 (在具體化檢視建立時不支援) 的查詢。  不需進行任何查詢變更。 您可以檢查查詢的估計執行計畫，以確認是否有使用具體化檢視。  
 
 **監視具體化檢視**
 
@@ -151,7 +151,7 @@ SQL 集區最佳化工具會自動使用已部署的具體化檢視來改善查�
 
 **具體化檢視和結果集快取**
 
-這兩個功能導入至 SQL 集區的時間幾乎與查詢效能調整同時。  結果集快取用於從對靜態資料進行的重複查詢中取得高度並行與快速的回應。  
+這兩項功能是在 SQL 分析中針對查詢效能調整進行的相同時間所引進。  結果集快取用於從對靜態資料進行的重複查詢中取得高度並行與快速的回應。  
 
 若要使用快取的結果，要求查詢的快取形式必須符合產生快取的查詢。  此外，快取的結果必須套用至整個查詢。  
 

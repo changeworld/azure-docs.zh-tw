@@ -1,6 +1,6 @@
 ---
-title: '使用無伺服器 SQL 集區來查詢資料夾和多個檔案 (預覽) '
-description: 無伺服器 SQL 集區 (預覽) 支援使用萬用字元來讀取多個檔案/資料夾，其類似于 Windows OS 中使用的萬用字元。
+title: 使用無伺服器 SQL 集區查詢資料夾和多個檔案
+description: 無伺服器 SQL 集區支援使用萬用字元讀取多個檔案/資料夾，類似于 Windows OS 中使用的萬用字元。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,20 +9,20 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9d15d681a114b0f364e8e33adc786b4d0ba7df0e
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 83c4d88e1a87f6b546e26dd55da338a36f16ebe4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684554"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462620"
 ---
 # <a name="query-folders-and-multiple-files"></a>查詢資料夾和多個檔案  
 
-在本文中，您將瞭解如何在 Azure Synapse Analytics 中使用無伺服器 SQL 集區 (預覽版) 撰寫查詢。
+在本文中，您將瞭解如何使用 Azure Synapse Analytics 中的無伺服器 SQL 集區來撰寫查詢。
 
 無伺服器 SQL 集區支援使用萬用字元讀取多個檔案/資料夾，類似于 Windows OS 中使用的萬用字元。 不過，因為允許多個萬用字元，所以會有更大的彈性。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 您的第一個步驟是 **建立資料庫**，您將在其中執行查詢。 然後藉由在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)來初始化物件。 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用於這些範例中的外部檔案格式。
 

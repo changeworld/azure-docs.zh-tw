@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 596de459b888bb9973aca1c7d72f2f9e24c966eb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6fa9f5d86d3640bf3ae0233e7d6d8a00752f5b6d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013967"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460808"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 金鑰保存庫開發人員指南
 
@@ -120,7 +120,7 @@ Key Vault 使用 Azure AD 驗證，要求 Azure AD 安全性主體授與存取�
 - 如何從 Key Vault [Windows](../../virtual-machines/extensions/key-vault-windows.md)（ [Linux](../../virtual-machines/extensions/key-vault-linux.md) ）將憑證部署至 vm-在 Azure 上的 VM 中執行的雲端應用程式需要憑證。 現在應如何讓此憑證進入此 VM？
 - [透過 Key Vault 部署 Azure Web 應用程式憑證](../../app-service/configure-ssl-certificate.md#import-a-certificate-from-key-vault)
 -  ([CLI](assign-access-policy-cli.md)  |  [PowerShell](assign-access-policy-powershell.md)  |  [入口網站](assign-access-policy-portal.md)) 指派存取原則。 
-- [如何以 CLI 使用金鑰保存庫虛刪除](soft-delete-cli.md)引導您完成金鑰保存庫和各種金鑰保存庫物件的使用和生命週期，並啟用虛刪除。
+- [如何以 CLI 使用金鑰保存庫虛刪除](./key-vault-recovery.md)引導您完成金鑰保存庫和各種金鑰保存庫物件的使用和生命週期，並啟用虛刪除。
 - [如何在部署期間傳遞安全值 (例如密碼)](../../azure-resource-manager/templates/key-vault-parameter.md) - 當您需要在部署期間傳遞安全值 (例如密碼) 作為參數時，可以將該值儲存為 Azure 金鑰保存庫中的密碼，並在其他資源管理員範本中參考該值。
 
 ## <a name="integrated-with-key-vault"></a>與金鑰保存庫整合

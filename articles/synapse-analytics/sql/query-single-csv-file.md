@@ -1,6 +1,6 @@
 ---
-title: '使用無伺服器 SQL 集區來查詢 CSV 檔案 (預覽) '
-description: 在本文中，您將瞭解如何使用無伺服器 SQL 集區 (預覽版) 來查詢具有不同檔案格式的單一 CSV 檔案。
+title: 使用無伺服器 SQL 集區來查詢 CSV 檔案
+description: 在本文中，您將瞭解如何使用無伺服器 SQL 集區來查詢具有不同檔案格式的單一 CSV 檔案。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9faff6589466c7cbe78a11c283139acb72bce4bb
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: f2f0cdf307e91fb40c55d4a98139bad1a5eca886
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685642"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462584"
 ---
 # <a name="query-csv-files"></a>查詢 CSV 檔案
 
-在本文中，您將瞭解如何在 Azure Synapse Analytics 中使用無伺服器 SQL 集區來查詢單一 CSV 檔案 (preview) 。 CSV 檔案可能會有不同的格式： 
+在本文中，您將瞭解如何在 Azure Synapse Analytics 中使用無伺服器 SQL 集區來查詢單一 CSV 檔案。 CSV 檔案可能會有不同的格式： 
 
 - 包含和不包含標頭資料列
 - 逗號和定位字元分隔值
@@ -47,8 +47,8 @@ from openrowset(
 選項 `firstrow` 可用來略過 CSV 檔案中代表標頭的第一個資料列（在此案例中）。 請確定您可以存取此檔案。 如果您的檔案受到 SAS 金鑰或自訂身分識別的保護，您將需要設定 [sql 登入的伺服器層級認證](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
 
 > [!IMPORTANT]
-> 如果您的 CSV 檔案包含 UTF-8 字元，請確定您使用的是某些 UTF-8 資料庫定序 (例如 `Latin1_General_100_CI_AS_SC_UTF8`) 。
-> 檔案和定序中的文字編碼不相符可能會導致非預期的轉換錯誤。
+> 如果您的 CSV 檔案包含 UTF-8 字元，請確定您使用的是 UTF-8 資料庫定序 (例如 `Latin1_General_100_CI_AS_SC_UTF8`) 。
+> 檔案中的文字編碼和定序之間的不相符可能會導致非預期的轉換錯誤。
 > 您可以使用下列 T-sql 語句，輕鬆地變更目前資料庫的預設定序： `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 ### <a name="data-source-usage"></a>資料來源使用量
@@ -104,7 +104,7 @@ from openrowset(
 
 在下列各節中，您可以瞭解如何查詢各種類型的 CSV 檔案。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 第一個步驟是 **建立將在其中建立資料表的資料庫**。 然後藉由在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)來初始化物件。 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用於這些範例中的外部檔案格式。
 

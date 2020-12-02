@@ -1,6 +1,6 @@
 ---
-title: 使用無伺服器 SQL 集區查詢資料儲存體 (預覽)
-description: 本文說明如何使用 Azure Synapse Analytics 中的無伺服器 SQL 集區 (預覽) 資源來查詢 Azure 儲存體。
+title: 使用無伺服器 SQL 集區查詢資料儲存體
+description: 本文說明如何使用 Azure Synapse Analytics 中的無伺服器 SQL 集區資源來查詢 Azure 儲存體。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 81a892b10996686cf58d45867e3d889505b5d3d9
-ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
+ms.openlocfilehash: 967250cf29d1f0248f296cb545a764bd8e611773
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96299576"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462660"
 ---
-# <a name="query-storage-files-with-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>具有無伺服器 SQL 集區 (預覽) 的查詢儲存體檔案不支援此語法
+# <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的無伺服器 SQL 集區來查詢儲存體資料
 
-無伺服器 SQL 集區 (預覽) 可讓您查詢資料湖中的資料。 其提供可搭載半結構化和非結構化資料查詢的 T-SQL 查詢介面區。 在查詢方面，可支援下列 T-SQL 層面：
+無伺服器 SQL 集區可讓您查詢資料湖中的資料。 其提供可搭載半結構化和非結構化資料查詢的 T-SQL 查詢介面區。 在查詢方面，可支援下列 T-SQL 層面：
 
 - 完整的 [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 介面區，包括大部分的 [SQL 函式及運算子](overview-features.md)。
 - CREATE EXTERNAL TABLE AS SELECT ([CETAS](develop-tables-cetas.md)) 會建立[外部資料表](develop-tables-external-tables.md)，然後將 Transact-SQL SELECT 陳述式的結果以平行方式匯出至 Azure 儲存體。
@@ -222,7 +222,7 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*
 ### <a name="tools"></a>工具
 
 要發出查詢所需的工具：
-    - Azure Synapse Studio (預覽)
+    - Azure Synapse Studio 
     - Azure Data Studio
     - SQL Server Management Studio
 

@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 3968f19329536169c3fb3eb1fbbaff99e99c293d
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ae8b01522a248b8b1dbdd255a9fcd55f16cf2369
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079640"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461715"
 ---
 # <a name="develop-without-using-an-azure-iot-hub-sdk"></a>不使用 Azure IoT 中樞 SDK 進行開發
 
@@ -44,11 +44,11 @@ Microsoft 強烈建議使用 Azure IoT SDK。 Azure IoT 裝置和服務 Sdk 會�
 
 如需在沒有 Azure IoT SDK 的情況下使用下列通訊協定的協助：
 
-* **AMQP**上的裝置或後端應用程式，請參閱[AMQP 支援](iot-hub-amqp-support.md)。
+* **AMQP** 上的裝置或後端應用程式，請參閱 [AMQP 支援](iot-hub-amqp-support.md)。
 
-* **MQTT**上的裝置應用程式，請參閱[MQTT 支援](iot-hub-mqtt-support.md)。 本主題大部分會直接使用 MQTT 通訊協定。 它也包含有關使用 [IOT MQTT 範例存放庫](https://github.com/Azure-Samples/IoTMQTTSample)的資訊。 此存放庫包含使用 Eclipse Mosquitto 程式庫將訊息傳送至 IoT 中樞的 C 範例。
+* **MQTT** 上的裝置應用程式，請參閱 [MQTT 支援](iot-hub-mqtt-support.md)。 本主題大部分會直接使用 MQTT 通訊協定。 它也包含有關使用 [IOT MQTT 範例存放庫](https://github.com/Azure-Samples/IoTMQTTSample)的資訊。 此存放庫包含使用 Eclipse Mosquitto 程式庫將訊息傳送至 IoT 中樞的 C 範例。
 
-* 裝置或 **HTTPS**上的後端應用程式，請參閱 [Azure IoT 中樞 REST api](https://docs.microsoft.com/rest/api/iothub/)。 請注意，如 [開發必要條件](#development-prerequisites)中所述，您無法使用 x.509 憑證授權單位單位 (CA) 以 HTTPS 進行驗證。
+* 裝置或 **HTTPS** 上的後端應用程式，請參閱 [Azure IoT 中樞 REST api](/rest/api/iothub/)。 請注意，如 [開發必要條件](#development-prerequisites)中所述，您無法使用 x.509 憑證授權單位單位 (CA) 以 HTTPS 進行驗證。
 
 針對裝置，如果您的裝置支援，強烈建議使用 MQTT。
 

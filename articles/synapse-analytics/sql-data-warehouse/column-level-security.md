@@ -1,5 +1,5 @@
 ---
-title: 什麼是 Azure Synapse 的資料行層級安全性？
+title: 專用 SQL 集區的資料行層級安全性
 description: 資料行層級安全性可供客戶根據使用者其執行內容或群組成員資格來控制資料庫資料表資料行的存取，以簡化應用程式安全性的設計和編碼，並供能夠實作資料行存取限制。
 services: synapse-analytics
 author: julieMSFT
@@ -12,23 +12,23 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: f8bb40f9c80a0785c81c7aeacf783553bf73aa90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 817a912dabfc5365eabe8e0dabd7e0b40e40c525
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259878"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462513"
 ---
 # <a name="column-level-security"></a>資料行層級安全性
 
-資料行層級安全性可供客戶根據使用者其執行內容或群組成員資格來控制資料表資料行的存取。
+Column-Level 的安全性可讓客戶根據使用者的執行內容或群組成員資格，控制資料表資料行的存取權。
 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
-自此影片公佈以來，Azure Synapse 已可使用[資料列層級安全性](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+因為這段影片的資料 [列層級安全性](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 已于 Azure Synapse 中的專用 SQL 集區提供。
 
 資料行層級安全性可簡化應用程式安全性的設計和編碼，並供限制資料行存取以保護機密資料。 例如，確保特定使用者只能存取其部門相關資料表的特定資料行。 存取限制邏輯是位於資料庫層，而不是離開這些資料，到另一個應用程式層。 資料庫會在每次嘗試從任何層級存取該資料時套用存取限制。 此限制可藉由縮小整個安全性系統的介面區，讓安全性更加可靠和健全。 此外，資料行層級安全性也不需引進檢視以篩選出可用來將存取限制加諸於使用者的資料行。
 
-您可使用 [GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 陳述式來實作資料行層級安全性。 使用此機制時，支援 SQL 和 Azure Active Directory (Azure AD) 驗證。
+您可以使用 [GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) t-sql 語句來執行資料行層級安全性。 使用此機制時，支援 SQL 和 Azure Active Directory (Azure AD) 驗證。
 
 ![圖所顯示的示意性資料表中，第一個資料行是由封閉的掛鎖和其資料格的橙色色彩，而其他資料行則是白色儲存格。](./media/column-level-security/cls.png)
 
@@ -85,5 +85,5 @@ SELECT * FROM Membership;
 
 一些目前使用資料行層級安全性的範例：
 
-- 某家金融服務公司只允許帳戶管理員能夠存取客戶社會安全號碼 (SSN)、電話號碼和其他個人識別資訊 (PII)。
+- 金融服務公司只允許帳戶管理員能夠存取客戶社會安全號碼 (SSN) 、電話號碼和其他個人資料。
 - 某家醫療保健供應商允許醫生和護士存取機密的醫療記錄，而不允許帳務部門的成員檢視此資料。

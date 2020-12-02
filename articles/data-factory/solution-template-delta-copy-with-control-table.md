@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
-ms.openlocfilehash: 255e4085e24ee7520c603f8a00b3e46c23367a77
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e7b7acb7e67d809229825b3d393fe49af12b3642
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000822"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461210"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>從具有控制資料表的資料庫進行差異複製
 
@@ -140,7 +140,7 @@ ms.locfileid: "96000822"
 
     您會看到只有新的資料列會複製到目的地。
 
-15.  (選擇性： ) 如果您選取先前作為 SQL DW) 的 Azure Synapse Analytics (作為資料目的地，您也必須提供 Azure Blob 儲存體的連線以進行預備環境，這是 Azure Synapse Analytics (先前的 SQL 資料倉儲) Polybase 所需。 範本將為您產生容器路徑。 在管線執行之後，檢查是否已在 Blob 儲存體中建立容器。
+15.  (選擇性： ) 如果您選取 [Azure Synapse Analytics] 做為資料目的地，您也必須提供 Azure Blob 儲存體的連線以進行預備，Azure Synapse Analytics Polybase 需要此儲存體。 範本將為您產生容器路徑。 在管線執行之後，檢查是否已在 Blob 儲存體中建立容器。
     
     ![設定 Polybase](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     

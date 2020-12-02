@@ -8,12 +8,12 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 158d22ffb3bc5486e0523c07cc2c022c49f2ee9c
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: c1dbdc4761c107a8e5028a43ead9710d45526016
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145594"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461185"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>使用 AutoRest 建立 Azure 數位 Twins 的自訂 Sdk
 
@@ -47,7 +47,7 @@ npm install -g autorest@2.0.4413
 autorest --input-file=digitaltwins.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
-因此，您會在工作目錄中看到名為 *ADTApi* 的新資料夾。 產生的 SDK 檔案將會具有命名空間 *ADTApi* 。 您將繼續使用該命名空間，此命名空間是本文中其餘的使用範例。
+因此，您會在工作目錄中看到名為 *ADTApi* 的新資料夾。 產生的 SDK 檔案將會具有命名空間 *ADTApi*。 您將繼續使用該命名空間，此命名空間是本文中其餘的使用範例。
 
 AutoRest 支援各種不同的語言程式碼產生器。
 
@@ -61,19 +61,19 @@ AutoRest 支援各種不同的語言程式碼產生器。
 
 1. 為類別庫建立新的 Visual Studio 方案
 2. 使用 *ADTApi* 做為專案名稱
-3. 在 [方案瀏覽器] 中，以滑鼠右鍵選取所產生方案的 *ADTApi* 專案，然後選擇 [ *加入 > 現有專案* ]。
+3. 在 [方案瀏覽器] 中，以滑鼠右鍵選取所產生方案的 *ADTApi* 專案，然後選擇 [*加入 > 現有專案*]。
 4. 尋找您產生 SDK 的資料夾，然後選取根目錄層級的檔案
 5. 按 [確定]
 6. 將資料夾新增至專案 (以滑鼠右鍵選取方案總管中的專案，然後選擇 [ *加入 > 新資料夾* ]) 
 7. 命名資料夾 *模型*
-8. 以滑鼠右鍵選取 [方案瀏覽器] 中的 [ *模型* ] 資料夾，然後選取 [ *加入 > 現有專案* ]。
+8. 以滑鼠右鍵選取 [方案瀏覽器] 中的 [*模型*] 資料夾，然後選取 [*加入 > 現有專案*]。
 9. 選取所產生 SDK 的 [ *模型* ] 資料夾中的檔案，然後按 [確定]
 
 若要成功建立 SDK，您的專案將需要下列參考：
 * `Microsoft.Rest.ClientRuntime`
 * `Microsoft.Rest.ClientRuntime.Azure`
 
-若要新增這些 *工具 > nuget 封裝管理員 > 管理解決方案的 Nuget 套件* ...。
+若要新增這些 *工具 > nuget 封裝管理員 > 管理解決方案的 Nuget 套件*...。
 
 1. 在面板中，確定已選取 [ *流覽* ] 索引標籤
 2. 搜尋 *Microsoft. Rest*
@@ -102,7 +102,7 @@ REST API 呼叫通常會傳回強型別物件。 不過，因為 Azure 數位 Tw
 ```csharp
 try
 {
-    await client.DigitalTwins.AddAsync(id, initData);
+    await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(id, initData);
     Console.WriteLine($"Created a twin successfully: {id}");
 }
 catch (ErrorResponseException e)
@@ -174,7 +174,7 @@ try
 }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 逐步解說建立用戶端應用程式的步驟，讓您可以在其中使用 SDK：
 * [*教學課程：撰寫用戶端應用程式的程式碼*](tutorial-code.md)

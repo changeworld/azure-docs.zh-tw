@@ -3,12 +3,12 @@ title: Azure Key Vault 作為事件方格來源
 description: 說明使用 Azure 事件方格為 Azure Key Vault 事件提供的屬性和架構
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: b3d961228429c1f84e45c1df9147fa1687ab5074
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 605502794f2f3aa4f4edd14b49efda5003b91146
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324071"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460391"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Azure Key Vault 作為事件方格來源
 
@@ -71,8 +71,8 @@ Azure Key Vault 帳戶會產生下列事件種類：
 | objectType | 字串 | 觸發這個事件之物件的類型。 |
 | objectName | 字串 | 觸發這個事件之物件的名稱。 |
 | version | 字串 | 觸發這個事件之物件的版本 |
-| nbf | 數字 | 觸發這個事件之物件的從 1970-01-01T00：00：00Z 起的不早日期（以秒為單位） |
-| exp | 數字 | 觸發這個事件之物件的 1970-01-01T00：00：00Z 之後的到期日（以秒為單位） |
+| nbf | 數目 | 觸發這個事件之物件的從 1970-01-01T00：00：00Z 起的不早日期（以秒為單位） |
+| exp | 數目 | 觸發這個事件之物件的 1970-01-01T00：00：00Z 之後的到期日（以秒為單位） |
 
 ## <a name="tutorials-and-how-tos"></a>教學課程和操作說明
 |標題  |描述  |
@@ -85,5 +85,5 @@ Azure Key Vault 帳戶會產生下列事件種類：
 
 * 如需 Azure 事件方格的簡介，請參閱 [什麼是事件方格？](overview.md)。
 * 如需如何建立 Azure 事件方格訂用帳戶的詳細資訊，請參閱 [事件方格訂](subscription-creation-schema.md)用帳戶架構。
-* 如需金鑰保存庫的詳細資訊，請參閱 [什麼是 Azure Key Vault？](../key-vault/general/overview.md)
+* 如需 Key Vault 的詳細資訊，請參閱 [Azure Key Vault 是什麼？](../key-vault/general/overview.md)
 

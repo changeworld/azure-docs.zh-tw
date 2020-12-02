@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: 4fdbf3bf1d9f740654fa694de03315b876116429
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1e286b2329cb98d580bbf64071ff8767db304a00
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784876"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461879"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>解決移轉至 SQL Database 期間的 Transact-SQL 差異
 
@@ -45,7 +45,7 @@ Microsoft SQL Server 和 Azure SQL Database 都支援應用程式使用的大部
 除了與 [Azure SQL Database 功能比較](features-comparison.md)中所述的不支援功能相關的 transact-sql 語句之外，也不支援下列語句和語句群組。 因此，如果要移轉的資料庫使用下列任何功能，請再造您的 T-SQL 以排除這些 T-SQL 功能和陳述式。
 
 - 系統物件的定序
-- 相關連接：端點陳述式。 SQL Database 不支援 Windows 驗證，但支援類似的 Azure Active Directory 驗證。 某些驗證類型需要最新的 SSMS 版本。 如需詳細資訊，請參閱 [使用 Azure Active Directory 驗證，連接到 SQL Database 或 Azure Azure Synapse Analytics (先前的 SQL 資料倉儲) ](authentication-aad-overview.md)。
+- 相關連接：端點陳述式。 SQL Database 不支援 Windows 驗證，但支援類似的 Azure Active Directory 驗證。 某些驗證類型需要最新的 SSMS 版本。 如需詳細資訊，請參閱 [使用 Azure Active Directory Authentication 連接到 SQL Database 或 Azure Azure Synapse Analytics](authentication-aad-overview.md)。
 - 使用三個或四個組件名稱跨資料庫查詢。 (使用[彈性資料庫查詢](elastic-query-overview.md)支援跨資料庫唯讀查詢。)
 - 跨資料庫擁有權鏈結，`TRUSTWORTHY` 設定
 - `EXECUTE AS LOGIN` 請改用 'EXECUTE AS USER'。
@@ -82,7 +82,7 @@ Microsoft SQL Server 和 Azure SQL Database 都支援應用程式使用的大部
 
 ### <a name="about-the-applies-to-tags"></a>關於「適用於」標記
 
-Transact-SQL 參考包括從 SQL Server 版本 2008 到目前版本的相關文章。 文章標題底下有一個圖示列，列出四個 SQL Server 的平臺，並指出適用性。 例如，可用性群組是在 SQL Server 2012 中導入。 「 [建立可用性群組](/sql/t-sql/statements/create-availability-group-transact-sql) 」一文表示語句會套用至 **SQL Server (從 2012) 開始** 。 本聲明不適用於 SQL Server 2008、SQL Server 2008 R2、Azure SQL Database、Azure Azure Synapse Analytics (先前的 SQL 資料倉儲) 或平行處理資料倉儲。
+Transact-SQL 參考包括從 SQL Server 版本 2008 到目前版本的相關文章。 文章標題底下有一個圖示列，列出四個 SQL Server 的平臺，並指出適用性。 例如，可用性群組是在 SQL Server 2012 中導入。 「 [建立可用性群組](/sql/t-sql/statements/create-availability-group-transact-sql) 」一文表示語句會套用至 **SQL Server (從 2012) 開始**。 本聲明不適用於 SQL Server 2008、SQL Server 2008 R2、Azure SQL Database、Azure Azure Synapse Analytics 或平行處理資料倉儲。
 
 在某些情況下，文章的一般主旨可用於產品中，但產品之間會有些許差異。 依適當情況會在文章的中間點指出差異。 在某些情況下，文章的一般主旨可用於產品中，但產品之間會有些許差異。 依適當情況會在文章的中間點指出差異。 例如，SQL Database 中提供建立觸發程式文章。 但是伺服器層級觸發程式的 [ **所有伺服器** ] 選項，表示伺服器層級的觸發程式無法在 SQL Database 中使用。 請改用資料庫層級的觸發程序。
 

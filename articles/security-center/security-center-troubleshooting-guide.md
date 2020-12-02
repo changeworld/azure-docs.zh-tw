@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 6646b8a563cfe156a23b47011a769c6df015a286
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 64b39dfa581b242fbb490d61b388f2bf260976ef
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340337"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460424"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 資訊安全中心疑難排解指南
 
@@ -29,7 +29,7 @@ ms.locfileid: "92340337"
 
 * 虛擬機器行為分析 (VMBA)
 * 網路分析
-* SQL Database 和 Azure Synapse Analytics (先前的 SQL 資料倉儲) 分析
+* SQL Database 和 Azure Synapse Analytics 分析
 * 內容相關的資訊
 
 根據警示類型，客戶可使用下列資源收集必要的資訊來調查警示：
@@ -132,7 +132,7 @@ ms.locfileid: "92340337"
 
 ## <a name="contacting-microsoft-support"></a>連絡 Microsoft 支援服務
 
-您可以使用本文所提供的指導方針來識別某些問題，其他您也可以在《 Security Center public [Microsoft Q&》頁面](/answers/topics/azure-security-center.html)中找到相關說明。 不過，如果您需要進一步疑難排解，您可以使用 **Azure 入口網站**開啟新的支援要求，如下所示︰
+您可以使用本文所提供的指導方針來識別某些問題，其他您也可以在《 Security Center public [Microsoft Q&》頁面](/answers/topics/azure-security-center.html)中找到相關說明。 不過，如果您需要進一步疑難排解，您可以使用 **Azure 入口網站** 開啟新的支援要求，如下所示︰
 
 ![Microsoft 支援服務](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 

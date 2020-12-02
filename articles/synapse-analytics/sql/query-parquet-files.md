@@ -1,6 +1,6 @@
 ---
-title: '使用無伺服器 SQL 集區來查詢 Parquet 檔 (預覽) '
-description: 在本文中，您將瞭解如何使用無伺服器 SQL 集區 (預覽版) 來查詢 Parquet 檔。
+title: 使用無伺服器 SQL 集區來查詢 Parquet 檔
+description: 在本文中，您將瞭解如何使用無伺服器 SQL 集區來查詢 Parquet 檔。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 97b34d85e4628c0ef01dd02d3a9be85da7f8291e
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 20bfbaeea48711a680877e4d5d8f618e84eb12d7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685608"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462579"
 ---
-# <a name="query-parquet-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用無伺服器 SQL 集區 (預覽版) 查詢 Parquet 檔
+# <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用無伺服器 SQL 集區來查詢 Parquet 檔
 
-在本文中，您將瞭解如何使用可讀取 Parquet 檔案的無伺服器 SQL 集區 (預覽版) 來撰寫查詢。
+在本文中，您將瞭解如何使用可讀取 Parquet 檔案的無伺服器 SQL 集區來撰寫查詢。
 
 ## <a name="quickstart-example"></a>快速入門範例
 
@@ -38,8 +38,8 @@ from openrowset(
 請確定您可以存取此檔案。 如果您的檔案受到 SAS 金鑰或自訂 Azure 身分識別的保護，您必須設定 [sql 登入的伺服器層級認證](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
 
 > [!IMPORTANT]
-> 請確定您使用的是某些 UTF-8 資料庫定序 (例如) ， `Latin1_General_100_CI_AS_SC_UTF8` 因為 PARQUET 檔中的字串值是使用 utf-8 編碼進行編碼。
-> PARQUET 檔案和定序中的文字編碼不相符可能會導致非預期的轉換錯誤。
+> 確定您使用的是 UTF-8 資料庫定序 (例如) ， `Latin1_General_100_CI_AS_SC_UTF8` 因為 PARQUET 檔中的字串值是使用 utf-8 編碼進行編碼。
+> PARQUET 檔中的文字編碼和定序不符，可能會導致非預期的轉換錯誤。
 > 您可以使用下列 T-sql 語句，輕鬆地變更目前資料庫的預設定序： `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 ### <a name="data-source-usage"></a>資料來源使用量

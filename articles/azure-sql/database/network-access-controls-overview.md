@@ -1,7 +1,7 @@
 ---
 title: 網路存取控制
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: 概述如何管理和控制 Azure SQL Database 的網路存取，以及先前的 SQL 資料倉儲) Azure Synapse Analytics (。
+description: 概述如何管理及控制 Azure SQL Database 和 Azure Synapse Analytics 的網路存取。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: be327fabdffc0f98dc0449b51e7e4d73651d80d8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 90bc57af3aaf0d11cd354bfe7163014f836a72e8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789483"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460000"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL Database 和 Azure Synapse Analytics 網路存取控制
 
@@ -34,7 +34,7 @@ ms.locfileid: "92789483"
 - Private Link：使用此功能可為特定虛擬網路內的 [邏輯 SQL server](logical-servers.md) 建立私人端點
 
 > [!IMPORTANT]
-> 本文 *並不適* 用於 **SQL 受控執行個體** 。 如需網路設定的詳細資訊，請參閱 [連接到 AZURE SQL 受控執行個體](../managed-instance/connect-application-instance.md) 。
+> 本文 *並不適* 用於 **SQL 受控執行個體**。 如需網路設定的詳細資訊，請參閱 [連接到 AZURE SQL 受控執行個體](../managed-instance/connect-application-instance.md) 。
 
 請參閱下列影片，以取得這些存取控制和其用途的概要說明：
 
@@ -42,7 +42,7 @@ ms.locfileid: "92789483"
 
 ## <a name="allow-azure-services"></a>允許 Azure 服務
 
-根據預設， [從 Azure 入口網站](single-database-create-quickstart.md)建立新的邏輯 SQL server 時，此設定會設定為 [ **關閉** ]。 使用公用服務端點允許連線時，就會顯示此設定。
+根據預設， [從 Azure 入口網站](single-database-create-quickstart.md)建立新的邏輯 SQL server 時，此設定會設定為 [ **關閉**]。 使用公用服務端點允許連線時，就會顯示此設定。
 
 您也可以在建立邏輯 SQL server 之後，透過防火牆窗格變更此設定，如下所示。
   
@@ -56,11 +56,11 @@ ms.locfileid: "92789483"
 
 ### <a name="import-export-service"></a>匯入匯出服務
 
-當 [ **允許存取 Azure 服務** ] 設為 [ **關閉** ] 時，[匯入匯出服務] 無法運作。 不過，您可以 [手動從 AZURE VM 執行 sqlpackage.exe，或](./database-import-export-azure-services-off.md) 使用 DACFx API 直接在程式碼中執行匯出，來解決此問題。
+當 [ **允許存取 Azure 服務** ] 設為 [ **關閉**] 時，[匯入匯出服務] 無法運作。 不過，您可以 [手動從 AZURE VM 執行 sqlpackage.exe，或](./database-import-export-azure-services-off.md) 使用 DACFx API 直接在程式碼中執行匯出，來解決此問題。
 
 ### <a name="data-sync"></a>資料同步
 
-若要搭配使用資料同步功能與 [ **允許存取 Azure 服務** ] 設為 [ **關閉** ]，您需要建立個別的防火牆規則專案，以從裝載 **中樞** 資料庫之區域的 **Sql 服務標記**[新增 IP 位址](firewall-create-server-level-portal-quickstart.md)。
+若要搭配使用資料同步功能與 [**允許存取 Azure 服務**] 設為 [**關閉**]，您需要建立個別的防火牆規則專案，以從裝載 **中樞** 資料庫之區域的 **Sql 服務標記**[新增 IP 位址](firewall-create-server-level-portal-quickstart.md)。
 將這些伺服器層級防火牆規則新增至裝載 **中樞** 和 **成員** 資料庫 (的伺服器，這些伺服器可能位於不同區域) 
 
 使用下列 PowerShell 腳本來產生對應到美國西部區域的 SQL 服務標記的 IP 位址
@@ -110,7 +110,7 @@ start          end
 
 ## <a name="virtual-network-firewall-rules"></a>虛擬網路防火牆規則
 
-除了 IP 規則，伺服器防火牆還可讓您定義 *虛擬網路規則* 。  
+除了 IP 規則，伺服器防火牆還可讓您定義 *虛擬網路規則*。  
 若要深入瞭解，請參閱 [虛擬網路服務端點和 Azure SQL Database 的規則](vnet-service-endpoint-rule-overview.md) ，或觀賞這段影片：
 
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--Demo--Vnet-Firewall-Rules-for-SQL-Database/player?WT.mc_id=dataexposed-c9-niner]
@@ -121,7 +121,7 @@ start          end
 
 **虛擬網路：** 您可以有與您的 Azure 訂用帳戶相關聯的虛擬網路
 
-**子網路：** 虛擬網路包含 **子網路** 。 您有的任何 Azure 虛擬機器 (VM) 會指派給子網路。 一個子網路可以包含多個 VM 或其他計算節點。 除非您將安全性設定為允許存取，否則位於虛擬網路外部的計算節點無法存取您的虛擬網路。
+**子網路：** 虛擬網路包含 **子網路**。 您有的任何 Azure 虛擬機器 (VM) 會指派給子網路。 一個子網路可以包含多個 VM 或其他計算節點。 除非您將安全性設定為允許存取，否則位於虛擬網路外部的計算節點無法存取您的虛擬網路。
 
 **虛擬網路服務端點：**[虛擬網路服務端點](../../virtual-network/virtual-network-service-endpoints-overview.md)是一個子網，其屬性值包含一或多個正式的 Azure 服務類型名稱。 在本文中，我們想要瞭解 **Microsoft** 的型別名稱，這是指名為 SQL Database 的 Azure 服務。
 
@@ -150,7 +150,7 @@ Private Link 可讓您透過 **私人端點** 連接到伺服器。 私人端點
 
 - 如需從開放原始碼或協力廠商應用程式連接到 SQL Database 中資料庫的說明，請參閱 [SQL Database 的用戶端快速入門程式碼範例](/previous-versions/azure/ee336282(v=azure.100))。
 
-- 如需詳細資訊，請參閱 [針對 ADO.NET 4.5 及 SQL Database 的 1433 以外的連接埠](adonet-v12-develop-direct-route-ports.md)的〈 **SQL Database：外部與內部** 〉一節
+- 如需詳細資訊，請參閱 [針對 ADO.NET 4.5 及 SQL Database 的 1433 以外的連接埠](adonet-v12-develop-direct-route-ports.md)的〈**SQL Database：外部與內部**〉一節
 
 - 如需 Azure SQL Database 連線能力的總覽，請參閱 [AZURE SQL 連線架構](connectivity-architecture.md)
 

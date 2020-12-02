@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: trkeya
 author: trkeya
-ms.openlocfilehash: 0b445f9d4fdda0b1fac9dcdb4344533cfd7d37a9
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: fd3fa04d2d7e868476838788dd9cf0e27c07aeca
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491234"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461756"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager 試用產品
 
@@ -37,7 +37,7 @@ ms.locfileid: "94491234"
 - **試用產品 Azure Resource Manager 範本** – 上傳包含您的 Azure Resource Manager 範本的 .zip 檔案。 在快速入門文章中，深入了解如何建立 Azure Resource Manager 範本，[使用 Azure 入口網站建立及部署 ARM 範本](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 
     > [!note]
-    > 若要成功發佈，請務必驗證 ARM 範本的格式。 有兩種方式可以使用 [線上 API 工具](https://docs.microsoft.com/rest/api/resources/deployments/validate) (1) ，或使用 [測試部署](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal)的 (2) 。
+    > 若要成功發佈，請務必驗證 ARM 範本的格式。 有兩種方式可以使用 [線上 API 工具](/rest/api/resources/deployments/validate) (1) ，或使用 [測試部署](../azure-resource-manager/templates/deploy-portal.md)的 (2) 。
 
 - **試用產品持續時間** (必要) - 輸入試用產品會保持作用的時數。 在此持續時間過後，試用產品將會自動終止。 僅使用整數 (例如，「2」小時為有效時間，「1.5」則無效)。
 
@@ -300,7 +300,7 @@ ms.locfileid: "94491234"
 
    ![Azure 訂用帳戶](media/test-drive/azure-subscriptions.png)
 
-2. 取得 **Azure AD 租使用者識別碼** 。 如果您已經有可用的租使用者識別碼，您可以在 **Azure Active Directory**  >  **屬性**  >  **目錄識別碼** ：
+2. 取得 **Azure AD 租使用者識別碼**。 如果您已經有可用的租使用者識別碼，您可以在 **Azure Active Directory**  >  **屬性**  >  **目錄識別碼**：
 
    ![Azure Active Directory 屬性](media/test-drive/azure-active-directory-properties.png)
 
@@ -309,12 +309,12 @@ ms.locfileid: "94491234"
 3. **AZURE AD APP 識別碼** -建立並註冊新的應用程式。 我們將使用此應用程式在您的試用產品實例上執行作業。
 
    1. 流覽至新建立的目錄或現有的目錄，然後在 [篩選] 窗格中選取 [Azure Active Directory]。
-   2. 搜尋 **應用程式註冊** 然後選取 [ **新增** ]。
+   2. 搜尋 **應用程式註冊** 然後選取 [ **新增**]。
    3. 提供應用程式名稱。
-   4. 選取 **Web 應用程式/API** 的 **類型** 。
+   4. 選取 **Web 應用程式/API** 的 **類型**。
    5. 在 [登入 URL] 中提供任何值，就不會使用此欄位。
    6. 選取 [建立]。
-   7. 建立應用程式之後，選取 [ **屬性** ]  >  **將應用程式設定為多租** 使用者，然後 **儲存** 。
+   7. 建立應用程式之後，選取 [**屬性**]  >  **將應用程式設定為多租** 使用者，然後 **儲存**。
 
 4. 選取 [儲存]。
 
@@ -326,7 +326,7 @@ ms.locfileid: "94491234"
 
    1. 選取您要用於試用產品的 **訂** 用帳戶類型。
    1. 選取 [存取控制 (IAM)]  。
-   1. 選取 [ **角色指派** ] 索引標籤，然後 **新增角色指派** 。
+   1. 選取 [ **角色指派** ] 索引標籤，然後 **新增角色指派**。
 
       ![新增新的存取控制原則](media/test-drive/access-control-principal.jpg)
 
@@ -336,7 +336,7 @@ ms.locfileid: "94491234"
 
    1. 選取 [儲存]。
 
-7. 產生 **Azure AD App** 的驗證金鑰。 在 [ **金鑰** ] 下，新增 **金鑰描述** 、將持續時間設為 [ **永不過期** ] (到期的金鑰會將您的試用產品分成生產) ，然後選取 [ **儲存** ]。 將此值複製並貼到 [需要的試用產品] 欄位中。
+7. 產生 **Azure AD App** 的驗證金鑰。 在 [ **金鑰**] 下，新增 **金鑰描述**、將持續時間設為 [ **永不過期** ] (到期的金鑰會將您的試用產品分成生產) ，然後選取 [ **儲存**]。 將此值複製並貼到 [需要的試用產品] 欄位中。
 
 ![顯示 Azure AD 應用程式的金鑰](media/test-drive/azure-ad-app-keys.png)
 
@@ -352,7 +352,7 @@ ms.locfileid: "94491234"
 
 請勿刪除為客戶布建的任何試用產品實例;在客戶完成後，試用產品服務將會自動清除這些資源群組。
 
-一旦您熟悉您的預覽供應專案，就可以 **上線** ！ 有最後的評論流程可以重複檢查整個端對端體驗。 如果我們拒絕該供應專案，我們會以電子郵件傳送您供應專案的工程連絡人，說明需要修正的專案。
+一旦您熟悉您的預覽供應專案，就可以 **上線**！ 有最後的評論流程可以重複檢查整個端對端體驗。 如果我們拒絕該供應專案，我們會以電子郵件傳送您供應專案的工程連絡人，說明需要修正的專案。
 
 ## <a name="next-steps"></a>後續步驟
 

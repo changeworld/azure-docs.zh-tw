@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 388c0db11c38f3dcdb9c4452b8d7283b2e811885
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 929853f4dbedca7034c8e2a51e6231651a2dd08f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108689"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461655"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>將 Azure Data Lake Storage Gen1 與其他 Azure 服務整合
 Azure Data Lake Storage Gen1 可以與其他 Azure 服務一起使用，以啟用更廣泛的案例。 下列文章列出 Data Lake Storage Gen1 可以整合的服務。
@@ -54,7 +54,7 @@ Azure Data Lake Storage Gen1 提供命令列工具 AdlCopy，可讓您將資料�
 您可以使用 SSIS 中的 Data Lake Storage Gen1 連線管理員，以使用 Data Lake Storage Gen1 連線 SSIS 套件。 如需詳細資訊，請參閱[搭配 SSIS 使用 Data Lake Storage Gen1](/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager)。
 
 ## <a name="use-data-lake-storage-gen1-with-azure-synapse-analytics"></a>搭配使用 Data Lake Storage Gen1 與 Azure Synapse Analytics
-您可以使用 PolyBase 將資料從 Data Lake Storage Gen1 載入至先前的 SQL 資料倉儲) Azure Synapse Analytics (。 如需詳細資訊，請參閱搭配 [使用 Data Lake Storage Gen1 與 Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)。
+您可以使用 PolyBase 將資料從 Data Lake Storage Gen1 載入 Azure Synapse Analytics。 如需詳細資訊，請參閱搭配 [使用 Data Lake Storage Gen1 與 Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)。
 
 ## <a name="use-data-lake-storage-gen1-with-azure-event-hubs"></a>搭配 Azure 事件中樞使用 Data Lake Storage Gen1
 您可以使用 Azure Data Lake Storage Gen1 來封存及擷取 Azure 事件中樞所收到的資料。 如需詳細資訊，請參閱[搭配 Azure 事件中樞使用 Data Lake Storage Gen1](data-lake-store-archive-eventhub-capture.md)。

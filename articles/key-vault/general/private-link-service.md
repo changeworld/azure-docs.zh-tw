@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ec619681f1eebc51da85d31ad15f1db25cfd3cbc
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 570281e31c70b2f5f85a858f9dd424f93ee86029
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917914"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460063"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>整合 Key Vault 與 Azure Private Link
 
@@ -226,14 +226,14 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 
 * 請檢查以確定您有私人 DNS 區域資源。 
     1. 您必須具有與下列名稱完全相同的私人 DNS 區域資源： privatelink.vaultcore.azure.net。 
-    2. 若要了解如何進行這項設定，請參閱下列連結。 [私人 DNS 區域](https://docs.microsoft.com/azure/dns/private-dns-privatednszone)
+    2. 若要了解如何進行這項設定，請參閱下列連結。 [私人 DNS 區域](../../dns/private-dns-privatednszone.md)
     
 * 檢查以確認私人 DNS 區域並未連結至虛擬網路。 如果您仍然收到傳回的公用 IP 位址，表示可能發生問題。 
     1. 如果私人區域 DNS 未連結到虛擬網路，來自虛擬網路的 DNS 查詢將會傳回金鑰保存庫的公用 IP 位址。 
     2. 瀏覽至 Azure 入口網站中的私人 DNS 區域資源，按一下 [虛擬網路連結] 選項。 
     4. 必須列出將執行金鑰保存庫呼叫的虛擬網路。 
     5. 如果不存在，請加以新增。 
-    6. 如需詳細步驟，請參閱下列文件：[將虛擬網路連結到私人 DNS 區域](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network)
+    6. 如需詳細步驟，請參閱下列文件：[將虛擬網路連結到私人 DNS 區域](../../dns/private-dns-getstarted-portal.md#link-the-virtual-network)
 
 * 請檢查並確定私人 DNS 區域沒有遺失金鑰保存庫的 A 記錄。 
     1. 瀏覽至 [私人 DNS 區域] 頁面。 

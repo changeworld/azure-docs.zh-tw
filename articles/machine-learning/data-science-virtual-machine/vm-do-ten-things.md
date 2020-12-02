@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 766da55f2589e2a8eb09e0f1b1c9a0a5027c8c3c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1e263886d0cc199bb30fd28877be32209ab32a22
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002760"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462384"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>使用 Windows 資料科學虛擬機器的資料科學
 
@@ -40,7 +40,7 @@ DSVM 可與 Azure 服務緊密搭配運作。 它可以讀取和處理已儲存�
 > 
 > 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 您需要 Azure 訂用帳戶。 您可以 [註冊免費試用](https://azure.microsoft.com/free/)。
 * 在 Azure 入口網站上布建資料科學虛擬機器的指示可用於 [建立虛擬機器](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016)。
@@ -156,7 +156,7 @@ git clone https://github.com/Azure/DataScienceVM.git
 ### <a name="azure-blob-storage"></a>Azure Blob 儲存體
 Azure Blob 儲存體是可靠、經濟實惠的雲端儲存體服務，適用于資料的規模和小型儲存體服務。 本節說明如何將資料移至 Blob 儲存體，以及存取儲存在 Azure blob 中的資料。
 
-#### <a name="prerequisites"></a>Prerequisites
+#### <a name="prerequisites"></a>必要條件
 
 * 從 [Azure 入口網站](https://portal.azure.com)建立您的 Azure Blob 儲存體帳戶。
 
@@ -252,8 +252,8 @@ print 'the size of the data is: %d rows and  %d columns' % df1.shape
 ![前 10 個資料列的螢幕擷取畫面](./media/vm-do-ten-things/IPNB_data_readin.png)
 
 
-### <a name="azure-synapse-analytics-formerly-sql-dw-and-databases"></a>Azure Synapse Analytics (先前的 SQL DW) 和資料庫
-Azure Synapse Analytics (先前的 SQL DW) 是彈性的資料倉儲即服務，具備企業級的 SQL Server 體驗。
+### <a name="azure-synapse-analytics-and-databases"></a>Azure Synapse Analytics 和資料庫
+Azure Synapse Analytics 是彈性的資料倉儲即服務，具備企業級的 SQL Server 體驗。
 
 您可以 [遵循本文中](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)的指示來布建 Azure Synapse Analytics。 布建 Azure Synapse Analytics 之後，您可以使用 [此逐步](../team-data-science-process/sqldw-walkthrough.md) 解說，利用 Azure Synapse Analytics 內的資料來進行資料上傳、探索及模型化。
 

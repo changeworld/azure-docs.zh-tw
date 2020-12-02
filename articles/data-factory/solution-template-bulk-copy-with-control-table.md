@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
-ms.openlocfilehash: be3b82765f2f5268a75147e8e1ef6de34aeb8ff2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d1ff372009c6158f2148847dd77126bcb4d189f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441063"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461229"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>使用控制資料表從資料庫進行大量複製
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-若要從 Oracle Server、Netezza、Teradata 或 SQL Server 中的資料倉儲複製資料至 Azure Synapse Analytics (先前為 SQL 資料倉儲) ，您必須從多個資料表載入大量的資料。 通常，資料必須在每個資料表中進行分割，如此即可從單一資料表使用多個執行緒平行載入資料列。 本文描述要在這些案例中使用的範本。
+若要將資料從 Oracle Server、Netezza、Teradata 或 SQL Server 中的資料倉儲複製到 Azure Synapse Analytics，您必須從多個資料表載入大量的資料。 通常，資料必須在每個資料表中進行分割，如此即可從單一資料表使用多個執行緒平行載入資料列。 本文描述要在這些案例中使用的範本。
 
- >!請注意，如果您想要從少量的資料表中，將資料從相對較小的資料磁片區複製到 Azure Synapse Analytics，使用 [Azure Data Factory 資料複製工具](copy-data-tool.md)會更有效率。 本文中所述範本其範圍遠超出該案例所需的內容。
+ >！請注意，如果您想要從少量的資料表中，將資料從相對較小的資料磁片區複製到 Azure Synapse Analytics，使用 [Azure Data Factory 資料複製工具](copy-data-tool.md)會更有效率。 本文中所述範本其範圍遠超出該案例所需的內容。
 
 ## <a name="about-this-solution-template"></a>關於此解決方案範本
 
@@ -68,15 +68,15 @@ ms.locfileid: "89441063"
             (5, 'project_table','select * from project_table where ID >= 1000 and ID < 2000');
     ```
 
-2. 移至 [從資料庫進行大量複製] 範本。 建立與外部控制資料表 (在步驟 1 中所建立) 的**新**連線。
+2. 移至 [從資料庫進行大量複製] 範本。 建立與外部控制資料表 (在步驟 1 中所建立) 的 **新** 連線。
 
     ![建立與控制資料表的新連線](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable2.png)
 
-3. 建立與來源資料庫 (資料複製來源) 的**新**連線。
+3. 建立與來源資料庫 (資料複製來源) 的 **新** 連線。
 
     ![建立與來源資料庫的新連線](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
     
-4. 建立與目的地資料存放區 (資料複製目標) 的**新**連線。
+4. 建立與目的地資料存放區 (資料複製目標) 的 **新** 連線。
 
     ![建立與目的地存放區的新連線](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png)
 

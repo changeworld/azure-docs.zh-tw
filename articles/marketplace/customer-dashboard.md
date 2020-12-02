@@ -7,21 +7,21 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 9821cc8905caa9576662a192fc704c53b35af82d
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 878fa181ff09d547ef6594a238e9c1d883cc89b7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564866"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460477"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>商業 marketplace 分析中的客戶儀表板
 
 本文提供合作夥伴中心中 [客戶] 儀表板的相關資訊。 此儀表板會顯示包括成長趨勢在內的客戶資訊，以圖形化及可下載的格式呈現。
 
-若要存取合作夥伴中心中的客戶儀表板，請在 [ **商業 Marketplace** ] 下選取 [ **[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **客戶** ]。
+若要存取合作夥伴中心中的客戶儀表板，請在 [**商業 Marketplace** ] 下選取 [**[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **客戶**]。
 
 >[!NOTE]
-> 如需分析術語的詳細定義，請參閱 [商業市場分析術語和常見問題](./partner-center-portal/faq-terminology.md)。
+> 如需分析術語的詳細定義，請參閱 [商業市場分析術語和常見問題](./analytics-faq.md)。
 
 ## <a name="customers-dashboard"></a>客戶儀表板
 
@@ -58,7 +58,7 @@ ms.locfileid: "94564866"
 
 [![說明 [客戶] 頁面上的 [客戶] widget。](./media/customer-dashboard/customers-widget.png)](./media/customer-dashboard/customers-widget.png#lightbox)
 
-有三種 _客戶類型_ ：新客戶、舊客戶和流失的客戶。
+有三種 _客戶類型_：新客戶、舊客戶和流失的客戶。
 
 - 新客戶是在選取的月份內，第一次取得一或多個供應項目的客戶。
 - 舊客戶是在選取的月份前，取得一或多個供應項目的客戶。
@@ -86,15 +86,15 @@ ms.locfileid: "94564866"
 
 - 領導者面板會顯示依訂單計數排名的客戶詳細資料。 選取客戶之後，客戶詳細資料會顯示在連續的「詳細資料」、「依 Sku 排序」和「依基座的 Sku」區段中。
 - 當發行者以擁有者角色登入時，此空間中會顯示客戶設定檔詳細資料。 如果發行者是以參與者角色登入，此區段中的詳細資料將無法使用。
-- **Orders By sku** 環圈圖會顯示針對方案購買的訂單明細。 系統會顯示具有最高訂單計數的前五個計畫，而其餘訂單會在 [ **全部 rest** ] 下分組。
-- [ **依** 基座的 sku] 環圈圖會顯示針對方案訂購的基座明細。 系統會顯示具有最高基座的前五個方案，而其餘訂單則會在 [ **全部 rest** ] 下分組。
+- **Orders By sku** 環圈圖會顯示針對方案購買的訂單明細。 系統會顯示具有最高訂單計數的前五個計畫，而其餘訂單會在 [ **全部 rest**] 下分組。
+- [ **依** 基座的 sku] 環圈圖會顯示針對方案訂購的基座明細。 系統會顯示具有最高基座的前五個方案，而其餘訂單則會在 [ **全部 rest**] 下分組。
 
 您也可以選取 [ **標準化使用量** ] 或 [ **原始使用量** ] 索引標籤，以查看使用量詳細資料。
 
 - 領導者面板會顯示依使用量時數排名的客戶詳細資料。 選取客戶之後，客戶的詳細資料會顯示在連續的「詳細資料」、「依供應專案的正規化使用量」和「依虛擬機器 (VM 的標準化使用量) 大小 (s) 」一節。
 - 當發行者以擁有者角色登入時，客戶設定檔詳細資料就會顯示在此位置。 如果發行者是以參與者角色登入，即無法取得此區段中的詳細資料。
-- **標準化的使用量（依提供** 環圈圖）會顯示供應專案所使用的使用量細目。 會顯示具有最高使用量計數的前五個計畫，而其餘的供應專案則會在 [ **全部 rest** ] 下分組。
-- **依 Vm 大小 (s 的標準化使用量)** 環圈圖會顯示不同 vm 大小 (s) 所耗用的使用量細目。 會顯示具有最高標準化使用量的前五個 VM 大小，而其餘的使用量則會在 [ **全部 rest** ] 下分組。
+- **標準化的使用量（依提供** 環圈圖）會顯示供應專案所使用的使用量細目。 會顯示具有最高使用量計數的前五個計畫，而其餘的供應專案則會在 [ **全部 rest**] 下分組。
+- **依 Vm 大小 (s 的標準化使用量)** 環圈圖會顯示不同 vm 大小 (s) 所耗用的使用量細目。 會顯示具有最高標準化使用量的前五個 VM 大小，而其餘的使用量則會在 [ **全部 rest**] 下分組。
 
 ### <a name="top-customers-percentile"></a>前幾個客戶百分位數
 
@@ -157,7 +157,7 @@ _**表1：資料詞彙的字典**_
 | 客戶郵遞區號 | 客戶郵遞區號 | 客戶提供的郵遞區號。 程式碼可能與客戶的 Azure 訂用帳戶中提供的郵遞區號不同。 |
 | CustomerCommunicationCulture | 客戶通訊語言 | 客戶慣用於通訊的語言。 |
 | CustomerCountryRegion | Customer Country/Region | 客戶提供的國家/地區名稱。 國家/地區可能與客戶的 Azure 訂用帳戶中的國家/地區不同。 |
-| AzureLicenseType | Azure 授權類型 | 客戶用來購買 Azure 的授權合約類型。 也稱為 _通道_ 。 可能的值包括：<ul><li>雲端解決方案提供者</li><li>Enterprise</li><li>企業透過轉銷商</li><li>隨用隨付</li></ul> |
+| AzureLicenseType | Azure 授權類型 | 客戶用來購買 Azure 的授權合約類型。 也稱為 _通道_。 可能的值包括：<ul><li>雲端解決方案提供者</li><li>企業</li><li>企業透過轉銷商</li><li>隨用隨付</li></ul> |
 | PromotionalCustomers | 已選擇加入促銷連絡人 | 此值可讓您知道客戶是否主動選擇加入發行者的促銷連絡人。 目前，我們沒有向客戶顯示該選項，因此我們一律指出 [否]。 部署這項功能之後，我們將會據以開始更新。 |
 | CustomerState | 客戶州 | 客戶所提供的居住州。 狀態可能與客戶的 Azure 訂用帳戶中提供的狀態不同。 |
 | CommerceRootCustomer | 商務根客戶 | 一個計費帳戶識別碼可以與多個客戶識別碼相關聯。<br>計費帳戶識別碼和客戶識別碼的其中一個組合，可以與多個商業 marketplace 訂用帳戶相關聯。<br>商務根客戶表示訂用帳戶的客戶名稱。 |
@@ -180,4 +180,4 @@ _**表1：資料詞彙的字典**_
 - 針對 (VM) 提供使用量和計量付費計量的虛擬機器，請參閱 [商用 marketplace 分析中的使用量儀表板](./usage-dashboard.md)。
 - 如需過去 30 天內的下載要求清單，請參閱[商業市集分析中的下載儀表板](./partner-center-portal/downloads-dashboard.md)。
 - 若要查看 Azure Marketplace 和 Microsoft AppSource 上提供的客戶意見反應的匯總觀點，請參閱 [合作夥伴中心 & 審核分析儀表板中的評](./partner-center-portal/ratings-reviews.md)等。
-- 如需有關商業市場分析以及完整的資料詞彙字典的常見問題，請參閱 [商業市場分析術語和常見問題](./partner-center-portal/faq-terminology.md)。
+- 如需有關商業市場分析以及完整的資料詞彙字典的常見問題，請參閱 [商業市場分析術語和常見問題](./analytics-faq.md)。

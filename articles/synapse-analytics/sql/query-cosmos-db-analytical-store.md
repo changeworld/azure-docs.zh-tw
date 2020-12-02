@@ -9,14 +9,18 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: eda05cbdf2f5b077fd6cf217a00cc58b1c6eda27
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 439337233e24dfcae2c8c911a9224fd3394d6846
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94986635"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462695"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>在 Azure Synapse Link Preview 中使用無伺服器 SQL 集區查詢 Azure Cosmos DB 資料
+
+> [!IMPORTANT]
+> 適用于 Azure Cosmos DB 的 Azure Synapse 連結的無伺服器 SQL 集區支援目前為預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 
 無伺服器 SQL 集區可讓您以近乎即時的方式，分析您 Azure Cosmos DB 容器中以 [Azure Synapse 連結](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 啟用的資料，而不會影響交易式工作負載的效能。 它提供熟悉的 T-sql 語法來查詢 [分析存放區](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 中的資料，以及透過 t-sql 介面 (BI) 和臨機操作查詢工具的各種商業智慧整合式連接。
 
@@ -261,7 +265,7 @@ SQL (Core) API 的 Azure Cosmos DB 帳戶支援數位、字串、布林值、nul
 | 布林值 | bit |
 | 整數 | BIGINT |
 | Decimal | FLOAT |
-| 字串 | Varchar (UTF-8 資料庫定序)  |
+| String | Varchar (UTF-8 資料庫定序)  |
 | 日期時間 (ISO 格式的字串)  | Varchar (30)  |
 | 日期時間 (UNIX 時間戳記)  | BIGINT |
 | Null | `any SQL type` 

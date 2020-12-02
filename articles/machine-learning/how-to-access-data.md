@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
 ms.custom: how-to, contperfq1, devx-track-python, data4ml
-ms.openlocfilehash: 3c8e18a3a216240a624b3b14f5e2e397d6c06012
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c85989dc02bddd136c56a81993df7a507a84d3b4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961323"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460272"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>連接至 Azure 上的儲存體服務
 
@@ -80,7 +80,7 @@ ms.locfileid: "94961323"
 
 建議您為 [Azure Blob 容器](../storage/blobs/storage-blobs-introduction.md)建立資料存放區。 標準和進階儲存體都適用於 Blob。 雖然進階儲存體的成本較高，但其較快速的輸送量速度可能會加快定型執行的速度，特別是當您對大型資料集進行定型時。 如需儲存體帳戶成本的相關資訊，請參閱 [Azure 定價計算機](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service)。
 
-[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) 建置於 Azure Blob 儲存體之上，是專為企業巨量資料分析而設計的。 Data Lake Storage Gen2 的基礎部分是新增至 Blob 儲存體的[階層命名空間](../storage/blobs/data-lake-storage-namespace.md)。 階層命名空間會將物件/檔案組織成目錄階層，讓資料存取更有效率。
+[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 建置於 Azure Blob 儲存體之上，是專為企業巨量資料分析而設計的。 Data Lake Storage Gen2 的基礎部分是新增至 Blob 儲存體的[階層命名空間](../storage/blobs/data-lake-storage-namespace.md)。 階層命名空間會將物件/檔案組織成目錄階層，讓資料存取更有效率。
 
 ## <a name="storage-access-and-permissions"></a>儲存體存取和許可權
 
@@ -112,7 +112,7 @@ ms.locfileid: "94961323"
 > * 如果您需要變更 Azure 儲存體帳戶的存取金鑰 (帳戶金鑰或 SAS 權杖) ，請務必將新的認證與您的工作區和連線的資料存放區同步。 瞭解如何 [同步處理已更新的認證](how-to-change-storage-access-key.md)。 
 ### <a name="permissions"></a>權限
 
-針對 Azure blob 容器和 Azure Data Lake Gen 2 儲存體，請確定您的驗證認證具有 **儲存體 Blob 資料讀取器** 存取權。 深入瞭解 [儲存體 Blob 資料讀取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)。 帳戶 SAS 權杖預設為沒有許可權。 
+針對 Azure blob 容器和 Azure Data Lake Gen 2 儲存體，請確定您的驗證認證具有 **儲存體 Blob 資料讀取器** 存取權。 深入瞭解 [儲存體 Blob 資料讀取器](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)。 帳戶 SAS 權杖預設為沒有許可權。 
 * 針對資料 **讀取權限**，您的驗證認證必須具有容器和物件的最小清單和讀取權限。 
 
 * 若要進行資料 **寫入存取**，也需要 [寫入] 和 [新增] 許可權。

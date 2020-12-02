@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: monhaber
 ms.author: ronmat
 ms.reviewer: vanto, sstein
-ms.date: 09/21/2020
+ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: f83b9515e16fcf2c2158586297545206d57e1a6e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 931e914cd3c184136395a9bb9a7e148a90e9fb91
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785114"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461960"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Azure SQL Database、SQL 受控執行個體和 Azure Synapse Analytics 的 Advanced 威脅防護
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -35,7 +35,7 @@ Advanced 威脅防護是 [Azure Defender FOR SQL](azure-defender-for-sql.md) 供
 
 ## <a name="alerts"></a>警示
 
-適用於 Azure SQL Database 的進階威脅防護會偵測異常活動，這些活動代表有不尋常及可能有害的活動試圖存取或惡意探索資料庫。 如需 Azure SQL Database 的警示清單，請參閱 [) 中的 SQL Database 和 Azure Synapse Analytics (先前的 SQL 資料倉儲 Azure 資訊安全中心的警示](../../security-center/alerts-reference.md#alerts-sql-db-and-warehouse)。
+適用於 Azure SQL Database 的進階威脅防護會偵測異常活動，這些活動代表有不尋常及可能有害的活動試圖存取或惡意探索資料庫。 如需 Azure SQL Database 的警示清單，請參閱 [Azure 資訊安全中心中 SQL Database 和 Azure Synapse Analytics 的警示](../../security-center/alerts-reference.md#alerts-sql-db-and-warehouse)。
 
 ## <a name="explore-detection-of-a-suspicious-event"></a>探索可疑事件的偵測
 
@@ -58,6 +58,10 @@ Advanced 威脅防護是 [Azure Defender FOR SQL](azure-defender-for-sql.md) 供
 Advanced 威脅防護會將其警示與 [Azure 安全性中心](https://azure.microsoft.com/services/security-center/)整合。 資料庫中的即時 SQL Advanced 威脅防護圖格和 Azure 入口網站中的 SQL Azure Defender blade 會追蹤作用中威脅的狀態。
 
 按一下 [ **Advanced 威脅防護警示** ] 以啟動 [Azure 資訊安全中心警示] 頁面，並概要說明在資料庫上偵測到的作用中 SQL 威脅。
+
+:::image type="content" source="media/azure-defender-for-sql/advanced-threat-protection-alerts.png" alt-text="資料庫中的 advanced 威脅防護警示總覽":::
+
+:::image type="content" source="media/azure-defender-for-sql/advanced-threat-protection.png" alt-text="安全性中心的 advanced 威脅防護":::
 
 ## <a name="next-steps"></a>後續步驟
 

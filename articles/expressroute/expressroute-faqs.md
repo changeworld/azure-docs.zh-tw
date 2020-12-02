@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: 7b7362d9315d8228e56dc85b2da22e0d507fa8ae
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ef5b065425fa05d016c1b1c1688cc28508f32d30
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339784"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462053"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常見問題集
 
@@ -46,8 +46,9 @@ ExpressRoute 連線不會經過公用網際網路。 相較於網際網路一般
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-use-more-than-my-procured-bandwidth"></a>如果我支付指定頻寬的 ExpressRoute 線路，是否能夠使用超過購買頻寬的能力？
 
-是，您可以使用 ExpressRoute 線路的次要連線上可用的頻寬，最多可使用您所購買之頻寬限制的兩倍。 您線路的內建冗余設定是使用主要和次要連線（每個採購頻寬）設定為兩個 Microsoft Enterprise Edge 路由器 (Msee) 。 如有必要，可透過次要連線使用的頻寬可用於額外的流量。 因為次要連線是用來進行冗余，所以不保證，且不應該用於持續時間的額外流量。 若要深入瞭解如何使用這兩個 connnections 來傳輸流量，請參閱 [這裡](./expressroute-optimize-routing.md#solution-use-as-path-prepending)。
-如果您打算只使用您的主要連線來傳輸流量，則連線的頻寬是固定的，而且嘗試超額訂閱會導致封包遺失。 如果流量流經 ExpressRoute 閘道，則 SKU 的頻寬是固定的，而且不會高載。
+是，您可以使用 ExpressRoute 線路的次要連線上可用的頻寬，最多可使用您所購買之頻寬限制的兩倍。 您線路的內建冗余設定是使用主要和次要連線（每個採購頻寬）設定為兩個 Microsoft Enterprise Edge 路由器 (Msee) 。 如有必要，可透過次要連線使用的頻寬可用於額外的流量。 因為次要連線是用來進行冗余，所以不保證，且不應該用於持續時間的額外流量。 若要深入瞭解如何使用這兩個 connnections 來傳輸流量，請參閱 [使用 AS 路徑](./expressroute-optimize-routing.md#solution-use-as-path-prepending)前置。
+
+如果您打算只使用您的主要連線來傳輸流量，則連線的頻寬是固定的，而且嘗試超額訂閱將會導致封包下降。 如果流量流經 ExpressRoute 閘道，閘道 SKU 的頻寬是固定的，而且不會高載。 如需每個閘道 SKU 的頻寬，請參閱 [關於 ExpressRoute 虛擬網路閘道](expressroute-about-virtual-network-gateways.md#aggthroughput)。
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>我是否可以在虛擬網路和其他 Azure 服務中同時使用相同的私人網路連線？
 

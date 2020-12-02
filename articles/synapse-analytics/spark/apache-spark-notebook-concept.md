@@ -9,15 +9,16 @@ ms.date: 11/18/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 4387aadd70ddb373df1bdfa61cbe9ed7f2af283d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bad71cfeb8f15f463bb9659be704374325d1f50a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919484"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461995"
 ---
 # <a name="azure-synapse-analytics-notebooks"></a>Azure Synapse Analytics 筆記本
-Synapse Studio (preview) 筆記本是一個 web 介面，可讓您建立包含即時程式碼、視覺效果和敘述文字的檔案。 筆記本是驗證想法和使用快速實驗從您的資料取得見解的絕佳位置。 
+
+Synapse Studio 筆記本是一個 web 介面，可讓您建立包含即時程式碼、視覺效果和敘述文字的檔案。 筆記本是驗證想法和使用快速實驗從您的資料取得見解的絕佳位置。 
 
 使用 Azure Synapse Studio 筆記本，您可以：
 
@@ -38,7 +39,7 @@ Synapse Studio (preview) 筆記本是一個 web 介面，可讓您建立包含�
     - [將資料帶入筆記本](./spark/../apache-spark-development-using-notebooks.md#bring-data-to-a-notebook)
     - [使用魔術命令和臨時表使用多個語言](./spark/../apache-spark-development-using-notebooks.md#integrate-a-notebook)
     - [使用資料格魔術命令](./spark/../apache-spark-development-using-notebooks.md#magic-commands)
-  - 開發
+  - 部署
     - [設定 Spark 會話設定](./spark/../apache-spark-development-using-notebooks.md#spark-session-config)
     - [使用 Microsoft Spark 公用程式](./spark/../microsoft-spark-utilities.md)
     - [使用筆記本和程式庫將資料視覺化](./spark/../apache-spark-data-visualization.md)

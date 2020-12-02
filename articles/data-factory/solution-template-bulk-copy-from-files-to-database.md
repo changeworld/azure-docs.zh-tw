@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: c7f4cba10117efef4099b3524b49cae313593a9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ecf3c3954bd77962e56ee289b623806efb352410
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442706"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461265"
 ---
 # <a name="bulk-copy-from-files-to-database"></a>從檔案大量複製到資料庫
 
@@ -38,11 +38,11 @@ ms.locfileid: "89442706"
 
 ## <a name="how-to-use-this-solution-template"></a>如何使用此解決方案範本
 
-1. 移至 [從檔案大量複製到資料庫] 範本。 建立與來源 Gen2 存放區的**新**連線。 請注意，"GetMetadataDataset" 和 "SourceDataset" 是對來源檔案存放區相同連線的參考。
+1. 移至 [從檔案大量複製到資料庫] 範本。 建立與來源 Gen2 存放區的 **新** 連線。 請注意，"GetMetadataDataset" 和 "SourceDataset" 是對來源檔案存放區相同連線的參考。
 
     ![建立與來源資料存放區的新連線](media/solution-template-bulk-copy-from-files-to-database/source-connection.png)
 
-2. 建立與接收資料存放區 (資料複製目標) 的**新**連線。
+2. 建立與接收資料存放區 (資料複製目標) 的 **新** 連線。
 
     ![建立與接收資料存放區的新連線](media/solution-template-bulk-copy-from-files-to-database/destination-connection.png)
     
@@ -55,7 +55,7 @@ ms.locfileid: "89442706"
     ![檢閱管線](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
 
     > [!NOTE]
-    > 如果您選擇 **Azure Synapse Analytics (先前的 SQL DW) ** 作為上述 **步驟 2** 中的資料目的地，您必須輸入 Azure Blob 儲存體的連線以進行預備，如 AZURE SYNAPSE ANALYTICS (先前的 Sql 資料倉儲) Polybase 所需。 如下列螢幕擷取畫面所示，此範本會為 Blob 儲存體自動產生「儲存體路徑」。 檢查是否已在管線執行之後建立容器。
+    > 如果您選擇 **Azure Synapse Analytics (先前的 SQL DW)** 作為上述 **步驟 2** 中的資料目的地，則必須輸入 Azure Blob 儲存體的連線以進行預備，如 Azure Synapse Analytics Polybase 所要求。 如下列螢幕擷取畫面所示，此範本會為 Blob 儲存體自動產生「儲存體路徑」。 檢查是否已在管線執行之後建立容器。
         
     ![Polybase 設定](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
 

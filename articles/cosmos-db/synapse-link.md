@@ -5,20 +5,20 @@ author: Rodrigossz
 ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 11/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 1e78a7ff806cbd6a7f30c68786e62f8508c850ac
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: d083bc0b7726a284dcfd03e49d47c2a342db023c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340680"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461817"
 ---
-# <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>什麼是適用於 Azure Cosmos DB 的 Azure Synapse Analytics (預覽)？
+# <a name="what-is-azure-synapse-link-for-azure-cosmos-db"></a>什麼是適用於 Azure Cosmos DB 的 Azure Synapse Link
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 > [!IMPORTANT]
-> 適用於 Azure Cosmos DB 的 Azure Synapse Analytics 目前為預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱[ Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 適用于 Azure Cosmos DB 的 Azure Synapse 連結 Synapse 無伺服器 SQL 集區支援目前為預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱[ Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 適用於 Azure Cosmos DB 的 Azure Synapse Analytics 是雲端原生的混合式交易和分析處理 (HTAP) 功能，可讓您對 Azure Cosmos DB 中的操作資料執行近即時分析。 Azure Synapse Link 會在 Azure Cosmos DB 與 Azure Synapse Analytics 之間建立緊密順暢的整合。
 
@@ -36,7 +36,7 @@ ms.locfileid: "93340680"
 
 ### <a name="reduced-complexity-with-no-etl-jobs-to-manage"></a>降低複雜性，無需管理 ETL 作業
 
-Azure Synapse Link 可讓您使用 Azure Synapse Analytics 直接存取 Azure Cosmos DB 分析存放區，而不需要複雜的資料移動。 對操作資料所做的任何更新，會以近即時的方式反映在分析存放區中，不會有 ETL 或變更摘要作業。 您可以從 Synapse Analytics 對分析存放區執行大規模分析，而不需要額外的資料轉換。
+Azure Synapse Link 可讓您使用 Azure Synapse Analytics 直接存取 Azure Cosmos DB 分析存放區，而不需要複雜的資料移動。 對操作資料所做的任何更新，會以近即時的方式反映在分析存放區中，不會有 ETL 或變更摘要作業。 您可以從 Azure Synapse Analytics 針對分析存放區執行大規模分析，而不需要額外的資料轉換。
 
 ### <a name="near-real-time-insights-into-your-operational-data"></a>操作資料的近即時深入解析
 
@@ -75,13 +75,13 @@ Azure Cosmos DB 分析存放區是 Azure Cosmos DB 中操作資料的資料行�
 
 ### <a name="integration-with-azure-synapse-analytics"></a><a id="synapse-link-integration"></a>與 Azure Synapse Analytics 整合
 
-有了 Synapse Link，您現在可以從 Azure Synapse Analytics 直接連線到您的 Azure Cosmos DB 容器，並存取分析存放區，而不需要個別的連接器。 Azure Synapse Analytics 目前支援 [Synapse Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md) 和 [Synapse SQL 無伺服器](../synapse-analytics/sql/on-demand-workspace-overview.md)的 Synapse 連結。
+有了 Synapse Link，您現在可以從 Azure Synapse Analytics 直接連線到您的 Azure Cosmos DB 容器，並存取分析存放區，而不需要個別的連接器。 Azure Synapse Analytics 目前支援 [Synapse Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md) 和 [無伺服器 SQL 集](../synapse-analytics/sql/on-demand-workspace-overview.md)區的 Synapse 連結。
 
 您可以同時查詢 Azure Cosmos DB 分析存放區中的資料，且 Azure Synapse Analytics 支援的不同分析執行之間可互通。 不需要進行其他資料轉換來分析操作資料。 您可以使用下列各項來查詢和分析分析存放區資料：
 
 * 完全支援 Scala、Python、SparkSQL、C# 的 Synapse Apache Spark。 Synapse Spark 是資料工程和資料科學案例的核心
 
-* SQL 無伺服器搭配 T-SQL 語言，並支援熟悉的 BI 工具 (例如 Power BI Premium 等)
+* 具備 T-sql 語言的無伺服器 SQL 集區，並支援熟悉的 BI 工具 (例如 Power BI Premium 等等。 ) 
 
 > [!NOTE]
 > 您可以從 Azure Synapse Analytics 存取 Azure Cosmos DB 容器中的分析和交易存放區。 不過，如果您想要對操作資料執行大規模分析或掃描，建議您使用分析存放區，以避免對交易工作負載的效能造成影響。

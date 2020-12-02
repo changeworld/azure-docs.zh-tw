@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to, data4ml
-ms.openlocfilehash: e97546e678b3b7bf7932600ea53d09557493685c
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 554c815e6384115d56611e497f49a2c97ed15e38
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359862"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461435"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>使用 Azure Machine Learning studio 連接到資料
 
@@ -35,7 +35,7 @@ ms.locfileid: "93359862"
 * [使用資料存放區連接到 Azure 儲存體服務](how-to-access-data.md)。 
 * [建立 Azure Machine Learning 資料集](how-to-create-register-datasets.md)。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
@@ -48,7 +48,7 @@ ms.locfileid: "93359862"
 
 ## <a name="create-datastores"></a>建立資料存放區
 
-您可以從[這些 Azure 儲存體解決方案](how-to-access-data.md#matrix)建立資料存放區。 **針對不支援的儲存體解決方案** ，以及在 ML 實驗期間儲存資料輸出成本，您必須 [將資料移](how-to-access-data.md#move) 至支援的 Azure 儲存體解決方案。 [深入瞭解資料存放區](how-to-access-data.md)。 
+您可以從[這些 Azure 儲存體解決方案](how-to-access-data.md#matrix)建立資料存放區。 **針對不支援的儲存體解決方案**，以及在 ML 實驗期間儲存資料輸出成本，您必須 [將資料移](how-to-access-data.md#move) 至支援的 Azure 儲存體解決方案。 [深入瞭解資料存放區](how-to-access-data.md)。 
 
 在 Azure Machine Learning studio 的幾個步驟中建立新的資料存放區。
 
@@ -80,7 +80,7 @@ ms.locfileid: "93359862"
 
 若要在 studio 中建立資料集：
 1. 登入 [Azure Machine Learning studio](https://ml.azure.com/)。
-1. 在左窗格的 [ **資產** ] 區段中，選取 [ **資料集** ]。
+1. 在左窗格的 [**資產**] 區段中，選取 [**資料集**]。
 1. 選取 [ **建立資料集** ] 以選擇資料集的來源。 此來源可以是本機檔案、資料存放區、公用 Url 或 [Azure 開放資料集](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md)。
 1. 選取 **Tabular** [表格式 **] 或 [** 檔案] 做為資料集類型。
 1. 選取 **[下一步]** 以開啟資料存放區 **和檔案選取** 表單。 在此表單上，您可以選取要在建立資料集之後保留資料集的位置，以及選取要用於資料集的資料檔案。
@@ -97,7 +97,7 @@ ms.locfileid: "93359862"
 建立資料集之後，請確認您可以使用下列步驟在 studio 中查看設定檔和預覽。 
 
 1. 登入 [Azure Machine Learning studio](https://ml.azure.com/)
-1. 在左窗格的 [ **資產** ] 區段中，選取 [ **資料集** ]。
+1. 在左窗格的 [**資產**] 區段中，選取 [**資料集**]。
 1. 選取您要查看的資料集名稱。 
 1. 選取 [瀏覽]  索引標籤。 
 1. 選取 [ **預覽** ] 或 [ **設定檔** ] 索引標籤。 
@@ -160,10 +160,10 @@ ms.locfileid: "93359862"
 
 ### <a name="permissions"></a>權限
 
-針對 Azure blob 容器和 Azure Data Lake Gen 2 儲存體，請確定您的驗證認證具有 **儲存體 Blob 資料讀取器** 存取權。 深入瞭解 [儲存體 Blob 資料讀取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)。 帳戶 SAS 權杖預設為沒有許可權。 
-* 針對資料 **讀取權限** ，您的驗證認證必須具有容器和物件的最小清單和讀取權限。 
+針對 Azure blob 容器和 Azure Data Lake Gen 2 儲存體，請確定您的驗證認證具有 **儲存體 Blob 資料讀取器** 存取權。 深入瞭解 [儲存體 Blob 資料讀取器](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)。 帳戶 SAS 權杖預設為沒有許可權。 
+* 針對資料 **讀取權限**，您的驗證認證必須具有容器和物件的最小清單和讀取權限。 
 
-* 若要進行資料 **寫入存取** ，也需要 [寫入] 和 [新增] 許可權。
+* 若要進行資料 **寫入存取**，也需要 [寫入] 和 [新增] 許可權。
 
 ## <a name="train-with-datasets"></a>使用資料集定型
 

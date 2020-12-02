@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: efb86dbcbe7619ff6727c5e7374835dc3fc7d731
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: ed4b4d9c1de1e9024e8ea86d4661b42d6c68b0ae
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220494"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460991"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Data Share 的角色和需求 
 
@@ -43,7 +43,7 @@ Azure Data Share 資源的受控識別必須獲得 Azure 資料存放區的存�
 |**SQL Database 類型**|**Data Provider SQL 使用者權限**|**資料取用者 SQL 使用者權限**|
 |---|---|---|
 |Azure SQL Database | db_datareader | db_datareader、db_datawriter db_ddladmin
-|Azure Synapse Analytics (先前為 SQL DW) | db_datareader | db_datareader、db_datawriter db_ddladmin
+|Azure Synapse Analytics | db_datareader | db_datareader、db_datawriter db_ddladmin
 |
 
 ### <a name="data-provider"></a>資料提供者
@@ -65,7 +65,7 @@ Azure Data Share 資源的受控識別必須獲得 Azure 資料存放區的存�
 
 若要深入瞭解角色指派，請參閱 [使用 Azure 入口網站新增或移除 Azure 角色指派](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)。 如果您要使用 REST Api 來共用資料，您可以使用 API 來建立角色指派，方法是參考 [使用 REST API 的 [新增] 或 [移除 Azure 角色指派](../role-based-access-control/role-assignments-rest.md)]。 
 
-針對以 SQL 為基礎的來源，您必須使用與 Azure Data Share 資源相同名稱的 SQL Database 外部提供者建立 SQL 使用者，同時使用 Azure Active Directory 驗證連接到 SQL Database。 此使用者必須獲得 *db_datareader* 許可權。 您可以在 [Azure SQL Database 或 Synapse Analytics](how-to-share-from-sql.md) 教學課程的共用中，找到範例腳本以及 SQL 型共用的其他必要條件。 
+針對以 SQL 為基礎的來源，您必須使用與 Azure Data Share 資源相同名稱的 SQL Database 外部提供者建立 SQL 使用者，同時使用 Azure Active Directory 驗證連接到 SQL Database。 此使用者必須獲得 *db_datareader* 許可權。 您可以 [從 Azure SQL Database 或 Azure Synapse Analytics](how-to-share-from-sql.md) 教學課程的共用中，找到範例腳本以及 SQL 型共用的其他必要條件。 
 
 ### <a name="data-consumer"></a>資料取用者
 若要接收資料，必須將目標 Azure 資料存放區的存取權授與取用者資料共用資源的受控識別。 例如，在儲存體帳戶的案例中，會將儲存體 Blob 資料參與者角色授與 data share 資源的受控識別。 
@@ -85,7 +85,7 @@ Azure Data Share 資源的受控識別必須獲得 Azure 資料存放區的存�
 
 若要深入瞭解角色指派，請參閱 [使用 Azure 入口網站新增或移除 Azure 角色指派](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)。 如果您是使用 REST Api 來接收資料，您可以使用 API 來建立角色指派，方法是參考 [使用 REST API 的 [新增] 或 [移除 Azure 角色指派](../role-based-access-control/role-assignments-rest.md)]。 
 
-若為 SQL 型目標，當使用 Azure Active Directory 驗證連接到 SQL Database 時，必須使用與 Azure Data Share 資源相同名稱 SQL Database 中的外部提供者建立 SQL 使用者。 此使用者必須獲得 *db_datareader、db_datawriter db_ddladmin* 許可權。 您可以在 [Azure SQL Database 或 Synapse Analytics](how-to-share-from-sql.md) 教學課程的共用中，找到範例腳本以及 SQL 型共用的其他必要條件。 
+若為 SQL 型目標，當使用 Azure Active Directory 驗證連接到 SQL Database 時，必須使用與 Azure Data Share 資源相同名稱 SQL Database 中的外部提供者建立 SQL 使用者。 此使用者必須獲得 *db_datareader、db_datawriter db_ddladmin* 許可權。 您可以 [從 Azure SQL Database 或 Azure Synapse Analytics](how-to-share-from-sql.md) 教學課程的共用中，找到範例腳本以及 SQL 型共用的其他必要條件。 
 
 ## <a name="resource-provider-registration"></a>資源提供者註冊 
 

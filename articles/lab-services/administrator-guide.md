@@ -3,12 +3,12 @@ title: Azure 實驗室服務 - 管理員指南 |Microsoft Docs
 description: 本指南可協助系統管理員使用 Azure 實驗室服務來建立和管理實驗室帳戶。
 ms.topic: article
 ms.date: 10/20/2020
-ms.openlocfilehash: 08d2fea719ad67f666ea9da09721dc3f7ab54768
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3ad3ee38a6c08a6af85822d76012cc6dfc34ff4e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999275"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462481"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure 實驗室服務 - 管理員指南
 資訊技術 (IT) 管理大學雲端資源的系統管理員，通常負責設定學校的實驗室帳戶。 在設定實驗室帳戶之後，系統管理員或教育人員會建立帳戶內所含的實驗室。 本文提供相關 Azure 資源的高階總覽，以及建立這些資源的指引。
@@ -167,14 +167,14 @@ ms.locfileid: "95999275"
 
 | 大小 | 規格 | 數列 | 使用建議 |
 | ---- | ----- | ------ | ------------- |
-| 小型| <ul><li>2個 &nbsp; 核心</li><li>3.5 gb (GB) RAM</li> | [Standard_A2_v2](../virtual-machines/av2-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | 最適合命令列、開啟網頁瀏覽器、低流量網頁伺服器、小型至中型資料庫。 |
-| 中 | <ul><li>4 &nbsp; 核心</li><li>7 &nbsp; GB &nbsp; RAM</li> | [Standard_A4_v2](../virtual-machines/av2-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | 最適合關係資料庫、記憶體內部快取及分析。 |
-| 中型 (嵌套虛擬化)  | <ul><li>4 &nbsp; 核心</li><li>16 &nbsp; GB &nbsp; RAM</li></ul> | [Standard_D4s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#dsv3-series) | 最適合關係資料庫、記憶體內部快取及分析。
-| 大型 | <ul><li>8個 &nbsp; 核心</li><li>16 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_A8_v2](../virtual-machines/av2-series.md) | 最適合需要更快的 Cpu、更佳的本機磁片效能、大型資料庫、大型記憶體快取的應用程式。  此大小也支援巢狀虛擬化。 |
-| 大型 (的嵌套虛擬化)  | <ul><li>8個 &nbsp; 核心</li><li>32 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#dsv3-series) | 最適合需要更快的 Cpu、更佳的本機磁片效能、大型資料庫、大型記憶體快取的應用程式。 |
+| 小型| <ul><li>2個 &nbsp; 核心</li><li>3.5 gb (GB) RAM</li> | [Standard_A2_v2](../virtual-machines/av2-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 最適合命令列、開啟網頁瀏覽器、低流量網頁伺服器、小型至中型資料庫。 |
+| 中 | <ul><li>4 &nbsp; 核心</li><li>7 &nbsp; GB &nbsp; RAM</li> | [Standard_A4_v2](../virtual-machines/av2-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 最適合關係資料庫、記憶體內部快取及分析。 |
+| 中型 (嵌套虛擬化)  | <ul><li>4 &nbsp; 核心</li><li>16 &nbsp; GB &nbsp; RAM</li></ul> | [Standard_D4s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#dsv3-series) | 最適合關係資料庫、記憶體內部快取及分析。
+| 大 | <ul><li>8個 &nbsp; 核心</li><li>16 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_A8_v2](../virtual-machines/av2-series.md) | 最適合需要更快的 Cpu、更佳的本機磁片效能、大型資料庫、大型記憶體快取的應用程式。  此大小也支援巢狀虛擬化。 |
+| 大型 (的嵌套虛擬化)  | <ul><li>8個 &nbsp; 核心</li><li>32 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#dsv3-series) | 最適合需要更快的 Cpu、更佳的本機磁片效能、大型資料庫、大型記憶體快取的應用程式。 |
 | 小型 GPU (視覺效果)  | <ul><li>6個 &nbsp; 核心</li><li>56 &nbsp; GB &nbsp; RAM</li>  | [Standard_NV6](../virtual-machines/nv-series.md) | 最適合使用 OpenGL 和 DirectX 等架構的遠端視覺效果、串流、遊戲及編碼。 |
 | 小型 GPU (計算) | <ul><li>6個 &nbsp; 核心</li><li>56 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_NC6](../virtual-machines/nc-series.md) |最適合需要大量電腦的應用程式，例如 AI 和深度學習。 |
-| 中型 GPU (視覺效果)  | <ul><li>12個 &nbsp; 核心</li><li>112 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | 最適合使用 OpenGL 和 DirectX 等架構的遠端視覺效果、串流、遊戲及編碼。 |
+| 中型 GPU (視覺效果)  | <ul><li>12個 &nbsp; 核心</li><li>112 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 最適合使用 OpenGL 和 DirectX 等架構的遠端視覺效果、串流、遊戲及編碼。 |
 
 ## <a name="manage-identity"></a>管理身分識別
 

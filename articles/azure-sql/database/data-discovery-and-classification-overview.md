@@ -11,19 +11,19 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 09/21/2020
+ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: ab974b0f68e831e672329f8af5ae1cb6a5fdbd4c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c3f1209c2c903399617bd60258cc152a6ce90b80
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672071"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462123"
 ---
 # <a name="data-discovery--classification"></a>資料探索與分類
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-資料探索 & 分類內建于 Azure SQL Database、Azure SQL 受控執行個體和 Azure Synapse Analytics。 它提供探索、分類、標記和報告資料庫中敏感性資料的先進功能。
+資料探索 & 分類內建于 Azure SQL Database、Azure SQL 受控執行個體和 Azure Synapse Analytics。 其提供在資料庫中探索、分類、標記及報告敏感性資料的進階功能。
 
 您最敏感的資料可能包括商務、財務、醫療保健或個人資訊。 探索和分類此資料可以在組織的資訊保護方法中扮演 pivotal 角色。 它可以作為以下的基礎結構：
 
@@ -55,8 +55,8 @@ ms.locfileid: "92672071"
 
 分類包含兩個中繼資料屬性：
 
-- **標籤** ：主要分類屬性，用來定義資料行中所儲存資料的敏感度層級。  
-- **資訊類型** ：提供有關資料行中所儲存資料類型之更細微資訊的屬性。
+- **標籤**：主要分類屬性，用來定義資料行中所儲存資料的敏感度層級。  
+- **資訊類型**：提供有關資料行中所儲存資料類型之更細微資訊的屬性。
 
 ### <a name="define-and-customize-your-classification-taxonomy"></a>定義及自訂您的類別分類法
 
@@ -77,11 +77,13 @@ ms.locfileid: "92672071"
 
 1. 移至 [Azure 入口網站](https://portal.azure.com)。
 
-1. 在 [Azure SQL Database] 窗格中，移至 [安全性] 標題下的 [ **資料探索 & 分類** ]。 [總覽] 索引標籤包含資料庫目前分類狀態的摘要。 摘要中包含所有已分類資料行的詳細清單，您也可以篩選這些資料行，只顯示特定的架構部分、資訊類型及標籤。 如果您還沒有分類任何資料行，請 [跳至步驟 4](#step-4)。
+1. 在 [Azure SQL Database] 窗格中，移至 [**安全性**] 標題下的 [**資料探索 & 分類**]。 [總覽] 索引標籤包含資料庫目前分類狀態的摘要。 摘要中包含所有已分類資料行的詳細清單，您也可以篩選這些資料行，只顯示特定的架構部分、資訊類型及標籤。 如果您還沒有分類任何資料行，請 [跳至步驟 4](#step-4)。
+
+    ![概觀](./media/data-discovery-and-classification-overview/data-discovery-and-classification.png)
 
 1. 若要下載 Excel 格式的報表，請在窗格的上方功能表中選取 [ **匯出** ]。
 
-1. <a id="step-4"></a>若要開始分類您的資料，請選取 [ **資料探索 & 分類** ] 頁面上的 [ **分類** ] 索引標籤。
+1. <a id="step-4"></a>若要開始分類您的資料，請選取 [**資料探索 & 分類**] 頁面上的 [**分類**] 索引標籤。
 
     分類引擎會掃描您的資料庫中是否有包含潛在敏感性資料的資料行，並提供建議的資料行分類清單。
 
@@ -91,7 +93,9 @@ ms.locfileid: "92672071"
 
    - 若要接受特定資料行的建議，請選取相關資料列左側資料行中的核取方塊。 若要將所有建議標記為 [已接受]，請選取 [建議] 表格標頭中最左邊的核取方塊。
 
-   - 若要套用選取的建議，請選取 [ **接受選取的建議** ]。
+   - 若要套用選取的建議，請選取 [ **接受選取的建議**]。
+
+   ![分類的建議](./media/data-discovery-and-classification-overview/recommendation.png)
 
 1. 您也可以手動將資料行分類為替代方式，或除了以建議為基礎的分類之外：
 
@@ -101,11 +105,14 @@ ms.locfileid: "92672071"
 
    1. 選取內容視窗底部的 [ **新增分類** ]。
 
-1. 若要完成分類，並持續以新的分類中繼資料來標記 (標籤) 資料庫資料行，請在視窗的頂端功能表中選取 [ **儲存** ]。
+   ![手動新增分類](./media/data-discovery-and-classification-overview/manually-add-classification.png)
+
+
+1. 若要完成分類，並持續以新的分類中繼資料來標記 (標籤) 資料庫資料行，請選取 [**分類**] 頁面中的 [**儲存**]。
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>對敏感性資料的審核存取
 
-資訊保護範例的重要層面，就是監視機密資料存取的能力。 [AZURE SQL 審核](../../azure-sql/database/auditing-overview.md) 已增強，可在名為的 audit 記錄中包含新的欄位 `data_sensitivity_information` 。 此欄位會記錄查詢所傳回的資料 (標籤) 的敏感度分類。 以下為範例：
+資訊保護範例的重要層面，就是監視機密資料存取的能力。 [AZURE SQL 審核](../../azure-sql/database/auditing-overview.md) 已增強，可在名為的 audit 記錄中包含新的欄位 `data_sensitivity_information` 。 此欄位會記錄查詢所傳回的資料 (標籤) 的敏感度分類。 以下是範例：
 
 ![稽核記錄檔](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)
 
