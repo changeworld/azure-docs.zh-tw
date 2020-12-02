@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0abd03338982c866c92a8462e1e840651a9c2759
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b892194a0e716aa3de218bc6edb6c38cdc898935
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101777"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338651"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>快速入門：使用 C# 呼叫您的 Bing 自訂搜尋端點 
 
 > [!WARNING]
-> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照[這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的程序進行佈建。
 > 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
-> 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 使用本快速入門了解如何要求 Bing 自訂搜尋執行個體所產生的搜尋結果。 雖然此應用程式是以 C# 撰寫的，但 Bing 自訂搜尋 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs) 上有此範例的原始程式碼。
 
@@ -37,7 +37,7 @@ ms.locfileid: "93101777"
 
    若要在 Visual Studio 中安裝此套件： 
      1. 在 **方案總管** 中以滑鼠右鍵按一下您的專案，然後選取 [管理 NuGet 套件]。 
-     2. 搜尋並選取 *Microsoft.Azure.CognitiveServices.Search.CustomSearch* ，然後安裝套件。
+     2. 搜尋並選取 *Microsoft.Azure.CognitiveServices.Search.CustomSearch*，然後安裝套件。
 
    當您安裝 Bing 自訂搜尋 NuGet 套件時，Visual Studio 也會安裝下列套件：
      - **Microsoft.Rest.ClientRuntime**

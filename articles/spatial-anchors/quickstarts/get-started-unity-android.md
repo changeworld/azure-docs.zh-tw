@@ -1,19 +1,19 @@
 ---
 title: 快速入門：建立 Unity Android 應用程式
 description: 在本快速入門中，您將了解如何使用 Spatial Anchors 建置搭配 Unity 的 Android 應用程式。
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 09/29/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: c84ebfe9752b8594e97c7c72d706ee25c4852f6e
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 3c17eadfad71f58b4557f8115a0d1d3de392b4b9
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538113"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96015123"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>快速入門：使用 Azure 空間錨點來建立 Unity Android 應用程式
 
@@ -34,7 +34,7 @@ ms.locfileid: "91538113"
 
 若要完成本快速入門，請確定您具備︰
 
-- 具有 <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.4 (LTS)</a> 的 Windows 或 macOS 機器，包括具有 **Android SDK & NDK 工具**和 **OpenJDK** 模組的 **Android Build 支援**。
+- 具有 <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.4 (LTS)</a> 的 Windows 或 macOS 機器，包括具有 **Android SDK & NDK 工具** 和 **OpenJDK** 模組的 **Android Build 支援**。
   - 如果在 Windows 上執行，您也需要 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> 和 <a href="https://git-lfs.github.com/">Git LFS</a>。
   - 如果在 macOS 上執行，請透過 HomeBrew 安裝 Git。 在終端機的單一行輸入以下命令：`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`。 然後執行 `brew install git` 和 `brew install git-lfs`。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">由開發人員啟用</a>且<a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">具備 ARCore 功能</a>的 Android 裝置。
@@ -56,7 +56,7 @@ ms.locfileid: "91538113"
 
 [!INCLUDE [Export Unity Project](../../../includes/spatial-anchors-unity-export-project-snip.md)]
 
-在**執行裝置**中選取您的裝置，然後選取 [建置並執行]。 系統會要求您儲存 `.apk` 檔案，您可以為其選擇任何名稱。
+在 **執行裝置** 中選取您的裝置，然後選取 [建置並執行]。 系統會要求您儲存 `.apk` 檔案，您可以為其選擇任何名稱。
 
 在應用程式中，使用箭頭選取 **BasicDemo**，然後按下 [Go!] 按鈕來執行示範。 依照指示來放置及回收錨點。
 

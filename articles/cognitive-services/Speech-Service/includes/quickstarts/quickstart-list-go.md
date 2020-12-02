@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: c49fc5748e2234aa870dad79fd0d5842d120e117
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425060"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188207"
 ---
 - [快速入門：從麥克風辨識語音](../../get-started-speech-to-text.md)
 - [快速入門：從檔案辨識語音](../../get-started-speech-to-text.md)

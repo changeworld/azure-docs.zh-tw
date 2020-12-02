@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.openlocfilehash: 3ad8eb9564c4d8343a0763cc2f6f5061ee602b72
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096975"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188170"
 ---
 本指南說明如何在 macOS 10.13 和更新版本上安裝適用於 C++ 的[語音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。
 

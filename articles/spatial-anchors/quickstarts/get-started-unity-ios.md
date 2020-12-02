@@ -1,19 +1,19 @@
 ---
 title: 快速入門：建立 Unity iOS 應用程式
 description: 在本快速入門中，您將了解如何使用 Spatial Anchors 建置搭配 Unity 的 iOS 應用程式。
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 09/29/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 630e90069cd1b9735dbaec4c0d825be71df7e69c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: b278ac6c824b1583e90cfc9152264f61357dd228
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91539304"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95971522"
 ---
 # <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>快速入門：使用 Azure 空間錨點來建立 Unity iOS 應用程式
 

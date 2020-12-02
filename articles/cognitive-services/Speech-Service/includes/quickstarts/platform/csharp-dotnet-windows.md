@@ -12,11 +12,11 @@ ms.date: 10/15/2020
 ms.author: erhopf
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: f63c97fd23d56ff508de8d5953eefac6b15ae1aa
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097060"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188198"
 ---
 本指南說明如何安裝適用於 .NET Framework (Windows) 的[語音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。 如果您想直接開始使用套件名稱，請在 NuGet 主控台中執行 `Install-Package Microsoft.CognitiveServices.Speech`。
 
@@ -30,7 +30,7 @@ ms.locfileid: "92097060"
 
 ## <a name="create-a-visual-studio-project-and-install-the-speech-sdk"></a>建立 Visual Studio 專案並安裝語音 SDK
 
-您需要安裝 [語音 SDK NuGet 套件](https://aka.ms/csspeech/nuget)，以便在程式碼中加以參考。 若要這麼做，您可能必須先建立 **helloworld** 專案。 如果您已經有 **.NET 桌面開發**工作負載的專案，您可以使用該專案，並跳至 [使用 NuGet 套件管理員來安裝語音 SDK](#use-nuget-package-manager-to-install-the-speech-sdk)。
+您需要安裝 [語音 SDK NuGet 套件](https://aka.ms/csspeech/nuget)，以便在程式碼中加以參考。 若要這麼做，您可能必須先建立 **helloworld** 專案。 如果您已經有 **.NET 桌面開發** 工作負載的專案，您可以使用該專案，並跳至 [使用 NuGet 套件管理員來安裝語音 SDK](#use-nuget-package-manager-to-install-the-speech-sdk)。
 
 ### <a name="create-helloworld-project"></a>建立 helloworld 專案
 

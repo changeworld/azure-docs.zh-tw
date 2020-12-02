@@ -12,11 +12,11 @@ ms.date: 10/15/2020
 ms.custom: devx-track-java
 ms.author: erhopf
 ms.openlocfilehash: 142d4504ab12e7df5cc1e009038554a5b90dff0c
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135764"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188186"
 ---
 本指南說明如何安裝適用於 64 位元 JAVA 8 JRE 的[語音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。 如果您想直接開始使用套件名稱，就無法在 Maven 中央存放庫中使用 JAVA SDK。 無論您使用的是 Gradle 或 `pom.xml` 相依性檔案，都需要新增指向 `https://csspeechstorage.blob.core.windows.net/maven/` 的自訂存放庫 (請參閱下方的套件名稱)。
 

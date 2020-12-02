@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.openlocfilehash: 6d20df031633df4642ce9fb5cbbc469fd7f0a5da
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097230"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188216"
 ---
 若要使用 Xamarin 建立適用於跨平台行動應用程式 .NET 開發的 Visual Studio 專案，您需要：
 - 設定 Visual Studio 開發選項。
@@ -81,7 +81,7 @@ ms.locfileid: "92097230"
    > [!NOTE] 
    > `Microsoft.CognitiveServices.Speech` NuGet 內的 iOS 程式庫未啟用 bitcode。 如果您需要為您的應用程式啟用 bitcode 程式庫，請特別針對 iOS 專案使用 `Microsoft.CognitiveServices.Speech.Xamarin.iOS` NuGet。
 
-1. 在搜尋結果旁的 [套件狀態] 窗格中選取所有專案： **helloworld** 、 **helloworld.Android** 、 **helloworld.iOS** 和 **helloworld.UWP** 。
+1. 在搜尋結果旁的 [套件狀態] 窗格中選取所有專案：**helloworld**、**helloworld.Android**、**helloworld.iOS** 和 **helloworld.UWP**。
 
 1. 選取 [安裝]  。
 

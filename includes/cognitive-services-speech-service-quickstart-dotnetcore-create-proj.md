@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.openlocfilehash: 3f1a24db459cabd65d9ce17b89105c3b9ab8abb7
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097179"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188213"
 ---
 1. 啟動 Visual Studio 2019。
 
-1. 請確定 **.NET 跨平台開發**工作負載可用。 從 Visual Studio 功能表列選擇 [工具]   > [取得工具和功能]  ，以開啟 Visual Studio 安裝程式。 如果已啟用此工作負載，請關閉對話方塊。
+1. 請確定 **.NET 跨平台開發** 工作負載可用。 從 Visual Studio 功能表列選擇 [工具]   > [取得工具和功能]  ，以開啟 Visual Studio 安裝程式。 如果已啟用此工作負載，請關閉對話方塊。
 
    ![Visual Studio 安裝程式的螢幕擷取畫面，其中 [工作負載] 索引標籤已醒目提示](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-net-core-workload.png)
 

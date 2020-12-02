@@ -1,19 +1,19 @@
 ---
 title: 快速入門：使用 DirectX 建立 HoloLens 應用程式
 description: 在本快速入門中，您將了解如何使用 Spatial Anchors 建置 HoloLens 應用程式。
-author: craigktreasure
-manager: virivera
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 02/24/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 66b8008312c1cf81d4fca7fb8ee5f26fc4c98f60
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: c96c45869ee1c9c96cd77d0b3eb10c733199666e
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096158"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95993511"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>快速入門：在 C++/WinRT 和 DirectX 中使用 Azure Spatial Anchors 建立 HoloLens 應用程式
 
@@ -31,9 +31,9 @@ ms.locfileid: "92096158"
 ## <a name="prerequisites"></a>Prerequisites
 
 若要完成本快速入門，請確定您具備︰
-- 已安裝 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> 的 Windows 機器，並且具有**通用 Windows 平台開發**工作負載和 **Windows 10 SDK (10.0.18362.0 或更新版本)** 元件。 您也必須安裝 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> 和 <a href="https://git-lfs.github.com/">Git LFS</a>。
+- 已安裝 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> 的 Windows 機器，並且具有 **通用 Windows 平台開發** 工作負載和 **Windows 10 SDK (10.0.18362.0 或更新版本)** 元件。 您也必須安裝 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> 和 <a href="https://git-lfs.github.com/">Git LFS</a>。
 - 從 [Visual Studio Marketplace](https://marketplace.visualstudio.com/) 安裝 Visual Studio 的 [C++/WinRT Visual Studio 延伸模組 (VSIX)](https://aka.ms/cppwinrt/vsix)。
-- 已啟用[開發人員模式](/windows/mixed-reality/using-visual-studio)的 HoloLens 裝置。 本文需要具有 [Windows 10 2020 年 5 月更新](/windows/mixed-reality/whats-new/release-notes-may-2020)的 HoloLens 裝置。 若要在 HoloLens 上更新至最新版本，請開啟**設定**應用程式，移至 [更新與安全性]，然後選取 [檢查更新] 按鈕。
+- 已啟用[開發人員模式](/windows/mixed-reality/using-visual-studio)的 HoloLens 裝置。 本文需要具有 [Windows 10 2020 年 5 月更新](/windows/mixed-reality/whats-new/release-notes-may-2020)的 HoloLens 裝置。 若要在 HoloLens 上更新至最新版本，請開啟 **設定** 應用程式，移至 [更新與安全性]，然後選取 [檢查更新] 按鈕。
 - 您的應用程式必須在其 AppX 資訊清單中設定 **spatialPerception** 功能。
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
@@ -60,7 +60,7 @@ ms.locfileid: "92096158"
 
 將 [方案設定] 變更為 [發行]，並將 [方案平台] 變更為 [x86]，然後從部署目標選項中選取 [裝置]。
 
-如果使用 HoloLens 2，請使用 **ARM64** 作為**解決方案平台**，而非使用 **x86**。
+如果使用 HoloLens 2，請使用 **ARM64** 作為 **解決方案平台**，而非使用 **x86**。
 
 ![Visual Studio 設定](./media/get-started-hololens/visual-studio-configuration.png)
 

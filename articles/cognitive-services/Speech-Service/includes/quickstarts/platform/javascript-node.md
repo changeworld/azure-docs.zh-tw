@@ -12,11 +12,11 @@ ms.date: 10/15/2020
 ms.author: erhopf
 ms.custom: devx-track-js
 ms.openlocfilehash: 79320144264766a504a71c554c2a138779c55331
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097128"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188180"
 ---
 本指南說明如何安裝適用於 JavaScript 的[語音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)，以與 NodeJS 搭配使用。 如果您想直接開始使用套件名稱，請從現有專案執行 `npm install microsoft-cognitiveservices-speech-sdk`。
 

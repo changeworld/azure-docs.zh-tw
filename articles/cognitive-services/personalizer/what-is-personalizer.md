@@ -8,11 +8,11 @@ ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: 個人化工具, Azure 個人化工具, 機器學習
 ms.openlocfilehash: f843e7bfa014ad8391e20efff83a3c21a9de11b9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363896"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171954"
 ---
 # <a name="what-is-personalizer"></a>什麼是個人化工具？
 
@@ -29,14 +29,14 @@ Azure 個人化工具是雲端式服務，可協助您的應用程式選擇最�
 
 ## <a name="how-does-personalizer-select-the-best-content-item"></a>個人化工具如何選取最佳內容項目？
 
-個人化工具會使用 **增強式學習** ，根據所有使用者的集體行為和獎勵分數來選取最佳項目 ( _動作_ )。 動作是內容項目，例如新聞文章、特定電影或產品。
+個人化工具會使用 **增強式學習**，根據所有使用者的集體行為和獎勵分數來選取最佳項目 (_動作_)。 動作是內容項目，例如新聞文章、特定電影或產品。
 
 **排名** 呼叫會取得動作項目和動作特性及關係特性，以選取頂端動作項目：
 
 * **具有特性的動作** - 具有每個項目特有特性的內容項目
 * **關係特性** - 使用者在使用您的應用程式時，其特性、其關係或其環境
 
-排名呼叫會在 [獎勵動作識別碼] 欄位中，傳回內容項目 ( __動作__ ) 的識別碼以對使用者顯示。
+排名呼叫會在 [獎勵動作識別碼] 欄位中，傳回內容項目 (__動作__) 的識別碼以對使用者顯示。
 
 向使用者顯示的 __動作__ 會與機器學習模型一起選擇，以嘗試將一段時間內的獎勵總量最大化。
 
@@ -57,7 +57,7 @@ Azure 個人化工具是雲端式服務，可協助您的應用程式選擇最�
 
 ## <a name="when-to-use-personalizer"></a>個人化工具的使用時機
 
-每次應用程式呈現內容時，都會呼叫個人化工具的 **排名** [API](https://go.microsoft.com/fwlink/?linkid=2092082)。 這也稱為 **事件** ，並以「事件識別碼」加以註記。
+每次應用程式呈現內容時，都會呼叫個人化工具的 **排名** [API](https://go.microsoft.com/fwlink/?linkid=2092082)。 這也稱為 **事件**，並以「事件識別碼」加以註記。
 
 個人化工具的 **獎勵** [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) 可即時呼叫，或延遲以更加符合您的基礎結構。 您可以根據您的業務需求判斷獎勵分數。 獎勵分數介於 0 到 1 之間。 這可以是單一值，例如 1 表示良好，0 表示不良，或由您建立的演算法所產生的數字，其會考慮您的業務目標和計量。
 
@@ -76,7 +76,7 @@ Azure 個人化工具是雲端式服務，可協助您的應用程式選擇最�
 
 ## <a name="how-to-design-for-and-implement-personalizer"></a>如何設計和實作個人化工具
 
-1. 針對內容、 **_動作_** 及 **_關係_** 進行 [設計](concepts-features.md)與規劃。 決定 **獎勵** 分數的獎勵演算法。
+1. 針對內容、**_動作_** 及 **_關係_** 進行 [設計](concepts-features.md)與規劃。 決定 **獎勵** 分數的獎勵演算法。
 1. 您所建立的每個[個人化工具資源](how-to-settings.md)都會被視為 1 個學習迴圈。 迴圈將會接收該內容或使用者體驗的排名和獎勵呼叫。
 
     |資源類型| 目的|

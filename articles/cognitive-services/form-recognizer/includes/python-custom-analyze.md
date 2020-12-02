@@ -5,18 +5,18 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 262774233871a46cf971d95a6cf5d810adf9746a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6a6b0d9740d19270f8daa3608bc125edd0fbec37
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961779"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005076"
 ---
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>分析索引鍵/值組和資料表的表單
 
 接下來，您會使用新定型的模型來分析文件，並從中擷取索引鍵/值組和資料表。 在新的 Python 指令碼中執行下列程式碼，以呼叫 **[分析表單](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)** API。 執行指令碼之前，請進行下列變更：
 
-1. 將 `<file path>` 取代為表單的檔案路徑 (例如，C:\temp\file.pdf)。 這也可以是遠端檔案的 URL。 在本快速入門中，您可使用[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)的 **Test** 資料夾底下的檔案 (下載 *sample_data.zip* 並將其解壓縮)。
+1. 將 `<file path>` 取代為表單的檔案路徑 (例如，C:\temp\file.pdf)。 這也可以是遠端檔案的 URL。 在本快速入門中，您可使用 [範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)的 **Test** 資料夾底下的檔案 (下載 *sample_data.zip* 並將其解壓縮)。
 1. 將 `<model_id>` 取代為您在上一節中取得的模型識別碼。
 1. 將 `<endpoint>` 取代為您使用表單辨識器訂用帳戶金鑰取得的端點。 您可以在表單辨識器的資源 [概觀]  索引標籤上找到此項目。
 1. 將 `<file type>` 取代為檔案類型。 支援的類型：`application/pdf`、`image/jpeg`、`image/png`、`image/tiff`。
@@ -69,7 +69,7 @@ ms.locfileid: "91961779"
     endpoint = r"<endpoint>"
     apim_key = "<subsription key>"
     model_id = "<model_id>"
-    post_url = endpoint + "/formrecognizer/v2.1-preview.1/custom/models/%s/analyze" % model_id
+    post_url = endpoint + "/formrecognizer/v2.1-preview.2/custom/models/%s/analyze" % model_id
     source = r"<file path>"
     params = {
         "includeTextDetails": True
@@ -104,11 +104,11 @@ ms.locfileid: "91961779"
 1. 開啟 [命令提示字元] 視窗。
 1. 出現提示時，使用 `python` 命令執行範例。 例如： `python form-recognizer-analyze.py` 。
 
-當您呼叫**分析表單** API 時，您會收到 **Operation-Location** 標頭的 `201 (Success)` 回應。 此標頭的值是您將用來追蹤分析作業結果的識別碼。 上述指令碼會將此標頭的值列印到主控台。
+當您呼叫 **分析表單** API 時，您會收到 **Operation-Location** 標頭的 `201 (Success)` 回應。 此標頭的值是您將用來追蹤分析作業結果的識別碼。 上述指令碼會將此標頭的值列印到主控台。
 
 ## <a name="get-the-analyze-results"></a>取得分析結果
 
-將下列程式碼新增到 Python 指令碼底部。 這會在新的 API 呼叫中使用先前呼叫中的識別碼值來擷取分析結果。 **分析表單**作業是非同步的，因此此指令碼會定時呼叫 API，直到有結果為止。 我們建議的間隔為一秒以上。
+將下列程式碼新增到 Python 指令碼底部。 這會在新的 API 呼叫中使用先前呼叫中的識別碼值來擷取分析結果。 **分析表單** 作業是非同步的，因此此指令碼會定時呼叫 API，直到有結果為止。 我們建議的間隔為一秒以上。
 
 ```python 
 n_tries = 15

@@ -7,15 +7,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 08/17/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 5e27aaebc015f47e0fcdb5da81770d49b86ad000
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 67a21dd86059f6cf1f017ce3eada285d2faab1e6
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88934322"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96012419"
 ---
 # <a name="quickstart-extract-business-card-data-using-the-form-recognizer-rest-api-with-python"></a>快速入門：搭配使用表單辨識器 REST API 和 Python 來擷取名片資料
 
@@ -30,7 +30,7 @@ ms.locfileid: "88934322"
 - 名片的影像。 您可以使用本快速入門的[範例影像](../media/business-card-english.jpg)。
 
 > [!NOTE]
-> 本快速入門會使用本機檔案。 若要改為使用透過 URL 存取的遠端名片影像，請參閱[參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)。
+> 本快速入門會使用本機檔案。 若要改為使用透過 URL 存取的遠端名片影像，請參閱[參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)。
 
 ## <a name="create-a-form-recognizer-resource"></a>建立表單辨識器資源
 
@@ -38,7 +38,7 @@ ms.locfileid: "88934322"
 
 ## <a name="analyze-a-business-card"></a>分析名片
 
-若要開始分析名片，請使用下面的 Python 指令碼，呼叫 **[分析名片](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)** API。 執行指令碼之前，請進行下列變更：
+若要開始分析名片，請使用下面的 Python 指令碼，呼叫 **[分析名片](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)** API。 執行指令碼之前，請進行下列變更：
 
 1. 將 `<endpoint>` 取代為您使用表單辨識器訂用帳戶取得的端點。
 1. 將 `<path to your business card>` 取代為您名片影像或 PDF 的本機路徑。
@@ -55,7 +55,7 @@ ms.locfileid: "88934322"
     # Endpoint URL
     endpoint = r"<endpoint>"
     apim_key = "<subscription key>"
-    post_url = endpoint + "/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyze"
+    post_url = endpoint + "/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyze"
     source = r"<path to your business card>"
     content_type = "<file type>"
     
@@ -91,12 +91,12 @@ ms.locfileid: "88934322"
 您會收到包含 **Operation-Location** 標頭的 `202 (Success)` 回應，而指令碼會將其輸出至主控台。 此標頭包含結果識別碼，您可用來查詢長時間執行的作業狀態並取得結果。 在下列範例值中，`operations/` 之後的字串就是結果識別碼。
 
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ## <a name="get-the-business-card-results"></a>取得名片結果
 
-呼叫**分析名片** API 之後，您可以呼叫 **[取得分析名片結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/GetAnalyzeBusinessCardResult)** API 來取得作業狀態並擷取資料。 將下列程式碼新增到 Python 指令碼底部。 這會在新的 API 呼叫中使用結果識別碼值。 此指令碼會定期呼叫 API，直到有結果為止。 我們建議的間隔為一秒以上。
+呼叫 **分析名片** API 之後，您可以呼叫 **[取得分析名片結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeBusinessCardResult)** API 來取得作業狀態並擷取資料。 將下列程式碼新增到 Python 指令碼底部。 這會在新的 API 呼叫中使用結果識別碼值。 此指令碼會定期呼叫 API，直到有結果為止。 我們建議的間隔為一秒以上。
 
 ```python
 n_tries = 10
@@ -245,7 +245,7 @@ while n_try < n_tries:
 }
 ```
 
-指令碼會將回應輸出到主控台，直到**分析名片**作業完成。 `"readResults"` 節點包含所有已辨識的文字。 文字會依頁面彙整，然後依文字行，再依個別字組彙整。 `"documentResults"` 節點包含此模型所探索到的名片專屬值。 您可以在這裡找到有用的資訊，例如公司名稱、名字、姓氏、電話號碼等等。
+指令碼會將回應輸出到主控台，直到 **分析名片** 作業完成。 `"readResults"` 節點包含所有已辨識的文字。 文字會依頁面彙整，然後依文字行，再依個別字組彙整。 `"documentResults"` 節點包含此模型所探索到的名片專屬值。 您可以在這裡找到有用的資訊，例如公司名稱、名字、姓氏、電話號碼等等。
 
 
 ## <a name="next-steps"></a>後續步驟
@@ -253,4 +253,4 @@ while n_try < n_tries:
 在本快速入門中，您使用表單辨識器 REST API 搭配 Python 來擷取名片上的內容。 接下來，請參閱參考文件來深入探索表單辨識器 API。
 
 > [!div class="nextstepaction"]
-> [REST API 參考文件](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)
+> [REST API 參考文件](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)

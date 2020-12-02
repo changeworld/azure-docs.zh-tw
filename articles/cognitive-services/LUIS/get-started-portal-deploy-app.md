@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/06/2020
-ms.openlocfilehash: 6126c6e37ad43ed6456b224d043dc6695fa2d00e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b051f349716b5597adee4509cfe774978a8f61aa
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91298403"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95972501"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>快速入門：在 LUIS 入口網站中部署應用程式
 
@@ -121,4 +121,4 @@ LUIS 應用程式準備將表達預測傳回用戶端應用程式 (例如聊天�
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [找出常見的意圖和實體](luis-tutorial-prebuilt-intents-entities.md)
+> [找出常見的意圖和實體](./tutorial-machine-learned-entity.md)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: b9f2d3397e0a2067cb173741a0037422021f3d87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3095938f3bead6058a3b91b684557f21fec651f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858246"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96009607"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>快速入門：使用 REST API 和 Go 偵測影像中的人臉
 
@@ -31,7 +31,7 @@ ms.locfileid: "91858246"
 
 ## <a name="write-the-script"></a>撰寫指令碼
 
-建立新檔案 (faceDetection.go)__，並新增下列程式碼。 這會呼叫指定影像 URL 的人臉識別 API。
+建立新檔案 (faceDetection.go)，並新增下列程式碼。 這會呼叫指定影像 URL 的人臉識別 API。
 
 :::code language="go" source="~/cognitive-services-quickstart-code/go/Face/rest/detect.go":::
 

@@ -8,12 +8,12 @@ ms.subservice: language-understanding
 ms.date: 09/01/2020
 ms.topic: include
 ms.custom: include file, cog-serv-seo-aug-2020
-ms.openlocfilehash: 7e6524f4156dcc5a1adf6ea08720a90ebf365fdb
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f5c7508cdb6151b61263fd8daf533906ba9c42a1
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95097923"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96303650"
 ---
 使用適用於 Python 的 Language Understanding (LUIS) 用戶端程式庫可以：
 
@@ -168,7 +168,7 @@ LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語�
 
 :::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="在入口網站中顯示標記範例語句的部分螢幕擷取畫面。":::
 
-使用應用程式識別碼、版本識別碼和範例呼叫 [examples.add](//python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.examplesoperations?view=azure-python#add-app-id--version-id--example-label-object--enable-nested-children-false--custom-headers-none--raw-false----operation-config-)。
+使用應用程式識別碼、版本識別碼和範例呼叫 [examples.add](/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.examplesoperations?view=azure-python)。
 
 [!code-python[Add example utterance to intent](~/cognitive-services-quickstart-code/python/LUIS/sdk-3x/authoring_and_predict.py?name=AuthoringAddLabeledExamples)]
 

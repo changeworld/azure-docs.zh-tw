@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: travisw
 ms.openlocfilehash: 2efe17bdf597b7e3ba7d0277f06d4b24e9b51db3
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096873"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187551"
 ---
 1. 啟動 Android Studio，然後在 [歡迎使用] 視窗中選取 [開始新的 Android Studio 專案]。
 
@@ -19,7 +19,7 @@ ms.locfileid: "92096873"
 
    ![選擇專案精靈的螢幕擷取畫面](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-02-target-android-devices.png)
 
-1. 在 [設定您的專案] 畫面中，輸入 *Quickstart* 作為**名稱**，並輸入 *samples.speech.cognitiveservices.microsoft.com* 作為**套件名稱**。 然後選擇專案目錄。 針對 [最低 API 層級]，選取 **[API 23：Android 6.0 (Marshmallow)]** 。 所有其他核取方塊保持在不勾選的狀態，然後選取 [完成]。
+1. 在 [設定您的專案] 畫面中，輸入 *Quickstart* 作為 **名稱**，並輸入 *samples.speech.cognitiveservices.microsoft.com* 作為 **套件名稱**。 然後選擇專案目錄。 針對 [最低 API 層級]，選取 **[API 23：Android 6.0 (Marshmallow)]** 。 所有其他核取方塊保持在不勾選的狀態，然後選取 [完成]。
 
    ![設定專案精靈的螢幕擷取畫面](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-03-create-android-project.png)
 

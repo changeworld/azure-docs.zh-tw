@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.openlocfilehash: 967861363d5056a5a466aa88840cda2aafbeb86b
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097162"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188210"
 ---
 若要建立 C++ 桌面開發的 Visual Studio 專案，您必須設定 Visual Studio 的開發選項、建立專案、選取目標架構，然後安裝語音 SDK。
 
