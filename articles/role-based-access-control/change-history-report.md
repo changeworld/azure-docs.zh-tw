@@ -15,12 +15,12 @@ ms.date: 07/27/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 4ccd668fb6afa6787fadeda6ed92ebd954e2b892
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 3e4d75c59d0e3c97b0900dd72a27d4afbf4015c9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657800"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492313"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>查看 Azure RBAC 變更的活動記錄
 
@@ -43,12 +43,12 @@ ms.locfileid: "94657800"
 
 入口網站中的活動記錄有數個篩選條件。 以下是與 Azure RBAC 相關的篩選準則：
 
-| 篩選 | 值 |
+| Filter | 值 |
 | --------- | --------- |
 | 事件類別目錄 | <ul><li>系統管理</li></ul> |
 | 作業 | <ul><li>建立角色指派</li><li>刪除角色指派</li><li>建立或更新自訂角色定義</li><li>刪除自訂角色定義</li></ul> |
 
-如需有關活動記錄的詳細資訊，請參閱 [View 活動記錄以監視資源上的動作](../azure-resource-manager/management/view-activity-logs.md?toc=%252fazure%252fmonitoring-and-diagnostics%252ftoc.json)。
+如需有關活動記錄的詳細資訊，請參閱 [View 活動記錄以監視資源上的動作](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -162,5 +162,5 @@ AzureActivity
 ![使用進階分析入口網站的活動記錄 - 螢幕擷取畫面](./media/change-history-report/azure-log-analytics.png)
 
 ## <a name="next-steps"></a>後續步驟
-* [檢視活動記錄中的事件](../azure-resource-manager/management/view-activity-logs.md?toc=%252fazure%252fmonitoring-and-diagnostics%252ftoc.json)
+* [檢視活動記錄中的事件](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 * [使用 Azure 活動記錄監視訂用帳戶活動](../azure-monitor/platform/platform-logs-overview.md)

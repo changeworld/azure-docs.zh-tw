@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 3f159a11dc9607daf479c13f6612cab0175dae0c
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 282e1ef98a3c0d6e152b56a180a639c86d004af9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94634883"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493095"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>建立連線到 Azure 的影片索引器帳戶
 
-建立影片索引器帳戶時，您可以選擇免費試用帳戶 (您可取得特定的免費編製索引分鐘數) 或付費選項 (您不會受限於配額)。 使用免費試用時，影片索引器最多可為網站使用者提供 600 分鐘的免費編製索引，以及為 API 使用者提供 2400 分鐘的免費索引編製。 使用付費選項時，您可以建立連線至 Azure 訂用帳戶的影片索引子帳戶。 您需支付已編制索引的分鐘數。如需詳細資訊，請參閱 [媒體服務定價](https://azure.microsoft.com/pricing/details/media-services/)。
+建立影片索引器帳戶時，您可以選擇免費試用帳戶 (您可取得特定的免費編製索引分鐘數) 或付費選項 (您不會受限於配額)。 使用免費試用時，影片索引器最多可為網站使用者提供 600 分鐘的免費編製索引，以及為 API 使用者提供 2400 分鐘的免費索引編製。 使用付費選項時，您可以建立連線至 Azure 訂用帳戶的影片索引子帳戶。 您需支付已編製索引的分鐘數，如需詳細資訊，請參閱[媒體服務定價](https://azure.microsoft.com/pricing/details/media-services/)。
 
 本文將說明如何建立連結到您 Azure 訂用帳戶和 Azure 媒體服務帳戶的影片索引器帳戶。 本主題提供使用自動 (預設) 流程連線到 Azure 的步驟。 也會示範如何手動連線到 Azure (進階)。
 
@@ -45,7 +45,7 @@ ms.locfileid: "94634883"
 
     當您將影片索引器帳戶連線到 Azure 時，會用到此成員。
 
-    此使用者應該是Azure 訂用帳戶中具有「擁有者」角色或同時有「參與者」和「使用者存取系統管理員」角色的成員。 使用者可以使用兩個角色新增兩次。 一次使用「參與者」角色，另一次使用「使用者存取系統管理員」角色。 如需詳細資訊，請參閱 [查看使用者對 Azure 資源的存取權](https://docs.microsoft.com/azure/role-based-access-control/check-access)。
+    此使用者應該是Azure 訂用帳戶中具有「擁有者」角色或同時有「參與者」和「使用者存取系統管理員」角色的成員。 使用者可以使用兩個角色新增兩次。 一次使用「參與者」角色，另一次使用「使用者存取系統管理員」角色。 如需詳細資訊，請參閱 [查看使用者對 Azure 資源的存取權](../../role-based-access-control/check-access.md)。
 
     ![存取控制](./media/create-account/access-control-iam.png)
 
@@ -55,7 +55,7 @@ ms.locfileid: "94634883"
 
     在 [Azure 入口網站](https://portal.azure.com/)中，前往 [訂用帳戶] -> [subscription] -> [ResourceProviders]。
 
-    搜尋 **Microsoft.Media** 和 **Microsoft.EventGrid** 。 如果不是處於「已註冊」狀態，請按一下 [註冊]。 這需要幾分鐘來完成註冊。
+    搜尋 **Microsoft.Media** 和 **Microsoft.EventGrid**。 如果不是處於「已註冊」狀態，請按一下 [註冊]。 這需要幾分鐘來完成註冊。
 
     ![EventGrid](./media/create-account/event-grid.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "94634883"
         媒體服務帳戶具有的區域必須與您的影片索引器帳戶相同。
 
         > [!NOTE]
-        > 為了將索引持續時間和低輸送量降至最低，強烈建議您將媒體服務帳戶中的 [保留單元](../previous/media-services-scale-media-processing-overview.md ) 類型和數目調整為 **10 個 S3 保留單元** 。 請參閱 [使用入口網站變更保留單位](../previous/media-services-portal-scale-media-processing.md)。 保留單位會向您的帳戶收取費用，請參閱 [定價詳細資料](https://azure.microsoft.com/pricing/details/media-services/#analytics)。
+        > 為了將索引持續時間和低輸送量降至最低，強烈建議您將媒體服務帳戶中的 [保留單元](../previous/media-services-scale-media-processing-overview.md ) 類型和數目調整為 **10 個 S3 保留單元**。 請參閱 [使用入口網站變更保留單位](../previous/media-services-portal-scale-media-processing.md)。 保留單位會向您的帳戶收取費用，請參閱 [定價詳細資料](https://azure.microsoft.com/pricing/details/media-services/#analytics)。
     * 若要手動設定您的連線，請選取 [ **切換至手動** 設定] 連結。
 
         如需詳細資訊，請參閱後續的[手動連線到 Azure](#connect-to-azure-manually-advanced-option) (進階選項) 一節。
@@ -94,7 +94,7 @@ ms.locfileid: "94634883"
 1. 請先確定媒體服務帳戶的串流端點正在執行，您才能在影片索引子 web 應用程式中播放影片 (按 [啟動] （如果它是 [已停止] 狀態) ）。
 
 > [!TIP]
-> 若要為您的帳戶提供易記的顯示名，請移至 [ **設定** ]。
+> 若要為您的帳戶提供易記的顯示名，請移至 [ **設定**]。
 
 ## <a name="connect-to-azure-manually-advanced-option"></a>手動連線到 Azure (進階選項)
 
@@ -118,7 +118,7 @@ ms.locfileid: "94634883"
     保留單位會向您的帳戶收取費用，請參閱 [定價詳細資料](https://azure.microsoft.com/pricing/details/media-services/#analytics)。
 1. 在影片索引子 web 應用程式中播放影片之前，您必須啟動新媒體服務帳戶的預設 **串流端點** 。
 
-    在新的媒體服務帳戶中，選取 [ **串流端點** ]。 然後選取串流端點，再按 [開始]。
+    在新的媒體服務帳戶中，選取 [ **串流端點**]。 然後選取串流端點，再按 [開始]。
 
     ![串流端點](./media/create-account/create-ams-account2.png)
 4. 若要讓影片索引子使用媒體服務 API 進行驗證，則必須建立 AD 應用程式。 下列步驟會引導您完成[利用 Azure 入口網站開始使用 Azure AD 驗證](../previous/media-services-portal-get-started-with-aad.md)中所述的 Azure AD 驗證程序：
@@ -127,7 +127,7 @@ ms.locfileid: "94634883"
     2. 選取[服務主體驗證方法](../previous/media-services-portal-get-started-with-aad.md)。
     3. 取得用戶端識別碼和用戶端祕密
 
-        選取 [ **設定** -> **金鑰** ]、[ **新增描述** ] 之後，請按下 [ **儲存** ]，然後填入金鑰值。
+        選取 [**設定** -> **金鑰**]、[**新增描述**] 之後，請按下 [**儲存**]，然後填入金鑰值。
 
         如果金鑰已過期，帳戶擁有者將必須聯絡影片索引子支援以更新金鑰。
 
@@ -136,7 +136,7 @@ ms.locfileid: "94634883"
 
 ### <a name="connect-manually"></a>手動連線
 
-在 [ [影片索引子](https://www.videoindexer.ai/)] 頁面的 [ **在 Azure 訂用帳戶上建立新帳戶** ] 對話方塊中，選取 [ **切換至手動** 設定] 連結。
+在 [[影片索引子](https://www.videoindexer.ai/)] 頁面的 [**在 Azure 訂用帳戶上建立新帳戶**] 對話方塊中，選取 [**切換至手動** 設定] 連結。
 
 在對話方塊中，提供下列資訊︰
 
@@ -152,7 +152,7 @@ ms.locfileid: "94634883"
 
 ## <a name="import-your-content-from-the-trial-account"></a>從 *試用* 帳戶匯入內容
 
-建立新帳戶時，您可以選擇將您的內容從 *試用* 帳戶匯入至新的帳戶。 如果您核取 [ **在 Azure 訂用帳戶上建立新帳戶** ] 對話方塊中的 [匯 *入* ] 選項，將會從 *試用* 帳戶將所有媒體和內容模型自訂複製到新的帳戶。
+建立新帳戶時，您可以選擇將您的內容從 *試用* 帳戶匯入至新的帳戶。 如果您核取 [**在 Azure 訂用帳戶上建立新帳戶**] 對話方塊中的 [匯 *入*] 選項，將會從 *試用* 帳戶將所有媒體和內容模型自訂複製到新的帳戶。
 
 匯入內容的功能對上述的自動化和手動方法都有效。
 
@@ -163,7 +163,7 @@ ms.locfileid: "94634883"
 
 如果您稍後想要刪除該帳戶，您可以從影片索引子網站刪除該帳戶。 若要刪除帳戶，您必須是擁有者。
 
-選取帳戶 > 設定 [ **Settings**  ->  **刪除這個帳戶** ]。 
+選取帳戶 > 設定 [ **Settings**  ->  **刪除這個帳戶**]。 
 
 帳戶將在90天內永久刪除。
 
@@ -175,12 +175,12 @@ ms.locfileid: "94634883"
 * 如果您連接到現有的媒體服務帳戶，影片索引子不會變更現有的媒體 **保留單元** 設定。
 
    您可能需要根據所規劃的負載，調整媒體保留單元的類型和數目。 請記住，如果您的負載很高，卻沒有足夠的單元或速度，則影片處理會導致逾時錯誤。
-* 如果您連線到新的媒體服務帳戶，Video Indexer 會自動啟動其中的預設 **串流端點** ：
+* 如果您連線到新的媒體服務帳戶，Video Indexer 會自動啟動其中的預設 **串流端點**：
 
     ![媒體服務串流端點](./media/create-account/ams-streaming-endpoint.png)
 
     串流端點具有相當大的啟動時間。 因此，在您將帳戶連線至 Azure 時，可能需要幾分鐘的時間，才能在影片索引子 web 應用程式中串流和監看您的影片。
-* 如果您連接到現有的媒體服務帳戶，影片索引子不會變更預設的串流端點設定。 如果沒有執行中的 **串流端點** ，您就無法從此媒體服務帳戶或影片索引子中觀看影片。
+* 如果您連接到現有的媒體服務帳戶，影片索引子不會變更預設的串流端點設定。 如果沒有執行中的 **串流端點**，您就無法從此媒體服務帳戶或影片索引子中觀看影片。
 * 如果您自動連線，Video Indexer 會將媒體 **保留單元** 設為 10 個 S3 單元：
 
     ![媒體服務保留單元](./media/create-account/ams-reserved-units.png)

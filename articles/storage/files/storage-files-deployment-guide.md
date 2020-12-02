@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 53111ccd634c516d0db10c0e2dd41768aba43f41
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: a0415133bf3168c846e1105efe992c2c48c57ff2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629235"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492177"
 ---
 # <a name="how-to-deploy-azure-files"></a>如何部署 Azure 檔案服務
 [Azure 檔案服務](storage-files-introduction.md)可提供在雲端中完全受控的檔案共用，可透過業界標準 SMB 通訊協定加以存取。 本文將說明如何在組織中實際部署 Azure 檔案服務。
@@ -22,7 +22,7 @@ ms.locfileid: "94629235"
 ## <a name="prerequisites"></a>先決條件
 本文假設您已完成下列步驟：
 
-- 在所要區域中，建立 Azure 儲存體帳戶，並設定所需的復原和加密選項。 如需如何建立儲存體帳戶的逐步指示，請參閱[建立儲存體帳戶](../common/storage-account-create.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)。
+- 在所要區域中，建立 Azure 儲存體帳戶，並設定所需的復原和加密選項。 如需如何建立儲存體帳戶的逐步指示，請參閱[建立儲存體帳戶](../common/storage-account-create.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 - 已在儲存體帳戶中建立 Azure 檔案共用，並設定所需的配額。 如需如何建立檔案共用的逐步指示，請參閱[建立檔案共用](storage-how-to-create-file-share.md)。
 
 ## <a name="transfer-data-into-azure-files"></a>將資料傳送到 Azure 檔案服務
@@ -63,7 +63,7 @@ Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服�
     "F:\shares\scratch\","MyAzureFileShare/",file,rename,"None",None
     ```
 
-    一個儲存體帳戶可以指定多個共用。 如需詳細資訊，請參閱[準備資料集 CSV 檔案](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)。
+    一個儲存體帳戶可以指定多個共用。 如需詳細資訊，請參閱[準備資料集 CSV 檔案](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 5. 建立磁碟機集 CSV 檔案。 磁碟機集 CSV 檔案會列出內部部署匯出代理程式可用的磁碟。 例如，下列磁碟機集 CSV 檔案會列出 `X:`、`Y:` 和 `Z:` 磁碟以用於內部部署匯出工作：
 
@@ -74,7 +74,7 @@ Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服�
     Z,Format,SilentMode,Encrypt,
     ```
     
-    如需詳細資訊，請參閱[準備磁碟機集 CSV 檔案](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)。
+    如需詳細資訊，請參閱[準備磁碟機集 CSV 檔案](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 6. 使用 [WAImportExport 工具](https://www.microsoft.com/download/details.aspx?id=55280)將資料複製到一或多個硬碟。
 
@@ -120,7 +120,7 @@ AzCopy 是一種命令列公用程式，專為使用簡單命令高效率地在 
     azcopy --source <path-to-local-share> --destination https://<storage-account>.file.core.windows.net/<file-share>/ --dest-key <storage-account-key> --recursive
     ```
 
-    AzCopy 有大量的選項，可讓您視需要修改複製行為。 如需詳細資訊，請參閱 [開始使用 AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)。
+    AzCopy 有大量的選項，可讓您視需要修改複製行為。 如需詳細資訊，請參閱 [開始使用 AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 ## <a name="automatically-mount-on-needed-pcsservers"></a>自動掛接於所需的電腦/伺服器上
 若要取代內部部署檔案共用，最好預先在要使用該檔案共用的電腦上掛接共用。 這項作業可依據電腦清單自動完成。

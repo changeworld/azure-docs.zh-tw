@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e446ec08d63c44566b2f45c1427999536d0be703
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: aef332e54fa650e1abbebe671560238d7eb318de
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188712"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492041"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>針對 Windows (SMB) 中的 Azure 檔案儲存體問題進行疑難排解
 
@@ -147,7 +147,7 @@ Azure 檔案同步可以將您的內部部署 Windows Server 轉換成 Azure 檔
 
 ### <a name="solution"></a>解決方法
 
-關閉一些控制代碼以減少同時開啟的控制代碼數，然後再試一次。 如需詳細資訊，請參閱 [Microsoft Azure 儲存體效能和擴充性檢查清單](../blobs/storage-performance-checklist.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)。
+關閉一些控制代碼以減少同時開啟的控制代碼數，然後再試一次。 如需詳細資訊，請參閱 [Microsoft Azure 儲存體效能和擴充性檢查清單](../blobs/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 若要查看檔案共用、目錄或檔案的開啟控制碼，請使用 [>get-azstoragefilehandle](/powershell/module/az.storage/get-azstoragefilehandle) PowerShell Cmdlet。  
 
@@ -262,7 +262,7 @@ $leaseClient.Break() | Out-Null
 - 如果您沒有特定的 I/O 大小需求下限，建議您使用 1 MB 的 I/O 大小以獲得最佳效能。
 -   如果您知道擴充寫入檔案的最終大小，而且當檔案上未寫入的結尾中有零時您的軟體不會產生相容性問題，則請事先設定檔案大小，而不是將每次寫入設為擴充寫入。
 -   使用正確的複製方法：
-    -   針對兩個檔案共用之間的任何傳輸使用 [AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) 。
+    -   針對兩個檔案共用之間的任何傳輸使用 [AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) 。
     -   在內部部署電腦上的檔案共用之間，使用 [Robocopy](./storage-files-deployment-guide.md#robocopy) \(英文\)。
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>針對 Windows 8.1 或 Windows Server 2012 R2 的考量
@@ -401,7 +401,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 此 Cmdlet 會依序執行以下檢查，並提供失敗的指引：
 1. CheckADObjectPasswordIsCorrect：確定在代表儲存體帳戶的 AD 身分識別上設定的密碼，與儲存體帳戶 kerb1 或 kerb2 金鑰的設定相符。 如果密碼不正確，您可以執行 [更新 AzStorageAccountADObjectPassword](./storage-files-identity-ad-ds-update-password.md) 以重設密碼。 
 2. CheckADObject：確認 Active Directory 中的物件代表儲存體帳戶，且具有正確的 SPN (服務主體名稱) 。 如果 SPN 未正確設定，請執行 debug Cmdlet 中傳回的 Set-AD Cmdlet 來設定 SPN。
-3. CheckDomainJoined：驗證用戶端電腦是否已加入 AD 網域。 如果您的電腦未加入 AD 的網域，請參閱這 [篇文章](/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK) 以瞭解加入網域的指示。
+3. CheckDomainJoined：驗證用戶端電腦是否已加入 AD 網域。 如果您的電腦未加入 AD 的網域，請參閱這 [篇文章](/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain) 以瞭解加入網域的指示。
 4. CheckPort445Connectivity：確認已針對 SMB 連線開啟埠445。 如果所需的埠未開啟，請參閱疑難排解工具 [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) ，以瞭解 Azure 檔案儲存體的連線能力問題。
 5. CheckSidHasAadUser：檢查登入的 AD 使用者是否已同步處理至 Azure AD。 如果您想要查閱特定 AD 使用者是否同步處理至 Azure AD，您可以在輸入參數中指定-UserName 和-Domain。 
 6. CheckGetKerberosTicket：嘗試取得 Kerberos 票證以連接至儲存體帳戶。 如果沒有有效的 Kerberos 權杖，請執行 klist 取得 cifs/儲存體---------net.tcp Cmdlet，並檢查錯誤碼的根本原因，使票證抓取失敗。

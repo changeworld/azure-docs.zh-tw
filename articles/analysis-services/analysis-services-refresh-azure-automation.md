@@ -4,26 +4,26 @@ description: 本文說明如何使用 Azure 自動化為 Azure Analysis Services
 author: chrislound
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 12/01/2020
 ms.author: chlound
-ms.openlocfilehash: fe811c81d0774393f40dc5c8403d1af8b22da109
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 7c801511b6f24cf5ef04d55bb195e3a4c62d7b6d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019132"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491242"
 ---
 # <a name="refresh-with-azure-automation"></a>使用 Azure 自動化重新整理
 
 藉由使用 Azure 自動化和 PowerShell Runbook，您可以在 Azure 分析方格式模型上執行自動化的資料重新整理作業。  
 
-本文中的範例會使用 [SqlServer PowerShell 模組](/powershell/module/sqlserver/?view=sqlserver-ps)。 本文稍後會提供範例 PowerShell Runbook，其中示範重新整理模型。  
+本文中的範例會使用 [SqlServer PowerShell 模組](/powershell/module/sqlserver/?view=sqlserver-ps&preserve-view=true)。 本文稍後會提供範例 PowerShell Runbook，其中示範重新整理模型。  
 
 ## <a name="authentication"></a>驗證
 
 所有呼叫都必須使用有效的 Azure Active Directory (OAuth 2) token 來進行驗證。  本文中的範例會使用服務主體 (SPN) 來向 Azure Analysis Services 進行驗證。 若要深入瞭解，請參閱 [使用 Azure 入口網站建立服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 > [!IMPORTANT]
 > 下列範例假設 Azure Analysis Services 防火牆已停用。 如果已啟用防火牆，則防火牆規則中必須包含要求啟動器的公用 IP 位址。
@@ -40,7 +40,7 @@ ms.locfileid: "92019132"
  
     ![匯入模組](./media/analysis-services-refresh-azure-automation/2.png)
 
-4. 按一下 [確定]  。
+4. 按一下 [確定]。
  
 ### <a name="create-a-service-principal-spn"></a>建立服務主體 (SPN) 
 
@@ -71,7 +71,7 @@ ms.locfileid: "92019132"
 
     ![Import Runbook](./media/analysis-services-refresh-azure-automation/9.png)
 
-5. 建立 Runbook 後，它會自動進入編輯模式。  選取 [發佈]  。
+5. 建立 Runbook 後，它會自動進入編輯模式。  選取 [發佈] 。
 
     ![發佈 Runbook](./media/analysis-services-refresh-azure-automation/10.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "92019132"
 
     ![顯示 [總覽] 頁面的螢幕擷取畫面，其中已選取 [開始] 動作。](./media/analysis-services-refresh-azure-automation/11.png)
 
-7. 填寫 **DATABASENAME**、 **ANALYSISSERVER**和 **REFRESHTYPE** 參數，然後按一下 **[確定]**。 手動執行 Runbook 時，不需要 **WEBHOOKDATA** 參數。
+7. 填寫 **DATABASENAME**、 **ANALYSISSERVER** 和 **REFRESHTYPE** 參數，然後按一下 **[確定]**。 手動執行 Runbook 時，不需要 **WEBHOOKDATA** 參數。
 
     ![啟動 Runbook](./media/analysis-services-refresh-azure-automation/12.png)
 
@@ -104,20 +104,20 @@ ms.locfileid: "92019132"
 
     ![設定排程](./media/analysis-services-refresh-azure-automation/15.png)
 
-3. 按一下頁面底部的 [新增]  。
+3. 按一下 [建立]。
 
 4. 填入排程的參數。 這些會在每次 Runbook 觸發時使用。 透過排程執行時， **WEBHOOKDATA** 參數應保留空白。
 
     ![設定參數](./media/analysis-services-refresh-azure-automation/16.png)
 
-5. 按一下 [確定]  。
+5. 按一下 [確定]。
 
 ## <a name="consume-with-data-factory"></a>使用 Data Factory
 
-若要使用 Azure Data Factory 來取用 runbook，請先建立 runbook 的 **Webhook** 。 **Webhook**將提供可透過 Azure Data Factory web 活動呼叫的 URL。
+若要使用 Azure Data Factory 來取用 runbook，請先建立 runbook 的 **Webhook** 。 **Webhook** 將提供可透過 Azure Data Factory web 活動呼叫的 URL。
 
 > [!IMPORTANT]
-> 若要建立 **Webhook**，必須 **發行**Runbook 的狀態。
+> 若要建立 **Webhook**，必須 **發行** Runbook 的狀態。
 
 1. 在您的自動化 Runbook 中，按一下 [ **webhook**]，然後按一下 [ **新增 Webhook**]。
 
@@ -138,7 +138,7 @@ ms.locfileid: "92019132"
 
    ![範例 Web 活動](./media/analysis-services-refresh-azure-automation/19.png)
 
-**Url**是從 Webhook 建立的 url。
+**Url** 是從 Webhook 建立的 url。
 
 本文 **是 JSON 檔，其中** 應該包含下列屬性：
 
@@ -174,7 +174,7 @@ ms.locfileid: "92019132"
 >
 >若要深入瞭解如何設定 Azure 自動化混合式背景工作角色，請參閱 [混合式 Runbook 背景工作角色安裝](../automation/automation-hybrid-runbook-worker.md#hybrid-runbook-worker-installation)。
 
-設定混合式背景工作角色之後，請 [依照 Data Factory](#consume-with-data-factory)中的一節所述，建立 Webhook。  唯一的差別在於，在設定 Webhook 時，請選取 [**在**混合式背景  >  **工作角色**上執行] 選項。
+設定混合式背景工作角色之後，請 [依照 Data Factory](#consume-with-data-factory)中的一節所述，建立 Webhook。  唯一的差別在於，在設定 Webhook 時，請選取 [**在** 混合式背景  >  **工作角色** 上執行] 選項。
 
 使用混合式背景工作角色的範例 webhook：
 
@@ -202,7 +202,7 @@ $_Credential = Get-AutomationPSCredential -Name "ServicePrincipal"
 
 # If runbook was called from Webhook, WebhookData will not be null.
 if ($WebhookData)
-{ 
+{ 
     # Retrieve AAS details from Webhook request body
     $atmParameters = (ConvertFrom-Json -InputObject $WebhookData.RequestBody)
     Write-Output "CredentialName: $($atmParameters.CredentialName)"

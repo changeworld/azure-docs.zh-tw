@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 554b3ad1dbe1e736300387aefde195b9054ab326
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 87dff3bbb4a7ff5e40a06d1b63bdc38987d727fe
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437094"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492687"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>適用於 MySQL 的 Azure 資料庫資料加密 (使用客戶管理的金鑰)
 
@@ -97,8 +97,8 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 
 * 如果我們為您的適用於 MySQL 的 Azure 資料庫 (且其已啟用資料加密) 建立還原時間點伺服器，新建立的伺服器將會處於「無法存取」的狀態。 您可以透過 [Azure 入口網站](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers)或 [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) 來修正此問題。
 * 如果我們為您的適用於 MySQL 的 Azure 資料庫 (且已啟用資料加密) 建立讀取複本，則複本伺服器將會處於「無法存取」的狀態。 您可以透過 [Azure 入口網站](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers)或 [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) 來修正此問題。
-* 如果您刪除 KeyVault，適用於 MySQL 的 Azure 資料庫將無法存取該金鑰，且會移至「無法存取」的狀態。 復原 [Key Vault](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) 並重新驗證資料加密，讓伺服器呈現「可用狀態」。
-* 如果我們從 KeyVault 刪除金鑰，適用於 MySQL 的 Azure 資料庫將無法存取該金鑰，且會移至「無法存取」的狀態。 復原該[金鑰](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects)並重新驗證資料加密，讓伺服器呈現「可用狀態」。
+* 如果您刪除 KeyVault，適用於 MySQL 的 Azure 資料庫將無法存取該金鑰，且會移至「無法存取」的狀態。 復原 [Key Vault](../key-vault/general/key-vault-recovery.md) 並重新驗證資料加密，讓伺服器呈現「可用狀態」。
+* 如果我們從 KeyVault 刪除金鑰，適用於 MySQL 的 Azure 資料庫將無法存取該金鑰，且會移至「無法存取」的狀態。 復原該[金鑰](../key-vault/general/key-vault-recovery.md)並重新驗證資料加密，讓伺服器呈現「可用狀態」。
 * 如果儲存在 Azure KeyVault 中的金鑰過期，則會變成無效金鑰，且適用於 MySQL 的 Azure 資料庫會轉換成「無法存取」的狀態。 使用 [CLI](/cli/azure/keyvault/key#az-keyvault-key-set-attributes) \(英文\) 延長金鑰到期日，然後重新驗證資料加密，讓伺服器呈現「可用狀態」。
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>從 Key Vault 意外撤銷金鑰存取權限

@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1, references_regions
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 09/16/2020
-ms.openlocfilehash: d24143a440c0d30c3abcd6eb5efd454033b8f71c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: da3c70baccc3c86f2ac57d61539456464e3042b6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791472"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493401"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>在 Azure SQL Database 中調整單一資料庫資源
 
@@ -84,7 +84,7 @@ WHERE s.type_desc IN ('ROWS', 'LOG');
 
 ![進行中的操作](./media/single-database-scale/ongoing-operations.png)
 
-接著，按一下標示為 [ **取消此操作** ] 的按鈕。
+接著，按一下標示為 [ **取消此操作**] 的按鈕。
 
 ![取消進行中的操作](./media/single-database-scale/cancel-ongoing-operation.png)
 

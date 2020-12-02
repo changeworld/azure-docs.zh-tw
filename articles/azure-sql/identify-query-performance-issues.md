@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: troubleshooting
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: jrasnick, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: ce5bf86073b2c478108e264010bb3c213c214368
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6ea17f04538e3444b1baddaa8862add2cfbbaa9c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791744"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493418"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Azure SQL Database 中可偵測的查詢效能瓶頸類型
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -27,8 +27,8 @@ ms.locfileid: "92791744"
 
 ![工作負載狀態](./media/identify-query-performance-issues/workload-states.png)
 
-執行 **相關的問題** ：與運行相關的問題一般會與編譯問題有關，導致查詢計劃或資源不足或過度使用相關的執行問題。
-**等候相關問題** ：等候相關的問題通常與下列相關：
+執行 **相關的問題**：與運行相關的問題一般會與編譯問題有關，導致查詢計劃或資源不足或過度使用相關的執行問題。
+**等候相關問題**：等候相關的問題通常與下列相關：
 
 - 鎖定 (封鎖)
 - I/O
@@ -68,7 +68,7 @@ SQL 查詢最佳化工具所產生的次佳計畫可能是查詢效能變慢的�
 
 - 在每次查詢執行時使用 [RECOMPILE](/sql/t-sql/queries/hints-transact-sql-query) 查詢提示。 此因應措施會交易編譯時間和增加的 CPU，以獲得更好的計劃品質。 此 `RECOMPILE` 選項通常不適用於需要高輸送量的工作負載。
 - 使用 [選項 (OPTIMIZE FOR ... ) ](/sql/t-sql/queries/hints-transact-sql-query) 查詢提示，以一般參數值來覆寫實際參數值，此值會產生足以滿足大部分參數值可能性的計畫。 此選項需要充分了解最佳的參數值和相關聯的計畫特性。
-- 您可以使用 [選項 (OPTIMIZE FOR UNKNOWN) ](/sql/t-sql/queries/hints-transact-sql-query) 查詢提示來覆寫實際參數值，而改為使用密度向量平均值。 您也可以藉由在本機變數中捕捉傳入參數值，然後使用述詞內的區域變數，而不是使用參數本身，來達成此目的。 針對此修正，平均密度必須 *夠好* 。
+- 您可以使用 [選項 (OPTIMIZE FOR UNKNOWN) ](/sql/t-sql/queries/hints-transact-sql-query) 查詢提示來覆寫實際參數值，而改為使用密度向量平均值。 您也可以藉由在本機變數中捕捉傳入參數值，然後使用述詞內的區域變數，而不是使用參數本身，來達成此目的。 針對此修正，平均密度必須 *夠好*。
 - 使用 [DISABLE_PARAMETER_SNIFFING](/sql/t-sql/queries/hints-transact-sql-query) 查詢提示，完全停用參數探查。
 - 使用 [KEEPFIXEDPLAN](/sql/t-sql/queries/hints-transact-sql-query) 查詢提示來防止在快取中重新編譯。 此因應措施假設有足夠的一般方案是快取中的計畫。 您也可以停用自動統計資料更新，以降低良好計畫將被收回的機率，以及將會編譯新的不良計畫。
 - 藉由重寫查詢並在查詢文字中加入提示，以明確地使用 [USE plan](/sql/t-sql/queries/hints-transact-sql-query) 查詢提示來強制執行計畫。 或者，使用查詢存放區或啟用 [自動調整](../azure-sql/database/automatic-tuning-overview.md)來設定特定計劃。
@@ -137,13 +137,13 @@ ORDER BY count (distinct p.query_id) DESC
 
 重新編譯在快取收回之後 (或重新編譯編譯) 仍可能導致產生與原始相同的查詢執行計畫。 當計畫從先前或原始方案變更時，可能會有下列說明：
 
-- **已變更的實體設計** ：例如，新建立的索引會更有效地涵蓋查詢的需求。 如果查詢最佳化工具決定使用新的索引比原先針對第一版查詢執行所選取的資料結構更理想，則新的索引可能會用於新的編譯。 參考物件的任何實體變更可能會在編譯時期產生新的計畫選擇。
+- **已變更的實體設計**：例如，新建立的索引會更有效地涵蓋查詢的需求。 如果查詢最佳化工具決定使用新的索引比原先針對第一版查詢執行所選取的資料結構更理想，則新的索引可能會用於新的編譯。 參考物件的任何實體變更可能會在編譯時期產生新的計畫選擇。
 
-- **伺服器資源差異** ：當某個系統中的計畫與另一個系統中的計畫不同時，資源可用性（例如可用的處理器數目）可能會影響所產生的計畫。 例如，如果一個系統有更多處理器，可能會選擇平行計畫。
+- **伺服器資源差異**：當某個系統中的計畫與另一個系統中的計畫不同時，資源可用性（例如可用的處理器數目）可能會影響所產生的計畫。 例如，如果一個系統有更多處理器，可能會選擇平行計畫。
 
-- **不同的統計資料** ：與參考物件相關聯的統計資料可能已變更，或可能與原始系統的統計資料不同。 如果統計資料變更，而且發生重新編譯，則查詢最佳化工具會在其變更時從其開始使用統計資料。 修訂過的統計資料資料分佈和頻率可能與原始編譯的不同。 這些變更會用來建立基數估計值。  ( *基數估計值* 是預期要流經邏輯查詢樹狀結構的資料列數目。 ) 基數估計值的變更，可能會讓您選擇不同的實體運算子和相關聯的作業順序。 即使統計資料的次要變更可能會導致變更查詢執行計畫。
+- **不同的統計資料**：與參考物件相關聯的統計資料可能已變更，或可能與原始系統的統計資料不同。 如果統計資料變更，而且發生重新編譯，則查詢最佳化工具會在其變更時從其開始使用統計資料。 修訂過的統計資料資料分佈和頻率可能與原始編譯的不同。 這些變更會用來建立基數估計值。  (*基數估計值* 是預期要流經邏輯查詢樹狀結構的資料列數目。 ) 基數估計值的變更，可能會讓您選擇不同的實體運算子和相關聯的作業順序。 即使統計資料的次要變更可能會導致變更查詢執行計畫。
 
-- **變更資料庫相容性層級或基數估算器版本** ：對資料庫相容性層級所做的變更，可以啟用可能產生不同查詢執行計畫的新策略和功能。 除了資料庫相容性層級以外，已停用或已啟用的追蹤旗標4199或資料庫範圍設定的變更狀態 QUERY_OPTIMIZER_HOTFIXES 也可能會影響編譯時期的查詢執行計畫選擇。 追蹤旗標 9481 (強制舊版 CE) 和 2312 (強制預設 CE) 也會影響此計畫。
+- **變更資料庫相容性層級或基數估算器版本**：對資料庫相容性層級所做的變更，可以啟用可能產生不同查詢執行計畫的新策略和功能。 除了資料庫相容性層級以外，已停用或已啟用的追蹤旗標4199或資料庫範圍設定的變更狀態 QUERY_OPTIMIZER_HOTFIXES 也可能會影響編譯時期的查詢執行計畫選擇。 追蹤旗標 9481 (強制舊版 CE) 和 2312 (強制預設 CE) 也會影響此計畫。
 
 ## <a name="resource-limits-issues"></a>資源限制問題
 
@@ -173,11 +173,11 @@ ORDER BY count (distinct p.query_id) DESC
 
 找出驅動 CPU 問題的工作負載磁片區變更不一定很容易。 請考慮下列因素：
 
-- **變更的資源使用量** ：例如，假設 CPU 使用率在一段長時間內增加到80% 的案例。 CPU 使用量只是表示工作負載磁片區已變更。 即使應用程式執行相同的工作負載，查詢執行計畫中的回歸和資料散發中的變更也會造成更多的資源使用量。
+- **變更的資源使用量**：例如，假設 CPU 使用率在一段長時間內增加到80% 的案例。 CPU 使用量只是表示工作負載磁片區已變更。 即使應用程式執行相同的工作負載，查詢執行計畫中的回歸和資料散發中的變更也會造成更多的資源使用量。
 
-- **新查詢的外觀** ：應用程式可能會在不同的時間驅動一組新的查詢。
+- **新查詢的外觀**：應用程式可能會在不同的時間驅動一組新的查詢。
 
-- **要求數目增加或減少** ：此案例是最明顯的工作負載量值。 查詢數目不一定會與更多的資源使用率相對應。 但是，如果其他因素未變更，則此計量仍是很重要的信號。
+- **要求數目增加或減少**：此案例是最明顯的工作負載量值。 查詢數目不一定會與更多的資源使用率相對應。 但是，如果其他因素未變更，則此計量仍是很重要的信號。
 
 使用 Intelligent Insights 來偵測 [工作負載增加](database/intelligent-insights-troubleshoot-performance.md#workload-increase) 和 [規劃回歸](database/intelligent-insights-troubleshoot-performance.md#plan-regression)。
 
@@ -185,7 +185,7 @@ ORDER BY count (distinct p.query_id) DESC
 
 一旦您消除了與執行問題相關的次佳計畫和 *等候相關* 問題，效能問題通常是查詢可能正在等候某些資源。 等候相關的問題可能是由下列原因所造成：
 
-- **封鎖** ：
+- **封鎖**：
 
   一個查詢可能會保存資料庫中物件的鎖定，而其他則嘗試存取相同的物件。 您可以使用 [dmv](database/monitoring-with-dmvs.md#monitoring-blocked-queries) 或 [Intelligent Insights](database/intelligent-insights-troubleshoot-performance.md#locking)來識別封鎖查詢。
 - **IO 問題**

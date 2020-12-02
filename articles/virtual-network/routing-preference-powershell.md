@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: e856e3fc253800b71176dad3db40e7a13a7e6140
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47e1701accd0ef7cce2a08b230682f4f8d5d8ed4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84707866"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491497"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-azure-powershell"></a>使用 Azure PowerShell 設定公用 IP 位址的路由喜好設定
 
-本文說明如何使用 Azure PowerShell，透過 ISP 網路 (**網際網路**選項) 為公用 IP 位址設定路由喜好設定。 建立公用 IP 位址之後，您可以將其與下列 Azure 資源建立關聯，以取得連至網際網路的輸入和輸出流量：
+本文說明如何使用 Azure PowerShell，透過 ISP 網路 (**網際網路** 選項) 為公用 IP 位址設定路由喜好設定。 建立公用 IP 位址之後，您可以將其與下列 Azure 資源建立關聯，以取得連至網際網路的輸入和輸出流量：
 
 * 虛擬機器
 * 虛擬機器擴展集
@@ -41,12 +41,6 @@ ms.locfileid: "84707866"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 如果您選擇在本機安裝和使用 PowerShell，本文會要求使用 Azure PowerShell 模組 6.9.0 版或更新版本。 執行 `Get-Module -ListAvailable Az` 來了解安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
-
-## <a name="register-the-feature-for-your-subscription"></a>註冊訂用帳戶的功能
-「路由喜好設定」功能目前為預覽狀態。 註冊訂用帳戶的功能，如下所示：
-```azurepowershell
-Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature -ProviderNamespace Microsoft.Network
-```
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -75,7 +69,7 @@ $publicIp = New-AzPublicIpAddress  `
 -IpAddressVersion IPv4
 ```
 
-您可以將上述建立的公用 IP 位址與 [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虛擬機器建立關聯。 使用教學課程頁面上的 CLI 章節：[將公用 IP 位址與虛擬機器建立關聯](associate-public-ip-address-vm.md#azure-cli)，以將公用 IP 與您的 VM 產生關聯。 您也可以將公用 IP 位址指派給負載平衡**前端**組態，將上述建立的公用 IP 位址與 [Azure Load Balancer](../load-balancer/load-balancer-overview.md) 建立關聯。 此公用 IP 位址作為負載平衡的虛擬 IP 位址 (VIP)。
+您可以將上述建立的公用 IP 位址與 [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虛擬機器建立關聯。 使用教學課程頁面上的 CLI 章節：[將公用 IP 位址與虛擬機器建立關聯](associate-public-ip-address-vm.md#azure-cli)，以將公用 IP 與您的 VM 產生關聯。 您也可以將公用 IP 位址指派給負載平衡 **前端** 組態，將上述建立的公用 IP 位址與 [Azure Load Balancer](../load-balancer/load-balancer-overview.md) 建立關聯。 此公用 IP 位址作為負載平衡的虛擬 IP 位址 (VIP)。
 
 ## <a name="clean-up-resources"></a>清除資源
 

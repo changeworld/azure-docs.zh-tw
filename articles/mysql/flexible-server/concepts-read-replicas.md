@@ -6,23 +6,23 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: ae73885016a40cd3cf79de968ca7c07c51f1400a
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 3fe63deb8115c0043023301c6d0dc3731e97743f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94336058"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492620"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>在適用於 MySQL 的 Azure 資料庫彈性的伺服器中讀取複本
 
 > [!IMPORTANT]
 > 在適用於 MySQL 的 Azure 資料庫彈性的伺服器中讀取複本處於預覽階段。
 
-MySQL 是執行網際網路規模的 web 和行動應用程式的其中一種熱門資料庫引擎。 許多客戶都將它用於線上教育服務、影片串流服務、數位付款解決方案、電子商務平臺、遊戲服務、新聞入口網站、政府和醫療保健網站。 這些服務必須在 web 或行動應用程式的流量增加時進行服務和調整。
+MySQL 是一種熱門的資料庫引擎，可執行網際網路規模的 Web 和行動應用程式。 我們有許多客戶將其用於線上教育服務、影片串流服務、數位付款解決方案、電子商務平台、遊戲服務、新聞入口網站、政府和醫療保健網站。 當 Web 或行動裝置應用程式上的流量增加時，需要這些服務才能提供和調整流量。
 
-在應用程式端，應用程式通常是以 JAVA 或 php 來開發，並遷移為在 Azure 虛擬機器擴展集或 Azure App 服務上執行，或容器化在 Azure Kubernetes Service (AKS) 上執行。 使用虛擬機器擴展集、App Service 或 AKS 做為基礎結構，可透過立即布建新的 Vm，並複寫應用程式的無狀態元件來滿足要求，以簡化應用程式調整，但通常資料庫最後是集中式具狀態元件的瓶頸。
+在應用程式端，應用程式通常是以 JAVA 或 php 來開發，並遷移為在 Azure 虛擬機器擴展集或 Azure App 服務上執行，或容器化在 Azure Kubernetes Service (AKS) 上執行。 以虛擬機器擴展集、App Service 或 AKS 作為基礎結構，藉由立即佈建新的 VM 並複寫應用程式的無狀態元件以滿足要求，而簡化了應用程式調整，但最後資料庫通常是集中式具狀態元件的瓶頸。
 
-讀取複本功能可讓您將適用於 MySQL 的 Azure 資料庫彈性伺服器的資料複寫至唯讀伺服器。 您可以從來源伺服器複製到最多 **10 個** 複本。 複本會使用 MySQL 引擎的原生二進位記錄 (binlog) 檔案位置型複寫技術來進行非同步更新。 若要深入了解 binlog 複寫，請參閱 [MySQL binlog 複寫概觀](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html) \(英文\)。
+讀取複本功能可讓您將資料從適用於 MySQL 的 Azure 資料庫彈性伺服器複寫到唯讀伺服器。 您可以從來源伺服器複製到最多 **10 個** 複本。 複本會使用 MySQL 引擎的原生二進位記錄 (binlog) 檔案位置型複寫技術來進行非同步更新。 若要深入了解 binlog 複寫，請參閱 [MySQL binlog 複寫概觀](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html) \(英文\)。
 
 複本是您管理的新伺服器，與您的來源適用於 MySQL 的 Azure 資料庫彈性伺服器類似。 您將會根據在虛擬核心和儲存體中布建的計算（以 GB/月為單位），產生每個讀取複本的帳單費用。 如需詳細資訊，請參閱 [定價](./concepts-compute-storage.md#pricing)。
 
@@ -55,17 +55,17 @@ MySQL 是執行網際網路規模的 web 和行動應用程式的其中一種熱
 當您開始建立複本的工作流程時，系統會建立空白的「適用於 MySQL 的 Azure 資料庫」伺服器。 新伺服器會填入來源伺服器上的資料。 建立時間取決於來源上的資料量，以及上次每週完整備份之後的時間。 時間的範圍可能介於數分鐘到數小時。
 
 > [!NOTE]
-> 使用與來源相同的伺服器設定來建立讀取複本。 複本伺服器設定在建立後可以變更。 複本伺服器一律會建立在相同的資源群組、與來源伺服器相同的位置和相同的訂用帳戶中。 如果您想要將複本伺服器建立到不同的資源群組或不同的訂閱，您可以在建立後[移動複本伺服器](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription)。 建議將複本伺服器的設定保留為等於或大於來源的值，以確保複本能夠跟上來源。
+> 使用與來源相同的伺服器設定來建立讀取複本。 複本伺服器設定在建立後可以變更。 複本伺服器一律會建立在相同的資源群組、與來源伺服器相同的位置和相同的訂用帳戶中。 如果您想要將複本伺服器建立到不同的資源群組或不同的訂閱，您可以在建立後[移動複本伺服器](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。 建議將複本伺服器的設定保留為等於或大於來源的值，以確保複本能夠跟上來源。
 
 了解如何[在 Azure 入口網站中建立讀取複本](how-to-read-replicas-portal.md)。
 
 ## <a name="connect-to-a-replica"></a>連線到複本
 
-建立時，複本會繼承來源伺服器的連接方法。 您無法變更複本的連接方法。 例如，如果來源伺服器具有 **私人存取 (VNet 整合)** 則複本不能是 **公用存取 (允許的 IP 位址)** 。
+建立時，複本會繼承來源伺服器的連接方法。 您無法變更複本的連接方法。 例如，如果來源伺服器具有 **私人存取 (VNet 整合)** 則複本不能是 **公用存取 (允許的 IP 位址)**。
 
 複本會從來源伺服器繼承系統管理員帳戶。 來源伺服器上的所有使用者帳戶都會複寫到讀取複本。 您只能使用來源伺服器上所提供的使用者帳戶，連接到讀取複本。
 
-您可以使用其主機名稱和有效的使用者帳戶來連線至複本，就像在一般的適用於 MySQL 的 Azure 資料庫彈性伺服器上一樣。 若伺服器名稱為 **myreplica** ，且統管理員使用者名稱為 **myadmin** ，則您可以使用 mysql CLI 來連線到複本：
+您可以使用其主機名稱和有效的使用者帳戶來連線至複本，就像在一般的適用於 MySQL 的 Azure 資料庫彈性伺服器上一樣。 若伺服器名稱為 **myreplica**，且統管理員使用者名稱為 **myadmin**，則您可以使用 mysql CLI 來連線到複本：
 
 ```bash
 mysql -h myreplica.mysql.database.azure.com -u myadmin -p
@@ -97,7 +97,7 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin -p
 
 讀取複本適用于擴充大量讀取的工作負載，而且不是為了符合伺服器的高可用性需求而設計。 來源與複本伺服器之間沒有自動容錯移轉。 停止讀取複本上的複寫，以讀取寫入模式讓它上線，是執行這項手動容錯移轉的方式。
 
-由於複寫是非同步，因此來源與複本之間會有延遲。 延遲量可能會受到一些因素的影響，例如，在來源伺服器上執行的工作負載的繁重程度，以及資料中心之間的延遲。 在大部分的情況下，複本延遲的範圍是幾秒鐘到幾分鐘。 您可以使用計量 *複本延遲* （可用於每個複本）來追蹤實際的複寫延遲。 此計量會顯示上次重新執行交易之後的時間。 我們建議您在一段時間內觀察您的複本延遲，以找出您的平均延遲。 您可以設定複本延遲的警示，如此一來，如果超出預期的範圍，您可以採取動作。
+由於複寫是非同步，因此來源與複本之間會有延遲。 延遲量可能會受到一些因素的影響，例如，在來源伺服器上執行的工作負載的繁重程度，以及資料中心之間的延遲。 在大部分的情況下，複本延遲的範圍是幾秒鐘到幾分鐘。 您可以使用計量 *複本延遲*（可用於每個複本）來追蹤實際的複寫延遲。 此計量會顯示上次重新執行交易之後的時間。 我們建議您在一段時間內觀察您的複本延遲，以找出您的平均延遲。 您可以設定複本延遲的警示，如此一來，如果超出預期的範圍，您可以採取動作。
 
 > [!Tip]
 > 如果您容錯移轉至複本，從來源取消複本時的延遲將會指出遺失的資料量。
@@ -114,7 +114,7 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin -p
 
 ## <a name="considerations-and-limitations"></a>考量與限制
 
-| 狀況 | 限制/考慮 |
+| 案例 | 限制/考慮 |
 |:-|:-|
 | 已啟用區域冗余 HA 之伺服器上的複本 | 不支援 |
 | 跨區域讀取複寫 | 不支援 |

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 19fe6be0487772524516172bd32e0562512c4e3c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e680ba10c507ef83591b56652ee8e95c4d665dda
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630170"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492058"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>針對 Linux (SMB) 中的 Azure 檔案儲存體問題進行疑難排解
 
@@ -47,7 +47,7 @@ ms.locfileid: "94630170"
 - 您嘗試從 Azure VM 連線到 Azure 檔案共用，而該 VM 與儲存體帳戶位於不同的區域。
 - 如果儲存體帳戶上已啟用 [需要安全傳輸]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)設定，則 Azure 檔案服務僅允許使用 SMB 3.0 加密的連線。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 若要解決此問題，請使用[適用於 Linux 上 Azure 檔案服務掛接錯誤的疑難排解工具](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux)。 這項工具可以：
 
@@ -91,7 +91,7 @@ ms.locfileid: "94630170"
 
 單一檔案或目錄的開啟控制碼配額為2000。 當您擁有 2,000 個開啟控制代碼時，會顯示一則錯誤訊息以指出已達到配額。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 關閉一些控點以減少同時開啟的控點數，然後再次嘗試操作。
 
@@ -107,7 +107,7 @@ ms.locfileid: "94630170"
 
 - 如果您沒有特定的 I/O 大小需求下限，建議您使用 1 MB 的 I/O 大小以獲得最佳效能。
 - 使用正確的複製方法：
-    - 針對兩個檔案共用之間的任何傳輸使用 [AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) 。
+    - 針對兩個檔案共用之間的任何傳輸使用 [AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) 。
     - 使用具有平行的 cp 或 dd 可以改善複製速度，執行緒數目取決於您的使用案例和工作負載。 下列範例使用六個： 
     - cp 範例 (cp 將使用檔案系統的預設區塊大小作為區塊大小) ： `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &` 。
     - dd 範例 (此命令會將區塊大小明確設定為 1 MiB) ： `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
@@ -127,7 +127,7 @@ ms.locfileid: "94630170"
 
 部分 Linux 散發套件尚未支援 SMB 3.0 中的加密功能。 如果使用者嘗試使用 SMB 3.0 來掛接 Azure 檔案，可能會因缺少功能而收到「115」錯誤訊息。 目前僅有使用 Ubuntu 16.04 或更新版本時才支援 SMB 3.0 與完整加密。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 Linux 4.11 核心已推出 SMB 3.0 適用的加密功能。 此功能讓您可從內部部署或不同 Azure 區域的 Azure 檔案共用進行掛接。 某些 Linux 散發套件可能會將4.11 核心的 backport 變更為它們所維護的舊版 Linux 核心。 若要協助判斷您的 Linux 版本是否支援使用加密的 SMB 3.0，請參閱 [使用 Azure 檔案儲存體與 Linux](storage-how-to-use-files-linux.md)。 
 
@@ -158,7 +158,7 @@ Linux 4.11 核心已推出 SMB 3.0 適用的加密功能。 此功能讓您可�
 ### <a name="cause"></a>原因
 如果檔案或目錄具有開啟的控制碼，通常就會發生此問題。 
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 如果 SMB 用戶端已關閉所有開啟的控制碼，且問題持續發生，請執行下列動作：
 
@@ -182,7 +182,7 @@ Linux 4.11 核心已推出 SMB 3.0 適用的加密功能。 此功能讓您可�
 
 **Cache=none** 表示已停用快取。 使用預設的 mount 命令或明確地為 mount 命令加上 **cache=strict** 選項來重新掛接共用，以確保啟用預設快取或 "strict" 快取模式。
 
-在某些情況下， **serverino** 掛接選項可能導致 **ls** 命令對每個目錄項目執行 stat。 當您列出大型目錄時，此行為會導致效能降低。 您可以檢查 **/etc/fstab** 項目中的掛接選項：
+在某些情況下，**serverino** 掛接選項可能導致 **ls** 命令對每個目錄項目執行 stat。 當您列出大型目錄時，此行為會導致效能降低。 您可以檢查 **/etc/fstab** 項目中的掛接選項：
 
 `//azureuser.file.core.windows.net/cifs /cifs cifs vers=2.1,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
@@ -227,7 +227,7 @@ COPYFILE 中的強制旗標 **f** 會導致在 Unix 上執行 **cp-p-f** 。 此
 **ls：無法存取 '&lt;path&gt;'：輸入/輸出錯誤**
 
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 將 Linux 核心升級為下列已修正此問題的版本：
 
 - 4.4.87+
@@ -243,7 +243,7 @@ COPYFILE 中的強制旗標 **f** 會導致在 Unix 上執行 **cp-p-f** 。 此
 ln -s linked -n t
 ln: failed to create symbolic link 't': Operation not supported
 ```
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 Linux CIFS 用戶端不支援透過 SMB 2 或 SMB 3 通訊協定，建立 Windows 樣式的符號連結。 Linux 用戶端目前支援另一種符號連結樣式，稱為 [Minshall+French symlinks](https://wiki.samba.org/index.php/UNIX_Extensions#Minshall.2BFrench_symlinks) (Mishall + 法文符號連結)，可用於建立和遵循作業。 需要符號連結的客戶可以使用 "mfsymlinks" 掛接選項。 我們建議您使用 "mfsymlinks"，因為它也是 Mac 使用的格式。
 
 若要使用符號連結，請將下列內容新增至 CIFS 掛接命令結尾：
@@ -274,7 +274,7 @@ sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <
 -   使用預設的「軟」掛接選項時，造成無法重新建立 TCP 連線以連線到伺服器的網路通訊失敗
 -   未出現在較舊核心中的最近重新連線修正
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 此 Linux 核心中的重新連線問題已隨下列變更修正：
 
@@ -296,7 +296,7 @@ sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <
 ### <a name="cause"></a>原因
 因為 Azure 檔案儲存體 [目前不支援 SMB 多重](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)通道，所以會記錄此錯誤。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 可以忽略這個錯誤。
 
 
@@ -308,7 +308,7 @@ sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <
 
 從將名稱結尾的字元編碼至不同字元的系統上傳資料夾或檔案時，從 Macintosh 電腦上傳的檔案可能會有 "0xF028" 或 "0xF029" 字元，而不是 0x20 (空間) 或 0X2E (點) 。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 在 Linux 上裝載共用時，請在共用上使用 mapchars 選項： 
 

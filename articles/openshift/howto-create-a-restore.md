@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: aro, openshift, az aro, red hat, cli
 ms.custom: mvc
-ms.openlocfilehash: 9eac34d643ba0df4be79a064858c580c884de727
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: a4b22036612aac3d2b67e299881ba11b896979e5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078556"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492398"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-restore"></a>建立 Azure Red Hat OpenShift 4 叢集應用程式還原
 
@@ -23,7 +23,7 @@ ms.locfileid: "92078556"
 > * 設定必要條件，並安裝必要的工具
 > * 建立 Azure Red Hat OpenShift 4 應用程式還原
 
-如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.6.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.6.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -36,7 +36,7 @@ ms.locfileid: "92078556"
 這些步驟可讓您還原先前使用 Velero 備份的應用程式。
 您可以檢查叢集目前已辨識的備份清單，以查看有哪些備份可供還原。  若要執行此步驟，您需要執行下列命令：
 
-_ (這個步驟假設您已在名為 "Velero" 的專案中安裝 Velero ) _
+_(這個步驟假設您已在名為 "Velero" 的專案中安裝 Velero )_
 
 ```bash
 oc get backups -n velero
@@ -88,5 +88,3 @@ oc get restore -n velero <name of restore created previously> -o yaml
 前進到下一篇文章，以瞭解 Azure Red Hat OpenShift 4 支援的資源。
 
 * [Azure Red Hat OpenShift v4 支援的資源](supported-resources.md)
-
-

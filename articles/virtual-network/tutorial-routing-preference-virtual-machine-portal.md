@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: b2f3635c8280bdd95e8ad1259fe4ae35f8b531a4
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: dd9c1c23bddf78eb1bdb8fc07f2cb6f8a7faa859
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042823"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491208"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-the-azure-portal"></a>使用 Azure 入口網站設定 VM 的路由喜好設定
 
@@ -28,12 +28,6 @@ ms.locfileid: "93042823"
 > [!IMPORTANT]
 > 路由喜好設定目前為公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-## <a name="register-the-feature-for-your-subscription"></a>註冊訂用帳戶的功能
-「路由喜好設定」功能目前為預覽狀態。 您必須使用 Azure PowerShell，為訂用帳戶註冊此功能，如下所示：
-```azurepowershell
-Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNamespace Microsoft.Network
-```
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -51,12 +45,12 @@ Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNa
     |[使用者名稱]| 輸入您選擇的使用者名稱。|
     |密碼| 輸入您選擇的密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |訂用帳戶| 選取您的訂用帳戶。|
-    |資源群組| 選取 [使用現有項目]，然後選取 [myResourceGroup]。|
+    |資源群組| 選取 [使用現有項目]  ，然後選取 [myResourceGroup]  。|
     |Location| 選取 [美國東部]|
 
 4. 選取 VM 的大小，然後選取 [選取]。
 5. 在 [網路] 索引標籤下，針對 **公用 IP 位址** 按一下 [建立新的]。
-6. 輸入 *myPublicIpAddress* ，選取 SKU 作為 **標準** ，然後選取路由喜好設定為 [網際網路]，然後按 [確定]，如下圖所示：
+6. 輸入 *myPublicIpAddress*，選取 SKU 作為 **標準**，然後選取路由喜好設定為 [網際網路]，然後按 [確定]，如下圖所示：
 
    ![選取靜態](./media/tutorial-routing-preference-virtual-machine-portal/routing-preference-internet-new.png)
 
@@ -66,7 +60,7 @@ Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNa
 
 7. 接受其餘的預設設定，然後選取 [確定]。
 8. 在 [摘要] 頁面上，選取 [建立]。 部署虛擬機器需要幾分鐘的時間。
-9. 部署虛擬機器後，請在入口網站頂端的搜尋方塊中輸入 *myPublicIpAddress* 。 當 **myPublicIpAddress** 出現於搜尋結果時，請選取它。
+9. 部署虛擬機器後，請在入口網站頂端的搜尋方塊中輸入 *myPublicIpAddress*。 當 **myPublicIpAddress** 出現於搜尋結果時，請選取它。
 10. 您可以檢視已指派的公用 IP 位址，並將此位址指派給 **myVM** 虛擬機器，如下圖所示：
 
     ![螢幕擷取畫面顯示網路介面 mynic 的 NIC 公用 I P。](./media/tutorial-routing-preference-virtual-machine-portal/pip-properties-new.png)
@@ -79,7 +73,7 @@ Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNa
 
 當不再需要資源群組時，請將資源群組及其包含的所有資源刪除：
 
-1. 在入口網站頂端的 [搜尋] 方塊中，輸入 myResourceGroup。 當您在搜尋結果中看到 myResourceGroup 時，請加以選取。
+1. 在入口網站頂端的 [搜尋] 方塊中，輸入 myResourceGroup。 當您在搜尋結果中看到 myResourceGroup  時，請加以選取。
 2. 選取 [刪除資源群組]。
 3. 針對 [輸入資源群組名稱:] 輸入 myResourceGroup，然後選取 [刪除]。
 

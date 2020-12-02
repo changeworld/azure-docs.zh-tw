@@ -10,12 +10,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 5357a1f2d1f042f9dab01edf205926992e4225d0
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c33771bc67a67d6b3b73769071126db6a913f702
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843820"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492143"
 ---
 # <a name="monitoring-azure-files"></a>監視 Azure 檔案儲存體
 
@@ -44,7 +44,7 @@ Azure 檔案儲存體會收集與其他 Azure 資源相同的監視資料類型�
 
 如需 Azure 檔案儲存體所建立的計量和記錄計量的詳細資訊，請參閱 [Azure 檔案監視資料參考](storage-files-monitoring-reference.md) 。
 
-Azure 監視器中的計量和記錄只支援 Azure Resource Manager 儲存體帳戶。 Azure 監視器不支援傳統儲存體帳戶。 如果您想在傳統儲存體帳戶上使用計量或記錄，則必須遷移至 Azure Resource Manager 儲存體帳戶。 請參閱[遷移至 Azure Resource Manager](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)。
+Azure 監視器中的計量和記錄只支援 Azure Resource Manager 儲存體帳戶。 Azure 監視器不支援傳統儲存體帳戶。 如果您想在傳統儲存體帳戶上使用計量或記錄，則必須遷移至 Azure Resource Manager 儲存體帳戶。 請參閱[遷移至 Azure Resource Manager](../../virtual-machines/migration-classic-resource-manager-overview.md)。
 
 ## <a name="collection-and-routing"></a>收集和路由
 

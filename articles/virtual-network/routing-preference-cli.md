@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5e7a8c5552165324ef154767d1605e12b0c9ad22
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: f6c4d0defbaeb484f66593e112587c16c46eed2f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94747854"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491582"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-azure-cli"></a>使用 Azure CLI 設定公用 IP 位址的路由喜好設定
 
@@ -43,12 +43,6 @@ ms.locfileid: "94747854"
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 - 本文需要 Azure CLI 的版本2.0.49 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
-
-## <a name="register-the-feature-for-your-subscription"></a>註冊訂用帳戶的功能
-「路由喜好設定」功能目前為預覽狀態。 註冊訂用帳戶的功能，如下所示：
-```azurecli
-az feature register --namespace Microsoft.Network --name AllowRoutingPreferenceFeature
-```
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 使用 [az group create](/cli/azure/group#az-group-create) 命令來建立資源群組。 下列範例會在 **美國東部** Azure 區域中建立一個資源群組：

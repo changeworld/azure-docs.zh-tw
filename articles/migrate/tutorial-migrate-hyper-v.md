@@ -6,12 +6,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 038d0ec817d4f81371546e8d7aa4b48b299c8d98
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 2d31c5b90f37f336b48118e4f4adde4777f8cf4a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302560"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493126"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>將 Hyper-V VM 遷移至 Azure 
 
@@ -45,7 +45,6 @@ ms.locfileid: "96302560"
 4. 我們建議您先[評估 Hyper-V VM](tutorial-assess-hyper-v.md)，再將其遷移至 Azure，但您不必這麼做。
 5. 移至已建立的專案，或 [建立新的專案](https://docs.microsoft.com/azure/migrate/create-manage-projects)
 6. 驗證 Azure 帳戶的權限 - 您的 Azure 帳戶必須有建立 VM 以及寫入至 Azure 受控磁碟的權限。
-
 
 ## <a name="download-and-install-the-provider"></a>下載並安裝提供者
 

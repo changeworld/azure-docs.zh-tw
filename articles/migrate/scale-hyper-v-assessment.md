@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: raynew
-ms.openlocfilehash: 393c58334f4a1bead7e089d0a64b2d165b67401d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: f54283e4e63af22b30bddf97456eed75de3806cc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317182"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492959"
 ---
 # <a name="assess-large-numbers-of-hyper-v-vms-for-migration-to-azure"></a>評定大量的 Hyper-v Vm 以遷移至 Azure
 
@@ -75,7 +75,7 @@ ms.locfileid: "92317182"
 1. 建立 Azure Migrate 專案。
 2. 將 Azure Migrate Server 評定工具新增至專案。
 
-[深入了解](how-to-add-tool-first-time.md)
+[深入了解](./create-manage-projects.md)
 
 ## <a name="create-and-review-an-assessment"></a>建立和審核評量
 

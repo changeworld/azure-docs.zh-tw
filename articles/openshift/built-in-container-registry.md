@@ -6,12 +6,12 @@ ms.author: jiangma
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 0a6449e6b728ee690dd6ddee192868aaeb3511ad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9ed53721b66dc03bad24e0510e0c8a970c61aec1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911034"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492415"
 ---
 # <a name="configure-built-in-container-registry-for-azure-red-hat-openshift-4"></a>設定適用於 Azure Red Hat OpenShift 4 的內建容器登錄
 
@@ -26,9 +26,9 @@ Azure Red Hat OpenShift 提供整合的容器映射登錄，稱為 [OpenShift Co
 
 ## <a name="before-you-begin"></a>開始之前
 
-本文假設您已有現有的 ARO 叢集。 如果您需要 ARO 叢集，請參閱 ARO 教學課程， [建立 Azure Red Hat OpenShift 4](/azure/openshift/tutorial-create-cluster)叢集。 請務必使用的 `--pull-secret` 引數來建立叢集 `az aro create` 。  這是設定 Azure Active Directory authentication 和內建容器登錄的必要步驟。
+本文假設您已有現有的 ARO 叢集。 如果您需要 ARO 叢集，請參閱 ARO 教學課程， [建立 Azure Red Hat OpenShift 4](./tutorial-create-cluster.md)叢集。 請務必使用的 `--pull-secret` 引數來建立叢集 `az aro create` 。  這是設定 Azure Active Directory authentication 和內建容器登錄的必要步驟。
 
-當您擁有叢集之後，請遵循 [連接至 Azure Red Hat OpenShift 4](/azure/openshift/tutorial-connect-cluster)叢集中的步驟，連接到叢集。
+當您擁有叢集之後，請遵循 [連接至 Azure Red Hat OpenShift 4](./tutorial-connect-cluster.md)叢集中的步驟，連接到叢集。
    * 請務必遵循「安裝 OpenShift CLI」中的步驟，因為我們將 `oc` 在本文稍後使用命令。
    * 記下叢集主控台 URL，如下所示 `https://console-openshift-console.apps.<random>.<region>.aroapp.io/` 。 和的值 `<random>` `<region>` 將在本文稍後使用。
    * 請注意 `kubeadmin` 認證。 本文稍後也會用到這些專案。

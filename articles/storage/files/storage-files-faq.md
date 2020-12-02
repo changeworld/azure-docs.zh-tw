@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 1eddca26152f27ced20bbae66b3265639b97e64e
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 266862a1691387caf1b1ffa9a47b0e60e84970d8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629490"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492126"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>關於 Azure 檔案服務的常見問題集 (FAQ)
 [Azure 檔案儲存體](storage-files-introduction.md) 提供雲端中完全受控的檔案共用，可透過業界標準 [伺服器訊息區（ (SMB) 通訊協定](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) 和 [網路檔案系統 (NFS) protocol](https://en.wikipedia.org/wiki/Network_File_System) (preview) ）來存取。 您可以同時在 Windows、Linux 和 macOS 的雲端或內部部署上掛接 Azure 檔案共用。 您也可以使用 Azure 檔案同步，在接近使用資料之處進行快速存取，藉以在 Windows Server 電腦上快取 Azure 檔案共用。
@@ -107,7 +107,7 @@ ms.locfileid: "94629490"
     效能會依據您的環境設定、設定，以及這是初始同步處理還是進行中的同步處理而有所不同。如需詳細資訊，請參閱 [Azure 檔案同步效能度量](storage-files-scale-targets.md#azure-file-sync-performance-metrics)
 
 * <a id="afs-conflict-resolution"></a>**如果同一個檔案近乎同時地在兩部伺服器上進行變更，會發生什麼事？**  
-    Azure 檔案同步使用簡單的衝突解決策略：我們會同時保留兩個端點中變更之檔案的變更。 最新寫入的變更會保留原始檔案名稱。 較舊的檔案 (由 LastWriteTime 決定) 會將端點名稱和衝突號碼附加至檔案名。 針對伺服器端點，端點名稱是伺服器的名稱。 若為雲端端點，端點名稱為 **雲端** 。 此名稱會遵循此分類法： 
+    Azure 檔案同步使用簡單的衝突解決策略：我們會同時保留兩個端點中變更之檔案的變更。 最新寫入的變更會保留原始檔案名稱。 較舊的檔案 (由 LastWriteTime 決定) 會將端點名稱和衝突號碼附加至檔案名。 針對伺服器端點，端點名稱是伺服器的名稱。 若為雲端端點，端點名稱為 **雲端**。 此名稱會遵循此分類法： 
    
     \<FileNameWithoutExtension\>-\<endpointName\>\[-#\].\<ext\>  
 
@@ -184,7 +184,7 @@ ms.locfileid: "94629490"
 
     - Azure 檔案同步會保留並複製所有判別 ACL 或 DACL (不論是以 Active Directory 為基礎或本機) 到它要同步的所有伺服器端點。 
     
-    您可以參閱[授權存取 Azure 儲存體](../common/storage-auth.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)，以取得 Azure 儲存體服務上所有支援通訊協定的完整表示法。 
+    您可以參閱[授權存取 Azure 儲存體](../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)，以取得 Azure 儲存體服務上所有支援通訊協定的完整表示法。 
     
 * <a id="encryption-at-rest"></a>
 **如何確保我的 Azure 檔案共用會進行待用加密？**  

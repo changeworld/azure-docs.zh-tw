@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: e60ba773c5ef750f027c2e0b1528409c71eeb4b8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 650ee1fc9e0e1941a7a3655bca1c75950ab878dd
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011683"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492109"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>規劃 Azure 檔案服務部署
 [Azure 檔案儲存體](storage-files-introduction.md) 可以用兩種主要方式進行部署：直接裝載無伺服器的 azure 檔案共用，或使用 Azure 檔案同步快取內部部署的 azure 檔案共用。您所選擇的部署選項會變更您規劃部署時需要考慮的事項。 
@@ -52,7 +52,7 @@ Azure 檔案儲存體提供兩種通訊協定，可在裝載檔案共用、SMB �
 
 如果您想要使用儲存體帳戶金鑰來存取 Azure 檔案共用，我們建議使用「 [網路](#networking) 」一節中所述的服務端點。
 
-## <a name="networking"></a>網路
+## <a name="networking"></a>網路功能
 您可以透過儲存體帳戶的公用端點，從任何地方存取 Azure 檔案共用。 這表示已完成驗證的要求 (例如，由使用者的登入身分識別所授權的要求) 便可從 Azure 內部或外部安全地產生。 在許多客戶的環境中，最初將 Azure 檔案共用掛接到內部部署工作站時將會失敗，即使能從 Azure VM 掛接成功也一樣。 之所以會這樣，原因是許多組織和網際網路服務提供者 (ISP) 會將 SMB 用來通訊的連接埠 (連接埠445) 封鎖起來。 若要查看 ISP 是否允許從連接埠 445 進行存取的摘要，請參閱 [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx) \(英文\)。
 
 若要解除封鎖對 Azure 檔案共用的存取，您有兩個主要選項：
@@ -98,14 +98,14 @@ Azure 檔案儲存體具有多層式的方法，可確保您的資料已備份�
 
 如需虛刪除的詳細資訊，請參閱 [防止意外刪除資料](./storage-files-prevent-file-share-deletion.md)。
 
-### <a name="backup"></a>Backup
-您可以透過 [共用快照](./storage-snapshots-files.md)集來備份 Azure 檔案共用，這是共用的唯讀、時間點複本。 快照集是累加的，這表示它們只包含自從上一個快照集以來已變更的資料量。 每個檔案共用最多可以有200個快照集，並保留最多10年的快照。 您可以透過 PowerShell 或命令列介面（ (CLI) ）手動取得這些 Azure 入口網站快照集，也可以使用 [Azure 備份](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)。 快照集會儲存在您的檔案共用中，這表示如果您刪除檔案共用，您的快照集也會一併刪除。 若要保護您的快照集備份不會遭到意外刪除，請確定已為您的共用啟用虛刪除。
+### <a name="backup"></a>備份
+您可以透過 [共用快照](./storage-snapshots-files.md)集來備份 Azure 檔案共用，這是共用的唯讀、時間點複本。 快照集是累加的，這表示它們只包含自從上一個快照集以來已變更的資料量。 每個檔案共用最多可以有200個快照集，並保留最多10年的快照。 您可以透過 PowerShell 或命令列介面（ (CLI) ）手動取得這些 Azure 入口網站快照集，也可以使用 [Azure 備份](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 快照集會儲存在您的檔案共用中，這表示如果您刪除檔案共用，您的快照集也會一併刪除。 若要保護您的快照集備份不會遭到意外刪除，請確定已為您的共用啟用虛刪除。
 
-[適用于 Azure 檔案共用的 Azure 備份](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) 會處理快照集的排程和保留期。 它的祖父-父親 (GFS) 功能意味著您可以每日、每週、每月和每年快照集，每個快照集都有自己的相異保留期限。 Azure 備份也會協調啟用虛刪除，並在其內的任何檔案共用設定為備份時，立即在儲存體帳戶上進行刪除鎖定。 最後，Azure 備份提供某些重要的監視和警示功能，可讓客戶取得其備份資產的匯總。
+[適用于 Azure 檔案共用的 Azure 備份](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) 會處理快照集的排程和保留期。 它的祖父-父親 (GFS) 功能意味著您可以每日、每週、每月和每年快照集，每個快照集都有自己的相異保留期限。 Azure 備份也會協調啟用虛刪除，並在其內的任何檔案共用設定為備份時，立即在儲存體帳戶上進行刪除鎖定。 最後，Azure 備份提供某些重要的監視和警示功能，可讓客戶取得其備份資產的匯總。
 
 您可以使用 Azure 備份在 Azure 入口網站中執行專案層級和共用層級還原。 您只需要選擇還原點 (特定的快照) 、特定的檔案或目錄（如果相關），然後再 (您想要還原的原始或替代) 位置。 備份服務會處理複製快照集資料的程式，並在入口網站中顯示您的還原進度。
 
-如需有關備份的詳細資訊，請參閱 [關於 Azure 檔案共用備份](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)。
+如需有關備份的詳細資訊，請參閱 [關於 Azure 檔案共用備份](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 ### <a name="advanced-threat-protection-for-azure-files-preview"></a>Azure 檔案儲存體 (preview 的 Advanced 威脅防護) 
 適用于 Azure 儲存體的 Advanced 威脅防護 (ATP) 提供額外一層的安全情報，在偵測到儲存體帳戶上的異常活動時提供警示，例如，不尋常的存取儲存體帳戶的嘗試。 ATP 也會執行惡意程式碼雜湊信譽分析，並會發出已知惡意程式碼的警示。 您可以透過 Azure 資訊安全中心在訂用帳戶或儲存體帳戶層級上設定 ATP。 
@@ -188,7 +188,7 @@ Azure 檔案儲存體具有多層式的方法，可確保您的資料已備份�
 #### <a name="limitations"></a>限制
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]
 
-## <a name="redundancy"></a>備援
+## <a name="redundancy"></a>備援性
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]
 
 ## <a name="migration"></a>遷移

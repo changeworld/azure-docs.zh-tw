@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 095a97d27439c54e2ade96e3a40349a0d95b9c11
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f6d17b007fcccd87aed17a9ec3ca039b9559ab6d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843089"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492228"
 ---
 # <a name="azure-security-baseline-for-site-recovery"></a>適用于 Site Recovery 的 Azure 安全性基準
 
@@ -22,7 +22,7 @@ ms.locfileid: "94843089"
 
 ## <a name="network-security"></a>網路安全性
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：網路安全性](../security/benchmarks/security-control-network-security.md)。*
+如需詳細資訊，請參閱 [Azure 安全性效能評定：網路安全性](../security/benchmarks/security-control-network-security.md)。
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保護虛擬網路內的 Azure 資源
 
@@ -52,7 +52,7 @@ ms.locfileid: "94843089"
 
 您可以使用 Azure PowerShell 或 Azure CLI，根據其標記查閱或執行資源的動作。 
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags) 
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md) 
 
 - [如何建立 Azure 虛擬網路](../virtual-network/quick-create-portal.md) 
 
@@ -164,9 +164,9 @@ ms.locfileid: "94843089"
 
 **指導** 方針：預設不會指派任何角色。 它們必須根據商務需求明確指派。 您可以使用 PowerShell CLI 或 Azure Active Directory (Azure AD) 來檢查任何角色指派，以找出屬於系統管理群組成員的帳戶。
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?amp;preserve-view=true&view=azureadps-2.0)
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
 
 **Azure 資訊安全中心監視**：是
 
@@ -256,7 +256,7 @@ ms.locfileid: "94843089"
 
 **指導** 方針：使用 Azure AD 作為 Site Recovery 的中央驗證和授權系統。 Azure AD 使用強式加密來保護資料、傳輸中的資料，以及 salts、雜湊，以及安全地儲存使用者認證，藉此保護資料。 
 
-- [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何建立及設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -270,7 +270,7 @@ ms.locfileid: "94843089"
 
 建立可定期審核使用者存取的流程，以確保只有已完成存取權審查的使用者才能繼續存取。 
 
-- [瞭解 Azure AD 報告](/azure/active-directory/reports-monitoring/)
+- [瞭解 Azure AD 報告](../active-directory/reports-monitoring/index.yml)
 
 - [如何使用 Azure 身分識別存取權檢閱](../active-directory/governance/access-reviews-overview.md)
 
@@ -286,7 +286,7 @@ ms.locfileid: "94843089"
 
 藉由建立 Azure AD 使用者帳戶的診斷設定，以及將審核和登入記錄傳送至 Log Analytics 工作區，進一步簡化此程式。 您可以在 Log Analytics 工作區中設定所需的警示。
 
-- [如何將 Azure 活動記錄整合到 Azure 監視器中](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何將 Azure 活動記錄整合到 Azure 監視器中](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [如何讓 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
@@ -312,7 +312,7 @@ ms.locfileid: "94843089"
 
 ## <a name="data-protection"></a>資料保護
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：資料保護](../security/benchmarks/security-control-data-protection.md)。*
+如需詳細資訊，請參閱 [Azure 安全性效能評定：資料保護](../security/benchmarks/security-control-data-protection.md)。
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的詳細目錄
 
@@ -431,7 +431,7 @@ Site Recovery 支援資料的待用加密。 針對 Azure IaaS 工作負載，�
 
 - [如何使用 Azure Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-- [如何檢視您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [如何檢視您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -505,7 +505,7 @@ Site Recovery 支援資料的待用加密。 針對 Azure IaaS 工作負載，�
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure 原則拒絕特定的資源類型](/azure/governance/policy/samples)
+- [如何使用 Azure 原則拒絕特定的資源類型](../governance/policy/samples/index.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -530,7 +530,7 @@ Site Recovery 支援資料的待用加密。 針對 Azure IaaS 工作負載，�
 **指導** 方針：使用 Azure 原則定義和執行復原服務保存庫的標準安全性設定。 
 
 使用 "Az.recoveryservices" 命名空間中 Azure 原則別名來建立自訂原則，以進行審核或強制執行 Site Recovery 服務的復原服務保存庫資源設定。
-- [如何檢視可用的 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [如何檢視可用的 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
@@ -553,9 +553,9 @@ Site Recovery 支援資料的待用加密。 針對 Azure IaaS 工作負載，�
 
 **指導** 方針：如果您使用復原服務保存庫的自訂 Azure 原則定義和相關資源，請選擇 Azure Repos 來安全地儲存和管理您的程式碼。
 
-- [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
 
-- [Azure Repos 文件](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Azure Repos 文件](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -608,7 +608,7 @@ Site Recovery 支援資料的待用加密。 針對 Azure IaaS 工作負載，�
 
 受控識別可讓您向支援 Azure AD authentication 的任何服務進行驗證，包括 Key Vault，而不需要在您的程式碼中提供任何認證。
 
-- [如何與 Azure 受控識別整合](https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity?tabs=core2x)
+- [如何與 Azure 受控識別整合](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md?tabs=core2x)
 
 - [如何在復原服務保存庫上啟用系統受控識別](azure-to-azure-how-to-enable-replication-private-endpoints.md#enable-the-managed-identity-for-the-vault)
 
@@ -638,7 +638,7 @@ Site Recovery 支援資料的待用加密。 針對 Azure IaaS 工作負載，�
 
 - [瞭解 Azure 雲端服務和虛擬機器的 Microsoft Antimalware](../security/fundamentals/antimalware.md)
 
-- [瞭解 Azure 資訊安全中心的資料服務威脅偵測](/azure/security-center/threat-protection)
+- [瞭解 Azure 資訊安全中心的資料服務威脅偵測](../security-center/azure-defender.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -656,7 +656,7 @@ Site Recovery 服務中繼資料使用的所有儲存體資源，其設定類型
 
 這超出客戶範圍，Site Recovery 團隊在內部負責處理。 客戶可以在 Azure 中備份 Key Vault 金鑰。
 
-- [如何在 Azure 中備份金鑰保存庫金鑰](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [如何在 Azure 中備份金鑰保存庫金鑰](/powershell/module/az.keyvault/backup-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -666,7 +666,7 @@ Site Recovery 服務中繼資料使用的所有儲存體資源，其設定類型
 
 **指導** 方針：定期測試已備份之客戶管理金鑰的還原。
 
-- [如何在 Azure 中還原金鑰保存庫金鑰](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [如何在 Azure 中還原金鑰保存庫金鑰](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -676,7 +676,7 @@ Site Recovery 服務中繼資料使用的所有儲存體資源，其設定類型
 
 **指導** 方針：資料會使用儲存體服務加密 (SSE) 以 Azure 的基礎結構即服務 (IaaS) 型虛擬機器進行加密。 在 Key Vault 中啟用虛刪除，以防止金鑰遭到意外或惡意刪除。
 
-- [如何在 Key Vault 中啟用虛刪除](https://docs.microsoft.com/azure/storage/blobs/soft-delete-blob-overview?tabs=azure-portal)
+- [如何在 Key Vault 中啟用虛刪除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 資訊安全中心監視**：是
 
@@ -684,7 +684,7 @@ Site Recovery 服務中繼資料使用的所有儲存體資源，其設定類型
 
 ## <a name="incident-response"></a>事件回應
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：事件回應](../security/benchmarks/security-control-incident-response.md)。*
+如需詳細資訊，請參閱 [Azure 安全性效能評定：事件回應](../security/benchmarks/security-control-incident-response.md)。
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：建立事件回應指南
 
@@ -712,7 +712,7 @@ Site Recovery 服務中繼資料使用的所有儲存體資源，其設定類型
 
 - [Azure 資訊安全中心的安全性警示](../security-center/security-center-alerts-overview.md) 
 
-- [使用標記來組織 Azure 資源](/azure/azure-resource-manager/resource-group-using-tags)
+- [使用標記來組織 Azure 資源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -778,5 +778,5 @@ Site Recovery 服務中繼資料使用的所有儲存體資源，其設定類型
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性基準測試 V2 總覽](/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定 V2 概觀](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

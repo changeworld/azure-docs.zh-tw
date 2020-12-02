@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 171ae04a70f3639981e74d20d260a03359a0f2c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f5653e4c184e88bce86026681dde1aee9e14d49
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187433"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491412"
 ---
 # <a name="what-is-routing-preference-preview"></a>什麼是路由喜好設定 (預覽)？
 
@@ -53,7 +53,7 @@ Azure 路由喜好設定可讓您選擇流量在 Azure 與網際網路之間的�
 
 ## <a name="supported-services"></a>支援的服務
 
-選擇「Microsoft 全球網路」為路由喜好設定的公用 IP 可與任何 Azure 服務相關聯。 不過，選擇**網際網路**為路由喜好設定的公用 IP 可與下列 Azure 資源建立關聯：
+選擇「Microsoft 全球網路」為路由喜好設定的公用 IP 可與任何 Azure 服務相關聯。 不過，選擇 **網際網路** 為路由喜好設定的公用 IP 可與下列 Azure 資源建立關聯：
 
 * 虛擬機器
 * 虛擬機器擴展集
@@ -62,7 +62,7 @@ Azure 路由喜好設定可讓您選擇流量在 Azure 與網際網路之間的�
 * 應用程式閘道
 * Azure 防火牆
 
-針對儲存體，主要端點一律會使用 **Microsoft 全球網路**。 您可以使用**網際網路**來啟用次要端點，以作為您的流量路由選擇。 以下為支援的儲存體服務：
+針對儲存體，主要端點一律會使用 **Microsoft 全球網路**。 您可以使用 **網際網路** 來啟用次要端點，以作為您的流量路由選擇。 以下為支援的儲存體服務：
 
 * Blob
 * 檔案
@@ -70,19 +70,7 @@ Azure 路由喜好設定可讓您選擇流量在 Azure 與網際網路之間的�
 * Azure DataLake
 
 ## <a name="pricing"></a>定價
-這兩個選項之間的價格差異會反映在網際網路輸出資料傳輸定價中。 透過 **Microsoft 全球網路**進行路由傳送的資料傳輸價格與目前的網際網路輸出價格相同。 如需最新的定價資訊，請造訪 [Azure 頻寬定價頁面](https://azure.microsoft.com/pricing/details/bandwidth/)。 透過**公用網際網路**進行路由傳送的定價如下表所示：
-
-| 輸出來源區域 | 0-5 GB/月 | 5GB-10 TB/月 | 10-50 TB/月 | 50-150 TB/月 | 150-500 TB/月 |
-| --- | --- | --- | --- | --- | --- |
-| 區域 1 | $0/GB | $0.085/GB | $0.065/GB | $0.06/GB | $0.04/GB |
-| 區域 2 | $0/GB | $0.11/GB | $0.075/GB | $0.07/GB | $0.06/GB  |
-
-若每月超過 500 TB 磁碟區，[請與我們連絡](https://azure.microsoft.com/overview/sales-number/)。
-* 區域 1 - 澳大利亞中部、澳大利亞中部 2、加拿大中部、加拿大東部、北歐、西歐、法國中部、法國南部、德國北部 (公開)、德國中西部 (公開)、挪威東部、挪威西部、瑞士北部、瑞士西部、英國南部、英國西部、美國中部、美國東部、美國東部 2、美國中北部、美國中南部、美國西部、美國西部 2 和美國中西部。
-
-* 區域 2 - 東亞、東南亞、澳大利亞東部、澳大利亞東南部、印度中部、印度南部、印度西部、日本東部、日本西部、南韓中部及南韓南部。
-
-* 區域 3 - 巴西南部、南非北部、南非西部、阿拉伯聯合大公國中部和阿拉伯聯合大公國北部。
+這兩個選項之間的價格差異會反映在網際網路輸出資料傳輸定價中。 透過 **Microsoft 全球網路** 進行路由傳送的資料傳輸價格與目前的網際網路輸出價格相同。 如需最新的定價資訊，請造訪 [Azure 頻寬定價頁面](https://azure.microsoft.com/pricing/details/bandwidth/)。 
 
 ## <a name="availability"></a>可用性
 

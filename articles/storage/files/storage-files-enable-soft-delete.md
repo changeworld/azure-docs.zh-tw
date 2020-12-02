@@ -4,16 +4,16 @@ description: 了解如何在 Azure 檔案共用上啟用虛刪除以進行資料
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/28/2020
+ms.date: 12/01/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 7defa8611080027a67a0d1db1daa4c4a9d44edfe
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ea98b2d9812fb5c848c7e13b94d46a4142595cd4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126136"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492160"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>在 Azure 檔案共用上啟用虛刪除
 
@@ -33,11 +33,29 @@ Azure 儲存體提供檔案共用的虛刪除功能，因此，當應用程式�
 
 :::image type="content" source="media/storage-how-to-recover-deleted-account/enable-soft-delete-files.png" alt-text="[儲存體帳戶虛刪除設定] 窗格的螢幕擷取畫面。反白顯示 [檔案共用] 區段，啟用切換、設定保留期間及儲存。這會對您儲存體帳戶中的所有檔案共用啟用虛刪除。":::
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+2.1.3 版和更新版本的 [Azure CLI 模組](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)都有提供虛刪除 Cmdlet。
+
+## <a name="getting-started-with-cli"></a>開始使用 CLI
+
+若要啟用虛刪除，您必須更新檔案用戶端的服務屬性。 下列範例會為儲存體帳戶中的所有檔案共用啟用虛刪除：
+
+```azurecli
+az storage account file-service-properties update --enable-delete-retention true -n yourStorageaccount -g yourResourceGroup
+```
+
+您可以使用下列命令來確認是否已啟用虛刪除，並檢視其保留原則：
+
+```azurecli
+az storage account file-service-properties show -n yourStorageaccount -g yourResourceGroup
+```
+
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ## <a name="prerequisite"></a>必要條件
 
-[3.0.0](https://www.powershellgallery.com/packages/Az.Storage/3.0.0)版的 Az. Storage 模組提供虛刪除 Cmdlet。 
+4.8.0 和新版的 Az. Storage 模組提供虛刪除 Cmdlet。 
 
 ## <a name="getting-started-with-powershell"></a>開始使用 PowerShell
 
@@ -68,17 +86,37 @@ Get-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName 
 
     這會顯示目前處於 [已刪除] 狀態的任何共用。
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/undelete-file-share.png" alt-text="[儲存體帳戶虛刪除設定] 窗格的螢幕擷取畫面。反白顯示 [檔案共用] 區段，啟用切換、設定保留期間及儲存。這會對您儲存體帳戶中的所有檔案共用啟用虛刪除。":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/undelete-file-share.png" alt-text="如果 [狀態] 資料行 ([名稱] 資料行旁邊的資料行) 設定為 [已刪除]，則表示您的檔案共用處於虛刪除狀態。並且在您指定的保留期間之後永久刪除。":::
 
 1. 選取 [共用]，然後選取 [取消刪除]，這會還原共用。
 
     您可以確認共用已還原，因為其狀態會切換為 [作用中]。
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/restored-file-share.png" alt-text="[儲存體帳戶虛刪除設定] 窗格的螢幕擷取畫面。反白顯示 [檔案共用] 區段，啟用切換、設定保留期間及儲存。這會對您儲存體帳戶中的所有檔案共用啟用虛刪除。":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/restored-file-share.png" alt-text="如果 [狀態] 資料行 ([名稱] 資料行旁邊的資料行) 設定為 [作用中]，則表示您的檔案共用已還原。":::
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+2.1.3 版 Azure CLI 中提供虛刪除 Cmdlet。 若要還原已虛刪除的檔案共用，您必須先取得 `--deleted-version` 共用的值。 若要取得該值，請使用下列命令來列出儲存體帳戶的所有已刪除共用：
+
+```azurecli
+az storage share-rm list --storage-account yourStorageaccount --include-deleted
+```
+
+一旦您識別要還原的共用，您可以使用它搭配下列命令來還原它：
+
+```azurecli
+az storage share-rm restore -n deletedshare --deleted-version 01D64EB9886F00C4 -g yourResourceGroup --storage-account yourStorageaccount
+```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-3.0.0 版的 Az. Storage 模組提供虛刪除 Cmdlet。 若要還原虛刪除的檔案共用，請使用下列命令：
+4.8.0 和新版的 Az. Storage 模組提供虛刪除 Cmdlet。 若要還原已虛刪除的檔案共用，您必須先取得 `-DeletedShareVersion` 共用的值。 若要取得該值，請使用下列命令來列出儲存體帳戶的所有已刪除共用：
+
+```azurepowershell-interactive
+Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $accountName -IncludeDeleted
+```
+
+一旦您識別要還原的共用，您可以使用它搭配下列命令來還原它：
 
 ```azurepowershell-interactive
 Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $accountName -DeletedShareVersion 01D5E2783BDCDA97
@@ -95,11 +133,18 @@ Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $account
 1. 在 [檔案共用] 下，針對 [檔案共用的虛刪除] 選取 [停用]。
 1. 選取 [儲存] 以確認您的資料保留設定。
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="[儲存體帳戶虛刪除設定] 窗格的螢幕擷取畫面。反白顯示 [檔案共用] 區段，啟用切換、設定保留期間及儲存。這會對您儲存體帳戶中的所有檔案共用啟用虛刪除。":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="停用虛刪除可讓您立即並永久刪除儲存體帳戶中的所有檔案共用。":::
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+2.1.3 版 Azure CLI 中提供虛刪除 Cmdlet。 您可以使用下列命令，在儲存體帳戶上停用虛刪除：
+
+```azurecli
+az storage account file-service-properties update --enable-delete-retention false -n yourStorageaccount -g yourResourceGroup
+```
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-3.0.0 版的 Az. Storage 模組提供虛刪除 Cmdlet。 您可以使用下列命令，在儲存體帳戶上停用虛刪除：
+4.8.0 和新版的 Az. Storage 模組提供虛刪除 Cmdlet。 您可以使用下列命令，在儲存體帳戶上停用虛刪除：
 
 ```azurepowershell-interactive
 Update-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName $accountName -EnableShareDeleteRetentionPolicy $false

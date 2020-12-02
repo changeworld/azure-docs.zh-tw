@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 1b29565e18b2da2087cc15966b30b433a42fb603
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 32aa94c986c90b7bd46b9f5561021c34c0f142af
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629796"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492087"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>規劃 Azure 檔案同步部署
 
@@ -30,24 +30,24 @@ ms.locfileid: "94629796"
 
 這些檔案將儲存在雲端的 [Azure 檔案共用](storage-files-introduction.md)中。 Azure 檔案共用的使用方式有兩種：直接裝載這些無伺服器 Azure 檔案共用 (SMB)，或使用 Azure 檔案同步快取內部部署的 Azure 檔案共用。您所選擇的部署選項會變更規劃部署時所需考慮的層面。 
 
-- **直接裝戴 Azure 檔案共用** ：由於 Azure 檔案儲存體會提供 SMB 存取，因此您可以使用 Windows、macOS 和 Linux 中提供的標準 SMB 用戶端，在內部部署或雲端中裝載 Azure 檔案共用。 由於 Azure 檔案共用是無伺服器的，因此針對生產案例進行部署並不需要管理檔案伺服器或 NAS 裝置。 這表示您不需要套用軟體修補程式或交換實體磁碟。 
+- **直接裝戴 Azure 檔案共用**：由於 Azure 檔案儲存體會提供 SMB 存取，因此您可以使用 Windows、macOS 和 Linux 中提供的標準 SMB 用戶端，在內部部署或雲端中裝載 Azure 檔案共用。 由於 Azure 檔案共用是無伺服器的，因此針對生產案例進行部署並不需要管理檔案伺服器或 NAS 裝置。 這表示您不需要套用軟體修補程式或交換實體磁碟。 
 
-- **使用 Azure 檔案同步快取內部部署的 Azure 檔案共用** ：Azure 檔案同步可讓您將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的靈活度、效能及相容性。 Azure 檔案同步會將內部部署 (或雲端) Windows Server 轉換成 Azure 檔案共用的快速快取。 
+- **使用 Azure 檔案同步快取內部部署的 Azure 檔案共用**：Azure 檔案同步可讓您將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的靈活度、效能及相容性。 Azure 檔案同步會將內部部署 (或雲端) Windows Server 轉換成 Azure 檔案共用的快速快取。 
 
 ## <a name="management-concepts"></a>管理概念
 Azure 檔案同步部署有三個基礎管理物件：
 
-- **Azure 檔案共用** ：Azure 檔案共用是無伺服器的雲端檔案共用，可提供「Azure 檔案同步」同步關係的 *雲端端點* 。 雖然 Azure 檔案共用中的檔案可以直接使用 SMB 或 FileREST 通訊協定進行存取，但是建議您在搭配 Azure 檔案同步使用 Azure 檔案共用時，主要透過 Windows Server 快取存取檔案。這是因為 Azure 檔案儲存體現今缺少有效率的變更偵測機制 (如 Windows Server 所具有的)，因此直接對 Azure 檔案共用進行變更將需要一段時間才能傳播回伺服器端點。
-- **伺服器端點** ：Windows Server上正在同步至 Azure 檔案共用的路徑。 這可以是磁碟區上的特定資料夾或磁碟區的根目錄。 如果伺服器端點的命名空間沒有重疊，則相同磁碟區中可以存在多個伺服器端點。
-- **同步群組** ：此為物件，可定義 **雲端端點** 或 Azure 檔案共用與伺服器端點之間的同步關係。 同步群組內的端點會與彼此保持同步。 例如，如果您有兩組不同的檔案需要透過 Azure 檔案同步管理，您會建立兩個同步群組，並將不同的端點個別新增至這兩個同步群組。
+- **Azure 檔案共用**：Azure 檔案共用是無伺服器的雲端檔案共用，可提供「Azure 檔案同步」同步關係的 *雲端端點*。 雖然 Azure 檔案共用中的檔案可以直接使用 SMB 或 FileREST 通訊協定進行存取，但是建議您在搭配 Azure 檔案同步使用 Azure 檔案共用時，主要透過 Windows Server 快取存取檔案。這是因為 Azure 檔案儲存體現今缺少有效率的變更偵測機制 (如 Windows Server 所具有的)，因此直接對 Azure 檔案共用進行變更將需要一段時間才能傳播回伺服器端點。
+- **伺服器端點**：Windows Server上正在同步至 Azure 檔案共用的路徑。 這可以是磁碟區上的特定資料夾或磁碟區的根目錄。 如果伺服器端點的命名空間沒有重疊，則相同磁碟區中可以存在多個伺服器端點。
+- **同步群組**：此為物件，可定義 **雲端端點** 或 Azure 檔案共用與伺服器端點之間的同步關係。 同步群組內的端點會與彼此保持同步。 例如，如果您有兩組不同的檔案需要透過 Azure 檔案同步管理，您會建立兩個同步群組，並將不同的端點個別新增至這兩個同步群組。
 
 ### <a name="azure-file-share-management-concepts"></a>Azure 檔案共用管理概念
 [!INCLUDE [storage-files-file-share-management-concepts](../../../includes/storage-files-file-share-management-concepts.md)]
 
 ### <a name="azure-file-sync-management-concepts"></a>Azure 檔案同步管理概念
-同步群組會部署到 **儲存體同步服務** ，這些服務是最上層物件，用來註冊與 Azure 檔案同步搭配使用的伺服器，並包含同步群組關聯性。 儲存體同步服務資源是儲存體帳戶資源的對等，同樣可以部署到 Azure 資源群組中。 儲存體同步服務可以建立同步群組，跨多個儲存體帳戶和多個已註冊 Windows Server 包含 Azure 檔案共用。
+同步群組會部署到 **儲存體同步服務**，這些服務是最上層物件，用來註冊與 Azure 檔案同步搭配使用的伺服器，並包含同步群組關聯性。 儲存體同步服務資源是儲存體帳戶資源的對等，同樣可以部署到 Azure 資源群組中。 儲存體同步服務可以建立同步群組，跨多個儲存體帳戶和多個已註冊 Windows Server 包含 Azure 檔案共用。
 
-您必須先向儲存體同步服務註冊 Windows Server，才能在儲存體同步服務中建立同步群組。 這會建立 **已註冊的伺服器物件** ，代表您的伺服器或叢集與儲存體同步服務之間的信任關係。 若要註冊儲存體同步服務，您必須先在伺服器上安裝 Azure 檔案同步代理程式。 一次只能向單一儲存體同步服務註冊個別伺服器或叢集。
+您必須先向儲存體同步服務註冊 Windows Server，才能在儲存體同步服務中建立同步群組。 這會建立 **已註冊的伺服器物件**，代表您的伺服器或叢集與儲存體同步服務之間的信任關係。 若要註冊儲存體同步服務，您必須先在伺服器上安裝 Azure 檔案同步代理程式。 一次只能向單一儲存體同步服務註冊個別伺服器或叢集。
 
 同步群組包含一個雲端端點或 Azure 檔案共用，以及至少一個伺服器端點。 伺服器端點物件所包含的設定，可設定 **雲端階層處理** 功能，以提供 Azure 檔案同步的快取功能。為了與 Azure 檔案共用同步，包含 Azure 檔案共用的儲存體帳戶必須與儲存體同步服務位於相同的 Azure 區域中。
 
@@ -368,7 +368,7 @@ Azure 檔案同步僅支援與位於和儲存體同步服務相同之區域中�
 > 防毒軟體廠商可以使用 [Azure 檔案同步防毒相容性測試套件](https://www.microsoft.com/download/details.aspx?id=58322) (可從 Microsoft 下載中心下載)，檢查其產品與 Azure 檔案同步之間的相容性。
 
 ## <a name="backup"></a>Backup 
-如果已啟用雲端階層處理，則不應使用直接備份伺服器端點的解決方案，或不應使用伺服器端點所在的 VM。 雲端階層處理只會在伺服器端點上儲存您的資料子集，並將完整資料集放在您的 Azure 檔案共用中。 視所使用的備份解決方案而定，階層式檔案將會略過，而且不會備份 (因為它們已設定 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 屬性) ，或會將它們重新叫用到磁片，因而產生高輸出費用。 我們建議使用雲端備份解決方案來直接備份 Azure 檔案共用。 如需詳細資訊，請參閱 [關於 azure 檔案共用備份](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) ，或洽詢您的備份提供者，查看是否支援備份 Azure 檔案共用。
+如果已啟用雲端階層處理，則不應使用直接備份伺服器端點的解決方案，或不應使用伺服器端點所在的 VM。 雲端階層處理只會在伺服器端點上儲存您的資料子集，並將完整資料集放在您的 Azure 檔案共用中。 視所使用的備份解決方案而定，階層式檔案將會略過，而且不會備份 (因為它們已設定 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 屬性) ，或會將它們重新叫用到磁片，因而產生高輸出費用。 我們建議使用雲端備份解決方案來直接備份 Azure 檔案共用。 如需詳細資訊，請參閱 [關於 azure 檔案共用備份](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) ，或洽詢您的備份提供者，查看是否支援備份 Azure 檔案共用。
 
 如果您想要使用內部部署備份解決方案，應該在已停用雲端階層處理的同步處理群組中的伺服器上執行備份。 執行還原時，請使用磁碟區層級或檔案層級的還原選項。 使用檔案層級還原選項進行還原的檔案會同步至同步群組中的所有端點，並使用從備份還原過來的版本取代現有檔案。  磁碟區層級還原將不會取代 Azure 檔案共用或其他伺服器端點中的較新檔案版本。
 

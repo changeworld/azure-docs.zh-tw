@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 05cc6579d83fe0cd861f3f91b8d44297963f8101
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: a124f576b2540399d27fcd97e0e58476dba4ba4b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433269"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492806"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>在適用於 MySQL 的 Azure 資料庫中備份與還原
 
@@ -38,11 +38,11 @@ ms.locfileid: "96433269"
 一般用途儲存體是支援 [一般用途](concepts-pricing-tiers.md) 和 [記憶體優化層](concepts-pricing-tiers.md) 伺服器的後端儲存體。 針對一般用途儲存體最多 4 TB 的伺服器，完整備份會每週進行一次。 差異備份會一天進行兩次。 交易記錄備份會每五分鐘執行一次。 一般用途儲存體上的備份（最多 4 TB 的儲存體）不是以快照集為基礎，而且會在備份時耗用 IO 頻寬。 針對大型資料庫 ( # A0 1 TB) 在 4 TB 的儲存體上，建議您考慮
 
 - 布建更多 IOPs 以考慮備份 IOs 或
-- 或者，如果您偏好的 [Azure 區域](/azure/mysql/concepts-pricing-tiers#storage)中有基礎儲存體基礎結構，則遷移至一般目的儲存體，以支援多達 16 TB 的儲存體。 一般用途儲存體沒有額外的成本可支援高達 16 TB 的儲存體。 如需遷移至 16 TB 儲存體的協助，請從 Azure 入口網站開啟支援票證。
+- 或者，如果您偏好的 [Azure 區域](./concepts-pricing-tiers.md#storage)中有基礎儲存體基礎結構，則遷移至一般目的儲存體，以支援多達 16 TB 的儲存體。 一般用途儲存體沒有額外的成本可支援高達 16 TB 的儲存體。 如需遷移至 16 TB 儲存體的協助，請從 Azure 入口網站開啟支援票證。
 
 #### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>一般用途儲存體伺服器，最多可達 16 TB 的儲存空間
 
-在 [Azure 區域](/azure/mysql/concepts-pricing-tiers#storage)的子集中，所有新布建的伺服器都可支援一般用途儲存體，最多可達 16 TB 的儲存體。 換句話說，儲存體最多可達 16 TB 的儲存空間，是所有支援 [區域](concepts-pricing-tiers.md#storage) 的預設一般用途儲存體。 這些 16 TB 儲存體伺服器上的備份是以快照集為基礎。 建立伺服器之後，會立即排程第一次完整快照集備份。 第一次完整快照集備份會保留為伺服器的基礎備份。 後續的快照集備份只是差異備份。
+在 [Azure 區域](./concepts-pricing-tiers.md#storage)的子集中，所有新布建的伺服器都可支援一般用途儲存體，最多可達 16 TB 的儲存體。 換句話說，儲存體最多可達 16 TB 的儲存空間，是所有支援 [區域](concepts-pricing-tiers.md#storage) 的預設一般用途儲存體。 這些 16 TB 儲存體伺服器上的備份是以快照集為基礎。 建立伺服器之後，會立即排程第一次完整快照集備份。 第一次完整快照集備份會保留為伺服器的基礎備份。 後續的快照集備份只是差異備份。
 
 差異快照集備份一天至少會執行一次。 差異快照集備份不會依固定排程執行。 差異快照集備份會每隔24小時執行一次，除非 MySQL 中的交易記錄 (binlog) 自上次差異備份起算超過 50 GB。 一天內最多允許六個差異快照集。
 

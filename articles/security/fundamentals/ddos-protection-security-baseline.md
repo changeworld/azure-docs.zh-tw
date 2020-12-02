@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c57ad181f35d3c0498804f65390792d0e600f1ff
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1c1a5a96742d380ce42c0aea8c77a199083df47f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843412"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492245"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>適用于 Azure DDoS 保護 Standard 的 Azure 安全性基準
 
@@ -38,7 +38,7 @@ ms.locfileid: "94843412"
 
 啟用 Azure 活動記錄診斷設定，並將記錄傳送至 Log Analytics 工作區、Azure 事件中樞或 Azure 儲存體帳戶進行封存。 活動記錄可讓您深入瞭解在控制平面層級的 Azure Cache for Redis 實例上所執行的作業。 您可以使用 Azure 活動記錄資料來判斷任何寫入作業的「內容、物件和時間」 (PUT、POST、DELETE) 在 Azure DDoS 保護實例的控制平面層級執行。
 
-- [如何設定 DDoS 保護計量的警示](../../virtual-network/manage-ddos-protection.md#configure-alerts-for-ddos-protection-metrics)
+- [如何設定 DDoS 保護計量的警示](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
 
 - [如何啟用 Azure 活動記錄的診斷設定](../../azure-monitor/platform/activity-log.md)
 
@@ -60,7 +60,7 @@ ms.locfileid: "94843412"
 
 **指導** 方針：啟用 Azure 活動記錄診斷設定，並將記錄傳送至 Log Analytics 工作區。 在 Log Analytics 中執行查詢，以搜尋詞彙、識別趨勢、分析模式，以及根據可能已針對復原服務保存庫收集的活動記錄資料，提供許多其他見解。
 
-- [如何存取 DDoS 保護標準服務的遙測、記錄和攻擊分析的相關資訊](../../virtual-network/manage-ddos-protection.md#configure-alerts-for-ddos-protection-metrics)
+- [如何存取 DDoS 保護標準服務的遙測、記錄和攻擊分析的相關資訊](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
 
 - [如何啟用 Azure 活動記錄的診斷設定](../../azure-monitor/platform/activity-log.md)
 
@@ -96,7 +96,7 @@ ms.locfileid: "94843412"
 
 此外，Azure Active Directory (AD) 具有必須明確指派且可供查詢的內建角色。 使用 Azure AD PowerShell 模組執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
 
-- [瞭解 Azure DDoS 保護中的許可權](../../virtual-network/manage-ddos-protection.md#permissions-and-restrictions)
+- [瞭解 Azure DDoS 保護中的許可權](../../ddos-protection/manage-permissions.md)
 
 - [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -200,7 +200,7 @@ ms.locfileid: "94843412"
 
 **指導** 方針：在適用的情況下，使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
 
-- [如何建立和設定 Azure AD 實例](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何建立及設定 Azure AD 執行個體](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -266,7 +266,7 @@ ms.locfileid: "94843412"
 
 **指導** 方針：若要使用 Azure DDoS 保護計畫，您的帳戶必須指派給「網路參與者」角色或指派給特定動作的自訂角色。
 
-- [在 Azure DDoS 保護中 (Azure RBAC) 管理 Azure 角色型存取控制](../../virtual-network/manage-ddos-protection.md)
+- [在 Azure DDoS 保護中 (Azure RBAC) 管理 Azure 角色型存取控制](../../ddos-protection/manage-ddos-protection.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -342,7 +342,7 @@ ms.locfileid: "94843412"
 
 **指導** 方針：使用 Azure 原則對可在訂用帳戶中建立的資源類型施加限制。
 
-使用 Azure Resource Graph 來查詢及探索其訂用帳戶內的資源。  確保已核准環境中的所有 Azure 資源。
+使用 Azure Resource Graph 則可查詢及探索其訂用帳戶內的資源。  確保已核准環境中的所有 Azure 資源。
 
 - [如何設定和管理 Azure 原則](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -512,7 +512,7 @@ ms.locfileid: "94843412"
 
 **指引**：如果 Microsoft 安全性回應中心 (MSRC) 發現您的資料遭到非法或未經授權的對象存取，Microsoft 將使用安全性事件連絡資訊來連絡您。 事後檢討事件，確保問題已解決。
 
-- [如何設定 Azure 資訊安全中心安全性連絡人](../../security-center/security-center-provide-security-contact-details.md)
+- [如何設定 Azure 資訊安全中心的安全性連絡人](../../security-center/security-center-provide-security-contact-details.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -524,7 +524,7 @@ ms.locfileid: "94843412"
 
 選取任何可用的 DDoS 保護計量，以在攻擊期間有作用中的風險降低時發出警示，使用 Azure 監視器警示設定。 符合條件時，指定的位址會收到警示電子郵件
 
-- [設定 DDoS 保護計量的警示](../../virtual-network/manage-ddos-protection.md#configure-alerts-for-ddos-protection-metrics)
+- [設定 DDoS 保護計量的警示](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
 
 - [如何設定連續匯出](../../security-center/continuous-export.md)
 
@@ -554,7 +554,7 @@ ms.locfileid: "94843412"
 
 - [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-- [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 資訊安全中心監視**：不適用
 

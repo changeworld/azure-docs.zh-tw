@@ -6,18 +6,18 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: e756e033c8e5b2508dca9bde76ad16be26a940fa
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 42bbe1c9f4056ae0dae0ccd59b452db90a7c63c5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505779"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493656"
 ---
 # <a name="upgrade-your-postgresql-database-using-dump-and-restore"></a>使用傾印和還原升級于 postgresql 資料庫
 
 您可以使用下列方法，將您的資料庫移轉至較高的主要版本伺服器，以升級適用於 PostgreSQL 的 Azure 資料庫單一伺服器中部署的于 postgresql 伺服器。
 * 使用於 postgresql [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html)和 [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html)的 **離線** 方法會造成遷移資料的停機時間。 本檔說明這種升級/遷移方法。
-* 使用 [資料庫移轉服務](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal) (DMS) 的 **線上** 方法。 這種方法可減少停機時間，並讓目標資料庫與來源保持同步，而且您可以選擇何時要剪下。 不過，使用 DMS 有一些必要條件和限制。 如需詳細資訊，請參閱 [DMS 檔](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal)集。 
+* 使用 [資料庫移轉服務](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) (DMS) 的 **線上** 方法。 這種方法可減少停機時間，並讓目標資料庫與來源保持同步，而且您可以選擇何時要剪下。 不過，使用 DMS 有一些必要條件和限制。 如需詳細資訊，請參閱 [DMS 檔](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md)集。 
 
  下表提供以資料庫大小和案例為基礎的一些建議。
 
@@ -28,7 +28,7 @@ ms.locfileid: "94505779"
 | 中小型 Db (10 GB – 100 GB)  | X | X |
 | 大型資料庫 ( # A0 100 GB)  |  | X |
 | 無論資料庫大小，都能承受停機升級 ()  | X |  |
-| 可以 [解決 DMS 必要條件](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal#prerequisites)，包括重新開機嗎？ |  | X |
+| 可以 [解決 DMS 必要條件](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md#prerequisites)，包括重新開機嗎？ |  | X |
 | 在升級過程中，可以避免 Ddl 和未記錄資料表嗎？ | |  X |
 
 本指南提供一些離線遷移方法和範例，示範如何從來源伺服器遷移到執行較高版本于 postgresql 的目標伺服器。

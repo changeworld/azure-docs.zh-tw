@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: f31a883a2b10f37d6a4a7a91fff37739e340ac60
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 73d88f69057dc6fe39f6329e89eb72ecebf853f0
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348843"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491973"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>如何使用 C++ 的佇列儲存體
 
@@ -60,7 +60,7 @@ ms.locfileid: "93348843"
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>設定 Azure 儲存體連接字串
 
-Azure 儲存體用戶端會使用儲存體連接字串來儲存存取資料管理服務時所用的端點與認證。 在用戶端應用程式中執行時，您必須以下列格式提供儲存體連接字串：使用您的儲存體帳戶名稱，以及 AccountKey [Azure 入口網站](https://portal.azure.com)中針對 *AccountName* 和 *AccountKey* 值所列之儲存體帳戶的儲存體存取金鑰。 如需有關儲存體帳戶和存取金鑰的資訊，請參閱 [關於 Azure 儲存體帳戶](../common/storage-account-create.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json)。 本範例將示範如何宣告靜態欄位來存放連接字串：
+Azure 儲存體用戶端會使用儲存體連接字串來儲存存取資料管理服務時所用的端點與認證。 在用戶端應用程式中執行時，您必須以下列格式提供儲存體連接字串：使用您的儲存體帳戶名稱，以及 AccountKey [Azure 入口網站](https://portal.azure.com)中針對 *AccountName* 和 *AccountKey* 值所列之儲存體帳戶的儲存體存取金鑰。 如需有關儲存體帳戶和存取金鑰的資訊，請參閱 [關於 Azure 儲存體帳戶](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。 本範例將示範如何宣告靜態欄位來存放連接字串：
 
 ```cpp
 // Define the connection-string with your values.
@@ -111,7 +111,7 @@ azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sampl
 
 ## <a name="how-to-insert-a-message-into-a-queue"></a>作法：將訊息插入佇列中
 
-若要將訊息插入現有佇列，請先建立新的 **cloud_queue_message** 。 接下來，呼叫 **add_message** 方法。 **cloud_queue_message** 便可以從字串或 **byte** 陣列建立。 以下是建立佇列 (如果佇列不存在) 並插入訊息 'Hello, World' 的程式碼：
+若要將訊息插入現有佇列，請先建立新的 **cloud_queue_message**。 接下來，呼叫 **add_message** 方法。 **cloud_queue_message** 便可以從字串或 **byte** 陣列建立。 以下是建立佇列 (如果佇列不存在) 並插入訊息 'Hello, World' 的程式碼：
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -181,7 +181,7 @@ std::wcout << U("Changed message content: ") << changed_message.content_as_strin
 
 ## <a name="how-to-de-queue-the-next-message"></a>作法：在下一個訊息清除佇列
 
-您的程式碼可以使用兩個步驟將訊息自佇列中清除佇列。 當您呼叫 **get_message** 時，您會取得佇列中的下一則訊息。 從這個佇列中讀取訊息的任何其他程式碼，都會無法看到從 **get_message** 傳回的訊息。 若要完成從佇列中移除訊息的作業，您也必須呼叫 **delete_message** 。 這個移除訊息的兩步驟程序可確保您的程式碼因為硬體或軟體故障而無法處理訊息時，另一個程式碼的執行個體可以取得相同訊息並再試一次。 在處理訊息之後，您的程式碼會立即呼叫 **delete_message** 。
+您的程式碼可以使用兩個步驟將訊息自佇列中清除佇列。 當您呼叫 **get_message** 時，您會取得佇列中的下一則訊息。 從這個佇列中讀取訊息的任何其他程式碼，都會無法看到從 **get_message** 傳回的訊息。 若要完成從佇列中移除訊息的作業，您也必須呼叫 **delete_message**。 這個移除訊息的兩步驟程序可確保您的程式碼因為硬體或軟體故障而無法處理訊息時，另一個程式碼的執行個體可以取得相同訊息並再試一次。 在處理訊息之後，您的程式碼會立即呼叫 **delete_message** 。
 
 ```cpp
 // Retrieve storage account from connection-string.

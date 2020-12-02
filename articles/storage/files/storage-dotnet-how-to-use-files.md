@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0196330df01f98e216c39bcc689eac2bde2f4cd9
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e112060db4a44884d3094a939b03ff106ba72e65
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629337"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492194"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 開發 Azure 檔案服務
 
@@ -51,8 +51,8 @@ API | 使用時機 | 注意
 在 Visual Studio 中，建立新的 Windows 主控台應用程式。 下列步驟說明如何在 Visual Studio 2019 中建立主控台應用程式。 這些步驟類似其他 Visual Studio 版本中的步驟。
 
 1. 啟動 Visual Studio，然後選取 [建立新專案]。
-1. 在 [ **建立新專案** ] 中，選擇 [ **主控台應用程式 (] .NET Framework)** 的 c #，然後選取 **[下一步]** 。
-1. 在 [ **設定您的新專案** ] 中，輸入應用程式的名稱，然後選取 [ **建立** ]。
+1. 在 [ **建立新專案**] 中，選擇 [ **主控台應用程式 (] .NET Framework)** 的 c #，然後選取 **[下一步]**。
+1. 在 [ **設定您的新專案**] 中，輸入應用程式的名稱，然後選取 [ **建立**]。
 
 將本文中的所有程式碼範例新增至 `Program` *Program.cs* 檔案中的類別。
 
@@ -67,10 +67,10 @@ API | 使用時機 | 注意
 - [適用于 .net 的 Azure 儲存體 Files 用戶端程式庫](https://www.nuget.org/packages/Azure.Storage.Files.Shares/)：此套件可讓您以程式設計方式存取儲存體帳戶中的檔案資源。
 - [適用于 .net 的系統 Configuration Manager 程式庫](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/)：此套件提供可在設定檔中儲存和取出值的類別。
 
-您可以使用 NuGet 來取得套件。 請遵循這些步驟：
+您可以使用 NuGet 來取得套件。 請遵循下列步驟：
 
-1. 在 **方案總管** 中，以滑鼠右鍵按一下您的專案，然後選擇 [ **管理 NuGet 套件** ]。
-1. 在 [NuGet 套件管理員] 中，選取 [瀏覽]。 然後搜尋並選擇 **Azure Core** ，然後選取 [ **安裝** ]。
+1. 在 **方案總管** 中，以滑鼠右鍵按一下您的專案，然後選擇 [ **管理 NuGet 套件**]。
+1. 在 [NuGet 套件管理員] 中，選取 [瀏覽]。 然後搜尋並選擇 **Azure Core**，然後選取 [ **安裝**]。
 
    此步驟會安裝封裝及其相依性。
 
@@ -87,10 +87,10 @@ API | 使用時機 | 注意
 - [適用于 .net 的 Microsoft Azure 儲存體檔案庫](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/)：此套件可讓您以程式設計方式存取儲存體帳戶中的檔案資源。
 - [適用于 .net 的 Microsoft Azure Configuration Manager 程式庫](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)：此套件提供一個類別，可讓您在應用程式執行所在的位置剖析設定檔中的連接字串。
 
-您可以使用 NuGet 來取得套件。 請遵循這些步驟：
+您可以使用 NuGet 來取得套件。 請遵循下列步驟：
 
-1. 在 **方案總管** 中，以滑鼠右鍵按一下您的專案，然後選擇 [ **管理 NuGet 套件** ]。
-1. 在 [NuGet 套件管理員] 中，選取 [瀏覽]。 然後搜尋並選擇 [ **Azure** ]，然後選取 [ **安裝** ]。
+1. 在 **方案總管** 中，以滑鼠右鍵按一下您的專案，然後選擇 [ **管理 NuGet 套件**]。
+1. 在 [NuGet 套件管理員] 中，選取 [瀏覽]。 然後搜尋並選擇 [ **Azure**]，然後選取 [ **安裝**]。
 
    此步驟會安裝封裝及其相依性。
 1. 搜尋並安裝這些封裝：
@@ -316,7 +316,7 @@ if (share.Exists())
 
 從 Azure 檔案儲存體用戶端程式庫5.x 版開始，您可以將檔案複製到另一個檔案、將檔案複製到 blob，或將 blob 複製到檔案。
 
-您也可以使用 AzCopy 將檔案複製到另一個檔案，或將 blob 複製到檔案，或複製到檔案中。 請參閱[開始使用 AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)。
+您也可以使用 AzCopy 將檔案複製到另一個檔案，或將 blob 複製到檔案，或複製到檔案中。 請參閱[開始使用 AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 > [!NOTE]
 > 如果要將 Blob 複製到檔案，或將檔案複製到 Blob，您必須使用共用存取簽章 (SAS) 來授權來源物件的存取全，即使是在相同的儲存體帳戶內進行複製也一樣。
@@ -624,10 +624,10 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 
 ### <a name="tooling-support-for-file-storage"></a>檔案儲存體的工具支援
 
-- [開始使用 AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)
+- [開始使用 AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 - [針對 Windows 中的 Azure 檔案服務問題進行疑難排解](./storage-troubleshoot-windows-file-connection-problems.md)
 
-### <a name="reference"></a>參考
+### <a name="reference"></a>參考資料
 
 - [適用於 .NET 的 Azure 儲存體 API](/dotnet/api/overview/azure/storage)
 - [檔案服務 REST API](/rest/api/storageservices/File-Service-REST-API) \(英文\)

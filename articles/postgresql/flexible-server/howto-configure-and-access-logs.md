@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 319b7a40a87d29454b22a26088df313ef524dc56
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3b54fe1ffd49c12db82a038ad449190a0049133f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545815"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492347"
 ---
 # <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>在適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器中設定和存取記錄
 
@@ -22,21 +22,21 @@ ms.locfileid: "92545815"
 
 ## <a name="configure-diagnostic-settings"></a>設定診斷設定
 
-您可以使用 Azure 入口網站、CLI、REST API 和 PowerShell 來啟用 Postgres 伺服器的診斷設定。 要選取的記錄類別為 **PostgreSQLLogs** 。
+您可以使用 Azure 入口網站、CLI、REST API 和 PowerShell 來啟用 Postgres 伺服器的診斷設定。 要選取的記錄類別為 **PostgreSQLLogs**。
 
 若要使用 Azure 入口網站啟用資源記錄：
 
 1. 在入口網站中，移至 Postgres 伺服器的導覽功能表中的 [ *診斷設定* ]。
    
-2. 選取 [ *新增診斷設定* ]。
+2. 選取 [ *新增診斷設定*]。
    :::image type="content" source="media/howto-logging/diagnostic-settings.png" alt-text="[新增診斷設定] 按鈕":::
 
 3. 為此設定命名。 
 
 4. 選取您慣用的端點 (儲存體帳戶、事件中樞、log analytics) 。 
 
-5. 選取記錄類型 **PostgreSQLLogs** 。
-   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="[新增診斷設定] 按鈕":::
+5. 選取記錄類型 **PostgreSQLLogs**。
+   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="選擇于 postgresql 記錄":::
 
 7. 儲存您的設定。
 
@@ -69,7 +69,7 @@ AzureDiagnostics
 
 上述查詢會針對此工作區中的任何 Postgres 伺服器記錄，顯示過去6小時內的結果。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
-- [開始使用 log analytics 查詢](../../azure-monitor/log-query/get-started-portal.md)
+- [開始使用 log analytics 查詢](../../azure-monitor/log-query/log-analytics-tutorial.md)
 - 瞭解 [Azure 事件中樞](../../event-hubs/event-hubs-about.md)
