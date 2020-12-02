@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: c707f6108c73a268bcac18c45afb70ae17185bb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 877200cbafbe68fa6161025572abfddad651e172
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308107"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490715"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>概念性了解 IoT 產業中的 X.509 CA 憑證
 
@@ -40,6 +40,8 @@ X.509 CA 驗證有一個特殊屬性，那就是 CA 憑證和其下游裝置具�
 X.509 CA 驗證還有一個重要屬性，那就是能夠簡化供應鏈物流。 想要有安全的裝置驗證，就必須讓每個裝置保有唯一的密碼 (例如金鑰) 以作為信任基礎。 在憑證型驗證中，此密碼就是私密金鑰。 典型的裝置製造流程牽涉到多個步驟和保管者。 要在多位保管者之間安全地管理裝置的私密金鑰並維持信任，既不容易且所費不貲。 您不妨使用憑證授權單位來解決此問題，請將每位保管者簽署至以密碼編譯的信任鏈結，而不是將裝置的私密金鑰交付給他們。 每位保管者再以其個別的製造流程處理步驟簽署裝置。 最終，您會因為使用以密碼編譯的信任鏈結，藉由內建責任制度而擁有最佳的供應鏈。 值得注意的是，當裝置保護其唯一的私密金鑰時，此程序便會產生最大安全性。 為此，我們鼓勵您使用能夠在內部產生永不曝光之私密金鑰的硬體安全模組 (HSM)。
 
 本文會完整呈現 X.509 CA 驗證的使用流程 (從供應鏈設定到裝置連線)，同時透過真實範例來強化您的了解。
+
+您也可以使用註冊群組搭配 Azure IoT 中樞的裝置布建服務 (DPS) 來處理將裝置布建至中樞。 如需使用 DPS 布建 x.509 憑證裝置的詳細資訊，請參閱 [教學課程：使用註冊群組布建多個 x.509 裝置](../iot-dps/tutorial-custom-hsm-enrollment-group-x509.md)。
 
 ## <a name="introduction"></a>簡介
 
@@ -75,7 +77,7 @@ Company-X 可選擇向公開的根憑證授權單位購買 X.509 CA 憑證，也
 
 ## <a name="register-the-x509-certificate-to-iot-hub"></a>向 IoT 中樞註冊 X.509 憑證
 
-Company-X 必須向 IoT 中樞註冊 X.509 CA，以在 Smart-X-Widget 連線時由 IoT 中樞進行驗證。 這個一次性的程序可讓您驗證及管理任意數目的 Smart-X-Widget 裝置。 此程序之所以只要進行一次，是因為授權單位憑證與裝置之間具有一對多關聯性，而且此程序也是使用 X.509 CA 驗證方法的其中一個主要優點。 替代方法是為每個 Smart-X-Widget 裝置上傳個別的憑證指紋，但這會因此增加營運成本。
+Company-X 必須向 IoT 中樞註冊 X.509 CA，以在 Smart-X-Widget 連線時由 IoT 中樞進行驗證。 這個一次性的程序可讓您驗證及管理任意數目的 Smart-X-Widget 裝置。 這是一次進程，因為 CA 憑證和裝置憑證之間的一對多關聯性是由 CA 憑證或中繼憑證所簽署。 此關聯性構成了使用 x.509 CA 驗證方法的主要優點之一。 替代方法是為每個 Smart-X-Widget 裝置上傳個別的憑證指紋，但這會因此增加營運成本。
 
 註冊 X.509 CA 憑證的程序包含兩個步驟，亦即上傳憑證和證明憑證擁有權。
 

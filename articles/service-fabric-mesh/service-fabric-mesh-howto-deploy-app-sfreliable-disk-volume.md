@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 66d0d3ebf9d5866039bbbac3171513b37330be7a
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 79ac8e7868b04a63637e24d6dde651b218ce6a46
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146785"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489185"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>在 Service Fabric Mesh 應用程式中裝載以 Service Fabric 可靠磁碟為基礎的高可用性磁碟區 
 保存容器應用程式狀態的常見方法是使用遠端儲存體 (例如 Azure 檔案儲存體) 或資料庫 (例如 Azure Cosmos DB)。 這會對遠端存放區產生大量的讀取和寫入網路延遲。
@@ -23,7 +23,7 @@ Service Fabric 可靠磁碟會提供磁碟區來用於本機讀取，並在 Serv
 
 `counterService` 會定期從檔案讀取計數器的值、增加該值並將其寫回檔案。 儲存檔案的資料夾會裝載在由 Service Fabric 可靠磁碟支援的磁碟區中。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 您可以使用 Azure Cloud Shell 或安裝在本機的 Azure CLI 來完成此工作。 若要依照本文的指示使用 Azure CLI，請確認 `az --version` 至少傳回 `azure-cli (2.0.43)`。  請依照下列[指示](service-fabric-mesh-howto-setup-cli.md)安裝 (或更新) Azure Service Fabric Mesh CLI 擴充功能模組。
 
@@ -47,9 +47,9 @@ az group create --name myResourceGroup --location eastus
 ## <a name="deploy-the-template"></a>部署範本
 
 >[!NOTE]
-> 自2020年11月2日起， [下載速率限制適用](https://docs.docker.com/docker-hub/download-rate-limit/) 于從 Docker 免費方案帳戶 Docker Hub 的匿名和已驗證要求，並由 IP 位址強制執行。 
+> 自 2020 年 11 月 2 日起，[下載速率限制適用](https://docs.docker.com/docker-hub/download-rate-limit/)於從 Docker 免費方案帳戶對 Docker Hub 進行匿名和已驗證的要求，並由 IP 位址強制執行。 
 > 
-> 此範本會利用 Docker Hub 中的公用映射。 請注意，您可能會受到速率限制。 如需詳細資訊，請參閱 [使用 Docker Hub 進行驗證](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub)。
+> 此範本會利用 Docker Hub 中的公用映射。 請注意，您可能會受到速率限制。 如需詳細資訊，請參閱[使用 Docker Hub 驗證](../container-registry/buffer-gate-public-content.md#authenticate-with-docker-hub)。
 
 下列命令會使用 [counter.sfreliablevolume.linux.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.linux.json) 範本來部署 Linux 應用程式。 若要部署 Windows 應用程式，請使用 [counter.sfreliablevolume.windows.json 範本](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.windows.json)。 請注意，較大的容器映像可能需要較長的部署時間。
 
@@ -86,7 +86,7 @@ az mesh gateway show --resource-group myResourceGroup --name counterGateway
 az group delete --resource-group myResourceGroup
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 在 [GitHub](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter) 上檢視 Service Fabric 可靠磁碟區的應用程式範例。
 - 若要深入了解 Service Fabric 資源模型，請參閱 [Service Fabric Mesh 資源模型](service-fabric-mesh-service-fabric-resources.md)。

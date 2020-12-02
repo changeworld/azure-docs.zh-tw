@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 94cb40522a9e463fea2efae329daf910b5386cdd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: bf593eab54233ab65435585485dd8e3940f5addb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832597"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489814"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 身分識別管理和存取控制安全性最佳作法
 
@@ -229,12 +229,12 @@ ms.locfileid: "94832597"
 
 特殊權限帳戶是可管理 IT 系統的帳戶。 網路攻擊者會以這些帳戶為目標，來取得組織資料和系統的存取權。 為了保護特殊權限存取，您應該讓帳戶和系統遠離遭遇惡意使用者的風險。
 
-我們建議您擬定並遵循適當計劃以保護特殊權限存取，使網路攻擊者無法取得。 如需有關如何建立詳細的藍圖，以保護 Azure AD、Microsoft Azure、Microsoft 365 及其他雲端服務中所管理或報告的身分識別和存取，請參閱 [Azure AD 中的保護混合式部署和雲端部署的](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)特殊許可權存取。
+我們建議您擬定並遵循適當計劃以保護特殊權限存取，使網路攻擊者無法取得。 如需有關如何建立詳細的藍圖，以保護 Azure AD、Microsoft Azure、Microsoft 365 及其他雲端服務中所管理或報告的身分識別和存取，請參閱 [Azure AD 中的保護混合式部署和雲端部署的](../../active-directory/roles/security-planning.md)特殊許可權存取。
 
-以下摘要說明[在 Azure AD 中保護混合式部署和雲端部署的特殊權限存取](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)中找到的最佳做法：
+以下摘要說明[在 Azure AD 中保護混合式部署和雲端部署的特殊權限存取](../../active-directory/roles/security-planning.md)中找到的最佳做法：
 
 **最佳做法**：管理、控制及監視特殊權限帳戶的存取權。   
-**詳細資料**：開啟 [Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)。 開啟 Privileged Identity Management 之後，您會收到有關於特殊權限存取角色有所變更的通知電子郵件訊息。 您目錄中的高特殊權限角色新增了其他使用者時，這些通知將會提供早期警告。
+**詳細資料**：開啟 [Azure AD Privileged Identity Management](../../active-directory/roles/security-planning.md)。 開啟 Privileged Identity Management 之後，您會收到有關於特殊權限存取角色有所變更的通知電子郵件訊息。 您目錄中的高特殊權限角色新增了其他使用者時，這些通知將會提供早期警告。
 
 **最佳做法**：確定所有重要的系統管理員帳戶都是受控 Azure AD 帳戶。
 **詳細資料**：從重要的系統管理員角色移除任何取用者帳戶 (例如，hotmail.com、live.com 和 outlook.com 等 Microsoft 帳戶)。
@@ -261,10 +261,10 @@ ms.locfileid: "94832597"
 **最佳做法**：定義至少兩個緊急存取帳戶。   
 **詳細資料**：緊急存取帳戶可協助組織限制現有 Azure Active Directory 環境內的特殊權限存取。 這些帳戶具有高特殊權限，不會指派給特定個人。 緊急存取帳戶僅限用於無法使用一般系統管理帳戶的情況。 組織必須將緊急帳戶的使用量限制於僅只必要的時間量。
 
-請評估已指派或適用於全域管理員角色的帳戶。 如果使用 `*.onmicrosoft.com` 網域 (供緊急存取使用)，並未看到任何僅限雲端的帳戶，請加以建立。 如需詳細資訊，請參閱[在 Azure AD 中管理緊急存取系統管理帳戶](../../active-directory/users-groups-roles/directory-emergency-access.md)。
+請評估已指派或適用於全域管理員角色的帳戶。 如果使用 `*.onmicrosoft.com` 網域 (供緊急存取使用)，並未看到任何僅限雲端的帳戶，請加以建立。 如需詳細資訊，請參閱[在 Azure AD 中管理緊急存取系統管理帳戶](../../active-directory/roles/security-emergency-access.md)。
 
 **最佳做法**：備妥「急用」流程以應付緊急狀況。
-**詳細資料**：請遵循 [在 Azure AD 中保護混合式部署和雲端部署的特殊權限存取](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)中的步驟。
+**詳細資料**：請遵循 [在 Azure AD 中保護混合式部署和雲端部署的特殊權限存取](../../active-directory/roles/security-planning.md)中的步驟。
 
 **最佳做法**：要求所有重要的系統管理員帳戶都必須是不需要密碼的 (建議選項)，或必須使用 Multi-Factor Authentication。
 **詳細資料**：使用 [Microsoft Authenticator 應用程式](../../active-directory/authentication/howto-authentication-passwordless-phone.md)來登入任何 Azure AD 帳戶 (而不需使用密碼)。 和 [Windows Hello 企業版](/windows/security/identity-protection/hello-for-business/hello-identity-verification)一樣，Microsoft Authenticator 也會使用金鑰型驗證來啟用使用者認證，此認證已繫結至裝置並且會使用生物特徵辨識驗證或 PIN。
@@ -284,25 +284,25 @@ ms.locfileid: "94832597"
 **詳細資料**：使用 Microsoft 365 攻擊模擬器或協力廠商服務，在您的組織中執行真實的攻擊案例。 這可協助您在發生真正的攻擊之前就先找出易受攻擊的使用者。
 
 **最佳做法**：採取步驟來減輕由最常被使用的攻擊技巧所造成的損害。  
-**詳細資料**：[識別系統管理角色中需要切換至公司或學校帳戶的 Microsoft 帳戶](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
+**詳細資料**：[識別系統管理角色中需要切換至公司或學校帳戶的 Microsoft 帳戶](../../active-directory/roles/security-planning.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
 
-[確認全域系統管理員帳戶的個別使用者帳戶和郵件轉寄](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)  
+[確認全域系統管理員帳戶的個別使用者帳戶和郵件轉寄](../../active-directory/roles/security-planning.md)  
 
-[確訂系統管理帳戶的密碼近期做過變更](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
+[確訂系統管理帳戶的密碼近期做過變更](../../active-directory/roles/security-planning.md#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
 
-[開啟密碼雜湊同步處理](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)  
+[開啟密碼雜湊同步處理](../../active-directory/roles/security-planning.md#turn-on-password-hash-synchronization)  
 
-[所有具有特殊權限角色的使用者和公開的使用者，都必須進行多重要素驗證](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
+[所有具有特殊權限角色的使用者和公開的使用者，都必須進行多重要素驗證](../../active-directory/roles/security-planning.md#require-multi-factor-authentication-for-users-in-privileged-roles-and-exposed-users)  
 
-[如果使用 Microsoft 365，請 (取得 Microsoft 365 的安全分數) ](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#obtain-your-office-365-secure-score-if-using-office-365)  
+[如果使用 Microsoft 365，請 (取得 Microsoft 365 的安全分數) ](../../active-directory/roles/security-planning.md#obtain-your-microsoft-365-secure-score-if-using-microsoft-365)  
 
-[如果使用 Microsoft 365，請參閱 Microsoft 365 的安全性指引 () ](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
+[如果使用 Microsoft 365，請參閱 Microsoft 365 的安全性指引 () ](../../active-directory/roles/security-planning.md#review-the-microsoft-365-security-and-compliance-guidance-if-using-microsoft-365)  
 
-[如果使用 Microsoft 365) ，請設定 Microsoft 365 活動監視 (](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#configure-office-365-activity-monitoring-if-using-office-365)  
+[如果使用 Microsoft 365) ，請設定 Microsoft 365 活動監視 (](../../active-directory/roles/security-planning.md#configure-microsoft-365-activity-monitoring-if-using-microsoft-365)  
 
-[建立事件/緊急回應計劃擁有者](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#establish-incidentemergency-response-plan-owners)  
+[建立事件/緊急回應計劃擁有者](../../active-directory/roles/security-planning.md#establish-incidentemergency-response-plan-owners)  
 
-[保護內部部署的特殊權限系統管理帳戶](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)
+[保護內部部署的特殊權限系統管理帳戶](../../active-directory/roles/security-planning.md#turn-on-password-hash-synchronization)
 
 如果您不保護特殊權限的存取，則可能發現您有太多具備較高特殊權限角色的使用者，而且比較容易遭受攻擊。 包括網路攻擊者在內的惡意人士通常會以管理帳戶和特殊權限存取的其他元素為目標，以利用認證竊取來取得敏感性資料和系統的存取權。
 

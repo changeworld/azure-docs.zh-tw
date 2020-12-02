@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 06/19/2020
-ms.openlocfilehash: 304e1ab475213bde2644c8241905408ade5672ed
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 193e7bd78046a1d73cb55171c15c9cb6a7278297
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489959"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490035"
 ---
 # <a name="what-is-a-test-drive"></a>什麼是試用產品？
 
@@ -24,7 +24,7 @@ ms.locfileid: "94489959"
 
 試用產品是受控實例，可依需求針對要求的客戶啟動您的解決方案或應用程式。 一旦指派了試用產品實例之後，該客戶就可在一段設定的期間內使用該實例。 期限結束後，就會將其刪除，為另一個客戶建立空間。
 
-您可以使用「發行者」來管理和設定合作夥伴中心中的「試用產品」設定。 技術設定詳細資料會根據供應專案類型而有所不同。 如需詳細指引，請參閱 [試用產品技術](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration)設定。
+您可以使用「發行者」來管理和設定合作夥伴中心中的「試用產品」設定。 技術設定詳細資料會根據供應專案類型而有所不同。 如需詳細指引，請參閱 [試用產品技術](./test-drive-technical-configuration.md)設定。
 
 潛在客戶探索您的試用產品，以 CTA 您在 [AppSource](https://appsource.microsoft.com/en-US/)上的供應專案。 他們會提供他們的連絡人資訊，並同意您供應專案的條款和隱私權原則，然後取得您預先設定的環境，以在一段固定期間內試用。 客戶可獲得實際操作的自我引導式試用產品的主要功能和優點，並獲得重要的潛在客戶。
 
@@ -43,7 +43,7 @@ ms.locfileid: "94489959"
 - 邏輯應用程式只在支援模式下 () 
 - Power BI
 
-如需設定其中一個試用產品的詳細資訊，請參閱 [試用產品技術](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration)設定。 
+如需設定其中一個試用產品的詳細資訊，請參閱 [試用產品技術](./test-drive-technical-configuration.md)設定。 
 
 ### <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager 試用產品
 
@@ -65,7 +65,7 @@ ms.locfileid: "94489959"
 
 ### <a name="logic-app-test-drive"></a>邏輯應用程式試用產品
 
-這種類型的試用產品並非由 Microsoft 所裝載，而且會針對 Dynamics AX/CRM 供應專案類型使用 Azure Resource Manager (ARM) 範本。 您將需要執行 ARM 範本，才能在您的 Azure 訂用帳戶中建立必要的資源。 邏輯應用程式試用產品目前僅支援支援模式，Microsoft 不建議您如需有關設定邏輯應用程式試用產品的詳細資訊，請參閱 [試用產品技術](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration)設定。
+這種類型的試用產品並非由 Microsoft 所裝載，而且會針對 Dynamics AX/CRM 供應專案類型使用 Azure Resource Manager (ARM) 範本。 您將需要執行 ARM 範本，才能在您的 Azure 訂用帳戶中建立必要的資源。 邏輯應用程式試用產品目前僅支援支援模式，Microsoft 不建議您如需有關設定邏輯應用程式試用產品的詳細資訊，請參閱 [試用產品技術](./test-drive-technical-configuration.md)設定。
 
 ### <a name="power-bi-test-drive"></a>Power BI 試用產品
 

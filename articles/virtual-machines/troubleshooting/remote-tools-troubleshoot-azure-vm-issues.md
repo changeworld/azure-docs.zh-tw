@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: 5abb509f1753c65554bd74ababe9acca4103c15a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5974388c096c9bc8693c5fc2cf918989c6eadd3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509081"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488726"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>使用遠端工具對 Azure VM 問題進行疑難排解
 
@@ -180,7 +180,7 @@ cmd.exe /C $command
     Enter-PSSession -ComputerName  "<<CLOUDSERVICENAME.cloudapp.net>>" -port "<<PUBLIC PORT NUMBER>>" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-  * 針對 Azure Resource Manager VM，請先將 DNS 名稱新增至公用 IP 位址。 如需詳細步驟，請參閱[在 Azure 入口網站中為 Windows VM 建立完整網域名稱](../windows/portal-create-fqdn.md)。 然後，執行下列命令：
+  * 針對 Azure Resource Manager VM，請先將 DNS 名稱新增至公用 IP 位址。 如需詳細步驟，請參閱[在 Azure 入口網站中為 Windows VM 建立完整網域名稱](../create-fqdn.md)。 然後，執行下列命令：
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
@@ -214,11 +214,11 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 1. 從相同虛擬網路上的另一個 VM，開啟登錄編輯程式 ( # A0) 。
 
-2. 選取**File**  >  **[File Connect Network Registry]**。
+2. 選取 **File**  >  **[File Connect Network Registry]**。
 
    ![登錄編輯程式](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 
-3. 在 [**輸入要選取的物件名稱**] 方塊中輸入目標 VM （依**主機名稱**或**動態 IP** (慣用的) ）。
+3. 在 [**輸入要選取的物件名稱**] 方塊中輸入目標 VM （依 **主機名稱** 或 **動態 IP** (慣用的) ）。
 
    ![輸入要選取的物件名稱方塊](./media/remote-tools-troubleshoot-azure-vm-issues/input-computer-name.png) 
  
@@ -235,9 +235,9 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 >
 >針對 RDFE VM，您必須具備有私用連接埠 5986 和公用連接埠的端點。 您也必須在 NSG 上開啟該公眾面向的埠。
 
-1. 從相同虛擬網路上的另一個 VM，開啟 **services.msc**的實例。
+1. 從相同虛擬網路上的另一個 VM，開啟 **services.msc** 的實例。
 
-2. 以滑鼠右鍵按一下 [服務 (本機)\]****。
+2. 以滑鼠右鍵按一下 [服務 (本機)\]。
 
 3. 選取 [連線到另一部電腦]。
 
@@ -249,7 +249,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 5. 對服務執行任何必要的變更。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 如需 Enter-PSSession Cmdlet 的詳細資訊，請參閱 [輸入-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession?view=powershell-5.1)。
 - 如需使用傳統部署模型的 Windows 自訂腳本擴充功能的詳細資訊，請參閱 [適用于 windows 的自訂腳本擴充](../extensions/custom-script-windows.md)功能。

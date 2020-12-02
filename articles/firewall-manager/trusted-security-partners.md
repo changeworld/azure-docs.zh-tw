@@ -5,24 +5,24 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 12/01/2020
 ms.author: victorh
-ms.openlocfilehash: 3c09e75a98e5342ab54710e05466755d86705b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 923c6b685d20ff68788e7d9cfcb45ebaecb535e3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399426"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490103"
 ---
 # <a name="what-are-security-partner-providers"></a>什麼是安全性合作夥伴提供者？
 
-Azure 防火牆管理員中的*安全性合作夥伴提供者*，可讓您使用熟悉、最知名的協力廠商安全性即服務 (SECaaS) 供應專案，以保護使用者的網際網路存取。
+Azure 防火牆管理員中的 *安全性合作夥伴提供者*，可讓您使用熟悉、最知名的協力廠商安全性即服務 (SECaaS) 供應專案，以保護使用者的網際網路存取。
 
 使用快速設定時，您可以使用支援的安全性合作夥伴來保護中樞，並從虛擬網路路由傳送和篩選網際網路流量， (Vnet) 或區域內的分支位置。 您可以使用自動化路由管理來達成此目的，而不需要設定及管理使用者定義的路由， (Udr) 。
 
 您可以在多個 Azure 區域中，部署以您選擇的安全性合作夥伴設定的安全中樞，以取得這些區域全球各地使用者的連線能力和安全性。 您現在可以在受保護的中樞內使用安全性合作夥伴提供的網際網路/SaaS 應用程式流量，以及適用于私用流量的 Azure 防火牆，您現在可以在 Azure 上開始建立接近全球散發的使用者和應用程式的安全性邊緣。
 
-支援的安全性合作夥伴為 **ZScaler**、 **Check Point** (preview) ，以及 **iboss** (preview) 。
+支援的安全性合作夥伴為 **Zscaler**、 **[Check Point](check-point-overview.md)** 和 **iboss**。
 
 ![安全性合作夥伴提供者](media/trusted-security-partners/trusted-security-partners.png)
 

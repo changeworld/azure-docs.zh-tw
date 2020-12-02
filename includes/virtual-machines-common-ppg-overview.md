@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
-ms.openlocfilehash: daed8dc62fdfd86ecf785a0bfd83b2b6c0b4cc03
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e2be62180907e94401548774b3403db0f36caca3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026949"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488457"
 ---
 將 Vm 放入單一區域可減少實例之間的實體距離。 將它們放在單一可用性區域內，也會讓它們彼此緊密地結合在一起。 不過，當 Azure 使用量增加時，單一可用性區域可能橫跨多個實體資料中心，這可能會導致網路延遲影響您的應用程式。 
 
@@ -82,7 +82,7 @@ ms.locfileid: "96026949"
 如果因為部署限制而發生配置失敗，您可能必須 stop\deallocate 受影響的鄰近放置群組中的所有資源 (包括) 的對齊資源，然後重新開機它們以還原對齊。
 
 ## <a name="best-practices"></a>最佳作法 
-- 針對最低延遲，請將鄰近位置群組與加速網路搭配使用。 如需詳細資訊，請參閱 [使用加速網路建立 Linux 虛擬機器](../articles/virtual-network/create-vm-accelerated-networking-cli.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) ，或 [建立具有加速網路功能的 Windows 虛擬](../articles/virtual-network/create-vm-accelerated-networking-powershell.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)機。
+- 針對最低延遲，請將鄰近位置群組與加速網路搭配使用。 如需詳細資訊，請參閱 [使用加速網路建立 Linux 虛擬機器](../articles/virtual-network/create-vm-accelerated-networking-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ，或 [建立具有加速網路功能的 Windows 虛擬](../articles/virtual-network/create-vm-accelerated-networking-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)機。
 - 在單一範本中部署所有 VM 大小。 為了避免登入不支援所有 VM Sku 和您所需大小的硬體，請在單一範本中包含所有應用層，如此一來，就會同時部署它們。
 - 如果您要使用 PowerShell、CLI 或 SDK 編寫部署腳本，您可能會收到配置錯誤 `OverconstrainedAllocationRequest` 。 在此情況下，您應該停止/解除配置所有現有的 Vm，並變更部署腳本中的順序，以開始使用失敗的 VM SKU/大小。 
 - 重複使用已刪除 Vm 的現有放置群組時，請等候刪除完成，再將 Vm 新增至該群組。

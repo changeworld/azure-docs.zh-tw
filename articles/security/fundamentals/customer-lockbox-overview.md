@@ -8,17 +8,17 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 09/15/2020
-ms.openlocfilehash: 52cb5ac5423aac0599ba2827667ee670dde286a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01232aa101e2964354acfbeb6cea341a0da33ca6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331653"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489882"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>適用於 Microsoft Azure 的客戶加密箱
 
 > [!NOTE]
-> 若要使用這項功能，您的組織必須擁有具有基本**開發人員**層級的[Azure 支援方案](https://azure.microsoft.com/support/plans/)。
+> 若要使用這項功能，您的組織必須擁有具有基本 **開發人員** 層級的 [Azure 支援方案](https://azure.microsoft.com/support/plans/)。
 
 適用於 Microsoft Azure 的客戶加密箱會提供介面讓客戶檢閱以及核准或拒絕客戶資料的存取要求。 在 Microsoft 工程師必須於支援要求期間存取客戶資料的情況下，便會使用此功能。
 
@@ -64,7 +64,7 @@ ms.locfileid: "91331653"
 - 虛擬機器擴展集 - Windows 和 Linux
 
 > [!NOTE]
-> 客戶加密箱不支援 IaaS 傳統實例。 如果您的工作負載是在 IaaS 傳統實例上執行，建議您將它們從傳統遷移至 Resource Manager 部署模型。 如需指示，請參閱[平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager)](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)
+> 客戶加密箱不支援 IaaS 傳統實例。 如果您的工作負載是在 IaaS 傳統實例上執行，建議您將它們從傳統遷移至 Resource Manager 部署模型。 如需指示，請參閱[平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager)](../../virtual-machines/migration-classic-resource-manager-overview.md)
 
 #### <a name="detailed-audit-logs"></a>詳細的稽核記錄
 
@@ -105,7 +105,7 @@ ms.locfileid: "91331653"
 
    要求會保留在客戶佇列中四天。 在這段時間之後，存取要求會自動到期，而不會授與 Microsoft 工程師的存取權。
 
-9. 若要取得擱置要求的詳細資料，指定的核准者可以從 **擱置要求**中選取加密箱要求：
+9. 若要取得擱置要求的詳細資料，指定的核准者可以從 **擱置要求** 中選取加密箱要求：
 
     ![Azure 客戶加密箱-查看擱置的要求](./media/customer-lockbox-overview/customer-lockbox-pending-requests.png)
 

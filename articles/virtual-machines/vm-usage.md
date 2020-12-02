@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 07/28/2020
-ms.openlocfilehash: d43f94d3555a660d6b7c8f755eebfec253d31dc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b845d547224fb173d2a4b156575778783e0281fa
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322876"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488559"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>了解 Azure 虛擬機器使用情況
 分析您的 Azure 使用情況資料，可以深入了解使用量，以在整個組織內實現更妥善的成本管理與配置。 本文件會針對您的 Azure 計算使用量詳細資料，提供深入探討。 如需有關一般 Azure 使用情況的詳細資訊，請瀏覽至[了解您的帳單](../cost-management-billing/understand/review-individual-bill.md)。
@@ -37,7 +37,7 @@ ms.locfileid: "89322876"
 | 已耗用的服務 | 您所使用的 Azure 平台服務。| `Microsoft.Compute`|
 | 資源群組 | 部署的資源正在其中執行的資源群組。 如需詳細資訊，請參閱 [Azure Resource Manager 概觀](../azure-resource-manager/management/overview.md)。|`MyRG`|
 | 執行個體識別碼 | 資源的識別碼。 識別碼包含在建立時為資源指定的名稱。 針對 VM，執行個體識別碼將會包含 SubscriptionId、ResourceGroupName 和 VMName (或用於擴展集的擴展集名稱)。| `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1`<br><br>或<br><br>`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1`|
-| Tags| 您指派給資源的標記。 使用標記為帳單記錄分組。 瞭解如何使用 [CLI](./linux/tag.md) 或 [PowerShell](./windows/tag.md) 標記虛擬機器，這僅適用于 Resource Manager vm。| `{"myDepartment":"RD","myUser":"myName"}`|
+| Tags| 您指派給資源的標記。 使用標記為帳單記錄分組。 瞭解如何使用 [CLI](./tag-cli.md) 或 [PowerShell](./tag-portal.md) 標記虛擬機器，這僅適用于 Resource Manager vm。| `{"myDepartment":"RD","myUser":"myName"}`|
 | 其他資訊 | 服務專屬的中繼資料。 針對 VM，我們會在其他資訊欄位中填入下列資料： <br><br> 您所執行之映像類型專屬的映像。 在 [映像類型] 底下，尋找以下支援字串的完整清單。<br><br> 服務類型：您部署的大小。<br><br> VMName：您 VM 的名稱。 只會針對擴展集 VM 填入此欄位。 如果您需要您擴展集 VM 的 VM 名稱，可以在上面的執行個體識別碼字串中找到。<br><br> UsageType：這會指定此項目代表的使用方式類型。<br><br> ComputeHR 是底層 VM 的「計算時數」使用情況，例如 Standard_D1_v2。<br><br> 如果 VM 使用的是進階軟體 (如 Microsoft R Server)，則 ComputeHR_SW 將是進階軟體費用。 | 虛擬機器<br>`{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}`<br><br>虛擬機器擴展集<br> `{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}`<br><br>Premium 軟體<br> `{"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"}` |
 
 ## <a name="image-type"></a>映像類型

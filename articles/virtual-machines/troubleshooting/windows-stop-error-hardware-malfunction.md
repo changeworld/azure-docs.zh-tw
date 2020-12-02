@@ -1,5 +1,5 @@
 ---
-title: Windows 停止錯誤-硬體故障
+title: Windows 停止錯誤 - 硬體故障
 description: 本文提供的步驟可解決 Windows Server 2008 虛擬機器損毀的問題，並顯示錯誤訊息，指出發生硬體故障。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/13/2020
 ms.author: v-mibufo
-ms.openlocfilehash: eb4e0a246d6a33c3fad5f44b99a37997e4462f05
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 18622d60f3a33658fadfd28c53c93a07b4b438a9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663512"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488641"
 ---
-# <a name="windows-stop-error---hardware-malfunction"></a>Windows 停止錯誤-硬體故障
+# <a name="windows-stop-error---hardware-malfunction"></a>Windows 停止錯誤 - 硬體故障
 
 本文提供的步驟可解決 Windows Server 2008 虛擬機器損毀的問題，並顯示錯誤訊息，指出發生硬體故障。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 當您使用 [開機診斷](./boot-diagnostics.md) 來查看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示含有下列訊息的藍色畫面：
 
@@ -63,7 +63,7 @@ ms.locfileid: "94663512"
     ```
     REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
     ```
-    [查看 REG ADD 命令的進一步資訊](https://docs.microsoft.com/windows-server/administration/windows-commands/reg-add)
+    [查看 REG ADD 命令的進一步資訊](/windows-server/administration/windows-commands/reg-add)
 4. *(選擇性)* 安裝程式記憶體傾印集合：
 
     ```
@@ -77,13 +77,13 @@ ms.locfileid: "94663512"
     BCDEDIT /ems {current} on, or bcdedit /ems '{current}' on if you are using PowerShell
     BCDEDIT /emssettings EMSPORT:1 EMSBAUDRATE:115200 
     ```
-    [查看 BCDEDIT 命令的進一步資訊](https://docs.microsoft.com/windows-server/administration/windows-commands/bcdedit)
+    [查看 BCDEDIT 命令的進一步資訊](/windows-server/administration/windows-commands/bcdedit)
 6. 使用下列命令重新開機 VM：
 
     ```
     SHUTDOWN /r /t 0 /f 
     ```
-    [查看關機命令的進一步資訊](https://docs.microsoft.com/windows-server/administration/windows-commands/shutdown)
+    [查看關機命令的進一步資訊](/windows-server/administration/windows-commands/shutdown)
 
 > [!IMPORTANT]
 > 現在應該已修正此問題！

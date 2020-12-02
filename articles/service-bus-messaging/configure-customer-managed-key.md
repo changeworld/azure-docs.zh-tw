@@ -3,12 +3,12 @@ title: 設定您自己的金鑰來加密待用 Azure 服務匯流排資料
 description: 本文提供有關如何設定您自己的金鑰來加密 Azure 服務匯流排資料 rest 的資訊。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 32fcdad28b06df1763ab1efb1740d87d0b247b0a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 35680819350582062dd4227c65f9e72ae8b3ee5c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843395"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489695"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>使用 Azure 入口網站，設定客戶管理的金鑰來加密 Azure 服務匯流排待用資料
 Azure 服務匯流排 Premium 提供加密待用資料，以及 (Azure SSE) Azure 儲存體服務加密。 服務匯流排 Premium 依賴 Azure 儲存體來儲存資料，而以 Azure 儲存體儲存的所有資料都會使用 Microsoft 管理的金鑰進行加密。 
@@ -42,7 +42,7 @@ Azure 服務匯流排現在支援使用 Microsoft 管理的金鑰或由客戶管
 
 ## <a name="set-up-a-key-vault-with-keys"></a>使用金鑰設定金鑰保存庫
 
-啟用客戶管理的金鑰之後，您必須將客戶管理的金鑰與您的 Azure 服務匯流排命名空間建立關聯。 服務匯流排僅支援 Azure Key Vault。 如果您在上一節中 **使用客戶管理的金鑰啟用加密** ，您必須將金鑰匯入 Azure Key Vault。 此外，索引鍵必須具有虛 **刪除** ，且不 **會清除** 為金鑰設定。 您可以使用 [PowerShell](../key-vault/general/soft-delete-powershell.md) 或 [CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection)來設定這些設定。
+啟用客戶管理的金鑰之後，您必須將客戶管理的金鑰與您的 Azure 服務匯流排命名空間建立關聯。 服務匯流排僅支援 Azure Key Vault。 如果您在上一節中 **使用客戶管理的金鑰啟用加密** ，您必須將金鑰匯入 Azure Key Vault。 此外，索引鍵必須具有虛 **刪除** ，且不 **會清除** 為金鑰設定。 您可以使用 [PowerShell](../key-vault/general/key-vault-recovery.md) 或 [CLI](../key-vault/general/key-vault-recovery.md)來設定這些設定。
 
 1. 若要建立新的金鑰保存庫，請遵循 Azure Key Vault [快速入門](../key-vault/general/overview.md)。 如需有關匯入現有金鑰的詳細資訊，請參閱 [關於金鑰、秘密和憑證](../key-vault/general/about-keys-secrets-certificates.md)。
 1. 若要在建立保存庫時開啟虛刪除和清除保護，請使用 [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) 命令。

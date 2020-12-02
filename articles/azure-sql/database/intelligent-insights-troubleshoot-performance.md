@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: troubleshooting
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 4837b905f4e65b5513f1dbf693af9815b5696a4a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c42db1445c939069f334d04ea26d54cdb843c336
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782955"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488822"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>針對 Azure SQL Database 和 Azure SQL 受控執行個體 Intelligent Insights 的效能問題進行疑難排解
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -210,7 +210,7 @@ MAXDOP 伺服器設定選項可用來控制可使用多少 CPU 核心來平行�
 
 這個可偵測的效能模式表示與過去七天的工作負載基準相比，工作負載效能降低，其中發現有效能不佳的查詢。
 
-在此情況中，系統無法將效能不佳的查詢歸類至任何其他標準的可偵測效能類別，但它偵測到等候統計資料是造成迴歸的原因。 因此，系統會將那些查詢判斷為具有「增加的等候統計資料」  ，並同時公開造成迴歸的等候統計資料。
+在此情況中，系統無法將效能不佳的查詢歸類至任何其他標準的可偵測效能類別，但它偵測到等候統計資料是造成迴歸的原因。 因此，系統會將那些查詢判斷為具有「增加的等候統計資料」，並同時公開造成迴歸的等候統計資料。
 
 ### <a name="troubleshooting"></a>疑難排解
 
@@ -256,7 +256,7 @@ MAXDOP 伺服器設定選項可用來控制可使用多少 CPU 核心來平行�
 
 資料庫引擎會決定查詢執行成本最低的查詢執行計畫。 當查詢類型和工作負載變更時，有時現有的計畫已不再有效，或可能是資料庫引擎未進行良好的評量。 為了更正這種狀況，您可以手動強制執行查詢執行計畫。
 
-這個可偵測的效能模式結合了三種不同的計畫迴歸案例：新計畫迴歸、舊計畫迴歸，以及現有計畫變更工作負載。 所發生之計畫迴歸的特定類型，會在診斷記錄的 [詳細資料]  屬性中提供。
+這個可偵測的效能模式結合了三種不同的計畫迴歸案例：新計畫迴歸、舊計畫迴歸，以及現有計畫變更工作負載。 所發生之計畫迴歸的特定類型，會在診斷記錄的 [詳細資料] 屬性中提供。
 
 新的計畫回歸條件指的是資料庫引擎開始執行新查詢執行計畫的狀態，其效率不如舊計畫。 當資料庫引擎從使用新的、更有效率的計畫切換至舊計畫，而不像新的計畫一樣有效率時，舊的計畫回歸狀況就是指狀態。 現有計畫變更工作負載迴歸所指的狀態是新計畫和舊計畫會不斷交替，並逐漸朝向效能不佳的計畫方向發展。
 

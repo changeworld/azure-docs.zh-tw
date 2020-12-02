@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2020
 ms.author: terrylan
-ms.openlocfilehash: dfacf124f8db0e5323c9abff56c4a78f85f6f014
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af61b6ee1e69d175f47170df30f75832033d61d5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816128"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489712"
 ---
 # <a name="penetration-testing"></a>滲透測試
 
@@ -46,8 +46,8 @@ ms.locfileid: "88816128"
 您無法執行的一種類型的手寫筆測試，就是任何一種 [拒絕服務 (DoS) ](https://en.wikipedia.org/wiki/Denial-of-service_attack) 攻擊。 這項測試包括起始 DoS 攻擊本身，或執行可能決定、示範或模擬任何類型之 DoS 攻擊的相關測試。
 
 >[!Note]
->Microsoft 已與 BreakingPoint Cloud 合作建立一個介面，您可以針對啟用 DDoS 保護的公用 IP 位址產生流量，以進行模擬。 若要深入瞭解雲端模擬的中斷點，請參閱 [驗證 DDoS 偵測](../../virtual-network/manage-ddos-protection.md#validate-ddos-detection)。
+>Microsoft 已與 BreakingPoint Cloud 合作建立一個介面，您可以針對啟用 DDoS 保護的公用 IP 位址產生流量，以進行模擬。 若要深入瞭解雲端模擬的中斷點，請參閱 [驗證 DDoS 偵測](../../ddos-protection/manage-ddos-protection.md#validate-and-test)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解 Engagement 的 [滲透測試規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=2)。

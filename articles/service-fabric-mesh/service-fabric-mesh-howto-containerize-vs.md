@@ -5,12 +5,12 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0f236292fff0d0e806e6eec32e1e058cbf67545c
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 2fb6aa7d7c655a1ba4b44dabc33e32ce04ae458f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93144472"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489270"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>將 Service Fabric Mesh 的現有 .NET 應用程式容器化
 
@@ -21,7 +21,7 @@ ms.locfileid: "93144472"
 > [!NOTE]
 > 目前不支援 .NET **Core** 專案。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * 如果您沒有 Azure 訂用帳戶，您可以在開始前[建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -39,38 +39,38 @@ ms.locfileid: "93144472"
 git clone https://github.com/MikkelHegn/ContainersSFLab.git
 ```
 
-在下載取得後，請在 Visual Studio 2017 中開啟 **ContainersSFLab\eShopLegacyWebFormsSolution\eShopLegacyWebForms.sln** 。
+在下載取得後，請在 Visual Studio 2017 中開啟 **ContainersSFLab\eShopLegacyWebFormsSolution\eShopLegacyWebForms.sln**。
 
 ## <a name="add-container-support"></a>新增容器支援
  
 使用 Service Fabric Mesh 工具，為現有的 ASP.NET 或主控台專案新增容器協調流程支援，如下所示：
 
-在 Visual Studio 方案總管中，以滑鼠右鍵按一下專案名稱 (在範例中為  > [容器協調器支援]  。
-[新增容器協調器支援]  對話方塊隨即出現。
+在 Visual Studio 方案總管中，以滑鼠右鍵按一下專案名稱 (在範例中為 **eShopLegacyWebForms**)，然後選擇 [新增] > [容器協調器支援]。
+[新增容器協調器支援] 對話方塊隨即出現。
 
 ![Visual Studio 的新增容器協調器對話方塊](./media/service-fabric-mesh-howto-containerize-vs/add-container-orchestration-support.png)
 
-從下拉式清單中選擇 [Service Fabric Mesh]  ，然後按一下 [確定]  。
+從下拉式清單中選擇 [Service Fabric Mesh]，然後按一下 [確定]。
 
 
 >[!NOTE]
-> 自2020年11月2日起， [下載速率限制適用](https://docs.docker.com/docker-hub/download-rate-limit/) 于從 Docker 免費方案帳戶 Docker Hub 的匿名和已驗證要求，並由 IP 位址強制執行。 如需詳細資訊，請參閱 [使用 Docker Hub 進行驗證](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub)。
+> 自 2020 年 11 月 2 日起，[下載速率限制適用](https://docs.docker.com/docker-hub/download-rate-limit/)於從 Docker 免費方案帳戶對 Docker Hub 進行匿名和已驗證的要求，並由 IP 位址強制執行。 如需詳細資訊，請參閱[使用 Docker Hub 驗證](../container-registry/buffer-gate-public-content.md#authenticate-with-docker-hub)。
 >
 > 為了避免受到速率限制，請確定 Dockerfile 中的預設值 `FROM microsoft/aspnet:4.7.2-windowsservercore-1803 AS base` 已取代為 `FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-1803 AS base`
 
 工具接著會確認 Docker 已安裝、將 Dockerfile 新增至您的專案，然後為您的專案提取 Docker 映像。  
-Service Fabric Mesh 應用程式專案會新增至您的解決方案。 其中包含您的 Mesh 發佈設定檔和組態檔。 專案的名稱與您的專案名稱相同，結尾處會加上 'Application'，例如 **eShopLegacyWebFormsApplication** 。 
+Service Fabric Mesh 應用程式專案會新增至您的解決方案。 其中包含您的 Mesh 發佈設定檔和組態檔。 專案的名稱與您的專案名稱相同，結尾處會加上 'Application'，例如 **eShopLegacyWebFormsApplication**。 
 
 在新的 Mesh 專案中，您會看到兩個您應注意的資料夾：
-- **應用程式資源** ，其中包含 YAML 檔案用以說明其他 Mesh 資源，例如網路。
-- **服務資源** ，其中包含 service.yaml 檔案，用以說明您的應用程式在部署後應如何執行。
+- **應用程式資源**，其中包含 YAML 檔案用以說明其他 Mesh 資源，例如網路。
+- **服務資源**，其中包含 service.yaml 檔案，用以說明您的應用程式在部署後應如何執行。
 
-在容器協調流程支援新增至您的應用程式後，您可以按 **F5** ，對您在本機 Service Fabric Mesh 叢集上的 .NET 應用程式進行偵錯。 以下是在 Mesh Service Fabric 叢集上執行的 eShop ASP.NET 應用程式： 
+在容器協調流程支援新增至您的應用程式後，您可以按 **F5**，對您在本機 Service Fabric Mesh 叢集上的 .NET 應用程式進行偵錯。 以下是在 Mesh Service Fabric 叢集上執行的 eShop ASP.NET 應用程式： 
 
 ![eShop 應用程式](./media/service-fabric-mesh-howto-containerize-vs/eshop-running.png)
 
 現在，您可以將應用程式發佈至 Azure Service Fabric Mesh。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 請了解如何將應用程式發佈至 Service Fabric Mesh：[教學課程 - 部署 Service Fabric Mesh 應用程式](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)

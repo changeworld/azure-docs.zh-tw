@@ -1,19 +1,19 @@
 ---
 title: 對應資料流程中的排名轉換
 description: 如何使用 Azure Data Factory 的對應資料流程順位轉換產生排名資料行
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/05/2020
-ms.openlocfilehash: 8584d1b64191cc5258c6eeeef9ae4125bf1a2c65
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: b7adb6bf13cba5f886b442515e8ba5661cfeb8ef
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044729"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490919"
 ---
 # <a name="rank-transformation-in-mapping-data-flow"></a>對應資料流程中的排名轉換 
 
@@ -27,7 +27,7 @@ ms.locfileid: "92044729"
 
 ![排名設定](media/data-flow/rank-configuration.png "排名設定")
 
-不**區分大小寫：** 如果排序資料行是字串類型，則會將大小寫納入排名中。 
+不 **區分大小寫：** 如果排序資料行是字串類型，則會將大小寫納入排名中。 
 
 **密集：** 如果啟用，則 rank 資料行將會是密集的等級。 每個排名計數將會是連續的數位，且不會在系結之後略過順位值。
 

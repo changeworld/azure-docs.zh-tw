@@ -10,19 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: aahi
-ms.openlocfilehash: e8a8b843345d21d38c11789b09003a4b82f768f5
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 37d9352b6384ee2b5e95903f35d531bd672b25b1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369489"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490970"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>將搜尋查詢傳送至 Bing 圖像式搜尋 API
 
 > [!WARNING]
-> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
-> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
-> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的程序進行佈建。
+> 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 本文說明傳送給 Bing 圖像式搜尋 API 的要求所具有的參數和屬性，以及回應物件。 
 
@@ -78,7 +78,7 @@ ms.locfileid: "94369489"
 
 以下是您的要求所應指定的查詢參數。 您至少應該包含 `mkt` 查詢參數：
 
-| Name | 值 | 類型 | 必要 |
+| 名稱 | 值 | 類型 | 必要 |
 | --- | --- | --- | --- |
 | <a name="cc"></a>cc  | 代表結果來源的兩個字元的國家/地區代碼。<br /><br /> 若您設定此參數，則您也必須指定 [Accept-Language](#acceptlanguage) 標頭。 Bing 會使用它從語言清單中找到的第一個支援的語言，然後將其與您所指定的國碼 (地區碼) 結合，以決定要傳回結果的市場。 如果語言清單中未包含支援的語言，Bing 會就近尋找支援要求的語言和市場。 或者，它可能會將彙總或預設的市場用於結果，而不指定市場。<br /><br /> 只有在指定了多個語言時，才需要使用此查詢參數和 `Accept-Language` 查詢參數，否則，您應使用 `mkt` 和 `setLang` 查詢參數。<br /><br /> 此參數和 [mkt](#mkt) 查詢參數彼此互斥 &mdash; 請勿同時指定。 | 字串 | 否       |
 | <a name="mkt"></a>mkt   | 產生結果的市場。 <br /><br /> **注意：** 您應該一律指定市場（如果已知）。 指定市場可協助 Bing 路由傳送要求，並傳回適當的最佳回應。<br /><br /> 此參數和 [cc](#cc) 查詢參數彼此互斥 &mdash; 請勿同時指定。 | String | 是      |
@@ -89,7 +89,7 @@ ms.locfileid: "94369489"
 
 以下是您的要求所應指定的標頭。 `Content-Type`和 `Ocp-Apim-Subscription-Key` 標頭是唯一必要的標頭，但您也應該包含 `User-Agent` 、、 `X-MSEdge-ClientID` `X-MSEdge-ClientIP` 和 `X-Search-Location` 。
 
-| 標頭 | 說明 |
+| 標頭 | 描述 |
 | --- | --- |
 | <a name="acceptlanguage"></a>Accept-Language  | 選擇性要求標頭。<br /><br /> 要用於使用者介面字串語言的逗號分隔清單。 清單採用喜好設定的遞減順序。 如需詳細資訊 (包括預期的格式)，請參閱 [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)。<br /><br /> 此標頭和 [setLang](#setlang) 查詢參數彼此互斥 &mdash; 請勿同時指定。<br /><br /> 若您設定此標頭，則您也必須指定 [cc](#cc) 查詢參數。 若要決定要傳回結果的市場，Bing 會使用它從清單中找到的第一個支援的語言，然後將其與 `cc` 參數值結合。 如果清單中未包含支援的語言，Bing 會就近尋找支援要求的語言和市場，或將彙總或預設的市場用於結果。 若要判斷 Bing 使用的市場，請參閱 `BingAPIs-Market` 標頭。<br /><br /> 只有在指定了多種語言時，才需要使用此標頭和 `cc` 查詢參數。 否則，請使用 [mkt](#mkt) 和 [setLang](#setlang) 查詢參數。<br /><br /> 使用者介面字串是在使用者介面中作為標籤的字串。 JSON 回應物件中有幾個使用者介面字串。 回應物件中 Bing.com 屬性的任何連結都會套用指定的語言。  |
 | <a name="contenttype"></a>Content-Type  |     |
@@ -109,7 +109,7 @@ ms.locfileid: "94369489"
 
 ### <a name="content-form-types"></a>內容表單類型
 
-每個要求都必須包含 `Content-Type` 標頭。 標頭必須設定為： `multipart/form-data; boundary=\<boundary string\>` ，其中 \<boundary string\> 是識別表單資料界限的唯一不透明字串。 例如 `boundary=boundary_1234-abcd`。
+每個要求都必須包含 `Content-Type` 標頭。 標頭必須設定為： `multipart/form-data; boundary=\<boundary string\>` ，其中 \<boundary string\> 是識別表單資料界限的唯一不透明字串。 例如： `boundary=boundary_1234-abcd` 。
 
 如果您將影像權杖或 URL 圖像式搜尋傳送，下列程式碼片段會顯示您必須包含在 POST 主體中的表單資料。 表單資料必須包含 `Content-Disposition` 標頭，而且您必須將其 `name` 參數設定為 "knowledgeRequest"。 如需物件的詳細資訊 `imageInfo` ，請參閱要求。
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/30/2020
 ms.author: memildin
-ms.openlocfilehash: f26fffe8e6b2be6ede064b4750d012b3e4535c66
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 5ac96d703ea646d26b84d6d6486d9ee44ad87cd2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433321"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490120"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -129,7 +129,7 @@ NIST SP 800-171 R2 標準版現已提供內建方案，可與 Azure 資訊安全
 
 - Azure Resource Graph (ARG) 的建議有更豐富的資料。 ARG 是專門設計來提供有效率資源探索的 Azure 服務。 您可以使用 ARG 在一組指定的訂用帳戶中大規模查詢，以便有效率地控管您的環境。 
 
-    對於 Azure 資訊安全中心，您可以使用 ARG 和 [Kusto 查詢語言 (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) 來查詢各種安全性狀態資料。
+    對於 Azure 資訊安全中心，您可以使用 ARG 和 [Kusto 查詢語言 (KQL)](/azure/data-explorer/kusto/query/) 來查詢各種安全性狀態資料。
 
     先前如果您在 ARG 中查詢此建議，唯一可用的資訊就是必須在機器上補救建議。 增強版本的下列查詢則會傳回每個遺漏的系統更新，並依機器分組。
 
@@ -172,7 +172,7 @@ NIST SP 800-171 R2 標準版現已提供內建方案，可與 Azure 資訊安全
 
 [深入了解如何將整合式弱點掃描器部署到混合式機器](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines)。
 
-[深入了解已啟用 Azure Arc 的伺服器](https://docs.microsoft.com/azure/azure-arc/servers/)。
+[深入了解已啟用 Azure Arc 的伺服器](../azure-arc/servers/index.yml)。
 
 
 ### <a name="azure-firewall-recommendation-added-preview"></a>已新增 Azure 防火牆建議 (預覽)
@@ -206,7 +206,7 @@ NIST SP 800-171 R2 標準版現已提供內建方案，可與 Azure 資訊安全
 
 Azure Resource Graph 是 Azure 中的一項服務，透過大規模查詢一組指定訂用帳戶的能力，提供有效率的資源探索，讓您可以有效地治理環境。 
 
-對於 Azure 資訊安全中心，您可以使用 ARG 和 [Kusto 查詢語言 (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) 來查詢各種安全性狀態資料。 例如：
+對於 Azure 資訊安全中心，您可以使用 ARG 和 [Kusto 查詢語言 (KQL)](/azure/data-explorer/kusto/query/) 來查詢各種安全性狀態資料。 例如：
 
 - 資產清查利用 (ARG)
 - 我們已記載範例 ARG 查詢，說明如何[識別未啟用多重要素驗證 (MFA) 的帳戶](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled)
@@ -295,7 +295,7 @@ extract("^(.+)/providers/Microsoft.Security/assessments/.+$",1,id)))))
 
 深入了解下列連結：
 - [如何使用 Azure Resource Graph Explorer 建立查詢](../governance/resource-graph/first-query-portal.md)
-- [Kusto 查詢語言 (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)
+- [Kusto 查詢語言 (KQL)](/azure/data-explorer/kusto/query/)
 
 
 ## <a name="september-2020"></a>2020 年 9 月

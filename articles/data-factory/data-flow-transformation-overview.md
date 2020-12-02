@@ -1,18 +1,18 @@
 ---
 title: 對應資料流程轉換總覽
 description: 對應資料流程中可用的不同轉換概述
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 6fe85db6612a16099f61cb52fe9c5864882f35b3
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 9d44890e84e97a413543a4291d1331fee0f04841
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892922"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490868"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>對應資料流程轉換總覽
 
@@ -32,12 +32,12 @@ ms.locfileid: "92892922"
 | [聯結](data-flow-join.md) | 多個輸入/輸出 |  結合兩個來源或資料流程中的資料。 |
 | [查閱](data-flow-lookup.md) | 多個輸入/輸出 | 來自其他來源的參考資料。 |
 | [新增分支](data-flow-new-branch.md) | 多個輸入/輸出 | 針對相同的資料流程套用多組作業和轉換。 |
-| [樞紐](data-flow-pivot.md) | 架構修飾詞 | 一或多個群組資料行將其相異的資料列值轉換成個別資料行的匯總。 |
+| [樞紐分析](data-flow-pivot.md) | 架構修飾詞 | 一或多個群組資料行將其相異的資料列值轉換成個別資料行的匯總。 |
 | [排名](data-flow-rank.md) | 架構修飾詞 | 根據排序條件產生排序的排名 |
 | [選取](data-flow-select.md) | 架構修飾詞 | 別名資料行和資料流程名稱，以及卸載或重新排列資料行 |
 | [接收](data-flow-sink.md) | - | 資料的最終目的地 |
 | [排序](data-flow-sort.md) | Row 修飾詞 | 在目前的資料流程上排序內送資料列 |
-| [Source](data-flow-source.md) | - | 資料流程的資料來源 |
+| [來源](data-flow-source.md) | - | 資料流程的資料來源 |
 | [代理鍵](data-flow-surrogate-key.md) | 架構修飾詞 | 加入遞增的非商務任意金鑰值 |
 | [Union](data-flow-union.md) | 多個輸入/輸出 | 垂直合併多個資料流程 |
 | [取消樞紐](data-flow-unpivot.md) | 架構修飾詞 | 將資料行分割成資料列值 |
