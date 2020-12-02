@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: 2977946b2e1f37aa356ee075d2caac237170df0f
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 90a4da2aadbbdf07d851e4407d2d417fc76d32af
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "95993348"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512319"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何呼叫文字分析 REST API
 
@@ -54,9 +54,9 @@ ms.locfileid: "95993348"
 > [!NOTE]
 > 如果您想要使用或端點，您將需要使用標準 (S) [定價層](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) 的文字分析 `/analyze` 資源 `/health` 。
 
-1.  首先，移至 [Azure 入口網站](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) 並建立新的文字分析資源（如果您還沒有的話）。 如果您想要使用或端點，請選擇標準 (S) 定價層 `/analyze` `/health` 。
+1.  首先，移至 [Azure 入口網站](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) 並建立新的文字分析資源（如果您還沒有的話）。 如果您想要使用或端點，請選擇 **標準 (S) 定價層** `/analyze` `/health` 。
 
-2.  選取您要使用端點的區域。
+2.  選取您要用於端點的區域。  請注意 `/analyze` ，和 `/health` 端點僅適用于下欄區域：美國西部2、美國東部2、美國中部、北歐和西歐。
 
 3.  建立文字分析資源，然後移至頁面左側的 [金鑰和端點] 分頁。 複製金鑰，以便稍後在呼叫 Api 時使用。 您稍後會將其新增為 `Ocp-Apim-Subscription-Key` 標頭的值。
 
@@ -69,7 +69,7 @@ ms.locfileid: "95993348"
 
 針對所有同步作業，API 要求的格式都相同。 檔會以原始非結構化文字形式提交在 JSON 物件中。 不支援 XML。 JSON 架構包含以下所述的元素。
 
-| 元素 | 有效值 | 必要？ | 使用方式 |
+| 元素 | 有效值 | 必要？ | 使用量 |
 |---------|--------------|-----------|-------|
 |`id` |資料類型是字串，但實際上文件識別碼通常是整數。 | 必要 | 系統會使用您所提供的識別碼作為輸出的結構。 語言代碼、關鍵片語及情感分數會針對要求中的每個識別碼產生。|
 |`text` | 非結構化原始文字，最多5120個字元。 | 必要 | 針對語言偵測，文字可以透過任何語言表示。 針對情感分析、關鍵片語擷取及實體識別，文字必須為[支援的語言](../language-support.md)。 |
@@ -102,7 +102,7 @@ ms.locfileid: "95993348"
 * 關鍵片語擷取 
 * 命名實體辨識 (包括 PII 和 PHI) 
 
-| 元素 | 有效值 | 必要？ | 使用方式 |
+| 元素 | 有效值 | 必要？ | 使用量 |
 |---------|--------------|-----------|-------|
 |`displayName` | String | 選擇性 | 用來當做作業唯一識別碼的顯示名稱。|
 |`analysisInput` | 包含 `documents` 下欄欄位 | 必要 | 包含您要傳送之檔的資訊。 |
@@ -158,7 +158,7 @@ ms.locfileid: "95993348"
 
 健康情況託管 API 文字分析的 API 要求格式與其容器的格式相同。 檔會以原始非結構化文字形式提交在 JSON 物件中。 不支援 XML。 JSON 架構包含以下所述的元素。  請填寫並提交 [認知服務要求表單](https://aka.ms/csgate) ，以要求存取文字分析的健康狀態公開預覽。 您將不需支付文字分析的健康情況。 
 
-| 元素 | 有效值 | 必要？ | 使用方式 |
+| 元素 | 有效值 | 必要？ | 使用量 |
 |---------|--------------|-----------|-------|
 |`id` |資料類型是字串，但實際上文件識別碼通常是整數。 | 必要 | 系統會使用您所提供的識別碼作為輸出的結構。 |
 |`text` | 非結構化原始文字，最多5120個字元。 | 必要 | 請注意，目前僅支援英文文字。 |
@@ -188,7 +188,7 @@ example.json
 
 ## <a name="set-up-a-request"></a>設定要求 
 
-在 Postman (或另一個 web API 測試控管) 中，新增您想要使用之功能的端點。 使用下表來尋找適當的端點格式，並取代 `<your-text-analytics-resource>` 為您的資源端點。 例如：
+在 Postman (或另一個 web API 測試控管) 中，新增您想要使用之功能的端點。 使用下表來尋找適當的端點格式，並取代 `<your-text-analytics-resource>` 為您的資源端點。 例如︰
 
 `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.0/languages`
 
@@ -217,7 +217,7 @@ example.json
 |--|--|--|
 | 提交健全狀況工作的文字分析  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs` |
 | 取得作業狀態和結果 | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
-| 取消工作 | 刪除 | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
+| 取消工作 | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
 
 --- 
 
@@ -253,7 +253,7 @@ example.json
 如果您對非同步或端點進行呼叫 `/analyze` `/health` ，請確認您收到202回應碼。 您將需要取得回應以查看結果：
 
 1. 在 API 回應中， `Operation-Location` 從標頭尋找，以識別您傳送給 API 的作業。 
-2. 為您所使用的端點建立 GET 要求。 請參閱 [上表](#set-up-a-request) 中有關端點格式的表格，並查看 [API 參考檔](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus)。 例如：
+2. 為您所使用的端點建立 GET 要求。 請參閱 [上表](#set-up-a-request) 中有關端點格式的表格，並查看 [API 參考檔](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus)。 例如︰
 
     `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>`
 

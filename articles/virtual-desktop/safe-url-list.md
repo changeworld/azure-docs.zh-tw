@@ -1,21 +1,21 @@
 ---
-title: Windows 虛擬桌面安全 URL 清單-Azure
-description: 您應解除封鎖的 Url 清單，以確保您的 Windows 虛擬桌面部署如預期運作。
+title: Windows 虛擬桌面需要 URL 清單-Azure
+description: 您必須解除封鎖的 Url 清單，以確保您的 Windows 虛擬桌面部署如預期運作。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 12/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3d19a60fd6a22eb9245722c6ff69d3b39c05d29e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6b3fdc18a04dadf4bf1cf380c7bb51d21f826633
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023168"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512336"
 ---
-# <a name="safe-url-list"></a>安全 URL 清單
+# <a name="required-url-list"></a>必要的 URL 清單
 
-您將需要解除封鎖某些 Url，讓您的 Windows 虛擬桌面部署能夠正常運作。 本文列出這些 Url，讓您知道哪些是安全的。
+若要部署和使用 Windows 虛擬桌面，您必須解除封鎖某些 Url，讓虛擬機器 (Vm) 可隨時存取這些 Url。 本文列出您必須解除封鎖所需的 Url。
 
 ## <a name="virtual-machines"></a>虛擬機器
 
@@ -53,7 +53,7 @@ ms.locfileid: "95023168"
 |*.servicebus.usgovcloudapi.net|443|代理程式流量|AzureCloud|
 |* xt.table.core.usgovcloudapi.net|443|代理程式流量|AzureCloud|
 |Kms.core.usgovcloudapi.net|1688|Windows 啟用|Internet|
-|mrsglobalstugviffx.core.usgovcloudapi.net|443|代理程式和 SXS 堆疊更新|AzureCloud|
+|mrsglobalstugviffx.blob.core.usgovcloudapi.net|443|代理程式和 SXS 堆疊更新|AzureCloud|
 |wvdportalstorageblob.blob.core.usgovcloudapi.net|443|Azure 入口網站支援|AzureCloud|
 | 169.254.169.254 | 80 | [Azure 實例中繼資料服務端點](../virtual-machines/windows/instance-metadata-service.md) | N/A |
 | 168.63.129.16 | 80 | [工作階段主機健全狀況監視](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | N/A |
@@ -69,9 +69,13 @@ ms.locfileid: "95023168"
 |login.windows.net|443|登入 Microsoft Online Services、Microsoft 365|login.microsoftonline.us|
 |*.sfx.ms|443|OneDrive 用戶端軟體的更新|oneclient.sfx.ms|
 |*.digicert.com|443|憑證撤銷檢查|None|
+|*. azure-dns.com|443|Azure DNS 解析|None|
+|*. azure-dns.net|443|Azure DNS 解析|None|
 
 >[!NOTE]
 >Windows 虛擬桌面目前沒有 IP 位址範圍的清單，您可以將其解除封鎖以允許網路流量。 我們目前僅支援解除封鎖特定的 Url。
+>
+>如果您使用新一代防火牆 (NGFW) ，您必須使用專為 Azure Ip 所建立的動態清單，以確保您可以連線。
 >
 >如需安全的 Office 相關 Url 清單，包括必要的 Azure Active Directory 相關 Url，請參閱 [office 365 url 和 IP 位址範圍](/office365/enterprise/urls-and-ip-address-ranges)。
 >
