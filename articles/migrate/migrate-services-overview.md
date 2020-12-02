@@ -4,12 +4,12 @@ description: 了解 Azure Migrate 服務。
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 48447959f0a60baf8802a9939612bf0d536c2557
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 5a003fc740d08c24af301a6c7ad06cc342530c56
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314754"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95746875"
 ---
 # <a name="about-azure-migrate"></a>關於 Azure Migrate
 
@@ -18,7 +18,7 @@ ms.locfileid: "92314754"
 Azure Migrate 提供集中式的中樞，可評估內部部署伺服器、基礎結構、應用程式與資料，並將其遷移至 Azure。 其提供下列各項：
 
 - **整合式移轉平台**：單一入口網站，用來啟動、執行及追蹤您遷移至 Azure 的工作。
-- **各種工具**：用於評量和遷移的各種工具。 Azure Migrate 工具包括伺服器評量和 Azure Migrate：伺服器移轉。 Azure Migrate 也可與其他 Azure 服務整合，以及與獨立軟體廠商 (ISV) 供應項目整合。
+- **各種工具**：用於評量和遷移的各種工具。 Azure Migrate 工具包括 Azure Migrate：伺服器評量和 Azure Migrate：伺服器移轉。 Azure Migrate 也可與其他 Azure 服務整合，以及與獨立軟體廠商 (ISV) 供應項目整合。
 - **評量及移轉**：在 Azure Migrate 中樞，您可以評估和遷移：
     - **伺服器**：評估內部部署伺服器，並將其遷移至 Azure 虛擬機器或 Azure VMware 解決方案 (AVS) (預覽)。
     - **資料庫**：評估內部部署資料庫，並將其遷移至 Azure SQL Database 或 SQL 受控執行個體。
@@ -82,9 +82,9 @@ Azure Migrate：伺服器移轉工具可協助您遷移至 Azure：
 
 **移轉** | **詳細資料**
 --- | ---
-內部部署 VMware VM | 使用無代理程式或代理程式型移轉，將 VM 遷移至 Azure。<br/><br/> 針對無代理程式移轉，伺服器移轉會使用您在內部部署環境中部署的 Azure Migrate 設備。 其與您用於伺服器評量的設備類型相同。<br/><br/> 針對代理程式型移轉，伺服器評量會使用複寫設備。
-內部部署 Hyper-V VM | 將 VM 遷移至 Azure。<br/><br/> 伺服器評量會使用 Hyper-V 主機上安裝的提供者代理程式進行移轉。
-內部部署實體伺服器 | 您可以將實體機器遷移至 Azure。 您也可以為了移轉目的，將其他虛擬化機器及其他公用雲端中的 VM 視為虛擬機器，以便進行移轉。 | 伺服器評量會使用複寫設備來進行移轉。
+內部部署 VMware VM | 使用無代理程式或代理程式型移轉，將 VM 遷移至 Azure。<br/><br/> 針對無代理程式移轉，伺服器移轉會使用相同的 Azure Migrate 設備，該設備也可供伺服器評估用來探索和評估 VMware VM。<br/><br/> 針對代理程式型移轉，伺服器移轉會使用複寫設備。
+內部部署 Hyper-V VM | 將 VM 遷移至 Azure。<br/><br/> 伺服器移轉會使用 Hyper-V 主機上安裝的提供者代理程式進行移轉。
+內部部署實體伺服器 | 您可以將實體機器遷移至 Azure。 您也可以為了移轉目的，將其他虛擬化機器及其他公用雲端中的 VM 視為實際的伺服器，以便進行移轉。 | 伺服器移轉會使用複寫設備來進行移轉。
 
 
 ## <a name="selecting-assessment-and-migration-tools"></a>選取評量和移轉工具

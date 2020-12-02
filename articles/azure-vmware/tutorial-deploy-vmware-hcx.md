@@ -3,18 +3,21 @@ title: 教學課程 - 部署及設定 VMWare HCX
 description: 了解如何為您的 Azure VMware 解決方案私人雲端部署及設定 VMware HCX 解決方案。
 ms.topic: tutorial
 ms.date: 11/18/2020
-ms.openlocfilehash: 57bcf1bd3023e56f6a64b5d82d8f1fc90be9dd47
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: afb5c653ce7c4b4a453a4031c5664042357de6c0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888737"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95999617"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>部署及設定 VMWare HCX
 
 本文說明如何為您 Azure VMware 解決方案私人雲端部署及設定內部部署 VMware HCX Connector。 VMware HCX 可讓您透過各種移轉類型，將您的 VMware 工作負載移轉至 Azure VMware 解決方案和其他已連線的網站。 因為 Azure VMware 解決方案會部署和設定 HCX 雲端管理員，所以您必須在內部部署 VMware 資料中心內下載、啟用及設定 HCX Connector。
 
 VMware HCX Advanced Connector 已預先部署在 Azure VMware 解決方案中。 最多可支援三個網站連線 (內部部署至雲端或雲端到雲端)。 如果您需要三個以上的網站連線，請提交[支援要求](https://portal.azure.com/#create/Microsoft.Support)以啟用 [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) 附加元件。 此附加元件目前為預覽狀態。 
+
+>[!Note]
+>雖然 VMware Configuration Maximum 工具描述，內部部署連接器與雲端管理員之間的網站配對上限為 25 個，但授權再次將此值限制為 3 個 (若為進階版) 和 10 個 (若為企業版)。
 
 >[!NOTE]
 >VMware HCX Enterprise 會以 Azure VMware 解決方案的預覽服務形式提供。 這是免費的附加元件，並且受限於預覽服務的條款及條件。 當 VMware HCX Enterprise 服務正式發行後，您會收到帳單即將切換的 30 天通知。 您也可以選擇關閉或退出服務。 從 VMware HCX Enterprise 到 VMware HCX Advanced 沒有簡單的降級路徑。 如果您決定要降級，就必須重新部署，因而會產生停機時間。

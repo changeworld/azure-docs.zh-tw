@@ -1,348 +1,211 @@
 ---
-title: 使用 Azure 服務匯流排主題搭配 Azure/service-bus Node.js 套件
-description: 了解如何在 Azure 中從 Node.js 應用程式透過 azure/service-bus 套件使用服務匯流排主題和訂用帳戶。
+title: 搭配主題和訂用帳戶使用預覽 JavaScript azure/service-bus
+description: 了解如何撰寫 JavaScript 程式，以使用 @azure/service-bus 套件的最新預覽版本，將訊息傳送至服務匯流排主題並從主題訂用帳戶中接收訊息。
 author: spelluru
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 08/09/2020
+ms.date: 11/09/2020
 ms.author: spelluru
 ms.custom: devx-track-js
-ms.openlocfilehash: 219132fc8a0e618cdf2561947ae3904a9e2cb310
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 56bed63a9030135966a208dd1ad9b4c45cde328d
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91300746"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95811704"
 ---
-# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>快速入門：如何透過 Node.js 和 azure-sb 套件使用服務匯流排主題和訂用帳戶
-在本教學課程中，您將了解如何建立 Node.js 應用程式，以使用 [azure-sb](https://www.npmjs.com/package/azure-sb) 套件將訊息傳送至服務匯流排主題，以及接收來自服務匯流排訂用帳戶的訊息。 範例均以 JavaScript 撰寫，並使用在內部使用 `azure-sb` 套件的 Node.js [Azure 模組](https://www.npmjs.com/package/azure)。
+# <a name="quickstart-service-bus-topics-and-subscriptions-with-nodejs-and-the-preview-azureservice-bus-package"></a>快速入門：透過 Node.js 和預覽 azure/service-bus 套件使用服務匯流排主題和訂用帳戶
+在本教學課程中，您將了解如何以 JavaScript 程式使用 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 套件，將訊息傳送至服務匯流排主題，以及接收來自主題服務匯流排訂用帳戶的訊息。
 
-> [!IMPORTANT]
-> [azure-sb](https://www.npmjs.com/package/azure-sb) 套件會使用[服務匯流排 REST 執行階段 API](/rest/api/servicebus/service-bus-runtime-rest)。 您可以使用新的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 套件 (採用更快速的 [AMQP 1.0 通訊協定](service-bus-amqp-overview.md))，以獲得更快速的體驗。 
-> 
-> 若要深入了解新的套件，請參閱[如何透過 Node.js 和 @azure/service-bus 套件使用服務匯流排主題和訂用帳戶](./service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)，否則，請繼續閱讀以了解如何使用 [Azure](https://www.npmjs.com/package/azure) 套件。
-
-此處涵蓋的案例包括：
-
-- 建立主題和訂用帳戶 
-- 建立訂用帳戶篩選 
-- 傳送訊息至主題 
-- 從訂用帳戶接收訊息
-- 刪除主題和訂用帳戶 
-
-如需主題和訂用帳戶的詳細資訊，請參閱[後續步驟](#next-steps)一節。
-
-## <a name="prerequisites"></a>必要條件
-- Azure 訂用帳戶。 若要完成此教學課程，您需要 Azure 帳戶。 您可以啟用自己的 [Visual Studio 或 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-- 依照下列快速入門中的步驟操作：[快速入門：使用 Azure 入口網站建立服務匯流排主題和主題的訂用帳戶](service-bus-quickstart-topics-subscriptions-portal.md)，以建立服務匯流排**命名空間**及取得**連接字串**。
-
-    > [!NOTE]
-    > 您將會在本快速入門中使用 **Node.js**，建立**主題**和主題的**訂用帳戶**。 
-
-## <a name="create-a-nodejs-application"></a>建立 Node.js 應用程式
-建立空白的 Node.js 應用程式。 如需有關建立 Node.js 應用程式的指示，請參閱 [建立 Node.js 應用程式並將其部署到 Azure 網站]、[Node.js 雲端服務][Node.js Cloud Service] (使用 Windows PowerShell) 或使用 WebMatrix 的網站。
-
-## <a name="configure-your-application-to-use-service-bus"></a>設定應用程式以使用服務匯流排
-若要使用服務匯流排，請下載 Node.js Azure 封裝。 此封裝含有一組能與服務匯流排 REST 服務通訊的便利程式庫。
-
-### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>使用 Node Package Manager (NPM) 取得套件
-1. 開啟命令列介面，例如 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix)。
-2. 瀏覽至您建立應用程式範例的資料夾。
-3. 在命令視窗中輸入 **npm install azure**，這應該會產生下列輸出：
-
-   ```
-       azure@0.7.5 node_modules\azure
-   ├── dateformat@1.0.2-1.2.3
-   ├── xmlbuilder@0.4.2
-   ├── node-uuid@1.2.0
-   ├── mime@1.2.9
-   ├── underscore@1.4.4
-   ├── validator@1.1.1
-   ├── tunnel@0.0.2
-   ├── wns@0.5.3
-   ├── xml2js@0.2.7 (sax@0.5.2)
-   └── request@2.21.0 (json-stringify-safe@4.0.0, forever-agent@0.5.0, aws-sign@0.3.0, tunnel-agent@0.3.0, oauth-sign@0.3.0, qs@0.6.5, cookie-jar@0.3.0, node-uuid@1.4.0, http-signature@0.9.11, form-data@0.0.8, hawk@0.13.1)
-   ```
-3. 您可以手動執行 **ls** 命令，確認已建立 **node\_modules** 資料夾。 在該資料夾內找出 **azure** 套件，其中含有存取服務匯流排主題所需的程式庫。
-
-### <a name="import-the-module"></a>匯入模組
-使用記事本或其他文字編輯器將以下內容新增至應用程式 **server.js** 檔案的頂端：
-
-```javascript
-var azure = require('azure');
-```
-
-### <a name="set-up-a-service-bus-connection"></a>設定服務匯流排連接
-Azure 模組會讀取環境變數 `AZURE_SERVICEBUS_CONNECTION_STRING`，以獲得您在[必要條件](#prerequisites)中取得的連接字串。 如果您需要再次取得連接字串的指示，請參閱[取得連接字串](service-bus-quickstart-topics-subscriptions-portal.md#get-the-connection-string)。 如未設定此環境變數，必須在呼叫 `createServiceBusService` 時指定帳戶資訊。
-
-如需在 Azure 雲端服務的環境變數設定範例，請參閱[設定環境變數](../container-instances/container-instances-environment-variables.md#azure-cli-example)。
-
-
-
-## <a name="create-a-topic"></a>建立主題
-**ServiceBusService** 物件可讓您使用主題。 下列程式碼將建立 **ServiceBusService** 物件。 請將程式碼新增至 **server.js** 檔案的頂端附近，放置在匯入 azure 模型的陳述式後方：
-
-```javascript
-var serviceBusService = azure.createServiceBusService();
-```
-
-如果呼叫 **ServiceBusService** 物件上的 `createTopicIfNotExists`，會傳回指定的主題 (如果存在)，或以指定的名稱建立新的主題。 下列程式碼使用 `createTopicIfNotExists` 建立或連接至名稱為 `MyTopic` 的主題：
-
-```javascript
-serviceBusService.createTopicIfNotExists('MyTopic',function(error){
-    if(!error){
-        // Topic was created or exists
-        console.log('topic created or exists.');
-    }
-});
-```
-
-`createTopicIfNotExists` 方法也支援其他選項，而可讓您覆寫訊息存留時間或主題大小上限等預設主題設定。 
-
-下列範例會將主題大小上限設為 5 GB，並將存留時間設為一分鐘：
-
-```javascript
-var topicOptions = {
-        MaxSizeInMegabytes: '5120',
-        DefaultMessageTimeToLive: 'PT1M'
-    };
-
-serviceBusService.createTopicIfNotExists('MyTopic', topicOptions, function(error){
-    if(!error){
-        // topic was created or exists
-    }
-});
-```
-
-### <a name="filters"></a>篩選器
-您可以將選用的篩選作業套用至使用 **ServiceBusService** 執行的作業。 篩選作業可包括記錄、自動重試等等。篩選器是使用簽章實作方法的物件：
-
-```javascript
-function handle (requestOptions, next)
-```
-
-對要求選項執行前置處理之後，方法會呼叫 `next`，並傳遞具有下列簽章的回呼：
-
-```javascript
-function (returnObject, finalCallback, next)
-```
-
-在此回呼中，以及處理 `returnObject` (來自對伺服器要求的回應) 之後，回呼必須叫用 next (如果存在) 以繼續處理其他篩選，或是叫用 `finalCallback` 結束服務叫用。
-
-Azure SDK for Node.js 包含了實作重試邏輯的兩個篩選器：**ExponentialRetryPolicyFilter** 和 **LinearRetryPolicyFilter**。 下列程式碼將建立使用 **ExponentialRetryPolicyFilter** 的 **ServiceBusService** 物件：
-
-```javascript
-var retryOperations = new azure.ExponentialRetryPolicyFilter();
-var serviceBusService = azure.createServiceBusService().withFilter(retryOperations);
-```
-
-## <a name="create-subscriptions"></a>建立訂用帳戶
-**ServiceBusService** 物件也能用來建立主題訂閱。 訂用帳戶是具名的，它們能擁有選用的篩選器，以限制傳遞至訂閱的虛擬佇列訊息集合。
+## <a name="prerequisites"></a>先決條件
+- Azure 訂用帳戶。 若要完成此教學課程，您需要 Azure 帳戶。 您可以[啟用自己的 MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或是[註冊免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+- 依照下列快速入門中的步驟操作：[快速入門：使用 Azure 入口網站建立服務匯流排主題和主題的訂用帳戶](service-bus-quickstart-topics-subscriptions-portal.md)。 記下連接字串、主題名稱和訂用帳戶名稱。 在本快速入門中，您只會使用一個訂用帳戶。 
 
 > [!NOTE]
-> 根據預設，訂用帳戶是持續性的，會持續到本身或其相關聯的主題遭到刪除為止。 如果應用程式含有建立訂用帳戶的邏輯，它應該會先使用 `getSubscription` 方法檢查訂用帳戶是否存在。
->
-> 您可以藉由設定 [AutoDeleteOnIdle 屬性](/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)，將訂用帳戶自動刪除。
+> - 本教學課程使用您可以透過 [Nodejs](https://nodejs.org/) 來複製和執行的範例。 如需關於建立 Node.js 應用程式的指示，請參閱[建立 Node.js 應用程式並將其部署到 Azure 網站](../app-service/quickstart-nodejs.md)或 [Node.js 雲端服務 (使用 Windows PowerShell)](../cloud-services/cloud-services-nodejs-develop-deploy-app.md)。
 
-### <a name="create-a-subscription-with-the-default-matchall-filter"></a>使用預設 (MatchAll) 篩選器建立訂用帳戶
-**MatchAll** 篩選器是訂用帳戶建立時使用的預設篩選器。 使用 **MatchAll** 篩選器時，所有發佈至主題的訊息都會被置於訂用帳戶的虛擬佇列中。 下列範例將建立名為 AllMessages 的訂用帳戶，並使用預設的 **MatchAll** 篩選器。
+### <a name="use-node-package-manager-npm-to-install-the-package"></a>使用 Node Package Manager (NPM) 安裝封裝
+若要安裝服務匯流排的 npm 套件，請開啟在路徑中有 `npm` 的命令提示字元，並將目錄切換至您要用來存放範例的資料夾，然後執行下列命令。
 
-```javascript
-serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
-    if(!error){
-        // subscription created
-    }
-});
+```bash
+npm install @azure/service-bus
 ```
 
-### <a name="create-subscriptions-with-filters"></a>使用篩選器建立訂用帳戶
-您也可以建立篩選器，讓您界定傳送至主題的哪些訊息應出現在特定主題訂用帳戶中。
+## <a name="send-messages-to-a-topic"></a>傳送訊息至主題
+下列範例程式碼示範如何將訊息批次傳送至服務匯流排主題。 如需詳細資訊，請參閱程式碼註解。 
 
-訂用帳戶所支援的最具彈性篩選器類型是實作 SQL92 子集的 **SqlFilter**。 SQL 篩選器會對發佈至主題之訊息的屬性運作。 如需可與 SQL 篩選器搭配使用的運算式詳細資料，請檢閱 [SqlFilter.SqlExpression][SqlFilter.SqlExpression] 語法。
+1. 開啟您慣用的編輯器，例如 [Visual Studio Code](https://code.visualstudio.com/)
+2. 建立名為 `sendtotopic.js` 的檔案，並在其中貼上下列程式碼。 此程式碼會將訊息傳送至您的主題。
 
-您可以使用 **ServiceBusService** 物件的 `createRule` 方法將篩選器新增至訂用帳戶。 此方法可讓您將篩選器新增至現有的訂用帳戶中。
-
-> [!NOTE]
-> 由於預設篩選器會自動套用至所有新的訂用帳戶，因此您必須先移除預設篩選器，否則 **MatchAll** 將會覆寫您指定的任何其他篩選器。 您可以使用 **ServiceBusService** 物件的 `deleteRule` 方法移除預設規則。
->
->
-
-以下範例將建立名為 `HighMessages` 的訂用帳戶，而且所含的 **SqlFilter** 只會選取自訂 `messagenumber` 屬性大於 3 的訊息：
-
-```javascript
-serviceBusService.createSubscription('MyTopic', 'HighMessages', function (error){
-    if(!error){
-        // subscription created
-        rule.create();
-    }
-});
-var rule={
-    deleteDefault: function(){
-        serviceBusService.deleteRule('MyTopic',
-            'HighMessages',
-            azure.Constants.ServiceBusConstants.DEFAULT_RULE_NAME,
-            rule.handleError);
-    },
-    create: function(){
-        var ruleOptions = {
-            sqlExpressionFilter: 'messagenumber > 3'
-        };
-        rule.deleteDefault();
-        serviceBusService.createRule('MyTopic',
-            'HighMessages',
-            'HighMessageFilter',
-            ruleOptions,
-            rule.handleError);
-    },
-    handleError: function(error){
-        if(error){
-            console.log(error)
+    ```javascript
+    const { ServiceBusClient } = require("@azure/service-bus");
+    
+    const connectionString = "<SERVICE BUS NAMESPACE CONNECTION STRING>"
+    const topicName = "<TOPIC NAME>";
+    
+    const messages = [
+        { body: "Albert Einstein" },
+        { body: "Werner Heisenberg" },
+        { body: "Marie Curie" },
+        { body: "Steven Hawking" },
+        { body: "Isaac Newton" },
+        { body: "Niels Bohr" },
+        { body: "Michael Faraday" },
+        { body: "Galileo Galilei" },
+        { body: "Johannes Kepler" },
+        { body: "Nikolaus Kopernikus" }
+     ];
+    
+     async function main() {
+        // create a Service Bus client using the connection string to the Service Bus namespace
+        const sbClient = new ServiceBusClient(connectionString);
+     
+        // createSender() can also be used to create a sender for a queue.
+        const sender = sbClient.createSender(topicName);
+     
+        try {
+            // Tries to send all messages in a single batch.
+            // Will fail if the messages cannot fit in a batch.
+            // await sender.sendMessages(messages);
+     
+            // create a batch object
+            let batch = await sender.createMessageBatch(); 
+            for (let i = 0; i < messages.length; i++) {
+                // for each message in the arry         
+    
+                // try to add the message to the batch
+                if (!batch.tryAddMessage(messages[i])) {            
+                    // if it fails to add the message to the current batch
+                    // send the current batch as it is full
+                    await sender.sendMessages(batch);
+    
+                    // then, create a new batch 
+                    batch = await sender.createBatch();
+     
+                    // now, add the message failed to be added to the previous batch to this batch
+                    if (!batch.tryAddMessage(messages[i])) {
+                        // if it still can't be added to the batch, the message is probably too big to fit in a batch
+                        throw new Error("Message too big to fit in a batch");
+                    }
+                }
+            }
+    
+            // Send the last created batch of messages to the topic
+            await sender.sendMessages(batch);
+     
+            console.log(`Sent a batch of messages to the topic: ${topicName}`);
+                    
+            // Close the sender
+            await sender.close();
+        } finally {
+            await sbClient.close();
         }
     }
-}
-```
+    
+    // call the main function
+    main().catch((err) => {
+        console.log("Error occurred: ", err);
+        process.exit(1);
+     });    
+    ```
+3. 將 `<SERVICE BUS NAMESPACE CONNECTION STRING>` 取代為服務匯流排命名空間的連接字串。
+1. 將 `<TOPIC NAME>` 取代為主題名稱。 
+1. 然後，在命令提示字元中執行命令，以執行此檔案。
 
-同樣地，下列範例將建立名為 `LowMessages` 的訂用帳戶，而且所含的 **SqlFilter** 只會選取 `messagenumber` 屬性小於或等於 3 的訊息：
+    ```console
+    node sendtotopic.js 
+    ```
+1. 您應該會看見下列輸出。
 
-```javascript
-serviceBusService.createSubscription('MyTopic', 'LowMessages', function (error){
-    if(!error){
-        // subscription created
-        rule.create();
-    }
-});
-var rule={
-    deleteDefault: function(){
-        serviceBusService.deleteRule('MyTopic',
-            'LowMessages',
-            azure.Constants.ServiceBusConstants.DEFAULT_RULE_NAME,
-            rule.handleError);
-    },
-    create: function(){
-        var ruleOptions = {
-            sqlExpressionFilter: 'messagenumber <= 3'
-        };
-        rule.deleteDefault();
-        serviceBusService.createRule('MyTopic',
-            'LowMessages',
-            'LowMessageFilter',
-            ruleOptions,
-            rule.handleError);
-    },
-    handleError: function(error){
-        if(error){
-            console.log(error)
-        }
-    }
-}
-```
-
-當訊息傳送至 `MyTopic` 時，該訊息會傳遞至已訂閱 `AllMessages` 主題訂用帳戶的接收者，並選擇性地傳遞至已訂閱 `HighMessages` 和 `LowMessages` 主題訂用帳戶的接收者 (視訊息內容而定)。
-
-## <a name="how-to-send-messages-to-a-topic"></a>如何將訊息傳送至主題
-若要將訊息傳送至服務匯流排主題，應用程式必須使用 **ServiceBusService** 物件的 `sendTopicMessage` 方法。
-傳送至服務匯流排主題的訊息是 **BrokeredMessage** 物件。
-**BrokeredMessage** 物件具有一組標準屬性 (例如 `Label` 和 `TimeToLive`)、一個用來保存自訂應用程式特定屬性的字典，以及一堆字串資料。 應用程式能將字串值傳遞至 `sendTopicMessage` 以設定訊息本文，系統會將預設值填入任何需要的標準屬性中。
-
-下列範例說明如何將五個測試訊息傳送至 `MyTopic`。 迴圈反覆運算上每個訊息的 `messagenumber` 屬性值會有變化 (這個屬性可判斷接收訊息的訂用帳戶為何)：
-
-```javascript
-var message = {
-    body: '',
-    customProperties: {
-        messagenumber: 0
-    }
-}
-
-for (var i = 0; i < 5; i++) {
-    message.customProperties.messagenumber=i;
-    message.body='This is Message #'+i;
-    serviceBusService.sendTopicMessage(topic, message, function(error) {
-      if (error) {
-        console.log(error);
-      }
-    });
-}
-```
-
-服務匯流排主題支援的訊息大小上限：在[標準層](service-bus-premium-messaging.md)中為 256 KB 以及在[進階層](service-bus-premium-messaging.md)中為 1 MB。 標頭 (包含標準和自訂應用程式屬性) 可以容納 64 KB 的大小上限。 主題中所保存的訊息數目沒有限制，但主題所保存的訊息大小總計會有限制。 此主題大小會在建立時定義，上限是 5 GB。
+    ```console
+    Sent a batch of messages to the topic: mytopic
+    ```
 
 ## <a name="receive-messages-from-a-subscription"></a>自訂用帳戶接收訊息
-對於 **ServiceBusService** 物件使用 `receiveSubscriptionMessage` 方法即可從訂用帳戶接收訊息。 依預設，讀取訊息後，訊息便會從訂用帳戶中刪除。 不過，您可以將選用參數 `isPeekLock` 設為 **true**，來讀取 (查看) 並鎖定訊息，避免從訂用帳戶中刪除訊息。
+1. 開啟您慣用的編輯器，例如 [Visual Studio Code](https://code.visualstudio.com/)
+2. 建立名為 **receivefromsubscription.js** 的檔案，並將以下程式碼張貼在該檔案內。 如需詳細資訊，請參閱程式碼註解。 
 
-隨著接收作業讀取及刪除訊息的預設行為是最簡單的模型，且最適合可容許在發生失敗時，不處理訊息的應用程式案例。 若要了解此行為，請考慮取用者發出接收要求，接著系統在處理此要求之前當機的案例。 因為服務匯流排已將訊息標示為已取用，所以，當應用程式重新啟動並開始重新取用訊息時，它會遺漏當機前已取用的訊息。
-
-如果您將 `isPeekLock` 參數設為 **true**，接收會變成兩階段作業，因此可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，它會尋找要取用的下一個訊息、將其鎖定以防止其他取用者接收此訊息，然後將它傳回應用程式。
-在應用程式處理訊息 (或可靠地儲存此訊息以供未來處理) 之後，它可透過呼叫 **deleteMessage** 方法完成接收程序的第二個階段，並以參數形式傳遞要刪除的訊息。 **deleteMessage** 方法會將訊息標示為已取用，並將其從訂用帳戶中移除。
-
-以下範例將示範如何使用預設的 `receiveSubscriptionMessage` 模式來接收與處理訊息。 此範例會先接收來自 'LowMessages' 訂閱的訊息並加以刪除，然後再使用設定為 true 的 `isPeekLock` 接收來自 'HighMessages' 訂用帳戶的訊息。 接著再使用 `deleteMessage` 刪除訊息：
-
-```javascript
-serviceBusService.receiveSubscriptionMessage('MyTopic', 'LowMessages', function(error, receivedMessage){
-    if(!error){
-        // Message received and deleted
-        console.log(receivedMessage);
+    ```javascript
+    const { delay, ServiceBusClient, ServiceBusMessage } = require("@azure/service-bus");
+    
+    const connectionString = "<SERVICE BUS NAMESPACE CONNECTION STRING>"
+    const topicName = "<TOPIC NAME>";
+    const subscriptionName = "<SUBSCRIPTION NAME>";
+    
+     async function main() {
+        // create a Service Bus client using the connection string to the Service Bus namespace
+        const sbClient = new ServiceBusClient(connectionString);
+     
+        // createReceiver() can also be used to create a receiver for a queue.
+        const receiver = sbClient.createReceiver(topicName, subscriptionName);
+    
+        // function to handle messages
+        const myMessageHandler = async (messageReceived) => {
+            console.log(`Received message: ${messageReceived.body}`);
+        };
+    
+        // function to handle any errors
+        const myErrorHandler = async (error) => {
+            console.log(error);
+        };
+    
+        // subscribe and specify the message and error handlers
+        receiver.subscribe({
+            processMessage: myMessageHandler,
+            processError: myErrorHandler
+        });
+    
+        // Waiting long enough before closing the sender to send messages
+        await delay(5000);
+    
+        await receiver.close(); 
+        await sbClient.close();
     }
-});
-serviceBusService.receiveSubscriptionMessage('MyTopic', 'HighMessages', { isPeekLock: true }, function(error, lockedMessage){
-    if(!error){
-        // Message received and locked
-        console.log(lockedMessage);
-        serviceBusService.deleteMessage(lockedMessage, function (deleteError){
-            if(!deleteError){
-                // Message deleted
-                console.log('message has been deleted.');
-            }
-        })
-    }
-});
-```
+    
+    // call the main function
+    main().catch((err) => {
+        console.log("Error occurred: ", err);
+        process.exit(1);
+     });    
+    ```
+3. 將 `<SERVICE BUS NAMESPACE CONNECTION STRING>` 取代為命名空間的連接字串。 
+1. 將 `<TOPIC NAME>` 取代為主題名稱。 
+1. 將 `<SUBSCRIPTION NAME>` 取代為主題訂用帳戶的名稱 。 
+1. 然後，在命令提示字元中執行命令，以執行此檔案。
 
-## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>如何處理應用程式當機與無法讀取的訊息
-服務匯流排提供一種功能，可協助您從應用程式的錯誤或處理訊息的問題中順利復原。 如果接收者應用程式因為某些原因無法處理訊息，它可以呼叫 **ServiceBusService** 物件上的 `unlockMessage` 方法。 此方法導致服務匯流排將訂用帳戶中的訊息解除鎖定，並讓訊息可以再次接收。 在這個例子中，訊息可以由相同的取用應用程式或其他取用應用程式重新接收。
+    ```console
+    node receivefromsubscription.js
+    ```
+1. 您應該會看見下列輸出。
 
-與訂用帳戶內鎖定訊息相關的還有逾時。 如果應用程式無法在鎖定逾時到期之前處理訊息 (例如，若應用程式當機)，則服務匯流排會自動解除鎖定訊息，並讓系統可以重新接收訊息。
+    ```console
+    Received message: Albert Einstein
+    Received message: Werner Heisenberg
+    Received message: Marie Curie
+    Received message: Steven Hawking
+    Received message: Isaac Newton
+    Received message: Niels Bohr
+    Received message: Michael Faraday
+    Received message: Galileo Galilei
+    Received message: Johannes Kepler
+    Received message: Nikolaus Kopernikus
+    ```
 
-如果應用程式在處理訊息之後，尚未呼叫 `deleteMessage` 方法時當機，則會在應用程式重新啟動時將訊息重新傳遞給該應用程式。 這種行為通常稱為*至少處理一次*。 也就是說，每則訊息至少會處理一次；但在特定狀況下，可能會重新傳遞相同訊息。 如果案例無法容許重複處理，則您應在應用程式中加入邏輯，以處理重複的訊息傳遞。 您可使用訊息的 **MessageId** 屬性，該屬性在各個傳遞嘗試中會保持不變。
+在 Azure 入口網站中，瀏覽至您的服務匯流排命名空間，然後選取底部窗格中的主題，以查看主題的 **服務匯流排主題** 頁面。 在此頁面上，您應該會在 **訊息** 圖表中看到三個傳入和三個傳出訊息。 
 
-## <a name="delete-topics-and-subscriptions"></a>刪除主題和訂用帳戶
-主題和訂用帳戶在未設定 [AutoDeleteOnIdle 屬性](/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)的情況下是持續性的，且必須透過 [Azure 入口網站][Azure portal]或以程式設計方式明確地刪除。
-下列範例示範如何刪除名為 `MyTopic` 的主題：
+:::image type="content" source="./media/service-bus-java-how-to-use-topics-subscriptions/topic-page-portal.png" alt-text="傳入和傳出訊息":::
 
-```javascript
-serviceBusService.deleteTopic('MyTopic', function (error) {
-    if (error) {
-        console.log(error);
-    }
-});
-```
+如果您執行「下次僅傳送應用程式」，在 **服務匯流排主題** 頁面上，您會看到六個傳入訊息 (3 個新訊息)，但有三個傳出訊息。 
 
-刪除主題也將會刪除對主題註冊的任何訂用帳戶。 您也可以個別刪除訂用帳戶。 下列範例示範如何從 `MyTopic` 主題刪除名為 `HighMessages` 的訂用帳戶：
+:::image type="content" source="./media/service-bus-java-how-to-use-topics-subscriptions/updated-topic-page.png" alt-text="已更新的主題頁面":::
 
-```javascript
-serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error) {
-    if(error) {
-        console.log(error);
-    }
-});
-```
+如果您在此頁面上選取訂用帳戶，您會進入 **服務匯流排訂用帳戶** 頁面。 您可以在此頁面上看到作用中的訊息計數、寄不出的信件訊息計數等等。 在此範例中，收件者尚未收到三個作用中的訊息。 
 
-> [!NOTE]
-> 您可以使用[服務匯流排總管](https://github.com/paolosalvatori/ServiceBusExplorer/)來管理服務匯流排資源。 服務匯流排總管可讓使用者連線到服務匯流排命名空間，並以簡便的方式管理傳訊實體。 此工具提供進階的功能 (例如匯入/匯出功能) 或測試主題、佇列、訂用帳戶、轉送服務、通知中樞和事件中樞的能力。 
+:::image type="content" source="./media/service-bus-java-how-to-use-topics-subscriptions/active-message-count.png" alt-text="作用中訊息計數":::
 
 ## <a name="next-steps"></a>後續步驟
-了解基本的服務匯流排主題之後，請參考下列連結以取得更多資訊。
+請參閱下列文件和範例： 
 
-* 請參閱[佇列、主題和訂用帳戶][Queues, topics, and subscriptions]。
-* [SqlFilter][SqlFilter] 的 API 參考資料。
-* 請造訪 GitHub 上的 [Azure SDK for Node][Azure SDK for Node] 儲存機制 (英文)。
-
-[Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node
-[Azure portal]: https://portal.azure.com
-[SqlFilter.SqlExpression]: service-bus-messaging-sql-filter.md
-[Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[SqlFilter]: /javascript/api/@azure/arm-servicebus/sqlfilter?view=azure-node-latest
-[Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[Create and deploy a Node.js application to Azure App Service]: ../app-service/quickstart-nodejs.md
-[Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-
+- [適用於 Python 的 Azure 服務匯流排用戶端程式庫](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/README.md)
+- [範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples)。 **javascript** 資料夾具有 JavaScript 範例，而 **typescript** 具有 TypeScript 範例。 
+- [azure-servicebus 參考文件](https://docs.microsoft.com/javascript/api/overview/azure/service-bus)

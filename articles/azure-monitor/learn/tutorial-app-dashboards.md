@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/30/2020
 ms.custom: mvc, contperfq1
-ms.openlocfilehash: 1a83385c7f384f7727a0fd10e238c6511950abfe
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 31dd33bd8805ffcc677d5f0e98e81f2fa9e91ee2
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91612637"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537045"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>使用 Azure Application Insights 建立自訂 KPI 儀表板
 
@@ -132,7 +132,7 @@ Azure Application Insights Logs 提供豐富的查詢語言，可讓您分析 Ap
 ## <a name="share-dashboard"></a>共用儀表板
 
 1. 在儀表板頂端，選取 [共用] 以發佈您的變更。
-2. 您也可以定義應具有儀表板存取權的特定使用者。 如需詳細資訊，請參閱[使用角色型存取控制共用 Azure 儀表板](../../azure-portal/azure-portal-dashboard-share-access.md)。
+2. 您也可以定義應具有儀表板存取權的特定使用者。 如需詳細資訊，請參閱[使用 Azure 角色型存取控制共用 Azure 儀表板](../../azure-portal/azure-portal-dashboard-share-access.md)。
 3. 選取 [發佈]  。
 
 ## <a name="next-steps"></a>後續步驟

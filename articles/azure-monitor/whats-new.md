@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 18222573956f5ff3e9c617602902374b114328da
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 4fa00bffc35c4ed67ce70751c8882b74ad6b01a1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555612"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95534495"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure 監視器文件的最新動向
 
@@ -296,7 +296,7 @@ ms.locfileid: "94555612"
 
 ### <a name="logs"></a>記錄
 - [刪除和復原 Azure Log Analytics 工作區](platform/delete-workspace.md) - 已新增 PowerShell 命令。 已更新疑難排解。
-- [在 Azure 監視器中管理 Log Analytics 工作區](platform/manage-access.md) - 針對 RBAC 區段中不允許的資料表新增範例。
+- [在 Azure 監視器中管理 Log Analytics 工作區](platform/manage-access.md) - 針對 Azure RBAC 區段中不允許的資料表新增範例。
 - [管理 Azure 監視器記錄的使用量和成本](platform/manage-cost-storage.md) - 資料大小計算的其他詳細資訊。 已更新資料量警示的設定。 Azure Sentinel 所收集的安全性資料詳細資訊。 資料上限的說明。
 - [搭配 Azure Logic Apps 和 Power Automate 使用 Azure 監視器記錄](platform/logicapp-flow-connector.md) - 新增連接器限制。
 
@@ -571,7 +571,7 @@ ms.locfileid: "94555612"
 
 #### <a name="azure-monitor-for-containers"></a>適用於容器的 Azure 監視器
 
-- [整合 Azure Active Directory 與 Azure Kubernetes Service](../aks/azure-ad-integration-cli.md) - 新增的備註，用來建立用戶端應用程式以支援已啟用 RBAC 的叢集，進而支援容器的 Azure 監視器。
+- [整合 Azure Active Directory 與 Azure Kubernetes Service](../aks/azure-ad-integration-cli.md) - 新增的備註，用來建立用戶端應用程式以支援已啟用 Kubernetes RBAC 的叢集，進而支援容器的 Azure 監視器。
 
 #### <a name="azure-monitor-for-vms"></a>適用於 VM 的 Azure 監視器
 

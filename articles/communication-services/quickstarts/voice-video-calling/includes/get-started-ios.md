@@ -6,12 +6,12 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 63b74675a9b0d3480c90c7414e82658705796e7c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 5f604847faf01d1b267e6cbb73481d57ef397bd9
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92438991"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95564232"
 ---
 在本快速入門中，您將了解如何使用適用於 iOS 的 Azure 通訊服務通話用戶端程式庫開始進行通話。
 
@@ -32,22 +32,23 @@ ms.locfileid: "92438991"
 
 :::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="顯示 Xcode 內 [新增專案] 視窗的螢幕擷取畫面。":::
 
-### <a name="install-the-package"></a>安裝套件
+### <a name="install-the-package-and-dependencies-with-cocoapods"></a>使用 CocoaPods 安裝套件和相依性
 
-將 Azure 通訊服務通話用戶端程式庫及其相依性 (AzureCore.framework 和 AzureCommunication.framework) 新增至您的專案。
+1. 為您的應用程式建立 Podfile，如下所示：
 
-> [!NOTE]
-> 隨著 AzureCommunicationCalling SDK 的發行，您會發現 bash 指令檔 `BuildAzurePackages.sh`。 當執行 `sh ./BuildAzurePackages.sh` 時，指令檔會提供您已產生架構套件的路徑，該套件需要在下一個步驟中的範例應用程式中匯入。 請注意，您必須在執行指令碼之前，先設定 Xcode 命令列工具（如果尚未完成）：啟動 Xcode，選取 [喜好設定 -> 位置]。 選擇命令列工具的 Xcode 版本。 **BuildAzurePackages.sh 指令碼僅適用於 Xcode 11.5 和更新版本**
+   ```
+   platform :ios, '13.0'
+   use_frameworks!
 
-1. [下載](https://github.com/Azure/Communication/releases)適用於 iOS 的 Azure 通訊服務通話用戶端程式庫。
-2. 在 Xcode 中，按一下您的專案檔，然後選取建置目標，以開啟專案設定編輯器。
-3. 在 [一般] 索引標籤底下，瀏覽至 [架構、程式庫和內嵌內容] 區段，然後按一下 [+] 圖示。
-4. 在對話方塊的左下方，使用下拉式清單選擇 [新增檔案]，瀏覽至未解壓縮的用戶端程式庫套件的 **AzureCommunicationCalling.framework** 目錄。
-    1. 重複最後一個步驟以新增 **AzureCore.framework** 和 **AzureCommunication.framework** 。
-5. 開啟專案設定編輯器的 [建置設定] 索引標籤，並瀏覽至 [搜尋路徑] 區段。 針對包含 **AzureCommunicationCalling** 的目錄，新增新的 **架構搜尋路徑** 項目。
-    1. 新增另一個「架構搜尋路徑」項目，指向包含相依性的資料夾。
+   target 'AzureCommunicationCallingSample' do
+     pod 'AzureCommunicationCalling', '~> 1.0.0-beta.5'
+     pod 'AzureCommunication', '~> 1.0.0-beta.5'
+     pod 'AzureCore', '~> 1.0.0-beta.5'
+   end
+   ```
 
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="顯示 Xcode 內 [新增專案] 視窗的螢幕擷取畫面。":::
+2. 執行 `pod install`。
+3. 使用 Xcode 開啟 `.xcworkspace`。
 
 ### <a name="request-access-to-the-microphone"></a>要求存取麥克風
 
@@ -74,9 +75,9 @@ import AVFoundation
 ```swift
 struct ContentView: View {
     @State var callee: String = ""
-    @State var callClient: ACSCallClient?
-    @State var callAgent: ACSCallAgent?
-    @State var call: ACSCall?
+    @State var callClient: CallClient?
+    @State var callAgent: CallAgent?
+    @State var call: Call?
 
     var body: some View {
         NavigationView {
@@ -136,7 +137,7 @@ do {
     return
 }
 
-self.callClient = ACSCallClient()
+self.callClient = CallClient()
 
 // Creates the call agent
 self.callClient?.createCallAgent(userCredential) { (agent, error) in
@@ -165,13 +166,13 @@ func startCall()
         if granted {
             // start call logic
             let callees:[CommunicationIdentifier] = [CommunicationUser(identifier: self.callee)]
-            self.call = self.callAgent?.call(callees, options: ACSStartCallOptions())
+            self.call = self.callAgent?.call(callees, options: StartCallOptions())
         }
     }
 }
 ```
 
-您也可以使用 `ACSStartCallOptions` 中的屬性來設定通話的初始選項 (亦即，允許在麥克風靜音的情況下開始通話)。
+您也可以使用 `StartCallOptions` 中的屬性來設定通話的初始選項 (亦即，允許在麥克風靜音的情況下開始通話)。
 
 ## <a name="end-a-call"></a>結束通話
 
@@ -180,7 +181,7 @@ func startCall()
 ```swift
 func endCall()
 {    
-    self.call!.hangup(ACSHangupOptions()) { (error) in
+    self.call!.hangup(HangupOptions()) { (error) in
         if (error != nil) {
             print("ERROR: It was not possible to hangup the call.")
         }
@@ -192,7 +193,7 @@ func endCall()
 
 您可以藉由選取 [產品] > [執行] 或使用 (&#8984;-R) 鍵盤快速鍵，在 iOS 模擬器上建置並執行應用程式。
 
-:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="顯示 Xcode 內 [新增專案] 視窗的螢幕擷取畫面。":::
+:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="快速入門應用程式的最終外觀與風格":::
 
 您可以在文字欄位中提供使用者識別碼並且點選 [開始通話] 按鈕，以進行外撥 VOIP 通話。 呼叫 `8:echo123` 會將您連線到 Echo Bot，這非常適合用於開始使用和驗證音訊裝置。 
 

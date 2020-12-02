@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2020
+ms.date: 11/22/2020
 ms.author: memildin
-ms.openlocfilehash: 3cc64d2721f73da36fdc4fce009cccb5fdfd6b6b
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 6d001e638b00cace1dd81d9631f498a911ca19a4
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372688"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96014596"
 ---
 # <a name="security-alerts---a-reference-guide"></a>安全性警示 - 參考指南
 
@@ -160,6 +160,9 @@ ms.locfileid: "94372688"
 |**Xorg 弱點惡意探索 [發現多次]**|在 %{Compromised Host} 上分析主機資料時，偵測到 Xorg 使用者使用可疑的引數。 攻擊者可能會使用這項技術，嘗試提升權限。 今日此行為在下列電腦中出現 [x] 次：[Machine names]|-|中|
 |**偵測到公開的 Docker 精靈**|電腦記錄指出您的 Docker 精靈 (dockerd) 會公開 TCP 通訊端。 根據預設，啟用 TCP 通訊端時，Docker 組態不會使用加密或驗證。 這可讓具有相關連接埠存取權的任何人，都可以取得 Docker 精靈的完整存取權。|-|中|
 |**失敗的 SSH 暴力密碼破解攻擊**|偵測到來自下列攻擊者的失敗暴力密碼破解攻擊：%{Attackers}。 攻擊者嘗試存取具有下列使用者名稱的主機：%{Accounts used on failed sign in to host attempts}。|-|中|
+| **偵測到無檔案攻擊行為**<br>(AppServices_FilelessAttackBehaviorDetection)| 下方指定程序的記憶體包含無檔案攻擊經常使用的行為。<br>特定行為包括：{list of observed behaviors}                                                                                                                                                                                                                                                                                                                             | 執行                             | 中   |
+| **偵測到無檔案攻擊技術**<br>(VM_FilelessAttackTechnique.Linux)| 下方指出的處理序記憶體包含無檔案攻擊技術的辨識項。 攻擊者會使用無檔案攻擊來執行程式碼，而規避安全性軟體的偵測。<br>特定行為包括：{list of observed behaviors}                                                                                                                                                                                                                            | 執行                             | 高     |
+| **偵測到無檔案攻擊工具組**<br>(VM_FilelessAttackToolkit.Linux)| 下方指定程序的記憶體包含無檔案攻擊工具組：{ToolKitName}。 無檔案攻擊工具組通常不會出現在檔案系統上，這讓傳統防毒軟體的偵測變得很棘手。<br>特定行為包括：{list of observed behaviors}                                                                                                                                                                                    | DefenseEvasion、執行             | 高     |
 |**偵測到隱藏的檔案執行**|主機資料的分析指出已由 %{user name} 執行隱藏的檔案。 這可能是合法的活動，或表示主機遭到入侵。|-|資訊|
 |**偵測到與 DDOS 工具組相關聯的指示器 [發現多次]**|在 %{Compromised Host} 上分析主機資料時，偵測到的檔案名稱屬於與可啟動 DDoS 攻擊、開啟連接埠和服務的惡意程式碼相關的工具組，並對受感染的系統進行完整控制。 這也可能是合法的活動。 今日此行為在下列電腦中出現 [x] 次：[Machine names]|-|中|
 |**偵測到與 DDOS 工具組相關聯的指示器**|在 %{Compromised Host} 上分析主機資料時，偵測到的檔案名稱屬於與可啟動 DDoS 攻擊、開啟連接埠和服務的惡意程式碼相關的工具組，並對受感染的系統進行完整控制。 這也可能是合法的活動。|-|中|

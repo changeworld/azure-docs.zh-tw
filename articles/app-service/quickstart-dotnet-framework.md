@@ -3,14 +3,14 @@ title: 快速入門：建立 C# ASP.NET 應用程式
 description: 了解如何從 Visual Studio 部署預設 C# ASP.NET Web 應用程式範本，以在 Azure App Service 中執行 Web 應用程式。
 ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.topic: quickstart
-ms.date: 08/06/2020
+ms.date: 11/20/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seodec18
-ms.openlocfilehash: 5bf774f2b5cf4a6275dc04248aadfd9a94f5122d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a4f7ba288bc27d6079deea9caf0ea315a55d0745
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88212554"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96004032"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>在 Azure 中建立 ASP.NET Framework Web 應用程式
 
@@ -22,7 +22,7 @@ ms.locfileid: "88212554"
 
 ## <a name="prerequisites"></a>必要條件
 
-若要完成此教學課程，請安裝 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> 和 **ASP.NET 以及 Web 開發**工作負載。
+若要完成此教學課程，請安裝 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> 和 **ASP.NET 以及 Web 開發** 工作負載。
 
 若您已安裝 Visual Studio 2019：
 
@@ -43,7 +43,7 @@ ms.locfileid: "88212554"
 
 4. 您可以將任何類型的 ASP.NET web 應用程式部署至 Azure。 在本快速入門中，選擇 [MVC] 範本。
 
-5. 確定驗證已設定為 [不需要驗證]。 選取 [建立]  。
+5. 確定驗證已設定為 [不需要驗證]。 選取 [建立]。
 
    ![建立 ASP.NET Web 應用程式](./media/quickstart-dotnet-framework/select-mvc-template-vs2019.png)
 
@@ -55,20 +55,21 @@ ms.locfileid: "88212554"
 
 1. 在 [方案總管]  中，以滑鼠右鍵按一下 **myFirstAzureWebApp** 專案，然後選取 [發佈]  。
 
-1. 選擇 [App Service]，然後選取 [建立設定檔]。
+1. 在 [發佈] 中選取 [Azure]，然後按 [下一步]。
 
-   ![從專案概觀頁面發佈](./media/quickstart-dotnet-framework/publish-app-framework-vs2019.png)
+1. 選取 [Azure App Service (Windows)]，然後按 [下一步]。
 
-1. 在 [App Service 建立新的] 中，您的選項取決於您是否已登入 Azure，以及是否有將 Visual Studio 帳戶連結至 Azure 帳戶。 選取 [新增帳戶] 或 [登入] 來登入 Azure 訂用帳戶。 若您已經登入，請選取要使用的帳戶。
+   <!-- ![Publish from project overview page](./media/quickstart-dotnet-framework/publish-app-framework-vs2019.png) -->
 
-   > [!NOTE]
-   > 如果您已經登入，請勿選取 [建立]。
-   >
-   >
+1. 您的選項取決於您是否已登入 Azure，以及是否已將 Visual Studio 帳戶連結至 Azure 帳戶。 選取 [新增帳戶] 或 [登入] 來登入 Azure 訂用帳戶。 若您已經登入，請選取要使用的帳戶。
 
    ![登入 Azure](./media/quickstart-dotnet-framework/sign-in-azure-framework-vs2019.png)
 
    [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
+
+1. 在 [App Service 執行個體] 右側，按一下 **+** 。
+
+   ![新的 App Service 應用程式](./media/quickstart-dotnet-framework/publish-new-app-service.png)
 
 1. 在 [資源群組] 中選取 [新增]。
 
@@ -76,9 +77,9 @@ ms.locfileid: "88212554"
 
    [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-1. 在 [主控方案] 中選取 [新增]。
+1. 在 [主控方案]  中選取 [新增]  。
 
-1. 在 [設定主控方案] 對話方塊中，輸入下表中的值，然後選取 [確定]。
+1. 在 [主控方案] 對話方塊中，輸入下表中的值，然後選取 [確定]。
 
    | 設定 | 建議的值 | 描述 |
    |-|-|-|
@@ -90,11 +91,13 @@ ms.locfileid: "88212554"
 
 1. 在 [名稱] 中，輸入唯一的應用程式名稱 (只包含 `a-z`、`A-Z`、`0-9` 和 `-` 等有效字元)。 您可以接受自動產生的唯一名稱。 Web 應用程式的 URL 是 `http://<app-name>.azurewebsites.net`，其中 `<app-name>` 是您的應用程式名稱。
 
-2. 選取 [建立] 開始建立 Azure 資源。
+2. 選取 [建立] 以建立 Azure 資源。
 
    ![設定應用程式名稱](./media/quickstart-dotnet-framework/web-app-name-framework-vs2019.png)
 
     精靈完成之後，系統就會為您建立 Azure 資源，然後您就可以開始發佈。
+
+3. 選取 [完成] 以關閉精靈。
 
 3. 在 [發佈] 頁面中，按一下 [發佈]。 Visual Studio 會建立和封裝應用程式，並將其發佈至 Azure，然後在預設瀏覽器中啟動應用程式。
 

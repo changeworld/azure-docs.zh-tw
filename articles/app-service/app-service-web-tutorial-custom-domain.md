@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6a74f105525ec8ce28559b47ed4fc9624f518a06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a74a3b7542a8d683e9bbf16f99c9b2646d95e00d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488332"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95986528"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教學課程：將現有的自訂 DNS 名稱對應至 Azure App Service
 
@@ -100,7 +100,7 @@ ms.locfileid: "89488332"
 ![在 [自訂網域驗證識別碼] 方塊中顯示識別碼的螢幕擷取畫面。](./media/app-service-web-tutorial-custom-domain/get-custom-domain-verification-id.png)
 
 > [!WARNING]
-> 將網域驗證識別碼新增到您的自訂網域，可以防止無關聯的 DNS 項目並有助於避免子網域接管。 如需有關此常見高嚴重性威脅的詳細資訊，請參閱[子網域接管](../security/fundamentals/subdomain-takeover.md)。
+> 將網域驗證識別碼新增到您的自訂網域，可以防止無關聯的 DNS 項目並有助於避免子網域接管。 針對您先前設定而沒有此驗證識別碼的自訂網域，您應將驗證識別碼新增至 DNS 記錄，以防止網域承受相同的風險。 如需有關此常見高嚴重性威脅的詳細資訊，請參閱[子網域接管](../security/fundamentals/subdomain-takeover.md)。
 
 ## <a name="map-your-domain"></a>對應您的網域
 

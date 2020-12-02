@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: d7c5bd2d1918ecebe2d2aabc213de43e7cdb1fef
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 595b3a57594401df6b61db1fcf8ee16be98ef364
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93306967"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95900411"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>教學課程：使用 Apache Spark MLlib 和 Azure Synapse Analytics 來建置機器學習應用程式
 
 在本文中，您將了解如何使用 Apache Spark [MLlib](https://spark.apache.org/mllib/) 建立機器學習應用程式，在 Azure 開放資料集上進行簡單預測性分析。 Spark 提供內建的機器學習程式庫。 這個範例會透過羅吉斯迴歸使用「分類」。
 
-MLlib 是核心 Spark 程式庫，提供許多可用於機器學習工作的公用程式，包括具有下列用途的公用程式：
+SparkML 和 MLlib 是核心 Spark 程式庫，提供許多可用於機器學習工作的公用程式，包括具有下列用途的公用程式：
 
 - 分類
 - 迴歸
@@ -33,7 +33,7 @@ MLlib 是核心 Spark 程式庫，提供許多可用於機器學習工作的公�
 
 分類是常見的機器學習工作，是指將輸入資料依類別排序的程序。 這是以分類演算法指出如何為您所提供的輸入資料指派「標籤」的作業。 例如，試想某個機器學習演算法以股市資訊作為輸入，並且將股票分成兩個類別：該賣的股票和該留的股票。
 
-「羅吉斯迴歸」是您可以用於分類的演算法。 Spark 的羅吉斯迴歸 API 可用於 *二元分類* ，或用來將輸入資料歸類到兩個群組之一。 如需羅吉斯迴歸的詳細資訊，請參閱 [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression)。
+「羅吉斯迴歸」是您可以用於分類的演算法。 Spark 的羅吉斯迴歸 API 可用於 *二元分類*，或用來將輸入資料歸類到兩個群組之一。 如需羅吉斯迴歸的詳細資訊，請參閱 [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression)。
 
 總之，羅吉斯迴歸的程序會產生一個 *羅吉斯函數* ，此函數可用來預測輸入向量可能屬於哪一個群組的機率。
 
@@ -46,10 +46,10 @@ MLlib 是核心 Spark 程式庫，提供許多可用於機器學習工作的公�
 
 在下列步驟中，您會開發模型來預測特定行程是否包含小費。
 
-## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>建立 Apache Spark MLlib 機器學習應用程式
+## <a name="create-an-apache-spark--machine-learning-model"></a>建立 Apache Spark 機器學習模型
 
 1. 使用 PySpark 核心建立筆記本。 如需相關指示，請參閱[建立筆記本](../quickstart-apache-spark-notebook.md#create-a-notebook)。
-2. 匯入此應用程式所需的類型。 複製下列程式碼並貼到空白儲存格中，然後按 **SHIFT + ENTER** ，或使用程式碼左邊的藍色播放圖示來執行儲存格。
+2. 匯入此應用程式所需的類型。 複製下列程式碼並貼到空白儲存格中，然後按 **SHIFT + ENTER**，或使用程式碼左邊的藍色播放圖示來執行儲存格。
 
     ```python
     import matplotlib.pyplot as plt
@@ -109,44 +109,6 @@ MLlib 是核心 Spark 程式庫，提供許多可用於機器學習工作的公�
 ```Python
 sampled_taxi_df.createOrReplaceTempView("nytaxi")
 ```
-
-## <a name="understand-the-data"></a>了解資料
-
-一般來說，此時您會經歷「探索資料分析」(EDA) 的階段，以深入了解資料。 下列程式碼針對與小費 (導致狀態和資料品質的結論) 相關的資料，顯示三種不同的視覺效果。
-
-```python
-# The charting package needs a Pandas dataframe or numpy array do the conversion
-sampled_taxi_pd_df = sampled_taxi_df.toPandas()
-
-# Look at tips by amount count histogram
-ax1 = sampled_taxi_pd_df['tipAmount'].plot(kind='hist', bins=25, facecolor='lightblue')
-ax1.set_title('Tip amount distribution')
-ax1.set_xlabel('Tip Amount ($)')
-ax1.set_ylabel('Counts')
-plt.suptitle('')
-plt.show()
-
-# How many passengers tipped by various amounts
-ax2 = sampled_taxi_pd_df.boxplot(column=['tipAmount'], by=['passengerCount'])
-ax2.set_title('Tip amount by Passenger count')
-ax2.set_xlabel('Passenger count')
-ax2.set_ylabel('Tip Amount ($)')
-plt.suptitle('')
-plt.show()
-
-# Look at the relationship between fare and tip amounts
-ax = sampled_taxi_pd_df.plot(kind='scatter', x= 'fareAmount', y = 'tipAmount', c='blue', alpha = 0.10, s=2.5*(sampled_taxi_pd_df['passengerCount']))
-ax.set_title('Tip amount by Fare amount')
-ax.set_xlabel('Fare Amount ($)')
-ax.set_ylabel('Tip Amount ($)')
-plt.axis([-2, 80, -2, 20])
-plt.suptitle('')
-plt.show()
-```
-
-![長條圖](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-histogram.png)
-![盒狀圖](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-box-whisker.png)
-![散佈圖](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-scatter.png)
 
 ## <a name="prepare-the-data"></a>準備資料
 
@@ -272,7 +234,7 @@ plt.ylabel('True Positive Rate')
 plt.show()
 ```
 
-![羅吉斯迴歸小費模型的 ROC 曲線](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-nyctaxi-roc.png "羅吉斯迴歸小費模型的 ROC 曲線")
+![羅吉斯迴歸小費模型的 ROC 曲線](./media/apache-spark-machine-learning-mllib-notebook/nyc-taxi-roc.png)
 
 ## <a name="shut-down-the-spark-instance"></a>關閉 Spark 執行個體
 

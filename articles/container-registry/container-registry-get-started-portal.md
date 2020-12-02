@@ -4,12 +4,12 @@ description: 快速了解如何使用 Azure 入口網站建立私用的 Azure �
 ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: f4f16506a36acfe8845e85caf2d337f992f0f332
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 00ed6b4569d22739051198c5b0c60987f783a87f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746681"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020036"
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立 Azure Container Registry
 
@@ -45,7 +45,7 @@ Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其�
 
 ## <a name="log-in-to-registry"></a>登入登錄
 
-推送和提取容器映像之前，您必須先登入登錄執行個體。 在本機電腦上[登入 Azure CLI][get-started-with-azure-cli]，然後執行 [az acr login][az-acr-login] 命令。 (透過 Azure CLI 登入時僅指定登錄名稱。 請勿包含 'azurecr.io' 網域尾碼。)
+推送和提取容器映像之前，您必須先登入登錄執行個體。 在本機電腦上[登入 Azure CLI][get-started-with-azure-cli]，然後執行 [az acr login][az-acr-login] 命令。 透過 Azure CLI 登入時僅指定登錄名稱。 請勿使用登入伺服器名稱，其中包含網域尾碼，例如 `azurecr.io`。
 
 ```azurecli
 az acr login --name <registry-name>

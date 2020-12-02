@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: e4e2ba15dad7459ba3f7926a965292be37249054
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 528cab915a1ac3918146e428e9ae6b3c401324c8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097357"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96010336"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>教學課程：使用 .NET SDK，透過 Azure Cosmos DB 開發 ASP NET Core MVC Web 應用程式
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -74,7 +74,7 @@ ms.locfileid: "93097357"
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png" alt-text="建立新的 ASP.NET Core Web 應用程式專案":::
 
-1. 在 [設定新的專案] 中，將專案命名為 *todo* ，然後選取 [建立]。
+1. 在 [設定新的專案] 中，將專案命名為 *todo*，然後選取 [建立]。
 
 1. 在 [建立新的 ASP.NET Core Web 應用程式] 中，選擇 [Web 應用程式 (Model-View-Controller)]。 選取 [建立]  繼續作業。
 
@@ -108,7 +108,7 @@ ms.locfileid: "93097357"
 
 1. 在 [方案總管] 中，以滑鼠右鍵按一下 [Models] 資料夾，選取 [新增] > [類別]。
 
-1. 在 [新增項目] 中，將新的類別命名為 *Item.cs* ，然後選取 [新增]。
+1. 在 [新增項目] 中，將新的類別命名為 *Item.cs*，然後選取 [新增]。
 
 1. 以下列程式碼取代 *Item.cs* 類別的內容：
 
@@ -128,7 +128,7 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 #### <a name="create-item-view"></a><a name="AddNewIndexView"></a>建立項目檢視
 
-1. 在 [方案總管] 中，以滑鼠右鍵按一下 [Views] 資料夾，然後選取 [新增] > [新增資料夾]。 將資料夾命名為 *Item* 。
+1. 在 [方案總管] 中，以滑鼠右鍵按一下 [Views] 資料夾，然後選取 [新增] > [新增資料夾]。 將資料夾命名為 *Item*。
 
 1. 以滑鼠右鍵按一下空的 [Item] 資料夾，然後選取 [新增] > [檢視]。
 
@@ -137,7 +137,7 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
    * 在 [檢視名稱] 中，輸入 [建立]。
    * 在 [範本] 中選取 [建立]。
    * 在 [模型類別] 中，選取 [項目 (todo.Models)]。
-   * 選取 [使用版面配置頁面]，然後輸入 *~/Views/Shared/_Layout.cshtml* 。
+   * 選取 [使用版面配置頁面]，然後輸入 *~/Views/Shared/_Layout.cshtml*。
    * 選取 [新增]。
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="顯示 [新增 MVC 檢視] 對話方塊的螢幕擷取畫面":::
@@ -155,7 +155,7 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
    * 在 **檢視名稱** 方塊中，輸入「刪除」。
    * 在 [範本] 方塊中，選取 [刪除]。
    * 在 [模型類別] 方塊中，選取 [項目 (todo.Models)]。
-   * 選取 [使用版面配置頁面]，然後輸入 *~/Views/Shared/_Layout.cshtml* 。
+   * 選取 [使用版面配置頁面]，然後輸入 *~/Views/Shared/_Layout.cshtml*。
    * 選取 [新增]。
 
 1. 接下來選取 [新增]，並讓 Visual Studio 建立新的範本檢視。 使用下列內容取代已產生檔案中的程式碼：
@@ -171,7 +171,7 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
    * 在 [檢視名稱] 中，輸入「詳細資料」。
    * 在 **範本** 中選取 [詳細資料]。
    * 在 [模型類別] 中，選取 [項目 (todo.Models)]。
-   * 選取 [使用版面配置頁面]，然後輸入 *~/Views/Shared/_Layout.cshtml* 。
+   * 選取 [使用版面配置頁面]，然後輸入 *~/Views/Shared/_Layout.cshtml*。
 
 1. 接下來選取 [新增]，並讓 Visual Studio 建立新的範本檢視。 使用下列內容取代已產生檔案中的程式碼：
 
@@ -183,10 +183,10 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 1. 在 [新增 MVC 檢視] 中，進行下列變更：
 
-   * 在 [檢視名稱] 方塊中，輸入 *編輯* 。
+   * 在 [檢視名稱] 方塊中，輸入 *編輯*。
    * 在 [範本] 方塊中，選取 [編輯]。
    * 在 [模型類別] 方塊中，選取 [項目 (todo.Models)]。
-   * 選取 [使用版面配置頁面]，然後輸入 *~/Views/Shared/_Layout.cshtml* 。
+   * 選取 [使用版面配置頁面]，然後輸入 *~/Views/Shared/_Layout.cshtml*。
    * 選取 [新增]。
 
 1. 接下來選取 [新增]，並讓 Visual Studio 建立新的範本檢視。 使用下列內容取代已產生檔案中的程式碼：
@@ -201,10 +201,10 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 1. 在 [新增 MVC 檢視] 中，進行下列變更：
 
-   * 在 [檢視名稱] 方塊中，輸入 *索引* 。
+   * 在 [檢視名稱] 方塊中，輸入 *索引*。
    * 在 [範本] 方塊中，選取 [清單]。
    * 在 [模型類別] 方塊中，選取 [項目 (todo.Models)]。
-   * 選取 [使用版面配置頁面]，然後輸入 *~/Views/Shared/_Layout.cshtml* 。
+   * 選取 [使用版面配置頁面]，然後輸入 *~/Views/Shared/_Layout.cshtml*。
    * 選取 [新增]。
 
 1. 接下來選取 [新增]，並讓 Visual Studio 建立新的範本檢視。 使用下列內容取代已產生檔案中的程式碼：
@@ -217,15 +217,15 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 首先，我們會新增一個類別，其中包含連線至及使用 Azure Cosmos DB 的邏輯。 在本教學課程中，我們會將此邏輯封裝到名為 `CosmosDbService` 的類別和名為 `ICosmosDbService` 的介面中。 此服務會執行 CRUD 作業。 也會讀取摘要作業，例如列出未完成的項目，以及建立、編輯和刪除項目。
 
-1. 在 [方案總管] 中，以滑鼠右鍵按一下專案，然後選取 [新增] > [新增資料夾]。 將資料夾命名為 *Services* 。
+1. 在 [方案總管] 中，以滑鼠右鍵按一下專案，然後選取 [新增] > [新增資料夾]。 將資料夾命名為 *Services*。
 
-1. 以滑鼠右鍵按一下 [Services] 資料夾，選取 [新增] > [類別]。 將新的類別命名為 *CosmosDbService* ，然後選取 [新增]。
+1. 以滑鼠右鍵按一下 [Services] 資料夾，選取 [新增] > [類別]。 將新的類別命名為 *CosmosDbService*，然後選取 [新增]。
 
 1. 以下列程式碼取代 *CosmosDbService.cs* 的內容：
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
 
-1. 以滑鼠右鍵按一下 [Services] 資料夾，選取 [新增] > [類別]。 將新的類別命名為 *ICosmosDbService* ，然後選取 [新增]。
+1. 以滑鼠右鍵按一下 [Services] 資料夾，選取 [新增] > [類別]。 將新的類別命名為 *ICosmosDbService*，然後選取 [新增]。
 
 1. 將下列程式碼新增至 *ICosmosDbService* 類別：
 
@@ -265,7 +265,7 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png" alt-text="在 [新增 Scaffold] 中選取 [MVC 控制器 - 空的]":::
 
-1. 將新的控制器命名為 *ItemController* 。
+1. 將新的控制器命名為 *ItemController*。
 
 1. 以下列程式碼取代 *ItemController.cs* 的內容。
 

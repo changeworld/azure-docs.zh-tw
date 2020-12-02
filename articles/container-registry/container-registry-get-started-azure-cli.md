@@ -4,12 +4,12 @@ description: 快速了解如何使用 Azure CLI 建立私用的 Docker 容器登
 ms.topic: quickstart
 ms.date: 06/12/2020
 ms.custom: seodec18, H1Hack27Feb2017, mvc, devx-track-azurecli
-ms.openlocfilehash: f4e69616d30c6a7b853c5cc854adee147ebde206
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 226e50aec8f7c76a1b4c81d1a07d57583059ef0e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87486539"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020070"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>快速入門：使用 Azure CLI 建立私人容器登錄
 
@@ -25,7 +25,7 @@ Azure Container Registry 是用於儲存私用 Docker 容器映像的受控 Dock
 
 使用 [az group create][az-group-create] 命令來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
-下列範例會在 eastus** 位置建立名為 myResourceGroup** 的資源群組。
+下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -33,7 +33,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>建立容器登錄庫
 
-您在本快速入門中會建立「基本」** 登錄，這是正在學習 Azure Container Registry 的開發人員所適用的成本最佳化選項。 如需可用服務層級的詳細資訊，請參閱[容器登錄服務層][container-registry-skus]。
+您在本快速入門中會建立「基本」登錄，這是正在學習 Azure Container Registry 的開發人員所適用的成本最佳化選項。 如需可用服務層級的詳細資訊，請參閱[容器登錄服務層][container-registry-skus]。
 
 使用 [az acr create][az-acr-create] 命令，以建立 ACR 執行個體。 登錄名稱在 Azure 內必須是唯一的，且包含 5-50 個英數字元。 下列範例中使用 *myContainerRegistry007*。 請將此更新為唯一的值。
 
@@ -69,10 +69,16 @@ az acr create --resource-group myResourceGroup \
 
 ## <a name="log-in-to-registry"></a>登入登錄
 
-推送和提取容器映像之前，您必須先登入登錄。 若要這樣做，請使用 [az acr login][az-acr-login] 命令。
+推送和提取容器映像之前，您必須先登入登錄。 若要這樣做，請使用 [az acr login][az-acr-login] 命令。 透過 Azure CLI 登入時僅指定登錄名稱。 請勿使用登入伺服器名稱，其中包含網域尾碼，例如 `azurecr.io`。 
 
 ```azurecli
 az acr login --name <registry-name>
+```
+
+範例：
+
+```azurecli
+az acr login --name mycontainerregistry
 ```
 
 完成後，此命令會傳回 `Login Succeeded` 訊息。

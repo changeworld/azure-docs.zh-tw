@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: 3f52b8d4e56ec854f93940ea77f09c3dff1d362e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 423a879889402d5d3df70a7fadae6451c8418238
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095997"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95743152"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>什麼是 Azure AD 存取權檢閱？
 
@@ -74,10 +74,18 @@ Azure AD 可讓您與組織內部與外部使用者共同作業。 使用者可�
 
 您的目錄擁有的 Azure AD Premium P2 授權數至少需要與將執行下列工作的員工一樣多：
 
-- 指派為檢閱者的成員和來賓使用者
-- 執行自我檢閱的成員和來賓使用者
-- 執行存取權檢閱的群組擁有者
-- 執行存取權檢閱的應用程式擁有者
+-   指派為檢閱者的成員使用者
+-   執行自我檢閱的成員使用者
+-   以群組擁有者執行存取權檢閱的成員使用者
+-   以應用程式擁有者執行存取權檢閱的成員使用者
+
+對於來賓使用者，授權需求將取決於您所使用的授權模型而定。 不過，系統會將下列來賓使用者的活動會視為 Azure AD Premium P2 使用量：
+
+-   指派為檢閱者的來賓使用者
+-   執行自我檢閱的來賓使用者
+-   以群組擁有者執行存取權檢閱的來賓使用者
+-   以應用程式擁有者執行存取權檢閱的來賓使用者
+
 
 具有全域管理員或使用者管理員角色的使用者 **不需要** Azure AD Premium P2 授權，即可設定存取權檢閱、設定組態，或套用來自檢閱的決策。
 

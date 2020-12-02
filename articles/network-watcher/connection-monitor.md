@@ -12,17 +12,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2018
+ms.date: 11/23/2020
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: acdaf2318c3082db876ed9c69b704d3d00cd4c90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2da675f0836dbb10ce5227e7e93e98d706cc5c64
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76834649"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544797"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站監視兩部虛擬機器之間的網路通訊
+
+> [!NOTE]
+> 本教學課程將說明連線監視器 (傳統)。 嘗試使用經過改良的新款[連線監視器](connection-monitor-overview.md)，以體驗更強的連線監視功能
 
 虛擬機器 (VM) 與另一個端點 (例如另一部虛擬機器) 之間的成功通訊，對於您的組織很重要。 有時候，系統引入的組態變更會中斷通訊。 在本教學課程中，您會了解如何：
 
@@ -33,6 +36,8 @@ ms.locfileid: "76834649"
 > * 診斷兩部虛擬機器之間的通訊問題，並且了解可以如何解決
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -45,7 +50,7 @@ ms.locfileid: "76834649"
 ### <a name="create-the-first-vm"></a>建立第一個 VM
 
 1. 選取 Azure 入口網站左上角的 [+ 建立資源]  。
-2. 選取 [計算]  ，然後選取作業系統。 本教學課程使用 **Windows Server 2016 Datacenter**。
+2. 選取 [計算]，然後選取作業系統。 本教學課程使用 **Windows Server 2016 Datacenter**。
 3. 輸入或選取下列資訊、接受其餘設定的預設值，然後選取 [確定]  ：
 
     |設定|值|
@@ -55,15 +60,15 @@ ms.locfileid: "76834649"
     |密碼| 輸入您選擇的密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |訂用帳戶| 選取您的訂用帳戶。|
     |資源群組| 選取 [新建]  ，然後輸入 **myResourceGroup**。|
-    |Location| 選取 [美國東部] |
+    |Location| 選取 [美國東部]|
 
-4. 選取 VM 的大小，然後選取 [選取]  。
-5. 在 [設定] 底下，選取 [延伸模組]。 選取 [新增擴充功能]  ，然後選取 [適用於 Windows 的網路監看員代理程式]  ，如下圖所示：
+4. 選取 VM 的大小，然後選取 [選取]。
+5. 在 [設定] 底下，選取 [延伸模組]。 選取 [新增擴充功能]，然後選取 [適用於 Windows 的網路監看員代理程式]，如下圖所示：
 
     ![網路監看員代理程式擴充功能](./media/connection-monitor/nw-agent-extension.png)
 
-6. 在 [適用於 Windows 的網路監看員代理程式]  底下，選取 [建立]  ，在 [安裝擴充功能]  底下，選取 [確定]  ，然後在 [擴充功能]  底下，選取 [確定]  。
-7. 接受其餘 [設定]  的預設值，然後選取 [確定]  。
+6. 在 [適用於 Windows 的網路監看員代理程式] 底下，選取 [建立]，在 [安裝擴充功能] 底下，選取 [確定]，然後在 [擴充功能] 底下，選取 [確定]。
+7. 接受其餘 [設定] 的預設值，然後選取 [確定]。
 8. 在 [摘要] 的 [建立] 底下，選取 [建立] 來開始部署 VM。
 
 ### <a name="create-the-second-vm"></a>建立第二個 VM
@@ -74,7 +79,7 @@ ms.locfileid: "76834649"
 |---|---|---|
 | 1 | 選取某個版本的 **Ubuntu Server** |                                                                         |
 | 3 | 名稱                                  | myVm2                                                                   |
-| 3 | 驗證類型                   | 貼上您的 SSH 公開金鑰，或選取 [密碼]  ，然後輸入密碼。 |
+| 3 | 驗證類型                   | 貼上您的 SSH 公開金鑰，或選取 [密碼]，然後輸入密碼。 |
 | 3 | 資源群組                        | 選取 [使用現有項目]  ，然後選取 [myResourceGroup]  。                 |
 | 6 | 延伸模組                            | **適用於 Linux 的網路監看員代理程式**                                             |
 
@@ -82,13 +87,13 @@ ms.locfileid: "76834649"
 
 ## <a name="create-a-connection-monitor"></a>建立連線監視
 
-建立連線監視，以監視透過 TCP 通訊埠 22 從 myVm1  到 myVm2  的通訊。
+建立連線監視，以監視透過 TCP 通訊埠 22 從 myVm1 到 myVm2 的通訊。
 
 1. 在入口網站的左側，選取 [所有服務]  。
-2. 開始在 [篩選] 方塊中輸入「網路監看員」。 當搜尋結果中出現**網路監看員**時，請加以選取。
-3. 在 [監視]  下，選取 [連線監視器]  。
+2. 開始在 [篩選]  方塊中輸入「網路監看員」  。 當搜尋結果中出現 **網路監看員** 時，請加以選取。
+3. 在 [監視] 下，選取 [連線監視器]。
 4. 選取 [+ 新增]  。
-5. 輸入或選取您要監視之連線的資訊，然後選取 [新增]  。 在下圖所顯示的範例中，受監視的是透過連接埠 22 從 myVm1  虛擬機器到 myVm2  虛擬機器的連線：
+5. 輸入或選取您要監視之連線的資訊，然後選取 [新增]。 在下圖所顯示的範例中，受監視的是透過連接埠 22 從 myVm1 虛擬機器到 myVm2 虛擬機器的連線：
 
     | 設定                  | 值               |
     | ---------                | ---------           |
@@ -125,11 +130,11 @@ ms.locfileid: "76834649"
 
 警示是由 Azure 監視器中的警示規則所建立，可定期自動執行儲存的查詢或自訂的記錄搜尋。 產生的警示可自動執行一或多個動作，例如通知某人或啟動另一個程序。 設定警示規則時，您設為目標的資源將決定可用來產生警示的計量清單。
 
-1. 在 Azure 入口網站中選取 [監視]  服務，然後選取 [警示]   > [新增警示規則]  。
-2. 按一下 [選取目標]  ，然後要設為目標的資源。 選取 [訂用帳戶]  ，然後設定 [資源類型]  以篩選出您要使用的連線監視器。
+1. 在 Azure 入口網站中選取 [監視] 服務，然後選取 [警示] > [新增警示規則]。
+2. 按一下 [選取目標]，然後要設為目標的資源。 選取 [訂用帳戶]，然後設定 [資源類型] 以篩選出您要使用的連線監視器。
 
     ![已選取目標的警示畫面](./media/connection-monitor/set-alert-rule.png)
-1. 在您選取要設為目標的資源後，請選取 [新增準則]  。網路監看員具有[可建立警示的計量](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts#metrics-and-dimensions-supported)。 將 [可用的訊號]  設為 ProbesFailedPercent 和 AverageRoundtripMs 計量：
+1. 在您選取要設為目標的資源後，請選取 [新增準則]。網路監看員具有[可建立警示的計量](../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)。 將 [可用的訊號] 設為 ProbesFailedPercent 和 AverageRoundtripMs 計量：
 
     ![已選取訊號的警示頁面](./media/connection-monitor/set-alert-signals.png)
 1. 填寫警示詳細資料，例如警示規則名稱、描述和嚴重性。 您也可以將動作群組新增至警示，以自動化和自訂警示回應。
@@ -138,13 +143,13 @@ ms.locfileid: "76834649"
 
 根據預設，Azure 會允許相同虛擬網路中的虛擬機器透過所有連接埠通訊。 經過一段時間，您或您的組織中的其他人，可能會覆寫 Azure 的預設規則，不小心造成通訊失敗。 完成下列步驟以建立通訊問題，然後再次檢視連線監視：
 
-1. 在入口網站頂端的搜尋方塊中，輸入 myResourceGroup  。 當 **myResourceGroup** 資源群組出現在搜尋結果中時，選取它。
+1. 在入口網站頂端的搜尋方塊中，輸入 myResourceGroup。 當 **myResourceGroup** 資源群組出現在搜尋結果中時，選取它。
 2. 選取 **myVm2-nsg** 網路安全性群組。
-3. 選取 [輸入安全性規則]  ，然後選取 [新增]  ，如下圖所示：
+3. 選取 [輸入安全性規則]，然後選取 [新增]，如下圖所示：
 
     ![輸入安全性規則](./media/connection-monitor/inbound-security-rules.png)
 
-4. 允許虛擬網路中所有虛擬機器之間通訊的預設規則，是名為 **AllowVnetInBound** 的規則。 建立比 **AllowVnetInBound** 規則優先順序還要高 (數字較小) 的規則，讓其拒絕透過連接埠 22 的輸入通訊。 選取或輸入下列資訊、接受其餘預設值，然後選取 [新增]  ：
+4. 允許虛擬網路中所有虛擬機器之間通訊的預設規則，是名為 **AllowVnetInBound** 的規則。 建立比 **AllowVnetInBound** 規則優先順序還要高 (數字較小) 的規則，讓其拒絕透過連接埠 22 的輸入通訊。 選取或輸入下列資訊、接受其餘預設值，然後選取 [新增]：
 
     | 設定                 | 值          |
     | ---                     | ---            |
@@ -153,13 +158,13 @@ ms.locfileid: "76834649"
     | 優先順序                | 100            |
     | 名稱                    | DenySshInbound |
 
-5. 因為連線監視會每隔 60 秒進行探查，所以請稍候幾分鐘，然後在入口網站左側，依序選取 [網路監看員]  、[連線監視]  ，然後再次選取 [myVm1-myVm2(22)]  監視。 現在結果會不同，如下圖所示：
+5. 因為連線監視會每隔 60 秒進行探查，所以請稍候幾分鐘，然後在入口網站左側，依序選取 [網路監看員]、[連線監視]，然後再次選取 [myVm1-myVm2(22)] 監視。 現在結果會不同，如下圖所示：
 
     ![監視詳細資料錯誤](./media/connection-monitor/vm-monitor-fault.png)
 
     您可以在 **myvm2529** 網路介面的狀態資料行中看到紅色驚嘆號圖示。
 
-6. 若要深入了解狀態為何會變更，請在上圖中選取 10.0.0.5。 連線監視會通知您通訊失敗的原因是：流量遭到封鎖，原因是下列網路安全性群組規則：UserRule_DenySshInbound  。
+6. 若要深入了解狀態為何會變更，請在上圖中選取 10.0.0.5。 連線監視會通知您通訊失敗的原因是：流量遭到封鎖，原因是下列網路安全性群組規則：UserRule_DenySshInbound。
 
     如果您不知道誰實作了您在步驟 4 中建立的安全性規則，您可以從連線監視知道是該規則造成通訊問題。 然後，您可以變更、覆寫或移除規則，以還原虛擬機器之間的通訊。
 
@@ -168,7 +173,7 @@ ms.locfileid: "76834649"
 當不再需要資源群組時，請將資源群組及其包含的所有資源刪除：
 
 1. 在入口網站頂端的 [搜尋] 方塊中，輸入 myResourceGroup。 當您在搜尋結果中看到 myResourceGroup  時，請加以選取。
-2. 選取 [刪除資源群組]  。
+2. 選取 [刪除資源群組]。
 3. 針對 [輸入資源群組名稱:] 輸入 myResourceGroup，然後選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟

@@ -7,12 +7,12 @@ ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bf0e868e9ee746da1dfe1b03403d21f7edb3bd5e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "68726466"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544644"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>快速入門：使用 Go 上傳、下載及列出 Blob
 
@@ -100,7 +100,7 @@ Press the enter key to delete the sample files, example container, and exit the 
 
 * 使用 [**SharedKeyCredential**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#SharedKeyCredential) 結構來儲存您的認證。 
 
-* 使用認證和選項建立[**管線**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#NewPipeline)。 管線可指定下列項目：HTTP 回應承載的重試原則、記錄、還原序列化等等。  
+* 使用認證和選項建立 [**管線**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#NewPipeline)。 管線可指定下列項目：HTTP 回應承載的重試原則、記錄、還原序列化等等。  
 
 * 將新的 [**ContainerURL**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#ContainerURL) 及新的 [**BlobURL**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#BlobURL) 物件具現化，以在容器 (Create) 和 blob (Upload 和 Download) 上執行作業。
 
@@ -108,7 +108,7 @@ Press the enter key to delete the sample files, example container, and exit the 
 一旦有了 ContainerURL，您就可以將 **BlobURL** 物件具現化，該物件會指向一個 Blob 並執行上傳、下載和複製等作業。
 
 > [!IMPORTANT]
-> 容器名稱必須是小寫字母。 如需有關容器和 Blob 名稱的詳細資訊，請參閱[命名和參考容器、Blob 及中繼資料](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
+> 容器名稱必須是小寫字母。 如需有關容器和 Blob 名稱的詳細資訊，請參閱[命名和參考容器、Blob 及中繼資料](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
 在這一節中，您會建立新容器。 此容器名為 **quickstartblobs-[random string]** 。 
 
@@ -149,9 +149,9 @@ Blob 儲存體支援區塊 Blob、附加 Blob 和分頁 Blob。 最常使用的�
 
 若要將檔案上傳至 blob，請使用 **os.Open** 開啟檔案。 您可以接著使用以下其中一個 REST API，將檔案上傳到指定的路徑：Upload (PutBlob)、StageBlock/CommitBlockList (PutBlock/PutBlockList)。 
 
-此外，SDK 還提供以低階 REST API 為基礎的 [高階 API](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go)。 例如，***UploadFileToBlockBlob*** 函式會使用 StageBlock (PutBlock) 作業同時在多個區塊中上傳一個檔案，以達到最佳輸送量。 如果檔案小於 256 MB，它會改用 Upload (PutBlob )來完成在單一交易中傳輸。
+此外，SDK 還提供以低階 REST API 為基礎的 [高階 API](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go)。 例如，*UploadFileToBlockBlob_ 函式會使用 StageBlock (PutBlock) 作業同時在多個區塊中上傳一個檔案，以達到最佳輸送量。 如果檔案小於 256 MB，它會改用 Upload (PutBlob )來完成在單一交易中傳輸。
 
-下列範例會將檔案上傳到名為 **quickstartblobs-[randomstring]** 的容器。
+下列範例會將檔案上傳到名為 _*quickstartblobs-[randomstring]** 的容器。
 
 ```go
 // Create a file to test the upload and download.

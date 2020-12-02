@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperfq1
-ms.openlocfilehash: edcc94050880544a6c2de54ff27f833f1c60f99f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: f18f1184f921aca4f2c1e33ac00dcf14c63b24eb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683640"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95893353"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA 入口網站系統管理員
 
@@ -146,7 +146,7 @@ ms.locfileid: "94683640"
 - 當您在相同租用戶中的兩個組織識別碼之間執行訂用帳戶或帳戶擁有權轉移時，Azure RBAC 原則、現有的服務管理員及共同管理員角色都會保留。
 - 跨訂用帳戶或帳戶擁有權轉移會導致您的 Azure RBAC 原則和角色指派遺失。
 - 原則和管理員角色不會在不同的目錄之間轉移。 服務管理員會更新為目的地帳戶的擁有者。
-- 若要避免在租用戶之間轉移訂用帳戶時遺失 RBAC 原則和角色指派，請確定 [將訂用帳戶移至收件者的 Azure AD 租用戶] 核取方塊仍是 [未核取] 的狀態。 這會在目前的 Azure AD 租用戶上保留服務、RBAC 角色和原則，只轉移帳戶的帳單擁有權。  
+- 若要避免在租用戶之間轉移訂用帳戶時遺失 Azure RBAC 原則和角色指派，請確定 [將訂用帳戶移至收件者的 Azure AD 租用戶] 核取方塊仍是 [未核取] 的狀態。 這會在目前的 Azure AD 租用戶上保留服務、Azure 角色和原則，只轉移帳戶的帳單擁有權。  
     :::image type="content" source="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="顯示未選取核取方塊來將訂用帳戶移至 Azure AD 租用戶的影像" lightbox="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
 
 
@@ -282,7 +282,7 @@ Azure EA 入口網站可協助您管理您的 Azure EA 成本和使用量。 Azu
 
 每個角色都有不同層級的存取權和授權。
 
-如需使用者角色的詳細資訊，請參閱[企業使用者角色](https://docs.microsoft.com/azure/manage/understand-ea-roles#enterprise-user-roles)。
+如需使用者角色的詳細資訊，請參閱[企業使用者角色](/azure/cost-management-billing/manage/understand-ea-roles#enterprise-user-roles)。
 
 ## <a name="add-an-azure-ea-account"></a>新增 Azure EA 帳戶
 

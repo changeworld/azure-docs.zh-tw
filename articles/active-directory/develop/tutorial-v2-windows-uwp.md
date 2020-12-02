@@ -12,23 +12,23 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: cbfb5c598a2a56b0b14a3a90cf29ce23366b9b6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 774c17af88e45e25cf1e8edc0df60ab55fe53e0e
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627664"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95974320"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>教學課程：自通用 Windows 平台 (UWP) 應用程式呼叫 Microsoft Graph API
 
-本指南說明原生通用 Windows 平台 (UWP) 應用程式如何要求存取權杖。 應用程式接著會呼叫 Microsoft Graph API。 此指南也適用於需要來自 Microsoft 身分識別平台端點之存取權杖的其他 API。
+在本教學課程中，您會建置原生通用 Windows 平台 (UWP) 應用程式，將使用者登入，並取得存取權杖以呼叫 Microsoft Graph API。 
 
 在本指南結尾，您的應用程式會使用個人帳戶呼叫受保護的 API。 例如，outlook.com、live.com 等。 您的應用程式也會從具有 Azure Active Directory (Azure AD) 的任何公司或組織呼叫工作和學校帳戶。
 
 本教學課程內容：
 
 > [!div class="checklist"]
-> * 在 Visual Studio 中建立*通用 Windows 平台 (UWP)* 專案
+> * 在 Visual Studio 中建立 *通用 Windows 平台 (UWP)* 專案
 > * 在 Azure 入口網站中註冊應用程式
 > * 新增程式碼以支援使用者登入和登出
 > * 新增程式碼以呼叫 Microsoft Graph API
@@ -448,7 +448,7 @@ private async Task DisplayMessageAsync(string message)
 
 ![應用程式的使用者介面](./media/tutorial-v2-windows-uwp/testapp-ui-vs2019.png)
 
-當您準備好進行測試時，請選取**呼叫 Microsoft Graph API**。 然後，使用 Azure AD 組織帳戶或 Microsoft 帳戶 (例如 live.com 或 outlook.com) 登入。 使用者第一次執行此測試時，應用程式會顯示一個視窗，要求使用者登入。
+當您準備好進行測試時，請選取 **呼叫 Microsoft Graph API**。 然後，使用 Azure AD 組織帳戶或 Microsoft 帳戶 (例如 live.com 或 outlook.com) 登入。 使用者第一次執行此測試時，應用程式會顯示一個視窗，要求使用者登入。
 
 ### <a name="consent"></a>同意
 
@@ -490,7 +490,7 @@ Microsoft Graph API 需要 `user.read` 範圍以讀取使用者的設定檔。 �
 
 **原因：** 企業和憑證功能未啟用。
 
-**解決方案：** 依照[啟用同盟網域上的整合式驗證 (選擇性)](#enable-integrated-authentication-on-federated-domains-optional)中的步驟操作。
+**解決方案：** 依照 [啟用同盟網域上的整合式驗證 (選擇性)](#enable-integrated-authentication-on-federated-domains-optional)中的步驟操作。
 
 ### <a name="issue-2"></a>問題 2
 

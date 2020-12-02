@@ -1,6 +1,6 @@
 ---
 title: 教學課程 - Web 應用程式以使用者身分存取 Microsoft Graph | Azure
-description: 在本教學課程中，您將了解如何代表已登入的使用者存取 Microsoft Graph 中的資料。
+description: 在本教學課程中，您將了解如何為已登入的使用者存取 Microsoft Graph 中的資料。
 services: microsoft-graph, app-service-web
 author: rwike77
 manager: CelesteDG
@@ -10,27 +10,27 @@ ms.workload: identity
 ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: ef007f045a5c53bf70f6d042167c157ab3f4decc
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: d3706c26d9b15e9ea607996ace222b29ccd84458
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428184"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95999649"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>教學課程：從安全的應用程式以使用者身分存取 Microsoft Graph
 
 了解如何從在 Azure App Service 上執行的 Web 應用程式存取 Microsoft Graph。
 
-:::image type="content" alt-text="存取 Microsoft Graph" source="./media/scenario-secure-app-access-microsoft-graph/web-app-access-graph.svg" border="false":::
+:::image type="content" alt-text="顯示存取 Microsoft Graph 的圖表。" source="./media/scenario-secure-app-access-microsoft-graph/web-app-access-graph.svg" border="false":::
 
-您想要新增從 Web 應用程式存取 Microsoft Graph 的權限，並以登入的使用者身分執行某些動作。 本節說明如何將委派的權限授與 Web 應用程式，並從 Azure Active Directory 取得登入使用者的設定檔資訊。
+您想要新增從 Web 應用程式存取 Microsoft Graph 的權限，並以登入的使用者身分執行某些動作。 本節說明如何將委派的權限授與 Web 應用程式，並從 Azure Active Directory (Azure AD) 取得登入使用者的設定檔資訊。
 
 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 >
-> * 將委派的權限授與 Web 應用程式
-> * 代表已登入的使用者從 Web 應用程式呼叫 Microsoft Graph
+> * 將委派的權限授與 Web 應用程式。
+> * 為已登入的使用者從 Web 應用程式呼叫 Microsoft Graph。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -40,44 +40,45 @@ ms.locfileid: "94428184"
 
 ## <a name="grant-front-end-access-to-call-microsoft-graph"></a>授與呼叫 Microsoft Graph 的前端存取權
 
-您已在 Web 應用程式上啟用驗證和授權，Web 應用程式會向 Microsoft 身分識別平台註冊，並受到 Azure AD 應用程式的支援。 在此步驟中，您會為 Web 應用程式提供代表使用者存取 Microsoft Graph 的權限。 (技術上，您會為 Web 應用程式的 Azure AD 應用程式提供代表使用者存取 Microsoft Graph AD 應用程式的權限。)
+您已在 Web 應用程式上啟用驗證和授權，Web 應用程式會向 Microsoft 身分識別平台註冊，並受到 Azure AD 應用程式的支援。 在此步驟中，您會為使用者提供用來存取 Microsoft Graph 的 Web 應用程式權限。 (技術上，您會為 Web 應用程式的 Azure AD 應用程式提供用來存取使用者 Microsoft Graph Azure AD 應用程式的權限。)
 
-在 Azure 入口網站功能表中，選取 [Azure Active Directory][](https://portal.azure.com)，或從任何頁面搜尋並選取 [Azure Active Directory]。
+在 [Azure 入口網站](https://portal.azure.com)功能表中，選取 [Azure Active Directory]，或從任何頁面搜尋並選取 [Azure Active Directory]。
 
 選取 [應用程式註冊] > [擁有的應用程式] > [檢視此目錄中的所有應用程式]。 選取您的 Web 應用程式名稱，然後選取 [API 權限]。
 
 選取 [新增權限]，然後選取 Microsoft API 和 Microsoft Graph。
 
-選取 [委派的權限]，然後從清單中選取 [User.Read]。  按一下 [新增權限]。
+選取 [委派的權限]，然後從清單中選取 [User.Read]。 選取 [新增權限]。
 
 ## <a name="configure-app-service-to-return-a-usable-access-token"></a>設定 App Service，以傳回可使用的存取權杖
 
-Web 應用程式現在具有必要權限，能夠以登入使用者的身分存取 Microsoft Graph。 在此步驟中，您會設定 App Service 驗證和授權，讓自己取得可用來存取 Microsoft Graph 的存取權杖。 在此步驟中，您需要下游服務的用戶端/應用程式識別碼 (Microsoft Graph)。 00000003-0000-0000-c000-000000000000 是 Microsoft Graph 的應用程式識別碼。
+Web 應用程式現在具有必要權限，能夠以登入使用者的身分存取 Microsoft Graph。 在此步驟中，您會設定 App Service 驗證和授權，讓自己取得可用來存取 Microsoft Graph 的存取權杖。 在此步驟中，您需要下游服務的用戶端/應用程式識別碼 (Microsoft Graph)。 Microsoft Graph 的應用程式識別碼是 *00000003-0000-0000-c000-000000000000*。
 
 > [!IMPORTANT]
 > 如果您未設定 App Service 傳回可用的存取權杖，當您在程式碼中呼叫 Microsoft Graph API 時，就會收到 ```CompactToken parsing failed with error code: 80049217``` 錯誤。
 
-瀏覽至 [Azure 資源總管](https://resources.azure.com/)並使用資源樹狀結構，找出您的 Web 應用程式。  此資源 URL 應類似於：`https://resources.azure.com/subscriptions/subscription-id/resourceGroups/SecureWebApp/providers/Microsoft.Web/sites/SecureWebApp20200915115914`
+移至 [Azure 資源總管](https://resources.azure.com/)並使用資源樹狀結構，找出您的 Web 應用程式。 此資源 URL 應類似於 `https://resources.azure.com/subscriptions/subscription-id/resourceGroups/SecureWebApp/providers/Microsoft.Web/sites/SecureWebApp20200915115914`。
 
-現在，在資源樹狀結構中選取您的 Web 應用程式，以開啟 Azure 資源總管。 在頁面頂端按一下 [讀取/寫入]，以啟用 Azure 資源的編輯。
+現在，在資源樹狀結構中選取您的 Web 應用程式，以開啟 Azure 資源總管。 在頁面頂端選取 [讀取/寫入]，以啟用 Azure 資源的編輯。
 
 在左側瀏覽器中，向下切入至 [config] > [authsettings]。
 
-在 **authsettings** 檢視中，按一下 [編輯]。 使用您複製的用戶端識別碼，將 ```additionalLoginParams``` 設為下列 JSON 字串。
+在 [authsettings] 檢視中，選取 [編輯]。 使用您複製的用戶端識別碼，將 ```additionalLoginParams``` 設為下列 JSON 字串。
 
 ```json
 "additionalLoginParams": ["response_type=code id_token","resource=00000003-0000-0000-c000-000000000000"],
 ```
 
-按一下 **PUT** 以儲存您的設定。 此設定可能需要幾分鐘才會生效。  您的 Web 應用程式現在已設定為使用適當的存取權杖來存取 Microsoft Graph。  如果您沒有這麼做，Microsoft Graph 會傳回錯誤，指出精簡權杖的格式不正確。
+選取 [PUT] 來儲存您的設定。 此設定可能需要幾分鐘才會生效。 您的 Web 應用程式現在已設定為使用適當的存取權杖來存取 Microsoft Graph。 如果您沒有這麼做，Microsoft Graph 會傳回錯誤，指出精簡權杖的格式不正確。
 
 ## <a name="call-microsoft-graph-net"></a>呼叫 Microsoft Graph (.NET)
 
-您的應用程式現已具有必要的權限，且會將 Microsoft Graph 的用戶端識別碼新增至登入參數。 使用 [Microsoft.Identity.Web library](https://github.com/AzureAD/microsoft-identity-web/)，Web 應用程式會取得 Microsoft Graph 驗證的存取權杖。 在 1.2.0 和更新版本中，Microsoft.Identity.Web 會與 App Service 整合，並可與 App Service 驗證/授權模組一起執行。  Microsoft 會偵測到 Web 應用程式裝載在應用程式服務中，並從應用程式服務驗證/授權模組取得存取權杖。  接著會使用 Microsoft Graph API，將存取權杖傳遞給已驗證的要求。
+您的應用程式現已具有必要的權限，且會將 Microsoft Graph 的用戶端識別碼新增至登入參數。 使用 [Microsoft.Identity.Web library](https://github.com/AzureAD/microsoft-identity-web/)，Web 應用程式會取得 Microsoft Graph 驗證的存取權杖。 在 1.2.0 和更新版本中，Microsoft.Identity.Web 會與 App Service 整合，並可與 App Service 驗證/授權模組一起執行。 Microsoft 會偵測到 Web 應用程式裝載在應用程式服務中，並從應用程式服務驗證/授權模組取得存取權杖。 接著會使用 Microsoft Graph API，將存取權杖傳遞給已驗證的要求。
 
 > [!NOTE]
-> Web 應用程式中的基本驗證/授權不需要 Microsoft.Identity.Web 程式庫，也不需使用 Microsoft Graph 驗證要求。  您可以只啟用 App Service 驗證/授權模組，[安全地呼叫下游 API](tutorial-auth-aad.md#call-api-securely-from-server-code)。  
-> 不過，App Service 的驗證/授權是針對更基本的驗證案例所設計。  針對更複雜的案例 (例如，處理自訂宣告)，您需要有 Microsoft.Identity.Web 程式庫或 [Microsoft 驗證程式庫](/azure/active-directory/develop/msal-overview)。 一開始還有更多的安裝和設定工作，但是 Microsoft.Identity.Web 程式庫可以與 App Service 驗證/授權模組一起執行。  之後，當 Web 應用程式需要處理更複雜的案例時，您可以停用 App Service 驗證/授權模組，而 Microsoft.Identity.Web 會是您應用程式的一部分。
+> Web 應用程式中的基本驗證/授權不需要 Microsoft.Identity.Web 程式庫，也不需使用 Microsoft Graph 驗證要求。 您可以只啟用 App Service 驗證/授權模組，[安全地呼叫下游 API](tutorial-auth-aad.md#call-api-securely-from-server-code)。
+> 
+> 不過，App Service 的驗證/授權是針對更基本的驗證案例所設計。 針對更複雜的案例 (例如，處理自訂宣告)，您需要有 Microsoft.Identity.Web 程式庫或 [Microsoft 驗證程式庫](/azure/active-directory/develop/msal-overview)。 一開始還有更多的安裝和設定工作，但是 Microsoft.Identity.Web 程式庫可以與 App Service 驗證/授權模組一起執行。 之後，當 Web 應用程式需要處理更複雜的案例時，您可以停用 App Service 驗證/授權模組，而 Microsoft.Identity.Web 會是您應用程式的一部分。
 
 ### <a name="install-client-library-packages"></a>安裝用戶端程式庫套件
 
@@ -85,9 +86,9 @@ Web 應用程式現在具有必要權限，能夠以登入使用者的身分存�
 
 # <a name="command-line"></a>[命令列](#tab/command-line)
 
-開啟命令列並切換至包含您專案檔的目錄。
+開啟命令列，並切換至包含專案檔的目錄。
 
-執行安裝命令：
+執行安裝命令。
 
 ```dotnetcli
 dotnet add package Microsoft.Graph
@@ -96,9 +97,10 @@ dotnet add package Microsoft.Identity.Web
 ```
 
 # <a name="package-manager"></a>[套件管理員](#tab/package-manager)
+
 在 Visual Studio 中開啟專案/方案，然後使用 **工具** > **NuGet 套件管理員** > **套件管理員主控台** 命令開啟主控台。
 
-執行安裝命令：
+執行安裝命令。
 ```powershell
 Install-Package Microsoft.Graph
 
@@ -109,7 +111,7 @@ Install-Package Microsoft.Identity.Web
 
 ### <a name="startupcs"></a>Startup.cs
 
-在 Startup.cs 檔案中，```AddMicrosoftIdentityWebApp``` 方法會將 Microsoft.Identity.Web 新增至您的 Web 應用程式。  ```AddMicrosoftGraph``` 方法會新增 Microsoft Graph 支援。
+在 Startup.cs 檔案中，```AddMicrosoftIdentityWebApp``` 方法會將 Microsoft.Identity.Web 新增至您的 Web 應用程式。 ```AddMicrosoftGraph``` 方法會新增 Microsoft Graph 支援。
 
 ```csharp
 using Microsoft.AspNetCore.Builder;
@@ -140,7 +142,7 @@ public class Startup
 
 ### <a name="appsettingsjson"></a>appsettings.json
 
-AzureAd 會指定 Microsoft.Identity.Web 程式庫的組態。  在 [Azure 入口網站](https://portal.azure.com)的功能表中選取 [Azure Active Directory]，然後選取 [應用程式註冊]。 選取當您啟用 App Service 驗證/授權模組時所建立的應用程式註冊 (應用程式註冊應該與您的 Web 應用程式名稱相同)。  您可以在應用程式註冊的概觀頁面中找到租用戶識別碼和用戶端識別碼。  您可以在租用戶的 Azure Active Directory 概觀頁面找到此網域名稱。
+AzureAd 會指定 Microsoft.Identity.Web 程式庫的組態。 在 [Azure 入口網站](https://portal.azure.com)的功能表中選取 [Azure Active Directory]，然後選取 [應用程式註冊]。 選取您在啟用 [App Service 驗證/授權] 模組時所建立的應用程式註冊。 (應用程式註冊應該擁有與 Web 應用程式相同的名稱。)您可以在應用程式註冊的概觀頁面中找到租用戶識別碼和用戶端識別碼。 您可以在租用戶的 Azure AD 概觀頁面找到此網域名稱。
 
 Graph 會指定應用程式所需的 Microsoft Graph 端點和初始範圍。
 
@@ -173,7 +175,7 @@ Graph 會指定應用程式所需的 Microsoft Graph 端點和初始範圍。
 
 ### <a name="indexcshtmlcs"></a>Index.cshtml.cs
 
-下列範例示範如何以已登入使用者的身分呼叫 Microsoft Graph，並取得一些使用者資訊。  ```GraphServiceClient``` 物件會插入至控制器，並由 Microsoft.Identity.Web 程式庫為您設定驗證。
+下列範例示範如何以已登入使用者的身分呼叫 Microsoft Graph，並取得一些使用者資訊。 ```GraphServiceClient``` 物件會插入至控制器，並由 Microsoft.Identity.Web 程式庫為您設定驗證。
 
 ```csharp
 using System.Threading.Tasks;
@@ -229,8 +231,8 @@ public class IndexModel : PageModel
 
 > [!div class="checklist"]
 >
-> * 將委派的權限授與 Web 應用程式
-> * 代表已登入的使用者從 Web 應用程式呼叫 Microsoft Graph
+> * 將委派的權限授與 Web 應用程式。
+> * 為已登入的使用者從 Web 應用程式呼叫 Microsoft Graph。
 
 > [!div class="nextstepaction"]
 > [App Service 以應用程式身分存取 Microsoft Graph](scenario-secure-app-access-microsoft-graph-as-app.md)

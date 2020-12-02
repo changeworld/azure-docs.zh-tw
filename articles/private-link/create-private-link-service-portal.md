@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: 0d873401d377a03581a319769604f3d976f365be
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5b7bc8be89068f0d3cf6722c36ae7fd5cc560736
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87927233"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96012113"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立 Private Link 服務
 
@@ -52,12 +52,12 @@ Azure Private Link 服務會參考由 Private Link 管理的自有服務。 您�
 
 1. 在入口網站的左上方，選取 [建立資源] > [網路] > [負載平衡器]。
 
-1. 在 [建立負載平衡器]**** 頁面的 [基本]**** 索引標籤中，輸入或選取下列資訊：
+1. 在 [建立負載平衡器] 頁面的 [基本] 索引標籤中，輸入或選取下列資訊：
 
     | 設定                 | 值                                              |
     | ---                     | ---                                                |
     | **訂用帳戶**               | 選取您的訂用帳戶。    |
-    | **資源群組**         | 從方塊中選取 [myResourceGroupLB]****。|
+    | **資源群組**         | 從方塊中選取 [myResourceGroupLB]。|
     | **名稱**                   | 輸入 **myLoadBalancer**。                                   |
     | 區域         | 選取 [美國東部 2]。                                        |
     | **型別**          | 選取 [內部]。                                        |
@@ -78,10 +78,10 @@ Azure Private Link 服務會參考由 Private Link 管理的自有服務。 您�
 
 後端位址集區會包含虛擬 NIC (已連線至負載平衡器) 的 IP 位址。 此集區可讓您將流量分散到資源。 建立名為 **myBackendPool** 後端位址集區，以包含用於平衡流量負載的資源。
 
-1. 從最左側的功能表中選取 [所有服務]****。
-1. 選取 [所有資源]****，然後從資源清單中選取 [myLoadBalancer]****。
+1. 從最左側的功能表中選取 [所有服務]。
+1. 選取 [所有資源]，然後從資源清單中選取 [myLoadBalancer]。
 1. 在 [設定] 底下選取 [後端集區]，然後選取 [新增]。
-1. 在 [新增後端集區]**** 頁面上，輸入 **myBackEndPool** 作為後端集區的名稱，然後選取 [新增]****。
+1. 在 [新增後端集區] 頁面上，輸入 **myBackEndPool** 作為後端集區的名稱，然後選取 [新增]。
 
 #### <a name="create-a-health-probe"></a>建立健康狀態探查
 
@@ -89,11 +89,11 @@ Azure Private Link 服務會參考由 Private Link 管理的自有服務。 您�
 
 若要建立健康情況探查以監視資源的健康情況：
 
-1. 在最左側的功能表上選取 [所有資源]****，然後從資源清單中選取 [myLoadBalancer]****。
+1. 在最左側的功能表上選取 [所有資源]，然後從資源清單中選取 [myLoadBalancer]。
 
 1. 在 [設定] 底下選取 [健康狀態探查]，然後選取 [新增]。
 
-1. 在 [新增健康情況探查]**** 頁面上，輸入或選取下列值：
+1. 在 [新增健康情況探查] 頁面上，輸入或選取下列值：
 
    - **Name**：輸入 **myHealthProbe**。
    - **通訊協定**：選取 [TCP]。
@@ -115,14 +115,14 @@ Azure Private Link 服務會參考由 Private Link 管理的自有服務。 您�
 
 若要建立負載平衡器規則：
 
-1. 在最左側的功能表上選取 [所有資源]****，然後從資源清單中選取 [myLoadBalancer]****。
+1. 在最左側的功能表上選取 [所有資源]，然後從資源清單中選取 [myLoadBalancer]。
 
-1. 在 [設定]**** 下選取 [負載平衡規則]****，然後選取 [新增]****。
+1. 在 [設定] 下選取 [負載平衡規則]，然後選取 [新增]。
 
-1. 在 [新增負載平衡規則]**** 頁面上，輸入或選取下列值 (如果尚未存在)：
+1. 在 [新增負載平衡規則] 頁面上，輸入或選取下列值 (如果尚未存在)：
 
    - **Name**：輸入 **myLoadBalancerRule**。
-   - **前端 IP 位址：** 輸入**LoadBalancerFrontEnd**。
+   - **前端 IP 位址：** 輸入 **LoadBalancerFrontEnd**。
    - **通訊協定**：選取 [TCP]。
    - **連接埠**：輸入 **80**。
    - **後端連接埠**：輸入 **80**。
@@ -139,7 +139,7 @@ Azure Private Link 服務會參考由 Private Link 管理的自有服務。 您�
 
 1. 在 [Private Link 中心 - 概觀] > [公開您自己的服務以便其他人連線] 中，選取 [開始]。
 
-1. 在 [建立私人連結服務 - 基本資料]**** 底下，輸入或選取這項資訊：
+1. 在 [建立私人連結服務 - 基本資料] 底下，輸入或選取這項資訊：
 
     | 設定           | 值                                                                        |
     |-------------------|------------------------------------------------------------------------------|
@@ -152,7 +152,7 @@ Azure Private Link 服務會參考由 Private Link 管理的自有服務。 您�
 
 1. 完成時，選取 [下一步:輸出設定]。
 
-1. 在 [建立私人連結服務 - 輸出設定]**** 底下，輸入或選取這項資訊：
+1. 在 [建立私人連結服務 - 輸出設定] 底下，輸入或選取這項資訊：
 
     | 設定                           | 值                                                                           |
     |-----------------------------------|---------------------------------------------------------------------------------|
@@ -160,26 +160,26 @@ Azure Private Link 服務會參考由 Private Link 管理的自有服務。 您�
     | **負載平衡器前端 IP 位址** | 選取 **myLoadBalancer** 的前端 IP 位址。                                |
     | **來源 NAT 虛擬網路**        | 選取 [myVNet]。                                                                   |
     | **來源 NAT 子網路**                 | 選取 [myBackendSubnet]。                                                          |
-    | **啟用 TCP Proxy v2**               | 根據您的應用程式是否需要 TCP Proxy v2 標頭，選取 [是]**** 或 [否]****。 |
+    | **啟用 TCP Proxy v2**               | 根據您的應用程式是否需要 TCP Proxy v2 標頭，選取 [是] 或 [否]。 |
     | **私人 IP 位址設定**       | 為每個 NAT IP 設定配置方法和 IP 位址。                  |
 
 1. 完成時，選取 [下一步:存取安全性]。
 
-1. 在 [建立私人連結服務 - 存取安全性]**** 底下，選取 [可見度]****，然後選擇 [僅限角色型存取控制]****。
+1. 在 [建立私人連結服務 - 存取安全性] 底下，選取 [可見度]，然後選擇 [僅限角色型存取控制]。
   
 1. 請選取 [下一步：標記] > [檢閱 + 建立]，或選擇頁面頂端的 [檢閱 + 建立]。
 
-1. 檢閱您的資訊，然後選取 [建立]****。
+1. 檢閱您的資訊，然後選取 [建立]。
 
 ## <a name="clean-up-resources"></a>清除資源
 
 當您使用完 Private Link 服務時，請刪除資源群組以清除本快速入門中使用的資源。
 
-1. 在入口網站頂端的搜尋方塊中輸入 **myResourceGroupLB**，然後從搜尋結果中選取 [myResourceGroupLB]****。
+1. 在入口網站頂端的搜尋方塊中輸入 **myResourceGroupLB**，然後從搜尋結果中選取 [myResourceGroupLB]。
 1. 選取 [刪除資源群組]。
-1. 在 [輸入資源群組名稱]**** 中，輸入 **myResourceGroup**。
+1. 在 [輸入資源群組名稱] 中，輸入 **myResourceGroup**。
 1. 選取 [刪除] 。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已建立內部 Azure 負載平衡器和 Private Link 服務。 您也可以[了解如何使用 Azure 入口網站建立私人端點](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)。
+在本快速入門中，您已建立內部 Azure 負載平衡器和 Private Link 服務。 您也可以[了解如何使用 Azure 入口網站建立私人端點](./create-private-endpoint-portal.md)。

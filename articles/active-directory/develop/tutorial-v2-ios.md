@@ -13,16 +13,16 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 70194c7adc55a00c5cb65928daac184499eb124d
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: aff89d49dec9bafedb3c9a5a76abdeb803740a12
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611107"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95746722"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>教學課程：從 iOS 或 macOS 應用程式登入使用者並呼叫 Microsoft Graph
 
-在本教學課程中，您會了解如何整合 iOS 或 macOS 應用程式與 Microsoft 身分識別平台。 應用程式會讓使用者登入、取得存取權杖來呼叫 Microsoft Graph API，以及對 Microsoft Graph API 提出要求。
+在本教學課程中，您會建置與 Microsoft 身分識別平台整合的 iOS 或 macOS 應用程式，將使用者登入，並取得存取權杖以呼叫 Microsoft Graph API。
 
 完成本指南後，您的應用程式會接受使用個人Microsoft 帳戶 (包括 outlook.com、live.com 和其他帳戶)，以及採用 Azure Active Directory 的公司或組織所提供的公司或學校帳戶登入。 本教學課程適用於 iOS 和 macOS 應用程式。 這兩個平台間有一些的不同步驟。
 
@@ -73,8 +73,8 @@ ms.locfileid: "91611107"
 
 1. 移至 [Azure 入口網站](https://aka.ms/MobileAppReg)
 2. 開啟應用程式註冊刀鋒視窗，然後選取 [+新增註冊]。
-3. 輸入應用程式的**名稱**，無需設定重新導向 URI。
-4. 在 [支援的帳戶類型] 下，選取**任何組織目錄中的帳戶 (任何 Azure AD 目錄 - 多租用戶) 和個人 Microsoft 帳戶 (例如 Skype、Xbox)**
+3. 輸入應用程式的 **名稱**，無需設定重新導向 URI。
+4. 在 [支援的帳戶類型] 下，選取 **任何組織目錄中的帳戶 (任何 Azure AD 目錄 - 多租用戶) 和個人 Microsoft 帳戶 (例如 Skype、Xbox)**
 5. 選取 [註冊]
 6. 在顯示的窗格中，從 [管理] 區段選取 [驗證]。
 
@@ -158,7 +158,7 @@ var currentAccount: MSALAccount?
 
 ## <a name="configure-xcode-project-settings"></a>進行 Xcode 專案設定
 
-將新的金鑰鏈群組新增至您的專案**簽署和功能**。 在 iOS 上金鑰鏈群組應為 `com.microsoft.adalcache`，而在 macOS 上應為 `com.microsoft.identity.universalstorage`。
+將新的金鑰鏈群組新增至您的專案 **簽署和功能**。 在 iOS 上金鑰鏈群組應為 `com.microsoft.adalcache`，而在 macOS 上應為 `com.microsoft.identity.universalstorage`。
 
 ![顯示應如何設定金鑰鏈群組的 Xcode UI](../../../includes/media/active-directory-develop-guidedsetup-ios-introduction/iosintro-keychainShare.png)
 

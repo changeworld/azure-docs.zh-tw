@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 09/30/2020
+ms.date: 11/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: 24e514208683d540f08818020238090583a1bc42
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 163947268d79a0297eef3f3f6e97187a0aef6994
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362462"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95738137"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>什麼是 Azure AD 權利管理？
 
@@ -85,7 +85,7 @@ Azure AD 權利管理有助於解決這些挑戰。  若要深入了解客戶一
 
 透過存取套件，系統管理員或受委派的存取套件管理員可列出資源 (群組、應用程式和網站)，以及使用者要使用這些資源所需的角色。
 
-存取套件也包含一或多個 *原則* 。 原則會針對指派來定義用來存取套件的規則或護欄。 每個原則都可以用來確保只有適當的使用者能夠要求存取權、有核准者可處理其要求，以及其對這些資源的存取權有時間限制，如果未更新就會到期。
+存取套件也包含一或多個 *原則*。 原則會針對指派來定義用來存取套件的規則或護欄。 每個原則都可以用來確保只有適當的使用者能夠要求存取權、有核准者可處理其要求，以及其對這些資源的存取權有時間限制，如果未更新就會到期。
 
 ![存取套件和原則](./media/entitlement-management-overview/elm-overview-access-package.png)
 
@@ -144,17 +144,22 @@ Azure AD 權利管理有助於解決這些挑戰。  若要深入了解客戶一
 請確定您的目錄所擁有的 Azure AD Premium P2 授權，至少要和您擁有的下列項目數目一樣多：
 
 - **可以** 要求存取套件的成員使用者。
-- 要求存取套件的成員和來賓使用者。
-- 核准存取套件要求的成員和來賓使用者。
-- 直接指派給存取套件的成員和來賓使用者。
+- <u>要求</u>存取套件的成員使用者。
+- <u>核准存取套件要求</u>的成員使用者。
+- <u>檢閱存取套件指派</u>的成員使用者。 
+- <u>直接指派</u>給存取套件的成員使用者。
+
+對於來賓使用者，授權需求將取決於您所使用的[授權模型](../external-identities/external-identities-pricing.md)而定。 不過，系統會將下列來賓使用者的活動會視為 Azure AD Premium P2 使用量：
+- <u>要求</u>存取套件的來賓使用者。 
+- <u>核准存取套件要求</u>的來賓使用者。
+- <u>檢閱存取套件指派</u>的來賓使用者。
+- <u>直接指派</u>給存取套件的來賓使用者。 
 
 下列工作 **不** 需要 Azure AD Premium P2 授權：
 
 - 使用者若具有全域管理員角色，並設定初始目錄、存取套件和原則，以及將系統管理工作委派給其他使用者，就不需要任何授權。
 - 使用者若已獲得委派的系統管理工作 (例如目錄建立者、目錄擁有者和存取套件管理員)，就不需要任何授權。
 - 來賓若 **可以** 要求存取套件，但 **未** 要求存取套件，就不需要任何授權。
-
-Azure AD 外部身分識別 (來賓使用者) 定價是以每月的活躍使用者 (MAU) 為基礎，這是在日曆月份內進行驗證活動的唯一使用者計數。 此模型會以 1:5 的比例取代計費模型，在您的租用戶中，每個 Azure AD Premium 授權最多允許五位來賓使用者。 當租用戶結至訂用帳戶，而且您使用外部身分識別功能與來賓使用者共同作業時，將會使用以 MAU 為基礎的計費模型自動計費。 如需詳細資訊，請參閱 [Azure AD 外部身分識別](../external-identities/external-identities-pricing.md)的計費模型。
 
 如需授權的詳細資訊，請參閱[使用 Azure Active Directory 入口網站指派或移除授權](../fundamentals/license-users-groups.md)。
 

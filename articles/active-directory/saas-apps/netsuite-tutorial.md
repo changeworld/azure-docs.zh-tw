@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/28/2020
+ms.date: 11/09/2020
 ms.author: jeedes
-ms.openlocfilehash: c2f2e86a3080b0edfcb0a699ac9b3a78ee1b5a52
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9bebb11c3a1162a0a7b72140f7d3812f86f793ce
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519413"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95791376"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>教學課程：整合 Azure AD 單一登入 (SSO) 與 NetSuite
 
@@ -26,9 +26,7 @@ ms.locfileid: "92519413"
 * 讓使用者使用其 Azure AD 帳戶自動登入 NetSuite。
 * 在 Azure 入口網站中集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)。
-
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始，您需要下列項目：
 
@@ -44,7 +42,6 @@ NetSuite 支援：
 * IDP 起始的 SSO。
 * JIT (just-in-time) 使用者佈建。
 * [自動的使用者佈建](NetSuite-provisioning-tutorial.md)。
-* 設定 NetSuite 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > 由於此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
@@ -53,11 +50,11 @@ NetSuite 支援：
 
 若要設定將 NetSuite 整合到 Azure AD 中，請執行下列操作，將 NetSuite 從資源庫新增到受控 SaaS 應用程式清單：
 
-1. 使用公司、學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
+1. 使用公司、學校帳戶或個人的 Microsoft 帳戶登入 Azure 入口網站。
 1. 在左窗格中選取 [Azure Active Directory]  服務。
 1. 移至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增新的應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **NetSuite** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **NetSuite**。
 1. 在結果面板中選取 [NetSuite]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-netsuite"></a>設定及測試 NetSuite 的 Azure AD 單一登入
@@ -77,7 +74,7 @@ NetSuite 支援：
 
 若要在 Azure 入口網站中啟用 Azure AD SSO，請執行下列動作：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [NetSuite]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
+1. 在 Azure 入口網站的 [NetSuite] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
 1. 在 [選取單一登入方法]  窗格中，選取 [SAML]  。
 1. 在 [以 SAML 設定單一登入]  窗格中選取 [基本 SAML 組態]  旁的[編輯]  圖示 (鉛筆)。
 
@@ -132,10 +129,10 @@ NetSuite 支援：
 
 1. 在 [使用者]  屬性窗格中，執行下列步驟：
 
-   a. 在 [名稱]  方塊中，輸入 **B.Simon** 。  
+   a. 在 [名稱] 方塊中，輸入 **B.Simon**。  
    b. 在 [使用者名稱]  方塊中輸入 username@companydomain.extension (例如 B.Simon@contoso.com)。  
    c. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。  
-   d. 選取 [建立]  。
+   d. 選取 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
@@ -144,13 +141,7 @@ NetSuite 支援：
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 在應用程式清單中，選取 [NetSuite]  。
 1. 在 [概觀] 窗格中尋找 [管理]  區段，然後選取 [使用者和群組]  連結。
-
-   ![[使用者和群組] 連結](common/users-groups-blade.png)
-
 1. 選取 [新增使用者]  ，然後在 [新增指派]  窗格中選取 [使用者和群組]  。
-
-    ![[新增使用者] 按鈕](common/add-assign-user.png)
-
 1. 在 [使用者和群組]  窗格的 [使用者]  下拉式清單中選取 [B.Simon]  ，然後選取畫面底部的 [選取]  按鈕。
 1. 如果您想要在 SAML 判斷提示中建立任何角色值，請執行下列動作：
 
@@ -206,6 +197,8 @@ NetSuite 支援：
 
     c. 將您從 NetSuite 帳戶複製的 [帳戶識別碼]  貼至 Azure AD 中的 [屬性值]  方塊中。
 
+    ![顯示新增帳戶識別碼值的螢幕擷取畫面](./media/netsuite-tutorial/attribute-value.png)
+
 10. 在使用者可以執行單一登入 NetSuite 之前，必須先在 NetSuite 中指派適當的權限。 若要指派這些權限，請執行下列動作：
 
     a. 在上方導覽列中選取 [設定]  。
@@ -218,7 +211,7 @@ NetSuite 支援：
 
     c. 選取 [新增角色]  。
 
-    d. 輸入新角色的 **名稱** 。
+    d. 輸入新角色的 **名稱**。
 
     ![此螢幕擷取畫面顯示您可以在其中輸入角色名稱的 [設定管理員]。](./media/NetSuite-tutorial/ns-new-role.png)
 
@@ -256,16 +249,13 @@ NetSuite 支援：
 
 ## <a name="test-sso"></a>測試 SSO
 
-在本節中，您會使用存取面板來測試您的 Azure AD 單一登入組態。
+在本節中，您會使用下列選項來測試您的 Azure AD 單一登入組態。
 
-當您在存取面板中選取 [NetSuite] 圖格時，應該會自動登入您設定 SSO 的 NetSuite。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
+- 在 Azure 入口網站中按一下 [測試此應用程式]，應該會自動登入您已設定 SSO 的 NetSuite
 
-## <a name="additional-resources"></a>其他資源
+- 您可以使用 Microsoft 的「我的應用程式」。 當您在「我的應用程式」中按一下 [NetSuite] 圖格時，應該會自動登入您已設定 SSO 的 NetSuite。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
-- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
-- [嘗試搭配 Azure AD 使用 NetSuite](https://aad.portal.azure.com/)
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用進階可見性和控制項保護 NetSuite](/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>後續步驟
+
+設定 NetSuite 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-aad)

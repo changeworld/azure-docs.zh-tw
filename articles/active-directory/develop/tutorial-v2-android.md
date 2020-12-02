@@ -13,18 +13,20 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: cbfaf52a7c5bb5e44b85513d8e2c2ec5f1cea356
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 08ee000d8f801559fcf572b8ab489161fd090b77
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101978"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95996197"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>教學課程：從 Android 應用程式登入使用者並呼叫 Microsoft Graph API
 
-在本教學課程中，您將了解如何使用適用於 Android 的 Microsoft 驗證程式庫 (MSAL)，將您的 Android 應用程式與 Microsoft 身分識別平台整合。 您將了解如何登入和登出使用者、取得存取權杖，以及對 Microsoft Graph API 提出要求。
+在本教學課程中，您會建置與 Microsoft 身分識別平台整合的 Android 應用程式，將使用者登入，並取得存取權杖以呼叫 Microsoft Graph API。
 
 完成本教學課程後，您的應用程式會接受使用個人Microsoft 帳戶 (包括 outlook.com、live.com 和其他帳戶)，以及採用 Azure Active Directory 的公司或組織所提供的公司或學校帳戶登入。
+
+在本教學課程中： 
 
 > [!div class="checklist"]
 > * 在「Android Studio」中建立 Android 應用程式專案
@@ -62,12 +64,12 @@ MSAL 會自動更新權杖、提供裝置上其他應用程式之間的 SSO，�
 如果您還沒有 Android 應用程式，請依照下列步驟設定新的專案。
 
 1. 開啟 Android Studio，然後選取 [開始新的 Android Studio 專案]。
-2. 選取 [基本活動]****，然後選取 [下一步]****。
+2. 選取 [基本活動]，然後選取 [下一步]。
 3. 為您的應用程式命名。
 4. 儲存套件名稱。 您稍後會在 Azure 入口網站中加以輸入。
-5. 將語言從 [Kotlin]**** 變更為 [Java]****。
-6. 將 [最低 API 層級]**** 設為 [API 19]**** 或更高，然後按一下 [完成]****。
-7. 在專案檢視中，從下拉式清單中選擇 [專案]**** 以顯示來源和非來源專案檔，然後開啟 **app/build.gradle**，並將 `targetSdkVersion` 設為 `28`。
+5. 將語言從 [Kotlin] 變更為 [Java]。
+6. 將 [最低 API 層級] 設為 [API 19] 或更高，然後按一下 [完成]。
+7. 在專案檢視中，從下拉式清單中選擇 [專案] 以顯示來源和非來源專案檔，然後開啟 **app/build.gradle**，並將 `targetSdkVersion` 設為 `28`。
 
 ## <a name="integrate-with-microsoft-authentication-library"></a>與 Microsoft 驗證程式庫整合
 
@@ -75,21 +77,21 @@ MSAL 會自動更新權杖、提供裝置上其他應用程式之間的 SSO，�
 
 1. 移至 [Azure 入口網站](https://aka.ms/MobileAppReg)。
 2. 開啟 [應用程式註冊](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) 刀鋒視窗，然後按一下 [+新增註冊]。
-3. 輸入應用程式的 [名稱]****，然後**不**設定 [重新導向 URI] 而直接按一下 [註冊]****。
-4. 在顯示的窗格中，從 [管理]**** 區段選取 [驗證]**** > [+ 新增平台]**** > [Android]****。 (您可能必須選取靠近刀鋒視窗頂端的 [切換到新的體驗]，才能看到此區段)
+3. 輸入應用程式的 [名稱]，然後 **不** 設定 [重新導向 URI] 而直接按一下 [註冊]。
+4. 在顯示的窗格中，從 [管理] 區段選取 [驗證] > [+ 新增平台] > [Android]。 (您可能必須選取靠近刀鋒視窗頂端的 [切換到新的體驗]，才能看到此區段)
 5. 輸入您專案的套件名稱。 如果您已下載程式碼，此值會是 `com.azuresamples.msalandroidapp`。
-6. 在 [設定 Android 應用程式]**** 頁面的 [簽章雜湊]**** 區段中，按一下 [產生開發簽章雜湊]****。 然後，複製要用於平台的 KeyTool 命令。
+6. 在 [設定 Android 應用程式] 頁面的 [簽章雜湊] 區段中，按一下 [產生開發簽章雜湊]。 然後，複製要用於平台的 KeyTool 命令。
 
    > [!Note]
    > KeyTool.exe 會安裝為 Java 開發套件 (JDK) 的一部分。 您也必須安裝 OpenSSL 工具來執行 KeyTool 命令。 如需詳細資訊，請參閱[關於產生金鑰的 Android 文件](https://developer.android.com/studio/publish/app-signing#generate-key)。
 
-7. 輸入 KeyTool 所產生的**簽章雜湊**。
-8. 按一下 `Configure` 並儲存出現在 [Android 設定]**** 頁面中的 [MSAL 設定]****，以便稍後在設定應用程式時可加以輸入。  按一下 [完成]。
+7. 輸入 KeyTool 所產生的 **簽章雜湊**。
+8. 按一下 `Configure` 並儲存出現在 [Android 設定] 頁面中的 [MSAL 設定]，以便稍後在設定應用程式時可加以輸入。  按一下 [完成]。
 
 ### <a name="configure-your-application"></a>設定您的應用程式
 
 1. 在 Android Studio 的專案窗格中，瀏覽至 **app\src\main\res**。
-2. 以滑鼠右鍵按一下 [res]****，然後選擇 [新增]**** > [目錄]****。 輸入 `raw` 作為新的目錄名稱，然後按一下 [確定]****。
+2. 以滑鼠右鍵按一下 [res]，然後選擇 [新增] > [目錄]。 輸入 `raw` 作為新的目錄名稱，然後按一下 [確定]。
 3. 在 app > src > main > res > raw 中，建立名為 `auth_config_single_account.json` 的新 JSON 檔案，並貼上您先前儲存的 MSAL 設定。
 
     在 [重新導向 URI] 下方，貼上：
@@ -137,9 +139,9 @@ MSAL 會自動更新權杖、提供裝置上其他應用程式之間的 SSO，�
     ```
 
     將 `android:host=` 值取代為您在 Azure 入口網站中註冊的套件名稱。
-    將 `android:path=` 值取代為您在 Azure 入口網站中註冊的索引鍵雜湊。 簽章雜湊**不應**進行 URL 編碼。 請確定簽章雜湊的開頭處有前置的 `/`。
+    將 `android:path=` 值取代為您在 Azure 入口網站中註冊的索引鍵雜湊。 簽章雜湊 **不應** 進行 URL 編碼。 請確定簽章雜湊的開頭處有前置的 `/`。
     >[!NOTE]
-    >將取代 `android:host` 值的「套件名稱」應顯示如下："com.azuresamples.msalandroidapp"。將取代 `android:path` 值的「簽章雜湊」應顯示如下："/1wIqXSqBj7w+h11ZifsnqwgyKrY="。您也可以在應用程式註冊的 [驗證] 刀鋒視窗中找到這些值。 請注意，您的重新導向 URI 會顯示如下："msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D"。 當簽章雜湊在此值的結尾處進行 URL 編碼時，即**不應**在您的 `android:path` 值中進行該簽章雜湊的 URL 編碼。
+    >將取代 `android:host` 值的「套件名稱」應顯示如下："com.azuresamples.msalandroidapp"。將取代 `android:path` 值的「簽章雜湊」應顯示如下："/1wIqXSqBj7w+h11ZifsnqwgyKrY="。您也可以在應用程式註冊的 [驗證] 刀鋒視窗中找到這些值。 請注意，您的重新導向 URI 會顯示如下："msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D"。 當簽章雜湊在此值的結尾處進行 URL 編碼時，即 **不應** 在您的 `android:path` 值中進行該簽章雜湊的 URL 編碼。
 
 ## <a name="use-msal"></a>使用 MSAL
 
