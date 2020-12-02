@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 078b0fe63cf89f2736a8707ad561c798c4818317
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 23961a03d1da1137d92ecd3b8003241120b11d80
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242410"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493778"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>適用於 PostgreSQL 的 Azure 資料庫單一伺服器會使用客戶管理的金鑰進行資料加密
 
@@ -47,9 +47,9 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 
 針對使用儲存於 Key Vault 中的客戶管理金鑰來加密 DEK 的 PostgreSQL 伺服器，Key Vault 系統管理員會授與伺服器下列存取權限：
 
-* **get** ：用於在金鑰保存庫中，擷取金鑰的公開部分和屬性。
-* **wrapKey** ：可以加密 DEK。 加密的 DEK 會儲存在適用於 PostgreSQL 的 Azure 資料庫中。
-* **unwrapKey** ：可以解密 DEK。 適用於 PostgreSQL 的 Azure 資料庫需要解密 DEK 來加密/解密資料
+* **get**：用於在金鑰保存庫中，擷取金鑰的公開部分和屬性。
+* **wrapKey**：可以加密 DEK。 加密的 DEK 會儲存在適用於 PostgreSQL 的 Azure 資料庫中。
+* **unwrapKey**：可以解密 DEK。 適用於 PostgreSQL 的 Azure 資料庫需要解密 DEK 來加密/解密資料
 
 金鑰保存庫管理員也可以[啟用 Key Vault 稽核事件的記錄](../azure-monitor/insights/key-vault-insights-overview.md)，以便稍後再進行稽核。
 
@@ -77,7 +77,7 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 * 在 Key Vault 上設定資源鎖定，藉此控制可刪除這個重要資源的人員，並防止意外或未經授權的刪除發生。
 * 啟用所有加密金鑰的稽核和報告功能。 Key Vault 提供可輕易插入其他安全性資訊和事件管理工具中的記錄。 例如，Azure 監視器 Log Analytics 即是已整合的服務之一。
 * 請確定 Key Vault 和適用於 PostgreSQL 單一伺服器的 Azure 資料庫都位於相同的區域，以確保存取 DEK 包裝和解除包裝作業更有效率。
-* 鎖定 Azure KeyVault 為只限 **私人端點和選取的網路** ，並僅允許 *信任的 Microsoft* 服務以保護資源。
+* 鎖定 Azure KeyVault 為只限 **私人端點和選取的網路**，並僅允許 *信任的 Microsoft* 服務以保護資源。
 
     :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="trusted-service-with-AKV":::
 
@@ -93,8 +93,8 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 
 * 如果我們為您的適用於 PostgreSQL 單一伺服器的 Azure 資料庫(且其已啟用資料加密) 建立還原時間點伺服器，新建立的伺服器將會處於「無法存取」狀態。 您可以透過 [Azure 入口網站](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) 或 [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) 來修正伺服器狀態。
 * 如果我們為您的適用於 PostgreSQL 單一伺服器的 Azure 資料庫 (且已啟用資料加密) 建立讀取複本，則複本伺服器將會處於「無法存取」的狀態。 您可以透過 [Azure 入口網站](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) 或 [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) 來修正伺服器狀態。
-* 如果您刪除 KeyVault，適用於 PostgreSQL 單一伺服器的 Azure 資料庫將無法存取該金鑰，且會移至「無法存取」狀態。 復原 [Key Vault](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) 並重新驗證資料加密，讓伺服器呈現「可用狀態」。
-* 如果我們從 KeyVault 刪除金鑰，適用於 PostgreSQL 單一伺服器的 Azure 資料庫將無法存取該金鑰，且會移至「無法存取」的狀態。 復原該[金鑰](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects)並重新驗證資料加密，讓伺服器呈現「可用狀態」。
+* 如果您刪除 KeyVault，適用於 PostgreSQL 單一伺服器的 Azure 資料庫將無法存取該金鑰，且會移至「無法存取」狀態。 復原 [Key Vault](../key-vault/general/key-vault-recovery.md) 並重新驗證資料加密，讓伺服器呈現「可用狀態」。
+* 如果我們從 KeyVault 刪除金鑰，適用於 PostgreSQL 單一伺服器的 Azure 資料庫將無法存取該金鑰，且會移至「無法存取」的狀態。 復原該[金鑰](../key-vault/general/key-vault-recovery.md)並重新驗證資料加密，讓伺服器呈現「可用狀態」。
 * 如果儲存在 Azure KeyVault 中的金鑰過期，則會變成無效金鑰，且適用於 PostgreSQL 單一伺服器的 Azure 資料庫會轉換成「無法存取」的狀態。 使用 [CLI](/cli/azure/keyvault/key#az-keyvault-key-set-attributes) 延長金鑰到期日，然後重新驗證資料加密，讓伺服器呈現「可用狀態」。
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>從 Key Vault 意外撤銷金鑰存取權限

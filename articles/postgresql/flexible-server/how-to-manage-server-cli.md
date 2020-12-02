@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 06341f8630684519a456d5ef89144ae3c0934b23
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 278f8f816909a7e365d7e45d04c5169950e79a65
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423142"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493673"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-by-using-the-azure-cli"></a>使用 Azure CLI 管理適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器
 
@@ -43,7 +43,7 @@ az account set --subscription <subscription id>
 
 ## <a name="scale-compute-and-storage"></a>調整計算和儲存體
 
-您可以使用下列命令，輕鬆地擴大計算層級、虛擬核心和儲存體。 如需您可以執行的所有伺服器作業清單，請參閱 [az postgres 有彈性的伺服器](https://docs.microsoft.com/cli/azure/postgres/flexible-server) 總覽。
+您可以使用下列命令，輕鬆地擴大計算層級、虛擬核心和儲存體。 如需您可以執行的所有伺服器作業清單，請參閱 [az postgres 有彈性的伺服器](/cli/azure/postgres/flexible-server) 總覽。
 
 ```azurecli-interactive
 az postgres flexible-server update --resource-group myresourcegroup --name mydemoserver --sku-name Standard_D4ds_v3 --storage-size 6144
@@ -104,7 +104,7 @@ storage-size | 6144 | 輸入伺服器的儲存容量（以 mb 為單位）。 �
     CREATE DATABASE postgresdb;
     ```
 
-3. 在提示字元中執行下列命令，以將連接切換至新建立的資料庫 **postgresdb** ：
+3. 在提示字元中執行下列命令，以將連接切換至新建立的資料庫 **postgresdb**：
 
     ```bash
     \c postgresdb
@@ -131,7 +131,7 @@ az postgres flexible-server update --resource-group myresourcegroup --name mydem
 
 ## <a name="delete-a-server"></a>刪除伺服器
 
-若要刪除適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器，請執行 [az postgres 彈性伺服器刪除](https://docs.microsoft.com/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) 命令。
+若要刪除適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器，請執行 [az postgres 彈性伺服器刪除](/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) 命令。
 
 ```azurecli-interactive
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver
