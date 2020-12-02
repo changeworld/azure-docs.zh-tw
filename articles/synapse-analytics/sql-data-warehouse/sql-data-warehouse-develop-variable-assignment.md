@@ -1,30 +1,30 @@
 ---
 title: 指派變數
-description: 在本文中，您將找到在 SQL 集區中指派 T-sql 變數的重要秘訣。
+description: 在本文中，您將找到在 Azure Synapse Analytics 中為專用的 SQL 集區指派 T-sql 變數的重要秘訣。
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 0cbadc10fb817c70bd259397c840aae68abc2d54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 87448ea737c11af13a52632e5bf4f67dc54d9ae3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213324"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459234"
 ---
-# <a name="assign-variables-in-synapse-sql-pool"></a>在 Synapse SQL 集區中指派變數
+# <a name="assign-variables-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中為專用的 SQL 集區指派變數
 
-在本文中，您將找到在 SQL 集區中指派 T-sql 變數的重要秘訣。
+在本文中，您將找到在專用 SQL 集區中指派 T-sql 變數的重要秘訣。
 
 ## <a name="set-variables-with-declare"></a>使用 DECLARE 設定變數
 
-SQL 集區中的變數是使用 `DECLARE` 語句或語句來設定 `SET` 。 使用 DECLARE 初始化變數是在 SQL 集區中設定變數值最具彈性的方式之一。
+專用 SQL 集區中的變數是使用 `DECLARE` 語句或語句來設定 `SET` 。 使用 DECLARE 初始化變數是在 SQL 集區中設定變數值最具彈性的方式之一。
 
 ```sql
 DECLARE @v  int = 0
@@ -39,7 +39,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-您無法在相同的 DECLARE 語句中初始化和使用變數。 為了說明這點，**不**允許下列範例，因為 @p1 已在相同的 DECLARE 陳述式中初始化和使用。 因此，下列範例會提供錯誤：
+您無法在相同的 DECLARE 語句中初始化和使用變數。 為了說明這點，**不** 允許下列範例，因為 @p1 已在相同的 DECLARE 陳述式中初始化和使用。 因此，下列範例會提供錯誤：
 
 ```sql
 DECLARE @p1 int = 0

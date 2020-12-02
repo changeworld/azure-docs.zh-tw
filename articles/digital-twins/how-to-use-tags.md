@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 59f68909e2f3704fea5c38e3f1535f5996b284ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2620b52c426871b0ec85e3db237be2d373d42f1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87097341"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458699"
 ---
 # <a name="add-tags-to-digital-twins"></a>將標記新增至數位 twins 
 
@@ -24,7 +24,7 @@ ms.locfileid: "87097341"
 
 ## <a name="marker-tags"></a>標記標記 
 
-**標記標記**是用來標記或分類數位對應項的簡單字串，例如 "blue" 或 "red"。 這個字串是標籤的名稱，而且標記標記沒有任何有意義的值，標記只是在目前狀態 (或缺少) 時才有意義。 
+**標記標記** 是用來標記或分類數位對應項的簡單字串，例如 "blue" 或 "red"。 這個字串是標籤的名稱，而且標記標記沒有任何有意義的值，標記只是在目前狀態 (或缺少) 時才有意義。 
 
 ### <a name="add-marker-tags-to-model"></a>將標記標記新增至模型 
 
@@ -69,18 +69,18 @@ entity-03: "tags": { "red": true, "large": true }
 以下查詢會取得已標記為 "red" 的所有 twins： 
 
 ```sql
-select * from digitaltwins where is_defined(tags.red) 
+SELECT * FROM digitaltwins WHERE is_defined(tags.red) 
 ```
 
 您也可以合併標記以進行更複雜的查詢。 以下查詢會取得所有四捨五入的 twins，而不是紅色： 
 
 ```sql
-select * from digitaltwins where not is_defined(tags.red) and is_defined(tags.round) 
+SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND is_defined(tags.round) 
 ```
 
 ## <a name="value-tags"></a>值標記 
 
-**值標記**是一組索引鍵/值組，用來為每個標記提供一個值，例如 `"color": "blue"` 或 `"color": "red"` 。 一旦建立值標記之後，也可以藉由略過標記的值，將其當做標記標記。 
+**值標記** 是一組索引鍵/值組，用來為每個標記提供一個值，例如 `"color": "blue"` 或 `"color": "red"` 。 一旦建立值標記之後，也可以藉由略過標記的值，將其當做標記標記。 
 
 ### <a name="add-value-tags-to-model"></a>將值標記新增至模型 
 
@@ -127,16 +127,16 @@ entity-03: "tags": { "red": "", "size": "small" }
 在上述範例中， `red` 是用來做為標記標記。 以下查詢會取得已標記為 "red" 的所有 twins： 
 
 ```sql
-select * from digitaltwins where is_defined(tags.red) 
+SELECT * FROM digitaltwins WHERE is_defined(tags.red) 
 ```
 
 以下查詢會取得小型 (值標記) ，而非紅色的所有實體： 
 
 ```sql
-select * from digitaltwins where not is_defined(tags.red) and tags.size = 'small' 
+SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND tags.size = 'small' 
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解如何設計和管理數位對應項模型：
 * [操作說明：管理自訂模型](how-to-manage-model.md)

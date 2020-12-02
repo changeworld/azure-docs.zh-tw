@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 9d5ddb508740cf5fec670d258926419512e3d549
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ac2c9cb1710c4b4f67ba2aa06707d08cc45d4907
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129825"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459244"
 ---
 # <a name="azure-sql-database-output-from-azure-stream-analytics"></a>Azure 串流分析的 Azure SQL Database 輸出
 
@@ -35,11 +35,11 @@ ms.locfileid: "93129825"
 |繼承資料分割配置| 可讓您繼承先前查詢步驟的資料分割配置，以便啟用資料表多個寫入器的完全平行拓撲。 如需詳細資訊，請參閱 [Azure 串流分析輸出至 Azure SQL Database](stream-analytics-sql-output-perf.md)。|
 |批次計數上限| 隨每筆大量插入交易傳送的建議記錄數上限。|
 
-有兩張介面卡可讓您從 Azure 串流分析輸出到 Azure Synapse Analytics (先前稱為 SQL 資料倉儲)：SQL Database 和 Azure Synapse。 如果下列任何一個條件成立，建議您選擇 Azure Synapse Analytics 介面卡，而不是 SQL Database 的介面卡：
+有兩張介面卡可讓 Azure 串流分析的輸出 Azure Synapse Analytics： SQL Database 和 Azure Synapse。 如果下列任何一個條件成立，建議您選擇 Azure Synapse Analytics 介面卡，而不是 SQL Database 的介面卡：
 
-* **輸送量** ：如果您現在或未來的預期輸送量大於 10 MB/秒，請使用 Azure Synapse 輸出選項以獲得更好的效能。
+* **輸送量**：如果您現在或未來的預期輸送量大於 10 MB/秒，請使用 Azure Synapse 輸出選項以獲得更好的效能。
 
-* **輸入分割區** ：如果您有八個以上的輸入分割區，請使用 Azure Synapse 輸出選項以獲得更好的相應放大。
+* **輸入分割區**：如果您有八個以上的輸入分割區，請使用 Azure Synapse 輸出選項以獲得更好的相應放大。
 
 ## <a name="partitioning"></a>資料分割
 
@@ -47,7 +47,7 @@ ms.locfileid: "93129825"
 
 ## <a name="output-batch-size"></a>輸出批次大小
 
-您可以使用 [ **最大批次計數** ] 來設定訊息大小上限。 預設的最大值為10000，預設的最小值為每個單一大量插入100個數據列。 如需詳細資訊，請參閱 [AZURE SQL 限制](../azure-sql/database/resource-limits-logical-server.md)。 每個批次一開始會以上限批次計數大量插入。 批次根據 SQL 的可重試錯誤分割為一半 (直到批次計數下限)。
+您可以使用 [ **最大批次計數**] 來設定訊息大小上限。 預設的最大值為10000，預設的最小值為每個單一大量插入100個數據列。 如需詳細資訊，請參閱 [AZURE SQL 限制](../azure-sql/database/resource-limits-logical-server.md)。 每個批次一開始會以上限批次計數大量插入。 批次根據 SQL 的可重試錯誤分割為一半 (直到批次計數下限)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,6 +1,6 @@
 ---
-title: 'Azure Synapse Studio 中的 SQL 腳本 (預覽版) '
-description: Azure Synapse Studio (preview) SQL 腳本簡介
+title: Synapse Studio 中的 SQL 腳本
+description: Azure Synapse Analytics 中的 Synapse Studio SQL 腳本簡介。
 services: synapse-analytics
 author: pimorano
 ms.service: synapse-analytics
@@ -9,26 +9,26 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
-ms.openlocfilehash: 3f3009799889bd6b118f586676e22338d821d37c
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 077815d117af0328a3466346727e135caaf8ff21
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635278"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458001"
 ---
-# <a name="using-sql-scripts-in-azure-synapse-studio-preview"></a>在 Azure Synapse Studio 中使用 SQL 腳本 (預覽版) 
+# <a name="synapse-studio-sql-scripts-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 Synapse Studio SQL 腳本 
 
-Azure Synapse Studio (preview) 提供可讓您撰寫 SQL 查詢的 SQL 腳本 web 介面。 您可以 (preview) 連接到 SQL 集區。 
+Synapse Studio 提供 SQL 腳本 web 介面，可讓您撰寫 SQL 查詢。 
 
 ## <a name="begin-authoring-in-sql-script"></a>開始在 SQL 腳本中撰寫 
 
 有幾種方式可以開始撰寫 SQL 腳本中的體驗。 您可以透過下列其中一種方法來建立新的 SQL 腳本。
 
-1. 從 [開發] 功能表選取 [ **+]** 圖示，然後選擇 [ **SQL 腳本** ]。
+1. 從 [開發] 功能表選取 [ **+]** 圖示，然後選擇 [ **SQL 腳本**]。
 
-2. 從 [ **動作** ] 功能表中，選擇 [ **新增 SQL 腳本** ]。
+2. 從 [ **動作** ] 功能表中，選擇 [ **新增 SQL 腳本**]。
 
-3. 從 [開發 SQL 腳本] 下的 [ **動作** ] 功能表中選擇 [匯 **入** ]。 從您的本機儲存體選取現有的 SQL 腳本。
+3. 從 [開發 SQL 腳本] 下的 [**動作**] 功能表中選擇 [匯 **入**]。 從您的本機儲存體選取現有的 SQL 腳本。
 ![新的 sql 腳本3動作](media/author-sql-script/new-sql-script-3-actions.png)
 
 ## <a name="create-your-sql-script"></a>建立您的 SQL 腳本
@@ -51,7 +51,7 @@ Azure Synapse Studio (preview) 提供可讓您撰寫 SQL 查詢的 SQL 腳本 we
 
 您可以選取 [匯出結果] 並選擇副檔名，將結果匯出到您的本機儲存體（格式不同） (包括 CSV、Excel、JSON、XML) 。
 
-您也可以選取 [ **圖表** ] 按鈕，以視覺化方式呈現圖表中的 SQL 腳本結果。 選取 [圖表類型] 和 [ **類別** ] 資料行。 您可以選取 [ **另存** 新檔]，將圖表匯出成圖片。 
+您也可以選取 [ **圖表** ] 按鈕，以視覺化方式呈現圖表中的 SQL 腳本結果。 選取 [圖表類型] 和 [ **類別**] 資料行。 您可以選取 [ **另存** 新檔]，將圖表匯出成圖片。 
 
 ![新的 sql 腳本結果圖表](media/author-sql-script/new-sql-script-results-chart.png)
 

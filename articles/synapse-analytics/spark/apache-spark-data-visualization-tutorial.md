@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 10/20/2020
 ms.author: midesa
-ms.openlocfilehash: 820dd8b607f5ec2fdc44d25063e0a941f76237ad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8735514b639cb0322a83ffb19d661027327c0f73
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919496"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458759"
 ---
 # <a name="analyze-data-with-apache-spark"></a>使用 Apache Spark 分析資料
 
@@ -99,7 +99,7 @@ ORDER BY day_of_month ASC
 
 > [!Note]
 > 
-> 根據預設，每個 Azure Synapse Analytics Apache Spark 集區都會包含一組常用和預設的程式庫。 您可以在 [Azure Synapse 運行](../spark/apache-spark-version-support.md)時間中查看程式庫的完整清單。 文件。 此外，若要讓您的應用程式可以使用協力廠商或本機建立的程式碼，您可以將連結 [庫安裝](../spark/apache-spark-azure-portal-add-libraries.md) 到您的其中一個 Spark 集區 (預覽) 。
+> 根據預設，每個 Azure Synapse Analytics Apache Spark 集區都會包含一組常用和預設的程式庫。 您可以在 [Azure Synapse 運行](../spark/apache-spark-version-support.md)時間中查看程式庫的完整清單。 文件。 此外，若要讓您的應用程式可以使用協力廠商或本機建立的程式碼，您可以將連結 [庫安裝](../spark/apache-spark-azure-portal-add-libraries.md) 到您的其中一個 Spark 集區。
 >
 
 1. 為了讓開發變得更容易且成本更低，我們會將資料集的取樣降至最低。 我們將使用內建的 Apache Spark 取樣功能。 此外，以 seaborn 和 Matplotlib 都需要 Pandas 資料框架或 Numpy 陣列。 為了取得 Pandas 資料框架，我們將使用 ```toPandas()``` 命令來轉換我們的資料框架。

@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 11/09/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperfq2
-ms.openlocfilehash: 8af3da5d04f9aaafc18299f4837660694ee34b51
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 0719f2d9200741798c798aca4b4196812f1229c9
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345264"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458444"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理對 Azure Machine Learning 工作區的存取
 
@@ -27,7 +27,7 @@ ms.locfileid: "96345264"
 >
 > * [控制對 Azure Kubernetes 叢集資源的存取](../aks/azure-ad-rbac.md)
 > * [使用 Azure RBAC 進行 Kubernetes 授權](../aks/manage-azure-rbac.md)
-> * [使用 Azure RBAC 來存取 blob 資料](/azure/storage/common/storage-auth-aad-rbac-portal)
+> * [使用 Azure RBAC 來存取 blob 資料](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!WARNING]
 > 套用某些角色可能會限制其他使用者的 Azure Machine Learning studio 中的 UI 功能。 例如，如果使用者的角色沒有建立計算實例的能力，則在 studio 中將無法使用建立計算實例的選項。 這是預期的行為，並可防止使用者嘗試會傳回拒絕存取錯誤的作業。

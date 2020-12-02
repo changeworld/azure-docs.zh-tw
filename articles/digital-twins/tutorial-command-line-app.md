@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d7c95317667999ac17803f08575e68641100b967
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a9d8c42432d619ab120afd0bd5734f6fa269b514
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023245"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458102"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>教學課程：使用範例用戶端應用程式探索 Azure Digital Twins
 
@@ -47,9 +47,9 @@ ms.locfileid: "96023245"
 
 選取 *Room.json* 在編輯視窗中開啟，並以下列方式進行變更：
 
-* **更新版本號碼**，指出您正在提供此模型的更新版本。 您可以透過將 `@id` 值結尾的 *1* 變更為 *2* 來進行此操作。 任何大於目前版本號碼的數字也都能運作。
-* **編輯屬性**。 將 `Humidity` 屬性的名稱變更為 *HumidityLevel* (或任何您想要的名稱。 若您使用與 *HumidityLevel* 不同的名稱，請記住您使用的名稱，並繼續在本教學課程中使用該名稱，而非 *HumidityLevel*)。
-* **新增屬性**。 在第 15 行結束的 `HumidityLevel` 屬性下方，貼上下列程式碼以將 `RoomName` 屬性新增到 Room：
+1. **更新版本號碼**，指出您正在提供此模型的更新版本。 您可以透過將 `@id` 值結尾的 *1* 變更為 *2* 來進行此操作。 任何大於目前版本號碼的數字也都能運作。
+1. **編輯屬性**。 將 `Humidity` 屬性的名稱變更為 *HumidityLevel* (或任何您想要的名稱。 若您使用與 *HumidityLevel* 不同的名稱，請記住您使用的名稱，並繼續在本教學課程中使用該名稱，而非 *HumidityLevel*)。
+1. **新增屬性**。 在第 15 行結束的 `HumidityLevel` 屬性下方，貼上下列程式碼以將 `RoomName` 屬性新增到 Room：
 
     ```json
     ,
@@ -59,13 +59,13 @@ ms.locfileid: "96023245"
       "schema": "string"
     }
     ```
-* **新增關聯性**。 在您剛新增的 `RoomName` 屬性下方，貼上下列程式碼讓此類型的分身能夠與其他分身產生「包含」關聯性：
+1. **新增關聯性**。 在您剛新增的 `RoomName` 屬性下方，貼上下列程式碼讓此類型的分身能夠與其他分身產生「包含」關聯性：
 
     ```json
     ,
     {
       "@type": "Relationship",
-      "name": "contains",
+      "name": "contains"
     }
     ```
 

@@ -8,12 +8,12 @@ ms.date: 11/02/2020
 author: parthpandyaMSFT
 ms.author: parthp
 ms.custom: contperfq2
-ms.openlocfilehash: ccdc87d03181bad1aba4dd362a651fa42381343a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 39a9b363c847b615bfbe049b4b47628e8688c607
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95542281"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458110"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>在合作夥伴中心中建立商業 marketplace 帳戶
 
@@ -114,7 +114,7 @@ ms.locfileid: "95542281"
 >
 >個別帳戶適用于自行工作的開發人員。 公司帳戶適用于組織和企業。 公司帳戶可讓您使用其他功能來提交應用程式。
 >
-> 為了確定您已獲授權為公司設定帳戶，我們在註冊之後需要額外的公司帳戶驗證。 這項驗證可能需要幾天到幾周的時間，而且通常會包含對您公司的電話通話。 這兩種類型的帳戶都可讓您提交應用程式、增益集和服務。 如需詳細資訊，請參閱 [帳戶類型、位置和費用](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees)。
+> 為了確定您已獲授權為公司設定帳戶，我們在註冊之後需要額外的公司帳戶驗證。 這項驗證可能需要幾天到幾周的時間，而且通常會包含對您公司的電話通話。 這兩種類型的帳戶都可讓您提交應用程式、增益集和服務。 如需詳細資訊，請參閱 [帳戶類型、位置和費用](/windows/uwp/publish/account-types-locations-and-fees)。
 
 當您使用與開發人員計畫相同的帳戶註冊商業 marketplace 方案時，您可以在合作夥伴中心的左窗格中看到所有現有的程式註冊。
 

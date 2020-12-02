@@ -7,20 +7,20 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 8f85e9c77cc6fed7e2763f694664332b124d0780
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 9089fee7565633b198043efeed929fc7446437d5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561789"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458286"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>商業市集分析中的 Marketplace 深入解析儀表板
 
 本文提供合作夥伴中心內 [Marketplace 見解] 儀表板的相關資訊。 此儀表板會顯示商業 marketplace web 分析的摘要，可讓發行者針對商業 marketplace 線上商店中所列的個別產品詳細資料頁面，測量客戶參與： Microsoft AppSource 和 Azure Marketplace。
 
-若要存取合作夥伴中心中的 **Marketplace 見解** 儀表板，請在 [商業 Marketplace] 下，選取 [ **[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **marketplace 見解** ]。
+若要存取合作夥伴中心中的 **Marketplace 見解** 儀表板，請在 [商業 Marketplace] 下，選取 [**[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **marketplace 見解**]。
 
-如需分析術語的詳細定義，請參閱 [商業市場分析術語和常見問題](./partner-center-portal/faq-terminology.md)。
+如需分析術語的詳細定義，請參閱 [商業市場分析術語和常見問題](./analytics-faq.md)。
 
 ## <a name="marketplace-insights-dashboard"></a>Marketplace 見解儀表板
 
@@ -56,19 +56,19 @@ Marketplace 見解儀表板會在兩個不同的索引標籤中顯示 Azure Mark
 
 **頁面** 流覽：此數位代表在 [供應專案清單] 頁面上的相異使用者會話計數， (產品詳細資料頁面) 選取的計算期間。 紅色和綠色百分比指標表示頁面流覽的成長百分比。 趨勢圖代表每月的頁面瀏覽數計數。
 
-**唯一的訪客** ：此數位代表在 Azure Marketplace 和 AppSource 的供應專案 () 所選取計算期間內的相異訪客計數。 瀏覽了一或多個產品詳細資料頁面的訪客，將計為一位非重複訪客。
+**唯一的訪客**：此數位代表在 Azure Marketplace 和 AppSource 的供應專案 () 所選取計算期間內的相異訪客計數。 瀏覽了一或多個產品詳細資料頁面的訪客，將計為一位非重複訪客。
 
 [![說明 Marketplace 見解儀表板上的訪客圖表。](./media/insights-dashboard/visitors.png)](./media/insights-dashboard/visitors.png#lightbox)
 
 ### <a name="call-to-actions-trend"></a>呼叫動作趨勢
 
-此數位代表 [供應專案清單] 頁面上的 [ **動作** ] 按鈕按一下 [已完成] 的計數 (產品詳細資料頁面) 。 當使用者選取 [ **立即取得** ]、[ **免費試用** ]、[ **連絡人** **] 或 [試用** 產品] 按鈕時，會計算 _動作的呼叫_ 。
+此數位代表 [供應專案清單] 頁面上的 [ **動作** ] 按鈕按一下 [已完成] 的計數 (產品詳細資料頁面) 。 當使用者選取 [**立即取得**]、[**免費試用**]、[**連絡人** **] 或 [試用** 產品] 按鈕時，會計算 _動作的呼叫_。
 
 [![說明在 Marketplace 見解儀表板上對動作圖表的呼叫。](./media/insights-dashboard/call-to-actions-trend.png)](./media/insights-dashboard/call-to-actions-trend.png#lightbox)
 
 ### <a name="page-visits-and-call-to-actions-against-offers-referral-domains-and-campaign-ids"></a>頁面流覽和對供應專案、參考網域和活動識別碼的動作呼叫
 
-**參考定義域** ：選取特定的參考定義域會顯示頁面流覽的每月趨勢，以及對右邊圖表的動作呼叫。
+**參考定義域**：選取特定的參考定義域會顯示頁面流覽的每月趨勢，以及對右邊圖表的動作呼叫。
 
 :::image type="content" source="./media/insights-dashboard/referral-domain.png" alt-text="說明 Marketplace 見解儀表板上的參考定義域圖表。":::
 
@@ -76,7 +76,7 @@ Marketplace 見解儀表板會在兩個不同的索引標籤中顯示 Azure Mark
 
 :::image type="content" source="./media/insights-dashboard/offer-alias.png" alt-text="說明 Marketplace 見解儀表板上的供應專案別名圖表。":::
 
-**活動識別碼** ：選取特定的活動識別碼，您應該能夠瞭解行銷活動的成功與否。 針對每個活動，您應該能夠看到頁面流覽的每月趨勢，以及對右邊圖表的動作呼叫。
+**活動識別碼**：選取特定的活動識別碼，您應該能夠瞭解行銷活動的成功與否。 針對每個活動，您應該能夠看到頁面流覽的每月趨勢，以及對右邊圖表的動作呼叫。
 
 :::image type="content" source="./media/insights-dashboard/campaign.png" alt-text="說明 Marketplace 見解儀表板上的行銷活動圖表。":::
 
@@ -112,4 +112,4 @@ Marketplace 見解儀表板會在兩個不同的索引標籤中顯示 Azure Mark
 - 如需客戶的詳細資訊 (包括成長趨勢)，請參閱[商業市集分析中的客戶儀表板](./customer-dashboard.md)。
 - 如需過去 30 天內的下載要求清單，請參閱[商業市集分析中的下載儀表板](./partner-center-portal/downloads-dashboard.md)。
 - 若要查看 Azure Marketplace 和 AppSource 供應專案的客戶意見反應的匯總觀點，請參閱 [合作夥伴中心中的評量 & 評論分析儀表板](./partner-center-portal/ratings-reviews.md)。
-- 如需有關商業市場分析以及完整的資料詞彙字典的常見問題，請參閱 [商業市場分析術語和常見問題](./partner-center-portal/faq-terminology.md)。
+- 如需有關商業市場分析以及完整的資料詞彙字典的常見問題，請參閱 [商業市場分析術語和常見問題](./analytics-faq.md)。

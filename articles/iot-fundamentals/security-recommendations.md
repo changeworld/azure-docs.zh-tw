@@ -12,12 +12,12 @@ ms.custom:
 - security-recommendations
 - amqp
 - mqtt
-ms.openlocfilehash: 5a7fc2a5a5a6be7695fa816f28e3cdf61c5839f2
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a1de3a71253b1a82b4423bff279fbf3f7e378da4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92208258"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457610"
 ---
 # <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>適用于 Azure 物聯網 (IoT) 部署的安全性建議
 
@@ -40,7 +40,7 @@ ms.locfileid: "92208258"
 
 | 建議 | 註解 | 由 ASC 支援 |
 |-|----|--|
-| 定義中樞的存取控制 | 根據功能，[瞭解並定義](iot-security-deployment.md#securing-the-cloud)每個元件在 IoT 中樞解決方案中所擁有的存取類型。 允許的許可權為 *Registry Read*、 *RegistryReadWrite*、 *ServiceConnect*和 *>deviceconnect*。 [IoT 中樞內的預設共用存取原則](../iot-hub/iot-hub-devguide-security.md#access-control-and-permissions)也可以根據其角色來協助定義每個元件的許可權。 | - |
+| 定義中樞的存取控制 | 根據功能，[瞭解並定義](iot-security-deployment.md#securing-the-cloud)每個元件在 IoT 中樞解決方案中所擁有的存取類型。 允許的許可權為 *Registry Read*、 *RegistryReadWrite*、 *ServiceConnect* 和 *>deviceconnect*。 [IoT 中樞內的預設共用存取原則](../iot-hub/iot-hub-devguide-security.md#access-control-and-permissions)也可以根據其角色來協助定義每個元件的許可權。 | - |
 | 定義後端服務的存取控制 | IoT 中樞解決方案所內嵌的資料可供其他 Azure 服務使用，例如 [Cosmos DB](../cosmos-db/index.yml)、 [串流分析](../stream-analytics/index.yml)、 [App Service](../app-service/index.yml)、 [Logic Apps](../logic-apps/index.yml)和 [Blob 儲存體](../storage/blobs/storage-blobs-introduction.md)。 請務必瞭解並允許適當的存取權限，如這些服務所述。 | - |
 
 ## <a name="data-protection"></a>資料保護
@@ -63,8 +63,8 @@ ms.locfileid: "92208258"
 | 建議 | 註解 | 由 ASC 支援 |
 |-|----|--|
 | 監視對您裝置的未經授權存取 |  使用裝置作業系統的記錄功能來監視裝置或其埠的任何安全性缺口或實體篡改。 | - |
-| 從雲端監視您的 IoT 解決方案 | 使用 [Azure 監視器中的計量](../iot-hub/iot-hub-metrics.md)，監視 IoT 中樞解決方案的整體健康情況。 | - |
-| 設定診斷 | 藉由記錄您解決方案中的事件，然後將診斷記錄傳送至 Azure 監視器，以瞭解效能，以密切觀賞您的作業。 如需詳細資訊，請參閱 [監視及診斷 IoT 中樞的問題](../iot-hub/iot-hub-monitor-resource-health.md) 。 | - |
+| 從雲端監視您的 IoT 解決方案 | 使用 [Azure 監視器中的計量](../iot-hub/monitor-iot-hub.md)，監視 IoT 中樞解決方案的整體健康情況。 | - |
+| 設定診斷 | 藉由記錄您解決方案中的事件，然後將診斷記錄傳送至 Azure 監視器，以瞭解效能，以密切觀賞您的作業。 如需詳細資訊，請參閱 [監視及診斷 IoT 中樞的問題](../iot-hub/monitor-iot-hub.md) 。 | - |
 
 ## <a name="next-steps"></a>後續步驟
 

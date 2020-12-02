@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 5c8af8ddb7a0870de37b73cbe09965ee63c88ba1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: eb1be4c78be0eb7fb943700b168fa82ede4d3861
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353743"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458399"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>表單辨識器預建發票模型
 
@@ -45,7 +45,7 @@ Azure 表單辨識器可以使用其預先建立的發票模型，分析和解�
 
 ## <a name="the-analyze-invoice-operation"></a>分析發票作業
 
-「 [分析發票](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeInvoiceAsync) 」作業會以發票的影像或 PDF 作為輸入，並將感興趣的值解壓縮。 呼叫會傳回稱為的回應標頭欄位 `Operation-Location` 。 `Operation-Location`值是包含要在下一個步驟中使用之結果識別碼的 URL。
+「 [分析發票](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9843c2794cbb1a96291) 」作業會以發票的影像或 PDF 作為輸入，並將感興趣的值解壓縮。 呼叫會傳回稱為的回應標頭欄位 `Operation-Location` 。 `Operation-Location`值是包含要在下一個步驟中使用之結果識別碼的 URL。
 
 |回應標頭| 結果 URL |
 |:-----|:----|
@@ -53,7 +53,7 @@ Azure 表單辨識器可以使用其預先建立的發票模型，分析和解�
 
 ## <a name="the-get-analyze-invoice-result-operation"></a>取得分析發票結果作業
 
-第二個步驟是呼叫「 [取得分析發票結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeInvoiceResult) 」作業。 這項作業會以「分析發票」作業所建立的結果識別碼作為輸入。 它會傳回 JSON 回應，其中包含具有下列可能值的 **狀態** 欄位。 您會反復呼叫此操作，直到它傳回 **成功** 的值為止。 使用3到5秒的間隔，以避免每秒超過要求 (RPS) 速率。
+第二個步驟是呼叫「 [取得分析發票結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9acb78c40a2533aee83) 」作業。 這項作業會以「分析發票」作業所建立的結果識別碼作為輸入。 它會傳回 JSON 回應，其中包含具有下列可能值的 **狀態** 欄位。 您會反復呼叫此操作，直到它傳回 **成功** 的值為止。 使用3到5秒的間隔，以避免每秒超過要求 (RPS) 速率。
 
 |欄位| 類型 | 可能值 |
 |:-----|:----:|:----|
@@ -74,7 +74,7 @@ JSON 輸出有3個部分：
 
 發票服務將會將文字、資料表和26張發票欄位解壓縮。 以下是從 JSON 輸出回應中的發票解壓縮的欄位 (下列輸出使用此 [範例發票](./media/sample-invoice.jpg))   
 
-|名稱| 類型 | 說明 | 文字 | 值 (標準化輸出)  |
+|名稱| 類型 | 描述 | Text | 值 (標準化輸出)  |
 |:-----|:----|:----|:----| :----|
 | CustomerName | 字串 | 客戶的發票 | Microsoft Corp |  |
 | CustomerId | 字串 | 客戶的參考識別碼 | CID-12345 |  |

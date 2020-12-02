@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 11/30/2020
-ms.openlocfilehash: 30f9eac0a0e88092a243b4d9421d2a4f33b07841
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 014bcd6fc519c267cdf17e9e98b850425c25ead6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95758979"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459329"
 ---
 # <a name="prepare-your-azure-container-technical-assets"></a>準備您的 Azure 容器技術資產
 
@@ -20,7 +20,7 @@ ms.locfileid: "95758979"
 
 ## <a name="before-you-begin"></a>開始之前
 
-請參閱 [Azure 容器執行個體文件](/azure/container-instances/)，取得快速入門、教學課程和範例。
+請參閱 [Azure 容器執行個體文件](../container-instances/index.yml)，取得快速入門、教學課程和範例。
 
 ## <a name="fundamental-technical-knowledge"></a>基本技術知識
 
@@ -43,7 +43,7 @@ ms.locfileid: "95758979"
 
 建議您將這些工具新增至開發環境：
 
-- [Azure 儲存體總管](/azure/vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
+- [Azure 儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
 - [Visual Studio Code](https://code.visualstudio.com/)
   - 擴充功能：[Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) \(英文\)
   - 擴充功能：[Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify) \(英文\)
@@ -55,9 +55,9 @@ ms.locfileid: "95758979"
 
 您無法從內部部署登錄將映射部署至 Azure 容器實例。
 
-- 如果您的本機登錄中已經有正常運作的容器，請建立 Azure 登錄，並將您的容器映射上傳至 Azure Container Registry。 若要深入瞭解，請參閱 [教學課程：使用 Azure Container Registry 工作在雲端中建立和部署容器映射](/azure/container-registry/container-registry-tutorial-quick-task.md)。
+- 如果您的本機登錄中已經有正常運作的容器，請建立 Azure 登錄，並將您的容器映射上傳至 Azure Container Registry。 若要深入瞭解，請參閱 [教學課程：使用 Azure Container Registry 工作在雲端中建立和部署容器映射](../container-registry/container-registry-tutorial-quick-task.md)。
 
-- 如果尚無容器映射，且需要將現有的應用程式，或建立新的容器型應用程式，請從 GitHub 複製應用程式原始程式碼，從應用程式來源建立容器映射，然後在本機 Docker 環境中測試映射。 若要深入瞭解，請參閱 [教學課程：建立容器映射以部署至 Azure 容器實例](/azure/container-instances/container-instances-tutorial-prepare-app.md)。
+- 如果尚無容器映射，且需要將現有的應用程式，或建立新的容器型應用程式，請從 GitHub 複製應用程式原始程式碼，從應用程式來源建立容器映射，然後在本機 Docker 環境中測試映射。 若要深入瞭解，請參閱 [教學課程：建立容器映射以部署至 Azure 容器實例](../container-instances/container-instances-tutorial-prepare-app.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

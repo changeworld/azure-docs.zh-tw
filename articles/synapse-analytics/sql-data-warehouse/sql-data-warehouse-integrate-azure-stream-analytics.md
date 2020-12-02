@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 串流分析
-description: 使用 Azure 串流分析與 Azure Synapse 中的資料倉儲來開發即時解決方案的秘訣。
+title: 在專用的 SQL 集區中使用 Azure 串流分析
+description: 使用 azure 串流分析搭配 Azure Synapse 中的專用 SQL 集區來開發即時解決方案的秘訣。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 9/25/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 3ead3393218255808eb67983251fcf9f2561c82c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8fbe546beb1004214e544f8eb160884c0f64ef9e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020175"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458222"
 ---
-# <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>搭配使用 Azure 串流分析與 Azure Synapse Analytics
+# <a name="use-azure-stream-analytics-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中搭配使用 Azure 串流分析與專用的 SQL 集區
 
 Azure 串流分析是完全受控的服務，可用來對雲端中的串流資料進行低延遲、高可用性、可延展的複雜事件處理。 如需基本概念，請參閱 [Azure 串流分析簡介](../../stream-analytics/stream-analytics-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 您可以接著依照 [開始使用 Azure 資料流分析](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 教學課程，了解如何使用資料流分析建立端對端解決方案。
 
-在本文中，您將瞭解如何使用資料倉儲作為輸出接收，以使用 Azure 串流分析作業來內嵌高輸送量資料。
+在本文中，您將瞭解如何使用專用的 SQL 集區作為輸出接收，以使用 Azure 串流分析作業來內嵌高輸送量資料。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -32,9 +32,9 @@ Azure 串流分析是完全受控的服務，可用來對雲端中的串流資�
     2. 設定並啟動事件產生器應用程式
     3. 佈建資料流分析工作
     4. 指定工作輸入和查詢
-* 為您的資料倉儲 Synapse 專用的 SQL 集區-若要建立新的資料倉儲，請遵循快速入門中的步驟 [來建立新的資料倉儲](create-data-warehouse-portal.md)。
+* 專用的 SQL 集區-若要建立新的專用 SQL 集區，請遵循 [快速入門：建立專用的 sql 集](../quickstart-create-sql-pool-portal.md)區中的步驟。
 
-## <a name="specify-streaming-output-to-point-to-your-data-warehouse"></a>指定串流輸出以指向您的資料倉儲
+## <a name="specify-streaming-output-to-point-to-your-dedicated-sql-pool"></a>指定串流輸出以指向您專用的 SQL 集區
 
 ### <a name="step-1"></a>步驟 1
 
@@ -52,8 +52,8 @@ Azure 串流分析是完全受控的服務，可用來對雲端中的串流資�
 
 * *輸出別名*：輸入此作業輸出的易記名稱。
 * *訂閱*：
-  * 如果您的資料倉儲與串流分析作業位於相同的訂用帳戶中，請按一下 [**從您的訂用帳戶選取 Azure Synapse Analytics**]。
-  _ 如果您的資料倉儲位於不同的訂用帳戶中，請按一下 [以手動方式提供 Azure Synapse Analytics 設定]。
+  * 如果您專用的 SQL 集區與串流分析作業位於相同的訂用帳戶中，請按一下 [**從您的訂用帳戶選取 Azure Synapse Analytics**]。
+  _ 如果您專用的 SQL 集區位於不同的訂用帳戶中，請按一下 [以手動方式提供 Azure Synapse Analytics 設定]。
 * *資料庫*：從下拉式清單中選取目的地資料庫。
 * 使用者名稱：指定具有資料庫寫入權限的帳戶的使用者名稱。
 * 密碼：提供指定之使用者帳戶的密碼。
@@ -64,7 +64,7 @@ Azure 串流分析是完全受控的服務，可用來對雲端中的串流資�
 
 ### <a name="step-4"></a>步驟 4
 
-您必須先在資料倉儲中建立資料表，才可以執行測試。  使用 SQL Server Management Studio (SSMS) 或您選擇的查詢工具來執行下列資料表建立腳本。
+在您可以執行測試之前，您必須在專用的 SQL 集區中建立資料表。  使用 SQL Server Management Studio (SSMS) 或您選擇的查詢工具來執行下列資料表建立腳本。
 
 ```sql
 CREATE TABLE SensorLog
@@ -120,7 +120,7 @@ WITH (DISTRIBUTION = ROUND_ROBIN)
 
 ![按一下 [開始]](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastartconfirm.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需整合的總覽，請參閱 [整合其他服務](sql-data-warehouse-overview-integrate.md)。
-如需更多開發秘訣，請參閱 [資料倉儲的設計決策和程式碼撰寫技巧](sql-data-warehouse-overview-develop.md)。
+如需更多開發秘訣，請參閱 [專用 SQL 集區的設計決策和程式碼撰寫技術](sql-data-warehouse-overview-develop.md)。

@@ -10,18 +10,18 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 09/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 1a6708214eadb2f5d0d66d72f5db5cb4a195d206
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 43b03abb2aac13358a2187a0a5dc570c1e45934e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324865"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458491"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Azure Machine Learning 中的深度學習與機器學習
 
 本文說明深度學習與機器學習，以及它們如何融入更廣泛的人工智慧類別中。 瞭解您可以在 Azure Machine Learning 上建立的深度學習解決方案，例如詐騙偵測、語音和臉部辨識、情感分析，以及時間序列預測。
 
-如需有關為您的解決方案選擇演算法的指引，請參閱 Machine Learning 演算法功能提要（適用于 [工作表](https://docs.microsoft.com/azure/machine-learning/algorithm-cheat-sheet?WT.mc_id=docs-article-lazzeri)）。
+如需有關為您的解決方案選擇演算法的指引，請參閱 Machine Learning 演算法功能提要（適用于 [工作表](./algorithm-cheat-sheet.md?WT.mc_id=docs-article-lazzeri)）。
 
 ## <a name="deep-learning-machine-learning-and-ai"></a>深度學習、機器學習和 AI
 
@@ -29,7 +29,7 @@ ms.locfileid: "93324865"
 
 請考慮下列定義以瞭解深度學習與機器學習與 AI 的比較：
 
-- **深度學習** 是以人工類神經網路為基礎的機器學習的子集。 _學習_ 程式很 _深_ ，因為人工類神經網路的結構包含多個輸入、輸出和隱藏層。 每一層都包含轉換單位，可將輸入資料轉換成資訊，以供下一層用於特定預測工作。 由於有此結構，機器可以透過自己的資料處理學習。
+- **深度學習** 是以人工類神經網路為基礎的機器學習的子集。 _學習_ 程式很 _深_，因為人工類神經網路的結構包含多個輸入、輸出和隱藏層。 每一層都包含轉換單位，可將輸入資料轉換成資訊，以供下一層用於特定預測工作。 由於有此結構，機器可以透過自己的資料處理學習。
 
 - **機器學習** 是人工智慧的子集，其使用 (的技術，例如深度學習) ，可讓電腦使用體驗來改善工作。 _學習_ 程式是以下列步驟為基礎：
 

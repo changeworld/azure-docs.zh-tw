@@ -1,6 +1,6 @@
 ---
-title: 無伺服器 SQL 集區 (預覽) 的最佳作法
-description: 使用無伺服器 SQL 集區 (預覽版) 的建議和最佳作法。
+title: 無伺服器 SQL 集區最佳做法
+description: 使用無伺服器 SQL 集區的建議和最佳作法。
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ddf9d689316d3c95c322aa3a967af53621a2e00f
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: b8b93471b6d7f2555cfd71e524718ed0ea1ee191
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638864"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457900"
 ---
-# <a name="best-practices-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics 的無伺服器 SQL 集區 (預覽) 的最佳作法
+# <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中無伺服器 SQL 集區的最佳作法
 
-在本文中，您將找到使用無伺服器 SQL 集區 (預覽版) 的最佳作法集合。 無伺服器 SQL 集區是 Azure Synapse Analytics 中的資源。
+在本文中，您將找到使用無伺服器 SQL 集區的最佳作法集合。 無伺服器 SQL 集區是 Azure Synapse Analytics 中的資源。
 
 ## <a name="general-considerations"></a>一般考量
 
@@ -60,9 +60,9 @@ ms.locfileid: "94638864"
 
 - 使用最小的資料大小，以容納最大的可能值。
   - 如果字元值的長度上限為 30 個字元，請使用長度為 30 的字元資料類型。
-  - 如果所有字元資料行的值都是固定大小，請使用 **char** 或 **nchar** 。 否則的話，請使用 **varchar** 或 **nvarchar** 。
-  - 如果整數資料行的最大值為 500，請使用 **smallint** ，因為其為可容納此值的最小資料類型。 您可以在[本文](/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=azure-sqldw-latest&preserve-view=true)中找到整數資料類型範圍。
-- 可能的話，請使用 **varchar** 和 **char** ，而不是 **nvarchar** 和 **nchar** 。
+  - 如果所有字元資料行的值都是固定大小，請使用 **char** 或 **nchar**。 否則的話，請使用 **varchar** 或 **nvarchar**。
+  - 如果整數資料行的最大值為 500，請使用 **smallint**，因為其為可容納此值的最小資料類型。 您可以在[本文](/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=azure-sqldw-latest&preserve-view=true)中找到整數資料類型範圍。
+- 可能的話，請使用 **varchar** 和 **char**，而不是 **nvarchar** 和 **nchar**。
 - 請盡可能使用以整數為基礎的資料類型。 排序、聯結和群組依據作業在整數上完成的速度比在字元資料上更快。
 - 如果您使用結構描述推斷，[請檢查推斷的資料類型](#check-inferred-data-types)。
 
@@ -129,7 +129,7 @@ FROM
 
 ## <a name="manually-create-statistics-for-csv-files"></a>手動建立 CSV 檔案的統計資料
 
-無伺服器 SQL 集區依賴統計資料來產生最佳查詢執行計畫。 當需要時，會自動為 Parquet 檔中的資料行建立統計資料。 目前，系統不會自動為 CSV 檔案中的資料行建立統計資料，而且您應該針對在查詢中使用的資料行，以手動方式建立統計資料，尤其是在相異、聯結、WHERE、ORDER BY 和 GROUP BY 中使用的資料行。 查看 [無伺服器 SQL 集區中的統計資料](develop-tables-statistics.md#statistics-in-serverless-sql-pool-preview) ，以取得詳細資料。
+無伺服器 SQL 集區依賴統計資料來產生最佳查詢執行計畫。 當需要時，會自動為 Parquet 檔中的資料行建立統計資料。 目前，系統不會自動為 CSV 檔案中的資料行建立統計資料，而且您應該針對在查詢中使用的資料行，以手動方式建立統計資料，尤其是在相異、聯結、WHERE、ORDER BY 和 GROUP BY 中使用的資料行。 核取 [無伺服器 SQL 集區中的統計資料] (開發資料表-statistics # 統計資料-無伺服器-SQL-集區以取得詳細資料。
 
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>使用 CETAS 來增強查詢效能和聯結
 

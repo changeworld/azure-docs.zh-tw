@@ -9,14 +9,14 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: fa05f8a8b05a0acddae906a93c90c42424466969
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3d12e60e2aeee667b89d56589870d53366772014
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322591"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459031"
 ---
-# <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>適用於 Azure Cosmos DB 的 Azure Synapse Link (預覽) 支援的功能
+# <a name="azure-synapse-link-for-azure-cosmos-db-supported-features"></a>適用於 Azure Cosmos DB 的 Azure Synapse Link 支援的功能
 
 本文說明適用於 Azure Cosmos DB 的 Azure Synapse Link 中目前支援的功能。
 
@@ -31,9 +31,9 @@ Azure Cosmos DB 中有兩種類型的容器：
 
 您可以連接到 Azure Cosmos DB 容器，而不需要啟用 Synapse 連結。 在此案例中，您只能讀取/寫入交易式存放區。 接下來是 Azure Cosmos DB Synapse 連結內目前支援的功能清單。 
 
-| 類別              | 描述 |[Spark](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) | [SQL 無伺服器](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) |
+| 類別              | 描述 |[Apache Spark 集區](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) | [無伺服器 SQL 集區](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- |
-| **執行階段支援** |支援存取 Azure Cosmos DB 的 Azure Synapse 執行時間| ✓ | ✓ |
+| **執行階段支援** |支援存取 Azure Cosmos DB 的 Azure Synapse 執行時間| ✓ | 預覽 |
 | **Azure Cosmos DB API 支援** | 支援的 Azure Cosmos DB API 種類 | SQL/MongoDB | SQL/MongoDB |
 | **Object**  |可建立的物件 (如資料表)，直接指向 Azure Cosmos DB 容器| 資料框架、View、Table | 檢視 |
 | **讀取**    | 可讀取的 Azure Cosmos DB 容器類型 | OLTP/HTAP | HTAP  |
@@ -53,12 +53,12 @@ Azure Cosmos DB 中有兩種類型的容器：
 | **將串流 DataFrame 寫入容器** |使用 Azure Cosmos DB 變更摘要進行資料串流|✓| ✓ |
 
 
-## <a name="supported-code-generated-actions-for-sql-serverless"></a>SQL 無伺服器支援的程式碼產生動作
+## <a name="supported-code-generated-actions-for-serverless-sql-pool"></a>無伺服器 SQL 集區支援的程式碼產生動作
 
 | 手勢              | 描述 |OLTP |HTAP |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
 | **探索資料** |使用熟悉的 T-sql 語法和自動架構推斷，探索容器中的資料|X| ✓ |
-| **建立 views 和組建 BI 報表** |建立 SQL view，以透過 Synapse SQL 無伺服器直接存取 BI 的容器 |X| ✓ |
+| **建立 views 和組建 BI 報表** |建立 SQL view，以透過無伺服器 SQL 集區直接存取 BI 的容器 |X| ✓ |
 | **聯結不同的資料來源以及 Cosmos DB 資料** | 使用 CETAS 將查詢的結果儲存在 Cosmos DB 容器中，以及使用 Azure Blob 儲存體或 Azure Data Lake Storage 中的資料來讀取資料 |X| ✓ |
 
 ## <a name="next-steps"></a>後續步驟

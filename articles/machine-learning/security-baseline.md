@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 62bc309bf20186654cb32fb84fb1a07667405ab0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f3f66209b2d0a1bae18364e38790c237952e729f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950800"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458264"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>適用于 Azure Machine Learning 的 Azure 安全性基準
 
@@ -241,7 +241,7 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 - [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
-- [開始使用 Log Analytics 查詢](../azure-monitor/log-query/get-started-portal.md)
+- [開始使用 Log Analytics 查詢](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [如何在 Azure 監視器中執行自訂查詢](../azure-monitor/log-query/get-started-queries.md)
 
@@ -405,7 +405,7 @@ Azure Machine Learning 針對 Azure Machine Learning 中的常見管理案例提
 
 - [管理對 Azure Machine Learning 工作區的存取](how-to-assign-roles.md) 
  
-- [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何建立及設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -419,7 +419,7 @@ Azure Machine Learning 針對 Azure Machine Learning 中的常見管理案例提
 
 - [瞭解 Azure AD 報告](../active-directory/reports-monitoring/index.yml)
 
-- [如何使用 Azure AD 身分識別和存取權評論](../active-directory/governance/access-reviews-overview.md)
+- [如何使用 Azure AD 身分識別和存取權檢閱](../active-directory/governance/access-reviews-overview.md)
 
 - [部署 Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
@@ -494,7 +494,7 @@ Azure Machine Learning 針對 Azure Machine Learning 中的常見管理案例提
 
 **指導** 方針：從網路周邊的 Azure Marketplace 使用協力廠商解決方案，以監視是否有未經授權的機密資訊傳輸，並在警示資訊安全專業人員時封鎖這類傳輸。 
 
-針對 Microsoft 所管理的基礎平臺，Microsoft 會將所有客戶內容視為機密資料，並防止客戶資料遺失和公開。 為了確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制項和功能。 
+針對 Microsoft 管理的基礎平台，Microsoft 會將所有客戶內容視為敏感性資訊，並防範客戶資料外洩和暴露。 為了確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制項和功能。 
 
 - [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
@@ -553,7 +553,7 @@ Microsoft 管理 Machine Learning 的基礎結構，並已實行嚴格的控制�
 
 - [Azure Machine Learning 待用資料加密](concept-enterprise-security.md#encryption-at-rest)
 
-- [瞭解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md)
+- [了解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md)
 
 - [如何設定客戶管理的加密金鑰](../storage/common/customer-managed-keys-configure-key-vault.md)
 
@@ -718,7 +718,7 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 您可以執行自己的流程，以移除未經授權的軟體。 您也可以使用協力廠商解決方案來識別未核准的軟體。
 
-當不再需要 Azure 資源時，請將其移除。
+不再需要 Azure 資源時，請將其移除。
 
 - [如何使用檔案完整性監視](../security-center/security-center-file-integrity-monitoring.md)
 
@@ -1098,7 +1098,7 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
  
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
-- [如何啟用 Key Vault 中的虛刪除和清除保護](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
+- [如何在 Key Vault 中啟用虛刪除和清除保護](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal) (機器翻譯)
 
 - [Azure Blob 儲存體的虛刪除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
@@ -1186,11 +1186,11 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
-**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對受 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 的策略和執行的 Red 小組和即時網站滲透測試。
+**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 對於紅隊和即時網站滲透測試的策略和執行方法。
 
 - [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-- [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 資訊安全中心監視**：不適用
 

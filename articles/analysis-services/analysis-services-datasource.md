@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 174ad4692d043390e6773a98e31f0985d75c8e2e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 61efc7719b071ff4e8e5c0e07534b72a2883aff1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018809"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458869"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支援的資料來源
 
@@ -120,7 +120,7 @@ ms.locfileid: "92018809"
 
 ## <a name="oauth-credentials"></a>OAuth 認證
 
-針對1400和更高相容性層級的表格式模型，使用記憶體內部模式 Azure SQL Database，Azure Synapse (先前的 SQL 資料倉儲) 、Dynamics 365 和 SharePoint 清單支援 OAuth 認證。 Azure Analysis Services 會管理 OAuth 資料來源的權杖重新整理，以避免長時間執行的重新整理作業逾時。 若要產生有效的權杖，請使用 Power Query 設定認證。
+若為1400和更高相容性層級的表格式模型（使用記憶體內部模式），Azure SQL Database、Azure Synapse、Dynamics 365 和 SharePoint 清單支援 OAuth 認證。 Azure Analysis Services 會管理 OAuth 資料來源的權杖重新整理，以避免長時間執行的重新整理作業逾時。 若要產生有效的權杖，請使用 Power Query 設定認證。
 
 OAuth 認證不支援 DirectQuery 模式。
 

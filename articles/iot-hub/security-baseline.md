@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 003bf5241611df450fa6d0ecadff264c4d5de243
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 891366060cddaf2a046de36fa9300432977ec903
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842850"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457731"
 ---
 # <a name="azure-security-baseline-for-azure-iot-hub"></a>適用于 Azure IoT 中樞的 Azure 安全性基準
 
@@ -33,7 +33,7 @@ IoT 中樞功能 (包括訊息路由、檔案上傳和大量裝置匯入/匯出)
 將裝置上的開啟硬體埠維持在最少的最小值，以避免不必要的存取。 此外，也會建立防止或偵測裝置實體篡改的機制。
 
 - [IoT 虛擬網路支援](virtual-network-support.md)
-- [大量網路的最佳作法](../iot-fundamentals/security-recommendations.md?context=azure%252fiot-hub%252frc%252frc#networking)
+- [大量網路的最佳作法](../iot-fundamentals/security-recommendations.md?context=azure%2fiot-hub%2frc%2frc#networking)
 - [Azure Private Link 總覽](../private-link/private-link-overview.md)
 - [Azure 網路安全性群組](../virtual-network/network-security-groups-overview.md)
 
@@ -73,7 +73,7 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 - [適用於 IoT 的 Azure 資訊安全中心可疑 IP 位址通訊](../defender-for-iot/concept-security-alerts.md)
 
-- [管理 Azure DDoS 保護基本](../virtual-network/ddos-protection-overview.md)
+- [管理 Azure DDoS 保護基本](../ddos-protection/ddos-protection-overview.md)
 
 - [Azure 資訊安全中心內的威脅防護](../security-center/azure-defender.md)
 
@@ -220,7 +220,7 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 - [監視 Azure IoT 健康情況](monitor-iot-hub.md)
 - [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
   
-- [開始使用 Log Analytics 查詢](../azure-monitor/log-query/get-started-portal.md)
+- [開始使用 Log Analytics 查詢](../azure-monitor/log-query/log-analytics-tutorial.md)
    
 - [ 如何在 Azure 監視器中執行自訂查詢](../azure-monitor/log-query/get-started-queries.md)
 
@@ -363,7 +363,7 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 針對裝置和服務存取，IoT 中樞會使用安全性權杖和共用存取簽章 (SAS) 權杖來驗證裝置和服務，以避免在網路上傳送金鑰。 
 
-- [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何建立及設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 - [IoT 中樞安全性權杖](../iot-fundamentals/iot-security-deployment.md#iot-hub-security-tokens)
 
 **Azure 資訊安全中心監視**：不適用
@@ -377,7 +377,7 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 當環境中發生可疑或不安全的活動時，請使用 Azure AD Privileged Identity Management (PIM) 來產生記錄和警示。
 
 - [瞭解 Azure AD 報告](../active-directory/reports-monitoring/index.yml)
-- [如何使用 Azure AD 身分識別和存取權評論](../active-directory/governance/access-reviews-overview.md)
+- [如何使用 Azure AD 身分識別和存取權檢閱](../active-directory/governance/access-reviews-overview.md)
 - [部署 Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
 **Azure 資訊安全中心監視**：是
@@ -517,7 +517,7 @@ Azure IoT 中樞提供待用資料和傳輸中資料的加密，因為它會寫�
 
 - [使用 IoT 中樞客戶管理的金鑰來加密待用資料](iot-hub-customer-managed-keys.md)
 
-- [瞭解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md)
+- [了解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -629,7 +629,7 @@ Azure IoT 中樞提供待用資料和傳輸中資料的加密，因為它會寫�
 
 **指導** 方針：使用 Azure 原則對可在訂用帳戶中建立的資源類型施加限制。 
 
-使用 Azure Resource Graph 來查詢及探索其訂用帳戶內的資源。  確保已核准環境中的所有 Azure 資源。 
+使用 Azure Resource Graph 則可查詢及探索其訂用帳戶內的資源。  確保已核准環境中的所有 Azure 資源。 
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md) 
 
@@ -1027,11 +1027,11 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
-**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對受 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 的策略和執行的 Red 小組和即時網站滲透測試。
+**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 對於紅隊和即時網站滲透測試的策略和執行方法。
 
 - [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-- [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 資訊安全中心監視**：不適用
 

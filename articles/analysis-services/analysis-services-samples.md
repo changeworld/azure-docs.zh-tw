@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 24c2fe9b6bbb0b5a40edd395bfe669abfc8c9adc
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 0ab0e64d9a088a332ba037dccf01dc445998ebfb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183170"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457565"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services 範例
 
@@ -28,7 +28,7 @@ GitHub 上的 [Adventure Works Analysis Services](https://github.com/Microsoft/s
 
 ## <a name="sample-database-on-azure"></a>Azure 上的範例資料庫
 
-Azure Synapse Analytics (先前的 SQL 資料倉儲) 提供可包含在已布建資源中的範例 AdventureWorksDW 資料庫。 若要深入瞭解，請參閱 [快速入門：在 Azure Synapse Analytics 中建立和查詢專用的 SQL 集 ](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)區。
+Azure Synapse Analytics 提供可包含在已布建資源中的範例 AdventureWorksDW 資料庫。 若要深入瞭解，請參閱 [快速入門：在 Azure Synapse Analytics 中建立和查詢專用的 SQL 集 ](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)區。
 
 ## <a name="sample-databases-on-github"></a>GitHub 上的範例資料庫
 

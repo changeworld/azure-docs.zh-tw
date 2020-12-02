@@ -9,16 +9,16 @@ ms.date: 10/16/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 27881b048a738d4de2acb57dcc4c2dad1f4d5b24
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 62610e1b86671021e66891ae232bacbd4b3e40ed
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435360"
+ms.locfileid: "96458815"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中管理 Apache Spark 的程式庫
 
-程式庫提供可重複使用的程式碼，您可能會想要將它包含在程式或專案中。 若要讓您的應用程式可以使用協力廠商或本機建立的程式碼，您可以將程式庫安裝到您的其中一個無伺服器 Apache Spark 集區 (preview) 。 一旦為 Spark 集區安裝程式庫之後，就可以使用相同集區的所有會話使用該程式庫。 
+程式庫提供可重複使用的程式碼，您可能會想要將它包含在程式或專案中。 若要讓協力廠商或本機建立的程式碼可供您的應用程式使用，您可以將程式庫安裝到其中一個無伺服器 Apache Spark 集區。 一旦為 Spark 集區安裝程式庫之後，就可以使用相同集區的所有會話使用該程式庫。 
 
 ## <a name="before-you-begin"></a>開始之前
 - 若要安裝及更新程式庫，您必須擁有連結至 Azure Synapse Analytics 工作區之主要 Gen2 儲存體帳戶的 **儲存體 Blob 資料參與者** 或 **儲存體 blob 資料擁有** 者許可權。
@@ -26,11 +26,11 @@ ms.locfileid: "96435360"
 ## <a name="default-installation"></a>預設安裝
 Azure Synapse Analytics 中的 Apache Spark 有完整的 Anacondas 安裝以及額外的程式庫。 您可以在 [Apache Spark 版本支援](apache-spark-version-support.md)中找到完整的程式庫清單。 
 
-當 Spark 實例啟動時，就會自動包含這些程式庫。 您可以在 Spark 集區新增額外的 Python 和自訂的套件 (預覽版) 層級。
+當 Spark 實例啟動時，就會自動包含這些程式庫。 您可以在 Spark 集區層級新增額外的 Python 和自訂的套件。
 
 
 ## <a name="manage-python-packages"></a>管理 Python 套件
-一旦識別出您想要用於 Spark 應用程式的程式庫，您就可以將它們安裝到 Spark 集區 (預覽) 。 
+一旦識別出您想要用於 Spark 應用程式的程式庫，您就可以將它們安裝到 Spark 集區中。 
 
  您可以使用命令) 的 *requirements.txt* 檔案 (輸出， `pip freeze` 以升級虛擬環境。 在啟動集區時，會從 PyPi 下載此檔案中所列的套件以供安裝或升級。 每次從該 Spark 集區建立 Spark 實例時，就會使用此需求檔案。
 
@@ -54,7 +54,7 @@ alabaster==0.7.10
 當您開發 Spark 應用程式時，可能會發現您需要更新現有的程式庫或安裝新的程式庫。 您可以在建立集區期間或之後更新程式庫。
 
 #### <a name="install-packages-during-pool-creation"></a>在集區建立期間安裝套件
-若要在集區建立期間將程式庫安裝到 Spark 集區 (預覽版) ：
+若要在集區建立期間將程式庫安裝到 Spark 集區：
    
 1. 從 Azure 入口網站流覽至您的 Azure Synapse Analytics 工作區。
    
@@ -66,7 +66,7 @@ alabaster==0.7.10
  
 
 #### <a name="install-packages-from-the-synapse-workspace"></a>從 Synapse 工作區安裝套件
-若要從 Azure Synapse Analytics 入口網站更新或新增其他程式庫至 Spark 集區 (預覽) ：
+若要從 Azure Synapse Analytics 入口網站更新或新增其他程式庫至 Spark 集區：
 
 1.  從 Azure 入口網站流覽至您的 Azure Synapse Analytics 工作區。
    
@@ -79,7 +79,7 @@ alabaster==0.7.10
     ![在 synapse 中新增 Python 程式庫](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-update.png)
    
 #### <a name="install-packages-from-the-azure-portal"></a>從 Azure 入口網站安裝套件
-若要將程式庫安裝到 Spark 集區 (預覽) 直接從 Azure 入口網站：
+若要直接從 Azure 入口網站將程式庫安裝至 Spark 集區：
    
  1. 從 Azure 入口網站流覽至您的 Azure Synapse Analytics 工作區。
    

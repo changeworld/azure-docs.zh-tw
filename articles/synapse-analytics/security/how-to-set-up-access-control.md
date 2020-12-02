@@ -1,5 +1,5 @@
 ---
-title: 保護您的 Synapse 工作區 (預覽)
+title: 保護您的 Synapse 工作區
 description: 本文將告訴您如何使用角色和存取控制來控制活動，以及存取 Synapse 工作區中的資料。
 services: synapse-analytics
 author: matt1883
@@ -9,20 +9,20 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 79a4db1f7d4be88260ea41ce1090007bc66cc7c8
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 25e191af919c5880045a6c4c7c79b675cf02520e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556024"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458708"
 ---
-# <a name="secure-your-synapse-workspace-preview"></a>保護您的 Synapse 工作區 (預覽) 
+# <a name="secure-your-synapse-workspace"></a>保護您的 Synapse 工作區 
 
 本文將告訴您如何使用角色和存取控制來控制活動及存取資料。 遵循這些指示，即可簡化 Azure Synapse Analytics 中的存取控制。 您只需要對三個安全性群組的其中一個新增及移除使用者。
 
 ## <a name="overview"></a>概觀
 
-為保護 Synapse 工作區 (預覽)，您將遵循設定下列項目的模式：
+若要保護 Synapse 工作區，您將遵循設定下列專案的模式：
 
 - Azure 角色 (例如「擁有者」和「參與者」等內建角色)
 - Synapse 角色 – 這些角色對於 Synapse 而言是唯一的，而且不是以 Azure 角色為基礎。 其中有三個角色：
@@ -96,7 +96,7 @@ Synapse 工作區需要 STG1 和 CNT1 的存取權，才能執行管線和系統
 
 - 開啟 Azure 入口網站
 - 瀏覽至 WS1
-- 在 [ **設定** ] 底下，選取 **[SQL Active Directory 管理員** ]
+- 在 [**設定**] 底下，選取 **[SQL Active Directory 管理員**]
 - 選取 [ **設定管理員** ] 並選擇 [WS1 \_ SQLAdmins]
 
 ## <a name="step-6-maintain-access-control"></a>步驟6：維護存取控制

@@ -3,16 +3,16 @@ title: 使用 Azure Advisor 降低服務成本
 description: 使用 Azure Advisor 程式將 Azure 部署的成本最佳化。
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 454ed02c06511b55f9f592bbe6fe5ab08605d752
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 767c82c818535304552c1c98ff50a252acc0d08a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075904"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458517"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>使用 Azure Advisor 降低服務成本
 
-Azure Advisor 藉由識別閒置和使用量過低的資源，協助您優化並減少整體 Azure 支出。您可以從 Advisor 儀表板上的 [成本]**** 索引標籤取得成本建議。
+Azure Advisor 藉由識別閒置和使用量過低的資源，協助您優化並減少整體 Azure 支出。 您可以從 Advisor 儀表板上的 [成本] 索引標籤取得成本建議。
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>關閉使用量過低的執行個體，或者重新調整其大小或，從而將虛擬機器的費用最佳化 
 
@@ -71,7 +71,7 @@ Advisor 會分析您的 Azure Blob 儲存體，並在過去30天內 Azure Data L
 ### <a name="mariadb-mysql-and-postgresql-reserved-capacity"></a>適用于 mariadb、MySQL 和于 postgresql 保留容量
 Advisor 會分析您過去30天內適用於 MariaDB 的 Azure 資料庫、適用於 MySQL 的 Azure 資料庫和適用於 PostgreSQL 的 Azure 資料庫的使用模式。 然後建議可將成本優化的保留容量購買。 使用保留容量，您可以預先購買適用于 mariadb、MySQL 和于 postgresql 的每小時使用量，並節省您目前的成本。 保留容量是帳單權益，並會自動套用至新的和現有的部署。 Advisor 會使用3年期的保留定價和過去30天觀察到的使用模式，計算個別訂用帳戶的節省金額。 共用範圍建議適用于保留容量購買，並可提高節省成本。
 
-### <a name="azure-synapse-analytics-formerly-sql-data-warehouse-reserved-capacity"></a>Azure Synapse Analytics (先前的 SQL 資料倉儲) 保留容量
+### <a name="azure-synapse-analytics-reserved-capacity"></a>Azure Synapse Analytics 保留容量
 Advisor 會分析您過去30天內的 Azure Synapse Analytics 使用模式，並建議可將成本優化的保留容量購買。 使用保留容量時，您可以預先購買 Synapse Analytics 的每小時使用量，並節省隨選成本。 保留容量是帳單權益，並會自動套用至新的和現有的部署。 Advisor 會使用3年期的保留定價和過去30天觀察到的使用模式，計算個別訂用帳戶的節省金額。 共用範圍建議適用于保留容量購買，並可提高節省成本。
 
 ## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>刪除未關聯的公用 IP 位址以節省成本
