@@ -1,34 +1,34 @@
 ---
-title: 快速入門：變更應用程式所支援的帳戶類型 | Azure
+title: 操作說明：變更應用程式所支援的帳戶類型 | Azure
 titleSuffix: Microsoft identity platform
-description: 在本快速入門中，您會設定向 Microsoft 身分識別平台註冊的應用程式，以變更可以存取應用程式的使用者或帳戶。
+description: 在本操作說明中，您會設定向 Microsoft 身分識別平台註冊的應用程式，以變更可以存取應用程式的使用者或帳戶。
 services: active-directory
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: quickstart
+ms.topic: how-to
 ms.workload: identity
-ms.date: 10/27/2019
+ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 2382eedcc14f683d354b88bf2eb8d53b2af40dbd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 94a7f4d9ce1471aa1dd6aef3165562a2abc02816
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083264"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453259"
 ---
-# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>快速入門：修改應用程式所支援的帳戶
+# <a name="how-to-modify-the-accounts-supported-by-an-application"></a>如何修改應用程式所支援的帳戶
 
 向 Microsoft 身分識別平台註冊應用程式時，同時指定了誰 (哪些帳戶類型) 可以存取該應用程式。 例如，您可能已在組織中指定帳戶，這是「單一租用戶」應用程式。 或者，您可能已在任何組織 (包括您的) 中指定帳戶，這是「多租用戶」應用程式。
 
-在本快速入門中，您會了解如何修改應用程式組態，以變更可以存取應用程式的使用者或帳戶類型。
+在下列章節中，您會了解如何在 Azure 入口網站中修改您的應用程式註冊，以變更可以存取應用程式的使用者或帳戶類型。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* 完成[快速入門：使用 Microsoft 身分識別平台來註冊應用程式](quickstart-register-app.md)
+* [在您的 Azure AD 租用戶中註冊的應用程式](quickstart-register-app.md)
 
 ## <a name="change-the-application-registration-to-support-different-accounts"></a>變更應用程式註冊以支援不同的帳戶
 
@@ -54,9 +54,8 @@ ms.locfileid: "93083264"
 
 例如，如果租用戶的名稱是 contoso.onmicrosoft.com，則有效的應用程式識別碼 URI 會是 `https://contoso.onmicrosoft.com/myapp`。 如果租用戶的已驗證網域是 contoso.com，則有效的應用程式識別碼 URI 也會是 `https://contoso.com/myapp`。 如果應用程式識別碼 URI 未遵循第二個模式，`https://contoso.com/myapp`，則系統無法將應用程式註冊轉換成多租用戶。
 
-如需設定已驗證之發行者網域的詳細資訊，請參閱[設定已驗證的網域](quickstart-modify-supported-accounts.md)。
+如需設定已驗證之發行者網域的詳細資訊，請參閱[設定已驗證的網域](howto-configure-publisher-domain.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-> [!div class="nextstepaction"]
-> [操作說明：將您的應用程式轉換成多租用戶](howto-convert-app-to-be-multi-tenant.md)
+深入了解[將應用程式從單一租用戶轉換為多租用戶](howto-convert-app-to-be-multi-tenant.md)的需求。

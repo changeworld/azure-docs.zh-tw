@@ -1,6 +1,6 @@
 ---
-title: 快速入門：Fivetran 和資料倉儲
-description: 開始使用 Fivetran 和 Azure Synapse Analytics 資料倉儲。
+title: 快速入門： (先前為 SQL DW) 的 Fivetran 和專用 SQL 集區
+description: 開始使用 Fivetran 和專用的 SQL 集區 (先前的 SQL DW) Azure Synapse Analytics。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,22 +11,22 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 96e679c0b284cc649dbde3fba1b640f4e09df05e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f332c3b0bd53d80d4a8471f53c56ecab611787c1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001842"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456366"
 ---
-# <a name="quickstart-fivetran-with-data-warehouse"></a>快速入門：Fivetran 搭配資料倉儲使用 
+# <a name="quickstart-fivetran-with-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>快速入門：使用專用 SQL 集區的 Fivetran (先前的 SQL DW) Azure Synapse Analytics 
 
-此快速入門說明如何設定新的 Fivetran 使用者，以搭配透過 SQL 集區佈建之 Azure Synapse Analytics 資料倉儲使用。 此文章假設您已有現有的資料倉儲。
+本快速入門說明如何設定新的 Fivetran 使用者，以搭配先前的 SQL DW)  (使用專用的 SQL 集區。 本文假設您已有現有的專用 SQL 集區 (先前為 SQL DW) 。
 
 ## <a name="set-up-a-connection"></a>設定連線
 
-1. 尋找您用來連線到資料倉儲的完整伺服器名稱與資料庫名稱。
+1. 找出您用來連線到專用 SQL 集區 (先前為 SQL DW) 的完整伺服器名稱和資料庫名稱。
     
-    若您需要有關尋找此資訊的協助，請參閱[連線到您的資料倉儲](../sql/connect-overview.md)。
+    如果您需要協助尋找此資訊，請參閱 [ (先前的 SQL DW) 連接到您專用的 sql 集 ](sql-data-warehouse-connection-strings.md)區。
 
 2. 在安裝精靈中，選擇直接連線到您的資料庫或使用 SSH 通道來連線。
 
@@ -34,13 +34,13 @@ ms.locfileid: "96001842"
 
    若您選擇使用 SSH 通道來連線，Fivetran 會連線到您網路上的獨立伺服器。 伺服器會提供可連到您資料庫的 SSH 通道。 若您的資料庫位於虛擬網路上無法存取的子網路中，則必須使用此方法。
 
-3. 在伺服器層級防火牆中新增 IP 位址 **52.0.2.4**，以允許從 Fivetran 到資料倉儲執行個體的連入連線。
+3. 將 IP 位址 **52.0.2.4** 新增至您的伺服器層級防火牆，以允許從 Fivetran (先前的 sql DW) 實例的專用 sql 集區的連入連線。
 
    如需詳細資訊，請參閱[建立伺服器層級防火牆規則](create-data-warehouse-portal.md#create-a-server-level-firewall-rule)。
 
 ## <a name="set-up-user-credentials"></a>設定使用者認證
 
-1. 使用 SQL Server Management Studio (SSMS) 或您偏好的工具連線到您的資料倉儲。 以伺服器系統管理員使用者的身分登入。 接著，執行下列 SQL 命令以建立 Fivetran 使用者：
+1. 使用 SQL Server Management Studio (SSMS) 或您偏好的工具，連接到您的專用 SQL 集區 (先前的 SQL DW) 。 以伺服器系統管理員使用者的身分登入。 接著，執行下列 SQL 命令以建立 Fivetran 使用者：
 
     - 在 master 資料庫中： 
     
@@ -48,7 +48,7 @@ ms.locfileid: "96001842"
       CREATE LOGIN fivetran WITH PASSWORD = '<password>'; 
       ```
 
-    - 在資料倉儲資料庫中：
+    - 在專用的 SQL 集區中 (先前的 SQL DW) 資料庫：
 
       ```sql
       CREATE USER fivetran_user_without_login without login;
@@ -56,7 +56,7 @@ ms.locfileid: "96001842"
       GRANT IMPERSONATE on USER::fivetran_user_without_login to fivetran;
       ```
 
-2. 為 Fivetran 使用者授與對您資料倉儲的下列權限：
+2. 將下列許可權授與 Fivetran 使用者 (先前為 SQL DW) 的專用 SQL 集區：
 
     ```sql
     GRANT CONTROL to fivetran;
@@ -77,7 +77,7 @@ ms.locfileid: "96001842"
 
 ## <a name="connect-from-fivetran"></a>從 Fivetran 連線
 
-若要從您的 Fivetran 帳戶連線到您的資料倉儲，請輸入您用來存取資料倉儲的認證： 
+若要從您的 Fivetran 帳戶連接到您的專用 SQL 集區 (先前的 SQL DW) ，請輸入您用來存取專屬 SQL 集區的認證 (先前為 SQL DW) ： 
 
 * 主機 (您的伺服器名稱)。
 * 連接埠。

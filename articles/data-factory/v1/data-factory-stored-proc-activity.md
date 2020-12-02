@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 55c884375372b3fea2ff3153aa936893cf668903
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e73381ef0e646f697f5195cb3df7f4c2733cccaf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359980"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456917"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server 預存程序活動
 > [!div class="op_single_selector" title1="轉換活動"]
@@ -26,8 +26,8 @@ ms.locfileid: "92359980"
 > * [MapReduce 活動](data-factory-map-reduce.md)
 > * [Hadoop 串流活動](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活動](data-factory-spark.md)
-> * [Azure Machine Learning Studio (傳統) 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
-> * [Azure Machine Learning Studio (傳統) 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning Studio (傳統版) 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
+> * [Azure Machine Learning Studio (傳統版) 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
 > * [預存程序活動](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL 活動](data-factory-usql-activity.md)
 > * [.NET 自訂活動](data-factory-use-custom-activities.md)
@@ -41,7 +41,7 @@ ms.locfileid: "92359980"
 您可以使用「預存程序活動」來叫用您企業或 Azure 虛擬機器 (VM) 中的下列其中一個資料存放區：
 
 - Azure SQL Database
-- Azure Synapse Analytics (先前稱為 SQL 資料倉儲)
+- Azure Synapse Analytics
 - SQL Server Database。 如果您使用 SQL Server，請在裝載資料庫的同一部電腦上或可存取資料庫的個別電腦上安裝資料管理閘道。 資料管理閘道是一套透過安全且可管理的方式，將內部部署/Azure VM 上的資料來源連結至雲端服務的元件。 如需詳細資訊，請參閱[資料管理閘道](data-factory-data-management-gateway.md)文章。
 
 > [!IMPORTANT]
@@ -51,7 +51,7 @@ ms.locfileid: "92359980"
 
 下列逐步解說會在管線中使用預存程式活動，以叫用 Azure SQL Database 中的預存程式。
 
-## <a name="walkthrough"></a>逐步解說
+## <a name="walkthrough"></a>逐步介紹
 ### <a name="sample-table-and-stored-procedure"></a>範例資料表與預存程序
 1. 在您的 Azure SQL Database 中，使用 SQL Server Management Studio 或任何其他您很熟悉的工具，來建立下列 **資料表** 。 Datetimestamp 資料行是產生對應識別碼的日期和時間。
 
@@ -71,7 +71,7 @@ ms.locfileid: "92359980"
     ![範例資料](./media/data-factory-stored-proc-activity/sample-data.png)
 
     在此範例中，預存程序在 Azure SQL Database 中。 如果預存程式位於 Azure Synapse Analytics 和 SQL Server 資料庫中，則此方法很類似。 對於 SQL Server 資料庫中，您必須安裝[資料管理閘道](data-factory-data-management-gateway.md)。
-2. 建立下列**預存程序**，將資料插入 **sampletable**。
+2. 建立下列 **預存程序**，將資料插入 **sampletable**。
 
     ```SQL
     CREATE PROCEDURE usp_sample @DateTime nvarchar(127)
@@ -84,50 +84,50 @@ ms.locfileid: "92359980"
     ```
 
    > [!IMPORTANT]
-   > 參數 (在此範例中是 DateTime) 的**名稱**和**大小寫**必須與下列管線/活動 JSON 中指定的參數相符。 在預存程序定義中，請務必 **\@** 使用做為參數的前置詞。
+   > 參數 (在此範例中是 DateTime) 的 **名稱** 和 **大小寫** 必須與下列管線/活動 JSON 中指定的參數相符。 在預存程序定義中，請務必 **\@** 使用做為參數的前置詞。
 
-### <a name="create-a-data-factory"></a>建立 Data Factory
+### <a name="create-a-data-factory"></a>建立資料處理站
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 按一下左側功能表上的 [新增]****、[資料 + 分析]****，再按一下 [Data Factory]****。
+2. 按一下左側功能表上的 [新增]、[資料 + 分析]，再按一下 [Data Factory]。
 
     ![新增 data factory 1](media/data-factory-stored-proc-activity/new-data-factory.png)
-3. 在 [新增 Data Factory]**** 刀鋒視窗中，輸入 **SProcDF** 做為 [名稱]。 Azure Data Factory 名稱必須是**全域唯一的**。 您必須在 Data Factory 的名稱前面加上您的名稱，才能成功建立 Factory。
+3. 在 [新增 Data Factory] 刀鋒視窗中，輸入 **SProcDF** 做為 [名稱]。 Azure Data Factory 名稱必須是 **全域唯一的**。 您必須在 Data Factory 的名稱前面加上您的名稱，才能成功建立 Factory。
 
    ![新增 data factory 2](media/data-factory-stored-proc-activity/new-data-factory-blade.png)
 4. 選取您的 **Azure 訂用帳戶**。
 5. 針對 **資源群組**，請執行下列其中一個步驟：
-   1. 按一下 [新建]**** 並輸入資源群組的名稱。
-   2. 按一下 [使用現有的]**** 並選取現有的資源群組。
+   1. 按一下 [新建] 並輸入資源群組的名稱。
+   2. 按一下 [使用現有的] 並選取現有的資源群組。
 6. 選取 Data Factory 的 [位置]  。
-7. 選取 [釘選到儀表板]****，讓您下一次登入時可以在儀表板上看到 Data Factory。
-8. 按一下 [新增 Data Factory]**** 刀鋒視窗上的 [建立]****。
-9. 您會看到 Data Factory 建立在 Azure 入口網站的 [儀表板]**** 中。 在 Data Factory 成功建立後，您會看到 Data Factory 頁面，顯示 Data Factory 的內容。
+7. 選取 [釘選到儀表板]，讓您下一次登入時可以在儀表板上看到 Data Factory。
+8. 按一下 [新增 Data Factory] 刀鋒視窗上的 [建立]。
+9. 您會看到 Data Factory 建立在 Azure 入口網站的 [儀表板] 中。 在 Data Factory 成功建立後，您會看到 Data Factory 頁面，顯示 Data Factory 的內容。
 
    ![Data Factory 首頁](media/data-factory-stored-proc-activity/data-factory-home-page.png)
 
 ### <a name="create-an-azure-sql-linked-service"></a>建立 Azure SQL 連結服務
 建立資料處理站之後，您可以建立 Azure SQL 連結服務，將包含 sampletable 資料表和 usp_sample 預存程式的 Azure SQL Database 中的資料庫連結至您的 data factory。
 
-1. 在 **SProcDF** 的 [Data Factory]**** 刀鋒視窗上，按一下 [製作和部署]**** 來啟動 Data Factory 編輯器。
-2. 在命令列上按一下 [新增資料儲存區]****，然後選擇 [Azure SQL Database]****。 您應該會在編輯器中看到用來建立 Azure SQL 連結服務的 JSON 指令碼。
+1. 在 **SProcDF** 的 [Data Factory] 刀鋒視窗上，按一下 [製作和部署] 來啟動 Data Factory 編輯器。
+2. 在命令列上按一下 [新增資料儲存區]，然後選擇 [Azure SQL Database]。 您應該會在編輯器中看到用來建立 Azure SQL 連結服務的 JSON 指令碼。
 
    ![新增資料存放區1](media/data-factory-stored-proc-activity/new-data-store.png)
 3. 在 JSON 指令碼中，進行下列變更：
 
-   1. `<servername>`以您的伺服器名稱取代。
+   1. 以伺服器的名稱取代 `<servername>`。
    2. 以建立資料表和預存程序的資料庫取代 `<databasename>`。
    3. 以具有資料庫存取權的使用者帳戶取代 `<username@servername>`。
    4. 以使用者帳戶的密碼取代 `<password>`。
 
       ![新增資料存放區2](media/data-factory-stored-proc-activity/azure-sql-linked-service.png)
-4. 若要部署連結服務，請按一下命令列的 [部署]****。 在左側的樹狀檢視中確認您已看到 AzureSqlLinkedService。
+4. 若要部署連結服務，請按一下命令列的 [部署]。 在左側的樹狀檢視中確認您已看到 AzureSqlLinkedService。
 
     ![連結服務的樹狀檢視1](media/data-factory-stored-proc-activity/tree-view.png)
 
 ### <a name="create-an-output-dataset"></a>建立輸出資料集
-即使預存程序不會產生任何資料，您也必須為預存程序活動指定輸出資料集。 這是因為輸出資料集會驅動活動排程 (活動的執行頻率 - 每小時、每天等)。 輸出資料集必須使用參考 Azure SQL Database 或 Azure Synapse Analytics 或您要在其中執行預存程式之 SQL Server 資料庫的 **連結服務** 。 輸出資料集可以用來傳遞預存程序結果，以供管線中的另一個活動 ([鏈結活動](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) 進行後續處理。 不過，Data Factory 不會自動將預存程序的輸出寫入至此資料集。 它是會寫入至輸出資料集所指向之 SQL 資料表的預存程序。 在某些情況下，輸出資料集可以是「虛擬資料集」****(此資料集指向並未真正存有預存程序輸出資料的資料表)。 此虛擬資料集僅用來指定用於執行預存程序活動的排程。
+即使預存程序不會產生任何資料，您也必須為預存程序活動指定輸出資料集。 這是因為輸出資料集會驅動活動排程 (活動的執行頻率 - 每小時、每天等)。 輸出資料集必須使用參考 Azure SQL Database 或 Azure Synapse Analytics 或您要在其中執行預存程式之 SQL Server 資料庫的 **連結服務** 。 輸出資料集可以用來傳遞預存程序結果，以供管線中的另一個活動 ([鏈結活動](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) 進行後續處理。 不過，Data Factory 不會自動將預存程序的輸出寫入至此資料集。 它是會寫入至輸出資料集所指向之 SQL 資料表的預存程序。 在某些情況下，輸出資料集可以是「虛擬資料集」(此資料集指向並未真正存有預存程序輸出資料的資料表)。 此虛擬資料集僅用來指定用於執行預存程序活動的排程。
 
-1. 按一下 **.。。在工具列上，** 按一下 [ **新增資料集**]，然後按一下 [ **Azure SQL**]。 命令列的 [新資料集]****，然後選取 [Azure SQL]****。
+1. 按一下 **.。。在工具列上，** 按一下 [ **新增資料集**]，然後按一下 [ **Azure SQL**]。 命令列的 [新資料集]，然後選取 [Azure SQL]。
 
     ![連結服務2的樹狀檢視](media/data-factory-stored-proc-activity/new-dataset.png)
 2. 將下列 JSON 指令碼複製/貼到 JSON 編輯器。
@@ -148,7 +148,7 @@ ms.locfileid: "92359980"
         }
     }
     ```
-3. 若要部署資料集，請按一下命令列上的 [部署]****。 確認您已在樹狀檢視中看到該資料集。
+3. 若要部署資料集，請按一下命令列上的 [部署]。 確認您已在樹狀檢視中看到該資料集。
 
     ![含連結服務的樹狀檢視](media/data-factory-stored-proc-activity/tree-view-2.png)
 
@@ -195,10 +195,10 @@ ms.locfileid: "92359980"
         }
     }
     ```
-3. 若要部署管線，請按一下工具列上的 [部署]****。
+3. 若要部署管線，請按一下工具列上的 [部署]。
 
 ### <a name="monitor-the-pipeline"></a>監視管線
-1. 按一下 **X** 以關閉 [Data Factory 編輯器] 刀鋒視窗、瀏覽回 [Data Factory] 刀鋒視窗，然後按一下 [圖表]****。
+1. 按一下 **X** 以關閉 [Data Factory 編輯器] 刀鋒視窗、瀏覽回 [Data Factory] 刀鋒視窗，然後按一下 [圖表]。
 
     ![圖表磚1](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
 2. 在 [圖表檢視] 中，您會看到管線的概觀，以及在本教學課程中使用的資料集。
@@ -272,7 +272,7 @@ ms.locfileid: "92359980"
 }
 ```
 
-同樣地，若要將預存程序活動與「下游活動」****(執行順序在預存程序活動之後的活動) 連結，請在管線中指定預存程序活動的輸出資料集作為下游活動的輸入。
+同樣地，若要將預存程序活動與「下游活動」(執行順序在預存程序活動之後的活動) 連結，請在管線中指定預存程序活動的輸出資料集作為下游活動的輸入。
 
 > [!IMPORTANT]
 > 將資料複製到 Azure SQL Database 或 SQL Server 時，您可以使用 **sqlWriterStoredProcedureName** 屬性在複製活動中設定 **SqlSink** 以叫用預存程序。 如需詳細資訊，請參閱[從複製活動叫用預存程序](data-factory-invoke-stored-procedure-from-copy-activity.md)。 如需有關此屬性的詳細資料，請參閱下列連接器文章：[Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)。

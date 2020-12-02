@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/18/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3bfcd652572b989e98bf4c7cb717cb314dfbaaeb
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: c1bab9b40766fe22baa94497d71d3f8757e1c210
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359879"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348750"
 ---
 # <a name="tutorial-configure-airstack-for-automatic-user-provisioning"></a>教學課程：設定 Airstack 來自動佈建使用者
 
@@ -89,7 +89,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 本節將引導您逐步設定 Azure AD 佈建服務，以根據 Azure AD 中的使用者和/或群組指派，在 Airstack 中建立、更新和停用使用者和/或群組。
 
 > [!TIP]
-> 建議您選擇為 Airstack 啟用 SAML 型單一登入，請遵循 [Airstack 單一登入教學課程](./airstack-tutorial.md)中提供的指示。 雖然自動使用者佈建和單一登入這兩個功能互相補充，您還是可以將這兩者分開設定
+> 建議您選擇為 Airstack 啟用 SAML 型單一登入，方法是遵循 [Airstack 單一登入教學課程](./airstack-tutorial.md)中提供的指示。 雖然自動使用者佈建和單一登入這兩個功能互相補充，您還是可以將這兩者分開設定
 
 ### <a name="to-configure-automatic-user-provisioning-for-airstack-in-azure-ad"></a>在 Azure AD 中為 Airstack 設定自動使用者佈建：
 

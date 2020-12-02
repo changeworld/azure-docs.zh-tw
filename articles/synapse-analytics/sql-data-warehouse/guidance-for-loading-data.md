@@ -1,30 +1,30 @@
 ---
-title: Synapse SQL 集區的資料載入最佳作法
-description: 使用 Synapse SQL 集區載入資料的建議和效能優化。
+title: 專用 SQL 集區的資料載入最佳作法
+description: 使用 Azure Synapse Analytics 中的專用 SQL 集區載入資料的建議和效能優化。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 02/04/2020
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 34a536ea535fa222340bd004253ee54b9c13bea9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39625914f179dfc8d5511b9a3d386cc8332b7efa
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441216"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456304"
 ---
-# <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>使用 Synapse SQL 集區載入資料的最佳作法
+# <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用專用的 SQL 集區載入資料的最佳作法
 
-在本文中，您將瞭解使用 SQL 集區載入資料的建議和效能優化。
+在本文中，您將瞭解使用專用的 SQL 集區載入資料的建議和效能優化。
 
 ## <a name="preparing-data-in-azure-storage"></a>在 Azure 儲存體中準備資料
 
-若要將延遲降至最低，請共置您的儲存層和您的 SQL 集區。
+若要將延遲降至最低，請共置您的儲存層和您專用的 SQL 集區。
 
 將資料匯出成 ORC 檔案格式時，如有大量文字資料行，則可能發生 Java 記憶體不足錯誤。 若要解決這項限制，只能匯出部分資料行。
 
@@ -34,23 +34,23 @@ ms.locfileid: "89441216"
 
 ## <a name="running-loads-with-enough-compute"></a>使用足夠的計算資源執行載入
 
-如需最快的載入速度，一次只執行一項載入作業。 如果這不可行，請同時執行極少的載入數。 如果您預期會有大量載入作業，請考慮在負載前相應增加您的 SQL 集區。
+如需最快的載入速度，一次只執行一項載入作業。 如果這不可行，請同時執行極少的載入數。 如果您預期會有大量載入作業，請考慮在負載前相應增加您專用的 SQL 集區。
 
 若要以適當的計算資源執行載入，請建立為了執行載入而指定的載入使用者。 將每個載入使用者分類為特定的工作負載群組。 若要執行負載，請以其中一個載入使用者的形式登入，然後執行負載。 負載會以使用者的工作負載群組執行。  
 
 ### <a name="example-of-creating-a-loading-user"></a>建立載入使用者的範例
 
-這個範例會建立分類至特定工作負載群組的載入使用者。 第一個步驟是**連線到 主要資料庫**並建立登入。
+這個範例會建立分類至特定工作負載群組的載入使用者。 第一個步驟是 **連線到 主要資料庫** 並建立登入。
 
 ```sql
    -- Connect to master
    CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-連接到 SQL 集區，並建立使用者。 下列程式碼假設您已連接到名為 mySampleDataWarehouse 的資料庫。 它會示範如何建立名為 loader 的使用者，並為使用者提供使用 [COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)建立資料表和載入的許可權。 然後，它會將使用者分類為具有最大資源的 DataLoads 工作負載群組。 
+連接到專用的 SQL 集區，並建立使用者。 下列程式碼假設您已連接到名為 mySampleDataWarehouse 的資料庫。 它會示範如何建立名為 loader 的使用者，並為使用者提供使用 [COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)建立資料表和載入的許可權。 然後，它會將使用者分類為具有最大資源的 DataLoads 工作負載群組。 
 
 ```sql
-   -- Connect to the SQL pool
+   -- Connect to the dedicated SQL pool
    CREATE USER loader FOR LOGIN loader;
    GRANT ADMINISTER DATABASE BULK OPERATIONS TO loader;
    GRANT INSERT ON <yourtablename> TO loader;
@@ -76,7 +76,7 @@ ms.locfileid: "89441216"
 
 ## <a name="allowing-multiple-users-to-load-polybase"></a>允許多個使用者載入 (PolyBase) 
 
-通常需要讓多個使用者將資料載入 SQL 集區。 以 [SELECT (transact-sql) ](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (PolyBase) 中的 CREATE TABLE 載入，需要資料庫的 CONTROL 許可權。  CONTROL 權限可控制所有結構描述的存取。
+通常需要讓多個使用者將資料載入專用的 SQL 集區。 以 [SELECT (transact-sql) ](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (PolyBase) 中的 CREATE TABLE 載入，需要資料庫的 CONTROL 許可權。  CONTROL 權限可控制所有結構描述的存取。
 
 您可能不希望所有的載入使用者都能控制所有結構描述的存取。 若要限制權限，請使用 DENY CONTROL 陳述式。
 
@@ -91,9 +91,9 @@ User_A 和 user_B 現在已從其他部門的架構鎖定。
 
 ## <a name="loading-to-a-staging-table"></a>載入至暫存表格
 
-若要達到將資料移至 SQL 集區資料表的最快載入速度，請將資料載入至臨時表。  將暫存資料表定義為堆積，並使用循環配置資源作為散發選項。
+若要達到將資料移至專用 SQL 集區資料表的最快載入速度，請將資料載入至臨時表。  將暫存資料表定義為堆積，並使用循環配置資源作為散發選項。
 
-請考慮載入通常是兩個步驟的程式，您可以在其中先載入至臨時表，然後將資料插入生產 SQL 集區資料表。 如果生產資料表使用雜湊散發，您若定義採用雜湊散發的暫存資料表，則載入和插入的總時間可能比較快。
+請考慮載入通常是兩個步驟的程式，您可以在其中先載入至臨時表，然後將資料插入生產專用的 SQL 集區資料表。 如果生產資料表使用雜湊散發，您若定義採用雜湊散發的暫存資料表，則載入和插入的總時間可能比較快。
 
 載入至暫存表格所需的時間比較長，但是將資料列插入生產資料表的第二個步驟不會導致資料四處移動。
 
@@ -111,14 +111,14 @@ User_A 和 user_B 現在已從其他部門的架構鎖定。
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>使用 SqLBulkCopy API 或 bcp 時，增加批次大小
 
-使用 COPY 語句載入將提供最高的輸送量與 SQL 集區。 如果您無法使用此複製來載入，而且必須使用 [SQLBULKCOPY API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 或 [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，您應該考慮增加批次大小，以獲得更好的輸送量。
+使用 COPY 語句載入將會提供具有專用 SQL 集區的最高輸送量。 如果您無法使用此複製來載入，而且必須使用 [SQLBULKCOPY API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 或 [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，您應該考慮增加批次大小，以獲得更好的輸送量。
 
 > [!TIP]
 > 介於 100 K 到1百萬個數據列之間的批次大小是判斷最佳批次大小容量的建議基準。
 
 ## <a name="handling-loading-failures"></a>處理載入失敗
 
-使用外部資料表的載入可能會失敗，並顯示「查詢已中止 -- 從外部來源讀取時已達最大拒絕閾值」** 錯誤訊息。 此訊息表示您的外部資料包含「錯誤」記錄。
+使用外部資料表的載入可能會失敗，並顯示「查詢已中止 -- 從外部來源讀取時已達最大拒絕閾值」錯誤訊息。 此訊息表示您的外部資料包含「錯誤」記錄。
 
 如果資料記錄符合下列其中一個條件，則會被視為中途變更：
 

@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 19942e5400be63dfde48b9653282fb93bcb1ec42
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f524eae791ab3944fb326b867e5f6823a35b432c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174810"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348189"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>教學課程 - 建置 SCIM 端點並設定使用 Azure AD 的使用者佈建
 
@@ -199,29 +199,21 @@ SCIM RFC 中定義了數個端點。 您可以從 /User 端點開始著手，然
   - [建立使用者](#create-user) ([要求](#request) / [回應](#response))
   - [取得使用者](#get-user) ([要求](#request-1) / [回應](#response-1))
   - [依查詢取得使用者](#get-user-by-query) ([要求](#request-2) / [回應](#response-2))
-  - [依查詢取得使用者 - 零個結果](#get-user-by-query---zero-results) ([要求](#request-3)
-/ [回應](#response-3))
-  - [更新使用者 [多重值屬性]](#update-user-multi-valued-properties) ([要求](#request-4) /  [回應](#response-4))
-  - [更新使用者 [單一值屬性]](#update-user-single-valued-properties) ([要求](#request-5)
-/ [回應](#response-5)) 
-  - [停用使用者](#disable-user) ([要求](#request-14) / 
-[回應](#response-14))
-  - [刪除使用者](#delete-user) ([要求](#request-6) / 
-[回應](#response-6))
+  - [依查詢取得使用者 - 零個結果](#get-user-by-query---zero-results) ([要求](#request-3) / [回應](#response-3))
+  - [更新使用者 [多重值屬性]](#update-user-multi-valued-properties) ([要求](#request-4) / [回應](#response-4))
+  - [更新使用者 [單一值屬性]](#update-user-single-valued-properties) ([要求](#request-5) / [回應](#response-5)) 
+  - [停用使用者](#disable-user) ([要求](#request-14) / [回應](#response-14))
+  - [刪除使用者](#delete-user) ([要求](#request-6) / [回應](#response-6))
 
 
 [群組作業](#group-operations)
   - [建立群組](#create-group) ([要求](#request-7) / [回應](#response-7))
   - [取得群組](#get-group) ([要求](#request-8) / [回應](#response-8))
   - [依 displayName 取得群組](#get-group-by-displayname) ([要求](#request-9) / [回應](#response-9))
-  - [更新群組 [非成員屬性]](#update-group-non-member-attributes) ([要求](#request-10)/
- [回應](#response-10))
-  - [更新群組 [新增成員]](#update-group-add-members) ([要求](#request-11) /
-[回應](#response-11))
-  - [更新群組 [移除成員]](#update-group-remove-members) ([要求](#request-12) /
-[回應](#response-12))
-  - [刪除群組](#delete-group) ([要求](#request-13) /
-[回應](#response-13))
+  - [更新群組 [非成員屬性]](#update-group-non-member-attributes) ([要求](#request-10) / [回應](#response-10))
+  - [更新群組 [新增成員]](#update-group-add-members) ([要求](#request-11) / [回應](#response-11))
+  - [更新群組 [移除成員]](#update-group-remove-members) ([要求](#request-12) / [回應](#response-12))
+  - [刪除群組](#delete-group) ([要求](#request-13) / [回應](#response-13))
 
 ### <a name="user-operations"></a>使用者作業
 

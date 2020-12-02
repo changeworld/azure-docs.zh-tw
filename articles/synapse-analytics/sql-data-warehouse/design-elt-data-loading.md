@@ -1,37 +1,37 @@
 ---
 title: 設計 ELT，而不是 ETL
-description: 針對 Azure Synapse Analytics 中的 Synapse SQL 集區實作彈性的資料載入策略
+description: 針對 Azure Synapse Analytics 內專用的 SQL 集區，執行彈性的資料載入策略。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 05/13/2020
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 0533e76863d01675cee7aaca79e32821e5efc749
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8b75345743bb398458752d03f853738df713b4f9
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92507798"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456442"
 ---
-# <a name="data-loading-strategies-for-synapse-sql-pool"></a>Synapse SQL 集區的資料載入策略
+# <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的資料載入策略
 
-傳統 SMP SQL 集區會使用擷取、轉換和載入 (ETL) 程序來載入資料。 在 Azure Synapse Analytics 內的 Synapse SQL 會使用分散式查詢處理架構，以利用計算和儲存體資源的擴充性和彈性。
+傳統的 SMP 專用 SQL 集區會使用解壓縮、轉換和載入 (ETL) 進程來載入資料。 在 Azure Synapse Analytics 內的 Synapse SQL 會使用分散式查詢處理架構，以利用計算和儲存體資源的擴充性和彈性。
 
 使用「解壓縮」、「載入」和「轉換」 (ELT) 進程會利用內建的分散式查詢處理功能，並在載入前消除資料轉換所需的資源。
 
-雖然 SQL 集區支援許多載入方法，包括廣泛的 SQL Server 選項（例如 [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 和 [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)），但載入資料最快且可調整的方式是透過 PolyBase 外部資料表和 [COPY 語句](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+雖然專用的 SQL 集區支援許多載入方法，包括廣泛的 SQL Server 選項（例如 [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 和 [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)），但載入資料最快且可調整的方式是透過 PolyBase 外部資料表和 [COPY 語句](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 使用 PolyBase 和 COPY 陳述式，您可以透過 T-SQL 語言存取在 Azure Blob 儲存體或 Azure Data Lake Store 中儲存的外部資料。 若要在載入時擁有最大的彈性，建議使用 COPY 陳述式。
 
 
 ## <a name="what-is-elt"></a>什麼是 ELT?
 
-擷取、載入及轉換 (ELT) 是從來源系統擷取資料、載入至 SQL 集區再進行轉換的程序。
+解壓縮、載入和轉換 (ELT) 是從來源系統解壓縮資料、載入至專用 SQL 集區，然後轉換的程式。
 
 實作 ELT 的基本步驟如下：
 
@@ -62,7 +62,7 @@ ms.locfileid: "92507798"
 
 - [Azure ExpressRoute](../../expressroute/expressroute-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 服務會增強網路輸送量、效能及可預測性。 ExpressRoute 是一項服務，它會透過專用私人連線將您的資料路由傳送至 Azure。 ExpressRoute 連線不會透過公用網際網路路由傳送資料。 相較於透過公用網際網路的一般連線，這個連線提供更為可靠、速度更快、延遲更低且安全性更高的網際網路連線。
 - [AZCopy 公用程式](../../storage/common/storage-choose-data-transfer-solution.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)透過公用網際網路將資料移至 Azure 儲存體。 如果您的資料大小小於 10 TB，就適用這個選項。 若要使用 AZCopy 定期執行載入，請測試網路速度以查看是否可以接受。
-- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 具有閘道，您可以在本機伺服器上安裝。 然後您可以建立管線，將資料從本機伺服器移至 Azure 儲存體。 若要搭配 SQL 集區使用 Data Factory，請參閱[針對 SQL 集區載入資料](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 具有閘道，您可以在本機伺服器上安裝。 然後您可以建立管線，將資料從本機伺服器移至 Azure 儲存體。 若要搭配使用 Data Factory 與專用的 SQL 集區，請參閱 [載入專用 sql 集區的資料](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ## <a name="3-prepare-the-data-for-loading"></a>3.準備要載入的資料
 
@@ -70,9 +70,9 @@ ms.locfileid: "92507798"
 
 ### <a name="define-the-tables"></a>定義資料表
 
-當您使用 COPY 語句時，必須先定義您要在 SQL 集區中載入的資料表 (s) 。
+當您使用 COPY 語句時，必須先定義您要在專用 SQL 集區中載入的資料表 (s) 。
 
-如果您使用 PolyBase，您必須先在 SQL 集區中定義外部資料表，然後再載入。 PolyBase 使用外部資料表以定義及存取 Azure 儲存體中的資料。 外部資料表類似於資料表檢視。 外部資料表包含資料表結構描述，並指向儲存在 SQL 集區外部的資料。
+如果您要使用 PolyBase，您必須先在專用的 SQL 集區中定義外部資料表，然後再載入。 PolyBase 使用外部資料表以定義及存取 Azure 儲存體中的資料。 外部資料表類似於資料表檢視。 外部資料表包含資料表架構，並指向儲存在專用 SQL 集區以外的資料。
 
 定義外部資料表牽涉到指定資料來源、文字檔格式和資料表定義。 您需要的 T-SQL 語法參考文章如下：
 
@@ -113,7 +113,7 @@ ms.locfileid: "92507798"
 |                            INT64                             |            INT(64, true)            |      BIGINT      |
 |                            INT64                             |           INT(64, false)            |  decimal(20,0)   |
 |                            INT64                             |                DECIMAL                |     decimal      |
-|                            INT64                             |         時間 (MILLIS)                  |       time       |
+|                            INT64                             |         TIME (MILLIS)                 |       time       |
 |                            INT64                             | 時間戳記 (MILLIS)                   |    datetime2     |
 | [複雜類型](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23lists&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=6Luk047sK26ijTzfvKMYc%2FNu%2Fz0AlLCX8lKKTI%2F8B5o%3D&reserved=0) |                 清單                  |   varchar(max)   |
 | [複雜類型](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23maps&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=FiThqXxjgmZBVRyigHzfh5V7Z%2BPZHjud2IkUUM43I7o%3D&reserved=0) |                  MAP                  |   varchar(max)   |
@@ -130,12 +130,12 @@ ms.locfileid: "92507798"
 若要格式化文字檔：
 
 - 如果您的資料是來自非關聯式來源，您必須將它轉換成資料列和資料行。 無論資料是來自關聯式或非關聯式來源，資料都必須轉換以對齊您打算將資料載入其中之資料表的資料行定義。
-- 格式化文字檔中的資料，以對齊目的地資料表中的資料行和資料類型。 如果外部文字檔與 SQL 集區資料表的資料類型之間沒有對齊，會導致在載入期間資料列遭到拒絕。
+- 格式化文字檔中的資料，以對齊目的地資料表中的資料行和資料類型。 外部文字檔中的資料類型與專用 SQL 集區資料表之間的不一致會導致在載入期間拒絕資料列。
 - 使用結束字元分隔文字檔中的欄位。  請務必使用在來源資料中找不到的字元或字元序列。 搭配 [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 使用您指定的結束字元。
 
 ## <a name="4-load-the-data-using-polybase-or-the-copy-statement"></a>4.使用 PolyBase 或 COPY 陳述式載入資料
 
-這是將資料載入暫存資料表的最佳做法。 暫存資料表可讓您處理錯誤，而不會干擾生產資料表。 臨時表也可讓您在將資料插入生產資料表之前，先使用 SQL 集區平行處理架構進行資料轉換。
+這是將資料載入暫存資料表的最佳做法。 暫存資料表可讓您處理錯誤，而不會干擾生產資料表。 臨時表也可讓您在將資料插入生產資料表之前，先使用專用的 SQL 集區平行處理架構進行資料轉換。
 
 ### <a name="options-for-loading"></a>載入的選項
 

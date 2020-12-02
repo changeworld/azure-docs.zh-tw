@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: ca167a2ae313c29581d40fe921a8742b9b6b61fe
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 983b1a5e024a44733fab418a67375f232e66cfe4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686050"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457171"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 的存取與身分識別選項
 
@@ -46,7 +46,7 @@ ClusterRole 會以同樣方式將權限授與資源，但這些權限可以套�
 
 ### <a name="rolebindings-and-clusterrolebindings"></a>RoleBindings 和 ClusterRoleBindings
 
-一旦將角色定義為可授與權限給資源，您就可以透過 RoleBinding 指派這些 Kubernetes RBAC 權限。 如果您的 AKS 叢集 [與 Azure Active Directory 整合](#azure-active-directory-integration)，系結就是這些 Azure AD 使用者授與在叢集內執行動作之許可權的方式，請參閱如何 [使用 Kubernetes 角色型存取控制和 Azure Active Directory 身分識別來控制](azure-ad-rbac.md)對叢集資源的存取。
+一旦將角色定義為可授與權限給資源，您就可以透過 RoleBinding 指派這些 Kubernetes RBAC 權限。 如果您的 AKS 叢集 [與 Azure Active Directory (Azure AD) 整合 ](#azure-active-directory-integration)，系結就是這些 Azure AD 使用者授與的許可權，以在叢集中執行動作，請參閱如何 [使用 Kubernetes 角色型存取控制和 Azure Active Directory 身分識別來控制對叢集資源的存取](azure-ad-rbac.md)。
 
 角色繫結會用來為指定命名空間指派角色。 此方法可讓您以邏輯方式區隔單一 AKS 叢集，讓使用者只能存取獲派命名空間中的應用程式資源。 如果您需要將角色繫結到整個叢集，或繫結到指定命名空間外部的叢集資源，可以改用 ClusterRoleBindings。
 
@@ -144,6 +144,22 @@ AKS 提供下列四個內建角色。 它們類似于 Kubernetes 的 [內建角�
 | Azure Kubernetes Service RBAC 叢集管理員  | 允許超級使用者存取在任何資源上執行任何動作。 它可讓您完整控制叢集中的每個資源，以及所有命名空間中的資源。 |
 
 **若要瞭解如何啟用 Azure RBAC 以進行 Kubernetes 授權，請 [參閱這裡](manage-azure-rbac.md)。**
+
+## <a name="summary"></a>摘要
+
+下表摘要說明當 Azure AD 整合啟用時，使用者可以向 Kubernetes 進行驗證的方式。  在所有情況下，使用者的命令順序為：
+1. 執行 `az login` 以向 Azure 進行驗證。
+1. 執行 `az aks get-credentials` 以將叢集的認證下載至 `.kube/config` 。
+1. 執行 `kubectl` 命令 (第一個命令可能會觸發以瀏覽器為基礎的驗證，以驗證叢集，如下表所述) 。
+
+第二個數據行中所指的角色授與是 Azure 入口網站中 [ **存取控制** ] 索引標籤上所顯示的 Azure RBAC 角色授與。 叢集系統管理員 Azure AD 群組會顯示在入口網站中的 [ **設定] 索引** 標籤上， (或 `--aad-admin-group-object-ids` Azure CLI) 中的參數名稱。
+
+| 描述        | 需要角色授與| 叢集系統管理員 Azure AD 群組 (s)  | 使用時機 |
+| -------------------|------------|----------------------------|-------------|
+| 使用用戶端憑證的舊版管理員登入| **Azure Kubernetes 管理員角色**。 此角色可 `az aks get-credentials` 用於 `--admin` 旗標，這會將 [舊版 (非 Azure AD) 叢集系統管理員憑證](control-kubeconfig-access.md) 下載到使用者 `.kube/config` 。 這是「Azure Kubernetes 管理員角色」唯一的用途。|n/a|如果您被永久封鎖，但無法存取可存取叢集的有效 Azure AD 群組。| 
+| 具有手動 (叢集) RoleBindings 的 Azure AD| **Azure Kubernetes 使用者角色**。 「使用者」角色允許在 `az aks get-credentials` 沒有旗標的情況下使用 `--admin` 。  (這是「Azure Kubernetes 使用者角色」的唯一用途。 ) 結果，在啟用 Azure AD 的叢集上，會將 [空白專案](control-kubeconfig-access.md) 下載到 `.kube/config` 中，以在第一次使用瀏覽器式驗證時觸發瀏覽器型驗證 `kubectl` 。| 使用者不在這些群組中。 由於使用者不在任何叢集系統管理員群組中，因此其權利將由叢集系統管理員所設定的任何 RoleBindings 或 ClusterRoleBindings 完全控制。  (Cluster) RoleBindings [提名 Azure AD 的使用者或 Azure AD 群組](azure-ad-rbac.md) 作為其 `subjects` 。 如果未設定這類系結，使用者將無法 excute 任何 `kubectl` 命令。|如果您想要更細緻的存取控制，且您未使用 Azure RBAC 進行 Kubernetes 授權。 請注意，設定系結的使用者必須以這個表格中所列的其中一種方法來登入。|
+| 依管理群組成員 Azure AD| 同上|使用者是此處所列其中一個群組的成員。 AKS 會自動產生 ClusterRoleBinding，將所有列出的群組系結至 `cluster-admin` Kubernetes 角色。 因此，這些群組中的使用者可以執行所有 `kubectl` 命令 `cluster-admin` 。|如果您想要為使用者提供完整的系統管理員許可權，而 _不_ 是使用 Azure RBAC 進行 Kubernetes 授權，則為。|
+| 使用適用于 Kubernetes 授權的 Azure RBAC Azure AD|兩個角色：首先， **Azure Kubernetes 使用者角色** (如上) 所示。 其次，其中一個「Azure Kubernetes Service **RBAC**...」以上列出的角色，或您自己的自訂替代方案。|啟用適用于 Kubernetes 授權的 Azure RBAC 時，[設定] 索引標籤上的 [管理員角色] 欄位是不相關的。|您正在使用 Azure RBAC 進行 Kubernetes 授權。 這種方法可讓您更精細地控制，而不需要設定 RoleBindings 或 ClusterRoleBindings。|
 
 ## <a name="next-steps"></a>後續步驟
 

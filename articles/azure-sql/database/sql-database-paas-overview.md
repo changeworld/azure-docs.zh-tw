@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: bf7e99f6e6201afefd316deafe37e38088fb9fae
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 0bd6300f4b9dbcf76b5447a0fb58502b7aebf311
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187114"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451421"
 ---
 # <a name="what-is-azure-sql-database"></a>什麼是 Azure SQL Database？
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -200,7 +200,7 @@ SQL Database 讓應用程式的建置及維護更簡易也更有生產力。 SQL
 |[Azure Data Studio](/sql/azure-data-studio/)|可在 Windows、macOS 和 Linux 上執行的跨平台資料庫工具。|
 |[Transact-SQL](/sql/ssms/download-sql-server-management-studio-ssms)|可下載的免費用戶端應用程式，其用於管理任何 SQL 基礎結構 (從 SQL Server 到 SQL Database)。|
 |[Visual Studio 中的 SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt)|可供下載的免費用戶端應用程式，可用來開發 SQL Server 關聯式資料庫、Azure SQL Database 中的資料庫、Integration Services 套件、Analysis Services 資料模型及 Reporting Services 報告。|
-|[Visual Studio Code](https://code.visualstudio.com/docs) \(英文\)|可下載的免費開放原始碼程式碼編輯器，其適用於 Windows、macOS 和 Linux。 其支援延伸模組，包括可供查詢 Microsoft SQL Server、Azure SQL Database 和 Azure Synapse Analytics (先前稱為 SQL 資料倉儲) 的 [mssql 延伸模組](https://aka.ms/mssql-marketplace)。|
+|[Visual Studio Code](https://code.visualstudio.com/docs) \(英文\)|可下載的免費開放原始碼程式碼編輯器，其適用於 Windows、macOS 和 Linux。 其支援擴充功能，包括可供查詢 Microsoft SQL Server、Azure SQL Database 和 Azure Synapse Analytics 的 [mssql 擴充功能](https://aka.ms/mssql-marketplace)。|
 
 SQL Database 支援在 macOS、Linux 和 Windows 上使用 Python、Java、Node.js、PHP、Ruby 和 .NET 建置應用程式。 SQL Database 支援與 SQL Server 相同的[連線庫](connect-query-content-reference-guide.md#libraries)。
 

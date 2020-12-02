@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: Zhchia
-ms.openlocfilehash: 31631209a16024e4414cc19bca37166332b427de
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: d3dee76ada7a9ed48813928937f8f8da8be4add1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359216"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348036"
 ---
 # <a name="tutorial-configure-miro-for-automatic-user-provisioning"></a>教學課程：設定 Miro 來自動佈建使用者
 
@@ -79,7 +79,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 本節將引導您逐步設定 Azure AD 佈建服務，以根據 Azure AD 中的使用者和/或群組指派，在 Miro 中建立、更新和停用使用者和/或群組。
 
 > [!TIP]
-> 建議您選擇為 Miro 啟用 SAML 型單一登入，請遵循 [Miro 單一登入教學課程](./miro-tutorial.md)中提供的指示。 雖然自動使用者佈建和單一登入這兩個功能互相補充，您還是可以將它們分開設定。
+> 建議您選擇為 Miro 啟用 SAML 型單一登入，方法是遵循 [Miro 單一登入教學課程](./miro-tutorial.md)中提供的指示。 雖然自動使用者佈建和單一登入這兩個功能互相補充，您還是可以將它們分開設定。
 
 > [!NOTE]
 > 若要深入了解 Miro 的 SCIM 端點，請參閱[本文](https://help.miro.com/hc/en-us/articles/360036777814)。

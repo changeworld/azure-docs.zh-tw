@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 10/28/2020
-ms.openlocfilehash: 2a648b4f4c614fc64fa7817102215720e51abe7f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d303a5d5b9779a2003b12d063c97c36a90576dd3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095591"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456625"
 ---
 # <a name="co-sell-option-in-partner-center"></a>合作夥伴中心內的共同銷售選項
 
@@ -52,7 +52,7 @@ ms.locfileid: "93095591"
 | 裝置 (硬體)  | 牽涉到從裝置製造商建立或銷售硬體的供應專案。 |
 | IP (應用程式)  | 授權給客戶使用的應用程式或其他 copyrightable 材料。 例如：可在內部部署授權及安裝的 CRM 程式。 |
 | 服務 | 特定一次性專案的實際操作專長，通常是透過顧問提供。 例如：將用戶端的用戶端 (設定為用戶端，並假設負責在傳遞) 之後運算元據庫。 |
-| 受管理的服務 | 雲端式專案的實際操作專長，通常會持續進行。 例如：提供平臺和工具來執行線上資料庫，並提供受控服務提供者所提供的持續管理。 |
+| 受控服務 | 雲端式專案的實際操作專長，通常會持續進行。 例如：提供平臺和工具來執行線上資料庫，並提供受控服務提供者所提供的持續管理。 |
 
 ### <a name="solution-areas"></a>解決方案區域
 
@@ -83,10 +83,10 @@ ms.locfileid: "93095591"
 
 您也可以匯出供應專案的現有連絡人清單，然後對該檔案進行變更。
 
-* *需要的名稱 ()* ：連絡人的名稱。
-* *需要) 的電子郵件地址 (* ：連絡人的電子郵件地址。
-* *作業標題 (必要)* ：職稱。
-* *需要) 角色 (* ：使用下列任何一個角色。
+* *需要的名稱 ()*：連絡人的名稱。
+* *需要) 的電子郵件地址 (*：連絡人的電子郵件地址。
+* *作業標題 (必要)*：職稱。
+* *需要) 角色 (*：使用下列任何一個角色。
 
     | **角色**    | **說明**  |
     | :------------------- | :-------------------|
@@ -108,7 +108,7 @@ ms.locfileid: "93095591"
 
 您可以透過多個工具來建立檔。 我們建議 Microsoft Visio，因為它有多個描述 Azure 架構模型的樣板。
 
-建立參考架構圖表的實用起點是利用 [Azure 架構模型](https://docs.microsoft.com/azure/architecture/browse/)。
+建立參考架構圖表的實用起點是利用 [Azure 架構模型](/azure/architecture/browse/)。
 
 ### <a name="typical-components-of-a-reference-architecture-diagram"></a>參考架構圖表的一般元件
 - 裝載和與您的供應專案互動的雲端服務，包括產生 Azure 耗用量的服務
@@ -123,6 +123,6 @@ ms.locfileid: "93095591"
 
  (上面的範例參考架構圖表適用于可與內部網路網站整合的垂直產業聊天機器人，可透過 Machine Learning 演算法使用供應鏈和來自不同 ERP 系統的製造排程資料來協助預測需求案例。 Bot 的設計目的是要解決銷售人員可在訂單的可能交貨日期認可時的相關問題。 ) 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 如需詳細資訊，請參閱 [使用 Microsoft 銷售](https://partner.microsoft.com/membership/sell-with-microsoft)。

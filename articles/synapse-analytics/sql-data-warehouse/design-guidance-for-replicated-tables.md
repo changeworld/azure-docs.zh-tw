@@ -11,12 +11,12 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 036cb15cf16b5f90dc17ccdce378a073a398d403
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0cf40990d59aff984226244f520e6f8f937713fd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86181330"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456481"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>在 Synapse SQL 集區中使用複寫資料表的設計指引
 
@@ -26,19 +26,19 @@ ms.locfileid: "86181330"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-本文假設您已熟悉 SQL 集區中的資料散發和資料移動概念。  如需詳細資訊，請參閱[架構](massively-parallel-processing-mpp-architecture.md)文章。
+本文假設您已熟悉 SQL 集區中的資料散發和資料移動概念。    如需詳細資訊，請參閱[架構](massively-parallel-processing-mpp-architecture.md)文章。
 
-在資料表設計過程中，請儘可能了解您的資料及查詢資料的方式。  例如，請思考一下下列問題：
+在資料表設計過程中，請儘可能了解您的資料及查詢資料的方式。    例如，請思考一下下列問題：
 
 - 資料表的大小為何？
 - 資料表的重新整理頻率為何？
-- 我是否在 SQL 集區資料庫中有事實資料表和維度資料表？
+- SQL 集區中是否有事實和維度資料表？
 
 ## <a name="what-is-a-replicated-table"></a>什麼是複寫資料表？
 
 複寫資料表在每個計算節點上都有一份可存取的完整資料表複本。 複寫資料表可使在進行聯結或彙總之前，不需要在計算節點之間傳輸資料。 由於資料表有多個複本，因此當資料表大小在壓縮後小於 2 GB 時，複寫資料表的運作效能最佳。  2 GB 不是固定限制。  如果資料是靜態的，而且不會變更，您可以複寫較大的資料表。
 
-下圖顯示每個計算節點上可存取的複寫資料表。 在 SQL 集區中，會將複寫資料表完整複製到每個計算節點上的散發資料庫。
+下圖顯示每個計算節點上可存取的複寫資料表。 在 SQL 集區中，複寫資料表會完整複製到每個計算節點上的散發資料庫。
 
 ![複寫資料表](./media/design-guidance-for-replicated-tables/replicated-table.png "複寫的資料表")  
 
@@ -51,8 +51,8 @@ ms.locfileid: "86181330"
 
 在下列情況下，複寫資料表可能無法產生最佳查詢效能：
 
-- 資料表有頻繁的插入、更新及刪除作業。 資料操作語言 (DML) 作業需要重建複寫資料表。 經常重建會導致效能變差。
-- SQL 集區資料庫的調整頻率很高。 調整 SQL 集區資料庫會變更計算節點的數目，而這會導致重建複寫資料表。
+- 資料表有頻繁的插入、更新及刪除作業。  資料操作語言 (DML) 作業需要重建複寫資料表。  經常重建會導致效能變差。
+- SQL 集區會頻繁地進行調整。 調整 SQL 集區會變更計算節點的數目，這會導致重建複寫資料表。
 - 資料表有大量資料行，但資料作業通常只存取少數資料行。 在此情況下散發資料表，然後針對經常存取的資料行建立索引，可能會比複寫整個資料表還要有效。 當查詢需要進行資料移動時，SQL 集區只會移動所要求資料行中的資料。
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>使用複寫資料表搭配簡單查詢述詞
@@ -174,8 +174,8 @@ SQL 集區是透過維護資料表的主要版本來實作複寫資料表。 會
 
 ```sql
 SELECT [ReplicatedTable] = t.[name]
-  FROM sys.tables t  
-  JOIN sys.pdw_replicated_table_cache_state c  
+  FROM sys.tables t  
+  JOIN sys.pdw_replicated_table_cache_state c  
     ON c.object_id = t.object_id
   JOIN sys.pdw_table_distribution_properties p
     ON p.object_id = t.object_id

@@ -12,25 +12,25 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4e6b0afab5c86131575d0e3d12b9984a8463f5a3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 68c9e594201f0d0689a289e13f2c4ebf909c2f87
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321100"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457096"
 ---
 # <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>使用 Data Factory 在15分鐘內將 1 TB 載入 Azure Synapse Analytics
 > [!NOTE]
-> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱 [使用 Data Factory，在先前的 SQL 資料倉儲) Azure Synapse Analytics (複製資料](../connector-azure-sql-data-warehouse.md)。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱 [使用 Data Factory，將資料複製到 Azure Synapse Analytics 或從中複製資料](../connector-azure-sql-data-warehouse.md)。
 
 
 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 是以雲端為基礎的向外延展資料庫，能夠處理大量資料，包括關聯式和非關聯式。  Azure Synapse Analytics 已針對企業資料倉儲工作負載優化，以大規模平行處理 (MPP) 架構為基礎。  它透過單獨調整儲存體和計算的彈性，來提供雲端彈性。
 
 開始使用 Azure Synapse Analytics 現在比以往使用 **Azure Data Factory** 更容易。  Azure Data Factory 是完全受控的雲端架構資料整合服務，可用來將現有系統的資料填入 Azure Synapse Analytics，並在評估 Azure Synapse Analytics 和建立分析解決方案時省下寶貴的時間。 以下是使用 Azure Data Factory 將資料載入 Azure Synapse Analytics 的主要優點：
 
-* **容易設定** ：不需要編寫指令碼的 5 步驟直覺式精靈。
-* **豐富的資料存放區支援** ：適用于一組豐富內部部署和雲端式資料存放區的內建支援。
-* **安全並符合標準** ：資料是透過 HTTPS 或 ExpressRoute 傳輸，並且具有全域服務可確保資料絕不會離開地理界限
+* **容易設定**：不需要編寫指令碼的 5 步驟直覺式精靈。
+* **豐富的資料存放區支援**：適用于一組豐富內部部署和雲端式資料存放區的內建支援。
+* **安全並符合標準**：資料是透過 HTTPS 或 ExpressRoute 傳輸，並且具有全域服務可確保資料絕不會離開地理界限
 * **使用 polybase 的無與倫比效能** –使用 polybase 是將資料移至 Azure Synapse Analytics 的最有效方式。 您可以使用預備 Blob 功能來達到所有類型之資料存放區 (除了 Azure Blob 儲存體之外) 的高載入速度，而 Polybase 預設支援這項作業。
 
 本文說明如何使用 Data Factory 複製嚮導，在15分鐘內將 1 TB 的資料從 Azure Blob 儲存體載入至 Azure Synapse Analytics，以超過 1.2 GBps 的輸送量。
@@ -116,8 +116,8 @@ ms.locfileid: "93321100"
 3. 在 [新增 Data Factory] 窗格中：
 
    1. 輸入 **LoadIntoSQLDWDataFactory** 作為 [名稱]。
-       Azure Data Factory 的名稱在全域必須是唯一的。 如果您收到錯誤： **data factory 名稱 "LoadIntoSQLDWDataFactory" 無法使用** ，請變更 data factory 的名稱 (例如 yournameLoadIntoSQLDWDataFactory) ，然後再試一次建立。 請參閱 [Data Factory - 命名規則](data-factory-naming-rules.md) 主題，以了解 Data Factory 成品的命名規則。  
-   2. 選取您的 Azure **訂用帳戶** 。
+       Azure Data Factory 的名稱在全域必須是唯一的。 如果您收到錯誤： **data factory 名稱 "LoadIntoSQLDWDataFactory" 無法使用**，請變更 data factory 的名稱 (例如 yournameLoadIntoSQLDWDataFactory) ，然後再試一次建立。 請參閱 [Data Factory - 命名規則](data-factory-naming-rules.md) 主題，以了解 Data Factory 成品的命名規則。  
+   2. 選取您的 Azure **訂用帳戶**。
    3. 針對資源群組，請執行下列其中一個步驟︰
       1. 選取 [使用現有的] 以選取現有的資源群組。
       2. 選取 [建立新的] 以輸入資源群組的名稱。
@@ -156,7 +156,7 @@ ms.locfileid: "93321100"
 
     ![複製精靈 - 來源連接資訊](media/data-factory-load-sql-data-warehouse/source-connection-info.png)
 
-3. 選擇包含 TPC-H 明細行項目檔案的 **資料夾** ，然後按 [下一步]。
+3. 選擇包含 TPC-H 明細行項目檔案的 **資料夾**，然後按 [下一步]。
 
     ![複製精靈 - 選取輸入資料夾](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
 
@@ -167,7 +167,7 @@ ms.locfileid: "93321100"
 ## <a name="step-3-configure-destination"></a>步驟 3︰設定目的地
 本節說明如何 `lineitem` 在 Azure Synapse Analytics 資料庫中設定目的地：資料表。
 
-1. 選擇 [ **Azure Synapse Analytics** ] 作為目的地存放區，然後按 **[下一步]** 。
+1. 選擇 [ **Azure Synapse Analytics** ] 作為目的地存放區，然後按 **[下一步]**。
 
     ![複製精靈 - 選取目的地資料存放區](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 

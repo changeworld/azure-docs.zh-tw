@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2020
+ms.date: 11/30/2020
 ms.author: memildin
-ms.openlocfilehash: 9b715ea890c7c85161a9e360bc16f9a2a608d64b
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: f26fffe8e6b2be6ede064b4750d012b3e4535c66
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95320995"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433321"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -41,6 +41,7 @@ ms.locfileid: "95320995"
 - [自動佈建體驗已改善並擴充](#auto-provisioning-experience-improved-and-expanded)
 - [連續匯出中現在可以使用安全分數 (預覽)](#secure-score-is-now-available-in-continuous-export-preview)
 - [「您應在機器上安裝系統更新」建議現在包含子建議](#system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations)
+- [Azure 入口網站中的原則管理頁面現在會顯示預設原則指派的狀態](#policy-management-page-in-the-azure-portal-now-shows-status-of-default-policy-assignments)
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>已新增 29 個預覽建議，以增加 Azure 安全性效能評定的涵蓋範圍
 
@@ -139,7 +140,11 @@ NIST SP 800-171 R2 標準版現已提供內建方案，可與 Azure 資訊安全
     | where properties.status.code == "Unhealthy"
     ```
 
+### <a name="policy-management-page-in-the-azure-portal-now-shows-status-of-default-policy-assignments"></a>Azure 入口網站中的原則管理頁面現在會顯示預設原則指派的狀態
 
+您現在可以在 Azure 入口網站資訊安全中心的 [安全性原則] 頁面中，看到您的訂用帳戶是否已獲指派預設資訊安全中心原則。
+
+:::image type="content" source="media/release-notes/policy-assignment-info-per-subscription.png" alt-text="顯示預設原則指派的 Azure 資訊安全中心原則管理頁面":::
 
 ## <a name="october-2020"></a>2020 年 10 月
 

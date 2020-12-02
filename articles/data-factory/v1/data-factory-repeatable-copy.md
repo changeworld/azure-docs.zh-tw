@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 10476544e513b52567eb0ca0182039f2c5f482c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd0f389615c95ef9b9bc8280b6486740ddba4fb4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441624"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456836"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Azure Data Factory 中的可重複複製
 
@@ -25,7 +25,7 @@ ms.locfileid: "89441624"
 從關聯式資料存放區複製資料時，請將可重複性謹記在心，以避免產生非預期的結果。 在 Azure Data Factory 中，您可以手動重新執行配量。 您也可以為資料集設定重試原則，使得在發生失敗時，重新執行配量。 以上述任一方式重新執行配量時，您必須確保不論將配量執行多少次，都會讀取相同的資料。  
  
 > [!NOTE]
-> 下面的範例是針對 Azure SQL，但也適用於任何支援矩形資料集的資料存放區。 您可能必須針對資料存放區調整來源的**類型**和 **query** 屬性 (例如：query 而不是 sqlReaderQuery)。   
+> 下面的範例是針對 Azure SQL，但也適用於任何支援矩形資料集的資料存放區。 您可能必須針對資料存放區調整來源的 **類型** 和 **query** 屬性 (例如：query 而不是 sqlReaderQuery)。   
 
 通常從關聯式存放區進行讀取時，您會希望只讀取與該配量對應的資料。 有一個可達到此目的的方法，就是使用 Azure Data Factory 中提供的 WindowStart 和 WindowEnd 系統變數。 若要了解 Azure Data Factory 中的變數與函式，請參閱 [Azure Data Factory - 函式與系統變數](data-factory-functions-variables.md)一文。 範例： 
 
@@ -104,13 +104,13 @@ ID    Product        Quantity    ModifiedDate
 
 ### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>機制 2：使用 sliceIdentifierColumnName
 > [!IMPORTANT]
-> 目前，Azure Synapse Analytics (先前的 SQL 資料倉儲) 不支援 sliceIdentifierColumnName。 
+> 目前 Azure Synapse Analytics 不支援 sliceIdentifierColumnName。 
 
 達成可重複性的第二個機制是在目標資料表中擁有一個專用的資料行 (sliceIdentifierColumnName)。 Azure Data Factory 會使用這個資料行以確保來源和目的地保持同步。 當目的地 SQL 資料表結構描述可彈性變更或定義，就可以使用這種方法。 
 
 Azure Data Factory 會基於可重複性目的使用此資料行，且在過程中 Azure Data Factory 不會對資料表進行任何結構描述變更。 如何使用這個方法：
 
-1. 在目的地 SQL 資料表中定義 **二進位 (32) ** 類型的資料行。 此資料行不應該有任何條件約束。 讓我們針對此範例將這個資料行命名為 AdfSliceIdentifier。
+1. 在目的地 SQL 資料表中定義 **二進位 (32)** 類型的資料行。 此資料行不應該有任何條件約束。 讓我們針對此範例將這個資料行命名為 AdfSliceIdentifier。
 
 
     來源資料表：

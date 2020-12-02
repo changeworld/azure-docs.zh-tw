@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 68d084b7fde7d4c28b1c9b1da1e1c66cb6a63dd8
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: c158358b1c4fcd72d9189d7a991645cb65a4dc83
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359437"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348121"
 ---
 # <a name="tutorial-configure-mindtickle-for-automatic-user-provisioning"></a>教學課程：設定 MindTickle 來自動佈建使用者
 
@@ -83,7 +83,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 本節將引導您逐步設定 Azure AD 佈建服務，以根據 Azure AD 中的使用者和/或群組指派，在 MindTickle 中建立、更新和停用使用者和/或群組。
 
 > [!TIP]
-> 建議您選擇為 MindTickle 啟用 SAML 型單一登入，請遵循 [MindTickle 單一登入教學課程](mindtickle-tutorial.md)中提供的指示。 單一登入和自動使用者佈建可以分開設定，但這兩個功能是互補的
+> 建議您選擇為 MindTickle 啟用 SAML 型單一登入，方法是遵循 [MindTickle 單一登入教學課程](mindtickle-tutorial.md)中提供的指示。 單一登入和自動使用者佈建可以分開設定，但這兩個功能是互補的
 
 ### <a name="to-configure-automatic-user-provisioning-for-mindtickle-in-azure-ad"></a>若要在 Azure AD 中為 MindTickle 設定自動使用者佈建：
 
