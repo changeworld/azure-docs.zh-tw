@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/21/2020
-ms.openlocfilehash: 1e71d3883b8dacefa9b501ee3a9a0533d5c7d515
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 12/02/2020
+ms.openlocfilehash: 57b4b6f3f49e9b82ada4b37c8e2de0697781e063
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592663"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510585"
 ---
 # <a name="execute-r-script-module"></a>執行 R 腳本模組
 
@@ -78,25 +78,27 @@ azureml_main <- function(dataframe1, dataframe2){
  > [!NOTE]
  > 安裝封裝之前，請先檢查是否已存在，如此您就不會重複執行安裝。 重複安裝可能會導致 web 服務要求超時。     
 
+## <a name="access-to-registered-dataset"></a>存取已註冊的資料集
+
+您可以參考下列範例程式碼，以存取您工作區中 [已註冊的資料集](../how-to-create-register-datasets.md) ：
+
+```R
+azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
+  run = get_current_run()
+  ws = run$experiment$workspace
+  dataset = azureml$core$dataset$Dataset$get_by_name(ws, "YOUR DATASET NAME")
+  dataframe2 <- dataset$to_pandas_dataframe()
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
 ## <a name="uploading-files"></a>上傳檔案
 「執行 R 腳本」模組支援使用 Azure Machine Learning R SDK 來上傳檔案。
 
 下列範例示範如何在執行 R 腳本中上傳影像檔案：
 ```R
-
-# R version: 3.5.1
-# The script MUST contain a function named azureml_main,
-# which is the entry point for this module.
-
-# Note that functions dependent on the X11 library,
-# such as "View," are not supported because the X11 library
-# is not preinstalled.
-
-# The entry point function MUST have two input arguments.
-# If the input port is not connected, the corresponding
-# dataframe argument will be null.
-#   Param<dataframe1>: a R DataFrame
-#   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){
   print("R script run.")
 
@@ -119,22 +121,6 @@ azureml_main <- function(dataframe1, dataframe2){
 > [!div class="mx-imgBorder"]
 > ![已上傳影像的預覽](media/module/upload-image-in-r-script.png)
 
-## <a name="access-to-registered-dataset"></a>存取已註冊的資料集
-
-您可以參考下列範例程式碼，以存取您工作區中 [已註冊的資料集](../how-to-create-register-datasets.md) ：
-
-```R
-    azureml_main <- function(dataframe1, dataframe2){
-  print("R script run.")
-  run = get_current_run()
-  ws = run$experiment$workspace
-  dataset = azureml$core$dataset$Dataset$get_by_name(ws, "YOUR DATASET NAME")
-  dataframe2 <- dataset$to_pandas_dataframe()
-  # Return datasets as a Named List
-  return(list(dataset1=dataframe1, dataset2=dataframe2))
-}
-```
-
 ## <a name="how-to-configure-execute-r-script"></a>如何設定執行 R 腳本
 
 [執行 R 腳本] 模組包含作為起點的範例程式碼。
@@ -147,9 +133,9 @@ azureml_main <- function(dataframe1, dataframe2){
 
 1. 連接腳本所需的任何輸入。 輸入是選擇性的，而且可以包含資料和其他 R 程式碼。
 
-    * **Dataset1** ：將第一個輸入參考為 `dataframe1` 。 輸入資料集必須格式化為 CSV、TSV 或 ARFF 檔案。 或者，您也可以連接 Azure Machine Learning 資料集。
+    * **Dataset1**：將第一個輸入參考為 `dataframe1` 。 輸入資料集必須格式化為 CSV、TSV 或 ARFF 檔案。 或者，您也可以連接 Azure Machine Learning 資料集。
 
-    * **Dataset2** ：將第二個輸入參考為 `dataframe2` 。 此資料集也必須格式化為 CSV、TSV 或 ARFF 檔案，或做為 Azure Machine Learning 資料集。
+    * **Dataset2**：將第二個輸入參考為 `dataframe2` 。 此資料集也必須格式化為 CSV、TSV 或 ARFF 檔案，或做為 Azure Machine Learning 資料集。
 
     * **腳本** 組合：第三個輸入接受 .zip 檔。 壓縮檔案可包含多個檔案和多個檔案類型。
 
@@ -194,12 +180,12 @@ azureml_main <- function(dataframe1, dataframe2){
     > [!NOTE]
     > 現有的 R 程式碼可能需要在設計工具管線中執行較少的變更。 例如，您以 CSV 格式提供的輸入資料應該先明確轉換成資料集，您才能在程式碼中使用它。 在 R 語言中使用的資料和資料行類型，在設計工具中使用的資料和資料行類型的某些方式也不同。
 
-1. 如果您的腳本大於 16 KB，請使用 **腳本** 組合埠來避免像 *命令列一樣的錯誤超過16597個字元的限制* 。 
+1. 如果您的腳本大於 16 KB，請使用 **腳本** 組合埠來避免像 *命令列一樣的錯誤超過16597個字元的限制*。 
     
     1. 將腳本和其他自訂資源組合成 zip 檔案。
     1. 將 zip 檔案以檔案 **資料集** 的形式上傳至 studio。 
     1. 從 [設計師撰寫] 頁面左側模組窗格中的 [ *資料集* ] 清單，拖曳資料集模組。 
-    1. 將資料集模組連接至 [ **執行 R 腳本** ] 模組的 **腳本** 組合埠。
+    1. 將資料集模組連接至 [**執行 R 腳本**] 模組的 **腳本** 組合埠。
     
     以下是在腳本套件組合中使用腳本的範例程式碼：
 
@@ -216,7 +202,7 @@ azureml_main <- function(dataframe1, dataframe2){
     }
     ```
 
-1.  針對 [ **隨機種子** ]，輸入要在 R 環境內用來作為隨機種子值的值。 此參數等同於呼叫 R 程式碼中的 `set.seed(value)`。  
+1.  針對 [ **隨機種子**]，輸入要在 R 環境內用來作為隨機種子值的值。 此參數等同於呼叫 R 程式碼中的 `set.seed(value)`。  
 
 1. 提交管線。  
 
@@ -226,7 +212,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 標準訊息和 R 的錯誤會傳回至模組的記錄檔。
 
-如果您需要在 R 腳本中列印結果，可以在模組右面板的 [ **輸出 + 記錄** ] 索引標籤下，找到 **70_driver_log** 中的列印結果。
+如果您需要在 R 腳本中列印結果，可以在模組右面板的 [**輸出 + 記錄**] 索引標籤下，找到 **70_driver_log** 中的列印結果。
 
 ## <a name="sample-scripts"></a>範例指令碼
 
@@ -237,7 +223,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 「執行 R 腳本」模組支援任意 R 腳本檔案作為輸入。 若要使用它們，您必須將它們上傳至您的工作區，作為 .zip 檔案的一部分。
 
-1. 若要將包含 R 程式碼的 .zip 檔案上傳至您的工作區，請移至 [ **資料集** 資產] 頁面。 選取 [ **建立資料集** ]，然後 **選取 [** **從本機** 檔案] 和 [檔案資料集類型] 選項。  
+1. 若要將包含 R 程式碼的 .zip 檔案上傳至您的工作區，請移至 [ **資料集** 資產] 頁面。 選取 [**建立資料集**]，然後 **選取 [** **從本機** 檔案] 和 [檔案資料集類型] 選項。  
 
 1. 確認 zip 壓縮檔案出現在 [資料 **集** ] **類別的** 左側模組樹狀結構中。
 
@@ -289,10 +275,10 @@ azureml_main <- function(dataframe1, dataframe2){
 
 這個範例示範如何使用 .zip 檔案中的資料集做為「執行 R 腳本」模組的輸入。
 
-1. 建立 CSV 格式的資料檔案，並將它命名為 **mydatafile.csv** 。
+1. 建立 CSV 格式的資料檔案，並將它命名為 **mydatafile.csv**。
 1. 建立 .zip 檔案，並將 CSV 檔案新增至封存。
 1. 將 zip 壓縮檔案上傳至您的 Azure Machine Learning 工作區。 
-1. 將產生的資料集連接至 [ **執行 R 腳本** ] 模組的 **ScriptBundle** 輸入。
+1. 將產生的資料集連接至 [**執行 R 腳本**] 模組的 **ScriptBundle** 輸入。
 1. 使用下列程式碼從 zip 壓縮檔案讀取 CSV 資料。
 
 ```R

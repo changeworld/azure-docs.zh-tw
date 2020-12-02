@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0903828b04922104a9dd93ac79459bf73644f35c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f705150f927a08b5ca2f91b702ee0853766ac23a
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365828"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511112"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>如何管理已加入 Azure AD 的裝置上的本機系統管理員群組
 
@@ -33,7 +33,7 @@ ms.locfileid: "92365828"
 - 執行 Azure AD Join 的使用者   
 
 藉由將 Azure AD 角色新增至本機系統管理員群組，您可以直接更新能夠隨時在 Azure AD 中管理裝置的使用者，而無須對裝置進行任何修改。 目前，您無法將群組指派給系統管理員角色。
-Azure AD 也會將 Azure AD 裝置管理員角色新增至本機系統管理員群組，以支援最低權限 (PoLP) 的準則。 除了全域管理員以外，您也可以讓*僅*被指派裝置管理員角色的使用者管理裝置。 
+Azure AD 也會將 Azure AD 裝置管理員角色新增至本機系統管理員群組，以支援最低權限 (PoLP) 的準則。 除了全域管理員以外，您也可以讓 *僅* 被指派裝置管理員角色的使用者管理裝置。 
 
 ## <a name="manage-the-global-administrators-role"></a>管理全域管理員角色
 
@@ -45,14 +45,14 @@ Azure AD 也會將 Azure AD 裝置管理員角色新增至本機系統管理員�
 
 ## <a name="manage-the-device-administrator-role"></a>管理裝置管理員角色 
 
-在 Azure 入口網站中，您可以在 [裝置]**** 頁面上管理裝置管理員角色。 若要開啟 [裝置]**** 頁面：
+在 Azure 入口網站中，您可以在 [裝置] 頁面上管理裝置管理員角色。 若要開啟 [裝置] 頁面：
 
 1. 以全域管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
 1. 搜尋並選取 [Azure Active Directory]  。
-1. 在 [管理]**** 區段中，按一下 [裝置]****。
-1. 在 [裝置]**** 頁面上，按一下 [裝置設定]****。
+1. 在 [管理] 區段中，按一下 [裝置]。
+1. 在 [裝置] 頁面上，按一下 [裝置設定]。
 
-若要修改裝置管理員角色，請設定**加入 Azure AD 的裝置上的其他本機系統管理員**。  
+若要修改裝置管理員角色，請設定 **加入 Azure AD 的裝置上的其他本機系統管理員**。  
 
 ![其他本機系統管理員](./media/assign-local-admin/10.png)
 
@@ -72,14 +72,19 @@ Azure AD 也會將 Azure AD 裝置管理員角色新增至本機系統管理員�
 >[!NOTE]
 > 此功能目前為預覽狀態。
 
+
 從 Windows 10 2004 更新開始，您可以使用 Azure AD 群組，以 [受限的群組](/windows/client-management/mdm/policy-csp-restrictedgroups) MDM 原則來管理 Azure AD 已加入裝置上的系統管理員許可權。 此原則可讓您將個別使用者或 Azure AD 群組指派給已加入 Azure AD 的裝置上的本機系統管理員群組，讓您可以針對不同的裝置群組設定不同的系統管理員。 
 
-目前，Intune 中沒有任何 UI 可用來管理此原則，必須使用 [自訂 Oma-uri 設定](/mem/intune/configuration/custom-settings-windows-10)來設定。 此原則有幾個考慮： 
+>[!NOTE]
+> 開始 Windows 10 20H2 更新時，建議使用 [本機使用者和群組](/windows/client-management/mdm/policy-csp-localusersandgroups) 原則，而不是限制的群組原則
+
+
+目前，Intune 中沒有任何 UI 可用來管理這些原則，而且必須使用 [自訂 Oma-uri 設定](/mem/intune/configuration/custom-settings-windows-10)來設定它們。 使用其中一種原則的幾個考慮： 
 
 - 透過原則新增 Azure AD 群組需要可透過執行群組 API 取得的群組 SID。 SID 是由群組 API 中的屬性所定義 `securityIdentifier` 。
-- 強制使用受限制的群組原則時，會移除不在成員清單上之群組的目前成員。 因此，使用新的成員或群組來強制執行此原則，將會移除現有的系統管理員，也就是已加入裝置的使用者、裝置系統管理員角色，以及裝置的全域管理員角色。 若要避免移除現有的成員，您必須將它們設定為 [受限制的群組] 原則中成員清單的一部分。 
-- 此原則僅適用于 Windows 10 裝置上的下列知名群組：系統管理員、使用者、來賓、Power Users、Remote Desktop Users 和 Remote Management Users。 
-- 使用受限制的群組原則來管理本機系統管理員，並不適用于混合式 Azure AD 加入或 Azure AD 已註冊的裝置。
+- 強制使用受限制的群組原則時，會移除不在成員清單上之群組的目前成員。 因此，使用新的成員或群組來強制執行此原則，將會移除現有的系統管理員，也就是已加入裝置的使用者、裝置系統管理員角色，以及裝置的全域管理員角色。 若要避免移除現有的成員，您必須將它們設定為 [受限制的群組] 原則中成員清單的一部分。 如果您使用允許對群組成員資格進行累加式更新的本機使用者和群組原則，就會解決這項限制
+- 使用這兩個原則的系統管理員許可權只會針對 Windows 10 裝置上的下列已知群組進行評估：系統管理員、使用者、來賓、Power Users、遠端桌面使用者和遠端系統管理使用者。 
+- 使用 Azure AD 群組來管理本機系統管理員，並不適用于混合式 Azure AD 已加入或 Azure AD 註冊的裝置。
 - 雖然受限制的群組原則在 Windows 10 2004 更新之前就已存在，但不支援將 Azure AD 群組作為裝置本機系統管理員群組的成員。 
 
 ## <a name="manage-regular-users"></a>管理一般使用者
@@ -93,7 +98,7 @@ Azure AD 也會將 Azure AD 裝置管理員角色新增至本機系統管理員�
 
 除了使用 Azure AD Join 程序以外，您也可以手動提高一般使用者的權限，使其成為一個特定裝置的本機系統管理員。 若要執行此步驟，您必須已是本機系統管理員群組的成員。 
 
-從 **Windows 10 1709** 版開始，您可以從 [ **設定-> 帳戶] > 其他使用者**執行這項工作。 選取 [新增工作或學校使用者]****，並且在 [使用者帳戶]**** 下輸入使用者的 UPN，然後選取 [帳戶類型]**** 下的 [管理員]**  
+從 **Windows 10 1709** 版開始，您可以從 [ **設定-> 帳戶] > 其他使用者** 執行這項工作。 選取 [新增工作或學校使用者]，並且在 [使用者帳戶] 下輸入使用者的 UPN，然後選取 [帳戶類型] 下的 [管理員]  
  
 此外，您也可以使用命令提示字元來新增使用者：
 

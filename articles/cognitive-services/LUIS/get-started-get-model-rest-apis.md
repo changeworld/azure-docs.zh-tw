@@ -1,25 +1,25 @@
 ---
-title: 快速入門：使用 REST API 變更模型 - LUIS
+title: 如何使用 REST API 變更您的 LUIS 模型
 titleSuffix: Azure Cognitive Services
-description: 在此 REST API 快速入門中，會新增範例語句以變更模型，並定型應用程式。
+description: 在本文中，會新增範例語句以變更模型，並定型應用程式。
 services: cognitive-services
 manager: nitinme
 ms.custom: seodec18, devx-track-python, devx-track-js, devx-track-csharp
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: quickstart
-ms.date: 06/03/2020
+ms.topic: conceptual
+ms.date: 11/30/2020
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 84b3b592f46124dcd5b4e59775361c243dc67754
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 7346037ad804da4f68a2bc6512494c461d7fc5bd
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91534558"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436176"
 ---
-# <a name="quickstart-change-model-with-rest-apis"></a>快速入門：使用 REST API 變更模型
+# <a name="how-to-change-the-luis-model-with-rest-apis"></a>如何使用 REST API 變更 LUIS 模型
 
-在此快速入門中，您會將範例語句新增至 Pizza 應用程式，並且訓練應用程式。 範例語句是對應到意圖的交談使用者文字。 您可以藉由提供與意圖相關的範例語句，教導 LUIS 哪些種類的使用者提供文字屬於哪種意圖。
+在本文中，您會將範例語句新增至 Pizza 應用程式，並且訓練應用程式。 範例語句是對應到意圖的交談使用者文字。 您可以藉由提供與意圖相關的範例語句，教導 LUIS 哪些種類的使用者提供文字屬於哪種意圖。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Get intent with C# and REST](./includes/get-started-get-model-rest-csharp.md)]

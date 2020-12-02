@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/24/2020
-ms.openlocfilehash: 99253aa2e7e2e1f3f58f2ab7d5c40a695c2b9690
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7a2373f0cf7005e465c2d3bd42817b3394a84de
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654849"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510264"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>適用於 Apache HBase 的 Azure HDInsight 加速寫入
 
@@ -20,15 +20,15 @@ ms.locfileid: "88654849"
 
 ## <a name="overview-of-hbase-architecture"></a>HBase 架構總覽
 
-在 HBase 中，資料列 **是由一** 或多個資料行所組成，而且是以資料 **列** 索引 **鍵**來識別。 組成 **資料表**的多個資料列。 資料行包含資料 **格**，這是該資料行中值的時間戳記版本。 資料行會分組為數據 **行系列**，資料行系列中的所有資料行都會儲存在稱為 **HFiles**的儲存體檔案中。
+在 HBase 中，資料列 **是由一** 或多個資料行所組成，而且是以資料 **列** 索引 **鍵** 來識別。 組成 **資料表** 的多個資料列。 資料行包含資料 **格**，這是該資料行中值的時間戳記版本。 資料行會分組為數據 **行系列**，資料行系列中的所有資料行都會儲存在稱為 **HFiles** 的儲存體檔案中。
 
-HBase 中的**區域**是用來平衡資料處理負載。 HBase 會先將資料表的資料列儲存在單一區域中。 當資料表中的資料量增加時，資料列會分散到多個區域。 **區域伺服器** 可以處理多個區域的要求。
+HBase 中的 **區域** 是用來平衡資料處理負載。 HBase 會先將資料表的資料列儲存在單一區域中。 當資料表中的資料量增加時，資料列會分散到多個區域。 **區域伺服器** 可以處理多個區域的要求。
 
 ## <a name="write-ahead-log-for-apache-hbase"></a>預先撰寫 Apache HBase 的記錄檔
 
-HBase 會先將資料更新寫入至一種認可記錄類型，稱為「立即寫入」記錄檔 (WAL) 。 將更新儲存在 WAL 之後，它會寫入記憶體內部 **MemStore**。 當記憶體中的資料達到其最大容量時，就會以 **HFile**的形式寫入磁片。
+HBase 會先將資料更新寫入至一種認可記錄類型，稱為「立即寫入」記錄檔 (WAL) 。 將更新儲存在 WAL 之後，它會寫入記憶體內部 **MemStore**。 當記憶體中的資料達到其最大容量時，就會以 **HFile** 的形式寫入磁片。
 
-如果 **RegionServer** 損毀或在清除 MemStore 之前無法使用，則可以使用預先寫入記錄來重新執行更新。 若沒有 WAL，則在清除**HFile**的更新之前，如果**RegionServer**損毀，則所有更新都會遺失。
+如果 **RegionServer** 損毀或在清除 MemStore 之前無法使用，則可以使用預先寫入記錄來重新執行更新。 若沒有 WAL，則在清除 **HFile** 的更新之前，如果 **RegionServer** 損毀，則所有更新都會遺失。
 
 ## <a name="accelerated-writes-feature-in-azure-hdinsight-for-apache-hbase"></a>Apache HBase Azure HDInsight 中的加速寫入功能
 
@@ -38,7 +38,7 @@ HBase 會先將資料更新寫入至一種認可記錄類型，稱為「立即�
 
 若要使用加速寫入功能建立新的 HBase 叢集，請遵循在 [HDInsight 中設定](../hdinsight-hadoop-provision-linux-clusters.md) 叢集的步驟，直到您到達 **步驟3（儲存體）** 為止。 在 [ **中繼存放區設定**] 下，選取 [ **啟用 HBase 加速寫入**] 旁的核取方塊。 然後，繼續進行叢集建立的其餘步驟。
 
-![啟用 HDInsight Apache HBase 的加速寫入選項](./media/apache-hbase-accelerated-writes/azure-portal-cluster-storage-hbase.png)
+![啟用 HDInsight Apache HBase 的加速寫入選項](./media/apache-hbase-accelerated-writes/azure-portal-create-hbase-wals.png)
 
 ## <a name="other-considerations"></a>其他考量
 
@@ -60,7 +60,7 @@ disable 'mytable'
 
 如果您的 namenode 在縮小後進入安全模式，請使用 hdfs 命令重新複寫複寫中的區塊，並從安全模式取得 hdfs。 此重新複寫可讓您成功重新開機 HBase。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [預先寫入記錄功能](https://hbase.apache.org/book.html#wal)的官方 Apache HBase 檔
 * 若要將 HDInsight Apache HBase 叢集升級為使用加速寫入，請參閱將 [Apache hbase 叢集遷移至新的版本](apache-hbase-migrate-new-version.md)。

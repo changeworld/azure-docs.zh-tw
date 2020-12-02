@@ -8,24 +8,24 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: c1d21d88ed49cb14aa9f964791154f001a40fbe2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 10dff18f7b9db7273fcd6ec92bcca5970bb83b08
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499572"
+ms.locfileid: "96510364"
 ---
 # <a name="java-code-samples-for-azure-cognitive-search"></a>Azure 認知搜尋的 JAVA 程式碼範例
 
 瞭解 JAVA 程式碼範例，以示範 Azure 認知搜尋的特性和功能。 主要存放庫如下所示：
 
-| Repository | 描述 |
+| Repository | 說明 |
 |------------|-------------|
 | [azure-sdk-適用于 java/樹狀結構/master/sdk/搜尋/azure-搜尋-檔/src/範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/search/azure-search-documents/src/samples) | Azure SDK 團隊所產生的範例，隨附于 SDK 中的 Azure.Search.Documents 用戶端程式庫。 您也可以檢查用戶端程式庫的 [單元測試](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/search/azure-search-documents/src/test) ，以查看如何呼叫不同的 api。 |
 | [Azure-範例/azure-搜尋-java-範例](https://github.com/Azure-Samples/azure-search-java-samples) | 伴隨操作說明文章的程式碼範例。 **此存放庫中的範例尚未更新為使用 AZURE SDK For JAVA**。 目前，這些範例會以 JAVA 程式碼呼叫 REST Api。|
 
 > [!Tip]
-> 請嘗試 [範例瀏覽器](/samples/browse/?languages=csharp&products=azure-cognitive-search) ，以搜尋 Github 中的 Microsoft 程式碼範例，並依產品、服務和語言進行篩選。
+> 請嘗試 [範例瀏覽器](/samples/browse/?languages=java&products=azure-cognitive-search) ，以搜尋 Github 中的 Microsoft 程式碼範例，並依產品、服務和語言進行篩選。
 
 ## <a name="java-sdk-samples"></a>Java SDK 範例
 

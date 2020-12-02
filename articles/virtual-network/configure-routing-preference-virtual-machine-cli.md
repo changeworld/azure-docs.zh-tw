@@ -10,19 +10,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2020
+ms.date: 12/01/2020
 ms.author: mnayak
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 49b0df3e750d4d23cb6a64f3f7266613fd2f2981
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ccd04a43e6781e8d58234cc382b2739d800e5fe7
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87501826"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510670"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-cli"></a>使用 Azure CLI 設定 VM 的路由喜好設定
 
-本文說明如何設定虛擬機器的路由喜好設定。 當您選擇**網際網路**作為路由喜好設定選項時，來自 VM 的網際網路繫結流量將會透過 ISP 網路路由傳送。 預設路由是透過 Microsoft 全球網路。
+本文說明如何設定虛擬機器的路由喜好設定。 當您選擇 **網際網路** 作為路由喜好設定選項時，來自 VM 的網際網路繫結流量將會透過 ISP 網路路由傳送。 預設路由是透過 Microsoft 全球網路。
 
 本文說明如何使用 Azure CLI 來建立具有公用 IP 的虛擬機器，並將其設定為透過公用網際網路路由流量。
 
@@ -30,11 +30,6 @@ ms.locfileid: "87501826"
 > 路由喜好設定目前為公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="register-the-feature-for-your-subscription"></a>註冊訂用帳戶的功能
-「路由喜好設定」功能目前為預覽狀態。 註冊訂用帳戶的功能，如下所示：
-```azurecli
-az feature register --namespace Microsoft.Network --name AllowRoutingPreferenceFeature
-```
 ## <a name="create-a-resource-group"></a>建立資源群組
 1. 如果使用 Cloud Shell，請跳至步驟 2。 開啟命令工作階段，然後使用 `az login` 登入 Azure。
 2. 使用 [az group create](/cli/azure/group#az-group-create) 命令來建立資源群組。 下列範例會在美國東部 Azure 區域中建立一個資源群組：

@@ -1,18 +1,18 @@
 ---
-title: 快速入門：使用瀏覽器查詢預測 - LUIS
-description: 在本快速入門中，使用可用的公用 LUIS 應用程式，從瀏覽器中的交談文字判斷使用者的意圖。
+title: 如何使用瀏覽器查詢預測 - LUIS
+description: 在本文中，使用可用的公用 LUIS 應用程式，從瀏覽器中的交談文字判斷使用者的意圖。
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: quickstart
-ms.date: 04/21/2020
-ms.openlocfilehash: ce7544bee32586aa4cdeeb7f47a84744194db5da
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.topic: conceptual
+ms.date: 11/30/2020
+ms.openlocfilehash: 6aa681c8ea60cb57ac3e6d143c60cc46bc057719
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91316268"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436907"
 ---
-# <a name="quickstart-query-prediction-runtime-with-user-text"></a>快速入門：具有使用者文字的查詢預測執行階段
+# <a name="how-to-query-the-prediction-runtime-with-user-text"></a>如何使用使用者文字來查詢預測執行階段
 
 若要了解 LUIS 預測端點所傳回的內容，請在網頁瀏覽器中檢視預測結果。
 
@@ -22,7 +22,7 @@ ms.locfileid: "91316268"
 
 * 您的 Language Understanding (LUIS) 資源資訊：
     * **預測金鑰** - 可以從 [LUIS 入口網站](https://www.luis.ai/)取得。 若您還沒有訂用帳戶可建立金鑰，您可以註冊[免費帳戶](https://azure.microsoft.com/free/cognitive-services)。
-    * **預測端點子網域** - 該子網域也是 LUIS 資源的**名稱**。
+    * **預測端點子網域** - 該子網域也是 LUIS 資源的 **名稱**。
 * LUIS 應用程式識別碼 - 使用 `df67dcdb-c37d-46af-88e1-8b97951ca1c2` 的公用 IoT 應用程式識別碼。 快速入門程式碼中使用的使用者查詢是該應用程式所專屬。
 
 ## <a name="use-the-browser-to-see-predictions"></a>使用瀏覽器查看預測
@@ -97,7 +97,7 @@ ms.locfileid: "91316268"
 
     #### <a name="v3-prediction-endpoint"></a>[V3 預測端點](#tab/V3-3-1)
 
-    將 `show-all-intents=true` 新增至查詢字串結尾處，以**顯示所有意圖**：
+    將 `show-all-intents=true` 新增至查詢字串結尾處，以 **顯示所有意圖**：
 
     `
     https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/predict/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY&show-all-intents=true
@@ -130,7 +130,7 @@ ms.locfileid: "91316268"
 
     #### <a name="v2-prediction-endpoint"></a>[V2 預測端點](#tab/V2)
 
-    將 `verbose=true` 新增至查詢字串結尾處，以**顯示所有意圖**：
+    將 `verbose=true` 新增至查詢字串結尾處，以 **顯示所有意圖**：
 
     `
     https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?q=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY&verbose=true

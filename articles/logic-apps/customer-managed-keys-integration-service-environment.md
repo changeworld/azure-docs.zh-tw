@@ -3,15 +3,15 @@ title: 設定客戶管理的金鑰，以加密 Ise 中的靜止資料
 description: 建立及管理您自己的加密金鑰，以保護 (Ise) Azure Logic Apps 中的整合服務環境的待用資料
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, rarayudu, logicappspm
+ms.reviewer: mijos, rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: 30b09d43cbe510318ac4f48e0655d5483491c215
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.date: 11/20/2020
+ms.openlocfilehash: 59c60c876058f8664b38411b562e57c2d5cdc2a8
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682769"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510619"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>設定客戶管理的金鑰，以在 Azure Logic Apps 中 (Ise) 為整合服務環境加密待用資料
 
@@ -27,13 +27,17 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存和自動 [加密待用資料](.
 
 * 您 *只能在建立 ISE 時* 指定客戶管理的金鑰，而不能在之後指定。 您無法在 ISE 建立之後停用此金鑰。 目前不支援為 ISE 輪替客戶管理的金鑰。
 
-* 若要支援客戶管理的金鑰，您的 ISE 要求必須啟用其 [系統指派的受控識別](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) 。 此身分識別可讓 ISE 驗證其他 Azure Active Directory (Azure AD) 租使用者中資源的存取權，如此您就不需要使用您的認證登入。
+* 若要支援客戶管理的金鑰，您的 ISE 要求您啟用 [系統指派或使用者指派的受控識別](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)。 此身分識別可讓您的 ISE 驗證受保護資源（例如虛擬機器和其他系統或服務）的存取權，這些資源位於或連接至 Azure 虛擬網路。 如此一來，您就不需要使用您的認證登入。
 
-* 目前，若要建立支援客戶管理金鑰的 ISE，並啟用其系統指派的身分識別，您必須使用 HTTPS PUT 要求來呼叫 Logic Apps REST API。
+* 目前，若要建立支援客戶管理金鑰且已啟用受控識別類型的 ISE，您必須使用 HTTPS PUT 要求來呼叫 Logic Apps REST API。
 
-* 在您傳送建立 ISE 的 HTTPS PUT 要求之後的 *30 分鐘* 內，您必須將 [金鑰保存庫的存取權授與 ise 系統指派](#identity-access-to-key-vault)的身分識別。 否則，ISE 建立會失敗，並擲回許可權錯誤。
+* 您必須將 [金鑰保存庫的存取權授與 ISE 的受控識別](#identity-access-to-key-vault)，但時間取決於您所使用的受控識別。
 
-## <a name="prerequisites"></a>先決條件
+  * **系統指派的受控識別**：在您傳送建立 ISE 的 HTTPS PUT 要求 *之後的30分鐘* 內，您必須將 [金鑰保存庫的存取權授與 ise 的受控識別](#identity-access-to-key-vault)。 否則，ISE 建立會失敗，而且您會收到許可權錯誤。
+
+  * **使用者指派的受控識別**：在您傳送建立 ISE 的 HTTPS PUT 要求之前，請先將 [金鑰保存庫的存取權授與 ise 的受控識別](#identity-access-to-key-vault)。
+
+## <a name="prerequisites"></a>Prerequisites
 
 * [啟用 ise 存取權](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)的相同[必要條件](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites)和需求，如同當您在 Azure 入口網站中建立 ise 時
 
@@ -47,7 +51,7 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存和自動 [加密待用資料](.
   |----------|-------|
   | **索引鍵類型** | RSA |
   | **RSA 金鑰大小** | 2048 |
-  | **Enabled** | 是 |
+  | **啟用** | 是 |
   |||
 
   ![建立客戶管理的加密金鑰](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
@@ -56,7 +60,7 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存和自動 [加密待用資料](.
 
 * 一種工具，可讓您藉由使用 HTTPS PUT 要求呼叫 Logic Apps REST API 來建立 ISE。 例如，您可以使用 [Postman](https://www.getpostman.com/downloads/)，也可以建立可執行這項工作的邏輯應用程式。
 
-<a name="enable-support-key-system-identity"></a>
+<a name="enable-support-key-managed-identity"></a>
 
 ## <a name="create-ise-with-key-vault-and-managed-identity-support"></a>使用 key vault 和受控識別支援建立 ISE
 
@@ -65,7 +69,7 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存和自動 [加密待用資料](.
 `PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
 
 > [!IMPORTANT]
-> Logic Apps REST API 2019-05-01 版本需要您針對 ISE 連接器建立自己的 HTTP PUT 要求。
+> Logic Apps REST API 2019-05-01 版要求您針對 ISE 連接器建立自己的 HTTPS PUT 要求。
 
 部署通常會在兩個小時內完成。 有時候，部署需要的時間可能高達四小時。 若要檢查部署狀態，請在 [ [Azure 入口網站](https://portal.azure.com)的 Azure 工具列上選取 [通知] 圖示，以開啟 [通知] 窗格。
 
@@ -88,7 +92,7 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存和自動 [加密待用資料](.
 
 在要求主體中，藉由在 ISE 定義中提供這些額外專案的資訊來啟用支援：
 
-* 您 ISE 用來存取金鑰保存庫的系統指派受控識別
+* 您 ISE 用來存取金鑰保存庫的受控識別
 * 您要使用的金鑰保存庫和客戶管理的金鑰
 
 #### <a name="request-body-syntax"></a>要求本文語法
@@ -106,7 +110,14 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存和自動 [加密待用資料](.
       "capacity": 1
    },
    "identity": {
-      "type": "SystemAssigned"
+      "type": <"SystemAssigned" | "UserAssigned">,
+      // When type is "UserAssigned", include the following "userAssignedIdentities" object:
+      "userAssignedIdentities": {
+         "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{user-assigned-managed-identity-object-ID}": {
+            "principalId": "{principal-ID}",
+            "clientId": "{client-ID}"
+         }
+      }
    },
    "properties": {
       "networkConfiguration": {
@@ -153,7 +164,13 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存和自動 [加密待用資料](.
    "type": "Microsoft.Logic/integrationServiceEnvironments",
    "location": "WestUS2",
    "identity": {
-      "type": "SystemAssigned"
+      "type": "UserAssigned",
+      "userAssignedIdentities": {
+         "/subscriptions/********************/resourceGroups/Fabrikam-RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/*********************************": {
+            "principalId": "*********************************",
+            "clientId": "*********************************"
+         }
+      }
    },
    "sku": {
       "name": "Premium",
@@ -197,7 +214,11 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存和自動 [加密待用資料](.
 
 ## <a name="grant-access-to-your-key-vault"></a>授與對金鑰保存庫的存取權
 
-在您傳送 HTTP PUT 要求以建立 ISE 之後的 *30 分鐘* 內，您必須針對 ISE 系統指派的身分識別，將存取原則新增至您的金鑰保存庫。 否則，您 ISE 的建立會失敗，而且您會收到許可權錯誤。 
+雖然時間與您使用的受控識別不同，但您必須將 [金鑰保存庫的存取權授與 ISE 的受控識別](#identity-access-to-key-vault)。
+
+* **系統指派的受控識別**：在您傳送建立 ISE 的 HTTPS PUT 要求 *之後的30分鐘* 內，您必須為 ISE 系統指派的受控識別，將存取原則新增至您的金鑰保存庫。 否則，您 ISE 的建立會失敗，而且您會收到許可權錯誤。
+
+* **使用者指派的受控識別**：在您傳送建立 ISE 的 HTTPS PUT 要求之前，請先針對 ISE 的使用者指派受控識別，將存取原則新增至您的金鑰保存庫。
 
 針對這項工作，您可以使用 Azure PowerShell [>set-azkeyvaultaccesspolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) 命令，也可以在 Azure 入口網站中遵循下列步驟：
 

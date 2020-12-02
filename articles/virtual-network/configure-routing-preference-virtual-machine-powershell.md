@@ -10,30 +10,24 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2020
+ms.date: 12/01/2020
 ms.author: mnayak
-ms.openlocfilehash: 2002e4a11a2accbbc639c200372c393b8dc2f228
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65f5b27ecc7b526c4b3e4f5ed62ac90149df1ce1
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84707526"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510602"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-powershell"></a>使用 Azure PowerShell 設定 VM 的路由喜好設定
 
-本文說明如何設定虛擬機器的路由喜好設定。 當您選擇**網際網路**作為路由喜好設定選項時，來自 VM 的網際網路繫結流量將會透過 ISP 網路路由傳送。 預設路由是透過 Microsoft 全球網路。
+本文說明如何設定虛擬機器的路由喜好設定。 當您選擇 **網際網路** 作為路由喜好設定選項時，來自 VM 的網際網路繫結流量將會透過 ISP 網路路由傳送。 預設路由是透過 Microsoft 全球網路。
 
 本文說明如何使用 Azure PowerShell 來建立具有公用 IP 的虛擬機器，並將其設定為透過 ISP 網路路由流量。
 
 > [!IMPORTANT]
 > 路由喜好設定目前為公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-## <a name="register-the-feature-for-your-subscription"></a>註冊訂用帳戶的功能
-「路由喜好設定」功能目前為預覽狀態。 註冊訂用帳戶的功能，如下所示：
-```azurepowershell
-Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature -ProviderNamespace Microsoft.Network
-```
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 1. 如果使用 Cloud Shell，請跳至步驟 2。 開啟命令工作階段，然後使用 `Connect-AzAccount` 登入 Azure。
