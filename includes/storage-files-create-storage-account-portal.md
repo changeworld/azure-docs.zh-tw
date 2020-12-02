@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: ad9f3a115ed226b492a08dae29db61029d9098eb
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 03cf20e5c796a7092dc16c466934f377c945ad48
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95562337"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509252"
 ---
 儲存體帳戶是您可在其中部署 Azure 檔案共用或其他儲存體資源 (例如 blob 或佇列) 的共用儲存體集區。 儲存體帳戶可以包含無限多個共用。 共用可儲存無限制數目的檔案，最多可達儲存體帳戶的容量限制。
 
@@ -30,7 +30,7 @@ ms.locfileid: "95562337"
     > [!NOTE]
     > 本快速入門會建立標準檔案共用，但如果您想使用進階檔案共用，請改為選取 [進階]。
 
-1. 在 [帳戶種類] 中選取 [StorageV2]。 若要深入了解不同種類的儲存體帳戶，請參閱[了解 Azure 儲存體帳戶](../articles/storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)。
+1. 在 [帳戶種類] 中選取 [StorageV2]。 若要深入了解不同種類的儲存體帳戶，請參閱[了解 Azure 儲存體帳戶](../articles/storage/common/storage-account-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
     > [!NOTE]
     > 本快速入門會建立一般用途的 v2 帳戶。 如果您想使用進階檔案共用，請改為選取 **FileStorage**。

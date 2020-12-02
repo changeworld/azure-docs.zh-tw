@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9de4a4534551c4a41b2c81c1d10fecf6118ff868
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 00670746c1686bca354adc989ddce6c9dd336491
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434510"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519054"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>使用 Azure 入口網站適用於 MySQL 的 Azure 資料庫的資料加密
 
@@ -44,7 +44,8 @@ ms.locfileid: "96434510"
   * 沒有到期日
   * 未停用
   * 執行 **取得**、 **包裝**、 **解除** 包裝作業
-  * recoverylevel 屬性設定為 **可** 復原。
+  * recoverylevel 屬性設定為 **可** 復原 (這需要啟用的虛刪除（保留期限設為90天）) 
+  * 已啟用清除保護
 
 您可以使用下列命令來驗證金鑰的上述屬性：
 

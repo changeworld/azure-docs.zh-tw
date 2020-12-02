@@ -1,6 +1,6 @@
 ---
 title: 在本機安裝 Jupyter 並連線到 Azure HDInsight 中的 Spark
-description: 了解如何在電腦本機安裝 Jupyter Notebook，並連線到 Apache Spark 叢集。
+description: 瞭解如何在本機電腦上安裝 Jupyter Notebook，並將其連線至 Apache Spark 叢集。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-python
 ms.date: 04/23/2020
-ms.openlocfilehash: 96b2e7deff464f00ced4457a514ac833a90bd42d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 16cb8a9c2a951c9f60640248ef74757d1e5ee200
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999887"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518918"
 ---
-# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>在電腦上安裝 Jupyter Notebook，並連線到 HDInsight 上的 Apache Spark
+# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>在您的電腦上安裝 Jupyter Notebook，並連接到 HDInsight 上的 Apache Spark
 
-在本文中，您將瞭解如何使用適用于 Python 的自訂 PySpark (來安裝 Jupyter 筆記本) 和 Apache Spark (適用于具有 Spark 魔術的 Scala) 核心。 然後，將筆記本連接到 HDInsight 叢集。
+在本文中，您將瞭解如何使用適用于 Python) 的自訂 PySpark (來安裝 Jupyter Notebook，以及使用 Spark 魔術 Scala (核心的 Apache Spark) 。 然後，將筆記本連接到 HDInsight 叢集。
 
 安裝 Jupyter 並聯機到 HDInsight 上的 Apache Spark 有四個主要步驟。
 
@@ -34,7 +34,7 @@ ms.locfileid: "95999887"
 
 * 熟悉如何搭配使用 Jupyter Notebook 和 HDInsight 上的 Spark。
 
-## <a name="install-jupyter-notebook-on-your-computer"></a>在電腦上安裝 Jupyter Notebook
+## <a name="install-jupyter-notebook-on-your-computer"></a>在您的電腦上安裝 Jupyter Notebook
 
 安裝 Jupyter 筆記本之前，請先安裝 Python。 [Anaconda 散發](https://www.anaconda.com/download/)套件將會安裝、Python 及 Jupyter Notebook。
 
@@ -150,7 +150,7 @@ ms.locfileid: "95999887"
 
     a. 建立新的 Notebook。 從右手邊選取 [ **新增**]。 您應該會看到預設的核心 **Python 2** 或 **Python 3** ，以及您安裝的核心。 實際的值可能會根據您的安裝選項而有所不同。  選取 [ **PySpark**]。
 
-    ![Jupyter 筆記本中的可用核心](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Jupyter 筆記本中的核心")
+    ![Jupyter Notebook 中的可用核心](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Jupyter Notebook 中的核心")
 
     > [!IMPORTANT]  
     > 選取 [ **新增** ] 之後，請檢查您的 shell 是否有任何錯誤。  如果您看到錯誤， `TypeError: __init__() got an unexpected keyword argument 'io_loop'` 可能是您遇到特定版本的錯誤。  若是如此，請停止核心，然後使用下列命令將您的龍捲風安裝降級： `pip install tornado==4.5.3` 。
@@ -170,7 +170,7 @@ ms.locfileid: "95999887"
 
 在電腦上安裝 Jupyter，然後將它連線到 HDInsight 上 Apache Spark 叢集的原因：
 
-* 提供選項讓您在本機建立筆記本、對執行中的叢集測試您的應用程式，然後將筆記本上傳到叢集。 若要將筆記本上傳至叢集，您可以使用執行或叢集的 Jupyter 筆記本上傳它們，或將它們儲存至與叢集 `/HdiNotebooks` 相關聯之儲存體帳戶中的資料夾。 如需有關 Notebook 在叢集上的儲存方式詳細資訊，請參閱 [Jupyter Notebook 會儲存在哪裡](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)？
+* 提供選項讓您在本機建立筆記本、對執行中的叢集測試您的應用程式，然後將筆記本上傳到叢集。 若要將筆記本上傳至叢集，您可以使用執行或叢集的 Jupyter Notebook 上傳它們，或將它們儲存至與叢集 `/HdiNotebooks` 相關聯之儲存體帳戶中的資料夾。 如需有關如何將筆記本儲存在叢集上的詳細資訊，請參閱 [Jupyter 筆記本的儲存位置](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)？
 * 使用本機可用的 Notebook，您可以根據您的應用程式需求，連接至不同的 Spark 叢集。
 * 您可以使用 GitHub 實作來源控制系統，並且具有 Notebook 的版本控制。 您也可以有共同作業環境，其中多個使用者可以使用相同的 Notebook。
 * 您甚至不需要啟用叢集，即可在本機使用 Notebook。 您只需要叢集針對 Notebook 進行測試，不必以手動方式管理您的 Notebook 或開發環境。
@@ -182,5 +182,5 @@ ms.locfileid: "95999887"
 ## <a name="next-steps"></a>後續步驟
 
 * [概觀：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
-* [Apache Spark 上 Jupyter 筆記本的核心](apache-spark-jupyter-notebook-kernels.md)
+* [Apache Spark 上 Jupyter Notebook 的核心](apache-spark-jupyter-notebook-kernels.md)
 * [在 Apache Spark 中搭配使用外部套件與 Jupyter 筆記本](apache-spark-jupyter-notebook-use-external-packages.md)

@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/28/2020
-ms.openlocfilehash: b93bc4d1adfa2787f14106707b3848ebfe5c57bc
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: cb3b711c532ccf44bebf08d42b5284db458cf5b7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021196"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492653"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入門：使用 PHP 來連線及查詢適用於 MySQL 的 Azure 資料庫中的資料
 本快速入門示範如何使用 [PHP](https://secure.php.net/manual/intro-whatis.php) 應用程式來連線到 Azure Database for MySQL。 它會顯示如何使用 SQL 陳述式來查詢、插入、更新和刪除資料庫中的資料。
@@ -30,7 +30,7 @@ ms.locfileid: "95021196"
     | **設定服務端點** | 公用 | [入口網站](./howto-manage-vnet-using-portal.md) <br/> [CLI](./howto-manage-vnet-using-cli.md)|
     | **設定私人連結** | 私人 | [入口網站](./howto-configure-privatelink-portal.md) <br/> [CLI](./howto-configure-privatelink-cli.md) |
 
-- [建立資料庫和非管理使用者](/azure/mysql/howto-create-users?tabs=single-server)
+- [建立資料庫和非管理使用者](./howto-create-users.md?tabs=single-server)
 - 為您的作業系統安裝最新的 PHP 版本
     - [macOS 上的 PHP](https://secure.php.net/manual/install.macosx.php)
     - [Linux 上的 PHP](https://secure.php.net/manual/install.unix.php)

@@ -3,23 +3,23 @@ title: 使用連結的範本建立範本規格
 description: 瞭解如何使用連結的範本建立範本規格。
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: d86b46a88dde7ebffea81cdeb8dc184dd275c0da
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 038fb3e6bbb6086535b83a69de7a3fe49a8e60bb
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94747429"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518884"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>教學課程：使用連結的範本建立範本規格 (預覽) 
 
 瞭解如何使用主要範本和[連結的範本](linked-templates.md#linked-template)建立[範本規格](template-specs.md)。 您可以使用範本規格，與組織中的其他使用者共用 ARM 範本。 本文說明如何使用 `relativePath` [部署資源](/azure/templates/microsoft.resources/deployments)的屬性，建立範本規格來封裝主要範本及其連結的範本。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 範本規格目前為預覽狀態。 若要使用它，您必須安裝最新版本的 PowerShell 或 Azure CLI。 針對 Azure PowerShell，請使用第 [5.0.0 版或更新](/powershell/azure/install-az-ps)版本。 針對 Azure CLI，請使用 [2.14.2 版或更新版本](/cli/azure/install-azure-cli)。
+> 範本規格目前為預覽狀態。 若要搭配 Azure PowerShell 使用它，您必須安裝第 [5.0.0 版或更新](/powershell/azure/install-az-ps)版本。 若要搭配 Azure CLI 使用，請使用 [2.14.2 版或更新版本](/cli/azure/install-azure-cli)。
 
 ## <a name="create-linked-templates"></a>建立連結的範本
 

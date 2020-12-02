@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 87dff3bbb4a7ff5e40a06d1b63bdc38987d727fe
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f9b9681b08f5864dc34bbf1c35dc6919129c24cb
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492687"
+ms.locfileid: "96518799"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>適用於 MySQL 的 Azure 資料庫資料加密 (使用客戶管理的金鑰)
 
@@ -61,7 +61,7 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 下列是設定 Key Vault 的需求：
 
 * Key Vault 和適用於 MySQL 的 Azure 資料庫必須屬於相同的 Azure Active Directory (Azure AD) 租用戶。 目前不支援跨租用戶 Key Vault 與伺服器互動。 之後移動 Key Vault 資源會要求您重新設定資料加密。
-* 啟用 [虛刪除] ( # A1。在保留期限設定為 **90 天** 的金鑰保存庫上/key-vault/general/soft-delete-overview.md) 功能，以防止在意外的金鑰 (或 Key Vault) 刪除時發生資料遺失。 除非保留期限明確設定為 <= 90 天，否則已虛刪除的資源預設會保留90天。 Key Vault 存取原則中已建立復原和清除動作本身權限的關聯。 虛刪除功能預設為關閉，但可透過 PowerShell 或 Azure CLI 啟用 (請注意，您無法透過 Azure 入口網站啟用)。
+* 在保留期限設定為 **90 天** 的金鑰保存庫上啟用虛 [刪除](../key-vault/general/soft-delete-overview.md)功能，以在發生意外的金鑰 (或 Key Vault) 刪除時防止資料遺失。 除非保留期限明確設定為 <= 90 天，否則已虛刪除的資源預設會保留90天。 Key Vault 存取原則中已建立復原和清除動作本身權限的關聯。 虛刪除功能預設為關閉，但可透過 PowerShell 或 Azure CLI 啟用 (請注意，您無法透過 Azure 入口網站啟用)。
 * 在保留期限設為 **90 天** 的金鑰保存庫上啟用 [清除保護](../key-vault/general/soft-delete-overview.md#purge-protection)功能。 只有啟用虛刪除之後，才能啟用清除保護。 您可以透過 Azure CLI 或 PowerShell 來開啟它。 當清除保護開啟時，已刪除狀態的保存庫或物件就無法清除，直到保留期限經過為止。 虛刪除的保存庫和物件仍可復原，以確保會遵循保留原則。 
 * 使用其唯一的受控識別授與「適用於 MySQL 的 Azure 資料庫」對金鑰保存庫的存取權限，使其具有 get、wrapKey 和 unwrapKey 權限。 在 Azure 入口網站中，在 MySQL 上啟用資料加密時，會自動建立唯一的「服務」身分識別。 如需使用 Azure 入口網站的詳細逐步指示，請參閱[設定 MySQL 的資料加密](howto-data-encryption-portal.md)。
 
@@ -70,8 +70,8 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 * 用來加密 DEK 的客戶管理金鑰，只能是非對稱的 RSA 2048。
 * 金鑰啟用日期 (若已設定) 必須是過去的日期和時間。 未設定到期日。
 * 金鑰必須處於「已啟用」狀態。
-* 金鑰必須具有將保留期限設為 **90 天** 的虛 [刪除](../key-vault/general/soft-delete-overview.md)。
-* Kay 必須 [啟用清除保護](../key-vault/general/soft-delete-overview.md#purge-protection)。
+* 金鑰必須具有將保留期限設為 **90 天** 的虛 [刪除](../key-vault/general/soft-delete-overview.md)。這會隱含地設定必要的索引鍵屬性 recoveryLevel：「可復原」。 如果保留設定為 < 90 天，recoveryLevel： "CustomizedRecoverable"，這不是需求，因此請務必將保留期限設定為 **90 天**。
+* 金鑰必須 [啟用清除保護](../key-vault/general/soft-delete-overview.md#purge-protection)。
 * 如果您要將 [現有金鑰匯入](/rest/api/keyvault/ImportKey/ImportKey) 至金鑰保存庫，請務必以支援的檔案格式提供， (`.pfx` 、 `.byok` `.backup`) 。
 
 ## <a name="recommendations"></a>建議

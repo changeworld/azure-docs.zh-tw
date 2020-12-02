@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 11/09/2020
 ms.author: spelluru
 ms.custom: devx-track-js
-ms.openlocfilehash: ec5bb299bed5545c3935b2f0ae28a50de9d79c45
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 3f37fcc6d58eb1c206aef6db15c7826cfdcda274
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95808893"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489423"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-javascript"></a>在 Azure 服務匯流排佇列 (JavaScript) 中傳送和接收訊息
 在本教學課程中，您將了解如何在 JavaScript 程式中使用 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 套件傳送訊息，並接收來自服務匯流排的訊息。
@@ -207,4 +207,4 @@ npm install @azure/service-bus
 
 - [適用於 Python 的 Azure 服務匯流排用戶端程式庫](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/README.md)
 - [範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples)。 **javascript** 資料夾具有 JavaScript 範例，而 **typescript** 具有 TypeScript 範例。 
-- [azure-servicebus 參考文件](https://docs.microsoft.com/javascript/api/overview/azure/service-bus)
+- [azure-servicebus 參考文件](/javascript/api/overview/azure/service-bus)

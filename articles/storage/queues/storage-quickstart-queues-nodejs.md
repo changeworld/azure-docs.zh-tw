@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: f72d8b332f00b3d298f4d5a1a04937f562647f9e
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 5f50e42bc33adb8f40520f3f98bf1dcfba190a41
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347143"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491905"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>快速入門：適用於 JavaScript 的 Azure 佇列儲存體用戶端程式庫 v12
 
@@ -34,7 +34,7 @@ ms.locfileid: "93347143"
 - [API 參考文件](/javascript/api/@azure/storage-queue/)
 - [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)
 - [套件 (節點套件管理員)](https://www.npmjs.com/package/@azure/storage-queue)
-- [範例](../common/storage-samples-javascript.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
+- [範例](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>必要條件
 

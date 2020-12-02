@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: e919db24a70b0ed69aca6977865cc76c0c9c5845
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: dd7616bdc07aee86ac56a2f2fe0ac282838c58b4
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182456"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518850"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager 範本規格 (預覽) 
 
@@ -21,7 +21,7 @@ ms.locfileid: "96182456"
 若要部署範本規格，您可以使用 PowerShell、Azure CLI、Azure 入口網站、REST 和其他支援的 Sdk 和用戶端等標準 Azure 工具。 您可以使用與範本相同的命令。
 
 > [!NOTE]
-> 範本規格目前為預覽狀態。 若要加以使用，您必須安裝最新版的 PowerShell 或 Azure CLI。 針對 Azure PowerShell，請使用 [5.0.0 版或更新版本](/powershell/azure/install-az-ps)。 針對 Azure CLI，請使用 [2.14.2 版或更新版本](/cli/azure/install-azure-cli)。
+> 範本規格目前為預覽狀態。 若要搭配 Azure PowerShell 使用它，您必須安裝第 [5.0.0 版或更新](/powershell/azure/install-az-ps)版本。 若要搭配 Azure CLI 使用，請使用 [2.14.2 版或更新版本](/cli/azure/install-azure-cli)。
 
 ## <a name="why-use-template-specs"></a>為何要使用範本規格？
 

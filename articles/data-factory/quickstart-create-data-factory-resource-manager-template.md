@@ -5,18 +5,18 @@ services: data-factory
 ms.service: data-factory
 tags: azure-resource-manager
 ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan, jingwang
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 07/16/2020
-ms.openlocfilehash: eb423ebd354adeb8273755d34323b283d53eb8b5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0a9c4f6d9e98e721370f54dfbe261025cf186b6c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87283889"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497481"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>快速入門：使用 ARM 範本建立 Azure Data Factory
 
@@ -26,7 +26,7 @@ ms.locfileid: "87283889"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-本快速入門說明如何使用 Azure Resource Manager 範本 (ARM 範本) 建立 Azure Data Factory。 在此資料處理站中建立的管線會將資料從 Azure Blob 儲存體中的一個資料夾**複製**到其他資料夾。 如需如何使用 Azure Data Factory **轉換**資料的教學課程，請參閱[教學課程︰使用 Spark 轉換資料](transform-data-using-spark.md)。
+本快速入門說明如何使用 Azure Resource Manager 範本 (ARM 範本) 建立 Azure Data Factory。 在此資料處理站中建立的管線會將資料從 Azure Blob 儲存體中的一個資料夾 **複製** 到其他資料夾。 如需如何使用 Azure Data Factory **轉換** 資料的教學課程，請參閱 [教學課程︰使用 Spark 轉換資料](transform-data-using-spark.md)。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -94,23 +94,23 @@ Jane, Doe
 
 1. 選取 [前往資源群組]。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-go-to-resource-group.png" alt-text="部署 ADF ARM 範本":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-go-to-resource-group.png" alt-text="資源群組":::
 
 2.  確認是否已建立 Azure Data Factory。
     1. 您的 Azure Data Factory 名稱格式為 - datafactory\<uniqueid\>。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-sample.png" alt-text="部署 ADF ARM 範本":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-sample.png" alt-text="範例 Data Factory":::
 
 2. 確認已建立儲存體帳戶。
     1. 儲存體帳戶名稱的格式為 - storage\<uniqueid\>。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-storage-account.png" alt-text="部署 ADF ARM 範本":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-storage-account.png" alt-text="儲存體帳戶":::
 
 3. 選取建立的儲存體帳戶，然後選取 [容器] 。
     1. 在 [B容器] 頁面中，選取您建立的 Blob 容器。
         1. Blob 容器名稱的格式為 - blob\<uniqueid\>。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="部署 ADF ARM 範本":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="Blob 容器":::
 
 ### <a name="upload-a-file"></a>上傳檔案
 
@@ -126,7 +126,7 @@ Jane, Doe
 
 6. 選取 [關閉] 圖示 (**X**) 以關閉 [上傳 Blob] 頁面。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-upload-blob-file.png" alt-text="部署 ADF ARM 範本":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-upload-blob-file.png" alt-text="將檔案上傳到輸入資料夾":::
 
 將 [容器] 頁面保持開啟，因為您可以用該頁面來驗證本快速入門結尾處的輸出。
 
@@ -136,19 +136,19 @@ Jane, Doe
 
 2. 選取 [建立者和監視] 圖格。 
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author-monitor-tile.png" alt-text="部署 ADF ARM 範本":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author-monitor-tile.png" alt-text="建立者和監視":::
 
 2. 選取 [建立者]:::image type="icon" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author.png" border="false"::: 索引標籤。
 
 3. 選取已建立的管線 - ArmtemplateSampleCopyPipeline。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-pipelines.png" alt-text="部署 ADF ARM 範本":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-pipelines.png" alt-text="ARM 管本管線":::
 
 4. 選取 [新增觸發程序] > [立即觸發]。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-trigger-now.png" alt-text="部署 ADF ARM 範本":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-trigger-now.png" alt-text="觸發程序":::
 
-5. 在右側窗格的 **管線執行**下，選取 [確定]。
+5. 在右側窗格的 **管線執行** 下，選取 [確定]。
 
 ### <a name="monitor-the-pipeline"></a>監視管線
 
@@ -156,7 +156,7 @@ Jane, Doe
 
 2. 您會看到與管線執行相關聯的活動執行。 在本快速入門中，管線只有一個以下類型的活動：複製。 如此，您會看到該活動的執行。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-successful-run.png" alt-text="部署 ADF ARM 範本":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-successful-run.png" alt-text="成功執行":::
 
 ### <a name="verify-the-output-file"></a>驗證輸出檔案
 
@@ -168,7 +168,7 @@ Jane, Doe
 
 3. 確認 **emp.txt** 已複製到輸出資料夾。 
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-output.png" alt-text="部署 ADF ARM 範本":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-output.png" alt-text="輸出":::
 
 ## <a name="clean-up-resources"></a>清除資源
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 53a10123bf3304ab9c949146d7cad6b904c8323d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: c87290b36ec77e834a0d0fcd99e9a8bdb05675b5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317214"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494693"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>使用舊版的 Azure Migrate
 
@@ -31,7 +31,7 @@ Azure Migrate 服務有兩個版本：
 
 ## <a name="upgrade-between-versions"></a>版本之間的升級
 
-您無法將舊版中的專案或元件升級至新版本。 您需要[建立新的 Azure Migrate 專案](create-manage-projects.md)，並[將評量與移轉工具新增到其中](how-to-add-tool-first-time.md)。 使用教學課程來了解如何使用可用的評量和移轉工具。 如果您已將 Log Analytics 工作區連結至傳統專案，可以在刪除傳統專案之後，將其連結加至目前版本的專案。
+您無法將舊版中的專案或元件升級至新版本。 您需要[建立新的 Azure Migrate 專案](create-manage-projects.md)，並[將評量與移轉工具新增到其中](./create-manage-projects.md)。 使用教學課程來了解如何使用可用的評量和移轉工具。 如果您已將 Log Analytics 工作區連結至傳統專案，可以在刪除傳統專案之後，將其連結加至目前版本的專案。
 
 ## <a name="find-projects-from-previous-version"></a>尋找舊版的專案
 
@@ -128,7 +128,7 @@ Windows 10 專業版桌面 | Azure 對[多租用戶主機權限](../virtual-mach
 Windows Vista、XP Professional | 不支援。 機器可能可以在 Azure 中開機，但 Azure 不會提供 OS 支援。 | 可有條件地供 Azure 使用，建議在移轉到 Azure 之前升級作業系統。
 Linux | Azure 認同這些 [Linux 作業系統](../virtual-machines/linux/endorsed-distros.md)。 其他 Linux 作業系統可能可以在 Azure 中開機，但我們建議您在移轉至 Azure 之前，將作業系統升級為認可的版本。 | 如果版本受到認同，則可供 Azure 使用。<br/><br/>如果版本未受到認同，則有條件地可供使用。
 其他作業系統<br/><br/> 例如，Oracle Solaris、Apple macOS 等、FreeBSD 等。 | Azure 並未認可這些作業系統。 機器可能可以在 Azure 中開機，但 Azure 不會提供作業系統支援。 | 可有條件地供 Azure 使用，建議在移轉到 Azure 之前安裝支援的作業系統。  
-在 vCenter Server 中作業系統指定為**其他** | Azure Migrate 無法在此情況下識別作業系統。 | 整備程度未知。 請確保 Azure 支援 VM 內執行的作業系統。
+在 vCenter Server 中作業系統指定為 **其他** | Azure Migrate 無法在此情況下識別作業系統。 | 整備程度未知。 請確保 Azure 支援 VM 內執行的作業系統。
 32 位元作業系統 | 機器可能可以在 Azure 中開機，但 Azure 可能不會提供完整支援。 | 可有條件地供 Azure 使用，在移轉到 Azure 之前，請考慮將機器的作業系統從 32 位元作業系統升級至 64 位元作業系統。
 
 
@@ -272,7 +272,7 @@ Linux | Azure 認同這些 [Linux 作業系統](../virtual-machines/linux/endors
 
 1. 安裝代理程式之後，請移至入口網站，然後按一下[管理] > [機器]。
 2. 搜尋安裝代理程式的機器。
-3. 機器的 [相依性] 資料行現在應會顯示為**檢視相依性**。 按一下資料行以檢視機器的相依性。
+3. 機器的 [相依性] 資料行現在應會顯示為 **檢視相依性**。 按一下資料行以檢視機器的相依性。
 4. 機器的相依性對應會顯示下列詳細資料：
     - 往返機器的輸入 (用戶端) 和輸出 (伺服器) TCP 連線
         - 未安裝 MMA 與相依性代理程式的相依機器會依連接埠號碼分組。
@@ -308,7 +308,7 @@ Linux | Azure 認同這些 [Linux 作業系統](../virtual-machines/linux/endors
 4. 撰寫您的查詢以使用 Azure 監視器記錄收集相依性資料。 在下一節中尋找範例查詢。
 5. 按一下 [執行] 以執行查詢。 
 
-[深入了解](../azure-monitor/log-query/get-started-portal.md)如何撰寫 Kusto 查詢。 
+[深入了解](../azure-monitor/log-query/log-analytics-tutorial.md)如何撰寫 Kusto 查詢。 
 
 ### <a name="sample-azure-monitor-logs-queries"></a>範例 Azure 監視器記錄查詢
 

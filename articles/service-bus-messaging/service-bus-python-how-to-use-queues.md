@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 11/18/2020
 ms.author: spelluru
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 2b54b167413b0fcbe7022eab4bbbf34b37225be5
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 7275e33e44c20ece6eb7d620e2c1e8032be41a7b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95810593"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498654"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-python"></a>在 Azure 服務匯流排佇列 (Python) 中傳送和接收訊息
 本文示範如何使用 Python 傳送及接收 Azure 服務匯流排中的訊息。 
@@ -208,5 +208,4 @@ Received: Message inside a ServiceBusMessageBatch
 - [範例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus/samples)。 
     - **sync_samples** 資料夾中有範例，示範如何以同步方式與服務匯流排互動。 在本快速入門中，您使用了這個方法。 
     - **sync_samples** 資料夾中有範例，示範如何以同步方式與服務匯流排互動。 
-- [ 參考文件](https://docs.microsoft.com/python/api/azure-servicebus/azure.servicebus?view=azure-python-preview&preserve-view=true)
-
+- [ 參考文件](/python/api/azure-servicebus/azure.servicebus?preserve-view=true&view=azure-python-preview)

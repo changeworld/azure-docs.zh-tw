@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 5705eedfb919c792c558384f6309325dcded4b43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26078c3757e42c3e290a5f4122461b287582fb80
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86146605"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518816"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>建立應用程式閘道的 Web 應用程式防火牆原則
 
@@ -22,8 +22,6 @@ ms.locfileid: "86146605"
 
 如果您的應用程式閘道已套用原則，然後將不同的原則套用至該應用程式閘道上的接聽程式，則接聽程式的原則將會生效，但僅適用于指派給它們的接聽程式 (s) 。 應用程式閘道原則仍會套用至所有未指派特定原則的其他接聽程式。 
 
-   > [!NOTE]
-   > 以每個 URI 為主的 WAF 原則都處於公開預覽狀態。 這表示此功能受限於 Microsoft 的補充使用規定。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
    > [!NOTE]
    > 防火牆原則與 WAF 建立關聯之後，一定要有與該 WAF 相關聯的原則。 您可能會覆寫該原則，但不支援從 WAF 完全解除原則的關聯。 
 
@@ -57,7 +55,7 @@ ms.locfileid: "86146605"
 
 ## <a name="configure-waf-rules-optional"></a> (選用) 設定 WAF 規則
 
-當您建立 WAF 原則時，預設會處於 *偵測* 模式。 在 [偵測]  模式中，WAF 不會封鎖任何要求。 相反地，相符的 WAF 規則會記錄在 WAF 記錄中。 若要查看作用中的 WAF，您可以變更要 *防止*的模式設定。 在預防模式中，系統會封鎖您所選取的 CRS 規則集內所定義的比對規則，並/或記錄在 WAF 記錄中。
+當您建立 WAF 原則時，預設會處於 *偵測* 模式。 在 [偵測]  模式中，WAF 不會封鎖任何要求。 相反地，相符的 WAF 規則會記錄在 WAF 記錄中。 若要查看作用中的 WAF，您可以變更要 *防止* 的模式設定。 在預防模式中，系統會封鎖您所選取的 CRS 規則集內所定義的比對規則，並/或記錄在 WAF 記錄中。
 
 ## <a name="managed-rules"></a>受控規則
 
@@ -67,7 +65,7 @@ ms.locfileid: "86146605"
 
 ## <a name="custom-rules"></a>自訂規則
 
-若要建立自訂規則，請選取 [自訂**規則**] 索引標籤底下的 [**新增自訂規則**]這會開啟 [自訂規則設定] 頁面。 下列螢幕擷取畫面顯示已設定的範例自訂規則，以在查詢字串包含文字 *blockme*時封鎖要求。
+若要建立自訂規則，請選取 [自訂 **規則**] 索引標籤底下的 [**新增自訂規則**]這會開啟 [自訂規則設定] 頁面。 下列螢幕擷取畫面顯示已設定的範例自訂規則，以在查詢字串包含文字 *blockme* 時封鎖要求。
 
 [![編輯自訂規則 ](../media/create-waf-policy-ag/edit-custom-rule.png)](../media/create-waf-policy-ag/edit-custom-rule-lrg.png#lightbox)
 
@@ -112,6 +110,6 @@ $appgw.ForceFirewallPolicyAssociation = $true
 
 然後，procees 與 WAF 原則與應用程式閘道建立關聯的步驟。 如需詳細資訊，請參閱 [將 WAF 原則與現有的應用程式閘道建立關聯。](associate-waf-policy-existing-gateway.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解 [Web 應用程式防火牆 CRS 規則群組和規則](application-gateway-crs-rulegroups-rules.md)。

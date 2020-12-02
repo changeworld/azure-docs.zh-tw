@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 8a4df7bf-be49-4198-800e-db381cda98f5
 ms.date: 10/30/2020
-ms.openlocfilehash: ce07a0667b1fd4b439f061966e4ee0b1112578c4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: bab84b12c871c621b5a317ba8b47f9b18c91bff3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413202"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500184"
 ---
 # <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>使用 Red Hat Enterprise Linux 上的 JBoss EAP 將企業 Java 應用程式部署至 Azure
 
@@ -31,7 +31,7 @@ JBoss EAP 和 RHEL 包含在任何環境中建置、執行、部署及管理企�
 
   如果您沒有 EAP 權利，請在開始使用之前，先取得 [JBoss EAP 評估訂用帳戶](https://access.redhat.com/products/red-hat-jboss-enterprise-application-platform/evaluation)。 若要建立新的 Red Hat 訂用帳戶，請移至 [Red Hat 客戶入口網站](https://access.redhat.com/)並設定帳戶。
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/overview)。
+* [Azure CLI](/cli/azure/overview)。
 
 * RHEL 選項。 選擇 [隨用隨付 (PAYG)] 或 [自備訂用帳戶 (BYOS)]。 使用 BYOS 時，您在部署快速入門範本之前，必須先啟用 [Red Hat Cloud Access](https://access.redhat.com/) RHEL Gold 映像。
 
@@ -164,9 +164,9 @@ JBoss EAP 也可以在叢集模式中運作。 JBoss EAP 叢集傳訊可讓 JBos
 
    1. 等候 Red Hat Gold 映像在您的 Azure 訂用帳戶中可供使用。 這些映像通常會在提交後的三小時內可供使用。
     
-3. 接受 RHEL BYOS 映像的 Azure Marketplace 條款及條件。 您可以執行下列 Azure CLI 命令，以完成此程序。 如需詳細資訊，請參閱 [Azure 中的 RHEL BYOS Gold 映像](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/byos)文件。 請務必執行最新的 Azure CLI 版本。
+3. 接受 RHEL BYOS 映像的 Azure Marketplace 條款及條件。 您可以執行下列 Azure CLI 命令，以完成此程序。 如需詳細資訊，請參閱 [Azure 中的 RHEL BYOS Gold 映像](./byos.md)文件。 請務必執行最新的 Azure CLI 版本。
 
-   1. 開啟 Azure CLI 工作階段，並使用您的 Azure 帳戶進行驗證。 如需協助，請參閱[使用 Azure CLI 登入](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)。
+   1. 開啟 Azure CLI 工作階段，並使用您的 Azure 帳戶進行驗證。 如需協助，請參閱[使用 Azure CLI 登入](/cli/azure/authenticate-azure-cli)。
 
    1. 執行下列 CLI 命令，以確認您的訂用帳戶中有 RHEL BYOS 映像可供使用。 如果您未在此取得任何結果，請確定您的 Azure 訂用帳戶已啟用 RHEL BYOS 映像。
    
@@ -203,7 +203,7 @@ JBoss EAP 僅透過 BYOS 模型在 Azure 上提供。 部署此範本時，您�
   New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri <raw link to the template which can be obtained from github>
   ```
  
-  如需關於安裝和設定 Azure PowerShell 的資訊，請參閱 [PowerShell 文件](https://docs.microsoft.com/powershell/azure/)。  
+  如需關於安裝和設定 Azure PowerShell 的資訊，請參閱 [PowerShell 文件](/powershell/azure/)。  
 
 - **Azure CLI**。 執行下列命令以部署範本：
 
@@ -215,7 +215,7 @@ JBoss EAP 僅透過 BYOS 模型在 Azure 上提供。 部署此範本時，您�
   az group deployment create --resource-group <my-resource-group> --template-uri <raw link to the template which can be obtained from github>
   ```
 
-  如需關於安裝和設定 Azure CLI 的詳細資訊，請參閱[安裝 CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+  如需關於安裝和設定 Azure CLI 的詳細資訊，請參閱[安裝 CLI](/cli/azure/install-azure-cli)。
 
 - **Azure 入口網站**。 您可以移至 Azure 快速入門範本以部署至 Azure 入口網站，如下一節所說明。 在快速入門中，選取 [部署至 Azure] 或 [在 GitHub 上瀏覽] 按鈕。
 
@@ -231,10 +231,10 @@ JBoss EAP 僅透過 BYOS 模型在 Azure 上提供。 部署此範本時，您�
 
 ## <a name="resource-links"></a>資源連結
 
-* [Azure Hybrid Benefit](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
-* [為 Azure App Service 設定 Java 應用程式](https://docs.microsoft.com/azure/app-service/configure-language-java)
+* [Azure Hybrid Benefit](../../windows/hybrid-use-benefit-licensing.md)
+* [為 Azure App Service 設定 Java 應用程式](../../../app-service/configure-language-java.md)
 * [Azure Red Hat OpenShift 上的 JBoss EAP](https://azure.microsoft.com/services/openshift/)
-* [Azure App Service Linux 上的 JBoss EAP](https://docs.microsoft.com/azure/app-service/quickstart-java)
+* [Azure App Service Linux 上的 JBoss EAP](../../../app-service/quickstart-java.md)
 * [在 Azure App Service 上部署 JBoss EAP](https://github.com/JasonFreeberg/jboss-on-app-service)
 
 ## <a name="next-steps"></a>後續步驟
@@ -242,6 +242,6 @@ JBoss EAP 僅透過 BYOS 模型在 Azure 上提供。 部署此範本時，您�
 * 深入了解 [JBoss EAP 7.2](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/)。
 * 深入了解 [JBoss EAP 7.3](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.3/)。
 * 深入了解 [Red Hat 訂用帳戶管理](https://access.redhat.com/products/red-hat-subscription-management)。
-* 深入了解 [Azure 上的 Red Hat 工作負載](https://aka.ms/rhel-docs)。
+* 深入了解 [Azure 上的 Red Hat 工作負載](./overview.md)。
 * [從 Azure Marketplace 在 RHEL VM 或虛擬機器擴展集上部署 JBoss EAP](https://aka.ms/AMP-JBoss-EAP)。
 * [從 Azure 快速入門範本在 RHEL VM 或虛擬機器擴展集上部署 JBoss EAP](https://aka.ms/Quickstart-JBoss-EAP)。

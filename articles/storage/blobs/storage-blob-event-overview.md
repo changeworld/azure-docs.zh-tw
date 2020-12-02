@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: dineshm
-ms.openlocfilehash: e67a323e03ae8ac0a0e34df1f7cc1ee4fe0901d3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 00a7a081f29458ae81d8d8ea4dd8f7abef42f78f
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95901497"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519003"
 ---
 # <a name="reacting-to-blob-storage-events"></a>回應 Blob 儲存體事件
 
@@ -58,7 +58,7 @@ Blob 儲存體事件是使用 [Azure 事件方格](https://azure.microsoft.com/s
 
 ## <a name="filtering-events"></a>篩選事件
 
-Blob [事件可](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) 依建立/刪除之物件的事件種類、容器名稱或名稱進行篩選。 事件方格中的篩選準則會比對主體的開頭或結尾，讓具有相符主體的事件移至訂閱者。
+Blob [事件可](/cli/azure/eventgrid/event-subscription) 依建立/刪除之物件的事件種類、容器名稱或名稱進行篩選。 事件方格中的篩選準則會比對主體的開頭或結尾，讓具有相符主體的事件移至訂閱者。
 
 若要深入瞭解如何套用篩選，請參閱[事件方格的篩選事件](../../event-grid/how-to-filter-events.md)。
 
@@ -96,7 +96,7 @@ Blob 儲存體事件的主體使用格式：
 > [!div class="checklist"]
 > * 由於可設定多個訂用帳戶以將事件路由至相同的事件處理常式，因此重要的是，不要假設事件來自於特定來源，而要檢查訊息主題以確定其來自預期的儲存體帳戶。
 > * 同樣地，檢查 eventType 也是必須進行的步驟之一，而且不要假設您收到的所有事件都是您預期的類型。
-> * 當訊息可能會在延遲之後抵達時，請使用 etag 欄位來瞭解物件的相關資訊是否仍為最新狀態。 若要瞭解如何使用 etag 欄位，請參閱 [管理 Blob 儲存體中的並行](../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage)存取。 
+> * 當訊息可能會在延遲之後抵達時，請使用 etag 欄位來瞭解物件的相關資訊是否仍為最新狀態。 若要瞭解如何使用 etag 欄位，請參閱 [管理 Blob 儲存體中的並行](../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage)存取。
 > * 當訊息無法按順序抵達時，請使用 sequencer 欄位來瞭解任何特定物件上的事件順序。 Sequencer 欄位是字串值，表示任何特定 blob 名稱的事件邏輯順序。 您可以使用標準字串比較來瞭解相同 blob 名稱上兩個事件的相對順序。
 > * 儲存體事件可保證至少一次傳遞至訂閱者，以確保所有訊息都會輸出。 不過，由於訂閱的重試或可用性，有時可能會發生重複的訊息。 若要深入瞭解訊息傳遞和重試，請參閱 [事件方格訊息傳遞和重試](../../event-grid/delivery-and-retry.md)。
 > * 請使用 [blobType] 欄位以了解 Blob 允許何種類型的作業，以及您應該使用何種類型的用戶端程式庫來存取 Blob。 有效值為 `BlockBlob` 或 `PageBlob`。 

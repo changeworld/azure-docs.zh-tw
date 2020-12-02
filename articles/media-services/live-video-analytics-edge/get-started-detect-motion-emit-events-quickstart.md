@@ -3,12 +3,12 @@ title: 開始使用 IoT Edge 上的 Live Video Analytics - Azure
 description: 本快速入門說明如何在 IoT Edge 上開始使用 Live Video Analytics。 了解如何偵測即時影片串流中的動作。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 2d426952e92951185c43b68266196a6764f4f601
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e67c717a4476ab9191471483d9aa8e8f222cd750
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125008"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498263"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>快速入門：開始使用 - IoT Edge 上的 Live Video Analytics
 
@@ -39,7 +39,7 @@ ms.locfileid: "92125008"
 * IoT 中樞
 * 儲存體帳戶
 * Azure 媒體服務帳戶
-* Azure 中的 Linux VM，已安裝 [IoT Edge 執行階段](../../iot-edge/how-to-install-iot-edge-linux.md)
+* Azure 中的 Linux VM，已安裝 [IoT Edge 執行階段](../../iot-edge/how-to-install-iot-edge.md)
 
 在本快速入門中，我們建議您使用 [Live Video Analytics 資源設定指令碼](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)，在您的 Azure 訂用帳戶中部署所需的資源。 若要這樣做，請依照下列步驟執行：
 
@@ -48,7 +48,11 @@ ms.locfileid: "92125008"
 1. 在 Cloud Shell 視窗左側的下拉式功能表中，選取 [Bash] 作為您的環境。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstarts/env-selector.png" alt-text="以動作偵測為基礎的 Live Video Analytics"
+    > :::image type="content" source="./media/quickstarts/env-selector.png" alt-text="環境選取器":::
+1. 執行下列命令。
+
+    ```
+    bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
 如果指令碼成功完成，您應該會在訂用帳戶中看到所有所需資源。 在指令碼輸出中，資源資料表會列出 IoT 中樞名稱。 請尋找 `Microsoft.Devices/IotHubs` 資源類型，並記下該名稱。 在下一個步驟中，您將需要此名稱。 
@@ -80,11 +84,11 @@ RTSP 模擬器模組會在您執行 [Live Video Analytics 資源設定指令碼]
 1. 按一下滑鼠右鍵，然後選取 [延伸模組設定]。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="以動作偵測為基礎的 Live Video Analytics":::
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="延伸模組設定":::
 1. 搜尋並啟用「顯示詳細資訊訊息」。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="以動作偵測為基礎的 Live Video Analytics":::
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="顯示詳細資訊訊息":::
 1. 選取 [檢視] > [Explorer]。 或選取 Ctrl+Shift+E。
 1. 在 [總管] 索引標籤的左下角，選取 [Azure IoT 中樞]。
 1. 選取 [其他選項] 圖示，以查看捷徑功能表。 然後選取 [設定 IoT 中樞連接字串]。
@@ -106,7 +110,7 @@ RTSP 模擬器模組會在您執行 [Live Video Analytics 資源設定指令碼]
 若要列舉模組中的所有[圖表拓撲](media-graph-concept.md#media-graph-topologies-and-instances)：
 
 1. 在 Visual Studio Code 中，以滑鼠右鍵按一下 [lvaEdge] 模組，然後選取 [叫用模組直接方法]。
-1. 在出現的方塊中，輸入 *GraphTopologyList* 。
+1. 在出現的方塊中，輸入 *GraphTopologyList*。
 1. 複製下列 JSON 承載，然後將其貼到方塊中。 然後選取 Enter 鍵。
 
     ```

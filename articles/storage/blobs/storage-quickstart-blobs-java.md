@@ -4,16 +4,16 @@ description: 在本快速入門中，您將了解如何使用適用於 Java 的 
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 09/10/2020
+ms.date: 12/01/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: dc8df24c1ad20aa3380009fe4c0abb29e31823e8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 02752af77d443e19278a96206bb7516fedd59d7f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021719"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501119"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>快速入門：使用 Java v12 SDK 來管理 Blob
 
@@ -45,13 +45,29 @@ ms.locfileid: "96021719"
 
 1. 在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 Maven 建立名為 *blob-quickstart-v12* 的新主控台應用程式。 鍵入下列 **mvn** 命令，以建立 "Hello world!" Java 專案。
 
-   ```console
-   mvn archetype:generate -DgroupId=com.blobs.quickstart \
-                          -DartifactId=blob-quickstart-v12 \
-                          -DarchetypeArtifactId=maven-archetype-quickstart \
-                          -DarchetypeVersion=1.4 \
-                          -DinteractiveMode=false
-   ```
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```powershell
+    mvn archetype:generate `
+        --define interactiveMode=n `
+        --define groupId=com.blobs.quickstart `
+        --define artifactId=blob-quickstart-v12 `
+        --define archetypeArtifactId=maven-archetype-quickstart `
+        --define archetypeVersion=1.4
+    ```
+
+    # <a name="bash"></a>[Bash](#tab/bash)
+
+    ```bash
+    mvn archetype:generate \
+        --define interactiveMode=n \
+        --define groupId=com.blobs.quickstart \
+        --define artifactId=blob-quickstart-v12 \
+        --define archetypeArtifactId=maven-archetype-quickstart \
+        --define archetypeVersion=1.4
+    ```
+
+    ---
 
 1. 產生專案的輸出應該看起來像這樣：
 
@@ -159,9 +175,9 @@ Azure Blob 儲存體經過最佳化，已能妥善儲存大量的非結構化資
 
 使用下列 Java 類別與這些資源互動：
 
-* [ 類別可讓您操作 Azure 儲存體資源和 Blob 容器。 儲存體帳戶會為 Blob 服務提供最上層命名空間。
+* [BlobServiceClient](/java/api/com.azure.storage.blob.blobserviceclient)：`BlobServiceClient` 類別可讓您操作 Azure 儲存體資源和 Blob 容器。 儲存體帳戶會為 Blob 服務提供最上層命名空間。
 * [ 類別會提供 Fluent 產生器 API，協助設定和具現化 ](/java/api/com.azure.storage.blob.blobserviceclientbuilder) 物件。
-* [ 類別可讓您操作 Azure 儲存體容器及其 Blob。
+* [BlobContainerClient](/java/api/com.azure.storage.blob.blobcontainerclient)：`BlobContainerClient` 類別可讓您操作 Azure 儲存體容器及其 Blob。
 * [ 類別可讓您操作 Azure 儲存體 Blob。
 * [BlobItem](/java/api/com.azure.storage.blob.models.blobitem)：`BlobItem` 類別代表從呼叫 [listBlobs](/java/api/com.azure.storage.blob.blobcontainerclient.listblobs) 傳回的個別 Blob。
 

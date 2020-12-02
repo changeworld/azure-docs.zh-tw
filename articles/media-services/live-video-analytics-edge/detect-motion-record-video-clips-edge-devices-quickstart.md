@@ -4,12 +4,12 @@ description: 本快速入門說明如何在 IoT Edge 上使用 Live Video Analyt
 ms.topic: quickstart
 ms.date: 04/27/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: e456bb5b8d6d6658158af0c58f05ab38fe4693b8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e4334cdd14242337a2a870f31886606020654685
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88682180"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498348"
 ---
 # <a name="quickstart-detect-motion-and-record-video-on-edge-devices"></a>快速入門：在邊緣裝置上偵測動作及錄製影片
  
@@ -23,7 +23,7 @@ ms.locfileid: "88682180"
 [!INCLUDE [header](includes/detect-motion-record-video-clips-edge-devices-quickstart/python/header.md)]
 ::: zone-end
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/detect-motion-record-video-clips-edge-devices-quickstart/csharp/prerequisites.md)]
@@ -123,4 +123,4 @@ ms.locfileid: "88682180"
 * 檢閱進階使用者的其他挑戰：
 
     * 使用支援 RTSP 的 [IP 攝影機](https://en.wikipedia.org/wiki/IP_camera)，而非使用 RTSP 模擬器。 您可以在[符合 ONVIF 標準的](https://www.onvif.org/conformant-products)產品頁面上，尋找支援 RTSP 的 IP 攝影機。 尋找符合設定檔 G、S 或 T 的裝置。
-    * 使用 AMD64 或 x64 Linux 裝置，而不是在 Azure 中使用 Linux VM。 此裝置必須與 IP 攝影機位於相同的網路中。 遵循[在 Linux 上安裝 Azure IoT Edge 執行階段](../../iot-edge/how-to-install-iot-edge-linux.md)中的指示。 然後按照[將您的第一個 IoT Edge 模組部署至虛擬 Linux 裝置](../../iot-edge/quickstart-linux.md)中的指示操作，向 Azure IoT 中樞註冊裝置。
+    * 使用 AMD64 或 x64 Linux 裝置，而不是在 Azure 中使用 Linux VM。 此裝置必須與 IP 攝影機位於相同的網路中。 遵循[在 Linux 上安裝 Azure IoT Edge 執行階段](../../iot-edge/how-to-install-iot-edge.md)中的指示。 然後按照[將您的第一個 IoT Edge 模組部署至虛擬 Linux 裝置](../../iot-edge/quickstart-linux.md)中的指示操作，向 Azure IoT 中樞註冊裝置。

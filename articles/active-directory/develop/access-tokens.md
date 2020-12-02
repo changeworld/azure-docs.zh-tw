@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: b1ce076befc325fef7717c0404b31dadff952af6
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 909c8910a86734b0a34787f75c233975cd3503c3
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433286"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518238"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 身分識別平台存取權杖
 
@@ -75,7 +75,7 @@ JWT (JSON Web 權杖) 分成三個部分：
 
 各部分會以句點分隔 (`.`)，並各別以 Base64 編碼。
 
-如果有值可填入宣告時，宣告才會存在。 您的應用程式不應該相依于存在的宣告。 範例包括 `pwd_exp` (並非每個租使用者都需要密碼過期) 和 `family_name` ( [用戶端認證] (v2-oauth2-client-creds-grant-flow.md) 流程代表沒有名稱) 的應用程式。 用於驗證存取權杖的宣告一律會存在。
+如果有值可填入宣告時，宣告才會存在。 您的應用程式不應該相依于存在的宣告。 範例包括 `pwd_exp` (不是每個租使用者都要求密碼過期) ，而 `family_name` ([用戶端認證](v2-oauth2-client-creds-grant-flow.md) 流程代表沒有) 名稱的應用程式。 用於驗證存取權杖的宣告一律會存在。
 
 如果要重複使用權杖，某些宣告會用來協助 Azure AD 保護權杖。 這些宣告會在「不透明」描述中標示為不公開使用。 這些宣告可能會或可能不會出現在權杖中，而且可能會在沒有通知的情況下新增宣告。
 

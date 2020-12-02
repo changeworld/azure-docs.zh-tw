@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 7fe5b8da0b6dfa69d04a5ad152aa34a8686d854f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 68c58769302bbefd29b483a8fda225201d242dd9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786100"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483639"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>快速入門：適用於 Python 的 Azure Key Vault 祕密用戶端程式庫
 
@@ -54,7 +54,7 @@ ms.locfileid: "92786100"
 1. 安裝 Azure Active Directory 身分識別程式庫：
 
     ```terminal
-    pip install azure.identity
+    pip install azure-identity
     ```
 
 

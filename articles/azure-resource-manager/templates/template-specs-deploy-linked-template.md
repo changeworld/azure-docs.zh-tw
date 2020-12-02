@@ -3,23 +3,23 @@ title: 將範本規格部署為連結的範本
 description: 瞭解如何在連結的部署中部署現有的範本規格。
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: 65ad5767817457133d0fbc34c7735cf52ff2c3f3
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: b30a99a469ec010dcc2e128bbeb446b493631608
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94747463"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518867"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>教學課程：將範本規格部署為連結的範本 (預覽) 
 
 瞭解如何使用[連結的部署](linked-templates.md#linked-template)來部署現有的[範本規格](template-specs.md)。 您可以使用範本規格，與組織中的其他使用者共用 ARM 範本。 建立範本規格之後，您可以使用 Azure PowerShell 或 Azure CLI 來部署範本規格。 您也可以使用連結的範本，將範本規格部署為解決方案的一部分。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 範本規格目前為預覽狀態。 若要使用它，您必須安裝最新版本的 PowerShell 或 Azure CLI。 針對 Azure PowerShell，請使用第 [5.0.0 版或更新](/powershell/azure/install-az-ps)版本。 針對 Azure CLI，請使用 [2.14.2 版或更新版本](/cli/azure/install-azure-cli)。
+> 範本規格目前為預覽狀態。 若要搭配 Azure PowerShell 使用它，您必須安裝第 [5.0.0 版或更新](/powershell/azure/install-az-ps)版本。 若要搭配 Azure CLI 使用，請使用 [2.14.2 版或更新版本](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-template-spec"></a>建立範本規格
 

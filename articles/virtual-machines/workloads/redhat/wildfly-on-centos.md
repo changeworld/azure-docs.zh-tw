@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 7aa21ef8-9cfb-43e0-bfda-3f10a2a2f3ef
 ms.date: 10/23/2020
-ms.openlocfilehash: 842913b8e9f83ff3b188976da55aef7c909518ca
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: ddd6f277bc71467060aa2279d93f9410a1327dde
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359913"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486601"
 ---
 # <a name="quickstart-wildfly-on-centos-8"></a>快速入門：CentOS 8 上的 WildFly
 
@@ -63,7 +63,7 @@ Azure CentOS 8 映像是隨用隨付 (PAYG) VM 映射，使用者無需取得授
 
 您可以透過下列三種方式來部署範本：
 
-- 使用 PowerShell - 執行下列命令部署範本：(如需有關安裝和設定 Azure PowerShell 的資訊，請參閱[ Azure PowerShell](https://docs.microsoft.com/powershell/azure/))。
+- 使用 PowerShell - 執行下列命令部署範本：(如需有關安裝和設定 Azure PowerShell 的資訊，請參閱[ Azure PowerShell](/powershell/azure/))。
 
     ```
     New-AzResourceGroup -Name <resource-group-name> -Location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment
@@ -73,7 +73,7 @@ Azure CentOS 8 映像是隨用隨付 (PAYG) VM 映射，使用者無需取得授
     New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json
     ```
     
-- 使用 Azure CLI - 執行下列命令部署範本：(如需有關安裝和設定 Azure 跨平台命令列介面的詳細資訊，請參閱 [Azure 跨平台命令列](https://docs.microsoft.com/cli/azure/install-azure-cli))。
+- 使用 Azure CLI - 執行下列命令部署範本：(如需有關安裝和設定 Azure 跨平台命令列介面的詳細資訊，請參閱 [Azure 跨平台命令列](/cli/azure/install-azure-cli))。
 
     ```
     az group create --name <resource-group-name> --location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment
@@ -92,7 +92,7 @@ Azure CentOS 8 映像是隨用隨付 (PAYG) VM 映射，使用者無需取得授
 ## <a name="resource-links"></a>資源連結
 
 * 深入了解 [WildFly 18](https://docs.wildfly.org/18/)
-* 深入了解[Azure 上的 Linux 散發套件](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)
+* 深入了解[Azure 上的 Linux 散發套件](../../linux/endorsed-distros.md)
 * [適用於 Java 開發人員的 Azure 文件](https://github.com/JasonFreeberg/jboss-on-app-service)
 
 ## <a name="next-steps"></a>後續步驟

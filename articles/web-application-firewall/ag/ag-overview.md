@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: d3e38de191557f0602d1b544c6590018f98405b0
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: f15a739904c28361a60210a0cc4606c7048d0f53
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560786"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518969"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>什麼是 Azure 應用程式閘道上的 Web 應用程式防火牆?
 
@@ -22,9 +22,6 @@ Azure 應用程式閘道上的 Azure Web 應用程式防火牆 (WAF) 可為 Web 
 應用程式閘道上的 WAF 會以 Open Web Application Security Project (OWASP) 的[核心規則集 (CRS)](https://owasp.org/www-project-modsecurity-core-rule-set/) 3.1、3.0 或 2.2.9 為基礎。 WAF 會自動更新以加入對新弱點的保護，而不需要額外的設定。 
 
 下面列出的所有 WAF 功能都會存在 WAF 原則中。 您可以對個別接聽程式，或應用程式閘道上的路徑型路由規則，建立多個原則，並可將這些原則與應用程式閘道建立關聯。 如此一來，您就可以為應用程式閘道背後的每個網站提供個別原則 (如果有需要的話)。 如需有關 WAF 原則的詳細資訊，請參閱[建立 WAF 原則](create-waf-policy-ag.md)。
-
-   > [!NOTE]
-   > 以每個 URI 為主的 WAF 原則都處於公開預覽狀態。 這表示此功能受限於 Microsoft 的補充使用規定。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ![應用程式閘道 WAF 圖表](../media/ag-overview/waf1.png)
 
@@ -122,8 +119,8 @@ Azure 應用程式閘道上的 Azure Web 應用程式防火牆 (WAF) 可為 Web 
 
 應用程式閘道 WAF 可以設定為在下列兩種模式中執行︰
 
-* **偵測模式** ：監視並記錄所有威脅警示。 您應在 [診斷] 區段中開啟應用程式閘道的記錄診斷。 您也必須確保已選取並開啟 WAF 記錄。 在偵測模式中執行的 Web 應用程式防火牆不會封鎖傳入要求。
-* **預防模式** ：封鎖規則偵測到的入侵和攻擊。 攻擊者會收到「403 未經授權存取」例外狀況，且連線會關閉。 預防模式會將這類攻擊記錄在 WAF 記錄中。
+* **偵測模式**：監視並記錄所有威脅警示。 您應在 [診斷] 區段中開啟應用程式閘道的記錄診斷。 您也必須確保已選取並開啟 WAF 記錄。 在偵測模式中執行的 Web 應用程式防火牆不會封鎖傳入要求。
+* **預防模式**：封鎖規則偵測到的入侵和攻擊。 攻擊者會收到「403 未經授權存取」例外狀況，且連線會關閉。 預防模式會將這類攻擊記錄在 WAF 記錄中。
 
 > [!NOTE]
 > 在實際執行環境中時，建議您以偵測模式短期執行新部署的 WAF。 這讓您有機會先取得[防火牆記錄](../../application-gateway/application-gateway-diagnostics.md#firewall-log)，並更新任何例外狀況或[自訂規則](./custom-waf-rules-overview.md)之後，再轉換到預防模式。 這有助於減少非預期的流量封鎖發生。

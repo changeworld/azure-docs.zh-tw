@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 8c6a27f0cfaafe7e6c1181651e672d0e828af855
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 605e8cd57ab5863c1011082f0f2dbd93d078980b
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444494"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518935"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>將時間序列預測模型自動定型
 
@@ -286,19 +286,19 @@ automl_config = AutoMLConfig(task='forecasting',
 
 ### <a name="short-series-handling"></a>短序列處理
 
-如果沒有足夠的資料點可進行模型開發的定型和驗證階段，自動化 ML 會將時間序列視為一 **段很短** 的時間。 每個實驗的資料點數目各不相同，而且取決於 max_horizon、交叉驗證分割的數目和模型回顧的長度，也就是建立時間序列功能所需的最大歷程記錄。 如需確切的計算，請參閱 [short_series_handling_config 參考檔](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration)。
+如果沒有足夠的資料點可進行模型開發的定型和驗證階段，自動化 ML 會將時間序列視為一 **段很短** 的時間。 每個實驗的資料點數目各不相同，而且取決於 max_horizon、交叉驗證分割的數目和模型回顧的長度，也就是建立時間序列功能所需的最大歷程記錄。 如需確切的計算，請參閱 [short_series_handling_configuration 參考檔](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration)。
 
-自動化 ML 預設會使用物件中的參數來提供簡短的系列處理 `short_series_handling_config` `ForecastingParameters` 。 
+自動化 ML 預設會使用物件中的參數來提供簡短的系列處理 `short_series_handling_configuration` `ForecastingParameters` 。 
 
-若要啟用短序列處理， `freq` 也必須定義參數。 若要變更預設行為， `short_series_handling_config = auto` 請更新 `short_series_handling_config` 物件中的參數 `ForecastingParameter` 。  
+若要啟用短序列處理， `freq` 也必須定義參數。 若要定義每小時頻率，我們將設定 `freq='H'` 。 在 [這裡](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)查看頻率字串選項。 若要變更預設行為， `short_series_handling_configuration = 'auto'` 請更新 `short_series_handling_configuration` 物件中的參數 `ForecastingParameter` 。  
 
 ```python
 from azureml.automl.core.forecasting_parameters import ForecastingParameters
 
 forecast_parameters = ForecastingParameters(time_column_name='day_datetime', 
                                             forecast_horizon=50,
-                                            short_series_handling_config='auto',
-                                            freq = '7',
+                                            short_series_handling_configuration='auto',
+                                            freq = 'H',
                                             target_lags='auto')
 ```
 下表摘要說明的可用設定 `short_series_handling_config` 。
@@ -306,7 +306,7 @@ forecast_parameters = ForecastingParameters(time_column_name='day_datetime',
 |設定|描述
 |---|---
 |`auto`| 以下是簡短系列處理的預設行為 <li> *如果所有數列都是簡短* 的，請填補資料。 <br> <li> *如果並非所有數列都是簡短* 的，請卸載簡短的數列。 
-|`pad`| 如果 `short_series_handling_config = pad` 為，則自動化 ML 會將虛擬值新增至每個找到的短序列。 下列列出資料行類型，以及它們的填補方式： <li>具有 Nan 的物件資料行 <li> 具有0的數值資料行 <li> 具有 False 的布林值/邏輯資料行 <li> 目標資料行是以零和標準差1的隨機值填補。 
+|`pad`| 如果 `short_series_handling_config = pad` 為，則自動化 ML 會將隨機值新增至每個找到的短序列。 下列列出資料行類型，以及它們的填補方式： <li>具有 Nan 的物件資料行 <li> 具有0的數值資料行 <li> 具有 False 的布林值/邏輯資料行 <li> 目標資料行是以零和標準差1的隨機值填補。 
 |`drop`| 如果 `short_series_handling_config = drop` 為，則自動化 ML 會捨棄短數列，而不會用於定型或預測。 這些數列的預測將會傳回 NaN。
 |`None`| 未填補或卸載任何數列
 

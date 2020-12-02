@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3db475b5eb0c584f86c8810e9c993e4d5d7b497e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7016abc9d52aa12b497d29f605fe351ee3f6a2dd
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452906"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519094"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>管理 Azure 數位 Twins 中的端點和路由 (Api 和 CLI) 
 
@@ -90,47 +90,59 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 當端點無法在某段時間內或在嘗試傳遞事件一段特定的次數之後傳遞事件時，它可以將未傳遞的事件傳送至儲存體帳戶。 此處理程式稱為無效 **信件。**
 
-若要深入瞭解無效信件，請參閱 [*概念：事件路由*](concepts-route-events.md#dead-letter-events)。
+若要深入瞭解無效信件，請參閱 [*概念：事件路由*](concepts-route-events.md#dead-letter-events)。 如需有關如何使用無效信件來設定端點的指示，請繼續閱讀本節的其餘部分。
 
 #### <a name="set-up-storage-resources"></a>設定儲存體資源
 
-在設定寄不出的信件位置之前，您必須擁有在 Azure 帳戶中設定[容器](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)的[儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-portal)。 您稍後會在建立端點時，提供此容器的 URL。
-寄不出的信件是以具有 [SAS 權杖](../storage/common/storage-sas-overview.md)的容器 URL 提供。 該權杖只需要 `write` 儲存體帳戶內目的地容器的許可權。 完整格式的 URL 將採用下列格式： `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
+在設定寄不出的信件位置之前，您必須擁有在 Azure 帳戶中設定[容器](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)的[儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-portal)。 
+
+您稍後會在建立端點時，提供此容器的 URL。 寄不出的信件位置會以具有 [SAS 權杖](../storage/common/storage-sas-overview.md)的容器 URL 提供給端點。 該權杖需要 `write` 儲存體帳戶內目的地容器的許可權。 完整格式的 URL 將採用下列格式： `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>` 。
 
 請遵循下列步驟，在您的 Azure 帳戶中設定這些儲存體資源，以準備在下一節中設定端點連接。
 
-1. 遵循 [這篇文章](../storage/common/storage-account-create.md?tabs=azure-portal) 來建立儲存體帳戶，並儲存儲存體帳戶名稱，以供稍後使用。
-2. 使用 [這篇文章](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) 建立容器，並儲存容器名稱，以便稍後在設定容器與端點之間的連接時使用。
-3. 接下來，為您的儲存體帳戶建立 SAS 權杖。 首先，在 [Azure 入口網站](https://ms.portal.azure.com/#home) 中流覽至您的儲存體帳戶， (您可以使用入口網站搜尋列) 來依名稱尋找它。
-4. 在 [儲存體帳戶] 頁面中，選擇左側導覽列中的 [ _共用存取_ 簽章] 連結，以選取產生 SAS 權杖的正確許可權。
-5. 針對 _允許的服務_ 和 _允許的資源類型_，請選取您想要的設定。 您必須在每個類別中至少選取一個方塊。 針對 [允許的許可權]，選擇 [ **寫入** ] (如果要) ，您也可以選取其他許可權。
-請視需要設定其餘設定。
-6. 然後，選取 [ _產生 sas 與連接字串_ ] 按鈕以產生 sas 權杖。 這將會在相同頁面底部的設定選項底下產生數個 SAS 和連接字串值。 向下滾動以查看值，並使用 [複製到剪貼簿] 圖示複製 **SAS 權杖** 值。 將其儲存以供稍後使用。
+1. 遵循 [*建立儲存體帳戶*](../storage/common/storage-account-create.md?tabs=azure-portal) 中的步驟，在您的 Azure 訂用帳戶中建立 **儲存體帳戶** 。 記下儲存體帳戶名稱，以供稍後使用。
+2. 遵循 [*建立容器*](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) 中的步驟，在新的儲存體帳戶內建立 **容器** 。 請記下容器名稱，以便稍後使用。
+3. 接下來，為您的儲存體帳戶建立 **SAS 權杖** ，讓端點可用來存取它。 首先，在 [Azure 入口網站](https://ms.portal.azure.com/#home) 中流覽至您的儲存體帳戶， (您可以使用入口網站搜尋列) 來依名稱尋找它。
+4. 在 [儲存體帳戶] 頁面中，選擇左側導覽列中的 [ _共用存取_ 簽章] 連結，開始設定 SAS 權杖。
 
-:::image type="content" source="./media/how-to-manage-routes-apis-cli/generate-sas-token.png" alt-text="Azure 入口網站中的 [儲存體帳戶] 頁面，其中顯示用來產生 SAS 權杖的所有設定選項。" lightbox="./media/how-to-manage-routes-apis-cli/generate-sas-token.png":::
+    :::image type="content" source="./media/how-to-manage-routes-apis-cli/generate-sas-token-1.png" alt-text="Azure 入口網站中的 [儲存體帳戶] 頁面" lightbox="./media/how-to-manage-routes-apis-cli/generate-sas-token-1.png":::
 
-:::image type="content" source="./media/how-to-manage-routes-apis-cli/copy-sas-token.png" alt-text="複製要在寄不出的信件秘密中使用的 SAS 權杖。" lightbox="./media/how-to-manage-routes-apis-cli/copy-sas-token.png":::
+1. 在 [ *共用存取* 簽章] 頁面的 [ *允許的服務* ] 和 [ *允許的資源類型*] 下，選取您想要的任何設定。 您必須在每個類別中至少選取一個方塊。 在 [ *允許的許可權*] 下，選擇 [ **寫入** ] (如果您要) ，也可以選取其他許可權。
+1. 設定您想要用於其餘設定的任何值。
+1. 當您完成時，請選取 [ _產生 sas 與連接字串_ ] 按鈕以產生 sas 權杖。 
 
+    :::image type="content" source="./media/how-to-manage-routes-apis-cli/generate-sas-token-2.png" alt-text="Azure 入口網站中的 [儲存體帳戶] 頁面，其中顯示所有設定選項以產生 SAS 權杖，並醒目提示 [產生 SAS 與連接字串] 按鈕" lightbox="./media/how-to-manage-routes-apis-cli/generate-sas-token-2.png"::: 
+
+1. 這將會在相同頁面底部的設定選項底下產生數個 SAS 和連接字串值。 向下滾動以查看值，並使用 [ *複製到剪貼* 簿] 圖示複製 **SAS 權杖** 值。 將其儲存以供稍後使用。
+
+    :::image type="content" source="./media/how-to-manage-routes-apis-cli/copy-sas-token.png" alt-text="複製要在寄不出的信件秘密中使用的 SAS 權杖。" lightbox="./media/how-to-manage-routes-apis-cli/copy-sas-token.png":::
+    
 #### <a name="configure-the-endpoint"></a>設定端點
 
-死信端點是使用 Azure Resource Manager Api 所建立。 建立端點時，請使用 [Azure Resource Manager api 檔](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) 來填滿必要的要求參數。 此外，將新增 `deadLetterSecret` 至要求 **主體** 中的屬性物件，其中包含適用于儲存體帳戶的容器 URL 和 SAS 權杖。
+若要建立已啟用無效信件的端點，您必須使用 Azure Resource Manager Api 來建立端點。 
+
+1. 首先，使用 [Azure Resource Manager api 檔](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) 來設定建立端點的要求，並填入必要的要求參數。 
+
+1. 接下來，將 `deadLetterSecret` 欄位新增至要求 **主體** 中的屬性物件。 根據以下範本來設定此值，這會從儲存體帳戶名稱、容器名稱和您在 [上一節](#set-up-storage-resources)中收集的 SAS 權杖值中建立 URL。
       
-```json
-{
-  "properties": {
-    "endpointType": "EventGrid",
-    "TopicEndpoint": "https://contosoGrid.westus2-1.eventgrid.azure.net/api/events",
-    "accessKey1": "xxxxxxxxxxx",
-    "accessKey2": "xxxxxxxxxxx",
-    "deadLetterSecret":"https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>"
-  }
-}
-```
+    ```json
+    {
+      "properties": {
+        "endpointType": "EventGrid",
+        "TopicEndpoint": "https://contosoGrid.westus2-1.eventgrid.azure.net/api/events",
+        "accessKey1": "xxxxxxxxxxx",
+        "accessKey2": "xxxxxxxxxxx",
+        "deadLetterSecret":"https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>"
+      }
+    }
+    ```
+1. 傳送要求以建立端點。
+
 如需有關結構化此要求的詳細資訊，請參閱 Azure 數位 Twins REST API 檔： [端點-DigitalTwinsEndpoint CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate)。
 
 ### <a name="message-storage-schema"></a>訊息儲存架構
 
-死信訊息將會以下列格式儲存在您的儲存體帳戶中：
+一旦設定了寄不出信件的端點，將會以下列格式將死信訊息儲存在您的儲存體帳戶中：
 
 `{container}/{endpointName}/{year}/{month}/{day}/{hour}/{eventId}.json`
 

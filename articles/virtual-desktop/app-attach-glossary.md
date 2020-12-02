@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6107ffea4fe4d615a42973ab1b231ca9f6b5241f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 7132eae073f3d53a104536076ae801ec9ff93e5f
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674956"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518663"
 ---
 # <a name="msix-app-attach-glossary"></a>MSIX 應用程式附加詞彙
 
@@ -108,7 +108,19 @@ Destaging 會通知作業系統，MSIX 封裝或應用程式目前未執行，�
 
 ## <a name="cim"></a>Cim
 
-.CIM 是與複合圖像檔案系統 (CimFS) 相關聯的新副檔名。 掛接和卸載 CIM 檔案的速度較快。 CIM 也會耗用比 VHD 更少的 CPU 和記憶體。
+。 CIM 是與複合圖像檔案系統 (CimFS) 相關聯的新副檔名。 掛接和卸載 CIM 檔案的速度較快。 CIM 也會耗用比 VHD 更少的 CPU 和記憶體。
+
+CIM 檔案是包含的檔案。CIM 延伸模組，其中包含中繼資料和至少六個包含實際資料的額外檔案。 CIM 檔案內的檔案沒有副檔名。 下表是您會在 CIM 中找到的範例檔案清單：
+
+| 檔案名稱 | 分機 | 大小 |
+|-----------|-----------|------|
+| Vsc | Cim | 1 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | NA | 27 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_1 | NA | 20 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_2 | NA | 42 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | NA | 428 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_1 | NA | 217 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_2 | NA | 264132 KB |
 
 下表是 VHD 與 CimFS 之間的效能比較。 這些數位是測試回合的結果，其中每個格式的 500 300 MB 檔案都在 DSv4 電腦上執行。
 

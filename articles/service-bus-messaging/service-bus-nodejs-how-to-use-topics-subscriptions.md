@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 11/09/2020
 ms.author: spelluru
 ms.custom: devx-track-js
-ms.openlocfilehash: 56bed63a9030135966a208dd1ad9b4c45cde328d
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: aac3b6339c318c76e9b0c9abd0bc3778f2563a6f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95811704"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498688"
 ---
 # <a name="quickstart-service-bus-topics-and-subscriptions-with-nodejs-and-the-preview-azureservice-bus-package"></a>快速入門：透過 Node.js 和預覽 azure/service-bus 套件使用服務匯流排主題和訂用帳戶
 在本教學課程中，您將了解如何以 JavaScript 程式使用 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 套件，將訊息傳送至服務匯流排主題，以及接收來自主題服務匯流排訂用帳戶的訊息。
@@ -208,4 +208,4 @@ npm install @azure/service-bus
 
 - [適用於 Python 的 Azure 服務匯流排用戶端程式庫](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/README.md)
 - [範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples)。 **javascript** 資料夾具有 JavaScript 範例，而 **typescript** 具有 TypeScript 範例。 
-- [azure-servicebus 參考文件](https://docs.microsoft.com/javascript/api/overview/azure/service-bus)
+- [azure-servicebus 參考文件](/javascript/api/overview/azure/service-bus)

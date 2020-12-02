@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: c5bf559ec7bf85e92cf21e3d4c493cae1361ea7c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: e4782bf09b8c27132417f6021927408e18755104
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968021"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494013"
 ---
 # <a name="what-is-azure-network-watcher"></a>什麼是 Azure 網路監看員？
 
@@ -31,7 +31,7 @@ Azure 網路監看員提供了相關工具，可對 Azure 虛擬網路中的資�
 
 端點可以是另一個虛擬機器 (VM)、完整網域名稱 (FQDN)、統一資源識別項 (URI) 或 IPv4 位址。 *連線監視器* 功能可定期監視 VM 與端點之間的存取性、延遲和網路拓撲變更，並對您發出通知。 例如，您可能會有與資料庫伺服器 VM 通訊的 Web 伺服器 VM。 您的組織中可能會有您不認識的人將自訂路由或網路安全性規則套用至 Web 伺服器或資料庫伺服器 VM 或子網路。
 
-如果端點變得無法連線，連線疑難排解會通知其原因。 可能的原因包括 DNS 名稱解析問題，VM 作業系統內的 CPU、記憶體或防火牆有問題，或是自訂路由的躍點類型、VM 的安全性規則或輸出連線的子網路有問題。 深入了解 Azure 中的[安全性規則](../virtual-network/network-security-groups-overview.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json#security-rules)和[路由躍點類型](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
+如果端點變得無法連線，連線疑難排解會通知其原因。 可能的原因包括 DNS 名稱解析問題，VM 作業系統內的 CPU、記憶體或防火牆有問題，或是自訂路由的躍點類型、VM 的安全性規則或輸出連線的子網路有問題。 深入了解 Azure 中的[安全性規則](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#security-rules)和[路由躍點類型](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 
 連線監視器也會提供在一段時間內觀察到的最小、平均和最大延遲。 在了解連線的延遲後，您或許就能藉由將 Azure 資源移至不同的 Azure 區域，而減少延遲。 深入了解如何判斷 [Azure 區域與網際網路服務提供者之間的相對延遲](#determine-relative-latencies-between-azure-regions-and-internet-service-providers)，以及如何使用[連線監視器](connection-monitor.md)來監視 VM 與端點之間的通訊。 如果您想要在某個時間點測試連線，而非在一段時間內監視連線，您可以比照使用連線監視器的方式，來使用[連線疑難排解](#connection-troubleshoot)功能。
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: 25f4ae0dbfd7827a36dede6a889c342ea490e273
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f27f2a6319bf2648546a62c2566d938db657738f
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94948471"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518459"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常見問題集
 
@@ -401,3 +401,6 @@ destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_
 - 若要移至拓撲檢視上其他醒目提示節點，請使用 `Shift+Right arrow` 鍵順向移動。 
 - 在醒目提示的節點上，焦點就會移至節點的 [資訊工具方塊]。 根據預設，焦點會移至 [資訊工具方塊] 上的 [更多詳細資料] 按鈕。 若要進一步地在 [方塊] 檢視內移動，請分別使用 `Right arrow` 和 `Left arrow` 鍵來順向和反向移動。 按 `Enter` 的效果等同於在 [資訊工具方塊] 內選取焦點按鈕的效果。
 - 選取任何這類節點時，可以按 `Shift+Left arrow` 鍵逐一前往其所有連線。 焦點會移至該連線的 [資訊工具方塊]。 任何時候只要再按一次 `Shift+Right arrow`，都可以將焦點轉移回該節點。
+
+## <a name="are-classic-nsgs-supported"></a>是否支援傳統 Nsg？
+否，流量分析不支援傳統 NSG。 建議您將 IaaS 資源從傳統遷移至 Azure Resource Manager，因為傳統資源將會被 [取代](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation)。 請參閱這篇文章，以瞭解 [如何遷移](https://docs.microsoft.com/azure/virtual-machines/migration-classic-resource-manager-overview)。

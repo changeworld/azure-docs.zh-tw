@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 35f2f82b4fe6862f0d023a70b32c964698b0c0eb
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 682db0ef52e624a23d95aa18a007f05a78f39677
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547804"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518782"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight 管理 IP 位址
 
@@ -32,7 +32,7 @@ ms.locfileid: "92547804"
 
 ## <a name="azure-dns-service"></a>Azure DNS 服務
 
-如果您使用 Azure 提供的 DNS 服務，允許在埠53上從 __168.63.129.16__ 存取。 如需詳細資訊，請參閱 [vm 的名稱解析和角色實例](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) 檔。 如果您是使用自訂 DNS，請略過此步驟。
+如果您使用 Azure 提供的 DNS 服務，允許在埠53上的 TCP 和 UDP 存取 __168.63.129.16__ 。 如需詳細資訊，請參閱 [vm 的名稱解析和角色實例](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) 檔。 如果您是使用自訂 DNS，請略過此步驟。
 
 ## <a name="health-and-management-services-all-regions"></a>健全狀況和管理服務：所有區域
 
@@ -52,7 +52,7 @@ ms.locfileid: "92547804"
 > [!IMPORTANT]  
 > 如果未列出您使用的 Azure 區域，請使用網路安全性群組的 [服務標記](hdinsight-service-tags.md) 功能。
 
-| Country | Region | 允許的來源 IP 位址 | 允許的目的地 | 方向 |
+| Country | 區域 | 允許的來源 IP 位址 | 允許的目的地 | 方向 |
 | ---- | ---- | ---- | ---- | ----- |
 | Asia | 東亞 | 23.102.235.122</br>52.175.38.134 | \*：443 | 連入 |
 | &nbsp; | 東南亞 | 13.76.245.160</br>13.76.136.249 | \*：443 | 連入 |
@@ -76,7 +76,7 @@ ms.locfileid: "92547804"
 | &nbsp; | 日本西部 | 40.74.125.69</br>138.91.29.150 | \*：443 | 連入 |
 | 南韓 | 南韓中部 | 52.231.39.142</br>52.231.36.209 | \*：443 | 連入 |
 | &nbsp; | 南韓南部 | 52.231.203.16</br>52.231.205.214 | \*：443 | 連入
-| 英國 | 英國西部 | 51.141.13.110</br>51.141.7.20 | \*：443 | 連入 |
+| United Kingdom | 英國西部 | 51.141.13.110</br>51.141.7.20 | \*：443 | 連入 |
 | &nbsp; | 英國南部 | 51.140.47.39</br>51.140.52.16 | \*：443 | 連入 |
 | 美國 | 美國中部 | 13.89.171.122</br>13.89.171.124 | \*：443 | 連入 |
 | &nbsp; | 美國東部 | 13.82.225.233</br>40.71.175.99 | \*：443 | 連入 |
@@ -93,7 +93,7 @@ ms.locfileid: "92547804"
 
 如果您 (Udr) 使用使用者定義的路由，則應該指定路由，並允許從虛擬網路到上述 Ip 的輸出流量，並將下一個躍點設定為 [網際網路]。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [建立 Azure HDInsight 叢集的虛擬網路](hdinsight-create-virtual-network.md)
 * [Azure HDInsight 的網路安全性群組 (NSG) 服務標記](hdinsight-service-tags.md)

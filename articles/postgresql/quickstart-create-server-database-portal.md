@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/18/2020
-ms.openlocfilehash: 42e15da2fd31d163bc8822a347101704b27e1222
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 000ab3e3911c65554622a48d34abda79d60411df
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913386"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492381"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立適用於 PostgreSQL 的 Azure 資料庫伺服器
 
@@ -65,7 +65,7 @@ Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行�
 [有任何問題嗎？請告訴我們。](https://aka.ms/postgres-doc-feedback)
 
 ## <a name="configure-a-firewall-rule"></a>設定防火牆規則
-根據預設，您建立的伺服器不是可公開存取的。 您必須向 IP 位址授與權限。 請移至 Azure 入口網站中的伺服器資源，然後從伺服器資源的左側功能表選取 [連線安全性]。 如果您不確定如何尋找您的資源，請參閱[開啟資源](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources)。
+根據預設，您建立的伺服器不是可公開存取的。 您必須向 IP 位址授與權限。 請移至 Azure 入口網站中的伺服器資源，然後從伺服器資源的左側功能表選取 [連線安全性]。 如果您不確定如何尋找您的資源，請參閱[開啟資源](../azure-resource-manager/management/manage-resources-portal.md#open-resources)。
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/quickstart-create-database-portal/add-current-ip-firewall.png" alt-text="顯示連線安全性防火牆規則的螢幕擷取畫面。":::

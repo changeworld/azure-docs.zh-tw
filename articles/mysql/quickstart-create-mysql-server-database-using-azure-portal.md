@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: 4282294ff54fd3da3f764f53efc8b040b9522191
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f71bcc1fd3b92a32a3e6d9fa056bae7131a663bd
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542247"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492602"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立 Azure Database for MySQL 伺服器
 
@@ -44,8 +44,8 @@ ms.locfileid: "94542247"
    資源群組 | **myresourcegroup** | 輸入新的資源群組，或您的訂用帳戶中現有的資源群組。
    伺服器名稱 | **mydemoserver** | 輸入唯一名稱。 伺服器名稱只能包含小寫字母、數字及連字號 (-) 字元。 其必須包含 3 到 63 個字元。
    資料來源 |**None** | 選取 [無]  從頭建立新的伺服器。 只有在從現有伺服器的異地備份還原時，才需選取 [備份]。
-   Location |您所需的位置 | 從清單中選取位置。
-   版本 | 最新的主要版本| 使用最新的主要版本。 請參閱[所有支援的版本](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)。
+   位置 |您所需的位置 | 從清單中選取位置。
+   版本 | 最新的主要版本| 使用最新的主要版本。 請參閱[所有支援的版本](../postgresql/concepts-supported-versions.md)。
    計算 + 儲存體 | 使用預設值| 預設定價層是 **一般用途** 搭配 **4 個虛擬核心** 以及 **100 GB** 的儲存體。 備份保留期設定為 **7 天**，且具備 **異地備援** 備份選項。<br/>檢閱 [[定價](https://azure.microsoft.com/pricing/details/mysql/)] 頁面，並視需要更新預設值。
    系統管理員使用者名稱 | **mydemoadmin** | 輸入您的伺服器管理使用者名稱。 您不可使用 **azure_superuser**、**admin**、**administrator**、**root**、**guest** 或 **public** 作為管理使用者名稱。
    密碼 | 密碼 | 伺服器管理使用者的新密碼。 密碼的長度必須為 8 到 128 個字元，且包含大寫或小寫字母、數字和非英數字元 (!、$、#、% 等等) 的組合。
@@ -67,7 +67,7 @@ ms.locfileid: "94542247"
 
 根據預設，新的伺服器會受到防火牆保護。 若要連線，您必須完成下列步驟以提供 IP 的存取權：
 
-1. 從伺服器資源的左窗格，移至 [連線安全性]。 如果您不知道如何尋找資源，請參閱[如何開啟資源](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources)。
+1. 從伺服器資源的左窗格，移至 [連線安全性]。 如果您不知道如何尋找資源，請參閱[如何開啟資源](../azure-resource-manager/management/manage-resources-portal.md#open-resources)。
 
    >[!div class="mx-imgBorder"]
    > :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/add-current-ip-firewall.png" alt-text="顯示 [連線安全性 > 防火牆規則] 頁面的螢幕擷取畫面。":::
@@ -151,9 +151,9 @@ ms.locfileid: "94542247"
 
 ## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]
->[使用 MySQL 在 Windows 上建立 PHP 應用程式](../app-service/app-service-web-tutorial-php-mysql.md) <br/>
+>[使用 MySQL 在 Windows 上建立 PHP 應用程式](../app-service/tutorial-php-mysql-app.md) <br/>
 
 > [!div class="nextstepaction"]
->[使用 MySQL 在 Linux 上建置 PHP 應用程式](../app-service/containers/tutorial-php-mysql-app.md)<br/><br/>
+>[使用 MySQL 在 Linux 上建置 PHP 應用程式](../app-service/tutorial-php-mysql-app.md?pivots=platform-linux%3fpivots%3dplatform-linux)<br/><br/>
 
 [找不到您要尋找的內容嗎？請告訴我們。](https://aka.ms/mysql-doc-feedback)

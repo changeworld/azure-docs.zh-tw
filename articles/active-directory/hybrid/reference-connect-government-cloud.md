@@ -11,19 +11,19 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 219893859d05eb419bc862484a9083abf8c26db7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bbb4298d0d9a9d7589c4a2055b4d55a0b852f951
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997710"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518204"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Azure Government 雲端的混合式身分識別考量
 
 本文說明整合混合式環境與 Microsoft Azure Government 雲端的考量。 此資訊會提供給使用 Azure Government 雲端的系統管理員和架構設計人員參考。
 
 > [!NOTE]
-> 若要整合內部部署 Microsoft Azure Active Directory (Azure AD) 環境與 Azure Government 雲端，您需要升級至最新版的 [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)。
+> 若要將 Microsoft Active Directory 環境整合 (內部部署或裝載于與 Azure Government 雲端) 的相同雲端實例中的 IaaS，您需要升級至最新版本的 [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)。
 
 如需美國國防部的完整端點清單，請參閱這份[文件](/office365/enterprise/office-365-u-s-government-dod-endpoints)。
 

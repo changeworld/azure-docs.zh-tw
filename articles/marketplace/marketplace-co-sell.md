@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 11/20/2020
-ms.openlocfilehash: 9d6970331024ea0cd08e890cc62507d9eb230678
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 12/2/2020
+ms.openlocfilehash: 99b5e7bee93ffee14585f048506104ec313b9bff
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016323"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518516"
 ---
 # <a name="co-sell-partner-engagement"></a>共同銷售合作夥伴參與
 
@@ -24,7 +24,7 @@ ms.locfileid: "95016323"
 
     ![此圖顯示在對 Microsoft 管理的客戶共用、接受及贏得銷售潛在客戶時，共同銷售的發生方式。](./media/marketplace-publishers-guide/marketplace-co-sell-v2.png)
 
-- **共同銷售受到激勵** 當 Microsoft 現場銷售人員與 Microsoft 銷售團隊共同合作時，除了以下所列的 marketplace 權益外，IP 解決方案可以獲得獎勵。</li></ul>
+- **共同銷售受到激勵** 當 Microsoft 現場銷售人員與 Microsoft 銷售團隊共同合作時，除了以下所列的 marketplace 權益外，IP 供應專案還可獲得獎勵。</li></ul>
 
 ## <a name="marketplace-benefits-for-incentivized-offers"></a>適用于受到激勵優惠的 Marketplace 權益
 
@@ -39,7 +39,7 @@ ms.locfileid: "95016323"
 
 下表列出讓 marketplace 供應專案共同銷售準備就緒或共同銷售受到激勵的步驟和需求。 並非所有的商業 marketplace 供應專案類型都可在合作夥伴中心中進行共同銷售。 您可以參考 [合作夥伴中心中的共同銷售選項](./partner-center-portal/commercial-marketplace-co-sell.md) ，取得最新資訊。
 
-|步驟    |供應項目類型    |規格需求    |共同銷售狀態    |
+|步驟    |供應項目類型    |需求    |共同銷售狀態    |
 |----    |-------------    |------------    |---------------   |
 |<ol start=1><li>在合作夥伴中心中建立帳戶，並將您的供應專案發佈至商用 marketplace。</li>|全部|<ul><li>供應專案符合商業 marketplace 發佈需求。</li><li>您在合作夥伴中心中有完整的商務設定檔。</li></ul>| 市場 |
 |<ol start=2><li>提交所需的共同銷售教材。</li>|合作夥伴中心中 *具有*[共同銷售選項](./partner-center-portal/commercial-marketplace-co-sell.md)的 IP 供應專案|[在合作夥伴中心上傳所需的材質](#how-to-submit-co-sell-materials-in-partner-center)|共同銷售準備就緒|
@@ -67,7 +67,7 @@ ms.locfileid: "95016323"
 
     :::image type="content" source="media/co-sell/co-sell-listing-section.png" alt-text="此影像顯示 [共同銷售] 索引標籤的 [清單] 區段。":::  
 
-1. 提供供應專案的詳細資料，並在 [ **檔** ] 區段上傳相關資訊。 Microsoft 銷售人員將會使用此資訊來建議及銷售您的供應專案。  (*必要： customer one-傳呼和客戶簡報。*) 
+1. 提供供應專案的詳細資料，並在 [ **檔** ] 區段上傳相關資訊。 Microsoft 銷售人員將會使用此資訊來建議及銷售您的供應專案。 *需要 (：方案/供應專案 1-傳呼和解決方案/供應專案推銷。達成 Azure IP 共同銷售受到激勵狀態所需：參考架構圖表。 )*
 
     :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="此影像顯示 [共同銷售] 索引標籤中的 [檔] 區段。":::
 

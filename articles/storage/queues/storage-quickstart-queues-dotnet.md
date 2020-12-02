@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a62aa9df818bb6ff7026d95daa625acabe66b990
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: f8900db8ed43b8c255915bf5429e1211f04e7338
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345630"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491956"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>快速入門：適用於 .NET 的 Azure 佇列儲存體用戶端程式庫 v12
 
@@ -34,7 +34,7 @@ ms.locfileid: "93345630"
 - [API 參考文件](/dotnet/api/azure.storage.queues)
 - [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
 - [套件 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
-- [範例](../common/storage-samples-dotnet.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
+- [範例](../common/storage-samples-dotnet.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -50,7 +50,7 @@ ms.locfileid: "93345630"
 
 建立一個名為 QueuesQuickstartV12 的 .NET Core 應用程式。
 
-1. 在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 QueuesQuickstartV12 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔： *Program.cs* 。
+1. 在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 QueuesQuickstartV12 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔：*Program.cs*。
 
    ```console
    dotnet new console -n QueuesQuickstartV12
