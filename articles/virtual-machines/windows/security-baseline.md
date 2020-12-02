@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 385f747999bbdb408dd1c5d2f5f12717834e94da
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: af7cc9d83b87c8a772a190c431d6946eec4dda86
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844211"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483125"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>適用于 Windows 虛擬機器的 Azure 安全性基準
 
@@ -76,7 +76,7 @@ ms.locfileid: "94844211"
 
 您可以使用 Azure 資訊安全中心的即時網路存取，將 Windows 虛擬機器的風險限制為有限期間內的已核准 IP 位址。 此外，您也可以使用 Azure 資訊安全中心調適型網路強化，根據實際的流量和威脅情報，建議可限制埠和來源 Ip 的 NSG 設定。
 
-* [如何設定 DDoS 保護](../../virtual-network/manage-ddos-protection.md)
+* [如何設定 DDoS 保護](../../ddos-protection/manage-ddos-protection.md)
 
 * [如何部署 Azure 防火牆](../../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -274,7 +274,7 @@ ms.locfileid: "94844211"
 
 * [如何使 Azure Sentinel 上線](../../sentinel/quickstart-onboard.md)
 
-* [了解 Log Analytics 工作區](../../azure-monitor/log-query/get-started-portal.md)
+* [了解 Log Analytics 工作區](../../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [如何在 Azure 監視器中執行自訂查詢](../../azure-monitor/log-query/get-started-queries.md)
 
@@ -430,7 +430,7 @@ ms.locfileid: "94844211"
 
 **指導** 方針：使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。 您可以使用受控識別來驗證任何支援 Azure AD authentication 的服務，包括 Key Vault，而不需要您程式碼中的任何認證。 您在虛擬機器上執行的程式碼可以使用其受控識別來要求支援 Azure AD authentication 之服務的存取權杖。
 
-* [如何建立和設定 Azure AD 實例](../../active-directory-domain-services/tutorial-create-instance.md)
+* [如何建立及設定 Azure AD 執行個體](../../active-directory-domain-services/tutorial-create-instance.md)
 
 * [Azure 資源受控識別概觀](../../active-directory/managed-identities-azure-resources/overview.md)
 
@@ -452,7 +452,7 @@ ms.locfileid: "94844211"
 
 **指導** 方針：設定 Azure Active Directory 的診斷設定，以將審核記錄和登入記錄傳送至 Log Analytics 工作區。 此外，您也可以使用 Azure 監視器來檢查記錄，並對 Azure 虛擬機器中的記錄資料執行查詢。
 
-* [了解 Log Analytics 工作區](../../azure-monitor/log-query/get-started-portal.md)
+* [了解 Log Analytics 工作區](../../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [如何將 Azure 活動記錄整合到 Azure 監視器中](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -580,7 +580,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 **指導** 方針： WINDOWS 虛擬機器 (VM) 上的虛擬磁片會使用伺服器端加密或 Azure 磁片加密 (ADE) 在待用時加密。 Azure 磁碟加密會利用 Windows 的 BitLocker 功能，在來賓 VM 中使用客戶管理的金鑰來加密受控磁碟。 使用客戶管理的金鑰進行伺服器端加密，可讓您藉由加密儲存庫服務中的資料，對您的 VM 使用任何作業系統類型和映像，而改善 ADE 的效能。
 
-* [Azure 受控磁片的伺服器端加密](./disk-encryption.md)
+* [Azure 受控磁片的伺服器端加密](../disk-encryption.md)
 
 * [適用于 Windows Vm 的 Azure 磁碟加密](./disk-encryption-overview.md)
 
@@ -620,9 +620,9 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 **指導** 方針：使用 Azure 更新管理解決方案來管理虛擬機器的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 System Center Updates Publisher (Updates Publisher) 之類的工具可讓您將自訂更新發佈至 Windows Server Update Services (WSUS) 。 此案例可讓更新管理修補使用 Configuration Manager 作為其更新存放庫（具有協力廠商軟體）的機器。
 
-* [Azure 中的更新管理解決方案](../../automation/update-management/update-mgmt-overview.md)
+* [Azure 中的更新管理解決方案](../../automation/update-management/overview.md)
 
-* [管理 Vm 的更新和修補程式](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
+* [管理 Vm 的更新和修補程式](../../automation/update-management/manage-updates-for-vm.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -632,9 +632,9 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 **指導** 方針：您可以使用協力廠商修補程式管理解決方案。 您可以使用 Azure 更新管理解決方案來管理虛擬機器的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 System Center Updates Publisher (Updates Publisher) 之類的工具可讓您將自訂更新發佈至 Windows Server Update Services (WSUS) 。 此案例可讓更新管理修補使用 Configuration Manager 作為其更新存放庫（具有協力廠商軟體）的機器。
 
-* [Azure 中的更新管理解決方案](../../automation/update-management/update-mgmt-overview.md)
+* [Azure 中的更新管理解決方案](../../automation/update-management/overview.md)
 
-* [管理 Vm 的更新和修補程式](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
+* [管理 Vm 的更新和修補程式](../../automation/update-management/manage-updates-for-vm.md)
 
 **Azure 資訊安全中心監視**：無法使用
 
@@ -1183,7 +1183,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 * [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-* [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+* [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 資訊安全中心監視**：不適用
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: bc0a556841c3c6ee91ae472087aaaf7c74009b67
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: da1acc6316d7af87ffe35b9560919c324373591a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785777"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484595"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>待用資料的 Azure 儲存體加密
 
@@ -32,13 +32,13 @@ Azure 儲存體中的資料會以透明的方式使用256位 [AES 加密](https:
 
 如需基礎 Azure 儲存體加密的密碼編譯模組的詳細資訊，請參閱 [密碼編譯 API：新一代](/windows/desktop/seccng/cng-portal)。
 
-如需 Azure 受控磁片的加密和金鑰管理的相關資訊，請參閱適用于 Windows Vm 的 [azure 受控磁片的伺服器端加密](../../virtual-machines/windows/disk-encryption.md) ，或適用于 Linux Vm [之 azure 受控磁片的伺服器端加密](../../virtual-machines/linux/disk-encryption.md) 。
+如需 Azure 受控磁片的加密和金鑰管理的相關資訊，請參閱適用于 Windows Vm 的 [azure 受控磁片的伺服器端加密](../../virtual-machines/disk-encryption.md) ，或適用于 Linux Vm [之 azure 受控磁片的伺服器端加密](../../virtual-machines/disk-encryption.md) 。
 
 ## <a name="about-encryption-key-management"></a>關於加密金鑰管理
 
 根據預設，新儲存體帳戶中的資料會使用 Microsoft 管理的金鑰進行加密。 您可以繼續依賴 Microsoft 管理的金鑰來加密您的資料，也可以使用您自己的金鑰管理加密。 如果您選擇使用自己的金鑰管理加密，您有兩個選項。 您可以使用任一種類型的金鑰管理或兩者：
 
-- 您可以指定 *客戶管理的金鑰* ，以用於加密和解密 Blob 儲存體和 Azure 檔案儲存體中的資料。 <sup>1，2</sup> 客戶管理的金鑰必須儲存在 Azure Key Vault 或 Azure Key Vault 受控硬體安全性模型 (HSM)  (preview) 。 如需有關客戶管理金鑰的詳細資訊，請參閱 [使用客戶管理的金鑰進行 Azure 儲存體加密](./customer-managed-keys-overview.md)。
+- 您可以指定 *客戶管理的金鑰* ，以用於加密和解密 Blob 儲存體和 Azure 檔案儲存體中的資料。<sup>1，2</sup> 客戶管理的金鑰必須儲存在 Azure Key Vault 或 Azure Key Vault 受控硬體安全性模型 (HSM)  (preview) 。 如需有關客戶管理金鑰的詳細資訊，請參閱 [使用客戶管理的金鑰進行 Azure 儲存體加密](./customer-managed-keys-overview.md)。
 - 您可以在 Blob 儲存體作業上指定 *客戶提供的金鑰* 。 對 Blob 儲存體進行讀取或寫入要求的用戶端可以在要求上包含加密金鑰，以對 blob 資料的加密和解密方式進行細微的控制。 如需客戶提供之金鑰的詳細資訊，請參閱針對 [Blob 儲存體的要求提供加密金鑰](../blobs/encryption-customer-provided-keys.md)。
 
 下表比較 Azure 儲存體加密的金鑰管理選項。

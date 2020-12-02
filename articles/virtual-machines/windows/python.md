@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: devx-track-python
-ms.openlocfilehash: 402a61b4b5335c19d75cd1182243783453a0e7fa
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a7117d30eb1774753f21e82ad5f812a7309d8386
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974850"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483091"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>在 Azure 中使用 Python 建立並管理 Windows VM
 
@@ -492,7 +492,7 @@ compute_client = ComputeManagementClient(
 
 ### <a name="add-a-data-disk-to-the-vm"></a>將資料磁碟新增至 VM
 
-虛擬機器可以有一或多個[資料磁碟](../managed-disks-overview.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)，而這些磁碟會儲存成 VHD。
+虛擬機器可以有一或多個[資料磁碟](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，而這些磁碟會儲存成 VHD。
 
 1. 若要將資料磁碟新增至虛擬機器，請在 .py 檔案的變數之後新增此函式： 
 

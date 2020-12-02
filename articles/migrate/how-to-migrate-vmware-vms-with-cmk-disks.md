@@ -7,12 +7,12 @@ ms.manager: carmonm
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
-ms.openlocfilehash: 01f30305529e7f142be0ca6ddffa0f5a12a235bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89b795011460ee2803d07d14b9c2abe9c8ffca55
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260013"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483346"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>使用伺服器端加密和客戶管理的金鑰，將 VMware Vm 遷移至啟用的 Azure Vm
 
@@ -22,12 +22,12 @@ Azure Migrate Server 遷移入口網站體驗可讓您 [使用無代理程式複
 
 本文中的範例會使用 [Azure PowerShell](/powershell/azure/new-azureps-module-az) 來執行建立和部署 Resource Manager 範本所需的工作。
 
-[深入瞭解](../virtual-machines/windows/disk-encryption.md) 使用客戶管理的金鑰 (SSE) 的伺服器端加密 (適用于受控磁片的 CMK) 。
+[深入瞭解](../virtual-machines/disk-encryption.md) 使用客戶管理的金鑰 (SSE) 的伺服器端加密 (適用于受控磁片的 CMK) 。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - 請參閱使用無代理程式複寫將 VMware Vm 遷移至 Azure[的教學](tutorial-migrate-vmware.md)課程，以瞭解工具需求。
-- [遵循這些指示](how-to-add-tool-first-time.md) 來建立 Azure Migrate 專案，並將 **Azure Migrate：伺服器遷移** 工具新增至專案。
+- [遵循這些指示](./create-manage-projects.md) 來建立 Azure Migrate 專案，並將 **Azure Migrate：伺服器遷移** 工具新增至專案。
 - [請遵循下列指示](how-to-set-up-appliance-vmware.md) ，在您的內部部署環境中設定適用于 VMware 的 Azure Migrate 設備，並進行完整探索。
 
 ## <a name="prepare-for-replication"></a>準備進行複寫
@@ -191,8 +191,8 @@ uuid                                 label       name    maxSizeInBytes
 - 將 **targetResourceGroupId**、 **targetNetworkId**、 **targetSubnetName** 的值分別設定為目標資源群組識別碼、目標虛擬網路資源識別碼和目標子網名稱。
 - 將 **licenseType** 的值設定為 "WindowsServer"，以套用此 VM 的 Azure Hybrid Benefit。 如果此 VM 不符合 Azure Hybrid Benefit 的資格，請將 **licenseType** 的值設定為 NoLicenseType。
 - 將 **targetVmName** 屬性的值變更為所需的 Azure 虛擬機器名稱，以供遷移的 VM 之用。
-- （選擇性）在**targetVmName**屬性底下加入名為**targetVmSize**的屬性。 將 **targetVmSize** 屬性的值設定為所遷移 VM 所需的 Azure 虛擬機器大小。
-- **DisksToInclude**屬性是用於複寫的磁片輸入清單，每個清單專案代表一個內部部署磁片。 建立多個清單專案作為內部部署 VM 上的磁片數目。 將清單專案中的 **diskId** 屬性取代為上一個步驟中所識別之磁片的 uuid。 將 VM 的 OS 磁片的 **isOSDisk** 值設定為 "true"，並將所有其他磁片的值設定為 "false"。 將 **logStorageAccountId** 和 **logStorageAccountSasSecretName** 屬性保持不變。 將 **diskType** 值設定為 Azure 受控磁片類型 (*Standard_LRS、Premium_LRS、StandardSSD_LRS*) 以用於磁片。 針對需要使用 CMK 加密的磁片，請新增名為**diskEncryptionSetId**的屬性，並將值設定為 ($des 所建立之磁片加密集的資源識別碼 **。***建立磁片加密集*步驟中的識別碼) 
+- （選擇性）在 **targetVmName** 屬性底下加入名為 **targetVmSize** 的屬性。 將 **targetVmSize** 屬性的值設定為所遷移 VM 所需的 Azure 虛擬機器大小。
+- **DisksToInclude** 屬性是用於複寫的磁片輸入清單，每個清單專案代表一個內部部署磁片。 建立多個清單專案作為內部部署 VM 上的磁片數目。 將清單專案中的 **diskId** 屬性取代為上一個步驟中所識別之磁片的 uuid。 將 VM 的 OS 磁片的 **isOSDisk** 值設定為 "true"，並將所有其他磁片的值設定為 "false"。 將 **logStorageAccountId** 和 **logStorageAccountSasSecretName** 屬性保持不變。 將 **diskType** 值設定為 Azure 受控磁片類型 (*Standard_LRS、Premium_LRS、StandardSSD_LRS*) 以用於磁片。 針對需要使用 CMK 加密的磁片，請新增名為 **diskEncryptionSetId** 的屬性，並將值設定為 ($des 所建立之磁片加密集的資源識別碼 **。***建立磁片加密集* 步驟中的識別碼) 
 - 儲存編輯過的範本檔案。 在上述範例中，編輯過的範本檔案看起來如下：
 
 ```
@@ -272,6 +272,6 @@ DeploymentDebugLogLevel :
 
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 透過入口網站體驗[監視](tutorial-migrate-vmware.md#track-and-monitor)複寫狀態，並執行測試遷移和遷移。

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/20/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 38f6cf039de2404c7b3eeecc74ee33233f4a2058
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5638b60b60f3952ab40fa000e457082f4748ac35
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965284"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484340"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -160,8 +160,8 @@ VM 類型不同，可連接的資料磁碟數目限制也各不相同。 另一�
 >
 > 只支援使用 MDADM 和邏輯磁碟區管理員 (LVM) 在 Linux 上建立軟體 RAID。 如需詳細資訊，請參閱
 >
-> - 使用 MDADM [在 Linux 上設定軟體 RAID](../../linux/configure-raid.md) (機器翻譯)
-> - 使用 LVM [在 Azure 中的 Linux VM 上設定 LVM](../../linux/configure-lvm.md)
+> - 使用 MDADM [在 Linux 上設定軟體 RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) (機器翻譯)
+> - 使用 LVM [在 Azure 中的 Linux VM 上設定 LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm)
 >
 >
 

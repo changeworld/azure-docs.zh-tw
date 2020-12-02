@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 971f0cd74d7ccc6e2b0d8049a4441ba3d465b70a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: eb71de223e2d840e0caa0444b837e16e1f091414
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787664"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484782"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 儲存體分析記錄
 
@@ -139,7 +139,7 @@ ms.locfileid: "92787664"
 
  您可以在本機電腦上使用 PowerShell 來設定儲存體帳戶中的儲存體記錄，方法是使用 Azure PowerShell Cmdlet **AzStorageServiceLoggingProperty** 來取得目前的設定，並使用 Cmdlet **設定 AzStorageServiceLoggingProperty** 來變更目前的設定。  
 
- 控制「儲存體記錄」的 Cmdlet 會使用 **LoggingOperations** 參數，該參數是一個包含所要記錄要求類型清單 (以逗號分隔) 的字串。 三個可能的要求類型包含 **讀取** 、 **寫入** 和 **刪除** 。 若要關閉記錄功能，請將值 **none** 使用於 **LoggingOperations** 參數。  
+ 控制「儲存體記錄」的 Cmdlet 會使用 **LoggingOperations** 參數，該參數是一個包含所要記錄要求類型清單 (以逗號分隔) 的字串。 三個可能的要求類型包含 **讀取**、**寫入** 和 **刪除**。 若要關閉記錄功能，請將值 **none** 使用於 **LoggingOperations** 參數。  
 
  下列命令針對預設儲存體帳戶中佇列服務的讀取、寫入和刪除要求開啟記錄功能 (保留期間設為五天)：  
 
@@ -204,7 +204,7 @@ queueClient.SetServiceProperties(serviceProperties);
 azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Logs\Storage' --include-path '2014/05/20/09;2014/05/20/10;2014/05/20/11' --recursive
 ```
 
-若要深入了解如何下載特定檔案，請參閱[下載特定檔案](./storage-use-azcopy-blobs.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#download-specific-files) \(部分機器翻譯\)。
+若要深入了解如何下載特定檔案，請參閱[下載特定檔案](./storage-use-azcopy-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files) \(部分機器翻譯\)。
 
 當您下載記錄資料後，即可檢視檔案中的記錄項目。 這些記錄檔會使用分隔的文字格式，許多記錄讀取工具都可以剖析 (如需詳細資訊，請參閱 [Microsoft Azure 儲存體) 的監視、診斷和疑難排解](storage-monitoring-diagnosing-troubleshooting.md) 指南。 不同的工具有不同的功能可格式化、篩選、排序及搜尋記錄檔的內容。 如需儲存體記錄的記錄檔格式和內容的詳細資訊，請參閱[儲存體分析記錄格式](/rest/api/storageservices/storage-analytics-log-format)和[儲存體分析記錄作業和狀態訊息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。
 

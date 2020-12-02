@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 11/23/2020
 ms.author: trbye
-ms.openlocfilehash: 291ac7804109b098b556e38c57ca493ba74f1b14
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 3b20773de62f036b507f1612f2b38d613d54ba2f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95528885"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485190"
 ---
 # <a name="what-is-the-speech-service"></a>什麼是語音服務？
 
@@ -49,7 +49,7 @@ ms.locfileid: "95528885"
 有了 Microsoft 帳戶之後，請移至 [Azure 註冊頁面](https://azure.microsoft.com/free/ai/)、選取 [免費開始]，然後使用 Microsoft 帳戶建立新的 Azure 帳戶。 以下是[如何註冊 Azure 免費帳戶](https://www.youtube.com/watch?v=GWT2R1C_uUU)的影片。
 
 > [!NOTE]
-> 當您註冊免費 Azure 帳戶時，其隨附 200 美元的服務點數，您可以將此點數應用於有效時間長達 30 天的付費語音服務訂用帳戶。 如果點數用完或在 30 天結束時過期，Azure 服務就會停用。 若要繼續使用 Azure 服務，則必須將您的帳戶升級。 如需詳細資訊，請參閱[如何升級您的 Azure 免費帳戶](https://docs.microsoft.com/azure/cost-management-billing/manage/upgrade-azure-subscription)。 
+> 當您註冊免費 Azure 帳戶時，其隨附 200 美元的服務點數，您可以將此點數應用於有效時間長達 30 天的付費語音服務訂用帳戶。 如果點數用完或在 30 天結束時過期，Azure 服務就會停用。 若要繼續使用 Azure 服務，則必須將您的帳戶升級。 如需詳細資訊，請參閱[如何升級您的 Azure 免費帳戶](../../cost-management-billing/manage/upgrade-azure-subscription.md)。 
 >
 > 語音服務有兩個服務層級：免費 (f0) 和訂用帳戶 (s0)，其各有不同的限制和權益。 如果您使用免費的低容量語音服務層級，則即使在免費試用或服務點數到期後，您仍可保留此免費訂用帳戶。 如需詳細資訊，請參閱[認知服務定價 - 語音服務](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
@@ -70,8 +70,8 @@ ms.locfileid: "95528885"
 1. 選取 [建立]，然後：
 
    - 為您的新資源提供唯一的名稱。 此名稱可協助您區分繫結至相同服務的多個訂用帳戶。
-   - 選擇與新資源相關聯的 Azure 訂用帳戶來決定費用的計費方式。 這是[如何在 Azure 入口網站中建立 Azure 訂用帳戶](https://docs.microsoft.com/azure/cost-management-billing/manage/create-subscription#create-a-subscription-in-the-azure-portal)的簡介。
-   - 選擇將使用此資源的[區域](regions.md)。 Azure 是在全球各地許多地區正式推出的全域雲端平台。 若要取得最佳效能，請選取最接近您或您應用程式執行位置的區域。 語音服務的可用性會因不同區域而有所差異。 請確定您是在支援的區域中建立資源。 請參閱[語音服務的區域支援](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-to-text-text-to-speech-and-translation)。
+   - 選擇與新資源相關聯的 Azure 訂用帳戶來決定費用的計費方式。 這是[如何在 Azure 入口網站中建立 Azure 訂用帳戶](../../cost-management-billing/manage/create-subscription.md#create-a-subscription-in-the-azure-portal)的簡介。
+   - 選擇將使用此資源的[區域](regions.md)。 Azure 是在全球各地許多地區正式推出的全域雲端平台。 若要取得最佳效能，請選取最接近您或您應用程式執行位置的區域。 語音服務的可用性會因不同區域而有所差異。 請確定您是在支援的區域中建立資源。 請參閱[語音服務的區域支援](./regions.md#speech-to-text-text-to-speech-and-translation)。
    - 選擇免費 (F0) 或付費 (S0) 的定價層。 如需每一層的定價和使用量配額完整資訊，請選取 [檢視完整定價詳細資料]，或是參閱[語音服務定價](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。 如需了解資源的限制，請參閱 [Azure 認知服務限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cognitive-services-limits)。
    - 為此語音訂用帳戶建立新的資源群組，或將該訂用帳戶指派給現有的資源群組。 資源群組可協助組織各種 Azure 訂用帳戶。
    - 選取 [建立]  。 這會帶您前往部署概觀並顯示部署進度訊息。  
@@ -112,7 +112,7 @@ ms.locfileid: "95528885"
 
 - [教學課程：使用語音 SDK 和 LUIS 從語音辨識意圖 (C#)](how-to-recognize-intents-from-speech-csharp.md)
 - [教學課程：使用語音 SDK 和 C# 透過聲音啟用 Bot](tutorial-voice-enable-your-bot-speech-sdk.md)
-- [教學課程：建置 Flask 應用程式以翻譯文字、分析情緒並將翻譯的文字合成語音，REST](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%252fazure%252fcognitive-services%252fspeech-service%252fbreadcrumb%252ftoc.json%252c%252fen-us%252fazure%252fbread%252ftoc.json&toc=%252fazure%252fcognitive-services%252fspeech-service%252ftoc.json%252c%252fen-us%252fazure%252fcognitive-services%252fspeech-service%252ftoc.json)
+- [教學課程：建置 Flask 應用程式以翻譯文字、分析情緒並將翻譯的文字合成語音，REST](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json%252c%2fen-us%2fazure%2fbread%2ftoc.json&toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json%252c%2fen-us%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json)
 
 ## <a name="get-sample-code"></a>取得範例程式碼
 

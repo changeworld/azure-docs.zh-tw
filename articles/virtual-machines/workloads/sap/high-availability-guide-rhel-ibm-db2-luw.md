@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: juergent
-ms.openlocfilehash: be455de2a1f8aebc7327af4741e0652a4be76665
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: fcc247e9e3122515ebe9230f58860df8c6dd3948
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956427"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484323"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Red Hat Enterprise Linux Server 上 Azure VM 的 IBM Db2 LUW 高可用性
 
@@ -405,7 +405,7 @@ sudo pcs property set maintenance-mode=false</pre></code>
 > Standard Load Balancer SKU 具有從 Load Balancer 下的節點存取公用 IP 位址的限制。 在 [SAP 高可用性案例中使用 Azure Standard Load Balancer 之虛擬機器的公開端點](./high-availability-guide-standard-load-balancer-outbound-connections.md) 連線檔，說明如何啟用這些節點來存取公用 IP 位址的方法
 
 > [!IMPORTANT]
-> 負載平衡案例中的 NIC 次要 IP 設定不支援浮動 IP。 如需詳細資訊，請參閱 [Azure 負載平衡器的限制](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations)。 如果您需要 VM 的其他 IP 位址，請部署第二個 NIC。  
+> 負載平衡案例中的 NIC 次要 IP 設定不支援浮動 IP。 如需詳細資訊，請參閱 [Azure 負載平衡器的限制](../../../load-balancer/load-balancer-multivip-overview.md#limitations)。 如果您需要 VM 的其他 IP 位址，請部署第二個 NIC。  
 
 
 1. 建立前端 IP 集區：
@@ -432,7 +432,7 @@ sudo pcs property set maintenance-mode=false</pre></code>
 
    e. 選取 IBM Db2 叢集的虛擬機器。
 
-   f. 選取 [確定]。
+   f. 選取 [確定]  。
 
 1. 建立健康情況探查：
 

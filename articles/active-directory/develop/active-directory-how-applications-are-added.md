@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/26/2019
+ms.date: 12/01/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: bccdb830fba4d55266dc9eff8f06c5ac4e3f2a34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e37065e6fa61f3784d1a6165bd88c515bdfc29f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706178"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484102"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>將應用程式加入至 Azure AD 的方式和原因
 
@@ -91,7 +91,7 @@ ms.locfileid: "90706178"
 
 與 Azure AD 整合的應用程式發行者/廠商必須具有發佈目錄 (顯示在右的「部分 SaaS 目錄」)。
 
-您自行新增的應用程式 (以圖中的**應用程式 (您的)** 來代表) 包括：
+您自行新增的應用程式 (以圖中的 **應用程式 (您的)** 來代表) 包括：
 
 * 您所開發的應用程式 (與 Azure AD 整合)
 * 為單一登入而進行連線的應用程式
@@ -118,6 +118,7 @@ ms.locfileid: "90706178"
 * 角色型存取控制 - 使用目錄來定義應用程式角色，才能在應用程式中執行角色型授權檢查
 * OAuth 授權服務-由 Microsoft 365 和其他 Microsoft 應用程式使用，以授權存取 Api/資源
 * 應用程式發佈與 Proxy - 將應用程式從私人網路發佈到網際網路
+* 目錄架構延伸模組屬性- [擴充服務主體和使用者物件的架構](active-directory-schema-extensions.md) ，以將其他資料儲存在 Azure AD 
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>誰有權將應用程式加入我的 Azure AD 執行個體？
 
@@ -137,14 +138,14 @@ ms.locfileid: "90706178"
 
 * 若要防止使用者同意應用程式代表使用者自己行事：
   1. 在 Azure 入口網站中，移至企業應用程式下的[使用者設定](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)區段。
-  2. 將 [使用者可同意應用程式代表自己存取公司資料]**** 變更為 [否]****。
+  2. 將 [使用者可同意應用程式代表自己存取公司資料] 變更為 [否]。
      
      > [!NOTE]
      > 如果您決定關閉使用者同意功能，使用者需要使用的任何新應用程式就必須由系統管理員同意。
 
 * 若要防止使用者註冊自己的應用程式：
   1. 在 Azure 入口網站中，移至 Azure Active Directory 下的[使用者設定](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)區段
-  2. 將 [使用者可以註冊應用程式]**** 變更為 [否]****。
+  2. 將 [使用者可以註冊應用程式] 變更為 [否]。
 
 > [!NOTE]
 > 對於能夠註冊應用程式並同意應用程式代表自己的使用者，Microsoft 本身會使用預設組態。

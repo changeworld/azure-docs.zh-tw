@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
-ms.author: duau
-ms.openlocfilehash: d533b8fed47b1790cc35429613179f440f1fac51
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 11/23/2020
+ms.author: yuajia
+ms.openlocfilehash: cd99be40700ab1c34176f2bf7497e4debf5cd424
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961743"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483792"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>監視 Azure Front Door 中的計量和記錄
 
@@ -29,7 +29,7 @@ ms.locfileid: "91961743"
 
 計量是適用于某些 Azure 資源的功能，可讓您在入口網站中查看效能計數器。 以下是 Front Door 計量的可用計量：
 
-| 計量 | 計量顯示名稱 | Unit | 維度 | 描述 |
+| 計量 | 計量顯示名稱 | 單位 | 維度 | 描述 |
 | --- | --- | --- | --- | --- |
 | RequestCount | 要求計數 | Count | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | 由 Front Door 提供服務的用戶端要求數。  |
 | RequestSize | 要求大小 | 位元組 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | 從用戶端傳送到 Front Door 之要求的位元組數。 |
@@ -61,7 +61,7 @@ ms.locfileid: "91961743"
 
 活動記錄可讓您深入瞭解在 Azure 資源上執行的作業。 診斷記錄可讓您深入瞭解資源已完成的作業。 如需詳細資訊，請參閱 [Azure 監視器診斷記錄](../azure-monitor/platform/platform-logs-overview.md)。
 
-:::image type="content" source="./media/front-door-diagnostics/diagnostic-log.png" alt-text="活動記錄檔":::
+:::image type="content" source="./media/front-door-diagnostics/diagnostic-log.png" alt-text="診斷記錄":::
 
 若要為您的 Front Door 設定診斷記錄：
 
@@ -91,13 +91,14 @@ Front Door 目前提供 (批次處理) 的診斷記錄。 診斷記錄會提供�
 | RulesEngineMatchNames | 要求相符的規則名稱。 |
 | SecurityProtocol | 要求所使用的 TLS/SSL 通訊協定版本，如果沒有加密則為 null。 |
 | SentToOriginShield </br>  (已淘汰) * **請參閱下一節中的淘汰注意事項。**| 若為 true，則表示是從來源保護盾快取回答要求，而非邊緣 Pop。 原始保護盾是用來改善快取點擊率的父代快取。 |
-| isReceivedFromClient | 若為 true，表示要求來自用戶端。 如果為 false，表示要求在 edge (子 POP) 中遺失，並從來源防護 (父 POP) 回應。 
+| isReceivedFromClient | 若為 true，表示要求來自用戶端。 如果為 false，表示要求在 edge (子 POP) 中遺失，並從來源防護 (父 POP) 回應。 |
 | TimeTaken | 從要求的第一個位元組到回應輸出之最後一個位元組的 Front Door 時間長度（以秒為單位）。 |
 | TrackingReference | 這項唯一的參考字串可識別 Front Door 所提供的要求，也會以 X-Azure Ref 標頭的形式傳送給用戶端， 這是在特定要求的存取記錄中搜尋詳細資料時的必要項目。 |
 | UserAgent | 用戶端使用的瀏覽器類型。 |
+| ErrorInfo | 此欄位包含特定類型的錯誤，以進行進一步的疑難排解。 </br> 可能的值包括： </br> **>aad-userreadusingalternativesecurityid-noerror**：表示找不到錯誤。 </br> **CertificateError**：一般 SSL 憑證錯誤。</br> **CertificateNameCheckFailed**： SSL 憑證中的主機名稱無效或不相符。 </br> **ClientDisconnected**：由於用戶端網路連線而導致要求失敗。 </br> **UnspecifiedClientError**：一般用戶端錯誤。 </br> **InvalidRequest**：不正確要求。 原因可能是標頭、主體和 URL 格式不正確所造成。 </br> **DNSFailure**： DNS 失敗。 </br> **DNSNameNotResolved**：無法解析伺服器名稱或位址。 </br> **OriginConnectionAborted**：來源的連接突然停止。 </br> **OriginConnectionError**：一般來源連接錯誤。 </br> **OriginConnectionRefused**：無法建立與來源的連接。 </br> **OriginError**：一般來源錯誤。 </br> **OriginInvalidResponse**：來源傳回無效或無法辨識的回應。 </br> **OriginTimeout**：原始要求過期的超時時間。 </br> **ResponseHeaderTooBig**：來源傳回太大的回應標頭。 </br> **RestrictedIP**：因為限制 IP 而封鎖要求。 </br> **SSLHandshakeError**：無法建立與來源的連線，因為發生 SSL 手動搖動失敗。 </br> **UnspecifiedError**：發生錯誤，不符合資料表中的任何錯誤。 |
 
 ### <a name="sent-to-origin-shield-deprecation"></a>傳送至原始防護盾
-原始記錄屬性 **isSentToOriginShield** 已被取代，並以新的欄位 **isReceivedFromClient**取代。 如果您已經在使用已被取代的欄位，請使用新欄位。 
+原始記錄屬性 **isSentToOriginShield** 已被取代，並以新的欄位 **isReceivedFromClient** 取代。 如果您已經在使用已被取代的欄位，請使用新欄位。 
 
 原始記錄包含從 CDN edge (子 POP) 和來源防護產生的記錄。 來源防護是指策略性地位於全球各地的父節點。 這些節點會與源伺服器通訊，並減少來源的流量負載。 
 
@@ -120,10 +121,10 @@ Front Door 目前提供 (批次處理) 的診斷記錄。 診斷記錄會提供�
 
 | 案例 | 記錄專案計數 | POP | BackendHostname | isReceivedFromClient | CacheStatus |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| 未啟用快取的路由規則 | 1 | Edge POP 碼 | 轉寄要求的後端 | True | CONFIG_NOCACHE |
-| 啟用快取的路由規則。 邊緣 POP 上的快取點擊 | 1 | Edge POP 碼 | 空白 | True | 打 |
-| 啟用快取的路由規則。 邊緣 POP 快取遺漏，但在父快取 POP 快取點擊 | 2 | 1. Edge POP 碼</br>2. 父快取 POP 碼 | 1. 父快取 POP 主機名稱</br>2. 空白 | 1. True</br>2. False | 1. 遺漏</br>2. 點擊 |
-| 啟用快取的路由規則。 邊緣 POP 快取遺漏，但在父快取 POP 發生部分快取命中 | 2 | 1. Edge POP 碼</br>2. 父快取 POP 碼 | 1. 父快取 POP 主機名稱</br>2. 可協助填入快取的後端 | 1. True</br>2. False | 1. 遺漏</br>2. PARTIAL_HIT |
+| 未啟用快取的路由規則 | 1 | Edge POP 碼 | 轉寄要求的後端 | 是 | CONFIG_NOCACHE |
+| 啟用快取的路由規則。 邊緣 POP 上的快取點擊 | 1 | Edge POP 碼 | 空白 | 是 | 打 |
+| 啟用快取的路由規則。 在邊緣 POP 快取遺漏，但在父快取 POP 快取命中 | 2 | 1. Edge POP 碼</br>2. 父快取 POP 碼 | 1. 父快取 POP 主機名稱</br>2. 空白 | 1. True</br>2. False | 1. 遺漏</br>2. 點擊 |
+| 啟用快取的路由規則。 快取遺漏 edge POP，但在父快取 POP 發生部分快取點擊 | 2 | 1. Edge POP 碼</br>2. 父快取 POP 碼 | 1. 父快取 POP 主機名稱</br>2. 可協助填入快取的後端 | 1. True</br>2. False | 1. 遺漏</br>2. PARTIAL_HIT |
 | 啟用快取的路由規則。 在邊緣 POP 快取 PARTIAL_HIT，但在父快取 POP 快取點擊 | 2 | 1. Edge POP 碼</br>2. 父快取 POP 碼 | 1. Edge POP 碼</br>2. 父快取 POP 碼 | 1. True</br>2. False | 1. PARTIAL_HIT</br>2. 點擊 |
 | 啟用快取的路由規則。 邊緣和父快取 POPP 的快取遺漏 | 2 | 1. Edge POP 碼</br>2. 父快取 POP 碼 | 1. Edge POP 碼</br>2. 父快取 POP 碼 | 1. True</br>2. False | 1. 遺漏</br>2. 遺漏 |
 

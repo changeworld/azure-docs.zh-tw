@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: 0de8d8d5ff0f14d0268dbcca743f4d06ed877903
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 331ceb6124463604989116ce84bc73acd8cfb22f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544389"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483244"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>如何使用 Blobfuse 將 Blob 儲存體掛接為檔案系統
 
@@ -30,7 +30,7 @@ ms.locfileid: "95544389"
 ## <a name="install-blobfuse-on-linux"></a>在 Linux 上安裝 Blobfuse
 在 [Microsoft 的 Linux 軟體存放庫](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)可取得適用於 Ubuntu 和 RHEL 散發套件的 Blobfuse 二進位檔案。 若要在這些發行版本上安裝 Blobfuse，請設定清單中的任一個存放庫。 如果您的發行版本沒有可用的二進位檔，您也可以遵循 [Azure 儲存體安裝步驟](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) \(英文\)，從原始程式碼建置二進位檔。
 
-Blobfuse 支援在 Ubuntu 14.04、16.04 和18.04 上安裝。 執行此命令以確定您已部署其中一個版本：
+Blobfuse 支援 Ubuntu 14.04、16.04、18.04 和20.04 的安裝。 執行此命令以確定您已部署其中一個版本：
 ```
 lsb_release -a
 ```

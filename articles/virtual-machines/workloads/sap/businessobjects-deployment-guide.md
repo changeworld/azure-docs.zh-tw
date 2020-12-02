@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: ee7cc1c81bd35bf2b51c712c3a60a046435ee700
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0c2deb1ae1d41f8daaed8856f97c4b458930c616
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951278"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484374"
 ---
 # <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>Azure 上的 SAP BusinessObjects BI 平台規劃與實作指南
 
@@ -267,4 +267,4 @@ SAP BOBI 是一種不保存任何商務資料的報告和分析 BI 平臺。 如
 - [Linux 上的 SAP BusinessObjects BI 平臺部署](businessobjects-deployment-guide-linux.md)
 - [適用於 SAP 的 Azure 虛擬機器規劃和實作](planning-guide.md)
 - [適用於 SAP 的 Azure 虛擬機器部署](deployment-guide.md)
-- [適用於 SAP 的 Azure 虛擬機器 DBMS 部署](dbms-guide.md)
+- [適用於 SAP 的 Azure 虛擬機器 DBMS 部署](./dbms_guide_general.md)

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/06/2020
 ms.author: nichola
 ms.reviewer: ''
-ms.openlocfilehash: cf5a7a5902484536d0cf2a1844be469f29e15f4b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 86c379316737b7718b62165a6feb93ca3a0e9954
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348461"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484034"
 ---
 # <a name="how-to-use-continuous-access-evaluation-enabled-apis-in-your-applications"></a>如何在您的應用程式中使用持續存取評估啟用的 Api
 
@@ -27,9 +27,9 @@ ms.locfileid: "96348461"
 
 ## <a name="implementation-considerations"></a>實作考量
 
-若要使用持續存取評估，您的應用程式和其所存取的資源 API 都必須啟用 CAE。 不過，準備您的程式碼以使用啟用 CAE 的資源，並不會讓您無法使用未啟用 CAE 的 Api。 
+若要使用持續存取評估，您的應用程式和其所存取的資源 API 都必須啟用 CAE。 不過，準備您的程式碼以使用啟用 CAE 的資源，並不會讓您無法使用未啟用 CAE 的 Api。
 
-如果資源 API 會執行 CAE，而您的應用程式宣告它可以處理 CAE，則您的應用程式會取得該資源的 CAE 權杖。 基於這個理由，如果您將應用程式 CAE 宣告為就緒，您的應用程式必須針對所有接受 Microsoft 身分識別存取權杖的資源 Api，處理 CAE 宣告挑戰。 如果您未在這些 API 呼叫中處理 CAE 回應，則您的應用程式可能會在迴圈中結束，並以仍在權杖的傳回存留期內的權杖重試 API 呼叫，但由於 CAE 而遭到撤銷。 
+如果資源 API 會執行 CAE，而您的應用程式宣告它可以處理 CAE，則您的應用程式會取得該資源的 CAE 權杖。 基於這個理由，如果您將應用程式 CAE 宣告為就緒，您的應用程式必須針對所有接受 Microsoft 身分識別存取權杖的資源 Api，處理 CAE 宣告挑戰。 如果您未在這些 API 呼叫中處理 CAE 回應，則您的應用程式可能會在迴圈中結束，並以仍在權杖的傳回存留期內的權杖重試 API 呼叫，但由於 CAE 而遭到撤銷。
 
 ## <a name="the-code"></a>代碼
 
@@ -116,4 +116,4 @@ _clientApp = PublicClientApplicationBuilder.Create(App.ClientId)
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解，請參閱 [持續存取評估](/conditional-access/concept-continuous-access-evaluation.md)。
+若要深入瞭解，請參閱 [持續存取評估](../conditional-access/concept-continuous-access-evaluation.md)。

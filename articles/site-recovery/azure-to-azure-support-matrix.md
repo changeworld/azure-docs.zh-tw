@@ -4,12 +4,12 @@ description: 摘要說明如何使用 Azure Site Recovery 將 Azure VM 災害復
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: 64e8d4d00efa52b10d4543d36af7874f61dc3455
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: f0aebd09c06677aeba7cddda246e3e37992e0d9e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317532"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485275"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure 區域之間的 Azure VM 災害復原支援矩陣
 
@@ -234,7 +234,7 @@ OS 磁碟的大小上限 | 2048 GB | [深入了解](../virtual-machines/managed-
 儲存空間 | 支援 |
 待用加密 (SSE) | 支援 | SSE 是儲存體帳戶上的預設設定。
 待用加密 (CMK) | 支援 | 受控磁碟同時支援軟體和 HSM 金鑰
-靜態加密 | 支援 | 深入瞭解適用于[Windows](../virtual-machines/windows/disk-encryption.md)和[Linux](../virtual-machines/linux/disk-encryption.md)的支援區域
+靜態加密 | 支援 | 深入瞭解適用于[Windows](../virtual-machines/disk-encryption.md)和[Linux](../virtual-machines/disk-encryption.md)的支援區域
 適用於 Windows OS 的 Azure 磁碟加密 (ADE) | 僅具有受控磁碟的 VM 提供支援。 | 不支援使用非受控磁碟的 VM。 <br/><br/> 不支援 HSM 保護的金鑰。 <br/><br/> 不支援在單一磁片上加密個別卷。 |
 適用於 Linux OS 的 Azure 磁碟加密 (ADE) | 僅具有受控磁碟的 VM 提供支援。 | 不支援使用非受控磁碟的 VM。 <br/><br/> 不支援 HSM 保護的金鑰。 <br/><br/> 不支援在單一磁碟上加密個別磁碟區。 <br><br> 啟用複寫的已知問題。 [深入了解。](./azure-to-azure-troubleshoot-errors.md#enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137) |
 SAS 金鑰輪替 | 不支援 | 如果儲存體帳戶的 SAS 金鑰已輪替，客戶必須停用再重新啟用複寫。 |

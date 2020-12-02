@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 89e5fa180b011cbedebc25a5e5d555a2190805f8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: dff7ff0afd6c236645731dc7edd936b0b808716b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015353"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483915"
 ---
 # <a name="speech-to-text-rest-api"></a>語音轉換文字 REST API
 
@@ -53,18 +53,18 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 
 REST 要求的查詢字串中可能包括這些參數。
 
-| 參數 | Description | 必要/選用 |
+| 參數 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `language` | 識別正在辨識的口說語言。 請參閱 [支援的語言](language-support.md#speech-to-text)。 | 必要 |
 | `format` | 指定結果格式。 接受的值為 `simple` 和 `detailed`。 簡單的結果包含 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 詳細的回應包括四種不同的顯示文字表示。 預設設定是 `simple`。 | 選擇性 |
 | `profanity` | 指定如何處理辨識結果中的不雅內容。 接受的值是，它會將不雅 `masked` 內容取代為星號， `removed` 這會從結果中移除所有不雅內容，或 `raw` 在結果中包含不雅內容。 預設設定是 `masked`。 | 選擇性 |
-| `cid` | 使用 [自訂語音入口網站](how-to-custom-speech.md)建立自訂模型時，您可以透過在 [**部署**] 頁面上找到的 **端點識別碼**，使用自訂模型。 使用 **端點識別碼** 作為 `cid` 查詢字串參數的引數。 | 選擇性 |
+| `cid` | 使用 [自訂語音入口網站](./custom-speech-overview.md)建立自訂模型時，您可以透過在 [**部署**] 頁面上找到的 **端點識別碼**，使用自訂模型。 使用 **端點識別碼** 作為 `cid` 查詢字串參數的引數。 | 選擇性 |
 
 ## <a name="request-headers"></a>要求標頭
 
 下表列出了語音轉文字要求的必要標頭和選用標頭。
 
-|標頭| Description | 必要/選用 |
+|標頭| 描述 | 必要/選用 |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | 您的語音服務訂用帳戶金鑰。 | 必須有此標頭或 `Authorization`。 |
 | `Authorization` | 前面加入 `Bearer` 這個字的授權權杖。 如需詳細資訊，請參閱[驗證](#authentication)。 | 必須有此標頭或 `Ocp-Apim-Subscription-Key`。 |
@@ -90,7 +90,7 @@ REST 要求的查詢字串中可能包括這些參數。
 
 下表列出發音評量的必要和選擇性參數。
 
-| 參數 | Description | 必要？ |
+| 參數 | 描述 | 必要？ |
 |-----------|-------------|---------------------|
 | ReferenceText | 用來評估發音的文字。 | 必要 |
 | GradingSystem | 評分校正的點系統。 `FivePoint`系統會提供0-5 浮點分數，並 `HundredMark` 提供0-100 浮點分數。 預設：`FivePoint`。 | 選擇性 |
@@ -195,7 +195,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 結果以 JSON 格式提供。 `simple` 格式包含以下的最上層欄位。
 
-| 參數 | Description  |
+| 參數 | 描述  |
 |-----------|--------------|
 |`RecognitionStatus`|狀態，例如 `Success` 代表辨識成功。 請參閱下一個表格。|
 |`DisplayText`|在大小寫、標點符號、反向文字正規化之後的已辨識文字 (將語音文字轉換成較短的表單，例如 "200" 的200或 "scripto smith" 的 "scripto smith" ) ，以及不雅內容遮罩。 只會在成功時呈現。|
@@ -220,7 +220,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 清單中的物件 `NBest` 可以包括：
 
-| 參數 | Description |
+| 參數 | 描述 |
 |-----------|-------------|
 | `Confidence` | 項目的信賴分數從 0.0 (不信賴) 到 1.0 (完全信賴) |
 | `Lexical` | 已辨識文字的語彙形式：已辨識的實際文字。 |
@@ -304,7 +304,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [建立 Azure 免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 - [自訂原音模型](./how-to-custom-speech-train-model.md)

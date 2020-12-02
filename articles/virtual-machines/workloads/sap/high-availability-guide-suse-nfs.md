@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 05bcb0aebd44dee60fa3f323e1f109e4c0761ec8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5976649ee396d897b76713b7863668d92279612e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022008"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484303"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>適用於 SUSE Linux Enterprise Server 之 Azure VM 上 NFS 的高可用性
 
@@ -214,7 +214,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
             * 重複上述步驟來為 NW2 設定連接埠 2049 和 UDP
 
 > [!IMPORTANT]
-> 負載平衡案例中的 NIC 次要 IP 設定不支援浮動 IP。 如需詳細資訊，請參閱 [Azure 負載平衡器的限制](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations)。 如果您需要 VM 的其他 IP 位址，請部署第二個 NIC。  
+> 負載平衡案例中的 NIC 次要 IP 設定不支援浮動 IP。 如需詳細資訊，請參閱 [Azure 負載平衡器的限制](../../../load-balancer/load-balancer-multivip-overview.md#limitations)。 如果您需要 VM 的其他 IP 位址，請部署第二個 NIC。  
 
 > [!Note]
 > 當不具公用 IP 位址的 VM 放在內部 (沒有公用 IP 位址) Standard Azure Load Balancer 的後端集區時，除非另外設定來允許路由傳送至公用端點，否則不會有輸出網際網路連線能力。 如需如何實現輸出連線能力的詳細資料，請參閱[在 SAP 高可用性案例中使用 Azure Standard Load Balancer 實現虛擬機器的公用端點連線能力](./high-availability-guide-standard-load-balancer-outbound-connections.md)。  

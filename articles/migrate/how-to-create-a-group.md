@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 867124a08bbad88b7dac5386ee6bc1c9c4d99c12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 420259929afc50b2884bf075212402d80b6b52f4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85549927"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483533"
 ---
 # <a name="create-a-group-for-assessment"></a>建立用於評量的群組
 
@@ -35,15 +35,15 @@ ms.locfileid: "85549927"
 
 如果您想要在建立評量之外以手動方式建立群組，請執行下列動作：
 
-1. 在 [Azure Migrate 專案 >] **總覽**中，按一下 [ **評估和遷移伺服器**]。 在**Azure Migrate：伺服器評**量中，按一下 [**群組**]
+1. 在 [Azure Migrate 專案 >] **總覽** 中，按一下 [ **評估和遷移伺服器**]。 在 **Azure Migrate：伺服器評** 量中，按一下 [**群組**]
     - 如果您尚未新增 Azure Migrate：伺服器評量工具，請按一下將它新增。 [深入了解](how-to-assess.md)。
-    - 如果您尚未建立 Azure Migrate 專案，請 [深入瞭解](how-to-add-tool-first-time.md)。
+    - 如果您尚未建立 Azure Migrate 專案，請 [深入瞭解](./create-manage-projects.md)。
 
     ![選取群組](./media/how-to-create-a-group/select-groups.png)
 
 2. 按一下 [ **群組** ] 圖示。
 3. 在 [ **建立群組**] 中，指定組名，並在 [ **設備名稱**] 中，選取您要用於機器探索的 Azure Migrate 設備。
-4. 從 [電腦] 清單中，選取您要新增到群組 > **建立**的電腦。
+4. 從 [電腦] 清單中，選取您要新增到群組 > **建立** 的電腦。
 
     ![建立群組](./media/how-to-create-a-group/create-group.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "85549927"
 
     - 如果您已經設定相依性對應，請在 [群組] 頁面上，按一下 [視圖相依性 **]** 以開啟群組相依性對應。
 
-3. 按一下 [ **視圖**相依性] 之後，群組相依性對應會顯示下列各項：
+3. 按一下 [ **視圖** 相依性] 之後，群組相依性對應會顯示下列各項：
 
     - 輸入 (用戶端) 和輸出 (伺服器) 與已安裝相依性代理程式之群組中的所有電腦之間的 TCP 連線。
     - 未安裝相依性代理程式的相依機器會依埠號碼分組。
@@ -86,7 +86,6 @@ ms.locfileid: "85549927"
     - 修改群組時，可以選擇性地建立新評量。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何設定和使用相依性 [對應](how-to-create-group-machine-dependencies.md) ，以建立高信賴度群組。
-

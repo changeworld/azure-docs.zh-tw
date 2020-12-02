@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: erhopf
-ms.openlocfilehash: 5c4f02eff06c08f1829f9f1c74d1dcb09ee57905
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a562c28235608d4a2425455b5543a76c99374f80
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024784"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483809"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>語音服務：檔的新功能
 
@@ -32,7 +32,7 @@ ms.locfileid: "95024784"
 
 ### <a name="new-articles"></a>新文章
 
-* [改進自訂語音的模型](how-to-custom-speech-improve-accuracy.md)
+* [改進自訂語音的模型](./how-to-custom-speech-evaluate-data.md)
 
 ### <a name="updated-articles"></a>更新的文章
 
@@ -44,7 +44,7 @@ ms.locfileid: "95024784"
 * [快速入門： Python 中適用于長格式音訊的非同步合成 (預覽版) ](./long-audio-api.md) -已更新為可支援公用神經語音，以及相關聯的參數。
 * [快速入門：辨識來自音訊](./get-started-speech-to-text.md) 檔案的語音-已新增 JavaScript 指示至檔。
 * [快速入門：辨識來自麥克風的語音](./get-started-speech-to-text.md) -新增的 Go 和 JavaScript 指示至檔。
-* [快速入門：辨識儲存在 blob 儲存體中的語音](quickstarts/from-blob.md) -將 JavaScript 指示新增至檔。
+* [快速入門：辨識儲存在 blob 儲存體中的語音](./batch-transcription.md) -將 JavaScript 指示新增至檔。
 * [快速入門：使用 Language Understanding (LUIS 來辨識語音、意圖和實體) ](quickstarts/intent-recognition.md)
 * [快速入門：設定開發環境](quickstarts/setup-platform.md) -將 JavaScript 指示新增至檔。
 * [快速入門：將語音合成至音訊](./get-started-text-to-speech.md) 檔-將 JavaScript 指示新增至檔。
@@ -58,7 +58,7 @@ ms.locfileid: "95024784"
 
 此資料表每月更新一次，而且只會反映在5月開啟的問題。  
 
-|識別碼|User|Description|已開啟|State|類型|
+|識別碼|User|描述|已開啟|州|類型|
 | :--- | :--- | :--- | :--- | :--- | :--- |
 |[56045](https://github.com/MicrosoftDocs/azure-docs/issues/56045)|rhalaly|因為缺少 bot 的端點，所以已丟棄活動|2020-05-31|封閉式|問題|
 |[56038](https://github.com/MicrosoftDocs/azure-docs/issues/56038)|rhalaly|發佈 bot 的步驟錯誤|2020-05-31|開啟|問題|

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/04/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 9101944a567df5000d3584ed48eff24e4c5e0057
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 572b3b3459e1d837130f3c987d45ee45629f37ad
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89565798"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485071"
 ---
 # <a name="test-a-model-using-an-audio-file-in-speech-studio"></a>在 Speech Studio 中使用音訊檔案來測試模型
 
@@ -23,7 +23,7 @@ ms.locfileid: "89565798"
 
 ## <a name="prerequisites"></a>必要條件
 
-使用語音入口網站之前，請[遵循這些指示來建立 Azure 帳戶，並訂閱語音服務](../how-to-custom-speech.md#set-up-your-azure-account)。 此整合訂用帳戶可讓您存取語音轉換文字、文字轉換語音、語音翻譯與自訂語音入口網站。
+使用語音入口網站之前，請[遵循這些指示來建立 Azure 帳戶，並訂閱語音服務](../custom-speech-overview.md#set-up-your-azure-account)。 此整合訂用帳戶可讓您存取語音轉換文字、文字轉換語音、語音翻譯與自訂語音入口網站。
 
 ## <a name="download-an-audio-file"></a>下載音訊檔案
 

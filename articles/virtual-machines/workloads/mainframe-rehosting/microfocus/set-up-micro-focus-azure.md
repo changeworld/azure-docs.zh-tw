@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: bd8da9ae7e31fb60ba0ca553f5aa304ccd3621d2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d9e5f9b531fc28caf8f3162a70318927d40bb923
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127173"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483057"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>在 Azure 上安裝微焦點企業伺服器5.0 和企業開發人員5。0
 
@@ -29,7 +29,7 @@ Azure 上的常見工作負載是開發和測試環境。 這種情況很常見�
 
 企業伺服器的對應開發環境是企業開發人員，可在 Microsoft Visual Studio 2017 或更新版本上執行，Visual Studio Community (免費下載) 或 Eclipse。 本文說明如何使用安裝 Visual Studio 2017 或更新版本的 Windows Server 2016 虛擬機器來部署它。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 開始使用之前，請先參閱下列必要條件：
 
@@ -42,12 +42,12 @@ Azure 上的常見工作負載是開發和測試環境。 這種情況很常見�
     > [!Note]
     > 有幾個選項可控制 Vm 的存取：
     > -   最佳做法是設定 [Azure](https://azure.microsoft.com/services/azure-bastion/)防禦。
-    > -   [站對站虛擬私人網路 (VPN) ](../../../../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md)通道。
+    > -   [站對站虛擬私人網路 (VPN) ](../../../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)通道。
     > -   Jumpbox VM。
 
 ## <a name="install-enterprise-server"></a>安裝 Enterprise Server
 
-1.  為了獲得更好的安全性和管理能力，請考慮只為此專案建立新的資源群組，例如 **RGMicroFocusEntServer** 。 在 Azure 中使用名稱的第一個部分，選擇資源類型，讓它更容易在清單中找到。
+1.  為了獲得更好的安全性和管理能力，請考慮只為此專案建立新的資源群組，例如 **RGMicroFocusEntServer**。 在 Azure 中使用名稱的第一個部分，選擇資源類型，讓它更容易在清單中找到。
 
 2.  建立虛擬機器。 在 [Azure Marketplace 中，選取您要的虛擬機器和作業系統。 以下是建議的設定：
 
@@ -87,7 +87,7 @@ Azure 上的常見工作負載是開發和測試環境。 這種情況很常見�
 
 1.  啟動微焦點授權管理。
 
-2.  選取 [ **開始** \> **微焦點授權管理員** \> **許可證** 管理]，然後按一下 [ **安裝** ] 索引標籤。選擇要上傳的授權格式類型：授權檔案或16字元的授權碼。 例如，針對檔案，在 [ **授權檔案** ] 中，流覽至 `mflic` 先前上傳至 VM 的 * 檔案，然後選取 [ **安裝授權** ]。
+2.  選取 [ **開始** \> **微焦點授權管理員** \> **許可證** 管理]，然後按一下 [ **安裝** ] 索引標籤。選擇要上傳的授權格式類型：授權檔案或16字元的授權碼。 例如，針對檔案，在 [ **授權檔案**] 中，流覽至 `mflic` 先前上傳至 VM 的 * 檔案，然後選取 [ **安裝授權**]。
 
     ![螢幕擷取畫面顯示 [微焦點授權管理] 對話方塊，您可以在其中選取 [安裝授權]。](media/install-image-3.png)
 
@@ -97,9 +97,9 @@ Azure 上的常見工作負載是開發和測試環境。 這種情況很常見�
 
 ## <a name="install-enterprise-developer-on-the-developer-machine"></a>在開發人員電腦上安裝 Enterprise Developer
 
-1.  選取稍早建立的資源群組 (例如， **RGMicroFocusEntServer** ) ，然後選取開發人員映射。
+1.  選取稍早建立的資源群組 (例如， **RGMicroFocusEntServer**) ，然後選取開發人員映射。
 
-2.  若要登入虛擬機器，請移至 [ **總覽** ] 區段，然後選取 **[連線]** 。 此登入會啟動 RDP 會話。 使用您為 VM 建立的認證登入。
+2.  若要登入虛擬機器，請移至 [ **總覽** ] 區段，然後選取 **[連線]**。 此登入會啟動 RDP 會話。 使用您為 VM 建立的認證登入。
 
 3.  如果您想要) ，請從 RDP 會話載入下列兩個檔案 (拖放：
 
@@ -117,7 +117,7 @@ Azure 上的常見工作負載是開發和測試環境。 這種情況很常見�
 
 6.  啟動微焦點授權管理員，就像您針對 Enterprise Server 所做的一樣。 選擇 [ **開始** \> **微焦點授權管理員** \> **許可證** 管理]，然後按一下 [ **安裝** ] 索引標籤。
 
-7.  選擇要上傳的授權格式類型：授權檔案或16個字元的授權碼。 例如，針對檔案，在 [ **授權檔案** ] 中，流覽至 `mflic` 先前上傳至 VM 的檔案，然後選取 [  **安裝授權** ]。
+7.  選擇要上傳的授權格式類型：授權檔案或16個字元的授權碼。 例如，針對檔案，在 [ **授權檔案**] 中，流覽至 `mflic` 先前上傳至 VM 的檔案，然後選取 [  **安裝授權**]。
 
     ![微焦點授權管理對話方塊](media/install-image-7.png)
 

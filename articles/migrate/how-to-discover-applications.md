@@ -3,12 +3,12 @@ title: 使用 Azure Migrate 探索內部部署伺服器上的應用程式、角�
 description: 瞭解如何在內部部署伺服器上，利用 Azure Migrate Server 評量探索應用程式、角色和功能。
 ms.topic: article
 ms.date: 06/10/2020
-ms.openlocfilehash: 6bdc26ac3a27026183e889bf258e2e1a5dadebfb
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 960877ac4eab4d8f23b5616dc04628142964b46a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315202"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483448"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>探索機器應用程式、角色和功能
 
@@ -20,10 +20,10 @@ ms.locfileid: "92315202"
 > 應用程式探索目前僅供 VMware Vm 預覽，且僅限探索。 我們尚未提供以應用程式為基礎的評量。 
 
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 - 確認您已：
-    - [建立](how-to-add-tool-first-time.md) Azure Migrate 專案。
+    - [建立](./create-manage-projects.md) Azure Migrate 專案。
     - [已](how-to-assess.md) 將 Azure Migrate：伺服器評定工具新增至專案。
 - 請參閱 [應用程式探索支援和需求](migrate-support-matrix-vmware.md#vmware-requirements)。
 - 確定您正在執行應用程式探索的 Vm 已安裝 PowerShell 2.0 版或更新版本，且安裝的 VMware 工具 (晚于 10.2.0) 。
@@ -46,7 +46,7 @@ ms.locfileid: "92315202"
 
 ## <a name="verify-permissions"></a>驗證權限
 
-您已 [建立一個 vCenter Server 唯讀帳戶](./tutorial-discover-vmware.md#prepare-vmware) 以進行探索和評量。 唯讀帳戶需要啟用**虛擬機器**  >  **來賓作業**的許可權，才能與 VM 互動以進行應用程式探索。
+您已 [建立一個 vCenter Server 唯讀帳戶](./tutorial-discover-vmware.md#prepare-vmware) 以進行探索和評量。 唯讀帳戶需要啟用 **虛擬機器**  >  **來賓作業** 的許可權，才能與 VM 互動以進行應用程式探索。
 
 ### <a name="add-the-user-account-to-the-appliance"></a>將使用者帳戶新增至設備
 
@@ -54,9 +54,9 @@ ms.locfileid: "92315202"
 
 1. 開啟設備管理應用程式。 
 2. 流覽至 [ **提供 vCenter 詳細資料** ] 面板。
-3. 在 [**探索 vm 上的應用程式和**相依性] 中，按一下 [**新增認證**]
-3. 選擇**作業系統**、提供帳戶的易記名稱和**使用者名稱** / **密碼**
-6. 按一下 [檔案]  。
+3. 在 [**探索 vm 上的應用程式和** 相依性] 中，按一下 [**新增認證**]
+3. 選擇 **作業系統**、提供帳戶的易記名稱和 **使用者名稱** / **密碼**
+6. 按一下 [儲存]。
 7. 按一下 [ **儲存並開始探索**]。
 
     ![新增 VM 使用者帳戶](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
@@ -66,16 +66,16 @@ ms.locfileid: "92315202"
 
 探索結束之後，如果您提供應用程式探索的認證，您可以在 Azure 入口網站中檢查和匯出應用程式清查。
 
-1. 在 [ **Azure Migrate-伺服器**  >  **Azure Migrate：伺服器評**量] 中，按一下顯示的計數以開啟 [探索到的**伺服器**] 頁面。
+1. 在 [ **Azure Migrate-伺服器**  >  **Azure Migrate：伺服器評** 量] 中，按一下顯示的計數以開啟 [探索到的 **伺服器**] 頁面。
 
     > [!NOTE]
     > 在這個階段，您也可以選擇性地為探索到的機器設定相依性分析，讓您可以在想要評估的機器上視覺化相依性。 [深入瞭解](concepts-dependency-visualization.md) 相依性分析。
 
-2. 在 **探索到的應用程式**中，按一下顯示的計數。
-3. 在 **應用程式清查**中，您可以檢查探索到的應用程式、角色和功能。
-4. 若要匯出清查，請在探索到的 **伺服器**中，按一下 [ **匯出應用程式清查**]。
+2. 在 **探索到的應用程式** 中，按一下顯示的計數。
+3. 在 **應用程式清查** 中，您可以檢查探索到的應用程式、角色和功能。
+4. 若要匯出清查，請在探索到的 **伺服器** 中，按一下 [ **匯出應用程式清查**]。
 
-應用程式清查會以 Excel 格式匯出和下載。 **應用程式清查**工作表會顯示所有機器上探索到的所有應用程式。
+應用程式清查會以 Excel 格式匯出和下載。 **應用程式清查** 工作表會顯示所有機器上探索到的所有應用程式。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: e7ea3ef16b60e53450436bda66ce3dde091c81c2
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 4339e8217702e9f25877bc8c250b5363e2c59a42
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289565"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483690"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>從 Azure Key Vault 匯出憑證
 
@@ -33,8 +33,8 @@ Azure Key Vault 可讓您輕鬆地為您的網路佈建、管理及部署數位�
 
 在建立 Key Vault 憑證之後，您可以使用私密金鑰，從可定址秘密中擷取該憑證。 擷取 PFX 或 PEM 格式的憑證。
 
-- **可匯出** ：用來建立憑證的原則指出金鑰是可匯出的。
-- **不可匯出** ：用來建立憑證的原則指出金鑰是不可匯出的。 在此情況下，當私密金鑰以秘密形式擷取時，不會將其視為值的一部分。
+- **可匯出**：用來建立憑證的原則指出金鑰是可匯出的。
+- **不可匯出**：用來建立憑證的原則指出金鑰是不可匯出的。 在此情況下，當私密金鑰以秘密形式擷取時，不會將其視為值的一部分。
 
 支援的金鑰類型：RSA、RSA-HSM、EC、EC-HSM、oct (列於[此處](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)) 僅允許匯出 RSA、EC。 HSM 金鑰不可匯出。
 
@@ -49,7 +49,7 @@ Azure Key Vault 可讓您輕鬆地為您的網路佈建、管理及部署數位�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-在 Azure CLI 中使用下列命令，下載 Key Vault 憑證的 **公開部分** 。
+在 Azure CLI 中使用下列命令，下載 Key Vault 憑證的 **公開部分**。
 
 ```azurecli
 az keyvault certificate download --file
@@ -79,11 +79,11 @@ az keyvault secret download -–file {nameofcert.pfx}
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-在 Azure PowerShell 中使用此命令，從名為 **ContosoKV01** 的金鑰保存庫取得名為 **TestCert01** 的憑證。 若要將憑證下載為 PFX 檔案，請執行下列命令。 這些命令會存取 **SecretId** ，然後將內容儲存為 PFX 檔案。
+在 Azure PowerShell 中使用此命令，從名為 **ContosoKV01** 的金鑰保存庫取得名為 **TestCert01** 的憑證。 若要將憑證下載為 PFX 檔案，請執行下列命令。 這些命令會存取 **SecretId**，然後將內容儲存為 PFX 檔案。
 
 ```azurepowershell
 $cert = Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
-$secret = Get-AzKeyVaultSecret -VaultName $vaultName -Name $cert.Name
+$secret = Get-AzKeyVaultSecret -VaultName "ContosoKV01" -Name $cert.Name
 $secretValueText = '';
 $ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
 try {

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 2b474ae184374a2c91dcba15517048556686ec35
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8eaadc031039b22e209db1023c65da39e1e096b1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782224"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483278"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Azure 儲存體加密的客戶管理金鑰
 
@@ -63,7 +63,7 @@ ms.locfileid: "92782224"
 若要瞭解如何使用金鑰保存庫中客戶管理的金鑰來設定 Azure 儲存體加密，請參閱 [使用儲存在 Azure Key Vault 中之客戶管理的金鑰來設定加密](customer-managed-keys-configure-key-vault.md)。 若要在受管理的 HSM 中設定客戶管理的金鑰，請參閱 [使用儲存在 Azure Key Vault 受控 hsm (preview) 中的客戶管理金鑰來設定加密 ](customer-managed-keys-configure-key-vault-hsm.md)。
 
 > [!IMPORTANT]
-> 客戶管理的金鑰依賴適用于 Azure 資源的受控識別，這是 Azure AD 的功能。 受控識別目前不支援跨目錄案例。 當您在 Azure 入口網站中設定客戶管理的金鑰時，系統會自動將受控識別指派給您的儲存體帳戶。 如果您之後將訂用帳戶、資源群組或儲存體帳戶從一個 Azure AD 目錄移至另一個目錄，與儲存體帳戶相關聯的受控身分識別不會傳送至新的租使用者，因此客戶管理的金鑰可能無法再運作。 如需詳細資訊，請參閱在 [Azure 資源受控識別的常見問題和已知問題](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)中， **傳輸 Azure AD 目錄之間的訂** 用帳戶。  
+> 客戶管理的金鑰依賴適用于 Azure 資源的受控識別，這是 Azure AD 的功能。 受控識別目前不支援跨目錄案例。 當您在 Azure 入口網站中設定客戶管理的金鑰時，系統會自動將受控識別指派給您的儲存體帳戶。 如果您之後將訂用帳戶、資源群組或儲存體帳戶從一個 Azure AD 目錄移至另一個目錄，與儲存體帳戶相關聯的受控身分識別不會傳送至新的租使用者，因此客戶管理的金鑰可能無法再運作。 如需詳細資訊，請參閱在 [Azure 資源受控識別的常見問題和已知問題](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)中，**傳輸 Azure AD 目錄之間的訂** 用帳戶。  
 
 Azure 儲存體加密支援2048、3072和4096大小的 RSA 和 RSA HSM 金鑰。 如需有關金鑰的詳細資訊，請參閱 [關於金鑰](../../key-vault/keys/about-keys.md)。
 
@@ -113,10 +113,10 @@ Azure 儲存體加密支援2048、3072和4096大小的 RSA 和 RSA HSM 金鑰。
 
 ## <a name="customer-managed-keys-for-azure-managed-disks"></a>適用于 Azure 受控磁片的客戶管理金鑰
 
-客戶管理的金鑰也可用於管理 Azure 受控磁片的加密。 客戶管理的金鑰在受控磁片上的行為會與 Azure 儲存體資源的行為不同。 如需詳細資訊，請參閱適用于 Windows 的 [azure 受控磁片的伺服器端加密](../../virtual-machines/windows/disk-encryption.md) ，或適用于 Linux [的 azure 受控磁片的伺服器端加密](../../virtual-machines/linux/disk-encryption.md) 。
+客戶管理的金鑰也可用於管理 Azure 受控磁片的加密。 客戶管理的金鑰在受控磁片上的行為會與 Azure 儲存體資源的行為不同。 如需詳細資訊，請參閱適用于 Windows 的 [azure 受控磁片的伺服器端加密](../../virtual-machines/disk-encryption.md) ，或適用于 Linux [的 azure 受控磁片的伺服器端加密](../../virtual-machines/disk-encryption.md) 。
 
 ## <a name="next-steps"></a>後續步驟
 
 - [待用資料的 Azure 儲存體加密](storage-service-encryption.md)
-- [使用儲存在 Azure Key Vault 中客戶管理的金鑰來設定加密](customer-managed-keys-configure-key-vault.md)
+- [使用儲存在 Azure Key Vault 中的客戶受控金鑰來設定加密](customer-managed-keys-configure-key-vault.md) (機器翻譯)
 - [使用儲存在 Azure Key Vault 受控 HSM (preview) 中的客戶管理金鑰來設定加密 ](customer-managed-keys-configure-key-vault-hsm.md)

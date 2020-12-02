@@ -3,12 +3,12 @@ title: 在 Azure Migrate 伺服器評量中設定代理程式相依性分析
 description: 本文說明如何在 Azure Migrate 伺服器評量中設定代理程式相依性分析。
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 58c1aeea00ae033def0f45d220c12d13cc28b4b2
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 1ab5d639d68b5ce2298f907ef8346488e16b4020
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302837"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483465"
 ---
 # <a name="set-up-dependency-visualization"></a>設定相依性視覺效果
 
@@ -21,7 +21,7 @@ ms.locfileid: "96302837"
     - [實體伺服器](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)
     - [Hyper-v vm](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements)。
 - 請確定您已執行下列動作：
-    - 有 Azure Migrate 專案。 如果沒有，請立即 [建立](how-to-add-tool-first-time.md) 一個。
+    - 有 Azure Migrate 專案。 如果沒有，請立即 [建立](./create-manage-projects.md) 一個。
     - 檢查您是否已將 Azure Migrate：伺服器評估工具 [新增](how-to-assess.md) 至專案。
     - 設定 [Azure Migrate 設備](migrate-appliance.md) 以探索內部部署機器。 設備會探索內部部署機器，並將中繼資料和效能資料傳送至 Azure Migrate：伺服器評量。 設定設備：
         - [VMware](how-to-set-up-appliance-vmware.md) Vm。
@@ -147,7 +147,7 @@ ms.locfileid: "96302837"
 您可以在與 Azure Migrate 專案相關聯的 Log Analytics 工作區中，查詢服務對應所捕捉的相依性資料。 Log Analytics 可用來撰寫和執行 Azure 監視器記錄查詢。
 
 - [瞭解如何](../azure-monitor/insights/service-map.md#log-analytics-records) 在 Log Analytics 中搜尋服務對應資料。
-- [深入瞭解如何](../azure-monitor/log-query/get-started-queries.md)  在 [log Analytics](../azure-monitor/log-query/get-started-portal.md)中撰寫記錄查詢。
+- [深入瞭解如何](../azure-monitor/log-query/get-started-queries.md)  在 [log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)中撰寫記錄查詢。
 
 執行相依性資料的查詢，如下所示：
 

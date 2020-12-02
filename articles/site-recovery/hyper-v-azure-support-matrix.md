@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 53967ab0bec9488691ff60cdabb8fedbb6b9730e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7466f037f0a39b67023b9ebcc27c2e19b27f42ab
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87386702"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485258"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>內部部署 Hyper-V VM 至 Azure 的災害復原支援矩陣
 
@@ -30,7 +30,7 @@ Hyper-V (不含 Virtual Machine Manager) | 您可以針對在不是由 Virtual M
 
 ## <a name="on-premises-servers"></a>內部部署伺服器
 
-**Server** | **Requirements** | **詳細資料**
+**伺服器** | **Requirements** | **詳細資料**
 --- | --- | ---
 Hyper-V (執行時不含 Virtual Machine Manager) |  Windows Server 2019、Windows Server 2016、Windows Server 2012 R2 （含最新更新） <br/><br/> **注意：** 此外，也支援這些作業系統的 Server core 安裝。 | 如果您已使用 Azure Site Recovery 設定 Windows Server 2012 R2 和/或 SCVMM 2012 R2，並且打算升級作業系統，請依照此[文件](upgrade-2012R2-to-2016.md)的說明進行。
 Hyper-V (執行時含 Virtual Machine Manager) | Virtual Machine Manager 2019、Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 <br/><br/> **注意：** 此外，也支援這些作業系統的 Server core 安裝。  | 如果使用 Virtual Machine Manager，Windows Server 2019 主機應該在 Virtual Machine Manager 2019 中進行管理。 同樣地，Windows Server 2016 主機應該在 Virtual Machine Manager 2016 中進行管理。
@@ -136,7 +136,7 @@ RDM | NA | NA
 區塊 Blob | 否 | 否
 待用加密 (SSE)| 是 | 是
 待用加密 (CMK) <br></br>  (僅適用于容錯移轉至受控磁片) | 是 (via PowerShell Az 3.3.0 module)  | 是 (via PowerShell Az 3.3.0 module) 
-靜態加密 <br></br>  (僅適用于容錯移轉至受控磁片)  <br></br> 深入瞭解適用于[Windows](../virtual-machines/windows/disk-encryption.md)和[Linux](../virtual-machines/linux/disk-encryption.md)的支援區域 | 是 (via PowerShell Az 3.3.0 module)  | 是 (via PowerShell Az 3.3.0 module) 
+靜態加密 <br></br>  (僅適用于容錯移轉至受控磁片)  <br></br> 深入瞭解適用于[Windows](../virtual-machines/disk-encryption.md)和[Linux](../virtual-machines/disk-encryption.md)的支援區域 | 是 (via PowerShell Az 3.3.0 module)  | 是 (via PowerShell Az 3.3.0 module) 
 進階儲存體 | 是 | 是
 標準儲存體 | 是 | 是
 匯入/匯出服務 | 否 | 否
@@ -188,7 +188,7 @@ VM 類型 | 第 1 代<br/><br/> 第 2 代--Windows | OS 磁碟基本類型的第
 
 若要確定您的部署與本文中的設定相容，請確定您所執行的是最新的提供者和代理程式版本。
 
-**名稱** | **描述** | **詳細資料**
+**名稱** | **說明** | **詳細資料**
 --- | --- | --- 
 Azure Site Recovery 提供者 | 協調內部部署伺服器與 Azure 之間的通訊 <br/><br/> HYPER-V (含 Virtual Machine Manager)：安裝在 Virtual Machine Manager 伺服器上<br/><br/> HYPER-V (不含 Virtual Machine Manager)：安裝在 HYPER-V 主機上| 最新版本：5.1.2700.1 (可從 Azure 入口網站取得)<br/><br/> [最新功能和修正](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
 Microsoft Azure 復原服務代理程式 | 協調 HYPER-V VM 與 Azure 之間的複寫<br/><br/> 安裝在內部部署 Hyper-V 伺服器上 (無論是否有 Virtual Machine Manager) | 最新的代理程式可從入口網站取得
@@ -198,5 +198,5 @@ Microsoft Azure 復原服務代理程式 | 協調 HYPER-V VM 與 Azure 之間的
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 了解如何[準備 Azure](tutorial-prepare-azure.md) 的內部部署 Hyper-V VM 災害復原。

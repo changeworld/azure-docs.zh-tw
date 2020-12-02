@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: rajosh
-ms.openlocfilehash: 834fd32d17c4a5ff112dd11a331a59336d7cbcb7
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: f9fdff54cbd795c6aeda1708dcae8d00022a6a43
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315262"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483499"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>建立 (AVS) 評量的 Azure VMware 解決方案
 
@@ -19,9 +19,9 @@ ms.locfileid: "92315262"
 
 [Azure Migrate](migrate-services-overview.md) 可協助您遷移至 Azure。 Azure Migrate 能提供集中式的中樞，以追蹤針對 Azure 的內部部署基礎結構、應用程式與資料的探索、評量及移轉。 該中樞能提供 Azure 工具以進行評量和移轉，也提供協力廠商獨立軟體廠商 (ISV) 供應項目。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
-- 請確定您已 [建立](how-to-add-tool-first-time.md) Azure Migrate 專案。
+- 請確定您已 [建立](./create-manage-projects.md) Azure Migrate 專案。
 - 如果您已建立專案，請確定您已 [新增](how-to-assess.md) Azure Migrate：伺服器評定工具。
 - 若要建立評量，您必須設定 [VMware](how-to-set-up-appliance-vmware.md)的 Azure Migrate 設備，以探索內部部署電腦，並將中繼資料和效能資料傳送至 Azure Migrate：伺服器評量。 [深入了解](migrate-appliance.md)。
 - 您也可以 [將伺服器中繼資料](./tutorial-discover-import.md) 以逗號分隔值匯入 (CSV) 格式。
@@ -66,11 +66,11 @@ ms.locfileid: "92315262"
 
     ![AVS 評量屬性](./media/how-to-create-avs-assessment/avs-view-all.png)
 
-5. 按一下 [下一步] 以**選取要評量的機器**。 在 [選取或建立群組] 中，選取 [新建]，然後指定群組名稱。 群組會將一或多個 VM 收集在一起以進行評估。
+5. 按一下 [下一步] 以 **選取要評量的機器**。 在 [選取或建立群組] 中，選取 [新建]，然後指定群組名稱。 群組會將一或多個 VM 收集在一起以進行評估。
 
 6. 在 [將機器新增至群組] 中，選取要新增至群組的 VM。
 
-7. 按一下 下一步 以**檢閱+ 建立評量**來檢閱評量詳細資料。
+7. 按一下 下一步 以 **檢閱+ 建立評量** 來檢閱評量詳細資料。
 
 8. 按一下 [建立評估] 以建立群組，然後執行評估。
 
@@ -101,7 +101,7 @@ ms.locfileid: "92315262"
 
 ### <a name="review-azure-vmware-solution-avs-readiness"></a>複習 Azure VMware Solution (AVS) 準備
 
-1. 在 **Azure 就緒**狀態中，確認 vm 是否已準備好遷移至 AVS。
+1. 在 **Azure 就緒** 狀態中，確認 vm 是否已準備好遷移至 AVS。
 
 2. 檢查 VM 狀態：
     - **適用于 avs**：機器可以依原樣遷移至 AZURE (AVS) ，而不需要任何變更。 它會在具有完整 AVS 支援的 AVS 中開始。

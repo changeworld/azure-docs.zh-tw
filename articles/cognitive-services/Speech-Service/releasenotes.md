@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: e786c4caae13ffaa541697d083158e17d42383fb
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: c6cc033e4814553020957310224a8ed4cdacbc8e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122557"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483949"
 ---
 # <a name="speech-service-release-notes"></a>語音服務版本資訊
 
@@ -40,19 +40,18 @@ ms.locfileid: "96122557"
 
 **新功能**
 - **Linux**：已新增 Debian 10 和 UBUNTU 20.04 LTS 的支援。
-- **Python/目標-C**：已新增對 API 的支援 `KeywordRecognizer` 。 檔會在 [此](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-keyword-basics)。
+- **Python/目標-C**：已新增對 API 的支援 `KeywordRecognizer` 。 檔會在 [此](./custom-keyword-basics.md)。
 - **C + +/JAVA/C #**：已新增透過設定任何索引 `HttpHeader` 鍵/值的支援 `ServicePropertyChannel::HttpHeader` 。
-- **JavaScript**：已新增 API 的支援 `ConversationTranscriber` 。 請參閱 [此處](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-conversation-transcription?pivots=programming-language-javascript)的檔。 
-- **C + +/c #**：已新增 `AudioDataStream FromWavFileInput` 要讀取 (方法。WAV 檔) [這裡 (c + +) ](https://docs.microsoft.com/cpp/cognitive-services/speech/audiodatastream) 和 [這裡 (c # ) ](
-https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet)。
--  **C + +/c #/JAVA/Python/Objective-C/Swift**：已新增 `stopSpeakingAsync()` 方法來停止文字轉換語音合成。 請參閱此處的參考檔 [ (c + +) ](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace)，此處 [ (c # ) ](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet)，此處 (了 [JAVA) ](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech)，此處 (了 [Python) ](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)， ([目標-C/Swift ](https://docs.microsoft.com/objectivec/cognitive-services/speech/)) 。
-- **C #、c + +、JAVA**：將函式新增 `FromDialogServiceConnector()` 至 `Connection` 類別，可用於監視的連接和中斷連接事件 `DialogServiceConnector` 。 請參閱此處的參考檔 [ (c # ) ](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet)， [此處 (c + +) ](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)， [此處 (JAVA) ](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection)。
-- **C + +/c #/JAVA/Python/Objective-C/Swift**：新增了發音評量的支援，它會評估語音發音，並為說話者的精確度和流暢度提供說話者的意見反應。 請參閱 [此處](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment)的檔。
+- **JavaScript**：已新增 API 的支援 `ConversationTranscriber` 。 請參閱 [此處](./how-to-use-conversation-transcription.md?pivots=programming-language-javascript)的檔。 
+- **C + +/c #**：已新增 `AudioDataStream FromWavFileInput` 要讀取 (方法。WAV 檔) [這裡 (c + +)](/cpp/cognitive-services/speech/audiodatastream) 和 [這裡 (c # )](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet)。
+-  **C + +/c #/JAVA/Python/Objective-C/Swift**：已新增 `stopSpeakingAsync()` 方法來停止文字轉換語音合成。 請參閱此處的參考檔 [ (c + +) ](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace)，此處 [ (c # ) ](/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet)，此處 (了 [JAVA) ](/java/api/com.microsoft.cognitiveservices.speech)，此處 (了 [Python) ](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)， ([目標-C/Swift ](/objectivec/cognitive-services/speech/)) 。
+- **C #、c + +、JAVA**：將函式新增 `FromDialogServiceConnector()` 至 `Connection` 類別，可用於監視的連接和中斷連接事件 `DialogServiceConnector` 。 請參閱此處的參考檔 [ (c # ) ](/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet)， [此處 (c + +) ](/cpp/cognitive-services/speech/connection)， [此處 (JAVA) ](/java/api/com.microsoft.cognitiveservices.speech.connection)。
+- **C + +/c #/JAVA/Python/Objective-C/Swift**：新增了發音評量的支援，它會評估語音發音，並為說話者的精確度和流暢度提供說話者的意見反應。 請參閱 [此處](how-to-pronunciation-assessment.md)的檔。
 
 **重大變更**
 - **JavaScript**： PullAudioOutputStream. read ( # A1 具有從內部承諾到原生 JavaScript 承諾的傳回類型變更。
 
-**錯誤修正**
+**Bug 修正**
 - **全部**：修正在 `SetServiceProperty` 某些特殊字元中忽略值的固定1.13 回歸。
 - **C #**：已修正 Visual Studio 2019 上的 Windows 主控台範例找不到原生 dll。
 - **C #**：如果將資料流程當成輸入使用，則修正了記憶體管理的損毀 `KeywordRecognizer` 。
@@ -83,7 +82,7 @@ https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audioda
 保持狀況良好！
 
 ## <a name="speech-cli-also-known-as-spx-2020-october-release"></a>語音 CLI (也稱為 SPX) ： 2020-10 月版本
-SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命令列介面。 請在 [這裡](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-basics)下載最新版本。 <br>
+SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命令列介面。 請在 [這裡](./spx-basics.md)下載最新版本。 <br>
 
 **新功能**
 - `spx csr dataset upload --kind audio|language|acoustic` –從本機資料建立資料集，而不只是從 Url。
@@ -144,7 +143,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
     | `ja-JP` | Nanami |
     | `ko-KR` | Sun-Hi |
 
-### <a name="bug-fixes"></a>錯誤修正
+### <a name="bug-fixes"></a>Bug 修正
 
 * 使用音訊內容建立工具修正了許多 bug 
     * 已修正自動重新整理的問題。 
@@ -195,7 +194,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
 - **目標-C**：新增對 [多裝置對話](./multi-device-conversation.md) 和 [對話](./conversation-transcription.md)轉譯的支援。 
 - **Python**：為 Windows 和 Linux 上的 python 新增了壓縮的音訊支援。 請參閱 [此處](./how-to-use-codec-compressed-audio-input-streams.md)的檔。 
 
-**錯誤修正**
+**Bug 修正**
 - **全部**：已修正導致 KeywordRecognizer 在辨識之後不會向前移動資料流程的問題。
 - **全部**：已修正導致從 KeywordRecognitionResult 取得的資料流程不包含關鍵字的問題。
 - **全部**：已修正 >sendmessageasync 在使用者完成等候時，不會在網路上真正傳送訊息的問題。
@@ -257,7 +256,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
     | `pt-PT` | 77% |
     | `id-ID` | 46% |
 
-### <a name="bug-fixes"></a>錯誤修正
+### <a name="bug-fixes"></a>Bug 修正
 
 * 貨幣讀取
     * 修正了和的貨幣讀取問題 `es-ES``es-MX`
@@ -292,7 +291,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
 **新功能**
 -   **C \# ，c + +**：說話者辨識預覽：這項功能可讓說話者識別 (說話？ ) 和說話者驗證 (是他們宣稱的說話者？ ) 。 首先 [，請閱讀](./speaker-recognition-overview.md)「 [說話者辨識基本」文章](./get-started-speaker-recognition.md)或 [API 參考](/rest/api/speakerrecognition/)檔。
 
-**錯誤修正**
+**Bug 修正**
 -   **C \# ，c + +**：固定麥克風錄製在1.12 的說話者辨識中無法運作。
 -   **JavaScript**：針對 Firefox 中的文字轉換語音，以及在 MacOS 和 iOS 上的 Safari 進行修正。
 -   修正在使用八個通道的資料流程時，對交談轉譯的 Windows application verifier 存取違規損毀。
@@ -324,7 +323,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
 - 改善連接邏輯，以在發生服務和網路錯誤時嘗試連接多次。
 - 已更新 [Portal.azure.com](https://portal.azure.com) 語音快速入門頁面，協助開發人員在 azure 語音旅程圖中採取下一個步驟。
 
-**錯誤修正**
+**Bug 修正**
 - **C #、JAVA**：已修正在 Linux ARM 上載入 SDK 程式庫 (32 位和64位) 的 [問題](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/587) 。
 - **C #**：已修正 TranslationRecognizer、IntentRecognizer 和 Connection 物件原生控制碼的明確處置。
 - **C #**：固定 ConversationTranscriber 物件的音訊輸入存留期管理。
@@ -351,7 +350,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
 - JavaScript：支援 NodeJS 中的語音合成 (文字轉換語音) 。 [在此](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech)深入了解。 
 - JavaScript：加入新的 API，以啟用所有傳送和接收訊息的檢查。 [在此](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript)深入了解。 
         
-**錯誤修正**
+**Bug 修正**
 - C #、c + +：已修正問題，因此 `SendMessageAsync` 現在會將二進位訊息傳送為二進位類型。 [C #](/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_)、 [c + +](/cpp/cognitive-services/speech/connection)的詳細資料。
 - C #、c + +：已修正使用 `Connection MessageReceived` 事件在 `Recognizer` 物件之前處置時可能造成損毀的問題 `Connection` 。 [C #](/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?preserve-view=true&view=azure-dotnet)、 [c + +](/cpp/cognitive-services/speech/connection#messagereceived)的詳細資料。
 - Android：來自麥克風的音訊緩衝區大小從800ms 減少為100毫秒，以改善延遲。
@@ -380,7 +379,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
  - TTS 現在會使用訂用帳戶金鑰進行驗證，在建立合成器之後，減少第一個合成結果的第一個位元組延遲。
  - 更新了19個地區設定的語音辨識模型，可減少 18.6% (es 的平均字組誤差率 es-MX、fr-CA、fr-fr、it-IT、ja-jp、ko-KR、pt-BR、zh-CN、zh-HK、nb-NO、fi、ru-RU、pl-PL、、zh、、th、pt、tr、tr) 。 新模型會在多個網域中帶來顯著的改進，包括聽寫、Call-Center 轉譯和影片索引編制案例。
 
-**錯誤修正**
+**Bug 修正**
 
  - 修正對話 Transcriber 在 JAVA Api 中未適當等候的 bug 
  - 適用于 Xamarin GitHub 的 Android x86 模擬器修正 [問題](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/363)
@@ -416,7 +415,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
 - 我們已將 c # 傳回的資料類型從變更為，以便 `WordLevelTimingResult.Offset` `int` `long` `WordLevelTimingResults` 在語音資料超過2分鐘時存取。
 - `PushAudioInputStream` 現在，您 `PullAudioInputStream` 可以視需要將 wav 標頭資訊傳送到語音服務，並在 `AudioStreamFormat` 建立時選擇性地指定。 客戶現在必須使用 [支援的音訊輸入格式](how-to-use-audio-input-streams.md)。 任何其他格式都會取得次佳的辨識結果，或可能造成其他問題。 
 
-**錯誤修正**
+**Bug 修正**
 
 - 請參閱 `OpenSSL` 上方重大變更下的更新。 我們已修正在 Linux 和 JAVA 的高負載) 下， (鎖定爭用的間歇性損毀和效能問題。 
 - JAVA：對高平行存取案例中的物件關閉進行改善。
@@ -457,7 +456,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
 - 對話 Transcriber 方法的元件會移至新的 `Conversation` 類別。
 - 已中斷32位 (ARMv7 和 x86) iOS 的支援
 
-**錯誤修正**
+**Bug 修正**
 
 - 如果未 `KeywordRecognizer` 使用有效的語音服務訂用帳戶金鑰，請修正損毀的問題
 
@@ -480,7 +479,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
 - TTS 已新增 macOS、iOS 和 Android 的播放支援。
 - 已新增 TTS 的「字邊界」資訊。
 
-**錯誤修正**
+**Bug 修正**
 
 - 已修正 IL2CPP 適用于 Android 的 Unity 2019 組建問題
 - 修正 wav 檔案輸入中格式錯誤的標頭未正確處理的問題
@@ -520,7 +519,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
   - 改良的錯誤報表：可能導致錯誤的方法現在會出現在兩個版本中：一個會公開 `NSError` 處理錯誤的物件，另一個則會引發例外狀況。 前者會公開至 Swift。 這種變更需要採用原音至現有的 Swift 程式碼。
   - 改進的事件處理
 
-**錯誤修正**
+**Bug 修正**
 
 - 修正 TTS： `SpeakTextAsync` 未來傳回但未等候音訊已完成轉譯的情況
 - 針對 c # 中的封送處理字串進行修正，以啟用完整的語言支援
@@ -535,7 +534,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
 
 這是 bug 修正版本，只會影響原生/受管理的 SDK。 它不會影響 JavaScript 版本的 SDK。
 
-**錯誤修正**
+**Bug 修正**
 
 - 修正搭配對話轉譯時使用的 FromSubscription。
 - 修正語音助理關鍵字找出中的 bug。
@@ -560,7 +559,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
 - 目標-C： `OutputFormat` 屬性已新增至 `SPXSpeechConfiguration` 。
 - SDK 現在支援 Debian 9 作為 Linux 散發套件。
 
-**錯誤修正**
+**Bug 修正**
 
 - 修正瞭解構說話者資源過早在文字轉換語音中的問題。
 
@@ -596,7 +595,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
 - 如需其他開發和偵錯工具支援，您可以將 SDK 記錄和診斷資訊重新導向至記錄檔， ([詳細資料) ](how-to-use-logging.md) 。
 - JavaScript：改善音訊處理效能。
 
-**錯誤修正**
+**Bug 修正**
 
 - Mac/iOS：已修正無法建立語音服務連線時，導致等候時間過長的 bug。
 - Python：改善 Python 回呼中引數的錯誤處理。
@@ -647,7 +646,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
 - Windows DLL 現在會包含版本資源。
 - 如果您建立辨識器 `FromEndpoint` ，您可以直接將參數加入至端點 URL。 使用 `FromEndpoint` 時，您無法透過標準設定屬性來設定辨識器。
 
-**錯誤修正**
+**Bug 修正**
 
 - 空的 Proxy 使用者名稱和 Proxy 密碼之前不會正確處理。 在此版本中，如果您將 Proxy 使用者名稱和 Proxy 密碼設定為空字串，系統將不會在連線到 Proxy 時提交出去。
 - 在某些語言&nbsp;/環境中，SDK 所建立的工作階段識別碼並不一定會真正隨機。 已新增隨機產生器初始化以修正此問題。
@@ -688,7 +687,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
 - 已改善錯誤回報 / 資訊。 在幾個案例中，錯誤訊息尚未傳播出去。
 - 已將 JavaScript 中的開發相依性更新為使用最新的模組。
 
-**錯誤修正**
+**Bug 修正**
 
 - 修正記憶體流失，因為中的類型不相符 `RecognizeAsync` 。
 - 在某些情況下，例外狀況正在流失。
@@ -720,7 +719,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
 - 已改善對音訊檔案中長時間無聲之部分的處理。
 - NuGet 套件：針對 .NET Framework 專案，其可防止使用 AnyCPU 設定來建置。
 
-**錯誤修正**
+**Bug 修正**
 
 - 已修正在辨識器中找到的幾個例外狀況。 此外，也會攔截例外狀況，並將其轉換成 `Canceled` 事件。
 - 修正屬性管理中的記憶體流失。
@@ -782,7 +781,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
 - 在 Java (Android) 上，`SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` 函式不再需要路徑參數。 系統現在會自動在所有支援平台上偵測路徑。
 - Java 和 C# 中 `EndpointUrl` 屬性的 get-accessor 已移除。
 
-**錯誤修正**
+**Bug 修正**
 
 - 在 Java 中，現已實作翻譯辨識器上的音訊合成結果。
 - 已修正錯誤，此錯誤可能導致非作用中的執行緒，並增加已開啟且未使用的通訊端數目。
@@ -816,7 +815,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
   - 在 C++ 中，`Read` 和 `GetFormat` 方法現在會傳回 `size_t` 而不是 `int`。
 - C++：音訊輸入串流的執行個體現在只能當作 `shared_ptr` 傳遞。
 
-**錯誤修正**
+**Bug 修正**
 
 - 修正 `RecognizeAsync()` 逾時的時候，結果中不正確的傳回值。
 - 已移除 Windows 上媒體基礎程式庫的相依性。 SDK 現在使用核心音訊 API。
@@ -842,7 +841,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
 
 - 在 C# 中已從 `SpeechRecognitionResult.RecognizedText` 變更為 `SpeechRecognitionResult.Text`。
 
-**錯誤修正**
+**Bug 修正**
 
 - 已修正在關閉期間 USP 層中可能發生的回呼問題。
 - 如果辨識器取用音訊輸入檔，其保留檔案控制代碼超過所需的時間。

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: cd9b85f22866c529b66fa6df07bd524516726086
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: a5457dc94082f089d3adf02c9614d05d2c5db244
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165327"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484000"
 ---
 # <a name="prepare-data-for-custom-speech"></a>準備自訂語音的資料
 
@@ -186,7 +186,7 @@ ms.locfileid: "92165327"
 
 自訂的發音提供英文 (`en-US`) 和德文 (`de-DE`) 。 下表顯示支援的字元（依語言）：
 
-| 語言 | 地區設定 | 字元 |
+| Language | 地區設定 | 字元 |
 |----------|--------|------------|
 | 英文 | `en-US` | `a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
 | 德文 | `de-DE` | `ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
@@ -204,4 +204,4 @@ ms.locfileid: "92165327"
 * [檢查您的資料](how-to-custom-speech-inspect-data.md)
 * [評估您的資料](how-to-custom-speech-evaluate-data.md)
 * [定型模型](how-to-custom-speech-train-model.md)
-* [部署模型](how-to-custom-speech-deploy-model.md)
+* [部署模型](./how-to-custom-speech-train-model.md)

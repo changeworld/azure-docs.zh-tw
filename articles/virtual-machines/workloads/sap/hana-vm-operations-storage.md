@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b8b8d100eb2ff16e8f8b7a734ad493ed4faddd33
-ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
+ms.openlocfilehash: 8c4aa608e892867daaf954284a9dfce997a9ae1f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96299525"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484272"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虛擬機器儲存體設定
 
@@ -112,7 +112,7 @@ Azure 寫入加速器是專用於 Azure M 系列 VM 的功能。 如同名稱所
 
 
 ### <a name="azure-burst-functionality-for-premium-storage"></a>適用于 premium 儲存體的 Azure 高載功能
-針對較小或等於 512 GiB 容量的 Azure premium 儲存體磁片，會提供高載功能。 磁片高載運作方式的確切方式，會在 [磁片](../../linux/disk-bursting.md)高載一文中說明。 當您閱讀這篇文章時，您會瞭解當 i/o 工作負載低於磁片的名義 IOPS 和輸送量時，所產生的 IOPS 和輸送量概念 (如需名義輸送量的詳細資訊，請參閱 [受控磁片定價](https://azure.microsoft.com/pricing/details/managed-disks/)) 。 您將會在目前的使用量和磁片的名義值之間，累積 IOPS 和輸送量之間的差異。 高載限制為最多30分鐘。
+針對較小或等於 512 GiB 容量的 Azure premium 儲存體磁片，會提供高載功能。 磁片高載運作方式的確切方式，會在 [磁片](../../disk-bursting.md)高載一文中說明。 當您閱讀這篇文章時，您會瞭解當 i/o 工作負載低於磁片的名義 IOPS 和輸送量時，所產生的 IOPS 和輸送量概念 (如需名義輸送量的詳細資訊，請參閱 [受控磁片定價](https://azure.microsoft.com/pricing/details/managed-disks/)) 。 您將會在目前的使用量和磁片的名義值之間，累積 IOPS 和輸送量之間的差異。 高載限制為最多30分鐘。
 
 這種高載功能可以在其中規劃的理想情況，可能會是包含不同 DBMS 之資料檔的磁片區或磁片。 對這些磁片區預期的 i/o 工作負載，尤其是小型到中型的系統應該如下所示：
 
@@ -134,7 +134,7 @@ Azure 寫入加速器是專用於 Azure M 系列 VM 的功能。 如同名稱所
 > Azure M 系列虛擬機器的 SAP HANA 憑證是專用於 **/hana/log** 磁碟區的 Azure Write Accelerator。 因此，在 Azure M 系列虛擬機器上部署生產案例的 SAP HANA 時，預期會針對 **/hana/log** 磁碟區使用 Azure Write Accelerator 進行設定。  
 
 > [!NOTE]
-> 在涉及 Azure premium 儲存體的案例中，我們會在設定中執行高載功能。 當您使用任何圖形或表單的儲存體測試控管時，請記住 [Azure premium 磁片](../../linux/disk-bursting.md) 高載的運作方式。 執行透過 SAP HWCCT 或 HCMT 工具傳遞的存放裝置測試時，不會預期所有測試都會通過準則，因為有些測試將會超過您可累積的高載點數。 尤其是當所有測試都在不中斷的情況下連續執行時。
+> 在涉及 Azure premium 儲存體的案例中，我們會在設定中執行高載功能。 當您使用任何圖形或表單的儲存體測試控管時，請記住 [Azure premium 磁片](../../disk-bursting.md) 高載的運作方式。 執行透過 SAP HWCCT 或 HCMT 工具傳遞的存放裝置測試時，不會預期所有測試都會通過準則，因為有些測試將會超過您可累積的高載點數。 尤其是當所有測試都在不中斷的情況下連續執行時。
 
 
 > [!NOTE]

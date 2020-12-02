@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: 5631cbdd0b1eae343899be2147720d980e605dbb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5bd41396cf075f83fd37a4276f7a30223ec8c1f3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452707"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96482938"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>如何使用多租用戶主機權限在 Azure 上部署 Windows 10 
 對於每位使用者都具有 Windows 10 企業版 E3/E5 或每位使用者都具有 Windows 虛擬桌面存取 (使用者訂用帳戶授權或附加元件使用者訂用帳戶授權) 的客戶，適用於 Windows 10 的多租用戶主機權限可讓您將 Windows 10 授權帶到雲端，並在 Azure 上執行 Windows 10 虛擬機器，而不必付費取得其他授權。 如需詳細資訊，請參閱[適用於 Windows 10 的多租用戶主機](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)。
@@ -36,9 +36,11 @@ ms.locfileid: "96452707"
 ## <a name="qualify-for-multi-tenant-hosting-rights"></a>符合多租使用者裝載許可權的資格 
 若要符合多租使用者裝載許可權，並在 Azure 使用者上執行 Windows 10 映射必須有下列其中一個訂用帳戶： 
 
--   Microsoft 365 E3/E5/F3/A3/A5
--   Windows 10 企業版 E3/E5 
--   Windows 10 教育版 A3/A5
+-   Microsoft 365 E3/E5 
+-   Microsoft 365 F3 
+-   Microsoft 365 A3/A5 
+-   Windows 10 企業版 E3/E5
+-   Windows 10 教育版 A3/A5 
 -   Windows VDA E3/E5
 
 

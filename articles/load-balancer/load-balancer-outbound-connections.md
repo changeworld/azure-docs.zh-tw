@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 5a2d7f9f60253916eae808a7f65bc4b4b289bd67
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3f4791c5cbcf731e118bac4bf692adcad7e9ff44
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694775"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483584"
 ---
 # <a name="using-snat-for-outbound-connections"></a>使用 SNAT 進行輸出連線
 
@@ -182,8 +182,6 @@ Azure Load Balancer 輸出規則和虛擬網路 NAT 是可從虛擬網路輸出�
 
 ## <a name="constraints"></a>條件約束
 
-*   如果接收或傳送 **TCP RST** ，埠將在15秒後釋出
-*   如果接收或傳送 **FINACK** ，埠會在240秒後釋出
 *   當連線閒置且沒有傳送新的封包時，埠會在4–120分鐘後釋出。
   * 您可以透過輸出規則設定此閾值。
 *   每個 IP 位址都提供可用於 SNAT 的64000埠。

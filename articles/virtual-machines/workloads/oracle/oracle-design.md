@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 6b7c280d9ff5f4d8a3c35eb11e080bf2f9f287c0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5e9ddecd694a9051e746d07cbc1bee4d98bf5829
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959164"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484425"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中設計和實作 Oracle 資料庫
 
@@ -43,11 +43,11 @@ ms.locfileid: "94959164"
 | **網路功能** |LAN/WAN  |SDN (軟體定義網路)|
 | **安全性群組** |IP/連接埠限制工具 |[ (NSG) 的網路安全性群組 ](https://azure.microsoft.com/blog/network-security-groups) |
 | **恢復功能** |MTBF (平均失敗時間) |MTTR (平均復原時間)|
-| **預定進行的維修** |修補/升級|[可用性設定組](/previous-versions/azure/virtual-machines/windows/infrastructure-example) (Azure 所管理的修補/升級) |
+| **預定的維修** |修補/升級|[可用性設定組](/previous-versions/azure/virtual-machines/windows/infrastructure-example) (Azure 所管理的修補/升級) |
 | **Resource** |專用  |與其他用戶端共用|
 | **區域** |資料中心 |[區域配對](../../regions.md#region-pairs)|
 | **Storage** |SAN/實體磁碟 |[Azure 受控儲存體](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
-| **縮放比例** |垂直調整 |水平調整|
+| **縮放** |垂直調整 |水平調整|
 
 
 ### <a name="requirements"></a>規格需求
@@ -138,7 +138,7 @@ SQL> @?/rdbms/admin/awrrpt.sql
 - 與內部部署相較之下，網路延遲較高。 減少網路來回行程可以大幅改善效能。
 - 若要減少來回行程，請合併相同虛擬機器上具有高交易或 “Chatty” 應用程式的應用程式。
 - 使用具有 [加速網路](../../../virtual-network/create-vm-accelerated-networking-cli.md) 的虛擬機器，以獲得更佳的網路效能。
-- 針對某些 Linux 發行版本，請考慮啟用 [TRIM/](../../linux/configure-lvm.md#trimunmap-support)取消對應支援。
+- 針對某些 Linux 發行版本，請考慮啟用 [TRIM/](/previous-versions/azure/virtual-machines/linux/configure-lvm#trimunmap-support)取消對應支援。
 - 在不同的虛擬機器上安裝 [Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) 。
 - 預設不會在 linux 上啟用大量頁面。 請考慮啟用大量頁面並設定 `use_large_pages = ONLY` Oracle DB。 這可能有助於提升效能。 您可以在[這裡](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)找到詳細資訊。
 
