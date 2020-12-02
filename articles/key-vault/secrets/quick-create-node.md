@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 35713a2e854cf65054d162ce0191bf2dfde4e90b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 73a12edb4576fe26fbb8e0918566aa8e292e35fc
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786134"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184309"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-javascript-v4"></a>快速入門：適用於 JavaScript (v4) 的 Azure Key Vault 用戶端程式庫
 
@@ -69,7 +69,7 @@ npm install @azure/identity
 建立金鑰保存庫的存取原則，將祕密權限授與服務主體。
 
 ```console
-az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set purge
 ```
 
 #### <a name="set-environment-variables"></a>設定環境變數

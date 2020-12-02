@@ -12,12 +12,12 @@ author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 07/11/2019
-ms.openlocfilehash: ae2f2b8b9b6f3bc934321b13dcefeff46e43b089
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 936e4f8f54e92ba90372fff1c9d8dfc1982bbd62
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788157"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325109"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>開始使用 Azure SQL 受控執行個體
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "92788157"
 首先，您必須建立第一個 SQL受控執行個體及其放置所在的網路環境，並啟用從您執行查詢的電腦或虛擬機器到 SQL受控執行個體的連線。 您可以使用下列指南：
 
 - [使用 Azure 入口網站建立 SQL 受控執行個體](instance-create-quickstart.md)。 在 Azure 入口網站中，您可以設定必要參數 (使用者名稱/密碼、核心數目和儲存體數量上限)，並自動建立 Azure 網路環境，而無需了解網路詳細資料和基礎結構需求。 您只須確認自己具有目前允許用來建立 SQL 受控執行個體的[訂用帳戶類型](resource-limits.md#supported-subscription-types)。 若您想要使用自己的網路，或想要自訂網路，請參閱[針對 Azure SQL 受控執行個體設定現有虛擬網路](vnet-existing-add-subnet.md) (英文) 或[建立 Azure SQL 受控執行個體的虛擬網路](virtual-network-subnet-create-arm-template.md) (英文)。
-- SQL 受控執行個體會建立在沒有公用端點的自有 VNet 中。 針對用戶端應用程式的存取，您可以 **在相同 VNet (不同子網路) 中建立 VM** ，或使用以下其中一個快速入門來 **建立用戶端電腦到 VNet 的點對站 VPN 連線** ：
+- SQL 受控執行個體會建立在沒有公用端點的自有 VNet 中。 針對用戶端應用程式的存取，您可以 **在相同 VNet (不同子網路) 中建立 VM**，或使用以下其中一個快速入門來 **建立用戶端電腦到 VNet 的點對站 VPN 連線**：
   - 在您的 SQL 受控執行個體上啟用[公用端點](public-endpoint-configure.md)，以便直接從您的環境存取您的資料。
   - 在 [SQL 受控執行個體 VNet 中建立 Azure 虛擬機器](connect-vm-instance-configure.md)，以進行用戶端應用程式連線，包括 SQL Server Management Studio。
   - 從具有 SQL Server Management Studio 與其他用戶端連線應用程式的用戶端電腦中，[對您的 SQL 受控執行個體設定點對站 VPN 連線](point-to-site-p2s-configure.md)。 這是其他兩個可連線到您 SQL 受控執行個體與其 VNet 的選項。
@@ -72,7 +72,7 @@ ms.locfileid: "92788157"
 但是，若要移轉您要用於某些效能測試的生產資料庫或甚至開發/測試資料庫，您需要考慮使用一些額外的技術，例如：
 
 - 效能測試 - 您應測量來源 SQL Server 執行個體上的基準效能計量，並將其與移轉資料庫之目的地 SQL 受控執行個體的效能計量進行比較。 深入了解[進行效能比較的最佳做法](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210) \(英文\)。
-- 線上移轉 - 使用此文章中描述的原生 `RESTORE`，您必須等待資料庫進行還原並複製到 Azure Blob 儲存體 (如果資料庫尚未儲存在該處)。 這會導致您的應用程式有停機時間，特別是處理較大型資料庫的時候。 若要移動您的生產資料庫，請使用[資料移轉服務 (DMS)](../../dms/tutorial-sql-server-to-managed-instance.md?toc=%252fazure%252fsql-database%252ftoc.json)，才能以最短的停機時間來遷移資料庫。 DMS 會用累加方式將來源資料庫中之變更推送到已還原的 SQL 受控執行個體資料庫，以完成移轉。 透過此方法，您可以在最短停機時間的前提下，快速地將應用程式從來源資料庫切換到目標資料庫。
+- 線上移轉 - 使用此文章中描述的原生 `RESTORE`，您必須等待資料庫進行還原並複製到 Azure Blob 儲存體 (如果資料庫尚未儲存在該處)。 這會導致您的應用程式有停機時間，特別是處理較大型資料庫的時候。 若要移動您的生產資料庫，請使用[資料移轉服務 (DMS)](../../dms/tutorial-sql-server-to-managed-instance.md?toc=%2fazure%2fsql-database%2ftoc.json)，才能以最短的停機時間來遷移資料庫。 DMS 會用累加方式將來源資料庫中之變更推送到已還原的 SQL 受控執行個體資料庫，以完成移轉。 透過此方法，您可以在最短停機時間的前提下，快速地將應用程式從來源資料庫切換到目標資料庫。
 
 深入了解[建議的移轉程序](migrate-to-instance-from-sql-server.md)。
 

@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2020
 ms.author: rkarlin
-ms.openlocfilehash: 38e78b80fd14aec7557b563b2b33faf7d51bd114
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 321c8d2b9e58aba943c5bf19adf54d6359c5be96
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759727"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351771"
 ---
 # <a name="quickstart-security-module-for-azure-rtos-preview"></a>快速入門：適用於 Azure RTOS 的安全性模組 (預覽)
 
-本文將說明如何在開始使用之前提供必要條件，並說明如何在 IoT 中樞上啟用 Azure RTOS 服務的安全性模組。 如果您目前沒有 IoT 中樞，請參閱[使用 Azure 入口網站建立 IoT 中樞](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)來著手。
+本文將說明如何在開始使用之前提供必要條件，並說明如何在 IoT 中樞上啟用 Azure RTOS 服務的安全性模組。 如果您目前沒有 IoT 中樞，請參閱[使用 Azure 入口網站建立 IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)來著手。
 
 > [!NOTE]
 > 只有標準層 IoT 中樞才支援 Azure RTOS 的安全性模組。
@@ -58,15 +58,15 @@ ms.locfileid: "91759727"
 
 IoT 解決方案的 Defender 預設會關閉 IoT 中樞內的 Log Analytics 擷取。 若要啟用以使用適用於 Azure RTOS 的安全性模組，請執行下列動作： 
 1. 在 Azure 入口網站中，移至您的 IoT 中樞。
-1. 在**安全性**功能表下，選取 [設定]。
+1. 在 **安全性** 功能表下，選取 [設定]。
    :::image type="content" source="media/quickstart/azure-rtos-hub-settings.png" alt-text="Azure RTOS 的存取資料收集選項"::: 
 1. 選取 [資料收集]。 
-1. 從 [工作區組態] 選項，將交換器切換至**開啟**。 
+1. 從 [工作區組態] 選項，將交換器切換至 **開啟**。 
 1. 建立新的 Log Analytics 工作區，或附加現有的 Log Analytics 工作區。 請確定已選取 [存取原始安全性資料] 選項。 
- :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="Azure RTOS 的存取資料收集選項":::
+ :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="Azure RTOS 組態顯示同時選取的資料收集選項和原始安全性資料選項":::
 1. 選取 [儲存]。
 1. 返回您的 Azure 資源清單，確認您已為 IoT 中樞啟用所建立或附加的 Log Analytics 工作區。
-    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="Azure RTOS 的存取資料收集選項"::: 
+    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="檢查您的 Azure 資源清單，確認為 IoT 中樞新增了正確的 Log Analytics 工作區"::: 
 
 ## <a name="next-steps"></a>後續步驟
 

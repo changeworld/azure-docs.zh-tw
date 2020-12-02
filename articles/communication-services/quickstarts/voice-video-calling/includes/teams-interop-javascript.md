@@ -5,12 +5,12 @@ ms.author: mikben
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: ab13e02c9154dbfc1bd28872f1bd6f993019a604
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 820659c513674dc04e914c8f1094afab4f5a89e2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94915240"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356455"
 ---
 ## <a name="prerequisites"></a>先決條件
 
@@ -22,7 +22,7 @@ ms.locfileid: "94915240"
 Teams 互通性功能目前為個人預覽版。 若要為您的通訊服務資源啟用這項功能，請傳送電子郵件到 [acsfeedback@microsoft.com](mailto:acsfeedback@microsoft.com)，並附上：
 
 1. 通訊服務資源所在 Azure 訂用帳戶的訂用帳戶識別碼。
-2. Teams 租用戶識別碼。 若要取得此識別碼，最簡單的方式是[取得並分享小組的連結](https://support.microsoft.com/office/create-a-link-or-a-code-for-joining-a-team-11b0de3b-9288-4cb4-bc49-795e7028296f#:~:text=Create%20a%20link%20If%20you%E2%80%99re%20a%20team%20owner%2C,link%20into%20any%20browser%20to%20join%20the%20team)。
+2. Teams 租用戶識別碼。 若要取得此識別碼，最簡單的方式是[取得並分享小組的連結](https://support.microsoft.com/office/create-a-link-or-a-code-for-joining-a-team-11b0de3b-9288-4cb4-bc49-795e7028296f)。
 
 您必須是這兩個實體的擁有組織成員，才能使用這項功能。
 

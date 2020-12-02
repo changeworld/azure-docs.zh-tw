@@ -4,12 +4,12 @@ description: 了解如何使用已啟用 Azure Arc 的伺服器來管理裝載�
 keywords: azure 自動化, DSC, powershell, Desired State Configuration, 更新管理, 變更追蹤, 清查, Runbook, python, 圖形, 混合式
 ms.date: 11/12/2020
 ms.topic: overview
-ms.openlocfilehash: 2df970f7c94f1e306243aba1480ee7023b8f76c1
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8368f89b8e471698ede3e9e8eb691e69f494b6e2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578717"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183391"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>什麼是已啟用 Azure Arc 的伺服器？
 
@@ -29,7 +29,7 @@ ms.locfileid: "94578717"
 
 - 使用適用於非 Azure Windows 或 Linux 機器的受支援 [Azure VM 擴充功能](manage-vm-extensions.md)，簡化其他 Azure 服務 (例如 Azure 自動化[狀態組態](../../automation/automation-dsc-overview.md)和 Azure 監視器 Log Analytics 工作區) 的部署。 這包括使用自訂指令碼擴充功能來執行部署後設定或軟體安裝。
 
-- 使用 Azure 自動化中的[更新管理](../../automation/update-management/update-mgmt-overview.md)，管理 Windows 和 Linux 伺服器的作業系統更新
+- 使用 Azure 自動化中的[更新管理](../../automation/update-management/overview.md)，管理 Windows 和 Linux 伺服器的作業系統更新
 
     > [!NOTE]
     > 目前不支援直接從已啟用 Arc 的伺服器啟用更新管理。 請參閱[從您的自動化帳戶啟用更新管理](../../automation/update-management/enable-from-automation-account.md)以了解需求，以及如何為您的伺服器啟用此功能。

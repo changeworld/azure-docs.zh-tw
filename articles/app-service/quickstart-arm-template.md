@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/16/2020
 ms.custom: subject-armqs, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: c8542bfe3d1393917a63e4a1feae7d6dfc223031
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 5be4cea7d8ddb00a4c8a22a696dbdce1c062765c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746181"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183017"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>快速入門：使用 ARM 範本建立 App Service 應用程式
 
@@ -145,7 +145,7 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 > [PHP with MySQL](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
-> [使用 Java 連線至 Azure SQL 資料庫](../azure-sql/database/connect-query-java.md?toc=%252fazure%252fjava%252ftoc.json)
+> [使用 Java 連線至 Azure SQL 資料庫](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
 
 > [!div class="nextstepaction"]
 > [對應自訂網域](app-service-web-tutorial-custom-domain.md)

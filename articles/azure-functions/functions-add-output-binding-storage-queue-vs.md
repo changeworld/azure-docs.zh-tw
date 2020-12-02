@@ -4,12 +4,12 @@ description: 了解如何使用 Visual Studio 新增輸出繫結，以將 C# 類
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 0711516143839dbcdbafec56ab1d9643b4b8cdc7
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 635392212027c73e5aa954eb671be31228796a0d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167115"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185125"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>使用 Visual Studio 將函式連線至 Azure 儲存體
 
@@ -29,7 +29,7 @@ ms.locfileid: "92167115"
 
 ## <a name="download-the-function-app-settings"></a>下載函式應用程式設定
 
-在[先前的快速入門文章](functions-create-first-function-vs-code.md)中，您已在 Azure 中建立函式應用程式與必要的儲存體帳戶。 此帳戶的連接字串會安全地儲存在 Azure 的應用程式設定中。 在本文中，您會將訊息寫入至相同帳戶中的儲存體佇列。 在本機執行函式時若要連線至儲存體帳戶，您必須將應用程式設定下載到 local.settings.json  檔案。 
+在[先前的快速入門文章](./create-first-function-vs-code-csharp.md)中，您已在 Azure 中建立函式應用程式與必要的儲存體帳戶。 此帳戶的連接字串會安全地儲存在 Azure 的應用程式設定中。 在本文中，您會將訊息寫入至相同帳戶中的儲存體佇列。 在本機執行函式時若要連線至儲存體帳戶，您必須將應用程式設定下載到 local.settings.json  檔案。 
 
 1. 在 [方案總管]  中，以滑鼠右鍵按一下專案並選取 [發佈]  。 
 

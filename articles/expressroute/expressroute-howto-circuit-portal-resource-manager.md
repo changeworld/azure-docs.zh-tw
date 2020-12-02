@@ -8,11 +8,11 @@ ms.topic: quickstart
 ms.date: 10/21/2020
 ms.author: duau
 ms.openlocfilehash: b0fd844021e7398e061072d7939b782616580c1c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368684"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185193"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit"></a>快速入門：建立和修改 ExpressRoute 線路
 
@@ -41,50 +41,50 @@ ms.locfileid: "92368684"
 
     :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/create-expressroute-circuit-menu.png" alt-text="建立 ExpressRoute 線路":::
 
-2. 選取 [ExpressRoute] 後，您會看到 [建立 ExpressRoute] 頁面。 提供線路的**資源群組**、**區域**和**名稱**。 然後，選取 **下一步：組態 >** 。
+2. 選取 [ExpressRoute] 後，您會看到 [建立 ExpressRoute] 頁面。 提供線路的 **資源群組**、**區域** 和 **名稱**。 然後，選取 **下一步：組態 >** 。
 
-    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-basic.png" alt-text="建立 ExpressRoute 線路":::
+    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-basic.png" alt-text="設定資源群組和區域":::
 
 3. 在此頁面中填入值時，請確認所指定的 SKU 層 (本機、標準或進階) 以及資料計量計費模型 (無限制或計量付費) 正確無誤。
 
-    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-configuration.png" alt-text="建立 ExpressRoute 線路":::
+    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-configuration.png" alt-text="設定線路":::
     
-    * **連接埠類型**會決定您要連線到服務提供者，還是直接在對等互連位置連線到 Microsoft 的全球網路。
-    * **建立新的或從傳統匯入**會決定要建立新的線路，還是要將傳統線路遷移至 Azure Resource Manager。
-    * **提供者**是網際網路服務提供者，您會向其要求提供服務的來源。
-    * **對等位置**是您與 Microsoft 對等互連的實體位置。
+    * **連接埠類型** 會決定您要連線到服務提供者，還是直接在對等互連位置連線到 Microsoft 的全球網路。
+    * **建立新的或從傳統匯入** 會決定要建立新的線路，還是要將傳統線路遷移至 Azure Resource Manager。
+    * **提供者** 是網際網路服務提供者，您會向其要求提供服務的來源。
+    * **對等位置** 是您與 Microsoft 對等互連的實體位置。
 
     > [!IMPORTANT]
-    > [對等位置] 表示您與 Microsoft 對等互連的[實體位置](expressroute-locations.md)。 這**不會**連結到「位置」屬性，這是指 Azure 網路資源提供者所在的地理位置。 儘管它們並無關聯，但最好還是選擇地理位置靠近線路對等位置的網路資源提供者。
+    > [對等位置] 表示您與 Microsoft 對等互連的[實體位置](expressroute-locations.md)。 這 **不會** 連結到「位置」屬性，這是指 Azure 網路資源提供者所在的地理位置。 儘管它們並無關聯，但最好還是選擇地理位置靠近線路對等位置的網路資源提供者。
 
-    * **SKU** 會判斷系統是否已啟用 ExpressRoute 本機、ExpressRoute 標準或 ExpressRoute 進階附加元件。 您可以指定**本機**來取得本機 SKU，指定**標準**來取得標準 SKU，或指定**進階**來取得進階附加元件。 您可以變更 SKU 以啟用進階附加元件。
+    * **SKU** 會判斷系統是否已啟用 ExpressRoute 本機、ExpressRoute 標準或 ExpressRoute 進階附加元件。 您可以指定 **本機** 來取得本機 SKU，指定 **標準** 來取得標準 SKU，或指定 **進階** 來取得進階附加元件。 您可以變更 SKU 以啟用進階附加元件。
     > [!IMPORTANT]
-    > 您無法將 SKU 從**標準/進階**變更為**本機**。
+    > 您無法將 SKU 從 **標準/進階** 變更為 **本機**。
     
-    * **計費模式**會決定計費類型。 您可以指定 [計量付費]**** 以採用計量付費數據傳輸方案，選取 [無限制]**** 以採用無限制的資料方案。 您可以將計費類型從 [計量付費] 變更為 [無限制]。
+    * **計費模式** 會決定計費類型。 您可以指定 [計量付費] 以採用計量付費數據傳輸方案，選取 [無限制] 以採用無限制的資料方案。 您可以將計費類型從 [計量付費] 變更為 [無限制]。
 
     > [!IMPORTANT]
-    > 您無法從**無限制** 類型變更為**計量付費**。
+    > 您無法從 **無限制** 類型變更為 **計量付費**。
 
-    * **允許傳統作業**會允許傳統虛擬網路連結至線路。
+    * **允許傳統作業** 會允許傳統虛擬網路連結至線路。
 
 ### <a name="view-the-circuits-and-properties"></a>檢視線路和屬性
 
 **檢視所有線路**
 
-您可以選取左側功能表上的**所有服務 > 網路 > ExpressRoute 線路**來檢視您建立的所有線路。
+您可以選取左側功能表上的 **所有服務 > 網路 > ExpressRoute 線路** 來檢視您建立的所有線路。
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-menu.png" alt-text="建立 ExpressRoute 線路":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-menu.png" alt-text="ExpressRoute 線路功能表":::
 
 在訂用帳戶中建立的所有 Expressroute 線路都會出現在這裡。
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-list.png" alt-text="建立 ExpressRoute 線路":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-list.png" alt-text="ExpressRoute 線路清單":::
 
 **檢視屬性**
 
-您可選取線路檢視其屬性。 在線路的 [概觀]**** 頁面上，服務金鑰會顯示於服務金鑰欄位。 參考線路的服務金鑰，並提供給服務提供者以完成佈建流程。 此服務金鑰專屬於您的線路。
+您可選取線路檢視其屬性。 在線路的 [概觀] 頁面上，服務金鑰會顯示於服務金鑰欄位。 參考線路的服務金鑰，並提供給服務提供者以完成佈建流程。 此服務金鑰專屬於您的線路。
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview.png" alt-text="建立 ExpressRoute 線路":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview.png" alt-text="檢視屬性":::
 
 ### <a name="send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>將服務金鑰傳送給連線提供者以進行佈建
 
@@ -95,7 +95,7 @@ ms.locfileid: "92368684"
 提供者狀態：**未佈建**<BR>
 線路狀態：**已啟用**
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview-provisioning-state.png" alt-text="建立 ExpressRoute 線路":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview-provisioning-state.png" alt-text="啟動佈建程序":::
 
 當連線提供者目前為您啟用線路時，此線路會變更為下列狀態：
 
@@ -109,9 +109,9 @@ ms.locfileid: "92368684"
 
 ### <a name="periodically-check-the-status-and-the-state-of-the-circuit-key"></a>定期檢查線路金鑰的情況和狀態
 
-選取感興趣的線路，即可檢視該線路的屬性。 檢查 [提供者狀態]****，確定它已變成 [已佈建]**** 再繼續。
+選取感興趣的線路，即可檢視該線路的屬性。 檢查 [提供者狀態]，確定它已變成 [已佈建] 再繼續。
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/provisioned.png" alt-text="建立 ExpressRoute 線路":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/provisioned.png" alt-text="線路和提供者狀態":::
 
 ### <a name="create-your-routing-configuration"></a>建立路由組態
 
@@ -130,26 +130,26 @@ ms.locfileid: "92368684"
 
 ## <a name="modifying-an-expressroute-circuit"></a><a name="modify"></a>修改 ExpressRoute 線路
 
-您可以修改 ExpressRoute 線路的某些屬性，而不會影響連線。 您可以在 [組態]**** 頁面中修改頻寬、SKU、計費模型並允許傳統作業。 如需限制的相關資訊，請參閱 [ExpressRoute 常見問題集](expressroute-faqs.md)。
+您可以修改 ExpressRoute 線路的某些屬性，而不會影響連線。 您可以在 [組態] 頁面中修改頻寬、SKU、計費模型並允許傳統作業。 如需限制的相關資訊，請參閱 [ExpressRoute 常見問題集](expressroute-faqs.md)。
 
 您可以執行下列工作，而無需中途停機：
 
 * 啟用或停用 ExpressRoute 線路的 ExpressRoute 進階附加元件。
 
 > [!IMPORTANT]
-  > 不支援將 SKU 從**標準/進階**變更為**本機**。
+  > 不支援將 SKU 從 **標準/進階** 變更為 **本機**。
 
 * 只要連接埠有可用的容量，即增加 ExpressRoute 線路的頻寬。
 
   > [!IMPORTANT]
   > 不支援將線路的頻寬降級。
 
-* 將計量方案從 [已計量資料]** 變更為 [無限制資料]**。
+* 將計量方案從 [已計量資料] 變更為 [無限制資料]。
 
   > [!IMPORTANT]
-  > 不支援將計量方案從**無限制資料**變更為**已計量資料**。
+  > 不支援將計量方案從 **無限制資料** 變更為 **已計量資料**。
 
-* 您可以啟用和停用 [允許傳統作業] **。
+* 您可以啟用和停用 [允許傳統作業] 。
   > [!IMPORTANT]
   > 如果現有的連接埠上沒有足夠的容量，您可能必須重新建立 ExpressRoute 線路。 如果該位置已無額外的容量，您無法升級線路。
   >
@@ -159,7 +159,7 @@ ms.locfileid: "92368684"
 
 若要修改 ExpressRoute 線路，請選取 [組態]。
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-configuration.png" alt-text="建立 ExpressRoute 線路":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-configuration.png" alt-text="修改線路":::
 
 ## <a name="deprovisioning-an-expressroute-circuit"></a><a name="delete"></a>取消佈建 ExpressRoute 線路
 
@@ -174,7 +174,7 @@ ms.locfileid: "92368684"
 
 您可以選取 [刪除]圖示，以刪除 ExpressRoute 線路。 在繼續進行之前，請確定提供者狀態為「未佈建」。
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-delete.png" alt-text="建立 ExpressRoute 線路":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-delete.png" alt-text="刪除線路":::
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cbca2d00d10b6595b8a1d13251dd88c65667541
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: df199afd85c788299334087321c3edac8482698d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93134903"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168503"
 ---
 # <a name="what-is-inter-directory-provisioning"></a>什麼是目錄間的佈建？
 
@@ -35,7 +35,7 @@ Azure AD 目前支援三種方法來完成目錄間佈建。 方法如下：
 
 - [Azure AD Connect 雲端佈建](../cloud-provisioning/what-is-cloud-provisioning.md)- 新的 Microsoft 代理程式，其設計目的是要符合並完成您的混合式身分識別目標。  其可提供 Active Directory 與 Azure AD 之間的輕量型目錄間佈建體驗。
 
-- [Microsoft Identity Manager](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016) - Microsoft 的內部部署身分識別和存取管理解決方案，可協助您管理貴組織內的使用者、認證、原則和存取權。 此外，MIM 提供了進階的目錄間佈建，以達成 Active Directory、Azure AD 和其他目錄的混合式身分識別環境。
+- [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) - Microsoft 的內部部署身分識別和存取管理解決方案，可協助您管理貴組織內的使用者、認證、原則和存取權。 此外，MIM 提供了進階的目錄間佈建，以達成 Active Directory、Azure AD 和其他目錄的混合式身分識別環境。
 
 ### <a name="key-benefits"></a>主要權益
 
@@ -45,7 +45,7 @@ Azure AD 目前支援三種方法來完成目錄間佈建。 方法如下：
 - [傳遞驗證](../hybrid/how-to-connect-pta.md) - 一種登入方法，可讓使用者在內部部署環境與雲端中使用相同的密碼，但不需要額外的同盟環境基礎結構。
 - [同盟整合](../hybrid/how-to-connect-fed-whatis.md) - 可用來以內部部署 AD FS 基礎結構設定混合式環境。 它也提供 AD FS 管理功能，例如憑證更新及額外的 AD FS 伺服器部署。
 - [同步處理](../hybrid/how-to-connect-sync-whatis.md) - 負責建立使用者、群組及其他物件。  此外，也確保您內部部署使用者和群組的身分識別資訊與雲端相符。  此同步處理也包括密碼雜湊。
-- [狀況監控](../hybrid/whatis-hybrid-identity-health.md) - 可以提供健全監控，並在 Azure 入口網站中提供檢視此活動的中央位置。 
+- [狀況監控](../hybrid/whatis-azure-ad-connect.md) - 可以提供健全監控，並在 Azure 入口網站中提供檢視此活動的中央位置。 
 
 
 ## <a name="next-steps"></a>後續步驟 

@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7641c1e3bc3620b294c2953b993e9179a4875536
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 65b8c21251f092311150a50480f5abecb1ad7c17
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951803"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434561"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure 受控應用程式概觀
 
@@ -49,7 +49,7 @@ Azure 受控應用程式可讓您提供雲端解決方案，讓取用者方便�
 
 想要為其服務開立帳單的廠商，可以透過 Azure Marketplace 讓受控應用程式可供使用。 廠商發佈應用程式之後，應用程式就可供組織外部的使用者使用。 使用此方法，受控服務提供者 (MSP)、獨立軟體廠商 (ISV) 和系統整合者 (SI) 可以將其解決方案提供給所有 Azure 客戶。
 
-如需將受控應用程式發佈到 Marketplace 的詳細資訊，請參閱[建立 Marketplace 應用程式](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)。
+如需將受控應用程式發佈到 Marketplace 的詳細資訊，請參閱[建立 Marketplace 應用程式](../../marketplace/create-new-azure-apps-offer.md)。
 
 ## <a name="resource-groups-for-managed-applications"></a>受控應用程式的資源群組
 
@@ -71,7 +71,7 @@ Azure 中的所有資料提供者目前都不支援限制存取[資料作業](..
 
 這個資源群組會保存受控應用程式所需的所有資源。 例如，這個資源群組包含解決方案的虛擬機器、儲存體帳戶和虛擬網路。 因為取用者不會為受控應用程式管理個別資源，所以取用者具有這個資源群組的有限存取權。 這個資源群組的發行者存取權會對應至受控應用程式定義中指定的角色。 例如，發行者可能會要求這個資源群組的「擁有者」或「參與者」角色。 存取可以是永久或限制在特定時間。
 
-[將受控應用程式發佈至市集](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)時，發行者可以授與取用者針對受控資源群組中的資源執行特定動作的能力。 例如，發行者能指定取用者可以重新啟動虛擬機器。 系統仍然會拒絕讀取動作以外的所有其他動作。 由取用者透過授與的動作對受控資源群組中的資源所做的變更，受限於取用者租用戶內包含受控資源群組的 [Azure 原則](../../governance/policy/overview.md)指派。
+[將受控應用程式發佈至市集](../../marketplace/create-new-azure-apps-offer.md)時，發行者可以授與取用者針對受控資源群組中的資源執行特定動作的能力。 例如，發行者能指定取用者可以重新啟動虛擬機器。 系統仍然會拒絕讀取動作以外的所有其他動作。 由取用者透過授與的動作對受控資源群組中的資源所做的變更，受限於取用者租用戶內包含受控資源群組的 [Azure 原則](../../governance/policy/overview.md)指派。
 
 當取用者刪除受控應用程式時，也會刪除受控資源群組。
 

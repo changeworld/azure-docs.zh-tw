@@ -3,12 +3,12 @@ title: 新功能 版本資訊 - Azure 事件方格
 description: 了解 Azure 事件方格的新功能，例如最新的版本資訊、已知問題、錯誤 (bug) 修正、已被取代的功能，以及即將進行的變更。
 ms.topic: overview
 ms.date: 07/23/2020
-ms.openlocfilehash: 1edfa3e2bc4c8adae113b2215b7fb0483fba4c02
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7528cef7007704bbf434f16622707da8920eec2b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87172689"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350002"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>Azure 事件方格的新功能
 
@@ -40,7 +40,7 @@ Azure 事件方格會持續不斷進行改進。 為了讓您隨時掌握最新�
 - 此版本包含其他可強化品質的錯誤修正。
 - 就版本 5.3.1-preview 而言，此版本對應至 2020-04-01-Preview API 版本，其中包含下列新功能： 
     - [支援在將事件發佈至網域和主題時進行 IP 篩選](configure-firewall.md)
-    - [合作夥伴主題](partner-topics-overview.md)
+    - [合作夥伴主題](./partner-events-overview.md)
     - [系統主題在 Azure 入口網站中成為已追蹤的資源](system-topics.md)
     - [使用受管理的服務識別進行事件傳遞](managed-service-identity.md) 
     - [Private Link 服務支援](configure-private-endpoints.md)
@@ -49,7 +49,7 @@ Azure 事件方格會持續不斷進行改進。 為了讓您隨時掌握最新�
 - 此版本包含各種可強化品質的錯誤修正。
 - 就版本 5.3.0-preview 而言，此版本對應至 2020-04-01-Preview API 版本，其中包含下列新功能： 
     - [支援在將事件發佈至網域和主題時進行 IP 篩選](configure-firewall.md)
-    - [合作夥伴主題](partner-topics-overview.md)
+    - [合作夥伴主題](./partner-events-overview.md)
     - [系統主題在 Azure 入口網站中成為已追蹤的資源](system-topics.md)
     - [使用受管理的服務識別進行事件傳遞](managed-service-identity.md) 
     - [Private Link 服務支援](configure-private-endpoints.md)
@@ -59,7 +59,7 @@ Azure 事件方格會持續不斷進行改進。 為了讓您隨時掌握最新�
 - 就版本 5.2.0-preview 而言，此版本對應至 2020-04-01-Preview API 版本。
 - 其新增了對於下列新功能的支援： 
     - [支援在將事件發佈至網域和主題時進行 IP 篩選](configure-firewall.md)
-    - [合作夥伴主題](partner-topics-overview.md)
+    - [合作夥伴主題](./partner-events-overview.md)
     - [系統主題在 Azure 入口網站中成為已追蹤的資源](system-topics.md)
     - [使用受管理的服務識別進行事件傳遞](managed-service-identity.md) 
     - [Private Link 服務支援](configure-private-endpoints.md)

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 26a29524e0bf329a368b3cd2281dd9b070b42a14
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 369847810cdb7f7e93a13f5d410f226d3663080d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660809"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188576"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>快速入門：開始使用 Azure Sentinel
 
@@ -91,12 +91,11 @@ ms.locfileid: "94660809"
 下列範例查詢可讓您比較各週的流量趨勢。 您可以輕鬆地切換您執行查詢的裝置廠商和資料來源。 此範例使用來自 Windows 的 SecurityEvent，您可以將它切換成對任何其他防火牆上的 AzureActivity 或 CommonSecurityLog 執行。
 
 ```console
- |where DeviceVendor == "Palo Alto Networks":
-  // week over week query
-  SecurityEvent
-  | where TimeGenerated > ago(14d)
-  | summarize count() by bin(TimeGenerated, 1d)
-  | extend Week = iff(TimeGenerated>ago(7d), "This Week", "Last Week"), TimeGenerated = iff(TimeGenerated>ago(7d), TimeGenerated, TimeGenerated + 7d)
+// week over week query
+SecurityEvent
+| where TimeGenerated > ago(14d)
+| summarize count() by bin(TimeGenerated, 1d)
+| extend Week = iff(TimeGenerated>ago(7d), "This Week", "Last Week"), TimeGenerated = iff(TimeGenerated>ago(7d), TimeGenerated, TimeGenerated + 7d)
 ```
 
 您可能想建立一項查詢，其中併入多個來源的資料。 您可以建立查詢，以查看剛針對新使用者建立的 Azure Active Directory 稽核記錄，然後檢查您的 Azure 記錄，查看使用者是否在建立的 24 小時內開始進行角色指派變更。 此儀表板會顯示該可疑的活動：

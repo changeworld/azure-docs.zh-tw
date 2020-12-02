@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 88481346f22176b8e307b53774b42d753838f90b
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 5179a619b1adba432910605c75fae0789efd3397
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554815"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182666"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>快速入門：將功能旗標新增至 ASP.NET Core 應用程式
 
@@ -106,7 +106,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     ---
 
-    透過先前的變更，[應用程式組態的組態提供者](https://go.microsoft.com/fwlink/?linkid=2074664)已向 .NET Core 組態 API 註冊。
+    透過先前的變更，[應用程式組態的組態提供者](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)已向 .NET Core 組態 API 註冊。
 
 1. 在 *Startup.cs* 中，將參考新增至 .NET Core 功能管理員：
 
@@ -235,7 +235,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已建立新的應用程式組態存放區，並透過[功能管理程式庫](https://go.microsoft.com/fwlink/?linkid=2074664)用它來管理 ASP.NET Core Web 應用程式中的功能。
+在本快速入門中，您已建立新的應用程式組態存放區，並透過[功能管理程式庫](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)用它來管理 ASP.NET Core Web 應用程式中的功能。
 
 * 深入了解[功能管理](./concept-feature-management.md)。
 * [管理功能旗標](./manage-feature-flags.md)。

@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: fb7a32199117be76e411155910d558ef187398ab
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 6cc9c6af4592956b6498e826ef65b556e5780f34
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448256"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186825"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>使用 Azure 監視器從 Azure 虛擬機器收集資料
 
@@ -141,4 +141,4 @@ Azure 監視器可以從 Windows 事件記錄或 Linux Syslog 收集事件，和
 若要了解如何檢視和分析資料，請繼續進行本教學課程。
 
 > [!div class="nextstepaction"]
-> [在 Log Analytics 中檢視或分析資料](../log-query/get-started-portal.md)
+> [在 Log Analytics 中檢視或分析資料](../log-query/log-analytics-tutorial.md)

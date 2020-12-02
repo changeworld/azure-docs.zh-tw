@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
 ms.custom: devx-track-java
-ms.openlocfilehash: aa300122ab6c448862d46579d6e9ce1e5fc06a79
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 62f31d8426e86cc20e957f3a47b30109dee0a634
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874401"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185669"
 ---
 # <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>快速入門：使用 Java 搭配 Azure Functions 與 SignalR Service 來建立聊天室
 
@@ -103,4 +103,4 @@ Azure SignalR Service 可讓您輕鬆地在應用程式中新增即時功能，�
 在此快速入門中，您已使用 Maven 建置並執行即時無伺服器應用程式。 接著，請了解如何從頭建立 Java Azure Functions。
 
 > [!div class="nextstepaction"]
-> [使用 Java 和 Maven 建立您的第一個函式](../azure-functions/functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java%252cprogramming-language-java)
+> [使用 Java 和 Maven 建立您的第一個函式](../azure-functions/create-first-function-cli-csharp.md?pivots=programming-language-java%2cprogramming-language-java)

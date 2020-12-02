@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: b6eb571c7c37a628d11f07b4e1b207e38830250b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5b593add9c9d7be446798eecdd03b396c3fe513a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88235395"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174725"
 ---
 # <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>什麼是在 Azure AD 中自動佈建 SaaS 應用程式使用者？
 
-在 Azure Active Directory (Azure AD) 中，**應用程式佈建**一詞是指在使用者需要存取的雲端 ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) 應用程式中，自動建立使用者身分識別和角色。 除了建立使用者身分識別以外，自動佈建還包括隨著狀態或角色變更，維護和移除使用者身分識別。 常見的案例包括將 Azure AD 使用者佈建到 [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md)、[Salesforce](../saas-apps/salesforce-provisioning-tutorial.md)、[ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)等應用程式。
+在 Azure Active Directory (Azure AD) 中，**應用程式佈建** 一詞是指在使用者需要存取的雲端 ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) 應用程式中，自動建立使用者身分識別和角色。 除了建立使用者身分識別以外，自動佈建還包括隨著狀態或角色變更，維護和移除使用者身分識別。 常見的案例包括將 Azure AD 使用者佈建到 [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md)、[Salesforce](../saas-apps/salesforce-provisioning-tutorial.md)、[ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)等應用程式。
 
 ![佈建概觀圖](./media/user-provisioning/provisioning-overview.png)
 
@@ -59,7 +59,7 @@ Azure AD 的特色是可為多種熱門 SaaS 應用程式和人力資源系統�
 
    ![Salesforce 標誌](./media/user-provisioning/gallery-app-logos.png)
 
-   如果您想要求對新的應用程式進行佈建，您可以[要求應用程式與我們的應用程式庫進行整合](../azuread-dev/howto-app-gallery-listing.md)。 針對使用者佈建要求，我們要求應用程式必須具有符合 SCIM 規範的端點。 請要求應用程式廠商遵循 SCIM 標準，以便我們能將應用程式快速上線至我們的平台。
+   如果您想要求對新的應用程式進行佈建，您可以[要求應用程式與我們的應用程式庫進行整合](../develop/v2-howto-app-gallery-listing.md)。 針對使用者佈建要求，我們要求應用程式必須具有符合 SCIM 規範的端點。 請要求應用程式廠商遵循 SCIM 標準，以便我們能將應用程式快速上線至我們的平台。
 
 * **支援 SCIM 2.0 的應用程式**。 若要了解如何以一般方式連接可實作 SCIM 2.0 型使用者管理 API 的應用程式，請參閱[建置 SCIM 端點和設定使用者佈建](use-scim-to-provision-users-and-groups.md)。
 
@@ -75,11 +75,11 @@ Azure AD 的特色是可為多種熱門 SaaS 應用程式和人力資源系統�
 
 Azure AD 資源庫中的應用程式支援兩種佈建模式之一：
 
-* **手動**佈建表示應用程式尚無自動 Azure AD 佈建連接器。 您必須手動建立使用者帳戶，例如，將使用者直接新增至應用程式的系統管理入口網站，或上傳含有使用者帳戶詳細資料的試算表。 請參閱應用程式提供的文件，或洽詢應用程式開發人員，以判斷有哪些機制可供使用。
+* **手動** 佈建表示應用程式尚無自動 Azure AD 佈建連接器。 您必須手動建立使用者帳戶，例如，將使用者直接新增至應用程式的系統管理入口網站，或上傳含有使用者帳戶詳細資料的試算表。 請參閱應用程式提供的文件，或洽詢應用程式開發人員，以判斷有哪些機制可供使用。
 
 * 「自動」表示已經為此應用程式開發 Azure AD 佈建連接器。 您應遵循為應用程式設定佈建專用的設定教學課程。 您可以在[如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](../saas-apps/tutorial-list.md)中找到應用程式教學課程。
 
-在 Azure AD 資源庫中，支援自動佈建的應用程式會以**佈建**圖示指定。 請切換至新的資源庫預覽體驗，以查看這些圖示 (在 [新增應用程式] 頁面頂端的橫幅中，選取顯示為 [按一下這裡試用改良過的新版應用程式資源庫] 的連結)。
+在 Azure AD 資源庫中，支援自動佈建的應用程式會以 **佈建** 圖示指定。 請切換至新的資源庫預覽體驗，以查看這些圖示 (在 [新增應用程式] 頁面頂端的橫幅中，選取顯示為 [按一下這裡試用改良過的新版應用程式資源庫] 的連結)。
 
 ![應用程式庫中的佈建圖示](./media/user-provisioning/browse-gallery.png)
 

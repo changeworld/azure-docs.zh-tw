@@ -11,12 +11,12 @@ author: mumian
 ms.author: jgao
 ms.reviewer: sstein
 ms.date: 06/24/2020
-ms.openlocfilehash: 6e56d6558b3a80707a9f845740980f8ebbc87e35
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: b7883144509760c9670decd50062d2595b8dc495
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791489"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187080"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-an-arm-template"></a>快速入門：使用 ARM 範本在 Azure SQL Database 中建立單一資料庫
 
@@ -85,7 +85,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 - 建立伺服器層級的防火牆規則，以從內部部署或遠端工具連線到您的單一資料庫。 如需詳細資訊，請參閱[建立伺服器層級防火牆規則](firewall-create-server-level-portal-quickstart.md)。
 - 在建立伺服器層級的防火牆規則後，使用數種不同的工具或語言來[連線及查詢](connect-query-content-reference-guide.md)您的資料庫。
   - [使用 SQL Server Management Studio 進行連線和查詢](connect-query-ssms.md)
-  - [使用 Azure Data Studio 進行連線及查詢](/sql/azure-data-studio/quickstart-sql-database?toc=%252fazure%252fsql-database%252ftoc.json)
+  - [使用 Azure Data Studio 進行連線及查詢](/sql/azure-data-studio/quickstart-sql-database?toc=%2fazure%2fsql-database%2ftoc.json)
 - 若要使用 Azure CLI 建立單一資料庫，請參閱 [Azure CLI 範例](az-cli-script-samples-content-guide.md)。
 - 若要使用 Azure PowerShell 建立單一資料庫，請參閱 [Azure PowerShell 範例](powershell-script-content-guide.md)。
 - 若要了解如何建立 ARM 範本，請參閱[建立您的第一個範本](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)。

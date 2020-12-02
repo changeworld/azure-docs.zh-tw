@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperfq2
-ms.openlocfilehash: 6713c0d45a8b5363122c726d1d31e5c479ba8fff
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 514f2e9a82a50f95f9c054c6a54e7b5af3c0af15
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95504642"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96167772"
 ---
 # <a name="introduction-to-azure-functions"></a>Azure Functions 簡介
 
@@ -38,7 +38,7 @@ ms.locfileid: "95504642"
 | --- | --- |
 | **建置 Web API** | 使用 [HTTP 觸發程序](./functions-bindings-http-webhook.md)為您的 Web 應用程式實作端點 |
 | **處理檔案上傳** | 在 [Blob 儲存體](./functions-bindings-storage-blob.md)中上傳或變更檔案時執行程式碼 |
-| **建置無伺服器工作流程** | 使用 [Durable Functions](./durable-functions-overview.md) 將一系列函式鏈結在一起 |
+| **建置無伺服器工作流程** | 使用 [Durable Functions](./durable/durable-functions-overview.md) 將一系列函式鏈結在一起 |
 | **回應資料庫變更** | 在 [Cosmos DB](./functions-bindings-cosmosdb-v2.md) 中建立或更新文件時，執行自訂邏輯 Cosmos DB |
 | **執行排程的工作** | 在[設定時間](./functions-bindings-timer.md)執行程式碼 |
 | **建立可靠的訊息佇列系統** | 使用[佇列儲存體](./functions-bindings-storage-queue.md)、[服務匯流排](./functions-bindings-service-bus.md)或[事件中樞](./functions-bindings-event-hubs.md)處理訊息佇列 |
@@ -47,13 +47,13 @@ ms.locfileid: "95504642"
 
 建置函式時，可使用下列選項和資源：
 
-- **使用您慣用的語言**：以 [C# 、JAVA、JavaScript、PowerShell 或 Python](./supported-languages.md) 撰寫函式，或使用[自訂處理常式](./functions-custom-handlers.md)以虛擬方式使用任何其他語言。
+- **使用您慣用的語言**：以 [C# 、JAVA、JavaScript、PowerShell 或 Python](./supported-languages.md) 撰寫函式，或使用 [自訂處理常式](./functions-custom-handlers.md)以虛擬方式使用任何其他語言。
 
-- **自動化部署**：從工具型方法到使用外部管線，有[許多部署選項](./functions-deployment-technologies.md)可供使用。
+- **自動化部署**：從工具型方法到使用外部管線，有 [許多部署選項](./functions-deployment-technologies.md)可供使用。
 
-- **函式疑難排解**：使用[監視工具](./functions-monitoring.md)和[測試策略](./functions-test-a-function.md)，深入了解您的應用程式。
+- **函式疑難排解**：使用 [監視工具](./functions-monitoring.md)和 [測試策略](./functions-test-a-function.md)，深入了解您的應用程式。
 
-- **彈性定價選項**：透過[耗用量](./pricing.md) 方案，您只需要在函式執行時付費，而[進階](./pricing.md)和 [App Service](./pricing.md) 方案會針對特殊需求提供相關功能。
+- **彈性定價選項**：透過 [耗用量](./pricing.md) 方案，您只需要在函式執行時付費，而 [進階](./pricing.md)和 [App Service](./pricing.md) 方案會針對特殊需求提供相關功能。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eaf033f7da7a5bd4882d0c78a2321640aa64d8ac
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1ffe8c1397525348e472e965a407909fee36152d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646554"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168442"
 ---
 # <a name="what-is-hr-driven-provisioning"></a>什麼是 HR 驅動佈建？
 
@@ -35,7 +35,7 @@ HR 系統附有各種套件、軟體組合，並可能使用 SQL 伺服器、LDA
 
 使用 MIM，您可以將來自內部部署 HR 系統的使用者佈建到 Active Directory 或 Azure AD。
 
-如需 Microsoft Identity Manager 及其支援系統的詳細資訊，請參閱 [Microsoft Identity Manager](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016) 文件。
+如需 Microsoft Identity Manager 及其支援系統的詳細資訊，請參閱 [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) 文件。
 
 [!INCLUDE [active-directory-hr-provisioning.md](../../../includes/active-directory-hr-provisioning.md)]
 

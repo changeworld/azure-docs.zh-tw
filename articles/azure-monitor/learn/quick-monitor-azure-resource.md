@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 7f70994f35148614fb048ed2c3297727d5099b05
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 00cec2ca11b77f6cb9d6c0f3c429931bdcc6f6e4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056509"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186128"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>快速入門：使用 Azure 監視器監視 Azure 資源
 [Azure 監視器](../overview.md)會在 Azure 資源建立時開始從中收集資料。 本快速入門會簡介自動收集的資源資料，以及如何在 Azure 入口網站中查看特定資源的這些資料。 稍後，您可以新增設定來收集其他資料，也可以移至 [Azure 監視器] 功能表，使用相同工具來存取針對您訂用帳戶中所有資源收集的資料。
@@ -56,7 +56,7 @@ ms.locfileid: "92056509"
    
    ![Azure 入口網站中計量瀏覽器的螢幕擷取畫面，其中顯示資源的計量。 [計量] 下拉式清單會開啟，供您新增計量。](media/quick-monitor-azure-resource/metrics-explorer-01.png)
    
-4. 從下拉式清單中選取**計量**，然後選取 [彙總]。 這會定義收集的值將如何在每個時間間隔內取樣。
+4. 從下拉式清單中選取 **計量**，然後選取 [彙總]。 這會定義收集的值將如何在每個時間間隔內取樣。
 
     ![Azure 入口網站中計量瀏覽器的螢幕擷取畫面，其中顯示資源的計量。 [匯總] 下拉式清單會開啟，且已選取 [平均]。](media/quick-monitor-azure-resource/metrics-explorer-02.png)
 
@@ -70,5 +70,4 @@ ms.locfileid: "92056509"
 在本快速入門中，您已檢視了 Azure 監視器自動收集的 Azure 資源活動記錄和計量。 繼續進行下一個快速入門，其中會說明如何將活動記錄收集到 Log Analytics 工作區中，以便使用[記錄查詢](../log-query/log-query-overview.md)進行分析。
 
 > [!div class="nextstepaction"]
-> [將 Azure 活動記錄傳送至 Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-activity-log-portal)
-
+> [將 Azure 活動記錄傳送至 Log Analytics 工作區](./quick-collect-activity-log-portal.md)

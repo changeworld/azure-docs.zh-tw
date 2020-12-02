@@ -7,12 +7,12 @@ keywords: azure 自動化, DSC, powershell, 狀態組態, 更新管理, 變更�
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 24aeb37cf868bed5d4211bc9b459a4736ceea4b2
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: e3986b7e8fc70f8662bed40b076897caa6165744
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205331"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182813"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure 自動化簡介
 
@@ -43,7 +43,7 @@ Azure 自動化[狀態設定](automation-dsc-overview.md)是適用於 PowerShell
 
 ## <a name="update-management"></a>更新管理
 
-Azure 自動化包括跨混合式環境中適用於 Windows 和 Linux 系統的[更新管理](update-management/update-mgmt-overview.md)功能。 更新管理可讓您看見跨 Azure 和其他雲端及內部部署環境的更新相容性。 此功能可讓您建立排程部署，在定義的維護時間內協調更新安裝。 如果不應該在電腦上安裝更新，您可使用更新管理功能將其從部署中排除。
+Azure 自動化包括跨混合式環境中適用於 Windows 和 Linux 系統的[更新管理](./update-management/overview.md)功能。 更新管理可讓您看見跨 Azure 和其他雲端及內部部署環境的更新相容性。 此功能可讓您建立排程部署，在定義的維護時間內協調更新安裝。 如果不應該在電腦上安裝更新，您可使用更新管理功能將其從部署中排除。
 
 ## <a name="shared-capabilities"></a>共用功能
 

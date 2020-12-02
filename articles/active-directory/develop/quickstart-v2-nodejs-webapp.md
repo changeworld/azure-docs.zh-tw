@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 5cde4b539262c9e20bbcf2e7dd8c8e9de38035c3
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 643305057490cc550a5a8e39a892297b000cbc8e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594244"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169404"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>快速入門：將使用 OpenID Connect 的登入新增至 Node.js Web 應用程式
 
@@ -51,7 +51,7 @@ ms.locfileid: "94594244"
 1. 在應用程式頁面清單中，選取 [驗證]。
     - 在 [重新導向 URI] 區段中，選取下拉式方塊中的 [Web]，然後輸入下列重新導向 URI：`http://localhost:3000/auth/openid/return`
     - 在 [進階設定] 區段中，將 [登出 URL]設定為 `https://localhost:3000`。
-    - 在 [進階設定] > [隱含授與] 區段中，核取 [識別碼權杖]，因為此範例需要啟用 [[隱含授與流程](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow)] 才能將使用者登入。
+    - 在 [進階設定] > [隱含授與] 區段中，核取 [識別碼權杖]，因為此範例需要啟用 [[隱含授與流程](./v2-oauth2-implicit-grant-flow.md)] 才能將使用者登入。
 
 1. 選取 [儲存]。
 

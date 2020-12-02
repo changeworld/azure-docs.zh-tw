@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: a274d3701b52e3db989193479468892240f11993
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 6851253e2737d56ab2c3f812ebb0b38133163460
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511624"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122461"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-linux-or-windows-to-iot-hub"></a>快速入門：將在 Linux 或 Windows 上執行的範例 IoT 隨插即用裝置應用程式連線至 IoT 中樞
 
 :::zone pivot="programming-language-ansi-c"
 
-[!INCLUDE [iot-pnp-connect-device-csharp](../../includes/iot-pnp-connect-device-c.md)]
+[!INCLUDE [iot-pnp-connect-device-c](../../includes/iot-pnp-connect-device-c.md)]
 
 :::zone-end
 

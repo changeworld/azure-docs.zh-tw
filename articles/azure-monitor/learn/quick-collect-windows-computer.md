@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 726caa0c4a7bbd6b8d0c17ffdfade5f9cc3c2a34
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9cd92075c7e0c4450dbee750fd31efb394dd24f7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89020366"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186740"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>使用 Azure 監視器從混合式環境中的 Windows 電腦收集資料
 
@@ -160,10 +160,9 @@ Azure 監視器可以收集您從 Windows 事件記錄檔和效能計數器指�
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您正在從 Windows 電腦收集作業和效能資料，您可以輕鬆地開始針對收集的資料*免費*進行探索、分析及採取行動。  
+既然您正在從 Windows 電腦收集作業和效能資料，您可以輕鬆地開始針對收集的資料 *免費* 進行探索、分析及採取行動。  
 
 若要了解如何檢視和分析資料，請繼續進行本教學課程：
 
 > [!div class="nextstepaction"]
-> [在 Log Analytics 中檢視或分析資料](../log-query/get-started-portal.md)
-
+> [在 Log Analytics 中檢視或分析資料](../log-query/log-analytics-tutorial.md)

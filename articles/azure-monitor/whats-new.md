@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 4fa00bffc35c4ed67ce70751c8882b74ad6b01a1
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bf15e380eb1a88acc39ca63165d18d04a260b35d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95534495"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185890"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure 監視器文件的最新動向
 
@@ -230,7 +230,7 @@ ms.locfileid: "95534495"
 - [Azure 監視器客戶自控金鑰](platform/customer-managed-keys.md) - 新增了錯誤訊息和查詢的區段 CMK 設定。
 - [Azure 監視器 HTTP 資料收集器 API](platform/data-collector-api.md) - 新增了 Python 3 範例。
 - [將 Azure 監視器中的記錄查詢最佳化](log-query/query-optimization.md) - 新增了關於在使用子查詢時避免多個資料掃描的章節。
-- [教學課程：開始使用 Log Analytics 查詢](log-query/get-started-portal.md) - 新增了影片。
+- [教學課程：開始使用 Log Analytics 查詢](./log-query/log-analytics-tutorial.md) - 新增了影片。
 
 ### <a name="platform-logs"></a>平台記錄
 - [建立診斷設定以將平台記錄和計量傳送至不同目的地](platform/diagnostic-settings.md) - 新增了影片。

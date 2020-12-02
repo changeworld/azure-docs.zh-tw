@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 - devx-track-azurecli
-ms.openlocfilehash: 5c8993bdf892ceb7d9886d0d2b97063dedec720c
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: db24fa4721e2e502c5098b415c4cf06da80f697d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635546"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175673"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>快速入門：從命令列在 Azure 中建立 Java 函式
 
@@ -34,7 +34,7 @@ ms.locfileid: "94635546"
 
 + [Azure CLI](/cli/azure/install-azure-cli) 2.4 版或更新版本。
 
-+ [Java Developer Kit](https://aka.ms/azure-jdks) 第 8 或第 11 版。 `JAVA_HOME` 環境變數必須設定為正確 JDK 版本的安裝位置。     
++ [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support) 第 8 或第 11 版。 `JAVA_HOME` 環境變數必須設定為正確 JDK 版本的安裝位置。     
 
 + [Apache Maven](https://maven.apache.org) 3.0 版或更高版本。
 

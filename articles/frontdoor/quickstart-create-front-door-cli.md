@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/21/2020
 ms.author: duau
-ms.openlocfilehash: a24c0fdb244f87dbf281bcf59b5e1986a215142a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e01b56f88270348167ef1eef9d913e65074d9247
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275623"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327231"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>快速入門：使用 Azure CLI 為高可用性的全域 Web 應用程式建立 Front Door
 
 使用 Azure CLI 來建立高度可用且高效能的全域 web 應用程式，以開始使用 Azure Front Door。
 
-Front Door 會將網路流量導向後端集區中的特定資源。 您已定義前端網域、將資源新增至後端集區，以及建立路由規則。 本文使用具有兩個 web 應用程式資源的一個後端集區簡單設定，以及使用符合 "/*" 預設路徑的單一路由規則。
+Front Door 會將網路流量導向後端集區中的特定資源。 您已定義前端網域、將資源新增至後端集區，以及建立路由規則。 本文使用具有兩個 Web 應用程式資源的一個後端集區簡單設定，以及使用符合 "/*" 預設路徑的單一路由規則。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -77,7 +77,7 @@ az appservice plan create \
 
 az appservice plan create \
 --name myAppServicePlanSouthCentralUS \
--resource-groupg myRGFDSouthCentral
+--resource-group myRGFDSouthCentral
 ```
 
 ### <a name="create-web-apps"></a>建立 Web 應用程式

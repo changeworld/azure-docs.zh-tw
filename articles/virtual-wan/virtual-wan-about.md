@@ -9,11 +9,11 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
 ms.openlocfilehash: 69525173aa5c4af536105a4e897ee4860f021b6c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91267426"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187422"
 ---
 # <a name="what-is-azure-virtual-wan"></a>什麼是 Azure 虛擬 WAN？
 
@@ -91,9 +91,9 @@ ExpressRoute 可讓您透過私人連線將內部部署網路連線至 Azure。 
 
 #### <a name="transit-connectivity-between-vnets"></a><a name="transit-vnet"></a>VNet 之間的傳輸連線能力
 
-虛擬 WAN 可讓 VNet 之間進行傳輸連線。 VNet 可透過虛擬網路連線來連線至虛擬中樞。 在**標準虛擬 WAN** 中，VNet 之間的傳輸連線會藉由每個虛擬中樞內的路由器來啟用。 路由器會在第一次建立虛擬中樞時具現化。
+虛擬 WAN 可讓 VNet 之間進行傳輸連線。 VNet 可透過虛擬網路連線來連線至虛擬中樞。 在 **標準虛擬 WAN** 中，VNet 之間的傳輸連線會藉由每個虛擬中樞內的路由器來啟用。 路由器會在第一次建立虛擬中樞時具現化。
 
-路由器可以有四個路由狀態：已佈建、佈建中、失敗或無。 **路由狀態**位於 Azure 入口網站中的 [虛擬中樞] 頁面上。
+路由器可以有四個路由狀態：已佈建、佈建中、失敗或無。 **路由狀態** 位於 Azure 入口網站中的 [虛擬中樞] 頁面上。
 
 * [**無**] 狀態表示虛擬中樞並未佈建路由器。 如果虛擬 WAN 的類型是「基本」，或虛擬中樞在服務可供使用之前部署，就會發生這種情況。
 * [**失敗**] 狀態表示在具現化期間發生失敗。 若要具現化或重設路由器，您可以瀏覽至 Azure 入口網站中的虛擬中樞概觀頁面，找出 [重設路由器] 選項。
@@ -102,7 +102,7 @@ ExpressRoute 可讓您透過私人連線將內部部署網路連線至 Azure。 
 
 #### <a name="transit-connectivity-between-vpn-and-expressroute"></a><a name="transit-er"></a>VPN 和 ExpressRoute 之間的傳輸連線能力
 
-虛擬 WAN 可讓 VPN 和 ExpressRoute 之間進行傳輸連線。 這表示以 VPN 連線的網站或遠端使用者可以與以 ExpressRoute 連線的網站通訊。 此外，也會隱含假設**分支對分支旗標**已啟用，而且 VPN 和 ExpressRoute 連線支援 BGP。 此旗標可能位於 Azure 入口網站的 Azure 虛擬 WAN 設定中。 所有路由管理都是由虛擬中樞路由器提供，這也會啟用虛擬網路之間的傳輸連線能力。
+虛擬 WAN 可讓 VPN 和 ExpressRoute 之間進行傳輸連線。 這表示以 VPN 連線的網站或遠端使用者可以與以 ExpressRoute 連線的網站通訊。 此外，也會隱含假設 **分支對分支旗標** 已啟用，而且 VPN 和 ExpressRoute 連線支援 BGP。 此旗標可能位於 Azure 入口網站的 Azure 虛擬 WAN 設定中。 所有路由管理都是由虛擬中樞路由器提供，這也會啟用虛擬網路之間的傳輸連線能力。
 
 ### <a name="custom-routing"></a><a name="routing"></a>自訂路由
 
@@ -126,7 +126,7 @@ Azure 虛擬 WAN 可為 ExpressRoute 流量提供加密功能。 此技術透過
 
 * **虛擬中樞內存在既有路由的標準虛擬 WAN 客戶**：如果您在 Azure 入口網站中樞的 [路由] 區段中已存在路由，則需要先將這些路由刪除，然後嘗試建立新的路由表 (可在 Azure 入口網站中樞的 [路由表] 區段中取得)。
 
-* **虛擬中樞內存在既有路由的基本虛擬 WAN 客戶**：如果您在 Azure 入口網站中樞的 [路由] 區段中已存在路由，則需要先將這些路由刪除，然後將基本虛擬 WAN **升級**為標準虛擬 WAN。 請參閱[將虛擬 WAN 從基本升級至標準](upgrade-virtual-wan.md)。
+* **虛擬中樞內存在既有路由的基本虛擬 WAN 客戶**：如果您在 Azure 入口網站中樞的 [路由] 區段中已存在路由，則需要先將這些路由刪除，然後將基本虛擬 WAN **升級** 為標準虛擬 WAN。 請參閱[將虛擬 WAN 從基本升級至標準](upgrade-virtual-wan.md)。
 
 ## <a name="faq"></a><a name="faq"></a>常見問題集
 

@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 04d53dc213d5e992dc79e322b071025bdb447b1b
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 4527d871df3667f483efd529d93f044377f34651
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057496"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186179"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>快速入門：使用 Azure 監視器從混合式環境中的 Linux 電腦收集資料
 
@@ -166,5 +166,4 @@ Azure 監視器可以從 Linux Syslog 收集事件，和收集您指定要用於
 若要了解如何檢視和分析資料，請繼續進行本教學課程。
 
 > [!div class="nextstepaction"]
-> [在 Log Analytics 中檢視或分析資料](../log-query/get-started-portal.md)
-
+> [在 Log Analytics 中檢視或分析資料](../log-query/log-analytics-tutorial.md)

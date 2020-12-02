@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ef6f6068bce7a676e55eca10ae9198b2238a143
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 640367d1b833f61e8a83fe9ce6b14d6d799cf9b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93134980"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172447"
 ---
 # <a name="what-is-provisioning"></a>什麼是佈建？
 
@@ -24,7 +24,7 @@ ms.locfileid: "93134980"
 
 **佈建** 是根據特定條件在目標系統中建立身分識別的程序。  **取消佈建** 是在不再符合條件時，從目標系統移除身分識別的程序。 **同步處理** 是讓已佈建的物件保持最新狀態的程序，以便使來源物件與目標物件相似。
 
-例如，當新員工加入貴組織時，該員工就會進入 HR 系統中。  屆時， **從** HR **到** Azure Active Directory (Azure AD) 的佈建可以在 Azure AD 中建立對應的使用者帳戶。 查詢 Azure AD 的應用程式可以查看該名新員工的帳戶。  如果有未使用 Azure AD 的應用程式，則 **從** Azure AD 佈建 **到** 這些應用程式的資料庫，可確保使用者能夠存取使用者需要存取的所有應用程式。  此程序可讓使用者展開工作，並在一開始就能存取所需的應用程式和系統。  同樣地，當其屬性 (例如其部門或雇用狀態) 在 HR 系統中變更時，將這些更新從 HR 系統同步處理到 Azure AD 以及其他應用程式和目標資料庫，可確保一致性。
+例如，當新員工加入貴組織時，該員工就會進入 HR 系統中。  屆時，**從** HR **到** Azure Active Directory (Azure AD) 的佈建可以在 Azure AD 中建立對應的使用者帳戶。 查詢 Azure AD 的應用程式可以查看該名新員工的帳戶。  如果有未使用 Azure AD 的應用程式，則 **從** Azure AD 佈建 **到** 這些應用程式的資料庫，可確保使用者能夠存取使用者需要存取的所有應用程式。  此程序可讓使用者展開工作，並在一開始就能存取所需的應用程式和系統。  同樣地，當其屬性 (例如其部門或雇用狀態) 在 HR 系統中變更時，將這些更新從 HR 系統同步處理到 Azure AD 以及其他應用程式和目標資料庫，可確保一致性。
 
 Azure AD 目前提供三個自動化佈建區域。  包括：  
 
@@ -59,7 +59,7 @@ Azure AD 目前提供三個自動化佈建區域。  包括：
 
 ![應用程式佈建](media/what-is-provisioning/cloud-3b.png)
 
-在 Azure AD 中， **[應用程式佈建](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)** 一詞是指在使用者需要存取的應用程式中，自動建立使用者身分識別的複本，適用於擁有自己的資料存放區 (與 Azure AD 或 Active Directory 不同) 的應用程式。 除了建立使用者身分識別以外，自動佈建還包括隨著使用者的狀態或角色變更，在這些應用程式中維護和移除使用者身分識別。 常見的案例包括將 Azure AD 使用者佈建到 [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial)、[Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial)、[ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial) 等應用程式，因為每個應用程式都有與 Azure AD 不同的自有使用者存放庫。
+在 Azure AD 中， **[應用程式佈建](../app-provisioning/user-provisioning.md)** 一詞是指在使用者需要存取的應用程式中，自動建立使用者身分識別的複本，適用於擁有自己的資料存放區 (與 Azure AD 或 Active Directory 不同) 的應用程式。 除了建立使用者身分識別以外，自動佈建還包括隨著使用者的狀態或角色變更，在這些應用程式中維護和移除使用者身分識別。 常見的案例包括將 Azure AD 使用者佈建到 [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md)、[Salesforce](../saas-apps/salesforce-provisioning-tutorial.md)、[ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md) 等應用程式，因為每個應用程式都有與 Azure AD 不同的自有使用者存放庫。
 
 如需詳細資訊，請參閱[什麼是應用程式佈建？](what-is-app-provisioning.md)
 

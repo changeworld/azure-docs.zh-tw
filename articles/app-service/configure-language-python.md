@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 11/16/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 149f8deb8839b3adce3555300c94b8ebdf587100
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: f12ed42755af64f024fdcb0452173134f7b58482
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873840"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183731"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>設定適用於 Azure App Service 的 Linux Python 應用程式
 
@@ -109,11 +109,11 @@ ms.locfileid: "94873840"
     - 例如，資料庫連線通常會透過這類設定來管理，如[教學課程：使用 PostgreSQL 部署 Django Web 應用程式 - 設定連接資料庫的變數](tutorial-python-postgresql-app.md#configure-environment-variables-to-connect-the-database)所說明。
     - 如需一般 Django 應用程式的特定設定，請參閱 [Django 應用程式的生產設定](#production-settings-for-django-apps)。
 
-1. **應用程式啟動**：請參閱本文稍後的[容器啟動程序](#container-startup-process)一節，以了解 App Service 如何嘗試執行您的應用程式。 App Service 依預設會使用 Gunicorn Web 伺服器，而此伺服器必須能夠找到您的應用程式物件或 *wsgi.py* 資料夾。 如有需要，您可以[自訂啟動命令](#customize-startup-command)。
+1. **應用程式啟動**：請參閱本文稍後的 [容器啟動程序](#container-startup-process)一節，以了解 App Service 如何嘗試執行您的應用程式。 App Service 依預設會使用 Gunicorn Web 伺服器，而此伺服器必須能夠找到您的應用程式物件或 *wsgi.py* 資料夾。 如有需要，您可以[自訂啟動命令](#customize-startup-command)。
 
-1. **持續部署**：設定持續部署，相關說明請見[持續部署至 Azure App Service](deploy-continuous-deployment.md) (如果使用 Azure Pipelines 或 Kudu 部署)，或[使用 GitHub Actions 部署至 App Service](deploy-github-actions.md) (如果使用 GitHub Actions)。
+1. **持續部署**：設定持續部署，相關說明請見 [持續部署至 Azure App Service](deploy-continuous-deployment.md) (如果使用 Azure Pipelines 或 Kudu 部署)，或 [使用 GitHub Actions 部署至 App Service](deploy-github-actions.md) (如果使用 GitHub Actions)。
 
-1. **自訂動作**：若要在裝載應用程式的 App Service 容器中執行動作 (例如 Django 資料庫移轉)，您可以[透過 SSH 連線至容器](configure-linux-open-ssh-session.md)。 如需執行 Django 資料庫移轉的範例，請參閱[教學課程：使用 PostgreSQL 部署 Django Web 應用程式 - 執行資料庫移轉](tutorial-python-postgresql-app.md#run-django-database-migrations)。
+1. **自訂動作**：若要在裝載應用程式的 App Service 容器中執行動作 (例如 Django 資料庫移轉)，您可以 [透過 SSH 連線至容器](configure-linux-open-ssh-session.md)。 如需執行 Django 資料庫移轉的範例，請參閱[教學課程：使用 PostgreSQL 部署 Django Web 應用程式 - 執行資料庫移轉](tutorial-python-postgresql-app.md#run-django-database-migrations)。
     - 使用持續部署時，您可以使用建置後命令來執行這些動作，如先前的[自訂組建自動化](#customize-build-automation)所說明。
 
 完成這些步驟之後，您就應該能夠將變更認可至來源存放庫，並將這些更新自動部署至 App Service。
@@ -126,10 +126,10 @@ ms.locfileid: "94873840"
 
 | Django 設定 | Azure 的指示 |
 | --- | --- |
-| `SECRET_KEY` | 如[以環境變數的形式存取應用程式設定](#access-app-settings-as-environment-variables)所述，將值儲存在 App Service 設定中。 您也可以 [在 Azure Key Vault 中將值儲存為「秘密」](/azure/key-vault/secrets/quick-create-python)。 |
+| `SECRET_KEY` | 如[以環境變數的形式存取應用程式設定](#access-app-settings-as-environment-variables)所述，將值儲存在 App Service 設定中。 您也可以 [在 Azure Key Vault 中將值儲存為「秘密」](../key-vault/secrets/quick-create-python.md)。 |
 | `DEBUG` | 請在值為 0 (false) 的 App Service 上建立 `DEBUG` 設定，然後將此值載入為環境變數。 在您的開發環境中，使用值 1 (true) 建立 `DEBUG` 環境變數。 |
 | `ALLOWED_HOSTS` | 在生產環境中，Django 會要求您在 settings.py 的 `ALLOWED_HOSTS` 陣列中包含應用程式的 URL。 您可以在執行階段使用程式碼 `os.environ['WEBSITE_HOSTNAME']`擷取此 URL。 App Service 會自動將 `WEBSITE_HOSTNAME` 環境變數設定為應用程式的 URL。 |
-| `DATABASES` | 在資料庫連線的 App Service 中定義設定，並將其載入為環境變數以填入 [`DATABASES`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-DATABASES) 字典中。 或者，您可以將值 (尤其是使用者名稱和密碼) 儲存為 [Azure Key Vault 秘密](/azure/key-vault/secrets/quick-create-python)。 |
+| `DATABASES` | 在資料庫連線的 App Service 中定義設定，並將其載入為環境變數以填入 [`DATABASES`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-DATABASES) 字典中。 或者，您可以將值 (尤其是使用者名稱和密碼) 儲存為 [Azure Key Vault 秘密](../key-vault/secrets/quick-create-python.md)。 |
 
 ## <a name="container-characteristics"></a>容器的特性
 
