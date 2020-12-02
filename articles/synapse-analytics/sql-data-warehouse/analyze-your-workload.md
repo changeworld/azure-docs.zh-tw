@@ -1,6 +1,6 @@
 ---
-title: 分析工作負載
-description: 針對 Azure Synapse Analytics 中的工作負載分析查詢優先順序的技術。
+title: 分析您的工作負載以取得專用的 SQL 集區
+description: 在 Azure Synapse Analytics 中分析專用 SQL 集區查詢優先順序的技術。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,24 +11,24 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c547263be8c61d75491d1517b58c03b6365ef929
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14c3ad30bac7cec4c11822d825323bb9db2ba440
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85208394"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454538"
 ---
-# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中分析您的工作負載
+# <a name="analyze-your-workload-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中分析專用 SQL 集區的工作負載
 
-在 Azure Synapse Analytics 中分析 Synapse SQL 工作負載的技術。 
+在 Azure Synapse Analytics 中分析專用 SQL 集區工作負載的技術。 
 
 ## <a name="resource-classes"></a>資源課程
 
-Synapse SQL 提供資源類別，以將系統資源指派給查詢。  如需資源類別的詳細資訊，請參閱 [資源類別 & 工作負載管理](resource-classes-for-workload-management.md)。  如果指派給查詢的資源類別需要的資源數量比目前可用的還多，則查詢將會等候。
+專用的 SQL 集區提供資源類別，以將系統資源指派給查詢。  如需資源類別的詳細資訊，請參閱 [資源類別 & 工作負載管理](resource-classes-for-workload-management.md)。  如果指派給查詢的資源類別需要的資源數量比目前可用的還多，則查詢將會等候。
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>已排入佇列的查詢偵測和其他 DMV
 
-您可以使用 `sys.dm_pdw_exec_requests` DMV，來識別正在並行存取佇列中等候的查詢。 正在等待並行存取插槽的查詢狀態為**暫止**。
+您可以使用 `sys.dm_pdw_exec_requests` DMV，來識別正在並行存取佇列中等候的查詢。 正在等待並行存取插槽的查詢狀態為 **暫止**。
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID
@@ -63,7 +63,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-Synapse SQL 有下列等候類型：
+專用的 SQL 集區具有下列等候類型：
 
 * **LocalQueriesConcurrencyResourceType**：位於並行存取插槽架構外部的查詢。 DMV 查詢及 `SELECT @@VERSION` 這類的系統函數是本機查詢的範例。
 * **UserConcurrencyResourceType**：位於並行存取插槽架構內部的查詢。 針對使用者資料表的查詢代表會使用此資源類型的範例。
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>後續步驟
 
-如需管理資料庫使用者和安全性的詳細資訊，請參閱[保護 Synapse SQL 中的資料庫](sql-data-warehouse-overview-manage-security.md)。 如需更大的資源類別如何改善叢集資料行存放區索引品質的詳細資訊，請參閱 [重建索引以提升區段品質](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。
+如需管理資料庫使用者和安全性的詳細資訊，請參閱 [ (先前的 SQL DW) 保護專用的 sql 集 ](sql-data-warehouse-overview-manage-security.md)區。 如需更大的資源類別如何改善叢集資料行存放區索引品質的詳細資訊，請參閱 [重建索引以提升區段品質](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。

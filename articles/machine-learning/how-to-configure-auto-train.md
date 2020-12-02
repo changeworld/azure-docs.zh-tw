@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1, automl
-ms.openlocfilehash: f4546433f5bd20e2f001d6d868d8adfb4b9bf8c0
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: b03eb8015d318471cf8bf11fc5a3cd94044d2cfe
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920367"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455594"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中設定自動化 ML 實驗
 
@@ -37,7 +37,7 @@ ms.locfileid: "94920367"
 
 如果您不想使用程式碼，您也可以[在 Azure Machine Learning Studio 中建立自動化機器學習實驗](how-to-use-automated-ml-for-ml-models.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 針對本文，您需要 
 * Azure Machine Learning 工作區。 若要建立工作區，請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
@@ -46,7 +46,7 @@ ms.locfileid: "94920367"
     若要安裝 SDK，您可以： 
     * 建立計算實例，此實例會自動安裝 SDK，並針對 ML 工作流程進行預先設定。 如需詳細資訊，請參閱 [建立和管理 Azure Machine Learning 計算實例](how-to-create-manage-compute-instance.md) 。 
 
-    * [自行安裝 `automl` 套件](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)，其中包括 SDK 的 [預設安裝](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py#default-install&preserve-view=true) 。
+    * [自行安裝 `automl` 套件](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)，其中包括 SDK 的 [預設安裝](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py#default-install) 。
 
 ## <a name="select-your-experiment-type"></a>選取您的實驗類型
 

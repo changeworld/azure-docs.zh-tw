@@ -1143,6 +1143,8 @@
               href: platform/workbooks-tree-visualizations.md
             - name: 圖形
               href: platform/workbooks-graph-visualizations.md
+            - name: 對應
+              href: platform/workbooks-map-visualizations.md
             - name: 蜂巢
               href: platform/workbooks-honey-comb.md
             - name: 複合列

@@ -7,18 +7,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 3df7d3d01dcd5e5b097eba53ef0dae29e86fd0a5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cddc7f4f453f22b0cb36b1d3a1e9c2fba2dcabaf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973252"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455090"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>使用 PowerShell 從特製化磁碟建立 Windows VM
 
 連結特製化受控磁碟作為 OS 磁碟，以建立新的虛擬機器。 特製化磁碟是來自現有 VM 的虛擬硬碟 (VHD) 複本，其中包含來自您原始 VM 的使用者帳戶、應用程式及其他狀態資料。 
-
-當您使用特製化 VHD 來建立新的 VM 時，新的 VM 會保留原始 VM 的電腦名稱。 此外，也會保留其他電腦特定資訊，在某些情況下，此重複資訊可能會造成問題。 複製 VM 時，請留意您的應用程式會依賴哪些類型的電腦特定資訊。
 
 您有幾種選項：
 * [使用現有受控磁碟](#option-1-use-an-existing-disk)。 如果您有無法正常運作的 VM，此選項相當有用。 您可以刪除 VM，然後重複使用受控磁碟來建立新的 VM。 
@@ -28,6 +26,11 @@ ms.locfileid: "91973252"
 您也可以使用 Azure 入口網站，[從特定的 VHD 建立新的虛擬機器](create-vm-specialized-portal.md)。
 
 本文說明如何使用受控磁碟。 如果您有需要使用儲存體帳戶的舊版部署，請參閱[從儲存體帳戶中的特製化 VHD 建立 VM](/previous-versions/azure/virtual-machines/windows/sa-create-vm-specialized)。
+
+> [!IMPORTANT]
+> 
+> 當您使用特製化磁片來建立新的 VM 時，新的 VM 會保留原始 VM 的電腦名稱稱。 其他電腦特定的資訊 (例如，CMID) 也會保留下來，而在某些情況下，這項重複的資訊可能會造成問題。 複製 VM 時，請留意您的應用程式會依賴哪些類型的電腦特定資訊。  
+> 因此，如果您想要建立多個 Vm，請不要使用特製化磁片。 然而，對於較大型的部署，請[建立映像](capture-image-resource.md)，然後[使用該映像來建立多個 VM](create-vm-generalized-managed.md)。
 
 我們建議您將來自單一 VHD 或快照集的並行部署數目限制為 20 部 VM。 
 
@@ -51,7 +54,7 @@ $osDisk = Get-AzDisk `
 ### <a name="prepare-the-vm"></a>準備 VM
 依現況使用 VHD 來建立新 VM。 
   
-  * [準備要上傳至 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 請**勿**使用 Sysprep 將 VM一般化。
+  * [準備要上傳至 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 請 **勿** 使用 Sysprep 將 VM一般化。
   * 移除已安裝在 VM 上的所有客體虛擬化工具和代理程式 (例如 VMware 工具)。
   * 確認已將 VM 設定成從 DHCP 取得 IP 位址和 DNS 設定。 這可確保伺服器在啟動時取得虛擬網路內的 IP 位址。 
 
@@ -159,7 +162,7 @@ $osDisk = New-AzDisk -DiskName $osDiskName -Disk `
        -AddressPrefix 10.0.0.0/24
     ```
     
-2. 建立虛擬網路 此範例會將虛擬網路名稱設定為 *myVnetName*、將位置設定為*美國西部*，以及將虛擬網路的位址首碼設定為 *10.0.0.0/16*。 
+2. 建立虛擬網路 此範例會將虛擬網路名稱設定為 *myVnetName*、將位置設定為 *美國西部*，以及將虛擬網路的位址首碼設定為 *10.0.0.0/16*。 
    
     ```powershell
     $vnetName = "myVnetName"

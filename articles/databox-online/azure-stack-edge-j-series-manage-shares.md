@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 8fbf765168fd848a2ae349badf4017289b5a4380
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 413a93a145ae063a3aab4066ed62365e154d744a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952262"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454111"
 ---
 # <a name="use-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>使用 Azure 入口網站管理 Azure Stack Edge Pro 上的共用
 
@@ -33,56 +33,56 @@ ms.locfileid: "91952262"
 
 請在 Azure 入口網站中執行下列步驟來建立共用。
 
-1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **閘道 > 共用**]。 選取命令列上的 [+ 新增共用]****。
+1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **閘道 > 共用**]。 選取命令列上的 [+ 新增共用]。
 
     ![選取 [新增共用]](media/azure-stack-edge-j-series-manage-shares/add-share-1.png)
 
-2. 在 [新增共用]**** 中，指定共用設定。 為共用提供唯一的名稱。
+2. 在 [新增共用] 中，指定共用設定。 為共用提供唯一的名稱。
     
     共用名稱只能包含數字、小寫字母和連字號。 共用名稱的長度必須介於 3 到 63 個字元之間，且開頭為字母或數字。 每個連字號前後都必須緊接非連字號的字元。
 
 3. 選取共用的 [類型]  。 類型可以是 **SMB** 或 **NFS**，並以 SMB 為預設值。 SMB 是 Windows 用戶端的標準，NFS 則用於 Linux 用戶端。 視您選擇 SMB 或 NFS 共用而定，所顯示的選項會有些許不同。
 
-4. 提供共用所在的 [儲存體帳戶]****。 如果容器已不存在，則會使用共用名稱在儲存體帳戶中建立容器。 如果容器已存在，則會使用現有的容器。
+4. 提供共用所在的 [儲存體帳戶]。 如果容器已不存在，則會使用共用名稱在儲存體帳戶中建立容器。 如果容器已存在，則會使用現有的容器。
 
 5. 從下拉式清單中，選擇區塊 blob、分頁 blob 或檔案中的 **儲存體服務** 。 所選擇的服務類型取決於您想要資料以哪一種格式存在 Azure 中。 例如，在此例中，我們想要資料以區塊 blob 的形式存在於 Azure 中，因此我們選取 [ **區塊 Blob**]。 如果選擇 [ **分頁 Blob**]，您必須確定資料的大小為512個位元組。 針對一律為512位元組對齊的 Vhd 或 VHDX 使用 **分頁 blob** 。
 
 6. 此步驟取決於您要建立 SMB 還是 NFS 共用。
-    - **如果建立 SMB 共用** - 在 [完整權限本機使用者]**** 欄位中，從 [新建]**** 或 [使用現有的]**** 中擇一。 如果建立新的本機使用者，請提供 [使用者名稱]****、[密碼]****，然後確認密碼。 這會將使用權限指派給本機使用者。 當您在此指派權限之後，就可以使用 [檔案總管] 來修改這些權限。
+    - **如果建立 SMB 共用** - 在 [完整權限本機使用者] 欄位中，從 [新建] 或 [使用現有的] 中擇一。 如果建立新的本機使用者，請提供 [使用者名稱]、[密碼]，然後確認密碼。 這會將使用權限指派給本機使用者。 當您在此指派權限之後，就可以使用 [檔案總管] 來修改這些權限。
 
         ![新增 SMB 共用](media/azure-stack-edge-j-series-manage-shares/add-smb-share.png)
 
         如果您針對此共用資料勾選 [僅允許讀取作業]，則可指定唯讀使用者。
-    - **如果建立 NFS 共用** - 您需要**針對允許存取共用的用戶端提供其 IP 位址**。
+    - **如果建立 NFS 共用** - 您需要 **針對允許存取共用的用戶端提供其 IP 位址**。
 
         ![新增 NFS 共用](media/azure-stack-edge-j-series-manage-shares/add-nfs-share.png)
 
-7. 若要從 Edge 計算模組輕鬆存取共用，請使用本機掛接點。 選取 [搭配 Edge 計算來使用共用]****，以在建立共用之後自動掛接共用。 若選取此選項，Edge 模組也可以搭配本機掛接點來使用計算。
+7. 若要從 Edge 計算模組輕鬆存取共用，請使用本機掛接點。 選取 [搭配 Edge 計算來使用共用]，以在建立共用之後自動掛接共用。 若選取此選項，Edge 模組也可以搭配本機掛接點來使用計算。
 
 8. 按一下 [ **建立** ] 以建立共用。 正在建立共用時會通知您。 使用指定的設定建立共用之後， **共用** 分頁會更新以反映新的共用。
 
 ## <a name="add-a-local-share"></a>新增本機共用
 
-1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **閘道 > 共用**]。 選取命令列上的 [+ 新增共用]****。
+1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **閘道 > 共用**]。 選取命令列上的 [+ 新增共用]。
 
     ![選取 [新增共用 2]](media/azure-stack-edge-j-series-manage-shares/add-local-share-1.png)
 
-2. 在 [新增共用]**** 中，指定共用設定。 為共用提供唯一的名稱。
+2. 在 [新增共用] 中，指定共用設定。 為共用提供唯一的名稱。
     
     共用名稱只能包含數位、小寫字母和大寫字母，以及連字號。 共用名稱的長度必須介於 3 到 63 個字元之間，且開頭為字母或數字。 每個連字號前後都必須緊接非連字號的字元。
 
 3. 選取共用的 [類型]  。 類型可以是 **SMB** 或 **NFS**，並以 SMB 為預設值。 SMB 是 Windows 用戶端的標準，NFS 則用於 Linux 用戶端。 視您選擇 SMB 或 NFS 共用而定，所顯示的選項會有些許不同。
 
    > [!IMPORTANT]
-   > 如果您將 Azure 儲存體帳戶與 Azure Stack Edge Pro 或資料箱閘道裝置搭配使用，請確定您所使用的 Azure 儲存體帳戶並未設定了不變性原則。 如需詳細資訊，請參閱[設定和管理 Blob 儲存體的不變性原則](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
+   > 如果您將 Azure 儲存體帳戶與 Azure Stack Edge Pro 或資料箱閘道裝置搭配使用，請確定您所使用的 Azure 儲存體帳戶並未設定了不變性原則。 如需詳細資訊，請參閱[設定和管理 Blob 儲存體的不變性原則](../storage/blobs/storage-blob-immutability-policies-manage.md)。
 
-4. 若要從 Edge 計算模組輕鬆存取共用，請使用本機掛接點。 選取 [使用 Edge 計算的共用]****，如此 Edge 模組可使用本機掛接點的計算。
+4. 若要從 Edge 計算模組輕鬆存取共用，請使用本機掛接點。 選取 [使用 Edge 計算的共用]，如此 Edge 模組可使用本機掛接點的計算。
 
-5. 選取 [設定為 Edge 本機共用]****。 本機共用中的資料將會以本機方式維持在裝置上。 您可以以本機方式處理此資料。
+5. 選取 [設定為 Edge 本機共用]。 本機共用中的資料將會以本機方式維持在裝置上。 您可以以本機方式處理此資料。
 
-6. 在 [完整權限本機使用者]**** 欄位中，從 [新建]**** 或 [使用現有的]**** 中擇一。
+6. 在 [完整權限本機使用者] 欄位中，從 [新建] 或 [使用現有的] 中擇一。
 
-7. 選取 [建立]  。 
+7. 選取 [建立]。 
 
     ![建立本機共用](media/azure-stack-edge-j-series-manage-shares/add-local-share-2.png)
 
@@ -99,19 +99,19 @@ ms.locfileid: "91952262"
 如果您在 Azure Stack Edge Pro 裝置上設定計算之前已建立共用，您將需要掛接共用。 請採取下列步驟來掛接共用。
 
 
-1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **閘道 > 共用**]。 從共用清單中，選取您想要掛接的共用。 [用於計算]**** 資料行會將所選共用的狀態顯示為 [已停用]****。
+1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **閘道 > 共用**]。 從共用清單中，選取您想要掛接的共用。 [用於計算] 資料行會將所選共用的狀態顯示為 [已停用]。
 
     ![選取共用](media/azure-stack-edge-j-series-manage-shares/mount-share-1.png)
 
-2. 選取 [掛接]****。
+2. 選取 [掛接]。
 
     ![選取掛接](media/azure-stack-edge-j-series-manage-shares/mount-share-2.png)
 
-3. 系統提示您確認時，請選取 [是]****。 這會掛接共用。
+3. 系統提示您確認時，請選取 [是]。 這會掛接共用。
 
     ![確認掛接](media/azure-stack-edge-j-series-manage-shares/mount-share-3.png)
 
-4. 掛接共用之後，請移至共用清單。 您會看到 [用於計算]**** 資料行顯示共用的狀態為 [已啟用]****。
+4. 掛接共用之後，請移至共用清單。 您會看到 [用於計算] 資料行顯示共用的狀態為 [已啟用]。
 
     ![已掛接共用](media/azure-stack-edge-j-series-manage-shares/mount-share-4.png)
 
@@ -131,11 +131,11 @@ ms.locfileid: "91952262"
 
     ![選取取消掛接](media/azure-stack-edge-j-series-manage-shares/unmount-share-2.png)
 
-3. 系統提示您確認時，請選取 [是]****。 這會取消掛接共用。
+3. 系統提示您確認時，請選取 [是]。 這會取消掛接共用。
 
     ![確認取消掛接](media/azure-stack-edge-j-series-manage-shares/unmount-share-3.png)
 
-4. 取消掛接共用之後，請移至共用清單。 您會看到 [用於計算]**** 資料行顯示共用的狀態為 [已停用]****。
+4. 取消掛接共用之後，請移至共用清單。 您會看到 [用於計算] 資料行顯示共用的狀態為 [已停用]。
 
     ![已取消掛接共用](media/azure-stack-edge-j-series-manage-shares/unmount-share-4.png)
 
@@ -151,7 +151,7 @@ ms.locfileid: "91952262"
 
     ![按一下刪除](media/azure-stack-edge-j-series-manage-shares/delete-share-2.png)
 
-3. 當提示確認時，請按一下 [是]****。
+3. 當提示確認時，請按一下 [是]。
 
     ![Confirm delete](media/azure-stack-edge-j-series-manage-shares/delete-share-3.png)
 
@@ -167,15 +167,15 @@ ms.locfileid: "91952262"
 
 在 Azure 入口網站中執行下列步驟，以重新整理共用。
 
-1.  在 Azure 入口網站中，移至 [共用]****。 選取並按一下您想要重新整理的共用。
+1.  在 Azure 入口網站中，移至 [共用]。 選取並按一下您想要重新整理的共用。
 
     ![選取共用4](media/azure-stack-edge-j-series-manage-shares/refresh-share-1.png)
 
-2.  按一下 [重新整理]****。 
+2.  按一下 [重新整理]。 
 
     ![按一下 [重新整理]](media/azure-stack-edge-j-series-manage-shares/refresh-share-2.png)
  
-3.  當提示確認時，請按一下 [是]****。 系統會開始一項作業，以重新整理內部部署共用的內容。
+3.  當提示確認時，請按一下 [是]。 系統會開始一項作業，以重新整理內部部署共用的內容。
 
     ![確認重新整理](media/azure-stack-edge-j-series-manage-shares/refresh-share-3.png)
  
@@ -225,11 +225,11 @@ ms.locfileid: "91952262"
 
 在 Azure 入口網站中執行下列步驟，以同步儲存體存取金鑰。
 
-1. 移至您資源的 [概觀]****。 從共用清單中，選擇並按一下與您需要同步的儲存體帳戶相關聯的共用。
+1. 移至您資源的 [概觀]。 從共用清單中，選擇並按一下與您需要同步的儲存體帳戶相關聯的共用。
 
     ![選取相關儲存體帳戶的共用](media/azure-stack-edge-j-series-manage-shares/sync-storage-key-1.png)
 
-2. 按一下 [同步儲存體金鑰]****。 在出現確認提示時，按一下 [是]****。
+2. 按一下 [同步儲存體金鑰]。 在出現確認提示時，按一下 [是]。
 
      ![選取同步儲存體金鑰](media/azure-stack-edge-j-series-manage-shares/sync-storage-key-2.png)
 

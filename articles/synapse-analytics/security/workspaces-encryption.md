@@ -8,17 +8,17 @@ ms.subservice: security
 ms.date: 11/19/2020
 ms.author: nanditav
 ms.reviewer: jrasnick
-ms.openlocfilehash: 17dbdbbef45e0068601835197a1177ee20d98ca3
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: a6ea3925f3b6bc786be6a4855b2f3bfb6b402d70
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296747"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455181"
 ---
-# <a name="encryption-for-azure-synapse-analytics-workspaces-preview"></a>Azure Synapse Analytics (工作區預覽的加密) 
+# <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Azure Synapse Analytics 工作區的加密
 
 本文將說明︰
-* 加密 Azure Synapse Analytics 工作區中的待用資料。
+* 加密 Synapse Analytics 工作區中的待用資料。
 * 設定 Synapse 工作區，以使用客戶管理的金鑰來啟用加密。
 * 管理用來將工作區中的資料加密的金鑰。
 
@@ -86,7 +86,7 @@ Azure 服務的第一層加密是使用平臺管理的金鑰來啟用。 根據�
 
 SQL 透明資料加密 (TDE) 適用于 *未* 啟用雙重加密的工作區中的專用 sql 集區。 在這種類型的工作區中，服務管理的金鑰是用來針對專用 SQL 集區中的資料提供雙重加密。 使用服務管理金鑰的 TDE 可以針對個別的專用 SQL 集區啟用或停用。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [使用內建的 Azure 原則來為 Synapse 工作區執行加密保護](../policy-reference.md)
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory 驗證
-description: 瞭解如何使用 Azure Active Directory Azure SQL Database、Azure SQL 受控執行個體和 Azure Synapse Analytics 進行驗證
+description: 瞭解如何使用 Azure Active Directory 在 Azure Synapse Analytics 中搭配 Azure SQL Database、Azure SQL 受控執行個體和 Synapse SQL 進行驗證
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
@@ -11,18 +11,18 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
-ms.openlocfilehash: a57de3d6beda5336f480f20137a9ccaa014b012d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a636c0e2a41b636f30ada14d4f16a022f2890b71
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675080"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454292"
 ---
 # <a name="use-azure-active-directory-authentication"></a>使用 Azure Active Directory authentication
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Azure Active Directory (Azure AD) authentication 是一種機制，可讓您使用 Azure SQL Database 中的身分識別來連線至 [受控執行個體](sql-database-paas-overview.md)、 [Azure SQL Azure Synapse Analytics](../managed-instance/sql-managed-instance-paas-overview.md)和 [ () 先前的 SQL 資料倉儲 ](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) Azure AD。
+Azure Active Directory (Azure AD) authentication 是在 Azure SQL Database 中使用身分識別連接到 [受控執行個體](sql-database-paas-overview.md)、 [Azure Sql AZURE SYNAPSE ANALYTICS](../managed-instance/sql-managed-instance-paas-overview.md)和 [Synapse SQL](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 的機制。
 
 > [!NOTE]
 > 本文適用于 Azure SQL Database、SQL 受控執行個體和 Azure Synapse Analytics。
@@ -61,7 +61,7 @@ Azure Active Directory (Azure AD) authentication 是一種機制，可讓您使�
 6. 使用 Azure AD 身分識別連接到您的資料庫。
 
 > [!NOTE]
-> 若要瞭解如何建立和填入 Azure AD，然後使用 Azure SQL Database、SQL 受控執行個體和 Azure Synapse 來設定 Azure AD，請參閱 [使用 Azure AD 設定 Azure SQL Database](authentication-aad-configure.md)。
+> 若要瞭解如何建立和填入 Azure AD，然後使用 Azure Synapse Analytics 中的 Azure SQL Database、SQL 受控執行個體和 Synapse SQL 來設定 Azure AD，請參閱 [使用 Azure AD 設定 Azure SQL Database](authentication-aad-configure.md)。
 
 ## <a name="trust-architecture"></a>信認架構
 

@@ -12,20 +12,20 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 094e40fe55e1ba51b0539d740ecb449a8327d6a6
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4f90299daed46d06dad9ab37103e3b8f53763ed4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841235"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454380"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>設定適用於 SQL Server Management Studio 和 Azure AD 的多重要素驗證
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-本文說明如何使用 Azure Active Directory (Azure AD) 使用 () SSMS SQL Server Management Studio MFA (的多重要素驗證。 Azure AD MFA 可在連接 SSMS 或 SqlPackage.exe 至 [Azure SQL Database](sql-database-paas-overview.md)、 [Azure SQL 受控執行個體](../managed-instance/sql-managed-instance-paas-overview.md) 和 [Azure Synapse Analytics (先前的 SQL 資料倉儲) ](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)時使用。 如需多重要素驗證的總覽，請參閱 [SQL Database 的通用驗證、SQL 受控執行個體和 Azure Synapse (MFA 的 SSMS 支援) ](../database/authentication-mfa-ssms-overview.md)。
+本文說明如何使用 Azure Active Directory (Azure AD) 使用 () SSMS SQL Server Management Studio MFA (的多重要素驗證。 Azure AD MFA 可在連接 SSMS 或 SqlPackage.exe 至 [Azure SQL Database](sql-database-paas-overview.md)、 [Azure SQL 受控執行個體](../managed-instance/sql-managed-instance-paas-overview.md) 和 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)時使用。 如需多重要素驗證的總覽，請參閱 [SQL Database 的通用驗證、SQL 受控執行個體和 Azure Synapse (MFA 的 SSMS 支援) ](../database/authentication-mfa-ssms-overview.md)。
 
 > [!IMPORTANT]
-> Azure SQL Database 中的資料庫、Azure SQL 受控執行個體和 Azure Synapse (之前的 SQL 資料倉儲) 在本文的其餘部分統稱為資料庫，且伺服器是指裝載 Azure SQL Database 和 Azure Synapse 資料庫的 [伺服器](logical-servers.md) 。
+> 本文的其餘部分會將 Azure SQL Database、Azure SQL 受控執行個體和 Azure Synapse 中的資料庫統稱為資料庫，且伺服器會參考裝載資料庫的 [伺服器](logical-servers.md) ，以進行 Azure SQL Database 和 Azure Synapse。
 
 ## <a name="configuration-steps"></a>組態步驟
 

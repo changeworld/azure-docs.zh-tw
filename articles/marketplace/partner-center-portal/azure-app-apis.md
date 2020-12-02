@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 87f27f316914f3efce5a750f50471c65dceca84e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9863ed24da9e427f885a4794bda7e103b0c1cc8e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127836"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455448"
 ---
 # <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>用來在合作夥伴中心中將 Azure 應用程式上架的合作夥伴中心提交 API
 
@@ -73,5 +73,5 @@ https://apidocs.microsoft.com/services/partneringestion/
 
 ## <a name="next-steps"></a>後續步驟
 
-* 了解如何[建立 Azure VM 技術資產](create-azure-container-technical-assets.md)
-* 了解如何[建立 Azure 容器供應項目](create-azure-container-offer.md)
+* 了解如何[建立 Azure VM 技術資產](../create-azure-container-technical-assets.md)
+* 了解如何[建立 Azure 容器供應項目](../create-azure-container-offer.md)

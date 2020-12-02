@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d3f6a48815519499ddc39dcc12cafe0fe95e70e0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4ba7b8af9b50b9173f5e2040bb8b623eeafdd538
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023800"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453853"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>資料科學專案的平台和工具
 
@@ -25,7 +25,7 @@ Microsoft 提供雲端或內部部署平台的完整範圍分析資源。 它們
 
 - 資料科學虛擬機器 (Windows 和 Linux CentOS)
 - HDInsight Spark 叢集
-- Synapse Analytics
+- Azure Synapse Analytics
 - Azure Data Lake
 - HDInsight Hive 叢集
 - Azure 檔案儲存體

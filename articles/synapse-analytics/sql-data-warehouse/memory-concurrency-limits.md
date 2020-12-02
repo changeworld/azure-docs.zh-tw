@@ -1,6 +1,6 @@
 ---
 title: 記憶體與並行限制
-description: 檢視在 Azure Synapse Analytics 中配置給不同效能等級與資源類別的記憶體和並行存取限制。
+description: 針對 Azure Synapse Analytics 中的專用 SQL 集區，查看配置給各種效能層級和資源類別的記憶體和平行存取限制。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 5b72694f93ed5b712a0f684887df5b69a7b35c72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb0ad93fb4a1269b4cca02b114c0427f0c44a31b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441675"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455342"
 ---
-# <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Azure Synapse Analytics 的記憶體和並行存取限制
+# <a name="memory-and-concurrency-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的記憶體和平行存取限制
 
 檢視在 Azure Synapse Analytics 中配置給不同效能等級與資源類別的記憶體和並行存取限制。  
 

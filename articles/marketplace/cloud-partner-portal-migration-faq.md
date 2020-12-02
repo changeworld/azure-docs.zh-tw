@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: f0546a76974e429b625ba03fdf4598da7d32c990
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 8346edd0f6016f1751a392213e5d6321f875baf2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433363"
+ms.locfileid: "96455655"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>從 Cloud Partner 入口網站轉換到合作夥伴中心的常見問題
 
@@ -85,8 +85,8 @@ Cloud Partner 入口網站先前支援的所有供應專案類型都可在合作
 | Dynamics 365 for Operations | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何 [建立適用于作業的 Dynamics 365 供應](partner-center-portal/create-new-operations-offer.md)專案。 |
 | Power BI 應用程式 | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何 [建立適用于 AppSource 的 Power BI 應用程式](partner-center-portal/create-power-bi-app-offer.md)。 |
 | IoT Edge 模組 | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請參閱 [Azure Marketplace 中的建立、設定及發佈 IoT Edge 模組供應](partner-center-portal/azure-iot-edge-module-creation.md)專案。 |
-| 容器 | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何 [建立 Azure 容器供應](partner-center-portal/create-azure-container-offer.md)專案。 |
-| 諮詢服務 | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請參閱 [建立諮詢服務供應](partner-center-portal/create-consulting-service-offer.md)專案。 |
+| 容器 | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何 [建立 Azure 容器供應](./create-azure-container-offer.md)專案。 |
+| 諮詢服務 | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請參閱 [建立諮詢服務供應](./create-consulting-service-offer.md)專案。 |
 | 受控服務 | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何 [建立受控服務供應](partner-center-portal/create-new-managed-service-offer.md)專案。 |
 | Dynamics Nav 受控服務 | 否 | Microsoft 已將 Dynamics NAV 受控服務發展為 [dynamics 365 Business Central](/dynamics365/business-central/)，因此我們從 AppSource 中移除了 Dynamics Nav 受控服務的即時優惠。 這些供應專案不再由客戶探索，也未移至合作夥伴中心。 若要在 AppSource 中提供您的供應專案，請將其調整為 Dynamics 365 Business Central 供應專案，並在 [合作夥伴中心](https://partner.microsoft.com/)中提交。 深入瞭解如何 [建立 Dynamics 365 Business Central 供應](partner-center-portal/create-new-business-central-offer.md)專案。 |
 | Cortana Intelligence | 否 | Microsoft 已發展出 Cortana 情報的產品藍圖，因此我們從 AppSource 中移除了 Cortana 情報的即時優惠。 這些供應專案不再由客戶探索，也未移至合作夥伴中心。 若要讓您的供應專案可在商業市集中使用，請將您的供應專案調整為「軟體即服務」 (SaaS) 優惠，並在 [合作夥伴中心](https://partner.microsoft.com/)中提交。 在 [合作夥伴中心中深入瞭解 SaaS 供應專案建立檢查清單](./plan-saas-offer.md)。 |

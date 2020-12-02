@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: aa492acdedc2d131d28c894031de2181e87a2f3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed6b77f77c9df0bb69edeb7451022605f1633aa3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890708"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454314"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>透過 Azure PowerShell 將 Vm 部署到您的 Azure Stack Edge Pro GPU 裝置
 
@@ -103,7 +103,7 @@ ms.locfileid: "90890708"
     
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-使用 [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 建立 Azure 資源群組。 資源群組是一個邏輯容器，可在其中部署及管理 Azure 資源（例如儲存體帳戶、磁片、受控磁片）。
+使用 [New-AzureRmResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 建立 Azure 資源群組。 資源群組是一個邏輯容器，可在其中部署及管理 Azure 資源（例如儲存體帳戶、磁片、受控磁片）。
 
 > [!IMPORTANT]
 > 所有資源會建立在與裝置相同的位置中，且位置會設定為 **DBELocal**。
@@ -227,7 +227,7 @@ $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –S
 New-AzureRMDisk -ResourceGroupName <Resource group name> -DiskName <Disk name> -Disk $DiskConfig
 ```
 
-下方顯示一項範例輸出。 如需此 Cmdlet 的詳細資訊，請移至 [AzureRmDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0)。
+下方顯示一項範例輸出。 如需此 Cmdlet 的詳細資訊，請移至 [AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0)。
 
 ```powershell
 Tags               :
@@ -267,7 +267,7 @@ Set-AzureRmImageOsDisk -Image $imageConfig -OsType 'Linux' -OsState 'Generalized
 New-AzureRmImage -Image $imageConfig -ImageName <Image name>  -ResourceGroupName <Resource group name>
 ```
 
-下方顯示一項範例輸出。 如需此 Cmdlet 的詳細資訊，請移至 [>new-azurermimage](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0)。
+下方顯示一項範例輸出。 如需此 Cmdlet 的詳細資訊，請移至 [>new-azurermimage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0)。
 
 ```powershell
 New-AzureRmImage -Image Microsoft.Azure.Commands.Compute.Automation.Models.PSImage -ImageName ig191113014333  -ResourceGroupName rg191113014333
@@ -463,11 +463,11 @@ The public IP in this case will be the same as the private IP that you passed du
 `Start-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>`
 
 
-如需此 Cmdlet 的詳細資訊，請移至 [new-azurermvm](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0)。
+如需此 Cmdlet 的詳細資訊，請移至 [new-azurermvm](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0)。
 
 ### <a name="suspend-or-shut-down-the-vm"></a>暫止或關閉 VM
 
-執行下列 Cmdlet 來停止或關閉在裝置上執行的虛擬機器：
+執行下列 Cmdlet 來停止或關閉在您裝置上執行的虛擬機器：
 
 
 ```powershell
@@ -475,7 +475,7 @@ Stop-AzureRmVM [-Name] <String> [-StayProvisioned] [-ResourceGroupName] <String>
 ```
 
 
-如需此 Cmdlet 的詳細資訊，請移至 [new-azurermvm Cmdlet](https://docs.microsoft.com/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0)。
+如需此 Cmdlet 的詳細資訊，請移至 [new-azurermvm Cmdlet](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0)。
 
 ### <a name="add-a-data-disk"></a>新增資料磁碟
 
@@ -489,13 +489,13 @@ Update-AzureRmVM -ResourceGroupName "<Resource Group Name string>" -VM $VirtualM
 
 ### <a name="delete-the-vm"></a>刪除 VM
 
-執行下列 Cmdlet，以從您的裝置移除虛擬機器：
+執行下列 Cmdlet，從您的裝置移除虛擬機器：
 
 ```powershell
 Remove-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>
 ```
 
-如需此 Cmdlet 的詳細資訊，請移至 [new-azurermvm Cmdlet](https://docs.microsoft.com/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0)。
+如需此 Cmdlet 的詳細資訊，請移至 [new-azurermvm Cmdlet](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0)。
 
 
 ## <a name="supported-vm-sizes"></a>支援的 VM 大小
@@ -553,7 +553,7 @@ VM 大小會決定可供 VM 使用的計算資源 (例如 CPU、GPU 和記憶體
 
 ### <a name="on-windows-client"></a>在 Windows 用戶端上 
 
-`$Env:AZCOPY_DEFAULT_SERVICE_API_VERSION = "2017-11-09"`
+`$Env:AZCOPY_DEFAULT_SERVICE_API_VERSION = "2017-11-09"`
 
 ### <a name="on-linux-client"></a>在 Linux 用戶端上
 
@@ -567,4 +567,4 @@ VM 大小會決定可供 VM 使用的計算資源 (例如 CPU、GPU 和記憶體
 
 ## <a name="next-steps"></a>後續步驟
 
-[Azure Resource Manager Cmdlet](https://docs.microsoft.com/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager Cmdlet](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)

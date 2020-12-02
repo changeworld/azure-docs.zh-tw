@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ccfc290df64417bf0504849a83dbe68efcbddefe
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b625a81ff328e6760ec0ad8d9acb5735f402df73
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843701"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455625"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>適用于 Logic Apps 的 Azure 安全性基準
 
@@ -98,7 +98,7 @@ ms.locfileid: "94843701"
 
 - [如何限制輸入 IP 位址](logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
 
-- [如何設定 DDoS 保護](../virtual-network/manage-ddos-protection.md)
+- [如何設定 DDoS 保護](../ddos-protection/manage-ddos-protection.md)
 
 - [如何部署 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -496,7 +496,7 @@ Azure Logic Apps 支援系統指派的和使用者指派的受控識別。 您�
 
 -  Azure App Service 
 
-- [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何建立及設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 - [使用 Azure Logic Apps 中的受控識別驗證及存取 Azure 資源](create-managed-service-identity.md)
 
@@ -1286,7 +1286,7 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 - [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-- [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 資訊安全中心監視**：不適用
 

@@ -259,7 +259,7 @@
           href: connector-azure-sql-database.md
         - name: Azure SQL 受控執行個體
           href: connector-azure-sql-managed-instance.md
-        - name: Azure Synapse Analytics (先前稱為 SQL 資料倉儲)
+        - name: Azure Synapse Analytics
           href: connector-azure-sql-data-warehouse.md
         - name: Azure 表格儲存體
           href: connector-azure-table-storage.md

@@ -12,18 +12,18 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: c5caf48dd4e2860ec5f4815eb38629ad66391a2c
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 5558480f568e802637deb30c9f1b41c00826c9b5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990103"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454496"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>使用 Azure SQL 設定和管理 Azure AD 驗證
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-本文說明如何建立和填入 Azure Active Directory (Azure AD) 實例，然後使用 Azure AD 搭配 [Azure SQL Database](sql-database-paas-overview.md)、 [Azure SQL 受控執行個體](../managed-instance/sql-managed-instance-paas-overview.md)和 [Azure Synapse Analytics (先前的 SQL 資料倉儲 ](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)) 。 如需總覽，請參閱 [Azure Active Directory authentication](authentication-aad-overview.md)。
+本文說明如何建立和填入 Azure Active Directory (Azure AD) 實例，然後使用 Azure AD 搭配 [Azure SQL Database](sql-database-paas-overview.md)、 [Azure SQL 受控執行個體](../managed-instance/sql-managed-instance-paas-overview.md)和 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)。 如需總覽，請參閱 [Azure Active Directory authentication](authentication-aad-overview.md)。
 
 ## <a name="azure-ad-authentication-methods"></a>Azure AD 驗證方法
 
@@ -190,7 +190,7 @@ else {
 
 下表列出用來布建和管理 SQL 受控執行個體 Azure AD 系統管理員的 Cmdlet：
 
-| Cmdlet 名稱 | Description |
+| Cmdlet 名稱 | 描述 |
 | --- | --- |
 | [設定-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |為目前訂用帳戶中的 SQL 受控執行個體布建 Azure AD 系統管理員。  (必須來自目前的訂用帳戶) |
 | [移除-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |移除目前訂用帳戶中 SQL 受控執行個體的 Azure AD 系統管理員。 |
@@ -218,7 +218,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 您也可以藉由呼叫下列 CLI 命令，為 SQL 受控執行個體布建 Azure AD 管理員：
 
-| 命令 | 說明 |
+| 命令 | 描述 |
 | --- | --- |
 |[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | 布建 SQL 受控執行個體 (的 Azure Active Directory 系統管理員必須來自目前的訂用帳戶) 。 |
 |[az sql mi ad-admin delete](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | 移除 SQL 受控執行個體的 Azure Active Directory 系統管理員。 |
@@ -279,7 +279,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 用來布建和管理 SQL Database 和 Azure Synapse Azure AD 管理員的 Cmdlet：
 
-| Cmdlet 名稱 | Description |
+| Cmdlet 名稱 | 描述 |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |為裝載 SQL Database 或 Azure Synapse 的伺服器布建 Azure Active Directory 系統管理員。  (必須來自目前的訂用帳戶)  |
 | [移除-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |移除裝載 SQL Database 或 Azure Synapse 之伺服器的 Azure Active Directory 系統管理員。|
@@ -324,7 +324,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 您可以藉由呼叫下列 CLI 命令來布建 Azure AD 管理員：
 
-| 命令 | 說明 |
+| 命令 | 描述 |
 | --- | --- |
 |[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | 為裝載 SQL Database 或 Azure Synapse 的伺服器布建 Azure Active Directory 系統管理員。  (必須來自目前的訂用帳戶)  |
 |[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | 移除裝載 SQL Database 或 Azure Synapse 之伺服器的 Azure Active Directory 系統管理員。 |
@@ -532,7 +532,7 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 
 下列 blog 中可找到疑難排解 Azure AD 驗證問題的指引： <https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 如需 SQL Database 中的登入、使用者、資料庫角色和許可權的總覽，請參閱登入 [、使用者、資料庫角色和使用者帳戶](logins-create-manage.md)。
 - 如需資料庫主體的詳細資訊，請參閱[主體](/sql/relational-databases/security/authentication-access/principals-database-engine)。
