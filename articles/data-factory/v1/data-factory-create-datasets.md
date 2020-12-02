@@ -3,20 +3,20 @@ title: 在 Azure Data Factory 中建立資料集
 description: 了解如何透過使用位移和 anchorDateTime 等屬性的範例，在 Azure Data Factory 中建立資料集。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 45150e00db1885a4ca4d083a8a54cbfd4da0bb10
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9bf6ff2971de57338dc299d48e24f6ffebd4b6b5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456938"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495934"
 ---
 # <a name="datasets-in-azure-data-factory-version-1"></a>Azure Data Factory (第1版) 中的資料集
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]

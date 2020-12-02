@@ -3,8 +3,8 @@ title: 使用 Hive 活動轉換資料-Azure
 description: 瞭解如何在 Azure Data Factory v1 中使用 Hive 活動，以在隨選/您自己的 HDInsight 叢集上執行 Hive 查詢。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.assetid: 80083218-743e-4da8-bdd2-60d1c77b1227
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 0271029814071b3a692209d3a2015cfdbe5fa941
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 6a337ad4d623ef73657d473974248cbefd016ba3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616768"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495543"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>使用 Azure Data Factory 中的 Hive 活動轉換資料 
 > [!div class="op_single_selector" title1="轉換活動"]

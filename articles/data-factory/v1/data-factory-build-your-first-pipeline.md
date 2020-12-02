@@ -3,20 +3,20 @@ title: 'Data Factory 教學課程：第一個資料管線 '
 description: 此 Azure Data Factory 教學課程會示範如何使用 Hadoop 叢集上的 Hive 指令碼，建立和排程處理資料的 Data Factory。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 80644ed2d655544fa176a7be92aec3c01aa3bf14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a79872c11d76a74932fe232fa3f7818edc58ffcc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75966079"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496206"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>教學課程︰使用 Hadoop 叢集建置您的第一個管線來轉換資料
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ ms.locfileid: "75966079"
 ## <a name="tutorial-overview"></a>教學課程概觀
 在本教學課程中，您會執行下列步驟：
 
-1. 建立 **資料**處理站。 資料處理站可以包含一或多個資料管線，可移動和轉換資料。
+1. 建立 **資料** 處理站。 資料處理站可以包含一或多個資料管線，可移動和轉換資料。
 
     在本教學課程中，您會在資料處理站中建立一個管線。
 2. 建立 **管線**。 管線可以有一或多個活動 (範例︰複製活動、HDInsight Hive 活動)。 本範例使用在 HDInsight Hadoop 叢集上執行 Hive 指令碼的 HDInsight Hive 活動。 指令碼首先會建立一個參照儲存在 Azure Blob 儲存體中的原始 Web 記錄資料的資料表，再依年份或月份分割未經處理資料。
@@ -76,16 +76,16 @@ adfgetstarted/partitioneddata/year=2016/month=3/000000_0
 
 如上所示的範例行中，第一行 (標有 2016-01-01) 會寫入 month=1 資料夾中的 000000_0 檔案。 同樣地，第二行會寫入 month=2 資料夾中的檔案；而第三行會寫入 month=3 資料夾中的檔案。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 開始進行本教學課程之前，您必須具備下列必要條件：
 
 1. **Azure 訂用帳戶** - 如果您沒有 Azure 訂用帳戶，只需要幾分鐘就可以建立免費試用帳戶。 請參閱 [免費試用](https://azure.microsoft.com/pricing/free-trial/) 一文了解如何取得免費試用帳戶。
-2. **Azure 儲存體** – 在本教學課程中，您會使用 Azure 儲存體帳戶來儲存資料。 如果您沒有 Azure 儲存體帳戶，請參閱 [建立儲存體帳戶](../../storage/common/storage-account-create.md) 一文。 建立儲存體帳戶之後，請記下**帳戶名稱**和**存取金鑰**。 如需有關如何擷取儲存體帳戶存取金鑰的資訊，請參閱[管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。
+2. **Azure 儲存體** – 在本教學課程中，您會使用 Azure 儲存體帳戶來儲存資料。 如果您沒有 Azure 儲存體帳戶，請參閱 [建立儲存體帳戶](../../storage/common/storage-account-create.md) 一文。 建立儲存體帳戶之後，請記下 **帳戶名稱** 和 **存取金鑰**。 如需有關如何擷取儲存體帳戶存取金鑰的資訊，請參閱[管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。
 3. 下載並檢閱位於下列位置的 Hive 查詢檔案 (**HQL**)：[https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql)。 這個查詢會轉換輸入資料並產生輸出資料。
 4. 下載並檢閱位於下列位置的範例輸入檔案 (**input.log**)：[https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
 5. 在您的 Azure Blob 儲存體中建立名為 **adfgetstarted** 的 Blob 容器。
-6. 將 **partitionweblogs.hql** 檔案上傳到 **adfgetstarted** 容器的 [script]**** 資料夾中。 使用類似 [Microsoft Azure 儲存體總管](https://storageexplorer.com/)的工具。
-7. 將 **input.log** 檔案上傳到 **adfgetstarted** 容器中的 [inputdata]**** 資料夾。
+6. 將 **partitionweblogs.hql** 檔案上傳到 **adfgetstarted** 容器的 [script] 資料夾中。 使用類似 [Microsoft Azure 儲存體總管](https://storageexplorer.com/)的工具。
+7. 將 **input.log** 檔案上傳到 **adfgetstarted** 容器中的 [inputdata] 資料夾。
 
 完成必要條件之後，選取下列其中一個工具/SDK 來進行教學課程：
 

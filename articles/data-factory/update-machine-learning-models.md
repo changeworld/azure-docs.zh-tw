@@ -3,20 +3,20 @@ title: 使用 Azure Data Factory 更新 Azure Machine Learning Studio (傳統) �
 description: '說明如何使用 Azure Data Factory 和 Azure Machine Learning Studio (傳統來建立預測管線) '
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 83950c2d3c5439886ff787b69d9da4d0c214de31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bec300414483181617a7aa009157a4c4a332c745
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092536"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496733"
 ---
 # <a name="update-azure-machine-learning-studio-classic-models-by-using-update-resource-activity"></a>使用更新資源活動更新 Azure Machine Learning Studio (傳統) 模型
 
@@ -59,7 +59,7 @@ ms.locfileid: "87092536"
 }
 ```
 
-| 屬性                      | 說明                              | 必要 |
+| 屬性                      | 描述                              | 必要 |
 | :---------------------------- | :--------------------------------------- | :------- |
 | NAME                          | 管線中的活動名稱     | 是      |
 | description                   | 說明活動用途的文字。  | 否       |
@@ -73,8 +73,8 @@ ms.locfileid: "87092536"
 
 實作重新定型模組和更新預測 Web 服務的整個程序會叫用下列步驟：
 
-- 使用**批次執行活動**叫用**定型 Web 服務**。 叫用定型 Web 服務的方式，與叫用 [使用 Azure Machine Learning Studio (傳統) 和 Data Factory 批次執行活動建立預測管線](transform-data-using-machine-learning.md)中所述的預測性 web 服務相同。 定型 Web 服務的輸出是 .Ilearner 檔案，您可以用來更新預測性 Web 服務。
-- 您可以使用 [更新資源活動]**** 來叫用**預測 Web 服務**的**更新資源端點**，以將 Web 服務更新為新定型的模型。
+- 使用 **批次執行活動** 叫用 **定型 Web 服務**。 叫用定型 Web 服務的方式，與叫用 [使用 Azure Machine Learning Studio (傳統) 和 Data Factory 批次執行活動建立預測管線](transform-data-using-machine-learning.md)中所述的預測性 web 服務相同。 定型 Web 服務的輸出是 .Ilearner 檔案，您可以用來更新預測性 Web 服務。
+- 您可以使用 [更新資源活動] 來叫用 **預測 Web 服務** 的 **更新資源端點**，以將 Web 服務更新為新定型的模型。
 
 ## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure Machine Learning Studio (傳統) 連結服務
 
@@ -87,7 +87,7 @@ ms.locfileid: "87092536"
 
 ## <a name="web-service-is-new-azure-resource-manager-web-service"></a>Web 服務是新的 Azure Resource Manager Web 服務
 
-如果 Web 服務是會公開 Azure Resource Manager 端點的新 Web 服務類型，您不需要新增第二個「非預設」**** 端點。 連結服務中 **updateResourceEndpoint** 的格式如下︰
+如果 Web 服務是會公開 Azure Resource Manager 端點的新 Web 服務類型，您不需要新增第二個「非預設」端點。 連結服務中 **updateResourceEndpoint** 的格式如下︰
 
 ```
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview
@@ -95,7 +95,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 
 您可以在 [Azure Machine Learning Studio (傳統) Web 服務入口](https://services.azureml.net/)網站上查詢 web 服務時，取得 URL 中預留位置的值。
 
-新類型的更新資源端點需要服務主體驗證。 若要使用服務主體驗證，請在 Azure Active Directory (Azure AD) 中註冊應用程式實體，並授與 Web 服務所屬之訂用帳戶或資源群組的**參與者**或**擁有者**角色。 請參閱[如何建立服務主體及指派權限來管理 Azure 資源](../active-directory/develop/howto-create-service-principal-portal.md)。 請記下以下的值，您可以使用這些值來定義連結服務：
+新類型的更新資源端點需要服務主體驗證。 若要使用服務主體驗證，請在 Azure Active Directory (Azure AD) 中註冊應用程式實體，並授與 Web 服務所屬之訂用帳戶或資源群組的 **參與者** 或 **擁有者** 角色。 請參閱[如何建立服務主體及指派權限來管理 Azure 資源](../active-directory/develop/howto-create-service-principal-portal.md)。 請記下以下的值，您可以使用這些值來定義連結服務：
 
 - 應用程式識別碼
 - 應用程式金鑰
@@ -170,13 +170,13 @@ Azure 儲存體會保留下列資料：
 }
 ```
 
-在 **Azure Machine Learning Studio (傳統) **中，請執行下列動作以取得 **>mlendpoint** 和 **apiKey**的值：
+在 **Azure Machine Learning Studio (傳統)** 中，請執行下列動作以取得 **>mlendpoint** 和 **apiKey** 的值：
 
 1. 按一下左功能表中的 [ **Web 服務** ]。
 2. 按一下 Web 服務清單中的 **訓練 Web 服務** 。
-3. 按一下 [API 金鑰] **** 文字方塊旁的 [複製]。 將剪貼簿中的金鑰貼到 Data Factory JSON 編輯器中。
-4. 在 **Azure Machine Learning Studio (傳統) **中，按一下 [ **批次執行** ] 連結。
-5. 從 [要求]**** 區段複製 [要求 URI]**** 並將它貼到 Data Factory JSON 編輯器中。
+3. 按一下 [API 金鑰]  文字方塊旁的 [複製]。 將剪貼簿中的金鑰貼到 Data Factory JSON 編輯器中。
+4. 在 **Azure Machine Learning Studio (傳統)** 中，按一下 [ **批次執行** ] 連結。
+5. 從 [要求] 區段複製 [要求 URI] 並將它貼到 Data Factory JSON 編輯器中。
 
 ### <a name="linked-service-for-azure-machine-learning-studio-classic-updatable-scoring-endpoint"></a>Azure Machine Learning Studio (傳統) 可更新評分端點的連結服務：
 下列 JSON 程式碼片段會定義 Azure Machine Learning Studio (傳統) 連結服務，以指向評分 web 服務的可更新端點。

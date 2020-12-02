@@ -3,20 +3,20 @@ title: 使用 Azure 入口網站和 PowerShell 監視和管理管線
 description: 了解如何使用 Azure 入口網站和 Azure PowerShell 監視並管理您建立的 Azure 資料處理站和管線。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 4473df318f65c0e0097aed298d0be57e3bca382b
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 2a30c755bc19849ad3a821cbbc75b787a3b0bb98
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636930"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495832"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>使用 Azure 入口網站和 PowerShell 監視和管理 Azure Data Factory 管線
 > [!div class="op_single_selector"]
@@ -79,7 +79,7 @@ Data Factory 的 [圖表] 檢視提供單一窗格，可用來監視和管理 Da
 ### <a name="view-the-state-of-each-activity-inside-a-pipeline"></a>管線中每個活動的檢視狀態
 您可以藉由檢視活動所產生的任何資料集的狀態，查看活動的目前狀態。
 
-按兩次 [圖表] 中的 **OutputBlobTable** ，您就會看到管線中不同活動執行時所產生的所有配量。 您可以看到複製活動在過去八個月來每個月都執行成功，且所產生的配量都處於「就緒」狀態。  
+按兩次 [圖表] 中的 **OutputBlobTable**，您就會看到管線中不同活動執行時所產生的所有配量。 您可以看到複製活動在過去八個月來每個月都執行成功，且所產生的配量都處於「就緒」狀態。  
 
 ![管線的狀態](./media/data-factory-monitor-manage-pipelines/state-of-pipeline.png)
 
@@ -87,10 +87,10 @@ Data Factory 中的資料集配量可以有下列狀態之一：
 
 <table>
 <tr>
-    <th align="left">狀態</th><th align="left">子狀態</th><th align="left">描述</th>
+    <th align="left">州</th><th align="left">子狀態</th><th align="left">描述</th>
 </tr>
 <tr>
-    <td rowspan="8">等候中</td><td>ScheduleTime</td><td>尚未到達執行配量的時間。</td>
+    <td rowspan="8">等候</td><td>ScheduleTime</td><td>尚未到達執行配量的時間。</td>
 </tr>
 <tr>
 <td>DatasetDependencies</td><td>上游相依項目尚未就緒。</td>
@@ -121,7 +121,7 @@ Data Factory 中的資料集配量可以有下列狀態之一：
 <td>正在處理配量。</td>
 </tr>
 <tr>
-<td rowspan="4">Failed</td><td>TimedOut</td><td>活動執行超過活動所允許的時間。</td>
+<td rowspan="4">失敗</td><td>TimedOut</td><td>活動執行超過活動所允許的時間。</td>
 </tr>
 <tr>
 <td>已取消</td><td>配量已由使用者動作取消。</td>
@@ -135,10 +135,10 @@ Data Factory 中的資料集配量可以有下列狀態之一：
 <td>就緒</td><td>-</td><td>配量已就緒，可供取用。</td>
 </tr>
 <tr>
-<td>已略過</td><td>None</td><td>配量並未進行處理。</td>
+<td>已略過</td><td>無</td><td>配量並未進行處理。</td>
 </tr>
 <tr>
-<td>None</td><td>-</td><td>配量曾經是不同狀態，但已重設。</td>
+<td>無</td><td>-</td><td>配量曾經是不同狀態，但已重設。</td>
 </tr>
 </table>
 
@@ -163,7 +163,7 @@ Data Factory 中的資料集配量可以有下列狀態之一：
 
 Data Factory 內的資料集狀態轉換流程如下：等候中 -> 進行中/進行中 (驗證中) -> 就緒/失敗。
 
-配量一開始的狀態是 **等候** ，在等到先決條件符合後才會執行。 接著，活動會開始執行，配量則進入 [進行中] 狀態。 活動執行可能成功或失敗。 根據執行的結果，配量會標示為 [就緒] 或 [失敗]。
+配量一開始的狀態是 **等候**，在等到先決條件符合後才會執行。 接著，活動會開始執行，配量則進入 [進行中] 狀態。 活動執行可能成功或失敗。 根據執行的結果，配量會標示為 [就緒] 或 [失敗]。
 
 您可以重設配量，以從 [就緒] 或 [失敗] 狀態返回 [等候] 狀態。 您也可以將配量狀態標記為 [略過]，這會防止活動執行且不會處理該配量。
 
@@ -216,7 +216,7 @@ Azure Data Factory 提供了許多功能供您使用 Azure 入口網站和 Azure
    ![含有錯誤的活動執行詳細資料刀鋒視窗](./media/data-factory-monitor-manage-pipelines/activity-run-details-with-error.png)     
 
 #### <a name="use-powershell-to-debug-an-error"></a>使用 PowerShell 偵錯錯誤
-1. 啟動 **PowerShell** 。
+1. 啟動 **PowerShell**。
 2. 執行 **>get-azdatafactoryslice** 命令以查看配量及其狀態。 您應該會看到狀態為 [失敗] 的配量。        
 
     ```powershell   
@@ -309,7 +309,7 @@ Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Da
 
     ![建立新警示](media/data-factory-monitor-manage-pipelines/v1alerts-image2.png)
 
-3.  定義 **警示條件** 。  (請務必在 [ **依資源類型篩選** ] 欄位中選取 [ **Data** Factory]。 ) 您也可以指定 [ **維度** ] 的值。
+3.  定義 **警示條件**。  (請務必在 [**依資源類型篩選**] 欄位中選取 [ **Data** Factory]。 ) 您也可以指定 [**維度**] 的值。
 
     ![定義警示條件 - 選取目標](media/data-factory-monitor-manage-pipelines/v1alerts-image3.png)
 
@@ -317,11 +317,11 @@ Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Da
 
     ![定義警示條件 - 新增警示邏輯](media/data-factory-monitor-manage-pipelines/v1alerts-image5.png)
 
-4.  定義 **警示詳細資料** 。
+4.  定義 **警示詳細資料**。
 
     ![定義警示詳細資料](media/data-factory-monitor-manage-pipelines/v1alerts-image6.png)
 
-5.  定義 **動作群組** 。
+5.  定義 **動作群組**。
 
     ![定義動作群組 -建立新的動作群組](media/data-factory-monitor-manage-pipelines/v1alerts-image7.png)
 

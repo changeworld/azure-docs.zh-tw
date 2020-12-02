@@ -3,8 +3,8 @@ title: 使用 Hadoop 串流活動轉換資料-Azure
 description: 了解如何使用 Azure Data Factory 中的 Hadoop 資料流活動，以在隨選/您自己的 HDInsight 叢集上執行 Hadoop 資料流程式來轉換資料。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.assetid: 4c3ff8f2-2c00-434e-a416-06dfca2c41ec
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9c6661a762886140997b9305f88f5c4e25476e57
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 80f78e3d2e7fdcd8fef53ca0412676a37c6486c2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371693"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495594"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>使用 Azure Data Factory 中的 Hadoop 資料流活動轉換資料
 > [!div class="op_single_selector" title1="轉換活動"]
@@ -26,8 +26,8 @@ ms.locfileid: "92371693"
 > * [MapReduce 活動](data-factory-map-reduce.md)
 > * [Hadoop 串流活動](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活動](data-factory-spark.md)
-> * [Azure Machine Learning Studio (傳統) 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
-> * [Azure Machine Learning Studio (傳統) 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning Studio (傳統版) 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
+> * [Azure Machine Learning Studio (傳統版) 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
 > * [預存程序活動](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL 活動](data-factory-usql-activity.md)
 > * [.NET 自訂活動](data-factory-use-custom-activities.md)
@@ -96,13 +96,13 @@ HDInsight 叢集會使用範例程式 (wc.exe 和 cat.exe) 和資料 (將 davinc
 
 1. 將連結服務的名稱設定為 **linkedServiceName** ，該服務指向您的 HDInsight 叢集，串流 mapreduce 作業會在該叢集上執行。
 2. 將活動的類型設為 **HDInsightStreaming**。
-3. 針對**對應工具**屬性，指定對應工具可執行檔的名稱。 在範例中，cat.exe 是對應程式可執行檔。
+3. 針對 **對應工具** 屬性，指定對應工具可執行檔的名稱。 在範例中，cat.exe 是對應程式可執行檔。
 4. 針對 **reducer** 屬性，指定減壓器可執行檔的名稱。 在範例中，cat.exe 是減壓器可執行檔。
 5. 針對 **input** 類型屬性，指定對應程式的輸入檔 (包括位置)。 在 `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt` 範例中：adfsample 是 blob 容器、example/data/Gutenberg 是資料夾，而 davinci.txt 是 blob。
 6. 針對 **output** 類型屬性，指定減壓器的輸出檔 (包括位置)。 Hadoop 串流作業的輸出會寫入針對這個屬性指定的位置。
 7. 在 [**filePaths**] 區段中，指定對應工具和減壓器可執行檔的路徑。 在 "adfsample/example/apps/wc.exe" 範例中，adfsample 是 blob 容器，example/apps 是資料夾，而 wc.exe 是可執行檔。
 8. 針對 **fileLinkedService** 屬性，指定代表 Azure 儲存體 (包含 filePaths 區段中指定的檔案) 的 Azure 儲存體連結服務。
-9. 針對**引數**屬性，指定串流工作的引數。
+9. 針對 **引數** 屬性，指定串流工作的引數。
 10. **getDebugInfo** 屬性是選擇性的元素。 該屬性設定為 [失敗] 時，只能在執行失敗時下載記錄。 當其設定為「永遠」時，無論執行狀態為何，一律下載記錄。
 
 > [!NOTE]
@@ -174,7 +174,7 @@ HDInsight 叢集會使用範例程式 (wc.exe 和 cat.exe) 和資料 (將 davinc
 ```
 
 ### <a name="pipeline"></a>管線
-此範例中的管線只含有一個類型為 **HDInsightStreaming**的活動。 
+此範例中的管線只含有一個類型為 **HDInsightStreaming** 的活動。 
 
 HDInsight 叢集會使用範例程式 (wc.exe 和 cat.exe) 和資料 (將 davinci.txt) 自動填入。 根據預設，HDInsight 叢集所使用的容器名稱是叢集本身的名稱。 例如，如果您的叢集名稱是 myhdicluster，相關聯的 Blob 容器名稱為 myhdicluster。  
 

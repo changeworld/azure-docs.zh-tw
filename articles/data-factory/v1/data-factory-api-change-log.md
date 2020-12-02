@@ -3,8 +3,8 @@ title: Data Factory-.NET API 變更記錄檔
 description: 描述 Azure Data Factory 的特定 .NET API 版本中的重大變更、新增功能、bug 修正等等。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
-ms.openlocfilehash: b7f0a352afeb4a2e58d97bd5278115673f6b6df6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 70df35409d1c84efb996bb40f4e39bde6ad7d5a8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461691"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496495"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory - .NET API 變更記錄
 > [!NOTE]

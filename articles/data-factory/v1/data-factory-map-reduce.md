@@ -3,8 +3,8 @@ title: 從 Azure Data Factory 叫用 MapReduce 程式
 description: 了解如何從 Azure Data Factory，在 Azure HDInsight 叢集上執行 MapReduce 程式以處理資料。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.assetid: c34db93f-570a-44f1-a7d6-00390f4dc0fa
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 089a2e6a0b90c1682e2ebdd146626c93cec35f77
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8bdcaf20330a3700681fd96f858370dd7dcdf4c7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636845"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495424"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>從 Data Factory 叫用 MapReduce 程式
 > [!div class="op_single_selector" title1="轉換活動"]
@@ -49,7 +49,7 @@ Azure Data Factory 中的「管線」會使用連結的計算服務，來處理�
 ## <a name="json-for-hdinsight-mapreduce-activity"></a>「HDInsight MapReduce 活動」的 JSON
 在 HDInsight 活動的 JSON 定義中： 
 
-1. 將 **activity** 的 **type** 設為 **HDInsight** 。
+1. 將 **activity** 的 **type** 設為 **HDInsight**。
 2. 針對 **className** 屬性指定類別名稱。
 3. 針對 **jarFilePath** 屬性指定 JAR 檔案的路徑 (包含檔案名稱)。
 4. 針對 **jarLinkedService** 屬性指定參照 Azure Blob 儲存體 (包含 JAR 檔案) 的連結服務。   
@@ -118,7 +118,7 @@ Azure Data Factory 中的「管線」會使用連結的計算服務，來處理�
 本範例中的管線會在 Azure HDInsight 叢集上執行字數統計 Map/Reduce 程式。   
 
 ### <a name="linked-services"></a>連結的服務
-首先，建立連結的服務，將 Azure HDInsight 叢集使用的 Azure 儲存體連結到  Azure Data Factory。 如果您複製/貼上下列程式碼，請記得使用 Azure 儲存體的名稱和金鑰來取代 **帳戶名稱** 和 **帳戶金鑰** 。 
+首先，建立連結的服務，將 Azure HDInsight 叢集使用的 Azure 儲存體連結到  Azure Data Factory。 如果您複製/貼上下列程式碼，請記得使用 Azure 儲存體的名稱和金鑰來取代 **帳戶名稱** 和 **帳戶金鑰**。 
 
 #### <a name="azure-storage-linked-service"></a>Azure 儲存體連結服務
 
@@ -183,7 +183,7 @@ Azure Data Factory 中的「管線」會使用連結的計算服務，來處理�
 
 | 屬性 | 注意 |
 |:--- |:--- |
-| 類型 |類型必須設為 **HDInsightMapReduce** 。 |
+| 類型 |類型必須設為 **HDInsightMapReduce**。 |
 | className |類別的名稱是： **wordcount** |
 | jarFilePath |包含類別的 Jar 檔案路徑。 如果您複製/貼上下列程式碼，請記得變更叢集的名稱。 |
 | jarLinkedService |包含 Jar 檔案的 Azure 儲存體連結服務。 這個連結服務會參考與 HDInsight 叢集關聯的儲存體。 |

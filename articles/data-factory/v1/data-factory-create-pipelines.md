@@ -3,20 +3,20 @@ title: 建立/排程管線，Data Factory 中的連鎖活動
 description: 了解如何在 Azure Data Factory 中建立用來移動和轉換資料的資料管線。 建立資料導向工作流程以產生可供使用的資訊。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: e3f9735a712a1302624b1ed88f462ca62138b883
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 83b4d14d46677c731b7fb9faae2217492368d4b2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461499"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496053"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory 中的管線及活動
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
