@@ -3,20 +3,20 @@ title: Azure Data Factory - 範例
 description: 提供 Azure Data Factory 服務隨附範例的詳細資料。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ed63d148afa6f5674d36cc50c18351b2a06966eb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b373b5c440bf2ef2f50bf323baa2488981cdc775
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019611"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495186"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory - 範例
 > [!NOTE]
@@ -75,7 +75,7 @@ ms.locfileid: "96019611"
     ![Data Factory 刀鋒視窗](./media/data-factory-samples/DataFactoryBladeAfter.png)
 
 ## <a name="samples-in-visual-studio"></a>Visual Studio 中的範例
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 您必須已在電腦上安裝下列項目：
 
 * Visual Studio 2013 或 Visual Studio 2015
@@ -103,7 +103,7 @@ ms.locfileid: "96019611"
    3. 選取您要在其中建立 Data Factory 的 [Azure 訂用帳戶]  。
    4. 選取 Data Factory 的 [資源群組]  。
    5. 針對 [區域]，選取 [美國西部]、[美國東部] 或 [北歐]。
-   6. 按 [下一步] 。
+   6. 按 [下一步]  。
 6. 在 [**設定資料存放區**] 頁面中，指定 Azure SQL Database 和 **Azure 儲存體帳戶** 中的現有 **資料庫** (或) 建立資料庫/儲存體]，然後按一下 [下一步]。
 7. 在 [設定計算] 頁面中，選取預設值，然後按 [下一步]。
 8. 在 [摘要] 頁面中，檢閱所有設定，然後按 [下一步]。

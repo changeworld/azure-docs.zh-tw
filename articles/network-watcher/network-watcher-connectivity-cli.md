@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
-ms.openlocfilehash: ac34bfc55e1745e3bbe90991d5aa8f6a2b04d51b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: aefa97065cc1e6f227e4fe5720383b04c026cbeb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965505"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494200"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli"></a>使用 Azure CLI 利用 Azure 網路監看員進行連線疑難排解
 
@@ -37,7 +37,7 @@ ms.locfileid: "94965505"
 * 要用來進行連線疑難排解的虛擬機器。
 
 > [!IMPORTANT]
-> 若要進行連線移難排解，您從中進行移難排解的虛擬機器需要安裝 `AzureNetworkWatcherExtension` 虛擬機器擴充功能。 若要在 Windows VM 上安裝擴充功能，請瀏覽[適用於 Windows 的 Azure 網路監看員代理程式虛擬機器擴充功能](../virtual-machines/extensions/network-watcher-windows.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json)，若要在 Linux VM 上安裝，則請瀏覽[適用於 Linux 的 Azure 網路監看員代理程式虛擬機器擴充功能](../virtual-machines/extensions/network-watcher-linux.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json)。 目的地端點上不需要擴充功能。
+> 若要進行連線移難排解，您從中進行移難排解的虛擬機器需要安裝 `AzureNetworkWatcherExtension` 虛擬機器擴充功能。 若要在 Windows VM 上安裝擴充功能，請瀏覽[適用於 Windows 的 Azure 網路監看員代理程式虛擬機器擴充功能](../virtual-machines/extensions/network-watcher-windows.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)，若要在 Linux VM 上安裝，則請瀏覽[適用於 Linux 的 Azure 網路監看員代理程式虛擬機器擴充功能](../virtual-machines/extensions/network-watcher-linux.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。 目的地端點上不需要擴充功能。
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>檢查與虛擬機器的連線
 

@@ -1,18 +1,18 @@
 ---
 title: 開始使用 Azure Data Factory 中的整頓資料流程
 description: 如何使用整頓資料流程在 Azure Data Factory 中準備資料的教學課程
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: e9a4f7266522fc17c33e2086af6cb7367bbed39e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ee1069ca24dc16a52d30450c0f2163130f549cb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650675"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494897"
 ---
 # <a name="prepare-data-with-wrangling-data-flow"></a>使用整頓資料流程來準備資料
 

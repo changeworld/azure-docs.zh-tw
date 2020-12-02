@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: b6fed24c7de87424bde94b864d4a9db91828a510
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0d4630cad94a30e0dd53785c512e452d7b4a7d38
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315779"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494438"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>針對 Azure Migrate 設備和探索進行疑難排解
 
@@ -31,7 +31,7 @@ ms.locfileid: "92315779"
 2. 如果部署仍然失敗，而且您使用 VMware vSphere 用戶端來部署 OVF 檔案，請嘗試透過 vSphere web 用戶端進行部署。 如果部署仍然失敗，請嘗試使用不同的網頁瀏覽器。
 3. 如果您使用的是 vSphere web 用戶端，並嘗試將它部署在 vCenter Server 6.5 或6.7 上，請嘗試直接在 ESXi 主機上部署 OVA：
    - 直接連接至 ESXi 主機 (而不是 vCenter Server) 與 web 用戶端 (HTTPs://<*主機 IP 位址*>/ui contoso\) 。
-   - 在 [**主**  >  **目錄**] **File**中，選取 [檔案  >  **部署 OVF 範本**]。 流覽至 OVA 並完成部署。
+   - 在 [**主**  >  **目錄**] **File** 中，選取 [檔案  >  **部署 OVF 範本**]。 流覽至 OVA 並完成部署。
 4. 如果部署仍然失敗，請連絡 Azure Migrate 的支援。
 
 ## <a name="cant-connect-to-the-internet"></a>無法連接到網際網路
@@ -80,7 +80,7 @@ ms.locfileid: "92315779"
     - [深入瞭解](./migrate-appliance.md#appliance---vmware) 必要的 Azure 角色和許可權。
 - 如果找不到用來註冊設備的 Azure Migrate 專案，導致註冊失敗，可能會發生錯誤60039：「設備可能無法成功註冊 Azure Migrate 專案」。
     - 在 Azure 入口網站中，檢查項目是否存在於資源群組中。
-    - 如果專案不存在，請在您的資源群組中建立新的 Azure Migrate 專案，然後重新註冊設備。 [瞭解如何](./how-to-add-tool-first-time.md#create-a-project-and-add-a-tool) 建立新專案。
+    - 如果專案不存在，請在您的資源群組中建立新的 Azure Migrate 專案，然後重新註冊設備。 [瞭解如何](./create-manage-projects.md#create-a-project-for-the-first-time) 建立新專案。
 
 ## <a name="error-6003060031-key-vault-management-operation-failed"></a>錯誤60030/60031： Key Vault 管理操作失敗
 
@@ -98,7 +98,7 @@ ms.locfileid: "92315779"
 - 如果發生驗證錯誤，請參閱補救指導方針以修正錯誤，然後再試一次 [ **儲存並開始探索** ] 選項。
 
 ## <a name="error-60025-azure-ad-operation-failed"></a>錯誤60025： Azure AD 操作失敗 
-錯誤60025：「Azure AD 操作失敗。 當用來起始探索的 Azure 使用者帳戶不同于用來註冊設備的帳戶時，建立或更新 Azure AD 應用程式時發生錯誤。 執行下列其中一個動作：
+錯誤60025：「Azure AD 操作失敗。 當用來起始探索的 Azure 使用者帳戶不同于用來註冊設備的帳戶時，建立或更新 Azure AD 應用程式時發生錯誤。 請執行下列其中一項：
 
 - 請確定起始探索的使用者帳戶與用來註冊設備的使用者帳戶相同。
 - 為探索作業失敗的使用者帳戶提供 Azure Active Directory 的應用程式存取權限。
@@ -146,7 +146,7 @@ ms.locfileid: "92315779"
 - VMware VM 大約需要15分鐘的時間。
 - 每個新增的主機大約需要兩分鐘的時間來探索 Hyper-v VM。
 
-如果您等待且狀態不會變更，請在 [**伺服器**] 索引標籤**上選取 [** 重新整理]。這應該會顯示探索到的伺服器計數 Azure Migrate：伺服器評定和 Azure Migrate：伺服器遷移。
+如果您等待且狀態不會變更，請在 [**伺服器**] 索引標籤 **上選取 [** 重新整理]。這應該會顯示探索到的伺服器計數 Azure Migrate：伺服器評定和 Azure Migrate：伺服器遷移。
 
 如果無法運作，而且您正在探索 VMware 伺服器：
 

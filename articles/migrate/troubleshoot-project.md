@@ -6,12 +6,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
-ms.openlocfilehash: f2245e13f348706f662055408196ea7a26484811
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: af9254bc536dedc425aac53199665ae399e60a5a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314650"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494404"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Azure Migrate 專案疑難排解
 
@@ -19,7 +19,7 @@ ms.locfileid: "92314650"
 
 ## <a name="how-to-add-new-project"></a>如何新增專案？
 
-您的訂用帳戶中可以有多個 Azure Migrate 專案。 [瞭解如何](how-to-add-tool-first-time.md) 建立第一次的專案，或 [新增其他](create-manage-projects.md#create-additional-projects) 專案。
+您的訂用帳戶中可以有多個 Azure Migrate 專案。 [瞭解如何](./create-manage-projects.md) 建立第一次的專案，或 [新增其他](create-manage-projects.md#create-additional-projects) 專案。
 
 ## <a name="what-azure-permissions-are-needed"></a>需要哪些 Azure 許可權？
 
@@ -40,7 +40,7 @@ ms.locfileid: "92314650"
 
 ## <a name="can-i-upgrade-old-project"></a>我可以升級舊的專案嗎？
 
-無法更新舊版 Azure Migrate 的專案。 您需要 [建立新的專案](how-to-add-tool-first-time.md)，並在其中新增工具。
+無法更新舊版 Azure Migrate 的專案。 您需要 [建立新的專案](./create-manage-projects.md)，並在其中新增工具。
 
 ## <a name="cant-create-a-project"></a>無法建立專案
 
@@ -61,7 +61,7 @@ ms.locfileid: "92314650"
 
 ## <a name="added-tools-dont-show"></a>新增的工具未顯示
 
-請確定您已選取正確的專案。 在 Azure Migrate hub >**伺服器**或**資料庫**中，按一下 [**遷移 (專案**] 旁的 [**變更**]，然後按一下螢幕右上角的 [變更) ]。 選擇正確的訂用帳戶和專案名稱，> **確定]**。 頁面應該會以所選項目的新增工具重新整理。
+請確定您已選取正確的專案。 在 Azure Migrate hub >**伺服器** 或 **資料庫** 中，按一下 [**遷移 (專案**] 旁的 [**變更**]，然後按一下螢幕右上角的 [變更) ]。 選擇正確的訂用帳戶和專案名稱，> **確定]**。 頁面應該會以所選項目的新增工具重新整理。
 
 ## <a name="next-steps"></a>後續步驟
 

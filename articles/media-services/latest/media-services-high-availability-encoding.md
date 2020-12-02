@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: d2493a3a1e4fbb49c0b7f6dad29771b6e9faae8e
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 15a23ab5b05ad1093069b4297ad1d292beeb3a42
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146802"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494948"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>隨選媒體服務和影片隨選 (VOD) 的高可用性
 
@@ -26,7 +26,7 @@ ms.locfileid: "93146802"
 
 ## <a name="high-availability-for-vod"></a>VOD 的高可用性
 
-Azure 架構檔中有一個稱為 [Geodes](https://docs.microsoft.com/azure/architecture/patterns/geodes) 的高可用性設計模式。 它說明如何將重複的資源部署到不同的地理區域，以提供擴充性和復原能力。  您可以使用 Azure 服務來建立這類架構，以涵蓋許多高可用性設計考慮，例如冗余、健康情況監視、負載平衡和資料備份和復原。  下列其中一種架構如下所述，其中包含解決方案中所使用之每個服務的詳細資料，以及如何使用個別服務來建立 VOD 應用程式的高可用性架構。
+Azure 架構檔中有一個稱為 [Geodes](/azure/architecture/patterns/geodes) 的高可用性設計模式。 它說明如何將重複的資源部署到不同的地理區域，以提供擴充性和復原能力。  您可以使用 Azure 服務來建立這類架構，以涵蓋許多高可用性設計考慮，例如冗余、健康情況監視、負載平衡和資料備份和復原。  下列其中一種架構如下所述，其中包含解決方案中所使用之每個服務的詳細資料，以及如何使用個別服務來建立 VOD 應用程式的高可用性架構。
 
 ### <a name="sample"></a>範例
 
@@ -47,7 +47,7 @@ Azure 架構檔中有一個稱為 [Geodes](https://docs.microsoft.com/azure/arch
 |![這是 Azure Functions 圖示。](media/media-services-high-availability-encoding/function-app.svg)| Azure Functions | **描述：**<br>執行一小段程式碼 (稱為「函式」 ) ，而不需要擔心應用程式基礎結構的 Azure Functions。 [深入瞭解 Azure Functions](../../azure-functions/functions-overview.md)。<br><br>**VOD 用途：**<br>Azure Functions 可以用來儲存 VOD 應用程式的模組。  VOD 應用程式的模組可能包括：<br><br>**作業排程模組**<br>作業排程模組可將新作業提交至媒體服務叢集， (不同區域中的兩個或多個實例) 。 它會追蹤每個媒體服務實例的健全狀況狀態，並將新作業提交至下一個狀況良好的實例。<br><br>**作業狀態模組**<br>作業狀態模組會接聽來自 Azure 事件方格服務的作業輸出狀態事件。 它會將事件儲存至事件存放區，以將 rest 模組的媒體服務 Api 呼叫次數降至最低。<br><br>**實例健全狀況模組**<br>此課程模組會追蹤已提交的作業，並判斷每個媒體服務實例的健全狀況狀態。 它會追蹤已完成的工作、失敗的工作和從未完成的作業。<br><br>**布建模組**<br>此課程模組會布建已處理的資產。 它會將資產資料複製到所有媒體服務實例，並設定 Azure Front Door 服務，以確保即使某些媒體服務實例無法使用，也可以串流資產。 它也會設定串流定位器。<br><br>**作業驗證模組**<br>此課程模組會追蹤每個提交的工作、重新提交失敗的作業，並在作業成功完成後執行作業資料清除。  |
 |![這是 App Service 圖示。](media/media-services-high-availability-encoding/application-service.svg)| App Service (和規劃)   | **描述：**<br>Azure App Service 是 HTTP 型服務，用來裝載 Web 應用程式、REST API 和行動後端。 它支援 .NET、.NET Core、JAVA、Ruby、Node.js、PHP 或 Python。 應用程式會在 Windows 與 Linux 架構的環境中執行及調整。<br><br>**VOD 用途：**<br>每個模組都是由 App Service 所主控。 [深入瞭解 App Service](../../app-service/overview.md)。 |
 |![這是 Azure Front Door 圖示。](media/media-services-high-availability-encoding/azure-front-door.svg)| Azure Front Door | **描述：**<br>Azure Front Door 用來定義、管理及監視網路流量的全域路由，方法是優化以獲得最佳效能，並針對高可用性進行快速全域容錯移轉。<br><br>**VOD 用途：**<br>Azure Front Door 可以用來將流量路由傳送至串流端點。 [深入瞭解 Azure Front Door](../../frontdoor/front-door-overview.md)。  |
-|![這是 Azure 事件方格圖示。](media/media-services-high-availability-encoding/event-grid-subscription.svg)| Azure Event Grid | **描述：**<br>事件方格是針對以事件為基礎的架構所建立的內建支援，適用于來自 Azure 服務的事件，例如儲存體 blob 和資源群組。 它也支援自訂主題事件。 篩選準則可用來將特定事件路由至不同的端點、多播至多個端點，以及確定事件會可靠地傳遞。 它會以原生方式分散到每個區域中的多個容錯網域，以及跨可用性區域，以最大化可用性。<br><br>**VOD 用途：**<br>事件方格可用來追蹤所有應用程式事件，並加以儲存以保存作業狀態。 [深入瞭解 Azure 事件方格](../../event-grid/overview.md)。 |
+|![這是 Azure 事件方格圖示。](media/media-services-high-availability-encoding/event-grid-subscription.svg)| Azure 事件方格 | **描述：**<br>事件方格是針對以事件為基礎的架構所建立的內建支援，適用于來自 Azure 服務的事件，例如儲存體 blob 和資源群組。 它也支援自訂主題事件。 篩選準則可用來將特定事件路由至不同的端點、多播至多個端點，以及確定事件會可靠地傳遞。 它會以原生方式分散到每個區域中的多個容錯網域，以及跨可用性區域，以最大化可用性。<br><br>**VOD 用途：**<br>事件方格可用來追蹤所有應用程式事件，並加以儲存以保存作業狀態。 [深入瞭解 Azure 事件方格](../../event-grid/overview.md)。 |
 |![這是 Application Insights 圖示。](media/media-services-high-availability-encoding/application-insights.svg)| Application Insights | **描述：** <br>Application Insights 是 Azure 監視器的一項功能，其為適用於開發人員和 DevOps 專業人員的可擴充應用程式效能管理 (APM) 服務。 它是用來監視即時應用程式。 它會偵測效能異常，並包含分析工具來診斷問題，並瞭解使用者如何運用應用程式。 它是設計來協助您持續改善效能和可用性。<br><br>**VOD 用途：**<br>所有記錄都可以傳送至 Application Insights。 您可以藉由搜尋成功建立的工作訊息來查看每個工作的實例處理方式。 它可能包含所有提交的工作中繼資料，包括唯一識別碼和實例名稱資訊。 [深入瞭解 Application Insights](../../azure-monitor/app/app-insights-overview.md)。 |
 ## <a name="architecture"></a>架構
 
@@ -85,6 +85,6 @@ Azure 架構檔中有一個稱為 [Geodes](https://docs.microsoft.com/azure/arch
     * 如果您的工作處於已排程狀態，但在指定區域的合理時間內尚未前進到處理狀態，請從目前使用的帳戶清單中移除該區域。 根據您的業務需求，您可以決定立即取消這些作業，並將其重新提交到另一個區域。 或者，您可以讓他們有更多時間移到下一個狀態。
     * 如果區域已從帳戶清單中移除，請監視該區域以進行復原，然後再將其新增回清單。 區域健康情況可以透過區域中現有的工作進行監視 (如果未取消和重新提交) ，請在一段時間後將帳戶新增回清單，以及藉由操作員監視可能會影響 Azure 媒體服務的中斷情況。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
-* 查看程式 [代碼範例](https://docs.microsoft.com/samples/browse/?products=azure-media-services)
+* 查看程式 [代碼範例](/samples/browse/?products=azure-media-services)

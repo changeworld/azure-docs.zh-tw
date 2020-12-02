@@ -1,18 +1,18 @@
 ---
 title: Azure Data Factory 中的整頓資料流程轉換函數
 description: Azure Data Factory 中的可用整頓資料流程函數的總覽
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: c56c52193f433571f16e4acf7bd6e7b89641b26f
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 28c6228d4401db0fd1301137167a86cb6f18cbeb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233945"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494914"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>整頓資料流程中的轉換函數
 

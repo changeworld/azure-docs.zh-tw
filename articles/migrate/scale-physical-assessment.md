@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/19/2020
 ms.author: hamusa
-ms.openlocfilehash: 227e27d25ad5d0c61ed4f36c234222a079315619
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6009975337f8f4caaf43e4b8b715e42c6ce2ffdc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317146"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494574"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>評定大量的實體伺服器以遷移至 Azure
 
@@ -73,7 +73,7 @@ ms.locfileid: "92317146"
 1. 建立 Azure Migrate 專案。
 2. 將 Azure Migrate Server 評定工具新增至專案。
 
-[深入了解](how-to-add-tool-first-time.md)
+[深入了解](./create-manage-projects.md)
 
 ## <a name="create-and-review-an-assessment"></a>建立和審核評量
 

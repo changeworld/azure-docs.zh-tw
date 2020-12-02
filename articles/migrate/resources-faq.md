@@ -3,12 +3,12 @@ title: Azure Migrate 常見問題
 description: 取得 Azure Migrate 服務相關常見問題的解答。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 95fd2ea9ecf5e4bcdf3fb2291e4cf7bf5b111c5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0877ad0d36e131525a227050cf44321e39e8b30
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87847460"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494608"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate：常見問題
 
@@ -41,7 +41,7 @@ Azure Migrate：伺服器遷移工具會使用部分內部部署機器的後端 
 
 ## <a name="i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version"></a>我有一個具有舊版傳統體驗的專案 Azure Migrate。 如何? 開始使用新版本嗎？
 
-您無法將舊版中的專案或元件升級至新版本。 您需要[建立新的 Azure Migrate 專案](create-manage-projects.md)，並[將評量與移轉工具新增到其中](how-to-add-tool-first-time.md)。 使用教學課程來了解如何使用可用的評量和移轉工具。 如果您已將 Log Analytics 工作區連結至傳統專案，可以在刪除傳統專案之後，將其連結加至目前版本的專案。
+您無法將舊版中的專案或元件升級至新版本。 您需要[建立新的 Azure Migrate 專案](create-manage-projects.md)，並[將評量與移轉工具新增到其中](./create-manage-projects.md)。 使用教學課程來了解如何使用可用的評量和移轉工具。 如果您已將 Log Analytics 工作區連結至傳統專案，可以在刪除傳統專案之後，將其連結加至目前版本的專案。
 
 ## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Azure Migrate：伺服器評量和地圖工具組之間有何差異？
 
@@ -54,7 +54,7 @@ Azure Migrate：伺服器遷移工具會使用部分內部部署機器的後端 
 根據您想要執行的動作來選擇您的工具：
 
 - **規劃將內部部署遷移至 azure**：如果您打算將內部部署伺服器遷移至 azure，請使用伺服器評定進行遷移規劃。 伺服器評量會評估內部部署工作負載，並提供可協助您遷移的指引和工具。 準備好遷移計畫之後，您可以使用 Azure Migrate：伺服器遷移等工具將機器遷移至 Azure。
-- **規劃 Azure**的嚴重損壞修復：如果您打算使用 Site Recovery 設定從內部部署至 azure 的災難復原，請使用 Site Recovery 部署規劃工具。 部署規劃工具針對嚴重損壞修復的目的，提供內部部署環境的深度、Site Recovery 特定評量。 它會提供與嚴重損壞修復相關的建議，例如複寫和容錯移轉。
+- **規劃 Azure** 的嚴重損壞修復：如果您打算使用 Site Recovery 設定從內部部署至 azure 的災難復原，請使用 Site Recovery 部署規劃工具。 部署規劃工具針對嚴重損壞修復的目的，提供內部部署環境的深度、Site Recovery 特定評量。 它會提供與嚴重損壞修復相關的建議，例如複寫和容錯移轉。
 
 ## <a name="how-does-server-migration-work-with-site-recovery"></a>伺服器遷移如何與 Site Recovery 搭配運作？
 

@@ -3,20 +3,20 @@ title: Data Factory 的排程和執行
 description: 了解 Azure Data Factory 應用程式模型的排程和執行層面。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: e0707f9a7694741f54771699f5aeb3b452b11b8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60410eb2a9a5f18abf2daf87646943ffdc944402
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85319715"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495169"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory 排程和執行
 > [!NOTE]
@@ -50,14 +50,14 @@ ms.locfileid: "85319715"
 },
 ```
 
-如下圖所示，為活動指定排程會在管線的開始和結束時間內，建立一系列輪轉時段。 輪轉時段是一系列大小固定、非重疊的連續時間間隔。 活動的這些邏輯輪轉時段稱為「活動時段」****。
+如下圖所示，為活動指定排程會在管線的開始和結束時間內，建立一系列輪轉時段。 輪轉時段是一系列大小固定、非重疊的連續時間間隔。 活動的這些邏輯輪轉時段稱為「活動時段」。
 
 ![活動排程器範例](media/data-factory-scheduling-and-execution/scheduler-example.png)
 
 活動的 **scheduler** 屬性是選擇性的。 如果您指定此屬性，它就必須符合您在活動輸出資料集的定義中指定的頻率。 目前，驅動排程的是輸出資料集。 因此，即使活動不會產生任何輸出，您也必須指定輸出資料集。 
 
 ## <a name="specify-schedule-for-a-dataset"></a>為資料集指定排程
-Data Factory 管線中的一個活動可以接受零個或多個輸入「資料集」****，並且會產生一個或多個輸出資料集。 針對活動，您可以在資料集定義中使用 **availability** 區段，來指定提供輸入資料或產生輸出資料的頻率。 
+Data Factory 管線中的一個活動可以接受零個或多個輸入「資料集」，並且會產生一個或多個輸出資料集。 針對活動，您可以在資料集定義中使用 **availability** 區段，來指定提供輸入資料或產生輸出資料的頻率。 
 
 **availability** 區段中的 **frequency** 會指定時間單位。 允許的 frequency 值為：Minute、Hour、Day、Week 及 Month。 availability 區段中的 **interval** 屬性會指定 frequency 的倍數。 例如：如果將輸出資料集的 frequency 設定為 Day，並將 interval 是設定為 1，就會每天產生輸出資料。 如果您將 frequency 指定為 minute，建議您將 interval 設定為不小於 15。 
 
@@ -164,7 +164,7 @@ Data Factory 管線中的一個活動可以接受零個或多個輸入「資料�
 
 在此範例中，活動會在管線的開始與結束時間之間每小時執行一次。 針對三小時的時段 (上午 8 點 - 上午 9 點、上午 9 點 - 上午 10 點，以及上午 10 點 - 上午 11 點) 會每小時產生一次輸出資料。 
 
-活動執行所取用或產生的每個資料單位稱為「資料配量」****。 下表顯示具有一個輸入資料集和一個輸出資料集的活動範例： 
+活動執行所取用或產生的每個資料單位稱為「資料配量」。 下表顯示具有一個輸入資料集和一個輸出資料集的活動範例： 
 
 ![可用性排程器](./media/data-factory-scheduling-and-execution/availability-scheduler.png)
 
@@ -226,7 +226,7 @@ Data Factory 管線中的一個活動可以接受零個或多個輸入「資料�
 ```
 
 ### <a name="dataset-policy"></a>資料集原則
-資料集可以具有定義的驗證原則，指定配量執行所產生的資料在供取用之前如何驗證。 在這種情況下，於配量完成執行後，輸出配量狀態就會變更為**等候**，子狀態為**驗證**。 配量通過驗證之後，配量狀態會變更為 **就緒**。 如果已產生資料配量但是未通過驗證，將不會處理相依於此配量的下游配量活動執行。 [監視和管理管線](data-factory-monitor-manage-pipelines.md) 涵蓋 Data Factory 中資料配量的各種狀態。
+資料集可以具有定義的驗證原則，指定配量執行所產生的資料在供取用之前如何驗證。 在這種情況下，於配量完成執行後，輸出配量狀態就會變更為 **等候**，子狀態為 **驗證**。 配量通過驗證之後，配量狀態會變更為 **就緒**。 如果已產生資料配量但是未通過驗證，將不會處理相依於此配量的下游配量活動執行。 [監視和管理管線](data-factory-monitor-manage-pipelines.md) 涵蓋 Data Factory 中資料配量的各種狀態。
 
 資料集中的 **policy** 區段定義資料集配量必須符合的準則或條件。 下表說明您可以在 **policy** 區段中使用的屬性：
 
@@ -294,7 +294,7 @@ Data Factory 管線中的一個活動可以接受零個或多個輸入「資料�
 
 Data Factory 監視和管理工具可讓您深入診斷記錄以了解失敗的配量，輕鬆地找出問題的根本原因並加以修正。 在您修正問題之後，即可輕易地開始活動執行以產生失敗的配量。 如需有關如何重新執行和了解資料配量的狀態轉換的詳細資訊，請參閱[使用 Azure 入口網站刀鋒視窗監視和管理管線](data-factory-monitor-manage-pipelines.md)或[監視和管理應用程式](data-factory-monitor-manage-app.md)。
 
-在您重新執行 **Dataset2**的 9-10 AM 配量之後，Data Factory 會開始執行最終資料集上 9-10 AM 相依的配量。
+在您重新執行 **Dataset2** 的 9-10 AM 配量之後，Data Factory 會開始執行最終資料集上 9-10 AM 相依的配量。
 
 ![重新執行失敗的配量](./media/data-factory-scheduling-and-execution/rerun-failed-slice.png)
 
@@ -388,7 +388,7 @@ Data Factory 監視和管理工具可讓您深入診斷記錄以了解失敗的�
 
 **活動：管線中的 Hive 活動**
 
-Hive 指令碼會收到適當的「日期時間」 ** 資訊，做為使用 **WindowStart** 變數的參數，如下列程式碼片段所示。 Hive 指令碼會使用此變數將資料從正確的資料夾載入，並執行彙總來產生輸出。
+Hive 指令碼會收到適當的「日期時間」  資訊，做為使用 **WindowStart** 變數的參數，如下列程式碼片段所示。 Hive 指令碼會使用此變數將資料從正確的資料夾載入，並執行彙總來產生輸出。
 
 ```json
 {  

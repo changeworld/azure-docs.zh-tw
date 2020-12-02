@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 10/23/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 151b72eb11600713b115d45e5927d8170a519ad1
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: a7d63fd76a88430495c9f55200308f63b11c89d4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635767"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494302"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>如何使用 Azure CLI 在適用於 MySQL 的 Azure 資料庫彈性的伺服器中建立及管理讀取複本
 
@@ -44,7 +44,7 @@ az mysql flexible-server replica create --replica-name mydemoreplicaserver --sou
 ``` 
 
 > [!NOTE]
-> 使用與來源相同的伺服器設定來建立讀取複本。 複本伺服器設定在建立後可以變更。 複本伺服器一律會建立在相同的資源群組、與來源伺服器相同的位置和相同的訂用帳戶中。 如果您想要將複本伺服器建立到不同的資源群組或不同的訂閱，您可以在建立後[移動複本伺服器](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription)。 建議將複本伺服器的設定保留為等於或大於來源的值，以確保複本能夠跟上來源。
+> 使用與來源相同的伺服器設定來建立讀取複本。 複本伺服器設定在建立後可以變更。 複本伺服器一律會建立在相同的資源群組、與來源伺服器相同的位置和相同的訂用帳戶中。 如果您想要將複本伺服器建立到不同的資源群組或不同的訂閱，您可以在建立後[移動複本伺服器](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。 建議將複本伺服器的設定保留為等於或大於來源的值，以確保複本能夠跟上來源。
 
 
 ### <a name="list-replicas-for-a-source-server"></a>列出來源伺服器的複本

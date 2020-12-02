@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: eed68ff7e6b002e7a5985b336686b646a1a9acee
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a97f3bf3a479d956747755a421d7946f7aafd4f1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522941"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494234"
 ---
 # <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>從連線監視器遷移至連線監視器 (傳統) 
 
@@ -34,7 +34,7 @@ ms.locfileid: "95522941"
    * **警示**：自動遷移至新的計量。
    * **儀表板和** 整合：需要手動編輯計量集。 
     
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 如果您是使用自訂工作區，請確定您的訂用帳戶和 Log Analytics 工作區的區域中已啟用網路監看員。 
 
@@ -64,5 +64,5 @@ ms.locfileid: "95522941"
 ## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解連接監視器，請參閱：
-* [從網路效能監控遷移至連線監視器](/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor)
+* [從網路效能監控遷移至連線監視器](./migrate-to-connection-monitor-from-network-performance-monitor.md)
 * [使用 Azure 入口網站建立連線監視器](./connection-monitor-create-using-portal.md)

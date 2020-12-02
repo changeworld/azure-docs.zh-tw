@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: java、jakartaee、javaee、microprofile、開放式-自由、websphere-自由、aro、openshift、red hat
-ms.openlocfilehash: 41891b58942efbfd705747cc16219185f2a2daa2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0c17c911d1eefe646785314a26b6a9b1e964ca67
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018387"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493931"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>使用 Azure Red Hat OpenShift 4 叢集上的 Open 可自由/WebSphere，部署 JAVA 應用程式
 
@@ -20,31 +20,31 @@ ms.locfileid: "95018387"
 
 [!INCLUDE [aro-support](includes/aro-support.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 請完成下列必要條件，才能成功地逐步解說本指南。
 
 > [!NOTE]
-> Azure Red Hat OpenShift 至少需要 40 個核心，才能建立和執行 OpenShift 叢集。 新 Azure 訂用帳戶的預設 Azure 資源配額不符合這項需求。 若要要求增加資源限制，請參閱[標準配額：VM 系列的增加限制](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)。 請注意，免費試用訂用帳戶不符合配額增加的資格，請 [升級為隨用隨付訂](https://docs.microsoft.com/azure/cost-management-billing/manage/upgrade-azure-subscription) 用帳戶，再要求增加配額。
+> Azure Red Hat OpenShift 至少需要 40 個核心，才能建立和執行 OpenShift 叢集。 新 Azure 訂用帳戶的預設 Azure 資源配額不符合這項需求。 若要要求增加資源限制，請參閱[標準配額：VM 系列的增加限制](../azure-portal/supportability/per-vm-quota-requests.md)。 請注意，免費試用訂用帳戶不符合配額增加的資格，請 [升級為隨用隨付訂](../cost-management-billing/manage/upgrade-azure-subscription.md) 用帳戶，再要求增加配額。
 
 1. 使用已 (安裝 Unix 的作業系統（例如 Ubuntu、macOS) ）來準備本機電腦。
 1. 安裝 JAVA SE 執行 (例如 [AdoptOpenJDK OpenJDK 8 LTS/openj9 上執行](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=openj9)) 。
 1. 安裝 [Maven](https://maven.apache.org/download.cgi) 3.5.0 或更新版本。
 1. 安裝適用于您作業系統的 [Docker](https://docs.docker.com/get-docker/) 。
-1. 安裝 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) >2.0.75 或更新版本。
+1. 安裝 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) >2.0.75 或更新版本。
 1. [`envsubst`](https://command-not-found.com/envsubst)如果未預先安裝在您的作業系統中，請檢查並安裝。
 1. 在您的本機系統上複製此範例的程式碼。 範例是在 [GitHub](https://github.com/Azure-Samples/open-liberty-on-aro)上。
-1. 遵循 [建立 Azure Red Hat OpenShift 4](/azure/openshift/tutorial-create-cluster)叢集中的指示。
+1. 遵循 [建立 Azure Red Hat OpenShift 4](./tutorial-create-cluster.md)叢集中的指示。
 
    雖然「取得 Red Hat pull 秘密」步驟標示為選擇性，但 **這是本文的必要專案**。  提取密碼可讓您的 Azure Red Hat OpenShift 叢集找出開放式的「自由」操作員。
 
    如果您打算在叢集上執行需要大量記憶體的應用程式，請使用參數為背景工作節點指定適當的虛擬機器大小 `--worker-vm-size` 。 例如， `Standard_E4s_v3` 是在叢集上安裝 Elasticsearch 操作員的最小虛擬機器大小。 如需詳細資訊，請參閱
 
-   * [Azure CLI 建立叢集](https://docs.microsoft.com/cli/azure/aro?view=azure-cli-latest&preserve-view=true#az-aro-create)
-   * [記憶體優化的支援虛擬機器大小](/azure/openshift/support-policies-v4#memory-optimized)
+   * [Azure CLI 建立叢集](/cli/azure/aro?preserve-view=true&view=azure-cli-latest#az-aro-create)
+   * [記憶體優化的支援虛擬機器大小](./support-policies-v4.md#memory-optimized)
    * [安裝 Elasticsearch 操作員的必要條件](https://docs.openshift.com/container-platform/4.3/logging/cluster-logging-deploying.html#cluster-logging-deploy-eo-cli_cluster-logging-deploying)
 
-1. 遵循 [連接至 Azure Red Hat OpenShift 4](/azure/openshift/tutorial-connect-cluster)叢集中的步驟，連接到叢集。
+1. 遵循 [連接至 Azure Red Hat OpenShift 4](./tutorial-connect-cluster.md)叢集中的步驟，連接到叢集。
    * 請務必遵循「安裝 OpenShift CLI」中的步驟，因為我們將 `oc` 在本文稍後使用命令。
    * 寫下類似的叢集主控台 URL `https://console-openshift-console.apps.<random>.<region>.aroapp.io/` 。
    * 記下 `kubeadmin` 認證。
@@ -314,9 +314,9 @@ oc delete -f openlibertyapplication.yaml
 
 ## <a name="clean-up-resources"></a>清除資源
 
-遵循[教學課程：刪除 Azure Red Hat OpenShift 4](/azure/openshift/tutorial-delete-cluster)叢集中的步驟來刪除 ARO 叢集
+遵循[教學課程：刪除 Azure Red Hat OpenShift 4](./tutorial-delete-cluster.md)叢集中的步驟來刪除 ARO 叢集
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本指南中，您已瞭解如何：
 > [!div class="checklist"]

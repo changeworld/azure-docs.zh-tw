@@ -1,18 +1,18 @@
 ---
 title: Azure Data Factory 中的整頓資料流程
 description: Azure Data Factory 中的整頓資料流程總覽
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: fe3fd25753344c5ccfd21310ae01fca9962e3971
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 607ed6167ec761a6bf380a2cc420eb72f808f0a3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636063"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494863"
 ---
 # <a name="what-are-wrangling-data-flows"></a>什麼是整頓資料流程？
 
@@ -46,7 +46,7 @@ Azure Data Factory 中的整頓資料流程可讓您反復進行雲端規模的�
 
 ## <a name="supported-sources"></a>支援的來源
 
-| 連接器 | 資料格式 | 驗證類型 |
+| 連接子 | 資料格式 | 驗證類型 |
 | -- | -- | --|
 | [Azure Blob 儲存體](connector-azure-blob-storage.md) | CSV、Parquet | 帳戶金鑰 |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | 服務主體 |
