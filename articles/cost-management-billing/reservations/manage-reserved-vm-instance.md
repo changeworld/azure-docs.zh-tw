@@ -8,12 +8,12 @@ ms.reviewer: yashesvi
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 300ac0996d9dcb9ecb07abd3392447e393c1781b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 050984d58137ec03996572d2de41115073e4ab2b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151625"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338158"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 資源的保留
 
@@ -27,7 +27,7 @@ ms.locfileid: "92151625"
 
 ## <a name="reservation-order-and-reservation"></a>保留訂單和保留
 
-當您購買保留時，會建立兩個物件：**保留訂單**和**保留**。
+當您購買保留時，會建立兩個物件：**保留訂單** 和 **保留**。
 
 在購買時，保留訂單之下有一個保留。 分割、合併、部分退費或交換等動作會在 [保留訂單] 之下建立新的保留。
 
@@ -123,7 +123,7 @@ ms.locfileid: "92151625"
 3. 選取保留。
 4. 選取 [設定] > [組態]。  
   ![顯示組態項目的範例](./media/manage-reserved-vm-instance/add-product03.png)
-5. 變更**最佳化設定**。  
+5. 變更 **最佳化設定**。  
   ![顯示最佳化對象設定的範例](./media/manage-reserved-vm-instance/instance-size-flexibility-option.png)
 
 ## <a name="optimize-reservation-use"></a>將保留使用最佳化
@@ -168,7 +168,7 @@ ms.locfileid: "92151625"
 - [什麼是 Azure 的保留？](save-compute-costs-reservations.md)
 
 購買服務方案：
-- [預付具有 Azure 保留 VM 執行個體的虛擬機器](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [預付具有 Azure 保留 VM 執行個體的虛擬機器](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [以 Azure SQL Database 保留容量預先支付 SQL 資料庫計算資源的費用](../../azure-sql/database/reserved-capacity-overview.md)
 - [以 Azure Cosmos DB 保留容量預先支付 Azure Cosmos DB 資源的費用](../../cosmos-db/cosmos-db-reserved-capacity.md)
 

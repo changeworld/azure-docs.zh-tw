@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: e84afc949a84da90a4799d7db3b3e7ad3e0057a3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3fc7a7f137701590e4bddd791a3fdd2d1eaeca4a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323532"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461612"
 ---
 # <a name="quickstart-create-a-new-serverless-apache-spark-pool-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立新的無伺服器 Apache Spark 集區
 
@@ -89,7 +89,7 @@ Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、�
 若確定要刪除 Apache Spark 集區，請執行下列動作：
 
 1. 瀏覽至工作區中的 Apache Spark 集區刀鋒視窗。
-2. 選取要刪除的 Apache Spark 集區 (在此案例中為 **contosospark** )。
+2. 選取要刪除的 Apache Spark 集區 (在此案例中為 **contosospark**)。
 3. 按下 [刪除]。
  ![已選取最近建立之集區的 Apache Spark 集區清單。](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-08.png)
 4. 確認刪除，然後按 [刪除] 按鈕。
@@ -99,4 +99,4 @@ Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、�
 ## <a name="next-steps"></a>後續步驟
 
 - 請參閱[快速入門：建立 Apache Spark 筆記本](quickstart-apache-spark-notebook.md)。
-- 請參閱[快速入門：使用 Azure 入口網站建立 Synapse 專用 SQL 集區](quickstart-create-sql-pool-portal.md)。
+- 請參閱[快速入門：使用 Azure 入口網站建立專用的 SQL 集區](quickstart-create-sql-pool-portal.md)。

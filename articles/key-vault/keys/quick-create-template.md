@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: c16fc475e4982724ebc9f4f55301b6fc56dfb7c7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 73c52963df65dc4037f087a93108ccfacb3fb5d4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95017004"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461552"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template-preview"></a>快速入門：使用 ARM 範本建立 Azure 金鑰保存庫和金鑰 (預覽)
 
@@ -26,7 +26,7 @@ ms.locfileid: "95017004"
 若要完成此文章：
 
 - 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- 使用者必須具備已指派的 RBAC 內建角色，例如 參與者。 [請於此處深入了解](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- 使用者必須具備已指派的 RBAC 內建角色，例如 參與者。 [請於此處深入了解](../../role-based-access-control/role-assignments-portal.md)
 - 範本需要您的 Azure AD 使用者物件識別碼來設定權限。 下列程序會取得物件識別碼 (GUID)。
 
     1. 透過選取 [試試看] 來執行下列 Azure PowerShell 或 Azure CLI 命令，然後將指令碼貼到 Shell 窗格中。 若要貼上指令碼，請以滑鼠右鍵按一下 Shell，然後選取 [貼上]。

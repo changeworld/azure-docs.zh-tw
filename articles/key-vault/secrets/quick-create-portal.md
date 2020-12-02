@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 212e5fb62043c2ffe2b8876249a6aad1d224411d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 3d7e6357fd8f1091509cbf27875c028d3af310cb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685846"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445914"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站從 Azure Key Vault 設定及擷取祕密
 
@@ -45,13 +45,13 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
 1. 按一下 [產生/匯入]。
 1. 在 [建立祕密] 畫面上選擇下列值：
     - **上傳選項**：手動。
-    - **名稱**：輸入祕密的名稱。 秘密名稱在 Key Vault 內必須是唯一的。 其名稱必須是 1-127 個字元的字串，開頭必須是字母，且只能包含 0-9、a-z、A-Z 和 -。 如需命名的詳細資訊，請參閱 [Key Vault 物件、識別碼和版本設定](https://docs.microsoft.com/azure/key-vault/general/about-keys-secrets-certificates#objects-identifiers-and-versioning)
+    - **名稱**：輸入祕密的名稱。 秘密名稱在 Key Vault 內必須是唯一的。 其名稱必須是 1-127 個字元的字串，開頭必須是字母，且只能包含 0-9、a-z、A-Z 和 -。 如需命名的詳細資訊，請參閱 [Key Vault 物件、識別碼和版本設定](../general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning)
     - **值**：輸入祕密的值。 Key Vault API 會以字串的形式接受和傳回秘密值。 
     - 將其他的值保留預設值。 按一下頁面底部的 [新增]  。
 
 一旦收到已成功建立祕密的訊息，即可按一下清單上的祕密。 
 
-如需秘密屬性的詳細資訊，請參閱[關於 Azure Key Vault 秘密](https://docs.microsoft.com/azure/key-vault/secrets/about-secrets)
+如需秘密屬性的詳細資訊，請參閱[關於 Azure Key Vault 秘密](./about-secrets.md)
 
 ## <a name="retrieve-a-secret-from-key-vault"></a>從 Key Vault 擷取祕密
 
@@ -75,7 +75,7 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
 3. 在 [輸入資源群組名稱:] 方塊中輸入資源群組的名稱，然後選取 [刪除]。
 
 > [!NOTE]
-> 請務必注意，秘密、金鑰、憑證或金鑰保存庫在刪除後，會在可設定的期間 (日曆的 7 到 90 天) 內保持可復原的狀態。 若未指定任何設定，預設復原期間將會設為 90 天。 這可讓使用者有足夠的時間可注意到意外的秘密刪除，並予以因應。 如需關於刪除和復原金鑰保存庫和金鑰保存庫物件的詳細資訊，請參閱 [Azure Key Vault 虛刪除概觀](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)
+> 請務必注意，秘密、金鑰、憑證或金鑰保存庫在刪除後，會在可設定的期間 (日曆的 7 到 90 天) 內保持可復原的狀態。 若未指定任何設定，預設復原期間將會設為 90 天。 這可讓使用者有足夠的時間可注意到意外的秘密刪除，並予以因應。 如需關於刪除和復原金鑰保存庫和金鑰保存庫物件的詳細資訊，請參閱 [Azure Key Vault 虛刪除概觀](../general/soft-delete-overview.md)
 
 ## <a name="next-steps"></a>後續步驟
 

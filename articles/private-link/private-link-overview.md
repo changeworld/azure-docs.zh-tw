@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: ce3903bad4f7e4675406956ddedbc9011a6d2be8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: f4803cc9871b71e65e4d94ed37d3f9771be1cae0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522255"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454967"
 ---
 # <a name="what-is-azure-private-link"></a>什麼是 Azure Private Link？ 
 Azure Private Link 可讓您存取各項 Azure PaaS 服務 (例如 Azure 儲存體和 SQL Database)，並透過虛擬網路中的[私人端點](private-endpoint-overview.md)裝載 Azure 的客戶擁有/合作夥伴服務。
@@ -47,7 +47,7 @@ Azure Private Link 提供下列優點：
 | Azure 佇列儲存體       |  所有公用區域<br/> 所有政府區域       |  支援一般用途 V2 帳戶種類 | GA <br/> [了解如何建立佇列儲存體的私人端點。](tutorial-private-endpoint-storage-portal.md) |
 | Azure 資料表儲存體       |  所有公用區域<br/> 所有政府區域       |  支援一般用途 V2 帳戶種類 | GA <br/> [了解如何建立資料表儲存體的私人端點。](tutorial-private-endpoint-storage-portal.md)  |
 |  Azure SQL Database         | 所有公用區域 <br/> 所有政府區域<br/>所有中國區域      |  支援 Proxy [連線原則](../azure-sql/database/connectivity-architecture.md#connection-policy) | GA <br/> [了解如何建立 Azure SQL 的私人端點](create-private-endpoint-portal.md)      |
-|Azure Synapse Analytics (先前稱為 SQL 資料倉儲)| 所有公用區域 <br/> 所有政府區域 |  支援 Proxy [連線原則](../azure-sql/database/connectivity-architecture.md#connection-policy) |GA <br/> [了解如何建立 Azure Synapse Analytics 的私人端點。](../azure-sql/database/private-endpoint-overview.md)|
+|Azure Synapse Analytics| 所有公用區域 <br/> 所有政府區域 |  支援 Proxy [連線原則](../azure-sql/database/connectivity-architecture.md#connection-policy) |GA <br/> [了解如何建立 Azure Synapse Analytics 的私人端點。](../azure-sql/database/private-endpoint-overview.md)|
 |Azure Cosmos DB|  所有公用區域<br/> 所有政府區域</br> 所有中國區域 | |GA <br/> [了解如何建立 Cosmos DB 的私人端點。](./tutorial-private-endpoint-cosmosdb-portal.md)|
 |  適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器         | 所有公用區域 <br/> 所有政府區域<br/>所有中國區域     | 支援一般用途和記憶體最佳化定價層 | GA <br/> [了解如何為適用於 PostgreSQL 的 Azure 資料庫建立私人端點。](../postgresql/concepts-data-access-and-security-private-link.md)      |
 |  適用於 MySQL 的 Azure 資料庫         | 所有公用區域<br/> 所有政府區域<br/>所有中國區域      |  | GA <br/> [了解如何為適用於 MySQL 的 Azure 資料庫建立私人端點。](../mysql/concepts-data-access-security-private-link.md)     |

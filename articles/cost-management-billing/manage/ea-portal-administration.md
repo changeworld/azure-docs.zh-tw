@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperfq1
-ms.openlocfilehash: f18f1184f921aca4f2c1e33ac00dcf14c63b24eb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bb8a52a2258143e1c68ca46ac31a8c986b1bcfe7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95893353"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457128"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA 入口網站系統管理員
 
@@ -205,7 +205,7 @@ ms.locfileid: "95893353"
 1. 輸入與現有 Azure 帳戶相關聯的公司、學校或 Microsoft 帳戶。
 1. 確認與現有 Azure 帳戶相關聯的帳戶。
 1. 在報告中提供您想要用來識別此帳戶的名稱。
-1. 選取 [新增]  。
+1. 選取 [新增]。
 1. 若要新增其他帳戶，您可以再次選取 [+ 新增帳戶] 選項，或選取 [系統管理員] 按鈕返回首頁。
 1. 如果您檢視 [帳戶] 頁面，則新增的帳戶會以 [擱置] 狀態出現。
 
@@ -282,13 +282,13 @@ Azure EA 入口網站可協助您管理您的 Azure EA 成本和使用量。 Azu
 
 每個角色都有不同層級的存取權和授權。
 
-如需使用者角色的詳細資訊，請參閱[企業使用者角色](/azure/cost-management-billing/manage/understand-ea-roles#enterprise-user-roles)。
+如需使用者角色的詳細資訊，請參閱[企業使用者角色](./understand-ea-roles.md#enterprise-user-roles)。
 
 ## <a name="add-an-azure-ea-account"></a>新增 Azure EA 帳戶
 
 Azure EA 帳戶是 Azure EA 入口網站中的組織單位。 其可用來管理訂用帳戶，也可用來進行報告。 若要存取及使用 Azure 服務，您需要建立一個帳戶或讓人為您建立一個帳戶。
 
-如需有關 Azure 帳戶的詳細資訊，請參閱[新增帳戶](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-administration#add-an-account)。
+如需有關 Azure 帳戶的詳細資訊，請參閱[新增帳戶](#add-an-account)。
 
 ## <a name="enterprise-devtest-offer"></a>Enterprise 開發/測試供應項目
 
@@ -361,7 +361,7 @@ _Microsoft Azure 企業版_ 是建立訂用帳戶時的預設名稱。 您可以
 
 只有帳戶管理員可以取消訂用帳戶。
 
-如需詳細資訊，請參閱[取消訂用帳戶之後會發生什麼情況？](cancel-azure-subscription.md#what-happens-after-i-cancel-my-subscription)。
+如需詳細資訊，請參閱[取消訂用帳戶之後會發生什麼情況？](cancel-azure-subscription.md#what-happens-after-subscription-cancellation)。
 
 ## <a name="delete-an-account"></a>刪除帳戶
 

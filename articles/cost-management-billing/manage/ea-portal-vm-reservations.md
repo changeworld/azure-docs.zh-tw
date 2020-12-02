@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 16e325f029fc4c317a61db62df97ded5c213e0e5
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 7c8a35e7c8ecd0952f8e02b66c5071253d9b0445
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132528"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348920"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM 保留執行個體
 
@@ -65,7 +65,7 @@ Enterprise 合約客戶可以在 Azure 入口網站和 REST API 中檢視成本�
 
 若要購買 Azure 保留的虛擬機器執行個體，Azure Enterprise 註冊管理員必須啟用 [保留執行個體] 購買選項。 此選項在 [Azure EA 入口網站](https://ea.azure.com/)中位於 [註冊] 索引標籤上的 [註冊詳細資料] 區段中。
 
-一旦啟用 EA 註冊以新增保留執行個體後，任何具有 EA 註冊相關聯作用中訂用帳戶的帳戶擁有者，都可以在 [Azure 入口網站](https://aka.ms/reservations)中購買保留的虛擬機器執行個體。 如需詳細資訊，請參閱[預付虛擬機器並且使用保留的虛擬機器執行個體來節省成本](../../virtual-machines/windows/prepay-reserved-vm-instances.md)。
+一旦啟用 EA 註冊以新增保留執行個體後，任何具有 EA 註冊相關聯作用中訂用帳戶的帳戶擁有者，都可以在 [Azure 入口網站](https://aka.ms/reservations)中購買保留的虛擬機器執行個體。 如需詳細資訊，請參閱[預付虛擬機器並且使用保留的虛擬機器執行個體來節省成本](../../virtual-machines/prepay-reserved-vm-instances.md)。
 
 ### <a name="how-to-view-reserved-instance-purchase-details"></a>如何檢視保留執行個體購買詳細資料
 

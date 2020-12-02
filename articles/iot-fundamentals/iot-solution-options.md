@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 02/05/2020
 ms.author: dobett
-ms.openlocfilehash: 1afb24a0e3e78acb1d44185843538bd55c491edf
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7ff8193e87d138878d95e783d144d445436e7a08
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976771"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453011"
 ---
 # <a name="what-is-the-right-iot-solution-for-your-business"></a>適合您企業的 IoT 解決方案是什麼？
 
@@ -75,4 +75,4 @@ ms.locfileid: "91976771"
 
 若要深入了解成功 IoT 解決方案的重要屬性，請參閱[成功 IoT 解決方案的 8 個屬性](https://aka.ms/8attributes)白皮書。
 
-如需 IoT 架構的深入討論，請參閱 [Microsoft Azure IoT 參考架構](https://aka.ms/iotrefarchitecture)。
+如需 IoT 架構的深入討論，請參閱 [Microsoft Azure IoT 參考架構](/azure/architecture/reference-architectures/iot)。

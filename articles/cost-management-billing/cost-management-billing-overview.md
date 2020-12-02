@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: contentperfq2
-ms.openlocfilehash: 2c533ea08534444e5bf8d8d57d585e2bf975a93b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1dca2fa938c26ba45f162fae962aec0bfaf6cef7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677376"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353029"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>什麼是 Azure 成本管理 + 計費？
 
@@ -43,11 +43,11 @@ Azure 計費功能可用來檢閱您已開立發票的成本，並管理計費�
 
 Azure 入口網站目前支援下列計費帳戶類型：
 
-- **Microsoft Online Services 方案** ：當您透過 Azure 網站註冊 Azure 時，就會建立 Microsoft Online Services 方案的個別計費帳戶。 例如，當您註冊 Azure 免費帳戶、採用隨用隨付費率的帳戶，或以 Visual studio 訂閱者身分註冊時。
+- **Microsoft Online Services 方案**：當您透過 Azure 網站註冊 Azure 時，就會建立 Microsoft Online Services 方案的個別計費帳戶。 例如，當您註冊 Azure 免費帳戶、採用隨用隨付費率的帳戶，或以 Visual studio 訂閱者身分註冊時。
 
-- **Enterprise 合約** ：當貴組織簽署 Enterprise 合約 (EA) 以使用 Azure 時，就會建立 Enterprise 合約的計費帳戶。
+- **Enterprise 合約**：當貴組織簽署 Enterprise 合約 (EA) 以使用 Azure 時，就會建立 Enterprise 合約的計費帳戶。
 
-- **Microsoft 客戶合約** ：當貴組織與 Microsoft 代表共同簽署 Microsoft 客戶合約時，就會建立 Microsoft 客戶合約的計費帳戶。 精選區域中某些透過 Azure 網站註冊採用隨用隨付費率的帳戶或將其 Azure 免費帳戶升級的客戶，可能也有 Microsoft 客戶合約的計費帳戶。
+- **Microsoft 客戶合約**：當貴組織與 Microsoft 代表共同簽署 Microsoft 客戶合約時，就會建立 Microsoft 客戶合約的計費帳戶。 精選區域中某些透過 Azure 網站註冊採用隨用隨付費率的帳戶或將其 Azure 免費帳戶升級的客戶，可能也有 Microsoft 客戶合約的計費帳戶。
 
 ### <a name="scopes-for-billing-accounts"></a>計費帳戶的範圍
 範圍是計費帳戶內可供您用來檢視和管理計費的節點。 您可在此管理計費資料、付款、發票，以及進行一般帳戶管理。
@@ -108,7 +108,7 @@ Cloudyn 是一項與成本管理相關的 Azure 服務，即將在 2020 年底�
 Azure 有其他不屬於 Azure 成本管理 + 計費功能集的工具。 不過，它們在成本管理流程中扮演重要角色。 若要深入了解這些工具，請參閱下列連結。
 
 - [Azure 定價計算機](https://azure.microsoft.com/pricing/calculator/) - 使用此工具來評估您的前期雲端成本。
-- [Azure Migrate](/azure/migrate/migrate-services-overview) - 評估您目前的資料中心工作負載，以取得 Azure 替代解決方案需求的見解。
+- [Azure Migrate](../migrate/migrate-services-overview.md) - 評估您目前的資料中心工作負載，以取得 Azure 替代解決方案需求的見解。
 - [Azure Advisor](../advisor/advisor-overview.md) - 識別未使用的 VM，並接收有關 Azure 保留執行個體購買的建議。
 - [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) - 將您目前的內部部署 Windows Server 或 SQL Server 授權用於 Azure 中的 VM 以節省成本。
 

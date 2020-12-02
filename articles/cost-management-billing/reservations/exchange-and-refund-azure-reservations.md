@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 32db8396a687428c668a9b8a4213b50986614083
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 89b01205c08216b3ce1ec2d36cce48335b49eb47
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150134"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344278"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure 保留的自助式交換和退費
 
@@ -30,7 +30,7 @@ Azure 保留可提供彈性，以協助您滿足不斷演變的需求。 您可�
 
 1. 選取要退款的保留，然後選取 [交換]。  
     [![此範例影像顯示要退還的保留](./media/exchange-and-refund-azure-reservations/exchange-refund-return.png)](./media/exchange-and-refund-azure-reservations/exchange-refund-return.png#lightbox)
-1. 選取您要購買的 VM 產品，並輸入數量。 請確定新購買的金額總計高於退還的金額總計。 [購買之前請確認大小正確](../../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy)。  
+1. 選取您要購買的 VM 產品，並輸入數量。 請確定新購買的金額總計高於退還的金額總計。 [購買之前請確認大小正確](../../virtual-machines/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy)。  
     [![此範例影像顯示要透過交換來購買的 VM 產品](./media/exchange-and-refund-azure-reservations/exchange-refund-select-purchase.png)](./media/exchange-and-refund-azure-reservations/exchange-refund-select-purchase.png#lightbox)
 1. 檢閱並完成交易。  
     [![此範例影像顯示要透過交換來購買的 VM 產品，並完成退還](./media/exchange-and-refund-azure-reservations/exchange-refund-confirm-exchange.png)](./media/exchange-and-refund-azure-reservations/exchange-refund-confirm-exchange.png#lightbox)

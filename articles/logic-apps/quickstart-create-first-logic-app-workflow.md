@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/30/2020
-ms.openlocfilehash: 7433c51b45b0d8459ad1959b29f61660537b8851
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 9d402599c4d6732ce92b8c64af6f660bcedbc4ba
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337452"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455058"
 ---
 # <a name="quickstart-create-your-first-logic-apps-workflow---azure-portal"></a>快速入門：建立第一個 Logic Apps 工作流程 - Azure 入口網站
 
@@ -58,7 +58,7 @@ ms.locfileid: "94337452"
    | **訂用帳戶** | <*Azure-subscription-name*> | Azure 訂用帳戶的名稱。 |
    | **資源群組** | <*Azure-resource-group-name*> | 您要在其中建立邏輯應用程式之 [Azure 資源群組](../azure-resource-manager/management/overview.md#terminology) 的名稱。 資源群組的名稱在所有區域中必須是唯一的。 此範例使用 "My-First-LA-RG"。 |
    | **位置** | <*Azure-region*> | 用來存放邏輯應用程式資訊的 Azure 區域。 此範例使用「美國西部」。 |
-   | **Log Analytics** | 關閉 | 診斷記錄的設定，預設為 **關閉** 。 在此範例中，請保留 **關閉** 設定。 |
+   | **Log Analytics** | 關閉 | 診斷記錄的設定，預設為 **關閉**。 在此範例中，請保留 **關閉** 設定。 |
    ||||
 
    ![Logic Apps建立窗格的螢幕擷取畫面，其中顯示包含新邏輯應用程式詳細資料的窗格。](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
@@ -112,7 +112,7 @@ ms.locfileid: "94337452"
 
 ## <a name="add-the-send-email-action"></a>新增 [傳送電子郵件] 動作
 
-在[為邏輯應用程式新增觸發程序後](#add-rss-trigger)，您必須在邏輯應用程式檢查 RSS 摘要並出現新項目時，新增[動作](../logic-apps/logic-apps-overview.md#logic-app-concepts)以決定回應。 您也可以建立具有更複雜動作的邏輯應用程式，例如在[使用 Logic Apps、Azure Functions 和 Azure 儲存體中處理電子郵件](/azure/logic-apps/tutorial-process-email-attachments-workflow)教學課程中提到的內容。
+在[為邏輯應用程式新增觸發程序後](#add-rss-trigger)，您必須在邏輯應用程式檢查 RSS 摘要並出現新項目時，新增[動作](../logic-apps/logic-apps-overview.md#logic-app-concepts)以決定回應。 您也可以建立具有更複雜動作的邏輯應用程式，例如在[使用 Logic Apps、Azure Functions 和 Azure 儲存體中處理電子郵件](./tutorial-process-email-attachments-workflow.md)教學課程中提到的內容。
 
 > [!NOTE]
 > 此範例使用 Office 365 Outlook 作為電子郵件服務。 如果您在邏輯應用程式中使用其他支援的電子郵件服務，使用者介面看起來可能不同。 不過，與另一個電子郵件服務連線的基本概念仍然相同。
@@ -167,9 +167,9 @@ ms.locfileid: "94337452"
 
       ![Logic Apps 設計工具的螢幕擷取畫面，顯示「傳送電子郵件」動作，以及包含「摘要標題」屬性的範例電子郵件主旨。](./media/quickstart-create-first-logic-app-workflow/send-email-feed-title.png)
 
-      如果 "For each" 迴圈出現在設計工具上，表示您選取了陣列的權杖，例如 **categories-item** 權杖。 對於這類權杖，設計工具會自動對參考該權杖的動作新增此迴圈。 如此一來，邏輯應用程式會在每個陣列項目上執行相同動作。 若要移除迴圈，請選取迴圈標題列上的 **省略符號** ( **...** )，然後選取 [刪除]。
+      如果 "For each" 迴圈出現在設計工具上，表示您選取了陣列的權杖，例如 **categories-item** 權杖。 對於這類權杖，設計工具會自動對參考該權杖的動作新增此迴圈。 如此一來，邏輯應用程式會在每個陣列項目上執行相同動作。 若要移除迴圈，請選取迴圈標題列上的 **省略符號** (**...**)，然後選取 [刪除]。
 
-   1. 在 **內文** 方塊中，輸入電子郵件內文的內容。 在此範例中，內容包含三個具有描述性文字的屬性，分別為：`Title:`，也就是 **摘要標題** 屬性;`Date published:`； **發佈的摘要** 屬性以及 `Link:`，也就是 **主要摘要連結** 屬性。 若要在編輯方塊中新增空白的行，請按 Shift + Enter。
+   1. 在 **內文** 方塊中，輸入電子郵件內文的內容。 在此範例中，內容包含三個具有描述性文字的屬性，分別為：`Title:`，也就是 **摘要標題** 屬性;`Date published:`；**發佈的摘要** 屬性以及 `Link:`，也就是 **主要摘要連結** 屬性。 若要在編輯方塊中新增空白的行，請按 Shift + Enter。
 
       | 屬性 | 描述 |
       |----------|-------------|

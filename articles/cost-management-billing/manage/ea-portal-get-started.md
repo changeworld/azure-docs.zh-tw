@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 15e45143d1da5ac405b3e408df197ab04b4dea39
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 0f4f4d934361f1e59eceaaccca680f0cf155bb04
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412267"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348954"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>開始使用 Azure 企業版入口網站
 
@@ -44,33 +44,33 @@ ms.locfileid: "94412267"
 - 部門系統管理員 (唯讀)
 - 帳戶擁有者
 
-每個角色都有不同程度的使用者限制和權限。 如需詳細資訊，請參閱[組織結構及依權限的角色](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-ea-roles#organization-structure-and-permissions-by-role)。
+每個角色都有不同程度的使用者限制和權限。 如需詳細資訊，請參閱[組織結構及依權限的角色](./understand-ea-roles.md#organization-structure-and-permissions-by-role)。
 
 ## <a name="activate-your-enrollment-create-a-subscription-and-other-administrative-tasks"></a>啟用您的註冊、建立訂用帳戶，及執行其他管理工作
 
-如需關於啟用註冊、建立部門或訂用帳戶、新增系統管理員和帳戶擁有者，以及執行其他管理工作的詳細資訊，請參閱 [Azure EA 入口網站管理](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-administration)。
+如需關於啟用註冊、建立部門或訂用帳戶、新增系統管理員和帳戶擁有者，以及執行其他管理工作的詳細資訊，請參閱 [Azure EA 入口網站管理](./ea-portal-administration.md)。
 
-若要深入了解如何將企業版訂用帳戶轉移至隨用隨付訂用帳戶，請參閱 [Azure 企業版轉移](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-transfers)。
+若要深入了解如何將企業版訂用帳戶轉移至隨用隨付訂用帳戶，請參閱 [Azure 企業版轉移](./ea-transfers.md)。
 
 ## <a name="view-usage-summary-and-download-reports"></a>檢視使用量摘要及下載報表
 
 您可以管理 Azure EA 發票並對其採取行動。 您的發票即代表帳單，您應該仔細檢查其正確性。
 
-若要檢視使用摘要、下載報表，以及管理註冊發票，請參閱 [Azure 企業版註冊發票](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-enrollment-invoices)。
+若要檢視使用摘要、下載報表，以及管理註冊發票，請參閱 [Azure 企業版註冊發票](./ea-portal-enrollment-invoices.md)。
 
 ## <a name="now-that-youre-familiar-with-the-basics-here-are-some-additional-links-to-help-you-get-onboarded"></a>現在您已熟悉基本概念，以下是一些可協助您進行上線的其他連結
 
-[Azure EA 定價](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-pricing-overview)提供如何計算使用量的詳細資料，並解說 Enterprise 合約中計算方式較為複雜的 Azure 服務費用。
+[Azure EA 定價](./ea-pricing-overview.md)提供如何計算使用量的詳細資料，並解說 Enterprise 合約中計算方式較為複雜的 Azure 服務費用。
 
-如果您想要知道 VM 保留執行個體的 Azure 保留如何協助您透過企業版註冊節省經費，請參閱 [Azure EA VM 保留執行個體](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-vm-reservations)。
+如果您想要知道 VM 保留執行個體的 Azure 保留如何協助您透過企業版註冊節省經費，請參閱 [Azure EA VM 保留執行個體](./ea-portal-vm-reservations.md)。
 
-如需關於應使用哪些 REST API 進行 Azure 企業版註冊的資訊，以及如何解決 REST API 常見問題的說明，請參閱 [Azure 企業版 REST API](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis)。
+如需關於應使用哪些 REST API 進行 Azure 企業版註冊的資訊，以及如何解決 REST API 常見問題的說明，請參閱 [Azure 企業版 REST API](./ea-portal-rest-apis.md)。
 
-[Azure EA 合約和修訂文件](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-agreements)會說明 Azure EA 合約和修訂文件對您存取、使用和支付 Azure 服務的方式有何影響。
+[Azure EA 合約和修訂文件](./ea-portal-agreements.md)會說明 Azure EA 合約和修訂文件對您存取、使用和支付 Azure 服務的方式有何影響。
 
-[Azure Marketplace](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-azure-marketplace) 會說明 EA 客戶和合作夥伴如何檢視市集費用，以及啟用 Azure Marketplace 購買。
+[Azure Marketplace](./ea-azure-marketplace.md) 會說明 EA 客戶和合作夥伴如何檢視市集費用，以及啟用 Azure Marketplace 購買。
 
-如需合作夥伴 EA 系統管理員在 Azure EA 入口網站中完成之一般工作的說明，請參閱[適用於合作夥伴的 Azure EA 入口網站管理](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-partner-portal-administration)。
+如需合作夥伴 EA 系統管理員在 Azure EA 入口網站中完成之一般工作的說明，請參閱[適用於合作夥伴的 Azure EA 入口網站管理](./ea-partner-portal-administration.md)。
 
 ## <a name="get-started-on-azure-ea---faq"></a>開始使用 Azure EA - 常見問題集
 
@@ -132,7 +132,7 @@ Azure 企業版入口網站為企業客戶提供兩種類型的訂用帳戶：
 
 建立部門和訂用帳戶之後，您可以在使用量報告中查看資料。 此資訊可協助您追蹤使用量，以及管理部門層級的成本與支出。
 
-您也可以透過報告 API 來存取使用量資料。 如需詳細資訊和範例程式碼，請參閱 [Azure Enterprise REST API](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis)。
+您也可以透過報告 API 來存取使用量資料。 如需詳細資訊和範例程式碼，請參閱 [Azure Enterprise REST API](./ea-portal-rest-apis.md)。
 
 ### <a name="can-i-set-a-spending-quota-and-get-alerts-as-i-approach-my-limit"></a>我可以設定消費配額，並在接近限制時收到警示嗎？
 
@@ -144,7 +144,7 @@ Azure 企業版入口網站為企業客戶提供兩種類型的訂用帳戶：
 
 如果您使用「資源群組」和「標記」，則會在服務層級追蹤此資訊，而且您可在詳細使用量下載 (CSV) 檔案中加以存取。 請參閱 Azure 企業版入口網站中的[下載使用量報告](https://ea.azure.com/report/downloadusage)。
 
-您也可以透過 API 存取使用量。 如需詳細資訊和範例程式碼，請參閱 [Azure Enterprise REST API](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis)。
+您也可以透過 API 存取使用量。 如需詳細資訊和範例程式碼，請參閱 [Azure Enterprise REST API](./ea-portal-rest-apis.md)。
 
 > [!NOTE]
 > 您只能將標籤套用到支援 Azure Resource Manager 作業的資源。 如果您透過傳統部署模型 (例如透過傳統入口網站) 建立虛擬機器、虛擬網路或儲存體，就無法將標記套用至該資源。 您必須透過 Resource Manager 重新部署這些資源才能支援標記。 所有其他資源皆支援標記。

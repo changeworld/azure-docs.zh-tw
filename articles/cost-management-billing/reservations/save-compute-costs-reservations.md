@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: overview
 ms.date: 11/18/2020
 ms.author: banders
-ms.openlocfilehash: eef19a6c421a64c3951d35eea78ea84f7e7d97b2
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 0ef3f833d1bac4f26f49ace2b366cdfcf5ef3e35
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887207"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352978"
 ---
 # <a name="what-are-azure-reservations"></a>什麼是 Azure 保留項目？
 
@@ -125,7 +125,7 @@ Azure 保留可提供彈性，以協助您滿足不斷演變的需求。 您可�
     - [合作夥伴中心雲端解決方案提供者 (CSP) 計畫中的 Azure 保留項目](/partner-center/azure-reservations)
 
 - 深入了解服務方案的保留：
-    - [具有 Azure 保留 VM 執行個體的虛擬機器](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+    - [具有 Azure 保留 VM 執行個體的虛擬機器](../../virtual-machines/prepay-reserved-vm-instances.md)
     - [具有 Azure Cosmos DB 保留容量的 Azure Cosmos DB 資源](../../cosmos-db/cosmos-db-reserved-capacity.md)
     - [具有 Azure SQL Database 保留容量的 SQL Database 計算資源](../../azure-sql/database/reserved-capacity-overview.md)
     - [具有 Azure Cache for Redis 保留容量的Azure Cache for Redis 資源](../../azure-cache-for-redis/cache-reserved-pricing.md) 深入了解軟體方案的保留：

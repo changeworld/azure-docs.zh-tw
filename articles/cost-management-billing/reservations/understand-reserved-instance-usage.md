@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 2b00c90abce915ae6fd645cbcce3536870609558
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 522b67e62e7ad8560bb48e8d056ca6daeeb45251
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447880"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350903"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>了解個別訂用帳戶 (採用隨用隨付費率) 的 Azure 保留使用量
 
@@ -47,7 +47,7 @@ CSV 檔案的這個區段會顯示保留的整體使用量。 請對包含 **"Re
 
 ### <a name="daily-usage-section-of-csv-file"></a>CSV 檔案的「每日使用量」區段
 
-篩選**其他資訊**並輸入**保留識別碼**。 以下螢幕擷取畫面顯示和此保留相關的欄位。
+篩選 **其他資訊** 並輸入 **保留識別碼**。 以下螢幕擷取畫面顯示和此保留相關的欄位。
 
 ![每日使用量詳細資料與費用的螢幕擷取畫面](./media/understand-reserved-instance-usage/billing-payg-reserved-instance-csv-details.png)
 
@@ -80,7 +80,7 @@ CSV 檔案的這個區段會顯示保留的整體使用量。 請對包含 **"Re
 
 ### <a name="detail-section-of-csv-file"></a>CSV 檔案的「詳細資料」區段
 
-篩選**其他資訊**並輸入**保留識別碼**。 以下螢幕擷取畫面顯示與 SQL Database 保留容量相關的欄位。
+篩選 **其他資訊** 並輸入 **保留識別碼**。 以下螢幕擷取畫面顯示與 SQL Database 保留容量相關的欄位。
 
 ![顯示保留容量之 CSV 檔案詳細資料的螢幕擷取畫面。](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
 
@@ -97,7 +97,7 @@ CSV 檔案的這個區段會顯示保留的整體使用量。 請對包含 **"Re
 若要深入了解 Azure 保留項目，請參閱下列文章：
 
 - [什麼是 Azure 保留項目？](save-compute-costs-reservations.md)
-- [預付具有 Azure 保留 VM 執行個體的虛擬機器](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [預付具有 Azure 保留 VM 執行個體的虛擬機器](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [以 Azure SQL Database 保留容量預先支付 SQL 資料庫計算資源的費用](../../azure-sql/database/reserved-capacity-overview.md)
 - [管理 Azure 保留項目](manage-reserved-vm-instance.md)
 - [了解保留項目折扣的套用方式](../manage/understand-vm-reservation-charges.md)

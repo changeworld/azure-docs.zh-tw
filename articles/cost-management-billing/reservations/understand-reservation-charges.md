@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: banders
-ms.openlocfilehash: 054641d8136d121e611182c8d8b104aefcbc6481
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 99f2c9c16f2ca2147a6e6da333ff64116e42aecc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057870"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338076"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-sql-database"></a>保留折扣套用至 Azure SQL Database 的方式
 
@@ -55,7 +55,7 @@ SQL Database 保留容量折扣會套用至執行中的 SQL Database (以小時�
 若要深入了解 Azure 保留項目，請參閱下列文章：
 
 - [什麼是 Azure 保留項目？](save-compute-costs-reservations.md)
-- [預付具有 Azure 保留 VM 執行個體的虛擬機器](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [預付具有 Azure 保留 VM 執行個體的虛擬機器](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [以 Azure SQL Database 保留容量預先支付 SQL 資料庫計算資源的費用](../../azure-sql/database/reserved-capacity-overview.md)
 - [管理 Azure 保留項目](manage-reserved-vm-instance.md)
 - [了解隨用隨付訂用帳戶的保留使用量](understand-reserved-instance-usage.md)

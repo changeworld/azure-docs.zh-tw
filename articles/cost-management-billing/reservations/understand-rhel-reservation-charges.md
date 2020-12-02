@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: 311ce7edc617b02e62f4e4fefc7393318f99a1a9
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 8e735d623cc991d2e3720e0ec418eee77aa8c46c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148265"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350852"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>了解 Azure 會如何套用 Red Hat Linux Enterprise 軟體保留方案折扣
 
@@ -54,7 +54,7 @@ Azure 入口網站市集名稱：
 
 - [什麼是 Azure 的保留](save-compute-costs-reservations.md)
 - [使用 Azure 保留來預付 Red Hat 軟體方案](../../virtual-machines/linux/prepay-suse-software-charges.md)
-- [預付具有 Azure 保留 VM 執行個體的虛擬機器](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [預付具有 Azure 保留 VM 執行個體的虛擬機器](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [管理 Azure 的保留](manage-reserved-vm-instance.md)
 - [了解隨用隨付訂用帳戶的保留使用量](understand-reserved-instance-usage.md)
 - [了解 Enterprise 註冊的保留項目使用量](understand-reserved-instance-usage-ea.md)

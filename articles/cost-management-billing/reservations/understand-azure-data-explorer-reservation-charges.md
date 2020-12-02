@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: af2dc8378d1f1fe952a568ecb4bd89d088e3e3d3
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b222e4ff519fbe2fbb4fa58b39555ac9fead0917
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147232"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352910"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>了解保留折扣如何套用至 Azure 資料總管
 
@@ -29,7 +29,7 @@ ms.locfileid: "92147232"
 保留折扣會以每小時為基礎，套用至 Azure 資料總管加成使用量。 針對執行時間不滿一小時的 Azure 資料總管資源，保留折扣會自動套用至其他符合保留屬性的資料總管資源。 此折扣可套用至同時執行的 Azure 資料總管資源。 如果沒有既執行滿一個小時又符合保留屬性的 Azure 資料總管資源，您就無法獲得該小時保留折扣的完整權益。
 
 > [!NOTE]
-> * **強烈建議**為 Azure 資料總管叢集所使用的虛擬機器購買[保留容量](../../virtual-machines/windows/prepay-reserved-vm-instances.md)，以節省最多保留容量。
+> * **強烈建議** 為 Azure 資料總管叢集所使用的虛擬機器購買 [保留容量](../../virtual-machines/prepay-reserved-vm-instances.md)，以節省最多保留容量。
 > * 保留購買會將折扣套用至所有區域。
 
 ## <a name="examples"></a>範例

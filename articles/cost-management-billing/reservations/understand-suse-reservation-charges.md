@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: banders
-ms.openlocfilehash: 3b936cb15114d81d1dff1eb052a9bafe01adeff7
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2c17b2f9dc12fa7bff2dae8603bcf95a3a8ddfa0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681680"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350835"
 ---
 # <a name="azure-software-plan-discount"></a>Azure 軟體方案折扣
 
@@ -33,7 +33,7 @@ SUSE 和 RedHat 的 Azure 軟體方案是已部署的 VM 所適用的保留。 �
 
 請從您的使用量資料取得產品名稱，並購買具有相同類型和大小的 RedHat 方案。
 
-例如，如果您的使用量資料中包含 **Red Hat Enterprise Linux - 1-4 vCPU VM 授權**產品，則您應購買適用於 **1-4 vCPU VM** 的 **Red Hat Enterprise Linux**。
+例如，如果您的使用量資料中包含 **Red Hat Enterprise Linux - 1-4 vCPU VM 授權** 產品，則您應購買適用於 **1-4 vCPU VM** 的 **Red Hat Enterprise Linux**。
 
 <!--ADD RHEL SCREENSHOT -->
 
@@ -41,7 +41,7 @@ SUSE 和 RedHat 的 Azure 軟體方案是已部署的 VM 所適用的保留。 �
 
 請從您的使用量資料取得產品名稱，並購買具有相同類型和大小的 SUSE 方案。
 
-例如，如果您的使用量資料中包含 **SUSE Linux Enterprise Server Priority - 2-4 vCPU VM 支援**產品，則您應購買適用於 **2-4 vCPU** 的 **SUSE Linux Enterprise Server Priority**。
+例如，如果您的使用量資料中包含 **SUSE Linux Enterprise Server Priority - 2-4 vCPU VM 支援** 產品，則您應購買適用於 **2-4 vCPU** 的 **SUSE Linux Enterprise Server Priority**。
 
 ![選取要購買何種產品的範例](./media/understand-suse-reservation-charges/select-suse-linux-enterprise-server-priority-2-4-vcpu.png)
 
@@ -123,7 +123,7 @@ Azure 入口網站市集名稱：
 
 - [什麼是 Azure 保留項目？](save-compute-costs-reservations.md)
 - [使用 Azure Reservations 預付 SUSE 軟體方案](../../virtual-machines/linux/prepay-suse-software-charges.md)
-- [預付具有 Azure 保留 VM 執行個體的虛擬機器](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [預付具有 Azure 保留 VM 執行個體的虛擬機器](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [管理 Azure 保留項目](manage-reserved-vm-instance.md)
 - [了解隨用隨付訂用帳戶的保留使用量](understand-reserved-instance-usage.md)
 - [了解 Enterprise 註冊的保留項目使用量](understand-reserved-instance-usage-ea.md)

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 4bae9e28a22a99d092db2bf887f0cd790e04c52a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 23ec79b7e3989c9749edf98d930ad8305324c9da
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91318549"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454015"
 ---
 # <a name="what-is-the-azure-stack-edge-mini-r"></a>Azure Stack Edge Mini R 是什麼？
 
@@ -45,7 +45,7 @@ Azure Stack Edge Mini R 具有下列功能：
 
 以下是 Azure Stack Edge Mini R 可用於該邊緣的快速 Machine Learning (ML) 推斷，並在將資料傳送到 Azure 之前先進行預先處理的各種案例。
 
-- **使用 Azure Machine Learning 進行推斷** ：透過 Azure Stack Edge Mini R，您可以執行 ML 模型，以便在將資料傳送到雲端之前快速取得可據以採取動作的結果。 完整資料集可以選擇性地進行傳輸，以繼續重新定型並改善您的 ML 模型。 如需如何在 Azure Stack Edge Mini R 裝置上使用 Azure ML 硬體加速模型的詳細資訊，請參閱[在 Azure Stack Edge Mini R 上部署 Azure ML 硬體加速模型](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server) \(部分機器翻譯\)。
+- **使用 Azure Machine Learning 進行推斷**：透過 Azure Stack Edge Mini R，您可以執行 ML 模型，以便在將資料傳送到雲端之前快速取得可據以採取動作的結果。 完整資料集可以選擇性地進行傳輸，以繼續重新定型並改善您的 ML 模型。 如需如何在 Azure Stack Edge Mini R 裝置上使用 Azure ML 硬體加速模型的詳細資訊，請參閱[在 Azure Stack Edge Mini R 上部署 Azure ML 硬體加速模型](../machine-learning/how-to-deploy-fpga-web-service.md#deploy-to-a-local-edge-server) \(部分機器翻譯\)。
 
 - **前置處理資料** - 先透過計算選項 (例如容器化工作負載和虛擬機器) 轉換資料，再將資料傳送至 Azure，以建立更容易操作的資料集。 預先處理功能可用來：
 
@@ -54,7 +54,7 @@ Azure Stack Edge Mini R 具有下列功能：
     - 子集資料可將儲存體和頻寬最佳化，或用於進一步分析。
     - 分析並對 IoT 事件做出反應。
 
-- **透過網路將資料傳輸到 Azure** ：使用 Azure Stack Edge Mini R，輕鬆且快速地將資料傳輸到 Azure，以進行進一步的運算和分析，或基於封存目的使用。
+- **透過網路將資料傳輸到 Azure**：使用 Azure Stack Edge Mini R，輕鬆且快速地將資料傳輸到 Azure，以進行進一步的運算和分析，或基於封存目的使用。
 
 ## <a name="components"></a>元件
 
@@ -73,7 +73,7 @@ Azure Stack Edge Mini R 解決方案由 Azure Stack Edge 資源、Azure Stack Ed
 
 Azure Stack Edge Mini R 實體裝置、Azure 資源，以及您要傳輸資料的目標儲存體帳戶，不需全都位於相同區域。
 
-- **資源可用性** ：如需 Azure Stack Edge 適用區域的完整清單，請移至 [依區域提供的 Azure 產品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 
+- **資源可用性**：如需 Azure Stack Edge 適用區域的完整清單，請移至 [依區域提供的 Azure 產品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 
 
 - **裝置可用性** - 如需適用 Azure Stack Edge Mini R 裝置的所有國家/地區的清單，請移至 [Azure Stack Edge Mini R 定價](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgeMiniR)，參閱 [Azure Stack Edge Mini R] 索引標籤中的 [可用性] 區段。
 
@@ -83,5 +83,3 @@ Azure Stack Edge Mini R 實體裝置、Azure 資源，以及您要傳輸資料�
 ## <a name="next-steps"></a>後續步驟
 
 - 檢閱 [ 系統需求](azure-stack-edge-gpu-system-requirements.md)。
-
-

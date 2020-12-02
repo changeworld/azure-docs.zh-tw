@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/09/2020
 ms.author: alkohli
-ms.openlocfilehash: 7030030699668b3d316743955dabfb2cc175f6e1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 51469c23574f55c102f0c6fb98e5aa5178b59a4a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90893887"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455738"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-fpga"></a>Azure Stack Edge Pro with FPGA 是什麼？
 
@@ -27,7 +27,7 @@ Azure Stack Edge Pro with FPGA 是一種硬體即服務解決方案。 Microsoft
 
 以下是 Azure Stack Edge Pro 可用於該邊緣的快速 Machine Learning (ML) 推斷，並在將資料傳送到 Azure 之前先進行預先處理的各種案例。
 
-- **使用 Azure Machine Learning 進行推斷**：透過 Azure Stack Edge Pro，您可以執行 ML 模型，以便在將資料傳送到雲端之前快速取得可據以採取動作的結果。 完整資料集可以選擇性地進行傳輸，以繼續重新定型並改善您的 ML 模型。 如需如何在 Azure Stack Edge Pro 裝置上使用 Azure ML 硬體加速模型的詳細資訊，請參閱[在 Azure Stack Edge Pro 上部署 Azure ML 硬體加速模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server) \(部分機器翻譯\)。
+- **使用 Azure Machine Learning 進行推斷**：透過 Azure Stack Edge Pro，您可以執行 ML 模型，以便在將資料傳送到雲端之前快速取得可據以採取動作的結果。 完整資料集可以選擇性地進行傳輸，以繼續重新定型並改善您的 ML 模型。 如需如何在 Azure Stack Edge Pro 裝置上使用 Azure ML 硬體加速模型的詳細資訊，請參閱[在 Azure Stack Edge Pro 上部署 Azure ML 硬體加速模型](../machine-learning/how-to-deploy-fpga-web-service.md#deploy-to-a-local-edge-server) \(部分機器翻譯\)。
 
 - **預先處理資料** - 在將資料傳送至 Azure 之前先轉換資料，以建立更可操作的資料集。 預先處理功能可用來： 
 
@@ -78,7 +78,7 @@ Azure Stack Edge Pro 解決方案由 Azure Stack Edge 資源、Azure Stack Edge 
 
 Azure Stack Edge Pro 實體裝置、Azure 資源，以及您要傳輸資料的目標儲存體帳戶，不需全都位於相同區域。
 
-- **資源可用性**：如需 Azure Stack Edge 適用區域的完整清單，請參閱[依區域提供的 Azure 產品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 Azure Stack Edge Pro 也可部署於 Azure Government 雲端。 如需詳細資訊，請參閱[何謂 Azure Government？](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)。
+- **資源可用性**：如需 Azure Stack Edge 適用區域的完整清單，請參閱 [依區域提供的 Azure 產品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 Azure Stack Edge Pro 也可部署於 Azure Government 雲端。 如需詳細資訊，請參閱[何謂 Azure Government？](../azure-government/documentation-government-welcome.md)。
     
 - **目的地儲存體帳戶** - 儲存資料的儲存體帳戶在所有 Azure 區域都可用。 若要獲得最佳效能，儲存 Azure Stack Edge Pro 資料的儲存體帳戶應位於接近裝置所在的位置。 儲存體帳戶的位置若離裝置遙遠，將會導致較長的延遲時間與較緩慢的效能。
 
