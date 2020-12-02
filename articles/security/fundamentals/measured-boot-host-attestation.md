@@ -8,19 +8,19 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
-ms.openlocfilehash: 73ae811c17a578cafc557b0cda9e98b101dd5c03
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: f4906d4e0590df047bac4ee15cb0e996a59c3d5b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557559"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498858"
 ---
 # <a name="measured-boot-and-host-attestation"></a>測量開機和主機證明
 本文說明 Microsoft 如何透過測量的開機和主機證明，來確保主機的完整性和安全性。
 
 ## <a name="measured-boot"></a>測量的開機
 
-[信賴平臺模組](https://docs.microsoft.com/windows/security/information-protection/tpm/trusted-platform-module-top-node) (TPM) 是由受信任的協力廠商所提供的一種防密碼編譯安全審核元件。 開機設定記錄檔中所記錄的雜湊連結量值， (PCR 在主機最後進行啟動載入序列時) 。 下圖顯示此記錄程式。 以累加方式將先前的雜湊量值新增至下一個測量的雜湊，並在 union 完成雜湊鏈上執行雜湊演算法。
+[信賴平臺模組](/windows/security/information-protection/tpm/trusted-platform-module-top-node) (TPM) 是由受信任的協力廠商所提供的一種防密碼編譯安全審核元件。 開機設定記錄檔中所記錄的雜湊連結量值， (PCR 在主機最後進行啟動載入序列時) 。 下圖顯示此記錄程式。 以累加方式將先前的雜湊量值新增至下一個測量的雜湊，並在 union 完成雜湊鏈上執行雜湊演算法。
 
 ![顯示主機證明服務雜湊鏈的圖表。](./media/measured-boot-host-attestation/hash-chaining.png)
 
@@ -54,8 +54,8 @@ UEFI [安全開機](secure-boot.md) 可確保只有受信任的低層級軟體�
 ## <a name="next-steps"></a>後續步驟
 若要深入瞭解我們要如何驅動平臺完整性和安全性，請參閱：
 
-- [固件安全性](firmware.md)
+- [韌體安全性](firmware.md)
 - [安全開機](secure-boot.md)
 - [專案 Cerberus](project-cerberus.md)
 - [待用加密](encryption-atrest.md)
-- [虛擬程式安全性](hypervisor.md)
+- [Hypervisor 安全性](hypervisor.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d6cf0ba06293a073fc8fbe26e2386f1852429002
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: dcfef81f2d7f3413489490d97c143fdec7e11bed
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843990"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499317"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>關於 Azure IaaS VM 磁碟及受控和非受控進階磁碟的常見問題集
 
@@ -151,7 +151,7 @@ Azure 磁碟保留可供選擇購買指定 SKU 中從 P30 (1 TiB) 最高到 P80 
 保留是以磁碟的形式進行，而不是容量。 換句話說，當保留 P80 (32 TiB) 磁碟時，就會取得一個 P80 磁碟，您無法將該特定保留分割成兩個較小的 P70 (16 TiB) 磁碟。 當然，您可保留任意數量的磁碟，包括兩個不同的 P70 (16 TiB) 磁碟。
 
 **Azure 磁碟保留的應用方式為何？**     
-磁碟保留所遵循模型類似於保留的虛擬機器 (VM) 執行個體。 其差異在於，磁碟保留無法應用於不同的 SKU，而 VM 執行個體則可。 如需 VM 執行個體的詳細資訊，請參閱[利用 Azure 保留的 VM 執行個體以節省成本](./linux/prepay-reserved-vm-instances.md)。     
+磁碟保留所遵循模型類似於保留的虛擬機器 (VM) 執行個體。 其差異在於，磁碟保留無法應用於不同的 SKU，而 VM 執行個體則可。 如需 VM 執行個體的詳細資訊，請參閱[利用 Azure 保留的 VM 執行個體以節省成本](./prepay-reserved-vm-instances.md)。     
 
 **我可在多個區域中使用透過 Azure 磁碟保留所購買的資料儲存體嗎？**     
 Azure 磁碟保留是針對特定區域和 SKU (例如美國東部 2 中的 P30) 來購買，因此不能在這些建構外使用。 您一律可針對其他區域或 SKU 中的磁碟儲存體需求來購買額外 Azure 磁碟保留。    

@@ -3,19 +3,19 @@ title: Azure Data Factory 中的運算式和函式
 description: 本文提供可用來建立資料處理站實體的運算式和函式相關資訊。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: 24347d86a99251d0bf02d5ea5cb6985df5814b29
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 3c966f0efc51a3b2fa8908e060b4031ae1ad1e50
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635179"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500014"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory 中的運算式和函式
 
@@ -68,7 +68,7 @@ ms.locfileid: "92635179"
 ### <a name="complex-expression-example"></a>複雜運算式範例
 下列範例顯示的複雜範例參考活動輸出的深度子欄位。 若要參考評估為子欄位的管道參數，請使用 [] 語法，而不是點 (.) 運算子 (如同 subfield1 和 subfield2 的情況)
 
-@activity ( ' *activityName* ' ) 。輸出。 *subfield1* 。 *subfield2* [管線 ( # A3. 參數。 *subfield3* ]。 *subfield4*
+@activity ( '*activityName*' ) 。輸出。*subfield1*。*subfield2*[管線 ( # A3. 參數。*subfield3*]。*subfield4*
 
 ### <a name="a-dataset-with-a-parameter"></a>具有參數的資料集
 在以下範例中，BlobDataset 會採用一個名為 **path** 的參數。 其值會藉由使用下列運算式，設定 **folderPath** 屬性的值：`dataset().path`。 
@@ -95,7 +95,7 @@ ms.locfileid: "92635179"
 ```
 
 ### <a name="a-pipeline-with-a-parameter"></a>具有參數的管線
-在以下範例中，管線會採用 **inputPath** 和 **outputPath** 參數。 這些參數的值會用來設定參數化 Blob 資料集的 **path** 。 這裡使用的語法為：`pipeline().parameters.parametername`. 
+在以下範例中，管線會採用 **inputPath** 和 **outputPath** 參數。 這些參數的值會用來設定參數化 Blob 資料集的 **path**。 這裡使用的語法為：`pipeline().parameters.parametername`. 
 
 ```json
 {
@@ -243,7 +243,7 @@ ms.locfileid: "92635179"
 | [xpath](control-flow-expression-language-functions.md#xpath) | 檢查 XML 中是否有符合 XPath (XML 路徑語言) 運算式的節點或值，並傳回符合的節點或值。 |
 
 ## <a name="math-functions"></a>數學函數  
- 這些函式可用於任一類型的數字︰ **整數** 和 **浮點數** 。  
+ 這些函式可用於任一類型的數字︰**整數** 和 **浮點數**。  
 
 | 數學函式 | Task |
 | ------------- | ---- |
@@ -298,7 +298,7 @@ add(<summand_1>, <summand_2>)
 
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*summand_1* >, < *summand_2*> | 是 | 整數、浮點數或混合 | 要相加的數字 |
+| <*summand_1*>, <*summand_2*> | 是 | 整數、浮點數或混合 | 要相加的數字 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -541,7 +541,7 @@ and(<expression1>, <expression2>)
 
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*運算式運算式* >，<的 *運算式* 2> | 是 | Boolean | 要檢查的運算式 |
+| <*運算式運算式*>，<的 *運算式* 2> | 是 | Boolean | 要檢查的運算式 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -599,7 +599,7 @@ array('<value>')
 
 | 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| [< *value* >] | Array | 包含單一指定輸入的陣列 |
+| [<*value*>] | Array | 包含單一指定輸入的陣列 |
 ||||
 
 *範例*
@@ -785,7 +785,7 @@ coalesce(<object_1>, <object_2>, ...)
 
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*object_1* >, < *object_2* >, ... | 是 | 任何類型，可以是混合類型 | 要檢查是否有 Null 的一個或多個項目 |
+| <*object_1*>, <*object_2*>, ... | 是 | 任何類型，可以是混合類型 | 要檢查是否有 Null 的一個或多個項目 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -821,7 +821,7 @@ concat('<text1>', '<text2>', ...)
 
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*text1* >, < *text2* >, ... | 是 | String | 要結合的至少兩個字串 |
+| <*text1*>, <*text2*>, ... | 是 | String | 要結合的至少兩個字串 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -1025,12 +1025,12 @@ createArray('<object1>', '<object2>', ...)
 
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*object1* >, < *object2* >, ... | 是 | 任何類型，但不能是混合 | 用來建立陣列的至少兩個項目 |
+| <*object1*>, <*object2*>, ... | 是 | 任何類型，但不能是混合 | 用來建立陣列的至少兩個項目 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| [< *object1* >, < *object2* >, ...] | Array | 從所有輸入項目建立的陣列 |
+| [<*object1*>, <*object2*>, ...] | Array | 從所有輸入項目建立的陣列 |
 ||||
 
 *範例*
@@ -1486,7 +1486,7 @@ equals('<object1>', '<object2>')
 
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*object1* >, < *object2*> | 是 | 各種類型 | 要比較的值、運算式或物件 |
+| <*object1*>, <*object2*> | 是 | 各種類型 | 要比較的值、運算式或物件 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -1980,7 +1980,7 @@ intersection('<collection1>', '<collection2>', ...)
 
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*collection1* >, < *collection2* >, ... | 是 | 陣列或物件，但不可以兩者並存 | 您想要其中「只有」共同項目的集合 |
+| <*collection1*>, <*collection2*>, ... | 是 | 陣列或物件，但不可以兩者並存 | 您想要其中「只有」共同項目的集合 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -2016,7 +2016,7 @@ join([<collection>], '<delimiter>')
 
 | 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*char1*><*delimiter*><*char2*><*delimiter* >... | String | 從指定陣列中所有項目建立的結果字串 |
+| <*char1*><*delimiter*><*char2*><*delimiter*>... | String | 從指定陣列中所有項目建立的結果字串 |
 ||||
 
 *範例*
@@ -2215,8 +2215,8 @@ max([<number1>, <number2>, ...])
 
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*number1* >, < *number2* >, ... | 是 | 整數、浮點數或兩者並存 | 您需要其中最大值的數字集合 |
-| [< *number1* >, < *number2* >, ...] | 是 | 陣列 - 整數、浮點數或兩者並存 | 您需要其中最大值的數字陣列 |
+| <*number1*>, <*number2*>, ... | 是 | 整數、浮點數或兩者並存 | 您需要其中最大值的數字集合 |
+| [<*number1*>, <*number2*>, ...] | 是 | 陣列 - 整數、浮點數或兩者並存 | 您需要其中最大值的數字陣列 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -2248,8 +2248,8 @@ min([<number1>, <number2>, ...])
 
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*number1* >, < *number2* >, ... | 是 | 整數、浮點數或兩者並存 | 您需要其中最小值的數字集合 |
-| [< *number1* >, < *number2* >, ...] | 是 | 陣列 - 整數、浮點數或兩者並存 | 您需要其中最小值的數字陣列 |
+| <*number1*>, <*number2*>, ... | 是 | 整數、浮點數或兩者並存 | 您需要其中最小值的數字集合 |
+| [<*number1*>, <*number2*>, ...] | 是 | 陣列 - 整數、浮點數或兩者並存 | 您需要其中最小值的數字陣列 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -2397,7 +2397,7 @@ or(<expression1>, <expression2>)
 
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*運算式運算式* >，<的 *運算式* 2> | 是 | Boolean | 要檢查的運算式 |
+| <*運算式運算式*>，<的 *運算式* 2> | 是 | Boolean | 要檢查的運算式 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -2482,7 +2482,7 @@ range(<startIndex>, <count>)
 
 | 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| [< *range-result* >] | Array | 從指定索引開始的整數陣列 |
+| [<*range-result*>] | Array | 從指定索引開始的整數陣列 |
 ||||
 
 *範例*
@@ -2545,7 +2545,7 @@ skip([<collection>], <count>)
 
 | 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| [< *updated-collection* >] | Array | 移除指定項目之後的更新集合 |
+| [<*updated-collection*>] | Array | 移除指定項目之後的更新集合 |
 ||||
 
 *範例*
@@ -2576,7 +2576,7 @@ split('<text>', '<delimiter>')
 
 | 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| [< *substring1* >,< *substring2* >,...] | Array | 包含來自原始字串並以逗號分隔之子字串的陣列 |
+| [<*substring1*>,<*substring2*>,...] | Array | 包含來自原始字串並以逗號分隔之子字串的陣列 |
 ||||
 
 *範例*
@@ -2892,7 +2892,7 @@ take([<collection>], <count>)
 
 | 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*subset* > 或 [< *subset* >] | 個別的字串或陣列 | 從原始集合前端取得指定項目數量的字串或陣列 |
+| <*subset*> 或 [<*subset*>] | 個別的字串或陣列 | 從原始集合前端取得指定項目數量的字串或陣列 |
 ||||
 
 *範例*
@@ -3034,7 +3034,7 @@ union([<collection1>], [<collection2>], ...)
 
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*collection1* >, < *collection2* >, ...  | 是 | 陣列或物件，但不可以兩者並存 | 您想要其中「所有」項目的集合 |
+| <*collection1*>, <*collection2*>, ...  | 是 | 陣列或物件，但不可以兩者並存 | 您想要其中「所有」項目的集合 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -3159,7 +3159,7 @@ uriComponentToString('http%3A%2F%2Fcontoso.com')
 utcNow('<format>')
 ```
 
-您可以選擇性地以 < *format* > 參數指定不同格式。
+您可以選擇性地以 <*format*> 參數指定不同格式。
 
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
@@ -3271,7 +3271,7 @@ xpath('<xml>', '<xpath>')
 | ------------ | ---- | ----------- |
 | <*xml-node*> | XML | 只有單一節點符合指定的 XPath 運算式時會傳回 XML 節點 |
 | <*value*> | 任意 | 只有單一值符合指定的 XPath 運算式時，會傳回 XML 節點的值 |
-| [< *xml-node1* >, < *xml-node2* >, ...] </br>-或- </br>[< *value1* >, < *value2* >, ...] | Array | 陣列，其中有符合指定 XPath 運算式的 XML 節點或值 |
+| [<*xml-node1*>, <*xml-node2*>, ...] </br>-或- </br>[<*value1*>, <*value2*>, ...] | Array | 陣列，其中有符合指定 XPath 運算式的 XML 節點或值 |
 ||||
 
 *範例 1*

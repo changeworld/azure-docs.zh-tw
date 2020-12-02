@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 7d11fa8605d9cd5f335b6be56097caf7a5222bbd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3d3ce8218030bc8ba6c59b26b7360bf2299e02a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006936"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499810"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>透過 Azure 監視器記錄監視 Site Recovery
 
@@ -36,20 +36,20 @@ Azure 監視器記錄檔會提供記錄資料平臺，以收集活動和資源�
 
 - 至少有一部機器在復原服務保存庫中受到保護。
 - 用以儲存 Site Recovery 記錄的 Log Analytics 工作區。 [瞭解如何](../azure-monitor/learn/quick-create-workspace.md) 設定工作區。
-- 如何在 Log Analytics 中撰寫、執行及分析記錄查詢的基本知識。 [深入了解](../azure-monitor/log-query/get-started-portal.md)。
+- 如何在 Log Analytics 中撰寫、執行及分析記錄查詢的基本知識。 [深入了解](../azure-monitor/log-query/log-analytics-tutorial.md)。
 
 在開始之前，建議您先複習 [常見的監視問題](monitoring-common-questions.md) 。
 
 ## <a name="configure-site-recovery-to-send-logs"></a>設定 Site Recovery 以傳送記錄
 
-1. 在保存庫中，按一下 [**診斷**設定  >  **新增診斷設定**]。
+1. 在保存庫中，按一下 [**診斷** 設定  >  **新增診斷設定**]。
 
     ![顯示 [新增診斷設定] 選項的螢幕擷取畫面。](./media/monitoring-log-analytics/add-diagnostic.png)
 
 2. 在 [ **診斷設定**] 中指定名稱，然後選取 [ **傳送至 Log Analytics**] 方塊。
 3. 選取 [Azure 監視器記錄] 訂用帳戶和 Log Analytics 工作區。
 4. 選取切換中的 **Azure 診斷** 。
-5. 從記錄清單中，選取前置詞為 **AzureSiteRecovery**的所有記錄。 然後按一下 [確定] 。
+5. 從記錄清單中，選取前置詞為 **AzureSiteRecovery** 的所有記錄。 然後按一下 [確定] 。
 
     ![[診斷設定] 畫面的螢幕擷取畫面。](./media/monitoring-log-analytics/select-workspace.png)
 

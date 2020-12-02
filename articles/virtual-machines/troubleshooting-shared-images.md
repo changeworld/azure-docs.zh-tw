@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: d15f58a2d87483e8e2fd6711481bfe8866ca1548
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 74e1dc12be9bfec57d76357a335b46a55912f6df
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920605"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500269"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>針對 Azure 中的共用映射資源庫進行疑難排解
 
@@ -137,7 +137,7 @@ ms.locfileid: "94920605"
 
 *此區域不支援 ZRS 儲存體帳戶類型。*  
 **原因**：您已在尚未支援的區域中，選擇標準區域冗余儲存體 (ZRS) 。  
-因應 **措施：將** 儲存體帳戶類型變更為 **Premium \_ LRS** 或 **標準 \_ LRS**。 請參閱我們的檔，以取得已啟用 ZRS 預覽版的最新 [區域清單](/azure/storage/common/storage-redundancy#zone-redundant-storage) 。
+因應 **措施：將** 儲存體帳戶類型變更為 **Premium \_ LRS** 或 **標準 \_ LRS**。 請參閱我們的檔，以取得已啟用 ZRS 預覽版的最新 [區域清單](../storage/common/storage-redundancy.md#zone-redundant-storage) 。
 
 ## <a name="creating-or-updating-image-versions"></a>建立或更新映射版本 ##
 

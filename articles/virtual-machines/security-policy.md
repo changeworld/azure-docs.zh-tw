@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 83d291ae72e79ec3600015fac07ee4ab80fe5df4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b7f6d30ffa849f78b0f7baa2d84e4fb01f3bf192
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843548"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500337"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>在 Azure 中的虛擬機器上保護及使用原則
 
@@ -41,7 +41,7 @@ Azure 受控磁碟依預設會在將資料保存到雲端時，自動加密您�
 
 您可以依賴由平台管理的金鑰來加密受控磁碟，也可以使用您自己的金鑰來管理加密。 如果您選擇使用自己的金鑰來管理加密，您可以指定 *客戶管理的金鑰*，以用於加密和解密受控磁碟中的所有資料。 
 
-若要深入瞭解伺服器端加密，請參閱 [Windows](windows/disk-encryption.md) 或 [Linux](linux/disk-encryption.md)的文章。
+若要深入瞭解伺服器端加密，請參閱 [Windows](./disk-encryption.md) 或 [Linux](./disk-encryption.md)的文章。
 
 ### <a name="azure-disk-encryption"></a>Azure 磁碟加密
 
@@ -73,4 +73,4 @@ Azure Active Directory (Azure AD) 中適用於 Azure 資源的受控識別功能
 
 
 ## <a name="next-steps"></a>後續步驟
-- 逐步執行步驟，以使用 Azure 資訊安全中心來監視 [Linux](../security/fundamentals/overview.md) 或 [Windows](windows/tutorial-azure-security.md) 虛擬機器安全性。
+- 逐步執行步驟，以使用 Azure 資訊安全中心來監視 [Linux](../security/fundamentals/overview.md) 或 [Windows](./tutorial-azure-security.md) 虛擬機器安全性。

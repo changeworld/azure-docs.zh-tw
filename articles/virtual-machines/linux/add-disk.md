@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 7098744fe012c994e311696a376cd7ed0dc9ac53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9520196c8dce9ea511c2f3b799bd12b34c6f988f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89076611"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499742"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>在 Linux VM 中新增磁碟
 
@@ -34,7 +34,7 @@ az vm disk attach \
 
 ## <a name="attach-an-existing-disk"></a>連接現有磁碟
 
-若要連結現有磁碟，請找出磁碟識別碼，並將識別碼傳遞到 [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest) 命令。 下列範例會查詢 myResourceGroup** 中名為 myDataDisk** 的磁碟，然後將其連結至名為 myVM** 的 VM：
+若要連結現有磁碟，請找出磁碟識別碼，並將識別碼傳遞到 [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest) 命令。 下列範例會查詢 myResourceGroup 中名為 myDataDisk 的磁碟，然後將其連結至名為 myVM 的 VM：
 
 ```azurecli
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
@@ -44,7 +44,7 @@ az vm disk attach -g myResourceGroup --vm-name myVM --name $diskId
 
 ## <a name="format-and-mount-the-disk"></a>格式化和掛接磁片
 
-若要分割、格式化和掛接新磁碟以供 Linux VM 使用，請使用 SSH 登入您的 VM。 如需詳細資訊，請參閱[如何在 Azure 上搭配使用 SSH 與 Linux](mac-create-ssh-keys.md)。 下列範例會使用 *10.123.123.25* 的公用 IP 位址和使用者名稱 *>azureuser*來連線至 VM：
+若要分割、格式化和掛接新磁碟以供 Linux VM 使用，請使用 SSH 登入您的 VM。 如需詳細資訊，請參閱[如何在 Azure 上搭配使用 SSH 與 Linux](mac-create-ssh-keys.md)。 下列範例會使用 *10.123.123.25* 的公用 IP 位址和使用者名稱 *>azureuser* 來連線至 VM：
 
 ```bash
 ssh azureuser@10.123.123.25
@@ -182,4 +182,4 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   xfs   defaults,nofail  
 ## <a name="next-steps"></a>後續步驟
 
 * 若要確保您的 Linux VM 已正確設定，請檢閱 [最佳化您的 Linux 機器效能](optimization.md) 建議。
-* 新增其他磁碟以擴充儲存體容量，並 [設定 RAID](configure-raid.md) 以提升效能。
+* 新增其他磁碟以擴充儲存體容量，並 [設定 RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) 以提升效能。

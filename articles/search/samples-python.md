@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: 3de630552f7ad2cc941fe23369398c10ffce5870
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 244408cc512a51683ecb3c062113170b1c7f4781
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686656"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499555"
 ---
 # <a name="python-code-samples-for-azure-cognitive-search"></a>Azure 認知搜尋的 Python 程式碼範例
 
@@ -45,7 +45,7 @@ ms.locfileid: "94686656"
 
 ## <a name="documentation-samples"></a>文件和範例
 
-下列範例有 [Azure 認知搜尋檔](https://docs.microsoft.com/azure/search/)中的相關文章。
+下列範例有 [Azure 認知搜尋檔](./index.yml)中的相關文章。
 
 | 範例 | 描述 | 
 |---------|-------------|

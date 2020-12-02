@@ -4,15 +4,15 @@ description: 了解如何使用 Excel 來連接到 Azure Analysis Services 伺�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c91cfe24aa7a5dd224fd1aed31b6b0dee44e687f
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: fccb919a7eac79080fefeac70326b8aa7a967622
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352808"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499465"
 ---
 # <a name="connect-with-excel"></a>使用 Excel 進行連接
 
@@ -42,5 +42,5 @@ ms.locfileid: "96352808"
 
 ## <a name="see-also"></a>另請參閱
 
-[用戶端程式庫](/analysis-services/client-libraries?view=azure-analysis-services-current)   
+[用戶端程式庫](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true)   
 [管理您的伺服器](analysis-services-manage.md)

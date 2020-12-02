@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e594dab3e4bf36fedee7a068068934501ca02f24
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 07ef3da9f67de92c3526b83222c1c8088660d7c7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842782"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499861"
 ---
 # <a name="azure-security-baseline-for-azure-cognitive-search"></a>適用于 Azure 認知搜尋的 Azure 安全性基準
 
@@ -64,7 +64,7 @@ ms.locfileid: "94842782"
 
 **指導** 方針：認知搜尋不提供特定功能來對抗分散式阻絕服務攻擊，但您可以在與認知搜尋服務相關聯的虛擬網路上啟用 DDoS 保護標準，以進行一般保護。
 
-- [如何設定 DDoS 保護](../virtual-network/manage-ddos-protection.md)
+- [如何設定 DDoS 保護](../ddos-protection/manage-ddos-protection.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -223,7 +223,7 @@ ms.locfileid: "94842782"
 
 - [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
-- [了解 Log Analytics](../azure-monitor/log-query/get-started-portal.md)
+- [了解 Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [如何在 Azure 監視器中執行自訂查詢](../azure-monitor/log-query/get-started-queries.md)
 
@@ -275,7 +275,7 @@ ms.locfileid: "94842782"
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
-**指導** 方針： azure 角色型存取控制 (azure RBAC) 可讓您透過角色指派來管理 Azure 資源的存取權。 您可以將這些角色指派給使用者、群組服務主體和受控識別。 某些資源有預先定義的內建角色，而這些角色可透過 Azure CLI、Azure PowerShell 或 Azure 入口網站等工具進行清查或查詢。
+**指導** 方針： azure 角色型存取控制 (azure RBAC) 可讓您透過角色指派來管理 Azure 資源的存取權。 您可以將這些角色指派給使用者、群組服務主體和受控識別。 某些資源有預先定義的內建角色，這些角色可透過 Azure CLI、Azure PowerShell 或 Azure 入口網站之類的工具進行清查或查詢。
 
 認知搜尋角色會與支援服務等級管理工作的許可權相關聯。  這些角色不會授與服務端點的存取權。 存取端點的作業， (例如索引管理、索引擴展和搜尋資料) 的查詢，請使用 API 金鑰來驗證要求。
 
@@ -374,7 +374,7 @@ ms.locfileid: "94842782"
 
 **指導** 方針：使用 Azure Active Directory (Azure AD) 做為 Azure 認知搜尋中服務層級管理工作的中央驗證和授權系統。 Azure AD 身分識別不會授與搜尋服務端點的存取權。  您可以透過 API 金鑰存取索引管理、索引填入和搜尋資料查詢等作業。
 
-- [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何建立及設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 - [建立及管理 Azure 認知搜尋服務的 api 金鑰](./search-security-api-keys.md)
 
@@ -390,7 +390,7 @@ ms.locfileid: "94842782"
 
 - [瞭解 Azure AD 報告](../active-directory/reports-monitoring/index.yml)
 
-- [如何使用 Azure AD 身分識別和存取權評論](../active-directory/governance/access-reviews-overview.md)
+- [如何使用 Azure AD 身分識別和存取權檢閱](../active-directory/governance/access-reviews-overview.md)
 
 - [監視 Azure 認知搜尋的作業和活動](./search-monitor-usage.md)
 
@@ -522,7 +522,7 @@ Microsoft 會管理認知搜尋的基礎結構，並已實行嚴格的控制，�
 
 - [在 Azure 認知搜尋中設定客戶管理的金鑰進行資料加密](./search-security-manage-encryption-keys.md)
 
-- [瞭解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md)
+- [了解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -956,7 +956,7 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 - [備份和還原 Azure 認知搜尋索引](/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
 
-- [如何啟用 Key Vault 中的虛刪除和清除保護](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
+- [如何在 Key Vault 中啟用虛刪除和清除保護](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal) (機器翻譯)
 
 - [Azure Blob 儲存體的虛刪除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
@@ -1044,9 +1044,9 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
-**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對受 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 的策略和執行的 Red 小組和即時網站滲透測試。
+**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 對於紅隊和即時網站滲透測試的策略和執行方法。
 - [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
-- [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 資訊安全中心監視**：不適用
 

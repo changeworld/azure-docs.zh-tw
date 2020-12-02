@@ -4,16 +4,16 @@ description: 了解如何在 Azure 連線至 Analysis Services 伺服器並從�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 93b1e9a2ea052a39e891cf9084b632f434c341df
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 4abe1e9c6f9d7b62792936f816b9c46a937be41a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013690"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499419"
 ---
 # <a name="connecting-to-servers"></a>連線至伺服器
 
@@ -21,7 +21,7 @@ ms.locfileid: "92013690"
 
 ## <a name="client-libraries"></a>用戶端程式庫
 
-[取得最新的用戶端程式庫](/analysis-services/client-libraries?view=azure-analysis-services-current)
+[取得最新的用戶端程式庫](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true)
 
 所有連到伺服器的連線 (不論是哪一種類型) 都需要已更新的 AMO、ADOMD.NET 及 OLEDB 用戶端程式庫，才能連接到 Analysis Services 伺服器並與其銜接。 針對 SSMS、Visual Studio、Excel 2016 和更新版本，以及 Power BI，最新的用戶端程式庫會隨著每月版本安裝或更新。 不過，在某些情況下，應用程式的版本可能不會是最新的。 例如，當原則延遲更新，或 Microsoft 365 更新在延遲通道上時。
 
@@ -39,7 +39,7 @@ ms.locfileid: "92013690"
 
 ### <a name="get-the-server-name"></a>取得伺服器名稱
 
-在 [Azure 入口網站]**** > 伺服器 > [概觀] **** >  [伺服器名稱]**** 中，複製整個伺服器名稱。 如果您組織中的其他使用者也會連線到這部伺服器，您可以將此伺服器名稱告訴他們。 指定伺服器名稱時，必須使用完整路徑。
+在 [Azure 入口網站] > 伺服器 > [概觀]  >  [伺服器名稱] 中，複製整個伺服器名稱。 如果您組織中的其他使用者也會連線到這部伺服器，您可以將此伺服器名稱告訴他們。 指定伺服器名稱時，必須使用完整路徑。
 
 ![在 Azure 中取得伺服器名稱](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 
@@ -79,9 +79,9 @@ ms.locfileid: "92013690"
 
 ## <a name="connect-as-a-linked-server-from-sql-server"></a>從 SQL Server 連接到連結伺服器
 
-SQL Server 可以將 MSOLAP 指定為數據源提供者，以 [連結伺服器](/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine) 的形式連接至 Azure Analysis Services 資源。 設定連結的伺服器連線之前，請務必安裝最新的 [MSOLAP 用戶端程式庫](/analysis-services/client-libraries?view=azure-analysis-services-current) (提供者) 。 
+SQL Server 可以將 MSOLAP 指定為數據源提供者，以 [連結伺服器](/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine) 的形式連接至 Azure Analysis Services 資源。 設定連結的伺服器連線之前，請務必安裝最新的 [MSOLAP 用戶端程式庫](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true) (提供者) 。 
 
-針對與 Azure Analysis Services 的連結伺服器連接，MSOLAP 提供者必須在 SQL Server 進程之外具現化。 設定連結的伺服器選項時，請確定**未選取**[**允許進程進程**] 選項。
+針對與 Azure Analysis Services 的連結伺服器連接，MSOLAP 提供者必須在 SQL Server 進程之外具現化。 設定連結的伺服器選項時，請確定 **未選取**[**允許進程進程**] 選項。
 
 如果已選取 [ **允許進程進程** ]，並且在 SQL Server 進程中具現化提供者，則會傳回下列錯誤：
 

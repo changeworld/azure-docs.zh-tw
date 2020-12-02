@@ -3,16 +3,16 @@ title: Azure 服務匯流排訂用帳戶規則 SQL 篩選語法 |Microsoft Docs
 description: 本文提供 SQL 篩選文法的詳細資料。 SQL 篩選器支援 SQL-92 標準的子集。
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: bd263e8177652165376d4f6fe9e231af71ebdcbe
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 9bff18b2161e419d728c360c9ed950ac2867fea8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95805624"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498671"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>訂用帳戶規則 SQL 篩選語法
 
-*SQL 篩選* 是服務匯流排主題訂用帳戶的其中一個可用篩選器類型。 它是仰賴在 SQL-92 標準子集上的文字運算式。 篩選條件運算式可搭配 `sqlExpression` Azure Resource Manager 範本中服務匯流排的 ' >sqlfilter ' 屬性元素 `Rule` ，或 Azure CLI [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md) `az servicebus topic subscription rule create` 命令的 [`--filter-sql-expression`](https://docs.microsoft.com/cli/azure/servicebus/topic/subscription/rule?view=azure-cli-latest&preserve-view=true#az_servicebus_topic_subscription_rule_create) 引數，以及數個允許管理訂用帳戶規則的 SDK 函數。
+*SQL 篩選* 是服務匯流排主題訂用帳戶的其中一個可用篩選器類型。 它是仰賴在 SQL-92 標準子集上的文字運算式。 篩選條件運算式可搭配 `sqlExpression` Azure Resource Manager 範本中服務匯流排的 ' >sqlfilter ' 屬性元素 `Rule` ，或 Azure CLI [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md) `az servicebus topic subscription rule create` 命令的 [`--filter-sql-expression`](/cli/azure/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create) 引數，以及數個允許管理訂用帳戶規則的 SDK 函數。
 
 服務匯流排 Premium 也透過 JMS 2.0 API 支援 [JMS SQL 訊息選取器語法](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html) 。
 

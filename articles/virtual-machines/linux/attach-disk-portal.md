@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 565b781b5015f82cafe4e47be2170f2327660821
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8f60c83417e9c614ca30f140e6acbbf08e5643cf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971586"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500643"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>使用入口網站將資料磁碟附加至 Linux VM 
 本文示範如何透過 Azure 入口網站將新的及現有的磁碟連結到 Linux 虛擬機器。 您也可以[在 Azure 入口網站中將資料磁碟連結到 Windows VM](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
@@ -20,7 +20,7 @@ ms.locfileid: "91971586"
 將磁碟附加至 VM 之前，請檢閱下列提示︰
 
 * 虛擬機器的大小會控制您可以連接的資料磁碟數目。 如需詳細資訊，請參閱 [虛擬機器的大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-* 附加至虛擬機器的磁碟實際上是 Azure 中儲存的 .vhd 檔案。 如需詳細資料，請參閱我們的[受控磁碟簡介](../managed-disks-overview.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)。
+* 附加至虛擬機器的磁碟實際上是 Azure 中儲存的 .vhd 檔案。 如需詳細資料，請參閱我們的[受控磁碟簡介](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 * 連接磁碟之後，您必須[連線到 Linux VM 才能掛接新的磁碟](#connect-to-the-linux-vm-to-mount-the-new-disk)。
 
 
@@ -34,7 +34,7 @@ ms.locfileid: "91971586"
 
 1. 在 [ **磁片** ] 窗格的 [ **資料磁片**] 底下，選取 [ **建立並連結新的磁片**]。
 
-1. 輸入受控磁碟的名稱。 查看預設設定，並視需要更新 **儲存體類型**、 **大小 (GiB) **、 **加密** 和 **主機** 快取。
+1. 輸入受控磁碟的名稱。 查看預設設定，並視需要更新 **儲存體類型**、 **大小 (GiB)**、 **加密** 和 **主機** 快取。
    
    :::image type="content" source="./media/attach-disk-portal/create-new-md.png" alt-text="檢查磁片設定。":::
 
@@ -50,7 +50,7 @@ ms.locfileid: "91971586"
    
 
 ## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>連接到 Linux VM 以掛接新磁碟
-若要分割、格式化和掛接新磁碟以供 Linux VM 使用，請使用 SSH 登入您的 VM。 如需詳細資訊，請參閱[如何在 Azure 上搭配使用 SSH 與 Linux](mac-create-ssh-keys.md)。 下列範例會使用 *10.123.123.25* 的公用 IP 位址和使用者名稱 *>azureuser*來連線至 VM： 
+若要分割、格式化和掛接新磁碟以供 Linux VM 使用，請使用 SSH 登入您的 VM。 如需詳細資訊，請參閱[如何在 Azure 上搭配使用 SSH 與 Linux](mac-create-ssh-keys.md)。 下列範例會使用 *10.123.123.25* 的公用 IP 位址和使用者名稱 *>azureuser* 來連線至 VM： 
 
 ```bash
 ssh azureuser@10.123.123.25

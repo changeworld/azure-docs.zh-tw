@@ -3,20 +3,20 @@ title: 在 Azure Data Factory 中執行管線活動
 description: 了解如何使用「執行管線活動」從一個資料處理站管線叫用另一個資料處理站管線。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 4bd667a2302136b5e12d2e4e548c9e8863715621
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7df636bbdc85b9fcdcbfef260daca905f9949d8c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81415284"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500035"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>在 Azure Data Factory 中執行管線活動
 
@@ -70,7 +70,7 @@ NAME | 執行管線活動的名稱。 | String | 是
 type | 必須設為：**ExecutePipeline**。 | String | 是
 管線 | 此管線叫用之相依管線的管線參考。 管線參考物件有兩個屬性：**referenceName** 和 **type**。 referenceName 屬性指定參考管線的名稱。 type 屬性必須設為 PipelineReference。 | PipelineReference | 是
 參數 | 要傳遞至叫用之管線的參數 | 將參數名稱對應到引數值的 JSON 物件 | 否
-waitOnCompletion | 定義活動執行是否等待相依的管線執行完成。 預設值為 false。 | Boolean | 否
+waitOnCompletion | 定義活動執行是否等待相依的管線執行完成。 預設值為 false。 | 布林值 | 否
 
 ## <a name="sample"></a>範例
 此案例有兩個管線：

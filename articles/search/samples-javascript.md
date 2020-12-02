@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: 6bcdb4a48f71e28514229116c10bd25747b55616
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 234c70fffb6f353c670d23624cc446fdaf6bd886
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701818"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498960"
 ---
 # <a name="javascript-code-samples-for-azure-cognitive-search"></a>Azure 認知搜尋的 JavaScript 程式碼範例
 
@@ -55,7 +55,7 @@ SDK 也會提供 TypeScript 範例，在這裡列出以方便您參考。
 
 ## <a name="documentation-samples"></a>文件和範例
 
-下列範例有 [Azure 認知搜尋檔](https://docs.microsoft.com/azure/search/)中的相關文章。
+下列範例有 [Azure 認知搜尋檔](./index.yml)中的相關文章。
 
 | 範例 | 描述 | 
 |---------|-------------|

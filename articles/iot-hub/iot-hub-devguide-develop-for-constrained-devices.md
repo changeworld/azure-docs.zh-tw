@@ -10,12 +10,12 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9010ff582f05e81e17e280e20f180ceccf0e746f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a43eb2537ebc09ffcb524a4426d7a8c9bec560b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81733193"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499997"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>使用 Azure IoT C SDK 開發受限裝置
 
@@ -30,7 +30,10 @@ C SDK 是以 apt-get、NuGet 和 MBED 的套件形式提供。 若要以受限�
 
 為受限裝置建置 C SDK。
 
-### <a name="prerequisites"></a>Prerequisites
+> [!NOTE]
+> 內嵌的 C SDK 是受限制裝置的替代方案，可支援「攜帶您自己的網路」 (BYON) 方法。 IoT 開發人員可以自由地攜帶所選的 MQTT 用戶端、TLS 和通訊端來建立裝置解決方案。 [深入瞭解 Embedded C SDK](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot)。
+
+### <a name="prerequisites"></a>先決條件
 
 遵循此 [C SDK 設定指南](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)，準備您的開發環境以供建置 C SDK。 在您開始進行使用 cmake 建置的步驟之前，您可以叫用 cmake 旗標來移除未使用的功能。
 
@@ -78,11 +81,11 @@ C SDK 具有選用 [C SDK 序列化程式](https://github.com/Azure/azure-iot-sd
 
 ### <a name="use-the-lower-layer-_ll_"></a>使用較低層級 (_LL_)
 
-C SDK 支援兩種程式設計模型。 一組具有 _LL_ 中置詞 (代表較低層級) 的 API。 這組 API 為較輕量級，而且不會啟動背景工作執行緒，這表示使用者必須手動控制排程。 例如，對於裝置用戶端，在此[標頭檔](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client_ll.h)中可以找到 _LL_ API。 
+C SDK 支援兩種程式設計模型。 一組具有 _LL_ 中置詞 (代表較低層級) 的 API。 這組 API 為較輕量級，而且不會啟動背景工作執行緒，這表示使用者必須手動控制排程。 例如，對於裝置用戶端，在此 [標頭檔](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client_ll.h)中可以找到 _LL_ API。 
 
 另一組不具 _LL_ 索引的 API 稱為方便層，背景工作執行緒會在其中自動啟動。 例如，在此 [IoT 裝置用戶端標頭檔](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client.h)中可以找到裝置用戶端的方便層 API。 對於每個額外執行緒可能都需使用大量系統資源的受限裝置，請考慮使用 _LL_ API。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解 Azure IoT C SDK 架構：
 -    [Azure IoT C SDK 原始程式碼](https://github.com/Azure/azure-iot-sdk-c/)

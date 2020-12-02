@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: 語音轉換文字、文字轉換語音軟體
-ms.openlocfilehash: f26d896397a950bc2c5f5d1f66dca6a01da045d7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 102289fd233a744952f37568abf77a753953637e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015217"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499640"
 ---
 # <a name="what-is-speech-to-text"></a>什麼是語音轉換文字？
 
@@ -48,7 +48,7 @@ ms.locfileid: "95015217"
 
 ## <a name="customization"></a>自訂
 
-除了標準語音服務模型之外，您還可以建立自訂模型。 自訂有助於克服語音辨識的阻礙，例如說話風格、詞彙和背景雜音，請參閱 [自訂語音](how-to-custom-speech.md)。 自訂選項會因語言/地區設定而異，請參閱 [支援的語言](./language-support.md) 以驗證支援。
+除了標準語音服務模型之外，您還可以建立自訂模型。 自訂有助於克服語音辨識的阻礙，例如說話風格、詞彙和背景雜音，請參閱 [自訂語音](./custom-speech-overview.md)。 自訂選項會因語言/地區設定而異，請參閱 [支援的語言](./language-support.md) 以驗證支援。
 
 ## <a name="batch-transcription"></a>批次轉譯
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: 4b7950759914724234ec89e6eaee13b48e735ec9
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: d0ffd786d3fb6bb5f0d70095d947c81caa070518
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024308"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499130"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>從 Bing 語音遷移至語音服務
 
@@ -37,7 +37,7 @@ ms.locfileid: "95024308"
 
 語音服務主要類似于 Bing 語音，但有下列差異。
 
-| 功能 | Bing 語音 | 語音服務 | 詳細資料 |
+| 特徵 | Bing 語音 | 語音服務 | 詳細資料 |
 |--|--|--|--|
 | C# SDK | :heavy_check_mark: | :heavy_check_mark: | 語音服務支援 Windows 10、通用 Windows 平臺 (UWP) 和 .NET Standard 2.0。 |
 | C++ SDK | :heavy_minus_sign: | :heavy_check_mark: | 語音服務支援 Windows 和 Linux。 |
@@ -79,9 +79,9 @@ ms.locfileid: "95024308"
 
 Bing 語音客戶應該透過開啟[支援票證](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)來連絡客戶支援。 如果您的支援需求需要[技術支援方案](https://azure.microsoft.com/support/plans/)，也可以連絡我們。
 
-如需語音服務、SDK 和 API 支援，請造訪語音服務 [支援頁面](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext)。
+如需語音服務、SDK 和 API 支援，請造訪語音服務 [支援頁面](../cognitive-services-support-options.md?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext%253fcontext%253d%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [免費試用語音服務](overview.md#try-the-speech-service-for-free)
 * [開始使用語音轉換文字](get-started-speech-to-text.md)

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: 26e30b42906a3d8d7a3fcdc013537104a85f32fe
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c1d21d88ed49cb14aa9f964791154f001a40fbe2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701852"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499572"
 ---
 # <a name="java-code-samples-for-azure-cognitive-search"></a>Azure 認知搜尋的 JAVA 程式碼範例
 
@@ -43,7 +43,7 @@ Azure SDK for JAVA 包含許多範例，以及涵蓋套件安裝的 [快速入�
 
 ## <a name="documentation-samples"></a>文件和範例
 
-下列範例有 [Azure 認知搜尋檔](https://docs.microsoft.com/azure/search/)中的相關文章。
+下列範例有 [Azure 認知搜尋檔](./index.yml)中的相關文章。
 
 | 範例 | 描述 | 
 |---------|-------------|

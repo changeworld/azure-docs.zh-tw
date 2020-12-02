@@ -3,20 +3,20 @@ title: Azure Data Factory 中的篩選活動
 description: 篩選活動會篩選輸入。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.openlocfilehash: 2c8ada22b4492bef0239b6f811d5a7bd58e58510
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 650d55ede8e6099252858c9118c8705f59ab6780
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417214"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498535"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure Data Factory 中的篩選活動
 您可以在管線中使用篩選活動，將篩選運算式套用至輸入陣列。 
@@ -40,13 +40,13 @@ ms.locfileid: "81417214"
 屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
 NAME | `Filter` 活動的名稱。 | String | 是
-type | 必須設定為**篩選**。 | String | 是
+type | 必須設定為 **篩選**。 | String | 是
 condition (條件) | 要用來篩選輸入的條件。 | 運算式 | 是
 項目 | 應套用篩選條件的輸入陣列。 | 運算式 | 是
 
 ## <a name="example"></a>範例
 
-在此範例中，管線有兩個活動：**篩選**與 **ForEach**。 篩選活動設定為會對值大於 3 之項目的輸入陣列進行篩選。 然後 ForEach 活動會逐一查看篩選的值，並將變數 **測試** 設定為目前的值。
+在此範例中，管線有兩個活動：**篩選** 與 **ForEach**。 篩選活動設定為會對值大於 3 之項目的輸入陣列進行篩選。 然後 ForEach 活動會逐一查看篩選的值，並將變數 **測試** 設定為目前的值。
 
 ```json
 {

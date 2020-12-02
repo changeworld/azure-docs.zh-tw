@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a79ec9a54ae597bc7e9795029dc4292c2c82345
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: fd1c7f5dec57127f92da52be908bd6faa2c90e85
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836388"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500218"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>使用分段推出移轉至雲端驗證 (預覽)
 
@@ -66,6 +66,8 @@ ms.locfileid: "94836388"
 ## <a name="unsupported-scenarios"></a>不支援的情節
 
 分段推出不支援下列案例：
+
+- 應用程式或雲端服務會使用舊版驗證，例如 POP3 和 SMTP。
 
 - 某些應用程式會在驗證期間將 "domain_hint" 查詢參數傳送至 Azure AD。 這些流程將會繼續，而啟用分段推出的使用者將繼續使用同盟進行驗證。
 

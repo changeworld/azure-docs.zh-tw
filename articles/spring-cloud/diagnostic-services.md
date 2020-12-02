@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: aec8448cb82480397f561e095420bbd49982d4b2
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 11f5fcd74b228fa2d57658f5c268e3bebc3c7e93
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093033"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499521"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>使用診斷設定來分析記錄和計量
 
@@ -40,7 +40,7 @@ ms.locfileid: "92093033"
 
 如需計量的完整清單，請參閱 [春季雲端計量](./spring-cloud-concept-metrics.md#user-metrics-options)。
 
-若要開始使用，請啟用其中一項服務以接收資料。 若要瞭解如何設定 Log Analytics，請參閱 [Azure 監視器中的開始使用 Log analytics](../azure-monitor/log-query/get-started-portal.md)。
+若要開始使用，請啟用其中一項服務以接收資料。 若要瞭解如何設定 Log Analytics，請參閱 [Azure 監視器中的開始使用 Log analytics](../azure-monitor/log-query/log-analytics-tutorial.md)。
 
 ## <a name="configure-diagnostics-settings"></a>設定診斷設定
 
@@ -117,7 +117,7 @@ ms.locfileid: "92093033"
 1. 在 Azure 入口網站中，于左側導覽面板或搜尋方塊中尋找 **儲存體帳戶** 。
 1. 選取您在新增診斷設定時所選擇的儲存體帳戶。
 1. 若要開啟 [ **Blob 容器** ] 窗格，請選取 [ **blob**]。
-1. 若要檢查應用程式記錄，請搜尋名為 **insights-logs-applicationconsole**的容器。
+1. 若要檢查應用程式記錄，請搜尋名為 **insights-logs-applicationconsole** 的容器。
 1. 若要檢查應用程式計量，請搜尋名為 insights 的容器 **-計量-pt1m**。
 
 若要深入瞭解如何將診斷資訊傳送至儲存體帳戶，請參閱 [在 Azure 儲存體中儲存和查看診斷資料](../storage/common/storage-introduction.md)。
@@ -128,14 +128,14 @@ ms.locfileid: "92093033"
 
 1. 搜尋並選取您在新增診斷設定時所選擇的事件中樞。
 1. 若要開啟 [ **事件中樞清單** ] 窗格，請選取 [ **事件中樞**]。
-1. 若要檢查應用程式記錄，請搜尋名為 **insights-logs-applicationconsole**的事件中樞。
+1. 若要檢查應用程式記錄，請搜尋名為 **insights-logs-applicationconsole** 的事件中樞。
 1. 若要檢查應用程式計量，請搜尋名為 insights 的事件中樞- **計量-pt1m**。
 
 若要深入瞭解如何將診斷資訊傳送至事件中樞，請參閱 [使用事件中樞在最忙碌路徑中串流 Azure 診斷資料](../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md)。
 
 ## <a name="analyze-the-logs"></a>分析記錄
 
-Azure Log Analytics 正在以 Kusto 引擎執行，因此您可以查詢記錄以進行分析。 如需使用 Kusto 查詢記錄的快速簡介，請參閱 [Log Analytics 教學](../azure-monitor/log-query/get-started-portal.md)課程。
+Azure Log Analytics 正在以 Kusto 引擎執行，因此您可以查詢記錄以進行分析。 如需使用 Kusto 查詢記錄的快速簡介，請參閱 [Log Analytics 教學](../azure-monitor/log-query/log-analytics-tutorial.md)課程。
 
 應用程式記錄會提供關於應用程式健康情況、效能等的重要資訊和詳細資訊記錄。 在接下來的幾節中，有一些簡單的查詢可協助您瞭解應用程式目前和過去的狀態。
 

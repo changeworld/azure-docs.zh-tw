@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: fceef1fa9f79ead0ffbbfd7de17b21b750659fc9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1e3551834e7664d5036fa8a5e0497e5a37f61c2f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370231"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498501"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>在 Azure 上最佳化 Linux VM
 您可以從命令列或入口網站，輕鬆建立 Linux 虛擬機器 (VM)。 本教學課程示範如何在 Microsoft Azure 平台上設定，以確保將其效能最佳化。 本主題會使用 Ubuntu Server VM，但您也可以使用 [自己的映像做為範本](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)來建立 Linux 虛擬機器。  
@@ -150,9 +150,9 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 搭配 Azure 調整核心的 Ubuntu 18.04 會使用多佇列 I/O 排程器。 在該情節中，`none` 是適當的選擇，而不是 `noop`。 如需詳細資訊，請參閱 [Ubuntu I/O 排程器](https://wiki.ubuntu.com/Kernel/Reference/IOSchedulers)。
 
 ## <a name="using-software-raid-to-achieve-higher-iops"></a>使用軟體 RAID 來達到更高的 I/Ops
-如果工作負載所需的 IOps 超過單一磁碟可提供的極限，您便需要使用由多個磁碟組成的軟體 RAID 組態。 因為 Azure 已在本機網狀架構層級執行磁碟恢復功能，因此您可以從 RAID-0 等量組態獲得最高層級的效能。  先在 Azure 環境中佈建及建立磁碟、將它們連結至 Linux VM，然後再分割、格式化及掛接磁碟機。  如需在 Azure 中針對 Linux VM 配置軟體 RAID 設定的詳細資訊，請參閱 **[在 Linux 上設定軟體 RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** 文件。
+如果工作負載所需的 IOps 超過單一磁碟可提供的極限，您便需要使用由多個磁碟組成的軟體 RAID 組態。 因為 Azure 已在本機網狀架構層級執行磁碟恢復功能，因此您可以從 RAID-0 等量組態獲得最高層級的效能。  先在 Azure 環境中佈建及建立磁碟、將它們連結至 Linux VM，然後再分割、格式化及掛接磁碟機。  如需在 Azure 中針對 Linux VM 配置軟體 RAID 設定的詳細資訊，請參閱 **[在 Linux 上設定軟體 RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** 文件。
 
-做為傳統 RAID 組態的替代方案，您也可以選擇安裝邏輯磁碟區管理員 (LVM)，以便將多個實體磁碟設定為單一等量邏輯存放磁碟區。 在此組態中，讀取和寫入會分散到磁碟區群組 (類似 RAID0) 中包含的多個磁碟。 基於效能考量，您可能希望建立等量邏輯磁碟區，如此一來，讀取和寫入就能利用您所有已連結的資料磁碟。  如需在 Azure 中針對 Linux VM 設定等量邏輯磁碟區的詳細資訊，請參閱 **[在 Azure 中針對 Linux VM 設定 LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** 文件。
+做為傳統 RAID 組態的替代方案，您也可以選擇安裝邏輯磁碟區管理員 (LVM)，以便將多個實體磁碟設定為單一等量邏輯存放磁碟區。 在此組態中，讀取和寫入會分散到磁碟區群組 (類似 RAID0) 中包含的多個磁碟。 基於效能考量，您可能希望建立等量邏輯磁碟區，如此一來，讀取和寫入就能利用您所有已連結的資料磁碟。  如需在 Azure 中針對 Linux VM 設定等量邏輯磁碟區的詳細資訊，請參閱 **[在 Azure 中針對 Linux VM 設定 LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** 文件。
 
 ## <a name="next-steps"></a>後續步驟
 請記住，如同所有最佳化討論內容所述，您需要在變更前後執行測試，以測量變更所造成的影響。  最佳化是需要逐步進行的程序，這些程序會對環境中不同的機器產生不同的結果。  對某項組態有用的做法不見得適用於其他組態。
@@ -160,4 +160,4 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 以下是一些連往其他資源的實用連結：
 
 * [Azure Linux 代理程式使用者指南](../extensions/agent-linux.md)
-* [在 Linux 上設定軟體 RAID](configure-raid.md)
+* [在 Linux 上設定軟體 RAID](/previous-versions/azure/virtual-machines/linux/configure-raid)

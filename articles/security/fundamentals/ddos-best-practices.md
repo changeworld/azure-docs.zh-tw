@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 435cb1d52b5505f4f29bd0c31986a1f7f72208fd
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: e298cb0d1a2c510a096f8ead03f8af7e39c206a8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412862"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498926"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS 保護-設計復原解決方案
 
@@ -54,7 +54,7 @@ DDoS 是一種嘗試耗盡應用程式資源的攻擊類型。 目標是影響�
 
 深層防禦背後的概念是使用各種不同的防禦策略來管理風險。 將應用程式中的安全性防禦分層，可降低成功攻擊的機會。 建議您使用 Azure 平台的內建功能，為您的應用程式實作安全設計。
 
-例如，攻擊的風險會隨著應用程式大小 ( *介面區* ) 而提高。 您可以使用核准清單來關閉已公開的 IP 位址空間，以及負載平衡器 ([Azure Load Balancer](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) 和 [Azure 應用程式閘道](../../application-gateway/application-gateway-create-probe-portal.md)) 不需要的接聽埠，藉此減少介面區。 [網路安全性群組 (NSG)](../../virtual-network/network-security-groups-overview.md) 是減少攻擊面的另一種方法。
+例如，攻擊的風險會隨著應用程式大小 (*介面區*) 而提高。 您可以使用核准清單來關閉已公開的 IP 位址空間，以及負載平衡器 ([Azure Load Balancer](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) 和 [Azure 應用程式閘道](../../application-gateway/application-gateway-create-probe-portal.md)) 不需要的接聽埠，藉此減少介面區。 [網路安全性群組 (NSG)](../../virtual-network/network-security-groups-overview.md) 是減少攻擊面的另一種方法。
 您可以使用[服務標記](../../virtual-network/network-security-groups-overview.md#service-tags)和[應用程式安全性群組](../../virtual-network/network-security-groups-overview.md#application-security-groups)，將建立安全性規則與設定網路安全性的複雜性近可能降低，直到成為應用程式結構的自然延伸。
 
 應盡可能將 Azure 服務部署於[虛擬網路](../../virtual-network/virtual-networks-overview.md)上。 此種做法可讓服務資源透過私人 IP 位址進行通訊。 根據預設，來自虛擬網路的 Azure 服務流量會使用公用 IP 位址作為來源 IP 位址。 使用[服務端點](../../virtual-network/virtual-network-service-endpoints-overview.md)，會在從虛擬網路存取 Azure 服務時，將服務流量切換為使用虛擬網路私人位址作為來源 IP 位址。
@@ -83,7 +83,7 @@ Azure 基本 DDoS 保護服務已將目標設為基礎結構保護與 Azure 平�
 
 #### <a name="adaptive-real-time-tuning"></a>適應性即時微調
 
-Azure 基本 DDoS 保護服務可協助保護客戶，並防止對其他客戶產生影響。 例如，如果合法連入流量的正常流量小於涵蓋整個基礎結構範圍的 DDoS 保護原則 *觸發率* ，而且服務是針對該流量所佈建，則可能不會注意到對於該客戶資源的 DDoS 攻擊。 更普遍的說法是，最新攻擊 (例如多向量 DDoS) 的複雜本質，以及租用戶的應用程式專屬行為，會呼叫針對每位客戶自訂的保護原則。 服務會使用兩種見解來完成這項自訂：
+Azure 基本 DDoS 保護服務可協助保護客戶，並防止對其他客戶產生影響。 例如，如果合法連入流量的正常流量小於涵蓋整個基礎結構範圍的 DDoS 保護原則 *觸發率*，而且服務是針對該流量所佈建，則可能不會注意到對於該客戶資源的 DDoS 攻擊。 更普遍的說法是，最新攻擊 (例如多向量 DDoS) 的複雜本質，以及租用戶的應用程式專屬行為，會呼叫針對每位客戶自訂的保護原則。 服務會使用兩種見解來完成這項自訂：
 
 - 自動學習每位客戶 (每個 IP) 的第 3 層與第 4 層流量模式。
 
@@ -97,7 +97,7 @@ Azure 基本 DDoS 保護服務可協助保護客戶，並防止對其他客戶�
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS 防護原則
 
-在 [Azure 入口網站中，選取 [ **監視**  >  **度量** ]。 在 [計量] 窗格中，選取資源群組、選取 [公用 IP 位址] 的資源類型，並選取您的 Azure 公用 IP 位址。 DDoS 計量會顯示在 [可用計量] 窗格中。
+在 [Azure 入口網站中，選取 [**監視**  >  **度量**]。 在 [計量] 窗格中，選取資源群組、選取 [公用 IP 位址] 的資源類型，並選取您的 Azure 公用 IP 位址。 DDoS 計量會顯示在 [可用計量] 窗格中。
 
 「標準 DDoS 保護」會在啟用 DDoS 的虛擬網路中，對受保護資源的每個公用 IP 套用三個自動調整的風險降低原則 (TCP SYN、TCP、UDP)。 可選取 **要觸發 DDoS 防護的輸入封包** 計量，藉此檢視原則閾值。
 
@@ -113,7 +113,7 @@ Azure 基本 DDoS 保護服務可協助保護客戶，並防止對其他客戶�
 
 建議您針對此計量設定警示。 之後當公用 IP 位址上正在執行 DDoS 風險降低作業時，您便會收到通知。
 
-如需詳細資訊，請參閱[使用 Azure 入口網站管理 Azure DDoS 保護標準](../../virtual-network/manage-ddos-protection.md)。
+如需詳細資訊，請參閱[使用 Azure 入口網站管理 Azure DDoS 保護標準](../../ddos-protection/manage-ddos-protection.md)。
 
 #### <a name="web-application-firewall-for-resource-attacks"></a>資源攻擊的 Web 應用程式防火牆
 
@@ -179,7 +179,7 @@ Microsoft 身為重要的基礎結構提供者，會最先收到威脅的警告�
 
 ### <a name="alerts-during-an-attack"></a>攻擊時的警示
 
-Azure 標準 DDoS 保護會識別 DDoS 攻擊並降低風險，無須使用者介入。 若要在受保護的公用 IP 有作用中的緩和措施時收到通知，您可以在 [ **DDoS 攻擊] 下** 設定計量的 [警示](../../virtual-network/manage-ddos-protection.md)。 可以選擇為其他 DDoS 計量建立警示，以了解攻擊的範圍、要卸除的流量及其他詳細資料。
+Azure 標準 DDoS 保護會識別 DDoS 攻擊並降低風險，無須使用者介入。 若要在受保護的公用 IP 有作用中的緩和措施時收到通知，您可以在 [ **DDoS 攻擊] 下** 設定計量的 [警示](../../ddos-protection/manage-ddos-protection.md)。 可以選擇為其他 DDoS 計量建立警示，以了解攻擊的範圍、要卸除的流量及其他詳細資料。
 
 #### <a name="when-to-contact-microsoft-support"></a>連絡 Microsoft 支援服務的時機
 
@@ -260,7 +260,7 @@ Azure 流量管理員會將連入要求路由到其中一個區域中的應用�
 
 在此架構中，來自網際網路且預定送往 HDInsight 叢集的流量，會路由到與 HDInsight 閘道負載平衡器相關聯的公用 IP。 閘道負載平衡器接著會將流量直接傳送到前端節點或背景工作節點。 由於已在 HDInsight 虛擬網路上啟用標準 DDoS 保護，因此虛擬網路中的所有公用 IP 都會受到第 3 層和第 4 層 DDoS 保護。 此參考架構可以與多層式 (N-Tier)/多區域參考架構結合。
 
-如需此參考架構的詳細資訊，請參閱[使用 Azure 虛擬網路延伸 Azure HDInsight](../../hdinsight/hdinsight-plan-virtual-network-deployment.md?toc=%252fazure%252fvirtual-network%252ftoc.json) 一文。
+如需此參考架構的詳細資訊，請參閱[使用 Azure 虛擬網路延伸 Azure HDInsight](../../hdinsight/hdinsight-plan-virtual-network-deployment.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 一文。
 
 
 > [!NOTE]
@@ -270,4 +270,4 @@ Azure 流量管理員會將連入要求路由到其中一個區域中的應用�
 
 * [雲端中共同承擔的責任](shared-responsibility.md)
 * [Azure DDoS 保護產品頁面](https://azure.microsoft.com/services/ddos-protection/)
-* [Azure DDoS 保護文件](../../virtual-network/ddos-protection-overview.md)
+* [Azure DDoS 保護文件](../../ddos-protection/ddos-protection-overview.md)

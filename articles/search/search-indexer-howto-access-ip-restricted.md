@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 0be69b72cc068d017202b0694e24fb4573172dba
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 12943d5d22a9e81c7e99522fa4728f4798549682
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101387"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499946"
 ---
 # <a name="configure-ip-firewall-rules-to-allow-indexer-connections-azure-cognitive-search"></a>設定 IP 防火牆規則，以允許 (Azure 認知搜尋) 的索引子連接
 
@@ -90,5 +90,5 @@ Aliases:  contoso.search.windows.net
 ## <a name="next-steps"></a>後續步驟
 
 - [設定 Azure 儲存體防火牆](../storage/common/storage-network-security.md)
-- [設定 Cosmos DB 的 IP 防火牆](../cosmos-db/firewall-support.md)
+- [設定 Cosmos DB 的 IP 防火牆](../cosmos-db/how-to-configure-firewall.md)
 - [設定 Azure SQL Server 的 IP 防火牆](../azure-sql/database/firewall-configure.md)

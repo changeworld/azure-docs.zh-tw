@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 730a29ff579ce6a1970ceafad5891611b52c059d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7ed2a672f0f7149240e799b5529a7a3a6836a702
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972283"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499300"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>在2023年3月1日前將 IaaS 資源遷移至 Azure Resource Manager 
 
@@ -41,16 +41,16 @@ ms.locfileid: "91972283"
 
 1. 建立所有受影響 Vm 的清單： 
 
-   - 在[Azure 入口網站的 VM 窗格](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ClassicCompute%2FVirtualMachines)上，**虛擬機器類型 (傳統) **的 vm，全都是訂用帳戶內受影響的所有 vm。 
+   - 在 [Azure 入口網站的 VM 窗格](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ClassicCompute%2FVirtualMachines)上，**虛擬機器類型 (傳統)** 的 vm，全都是訂用帳戶內受影響的所有 vm。 
    - 您也可以使用 [入口網站](https://portal.azure.com/#blade/HubsExtension/ArgQueryBlade/query/resources%0A%7C%20where%20type%20%3D%3D%20%22microsoft.classiccompute%2Fvirtualmachines%22) 或 [PowerShell](../governance/resource-graph/concepts/work-with-data.md) 來查詢 Azure Resource Graph，以查看所有已加上旗標的 vm 清單 (傳統) 以及所選訂用帳戶的相關資訊。 
    - 在2020年2月8日和9月2日，我們已向訂用帳戶擁有者傳送電子郵件，其中包含這些 Vm (傳統) 的所有訂用帳戶清單。 請使用它們來建立這份清單。 
 
-1. [深入瞭解](./windows/migration-classic-resource-manager-overview.md) 如何將 [Linux](./linux/migration-classic-resource-manager-plan.md) 和 [Windows](./windows/migration-classic-resource-manager-plan.md) vm (傳統) 遷移至 Azure Resource Manager。 如需詳細資訊，請參閱傳統的常見問題 [至 Azure Resource Manager 的遷移](./migration-classic-resource-manager-faq.md)。
+1. [深入瞭解](./migration-classic-resource-manager-overview.md) 如何將 [Linux](./migration-classic-resource-manager-plan.md) 和 [Windows](./migration-classic-resource-manager-plan.md) vm (傳統) 遷移至 Azure Resource Manager。 如需詳細資訊，請參閱傳統的常見問題 [至 Azure Resource Manager 的遷移](./migration-classic-resource-manager-faq.md)。
 
-1. 建議您開始使用 [平臺支援遷移工具](./windows/migration-classic-resource-manager-overview.md) 來遷移現有的 vm，方法有三個簡單的步驟：驗證、準備和認可。 此工具的設計是要在最短的時間內遷移您的 Vm，而不需要停機。 
+1. 建議您開始使用 [平臺支援遷移工具](./migration-classic-resource-manager-overview.md) 來遷移現有的 vm，方法有三個簡單的步驟：驗證、準備和認可。 此工具的設計是要在最短的時間內遷移您的 Vm，而不需要停機。 
 
    1. 第一個步驟「驗證」不會影響您現有的部署，並提供所有不支援的案例清單來進行遷移。 
-   1. 請流覽因應措施的 [清單](./windows/migration-classic-resource-manager-overview.md#unsupported-features-and-configurations) 來修正您的部署，並讓它準備好進行遷移。 
+   1. 請流覽因應措施的 [清單](./migration-classic-resource-manager-overview.md#unsupported-features-and-configurations) 來修正您的部署，並讓它準備好進行遷移。 
    1. 在修正所有驗證錯誤之後，最好不要在準備和認可步驟期間遇到任何問題。 認可成功之後，您的部署會即時移轉至 Azure Resource Manager，然後可以透過 Azure Resource Manager 所公開的新 Api 來管理。 
 
    如果遷移工具不適用於您的遷移，您可以探索 [其他計算供應](/azure/architecture/guide/technology-choices/compute-decision-tree) 專案以進行遷移。 因為有許多 Azure 計算供應專案，而且它們彼此不同，所以我們無法為其提供平臺支援的遷移路徑。  

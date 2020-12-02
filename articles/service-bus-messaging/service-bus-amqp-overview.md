@@ -3,12 +3,12 @@ title: Azure 服務匯流排中的 AMQP 1.0 總覽
 description: 瞭解 Azure 服務匯流排如何 (AMQP) （開放式標準通訊協定）支援先進訊息佇列通訊協定。
 ms.topic: article
 ms.date: 11/20/2020
-ms.openlocfilehash: 85943344fd8f20cf3a73af5d637b65676584f93f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: e585fcc905d1651d49008b623b01a6c2f8a04fcc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96022164"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498773"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>服務匯流排中的 AMQP 1.0 支援
 Azure 服務匯流排的雲端服務會使用 [Advanced Message 佇列通訊協定 (AMQP) 1.0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) 作為其主要的通訊方式。 Microsoft 已與產業、客戶和競爭訊息代理人的廠商合作，在過去十年來開發及發展 AMQP，並在 [OASIS AMQP 技術委員會](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)中開發新的延伸模組。 AMQP 1.0 是 ISO 和 IEC 標準 ([iso 19464:20149](https://www.iso.org/standard/64955.html)) 。 
@@ -64,11 +64,11 @@ Azure 服務匯流排中的 AMQP 1.0 支援表示您可以使用有效率的二�
 
 所有透過 Azure SDK 提供的支援服務匯流排用戶端程式庫都會使用 AMQP 1.0。
 
-- [適用于 .NET 的 Azure 服務匯流排](https://docs.microsoft.com/dotnet/api/overview/azure/service-bus?view=azure-dotnet&preserve-view=true)
-- [適用于 JAVA 的 Azure 服務匯流排程式庫](https://docs.microsoft.com/java/api/overview/azure/servicebus?view=azure-java-stable&preserve-view=true)
+- [適用于 .NET 的 Azure 服務匯流排](/dotnet/api/overview/azure/service-bus?preserve-view=true&view=azure-dotnet)
+- [適用于 JAVA 的 Azure 服務匯流排程式庫](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-stable)
 - [JAVA JMS 2.0 Azure 服務匯流排提供者](how-to-use-java-message-service-20.md)
-- [適用于 JavaScript 和 TypeScript 的 Azure 服務匯流排模組](https://docs.microsoft.com/javascript/api/overview/azure/service-bus?view=azure-node-latest&preserve-view=true)
-- [適用于 Python 的 Azure 服務匯流排程式庫](https://docs.microsoft.com/python/api/overview/azure/servicebus?view=azure-python&preserve-view=true)
+- [適用于 JavaScript 和 TypeScript 的 Azure 服務匯流排模組](/javascript/api/overview/azure/service-bus?preserve-view=true&view=azure-node-latest)
+- [適用于 Python 的 Azure 服務匯流排程式庫](/python/api/overview/azure/servicebus?preserve-view=true&view=azure-python)
 
 [!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
 
@@ -89,4 +89,4 @@ Azure 服務匯流排中的 AMQP 1.0 支援表示您可以使用有效率的二�
 [0]: ./media/service-bus-amqp-overview/service-bus-amqp-1.png
 [搭配使用 .NET 的服務匯流排與 AMQP]: service-bus-amqp-dotnet.md
 [搭配使用 Java 的服務匯流排與 AMQP]: ./service-bus-java-how-to-use-jms-api-amqp.md
-[在 Azure Linux VM 上安裝 Apache Qpid Proton-C]：: 
+[在 Azure Linux VM 上安裝 Apache Qpid Proton-C]：:

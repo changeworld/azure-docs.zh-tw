@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e6e3e1769b6043599d606b84b531ec908519d4c7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9377a21415c22e7b68d850ca1a95f931e62fe573
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955560"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499725"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>適用於 Linux 的金鑰保存庫虛擬機器擴充功能
 
@@ -35,9 +35,9 @@ Key Vault VM 擴充功能支援下列 Linux 發行版本：
 - PEM
 
 ## <a name="prerequisities"></a>必要條件
-  - 具有憑證的 Key Vault 實例。 請參閱 [建立 Key Vault](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)
-  - VM/VMSS 必須已指派 [受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
-  - Key Vault 存取原則必須設定為 `get` `list` VM/VMSS 受控識別的秘密和許可權，才能抓取秘密的憑證部分。 瞭解 [如何驗證 Key Vault](/azure/key-vault/general/authentication) 並 [指派 Key Vault 存取原則](/azure/key-vault/general/assign-access-policy-cli)。
+  - 具有憑證的 Key Vault 實例。 請參閱 [建立 Key Vault](../../key-vault/general/quick-create-portal.md)
+  - VM/VMSS 必須已指派 [受控識別](../../active-directory/managed-identities-azure-resources/overview.md)
+  - Key Vault 存取原則必須設定為 `get` `list` VM/VMSS 受控識別的秘密和許可權，才能抓取秘密的憑證部分。 瞭解 [如何驗證 Key Vault](../../key-vault/general/authentication.md) 並 [指派 Key Vault 存取原則](../../key-vault/general/assign-access-policy-cli.md)。
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 
@@ -109,7 +109,7 @@ Key Vault VM 擴充功能支援下列 Linux 發行版本：
 虛擬機器擴充功能的 JSON 組態必須在內嵌在範本的虛擬機器資源片段，具體來說，就是虛擬機器範本的 `"resources": []` 物件，而若是虛擬機器擴展集，則會在 `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` 物件下。
 
  > [!NOTE]
-> VM 延伸模組需要指派系統或使用者受控識別，才能向金鑰保存庫進行驗證。  瞭解 [如何驗證 Key Vault 並指派 Key Vault 存取原則。](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+> VM 延伸模組需要指派系統或使用者受控識別，才能向金鑰保存庫進行驗證。  瞭解 [如何驗證 Key Vault 並指派 Key Vault 存取原則。](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 > 
 
 ```json

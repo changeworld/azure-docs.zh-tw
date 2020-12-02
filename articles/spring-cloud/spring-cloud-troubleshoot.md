@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 91ef218abc51cbdf079fd9e1baa8eb2b907087df
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 09415c47432f71310b10c86390c10e55f1ccc4b2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94954200"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498603"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>針對常見的 Azure 春季雲端問題進行疑難排解
 
@@ -66,7 +66,7 @@ ms.locfileid: "94954200"
 
 
 
-若要深入瞭解 Azure Log Analytics，請參閱 [Azure 監視器中的開始使用 Log analytics](../azure-monitor/log-query/get-started-portal.md)。
+若要深入瞭解 Azure Log Analytics，請參閱 [Azure 監視器中的開始使用 Log analytics](../azure-monitor/log-query/log-analytics-tutorial.md)。
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>我的應用程式遇到高 CPU 使用量或高記憶體使用量
 
@@ -88,7 +88,7 @@ ms.locfileid: "94954200"
 
 如果所有實例都已啟動且正在執行，請移至 Azure Log Analytics 來查詢您的應用程式記錄，並檢查您的程式碼邏輯。 這可協助您查看是否有任何可能會影響規模分割。 如需詳細資訊，請參閱 [使用診斷設定來分析記錄和計量](diagnostic-services.md)。
 
-若要深入瞭解 Azure Log Analytics，請參閱 [Azure 監視器中的開始使用 Log analytics](../azure-monitor/log-query/get-started-portal.md)。 使用 [Kusto 查詢語言](/azure/kusto/query/)來查詢記錄。
+若要深入瞭解 Azure Log Analytics，請參閱 [Azure 監視器中的開始使用 Log analytics](../azure-monitor/log-query/log-analytics-tutorial.md)。 使用 [Kusto 查詢語言](/azure/kusto/query/)來查詢記錄。
 
 ### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>將您的春季應用程式部署到 Azure 春季雲端的檢查清單
 
@@ -163,7 +163,7 @@ Azure 春季雲端服務實例的名稱將會用來在下要求子功能變數�
 
 您也可以在 Azure Log Analytics 中檢查 _服務_ 登錄用戶端記錄。 如需詳細資訊，請參閱 [使用診斷設定來分析記錄和計量](diagnostic-services.md)
 
-若要深入瞭解 Azure Log Analytics，請參閱 [Azure 監視器中的開始使用 Log analytics](../azure-monitor/log-query/get-started-portal.md)。 使用 [Kusto 查詢語言](/azure/kusto/query/)來查詢記錄。
+若要深入瞭解 Azure Log Analytics，請參閱 [Azure 監視器中的開始使用 Log analytics](../azure-monitor/log-query/log-analytics-tutorial.md)。 使用 [Kusto 查詢語言](/azure/kusto/query/)來查詢記錄。
 
 ### <a name="i-want-to-inspect-my-applications-environment-variables"></a>我想要檢查應用程式的環境變數
 

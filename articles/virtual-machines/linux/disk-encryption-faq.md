@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 06a84621c4d6abbf361eba232c776c167dc46265
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9d62195759de2d43e863c1cb2c4c3ef911bb52c6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970604"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498518"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>適用於 Linux 虛擬機器的 Azure 磁碟加密常見問題集
 
@@ -57,14 +57,14 @@ Azure 磁碟加密 GA 支援 Azure Resource Manager 範本、Azure PowerShell �
 
 ## <a name="what-is-storage-server-side-encryption"></a>什麼是儲存體伺服器端加密？
 
-儲存體伺服器端加密會加密 Azure 儲存體中的 Azure 受控磁碟。 受控磁碟依預設會使用伺服器端加密與平台管理的金鑰進行加密 (從 2017 年 6 月 10 日開始)。 您可以藉由指定客戶管理的金鑰，使用您自己的金鑰來管理受控磁碟的加密。 如需詳細資訊，請參閱：[Azure 受控磁碟的伺服器端加密](disk-encryption.md)。
+儲存體伺服器端加密會加密 Azure 儲存體中的 Azure 受控磁碟。 受控磁碟依預設會使用伺服器端加密與平台管理的金鑰進行加密 (從 2017 年 6 月 10 日開始)。 您可以藉由指定客戶管理的金鑰，使用您自己的金鑰來管理受控磁碟的加密。 如需詳細資訊，請參閱：[Azure 受控磁碟的伺服器端加密](../disk-encryption.md)。
  
 ## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Azure 磁碟加密與使用客戶管理的金鑰進行的儲存體伺服器端加密有何不同？其使用時機分別為何？
 
 Azure 磁碟加密會使用客戶管理的金鑰，為 OS 磁碟、資料磁碟和暫存磁碟提供端對端加密。
 - 如果您的需求包括將前述所有項目加密和端對端加密，請使用 Azure 磁碟加密。 
-- 如果您的需求僅為使用客戶管理的金鑰來將待用資料加密，請採用[使用客戶管理的金鑰進行伺服器端加密](disk-encryption.md)。 您無法同時搭配客戶管理的金鑰使用 Azure 磁碟加密和儲存體伺服器端加密來將磁碟加密。 
-- 如果您的 Linux 發行版本並未列於 [Azure 磁碟加密支援的作業系統](disk-encryption-overview.md#supported-operating-systems)底下，或是您是使用[針對 Windows 不支援的案例](disk-encryption-linux.md#unsupported-scenarios)中所列出的案例，請考慮採用[使用客戶管理的金鑰進行伺服器端加密](disk-encryption.md)。
+- 如果您的需求僅為使用客戶管理的金鑰來將待用資料加密，請採用[使用客戶管理的金鑰進行伺服器端加密](../disk-encryption.md)。 您無法同時搭配客戶管理的金鑰使用 Azure 磁碟加密和儲存體伺服器端加密來將磁碟加密。 
+- 如果您的 Linux 發行版本並未列於 [Azure 磁碟加密支援的作業系統](disk-encryption-overview.md#supported-operating-systems)底下，或是您是使用[針對 Windows 不支援的案例](disk-encryption-linux.md#unsupported-scenarios)中所列出的案例，請考慮採用[使用客戶管理的金鑰進行伺服器端加密](../disk-encryption.md)。
 - 如果您組織的原則允許您使用 Azure 管理的金鑰來將待用內容加密，則不需要採取任何動作，因為該內容預設便會加密。 就受控磁碟而言，儲存體中的內容依預設會使用伺服器端加密與平台管理的金鑰進行加密。 此金鑰由 Azure 儲存體服務所管理。 
 
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ad97a822aaa6477616a6661a579df6c4ec82729
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f65ab02e06319519548eaa2c02120691a0ceef02
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919423"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498552"
 ---
 # <a name="build-resilience-in-your-identity-and-access-management-infrastructure"></a>在您的身分識別與存取管理基礎結構中建立恢復功能
 
@@ -40,11 +40,11 @@ Azure Active Directory 是全域雲端身分識別和存取管理系統，可為
 
 ## <a name="why-worry-about-disruption"></a>為什麼要擔心中斷？
 
-如果 Azure AD 的呼叫鏈中有任何元件失敗，則每次呼叫驗證系統都會受到中斷的影響。 這表示，如果您的基礎結構有任何部分發生問題，可能會中斷，因為使用者無法存取他們所需的應用程式。 因此，減少驗證呼叫數目以及這些呼叫中的相依性數量，對您的復原能力很重要。 應用程式開發人員可以對權杖的要求頻率進行某些控制。 例如，與開發人員合作，以確保他們盡可能使用 Azure AD 受控識別來處理其應用程式。 
+如果呼叫的任何元件失敗，則每次呼叫驗證系統都會受到中斷的影響。 當驗證中斷時，因為基礎元件失敗，您的使用者將不會存取其應用程式。 因此，減少驗證呼叫數目以及這些呼叫中的相依性數量，對您的復原能力很重要。 應用程式開發人員可以對權杖的要求頻率進行某些控制。 例如，與開發人員合作，以確保他們盡可能使用 Azure AD 受控識別來處理其應用程式。 
 
 在權杖型驗證系統（例如 Azure AD）中，使用者的應用程式 (用戶端) 必須先從身分識別系統取得安全性權杖，才能存取應用程式或其他資源。 在有效期間內，用戶端可以多次呈現相同的權杖，以存取應用程式。
 
-當呈現給應用程式的權杖到期時，應用程式會拒絕權杖，而且用戶端必須從 Azure AD 取得新權杖。 取得新權杖可能需要使用者互動，例如認證提示。 使用較長的權杖減少驗證呼叫的頻率，可減少這項風險。 不過，您必須使用較少的原則評估所建立的風險來平衡權杖生命週期。 如需有關管理權杖存留期的詳細資訊，請參閱這篇有關將重新 [驗證提示優化](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime)的文章。
+當呈現給應用程式的權杖到期時，應用程式會拒絕權杖，而且用戶端必須從 Azure AD 取得新權杖。 取得新權杖可能需要使用者互動，例如認證提示或符合驗證系統的其他需求。 使用長期的權杖減少驗證呼叫的頻率，可減少不必要的互動。 不過，您必須使用較少的原則評估所建立的風險來平衡權杖生命週期。 如需有關管理權杖存留期的詳細資訊，請參閱這篇有關將重新 [驗證提示優化](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime)的文章。
 
 ## <a name="ways-to-increase-resilience"></a>提高復原能力的方法
 下圖顯示可提高復原能力的六個具體方式。 本文的後續步驟部分中所連結的文章會詳細說明每個方法。

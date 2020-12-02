@@ -11,16 +11,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: axelg
-ms.openlocfilehash: 9e3b376cfaf5379acaf92713c42509471200d066
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: fc609b60c9d5d4d4734c3d73cbda87935b533caf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95549888"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500252"
 ---
 # <a name="troubleshooting-azure-linux-guest-agent"></a>針對 Azure Linux 來賓代理程式進行疑難排解
 
-[Azure Linux 來賓代理程式](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) 是虛擬機器) 代理程式 (VM。 它可讓 VM (IP 位址168.63.129.16 上裝載 VM) 基礎實體伺服器，與網狀架構控制器通訊。 此 IP 位址是虛擬公用 IP 位址，可協助進行通訊。 如需詳細資訊，請參閱 [什麼是 IP 位址 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
+[Azure Linux 來賓代理程式](../extensions/agent-linux.md) 是虛擬機器) 代理程式 (VM。 它可讓 VM (IP 位址168.63.129.16 上裝載 VM) 基礎實體伺服器，與網狀架構控制器通訊。 此 IP 位址是虛擬公用 IP 位址，可協助進行通訊。 如需詳細資訊，請參閱 [什麼是 IP 位址 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
 
 ## <a name="checking-agent-status-and-version"></a>檢查代理程式狀態和版本
 

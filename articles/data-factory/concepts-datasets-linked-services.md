@@ -3,8 +3,8 @@ title: 資料集
 description: 深入瞭解 Data Factory 中的資料集。 資料集代表輸入/輸出資料。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/24/2020
-ms.openlocfilehash: 747d780b8f679adf66810bdcdf6e9b263e8d241c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a9de6ff174adc5f6be9647560ad4e26367cb4ed
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88923750"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500116"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory 中的資料集
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -34,7 +34,7 @@ ms.locfileid: "88923750"
 ## <a name="overview"></a>概觀
 資料處理站可以有一或多個管線。 「管線」是一起執行某個工作的「活動」所組成的邏輯群組。 管線中的活動會定義要在資料上執行的動作。 現在，「資料集」是一個具名的資料檢視，指向或參考您想要在「活動」中用來作為輸入或輸出的資料。 資料集可識別資料表、檔案、資料夾和文件等各種資料存放區中的資料。 例如，Azure Blob 資料集會指定活動應從中讀取資料之 Blob 儲存體中的 Blob 容器和資料夾。
 
-在您建立資料集之前，您必須建立一個[**連結服務**](concepts-linked-services.md)，以將資料存放區連結到資料處理站。 已連結的服務非常類似連接字串，可定義 Data Factory 連接到外部資源所需的連線資訊。 這麼說吧：資料集代表已連結之資料存放區內的資料結構，而已連結的服務則定義與資料來源的連線。 例如，「Azure 儲存體」已連結服務會將儲存體帳戶連結到 Data Factory。 Azure Blob 資料集代表該 Azure 儲存體帳戶內包含要處理之輸入 Blob 的 Blob 容器和資料夾。
+在您建立資料集之前，您必須建立一個 [**連結服務**](concepts-linked-services.md)，以將資料存放區連結到資料處理站。 已連結的服務非常類似連接字串，可定義 Data Factory 連接到外部資源所需的連線資訊。 這麼說吧：資料集代表已連結之資料存放區內的資料結構，而已連結的服務則定義與資料來源的連線。 例如，「Azure 儲存體」已連結服務會將儲存體帳戶連結到 Data Factory。 Azure Blob 資料集代表該 Azure 儲存體帳戶內包含要處理之輸入 Blob 的 Blob 容器和資料夾。
 
 以下是一個範例案例。 若要將資料從 Blob 儲存體複製到 SQL Database，您可以建立兩個連結服務： Azure Blob 儲存體和 Azure SQL Database。 接著，建立兩個資料集：分隔的文字資料集 (參考 Azure Blob 儲存體連結服務，假設您有文字檔作為來源) ，而 Azure SQL 資料表資料集 (參考 Azure SQL Database 連結服務) 。 Azure Blob 儲存體和 Azure SQL Database 連結的服務包含連接字串，Data Factory 在執行時間分別用來連接到您的 Azure 儲存體和 Azure SQL Database。 分隔的文字資料集會指定 blob 容器和 blob 資料夾，其中包含您 Blob 儲存體中的輸入 blob，以及與格式相關的設定。 「Azure SQL 資料表」資料集會指定做為資料複製目的地的 SQL Database 中 SQL 資料表。
 

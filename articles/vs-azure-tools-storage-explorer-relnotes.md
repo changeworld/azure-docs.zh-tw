@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: a53f947eb2a44cc8773be8ee2b2bd03ca899be22
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7c250f1351d83d213c5c7af5b00d7a648c5d8bc6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95520997"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499657"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure 儲存體總管版本資訊
 
@@ -559,7 +559,7 @@ ms.locfileid: "95520997"
         
 ### <a name="new"></a>新增
 
-* 您現在可以使用儲存體總管，透過 [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) 存取您的 Blob 資料。 如果您已登入且儲存體總管無法擷取儲存體帳戶的金鑰，則 OAuth 權杖將在處理資料時用來驗證。
+* 您現在可以使用儲存體總管，透過 [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 存取您的 Blob 資料。 如果您已登入且儲存體總管無法擷取儲存體帳戶的金鑰，則 OAuth 權杖將在處理資料時用來驗證。
 * 儲存體總管現在支援 ADLS Gen2 Storage 帳戶。 當儲存體總管偵測到儲存體帳戶已啟用階層式命名空間時，您會在您儲存體帳戶的名稱旁邊看見「(ADLS Gen2 預覽)」。 儲存體總管能夠偵測當您登入時是否已啟用階層式命名空間，或您是否已連結具有名稱和金鑰的儲存體帳戶。 對於 ADLS Gen2 儲存體帳戶，您可以使用儲存體總管：
   * 建立和刪除容器
   * 管理容器屬性和權限 (左側)
@@ -628,7 +628,7 @@ ms.locfileid: "95520997"
         
 ### <a name="new"></a>新增
 
-* 您現在可以使用儲存體總管，透過 [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) 存取您的 Blob 資料。 如果您已登入且儲存體總管無法擷取儲存體帳戶的金鑰，則 OAuth 權杖將在處理資料時用來驗證。
+* 您現在可以使用儲存體總管，透過 [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 存取您的 Blob 資料。 如果您已登入且儲存體總管無法擷取儲存體帳戶的金鑰，則 OAuth 權杖將在處理資料時用來驗證。
 * 儲存體總管現在支援 ADLS Gen2 Storage 帳戶。 當儲存體總管偵測到儲存體帳戶已啟用階層式命名空間時，您會在您儲存體帳戶的名稱旁邊看見「(ADLS Gen2 預覽)」。 儲存體總管能夠偵測當您登入時是否已啟用階層式命名空間，或您是否已連結具有名稱和金鑰的儲存體帳戶。 對於 ADLS Gen2 儲存體帳戶，您可以使用儲存體總管：
   * 建立和刪除容器
   * 管理容器屬性和權限 (左側)
@@ -683,7 +683,7 @@ ms.locfileid: "95520997"
 
 ### <a name="new"></a>新增
 
-* 您現在可以使用儲存體總管，透過 [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) 存取您的 Blob 資料。 如果您已登入且儲存體總管無法擷取儲存體帳戶的金鑰，則 OAuth 權杖將在處理資料時用來驗證。
+* 您現在可以使用儲存體總管，透過 [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 存取您的 Blob 資料。 如果您已登入且儲存體總管無法擷取儲存體帳戶的金鑰，則 OAuth 權杖將在處理資料時用來驗證。
 * 儲存體總管現在支援 ADLS Gen2 Storage 帳戶。 當儲存體總管偵測到儲存體帳戶已啟用階層式命名空間時，您會在您儲存體帳戶的名稱旁邊看見「(ADLS Gen2 預覽)」。 儲存體總管能夠偵測當您登入時是否已啟用階層式命名空間，或您是否已連結具有名稱和金鑰的儲存體帳戶。 對於 ADLS Gen2 儲存體帳戶，您可以使用儲存體總管：
   * 建立和刪除容器
   * 管理容器屬性和權限 (左側)

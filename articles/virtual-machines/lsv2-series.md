@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: dd755e1bc220d61aa540a0e7da9e3f174bde9d76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba971919037230cb6c09e627fde448647063b5b9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652919"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498416"
 ---
 # <a name="lsv2-series"></a>Lsv2 系列
 
@@ -51,7 +51,7 @@ Lsv2 系列以在全核心加速為 2.55GHz 且最大加速為 3.0GHz 之 [AMD E
 
 <sup>4</sup> Lsv2 系列 VM 並未針對資料磁碟提供主機快取，因為這對 Lsv2 工作負載沒有幫助。
 
-<sup>5 個</sup> Lsv2 系列 vm 一次最 [多可將](linux/disk-bursting.md) 磁片效能提高到30分鐘。 
+<sup>5 個</sup> Lsv2 系列 vm 一次最 [多可將](./disk-bursting.md) 磁片效能提高到30分鐘。 
 
 <sup>6</sup> 個具有64以上個 vcpu 的 vm 需要其中一種支援的客體作業系統：
 
@@ -70,7 +70,7 @@ Lsv2 系列以在全核心加速為 2.55GHz 且最大加速為 3.0GHz 之 [AMD E
 - 儲存容量會以 GiB 或是 1024^3 位元組為單位顯示。 當比較使用 GB (1000^3 位元組) 為度量單位的磁碟與使用 GiB (1024^3) 為度量單位的磁碟時，請記住以 GiB 為單位提供的容量數字可能較小。 例如，1023 GiB = 1098.4 GB
 - 磁碟輸送量是以每秒輸入/輸出作業 (IOPS) 和 MBps 進行測量，其中 MBps = 10^6 位元組/每秒。
 - 如果您想要讓虛擬機器獲得最佳效能，應將資料磁碟數目限制為每個 vCPU 有 2 個磁碟。
-- **預期的網路頻寬**是根據跨所有目的地之所有 NIC 的 VM 類型所[配置的最大彙總頻寬](../virtual-network/virtual-machine-network-throughput.md)。 不保證上限，但會提供選取想要之應用程式的正確 VM 類型的指引。 實際網路效能取決於各種因素，包括網路壅塞、應用程式負載和網路設定。 如需最佳化網路輸送量的資訊，請參閱[最佳化 Windows 和 Linux 的網路輸送量](../virtual-network/virtual-network-optimize-network-bandwidth.md)。 若要達到 Linux 或 Windows 上的預期網路效能，可能需要選取特定版本，或最佳化 VM。 如需詳細資訊，請參閱[如何可靠地測試虛擬機器輸送量](../virtual-network/virtual-network-bandwidth-testing.md)。
+- **預期的網路頻寬** 是根據跨所有目的地之所有 NIC 的 VM 類型所 [配置的最大彙總頻寬](../virtual-network/virtual-machine-network-throughput.md)。 不保證上限，但會提供選取想要之應用程式的正確 VM 類型的指引。 實際網路效能取決於各種因素，包括網路壅塞、應用程式負載和網路設定。 如需最佳化網路輸送量的資訊，請參閱[最佳化 Windows 和 Linux 的網路輸送量](../virtual-network/virtual-network-optimize-network-bandwidth.md)。 若要達到 Linux 或 Windows 上的預期網路效能，可能需要選取特定版本，或最佳化 VM。 如需詳細資訊，請參閱[如何可靠地測試虛擬機器輸送量](../virtual-network/virtual-network-bandwidth-testing.md)。
 
 
 ## <a name="other-sizes-and-information"></a>其他大小和資訊

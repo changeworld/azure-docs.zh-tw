@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: erhopf
-ms.openlocfilehash: a3ff2a1f92cabb61f58d70b732738e613afa7cd9
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 87bc411903604a7068f346604853a2a61c9a6f1c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025628"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499181"
 ---
 # <a name="inspect-custom-speech-data"></a>檢查自訂語音資料
 
@@ -35,7 +35,7 @@ ms.locfileid: "95025628"
 3. 按一下 [ **加入測試**]。
 4. 選取 [ **檢查品質 (僅限音訊的資料)**。 提供測試的名稱、描述，然後選取您的音訊資料集。
 5. 選取最多兩個您想要測試的模型。
-6. 按一下頁面底部的 [新增]  。
+6. 按一下 [建立]。
 
 成功建立測試之後，您可以看到模型如何轉譯您所指定的音訊資料集，或將兩個模型的結果與並排比較。
 
@@ -95,12 +95,12 @@ ms.locfileid: "95025628"
 
 匯出至資料的檔案將會用來做為全新的資料集，而且不會影響任何現有的資料/訓練/測試實體。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [評估您的資料](how-to-custom-speech-evaluate-data.md)
 - [定型模型](how-to-custom-speech-train-model.md)
-- [改善模型](how-to-custom-speech-improve-accuracy.md)
-- [部署模型](how-to-custom-speech-deploy-model.md)
+- [改善模型](./how-to-custom-speech-evaluate-data.md)
+- [部署模型](./how-to-custom-speech-train-model.md)
 
 ## <a name="additional-resources"></a>其他資源
 

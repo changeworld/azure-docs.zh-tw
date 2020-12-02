@@ -8,20 +8,20 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.author: inhenkel
-ms.openlocfilehash: a0ded2a1ad5cd590ab5715edebde2ab19e399e8d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d0811e8f9183ee334d413bcad69f2c7b32023be3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686660"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499351"
 ---
 # <a name="managed-identities-and-trusted-storage-with-media-services"></a>使用媒體服務的受控識別和信任的儲存體
 
-媒體服務可搭配 [受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 識別使用，以啟用受信任的儲存體。 當您建立媒體服務帳戶時，您必須將它與儲存體帳戶產生關聯。 媒體服務可以使用系統驗證來存取該儲存體帳戶。 媒體服務會驗證媒體服務帳戶和儲存體帳戶是否位於相同的訂用帳戶中，而且會驗證新增關聯的使用者是否具有 Azure Resource Manager RBAC 的儲存體帳戶存取權。
+媒體服務可搭配 [受控](../../active-directory/managed-identities-azure-resources/overview.md) 識別使用，以啟用受信任的儲存體。 當您建立媒體服務帳戶時，您必須將它與儲存體帳戶產生關聯。 媒體服務可以使用系統驗證來存取該儲存體帳戶。 媒體服務會驗證媒體服務帳戶和儲存體帳戶是否位於相同的訂用帳戶中，而且會驗證新增關聯的使用者是否具有 Azure Resource Manager RBAC 的儲存體帳戶存取權。
 
 ## <a name="trusted-storage"></a>受信任的儲存體
 
-但是，如果您想要使用防火牆來保護您的儲存體帳戶，您必須使用受控識別驗證。 它可讓媒體服務存取透過受信任的儲存體存取設定了防火牆或 VNet 限制的儲存體帳戶。  如需信任的 Microsoft 服務的詳細資訊，請參閱 [設定 Azure 儲存體防火牆和虛擬網路](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)。
+但是，如果您想要使用防火牆來保護您的儲存體帳戶，您必須使用受控識別驗證。 它可讓媒體服務存取透過受信任的儲存體存取設定了防火牆或 VNet 限制的儲存體帳戶。  如需信任的 Microsoft 服務的詳細資訊，請參閱 [設定 Azure 儲存體防火牆和虛擬網路](../../storage/common/storage-network-security.md#trusted-microsoft-services)。
 
 ## <a name="media-services-managed-identity-scenarios"></a>媒體服務受控識別案例
 
@@ -57,4 +57,4 @@ ms.locfileid: "94686660"
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解受控識別針對您和您的 Azure 應用程式所能做的動作，請參閱 [Azure AD 受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)識別。
+若要深入瞭解受控識別針對您和您的 Azure 應用程式所能做的動作，請參閱 [Azure AD 受控](../../active-directory/managed-identities-azure-resources/overview.md)識別。

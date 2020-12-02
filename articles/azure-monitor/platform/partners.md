@@ -4,12 +4,12 @@ description: 了解 Azure Monitor 的監視合作夥伴以及如何存取與合�
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: d603e130d4e65667edb34121a4c89b7b0e02b819
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 6e707e77f4618d71cb2fa3f32b05895b97658f76
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636736"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500235"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 監視器合作夥伴整合
 
@@ -263,7 +263,7 @@ Serverless360 是一個平臺工具，可操作、管理及監視 Azure 無伺�
 
 ![SignalFX 標誌](./media/partners/signalfx.png)
 
-SignalFx 是即時營運智慧中的翹楚，適用於資料導向的 DevOps。 此服務會探索並收集雲端中每個元件的計量。 它取代了傳統的點工具，並可即時查看現今的動態環境。 利用可大幅調整的 SignalFx 平台，SaaS 平台已針對容器和微服務型架構進行最佳化，並在所有大小的組織之間提供功能強大視覺效果、主動警示以及共同作業分級功能。 SignalFx 可直接與 Azure 監視器整合，也可以透過開放原始碼連接器（例如 *Telegraf* 、 *statsD* 和 *collectd* ），為 Azure 提供最佳的類別儀表板、分析和警示。
+SignalFx 是即時營運智慧中的翹楚，適用於資料導向的 DevOps。 此服務會探索並收集雲端中每個元件的計量。 它取代了傳統的點工具，並可即時查看現今的動態環境。 利用可大幅調整的 SignalFx 平台，SaaS 平台已針對容器和微服務型架構進行最佳化，並在所有大小的組織之間提供功能強大視覺效果、主動警示以及共同作業分級功能。 SignalFx 可直接與 Azure 監視器整合，也可以透過開放原始碼連接器（例如 *Telegraf*、 *statsD* 和 *collectd* ），為 Azure 提供最佳的類別儀表板、分析和警示。
 
 [signalfx 檔](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-azure)
 
@@ -310,6 +310,20 @@ Sumo Logic 是安全、雲端原生的電腦資料分析服務，能橫跨整個
 Turbonomic 透過同時讓效能、成本及合規性即時達到最佳狀態，為混合式雲端傳遞工作負載自動化。 Turbonomic 可透過持續最佳化 Azure 資產，確保應用程式可一直取得履行其 SLA 所需的資源，藉此協助組織在使用資產上具有彈性，而且只需透過 IaaS 與 PaaS 層的計算、儲存體與網路就可完成。 組織可模擬移轉、適切調整工作負載及淘汰資料中心資源，以負責地準時移轉至 Azure，而且在不超支預算的情況下還同時保有效能與合規性。 Turbonomicu 由 API 驅動，在 Azure 與內部部署以無代理程式 VM 的形式執行。
 
 [Turbonomic 簡介](https://turbonomic.com/)
+
+## <a name="partner-tools-with-event-hub-integration"></a>使用事件中樞整合的合作夥伴工具
+
+使用 Azure 監視器將監視資料路由至 Azure 事件中樞，可讓您輕鬆地與一些外部 SIEM 和監視工具整合。 下列合作夥伴已知可透過事件中樞進行整合。 
+
+| 工具 | 託管于 Azure | 描述 |
+|:---|:---| :---|
+|  IBM QRadar | 否 | Microsoft Azure DSM 與 Microsoft Azure 事件中樞通訊協定均可從 [IBM 支援網站](https://www.ibm.com/support)下載。 您可以在 [QRADAR DSM](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)設定中深入瞭解與 Azure 的整合。 |
+| Splunk | 否 | [Splunk 的 Microsoft Azure Add-On](https://splunkbase.splunk.com/app/3757/) 是可在從 splunkbase 取得中使用的開放原始碼專案。 <br><br> 如果您無法在 Splunk 實例中安裝附加元件（例如您使用 proxy 或在 Splunk Cloud 上執行），您可以使用 [Azure Function For Splunk](https://github.com/Microsoft/AzureFunctionforSplunkVS)將這些事件轉送至 Splunk HTTP 事件收集器，這是由事件中樞中的新訊息所觸發。 |
+| sumologic | 否 | 您可以 [從事件中樞的 Azure Audit 應用程式收集記錄](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)中，取得設定 SumoLogic 以取用來自事件中樞之資料的指示。 |
+| ArcSight | 否 | ArcSight Azure 事件中樞智慧型連接器可作為 [ArcSight 智慧型連接器集合](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)的一部分。 |
+| Syslog 伺服器 | 否 | 如果您想要將 Azure 監視器資料直接串流到 syslog 伺服器，您可以使用以 [Azure 函式為基礎的解決方案](https://github.com/miguelangelopereira/azuremonitor2syslog/)。
+| LogRhythm | 否| [這裡](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)提供設定 LogRhythm 以從事件中樞收集記錄的指示。 
+|Logz.io | 是 | 如需詳細資訊，請參閱針對 [在 Azure 上執行的 JAVA 應用程式使用 Logz.io 開始使用監視和記錄](/azure/developer/java/fundamentals/java-get-started-with-logzio)
 
 
 ## <a name="next-steps"></a>後續步驟

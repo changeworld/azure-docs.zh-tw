@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 52230d6b13c4210e0ff8e85d0a3efe39af55f6e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6fcf5980cf64b5fc088dfa295ef6221ffda6de9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935053"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499929"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>收集並分析 Azure 認知搜尋的記錄資料
 
@@ -23,13 +23,13 @@ ms.locfileid: "88935053"
 
 當您設定診斷記錄時，系統會要求您指定儲存機制。 下表列舉用來收集和保存資料的選項。
 
-| 資源 | 用途 |
+| 資源 | 用於 |
 |----------|----------|
-| [傳送至 Log Analytics 工作區](../azure-monitor/learn/tutorial-resource-logs.md) | 事件和計量會傳送至 Log Analytics 工作區，您可以在入口網站中查詢該工作區，以傳回詳細資訊。 如需簡介，請參閱 [開始使用 Azure 監視器記錄](../azure-monitor/log-query/get-started-portal.md) |
+| [傳送至 Log Analytics 工作區](../azure-monitor/learn/tutorial-resource-logs.md) | 事件和計量會傳送至 Log Analytics 工作區，您可以在入口網站中查詢該工作區，以傳回詳細資訊。 如需簡介，請參閱 [開始使用 Azure 監視器記錄](../azure-monitor/log-query/log-analytics-tutorial.md) |
 | [使用 Blob 儲存體保存](../storage/blobs/storage-blobs-overview.md) | 事件和計量會封存至 Blob 容器，並儲存在 JSON 檔案中。 記錄可能會有相當細微的 (（小時/分鐘）) ，很適合用來研究特定事件，而不是用於開放式調查。 您可以使用 JSON 編輯器來查看原始記錄檔或 Power BI，以匯總記錄資料並將其視覺化。|
 | [串流至事件中樞](../event-hubs/index.yml) | 事件和計量會串流至 Azure 事件中樞服務。 請選擇此選項作為非常大型記錄的替代資料收集服務。 |
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 事先建立資源，讓您可以在設定診斷記錄時選取一或多個資源。
 
@@ -43,7 +43,7 @@ ms.locfileid: "88935053"
 
 診斷設定會指定如何收集記錄的事件和計量。
 
-1. 在 [監視]**** 下方，選取 [診斷設定]****。
+1. 在 [監視]  下方，選取 [診斷設定]  。
 
    ![診斷設定](./media/search-monitor-usage/diagnostic-settings.png "診斷設定")
 
@@ -189,7 +189,7 @@ Blob 儲存體是用來封存記錄檔。 您可以使用任何 JSON 編輯器�
 
 1. 在 Azure 入口網站中，開啟您的儲存體帳戶。 
 
-2. 在左側導覽窗格中，按一下 [Blob]****。 您應該會看到 **insights-logs-operationlogs** 和 **insights-metrics-pt1m**。 當記錄資料匯出至 Blob 儲存體時，Azure 認知搜尋會建立這些容器。
+2. 在左側導覽窗格中，按一下 [Blob]。 您應該會看到 **insights-logs-operationlogs** 和 **insights-metrics-pt1m**。 當記錄資料匯出至 Blob 儲存體時，Azure 認知搜尋會建立這些容器。
 
 3. 在資料夾階層中一路往下點選，直到抵達 .json 檔案為止。  請使用操作功能表來下載檔案。
 

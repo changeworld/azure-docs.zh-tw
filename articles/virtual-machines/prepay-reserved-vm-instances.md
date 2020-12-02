@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/30/2017
 ms.author: vikdesai
-ms.openlocfilehash: 5df56b304463ab981026fbe0c82d831d83d702c3
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: f23d1fb0162abf05fba97c2f6fb02be9238fabd2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93380148"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500354"
 ---
 # <a name="save-costs-with-azure-reserved-vm-instances-linux"></a>使用 Azure 保留的 VM 執行個體 (Linux) 節省成本
 
@@ -78,7 +78,7 @@ ms.locfileid: "93380148"
 
 - **預覽或促銷 vm** -任何處于預覽狀態或使用促銷計量的 VM 系列或大小。
 
-- 雲端保留不適用於德國或中國區域 **中的購買** 。
+- 雲端保留不適用於德國或中國區域 **中的購買**。
 
 - **配額不足** -具有單一訂用帳戶範圍的保留，必須在新 RI 的訂用帳戶中有可用的 vCPU 配額。 例如，如果目標訂用帳戶的配額限制為 10 個 D 系列的 vCPU，您便無法購買一個適用於 11 個 Standard_D1 執行個體的保留項目。 保留的配額檢查包含已在訂用帳戶中部署的 VM。 例如，如果訂用帳戶的配額為 10 個 D 系列的 vCPU，且已部署 2 個 standard_D1 執行個體，則您可以在此訂用帳戶中購買一個適用於 10 個 standard_D1 執行個體的保留項目。 您可以 [建立報價增加要求](../azure-portal/supportability/resource-manager-core-quotas-request.md) 以解決此問題。
 
@@ -86,11 +86,11 @@ ms.locfileid: "93380148"
 
 ## <a name="buy-a-reserved-vm-instance"></a>購買保留 VM 執行個體
 
-您可以在 [Azure 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)中購買保留的 VM 實例。 保留的付款方式可為[預先付款或每月付款](../cost-management-billing/reservations/monthly-payments-reservations.md)。
+您可以在 [Azure 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)中購買保留的 VM 實例。 保留的付款方式可為[預先付款或每月付款](../cost-management-billing/reservations/prepare-buy-reservation.md)。
 這些需求適用于購買保留的 VM 實例：
 
 - 您必須是至少一個 EA 訂用帳戶的擁有者角色，或具有隨用隨付費率的訂用帳戶。
-- 若為 EA 訂用帳戶，必須在 [ea 入口網站](https://ea.azure.com/)中啟用 [ **新增保留實例** ] 選項。 或者，如果該設定已停用，則您必須是訂用帳戶的 EA 管理員。
+- 若為 EA 訂用帳戶，必須在 [ea 入口網站](https://ea.azure.com/)中啟用 [**新增保留實例**] 選項。 或者，如果該設定已停用，則您必須是訂用帳戶的 EA 管理員。
 - 針對雲端解決方案提供者 (CSP) 程式，只有系統管理員代表或銷售代表可以購買保留項目。
 
 購買執行個體：
@@ -136,7 +136,7 @@ ms.locfileid: "93380148"
 - 現有的保留區域
 - SKU
 - 數量
-- Duration
+- 持續時間
 
 但是，如果您想要進行變更，您可以 *交換* 保留。
 
@@ -158,6 +158,4 @@ ms.locfileid: "93380148"
     - [了解採用隨用隨付費率的訂用帳戶的保留使用量](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
     - [了解 Enterprise 註冊的保留項目使用量](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
     - [Windows 軟體的成本不包括在保留項目內](../cost-management-billing/reservations/reserved-instance-windows-software-costs.md)
-    - [合作夥伴中心雲端解決方案提供者 (CSP) 計畫中的 Azure 保留項目](https://docs.microsoft.com/partner-center/azure-reservations)
-
-
+    - [合作夥伴中心雲端解決方案提供者 (CSP) 計畫中的 Azure 保留項目](/partner-center/azure-reservations)

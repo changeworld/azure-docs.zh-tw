@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 88bbd83d7ac5b834255c9b4d46d7cef4394f15d3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a3016900b6265bfd56ad1a5a71f70efc01181af5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968662"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499249"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure Image Builder 服務 DevOps 工作
 
@@ -26,7 +26,7 @@ ms.locfileid: "91968662"
 
 * 「不穩定」的[AIB](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder-canary)工作，這讓我們能夠在將其升階為「穩定」工作之前，先放入最新的更新和功能，讓客戶進行測試。 如果沒有回報的問題，而且我們的遙測沒有顯示任何問題（大約1周），我們會將工作程式碼升階為「穩定」。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * [從 Visual Studio Marketplace 安裝穩定的 DevOps](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder)工作。
 * 您必須擁有 VSTS DevOps 帳戶，並已建立組建管線
@@ -55,9 +55,9 @@ ms.locfileid: "91968662"
 
 ## <a name="add-task-to-release-pipeline"></a>將工作新增至發行管線
 
-選取**發行管線**  >  **編輯**
+選取 **發行管線**  >  **編輯**
 
-在使用者代理程式上，選取 *+* 要新增的映射產生器，然後搜尋 **影像**產生器。 選取 [新增]。
+在使用者代理程式上，選取 *+* 要新增的映射產生器，然後搜尋 **影像** 產生器。 選取 [新增]  。
 
 設定下列工作屬性：
 
@@ -139,7 +139,7 @@ DevOps 工作目前不支援重新開機 Windows 組建，如果您嘗試使用 
 
 下列範例將說明其運作方式：
 
-:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="在發行管線中選取 [新增成品]。":::
+:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="顯示階層的目錄結構。":::
 
 
 * Windows-檔案存在於 `C:\` 。 會建立名為的目錄 `buildArtifacts` ，其中包含 `webapp` 目錄。
@@ -194,7 +194,7 @@ DevOps 工作目前不支援重新開機 Windows 組建，如果您嘗試使用 
     
 #### <a name="total-length-of-image-build"></a>映射組建的總長度
 
-目前無法變更 DevOps 管線工作中的總長度。 它使用預設值240分鐘。 如果您想要增加 [buildTimeoutInMinutes](./image-builder-json.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#properties-buildtimeoutinminutes)，則可以在發行管線中使用 AZ CLI 工作。 設定工作以複製範本並提交範本。 如需範例，請參閱此 [解決方案](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)，或使用 Az PowerShell。
+目前無法變更 DevOps 管線工作中的總長度。 它使用預設值240分鐘。 如果您想要增加 [buildTimeoutInMinutes](./image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-buildtimeoutinminutes)，則可以在發行管線中使用 AZ CLI 工作。 設定工作以複製範本並提交範本。 如需範例，請參閱此 [解決方案](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)，或使用 Az PowerShell。
 
 
 #### <a name="storage-account"></a>儲存體帳戶
@@ -237,11 +237,11 @@ DevOps 工作目前不支援重新開機 Windows 組建，如果您嘗試使用 
 
 ### <a name="optional-settings"></a>選擇性設定
 
-* [Vm 大小](image-builder-json.md#vmprofile) -您可以從預設的 *STANDARD_D1_V2*覆寫 vm 大小。 您可以覆寫以減少自訂時間的總計，或因為您想要建立相依于特定 VM 大小的映射（例如 GPU/HPC 等）。
+* [Vm 大小](image-builder-json.md#vmprofile) -您可以從預設的 *STANDARD_D1_V2* 覆寫 vm 大小。 您可以覆寫以減少自訂時間的總計，或因為您想要建立相依于特定 VM 大小的映射（例如 GPU/HPC 等）。
 
 ## <a name="how-it-works"></a>運作方式
 
-當您建立發行時，此工作會在儲存體帳戶中建立名為 *imagebuilder-vststask*的容器。 它會 zips 並上傳您的組建成品，並建立 zip 檔案的 SAS 權杖。
+當您建立發行時，此工作會在儲存體帳戶中建立名為 *imagebuilder-vststask* 的容器。 它會 zips 並上傳您的組建成品，並建立 zip 檔案的 SAS 權杖。
 
 工作會使用傳遞給工作的屬性來建立影像產生器範本成品。 此工作會執行下列動作：
 * 下載組建成品 zip 檔案和任何其他相關的腳本。 這些檔案會儲存在暫存映射產生器資源群組的儲存體帳戶中 `IT_<DestinationResourceGroup>_<TemplateName>` 。
@@ -306,7 +306,7 @@ starting run template...
 
 ### <a name="can-i-specify-the-image-template-name"></a>我可以指定映射範本名稱嗎？
 
-不可以。 使用唯一的範本名稱，然後刪除。
+否。 使用唯一的範本名稱，然後刪除。
 
 ### <a name="the-image-builder-failed-how-can-i-troubleshoot"></a>影像產生器失敗。 我該如何進行疑難排解？
 
@@ -314,7 +314,7 @@ starting run template...
 
 您會在 DevOps 記錄檔中看到 VM 映射產生器工作的錯誤，並查看自訂記錄檔的位置。 例如：
 
-:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="在發行管線中選取 [新增成品]。":::
+:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="顯示失敗的 DevOps 工作錯誤範例。":::
 
 如需疑難排解的詳細資訊，請參閱針對 [Azure 映射產生器服務進行疑難排解](image-builder-troubleshoot.md)。 
 

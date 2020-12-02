@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: b0871b6365d78129cd6fdaec82fee14e2b0a7a4b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 4fb20b221858c4717d67e0777afbe5c067c00a69
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693438"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499606"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>在 Azure 認知搜尋中設定客戶管理的金鑰進行資料加密
 
@@ -96,7 +96,7 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
 
-+ 如果您安裝了 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)，您可以執行下列命令來啟用必要的屬性。
++ 如果您安裝了 [Azure CLI](/cli/azure/install-azure-cli)，您可以執行下列命令來啟用必要的屬性。
 
    ```azurecli-interactive
    az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --enable-purge-protection
@@ -173,7 +173,7 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 
 ## <a name="5---encrypt-content"></a>5-加密內容
 
-若要在索引、資料來源、技能集、索引子或同義字地圖上加入客戶管理的金鑰，您必須使用 [搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/) 或 SDK。 入口網站不會公開同義字地圖或加密屬性。 當您使用有效的 API 索引時，資料來源、技能集、索引子和同義字地圖支援最上層的 **encryptionKey** 屬性。
+若要在索引、資料來源、技能集、索引子或同義字地圖上加入客戶管理的金鑰，您必須使用 [搜尋 REST API](/rest/api/searchservice/) 或 SDK。 入口網站不會公開同義字地圖或加密屬性。 當您使用有效的 API 索引時，資料來源、技能集、索引子和同義字地圖支援最上層的 **encryptionKey** 屬性。
 
 這個範例會使用 REST API，以及 Azure Key Vault 和 Azure Active Directory 的值：
 
@@ -196,7 +196,7 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 
 ## <a name="example-index-encryption"></a>範例：索引加密
 
-使用 [Create index Azure 認知搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)建立加密索引。 您 `encryptionKey` 可以使用屬性來指定要使用的加密金鑰。
+使用 [Create index Azure 認知搜尋 REST API](/rest/api/searchservice/create-index)建立加密索引。 您 `encryptionKey` 可以使用屬性來指定要使用的加密金鑰。
 > [!Note]
 > 這些金鑰保存庫的詳細資料都不會被視為秘密，而且可以藉由流覽至 Azure 入口網站中相關的 Azure Key Vault 金鑰頁面來輕鬆取出。
 
@@ -239,7 +239,7 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 
 ### <a name="synonym-map-encryption"></a>同義字地圖加密
 
-使用「 [建立同義字對應」 Azure 認知搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)來建立加密的同義字地圖。 您 `encryptionKey` 可以使用屬性來指定要使用的加密金鑰。
+使用「 [建立同義字對應」 Azure 認知搜尋 REST API](/rest/api/searchservice/create-synonym-map)來建立加密的同義字地圖。 您 `encryptionKey` 可以使用屬性來指定要使用的加密金鑰。
 
 ```json
 {
@@ -263,7 +263,7 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 
 ## <a name="example-data-source-encryption"></a>範例：資料來源加密
 
-使用 [Create Data source (Azure 認知搜尋 REST API) ](https://docs.microsoft.com/rest/api/searchservice/create-data-source)建立加密的資料來源。 您 `encryptionKey` 可以使用屬性來指定要使用的加密金鑰。
+使用 [Create Data source (Azure 認知搜尋 REST API) ](/rest/api/searchservice/create-data-source)建立加密的資料來源。 您 `encryptionKey` 可以使用屬性來指定要使用的加密金鑰。
 
 ```json
 {
@@ -289,7 +289,7 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 
 ## <a name="example-skillset-encryption"></a>範例：技能集加密
 
-使用 [Create 技能集 Azure 認知搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/create-skillset)來建立加密的技能集。 您 `encryptionKey` 可以使用屬性來指定要使用的加密金鑰。
+使用 [Create 技能集 Azure 認知搜尋 REST API](/rest/api/searchservice/create-skillset)來建立加密的技能集。 您 `encryptionKey` 可以使用屬性來指定要使用的加密金鑰。
 
 ```json
 {
@@ -315,7 +315,7 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 
 ## <a name="example-indexer-encryption"></a>範例：索引子加密
 
-使用 [Create 索引子 Azure 認知搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/create-indexer)來建立加密的索引子。 您 `encryptionKey` 可以使用屬性來指定要使用的加密金鑰。
+使用 [Create 索引子 Azure 認知搜尋 REST API](/rest/api/searchservice/create-indexer)來建立加密的索引子。 您 `encryptionKey` 可以使用屬性來指定要使用的加密金鑰。
 
 ```json
 {

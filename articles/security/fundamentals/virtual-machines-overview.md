@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 91dfb3cb07cca8ec89c77dea43f1cd075db11bbf
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: ed2cb967b24ce5abdebadfe29847ae1a16b4e745
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014759"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498739"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虛擬機器安全性概觀
 本文概要說明可搭配虛擬機器使用的核心 Azure 安全性功能。
@@ -117,7 +117,7 @@ Azure 備份是可調式解決方案，可以不需成本地協助保護您的�
 深入了解：
 
 * [什麼是 Azure Site Recovery？](../../site-recovery/site-recovery-overview.md)
-* [Azure Site Recovery 如何運作？](/azure/site-recovery/azure-to-azure-architecture)
+* [Azure Site Recovery 如何運作？](../../site-recovery/azure-to-azure-architecture.md)
 * [Azure Site Recovery 保護哪些工作負載？](../../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>虛擬網路
@@ -169,6 +169,6 @@ TEE 能確保沒有任何方法可以從外部檢視資料或內部作業，就�
 * [Azure 機密運算簡介](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/) \(英文\)  
 * [Azure 機密運算](https://azure.microsoft.com/blog/azure-confidential-computing/)  
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 瞭解 Vm 和作業系統的 [安全性最佳作法](iaas.md) 。

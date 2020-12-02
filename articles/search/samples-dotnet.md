@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: d068365cc8197a579c0b043d3fff2da3d54eb803
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ab6408621616a4be62631391456f73e90fced752
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686839"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498994"
 ---
 # <a name="net-c-code-samples-for-azure-cognitive-search"></a>適用于 Azure 認知搜尋的 .NET (c # ) 程式碼範例
 
@@ -44,7 +44,7 @@ Azure SDK for .NET 包含許多範例和說明每個範例的 [讀我檔案](htt
 
 ## <a name="documentation-samples"></a>文件和範例
 
-下列範例有 [Azure 認知搜尋檔](https://docs.microsoft.com/azure/search/)中的相關文章。
+下列範例有 [Azure 認知搜尋檔](./index.yml)中的相關文章。
 
 | 範例 | 描述 |
 |---------|-------------|
@@ -63,6 +63,6 @@ Azure SDK for .NET 包含許多範例和說明每個範例的 [讀我檔案](htt
 | 範例 | 描述 |
 |---------|-------------|
 | [azure-搜尋-技術能力](https://github.com/Azure-Samples/azure-search-power-skills)  | 您可以納入您的贏解決方案中之取用自訂技能的原始程式碼。  |
-| [知識採礦解決方案加速器](https://docs.microsoft.com/samples/azure-samples/azure-search-knowledge-mining/azure-search-knowledge-mining/) | 包含範本、支援檔案及分析報表，可協助您建立端對端知識挖掘解決方案的原型。  |
+| [知識採礦解決方案加速器](/samples/azure-samples/azure-search-knowledge-mining/azure-search-knowledge-mining/) | 包含範本、支援檔案及分析報表，可協助您建立端對端知識挖掘解決方案的原型。  |
 | [Covid-19-19 搜尋應用程式存放庫](https://github.com/liamca/covid19search) | 以認知搜尋為基礎的[covid-19-19 搜尋應用程式](https://covid19search.azurewebsites.net/)的原始程式碼儲存機制 |
 | [JFK](https://github.com/Microsoft/AzureSearch_JFK_Files) | 深入瞭解 [jfk 飛往解決方案](https://www.microsoft.com/ai/ai-lab-jfk-files)。 |

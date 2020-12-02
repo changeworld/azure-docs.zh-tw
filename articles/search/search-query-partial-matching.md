@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 357f44149cb17976556c1e4609f6f2af531b80ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f36502eb464f051cd50b51245db69fa76daa915
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935767"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499538"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>具有特殊字元的部分詞彙搜尋和模式 (萬用字元、RegEx、模式) 
 
-*部分詞彙搜尋*是指由詞彙片段所組成的查詢，而不是整個詞彙，您可能只會有開始、中間或結束詞彙 (有時也稱為前置詞、中置或後置詞查詢) 。 部分詞彙搜尋可能包含片段的組合，通常會有特殊字元，例如作為查詢字串一部分的虛線或斜線。 常見的使用案例包括電話號碼、URL、代碼或以字元分隔的複合字組的部分。
+*部分詞彙搜尋* 是指由詞彙片段所組成的查詢，而不是整個詞彙，您可能只會有開始、中間或結束詞彙 (有時也稱為前置詞、中置或後置詞查詢) 。 部分詞彙搜尋可能包含片段的組合，通常會有特殊字元，例如作為查詢字串一部分的虛線或斜線。 常見的使用案例包括電話號碼、URL、代碼或以字元分隔的複合字組的部分。
 
 如果索引沒有預期格式的權杖，則部分詞彙搜尋和包含特殊字元的查詢字串可能會造成問題。 在編制索引的 [詞法分析階段](search-lucene-query-architecture.md#stage-2-lexical-analysis) 期間 (假設預設標準分析器) ，會捨棄特殊字元、將複合字分割，以及刪除空白字元;在找不到相符的情況時，所有的都會導致查詢失敗。 例如，像 `+1 (425) 703-6214` (標記為、、) 的電話號碼將 `"1"` `"425"` `"703"` `"6214"` 不會顯示在查詢中， `"3-62"` 因為該內容實際上並不存在於索引中。 
 
@@ -160,7 +160,7 @@ Azure 認知搜尋會掃描索引中的整個 token 化詞彙，除非您將萬�
 
 內建或預先定義的分析器可以在欄位定義的屬性上依名稱指定 `analyzer` ，不需要在索引中進行其他設定。 下列範例示範如何 `whitespace` 在欄位上設定分析器。 
 
-針對其他案例，若要深入瞭解其他內建分析器，請參閱 [預先定義的分析器清單](/azure/search/index-add-custom-analyzers#predefined-analyzers-reference)。 
+針對其他案例，若要深入瞭解其他內建分析器，請參閱 [預先定義的分析器清單](./index-add-custom-analyzers.md#predefined-analyzers-reference)。 
 
 ```json
     {

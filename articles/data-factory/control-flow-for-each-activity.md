@@ -3,20 +3,20 @@ title: Azure Data Factory 中的 ForEach 活動
 description: For Each 活動定義管線中重複的控制流程。 它用於反覆查詢集合，並執行指定的活動。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: 35d61e896a395c3044a51780fef72d54c211a31f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71e96e6245d4cf922b82162e01a972264699f3ac
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417185"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499504"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure Data Factory 中的 ForEach 活動
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -75,7 +75,7 @@ ForEach 活動定義管線中重複的控制流程。 此活動用來逐一查�
 NAME | for-each 活動的名稱。 | String | 是
 type | 必須設定為 **ForEach** | String | 是
 isSequential | 指定應該循序或以平行方式執行迴圈。  以平行方式可一次執行最多 20 個迴圈反覆項目。 例如，如果您的 ForEach 活動會反覆查詢 10 個不同來源和接收資料集的複製活動，且 **isSequential** 設為 False，則所有複本會都執行一次。 預設值是 False。 <br/><br/> 如果 isSequential 設定為 False，請確認有正確的設定可執行多個可執行檔。 否則，應謹慎使用這個屬性，以避免引發寫入衝突。 如需詳細資訊，請參閱[平行執行](#parallel-execution)一節。 | Boolean | 否。 預設值是 False。
-batchCount | 批次計數，用於控制平行執行的數目 (當 isSequential 設定為 false 時)。 這是上限的並行限制，但每個活動不一定會在此數位執行 | 整數 (最大值 50) | 不可以。 預設值為 20。
+batchCount | 批次計數，用於控制平行執行的數目 (當 isSequential 設定為 false 時)。 這是上限的並行限制，但每個活動不一定會在此數位執行 | 整數 (最大值 50) | 否。 預設值為 20。
 項目 | 傳回要反覆查詢之 JSON 陣列的運算式。 | 運算式 (傳回 JSON 陣列) | 是
 活動 | 要執行的活動。 | 活動清單 | 是
 
@@ -83,7 +83,7 @@ batchCount | 批次計數，用於控制平行執行的數目 (當 isSequential 
 如果 **isSequential** 設為 false，活動會以平行方式逐一查看，並行的反覆項目數最多為 20。 此設定應謹慎使用。 如果並行的反覆項目會寫入相同資料夾的不同檔案，這種方法是正常的。 如果並行的反覆項目會同時寫入相同的檔案，這種方法很可能會導致錯誤。 
 
 ## <a name="iteration-expression-language"></a>反覆項目運算式語言
-在 ForEach 活動中，為屬性**項目**提供可反覆查詢的陣列。 使用 `@item()` 反覆查詢 ForEach 活動中的單一列舉。 例如，如果**項目**是陣列：[1, 2, 3]，`@item()` 在第一個反覆項目中會傳回 1，在第二個反覆項目中會傳回 2，在第三個反覆項目中會傳回 3。
+在 ForEach 活動中，為屬性 **項目** 提供可反覆查詢的陣列。 使用 `@item()` 反覆查詢 ForEach 活動中的單一列舉。 例如，如果 **項目** 是陣列：[1, 2, 3]，`@item()` 在第一個反覆項目中會傳回 1，在第二個反覆項目中會傳回 2，在第三個反覆項目中會傳回 3。
 
 ## <a name="iterating-over-a-single-activity"></a>反覆查詢單一活動
 **案例：** 從 Azure Blob 中相同的來源檔案複製到 Azure Blob 中的多個目的地檔案。

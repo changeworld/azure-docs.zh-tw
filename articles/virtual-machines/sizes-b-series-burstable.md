@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: dc6706d4ec9090c59d4dd668d2ae1dd3ce7d188a
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 819654ef88584cb91d6032e46256258aaed524fd
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928037"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500303"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列高載虛擬機器大小
 
@@ -21,7 +21,7 @@ B 系列 Vm 非常適合不需要持續完整 CPU 效能的工作負載，例如
 
 B 系列有下列 VM 大小：
 
-[Azure 計算單位 (ACU) ](./acu.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)：改變 *<br>
+[Azure 計算單位 (ACU) ](./acu.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)：改變 *<br>
 [進階儲存體](premium-storage-performance.md)：支援<br>
 [進階儲存體](premium-storage-performance.md)快取：不支援<br>
 [即時移轉](maintenance-and-updates.md)：支援<br>
@@ -59,7 +59,7 @@ B16 特性：
 
 ![每小時流量資料的圖表](./media/b-series-burstable/office-workload.png)
 
-| 案例 | 時間 | CPU 使用量 (% )  | 累積的點數<sup>1</sup> | 可用的點數 |
+| 案例 | Time | CPU 使用量 (% )  | 累積的點數<sup>1</sup> | 可用的點數 |
 | --- | --- | --- | --- | --- |
 | B16ms 部署 | 部署 | 部署  | 480 (初始點數)  | 480 |
 | 沒有流量 | 0:00 | 0 | 162 | 642 |
@@ -83,7 +83,7 @@ B16 特性：
 | 低流量 | 18:00 | 270 | 0 | 216 |
 | 低流量 | 19:00 | 270 | 0 | 216 |
 | 低流量 | 20:00 | 50 | 132 | 348 |
-| 低流量 | 21:00 | 50 | 132 | 480 |
+| 低流量 | 下午 9 點 | 50 | 132 | 480 |
 | 沒有流量 | 22:00 | 0 | 162 | 642 |
 | 沒有流量 | 23:00 | 0 | 162 | 804 |
 
@@ -94,23 +94,23 @@ B16 特性：
 ## <a name="q--a"></a>問答集
 
 ### <a name="q-what-happens-when-my-credits-run-out"></a>問：當我的點數用盡時，會發生什麼事？
-**答** ：當點數用盡時，VM 會回到基準效能。
+**答**：當點數用盡時，VM 會回到基準效能。
 
 ### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>問：如何從 VM 取得 135% 的基準效能？
 
-**答** ：會在構成 VM 大小的 8 個 vCPU 之間共用 135%。 例如，如果您的應用程式將 8 個核心其中 4 個用於批次處理，而這 4 個 vCPU 每個都以 30% 的使用率執行，VM CPU 效能的總數就會等於 120%。  這表示 VM 會以您基準效能的 15% 差異作為基礎來建置點數時間。  但這也表示，當您有可用點數時，該相同 VM 可以 100% 使用所有 8 個 vCPU，使該 VM 擁有 800% 的最大 CPU 效能。
+**答**：會在構成 VM 大小的 8 個 vCPU 之間共用 135%。 例如，如果您的應用程式將 8 個核心其中 4 個用於批次處理，而這 4 個 vCPU 每個都以 30% 的使用率執行，VM CPU 效能的總數就會等於 120%。  這表示 VM 會以您基準效能的 15% 差異作為基礎來建置點數時間。  但這也表示，當您有可用點數時，該相同 VM 可以 100% 使用所有 8 個 vCPU，使該 VM 擁有 800% 的最大 CPU 效能。
 
 ### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>問：如何監視我的點數餘額和耗用量？
 
-**答** ：點數計量可讓您查看 vm 已累積 **的點數，** 而 **ConsumedCredit** 計量會顯示您的 vm 已從銀行取用多少個 CPU 點數。    您可以在入口網站中的 [計量] 窗格檢視這些計量，或透過 Azure 監視器 API 以程式設計方式檢視。
+**答**：點數計量可讓您查看 vm 已累積 **的點數，** 而 **ConsumedCredit** 計量會顯示您的 vm 已從銀行取用多少個 CPU 點數。    您可以在入口網站中的 [計量] 窗格檢視這些計量，或透過 Azure 監視器 API 以程式設計方式檢視。
 
 如需如何存取 Azure 計量資料的詳細資訊，請參閱 [Microsoft Azure 的計量概觀](../azure-monitor/platform/data-platform.md)。
 
 ### <a name="q-how-are-credits-accumulated-and-consumed"></a>問：點數如何累積和取用？
 
-**答** ：VM 累積與消耗率設定的方式，是以基礎效能層級執行的 VM 會具有高載點數的淨累積或耗用量。  每當 VM 在其基礎效能層級下執行時，點數淨值都會增加，且每當 VM 利用 CPU 超過其基礎效能層級時，點數淨值就會降低。
+**答**：VM 累積與消耗率設定的方式，是以基礎效能層級執行的 VM 會具有高載點數的淨累積或耗用量。  每當 VM 在其基礎效能層級下執行時，點數淨值都會增加，且每當 VM 利用 CPU 超過其基礎效能層級時，點數淨值就會降低。
 
-**範例** ：我針對短暫的時間使用 B1ms 大小及現身資料庫應用程式來部署 VM。 這個大小可讓我的應用程式使用最多 20% 的 vCPU 作為基準，也就是我每分鐘可以使用或累積 0.2 個點數。
+**範例**：我針對短暫的時間使用 B1ms 大小及現身資料庫應用程式來部署 VM。 這個大小可讓我的應用程式使用最多 20% 的 vCPU 作為基準，也就是我每分鐘可以使用或累積 0.2 個點數。
 
 我的應用程式從我員工的工作日開始運作到員工下班，時間是上午 7:00-9:00 和下午 4:00 - 6:00 之間。 一天的其他 20 小時內，我的應用程式通常為閒置狀態，只會使用 10% 的 vCPU。 在非尖峰時間，我每分鐘獲得 0.2 個點數，但每分鐘只使用 0.1 個點數，因此我的 VM 每小時會累積 0.1 x 60 = 6 個點數。  在離峰的 20 小時內，我會累積 120 個點數。  
 
@@ -120,7 +120,7 @@ B16 特性：
 
 ### <a name="q-how-can-i-calculate-credits-accumulated-and-used"></a>問：如何計算已累積和使用的點數？
 
-**答** ：您可以使用下列公式：
+**答**：您可以使用下列公式：
 
 VM 的 (基礎 CPU 效能-CPU 使用量) /100 = 點數 bank 或每分鐘使用
 
@@ -128,11 +128,11 @@ VM 的 (基礎 CPU 效能-CPU 使用量) /100 = 點數 bank 或每分鐘使用
 
 ### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>問：B 系列是否支援進階儲存體資料磁碟？
 
-**答** ：是的，所有 B 系列大小都支援進階儲存體資料磁碟。
+**答**：是的，所有 B 系列大小都支援進階儲存體資料磁碟。
 
 ### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>問：為何在重新部署或停止/啟動之後，剩餘信用額度會設定為 0？
 
-**答** ：當虛擬機器「重新部署」且虛擬機器移到另一個節點時，累積的信用額度會遺失。 如果虛擬機器停止/啟動，但仍留在相同節點上，則虛擬機器會保留累積的信用額度。 每當 VM 在節點上啟動時，它就會取得初始點數，Standard_B8ms 為240。
+**答**：當虛擬機器「重新部署」且虛擬機器移到另一個節點時，累積的信用額度會遺失。 如果虛擬機器停止/啟動，但仍留在相同節點上，則虛擬機器會保留累積的信用額度。 每當 VM 在節點上啟動時，它就會取得初始點數，Standard_B8ms 為240。
 
 ### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>問：如果我在 B1ls 上部署不支援的 OS 映射，會發生什麼事？
 

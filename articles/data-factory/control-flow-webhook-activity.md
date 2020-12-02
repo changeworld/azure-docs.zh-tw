@@ -3,20 +3,20 @@ title: Azure Data Factory 中的 Webhook 活動
 description: Webhook 活動不會繼續執行管線，直到它以使用者指定的特定準則驗證連接的資料集為止。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 1ce41a5928d5b8a7c7df439ce5321cd15f0cc1d5
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 144006c3d0722bc3211f542b7059bba0bb0cbdbf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634975"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499402"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure Data Factory 中的 Webhook 活動
 
@@ -62,14 +62,14 @@ Webhook 活動可以透過您的自訂程式碼來控制管線的執行。 使�
 **頭** | 傳送至要求的標頭。 以下範例會在要求上設定語言和類型： `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` 。 | 字串或含有字串之 **resultType** 值的運算式。 | 是。 您 `Content-Type` 必須使用類似的標頭 `"headers":{ "Content-Type":"application/json"}` 。 |
 **body** | 代表傳送至端點的承載。 | 有效的 JSON 或具有 JSON 之 **resultType** 值的運算式。 請參閱要求承載架構的 [要求承載架構](./control-flow-web-activity.md#request-payload-schema) 。 | 是 |
 **認證** | 用來呼叫端點的驗證方法。 支援的類型為「基本」和「ClientCertificate」。 如需詳細資訊，請參閱[驗證](./control-flow-web-activity.md#authentication)。 如果不需要驗證，請排除此屬性。 | 字串或含有字串之 **resultType** 值的運算式。 | 否 |
-**timeout** | 活動等候叫用 **callBackUri** 所指定回呼的時間長度。 預設值為10分鐘 ( "00:10:00" ) 。 值的 TimeSpan 格式為 *d* 。 *hh* ： *mm* ： *ss* 。 | String | 否 |
-**報告回呼的狀態** | 讓使用者報告 webhook 活動的失敗狀態。 | Boolean | 否 |
+**timeout** | 活動等候叫用 **callBackUri** 所指定回呼的時間長度。 預設值為10分鐘 ( "00:10:00" ) 。 值的 TimeSpan 格式為 *d*。*hh*：*mm*：*ss*。 | 字串 | 否 |
+**報告回呼的狀態** | 讓使用者報告 webhook 活動的失敗狀態。 | 布林值 | 否 |
 
 ## <a name="authentication"></a>驗證
 
 Webhook 活動支援下列驗證類型。
 
-### <a name="none"></a>None
+### <a name="none"></a>無
 
 如果不需要驗證，請不要包含 **驗證** 屬性。
 

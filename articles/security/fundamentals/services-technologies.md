@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: a4cc6e31e49243af8fa52ac568bcbba660bcde7e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8a33e9d462f3105bfee295ac82384a38325f7c7c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842731"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498790"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 可用的安全性服務與技術
 
@@ -34,7 +34,7 @@ ms.locfileid: "94842731"
 |服務|描述|
 |--------|--------|
 |[Azure&nbsp;資訊安全&nbsp;中心](../../security-center/security-center-introduction.md)| 雲端工作負載保護解決方案，可為混合式雲端工作負載提供安全性管理和進階威脅保護。|
-|[Azure Key Vault](../../key-vault/general/overview.md)| 安全的祕密存放區，可存放密碼、連接字串，以及讓應用程式保持運作所需的其他資訊。 |
+|[Azure 金鑰保存庫](../../key-vault/general/overview.md)| 安全的祕密存放區，可存放密碼、連接字串，以及讓應用程式保持運作所需的其他資訊。 |
 |[Azure 監視器記錄](../../azure-monitor/log-query/log-query-overview.md)|監視服務，可收集遙測和其他資料，並提供查詢語言和分析引擎，以提供您應用程式和資源的作業見解。 可以單獨使用，或搭配資訊安全中心等其他服務使用。 |
 |[Azure 開發/測試實驗室](../../devtest-labs/devtest-lab-overview.md)|這項服務可協助開發人員和測試人員在 Azure 中建立快速環境，同時將浪費降至最低並控制成本。  |
 
@@ -91,5 +91,5 @@ ms.locfileid: "94842731"
 | [Azure 流量管理員](../../traffic-manager/traffic-manager-overview.md)| 全域 DNS 負載平衡器。|
 | [Azure 應用程式 Proxy](../../active-directory/manage-apps/application-proxy.md)| 驗證前端，用於保護內部裝載 Web 應用程式的遠端存取。 |
 |[Azure 防火牆](../../firewall/overview.md)|一個受控的雲端式網路安全性服務，可保護您的「Azure 虛擬網路」資源。|
-|[Azure DDoS 保護](../../virtual-network/ddos-protection-overview.md) \(部分機器翻譯\)|與應用程式設計最佳做法結合，可抵禦 DDoS 攻擊。|
+|[Azure DDoS 保護](../../ddos-protection/ddos-protection-overview.md) \(部分機器翻譯\)|與應用程式設計最佳做法結合，可抵禦 DDoS 攻擊。|
 |[虛擬網路服務端點](../../virtual-network/virtual-network-service-endpoints-overview.md)|可透過直接連線，將您的虛擬網路私人位址空間和您的 VNet 身分識別延伸至 Azure 服務。|

@@ -7,15 +7,15 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: edd9898580c60199b761b24b172a366069f09cb2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 0c0b3bd81e0f73a7879382e28516378bd722bc17
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516183"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498637"
 ---
 # <a name="how-to-use-permissions-in-azure-spring-cloud"></a>如何在 Azure 春季雲端中使用許可權
-本文說明如何建立自訂角色，以將許可權委派給 Azure 春季雲端資源。 自訂角色會以各種股票許可權擴充 [Azure 內建角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) 。
+本文說明如何建立自訂角色，以將許可權委派給 Azure 春季雲端資源。 自訂角色會以各種股票許可權擴充 [Azure 內建角色](../role-based-access-control/built-in-roles.md) 。
 
 我們將會執行下列自訂角色：
 
@@ -42,7 +42,7 @@ ms.locfileid: "92516183"
 遵循下列步驟以開始定義角色。
 
 1. 在 Azure 入口網站中，開啟您想要從中指派自訂角色的訂用帳戶和資源群組。
-2. 開啟 [ **存取控制] (IAM) **。
+2. 開啟 [ **存取控制] (IAM)**。
 3. 按一下 [+ 新增]。
 4. 按一下 [ **新增自訂角色**]。
 5. 按 [下一步]  。
@@ -61,19 +61,19 @@ ms.locfileid: "92516183"
 
 8. 選取開發人員角色的許可權：
 
-從 **AppPlatform/春季**選取：
+從 **AppPlatform/春季** 選取：
 * 寫入：建立或更新 Azure 春季雲端服務實例
 * 讀取：取得 Azure 春季雲端服務實例
 * 其他：列出 Azure 春季雲端服務實例的測試金鑰
 
-從 **AppPlatform/春季/apps**選取：
+從 **AppPlatform/春季/apps** 選取：
 * 讀取：讀取 Microsoft Azure 春季雲端應用程式
 * 其他：取得 Microsoft Azure 春季 Cloud 應用程式資源上傳 URL
 
 從 **AppPlatform/春季/apps/** 系結，選取：
 * 讀取：讀取 Microsoft Azure 春季 Cloud application binding
 
-從 **AppPlatform/春季/apps/部署**中，選取：
+從 **AppPlatform/春季/apps/部署** 中，選取：
 * 寫入：撰寫 Microsoft Azure 春季雲端應用程式部署
 * 讀取：讀取 Microsoft Azure 春季雲端應用程式部署
 * 其他：開始 Microsoft Azure 春季雲端應用程式部署
@@ -81,21 +81,21 @@ ms.locfileid: "92516183"
 * 其他：重新開機 Microsoft Azure 春季雲端應用程式部署
 * 其他：取得 Microsoft Azure 春季 Cloud 應用程式部署記錄檔 URL
 
-從 **AppPlatform/春季/apps/網域**選取：
+從 **AppPlatform/春季/apps/網域** 選取：
 * 讀取：讀取 Microsoft Azure 春季 Cloud 應用程式自訂網域
 
 從 **AppPlatform/春季/** certificate 選取：
 * 讀取：讀取 Microsoft Azure 春季雲端憑證
 
-從 **AppPlatform/地點/operationResults/春季**選取：
+從 **AppPlatform/地點/operationResults/春季** 選取：
 * 讀取：讀取作業結果
 
-從 **AppPlatform/位置/>operationstatus/operationId**選取：
+從 **AppPlatform/位置/>operationstatus/operationId** 選取：
 * 讀取：讀取作業狀態
 
     [![建立 Developler 許可權 ](media/spring-cloud-permissions/developer-permissions-box.png)](media/spring-cloud-permissions/developer-permissions-box.png#lightbox)
 
-9. 按一下 [新增]  。
+9. 按一下 [加入]  。
 
 10. 檢查許可權。
 
@@ -107,7 +107,7 @@ ms.locfileid: "92516183"
 1. 重複此程式，以流覽訂用帳戶、資源群組，以及存取存取控制 (IAM) 。
 2. 選取 DevOps 工程師角色的許可權：
 
-從 **AppPlatform/春季**選取：
+從 **AppPlatform/春季** 選取：
 * 寫入：建立或更新 Azure 春季雲端服務實例
 * 刪除：刪除 Azure 春季雲端服務實例
 * 讀取：取得 Azure 春季雲端服務實例
@@ -116,7 +116,7 @@ ms.locfileid: "92516183"
 * 其他：列出 Azure 春季雲端服務實例的測試金鑰
 * 其他：重新產生 Azure 春季 Cloud 服務實例的測試金鑰
 
-從 **AppPlatform/春季/apps**選取：
+從 **AppPlatform/春季/apps** 選取：
 * 寫入：撰寫 Microsoft Azure 的春季雲端應用程式
 * 刪除：刪除 Microsoft Azure 的春季雲端應用程式
 * 讀取：讀取 Microsoft Azure 春季雲端應用程式
@@ -128,7 +128,7 @@ ms.locfileid: "92516183"
 * Delete：刪除 Microsoft Azure 春季 Cloud application binding
 * 讀取：讀取 Microsoft Azure 春季 Cloud application binding
 
-從 **AppPlatform/春季/apps/部署**中，選取：
+從 **AppPlatform/春季/apps/部署** 中，選取：
 * 寫入：撰寫 Microsoft Azure 春季雲端應用程式部署
 * 刪除：刪除 Azure 春季 Cloud 應用程式部署
 * 讀取：讀取 Microsoft Azure 春季雲端應用程式部署
@@ -137,7 +137,7 @@ ms.locfileid: "92516183"
 * 其他：重新開機 Microsoft Azure 春季雲端應用程式部署
 * 其他：取得 Microsoft Azure 春季 Cloud 應用程式部署記錄檔 URL
 
-從 **AppPlatform/春季/apps/部署/sku**選取：
+從 **AppPlatform/春季/apps/部署/sku** 選取：
 * 讀取：列出應用程式部署可用的 sku
 
 從 **AppPlatform/位置**，選取：
@@ -145,15 +145,15 @@ ms.locfileid: "92516183"
 
 從 Microsoft. AppPlatform/位置/operationResults/彈簧 select： Read： Read 作業結果
 
-從 **AppPlatform/位置/>operationstatus/operationId**選取：
+從 **AppPlatform/位置/>operationstatus/operationId** 選取：
 * 讀取：讀取作業狀態
 
-從 **AppPlatform/sku**選取：
+從 **AppPlatform/sku** 選取：
 * 讀取：列出可用的 sku
 
    [![Dev/Op 許可權 ](media/spring-cloud-permissions/dev-ops-permissions.png)](media/spring-cloud-permissions/dev-ops-permissions.png#lightbox)
 
-3. 按一下 [新增]  。
+3. 按一下 [加入]  。
 
 4. 檢查許可權。
 
@@ -166,28 +166,28 @@ ms.locfileid: "92516183"
 
 2. 選取 Ops-Site 可靠性工程角色的許可權：
 
-從 **AppPlatform/春季**選取：
+從 **AppPlatform/春季** 選取：
 * 讀取：取得 Azure 春季雲端服務實例
 * 其他：列出 Azure 春季雲端服務實例的測試金鑰
 
-從 **AppPlatform/春季/apps**選取：
+從 **AppPlatform/春季/apps** 選取：
 * 讀取：讀取 Microsoft Azure 春季雲端應用程式
 
-從 **AppPlatform/apps/部署**中，選取：
+從 **AppPlatform/apps/部署** 中，選取：
 * 讀取：讀取 Microsoft Azure 春季雲端應用程式部署
 * 其他：開始 Microsoft Azure 春季雲端應用程式部署
 * 其他：停止 Microsoft Azure 春季雲端應用程式部署
 * 其他：重新開機 Microsoft Azure 春季雲端應用程式部署
 
-從 **AppPlatform/地點/operationResults/春季**選取：
+從 **AppPlatform/地點/operationResults/春季** 選取：
 * 讀取：讀取作業結果
 
-從 **AppPlatform/位置/>operationstatus/operationId**選取：
+從 **AppPlatform/位置/>operationstatus/operationId** 選取：
 * 讀取：讀取作業狀態
 
    [![Ops/SRE 許可權 ](media/spring-cloud-permissions/ops-sre-permissions.png)](media/spring-cloud-permissions/ops-sre-permissions.png#lightbox)
 
-3. 按一下 [新增]  。
+3. 按一下 [加入]  。
 
 4. 檢查許可權。
 
@@ -202,7 +202,7 @@ ms.locfileid: "92516183"
 
 3. 選取 Azure Pipelines/布建角色的許可權：
   
-從 **AppPlatform/春季**選取：
+從 **AppPlatform/春季** 選取：
 * 寫入：建立或更新 Azure 春季雲端服務實例
 * 刪除：刪除 Azure 春季雲端服務實例
 * 讀取：取得 Azure 春季雲端服務實例
@@ -211,7 +211,7 @@ ms.locfileid: "92516183"
 * 其他：列出 Azure 春季雲端服務實例的測試金鑰
 * 其他：重新產生 Azure 春季 Cloud 服務實例的測試金鑰
 
-從 **AppPlatform/春季/apps**選取：
+從 **AppPlatform/春季/apps** 選取：
 * 寫入：撰寫 Microsoft Azure 的春季雲端應用程式
 * 刪除：刪除 Microsoft Azure 的春季雲端應用程式
 * 讀取：讀取 Microsoft Azure 春季雲端應用程式
@@ -223,7 +223,7 @@ ms.locfileid: "92516183"
 * Delete：刪除 Microsoft Azure 春季 Cloud application binding
 * 讀取：讀取 Microsoft Azure 春季 Cloud application binding
 
-從 **AppPlatform/春季/apps/部署**中，選取：
+從 **AppPlatform/春季/apps/部署** 中，選取：
 * 寫入：撰寫 Microsoft Azure 春季雲端應用程式部署
 * 刪除：刪除 Azure 春季 Cloud 應用程式部署
 * 讀取：讀取 Microsoft Azure 春季雲端應用程式部署
@@ -232,24 +232,24 @@ ms.locfileid: "92516183"
 * 其他：重新開機 Microsoft Azure 春季雲端應用程式部署
 * 其他：取得 Microsoft Azure 春季 Cloud 應用程式部署記錄檔 URL
 
-從 **AppPlatform/sku**選取：
+從 **AppPlatform/sku** 選取：
 * 讀取：列出可用的 sku
 
 從 **AppPlatform/位置**，選取：
 * 其他：檢查名稱可用性
 
-從 **AppPlatform/地點/operationResults/春季**選取：
+從 **AppPlatform/地點/operationResults/春季** 選取：
 * 讀取：讀取作業結果
 
-從 **AppPlatform/位置/>operationstatus/operationId**選取：
+從 **AppPlatform/位置/>operationstatus/operationId** 選取：
 * 讀取：讀取作業狀態
 
-從 **AppPlatform/sku**選取：
+從 **AppPlatform/sku** 選取：
 * 讀取：列出可用的 sku
 
    [![管線許可權 ](media/spring-cloud-permissions/pipelines-permissions-box.png)](media/spring-cloud-permissions/pipelines-permissions-box.png#lightbox)  
 
-4. 按一下 [新增]  。
+4. 按一下 [加入]  。
 
 5. 檢查許可權。
 
@@ -257,9 +257,9 @@ ms.locfileid: "92516183"
 
 
 ## <a name="see-also"></a>另請參閱
-* [使用 Azure 入口網站建立或更新 Azure 自訂角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-portal) (機器翻譯)
+* [使用 Azure 入口網站建立或更新 Azure 自訂角色](../role-based-access-control/custom-roles-portal.md) (機器翻譯)
 
 如需定義自訂許可權的三種方法的詳細資訊，請參閱：
-* [複製角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-portal#clone-a-role)
-* [從頭開始](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-portal#start-from-scratch)
-* [從 JSON 啟動](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-portal#start-from-json)
+* [複製角色](../role-based-access-control/custom-roles-portal.md#clone-a-role)
+* [從頭開始](../role-based-access-control/custom-roles-portal.md#start-from-scratch)
+* [從 JSON 啟動](../role-based-access-control/custom-roles-portal.md#start-from-json)
