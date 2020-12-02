@@ -7,20 +7,20 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
-ms.date: 06/18/2020
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: f82bedc6ef638714b2641003e8274c2024a86c2e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 83b5804888379316b855c36f803f646cec102d9e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85213001"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024580"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>快速入門：使用 COPY 陳述式大量載入資料
 
-在本快速入門中，您會使用簡單且彈性的 [COPY 陳述式](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)，將資料大量載入至 SQL 集區，以進行高輸送量的資料內嵌。 COPY 陳述式是建議的載入公用程式，因為其可讓您透過提供下列功能，順暢且靈活地載入資料：
+在本快速入門中，您會使用簡單且彈性的 [COPY 陳述式](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)，將資料大量載入至專屬的 SQL 集區，以進行高輸送量的資料內嵌。 COPY 陳述式是建議的載入公用程式，因為其可讓您透過提供下列功能，順暢且靈活地載入資料：
 
 - 允許較低權限的使用者載入，無需對資料倉儲設定嚴格的控制權限
 - 只利用單一 T-SQL 陳述式，無需建立任何額外的資料庫物件
@@ -34,7 +34,7 @@ ms.locfileid: "85213001"
 
 ## <a name="prerequisites"></a>必要條件
 
-本快速入門假設您已有 SQL 集區。 如果尚未建立 SQL 集區，請使用[建立和連線 - 入口網站](create-data-warehouse-portal.md)快速入門。
+本快速入門假設您已有專屬的 SQL 集區。 如果尚未建立專屬的 SQL 集區，請使用[建立和連線 - 入口網站](create-data-warehouse-portal.md)快速入門。
 
 ## <a name="set-up-the-required-permissions"></a>設定必要權限
 

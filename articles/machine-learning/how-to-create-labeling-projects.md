@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: da046fd633120944231ee440605367bdb730cbff
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 450d471beebbcc554a6d534fb2d5361778f158bc
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94543216"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992313"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>建立資料標記專案和匯出標籤 
 
@@ -250,7 +250,7 @@ ms.locfileid: "94543216"
 
 ## <a name="export-the-labels"></a>匯出標籤
 
-您可以隨時匯出 Machine Learning 實驗的標籤資料。 影像標籤可以匯出為 [COCO 格式](http://cocodataset.org/#format-data)或匯出為 Azure Machine Learning 資料集。 在標籤專案的 [專案詳細資料] 頁面上使用 [匯出] 按鈕。
+您可以隨時匯出 Machine Learning 實驗的標籤資料。 影像標籤可以匯出為 [COCO 格式](http://cocodataset.org/#format-data)，或匯出為[具有標籤的 Azure Machine Learning 資料集](how-to-use-labeled-dataset.md)。 在標籤專案的 [專案詳細資料] 頁面上使用 [匯出] 按鈕。
 
 COCO 檔案會建立在 Azure Machine Learning 工作區的預設 Blob 存放區中，而其所在的資料夾位於 *export/coco* 內。 您可以在 Machine Learning 的 [資料集] 區段中，存取已匯出的 Azure Machine Learning 資料集。 資料集詳細資料頁面也會提供從 Python 存取標籤的程式碼範例。
 

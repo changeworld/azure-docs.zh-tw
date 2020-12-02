@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 11/03/2020
+ms.date: 11/20/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 0aace1041eba771a26bed4c85361ea2551c71ba6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f1d667f55a8be1b701fda6240895dd8f96315cff
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659415"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94986312"
 ---
 ::: zone target="docs"
 
@@ -164,23 +164,28 @@ ms.locfileid: "94659415"
 
 2. 將包裹密封，並確定退貨標籤清楚可見。
 
-3. 若要預約 DHL 取貨：
+3. 要求來自 Azure 資料箱作業的傳回碼。 將套件傳遞回資料中心需要傳回碼。 傳送電子郵件至 [adbops@microsoft.com](mailto:adbops@microsoft.com)。 請注意，此傳回碼會顯示在出貨標籤旁的寄信人地址，以便清楚可見。
 
-    * 致電客戶服務連絡中心 (電話是 +27(0) 11 9213600)、選取第 1 個選項，然後指定運貨單號碼。
-    * 您必須在南非標準時間 (ZA) 下午 2:00 之前致電以安排取貨。  
-    * 使用下列電子郵件範本，寄送電子郵件至 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) 來組織取貨：
+4. 若要預約 DHL 取貨，請使用下列其中一個方式：
+   * 移至 [DHL Express South Africa **排程取貨**](https://mydhl.express.dhl/za/en/schedule-pickup.html#/schedule-pickup#label-reference)，以預訂線上取貨。
+   * 使用下列範本，寄送電子郵件至 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com)：
 
-    ```output
-    To: Priority.Support@dhl.com
-    Subject:Pickup request for Microsoft Azure
-    Body:  Need pick up for the below shipment
-    *  DHL tracking number (reference number/waybill number)
-    *  Requested pickup date：yyyy/mm/dd; time: HH MM
-    ```
+     ```output
+     To: Priority.Support@dhl.com
+     Subject: Pickup request for Microsoft Azure
+     Body: Need pick up for the below shipment
+       *  DHL tracking number: (reference number/waybill number)
+       *  Requested pickup date: yyyy/mm/dd;time:HH MM
+       *  Shipper contact: (company name)
+       *  Contact person: 
+       *  Phone number: 
+       *  Full physical address: 
+       *  Item to be collected: Azure Dt
+     ```
 
     * 或者，您也可以將包裹拿到最近的 DHL 服務據點。
 
-4. 如果您遇到任何問題，請寄送電子郵件至 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com)，並於其中詳述您遇到的問題，然後在 [主旨:] 行放入運貨單號碼。 您也可以致電 +27(0)119213902。
+5. 如果您遇到任何問題，請寄送電子郵件至 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com)，並於其中詳述您遇到的問題，然後在 [主旨:] 行放入運貨單號碼。 您也可以致電 +27(0)119213902。
 
 ### <a name="china"></a>[中國](#tab/in-china)
 

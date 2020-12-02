@@ -3,17 +3,17 @@ title: 使用自動化管理 Azure 成本
 description: 此文章說明如何使用自動化來管理 Azure 成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 09/14/2020
+ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
-ms.reviewer: matrive
-ms.openlocfilehash: 939e621da414fc2d4d55d85e8b66a409b1338941
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.reviewer: adwise
+ms.openlocfilehash: 47d9c2838c5c806214e3be2f9ba7ce335bc0af67
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131967"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956087"
 ---
 # <a name="manage-costs-with-automation"></a>使用自動化管理成本
 
@@ -63,11 +63,18 @@ Microsoft 客戶會使用下列範例要求來解決您可能會遇到的常見�
 
 ### <a name="get-usage-details-for-a-scope-during-specific-date-range"></a>取得特定日期範圍期間某個範圍的使用量詳細資料
 
-要求所傳回的資料會與計費系統收到使用量的日期相對應。 其中可能包含來自多張發票的成本。
+要求所傳回的資料會與計費系統收到使用量的日期相對應。 其中可能包含來自多張發票的成本。 所應使用的呼叫會隨著您的訂用帳戶類型而有所不同。
+
+若為具有 Enterprise 合約 (EA) 或隨用隨付訂用帳戶的舊版客戶，請使用下列呼叫：
 
 ```http
 GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?$filter=properties%2FusageStart%20ge%20'2020-02-01'%20and%20properties%2FusageEnd%20le%20'2020-02-29'&$top=1000&api-version=2019-10-01
+```
 
+若為具有 Microsoft 客戶合約的新版客戶，請使用下列呼叫：
+
+```http
+GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?startDate=2020-08-01&endDate=&2020-08-05$top=1000&api-version=2019-10-01
 ```
 
 ### <a name="get-amortized-cost-details"></a>取得分攤成本詳細資料

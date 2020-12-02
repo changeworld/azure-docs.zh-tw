@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 06/22/2020
-ms.openlocfilehash: fb81405e85d6e2653e0cf6c007c363493992161a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3417b59d0be9e285f8793ef598abb7f98bda7549
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87419966"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95527984"
 ---
 # <a name="networking-in-azure-red-hat-on-openshift-4"></a>Azure Red Hat OpenShift 4 網路功能
 
@@ -98,7 +98,7 @@ Azure Red Hat OpenShift 4 中提供下列網路設定：
     * 「公用」- API 伺服器可由外部網路存取。
     * 「私人」- API 伺服器已從「主要」子網路指派私人 IP，只能使用連線的網路 (對等互連虛擬網路、叢集中的其他子網路) 進行存取。 系統會代表客戶建立私人 DNS 區域。
 * **輸入可見度** - 在執行 [az aro create command](tutorial-create-cluster.md#create-the-cluster) 時，設定 API 可見度。
-    * 「公用」路由會預設為公用 Azure Standard Load Balancer (這可以變更)。
+    * 「公用」路由會預設為公用 Standard Load Balancer (此設定可以變更)。
     * 「私人」路由會預設為內部負載平衡器 (這可以變更)。
 
 ## <a name="network-security-groups"></a>網路安全性群組

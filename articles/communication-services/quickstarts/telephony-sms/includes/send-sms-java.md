@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: chrwhit
-ms.openlocfilehash: 76aae596c145c736ae75e65f7f72fdbdcead5919
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: cb8e6934125630590a337ed7bf7f4c81b2b73bb3
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779262"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94915190"
 ---
 藉由使用通訊服務 Java SMS 用戶端程式庫來傳送 SMS 訊息，以開始使用 Azure 通訊服務。
 
@@ -28,7 +28,7 @@ ms.locfileid: "91779262"
 ## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true) 第 8 版或更新版本。
+- [Java Development Kit (JDK)](/java/azure/jdk/?preserve-view=true&view=azure-java-stable) 第 8 版或更新版本。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
 - 作用中的 Azure 通訊服務資源和連接字串。 [建立通訊服務資源](../../create-communication-resource.md)。
 - 已啟用 SMS 的電話號碼。 [取得電話號碼](../get-phone-number.md)。
@@ -58,7 +58,7 @@ mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=commu
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-sms</artifactId>
-    <version>1.0.0-beta.2</version>
+    <version>1.0.0-beta.3</version>
 </dependency>
 ```
 
@@ -85,7 +85,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.azure.communication.common.CommunicationClientCredential;
 import com.azure.communication.common.PhoneNumber;
 import com.azure.communication.sms.SmsClient;
 import com.azure.communication.sms.SmsClientBuilder;
@@ -113,7 +112,6 @@ public class App
 | SmsClientBuilder              | 這個類別會建立 SmsClient。 您可以為其提供端點、認證和 HTTP 用戶端。 |
 | SmsClient                    | 這是所有 SMS 功能所需的類別。 您可以使用此類別來傳送 SMS 訊息。                |
 | SendSmsResponse               | 此類別包含來自 SMS 服務的回應。                                          |
-| CommunicationClientCredential | 這個類別會處理簽署要求。                                                            |
 | PhoneNumber                   | 此類別會保存電話號碼資訊
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
@@ -123,20 +121,32 @@ public class App
 將下列程式碼加入 `main` 方法：
 
 ```java
+// Your can find your endpoint and access key from your resource in the Azure Portal
+String endpoint = "https://<RESOURCE_NAME>.communication.azure.com";
+String accessKey = "SECRET";
+
 // Create an HttpClient builder of your choice and customize it
 HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
-
-CommunicationClientCredential credential = new CommunicationClientCredential(accessKey);
 
 // Configure and build a new SmsClient
 SmsClient client = new SmsClientBuilder()
     .endpoint(endpoint)
-    .credential(credential)
+    .accessKey(accessKey)
     .httpClient(httpClient)
     .buildClient();
 ```
 
-您可以使用會實作 `com.azure.core.http.HttpClient` 介面的任何自訂 HTTP 用戶端來初始化用戶端。 上述程式碼示範如何使用 `azure-core` 所提供的 [Azure Core Netty HTTP 用戶端](https://docs.microsoft.com/java/api/overview/azure/core-http-netty-readme?view=azure-java-stable&preserve-view=true)。
+您可以使用會實作 `com.azure.core.http.HttpClient` 介面的任何自訂 HTTP 用戶端來初始化用戶端。 上述程式碼示範如何使用 `azure-core` 所提供的 [Azure Core Netty HTTP 用戶端](/java/api/overview/azure/core-http-netty-readme?preserve-view=true&view=azure-java-stable)。
+
+您也可以使用 connectionString() 函式來提供整個連接字串，而不提供端點和存取金鑰。 
+```java
+// Your can find your connection string from your resource in the Azure Portal
+String connectionString = "<connection_string>";
+SmsClient client = new SmsClientBuilder()
+    .connectionString(connectionString)
+    .httpClient(httpClient)
+    .buildClient();
+```
 
 ## <a name="send-an-sms-message"></a>傳送 SMS 訊息
 

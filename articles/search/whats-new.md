@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4c1284c13d1516ac4061319287adb64ab7e14ff5
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 73902cf53d9995f7dfc1991e3b7ed7c7c469bf2a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579465"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026656"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 認知搜尋的新功能
 
@@ -23,7 +23,7 @@ ms.locfileid: "94579465"
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
 |------------------------------|----------|-------------|---------------|
-|[索引子、資料來源和技能集上的客戶自控金鑰加密](search-security-manage-encryption-keys.md) | 安全性 | 這項新增功能會將客戶自控加密延伸到搜尋服務所建立和管理的完整資產範圍。 您應該還記得，CMK 支援會在 Microsoft 所執行及管理的基礎加密上新增額外的加密層。 | 使用 REST api-version=2020-06-30 正式推出 |  
+|[索引子、資料來源和技能集上的客戶自控金鑰加密](search-security-manage-encryption-keys.md) | 安全性 | 這項新增功能會將客戶自控加密延伸到搜尋服務所建立和管理的完整資產範圍。 您應該還記得，客戶自控金鑰支援會在 Microsoft 所執行及管理的基礎加密上新增額外的加密層。 | 使用 REST api-version=2020-06-30 正式推出 |  
 
 ## <a name="september-2020"></a>2020 年 9 月
 
@@ -41,7 +41,7 @@ ms.locfileid: "94579465"
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
 |---------|------------------|-------------|---------------|
-| [雙重加密](search-security-overview.md#encryption) | 安全性 | 在新的搜尋服務上設定客戶管理的金鑰 (CMK) 加密，以在儲存層啟用雙重加密。 建立新的服務、[將客戶管理的金鑰設定並套用至索引或同義字對應](search-security-manage-encryption-keys.md)，並從該內容的雙重加密獲益。 | 於 2020 年 8 月 1 日後在下列區域建立的所有搜尋服務中正式發行：美國西部 2、美國東部、美國中南部、US Gov 維吉尼亞州、US Gov 亞利桑那州。 使用入口網站、管理 REST API 或 SDK 來建立服務。 |
+| [雙重加密](search-security-overview.md#encryption) | 安全性 | 在新的搜尋服務上設定客戶自控金鑰加密，以在儲存層啟用雙重加密。 建立新的服務、[將客戶管理的金鑰設定並套用至索引或同義字對應](search-security-manage-encryption-keys.md)，並從該內容的雙重加密獲益。 | 於 2020 年 8 月 1 日後在下列區域建立的所有搜尋服務中正式發行：美國西部 2、美國東部、美國中南部、US Gov 維吉尼亞州、US Gov 亞利桑那州。 使用入口網站、管理 REST API 或 SDK 來建立服務。 |
 
 ## <a name="july-2020"></a>2020 年 7 月
 

@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b3ea370a686e272a1d8ea201dd953fc09c1098ee
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: de25aafcfefee195e8d674c60ebdbaf79cb1ae10
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628181"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95406883"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft 身分識別平台程式碼範例 (v2.0 端點)
 
@@ -59,10 +59,12 @@ ms.locfileid: "94628181"
 | ![此圖顯示 ASP.NET Framework 標誌](media/sample-v2-code/logo_NETframework.png)</p>ASP.NET Core | [適用於開發人員的從 AD FS 遷移至 Azure AD 應用程式的劇本](https://github.com/Azure-Samples/ms-identity-dotnet-adfs-to-aad)，以了解如何安全地將與 Active Directory 同盟服務 (AD FS) 整合的應用程式遷移至 Azure Active Directory (Azure AD) | |
 | ![此圖顯示 ASP.NET Framework 標誌](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET 快速入門](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2) (英文)  |  [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) (英文) </p> |[msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 | ![此圖顯示 Java 標誌](media/sample-v2-code/logo_java.png)  |                   | [ms-identity-java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
+| ![此圖顯示 Java 標誌](media/sample-v2-code/logo_java.png)  | [ms-identity-b2c-java-servlet-webapp-authentication](https://github.com/Azure-Samples/ms-identity-b2c-java-servlet-webapp-authentication)|  |
 | ![此圖顯示 Python 標誌](media/sample-v2-code/logo_python.png)  | [ms-identity-python-flask-webapp-authentication](https://github.com/Azure-Samples/ms-identity-python-flask-webapp-authentication) | [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp) |
 | ![此圖顯示 Python 標誌](media/sample-v2-code/logo_python.png)  | [Python Flask Web 應用程式](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md)登入使用者教學課程                   | [Python Flask Web 應用程式](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md)登入使用者和呼叫歷程圖教學課程 |
 | ![此圖顯示 Python 標誌](media/sample-v2-code/logo_python.png)  | [Python Flask Web 應用程式](https://github.com/Azure-Samples/ms-identity-b2c-python-flask-webapp-authentication/blob/main/README.md)使用 B2C 登入使用者                    |  |
 | ![此圖顯示 Ruby 標誌](media/sample-v2-code/logo_ruby.png) |                   | [msgraph-training-rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp) |
+
 
 ## <a name="desktop-and-mobile-public-client-apps"></a>桌上型與行動裝置公開用戶端應用程式
 

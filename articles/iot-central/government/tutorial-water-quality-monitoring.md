@@ -8,23 +8,23 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: a80fe998c1ab241e35bee195b927846e264dec59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07f0e66888eaa909dfce14924e9186bcb9b876b4
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90972363"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014487"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>教學課程：在 Azure IoT Central 中建立水質監視應用程式
 
 
 
-本教學課程會引導您在 Azure IoT Central 中建立水質監視應用程式。 您可以從 Azure IoT Central 的**水質監視**應用程式範本中建立應用程式。
+本教學課程會引導您在 Azure IoT Central 中建立水質監視應用程式。 您可以從 Azure IoT Central 的 **水質監視** 應用程式範本中建立應用程式。
 
 您會在本教學課程中學到：
 
 > [!div class="checklist"]
-> * 使用**水質監視**範本來建立水質監視應用程式。
+> * 使用 **水質監視** 範本來建立水質監視應用程式。
 > * 探索和自訂操作員儀表板。
 > * 探索水質監視裝置範本。
 > * 探索模擬裝置。
@@ -38,7 +38,7 @@ ms.locfileid: "90972363"
 
 ## <a name="create-a-water-quality-monitoring-application-in-azure-iot-central"></a>在 Azure IoT Central 中建立水質監視應用程式
 
-在本節中，您將使用 Azure IoT Central 的**水質監視**範本來建立水質監視應用程式。
+在本節中，您將使用 Azure IoT Central 的 **水質監視** 範本來建立水質監視應用程式。
 
 1. 移至 [Azure IoT Central 首頁](https://aka.ms/iotcentral)。
 
@@ -66,7 +66,7 @@ ms.locfileid: "90972363"
 
     ![Azure IoT Central 的新增應用程式計費資訊](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1-billinginfo.png)
 
-您現在已使用 Azure IoT Central 的**水質監視**範本建立水質監視應用程式。
+您現在已使用 Azure IoT Central 的 **水質監視** 範本建立水質監視應用程式。
 
 您的新應用程式包含下列預先設定的元件：
 
@@ -136,8 +136,8 @@ Azure IoT Central 中的裝置範本會定義裝置的功能。 可用功能包�
 練習自訂下列裝置範本的設定：
 
 1. 在裝置範本功能表中，選取 [自訂]  。
-1. 移至**溫度**遙測類型。
-1. 將 [顯示名稱]  值變更為**回報的溫度**。
+1. 移至 **溫度** 遙測類型。
+1. 將 [顯示名稱]  值變更為 **回報的溫度**。
 1. 變更測量單位，或設定 [最小值]  和 [最大值] 
 1. 選取 [儲存]  。
 
@@ -188,7 +188,7 @@ Azure IoT Central 中的裝置範本會定義裝置的功能。 可用功能包�
 
 ## <a name="explore-and-configure-rules"></a>探索和設定規則
 
-在 Azure IoT Central 中，您可以建立自動監視裝置遙測的規則。 這些規則會在有任何條件相符時觸發動作。 其中一個可能的動作是傳送電子郵件通知。 其他可能性包括將資料傳送至其他服務的 Microsoft Flow 動作或 Webhook 動作。
+在 Azure IoT Central 中，您可以建立自動監視裝置遙測的規則。 這些規則會在有任何條件相符時觸發動作。 其中一個可能的動作是傳送電子郵件通知。 其他可能性包括將資料傳送至其他服務的 Power Automate 動作或 Webhook 動作。
 
 您所建立的水質監視應用程式有兩個預先設定的規則。
 
@@ -202,12 +202,12 @@ Azure IoT Central 中的裝置範本會定義裝置的功能。 可用功能包�
 
    ![高 pH 值警示規則](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-highphalert.png)
 
-   **高 pH 值警示**規則已設定為檢查酸度 (pH) 條件是否大於 8。
+   **高 pH 值警示** 規則已設定為檢查酸度 (pH) 條件是否大於 8。
 
 接下來，將電子郵件動作新增至規則：
 
 1. 選取 [+ 電子郵件]  。
-1. 在 [顯示名稱]  方塊中，輸入**高 pH 值警示**。
+1. 在 [顯示名稱]  方塊中，輸入 **高 pH 值警示**。
 1. 在 [收件人]  方塊中，輸入與您 Azure IoT Centra 帳戶相關聯的電子郵件地址。
 1. (選擇性) 輸入附註來納入電子郵件的文字。
 1. 選取 [完成]  來完成此動作。

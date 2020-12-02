@@ -9,23 +9,24 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec7337ad798d586cb93bd13e60ead1ef9f2a4abe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0695af6922182aa8be7acfb4b0a931bed35ef7d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857243"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959300"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>教學課程：透過透明閘道傳送資料
-
-> [!NOTE]
-> 此文章是關於在 IoT Edge 上使用 Azure Machine Learning 的系列文章之一。 如果您是被直接引導至此文章，我們建議您先從本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)開始，以取得最佳成效。
 
 在本文中，我們會再次使用開發 VM 作為模擬裝置。 但與其直接將資料傳送至 IoT 中樞，裝置會將資料傳送至設定為透明閘道的 IoT Edge 裝置。
 
 我們會在模擬裝置傳送資料的期間，監視 IoT Edge 裝置的作業。 當裝置停止執行之後，我們會查看儲存體帳戶中的資料，以確認一切皆如預期般運作。
 
 此步驟通常是由雲端或裝置開發人員來執行。
+
+## <a name="prerequisites"></a>必要條件
+
+此文章是關於在 IoT Edge 上使用 Azure Machine Learning 的系列文章之一。 本系列中的每篇文章皆以先前文章中的工作為基礎。 如果您是被直接引導至此文章，請參閱本系列中的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)。
 
 ## <a name="review-device-harness"></a>檢閱裝置載入器
 
@@ -54,13 +55,13 @@ ms.locfileid: "91857243"
 
 ## <a name="build-and-run-leaf-device"></a>建置並執行分葉裝置
 
-1. 當 DeviceHarness 專案仍在 Visual Studio Code 中開啟時，建置專案。 從**終端機**功能表中選取 [執行建置工作]，然後選取 [建置]。
+1. 當 DeviceHarness 專案仍在 Visual Studio Code 中開啟時，建置專案。 從 **終端機** 功能表中選取 [執行建置工作]，然後選取 [建置]。
 
 1. 在 Azure 入口網站中瀏覽至您的 IoT Edge 裝置 (Linux VM)，並從概觀頁面中複製 [DNS 名稱] 的值，來取得邊緣閘道的完整網域名稱 (FQDN)。
 
 1. 如果您的 IoT 裝置 (Linux VM) 尚未執行，請加以啟動。
 
-1. 開啟 Visual Studio Code 終端機。 從**終端機**功能表中，選取[新增終端機] 並執行下列命令，將 `<edge_device_fqdn>` 取代為您從 IoT Edge 裝置 (Linux VM) 所複製的 DNS 名稱：
+1. 開啟 Visual Studio Code 終端機。 從 **終端機** 功能表中，選取[新增終端機] 並執行下列命令，將 `<edge_device_fqdn>` 取代為您從 IoT Edge 裝置 (Linux VM) 所複製的 DNS 名稱：
 
    ```cmd
    dotnet run -- --gateway-host-name "<edge_device_fqdn>" --certificate C:\edgecertificates\certs\azure-iot-test-only.root.ca.cert.pem --max-devices 1

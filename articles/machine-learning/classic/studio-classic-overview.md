@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 08/19/2020
-ms.openlocfilehash: 1aadf1fe59c5300a4f16ea96b1e1d7a5fbcbdd6d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0a18f9adb8c3723619b44b30bfa334edf4300c0d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325732"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95509484"
 ---
 # <a name="what-can-i-do-with-machine-learning-studio-classic"></a>我可以使用 Machine Learning Studio (傳統版) 來做些什麼？
 
-**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用於：** ![這是一個核取記號，表示本文適用於 Machine Learning Studio (傳統版)。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![這是一個 X，這表示本文適用於 Azure Machine Learning。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -37,7 +37,7 @@ Machine Learning Studio (傳統版) 提供互動式的視覺化工作區，讓�
 ![Machine Learning Studio (傳統版) 圖表：建立實驗、讀取許多來源的資料、寫入評分的資料及寫入模型。](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
 
 ## <a name="download-the-ml-studio-classic-overview-diagram"></a>下載 ML Studio (傳統版) 概觀圖表
-下載 _ *Microsoft ML Studio (傳統版) 功能概觀* *圖表，並取得 Machine Learning Studio (傳統版) 功能的高階檢視。 若要就近保留它，您可以將圖表列印於 Tabloid 大小 (11 x 17 英吋) 的紙張上。
+下載 _ *Microsoft ML Studio (傳統版) 功能概觀**圖表，並取得 Machine Learning Studio (傳統版) 功能的高階檢視。 若要就近保留它，您可以將圖表列印於 Tabloid 大小 (11 x 17 英吋) 的紙張上。
 
 **在這裡下載圖表：[Microsoft Machine Learning Studio (傳統) 功能概觀](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)** 
 ![Microsoft Machine Learning Studio (傳統) 功能概觀](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)

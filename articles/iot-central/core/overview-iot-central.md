@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 3952736af9cf7c3b720769cee6a58e3fc52a6111
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b62a0da7074676787b7e1c0182ca7588b83cdbe0
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127398"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985037"
 ---
 # <a name="what-is-azure-iot-central"></a>何謂 Azure IoT 中心？
 
@@ -58,7 +58,7 @@ IoT Central 文件提及四個會與 IoT Central 應用程式互動的角色：
 
 此[裝置範本](howto-set-up-template.md)包含：
 
-- 裝置功能模型，可描述裝置應實作的功能。 裝置功能包括：
+- 「裝置模型」可描述裝置應實作的功能。 裝置功能包括：
 
   - 其串流至 IoT Central 的遙測。
   - 其用來向 IoT Central 報告狀態的唯讀屬性。
@@ -72,9 +72,9 @@ IoT Central 文件提及四個會與 IoT Central 應用程式互動的角色：
 
 身為解決方案建置者，您可以利用數個選項來建立裝置範本：
 
-- 在 IoT Central 中設計裝置範本，然後在您的裝置程式碼中實作其裝置功能模型。
-- 使用 Visual Studio 程式碼建立裝置功能模型，然後將模型發佈至存放庫。 從模型實作您的裝置程式碼，並將您的裝置連線至 IoT Central 應用程式。 IoT Central 會從存放庫中尋找裝置功能模型，並為您建立簡單的裝置範本。
-- 使用 Visual Studio Code 建立裝置功能模型。 從模型實作您的裝置程式碼。 手動將裝置功能模型匯入您的 IoT Central 應用程式中，然後新增您的 IoT Central 應用程式所需的任何雲端屬性、自訂和儀表板。
+- 在 IoT Central 中設計裝置範本，然後在您的裝置程式碼中實作其裝置模型。
+- 使用 Visual Studio 程式碼建立裝置模型，然後將模型發佈至存放庫。 從模型實作您的裝置程式碼，並將您的裝置連線至 IoT Central 應用程式。 IoT Central 會從存放庫中尋找裝置模型，並為您建立簡單的裝置範本。
+- 使用 Visual Studio Code 建立裝置模型。 從模型實作您的裝置程式碼。 手動將裝置模型匯入您的 IoT Central 應用程式中，然後新增您的 IoT Central 應用程式所需的任何雲端屬性、自訂和儀表板。
 
 身為解決方案建置者，您可以使用 IoT Central 來產生測試裝置的程式碼，以驗證您的裝置範本。
 
@@ -137,7 +137,7 @@ IoT Central 應用程式完全由 Microsoft 裝載，可降低管理您的應用
 您可以使用 7 天免費試用版或標準版定價方案來建立 IoT Central 應用程式。
 
 - 使用「免費」  方案建立的應用程式可以免費試用七天，且最多可支援五個裝置。 您可以在到期前，隨時將其轉換為使用標準定價方案。
-- 您使用「標準」方案建立的應用程式會根據每個裝置來計費，您可以選擇**標準 1** 或**標準 2** 定價方案，而且前兩個裝置免費。 深入了解 [IoT Central 價格](https://aka.ms/iotcentral-pricing)。
+- 您使用「標準」方案建立的應用程式會根據每個裝置來計費，您可以選擇 **標準 1** 或 **標準 2** 定價方案，而且前兩個裝置免費。 深入了解 [IoT Central 價格](https://aka.ms/iotcentral-pricing)。
 
 ## <a name="quotas"></a>配額
 
@@ -151,7 +151,6 @@ IoT Central 應用程式完全由 Microsoft 裝載，可降低管理您的應用
 - 不支援陣列結構描述類型。
 - 僅支援 C 裝置 SDK 和 Node.js 裝置與服務 SDK。
 - IoT Central 目前適用於美國、歐洲、亞太地區、澳大利亞、英國及日本地區。
-- 裝置功能模型必須具有在相同檔案中以內嵌方式定義的所有介面。
 
 ## <a name="next-steps"></a>後續步驟
 

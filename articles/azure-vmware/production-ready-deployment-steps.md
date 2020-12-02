@@ -3,12 +3,12 @@ title: 規劃 Azure VMware 解決方案部署
 description: 本文概述 Azure VMware 解決方案部署工作流程。  最終結果是準備好用於建立和移轉虛擬機器 (VM) 的環境。
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 08a15e6f8cad4068415cec3353544829f2218fb0
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 1ef83a568e41fe99f1e8e385a599de9c5ab7c0ca
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888975"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "95529720"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>規劃 Azure VMware 解決方案部署
 
@@ -48,7 +48,7 @@ ms.locfileid: "94888975"
 
 ## <a name="number-of-hosts"></a>主機數目
 
-定義您想要部署至 Azure VMware 解決方案私人雲端的主機數目。  最小節點計數為三，而每個叢集的最大值為 16。  如需詳細資訊，請參閱 [Azure VMware 解決方案私人雲端和叢集](concepts-private-clouds-clusters.md#clusters)文件。
+定義您想要部署至 Azure VMware 解決方案私人雲端的主機數目。  每個叢集的最小主機數量為 3 個，最大為 16 個。  如需詳細資訊，請參閱 [Azure VMware 解決方案私人雲端和叢集](concepts-private-clouds-clusters.md#clusters)文件。
 
 如果您需要超越初始部署編號，稍後可以隨時延伸叢集。
 

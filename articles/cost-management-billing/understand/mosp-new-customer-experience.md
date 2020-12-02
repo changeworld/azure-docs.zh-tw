@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: banders
-ms.openlocfilehash: 0b3cf0c705048d37d422d62b77dc7d94c5ae13bd
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7bec455b804d1f4b13ab7e13677092077214a121
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149397"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965845"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>開始使用更新的 Azure 計費帳戶
 
@@ -42,7 +42,7 @@ ms.locfileid: "92149397"
 
 帳單設定檔上的角色有權檢視和管理發票和付款方式。 這些角色應指派給支付發票費用的使用者，例如組織中會計小組成員。 如需詳細資訊，請參閱[帳單設定檔角色和工作](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks)。 
 
-當您的帳戶更新時，針對您授與其他人[檢視發票](download-azure-invoice.md#allow-others-to-download-the-your-subscription-invoice)權限的每個訂用帳戶，具有擁有者、參與者、讀者或帳單讀者 Azure RBAC 角色的使用者都會獲得各自帳單設定檔的「讀者」角色。
+當您的帳戶更新時，針對您授與其他人[檢視發票](download-azure-invoice.md#allow-others-to-download-the-your-subscription-invoice)權限的每個訂用帳戶，具有擁有者、參與者、讀者或帳單讀者 Azure 角色的使用者都會獲得各自帳單設定檔的「讀者」角色。
 
 ## <a name="invoice-sections"></a>發票區段
 

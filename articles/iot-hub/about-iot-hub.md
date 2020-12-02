@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: aaf803d463e03f2de7814fed4b20a0b4312fa1ef
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7f1acc44a80d5ef70145997698a928e6f9ce0d48
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148836"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888873"
 ---
 # <a name="what-is-azure-iot-hub"></a>何謂 Azure IoT 中心？
 
@@ -120,11 +120,17 @@ IoT 中樞和裝置 SDK 支援下列連線裝置的通訊協定：
 
 * [IoT 中樞節流與您](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/) \(英文\)
 
+## <a name="iot-hub-on-azure-stack-hub-preview"></a>Azure Stack Hub 上的 IoT 中樞 (預覽)
+
+Azure Stack Hub 上的 IoT 中樞 (預覽) 可讓您建立混合式 IoT 解決方案。 IoT 中樞是一項受控服務，可作為 IoT 應用程式與其管理裝置之間雙向通訊的中央訊息中樞。 您可以使用 Azure Stack Hub 上的 IoT 中樞，藉由 IoT 裝置與內部部署解決方案之間可靠且安全的通訊，以建置 IoT 解決方案。
+
+Azure Stack Hub 上的 IoT 中樞免費提供公開預覽版。 如需詳細資訊，請參閱 [Azure Stack Hub 上的 IoT 中樞概觀](/azure-stack/operator/iot-hub-rp-overview)。
+
 ## <a name="next-steps"></a>後續步驟
 
 若要嘗試完整的 IoT 解決方案，請參閱 IoT 中樞快速入門：
 
-* [快速入門：將遙測資料從裝置傳送到 IoT 中樞](quickstart-send-telemetry-node.md)
+* [快速入門：將遙測從裝置傳送到 IoT 中樞](quickstart-send-telemetry-node.md)
 
 若要深入了解使用 Azure IoT 來建立及部署 IoT 解決方案的方式，請造訪：
 

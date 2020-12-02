@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/25/2020
 ms.author: zhshang
-ms.openlocfilehash: be26fdafe0a8a52669fe41fd5514c808f10df745
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 1f28058a766144ada3326b3ee4ce09ca503d1896
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369122"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873874"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>快速入門：使用 C\# 搭配 Azure Functions 與 SignalR 服務來建立聊天室
 
@@ -21,27 +21,27 @@ Azure SignalR 服務可讓您輕鬆地新增即時功能到您的應用程式。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-如果尚未安裝 Visual Studio 2019，您可以下載並使用**免費**的 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads)。 務必在 Visual Studio 設定期間啟用 **Azure 開發**。
+如果尚未安裝 Visual Studio 2019，您可以下載並使用 **免費** 的 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads)。 務必在 Visual Studio 設定期間啟用 **Azure 開發**。
 
 您也可以使用 [Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing)、[.NET Core SDK](https://dotnet.microsoft.com/download) 和您慣用的程式碼編輯器，在命令列上 (macOS、Windows 或 Linux) 執行本教學課程。
 
 如果您沒有 Azure 訂用帳戶，請在開始之前[建立免費帳戶](https://azure.microsoft.com/free/dotnet)。
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qscsharp)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qscsharp)。
 
 ## <a name="log-in-to-azure"></a>登入 Azure
 
 使用您的 Azure 帳戶登入 Azure 入口網站 (<https://portal.azure.com/>)。
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qscsharp)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qscsharp)。
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qscsharp)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qscsharp)。
 
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qscsharp)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qscsharp)。
 
 ## <a name="configure-and-run-the-azure-function-app"></a>設定及執行 Azure Function 應用程式
 
@@ -51,7 +51,7 @@ Azure SignalR 服務可讓您輕鬆地新增即時功能到您的應用程式。
 
     ![搜尋 SignalR 服務執行個體](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-search-instance.png)
 
-1. 選取 [金鑰]**** 以檢視 SignalR 服務執行個體的連接字串。
+1. 選取 [金鑰] 以檢視 SignalR 服務執行個體的連接字串。
 
 1. 選取並複製主要連接字串。
 
@@ -75,15 +75,15 @@ Azure SignalR 服務可讓您輕鬆地新增即時功能到您的應用程式。
         ```bash
         func start
         ```
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qscsharp)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qscsharp)。
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qscsharp)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qscsharp)。
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qscsharp)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qscsharp)
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -92,4 +92,3 @@ Azure SignalR 服務可讓您輕鬆地新增即時功能到您的應用程式。
 > [!div class="nextstepaction"]
 > [使用 Visual Studio 來開發 Azure Functions](../azure-functions/functions-develop-vs.md)
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qscsharp)

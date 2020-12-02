@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: b7ec7273848b9e8bb5be809b9cf48cdc919d3949
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 81842fb3a9a68e818a3e8c94aa6db690cb1d94f5
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307970"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95486274"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-machine-learning-studio-classic"></a>快速入門：在 Machine Learning Studio (傳統) 中建立您的第一個資料科學實驗
 
-**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用於：** ![這是一個核取記號，表示本文適用於 Machine Learning Studio (傳統版)。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![這是一個 X，這表示本文適用於 Azure Machine Learning。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
@@ -57,11 +57,11 @@ Studio (傳統) 附有多個範例資料集供您使用，或者，您可以從�
 
 1. 按一下 [Machine Learning Studio (傳統)] 視窗底部的 [+新增]，來建立新的實驗。 選取 [實驗] >  [空白實驗]。
 
-1. 您可以在畫布頂端看到實驗的預設名稱。 選取這段文字，然後重新命名為有意義的名稱，例如 **汽車價格預測** 。 此名稱不必是唯一的。
+1. 您可以在畫布頂端看到實驗的預設名稱。 選取這段文字，然後重新命名為有意義的名稱，例如 **汽車價格預測**。 此名稱不必是唯一的。
 
     ![將實驗重新命名](./media/create-experiment/rename-experiment.png)
 
-1. 實驗畫布左側是資料集和模組的調色盤。 在此調色盤頂端的 [搜尋] 方塊中輸入 **汽車** ，可尋找標示為 **汽車價格資料 (原始)** 的資料集。 將此資料集拖曳到實驗畫布。
+1. 實驗畫布左側是資料集和模組的調色盤。 在此調色盤頂端的 [搜尋] 方塊中輸入 **汽車**，可尋找標示為 **汽車價格資料 (原始)** 的資料集。 將此資料集拖曳到實驗畫布。
 
     ![找出汽車資料集，並將其拖曳到實驗畫布上](./media/create-experiment/type-automobile.png)
 
@@ -78,7 +78,7 @@ Studio (傳統) 附有多個範例資料集供您使用，或者，您可以從�
 
 ![檢視資料視覺效果視窗中的汽車資料](./media/create-experiment/visualize-auto-data.png)
 
-按一下右上角的 " **x** "，以關閉視覺化視窗。
+按一下右上角的 "**x**"，以關閉視覺化視窗。
 
 ## <a name="prepare-the-data"></a>準備資料
 
@@ -89,7 +89,7 @@ Studio (傳統) 附有多個範例資料集供您使用，或者，您可以從�
 
 首先，我們新增一個完全移除 [自負虧損] 資料行的模組。 然後，再新增一個將任何含有遺漏資料的資料列移除的模組。
 
-1. 在模組選擇區頂端的搜尋方塊中輸入 **選取資料行** ，以尋找 [選取資料集中的資料行][select-columns]模組。 然後，將其拖曳到實驗畫布上。 此模組可讓我們選取要將哪些資料行包含在模型中，或是從模型中排除。
+1. 在模組選擇區頂端的搜尋方塊中輸入 **選取資料行**，以尋找 [選取資料集中的資料行][select-columns]模組。 然後，將其拖曳到實驗畫布上。 此模組可讓我們選取要將哪些資料行包含在模型中，或是從模型中排除。
 
 1. 將 **汽車價格資料 (原始)** 資料集的輸出連接埠連線至「選取資料集中的資料行」的輸入連接埠。
 
@@ -227,9 +227,9 @@ Studio (傳統) 附有多個範例資料集供您使用，或者，您可以從�
 
 - **平均絕對誤差** (MAE)：絕對誤差的平均值 (「誤差」是指預測值與實際值之間的差異)。
 - **均方根誤差** (RMSE)：對測試資料集所做之預測的平方誤差的評分根平均值。
-- **相對絕對誤差** ：相對於實際值與所有實際值之平均值之間的絕對差異的絕對誤差平均值。
-- **相對平方誤差** ：相對於實際值與所有實際值之平均值之間的平方差異的平方誤差平均值。
-- **決定係數** ：也稱為 **R 平方值** ，這是一個統計度量，可指出模型對於資料的適用程度。
+- **相對絕對誤差**：相對於實際值與所有實際值之平均值之間的絕對差異的絕對誤差平均值。
+- **相對平方誤差**：相對於實際值與所有實際值之平均值之間的平方差異的平方誤差平均值。
+- **決定係數**：也稱為 **R 平方值**，這是一個統計度量，可指出模型對於資料的適用程度。
 
 針對每個誤差統計資料，越小越好。 值越小，表示預測越接近實際值。 就 [決定係數] 而言，其值愈接近一 (1.0)，預測就愈精準。
 

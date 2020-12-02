@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 39ce436cd59447b2b6f8d9f88deaab80b00dd639
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 82818c8db326889079948cd2b32b2ed0be6ab50d
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812347"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990749"
 ---
 # <a name="iot-central-device-development-overview"></a>IoT Central 裝置開發總覽
 
@@ -25,9 +25,9 @@ IoT Central 應用程式可讓您在整個生命週期中監視及管理數百�
 
 裝置會使用下列基本項目與 IoT Central 應用程式互動：
 
-- _遙測_是裝置傳送至 IoT Central 的資料。 例如，來自上線感應器的溫度值串流。
-- _屬性_是裝置向 IoT Central 報告的狀態值。 例如，裝置目前的韌體版本。 您也可擁有 IoT Central 可在裝置上更新的可寫入屬性，例如目標溫度。
-- _命令_會從 IoT Central 呼叫，以控制裝置的行為。 例如，您的 IoT Central 應用程式可能會呼叫命令，將裝置重新開機。
+- _遙測_ 是裝置傳送至 IoT Central 的資料。 例如，來自上線感應器的溫度值串流。
+- _屬性_ 是裝置向 IoT Central 報告的狀態值。 例如，裝置目前的韌體版本。 您也可擁有 IoT Central 可在裝置上更新的可寫入屬性，例如目標溫度。
+- _命令_ 會從 IoT Central 呼叫，以控制裝置的行為。 例如，您的 IoT Central 應用程式可能會呼叫命令，將裝置重新開機。
 
 解決方案建立器負責設定 IoT Central web UI 中的儀表板和視圖，以視覺化遙測、管理屬性及呼叫命令。
 
@@ -72,7 +72,7 @@ Azure IoT Central 會使用 [Azure IoT 中樞裝置佈建服務 (DPS)](../../iot
 
 ### <a name="security"></a>安全性
 
-裝置與 IoT Central 應用程式之間的連線是使用[共用的存取簽章](./concepts-get-connected.md#connect-devices-at-scale-using-sas)或業界標準的 [X.509 憑證](./concepts-get-connected.md#connect-devices-using-x509-certificates)來保護。
+裝置與 IoT Central 應用程式之間的連線是使用[共用的存取簽章](./concepts-get-connected.md#sas-group-enrollment)或業界標準的 [X.509 憑證](./concepts-get-connected.md#x509-group-enrollment)來保護。
 
 ### <a name="communication-protocols"></a>通訊協定
 
@@ -80,12 +80,58 @@ Azure IoT Central 會使用 [Azure IoT 中樞裝置佈建服務 (DPS)](../../iot
 
 ## <a name="implement-the-device"></a>實作裝置
 
+IoT Central 裝置範本包含「模型」，可指定該類型裝置應該實作的行為。 行為包括遙測、屬性和命令。
+
+> [!TIP]
+> 您可以將模型從 IoT Central 匯出為 [數位對應項定義語言 (DTDL) v2](https://github.com/Azure/opendigitaltwins-dtdl) JSON 檔案。
+
+每個模型都有唯一的「裝置對應項模型識別碼」(DTMI)，例如 `dtmi:com:example:Thermostat;1`。 當裝置連線到 IoT Central 時，會傳送所實作之模型的 DTMI。 接著 IoT Central 可以讓正確的裝置範本與裝置產生關聯。
+
+[IoT 隨插即用](../../iot-pnp/overview-iot-plug-and-play.md)定義一組裝置在執行 DTDL 模型時應遵循的慣例。
+
+[Azure IoT 裝置 SDK](#languages-and-sdks) 包含對 IoT 隨插即用慣例的支援。
+
+### <a name="device-model"></a>裝置型號
+
+裝置模型使用 [DTDL](https://github.com/Azure/opendigitaltwins-dtdl) 來定義。 此語言可讓您定義：
+
+- 裝置所傳送的遙測。 定義包括遙測的名稱和資料類型。 例如，裝置會以兩位數傳送溫度遙測。
+- 裝置回報至 IoT Central 的屬性。 屬性定義包括其名稱和資料類型。 例如，裝置會以布林值報告閥門的狀態。
+- 裝置可以從 IoT Central 接收的屬性。 您也可以將屬性標示為可寫入。 例如，IoT Central 會將兩位數的目標溫度傳送至裝置。
+- 裝置會回應的命令。 定義包含命令的名稱，以及任何參數的名稱和資料類型。 例如，裝置會回應重新開機命令，指定重新開機之前要等待的秒數。
+
+DTDL 模型可以是「無元件」或「多元件」模型：
+
+- 無元件模型：簡單的模型不會使用內嵌或串聯的元件。 所有遙測、屬性和命令都會定義為單一「預設元件」。 如需範例，請參閱[控溫器](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)模型。
+- 多元件模型。 更複雜的模型，包含兩個或更多元件。 這些元件包括一個單一預設元件，以及一或多個其他的巢狀元件。 如需範例，請參閱[溫度控制器](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)模型。
+
+如需深入了解，請參閱[模型中的 IoT 隨插即用元件](../../iot-pnp/concepts-components.md)
+
+### <a name="conventions"></a>慣例
+
+當裝置與 IoT Central 交換資料時，應遵循 IoT 隨插即用慣例。 慣例包括：
+
+- 在連線到 IoT Central 時傳送 DTMI。
+- 將格式正確的 JSON 承載和中繼資料傳送至 IoT Central。
+- 從 IoT Central 正確回應可寫入的屬性和命令。
+- 遵循元件命令的命名慣例。
+
+> [!NOTE]
+> 目前，IoT Central 不會完全支援 DTDL **陣列** 和 **地理空間** 資料類型。
+
+若要深入了解裝置與 IoT Central 交換的 JSON 訊息格式，請參閱[遙測、屬性和命令承載](concepts-telemetry-properties-commands.md)。
+
+若要深入了解 IoT 隨插即用慣例用，請參閱 [IoT 隨插即用慣例](../../iot-pnp/concepts-convention.md)。
+
+### <a name="device-sdks"></a>裝置 SDK
+
 使用其中一個 [Azure IoT 裝置 SDK](#languages-and-sdks) 來實作您裝置的行為。 程式碼應該：
 
 - 向 DPS 註冊裝置，並使用來自 DPS 的資訊來連線到 IoT Central 應用程式中的內部 IoT 中樞。
-- 以 IoT Central 中的裝置範本所指定之格式傳送遙測。 IoT Central 會使用裝置範本決定如何將遙測用於視覺效果和分析。
-- 將裝置與 IoT Central 之間的屬性值進行同步。 裝置範本會指定屬性名稱和資料類型，讓 IoT Central 可以顯示資訊。
-- 針對裝置範本中指定的命令實作命令處理常式。 裝置範本會指定裝置應使用的命令名稱和參數。
+- 宣告裝置所實作的模型 DTMI。
+- 以裝置模型所指定之格式傳送遙測。 IoT Central 會使用裝置範本中的模型決定如何將遙測用於視覺效果和分析。
+- 將裝置與 IoT Central 之間的屬性值進行同步。 模型會指定屬性名稱和資料類型，讓 IoT Central 可以顯示資訊。
+- 針對模型中指定的命令實作命令處理常式。 模型會指定裝置應使用的命令名稱和參數。
 
 如需裝置範本角色的詳細資訊，請參閱 [什麼是裝置範本？](./concepts-device-templates.md)。
 

@@ -4,15 +4,15 @@ description: 說明 Azure HPC Cache，這是高效能運算的檔案存取加速
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 09/03/2020
+ms.date: 11/23/2020
 ms.author: v-erkel
 ms.custom: references_regions
-ms.openlocfilehash: b51cd938747c1cfa82b397160f077474e176b2f5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0568d9b7fea2e4e048c0c1d1b2d6f81d64a9b114
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91612960"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519331"
 ---
 # <a name="what-is-azure-hpc-cache"></a>什麼是 Azure HPC Cache？
 
@@ -64,6 +64,8 @@ Azure HPC Cache 佈署可協助加速量化的分析計算、風險分析工作�
 * 歐洲西部
 * US Gov 亞利桑那州
 * US Gov 維吉尼亞州
+
+Azure HPC Cache 位於單一區域中。 如果您將資料連線到位於該處的 Blob 容器，Azure HPC Cache 可以存取儲存在其他區域中的資料。 快取不會永久儲存客戶資料。
 
 ## <a name="next-steps"></a>後續步驟
 

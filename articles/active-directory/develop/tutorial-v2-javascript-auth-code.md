@@ -12,24 +12,25 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 01169f3e73fb1d6ddf0ecaf4958c6121cb21c295
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 6b8a9cbfd3e7057f0d85d5f4e19fea3aa4fbe90b
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216125"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980213"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>教學課程：使用授權碼流程來登入使用者，並從 JavaScript 單頁應用程式 (SPA) 呼叫 Microsoft Graph API
 
-本教學課程會示範如何建立 JavaScript 單頁應用程式 (SPA)，以使用適用於 JavaScript v2.0 的 Microsoft 驗證程式庫 (MSAL) 來執行下列動作：
+在本教學課程中，您會建置一個 JavaScript 單頁應用程式 (SPA)，使用 PKCE 的授權碼流程將使用者登入及呼叫 Microsoft Graph。 您所建置的 SPA 會使用適用於 JavaScript v2.0 的 Microsoft 驗證程式庫 (MSAL)。
 
+在本教學課程中：
 > [!div class="checklist"]
 > * 使用 PKCE 執行 OAuth 2.0 授權碼流程
 > * 登入個人的 Microsoft 帳戶以及公司和學校帳戶
 > * 取得存取權杖
 > * 呼叫需要從 Microsoft 身分識別平台端點取得存取權杖的 Microsoft Graph API 或自有 API
 
-MSAL.js 2.0 改良了 MSAL.js 1.0，可在瀏覽器中支援授權碼流程，而非隱含的授與流程。 MSAL.js 2.0 **不**支援隱含流程。
+MSAL.js 2.0 改良了 MSAL.js 1.0，可在瀏覽器中支援授權碼流程，而非隱含的授與流程。 MSAL.js 2.0 **不** 支援隱含流程。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -319,10 +320,10 @@ const tokenRequest = {
 
 修改 `msalConfig` 區段中的值，如下所述：
 
-- `Enter_the_Application_Id_Here`:所註冊應用程式的**應用程式 (用戶端) 識別碼**。
+- `Enter_the_Application_Id_Here`:所註冊應用程式的 **應用程式 (用戶端) 識別碼**。
 - `Enter_the_Cloud_Instance_Id_Here`:應用程式註冊所在的 Azure 雲端執行個體。
-  - 針對主要 (或*全域*) Azure 雲端，請輸入 `https://login.microsoftonline.com`。
-  - 針對**國家**雲端 (例如中國)，您可以在[國家雲端](authentication-national-cloud.md)中找到適當的值。
+  - 針對主要 (或 *全域*) Azure 雲端，請輸入 `https://login.microsoftonline.com`。
+  - 針對 **國家** 雲端 (例如中國)，您可以在 [國家雲端](authentication-national-cloud.md)中找到適當的值。
 - `Enter_the_Tenant_info_here` 應該是下列其中一項：
   - 如果您的應用程式支援 [此組織目錄中的帳戶]，請將此值取代為 [租用戶識別碼] 或 [租用戶名稱]。 例如： `contoso.microsoft.com` 。
   - 如果您的應用程式支援 [任何組織目錄中的帳戶]，請將此值取代為 `organizations`。
@@ -349,8 +350,8 @@ const graphConfig = {
 修改 `graphConfig` 區段中的值，如下所述：
 
 - `Enter_the_Graph_Endpoint_Here` 是應用程式所應通訊的 Microsoft Graph API 執行個體。
-  - 針對**全域** Microsoft Graph API 端點，請將此字串的兩個執行個體取代為 `https://graph.microsoft.com`。
-  - 針對**國家**雲端部署中的端點，請參閱 Microsoft Graph 文件中的[國家雲端部署](https://docs.microsoft.com/graph/deployments)。
+  - 針對 **全域** Microsoft Graph API 端點，請將此字串的兩個執行個體取代為 `https://graph.microsoft.com`。
+  - 針對 **國家** 雲端部署中的端點，請參閱 Microsoft Graph 文件中的 [國家雲端部署](https://docs.microsoft.com/graph/deployments)。
 
 如果您使用全域端點，則 *graphConfig.js* 中的 `graphMeEndpoint` 和 `graphMailEndpoint` 值應如下所示：
 
@@ -545,11 +546,11 @@ function readMail() {
 
 ### <a name="how-the-code-works"></a>程式碼的運作方式
 
-在使用者第一次選取 [登入] 按鈕時，`signIn` 方法會呼叫 `loginPopup` 以將使用者登入。 `loginPopup` 方法會開啟「Microsoft 身分識別平台端點」的快顯視窗，以提示及驗證使用者的認證。 成功登入後，*msal.js* 便會起始[授權碼流程](v2-oauth2-auth-code-flow.md)。
+在使用者第一次選取 [登入] 按鈕時，`signIn` 方法會呼叫 `loginPopup` 以將使用者登入。 `loginPopup` 方法會開啟「Microsoft 身分識別平台端點」的快顯視窗，以提示及驗證使用者的認證。 成功登入後，*msal.js* 便會起始 [授權碼流程](v2-oauth2-auth-code-flow.md)。
 
 此時，系統會將受 PKCE 保護的授權碼傳送至受 CORS 保護的權杖端點，並交換權杖。 您的應用程式會接收識別碼權杖、存取權杖和重新整理權杖，並由 *msal.js* 進行處理，然後快取權杖中包含的資訊。
 
-識別碼權杖包含使用者的基本資訊，例如其顯示名稱。 如果您打算使用識別碼權杖所提供的任何資料，則後端伺服器*必須*驗證資料，以保證所簽發權杖的適用對象是您應用程式的有效使用者。
+識別碼權杖包含使用者的基本資訊，例如其顯示名稱。 如果您打算使用識別碼權杖所提供的任何資料，則後端伺服器 *必須* 驗證資料，以保證所簽發權杖的適用對象是您應用程式的有效使用者。
 
 存取權杖的存留期有限，24 小時後便會到期。 您可以使用重新整理權杖來以無訊息方式取得新的存取權杖。
 
@@ -619,23 +620,23 @@ function callMSGraph(endpoint, token, callback) {
 
 在瀏覽器載入您的 index.html 檔案之後，請選取 [登入]。 系統會提示您使用 Microsoft 身分識別平台端點登入：
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="顯示單頁應用程式中授權碼流程的圖表":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="顯示登入對話方塊的網頁瀏覽器":::
 
 ### <a name="provide-consent-for-application-access"></a>同意應用程式存取
 
 您第一次登入應用程式時，系統會提示您授與您設定檔的存取權，並且將您登入：
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="顯示單頁應用程式中授權碼流程的圖表":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="網頁瀏覽器中顯示的內容對話方塊":::
 
 如果您同意要求的權限，Web 應用程式便會顯示您的使用者名稱，以表示您已成功登入：
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="顯示單頁應用程式中授權碼流程的圖表":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="在網頁瀏覽器中成功登入的結果":::
 
 ### <a name="call-the-graph-api"></a>呼叫圖形 API
 
 登入之後，請選取 [查看設定檔]，以檢視呼叫 Microsoft Graph API 時的回應所傳回的使用者設定檔資訊：
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="顯示單頁應用程式中授權碼流程的圖表":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="瀏覽器中顯示來自 Microsoft Graph 的設定檔資訊":::
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>與範圍和委派的權限有關的詳細資訊
 

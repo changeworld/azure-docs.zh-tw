@@ -1,17 +1,17 @@
 ---
 title: 代理程式的 Resource Manager 範本範例
-description: 用來在 Azure 監視器中部署和設定 Log Analytics 代理程式和診斷擴充功能的範例 Azure Resource Manager 範本。
+description: 用來在 Azure 監視器中部署和設定虛擬機器代理程式的範例 Azure Resource Manager 範本。
 ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
-ms.date: 05/18/2020
-ms.openlocfilehash: 8b0673e534826acb5ff2d3747053f58fb39ff285
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/17/2020
+ms.openlocfilehash: 00d6635b7bb322d28f0fe3df509ce0cb03e19f3d
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83853113"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95308659"
 ---
 # <a name="resource-manager-template-samples-for-agents-in-azure-monitor"></a>Azure 監視器中的代理程式適用的 Resource Manager 範本範例
 本文說明為 Azure 監視器中的虛擬機器部署和設定 [Log Analytics 代理程式](../platform/log-analytics-agent.md)與[診斷擴充功能](../platform/diagnostics-extension-overview.md)時適用的範例 [Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)。 每個範例都包含範本檔案和參數檔案，且附有要提供給範本的範例值。
@@ -19,10 +19,218 @@ ms.locfileid: "83853113"
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
 
-## <a name="windows-log-analytics-agent"></a>Windows Log Analytics 代理程式
+## <a name="azure-monitor-agent-preview"></a>Azure 監視器代理程式 (預覽)
+本節中的範例位於 Windows 和 Linux 代理程式上的 Azure 監視器代理程式 (預覽) 中。 這包括在 Azure 中的虛擬機器上安裝代理程式，以及在已啟用 Azure Arc 的伺服器上安裝。 
+
+### <a name="windows-azure-virtual-machine"></a>Windows Azure 虛擬機器
+下列範例會在 Windows Azure 虛擬機器上安裝 Azure 監視器代理程式。
+
+#### <a name="template-file"></a>範本檔案
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorWindowsAgent')]",
+          "type": "Microsoft.Compute/virtualMachines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2020-06-01",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorWindowsAgent",
+              "typeHandlerVersion": "1.0",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>參數檔案
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-windows-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+### <a name="linux-azure-virtual-machine"></a>Linux Azure 虛擬機器
+下列範例會在 Linux Azure 虛擬機器上安裝 Azure 監視器代理程式。
+
+#### <a name="template-file"></a>範本檔案
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorLinuxAgent')]",
+          "type": "Microsoft.Compute/virtualMachines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2020-06-01",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorLinuxAgent",
+              "typeHandlerVersion": "1.5",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>參數檔案
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-linux-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+### <a name="windows-azure-arc-enabled-server"></a>已啟用 Windows Azure Arc 的伺服器
+下列範例會在已啟用 Windows Azure Arc 的伺服器上安裝 Azure 監視器代理程式。
+
+#### <a name="template-file"></a>範本檔案
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorWindowsAgent')]",
+          "type": "Microsoft.HybridCompute/machines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2019-08-02-preview",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorWindowsAgent",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>參數檔案
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-windows-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+### <a name="linux-azure-arc-enabled-server"></a>已啟用 Linux Azure Arc 的伺服器
+下列範例會在已啟用 Linux Azure Arc 的伺服器上安裝 Azure 監視器代理程式。
+
+#### <a name="template-file"></a>範本檔案
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorLinuxAgent')]",
+          "type": "Microsoft.HybridCompute/machines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2019-08-02-preview",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorLinuxAgent",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>參數檔案
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-linux-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+## <a name="log-analytics-agent"></a>Log Analytics 代理程式
+本節中的範例會在 Azure 中的 Windows 和 Linux 虛擬機器上安裝 Log Analytics 代理程式，並將其連線至 Log Analytics 工作區。
+
+###  <a name="windows"></a>Windows
 下列範例會在 Windows Azure 虛擬機器上安裝 Log Analytics 代理程式。 此作業可藉由啟用[適用於 Windows 的 Log Analytics 虛擬機器擴充功能](../../virtual-machines/extensions/oms-windows.md)來完成。
 
-### <a name="template-file"></a>範本檔案
+#### <a name="template-file"></a>範本檔案
 
 ```json
 {
@@ -90,7 +298,7 @@ ms.locfileid: "83853113"
 
 ```
 
-### <a name="parameter-file"></a>參數檔案
+#### <a name="parameter-file"></a>參數檔案
 
 ```json
 {
@@ -114,10 +322,10 @@ ms.locfileid: "83853113"
 ```
 
 
-## <a name="linux-log-analytics-agent"></a>Linux Log Analytics 代理程式
+### <a name="linux"></a>Linux
 下列範例會在 Linux Azure 虛擬機器上安裝 Log Analytics 代理程式。 此作業可藉由啟用[適用於 Windows 的 Log Analytics 虛擬機器擴充功能](../../virtual-machines/extensions/oms-linux.md)來完成。
 
-### <a name="template-file"></a>範本檔案
+#### <a name="template-file"></a>範本檔案
 
 ```json
 {
@@ -184,7 +392,7 @@ ms.locfileid: "83853113"
 }
 ```
 
-### <a name="parameter-file"></a>參數檔案
+#### <a name="parameter-file"></a>參數檔案
 
 ```json
 {
@@ -209,10 +417,13 @@ ms.locfileid: "83853113"
 
 
 
-## <a name="windows-diagnostic-extension"></a>Windows 診斷擴充功能
+## <a name="diagnostic-extension"></a>診斷擴充功能
+本節中的範例會在 Azure 中的 Windows 和 Linux 虛擬機器上安裝診斷擴充功能，並將其設定以進行資料收集。
+
+### <a name="windows"></a>Windows
 下列範例會在 Windows Azure 虛擬機器上啟用和設定診斷擴充功能。 如需設定的詳細資訊，請參閱 [Windows 診斷擴充功能結構描述](../platform/diagnostics-extension-schema-windows.md)。
 
-### <a name="template-file"></a>範本檔案
+#### <a name="template-file"></a>範本檔案
 
 ```json
 {
@@ -345,7 +556,7 @@ ms.locfileid: "83853113"
 }
 ```
 
-### <a name="parameter-file"></a>參數檔案
+#### <a name="parameter-file"></a>參數檔案
 
 ```json
 {
@@ -374,10 +585,10 @@ ms.locfileid: "83853113"
 }
 ```
 
-## <a name="linux-diagnostic-setting"></a>Linux 診斷設定
+### <a name="linux"></a>Linux
 下列範例會在 Linux Azure 虛擬機器上啟用和設定診斷擴充功能。 如需設定的詳細資訊，請參閱 [Windows 診斷擴充功能結構描述](../../virtual-machines/extensions/diagnostics-linux.md)。
 
-### <a name="template-file"></a>範本檔案
+#### <a name="template-file"></a>範本檔案
 
 ```json
 {
@@ -565,7 +776,7 @@ ms.locfileid: "83853113"
 }
 ```
 
-### <a name="parameter-file"></a>參數檔案
+#### <a name="parameter-file"></a>參數檔案
 
 ```json
 {

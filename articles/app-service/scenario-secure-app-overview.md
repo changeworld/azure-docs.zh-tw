@@ -10,23 +10,23 @@ ms.workload: identity
 ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: fcddf99c3a4c53fe25db1ed653983e8ddac0edb7
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: ef7782c68746d4c20df5a9ae5e27ffca3e60efbe
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428220"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024121"
 ---
 # <a name="tutorial-enable-authentication-in-app-service-and-access-storage-and-microsoft-graph"></a>教學課程：在 App Service 中啟用驗證並存取儲存體和 Microsoft Graph
 
-本教學課程說明常見的應用程式案例，您會了解如何：
+本教學課程說明常見的應用程式案例，您可以從中了解如何：
 
-- [(A) 設定 Web 應用程式的驗證](scenario-secure-app-authentication-app-service.md)並限制對您組織中使用者的存取權。
-- [(B) 安全地存取 Azure 儲存體](scenario-secure-app-access-storage.md)，代表 Web 應用程式使用受控識別進行。
-- (C) 在 Microsoft Graph 中[代表已登入使用者](scenario-secure-app-access-microsoft-graph-as-user.md)或[代表 Web 應用程式](scenario-secure-app-access-microsoft-graph-as-app.md)使用受控識別存取資料。
+- [設定 Web 應用程式的驗證](scenario-secure-app-authentication-app-service.md)並限制對您組織中使用者的存取權。 請參閱圖表中的 A。
+- 使用受控識別針對 Web 應用程式[安全地存取 Azure 儲存體](scenario-secure-app-access-storage.md)。 請參閱圖表中的 B。
+- 使用受控識別[針對已登入的使用者](scenario-secure-app-access-microsoft-graph-as-user.md)或[針對 Web 應用程式](scenario-secure-app-access-microsoft-graph-as-app.md)存取 Microsoft Graph 中的資料。 請參閱圖表中的 C。
 - [清除資源](scenario-secure-app-clean-up-resources.md)，該資源是您為本教學課程建立的。
 
-:::image type="content" source="./media/scenario-secure-app-overview/web-app.svg" alt-text="Microsoft 身分識別平台中的應用程式案例" border="false":::
+:::image type="content" source="./media/scenario-secure-app-overview/web-app.svg" alt-text="此圖顯示 Microsoft 身分識別平台中的應用程式案例。" border="false":::
 
 若要開始，請了解如何啟用 Web 應用程式的驗證。
 

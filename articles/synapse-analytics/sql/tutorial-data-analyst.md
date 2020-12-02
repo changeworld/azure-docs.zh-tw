@@ -1,34 +1,26 @@
 ---
-title: 教學課程：在 Azure Synapse Studio (預覽) 中使用無伺服器 SQL 集區 (預覽) 來分析 Azure 開放資料集
-description: 本教學課程說明如何使用無伺服器 SQL 集區 (預覽) 輕鬆執行合併了不同 Azure 開放資料集的探勘資料分析，並在 Azure Synapse Studio 中將結果視覺化。
+title: 教學課程：使用無伺服器 Synapse SQL 探索和分析 Data Lake
+description: 本教學課程說明如何使用無伺服器 SQL 集區 (預覽) 輕鬆執行合併了不同 Azure 開放資料集的探勘資料分析，並在 Azure Synapse Studio 的 Synapse Studio 中將結果視覺化。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: sql
-ms.date: 04/15/2020
+ms.date: 11/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 84fc49df2838a66969b449dee5b416c2a0f86f86
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: af6fc75b5de22fc77313932ca17ce695e889dad3
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685914"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237944"
 ---
-# <a name="tutorial-use-serverless-sql-pool-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>教學課程：使用無伺服器 SQL 集區來分析 Azure 開放資料集，並在 Azure Synapse Studio 中將結果視覺化
+# <a name="tutorial-explore-and-analyze-data-lakes-with-serverless-sql-pool-preview"></a>教學課程：使用無伺服器 SQL 集區探索和分析 Data Lake (預覽)
 
-在本教學課程中，您將了解如何使用無伺服器 SQL 集區合併不同的 Azure 開放資料集，然後在 Azure Synapse Studio 中將結果視覺化，以執行探勘資料分析。
+在本教學課程中，您將了解如何執行探勘資料分析。 您將使用無伺服器 SQL 集區合併不同的 Azure 開放資料集。 接著，您會在 Azure Synapse Analytics 的 Synapse Studio 中將結果視覺化。
 
-具體來說，您會分析[紐約市 (NYC) 計程車資料集](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)，其中包括：
-
-- 上下車日期和時間。
-- 上下車地點。 
-- 行車距離：
-- 車資明細。
-- 費率類型。
-- 付款類型。 
-- 司機報告的乘客計數。
+OPENROWSET(BULK...) 函式可讓您存取 Azure 儲存體中的檔案。 [OPENROWSET](develop-openrowset.md) 函式會讀取遠端資料來源 (例如檔案) 的內容，並以一組資料列傳回內容。
 
 ## <a name="automatic-schema-inference"></a>自動推斷結構描述
 
@@ -44,9 +36,15 @@ SELECT TOP 100 * FROM
     ) AS [nyc]
 ```
 
-下列程式碼片段顯示 NYC 計程車資料的結果：
+[紐約市 (NYC) 計程車資料集](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)包含：
 
-![NYC 計程車資料結果程式碼片段](./media/tutorial-data-analyst/1.png)
+- 上下車日期和時間。
+- 上下車地點。 
+- 行車距離：
+- 車資明細。
+- 費率類型。
+- 付款類型。 
+- 司機報告的乘客計數。
 
 同樣地，您也可以使用下列查詢來查詢國定假日資料集：
 
@@ -57,10 +55,6 @@ SELECT TOP 100 * FROM
         FORMAT='PARQUET'
     ) AS [holidays]
 ```
-
-下列程式碼片段顯示國定假日資料集的結果：
-
-![公用假日資料集結果程式碼片段](./media/tutorial-data-analyst/2.png)
 
 最後，您也可以使用下列查詢來查詢天氣資料資料集：
 
@@ -74,11 +68,10 @@ FROM
     ) AS [weather]
 ```
 
-下列程式碼片段顯示天氣資料資料集的結果：
-
-![氣象資料資料集結果程式碼片段](./media/tutorial-data-analyst/3.png)
-
-您可以在 [NYC 計程車](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)、[國定假日](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/)和[天氣資料](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)資料集的說明中深入了解個別資料行的意義。
+您可以在下列資料集的說明中深入了解個別資料行的意義： 
+- [NYC 計程車](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)
+- [國定假日](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/) \(英文\)
+- [天氣資料](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)
 
 ## <a name="time-series-seasonality-and-outlier-analysis"></a>時間序列、季節性和極端值分析
 
@@ -100,13 +93,13 @@ ORDER BY 1 ASC
 
 下列程式碼片段顯示每年計程車乘車數量的結果：
 
-![每年計程車乘車結果程式碼片段數](./media/tutorial-data-analyst/4.png)
+![每年計程車乘車結果程式碼片段數](./media/tutorial-data-analyst/yearly-taxi-rides.png)
 
 您可以在 Synapse Studio 中從 [資料表] 檢視切換至 [圖表] 檢視，以視覺方式呈現資料。 您可以選擇不同的圖表類型，例如 **區域圖**、**橫條圖**、**直條圖**、**折線圖**、**圓形圖** 和 **散佈圖**。 在本案例中，我們要將 [類別] 資料行設定為 [current_year] 的情況下繪製 **直條圖**：
 
-![顯示每年乘車次數的直條圖](./media/tutorial-data-analyst/5.png)
+![顯示每年乘車次數的直條圖](./media/tutorial-data-analyst/column-chart-rides-year.png)
 
-從這個視覺效果中，可以清楚地看出乘車次數多年來減少的趨勢。 這項減少的原因是，分享公司最近愈來愈受到歡迎。
+在這個視覺效果中，您可以看到過去幾年的搭乘次數呈現下降趨勢。 這項減少的原因是，分享公司最近愈來愈受到歡迎。
 
 > [!NOTE]
 > 在撰寫本教學課程時，2019 年的資料不完整。 如此一來，這一年的乘車次數會大幅下降。
@@ -129,15 +122,15 @@ ORDER BY 1 ASC
 
 下列程式碼片段顯示此查詢的結果：
 
-![2016 年每日乘車次數結果程式碼片段](./media/tutorial-data-analyst/6.png)
+![2016 年每日乘車次數結果程式碼片段](./media/tutorial-data-analyst/daily-rides.png)
 
 同樣地，您可以在 **[類別]** 資料行設定為 **[current_day]** 且 **[圖例 (數列)]** 資料行設定為 **[rides_per_day]** 的情況下繪製 **直條圖**，輕鬆地用視覺方式呈現資料。
 
-![顯示 2016 年每日乘車次數的直條圖](./media/tutorial-data-analyst/7.png)
+![顯示 2016 年每日乘車次數的直條圖](./media/tutorial-data-analyst/column-chart-daily-rides.png)
 
 從繪圖圖表中，您可以看到有每週模式，而星期六為尖峰日。 由於夏季月份期間屬於假期，所以計程車乘車數量較少。 此外，您會看到有一些地方出現計程車乘車數量大幅下滑的情形，但其發生時間和原因則沒有明顯模式。
 
-接下來，讓我們將 NYC 計程車乘車資料集與國定假日資料集聯結起來，以了解這些下滑是否與國定假日有所關聯：
+接下來，我們將了解搭乘次數的下降是否與國定假日有所關聯。 我們可以將 NYC 計程車搭乘資料集與國定假日資料集聯結起來，以了解兩者是否有關聯：
 
 ```sql
 WITH taxi_rides AS
@@ -172,11 +165,11 @@ LEFT OUTER JOIN public_holidays p on t.current_day = p.date
 ORDER BY current_day ASC
 ```
 
-![NYC 計程車乘車和公定假日資料集結果視覺效果](./media/tutorial-data-analyst/8.png)
+![NYC 計程車乘車和公定假日資料集結果視覺效果](./media/tutorial-data-analyst/rides-public-holidays.png)
 
 這一次，我們想要醒目提示國定假日期間的計程車乘車數量。 基於這個目的，我們會選擇 [none] 來作為 [類別] 資料行，並選擇 [rides_per_day] 和 [holiday] 作為 [圖例 (數列)] 資料行。
 
-![公定假日期間的計程車乘車次數圖表](./media/tutorial-data-analyst/9.png)
+![公定假日期間的計程車乘車次數圖表](./media/tutorial-data-analyst/plot-chart-public-holidays.png)
 
 從繪圖中可以發現，國定假日期間有一些計程車乘車數量較低。 這仍無法有效解釋 1 月 23 日的大幅下滑。 讓我們查詢天氣資料資料集來查看 NYC 當天的天氣：
 
@@ -205,7 +198,7 @@ FROM
 WHERE countryorregion = 'US' AND CAST([datetime] AS DATE) = '2016-01-23' AND stationname = 'JOHN F KENNEDY INTERNATIONAL AIRPORT'
 ```
 
-![氣象資料資料集結果視覺效果](./media/tutorial-data-analyst/10.png)
+![氣象資料資料集結果視覺效果](./media/tutorial-data-analyst/weather-data-set-visualization.png)
 
 查詢的結果指出，計程車的乘車次數發生下滑是因為：
 
@@ -218,4 +211,6 @@ WHERE countryorregion = 'US' AND CAST([datetime] AS DATE) = '2016-01-23' AND sta
 ## <a name="next-steps"></a>後續步驟
 
 若要了解如何將無伺服器 SQL 集區連線到 Power BI Desktop 並建立報告，請參閱[將無伺服器 SQL 集區連線到 Power BI Desktop 並建立報告](tutorial-connect-power-bi-desktop.md)。
+
+若要了解如何使用無伺服器 SQL 集區中的外部資料表，請參閱[搭配 Synapse SQL 使用外部資料表](develop-tables-external-tables.md?tabs=sql-pool)
  

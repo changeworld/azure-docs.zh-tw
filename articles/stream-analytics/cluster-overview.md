@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: 613cf7d9b68fe42c26f2c01cb1fb5dd1da1e1fb5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f67df45b6b663584e848983251031146cdf8df60
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943751"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95247688"
 ---
 # <a name="overview-of-azure-stream-analytics-cluster-preview"></a>Azure 串流分析叢集概觀 (預覽)
 
@@ -69,7 +69,7 @@ Azure 串流分析叢集提供單一租用戶部署，可用於複雜且高需�
 
 ### <a name="which-inputs-and-outputs-can-i-privately-connect-to-from-my-stream-analytics-cluster"></a>我可以從我的串流分析叢集私人連線到哪些輸入和輸出？
 
-串流分析支援各種輸入和輸出類型。 任何支援 Azure Private Link 的服務都可以私人連線到您的作業。 您可以在叢集中[建立私人端點](private-endpoints.md)，以允許作業存取輸入和輸出資源。
+串流分析支援各種輸入和輸出類型。 您可以在叢集中[建立私人端點](private-endpoints.md)，以允許作業存取輸入和輸出資源。 目前，Azure SQL Database、Azure 儲存體、Azure Data Lake Storage Gen2、Azure 事件中樞和 Azure 服務匯流排都是支援的服務，而其他類型將會在不久後新增。 
 
 ## <a name="next-steps"></a>後續步驟
 

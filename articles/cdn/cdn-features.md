@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/15/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f1ea8d16a441230323b4f0213229d223a0b035bc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8dbf3b5de4b908eb831158b73b2b17472bc4895e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778635"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020958"
 ---
 # <a name="what-are-the-comparisons-between-azure-cdn-product-features"></a>Azure CDN 產品功能之間的比較有哪些？
 
@@ -23,7 +23,7 @@ Azure 內容傳遞網路 (CDN) 包含四項產品：
 * **來自 Microsoft 的 Azure CDN 標準**
 * **來自 Akamai 的 Azure CDN 標準**
 * **來自 Verizon 的 Azure CDN 標準**
-* **來自 Verizon 的 Azure CDN 進階** 。 
+* **來自 Verizon 的 Azure CDN 進階**。 
 
 下表將比較各項產品的可用功能。
 
@@ -72,7 +72,7 @@ Azure 內容傳遞網路 (CDN) 包含四項產品：
 | 輕鬆地與 Azure 服務 (例如[儲存體](cdn-create-a-storage-account-with-cdn.md)、[Web Apps](cdn-add-to-web-app.md) 和[媒體服務](../media-services/previous/media-services-portal-manage-streaming-endpoints.md)) 整合  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | 透過 [REST API](/rest/api/cdn/)、[.NET](cdn-app-dev-net.md)、[Node.js](cdn-app-dev-node.md) 或 [PowerShell](cdn-manage-powershell.md) 管理  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [壓縮 MIME 類型](./cdn-improve-performance.md)  |僅限預設值 |可設定 |可設定  |可設定  |
-| 壓縮編碼  |gzip、brotli |gzip |gzip、deflate、bzip2、brotili  |gzip、deflate、bzip2、brotili  |
+| 壓縮編碼  |gzip、brotli |gzip |gzip、deflate、bzip2、brotli  |gzip、deflate、bzip2、brotli  |
 
 ## <a name="migration"></a>移轉
 

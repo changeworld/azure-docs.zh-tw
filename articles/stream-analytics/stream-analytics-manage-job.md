@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/30/2020
-ms.openlocfilehash: fef949e9285264ef46fbaed05a4385a15b27e65e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 70acc696f1cb366d25299f616744e52491a54471
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94354425"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024172"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>教學課程：使用串流分析分析通話資料並在 Power BI 儀表板中以視覺方式呈現結果
 
@@ -129,7 +129,7 @@ ms.locfileid: "94354425"
 
 1. 若要建立串流分析作業，請瀏覽至 [Azure 入口網站](https://portal.azure.com/)。
 
-2. 選取 [建立資源]，並搜尋 [串流分析作業]。 選取 [串流分析作業] 圖格，然後選取 *[建立]**。
+2. 選取 [建立資源]，並搜尋 [串流分析作業]。 選取 [串流分析作業] 圖格，然後選取 [建立]。
 
 3. 在 [新增串流分析作業] 表單中填入下列值：
 

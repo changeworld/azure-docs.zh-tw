@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 72b72959f7b5c89bfad4495c8534de5dfaaefe8b
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 031ee9a6d945d923279fd3025c32212c3ead98ed
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611090"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95406594"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>教學課程：建置會使用 Microsoft 身分識別平台的多租用戶精靈
 
-在本教學課程中，您將了解如何使用 Microsoft 身分識別平台，在長時間執行的非互動式程序中存取 Microsoft 企業客戶的資料。 精靈範例會使用 [OAuth2 用戶端認證授與](v2-oauth2-client-creds-grant-flow.md)來取得存取權杖。 然後，此精靈會使用權杖來呼叫 [Microsoft Graph](https://graph.microsoft.io) 並存取組織資料。
+在本教學課程中，您會下載並執行 ASP.NET 精靈 Web 應用程式，以示範如何使用 OAuth 2.0 用戶端認證授與，取得用來呼叫 Microsoft Graph API 的存取權杖。
+
+在本教學課程中：
 
 > [!div class="checklist"]
 > * 整合精靈應用程式與 Microsoft 身分識別平台
@@ -163,7 +165,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 此範例的相關程式碼位於下列檔案中：
 
-- **App_Start\Startup.Auth.cs**、**Controllers\AccountController.cs**：初始登入。 特別是，控制器上的動作具有**授權**屬性，會強制使用者登入。 應用程式會使用[授權碼流程](v2-oauth2-auth-code-flow.md)來登入使用者。
+- **App_Start\Startup.Auth.cs**、**Controllers\AccountController.cs**：初始登入。 特別是，控制器上的動作具有 **授權** 屬性，會強制使用者登入。 應用程式會使用[授權碼流程](v2-oauth2-auth-code-flow.md)來登入使用者。
 - **Controllers\SyncController.cs**：將使用者清單同步至本機記憶體內部存放區。
 - **Controllers\UserController.cs**：顯示本機記憶體內部存放區中的使用者清單。
 - **Controllers\AccountController.cs**：使用管理員同意端點，取得租用戶管理員提供的權限。
@@ -184,17 +186,17 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 1. 在 **App_Start** 資料夾中：
    1. 建立名為 **Startup.Auth.cs** 的類別。
    1. 從命名空間名稱中移除 **.App_Start**。
-   1. 將**啟動**類別的程式碼取代為應用程式範例相同檔案內的程式碼。
-   請務必採用整個類別定義。 定義會從**公用類別啟動**變更為**公用部分類別啟動**。
+   1. 將 **啟動** 類別的程式碼取代為應用程式範例相同檔案內的程式碼。
+   請務必採用整個類別定義。 定義會從 **公用類別啟動** 變更為 **公用部分類別啟動**。
 1. 在 **Startup.Auth.cs** 中，藉由新增 Visual Studio IntelliSense 所建議的 **using** 陳述式來解析遺漏的參考。
 1. 以滑鼠右鍵按一下專案，選取 [新增]，然後選取 [類別]。
-1. 在搜尋方塊中，輸入 **OWIN**。 **OWIN 啟動類別**便會顯示為選取項目。 加以選取，並將類別命名為 **Startup.cs**。
-1. 在 **Startup.cs** 中，將**啟動**類別的程式碼取代為應用程式範例相同檔案內的程式碼。 同樣地，請注意定義會從**公用類別啟動**變更為**公用部分類別啟動**。
+1. 在搜尋方塊中，輸入 **OWIN**。 **OWIN 啟動類別** 便會顯示為選取項目。 加以選取，並將類別命名為 **Startup.cs**。
+1. 在 **Startup.cs** 中，將 **啟動** 類別的程式碼取代為應用程式範例相同檔案內的程式碼。 同樣地，請注意定義會從 **公用類別啟動** 變更為 **公用部分類別啟動**。
 1. 在 **Models** 資料夾中，新增名為 **MsGraphUser.cs** 的新類別。 請將實作取代為範例中同名檔案的內容。
-1. 新增名為 **AccountController** 的 **MVC 5 控制器 - 空白**執行個體。 請將實作取代為範例中同名檔案的內容。
-1. 新增名為 **UserController** 的 **MVC 5 控制器 - 空白**執行個體。 請將實作取代為範例中同名檔案的內容。
-1. 新增名為 **SyncController** 的 **Web API 2 5 控制器 - 空白**執行個體。 請將實作取代為範例中同名檔案的內容。
-1. 針對使用者介面，在 **Views\Account** 資料夾中，新增三個**空白 (不含模型) 檢視**執行個體，分別命名為 **GrantPermissions**、**Index** 和 **UserMismatch**。 在 **Views\User** 資料夾中，新增一個名為 **Index** 的執行個體。 請將實作取代為範例中同名檔案的內容。
+1. 新增名為 **AccountController** 的 **MVC 5 控制器 - 空白** 執行個體。 請將實作取代為範例中同名檔案的內容。
+1. 新增名為 **UserController** 的 **MVC 5 控制器 - 空白** 執行個體。 請將實作取代為範例中同名檔案的內容。
+1. 新增名為 **SyncController** 的 **Web API 2 5 控制器 - 空白** 執行個體。 請將實作取代為範例中同名檔案的內容。
+1. 針對使用者介面，在 **Views\Account** 資料夾中，新增三個 **空白 (不含模型) 檢視** 執行個體，分別命名為 **GrantPermissions**、**Index** 和 **UserMismatch**。 在 **Views\User** 資料夾中，新增一個名為 **Index** 的執行個體。 請將實作取代為範例中同名檔案的內容。
 1. 更新 **Shared\_Layout.cshtml** 和 **Home\Index.cshtml**，以將不同的檢視正確地連結在一起。
 
 ## <a name="deploy-the-sample-to-azure"></a>將範例部署至 Azure
@@ -212,7 +214,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 1. 選取 [Web] > [Web 應用程式]，然後為網站提供名稱。 例如，將網站命名為 **dotnet-web-daemon-v2-contoso.azurewebsites.net**。
 1. 選取 [訂用帳戶]、[資源群組] 和 [App Service 方案和位置] 的資訊。 [OS] 是 [Windows]，[發佈] 則是 [程式碼]。
 1. 選取 [建立]，並等待 App Service 建立。
-1. 當您收到**部署成功**通知時，請選取 [移至資源] 以移至新建立的 App Service。
+1. 當您收到 **部署成功** 通知時，請選取 [移至資源] 以移至新建立的 App Service。
 1. 網站建立好之後，請在 [儀表板] 中找到網站，然後加以選取以開啟 App Service 的 [概觀] 畫面。
 1. 從 App Service 的 [概觀] 索引標籤中，選取 [取得發行設定檔] 連結以下載發行設定檔，並加以儲存。 您可以使用其他部署機制，例如從原始檔控制進行部署。
 1. 切換至 Visual Studio，然後：

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
-ms.openlocfilehash: 16fd15a5939cc6c268a80e88401f05042a206075
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: ea55762aa40360d8eea94223a030f08aad504206
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516810"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95485387"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>教學課程：建置 Blazor Server 聊天應用程式
 
@@ -39,7 +39,7 @@ ms.locfileid: "94516810"
    
    在 Visual Studio 中，選擇 [建立新專案] -> [Blazor 應用程式] -> (命名應用程式並選擇資料夾) -> [Blazor Server 應用程式]。 請確定您已安裝 .NET Core SDK 3.0 +，讓 Visual Studio 能夠正確辨識目標 Framework。
 
-   [ ![blazor-chat-create](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png#lightbox)
+   [ ![在 [建立新專案] 中，已選取 Blazor 應用程式範本。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png#lightbox)
    
    或執行 cmd
    ```dotnetcli
@@ -355,7 +355,7 @@ ms.locfileid: "94516810"
 
 1. 按一下 <kbd>F5</kbd> 以執行應用程式。 您將能夠以如下方式聊天。
 
-   [ ![blazor-chat](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif#lightbox)
+   [ ![Bob 與 Alice 之間的聊天以動畫顯示。Alice 說 Hello，Bob 說 Hi。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif#lightbox)
    
 [有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsblazor)
 
@@ -375,13 +375,13 @@ ms.locfileid: "94516810"
    * 特定目標：所有類型的 **Azure App Service** 均受支援。
    * App Service：建立新的 App Service，或選取現有的 App Service。
 
-   [ ![blazor-chat-profile](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif#lightbox)
+   [ ![動畫顯示已選取 Azure 作為目標，然後選取 Azure App Serice 作為特定目標。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif#lightbox)
 
 1. 新增 Azure SignalR Service 相依性
 
    發行設定檔建立後，您可以在 [服務相依性] 底下看到建議的訊息。 按一下 [設定] 以建立新的服務，或在面板中選取現有的 Azure SignalR Service。
 
-   [ ![blazor-chat-dependency](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png#lightbox)
+   [ ![在 [發佈] 上，[設定] 的連結已醒目提示。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png#lightbox)
 
    服務相依性將會執行下列動作，讓您的應用程式在 Azure 上自動切換至 Azure SignalR Service。
 
@@ -391,7 +391,7 @@ ms.locfileid: "94516810"
    * 根據您的選擇設定秘密存放區。
    * 新增 `appsettings` 設定，讓您的應用程式以選取的 Azure SignalR Service 作為目標。
 
-   [ ![blazor-chat-dependency-summary](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png#lightbox)
+   [ ![在 [變更摘要] 上，已使用核取方塊選取所有相依性。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png#lightbox)
 
 1. 發佈應用程式
 
@@ -400,7 +400,7 @@ ms.locfileid: "94516810"
    > 由於 Azure App Service 的部署啟動有延遲性，在第一次瀏覽頁面時可能無法立即運作，且會嘗試重新整理頁面以提供一些延遲。
    > 此外，您還可以透過 <kbd>F12</kbd> 使用瀏覽器偵錯工具模式，以驗證流量已重新導向至 Azure SignalR Service。
 
-   [ ![blazor-chat-azure](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png#lightbox)
+   [ ![Blazor SignalR 聊天範例有文字方塊可顯示您的名稱，並且有 [聊天!] 按鈕可展開聊天。](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png) ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png#lightbox)
    
 [有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsblazor)
 

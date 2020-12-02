@@ -8,19 +8,20 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 99a0805239ee2437ad6ec9ceb40cf45496a07850
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 3a3518ba68c9474fc4a34390e6fd9a7d1e88f6c6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047653"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959589"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>教學課程：在 IoT Edge 上為機器學習設定環境
 
-> [!NOTE]
-> 此文章是關於在 IoT Edge 上使用 Azure Machine Learning 的系列文章之一。 如果您是被直接引導至此文章，我們建議您先從本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)開始，以取得最佳成效。
-
 本文將協助您準備開發和部署環境。 首先，請使用所需的所有工具設定開發機器。 接下來，在 Azure 中建立必要的雲端資源。
+
+## <a name="prerequisites"></a>必要條件
+
+此文章是關於在 IoT Edge 上使用 Azure Machine Learning 的系列文章之一。 本系列中的每篇文章皆以先前文章中的工作為基礎。 如果您是被直接引導至此文章，請參閱本系列中的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)。
 
 ## <a name="set-up-the-development-vm"></a>設定開發 VM
 
@@ -60,7 +61,7 @@ ms.locfileid: "92047653"
 
    DevVM 目錄包含建立適合完成此教學課程之 Azure 虛擬機器的所需檔案。
 
-1. 執行下列命令來允許執行指令碼。 出現提示時，請選擇 [全部皆是]  。
+1. 執行下列命令來允許執行指令碼。 出現提示時，請選擇 [全部皆是]。
 
     ```powershell
     Set-ExecutionPolicy Bypass -Scope Process
@@ -100,9 +101,9 @@ ms.locfileid: "92047653"
 
 1. 在 Azure 入口網站中，瀏覽至指令碼所建立的 VM。
 
-1. 從左窗格功能表的 [作業]  底下，選取 [自動關機]  。
+1. 從左窗格功能表的 [作業] 底下，選取 [自動關機]。
 
-1. 視需要調整 [已排程關機]  和 [時區]  ，然後選取 [儲存]  。
+1. 視需要調整 [已排程關機] 和 [時區]，然後選取 [儲存]。
 
 ## <a name="connect-to-the-development-vm"></a>連線至開發 VM
 
@@ -110,13 +111,13 @@ ms.locfileid: "92047653"
 
 1. 按兩下指令碼在桌面上建立的 RDP 檔案。
 
-1. 系統會顯示對話方塊，說明遠端連線的發行者為未知的發行者。 這是可接受的情況，因此請選取 [連線]  。
+1. 系統會顯示對話方塊，說明遠端連線的發行者為未知的發行者。 這是可接受的情況，因此請選取 [連線]。
 
-1. 提供您輸入用來建立 VM 的系統管理員密碼，然後按一下 [確定]  。
+1. 提供您輸入用來建立 VM 的系統管理員密碼，然後按一下 [確定]。
 
-1. 系統會提示您接受 VM 的憑證。 選取 [是]  。
+1. 系統會提示您接受 VM 的憑證。 選取 [是]。
 
-## <a name="install-visual-studio-code-extensions"></a>安裝 Visual Studio Code 擴充
+## <a name="install-visual-studio-code-extensions"></a>安裝 Visual Studio Code 延伸模組
 
 在您連線至開發電腦之後，請為 Visual Studio Code 加入一些有用的擴充，來使開發體驗變得更加輕鬆。
 
@@ -126,7 +127,7 @@ ms.locfileid: "92047653"
     cd C:\source\IoTEdgeAndMlSample\DevVM
     ```
 
-1. 執行下列命令來允許執行指令碼。 出現提示時，請選擇 [全部皆是]  。
+1. 執行下列命令來允許執行指令碼。 出現提示時，請選擇 [全部皆是]。
 
     ```powershell
     Set-ExecutionPolicy Bypass -Scope Process
@@ -173,7 +174,7 @@ Azure IoT 中樞會處理 IoT 裝置和雲端之間的安全通訊，因此可�
     * 系統將提示您登入 Azure。
     * 指令碼會確認建立中樞和儲存體帳戶的資訊。 按 **y** 或 **Enter** 鍵以繼續作業。
 
-指令碼需要約兩分鐘的時間來執行。 完成後，指令碼會輸出 IoT 中樞和儲存體帳戶的名稱。
+執行指令碼約需兩分鐘。 完成後，指令碼會輸出 IoT 中樞和儲存體帳戶的名稱。
 
 ## <a name="review-route-to-storage-in-iot-hub"></a>檢閱針對 IoT 中樞中儲存體的路由
 
@@ -183,29 +184,29 @@ Azure IoT 中樞會處理 IoT 裝置和雲端之間的安全通訊，因此可�
 
 1. 在資源清單中，選取指令碼所建立的 IoT 中樞。 其名稱會以隨機字元結尾，例如 `IotEdgeAndMlHub-jrujej6de6i7w`。
 
-1. 從左窗格功能表的 [訊息]  底下，選取 [訊息路由]  。
+1. 從左窗格功能表的 [訊息] 底下，選取 [訊息路由]。
 
-1. 在 [訊息路由]  頁面上，選取 [自訂端點]  索引標籤。
+1. 在 [訊息路由] 頁面上，選取 [自訂端點] 索引標籤。
 
-1. 展開 [儲存體]  區段：
+1. 展開 [儲存體] 區段：
 
    ![確認 turbofanDeviceStorage 位於自訂端點清單中](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
 
    我們看到 **turbofanDeviceStorage** 位於自訂端點清單中。 請留意此端點具有下列特性：
 
-   * 它會指向您所建立的 Blob 儲存體容器 (其名稱為 `devicedata`，如**容器名稱**所示)。
-   * 其**檔案名稱格式**會以分割區作為名稱中的最後一個元素。 我們認為這個格式對於我們稍後會在教學課程中搭配 Azure Notebooks 進行的檔案作業來說較為方便。
-   * 其 [狀態]  應該是良好。
+   * 它會指向您所建立的 Blob 儲存體容器 (其名稱為 `devicedata`，如 **容器名稱** 所示)。
+   * 其 **檔案名稱格式** 會以分割區作為名稱中的最後一個元素。 我們認為這個格式對於我們稍後會在教學課程中搭配 Azure Notebooks 進行的檔案作業來說較為方便。
+   * 其 [狀態] 應該是良好。
 
-1. 選取 [路由]  索引標籤。
+1. 選取 [路由] 索引標籤。
 
 1. 選取名為 **turbofanDeviceDataToStorage** 的路由。
 
-1. 在 [路由詳細資料]  頁面上您可以看到，路由的端點是 **turbofanDeviceStorage** 端點。
+1. 在 [路由詳細資料] 頁面上您可以看到，路由的端點是 **turbofanDeviceStorage** 端點。
 
    ![檢閱 turbofanDeviceDataToStorage 路由的詳細資料](media/tutorial-machine-learning-edge-02-prepare-environment/route-details.png)
 
-1. 查看**路由查詢**，其已設定為 **true**。 此設定表示所有裝置遙測訊息都將符合此路由，這會使所有訊息都傳送至 **turbofanDeviceStorage** 端點。
+1. 查看 **路由查詢**，其已設定為 **true**。 此設定表示所有裝置遙測訊息都將符合此路由，這會使所有訊息都傳送至 **turbofanDeviceStorage** 端點。
 
 1. 由於未進行任何編輯，請關閉此頁面即可。
 

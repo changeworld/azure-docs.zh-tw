@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 11/19/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 72575725c0924b8ec5f9466f4ffbba86bf071db4
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 28637f35294e9c70cbf0e96fb2cdcb1853d2ba39
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631525"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992721"
 ---
 ::: zone target="docs"
 
@@ -106,12 +106,6 @@ ms.locfileid: "91631525"
 
 ::: zone-end
 
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
-
-::: zone-end
-
 ## <a name="australia"></a>[澳大利亞](#tab/in-australia)
 
 澳洲的 Azure 資料中心有額外的安全性通知。 所有送達的貨物都必須有預先通知。 在澳洲寄送可採取下列步驟。
@@ -131,12 +125,6 @@ ms.locfileid: "91631525"
 ## <a name="erasure-of-data-from-data-box"></a>清除資料箱的資料
 
 完成上傳到 Azure 之後，資料箱會根據 [NIST SP 800-88 修訂 1 指導方針](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)清除磁碟中的資料。
-
-::: zone-end
-
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
 ::: zone-end
 
@@ -182,12 +170,6 @@ ms.locfileid: "91631525"
 
 ::: zone-end
 
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
-
-::: zone-end
-
 ## <a name="singapore"></a>[新加坡](#tab/in-singapore)
 
 1. 保留用來寄送裝置以供退貨的原始外盒。
@@ -223,33 +205,33 @@ ms.locfileid: "91631525"
 
 ::: zone-end
 
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
-
-::: zone-end
-
 ## <a name="south-africa"></a>[南非](#tab/in-sa)
 
 1. 將要送回的裝置包裝到原始外盒內。
 2. 纏繞裝置隨附的電源線，並將其安全地放在裝置背後。
-3. 若要預約 DHL 取貨：
+3. 記下追蹤號碼 (您可以在資料箱本機 Web UI 的 **準備寄送** 頁面上看到參考編號)。 「準備寄送」步驟成功完成之後，即會顯示此號碼。 從此頁面下載出貨標籤，並貼到包裝盒上。
+4. 要求來自 Azure 資料箱作業的傳回碼。 將套件傳遞回資料中心需要傳回碼。 傳送電子郵件至 [adbops@microsoft.com](mailto:adbops@microsoft.com)。 請注意，此傳回碼會顯示在出貨標籤旁的寄信人地址，以便清楚可見。
+5. 若要預約 DHL 取貨，請使用下列其中一個方式：
+ 
+   * 移至 [DHL Express South Africa **排程取貨**](https://mydhl.express.dhl/za/en/schedule-pickup.html#/schedule-pickup#label-reference)，以預訂線上取貨。
+   * 使用下列範本，寄送電子郵件至 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com)：
 
-    * 致電客戶服務連絡中心 (電話是 +27(0) 11 9213600)、選取第 1 個選項，然後指定運貨單號碼。
-    * 必須在下午 2:00 之前致電才能安排取貨。
-    * 使用下列範本，寄送電子郵件至 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com)：
-
-    ```output
-    To: Priority.Support@dhl.com
-    Subject: Pickup request for Microsoft Azure
-    Body: Need pick up for the below shipment
-      *  DHL tracking number (reference number/waybill number)
-      *  Requested pickup date: yyyy/mm/dd;time:HH MM
-    ```
+     ```output
+     To: Priority.Support@dhl.com
+     Subject: Pickup request for Microsoft Azure
+     Body: Need pick up for the below shipment
+       *  DHL tracking number: (reference number/waybill number)
+       *  Requested pickup date: yyyy/mm/dd;time:HH MM
+       *  Shipper contact: (company name)
+       *  Contact person: 
+       *  Phone number: 
+       *  Full physical address: 
+       *  Item to be collected: Azure Dt
+     ```
 
     * 或者，您也可以將包裹拿到最近的 DHL 服務據點。
 
-4. 如果您遇到任何問題，請寄送電子郵件至 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com)，並於其中詳述您遇到的問題，然後在 [主旨:] 行放入運貨單號碼。 您也可以致電 +27(0)119213902。
+6. 如果您遇到任何問題，請寄送電子郵件至 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com)，並於其中詳述您遇到的問題，然後在 [主旨:] 行放入運貨單號碼。 您也可以致電 +27(0)119213902。
 
 ::: zone target="chromeless"
 
@@ -263,17 +245,11 @@ ms.locfileid: "91631525"
 
 ::: zone-end
 
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
-
-::: zone-end
-
 ## <a name="hong-kong"></a>[香港](#tab/in-hk)
 
 1. 將要送回的裝置包裝到原始外盒內。
 2. 纏繞裝置隨附的電源線，並將其安全地放在裝置背後。
-3. 在上班時間 (星期一到星期五上午 9 點到下午 6 點) 撥打 **Quantium Solutions** 熱線，號碼是 **(852) 2318 1213** 。  
+3. 在上班時間 (星期一到星期五上午 9 點到下午 6 點) 撥打 **Quantium Solutions** 熱線，號碼是 **(852) 2318 1213**。  
 4. 報上送回出貨標籤上的 Microsoft Azure Pickup 和參考編號與追蹤號碼 (位於條碼上方) 以便安排收貨。
 5. 您會獲得排定取貨時間的口頭確認。 如果快遞人員未到府收貨，請撥打 Quantium Solutions 熱線以便尋求替代安排。
 6. 在向 Quantium 預約取貨後，請使用下列範本向 [Microsoft Data Box Operations Asia](mailto:adbo@microsoft.com) 進行確認：
@@ -301,12 +277,6 @@ ms.locfileid: "91631525"
 ## <a name="erasure-of-data-from-data-box"></a>清除資料箱的資料
  
 完成上傳到 Azure 之後，資料箱會根據 [NIST SP 800-88 修訂 1 指導方針](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)清除磁碟中的資料。
-
-::: zone-end
-
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
 ::: zone-end
 
@@ -369,8 +339,6 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 
 ::: zone target="chromeless"
 
----
-
 ## <a name="verify-data-upload-to-azure"></a>確認資料上傳至 Azure
 
 [!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
@@ -381,7 +349,11 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 
 ::: zone-end
 
+---
+
 ::: zone target="docs"
+
+## <a name="verify-data-upload-to-azure"></a>確認資料上傳至 Azure
 
 [!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 

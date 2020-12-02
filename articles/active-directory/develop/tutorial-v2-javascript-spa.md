@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 027305d953a24de17e62aa74b33b72494b03e652
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: ded54628a307f3cf4441e804f7f1025a0e943b51
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825920"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94979941"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>教學課程：登入使用者並從 JavaScript 單頁應用程式 (SPA) 呼叫 Microsoft Graph API
 
-在本教學課程中，您會在 JavaScript 中建立單頁應用程式 (SPA)，以便使用個人 Microsoft 帳戶或公司和學校帳戶登入使用者，然後取得存取權杖來呼叫 Microsoft Graph API。
+在本教學課程中，您會建置一個 JavaScript 單頁應用程式 (SPA)，使用隱含流程將使用者登入及呼叫 Microsoft Graph。 您所建置的 SPA 會使用適用於 JavaScript v1.0 的 Microsoft 驗證程式庫 (MSAL)。
 
 本教學課程內容：
 
@@ -319,7 +319,7 @@ ms.locfileid: "91825920"
 
  其中：
  - *\<Enter_the_Application_Id_Here>* 是您註冊之應用程式的 **應用程式 (用戶端) 識別碼**。
- - *\<Enter_the_Cloud_Instance_Id_Here>* 是 Azure 雲端的執行個體。 針對主要或全域 Azure 雲端，只要輸入 *https://login.microsoftonline.com* 即可。 針對**國家**雲端 (例如中國)，請參閱[國家雲端](./authentication-national-cloud.md)。
+ - *\<Enter_the_Cloud_Instance_Id_Here>* 是 Azure 雲端的執行個體。 針對主要或全域 Azure 雲端，只要輸入 *https://login.microsoftonline.com* 即可。 針對 **國家** 雲端 (例如中國)，請參閱 [國家雲端](./authentication-national-cloud.md)。
  - *\<Enter_the_Tenant_info_here>* 設定為下列其中一個選項：
    - 如果您的應用程式支援「此組織目錄中的帳戶」，請將此值取代為 [租用戶識別碼] 或 [租用戶名稱] \(例如 *contoso.microsoft.com*\)。
    - 如果您的應用程式支援「任何組織目錄中的帳戶」，請將此值取代為 [組織]。
@@ -513,4 +513,3 @@ Microsoft Graph API 需要 user.read 範圍才能讀取使用者的設定檔。 
 
 > [!div class="nextstepaction"]
 > [案例：單頁應用程式](scenario-spa-overview.md)
-

@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: b3ad0da1f910556c172c519faf953d4075647955
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 36d26195e78c74ed7b976cfdd48e1e965bca872b
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109046"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95249779"
 ---
 # <a name="create-and-delete-private-endpoints-in-an-azure-stream-analytics-cluster"></a>在 Azure 串流分析叢集中建立和刪除私人端點
 
 您可以將在叢集上執行的 Azure 串流分析作業連ㄍ到位於防火牆或 Azure 虛擬網路 (VNet) 後方的輸入和輸出資源。 首先，您會在串流分析叢集中建立資源 (例如 Azure 事件中樞或 Azure SQL Database) 的私人端點。 然後，從您的輸入或輸出核准私人端點連線。
 
-一旦核准連線，在串流分析叢集中執行的任何作業都可透過私人端點存取資源。 本文說明如何在 Azure 串流分析叢集中建立和刪除私人端點。
+一旦核准連線，在串流分析叢集中執行的任何作業都可透過私人端點存取資源。 本文說明如何在 Azure 串流分析叢集中建立和刪除私人端點。 您可以為 Azure SQL Database、Azure 儲存體、Azure Data Lake Storage Gen2、Azure 事件中樞和 Azure 服務匯流排建立私人端點。 其他服務的私人端點將在不久後新增。 
 
 ## <a name="create-private-endpoint-in-stream-analytics-cluster"></a>在串流分析叢集中建立私人端點
 
@@ -46,7 +46,7 @@ ms.locfileid: "92109046"
 
     ![核准私人端點](./media/private-endpoints/approve-private-endpoint.png)
 
-1. 您可以回到您的串流分析叢集，查看狀態在數分鐘內由 **擱置中客戶核准** 、 **擱置中 DNS 安裝** 變更為 **設定完成** 。
+1. 您可以回到您的串流分析叢集，查看狀態在數分鐘內由 **擱置中客戶核准**、**擱置中 DNS 安裝** 變更為 **設定完成**。
 
 ## <a name="delete-a-private-endpoint-in-a-stream-analytics-cluster"></a>在串流分析叢集中刪除私人端點
 

@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 10/07/2020
-ms.openlocfilehash: 862d2a93058c63dbfad1db49346edcbfe3c02ad1
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 11/21/2020
+ms.openlocfilehash: 42b586062378c59b66ca945880bf723418264071
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592442"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241925"
 ---
 # <a name="creating-a-synapse-workspace"></a>建立 Synapse 工作區
 
@@ -65,9 +65,9 @@ ms.locfileid: "94592442"
 
 Spark 集區會通知 Azure Synapse 要使用多少 Spark 資源。 您只需就您使用的資源付費。 當您主動停止使用集區時，資源將會自動逾時並予以回收。
 
-## <a name="the-serverless-sql-pool"></a>無伺服器 SQL 集區
+## <a name="the-built-in-serverless-sql-pool"></a>內建的無伺服器 SQL 集區
 
-每個工作區都有一個預先建立的集區，稱為 **內建**。 您無法刪除此集區。 無伺服器 SQL 集區可讓您使用 SQL，而不需要在 Azure Synapse 中建立或考慮管理無伺服器 SQL 集區。 不同於專用 SQL 集區，無伺服器 SQL 集區計費是根據掃描以執行查詢的資料量，而不是用於執行查詢的資源數目。
+每個工作區都有一個預先建置的無伺服器 SQL 集區，稱為 **內建**。 您無法刪除此集區。 無伺服器 SQL 集區可讓您使用 SQL，而無須保留專用 SQL 集區的容量。 不同於專用 SQL 集區，無伺服器 SQL 集區的計費是根據掃描以執行查詢的資料量，而不是配置給集區的容量數目。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: b9afb35a0e8a1c2513ce032030271599d181cd14
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 77ed71d74e75abfdf7f84aee9b116f1d9d2ccc9d
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792679"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985853"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>教學課程：保護 Azure SQL Database 中的資料庫
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ Azure 中 SQL Database 中的資料庫是由防火牆保護。 依預設，伺�
     ![伺服器防火牆規則](./media/secure-database-tutorial/server-name.png)
 
     > [!NOTE]
-    > 請務必複製完整的伺服器名稱 (例如 *yourserver.database.windows.net* )，以便稍後在本教學課程中使用。
+    > 請務必複製完整的伺服器名稱 (例如 *yourserver.database.windows.net*)，以便稍後在本教學課程中使用。
 
 1. 在 [概觀] 頁面上，選取 [設定伺服器防火牆]。 伺服器的 [防火牆設定] 頁面隨即開啟。
 
@@ -131,7 +131,7 @@ Azure 中 SQL Database 中的資料庫是由防火牆保護。 依預設，伺�
     ![選取管理員](./media/secure-database-tutorial/admin-select.png)
 
     > [!IMPORTANT]
-    > 角色型存取控制 (RBAC) 僅適用於入口網站，不會傳播至 SQL Server。
+    > Azure 角色型存取控制 (Azure RBAC) 僅適用於入口網站，不會傳播至 SQL Server。
 
 1. 在 [Active Directory 管理員] 頁面頂端，選取 [儲存]。
 
@@ -155,9 +155,9 @@ Azure 中 SQL Database 中的資料庫是由防火牆保護。 依預設，伺�
 
 若要新增使用者，請選擇資料庫驗證類型：
 
-- **SQL 驗證** ，使用登入作業的使用者名稱和密碼，而且僅在伺服器內的特定資料庫環境中有效。
+- **SQL 驗證**，使用登入作業的使用者名稱和密碼，而且僅在伺服器內的特定資料庫環境中有效。
 
-- **Azure AD 驗證** ，使用 Azure AD 所管理的身分識別
+- **Azure AD 驗證**，使用 Azure AD 所管理的身分識別
 
 ### <a name="sql-authentication"></a>SQL 驗證
 
@@ -280,17 +280,17 @@ Azure SQL Database 會提供可使用 Azure 入口網站存取的安全性功能
 
    1. 選取 [稽核記錄目的地] 作為下列任何一項：
 
-       - **儲存體** ，其中儲存事件記錄並可下載為 *.xel* 檔案的 Azure 儲存體帳戶。
+       - **儲存體**，其中儲存事件記錄並可下載為 *.xel* 檔案的 Azure 儲存體帳戶。
 
           > [!TIP]
           > 讓所有稽核的資料庫都使用相同的儲存體帳戶，以充分利用稽核報告範本。
 
-       - **Log Analytics** ，可自動儲存事件以供查詢或進一步分析
+       - **Log Analytics**，可自動儲存事件以供查詢或進一步分析
 
            > [!NOTE]
            > 需要有 **Log Analytics 工作區** 才可支援進階功能，例如分析、自訂警示規則以及 Excel 或 Power BI 匯出。 沒有工作區，只可使用查詢編輯器。
 
-       - **事件中樞** ，允許路由傳送事件，以便在其他應用程式中使用
+       - **事件中樞**，允許路由傳送事件，以便在其他應用程式中使用
 
    1. 選取 [儲存]。
 

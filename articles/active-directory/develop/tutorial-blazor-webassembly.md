@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: f967b10d729c9c5486bbca9b643f48aaf558687c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 5489feeeec64c7b3d4b5fc28eddfe8b780308796
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628060"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94979873"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>教學課程：從 Blazor WebAssembly 應用程式登入使用者並呼叫受保護的 API
 
-Blazor WebAssembly (WASM) 是單頁應用程式架構，可使用 .NET 來建置互動式用戶端 Web 應用程式。 在本教學課程中，您將了解如何使用 Microsoft 身分識別平台並且在 Azure Active Directory (Azure AD) 中註冊應用程式，藉以從 Blazor WASM 應用程式中的 Microsoft Graph 實作驗證和擷取資料。
+在本教學課程中，您會建置 Blazor WebAssembly 應用程式，以藉由使用 Microsoft 身分識別平台並在 Azure Active Directory (Azure AD) 中註冊應用程式，來讓使用者登入並從 Microsoft Graph 取得資料。
 
 我們也提供 [Blazor Server 的教學課程](tutorial-blazor-server.md)。 
 
-在本教學課程中，您將：
+在本教學課程中：
 
 > [!div class="checklist"]
 >

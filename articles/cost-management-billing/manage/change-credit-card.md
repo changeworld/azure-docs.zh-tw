@@ -6,21 +6,21 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 09/15/2020
+ms.topic: how-to
+ms.date: 11/20/2020
 ms.author: banders
-ms.openlocfilehash: f773c964d900c45a51eac433c3616a6e4b8978ae
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: fbb69a4449c32f85cc4be438645b654608aa7489
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "92131134"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026551"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>新增或更新用於 Azure 的信用卡
 
 本文件適用於使用信用卡註冊 Azure Online 的客戶。
 
-在 Azure 入口網站中，您可以將預設付款方式變更為新的信用卡以及更新信用卡詳細資料。 您必須是[帳戶管理員](../understand/subscription-transfer.md#whoisaa)才能進行這些變更。
+在 Azure 入口網站中，您可以將預設付款方式變更為新的信用卡以及更新信用卡詳細資料。 您必須是[帳戶管理員](../understand/subscription-transfer.md#whoisaa)或必須擁有正確的 [MCA 權限](understand-mca-roles.md)才能進行這些變更。
 
 如果您想要刪除信用卡，請參閱[刪除 Azure 帳單付款方法](delete-azure-payment-method.md)。
 
@@ -44,7 +44,7 @@ Microsoft Azure 支援的付款方法為信用卡和支票/電匯。 若要獲�
 1. 搜尋 [成本管理 + 帳單]。  
     ![顯示搜尋的螢幕擷取畫面](./media/change-credit-card/search.png)
 1. 選取要新增信用卡的訂用帳戶。
-1. 選取 [ **付款方式** ]。  
+1. 選取 [**付款方式**]。  
     ![顯示已選取 [管理付款方式] 選項的螢幕擷取畫面](./media/change-credit-card/payment-methods-blade-x.png)
 1. 在左上角選取 [+] 以新增卡片。 信用卡表單會出現在右側。
 1. 輸入信用卡詳細資料。  
@@ -60,7 +60,7 @@ Microsoft Azure 支援的付款方法為信用卡和支票/電匯。 若要獲�
 1. 搜尋 [成本管理 + 帳單]。  
     ![顯示搜尋的螢幕擷取畫面](./media/change-credit-card/search.png)
 1. 選取要新增信用卡的訂用帳戶。
-1. 選取 [ **付款方式** ]。
+1. 選取 [**付款方式**]。
     ![顯示已選取 [管理付款方式] 選項的螢幕擷取畫面](./media/change-credit-card/payment-methods-blade-x.png)
 1. 選取要設為有效付款方式的卡片旁邊的方塊。
 1. 選取 [設為有效]。
@@ -73,7 +73,7 @@ Microsoft Azure 支援的付款方法為信用卡和支票/電匯。 若要獲�
 1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
 1. 搜尋 [成本管理 + 帳單]。
     ![顯示搜尋的螢幕擷取畫面](./media/change-credit-card/search.png)
-1. 選取 [ **付款方式** ]。
+1. 選取 [**付款方式**]。
     ![顯示已選取 [管理付款方式] 選項的螢幕擷取畫面](./media/change-credit-card/payment-methods-blade-x.png)
 1. 選取您要編輯的信用卡。 信用卡表單會出現在右側。
     ![顯示已選取信用卡的螢幕擷取畫面](./media/change-credit-card/edit-card-x.png)
@@ -82,11 +82,11 @@ Microsoft Azure 支援的付款方法為信用卡和支票/電匯。 若要獲�
 
 ## <a name="manage-credit-cards-for-a-microsoft-customer-agreement"></a>管理 Microsoft 客戶合約的信用卡
 
-下列各節適用於擁有 Microsoft 客戶合約並已使用信用卡註冊線上 Azure 的客戶。 [了解如何確認您是否有 Microsoft 客戶合約](#check-the-type-of-your-account)。
+下列各節適用於擁有 Microsoft 客戶合約並已使用信用卡註冊線上 Azure 的客戶，以及擁有正確 [MCA 權限](understand-mca-roles.md)的客戶。 [了解如何確認您是否有 Microsoft 客戶合約](#check-the-type-of-your-account)。
 
 ### <a name="change-default-credit-card"></a>變更預設信用卡
 
-如果您有 Microsoft 客戶合約，您的信用卡會與帳單設定檔相關聯。 若要變更帳單設定檔的付款方式，您必須是已註冊 Azure 並建立計費帳戶的人員。
+如果您有 Microsoft 客戶合約，您的信用卡會與帳單設定檔相關聯。 若要變更帳單設定檔的付款方式，您必須是已註冊 Azure 並建立計費帳戶的人員，或必須擁有正確的 [MCA 權限](understand-mca-roles.md)。
 
 如果您想要將帳單設定檔的預設付款方式變更為支票/電匯，請參閱[按發票支付 Azure 訂用帳戶的費用](pay-by-invoice.md)。
 

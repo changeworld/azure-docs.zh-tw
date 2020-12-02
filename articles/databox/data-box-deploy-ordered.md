@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/15/2020
+ms.date: 11/19/2020
 ms.author: alkohli
-ms.openlocfilehash: a73005580c9b7ddeae17e3e0490aa586bd9b0fbb
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: e1dca046177634842de25b255dd1bb22c5d2c5a5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335792"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964007"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教學課程：訂購 Azure 資料箱
 
@@ -231,7 +231,7 @@ PS C:\Windows\System32>
     |來源國家/區域    |    選取您的資料目前所在的國家/地區。         |
     |目的地 Azure 區域     |     選取要傳輸資料的 Azure 區域。 <br> 如需詳細資訊，請移至[區域可用性](data-box-overview.md#region-availability)。            |
 
-    [![開始 Azure 資料箱匯入訂單](media/data-box-deploy-ordered/select-data-box-import-04b.png)](media/data-box-deploy-ordered/select-data-box-import-04b.png#lightbox)
+    [![開始 Azure 資料箱匯入訂單](media/data-box-deploy-ordered/select-data-box-import-04-b.png#lightbox)
 
 5. 選取 [資料箱]。 單一訂單的最大可用容量是 80 TB。 您可以建立多份訂單以訂購更大的資料大小。
 
@@ -245,13 +245,11 @@ PS C:\Windows\System32>
     |資源群組    | 您先前選取的資源群組。 |
     |匯入訂單名稱 | 提供用來追蹤訂單的易記名稱。 <br> 名稱長度可介於 3 到 24 個字元之間，且可以是字母、數字和連字號。 <br> 名稱必須以字母或數字為開頭或結尾。    |
 
-    ![已填入正確資訊的資料箱匯入訂單精靈，基本畫面](media/data-box-deploy-ordered/select-data-box-import-06.png)
+    ![已填入正確資訊的資料箱匯入訂單精靈，基本畫面](media/data-box-deploy-ordered/select-data-box-import-06.png)<!--Generic subscription. Cut note. Box command.-->
 
-    根據預設，裝置解除鎖定密碼會使用 Microsoft 管理的金鑰進行加密。 完成訂單之後，您可以新增客戶自控金鑰。 客戶自控金鑰可讓您使用來自 Azure Key Vault、屬於您自己的金鑰，以保護您的裝置解除鎖定密碼。 如需詳細資訊，請參閱[針對 Azure 資料箱使用 Azure Key Vault 中的客戶自控金鑰](data-box-customer-managed-encryption-key-portal.md)。
+7. 在 [資料目的地] 畫面上，選取 [資料目的地] - 儲存體帳戶或受控磁碟。
 
-7. 在 [資料目的地] 索引標籤中，選取 [資料目的地]。
-
-    如果使用 **儲存體帳戶** 作為儲存體目的地，就會看到下列螢幕擷取畫面：
+    如果使用 **儲存體帳戶** 作為儲存體目的地，就會看到下列畫面：
 
     ![已選取儲存體帳戶的資料箱匯入訂單精靈，資料目的地畫面](media/data-box-deploy-ordered/select-data-box-import-07.png)
 
@@ -265,37 +263,104 @@ PS C:\Windows\System32>
     |---------|---------|
     |資源群組     | 如果您想要從內部部署 VHD 建立受控磁碟，請建立新的資源群組。 只有當資源群組是在資料箱服務建立受控磁碟的資料箱訂單之前建立的，您才能使用現有的資源群組。 <br> 指定以分號分隔的多個資源群組。 最多支援 10 個資源群組。|
 
-    ![已選取受控磁碟的資料箱匯入訂單精靈，資料目的地畫面](media/data-box-deploy-ordered/select-data-box-import-07b.png)
+    ![已選取受控磁碟的資料箱匯入訂單精靈，資料目的地畫面](media/data-box-deploy-ordered/select-data-box-import-07-b.png)
 
     針對受控磁碟指定的儲存體帳戶不能當成暫存的儲存體帳戶來使用。 資料箱服務會先將 VHD 以分頁 Blob 形式上傳至暫存的儲存體帳戶，然後再將它轉換為受控磁碟並移至資源群組。 如需詳細資訊，請參閱[確認資料上傳至 Azure](data-box-deploy-picked-up.md#verify-data-upload-to-azure)。
+
    > [!NOTE]
    > 如果分頁 Blob 未成功轉換為受控磁碟，其會保留在儲存體帳戶中，您需要支付儲存體費用。
 
-    完成時，選取 [下一步:**安全性]** 以繼續作業。
+8. 完成時，選取 [下一步:**安全性]** 以繼續作業。
 
-    [安全性] 畫面可讓您使用自己的裝置和共用密碼，並選擇使用雙重加密。 
+    [安全性] 畫面可讓您使用自己的加密金鑰、自己的裝置和共用密碼，並選擇使用雙重加密。
 
     [安全性] 畫面上的所有設定都是選擇性的。 如果您未變更任何設定，將會套用預設設定。
 
     ![資料箱匯入訂單精靈的安全性畫面](media/data-box-deploy-ordered/select-data-box-import-security-01.png)
 
-8. 如果您不想使用系統所產生且 Azure 資料箱預設使用得密碼，請展開 [自備密碼]。
+9. 如果您想要使用自己的客戶自控金鑰來保護新資源的解除鎖定通行金鑰，請展開 [加密類型]。
 
-   系統產生的密碼是安全的，除非您的組織要求，否則建議使用。
+    為 Azure 資料箱設定客戶自控金鑰是選擇性作業。 根據預設，資料箱會使用 Microsoft 管理的金鑰來保護解除鎖定通行金鑰。
 
-   ![已針對資料箱匯入訂單在 [安全性] 畫面展開 [自備密碼] 選項](media/data-box-deploy-ordered/select-data-box-import-security-02.png)
+    客戶自控金鑰不會影響資料在裝置上的加密方式。 此金鑰只會用來加密裝置解除鎖定通行金鑰。
+
+    如果您不想要使用客戶自控金鑰，請跳至步驟 15。
+
+   ![顯示加密類型設定的安全性畫面](./media/data-box-deploy-ordered/customer-managed-key-01.png)
+
+10. 選取 [客戶自控金鑰] 作為金鑰類型。 然後，選取 [選取金鑰保存庫與金鑰]。
+   
+    ![設定客戶自控金鑰的安全性畫面](./media/data-box-deploy-ordered/customer-managed-key-02.png)
+
+11. 在 [從 Azure Key Vault 選取金鑰] 刀鋒視窗中，會自動填入訂用帳戶。
+
+    - 針對 [金鑰保存庫]，您可以從下拉式清單中選取現有的金鑰保存庫。
+
+      ![從 [Azure Key Vault] 畫面中選取 [金鑰]](./media/data-box-deploy-ordered/customer-managed-key-03.png)
+
+    - 您也可以選取 [建立新的]，以建立新的金鑰保存庫。 在 [建立金鑰保存庫] 畫面上，輸入資源群組和金鑰保存庫名稱。 請確定已啟用 [虛刪除] 和 [清除保護]。 接受所有其他預設值，然後選取 [檢閱 + 建立]。
+
+      ![建立新的 Azure Key Vault 設定](./media/data-box-deploy-ordered/customer-managed-key-04.png)
+
+      檢閱金鑰保存庫的資訊，然後選取 [建立]。 等候幾分鐘的時間，讓金鑰保存庫完成建立。
+
+      ![新的 Azure Key Vault 檢閱畫面](./media/data-box-deploy-ordered/customer-managed-key-05.png)
+
+12. 在 [從 Azure Key Vault 選取金鑰] 中，您可以選取金鑰保存庫中的現有金鑰。
+
+    ![從 Azure Key Vault 中選取現有的金鑰](./media/data-box-deploy-ordered/customer-managed-key-06.png)
+
+    如果您想要建立新的金鑰，請選取 [建立新的]。 您必須使用 RSA 金鑰。 大小可以是 2048 或更大。 輸入新金鑰的名稱，接受其他預設值，然後選取 [建立]。
+
+      ![建立新的金鑰選項](./media/data-box-deploy-ordered/customer-managed-key-07.png)
+
+      在金鑰保存庫中建立金鑰時，您會收到通知。
+
+13. 選取要使用的金鑰 [版本]，然後選擇 [選取]。
+
+      ![在金鑰保存庫中建立的新金鑰](./media/data-box-deploy-ordered/customer-managed-key-08.png)
+
+    如果您想要建立新的金鑰版本，請選取 [建立新的]。
+
+    ![開啟用來建立新金鑰版本的對話方塊](./media/data-box-deploy-ordered/customer-managed-key-08-a.png)
+
+    選擇新金鑰版本的設定，然後選取 [建立]。
+
+    ![建立新的金鑰版本](./media/data-box-deploy-ordered/customer-managed-key-08-b.png)
+
+    [安全性] 畫面上的 [加密類型] 設定會顯示您的金鑰保存庫和金鑰。
+
+    ![客戶自控金鑰的金鑰和金鑰保存庫](./media/data-box-deploy-ordered/customer-managed-key-09.png)
+
+14. 選取一個使用者身分識別，用來管理對此資源的存取。 選擇 [選取使用者身分識別]。 在右側的面板中，選取要使用的訂用帳戶和受控識別。 然後選擇 [選取]  。
+
+    使用者指派的受控識別是一項獨立的 Azure 資源，可用來管理多個資源。 如需詳細資訊，請參閱[受控識別類型](/azure/active-directory/managed-identities-azure-resources/overview)。  
+
+    如果您需要建立新的受控識別，請遵循[使用 Azure 入口網站對使用者指派的受控識別建立、列出、刪除或指派角色](/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)中的指引。
+    
+    ![選取使用者身分識別](./media/data-box-deploy-ordered/customer-managed-key-10.png)
+
+    使用者身分識別會顯示在 [加密類型] 設定中。
+
+    ![已選取而顯示於 [加密類型] 設定中的使用者身分識別](./media/data-box-deploy-ordered/customer-managed-key-11.png)
+
+15. 如果您不想使用系統所產生、且由 Azure 資料箱預設使用的密碼，請展開 [安全性] 畫面上的 [自備密碼]。
+
+    系統產生的密碼是安全的，除非您的組織要求，否則建議使用。
+
+    ![已針對資料箱匯入訂單展開 [自備密碼] 選項](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
 
    - 若要對新裝置使用自己的密碼，請 [設定裝置密碼的喜好設定]，選取 [使用自己的密碼]，然後輸入符合安全性需求的密碼。
    
      ![在 [安全性] 畫面上針對資料箱匯入訂單使用自己的裝置密碼的選項](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
 
-   - 若要將自己的密碼使用於共用：
+ - 若要將自己的密碼使用於共用：
 
-     1. 藉由 [設定共用密碼的喜好設定]，選取 [使用自己的密碼]，然後 [選取共用的密碼]。
+   - 藉由 [設定共用密碼的喜好設定]，選取 [使用自己的密碼]，然後 [選取共用的密碼]。
      
         ![在 [安全性] 畫面上針對資料箱匯入訂單使用自己的共用密碼的選項](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
 
-     1. 依序輸入每個儲存體帳戶的密碼。 此密碼將會使用於儲存體帳戶的所有共用。
+    - 依序輸入每個儲存體帳戶的密碼。 此密碼將會使用於儲存體帳戶的所有共用。
      
         若要針對所有儲存體帳戶使用相同的密碼，請選取 [複製到全部]。 完成時，請選取 [儲存]。
      
@@ -303,38 +368,38 @@ PS C:\Windows\System32>
 
        在 [安全性] 畫面上，您可以使用 [檢視或變更密碼] 來變更密碼。
 
-9. 在 [安全性] 中，如果您想要啟用以軟體為基礎的雙重加密，請展開 [雙重加密 (適用於高度安全的環境)]，然後選取 [為訂單啟用雙重加密]。
+16. 在 [安全性] 中，如果您想要啟用以軟體為基礎的雙重加密，請展開 [雙重加密 (適用於高度安全的環境)]，然後選取 [為訂單啟用雙重加密]。
 
-   ![在 [安全性] 畫面上針對資料箱匯入訂單啟用以軟體為基礎的加密選項](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
+    ![資料箱匯入的安全性畫面，針對資料箱訂單啟用以軟體為基礎的加密](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
 
-   除了資料箱上的 AES-256 位元加密以外，也會執行以軟體為基礎的加密。
+    除了資料箱上的 AES-256 位元加密以外，也會執行以軟體為基礎的加密。
 
-   > [!NOTE]
-   > 啟用此選項可能會進行訂單處理，且資料複製會花費較長的時間。 建立訂單之後，您就無法變更此選項。
+    > [!NOTE]
+    > 啟用此選項可能會進行訂單處理，且資料複製會花費較長的時間。 建立訂單之後，您就無法變更此選項。
 
-   完成時，選取 [下一步:連絡人詳細資料] 以繼續進行。
+    完成時，選取 [下一步:連絡人詳細資料] 以繼續進行。
 
-10. 在 [連絡人詳細資料] 中，選取 [+ 新增交貨位址]。
+17. 在 [連絡人詳細資料] 中，選取 [+ 新增交貨位址]。
 
-    ![從 [連絡人詳細資料] 畫面中，將交貨地址新增至您的 Azure 資料箱匯入訂單](media/data-box-deploy-ordered/select-data-box-import-08a.png)
+    ![從 [連絡人詳細資料] 畫面中，將交貨地址新增至您的 Azure 資料箱匯入訂單](media/data-box-deploy-ordered/select-data-box-import-08-a.png)
 
-11. 在 [交貨地址] 中，提供您的姓名、公司的名稱和郵寄地址，以及有效的電話號碼。 然後選取 [驗證地址]。 服務會檢查地址的服務可用性。 如果服務可提供至交貨地址，您將會收到該項通知。
+18. 在 [交貨地址] 中，提供您的姓名、公司的名稱和郵寄地址，以及有效的電話號碼。 選取 [驗證地址]。 服務會驗證交貨地址以確認服務可用性。 如果服務可提供至指定的交貨地址，您將會收到該項通知。
 
-     ![[新增交貨位址] 對話方塊，其中已呼叫 [交貨方式] 選項和 [新增交貨地址] 選項](media/data-box-deploy-ordered/select-data-box-import-10.png)
+    ![[新增交貨位址] 對話方塊的螢幕擷取畫面，其中已呼叫 [交貨方式] 選項和 [新增交貨位址] 選項。](media/data-box-deploy-ordered/select-data-box-import-10.png)
 
     成功下達訂單後，如果選取自我管理運送，您會收到電子郵件通知。 如需有關自我管理運送的詳細資訊，請參閱[使用自我管理運送](data-box-portal-customer-managed-shipping.md)。
 
-12. 成功驗證出貨詳細資料之後，選取 [新增交貨位址]。 您將返回 [連絡人詳細資料] 索引標籤。
+19. 成功驗證出貨詳細資料之後，選取 [新增交貨位址]。 您將返回 [連絡人詳細資料] 索引標籤。
 
-13. 當您返回 [連絡人詳細資料] 之後，新增一或多個電子郵件地址。 服務會將關於任何訂單狀態更新的電子郵件通知傳送至指定的電子郵件地址。
+20. 當您返回 [連絡人詳細資料] 之後，新增一或多個電子郵件地址。 服務會將關於任何訂單狀態更新的電子郵件通知傳送至指定的電子郵件地址。
 
     建議您使用群組電子郵件，以便在群組中的管理員離開時繼續接收通知。
 
-    ![訂單精靈中連絡人詳細資料的電子郵件區段](media/data-box-deploy-ordered/select-data-box-import-08c.png)
+    ![訂單精靈中連絡人詳細資料的電子郵件區段](media/data-box-deploy-ordered/select-data-box-import-08-c.png)
 
-12. 在 [檢閱 + 訂購] 中，檢閱與訂單、連絡人、通知和隱私權條款相關的資訊。 請勾選隱私權條款合約的對應方塊。
+21. 在 [檢閱 + 訂購] 中，檢閱與訂單、連絡人、通知和隱私權條款相關的資訊。 請勾選隱私權條款合約的對應方塊。
 
-13. 選取 [訂單]。 建立訂單需要幾分鐘的時間。
+22. 選取 [訂單]。 建立訂單需要幾分鐘的時間。
 
     ![訂單精靈的檢閱和訂單畫面](media/data-box-deploy-ordered/select-data-box-import-11.png)
 
