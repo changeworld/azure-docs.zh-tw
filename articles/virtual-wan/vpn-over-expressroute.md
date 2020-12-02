@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6c6f71277c276bed603989774637bd95999de333
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b8dde3ed76587e2343edaec8626287853ec6ef9b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023514"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487502"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute encryption：透過 ExpressRoute 進行虛擬 WAN 的 IPsec
 
@@ -95,7 +95,7 @@ ms.locfileid: "96023514"
 
    如果已啟用 BGP，則會套用至在 Azure 中為此網站建立的所有連線。 在虛擬 WAN 上設定 BGP 相當於在 Azure VPN 閘道上設定 BGP。 
    
-   您的內部部署 BGP 對等位址 *不* 能與裝置的 vpn IP 位址或 vpn 網站的虛擬網路位址空間相同。 在 VPN 裝置上，請針對 BGP 對等互連 IP 使用不同的 IP 位址。 它可以是指派給裝置上的回送介面的位址。 不過，它 *不能* 是 APIPA (169.254。*x*。*x*) 位址。 在代表位置的對應局域網路閘道中指定此位址。 如需 BGP 必要條件，請參閱[關於 BGP 與 Azure VPN 閘道](../vpn-gateway/vpn-gateway-bgp-overview.md)。
+   您的內部部署 BGP 對等位址 *不* 能與裝置的 vpn IP 位址或 vpn 網站的虛擬網路位址空間相同。 在 VPN 裝置上，請針對 BGP 對等互連 IP 使用不同的 IP 位址。 它可以是指派給裝置上的回送介面的位址。 不過，它 *不能* 是 APIPA (169.254。*x*。*x*) 位址。 在代表位置的對應 VPN 網站中指定此位址。 如需 BGP 必要條件，請參閱[關於 BGP 與 Azure VPN 閘道](../vpn-gateway/vpn-gateway-bgp-overview.md)。
 
 1. 選取 **[下一步：檢查 + 建立] >** 檢查設定值，並建立 VPN 網站。 如果您選取要連線的 **中樞** ，則會在內部部署網路與中樞 VPN 閘道之間建立連線。
 

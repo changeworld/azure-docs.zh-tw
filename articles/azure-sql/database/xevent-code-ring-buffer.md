@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
 ms.topic: sample
-author: MightyPen
-ms.author: genemi
-ms.reviewer: jrasnik
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: d73efd7a64d0118cea11ca9b0a35f659ce7fee6a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a646588616b874e40b1ed2a5a0b5e691b075075d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791285"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487298"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL Database 中擴充事件的信號緩衝區目標程式碼
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,10 +28,10 @@ ms.locfileid: "92791285"
 本主題提供會執行下列動作的 Transact-SQL 程式碼範例：
 
 1. 使用資料建立要示範的資料表。
-2. 建立現有擴充事件的工作階段，名稱為 **sqlserver.sql_statement_starting** 。
+2. 建立現有擴充事件的工作階段，名稱為 **sqlserver.sql_statement_starting**。
 
-   * 此事件僅限於包含特定 Update 字串的 SQL 陳述式： **statement LIKE '%UPDATE tabEmployee%'** 。
-   * 選擇要將事件的輸出傳送給信號緩衝區類型的目標，名稱為 **package0.ring_buffer** 。
+   * 此事件僅限於包含特定 Update 字串的 SQL 陳述式： **statement LIKE '%UPDATE tabEmployee%'**。
+   * 選擇要將事件的輸出傳送給信號緩衝區類型的目標，名稱為 **package0.ring_buffer**。
 3. 啟動事件工作階段。
 4. 發出幾個簡單的 SQL UPDATE 陳述式。
 5. 發出 SQL SELECT 陳述式擷取信號緩衝區的事件輸出。

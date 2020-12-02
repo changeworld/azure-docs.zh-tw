@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: ad3980db6348867e92664e314326d23b4274abcc
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 743412b7602e5781911cdf190e41a5ee15bfddd4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701563"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487672"
 ---
 # <a name="design-secure-applications-on-azure"></a>在 Azure 上設計安全的應用程式
 在本文中，我們會提供在您設計雲端應用程式時要考慮的安全性活動和控制項。 訓練資源，以及在 Microsoft [安全性開發生命週期 ](/previous-versions/windows/desktop/cc307891(v=msdn.10)) 的需求和設計階段時要考慮的安全性問題和概念 (SDL) 的涵蓋範圍。 目標是協助您定義活動和 Azure 服務，您可以使用這些服務來設計更安全的應用程式。
@@ -26,7 +26,7 @@ ms.locfileid: "94701563"
 本文章涵蓋下列 SDL 階段：
 
 - 訓練
-- 需求
+- 規格需求
 - 設計
 
 ## <a name="training"></a>訓練
@@ -49,7 +49,7 @@ ms.locfileid: "94701563"
 
   - [Azure 解決方案的安全性最佳做法](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions) 會提供一系列安全性最佳作法，以在您使用 Azure 設計、部署及管理雲端解決方案時使用。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 需求定義階段是定義應用程式的重要步驟，以及發行時的運作方式。 需求階段也是思考您將在應用程式中建立之安全性控制項的時間。 在這個階段中，您也會開始整個 SDL 所採取的步驟，以確保您發行和部署安全的應用程式。
 
 ### <a name="consider-security-and-privacy-issues"></a>考慮安全性和隱私權問題
@@ -157,7 +157,7 @@ Azure 提供您可用來裝載網站和 web 應用程式的其他服務。 大�
 | 竄改              | 完整性             | 驗證 SSL/TLS 憑證。 使用 SSL/TLS 的應用程式必須完整驗證其所連接之實體的 x.509 憑證。 使用 Azure Key Vault 憑證來 [管理您的 x509 憑證](../../key-vault/general/about-keys-secrets-certificates.md)。 |
 | 否認性            | 不可否認性       | 啟用 Azure [監視和診斷](/azure/architecture/best-practices/monitoring)。|
 | 洩露資訊 | 機密性       | 加密待用和[傳輸中](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)[的敏感](../fundamentals/encryption-atrest.md)資料。 |
-| 拒絕服務      | 可用性          | 監視潛在拒絕服務狀況的效能計量。 實作 IP 連線篩選。 結合應用程式設計最佳做法的[Azure DDoS 保護](../../virtual-network/ddos-protection-overview.md#next-steps)可提供對抗 DDoS 攻擊的防禦。|
+| 拒絕服務      | 可用性          | 監視潛在拒絕服務狀況的效能計量。 實作 IP 連線篩選。 結合應用程式設計最佳做法的[Azure DDoS 保護](../../ddos-protection/ddos-protection-overview.md#next-steps)可提供對抗 DDoS 攻擊的防禦。|
 | 提高權限 | 授權         | 使用 Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)。|
 
 ### <a name="reduce-your-attack-surface"></a>減少受攻擊面

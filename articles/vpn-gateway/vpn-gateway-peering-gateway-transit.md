@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 3f90ccbc98dac957fcb9fb81cd24c7ae6c9ac664
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 4175069a21fd568af46a9f7d5aefc73f1574ac0c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657545"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488182"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>為虛擬網路對等互連設定 VPN 閘道傳輸
 
@@ -64,7 +64,7 @@ ms.locfileid: "94657545"
 |Spoke-Classic|Resource Manager|[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
 ||傳統|[傳統網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
 
-深入了解[內建角色](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)以及如何對[自訂角色](../role-based-access-control/custom-roles.md?toc=%252fazure%252fvirtual-network%252ftoc.json)指派特定權限 (僅限 Resource Manager)。
+深入了解[內建角色](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)以及如何對[自訂角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)指派特定權限 (僅限 Resource Manager)。
 
 ## <a name="resource-manager-to-resource-manager-peering-with-gateway-transit"></a>使用閘道傳輸的資源管理員對資源管理員對等互連
 

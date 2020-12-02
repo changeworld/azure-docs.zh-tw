@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05b2747dc21e2aedf16c6ca6e6c31af03b38c81f
-ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
+ms.openlocfilehash: e07876f9e28e7f3245f2524b5ef5da08de085ec1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96299508"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486465"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 來裝載及執行 SAP 工作負載案例
 
@@ -80,12 +80,12 @@ SAP 應用層和 DBMS 的高可用性記載于從[適用于 Sap NetWeaver 的 Az
 
 ## <a name="change-log"></a>變更記錄
 
-- 11/26/2020：調整 [SAP Hana 的 Azure 虛擬機器儲存體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) 設定和 [Azure 儲存體類型，讓 SAP 工作負載](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) 變更單一 [VM sla](https://azure.microsoft.com/support/legal/sla/virtual-machines)
-- 11/05/2020：在[SAP Hana Azure 虛擬機器儲存體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)設定中，將連結新增至有關 HANA 支援之檔案系統類型的新 SAP 附注 
-- 10/26/2020：變更 Azure premium 儲存體設定的部分資料表，以說明[SAP Hana azure 虛擬機器儲存體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)設定中的布建與高載輸送量
+- 11/26/2020：調整 [SAP Hana 的 Azure 虛擬機器儲存體](./hana-vm-operations-storage.md) 設定和 [Azure 儲存體類型，讓 SAP 工作負載](./planning-guide-storage.md) 變更單一 [VM sla](https://azure.microsoft.com/support/legal/sla/virtual-machines)
+- 11/05/2020：在[SAP Hana Azure 虛擬機器儲存體](./hana-vm-operations-storage.md)設定中，將連結新增至有關 HANA 支援之檔案系統類型的新 SAP 附注 
+- 10/26/2020：變更 Azure premium 儲存體設定的部分資料表，以說明[SAP Hana azure 虛擬機器儲存體](./hana-vm-operations-storage.md)設定中的布建與高載輸送量
 - 10/22/2020：在[適用于 sap](./high-availability-guide-rhel-netapp-files.md)的[sles for sap 應用程式](./high-availability-guide-suse.md) [、azure vm 上的](./high-availability-guide-suse-netapp-files.md)azure vm 上的 azure vm 上的 azure vm 上 net.ipv4.tcp_keepalive_time，azure vm 上的 azure vm 上的 azure vm 上的 azure [vm 上的](./high-availability-guide-rhel.md)sap nw 變更  
 - 10/16/2020：在 rhel [FOR sap 應用程式](./high-availability-guide-rhel.md)上的 azure vm 上，透過 azure vm 上的 azure vm 上的 IBM db2 LUW，在 azure vm 上的 azure vm 上變更[了 ibm](./dbms-guide-ha-ibm.md)db2 LUW 的 ha、在 rhel 上的 azure vm 上使用 AZURE Vm 上的[ibm db2](./high-availability-guide-rhel-ibm-db2-luw.md)、azure vm 上的[sap nw、](./high-availability-guide-rhel-multi-sid.md)[適用](./high-availability-guide-rhel-netapp-files.md)[于](./sap-hana-high-availability.md)rhel 的 ha 適用于 azure vm 上的 azure [vm 的 ha （](./high-availability-guide-suse.md)適用于 azure vm 上的 azure vm） sles 多重[SID 指南、](./high-availability-guide-suse-multi-sid.md)azure 上的 azure vm 上的 ha for sap nw [、](./high-availability-guide-suse-netapp-files.md)NNW 上的 azure vm 上的 azure vm 上的 ha、azure vm 上的 azure vm 上[的 ha、](./high-availability-guide-suse-nfs.md)適用于 SAP Hana[的](./sap-hana-high-availability-netapp-files-red-hat.md)ha for sap SAP Hana，在[RHEL 上的 Azure vm 上 SAP Hana 的 HA](./sap-hana-high-availability-rhel.md)，[在 RHEL 上的 azure Vm 上使用 Pacemaker SAP Hana 向外延展 HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md)、使用[wsfc 和共用磁片準備適用于 Sap ASCS/scs 的 Azure 基礎結構](./sap-high-availability-infrastructure-wsfc-shared-disk.md)、搭配 wsfc[和 Azure 共用磁片的 SAP ASCS/scs 的多重 sid ha 指南](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md)，以及搭配 WSFC 和[共用磁片的 sap ASCS/scs 的多重 sid ha](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md)指南 
-- 10/16/2020：在[Hana 大型實例的備份與還原 SAP Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore)中，新增檔以控制 Hana 大型實例的儲存體快照集
+- 10/16/2020：在[Hana 大型實例的備份與還原 SAP Hana](./hana-backup-restore.md)中，新增檔以控制 Hana 大型實例的儲存體快照集
 - 10/15/2020： azure 上的 SAP BusinessObjects BI 平臺檔、azure 上的 [Sap BUSINESSOBJECTS bi platform 規劃和開發指南](businessobjects-deployment-guide.md) ，以及 azure [上 Linux 的 sap BusinessObjects BI 平臺部署指南](businessobjects-deployment-guide-linux.md)
 - 10/05/2020：[在 RHEL 設定指南上，使用 Azure vm 上的 Pacemaker 發行 SAP Hana 向外延展 HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md)
 - 09/30/2020： [SAP Hana 在 rhel 上的 Azure vm 上變更高可用性](./sap-hana-high-availability-rhel.md)，在 rhel 上 [使用 ANF 來 SAP Hana 相應增加](./sap-hana-high-availability-netapp-files-red-hat.md) ，並在 [Azure 中設定 rhel 上的 Pacemaker](./high-availability-guide-rhel-pacemaker.md) ，以配合 rhel 8.1 的指示進行調整

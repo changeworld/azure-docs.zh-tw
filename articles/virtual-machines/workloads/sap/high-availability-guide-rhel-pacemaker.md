@@ -13,14 +13,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 09/29/2020
+ms.date: 12/01/2020
 ms.author: radeltch
-ms.openlocfilehash: 6e906e6c86d615852191e2fd65a2b1a58695ed34
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b111dae035e7a055628642fe7c460734199ff608
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968548"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486337"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>在 Azure 中的 Red Hat Enterprise Linux 上設定 Pacemaker
 
@@ -69,6 +69,7 @@ ms.locfileid: "94968548"
   * [在 Microsoft Azure 上安裝和設定 Red Hat Enterprise Linux 7.4 (和更新版本) 高可用性叢集](https://access.redhat.com/articles/3252491)
   * [採用 RHEL 8-高可用性和群集的考慮](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/high-availability-and-clusters_considerations-in-adopting-rhel-8)
   * [在 RHEL 7.6 上的 Pacemaker 中使用 Standalone Enqueue Server 2 (ENSA2) 設定 SAP S/4HANA ASCS/ERS](https://access.redhat.com/articles/3974941)
+  * [Azure 上的 RHEL for SAP 供應專案](https://access.redhat.com/articles/5456301)
 
 ## <a name="cluster-installation"></a>叢集安裝
 
@@ -80,7 +81,7 @@ ms.locfileid: "94968548"
 
 下列項目會加上下列其中一個前置詞： **[A]** - 適用於所有節點、 **[1]** - 僅適用於節點 1 或 **[2]** - 僅適用於節點 2。
 
-1. **[A]** 註冊。 如果使用 RHEL 8.x 啟用 HA 的映射，則不需要此步驟。  
+1. **[A]** 註冊。 如果使用 RHEL SAP 啟用 HA 的映射，則不需要此步驟。  
 
    註冊您的虛擬機器，並將其附加至含有適用於 RHEL 7 的存放庫集區。
 
@@ -90,9 +91,9 @@ ms.locfileid: "94968548"
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   藉由將集區附加至 Azure Marketplace PAYG RHEL 映射，您將會有效地針對 RHEL 使用量進行雙重計費：一次用於 PAYG 映射，而針對您附加的集區中的 RHEL 權利。 為了減輕此問題，Azure 現在提供 BYOS RHEL 映像。 更多資訊可以在[這裡](../redhat/byos.md)取得。
+   藉由將集區附加至 Azure Marketplace PAYG RHEL 映射，您將會有效地針對 RHEL 使用量進行雙重計費：一次用於 PAYG 映射，而針對您附加的集區中的 RHEL 權利。 為了減輕此問題，Azure 現在提供 BYOS RHEL 映像。 更多資訊可以在[這裡](../redhat/byos.md)取得。  
 
-1. **[A]** 啟用 RHEL for SAP 存放庫。 如果使用 RHEL 8.x 啟用 HA 的映射，則不需要此步驟。  
+1. **[A]** 啟用 RHEL for SAP 存放庫。 如果使用 RHEL SAP 啟用 HA 的映射，則不需要此步驟。  
 
    若要安裝必要的封裝，請啟用下列存放庫。
 

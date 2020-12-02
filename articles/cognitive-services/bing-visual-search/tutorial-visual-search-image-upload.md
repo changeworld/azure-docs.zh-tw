@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: scottwhi
 ms.custom: devx-track-js
-ms.openlocfilehash: a0afee57eaaa0708ebde2a2aeaced76f008ebd9f
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 96a4b13d11e40e24e78d3aed8dfebcc88b41c525
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366123"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486873"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>教學課程：將影像上傳至 Bing 圖像式搜尋 API
 
 > [!WARNING]
-> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](https://aka.ms/cogsvcs/bingmove)所述的程序進行佈建。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的程序進行佈建。
 > 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
-> 如需移轉指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 Bing 圖像式搜尋 API 可讓您在 Web 上搜尋類似您所上傳影像的影像。 您可以使用此教學課程來建立 Web 應用程式，以將影像傳送至該 API，並在網頁內顯示它所傳回的見解。 請注意，此應用程式不會遵守使用此 API 的所有 [Bing 使用和顯示需求](../bing-web-search/use-display-requirements.md)。
 

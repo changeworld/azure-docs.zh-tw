@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c553652d4d8abd16b4e5fd4ff896e42bdba103ad
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 8602450ef7df7f728fc5bdcda4f46ae30058fc94
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408969"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487791"
 ---
 # <a name="security-control-v2-asset-management"></a>安全性控制 V2：資產管理
 
 資產管理涵蓋的控制項可確保 Azure 資源的安全性可見度和治理。 這包括安全性人員的許可權建議、資產清查的安全性存取，以及管理服務和資源的核准 (清查、追蹤和正確的) 。
 
-## <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>上午-1：確保安全性小組能看到資產的風險
+## <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1：確保安全性小組能夠看到資產的風險
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
@@ -26,57 +26,57 @@ ms.locfileid: "94408969"
 
 請確定安全性小組已獲得 Azure 租使用者和訂用帳戶中的安全性讀取者許可權，讓他們可以使用 Azure 資訊安全中心監視安全性風險。 
 
-根據安全性小組責任的結構，監視安全性風險可能是中央安全性小組或本地小組的責任。 話雖如此，安全性見解和風險一律必須在組織內集中匯總。 
+根據安全性小組的權責架構，監視安全性風險可能是由中央安全性小組或區域小組負責。 然而，安全性見解和風險務必要在組織內部集中彙總。 
 
-安全性讀取者許可權可以廣泛地套用到整個租使用者， (根管理群組) 或限定于管理群組或特定訂用帳戶。 
+「安全性讀取者」權限可以廣泛套用至整個租用戶 (根管理群組)，或將範圍限定於管理群組或特定訂用帳戶。 
 
-注意：若要瞭解工作負載和服務，可能需要其他許可權。 
+注意：若要取得工作負載和服務的可見度，可能需要其他權限。 
 
-- [安全性讀取者角色總覽](../../role-based-access-control/built-in-roles.md#security-reader)
+- [安全性讀取者角色概觀](../../role-based-access-control/built-in-roles.md#security-reader)
 
-- [Azure 管理群組總覽](../../governance/management-groups/overview.md)
+- [Azure 管理群組概觀](../../governance/management-groups/overview.md)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
 - [安全性合規性管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-## <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>上午-2：確保安全性小組可以存取資產清查和中繼資料
+## <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>AM-2：確保安全性小組可以存取資產清查和中繼資料
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
 | 上午-2 | 1.1、1.2、1.4、1.5、9.1、12。1 | CM-8，下午5點 |
 
-請確定安全性小組可以存取 Azure 上不斷更新的資產清查。 安全性小組通常需要此清查來評估其組織對新興風險的潛在風險，並做為持續安全性改進的輸入。 
+請確定安全性小組可以存取 Azure 上不斷更新的資產清查。 安全性小組通常需要進行這項清查，以評估其組織對新興風險的潛在暴露程度，並作為持續安全性改進的輸入。 
 
 Azure 資訊安全中心清查功能和 Azure Resource Graph 可以查詢及探索訂用帳戶中的所有資源，包括 Azure 服務、應用程式和網路資源。  
 
-使用標記以及 Azure 中的其他中繼資料，以邏輯方式組織資產， (名稱、描述和類別) 。  
+使用標記和 Azure 中的其他中繼資料 (名稱、描述及類別)，根據組織的分類法以邏輯方式組織資產。  
 
 - [如何使用 Azure Resource Graph Explorer 建立查詢](../../governance/resource-graph/first-query-portal.md)
 
 - [Azure 資訊安全中心資產庫存管理](../../security-center/asset-inventory.md)
 
-- [如需標記資產的詳細資訊，請參閱資源命名和標記決策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%252fazure%252fazure-resource-manager%252fmanagement%252ftoc.json)
+- [如需標記資產的詳細資訊，請參閱資源命名和標記決策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
 - [安全性合規性管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-## <a name="am-3-use-only-approved-azure-services"></a>上午-3：僅使用已核准的 Azure 服務
+## <a name="am-3-use-only-approved-azure-services"></a>AM-3：僅使用已核准的 Azure 服務
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
 | 上午-3 | 2.3、2.4 | CM-7、CM-8 |
 
-使用 Azure 原則來審核和限制使用者可以在您的環境中布建的服務。 使用 Azure Resource Graph 來查詢及探索其訂用帳戶內的資源。  您也可以使用 Azure 監視器來建立規則，以在偵測到未核准的服務時觸發警示。
+使用 Azure 原則可稽核及限制使用者能夠在環境中佈建的服務。 使用 Azure Resource Graph 則可查詢及探索其訂用帳戶內的資源。  您也可以使用 Azure 監視器來建立規則，以在偵測到未核准的服務時觸發警示。
 
 - [設定和管理 Azure 原則](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -84,29 +84,29 @@ Azure 資訊安全中心清查功能和 Azure Resource Graph 可以查詢及探�
 
 - [如何使用 Azure Resource Graph Explorer 建立查詢](../../governance/resource-graph/first-query-portal.md)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性合規性管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
 - [狀態管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
 
-## <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>上午-4：確保資產生命週期管理的安全性
+## <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>AM-4：確保資產生命週期管理的安全性
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
 | 上午-4 | 2.3、2.4、2。5 | CM-7、CM-8、CM-10、CM-11 |
 
-建立或更新安全性原則，以處理可能有高影響的修改資產生命週期管理程式。 這些修改包括以下的變更：身分識別提供者和存取、資料敏感度、網路設定和系統管理許可權指派。
+建立或更新安全性原則，以處理可能有高影響的修改資產生命週期管理程式。 這些修改包括對下列項目的變更：識別提供者和存取、資料敏感度、網路設定和系統管理權限指派。
 
-當不再需要 Azure 資源時，請將其移除。
+不再需要 Azure 資源時，請將其移除。
 
 - [刪除 Azure 資源群組和資源](../../azure-resource-manager/management/delete-resource-group.md)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -124,9 +124,9 @@ Azure 資訊安全中心清查功能和 Azure Resource Graph 可以查詢及探�
 
 - [如何設定條件式存取以封鎖對 Azure 資源管理員的存取](../../role-based-access-control/conditional-access-azure-management.md)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [狀態管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
 
@@ -154,9 +154,9 @@ Azure 資訊安全中心清查功能和 Azure Resource Graph 可以查詢及探�
 
 - [如何在 Windows 環境中控制 PowerShell 腳本執行](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 

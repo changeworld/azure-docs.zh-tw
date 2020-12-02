@@ -14,21 +14,20 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/16/2020
+ms.date: 12/01/2020
 ms.author: radeltch
-ms.openlocfilehash: a6b62e9c894c25b2c3cd064524881ae5db51ec5a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9c9979699b5bcb3636adc0f9b58331568ea9cad1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968531"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486297"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>適用於 SAP 高可用性案例中使用 Azure Standard Load Balancer 之虛擬機器的公用端點連線能力
 
 此文章的範圍是說明能為公用端點啟用輸出連線能力的設定。 設定的內容主要為針對 SUSE / RHEL 搭配 Pacemaker 來取得高可用性。  
 
-如果您的高可用性解決方案中是搭配 Azure 柵欄代理程式使用 Pacemaker，則 VM 必須針對 Azure 管理 API 具有輸出連線能力。  
-此文章會提供數個選項，以讓您選取最適合您案例的選項。  
+如果您的高可用性解決方案中是搭配 Azure 柵欄代理程式使用 Pacemaker，則 VM 必須針對 Azure 管理 API 具有輸出連線能力。 此文章會提供數個選項，以讓您選取最適合您案例的選項。  
 
 ## <a name="overview"></a>概觀
 
@@ -42,12 +41,12 @@ Azure Load Balancer 的 Basic 和 Standard SKU 之間還有一些重要差異。
 
 如果為 VM 指派公用 IP 位址，或是 VM 位於具有公用 IP 位址之負載平衡器的後端集區，其將會有對公用端點的輸出連線能力。  
 
-SAP 系統通常會包含敏感性的商務資料。 此情況通常無法讓裝載 SAP 系統的 VM 具有公用 IP 位址。 同時，也會存在需要從 VM 輸出連線到公用端點的案例。  
+SAP 系統通常會包含敏感性的商務資料。 可以透過公用 IP 位址來存取裝載 SAP 系統的 Vm 很少接受。 同時，也會存在需要從 VM 輸出連線到公用端點的案例。  
 
 需要存取 Azure 公用端點的案例範例為：  
-- 使用 Azure 柵欄代理程式在 Pacemaker 叢集中作為柵欄機制
-- Azure 備份
-- Azure Site Recovery  
+- Azure 隔離代理程式需要存取 **management.azure.com** 和 **login.microsoftonline.com**  
+- [Azure 備份](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#set-up-network-connectivity)
+- [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls)  
 - 使用公用存放庫來修補作業系統
 - SAP 應用程式資料流程可能需要對公用端點的輸出連線能力
 
@@ -70,7 +69,7 @@ SAP 系統通常會包含敏感性的商務資料。 此情況通常無法讓裝
 * [虛擬網路 - 使用者定義規則](../../../virtual-network/virtual-networks-udr-overview.md#user-defined) \(部分機器翻譯\) - Azure 路由概念和規則  
 * [安全性群組服務標籤](../../../virtual-network/network-security-groups-overview.md#service-tags) \(部分機器翻譯\) - 如何使用服務標籤來簡化網路安全性群組和防火牆設定
 
-## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>透過額外的外部 Azure Standard Load Balancer 來對網際網路進行輸出連線
+## <a name="option-1-additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>選項1：其他外部 Azure Standard Load Balancer 用於連至網際網路的輸出連線
 
 在不允許公用端點對 VM 之輸入連線能力的情況下，達成對公用端點之輸出連線能力的其中一個選項，便是建立具有公用 IP 位址的第二個 Load Balancer，將 VM 新增到第二個 Load Balancer 的後端集區，然後僅定義[連出規則](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules) \(部分機器翻譯\)。  
 使用[網路安全性群組](../../../virtual-network/network-security-groups-overview.md) \(部分機器翻譯\) 以控制來自 VM 的輸出呼叫可存取的公用端點。  
@@ -120,7 +119,7 @@ SAP 系統通常會包含敏感性的商務資料。 此情況通常無法讓裝
 
    如需 Azure 網路安全性群組的詳細資訊，請參閱[安全性群組](../../../virtual-network/network-security-groups-overview.md) \(部分機器翻譯\)。 
 
-## <a name="azure-firewall-for-outbound-connections-to-internet"></a>透過 Azure 防火牆來對網際網路進行輸出連線
+## <a name="option-2-azure-firewall-for-outbound-connections-to-internet"></a>選項2：適用于網際網路的輸出連線的 Azure 防火牆
 
 在不允許公用端點對 VM 之輸入連線能力的情況下，達成對公用端點之輸出連線能力的另一個選項，便是使用 Azure 防火牆。 Azure 防火牆是受管理的服務，其具有內建的高可用性，且可以橫跨多個可用性區域。  
 您也必須部署[使用者定義路由](../../../virtual-network/virtual-networks-udr-overview.md#custom-routes) \(部分機器翻譯\)，與 VM 和 Azure Load Balancer 部署所在的子網路建立關聯，並指向 Azure 防火牆，才能透過 Azure 防火牆路由流量。  
@@ -170,7 +169,7 @@ SAP 系統通常會包含敏感性的商務資料。 此情況通常無法讓裝
    1. 路由名稱：ToMyAzureFirewall，位址首碼：**0.0.0.0/0**。 下一個躍點類型：選取 [虛擬設備]。 下一個躍點位址：輸入您所設定之防火牆的私人 IP 位址：**11.97.1.4**。  
    1. 儲存
 
-## <a name="using-proxy-for-pacemaker-calls-to-azure-management-api"></a>使用 Proxy 來針對 Azure 管理 API 進行 Pacemaker 呼叫
+## <a name="option-3-using-proxy-for-pacemaker-calls-to-azure-management-api"></a>選項3：使用 Proxy 進行 Azure 管理 API 的 Pacemaker 呼叫
 
 您可以使用 Proxy 來允許對 Azure 管理 API 公用端點進行 Pacemaker 呼叫。  
 
@@ -221,9 +220,9 @@ SAP 系統通常會包含敏感性的商務資料。 此情況通常無法讓裝
      sudo pcs property set maintenance-mode=false
      ```
 
-## <a name="other-solutions"></a>其他解決方案
+## <a name="other-options"></a>其他選項
 
-如果輸出流量是透過協力廠商防火牆路由傳送：
+如果輸出流量是透過協力廠商、以 URL 為基礎的防火牆 proxy 來路由傳送：
 
 - 如果使用 Azure 隔離代理程式，請確定防火牆設定允許 Azure 管理 API 的輸出連線能力： `https://management.azure.com` 和 `https://login.microsoftonline.com`   
 - 如果使用 SUSE 的 Azure 公用雲端更新基礎結構來套用更新和修補程式，請參閱 [Azure 公用雲端更新基礎結構 101](https://suse.com/c/azure-public-cloud-update-infrastructure-101/)

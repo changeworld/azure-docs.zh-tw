@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 17b978d3f4faebd3870868bceeea4572288ecb07
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 647009854ef5a0c0811fc303914f724272f1a3f5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965352"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486652"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure 上適用於 linux 的 SAP BusinessObjects BI 平台部署指南
 
@@ -585,7 +585,7 @@ SAP BusinessObjects BI 平臺包含不同的層級，這些層級已針對特定
 
 高可用性是指一組技術，藉由在相同資料中心內透過冗余、容錯或容錯移轉保護的元件，提供應用程式/服務的商務持續性，可將 IT 中斷降至最低。 在我們的案例中，資料中心位於一個 Azure 區域內。 適用于 [sap 的高可用性架構和案例](sap-high-availability-architecture-scenarios.md) 會提供針對 Sap 應用程式提供的不同高可用性技術和建議的初步見解，其將補充本節中的指示。
 
-根據 SAP BOBI Platform 的調整結果，您需要設計環境，並判斷跨 Azure 虛擬機器和子網的 BI 元件分佈。 分散式架構中的冗余層級取決於商務所需的復原時間目標 (RTO) 和復原點目標 (RPO) 。 SAP BOBI Platform 包含每個階層的不同層級和元件，應設計為可達成冗余。 如此一來，如果一個元件失敗，您的 SAP BOBI 應用程式幾乎不會中斷。 例如，套用至物件的
+根據 SAP BOBI Platform 的調整結果，您需要設計環境，並判斷跨 Azure 虛擬機器和子網的 BI 元件分佈。 分散式架構中的冗余層級取決於商務所需的復原時間目標 (RTO) 和復原點目標 (RPO) 。 SAP BOBI Platform 包含每個階層的不同層級和元件，應設計為可達成冗余。 如此一來，如果一個元件失敗，您的 SAP BOBI 應用程式幾乎不會中斷。 例如，
 
 - 多餘的應用程式伺服器，例如 BI 應用程式伺服器和網頁伺服器
 - 獨特的元件，例如 CMS 資料庫、檔案存放庫伺服器、Load Balancer
@@ -615,7 +615,7 @@ SAP BusinessObjects BI 平臺包含不同的層級，這些層級已針對特定
 
 檔案存放庫伺服器 (FRS) 指的是儲存報表、universe 和連接等內容的磁碟目錄。 它會在該系統的所有應用程式伺服器之間共用。 因此，您必須確定它具有高可用性。
 
-在 Azure 上，您可以選擇 [Azure Premium](../../../storage/files/storage-files-introduction.md) 檔案或適用于檔案共用的 [azure NetApp files](../../../azure-netapp-files/azure-netapp-files-introduction.md) ，其設計為高度可用且本質上為高耐久性。 如需詳細資訊，請參閱 Azure 檔案儲存體的 [ [冗余](https://docs.microsoft.com/azure/storage/files/storage-files-planning#redundancy) ] 區段。
+在 Azure 上，您可以選擇 [Azure Premium](../../../storage/files/storage-files-introduction.md) 檔案或適用于檔案共用的 [azure NetApp files](../../../azure-netapp-files/azure-netapp-files-introduction.md) ，其設計為高度可用且本質上為高耐久性。 如需詳細資訊，請參閱 Azure 檔案儲存體的 [ [冗余](../../../storage/files/storage-files-planning.md#redundancy) ] 區段。
 
 > [!NOTE]
 > 適用于 Azure 檔案儲存體的 SMB 通訊協定已正式運作，但 Azure 檔案儲存體的 NFS 通訊協定支援目前為預覽狀態。 如需詳細資訊，請參閱 [Azure 檔案儲存體的 NFS 4.1 支援現供預覽](https://azure.microsoft.com/en-us/blog/nfs-41-support-for-azure-files-is-now-in-preview/)
@@ -667,7 +667,7 @@ Azure Site Recovery 服務可以用來複寫在次要區域上執行 Web 和 BI 
 
   您可以使用 Azure NetApp Files 跨區域複寫，此複寫目前為使用 NetApp SnapMirror®技術的 [預覽](https://azure.microsoft.com/en-us/blog/azure-netapp-files-cross-region-replication-and-new-enhancements-in-preview/) 版本。 因此，只有變更的區塊會以壓縮、有效率的格式透過網路傳送。 這項專屬技術可將跨區域複寫所需的資料量降到最低，以節省資料傳輸成本。 它也會縮短複寫時間，讓您可以達成較小的還原點目標 (RPO) 。 如需詳細資訊，請參閱 [使用跨區域複寫的需求和考慮](../../../azure-netapp-files/cross-region-replication-requirements-considerations.md) 。
 
-- **Azure premium** 檔案僅支援在本機重複 (LRS) 和區域冗余儲存體 (ZRS) 。 針對 Azure Premium 檔案 DR 策略，您可以使用 [AzCopy](../../../storage/common/storage-use-azcopy-v10.md) 或 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/) 將檔案複製到不同區域中的另一個儲存體帳戶。 如需詳細資訊，請參閱嚴重損壞 [修復和儲存體帳戶容錯移轉](../../../storage/common/storage-disaster-recovery-guidance.md)
+- **Azure premium** 檔案僅支援在本機重複 (LRS) 和區域冗余儲存體 (ZRS) 。 針對 Azure Premium 檔案 DR 策略，您可以使用 [AzCopy](../../../storage/common/storage-use-azcopy-v10.md) 或 [Azure PowerShell](/powershell/module/az.storage/) 將檔案複製到不同區域中的另一個儲存體帳戶。 如需詳細資訊，請參閱嚴重損壞 [修復和儲存體帳戶容錯移轉](../../../storage/common/storage-disaster-recovery-guidance.md)
 
 #### <a name="cms-database"></a>CMS 資料庫
 
@@ -695,4 +695,4 @@ Azure Site Recovery 服務可以用來複寫在次要區域上執行 Web 和 BI 
 - [設定多層式 SAP 應用程式部署的嚴重損壞修復](../../../site-recovery/site-recovery-sap.md)
 - [適用於 SAP 的 Azure 虛擬機器規劃和實作](planning-guide.md)
 - [適用於 SAP 的 Azure 虛擬機器部署](deployment-guide.md)
-- [適用於 SAP 的 Azure 虛擬機器 DBMS 部署](dbms-guide.md)
+- [適用於 SAP 的 Azure 虛擬機器 DBMS 部署](./dbms_guide_general.md)

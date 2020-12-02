@@ -10,23 +10,23 @@ ms.workload: azure-vs
 ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: bdc03e8c136606ab7768705b0c8dbcc97782966f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7cf2474c9ca005d85cea28f2b8fa1e23836b191f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008883"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487553"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>從 Visual Studio 將 ASP.NET Web 應用程式發行到 Azure VM
 
 本檔說明如何使用 Visual Studio 2019 中的 **Microsoft Azure 虛擬機器** 發行功能，將 ASP.NET web 應用程式發佈至 Azure 虛擬機器 (VM) 。  
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 若要使用 Visual Studio 將 ASP.NET 專案發行到 Azure VM，必須正確設定 VM。
 
 - 電腦必須設定為執行 ASP.NET web 應用程式，並已安裝 WebDeploy。 如需詳細資訊，請參閱 [使用 WebDeploy 建立 ASP.NET VM](https://github.com/aspnet/Tooling/blob/AspNetVMs/docs/create-asp-net-vm-with-webdeploy.md)。
 
-- VM 必須設定 DNS 名稱。 如需詳細資訊，請參閱[在 Azure 入口網站中為 Windows VM 建立完整網域名稱](portal-create-fqdn.md)。
+- VM 必須設定 DNS 名稱。 如需詳細資訊，請參閱[在 Azure 入口網站中為 Windows VM 建立完整網域名稱](../create-fqdn.md)。
 
 ## <a name="publish-your-aspnet-web-app-to-the-azure-vm-using-visual-studio"></a>使用 Visual Studio 將您的 ASP.NET Web 應用程式發行到 Azure VM
 下列章節說明如何將現有的 ASP.NET Web 應用程式發行到 Azure 虛擬機器。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bd69f239a1c65040c44da776186ab8d955f5e333
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3a232f8e8c35e265a8243ac79e465c03f6b9650e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693173"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487859"
 ---
 # <a name="security-control-network-security"></a>安全性控制：網路安全性
 
@@ -76,7 +76,7 @@ ms.locfileid: "94693173"
 
 使用 Azure 資訊安全中心調適型網路強化，根據實際的流量和威脅情報，建議可限制埠和來源 Ip 的 NSG 設定。
 
-- [如何設定 DDoS 保護](../../virtual-network/manage-ddos-protection.md)
+- [如何設定 DDoS 保護](../../ddos-protection/manage-ddos-protection.md)
 
 - [如何部署 Azure 防火牆](../../firewall/tutorial-firewall-deploy-portal.md)
 

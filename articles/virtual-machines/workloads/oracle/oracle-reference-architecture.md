@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 86f3ef8ccac83cdc939cff5572dd81e78137d396
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 83da8cbf3a87570cfb967e0a6c8da3f0f2ed1766
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968718"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486737"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上 Oracle Database Enterprise Edition 的參考架構
 
@@ -207,12 +207,12 @@ Oracle Data Guard 可以用來分區化具有系統管理、使用者定義和�
 
 將您的 Oracle 工作負載部署至 Azure 時，Microsoft 會處理所有主機作業系統層級的修補。 任何規劃的作業系統層級維護都會事先向客戶傳達，以允許客戶進行這項預定的維護。 兩部不同可用性區域的伺服器永遠不會同時修補。 如需 VM 維護和修補的詳細資訊，請參閱 [管理虛擬機器的可用性](../../manage-availability.md) 。 
 
-您可以使用 [Azure 自動化更新管理](../../../automation/update-management/update-mgmt-overview.md)，將虛擬機器作業系統的修補作業自動化。 您可以使用 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) 或 [Azure 自動化更新管理](../../../automation/update-management/update-mgmt-overview.md) 來自動修補和維護 Oracle 資料庫，以將停機時間降至最低。 請參閱 [持續傳遞和藍色/綠色部署](/azure/devops/learn/what-is-continuous-delivery) ，以瞭解如何在您的 Oracle 資料庫內容中使用它。
+您可以使用 [Azure 自動化更新管理](../../../automation/update-management/overview.md)，將虛擬機器作業系統的修補作業自動化。 您可以使用 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) 或 [Azure 自動化更新管理](../../../automation/update-management/overview.md) 來自動修補和維護 Oracle 資料庫，以將停機時間降至最低。 請參閱 [持續傳遞和藍色/綠色部署](/azure/devops/learn/what-is-continuous-delivery) ，以瞭解如何在您的 Oracle 資料庫內容中使用它。
 
 ## <a name="architecture-and-design-considerations"></a>架構和設計考慮
 
 - 請考慮針對 Oracle Database VM 使用具有[受限核心個 vcpu](../../../virtual-machines/constrained-vcpu.md)的超執行緒[記憶體優化虛擬機器](../../sizes-memory.md)，以節省授權成本並將效能最大化。 針對效能和可用性，使用多個 premium 或 ultra 磁片 (受控磁片) 。
-- 使用受控磁片時，磁片/裝置名稱可能會在重新開機時變更。 建議您使用裝置 UUID 而不是名稱，以確保您的掛接在重新開機時保持不變。 您可以在[這裡](../../../virtual-machines/linux/configure-raid.md#add-the-new-file-system-to-etcfstab)找到詳細資訊。
+- 使用受控磁片時，磁片/裝置名稱可能會在重新開機時變更。 建議您使用裝置 UUID 而不是名稱，以確保您的掛接在重新開機時保持不變。 您可以在[這裡](/previous-versions/azure/virtual-machines/linux/configure-raid#add-the-new-file-system-to-etcfstab)找到詳細資訊。
 - 使用可用性區域以達到區域內的高可用性。
 - 如果您的 Oracle 資料庫可用) 或 premium 磁片，請考慮使用 ultra 磁片 (。
 - 請考慮在另一個 Azure 區域中使用 Oracle Data Guard 設定待命 Oracle 資料庫。

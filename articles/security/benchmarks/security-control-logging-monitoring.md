@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e88976bfbf5d033d6f5dc2318a6383e01ceb791d
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 8492e986b378ea19f8c3c4cb7f94fcb0f155b427
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409071"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487842"
 ---
 # <a name="security-control-logging-and-monitoring"></a>安全性控制：記錄和監視
 
@@ -96,7 +96,7 @@ Microsoft 會維護 Azure 資源的時間來源，不過，您可以選擇管理
 
 - [如何使 Azure Sentinel 上線](../../sentinel/quickstart-onboard.md)
 
-- [了解 Log Analytics 工作區](../../azure-monitor/log-query/get-started-portal.md)
+- [了解 Log Analytics 工作區](../../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [如何在 Azure 監視器中執行自訂查詢](../../azure-monitor/log-query/get-started-queries.md)
 

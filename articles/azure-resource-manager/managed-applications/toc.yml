@@ -31,6 +31,10 @@
       href: concepts-built-in-policy.md
     - name: 角色定義成品
       href: concepts-custom-role-definition.md
+    - name: 安全性
+      items:
+        - name: 安全性基準
+          href: security-baseline.md
 - name: 操作指南
   items:
     - name: 發行者
@@ -40,7 +44,7 @@
         - name: 測試入口網站介面
           href: test-createuidefinition.md
         - name: 建立 Azure 應用程式供應項目
-          href: ../../marketplace/partner-center-portal/create-new-azure-apps-offer.md?toc=/azure/azure-resource-manager/managed-applications/toc.json
+          href: ../../marketplace/create-new-azure-apps-offer.md?toc=/azure/azure-resource-manager/managed-applications/toc.json
         - name: 要求 Just-In-Time 存取
           href: request-just-in-time-access.md
         - name: 使用現有虛擬網路
@@ -175,5 +179,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Resource Manager 範本最佳做法
       href: 'https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-managedapps'

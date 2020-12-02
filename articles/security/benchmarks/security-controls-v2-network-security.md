@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 6ddce9bd8eaa57571cd3c3eac660806340db4b74
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: b6aaad9cce330d755fb69f8be48737f9a8f6c4a7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408663"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487740"
 ---
 # <a name="security-control-v2-network-security"></a>安全性控制 V2：網路安全性
 
@@ -40,9 +40,9 @@ ms.locfileid: "94408663"
 
 - [Azure Sentinel 不安全的通訊協定活頁簿](../../sentinel/quickstart-get-visibility.md#use-built-in-workbooks)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -68,9 +68,9 @@ ms.locfileid: "94408663"
 
 - [Azure Private Link](../../private-link/private-link-service-overview.md)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -78,7 +78,7 @@ ms.locfileid: "94408663"
 
 - [應用程式安全性與 DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
-## <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3：建立 Azure 服務的私人網路存取權
+## <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3：建立 Azure 服務的私人網路存取
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
@@ -92,9 +92,9 @@ ms.locfileid: "94408663"
 
 - [瞭解虛擬網路服務端點](../../virtual-network/virtual-network-service-endpoints-overview.md)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -120,11 +120,11 @@ ms.locfileid: "94408663"
 
 - [如何部署 Azure WAF](../../web-application-firewall/overview.md)
 
-- [使用 Azure 入口網站管理 Azure DDoS 保護標準](../../virtual-network/manage-ddos-protection.md)
+- [使用 Azure 入口網站管理 Azure DDoS 保護標準](../../ddos-protection/manage-ddos-protection.md)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 無
 
@@ -144,9 +144,9 @@ ms.locfileid: "94408663"
 
 - [Microsoft Defender ATP EDR 功能](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -170,9 +170,9 @@ ms.locfileid: "94408663"
 
 - [瞭解及使用應用程式安全性群組](../../virtual-network/network-security-groups-overview.md#application-security-groups)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -196,9 +196,9 @@ ms.locfileid: "94408663"
 
 - [防止無關聯的 DNS 專案，並避免子域接管](../fundamentals/subdomain-takeover.md)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

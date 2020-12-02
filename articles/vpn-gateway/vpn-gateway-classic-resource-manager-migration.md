@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/06/2020
 ms.author: amsriva
-ms.openlocfilehash: b9154b124f89a8b672c58d5e7bce28c0833e8a8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9d7fb8be1894ffa5f8c35e16e1ed3aa0949b3ff
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84988033"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488199"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>從傳統 VPN 閘道到 Resource Manager 移轉
 VPN 閘道現在可以用來從傳統移轉至 Resource Manager 部署模型。 您可以進一步了解 Azure Resource Manager [功能和優點](../azure-resource-manager/management/overview.md)。 在本文中，我們會詳細說明如何從傳統部署移轉至較新的 Resource Manager 為基礎模型。 
 
-VPN 閘道會在從傳統至 Resource Manager 的移轉過程中做為 VNet 移轉。 此移轉是一次一個 VNet。 沒有其他工具或移轉的必要條件需求。 移轉步驟與現有的 VNet 移轉相同，且會記載在 [IaaS 資源移轉網頁](../virtual-machines/windows/migration-classic-resource-manager-ps.md)。 在移轉期間沒有任何資料路徑停機時間，因此現有的工作負載在移轉期間會繼續運作而不會中斷內部部署連線。 與 VPN 閘道相關聯的公用 IP 位址在移轉程序期間不會變更。 這表示一旦移轉完成後，您將不需要重新設定內部部署路由器。  
+VPN 閘道會在從傳統至 Resource Manager 的移轉過程中做為 VNet 移轉。 此移轉是一次一個 VNet。 沒有其他工具或移轉的必要條件需求。 移轉步驟與現有的 VNet 移轉相同，且會記載在 [IaaS 資源移轉網頁](../virtual-machines/migration-classic-resource-manager-ps.md)。 在移轉期間沒有任何資料路徑停機時間，因此現有的工作負載在移轉期間會繼續運作而不會中斷內部部署連線。 與 VPN 閘道相關聯的公用 IP 位址在移轉程序期間不會變更。 這表示一旦移轉完成後，您將不需要重新設定內部部署路由器。  
 
 Resource Manager 中的模型不同於傳統模型，是由虛擬網路閘道、區域網路閘道和連線資源所組成。 這些分別代表 VPN 閘道本身、代表內部部署位址空間的本機站台和兩者之間的連線能力。 移轉完成後，您的閘道不能使用傳統模型，且虛擬網路閘道、區域網路閘道及連線物件上的所有管理作業必須使用 Resource Manager 模式執行。
 
@@ -65,6 +65,5 @@ Resource Manager 中的模型不同於傳統模型，是由虛擬網路閘道、
 * 啟用 VPN 閘道上連接在一起及連接至內部部署的 BGP。 啟用 BGP 還原的連線能力而不需要任何其他組態變更，因為路由是在 VNet 閘道之間了解及通告。 請注意，BGP 選項僅在標準和更高的 SKU 才可使用。
 * 建立從受影響的 VNet 到代表內部部署位置之區域網路閘道的明確連接。 這也會需要變更內部部署路由器上的設定來建立及設定 IPsec 通道。
 
-## <a name="next-steps"></a>接下來的步驟
-了解 VPN 閘道移轉支援之後，請移至[平台支援的 IaaS 資源移轉 (從傳統移轉至 Resource Manager)](../virtual-machines/windows/migration-classic-resource-manager-ps.md) 以開始使用。
-
+## <a name="next-steps"></a>後續步驟
+了解 VPN 閘道移轉支援之後，請移至[平台支援的 IaaS 資源移轉 (從傳統移轉至 Resource Manager)](../virtual-machines/migration-classic-resource-manager-ps.md) 以開始使用。

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bfa9367e06c099e21a54ad8c03f8d5ab853aaafb
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bfe8af8c30bbc2bc66c363fbd85f6764a48c28a1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348070"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488063"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 發佈遠端桌面
 
@@ -130,9 +130,11 @@ ms.locfileid: "96348070"
 
 | 驗證方法 | 支援的用戶端設定 |
 | --------------------- | ------------------------------ |
-| 預先驗證    | RD Web-使用 Internet Explorer 或 [Edge CHROMIUM IE 模式](/deployedge/edge-ie-mode) + RDS ActiveX 附加元件的 Windows 7/10 <br /> *請注意，我的應用程式入口網站只支援 Edge。* |
+| 預先驗證    | RD Web-使用 Internet Explorer * 或 [Edge CHROMIUM IE 模式](/deployedge/edge-ie-mode) + RDS ActiveX 附加元件的 Windows 7/10 |
 | 預先驗證    | RD Web 用戶端-與 HTML5 相容的網頁瀏覽器，例如 Microsoft Edge、Internet Explorer 11、Google Chrome、Safari 或 Mozilla Firefox (v 55.0 和更新版本)  |
 | 通道 | 支援 Microsoft 遠端桌面應用程式的任何其他作業系統 |
+
+* 使用我的應用程式入口網站來存取遠端桌面應用程式時，需要 Edge Chromium IE 模式。  
 
 預先驗證流程的安全性優點多於通道流程。 使用預先驗證，您可以使用 Azure AD 的驗證功能，例如單一登入、條件式存取，以及內部部署資源的雙步驟驗證。 您也可以確定只有驗證過的流量到達您的網路。
 

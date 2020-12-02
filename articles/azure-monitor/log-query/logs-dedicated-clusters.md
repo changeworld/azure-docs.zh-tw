@@ -6,24 +6,23 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: d261640dfdb59b2b06cfe3066fca26640a0bed54
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: a68501bd1189993b4dd0c2acdecaa7434fa51dcc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874639"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488029"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure 監視器記錄專用叢集
 
-Azure 監視器記錄專用叢集是一個可讓大量客戶更妥善服務的部署選項。 每日內嵌超過 4 TB 資料的客戶將會使用專用的叢集。 具有專用叢集的客戶可以選擇要在這些叢集上裝載的工作區。
+Azure 監視器記錄專用叢集是一個部署選項，可為 Azure 監視器記錄客戶提供先進的功能。 具有專用叢集的客戶可以選擇要在這些叢集上裝載的工作區。
 
-除了對高容量的支援之外，使用專用叢集還有其他優點：
+需要專用叢集的功能如下：
 
-- **速率限制** -客戶只能在專用叢集上擁有較高的內嵌 [費率限制](../service-limits.md#data-ingestion-volume-rate) 。
-- **功能** ：某些企業功能僅適用于專用叢集，特別是客戶管理的金鑰 (CMK) 和加密箱支援。 
-- **一致性** -客戶擁有專屬的資源，因此不會影響在相同共用基礎結構上執行的其他客戶。
-- **成本效益** -使用專用叢集的方式可能更符合成本效益，因為指派的容量保留層會將所有叢集內嵌納入考慮，並套用至其所有的工作區，即使其中有些較小，而且不符合容量保留折扣的資格。
-- 如果所有工作區都在相同的叢集上，**跨工作區** 查詢的執行速度會更快。
+- **[客戶管理的金鑰](../platform/customer-managed-keys.md)** -使用由客戶提供及控制的金鑰來加密叢集資料。
+- 加密 **[箱](../platform/customer-managed-keys.md#customer-lockbox-preview)**-客戶可以控制 Microsoft 支援工程師存取資料的要求。
+- **[雙精確度加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)** 可防止其中一個加密演算法或金鑰可能會遭到入侵的案例。 在此情況下，額外的加密層級會繼續保護您的資料。
+- **[多個工作區](../log-query/cross-workspace-query.md)** -如果客戶在生產環境中使用一個以上的工作區，則使用專用叢集可能是合理的。 如果所有工作區都在相同的叢集上，跨工作區查詢的執行速度會更快。 使用專用叢集的方式也可能更符合成本效益，因為指派的容量保留層會將所有叢集內嵌納入考慮，並套用至其所有的工作區，即使其中有些較小，而且不符合容量保留折扣的資格。
 
 專用叢集會要求客戶使用每日至少有 1 TB 資料的容量進行認可。 遷移至專用叢集很簡單。 資料遺失或服務中斷。 
 
@@ -222,7 +221,7 @@ Content-type: application/json
 
 - 從回應複製 Azure-AsyncOperation URL 值，並遵循非同步作業狀態檢查。 
 
-   或者
+   OR
 
 - 傳送「叢集」資源的 GET 要求，並查看 *KeyVaultProperties* 屬性。 您最近更新的金鑰識別碼詳細資料應該會在回應中傳回。
 
@@ -297,7 +296,7 @@ Get-Job -Command "Set-AzOperationalInsightsLinkedService" | Format-List -Propert
 
 使用下列 REST 呼叫來連結至叢集：
 
-*發送*
+*Send*
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview 
@@ -327,7 +326,7 @@ Content-type: application/json
 
 傳送要求看起來如下所示：
 
-*發送*
+*Send*
 
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview

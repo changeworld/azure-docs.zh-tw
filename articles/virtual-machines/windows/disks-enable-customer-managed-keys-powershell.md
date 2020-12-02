@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: f967d061ece5887457375b4e93469809f6a575f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2eed2ee11f3a90e81d9ee845af2aa28620567603
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88814768"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488301"
 ---
 # <a name="azure-powershell---enable-customer-managed-keys-with-server-side-encryption---managed-disks"></a>Azure PowerShell-使用伺服器端加密管理的磁片來啟用客戶管理的金鑰
 
-如果您選擇，Azure 磁碟儲存體可讓您在使用伺服器端加密 (SSE) 的受控磁片時，管理您自己的金鑰。 如需使用客戶管理的金鑰和其他受控磁片加密類型之 SSE 的概念資訊，請參閱磁片加密文章中的 [客戶管理的金鑰](disk-encryption.md#customer-managed-keys) 一節。
+如果您選擇，Azure 磁碟儲存體可讓您在使用伺服器端加密 (SSE) 的受控磁片時，管理您自己的金鑰。 如需使用客戶管理的金鑰和其他受控磁片加密類型之 SSE 的概念資訊，請參閱磁片加密文章中的 [客戶管理的金鑰](../disk-encryption.md#customer-managed-keys) 一節。
 
 ## <a name="restrictions"></a>限制
 

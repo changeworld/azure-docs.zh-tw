@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: a430333f57b3734e5977db5c104c8f6d37bfd3c4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 27cf5fef027b1e4786c0ff77f9f673bafea15f98
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949083"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487264"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>語音服務的語言和語音支援
 
@@ -26,7 +26,7 @@ ms.locfileid: "94949083"
 
 Microsoft Speech SDK 和 REST API 均支援下列語言 (地區設定)。 
 
-為了提升正確性，請透過上傳 **音訊 + 人為標記文字記錄** 或 **相關的文字：句子**，為部分語言提供自訂。 若要深入了解自訂，請參閱[開始使用自訂語音](how-to-custom-speech.md)。
+為了提升正確性，請透過上傳 **音訊 + 人為標記文字記錄** 或 **相關的文字：句子**，為部分語言提供自訂。 若要深入了解自訂，請參閱[開始使用自訂語音](./custom-speech-overview.md)。
 
 <!--
 To get the AM and ML bits:
@@ -435,4 +435,4 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 ## <a name="next-steps"></a>後續步驟
 
 * [建立 Azure 免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
-* [了解如何以 C# 辨識語音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp) (英文)
+* [了解如何以 C# 辨識語音](./get-started-speech-to-text.md?pivots=programming-language-chsarp) (英文)

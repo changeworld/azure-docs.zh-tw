@@ -10,19 +10,19 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: rosh
-ms.openlocfilehash: 8e26d128fea7208206be8a7329522f8202051215
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 70a33774ac82312660d887fb86f7e2a482c30a0c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095402"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487162"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>傳送並使用 Bing 當地商家搜尋 API 查詢和回應
 
 > [!WARNING]
-> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
-> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
-> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+> Bing 搜尋 API 將從認知服務移至 Bing 搜尋服務。 從 **2020 年 10 月 30 日** 開始，所有 Bing 搜尋的新執行個體都必須依照 [這裡](/bing/search-apis/bing-web-search/create-bing-search-service-resource)所述的程序進行佈建。
+> 使用認知服務佈建的 Bing 搜尋 API 將在未來三年受到支援，或支援到您的 Enterprise 合約結束為止 (視何者先發生)。
+> 如需移轉指示，請參閱 [Bing 搜尋服務](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
 您可以透過向 Bing 當地商家搜尋 API 的端點傳送搜尋查詢並包含 `Ocp-Apim-Subscription-Key` 標頭 (這是必需的) 來取得其當地結果。 除了可用的[標頭](local-search-reference.md#headers)和[參數](local-search-reference.md#query-parameters)之外，還可以藉由為要搜尋的區域以及傳回之位置的[類別](local-search-query-response.md)指定[地理界限](specify-geographic-search.md)來自訂搜尋。
 
@@ -151,7 +151,7 @@ Expires: Tue, 16 Oct 2018 16:25:15 GMT
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../includes/cognitive-services-bing-throttling-requests.md)]
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - [當地商家搜尋快速入門](quickstarts/local-quickstart.md)
 - [當地商家搜尋 Java 快速入門](quickstarts/local-search-java-quickstart.md)
 - [當地商家搜尋 Node 快速入門](quickstarts/local-search-node-quickstart.md)

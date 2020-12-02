@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e0409f289289aaebc760473f1f74130b34fbdd39
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ad40515475a10f41fd7ab1d8d44f89673877f054
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357720"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488309"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM 上的 Azure 磁碟加密案例
 
@@ -82,7 +82,7 @@ Azure 磁碟加密會與 [Azure Key Vault](disk-encryption-key-vault.md) 整合�
      Get-AzVmDiskEncryptionStatus -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
      ```
     
-- **停用磁碟加密** ：若要停用加密，請使用 [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) Cmdlet。 當作業系統和資料磁碟都已加密，在 Windows VM 上停用資料磁碟加密將無法按預期運作。 改為停用所有磁碟上的加密。
+- **停用磁碟加密**：若要停用加密，請使用 [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) Cmdlet。 當作業系統和資料磁碟都已加密，在 Windows VM 上停用資料磁碟加密將無法按預期運作。 改為停用所有磁碟上的加密。
 
      ```azurepowershell-interactive
      Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
@@ -135,7 +135,7 @@ Azure 磁碟加密會與 [Azure Key Vault](disk-encryption-key-vault.md) 整合�
 | keyVaultName | 應上傳 BitLocker 金鑰的金鑰保存庫名稱。 您可以使用 Cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` 或 Azure CLI 命令 `az keyvault list --resource-group "MyKeyVaultResourceGroup"` 來取得|
 | keyVaultResourceGroup | 包含金鑰保存庫的資源群組名稱|
 |  keyEncryptionKeyURL | 金鑰加密金鑰的 URL，格式為 HTTPs:// &lt; keyvault-name &gt; . vault.azure.net/key/ &lt; key-name &gt; 。 如果您不想使用 KEK，請將此欄位留白。 |
-| volumeType | 執行加密作業所在磁碟區的類型。 有效值為 _OS_ 、 _Data_ 和 _All_ 。 
+| volumeType | 執行加密作業所在磁碟區的類型。 有效值為 _OS_、_Data_ 和 _All_。 
 | forceUpdateTag | 每次需要強制執行作業時傳入唯一的值，例如 GUID。 |
 | resizeOSDisk | 是否應該先將 OS 分割區調整大小以佔用完整的 OS VHD，然後才分割系統磁碟區。 |
 | location | 所有資源的位置。 |
@@ -158,7 +158,7 @@ NVMe 磁片將在下列案例中未初始化：
 
 - 解除配置之後啟動 VM
 - 服務修復
-- Backup
+- 備份
 
 在這些情況下，NVMe 磁片必須在 VM 啟動之後初始化。 若要在 NVMe 磁片上啟用加密，請執行命令，在 NVMe 磁片初始化之後再次啟用 Azure 磁碟加密。
 
@@ -264,8 +264,8 @@ Azure 磁碟加密不適用於下列案例、功能和技術：
 - 建立已加密 VM 的映射或快照，並使用它來部署額外的 Vm。
 - Gen2 Vm (請參閱： [Azure 上的第2代 Vm 支援](../generation-2.md#generation-1-vs-generation-2-capabilities)) 
 - 具有寫入加速器磁片的 M 系列 Vm。
-- 將 ADE 套用至 VM 時，會使用 [伺服器端加密搭配客戶管理的金鑰](disk-encryption.md) 來加密 (SSE + CMK) 的磁片。 將 SSE + CMK 套用至以 ADE 加密的 VM 上的資料磁片也是不支援的案例。
-- 您可以使用客戶管理的金鑰， **將已加密** 的 VM，或使用 ade 加密的 VM 遷移至 [伺服器端加密](disk-encryption.md)。
+- 將 ADE 套用至 VM 時，會使用 [伺服器端加密搭配客戶管理的金鑰](../disk-encryption.md) 來加密 (SSE + CMK) 的磁片。 將 SSE + CMK 套用至以 ADE 加密的 VM 上的資料磁片也是不支援的案例。
+- 您可以使用客戶管理的金鑰， **將已加密** 的 VM，或使用 ade 加密的 VM 遷移至 [伺服器端加密](../disk-encryption.md)。
 - [沒有本機暫存磁片的 AZURE VM 大小](../azure-vms-no-temp-disk.md);具體而言，是 Dv4、Dsv4、Ev4 和 Esv4。
 
 ## <a name="next-steps"></a>後續步驟

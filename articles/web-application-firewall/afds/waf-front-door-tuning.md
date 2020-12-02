@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: mohitku
 ms.reviewer: tyao
-ms.openlocfilehash: a24f9e78de34b17977a1876cbefb473cc2610db0
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 4c710792dd7966fad76b33954fdf7c2253cf18f0
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95549902"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488233"
 ---
 # <a name="tuning-web-application-firewall-waf-for-azure-front-door"></a>針對 Azure Front Door 調整 Web 應用程式防火牆 (WAF) 
  
@@ -136,7 +136,7 @@ UserId=20&captchaId=7&captchaId=15&comment="1=1"&rating=3
  
 請務必考慮排除專案是全域設定。 這表示設定的排除會套用至所有通過您 WAF 的流量，而不只是特定的 web 應用程式或 URI。 例如，如果 *1 = 1* 是特定 web 應用程式主體中的有效要求，但對於相同 WAF 原則下的其他應用程式而言，這可能是個問題。 如果對不同的應用程式使用不同的排除清單有意義，請考慮針對每個應用程式使用不同的 WAF 原則，並將其套用至每個應用程式的前端。
  
-設定受控規則的排除清單時，您可以選擇排除規則集內的所有規則、規則群組內的所有規則，或個別規則。 您可以使用 [PowerShell](https://docs.microsoft.com/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-4.7.0&viewFallbackFrom=azps-3.5.0)、 [AZURE CLI](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext_front_door_az_network_front_door_waf_policy_managed_rules_exclusion_add)、 [Rest API](https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)或 Azure 入口網站來設定排除清單。
+設定受控規則的排除清單時，您可以選擇排除規則集內的所有規則、規則群組內的所有規則，或個別規則。 您可以使用 [PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-4.7.0&viewFallbackFrom=azps-3.5.0)、 [AZURE CLI](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext_front_door_az_network_front_door_waf_policy_managed_rules_exclusion_add)、 [Rest API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)或 Azure 入口網站來設定排除清單。
 
 * 規則層級的排除專案
   * 在規則層級套用排除項，表示指定的排除專案將不會針對該個別規則進行分析，但仍會由規則集中的所有其他規則進行分析。 這是排除專案的最細微層級，而且可以用來根據您在針對事件進行疑難排解時，在 WAF 記錄中找到的資訊來微調受控規則集。
@@ -181,7 +181,7 @@ UserId=20&captchaId=7&captchaId=15&comment="1=1"&rating=3
 
 使用自訂規則可讓您在微調 WAF 規則和處理誤報時，最細微。 在此情況下，我們不只會根據 `comment` 要求主體值採取動作，該值可能會存在於多個網站或相同 WAF 原則下的應用程式。 藉由在特定的要求 URI 中加入另一個條件 `/api/Feedbacks/` ，我們可以確保此自訂規則真的適用于我們通過的明確使用案例。這可確保 WAF 引擎仍會檢查和防止相同的攻擊（如果針對不同的情況執行的話）。
 
-![記錄](../media/waf-front-door-tuning/custom-rule.png)
+![Log](../media/waf-front-door-tuning/custom-rule.png)
 
 探索記錄檔時，您可以看到 `ruleName_s` 欄位包含提供給我們所建立自訂規則的名稱： `redirectcomment` 。 在 `action_s` 此欄位中，您可以看到此事件已取得重新 *導向* 動作。 在 `details_matches_s` 欄位中，我們可以看到兩個條件的詳細資料都相符。
 
@@ -193,7 +193,7 @@ UserId=20&captchaId=7&captchaId=15&comment="1=1"&rating=3
  
 不過，停用規則是全域設定，適用于所有與 WAF 原則相關聯的前端主機。 當您選擇停用規則時，您可能會在沒有保護的情況下公開弱點，或偵測到任何與 WAF 原則相關聯的前端主機。
  
-如果您想要使用 Azure PowerShell 停用受控規則，請參閱 [`PSAzureManagedRuleOverride`](https://docs.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject?view=azps-4.7.0&preserve-view=true) 目的檔集。 如果您想要使用 Azure CLI，請參閱 [`az network front-door waf-policy managed-rules override`](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/override?view=azure-cli-latest&preserve-view=true) 檔。
+如果您想要使用 Azure PowerShell 停用受控規則，請參閱 [`PSAzureManagedRuleOverride`](/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject?preserve-view=true&view=azps-4.7.0) 目的檔集。 如果您想要使用 Azure CLI，請參閱 [`az network front-door waf-policy managed-rules override`](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/override?preserve-view=true&view=azure-cli-latest) 檔。
 
 ![WAF 規則](../media/waf-front-door-tuning/waf-rules.png)
 

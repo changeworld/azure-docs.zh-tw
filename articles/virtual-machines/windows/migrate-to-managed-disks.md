@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/30/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 8b7490723d3930a151abf1d3f72bb957e02e5988
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d88792f50e0e79dd0313694cf979761054551eac
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975496"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487519"
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>將 Azure VM 移轉至 Azure 中的受控磁碟
 
@@ -27,7 +27,7 @@ Azure 受控磁碟可免除個別管理儲存體帳戶的需求，進而簡化�
 |---------|---------|
 |將獨立 VM 和可用性設定組中的 VM 轉換成受控磁碟     |[將 VM 轉換成使用受控磁碟](convert-unmanaged-to-managed-disks.md)         |
 |將單一 VM 從傳統轉換成受控磁片上的 Resource Manager     |[從傳統 VHD 建立 VM](create-vm-specialized-portal.md)         |
-|將 vNet 中的所有 Vm 從傳統轉換成受控磁片上的 Resource Manager     |[將 IaaS 資源從傳統部署移轉至 Resource Manager 部署](migration-classic-resource-manager-ps.md)，然後[將 VM 從非受控磁碟轉換為受控磁碟](convert-unmanaged-to-managed-disks.md)         |
+|將 vNet 中的所有 Vm 從傳統轉換成受控磁片上的 Resource Manager     |[將 IaaS 資源從傳統部署移轉至 Resource Manager 部署](../migration-classic-resource-manager-ps.md)，然後[將 VM 從非受控磁碟轉換為受控磁碟](convert-unmanaged-to-managed-disks.md)         |
 |使用標準非受控磁片將 Vm 升級至具有受控 premium 磁片的 Vm     | 首先， [將 Windows 虛擬機器從非受控磁片轉換為受控磁片](convert-unmanaged-to-managed-disks.md)。 然後 [更新受控磁片的儲存體類型](convert-disk-storage.md)。         |
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]

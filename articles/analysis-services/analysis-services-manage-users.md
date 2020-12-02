@@ -4,15 +4,15 @@ description: 此文章說明 Azure Analysis Services 如何使用 Azure Active D
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b40be802f30bac8438f10c4ab60e1c196c9f7164
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 551bae56565140da3754e74a23b1cc18087f1171
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833787"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487434"
 ---
 # <a name="authentication-and-user-permissions"></a>驗證和使用者權限
 
@@ -24,7 +24,7 @@ Azure Analysis Services 支援 [Azure AD B2B 共同作業](../active-directory/e
 
 ## <a name="authentication"></a>驗證
 
-所有用戶端應用程式和工具會使用一或多個 Analysis Services [用戶端程式庫](/analysis-services/client-libraries?view=azure-analysis-services-current) (AMO、MSOLAP、ADOMD) 連線到伺服器。 
+所有用戶端應用程式和工具會使用一或多個 Analysis Services [用戶端程式庫](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true) (AMO、MSOLAP、ADOMD) 連線到伺服器。 
 
 這三個用戶端程式庫全都支援 Azure AD 互動式流程和非互動式驗證方法。 兩種非互動式方法 (Active Directory 密碼和 Active Directory 整合式驗證) 可以在利用 AMOMD 和 MSOLAP 的應用程式中使用。 這兩種方法絕對不會產生快顯對話方塊。
 

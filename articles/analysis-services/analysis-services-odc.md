@@ -4,19 +4,19 @@ description: 了解如何建立 Office 資料連線檔案 ，以在 Azure 連線
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 12/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 039783fc10fb08523dc81e13b5f6f456fa8d0c97
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 8fa657f3b343cdf49723dc68601bb1c9513ff504
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014761"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487332"
 ---
 # <a name="create-an-office-data-connection-file"></a>建立 Office 資料連線檔案
 
-本文中的資訊說明如何從 Excel 2016 版本號碼 16.0.7369.2117 或更早版本或 Excel 2013，建立 Office 資料連線檔案，以連線至 Azure Analysis Services 伺服器。 還需要有更新的 [MSOLAP.7 提供者](/analysis-services/client-libraries?view=azure-analysis-services-current)。
+本文中的資訊說明如何從 Excel 2016 版本號碼 16.0.7369.2117 或更早版本或 Excel 2013，建立 Office 資料連線檔案，以連線至 Azure Analysis Services 伺服器。 還需要有更新的 [MSOLAP.7 提供者](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true)。
 
 
 1. 複製下面的範例連線檔案，然後貼到文字編輯器。 
@@ -31,7 +31,7 @@ ms.locfileid: "92014761"
 
 4. 以 `.odc` 副檔名將檔案儲存到 C:\Users\\*username*\Documents\My Data Sources 資料夾。
 
-5. 在檔案上按一下滑鼠右鍵，然後按一下 [在 Excel 中開啟]****。 或在 Excel 的 [資料]**** 功能區上，按一下 [現有連線]****，選取您的檔案，然後按一下 [開啟]****。
+5. 在檔案上按一下滑鼠右鍵，然後按一下 [在 Excel 中開啟]。 或在 Excel 的 [資料] 功能區上，按一下 [現有連線]，選取您的檔案，然後按一下 [開啟]。
 
 
 

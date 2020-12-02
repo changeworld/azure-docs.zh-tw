@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 10/28/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: a57d5a00fad9a17e01b96ebdf395fb7a4b857935
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cf44ad8d81656248329d993d86e9922dc4985258
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968684"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486669"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-the-azure-kubernetes-service"></a>在 Azure Kubernetes Service 上執行 Oracle WebLogic Server 的解決方案有哪些？
 
 本頁面說明在 Azure Kubernetes Service (AKS) 上執行 Oracle WebLogic Server (WLS) 的解決方案。 這些解決方案是由 Oracle 和 Microsoft 共同開發和支援的。
 
-您也可以在 Azure 虛擬機器上執行 WebLogic 伺服器。 這項作業的解決方案將在 [這篇 Microsoft 文章](/azure/virtual-machines/workloads/oracle/oracle-weblogic)中說明。
+您也可以在 Azure 虛擬機器上執行 WebLogic 伺服器。 這項作業的解決方案將在 [這篇 Microsoft 文章](./oracle-weblogic.md)中說明。
 
 WebLogic Server 是一部領先的 JAVA 應用程式伺服器，在全球各地執行一些最重要的關鍵企業 JAVA 應用程式。 WebLogic Server 形成 Oracle software suite 的中介軟體基礎。 Oracle 和 Microsoft 致力於讓 WebLogic 伺服器客戶享有選擇和彈性，以便在 Azure 上以領先的雲端平臺執行工作負載。
 

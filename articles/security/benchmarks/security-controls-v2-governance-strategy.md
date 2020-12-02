@@ -7,57 +7,57 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ae0930e0845e8e8bd6dc4571dc3e8e27491a7be6
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: e4da0b288bca2517e4e0f58569215709a5f71a5e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408787"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487757"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>安全性控制 V2：治理和策略
 
 治理和策略提供的指導方針可確保一致的安全性策略，以及記載的治理方法來引導並維持安全性保證，包括為不同的雲端安全性功能、統一的技術策略，以及支援的原則和標準建立角色和責任。
 
-## <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1：定義資產管理與資料保護策略
+## <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1：定義資產管理和資料保護策略
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
 | GS-1 | 2，13 | SC、AC |
 
-確定您記載並傳達可連續監視和保護系統和資料的清晰策略。 優先探索、評估、保護及監視商務關鍵資料和系統。 
+確定您記載並傳達可連續監視和保護系統和資料的清晰策略。 請優先探索、評估、保護及監視業務關鍵資料和系統。 
 
-此策略應該包含已記載的指導方針、原則，以及下列元素的標準： 
+此策略應該包含下列項目的已記載指引、原則和標準： 
 
-- 以商務風險為依據的資料分類標準
+- 符合商業風險的資料分類標準
 
-- 安全性組織風險和資產清查的可見度 
+- 安全性組織對風險和資產清查的可見度 
 
-- 安全性組織核准 Azure 服務以供使用 
+- 安全性組織核准 Azure 服務以供使用的程序 
 
-- 資產在其生命週期內的安全性
+- 資產在其生命週期中的安全性
 
-- 根據組織資料分類所需的存取控制策略
+- 符合組織資料分類的必要存取控制策略
 
-- 使用 Azure 原生和協力廠商資料保護功能
+- Azure 原生和第三方資料保護功能的使用
 
 - 傳輸中和待用使用案例的資料加密需求
 
 - 適當的密碼編譯標準
 
 如需詳細資訊，請參閱下列參考資料：
-- [Azure 安全性架構建議-儲存體、資料和加密](/azure/architecture/framework/security/storage-data-encryption?amp;bc=%252fsecurity%252fcompass%252fbreadcrumb%252ftoc.json&toc=%252fsecurity%252fcompass%252ftoc.json)
+- [Azure 安全性架構建議 - 儲存體、資料和加密](/azure/architecture/framework/security/storage-data-encryption?amp;bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json) (機器翻譯)
 
-- [Azure 安全性基礎-Azure 資料安全性、加密和儲存體](../fundamentals/encryption-overview.md)
+- [Azure 安全性基礎觀念 - Azure 資料安全性、加密和儲存體](../fundamentals/encryption-overview.md) (機器翻譯)
 
-- [雲端採用架構-Azure 資料安全性和加密最佳作法](../fundamentals/data-encryption-best-practices.md?amp;bc=%252fazure%252fcloud-adoption-framework%252f_bread%252ftoc.json&toc=%252fazure%252fcloud-adoption-framework%252ftoc.json)
+- [雲端採用架構 - Azure 資料安全性和加密最佳做法](../fundamentals/data-encryption-best-practices.md?amp;bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json) (機器翻譯)
 
-- [Azure 安全性基準測試-資產管理](security-controls-v2-asset-management.md)
+- [Azure 安全性效能評定 - 資產管理](security-controls-v2-asset-management.md)
 
-- [Azure 安全性基準測試-資料保護](security-controls-v2-data-protection.md)
+- [Azure 安全性效能評定 - 資料保護](security-controls-v2-data-protection.md)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -69,55 +69,55 @@ ms.locfileid: "94408787"
 
 使用身分識別、網路、應用程式、訂用帳戶、管理群組和其他控制項的組合，建立企業級的策略來分割資產的存取權。
 
-請仔細平衡安全性分隔的需求，以及針對需要彼此通訊並存取資料的系統，啟用每日作業的需求。
+審慎權衡安全性區隔的需求，以及需要與彼此通訊並存取資料的啟用每日作業需求。
 
-請確定跨控制項類型（包括網路安全性、身分識別和存取模型、應用程式許可權/存取模型，以及人力流程式控制件）一致地實行分割策略。
+確保在各種控制項類型上一致地實作分割策略，這些控制項類型包括網路安全性、身分識別和存取模型，以及應用程式權限/存取模型與人力流程控制。
 
-- [Azure 中的分割策略指引 (影片) ](/security/compass/microsoft-security-compass-introduction#azure-components-and-reference-model-2151)
+- [Azure 中的分割策略指引 (影片)](/security/compass/microsoft-security-compass-introduction#azure-components-and-reference-model-2151) (機器翻譯)
 
-- [Azure (檔中的分割策略指引) ](/security/compass/governance#enterprise-segmentation-strategy)
+- [Azure 中的分割策略指引 (文件)](/security/compass/governance#enterprise-segmentation-strategy) (機器翻譯)
 
-- [利用企業分割策略來調整網路分割](/security/compass/network-security-containment#align-network-segmentation-with-enterprise-segmentation-strategy)
+- [使用企業分割策略來調整網路分割](/security/compass/network-security-containment#align-network-segmentation-with-enterprise-segmentation-strategy) (機器翻譯)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-3-define-security-posture-management-strategy"></a>GS-3：定義安全性狀態管理原則
+## <a name="gs-3-define-security-posture-management-strategy"></a>GS-3：定義安全性狀態管理策略
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
 | GS-3 | 20、3、5 | RA、CM、SC |
 
-持續測量並減輕個別資產及其託管環境的風險。 設定高價值資產的優先順序以及高度公開的攻擊面，例如已發佈的應用程式、網路輸入和輸出點、使用者和系統管理員端點等等。
+持續測量並減輕個別資產及其託管環境的風險。 優先處理高價值資產和高度公開的攻擊面，例如已發佈的應用程式、網路輸入和輸出點、使用者和系統管理員端點等等。
 
-- [Azure 安全性基準測試-狀態與弱點管理](security-controls-v2-posture-vulnerability-management.md)
+- [Azure 安全性效能評定 - 狀態和弱點管理](security-controls-v2-posture-vulnerability-management.md)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-4-align-organization-roles-responsibilities-and-accountabilities"></a>GS-4：讓組織角色、職責和責任保持一致
+## <a name="gs-4-align-organization-roles-responsibilities-and-accountabilities"></a>GS-4：協調組織角色、責任及權責
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
 | GS-4 | N/A | PL，PM |
 
-確定您記載並傳達安全性組織中角色和責任的明確策略。 優先提供安全性決策的明確責任、教育所有人共同責任模型，以及教育技術小組來保護雲端。
+確定您記載並傳達安全性組織中角色和責任的明確策略。 優先為安全性決策提供清楚的權責、讓每個人熟知共同責任模型，並讓技術團隊熟知保護雲端的技術。
 
-- [Azure 安全性最佳作法 1-人員：教育小組雲端安全性旅程](/azure/cloud-adoption-framework/security/security-top-10#1-people-educate-teams-about-the-cloud-security-journey)
+- [Azure 安全性最佳做法 1 – 人員：讓小組熟知雲端安全性旅程](/azure/cloud-adoption-framework/security/security-top-10#1-people-educate-teams-about-the-cloud-security-journey) (機器翻譯)
 
-- [Azure 安全性最佳作法 2-人員：教育小組雲端安全性技術](/azure/cloud-adoption-framework/security/security-top-10#2-people-educate-teams-on-cloud-security-technology)
+- [Azure 安全性最佳做法 2 - 人員：讓小組熟知雲端安全性技術](/azure/cloud-adoption-framework/security/security-top-10#2-people-educate-teams-on-cloud-security-technology) (機器翻譯)
 
-- [Azure 安全性最佳作法 3-處理：指派雲端安全性決策的責任](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
+- [Azure 安全性最佳做法 3 - 流程：指派雲端安全性決策的權責](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud) (機器翻譯)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -129,37 +129,37 @@ ms.locfileid: "94408787"
 
 建立 Azure 網路安全性方法，作為組織整體安全性存取控制策略的一部分。  
 
-此策略應該包含已記載的指導方針、原則，以及下列元素的標準： 
+此策略應該包含下列項目的已記載指引、原則和標準： 
 
 - 集中式網路管理和安全性責任
 
-- 虛擬網路分割模型與企業分割策略一致
+- 與企業分割策略一致的虛擬網路分割模型
 
-- 不同威脅和攻擊案例中的補救策略
+- 不同威脅和攻擊案例的補救策略
 
-- 網際網路邊緣與輸入和輸出策略
+- 網際網路邊緣和輸入與輸出策略
 
 - 混合式雲端和內部部署互連能力策略
 
-- 最新的網路安全性構件 (例如網狀圖、參考網路架構) 
+- 最新的網路安全性成品 (例如網路圖、參考網路架構)
 
 如需詳細資訊，請參閱下列參考資料：
 
-- [Azure 安全性最佳做法 11-架構。單一整合的安全性策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
+- [Azure 安全性最佳做法 11 - 架構。單一整合的安全性策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy) (機器翻譯)
 
-- [Azure 安全性基準測試-網路安全性](security-controls-v2-network-security.md)
+- [Azure 安全性效能評定 - 網路安全性](security-controls-v2-network-security.md)
 
 - [Azure 網路安全性概觀](../fundamentals/network-overview.md)
 
-- [商業網路架構策略](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture)
+- [企業網路架構策略](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture) (機器翻譯)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-6-define-identity-and-privileged-access-strategy"></a>GS-6：定義身分識別和特殊許可權存取策略
+## <a name="gs-6-define-identity-and-privileged-access-strategy"></a>GS-6：定義身分識別和特殊權限存取策略
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
@@ -167,31 +167,31 @@ ms.locfileid: "94408787"
 
 建立 Azure 身分識別和特殊許可權的存取方法，作為組織整體安全性存取控制策略的一部分。  
 
-此策略應該包含已記載的指導方針、原則，以及下列元素的標準： 
+此策略應該包含下列項目的已記載指引、原則和標準： 
 
 - 集中式身分識別和驗證系統，以及其與其他內部和外部身分識別系統的互連能力
 
-- 不同使用案例和條件中的強式驗證方法
+- 不同使用案例和條件中的增強式驗證方法
 
-- 保護高許可權的使用者
+- 高權限使用者的保護
 
 - 異常使用者活動監視和處理  
 
-- 使用者身分識別和存取權檢查和協調流程
+- 使用者身分識別、存取權檢閱與核對流程
 
 如需詳細資訊，請參閱下列參考資料：
 
-- [Azure 安全性基準測試-身分識別管理](security-controls-v2-identity-management.md)
+- [Azure 安全性效能評定 - 身分識別管理](security-controls-v2-identity-management.md)
 
-- [Azure 安全性基準測試-特殊許可權存取](security-controls-v2-privileged-access.md)
+- [Azure 安全性效能評定 - 特殊權限存取](security-controls-v2-privileged-access.md)
 
-- [Azure 安全性最佳做法 11-架構。單一整合的安全性策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
+- [Azure 安全性最佳做法 11 - 架構。單一整合的安全性策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy) (機器翻譯)
 
 - [Azure 身分識別管理安全性概觀](../fundamentals/identity-management-overview.md)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -201,38 +201,38 @@ ms.locfileid: "94408787"
 |--|--|--|--|
 | GS-7 | 19 | IR、AU、RA、SC |
 
-建立記錄和威脅回應策略，以快速偵測和補救威脅，同時符合合規性需求。 排定為分析師提供高品質的警示和順暢的體驗，讓他們可以專注于威脅，而不是整合和手動步驟。 
+建立記錄和威脅回應策略，以快速偵測和補救威脅，同時符合合規性需求。 優先為分析師提供高品質的警示和順暢的體驗，使其能夠全心處理威脅，而非整合和手動步驟。 
 
-此策略應該包含已記載的指導方針、原則，以及下列元素的標準： 
+此策略應包含針對下列元素而記載的指引、原則和標準： 
 
 - 安全性作業 (SecOps) 組織的角色和責任 
 
-- 妥善定義的事件回應程式，與 NIST 或其他產業架構一致 
+- 妥善定義且與 NIST 或其他產業架構一致的事件回應流程 
 
-- 記錄檔捕捉和保留，以支援威脅偵測、事件回應和合規性需求
+- 記錄擷取和保留，以支援威脅偵測、事件回應及合規性需求
 
-- 使用 SIEM、原生 Azure 功能和其他來源，集中查看威脅的相關資訊以及相關資訊 
+- 使用 SIEM、原生 Azure 功能及其他來源，集中顯示及相互關聯威脅的相關資訊 
 
-- 與您的客戶、供應商和感興趣的公開方相關的通訊和通知計畫
+- 與客戶、供應商和相關公開合作對象之間的溝通和通知計畫
 
-- 使用 Azure 原生和協力廠商平臺進行事件處理，例如記錄和威脅偵測、取證和攻擊補救和根除
+- 使用 Azure 原生和協力廠商平台進行事件處理，例如記錄和威脅偵測、鑑定，以及攻擊補救和根除
 
-- 處理事件和事件後活動的流程，例如經驗教訓和辨識項保留
+- 處理事件和事件後活動的流程，例如吸取的經驗和證據保留
 
 如需詳細資訊，請參閱下列參考資料：
-- [Azure 安全性基準測試-記錄和威脅偵測](security-controls-v2-logging-threat-detection.md)
+- [Azure 安全性效能評定 - 記錄與威脅偵測](security-controls-v2-logging-threat-detection.md)
 
-- [Azure 安全性基準測試-事件回應](security-controls-v2-incident-response.md)
+- [Azure 安全性效能評定 - 事件回應](security-controls-v2-incident-response.md)
 
-- [Azure 安全性最佳作法 4-處理。更新雲端的事件回應程式](/azure/cloud-adoption-framework/security/security-top-10#3-process-assign-accountability-for-cloud-security-decisions)
+- [Azure 安全性最佳做法 4 - 流程。更新雲端的事件回應流程](/azure/cloud-adoption-framework/security/security-top-10#3-process-assign-accountability-for-cloud-security-decisions) (機器翻譯)
 
-- [Azure 採用架構、記錄和報告決策指南](/azure/cloud-adoption-framework/decision-guides/logging-and-reporting/)
+- [Azure 採用架構、記錄與報告決策指南](/azure/cloud-adoption-framework/decision-guides/logging-and-reporting/)
 
-- [Azure 企業規模、管理及監視](/azure/cloud-adoption-framework/ready/enterprise-scale/management-and-monitoring)
+- [Azure 企業規模、管理與監視](/azure/cloud-adoption-framework/ready/enterprise-scale/management-and-monitoring) (機器翻譯)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -244,7 +244,7 @@ ms.locfileid: "94408787"
 
 為您的組織建立 Azure 備份和復原策略。 
 
-此策略應該包含已記載的指導方針、原則，以及下列元素的標準： 
+此策略應該包含下列項目的已記載指引、原則和標準： 
 
 - 復原時間目標 (RTO) 和復原點目標 (RPO) 定義符合您的企業復原目標
 
@@ -259,8 +259,8 @@ ms.locfileid: "94408787"
 
 - [Azure 採用架構-商務持續性和嚴重損壞修復](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
