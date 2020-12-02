@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 11/30/2020
 ms.author: memildin
-ms.openlocfilehash: a80747a88087e1ad3a70f198a260e41a6848e34f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 07a94685fb3655aa5aa21a8658b9d975c764daff
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445652"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512272"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>電腦上適用于 SQL server 的 Azure Defender 
 
@@ -30,7 +30,7 @@ ms.locfileid: "96445652"
 
 |層面|詳細資料|
 |----|:----|
-|版本狀態：|預覽<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|版本狀態：|正式上市 (GA)|
 |定價：|**電腦上適用于 SQL server 的 Azure Defender** 會依 [定價頁面](security-center-pricing.md)上的顯示方式計費|
 |受保護的 SQL 版本：|Azure SQL Server (Microsoft 支援服務所涵蓋的所有版本) |
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov、其他 Gov|
@@ -68,7 +68,7 @@ ms.locfileid: "96445652"
 
         ![依標題尋找您的非預設工作區](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
 
-1. 針對 **電腦上的 SQL server 設定 Azure Defender 的選項 (Preview)** 方案設定為 **開啟**。 
+1. 將 [ **機器上的 SQL server 的 Azure Defender** 方案] 選項設定為 [ **開啟**]。 
 
     ![具有選擇性方案的 [安全性中心定價] 頁面](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png)
 
@@ -79,7 +79,7 @@ ms.locfileid: "96445652"
 
 
 1. （選擇性）設定安全性警示的電子郵件通知。 
-    您可以設定要在產生安全性中心警示時收到電子郵件通知的收件者清單。 電子郵件包含 Azure 資訊安全中心中警示的直接連結，其中包含所有相關的詳細資料。 如需詳細資訊，請參閱 [設定安全性警示的電子郵件通知](security-center-provide-security-contact-details.md)。
+    您可以設定要在產生安全性中心警示時收到電子郵件通知的收件者清單。 電子郵件包含 Azure 資訊安全中心中警示的直接 sk，以及所有相關的詳細資料。 如需詳細資訊，請參閱 [設定安全性警示的電子郵件通知](security-center-provide-security-contact-details.md)。
 
 
 

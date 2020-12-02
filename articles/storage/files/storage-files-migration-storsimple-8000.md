@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 046cca4e683a8f14893bf48ac8601b138a7c28a7
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: daa7c657a47414b01197bed3644caefeda98af1c
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630272"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512166"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>將 StorSimple 8100 和8600遷移至 Azure 檔案同步
 
@@ -76,7 +76,7 @@ Azure 檔案共用會在儲存的檔案（如屬性、許可權和時間戳記�
 >
 > * 透過 HTTPS 會話連接是最安全且建議的選項。
 > * 直接連線至裝置序列主控台是安全的，但透過網路交換器連線至序列主控台則否。
-> * HTTP 會話連接是一個選項，但 *未加密* 。 除非在已關閉、受信任的網路中使用它們，否則不建議使用。
+> * HTTP 會話連接是一個選項，但 *未加密*。 除非在已關閉、受信任的網路中使用它們，否則不建議使用。
 
 ### <a name="storsimple-volume-backups"></a>StorSimple 磁片區備份
 
@@ -119,7 +119,7 @@ StorSimple 會在磁片區層級上提供差異備份。 Azure 檔案共用也�
 * 您有需要遷移磁片區的計畫，以及如何將磁片區對應至適當的 Azure 檔案共用和儲存體帳戶數目。
 
 > [!CAUTION]
-> 如果您必須從 StorSimple 磁片區遷移備份，請在 **此停止** 。
+> 如果您必須從 StorSimple 磁片區遷移備份，請在 **此停止**。
 >
 > 這種遷移方法依賴目前無法遷移備份的新資料轉換服務功能。 備份遷移的支援將于2020年底到達。 您目前只能遷移您的即時資料。 如果您現在開始，就無法在稍後「找不到」您的備份。 您必須使用 Azure 檔案共用快照集，將備份「播放」至 Azure 檔案共用，從最舊到最新到最新的資料到即時資料。
 
@@ -145,7 +145,7 @@ StorSimple 會在磁片區層級上提供差異備份。 Azure 檔案共用也�
 
 您的儲存體帳戶名稱將會成為 URL 的一部分，並具有某些字元限制。 在您的命名慣例中，請考慮儲存體帳戶名稱在世界中必須是唯一的，只允許小寫字母和數位，且必須介於3到24個字元之間，而且不允許使用連字號或底線等特殊字元。 如需詳細資訊，請參閱 [Azure 儲存體資源命名規則](../../azure-resource-manager/management/resource-name-rules.md#microsoftstorage)。
 
-#### <a name="location"></a>Location
+#### <a name="location"></a>位置
 
 儲存體帳戶的位置或 Azure 區域非常重要。 如果您使用 Azure 檔案同步，則所有的儲存體帳戶都必須位於與儲存體同步服務資源相同的區域中。 您挑選的 Azure 區域應接近或集中于您的本機伺服器和使用者。 部署資源之後，您就無法變更其區域。
 
@@ -165,8 +165,8 @@ StorSimple 會在磁片區層級上提供差異備份。 Azure 檔案共用也�
 
 #### <a name="account-kind"></a>帳戶種類
 
-* 針對標準儲存體，請選擇 *[StorageV2 (一般用途 v2])* 。
-* 針對 [premium 檔案共用]，選擇 [ *FileStorage* ]。
+* 針對標準儲存體，請選擇 *[StorageV2 (一般用途 v2])*。
+* 針對 [premium 檔案共用]，選擇 [ *FileStorage*]。
 
 #### <a name="replication"></a>複寫
 
@@ -174,8 +174,8 @@ StorSimple 會在磁片區層級上提供差異備份。 Azure 檔案共用也�
 
 只選擇下列兩個選項之一：
 
-* *本機冗余儲存體 (LRS)* 。
-* *區域冗余儲存體 (ZRS)* ，在所有 Azure 區域中都無法使用。
+* *本機冗余儲存體 (LRS)*。
+* *區域冗余儲存體 (ZRS)*，在所有 Azure 區域中都無法使用。
 
 > [!NOTE]
 > 只有 LRS 和 ZRS 冗余類型可與大型 100-TiB 容量 Azure 檔案共用相容。
@@ -209,13 +209,13 @@ StorSimple 會在磁片區層級上提供差異備份。 Azure 檔案共用也�
         :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-share.png" alt-text="Azure 入口網站螢幕擷取畫面，其中顯示新的檔案共用 UI。":::
     :::column-end:::
     :::column:::
-        </br>**Name**</br>支援小寫字母、數位及連字號。</br></br>**配額**</br>此處的配額相當於 Windows Server 實例上的 SMB 硬配額。 最佳做法是不要在此設定配額，因為達到配額時，您的遷移和其他服務將會失敗。</br></br>**階層**</br>選取 [針對您的新檔案共用 **優化的交易** ]。 在遷移期間，將會發生許多交易。 更符合成本效益的方式，就是將您的階層變更為最適合您工作負載的層級。
+        </br>**名稱**</br>支援小寫字母、數位及連字號。</br></br>**配額**</br>此處的配額相當於 Windows Server 實例上的 SMB 硬配額。 最佳做法是不要在此設定配額，因為達到配額時，您的遷移和其他服務將會失敗。</br></br>**階層**</br>選取 [針對您的新檔案共用 **優化的交易** ]。 在遷移期間，將會發生許多交易。 更符合成本效益的方式，就是將您的階層變更為最適合您工作負載的層級。
     :::column-end:::
 :::row-end:::
 
 ### <a name="storsimple-data-manager"></a>StorSimple 資料管理員
 
-將保留您的遷移作業的 Azure 資源稱為 **StorSimple 資料管理員** 。 選取 [ **新增資源** ]，並搜尋它。 然後選取 [建立]。
+將保留您的遷移作業的 Azure 資源稱為 **StorSimple 資料管理員**。 選取 [ **新增資源**]，並搜尋它。 然後選取 [建立]。
 
 此暫存資源用於協調流程。 您會在遷移完成後取消布建。 它應該部署在與 StorSimple 儲存體帳戶相同的訂用帳戶、資源群組和區域中。
 
@@ -232,7 +232,7 @@ StorSimple 會在磁片區層級上提供差異備份。 Azure 檔案共用也�
 
 ## <a name="phase-3-create-and-run-a-migration-job"></a>第3階段：建立和執行遷移作業
 
-本節說明如何設定遷移作業，並謹慎地對應 StorSimple 磁片區上的目錄，該磁片區應複製到您選取的目標 Azure 檔案共用。 若要開始使用，請移至您的 StorSimple 資料管理員，尋找功能表上的 **工作定義** ，然後選取 [ **+ 作業定義** ]。 目標儲存體類型是預設的 **Azure 檔案共用** 。
+本節說明如何設定遷移作業，並謹慎地對應 StorSimple 磁片區上的目錄，該磁片區應複製到您選取的目標 Azure 檔案共用。 若要開始使用，請移至您的 StorSimple 資料管理員，尋找功能表上的 **工作定義** ，然後選取 [ **+ 作業定義**]。 目標儲存體類型是預設的 **Azure 檔案共用**。
 
 ![StorSimple 8000 系列的遷移作業類型。](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job-type.png "工作定義 Azure 入口網站的螢幕擷取畫面，其中已開啟新的 [作業定義] 對話方塊，該對話方塊會要求作業類型：複製到檔案共用或 blob 容器。")
 
@@ -320,8 +320,8 @@ StorSimple 會在磁片區層級上提供差異備份。 Azure 檔案共用也�
 
 有兩個主要策略可存取 Azure 檔案共用：
 
-* **Azure 檔案同步** ：將 [Azure 檔案同步部署](#deploy-azure-file-sync) 到內部部署 Windows Server 實例。 Azure 檔案同步具有本機快取的所有優點，就像 StorSimple 一樣。
-* **直接共用-存取** ： [部署直接共用存取](#deploy-direct-share-access)。 如果您在特定 Azure 檔案共用的存取案例中無法受益于本機快取，或您不再有裝載內部部署 Windows Server 實例的能力，請使用此策略。 在此，您的使用者和應用程式將會繼續透過 SMB 通訊協定存取 SMB 共用。 這些共用已不再位於內部部署伺服器上，而是直接在雲端中。
+* **Azure 檔案同步**：將 [Azure 檔案同步部署](#deploy-azure-file-sync) 到內部部署 Windows Server 實例。 Azure 檔案同步具有本機快取的所有優點，就像 StorSimple 一樣。
+* **直接共用-存取**： [部署直接共用存取](#deploy-direct-share-access)。 如果您在特定 Azure 檔案共用的存取案例中無法受益于本機快取，或您不再有裝載內部部署 Windows Server 實例的能力，請使用此策略。 在此，您的使用者和應用程式將會繼續透過 SMB 通訊協定存取 SMB 共用。 這些共用已不再位於內部部署伺服器上，而是直接在雲端中。
 
 您應該已在本指南的 [第1階段](#phase-1-prepare-for-migration) 決定哪一個選項最適合您。
 
@@ -425,11 +425,11 @@ StorSimple 會在磁片區層級上提供差異備份。 Azure 檔案共用也�
 
 您也可以使用 Windows Server 實例上的事件檢視器，來判斷命名空間何時完全到達。
 
-1. 開啟 **事件檢視器** ，然後移至 [ **應用程式和服務** ]。
-1. 移至並開啟 **Microsoft\FileSync\Agent\Telemetry** 。
-1. 尋找最新的 **事件 9102** ，這會對應到已完成的同步會話。
-1. 選取 [ **詳細資料** ]，並確認您正在查看 **SyncDirection** 值 **下載** 的事件。
-1. 當您的命名空間已完成下載至伺服器時，將會有單一事件和 **案例** 、值 **FullGhostedSync** 和 **HResult**  =  **0** 。
+1. 開啟 **事件檢視器**，然後移至 [ **應用程式和服務**]。
+1. 移至並開啟 **Microsoft\FileSync\Agent\Telemetry**。
+1. 尋找最新的 **事件 9102**，這會對應到已完成的同步會話。
+1. 選取 [ **詳細資料**]，並確認您正在查看 **SyncDirection** 值 **下載** 的事件。
+1. 當您的命名空間已完成下載至伺服器時，將會有單一事件和 **案例**、值 **FullGhostedSync** 和 **HResult**  =  **0**。
 1. 如果您錯過該事件，也可以使用 **SyncDirection** **9102 events**  =  **下載** 和 **案例**  =  **"RegularSync"** 尋找其他9102事件。 尋找其中一個事件也表示命名空間已完成下載，並同步處理至一般同步會話，不論目前是否有任何要同步處理的作業。
 
 ### <a name="a-final-robocopy"></a>最終 RoboCopy
@@ -448,7 +448,7 @@ StorSimple 會在磁片區層級上提供差異備份。 Azure 檔案共用也�
 RoboCopy 有數個參數。 下列範例會展示已完成的命令，以及選擇這些參數的原因清單。
 
 ```console
-Robocopy /MT:16 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
+Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
 後景：
@@ -475,6 +475,14 @@ Robocopy /MT:16 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
    :::column-end:::
    :::column span="1":::
       輸出至主控台視窗。 搭配使用於記錄檔的輸出。
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      /NP
+   :::column-end:::
+   :::column span="1":::
+      略過記錄進度，讓記錄保持可讀取。
    :::column-end:::
 :::row-end:::
 :::row:::

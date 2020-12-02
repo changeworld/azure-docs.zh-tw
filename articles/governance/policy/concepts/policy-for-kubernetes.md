@@ -1,18 +1,18 @@
 ---
 title: 瞭解 Kubernetes 的 Azure 原則
 description: 了解 Azure 原則如何使用 Rego 和 Open Policy Agent 來管理在 Azure 或內部部署中執行 Kubernetes 的叢集。
-ms.date: 09/29/2020
+ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1e85d7af26e52ea38c09ec0c052b5c6a2787bb80
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: e2b9253d8ce60d5dc77d406e3c9d0469539f2c77
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146291"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511326"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>了解適用於 Kubernetes 叢集的 Azure 原則 \(部分機器翻譯\)
 
-Azure 原則會延伸 [Gatekeeper](https://github.com/open-policy-agent/gatekeeper) v3 ( [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) 的 _許可控制站 Webhook_ )，以集中且一致的方式，對叢集進行大規模的政策實施和保護。 Azure 原則可以從單一位置管理和報告 Kubernetes 叢集的合規性狀態。 附加元件會制定下列功能：
+Azure 原則會延伸 [Gatekeeper](https://github.com/open-policy-agent/gatekeeper) v3 ([Open Policy Agent](https://www.openpolicyagent.org/) (OPA) 的 _許可控制站 Webhook_)，以集中且一致的方式，對叢集進行大規模的政策實施和保護。 Azure 原則可以從單一位置管理和報告 Kubernetes 叢集的合規性狀態。 附加元件會制定下列功能：
 
 - 向 Azure 原則服務確認以了解叢集的原則指派。
 - 將原則定義部署至叢集中，作為[條件約束範本](https://github.com/open-policy-agent/gatekeeper#constraint-templates)和[條件約束](https://github.com/open-policy-agent/gatekeeper#constraints)自訂資源。
@@ -25,7 +25,7 @@ Azure 原則會延伸 [Gatekeeper](https://github.com/open-policy-agent/gatekeep
 - [AKS 引擎](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
-> 適用于 AKS 引擎和已啟用 Arc 之 Kubernetes 的附加元件現供 **預覽** 。 適用于 Kubernetes 的 Azure 原則僅支援 Linux 節點集區和內建原則定義。 內建的原則定義位在 **Kubernetes** 類別中。 具有 **EnforceOPAConstraint** 和 **EnforceRegoPolicy** 效果的有限預覽原則定義和相關的 **Kubernetes 服務** 類別已被 _取代_ 。 相反地，請使用對資源提供者模式進行 _audit_ 和 _deny_ 的效果 `Microsoft.Kubernetes.Data` 。
+> 適用于 AKS 引擎和已啟用 Arc 之 Kubernetes 的附加元件現供 **預覽**。 適用于 Kubernetes 的 Azure 原則僅支援 Linux 節點集區和內建原則定義。 內建的原則定義位在 **Kubernetes** 類別中。 具有 **EnforceOPAConstraint** 和 **EnforceRegoPolicy** 效果的有限預覽原則定義和相關的 **Kubernetes 服務** 類別已被 _取代_。 相反地，請使用對資源提供者模式進行 _audit_ 和 _deny_ 的效果 `Microsoft.Kubernetes.Data` 。
 
 ## <a name="overview"></a>概觀
 
@@ -62,7 +62,7 @@ Azure 原則會延伸 [Gatekeeper](https://github.com/open-policy-agent/gatekeep
 下列限制僅適用于 AKS 的 Azure 原則附加元件：
 
 - [AKS Pod 安全性原則](../../../aks/use-pod-security-policies.md) 和 AKS 的 Azure 原則附加元件無法同時啟用。 如需詳細資訊，請參閱 [AKS pod 安全性限制](../../../aks/use-pod-security-on-azure-policy.md#limitations)。
-- 評估的 Azure 原則附加元件會自動排除命名空間： _kube-system_ 、 _閘道管理員系統_ 和 _aks-periscope_ 。
+- 評估的 Azure 原則附加元件會自動排除命名空間： _kube-system_、 _閘道管理員系統_ 和 _aks-periscope_。
 
 ## <a name="recommendations"></a>建議
 
@@ -107,7 +107,7 @@ Azure 原則會延伸 [Gatekeeper](https://github.com/open-policy-agent/gatekeep
      az provider register --namespace Microsoft.PolicyInsights
      ```
 
-1. 如果已安裝有限的預覽原則定義，請在 [ **原則** ] 頁面下的 AKS 叢集上，使用 [ **停** 用] 按鈕移除附加元件。
+1. 如果已安裝有限的預覽原則定義，請在 [**原則**] 頁面下的 AKS 叢集上，使用 [**停** 用] 按鈕移除附加元件。
 
 1. AKS 叢集必須是 _1.14_ 版或更新版本。 使用下列指令碼來驗證您的 AKS 叢集版本：
 
@@ -124,7 +124,7 @@ Azure 原則會延伸 [Gatekeeper](https://github.com/open-policy-agent/gatekeep
 
 - Azure 入口網站
 
-  1. 選取 [ **所有服務** ]，然後搜尋並選取 [ **Kubernetes 服務** ]，以啟動 Azure 入口網站中的 AKS 服務。
+  1. 選取 [ **所有服務**]，然後搜尋並選取 [ **Kubernetes 服務**]，以啟動 Azure 入口網站中的 AKS 服務。
 
   1. 選取您的其中一個 AKS 叢集。
 
@@ -217,7 +217,7 @@ kubectl get pods -n gatekeeper-system
    |`login.windows.net` |`443` |
    |`dc.services.visualstudio.com` |`443` |
 
-1. 將「原則見解資料寫入者 (預覽)」角色指派指派給已啟用 Azure Arc 的 Kubernetes 叢集。 將 `<subscriptionId>` 取代為您的訂用帳戶識別碼、`<rg>` 取代為已啟用 Azure Arc 的 Kubernetes 叢集的資源群組，並將 `<clusterName>` 取代為啟用 Azure Arc 的 Kubernetes 叢集名稱。 針對安裝步驟，追蹤 _appId_ 、 _password_ 和 _tenant_ 的傳回值。
+1. 將「原則見解資料寫入者 (預覽)」角色指派指派給已啟用 Azure Arc 的 Kubernetes 叢集。 將 `<subscriptionId>` 取代為您的訂用帳戶識別碼、`<rg>` 取代為已啟用 Azure Arc 的 Kubernetes 叢集的資源群組，並將 `<clusterName>` 取代為啟用 Azure Arc 的 Kubernetes 叢集名稱。 針對安裝步驟，追蹤 _appId_、_password_ 和 _tenant_ 的傳回值。
 
    - Azure CLI
 
@@ -395,9 +395,9 @@ kubectl get pods -n gatekeeper-system
 1. 將 [範圍] 設定為將套用原則指派所在 Kubernetes 叢集的管理群組、訂用帳戶或資源群組。
 
    > [!NOTE]
-   > 指派 Kubernetes 適用的 Azure 原則定義時， **範圍** 必須包含叢集資源。 若為 AKS 引擎叢集， **範圍** 必須是叢集的資源群組。
+   > 指派 Kubernetes 適用的 Azure 原則定義時，**範圍** 必須包含叢集資源。 若為 AKS 引擎叢集，**範圍** 必須是叢集的資源群組。
 
-1. 為原則指派賦予 **名稱** 和 **描述** ，讓您能夠輕鬆識別該原則。
+1. 為原則指派賦予 **名稱** 和 **描述**，讓您能夠輕鬆識別該原則。
 
 1. 將 [強制執行的原則](./assignment-structure.md#enforcement-mode) 設定為下列其中一個值。
 
@@ -409,7 +409,7 @@ kubectl get pods -n gatekeeper-system
 
 1. 設定 **參數值**
 
-   - 若要從原則評估中排除 Kubernetes 命名空間，請在 [命名空間排除] 參數中指定命名空間的清單。 建議您排除： _kube-system_ 、 _gatekeeper-system_ 和 _azure-arc_ 。
+   - 若要從原則評估中排除 Kubernetes 命名空間，請在 [命名空間排除] 參數中指定命名空間的清單。 建議您排除：_kube-system_、_gatekeeper-system_ 和 _azure-arc_。
 
 1. 選取 [檢閱 + 建立]。
 
@@ -436,9 +436,17 @@ kubectl get pods -n gatekeeper-system
 > [!NOTE]
 > 在 Kubernetes 叢集 Azure 原則中，每個合規性報告都包含過去 45 分鐘內的所有違規。 時間戳記會指出違規發生的時間。
 
+其他考慮事項：
+
+- 如果叢集訂用帳戶已向 Azure 資訊安全中心登錄，則會自動在叢集上套用 Azure 資訊安全中心 Kubernetes 原則。
+
+- 在具有現有 Kubernetes 資源的叢集上套用拒絕原則時，任何符合新原則的預先存在資源都會繼續執行。 當不符合規範的資源在不同的節點上重新排程時，閘道管理員會封鎖資源的建立。
+
+- 當叢集具有可驗證資源的拒絕原則時，使用者將不會在建立部署時看到拒絕訊息。 例如，請考慮包含 replicaset 和 pod 的 Kubernetes 部署。 當使用者執行時 `kubectl describe deployment $MY_DEPLOYMENT` ，它不會傳回拒絕訊息作為事件的一部分。 但是，會傳回 `kubectl describe replicasets.apps $MY_DEPLOYMENT` 與拒絕相關聯的事件。
+
 ## <a name="logging"></a>記錄
 
-作為 Kubernetes 控制器/容器， _azure-policy_ 和 _gatekeeper_ Pod 都會將記錄保留在 Kubernetes 叢集中。 記錄可以在 Kubernetes 叢集的 [見解] 頁面中公開。
+作為 Kubernetes 控制器/容器，_azure-policy_ 和 _gatekeeper_ Pod 都會將記錄保留在 Kubernetes 叢集中。 記錄可以在 Kubernetes 叢集的 [見解] 頁面中公開。
 如需詳細資訊，請參閱[使用適用於容器的 Azure 監視器來監視您的 Kubernetes 叢集效能](../../../azure-monitor/insights/container-insights-analyze.md)。
 
 若要檢視附加元件記錄，請使用 `kubectl`：
@@ -453,6 +461,10 @@ kubectl logs <gatekeeper pod name> -n gatekeeper-system
 
 如需詳細資訊，請參閱 Gatekeeper 文件中的 [Gatekeeper 偵錯](https://github.com/open-policy-agent/gatekeeper#debugging)。
 
+## <a name="troubleshooting-the-add-on"></a>針對附加元件進行疑難排解
+
+如需 Kubernetes 的附加元件疑難排解的詳細資訊，請參閱 Azure 原則疑難排解文章中的 [Kubernetes 一節](/azure/governance/policy/troubleshoot/general#add-on-for-kubernetes-general-errors) 。
+
 ## <a name="remove-the-add-on"></a>移除附加元件
 
 ### <a name="remove-the-add-on-from-aks"></a>從 AKS 移除附加元件
@@ -461,7 +473,7 @@ kubectl logs <gatekeeper pod name> -n gatekeeper-system
 
 - Azure 入口網站
 
-  1. 選取 [ **所有服務** ]，然後搜尋並選取 [ **Kubernetes 服務** ]，以啟動 Azure 入口網站中的 AKS 服務。
+  1. 選取 [ **所有服務**]，然後搜尋並選取 [ **Kubernetes 服務**]，以啟動 Azure 入口網站中的 AKS 服務。
 
   1. 選取您想要停用 Azure 原則附加元件的 AKS 叢集。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 186b1c46303be59e191a1754361e07a2003b997a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfeb040893ae2be5842959ed8458bd713bebe6ee
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87036177"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512132"
 ---
 # <a name="os-start-up--computer-restarted-unexpectedly-or-encountered-an-unexpected-error"></a>作業系統啟動-電腦意外重新開機或發生未預期的錯誤
 
@@ -37,31 +37,27 @@ ms.locfileid: "87036177"
 
 ## <a name="cause"></a>原因
 
-電腦正在嘗試進行 [一般化映射](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)的初始開機，但因為自訂回應檔案 ( # A0) 正在處理，所以遇到問題。 Azure 不支援自訂回應檔案。 
+電腦正在嘗試進行 [一般化映射](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)的初始開機，但因為自訂回應檔案 ( # A0) 正在處理，所以遇到問題。 **Azure 不支援自訂回應** 檔。 
 
 回應檔案是特殊的 XML 檔案，其中包含您想要在安裝 Windows Server 作業系統期間自動化的設定設定和值。 設定選項包括有關如何分割磁片、要在哪裡尋找要安裝的 Windows 映像、要套用的產品金鑰，以及您想要執行的其他命令的指示。
 
-在 Azure 中，不支援自訂回應檔。 如果您使用選項來指定自訂 **Unattend.xml** 檔案 `sysprep /unattend:<your file’s name>` ，就會發生此錯誤。
+同樣地，Azure 中不支援自訂回應檔案。 因此，當映射準備好在 Azure 中使用時，就會發生這種情況，但您可以使用 **SYSPREP** 搭配類似下列命令的旗標來指定自訂 Unattend.xml 檔案：
 
-在 Azure 中，使用**Sysprep.exe**中的 [**進入系統全新體驗] (OOBE) **選項，或使用 `sysprep /oobe` 而不是 Unattend.xml 檔。
+`sysprep /oobe /generalize /unattend:<your file’s name> /shutdown`
 
-當您使用 **Sysprep.exe** 搭配內部部署 vm 將一般化 vm 上傳至 Azure 時，最常建立此問題。 在此情況下，您可能也會想要如何正確上傳一般化 VM。
+在 Azure 中，請使用 **系統準備工具 GUI** 中的 [**進入系統全新體驗 (OOBE)** ] 選項，或使用 `sysprep /oobe` 而非 Unattend.xml 檔。
 
-## <a name="solution"></a>解決方法
+當您使用 sysprep 搭配內部部署 VM 將一般化 VM 上傳至 Azure 時，最常建立此問題。 在此情況下，您可能也會想要如何正確上傳一般化 VM。
 
-### <a name="replace-unattended-answer-file-option"></a>取代自動回應檔案選項
+## <a name="solution"></a>解決方案
 
-當映射準備好在 Azure 中使用時，就會發生這種情況，但使用的是 Azure 中不支援的自訂回應檔案，而且您已使用 **SYSPREP** 搭配類似下列命令的旗標：
+### <a name="do-not-use-unattendxml"></a>請勿使用 Unattend.xml
 
-`sysprep /oobe /generalize /unattend:<NameOfYourAnswerFile.XML> /shutdown`
-
-- 在先前的命令中， `<NameOfYourAnswerFile.XML>` 以您的檔案名取代。
-
-若要修正此問題，請遵循 [Azure 有關準備/捕獲映射的指引](../windows/upload-generalized-managed.md) ，並準備新的一般化映射。 在 sysprep 期間，請勿使用 `/unattend:<answerfile>` 旗標。 相反地，請只使用下列旗標：
+若要修正此問題，請遵循 [Azure 有關準備/捕獲映射的指引](../windows/upload-generalized-managed.md) ，並準備新的一般化映射。 在 sysprep 期間， **請勿使用 `/unattend:<your file’s name>` 旗** 標。 相反地，請只使用下列旗標：
 
 `sysprep /oobe /generalize /shutdown`
 
-- 預設**體驗** (OOBE) 是 Azure vm 的支援設定。
+- 預設體驗 (OOBE) 是 Azure Vm 的支援設定。
 
 您也可以使用 **系統準備工具 GUI** 來完成與上述命令相同的工作，方法是選取如下所示的選項：
 

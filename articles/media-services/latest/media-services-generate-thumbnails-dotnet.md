@@ -11,21 +11,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 12/01/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5e4ad7ba75edd1899cbe2d7cd7d3b1b6c124ce35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 887ac4197321b4015eff7cc839abd8f57ae67760
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89267644"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512013"
 ---
 # <a name="how-to-generate-thumbnails-using-encoder-standard-with-net"></a>如何使用搭配 .NET 的編碼器標準產生縮圖
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-您可以使用媒體編碼器標準，以 [JPEG](https://en.wikipedia.org/wiki/JPEG)、[PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics) 或 [BMP](https://en.wikipedia.org/wiki/BMP_file_format) 影像檔案格式，從您的輸入視訊中產生一或多個縮圖。
+您可以使用媒體編碼器標準，從輸入影片以 [JPEG](https://en.wikipedia.org/wiki/JPEG) 或 [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics) 影像檔案格式產生一或多個縮圖。
 
 ## <a name="recommended-reading-and-practice"></a>建議閱讀和練習
 

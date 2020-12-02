@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: c21b4d746d763f41f4360cf93f67939bcd6dc49f
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8d28a1f2040cfec7b81081754a6abd3bc3e14439
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632680"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511469"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Data Factory 的 Azure Private Link
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-藉由使用 Azure Private Link，您可以透過私人端點，連接到 Azure 中的各種平臺即服務 (PaaS) 部署。 私人端點是特定虛擬網路和子網內的私人 IP 位址。 如需支援 Private Link 功能的 PaaS 部署清單，請參閱 [Private Link 檔](../private-link/index.yml)。 
+藉由使用 Azure Private Link，您可以在 Azure 中透過私人端點，以服務形式連接至各種平臺， (PaaS) 部署。 私人端點是特定虛擬網路和子網內的私人 IP 位址。 如需支援 Private Link 功能的 PaaS 部署清單，請參閱 [Private Link 檔](../private-link/index.yml)。 
 
 ## <a name="secure-communication-between-customer-networks-and-azure-data-factory"></a>在客戶網路與 Azure Data Factory 之間進行安全通訊 
 您可以將 Azure 虛擬網路設定為雲端中網路的邏輯標記法。 這麼做可提供下列優點：
@@ -41,7 +41,7 @@ Azure Data Factory 與客戶虛擬網路之間必須有數個通道，如下表�
 | ---------- | -------- | --------------- |
 | `adf.azure.com` | 443 | Data Factory 撰寫和監視所需的控制平面。 |
 | `*.{region}.datafactory.azure.net` | 443 | 必須提供此資訊，自我裝載整合執行階段才能連線到 Data Factory 服務。 |
-| `*.servicebus.windows.net` | 443 | 自我裝載整合執行時間所需的互動式撰寫。 |
+| `*.servicebus.windows.net` | 443 | 必須提供此資訊，自我裝載整合執行階段才能進行互動式撰寫。 |
 | `download.microsoft.com` | 443 | 自我裝載整合執行階段所需，以用於下載更新。 |
 
 由於支援 Azure Data Factory 的 Private Link，您可以：
@@ -53,10 +53,10 @@ Azure Data Factory 服務的通訊會通過 Private Link 並協助提供安全�
 ![Azure Data Factory 架構的 Private Link 圖表。](./media/data-factory-private-link/private-link-architecture.png)
 
 針對上述每個通道啟用 Private Link 服務可提供下列功能：
-- **支援** ：
+- **支援**：
    - 即使您封鎖所有輸出通訊，您也可以在虛擬網路中撰寫和監視資料處理站。
    - 自我裝載整合執行時間和 Azure Data Factory 服務之間的命令通訊可以安全地在私人網路環境中執行。 自我裝載整合執行時間和 Azure Data Factory 服務之間的流量會經歷 Private Link。 
-- **目前不支援** ：
+- **目前不支援**：
    - 使用自我裝載整合執行時間（例如測試連線、流覽資料夾清單和資料表清單、取得架構和預覽資料）的互動式撰寫會經歷 Private Link。
    - 如果您啟用自動更新，則可以從 Microsoft 下載中心自動下載新版的自我裝載整合執行時間。
 
@@ -65,6 +65,33 @@ Azure Data Factory 服務的通訊會通過 Private Link 並協助提供安全�
 
 > [!WARNING]
 > 當您建立連結服務時，請確定您的認證儲存在 Azure key vault 中。 否則，當您在 Azure Data Factory 中啟用 Private Link 時，認證將無法運作。
+
+## <a name="dns-changes-for-private-endpoints"></a>私人端點的 DNS 變更
+當您建立私人端點時，Data Factory 的 DNS CNAME 資源記錄會更新為首碼為 ' privatelink ' 的子域中的別名。 根據預設，我們也會建立對應至 ' privatelink ' 子域的 [私人 dns 區域](https://docs.microsoft.com/azure/dns/private-dns-overview)，並以 DNS 為私人端點的資源記錄。
+
+當您從 VNet 外部使用私人端點來解析 data factory 端點 URL 時，它會解析為 data factory 服務的公用端點。 從裝載私人端點的 VNet 解析時，儲存體端點 URL 會解析為私人端點的 IP 位址。
+
+在上述說明的範例中，從裝載私人端點的 VNet 外部解析時，Data Factory ' DataFactoryA ' 的 DNS 資源記錄會是：
+
+| 名稱 | 類型 | 值 |
+| ---------- | -------- | --------------- |
+| DataFactoryA.{region}. datafactory | CNAME   | DataFactoryA.{region}. privatelink. datafactory |
+| DataFactoryA.{region}. privatelink. datafactory | CNAME   | < data factory 服務公用端點 > |
+| < data factory 服務公用端點 >  | A | < data factory 服務公用 IP 位址 > |
+
+在裝載私人端點的 VNet 中解析時，DataFactoryA 的 DNS 資源記錄會是：
+
+| 名稱 | 類型 | 值 |
+| ---------- | -------- | --------------- |
+| DataFactoryA.{region}. datafactory | CNAME   | DataFactoryA.{region}. privatelink. datafactory |
+| DataFactoryA.{region}. privatelink. datafactory   | A | < 私人端點 IP 位址 > |
+
+如果您在網路上使用自訂 DNS 伺服器，用戶端必須能夠將 Data Factory 端點的 FQDN 解析為私人端點 IP 位址。 您應該將您的 DNS 伺服器設定為將私人連結子域委派給 VNet 的私人 DNS 區域，或設定 ' DataFactoryA ' 的 A 記錄。具有私人端點 IP 位址的 {region}. privatelink. datafactory。
+
+如需有關設定您自己的 DNS 伺服器以支援私人端點的詳細資訊，請參閱下列文章：
+- [Azure 虛擬網路中的資源名稱解析](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
+- [私人端點的 DNS 設定](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+
 
 ## <a name="set-up-private-link-for-azure-data-factory"></a>設定 Azure Data Factory 的 Private Link
 您可以使用 [Azure 入口網站](../private-link/create-private-endpoint-portal.md)來建立私人端點。

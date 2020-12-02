@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/20/2020
+ms.date: 12/01/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 65bd5a89d132a575817480d0609109a3f379e969
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f0cb7d4ebe428da4a370433b3e90a829f30489db
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833957"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512200"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>常見問題 (有關 Microsoft Authenticator 應用程式的常見問題) 
 
@@ -32,6 +32,14 @@ Microsoft Authenticator 的應用程式已取代 Azure 驗證器應用程式，�
 **問**：註冊的裝置是否同意讓公司或服務能夠存取我的裝置？
 
 **答**：註冊裝置可讓您的裝置存取貴組織的服務，而不允許您的組織存取您的裝置。
+
+## <a name="too-many-app-permissions"></a>太多應用程式許可權
+
+**問**：為什麼應用程式要求這麼多的許可權？
+
+**答**：以下是可能要求的完整許可權清單，以及應用程式使用它們的方式。 您看到的特定權限會隨您的手機類型而異。
+
+- **位置**。 有時候您的組織想要在允許您存取特定資源之前，先知道您的位置。 只有當您的組織有需要位置的原則時，應用程式才會要求此許可權。 
 
 ### <a name="legacy-apns-support-deprecated"></a>舊版 APNs 支援已淘汰
 

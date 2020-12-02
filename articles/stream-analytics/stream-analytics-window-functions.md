@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/16/2020
-ms.openlocfilehash: c4ddffa5f9e9ff4b313f05c9cedb3cb207695225
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 4765c0c43cfd9760eb5b4392604bfaeedc69c388
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129698"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511435"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>串流分析時間範圍函式簡介
 
@@ -36,7 +36,7 @@ ms.locfileid: "93129698"
 
 ## <a name="sliding-window"></a>滑動時間範圍
 
-不同于輪轉或跳動視窗，滑動視窗只會針對視窗內容實際變更的時間點輸出事件。 換句話說，當事件進入或離開視窗時。 每個視窗都至少有一個事件，例如跳動視窗的情況下，事件可以屬於一個以上的滑動視窗
+不同于輪轉或跳動視窗，滑動視窗只會針對視窗內容實際變更的時間點輸出事件。 換句話說，當事件進入或離開視窗時。 因此，每個視窗都至少有一個事件。 與跳動視窗類似，事件可以屬於一個以上的滑動視窗。
 
 ![Stream Analytics 滑動時間範圍](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 

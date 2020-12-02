@@ -8,16 +8,16 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: memildin
-ms.openlocfilehash: 36f519ce41ccfbfb48ca696ed2a61c6131a75998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca3dd410474af0a42a3cd5b4217c3bba90b8ff1a
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906348"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511979"
 ---
 # <a name="protect-windows-admin-center-resources-with-security-center"></a>使用安全中心保護 Windows Admin Center 資源
 
-Windows Admin Center 是適用于 Windows 伺服器的管理工具。 它是系統管理員用來存取大部分最常使用之管理工具的單一位置。 您可以從 Windows Admin Center 中，直接將您的內部內部部署伺服器上線到 Azure 資訊安全中心。 然後，您可以直接在 Windows Admin Center 體驗中查看安全性建議和警示的摘要。
+Windows Admin Center 是適用于 Windows 伺服器的管理工具。 它是系統管理員用來存取大部分最常使用之管理工具的單一位置。 在 Windows Admin Center 中，您可以直接將內部部署伺服器上架到 Azure 資訊安全中心。 然後，您可以直接在 Windows Admin Center 體驗中查看安全性建議和警示的摘要。
 
 > [!NOTE]
 > 您的 Azure 訂用帳戶和相關聯的 Log Analytics 工作區都必須啟用 Azure Defender，才能啟用 Windows Admin Center 整合。
@@ -29,7 +29,7 @@ Windows Admin Center 是適用于 Windows 伺服器的管理工具。 它是系�
 * 在 Windows Admin Center 中的安全性中心延伸模組內查看安全性警示和建議
 * 查看安全性狀態，並在 Azure 入口網站 (或透過 API 取得資訊安全中心內 Windows Admin Center 受控伺服器的其他詳細資訊) 
 
-藉由結合這兩個工具，資訊安全中心會變成您的單一窗格，以查看您的所有安全性資訊，無論資源：保護您 Windows Admin Center 管理的內部內部部署伺服器、Vm，以及任何額外的 PaaS 工作負載。
+藉由結合這兩個工具，資訊安全中心會變成您的單一窗格，以查看您的所有安全性資訊，無論資源：保護您 Windows Admin Center 管理的內部部署伺服器、Vm，以及任何額外的 PaaS 工作負載。
 
 ## <a name="onboard-windows-admin-center-managed-servers-into-security-center"></a>將 Windows Admin Center 受控伺服器上架到安全性中心
 

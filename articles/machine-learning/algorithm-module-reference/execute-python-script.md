@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
-ms.date: 10/21/2020
-ms.openlocfilehash: e0da478e221fe392135362cd74cbdd8baca101ef
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 12/02/2020
+ms.openlocfilehash: 360f0ce60a35bc96c6dd8e46d636f07124d01255
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421357"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511911"
 ---
 # <a name="execute-python-script-module"></a>執行 Python 腳本模組
 
@@ -37,7 +37,7 @@ Azure Machine Learning 使用 Python 的 Anaconda 散發，其中包含許多常
 
 如需完整清單，請參閱 [預先安裝的 Python 套件](#preinstalled-python-packages)一節。
 
-若要安裝不在預先安裝清單中的套件 (例如 *scikit-learn-其他* ) ，請將下列程式碼新增至您的腳本： 
+若要安裝不在預先安裝清單中的套件 (例如 *scikit-learn-其他*) ，請將下列程式碼新增至您的腳本： 
 
 ```python
 import os
@@ -59,6 +59,36 @@ if spec is None:
 
 > [!WARNING]
 > Excute Python 腳本模組不支援安裝相依于額外原生程式庫的套件，其具有像是 "apt-get" 的命令，例如 JAVA、PyODBC 等等。這是因為此模組是在只預先安裝 Python 且具有非系統管理員許可權的簡單環境中執行。  
+
+## <a name="access-to-registered-datasets"></a>存取已註冊的資料集
+
+您可以參考下列範例程式碼，以存取您工作區中 [已註冊的資料集](../how-to-create-register-datasets.md) ：
+
+```Python
+def azureml_main(dataframe1 = None, dataframe2 = None):
+
+    # Execution logic goes here
+    print(f'Input pandas.DataFrame #1: {dataframe1}')
+    from azureml.core import Run
+    run = Run.get_context(allow_offline=True)
+    ws = run.experiment.workspace
+
+    from azureml.core import Dataset
+    dataset = Dataset.get_by_name(ws, name='test-register-tabular-in-designer')
+    dataframe1 = dataset.to_pandas_dataframe()
+     
+    # If a zip file is connected to the third input port,
+    # it is unzipped under "./Script Bundle". This directory is added
+    # to sys.path. Therefore, if your zip file contains a Python file
+    # mymodule.py you can import it using:
+    # import mymodule
+
+    # Return value must be of a sequence of pandas.DataFrame
+    # E.g.
+    #   -  Single return value: return dataframe1,
+    #   -  Two return values: return dataframe1, dataframe2
+    return dataframe1,
+```
 
 ## <a name="upload-files"></a>上傳檔案
 [執行 Python 腳本] 模組支援使用 [Azure Machine Learning PYTHON SDK](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#upload-file-name--path-or-stream-)上傳檔案。
@@ -120,13 +150,13 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
     ![執行 Python 輸入對應](media/module/python-module.png)
 
-4. 若要包含新的 Python 套件或程式碼，請將包含這些自訂資源的壓縮檔案連接至 **腳本** 組合埠。 或者，如果您的腳本大於 16 KB，請使用 **腳本** 套件組合埠來避免像 *命令列一樣的錯誤超過16597個字元的限制* 。 
+4. 若要包含新的 Python 套件或程式碼，請將包含這些自訂資源的壓縮檔案連接至 **腳本** 組合埠。 或者，如果您的腳本大於 16 KB，請使用 **腳本** 套件組合埠來避免像 *命令列一樣的錯誤超過16597個字元的限制*。 
 
     
     1. 將腳本和其他自訂資源組合成 zip 檔案。
     1. 將 zip 檔案以檔案 **資料集** 的形式上傳至 studio。 
     1. 從 [設計師撰寫] 頁面左側模組窗格中的 [ *資料集* ] 清單，拖曳資料集模組。 
-    1. 將資料集模組連接至 [ **執行 R 腳本** ] 模組的 **腳本** 組合埠。
+    1. 將資料集模組連接至 [**執行 R 腳本**] 模組的 **腳本** 組合埠。
     
     在管線執行期間，可以使用上傳的 zip 封存中包含的任何檔案。 如果封存包含目錄結構，則會保留結構。
  
@@ -197,9 +227,9 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 此模組會傳回兩個資料集：  
   
-+ **結果資料集 1** ，由 Python 腳本中第一個傳回的 pandas 資料框架所定義。
++ **結果資料集 1**，由 Python 腳本中第一個傳回的 pandas 資料框架所定義。
 
-+ **結果資料集 2** ，在 Python 腳本中由第二個傳回的 pandas 資料框架所定義。
++ **結果資料集 2**，在 Python 腳本中由第二個傳回的 pandas 資料框架所定義。
 
 ## <a name="preinstalled-python-packages"></a>預先安裝的 Python 套件
 預先安裝的套件為：

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/14/2020
+ms.date: 12/01/2020
 ms.author: b-juche
-ms.openlocfilehash: 6963a1f39534573bca39431febe391e89d462875
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: aaffc63690894f43329763064ae89a105274953c
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072776"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511928"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files 的資源限制
 
@@ -31,7 +31,7 @@ ms.locfileid: "92072776"
 
 |  資源  |  預設限制  |  可透過支援要求進行調整  |
 |----------------|---------------------|--------------------------------------|
-|  每個 Azure 區域的 NetApp 帳戶數目   |  10    |  是   |
+|  每個訂用帳戶每個 Azure 區域的 NetApp 帳戶數目  |  10    |  是   |
 |  每一 NetApp 帳戶的容量集區數目   |    25     |   是   |
 |  每個訂用帳戶的磁片區數目   |    500     |   是   |
 |  每個容量集區的磁片區數目     |    500   |    是     |
@@ -53,7 +53,7 @@ ms.locfileid: "92072776"
 
 ## <a name="maxfiles-limits"></a>Maxfiles 限制 <a name="maxfiles"></a> 
 
-Azure NetApp Files 磁片區有一個稱為 *maxfiles*的限制。 Maxfiles 限制是磁片區可包含的檔案數目。 Azure NetApp Files 磁片區的 maxfiles 限制是根據磁片區 (配額) 的大小來編制索引。 磁片區的 maxfiles 限制會隨著每個 TiB 的布建磁片區大小，以20000000檔案的速率增加或減少。 
+Azure NetApp Files 磁片區有一個稱為 *maxfiles* 的限制。 Maxfiles 限制是磁片區可包含的檔案數目。 Azure NetApp Files 磁片區的 maxfiles 限制是根據磁片區 (配額) 的大小來編制索引。 磁片區的 maxfiles 限制會隨著每個 TiB 的布建磁片區大小，以20000000檔案的速率增加或減少。 
 
 服務會根據布建的大小，動態調整磁片區的 maxfiles 限制。 例如，一開始設定大小為 1 TiB 的磁片區，其 maxfiles 限制為20000000。 磁片區大小的後續變更會根據下列規則，自動 readjustment maxfiles 限制： 
 
@@ -76,7 +76,7 @@ Azure NetApp Files 磁片區有一個稱為 *maxfiles*的限制。 Maxfiles 限�
 1. 按一下 [說明 **+ 支援**]。
 2. 按一下 [ **+ 新增支援要求**]。
 3. 在 [基本概念] 索引標籤中提供下列資訊： 
-    1. 問題類型：選取 **服務和訂用帳戶限制 (配額) **。
+    1. 問題類型：選取 **服務和訂用帳戶限制 (配額)**。
     2. 訂用帳戶：選取您需要增加配額的資源訂用帳戶。
     3. 配額類型：選取 **儲存體： Azure NetApp Files 的限制**。
     4. 按一下 **[下一步：方案]**。
@@ -89,7 +89,7 @@ Azure NetApp Files 磁片區有一個稱為 *maxfiles*的限制。 Maxfiles 限�
         |  集區    |  *訂用帳戶識別碼，NetApp 帳戶 URI*  |  *要求的新 **集** 區數目上限*   |  *提示要求的案例或使用案例為何？*  |
         |  磁碟區  |  *訂用帳戶識別碼、NetApp 帳戶 URI、容量集區 URI*   |  *要求的新 **磁片** 區數目上限*     |  *提示要求的案例或使用案例為何？*  |
         |  Maxfiles  |  *訂用帳戶識別碼、NetApp 帳戶 URI、容量集區 URI、磁片區 URI*   |  *要求新的最大 **maxfiles** 數目*     |  *提示要求的案例或使用案例為何？*  |    
-        |  跨區域複寫資料保護磁片區  |  *訂用帳戶識別碼、目的地 NetApp 帳戶 URI、目的地容量集區 URI、來源 NetApp 帳戶 URI、來源容量集區 URI、來源磁片區 URI*   |  *** (目的地磁片區要求新的跨區域複寫資料保護磁片區**數目上限) *     |  *提示要求的案例或使用案例為何？*  |    
+        |  跨區域複寫資料保護磁片區  |  *訂用帳戶識別碼、目的地 NetApp 帳戶 URI、目的地容量集區 URI、來源 NetApp 帳戶 URI、來源容量集區 URI、來源磁片區 URI*   |  * **(目的地磁片區要求新的跨區域複寫資料保護磁片區** 數目上限) _     |  _What 案例或使用案例會提示要求？ *  |    
 
     2. 指定適當的支援方法，並提供您的合約資訊。
 

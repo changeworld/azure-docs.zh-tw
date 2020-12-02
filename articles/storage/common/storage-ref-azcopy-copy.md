@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: a5c0d8bb47b337b0415565a0b6dad5c6822d0b94
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fd71f4eb56974b93637c23eddc81e5f33ce788b8
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781731"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512149"
 ---
 # <a name="azcopy-copy"></a>azcopy 複製
 
@@ -107,6 +107,14 @@ azcopy cp "/path/*foo/*bar/*.pdf" "https://[account].blob.core.windows.net/[cont
 ```azcopy
 azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
 ```
+
+將檔案和目錄上傳至 Azure 儲存體的帳戶，並在 blob 上設定查詢字串編碼的標記。 
+
+- 若要設定標記 {key = "空白空白"，val = "foo"} 和 {key = "空白空白 2"，val = "bar"}，請使用下列語法： `azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
+    
+- 索引鍵和值是以 URL 編碼，而且索引鍵/值組會以 & 符號 ( ' & ' 分隔 ) 
+
+- 在 blob 上設定標籤時，SAS 中的標記) 有額外的許可權 ( ' t '，而不會讓服務將授權錯誤傳回。
 
 使用 OAuth 驗證下載單一檔案。 如果您尚未登入 AzCopy，請執行 `azcopy login` 命令，然後執行下列命令。
 
@@ -214,9 +222,19 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 - azcopy cp "https://s3.amazonaws.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
 
+將檔案和目錄傳送至 Azure 儲存體的帳戶，並在 blob 上設定指定的查詢字串編碼標記。 
+
+- 若要設定標記 {key = "空白空白"，val = "foo"} 和 {key = "空白空白 2"，val = "bar"}，請使用下列語法： `azcopy cp "https://[account].blob.core.windows.net/[source_container]/[path/to/directory]?[SAS]" "https://[account].blob.core.windows.net/[destination_container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
+        
+- 索引鍵和值是以 URL 編碼，而且索引鍵/值組會以 & 符號 ( ' & ' 分隔 ) 
+    
+- 在 blob 上設定標籤時，SAS 中的標記) 有額外的許可權 ( ' t '，而不會讓服務將授權錯誤傳回。
+
 ## <a name="options"></a>選項
 
 **--備份** 啟用 Windows 的上傳 SeBackupPrivilege 或 SeRestorePrivilege for 下載，以允許 AzCopy 查看和讀取所有檔案，不論其檔案系統許可權為何，以及還原擁有權限。 要求執行 AzCopy 的帳戶必須具有這些許可權 (例如，具有系統管理員許可權或 `Backup Operators` 群組) 的成員。 此旗標會啟用帳戶已有的許可權。
+
+**--blob-標記** 字串在 Blob 上設定標記，以將儲存體帳戶中的資料分類。
 
 **--blob 類型** 字串會定義目的地的 blob 類型。 這可用於上傳 blob，以及在帳戶之間進行複製時 (預設 `Detect`) 。 有效值包括 `Detect`、 `BlockBlob`、 `PageBlob`和 `AppendBlob`。 在帳戶之間進行複製時，的值 `Detect` 會讓 AzCopy 使用來源 blob 的類型來判斷目的地 blob 的類型。 上傳檔案時， `Detect` 會根據副檔名判斷檔案是 VHD 或 VHDX 檔案。 如果檔案正在乙太幣 VHD 或 VHDX 檔案，則 AzCopy 會將檔案視為分頁 blob。  (預設值「偵測」 ) 
 

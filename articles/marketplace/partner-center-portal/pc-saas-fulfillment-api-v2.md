@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d6449a00886b7366bcd1f6e2fcec910fd3cb38db
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1ea326cc4537176c0ddcff070f4dc3b3f77f4b58
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461041"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512030"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>商業 marketplace 中的 SaaS 履行 Api 第2版
 
@@ -20,7 +20,7 @@ ms.locfileid: "96461041"
 
 ## <a name="managing-the-saas-subscription-life-cycle"></a>管理 SaaS 訂用帳戶生命週期
 
-商業 marketplace 會在使用者購買 SaaS 訂用帳戶之後，管理整個生命週期。  它會使用登陸頁面、履行 Api、作業 Api 和 webhook 作為驅動實際 SaaS 訂用帳戶啟用、使用方式、更新和取消的機制。  終端使用者的帳單是以 Microsoft 維護的 SaaS 訂用帳戶狀態為基礎。 
+商業 marketplace 會在使用者購買 SaaS 訂用帳戶之後，管理整個生命週期。 它會使用登陸頁面、履行 Api、作業 Api 和 webhook 作為驅動實際 SaaS 訂用帳戶啟用、使用方式、更新和取消的機制。 終端使用者的帳單是以 Microsoft 維護的 SaaS 訂用帳戶狀態為基礎。 
 
 ### <a name="states-of-a-saas-subscription"></a>SaaS 訂用帳戶的狀態
 
@@ -44,11 +44,11 @@ ms.locfileid: "96461041"
 
 登陸頁面 URL 必須在每天都啟動並執行，而且隨時都能接收來自 Microsoft 的新電話。 如果登陸頁面變得無法使用，客戶將無法註冊 SaaS 服務並開始使用。
 
-接下來，發行者必須呼叫 [SaaS 解析 API](#resolve-a-purchased-subscription)，並輸入 token 作為 header 參數的值，將 *權杖* 傳回給 Microsoft `x-ms-marketplace-token header` 。  由於解析 API 呼叫的結果，會交換權杖以取得 SaaS 購買的詳細資料，例如購買的唯一識別碼、購買的供應專案識別碼，以及購買的方案識別碼。
+接下來，發行者必須呼叫 [SaaS 解析 API](#resolve-a-purchased-subscription)，並輸入 token 作為 header 參數的值，將 *權杖* 傳回給 Microsoft `x-ms-marketplace-token header` 。 由於解析 API 呼叫的結果，會交換權杖以取得 SaaS 購買的詳細資料，例如購買的唯一識別碼、購買的供應專案識別碼，以及購買的方案識別碼。
 
 在登陸頁面上，客戶應該透過 Azure Active Directory (Azure AD) 單一登入 (SSO) ，登入新的或現有的 SaaS 帳戶。
 
-發行者應執行 SSO，以提供 Microsoft 在此流程中所需的使用者體驗。 請務必使用多租使用者 Azure AD 應用程式，並在設定 SSO 時同時允許公司和學校帳戶或個人 Microsoft 帳戶。  這項需求只適用于登陸頁面，適用于已在使用 Microsoft 認證登入的情況下，重新導向至 SaaS 服務的使用者。 所有登入 SaaS 服務都不需要 SSO。
+發行者應執行 SSO，以提供 Microsoft 在此流程中所需的使用者體驗。 請務必使用多租使用者 Azure AD 應用程式，並在設定 SSO 時同時允許公司和學校帳戶或個人 Microsoft 帳戶。 這項需求只適用于登陸頁面，適用于已在使用 Microsoft 認證登入的情況下，重新導向至 SaaS 服務的使用者。 所有登入 SaaS 服務都不需要 SSO。
 
 > [!NOTE]
 >如果 SSO 要求系統管理員必須將許可權授與應用程式，則合作夥伴中心中的供應專案描述必須公開需要系統管理員層級的存取權。 這項洩漏是為了符合 [商業 marketplace 認證原則](/legal/marketplace/certification-policies#10003-authentication-options)。
@@ -82,11 +82,11 @@ ms.locfileid: "96461041"
 
 ##### <a name="update-initiated-from-the-commercial-marketplace"></a>從商業 marketplace 起始的更新
 
-在此流程中，客戶會變更訂用帳戶方案或 Azure 入口網站或 Microsoft 365 系統管理中心的基座數量。  
+在此流程中，客戶會變更訂用帳戶方案或 Azure 入口網站或 Microsoft 365 系統管理中心的基座數量。
 
-1. 輸入更新之後，Microsoft 會呼叫發行者的 webhook URL，在合作夥伴中心的 [連線 **webhook** ] 欄位中設定，並提供適當的 *動作* 和其他相關參數值。  
+1. 輸入更新之後，Microsoft 會呼叫發行者的 webhook URL，在合作夥伴中心的 [連線 **webhook** ] 欄位中設定，並提供適當的 *動作* 和其他相關參數值。 
 1. 發行者端應對 SaaS 服務進行必要的變更，並在完成時透過呼叫作業 [API 的更新狀態](#update-the-status-of-an-operation)來通知 Microsoft。
-1. 如果修補程式是以「 *失敗* 」狀態傳送，則更新程式將無法在 Microsoft 端完成。  SaaS 訂用帳戶將會保留現有的方案和基座數量。
+1. 如果修補程式是以「 *失敗* 」狀態傳送，則更新程式將無法在 Microsoft 端完成。 SaaS 訂用帳戶將會保留現有的方案和基座數量。
 
 > [!NOTE]
 > 發行者應該叫用修補程式，以在收到 webhook 通知之後，于 *10 秒的時間範圍內*，以失敗/成功回應 [更新作業 API 的狀態](#update-the-status-of-an-operation)。 如果未在10秒內收到作業狀態的修補程式，則會自動將變更計畫 *修補為成功*。 
@@ -101,7 +101,7 @@ ms.locfileid: "96461041"
 
 1. 發行者程式碼必須先呼叫 [變更計畫 api](#change-the-plan-on-the-subscription) 和/或 [變更數量 api](#change-the-quantity-of-seats-on-the-saas-subscription) ，才能在發行者端進行要求的變更。 
 
-1. Microsoft 會將變更套用至訂用帳戶，然後透過 **連接 Webhook** 通知發行者套用相同的變更。  
+1. Microsoft 會將變更套用至訂用帳戶，然後透過 **連接 Webhook** 通知發行者套用相同的變更。
 
 1. 只有在發行者對 SaaS 訂用帳戶進行必要的變更，並透過呼叫作業 [API 的更新狀態](#update-the-status-of-an-operation)來完成變更時，才會通知 Microsoft。
 
@@ -113,7 +113,7 @@ ms.locfileid: "96461041"
 
 此狀態表示尚未收到客戶的 SaaS 服務付款。 Microsoft 會在 SaaS 訂用帳戶狀態中通知發行者此項變更。 通知是透過呼叫 webhook 來完成，並將 *action* 參數設為 [已 *暫停*]。
 
-發行者可能會或可能不會在發行者端對 SaaS 服務進行變更。 我們建議發行者將此資訊提供給已被擱置的客戶使用，並限制或封鎖客戶對 SaaS 服務的存取。  永遠不會收到付款的機率。
+發行者可能會或可能不會在發行者端對 SaaS 服務進行變更。 我們建議發行者將此資訊提供給已被擱置的客戶使用，並限制或封鎖客戶對 SaaS 服務的存取。 永遠不會收到付款的機率。
 
 Microsoft 會為客戶提供30天的寬限期，然後再自動取消訂用帳戶。 當訂用帳戶處於 *暫停* 狀態時：
 
@@ -126,32 +126,32 @@ Microsoft 會為客戶提供30天的寬限期，然後再自動取消訂用帳�
 
 此動作表示客戶的付款條件已再次生效、已對 SaaS 訂用帳戶付款，並正在復原訂用帳戶。 在此案例中： 
 
-1. Microsoft 會呼叫 webhook，並將 *action* 參數設定為 *恢復* 值。  
+1. Microsoft 會呼叫 webhook，並將 *action* 參數設定為 *恢復* 值。
 1. 發行者可確保訂閱會在發行者端完全正常運作。
-1. 發行者會呼叫具有成功狀態的 [Patch 作業 API](#update-the-status-of-an-operation) 。  
+1. 發行者會呼叫具有成功狀態的 [Patch 作業 API](#update-the-status-of-an-operation) 。
 1. 恢復程式成功，並再次向客戶收取 SaaS 訂用帳戶的費用。 
 
 如果修補程式是以「 *失敗* 」狀態傳送，reinstatement 程式不會在 Microsoft 端完成，而且訂用帳戶將會保持 *暫停* 狀態。
 
-只有已暫止的訂閱可以恢復。  已暫停的 SaaS 訂用帳戶會在復原時保持 *暫停* 狀態。  完成此作業之後，訂用帳戶的狀態就會變成 *作用中狀態。*
+只有已暫止的訂閱可以恢復。 已暫停的 SaaS 訂用帳戶會在復原時保持 *暫停* 狀態。 完成此作業之後，訂用帳戶的狀態就會變成 *作用中狀態。*
 
 #### <a name="renewed-subscribed"></a> (*訂閱*) 更新
 
-在一個月或一年的訂閱期限結束時，Microsoft 會自動更新 SaaS 訂用帳戶。  所有 SaaS 訂閱的自動續約設定預設值都是 *true* 。 作用中的 SaaS 訂用帳戶將繼續定期更新。 當訂用帳戶更新時，Microsoft 不會通知發行者。 客戶可以透過 Microsoft 365 系統管理員入口網站或透過 Azure 入口網站，關閉 SaaS 訂用帳戶的自動續約。  在此情況下，SaaS 訂用帳戶將會在目前的帳單期限結束時自動取消。  客戶也可以隨時取消 SaaS 訂用帳戶。
+在一個月或一年的訂閱期限結束時，Microsoft 會自動更新 SaaS 訂用帳戶。 所有 SaaS 訂閱的自動續約設定預設值都是 *true* 。 作用中的 SaaS 訂用帳戶將繼續定期更新。 當訂用帳戶更新時，Microsoft 不會通知發行者。 客戶可以透過 Microsoft 365 系統管理員入口網站關閉 SaaS 訂用帳戶的自動續約。 在此情況下，SaaS 訂用帳戶將會在目前的帳單期限結束時自動取消。 客戶也可以隨時取消 SaaS 訂用帳戶。
 
-只有作用中的訂閱會自動更新。  訂用帳戶會在更新過程中保持作用中狀態，而且如果自動更新成功。  更新之後，訂用帳戶期限的開始和結束日期會更新為新的字詞日期。
+只有作用中的訂閱會自動更新。 訂用帳戶會在更新過程中保持作用中狀態，而且如果自動更新成功。 更新之後，訂用帳戶期限的開始和結束日期會更新為新的字詞日期。
 
 如果自動更新因為付款問題而失敗，訂用帳戶將會被 *擱置* ，並會通知發行者。
 
 #### <a name="canceled-unsubscribed"></a>取消取消 *訂閱* 的 ()  
 
-訂用帳戶會透過取消發行者網站、Azure 入口網站或 Microsoft 365 系統管理中心的訂用帳戶，來回應明確客戶或 CSP 的動作。  訂用帳戶也可以隱含地取消（因為因為未付款）在處於 *暫停* 狀態30天后遭到過了。
+訂用帳戶會透過取消發行者網站、Azure 入口網站或 Microsoft 365 系統管理中心的訂用帳戶，來回應明確客戶或 CSP 的動作。 訂用帳戶也可以隱含地取消（因為因為未付款）在處於 *暫停* 狀態30天后遭到過了。
 
 當發行者收到取消 webhook 呼叫之後，它們應該會保留客戶資料，以在要求時保留至少七天的資料。 只有客戶資料可以刪除。
 
 SaaS 訂用帳戶可在其生命週期中的任何時間點取消。 取消訂用帳戶之後，就無法重新開機。
 
-## <a name="api-reference"></a>API 參考資料
+## <a name="api-reference"></a>應用程式開發介面參考
 
 本節記載 SaaS 訂用帳戶和作業 Api。
 
@@ -163,7 +163,7 @@ SaaS 訂用帳戶可在其生命週期中的任何時間點取消。 取消訂�
 * 取得等候發行者認可的應用程式暫止作業清單。
 
 > [!NOTE]
-> TLS 1.2 版將會在最基本版本的 HTTPS 通訊之後強制執行。 請務必在您的程式碼中使用此 TLS 版本。  TLS 1.0 和1.1 版即將淘汰。
+> TLS 1.2 版將會在最基本版本的 HTTPS 通訊之後強制執行。 請務必在您的程式碼中使用此 TLS 版本。 TLS 1.0 和1.1 版即將淘汰。
 
 ### <a name="subscription-apis"></a>訂用帳戶 Api
 

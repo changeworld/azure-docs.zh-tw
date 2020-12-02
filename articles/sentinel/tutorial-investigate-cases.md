@@ -14,19 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: c1873e21db1c586453dc9e9fe890268d8797303a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: aa9160f01ed0040123bd8ac932cfd2443f557bb6
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367001"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511724"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>教學課程：使用 Azure Sentinel 調查事件
 
 > [!IMPORTANT]
-> 調查圖表目前處於公開預覽狀態。
-> 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 調查圖表目前為 **預覽** 狀態。 請參閱 [Microsoft Azure 預覽的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ，以取得適用于 Azure 功能（Beta、預覽或尚未發行正式運作）的其他法律條款。
 
 
 本教學課程可協助您使用 Azure Sentinel 調查事件。 當您將資料來源連接到 Azure Sentinel 之後，您想要在發生可疑問題時收到通知。 為了讓您能夠這樣做，Azure Sentinel 可讓您建立高階警示規則，以產生您可以指派和調查的事件。
@@ -39,7 +37,7 @@ ms.locfileid: "92367001"
 
 事件可以包含多個警示。 它是特定調查的所有相關辨識項的匯總。 系統會根據您在 [ **分析** ] 頁面中建立的分析規則來建立事件。 與警示相關的屬性（例如嚴重性和狀態）都是在事件層級設定。 當您讓 Azure Sentinel 知道您要尋找的威脅種類，以及如何找到它們之後，您可以藉由調查事件來監視偵測到的威脅。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 - 如果您在設定分析規則時使用實體對應欄位，您將只能調查事件。 調查圖形要求您的原始事件必須包含實體。
 
 - 如果您有需要指派事件的來賓使用者，則必須將 Azure AD 租使用者中的 [目錄讀取](../active-directory/roles/permissions-reference.md#directory-readers) 者角色指派給使用者。 一般 (非來賓) 使用者預設會指派此角色。
@@ -54,7 +52,7 @@ ms.locfileid: "92367001"
 
 1. 若要開始調查，請選取特定的事件。 您可以在右側看到事件的詳細資訊，包括其嚴重性、相關實體數目摘要、觸發此事件的原始事件，以及事件的唯一識別碼。
 
-1. 若要查看事件中警示和實體的更多詳細資料，請在 [事件] 頁面中選取 [ **查看完整詳細資料** ]，並查看摘要事件資訊的相關索引標籤。 在 [ **警示** ] 索引標籤中，檢查警示本身。 您可以看到警示的所有相關資訊，也就是觸發警示的查詢、每個查詢傳回的結果數目，以及在警示上執行操作手冊的能力。 若要進一步向下切入到事件，請選取 **事件**的數目。 這會開啟產生結果的查詢，以及在 Log Analytics 中觸發警示的事件。 在 [ **實體** ] 索引標籤中，您可以看到您對應為警示規則定義一部分的所有實體。
+1. 若要查看事件中警示和實體的更多詳細資料，請在 [事件] 頁面中選取 [ **查看完整詳細資料** ]，並查看摘要事件資訊的相關索引標籤。 在 [ **警示** ] 索引標籤中，檢查警示本身。 您可以看到警示的所有相關資訊，也就是觸發警示的查詢、每個查詢傳回的結果數目，以及在警示上執行操作手冊的能力。 若要進一步向下切入到事件，請選取 **事件** 的數目。 這會開啟產生結果的查詢，以及在 Log Analytics 中觸發警示的事件。 在 [ **實體** ] 索引標籤中，您可以看到您對應為警示規則定義一部分的所有實體。
 
     ![檢視警示詳細資料](media/tutorial-investigate-cases/alert-details.png)
 
@@ -83,7 +81,9 @@ ms.locfileid: "92367001"
 1. 選取事件，然後選取 [ **調查**]。 這會帶您前往調查圖表。 圖形會提供直接連線至警示的實體的說明，並進一步連接每個資源。
 
    > [!IMPORTANT] 
-   > 如果您在設定分析規則時使用實體對應欄位，您將只能調查事件。 調查圖形要求您的原始事件必須包含實體。
+   > - 如果您在設定分析規則時使用實體對應欄位，您將只能調查事件。 調查圖形要求您的原始事件必須包含實體。
+   >
+   > - Azure Sentinel 目前支援 **最多30天的事件** 調查。
 
    ![檢視地圖](media/tutorial-investigate-cases/map1.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "92367001"
 
     ![查看相關警示](media/tutorial-investigate-cases/related-alerts.png)
 
-1. 針對每個探索查詢，您可以選取 [**事件 \> **]，以選取開啟原始事件結果和 Log Analytics 中所用查詢的選項。
+1. 針對每個探索查詢，您可以選取 [**事件 \>**]，以選取開啟原始事件結果和 Log Analytics 中所用查詢的選項。
 
 1. 為了瞭解事件，圖形提供平行的時間軸。
 
@@ -123,7 +123,7 @@ ms.locfileid: "92367001"
 
 選擇適當的分類之後，請在 [ **批註** ] 欄位中加入一些描述性文字。 當您需要回頭參考此事件時，這會很有用。 當 **您** 完成時，請按一下 [套用]，事件將會關閉。
 
-:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="醒目顯示 [選取分類] 清單中可用分類的螢幕擷取畫面。":::
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="{替代文字}":::
 
 ## <a name="next-steps"></a>後續步驟
 在本教學課程中，您已瞭解如何使用 Azure Sentinel 開始調查事件。 繼續進行教學課程，以瞭解 [如何使用自動化的操作手冊來回應威脅](tutorial-respond-threats-playbook.md)。
