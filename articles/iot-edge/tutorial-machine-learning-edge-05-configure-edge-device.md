@@ -9,21 +9,22 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: b85984207742e0b8991ab65875dd22505b918185
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f57e809373a8bd06c4b4afbb9b193464315e788f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736755"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959572"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>教學課程：設定 IoT Edge 裝置
-
-> [!NOTE]
-> 此文章是關於在 IoT Edge 上使用 Azure Machine Learning 的系列文章之一。 如果您是被直接引導至此文章，我們建議您先從本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)開始，以取得最佳成效。
 
 在此文章中，我們將執行 Linux 的 Azure 虛擬機器設定為作為透明閘道的 IoT Edge 裝置。 透明閘道設定可讓裝置在不知道閘道存在的情況下，透過閘道連線到 Azure IoT 中樞。 同時，與 Azure IoT 中樞中的裝置互動的使用者，不會察覺中繼閘道裝置。 最後，我們會藉由向透明閘道新增 IoT Edge 模組來為系統新增邊緣分析。
 
 此文章中的步驟通常是由雲端開發人員執行的。
+
+## <a name="prerequisites"></a>必要條件
+
+此文章是關於在 IoT Edge 上使用 Azure Machine Learning 的系列文章之一。 本系列中的每篇文章皆以先前文章中的工作為基礎。 如果您是被直接引導至此文章，請參閱本系列中的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)。
 
 ## <a name="create-certificates"></a>建立憑證
 
@@ -35,15 +36,15 @@ ms.locfileid: "92736755"
 
 2. 使用路徑和名稱 `c:\edgeCertificates` 建立新的資料夾。
 
-3. 如果尚未執行，請從 Windows 的 [開始] 功能表開始 **適用於 Windows 的 Docker** 。
+3. 如果尚未執行，請從 Windows 的 [開始] 功能表開始 **適用於 Windows 的 Docker**。
 
 4. 開啟 Visual Studio Code。
 
 5. 選取 [檔案]   > [開啟資料夾]  ，然後選擇 [C:\\來源\\IoTEdgeAndMlSample\\CreateCertificates]  。
 
-6. 在 [總管] 窗格中，以滑鼠右鍵按一下 **dockerfile** ，然後選擇 [建置映像]  。
+6. 在 [總管] 窗格中，以滑鼠右鍵按一下 **dockerfile**，然後選擇 [建置映像]  。
 
-7. 在對話方塊中，接受映像名稱和標籤的預設值： **createcertificates: latest** 。
+7. 在對話方塊中，接受映像名稱和標籤的預設值：**createcertificates: latest**。
 
     ![在 Visual Studio Code 中建立憑證](media/tutorial-machine-learning-edge-05-configure-edge-device/create-certificates.png)
 
@@ -104,7 +105,7 @@ ms.locfileid: "92736755"
 
 3. 按一下省略符號，然後選取 [建立 IoT Edge 裝置]  。
 
-4. 指定裝置的名稱。 為求方便，我們使用名稱 **aaTurbofanEdgeDevice** ，以便將其排序到所列出裝置的頂端。
+4. 指定裝置的名稱。 為求方便，我們使用名稱 **aaTurbofanEdgeDevice**，以便將其排序到所列出裝置的頂端。
 
 5. 新的裝置會出現在裝置清單中。
 
@@ -152,11 +153,11 @@ ms.locfileid: "92736755"
 
 3. 出現提示時，請針對每個參數提供值。 針對訂用帳戶、資源群組與位置，我們建議您使用與此教學課程中所有資源相同的內容。
 
-    * **Azure 訂用帳戶識別碼** ：可在 Azure 入口網站中找到
-    * **資源群組名稱** ：此教學課程中群組資源的易記名稱
-    * **位置** ：要建立虛擬機器的 Azure 地點。 例如，westus2 或 northeurope。 如需詳細資訊，請參閱所有 [Azure 地點](https://azure.microsoft.com/global-infrastructure/locations/)。
-    * **AdminUsername** ：您將用來登入虛擬機器的系統管理員帳戶名稱
-    * **AdminPassword** ：為虛擬機器上的 AdminUsername 設定的密碼
+    * **Azure 訂用帳戶識別碼**：可在 Azure 入口網站中找到
+    * **資源群組名稱**：此教學課程中群組資源的易記名稱
+    * **位置**：要建立虛擬機器的 Azure 地點。 例如，westus2 或 northeurope。 如需詳細資訊，請參閱所有 [Azure 地點](https://azure.microsoft.com/global-infrastructure/locations/)。
+    * **AdminUsername**：您將用來登入虛擬機器的系統管理員帳戶名稱
+    * **AdminPassword**：為虛擬機器上的 AdminUsername 設定的密碼
 
 4. 若要使指令碼能夠設定 VM，您需要使用與您正在使用之 Azure 訂用帳戶相關聯的認證登入 Azure。
 
@@ -183,7 +184,7 @@ ms.locfileid: "92736755"
     ssh -l <username> iotedge-<suffix>.<region>.cloudapp.azure.com
     ```
 
-2. 當系統提示您驗證主機的真實性時，請輸入 [是]  ，然後選取 **Enter** 。
+2. 當系統提示您驗證主機的真實性時，請輸入 [是]  ，然後選取 **Enter**。
 
 3. 出現提示時，請提供您的密碼。
 
@@ -230,9 +231,9 @@ ms.locfileid: "92736755"
 
 IoT Edge 執行階段會使用檔案 `/etc/iotedge/config.yaml` 來保存其設定。 我們需要更新此檔案中的三個資訊：
 
-* **裝置連接字串** ：IoT 中樞中來自此裝置身分識別的連接字串
-* **憑證** ：用於與下游裝置進行連線的憑證
-* **主機名稱** ：VM IoT Edge 裝置的完整網域名稱 (FQDN)。
+* **裝置連接字串**：IoT 中樞中來自此裝置身分識別的連接字串
+* **憑證**：用於與下游裝置進行連線的憑證
+* **主機名稱**：VM IoT Edge 裝置的完整網域名稱 (FQDN)。
 
 我們用來建立 IoT Edge VM 的 *Azure IoT Edge on Ubuntu* 映像隨附一個殼層指令碼，該指令碼會使用連接字串更新 config.yaml。
 

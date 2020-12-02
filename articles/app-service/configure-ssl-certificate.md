@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 3201870d2d738a867f89166904d668b5596cbcdf
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: dff98a5c54d2fee350e2b35dc00148c19ea233b8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149067"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956495"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure App Service 中新增 TLS/SSL 憑證
 
@@ -39,7 +39,7 @@ ms.locfileid: "92149067"
 ## <a name="private-certificate-requirements"></a>私人憑證需求
 
 > [!NOTE]
-> Azure Web Apps **不**支援 AES256，且所有 pfx 檔案都應該使用 TripleDES 加密。
+> Azure Web Apps **不** 支援 AES256，且所有 pfx 檔案都應該使用 TripleDES 加密。
 
 [免費 App Service 受控憑證](#create-a-free-certificate-preview)或 [App Service 憑證](#import-an-app-service-certificate)已經符合 App Service 的需求。 如果您選擇將私人憑證上傳或匯入至 App Service，您的憑證就必須符合下列需求：
 
@@ -53,7 +53,7 @@ ms.locfileid: "92149067"
 * 由受信任的憑證授權單位簽署
 
 > [!NOTE]
-> **橢圓曲線密碼編譯 (ECC) 憑證**可搭配 App Service 使用，但不在本文討論範圍內。 請洽詢您的憑證授權單位，了解建立 ECC 憑證的確切步驟。
+> **橢圓曲線密碼編譯 (ECC) 憑證** 可搭配 App Service 使用，但不在本文討論範圍內。 請洽詢您的憑證授權單位，了解建立 ECC 憑證的確切步驟。
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -105,6 +105,8 @@ ms.locfileid: "92149067"
 
 - [將憑證匯入至 App Service](#import-certificate-into-app-service)。
 - [管理憑證](#manage-app-service-certificates)，例如將憑證更新、重設金鑰和匯出。
+> [!NOTE]
+> Azure 國家雲端目前不支援 App Service 憑證。
 
 ### <a name="start-certificate-order"></a>開始訂購憑證
 
@@ -114,10 +116,10 @@ ms.locfileid: "92149067"
 
 使用下表來協助您設定憑證。 完成後，按一下 [建立]。
 
-| 設定 | 說明 |
+| 設定 | 描述 |
 |-|-|
 | 名稱 | App Service 憑證的易記名稱。 |
-| 裸網域主機名稱 | 在此處指定根網域。 根網域和 `www` 子網域*皆*受到發行憑證的保護。 在發行的憑證中，[一般名稱] 欄位包含根網域，[主體別名] 欄位則包含 `www` 網域。 若只要保護所有子網域，請在這裡指定子網域的完整網域名稱 (例如 `mysubdomain.contoso.com`)。|
+| 裸網域主機名稱 | 在此處指定根網域。 根網域和 `www` 子網域 *皆* 受到發行憑證的保護。 在發行的憑證中，[一般名稱] 欄位包含根網域，[主體別名] 欄位則包含 `www` 網域。 若只要保護所有子網域，請在這裡指定子網域的完整網域名稱 (例如 `mysubdomain.contoso.com`)。|
 | 訂用帳戶 | 會包含憑證的訂用帳戶。 |
 | 資源群組 | 會包含憑證的資源群組。 您可以使用新的資源群組，或為您的 App Service 應用程式選取相同的資源群組。 |
 | 憑證 SKU | 決定要建立的憑證類型：標準憑證或[萬用字元憑證](https://wikipedia.org/wiki/Wildcard_certificate)。 |
@@ -162,9 +164,9 @@ ms.locfileid: "92149067"
 > 支援的網域驗證方法有四種： 
 > 
 > - **App Service** - 當網域已經對應至相同訂用帳戶中的 App Service 應用程式時最方便的選項。 它使用 App Service 應用程式在實質上已通過網域擁有權驗證的這個優勢。
-> - **網域** - 驗證[您購自 Azure 的 App Service 網域](manage-custom-dns-buy-domain.md)。 Azure 會自動為您新增驗證 TXT 記錄並完成程序。
+> - **網域** - 驗證 [您購自 Azure 的 App Service 網域](manage-custom-dns-buy-domain.md)。 Azure 會自動為您新增驗證 TXT 記錄並完成程序。
 > - **郵件** - 將電子郵件傳送給網域管理員來驗證網域。 當您選取此選項時，系統會提供指示。
-> - **手動** - 使用 HTML 網頁 (僅限**標準**憑證) 或 DNS TXT 記錄驗證網域。 當您選取此選項時，系統會提供指示。
+> - **手動** - 使用 HTML 網頁 (僅限 **標準** 憑證) 或 DNS TXT 記錄驗證網域。 當您選取此選項時，系統會提供指示。
 
 ### <a name="import-certificate-into-app-service"></a>將憑證匯入至 App Service
 
@@ -262,7 +264,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 請在出現提示時定義一個匯出密碼。 您之後將 TLS/SSL 憑證上傳至 App Service 時，將會用到這組密碼。
 
-如果您使用 IIS 或 _Certreq.exe_ 產生憑證要求，請將憑證安裝至本機電腦，然後[將憑證匯出為 PFX](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754329(v=ws.11))。
+如果您使用 IIS 或 _Certreq.exe_ 產生憑證要求，請將憑證安裝至本機電腦，然後 [將憑證匯出為 PFX](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754329(v=ws.11))。
 
 ### <a name="upload-certificate-to-app-service"></a>上傳憑證至 App Service
 

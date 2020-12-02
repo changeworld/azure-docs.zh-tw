@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: da91a5a7c077eb14d12a711b8b308d7045c88f4a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c39ef505b0cea0ad0c03b81683db8441077cd0d2
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150998"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874537"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>快速入門：使用 ASP.NET 和 SignalR 服務建立聊天室
 
-Azure SignalR 服務依據的是 [SignalR for ASP.NET Core 2.1](/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1)，其並**不**完全相容於 ASP.NET SignalR。 Azure SignalR 服務會採用最新的 ASP.NET Core 技術來重新實作 ASP.NET SignalR 資料通訊協定。 對 ASP.NET SignalR 使用 Azure SignalR 服務時，不會再支援某些 ASP.NET SignalR 功能。例如當用戶端重新連線時，Azure SignalR 不會重播訊息。 此外，不支援 Forever Frame 傳輸和 JSONP。 需要變更某些程式碼並使用合適的相依程式庫版本，ASP.NET SignalR 應用程式才能搭配 SignalR 服務運作。
+Azure SignalR 服務依據的是 [SignalR for ASP.NET Core 2.1](/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1)，其並 **不** 完全相容於 ASP.NET SignalR。 Azure SignalR 服務會採用最新的 ASP.NET Core 技術來重新實作 ASP.NET SignalR 資料通訊協定。 對 ASP.NET SignalR 使用 Azure SignalR 服務時，不會再支援某些 ASP.NET SignalR 功能。例如當用戶端重新連線時，Azure SignalR 不會重播訊息。 此外，不支援 Forever Frame 傳輸和 JSONP。 需要變更某些程式碼並使用合適的相依程式庫版本，ASP.NET SignalR 應用程式才能搭配 SignalR 服務運作。
 
 關於將 ASP.NET SignalR 及 ASP.NET Core SignalR 的功能比較的完整清單，請參閱[版本差異文件](/aspnet/core/signalr/version-differences?preserve-view=true&view=aspnetcore-3.1)。
 
@@ -32,21 +32,21 @@ Azure SignalR 服務依據的是 [SignalR for ASP.NET Core 2.1](/aspnet/core/sig
 * [.NET 4.6.1](https://www.microsoft.com/net/download/windows)
 * [ASP.NET SignalR 2.4.1](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/)
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsnet)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qsnet)。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
 使用您的 Azure 帳戶登入 [Azure 入口網站](https://portal.azure.com/) 。
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsnet)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qsnet)。
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-*無伺服器*模式不支援 ASP.NET SignalR 應用程式。 對於 Azure SignalR 服務執行個體，務必使用*預設*或*傳統*。
+*無伺服器* 模式不支援 ASP.NET SignalR 應用程式。 對於 Azure SignalR 服務執行個體，務必使用 *預設* 或 *傳統*。
 
 您也可以使用[建立 SignalR 服務指令碼](scripts/signalr-cli-create-service.md)，建立此快速入門中使用的 Azure 資源。
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsnet)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qsnet)。
 
 ## <a name="clone-the-sample-application"></a>複製範例應用程式
 
@@ -60,7 +60,7 @@ Azure SignalR 服務依據的是 [SignalR for ASP.NET Core 2.1](/aspnet/core/sig
     git clone https://github.com/aspnet/AzureSignalR-samples.git
     ```
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsnet)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qsnet)。
 
 ## <a name="configure-and-run-chat-room-web-app"></a>設定並執行聊天室的 Web 應用程式
 
@@ -68,7 +68,7 @@ Azure SignalR 服務依據的是 [SignalR for ASP.NET Core 2.1](/aspnet/core/sig
 
 1. 在開啟 Azure 入口網站的瀏覽器中，尋找並選取您建立的執行個體。
 
-1. 選取 [金鑰]**** 以檢視 SignalR 服務執行個體的連接字串。
+1. 選取 [金鑰] 以檢視 SignalR 服務執行個體的連接字串。
 
 1. 選取並複製主要連接字串。
 
@@ -93,7 +93,7 @@ Azure SignalR 服務依據的是 [SignalR for ASP.NET Core 2.1](/aspnet/core/sig
     }
     ```
 
-    您也需要參考服務 SDK，才能使用這些 API。 開啟 [工具] | [NuGet 套件管理員] | [套件管理員主控台]****，並執行命令：
+    您也需要參考服務 SDK，才能使用這些 API。 開啟 [工具] | [NuGet 套件管理員] | [套件管理員主控台]，並執行命令：
 
     ```powershell
     Install-Package Microsoft.Azure.SignalR.AspNet
@@ -106,7 +106,7 @@ Azure SignalR 服務依據的是 [SignalR for ASP.NET Core 2.1](/aspnet/core/sig
 
 1. 按 <kbd>F5</kbd> 以在偵錯模式中執行專案。 您可以看到應用程式在本機執行。 此時會連線到 Azure SignalR 服務，而不會裝載應用程式本身的 SignalR 執行階段。
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsnet)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qsnet)。
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
@@ -121,7 +121,7 @@ Azure SignalR 服務依據的是 [SignalR for ASP.NET Core 2.1](/aspnet/core/sig
 
 片刻過後，系統便會刪除該資源群組及其所有內含的資源。
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsnet)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qsnet)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -129,5 +129,3 @@ Azure SignalR 服務依據的是 [SignalR for ASP.NET Core 2.1](/aspnet/core/sig
 
 > [!div class="nextstepaction"]
 > [Azure SignalR Service 搭配 ASP.NET Core](./signalr-quickstart-dotnet-core.md)
-
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsnet)

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
 ms.custom: devx-track-js
-ms.openlocfilehash: 02bcbf0b4f6f6021c157a8ba3c5d2783fc94f1aa
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 061dce01d2437d04d371ac65c115a1d95136fb5d
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425320"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874690"
 ---
 # <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>快速入門：使用 JavaScript 搭配 Azure Functions 與 SignalR Service 來建立聊天室
 
@@ -32,21 +32,21 @@ Azure SignalR Service 可讓您輕鬆地在應用程式中新增即時功能，�
 > [!NOTE]
 > 此快速入門可以在 macOS、Windows 或 Linux 上執行。
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjs)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qsjs)。
 
 ## <a name="log-in-to-azure"></a>登入 Azure
 
 使用您的 Azure 帳戶登入 Azure 入口網站 (<https://portal.azure.com/>)。
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjs)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qsjs)。
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjs)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qsjs)。
 
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjs)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qsjs)。
 
 ## <a name="configure-and-run-the-azure-function-app"></a>設定及執行 Azure Function 應用程式
 
@@ -62,11 +62,11 @@ Azure SignalR Service 可讓您輕鬆地在應用程式中新增即時功能，�
 
 1. 在程式碼編輯器中，開啟複製的存放庫中包含的 *src/chat/javascript* 資料夾。
 
-1. 將 *local.settings.sample.json* 重新命名為 *local.settings.json* 。
+1. 將 *local.settings.sample.json* 重新命名為 *local.settings.json*。
 
 1. 在 **local.settings.json** 中，將連接字串貼到 **AzureSignalRConnectionString** 設定的值中。 儲存檔案。
 
-1. JavaScript 函式會組織成資料夾。 在每個文件夾中有兩個檔案： *function.json* 定義函式中所使用的繫結， *index.js* 是函式的主體。 此函式應用程式中有兩個 HTTP 觸發的函式：
+1. JavaScript 函式會組織成資料夾。 在每個文件夾中有兩個檔案：*function.json* 定義函式中所使用的繫結，*index.js* 是函式的主體。 此函式應用程式中有兩個 HTTP 觸發的函式：
 
     - **negotiate** - 使用 *SignalRConnectionInfo* 輸入繫結來產生並傳回有效的連線資訊。
     - **messages** - 在要求主體中接收聊天訊息，並使用 *SignalR* 輸出繫結來將訊息廣播給所有已連線的用戶端應用程式。
@@ -78,16 +78,16 @@ Azure SignalR Service 可讓您輕鬆地在應用程式中新增即時功能，�
     ```
 
     ![建立 SignalR 服務](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-run-application.png)
-
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjs)
+    
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qsjs)。
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjs)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qsjs)。
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjs)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qsjs)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -96,4 +96,3 @@ Azure SignalR Service 可讓您輕鬆地在應用程式中新增即時功能，�
 > [!div class="nextstepaction"]
 > [使用 VS Code 部署 Azure Functions](/azure/developer/javascript/tutorial-vscode-serverless-node-01)
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsjs)

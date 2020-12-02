@@ -1,18 +1,18 @@
 ---
-title: 透過 Data Factory 執行 Python 指令碼
-description: 教學課程 - 了解如何使用 Azure Batch 透過 Azure Data Factory，將 Python 指令碼當作管線的一部分執行。
-author: mammask
+title: 教學課程 - 透過 Data Factory 執行 Python 指令碼
+description: 了解如何使用 Azure Batch 透過 Azure Data Factory，將 Python 指令碼當作管線的一部分執行。
+author: pkshultz
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 08/12/2020
-ms.author: komammas
+ms.author: peshultz
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: c66c14d42c3d14fc4171f6fdfaf2e7f75a531507
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 7752bc3f768aec7a3e98fb1813c4194f81fb9dfb
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886901"
+ms.locfileid: "94917625"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>教學課程：使用 Azure Batch 透過 Azure Data Factory 執行 Python 指令碼
 
@@ -155,6 +155,5 @@ python main.py
 若要深入了解 Azure Data Factory，請參閱：
 
 > [!div class="nextstepaction"]
-> [Azure Data Factory](../data-factory/introduction.md)
-> [管線和活動](../data-factory/concepts-pipelines-activities.md)
-> [自訂活動](../data-factory/transform-data-using-dotnet-custom-activity.md)
+> [Azure Data Factory 概觀](../data-factory/introduction.md)
+

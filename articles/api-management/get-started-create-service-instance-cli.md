@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: ''
 ms.date: 09/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 8e41e20752e4203bf9916813b86cd901f4f75c09
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 863cb6cd10664e14966898045cb2b1861ef75b9f
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708218"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887445"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-cli-preview"></a>快速入門：使用 Azure CLI 建立新的 Azure APIM 服務執行個體 (預覽)
 
@@ -22,9 +22,9 @@ ms.locfileid: "90708218"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-您可以使用 Azure Cloud Shell 或安裝在本機的 Azure CLI 來完成此快速入門。 如果您想要在本機使用，建議使用 2.11.1 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+- 本文需要 2.11.1 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 

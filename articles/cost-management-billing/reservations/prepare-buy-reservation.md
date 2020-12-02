@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: d22ab9f028f0491db33d62d0a6dff8d06282f925
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: f22a8f085938f5a3cc3e7a748391a9048129296c
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91368714"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888363"
 ---
 # <a name="buy-a-reservation"></a>購買保留項目
 
@@ -21,9 +21,9 @@ Azure 保留可協助您藉由承諾多項 Azure 資源一年或三年期的方�
 
 ## <a name="who-can-buy-a-reservation"></a>誰可以購買保留
 
-若要購買方案，您必須具備 Enterprise (MS-AZR-0017P 或 MS-AZR-0148P) 或隨用隨付訂用帳戶 (MS-AZR-0003P 或 MS-AZR-0023P) 或 Microsoft 客戶合約訂用帳戶的訂用帳戶擁有者角色。 雲端解決方案提供者可使用 Azure 入口網站或 [合作夥伴中心](/partner-center/azure-reservations) 來購買 Azure 保留。
+若要保留，您必須具備 Enterprise (MS-AZR-0017P 或 MS-AZR-0148P) 或隨用隨付訂用帳戶 (MS-AZR-0003P 或 MS-AZR-0023P) 或隨用隨付 (MS-AZR-0003P 或 MS-AZR-0023P) 或 Microsoft 客戶合約的 Azure 訂用帳戶擁有者角色或保留購買者角色。 雲端解決方案提供者可使用 Azure 入口網站或 [合作夥伴中心](/partner-center/azure-reservations) 來購買 Azure 保留。
 
-Enterprise 合約 (EA) 客戶可藉由在 EA 入口網站中停用 [新增保留執行個體] 選項，以限制對 EA 管理員的購買。 EA 管理員必須是至少一個 EA 訂用帳戶的訂用帳戶擁有者，才能購買保留。 當企業想要讓中央小組購買不同成本中心的保留時，此選項非常有用。 購買之後，中央小組可以將成本中心擁有者新增至保留。 然後，擁有者可以將保留範圍設定為其訂用帳戶。 中央小組不需要擁有購買保留之處的訂用帳戶擁有者存取權。
+Enterprise 合約 (EA) 客戶可藉由在 EA 入口網站中停用 [新增保留執行個體] 選項，以限制對 EA 管理員的購買。 EA 管理員必須至少有一個 EA 訂用帳戶的擁有者或保留購買者存取權，才能購買保留。 當企業想要讓中央小組購買保留時，此選項非常有用。
 
 保留折扣僅適用於與透過 Enterprise、雲端解決方案提供者 (CSP)、Microsoft 客戶合約購買的訂用帳戶相關聯的資源，以及採用隨用隨付費率的個別方案。
 
@@ -93,7 +93,7 @@ Enterprise 合約 (EA) 客戶可藉由在 EA 入口網站中停用 [新增保留
 
 ### <a name="view-payments-made"></a>檢視已支付的款項
 
-您可以使用 API、使用量資料和成本分析來檢視已支付的款項。 針對每月付款的保留，使用量資料和保留費用 API 中的頻率值會顯示為**定期**。 針對預先付款的保留，此值會顯示為**一次性**。
+您可以使用 API、使用量資料和成本分析來檢視已支付的款項。 針對每月付款的保留，使用量資料和保留費用 API 中的頻率值會顯示為 **定期**。 針對預先付款的保留，此值會顯示為 **一次性**。
 
 成本分析會在預設檢視中顯示每月的購買。 在 [費用類型] 上套用 [購買]，以及在 [頻率] 上套用 [定期] 來進行篩選，即可查看所有購買。 若只要檢視保留，請篩選 [保留]。
 

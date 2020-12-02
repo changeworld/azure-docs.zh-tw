@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 45c0108ed87dd5264b9192f5dd69e0198bd59fc1
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 66f077028b9f9f7a7644a318d4447eeaaab19e98
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289781"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919925"
 ---
 # <a name="about-azure-key-vault-certificates"></a>關於 Azure Key Vault 憑證
 
@@ -44,8 +44,17 @@ Key Vault 憑證建立後，該憑證將可透過可定址秘密和 PFX 或 PEM 
 
 可定址的金鑰會變成與不可匯出的 KV 憑證有較高相關性。 用來建立 KV 憑證的 KV 憑證原則欄位 keyusage  ，會對應至可定址 KV 金鑰的作業。  
 
+支援憑證的金鑰組類型
+
  - 支援的金鑰類型：RSA、RSA-HSM、EC、EC-HSM、oct (列於[此處](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)) 僅允許匯出 RSA、EC。 HSM 金鑰不可匯出。
 
+|金鑰類型|關於|安全性|
+|--|--|--|
+|**RSA**| 「受軟體保護」的 RSA 金鑰|FIPS 140-2 層級 1|
+|**RSA-HSM**| 「受 HSM 保護」的 RSA 金鑰 (僅限進階 SKU)|FIPS 140-2 層級 2 HSM|
+|**EC**| 「受軟體保護」的橢圓曲線金鑰|FIPS 140-2 層級 1|
+|**EC-HSM**| 「受 HSM 保護」的橢圓曲線金鑰 (僅限進階 SKU)|FIPS 140-2 層級 2 HSM|
+|||
 
 ## <a name="certificate-attributes-and-tags"></a>憑證屬性與標記
 
@@ -57,14 +66,14 @@ Key Vault 憑證建立後，該憑證將可透過可定址秘密和 PFX 或 PEM 
 
 Key Vault 憑證具有下列屬性：  
 
--   enabled  ：選擇性的布林值，預設值是 **true** 。 可指定以指出憑證資料是否可以擷取為秘密，或是否可以作為金鑰執行。 也可再作業發生於 nbf  和 exp  之間時，用來搭配 nbf  和 exp  使用，只有在 enabled 設定為 true 時，才能允許此作業。 在 nbf  和 exp  範圍以外的作業會自動禁止。  
+-   enabled  ：選擇性的布林值，預設值是 **true**。 可指定以指出憑證資料是否可以擷取為秘密，或是否可以作為金鑰執行。 也可再作業發生於 nbf  和 exp  之間時，用來搭配 nbf  和 exp  使用，只有在 enabled 設定為 true 時，才能允許此作業。 在 nbf  和 exp  範圍以外的作業會自動禁止。  
 
 回應中會包含其他唯讀屬性：
 
--   *created* ：IntDate：指出此憑證版本的建立時間。  
--   *updated* ：IntDate：指出此憑證版本的更新時間。  
--   *exp* ：IntDate：包含 x509 憑證的到期日值。  
--   *nbf* ：IntDate：包含 x509 憑證的日期值。  
+-   *created*：IntDate：指出此憑證版本的建立時間。  
+-   *updated*：IntDate：指出此憑證版本的更新時間。  
+-   *exp*：IntDate：包含 x509 憑證的到期日值。  
+-   *nbf*：IntDate：包含 x509 憑證的日期值。  
 
 > [!Note] 
 > 如果 Key Vault 憑證到期，其可定址金鑰和秘密將變得無法使用。  

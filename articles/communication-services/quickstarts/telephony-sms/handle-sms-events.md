@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e153c873305cc128ce97ae7c6a907a8f592f8b32
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: e8decbe22f869573bf7a2221099d2bc30c00fc8a
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357465"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888839"
 ---
 # <a name="quickstart-handle-sms-events"></a>快速入門：處理 SMS 事件
 
@@ -24,7 +24,7 @@ ms.locfileid: "93357465"
 
 ## <a name="about-azure-event-grid"></a>關於 Azure 事件方格
 
-[Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) 是一項雲端式事件服務。 在本文中，您將了解如何訂閱[通訊服務事件](../../concepts/event-handling.md)的事件，並觸發事件以檢視結果。 通常，您會將事件傳送至可處理事件資料及採取行動的端點。 在本文中，您會將事件傳送至可收集及顯示訊息的 Web 應用程式。
+[Azure Event Grid](../../../event-grid/overview.md) 是一項雲端式事件服務。 在本文中，您將了解如何訂閱[通訊服務事件](../../concepts/event-handling.md)的事件，並觸發事件以檢視結果。 通常，您會將事件傳送至可處理事件資料及採取行動的端點。 在本文中，您會將事件傳送至可收集及顯示訊息的 Web 應用程式。
 
 ## <a name="prerequisites"></a>必要條件
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
@@ -49,7 +49,7 @@ ms.locfileid: "93357465"
 
 ### <a name="event-grid-viewer-deployment"></a>事件方格檢視器部署
 
-在本快速入門中，我們將使用 [Azure 事件方格檢視器範例](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)，以近乎即時的方式檢視事件。 這會為使用者提供即時摘要的體驗。 此外，每個事件的承載應該也都可供查看。  
+在本快速入門中，我們將使用 [Azure 事件方格檢視器範例](/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)，以近乎即時的方式檢視事件。 這會為使用者提供即時摘要的體驗。 此外，每個事件的承載應該也都可供查看。  
 
 ## <a name="subscribe-to-the-sms-events-using-web-hooks"></a>使用 Webhook 訂閱 SMS 事件
 
@@ -63,7 +63,7 @@ ms.locfileid: "93357465"
 
 您可以訂閱特定事件，以向事件方格指出您要追蹤的 SMS 事件，以及要將事件傳送至何處。 從下拉式功能表中選取您要訂閱的事件。 針對 SMS，您可以選擇 `SMS Received` 和 `SMS Delivery Report Received`。 
 
-如果系統提示您提供 **系統主題名稱**，請提供可在事件發出後選擇用來篩選事件的唯一識別碼。
+如果系統提示您提供 [系統主題名稱]，請隨意提供唯一的字串。 此欄位不會影響您的體驗，其用途為內部遙測。
 
 查看 [Azure 通訊服務支援的事件](../../concepts/event-handling.md)的完整清單。
 
@@ -75,7 +75,7 @@ ms.locfileid: "93357465"
 
 針對 [端點]，按一下 [選取端點]，然後輸入 Web 應用程式的 URL。
 
-在此案例中，我們將使用先前在本快速入門中設定的 [Azure 事件方格檢視器範例](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)的 URL。 該範例的 URL 格式如下：`https://{{site-name}}.azurewebsites.net/api/updates`
+在此案例中，我們將使用先前在本快速入門中設定的 [Azure 事件方格檢視器範例](/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)的 URL。 該範例的 URL 格式如下：`https://{{site-name}}.azurewebsites.net/api/updates`
 
 然後，選取 [確認選取項目]。
 
@@ -94,7 +94,7 @@ ms.locfileid: "93357465"
 
 ### <a name="receiving-sms-events"></a>接收 SMS 事件
 
-當您完成上述任一動作後，您會看到有 `SMS Received` 和 `SMS Delivery Report Received` 事件傳送至您的端點。 這些事件會顯示在我們一開始設定的 [Azure 事件方格檢視器範例](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)中。 您可以按事件旁的眼睛圖示，以查看整個承載。 事件顯示如下：
+當您完成上述任一動作後，您會看到有 `SMS Received` 和 `SMS Delivery Report Received` 事件傳送至您的端點。 這些事件會顯示在我們一開始設定的 [Azure 事件方格檢視器範例](/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)中。 您可以按事件旁的眼睛圖示，以查看整個承載。 事件顯示如下：
 
 :::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="此螢幕擷取畫面顯示 [已接收 SMS] 事件的事件方格結構描述。":::
 
@@ -116,4 +116,4 @@ ms.locfileid: "93357465"
 您可能也會想要：
 
  - [了解事件處理概念](../../concepts/event-handling.md)
- - [了解事件方格](https://docs.microsoft.com/azure/event-grid/overview)
+ - [了解事件方格](../../../event-grid/overview.md)

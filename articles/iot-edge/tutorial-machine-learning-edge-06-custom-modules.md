@@ -9,17 +9,14 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3a2087c83ec48b0b732ce1cb954f78fad9b46fef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 199da0586a061bccdf8a6ff8a1f53df2f703512f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857430"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959436"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>教學課程：建立和部署自訂 IoT Edge 模組
-
-> [!NOTE]
-> 此文章是關於在 IoT Edge 上使用 Azure Machine Learning 的系列文章之一。 如果您是被直接引導至此文章，我們建議您先從本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)開始，以取得最佳成效。
 
 在此文章中，我們會建立三個 IoT Edge 模組，以接收來自分葉 IoT 裝置的訊息、透過您的機器學習模型執行資料，然後將深入解析轉送到 IoT 中樞。
 
@@ -34,7 +31,7 @@ IoT Edge 中樞可促進模組對模組的通訊。 使用 IoT Edge 中樞作為
 
 為了完成這些工作，我們將使用三個自訂模組：
 
-* **RUL 分類器：** 我們在[定型和部署 Azure Machine Learning 模型](tutorial-machine-learning-edge-04-train-model.md)中建立的 turboFanRulClassifier 模組是一個標準的機器學習模組，其會公開稱為 "amlInput" 的輸入和稱為 "amlOutput" 的輸出。 "amlInput" 預期其輸入看起來與我們傳送至以 ACI 為基礎的 Web 服務的輸入完全一樣。 同樣地，"amlOutput" 會傳回與 Web 服務相同的資料。
+* **RUL 分類器：** 我們在 [定型和部署 Azure Machine Learning 模型](tutorial-machine-learning-edge-04-train-model.md)中建立的 turboFanRulClassifier 模組是一個標準的機器學習模組，其會公開稱為 "amlInput" 的輸入和稱為 "amlOutput" 的輸出。 "amlInput" 預期其輸入看起來與我們傳送至以 ACI 為基礎的 Web 服務的輸入完全一樣。 同樣地，"amlOutput" 會傳回與 Web 服務相同的資料。
 
 * **Avro 寫入器：** 此模組會接收有關 "avroModuleInput" 輸入的訊息，並以 Avro 格式將訊息保存於磁碟上，以便稍後上傳到 IoT 中樞。
 
@@ -54,6 +51,10 @@ IoT Edge 中樞可促進模組對模組的通訊。 使用 IoT Edge 中樞作為
 ![IoT Edge 三個模組架構圖](media/tutorial-machine-learning-edge-06-custom-modules/modules-diagram.png)
 
 此文章中的步驟通常是由雲端開發人員執行的。
+
+## <a name="prerequisites"></a>必要條件
+
+此文章是關於在 IoT Edge 上使用 Azure Machine Learning 的系列文章之一。 本系列中的每篇文章皆以先前文章中的工作為基礎。 如果您是被直接引導至此文章，請參閱本系列中的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)。
 
 ## <a name="create-a-new-iot-edge-solution"></a>建立新的 IoT Edge 解決方案
 
@@ -75,7 +76,7 @@ IoT Edge 中樞可促進模組對模組的通訊。 使用 IoT Edge 中樞作為
 
 1. 將模組命名為 **turbofanRulClassifier**。
 
-1. 選擇您的機器學習工作區。 此工作區為 **turboFanDemo** 工作區，您建立於[教學課程：定型和部署 Azure Machine Learning 模型](tutorial-machine-learning-edge-04-train-model.md)
+1. 選擇您的機器學習工作區。 此工作區為 **turboFanDemo** 工作區，您建立於 [教學課程：定型和部署 Azure Machine Learning 模型](tutorial-machine-learning-edge-04-train-model.md)
 
 1. 選取您在執行 Azure Notebook 時建立的映像。
 
@@ -691,7 +692,7 @@ Avro 寫入器模組在我們的解決方案中有兩個任務，即儲存訊息
 
 * **部署延隔時間：** 由於 IoT Edge 執行階段必須先辨識對其所需屬性所做的變更，然後才能開始重新設定，因此，它在您部署模組之後可能需要一段時間，直到執行階段挑選它們並開始更新 IoT Edge 裝置為止。
 
-* **模組版本事項：** 如果您使用與上一個模組相同的版本來將新版本的模組容器發佈至您的容器登錄，則執行階段將不會下載新版本的模組。 它會將本機映像的版本標記和來自部署資訊清單的所需映像進行比較。 如果那些版本相符，執行階段就不會採取任何動作。 因此，每當您希望部署新變更時，務必要遞增模組的版本。 針對您想要變更的模組，在 module.json 檔案中，變更**標記**屬性下方的**版本**屬性，藉以遞增版本。 接著，建置和發佈模組。
+* **模組版本事項：** 如果您使用與上一個模組相同的版本來將新版本的模組容器發佈至您的容器登錄，則執行階段將不會下載新版本的模組。 它會將本機映像的版本標記和來自部署資訊清單的所需映像進行比較。 如果那些版本相符，執行階段就不會採取任何動作。 因此，每當您希望部署新變更時，務必要遞增模組的版本。 針對您想要變更的模組，在 module.json 檔案中，變更 **標記** 屬性下方的 **版本** 屬性，藉以遞增版本。 接著，建置和發佈模組。
 
     ```json
     {

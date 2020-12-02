@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: b5a2064e2fd80b895b0e801090c66d7119cf69dd
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3cfcf57f455a5c3b17b794acf2ded66ed2285eff
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151005"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873500"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>快速入門：使用 SignalR 服務建立聊天室
 
@@ -32,13 +32,13 @@ Azure SignalR 服務是可以協助開發人員使用即時功能輕鬆地建置
 * 安裝 [.NET Core SDK](https://www.microsoft.com/net/download/windows)。
 * 下載或複製 [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) \(英文\) GitHub 存放庫。 
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsnetcore)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qsnetcore)。
 
 ## <a name="create-an-azure-signalr-resource"></a>建立 Azure SignalR 資源
 
 [!INCLUDE [azure-signalr-create](../../includes/signalr-create.md)]
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsnetcore)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qsnetcore)。
 
 ## <a name="create-an-aspnet-core-web-app"></a>建立 ASP.NET Core Web 應用程式
 
@@ -52,13 +52,13 @@ Azure SignalR 服務是可以協助開發人員使用即時功能輕鬆地建置
     dotnet new mvc
     ```
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsnetcore)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qsnetcore)。
 
 ## <a name="add-secret-manager-to-the-project"></a>將祕密管理員新增至專案
 
 在本節中，您會將[祕密管理員工具](/aspnet/core/security/app-secrets) \(機器翻譯\) 新增至您的專案。 祕密管理員工具能儲存專案樹狀結構外開發工作的敏感性資料。 此作法能協助避免於原始程式碼內意外共用應用程式祕密。
 
-1. 開啟您的 *.csproj* 檔案。 新增 `DotNetCliToolReference` 元素以包含 *Microsoft.Extensions.SecretManager.Tools* 。 也新增 *chattest.csproj* 的以下程式碼中顯示的 `UserSecretsId` 元素，然後儲存檔案。
+1. 開啟您的 *.csproj* 檔案。 新增 `DotNetCliToolReference` 元素以包含 *Microsoft.Extensions.SecretManager.Tools*。 也新增 *chattest.csproj* 的以下程式碼中顯示的 `UserSecretsId` 元素，然後儲存檔案。
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -76,7 +76,7 @@ Azure SignalR 服務是可以協助開發人員使用即時功能輕鬆地建置
     </Project>
     ```
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsnetcore)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qsnetcore)。
 
 ## <a name="add-azure-signalr-to-the-web-app"></a>將 Azure SignalR 新增至 Web 應用程式
 
@@ -117,7 +117,7 @@ Azure SignalR 服務是可以協助開發人員使用即時功能輕鬆地建置
     }
     ```
 
-    透過不傳遞參數至 `AddAzureSignalR()`，此程式碼會針對 SignalR 服務資源連接字串使用預設組態金鑰。 預設組態金鑰為 *Azure: SignalR:ConnectionString* 。
+    透過不傳遞參數至 `AddAzureSignalR()`，此程式碼會針對 SignalR 服務資源連接字串使用預設組態金鑰。 預設組態金鑰為 *Azure: SignalR:ConnectionString*。
 
 5. 在 *Startup.cs* 中，更新 `Configure` 方法，作法為將其取代為下列程式碼。
 
@@ -347,7 +347,7 @@ Azure SignalR 服務是可以協助開發人員使用即時功能輕鬆地建置
     }
     ```
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsnetcore)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qsnetcore)。
 
 ## <a name="build-and-run-the-app-locally"></a>於本機建置並執行應用程式
 
@@ -382,7 +382,7 @@ Azure SignalR 服務是可以協助開發人員使用即時功能輕鬆地建置
 
     ![Azure SignalR 群組聊天的範例](media/signalr-quickstart-dotnet-core/signalr-quickstart-complete-local.png)
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsnetcore)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qsnetcore)。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -403,7 +403,7 @@ Azure SignalR 服務是可以協助開發人員使用即時功能輕鬆地建置
 
 不久後，系統便會刪除該資源群組及其所有的資源。
 
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsnetcore)
+有問題嗎？ 請嘗試[疑難排解指南](signalr-howto-troubleshoot-guide.md)或[與我們聯絡](https://aka.ms/asrs/qsnetcore)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -411,5 +411,3 @@ Azure SignalR 服務是可以協助開發人員使用即時功能輕鬆地建置
 
 > [!div class="nextstepaction"]
 > [Azure SignalR 服務驗證](./signalr-concept-authenticate-oauth.md)
-
-[有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsnetcore)

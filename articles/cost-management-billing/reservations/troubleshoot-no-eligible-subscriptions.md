@@ -7,13 +7,13 @@ ms.subservice: reservations
 ms.author: banders
 ms.reviewer: yashar
 ms.topic: troubleshooting
-ms.date: 10/14/2020
-ms.openlocfilehash: fd7a2bde47f34a61390082a223409070275b64ce
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.date: 11/16/2020
+ms.openlocfilehash: 1b36577c3c0940687f98394f8ea4faae83f371be
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92115176"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887190"
 ---
 # <a name="troubleshoot-no-eligible-subscriptions"></a>針對沒有符合資格的訂用帳戶一事進行疑難排解
 
@@ -27,7 +27,7 @@ ms.locfileid: "92115176"
    ```
     No eligible subscriptions
     
-    You do not have any eligible subscriptions to purchase reservations. To purchase a reservation, you should be an owner on at least one subscription of the following type: Pay-as-you-go, CSP, Microsoft Enterprise or Microsoft Customer Agreement.
+    You do not have any eligible subscriptions to purchase reservations. To purchase a reservation, you should have owner or reservation purchaser permission on at least one subscription of the following type: Pay-as-you-go, CSP, Microsoft Enterprise or Microsoft Customer Agreement.
     ```
 1. 在 [選取您要購買的產品] 區域中，展開 [計費訂用帳戶] 清單，以查看特定訂用帳戶沒有資格購買保留執行個體的原因。 下圖顯示為何無法購買保留的範例。  
     :::image type="content" source="./media/troubleshoot-no-eligible-subscriptions/select-product-to-purchase.png" alt-text="顯示為何無法購買保留的範例" lightbox="./media/troubleshoot-no-eligible-subscriptions/select-product-to-purchase.png" :::
@@ -37,7 +37,7 @@ ms.locfileid: "92115176"
 若要購買 Azure 保留執行個體，您必須至少有一個符合下列需求的訂用帳戶：
 
 - 訂用帳戶必須是支援的供應項目類型。 支援的供應項目類型有：隨用隨付、雲端解決方案提供者 (CSP)、Microsoft Azure 企業版或 Microsoft 客戶合約。
-- 您必須是訂用帳戶的擁有者。
+- 您必須是訂用帳戶的擁有者或保留購買者。
 
 當您沒有符合需求的訂用帳戶時，您會收到 `No eligible subscriptions` 錯誤。
 
@@ -51,19 +51,17 @@ Subscription not eligible for purchase
 This subscription is not eligible for reservation benefit an cannot be used to purchase a reservation.
 ```
 
-:::image type="content" source="./media/troubleshoot-no-eligible-subscriptions/subscription-not-eligible.png" alt-text="顯示為何無法購買保留的範例" :::
+:::image type="content" source="./media/troubleshoot-no-eligible-subscriptions/subscription-not-eligible.png" alt-text="顯示訂用帳戶沒有資格購買錯誤訊息的範例" :::
 
 ### <a name="cause-2"></a>原因 2
 
-您必須是訂用帳戶的擁有者。 您不是訂用帳戶的擁有者。 當您不是所選取訂用帳戶的擁有者時，您會看到下列錯誤。
+您必須是訂用帳戶的擁有者或保留購買者。 當您沒有足夠的權限時，您會看到下列錯誤。
 
 ```
-You do not have owner access on the subscription
+You do not have owner or reservation purchaser access on the subscription
 
-You can only purchase reservations using subscriptions on which you have owner access.
+You can only purchase reservations using subscriptions on which you have owner or reservation purchaser access.
 ```
-
-:::image type="content" source="./media/troubleshoot-no-eligible-subscriptions/no-owner-access.png" alt-text="顯示為何無法購買保留的範例" :::
 
 ## <a name="solution"></a>解決方法
 

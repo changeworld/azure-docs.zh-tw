@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: dd042b28035b5e9a4b18041d6c1a81f77cfd4ea7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 092b95845ed033ac0705e325fc6535739088848f
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86527399"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888788"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>使用 Azure 虛擬機器擴展集自動調整的概觀
 Azure 虛擬機器擴展集可以自動增加或減少執行您的應用程式的 VM 執行個體數目。 這個自動化和彈性的行為會降低監視和最佳化應用程式效能的管理額外負荷。 您可以建立規則，用以定義對於正面客戶體驗可接受的效能水準。 符合那些定義的閾值時，自動調整規則就會採取動作來調整擴展集的容量。 您也可以排定事件，以在固定時間自動增加或減少擴展集的容量。 本文提供可用效能計量以及可執行的自動調整動作的概觀。
@@ -22,6 +22,9 @@ Azure 虛擬機器擴展集可以自動增加或減少執行您的應用程式�
 
 ## <a name="benefits-of-autoscale"></a>自動調整的優點
 如果您的應用程式需求增加，您擴展集內 VM 執行個體上的負載也會跟著增加。 如果這樣的負載增加會持續而非只是短暫的需求，您就可以設定自動調整規則來增加擴展集中的 VM 執行個體數目。
+
+> [!NOTE]
+> 針對您的擴展集使用自動執行個體修復時，擴展集中的執行個體數目上限可以到 200。 深入了解[自動執行個體修復](./virtual-machine-scale-sets-automatic-instance-repairs.md)。
 
 建立這些 VM 執行個體並部署應用程式後，擴展集就會開始透過負載平衡器將流量分散給它們。 您可以控制要監視哪些計量 (例如 CPU 或記憶體)、應用程式負載必須符合給定的閾值多久，以及要將多少個 VM 執行個體新增至擴展集。
 
@@ -135,7 +138,7 @@ Azure 診斷擴充功能是在 VM 執行個體內部執行的代理程式。 代
 - [Azure CLI](tutorial-autoscale-cli.md)
 - [Azure 範本](tutorial-autoscale-template.md)
 
-本概觀詳細說明如何使用自動調整規則進行水平縮放，以及增加或減少擴展集中 VM 執行個體的*數目*。 您也可以進行垂直調整以增加或減少 VM 執行個體的*大小*。 如需詳細資訊，請參閱[使用虛擬機器擴展集垂直自動調整](virtual-machine-scale-sets-vertical-scale-reprovision.md)。
+本概觀詳細說明如何使用自動調整規則進行水平縮放，以及增加或減少擴展集中 VM 執行個體的 *數目*。 您也可以進行垂直調整以增加或減少 VM 執行個體的 *大小*。 如需詳細資訊，請參閱[使用虛擬機器擴展集垂直自動調整](virtual-machine-scale-sets-vertical-scale-reprovision.md)。
 
 如需有關如何管理 VM 執行個體的資訊，請參閱[使用 Azure PowerShell 管理虛擬機器擴展集](./virtual-machine-scale-sets-manage-powershell.md)。
 
