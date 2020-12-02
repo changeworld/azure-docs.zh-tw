@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
 ms.topic: sample
-author: MightyPen
-ms.author: genemi
-ms.reviewer: jrasnik
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 06/06/2020
-ms.openlocfilehash: 9674b7188251312056812ac8e1dcae5885579e2a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d7a57f98551cf91ed87858caba0907471bcf6b12
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791302"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501221"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL Database 中擴充事件的事件檔案目標程式碼
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -258,7 +258,7 @@ PowerShell 指令碼在結束時列印出幾個具名的值。 您必須編輯 T
 6. 儲存並執行指令碼。
 
 > [!WARNING]
-> 上述 PowerShell 指令碼所產生的 SAS 金鑰值可能會以 '?' (問號) 開頭。 當您在下列 T-SQL 指令碼中使用 SAS 金鑰時，您必須「移除前置 '?'」  。 否則您的動作可能會遭到安全性封鎖。
+> 上述 PowerShell 指令碼所產生的 SAS 金鑰值可能會以 '?' (問號) 開頭。 當您在下列 T-SQL 指令碼中使用 SAS 金鑰時，您必須「移除前置 '?'」 。 否則您的動作可能會遭到安全性封鎖。
 
 ### <a name="transact-sql-code"></a>Transact-SQL 程式碼
 
@@ -506,9 +506,9 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 假設您想要在 Microsoft SQL Server 上執行上述的 Transact-SQL 範例。
 
-- 為了簡單起見，您可以用簡單的檔案 (例如 *C:\myeventdata.xel* ) 來取代「Azure 儲存體」容器的使用。 檔案會寫入裝載 SQL Server 之電腦的本機硬碟。
-- 針對 **CREATE MASTER KEY** 和 **CREATE CREDENTIAL** ，您不需要任何類型的 Transact-SQL 陳述式。
-- 在 **CREATE EVENT SESSION** 陳述式的 **ADD TARGET** 子句中，您要將對 **filename=** 指派的 Http 值取代為完整路徑字串 (例如 *C:\myfile.xel* )。
+- 為了簡單起見，您可以用簡單的檔案 (例如 *C:\myeventdata.xel*) 來取代「Azure 儲存體」容器的使用。 檔案會寫入裝載 SQL Server 之電腦的本機硬碟。
+- 針對 **CREATE MASTER KEY** 和 **CREATE CREDENTIAL**，您不需要任何類型的 Transact-SQL 陳述式。
+- 在 **CREATE EVENT SESSION** 陳述式的 **ADD TARGET** 子句中，您要將對 **filename=** 指派的 Http 值取代為完整路徑字串 (例如 *C:\myfile.xel*)。
   
   - 不需要牽涉到任何 Azure 儲存體帳戶。
 

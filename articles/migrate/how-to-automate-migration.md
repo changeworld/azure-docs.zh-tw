@@ -6,27 +6,27 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/30/2020
 ms.author: rahugup
-ms.openlocfilehash: e1b34db7f2473e16d3ebde11376652f654f2f778
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 4ef4d3989f063e9d31718bc7143662c4f20cc90b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377950"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500813"
 ---
 # <a name="scale-migration-of-vmware-vms"></a>調整 VMware Vm 的規模 
 
-本文可協助您瞭解如何使用腳本，將大量的 VMware 虛擬機器遷移 (Vm) 使用無代理程式方法。 若要調整遷移，您可以使用 [Azure Migrate PowerShell 模組](https://aka.ms/azuremigratepowershellvmware)。 
+本文可協助您瞭解如何使用腳本，將大量的 VMware 虛擬機器遷移 (Vm) 使用無代理程式方法。 若要調整遷移，您可以使用 [Azure Migrate PowerShell 模組](./tutorial-migrate-vmware-powershell.md)。 
 
-Azure Migrate VMware 遷移自動化腳本可在 GitHub 上的 [Azure PowerShell 範例](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) 存放庫下載。 您可以使用這些腳本，將 VMware Vm 遷移至使用無代理程式遷移方法的 Azure。 這些腳本中使用的 Azure Migrate PowerShell 命令記載于 [此處](https://aka.ms/azuremigratepowershellvmware)。
+Azure Migrate VMware 遷移自動化腳本可在 GitHub 上的 [Azure PowerShell 範例](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) 存放庫下載。 您可以使用這些腳本，將 VMware Vm 遷移至使用無代理程式遷移方法的 Azure。 這些腳本中使用的 Azure Migrate PowerShell 命令記載于 [此處](./tutorial-migrate-vmware-powershell.md)。
 
 ## <a name="current-limitations"></a>目前的限制
 - 這些腳本支援使用所有磁片來遷移 VMware Vm。 如果您想要選擇性地複寫連接至 VMware VM 的磁片，您可以更新腳本。 
 - 腳本支援使用評估建議。 如果未使用評定建議，則連接到 VMware VM 的所有磁片都會遷移至相同的受控磁片類型 (Standard 或 Premium) 。 如果您想要使用多個具有相同 VM 的受控磁片類型，您可以更新腳本
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - [完成探索教學課程](tutorial-discover-vmware.md)，準備 Azure 和 VMware 以進行移轉。
-- 建議您先完成第二個教學課程以[評估 VMware VM](tutorial-assess-vmware.md)，再將其遷移至 Azure。
+- 建議您先完成第二個教學課程以[評估 VMware VM](./tutorial-assess-vmware-azure-vm.md)，再將其遷移至 Azure。
 - 您有 Azure PowerShell `Az` 模組。 如果您需要安裝或升級 Azure PowerShell，請依照此[安裝和設定 Azure PowerShell 的指南](/powershell/azure/install-az-ps)操作
 
 ## <a name="install-azure-migrate-powershell-module"></a>安裝 Azure Migrate PowerShell 模組
@@ -45,7 +45,7 @@ Install-Module -Name Az.Migrate
 
 ### <a name="csv-file-schema"></a>CSV 檔案架構
 
-**欄標題** | **描述**
+**欄標題** | **說明**
 --- | ---
 AZMIGRATEPROJECT_SUBSCRIPTION_ID | 提供 Azure Migrate 專案訂用帳戶識別碼。
 AZMIGRATEPROJECT_RESOURCE_GROUP_NAME | 提供 Azure Migrate 資源組名。
@@ -92,7 +92,7 @@ OK_TO_TESTMIGRATE_CLEANUP | 使用 ' Y ' 指出當您執行 AzMigrate_CleanUpTes
 
 CSV 準備就緒之後，您就可以執行下列步驟來遷移您的內部部署 VMware Vm。
 
-**步驟 #** | **腳本名稱** | **描述**
+**步驟 #** | **腳本名稱** | **說明**
 --- | --- | ---
 1 | AzMigrate_StartReplication.ps1 | 針對 csv 中列出的所有 Vm 啟用複寫，腳本會建立 CSV 輸出和記錄檔以進行疑難排解。
 2 | AzMigrate_ReplicationStatus.ps1 | 檢查複寫的狀態，腳本會建立 csv 輸出，其中包含每個 VM 的狀態和記錄檔以進行疑難排解。
@@ -105,7 +105,7 @@ CSV 準備就緒之後，您就可以執行下列步驟來遷移您的內部部�
 
 下列腳本是由其他腳本針對所有 Azure Migrate 作業（例如啟用複寫、開始測試遷移、更新 VM 屬性等）叫用。 確定所有腳本都存在於相同的資料夾/路徑中。 
 
-**步驟 #** | **腳本名稱** | **描述**
+**步驟 #** | **腳本名稱** | **說明**
 --- | --- | ---
 1 | AzMigrate_Shared.ps1 | 包含函式的通用腳本，可透過 API) 、探索到的 Vm 和複寫 Vm 來取得 (的評量屬性。 
 2 | AzMigrate_CSV_Processor.ps1 | 一般腳本，包含用於 csv 檔案作業的函式，包括載入、讀取和列印記錄檔。 
@@ -123,4 +123,4 @@ CSV 準備就緒之後，您就可以執行下列步驟來遷移您的內部部�
 ".\AzMigrate_StartReplication.ps1" .\Input.csv 
 ```
 
-若要深入瞭解如何使用 Azure PowerShell 來遷移具有 Azure Migrate 的 VMware Vm，請遵循 [本教學](https://aka.ms/azuremigratepowershellvmware)課程。
+若要深入瞭解如何使用 Azure PowerShell 來遷移具有 Azure Migrate 的 VMware Vm，請遵循 [本教學](./tutorial-migrate-vmware-powershell.md)課程。

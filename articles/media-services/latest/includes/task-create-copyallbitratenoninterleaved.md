@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 11/18/2020
 ms.author: inhenkel
 ms.custom: REST
-ms.openlocfilehash: 0d248fa57d5288cedae8dc46441739575c48c129
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 26492ba71726cefe863b27162dd901c945c3ddb7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94918088"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509344"
 ---
 <!--Create a copyAllNonInterleave transform with REST-->
 
 下列 Azure REST 命令會使用 `copyAllBitrateNonInterleaved` 從預設值建立轉換 `#Microsoft.Media.BuiltInStandardEncoderPreset` 。 `subscriptionID` `resourceGroup` `accountName` 以您目前使用的值取代值、和。 藉由設定來指定您的轉換名稱 `transformName` 。 
 
-若要查看所有可用的 REST API 轉換，請參閱 [轉換-建立或更新](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#definitions)。
+若要查看所有可用的 REST API 轉換，請參閱 [轉換-建立或更新](/rest/api/media/transforms/createorupdate#definitions)。
 
 ```REST
 PUT https://management.azure.com/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroup}}/providers/Microsoft.Media/mediaServices/{{accountName}}/transforms/{{transformName}}?api-version=2020-05-01

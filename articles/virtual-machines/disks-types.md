@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ef481b73b6dc42bc35252c08ae8d63b9de95b2ba
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 1a7e8e71e26af241d16095a5fa1e6a02a7e3d4c2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325089"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500762"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>在 Azure 中可使用哪些磁碟類型？
 
@@ -84,7 +84,7 @@ Ultra 磁片的設計目的是要提供上表99.99% 的時間所述的毫秒延�
 
 進階 SSD 小於 P30 的大小現在提供磁片高載，並可將其 IOPS 高載為每個磁片（最高3500）及其頻寬（最高 170 MB/秒）。 高載是自動化的，而且會根據信用系統來運作。 當磁片流量低於已布建的效能目標時，會自動在高載值區中累積點數，且當流量高載超過目標時，會自動取用點數，最高高載限制。 如果您有要取用的高載點數，則最大高載限制會定義磁片 IOPS & 頻寬的上限。 磁片高載可針對無法預期的 IO 模式變更提供更好的容錯。 您可以使用它來針對 OS 磁片開機和具有尖峰流量的應用程式，充分利用它。    
 
-預設會針對適用磁片大小的新部署啟用磁片高載支援，而不需要使用者動作。 針對適用大小的現有磁片，您可以使用下列兩個選項之一來啟用負載平衡：卸離並重新連接磁片，或停止並重新啟動連結的 VM。 當磁片連接至支援尖峰高載限制30分鐘的虛擬機器時，所有高載的適用磁片大小都會從完整的高載點數值區開始。 若要深入瞭解高載在 Azure 磁片上的運作方式，請參閱 [進階 SSD](linux/disk-bursting.md)負載平衡。 
+預設會針對適用磁片大小的新部署啟用磁片高載支援，而不需要使用者動作。 針對適用大小的現有磁片，您可以使用下列兩個選項之一來啟用負載平衡：卸離並重新連接磁片，或停止並重新啟動連結的 VM。 當磁片連接至支援尖峰高載限制30分鐘的虛擬機器時，所有高載的適用磁片大小都會從完整的高載點數值區開始。 若要深入瞭解高載在 Azure 磁片上的運作方式，請參閱 [進階 SSD](./disk-bursting.md)負載平衡。 
 
 ### <a name="transactions"></a>交易
 

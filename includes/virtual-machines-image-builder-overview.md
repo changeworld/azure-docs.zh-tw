@@ -5,12 +5,12 @@ ms.date: 08/03/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: daberry
-ms.openlocfilehash: 5c028fc1abd77bda1a41857a7a7c77da1ad1b2d2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eb864837e9063aa39827abf61f7efece4c909118
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025941"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509394"
 ---
 標準化虛擬機器 (VM) 映像可讓組織遷移至雲端，並確保部署的一致性。 映像通常包含預先定義的安全性和組態設定，以及必要的軟體。 設定您自己的映像處理管線需要一些時間、基礎結構和設定，但透過 Azure VM Image Builder，只要提供簡單的組態來描述您的映像、將其提交至服務，然後就會建立映像並加以散發。
  
@@ -84,7 +84,7 @@ Azure Image Builder 是完全受控的 Azure 服務，可供 Azure 資源提供�
 [這裡](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)會詳細說明權限，而範例會示範其實作方式。
 
 > [!Note]
-> 先前使用 AIB 時，您會使用 AIB SPN，並將 SPN 權限授予映像資源群組。 我們即將脫離此模型，以允許使用未來的功能。 從 2020 年 5 月 26 日起，Image Builder 不會接受沒有使用者所指派身分識別的範本，必須將現有的範本重新提交至具有[使用者身分識別](../articles/virtual-machines/linux/image-builder-json.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#identity)的服務。 這裡的範例已示範如何建立使用者指派的身分識別，並將其新增至範本。 如需詳細資訊，請檢閱這份有關這項變動和版本更新的[文件](https://github.com/danielsollondon/azvmimagebuilder#service-updates-and-latest-release-information)。
+> 先前使用 AIB 時，您會使用 AIB SPN，並將 SPN 權限授予映像資源群組。 我們即將脫離此模型，以允許使用未來的功能。 從 2020 年 5 月 26 日起，Image Builder 不會接受沒有使用者所指派身分識別的範本，必須將現有的範本重新提交至具有[使用者身分識別](../articles/virtual-machines/linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#identity)的服務。 這裡的範例已示範如何建立使用者指派的身分識別，並將其新增至範本。 如需詳細資訊，請檢閱這份有關這項變動和版本更新的[文件](https://github.com/danielsollondon/azvmimagebuilder#service-updates-and-latest-release-information)。
 
 ## <a name="costs"></a>費用
 使用 Azure Image Builder 建立、建置和儲存映像時，您會產生一些計算、網路和儲存成本。 這些成本類似於手動建立自訂映像所產生的成本。 對於各項資源，系統會以您的 Azure 費率向您收費。 

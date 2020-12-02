@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 11/19/2020
 ms.author: nanditav
 ms.reviewer: jrasnick
-ms.openlocfilehash: a6ea3925f3b6bc786be6a4855b2f3bfb6b402d70
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d9a9d3c303739e68b5b8ef28053d6cf0b071f955
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455181"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501051"
 ---
 # <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Azure Synapse Analytics 工作區的加密
 
@@ -47,13 +47,13 @@ Azure 服務的第一層加密是使用平臺管理的金鑰來啟用。 根據�
 工作區可設定為在建立工作區時，使用客戶管理的金鑰來啟用雙重加密。 建立新的工作區時，請在 [安全性] 索引標籤上，選取 [使用客戶管理的金鑰啟用雙重加密] 選項。 您可以選擇輸入金鑰識別碼 URI，或從與工作區位於 **相同區域** 的金鑰保存庫清單中選取。 Key Vault 本身必須 **啟用清除保護**。
 
 > [!IMPORTANT]
-> 目前，在建立工作區之後，無法變更雙重加密的設定設定。
+> 建立工作區之後，就無法變更雙重加密的設定設定。
 
 :::image type="content" source="./media/workspaces-encryption/workspaces-encryption.png" alt-text="下圖顯示必須選取的選項，才能使用客戶管理的金鑰來啟用雙精度加密的工作區。":::
 
 ### <a name="key-access-and-workspace-activation"></a>金鑰存取和工作區啟用
 
-具有客戶管理金鑰的 Azure Synapse 加密模型牽涉到存取 Azure Key Vault 中金鑰的工作區，並視需要進行加密和解密。 您可以透過存取原則或 Azure Key Vault RBAC 存取 ([預覽](../../key-vault/general/rbac-guide.md)) ，讓工作區存取金鑰。 透過 Azure Key Vault 存取原則授與許可權時，請在建立原則期間選擇 [僅限應用程式] 選項。
+具有客戶管理金鑰的 Azure Synapse 加密模型牽涉到存取 Azure Key Vault 中金鑰的工作區，並視需要進行加密和解密。 您可以透過存取原則或 Azure Key Vault RBAC 存取 ([預覽](../../key-vault/general/rbac-guide.md)) ，讓工作區存取金鑰。 透過 Azure Key Vault 存取原則授與許可權時，請在原則建立期間選擇 [ [僅限應用程式]](../../key-vault/general/secure-your-key-vault.md#key-vault-authentication-options) 選項 (選取工作區的受控識別，並不要將它新增為已授權的應用程式) 。
 
  工作區受控識別必須先授與金鑰保存庫所需的許可權，才能啟用工作區。 此工作區啟用的階段式方法可確保工作區中的資料會以客戶管理的金鑰加密。 請注意，您可以針對專用的 SQL 集區啟用或停用加密-預設不會啟用每個集區進行加密。
 
@@ -76,6 +76,9 @@ Azure 服務的第一層加密是使用平臺管理的金鑰來啟用。 根據�
 您可以從 Azure 入口網站中的 [ **加密** ] 頁面變更用來加密資料的客戶管理金鑰。 此外，您也可以使用金鑰識別碼來選擇新的金鑰，或從您可在與工作區相同的區域中存取的金鑰保存庫中選取。 如果您在不同的金鑰保存庫中選擇先前使用的金鑰，請將新金鑰保存庫的「取得」、「包裝」和「解除包裝」許可權授與工作區受控識別。 工作區將會驗證其對新金鑰保存庫的存取權，而且工作區中的所有資料都會以新的金鑰重新加密。
 
 :::image type="content" source="./media/workspaces-encryption/workspace-encryption-management.png" alt-text="下圖顯示 Azure 入口網站中的工作區加密區段。":::
+
+>[!IMPORTANT]
+>變更工作區的加密金鑰時，請保留金鑰，直到您以新的金鑰取代工作區中的金鑰。 這是為了在使用新的金鑰重新加密之前，先允許使用舊金鑰解密資料。
 
 自動定期輪替金鑰的 Azure 金鑰保存庫原則或金鑰的動作，可能會導致建立新的金鑰版本。 您可以選擇使用最新版本的作用中金鑰來重新加密工作區中的所有資料。 若要重新加密，請將 Azure 入口網站中的機碼變更為暫時金鑰，然後切換回您要用於加密的金鑰。 舉例來說，若要使用最新版本的 active key Key1 來更新資料加密，請將工作區客戶管理的金鑰變更為暫時金鑰 Key2。 等候具有 Key2 的加密完成。 然後，將工作區客戶管理的金鑰切換回工作區中的 Key1 資料，將會使用最新版本的 Key1 重新加密。
 

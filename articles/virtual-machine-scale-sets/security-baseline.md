@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3932a1dee0eee16e7d64ff4c6085919d85b431ab
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5c00d08fcaeed8eba5b9732c9196b9abddc32b36
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843259"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500711"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>虛擬機器擴展集的 Azure 安全性基準
 
@@ -76,7 +76,7 @@ ms.locfileid: "94843259"
 
 您可以使用 Azure 資訊安全中心的即時網路存取，將 Windows 虛擬機器的風險限制為有限期間內的已核准 IP 位址。 此外，您也可以使用 Azure 資訊安全中心調適型網路強化，根據實際的流量和威脅情報，建議可限制埠和來源 Ip 的 NSG 設定。
 
-* [如何設定 DDoS 保護](../virtual-network/manage-ddos-protection.md)
+* [如何設定 DDoS 保護](../ddos-protection/manage-ddos-protection.md)
 
 * [如何部署 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -284,7 +284,7 @@ ms.locfileid: "94843259"
 
 * [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
-* [了解 Log Analytics 工作區](../azure-monitor/log-query/get-started-portal.md)
+* [了解 Log Analytics 工作區](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [如何在 Azure 監視器中執行自訂查詢](../azure-monitor/log-query/get-started-queries.md)
 
@@ -318,7 +318,7 @@ ms.locfileid: "94843259"
 
 * [將 Linux 伺服器上架到 Azure 安全性中心的指示](../security-center/quickstart-onboard-machines.md)
 
-* [下列連結提供 Microsoft 建議的安全性指導方針，可作為所選弱點軟體的準則清單](../virtual-machines/linux/security-recommendations.md)
+* [下列連結提供 Microsoft 建議的安全性指導方針，可作為所選弱點軟體的準則清單](../virtual-machines/security-recommendations.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -450,7 +450,7 @@ ms.locfileid: "94843259"
 
 **指導** 方針：使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。 您可以使用受控識別來驗證任何支援 Azure AD authentication 的服務，包括 Key Vault，而不需要您程式碼中的任何認證。 您在虛擬機器上執行的程式碼可以使用其受控識別來要求支援 Azure AD authentication 之服務的存取權杖。
 
-* [如何建立和設定 Azure AD 實例](../active-directory-domain-services/tutorial-create-instance.md)
+* [如何建立及設定 Azure AD 執行個體](../active-directory-domain-services/tutorial-create-instance.md)
 
 * [Azure 資源受控識別概觀](../active-directory/managed-identities-azure-resources/overview.md)
 
@@ -472,7 +472,7 @@ ms.locfileid: "94843259"
 
 **指導** 方針：設定 Azure Active Directory 的診斷設定，以將審核記錄和登入記錄傳送至 Log Analytics 工作區。 此外，您也可以使用 Azure 監視器來檢查記錄，並對 Azure 虛擬機器中的記錄資料執行查詢。
 
-* [了解 Log Analytics 工作區](../azure-monitor/log-query/get-started-portal.md)
+* [了解 Log Analytics 工作區](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [如何將 Azure 活動記錄整合到 Azure 監視器中](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -756,7 +756,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 * [Azure 自動化簡介](../automation/automation-intro.md)
 
-* [使用變更追蹤解決方案來追蹤環境中的變更](../automation/change-tracking.md)
+* [使用變更追蹤解決方案來追蹤環境中的變更](../automation/change-tracking/overview.md)
 
 * [Azure 自動化狀態設定總覽](../automation/automation-dsc-overview.md)
 
@@ -1036,7 +1036,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 * [Microsoft Defender 進階威脅防護](/windows/security/threat-protection/microsoft-defender-atp/onboard-configure)
 
-* [如何設定雲端服務和虛擬機器的 Microsoft Antimalware](../virtual-machines/linux/security-recommendations.md)
+* [如何設定雲端服務和虛擬機器的 Microsoft Antimalware](../virtual-machines/security-recommendations.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1190,7 +1190,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 * [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-* [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+* [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 資訊安全中心監視**：不適用
 

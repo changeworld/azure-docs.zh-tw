@@ -9,20 +9,20 @@ ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 12/03/2019
-ms.openlocfilehash: 35fc4b18ee5a98270f715a969354df2be5000150
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35e2a73b0cfae104cee417e7d4a159e7fd169a17
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444100"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500898"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>在 Azure 入口網站中啟用自動調整，以監視查詢並改善工作負載效能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 
-Azure SQL Database 會自動管理資料服務，這些服務會持續監視您的查詢，並識別您可以執行以改善工作負載效能的動作。 您可以檢閱建議並加以手動套用，或讓 Azure SQL Database 自動套用矯正措施 - 這稱為**模式**。
+Azure SQL Database 會自動管理資料服務，這些服務會持續監視您的查詢，並識別您可以執行以改善工作負載效能的動作。 您可以檢閱建議並加以手動套用，或讓 Azure SQL Database 自動套用矯正措施 - 這稱為 **模式**。
 
 您可以透過下列步驟，在伺服器或資料庫層級啟用自動調整：
 
@@ -62,7 +62,7 @@ Azure SQL Database 會自動管理資料服務，這些服務會持續監視您�
 
 ### <a name="rest-api"></a>REST API
 
-若要深入瞭解如何使用 REST API 在 **伺服器**上啟用自動調整，請參閱 [伺服器自動調整更新和取得 HTTP 方法](/rest/api/sql/serverautomatictuning)。
+若要深入瞭解如何使用 REST API 在 **伺服器** 上啟用自動調整，請參閱 [伺服器自動調整更新和取得 HTTP 方法](/rest/api/sql/serverautomatictuning)。
 
 ## <a name="enable-automatic-tuning-on-an-individual-database"></a>在個別的資料庫上啟用自動調整
 
@@ -73,7 +73,7 @@ Azure SQL Database 可讓您個別指定每個資料庫的自動調整設定。 
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-若要在 **單一資料庫**上啟用自動調整，請流覽至 Azure 入口網站中的資料庫，然後選取 [ **自動調整**]。
+若要在 **單一資料庫** 上啟用自動調整，請流覽至 Azure 入口網站中的資料庫，然後選取 [ **自動調整**]。
 
 您可以針對每個資料庫分開設定個別的自動調整設定。 您可以手動設定個別的自動調整選項，或指定選項從伺服器繼承其設定。
 
@@ -81,7 +81,7 @@ Azure SQL Database 可讓您個別指定每個資料庫的自動調整設定。 
 
 請注意，此時 [DROP_INDEX] 選項與使用分割區切換和索引提示的應用程式不相容，而且不應該在這些情況下啟用。
 
-選取所需的組態後，按一下 [套用]****。
+選取所需的組態後，按一下 [套用]。
 
 ### <a name="rest-api"></a>Rest API
 

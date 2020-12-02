@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 03/30/2020
-ms.openlocfilehash: 180f6e8902dc881c99a74a6491eeb3012bc03d0f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 4204254754307f8310d5ccfda19400de57381075
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675216"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500864"
 ---
 # <a name="automatic-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database 和 Azure SQL 受控執行個體中的自動調整
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -65,11 +65,11 @@ Azure SQL Database 和 Azure SQL 受控執行個體中提供的自動調整選�
 | :----------------------------- | ----- | ----- |
 | **CREATE INDEX** -識別可改善工作負載效能的索引、建立索引，並自動驗證查詢的效能是否已改善。 | 是 | 否 |
 | **DROP INDEX** -每天識別重複和重複的索引，但唯一索引和未使用的索引 ( # B0 90 天) 。 請注意，此選項與使用分割區切換和索引提示的應用程式不相容。 Premium 和業務關鍵服務層級不支援卸載未使用的索引。 | 是 | 否 |
-| 強制使用 (自動計畫更正的 **最後一個良好計畫** ) -使用比上一個良好計畫慢的執行計畫來識別 Azure SQL 查詢，並使用最後一個已知的良好計畫查詢，而不是使用回歸計畫。 | 是 | 是 |
+| 強制使用 (自動計畫更正的 **最後一個良好計畫**) -使用比上一個良好計畫慢的執行計畫來識別 Azure SQL 查詢，並使用最後一個已知的良好計畫查詢，而不是使用回歸計畫。 | 是 | 是 |
 
 ### <a name="automatic-tuning-for-sql-database"></a>SQL Database 的自動調整
 
-Azure SQL Database 的自動調整會使用 **建立索引** 、 **DROP INDEX** ，並 **強制執行最後一個良好的計畫** 資料庫建議程式建議，以將您的資料庫效能優化。 如需詳細資訊，請參閱 Azure 入口網站、 [PowerShell](/powershell/module/az.sql/get-azsqldatabaserecommendedaction)和[REST API](/rest/api/sql/serverautomatictuning)中的[Database advisor 建議](database-advisor-find-recommendations-portal.md)。
+Azure SQL Database 的自動調整會使用 **建立索引**、 **DROP INDEX**，並 **強制執行最後一個良好的計畫** 資料庫建議程式建議，以將您的資料庫效能優化。 如需詳細資訊，請參閱 Azure 入口網站、 [PowerShell](/powershell/module/az.sql/get-azsqldatabaserecommendedaction)和[REST API](/rest/api/sql/serverautomatictuning)中的[Database advisor 建議](database-advisor-find-recommendations-portal.md)。
 
 您可以使用 Azure 入口網站手動套用微調建議，也可以讓自動調整為您自動套用調整建議。 讓系統為您自動套用調整建議的好處，就是系統會自動驗證工作負載效能是否有正面的改善，或者如果未偵測到明顯的效能改善，系統會自動還原調整建議。 請注意，針對受到沒有經常執行之調整建議所影響的查詢，其驗證階段根據設計可能需要最多 72 小時才能完成。
 
@@ -90,7 +90,7 @@ Azure SQL Database 的自動調整會使用 **建立索引** 、 **DROP INDEX** 
 
 ### <a name="automatic-tuning-for-azure-sql-managed-instance"></a>Azure SQL 受控執行個體的自動調整
 
-SQL 受控執行個體的自動調整僅支援 **強制執行最後一個良好的計畫** 。 如需透過 T-sql 設定自動調整選項的詳細資訊，請參閱 [自動調整會引入自動計畫更正](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) 和 [自動計畫更正](/sql/relational-databases/automatic-tuning/automatic-tuning?view=sql-server-ver15#automatic-plan-correction)。
+SQL 受控執行個體的自動調整僅支援 **強制執行最後一個良好的計畫**。 如需透過 T-sql 設定自動調整選項的詳細資訊，請參閱 [自動調整會引入自動計畫更正](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) 和 [自動計畫更正](/sql/relational-databases/automatic-tuning/automatic-tuning?view=sql-server-ver15#automatic-plan-correction)。
 
 ## <a name="next-steps"></a>後續步驟
 

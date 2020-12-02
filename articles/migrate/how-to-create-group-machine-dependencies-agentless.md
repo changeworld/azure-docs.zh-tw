@@ -3,12 +3,12 @@ title: 在 Azure Migrate 伺服器評量中設定無代理程式相依性分析
 description: 在 Azure Migrate 伺服器評量中設定無代理程式相依性分析。
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 8893b0f41bb7a06c02a6c2aa28002980144b582a
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 722ad4cc27132815c1416331aaf0691754ccee05
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337688"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500779"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>分析機器相依性 (無代理程式)
 
@@ -31,7 +31,7 @@ ms.locfileid: "93337688"
 
 - [檢查](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) 支援的作業系統和必要的許可權。
 - 請確定您已執行下列動作：
-    - 有 Azure Migrate 專案。 如果沒有，請立即 [建立](how-to-add-tool-first-time.md) 一個。
+    - 有 Azure Migrate 專案。 如果沒有，請立即 [建立](./create-manage-projects.md) 一個。
     - 檢查您是否已將 Azure Migrate：伺服器評估工具 [新增](how-to-assess.md) 至專案。
     - 設定 [Azure Migrate 設備](migrate-appliance.md) 以探索內部部署機器。 為 VMware Vm[設定設備](how-to-set-up-appliance-vmware.md)。 設備會探索內部部署機器，並將中繼資料和效能資料傳送至 Azure Migrate：伺服器評量。
 - 檢查您想要分析的每個 VM 上是否已安裝 VMware Tools (晚于 10.2) 。
@@ -48,10 +48,10 @@ ms.locfileid: "93337688"
 
 1. 開啟設備管理應用程式。 
 2. 流覽至 [ **提供 vCenter 詳細資料** ] 面板。
-3. 在 [ **探索 vm 上的應用程式和** 相依性] 中，按一下 [ **新增認證** ]
-3. 選擇 **作業系統** 、提供帳戶的易記名稱和 **使用者名稱** / **密碼**
-6. 按一下 [檔案]  。
-7. 按一下 [ **儲存並開始探索** ]。
+3. 在 [**探索 vm 上的應用程式和** 相依性] 中，按一下 [**新增認證**]
+3. 選擇 **作業系統**、提供帳戶的易記名稱和 **使用者名稱** / **密碼**
+6. 按一下 [儲存]。
+7. 按一下 [ **儲存並開始探索**]。
 
     ![新增 VM 使用者帳戶](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
 
@@ -59,12 +59,12 @@ ms.locfileid: "93337688"
 
 選擇您要啟用相依性探索的電腦。 
 
-1. 在 [ **Azure Migrate：伺服器評估** ] 中，按一下 [探索到的 **伺服器** ]。
+1. 在 [ **Azure Migrate：伺服器評估**] 中，按一下 [探索到的 **伺服器**]。
 2. 按一下 [相依性 **分析** ] 圖示。
-3. 按一下 [ **新增伺服器** ]。
+3. 按一下 [ **新增伺服器**]。
 4. 在 [ **新增伺服器** ] 頁面中，選擇正在探索相關機器的設備。
 5. 從 [電腦] 清單中選取電腦。
-6. 按一下 [ **新增伺服器** ]。
+6. 按一下 [ **新增伺服器**]。
 
     ![啟動相依性探索](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
@@ -72,7 +72,7 @@ ms.locfileid: "93337688"
 
 ## <a name="visualize-dependencies"></a>將相依性視覺化
 
-1. 在 [ **Azure Migrate：伺服器評估** ] 中，按一下 [探索到的 **伺服器** ]。
+1. 在 [ **Azure Migrate：伺服器評估**] 中，按一下 [探索到的 **伺服器**]。
 2. 搜尋您想要查看的機器。
 3. 在 [相依性 **]** 資料行中，按一下 [視圖相依性 **]**
 4. 使用 [ **持續時間** ] 下拉式清單，變更您要查看其對應的時間週期。
@@ -93,7 +93,7 @@ ms.locfileid: "93337688"
 
 ## <a name="export-dependency-data"></a>匯出相依性資料
 
-1. 在 [ **Azure Migrate：伺服器評估** ] 中，按一下 [探索到的 **伺服器** ]。
+1. 在 [ **Azure Migrate：伺服器評估**] 中，按一下 [探索到的 **伺服器**]。
 2. 按一下 [相依性 **分析** ] 圖示。
 3. 按一下 [ **匯出應用程式** 相依性]。
 4. 在 [ **匯出應用程式** 相依性] 頁面中，選擇正在探索相關機器的設備。
@@ -127,12 +127,12 @@ Timeslot | 觀察到相依性期間的 timeslot。 <br/> 相依性資料目前�
 
 選擇您要停止相依性探索的電腦。 
 
-1. 在 [ **Azure Migrate：伺服器評估** ] 中，按一下 [探索到的 **伺服器** ]。
+1. 在 [ **Azure Migrate：伺服器評估**] 中，按一下 [探索到的 **伺服器**]。
 2. 按一下 [相依性 **分析** ] 圖示。
-3. 按一下 [ **移除伺服器** ]。
+3. 按一下 [ **移除伺服器**]。
 3. 在 [ **移除伺服器** ] 頁面中，選擇正在探索要停止相依性探索之 vm 的 **設備** 。
 4. 從 [電腦] 清單中選取電腦。
-5. 按一下 [ **移除伺服器** ]。
+5. 按一下 [ **移除伺服器**]。
 
 如果您想要停止相依于數部電腦，您可以使用 [PowerShell](#start-or-stop-dependency-discovery-using-powershell) 來執行這項操作。
 

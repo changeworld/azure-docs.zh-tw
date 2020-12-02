@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: c4132ca675af136d7fd50b8ddd02277919a5ed28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 534619ace09b4e11934062a591adf8d9ab6f77ad
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361087"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500796"
 ---
 # <a name="create-an-azure-vm-assessment"></a>建立 Azure VM 評量
 
@@ -21,7 +21,7 @@ ms.locfileid: "91361087"
 
 ## <a name="before-you-start"></a>開始之前
 
-- 請確定您已 [建立](how-to-add-tool-first-time.md) Azure Migrate 專案。
+- 請確定您已 [建立](./create-manage-projects.md) Azure Migrate 專案。
 - 如果您已建立專案，請確定您已 [新增](how-to-assess.md) Azure Migrate：伺服器評定工具。
 - 若要建立評量，您必須設定適用于 [VMware](how-to-set-up-appliance-vmware.md) 或 [hyper-v](how-to-set-up-appliance-hyper-v.md)的 Azure Migrate 設備。 設備會探索內部部署機器，並將中繼資料和效能資料傳送至 Azure Migrate：伺服器評量。 [深入了解](migrate-appliance.md)。
 
@@ -53,9 +53,9 @@ ms.locfileid: "91361087"
 
     ![評量屬性](./media/how-to-create-assessment//view-all.png)
 
-5. 按一下 [下一步] 以**選取要評量的機器**。 在 [選取或建立群組] 中，選取 [新建]，然後指定群組名稱。 群組會將一或多個 VM 收集在一起以進行評估。
+5. 按一下 [下一步] 以 **選取要評量的機器**。 在 [選取或建立群組] 中，選取 [新建]，然後指定群組名稱。 群組會將一或多個 VM 收集在一起以進行評估。
 6. 在 [將機器新增至群組] 中，選取要新增至群組的 VM。
-7. 按一下 下一步 以**檢閱+ 建立評量**來檢閱評量詳細資料。
+7. 按一下 下一步 以 **檢閱+ 建立評量** 來檢閱評量詳細資料。
 8. 按一下 [建立評估] 以建立群組，然後執行評估。
 
     ![建立評估](./media/how-to-create-assessment//assessment-create.png)

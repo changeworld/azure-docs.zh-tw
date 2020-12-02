@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: b1ef29eb71ccd945552550f64e5ae95bc85be44d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 79ccf0f8aae7e915601081f875cea294de52d787
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672111"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500847"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>Database Advisor Azure SQL Database 的效能建議
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,10 +29,10 @@ Azure SQL Database 會學習及適應您的應用程式。 Azure SQL Database �
 
 ![Azure SQL Database 的效能總覽](./media/database-advisor-implement-performance-recommendations/performance-overview-annotated.png)
 
-- [建議]  圖格會提供適用於資料庫的微調建議分解 (如果有多個建議，則會顯示前三個)。 按一下此圖格會帶您前往 **[效能建議選項](database-advisor-find-recommendations-portal.md#viewing-recommendations)** 。
+- [建議] 圖格會提供適用於資料庫的微調建議分解 (如果有多個建議，則會顯示前三個)。 按一下此圖格會帶您前往 **[效能建議選項](database-advisor-find-recommendations-portal.md#viewing-recommendations)**。
 - [微調活動]  圖格會提供資料庫進行中和已完成微調動作的摘要，讓您快速檢視調整活動的歷程記錄。 按一下此圖格會帶您前往您的資料庫的完整微調記錄檢視。
 - **自動調整** 磚會顯示資料庫的 **[自動調整](automatic-tuning-enable.md)** 設定， (自動套用至資料庫) 的微調選項。 按一下此圖格會開啟 [自動化組態] 對話方塊。
-- [資料庫查詢]  圖格會顯示資料庫的查詢效能摘要 (整體 DTU 使用量和排名最前面的資源取用查詢)。 按一下此圖格，即會帶您前往 [  。
+- [資料庫查詢] 圖格會顯示資料庫的查詢效能摘要 (整體 DTU 使用量和排名最前面的資源取用查詢)。 按一下此圖格，即會帶您前往 [[查詢效能深入解析](query-performance-insight-use.md)]。
 
 ## <a name="performance-recommendation-options"></a>效能建議選項
 
@@ -53,7 +53,7 @@ Azure SQL Database 提供的效能建議選項如下：
 
 ## <a name="create-index-recommendations"></a>建立索引建議
 
-Azure SQL Database 會持續監視正在執行的查詢，並找出可改善效能的索引。 確信遺漏特定索引之後，就會建立新的 [建立索引]  建議。
+Azure SQL Database 會持續監視正在執行的查詢，並找出可改善效能的索引。 確信遺漏特定索引之後，就會建立新的 [建立索引] 建議。
 
 評估一段時間之後，Azure SQL Database 會確定索引所能提升的效能。 根據評估的顯現效能，將建議分類為高、中或低。
 
@@ -88,7 +88,7 @@ Azure SQL Database 會持續監視正在執行的查詢，並找出可改善效�
 
 重新編譯執行計畫的程序會使用資料庫資源、增加查詢持續時間，以及造成計畫快取溢位。 這些事件接著會導致計劃從快取中收回。 您可以藉由在資料庫上設定強制參數化選項來改變此行為。
 
-為了協助您評估此建議的影響，我們提供了實際 CPU 使用量和預計 CPU 使用量 (如同已套用建議) 之間的比較。 這項建議可協助您節省 CPU 資源。 也可以協助您減少計畫快取的查詢持續時間和負擔，這表示多個計畫可以留在快取中並加以重複使用。 您可以按一下 [套用]  命令，快速套用此建議。
+為了協助您評估此建議的影響，我們提供了實際 CPU 使用量和預計 CPU 使用量 (如同已套用建議) 之間的比較。 這項建議可協助您節省 CPU 資源。 也可以協助您減少計畫快取的查詢持續時間和負擔，這表示多個計畫可以留在快取中並加以重複使用。 您可以按一下 [套用] 命令，快速套用此建議。
 
 套用此建議之後，即可在幾分鐘內於資料庫上啟用強制參數化。 它會啟動可持續約 24 小時的監視程序。 經過這段期間之後，您即可看到驗證報告。 此報告顯示資料庫在套用建議前後 24 小時的 CPU 使用量。 Azure SQL Database Advisor 具有安全機制，會在偵測到效能回歸時，自動還原套用的建議。
 
@@ -105,7 +105,7 @@ Azure SQL Database 會持續監視正在執行的查詢，並找出可改善效�
 
 | SQL 錯誤碼 | 訊息 |
 | --- | --- |
-| 201 |程序或函數 '' 必須有參數 '  '，但未提供。 |
+| 201 |程序或函數 '' 必須有參數 ''，但未提供。 |
 | 207 |無效的資料行名稱 '*'。 |
 | 208 |無效的物件名稱 '*'。 |
 | 213 |資料行名稱或提供的數值數量與資料表定義不相符。 |

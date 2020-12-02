@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: reference
-author: MightyPen
-ms.author: genemi
-ms.reviewer: jrasnik
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 0c89dc28a330e319e18a6289e5f6759c56e46ae8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 139673e46421aa0dc19298697872fbff5fe587af
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791268"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501204"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Azure SQL Database 中的擴充事件 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,7 +32,7 @@ Azure SQL Database 中的擴充事件功能集是 SQL Server 和 Azure SQL 受�
 - [快速入門：SQL Server 中的延伸事件](/sql/relational-databases/extended-events/quick-start-extended-events-in-sql-server)
 - [擴充事件](/sql/relational-databases/extended-events/extended-events)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 本主題假設您已經有一些下列項目的知識：
 
@@ -81,7 +81,7 @@ Azure SQL Database 中的擴充事件功能集是 SQL Server 和 Azure SQL 受�
 | **sys.database_event_session_targets** |傳回事件工作階段中每一個事件目標的資料列。 |
 | **sys.database_event_sessions** |針對資料庫中的每個事件會話，各傳回一個資料列。 |
 
-在 Microsoft SQL Server 中，類似的目錄檢視具有包含 .server_\_ 而不是 .database\_ 的名稱。 名稱模式類似 **sys.server_event_%** 。
+在 Microsoft SQL Server 中，類似的目錄檢視具有包含 .server_\_ 而不是 .database\_ 的名稱。 名稱模式類似 **sys.server_event_%**。
 
 ## <a name="new-dynamic-management-views-dmvs"></a>新的動態管理檢視 [(DMV)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)
 
@@ -97,7 +97,7 @@ Azure SQL Database 具有支援擴充事件的 [動態管理檢視 (DMV)](/sql/r
 
 在 Microsoft SQL Server 中，類似的目錄檢視的命名方式沒有名稱的 *\_ 資料庫* 部分，例如：
 
-- **sys.dm_xe_sessions** ，而不是<br/>**sys.dm_xe_database_sessions** 。
+- **sys.dm_xe_sessions**，而不是<br/>**sys.dm_xe_database_sessions**。
 
 ### <a name="dmvs-common-to-both"></a>兩者通用的 DMV
 
@@ -178,7 +178,7 @@ SELECT
 
 **事件檔案** 目標在將資料保存到 Azure 儲存體 Blob 時可能會遇到網路延遲或失敗。 Azure SQL Database 中的其他事件可能會在等候網路通訊完成時延遲。 此延遲會降低您的工作負載。
 
-- 若要減輕這個效能風險，請避免在您的事件工作階段定義中將 **EVENT_RETENTION_MODE** 選項設為 **NO_EVENT_LOSS** 。
+- 若要減輕這個效能風險，請避免在您的事件工作階段定義中將 **EVENT_RETENTION_MODE** 選項設為 **NO_EVENT_LOSS**。
 
 ## <a name="related-links"></a>相關連結
 
