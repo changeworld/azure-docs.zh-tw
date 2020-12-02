@@ -10,11 +10,11 @@ ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 14c71d5888aefc11485c03935c5d8c7ff7d17045
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090551"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995874"
 ---
 # <a name="quickstart-connect-to-azure-synapse-link-for-azure-cosmos-db"></a>快速入門：連線至適用於 Azure Cosmos DB 的 Azure Synapse Link
 
@@ -33,7 +33,7 @@ ms.locfileid: "92090551"
 
 ## <a name="navigate-to-synapse-studio"></a>瀏覽至 Synapse Studio
 
-從您的 Synapse 工作區中，選取 [啟動 Synapse Studio]。 在 Synapse Studio 首頁上選取 [**資料]，這會使您進入**資料物件總管**。
+從您的 Synapse 工作區中，選取 [啟動 Synapse Studio]。 在 Synapse Studio 首頁上選取 [**資料]，這會使您進入 **資料物件總管**。
 
 ## <a name="connect-an-azure-cosmos-db-database-to-a-synapse-workspace"></a>將 Azure Cosmos DB 資料庫連線至 Synapse 工作區
 
@@ -41,14 +41,14 @@ Azure Cosmos DB 資料庫連線會以連結服務的形式完成。 Cosmos DB �
 
 在資料物件總管中，您可以執行下列步驟以直接連線至 Azure Cosmos DB 資料庫：
 
-1. 選取 [資料] 附近的 ***+*** 圖示
-2. 選取 [連線至外部資料]
+1. 選取 [資料] 附近的 **_+_* _圖示
+2. 選取 [連線至外部資料]*
 3. 選取要連線到的 API：SQL 或 MongoDB
 4. 選取 [繼續]
 5. 為連結服務命名。 此名稱會顯示在物件總管中，且供 Synapse 執行階段用來連線至資料庫和容器。 建議使用易記名稱。
 6. 選取 [Cosmos DB 帳戶名稱] 和 [資料庫名稱]
-7. (選擇性) 若未指定區域，則 Synapse 執行階段作業將會路由至已啟用分析存放區的最近區域。 不過，您可以手動設定您想要讓使用者存取 Cosmos DB 分析存放區的區域。 選取 [其他連線屬性]，然後選取 [新增]。 在 [屬性名稱] 底下，寫入 ***PreferredRegions***，並將 [值] 設定為您要的區域 (例如：WestUS2，文字與數字之間沒有空格)
-8. 選取 [建立] 
+7. (選擇性) 若未指定區域，則 Synapse 執行階段作業將會路由至已啟用分析存放區的最近區域。 不過，您可以手動設定您想要讓使用者存取 Cosmos DB 分析存放區的區域。 選取 [其他連線屬性]，然後選取 [新增]。 在 **屬性名稱** 底下，寫入 **PreferredRegions *，並將 [值]*** 設定為您要的區域 (例如：WestUS2，文字與數字之間沒有空格)
+8. 選取 [建立]
 
 Azure Cosmos DB 資料庫會顯示在 [Azure Cosmos DB] 區段的 [已連結] 索引標籤底下。 您可以使用下列圖示，區分已啟用 HTAP 的 Azure Cosmos DB 容器與僅限 OLTP 的容器：
 

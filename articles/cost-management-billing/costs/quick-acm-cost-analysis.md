@@ -3,18 +3,18 @@ title: 快速入門 - 利用成本分析探索 Azure 成本
 description: 本快速入門可協助您使用成本分析，來探索及分析您的 Azure 組織成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 10/26/2020
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contentperfq2
-ms.openlocfilehash: 31a95d8c02ee540fe6b52088159f04535c39ea93
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a7f3c0ea9517f0ce99912f004ac4de07cc981551
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676838"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122656"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入門：使用成本分析探索及分析成本
 
@@ -52,15 +52,15 @@ ms.locfileid: "92676838"
 
 最初的成本分析檢視包含下列區域。
 
-**累積成本檢視** ：代表預先定義的成本分析檢視設定。 每個檢視都包含日期範圍、資料粒度、分組依據和篩選條件設定。 預設檢視會顯示目前計費週期的累積成本，但您也可以變更為其他內建檢視。
+**累積成本檢視**：代表預先定義的成本分析檢視設定。 每個檢視都包含日期範圍、資料粒度、分組依據和篩選條件設定。 預設檢視會顯示目前計費週期的累積成本，但您也可以變更為其他內建檢視。
 
-**實際成本** ：顯示當月所產生的實際使用量和購買成本，這些資料也會在您的帳單上顯示。
+**實際成本**：顯示當月所產生的實際使用量和購買成本，這些資料也會在您的帳單上顯示。
 
-**預測** ：顯示所選期間的總預測成本。
+**預測**：顯示所選期間的總預測成本。
 
-**預算** ：顯示已針對所選取範圍規劃的費用限制 (如果有的話)。
+**預算**：顯示已針對所選取範圍規劃的費用限制 (如果有的話)。
 
-**累積資料粒度** ：顯示從計費週期起始日開始的每日成本累積總額。 在為計費帳戶或訂用帳戶建立預算之後，即可對照預算，快速查看費用趨勢。 將滑鼠停留在一個日期上方，即可檢視累積到當天的費用。
+**累積資料粒度**：顯示從計費週期起始日開始的每日成本累積總額。 在為計費帳戶或訂用帳戶建立預算之後，即可對照預算，快速查看費用趨勢。 將滑鼠停留在一個日期上方，即可檢視累積到當天的費用。
 
 **樞紐分析圖 (環圈圖)** ：提供動態樞紐分析，將總成本依一組常用的標準屬性進行細分。 它們會顯示目前月份的最大到最小成本。 您隨時都可選取不同的樞紐分析表來變更樞紐分析圖。 成本會依據服務 (計量類別)、位置 (區域)，以及子範圍 (預設) 來進行分類。 例如，計費帳戶下的註冊帳戶、訂用帳戶下的資源群組，以及資源群組下的資源。
 
@@ -82,12 +82,13 @@ ms.locfileid: "92676838"
 每日成本 | 過去 30 天每天的成本是否增加？
 依服務區分的成本 | 為什麼過去三張發票列出的每月使用量落差很大？
 依資源區分的成本 | 這個月到目前為止，哪一項資源最花錢？
+發票詳細資料 | 我的上一張發票包括哪些費用？
 
 ![顯示一個本月選取項目範例的檢視選取器](./media/quick-acm-cost-analysis/view-selector.png)
 
 不過，在許多情況下，您需要更深入的分析。 自訂會從選取頁面上方的日期開始。
 
-成本分析預設會顯示當月的資料。 請使用日期選取器快速切換至一般的日期範圍。 範例包括過去七天、過去一個月、今年，或自訂日期範圍。 隨用隨付訂用帳戶也會包含以您的計費週期 (例如目前或上一張發票的計費週期) 為依據的資料範圍，且計費週期不受日曆月份限制。 可使用功能表頂端的 [< 上一個] 和 [下一個 >] 連結，分別跳至上一個或下一個週期。 例如，[<上一個] 會從 [過去 7 天] 切換至 [之前 8 到 14 天] 或 [之前 15 至 21 天]。
+成本分析預設會顯示當月的資料。 請使用日期選取器快速切換至一般的日期範圍。 範例包括過去七天、過去一個月、今年，或自訂日期範圍。 隨用隨付訂用帳戶也會包含以您的計費週期 (例如目前或上一張發票的計費週期) 為依據的資料範圍，且計費週期不受日曆月份限制。 可使用功能表頂端的 [< 上一個] 和 [下一個 >] 連結，分別跳至上一個或下一個週期。 例如，[<上一個] 會從 [過去 7 天] 切換至 [之前 8 到 14 天] 或 [之前 15 至 21 天]。 選取自訂日期範圍時，請記住最多可以選取一年 (例如 1 月 1 日到 12 月 31 日)。
 
 ![顯示本月份範例選取項目的日期選取器](./media/quick-acm-cost-analysis/date-selector.png)
 
@@ -118,7 +119,7 @@ ms.locfileid: "92676838"
 
 ![已分組的每日累積檢視，顯示上個月的 Azure 服務成本範例](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
-根據預設，成本分析會顯示所有產生的使用量和購買成本，且這些資料也會顯示在您的發票上，而這也稱為 **實際成本** 。 檢視實際成本適合用來進行發票對帳。 不過，如果您留意費用異常之處和其他成本變化，購買成本激增可能會讓您感到擔憂。 若要讓因為購買保留容量而造成成本激增的情形消失，請切換為 [分攤成本]。
+根據預設，成本分析會顯示所有產生的使用量和購買成本，且這些資料也會顯示在您的發票上，而這也稱為 **實際成本**。 檢視實際成本適合用來進行發票對帳。 不過，如果您留意費用異常之處和其他成本變化，購買成本激增可能會讓您感到擔憂。 若要讓因為購買保留容量而造成成本激增的情形消失，請切換為 [分攤成本]。
 
 ![在實際成本和分攤成本之間切換，以查看將購買的保留容量分散到整個期間並配置給使用該保留容量的資源會有什麼情況](./media/quick-acm-cost-analysis/metric-picker.png)
 
@@ -156,9 +157,58 @@ ms.locfileid: "92676838"
 
 ## <a name="download-usage-data"></a>下載使用量資料
 
+### <a name="portal"></a>[入口網站](#tab/azure-portal)
+
 有時候當您需要下載資料以便進一步分析時，請將其合併到您的自有資料中，或將其整合到您的自有系統。 成本管理功能可提供一些不同的選項。 作為起點，如果您需要一個臨機操作高階摘要 (就像您在成本分析中取得的內容)，請建置您需要的檢視。 然後選取 [匯出]，並選取 [將資料下載至 CSV] 或 [將資料下載至 Excel] 來下載它。 下載到 Excel 可針對您用來產生所下載資料的檢視提供額外的內容，例如範圍、查詢設定、總計和產生日期。
 
 如果您需要完整的未彙總資料集，請從計費帳戶下載。 然後，從入口網站左側瀏覽窗格的服務清單中，移至 [成本管理 + 計費]。 選取您的計費帳戶 (如果適用)。 移至 [使用方式 + 費用]，然後選取所需計費週期的 [下載] 圖示。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+從準備適用於 Azure CLI 的環境開始：
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+登入之後，請使用 [az costmanagement query](/cli/azure/ext/costmanagement/costmanagement#ext_costmanagement_az_costmanagement_query) 命令來查詢您訂用帳戶的每月至今使用量：
+
+```azurecli
+az costmanagement query --timeframe MonthToDate --type Usage \
+   --scope "subscriptions/00000000-0000-0000-0000-000000000000"
+```
+
+您也可以使用 **--dataset-filter** 參數或其他參數來縮小查詢的範圍：
+
+```azurecli
+az costmanagement query --timeframe MonthToDate --type Usage \
+   --scope "subscriptions/00000000-0000-0000-0000-000000000000" \
+   --dataset-filter "{\"and\":[{\"or\":[{\"dimension\":{\"name\":\"ResourceLocation\",\"operator\":\"In\",\"values\":[\"East US\",\"West Europe\"]}},{\"tag\":{\"name\":\"Environment\",\"operator\":\"In\",\"values\":[\"UAT\",\"Prod\"]}}]},{\"dimension\":{\"name\":\"ResourceGroup\",\"operator\":\"In\",\"values\":[\"API\"]}}]}"
+```
+
+**--dataset-filter** 參數接受 JSON 字串或 `@json-file`。
+
+您也可以選擇使用 [az costmanagement export](/cli/azure/ext/costmanagement/costmanagement/export) 命令，將使用量資料匯出至 Azure 儲存體帳戶。 您可以從這裡下載資料。
+
+1. 建立資源群組，或使用現有的資源群組。 執行 [az group create](/cli/azure/group#az_group_create) 命令以建立資源群組：
+
+   ```azurecli
+   az group create --name TreyNetwork --location "East US"
+   ```
+
+1. 建立儲存體帳戶以接收匯出，或使用現有的儲存體帳戶。 若要建立帳戶，請使用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令：
+
+   ```azurecli
+   az storage account create --resource-group TreyNetwork --name cmdemo
+   ```
+
+1. 執行 [az costmanagement export create](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_create) 命令以建立匯出：
+
+   ```azurecli
+   az costmanagement export create --name DemoExport --type Usage \
+   --scope "subscriptions/00000000-0000-0000-0000-000000000000" --storage-account-id cmdemo \
+   --storage-container democontainer --timeframe MonthToDate --storage-directory demodirectory
+   ```
+
+---
 
 ## <a name="clean-up-resources"></a>清除資源
 

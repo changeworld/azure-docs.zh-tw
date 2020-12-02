@@ -1,6 +1,6 @@
 ---
 title: 教學課程 -Web 應用程式使用受控識別存取儲存體 |Azure
-description: 在本教學課程中，您將了解如何使用受控識別，代表應用程式存取 Azure 儲存體。
+description: 在本教學課程中，您將了解如何使用受控識別來存取應用程式的 Azure 儲存體。
 services: storage, app-service-web
 author: rwike77
 manager: CelesteDG
@@ -10,28 +10,30 @@ ms.workload: identity
 ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: de179ad1e310df1fdeaed2173a83076922f3dccc
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 250e95b33b985aedcc1b1537f57338d29e848451
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428235"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96020206"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>教學課程：從 Web 應用程式存取 Azure 儲存體
 
-了解如何使用受控識別，代表在 Azure App Service 上執行的 Web 應用程式 (非登入的使用者) 存取 Azure 儲存體。
+了解如何使用受控識別，來針對在 Azure App Service 上執行的 Web 應用程式 (非登入的使用者) 存取其 Azure 儲存體。
 
-:::image type="content" alt-text="存取儲存體" source="./media/scenario-secure-app-access-storage/web-app-access-storage.svg" border="false":::
+:::image type="content" alt-text="說明如何存取儲存體的圖表。" source="./media/scenario-secure-app-access-storage/web-app-access-storage.svg" border="false":::
 
-您想從 Web 應用程式新增對 Azure 資料平面 (Azure 儲存體、SQL Azure、Azure Key Vault 或其他服務) 的存取權。  您可以使用共用金鑰，但必須擔心哪些人可以建立、部署和管理祕密的操作安全性。  金鑰也會簽入 GitHub，此舉可能引來駭客掃描金鑰。 讓 Web 應用程式存取資料的安全方式，是使用[受控識別](/azure/active-directory/managed-identities-azure-resources/overview)。 來自 Azure Active Directory 的受控識別可讓應用程式服務透過角色型存取控制 (RBAC) 存取資源，而不需要應用程式認證。 將受控識別指派給您的 Web 應用程式後，Azure 會負責建立和散發憑證。  不再需要擔心管理祕密或應用程式認證。
+您想從 Web 應用程式新增對 Azure 資料平面 (Azure 儲存體、Azure SQL Database、Azure Key Vault 或其他服務) 的存取權。 您可以使用共用金鑰，但必須擔心哪些人可以建立、部署和管理祕密的操作安全性。 金鑰也會簽入 GitHub，此舉可能引來駭客掃描金鑰。 讓 Web 應用程式存取資料的安全方式，是使用[受控識別](/azure/active-directory/managed-identities-azure-resources/overview)。
+
+來自 Azure Active Directory (Azure AD) 的受控識別可讓應用程式服務透過角色型存取控制 (RBAC) 存取資源，而不需要應用程式認證。 將受控識別指派給您的 Web 應用程式後，Azure 會負責建立和散發憑證。 不再需要擔心管理祕密或應用程式認證。
 
 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 >
-> * 在 Web 應用程式上建立系統指派的受控識別
-> * 建立儲存體帳戶和 Blob 儲存體容器
-> * 使用受控識別從 Web 應用程式存取儲存體
+> * 在 Web 應用程式上建立系統指派的受控識別。
+> * 建立儲存體帳戶和 Azure Blob 儲存體容器。
+> * 使用受控識別從 Web 應用程式存取儲存體。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -39,13 +41,13 @@ ms.locfileid: "94428235"
 
 * 在 Azure App Service 上執行且已啟用 [App Service 驗證/授權模組](scenario-secure-app-authentication-app-service.md)的 Web 應用程式。
 
-## <a name="enable-managed-identity-on-app"></a>啟用應用程式上的受控識別
+## <a name="enable-managed-identity-on-an-app"></a>啟用應用程式上的受控識別
 
-如果您透過 Visual Studio 建立並發佈 Web 應用程式，則系統會為您的應用程式啟用受控識別。 在應用程式服務中，選取左側導覽窗格中的 [身分識別]，然後選取 [系統指派]。  確定 **狀態** 設為 **開啟**。  若未設定為開啟，請按一下 [儲存] 再按一下 [是] 以啟用系統指派的受控識別。  啟用受控識別時，狀態會設定為「開啟」，且物件識別碼可供使用。
+如果您透過 Visual Studio 建立並發佈 Web 應用程式，則系統會為您的應用程式啟用受控識別。 在應用程式服務中，選取左側窗格中的 [身分識別]，然後選取 [系統指派]。 確定 **狀態** 設為 **開啟**。 若未設定為開啟，請依序選取 [儲存] 和 [是] 以啟用系統指派的受控識別。 啟用受控識別時，狀態會設定為「開啟」，且物件識別碼可供使用。
 
-:::image type="content" alt-text="系統指派的身分識別" source="./media/scenario-secure-app-access-storage/create-system-assigned-identity.png":::
+:::image type="content" alt-text="顯示 [系統指派的身分識別] 選項的螢幕擷取畫面。" source="./media/scenario-secure-app-access-storage/create-system-assigned-identity.png":::
 
-這會建立新的物件識別碼，不同於在 **驗證/授權** 刀鋒視窗中建立的應用程式識別碼。  複製系統指派的受控識別物件識別碼，以供稍後使用。
+此步驟會建立新的物件識別碼，不同於在 [驗證/授權] 窗格中建立的應用程式識別碼。 複製系統指派的受控識別物件識別碼。 稍後您將會用到此資訊。
 
 ## <a name="create-a-storage-account-and-blob-storage-container"></a>建立儲存體帳戶和 Blob 儲存體容器
 
@@ -59,15 +61,15 @@ Azure 儲存體中的 Blob 會組織成容器。 您必須先建立容器，稍�
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-若要在 Azure 入口網站中建立一般用途 v2 儲存體帳戶，請遵循下列步驟：
+若要在 Azure 入口網站中建立一般用途 v2 儲存體帳戶，請遵循下列步驟。
 
 1. 在 Azure 入口網站功能表上，選取 [所有服務]  。 在資源清單中，輸入 **儲存體帳戶**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [儲存體帳戶]  。
 
-1. 在出現的 [儲存體帳戶]  視窗上，選擇 [新增]  。
+1. 在出現的 [儲存體帳戶] 視窗中，選取 [新增]。
 
 1. 選取要在其中建立儲存體帳戶的訂用帳戶。
 
-1. 在 **資源群組** 欄位下，從下拉式功能表中選取包含您 Web 應用程式的資源群組。
+1. 在 [資源群組] 欄位下，從下拉式功能表中選取包含您 Web 應用程式的資源群組。
 
 1. 接下來，輸入儲存體帳戶的名稱。 您所選擇的名稱在整個 Azure 中必須是唯一的。 名稱的長度必須介於 3 到 24 個字元之間，且只能包含數字和小寫字母。
 
@@ -75,23 +77,23 @@ Azure 儲存體中的 Blob 會組織成容器。 您必須先建立容器，稍�
 
 1. 讓這些欄位設定為其預設值：
 
-|欄位|值|
-|--|--|
-|部署模型|Resource Manager|
-|效能|標準|
-|帳戶種類|StorageV2 (一般用途 v2)|
-|複寫|讀取權限異地備援儲存體 (RA-GRS)|
-|存取層|經常性存取層|
+    |欄位|值|
+    |--|--|
+    |部署模型|Resource Manager|
+    |效能|標準|
+    |帳戶種類|StorageV2 (一般用途 v2)|
+    |複寫|讀取權限異地備援儲存體 (RA-GRS)|
+    |存取層|經常性存取層|
 
 1. 選取 [檢閱 + 建立]  ，以檢閱您的儲存體帳戶設定並建立帳戶。
 
 1. 選取 [建立]。
 
-若要在 Azure 儲存體中建立 Blob 儲存體容器，請遵循下列步驟：
+若要在 Azure 儲存體中建立 Blob 儲存體容器，請遵循下列步驟。
 
-1. 在 Azure 入口網站中瀏覽至新的儲存體帳戶。
+1. 在 Azure 入口網站中移至新的儲存體帳戶。
 
-1. 在儲存體帳戶的左窗格中，捲動到 [Blob 服務]  區段，然後選取 [容器]  。
+1. 在儲存體帳戶的左窗格中，捲動到 [Blob 服務] 區段，然後選取 [容器]。
 
 1. 選取 [+ 容器]  按鈕。
 
@@ -103,7 +105,9 @@ Azure 儲存體中的 Blob 會組織成容器。 您必須先建立容器，稍�
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要建立一般用途的 V2 儲存體帳戶和儲存體容器，請執行下列指令碼。 指定包含 Web 應用程式的資源群組名稱。 輸入儲存體帳戶的名稱。 您所選擇的名稱在整個 Azure 中必須是唯一的。 名稱的長度必須介於 3 到 24 個字元之間，且只能包含數字和小寫字母。 指定儲存體帳戶的位置。  若要查看您訂用帳戶有效的位置清單，請執行 ```Get-AzLocation | select Location```。 容器名稱必須是小寫，以字母或數字開頭，並且只能包含字母、數字和虛線 (-) 字元。
+若要建立一般用途的 V2 儲存體帳戶和儲存體容器，請執行下列指令碼。 指定包含 Web 應用程式的資源群組名稱。 輸入儲存體帳戶的名稱。 您所選擇的名稱在整個 Azure 中必須是唯一的。 名稱的長度必須介於 3 到 24 個字元之間，且只能包含數字和小寫字母。
+
+指定儲存體帳戶的位置。 若要查看您訂用帳戶有效的位置清單，請執行 ```Get-AzLocation | select Location```。 容器名稱必須是小寫，以字母或數字開頭，並且只能包含字母、數字和虛線 (-) 字元。
 
 請記得以您自己的值取代角括號中的預留位置值。
 
@@ -128,7 +132,9 @@ New-AzStorageContainer -Name $containerName -Context $ctx -Permission blob
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要建立一般用途的 V2 儲存體帳戶和儲存體容器，請執行下列指令碼。 指定包含 Web 應用程式的資源群組名稱。 輸入儲存體帳戶的名稱。 您所選擇的名稱在整個 Azure 中必須是唯一的。 名稱的長度必須介於 3 到 24 個字元之間，且只能包含數字和小寫字母。 指定儲存體帳戶的位置。  容器名稱必須是小寫，以字母或數字開頭，並且只能包含字母、數字和虛線 (-) 字元。
+若要建立一般用途的 V2 儲存體帳戶和儲存體容器，請執行下列指令碼。 指定包含 Web 應用程式的資源群組名稱。 輸入儲存體帳戶的名稱。 您所選擇的名稱在整個 Azure 中必須是唯一的。 名稱的長度必須介於 3 到 24 個字元之間，且只能包含數字和小寫字母。 
+
+指定儲存體帳戶的位置。 容器名稱必須是小寫，以字母或數字開頭，並且只能包含字母、數字和虛線 (-) 字元。
 
 下列範例會使用您的 Azure AD 帳戶來授權作業，以便建立容器。 建立容器之前，請將 儲存體 Blob 資料參與者 角色指派給自己。 即使您是帳戶擁有者，您還是需要明確的權限，才能對儲存體帳戶執行資料作業。
 
@@ -161,14 +167,15 @@ az storage container create \
 
 ## <a name="grant-access-to-the-storage-account"></a>授與儲存體帳戶的存取權
 
-您必須先將 Web 應用程式存取權授與儲存體帳戶，才能建立、讀取或刪除 Blob。 在上一個步驟中，您已使用受控識別，設定在 App Service 上執行的 Web 應用程式。  一旦建立了使用者指派的 MSI 後，就可以將 MSI 存取權提供給另一個資源，如同任何安全性主體。 「儲存體 Blob 資料參與者」角色會提供 Web 應用程式 (以系統指派的受控識別表示) 讀取、寫入和刪除 Blob 容器和資料的存取權。
+您必須先將 Web 應用程式存取權授與儲存體帳戶，才能建立、讀取或刪除 Blob。 在上一個步驟中，您已使用受控識別，設定在 App Service 上執行的 Web 應用程式。 一旦建立了使用者指派的 MSI 後，就可以將 MSI 存取權提供給另一個資源，如同任何安全性主體。 「儲存體 Blob 資料參與者」角色會提供 Web 應用程式 (以系統指派的受控識別表示) 讀取、寫入和刪除 Blob 容器和資料的存取權。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
-在 [Azure 入口網站](https://portal.azure.com)中，移至您的儲存體帳戶以授與 Web 應用程式存取權。  選取左則導覽中的 [存取控制 (IAM)]，然後按一下 [角色指派]。  您會看到可存取儲存體帳戶的人員清單。  現在您要將角色指派新增至機器人，這是需要存取儲存體帳戶的應用程式服務。  選取 [新增]->[新增角色指派]。
 
-在 **角色** 中，選取 [儲存體 Blob 資料參與者] ，讓您的 Web 應用程式能夠存取讀取儲存體 Blob。  在 **指派存取權** 中，選取 [App Service]。  在 **訂用帳戶** 中選取您的訂用帳戶。  然後選取您想要查證是否具有存取權的 App Service。  按一下 [檔案] 。
+在 [Azure 入口網站](https://portal.azure.com)中，移至您的儲存體帳戶以授與 Web 應用程式存取權。 選取左側窗格中的 [存取控制 (IAM)]，然後選取 [角色指派]。 您會看到可存取儲存體帳戶的人員清單。 現在您要將角色指派新增至機器人，這是需要存取儲存體帳戶的應用程式服務。 選取 [新增] > [新增角色指派]。
 
-:::image type="content" alt-text="新增角色指派" source="./media/scenario-secure-app-access-storage/add-role-assignment.png":::
+在 **角色** 中，選取 [儲存體 Blob 資料參與者] ，讓您的 Web 應用程式能夠存取讀取儲存體 Blob。 在 **指派存取權** 中，選取 [App Service]。 在 **訂用帳戶** 中選取您的訂用帳戶。 然後選取您想要為其提供存取權的 App Service。 選取 [儲存]。
+
+:::image type="content" alt-text="顯示 [新增角色指派] 畫面的螢幕擷取畫面。" source="./media/scenario-secure-app-access-storage/add-role-assignment.png":::
 
 您的 Web 應用程式現在可以存取儲存體帳戶。
 
@@ -202,17 +209,17 @@ az role assignment create --assignee $spID --role 'Storage Blob Data Contributor
 
 ## <a name="access-blob-storage-net"></a>存取 Blob 儲存體 (.NET)
 
-[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) 類別是用來取得程式碼的權杖認證，以授權 Azure 儲存體的要求。  建立 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) 類別的執行個體，此執行個體會使用受控識別擷取權杖，並將其附加至服務用戶端。 下列程式碼範例會取得已驗證的權杖認證，並用來建立服務用戶端物件，以上傳新的 Blob。  
+[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) 類別是用來取得程式碼的權杖認證，以授權 Azure 儲存體的要求。 建立 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) 類別的執行個體，此執行個體會使用受控識別擷取權杖，並將其附加至服務用戶端。 下列程式碼範例會取得已驗證的權杖認證，並用來建立服務用戶端物件，以上傳新的 Blob。
 
 ### <a name="install-client-library-packages"></a>安裝用戶端程式庫套件
 
-安裝 [Blob 儲存體 NuGet 套件](https://www.nuget.org/packages/Azure.Storage.Blobs/)，以使用 Blob 儲存體服務和[適用於 .NET NuGet 套件的 Azure 身分識別用戶端程式庫](https://www.nuget.org/packages/Azure.Identity/)驗證 Azure AD 認證。  使用 .NET Core 命令列介面或 Visual Studio 中的套件管理員主控台，安裝用戶端程式庫。
+安裝 [Blob 儲存體 NuGet 套件](https://www.nuget.org/packages/Azure.Storage.Blobs/)，以使用 Blob 儲存體和[適用於 .NET NuGet 套件的 Azure 身分識別用戶端程式庫](https://www.nuget.org/packages/Azure.Identity/)驗證 Azure AD 認證。 使用 .NET Core 命令列介面或 Visual Studio 中的套件管理員主控台，安裝用戶端程式庫。
 
 # <a name="command-line"></a>[命令列](#tab/command-line)
 
-開啟命令列並切換至包含您專案檔的目錄。
+開啟命令列，並切換至包含專案檔的目錄。
 
-執行安裝命令：
+執行安裝命令。
 
 ```dotnetcli
 dotnet add package Azure.Storage.Blobs
@@ -222,9 +229,9 @@ dotnet add package Azure.Identity
 
 # <a name="package-manager"></a>[套件管理員](#tab/package-manager)
 
-在 Visual Studio 中開啟專案/方案，然後使用 **工具** > **NuGet 套件管理員** > **套件管理員主控台** 命令開啟主控台。
+在 Visual Studio 中開啟專案或方案，然後使用 **工具** > **NuGet 套件管理員** > **套件管理員主控台** 命令開啟主控台。
 
-執行安裝命令：
+執行安裝命令。
 ```powershell
 Install-Package Azure.Storage.Blobs
 
@@ -288,9 +295,9 @@ static public async Task UploadBlob(string accountName, string containerName, st
 
 > [!div class="checklist"]
 >
-> * 建立系統指派的受控識別
-> * 建立儲存體帳戶和 Blob 儲存體容器
-> * 使用受控識別從 Web 應用程式存取儲存體
+> * 建立系統指派的受控識別。
+> * 建立儲存體帳戶和 Blob 儲存體容器。
+> * 使用受控識別從 Web 應用程式存取儲存體。
 
 > [!div class="nextstepaction"]
 > [App Service 以使用者身分存取 Microsoft Graph](scenario-secure-app-access-microsoft-graph-as-user.md)

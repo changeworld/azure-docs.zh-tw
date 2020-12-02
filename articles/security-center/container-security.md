@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6b57428aeba702dc8cf06ec4ae7984854a94ac7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7265195f9614928a2150a56a780ea7b36bc2e266
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449167"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030861"
 ---
 # <a name="container-security-in-security-center"></a>資訊安全中心的容器安全性
 
@@ -58,7 +58,7 @@ Azure 資訊安全中心是用來保護您容器的 Azure 原生解決方案。
 
 Azure 資訊安全中心可識別 IaaS Linux VM 上裝載的非受控容器，或其他執行 Docker 容器的 Linux 機器。 資訊安全中心會持續評估這些容器的設定。 然後與[網際網路安全性 (CIS) Docker 基準測試中心](https://www.cisecurity.org/benchmark/docker/)進行比較。
 
-資訊安全中心包含 CIS Docker 基準測試的整個規則集，並會在您的容器無法滿足任何控制項時發出警示。 資訊安全中心會在找到錯誤的設定時，產生安全性建議。 使用資訊安全中心的**建議頁面**來檢視建議並補救問題。 CIS 基準測試不會在 AKS 管理的執行個體或 Databricks 管理的 VM 上執行。
+資訊安全中心包含 CIS Docker 基準測試的整個規則集，並會在您的容器無法滿足任何控制項時發出警示。 資訊安全中心會在找到錯誤的設定時，產生安全性建議。 使用資訊安全中心的 **建議頁面** 來檢視建議並補救問題。 CIS 基準測試不會在 AKS 管理的執行個體或 Databricks 管理的 VM 上執行。
 
 若要深入了解這項功能上可能會出現的相關資訊安全中心建議，請參閱建議參考資料表的[容器區段](recommendations-reference.md#recs-containers)。
 
@@ -78,11 +78,11 @@ AKS 提供安全性控制項和叢集安全性狀態的可見度。 資訊安全
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>使用 Kubernetes 許可控制保護工作負載的最佳做法
 
-安裝**適用於 Kubernetes 的 Azure 原則附加元件**，以取得保護 Kubernetes 容器工作負載的建議組合。
+如需保護 Kubernetes 容器工作負載的建議組合，請安裝 **適用於 Kubernetes 的 Azure 原則附加元件**。 您也可以自動部署此附加元件，如[啟用延伸模組自動佈建](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions)中所述。 當附加元件的自動佈建設定為「開啟」時，預設會在所有現有和未來的叢集 (符合附加元件安裝需求) 中啟用此延伸模組。
 
 如[適用於 Kubernetes 的 Azure 原則頁面](../governance/policy/concepts/policy-for-kubernetes.md)中所述，附加元件會延伸  [Open Policy Agent](https://www.openpolicyagent.org/) 的 [Gatekeeper v3](https://github.com/open-policy-agent/gatekeeper)  (開放原始碼) 許可控制器 Webhook。 Kubernetes 許可控制器是可強制規定叢集使用方式的外掛程式。 附加元件會註冊為 Kubernetes 許可控制的 Webhook，讓您能夠以集中且一致的方式，在叢集上套用大規模的強制動作和防護。 
 
-如果您已在 AKS 叢集上安裝附加元件，則針對 Kubernetes API 伺服器提出的每個要求都會依據預先定義的最佳做法來加以監視，然後再保存到叢集。 接著，您可以進行設定以**強制執行**最佳做法，並要求未來的工作負載遵循。 
+在 AKS 叢集上安裝附加元件後，則針對 Kubernetes API 伺服器提出的每個要求都會依據預先定義的最佳做法來加以監視，然後再保存到叢集。 接著，您可以進行設定以 **強制執行** 最佳做法，並要求未來的工作負載遵循。 
 
 例如，您可以要求不得建立具特殊權限的容器，而且未來要求這麼做的任何要求都會遭到封鎖。
 

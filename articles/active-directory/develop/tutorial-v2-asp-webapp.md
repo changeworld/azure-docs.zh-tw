@@ -12,23 +12,23 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 9ff43202bdace577024413c9cc177de2997a0ad5
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 0dad7add63102d462a2111f1ecf12ae43dae123c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91627936"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996180"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>教學課程：將「登入到 Microsoft」新增至 ASP.NET Web 應用程式
 
-本指南示範如何透過傳統網頁瀏覽器型應用程式和 OpenID Connect 使用 ASP.NET MVC 方案實作「登入到 Microsoft」。
+在本教學課程中，您會建置 ASP.NET MVC Web 應用程式，以使用 Open Web Interface for .NET (OWIN) 中介軟體和 Microsoft 身分識別平台來登入使用者。
 
 當您完成此指南時，您的應用程式就能夠接受來自 outlook.com 和 live.com 等個人帳戶的登入。 此外，與 Microsoft 身分識別平台整合的任何公司或組織中的公司和學校帳戶也可以登入您的應用程式。
 
 本教學課程內容：
 
 > [!div class="checklist"]
-> * 在 Visual Studio 中建立 *ASP.NET Web 應用程式*專案
+> * 在 Visual Studio 中建立 *ASP.NET Web 應用程式* 專案
 > * 新增 Open Web Interface for .NET (OWIN) 中介軟體元件
 > * 新增程式碼以支援使用者登入和登出
 > * 在 Azure 入口網站中註冊應用程式
@@ -36,7 +36,7 @@ ms.locfileid: "91627936"
 
 ## <a name="prerequisites"></a>必要條件
 
-* 已安裝包含 **ASP.NET 和 Web 開發**工作負載的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
+* 已安裝包含 **ASP.NET 和 Web 開發** 工作負載的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>本指南產生之範例應用程式的運作方式
 
@@ -406,9 +406,9 @@ ms.locfileid: "91627936"
 
 #### <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 身分識別平台端點中的權限和同意
 
-與 Microsoft 身分識別平台整合的應用程式，會遵循可讓使用者和系統管理員控制資料存取方式的授權模型。 使用者向 Microsoft 身分識別平台進行驗證以存取此應用程式之後，系統會提示他們同意應用程式所要求的權限 (「檢視您的基本設定檔」和「持續存取您允許存取的資料」)。 接受這些權限之後，使用者會繼續處理應用程式的結果。 不過，如果發生下列其中一種情況，使用者可能會看到**需要管理員同意**的頁面：
+與 Microsoft 身分識別平台整合的應用程式，會遵循可讓使用者和系統管理員控制資料存取方式的授權模型。 使用者向 Microsoft 身分識別平台進行驗證以存取此應用程式之後，系統會提示他們同意應用程式所要求的權限 (「檢視您的基本設定檔」和「持續存取您允許存取的資料」)。 接受這些權限之後，使用者會繼續處理應用程式的結果。 不過，如果發生下列其中一種情況，使用者可能會看到 **需要管理員同意** 的頁面：
 
-- 應用程式開發人員新增任何其他需要**管理員同意**的權限。
+- 應用程式開發人員新增任何其他需要 **管理員同意** 的權限。
 - 或租用戶經過設定 (在 [企業應用程式] -> [使用者設定]  中)，使得使用者無法自行同意應用程式存取公司資料。
 
 如需詳細資訊，請參閱 [Microsoft 身分識別平台端點中的權限和同意](./v2-permissions-and-consent.md)。
@@ -463,7 +463,7 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 #### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>選項 1：註冊只來自一個組織之 Active Directory 執行個體的使用者以登入您的應用程式 (單一租用戶)
 
-此選項通常用於 LOB 應用程式  ：如果您想要讓應用程式只接受特定 Azure AD 執行個體的成員帳戶進行登入 (包括該執行個體的*來賓帳戶*)，請遵循下列步驟：
+此選項通常用於 LOB 應用程式  ：如果您想要讓應用程式只接受特定 Azure AD 執行個體的成員帳戶進行登入 (包括該執行個體的 *來賓帳戶*)，請遵循下列步驟：
 
 1. 在 web.config 檔案中，將 `Tenant` 參數的值從 `Common` 變更為組織的租用戶名稱 (如 `contoso.onmicrosoft.com`)。
 2. 在您的 [OWIN Startup 類別](#configure-the-authentication-pipeline) 中，將 `ValidateIssuer` 引數設為 `true`。

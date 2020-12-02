@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/29/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b571b2b8e0d334a02631e3f443ec54398117ee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cd1fb7f33c56aefe76bc55181ae92ca3d149754
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532664"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006949"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>教學課程：使用 Windows VM 系統指派的受控識別來存取 Azure Cosmos DB
 
@@ -82,7 +82,7 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
 ```
 
 >[!NOTE]
-> 請記住，如果無法執行作業，您可能沒有正確的權限。 如果想要金鑰的寫入權，您必須使用 RBAC 角色 (例如 DocumentDB 帳戶參與者) 或建立自訂角色。 如需詳細資訊，請檢閱 [Azure Cosmos DB 中的角色型存取控制](../../cosmos-db/role-based-access-control.md)
+> 請記住，如果無法執行作業，您可能沒有正確的權限。 如果想要金鑰的寫入權，您必須使用 Azure 角色 (例如 DocumentDB 帳戶參與者) 或建立自訂角色。 如需詳細資訊，請檢閱 [Azure Cosmos DB 中的 Azure 角色型存取控制](../../cosmos-db/role-based-access-control.md)
 
 ## <a name="access-data"></a>存取資料
 
@@ -95,8 +95,8 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
 ### <a name="get-an-access-token"></a>取得存取權杖
 
 1. 在 Azure 入口網站中，瀏覽至 [虛擬機器]，移至您的 Windows 虛擬機器，然後在 [概觀] 頁面中，按一下頂端的 [連線]。 
-2. 輸入您建立 Windows VM 時新增的**使用者名稱**和**密碼**。 
-3. 現在您已經建立虛擬機器的**遠端桌面連線**，請在遠端工作階段中開啟 PowerShell。
+2. 輸入您建立 Windows VM 時新增的 **使用者名稱** 和 **密碼**。 
+3. 現在您已經建立虛擬機器的 **遠端桌面連線**，請在遠端工作階段中開啟 PowerShell。
 4. 使用 Powershell 的 Invoke-WebRequest，向 Azure 資源端點的本機受控識別提出要求，以取得 Azure Resource Manager 的存取權杖。
 
    ```powershell
@@ -130,7 +130,7 @@ Invoke-WebRequest -Uri 'https://management.azure.com/subscriptions/<SUBSCRIPTION
 {"primaryReadonlyMasterKey":"bWpDxS...dzQ==",
 "secondaryReadonlyMasterKey":"38v5ns...7bA=="}
 ```
-現在，您已有 Cosmos DB 帳戶的存取金鑰，您可以將其傳至 Cosmos DB SDK，並進行呼叫以存取帳戶。  如需快速範例，您可以將存取金鑰傳至 Azure CLI。  您可以透過 Azure 入口網站，從 Cosmos DB 帳戶刀鋒視窗上的 [概觀]**** 索引標籤取得 `<COSMOS DB CONNECTION URL>`。  請將 `<ACCESS KEY>` 取代為您先前取得的值：
+現在，您已有 Cosmos DB 帳戶的存取金鑰，您可以將其傳至 Cosmos DB SDK，並進行呼叫以存取帳戶。  如需快速範例，您可以將存取金鑰傳至 Azure CLI。  您可以透過 Azure 入口網站，從 Cosmos DB 帳戶刀鋒視窗上的 [概觀] 索引標籤取得 `<COSMOS DB CONNECTION URL>`。  請將 `<ACCESS KEY>` 取代為您先前取得的值：
 
 ```azurecli
 az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection "<COSMOS DB CONNECTION URL>" --key <ACCESS KEY>

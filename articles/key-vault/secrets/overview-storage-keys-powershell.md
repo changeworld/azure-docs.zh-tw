@@ -9,14 +9,17 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 50fbaf5092e793369daaa71fc7364dfd406e03b3
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 3bced101516e91259ea9018fe3c4aa44f867cbe6
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444889"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96023103"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>使用 Key Vault 和 Azure PowerShell 管理儲存體帳戶金鑰
+> [!IMPORTANT]
+> 建議使用 Azure 儲存體與 Azure Active Directory (Azure AD) 整合，這是 Microsoft 的雲端式身分識別和存取管理服務。 Azure AD 整合適用於 [Azure Blob 和佇列](../../storage/common/storage-auth-aad.md)，並提供對 Azure 儲存體的 OAuth2 權杖型存取 (如同 Azure Key Vault)。
+> Azue AD 可讓您使用應用程式或使用者身分識別來驗證用戶端應用程式，而非使用儲存體帳戶認證。 在 Azure 上執行時，可以使用 [Azure AD 受控識別](../../active-directory/managed-identities-azure-resources/index.yml)。 受控識別能移除用戶端驗證，以及使用應用程式儲存認證或將認證儲存於應用程式中的需求。 僅在無法使用 Azure AD 驗證時，才使用下列解決方案。
 
 Azure 儲存體帳戶會使用由帳戶名稱和金鑰組成的認證。 該金鑰是由系統自動產生，並作為密碼使用，比單純的密碼編譯金鑰具有更多功能。 Key Vault 會在儲存體帳戶中定期重新產生儲存體帳戶金鑰，並提供共用存取簽章權杖，以便委派存取您儲存體帳戶中的資源。
 
@@ -28,12 +31,6 @@ Azure 儲存體帳戶會使用由帳戶名稱和金鑰組成的認證。 該金�
 - 只能允許 Key Vault 管理您的儲存體帳戶金鑰。 請勿自行管理金鑰，並避免干擾 Key Vault 程序。
 - 只有單一 Key Vault 物件方能管理儲存體帳戶金鑰。 不允許從多個物件進行金鑰管理。
 - 只能使用 Key Vault 重新產生金鑰。 不要手動重新產生儲存體帳戶金鑰。
-
-建議使用 Azure 儲存體與 Azure Active Directory (Azure AD) 整合，這是 Microsoft 的雲端式身分識別和存取管理服務。 Azure AD 整合適用於 [Azure Blob 和佇列](../../storage/common/storage-auth-aad.md)，並提供對 Azure 儲存體的 OAuth2 權杖型存取 (如同 Azure Key Vault)。
-
-Azue AD 可讓您使用應用程式或使用者身分識別來驗證用戶端應用程式，而非使用儲存體帳戶認證。 在 Azure 上執行時，可以使用 [Azure AD 受控識別](../../active-directory/managed-identities-azure-resources/index.yml)。 受控識別能移除用戶端驗證，以及使用應用程式儲存認證或將認證儲存於應用程式中的需求。
-
-Azure AD 會使用同時也受 Key Vault 支援的 Azure 角色型存取控制 (Azure RBAC) 來管理授權。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -256,14 +253,20 @@ Content Type : application/vnd.ms-sastoken-storage
 Tags         :
 ```
 
-您現在可以使用 [Get-AzKeyVaultSecret](/powershell/module/az.keyvault/get-azkeyvaultsecret) Cmdlet 和祕密 `Name` 屬性來檢視祕密的內容。
+您現在可以使用 [Get-AzKeyVaultSecret](/powershell/module/az.keyvault/get-azkeyvaultsecret) Cmdlet 和 `VaultName` 以及 `Name` 屬性來檢視祕密的內容。
 
 ```azurepowershell-interactive
-Write-Host (Get-AzKeyVaultSecret -VaultName <YourKeyVaultName> -Name <SecretName>).SecretValue | ConvertFrom-SecureString -AsPlainText
+$secret = Get-AzKeyVaultSecret -VaultName <YourKeyVaultName> -Name <SecretName>
+$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
+try {
+   $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
+} finally {
+   [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
+}
+Write-Output $secretValueText
 ```
 
 此命令的輸出會顯示您的 SAS 定義字串。
-
 
 ## <a name="next-steps"></a>後續步驟
 

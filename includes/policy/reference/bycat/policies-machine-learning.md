@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 10/20/2020
+ms.date: 11/20/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 30e599fa274bac8b8700d366c7102dcf64a5ad09
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ec1bb2b21e1ac4d24f4643ae85a790b3bc2a147a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312159"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001012"
 ---
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Azure Machine Learning 工作區應使用客戶自控金鑰 (CMK) 進行加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fba769a63-b8cc-4b2d-abf6-ac33c7204be8) |評估未啟用客戶自控金鑰 (CMK) 進行加密的 Azure Machine Learning 工作區。 客戶自控金鑰會為工作區新增其他的安全性層級。 如需詳細資訊，請瀏覽 [https://aka.ms/azureml-workspaces-cmk](https://aka.ms/azureml-workspaces-cmk)。 |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_CMKEnabled_Audit.json) |
+|[Azure Machine Learning 工作區應使用客戶自控金鑰 (CMK) 進行加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fba769a63-b8cc-4b2d-abf6-ac33c7204be8) |評估未啟用客戶自控金鑰 (CMK) 進行加密的 Azure Machine Learning 工作區。 客戶自控金鑰可為工作區增加一層額外的安全性。 如需詳細資訊，請瀏覽 [https://aka.ms/azureml-workspaces-cmk](https://aka.ms/azureml-workspaces-cmk)。 |Audit, Deny, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_CMKEnabled_Audit.json) |
 |[Azure Machine Learning 工作區應使用私人連結](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F40cec1dd-a100-4920-b15b-3024fe8901ab) |評估未具備至少一個已核准私人端點連線的 Azure Machine Learning 工作區。 虛擬網路中的用戶端可以安全地存取透過私人連結而擁有私人端點連線的資源。 如需詳細資訊，請瀏覽：[https://aka.ms/azureml-workspaces-privatelink](https://aka.ms/azureml-workspaces-privatelink)。 |Audit, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_PrivateLinkEnabled_Audit.json) |
 |[為指定的 Azure Machine Learning 計算設定允許的模組作者](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F53c70b02-63dd-11ea-bc55-0242ac130003) |此原則可協助提供在指定的 Azure Machine Learning 計算中允許的模組作者，並可在工作區指派。 如需詳細資訊，請瀏覽 [https://aka.ms/amlpolicydoc](https://aka.ms/amlpolicydoc)。 |enforceSetting, disabled, 已停用 |[1.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/AllowedModuleAuthors_EnforceSetting.json) |
 |[為指定的 Azure Machine Learning 計算設定允許的 Python 套件](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F77eeea86-7e81-4a7d-9067-de844d096752) | 此原則可協助提供在指定的 Azure Machine Learning 計算中允許的 Python 套件，並可在工作區指派。 如需詳細資訊，請瀏覽 [https://aka.ms/amlpolicydoc](https://aka.ms/amlpolicydoc)。 |enforceSetting, disabled, 已停用 |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/AllowedPythonPackageChannels_EnforceSetting.json) |

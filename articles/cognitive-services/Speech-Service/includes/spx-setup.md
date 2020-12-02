@@ -5,35 +5,39 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 4b04558077f6b59d0fef613308a6ab96680d7ff8
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 6f80d41001d11c52a00454ea2a593f3f1fce32db
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470821"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025914"
 ---
 ## <a name="download-and-install"></a>下載並安裝
 
 #### <a name="windows-install"></a>[Windows 安裝](#tab/windowsinstall)
 
-> [!NOTE]
-> 在 Windows 上，您需根據平台來選擇[適用於 Visual Studio 2019 的 Microsoft Visual C++ 可轉散發套件](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。 第一次安裝時可能需要重新啟動 Windows。
-
 請遵循下列步驟，在 Windows 上安裝語音 CLI：
 
-1. 下載語音 CLI [zip 封存](https://aka.ms/speech/spx-zips.zip)，然後將其解壓縮。
-2. 移至您從下載解壓縮的根目錄 `spx-zips`，並解壓縮您需要的子目錄 (.NET Framework 4.7 為 `spx-net471`，或在 x64 CPU 上的 .NET Core 3.0 為 `spx-netcore-win-x64`)。
+1. 在 Windows 上，您需根據平台來選擇[適用於 Visual Studio 2019 的 Microsoft Visual C++ 可轉散發套件](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。 第一次安裝時可能需要重新開機。
+2. 下載語音 CLI [zip 封存](https://aka.ms/speech/spx-zips.zip)，然後將其解壓縮。
+3. 移至 `spx-zips` 的解壓縮目錄。 此資料夾包含適用於各種平台上之語音 CLI 的程式檔。 
+4. 針對您的平台 (適用於 .NET Framework 4.7 的 `spx-net471` 或 x64 CPU 上適用於 .NET Core 3.0 的 `spx-netcore-win-x64`) 將檔案解壓縮。 請記住，您將從此目錄執行 `spx`。
 
-在命令提示字元中，將目錄變更至此位置，然後輸入 `spx` 以查看語音 CLI 的說明。
+### <a name="run-the-speech-cli"></a>執行語音 CLI
 
-> [!NOTE]
-> 在 Windows 上，語音 CLI 只能顯示本機電腦上的命令提示字元可用的字型。
-> [Windows 終端機](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701) 支援語音 CLI 以互動方式產生的所有字型。
-> 如果您輸出至檔案，像是記事本或網頁瀏覽器 (例如 Microsoft Edge) 的文字編輯器也可以顯示所有字型。
+1. 開啟命令提示字元或 PowerShell，然後瀏覽至您解壓縮語音 CLI 的目錄。  
+2. 輸入 `spx` 以查看語音 CLI 的說明命令。
 
 > [!NOTE]
 > 在尋找命令時，Powershell 不會檢查本機目錄。 在 Powershell 中，將目錄變更為 `spx` 的位置，然後輸入 `.\spx` 來呼叫工具。
 > 如果您將此目錄新增至您的路徑，Powershell 和 Windows 命令提示字元會從任何目錄尋找 `spx`，但不包括 `.\` 前置詞。
+
+### <a name="font-limitations"></a>字型限制
+
+在 Windows 上，語音 CLI 只能顯示本機電腦上的命令提示字元可用的字型。
+[Windows 終端機](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701) 支援語音 CLI 以互動方式產生的所有字型。
+
+如果您輸出至檔案，像是記事本或網頁瀏覽器 (例如 Microsoft Edge) 的文字編輯器也可以顯示所有字型。
 
 #### <a name="linux-install"></a>[Linux 安裝](#tab/linuxinstall)
 

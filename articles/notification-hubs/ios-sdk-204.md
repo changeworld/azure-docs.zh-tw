@@ -9,11 +9,11 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
 ms.openlocfilehash: ffa562a734e0e6f898aaff89622362080bf1a053
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318189"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001349"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs-version-204"></a>教學課程：使用 Azure 通知中樞 (2.0.4 版) 將推播通知傳送至 iOS 應用程式
 
@@ -43,21 +43,40 @@ ms.locfileid: "91318189"
 
 ## <a name="connect-your-ios-app-to-notification-hubs"></a>將您的 iOS 應用程式連接到通知中樞
 
-1. 在 Xcode 中建立新的 iOS 專案，並選取 [單一檢視應用程式] ****  範本。
+1. 在 Xcode 中建立新的 iOS 專案，並選取 [單一檢視應用程式]  範本。
 
    :::image type="content" source="media/ios-sdk/image1.png" alt-text="選取範本":::
 
-2. 設定新專案的選項時，請務必使用您在 Apple 開發人員入口網站上設定套件組合識別碼時使用的相同 **產品名稱** 和 **組織識別碼** 。
+2. 設定新專案的選項時，請務必使用您在 Apple 開發人員入口網站上設定套件組合識別碼時使用的相同 **產品名稱** 和 **組織識別碼**。
 
-3. 在 [專案導覽] 底下，選取 [目標] **** 下的專案名稱，然後選取 [簽署與功能] ****   索引標籤。 請務必要為您的 Apple 開發人員帳戶選取適合的 **團隊** 。 XCode 應該會根據您的套件組合識別碼，自動提取您先前建立的佈建設定檔。
+3. 在 [專案導覽] 底下，選取 [目標] 下的專案名稱，然後選取 [簽署與功能] 索引標籤。請務必要為您的 Apple 開發人員帳戶選取適合的 **團隊**。 XCode 應該會根據您的套件組合識別碼，自動提取您先前建立的佈建設定檔。
 
-   如果畫面未顯示您在 Xcode 中建立的新佈建設定檔，請嘗試重新整理簽署身分識別的設定檔。 按一下功能表列上的  **Xcode** ，再依序按一下 [喜好設定] **** 、[帳戶] ****   索引標籤、[檢視詳細資料] ****   按鈕、您的簽署身分識別，然後按一下右下角的 [重新整理] 按鈕。
+   如果畫面未顯示您在 Xcode 中建立的新佈建設定檔，請嘗試重新整理簽署身分識別的設定檔。 按一下功能表列上的 Xcode，再依序按一下 [喜好設定]、[帳戶] 索引標籤、[檢視詳細資料] 按鈕、您的簽署身分識別，然後按一下右下角的 [重新整理] 按鈕。
 
-   :::image type="content" source="media/ios-sdk/image2.png" alt-text="選取範本":::
+   :::image type="content" source="media/ios-sdk/image2.png" alt-text="檢視詳細資料":::
 
-4. 在 [簽署與功能] ****   索引標籤中，選取 [+ 功能] **** 。 按兩下 [推播通知] ****   加以啟用。
+4. 在 [簽署與功能] 索引標籤中，選取 [+ 功能]。 按兩下 [推播通知] 加以啟用。
 
-   :::image type="content" source="media/ios-sdk/image3.png" alt-text="選取範本"
+   :::image type="content" source="media/ios-sdk/image3.png" alt-text="功能":::
+
+5. 新增 Azure 通知中樞 SDK 模組。
+
+   您可以使用 [Cocoapods](https://cocoapods.org/)，或手動將二進位檔新增至您的專案，以將 Azure 通知中樞 SDK 整合至應用程式中。
+
+   - 透過 Cocoapods 整合：將下列相依性新增至設定檔，以在您的應用程式中包含 Azure 通知中樞 SDK：
+
+      ```ruby
+      pod 'AzureNotificationHubs-iOS'
+      ```
+
+      - 執行 Pod 安裝來安裝新定義的 Pod，並開啟您的 .xcworkspace。
+
+         如果您在執行 Pod 安裝時看到 **找不到 AzureNotificationHubs-iOS 的規格** 之類的錯誤，請執行 `pod repo update` 以從 Cocoapods 存放庫取得最新的 Pod，然後執行 Pod 安裝。
+
+   - 透過 Carthage 整合：將下列相依性新增至 Cartfile，以在您的應用程式中包含 Azure 通知中樞 SDK：
+
+      ```ruby
+      github "Azure/azure-notificationhubs-ios"
       ```
 
       - 接下來，更新組建相依性：
@@ -66,17 +85,17 @@ ms.locfileid: "91318189"
       $ carthage update
       ```
 
-      如需有關使用 Carthage 的詳細資訊，請參閱  [Carthage GitHub 存放庫](https://github.com/Carthage/Carthage)。
+      如需有關使用 Carthage 的詳細資訊，請參閱 [Carthage GitHub 存放庫](https://github.com/Carthage/Carthage)。
 
    - 透過將二進位檔複製到您的專案來進行整合：您可以藉由將二進位檔複製到專案中來進行整合，如下所示：
 
-        - 下載以 zip 檔案形式提供的  [Azure 通知中樞 SDK](https://github.com/Azure/azure-notificationhubs-android/releases)  架構，然後將其解壓縮。
+        - 下載以 zip 檔案形式提供的 [Azure 通知中樞 SDK](https://github.com/Azure/azure-notificationhubs-android/releases) 架構，並將其解壓縮。
 
-        - 在 Xcode 中，以滑鼠右鍵按一下您的專案，然後按一下 [新增檔案至] ****   選項，將  **WindowsAzureMessaging.framework**  資料夾新增至 Xcode 專案。 選取 [選項] ****  ，並確定已選取 [必要時複製項目] ****  ，然後按一下 [新增] **** 。
+        - 在 Xcode 中，以滑鼠右鍵按一下您的專案，然後按一下 [新增檔案至] 選項，將 **WindowsAzureMessaging.framework** 資料夾新增至 Xcode 專案。 選取 [選項]，並務必要選取 [必要時複製項目]，然後按一下 [新增]。
 
-          :::image type="content" source="media/ios-sdk/image4.png" alt-text="選取範本":::
+          :::image type="content" source="media/ios-sdk/image4.png" alt-text="新增架構":::
 
-6. 將新的標頭檔新增至名為  **Constants.h** 的專案。 若要這麼做，請以滑鼠右鍵按一下專案名稱並選取 [新增檔案...] **** 。然後選取 [標頭檔] **** 。 此檔案會保存通知中樞的常數。 然後選取 [下一步] **** 。 將檔案命名為  **Constants.h**。
+6. 將新的標頭檔新增至名為 **Constants.h** 的專案。 若要這麼做，請以滑鼠右鍵按一下專案名稱並選取 [新增檔案...]。然後選取 [標頭檔]。 此檔案會保存通知中樞的常數。 然後選取 [下一步]  。 將檔案命名為 **Constants.h**。
 
 7. 將下列程式碼新增至 Constants.h 檔案：
 
@@ -89,15 +108,21 @@ ms.locfileid: "91318189"
    #endif /* Constants_h */
    ```
 
-8. 新增 Constants.h 的實作檔。 若要這麼做，請以滑鼠右鍵按一下專案名稱並選取 [新增檔案...] **** 。選取 [Objective-C 檔案] **** ，然後選取 [下一步] **** 。 將檔案命名為  **Constants.m**。
+8. 新增 Constants.h 的實作檔。 若要這麼做，請以滑鼠右鍵按一下專案名稱並選取 [新增檔案...]。選取 [Objective-C檔案]，然後選取 [下一步]。 將檔案命名 **Constants.m**。
 
-   :::image type="content" source="media/ios-sdk/image5.png" alt-text="選取範本"
+   :::image type="content" source="media/ios-sdk/image5.png" alt-text="新增實作檔案":::
+
+9. 開啟 **Constants.m** 檔案，並以下列程式碼取代其內容。 以您先前從入口網站取得的中樞名稱和 **DefaultListenSharedAccessSignature**，分別取代字串常值預留位置 `NotificationHubConnectionString` 和 `NotificationHubConnectionString`：
+
+   ```objc
+   #import <Foundation/Foundation.h>
+   #import "Constants.h"
 
    NSString* const NHInfoConnectionString = @"NotificationHubConnectionString";
    NSString* const NHInfoHubName = @"NotificationHubName";NSString* const NHUserDefaultTags = @"notification_tags";
    ```
 
-10. 開啟專案  **AppDelegate.h**  檔案，並以下列程式碼取代其內容：
+10. 開啟專案的 **AppDelegate.h** 檔案，並以下列程式碼取代其內容：
 
     ```objc
     #import <UIKit/UIKit.h>
@@ -114,20 +139,20 @@ ms.locfileid: "91318189"
     @end
     ```
 
-11. 在專案  **AppDelegate.m**  檔案中，新增下列  `import`  陳述式：
+11. 在專案的 **AppDelegate.m** 檔案中，新增下列 `import` 陳述式：
 
     ```objc
     #import "Constants.h"
     #import "NotificationDetailViewController.h"
     ```
 
-12. 此外在  **AppDelegate.m**  檔案中，根據您的 iOS 版本在  `didFinishLaunchingWithOptions`  方法內新增以下這行程式碼。 此程式碼會向 APN 註冊裝置控制代碼：
+12. 此外，在 **AppDelegate.m** 檔案中，根據您的 iOS 版本，在 `didFinishLaunchingWithOptions` 方法中新增以下這行程式碼。 此程式碼會向 APN 註冊裝置控制代碼：
 
     ```objc
     [[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];
     ```
 
-13. 在相同的  **AppDelegate.m**  檔案中，使用下列程式碼取代  `didFinishLaunchingWithOptions`  之後的所有程式碼：
+13. 在相同的 **AppDelegate.m** 檔案中，使用下列程式碼取代 `didFinishLaunchingWithOptions` 之後的所有程式碼：
 
     ```objc
     // Tells the app that a remote notification arrived that indicates there is data to be fetched.
@@ -271,11 +296,11 @@ ms.locfileid: "91318189"
     @end
     ```
 
-    此程式碼會使用您在  **Constants.h** 中指定的連接資訊連接到通知中心。 然後，其可提供裝置權杖給通知中樞，讓中樞能夠傳送通知。
+    此程式碼會使用您在 **Constants.h** 中指定的連接資訊連接到通知中心。 然後，其可提供裝置權杖給通知中樞，讓中樞能夠傳送通知。
 
 ### <a name="create-notificationdetailviewcontroller-header-file"></a>建立 NotificationDetailViewController 標頭檔
 
-1. 類似先前的指示，新增另一個名為  **NotificationDetailViewController.h** 的標頭檔。 將新標頭檔的內容取代為下列程式碼：
+1. 類似先前的指示，新增另一個名為 **NotificationDetailViewController.h** 的標頭檔。 將新標頭檔的內容取代為下列程式碼：
 
    ```objc
    #import <UIKit/UIKit.h>
@@ -297,7 +322,7 @@ ms.locfileid: "91318189"
    NS_ASSUME_NONNULL_END
    ```
 
-2. 新增實作檔  **NotificationDetailViewController.m**。 將檔案的內容取代為下列程式碼，其可實作 UIViewController 方法：
+2. 新增實作檔 **NotificationDetailViewController.m**。 將檔案的內容取代為下列程式碼，其可實作 UIViewController 方法：
 
    ```objc
    #import "NotificationDetailViewController.h"
@@ -362,14 +387,14 @@ ms.locfileid: "91318189"
 
 ### <a name="viewcontroller"></a>ViewController
 
-1. 在專案  **ViewController.h**  檔案中，新增下列  `import`  陳述式：
+1. 在專案的 **ViewController.h** 檔案中，新增下列 `import` 陳述式：
 
    ```objc
    #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
    #import <UserNotifications/UserNotifications.h>
    ```
 
-2. 此外，在  **ViewController.h** 中的  `@interface`  宣告之後新增下列屬性宣告：
+2. 此外，在 **ViewController.h** 中的 `@interface` 宣告之後，新增下列屬性宣告：
 
    ```objc
    @property (strong, nonatomic) IBOutlet UITextField *tagsTextField;
@@ -377,7 +402,7 @@ ms.locfileid: "91318189"
    @property (strong, nonatomic) IBOutlet UIButton *unregisterButton;
    ```
 
-3. 在專案的  **ViewController.m**  實作檔中，將檔案的內容取代為下列程式碼：
+3. 在專案的 **ViewController.m** 實作檔中，將檔案的內容取代為下列程式碼：
 
    ```objc
    #import "ViewController.h"
@@ -423,32 +448,33 @@ ms.locfileid: "91318189"
 
 ## <a name="send-test-push-notifications"></a>傳送測試推播通知
 
-您可以在  [Azure 入口網站](https://portal.azure.com/)中，使用 [測試傳送] ****   選項測試應用程式能否接收通知。 它會將測試推播通知傳送至您的裝置。
+您可以在 [Azure 入口網站](https://portal.azure.com/) 中，使用 [測試傳送] 選項測試應用程式能否接收通知。 它會將測試推播通知傳送至您的裝置。
 
-:::image type="content" source="media/ios-sdk/image6.png" alt-text="選取範本":::
+:::image type="content" source="media/ios-sdk/image6.png" alt-text="測試傳送":::
 
 推播通知通常會以後端服務傳送，例如 Mobile Apps 或使用相容程式庫的 ASP.NET。 如果您的後端無法使用程式庫，您也可以直接使用 REST API 來傳送通知訊息。
 
 以下是可供您在傳送通知時檢閱的其他教學課程清單：
 
-- Azure Mobile Apps：如需透過範例來了解如何從已與通知中樞整合的 Mobile Apps 後端傳送通知，請參閱 [將推播通知新增至您的 iOS 應用程式](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push)。
-- ASP.NET： [使用通知中樞將推播通知傳送給使用者](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)。
-- Azure 通知中樞 Java SDK：請參閱 [如何從 Java 使用通知中樞](notification-hubs-java-push-notification-tutorial.md) 以便從 Java 傳送通知。 對於 Android 的開發已經在 Eclipse 中測試。
-- PHP： [如何從 PHP 使用通知中樞](notification-hubs-php-push-notification-tutorial.md)。
+- Azure Mobile Apps：	
+如需透過範例來了解如何從已與通知中樞整合的移動應用後端的 Mobile Apps 傳送通知，請參閱 [將推播通知新增至您的 iOS 應用程式](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push)。
+- ASP.NET：[使用通知中樞將推播通知傳送給使用者](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)。
+- Azure 通知中樞 Java SDK：請參閱 [如何從 Java 使用通知中樞](notification-hubs-java-push-notification-tutorial.md) ，以便從 Java 傳送通知。 對於 Android 的開發已經在 Eclipse 中測試。
+- PHP： [如何從 PHP 使用通知中樞](notification-hubs-php-push-notification-tutorial.md)。
 
 ## <a name="verify-that-your-app-receives-push-notifications"></a>確認您的應用程式可接收推播通知
 
 若要在 iOS 上測試推播通知，您必須將應用程式部署至實體 iOS 裝置。 您無法利用 iOS 模擬器傳送 Apple 推播通知。
 
-1. 執行應用程式並確認註冊成功，然後按下 [確定] **** 。
+1. 執行應用程式並確認註冊成功，然後按下 [確定] 。
 
-   :::image type="content" source="media/ios-sdk/image7.png" alt-text="選取範本":::
+   :::image type="content" source="media/ios-sdk/image7.png" alt-text="註冊":::
 
-2. 接下來，請依照上一節的說明，從  [Azure 入口網站](https://portal.azure.com/)傳送測試推播通知。
+2. 接下來，請依照上一節的說明，從 [Azure 入口網站](https://portal.azure.com/)傳送測試推播通知。
 
 3. 推播通知會從指定的通知中樞傳送至所有已註冊要接收通知的裝置。
 
-   :::image type="content" source="media/ios-sdk/image8.png" alt-text="選取範本":::
+   :::image type="content" source="media/ios-sdk/image8.png" alt-text="傳送測試":::
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -9,14 +9,14 @@ ms.subservice: metrics-advisor
 ms.topic: include
 ms.date: 09/10/2020
 ms.author: mbullwin
-ms.openlocfilehash: c754efef02cdad6edbf047c5de9f1af6d758f137
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 4c55c25621df1925b6ed6c374d8af88551eb1e46
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043187"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96231424"
 ---
-計量監視器是執行時間序列異常偵測、診斷和分析的服務。 作為 AI 服務，其會使用您的資料來定型所使用的模型。 服務接受具有下列資料行的彙總資料資料表：
+計量建議程式是執行時間序列異常偵測、診斷和分析的服務。 作為 AI 服務，其會使用您的資料來定型所使用的模型。 服務接受具有下列資料行的彙總資料資料表：
 
 * **量值** (必要)：包含數值的一或多個資料行。
 * **時間戳記** (選用)：零或一個類型為 `DateTime` 或 `String` 的資料行。 未設定這個資料行時，時間戳記會設定為每個內嵌期間的開始時間。 將時間戳記格式化為：`yyyy-MM-ddTHH:mm:ssZ`。 

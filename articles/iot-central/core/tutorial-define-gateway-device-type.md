@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 58e481e34d9f798b73b72b114b071cf035c3319f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f95df6fb74071dc16814f11fb48521f984c89778
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90967907"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995517"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>教學課程 - 在 Azure IoT Central 應用程式中定義新的 IoT 閘道裝置類型
 
@@ -51,11 +51,11 @@ ms.locfileid: "90967907"
 
 1. 在 [檢閱]  頁面上，選取 [建立]  以將裝置範本新增到您的應用程式。 
 
-若要位 *[RS40 在場感應器]  裝置建立裝置範本：
+若要為 **_RS40 在場感應器_* 裝置建立裝置範本：
 
 1. 在左窗格中選取 [裝置範本]  。 然後選取 **+** 以開始新增範本。
 
-1. 向下捲動直到您看見 *[RS40 在場感應器]  裝置的圖格為止。 選取此圖格，然後選取 **[下一步:** 自訂]。
+1. 向下捲動，直到您看見 **_RS40 在場感應器_* 裝置的圖格。 選取此圖格，然後選取 **[下一步:** 自訂]。
 
 1. 在 [檢閱]  頁面上，選取 [建立]  以將裝置範本新增到您的應用程式。 
 
@@ -142,7 +142,7 @@ ms.locfileid: "90967907"
 
 3. 在 [發佈裝置範本]  對話方塊中，選擇 [發佈]  。
 
-裝置範本發佈後，將會顯示在 [裝置]  頁面上，並且對操作員顯示。 在已發佈的裝置範本中，您無法直接編輯裝置功能模型而不建立新版本。 不過，您可以直接在已發佈的裝置範本中更新雲端屬性、自訂和檢視。 這些更新不會導致新版本建立。 進行任何變更之後，請選取 [發佈]  ，將這些變更推送給您的操作員。
+裝置範本發佈後，將會顯示在 [裝置]  頁面上，並且對操作員顯示。 在已發佈的裝置範本中，您無法直接編輯裝置模型而不建立新版本。 不過，您可以直接在已發佈的裝置範本中更新雲端屬性、自訂和檢視。 這些更新不會導致新版本建立。 進行任何變更之後，請選取 [發佈]  ，將這些變更推送給您的操作員。
 
 ## <a name="create-the-simulated-devices"></a>建立模擬裝置
 

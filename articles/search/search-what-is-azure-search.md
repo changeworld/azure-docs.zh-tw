@@ -7,38 +7,47 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 10/22/2020
+ms.date: 11/24/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 0062caff7d8d25b263a9b1202f61691c056469af
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 19be1155476ca7c295e2d0311e8285bc2128dd1d
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701077"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030759"
 ---
 # <a name="what-is-azure-cognitive-search"></a>什麼是 Azue 認知搜尋？
 
-Azure 認知搜尋 ([先前稱為「Azure 搜尋服務」](whats-new.md#new-service-name)) 是一個雲端搜尋服務，可為開發人員提供 API 和工具，透過 Web、行動和企業應用程式中的私用和異質內容來建置豐富的搜尋體驗。
+Azure 認知搜尋 ([先前稱為「Azure 搜尋服務」](whats-new.md#new-service-name)) 是一個雲端搜尋服務，可為開發人員提供 API 和工具，透過 Web、行動和企業應用程式中的私用和異質內容來建置豐富的搜尋體驗。 
 
-當建立認知搜尋服務時，您會取得執行編製索引和查詢執行的搜尋引擎、您建立和管理的索引永久性儲存體，以及用於撰寫簡單到複雜查詢的查詢語言。 搜尋服務可選擇性地與其他 Azure 服務整合，其形式為自動從 Azure 資料來源擷取資料的「索引子」，以及從認知服務納入可取用 AI 的「技能集」 ，例如影像和文字分析，或您在 Azure Machine Learning 中建立或在 Azure Functions 內包裝的自訂 AI。
+建立認知搜尋服務時，您會取得：
+
++ 執行編製索引和查詢執行的搜尋引擎
++ 以 AI 為主的分析和轉換映像，以及在編製索引期間不會產生差異的文字
++ 您所建立和管理之搜尋索引的持續性儲存體
++ 用於撰寫簡單到複雜查詢的查詢語言
+
+在架構上，搜尋服務位於包含未編制索引資料的外部資料存放區，與將查詢要求傳送至搜尋索引並處理回應的用戶端應用程式之間。
 
 ![Azure 認知搜尋架構](media/search-what-is-azure-search/azure-search-diagram.svg "Azure 認知搜尋架構")
 
-在架構上，搜尋服務位於包含未編制索引資料的外部資料存放區，與將查詢要求傳送至搜尋索引並處理回應的用戶端應用程式之間。  索引結構描述會決定可搜尋內容的結構。 
+表面上，搜尋服務可選擇性地與其他 Azure 服務整合，其形式為自動從 Azure 資料來源擷取資料的「索引子」，以及從認知服務納入可取用 AI 的「技能集」 ，例如影像和文字分析，或您在 Azure Machine Learning 中建立或在 Azure Functions 內包裝的自訂 AI。
 
-搜尋服務的兩個主要工作負載是「編製索引」及「查詢」。
+搜尋服務中的兩個主要工作負載是「編製索引」及「查詢」。 
 
-+ 編製索引會將文字帶入您的搜尋服務，並讓它可供搜尋。 系統會在內部將輸入文字處理成權杖並儲存在反向索引中，以進行快速掃描。 在編製索引期間，您可以選擇從 Microsoft 新增預先定義的認知技能，或新增您建立的自訂技能。 後續的分析和轉換可能會產生先前不存在的新資訊和結構，為許多搜尋和知識挖掘案例提供高公用程式。
++ 編製索引會將文字帶入您的搜尋服務，並讓它可供搜尋。 系統會在內部將輸入文字處理成權杖並儲存在反向索引中，以進行快速掃描。 
+
+  在編製索引期間，您可以選擇從 Microsoft 預先定義的[認知技能](cognitive-search-working-with-skillsets.md)新增「AI 擴充」，或新增您建立的自訂技能。 後續的分析和轉換可能會產生先前不存在的新資訊和結構，為許多搜尋和知識挖掘案例提供高公用程式。
 
 + 一旦將可搜尋的資料填入索引，您的用戶端應用程式就會將查詢要求傳送至搜尋服務並處理回應。 所有查詢執行都是在您建立、擁有並儲存在服務中的搜尋索引之上。 在您的用戶端應用程式中，搜尋體驗是使用 Azure 認知搜尋所提供的 API 來定義的，並可以包含相關性調整、自動完成、同義字比對、模糊比對、模式比對、篩選和排序。
 
 透過簡單的 [REST API](/rest/api/searchservice/) 或 [.NET SDK](search-howto-dotnet-sdk.md) 展現功能，並同時隱蔽資訊擷取固有之複雜性。 您也可以使用 Azure 入口網站進行服務管理和內容管理，以及搭配工具建立原型和查詢您的索引和技能集。 因為服務在雲端執行，Microsoft 會管理基礎結構和可用性。
 
-## <a name="when-to-use-cognitive-search"></a>使用認知搜尋的時機
+## <a name="why-use-cognitive-search"></a>為何要使用認知搜尋
 
 Azure 認知搜尋適用於下列應用程式案例：
 
-+ 將異質內容類型合併為使用者定義的私人搜尋索引。 您可以從任何來源，將 JSON 文件的資料流填入搜尋索引。 針對 Azure 上支援的來源，請使用「索引子」來自動編製索引。 控制索引結構描述和重新整理排程是使用認知搜尋的主要原因。
++ 將異質內容合併為使用者定義的私人搜尋索引。 您可以從任何來源，將 JSON 文件的資料流填入搜尋索引。 針對 Azure 上支援的來源，請使用「索引子」來自動編製索引。 控制索引結構描述和重新整理排程是使用認知搜尋的主要原因。
 
 + 輕鬆實作與搜尋相關的功能。 搜尋 API 簡化了查詢結構、多面向導覽、篩選 (包括地理空間搜尋)、同義字對應、自動完成和相關性調整。 透過內建功能，您可以滿足終端使用者希望搜尋體驗能類似 Web 搜尋引擎的期望。
 
@@ -48,39 +57,20 @@ Azure 認知搜尋適用於下列應用程式案例：
 
 如需特定功能的詳細資訊，請參閱 [Azure 認知搜尋的功能](search-features-list.md)
 
-## <a name="how-to-use-cognitive-search"></a>認知搜尋的使用方式
+## <a name="how-to-get-started"></a>如何開始使用
 
-### <a name="step-1-provision-service"></a>步驟 1:佈建服務
+核心搜尋功能的端對端探索可透過四個步驟來達成：
 
-您可以建立與其他訂閱者共用的[免費服務](search-create-service-portal.md)，或建立只為您服務提供專用資源的[付費層](https://azure.microsoft.com/pricing/details/search/)。 所有的快速入門和教學課程都可用免費的服務完成。
+1. [**建立與其他訂閱者共用的免費服務**](search-create-service-portal.md)，或建立只為您服務提供專用資源的[付費層](https://azure.microsoft.com/pricing/details/search/)。 所有的快速入門和教學課程都可用免費的服務完成。
 
-若為付費層，您可以在兩個維度中調整服務，以根據生產需求來校正資源處理：
+1. 使用入口網站、[REST API](/rest/api/searchservice/create-index) [**建立搜尋索引**](search-what-is-an-index.md)。 [.NET SDK](search-howto-dotnet-sdk.md) 或另一個 SDK。 索引結構描述會決定可搜尋內容的結構。
 
-+ 新增複本，以擴大容量來處理繁重的查詢負載
-+ 新增資料分割，以擴充儲存體來存放更多文件
+1. [**上傳到索引的內容**](search-what-is-data-import.md)。 使用[「推送」模型](tutorial-optimize-indexing-push-api.md)從任何來源推送 JSON 檔；如果您的來源資料是在 Azure 上，則使用[「提取」模型 (索引子)](search-indexer-overview.md)。
 
-### <a name="step-2-create-an-index"></a>步驟 2：建立索引
-
-定義索引結構描述，以反映您要搜尋的文件結構 (類似於資料庫中的欄位)。 搜尋索引是針對快速查詢執行進行最佳化的特殊資料結構。
-
-常用於[在 Azure 入口網站中建立索引結構描述](search-what-is-an-index.md)，或使用 [.NET SDK](search-howto-dotnet-sdk.md) 或 [REST API](/rest/api/searchservice/) 以程式設計方式建立索引結構描述。
+1. 在入口網站、[REST API](search-get-started-rest.md)、[.NET SDK](/dotnet/api/azure.search.documents.searchclient.search) 或另一個 SDK 中使用 [搜尋瀏覽器](search-explorer.md)來 [**查詢索引**](search-query-overview.md)。
 
 > [!TIP]
-> 開始使用[快速入門：匯入資料精靈](search-get-started-portal.md)，在幾分鐘內建立、載入和查詢索引。
-
-### <a name="step-3-load-data"></a>步驟 3：載入資料
-
-定義索引之後，您便可以上傳內容。 您可以使用推送或提取模型。
-
-推送模型會使用 [SDK](search-howto-dotnet-sdk.md) 或 [REST](/rest/api/searchservice/addupdate-or-delete-documents) 中的 API，將 JSON 文件「推送」至索引。 只要文件是 JSON，外部資料集就可以幾乎是任何資料來源。
-
-提取模型會從 Azure 上的來源「提取」資料，並將其傳送至搜尋索引。 提取模型是透過 [*索引子*](/rest/api/searchservice/Indexer-operations)實作的，索引子可簡化和自動化資料擷取的各層面，例如連線至、讀取和序列化資料。 支援的資料來源包括 Azure Cosmos DB、Azure SQL 和 Azure 儲存體。
-
-### <a name="step-4-send-queries-and-handle-responses"></a>步驟 4：傳送查詢並處理回應
-
-填入索引後，您可以透過 [REST API](/rest/api/searchservice/Search-Documents) 或 [.NET SDK](/dotnet/api/azure.search.documents.searchclient.search)，使用簡單的 HTTP 要求對服務端點[發出搜尋查詢](search-query-overview.md)。
-
-逐步執行[建立您的第一個搜尋應用程式](tutorial-csharp-create-first-app.md)以建置並擴充用來收集使用者輸入並處理結果的網頁。 您也可以使用 [Postman 或 Visual Studio Code](search-get-started-rest.md) 來進行互動式 REST 呼叫，或在 Azure 入口網站使用內建的[搜尋總管](search-explorer.md)來查詢現有索引。
+> 合併 [**匯入資料精靈**](search-get-started-portal.md)與 Azure 資料來源的步驟，以在數分鐘內建立、載入和查詢索引。
 
 ## <a name="how-it-compares"></a>比較的結果
 

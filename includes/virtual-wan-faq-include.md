@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: da2535a9764c909af3a491402311fe263dbb48fb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c476fe2af1fb4bddff4799609b164aab14f57b00
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93331053"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187388"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure 虛擬 WAN 是否正式發行？
 
@@ -273,3 +273,7 @@ ER 對 ER 之間的傳輸一律透過全域範圍進行。 虛擬中樞閘道會
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>虛擬 WAN 類型 (基本和標準) 之間有何差異？
 
 請參閱[基本和標準虛擬 WAN](../articles/virtual-wan/virtual-wan-about.md#basicstandard)。 如需價格資訊，請參閱 [價格](https://azure.microsoft.com/pricing/details/virtual-wan/) 頁面。
+
+### <a name="does-virtual-wan-store-customer-data"></a>虛擬 WAN 是否會儲存客戶資料？ 
+
+否。 虛擬 WAN 不會儲存任何客戶資料。

@@ -2,22 +2,24 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 94b28c001bf4b74476d8dac271de1b3864d981c2
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 747890641aa8dfa94696f3d61b773737dcc327ee
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734484"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007687"
 ---
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[將標籤新增至資源群組](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F726aca4c-86e9-4b04-b0c5-073027359532) |當建立或更新了任何遺失指定標籤的資源群組時，便新增此標籤和值。 您可以藉由觸發補救工作來補救現有的資源群組。 如果標籤以不同的值存在，則不會遭到變更。 |修改 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddTag_ResourceGroup_Modify.json) |
 |[將標籤新增至資源](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f9dc7db-30c1-420c-b61a-e1d640128d26) |當建立或更新了任何遺失指定標籤的資源時，便新增此標籤和值。 您可以藉由觸發補救工作來補救現有的資源。 如果標籤以不同的值存在，則不會遭到變更。 資源群組上的標記不會修改。 |修改 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddTag_Modify.json) |
+|[將標籤新增至訂用帳戶](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F96d9a89c-0d67-41fc-899d-2b9599f76a24) |透過補救工作，將指定的標籤和值新增至訂用帳戶。 如果標籤以不同的值存在，則不會遭到變更。 如需原則補救的詳細資訊，請參閱 [https://aka.ms/azurepolicyremediation](https://aka.ms/azurepolicyremediation)。 |修改 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddTag_Subscription_Modify.json) |
 |[新增或置換資源群組上的標籤](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd157c373-a6c4-483d-aaad-570756956268) |當建立或更新了任何資源群組時，便新增或取代此標籤和值。 您可以藉由觸發補救工作來補救現有的資源群組。 |修改 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddOrReplaceTag_ResourceGroup_Modify.json) |
 |[新增或置換資源上的標籤](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5ffd78d9-436d-4b41-a421-5baa819e3008) |當建立或更新了任何資源時，便新增或取代此標籤和值。 您可以藉由觸發補救工作來補救現有的資源。 資源群組上的標記不會修改。 |修改 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddOrReplaceTag_Modify.json) |
+|[新增或取代訂用帳戶上的標籤](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F61a4d60b-7326-440e-8051-9f94394d4dd1) |透過補救工作，在訂用帳戶上新增或取代指定的標籤和值。 您可以藉由觸發補救工作來補救現有的資源群組。 如需原則補救的詳細資訊，請參閱 [https://aka.ms/azurepolicyremediation](https://aka.ms/azurepolicyremediation)。 |修改 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddOrReplaceTag_Subscription_Modify.json) |
 |[附加來自資源群組的標籤及其值](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9ea02ca2-71db-412d-8b00-7c7ca9fcd32d) |當建立或更新了任何遺失指定標籤的資源時，便附加來自資源群組的這個標籤及其值。 在這些資源有所變更之前，不會修改在套用此原則之前所建立的資源標籤。 有新的「修改」效果原則可支援補救現有資源上的標籤 (請參閱 [https://aka.ms/modifydoc](https://aka.ms/modifydoc))。 |附加 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_Append.json) |
 |[將標籤及其值附加至資源群組](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F49c88fc8-6fd1-46fd-a676-f12d1d3a4c71) |當建立或更新了任何遺失指定標籤的資源群組時，便附加此標籤和值。 在這些資源群組有所變更之前，不會修改在套用此原則之前所建立的資源群組標籤。 有新的「修改」效果原則可支援補救現有資源上的標籤 (請參閱 [https://aka.ms/modifydoc](https://aka.ms/modifydoc))。 |附加 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/ResourceGroupApplyTag_Append.json) |
 |[將標籤及其值附加至資源](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2a0e14a6-b0a6-4fab-991a-187a4f81c498) |當建立或更新了任何遺失指定標籤的資源時，便附加此標籤和值。 在這些資源有所變更之前，不會修改在套用此原則之前所建立的資源標籤。 不會套用至資源群組。 有新的「修改」效果原則可支援補救現有資源上的標籤 (請參閱 [https://aka.ms/modifydoc](https://aka.ms/modifydoc))。 |附加 |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/ApplyTag_Append.json) |

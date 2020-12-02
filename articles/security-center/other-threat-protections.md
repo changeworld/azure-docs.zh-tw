@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: 0b80db15e4fafd5e5c63a4194039fbeca21d429b
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: d03416f390abb8656ac1aed81419864443122ce6
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900392"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122422"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Azure 資訊安全中心提供的其他威脅防護
 除了內建的 [Azure Defender 保護](azure-defender.md)以外，Azure 資訊安全中心也提供下列威脅防護功能。
@@ -29,7 +29,7 @@ ms.locfileid: "92900392"
 ## <a name="threat-protection-for-azure-network-layer"></a>Azure 網路層的威脅防護 <a name="network-layer"></a>
 資訊安全中心的網路層分析立基於範例 [IPFIX 資料](https://en.wikipedia.org/wiki/IP_Flow_Information_Export)，這是由 Azure 核心路由器收集到的封包標頭。 根據此資料摘要，資訊安全中心會使用機器學習模型來識別並標示惡意的流量活動。 資訊安全中心也會使用 Microsoft 威脅情報資料庫來擴充 IP 位址。
 
-某些網路設定可能會妨礙資訊安全中心產生可疑網路活動的警示。 若要讓資訊安全中心產生網路警示，請確定：
+某些網路設定會使資訊安全中心無法針對可疑的網路活動產生警示。 若要讓資訊安全中心產生網路警示，請確定：
 - 您的虛擬機器具有公用 IP 位址 (或位於具有公用 IP 位址的負載平衡器上)。
 - 虛擬機器的網路輸出流量不會遭到外部 IDS 解決方案封鎖。
 
@@ -58,7 +58,7 @@ ms.locfileid: "92900392"
 
 1. 設定您要安裝代理程式的工作區。 請確定工作區位於您在資訊安全中心使用的相同訂用帳戶中，而且您具備工作區的讀取/寫入權限。
 
-1. 啟用 **Azure Defender** ，然後選取 [儲存]。
+1. 啟用 **Azure Defender**，然後選取 [儲存]。
 
 
 ## <a name="threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB 的威脅防護 (預覽)<a name="cosmos-db"></a>

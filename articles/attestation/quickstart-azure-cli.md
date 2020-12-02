@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e5ffcd56be1ce7427697cd3a75bd7c4232cc3b8a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: dee9e7596c0a30301d9e0453ef22a6dfe9541522
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663968"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96020937"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>快速入門：使用 Azure CLI 設定 Azure 證明
 
@@ -53,7 +53,7 @@ ms.locfileid: "94663968"
 
 ## <a name="create-and-manage-an-attestation-provider"></a>建立和管理證明提供者
 
-依照下列程序建立和管理證明提供者。
+以下是可用來建立和管理證明提供者的命令：
 
 1. 執行 [az attestation create](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_create) 命令，以建立證明提供者：
 

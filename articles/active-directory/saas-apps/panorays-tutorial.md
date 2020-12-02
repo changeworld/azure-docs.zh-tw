@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 9dacbfacdbb9a1ecc103b0cec224d861b42b1576
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 3e4d3145263b4b0379f85dea86d075480935a28c
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369588"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029331"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-panorays"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Panorays 整合
 
@@ -75,18 +75,7 @@ ms.locfileid: "94369588"
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 組態]  區段中，使用者不需要執行任何步驟，因為應用程式已預先與 Azure 整合。
-
-1. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
-
-    在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰
-
-    | 登入 URL |
-    |--------------|
-    | `https://www.panoraysapp.com` |
-    | `https://auth.panoraysapp.com` |
-
-1. 按一下 [檔案] 。
+1. 在 [基本 SAML 設定]  設定區段上，已預先設定好應用程式，並已經為 Azure 預先填入必要的 URL。 使用者必須按一下 [儲存]  按鈕，才能儲存設定。
 
 1. Panorays 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至 SAML 權杖屬性設定。 下列螢幕擷取畫面顯示預設屬性清單，其中的 **唯一的使用者識別碼** 與 **user.userprincipalname** 相對應。 Panorays 應用程式要求 **唯一的使用者識別碼** 需與 **user.mail** 相對應，因此您必須按一下 [編輯] 圖示以編輯屬性對應，並變更屬性對應。
 
@@ -106,7 +95,7 @@ ms.locfileid: "94369588"
    1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 按一下 [建立]。
+   1. 按一下頁面底部的 [新增]  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
@@ -134,9 +123,7 @@ ms.locfileid: "94369588"
 
 #### <a name="sp-initiated"></a>SP 起始：
 
-1. 在 Azure 入口網站中按一下 [測試此應用程式]。 這會重新導向至您可以在其中起始登入流程的 Panorays 登入 URL。  
-
-1. 直接移至 Panorays 登入 URL，然後從該處起始登入流程。
+直接移至 [Panorays 登入 URL](https://www.panoraysapp.com)，然後從該處起始登入流程。
 
 #### <a name="idp-initiated"></a>IDP 起始：
 

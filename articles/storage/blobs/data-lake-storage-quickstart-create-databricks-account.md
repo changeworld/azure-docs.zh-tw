@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/12/2020
 ms.reviewer: jeking
-ms.openlocfilehash: 908bf21d2fe101731b11e3a8ad783f17728c8ed3
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e289bea6b1a23f1622ced62656164d9865303298
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677327"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912819"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>快速入門：以 Databricks 分析資料
 
@@ -23,7 +23,7 @@ ms.locfileid: "92677327"
 
 * 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-* 您的 Azure Data Lake Gen2 儲存體帳戶的名稱。 [建立 Azure Data Lake Storage Gen2 儲存體帳戶](data-lake-storage-quickstart-create-account.md)。
+* 已啟用階層命名空間功能的儲存體帳戶。 若要建立，請參閱[建立儲存體帳戶以與 Azure Data Lake Storage Gen2 搭配使用](create-data-lake-storage-account.md)。
 
 * 已被指派 **儲存體 Blob 資料參與者** 角色之 Azure 服務主體的租用戶識別碼、應用程式識別碼和密碼。 [建立服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
@@ -151,7 +151,7 @@ dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<container-name>@<st
 
     `%sql` 語言的 magic 命令可讓您從 Notebook 執行 SQL 程式碼，即使該 Notebook 屬於其他類型也是如此。 如需詳細資訊，請參閱[在 Notebook 中混合使用語言](https://docs.azuredatabricks.net/user-guide/notebooks/index.html#mixing-languages-in-a-notebook)。
 
-2. 讓我們看看 JSON 資料範例的快照集，以便進一步了解您所執行的查詢。 將下列程式碼片段貼到程式碼資料格中，然後按下 **SHIFT + ENTER** 。
+2. 讓我們看看 JSON 資料範例的快照集，以便進一步了解您所執行的查詢。 將下列程式碼片段貼到程式碼資料格中，然後按下 **SHIFT + ENTER**。
 
     ```sql
     %sql
@@ -162,7 +162,7 @@ dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<container-name>@<st
 
     ![範例 JSON 資料](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sample-csv-data.png "範例 JSON 資料")
 
-    至於其他細節，資料範例會擷取電台頻道的聽眾性別 (資料行名稱為 **性別** )，以及其擁有的是免費或付費訂閱 (資料行名稱為 **層級** )。
+    至於其他細節，資料範例會擷取電台頻道的聽眾性別 (資料行名稱為 **性別**)，以及其擁有的是免費或付費訂閱 (資料行名稱為 **層級**)。
 
 4. 您現在可以建立這項資料的視覺呈現，以顯示每種性別、多少使用者擁有免費帳戶，以及多少使用者是付費訂閱者。 從表格式輸出底部，按一下 [長條圖]  圖示，然後再按一下 [繪圖選項]  。
 
@@ -198,7 +198,7 @@ dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<container-name>@<st
 前往下一篇文章，以了解如何使用 Azure Databricks 執行 ETL 作業 (擷取、轉換及載入資料)。
 
 > [!div class="nextstepaction"]
->[使用 Azure Databrick 擷取、轉換和載入資料](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md)。
+>[使用 Azure Databrick 擷取、轉換和載入資料](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse)。
 
 - 若要了解如何將資料從其他資料來源匯入至 Azure Databricks，請參閱 [Spark 資料來源](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)。
 

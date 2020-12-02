@@ -7,11 +7,11 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 85ad78eeb095b427b1a6334f57c351e926022dff
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217808"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021872"
 ---
 # <a name="tutorial-add-cluster-nodes-to-an-azure-fxt-edge-filer-cluster"></a>教學課程：將叢集節點新增至 Azure FXT Edge Filer 叢集
 
@@ -73,7 +73,7 @@ ms.locfileid: "92217808"
 
 ## <a name="3-click-the-allow-to-join-button"></a>3.按一下 [允許加入] 按鈕
 
-在您想要新增之節點的 [動作]  功能表中，按一下 [允許加入]  按鈕。
+在您想要新增之節點的 [動作] 功能表中，按一下 [允許加入] 按鈕。
 
 按一下該按鈕之後，隨著節點的軟體更新以準備新增至叢集，其狀態可能會變更。
 
