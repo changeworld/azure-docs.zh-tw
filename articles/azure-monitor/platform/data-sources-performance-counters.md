@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 54e7a781ba9ed3cd4b53e1028c4a3bb79c256aed
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 533d4a83ea73b98e26a57febc077a607bcb25465
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012607"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532292"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>使用 Log Analytics 代理程式收集 Windows 和 Linux 效能資料來源
 Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業系統及應用程式的效能。  Azure 監視器可以頻繁地收集 Log Analytics 代理程式的效能計數器，以近乎即時的方式 (NRT) 分析，並匯總較長期分析和報告的效能資料。
@@ -50,15 +50,14 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 
 ### <a name="linux-performance-counters"></a>Linux 效能計數器
 
-![設定 Linux 效能計數器](media/data-sources-performance-counters/configure-linux.png)
+![設定 Linux 效能計數器](media/data-sources-performance-counters/configure-linux-1.png)
 
 請遵循此程序以加入要收集的新 Linux 效能計數器。
 
-1. 根據預設，所有組態變更都會自動發送給所有代理程式。  若是 Linux 代理程式，組態檔會傳送給 Fluentd 資料收集器。  如果您想在每個 Linux 代理程式上手動修改這個檔案，請取消核取 [將下列設定套用至我的 Linux 機器] 方塊，並遵循下列指引。
-2. 在文字方塊中輸入計數器名稱，格式為 *object(instance)\counter*。  開始輸入時，您就會看到符合的常用計數器清單。  您可以從清單中選取計數器，或自行輸入。  
-3. 按一下 **+** 或按下 **enter** ，將計數器新增至物件的其他計數器清單。
-4. 物件的所有計數器都會使用相同的 [取樣間隔時間] 。  預設值是 10 秒。  如果您想要降低所收集之效能資料的儲存空間需求，請將此值變更為最多 1800 秒 (30 分鐘)。
-5. 加入所要的計數器後，請按一下畫面頂端的 [儲存]  按鈕以儲存設定。
+1. 在文字方塊中輸入計數器名稱，格式為 *object(instance)\counter*。  開始輸入時，您就會看到符合的常用計數器清單。  您可以從清單中選取計數器，或自行輸入。  
+1. 按一下 **+** 或按下 **enter** ，將計數器新增至物件的其他計數器清單。
+1. 物件的所有計數器都會使用相同的 [取樣間隔時間] 。  預設值是 10 秒。  如果您想要降低所收集之效能資料的儲存空間需求，請將此值變更為最多 1800 秒 (30 分鐘)。
+1. 加入所要的計數器後，請按一下畫面頂端的 [儲存]  按鈕以儲存設定。
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>在組態檔中設定 Linux 效能計數器
 除了使用 Azure 入口網站設定 Linux 效能計數器，您還可以選擇在 Linux 代理程式上編輯組態檔。  要收集的效能計量是由 **/etc/opt/microsoft/omsagent/ \<workspace id\> /conf/omsagent.conf** 中的設定所控制。
@@ -101,17 +100,17 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 | 邏輯磁碟 | Disk Writes/sec |
 | 邏輯磁碟 | Free Megabytes |
 | 邏輯磁碟 | Logical Disk Bytes/sec |
-| Memory | % Available Memory |
-| Memory | % Available Swap Space |
-| Memory | % Used Memory |
-| Memory | % Used Swap Space |
-| Memory | Available MBytes Memory |
-| Memory | Available MBytes Swap |
-| Memory | Page Reads/sec |
-| Memory | Page Writes/sec |
-| Memory | Pages/sec |
-| Memory | Used MBytes Swap Space |
-| Memory | Used Memory MBytes |
+| 記憶體 | % Available Memory |
+| 記憶體 | % Available Swap Space |
+| 記憶體 | % Used Memory |
+| 記憶體 | % Used Swap Space |
+| 記憶體 | Available MBytes Memory |
+| 記憶體 | Available MBytes Swap |
+| 記憶體 | Page Reads/sec |
+| 記憶體 | Page Writes/sec |
+| 記憶體 | Pages/sec |
+| 記憶體 | Used MBytes Swap Space |
+| 記憶體 | Used Memory MBytes |
 | 網路 | Total Bytes Transmitted |
 | 網路 | Total Bytes Received |
 | 網路 | Total Bytes |
@@ -124,10 +123,10 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 | Physical Disk | Avg.Disk sec/Transfer |
 | Physical Disk | Avg.Disk sec/Write |
 | Physical Disk | Physical Disk Bytes/sec |
-| 處理序 | Pct Privileged Time |
-| 處理序 | Pct User Time |
-| 處理序 | Used Memory kBytes |
-| 處理序 | Virtual Shared Memory |
+| Process | Pct Privileged Time |
+| Process | Pct User Time |
+| Process | Used Memory kBytes |
+| Process | Virtual Shared Memory |
 | 處理器 | % DPC Time |
 | 處理器 | % Idle Time |
 | 處理器 | % Interrupt Time |
@@ -181,7 +180,7 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 </source>
 ```
 
-## <a name="data-collection"></a>資料收集
+## <a name="data-collection"></a>資料集合
 只要代理程式有安裝相關計數器，Azure 監視器就會依照其指定的取樣間隔時間，收集全部代理程式上所有指定的效能計數器。  資料不會匯總，且記錄分析工作區所指定的持續時間內，所有記錄查詢檢視中都會提供原始資料。
 
 ## <a name="performance-record-properties"></a>效能記錄屬性

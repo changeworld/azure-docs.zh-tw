@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 3bd4d328c6b0b73a51f325adde988c8f0988ea8a
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: fcaf8f62dcdc43a48ff2ae7ff790ac14ab42e8b6
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873806"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532885"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>使用虛擬網路保護 Azure Machine Learning 推斷環境
 
@@ -36,7 +36,7 @@ ms.locfileid: "94873806"
 > - Azure 容器執行個體 (ACI)
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 + 閱讀 [網路安全性總覽](how-to-network-security-overview.md) 文章，以瞭解常見的虛擬網路案例和整體虛擬網路架構。
 
@@ -252,7 +252,9 @@ aks_target.wait_for_completion(show_output = True)
 部署模型時會以動態方式建立 Azure 容器執行個體。 若要讓 Azure Machine Learning 能夠在虛擬網路內部建立 ACI，您必須為部署所使用的子網路啟用 __子網路委派__。
 
 > [!WARNING]
-> 使用虛擬網路中的 Azure 容器實例時，虛擬網路必須位於與您的 Azure Machine Learning 工作區相同的資源群組中。
+> 使用虛擬網路中的 Azure 容器實例時，虛擬網路必須：
+> * 在與您的 Azure Machine Learning 工作區相同的資源群組中。
+> * 如果您的工作區有 __私人端點__，則用於 Azure 容器實例的虛擬網路必須與工作區私人端點所使用的虛擬網路相同。
 >
 > 使用虛擬網路內的 Azure 容器實例時，您工作區的 Azure Container Registry (ACR) 也不能在虛擬網路中。
 
@@ -265,7 +267,7 @@ aks_target.wait_for_completion(show_output = True)
 
 2. 使用 [AciWebservice.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?preserve-view=true&view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true) 來部署模型，並使用 `vnet_name` 和 `subnet_name` 參數。 將這些參數設定為啟用委派的虛擬網路名稱和子網路。
 
-## <a name="limit-outbound-connectivity-from-the-virtual-network"></a> 限制來自虛擬網路的輸出連線能力
+## <a name="limit-outbound-connectivity-from-the-virtual-network"></a>限制來自虛擬網路的輸出連線能力
 
 如果您不想要使用預設輸出規則，而且想要限制虛擬網路的輸出存取權，您必須允許存取 Azure Container Registry。 例如，請確定您的網路安全性群組 (NSG) 包含允許存取 __AzureContainerRegistry. RegionName__ 服務標記的規則，其中 ' {RegionName} 是 Azure 區域的名稱。
 

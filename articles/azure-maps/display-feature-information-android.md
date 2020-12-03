@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 44c5f9f1a7c0d014d101ad45a80e1e53c42f69a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fabb4cd1e555a7a67a53bf2f5a99d93c87df436c
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88009030"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532800"
 ---
 # <a name="display-feature-information"></a>顯示功能資訊
 
@@ -63,9 +63,7 @@ map.events.add((OnFeatureClick) (features) -> {
 }, symbolLayer.getId());    //Limit this event to the symbol layer.
 ```
 
-<center>
-
-![正在點擊的功能和顯示的快顯訊息的動畫](./media/display-feature-information-android/symbol-layer-click-toast-message.gif)</center>
+![正在點擊的功能和顯示的快顯訊息的動畫](./media/display-feature-information-android/symbol-layer-click-toast-message.gif)
 
 除了快顯訊息之外，還有許多其他方式可呈現功能的中繼資料屬性，例如：
 

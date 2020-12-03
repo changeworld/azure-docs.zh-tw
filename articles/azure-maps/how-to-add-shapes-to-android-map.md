@@ -1,19 +1,19 @@
 ---
-title: 將圖形新增至 Android 地圖 |Microsoft Azure 對應
-description: 瞭解如何將圖形新增至地圖。 請參閱使用 Azure 地圖服務 Android SDK 將線條和多邊形新增至地圖的程式碼範例。
+title: 使用 Azure 地圖服務 Android SDK 將圖形新增至地圖
+description: 瞭解如何將圖形新增至地圖。 請參閱使用 Microsoft Azure Maps Android SDK 將線條和多邊形新增至地圖的程式碼範例。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 04/26/2019
+ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 04773ef279717c7728cf1b07761c6e4c0726a877
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 9ef6e1910803cc18f03347e08abc4f0d836b3c0a
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897121"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532766"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 將圖形新增至地圖
 
@@ -21,24 +21,24 @@ ms.locfileid: "92897121"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-若要完成本文中的程式，您必須安裝 [Azure 地圖服務 Android SDK](./how-to-use-android-map-control-library.md) 以載入地圖。
-
+1. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [取得主要訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為主要金鑰或訂用帳戶金鑰。
+3. 下載並安裝 [Azure 地圖服務 Android SDK](./how-to-use-android-map-control-library.md)。
 
 ## <a name="add-a-line-to-the-map"></a>在地圖中新增線條
 
-您可以使用 **線條圖層** 將線條新增至地圖，請依照下列步驟在地圖上加入線條。
+請遵循下列步驟，使用 **線條圖層** 在地圖上新增線條。
 
-1. 編輯 **res > 配置 > activity_main.xml** 讓它看起來如下所示：
+1. 編輯 `res > layout > activity_main.xml` 看起來像下面的程式碼：
 
     ```XML
-    <?xml version="1.0" encoding="utf-8"?>
     <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-    
+
         <com.microsoft.azure.maps.mapcontrol.MapControl
             android:id="@+id/mapcontrol"
             android:layout_width="match_parent"
@@ -47,11 +47,13 @@ ms.locfileid: "92897121"
             app:mapcontrol_centerLng="-74.004420"
             app:mapcontrol_zoom="12"
             />
-    
     </FrameLayout>
     ```
 
 2. 將下列程式碼片段複製到您類別的 **>oncreate ( # B1** 方法中 `MainActivity.java` 。
+
+    >[!WARNING]
+    >Android Studio 可能尚未匯入必要的類別。  因此，程式碼將會有一些無法解析的參考。 若要匯入所需的類別，只要將滑鼠停留在每個無法解析的參考上，然後按 `Alt + Enter` (選項 + 在 Mac) 上返回。
 
     ```Java
     mapControl.onReady(map -> {
@@ -59,7 +61,7 @@ ms.locfileid: "92897121"
         //Create a data source and add it to the map.
         DataSource dataSource = new DataSource();
         map.sources.add(dataSource);
-    
+
         //Create a list of points.
         List<Point> points = Arrays.asList(
             Point.fromLngLat(-73.972340, 40.743270),
@@ -75,11 +77,10 @@ ms.locfileid: "92897121"
     });
 
     ```
+    上述程式碼片段會先取得 **onReady ( # B1** 回呼方法中 Azure 地圖服務的地圖控制項實例。 接著，它會使用 **DataSource** 類別建立資料來源物件，並將它加入至對應。 然後，它會建立 **點** 物件的清單。 從點數清單建立 **LineString** ，並新增至資料來源。 **線條圖層** 會在地圖上呈現包裝在資料來源中的線條物件。 接著會建立線條圖層，並將資料來源加入其中。
     
-    上述程式碼片段會先使用 **onReady ( # B1** 回呼方法取得 Azure 地圖服務的地圖控制項實例。 接著，它會使用 **DataSource** 類別建立資料來源物件，並將它加入至對應。 然後，它會建立 **點** 物件的清單。 從點數清單建立 **LineString** ，並新增至資料來源。 **線條圖層** 會在地圖上呈現包裝在資料來源中的線條物件。 接著會建立線條圖層，並將資料來源加入其中。
-
     新增上述程式碼片段之後，您 `MainActivity.java` 應該看起來如下所示：
-    
+
     ```Java
     package com.example.myapplication;
 
@@ -174,11 +175,9 @@ ms.locfileid: "92897121"
     }
     ```
 
-如果您現在執行應用程式，您應該會在地圖上看到一行，如下所示：
+當您執行應用程式時，您應該會在地圖上看到一行，如下所示：
 
-<center>
-
-![在 Android 地圖上呈現的線條](./media/how-to-add-shapes-to-android-map/android-map-line.png)</center>
+![在 Android 地圖上呈現的線條](./media/how-to-add-shapes-to-android-map/android-map-line.png)</
 
 
 ## <a name="add-a-polygon-to-the-map"></a>將多邊形新增至地圖
@@ -237,9 +236,7 @@ ms.locfileid: "92897121"
             strokeWidth(2f)));
     });
     ```
-
-    上述程式碼片段會先使用 **onReady ( # B1** 回呼方法取得 Azure 地圖服務的地圖控制項實例。 接著，它會使用 **DataSource** 類別建立資料來源物件，並將它加入至對應。 然後，會從 **Point** 物件清單建立 **多邊形** 物件，並將其加入資料來源。 **多邊形圖層** 會將包裝在資料來源中的資料呈現在地圖上。 然後，它會建立多邊形圖層來呈現多邊形區域，並將資料來源加入其中。 **線條圖層** 會呈現包裝在資料來源中的線條物件。 程式碼片段的最後一個部分會建立線條圖層來呈現多邊形的外框，並將資料來源加入其中。
-
+    
     新增上述程式碼片段之後，您 `MainActivity.java` 應該看起來如下所示：
 
     ```Java
@@ -346,12 +343,9 @@ ms.locfileid: "92897121"
     }
     ```
 
-如果您現在執行您的應用程式，您應該會在地圖上看到一個多邊形，如下所示：
+當您執行應用程式時，您應該會在地圖上看到一個多邊形，如下所示：
 
-<center>
-
-![在 Android 地圖上呈現的多邊形](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</center>
-
+![在 Android 地圖上呈現的多邊形](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</
 
 ## <a name="next-steps"></a>後續步驟
 

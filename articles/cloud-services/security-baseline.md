@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7deee88210acf700916961be7c4ccaf9477accf8
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 100871ab2188aa638c4c9f2b058021706c7741bb
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353437"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531899"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>適用于 Azure 雲端服務的 Azure 安全性基準
 
@@ -36,7 +36,7 @@ Microsoft Azure 雲端服務 (傳統) 不能放在 Azure Resource Manager 的虛
 
 - [網路安全性群組概觀](../virtual-network/network-security-groups-overview.md)
 
-- [虛擬網路對等互連](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
+- [虛擬網路對等互連](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -58,7 +58,7 @@ Microsoft Azure 雲端服務 (傳統) 不能放在 Azure Resource Manager 的虛
 
 - [雲端服務設定檔案](schema-cscfg-file.md)
 
-- [Azure 原則支援的服務清單](/cli/azure/azure-services-the-azure-cli-can-manage?amp;preserve-view=)
+- [Azure 原則支援的服務清單](/cli/azure/azure-services-the-azure-cli-can-manage?preserve-view=)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -89,9 +89,9 @@ Microsoft Azure 雲端服務 (傳統) 不能放在 Azure Resource Manager 的虛
 
 將拒絕套用規則設定為傳統訂用帳戶系統管理員指派。 根據預設，定義內部端點之後，來自任何角色的通訊都可以在沒有任何限制的情況下流向角色的內部端點。 若要限制通訊，您必須在服務定義檔中將 NetworkTrafficRules 元素加入至 ServiceDefinition 元素。
 
-- [如何封鎖/停用我雲端服務的預設 URL 的連入流量](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
+- [如何封鎖/停用我雲端服務的預設 URL 的連入流量](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
 
-- [Azure DDOS 保護](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
+- [Azure DDOS 保護](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
 
 - [封鎖特定的 IP 位址](cloud-services-startup-tasks-common.md#block-a-specific-ip-address)
 
@@ -107,7 +107,7 @@ Microsoft Azure 雲端服務 (傳統) 不能放在 Azure Resource Manager 的虛
 
 - [設定網路安全性群組的流量記錄](../virtual-machines/extensions/network-watcher-linux.md)
 
-- [如需設定流程記錄的詳細資訊，請造訪](/cli/azure/azure-services-the-azure-cli-can-manage?amp;preserve-view=)
+- [如需設定流程記錄的詳細資訊，請造訪](/cli/azure/azure-services-the-azure-cli-can-manage?preserve-view=)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -231,13 +231,13 @@ Microsoft Azure 雲端服務 (傳統) 不能放在 Azure Resource Manager 的虛
 
 Azure 雲端服務可以透過 Application Insights 來監視可用性、效能、失敗和使用方式。 自訂圖表可以新增至 Application Insights，因此您可以看到最重要的資料。 您可以使用 Azure 雲端服務專案中的 Application Insights SDK 來收集角色實例資料。 
 
-- [在部署之前開啟 Visual Studio 中的診斷](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?amp;preserve-view=#to-turn-on-diagnostics-in-visual-studio-before-deployment)
+- [在部署之前開啟 Visual Studio 中的診斷](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?preserve-view=true#to-turn-on-diagnostics-in-visual-studio-before-deployment)
 
 - [檢視變更歷程記錄](../azure-monitor/platform/activity-log.md#view-change-history)
 
 - [適用于 Azure 雲端服務 (傳統) 的 Application Insights ](../azure-monitor/app/cloudservices.md)
 
-- [設定 Azure 雲端服務 (傳統) 和虛擬機器的診斷](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?amp;preserve-view=true&toc=%2fazure%2fcloud-services%2ftoc.json)
+- [設定 Azure 雲端服務 (傳統) 和虛擬機器的診斷](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?preserve-view=true&toc=%2fazure%2fcloud-services%2ftoc.json)
 
 **Azure 資訊安全中心監視**：是
 
@@ -289,7 +289,7 @@ Azure 診斷延伸模組會收集資料並且儲存在 Azure 儲存體帳戶。 
 
 **指導** 方針：適用于 Azure 的 Microsoft Antimalware 可保護 Azure 雲端服務和虛擬機器。 您可以選擇部署協力廠商安全性解決方案，例如 web 應用程式的火警、網路防火牆、反惡意程式碼、入侵偵測和防護系統 (識別碼或 IP) 等等。
 
-- [Azure 基本 IP/識別碼和 DDOS 提供的特性和功能有哪些](./cloud-services-configuration-and-management-faq.md?amp;preserve-view=#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
+- [Azure 基本 IP/識別碼和 DDOS 提供的特性和功能有哪些](./cloud-services-configuration-and-management-faq.md?preserve-view=true#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -840,7 +840,7 @@ Get-AzRoleAssignment-IncludeClassicAdministrators
 
 選擇 Azure 資訊安全中心中的適應性應用程式控制功能，這是一個智慧型、自動化的端對端解決方案。 它有助於強化您的機器免于惡意軟體的攻擊，並可讓您封鎖或警示執行惡意應用程式的嘗試，包括反惡意程式碼解決方案可能遺漏的應用程式。
 
-- [如何以自動化的方式為我的 Azure 雲端服務新增反惡意程式碼擴充功能](./cloud-services-configuration-and-management-faq.md?amp;preserve-view=#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
+- [如何以自動化的方式為我的 Azure 雲端服務新增反惡意程式碼擴充功能](./cloud-services-configuration-and-management-faq.md?preserve-view=true#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
 
 - [反惡意程式碼部署案例](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 59d318b3e30b10d73e620a6b0793384dda80ef08
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d841d3b922a5edd0257934566207187ae031c1b5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184054"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532171"
 ---
 # <a name="azure-security-baseline-for-azure-resource-manager"></a>適用于 Azure Resource Manager 的 Azure 安全性基準
 
@@ -91,9 +91,9 @@ ms.locfileid: "96184054"
 
 **指導** 方針： Azure 角色型存取控制 (RBAC) 可讓您透過角色指派來管理 azure 資源的存取權。 您可以將這些角色指派給使用者、群組服務主體和受控識別。 某些資源有預先定義的內建角色，這些角色可透過 Azure CLI、Azure PowerShell 或 Azure 入口網站等工具進行清查或查詢。
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?amp;preserve-view=true&view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 **Azure 資訊安全中心監視**：是
 
@@ -279,7 +279,7 @@ ms.locfileid: "96184054"
 
 - [如何使用 Azure Resource Graph 建立查詢](../../governance/resource-graph/first-query-portal.md)
 
-- [如何查看您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
+- [如何查看您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [了解 Azure RBAC](../../role-based-access-control/overview.md)
 
@@ -330,7 +330,7 @@ ms.locfileid: "96184054"
 
 **指導** 方針：使用 Azure 原則對可在訂用帳戶中建立的資源類型施加限制。
 
-使用 Azure Resource Graph 來查詢及探索其訂用帳戶內的資源。  確保已核准環境中的所有 Azure 資源。
+使用 Azure Resource Graph 則可查詢及探索其訂用帳戶內的資源。  確保已核准環境中的所有 Azure 資源。
 
 - [如何設定和管理 Azure 原則](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -387,7 +387,7 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 您也可以使用 Azure 資訊安全中心中的建議作為 Azure 資源的安全設定基準。
 
-- [如何查看可用 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
+- [如何查看可用 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [教學課程：建立和管理原則來強制執行相容性](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -421,7 +421,7 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 **指導** 方針：使用 Azure DevOps 安全地儲存和管理您的程式碼，例如自訂 Azure 原則定義、Azure Resource Manager 範本和 desired state configuration 腳本。 若要存取您在 Azure DevOps 中管理的資源，您可以授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory (Azure AD) （如果與 Azure DevOps 整合）中定義的群組，或與 TFS 整合的 Active Directory。
 
-- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
 - [關於 Azure DevOps 中的許可權和群組](/azure/devops/organizations/security/about-permissions)
 
@@ -483,7 +483,7 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 **指導** 方針：使用 Azure DevOps 安全地儲存和管理您的程式碼，例如自訂 Azure 原則定義、Azure Resource Manager 範本和 desired state configuration 腳本。 若要存取您在 Azure DevOps 中管理的資源，您可以授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory (Azure AD) （如果與 Azure DevOps 整合）中定義的群組，或與 TFS 整合的 Active Directory。
 
-- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
 - [關於 Azure DevOps 中的許可權和群組](/azure/devops/organizations/security/about-permissions)
 
@@ -547,7 +547,7 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
-**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 對於 Red Teaming 和即時網站滲透測試的策略與執行方法。
+**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 對於紅隊和即時網站滲透測試的策略和執行方法。
 
 - [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 

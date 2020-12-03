@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 691bb538ea0f46e26c318a68e9f66a9a986eb5d4
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 94ab7e235f0796277d65aebb33d9011fc76b74ce
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301838"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532783"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>適用于 App Service 的 Azure 安全性基準
 
@@ -343,7 +343,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 **指導** 方針： Azure Active Directory (Azure AD) 有必須明確指派和查詢能力的內建角色。 使用 Azure AD PowerShell 模組執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 - [如何使用 App Service 和 Azure Functions 的受控身分識別](overview-managed-identity.md?context=azure%2Factive-directory%2Fmanaged-identities-azure-resources%2Fcontext%2Fmsi-context&amp;tabs=dotnet)
 
@@ -478,7 +478,7 @@ App Service apps 會使用同盟身分識別，而協力廠商身分識別提供
 
 - [如何設定 Azure App Service apps 以使用 Azure AD 登入](configure-authentication-provider-aad.md)
 
-- [如何建立和設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何建立及設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -656,7 +656,7 @@ Microsoft 會管理基礎平臺，並將所有客戶資料視為機密資料，�
 
 複習並遵循安全性中心的建議，以保護您的 App Service 應用程式。
 
-- [如何將持續安全性驗證新增至 CI/CD 管線](/azure/devops/migrate/security-validation-cicd-pipeline?amp;preserve-view=true&view=azure-devops)
+- [如何將持續安全性驗證新增至 CI/CD 管線](/azure/devops/migrate/security-validation-cicd-pipeline?preserve-view=true&view=azure-devops)
 
 - [如何實行 Azure 資訊安全中心弱點評定建議](../security-center/deploy-vulnerability-assessment-vm.md)
 
@@ -686,7 +686,7 @@ Microsoft 會管理基礎平臺，並將所有客戶資料視為機密資料，�
 
 - [如何使用 Azure Resource Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-- [如何檢視您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
+- [如何檢視您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -891,7 +891,7 @@ Microsoft 會管理基礎平臺，並將所有客戶資料視為機密資料，�
 
 建議您記載程式以套用內建原則定義，以用於標準化的使用方式。   
 
-- [如何檢視可用的 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
+- [如何檢視可用的 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
@@ -917,9 +917,9 @@ Microsoft 會管理基礎平臺，並將所有客戶資料視為機密資料，�
 
 使用您現有的持續整合 (CI) 和持續傳遞 (CD) 管線來部署已知安全的設定。
 
-- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Azure Repos 文件](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
+- [Azure Repos 文件](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Azure 資訊安全中心監視**：不適用
 

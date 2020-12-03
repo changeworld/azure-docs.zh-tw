@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 74211df6f925aaa09a4c87a518056e8ef3206b87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f7ddf94bbd077912cf0d7c2adef2eac548274ca
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078396"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532273"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure 監視器 PowerShell 範例
 本文說明可協助您存取 Azure 監視器 功能的範例 PowerShell 命令。
@@ -94,7 +94,7 @@ Get-AzLog -Caller 'myname@company.com'
 下列命令會擷取活動記錄檔中的最後 1000 個事件︰
 
 ```powershell
-Get-AzLog -MaxRecord 10
+Get-AzLog -MaxRecord 1000
 ```
 
 `Get-AzLog` 支援其他許多參數。 如需詳細資訊，請參閱 `Get-AzLog` 參考。
@@ -313,7 +313,7 @@ Remove-AzAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 ```
 
 ## <a name="manage-log-profiles-for-activity-log"></a>管理活動記錄檔的記錄檔設定檔
-您可以建立*記錄檔設定檔*，並將資料從活動記錄檔匯出至儲存體帳戶，而且您可以為其設定資料保留期。 或者，您也可以將資料串流至事件中樞。 此功能目前處於預覽狀態，而且每個訂用帳戶只能建立一個記錄檔設定檔。 您可以使用下列 Cmdlet 搭配您目前的訂用帳戶來建立和管理記錄檔設定檔。 您也可以選擇特定的訂用帳戶。 PowerShell 預設為目前的訂用帳戶，但是您隨時可以使用 `Set-AzContext`加以變更。 您可以設定活動記錄檔，將資料路由至任何儲存體帳戶或該訂用帳戶內的事件中樞。 資料會以 JSON 格式的 Blob 檔案寫入。
+您可以建立 *記錄檔設定檔*，並將資料從活動記錄檔匯出至儲存體帳戶，而且您可以為其設定資料保留期。 或者，您也可以將資料串流至事件中樞。 此功能目前處於預覽狀態，而且每個訂用帳戶只能建立一個記錄檔設定檔。 您可以使用下列 Cmdlet 搭配您目前的訂用帳戶來建立和管理記錄檔設定檔。 您也可以選擇特定的訂用帳戶。 PowerShell 預設為目前的訂用帳戶，但是您隨時可以使用 `Set-AzContext`加以變更。 您可以設定活動記錄檔，將資料路由至任何儲存體帳戶或該訂用帳戶內的事件中樞。 資料會以 JSON 格式的 Blob 檔案寫入。
 
 ### <a name="get-a-log-profile"></a>取得記錄檔設定檔
 若要擷取現有的記錄檔設定檔，請使用 `Get-AzLogProfile` Cmdlet。

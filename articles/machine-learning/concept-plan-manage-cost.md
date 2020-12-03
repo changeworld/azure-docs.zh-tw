@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: a0e0f61da52ce00fb2eb4b4a7d95ab74082f9472
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3eb9df0a0fde5d99bbeb3c2da182b5957fdea1e3
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541703"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532919"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>規劃和管理 Azure Machine Learning 的成本
 
@@ -35,13 +35,13 @@ ms.locfileid: "94541703"
 
 ## <a name="prerequisites"></a>必要條件
 
-成本分析支援不同的 Azure 帳戶類型。 若要檢視所支援帳戶類型的完整清單，請參閱[了解成本管理資料](../cost-management-billing/costs/understand-cost-mgt-data.md)。 若要檢視成本資料，您至少需要 Azure 帳戶的讀取存取。 
+成本分析支援不同的 Azure 帳戶類型。 若要檢視所支援帳戶類型的完整清單，請參閱[了解成本管理資料](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。 若要檢視成本資料，您至少需要 Azure 帳戶的讀取存取。 
 
-如需 Azure 成本管理資料的存取權指派相關資訊，請參閱[指派資料的存取權](../cost-management-billing/costs/assign-access-acm-data.md)。
+如需 Azure 成本管理資料的存取權指派相關資訊，請參閱[指派資料的存取權](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 
-## <a name="estimate-costs"></a>預估成本
+## <a name="estimate-costs-before-using-azure-machine-learning"></a>使用 Azure Machine Learning 前先預估成本
 
-在 Azure Machine Learning 帳戶中建立資源之前，請先使用 [Azure 定價計算機](https://azure.microsoft.com/pricing/calculator/) 來預估成本。 選取左側的 [ **AI + Machine Learning** ，然後選取 **Azure Machine Learning** 以開始。  
+在 Azure Machine Learning 帳戶中建立資源之前，請先使用 [Azure 定價計算機](https://azure.microsoft.com/pricing/calculator?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 來預估成本。 選取左側的 [ **AI + Machine Learning**，然後選取 **Azure Machine Learning** 以開始。  
 
 下列螢幕擷取畫面顯示使用計算機的成本估計：
 
@@ -49,23 +49,58 @@ ms.locfileid: "94541703"
 
 當您將新的資源新增至您的工作區時，請返回此計算機並在此新增相同的資源，以更新您的成本預估。
 
-如需詳細資訊，請參閱 [Azure Machine Learning 定價](https://azure.microsoft.com/pricing/details/machine-learning/)。
+如需詳細資訊，請參閱 [Azure Machine Learning 定價](https://azure.microsoft.com/pricing/details/machine-learning?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 
-## <a name="get-cost-alerts"></a>取得成本警示
+## <a name="understand-the-full-billing-model-for-azure-machine-learning"></a>瞭解 Azure Machine Learning 的完整計費模型
 
-建立 [預算](../cost-management-billing/costs/tutorial-acm-create-budgets.md) 來管理成本並建立 [警示](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md) ，以自動通知專案關係人有關消費異常和超支風險。 警示是以支出為基礎 (相較於預算和成本閾值)。 系統會為 Azure 訂用帳戶和資源群組建立預算和警示，使其在整體成本監視策略中很有用。 不過，預算和警示的功能可能有限，無法管理個別的 Azure 服務成本，因為它們是設計來追蹤較高層級的成本。
+Azure Machine Learning 會在 Azure 基礎結構上執行，此基礎結構會在您部署新的資源時，與 Azure Machine Learning 一起計算成本。 請務必瞭解，額外的基礎結構可能會產生成本。 當您對已部署的資源進行變更時，必須管理成本。 
 
-## <a name="monitor-costs"></a>監視成本
+### <a name="costs-that-typically-accrue-with-azure-machine-learning"></a>通常會隨 Azure Machine Learning 累積的成本
 
-當您搭配 Azure Machine Learning 使用資源時，會產生成本。 Azure 資源使用量單位成本會隨著時間間隔而有所不同， (秒、分鐘、小時和日) 或依要求單位使用量而有所不同。 一旦 Azure Machine Learning 開始使用，就會產生成本。 在 Azure 入口網站的 [ [成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md) ] 窗格中，查看這些成本。
+當您建立 Azure Machine Learning 工作區的資源時，也會建立其他 Azure 服務的資源。 這些包括：
 
-您可以在圖表和資料表中查看不同時間間隔的成本。 您也可以根據預算和預測成本來查看成本。 隨著時間切換至更長的視圖有助於找出花費趨勢，並查看可能發生超支的位置。 如果您已建立預算，請查看其超出的位置。  
+* [Azure Container Registry](https://azure.microsoft.com/pricing/details/container-registry?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 基本帳戶
+* [Azure 區塊 Blob 儲存體](https://azure.microsoft.com/pricing/details/storage/blobs?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) (一般用途 v1) 
+* [金鑰保存庫](https://azure.microsoft.com/pricing/details/key-vault?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+* [Application Insights](https://azure.microsoft.com/en-us/pricing/details/monitor?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+ 
+### <a name="costs-might-accrue-after-resource-deletion"></a>資源刪除之後可能會累積成本
 
-您將不會看到 Machine Learning 的個別服務區域。  相反地，您會看到已新增至 Machine Learning 工作區的各種資源。 
+當您刪除 Azure 入口網站或 Azure CLI 中的 Azure Machine Learning 工作區時，下列資源將會繼續存在。 它們會繼續累積成本，直到您將其刪除為止。
 
-請注意，雖然 Machine Learning 工作區本身沒有直接成本，但您會向受控計算資源收費。 因此，如果您將標籤新增至工作區，因為它不會直接產生費用，所以成本分析窗格將會反映此工作區。 若要透過標記精確地管理成本，您必須標記相關聯的計算資源。  
+* Azure Container Registry
+* Azure 區塊 Blob 儲存體
+* Key Vault
+* Application Insights
 
-## <a name="use-azure-machine-learning-compute-cluster-amlcompute"></a>使用 Azure Machine Learning compute cluster (AmlCompute) 
+若要刪除工作區以及這些相依的資源，請使用 SDK：
+
+```python
+ws.delete(delete_dependent_resources=True)
+```
+
+如果您在工作區中建立 Azure Kubernetes Service (AKS) ，或是將任何計算資源附加到您的工作區，則必須在 [Azure 入口網站](https://portal.azure.com)中個別刪除它們。
+
+### <a name="using-monetary-credit-with-azure-machine-learning"></a>搭配 Azure Machine Learning 使用貨幣點數
+
+您可以使用 EA 預付金點數來支付 Azure Machine Learning 費用。 不過，您無法使用 EA 預付金點數來支付協力廠商產品和服務的費用，包括來自 Azure Marketplace 的產品和服務。
+
+
+## <a name="create-budgets"></a>建立預算
+
+您可以建立 [預算](https://docs.microsoft.com/azure/cost-management/tutorial-acm-create-budgets?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 來管理成本，並建立 [警示](https://docs.microsoft.com/azure/cost-management/cost-mgt-alerts-monitor-usage-spending?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 來自動通知專案關係人有關消費異常和超支風險。 警示是以支出為基礎 (相較於預算和成本閾值)。 系統會為 Azure 訂用帳戶和資源群組建立預算和警示，使其在整體成本監視策略中很有用。 
+
+如果您想要在監視中有更多細微性，可以使用 Azure 中特定資源或服務的篩選來建立預算。 篩選器可協助確保您不會意外地建立新的資源，而需要支付額外的費用。 如需建立預算時篩選選項的詳細資訊，請參閱 [群組和篩選選項](https://docs.microsoft.com/azure/cost-management-billing/costs/group-filter?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+
+## <a name="export-cost-data"></a>匯出成本資料
+
+您也可以將 [成本資料匯出](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 至儲存體帳戶。 當您需要或其他人對成本進行額外的資料分析時，這會很有説明。 例如，財務小組可以使用 Excel 或 Power BI 來分析資料。 您可以根據每日、每週或每月排程來匯出成本，並設定自訂日期範圍。 匯出成本資料集是建議的方式，以取得成本資料集。
+
+## <a name="other-ways-to-manage-and-reduce-costs-for-azure-machine-learning"></a>管理和降低 Azure Machine Learning 成本的其他方式
+
+使用這些秘訣來包含機器學習計算資源的成本。
+
+### <a name="use-azure-machine-learning-compute-cluster-amlcompute"></a>使用 Azure Machine Learning compute cluster (AmlCompute) 
 
 透過不斷變化的資料，您需要快速且簡化的模型定型和重新定型，以維護準確的模型。 不過，持續訓練會產生費用，特別是針對 Gpu 的深度學習模型。 
 
@@ -73,7 +108,7 @@ Azure Machine Learning 使用者可以使用受控 Azure Machine Learning 計算
 
 因為這些計算集區位於 Azure 的 IaaS 基礎結構內，所以您可以使用與其他基礎結構相同的安全性和合規性需求來部署、調整及管理定型。  這些部署會在您的訂用帳戶中進行，並遵守您的治理規則。 深入瞭解 [Azure Machine Learning 計算](how-to-create-attach-compute-cluster.md)。
 
-## <a name="configure-training-clusters-for-autoscaling"></a>設定自動調整的定型群集
+### <a name="configure-training-clusters-for-autoscaling"></a>設定自動調整的定型群集
 
 以工作負載需求為基礎的自動調整叢集有助於降低成本，因此您只需要使用所需的功能即可。
 
@@ -92,7 +127,7 @@ AmlCompute 叢集是設計來根據您的工作負載進行動態調整。 叢�
 az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 --min-nodes 0 --max-nodes 5 --idle-seconds-before-scaledown 300
 ```
 
-## <a name="set-quotas-on-resources"></a>設定資源的配額
+### <a name="set-quotas-on-resources"></a>設定資源的配額
 
 AmlCompute 隨附 [配額 (或限制) ](how-to-manage-quotas.md#azure-machine-learning-compute)設定。 此配額是由 VM 系列 (例如，Dv2 系列、NCv3 系列) ，而且每個訂用帳戶各有不同的區域。 訂用帳戶以小預設值開始進行，但使用此設定可控制可在訂用帳戶中啟動的 Amlcompute 資源數量。 
 
@@ -100,7 +135,7 @@ AmlCompute 隨附 [配額 (或限制) ](how-to-manage-quotas.md#azure-machine-le
 
 若要在工作區層級設定配額，請從 [Azure 入口網站](https://portal.azure.com)開始。  選取訂用帳戶中的任何工作區，然後選取左窗格中的 [ **使用方式 + 配額** ]。 然後，選取 [ **設定配額** ] 索引標籤以查看配額。 您需要訂用帳戶範圍的許可權才能設定配額，因為這是影響多個工作區的設定。
 
-## <a name="set-run-autotermination-policies"></a>設定執行 autotermination 原則 
+### <a name="set-run-autotermination-policies"></a>設定執行 autotermination 原則 
 
 在某些情況下，您應該設定定型回合來限制其持續時間，或提早終止。 例如，當您使用 Azure Machine Learning 的內建超參數微調或自動化機器學習時。
 
@@ -109,7 +144,7 @@ AmlCompute 隨附 [配額 (或限制) ](how-to-manage-quotas.md#azure-machine-le
 * 針對 [超參數微調](how-to-tune-hyperparameters.md#early-termination)，請從 Bandit 原則、中位數停止原則或截斷選取原則定義提早終止原則。 若要進一步控制超參數的掃描，請使用參數，例如 `max_total_runs` 或 `max_duration_minutes` 。
 * 針對 [自動化機器學習](how-to-configure-auto-train.md#exit)，請使用旗標來設定類似的終止原則  `enable_early_stopping` 。 也請使用和等 `iteration_timeout_minutes` 屬性 `experiment_timeout_minutes` 來控制執行或整個實驗的持續時間上限。
 
-## <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a> 使用低優先順序的 Vm
+### <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a> 使用低優先順序的 Vm
 
 Azure 可讓您在虛擬機器擴展集、Batch 和 Machine Learning 服務之間，使用超出未運用的容量來 Low-Priority Vm。 這些配置已預先 emptible，但相較于專用 Vm，價格較低。 一般來說，我們建議您針對 Batch 工作負載使用 Low-Priority Vm。 您也應該使用它們來復原中斷時，可以透過重新提交 (針對 Batch 推斷) 或透過重新開機 (進行使用檢查點) 的深度學習訓練。
 
@@ -117,7 +152,7 @@ Low-Priority Vm 的單一配額與專用配額值（依 VM 系列）不同。 �
 
  Low-Priority Vm 不適用於計算實例，因為它們需要支援互動式筆記本體驗。
 
-## <a name="use-reserved-instances"></a>使用保留執行個體
+### <a name="use-reserved-instances"></a>使用保留執行個體
 
 另一種節省計算資源成本的方法是 Azure 保留的 VM 實例。 這項供應專案可讓您承諾一年或三年期。 這些折扣的範圍最高可達72% 的隨用隨付價格，並會直接套用至您的每月 Azure 帳單。
 
@@ -126,7 +161,7 @@ Azure Machine Learning 計算原本就支援保留實例。 如果您購買一�
 
 ## <a name="next-steps"></a>後續步驟
 
-深入了解：
-* [管理和增加資源配額](how-to-manage-quotas.md)
-* [使用成本分析來管理成本](../cost-management-billing/costs/quick-acm-cost-analysis.md)。
-* 使用 [SDK](how-to-create-attach-compute-cluster.md) 或在 [studio](how-to-create-attach-compute-studio.md#amlcompute)中建立 Azure Machine Learning 計算。
+- 瞭解 [如何使用 Azure 成本管理來優化您的雲端投資](https://docs.microsoft.com/azure/cost-management-billing/costs/cost-mgt-best-practices?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+- 深入瞭解如何使用 [成本分析](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)來管理成本。
+- 瞭解如何避免非 [預期的成本](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+- 採用 [成本管理](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 引導式學習課程。

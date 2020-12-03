@@ -12,12 +12,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 08/04/2020
 tags: azure-synpase
-ms.openlocfilehash: 5442ddab5b4925e40250e63833a634006db7aead
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: f8d352dac98f953f7f6d8033d0d9e1376c4da313
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781442"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532223"
 ---
 # <a name="dynamic-data-masking"></a>動態資料遮罩 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -30,7 +30,7 @@ Azure SQL Database、Azure SQL 受控執行個體和 Azure Synapse Analytics 支
 
 ## <a name="dynamic-data-masking-basics"></a>動態資料遮罩基本概念
 
-您可以在 [SQL Database 設定] 窗格中，選取 [ **安全性** ] 底下的 **動態資料遮罩** 分頁，在 Azure 入口網站中設定動態資料遮罩原則。 您無法使用 Azure Synapse 的入口網站來設定此功能 (使用 PowerShell 或 REST API) 或 SQL 受控執行個體。 如需相關資訊，請參閱 [Dynamic Data Masking](/sql/relational-databases/security/dynamic-data-masking)。
+您可以在 [SQL Database 設定] 窗格中，選取 [**安全性**] 底下的 **動態資料遮罩** 分頁，在 Azure 入口網站中設定動態資料遮罩原則。 這項功能無法使用適用于 SQL 受控執行個體的入口網站進行設定 (使用 PowerShell 或 REST API) 。 如需相關資訊，請參閱 [Dynamic Data Masking](/sql/relational-databases/security/dynamic-data-masking)。
 
 ### <a name="dynamic-data-masking-permissions"></a>動態資料遮罩權限
 
@@ -45,16 +45,16 @@ Azure SQL Database、Azure SQL 受控執行個體和 Azure Synapse Analytics 支
 | 遮罩功能 | 遮罩邏輯 |
 | --- | --- |
 | **預設值** |**根據指定欄位的資料類型進行完整遮罩**<br/><br/>• 如果字串資料類型的欄位大小少於 4 個字元 (nchar、ntext、nvarchar)，請使用 XXXX 或更少 X。<br/>• 針對數值資料類型 (bigint、bit、decimal、int、money、numeric、smallint、smallmoney、tinyint、float、real)，使用零值。<br/>• 針對日期/時間資料類型 (date、datetime2、datetime、datetimeoffset、smalldatetime、time)，使用 01-01-1900 時間。<br/>• 對於 SQL 變數，會使用目前類型的預設值。<br/>• 對於 XML 會使用文件 \<masked/>。<br/>• 針對特殊資料類型 (時間戳記、資料表、hierarchyid、GUID、二進位值、影像、varbinary spatial 類型)，使用空值。 |
-| **信用卡** |**遮罩方法會公開指定欄位的末四碼** ，並新增常數字串做為信用卡格式的前置詞。<br/><br/>XXXX-XXXX-XXXX-1234 |
+| **信用卡** |**遮罩方法會公開指定欄位的末四碼**，並新增常數字串做為信用卡格式的前置詞。<br/><br/>XXXX-XXXX-XXXX-1234 |
 | **電子郵件** |**遮罩方法會公開第一個字母，並** 使用以電子郵件地址形式的常數位串前置詞，以 XXX.com 取代網域。<br/><br/>aXX@XXXX.com |
-| **亂數字** |**遮罩方法會產生一個隨機數字** ，其根據為選取的界限與實際資料類型。 如果指定的邊界相等，則遮罩函數是常數。<br/><br/>![顯示用來產生亂數字之遮罩方法的螢幕擷取畫面。](./media/dynamic-data-masking-overview/1_DDM_Random_number.png) |
-| **自訂文字** |**遮罩方法會公開第一個和最後一個字元** ，並在中間新增自訂填補字串。 如果原始字串小於公開的前置詞和後置詞，則只會使用填補字串。 <br/>prefix[padding]suffix<br/><br/>![導覽窗格](./media/dynamic-data-masking-overview/2_DDM_Custom_text.png) |
+| **亂數字** |**遮罩方法會產生一個隨機數字**，其根據為選取的界限與實際資料類型。 如果指定的邊界相等，則遮罩函數是常數。<br/><br/>![顯示用來產生亂數字之遮罩方法的螢幕擷取畫面。](./media/dynamic-data-masking-overview/1_DDM_Random_number.png) |
+| **自訂文字** |**遮罩方法會公開第一個和最後一個字元**，並在中間新增自訂填補字串。 如果原始字串小於公開的前置詞和後置詞，則只會使用填補字串。 <br/>prefix[padding]suffix<br/><br/>![導覽窗格](./media/dynamic-data-masking-overview/2_DDM_Custom_text.png) |
 
 <a name="Anchor1"></a>
 
 ### <a name="recommended-fields-to-mask"></a>要遮罩處理的建議欄位
 
-DDM 建議引擎會將您資料庫中的特定欄位標示為潛在敏感性欄位，而這類欄位可能適合進行遮罩處理。 在入口網站的 [動態資料遮罩] 刀鋒視窗中，您會看到您的資料庫的建議資料行。 您只需要對一或多個資料行按一下 [新增遮罩]  ，然後按一下 [儲存]  ，以對這些欄位套用遮罩。
+DDM 建議引擎會將您資料庫中的特定欄位標示為潛在敏感性欄位，而這類欄位可能適合進行遮罩處理。 在入口網站的 [動態資料遮罩] 刀鋒視窗中，您會看到您的資料庫的建議資料行。 您只需要對一或多個資料行按一下 [新增遮罩]，然後按一下 [儲存]，以對這些欄位套用遮罩。
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>使用 PowerShell Cmdlet 為您的資料庫設定動態資料遮罩
 

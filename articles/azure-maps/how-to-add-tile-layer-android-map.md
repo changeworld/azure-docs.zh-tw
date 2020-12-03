@@ -1,6 +1,6 @@
 ---
-title: 將圖格圖層新增至 Android 地圖 |Microsoft Azure 對應
-description: 瞭解如何將圖格圖層新增至地圖。 請參閱使用 Azure 地圖服務 Android SDK 將天氣雷達圖重迭新增至地圖的範例。
+title: 使用 Azure 地圖服務 Android SDK 將圖格圖層新增至地圖
+description: 瞭解如何將圖格圖層新增至地圖。 請參閱使用 Microsoft Azure Maps Android SDK 將天氣雷達圖重迭新增至地圖的範例。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: faa5e3e3177e18787a73c6b4c43aa04b6bc760b7
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 22618a28f1a87e68c19467aedf639e96ec2fb91e
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897087"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532671"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 將圖格圖層新增至地圖
 
@@ -37,7 +37,7 @@ ms.locfileid: "92897087"
 * `{bbox-epsg-3857}` - 使用 `{west},{south},{east},{north}` 格式的週框方塊字串，位在 EPSG 3857 空間參考系統中。
 * `{subdomain}` -子域值的預留位置（如果已指定子域值）。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本文中的程式，您必須安裝 [Azure 地圖服務 Android SDK](./how-to-use-android-map-control-library.md) 以載入地圖。
 

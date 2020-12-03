@@ -3,17 +3,17 @@ title: 顯示 android 地圖上的交通資料 |Microsoft Azure 對應
 description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Android SDK 來顯示地圖上的流量資料。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 02/27/2020
+ms.date: 11/25/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bc37f2b3f603262f67a46746187df6e4b5a494b5
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 5f7e67d159c2b7dea3ebac7fd4d0856f508cb298
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895523"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532749"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 顯示地圖上的交通資料
 
@@ -21,7 +21,9 @@ Flow 資料和事件資料是可在地圖上顯示的兩種類型的流量資料
 
 ## <a name="prerequisites"></a>Prerequisites
 
-您必須先 [建立 Azure 帳戶](quick-demo-map-app.md#create-an-azure-maps-account)並 [取得訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，才能在地圖上顯示流量。 然後，您必須安裝 [Azure 地圖服務 Android SDK](./how-to-use-android-map-control-library.md) 並載入對應。
+1. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [取得主要訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為主要金鑰或訂用帳戶金鑰。
+3. 下載並安裝 [Azure 地圖服務 Android SDK](./how-to-use-android-map-control-library.md)。
 
 ## <a name="incidents-traffic-data"></a>事件流量資料
 
@@ -73,7 +75,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 若要取得特定功能的事件，您可以使用下列程式碼。 當您按一下某項功能時，程式碼邏輯會檢查事件，並建立事件的相關訊息。 畫面底部會顯示一則訊息，內含詳細資料。
 
-1. 首先，您必須 **> activity_main.xml編輯 res >** 配置，使其看起來如下所示。 您可以使用所 `mapcontrol_centerLat` 需的值來取代、 `mapcontrol_centerLng` 和 `mapcontrol_zoom` 。 回想一下，縮放層級是介於0到22之間的值。 在縮放層級0，整個世界都適合單一磚。
+1. 首先，您需要編輯 `res > layout > activity_main.xml` ，使其看起來如下所示。 您可以使用所 `mapcontrol_centerLat` 需的值來取代、 `mapcontrol_centerLng` 和 `mapcontrol_zoom` 。 回想一下，縮放層級是介於0到22之間的值。 在縮放層級0，整個世界都適合單一磚。
 
    ```XML
    <?xml version="1.0" encoding="utf-8"?>
@@ -223,11 +225,9 @@ protected void onCreate(Bundle savedInstanceState) {
 
 3. 當您在應用程式中納入上述程式碼之後，您將能夠按一下功能，並查看流量事件的詳細資料。 根據您在 **activity_main.xml** 檔案中使用的緯度、經度和縮放層級值，您會看到類似下圖的結果：
 
-   <center>
 
-   ![事件-地圖上的流量](./media/how-to-show-traffic-android/android-traffic.png)
+    ![事件-地圖上的流量](./media/how-to-show-traffic-android/android-traffic.png)
 
-   </center>
 
 ## <a name="next-steps"></a>後續步驟
 
