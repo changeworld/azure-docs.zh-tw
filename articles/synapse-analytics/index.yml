@@ -1,0 +1,113 @@
+### YamlMime:Landing
+title: Azure Synapse Analytics
+summary: Azure Synapse 是一種無限制的分析服務，可將企業資料倉儲和巨量資料分析整合在一起。 可讓您自由使用無伺服器隨選或佈建資源，隨意且大規模地查詢您的資料。
+metadata:
+  title: Azure Synapse Analytics
+  description: Azure Synapse 是一種無限制的分析服務，可將企業資料倉儲和巨量資料分析整合在一起。 可讓您自由使用無伺服器隨選或佈建資源，隨意且大規模地查詢您的資料。
+  services: synapse-analytics
+  ms.service: synapse-analytics
+  ms.subservice: overview
+  ms.topic: landing-page
+  ms.collection: collection
+  author: julieMSFT
+  ms.author: jrasnick
+  ms.date: 12/01/2020
+  ms.openlocfilehash: 6de11d0830c332d19a133592b060caca1382b667
+  ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 12/01/2020
+  ms.locfileid: "96463335"
+landingContent:
+- title: 關於 Azure Synapse Analytics
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure Synapse
+      url: overview-what-is.md
+    - text: 祕訣和最佳作法
+      url: overview-cheat-sheet.md
+    - text: 常見問題集
+      url: overview-faq.md
+- title: Synapse SQL
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Synapse SQL 架構
+      url: ./sql/overview-architecture.md
+  - linkListType: quickstart
+    links:
+    - text: 使用無伺服器 SQL 集區
+      url: quickstart-sql-on-demand.md
+    - text: 使用 Synapse Studio 建立專用 SQL 集區
+      url: quickstart-create-sql-pool-studio.md
+- title: 開始使用 Azure Synapse Analytics
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 開始使用的逐步解說
+      url: get-started.md
+    - text: 步驟 1 - 建立並設定 Synapse 工作區
+      url: get-started-create-workspace.md
+    - text: 步驟 2 - 使用專用的 SQL 集區進行分析
+      url: get-started-analyze-sql-pool.md
+    - text: 步驟 3 - 使用 Apache Spark 進行分析
+      url: get-started-analyze-spark.md
+    - text: 步驟 4 - 使用無伺服器 SQL 集區進行分析
+      url: get-started-analyze-sql-on-demand.md
+    - text: 步驟 5 - 分析儲存體帳戶中的資料
+      url: get-started-analyze-storage.md
+    - text: 步驟 6 - 使用管線進行協調
+      url: get-started-pipelines.md
+    - text: 步驟 7 - 使用 Power BI 視覺化資料
+      url: get-started-visualize-power-bi.md
+    - text: 步驟 8 - 監視活動
+      url: get-started-monitor.md
+    - text: 步驟 9 - 探索知識中心
+      url: get-started-knowledge-center.md
+- title: Apache Spark
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Synapse Analytics 中的 Apache Spark
+      url: ./spark/apache-spark-overview.md
+  - linkListType: quickstart
+    links:
+    - text: 使用 Synapse Studio 建立無伺服器 Apache Spark 集區
+      url: quickstart-create-apache-spark-pool-studio.md
+- title: Synapse Link
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 適用於 Azure Cosmos DB 的 Azure Synapse Link
+      url: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+  - linkListType: quickstart
+    links:
+    - text: 連線至適用於 Azure Cosmos DB 的 Azure Synapse Link
+      url: quickstart-connect-synapse-link-cosmos-db.md
+- title: Machine Learning
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Synapse 中的機器學習
+      url: ./machine-learning/what-is-machine-learning.md
+  - linkListType: quickstart
+    links:
+    - text: 建立新的 Azure Machine Learning 連結服務
+      url: ./machine-learning/quickstart-integrate-azure-machine-learning.md
+  - linkListType: tutorial
+    links:
+    - text: SQL 集區的模型評分精靈
+      url: ./machine-learning/tutorial-sql-pool-model-scoring-wizard.md
+- title: 管線和資料流程
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 管線和活動
+      url: ../data-factory/concepts-pipelines-activities.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+  - linkListType: quickstart
+    links:
+    - text: 轉換資料
+      url: quickstart-data-flow.md
+    - text: 將資料載入 SQL 集區
+      url: quickstart-copy-activity-load-sql-pool.md

@@ -20,11 +20,11 @@
       href: tutorial-track-usage.md
 - name: 概念
   items:
-    - name: 教室實驗室概觀
+    - name: 實驗室概觀
       href: classroom-labs-overview.md
-    - name: 教室實驗室概念
+    - name: 實驗室概念
       href: classroom-labs-concepts.md
-    - name: 教室實驗室架構基本概念
+    - name: 實驗室架構基本概念
       href: classroom-labs-fundamentals.md
     - name: 容量限制
       href: capacity-limits.md
@@ -36,7 +36,7 @@
           href: classroom-labs-scenarios.md
         - name: 使用實驗室服務進行 Hackathon
           href: hackathon-labs.md
-        - name: 教室實驗室 - 類別類型
+        - name: 實驗室 - 課程類型
           items:
             - name: 課程類型概觀
               href: class-types.md
@@ -112,9 +112,9 @@
           href: lab-account-owner-support-information.md
         - name: 將自訂映像上傳至共用映像庫
           href: upload-custom-image-shared-image-gallery.md
-    - name: 建立和設定教室實驗室 (教師)
+    - name: 建立和設定實驗室 (教師)
       items:
-        - name: 建立和管理教室實驗室
+        - name: 建立和管理實驗室
           href: how-to-manage-classroom-labs.md
         - name: 使用儀表板
           href: use-dashboard.md
@@ -150,9 +150,9 @@
           href: lab-creator-support-information.md
         - name: 從教師檢視存取學生 VM
           href: instructor-access-virtual-machines.md
-    - name: 在教室實驗室中連線至 VM (學生)
+    - name: 在實驗室中連線至 VM (學生)
       items:
-        - name: 存取教室實驗室
+        - name: 存取實驗室
           href: how-to-use-classroom-lab.md
         - name: 連線至 Linux VM
           href: how-to-use-remote-desktop-linux-student.md

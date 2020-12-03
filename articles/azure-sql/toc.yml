@@ -617,7 +617,7 @@
                           items:
                             - name: 使用 SQL Database
                               href: database/saas-tenancy-tenant-analytics.md
-                            - name: 使用 Azure Synapse Analytics (先前稱為 SQL 資料倉儲)
+                            - name: 使用 Azure Synapse Analytics
                               href: database/saas-tenancy-tenant-analytics-adf.md
                     - name: 使用異地還原進行災害復原
                       href: database/saas-dbpertenant-dr-geo-restore.md

@@ -49,7 +49,105 @@
               href: azure-stack-edge-gpu-technical-specifications-compliance.md
             - name: 電源線規格
               href: azure-stack-edge-technical-specifications-power-cords-regional.md
-        - name: 了解 Kubernetes (預覽)
+- name: Azure Stack Edge Pro R
+  items:
+    - name: 概觀
+      items:
+        - name: Azure Stack Edge Pro R 是什麼？
+          href: azure-stack-edge-j-series-overview.md
+    - name: 概念
+      items:
+        - name: 安全就緒
+          href: azure-stack-edge-pro-r-safety.md
+        - name: 檢閱需求
+          href: azure-stack-edge-pro-r-system-requirements.md
+        - name: 了解限制
+          href: azure-stack-edge-pro-r-limits.md
+        - name: 安全性概觀
+          href: azure-stack-edge-pro-r-security.md
+        - name: 檢閱規格
+          href: azure-stack-edge-pro-r-technical-specifications-compliance.md
+    - name: 教學課程
+      items:
+        - name: 0 - 取得檢查清單
+          href: azure-stack-edge-pro-r-deploy-checklist.md
+        - name: 1 - 訂購，準備
+          href: azure-stack-edge-pro-r-deploy-prep.md
+        - name: 2 - 安裝
+          href: azure-stack-edge-pro-r-deploy-install.md
+        - name: 3 - 連線
+          href: azure-stack-edge-pro-r-deploy-connect.md
+        - name: 4 - 設定網路
+          href: azure-stack-edge-pro-r-deploy-configure-network-compute-web-proxy.md
+        - name: 5 - 設定裝置
+          href: azure-stack-edge-pro-r-deploy-set-up-device-update-time.md
+        - name: 6 - 設定安全性
+          href: azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption.md
+        - name: 7 - 啟用
+          href: azure-stack-edge-pro-r-deploy-activate.md
+        - name: 8 - 設定計算
+          href: azure-stack-edge-gpu-deploy-configure-compute.md
+    - name: 如何
+      items:
+        - name: 設定 VPN (預覽)
+          items:
+            - name: 透過 Azure PowerShell 進行設定
+              href: azure-stack-edge-mini-r-configure-vpn-powershell.md
+            - name: 針對 BCDR 進行設定
+              href: azure-stack-edge-pro-r-configure-vpn-bcdr.md
+- name: Azure Stack Edge Mini R
+  items:
+    - name: 概觀
+      items:
+        - name: Azure Stack Edge Mini R 是什麼？
+          href: azure-stack-edge-k-series-overview.md
+    - name: 概念
+      items:
+        - name: 安全就緒
+          href: azure-stack-edge-mini-r-safety.md
+        - name: 檢閱需求
+          href: azure-stack-edge-mini-r-system-requirements.md
+        - name: 了解限制
+          href: azure-stack-edge-mini-r-limits.md
+        - name: 安全性概觀
+          href: azure-stack-edge-pro-r-security.md
+        - name: 檢閱規格
+          href: azure-stack-edge-mini-r-technical-specifications-compliance.md
+    - name: 教學課程
+      items:
+        - name: 0 - 取得檢查清單
+          href: azure-stack-edge-mini-r-deploy-checklist.md
+        - name: 1 - 訂購，準備
+          href: azure-stack-edge-mini-r-deploy-prep.md
+        - name: 2 - 安裝
+          href: azure-stack-edge-mini-r-deploy-install.md
+        - name: 3 - 連線
+          href: azure-stack-edge-mini-r-deploy-connect.md
+        - name: 4 - 設定網路
+          href: azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy.md
+        - name: 5 - 設定裝置
+          href: azure-stack-edge-mini-r-deploy-set-up-device-update-time.md
+        - name: 6 - 設定安全性
+          href: azure-stack-edge-mini-r-deploy-configure-certificates-vpn-encryption.md
+        - name: 7 - 啟用
+          href: azure-stack-edge-mini-r-deploy-activate.md
+        - name: 8 - 設定計算
+          href: azure-stack-edge-gpu-deploy-configure-compute.md
+    - name: 如何
+      items:
+        - name: 設定 VPN (預覽)
+          items:
+            - name: 透過 Azure PowerShell 進行設定
+              href: azure-stack-edge-mini-r-configure-vpn-powershell.md
+            - name: 針對 BCDR 進行設定
+              href: azure-stack-edge-pro-r-configure-vpn-bcdr.md
+        - name: 管理 Wi-Fi
+          href: azure-stack-edge-mini-r-manage-wifi.md
+- name: 共用 Pro GPU、Pro R、Mini R
+  items:
+    - name: 共用概念
+      items:
+        - name: 了解 Kubernetes
           items:
             - name: 什麼是 Kubernetes？
               href: azure-stack-edge-gpu-kubernetes-overview.md
@@ -63,7 +161,9 @@
               href: azure-stack-edge-gpu-kubernetes-workload-management.md
         - name: 檢視 Key Vault 整合
           href: azure-stack-edge-gpu-activation-key-vault.md
-    - name: 如何
+        - name: 啟用主動式記錄
+          href: azure-stack-edge-gpu-proactive-log-collection.md
+    - name: 共用的操作指南
       items:
         - name: 部署 IoT Edge 範例
           items:
@@ -73,12 +173,14 @@
               href: azure-stack-edge-gpu-deploy-sample-module.md
             - name: 透過 Marketplace 取得 GPU 模組
               href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
-        - name: 部署 Kubernetes 工作負載 (預覽)
+        - name: 部署 Kubernetes 工作負載
           items:
             - name: 透過 kubectl
               items:
                 - name: Kubernetes 叢集存取
                   href: azure-stack-edge-gpu-create-kubernetes-cluster.md
+                - name: 計算加速
+                  href: azure-stack-edge-gpu-deploy-compute-acceleration.md
                 - name: 無狀態應用程式
                   href: azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md
                 - name: 靜態佈建的具狀態應用程式
@@ -107,6 +209,8 @@
               href: azure-stack-edge-j-series-configure-tls-settings.md
         - name: 部署 VM (預覽)
           items:
+            - name: 部署 VM - Azure 入口網站
+              href: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
             - name: 部署 VM - 範本
               href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
             - name: 部署 VM - Azure PowerShell Cmdlet
@@ -129,6 +233,8 @@
               href: azure-stack-edge-j-series-certificate-troubleshooting.md
         - name: 管理 Edge 計算
           href: azure-stack-edge-j-series-manage-compute.md
+        - name: 管理 Edge 容器登錄
+          href: azure-stack-edge-gpu-edge-container-registry.md
         - name: 管理儲存體閘道
           items:
             - name: 新增並連線到共用
@@ -165,6 +271,8 @@
               href: azure-stack-edge-monitor.md
             - name: 使用 Kubernetes 儀表板
               href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
+            - name: 使用 Azure 監視器
+              href: azure-stack-edge-gpu-enable-azure-monitor.md
         - name: 疑難排解
           items:
             - name: 裝置問題
@@ -175,13 +283,15 @@
               href: azure-stack-edge-gpu-troubleshoot-activation.md
             - name: 連絡 Microsoft 支援服務
               href: azure-stack-edge-contact-microsoft-support.md
-    - name: 版本資訊
+    - name: 共用的版本資訊
       items:
-        - name: 2009 - 正式發行
+        - name: 2011 - 目前
+          href: azure-stack-edge-gpu-2011-release-notes.md
+        - name: 2010
           href: azure-stack-edge-gpu-2009-release-notes.md
-        - name: 2008 - 預覽
+        - name: 2008
           href: azure-stack-edge-gpu-2008-release-notes.md
-    - name: 參考
+    - name: 共用的參考資料
       items:
         - name: 透過 API、SDK、PowerShell 的 IoT Edge 角色
           href: azure-stack-edge-gpu-iot-edge-api-update.md
@@ -279,18 +389,6 @@
           href: /rest/api/databoxedgegateway
         - name: .NET SDK
           href: /dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet
-- name: Azure Stack Edge Pro R
-  items:
-    - name: 概觀
-      items:
-        - name: Azure Stack Edge Pro R 是什麼？
-          href: azure-stack-edge-j-series-overview.md
-- name: Azure Stack Edge Mini R
-  items:
-    - name: 概觀
-      items:
-        - name: Azure Stack Edge Mini R 是什麼？
-          href: azure-stack-edge-k-series-overview.md
 - name: 資料箱閘道
   items:
     - name: 概觀

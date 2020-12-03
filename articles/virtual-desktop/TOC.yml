@@ -106,6 +106,8 @@
       href: azure-advisor.md
     - name: 解析建議
       href: azure-advisor-recommendations.md
+    - name: 使用適用於 Windows 虛擬桌面的 Azure 監視器
+      href: azure-monitor.md
     - name: 設定災害復原方案
       href: disaster-recovery.md
 - name: 概念
@@ -150,6 +152,8 @@
           href: app-attach-glossary.md
         - name: 常見問題集
           href: app-attach-faq.md
+    - name: Azure 監視器詞彙
+      href: azure-monitor-glossary.md
     - name: 資料地點
       href: data-locations.md
 - name: 疑難排解
@@ -170,6 +174,8 @@
       href: troubleshoot-powershell.md
     - name: 診斷圖表效能問題
       href: remotefx-graphics-performance-counters.md
+    - name: Azure 監視器
+      href: troubleshoot-azure-monitor.md
 - name: 參考
   items:
     - name: 安全性最佳做法

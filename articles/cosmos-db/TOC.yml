@@ -1315,7 +1315,7 @@
           href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 使用 Azure Synapse Spark 進行查詢
           href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-        - name: 使用 Synapse SQL 無伺服器進行查詢
+        - name: 使用無伺服器 SQL 集區進行查詢
           href: ../synapse-analytics/sql/query-cosmos-db-analytical-store.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 搭配使用 Power BI 與 Synapse Link
           href: synapse-link-power-bi.md

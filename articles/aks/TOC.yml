@@ -9,7 +9,7 @@
 - name: 快速入門
   expanded: true
   items:
-    - name: 建立 AKS 叢集
+    - name: 部署 AKS 叢集
       expanded: true
       items:
         - name: 使用 Azure CLI
@@ -252,6 +252,8 @@
           href: kubernetes-service-principal.md
         - name: 使用受控識別
           href: use-managed-identity.md
+        - name: 使用 AAD Pod 身分識別 (預覽)
+          href: use-azure-ad-pod-identity.md
         - name: 叢集組態檔的限制存取
           href: control-kubeconfig-access.md
         - name: 透過網路原則保護 Pod 流量

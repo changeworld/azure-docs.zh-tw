@@ -129,6 +129,8 @@
       href: ../../load-balancer/security-baseline.md
     - name: Azure Machine Learning 安全性基準
       href: ../../machine-learning/security-baseline.md
+    - name: Azure 受控應用程式安全性基準
+      href: ../../azure-resource-manager/managed-applications/security-baseline.md
     - name: 適用於安全性基準的 Azure 監視器
       href: ../../azure-monitor/security-baseline.md
     - name: Azure Migrate Learning 安全性基準
@@ -201,7 +203,7 @@
       href: ../../site-recovery/security-baseline.md
     - name: 串流分析基準
       href: ../../stream-analytics/security-baseline.md
-    - name: Synapse Analytics 安全性基準
+    - name: Azure Synapse Analytics 安全性基準
       href: ../../synapse-analytics/security-baseline.md
     - name: 流量管理員安全性基準
       href: ../../traffic-manager/security-baseline.md

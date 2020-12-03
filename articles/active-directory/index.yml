@@ -11,13 +11,13 @@ metadata:
   author: mtillman
   ms.author: mtillman
   manager: daveba
-  ms.date: 10/22/2020
-  ms.openlocfilehash: 741fe2c9cb2c4992b8c7b7b1905962b37b527917
-  ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+  ms.date: 12/01/2020
+  ms.openlocfilehash: 5261d535170feb5c0aaac3731cd27e0af7847cfa
+  ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 11/26/2020
-  ms.locfileid: "96180605"
+  ms.lasthandoff: 12/02/2020
+  ms.locfileid: "96498042"
 highlightedContent:
   items:
   - title: 什麼是 Azure AD？
@@ -35,9 +35,9 @@ highlightedContent:
   - title: Azure AD 部署檢查清單
     itemType: concept
     url: ./fundamentals/active-directory-deployment-checklist-p2.md
-  - title: 將訂用帳戶新增到租用戶
-    itemType: how-to-guide
-    url: ./fundamentals/active-directory-how-subscriptions-associated-directory.md
+  - title: 使用 Azure AD 建置身分識別和存取管理的復原能力
+    itemType: overview
+    url: ./fundamentals/resilience-overview.md
 conceptualContent:
   items:
   - title: 應用程式管理
@@ -267,9 +267,9 @@ conceptualContent:
   - title: 角色
     links:
     - url: ./roles/groups-assign-role.md
-      itemType: how-to-guide
-      text: 將角色指派給雲端群組
-    - url: ./roles/custom-create.md
+      itemType: concept
+      text: 了解 Azure AD 角色
+    - url: ./roles/concept-understand-roles.md
       itemType: how-to-guide
       text: 建立自訂角色
     - url: ./roles/groups-view-assignments.md

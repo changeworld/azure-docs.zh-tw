@@ -151,9 +151,9 @@
           href: security-center-network-recommendations.md
         - name: 管理身分識別和存取
           href: security-center-identity-access.md
-    - name: Azure Defender 警示
+    - name: 深入了解安全性警示
       items:
-        - name: Azure Defender 警示概觀
+        - name: 安全性警訊概觀
           href: security-center-alerts-overview.md
         - name: 警示參考清單
           href: alerts-reference.md
@@ -244,7 +244,7 @@
           href: continuous-export.md
         - name: 下載所有警示的 CSV 報告
           href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations
-    - name: 處理 Azure Defender 警示
+    - name: 處理安全性警示
       items:
         - name: 管理安全性警示
           href: security-center-managing-and-responding-alerts.md

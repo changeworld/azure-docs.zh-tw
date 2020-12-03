@@ -1,6 +1,6 @@
-- name: Azure Synapse (工作區預覽)
-  href: overview-what-is.md
-- name: 切換至 Azure Synapse Analytics (先前為 SQL DW)
+- name: Azure Synapse Analytics
+  href: index.yml
+- name: 切換至專用 SQL 集區 (先前稱為 SQL DW)
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
 - name: 概觀
   items:
@@ -9,8 +9,8 @@
       displayName: overview
     - name: 術語
       href: overview-terminology.md
-    - name: 版本資訊
-      href: release-notes.md
+    - name: 常見問題集
+      href: overview-faq.md
 - name: 快速入門
   expanded: true
   items:
@@ -125,17 +125,12 @@
                   displayname: 'access, control'
                 - name: Synapse 工作區的受控識別
                   href: ./security/synapse-workspace-managed-identity.md
-        - name: 工具整合 (AI、ETL、BI)
-          items:
-            - name: 針對 Synapse Studio 進行疑難排解
-              href: troubleshoot/troubleshoot-synapse-studio.md
-            - name: 針對 Synapse Studio 連線問題進行疑難排解
-              href: troubleshoot/troubleshoot-synapse-studio-powershell.md
-              displayname: powershell
-            - name: 針對 Synapse Studio 與儲存體之間的連線進行疑難排解
-              href: troubleshoot/troubleshoot-synapse-studio-and-storage-connectivity.md
     - name: 操作指南
       items:
+        - name: 管理和監視
+          items:
+            - name: Azure 監視器計量、警示和記錄
+              href: monitoring/how-to-monitor-using-azure-monitor.md
         - name: 安全
           items:
             - name: 管理存取控制
@@ -156,6 +151,19 @@
                   href: ./data-integration/linked-service.md
                 - name: 從受限制的網路連線到 Synapse 工作區
                   href: security/how-to-connect-to-workspace-from-restricted-network.md
+        - name: 疑難排解
+          items:
+            - name: 針對 Synapse Studio 進行疑難排解
+              href: troubleshoot/troubleshoot-synapse-studio.md
+            - name: 針對 Synapse Studio 連線問題進行疑難排解
+              href: troubleshoot/troubleshoot-synapse-studio-powershell.md
+              displayname: powershell
+            - name: 針對 Synapse Studio 與儲存體之間的連線進行疑難排解
+              href: troubleshoot/troubleshoot-synapse-studio-and-storage-connectivity.md
+            - name: 針對 SDK 所建立的工作區進行疑難排解
+              href: troubleshoot/workspaces-created-by-sdk.md
+            - name: 針對讀取 UTF-8 文字進行疑難排解
+              href: troubleshoot/reading-utf8-text.md
 - name: Synapse SQL
   items:
     - name: 概觀
@@ -175,6 +183,8 @@
           href: sql/overview-features.md
         - name: 資源耗用模型
           href: sql/resource-consumption-models.md
+        - name: 容量限制
+          href: ./sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: 無伺服器 SQL 集區的成本管理
           href: sql/data-processed.md
         - name: 最佳做法無伺服器 SQL 集區
@@ -183,10 +193,14 @@
           href: sql/best-practices-sql-pool.md
     - name: 快速入門
       items:
+        - name: 使用無伺服器 SQL 集區
+          href: quickstart-sql-on-demand.md
         - name: 使用 Synapse Studio 建立專用的 SQL 集區
           href: quickstart-create-sql-pool-studio.md
         - name: 使用 Azure 入口網站建立專用的 SQL 集區
           href: quickstart-create-sql-pool-portal.md
+        - name: 使用 Azure 入口網站暫停和恢復
+          href: ./sql-data-warehouse/pause-and-resume-compute-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: 使用專用 SQL 集區載入資料
           items:
             - name: COPY 陳述式
@@ -198,8 +212,20 @@
             - name: Synapse Studio
               href: quickstart-load-studio-sql-pool.md
               displayname: sql pool
-        - name: 使用無伺服器 SQL 集區
-          href: quickstart-sql-on-demand.md
+        - name: 工作負載管理
+          items:
+            - name: 建立工作負載分類器
+              items:
+                - name: 入口網站
+                  href: ./sql-data-warehouse/quickstart-create-a-workload-classifier-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: T-SQL
+                  href: ./sql-data-warehouse/quickstart-create-a-workload-classifier-tsql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: 建立工作負載隔離
+              items:
+                - name: 入口網站
+                  href: ./sql-data-warehouse/quickstart-configure-workload-isolation-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: T-SQL
+                  href: ./sql-data-warehouse/quickstart-configure-workload-isolation-tsql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: 教學課程
       items:
         - name: 使用無伺服器 SQL 集區來分析資料
@@ -222,13 +248,14 @@
               href: sql/load-data-overview.md
         - name: 部署
           items:
-            - name: 總覽
+            - name: 概觀
               href: sql/develop-overview.md
             - name: 最佳作法
               href: sql/develop-best-practices.md
             - name: 具體化檢視
               items:
                 - name: 效能微調指導方針
+                  displayname: 'materialized, view,'
                   href: sql/develop-materialized-view-performance-tuning.md
                 - name: 建立
                   href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -236,8 +263,23 @@
                 - name: 變更
                   href: /sql/t-sql/statements/alter-materialized-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                   displayname: 'materialized, view'
+            - name: 已排序的叢集資料行存放區索引
+              items:
+                - name: 效能微調指導方針
+                  displayname: 'CCI, clustered, column, store'
+                  href: ./sql-data-warehouse/performance-tuning-ordered-CCI.md
             - name: 結果集設定快取
-              href: /sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              items:
+                - name: 效能微調指導方針
+                  href: ./sql-data-warehouse/performance-tuning-result-set-caching.md
+                - name: 設定資料庫
+                  href: /sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest
+                - name: 設定工作階段
+                  href: /sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest
+                - name: 檢查快取大小
+                  href: /sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest
+                - name: 清除快取
+                  href: /sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest
             - name: 機器學習預測
               href: ./sql-data-warehouse/sql-data-warehouse-predict.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 資料表
@@ -252,6 +294,8 @@
                   href: sql/develop-tables-data-types.md
                 - name: 分散式資料表
                   href: ./sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: 資料表條件約束
+                  href: ./sql-data-warehouse/sql-data-warehouse-table-constraints.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: 外部資料表
                   href: sql/develop-tables-external-tables.md
                 - name: 索引
@@ -276,8 +320,14 @@
                   href: sql/develop-stored-procedures.md
                 - name: 交易
                   href: sql/develop-transactions.md
-                - name: 交易最佳做法
-                  href: sql/develop-transaction-best-practices.md
+                - name: 交易
+                  items:
+                    - name: 無伺服器 SQL 集區
+                      displayname: 'Transaction, best, practices'
+                      href: sql/develop-transaction-best-practices.md
+                    - name: 專用的 SQL 集區
+                      displayname: 'Transactions, best, practices'
+                      href: ./sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: 使用者定義的結構描述
                   href: sql/develop-user-defined-schemas.md
                 - name: 變數指派
@@ -306,6 +356,8 @@
               href: ./sql-data-warehouse/sql-data-warehouse-overview-manageability-monitoring.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 資源使用率與查詢活動
               href: ./sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: 建議
+              href: ./sql-data-warehouse/sql-data-warehouse-concept-recommendations.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: 安全性
           items:
             - name: 資料庫存取控制
@@ -352,6 +404,10 @@
               href: ./backuprestore/restore-sql-pool.md
         - name: 管理和監視
           items:
+            - name: SQL 要求 - Synapse Studio
+              href: monitoring/how-to-monitor-sql-requests.md
+            - name: SQL 集區 - Synapse Studio
+              href: monitoring/how-to-monitor-sql-pools.md
             - name: 監視 Gen2 快取
               href: ./sql-data-warehouse/sql-data-warehouse-how-to-monitor-cache.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 監視工作負載 - DMV
@@ -366,8 +422,8 @@
                   href: ./sql-data-warehouse/sql-data-warehouse-how-to-configure-workload-importance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: 管理及監視工作負載的重要性
                   href: ./sql-data-warehouse/sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: 升級至 Gen2
-              href: ./sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: 將資源類別轉換成工作負載群組
+                  href: ./sql-data-warehouse/sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: 內嵌和準備資料
           items:
             - name: 匯入資料倉儲
@@ -395,46 +451,58 @@
               items:
                 - name: 使用複製活動
                   href: data-integration/data-integration-data-lake.md
+        - name: 變更管理和部署
+          items:
+            - name: 安裝 Visual Studio SSDT
+              href: ./sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: 持續整合與部署
+              href: ./sql-data-warehouse/sql-data-warehouse-continuous-integration-and-deployment.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: 查詢外部資料
           items:
             - name: 概觀
-              href: sql/query-data-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/query-data-storage.md
               displayname: query
             - name: 查詢 CSV 檔案
-              href: sql/query-single-csv-file.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/query-single-csv-file.md
             - name: 查詢 Parquet 檔案
-              href: sql/query-parquet-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/query-parquet-files.md
             - name: 查詢 JSON 檔案
-              href: sql/query-json-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/query-json-files.md
             - name: 查詢巢狀型別
-              href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/query-parquet-nested-types.md
             - name: 查詢資料夾和多個檔案
-              href: sql/query-folders-multiple-csv-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/query-folders-multiple-csv-files.md
               displayname: csv
             - name: 使用檔案中繼資料來查詢分割的檔案
-              href: sql/query-specific-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/query-specific-files.md
             - name: 建立和使用檢視
-              href: sql/create-use-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/create-use-views.md
             - name: 建立和使用外部資料表
               href: sql/create-use-external-tables.md
             - name: 將查詢結果儲存到儲存體
               href: sql/create-external-table-as-select.md
-        - name: 將工具連線到 Synapse 工作區
+        - name: 整合
+          items:
+            - name: 資料管線
+              items:
+                - name: 新增 Azure 串流分析作業
+                  href: ./sql-data-warehouse/sql-data-warehouse-integrate-azure-stream-analytics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: 用來連線至 Synapse 工作區的工具
           items:
             - name: 概觀
-              href: sql/connect-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/connect-overview.md
             - name: 使用 Azure Data Studio 進行查詢
-              href: sql/get-started-azure-data-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/get-started-azure-data-studio.md
             - name: 連接字串
               href: sql/connection-strings.md
             - name: 使用 sqlcmd 進行查詢
               href: sql/get-started-connect-sqlcmd.md
             - name: 使用 SSMS 查詢
-              href: sql/get-started-ssms.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/get-started-ssms.md
             - name: 使用 Visual Studio 查詢
-              href: sql/get-started-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/get-started-visual-studio.md
             - name: 連線至 Power BI Desktop
-              href: sql/get-started-power-bi-professional.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/get-started-power-bi-professional.md
 - name: Apache Spark
   items:
     - name: 概觀
@@ -511,6 +579,10 @@
               href: ./spark/apache-spark-history-server.md
             - name: 監視 Spark 應用程式
               href: monitoring/apache-spark-applications.md
+            - name: Apache Spark 集區
+              href: monitoring/how-to-monitor-spark-pools.md
+            - name: 使用 Apache Spark 分析 JSON
+              href: how-to-analyze-complex-schema.md
         - name: 內嵌和準備資料
           items:
             - name: SQL 資料倉儲
@@ -641,7 +713,7 @@
               href: ../data-factory/connector-azure-sql-database.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure SQL 受控執行個體
               href: ../data-factory/connector-azure-sql-database-managed-instance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Azure Synapse Analytics (先前稱為 SQL 資料倉儲)
+            - name: Azure Synapse Analytics
               href: ../data-factory/connector-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure 表格儲存體
               href: ../data-factory/connector-azure-table-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -1003,15 +1075,23 @@
         - name: 使用 Apache Spark 將資料視覺化
           href: ./spark/apache-spark-data-visualization-tutorial.md
           displayname: machine learning
-        - name: SQL 集區的模型評分精靈
+        - name: 針對專用 SQL 集區使用評分精靈
           href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
           displayname: machine learning
-        - name: 使用 Azure AutoML 執行迴歸實驗
+        - name: 使用 Azure AutoML 訓練任意程式碼的模型
+          href: ./machine-learning/tutorial-automl.md
+        - name: 使用 Azure AutoML 在 Python 中訓練模型
           href: ./spark/apache-spark-azure-machine-learning-tutorial.md
           displayname: machine learning
-        - name: 使用 Apache Spark MLlib 建立機器學習模型
+        - name: 使用 Apache Spark MLlib 建立模型
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
           displayname: machine learning
+        - name: 使用認知服務進行情感分析
+          href: ./machine-learning/tutorial-cognitive-services-sentiment.md
+        - name: 使用認知服務的異常偵測
+          href: ./machine-learning/tutorial-cognitive-services-anomaly.md
+        - name: 設定 Azure Synapse 的認知服務
+          href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
 - name: 參考
   items:
     - name: Azure CLI

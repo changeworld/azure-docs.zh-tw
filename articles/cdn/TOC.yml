@@ -111,8 +111,8 @@
     - name: 分析
       href: cdn-log-analysis.md
       items:
-        - name: HTTP 原始記錄
-          href: enable-raw-logs.md
+        - name: 監視、計量和存取記錄
+          href: monitoring-and-access-log.md
         - name: Azure 診斷記錄
           href: cdn-azure-diagnostic-logs.md
         - name: 來自 Verizon 的 Azure CDN 分析工具

@@ -1,12 +1,12 @@
-- name: Azure Synapse (先前為 SQL DW)
-  href: index.yml
-- name: 切換至 Azure Synapse (工作區預覽)
+- name: 專用 SQL 集區 (先前稱為 SQL DW)
+  href: sql-data-warehouse-overview-what-is.md
+- name: 切換至 Azure Synapse
   href: ../overview-what-is.md
 - name: 概觀
   items:
-    - name: 什麼是 Azure Synapse Analytics？
+    - name: 什麼是專用 SQL 集區？
       href: sql-data-warehouse-overview-what-is.md
-    - name: Azure Synapse Analytics 架構
+    - name: 專用 SQL 集區架構
       href: massively-parallel-processing-mpp-architecture.md
     - name: 資料倉儲單位
       href: what-is-a-data-warehouse-unit-dwu-cdwu.md
@@ -74,9 +74,15 @@
           href: pause-and-resume-compute-powershell.md
 - name: 概念
   items:
+    - name: Synapse 工作區體驗
+      items:
+        - name: 概觀
+          href: workspace-connected-experience.md
+        - name: 支援區域
+          href: workspace-connected-regions.md
     - name: 安全性
       items:
-        - name: 總覽
+        - name: 概觀
           href: sql-data-warehouse-overview-manage-security.md
         - name: 進階資料安全性
           items:
@@ -100,7 +106,7 @@
               href: /azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
         - name: 驗證
           items:
-            - name: 總覽
+            - name: 概觀
               href: sql-data-warehouse-authentication.md
             - name: Azure Active Directory
               href: /azure/sql-database/sql-database-aad-authentication?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
@@ -134,7 +140,7 @@
           href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
     - name: 部署
       items:
-        - name: 總覽
+        - name: 概觀
           href: sql-data-warehouse-overview-develop.md
         - name: 最佳作法
           href: sql-data-warehouse-best-practices-development.md
@@ -272,6 +278,10 @@
           href: sql-data-warehouse-overview-integrate.md
 - name: 操作指南
   items:
+    - name: Synapse 工作區體驗
+      items:
+        - name: 建立 Synapse 工作區
+          href: workspace-connected-create.md
     - name: 安全
       items:
         - name: 設定 Azure AD 驗證
@@ -384,9 +394,9 @@
       items:
         - name: 完整參考
           href: /sql/t-sql/language-reference?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
-        - name: Azure Synapse Analytics TSQL 語言元素
+        - name: T-SQL 語言項目
           href: sql-data-warehouse-reference-tsql-language-elements.md
-        - name: Azure Synapse Analytics TSQL 陳述式
+        - name: T-SQL 陳述式
           href: sql-data-warehouse-reference-tsql-statements.md
     - name: 系統檢視表
       href: sql-data-warehouse-reference-tsql-system-views.md
@@ -394,6 +404,9 @@
       href: sql-data-warehouse-reference-powershell-cmdlets.md
     - name: REST API
       href: sql-data-warehouse-manage-compute-rest-api.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md
 - name: 資源
   items:
     - name: Azure 藍圖

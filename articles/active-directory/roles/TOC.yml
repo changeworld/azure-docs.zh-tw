@@ -2,8 +2,10 @@
   href: index.yml
 - name: 概觀
   items:
-    - name: Azure AD 角色
+    - name: 什麼是 Azure AD RBAC？
       href: custom-overview.md
+    - name: 了解 Azure AD 角色
+      href: concept-understand-roles.md
 - name: 快速入門
   items:
     - name: 建立無限制的應用程式註冊
@@ -50,8 +52,6 @@
     - name: 自訂角色
       expanded: true
       items:
-        - name: 自訂角色概觀
-          href: custom-overview.md
         - name: 建立自訂角色
           href: custom-create.md
         - name: 檢視自訂角色指派

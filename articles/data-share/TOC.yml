@@ -45,7 +45,7 @@
       items:
         - name: 從 Azure 儲存體共用
           href: how-to-share-from-storage.md
-        - name: 從 Azure SQL Database 或 Synapse Analytics 共用
+        - name: 從 Azure SQL Database 或 Azure Synapse Analytics 共用
           href: how-to-share-from-sql.md
         - name: 從 Azure 資料總管共用
           href: /azure/data-explorer/data-share
