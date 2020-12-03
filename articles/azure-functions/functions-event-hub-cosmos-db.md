@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: c5510a66f48007d629d23a96d17205b489ab6a5c
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: aa9e7612a5b3b9655b0c1981fbba87645526b3a2
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95999122"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327197"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>教學課程：使用事件中樞觸發程序和 Azure Cosmos DB 輸出繫結來建立以 Java 撰寫的函式
 
@@ -61,7 +61,9 @@ ms.locfileid: "95999122"
 
 接下來，針對您將建立的資源，為其名稱和位置建立一些環境變數。 使用下列命令，並將 `<value>` 預留位置取代為您選擇的值。 所選擇的這些值應符合 [Azure 資源的命名規則和限制](/azure/architecture/best-practices/resource-naming)。 針對 `LOCATION` 變數，請使用 `az functionapp list-consumption-locations` 命令所產生的其中一個值。
 
-```azurecli-interactive
+# <a name="bash"></a>[Bash](#tab/bash)
+
+```bash
 RESOURCE_GROUP=<value>
 EVENT_HUB_NAMESPACE=<value>
 EVENT_HUB_NAME=<value>
@@ -72,6 +74,21 @@ FUNCTION_APP=<value>
 LOCATION=<value>
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+set RESOURCE_GROUP=<value>
+set EVENT_HUB_NAMESPACE=<value>
+set EVENT_HUB_NAME=<value>
+set EVENT_HUB_AUTHORIZATION_RULE=<value>
+set COSMOS_DB_ACCOUNT=<value>
+set STORAGE_ACCOUNT=<value>
+set FUNCTION_APP=<value>
+set LOCATION=<value>
+```
+
+---
+
 本教學課程的其餘部分會使用這些變數。 請注意，這些變數只會在目前 Azure CLI 或 Cloud Shell 工作階段的持續期間內存在。 如果您使用不同的本機終端機視窗，抑或是 Cloud Shell 工作階段逾時，您就必須再次執行這些命令。
 
 ### <a name="create-a-resource-group"></a>建立資源群組
@@ -80,15 +97,29 @@ Azure 會使用資源群組來收集您帳戶中的所有相關資源。 如此�
 
 請使用下列命令來建立資源群組：
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```azurecli-interactive
 az group create \
     --name $RESOURCE_GROUP \
     --location $LOCATION
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az group create ^
+    --name %RESOURCE_GROUP% ^
+    --location %LOCATION%
+```
+
+---
+
 ### <a name="create-an-event-hub"></a>建立事件中樞
 
 接下來，請使用下列命令建立 Azure 事件中樞的命名空間、事件中樞和授權規則：
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli-interactive
 az eventhubs namespace create \
@@ -107,33 +138,78 @@ az eventhubs eventhub authorization-rule create \
     --rights Listen Send
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az eventhubs namespace create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %EVENT_HUB_NAMESPACE%
+az eventhubs eventhub create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %EVENT_HUB_NAME% ^
+    --namespace-name %EVENT_HUB_NAMESPACE% ^
+    --message-retention 1
+az eventhubs eventhub authorization-rule create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %EVENT_HUB_AUTHORIZATION_RULE% ^
+    --eventhub-name %EVENT_HUB_NAME% ^
+    --namespace-name %EVENT_HUB_NAMESPACE% ^
+    --rights Listen Send
+```
+
+---
+
 事件中樞的命名空間包含實際的事件中樞和其授權規則。 授權規則可讓您的函式將訊息傳送給中樞，並接聽對應的事件。 一個函式會傳送代表遙測資料的訊息。 另一個函式則會接聽事件、分析事件資料，並將結果儲存在 Azure Cosmos DB 中。
 
 ### <a name="create-an-azure-cosmos-db"></a>建立 Azure Cosmos DB
 
 接下來，請使用下列命令建立 Azure Cosmos DB 帳戶、資料庫和集合：
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```azurecli-interactive
 az cosmosdb create \
     --resource-group $RESOURCE_GROUP \
     --name $COSMOS_DB_ACCOUNT
-az cosmosdb database create \
-    --resource-group-name $RESOURCE_GROUP \
-    --name $COSMOS_DB_ACCOUNT \
-    --db-name TelemetryDb
-az cosmosdb collection create \
-    --resource-group-name $RESOURCE_GROUP \
-    --name $COSMOS_DB_ACCOUNT \
-    --collection-name TelemetryInfo \
-    --db-name TelemetryDb \
+az cosmosdb sql database create \
+    --resource-group $RESOURCE_GROUP \
+    --account-name $COSMOS_DB_ACCOUNT \
+    --name TelemetryDb
+az cosmosdb sql container create \
+    --resource-group $RESOURCE_GROUP \
+    --account-name $COSMOS_DB_ACCOUNT \
+    --database-name TelemetryDb \
+    --name TelemetryInfo \
     --partition-key-path '/temperatureStatus'
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az cosmosdb create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %COSMOS_DB_ACCOUNT%
+az cosmosdb sql database create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --account-name %COSMOS_DB_ACCOUNT% ^
+    --name TelemetryDb
+az cosmosdb sql container create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --account-name %COSMOS_DB_ACCOUNT% ^
+    --database-name TelemetryDb ^
+    --name TelemetryInfo ^
+    --partition-key-path "/temperatureStatus"
+```
+
+---
 
 `partition-key-path` 值會根據每個項目的 `temperatureStatus` 值來分割您的資料。 分割區索引鍵可讓 Cosmos DB 將您的資料分成可供其獨立存取的不同子集，藉以提升效能。
 
 ### <a name="create-a-storage-account-and-function-app"></a>建立儲存體帳戶和函式應用程式
 
 接下來，請建立 Azure Functions 所需的 Azure 儲存體帳戶，然後建立函式應用程式。 使用下列命令：
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli-interactive
 az storage account create \
@@ -145,8 +221,27 @@ az functionapp create \
     --name $FUNCTION_APP \
     --storage-account $STORAGE_ACCOUNT \
     --consumption-plan-location $LOCATION \
-    --runtime java
+    --runtime java \
+    --functions-version 2
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az storage account create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %STORAGE_ACCOUNT% ^
+    --sku Standard_LRS
+az functionapp create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %FUNCTION_APP% ^
+    --storage-account %STORAGE_ACCOUNT% ^
+    --consumption-plan-location %LOCATION% ^
+    --runtime java ^
+    --functions-version 2
+```
+
+---
 
 `az functionapp create` 命令在建立您的函式應用程式時，也會一併建立具有相同名稱的 Application Insights 資源。 函式應用程式則會使用名為 `APPINSIGHTS_INSTRUMENTATIONKEY` 的設定 (可供其連線至 Application Insights) 自動進行設定。 將函式部署至 Azure 之後，您就可以檢視應用程式遙測資料，如本教學課程稍後所述。
 
@@ -157,6 +252,8 @@ az functionapp create \
 ### <a name="retrieve-resource-connection-strings"></a>擷取資源的連接字串
 
 請使用下列命令來擷取儲存體、事件中樞和 Cosmos DB 的連接字串，並將這些連接字串儲存在環境變數中：
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli-interactive
 AZURE_WEB_JOBS_STORAGE=$( \
@@ -184,11 +281,40 @@ COSMOS_DB_CONNECTION_STRING=$( \
 echo $COSMOS_DB_CONNECTION_STRING
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+FOR /F "delims=" %X IN (' ^
+    az storage account show-connection-string ^
+        --name %STORAGE_ACCOUNT% ^
+        --query connectionString ^
+        --output tsv') DO SET AZURE_WEB_JOBS_STORAGE=%X
+FOR /F "delims=" %X IN (' ^
+    az eventhubs eventhub authorization-rule keys list ^
+        --resource-group %RESOURCE_GROUP% ^
+        --name %EVENT_HUB_AUTHORIZATION_RULE% ^
+        --eventhub-name %EVENT_HUB_NAME% ^
+        --namespace-name %EVENT_HUB_NAMESPACE% ^
+        --query primaryConnectionString ^
+        --output tsv') DO SET EVENT_HUB_CONNECTION_STRING=%X
+FOR /F "delims=" %X IN (' ^
+    az cosmosdb keys list ^
+        --resource-group %RESOURCE_GROUP% ^
+        --name %COSMOS_DB_ACCOUNT% ^
+        --type connection-strings ^
+        --query connectionStrings[0].connectionString ^
+        --output tsv') DO SET COSMOS_DB_CONNECTION_STRING=%X
+```
+
+---
+
 這些變數會設定為透過 Azure CLI 命令所擷取到的值。 每個命令都會使用 JMESPath 查詢，從傳回的 JSON 承載中擷取連接字串。 連接字串也會使用 `echo` 加以顯示，以便讓您確認是否已成功擷取連接字串。
 
 ### <a name="update-your-function-app-settings"></a>更新函式應用程式的設定
 
 接下來，請使用下列命令將連接字串值傳送至 Azure Functions 帳戶中的應用程式設定：
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli-interactive
 az functionapp config appsettings set \
@@ -200,6 +326,20 @@ az functionapp config appsettings set \
         CosmosDBConnectionString=$COSMOS_DB_CONNECTION_STRING
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az functionapp config appsettings set ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %FUNCTION_APP% ^
+    --settings ^
+        AzureWebJobsStorage=%AZURE_WEB_JOBS_STORAGE% ^
+        EventHubConnectionString=%EVENT_HUB_CONNECTION_STRING% ^
+        CosmosDBConnectionString=%COSMOS_DB_CONNECTION_STRING%
+```
+
+---
+
 您的 Azure 資源現已建立完成，並已設定為可正常搭配運作。
 
 ## <a name="create-and-test-your-functions"></a>建立和測試函式
@@ -208,14 +348,27 @@ az functionapp config appsettings set \
 
 如果您使用了 Cloud Shell 來建立資源，則不會在本機連線至 Azure。 在此情況下，請使用 `az login` 命令來啟動以瀏覽器為基礎的登入流程。 然後，如有必要，請使用 `az account set --subscription` 並於後面加上訂用帳戶識別碼來設定預設的訂用帳戶。 最後，請執行下列命令在本機電腦上重新建立某些環境變數。 將 `<value>` 預留位置取代為您先前使用的相同值。
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```bash
 RESOURCE_GROUP=<value>
 FUNCTION_APP=<value>
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+set RESOURCE_GROUP=<value>
+set FUNCTION_APP=<value>
+```
+
+---
+
 ### <a name="create-a-local-functions-project"></a>建立本機 Functions 專案
 
 請使用下列 Maven 命令來建立函式專案，並新增所需的相依性。
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```bash
 mvn archetype:generate --batch-mode \
@@ -227,6 +380,20 @@ mvn archetype:generate --batch-mode \
     -DartifactId=telemetry-functions
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+mvn archetype:generate --batch-mode ^
+    -DarchetypeGroupId=com.microsoft.azure ^
+    -DarchetypeArtifactId=azure-functions-archetype ^
+    -DappName=%FUNCTION_APP% ^
+    -DresourceGroup=%RESOURCE_GROUP% ^
+    -DgroupId=com.example ^
+    -DartifactId=telemetry-functions
+```
+
+---
+
 此命令會在 `telemetry-functions` 資料夾內產生數個檔案：
 
 * `pom.xml` 檔案，用來與 Maven 搭配使用
@@ -237,18 +404,39 @@ mvn archetype:generate --batch-mode \
 
 為避免編譯錯誤，您必須刪除測試檔案。 請執行下列命令以瀏覽至新的專案資料夾，並刪除測試資料夾：
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```bash
 cd telemetry-functions
 rm -r src/test
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+cd telemetry-functions
+rmdir /s /q src\test
+```
+
+---
+
 ### <a name="retrieve-your-function-app-settings-for-local-use"></a>擷取函式應用程式設定以供本機使用
 
 為了進行本機測試，函式專案會需要您稍早在本教學課程中新增至 Azure 中函式應用程式的連接字串。 請使用下列 Azure Functions Core Tools 命令，來擷取儲存在雲端中的所有函式應用程式設定，並將這些設定新增至 `local.settings.json` 檔案：
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```bash
 func azure functionapp fetch-app-settings $FUNCTION_APP
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+func azure functionapp fetch-app-settings %FUNCTION_APP%
+```
+
+---
 
 ### <a name="add-java-code"></a>新增 Java 程式碼
 
@@ -394,10 +582,21 @@ public class TelemetryItem {
 
 請使用下列 Maven 命令來建置和執行函式：
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```bash
 mvn clean package
 mvn azure-functions:run
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+mvn clean package
+mvn azure-functions:run
+```
+
+---
 
 在某些建置和啟動訊息過後，您會在每次函式執行時，看到類似下列範例的輸出：
 
@@ -412,7 +611,7 @@ mvn azure-functions:run
 [10/22/19 4:01:38 AM] Executed 'Functions.processSensorData' (Succeeded, Id=1cf0382b-0c98-4cc8-9240-ee2a2f71800d)
 ```
 
-然後，您可以移至 [Azure 入口網站](https://portal.azure.com)，並瀏覽至 Azure Cosmos DB 帳戶。 選取 [資料總管]  ，展開 [TelemetryInfo]  ，然後選取 [項目]  以便在資料抵達時進行檢視。
+然後，您可以移至 [Azure 入口網站](https://portal.azure.com)，並瀏覽至 Azure Cosmos DB 帳戶。 選取 [資料總管]，展開 [TelemetryInfo]，然後選取 [項目] 以便在資料抵達時進行檢視。
 
 ![Cosmos DB 資料總管](media/functions-event-hub-cosmos-db/data-explorer.png)
 
@@ -422,9 +621,19 @@ mvn azure-functions:run
 
 使用下列命令將專案部署至 Azure：
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```bash
 mvn azure-functions:deploy
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+mvn azure-functions:deploy
+```
+
+---
 
 您的函式現在會在 Azure 中執行，並繼續在 Azure Cosmos DB 中累積資料。 您可以在 Azure 入口網站中檢視已部署的函式應用程式，並透過已連線的 Application Insights 資源來檢視應用程式遙測資料，如下列螢幕擷取畫面所示：
 
@@ -440,9 +649,19 @@ mvn azure-functions:deploy
 
 當您完成使用本教學課程中建立的 Azure 資源時，您可以使用下列命令將其刪除：
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az group delete --name %RESOURCE_GROUP%
+```
+
+---
 
 ## <a name="next-steps"></a>後續步驟
 

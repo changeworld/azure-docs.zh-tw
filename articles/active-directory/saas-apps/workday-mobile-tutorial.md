@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: e706649957bf427cd577d7995fb9ce104c687f4b
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: ef1ca41f54a15554a04fa3edf608bb13f5fb3398
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378987"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182014"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday-mobile-application"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Workday 行動應用程式整合
 
@@ -33,13 +33,13 @@ ms.locfileid: "93378987"
 開始進行之前：
 
 * 整合 Workday 與 Azure AD。
-* 請參閱 [Azure Active Directory 單一登入 (SSO) 與 Workday 整合](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-tutorial)。
+* 請參閱 [Azure Active Directory 單一登入 (SSO) 與 Workday 整合](./workday-tutorial.md)。
 
 ## <a name="scenario-description"></a>案例描述
 
 在本教學課程中，您會使用 Workday 行動應用程式來設定及測試 Azure AD 條件式存取原則和 Intune。
 
-若要啟用單一登入 (SSO)，您可以使用 Azure AD 設定 Workday 同盟應用程式。 如需詳細資訊，請參閱 [Azure Active Directory 單一登入 (SSO) 與 Workday 整合](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-tutorial)。
+若要啟用單一登入 (SSO)，您可以使用 Azure AD 設定 Workday 同盟應用程式。 如需詳細資訊，請參閱 [Azure Active Directory 單一登入 (SSO) 與 Workday 整合](./workday-tutorial.md)。
 
 > [!NOTE] 
 > Workday 不支援 Intune 的應用程式防護原則。 您必須使用行動裝置管理來利用條件式存取功能。
@@ -182,4 +182,3 @@ Workday 應用程式不支援下列各項：
 6. 在 [平台] 下，選擇 [Android]。
 7. 在 [相關聯的應用程式] 下，選擇您新增的 Workday Android 版應用程式。
 8. 選取 [組態設定]。 在 [組態設定] 底下，選取 [輸入 JSON 資料]。
-

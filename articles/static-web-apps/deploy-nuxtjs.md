@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
-ms.openlocfilehash: bc11dd6113bbf5b07e19b83735c83e4895e4a796
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 919688a05081c6f0b717fa4a524da769f2a281fd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323590"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351617"
 ---
 # <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps-preview"></a>在 Azure 靜態 Web Apps 預覽版上部署伺服器轉譯的 Nuxt.js 網站
 
@@ -30,7 +30,7 @@ ms.locfileid: "91323590"
 您可以使用 `create-nuxt-app` 設定新的 Nuxt.js 專案。 在本教學課程中，您會藉由複製現有的存放庫來展開作業，而不使用新專案。 此存放庫經過設定，會示範如何將動態 Nuxt.js 應用程式部署為靜態網站。
 
 1. 透過範本存放庫，在您的 GitHub 帳戶下建立新的存放庫。
-1. 巡覽到 <http://github.com/staticwebdev/nuxtjs-starter/generate>
+1. 瀏覽至 [http://github.com/staticwebdev/nuxtjs-starter/generate](https://github.com/login?return_to=/staticwebdev/nuxtjs-starter/generate)
 1. 將存放庫命名為 **nuxtjs-starter**
 1. 然後，將新的存放庫複製到您的機器。 請務必將 <YOUR_GITHUB_ACCOUNT_NAME> 取代為您的帳戶名稱。
 
@@ -62,7 +62,7 @@ ms.locfileid: "91323590"
 
 當您按一下架構/程式庫時，您應該會看到關於所選項目的詳細資料頁面：
 
-:::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-details.png" alt-text="啟動 Nuxt.js 應用程式":::
+:::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-details.png" alt-text="詳細資料頁面":::
 
 ## <a name="generate-a-static-website-from-nuxtjs-build"></a>從 Nuxt.js 組建產生靜態網站
 
@@ -130,18 +130,18 @@ Azure 靜態 Web Apps 會從 GitHub 存放庫部署您的應用程式，並針�
 1. 在 [區域] 下拉式清單中，選擇離您最近您的區域。
 1. 從 [SKU] 下拉式清單中選取 [免費]。
 
-   :::image type="content" source="media/deploy-nuxtjs/create-static-web-app.png" alt-text="啟動 Nuxt.js 應用程式":::
+   :::image type="content" source="media/deploy-nuxtjs/create-static-web-app.png" alt-text="建立靜態 Web 應用程式":::
 
 ### <a name="add-a-github-repository"></a>新增 GitHub 存放庫
 
 新的靜態 Web Apps 帳戶必須能使用您的 Nuxt.js 應用程式存取存放庫，以便自動部署認可。
 
 1. 按一下 [以 GitHub 登入] 按鈕
-1. 選取您用來為 Nuxt.js 專案建立存放庫的**組織**，這可能是您的 GitHub 使用者名稱。
+1. 選取您用來為 Nuxt.js 專案建立存放庫的 **組織**，這可能是您的 GitHub 使用者名稱。
 1. 尋找並選取您先前建立的存放庫名稱。
 1. 從 [分支] 下拉式清單中選擇 [主要] 作為分支。
 
-   :::image type="content" source="media/deploy-nuxtjs/connect-github.png" alt-text="啟動 Nuxt.js 應用程式":::
+   :::image type="content" source="media/deploy-nuxtjs/connect-github.png" alt-text="連接 GitHub":::
 
 ### <a name="configure-the-build-process"></a>設定建置程序
 
@@ -149,7 +149,7 @@ Azure 靜態 Web Apps 會從 GitHub 存放庫部署您的應用程式，並針�
 
 1. 按一下 [建置] 索引標籤，以設定靜態輸出檔案夾。
 
-      :::image type="content" source="media/deploy-nuxtjs/build-tab.png" alt-text="啟動 Nuxt.js 應用程式":::
+      :::image type="content" source="media/deploy-nuxtjs/build-tab.png" alt-text="建置索引標籤":::
 
 1. 在 [應用程式成品位置] 文字方塊中輸入 **dist**。
 
@@ -178,7 +178,7 @@ https://github.com/<YOUR_GITHUB_USERNAME>/nuxtjs-starter/actions
 
 瀏覽至新部署的網站，然後按一下其中一個架構或程式庫標誌。 您會收到 404 錯誤頁面，而不是取得詳細資料頁面。
 
-:::image type="content" source="media/deploy-nuxtjs/404-in-production.png" alt-text="啟動 Nuxt.js 應用程式":::
+:::image type="content" source="media/deploy-nuxtjs/404-in-production.png" alt-text="動態路由上的 404":::
 
 其原因在於，Nuxt.js 雖然產生了靜態網站，但僅限於首頁的部分。 Nuxt.js 可為每個 `.vue` 分頁檔產生對等的靜態 `.html` 檔案，但有例外狀況。 
 
@@ -215,7 +215,7 @@ https://github.com/<YOUR_GITHUB_USERNAME>/nuxtjs-starter/actions
 
 2. 將新的變更推送至您的 GitHub 存放庫，並等候幾分鐘的時間，讓 GitHub 動作重新建置您的網站。 建置完成後，404 錯誤就會消失。
 
-   :::image type="content" source="media/deploy-nuxtjs/404-in-production-fixed.png" alt-text="啟動 Nuxt.js 應用程式":::
+   :::image type="content" source="media/deploy-nuxtjs/404-in-production-fixed.png" alt-text="動態路由上的 404 已修正":::
 
 > [!div class="nextstepaction"]
 > [設定自訂網域](custom-domain.md)

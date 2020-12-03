@@ -1,5 +1,5 @@
 ---
-title: Azure 資訊安全中心內所有 Azure Defender 警示的參考資料表
+title: Azure 資訊安全中心內所有安全性警示的參考資料表
 description: 本文列出 Azure 資訊安全中心的 Azure Defender 儀表板中可見的安全性警示。
 services: security-center
 documentationcenter: na
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6d001e638b00cace1dd81d9631f498a911ca19a4
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: c5ee275fb92ff2c3787bef7868665c19fea2109c
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96014596"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436771"
 ---
 # <a name="security-alerts---a-reference-guide"></a>安全性警示 - 參考指南
 
-本文列出您可能會從 Azure Defender 收到的安全性警示。 在您的環境中顯示的警示，取決於您要保護的資源和服務，以及自訂設定。
+本文列出可能會從 Azure 資訊安全中心取得的安全性警示，以及已啟用的任何 Azure Defender 方案。 在您的環境中顯示的警示，取決於您要保護的資源和服務，以及自訂設定。
 
 若要了解如何回應這些警示，請參閱[管理與回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md)。
 
@@ -395,7 +395,7 @@ ms.locfileid: "96014596"
 
 [進一步的詳細資料和注意事項](defender-for-key-vault-introduction.md)
 
-| 警示 (警示類型)                                                               | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Intent<br>([深入了解](#intentions)) | Severity |
+| 警示 (警示類型)                                                               | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Intent<br>([深入了解](#intentions)) | 嚴重性 |
 |----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------:|----------|
 | **從 TOR 結束節點存取金鑰保存庫**<br>KV_TORAccess                   | 已從已知的 TOR 結束節點存取金鑰保存庫。 這可能表示威脅執行者已存取金鑰保存庫，並使用 TOR 網路來隱藏其來源位置。 我們建議您進一步調查。                                                                                                                                                                                                                                                                                                                           | CredentialAccess                      | 中   |
 | **金鑰保存庫中的大量作業**<br>KV_OperationVolumeAnomaly        | 使用者、服務主體和/或特定金鑰保存庫執行的金鑰保存庫作業異常數目。 此異常活動模式可能是合法的，但可能表示威脅執行者已取得金鑰保存庫的存取權，以及其中包含的祕密。 我們建議您進一步調查。                                                                                                                                                                                                                         | CredentialAccess                      | 中   |

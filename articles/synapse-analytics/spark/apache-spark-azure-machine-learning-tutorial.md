@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: e6708874fee3e15349b4389f1ecafa3d48a628dd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2fbc74304cdb71d9cb3e1ea476af8c92eb99b7e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95917165"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458831"
 ---
 # <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>教學課程：使用 Azure 自動化 ML 和 Apache Spark 執行實驗
 
@@ -72,7 +72,7 @@ df = spark.read.parquet(wasbs_path)
 
 ```
 
-3. 根據您的 Spark 集區 (預覽) 大小，未經處理資料可能太大，或花費太多時間來操作。 您可以使用 ```start_date``` 和 ```end_date``` 篩選，將此資料篩選為較小的範圍。 套用的篩選器會傳回一個月份的資料。 篩選資料框架後，我們將在新的資料架構上執行 ```describe()``` 函式，以查看每個欄位的摘要統計資料。 
+3. 根據您的 Spark 集區大小，未經處理資料可能太大，或花費太多時間來操作。 您可以使用 ```start_date``` 和 ```end_date``` 篩選，將此資料篩選為較小的範圍。 套用的篩選器會傳回一個月份的資料。 篩選資料框架後，我們將在新的資料架構上執行 ```describe()``` 函式，以查看每個欄位的摘要統計資料。 
 
    根據摘要統計資料，我們可以看到資料中有一些異常的和極端值。 例如，統計資料顯示最短車程距離小於 0。 我們必須篩選掉這些異常的資料點。
    

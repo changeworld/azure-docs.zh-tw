@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
-ms.openlocfilehash: 20a3337ab054ca1feefc2f5f08f8e6398417fb9e
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 6f96b74726684d37795c94be74e48611b4145402
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441608"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350206"
 ---
 # <a name="deploy-static-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Azure Static Web Apps 預覽版上部署靜態轉譯的 Next.js 網站
 
@@ -29,9 +29,9 @@ ms.locfileid: "94441608"
 
 您可以使用包含現有的 Next.js 應用程式的入門存放庫，而不使用 Next.js CLI 來建立應用程式。 此存放庫包含具有動態路由的 Next.js 應用程式，可凸顯常見的部署問題。 動態路由需要額外的部署設定，您稍後將會進一步了解。
 
-首先，請透過範本存放庫，在您的 GitHub 帳戶下建立新的存放庫。 
+首先，請透過範本存放庫，在您的 GitHub 帳戶下建立新的存放庫。
 
-1. 巡覽到 <http://github.com/staticwebdev/nextjs-starter/generate>
+1. 瀏覽至 [https://github.com/staticwebdev/nextjs-starter/generate](https://github.com/login?return_to=/staticwebdev/nextjs-starter/generate)
 1. 將存放庫命名為 **nextjs-starter**
 1. 然後，將新的存放庫複製到您的機器。 請務必將 `<YOUR_GITHUB_ACCOUNT_NAME>` 取代為您的帳戶名稱。
 

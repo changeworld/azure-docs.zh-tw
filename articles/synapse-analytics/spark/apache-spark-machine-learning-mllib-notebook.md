@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 595b3a57594401df6b61db1fcf8ee16be98ef364
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 50429696c4cbe10c4723f6d4bb9c9499d9b775c5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95900411"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450412"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>教學課程：使用 Apache Spark MLlib 和 Azure Synapse Analytics 來建置機器學習應用程式
 
@@ -71,7 +71,7 @@ SparkML 和 MLlib 是核心 Spark 程式庫，提供許多可用於機器學習�
 
 因為未經處理資料採用 Parquet 格式，所以您可以使用 Spark 內容，直接將檔案當作資料框架提取至記憶體中。 雖然下列程式碼使用預設選項，但是您可以視需要強制對應資料類型和其他結構描述屬性。
 
-1. 執行下列幾行，將程式碼貼至新的儲存格來建立 Spark 資料框架。 這會透過開放資料集 API 來擷取資料。 提取所有資料會產生大約 15 億個資料列。 根據您的無伺服器 Apache Spark 集區 (預覽) 大小，未經處理資料可能太大，或花費太多時間來操作。 您可以將此資料篩選成較小的項目。 下列程式碼範例會使用 start_date 和 end_date 來套用篩選器，以傳回單一月份的資料。
+1. 執行下列幾行，將程式碼貼至新的儲存格來建立 Spark 資料框架。 這會透過開放資料集 API 來擷取資料。 提取所有資料會產生大約 15 億個資料列。 根據您的無伺服器 Apache Spark 集區大小，未經處理資料可能太大，或花費太多時間來操作。 您可以將此資料篩選成較小的項目。 下列程式碼範例會使用 start_date 和 end_date 來套用篩選器，以傳回單一月份的資料。
 
     ```python
     from azureml.opendatasets import NycTlcYellow
