@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何將應用程式安裝到�
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 0b35bd02af5e1c90cac2e94d31dfca2344f3cc85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae946321b34f12c816a717db4a3d07f57feefe52
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840620"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485355"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>教學課程：將應用程式部署在 Service Fabric 獨立叢集上
 
@@ -27,7 +27,7 @@ Service Fabric 獨立叢集讓您能夠選擇自己的環境，並且在 Service
 
 開始進行本教學課程之前：
 
-* [安裝 Visual Studio 2019](https://www.visualstudio.com/)，並安裝 **Azure 開發**以及 **ASP.NET 和 Web 開發**工作負載。
+* [安裝 Visual Studio 2019](https://www.visualstudio.com/)，並安裝 **Azure 開發** 以及 **ASP.NET 和 Web 開發** 工作負載。
 * [安裝 Service Fabric SDK](service-fabric-get-started.md)
 
 ## <a name="download-the-voting-sample-application"></a>下載投票應用程式範例
@@ -50,7 +50,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 4. 以滑鼠右鍵按一下 [方案總管] 中的 `Voting` 應用程式專案，然後選擇 [發佈]  。
 
-5. 選取 [連線端點]  的下拉式清單，並輸入叢集中一個節點的公開 DNS 名稱。  例如： `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000` 。 Azure 中不會自動指定完整網域名稱 (FQDN)，但是可以輕易地[在 VM 概觀頁面上設定](../virtual-machines/linux/portal-create-fqdn.md)。
+5. 選取 [連線端點]  的下拉式清單，並輸入叢集中一個節點的公開 DNS 名稱。  例如： `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000` 。 Azure 中不會自動指定完整網域名稱 (FQDN)，但是可以輕易地[在 VM 概觀頁面上設定](../virtual-machines/create-fqdn.md)。
 
 6. 開啟您偏好的瀏覽器，並輸入叢集位址 (連線端點，此應用程式部署於連接埠 8080 - 例如 ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080)。
 

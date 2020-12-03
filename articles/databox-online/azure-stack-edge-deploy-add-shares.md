@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: aeb5bceca11f595c1582596aeea401fe5f9b239f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64fe65019a66013323b1c6d27055051badb47cee
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883471"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350308"
 ---
 # <a name="tutorial-transfer-data-with-azure-stack-edge-pro"></a>教學課程：使用 Azure Stack Edge Pro 傳輸資料
 
@@ -62,7 +62,7 @@ ms.locfileid: "90883471"
     c. 提供共用所在的儲存體帳戶。 
 
     > [!IMPORTANT]
-    > 如果您將 Azure 儲存體帳戶與 Azure Stack Edge Pro 或資料箱閘道裝置搭配使用，請確定您所使用的 Azure 儲存體帳戶並未設定了不變性原則。 如需詳細資訊，請參閱[設定和管理 Blob 儲存體的不變性原則](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
+    > 如果您將 Azure 儲存體帳戶與 Azure Stack Edge Pro 或資料箱閘道裝置搭配使用，請確定您所使用的 Azure 儲存體帳戶並未設定了不變性原則。 如需詳細資訊，請參閱[設定和管理 Blob 儲存體的不變性原則](../storage/blobs/storage-blob-immutability-policies-manage.md)。
     
     d. 在 [儲存體服務]  下拉式清單中，選取 [區塊 Blob]  、[分頁 Blob]  或 [檔案]  。  
     您選取的服務類型，取決於您想要讓資料在 Azure 中使用的格式。 在此範例中，我們想要將資料以區塊 Blob 的形式儲存在 Azure 中，因此我們選取 [區塊 Blob]  。 如果您選取 [分頁 Blob]  ，請確定您的資料是 512 位元組規格。 例如，VHDX 一律是 512 位元組規格。
@@ -162,5 +162,3 @@ ms.locfileid: "90883471"
 
 > [!div class="nextstepaction"]
 > [使用 Azure Stack Edge Pro 轉換資料](./azure-stack-edge-deploy-configure-compute.md)
-
-

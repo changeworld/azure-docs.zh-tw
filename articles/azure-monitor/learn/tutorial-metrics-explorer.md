@@ -6,12 +6,12 @@ ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 26b155484dafac4a63fe2a6c7ff292ee8bbacbc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ce9183fad50c43ea7070f5fa09e0d445caf89df
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317203"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451251"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>教學課程：在 Azure 監視器中建立計量圖表
 計量瀏覽器是 Azure 入口網站中 Azure 監視器的功能之一，可讓您從計量值建立圖表、以視覺化方式將趨勢相互關聯，以及調查計量值的遽增和滑落。 使用計量瀏覽器可調查 Azure 資源的健康情況和使用量，或是從自訂計量繪製圖表。 
@@ -44,13 +44,13 @@ ms.locfileid: "91317203"
 
     ![選取範圍](media/tutorial-metrics-explorer/scope-picker.png)
 
-2. 如果範圍有多個**命名空間**，請加以選取。 命名空間只是組織計量而讓您可以輕鬆找到計量的一種方式。 例如，儲存體帳戶有個別的命名空間，用來儲存檔案、資料表、Blob 和佇列計量。 許多資源類型只有一個命名空間。
+2. 如果範圍有多個 **命名空間**，請加以選取。 命名空間只是組織計量而讓您可以輕鬆找到計量的一種方式。 例如，儲存體帳戶有個別的命名空間，用來儲存檔案、資料表、Blob 和佇列計量。 許多資源類型只有一個命名空間。
 
 3. 從所選範圍和命名空間的可用計量清單中選取計量。
 
     ![選取計量](media/tutorial-metrics-explorer/metric-picker.png)
 
-4. 選擇性地變更計量**彙總**。 這會定義如何依據圖形的時間細微性來彙總計量值。 例如，如果時間細微性設定為 15 分鐘，而彙總設定為總和，則圖形中的每個點將是每個 15 分鐘的區段所收集到的所有值之總和。
+4. 選擇性地變更計量 **彙總**。 這會定義如何依據圖形的時間細微性來彙總計量值。 例如，如果時間細微性設定為 15 分鐘，而彙總設定為總和，則圖形中的每個點將是每個 15 分鐘的區段所收集到的所有值之總和。
 
     ![顯示 contosoretailweb 圖表 (標題為「總計輸入」) 的螢幕擷取畫面。](media/tutorial-metrics-explorer/chart.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "91317203"
 ## <a name="apply-dimension-filters-and-splitting"></a>套用維度篩選和分割
 請參閱下列適用於進階功能的參考，以利對計量執行額外的分析，並找出資料中可能的極端值。
 
-- [篩選](../platform/metrics-charts.md#apply-filters-to-charts)可讓您選擇要包含在圖表中的維度值。 例如，在繪製*伺服器回應時間*計量的圖表時，您可以僅顯示成功的要求。 
+- [篩選](../platform/metrics-charts.md#apply-filters-to-charts)可讓您選擇要包含在圖表中的維度值。 例如，在繪製 *伺服器回應時間* 計量的圖表時，您可以僅顯示成功的要求。 
 
 - [分割](../platform/metrics-charts.md#apply-splitting-to-a-chart)可控制圖表是要針對維度的每個值顯示個別的線條，還是將值彙總成單一線條。 例如，您可以將所有伺服器執行個體的平均回應時間顯示為單一線條，或是讓每個伺服器有各自的線條。 
 
@@ -85,5 +85,5 @@ ms.locfileid: "91317203"
 現在您已了解如何在 Azure 監視器中使用計量，接下來請了解如何使用計量來傳送主動式警示。
 
 > [!div class="nextstepaction"]
-> [使用 Azure 監視器建立、檢視及管理計量警示](../platform/alerts-metric.md)
+> [使用 Azure 監視器建立、檢視及管理計量警示](../platform/metrics-charts.md#create-alert-rules)
 

@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 自訂視覺來建置可偵測玩具卡車
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 685aab603b2589a97b4c80ef0f8c5860617f1147
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b4d9f82d99542bde216f0eaa1459d0f6c1a52659
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358199"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498331"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>教學課程：使用 IoT Edge 上的即時影片分析和 Azure 自訂視覺來分析即時影片
 
@@ -62,7 +62,7 @@ ms.locfileid: "94358199"
 ## <a name="review-the-sample-video"></a>檢閱範例影片
 
 
-本教學課程使用[玩具車推斷影片](https://lvamedia.blob.core.windows.net/public/t2.mkv)檔案來模擬即時串流。 您可以透過 [VLC 媒體播放器](https://www.videolan.org/vlc/)之類的應用程式來檢查影片。 選取 **Ctrl+N** ，然後貼上 [玩具車推斷影片](https://lvamedia.blob.core.windows.net/public/t2.mkv)的連結以開始播放。 在觀看影片時請注意，在 36 秒的標記處，玩具卡車會出現在影片中。 自訂模型已完成定型而可偵測到此特定玩具卡車。 在本教學課程中，您將在 IoT Edge 上使用即時影片分析來偵測這類玩具卡車，並將相關聯的推斷事件發佈到 IoT Edge 中樞。
+本教學課程使用[玩具車推斷影片](https://lvamedia.blob.core.windows.net/public/t2.mkv)檔案來模擬即時串流。 您可以透過 [VLC 媒體播放器](https://www.videolan.org/vlc/)之類的應用程式來檢查影片。 選取 **Ctrl+N**，然後貼上 [玩具車推斷影片](https://lvamedia.blob.core.windows.net/public/t2.mkv)的連結以開始播放。 在觀看影片時請注意，在 36 秒的標記處，玩具卡車會出現在影片中。 自訂模型已完成定型而可偵測到此特定玩具卡車。 在本教學課程中，您將在 IoT Edge 上使用即時影片分析來偵測這類玩具卡車，並將相關聯的推斷事件發佈到 IoT Edge 中樞。
 
 ## <a name="overview"></a>概觀
 
@@ -194,12 +194,12 @@ HTTP 延伸模組節點扮演 Proxy 的角色。 其會將影片畫面轉換成�
 
 如果您在瀏覽器中開啟本教學課程的圖表拓撲，您會看到 `inferencingUrl` 的值已設定為 `http://cv:80/image`。 這項設定表示在即時影片中偵測到玩具卡車 (如果有的話) 之後，推斷伺服器會傳回結果。
 
-1. 在 Visual Studio Code 中，開啟 [延伸模組] 索引標籤 (或選取 **Ctrl+Shift+X** ) 並搜尋 Azure IoT 中樞。
+1. 在 Visual Studio Code 中，開啟 [延伸模組] 索引標籤 (或選取 **Ctrl+Shift+X**) 並搜尋 Azure IoT 中樞。
 1. 按一下滑鼠右鍵，然後選取 [延伸模組設定]。
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="顯示延伸模組設定的螢幕擷取畫面。":::
-1. 搜尋並啟用「 **顯示詳細資訊訊息** 」。
+1. 搜尋並啟用「**顯示詳細資訊訊息**」。
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="顯示 [顯示詳細資訊訊息] 的螢幕擷取畫面。":::
@@ -391,6 +391,6 @@ HTTP 擴充功能處理器節點會接收來自自訂視覺容器的推斷結果
 檢閱進階使用者的其他挑戰：
 
 * 使用具有 RTSP 支援的 [IP 攝影機](https://en.wikipedia.org/wiki/IP_camera)，而非使用 RTSP 模擬器。 您可以在[符合 ONVIF 標準的](https://www.onvif.org/conformant-products/)產品頁面上，搜尋支援 RTSP 的 IP 攝影機。 尋找符合設定檔 G、S 或 T 的裝置。
-* 使用 AMD64 或 x64 Linux 裝置 (而非使用 Azure Linux VM)。 此裝置必須與 IP 攝影機位於相同的網路中。 您可以遵循[在 Linux 上安裝 Azure IoT Edge 執行階段](../../iot-edge/how-to-install-iot-edge-linux.md)中的指示。
+* 使用 AMD64 或 x64 Linux 裝置 (而非使用 Azure Linux VM)。 此裝置必須與 IP 攝影機位於相同的網路中。 您可以遵循[在 Linux 上安裝 Azure IoT Edge 執行階段](../../iot-edge/how-to-install-iot-edge.md)中的指示。
 
 然後遵循[將您的第一個 IoT Edge 模組部署至虛擬 Linux 裝置](../../iot-edge/quickstart-linux.md)中的指示，向 Azure IoT 中樞註冊裝置。

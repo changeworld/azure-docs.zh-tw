@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 46c5271c8ded970442d1ae4022573473997d98af
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: cdfd012d5015e156439a1afa89e818bf82b64dc6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426984"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449328"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>教學課程：準備部署 Azure Stack Edge Pro 搭配 GPU 
 
@@ -66,7 +66,7 @@ ms.locfileid: "92426984"
 
 在您開始前，請確定：
 
-- 已針對 Azure Stack Edge 資源啟用您的 Microsoft Azure 訂用帳戶。 確定您所使用的是受支援的訂用帳戶，例如 [Microsoft Enterprise 合約 (EA)](https://azure.microsoft.com/overview/sales-number/)、[雲端方案提供者 (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp) 或 [Microsoft Azure 贊助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支援隨用隨付訂用帳戶。 若要識別您擁有的 Azure 訂用帳戶類型，請參閱[什麼是 Azure 供應項目？](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer)。
+- 已針對 Azure Stack Edge 資源啟用您的 Microsoft Azure 訂用帳戶。 確定您所使用的是受支援的訂用帳戶，例如 [Microsoft Enterprise 合約 (EA)](https://azure.microsoft.com/overview/sales-number/)、[雲端方案提供者 (CSP)](/partner-center/azure-plan-lp) 或 [Microsoft Azure 贊助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支援隨用隨付訂用帳戶。 若要識別您擁有的 Azure 訂用帳戶類型，請參閱[什麼是 Azure 供應項目？](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer)。
 - 您在 Azure Stack Edge Pro/資料箱閘道、IoT 中樞及 Azure 儲存體資源的資源群組層級上，具有擁有者或參與者存取權限。
 
     - 若要建立任何 Azure Stack Edge/ 資料箱閘道資源，您應該要有以資源群組層級作為範圍的參與者權限 (或更高權限)。 
@@ -74,7 +74,7 @@ ms.locfileid: "92426984"
         - 若要註冊資源提供者，請在 Azure 入口網站中移至 [首頁] > [訂用帳戶] > [您的訂用帳戶] > [資源提供者]。 
         - 搜尋特定的資源提供者，例如 `Microsoft.DataBoxEdge`，然後註冊資源提供者。 
     - 同樣的，若要建立儲存體帳戶資源，您需要以資源群組層級作為範圍的參與者存取權限 (或更高權限)。 根據預設，Azure 儲存體是已註冊的資源提供者。
-- 您具有 Azure Active Directory 圖形 API 的管理員或使用者存取權，可產生啟用金鑰或認證作業，例如使用儲存體帳戶的共用建立作業。 如需詳細資訊，請參閱 [Azure Active Directory 圖形 API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
+- 您具有 Azure Active Directory 圖形 API 的管理員或使用者存取權，可產生啟用金鑰或認證作業，例如使用儲存體帳戶的共用建立作業。 如需詳細資訊，請參閱 [Azure Active Directory 圖形 API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
 
 
 ### <a name="for-the-azure-stack-edge-pro-device"></a>針對 Azure Stack Edge Pro 裝置
@@ -126,7 +126,7 @@ ms.locfileid: "92426984"
     |設定  |值  |
     |---------|---------|
     |訂用帳戶    |這會根據您稍早的選取項目自動填入。 訂用帳戶會連結到您的帳單帳戶。 |
-    |資源群組  |選取現有的群組或建立新的群組。<br>深入了解 [Azure 資源群組](../azure-resource-manager/resource-group-overview.md)。     |
+    |資源群組  |選取現有的群組或建立新的群組。<br>深入了解 [Azure 資源群組](../azure-resource-manager/management/overview.md)。     |
 
 7. 輸入或選取下列 [執行個體詳細資料]  。
 
@@ -207,6 +207,3 @@ ms.locfileid: "92426984"
 
 > [!div class="nextstepaction"]
 > [安裝 Azure Stack Edge Pro](./azure-stack-edge-gpu-deploy-install.md)
-
-
-

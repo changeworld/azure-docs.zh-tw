@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: db77df29d1b9b0adf07c7da377c028dee5312617
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 28b34ecaf51406b35c67d3838714691390f5adf7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579193"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453056"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>教學課程：建立 IoT Edge 裝置的階層架構 (預覽)
 
@@ -50,10 +50,10 @@ ms.locfileid: "94579193"
 若要建立 IoT Edge 裝置的階層架構，您需要：
 
 * 具有網際網路連線能力的電腦 (Windows 或 Linux)。
-* 兩部要設定為 IoT Edge 裝置的 Linux 裝置。 如果您沒有可用的裝置，可以使用 [Azure 虛擬機器](https://docs.microsoft.com/azure/virtual-machines/linux/)。
-* 具有有效訂用帳戶的 Azure 帳戶。 如果您沒有 [Azure 訂用帳戶](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+* 兩部要設定為 IoT Edge 裝置的 Linux 裝置。 如果您沒有可用的裝置，可以使用 [Azure 虛擬機器](../virtual-machines/linux/index.yml)。
+* 具有有效訂用帳戶的 Azure 帳戶。 如果您沒有 [Azure 訂用帳戶](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 * 在 Azure 中擁有免費或標準層的 [IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)。
-* 已安裝 Azure IoT 擴充功能 v0.10.6 或更新版本的 Azure CLI v2.3.1。 本教學課程會使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。 如果您不熟悉 Azure Cloud Shell，請[參閱快速入門以取得詳細資料](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#use-azure-cloud-shell)。
+* 已安裝 Azure IoT 擴充功能 v0.10.6 或更新版本的 Azure CLI v2.3.1。 本教學課程會使用 [Azure Cloud Shell](../cloud-shell/overview.md)。 如果您不熟悉 Azure Cloud Shell，請[參閱快速入門以取得詳細資料](./quickstart-linux.md#use-azure-cloud-shell)。
 
 您也可以遵循經指令碼編寫的[適用於工業 IoT 的 Azure IoT Edge 範例](https://aka.ms/iotedge-nested-sample)試用此案例，其會將 Azure 虛擬機器部署為預先設定的裝置，以模擬工廠環境。
 
@@ -188,8 +188,8 @@ ms.locfileid: "94579193"
 1. 安裝 hsmlib 和 IoT Edge 精靈 <!-- Update with proper image links on release -->
 
    ```bash
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/libiothsm-std_1.2.0.rc1-1-1_debian9_amd64.deb -o libiothsm-std.deb
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/iotedge_1.2.0_rc1-1_debian9_amd64.deb -o iotedge.deb
+   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc2/libiothsm-std_1.2.0.rc2-1-1_debian9_amd64.deb -o libiothsm-std.deb
+   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc2/iotedge_1.2.0_rc2-1_debian9_amd64.deb -o iotedge.deb
    sudo dpkg -i ./libiothsm-std.deb
    sudo dpkg -i ./iotedge.deb
    ```
@@ -261,7 +261,7 @@ ms.locfileid: "94579193"
      type: "docker"
      env: {}
      config:
-       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1"
+       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2"
        auth: {}
    ```
 
@@ -273,7 +273,7 @@ ms.locfileid: "94579193"
      type: "docker"
      env: {}
      config:
-       image: "<parent_device_fqdn_or_ip>:8000/azureiotedge-agent:1.2.0-rc1"
+       image: "<parent_device_fqdn_or_ip>:8000/azureiotedge-agent:1.2.0-rc2"
        auth: {}
    ```
 
@@ -305,7 +305,7 @@ ms.locfileid: "94579193"
 
 1. 選取齒輪圖示旁邊的 [執行階段設定]。
 
-1. 在 **Edge 中樞** 下的映像欄位中，輸入 `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1`。
+1. 在 **Edge 中樞** 下的映像欄位中，輸入 `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2`。
 
    ![編輯 Edge 中樞的映像](./media/tutorial-nested-iot-edge/edge-hub-image.png)
 
@@ -318,7 +318,7 @@ ms.locfileid: "94579193"
 
    ![編輯 Edge 中樞的環境變數](./media/tutorial-nested-iot-edge/edge-hub-environment-variables.png)
 
-1. 在 **Edge 代理程式** 下的映像欄位中，輸入 `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1`。 選取 [儲存]。
+1. 在 **Edge 代理程式** 下的映像欄位中，輸入 `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2`。 選取 [儲存]。
 
 1. 將 Docker 登錄模組新增至您的最上層裝置。 選取 [+ 新增]，然後從下拉式清單中選擇 [IoT Edge 模組]。 提供 Docker 登錄模組 `registry` 名稱 ，並輸入映像 URI `registry:latest`。 接下來，新增環境變數並建立選項，以指向 Microsoft 容器登錄上的本機登錄模組，以便下載容器映像，並在 registry:5000 提供這些映像。
 
@@ -412,14 +412,14 @@ ms.locfileid: "94579193"
                    "systemModules": {
                        "edgeAgent": {
                            "settings": {
-                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1",
+                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2",
                                "createOptions": ""
                            },
                            "type": "docker"
                        },
                        "edgeHub": {
                            "settings": {
-                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1",
+                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2",
                                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
                            },
                            "type": "docker",
@@ -478,7 +478,7 @@ ms.locfileid: "94579193"
 
 1. 選取齒輪圖示旁邊的 [執行階段設定]。
 
-1. 在 **Edge 中樞** 下的映像欄位中，輸入 `$upstream:8000/azureiotedge-hub:1.2.0-rc1`。
+1. 在 **Edge 中樞** 下的映像欄位中，輸入 `$upstream:8000/azureiotedge-hub:1.2.0-rc2`。
 
 1. 將下列環境變數新增至 Edge 中樞模組：
 
@@ -487,7 +487,7 @@ ms.locfileid: "94579193"
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. 在 **Edge 代理程式** 下的映像欄位中，輸入 `$upstream:8000/azureiotedge-agent:1.2.0-rc1`。 選取 [儲存]。
+1. 在 **Edge 代理程式** 下的映像欄位中，輸入 `$upstream:8000/azureiotedge-agent:1.2.0-rc2`。 選取 [儲存]。
 
 1. 新增溫度感應器模組。 選取 [+ 新增]，然後從下拉式清單中選擇 [Marketplace 模組]。 搜尋 `Simulated Temperature Sensor` 並選取該模組。
 
@@ -534,14 +534,14 @@ ms.locfileid: "94579193"
                    "systemModules": {
                        "edgeAgent": {
                            "settings": {
-                               "image": "$upstream:8000/azureiotedge-agent:1.2.0-rc1",
+                               "image": "$upstream:8000/azureiotedge-agent:1.2.0-rc2",
                                "createOptions": ""
                            },
                            "type": "docker"
                        },
                        "edgeHub": {
                            "settings": {
-                               "image": "$upstream:8000/azureiotedge-hub:1.2.0-rc1",
+                               "image": "$upstream:8000/azureiotedge-hub:1.2.0-rc2",
                                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
                            },
                            "type": "docker",

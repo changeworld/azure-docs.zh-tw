@@ -3,12 +3,12 @@ title: 將連續影片錄製到雲端並從雲端播放的教學課程 - Azure
 description: 在本教學課程中，您將了解如何在Azure IoT Edge 上使用 Azure Live Video Analytics，以持續將影片錄製到雲端，並使用 Azure 媒體服務串流該影片的任何部分。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 7e8bf1202e95cb4e76b54473f9d84076d24accea
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: c38ab1f32d1ef4e54cd8568ff17d325fabdefc31
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346361"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498365"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>教學課程：將連續影片錄製移到雲端並從雲端播放
 
@@ -49,7 +49,7 @@ ms.locfileid: "93346361"
 * Azure IoT 中樞
 * Azure 儲存體帳戶
 * Azure 媒體服務帳戶
-* Azure 中的 Linux VM，已安裝 [IoT Edge 執行階段](../../iot-edge/how-to-install-iot-edge-linux.md)
+* Azure 中的 Linux VM，已安裝 [IoT Edge 執行階段](../../iot-edge/how-to-install-iot-edge.md)
 
 ## <a name="concepts"></a>概念
 
@@ -385,4 +385,4 @@ body 區段包含有關輸出位置的資訊，在此案例中，是用來錄製
 ## <a name="next-steps"></a>後續步驟
 
 * 使用具有 RTSP 支援的 [IP 攝影機](https://en.wikipedia.org/wiki/IP_camera)，而非使用 RTSP 模擬器。 您可以藉由在[符合 ONVIF 標準產品頁面](https://www.onvif.org/conformant-products/)上尋找符合設定檔 G、S 或 T 的裝置，以搜尋具有 RTSP 支援的 IP 攝影機。
-* 使用 AMD64 或 X64 Linux 裝置 (相較於使用 Azure Linux VM)。 此裝置必須與 IP 攝影機位於相同的網路中。 遵循[在 Linux 上安裝 Azure IoT Edge 執行階段](../../iot-edge/how-to-install-iot-edge-linux.md)中的指示。 然後按照[將您的第一個 IoT Edge 模組部署至虛擬 Linux 裝置](../../iot-edge/quickstart-linux.md)快速入門中的指示操作，向 Azure IoT 中樞註冊裝置。
+* 使用 AMD64 或 X64 Linux 裝置 (相較於使用 Azure Linux VM)。 此裝置必須與 IP 攝影機位於相同的網路中。 遵循[在 Linux 上安裝 Azure IoT Edge 執行階段](../../iot-edge/how-to-install-iot-edge.md)中的指示。 然後按照[將您的第一個 IoT Edge 模組部署至虛擬 Linux 裝置](../../iot-edge/quickstart-linux.md)快速入門中的指示操作，向 Azure IoT 中樞註冊裝置。

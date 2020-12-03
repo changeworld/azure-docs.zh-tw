@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: 97795b2a693b68d1bd73a00f7b3e5ee3d4679545
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: eefef0eb61df9aa0597206b537f3d58e8b8b3213
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522119"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484816"
 ---
 # <a name="tutorial-connect-to-a-storage-account-using-an-azure-private-endpoint"></a>教學課程：使用 Azure 私人端點連線至儲存體帳戶
 
@@ -222,7 +222,7 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
 
     會針對儲存體帳戶名稱傳回 **10.1.0.5** 的私人 IP 位址。  此位址位於您先前所建立虛擬網路的子網路中。
 
-9. 在虛擬機器上安裝 [Microsoft Azure 儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%252fazure%252fstorage%252fblobs%252ftoc.json)。
+9. 在虛擬機器上安裝 [Microsoft Azure 儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 10. 在安裝 [Microsoft Azure 儲存體總管] 之後，選取 [完成]。  保持方塊核取狀態以開啟應用程式。
 

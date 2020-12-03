@@ -3,20 +3,20 @@ title: 建置您的第一個資料處理站 (Resource Manager 範本)
 description: 在本教學課程中，您會使用 Azure Resource Manager 範本來建立範例 Azure Data Factory 管線。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 414271c269e72b942195d541a6192911e1ea0217
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce8710cb8f1cf49752f95340d931ddd79d43ec35
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566443"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496376"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>教學課程：使用 Azure Resource Manager 範本建置您的第一個 Azure Data Factory
 > [!div class="op_single_selector"]
@@ -341,7 +341,7 @@ ms.locfileid: "91566443"
 4. 在 [圖表檢視] 中，您會看到管線的概觀，以及在本教學課程中使用的資料集。
    
    ![圖表檢視](./media/data-factory-build-your-first-pipeline-using-arm/DiagramView.png) 
-5. 在 [圖表檢視] 中，按兩下 **AzureBlobOutput**資料集。 您會看到目前正在處理的配量。
+5. 在 [圖表檢視] 中，按兩下 **AzureBlobOutput** 資料集。 您會看到目前正在處理的配量。
    
     ![顯示 AzureBlobOutput 資料集的螢幕擷取畫面。](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
 6. 處理完成時，您會看到配量處於 [就緒]  狀態。 建立隨選 HDInsight 叢集通常需要一些時間 (大約 20 分鐘)。 因此，管線預計需要 **大約 30 分鐘** 的時間來處理配量。
@@ -435,11 +435,11 @@ dataFactoryName 定義為：
 
 請注意下列幾點： 
 
-* Data Factory 會使用上述 JSON，為您建立**以 Linux 為基礎的** HDInsight 叢集。 如需詳細資訊，請參閱 [HDInsight 隨選連結服務](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) 。 
+* Data Factory 會使用上述 JSON，為您建立 **以 Linux 為基礎的** HDInsight 叢集。 如需詳細資訊，請參閱 [HDInsight 隨選連結服務](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) 。 
 * 您可以使用 **自己的 HDInsight 叢集** ，不必使用隨選的 HDInsight 叢集。 如需詳細資訊，請參閱 [HDInsight 連結服務](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) 。
-* HDInsight 叢集會在您於 JSON 中指定的 Blob 儲存體 (**linkedServiceName**) 建立**預設容器**。 HDInsight 不會在刪除叢集時刪除此容器。 這是設計的行為。 在使用 HDInsight 隨選連結服務時，除非有現有的即時叢集 (**timeToLive**)，否則每當需要處理配量時，就會建立 HDInsight 叢集，並在處理完成時予以刪除。
+* HDInsight 叢集會在您於 JSON 中指定的 Blob 儲存體 (**linkedServiceName**) 建立 **預設容器**。 HDInsight 不會在刪除叢集時刪除此容器。 這是設計的行為。 在使用 HDInsight 隨選連結服務時，除非有現有的即時叢集 (**timeToLive**)，否則每當需要處理配量時，就會建立 HDInsight 叢集，並在處理完成時予以刪除。
   
-    隨著處理的配量越來越多，您會在 Azure Blob 儲存體中看到許多容器。 如果在疑難排解作業時不需要這些容器，建議您加以刪除以降低儲存成本。 這些容器的名稱遵循下列模式："adf**yourdatafactoryname**-**linkedservicename**-datetimestamp"。 請使用 [Microsoft Azure 儲存體總管](https://storageexplorer.com/) 之類的工具刪除 Azure Blob 儲存體中的容器。
+    隨著處理的配量越來越多，您會在 Azure Blob 儲存體中看到許多容器。 如果在疑難排解作業時不需要這些容器，建議您加以刪除以降低儲存成本。 這些容器的名稱遵循下列模式："adf **yourdatafactoryname**-**linkedservicename**-datetimestamp"。 請使用 [Microsoft Azure 儲存體總管](https://storageexplorer.com/) 之類的工具刪除 Azure Blob 儲存體中的容器。
 
 如需詳細資訊，請參閱 [HDInsight 隨選連結服務](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) 。
 

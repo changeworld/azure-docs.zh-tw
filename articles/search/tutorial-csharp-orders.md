@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 10/02/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 5fe8bf70374a2eec639a0a9365f7d227cf259d06
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 5a55a330f6f4fefb86f2c056cd0ca3b2ba5f4b29
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91667243"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499589"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>教學課程：使用 .NET SDK 排序搜尋結果
 
@@ -965,7 +965,7 @@ ms.locfileid: "91667243"
 
 ### <a name="resources"></a>資源
 
-如需詳細資訊，請參閱下列[將評分設定檔新增至 Azure 認知搜尋索引](/azure/search/index-add-scoring-profiles)。
+如需詳細資訊，請參閱下列[將評分設定檔新增至 Azure 認知搜尋索引](./index-add-scoring-profiles.md)。
 
 ## <a name="takeaways"></a>重要心得
 

@@ -4,12 +4,12 @@ description: 建立 HTTP 觸發的無伺服器 PowerShell 函式來自動建立 
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ec4b2273f6be6ea4aabed2b660e0b7553f861d0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b94d583ca26b88d093810528d3193f20d765f1d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89072038"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349243"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>教學課程：使用 HTTP 觸發的 Azure 函式來建立容器群組
 
@@ -27,13 +27,13 @@ ms.locfileid: "89072038"
 
 ## <a name="prerequisites"></a>必要條件
 
-請參閱[使用 Visual Studio Code 在 Azure 中建立您的第一個函式](../azure-functions/functions-create-first-function-vs-code.md?pivots=programming-language-powershell#configure-your-environment)，以了解在您作業系統上安裝及使用 Visual Studio Code 與 Azure Functions 擴充功能的必要條件。
+請參閱[使用 Visual Studio Code 在 Azure 中建立您的第一個函式](../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-powershell#configure-your-environment)，以了解在您作業系統上安裝及使用 Visual Studio Code 與 Azure Functions 擴充功能的必要條件。
 
 本文中的其他步驟會使用 Azure PowerShell。 如果您需要安裝或升級，請參閱[安裝 Azure PowerShell][azure-powershell-install] 及[登入 Azure](/powershell/azure/get-started-azureps#sign-in-to-azure)。
 
 ## <a name="create-a-basic-powershell-function"></a>建立基本的 PowerShell 函式
 
-依照[在 Azure 中建立第一個 PowerShell 函式](../azure-functions/functions-create-first-function-vs-code.md?pivots=programming-language-powershell)中的步驟，使用 HTTP 觸發程式範本建立 PowerShell 函式。 使用預設的 Azure 函式名稱 **HttpTrigger**。 如快速入門中所示，在本機測試函式，並將專案發佈至 Azure 中的函式應用程式。 此範例是會傳回文字字串的基本 HTTP 觸發函式。 在本文稍後的步驟中，您會修改函式來建立容器群組。
+依照[在 Azure 中建立第一個 PowerShell 函式](../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-powershell)中的步驟，使用 HTTP 觸發程式範本建立 PowerShell 函式。 使用預設的 Azure 函式名稱 **HttpTrigger**。 如快速入門中所示，在本機測試函式，並將專案發佈至 Azure 中的函式應用程式。 此範例是會傳回文字字串的基本 HTTP 觸發函式。 在本文稍後的步驟中，您會修改函式來建立容器群組。
 
 本文假設您使用名稱 myfunctionapp 來發行專案，而且專案位在以函式應用程式名稱 (也就是 myfunctionapp) 自動命名的 Azure 資源群組中。 請在稍後的步驟中替代您的唯一函式應用程式名稱和資源組名稱。
 

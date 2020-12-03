@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: cshoe
-ms.openlocfilehash: 80a48a948c70db7344ac9cbc20474177309bd909
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0086f7f68fd05d6925d19c7ab457fbc125e36be4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024223"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350223"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>教學課程：使用 Blazor 在 Azure Static Web Apps 中建置靜態 Web 應用程式
 
@@ -64,7 +64,7 @@ Azure Static Web Apps 可讓您建立無伺服器後端支援的靜態 Web 應�
 本文使用 GitHub 範本存放庫，讓您可以輕鬆地開始使用。 範本具有部署至 Azure Static Web Apps 的入門應用程式。
 
 1. 確定您已登入 GitHub，並瀏覽至下列位置以建立新的存放庫：
-    - https://github.com/staticwebdev/blazor-starter/generate
+    - [https://github.com/staticwebdev/blazor-starter/generate](https://github.com/login?return_to=/staticwebdev/blazor-starter/generate)
 1. 將您的存放庫命名為 **my-first-static-blazor-app**
 
 ## <a name="create-a-static-web-app"></a>建立靜態 Web 應用程式

@@ -2,8 +2,8 @@
 title: 使用 Azure 入口網站在管線中分支和鏈結活動
 description: 了解如何使用 Azure 入口網站來控制 Azure Data Factory 中的資料流程。
 services: data-factory
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: b1b766e3cb337151c5ca9b35e2040a2a47124151
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc82cfdc4e5a063e7c5cb833b617da58023d1ba6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568538"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497430"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>使用 Azure 入口網站在 Azure Data Factory 管線中為活動建立分支並進行鏈結
 
@@ -43,8 +43,8 @@ ms.locfileid: "91568538"
 ## <a name="prerequisites"></a>必要條件
 
 * **Azure 訂用帳戶**。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
-* **Azure 儲存體帳戶**。 您會使用 Blob 儲存體作為**來源**資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱[建立儲存體帳戶](../storage/common/storage-account-create.md)一文，按照步驟來建立帳戶。
-* **Azure SQL Database**。 您會使用資料庫作為**接收**資料存放區。 如果您在 Azure SQL Database 中沒有資料庫，請參閱[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)一文，按照步驟建立資料庫。
+* **Azure 儲存體帳戶**。 您會使用 Blob 儲存體作為 **來源** 資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱[建立儲存體帳戶](../storage/common/storage-account-create.md)一文，按照步驟來建立帳戶。
+* **Azure SQL Database**。 您會使用資料庫作為 **接收** 資料存放區。 如果您在 Azure SQL Database 中沒有資料庫，請參閱[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)一文，按照步驟建立資料庫。
 
 ### <a name="create-blob-table"></a>建立 Blob 資料表
 
@@ -93,7 +93,7 @@ ms.locfileid: "91568538"
 
 ![邏輯應用程式設計工具 - 要求](media/tutorial-control-flow-portal/logic-app-designer-request.png)
 
-對於**傳送電子郵件**動作，利用要求本文 JSON 結構描述中傳遞的屬性，以自訂您要如何格式化電子郵件。 範例如下：
+對於 **傳送電子郵件** 動作，利用要求本文 JSON 結構描述中傳遞的屬性，以自訂您要如何格式化電子郵件。 範例如下：
 
 ![邏輯應用程式設計工具 - 傳送電子郵件動作](media/tutorial-control-flow-portal/send-email-action-2.png)
 
@@ -188,7 +188,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 6. 在 [新增資料集] 視窗中選取 [Azure Blob 儲存體]，然後按一下 [完成]。
 
    ![選取 Azure Blob 儲存體](./media/tutorial-control-flow-portal/select-azure-blob-storage.png)
-7. 您會看到標題為 **AzureBlob1** 的新**索引標籤**。 將資料集的名稱變更為 **SourceBlobDataset**。
+7. 您會看到標題為 **AzureBlob1** 的新 **索引標籤**。 將資料集的名稱變更為 **SourceBlobDataset**。
 
    ![資料集一般設定](./media/tutorial-control-flow-portal/dataset-general-page.png)
 8. 在 [屬性] 視窗中切換至 [連線] 索引標籤，針對 [連結服務] 按一下 [新增]。 在此步驟中，您會建立連結服務，將 Azure 儲存體帳戶連結到資料處理站。
@@ -274,7 +274,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 22. 在管線設計工具中選取 [複製] 活動，按一下 +-> 按鈕，然後選取 [錯誤]。  
 
     ![此螢幕擷取畫面顯示如何在管線設計師中的複製活動上選取錯誤。](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
-23. 將複製活動旁邊的**紅色**按鈕拖曳至第二個 Web 活動 **SendFailureEmailActivity**。 您可以將活動四處移動，讓管線看起來如下圖所示：
+23. 將複製活動旁邊的 **紅色** 按鈕拖曳至第二個 Web 活動 **SendFailureEmailActivity**。 您可以將活動四處移動，讓管線看起來如下圖所示：
 
     ![具有所有活動的完整管線](./media/tutorial-control-flow-portal/full-pipeline.png)
 24. 若要驗證管線，按一下工具列上的 [驗證] 按鈕。 按一下 >> 按鈕，來關閉 [管線驗證輸出] 視窗。
@@ -285,14 +285,14 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
     ![發佈](./media/tutorial-control-flow-portal/publish-button.png)
 
 ## <a name="trigger-a-pipeline-run-that-succeeds"></a>觸發成功的管線執行
-1. 若要**觸發**管狀執行，按一下工具列上的 [觸發]，然後按一下 [立即觸發]。
+1. 若要 **觸發** 管狀執行，按一下工具列上的 [觸發]，然後按一下 [立即觸發]。
 
     ![觸發管線執行](./media/tutorial-control-flow-portal/trigger-now-menu.png)
 2. 在 [管線執行] 視窗中，執行下列步驟：
 
     1. 輸入 **adftutorial/adfv2branch/input** 作為 **sourceBlobContainer** 參數。
     2. 輸入 **adftutorial/adfv2branch/output** 作為 **sourceBlobContainer** 參數。
-    3. 輸入**接收者**的**電子郵件地址**。
+    3. 輸入 **接收者** 的 **電子郵件地址**。
     4. 按一下 [完成]
 
         ![管線執行參數](./media/tutorial-control-flow-portal/pipeline-run-parameters.png)
@@ -302,18 +302,18 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 1. 若要監視管線執行，請切換到左側的 [監視] 索引標籤。 您會看到由您手動觸發的管線執行。 使用 [重新整理] 按鈕可重新整理清單。
 
     ![成功的管線執行](./media/tutorial-control-flow-portal/monitor-success-pipeline-run.png)
-2. 若要檢視與此管線執行相關聯的**活動執行**，請按一下 [動作] 資料行中的第一個連結。 您可以按一下頂端的 [管線]，來切換回到前一個檢視。 使用 [重新整理] 按鈕可重新整理清單。
+2. 若要檢視與此管線執行相關聯的 **活動執行**，請按一下 [動作] 資料行中的第一個連結。 您可以按一下頂端的 [管線]，來切換回到前一個檢視。 使用 [重新整理] 按鈕可重新整理清單。
 
     ![顯示如何檢視活動執行清單的螢幕擷取畫面。](./media/tutorial-control-flow-portal/activity-runs-success.png)
 
 ## <a name="trigger-a-pipeline-run-that-fails"></a>觸發失敗的管線執行
 1. 切換至左側的 [編輯] 索引標籤。
-2. 若要**觸發**管狀執行，按一下工具列上的 [觸發]，然後按一下 [立即觸發]。
+2. 若要 **觸發** 管狀執行，按一下工具列上的 [觸發]，然後按一下 [立即觸發]。
 3. 在 [管線執行] 視窗中，執行下列步驟：
 
     1. 輸入 **adftutorial/dummy/input** 作為 **sourceBlobContainer** 參數。 請確定 adftutorial 容器中不存在 dummy 資料夾。
     2. 輸入 **adftutorial/dummy/output** 作為 **sourceBlobContainer** 參數。
-    3. 輸入**接收者**的**電子郵件地址**。
+    3. 輸入 **接收者** 的 **電子郵件地址**。
     4. 按一下 [完成] 。
 
 ## <a name="monitor-the-failed-pipeline-run"></a>監視失敗的管線執行
@@ -324,7 +324,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 2. 按一下管線執行的 [錯誤] 連結以查看錯誤的詳細資料。
 
     ![管線錯誤](./media/tutorial-control-flow-portal/pipeline-error-message.png)
-2. 若要檢視與此管線執行相關聯的**活動執行**，請按一下 [動作] 資料行中的第一個連結。 使用 [重新整理] 按鈕可重新整理清單。 請注意，管線中的複製活動失敗了。 Web 活動成功地將失敗電子郵件傳送給指定收件者。
+2. 若要檢視與此管線執行相關聯的 **活動執行**，請按一下 [動作] 資料行中的第一個連結。 使用 [重新整理] 按鈕可重新整理清單。 請注意，管線中的複製活動失敗了。 Web 活動成功地將失敗電子郵件傳送給指定收件者。
 
     ![活動執行](./media/tutorial-control-flow-portal/activity-runs-failure.png)
 4. 按一下 [動作] 資料行中的 [錯誤] 連結，以查看錯誤的詳細資料。

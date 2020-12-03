@@ -3,20 +3,20 @@ title: 建置第一個資料處理站 (REST)
 description: 在本教學課程中，您會使用 Data Factory REST API 建立範例 Azure Data Factory 管線。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/01/2017
-ms.openlocfilehash: 32705c37685ab03ffa68f805dedb64411d8d9c46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 835f72df5c0c693c90b0cf7c45f7805b767d2bcb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87543124"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496359"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>教學課程：使用 Data Factory REST API 建置您的第一個 Azure Data Factory
 > [!div class="op_single_selector"]
@@ -50,9 +50,9 @@ ms.locfileid: "87543124"
 * 在您的電腦上安裝 [Curl](https://curl.haxx.se/dlwiz/) 。 您可搭配使用 CURL 工具與 REST 命令來建立 Data Factory。
 * 請依照 [本文](../../active-directory/develop/howto-create-service-principal-portal.md) 的指示：
   1. 在 Azure Active Directory 中建立名為 **ADFGetStartedApp** 的 Web 應用程式。
-  2. 取得**用戶端識別碼**和**秘密金鑰**。
+  2. 取得 **用戶端識別碼** 和 **秘密金鑰**。
   3. 取得 **租用戶識別碼**。
-  4. 將 **ADFGetStartedApp** 應用程式指派給 **Data Factory 參與者**角色。
+  4. 將 **ADFGetStartedApp** 應用程式指派給 **Data Factory 參與者** 角色。
 * 安裝 [Azure PowerShell](/powershell/azure/)。
 * 啟動 **PowerShell** 並執行下列命令。 將 Azure PowerShell 維持在開啟狀態，直到本教學課程結束為止。 如果您關閉並重新開啟，則需要再次執行這些命令。
   1. 執行 **Connect-AzAccount**，並輸入您用來登入 Azure 入口網站的使用者名稱和密碼。
@@ -128,11 +128,11 @@ ms.locfileid: "87543124"
 
 請注意下列幾點：
 
-* Data Factory 會使用上述 JSON，為您建立**以 Linux 為基礎的** HDInsight 叢集。 如需詳細資訊，請參閱 [HDInsight 隨選連結服務](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) 。
+* Data Factory 會使用上述 JSON，為您建立 **以 Linux 為基礎的** HDInsight 叢集。 如需詳細資訊，請參閱 [HDInsight 隨選連結服務](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) 。
 * 您可以使用 **自己的 HDInsight 叢集** ，不必使用隨選的 HDInsight 叢集。 如需詳細資訊，請參閱 [HDInsight 連結服務](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) 。
-* HDInsight 叢集會在您於 JSON 中指定的 Blob 儲存體 (**linkedServiceName**) 建立**預設容器**。 HDInsight 不會在刪除叢集時刪除此容器。 這是設計的行為。 在使用 HDInsight 隨選連結服務時，除非有現有的即時叢集 (**timeToLive**)，否則每次處理配量時，就會建立 HDInsight 叢集，並在處理完成時予以刪除。
+* HDInsight 叢集會在您於 JSON 中指定的 Blob 儲存體 (**linkedServiceName**) 建立 **預設容器**。 HDInsight 不會在刪除叢集時刪除此容器。 這是設計的行為。 在使用 HDInsight 隨選連結服務時，除非有現有的即時叢集 (**timeToLive**)，否則每次處理配量時，就會建立 HDInsight 叢集，並在處理完成時予以刪除。
 
-    隨著處理的配量越來越多，您會在 Azure Blob 儲存體中看到許多容器。 如果在疑難排解作業時不需要這些容器，建議您加以刪除以降低儲存成本。 這些容器的名稱遵循下列模式："adf**yourdatafactoryname**-**linkedservicename**-datetimestamp"。 請使用 [Microsoft Azure 儲存體總管](https://storageexplorer.com/) 之類的工具刪除 Azure Blob 儲存體中的容器。
+    隨著處理的配量越來越多，您會在 Azure Blob 儲存體中看到許多容器。 如果在疑難排解作業時不需要這些容器，建議您加以刪除以降低儲存成本。 這些容器的名稱遵循下列模式："adf **yourdatafactoryname**-**linkedservicename**-datetimestamp"。 請使用 [Microsoft Azure 儲存體總管](https://storageexplorer.com/) 之類的工具刪除 Azure Blob 儲存體中的容器。
 
 如需詳細資訊，請參閱 [HDInsight 隨選連結服務](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) 。
 
@@ -162,7 +162,7 @@ ms.locfileid: "87543124"
 }
 ```
 
-JSON 會定義名為 **AzureBlobInput**的資料集，以表示管線中活動的輸入資料。 此外，它也會指定將輸入資料放在名為 **adfgetstarted** 的 Blob 容器及名為 **inputdata** 的資料夾中。
+JSON 會定義名為 **AzureBlobInput** 的資料集，以表示管線中活動的輸入資料。 此外，它也會指定將輸入資料放在名為 **adfgetstarted** 的 Blob 容器及名為 **inputdata** 的資料夾中。
 
 下表提供程式碼片段中所使用之 JSON 屬性的描述：
 
@@ -199,7 +199,7 @@ JSON 會定義名為 **AzureBlobInput**的資料集，以表示管線中活動�
 }
 ```
 
-JSON 會定義名為 **AzureBlobOutput**的資料集，以表示管線中活動的輸出資料。 此外，它也會指定將結果儲存在名為 **adfgetstarted** 的 Blob 容器及名為 **partitioneddata** 的資料夾中。 **availability** 區段指定每個月產生一次輸出資料集。
+JSON 會定義名為 **AzureBlobOutput** 的資料集，以表示管線中活動的輸出資料。 此外，它也會指定將結果儲存在名為 **adfgetstarted** 的 Blob 容器及名為 **partitioneddata** 的資料夾中。 **availability** 區段指定每個月產生一次輸出資料集。
 
 ### <a name="pipelinejson"></a>pipeline.json
 > [!IMPORTANT]
@@ -292,21 +292,21 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 
 ## <a name="create-data-factory"></a>建立資料處理站
-在此步驟中，您會建立名為 **FirstDataFactoryREST**的 Azure Data Factory。 資料處理站可以有一或多個管線。 其中的管線可以有一或多個活動。 例如，「複製活動」會從來源將資料複製到目的地資料存放區，HDInsight Hive 活動則是執行 Hive 指令碼來轉換資料。 執行以下命令以建立 Data Factory：
+在此步驟中，您會建立名為 **FirstDataFactoryREST** 的 Azure Data Factory。 資料處理站可以有一或多個管線。 其中的管線可以有一或多個活動。 例如，「複製活動」會從來源將資料複製到目的地資料存放區，HDInsight Hive 活動則是執行 Hive 指令碼來轉換資料。 執行以下命令以建立 Data Factory：
 
-1. 將命令指派給名為 **cmd**的變數。
+1. 將命令指派給名為 **cmd** 的變數。
 
-    確認您在此指定的名稱 (ADFCopyTutorialDF) 符合在 **datafactory.json**指定的名稱。
+    確認您在此指定的名稱 (ADFCopyTutorialDF) 符合在 **datafactory.json** 指定的名稱。
 
     ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@datafactory.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/FirstDataFactoryREST?api-version=2015-10-01};
     ```
-2. 使用 **Invoke-Command**執行命令。
+2. 使用 **Invoke-Command** 執行命令。
 
     ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
-3. 檢視結果。 如果已成功建立 Data Factory，您會在 **結果**中看到 Data Factory 的 JSON；不然，您會看到一則錯誤訊息。
+3. 檢視結果。 如果已成功建立 Data Factory，您會在 **結果** 中看到 Data Factory 的 JSON；不然，您會看到一則錯誤訊息。
 
     ```powershell
     Write-Host $results
@@ -342,17 +342,17 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 ### <a name="create-azure-storage-linked-service"></a>建立 Azure 儲存體連結服務
 在此步驟中，您會將您的 Azure 儲存體帳戶連結到您的 Data Factory。 在本教學課程中，您會使用相同的 Azure 儲存體帳戶來存放輸入/輸出資料及 HQL 指令碼檔案。
 
-1. 將命令指派給名為 **cmd**的變數。
+1. 將命令指派給名為 **cmd** 的變數。
 
     ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@azurestoragelinkedservice.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/AzureStorageLinkedService?api-version=2015-10-01};
     ```
-2. 使用 **Invoke-Command**執行命令。
+2. 使用 **Invoke-Command** 執行命令。
 
     ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
-3. 檢視結果。 如果已成功建立連結服務，您會在 **結果**中看到連結服務的 JSON；不然，您會看到一則錯誤訊息。
+3. 檢視結果。 如果已成功建立連結服務，您會在 **結果** 中看到連結服務的 JSON；不然，您會看到一則錯誤訊息。
 
     ```powershell
     Write-Host $results
@@ -361,17 +361,17 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 ### <a name="create-azure-hdinsight-linked-service"></a>建立 Azure HDInsight 連結服務
 在此步驟中，您可將隨選 HDInsight 叢集連結至 Data Factory。 HDInsight 叢集會在執行階段自動建立，並在處理完成之後刪除，且會閒置一段時間。 您可以使用自己的 HDInsight 叢集，不必使用隨選的 HDInsight 叢集。 請參閱 [計算連結服務](data-factory-compute-linked-services.md) 以取得詳細資料。
 
-1. 將命令指派給名為 **cmd**的變數。
+1. 將命令指派給名為 **cmd** 的變數。
 
     ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@hdinsightondemandlinkedservice.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/hdinsightondemandlinkedservice?api-version=2015-10-01};
     ```
-2. 使用 **Invoke-Command**執行命令。
+2. 使用 **Invoke-Command** 執行命令。
 
     ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
-3. 檢視結果。 如果已成功建立連結服務，您會在 **結果**中看到連結服務的 JSON；不然，您會看到一則錯誤訊息。
+3. 檢視結果。 如果已成功建立連結服務，您會在 **結果** 中看到連結服務的 JSON；不然，您會看到一則錯誤訊息。
 
     ```powershell
     Write-Host $results
@@ -383,17 +383,17 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 ### <a name="create-input-dataset"></a>建立輸入資料集
 在此步驟中，您會建立輸入資料集來代表 Azure Blob 儲存體中儲存的輸入資料。
 
-1. 將命令指派給名為 **cmd**的變數。
+1. 將命令指派給名為 **cmd** 的變數。
 
     ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@inputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobInput?api-version=2015-10-01};
     ```
-2. 使用 **Invoke-Command**執行命令。
+2. 使用 **Invoke-Command** 執行命令。
 
     ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
-3. 檢視結果。 如果已成功建立資料集，您會在 **結果**中看到資料集的 JSON；不然，您會看到一則錯誤訊息。
+3. 檢視結果。 如果已成功建立資料集，您會在 **結果** 中看到資料集的 JSON；不然，您會看到一則錯誤訊息。
 
     ```powershell
     Write-Host $results
@@ -402,17 +402,17 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 ### <a name="create-output-dataset"></a>建立輸出資料集
 在此步驟中，您會建立輸出資料集來代表 Azure Blob 儲存體中儲存的輸出資料。
 
-1. 將命令指派給名為 **cmd**的變數。
+1. 將命令指派給名為 **cmd** 的變數。
 
     ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@outputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobOutput?api-version=2015-10-01};
     ```
-2. 使用 **Invoke-Command**執行命令。
+2. 使用 **Invoke-Command** 執行命令。
 
     ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
-3. 檢視結果。 如果已成功建立資料集，您會在 **結果**中看到資料集的 JSON；不然，您會看到一則錯誤訊息。
+3. 檢視結果。 如果已成功建立資料集，您會在 **結果** 中看到資料集的 JSON；不然，您會看到一則錯誤訊息。
 
     ```powershell
     Write-Host $results
@@ -423,17 +423,17 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 確認您在 Azure Blob 儲存體的 **adfgetstarted/inputdata** 資料夾中看到了 **input.log** 檔案，並執行下列命令以部署管線。 由於 **start** 和 **end** 時間設定在過去，且 **isPaused** 設為 false，管線 (管線中的活動) 會在部署之後立即執行。
 
-1. 將命令指派給名為 **cmd**的變數。
+1. 將命令指派給名為 **cmd** 的變數。
 
     ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@pipeline.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datapipelines/MyFirstPipeline?api-version=2015-10-01};
     ```
-2. 使用 **Invoke-Command**執行命令。
+2. 使用 **Invoke-Command** 執行命令。
 
     ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
-3. 檢視結果。 如果已成功建立資料集，您會在 **結果**中看到資料集的 JSON；不然，您會看到一則錯誤訊息。
+3. 檢視結果。 如果已成功建立資料集，您會在 **結果** 中看到資料集的 JSON；不然，您會看到一則錯誤訊息。
 
     ```powershell
     Write-Host $results
@@ -481,7 +481,7 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
    1. **Azure 儲存體** 連結服務可將保留輸入/輸出檔案的 Azure Blob 儲存體連結至 Data Factory。
    2. **Azure HDInsight** 隨選連結服務可將 HDInsight Hadoop 隨選叢集連結至 Data Factory。 Azure Data Factory 會即時建立 HDInsight Hadoop 叢集以處理輸入資料及產生輸出資料。
 3. 建立兩個 **資料集**，以說明管線中 HDInsight Hive 活動的輸入和輸出資料。
-4. 建立具有 **HDInsight Hive** 活動的**管線**。
+4. 建立具有 **HDInsight Hive** 活動的 **管線**。
 
 ## <a name="next-steps"></a>後續步驟
 在本文中，您已經建立可在隨選 Azure HDInsight 叢集上執行 Hive 指令碼，含有轉換活動 (HDInsight 活動) 的管線。 若要了解如何使用「複製活動」從 Azure Blob 將資料複製到 Azure SQL，請參閱 [教學課程：從 Azure Blob 將資料複製到 Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。

@@ -7,16 +7,16 @@ ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ca2319a78fb4c0c720a21e97944d5b75ada9d008
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ad5c6f205fc832eb125e52b4135990fc58742e62
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014923"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453249"
 ---
 # <a name="preview-tutorial-create-and-connect-to-time-series-insights-gen2-to-store-visualize-and-analyze-iot-plug-and-play-device-telemetry"></a>預覽教學課程：建立並連線至時間序列深入解析 Gen2，以儲存、視覺化和分析 IoT 隨插即用裝置遙測
 
-在本教學課程中，您將了解如何建立並正確設定 [Azure 時間序列深入解析 Gen2](https://docs.microsoft.com/azure/time-series-insights/overview-what-is-tsi) (TSI) 環境，以與您的 IoT 隨插即用解決方案整合。 使用 TSI 來收集、處理、儲存、查詢和視覺化物聯網 (IoT) 規模的時間序列資料。
+在本教學課程中，您將了解如何建立並正確設定 [Azure 時間序列深入解析 Gen2](../time-series-insights/overview-what-is-tsi.md) (TSI) 環境，以與您的 IoT 隨插即用解決方案整合。 使用 TSI 來收集、處理、儲存、查詢和視覺化物聯網 (IoT) 規模的時間序列資料。
 
 首先，您要佈建 TSI 環境，並將 IoT 中樞連線為串流事件來源。 接著，您要透過模型同步處理來撰寫以[數位對應項定義語言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) 範例模型檔案 (您用於溫度控制器和控溫器裝置的檔案) 為基礎的[時間序列模型](../time-series-insights/concepts-model-overview.md)。
 
@@ -39,7 +39,7 @@ ms.locfileid: "96014923"
 
 ## <a name="prepare-your-event-source"></a>準備您的事件來源
 
-您先前建立的 IoT 中樞將會是 TSI 環境的[事件來源](https://docs.microsoft.com/azure/time-series-insights/concepts-streaming-ingestion-event-sources)。
+您先前建立的 IoT 中樞將會是 TSI 環境的[事件來源](../time-series-insights/concepts-streaming-ingestion-event-sources.md)。
 
 > [!IMPORTANT]
 > 請停用任何現有的 IoT 中樞路由。 當您使用 IoT 中樞作為 TSI 事件來源，並已設定[路由](../iot-hub/iot-hub-devguide-messages-d2c.md#routing-endpoints)時，會發生已知問題。 請暫時停用任何路由端點，當 IoT 中樞連線到 TSI 時，您可以再重新啟用這些端點。
@@ -67,7 +67,7 @@ az iot hub consumer-group create --hub-name my-pnp-hub --name tsi-consumer-group
 
 下列命令：
 
-* 為環境的[冷存放區](https://docs.microsoft.com/azure/time-series-insights/concepts-storage#cold-store)建立 Azure 儲存體帳戶，專為分析長期保留和歷程記錄資料所設計。
+* 為環境的[冷存放區](../time-series-insights/concepts-storage.md#cold-store)建立 Azure 儲存體帳戶，專為分析長期保留和歷程記錄資料所設計。
   * 以冷儲存體帳戶的唯一名稱取代 `mytsicoldstore`。
 * 會建立 Azure 時間序列深入解析 Gen2 環境，包括保留期間為 7 天的熱儲存體，以及無限期保留期的冷儲存體。
   * 以 TSI 環境的唯一名稱取代 `my-tsi-env`。

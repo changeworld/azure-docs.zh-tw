@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: b7d587f2be5141f7de82e9294b1fdb9fba4a6a41
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: c628ba780ae64fceb32322fdb2004d69e2ebf24b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488635"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452741"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>教學課程：在 Kubernetes 上，為祕密存放區 CSI 驅動程式設定及執行 Azure Key Vault 提供者
 
@@ -362,4 +362,4 @@ kubectl exec -it nginx-secrets-store-inline -- cat /mnt/secrets-store/secret1
 
 若要協助確保金鑰保存庫可以復原，請參閱：
 > [!div class="nextstepaction"]
-> [開啟虛刪除](./soft-delete-cli.md)
+> [開啟虛刪除](./key-vault-recovery.md)

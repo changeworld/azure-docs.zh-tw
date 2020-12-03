@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f327749d1bdfb8cf2cba00cf4c5f68b4b2b77999
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 50a65583c41dd94b174a33432afcf42b31e67df0
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379548"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437043"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>教學課程：使用自訂動作和資源建立受控應用程式
 
@@ -353,6 +353,6 @@ az managedapp create \
 
 ## <a name="next-steps"></a>後續步驟
 
-若要將您的受控應用程式發佈至 Azure Marketplace，請參閱 [Marketplace 中 Azure 受控應用程式](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)。
+若要將您的受控應用程式發佈至 Azure Marketplace，請參閱 [Marketplace 中 Azure 受控應用程式](../../marketplace/create-new-azure-apps-offer.md)。
 
 深入了解 [Azure 自訂提供者](../custom-providers/overview.md)。

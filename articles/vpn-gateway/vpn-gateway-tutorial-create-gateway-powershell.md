@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: b70a3fe4884ef209e57fbb954c27aa83486b5c98
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: aaeb38b4d46188205841d6a93437533e30061485
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660996"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512083"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>教學課程：使用 PowerShell 建立和管理 VPN 閘道
 
@@ -26,7 +26,7 @@ Azure VPN 閘道提供客戶組織內部與 Azure 之間的跨單位連線。 �
 
 下圖顯示在本教學課程中建立的虛擬網路和 VPN 閘道。
 
-:::image type="content" source="./media/vpn-gateway-tutorial-create-gateway-powershell/gateway-diagram.png" alt-text="VNet 和 VPN 閘道圖表":::
+:::image type="content" source="./media/vpn-gateway-tutorial-create-gateway-powershell/diagram.png" alt-text="VNet 和 VPN 閘道圖表":::
 
 ## <a name="prerequisites"></a>必要條件
 

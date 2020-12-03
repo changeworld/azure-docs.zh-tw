@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: tutorial
 ms.date: 10/18/2020
-ms.openlocfilehash: 93bbd84c25f02ac1653a46ebb4a70c1dfa90c744
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: c8a5b682e2ac4879d2181bdb069cf554bad512d9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686329"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498280"
 ---
 # <a name="tutorial-use-customer-managed-keys-or-byok-with-media-services-rest-api"></a>教學課程：搭配使用客戶自控金鑰或 BYOK 與媒體服務 REST API
 
@@ -43,8 +43,8 @@ ms.locfileid: "94686329"
 
 ### <a name="register-a-service-principal-with-the-needed-permissions"></a>以所需權限向服務主體註冊
 
-1. [建立服務主體](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
-1. 移至 [[選項2：建立新的應用程式祕密](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#authentication-two-options)] 以取得服務主體祕密。
+1. [建立服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)。
+1. 移至 [[選項2：建立新的應用程式祕密](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)] 以取得服務主體祕密。
 
    > [!IMPORTANT]
    >複製並儲存祕密以供稍後使用。 您在入口網站中離開 [秘密] 頁面後，即無法存取祕密。

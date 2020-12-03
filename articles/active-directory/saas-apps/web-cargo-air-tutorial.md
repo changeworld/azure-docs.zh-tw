@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 94dc70d184de27b1c44f9817686630e04da830f9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9a62576b65be04414580b42377398e27c4aa389c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521657"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353556"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-web-cargo-air"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Web Cargo Air 整合
 
@@ -48,7 +48,7 @@ ms.locfileid: "92521657"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Web Cargo Air** 。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Web Cargo Air**。
 1. 從結果面板選取 [Web Cargo Air]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -70,12 +70,12 @@ ms.locfileid: "92521657"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 Azure 入口網站的 [Web Cargo Air] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
-1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 組態] 區段上，輸入下列欄位的值：
+1. 在 [基本 SAML 組態]  區段上，輸入下列欄位的值：
 
     a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：`https://<SUBDOMAIN>.webcargonet.com`
 
@@ -86,9 +86,9 @@ ms.locfileid: "92521657"
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「登入 URL」、「識別碼」和「回覆 URL」來更新這些值。 請連絡 [Web Cargo Air 用戶端支援小組](mailto:support@webcargonet.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-1. . 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，尋找 [憑證 (Base64)] 並選取 [下載]，以下載憑證並將其儲存在電腦上。
+1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，尋找 [憑證 (Base64)] 並選取 [下載]，以下載憑證並將其儲存在電腦上。
 
-    ![憑證下載連結](common/certificatebase64.png)
+    ![The Certificate download link](common/certificatebase64.png)
 
 1. 在 [設定 Web Cargo Air] 區段上，根據您的需求複製適當的 URL。
 
@@ -99,11 +99,11 @@ ms.locfileid: "92521657"
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
 1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
-1. 在畫面頂端選取 [新增使用者]。
-1. 在 [使用者] 屬性中，執行下列步驟：
-   1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
+1. 在畫面頂端選取 [新增使用者]  。
+1. 在 [使用者]  屬性中，執行下列步驟：
+   1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
-   1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
+   1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
    1. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
@@ -113,7 +113,7 @@ ms.locfileid: "92521657"
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 在應用程式清單中，選取 [Web Cargo Air]。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
-1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]。
+1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
 1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
 1. 如果您需要將角色指派給使用者，您可以從 [選取角色] 下拉式清單中選取。 如果未設定此應用程式的角色，您會看到已選取 [預設存取] 角色。
 1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。

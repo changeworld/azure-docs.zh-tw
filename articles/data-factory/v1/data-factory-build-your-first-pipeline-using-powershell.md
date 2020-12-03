@@ -3,20 +3,20 @@ title: 建置第一個資料處理站 (PowerShell)
 description: 在本教學課程中，您將使用 Azure PowerShell，建立範例 Azure Data Factory 管線。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 3f388937c43c9c6a2b9e4700768d4af9cdcb39de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbeb87c6e96c75e62fe97db031ae926ce30b6a19
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87543107"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496308"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>教學課程：使用 Azure PowerShell 建置您的第一個 Azure Data Factory
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ ms.locfileid: "87543107"
 * (選用) 這篇文章並未涵蓋所有的 Data Factory Cmdlet。 如需 Data Factory Cmdlet 的完整文件，請參閱 [Data Factory Cmdlet 參考](/powershell/module/az.datafactory) 。
 
 ## <a name="create-data-factory"></a>建立資料處理站
-在此步驟中，您會使用 Azure PowerShell 建立名為 **FirstDataFactoryPSH**的 Azure Data Factory。 資料處理站可以有一或多個管線。 其中的管線可以有一或多個活動。 例如，「複製活動」會從來源將資料複製到目的地資料存放區，HDInsight Hive 活動則是執行 Hive 指令碼來轉換輸入資料。 讓我們在這個步驟中開始建立 Data Factory。
+在此步驟中，您會使用 Azure PowerShell 建立名為 **FirstDataFactoryPSH** 的 Azure Data Factory。 資料處理站可以有一或多個管線。 其中的管線可以有一或多個活動。 例如，「複製活動」會從來源將資料複製到目的地資料存放區，HDInsight Hive 活動則是執行 Hive 指令碼來轉換輸入資料。 讓我們在這個步驟中開始建立 Data Factory。
 
 1. 啟動 Azure PowerShell 並執行下列命令。 將 Azure PowerShell 維持在開啟狀態，直到本教學課程結束為止。 如果您關閉並重新開啟，則需要再次執行這些命令。
    * 執行下列命令並輸入您用來登入 Azure 入口網站的使用者名稱和密碼。
@@ -115,7 +115,7 @@ ms.locfileid: "87543107"
         }
     }
     ```
-    以您的 Azure 儲存體帳戶名稱取代**帳戶名稱**，並以 Azure 儲存體帳戶的存取金鑰取代**帳戶金鑰**。 若要了解如何取得儲存體存取金鑰，請參閱[管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。
+    以您的 Azure 儲存體帳戶名稱取代 **帳戶名稱**，並以 Azure 儲存體帳戶的存取金鑰取代 **帳戶金鑰**。 若要了解如何取得儲存體存取金鑰，請參閱[管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。
 2. 在 Azure PowerShell 中，切換到 ADFGetStarted 資料夾。
 3. 您可以使用 **New-AzDataFactoryLinkedService** Cmdlet 建立連結服務。 此 Cmdlet 和您在本教學課程中使用的其他 Data Factory Cmdlet，皆需要您將值傳給 *ResourceGroupName* 和 *DataFactoryName* 參數。 或者，您可以使用 **Get-AzDataFactory** 取得 **DataFactory** 物件，並傳遞此物件，就不需要在每次執行 Cmdlet 時輸入 *ResourceGroupName* 和 *DataFactoryName*。 執行以下命令，將 **Get-AzDataFactory** Cmdlet 的輸出指派給 **$df** 變數。
 
@@ -164,11 +164,11 @@ ms.locfileid: "87543107"
 
     請注意下列幾點：
 
-   * Data Factory 會使用 JSON，為您建立**以 Linux 為基礎的** HDInsight 叢集。 如需詳細資訊，請參閱 [HDInsight 隨選連結服務](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) 。
+   * Data Factory 會使用 JSON，為您建立 **以 Linux 為基礎的** HDInsight 叢集。 如需詳細資訊，請參閱 [HDInsight 隨選連結服務](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) 。
    * 您可以使用 **自己的 HDInsight 叢集** ，不必使用隨選的 HDInsight 叢集。 如需詳細資訊，請參閱 [HDInsight 連結服務](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) 。
-   * HDInsight 叢集會在您於 JSON 中指定的 Blob 儲存體 (**linkedServiceName**) 建立**預設容器**。 HDInsight 不會在刪除叢集時刪除此容器。 這是設計的行為。 在使用 HDInsight 隨選連結服務時，除非有現有的即時叢集 (**timeToLive**)，否則每次處理配量時，就會建立 HDInsight 叢集。 此叢集會在處理完成時自動刪除。
+   * HDInsight 叢集會在您於 JSON 中指定的 Blob 儲存體 (**linkedServiceName**) 建立 **預設容器**。 HDInsight 不會在刪除叢集時刪除此容器。 這是設計的行為。 在使用 HDInsight 隨選連結服務時，除非有現有的即時叢集 (**timeToLive**)，否則每次處理配量時，就會建立 HDInsight 叢集。 此叢集會在處理完成時自動刪除。
 
-       隨著處理的配量越來越多，您會在 Azure Blob 儲存體中看到許多容器。 如果在疑難排解作業時不需要這些容器，建議您加以刪除以降低儲存成本。 這些容器的名稱遵循下列模式："adf**yourdatafactoryname**-**linkedservicename**-datetimestamp"。 請使用 [Microsoft Azure 儲存體總管](https://storageexplorer.com/) 之類的工具刪除 Azure Blob 儲存體中的容器。
+       隨著處理的配量越來越多，您會在 Azure Blob 儲存體中看到許多容器。 如果在疑難排解作業時不需要這些容器，建議您加以刪除以降低儲存成本。 這些容器的名稱遵循下列模式："adf **yourdatafactoryname**-**linkedservicename**-datetimestamp"。 請使用 [Microsoft Azure 儲存體總管](https://storageexplorer.com/) 之類的工具刪除 Azure Blob 儲存體中的容器。
 
      如需詳細資訊，請參閱 [HDInsight 隨選連結服務](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) 。
 2. 執行 **New-AzDataFactoryLinkedService** Cmdlet，建立名為 HDInsightOnDemandLinkedService 的連結服務。
@@ -206,7 +206,7 @@ ms.locfileid: "87543107"
         }
     }
     ```
-    JSON 會定義名為 **AzureBlobInput**的資料集，以表示管線中活動的輸入資料。 此外，它也會指定將輸入資料放在名為 **adfgetstarted** 的 Blob 容器及名為 **inputdata** 的資料夾中。
+    JSON 會定義名為 **AzureBlobInput** 的資料集，以表示管線中活動的輸入資料。 此外，它也會指定將輸入資料放在名為 **adfgetstarted** 的 Blob 容器及名為 **inputdata** 的資料夾中。
 
     下表提供程式碼片段中所使用之 JSON 屬性的描述：
 
@@ -250,7 +250,7 @@ ms.locfileid: "87543107"
       }
     }
     ```
-    JSON 會定義名為 **AzureBlobOutput**的資料集，以表示管線中活動的輸出資料。 此外，它也會指定將結果儲存在名為 **adfgetstarted** 的 Blob 容器及名為 **partitioneddata** 的資料夾中。 **availability** 區段指定每個月產生一次輸出資料集。
+    JSON 會定義名為 **AzureBlobOutput** 的資料集，以表示管線中活動的輸出資料。 此外，它也會指定將結果儲存在名為 **adfgetstarted** 的 Blob 容器及名為 **partitioneddata** 的資料夾中。 **availability** 區段指定每個月產生一次輸出資料集。
 2. 在 Azure PowerShell 中執行以下命令來建立 Data Factory 資料集：
 
     ```PowerShell
@@ -385,7 +385,7 @@ ms.locfileid: "87543107"
     PipelineName        : MyFirstPipeline
     Type                : Script
     ```
-    您可以繼續執行此 Cmdlet 直到您看到配量處於**就緒**狀態或**失敗**狀態。 當配量處於 [就緒] 狀態時，檢查您 Blob 儲存體中 **adfgetstarted** 容器內 **partitioneddata** 資料夾的輸出資料。  建立隨選 HDInsight 叢集通常需要一些時間。
+    您可以繼續執行此 Cmdlet 直到您看到配量處於 **就緒** 狀態或 **失敗** 狀態。 當配量處於 [就緒] 狀態時，檢查您 Blob 儲存體中 **adfgetstarted** 容器內 **partitioneddata** 資料夾的輸出資料。  建立隨選 HDInsight 叢集通常需要一些時間。
 
     ![輸出資料](./media/data-factory-build-your-first-pipeline-using-powershell/three-ouptut-files.png)
 
@@ -404,7 +404,7 @@ ms.locfileid: "87543107"
    1. **Azure 儲存體** 連結服務可將保留輸入/輸出檔案的 Azure Blob 儲存體連結至 Data Factory。
    2. **Azure HDInsight** 隨選連結服務可將 HDInsight Hadoop 隨選叢集連結至 Data Factory。 Azure Data Factory 會即時建立 HDInsight Hadoop 叢集以處理輸入資料及產生輸出資料。
 3. 建立兩個 **資料集**，以說明管線中 HDInsight Hive 活動的輸入和輸出資料。
-4. 建立具有 **HDInsight Hive** 活動的**管線**。
+4. 建立具有 **HDInsight Hive** 活動的 **管線**。
 
 ## <a name="next-steps"></a>後續步驟
 在本文中，您已經建立可在隨選 Azure HDInsight 叢集上執行 Hive 指令碼，含有轉換活動 (HDInsight 活動) 的管線。 若要了解如何使用「複製活動」從 Azure Blob 將資料複製到 Azure SQL，請參閱[教學課程：從 Azure Blob 將資料複製到 Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。

@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 10/1/2020
 ms.author: rahugup
-ms.openlocfilehash: 185979fcc0eeaebbe1c3b09d74050e05899737af
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 3cd8d29a498a6a00fa8fff679afc969b339934b1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376794"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494336"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>將 VMware VM 遷移至 Azure (無代理程式) - PowerShell
 
@@ -38,7 +38,7 @@ ms.locfileid: "93376794"
 開始進行本教學課程之前，您必須：
 
 1. [完成探索教學課程](tutorial-discover-vmware.md)，準備 Azure 和 VMware 以進行移轉。
-2. 建議您先完成第二個教學課程以[評估 VMware VM](tutorial-assess-vmware.md)，再將其遷移至 Azure。
+2. 建議您先完成第二個教學課程以[評估 VMware VM](./tutorial-assess-vmware-azure-vm.md)，再將其遷移至 Azure。
 3. 您有 Azure PowerShell `Az` 模組。 如果您需要安裝或升級 Azure PowerShell，請依照此[安裝和設定 Azure PowerShell 的指南](/powershell/azure/install-az-ps)操作
 
 ## <a name="install-azure-migrate-powershell-module"></a>安裝 Azure Migrate PowerShell 模組
@@ -480,11 +480,8 @@ Write-Output $StopReplicationJob.State
     - 使用 Site Recovery 將 Azure VM 複寫至次要區域，讓工作負載保持執行且持續可供使用。 [深入了解](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - 針對提升安全性：
     - 使用 [Azure 資訊安全中心 - Just In Time 系統管理](../security-center/security-center-just-in-time.md)來鎖定並限制輸入流量存取。
-    - 使用[網路安全性群組](../virtual-network/security-overview.md)來限制傳送至管理端點的網路流量。
+    - 使用[網路安全性群組](../virtual-network/network-security-groups-overview.md)來限制傳送至管理端點的網路流量。
     - 部署 [Azure 磁碟加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)以協助保護磁碟，以及防止資料遭到竊取和受到未經授權的存取。
     - 深入了解如何[保護 IaaS 資源](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)，並瀏覽 [Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)。
 - 針對監視及管理：
 -  可考慮部署 [Azure 成本管理](../cost-management-billing/cloudyn/overview.md)來監視資源使用情況和花費。
-
-
-

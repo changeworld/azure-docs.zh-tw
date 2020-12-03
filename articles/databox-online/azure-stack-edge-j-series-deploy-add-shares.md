@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: cd288926e6f7a3f454be2788479b5c9d414b167a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68cac756a3c84d0360d475a4bf88a392e3961f1d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440280"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447571"
 ---
 # <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>教學課程：以 Azure Stack Edge Pro GPU 透過共用傳輸資料
 
@@ -66,7 +66,7 @@ ms.locfileid: "91440280"
     您選取的服務類型，取決於您想要讓資料在 Azure 中使用的格式。 在此範例中，我們想要將資料以區塊 Blob 的形式儲存在 Azure 中，因此我們選取 [區塊 Blob]  。 如果您選取 [分頁 Blob]  ，請確定您的資料是 512 位元組規格。 例如，VHDX 一律是 512 位元組規格。
 
    > [!IMPORTANT]
-   > 如果您將 Azure 儲存體帳戶與 Azure Stack Edge Pro 或資料箱閘道裝置搭配使用，請確定您所使用的 Azure 儲存體帳戶並未設定了不變性原則。 如需詳細資訊，請參閱[設定和管理 Blob 儲存體的不變性原則](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
+   > 如果您將 Azure 儲存體帳戶與 Azure Stack Edge Pro 或資料箱閘道裝置搭配使用，請確定您所使用的 Azure 儲存體帳戶並未設定了不變性原則。 如需詳細資訊，請參閱[設定和管理 Blob 儲存體的不變性原則](../storage/blobs/storage-blob-immutability-policies-manage.md)。
 
     e. 建立新的 Blob 容器，或使用從下拉式清單中的現有容器。 如果要建立 Blob 容器，請提供容器名稱。 如果容器尚不存在，則會使用新建共用名稱在儲存體帳戶中建立容器。
    
@@ -104,17 +104,17 @@ ms.locfileid: "91440280"
 
 在您用來連線到裝置的 Windows 用戶端上，採取下列步驟：
 
-1. 以系統管理員身分啟動 [記事本]****，然後開啟位於 `C:\Windows\System32\Drivers\etc` 的 **hosts** 檔案。
+1. 以系統管理員身分啟動 [記事本]，然後開啟位於 `C:\Windows\System32\Drivers\etc` 的 **hosts** 檔案。
 
     ![Windows 檔案總管主控檔案](media/azure-stack-edge-j-series-deploy-add-shares/client-hosts-file-1.png)
 
 
-2. 將下列項目新增至**主控**檔案，並以您裝置的適當值加以取代： 
+2. 將下列項目新增至 **主控** 檔案，並以您裝置的適當值加以取代： 
 
     ```
     <Device IP>   <device friendly name>
     ``` 
-    您可以從本機 Web UI 中的**裝置**頁面，取得**網路**的裝置 IP 和裝置自訂名稱。 下列主控檔案的螢幕擷取畫面會顯示項目：
+    您可以從本機 Web UI 中的 **裝置** 頁面，取得 **網路** 的裝置 IP 和裝置自訂名稱。 下列主控檔案的螢幕擷取畫面會顯示項目：
 
     ![Windows 檔案總管 hosts 檔案 2](media/azure-stack-edge-j-series-deploy-add-shares/client-hosts-file-2.png)
 
@@ -170,7 +170,7 @@ ms.locfileid: "91440280"
 
    `sudo mount -t nfs -o sec=sys,resvport <device IP>:/<NFS share on device> /home/username/<Folder on local Linux computer>`
 
-    您可以從本機 Web UI 的**網路**頁面取得裝置 IP。
+    您可以從本機 Web UI 的 **網路** 頁面取得裝置 IP。
 
     > [!IMPORTANT]
     > 在裝載共用時使用 `sync` 選項，可以改善大型檔案的傳輸速率。
@@ -198,5 +198,3 @@ ms.locfileid: "91440280"
 
 > [!div class="nextstepaction"]
 > [使用 Azure Stack Edge Pro 轉換資料](./azure-stack-edge-j-series-deploy-configure-compute.md)
-
-
