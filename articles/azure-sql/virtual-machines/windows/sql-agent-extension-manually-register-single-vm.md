@@ -14,12 +14,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c82ea3328938b42a26df03c7e83776e1a1a69b20
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 48c996b6c7d0024b256908565c57032fe3e18514
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557555"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545633"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>使用 SQL IaaS 代理程式擴充功能註冊 SQL Server VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "94557555"
 
 ## <a name="overview"></a>概觀
 
-向 [SQL Server IaaS 代理程式擴充](sql-server-iaas-agent-extension-automate-management.md)功能註冊會在您的訂用帳戶內建立 **SQL 虛擬機器**_資源_ ，這是與虛擬機器資源 _不同_ 的資源。 從擴充功能取消註冊 SQL Server VM 將會移除 **SQL 虛擬機器**_資源_ ，但不會捨棄實際的虛擬機器。
+向 [SQL Server IaaS 代理程式擴充](sql-server-iaas-agent-extension-automate-management.md)功能註冊會在您的訂用帳戶內建立 **SQL 虛擬機器**_資源_，這是與虛擬機器資源 _不同_ 的資源。 從擴充功能取消註冊 SQL Server VM 將會移除 **SQL 虛擬機器**_資源_，但不會捨棄實際的虛擬機器。
 
 透過 Azure 入口網站部署 SQL Server VM Azure Marketplace 映射，會自動向延伸模組註冊 SQL Server VM。 不過，如果您選擇在 Azure 虛擬機器上自行安裝 SQL Server，或從自訂 VHD 布建 Azure 虛擬機器，則必須向 SQL IaaS 代理程式延伸模組註冊您的 SQL Server VM，以將完整的功能優點與管理能力解除鎖定。 
 
@@ -104,7 +104,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
   ```azurecli-interactive
   # Register Enterprise or Standard self-installed VM in Lightweight mode
-  az sql vm create --name <vm_name> --resource-group <resource_group_name> --location <vm_location> --license-type PAYG 
+  az sql vm create --name <vm_name> --resource-group <resource_group_name> --location <vm_location> --license-type <license_type> 
   ```
 
 
@@ -119,7 +119,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
           
   # Register SQL VM with 'Lightweight' SQL IaaS agent
   New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
-    -LicenseType PAYG -SqlManagementType LightWeight  
+    -LicenseType <license_type>  -SqlManagementType LightWeight  
   ```
 
 ---
@@ -140,10 +140,10 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ### <a name="noagent-management-mode"></a>NoAgent 管理模式 
 
-SQL Server 2008 和 2008 R2 安裝在 Windows Server 2008 ( _不是 R2_ ) 可以在 [NoAgent 模式](sql-server-iaas-agent-extension-automate-management.md#management-modes)中向 SQL IaaS 代理程式延伸模組註冊。 此選項可確保合規性，並允許在功能有限的 Azure 入口網站中監視 SQL Server 的 VM。
+SQL Server 2008 和 2008 R2 安裝在 Windows Server 2008 (_不是 R2_) 可以在 [NoAgent 模式](sql-server-iaas-agent-extension-automate-management.md#management-modes)中向 SQL IaaS 代理程式延伸模組註冊。 此選項可確保合規性，並允許在功能有限的 Azure 入口網站中監視 SQL Server 的 VM。
 
 
-針對 **授權類型** ，指定： `AHUB` 、 `PAYG` 或 `DR` 。 針對 [ **映射供應** 專案]，指定 `SQL2008-WS2008` 或 `SQL2008R2-WS2008`
+針對 **授權類型**，指定： `AHUB` 、 `PAYG` 或 `DR` 。 針對 [ **映射供應** 專案]，指定 `SQL2008-WS2008` 或 `SQL2008R2-WS2008`
 
 若要 `SQL2008-WS2008` 在 Windows Server 2008 實例上註冊 SQL Server 2008 () 或 2008 R2 (`SQL2008R2-WS2008`) ，請使用下列 Azure CLI 或 Azure PowerShell 程式碼片段： 
 
@@ -186,7 +186,7 @@ $sqlvm.SqlManagementType
 
 ## <a name="upgrade-to-full"></a>升級至 full  
 
-在 *輕量* 模式下註冊擴充的 SQL Server vm 可以使用 Azure 入口網站、Azure CLI 或 Azure PowerShell 升級為 _full_ 。 在 OS 升級為 Windows 2008 R2 和更新版本後， _NoAgent_ 模式中的 SQL Server VM 就可以升級為 _完整_ 模式。 無法降級-若要這樣做，您必須從 SQL IaaS 代理程式擴充功能中 [取消註冊](#unregister-from-extension) SQL Server VM。 這麼做會移除 **SQL 虛擬機器**_資源_ ，但不會刪除實際的虛擬機器。 
+在 *輕量* 模式下註冊擴充的 SQL Server vm 可以使用 Azure 入口網站、Azure CLI 或 Azure PowerShell 升級為 _full_ 。 在 OS 升級為 Windows 2008 R2 和更新版本後，_NoAgent_ 模式中的 SQL Server VM 就可以升級為 _完整_ 模式。 無法降級-若要這樣做，您必須從 SQL IaaS 代理程式擴充功能中 [取消註冊](#unregister-from-extension) SQL Server VM。 這麼做會移除 **SQL 虛擬機器**_資源_，但不會刪除實際的虛擬機器。 
 
 
 ### <a name="azure-portal"></a>Azure 入口網站
@@ -195,7 +195,7 @@ $sqlvm.SqlManagementType
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 移至 [SQL 虛擬機器](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)資源。 
-1. 選取您的 SQL Server VM，然後選取 **[總覽** ]。 
+1. 選取您的 SQL Server VM，然後選取 **[總覽**]。 
 1. 針對具有 NoAgent 或輕量 IaaS 模式的 SQL Server VM，請選取 [僅授權類型和版本更新適用於 SQL IaaS 擴充功能] 訊息。
 
    ![從入口網站變更模式的選項](./media/sql-agent-extension-manually-register-single-vm/change-sql-iaas-mode-portal.png)
@@ -239,7 +239,7 @@ $sqlvm.SqlManagementType
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 1. 移至 [SQL Server vm](manage-sql-vm-portal.md)。
 1. 從清單中選取 SQL Server VM。 如果這裡未列出您的 SQL Server VM，可能尚未向 SQL IaaS 代理程式延伸模組註冊。 
-1. 查看 [狀態]下的值。 如果 **狀態** 為 [ **成功** ]，表示 SQL Server VM 已成功向 SQL IaaS 代理程式延伸註冊。 
+1. 查看 [狀態]下的值。 如果 **狀態** 為 [ **成功**]，表示 SQL Server VM 已成功向 SQL IaaS 代理程式延伸註冊。 
 
    ![驗證 SQL RP 註冊狀態](./media/sql-agent-extension-manually-register-single-vm/verify-registration-status.png)
 
@@ -287,14 +287,14 @@ $sqlvm.SqlManagementType
 
    ![選取頂端導覽中的 [刪除]](./media/sql-agent-extension-manually-register-single-vm/delete-sql-vm-resource.png)
 
-1. 輸入 SQL 虛擬機器的名稱，並 **清除虛擬機器旁的核取方塊** 。
+1. 輸入 SQL 虛擬機器的名稱，並 **清除虛擬機器旁的核取方塊**。
 
    ![取消核取 VM 以防止刪除實際的虛擬機器，然後選取 [刪除] 以繼續刪除 SQL VM 資源](./media/sql-agent-extension-manually-register-single-vm/confirm-delete-of-resource-uncheck-box.png)
 
    >[!WARNING]
-   > 如果無法清除虛擬機器名稱旁的核取方塊，將會完全 *刪除* 虛擬機器。 清除此核取方塊，即可從擴充功能取消註冊 SQL Server VM，但 *不會刪除實際的虛擬機器* 。 
+   > 如果無法清除虛擬機器名稱旁的核取方塊，將會完全 *刪除* 虛擬機器。 清除此核取方塊，即可從擴充功能取消註冊 SQL Server VM，但 *不會刪除實際的虛擬機器*。 
 
-1. 選取 [ **刪除** ] 以確認刪除 SQL 虛擬機器 *資源* ，而不是 SQL Server VM。 
+1. 選取 [ **刪除** ] 以確認刪除 SQL 虛擬機器 *資源*，而不是 SQL Server VM。 
 
 ### <a name="command-line"></a>命令列
 

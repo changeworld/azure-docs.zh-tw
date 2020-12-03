@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 4d12a7ec76f3390aabc7b45aeb0cd8cedcc6febd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3f6342fcb658611c754a16399ec05f5fa76c79b8
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186468"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546109"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>使用安全匯出將 Azure 連接至 ITSM 工具
 
@@ -108,7 +108,7 @@ ITSMC 會使用使用者名稱和密碼認證。 安全匯出有更強的驗證�
 
 下列各節提供有關如何在 Azure 中連接 ServiceNow 產品和保護匯出的詳細資料。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 
 確定您符合下列必要條件：
 
@@ -122,12 +122,13 @@ ITSMC 會使用使用者名稱和密碼認證。 安全匯出有更強的驗證�
 2. 依照下列版本的指示進行：
    * [巴黎](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)
    * [奧蘭多](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)
+   * [紐約](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)
 
 ### <a name="connect-bmc-helix-to-azure-monitor"></a>將 BMC Helix 連接到 Azure 監視器
 
 下列各節提供有關如何在 Azure 中連接您的 BMC Helix 產品和安全匯出的詳細資料。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 
 確定您符合下列必要條件：
 

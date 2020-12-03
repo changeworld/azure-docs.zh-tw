@@ -16,16 +16,16 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dd1234e13f77f1ea95327a0a489e9a97cdc0ffd
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0fae7a62f062478c5fee45d172b88d0132f3a8f8
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362496"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546126"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中管理外部使用者的存取權
 
-Azure AD 權利管理會利用 [Azure AD 的企業對企業 (B2B) ](../external-identities/what-is-b2b.md) 與另一個目錄中的組織外部人員共同作業。 使用 Azure AD B2B，外部使用者會向其主目錄進行驗證，但在您的目錄中會有標記法。 您目錄中的標記法可讓使用者將您資源的存取權指派給使用者。
+Azure AD 權利管理會利用 [Azure AD 的企業對企業 (B2B) ](../external-identities/what-is-b2b.md) 與另一個目錄中的組織外部人員共同作業。 在 Azure AD B2B 中，外部使用者會向其主目錄進行驗證，但在您的目錄中有表示法。 目錄中的表示法可讓使用者獲指派您資源的存取權。
 
 本文說明您可以指定的設定，以管理外部使用者的存取權。
 
@@ -51,13 +51,13 @@ Azure AD 權利管理會利用 [Azure AD 的企業對企業 (B2B) ](../external-
 
 1. 您可以將 [我的存取權入口網站連結](entitlement-management-access-package-settings.md) 傳送給外部組織的連絡人，讓他們可以與使用者共用，以要求存取套件。
 
-1. 在此範例中，外部使用者 (要求 **者，) ** 使用我的存取權入口網站連結來要求存取套件的 [存取](entitlement-management-request-access.md) 權。 使用者登入的方式取決於已連線組織中定義之目錄或網域的驗證類型。
+1. 在此範例中，外部使用者 (要求 **者，)** 使用我的存取權入口網站連結來要求存取套件的 [存取](entitlement-management-request-access.md) 權。 使用者登入的方式取決於已連線組織中定義之目錄或網域的驗證類型。
 
 1. 核准者 [核准要求](entitlement-management-request-approve.md) (或要求已自動核准) 。
 
 1. 要求進入 [傳遞狀態](entitlement-management-process.md)。
 
-1. 使用 B2B 邀請程式時，會在您的目錄中建立來賓使用者帳戶， (要求者在此範例) 中 ** (來賓) ** 。 如果已定義 [允許清單或拒絕清單](../external-identities/allow-deny-list.md) ，則會套用清單設定。
+1. 使用 B2B 邀請程式時，會在您的目錄中建立來賓使用者帳戶， (要求者在此範例) 中 **(來賓)** 。 如果已定義 [允許清單或拒絕清單](../external-identities/allow-deny-list.md) ，則會套用清單設定。
 
 1. 來賓使用者會獲指派存取套件中所有資源的存取權。 在 Azure AD 和其他 Microsoft Online Services 或已連線的 SaaS 應用程式中進行變更可能需要一些時間。 如需詳細資訊，請參閱套用 [變更的時間](entitlement-management-access-package-resources.md#when-changes-are-applied)。
 
@@ -84,7 +84,7 @@ Azure AD 權利管理會利用 [Azure AD 的企業對企業 (B2B) ](../external-
 - 允許來賓邀請其他來賓前往您的目錄，表示來賓邀請可能會在權利管理之外進行。 建議您將 **來賓** 設定為 [ **否** ]，只允許適當控管的邀請。
 - 如果您使用 B2B 允許清單，您必須確定您想要與使用權利管理合作的任何網域都已新增至清單中。 或者，如果您使用 B2B 拒絕清單，則必須確定您要加入的任何網域都未新增至清單中。
 - 如果您為所有已連線組織 (的 **所有使用者** 建立權利管理原則，) 的任何新外部使用者，且使用者不屬於您目錄中的已連線組織，則會在要求套件時自動建立已連線的組織。 您所擁有的任何 B2B 允許或拒絕清單設定將會優先執行。 因此，如果您使用，請務必將您想要包含在此原則中的網域包含在允許清單中，如果您使用拒絕清單，請將其從拒絕清單中排除。
-- 如果您想要建立包含所有 **使用者** (所有已連線組織的權利管理原則 +) 的任何新外部使用者，您必須先針對您的目錄啟用電子郵件單次密碼驗證。 如需詳細資訊，請參閱 [電子郵件單次密碼驗證 (預覽) ](../external-identities/one-time-passcode.md#opting-in-to-the-preview)。
+- 如果您想要建立包含所有 **使用者** (所有已連線組織的權利管理原則 +) 的任何新外部使用者，您必須先針對您的目錄啟用電子郵件單次密碼驗證。 如需詳細資訊，請參閱 [電子郵件單次密碼驗證 (預覽) ](../external-identities/one-time-passcode.md)。
 - 如需有關 Azure AD B2B 外部共同作業設定的詳細資訊，請參閱 [啟用 b2b 外部共同作業及管理可邀請來賓的人員](../external-identities/delegate-invitations.md)。
 
     ![Azure AD 外部共同作業設定](./media/entitlement-management-external-users/collaboration-settings.png)

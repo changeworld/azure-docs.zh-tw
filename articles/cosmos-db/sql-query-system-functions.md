@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 10/15/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: b8883d7040ad5c73a376838f7cb1aaa1b558bfbd
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 71dc5b84deda04c02b6d1722b11abf6631e9aa03
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340817"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546364"
 ---
 # <a name="system-functions-azure-cosmos-db"></a>系統函式 (Azure Cosmos DB) 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
  Cosmos DB 提供許多內建 SQL 函式。 內建函式的分類如下所示。  
   
-|函式群組|描述|作業|  
+|函式群組|說明|Operations|  
 |--------------|-----------------|-----------------| 
 |[陣列函數](sql-query-array-functions.md)|下列陣列函式會對陣列輸入值執行作業，並傳回數值、布林值或陣列值。 | [ARRAY_CONCAT](sql-query-array-concat.md)、 [ARRAY_CONTAINS](sql-query-array-contains.md)、 [ARRAY_LENGTH](sql-query-array-length.md)、 [ARRAY_SLICE](sql-query-array-slice.md) |
 |[日期和時間函數](sql-query-date-time-functions.md)|日期和時間函數可讓您以兩種形式取得目前的 UTC 日期和時間;數值時間戳記，其值為 Unix epoch （以毫秒為單位），或為符合 ISO 8601 格式的字串。 | [GetCurrentDateTime](sql-query-getcurrentdatetime.md)、 [GetCurrentTimestamp](sql-query-getcurrenttimestamp.md) |
@@ -47,4 +47,4 @@ Cosmos DB 函式和 ANSI SQL 函數之間的主要差異在於，Cosmos DB 函�
 - [字串函數](sql-query-string-functions.md)
 - [類型檢查函數](sql-query-type-checking-functions.md)
 - [使用者定義的函式](sql-query-udfs.md)
-- [彙總](sql-query-aggregates.md)
+- [彙總](sql-query-aggregate-functions.md)

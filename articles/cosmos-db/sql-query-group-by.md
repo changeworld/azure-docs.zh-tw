@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: tisande
-ms.openlocfilehash: 71314e6999031f52ebbfc582b43684ab5a17a261
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: d9cafc100ddd4b553577c447e82334e6ee7d1b6d
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93338793"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545412"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 GROUP BY 子句
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -41,7 +41,7 @@ GROUP BY 子句會根據一或多個指定屬性值來分割查詢的結果。
 
 ## <a name="remarks"></a>備註
   
-  當查詢使用 GROUP BY 子句時，SELECT 子句只能包含 GROUP BY 子句中包含的屬性和系統函式子集。 其中一個例外狀況是[彙總系統函式](sql-query-aggregates.md)，這可以出現在 SELECT 子句中，而不會包含在 GROUP BY 子句中。 您也一律可以在 SELECT 子句中包含常值。
+  當查詢使用 GROUP BY 子句時，SELECT 子句只能包含 GROUP BY 子句中包含的屬性和系統函式子集。 其中一個例外狀況是 [彙總函式](sql-query-aggregate-functions.md)，可以出現在 SELECT 子句中，而不會包含在 GROUP BY 子句中。 您也一律可以在 SELECT 子句中包含常值。
 
   GROUP BY 子句必須在 SELECT、FROM 和 WHERE 子句之後，以及 OFFSET LIMIT 子句之前。 您目前無法搭配 ORDER BY 子句使用 GROUP BY，但這是計畫中的。
 
@@ -192,4 +192,4 @@ GROUP BY ARRAY_CONTAINS(f.tags, {name: 'orange'}), f.version BETWEEN 0 AND 2
 
 - [快速入門](sql-query-getting-started.md)
 - [SELECT 子句](sql-query-select.md)
-- [彙總函數](sql-query-aggregates.md)
+- [彙總函數](sql-query-aggregate-functions.md)

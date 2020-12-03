@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: tisande
-ms.openlocfilehash: 35f212ea246e03be02fa082ef1b55dcb7cae1575
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 122c95fe9ac017ad7a6957dcdb8323837be34f21
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538643"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545378"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ 至 SQL 轉譯
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,7 +34,7 @@ Azure Cosmos DB 查詢提供者會執行從 LINQ 查詢到 Cosmos DB SQL 查詢�
     family.children[n].grade; //n is an int variable
   ```
   
-- 算術運算式，包括數值和布林值上的一般算術運算式。 如需完整清單，請參閱 [AZURE COSMOS DB SQL 規格](sql-query-system-functions.md)。
+- 算術運算式，包括數值和布林值上的一般算術運算式。 如需完整清單，請參閱 [AZURE COSMOS DB SQL 規格](sql-query-aggregate-functions.md)。
   
   ```
     2 * family.children[0].grade;
@@ -81,19 +81,19 @@ using (FeedIterator<Book> setIterator = container.GetItemLinqQueryable<Book>()
 
 SQL .NET SDK 隨附的 LINQ 提供者支援下列運算子：
 
-- **Select** ：投射轉譯為 [Select](sql-query-select.md)，包括物件結構。
-- **Where** ：篩選器會轉譯為 [where](sql-query-where.md)，並支援將、和轉換成 `&&` `||` `!` SQL 運算子
-- **SelectMany** ：允許將陣列回溯至 [JOIN](sql-query-join.md) 子句。 用來鏈狀或嵌套運算式以篩選陣列元素。
-- **OrderBy** 和 **ORDERBYDESCENDING** ：使用 ASC 或 DESC 轉譯為 [ORDER BY](sql-query-order-by.md) 。
-- **Count** 、 **Sum** 、 **Min** 、 **Max** 和 **Average** 運算子（用於 [匯總](sql-query-aggregates.md)）及其 async 對等 **CountAsync** 、 **SumAsync** 、 **MinAsync** 、 **MaxAsync** 和 **AverageAsync** 。
-- **CompareTo** ：轉譯為範圍比較。 常用於字串，因為它們在 .NET 中是無法比較的。
-- **Skip** 和 **Take** ：轉譯為 [位移和限制](sql-query-offset-limit.md) ，以限制查詢的結果並執行分頁。
+- **Select**：投射轉譯為 [Select](sql-query-select.md)，包括物件結構。
+- **Where**：篩選器會轉譯為 [where](sql-query-where.md)，並支援將、和轉換成 `&&` `||` `!` SQL 運算子
+- **SelectMany**：允許將陣列回溯至 [JOIN](sql-query-join.md) 子句。 用來鏈狀或嵌套運算式以篩選陣列元素。
+- **OrderBy** 和 **ORDERBYDESCENDING**：使用 ASC 或 DESC 轉譯為 [ORDER BY](sql-query-order-by.md) 。
+- **Count**、 **Sum**、 **Min**、 **Max** 和 **Average** 運算子（用於 [匯總](sql-query-aggregate-functions.md)）及其 async 對等 **CountAsync**、 **SumAsync**、 **MinAsync**、 **MaxAsync** 和 **AverageAsync**。
+- **CompareTo**：轉譯為範圍比較。 常用於字串，因為它們在 .NET 中是無法比較的。
+- **Skip** 和 **Take**：轉譯為 [位移和限制](sql-query-offset-limit.md) ，以限制查詢的結果並執行分頁。
 - **數學** 函式：支援從 .net、、、、、、、、、、、、、、、 `Abs` `Acos` `Asin` `Atan` `Ceiling` `Cos` `Exp` `Floor` `Log` `Log10` `Pow` `Round` `Sign` `Sin` `Sqrt` `Tan` 和 `Truncate` 到相等 [內建數學函數](sql-query-mathematical-functions.md)的轉譯。
-- **字串函數** ：支援從 .net、、、、、、、、、、、 `Concat` `Contains` `Count` 和轉換 `EndsWith` `IndexOf` `Replace` `Reverse` `StartsWith` `SubString` `ToLower` `ToUpper` `TrimEnd` `TrimStart` 成相等的 [內建字串函數](sql-query-string-functions.md)。
+- **字串函數**：支援從 .net、、、、、、、、、、、 `Concat` `Contains` `Count` 和轉換 `EndsWith` `IndexOf` `Replace` `Reverse` `StartsWith` `SubString` `ToLower` `ToUpper` `TrimEnd` `TrimStart` 成相等的 [內建字串函數](sql-query-string-functions.md)。
 - **陣列** 函式：支援從 .net `Concat` 、 `Contains` 和轉換 `Count` 為相等的 [內建陣列函數](sql-query-array-functions.md)。
 - **地理空間延伸** 模組函式：支援從存根方法 `Distance` 、、 `IsValid` `IsValidDetailed` 和 `Within` 到相等 [內建地理空間函數](sql-query-geospatial-query.md)的轉譯。
-- **使用者定義函數延伸函式** ：支援從 stub 方法轉譯 `UserDefinedFunctionProvider.Invoke` 為對應的 [使用者定義函數](sql-query-udfs.md)。
-- **其他** ：支援 `Coalesce` 和條件 [運算子](sql-query-operators.md)的轉譯。 視內容而定，可以轉譯 `Contains` 為字串 CONTAINS、ARRAY_CONTAINS 或 IN。
+- **使用者定義函數延伸函式**：支援從 stub 方法轉譯 `UserDefinedFunctionProvider.Invoke` 為對應的 [使用者定義函數](sql-query-udfs.md)。
+- **其他**：支援 `Coalesce` 和條件 [運算子](sql-query-operators.md)的轉譯。 視內容而定，可以轉譯 `Contains` 為字串 CONTAINS、ARRAY_CONTAINS 或 IN。
 
 ## <a name="examples"></a>範例
 

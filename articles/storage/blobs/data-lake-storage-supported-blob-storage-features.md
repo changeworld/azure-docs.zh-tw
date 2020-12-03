@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 982f4a9cdf3984bae79cd11dad2bd637a1772f05
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 58a907a2ae17966f50a037f49a807ac0a3ad6867
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348495"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545821"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中可用的 Blob 儲存體功能
 
@@ -35,21 +35,20 @@ Blob 儲存體功能，例如 [診斷記錄](../common/storage-analytics-logging
 |Blob 儲存體 PowerShell 命令|正式推出|正式推出|[快速入門：使用 PowerShell 上傳、下載及列出 Blob](storage-quickstart-blobs-powershell.md)|
 |Blob 儲存體 Azure CLI 命令|正式推出|正式推出|[快速入門：使用 Azure CLI 建立、下載及列出 Blob](storage-quickstart-blobs-cli.md)|
 |Blob 儲存體 API|正式推出|正式推出|[快速入門：適用於 .NET 的 Azure Blob 儲存體用戶端程式庫 v12](storage-quickstart-blobs-dotnet.md)<br>[快速入門：使用 Java v12 SDK 來管理 Blob](storage-quickstart-blobs-java.md)<br>[快速入門：使用 Python v12 SDK 來管理 Blob](storage-quickstart-blobs-python.md)<br>[快速入門：使用 Node.js 中的 JavaScript v12 SDK 來管理 Blob](storage-quickstart-blobs-nodejs.md)|
-|診斷記錄|正式推出|預覽 |[Azure 儲存體分析記錄](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (部分機器翻譯)|
+|診斷記錄|正式推出|預覽 |[Azure 儲存體分析記錄](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |封存存取層|正式推出|不支援|[Azure Blob 儲存體︰經常性存取、非經常性存取和封存存取層](storage-blob-storage-tiers.md)|
 |生命週期管理原則 (分層) |正式推出|尚不支援|[管理 Azure Blob 儲存體生命週期](storage-lifecycle-management-concepts.md)|
 |生命週期管理原則 (刪除 blob) |正式推出|正式推出|[管理 Azure Blob 儲存體生命週期](storage-lifecycle-management-concepts.md)|
 |登入 Azure 監視器|預覽 |預覽|[監視 Azure 儲存體](./monitor-blob-storage.md)|
-|快照集|預覽|預覽|[Blob 快照集](snapshots-overview.md)|
-|靜態網站|預覽|預覽|[Azure 儲存體中的靜態網站裝載](storage-blob-static-website.md) \(機器翻譯\)|
-|固定儲存體|預覽|預覽|[使用不可變儲存體儲存業務關鍵 Blob 資料](storage-blob-immutable-storage.md)|
+|快照集|預覽<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|預覽<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Blob 快照集](snapshots-overview.md)|
+|靜態網站|預覽<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|預覽<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Azure 儲存體中的靜態網站裝載](storage-blob-static-website.md) \(機器翻譯\)|
+|固定儲存體|預覽<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|預覽<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[使用不可變儲存體儲存業務關鍵 Blob 資料](storage-blob-immutable-storage.md)|
 |容器虛刪除|預覽|預覽|[適用于容器的虛刪除 (預覽) ](soft-delete-container-overview.md)|
 |Azure 儲存體清查|預覽|預覽|[使用 Azure 儲存體清查來管理 blob 資料 (預覽) ](blob-inventory.md)|
 |Blob 虛刪除|尚不支援|尚不支援|[Blob 的虛刪除](storage-blob-soft-delete.md)|
-|Blob 虛刪除|尚不支援|尚不支援|[Blob 的虛刪除](./soft-delete-blob-overview.md)|
 |Blobfuse|正式推出|正式推出|[如何使用 Blobfuse 將 Blob 儲存體掛接為檔案系統](storage-how-to-mount-container-linux.md)|
+|匿名公用存取 |正式推出|正式推出| 請參閱 [設定容器和 blob 的匿名公用讀取權限](anonymous-read-access-configure.md)。|
 |客戶管理的帳戶容錯移轉|尚不支援|尚不支援|[災害復原和帳戶容錯移轉](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Blob 容器 ACL|不支援<div role="complementary" aria-labelledby="blob-container-ACL"><sup>1</sup></div>|不支援<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|請參閱下表中的相關附注。|
 |客戶提供的金鑰|尚不支援|尚不支援|[針對 Blob 儲存體的要求提供加密金鑰](encryption-customer-provided-keys.md)|
 |自訂網域|尚不支援|尚不支援|[將自訂網域對應至 Azure Blob 儲存體端點](storage-custom-domain-name.md)|
 |加密範圍|尚不支援|尚不支援|[建立及管理加密範圍 (預覽) ](encryption-scope-manage.md)|
@@ -57,9 +56,7 @@ Blob 儲存體功能，例如 [診斷記錄](../common/storage-analytics-logging
 |物件複寫|尚不支援|尚不支援|[設定區塊 blob 的物件複寫](object-replication-configure.md)|
 |Blob 版本設定|尚不支援|尚不支援|[啟用和管理 Blob 版本設定](versioning-enable.md)|
 
-<div id="blob-container-ACL"><sup>1</sup> 您可以在容器的根資料夾（而不是容器本身）上設定 acl。</div><br>
-
-<div id="preview-form"><sup>2</sup>若要搭配 Data Lake Storage Gen2 使用快照集、不可變的儲存體或靜態網站，您必須完成此 <a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>表單</a>以註冊預覽。  </div>
+<div id="preview-form"><sup>1</sup>若要搭配 Data Lake Storage Gen2 使用快照集、不可變的儲存體或靜態網站，您必須完成此 <a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>表單</a>以註冊預覽。  </div>
 
 ## <a name="see-also"></a>另請參閱
 

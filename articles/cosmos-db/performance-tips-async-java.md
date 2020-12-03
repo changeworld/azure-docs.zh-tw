@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java, contperfq2
-ms.openlocfilehash: 1f57e14893e6f43b98b0e45cc2bd2d49e31271d0
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bfbf764aaf1061808d128d16e8a96b08e75fcfe6
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350342"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545565"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Azure Cosmos DB 非同步 Java SDK v2 的效能祕訣
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "96350342"
 
 
 > [!IMPORTANT]  
-> 這「不是」適用於 Azure Cosmos DB 的最新 Java SDK！ 您應該將專案升級到 [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md)，然後閱讀 Azure Cosmos DB Java SDK v4 [效能提示指南](performance-tips-java-sdk-v4-sql.md)。 遵循[移轉到 Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) 指南與 [Reactor 與 RxJava 之間的比較](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) \(英文\) 指南來升級。 
+> 這「不是」適用於 Azure Cosmos DB 的最新 Java SDK！ 您應該將專案升級到 [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md)，然後閱讀 Azure Cosmos DB Java SDK v4 [效能提示指南](performance-tips-java-sdk-v4-sql.md)。 遵循[移轉到 Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) 指南與 [Reactor 與 RxJava 之間的比較](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md) \(英文\) 指南來升級。 
 > 
 > 此文章提供的效能祕訣僅適用於 Azure Cosmos DB 非同步 Java SDK v2。 如需詳細資訊，請參閱 Azure Cosmos DB 非同步 Java SDK v2 [版本資訊](sql-api-sdk-async-java.md)、[Maven 存放庫](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)與 Azure Cosmos DB 非同步 Java SDK v2 [疑難排解指南](troubleshoot-java-async-sdk.md)。
 >

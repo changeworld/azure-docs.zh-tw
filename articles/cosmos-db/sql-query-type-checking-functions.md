@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 96fea7cb53c89c02583a6dba8434cd33641d6a09
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 2becc9216d847dfe26d8fd3a433993112fff7980
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341496"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546342"
 ---
 # <a name="type-checking-functions-azure-cosmos-db"></a>類型檢查函式 (Azure Cosmos DB) 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "93341496"
 * [IS_ARRAY](sql-query-is-array.md)
 * [IS_BOOL](sql-query-is-bool.md)
 * [IS_DEFINED](sql-query-is-defined.md)
-* [IS_Null](sql-query-is-null.md)
+* [IS_NULL](sql-query-is-null.md)
 * [IS_NUMBER](sql-query-is-number.md)
 * [IS_OBJECT](sql-query-is-object.md)
 * [IS_PRIMITIVE](sql-query-is-primitive.md)
@@ -40,4 +40,4 @@ ms.locfileid: "93341496"
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 簡介](introduction.md)
 - [使用者定義的函式](sql-query-udfs.md)
-- [彙總](sql-query-aggregates.md)
+- [彙總](sql-query-aggregate-functions.md)

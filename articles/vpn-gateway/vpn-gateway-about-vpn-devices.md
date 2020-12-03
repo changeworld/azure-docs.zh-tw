@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/01/2020
+ms.date: 12/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 92f589e6a587febc10a4b407fe3616aca42d27d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae498b39a421db19f0d4e0a8daca58730321b58c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318942"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546806"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>關於 VPN 裝置和站對站 VPN 閘道連線的 IPsec/IKE 參數
 
@@ -35,7 +35,7 @@ ms.locfileid: "89318942"
 
 為了協助設定您的 VPN 裝置，請參閱對應到適當裝置系列的連結。 會以最佳方式來提供組態指示的連結。 如需 VPN 裝置的支援，請連絡裝置製造商。
 
-|**廠商**          |**裝置系列**     |**作業系統最低版本** |**原則式設定指示** |**路由式設定指示** |
+|**廠商**          |**裝置系列**     |**最低 OS 版本** |**原則式設定指示** |**路由式設定指示** |
 | ---                | ---                  | ---                   | ---            | ---           |
 | A10 Networks, Inc. |Thunder CFW           |ACOS 4.1.1             |不相容  |[設定指南](https://www.a10networks.com/wp-content/uploads/A10-DG-16161-EN.pdf)|
 | Allied Telesis     |AR 系列 VPN 路由器 |AR 系列 5.4.7+               | [設定指南](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router) |[設定指南](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
@@ -51,7 +51,7 @@ ms.locfileid: "89318942"
 | Citrix |NetScaler MPX、SDX、VPX |10.1 和更新版本 |[設定指南](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |不相容 |
 | F5 |BIG-IP 系列 |12.0 |[設定指南](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[設定指南](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
 | Fortinet |FortiGate |FortiOS 5.6 |  (未測試)  |[設定指南](https://docs.fortinet.com/document/fortigate/5.6.0/cookbook/255100/ipsec-vpn-to-azure) |
-| Hillstone 網路 | 下一代防火牆 (NGFW)  | 5.5 r7  |  (未測試)  | [設定指南](https://www.hillstonenet.com/wp-content/uploads/How-to-setup-Site-to-Site-VPN-between-Microsoft-Azure-and-an-on-premise-Hillstone-Networks-Security-Gateway.pdf) |
+| Hillstone Networks | 下一代防火牆 (NGFW)  | 5.5 r7  |  (未測試)  | [設定指南](https://www.hillstonenet.com/wp-content/uploads/How-to-setup-Site-to-Site-VPN-between-Microsoft-Azure-and-an-on-premise-Hillstone-Networks-Security-Gateway.pdf) |
 | Internet Initiative Japan (IIJ) |SEIL 系列 |SEIL/X 4.60<br>SEIL/B1 4.60<br>SEIL/x86 3.20 |[設定指南](https://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) |不相容 |
 | Juniper |SRX |原則式：JunOS 10.2<br>路由式：JunOS 11.4 |支援 |[設定指令碼](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |J 系列 |原則式：JunOS 10.4r9<br>路由式：JunOS 11.4 |支援 |[設定指令碼](vpn-gateway-download-vpndevicescript.md) |
@@ -96,7 +96,7 @@ ms.locfileid: "89318942"
 ### <a name="to-edit-a-sample"></a>編輯範本：
 
 1. 使用 [記事本] 開啟範本。
-2. 搜尋所有 <文字**> 字串並使用適合您環境的值加以取代。 請務必加上 < 和 >。 當有指定名稱時，您選取的名稱應該是唯一名稱。 如果命令無法運作，請參閱裝置製造商文件。
+2. 搜尋所有 <文字> 字串並使用適合您環境的值加以取代。 請務必加上 < 和 >。 當有指定名稱時，您選取的名稱應該是唯一名稱。 如果命令無法運作，請參閱裝置製造商文件。
 
 | **範本中的文字** | **變更為** |
 | --- | --- |
@@ -112,13 +112,11 @@ ms.locfileid: "89318942"
 | &lt;SP_AzureGatewayIpAddress&gt; |此資訊專屬於您的虛擬網路，位於管理入口網站中做為 **[閘道 IP 位址]**。 |
 | &lt;SP_PresharedKey&gt; |此資訊專屬於您的虛擬網路，是 [管理入口網站] 中的管理金鑰。 |
 
-## <a name="ipsecike-parameters"></a><a name="ipsec"></a>IPsec/IKE 參數
+## <a name="default-ipsecike-parameters"></a><a name="ipsec"></a>預設的 IPsec/IKE 參數
 
-> [!IMPORTANT]
-> 1. 下面的資料表包含了 Azure VPN 閘道在預設組態中使用的演算法和參數的組合。 對於使用 Azure Resource Management 部署模型所建立的路由式 VPN 閘道，您可以對每個個別的連線指定自訂原則。 如需詳細指示，請參閱[設定 IPsec/IKE 原則](vpn-gateway-ipsecikepolicy-rm-powershell.md)。
->
-> 2. 此外，您必須將 TCP **MSS** 固定在 **1350**。 或者，如果您的 VPN 裝置不支援 MSS 固定，您也可以將通道介面上的 **MTU** 改設為 **1400** 位元組。
->
+下表包含 Azure VPN 閘道在預設設定 (**預設原則**) 中使用之演算法和參數的組合。 對於使用 Azure Resource Management 部署模型所建立的路由式 VPN 閘道，您可以對每個個別的連線指定自訂原則。 如需詳細指示，請參閱[設定 IPsec/IKE 原則](vpn-gateway-ipsecikepolicy-rm-powershell.md)。
+
+此外，您必須在 **1350** 上將 TCP **MSS** 夾具。 或者，如果您的 VPN 裝置不支援 MSS 固定，您也可以將通道介面上的 **MTU** 改設為 **1400** 位元組。
 
 在下列資料表中：
 
@@ -206,7 +204,7 @@ ms.locfileid: "89318942"
 
 ### <a name="feb-16-2017"></a>2017 年 2 月 16 日
 
-適用於 Azure 路由式 VPN 但**版本比 7.1.4 舊的 Palo Alto Networks 裝置**：如果您使用來自 Palo Alto Networks、PAN-OS 版本比 7.1.4 舊的 VPN 裝置，而在連線到 Azure 路由式 VPN 閘道時發生問題，請執行下列步驟：
+適用於 Azure 路由式 VPN 但 **版本比 7.1.4 舊的 Palo Alto Networks 裝置**：如果您使用來自 Palo Alto Networks、PAN-OS 版本比 7.1.4 舊的 VPN 裝置，而在連線到 Azure 路由式 VPN 閘道時發生問題，請執行下列步驟：
 
 1. 檢查您 Palo Alto Networks 裝置的韌體版本。 如果您的 PAN-OS 版本比 7.1.4 舊，請升級至 7.1.4。
 2. 在 Palo Alto Networks 裝置上，於連線到 Azure VPN 閘道時，將 [Phase 2 SA (第 2 階段 SA)] \(或 [Quick Mode SA (快速模式 SA)]) 存留期變更為 28,800 秒 (8 小時)。

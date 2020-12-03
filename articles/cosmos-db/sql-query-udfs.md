@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 5c7050042d59156e1203b5830d710e61bd8eb382
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 98698264f0beb25a8b4f74861f1150ae889d7115
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341883"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546330"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Azure Cosmos DB 中 (Udf) 的使用者定義函數
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -144,4 +144,4 @@ API 會擴充 SQL 語法，以支援使用 Udf 的自訂應用程式邏輯。 �
 
 - [Azure Cosmos DB 簡介](introduction.md)
 - [系統函數](sql-query-system-functions.md)
-- [彙總](sql-query-aggregates.md)
+- [彙總](sql-query-aggregate-functions.md)

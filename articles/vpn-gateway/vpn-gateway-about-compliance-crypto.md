@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 12/02/2020
 ms.author: yushwang
-ms.openlocfilehash: a77ee3c4301d278f98b571402514663dcfc9ca52
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 47d14c5ee7f6c4816bf15351e9cb28a2aaa72b4c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657919"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546840"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>關於密碼編譯需求和 Azure VPN 閘道
 
@@ -29,6 +29,8 @@ ms.locfileid: "94657919"
 ## <a name="about-ipsec-and-ike-policy-parameters-for-azure-vpn-gateways"></a>關於 Azure VPN 閘道的 IPsec 和 IKE 原則參數
 
 IPsec 和 IKE 通訊協定標準支援各種不同的密碼編譯演算法的各種組合。 如果您未要求特定的密碼編譯演算法和參數組合，Azure VPN 閘道會使用一組預設提案。 選擇預設原則集的用意，是要在預設設定中將與各種協力廠商 VPN 裝置的互通性最大化。 如此一來，原則和提案數目就無法涵蓋所有可用的密碼編譯演算法和金鑰長度組合。
+
+### <a name="default-policy"></a>預設原則
 
 Azure VPN 閘道的預設原則會列在「 [關於 vpn 裝置和站對站 Vpn 閘道連線的 IPsec/IKE 參數](vpn-gateway-about-vpn-devices.md)」一文中。
 

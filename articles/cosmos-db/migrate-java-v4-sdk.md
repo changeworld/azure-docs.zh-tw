@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b33524acd09cbf565127dc81ef2b5bfa16b4504d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 6bbf87689b577eda7de491744156e63eaa3b440c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339748"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546874"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>遷移您的應用程式，以使用 Azure Cosmos DB Java SDK v4
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -46,9 +46,9 @@ ms.locfileid: "93339748"
 
 ### <a name="rxjava-is-replaced-with-reactor-in-azure-cosmos-db-java-sdk-versions-3xx-and-40"></a>RxJAVA 會在 Azure Cosmos DB JAVA SDK 3.x.x 和 4.0 版中取代為 Reactor
 
-如果您不熟悉非同步程式設計或回應式程式設計，請參閱 [Reactor 模式指南](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md)，以取得非同步程式設計和專案 Reactor 的簡介。 如果您一直在使用 Azure Cosmos DB 同步 JAVA SDK 2.x.x 或 Azure Cosmos DB JAVA SDK 3.x.x 同步 API，本指南可能會很有用。
+如果您不熟悉非同步程式設計或回應式程式設計，請參閱 [Reactor 模式指南](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-pattern-guide.md)，以取得非同步程式設計和專案 Reactor 的簡介。 如果您一直在使用 Azure Cosmos DB 同步 JAVA SDK 2.x.x 或 Azure Cosmos DB JAVA SDK 3.x.x 同步 API，本指南可能會很有用。
 
-如果您一直在使用 Azure Cosmos DB 非同步 JAVA SDK 2.x.x，並打算移轉至 4.0 SDK，請參閱 [Reactor vs RxJAVA 指南](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md)，以取得將 RxJAVA 程式碼轉換為使用 Reactor 的指引。
+如果您一直在使用 Azure Cosmos DB 非同步 JAVA SDK 2.x.x，並打算移轉至 4.0 SDK，請參閱 [Reactor vs RxJAVA 指南](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md)，以取得將 RxJAVA 程式碼轉換為使用 Reactor 的指引。
 
 ### <a name="azure-cosmos-db-java-sdk-v4-has-direct-connectivity-mode-in-both-async-and-sync-apis"></a>Azure Cosmos DB JAVA SDK v4 在非同步和同步 API 中都有直接連線模式
 
@@ -64,11 +64,11 @@ ms.locfileid: "93339748"
 
 * Azure Cosmos DB JAVA SDK 3.x.x 和4.0 提供同步和非同步 API。
 
-  * **Java SDK 4.0** ：所有類別都屬於同步 API，除非類別名稱在 `Cosmos` 之後附加 `Async`。
+  * **Java SDK 4.0**：所有類別都屬於同步 API，除非類別名稱在 `Cosmos` 之後附加 `Async`。
 
-  * **Java SDK 3.x.x** ：所有的類別都屬於非同步 API，除非類別名稱在 `Cosmos` 之後附加 `Async`。
+  * **Java SDK 3.x.x**：所有的類別都屬於非同步 API，除非類別名稱在 `Cosmos` 之後附加 `Async`。
 
-  * **非同步 Java SDK 2.x.x** ：類別名稱類似於同步 JAVA SDK 2.x.x，但名稱開頭為 *非同步* 。
+  * **非同步 Java SDK 2.x.x**：類別名稱類似於同步 JAVA SDK 2.x.x，但名稱開頭為 *非同步*。
 
 ### <a name="hierarchical-api-structure"></a>階層式 API 結構
 
@@ -376,5 +376,5 @@ SalesOrder salesOrder = new SalesOrder(
 ## <a name="next-steps"></a>後續步驟
 
 * [建置 JAVA 應用程式](create-sql-api-java.md)來使用 V4 SDK 管理 Azure Cosmos DB SQL API 資料
-* 瞭解[以 Reactor 為基礎的 JAVA SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md)
-* 瞭解如何使用 [Reactor vs RxJAVA 指南](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md)將 RxJAVA 非同步程式碼轉換成 Reactor 非同步程式碼
+* 瞭解[以 Reactor 為基礎的 JAVA SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-pattern-guide.md)
+* 瞭解如何使用 [Reactor vs RxJAVA 指南](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md)將 RxJAVA 非同步程式碼轉換成 Reactor 非同步程式碼

@@ -3,12 +3,12 @@ title: 備份和還原已加密的 Azure Vm
 description: 說明如何使用 Azure 備份服務來備份和還原已加密的 Azure Vm。
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: c4760a54d0200e48b2d6a38c963e9fc23925f7ff
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: ee7fedffd58ffb9e98f8c412833d151eb1a95530
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324916"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547146"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>備份和還原已加密的 Azure 虛擬機器
 
@@ -22,7 +22,11 @@ ms.locfileid: "96324916"
 
 ## <a name="encryption-using-customer-managed-keys"></a>使用客戶管理的金鑰進行加密
 
-當您使用自訂管理的金鑰來加密磁片時 (CMK) ，用來加密磁片的金鑰會儲存在 Azure Key Vault 中，並由您管理。 儲存體服務加密使用 CMK (SSE) 不同于 Azure 磁碟加密 (ADE) 加密。 ADE 會使用作業系統的加密工具。 SSE 會加密儲存體服務中的資料，讓您可以使用 Vm 的任何 OS 或映射。 如需使用客戶管理的金鑰來加密受控磁片的詳細資訊，請參閱 [這篇文章](../virtual-machines/disk-encryption.md#customer-managed-keys)。
+當您使用客戶管理的金鑰來加密磁片時 (CMK) ，用來加密磁片的金鑰會儲存在 Azure Key Vault 中，並由您管理。 儲存體服務加密使用 CMK (SSE) 不同于 Azure 磁碟加密 (ADE) 加密。 ADE 會使用作業系統的加密工具。 SSE 會加密儲存體服務中的資料，讓您可以使用 Vm 的任何 OS 或映射。
+
+您不需要執行任何明確的動作來備份或還原使用客戶管理金鑰來加密其磁片的 Vm。 儲存在保存庫中這些 Vm 的備份資料，會使用與保存 [庫上所使用的加密](encryption-at-rest-with-cmk.md)相同的方法進行加密。
+
+如需使用客戶管理的金鑰來加密受控磁片的詳細資訊，請參閱 [這篇文章](../virtual-machines/disk-encryption.md#customer-managed-keys)。
 
 ## <a name="encryption-support-using-ade"></a>使用 ADE 的加密支援
 
@@ -46,7 +50,7 @@ Azure 備份可以使用具有和沒有 Azure AD 應用程式的 ADE 來備份�
 - 加密的 VM 無法在檔案/資料夾層級復原。 您必須復原整個 VM，才能還原檔案和資料夾。
 - 還原 VM 時，您無法使用已加密 Vm 的 [ [取代現有的 VM](backup-azure-arm-restore-vms.md#restore-options) ] 選項。 只有未加密的受控磁片才支援此選項。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 開始之前，請執行下列作業：
 
@@ -131,7 +135,7 @@ Azure 備份需要唯讀存取權來備份金鑰和密碼，以及相關聯的 V
 
     ![Azure 備份選取範圍](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-1. 選取 [新增]。 **備份管理服務** 已新增至 **存取原則**。
+1. 選取 [新增]  。 **備份管理服務** 已新增至 **存取原則**。
 
     ![存取原則](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 

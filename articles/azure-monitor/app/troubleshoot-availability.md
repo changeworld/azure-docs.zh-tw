@@ -4,48 +4,44 @@ description: 針對 Azure 應用程式 Insights 中的 web 測試進行疑難排
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 04/28/2020
+ms.date: 11/19/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 0ac8dd189bee1c1d4f5a7a4d0f7de68b085fbc56
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 368c45433247c441631bdf79bfc9caa28a41f1b4
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015327"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546740"
 ---
 # <a name="troubleshooting"></a>疑難排解
 
 本文將協助您針對使用可用性監視時可能會發生的常見問題進行疑難排解。
 
-## <a name="ssltls-errors"></a>SSL/TLS 錯誤
+## <a name="troubleshooting-report-steps-for-ping-tests"></a>疑難排解 ping 測試的報告步驟
 
-|徵兆/錯誤訊息| 可能的原因|
-|--------|------|
-|無法建立 SSL/TLS 安全通道  | SSL 版本。 僅支援 TLS 1.0、1.1 和1.2。 **不支援 SSLv3。**
-|Tlsv1.1 1.2 記錄層：警示 (層級：嚴重、描述：記錄 MAC) 不正確| 如需 [詳細資訊](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake)，請參閱 >stackexchange.redis 執行緒。
-|失敗的 URL 會是 CDN (內容傳遞網路)  | 這可能是因為 CDN 的設定不正確所造成 |  
+[疑難排解] 報告可讓您輕鬆地診斷導致 **ping 測試** 失敗的常見問題。
 
-### <a name="possible-workaround"></a>可能的解決方法
+![藉由選取端對端交易詳細資料的失敗來流覽 [可用性] 索引標籤的動畫，以查看疑難排解報表](./media/troubleshoot-availability/availability-to-troubleshooter.gif)
 
-* 如果發生問題的 Url 一律是相依的資源，建議您停用 web 測試的 **剖析相依要求** 。
-
-## <a name="test-fails-only-from-certain-locations"></a>測試只會從特定位置失敗
-
-|徵兆/錯誤訊息| 可能的原因|
-|----|---------|
-|連接嘗試失敗，因為連線的合作物件在一段時間後未正確回應  | 防火牆會封鎖特定位置的測試代理程式。|
-|    |您可以透過 (負載平衡器、地理流量管理員、Azure Express Route，在特定 IP 位址的路由傳送。 )  
-|    |如果使用 Azure ExpressRoute，在 [發生非對稱式路由](../../expressroute/expressroute-asymmetric-routing.md)的情況下，有可能會卸載封包。|
-
-## <a name="test-failure-with-a-protocol-violation-error"></a>測試失敗，發生通訊協定違規錯誤
-
-|徵兆/錯誤訊息| 可能的原因| 可能的解決方式 |
-|----|---------|-----|
-|伺服器認可了通訊協定違規。 Section = ResponseHeader Detail = CR 之後必須接著 LF | 偵測到格式錯誤的標頭時，就會發生此情況。 具體來說，某些標頭可能不會使用 CRLF 來指出行尾，這違反了 HTTP 規格。 Application Insights 強制執行此 HTTP 規格，但標頭格式錯誤的回應失敗。| a. 請聯絡網站主機提供者/CDN 提供者，以修正故障的伺服器。 <br> b. 如果失敗的要求是資源 (例如樣式檔案、影像、腳本) ，您可以考慮停用相依要求的剖析。 請記住，如果您這樣做，將會失去監視這些檔案) 的能力。
+1. 在 Application Insights 資源的 [可用性] 索引標籤上，選取 [整體] 或其中一個可用性測試。
+2. 選取 [ **失敗** ]，然後在左側的 [向下切入] 下測試，或選取散佈圖上的其中一個點。
+3. 在 [端對端交易詳細資料] 頁面上，選取 [疑難排解報表摘要] 下的事件，然後選取 **[移至步驟]** 以查看疑難排解報表。
 
 > [!NOTE]
-> 在 HTTP 標頭驗證寬鬆的瀏覽器上，此 URL 可能不會失敗。 如需問題的詳細說明，請參閱此部落格文章：http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+>  如果有連線重複使用步驟，則 DNS 解析、連線建立和 TLS 傳輸步驟都不會出現。
 
+|步驟 | 錯誤訊息 | 可能的原因 |
+|-----|---------------|----------------|
+| 連接重複使用 | n/a | 通常相依于先前建立的連接，這表示 web 測試步驟是相依的。 因此不需要 DNS、連線或 SSL 步驟。 |
+| DNS 解析 | 無法解析遠端名稱：「您的 URL」 | DNS 解析程式失敗，最有可能是因為 DNS 記錄設定錯誤或暫時性 DNS 伺服器失敗。 |
+| 連線建立 | 連接嘗試失敗，因為連線的合作物件在一段時間後未適當回應。 | 一般來說，這表示您的伺服器沒有回應 HTTP 要求。 常見的原因是伺服器上的防火牆封鎖了我們的測試代理程式。 如果您想要在 Azure 虛擬網路內進行測試，您應該將可用性服務標記新增至您的環境。|
+| TLS 傳輸  | 用戶端和伺服器無法通訊，因為它們不具有一般演算法。| 僅支援 TLS 1.0、1.1 和1.2。 不支援 SSL。 此步驟不會驗證 SSL 憑證，而且只會建立安全的連接。 只有在發生錯誤時，才會顯示此步驟。 |
+| 接收回應標頭 | 無法從傳輸連線讀取資料。 此連接已經關閉。 | 您的伺服器在回應標頭中認可了通訊協定錯誤。 例如，當回應不完整時，您的伺服器會關閉連接。 |
+| 接收回應主體 | 無法從傳輸連接讀取資料：連接已關閉。 | 您的伺服器在回應主體中認可了通訊協定錯誤。 例如，當回應未完全讀取，或區塊回應主體中的區塊大小錯誤時，您的伺服器會關閉連接。 |
+| 重新導向限制驗證 | 此網頁有太多重新導向。 此迴圈會在此終止，因為此要求超過自動重新導向的限制。 | 每個測試有10個重新導向的限制。 |
+| 狀態碼驗證 | `200 - OK` 不符合預期的狀態 `400 - BadRequest` 。 | 視為成功的傳回狀態碼。 200 是表示已傳回標準 Web 網頁的代碼。 |
+| 內容驗證 | 要求的文字 ' hello ' 未出現在回應中。 | 字串不是回應中完全區分大小寫的相符項，例如字串 "歡迎！"。 它必須是純文字字串，不含萬用字元 (例如星號) 。 如果您的頁面內容變更，您可能必須更新字串。 內容相符僅支援英文字元。 |
+  
 ## <a name="common-troubleshooting-questions"></a>常見的疑難排解問題
 
 ### <a name="site-looks-okay-but-i-see-test-failures-why-is-application-insights-alerting-me"></a>網站看似正常，但我看到測試失敗？ 為什麼 Application Insights 發出警示？
@@ -54,7 +50,7 @@ ms.locfileid: "96015327"
 
    * 若要減少暫時性網路標誌等雜訊的機率，請確認已核取 [啟用測試失敗的重試] 設定。 您也可以從更多位置進行測試並據以管理警示規則閾值，以免發生會造成過度警示的位置特定問題。
 
-   * 從可用性體驗中按一下任何一個紅點，或從 [搜尋總管] 中按一下任何可用性失敗，查看為什麼回報失敗的詳細資料。 測試結果以及相關聯的伺服器端遙測資料 (如已啟用) 應該有助於您了解測試失敗的原因。 暫時性問題的常見原因是網路或連線問題。
+   * 按一下 [可用性散佈圖體驗] 體驗中的任一個紅點，或 [搜尋] explorer 中的任何可用性失敗，以查看我們回報失敗原因的詳細資料。 測試結果以及相關聯的伺服器端遙測資料 (如已啟用) 應該有助於您了解測試失敗的原因。 暫時性問題的常見原因是網路或連線問題。
 
    * 測試逾時？ 我們會在 2 分鐘後中止測試。 如果您進行的 ping 或多步驟測試超過 2 分鐘的時間，我們會回報失敗。 請考慮將測試分成可在較短的持續時間內完成的多個測試。
 
@@ -134,4 +130,3 @@ ms.locfileid: "96015327"
 
 * [多步驟 web 測試](availability-multistep.md)
 * [URL ping 測試](monitor-web-app-availability.md)
-
