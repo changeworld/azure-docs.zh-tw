@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 6b8a9cbfd3e7057f0d85d5f4e19fea3aa4fbe90b
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 79fe821e2da494ab8c9e4cb407e2c2b025f75568
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980213"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169098"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>教學課程：使用授權碼流程來登入使用者，並從 JavaScript 單頁應用程式 (SPA) 呼叫 Microsoft Graph API
 
@@ -351,7 +351,7 @@ const graphConfig = {
 
 - `Enter_the_Graph_Endpoint_Here` 是應用程式所應通訊的 Microsoft Graph API 執行個體。
   - 針對 **全域** Microsoft Graph API 端點，請將此字串的兩個執行個體取代為 `https://graph.microsoft.com`。
-  - 針對 **國家** 雲端部署中的端點，請參閱 Microsoft Graph 文件中的 [國家雲端部署](https://docs.microsoft.com/graph/deployments)。
+  - 針對 **國家** 雲端部署中的端點，請參閱 Microsoft Graph 文件中的 [國家雲端部署](/graph/deployments)。
 
 如果您使用全域端點，則 *graphConfig.js* 中的 `graphMeEndpoint` 和 `graphMailEndpoint` 值應如下所示：
 

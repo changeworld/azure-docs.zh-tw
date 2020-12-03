@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/19/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: d1e7fa1ed1649508f0d4923db8817d17ad556ca1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55b545471cbe45fe35e28879270e4340cf9d3834
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67173909"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026745"
 ---
 將資源部署至 Azure 時，您有極大的彈性可決定所要部署的資源類型、資源所在之處，以及如何設定資源。 不過，此種彈性可能會使得組織所擁有的選項超出您的規劃。 當您考慮將資源部署至 Azure 時，可能會思考下列問題：
 
@@ -30,4 +30,4 @@ ms.locfileid: "67173909"
 > * 鎖定系統不可或缺的資源。
 > * 標記資源，讓您可以依照對組織有意義的價值來追蹤資源。
 
-本文著重於實作治理所要進行的工作。 如需更廣泛的概念討論，請參閱 [Azure 中的治理](../articles/security/governance-in-azure.md)。 
+本文著重於實作治理所要進行的工作。 如需更廣泛的概念討論，請參閱 [Azure 中的治理](../articles/governance/index.yml)。

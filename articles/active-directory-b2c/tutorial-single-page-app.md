@@ -11,18 +11,18 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 705df6ddc6b665ac3d0d62ec3dad93e38f5e513e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6a9f3b864bd8aba2140c7d32d4b5474ff7b95f88
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953095"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171223"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>教學課程：在單頁應用程式中透過 Azure AD B2C 啟用驗證
 
 本教學課程將說明如何使用 Azure Active Directory B2C (Azure AD B2C) 在單頁應用程式 (SPA) 中註冊和登入使用者，使用以下任一項：
-* [OAuth 2.0 授權碼流程](https://docs.microsoft.com/azure/active-directory-b2c/authorization-code-flow) (使用 [MSAL.js 2.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser))
-* [OAuth 2.0 隱含授與流程](https://docs.microsoft.com/azure/active-directory-b2c/implicit-flow-single-page-application) (使用 [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core))
+* [OAuth 2.0 授權碼流程](./authorization-code-flow.md) (使用 [MSAL.js 2.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser))
+* [OAuth 2.0 隱含授與流程](./implicit-flow-single-page-application.md) (使用 [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core))
 
 在本教學課程中，首先在兩部分系列中要進行第一步為：
 
@@ -51,7 +51,7 @@ ms.locfileid: "94953095"
 
 ## <a name="update-the-application"></a>更新應用程式
 
-在必要條件裡面已完成的[第二個教學課程](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-spa)中，您在 Azure AD B2C 中註冊了單頁應用程式。 若要啟用本教學課程中範例程式碼的通訊，請在應用程式註冊中新增回覆 URL (也稱為重新導向 URI)。
+在必要條件裡面已完成的[第二個教學課程](./tutorial-register-spa.md)中，您在 Azure AD B2C 中註冊了單頁應用程式。 若要啟用本教學課程中範例程式碼的通訊，請在應用程式註冊中新增回覆 URL (也稱為重新導向 URI)。
 
 若要更新 Azure AD B2C 租用戶中的應用程式，您可以使用我們全新整合的 **應用程式註冊** 體驗，或使用舊版 **應用程式 (舊版)** 體驗。 [深入了解新的體驗](./app-registrations-training-guide.md)。
 

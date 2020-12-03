@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 5489feeeec64c7b3d4b5fc28eddfe8b780308796
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 09e922ffddcce732d9213eb91026561528c0728a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979873"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169132"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>教學課程：從 Blazor WebAssembly 應用程式登入使用者並呼叫受保護的 API
 
@@ -26,7 +26,7 @@ ms.locfileid: "94979873"
 > [!div class="checklist"]
 >
 > * 建立新的 Blazor WebAssembly 應用程式，並設定為使用 Azure Active Directory (Azure AD) 來透過 Microsoft 身分識別平台進行[驗證和授權](authentication-vs-authorization.md)
-> * 從受保護的 Web API 擷取資料，在此案例中為 [Microsoft Graph](https://docs.microsoft.com/graph/overview)
+> * 從受保護的 Web API 擷取資料，在此案例中為 [Microsoft Graph](/graph/overview)
 
 ## <a name="prerequisites"></a>必要條件
 
