@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a5003a68047c526996ec2c0065e08d5d5829b8ae
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 115691fdbc41d1ffec021aed89bfff43fb29dbb8
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351651"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530641"
 ---
 # <a name="azure-security-baseline-for-azure-defender-for-iot"></a>適用于 IoT 的 Azure Defender 的 azure 安全性基準
 
@@ -22,9 +22,9 @@ ms.locfileid: "96351651"
 
 ## <a name="identity-management"></a>身分識別管理
 
-*如需詳細資料，請參閱 [Azure 安全性效能評定：身分識別管理](../security/benchmarks/security-controls-v2-identity-management.md)。*
+如需詳細資訊，請參閱 [Azure 安全性效能評定：身分識別管理](../security/benchmarks/security-controls-v2-identity-management.md)。
 
-### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：將 Azure Active Directory 標準化為中央身分識別和驗證系統
+### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：將 Azure Active Directory 標準化為中央身分識別與驗證系統
 
 **指導** 方針：適用于 IoT 的 azure Defender 已與 Azure Active Directory (Azure AD) azure 的預設身分識別和存取管理服務整合。 您應該將 Azure AD 標準化，以管理組織的身分識別和存取管理：
 
@@ -32,17 +32,17 @@ ms.locfileid: "96351651"
 
 - 您的組織資源，例如 Azure 上的應用程式或您的公司網路資源。
 
-在組織的雲端安全性實務中，保護 Azure AD 應具有高優先順序。 Azure AD 提供身分識別安全分數，以協助您評估與 Microsoft 最佳作法建議相關的身分識別安全性狀態。 您可以使用分數來衡量您的設定與最佳做法建議的貼近程度，並改善安全性態勢。
+保護 Azure AD 在組織的雲端安全性實務中，應具有較高的優先順序。 Azure AD 提供身分識別安全分數，協助您評定相對於 Microsoft 最佳做法建議的身分識別安全性狀態。 請使用此分數來測量設定符合最佳做法建議的程度，並改善您的安全性狀態。
 
 Azure AD 支援外部身分識別，讓沒有 Microsoft 帳戶的使用者可以使用其外部身分識別登入其應用程式和資源。
 
 - [Azure Active Directory 中的租用](../active-directory/develop/single-and-multi-tenant-apps.md) 
 
-- [如何建立和設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) 
+- [如何建立及設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) 
 
-- [使用應用程式的外部識別提供者](../active-directory/external-identities/identity-providers.md) 
+- [使用應用程式的外部識別提供者](../active-directory/external-identities/identity-providers.md) (機器翻譯) 
 
-- [Azure Active Directory 中的身分識別安全分數為何](../active-directory/fundamentals/identity-secure-score.md)
+- [Azure Active Directory 中的身分識別安全分數為何](../active-directory/fundamentals/identity-secure-score.md) (機器翻譯)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -50,19 +50,19 @@ Azure AD 支援外部身分識別，讓沒有 Microsoft 帳戶的使用者可以
 
 ### <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3：使用 Azure AD 單一登入 (SSO) 進行應用程式存取
 
-**指導** 方針：適用于 IoT 的 Azure Defender 使用 Azure Active Directory，為 azure 資源、雲端應用程式和內部部署應用程式提供身分識別和存取管理。 其中包括企業身分識別 (例如員工) 以及外部身分識別 (例如合作夥伴、廠商和供應商)。 這可啟用單一登入 (SSO)，以管理和保護對組織在內部部署和雲端中的資料和資源的存取。 您可以將所有的使用者、應用程式和裝置連線至 Azure AD，以進行無縫且安全的存取，並提供更高的可見度和控制性。
+**指導** 方針：適用于 IoT 的 Azure Defender 使用 Azure Active Directory，為 azure 資源、雲端應用程式和內部部署應用程式提供身分識別和存取管理。 這包括企業身分識別 (例如員工)，以及外部身分識別 (例如合作夥伴、廠商和供應商)。 這可讓單一登入 (SSO) 管理及保護內部部署和雲端中的組織資料與資源存取。 請將您的所有使用者、應用程式和裝置連線到 Azure AD，以進行順暢且安全的存取，並提供更高的可見度和控制。
 
-- [了解使用 Azure AD 的應用程式 SSO](../active-directory/manage-apps/what-is-single-sign-on.md)
+- [了解 Azure AD 的應用程式 SSO](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Azure 資訊安全中心監視**：不適用
 
 **責任**：客戶
 
-### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4：對所有以 Azure Active Directory 為基礎的存取使用增強式驗證控制項
+### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4：針對所有以 Azure Active Directory 為基礎的存取，使用增強式驗證控制項
 
 **指導** 方針：適用于 IoT 的 Azure Defender 會使用 Azure Active Directory，透過多重要素驗證 (MFA) 和強式無密碼方法來支援增強式驗證控制項。
 
-- 多重要素驗證 - 啟用 Azure AD MFA，並依照 Azure 資訊安全中心身分識別和存取管理建議，在您的 MFA 設定中執行某些最佳做法。 MFA 可以根據登入條件和風險因素，在所有、選取的使用者或每一使用者層級上強制執行。
+- 多重要素驗證 - 啟用 Azure AD MFA，並遵循 Azure 資訊安全中心身分識別與存取權管理建議，以取得 MFA 設定中的一些最佳做法。 MFA 可以根據登入條件和風險因素，在所有、選取使用者或每個使用者層級上施行。
 - 無密碼 authentication-有三個可用的無密碼 authentication 選項： Windows Hello 企業版、Microsoft Authenticator 應用程式和內部部署驗證方法（例如智慧卡）。
 
 針對系統管理員和特殊許可權的使用者，請確定已使用強式驗證方法的最高層級，接著向其他使用者推出適當的增強式驗證原則。
@@ -79,7 +79,7 @@ Azure AD 支援外部身分識別，讓沒有 Microsoft 帳戶的使用者可以
 
 **責任**：客戶
 
-### <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5：帳戶異常的監視和警示
+### <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5：監視及警示帳戶異常
 
 **指導** 方針：適用于 IoT 的 Azure Defender 與提供下列資料來源的 Azure Active Directory 整合：
 
@@ -115,9 +115,9 @@ Azure 進階威脅防護 (ATP) 是一項安全性解決方案，可使用 Active
 
 ## <a name="privileged-access"></a>特殊權限存取
 
-*如需詳細資料，請參閱 [Azure 安全性效能評定：特殊權限存取](../security/benchmarks/security-controls-v2-privileged-access.md)。*
+如需詳細資訊，請參閱 [Azure 安全性效能評定：特殊權限存取](../security/benchmarks/security-controls-v2-privileged-access.md)。
 
-### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2：限制對商務關鍵性系統的系統管理存取
+### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2：限制對業務關鍵系統的系統管理存取
 
 **指導** 方針：適用于 IoT 的 azure Defender 使用 azure RBAC，藉由限制哪些帳戶被授與存取權給他們所在的訂用帳戶和管理群組，來隔離對商務關鍵性系統的存取。
 
@@ -137,9 +137,9 @@ Azure 進階威脅防護 (ATP) 是一項安全性解決方案，可使用 Active
 
 ### <a name="pa-4-set-up-emergency-access-in-azure-ad"></a>PA-4：在 Azure AD 中設定緊急存取
 
-**指導** 方針：適用于 IoT 的 Azure Defender 會與 Azure Active Directory 整合，以管理其資源。 若要避免不小心遭到 Azure AD 的組織封鎖，請在無法使用一般系統管理帳戶時，設定緊急存取帳戶以進行存取。 緊急存取帳戶通常具有高度許可權，不應指派給特定個人。 緊急存取帳戶僅限用於無法使用一般系統管理帳戶的緊急或「急用」狀況。
+**指導** 方針：適用于 IoT 的 Azure Defender 會與 Azure Active Directory 整合，以管理其資源。 若要避免不小心遭到 Azure AD 的組織封鎖，請在無法使用一般系統管理帳戶時，設定緊急存取帳戶以進行存取。 緊急存取帳戶通常具有高權限，不應將其指派給特定個人。 緊急存取帳戶僅限用於無法使用一般系統管理帳戶的緊急或「急用」狀況。
 
-您應該確保緊急存取帳戶的認證 (（例如密碼、憑證或智慧卡) ）保持安全，而且只有獲授權可在緊急情況下使用這些認證的人員才知道。
+您應該確保緊急存取帳戶的認證 (例如密碼、憑證或智慧卡) 受到保護，而且只有在緊急情況下有權使用這些認證的個人才會知道。
 
 - [在 Azure AD 中管理緊急存取帳戶](../active-directory/roles/security-emergency-access.md)
 
@@ -177,9 +177,9 @@ Azure 進階威脅防護 (ATP) 是一項安全性解決方案，可使用 Active
 
 ## <a name="data-protection"></a>資料保護
 
-[如需詳細資料，請參閱 *Azure 安全性效能評定：* 資料保護](../security/benchmarks/security-controls-v2-data-protection.md) (機器翻譯)。
+如需詳細資訊，請參閱 [Azure 安全性效能評定：資料保護](../security/benchmarks/security-controls-v2-data-protection.md)。
 
-### <a name="dp-1-discovery-classify-and-label-sensitive-data"></a>DP-1：探索、分類和標記敏感資料
+### <a name="dp-1-discovery-classify-and-label-sensitive-data"></a>DP-1：探索、分類及標記敏感性資料
 
 **指導** 方針：探索、分類和標示您的機密資料，讓您可以設計適當的控制項，以確保組織的技術系統會安全地儲存、處理及傳輸機密資訊。 
 
@@ -195,7 +195,7 @@ Azure 進階威脅防護 (ATP) 是一項安全性解決方案，可使用 Active
 
 **責任**：客戶
 
-### <a name="dp-2-protect-sensitive-data"></a>DP-2：保護敏感資料
+### <a name="dp-2-protect-sensitive-data"></a>DP-2：保護敏感性資料
 
 **指導** 方針：使用 azure 角色型存取控制來限制存取權，以使用 azure 角色型存取控制來保護敏感性資料 (azure RBAC) 、網路型存取控制和 azure 服務中的特定控制項 (例如 SQL 中的加密和其他資料庫) 。 
 
@@ -211,7 +211,7 @@ Azure 進階威脅防護 (ATP) 是一項安全性解決方案，可使用 Active
 
 **責任**：客戶
 
-### <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4：加密傳輸中的機密資訊
+### <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4：加密傳輸中的敏感性資訊
 
 **指導** 方針：若要補充存取控制，傳輸中的資料應該受到保護以防止「頻外」攻擊 (例如，使用加密的流量捕捉) ，以確保攻擊者無法輕易地讀取或修改資料。 
 
@@ -231,7 +231,7 @@ Azure 進階威脅防護 (ATP) 是一項安全性解決方案，可使用 Active
 
 ## <a name="asset-management"></a>資產管理
 
-*如需詳細資料，請參閱 [Azure 安全性效能評定：資產管理](../security/benchmarks/security-controls-v2-asset-management.md)。*
+如需詳細資訊，請參閱 [Azure 安全性效能評定：資產管理](../security/benchmarks/security-controls-v2-asset-management.md)。
 
 ### <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1：確保安全性小組能夠看到資產的風險
 
@@ -251,9 +251,9 @@ Azure 進階威脅防護 (ATP) 是一項安全性解決方案，可使用 Active
 
 **責任**：客戶
 
-### <a name="am-3-use-only-approved-azure-services"></a>上午-3：僅使用已核准的 Azure 服務
+### <a name="am-3-use-only-approved-azure-services"></a>AM-3：僅使用已核准的 Azure 服務
 
-**指導** 方針：使用 Azure 原則來審核和限制使用者可以在您的環境中布建的服務。 使用 Azure Resource Graph 來查詢及探索其訂用帳戶內的資源。 您也可以使用 Azure 監視器來建立規則，以在偵測到未核准的服務時觸發警示。
+**指導** 方針：使用 Azure 原則來審核和限制使用者可以在您的環境中布建的服務。 使用 Azure Resource Graph 則可查詢及探索其訂用帳戶內的資源。 您也可以使用 Azure 監視器來建立規則，以在偵測到未核准的服務時觸發警示。
 
 - [設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
@@ -289,15 +289,15 @@ Azure 進階威脅防護 (ATP) 是一項安全性解決方案，可使用 Active
 
 ## <a name="incident-response"></a>事件回應
 
-[如需詳細資料，請參閱 *Azure 安全性效能評定：* 事件回應](../security/benchmarks/security-controls-v2-incident-response.md) (機器翻譯)。
+如需詳細資訊，請參閱 [Azure 安全性效能評定：事件回應](../security/benchmarks/security-controls-v2-incident-response.md)。
 
-### <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1：準備 – 更新 Azure 的事件回應程序
+### <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1：準備 – 更新 Azure 的事件回應流程
 
-**指引**：確定您的組織具有回應安全性事件的程序、已針對 Azure 更新這些程序，且會定期執行以確保整備程度。
+**指引**：確定您的組織具有回應安全性事件的流程、已更新 Azure 的這些處理序，而且會定期執行以確保就緒。
 
-- [在企業環境中實作安全性](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
+- [在企業環境中實作安全性](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud) (機器翻譯)
 
-- [事件回應參考指南](/microsoft-365/downloads/IR-Reference-Guide.pdf)
+- [事件回應參考指南](/microsoft-365/downloads/IR-Reference-Guide.pdf) (英文)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -305,7 +305,7 @@ Azure 進階威脅防護 (ATP) 是一項安全性解決方案，可使用 Active
 
 ### <a name="ir-2-preparation--setup-incident-notification"></a>IR-2：準備 – 設定事件通知
 
-**指引**：在 Azure 資訊安全中心設定安全性事件連絡資訊。 如果 Microsoft 安全性回應中心 (MSRC) 發現您的資料遭到非法或未經授權的對象存取，Microsoft 就會使用這項連絡資訊與您聯繫。 您也可以選擇根據事件回應需求，在不同的 Azure 服務中自訂事件警示和通知。 
+**指引**：在 Azure 資訊安全中心中設定安全性事件連絡人資訊。 當 Microsoft 安全回應中心 (MSRC) 發現您的資料已遭非法或未經授權的合作對象存取時，Microsoft 會使用此連絡人資訊來與您連絡。 您也可以選擇根據事件回應需求，在不同的 Azure 服務中自訂事件警示和通知。 
 
 - [如何設定 Azure 資訊安全中心的安全性連絡人](../security-center/security-center-provide-security-contact-details.md)
 
@@ -315,9 +315,9 @@ Azure 進階威脅防護 (ATP) 是一項安全性解決方案，可使用 Active
 
 ### <a name="ir-3-detection-and-analysis--create-incidents-based-on-high-quality-alerts"></a>IR-3：偵測和分析–根據高品質警示建立事件 
 
-**指導** 方針：確定您有建立高品質警示和測量警示品質的流程。 這可讓您從過去的事件中汲取經驗，並且為分析師設定警示的優先順序，以避免浪費時間處理誤報。 
+**指引**：確定您具有建立高品質警示並測量警示品質的流程。 這可讓您從過去的事件吸取教訓，並為分析師設定警示優先順序，這樣他們就不會浪費時間在誤報上。 
 
-高品質的警示可以根據過去事件的體驗、驗證的社區來源，以及設計來藉由融合和相互關聯各種信號來源來產生和清除警示的工具來建立。 
+您可以根據過去事件的經驗、已驗證的社區來源，以及設計成透過融合和相互關聯不同信號來源以產生和清除警示的工具，來建置高品質警示。 
 
 Azure 資訊安全中心在許多 Azure 資產之間提供高品質的警示。 您可以使用 ASC 資料連接器將警示串流至 Azure Sentinel。 Azure Sentinel 可讓您建立進階警示規則，以自動產生事件供調查之用。 
 
@@ -361,7 +361,7 @@ Azure Sentinel 可讓您對絕大多數的記錄來源進行廣泛的資料分�
 
 **責任**：客戶
 
-### <a name="ir-5-detection-and-analysis--prioritize-incidents"></a>IR-5：偵測和分析 – 設定事件的優先順序
+### <a name="ir-5-detection-and-analysis--prioritize-incidents"></a>IR-5：偵測與分析 – 設定事件的優先順序
 
 **指引**：根據警示嚴重性和資產敏感度，為分析師提供應優先關注哪些事件的內容。 
 
@@ -377,9 +377,9 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 **責任**：客戶
 
-### <a name="ir-6-containment-eradication-and-recovery--automate-the-incident-handling"></a>IR-6：內含項目、根除和復原 – 將事件處理自動化
+### <a name="ir-6-containment-eradication-and-recovery--automate-the-incident-handling"></a>IR-6：圍堵、根除及復原 – 將事件處理自動化
 
-**指引**：將手動的重複工作自動化，以縮短回應時間並減輕分析師的負擔。 手動工作需要較長的時間來執行，因此會拖慢每個事件的處理速度，並減少分析師可處理的事件數目。 手動工作也會使分析師更加疲勞，而增加人為錯誤導致延遲的風險，並降低分析師有效專注處理複雜工作的能力。 請使用 Azure 資訊安全中心和 Azure Sentinel 中的工作流程自動化功能來自動觸發動作，或執行劇本以回應傳入的安全性警示。 劇本會採取動作，例如傳送通知、停用帳戶，以及隔離有問題的網路。 
+**指引**：將手動重複的工作自動化，以縮短回應時間並降低分析師的負擔。 手動工作需要較長的時間來執行，進而降低每個事件的速度，以及減少分析師可以處理的事件數目。 手動工作也會使分析師更加疲勞，而增加人為錯誤導致延遲的風險，並降低分析師有效專注處理複雜工作的能力。 請使用 Azure 資訊安全中心和 Azure Sentinel 中的工作流程自動化功能來自動觸發動作，或執行劇本以回應傳入的安全性警示。 劇本會採取動作，例如傳送通知、停用帳戶，以及隔離有問題的網路。 
 
 - [在資訊安全中心設定工作流程自動化](../security-center/workflow-automation.md)
 
@@ -391,16 +391,16 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 **責任**：客戶
 
-## <a name="posture-and-vulnerability-management"></a>態勢和弱點管理
+## <a name="posture-and-vulnerability-management"></a>狀況和弱點管理
 
-*如需詳細資料，請參閱 [Azure 安全性效能評定：態勢和弱點管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)。*
+如需詳細資訊，請參閱 [Azure 安全性效能評定：狀況和弱點管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)。
 
-### <a name="pv-8-conduct-regular-attack-simulation"></a>PV-8：執行常見攻擊的模擬
+### <a name="pv-8-conduct-regular-attack-simulation"></a>PV-8：執行一般攻擊模擬
 
-**指引**：視需要對您的 Azure 資源執行滲透測試或 Red Team 活動，並確實補救所有已發現的重大安全漏洞。
-請遵循 Microsoft 雲端滲透測試參與規則，以確保您的滲透測試不會違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 對於 Red Teaming 和即時網站滲透測試的策略與執行方法。
+**指引**：如有需要，請對您的 Azure 資源執行滲透測試或紅隊活動，並確保補救所有重要的安全性結果。
+請遵循 Microsoft 雲端滲透測試參與規則，以確保您的滲透測試不會違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 對於紅隊和即時網站滲透測試的策略和執行方法。
 
-- [Azure 中的滲透測試](../security/fundamentals/pen-testing.md)
+- [Azure 中的滲透測試](../security/fundamentals/pen-testing.md) (機器翻譯)
 
 - [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) 
 
@@ -412,21 +412,21 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 ## <a name="governance-and-strategy"></a>控管與策略
 
-*如需詳細資料，請參閱 [Azure 安全性效能評定：控管與策略](../security/benchmarks/security-controls-v2-governance-strategy.md)。*
+如需詳細資訊，請參閱 [Azure 安全性效能評定：治理和策略](../security/benchmarks/security-controls-v2-governance-strategy.md)。
 
 ### <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1：定義資產管理和資料保護策略 
 
-**指引**：確實記載並傳達明確的策略，以持續監視和保護系統和資料。 設定探索、評估、保護及監視業務關鍵資料和系統的優先順序。 
+**指引**：務必記載並傳達明確的策略，以持續監視及保護系統和資料。 請優先探索、評估、保護及監視業務關鍵資料和系統。 
 
-此策略應包含針對下列元素而記載的指引、原則和標準： 
+此策略應該包含下列項目的已記載指引、原則和標準： 
 
--   符合商務風險的資料分類標準
+-   符合商業風險的資料分類標準
 
 -   安全性組織對風險和資產清查的可見度 
 
--   安全性組織核准使用 Azure 服務的程序 
+-   安全性組織核准 Azure 服務以供使用的程序 
 
--   資產在其生命週期內的安全性
+-   資產在其生命週期中的安全性
 
 -   符合組織資料分類的必要存取控制策略
 
@@ -437,11 +437,11 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 -   適當的密碼編譯標準
 
 如需詳細資訊，請參閱下列參考資料：
-- [Azure 安全性架構建議 - 儲存體、資料和加密](/azure/architecture/framework/security/storage-data-encryption?amp;bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
+- [Azure 安全性架構建議 - 儲存體、資料和加密](/azure/architecture/framework/security/storage-data-encryption?bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json) (機器翻譯)
 
-- [Azure 安全性基本要素 - Azure 資料安全性、加密和儲存體](../security/fundamentals/encryption-overview.md)
+- [Azure 安全性基礎觀念 - Azure 資料安全性、加密和儲存體](../security/fundamentals/encryption-overview.md) (機器翻譯)
 
-- [雲端採用架構 - Azure 資料安全性和加密最佳做法](../security/fundamentals/data-encryption-best-practices.md?amp;bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
+- [雲端採用架構 - Azure 資料安全性和加密最佳做法](../security/fundamentals/data-encryption-best-practices.md?bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json) (機器翻譯)
 
 - [Azure 安全性效能評定 - 資產管理](/azure/security/benchmarks/security-controls-v2-asset-management)
 
@@ -453,41 +453,41 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 ### <a name="gs-2-define-enterprise-segmentation-strategy"></a>GS-2：定義企業分割策略 
 
-**指引**：使用身分識別、網路、應用程式、訂用帳戶、管理群組和其他控制項的組合，建立對資產的存取進行分割的企業範圍策略。
+**指引**：使用身分識別、網路、應用程式、訂用帳戶、管理群組和其他控制項的組合，建立企業範圍的策略來分割對產的存取。
 
-審慎權衡安全性區隔的需求，以及為需要與彼此通訊及存取資料的系統啟用日常作業的需求。
+審慎權衡安全性區隔的需求，以及需要與彼此通訊並存取資料的啟用每日作業需求。
 
-請確實在各種控制項類型間一致地實作分割策略，包括網路安全性、身分識別和存取模型、應用程式權限/存取模型，以及手動程序等控制項。
+確保在各種控制項類型上一致地實作分割策略，這些控制項類型包括網路安全性、身分識別和存取模型，以及應用程式權限/存取模型與人力流程控制。
 
-- [Azure 中的分割策略指引 (影片)](/security/compass/microsoft-security-compass-introduction#azure-components-and-reference-model-2151)
+- [Azure 中的分割策略指引 (影片)](/security/compass/microsoft-security-compass-introduction#azure-components-and-reference-model-2151) (機器翻譯)
 
-- [Azure 中的分割策略指引 (文件)](/security/compass/governance#enterprise-segmentation-strategy)
+- [Azure 中的分割策略指引 (文件)](/security/compass/governance#enterprise-segmentation-strategy) (機器翻譯)
 
-- [根據企業分割策略調整網路分割](/security/compass/network-security-containment#align-network-segmentation-with-enterprise-segmentation-strategy)
-
-**Azure 資訊安全中心監視**：不適用
-
-**責任**：客戶
-
-### <a name="gs-3-define-security-posture-management-strategy"></a>GS-3：定義安全性態勢管理策略
-
-**指引**：持續測量並降低個別資產及其裝載環境的風險。 優先處理高價值資產和高度暴露的攻擊面，例如已發佈的應用程式、網路輸入點和輸出點、使用者和系統管理員端點等等。
-
-- [Azure 安全性效能評定 - 態勢和弱點管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
+- [使用企業分割策略來調整網路分割](/security/compass/network-security-containment#align-network-segmentation-with-enterprise-segmentation-strategy) (機器翻譯)
 
 **Azure 資訊安全中心監視**：不適用
 
 **責任**：客戶
 
-### <a name="gs-4-align-organization-roles-responsibilities-and-accountabilities"></a>GS-4：調整組織角色、責任和權責
+### <a name="gs-3-define-security-posture-management-strategy"></a>GS-3：定義安全性狀態管理策略
 
-**指引**：確實清楚記載角色和責任的策略，並在您的安全性組織中加以傳達。 優先為安全性決策提供明確的權責劃分、讓每個人清楚認知共同責任模式，並且讓技術小組熟知保護雲端的技術。
+**指引**：持續測量並降低個別資產及其裝載環境的風險。 優先處理高價值資產和高度公開的攻擊面，例如已發佈的應用程式、網路輸入和輸出點、使用者和系統管理員端點等等。
 
-- [Azure 安全性最佳做法 1 – 人員：讓小組熟知雲端安全性旅程](/azure/cloud-adoption-framework/security/security-top-10#1-people-educate-teams-about-the-cloud-security-journey)
+- [Azure 安全性效能評定 - 狀態和弱點管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
 
-- [Azure 安全性最佳做法 2 - 人員：讓小組熟知雲端安全性技術](/azure/cloud-adoption-framework/security/security-top-10#2-people-educate-teams-on-cloud-security-technology)
+**Azure 資訊安全中心監視**：不適用
 
-- [Azure 安全性最佳做法 3 - 程序：指派雲端安全性決策的權責](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
+**責任**：客戶
+
+### <a name="gs-4-align-organization-roles-responsibilities-and-accountabilities"></a>GS-4：協調組織角色、責任及權責
+
+**指引**：務必為安全性組織中的角色和責任記載並傳達清楚的策略。 優先為安全性決策提供清楚的權責、讓每個人熟知共同責任模型，並讓技術團隊熟知保護雲端的技術。
+
+- [Azure 安全性最佳做法 1 – 人員：讓小組熟知雲端安全性旅程](/azure/cloud-adoption-framework/security/security-top-10#1-people-educate-teams-about-the-cloud-security-journey) (機器翻譯)
+
+- [Azure 安全性最佳做法 2 - 人員：讓小組熟知雲端安全性技術](/azure/cloud-adoption-framework/security/security-top-10#2-people-educate-teams-on-cloud-security-technology) (機器翻譯)
+
+- [Azure 安全性最佳做法 3 - 流程：指派雲端安全性決策的權責](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud) (機器翻譯)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -497,28 +497,28 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 **指引**：建立 Azure 網路安全性方法，作為組織整體安全性存取控制策略的一部分。  
 
-此策略應包含針對下列元素而記載的指引、原則和標準： 
+此策略應該包含下列項目的已記載指引、原則和標準： 
 
 -   集中式網路管理和安全性責任
 
 -   與企業分割策略一致的虛擬網路分割模型
 
--   不同的威脅和攻擊案例適用的補救策略
+-   不同威脅和攻擊案例的補救策略
 
--   網際網路邊緣以及輸入與輸出策略
+-   網際網路邊緣和輸入與輸出策略
 
--   混合式雲端和內部部署互連策略
+-   混合式雲端和內部部署互連能力策略
 
 -   最新的網路安全性成品 (例如網路圖、參考網路架構)
 
 如需詳細資訊，請參閱下列參考資料：
-- [Azure 安全性最佳做法 11 - 結構。單一整合安全性策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
+- [Azure 安全性最佳做法 11 - 架構。單一整合的安全性策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy) (機器翻譯)
 
 - [Azure 安全性效能評定 - 網路安全性](/azure/security/benchmarks/security-controls-v2-network-security)
 
 - [Azure 網路安全性概觀](../security/fundamentals/network-overview.md)
 
-- [企業網路架構策略](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture)
+- [企業網路架構策略](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture) (機器翻譯)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -528,17 +528,17 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 **指引**：建立 Azure 身分識別和特殊權限存取方法，作為組織整體安全性存取控制策略的一部分。  
 
-此策略應包含針對下列元素而記載的指引、原則和標準： 
+此策略應該包含下列項目的已記載指引、原則和標準： 
 
 -   集中式身分識別和驗證系統，以及其與其他內部和外部身分識別系統的互連能力
 
--   不同的使用案例與情況適用的增強式驗證方法
+-   不同使用案例和條件中的增強式驗證方法
 
 -   高權限使用者的保護
 
--   異常使用者活動的監視和處理  
+-   異常使用者活動監視和處理  
 
--   使用者身分識別和存取權的檢閱和調整程序
+-   使用者身分識別、存取權檢閱與核對流程
 
 如需詳細資訊，請參閱下列參考資料：
 
@@ -546,7 +546,7 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 - [Azure 安全性效能評定 - 特殊權限存取](/azure/security/benchmarks/security-controls-v2-privileged-access)
 
-- [Azure 安全性最佳做法 11 - 結構。單一整合安全性策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
+- [Azure 安全性最佳做法 11 - 架構。單一整合的安全性策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy) (機器翻譯)
 
 - [Azure 身分識別管理安全性概觀](../security/fundamentals/identity-management-overview.md)
 
@@ -556,35 +556,35 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 ### <a name="gs-7-define-logging-and-threat-response-strategy"></a>GS-7：定義記錄和威脅回應策略
 
-**指引**：建立記錄和威脅回應策略，以快速偵測並補救威脅，同時符合合規性需求。 排定為分析師提供高品質的警示和順暢的體驗，讓他們可以專注于威脅，而不是整合和手動步驟。 
+**指引**：建立記錄和威脅回應策略，以快速偵測威脅並進行補救，同時符合合規性需求。 優先為分析師提供高品質警示和順暢體驗，讓他們能夠專注處理威脅，而非整合和手動步驟。 
 
-此策略應包含針對下列元素而記載的指引、原則和標準： 
+此策略應該包含下列項目的已記載指引、原則和標準： 
 
 -   安全性作業 (SecOps) 組織的角色和責任 
 
--   妥善定義且與 NIST 或其他產業架構一致的事件回應程序 
+-   妥善定義且與 NIST 或其他產業架構一致的事件回應流程 
 
--   記錄擷取和保留，以支援威脅偵測、事件回應和合規性需求
+-   記錄擷取和保留，以支援威脅偵測、事件回應及合規性需求
 
--   使用 SIEM、原生 Azure 功能及其他來源，集中顯示和相互關聯威脅的相關資訊 
+-   使用 SIEM、原生 Azure 功能及其他來源，集中顯示及相互關聯威脅的相關資訊 
 
--   與您的客戶、供應商和相關的公開合作對象之間的溝通和通知計畫
+-   與客戶、供應商和相關公開合作對象之間的溝通和通知計畫
 
--   使用 Azure 原生和第三方平台進行事件處理，例如記錄和威脅偵測、鑑識，以及攻擊的補救與根除
+-   使用 Azure 原生和協力廠商平台進行事件處理，例如記錄和威脅偵測、鑑定，以及攻擊補救和根除
 
--   處理事件和事後活動的程序，例如汲取的經驗和辨識項保留
+-   處理事件和事件後活動的流程，例如吸取的經驗和證據保留
 
 如需詳細資訊，請參閱下列參考資料：
 
-- [Azure 安全性效能評定 - 記錄和威脅偵測](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
+- [Azure 安全性效能評定 - 記錄與威脅偵測](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
 - [Azure 安全性效能評定 - 事件回應](/azure/security/benchmarks/security-controls-v2-incident-response)
 
-- [Azure 安全性最佳做法 4 - 程序。更新雲端的事件回應程序](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
+- [Azure 安全性最佳做法 4 - 流程。更新雲端的事件回應流程](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud) (機器翻譯)
 
-- [Azure 採用架構、記錄和報告決策指南](/azure/cloud-adoption-framework/decision-guides/logging-and-reporting/)
+- [Azure 採用架構、記錄與報告決策指南](/azure/cloud-adoption-framework/decision-guides/logging-and-reporting/)
 
-- [Azure 企業規模、管理和監視](/azure/cloud-adoption-framework/ready/enterprise-scale/management-and-monitoring)
+- [Azure 企業規模、管理與監視](/azure/cloud-adoption-framework/ready/enterprise-scale/management-and-monitoring) (機器翻譯)
 
 **Azure 資訊安全中心監視**：不適用
 

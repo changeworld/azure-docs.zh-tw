@@ -7,12 +7,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: b695205c08f9039fbf91eaeddb7622b784d81d12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69ac1e82c267dee521143c4ed5f6c2be4d32e2ea
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400582"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531321"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用量和成本
 
@@ -25,7 +25,7 @@ Application Insights 設計的目的在取得您所需的各項資源，以監�
 
 ## <a name="pricing-model"></a>定價模式
 
-[Azure Application Insights][start] 的價格是**隨用隨付**模式 (以擷取的資料量做為根據)，而且可選擇性地用於需要長時間保留資料的情況。 每項 Application Insights 資源都是個別計費的服務，並且會計入到您的 Azure 訂用帳戶帳單。 資料量是以 Application Insights 從應用程式接收的未壓縮 JSON 資料套件大小來測量。 使用[即時計量資料流](./live-stream.md)不會產生任何資料量費用。
+[Azure Application Insights][start] 的價格是 **隨用隨付** 模式 (以擷取的資料量做為根據)，而且可選擇性地用於需要長時間保留資料的情況。 每項 Application Insights 資源都是個別計費的服務，並且會計入到您的 Azure 訂用帳戶帳單。 資料量是以 Application Insights 從應用程式接收的未壓縮 JSON 資料套件大小來測量。 使用[即時計量資料流](./live-stream.md)不會產生任何資料量費用。
 
 [多重步驟 Web 測試](./availability-multistep.md)會產生額外費用。 多重步驟 Web 測試係指執行一系列動作的 Web 測試。 單一頁面的「Ping 測試」不另外收費。 針對來自 Ping 測試和多重步驟測試的遙測，收費方式與來自您應用程式的其他遙測一樣。
 
@@ -74,7 +74,7 @@ Application Insights 費用會加到您的 Azure 帳單中。 您可以在 Azure
 ### <a name="using-data-volume-metrics"></a>使用資料量計量
 <a id="understanding-ingested-data-volume"></a>
 
-若要深入了解您的資料量，請選取 Application Insights 資源的**計量**，然後新增新的圖表。 對於圖表計量，請在 [以記錄為基礎的計量] 下，選取 [資料點量]。 按一下 [套用分割]，並依 [`Telemetryitem` 類型] 選取群組。
+若要深入了解您的資料量，請選取 Application Insights 資源的 **計量**，然後新增新的圖表。 對於圖表計量，請在 [以記錄為基礎的計量] 下，選取 [資料點量]。 按一下 [套用分割]，並依 [`Telemetryitem` 類型] 選取群組。
 
 ![使用計量以查看資料量](./media/pricing/10-billing.png)
 
@@ -148,7 +148,7 @@ union (AppAvailabilityResults),
       (AppRequests),
       (AppSystemEvents),
       (AppTraces)
-| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| where TimeGenerated >= startofday(ago(7d)) and TimeGenerated < startofday(now())
 | summarize sum(_BilledSize) by _ResourceId, bin(TimeGenerated, 1d)
 | render areachart
 ```
@@ -167,7 +167,7 @@ union (AppAvailabilityResults),
       (AppRequests),
       (AppSystemEvents),
       (AppTraces)
-| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| where TimeGenerated >= startofday(ago(7d)) and TimeGenerated < startofday(now())
 | where _ResourceId contains "<myAppInsightsResourceName>"
 | summarize sum(_BilledSize) by Type, bin(TimeGenerated, 1d)
 | render areachart
@@ -186,7 +186,7 @@ Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quic
 
 * **取樣**：您可以使用取樣來減少從伺服器和用戶端應用程式傳送的遙測量，這對計量的扭曲程度最小。 取樣是您可用來調整所傳送資料量的主要工具。 深入了解[取樣功能](./sampling.md)。
 
-* **限制 Ajax 呼叫**：您可以[限制可回報的 Ajax 呼叫次數](./javascript.md#configuration) (在每個頁面檢視中)，或關閉 Ajax 報告功能。
+* **限制 Ajax 呼叫**：您可以 [限制可回報的 Ajax 呼叫次數](./javascript.md#configuration) (在每個頁面檢視中)，或關閉 Ajax 報告功能。
 
 * **停用不必要的模組**：[編輯 ApplicationInsights.config](./configuration-with-applicationinsights-config.md)以關閉您不需要的集合模組。 例如，您可能會決定效能計數器或相依性資料是不必要的。
 
@@ -287,7 +287,7 @@ Application Insights 資源的預設保留期為 90 天。 可以為每個 Appli
 對於 Azure Application Insights 的早期採用者，還有兩種可能的定價層：基本和企業。 「基本」定價層如上所述，而且為預設層。 它包含所有企業層功能，不需要額外費用。 「基本」層主要是針對內嵌的資料量計費。
 
 > [!NOTE]
-> 這些舊版定價層已重新命名。 企業定價層現在稱為**每節點**，而基本定價層現在稱為**每 GB**。 這些新名稱會在下列項目和 Azure 入口網站中使用。  
+> 這些舊版定價層已重新命名。 企業定價層現在稱為 **每節點**，而基本定價層現在稱為 **每 GB**。 這些新名稱會在下列項目和 Azure 入口網站中使用。  
 
 「每節點」(先前稱為「企業」) 層會針對每個節點計費，而每個節點會收到每日資料額度。 在「每節點」定價層中，您要對超過內含資料額度的內嵌資料付費。 如果您使用 Operations Management Suite，您應該選擇「每節點」層。
 

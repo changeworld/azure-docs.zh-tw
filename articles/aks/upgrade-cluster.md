@@ -4,12 +4,12 @@ description: 瞭解如何升級 Azure Kubernetes Service (AKS) 叢集，以取�
 services: container-service
 ms.topic: article
 ms.date: 11/17/2020
-ms.openlocfilehash: 262905c9f840850795ba9555912e81eca61369d1
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 30ad80727c238ae7e415039adf3e4eb75dbbc1b5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683228"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531338"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>升級 Azure Kubernetes Service (AKS) 叢集
 
@@ -121,6 +121,64 @@ Name          Location    ResourceGroup    KubernetesVersion    ProvisioningStat
 myAKSCluster  eastus      myResourceGroup  1.13.10               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
 ```
 
+## <a name="set-auto-upgrade-channel-preview"></a>設定自動升級通道 (預覽) 
+
+除了手動升級叢集，您也可以在叢集上設定自動升級通道。 可用的升級通道如下：
+
+* *無*：停用自動升級，並將叢集保持在其目前版本的 Kubernetes。 這是預設值，如果未指定任何選項，則會使用。
+* *patch*，這會在將叢集變成可用時，自動將叢集升級為最新支援的修補程式版本，同時維持相同的次要版本。 例如，如果叢集正在執行版本 *1.17.7* ，且有 *1.17.9*、 *1.18.4*、 *1.18.6* 和 *1.19.1* 版可供使用，則您的叢集會升級為 *1.17.9*。
+* *穩定* 的，會自動將叢集升級至次要版本 *n-1* 上最新支援的修補程式版本，其中 *n* 是最新支援的次要版本。 例如，如果叢集正在執行版本 *1.17.7* ，且有 *1.17.9*、 *1.18.4*、 *1.18.6* 和 *1.19.1* 版可供使用，則您的叢集會升級為 *1.18.6*。
+* *快速*，這會自動將叢集升級至最新支援的次要版本上最新支援的修補程式版本。 如果叢集位於 *n 2* 次要版本的 Kubernetes 版本，其中 *n* 是最新支援的次要版本，則叢集會先升級至 *n-1* 次要版本上最新支援的修補程式版本。 例如，如果叢集正在執行版本 *1.17.7* ，且有 *1.17.9*、 *1.18.4*、 *1.18.6* 和 *1.19.1* 版可供使用，則您的叢集首先會升級至 *1.18.6*，然後升級為 *1.19.1*。
+
+> [!NOTE]
+> 叢集自動升級只會更新 GA 版本的 Kubernetes，而且不會更新為預覽版本。
+
+自動升級叢集的程式，會遵循與手動升級叢集相同的程式。 如需詳細資訊，請參閱 [升級 AKS][upgrade-cluster]叢集。
+
+AKS 叢集的叢集自動升級是預覽功能。
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+`AutoUpgradePreview`使用[az feature register][az-feature-register]命令註冊功能旗標，如下列範例所示：
+
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n AutoUpgradePreview
+```
+
+狀態需要幾分鐘的時間才會顯示「已註冊」。 使用 [az feature list][az-feature-list] 命令來確認註冊狀態：
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AutoUpgradePreview')].{Name:name,State:properties.state}"
+```
+
+當您準備好時，請使用 [az provider register][az-provider-register]命令重新整理 *>microsoft.containerservice* 資源提供者的註冊：
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+使用 [az extension add][az-extension-add] 命令安裝 *aks-preview* 延伸模組，然後使用 [az extension update][az-extension-update] 命令檢查是否有任何可用的更新：
+
+```azurecli-interactive
+# Install the aks-preview extension
+az extension add --name aks-preview
+
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
+
+若要在建立叢集時設定自動升級通道，請使用 *自動升級通道* 參數，類似下列範例。
+
+```azurecli-interactive
+az aks create --resource-group myResourceGroup --name myAKSCluster --auto-upgrade-channel stable --generate-ssh-keys
+```
+
+若要在現有的叢集上設定自動升級通道，請更新 *自動升級通道* 參數，如下例所示。
+
+```azurecli-interactive
+az aks update --resource-group myResourceGroup --name myAKSCluster --auto-upgrade-channel stable
+```
+
 ## <a name="next-steps"></a>後續步驟
 
 本文說明如何升級現有的 AKS 叢集。 若要深入了解部署和管理 AKS 叢集，請參閱教學課程集合。
@@ -137,6 +195,10 @@ myAKSCluster  eastus      myResourceGroup  1.13.10               Succeeded      
 [az-aks-get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
 [az-aks-upgrade]: /cli/azure/aks#az-aks-upgrade
 [az-aks-show]: /cli/azure/aks#az-aks-show
-[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[upgrade-cluster]:  #upgrade-an-aks-cluster

@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: f524eae791ab3944fb326b867e5f6823a35b432c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ddce982f43a3c730d8c25527f4354983c36e89e8
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348189"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530814"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>教學課程 - 建置 SCIM 端點並設定使用 Azure AD 的使用者佈建
 
@@ -1240,3 +1240,4 @@ OAuth 驗證碼授與流程中的步驟：
 * [適用於使用者佈建的範圍篩選器](define-conditional-rules-for-provisioning-user-accounts.md)
 * [帳戶佈建通知](user-provisioning.md)
 * [如何整合 SaaS 應用程式的教學課程清單](../saas-apps/tutorial-list.md)
+

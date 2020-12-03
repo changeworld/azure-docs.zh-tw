@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: c77001707eda7c208ad19a014a1f0cff2b85b25d
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: b23b5a81fdff8a05742092f517128e08723103fc
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736471"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531134"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>什麼是適用于 Azure 的 SQL 資料同步？
 
@@ -58,15 +58,13 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您同步�
 
 在下列案例中，資料同步不是慣用的解決方案：
 
-| 狀況 | 某些建議的解決方案 |
+| 案例 | 某些建議的解決方案 |
 |----------|----------------------------|
 | 災害復原 | [Azure 異地備援備份](automated-backups-overview.md) |
 | 讀取級別 | [使用唯讀複本對唯讀查詢工作負載進行負載平衡 (預覽)](read-scale-out.md) |
 | ETL (OLTP 到 OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) 或 [SQL Server Integration Services](/sql/integration-services/sql-server-integration-services) |
-| 從 SQL Server 遷移至 Azure SQL Database | [Azure 資料庫移轉服務](https://azure.microsoft.com/services/database-migration/) |
+| 從 SQL Server 遷移至 Azure SQL Database。 不過，您可以在完成遷移之後使用 SQL 資料同步，以確保來源和目標會保持同步。  | [Azure 資料庫移轉服務](https://azure.microsoft.com/services/database-migration/) |
 |||
-
-
 
 ## <a name="how-it-works"></a>運作方式
 
@@ -150,7 +148,7 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您同步�
 
 #### <a name="unsupported-column-types"></a>不支援的資料行類型
 
-資料同步無法同步處理唯讀或系統產生的資料行。 例如：
+資料同步無法同步處理唯讀或系統產生的資料行。 例如︰
 
 - 計算資料行。
 - 適用於時態表的系統所產生的資料行。

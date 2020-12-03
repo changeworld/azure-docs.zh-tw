@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
-ms.openlocfilehash: f0295c27f1d193b0dcd7829a11b4aabe0edb659b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 4bab8def514df21d948d67f3cfba846c43917be2
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286350"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530930"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中使用 blob 索引子和技能集為加密的 blob 編制索引
 
@@ -30,13 +30,13 @@ ms.locfileid: "93286350"
 
 如果您沒有 Azure 訂用帳戶，請在開始前開啟[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 此範例假設您已將檔案上傳至 Azure Blob 儲存體，並已在程式中將它們加密。 如果您需要有關讓檔案一開始上傳及加密的協助，請參閱 [本教學](../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md) 課程以瞭解如何執行此操作。
 
 + [Azure 儲存體](https://azure.microsoft.com/services/storage/)
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 在與 Azure 認知搜尋相同的訂用帳戶中。 金鑰保存庫必須啟用虛 **刪除** 和 **清除保護** 。
-+ [Azure 認知搜尋](search-create-service-portal.md) 在任何區域中的可 [計費層](search-sku-tier.md#tiers) (基本或更高版本) 
++ [Azure 認知搜尋](search-create-service-portal.md) 在任何區域中的可 [計費層](search-sku-tier.md#tier-descriptions) (基本或更高版本) 
 + [Azure 函式](https://azure.microsoft.com/services/functions/)
 + [Postman 桌面應用程式](https://www.getpostman.com/)
 
@@ -48,11 +48,11 @@ ms.locfileid: "93286350"
 
 在操作上，DecryptBlobFile 技能會將每個 blob 的 URL 和 SAS 權杖作為輸入，並使用 Azure 認知搜尋預期的檔案參考合約來輸出下載的解密檔案。 回想一下，DecryptBlobFile 需要加密金鑰才能執行解密。 在安裝過程中，您也會建立存取原則，以授與 DecryptBlobFile 函數存取 Azure Key Vault 中的加密金鑰。
 
-1. 按一下 [ [DecryptBlobFile] 登陸頁面](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile#deployment)上的 [ **部署至 Azure** ] 按鈕，這會在 Azure 入口網站中開啟提供的 Resource Manager 範本。
+1. 按一下 [ [DecryptBlobFile] 登陸頁面](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile#deployment)上的 [**部署至 Azure** ] 按鈕，這會在 Azure 入口網站中開啟提供的 Resource Manager 範本。
 
 1. 選取 **Azure Key Vault 實例所在的訂** 用帳戶 (如果您選取不同的訂用帳戶) ，並選取現有的資源群組，或建立新的資源群組 (如果您建立新的資源群組，您也必須選取要部署到) 的區域。
 
-1. 選取 [ **審核 + 建立** ]，確定您同意條款，然後選取 [ **建立** ] 以部署 Azure 函數。
+1. 選取 [ **審核 + 建立**]，確定您同意條款，然後選取 [ **建立** ] 以部署 Azure 函數。
 
     ![入口網站中的 ARM 範本](media/indexing-encrypted-blob-files/arm-template.jpg "入口網站中的 ARM 範本")
 
@@ -60,13 +60,13 @@ ms.locfileid: "93286350"
 
 1. 在入口網站中流覽至您的 Azure Key Vault 實例。 在 Azure Key Vault 中[建立存取原則](../key-vault/general/assign-access-policy-portal.md)，以授與自訂技能的金鑰存取權。
  
-    1. 在 [ **設定** ] 底下，選取 [ **存取** 原則]，然後選取 [ **新增存取原則** ]。
+    1. 在 [**設定**] 底下，選取 [**存取** 原則]，然後選取 [**新增存取原則**]。
      
        ![Keyvault 新增存取原則](media/indexing-encrypted-blob-files/keyvault-access-policies.jpg "Keyvault 存取原則")
 
-    1. 在 [ **從範本設定** ] 下，選取 **Azure Data Lake Storage 或 Azure 儲存體** 。
+    1. 在 [ **從範本設定**] 下，選取 **Azure Data Lake Storage 或 Azure 儲存體**。
 
-    1. 針對主體，選取您所部署的 Azure 函式實例。 您可以使用在步驟2中用來建立它的資源首碼來搜尋它，它的預設前置詞值為 **psdbf-function 應用程式** 。
+    1. 針對主體，選取您所部署的 Azure 函式實例。 您可以使用在步驟2中用來建立它的資源首碼來搜尋它，它的預設前置詞值為 **psdbf-function 應用程式**。
 
     1. 請勿選取 [授權的應用程式] 選項的任何選項。
      
@@ -82,7 +82,7 @@ ms.locfileid: "93286350"
     
         ![函數 URL](media/indexing-encrypted-blob-files/function-uri.jpg "哪裡可以找到 Azure 函數 URL")
 
-    1. 主機金鑰程式碼，可透過流覽至 **應用程式金鑰** 、按一下以顯示 **預設** 金鑰，然後複製值來找到。
+    1. 主機金鑰程式碼，可透過流覽至 **應用程式金鑰**、按一下以顯示 **預設** 金鑰，然後複製值來找到。
      
         ![函數主機金鑰碼](media/indexing-encrypted-blob-files/function-host-key.jpg "哪裡可以找到 Azure 函數主機金鑰程式碼")
 
@@ -124,33 +124,32 @@ AI 擴充和技能集執行是由認知服務所支援，包括自然語言和�
 
 在 [變數] 索引標籤上，您可以在每次遇到雙括弧內的特定變數時，新增 Postman 交換的值。 例如，Postman 會將符號 `{{admin-key}}` 取代為您針對 `admin-key` 所設定的目前值。 Postman 會在 URL、標頭、要求本文等項目中進行這項替代。 
 
-若要取得的值 `admin-key` ，請使用您稍早記下的 Azure 認知搜尋管理 api 金鑰。 設定 `search-service-name` 為您所使用 Azure 認知搜尋服務的名稱。 `storage-connection-string`使用儲存體帳戶的 [ **存取金鑰** ] 索引標籤上的值進行設定，並將設定 `storage-container-name` 為儲存加密檔案之儲存體帳戶上的 blob 容器名稱。 設定 `function-uri` 為您先前記下的 azure 函式 URL，並設定 `function-code` 為您之前記下的 azure 函式主機金鑰程式碼。 您可以將其他值保留為預設值。
+若要取得的值 `admin-key` ，請使用您稍早記下的 Azure 認知搜尋管理 api 金鑰。 設定 `search-service-name` 為您所使用 Azure 認知搜尋服務的名稱。 `storage-connection-string`使用儲存體帳戶的 [**存取金鑰**] 索引標籤上的值進行設定，並將設定 `storage-container-name` 為儲存加密檔案之儲存體帳戶上的 blob 容器名稱。 設定 `function-uri` 為您先前記下的 azure 函式 URL，並設定 `function-code` 為您之前記下的 azure 函式主機金鑰程式碼。 您可以將其他值保留為預設值。
 
 ![Postman 應用程式變數索引標籤](media/indexing-encrypted-blob-files/postman-variables-window.jpg "Postman 的變數視窗")
-
 
 | 變數    | 從哪裡取得 |
 |-------------|-----------------|
 | `admin-key` | 在 Azure 認知搜尋服務的 [金鑰] 頁面上。  |
-| `search-service-name` | Azure 認知搜尋服務的名稱。 URL 為 `https://{{search-service-name}}.search.windows.net`。 | 
-| `storage-connection-string` | 在儲存體帳戶的 [存取金鑰] 索引標籤上，選取 [key1] > [連接字串]。 | 
-| `storage-container-name` | 具有要編制索引之加密檔案的 blob 容器名稱。 | 
-| `function-uri` |  在主要頁面上的 [ **基本** 功能] 下的 Azure 函式中。 | 
-| `function-code` | 在 Azure 函式中，流覽至 [ **應用程式金鑰** ]，按一下以顯示 **預設** 金鑰，然後複製值。 | 
-| `api-version` | 保持為 **2020-06-30** 。 |
-| `datasource-name` | 保持為 **加密的 blob-ds** 。 | 
-| `index-name` | 保持為 **加密的 blob-idx** 。 | 
-| `skillset-name` | 保持為 **加密的 blob-ss** 。 | 
-| `indexer-name` | 保留為 **加密-blob->hotels-reviews-ixr** 。 | 
+| `search-service-name` | Azure 認知搜尋服務的名稱。 URL 為 `https://{{search-service-name}}.search.windows.net`。 |
+| `storage-connection-string` | 在儲存體帳戶的 [存取金鑰] 索引標籤上，選取 [key1] > [連接字串]。 |
+| `storage-container-name` | 具有要編制索引之加密檔案的 blob 容器名稱。 |
+| `function-uri` |  在主要頁面上的 [ **基本** 功能] 下的 Azure 函式中。 |
+| `function-code` | 在 Azure 函式中，流覽至 [ **應用程式金鑰**]，按一下以顯示 **預設** 金鑰，然後複製值。 |
+| `api-version` | 保持為 **2020-06-30**。 |
+| `datasource-name` | 保持為 **加密的 blob-ds**。 |
+| `index-name` | 保持為 **加密的 blob-idx**。 |
+| `skillset-name` | 保持為 **加密的 blob-ss**。 |
+| `indexer-name` | 保留為 **加密-blob->hotels-reviews-ixr**。 |
 
 ### <a name="review-the-request-collection-in-postman"></a>檢閱 Postman 中的要求集合
 
-當您執行本指南時，您必須發出四個 HTTP 要求： 
+當您執行本指南時，您必須發出四個 HTTP 要求：
 
-- **建立索引的 PUT 要求** ：此索引會保存 Azure 認知搜尋所使用並傳回的資料。
-- **建立資料來源的 POST 要求** ：此資料來源會將您的 Azure 認知搜尋服務連接到您的儲存體帳戶，進而加密 blob 檔案。 
-- **建立技能集的 PUT 要求** ：技能集會為 Azure 函式指定會解密 blob 檔案資料的自訂技能定義，以及在解密後將每份檔的文字解壓縮的 [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) 。
-- **建立索引子的 PUT 要求** ：執行索引子會讀取資料、套用技能集，並儲存結果。 您必須最後再執行此要求。
+- **建立索引的 PUT 要求**：此索引會保存 Azure 認知搜尋所使用並傳回的資料。
+- **建立資料來源的 POST 要求**：此資料來源會將您的 Azure 認知搜尋服務連接到您的儲存體帳戶，進而加密 blob 檔案。 
+- **建立技能集的 PUT 要求**：技能集會為 Azure 函式指定會解密 blob 檔案資料的自訂技能定義，以及在解密後將每份檔的文字解壓縮的 [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) 。
+- **建立索引子的 PUT 要求**：執行索引子會讀取資料、套用技能集，並儲存結果。 您必須最後再執行此要求。
 
 [原始程式碼](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/index-encrypted-blobs/Index%20encrypted%20Blob%20files.postman_collection.json)包含具有四個要求的 Postman 集合，以及一些實用的後續追蹤要求。 若要發出要求，請在 Postman 中選取要求的索引標籤，然後針對每個要求選取 [ **傳送** ]。
 

@@ -1,20 +1,20 @@
 ---
-title: 開始使用 Android 地圖控制項 | Microsoft Azure Maps
-description: 熟悉 Azure 地圖服務 Android SDK。 瞭解如何在 Android Studio 中建立專案、安裝 SDK，以及建立互動式地圖。
+title: 開始使用 Azure 地圖服務 Android SDK
+description: 熟悉 Microsoft Azure Maps Android SDK。 瞭解如何在 Android Studio 中建立專案、安裝 SDK，以及建立互動式地圖。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 04/26/2019
+ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
+manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 72bb821c0dfed6d3f9e7e2cc222242e65a35a011
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 1da003bb8d285dbedde87cbc6cd4708fda2dc38b
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911047"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531242"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>開始使用 Azure 地圖服務 Android SDK
 
@@ -24,40 +24,39 @@ Azure 地圖服務 Android SDK 是適用於 Android 的向量地圖庫。 本文
 
 ### <a name="create-an-azure-maps-account"></a>建立 Azure 地圖服務帳戶
 
-若要完成本文中的程序，您必須先在 S1 定價層中[建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)，並為您的帳戶[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
-
+1. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [取得主要訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為主要金鑰或訂用帳戶金鑰。
 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](./how-to-manage-authentication.md)。
-
-### <a name="download-android-studio"></a>下載 Android Studio
-
-在安裝 Azure 地圖服務 Android SDK 之前，請先下載 Android Studio，並建立具有空白活動的專案。 您可以從 Google 免費下載 [Android Studio](https://developer.android.com/studio/)。 
+3. [下載並安裝 Google 的 Android Studio](https://developer.android.com/studio/)。
 
 ## <a name="create-a-project-in-android-studio"></a>在 Android Studio 中建立專案
 
-首先，請建立具有空白活動的新專案。 完成下列步驟來建立 Android Studio 專案：
+完成下列步驟來建立 Android Studio 專案：
 
-1. 在 [選擇您的專案] 底下選取 [手機和平板電腦]。 您的應用程式會在此板型規格上執行。
-2. 在 [手機和平板電腦] 索引標籤上選取 [空白活動]，然後選取 [下一步]。
-3. 在 [設定專案] 底下，選取 `API 21: Android 5.0.0 (Lollipop)` 作為最低版本的 SDK。 這是 Azure 地圖服務 Android SDK 所支援的最早版本。
-4. 接受預設值 `Activity Name` 和 `Layout Name`，然後選取 [完成]。
+1. 啟動 Android Studio。
+2. 按一下 [ **+ 建立新專案**]。
+3. 在 [ **手機和平板** 電腦] 索引標籤上，按一下 [ **空白活動**]。 按一下 [下一步]  。
+4. 在 [設定專案] 底下，選取 `API 21: Android 5.0.0 (Lollipop)` 作為最低版本的 SDK。
+5. 選取 `Java` 作為語言。
+6. 接受專案的預設值 `Name` 。 按一下 [完成] 。
 
 請參閱 [Android Studio 文件](https://developer.android.com/studio/intro/)，以取得更多如何安裝 Android Studio 並建立新專案的說明。
 
 ![在 Android Studio 中建立專案 ](./media/how-to-use-android-map-control-library/form-factor-android.png)
 
-## <a name="set-up-a-virtual-device"></a>設定虛擬裝置
+## <a name="set-up-a-device"></a>設定裝置
 
-Android Studio 可讓您在電腦上設定虛擬 Android 裝置。 這麼做可以協助您在開發期間測試應用程式。 若要設定虛擬裝置，請選取專案畫面右上角的 [Android 虛擬裝置 (AVD) 管理員] 圖示，然後選取 [建立虛擬裝置]。 您也可以從工具列選取 [工具] > [Android] > [AVD 管理員]，以前往 AVD 管理員。 在 [手機] 類別中選取 [Nexus 5X]，然後選取 [下一步]。
+若要在開發期間測試您的應用程式，您可以使用 Android 手機或 Android 模擬器。
 
-您可以在 [Android Studio 文件](https://developer.android.com/studio/run/managing-avds)中深入了解如何設定 AVD。
-
-![Android Emulator](./media/how-to-use-android-map-control-library/android-emulator.png)
+若要深入瞭解如何設定 AVD (Android 虛擬裝置) ，請參閱 [Android Studio 檔](https://developer.android.com/studio/run/managing-avds)。
 
 ## <a name="install-the-azure-maps-android-sdk"></a>安裝 Azure 地圖服務 Android SDK
 
-建置應用程式的下一步是安裝 Azure 地圖服務 Android SDK。 完成下列步驟以安裝 SDK：
+建置應用程式的下一步是安裝 Azure 地圖服務 Android SDK。
 
-1. 開啟頂層 **build.gradle** 檔案，並將下列程式碼新增至 [所有專案]、[存放庫區塊] 區段：
+完成下列步驟以安裝 SDK：
+
+1. 在 [專案] 索引標籤中，展開 [ **Gradle 腳本**]。 開啟 **gradle (專案： My_Application)**，然後將下列程式碼新增至 [ **所有專案**] `repositories`  區段中：
 
     ```
     maven {
@@ -65,29 +64,30 @@ Android Studio 可讓您在電腦上設定虛擬 Android 裝置。 這麼做可�
     }
     ```
 
-2. 更新 **app/build.gradle** ，並於其中新增下列程式碼：
-    
-    1. 確定專案的 **minSdkVersion** 是 API 21 或更新版本。
+2. 開啟 **gradle (模組： My_Application)**。
 
-    2. 將下列程式碼新增至 Android 區段：
+3. 請確定區段 **minSdkVersion** 中的 >minsdkversion `defaultConfig` 是在 API 21 或更高版本。
 
-        ```
-        compileOptions {
-            sourceCompatibility JavaVersion.VERSION_1_8
-            targetCompatibility JavaVersion.VERSION_1_8
-        }
-        ```
-    3. 更新您的相依性區塊，並且為最新的 Azure 地圖服務 Android SDK 新增實作相依性程式行：
+4. 將下列程式碼新增至 Android 區段：
 
-        ```
-        implementation "com.microsoft.azure.maps:mapcontrol:0.6"
-        ```
-    
-    4. 移至工具列中 [檔案]，然後按一下 [同步處理專案與 Gradle 檔案]。
-3. 將地圖片段新增至主要活動 (res \> layout \> activity\_main.xml)：
+    ```
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    ```
+
+5. 將下列程式碼新增至 `dependencies` 區段：
+
+    ```
+    implementation "com.microsoft.azure.maps:mapcontrol:0.6"
+    ```
+
+6. 按一下 **主要工具列上的 [** 檔案]，然後選取 [ **同步處理專案與 Gradle** 檔案]。
+
+7. 開啟 `res > layout > activity_main.xml`。 按一下 `Code` 右上角的 [view]。 在元素內加入下列 XML `<androidx.constraintlayout.widget.ConstraintLayout>` 。
     
     ```XML
-    <?xml version="1.0" encoding="utf-8"?>
     <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -103,27 +103,27 @@ Android Studio 可讓您在電腦上設定虛擬 Android 裝置。 這麼做可�
     </FrameLayout>
     ```
 
-4. 在 **MainActivity.java** 檔案中，您將必須：
-    
-    * 新增 Azure 地圖服務 SDK 的匯入
-    * 設定您的 Azure 地圖服務驗證資訊
-    * 在 **onCreate** 方法中取得地圖控制項執行個體
+8. 在檔案中 `java > com.example.myapplication > MainActivity.java` ，您必須：
 
-    使用 `setSubscriptionKey` 或 `setAadProperties` 方法全域設定 `AzureMaps` 類別的驗證資訊，而無須在每個檢視上新增您的驗證資訊。 
+    * 新增 Azure 地圖服務 SDK 的匯入。
+    * 設定您的 Azure 地圖服務驗證資訊。
+    * 取得 **>oncreate** 方法中的地圖控制項實例。
 
-    地圖控制項包含其本身用來管理 Android OpenGL 生命週期的生命週期方法。 這些生命週期方法必須直接從包含的活動中呼叫。 若要讓應用程式正確地呼叫地圖控制項的生命週期方法，您必須在包含地圖控制項的活動中覆寫下列生命週期方法。 而且，您必須呼叫各自的地圖控制方法。 
+    為了避免必須為每個應用程式視圖新增驗證資訊，我們會藉由呼叫來全域設定驗證資訊 `AzureMaps.setSubscriptionKey` 。 `AzureMaps.setAadProperties`如果您想要使用 Azure Active Directory 進行驗證，您也可以呼叫。
 
-    * onCreate(Bundle) 
-    * onStart() 
-    * onResume() 
-    * onPause() 
-    * onStop() 
-    * onDestroy() 
-    * onSaveInstanceState(Bundle) 
-    * onLowMemory() 
+    地圖控制項會覆寫 >mainactivity 類別的下列生命週期方法。 這些方法負責管理 Android 的 OpenGL 生命週期。
 
-    編輯 **MainActivity.java** 檔案，如下所示：
-    
+    * onCreate(Bundle)
+    * onStart()
+    * onResume()
+    * onPause()
+    * onStop()
+    * onDestroy()
+    * onSaveInstanceState(Bundle)
+    * onLowMemory()
+
+    編輯檔案，如下所示 `MainActivity.java` ：
+
     ```java
     package com.example.myapplication;
 
@@ -136,7 +136,7 @@ Android Studio 可讓您在電腦上設定虛擬 Android 裝置。 這麼做可�
     import com.microsoft.azure.maps.mapcontrol.source.DataSource;
 
     public class MainActivity extends AppCompatActivity {
-        
+
         static {
             AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
         }
@@ -151,11 +151,11 @@ Android Studio 可讓您在電腦上設定虛擬 Android 裝置。 這麼做可�
             mapControl = findViewById(R.id.mapcontrol);
 
             mapControl.onCreate(savedInstanceState);
-    
+
             //Wait until the map resources are ready.
             mapControl.onReady(map -> {
                 //Add your post map load code here.
-    
+
             });
         }
 
@@ -203,68 +203,58 @@ Android Studio 可讓您在電腦上設定虛擬 Android 裝置。 這麼做可�
     }
     ```
 
-## <a name="import-classes"></a>匯入類別
-
-完成上述步驟之後，您大概會收到 Android Studio 所傳來關於某些程式碼的警告。 若要解決這些警告，請匯入 `MainActivity.java` 中所參考的類別。
-
-您可以選取 Alt+Enter (在 Mac 上則選取 Option+Return) 來自動匯入這些類別。
-
-如下圖所示選取 [執行] 按鈕 (在 Mac 上則按 Control+R) 以建置應用程式。
-
-![按一下 [執行]](./media/how-to-use-android-map-control-library/run-app.png)
+>[!WARNING]
+>Android Studio 可能尚未匯入必要的類別。  因此，程式碼將會有一些無法解析的參考。 若要匯入所需的類別，只要將滑鼠停留在每個無法解析的參考上，然後按 `Alt + Enter` (選項 + 在 Mac) 上返回。
 
 Android Studio 需要幾秒鐘的時間來建置應用程式。 建置完成後，您就可以在模擬的 Android 裝置中測試您的應用程式。 您應該會看到類似下面的地圖：
 
-<center>
-
-![Android 應用程式中的 Azure 地圖服務](./media/how-to-use-android-map-control-library/android-map.png)</center>
+:::image type="content" source="./media/how-to-use-android-map-control-library/android-map.png" border="true" alt-text="Android 應用程式中的 Azure 地圖服務":::
 
 ## <a name="localizing-the-map"></a>將地圖當地語系化
 
-Azure 地圖服務 Android SDK 提供三種不同的方式供您設定地圖的語言和區域檢視。 下列程式碼會示範如何將語言設定為法文 ("fr-FR")，並將區域檢視設為「自動」。 
+Azure 地圖服務 Android SDK 提供三種不同的方式來設定地圖的語言和地區設定。
 
-第一個選項是全域使用靜態 `setLanguage` 和 `setView` 方法，將語言和檢視區域資訊傳入 `AzureMaps` 類別中。 這會在應用程式中載入的所有 Azure 地圖服務控制項間設定預設語言和區域檢視。
+1. 在 AzureMaps 類別上呼叫靜態方法，以設定語言和地區設定。
 
-```Java
-static {
-    //Set your Azure Maps Key.
-    AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
+    ```Java
+    static {
+        //Set your Azure Maps Key.
+        AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
 
-    //Set the language to be used by Azure Maps.
-    AzureMaps.setLanguage("fr-FR");
+        //Set the language to be used by Azure Maps.
+        AzureMaps.setLanguage("fr-FR");
 
-    //Set the regional view to be used by Azure Maps.
-    AzureMaps.setView("auto");
-}
-```
+        //Set the regional view.
+        AzureMaps.setLanguage("Auto");
+    
+    }
+    ```
 
-第二個選項是將語言和檢視資訊傳入地圖控制項 XML 中。
+2. 定義地圖控制項 XML 中的語言和地區設定。
 
-```XML
-<com.microsoft.azure.maps.mapcontrol.MapControl
-    android:id="@+id/myMap"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:mapcontrol_language="fr-FR"
-    app:mapcontrol_view="auto"
-    />
-```
+    ```XML
+    <com.microsoft.azure.maps.mapcontrol.MapControl
+        android:id="@+id/myMap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:mapcontrol_language="fr-FR"
+        app:mapcontrol_view="Auto"
+        />
+    ```
 
-第三個選項是使用地圖 `setStyle` 方法，以程式設計方式設定地圖的語言和區域檢視。 此方法可隨時執行，以變更地圖的語言和區域檢視。
+3. 藉由在地圖控制項上呼叫方法來設定語言和地區設定。 此選項可讓您在執行時間變更設定。
 
-```Java
-mapControl.onReady(map -> {
-    map.setStyle(StyleOptions.language("fr-FR"));
-    map.setStyle(StyleOptions.view("auto"));
-});
-```
+    ```Java
+    mapControl.onReady(map -> {
+        map.setStyle(StyleOptions.language("fr-FR"));
+        map.setStyle(StyleOptions.view("Auto"));
+    
+    });
+    ```
 
-以下範例會示範語言設為 "fr-FR" 且區域檢視設為 "auto" 的 Azure 地圖服務。
+以下是將語言設定為的 Azure 地圖服務範例 `fr-FR` 。
 
-<center>
-
-![Azure 地圖服務，以法文顯示標籤的地圖影像](./media/how-to-use-android-map-control-library/android-localization.png)
-</center>
+:::image type="content" source="./media/how-to-use-android-map-control-library/android-localization.png" border="true" alt-text="Azure 地圖服務，以法文顯示標籤的地圖影像":::
 
 如需支援的語言和區域檢視的完整清單，請參閱[這裡](supported-languages.md)。
 
@@ -276,7 +266,7 @@ mapControl.onReady(map -> {
 
 - 以兩支手指接觸地圖，捏合即可縮小，張開手指即可放大。
 - 在地圖上點兩下可放大一個等級。
-- 以兩支手指點兩下可將地圖縮小一個等級。
+- 以兩個手指點一下，將地圖放大一層。
 - 點兩下；在點第二下時將手指放在地圖上並向上拖曳可放大，向下拖曳則可縮小。
 
 **移動瀏覽地圖**

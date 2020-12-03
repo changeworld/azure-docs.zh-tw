@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/04/2020
+ms.date: 12/02/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 6374164bb5049742d63a669b4c1e552c93967977
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 396d6f69673f8758d8d1302f8d10b8a92e5f50b4
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173374"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530744"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>將您的應用程式發佈至 Azure AD 應用程式資源庫
 
@@ -69,7 +69,7 @@ ms.locfileid: "96173374"
 - 共同客戶可取得逐步設定教學課程。
 - 使用系統進行跨網域身分識別管理的客戶 ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) 可以針對相同的應用程式使用布建。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您需要一個永久的帳戶來進行測試，而且至少已註冊兩個使用者。
 
@@ -168,14 +168,25 @@ Microsoft 不會提供（或建議） SAML 執行的程式庫。 有許多可用
 
 建立具有 HTML 登入頁面的 web 應用程式。 確定您的應用程式支援表單驗證，如此就可以完成密碼保存庫，讓單一登入能夠如預期般運作。
 
+## <a name="step-3---implement-scim-user-provisioning-in-your-app"></a>步驟 3-在您的應用程式中執行 SCIM 使用者布建
+支援 [SCIM](https://aka.ms/scimoverview) 布建是選擇性的，但強烈建議您建立應用程式的步驟。 支援 SCIM 標準很容易，並可讓客戶在您的應用程式中自動建立和更新使用者帳戶，而不需要依賴手動進程，例如上傳 CSV 檔案。 此外，客戶可以自動移除使用者，並讓群組成員資格保持同步，而無法使用 SAML JIT 等解決方案來完成。 
 
-## <a name="step-3---create-your-azure-tenant-and-test-your-app"></a>步驟 3-建立您的 Azure 租使用者並測試您的應用程式
+### <a name="learn-about-scim"></a>深入瞭解 SCIM
+若要深入瞭解客戶的 SCIM 標準和優點，請參閱布 [建 SCIM-快速入門](https://aka.ms/scimoverview)。
+
+### <a name="understand-the-azure-ad-scim-implementation"></a>瞭解 Azure AD SCIM 的執行
+若要深入瞭解 Azure AD SCIM 的執行，請參閱 [建立 SCIM 端點，並使用 Azure AD 來設定使用者布建](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups)。
+
+### <a name="implement-scim"></a>執行 SCIM
+Azure AD 提供可協助您建立 SCIM 端點的 [參考程式碼](https://aka.ms/scimoverview) 。 您也可以在 github 上找到許多協力廠商程式庫/參考。  
+
+## <a name="step-4---create-your-azure-tenant-and-test-your-app"></a>步驟 4-建立您的 Azure 租使用者並測試您的應用程式
 
 您將需要 Azure AD 租使用者，才能測試您的應用程式。 若要設定您的開發環境，請參閱 [快速入門：設定租](quickstart-create-new-tenant.md)使用者。
 
 或者，Azure AD 租使用者會隨附于每個 Microsoft 365 訂用帳戶。 若要設定免費的 Microsoft 365 開發環境，請參閱 [加入 Microsoft 365 開發人員計畫](/office/developer-program/microsoft-365-developer-program)。
 
-擁有租使用者之後，您必須啟用並測試單一登入存取。 
+擁有租使用者之後，您需要測試單一登入和布[建。](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client) 
 
 **針對 OIDC 或 Oath 應用** 程式，請將 [您的應用程式註冊](quickstart-register-app.md) 為多租使用者應用程式。 在 [支援的帳戶類型] 中，選取 [任何組織目錄中的帳戶及個人 Microsoft 帳戶] 選項。
 
@@ -184,7 +195,7 @@ Microsoft 不會提供（或建議） SAML 執行的程式庫。 有許多可用
 如有必要，您也可以 [將單一租使用者應用程式轉換為多租](howto-convert-app-to-be-multi-tenant.md) 使用者。
 
 
-## <a name="step-4---create-and-publish-documentation"></a>步驟 4-建立和發佈檔
+## <a name="step-5---create-and-publish-documentation"></a>步驟 5-建立和發佈檔
 
 ### <a name="documentation-on-your-site"></a>網站上的檔
 
@@ -206,13 +217,14 @@ Microsoft 不會提供（或建議） SAML 執行的程式庫。 有許多可用
 * 試驗使用者的測試步驟
 * 疑難排解資訊，包括錯誤碼和訊息
 * 客戶的支援機制
+* SCIM 端點的詳細資料，包括支援的資源和屬性
 
 ### <a name="documentation-on-the-microsoft-site"></a>Microsoft 網站上的檔
 
 當您使用 Azure Active Directory 應用程式庫列出您的應用程式時，它也會將您的應用程式發佈到 Azure Marketplace 中，Microsoft 將會為我們的共同客戶產生說明逐步程式的檔。 您可以在 [這裡](../saas-apps/tutorial-list.md)看到範例。 本檔是根據您提交至資源庫所建立，如果您使用 GitHub 帳戶對應用程式進行變更，就可以輕鬆地加以更新。
 
 
-## <a name="step-5---submit-your-app"></a>步驟 5-提交您的應用程式
+## <a name="step-6---submit-your-app"></a>步驟 6-提交您的應用程式
 
 在您測試過應用程式整合是否與 Azure AD 搭配運作之後，請在 [Microsoft 應用程式網路入口網站](https://microsoft.sharepoint.com/teams/apponboarding/Apps)中提交應用程式要求。
 
@@ -262,7 +274,7 @@ Microsoft 不會提供（或建議） SAML 執行的程式庫。 有許多可用
 
 ![在資源庫中列出密碼 SSO 應用程式](./media/howto-app-gallery-listing/passwordsso.png)
 
-如果您正在執行 [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2.0 端點以進行使用者布建，請選取如下所示的選項。 
+如果您正在執行 [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2.0 端點以進行使用者布建，請選取如下所示的選項。 在上架要求中提供架構時，請遵循 [此處](https://docs.microsoft.com/azure/active-directory/app-provisioning/export-import-provisioning-configuration) 的指示來下載您的架構。 我們會使用您在測試非資源庫應用程式時所設定的架構來建立資源庫應用程式。 
 
    ![要求使用者布建](./media/howto-app-gallery-listing/user-provisioning.png)
 
@@ -301,7 +313,7 @@ Microsoft 不會提供（或建議） SAML 執行的程式庫。 有許多可用
 針對任何呈報，請傳送電子郵件給 [AZURE AD SSO 整合小組](mailto:SaaSApplicationIntegrations@service.microsoft.com)，我們會儘快回應。
 
 
-## <a name="step-6---join-the-microsoft-partner-network"></a>步驟 6-加入 Microsoft 合作夥伴網路
+## <a name="step-7---join-the-microsoft-partner-network"></a>步驟 7-加入 Microsoft 合作夥伴網路
 Microsoft 合作夥伴網路可讓您立即存取專屬資源、程式、工具和連接。 若要加入網路並建立您的「移至市場」方案，請參閱 [觸及商業客戶](https://partner.microsoft.com/explore/commercial#gtm)。
 
 

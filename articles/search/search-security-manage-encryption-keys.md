@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4fb20b221858c4717d67e0777afbe5c067c00a69
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8295e619cfda0d4b83a7356d5fd21d4b80f83849
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499606"
+ms.locfileid: "96530879"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>在 Azure 認知搜尋中設定客戶管理的金鑰進行資料加密
 
-Azure 認知搜尋會使用 [服務管理的金鑰](../security/fundamentals/encryption-atrest.md#azure-encryption-at-rest-components)自動加密待用的索引內容。 如果需要更多保護，您可以使用您在 Azure Key Vault 中建立和管理的金鑰，以額外的加密層補充預設加密。 本文將逐步引導您完成設定 CMK 加密的步驟。
+Azure 認知搜尋會使用 [服務管理的金鑰](../security/fundamentals/encryption-atrest.md#azure-encryption-at-rest-components)自動加密待用的索引內容。 如果需要更多保護，您可以使用您在 Azure Key Vault 中建立和管理的金鑰，以額外的加密層補充預設加密。 本文將逐步引導您完成設定客戶管理金鑰加密的步驟。
 
-CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您可以建立自己的加密金鑰，然後將其儲存在金鑰保存庫中，或是使用 Azure Key Vault 的 API 來產生加密金鑰。 使用 Azure Key Vault，如果您 [啟用記錄功能](../key-vault/general/logging.md)，也可以審核金鑰使用方式。  
+客戶管理的金鑰加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您可以建立自己的加密金鑰，然後將其儲存在金鑰保存庫中，或是使用 Azure Key Vault 的 API 來產生加密金鑰。 使用 Azure Key Vault，如果您 [啟用記錄功能](../key-vault/general/logging.md)，也可以審核金鑰使用方式。  
 
 使用客戶管理的金鑰進行加密時，會在建立這些物件時套用至個別的索引或同義字地圖，而不會在搜尋服務層級本身指定。 只有新的物件可以加密。 您無法加密已存在的內容。
 
@@ -31,7 +31,7 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 
 ## <a name="double-encryption"></a>雙重加密
 
-針對在2020年8月1日之後建立的服務，以及在特定區域中，CMK 加密的範圍包含暫存磁片，目前可在下欄區域中取得 [完整的雙重加密](search-security-overview.md#double-encryption)： 
+針對在2020年8月1日之後建立的服務，以及在特定區域中，客戶管理的金鑰加密範圍包含暫存磁片，目前可在下欄區域中取得 [完整的雙重加密](search-security-overview.md#double-encryption)： 
 
 + 美國西部 2
 + 美國東部
@@ -39,13 +39,13 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 + US Gov 維吉尼亞州
 + US Gov 亞利桑那州
 
-如果您使用不同的區域，或在8月1日之前建立的服務，則您的 CMK 加密僅限於資料磁片，但不包括服務使用的暫存磁片。
+如果您使用不同的區域，或在8月1日之前建立的服務，則受管理的金鑰加密僅限於資料磁片，但不包括服務使用的暫存磁片。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 此案例中會使用下列工具和服務。
 
-+ [Azure 認知搜尋](search-create-service-portal.md) 在任何區域) 的可 [計費層級](search-sku-tier.md#tiers) (基本或更新版本。
++ [Azure 認知搜尋](search-create-service-portal.md) 在任何區域) 的可 [計費層級](search-sku-tier.md#tier-descriptions) (基本或更新版本。
 + [Azure Key Vault](../key-vault/general/overview.md)，您可以使用 [Azure 入口網站](../key-vault//general/quick-create-portal.md)、 [Azure CLI](../key-vault//general/quick-create-cli.md)或 [Azure PowerShell](../key-vault//general/quick-create-powershell.md)來建立金鑰保存庫。 在 Azure 認知搜尋的相同訂用帳戶中。 金鑰保存庫必須啟用虛 **刪除** 和 **清除保護** 。
 + [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)。 如果您沒有帳戶，請 [設定一個新的租](../active-directory/develop/quickstart-create-new-tenant.md)使用者。
 
@@ -56,7 +56,7 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 
 ## <a name="1---enable-key-recovery"></a>1-啟用金鑰復原
 
-由於使用客戶管理的金鑰進行加密的本質，如果刪除您的 Azure Key vault 金鑰，就不會有任何人可以取出您的資料。 若要防止意外刪除 Key Vault 金鑰所造成的資料遺失，必須在金鑰保存庫上啟用虛刪除和清除保護。 預設會啟用虛刪除，因此您只會在刻意停用時才會遇到問題。 預設不會啟用清除保護，但 Azure 認知搜尋 CMK 加密需要它。 如需詳細資訊，請參閱虛 [刪除](../key-vault/general/soft-delete-overview.md) 和 [清除保護](../key-vault/general/soft-delete-overview.md#purge-protection) 概述。
+由於使用客戶管理的金鑰進行加密的本質，如果刪除您的 Azure Key vault 金鑰，就不會有任何人可以取出您的資料。 若要防止意外刪除 Key Vault 金鑰所造成的資料遺失，必須在金鑰保存庫上啟用虛刪除和清除保護。 預設會啟用虛刪除，因此您只會在刻意停用時才會遇到問題。 預設不會啟用清除保護，但在認知搜尋中，客戶管理的金鑰加密需要它。 如需詳細資訊，請參閱虛 [刪除](../key-vault/general/soft-delete-overview.md) 和 [清除保護](../key-vault/general/soft-delete-overview.md#purge-protection) 概述。
 
 您可以使用入口網站、PowerShell 或 Azure CLI 命令來設定這兩個屬性。
 
@@ -377,7 +377,7 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 
 ## <a name="work-with-encrypted-content"></a>使用加密的內容
 
-使用 CMK 加密時，您會發現索引和查詢的延遲，因為額外的加密/解密工作。 Azure 認知搜尋不會記錄加密活動，但您可以透過 key vault 記錄來監視金鑰存取權。 建議您在金鑰保存庫設定中 [啟用記錄功能](../key-vault/general/logging.md) 。
+使用客戶管理的金鑰加密時，您會注意到索引和查詢的延遲，因為額外的加密/解密工作。 Azure 認知搜尋不會記錄加密活動，但您可以透過 key vault 記錄來監視金鑰存取權。 建議您在金鑰保存庫設定中 [啟用記錄功能](../key-vault/general/logging.md) 。
 
 預期會在一段時間後進行金鑰輪替。 每當您輪替金鑰時，請務必遵循下列順序：
 

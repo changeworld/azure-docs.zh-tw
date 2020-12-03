@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7d2b87710b2590f9bcf511ec0cbd5637913fb5c4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 4fd328dad3544697ba1f4896f7383be857b097a5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538439"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530658"
 ---
 # <a name="describe-images-with-human-readable-language"></a>描述映包含人類可讀語言的影像
 
@@ -60,8 +60,7 @@ ms.locfileid: "94538439"
 
 映射描述功能是「 [分析影像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API」的一部分。 您可以透過原生 SDK 或 REST 呼叫來呼叫此 API。 包含 `Description` 在 **visualFeatures** 查詢參數中。 然後，當您取得完整 JSON 回應時，只要剖析該區段內容的字串即可 `"description"` 。
 
-* [快速入門：電腦視覺 .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-* [快速入門：分析影像 (REST API) ](./quickstarts/csharp-analyze.md)
+* [快速入門：電腦視覺 REST API 或用戶端程式庫](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
 
 ## <a name="next-steps"></a>後續步驟
 

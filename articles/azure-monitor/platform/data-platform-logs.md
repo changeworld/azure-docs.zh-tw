@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: 3c3a20d8401affc519e118c7f2295339990e7dee
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: dd4586128bf2ce657352c0a1d4608637ecf9dba9
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186502"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531219"
 ---
 # <a name="azure-monitor-logs-overview"></a>Azure 監視器記錄概觀 (機器翻譯)
-Azure 監視器記錄是 Azure 監視器的功能，可從 [受監視的資源](../monitor-reference.md)收集及組織記錄和效能資料。 來自不同來源的資料，例如來自 Azure 服務的 [平臺記錄](platform-logs-overview.md) 、 [虛擬機器代理](agents-overview.md)程式的記錄和效能資料，以及 [應用程式](../app/app-insights-overview.md) 的使用方式和效能資料，都可以合併到單一工作區中，因此可以使用能夠快速分析數百萬筆記錄的精密查詢語言來分析它們。 您可以執行簡單的查詢，只抓取一組特定的記錄，或執行精密的資料分析，以識別監視資料中的重要模式。 使用 Log Analytics 以互動方式使用記錄查詢及其結果、在警示規則中使用這些查詢，以主動通知 br，或在活頁簿或儀表板中將其結果視覺化。
+Azure 監視器記錄是 Azure 監視器的功能，可從 [受監視的資源](../monitor-reference.md)收集及組織記錄和效能資料。 來自不同來源的資料，例如來自 Azure 服務的 [平臺記錄](platform-logs-overview.md) 、 [虛擬機器代理](agents-overview.md)程式的記錄和效能資料，以及 [應用程式](../app/app-insights-overview.md) 的使用方式和效能資料，都可以合併到單一工作區中，因此可以使用能夠快速分析數百萬筆記錄的精密查詢語言來分析它們。 您可以執行簡單的查詢，只抓取一組特定的記錄，或執行精密的資料分析，以識別監視資料中的重要模式。 使用 Log Analytics 以互動方式使用記錄查詢及其結果、在警示規則中使用它們，以主動通知問題，或是在活頁簿或儀表板中將其結果視覺化。
 
 > [!NOTE]
 > Azure 監視器記錄是支援 Azure 監視器的資料平臺的一半。 另一個是在時間序列資料庫中儲存數值資料的 [Azure 監視器計量](data-platform-metrics.md) 。 這可讓此資料比 Azure 監視器記錄中的資料更輕量，且能夠支援近乎即時的案例，使其特別適用于警示和快速偵測問題。 不過，計量只能將數值資料儲存在特定結構中，而記錄可以儲存各種不同的資料類型，每個資料類型都有自己的結構。 您也可以使用無法用於分析計量資料的記錄查詢，對記錄資料執行複雜的分析。

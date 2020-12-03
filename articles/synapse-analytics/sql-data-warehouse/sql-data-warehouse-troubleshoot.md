@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6da80ec4c9c3c4e6c95eb1c9001596ffe3dd5711
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c69df88828a179cf1dce7bd35ac19c518b07903d
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447842"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530709"
 ---
 # <a name="troubleshooting-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中針對專用 SQL 集區 (先前的 SQL DW) 進行疑難排解
 
@@ -45,6 +45,7 @@ ms.locfileid: "96447842"
 | 問題                                                        | 解決方案                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | 使用 CETAS 匯出空字串會在 Parquet 和 ORC 檔案中產生 Null 值。 注意：如果您要從不是 Null 條件約束的資料行匯出空字串，則 CETAS 會產生拒絕的記錄，而且匯出可能會失敗。 | 移除 CETAS 的 SELECT 語句中的空字串或違規資料行。 |
+| 不支援將0-127 範圍以外的值載入至 Parquet 和 ORC 檔案格式的 Tinyint 資料行。 | 為目標資料行指定較大的資料類型。           |
 
 ## <a name="performance"></a>效能
 

@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 30c26fcc48b1051944c181c0d24ae9e3c89ce477
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 6de0fc52ae265a47ca7f52d46e5f44b74c1277aa
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565818"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530913"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault 驗證基本概念
 
@@ -116,8 +116,6 @@ Key Vault 角色指派是一組 Azure 內建的角色指派，其中包含用來
 * 您可以允許使用者在訂用帳戶、資源群組或個別金鑰保存庫層級指派這些角色，以大規模管理 Azure RBAC 許可權。 使用者會擁有 Azure RBAC 指派範圍內所有金鑰保存庫的資料平面許可權。 這樣就不需要針對每個金鑰保存庫的每個使用者/應用程式指派個別存取原則許可權。
 
 * Azure RBAC 許可權與 Privileged Identity Management 或 PIM 相容。 這可讓您為特殊許可權角色（例如 Key Vault 系統管理員）設定即時存取控制。 這是最佳的安全性作法，而且會藉由消除對金鑰保存庫的持續存取權，遵循最低許可權的主體。
-
-* Azure RBAC 許可權與每個物件的細微許可權相容，因此您可以限制使用者只能對某些金鑰保存庫物件執行作業。 這可讓多個應用程式共用單一金鑰保存庫，同時仍然隔離應用程式之間的存取。
 
 若要深入瞭解適用于 Key Vault 的 Azure RBAC，請參閱下列檔：
 

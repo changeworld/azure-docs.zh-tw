@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 2241049e5c3cb5039a73c0f7637f7e3553d2e227
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 878d59445dde839ca9e702ac0c49af676e48a42f
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326864"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531185"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>遷移總覽： SQL Server 至 SQL 受控執行個體
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -63,7 +63,7 @@ ms.locfileid: "96326864"
 您可以在部署期間選擇計算和儲存體資源，然後在使用 [Azure 入口網站](../../database/scale-resources.md) 之後變更它們，而不會導致您的應用程式停機。 
 
 > [!IMPORTANT]
-> [受控實例虛擬網路需求](../../managed-instance/connectivity-architecture-overview.md#network-requirements)中的任何差異都可能會讓您無法建立新的實例，或使用現有的實例。 深入瞭解如何 [建立新](../../managed-instance/virtual-network-subnet-create-arm-template.md?branch=release-ignite-arc-data)   的網路和設定 [現有](../../managed-instance/vnet-existing-add-subnet.md?branch=release-ignite-arc-data)的   網路。 
+> [受控實例虛擬網路需求](../../managed-instance/connectivity-architecture-overview.md#network-requirements)中的任何差異都可能會讓您無法建立新的實例，或使用現有的實例。 深入瞭解如何 [建立新](../../managed-instance/virtual-network-subnet-create-arm-template.md)   的網路和設定 [現有](../../managed-instance/vnet-existing-add-subnet.md?branch=release-ignite-arc-data)的   網路。 
 
 ### <a name="sql-server-vm-alternative"></a>SQL Server VM 替代方案
 

@@ -5,12 +5,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: jpalma
-ms.openlocfilehash: e8214345bd1c328f0996f8aa8a2a8bb402a76e8d
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 83d7d48922806334e2b49494fe0ef1d15e1a7a6a
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309591"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531474"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Azure Kubernetes Service (AKS) 節點映射升級
 
@@ -158,12 +158,12 @@ az aks nodepool show \
 
 - 如需最新節點映射的詳細資訊，請參閱 [AKS 版本](https://github.com/Azure/AKS/releases) 資訊。
 - 瞭解如何使用 [upgrade a AKS cluster][upgrade-cluster]升級 Kubernetes 版本。
-- [將安全性和核心更新套用至 Azure Kubernetes Service (AKS) 中的 Linux 節點 ][security-update]
+- [使用 GitHub Actions 自動套用叢集和節點集區升級][github-schedule]
 - 深入瞭解多個節點集區，以及如何使用 [建立和管理多個節點][use-multiple-node-pools]集區來升級節點集區。
 
 <!-- LINKS - internal -->
 [upgrade-cluster]: upgrade-cluster.md
-[security-update]: node-updates-kured.md
+[github-schedule]: node-upgrade-github-actions.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [max-surge]: upgrade-cluster.md#customize-node-surge-upgrade
 [az-extension-add]: /cli/azure/extension#az-extension-add

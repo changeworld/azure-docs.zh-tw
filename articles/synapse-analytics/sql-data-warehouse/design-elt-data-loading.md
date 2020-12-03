@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 8b75345743bb398458752d03f853738df713b4f9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 64ba24eb0eab581310122908fc05d1d671ac1d40
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456442"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531568"
 ---
 # <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的資料載入策略
 
@@ -119,8 +119,9 @@ ms.locfileid: "96456442"
 | [複雜類型](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23maps&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=FiThqXxjgmZBVRyigHzfh5V7Z%2BPZHjud2IkUUM43I7o%3D&reserved=0) |                  MAP                  |   varchar(max)   |
 
 >[!IMPORTANT] 
-> - SQL 專用集區目前不支援具有 MICROS 和 NANOS 精確度的 Parquet 資料類型。 
-> - 如果 Parquet 與 SQL 之間的類型不相符，或如果您有不支援的 Parquet 資料類型，您可能會遇到下列錯誤：  **"HdfsBridge：： recordReaderFillBuffer-填滿記錄讀取器緩衝區時發生非預期的錯誤：發生 classcastexception： ..."**
+>- SQL 專用集區目前不支援具有 MICROS 和 NANOS 精確度的 Parquet 資料類型。 
+>- 如果 Parquet 與 SQL 之間的類型不相符，或如果您有不支援的 Parquet 資料類型，您可能會遇到下列錯誤： **"HdfsBridge：： recordReaderFillBuffer-填滿記錄讀取器緩衝區時發生非預期的錯誤：發生 classcastexception： ..."**
+>- 不支援將0-127 範圍以外的值載入至 Parquet 和 ORC 檔案格式的 Tinyint 資料行。
 
 如需建立外部物件的範例，請參閱 [建立外部資料表](https://docs.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables?tabs=sql-pool)。
 

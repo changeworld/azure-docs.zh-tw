@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 55a1255ffa82aec8ea7b9e1ec2bbc6746b9b0636
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: bae214fb8eff9747bf3f79323d8eb9ce1cb6cdb7
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523402"
+ms.locfileid: "96531593"
 ---
 # <a name="synapse-rbac-roles"></a>Synapse RBAC 角色
 
@@ -28,12 +28,11 @@ ms.locfileid: "96523402"
 - 針對數個角色引進 **新的較低層級範圍**。  這些範圍允許將角色限制為特定的資源或物件。
 
 >[!Note]
->- 新的角色和較低層級的範圍目前為預覽狀態。  
->- 在未來的版本中，將會取代 Apache Spark 系統管理員和 SQL 系統管理員角色，以使用新的 Synapse RBAC 角色。  建議您採用新的預覽角色（這些角色是完全受支援的角色），並提供其使用的意見反應。
+>- **新的角色和較低層級的範圍目前為預覽** 狀態。  建議您使用這些新的角色和範圍，這些都是完全支援的角色和範圍，並提供其使用的意見反應。
 
 ## <a name="built-in-synapse-rbac-roles-and-scopes"></a>內建 Synapse RBAC 角色和範圍
 
-下表說明每個內建角色，以及可使用這些角色的範圍。
+下表說明內建角色以及可使用這些角色的範圍。
 
 >[!Note]
 > 在任何範圍內具有任何 Synapse RBAC 角色的使用者，都會在工作區範圍自動擁有 Synapse 使用者角色。 
