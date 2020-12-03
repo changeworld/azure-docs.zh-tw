@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: jeedes
 ms.openlocfilehash: 822e28402d0b7829b835ad03a3b3cf7d05c3d343
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455800"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180994"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-cloud-academy---sso"></a>教學課程：Azure Active Directory 單一登入與 Cloud Academy - SSO 的整合
 
@@ -51,7 +51,7 @@ Cloud Academy - SSO 支援 SP 起始的 SSO。
 1. 在左窗格中，選取 [Azure Active Directory]。
 1. 移至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Cloud Academy - SSO** 。
+1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Cloud Academy - SSO**。
 1. 在結果面板中選取 [Cloud Academy - SSO]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -73,7 +73,7 @@ Cloud Academy - SSO 支援 SP 起始的 SSO。
 依照下列步驟，在 Azure 入口網站中啟用 Azure AD SSO：
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Cloud Academy - SSO] 應用程式整合頁面上，於 [管理] 區段中選取 [單一登入]。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入] 頁面上，選取 [基本 SAML 組態] 的鉛筆按鈕，以編輯設定：
 
    ![顯示用於編輯基本 SAML 設定之鉛筆按鈕的螢幕擷取畫面。](common/edit-urls.png)
@@ -91,7 +91,7 @@ Cloud Academy - SSO 支援 SP 起始的 SSO。
 1. 在 Azure 入口網站的左側窗格中，選取 [Azure Active Directory]。 選取 [使用者 ]，然後選取 [所有使用者]。
 1. 在畫面頂端選取 [新增使用者]。
 1. 在 [使用者] 屬性中，完成下列步驟：
-   1. 在 [名稱] 方塊中，輸入 **B.Simon** 。  
+   1. 在 [名稱] 方塊中，輸入 **B.Simon**。  
    1. 在 [使用者名稱] 方塊中，輸入 \<username>@\<companydomain>.\<extension>。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼]，然後記下 [密碼] 方塊中顯示的值。
    1. 選取 [建立]。

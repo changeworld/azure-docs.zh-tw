@@ -10,11 +10,11 @@ ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: 711da24b3edf08f4867109d0d70165955236c39a
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743415"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184649"
 ---
 # <a name="tutorial-configure-compute-on-azure-stack-edge-pro-gpu-device"></a>教學課程：在 Azure Stack Edge Pro GPU 裝置上設定計算
 
@@ -63,11 +63,11 @@ ms.locfileid: "91743415"
 
     ![開始使用計算 2](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 
-4. 選取 [建立]。 建立 IoT 中樞資源需要幾分鐘的時間。 建立 IoT 中樞資源之後，[設定計算]**** 圖格會更新以顯示計算組態。 
+4. 選取 [建立]。 建立 IoT 中樞資源需要幾分鐘的時間。 建立 IoT 中樞資源之後，[設定計算] 圖格會更新以顯示計算組態。 
 
     ![開始使用計算 3](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
 
-5. 若要確認已設定 Edge 計算角色，請選取 [設定計算]**** 圖格上的 [檢視計算]****。
+5. 若要確認已設定 Edge 計算角色，請選取 [設定計算] 圖格上的 [檢視計算]。
     
     ![開始使用計算 4](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
 
@@ -76,7 +76,7 @@ ms.locfileid: "91743415"
     
 在 Edge 裝置上設定 Edge 計算角色時，其會建立兩個裝置：一個 IoT 裝置和一個 IoT Edge 裝置。 這兩個裝置都可以在 IoT 中樞資源中檢視。 IoT Edge 執行階段也是在此 IoT Edge 裝置上執行。 目前只有 Linux 平台適用於您的 IoT Edge 裝置。
 
-設定計算可能需要 20-30 分鐘的時間，因為系統會在幕後作業並建立虛擬機器和 Kubernetes 叢集。 
+設定計算可能需要 20-30 分鐘的時間，因為系統會在幕後作業並建立虛擬機器和 Kubernetes 叢集。 
 
 在 Azure 入口網站中成功設定計算之後，就會存在與 IoT 命名空間 (由 Azure Stack Edge Pro 控制的系統命名空間) 相關聯的 Kubernetes 叢集和預設使用者。 
 
@@ -84,8 +84,8 @@ ms.locfileid: "91743415"
 
 若要設定用戶端來存取 Kubernetes 叢集，您需要 Kubernetes 端點。 請遵循下列步驟，從 Azure Stack Edge Pro 裝置的本機 UI 取得 Kubernetes API 端點。
 
-1. 在裝置的本機 Web UI 中，移至**裝置**頁面。
-2. 在**裝置端點**下，複製 **Kubernetes API 服務**端點。 此端點的字串為下列格式：`https://compute.<device-name>.<DNS-domain>[Kubernetes-cluster-IP-address]`。 
+1. 在裝置的本機 Web UI 中，移至 **裝置** 頁面。
+2. 在 **裝置端點** 下，複製 **Kubernetes API 服務** 端點。 此端點的字串為下列格式：`https://compute.<device-name>.<DNS-domain>[Kubernetes-cluster-IP-address]`。 
 
     ![本機 UI 中的裝置頁面](./media/azure-stack-edge-j-series-create-kubernetes-cluster/device-kubernetes-endpoint-1.png)
 
@@ -101,7 +101,7 @@ ms.locfileid: "91743415"
 
         ![本機 UI 中的裝置頁面 2](./media/azure-stack-edge-gpu-deploy-configure-compute/download-advanced-config-2.png)
 
-    - 您也可以移至 **Kubernetes 儀表板**端點，並下載 `aseuser` 設定檔。 
+    - 您也可以移至 **Kubernetes 儀表板** 端點，並下載 `aseuser` 設定檔。 
     
         ![本機 UI 中的裝置頁面 3](./media/azure-stack-edge-gpu-deploy-configure-compute/download-aseuser-config-1.png)
 

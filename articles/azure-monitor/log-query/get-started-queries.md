@@ -6,17 +6,17 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: 8b3b6a41da6e3100739da920472d582711d1e9b1
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a949c9b34e299e0dc4eccbb62f4b4ebb38d6ccb9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024376"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186706"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>開始使用 Azure 監視器中的查詢
 
 > [!NOTE]
-> 如果您要從至少一台虛擬機器收集資料，就可以在自己的環境中進行這項練習。 若非如此，請使用我們的[示範環境](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)，內有許多範例資料。  如果您已經知道如何在 KQL 中查詢，但只需要根據資源類型快速建立有用的查詢，請參閱[儲存的範例查詢窗格](saved-queries.md)。
+> 如果您要從至少一台虛擬機器收集資料，就可以在自己的環境中進行這項練習。 若非如此，請使用我們的[示範環境](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)，內有許多範例資料。  如果您已經知道如何在 KQL 中查詢，但只需要根據資源類型快速建立有用的查詢，請參閱[儲存的範例查詢窗格](./example-queries.md)。
 
 在本教學課程中，您會了解如何在 Azure 監視器中撰寫記錄查詢。 它會告訴您如何：
 
@@ -28,7 +28,7 @@ ms.locfileid: "95024376"
 - 定義和使用自訂欄位
 - 彙總和群組結果
 
-如需如何在 Azure 入口網站中使用 Log Analytics 的教學課程，請參閱[開始使用 Azure 監視器 Log Analytics](get-started-portal.md)。<br>
+如需如何在 Azure 入口網站中使用 Log Analytics 的教學課程，請參閱[開始使用 Azure 監視器 Log Analytics](./log-analytics-tutorial.md)。<br>
 如需 Azure 監視器之中記錄查詢的詳細資訊，請參閱 [Azure 監視器中的記錄查詢總覽](log-query-overview.md)。
 
 請按照以下本教學課程的影片版本進行：

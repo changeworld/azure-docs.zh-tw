@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 484a44a7a9840409e3f5770c743e5cd62e0cef66
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 824ae8d39d934ebc58fc75185e36f5faa11109a9
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910299"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325361"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory 程式碼範例 (v1.0 端點)
 
@@ -69,7 +69,7 @@ ms.locfileid: "92910299"
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>呼叫 Microsoft Graph 或 Web API 的桌上型與行動裝置公開用戶端應用程式
 
-下列範例說明會代表使用者存取 Microsoft Graph 或 Web API 的公用用戶端應用程式 (傳統型/行動應用程式)。 視裝置及平台而定，應用程式可以使用不同的方式 (流程/授與) 將使用者登入：
+下列範例說明會代表使用者存取 Microsoft Graph 或 Web API 的公用用戶端應用程式 (傳統型應用程式/行動應用程式)。 視裝置及平台而定，應用程式可以使用不同的方式 (流程/授與) 將使用者登入：
 
 - 以互動方式
 - 以無訊息方式 (在 Windows 中使用整合式 Windows 驗證，或使用者名稱/密碼)

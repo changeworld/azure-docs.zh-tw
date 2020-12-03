@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: e367e4f2a704d8c718551fb031164520b3ff5bb3
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 75e3886e31592b0672487bacd5ff2266e07e39cd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579125"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182493"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>教學課程：建立 Azure Functions 私人網站存取
 
@@ -113,7 +113,7 @@ ms.locfileid: "94579125"
     | _子網路_ | AzureBastionSubnet | 虛擬網路中將部署新 Bastion 主機資源的子網路。 您必須使用 **AzureBastionSubnet** 名稱值來建立子網路。 此值可讓 Azure 知道要將 Bastion 資源部署到哪一個子網路。 您必須使用至少 **/27** 或更大的子網路 (/27、/26 等等)。 |
 
     > [!NOTE]
-    > 如需建立 Azure Bastion 資源的詳細逐步指南，請參閱[建立 Azure Bastion 主機](../bastion/bastion-create-host-portal.md)教學課程。
+    > 如需建立 Azure Bastion 資源的詳細逐步指南，請參閱[建立 Azure Bastion 主機](../bastion/tutorial-create-host-portal.md)教學課程。
 
 1. 建立 Azure 可在其中佈建 Azure Bastion 主機的子網路。 選擇 [管理子網路設定] 會開啟新的窗格，您可以在其中定義新的子網路。  選擇 [+ 子網路] 以建立新的子網路。
 1. 子網路的名稱必須是 **AzureBastionSubnet** 且子網路前置詞至少必須是 **/27**。  選取 [確定] 以建立子網路。
@@ -194,9 +194,9 @@ VM 會透過虛擬網路存取網站，因此您可以從 VM 上的網頁瀏覽�
 
 1. 遵循下列其中一個快速入門，建立和部署您的 Azure Functions 應用程式。
 
-    * [Visual Studio Code](./functions-create-first-function-vs-code.md)
+    * [Visual Studio Code](./create-first-function-vs-code-csharp.md)
     * [Visual Studio](./functions-create-your-first-function-visual-studio.md)
-    * [命令列](./functions-create-first-azure-function-azure-cli.md)
+    * [命令列](./create-first-function-cli-csharp.md)
     * [Maven (Java)](./create-first-function-cli-java.md?tabs=bash,browser)
 
 1. 發佈 Azure Functions 專案時，請選擇您稍早在本教學課程中建立的函式應用程式資源。

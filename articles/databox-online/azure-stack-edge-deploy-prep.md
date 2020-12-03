@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/22/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 224131d1b17c4ed34ee847638633a5a1a494ccaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12879b22e255384701b0cd265b50ed34d5e198c9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90894140"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345537"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>教學課程：準備部署 Azure Stack Edge Pro  
 
@@ -53,18 +53,18 @@ ms.locfileid: "90894140"
 
 在您開始前，請確定：
 
-* 已針對 Azure Stack Edge 資源啟用您的 Microsoft Azure 訂用帳戶。 確定您所使用的是受支援的訂用帳戶，例如 [Microsoft Enterprise 合約 (EA)](https://azure.microsoft.com/overview/sales-number/)、[雲端方案提供者 (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp) 或 [Microsoft Azure 贊助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支援隨用隨付訂用帳戶。
+* 已針對 Azure Stack Edge 資源啟用您的 Microsoft Azure 訂用帳戶。 確定您所使用的是受支援的訂用帳戶，例如 [Microsoft Enterprise 合約 (EA)](https://azure.microsoft.com/overview/sales-number/)、[雲端方案提供者 (CSP)](/partner-center/azure-plan-lp) 或 [Microsoft Azure 贊助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支援隨用隨付訂用帳戶。
 
 * 您在 Azure Stack Edge / 資料箱閘道、IoT 中樞及 Azure 儲存體資源的資源群組層級上，具有擁有者或參與者存取權限。
 
-  * 您應該是訂用帳戶層級的**擁有者**，才能授與參與者存取權。 若要將參與者存取權授與其他人，請在 Azure 入口網站中移至 [所有服務] > [訂用帳戶] > [存取控制 (IAM)] > [+ 新增] > [新增角色指派]。 如需詳細資訊，請參閱[教學課程：使用 Azure 入口網站為使用者授與 Azure 資源的存取權](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)。
+  * 您應該是訂用帳戶層級的 **擁有者**，才能授與參與者存取權。 若要將參與者存取權授與其他人，請在 Azure 入口網站中移至 [所有服務] > [訂用帳戶] > [存取控制 (IAM)] > [+ 新增] > [新增角色指派]。 如需詳細資訊，請參閱[教學課程：使用 Azure 入口網站為使用者授與 Azure 資源的存取權](../role-based-access-control/quickstart-assign-role-user-portal.md)。
 
   * 若要建立任何 Azure Stack Edge/ 資料箱閘道資源，您應該要有以資源群組層級作為範圍的參與者權限 (或更高權限)。 您也需要確定已註冊 `Microsoft.DataBoxEdge` 資源提供者。 如需如何註冊資源提供者的相關資訊，請參閱[註冊資源提供者](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
   * 若要建立任何 IoT 中樞資源，請確定已註冊該 Microsoft.Devices 提供者。 如需有關如何註冊的資訊，請移至[註冊資源提供者](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
   * 同樣的，若要建立儲存體帳戶資源，您需要以資源群組層級作為範圍的參與者存取權限 (或更高權限)。 根據預設，Azure 儲存體是已註冊的資源提供者。
-* 您有 Azure Active Directory 圖形 API 的管理員或使用者存取權。 如需詳細資訊，請參閱 [Azure Active Directory 圖形 API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
+* 您有 Azure Active Directory 圖形 API 的管理員或使用者存取權。 如需詳細資訊，請參閱 [Azure Active Directory 圖形 API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
 * 您擁有的 Microsoft Azure 儲存體帳戶具有存取認證。
-* 您的系統管理員所設定的任何 Azure 原則都不會封鎖您。 如需原則的詳細資訊，請參閱[快速入門：建立原則指派以識別不符合規範的資源](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal)。
+* 您的系統管理員所設定的任何 Azure 原則都不會封鎖您。 如需原則的詳細資訊，請參閱[快速入門：建立原則指派以識別不符合規範的資源](../governance/policy/assign-policy-portal.md)。
 
 ### <a name="for-the-azure-stack-edge-pro-device"></a>針對 Azure Stack Edge Pro 裝置
 
@@ -96,7 +96,7 @@ ms.locfileid: "90894140"
 1. 使用您的 Microsoft Azure 認證登入： 
 
     - 位於以下 RUL 的 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
-    - 或者，位於以下 RUL 的 Azure Government 入口網站：[https://portal.azure.us](https://portal.azure.us)。 如需詳細資訊，請移至[使用入口網站連線到 Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)。
+    - 或者，位於以下 RUL 的 Azure Government 入口網站：[https://portal.azure.us](https://portal.azure.us)。 如需詳細資訊，請移至[使用入口網站連線到 Azure Government](../azure-government/documentation-government-get-started-connect-with-portal.md)。
 
 2. 在左窗格中，選取 [+ 建立資源]。 搜尋並選取 **Azure Stack Edge/資料箱閘道**。 選取 [建立]。
 3. 挑選要用於 Azure Stack Edge Pro 裝置的訂用帳戶。 選取要部署 Azure Stack Edge 資源的區域。 如需 Azure Stack Edge 適用區域的完整清單，請參閱[依區域提供的 Azure 產品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。
@@ -112,7 +112,7 @@ ms.locfileid: "90894140"
     |設定  |值  |
     |---------|---------|
     |訂用帳戶    |這會根據您稍早的選取項目自動填入。 訂用帳戶會連結到您的帳單帳戶。 |
-    |資源群組  |選取現有的群組或建立新的群組。<br>深入了解 [Azure 資源群組](../azure-resource-manager/resource-group-overview.md)。     |
+    |資源群組  |選取現有的群組或建立新的群組。<br>深入了解 [Azure 資源群組](../azure-resource-manager/management/overview.md)。     |
 
 4. 輸入或選取下列 [執行個體詳細資料]。
 
@@ -123,7 +123,7 @@ ms.locfileid: "90894140"
 
     ![專案和執行個體詳細資料](media/azure-stack-edge-deploy-prep/data-box-edge-resource.png)
 
-5. 完成時，選取 [下一步:**** 交貨地址]。
+5. 完成時，選取 [下一步:交貨地址]。
 
     - 如果您已經有一個裝置，請選取 [我有 Azure Stack Edge Pro 裝置] 的下拉式方塊。
     - 如果這是您所訂購的新裝置，請輸入連絡人姓名、公司、裝置交貨地址和連絡資訊。

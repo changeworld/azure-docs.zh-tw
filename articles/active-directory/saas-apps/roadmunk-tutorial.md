@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 26424106098a8385faff5ab6d3de33d98576ef4e
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: a7f4682be2f7fbf308aba32768efa932f27b7a87
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381298"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181685"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-roadmunk"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Roadmunk 整合
 
@@ -171,12 +171,10 @@ Roadmunk 支援由「服務提供者」(SP) 和「識別提供者」(IDP) 啟動
 
 在本節中，您會使用存取面板來測試您的 Azure AD SSO 組態。
 
-當您在 [我的應用程式] 入口網站中選取 **Roadmunk** 圖格時，系統應該會將您自動登入設定 SSO 的 Roadmunk 帳戶。 如需詳細資訊，請參閱[登入我的應用程式入口網站並啟動應用程式](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)。
+當您在 [我的應用程式] 入口網站中選取 **Roadmunk** 圖格時，系統應該會將您自動登入設定 SSO 的 Roadmunk 帳戶。 如需詳細資訊，請參閱[登入我的應用程式入口網站並啟動應用程式](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
 設定 Roadmunk 後，您可以強制執行工作階段控制項。 工作階段控制項可即時保護組織的敏感性資料免於外洩和遭到滲透。 工作階段控制項會從條件式存取延伸。 
 
-了解如何[使用 Microsoft Cloud App Security 強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+了解如何[使用 Microsoft Cloud App Security 強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。

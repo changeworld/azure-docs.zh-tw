@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: f62e746a189a14838227a40be3bca9d05553a642
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 877f589c19663503b9bb0b1627f1dffe0eba1a23
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635791"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302744"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>教學課程：Azure Active Directory 與 Wikispaces 整合
 
@@ -61,7 +61,7 @@ Wikispaces 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Wikispaces** ，從結果面板中選取 [Wikispaces]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Wikispaces**，從結果面板中選取 [Wikispaces]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Wikispaces](common/search-new-app.png)
 
@@ -106,9 +106,9 @@ Wikispaces 與 Azure AD 整合提供下列優點：
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://session.wikispaces.net/<instancename>`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Wikispaces 客戶支援小組](https://www.wikispaces.com/site/help)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Wikispaces 客戶支援小組](https://wikispaces.psu.edu/)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -124,7 +124,7 @@ Wikispaces 與 Azure AD 整合提供下列優點：
 
 ### <a name="configure-wikispaces-single-sign-on"></a>設定 Wikispaces 單一登入
 
-若要在 **Wikispaces** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和所複製的適當 URL 傳送給 [Wikispaces 支援小組](https://www.wikispaces.com/site/help)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Wikispaces** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和所複製的適當 URL 傳送給 [Wikispaces 支援小組](https://wikispaces.psu.edu/)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
@@ -142,7 +142,7 @@ Wikispaces 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
   
     b. 在 [使用者名稱]  欄位中，輸入 brittasimon@yourcompanydomain.extension。 例如， BrittaSimon@contoso.com
 
@@ -196,9 +196,9 @@ Wikispaces 與 Azure AD 整合提供下列優點：
    
     ![螢幕擷取畫面：顯示 [邀請人員] 區段，您可以在其中輸入使用者資料。](./media/wikispaces-tutorial/ic787208.png "邀請人員")
    
-    a. 在相關的文字方塊中，輸入您想要佈建的有效 Azure AD 帳戶的 **使用者名稱或電子郵件地址** 。
+    a. 在相關的文字方塊中，輸入您想要佈建的有效 Azure AD 帳戶的 **使用者名稱或電子郵件地址**。
    
-    b. 按一下 [ **傳送** ]。  
+    b. 按一下 [ **傳送**]。  
       
     > [!NOTE]
     > Azure Active Directory 帳戶的持有者會收到一封包含連結的電子郵件，以在啟用帳戶前進行確認。

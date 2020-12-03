@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
 ms.openlocfilehash: 6c35ce5e4b420b7f203b33b640a3175ba4c2739b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677647"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181502"
 ---
 # <a name="tutorial-integrate-sansan-with-azure-active-directory"></a>教學課程：整合 Sansan 與 Azure Active Directory
 
@@ -49,7 +49,7 @@ ms.locfileid: "92677647"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Sansan** 。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Sansan**。
 1. 從結果面板選取 [Sansan]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>設定並測試 Azure AD SSO
@@ -62,7 +62,7 @@ ms.locfileid: "92677647"
    * **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** ，以使用 Britta Simon 測試 Azure AD 單一登入。
    * **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** ，讓 Britta Simon 能夠使用 Azure AD 單一登入。
 1. **[設定 Sansan](#configure-sansan)** 以在應用程式端設定 SSO 設定。
-   * **[建立 Sansan 測試使用者](#create-sansan-test-user)** ，讓 Sansan 中對應的 Britta Simon 連結到使用者在 Azure AD 中的代表項目。
+   * **[建立 Sansan 測試使用者](#create-sansan-test-user)**，讓 Sansan 中對應的 Britta Simon 連結到使用者在 Azure AD 中的代表項目。
 1. **[測試 SSO](#test-sso)** ，以驗證組態是否能運作。
 
 ## <a name="configure-azure-ad-sso"></a>設定 Azure AD SSO
@@ -128,13 +128,13 @@ ms.locfileid: "92677647"
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組] 對話方塊中，從使用者清單選取 **Britta Simon** ，然後按一下畫面底部的 [選取] 按鈕。
+1. 在 [使用者和群組] 對話方塊中，從使用者清單選取 **Britta Simon**，然後按一下畫面底部的 [選取] 按鈕。
 1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
 1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ## <a name="configure-sansan"></a>設定 Sansan
 
-若要在 **Sansan** 端執行 **單一登入設定** ，請根據您的需求遵循下列步驟。
+若要在 **Sansan** 端執行 **單一登入設定**，請根據您的需求遵循下列步驟。
 
    * [日文](https://jp-help.sansan.com/hc/ja/articles/900001551383 )版。
 

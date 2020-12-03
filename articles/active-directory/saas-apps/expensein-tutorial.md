@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 07/17/2020
 ms.author: jeedes
 ms.openlocfilehash: eb7062b745ae6eb97dc2cd4ba2051cc221031630
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92453765"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179154"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>教學課程：整合 ExpenseIn 與 Azure Active Directory
 
@@ -50,7 +50,7 @@ ms.locfileid: "92453765"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **ExpenseIn** 。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **ExpenseIn**。
 1. 從結果面板選取 [ExpenseIn]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-sso-for-expensein"></a>設定和測試 ExpenseIn 的 Azure AD SSO
@@ -123,7 +123,7 @@ ms.locfileid: "92453765"
 
 ## <a name="configure-expensein-sso"></a>設定 ExpenseIn SSO
 
-1. 若要自動執行 ExpenseIn 內的設定，您必須按一下 [安裝擴充功能]  來安裝「我的應用程式安全登入瀏覽器擴充功能」  。
+1. 若要自動執行 ExpenseIn 內的設定，您必須按一下 [安裝擴充功能] 來安裝「我的應用程式安全登入瀏覽器擴充功能」。
 
     ![我的應用程式擴充功能](common/install-myappssecure-extension.png)
 
@@ -169,9 +169,9 @@ ms.locfileid: "92453765"
 
     ![ExpenseIn 設定](./media/expenseIn-tutorial/config04.png)
 
-    a. 在 [名字] 文字方塊中，輸入使用者的名字，例如 **B** 。
+    a. 在 [名字] 文字方塊中，輸入使用者的名字，例如 **B**。
 
-    b. 在 [姓氏] 文字方塊中，輸入使用者的姓氏，例如 **Simon** 。
+    b. 在 [姓氏] 文字方塊中，輸入使用者的姓氏，例如 **Simon**。
 
     c. 在 [電子郵件] 文字方塊中，輸入使用者的電子郵件，例如 `B.Simon@contoso.com`。
 

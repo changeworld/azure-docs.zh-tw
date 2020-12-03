@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 1b8b95ea318dd7a82d9512908838209bc5cc2995
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 225df0dc53a0386bb53576970a1b6330351f4545
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349098"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184122"
 ---
 # <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 Azure Cache for Redis 會根據 [Redis](https://redis.io/) 軟體提供記憶體中的資料存放區。 針對在後端資料存放區上重度使用的應用程式，Redis 可改善其效能和可擴縮性。 其可以處理大量的應用程式要求，方法是將經常存取的資料保留在伺服器記憶體中，以供快速地寫入和讀取。 Redis 將重要的低延遲和高輸送量資料儲存解決方案帶入到現代化的應用程式。
@@ -67,16 +67,16 @@ Azure Cache for Redis 可在以下層級使用：
 ### <a name="choosing-the-right-tier"></a>選擇正確的階層
 在選擇 Azure Cache for Redis 服務層級時，您應該考慮下列各項：
 
-* **記憶體** ：基本和標準層提供 250 MB - 53 GB；進階層則提供 6 GB - 1.2 TB；Enterprise 層則為 12 GB - 14 TB。  若要建立 120 GB 以上的進階層快取，您可以使用 Redis OSS 叢集。 如需詳細資訊，請參閱 [Azure Redis 快取價格](https://azure.microsoft.com/pricing/details/cache/)。 如需詳細資訊，請參閱 [如何設定進階 Azure Redis 快取的叢集功能](cache-how-to-premium-clustering.md)。
-* **網路效能** ：如果您的工作負載需要高輸送量，與「基本」層或「標準」層相比，「進階」層或 Enterprise 層可提供更大的頻寬。 此外，因為每一層內有裝載快取的基礎 VM，較大型快取還有更大頻寬。 如需詳細資訊，請參閱 [Azure Cache for Redis 效能](cache-planning-faq.md#azure-cache-for-redis-performance)。
-* **輸送量** ：「進階」層提供最大的可用輸送量。 如果快取伺服器或用戶端達到頻寬限制，您在用戶端可能會收到逾時。 如需詳細資訊，請參閱下列表格。
-* **高可用性** ：Azure Cache for Redis 提供多個 [高可用性](cache-high-availability.md)選項。 我們的 [SLA](https://azure.microsoft.com/support/legal/sla/cache/v1_0/) 保證標準、進階或 Enterprise 快取的可用性。 SLA 的範圍僅涵蓋與快取端點的連線。 SLA 未涵蓋資料遺失防護。 建議您使用高階層中的 Redis 資料永續性功能，以增加資料遺失時的復原能力。
-* **資料持續性** ：高階層可讓您將快取資料保存在 Azure 儲存體帳戶中。 在其他層中，資料只會儲存在記憶體中。 基礎結構發生問題，可能會導致資料遺失。 建議您使用高階層中的 Redis 資料永續性功能，以增加資料遺失時的復原能力。 「Azure Redis 快取」在 Redis 持續性中提供 RDB 和 AOF (預覽) 選項。 如需詳細資訊，請參閱[如何設定進階 Azure Redis 快取的持續性](cache-how-to-premium-persistence.md)。
-* **網路隔離** ：Azure Private Link 和虛擬網路 (VNET) 部署可為您的 Azure Cache for Redis 提供增強的安全性和流量隔離。 VNET 可讓您透過網路存取控制原則進一步限制存取。 如需詳細資訊，請參閱[具備 Azure Private Link 的 Azure Cache for Redis](cache-private-link.md) 以及[如何設定進階 Azure Cache for Redis 的虛擬網路支援](cache-how-to-premium-vnet.md)。
-* **用戶端連線數上限** ：「進階」層提供可連線至 Redis 的最大用戶端數目，針對較大型的快取可提供較高的連線數。 叢集化不會增加叢集快取的可用連線數目。 如需詳細資訊，請參閱 [Azure Cache for Redis 價格](https://azure.microsoft.com/pricing/details/cache/)。
-* **Redis 伺服器的專用核心** ：除了 C0 的所有快取都會執行專用 VM 核心。
-* **單一執行緒處理** ：根據設計，Redis 只會使用一個執行緒來處理命令。 Azure Cache for Redis 也會利用額外的核心來處理 I/O。 擁有更多核心會改善輸送量效能，即使其可能不會產生線性擴增。 此外，較大的 VM 大小一般會比小一點的大小有更高的頻寬限制。 這可協助您避免網路飽和，這會導致您的應用程式發生逾時。
-* **效能改進** ：「進階」層和 Enterprise 層中的快取是部署在處理器較快的硬體上，因此效能優於「基本」層或「標準」層。 高階層快取的輸送量較高，延遲性較低。 如需詳細資訊，請參閱 [Azure Cache for Redis 效能](cache-planning-faq.md#azure-cache-for-redis-performance)。
+* **記憶體**：基本和標準層提供 250 MB - 53 GB；進階層則提供 6 GB - 1.2 TB；Enterprise 層則為 12 GB - 14 TB。  若要建立 120 GB 以上的進階層快取，您可以使用 Redis OSS 叢集。 如需詳細資訊，請參閱 [Azure Redis 快取價格](https://azure.microsoft.com/pricing/details/cache/)。 如需詳細資訊，請參閱 [如何設定進階 Azure Redis 快取的叢集功能](cache-how-to-premium-clustering.md)。
+* **網路效能**：如果您的工作負載需要高輸送量，與「基本」層或「標準」層相比，「進階」層或 Enterprise 層可提供更大的頻寬。 此外，因為每一層內有裝載快取的基礎 VM，較大型快取還有更大頻寬。 如需詳細資訊，請參閱 [Azure Cache for Redis 效能](cache-planning-faq.md#azure-cache-for-redis-performance)。
+* **輸送量**：「進階」層提供最大的可用輸送量。 如果快取伺服器或用戶端達到頻寬限制，您在用戶端可能會收到逾時。 如需詳細資訊，請參閱下列表格。
+* **高可用性**：Azure Cache for Redis 提供多個 [高可用性](cache-high-availability.md)選項。 我們的 [SLA](https://azure.microsoft.com/support/legal/sla/cache/v1_0/) 保證標準、進階或 Enterprise 快取的可用性。 SLA 的範圍僅涵蓋與快取端點的連線。 SLA 未涵蓋資料遺失防護。 建議您使用高階層中的 Redis 資料永續性功能，以增加資料遺失時的復原能力。
+* **資料持續性**：高階層可讓您將快取資料保存在 Azure 儲存體帳戶中。 在其他層中，資料只會儲存在記憶體中。 基礎結構發生問題，可能會導致資料遺失。 建議您使用高階層中的 Redis 資料永續性功能，以增加資料遺失時的復原能力。 「Azure Redis 快取」在 Redis 持續性中提供 RDB 和 AOF (預覽) 選項。 如需詳細資訊，請參閱[如何設定進階 Azure Redis 快取的持續性](cache-how-to-premium-persistence.md)。
+* **網路隔離**：Azure Private Link 和虛擬網路 (VNET) 部署可為您的 Azure Cache for Redis 提供增強的安全性和流量隔離。 VNET 可讓您透過網路存取控制原則進一步限制存取。 如需詳細資訊，請參閱[具備 Azure Private Link 的 Azure Cache for Redis](cache-private-link.md) 以及[如何設定進階 Azure Cache for Redis 的虛擬網路支援](cache-how-to-premium-vnet.md)。
+* **用戶端連線數上限**：「進階」層提供可連線至 Redis 的最大用戶端數目，針對較大型的快取可提供較高的連線數。 叢集化不會增加叢集快取的可用連線數目。 如需詳細資訊，請參閱 [Azure Cache for Redis 價格](https://azure.microsoft.com/pricing/details/cache/)。
+* **Redis 伺服器的專用核心**：除了 C0 的所有快取都會執行專用 VM 核心。
+* **單一執行緒處理**：根據設計，Redis 只會使用一個執行緒來處理命令。 Azure Cache for Redis 也會利用額外的核心來處理 I/O。 擁有更多核心會改善輸送量效能，即使其可能不會產生線性擴增。 此外，較大的 VM 大小一般會比小一點的大小有更高的頻寬限制。 這可協助您避免網路飽和，這會導致您的應用程式發生逾時。
+* **效能改進**：「進階」層和 Enterprise 層中的快取是部署在處理器較快的硬體上，因此效能優於「基本」層或「標準」層。 高階層快取的輸送量較高，延遲性較低。 如需詳細資訊，請參閱 [Azure Cache for Redis 效能](cache-planning-faq.md#azure-cache-for-redis-performance)。
 
 建立後，您可以將快取從基本層擴充至進階層。 但不支援向下調整至較低層級。 如需調整階層的逐步指示，請參閱[如何調整 Azure Cache for Redis](cache-how-to-scale.md) 和[如何將調整作業自動化](cache-how-to-scale.md#how-to-automate-a-scaling-operation)。
 
@@ -85,7 +85,7 @@ Azure Cache for Redis 可在以下層級使用：
 Enterprise 層依賴 Redis Enterprise，這是來自 Redis Labs 的 Redis 商業版本。 客戶會透過 Azure Marketplace 供應項目取得並支付此軟體的授權。 Azure Cache for Redis 可協助取得授權，因此您不需要個別執行此動作。 您必須具備以下先決條件，才能在 Azure Marketplace 中購買：
 * 您的 Azure 訂用帳戶具有有效的付款條件。 不支援 Azure 點數或免費 MSDN 訂用帳戶。
 * 您是訂用帳戶的擁有者或參與者。
-* 您的組織允許 [Azure Marketplace 購買](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-azure-marketplace#enabling-azure-marketplace-purchases)。
+* 您的組織允許 [Azure Marketplace 購買](../cost-management-billing/manage/ea-azure-marketplace.md#enabling-azure-marketplace-purchases)。
 * 如果您使用私人 Marketplace，其必須包含 Redis Labs 企業版供應項目。
 
 ## <a name="next-steps"></a>後續步驟

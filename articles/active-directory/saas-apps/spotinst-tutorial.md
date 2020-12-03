@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.openlocfilehash: d9c9ac87e655cf9178d58f04b502f7e781d1fef7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520535"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181402"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Spotinst 整合
 
@@ -49,7 +49,7 @@ ms.locfileid: "92520535"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Spotinst** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Spotinst**。
 1. 從結果面板中選取 [Spotinst]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-spotinst"></a>設定及測試 Spotinst 的 Azure AD 單一登入
@@ -70,7 +70,7 @@ ms.locfileid: "92520535"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Spotinst]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -149,7 +149,7 @@ ms.locfileid: "92520535"
 
     b. 按一下 [瀏覽]，上傳您從 Azure 入口網站下載的中繼資料 xml 檔案
 
-    c. 按一下 **[儲存]** 。
+    c. 按一下 **[儲存]**。
 
 ### <a name="create-spotinst-test-user"></a>建立 Spotinst 測試使用者
 
@@ -171,7 +171,7 @@ ms.locfileid: "92520535"
 
     ![此螢幕擷取畫面顯示 [新增使用者] 區段，您可以在其中輸入所述的值。](./media/spotinst-tutorial/adduser2.png)
 
-    * 在 [全名] 文字方塊中，輸入使用者的全名，例如 **BrittaSimon** 。
+    * 在 [全名] 文字方塊中，輸入使用者的全名，例如 **BrittaSimon**。
 
     * 在 [電子郵件] 文字方塊中，輸入使用者的電子郵件地址，例如 `brittasimon\@contoso.com`。
 

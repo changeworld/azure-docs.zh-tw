@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 852fabfd1fe496064e6d13c21ba052ee6f96b79e
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: ccf945f8bfec85a18493d515dce48f4cb3e3b612
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242938"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182326"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Software AG Cloud 整合 | Microsoft Docs
 
@@ -151,10 +151,8 @@ ms.locfileid: "93242938"
 
 2. 直接移至 Software AG Cloud 登入 URL，然後從該處起始登入流程。
 
-3. 您可以使用 Microsoft 存取面板。 當您按一下存取面板中的 Software AG Cloud 圖格時，將會重新導向至 Software AG Cloud登入 URL。 如需存取面板的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+3. 您可以使用 Microsoft 存取面板。 當您按一下存取面板中的 Software AG Cloud 圖格時，將會重新導向至 Software AG Cloud登入 URL。 如需存取面板的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-設定 Software AG Cloud 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+設定 Software AG Cloud 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。

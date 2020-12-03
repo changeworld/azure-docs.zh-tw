@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/28/2020
 ms.custom: mvc
-ms.openlocfilehash: d38a4ba04529e70ecfd772eef7f60179041f0273
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 880d173c6eef9d267e8860ebad805e071706de42
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927363"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186145"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>建立和共用 Log Analytics 資料的儀表板
 
@@ -54,10 +54,10 @@ Log Analytics 儀表板可以視覺化方式呈現所有儲存的記錄查詢，
 
 ![在 Azure 入口網站中共用新儀表板](media/tutorial-logs-dashboards/log-analytics-share-dashboard.png) 
 
-系統會要求您選擇可將儀表板發佈至的訂用帳戶和資源群組。 為了方便起見，入口網站的發佈體驗會引導您朝向將儀表板放在稱為 **儀表板**的資源群組中的模式。  確認選取的訂用帳戶，然後按一下[發行]。  使用 [Azure 角色型存取控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) 來控制對儀表板中顯示資訊的存取權。   
+系統會要求您選擇可將儀表板發佈至的訂用帳戶和資源群組。 為了方便起見，入口網站的發佈體驗會引導您朝向將儀表板放在稱為 **儀表板** 的資源群組中的模式。  確認選取的訂用帳戶，然後按一下[發行]。  使用 [Azure 角色型存取控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) 來控制對儀表板中顯示資訊的存取權。   
 
 ## <a name="visualize-a-log-query"></a>以視覺化方式呈現記錄查詢
-[Log Analytics](../log-query/get-started-portal.md) 是專用的入口網站，用來處理記錄查詢及其結果。 功能包括在多行上編輯查詢、選擇性執行程式碼、區分內容的 Intellisense 和 Smart Analytics。 在本教學課程中，您將會使用 Log Analytics，以圖形的形式建立效能檢視，儲存以用於未來查詢，然後將其釘選在稍早建立的共用儀表板。
+[Log Analytics](../log-query/log-analytics-tutorial.md) 是專用的入口網站，用來處理記錄查詢及其結果。 功能包括在多行上編輯查詢、選擇性執行程式碼、區分內容的 Intellisense 和 Smart Analytics。 在本教學課程中，您將會使用 Log Analytics，以圖形的形式建立效能檢視，儲存以用於未來查詢，然後將其釘選在稍早建立的共用儀表板。
 
 藉由選取 [Azure 監視器] 功能表中的 [記錄] 來開啟 Log Analytics。 它會從新的空白查詢來開始。
 

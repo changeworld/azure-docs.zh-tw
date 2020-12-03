@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 08/21/2020
 ms.author: jeedes
 ms.openlocfilehash: 6831e96ebd8fd2db51d640ff3d93955b1a9f1477
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516370"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182150"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigerconnect-secure-messenger"></a>教學課程：Azure Active Directory 與 TigerConnect Secure Messenger 整合
 
@@ -52,7 +52,7 @@ ms.locfileid: "92516370"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **TigerConnect Secure Messenger** 。
+1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **TigerConnect Secure Messenger**。
 1. 從結果面板中選取 [TigerConnect Secure Messenger]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>設定並測試 Azure AD SSO
@@ -75,23 +75,23 @@ ms.locfileid: "92516370"
 若要設定與 TigerConnect Secure Messenger 搭配運作的 Azure AD 單一登入，請執行下列步驟：
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 **TigerConnect Secure Messenger** 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
 1. 在 **基本 SAML 組態** 區段上，輸入下列欄位的值：
 
-    1. 在 [登入 URL]  方塊中，輸入 URL：
+    1. 在 [登入 URL] 方塊中，輸入 URL：
 
        `https://home.tigertext.com`
 
-    1. 在 [識別碼 (實體識別碼)]  方塊中，以下列模式輸入 URL：
+    1. 在 [識別碼 (實體識別碼)] 方塊中，以下列模式輸入 URL：
 
        `https://saml-lb.tigertext.me/v1/organization/<instance ID>`
 
     > [!NOTE]
-    > [識別碼 (實體識別碼)]  值並非實際值。 請使用實際的識別碼來更新此值。 若要取得此值，請連絡 [TigerConnect Secure Messenger 支援小組](mailto:prosupport@tigertext.com)。 您也可以參考 Azure 入口網站中 [基本 SAML 組態]  窗格所示的模式。
+    > [識別碼 (實體識別碼)] 值並非實際值。 請使用實際的識別碼來更新此值。 若要取得此值，請連絡 [TigerConnect Secure Messenger 支援小組](mailto:prosupport@tigertext.com)。 您也可以參考 Azure 入口網站中 [基本 SAML 組態]  窗格所示的模式。
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，選取 [下載]  ，以從指定的選項下載 [同盟中繼資料 XML]  並儲存在電腦上。
 

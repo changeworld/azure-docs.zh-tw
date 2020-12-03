@@ -4,12 +4,12 @@ description: 本文說明如何使用 Azure Migrate 將 AWS VM 遷移至 Azure�
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 62bfad2cc92e7af61a10360878ebaa3093897e97
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 12785d1e65caf11b24102d2a9c186fe0adcb1fd3
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92310730"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302652"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>探索、評估 Amazon Web Services (AWS) VM，並將其遷移至 Azure
 
@@ -77,14 +77,14 @@ ms.locfileid: "92310730"
 
 **Task** | **詳細資料**
 --- | ---
-**建立 Azure Migrate 專案** | 您的 Azure 帳戶需要參與者或擁有者權限，才能建立專案。
+**建立 Azure Migrate 專案** | 您的 Azure 帳戶需要參與者或擁有者權限，才能[建立新專案](https://docs.microsoft.com/azure/migrate/create-manage-projects)。
 **驗證您 Azure 帳戶的權限** | 您的 Azure 帳戶必須有建立 VM 以及寫入至 Azure 受控磁碟的權限。
 
 ### <a name="assign-permissions-to-create-project"></a>指派建立專案的權限
 
-1. 在 Azure 入口網站中開啟訂用帳戶，然後選取 [存取控制 (IAM)]****。
-2. 在 [檢查存取權]**** 中，尋找相關的帳戶，然後按一下以查看權限。
-3. 您應該會具有「參與者」**** 或「擁有者」**** 權限。
+1. 在 Azure 入口網站中開啟訂用帳戶，然後選取 [存取控制 (IAM)]。
+2. 在 [檢查存取權] 中，尋找相關的帳戶，然後按一下以查看權限。
+3. 您應該會具有「參與者」或「擁有者」權限。
     - 如果您剛建立免費的 Azure 帳戶，您就是訂用帳戶的擁有者。
     - 如果您不是訂用帳戶擁有者，請與擁有者合作以指派角色。
 
@@ -126,41 +126,17 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
 - 複寫設備會使用 MySQL。 檢閱在設備上安裝 MySQL 的[選項](migrate-replication-appliance.md#mysql-installation)。
 - 檢閱複寫設備存取[公用](migrate-replication-appliance.md#url-access)和[政府](migrate-replication-appliance.md#azure-government-url-access)雲端所需的 Azure URL。
 
-## <a name="add-the-server-migration-tool"></a>新增伺服器移轉工具
-
-設定 Azure Migrate 專案，然後將伺服器移轉工具新增至其中。
-
-1. 在 Azure 入口網站 > [所有服務]**** 中，搜尋 **Azure Migrate**。
-2. 在 [服務]**** 下，選取 [Azure Migrate]****。
-3. 在 [概觀]**** 中，按一下 [評估和遷移伺服器]****。
-4. 在 [探索、評估和遷移伺服器]**** 下方，按一下 [評估和遷移伺服器]****。
-
-    ![探索和評估伺服器](./media/tutorial-migrate-physical-virtual-machines/assess-migrate.png)
-
-5. 在 [探索、評估和遷移伺服器]**** 中，按一下 [新增工具]****。
-6. 在 [Migrate 專案]**** 中選取您的 Azure 訂用帳戶，並建立資源群組 (如果您還沒有的話)。
-7. 在 [專案詳細資料]**** 中指定專案名稱，以及您要在其中建立專案的地理位置，然後按 [下一步]****。 請檢閱[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府雲端](migrate-support-matrix.md#supported-geographies-azure-government)支援的地理位置。
-    - 專案地理區域只會用來儲存從 AWS 機器收集到的中繼資料。
-    - 當您執行移轉時，可以選取任何目的地區域。
-
-    ![建立 Azure Migrate 專案](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
-
-8. 在 [選取評量工具]**** 中，選取 [暫時跳過新增評量工具]**** > [下一步]****。
-9. 在 [選取移轉工具]**** 中，選取 **[Azure Migrate：伺服器移轉]**  > [下一步]****。
-10. 在 [檢閱 + 新增工具]**** 中檢閱設定，然後按一下 [新增工具]****
-11. 新增工具之後，工具會出現在 Azure Migrate 專案 > [伺服器]**** > [移轉工具]**** 中。
-
 ## <a name="set-up-the-replication-appliance"></a>設定複寫設備
 
 移轉的第一個步驟是設定複寫設備。 若要設定設備以進行 AWS VM 移轉，您必須下載設備的安裝程式檔案，然後在[您準備的 VM](#prepare-a-machine-for-the-replication-appliance) 上執行該檔案。
 
 ### <a name="download-the-replication-appliance-installer"></a>下載複寫設備安裝程式
 
-1. 在 [Azure Migrate 專案] > [伺服器]**** 的 **[Azure Migrate：伺服器移轉]** 中，按一下 [探索]****。
+1. 在 [Azure Migrate 專案] > [伺服器] 的 **[Azure Migrate：伺服器移轉]** 中，按一下 [探索]。
 
     ![探索 VM](./media/tutorial-migrate-physical-virtual-machines/migrate-discover.png)
 
-2. 在 [探索機器]**** > [機器是否已虛擬化?]**** 中，按一下 [未虛擬化/其他]****。
+2. 在 [探索機器] > [機器是否已虛擬化?] 中，按一下 [未虛擬化/其他]。
 3. 在 [目標區域] 中，選取您要將機器遷移到的 Azure 區域。
 4. 選取 [確認移轉的目標區域為 <region-name>]。
 5. 按一下 [建立資源]。 這會在背景中建立 Azure Site Recovery 保存庫。
@@ -169,7 +145,7 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
     - 若要將您的 VM 遷移至不同的區域，您必須建立新的/不同的 Azure Migrate 專案。
 
 6. 在 [是否要安裝新的複寫設備?] 中，選取 [安裝複寫設備]。
-7. 在 [下載並安裝複寫設備軟體]**** 中，下載設備安裝程式和註冊金鑰。 您必須要有金鑰，才能註冊設備。 此金鑰在下載後有五天的有效期。
+7. 在 [下載並安裝複寫設備軟體] 中，下載設備安裝程式和註冊金鑰。 您必須要有金鑰，才能註冊設備。 此金鑰在下載後有五天的有效期。
 
     ![下載提供者](media/tutorial-migrate-physical-virtual-machines/download-provider.png)
 
@@ -256,7 +232,7 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
 2. 在 [複寫] > [來源設定][您的電腦虛擬化了嗎] >  中，選取 [未虛擬化/其他]。
 3. 在 [內部部署設備] 中，選取您設定的 Azure Migrate 設備的名稱。
 4. 在 [處理序伺服器] 中，選取複寫設備的名稱。 
-5. 在**來賓認證**中，請選取先前在[複寫安裝程式安裝](#download-the-replication-appliance-installer)期間建立的虛擬帳戶以手動安裝行動服務 (不支援推送安裝)。 然後按 [下一步：**虛擬機器]** 。   
+5. 在 **來賓認證** 中，請選取先前在 [複寫安裝程式安裝](#download-the-replication-appliance-installer)期間建立的虛擬帳戶以手動安裝行動服務 (不支援推送安裝)。 然後按 [下一步：**虛擬機器]** 。   
  
     ![複寫設定](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 6. 在 [虛擬機器] 的 [從評量匯入移轉設定?] 中，保留預設設定 [否，我將手動指定移轉設定]。
@@ -266,7 +242,7 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
 
 8. 在 [目標設定] 中，選取訂用帳戶、您的遷移目標區域，並指定 Azure VM 在移轉後所在的資源群組。
 9. 在 [虛擬網路] 中，選取 Azure VM 在移轉後所將加入的 Azure VNet/子網路。
-10. 在**可用性選項**中，選取：
+10. 在 **可用性選項** 中，選取：
     -  可用性區域，將已遷移的機器釘選到該區域中特定的可用性區域。 使用此選項可將形成多節點應用程式層的伺服器散發到可用性區域。 如果選取此選項，則必須在計算索引標籤中指定要用於每部所選電腦的可用性區域。只有選取要移轉的目的地區域支援可用性區域時，才可以使用此選項
     -  可用性設定組，可將遷移的電腦放在可用性設定組中。 選取的目標資源群組必須有一或多個可用性設定組，才能使用此選項。
     - 如果您不需要為已遷移的電腦提供任何一種可用性設定，則不需要任何基礎結構備援選項。
@@ -276,7 +252,7 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
 
     ![目標設定](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
 
-12. 請檢閱**計算**中的 VM 名稱、大小、OS 磁碟類型和可用性設定 (如果有在上一個步驟中選取)。 VM 必須符合 [Azure 需求](migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
+12. 請檢閱 **計算** 中的 VM 名稱、大小、OS 磁碟類型和可用性設定 (如果有在上一個步驟中選取)。 VM 必須符合 [Azure 需求](migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
 
     - **VM 大小**：如果您使用評估建議，[VM 大小] 下拉式清單會顯示建議的大小。 否則，Azure Migrate 會根據 Azure 訂用帳戶中最接近的相符項來選擇大小。 或者，您可以在 [Azure VM 大小] 中手動選擇大小。
     - **OS 磁碟**：指定 VM 的 OS (開機) 磁碟。 OS 磁碟是具有作業系統開機載入器和安裝程式的磁碟。
@@ -327,7 +303,7 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
     ![測試移轉](./media/tutorial-migrate-physical-virtual-machines/test-migrate.png)
 
 3. 在 [測試移轉] 中，選取 Azure VM 在移轉後將位於其中的 Azure VNet。 建議您使用非生產 VNet。
-4. **測試移轉**作業隨即啟動。 請在入口網站通知中監視作業。
+4. **測試移轉** 作業隨即啟動。 請在入口網站通知中監視作業。
 5. 移轉完成之後，請在 Azure 入口網站的 [虛擬機器] 中檢視已遷移的 Azure VM。 機器名稱會具有尾碼 **-Test**。
 6. 測試完成之後，以滑鼠右鍵按一下 [複寫機器] 中的 Azure VM，然後按一下 [清除測試移轉]。
 
@@ -352,7 +328,7 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
 
 1. 完成移轉之後，以滑鼠右鍵按一下 VM > [停止移轉]。 這會執行以下動作：
     - 停止 AWS VM 的複寫。
-    - 從 Azure Migrate 中的**複寫伺服器**計數移除 AWS VM：伺服器移轉。
+    - 從 Azure Migrate 中的 **複寫伺服器** 計數移除 AWS VM：伺服器移轉。
     - 清除 VM 的複寫狀態資訊。
 2. 在移轉的機器上安裝 [Linux](../virtual-machines/extensions/agent-linux.md) 代理程式。 Azure VM Windows 代理程式會在移轉過程中預先安裝。
 3. 執行任何移轉後應用程式調整，例如更新資料庫連接字串和 Web 伺服器設定。

@@ -9,19 +9,19 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/21/2020
-ms.openlocfilehash: 6231e4631c19aa3595fa85ca0aa7997861de65a3
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e068ad01c07af4e5833399c0053da3362cd6aaa6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675036"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185635"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>教學課程：使用 Azure AD 應用程式建立 Azure AD 使用者
 
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 > [!NOTE]
-> 此文章目前為 **公開預覽狀態** 。 如需詳細資訊，請參閱[使用 Azure SQL 的 Azure Active Directory 服務主體](authentication-aad-service-principal.md)。 此文章將使用 Azure SQL Database 來示範必要的教學課程步驟，但同樣適用於 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)。
+> 此文章目前為 **公開預覽狀態**。 如需詳細資訊，請參閱[使用 Azure SQL 的 Azure Active Directory 服務主體](authentication-aad-service-principal.md)。 此文章將使用 Azure SQL Database 來示範必要的教學課程步驟，但同樣適用於 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)。
 
 此文章將逐步引導您使用 Azure 服務主體 (Azure AD 應用程式)，在 Azure SQL Database 中建立 Azure AD 使用者的程序。 此功能已經存在於 Azure SQL 受控執行個體中，但現在已在 Azure SQL Database 和 Azure Synapse Analytics 中引進。 為了支援此案例，必須產生 Azure AD 身分識別，並將其指派給 Azure SQL 邏輯伺服器。
 
@@ -44,7 +44,7 @@ ms.locfileid: "92675036"
 
 ## <a name="assign-an-identity-to-the-azure-sql-logical-server"></a>將身分識別指派給 Azure SQL 邏輯伺服器
 
-1. 連線到您的 Azure Active Directory。 您將需要尋找您的租用戶識別碼。 前往 [Azure 入口網站](https://portal.azure.com)，然後前往您的 **Azure Active Directory** 資源，即可找到此項。 在 [概觀] 窗格中，應該會看到您的 **租用戶識別碼** 。 執行下列 PowerShell 命令：
+1. 連線到您的 Azure Active Directory。 您將需要尋找您的租用戶識別碼。 前往 [Azure 入口網站](https://portal.azure.com)，然後前往您的 **Azure Active Directory** 資源，即可找到此項。 在 [概觀] 窗格中，應該會看到您的 **租用戶識別碼**。 執行下列 PowerShell 命令：
 
     - 使用您的 **租用戶識別碼** 取代 `<TenantId>`。
 
@@ -82,7 +82,7 @@ ms.locfileid: "92675036"
 
 1. 您也可以前往 [Azure 入口網站](https://portal.azure.com)來檢查身分識別。
 
-    - 在 [Azure Active Directory] 資源底下，前往 [企業應用程式]。 輸入您的 SQL 邏輯伺服器名稱。 您將會看到其具有一個已附加至資源的 **物件識別碼** 。
+    - 在 [Azure Active Directory] 資源底下，前往 [企業應用程式]。 輸入您的 SQL 邏輯伺服器名稱。 您將會看到其具有一個已附加至資源的 **物件識別碼**。
     
     :::image type="content" source="media/authentication-aad-service-principals-tutorial/enterprise-applications-object-id.png" alt-text="object-id":::
 
@@ -161,7 +161,7 @@ if ($selDirReader -eq $null) {
 
 1. 遵循這裡的指南來[註冊您的應用程式並設定權限](active-directory-interactive-connect-azure-sql-db.md#register-your-app-and-set-permissions)。
 
-    務必新增 **應用程式權限** 及 **委派的權限** 。
+    務必新增 **應用程式權限** 及 **委派的權限**。
 
     :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="此螢幕擷取畫面顯示 Azure Active Directory 的 [應用程式註冊] 頁面。將顯示名稱 AppSP 反白顯示的應用程式。":::
 
@@ -171,15 +171,15 @@ if ($selDirReader -eq $null) {
 
 3. 從您的應用程式註冊記錄下列各項。 您可以從 [概觀] 窗格中取得：
     - **應用程式識別碼**
-    - **租用戶識別碼** ：這應該會與之前的相同
+    - **租用戶識別碼**：這應該會與之前的相同
 
-在此教學課程中，我們將使用 *AppSP* 作為主要服務主體，並使用 *myapp* 作為第二個服務主體使用者 (將在 Azure SQL 中由 *AppSP* 所建立)。 您將需要建立兩個應用程式： *AppSP* 和 *myapp* 。
+在此教學課程中，我們將使用 *AppSP* 作為主要服務主體，並使用 *myapp* 作為第二個服務主體使用者 (將在 Azure SQL 中由 *AppSP* 所建立)。 您將需要建立兩個應用程式：*AppSP* 和 *myapp*。
 
 如需如何建立 Azure AD 應用程式的詳細資訊，請參閱下文：[操作說明：使用入口網站來建立可存取資源的 Azure AD 應用程式和服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
 ### <a name="permissions-required-to-set-or-unset-the-azure-ad-admin"></a>要設定或取消設定 Azure AD 系統管理員所需的權限
 
-為了讓服務主體設定或取消設定 Azure SQL 的 Azure AD 系統管理員，您需要額外的 API 權限。 [Directory.Read.All](https://docs.microsoft.com/graph/permissions-reference#application-permissions-18) 應用程式 API 權限必須新增至您在 Azure AD 中的應用程式。
+為了讓服務主體設定或取消設定 Azure SQL 的 Azure AD 系統管理員，您需要額外的 API 權限。 [Directory.Read.All](/graph/permissions-reference#application-permissions-18) 應用程式 API 權限必須新增至您在 Azure AD 中的應用程式。
 
 :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-directory-reader-all-permissions.png" alt-text="Azure AD 中的 Directory.Reader.All 權限":::
 
@@ -192,14 +192,14 @@ if ($selDirReader -eq $null) {
 
 在 Azure AD 中建立服務主體之後，在 SQL Database 中建立使用者。 您將必須使用具有權限的有效登入來連線到您的 SQL Database，以在資料庫中建立使用者。
 
-1. 使用下列 T-SQL 命令，在 SQL Database 中建立使用者 *AppSP* ：
+1. 使用下列 T-SQL 命令，在 SQL Database 中建立使用者 *AppSP*：
 
     ```sql
     CREATE USER [AppSP] FROM EXTERNAL PROVIDER
     GO
     ```
 
-2. 將 `db_owner` 權限授與 *AppSP* ，讓使用者能夠在資料庫中建立其他 Azure AD 使用者。
+2. 將 `db_owner` 權限授與 *AppSP*，讓使用者能夠在資料庫中建立其他 Azure AD 使用者。
 
     ```sql
     EXEC sp_addrolemember 'db_owner', [AppSP]
@@ -223,7 +223,7 @@ if ($selDirReader -eq $null) {
 > [!IMPORTANT]
 > 用來登入 SQL Database 的服務主體必須具有用戶端密碼。 如果沒有，請遵循[在 Azure AD 中建立服務主體 (Azure AD 應用程式)](#create-a-service-principal-an-azure-ad-application-in-azure-ad) 的步驟 2。 在下列指令碼中，必須將此用戶端密碼新增為輸入參數。
 
-1. 使用下列指令碼，使用服務主體 *AppSP* 來建立 Azure AD 服務主體使用者 *myapp* 。
+1. 使用下列指令碼，使用服務主體 *AppSP* 來建立 Azure AD 服務主體使用者 *myapp*。
 
     - 使用稍早蒐集的 `TenantId` 取代 `<TenantId>`。
     - 使用稍早蒐集的 `ClientId` 取代 `<ClientId>`。

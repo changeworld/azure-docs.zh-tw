@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 10/15/2020
 ms.author: duau
 ms.openlocfilehash: 29b3cdde328a994e5806df810db15b529a6da9af
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92208084"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188661"
 ---
 # <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>教學課程：使用流量管理員設定地理流量路由方法
 
@@ -52,17 +52,17 @@ ms.locfileid: "92208084"
 
 1. 選取 [建立] 以部署您的流量管理員設定檔。
 
-    :::image type="content" source="./media/traffic-manager-geographic-routing-method/create-traffic-manager-profile.png" alt-text="建立流量管理員設定檔":::
+    :::image type="content" source="./media/traffic-manager-geographic-routing-method/create-traffic-manager-profile.png" alt-text="建立流量管理員設定檔頁面":::
 
 ## <a name="add-endpoints"></a>新增端點
 
 1. 從清單中選取流量管理員設定檔。
 
-    :::image type="content" source="./media/traffic-manager-geographic-routing-method/traffic-manager-list-geographic.png" alt-text="建立流量管理員設定檔":::
+    :::image type="content" source="./media/traffic-manager-geographic-routing-method/traffic-manager-list-geographic.png" alt-text="流量管理員地理清單":::
 
 1. 在 [設定] 底下選取 [端點]，然後選取 [+ 新增] 以新增端點。
 
-    :::image type="content" source="./media/traffic-manager-geographic-routing-method/add-geographic-endpoint.png" alt-text="建立流量管理員設定檔":::
+    :::image type="content" source="./media/traffic-manager-geographic-routing-method/add-geographic-endpoint.png" alt-text="新增端點":::
 
 1. 選取或輸入下列設定： 
 
@@ -75,31 +75,31 @@ ms.locfileid: "92208084"
 
     > [!Note]
     > 此頁面上的某些欄位，取決於您要新增的端點類型︰
-    > 1. 如果您要新增 Azure 端點，請根據您想要將流量導向的資源，選取 [目標資源類型]  和 [目標] 
-    > 1. 如果您要新增  端點。
-    > 1. 如果您要新增  ，並指定 [子端點計數下限]  。
+    > 1. 如果您要新增 Azure 端點，請根據您想要將流量導向的資源，選取 [目標資源類型] 和 [目標]
+    > 1. 如果您要新增 **外部** 端點，請提供 [完整網域名稱 (FQDN)] 端點。
+    > 1. 如果您要新增 **巢狀端點**，請選取對應至您想要使用之子設定檔的 [目標資源]，並指定 [子端點計數下限]。
 
 1. 在 [地區對應] 區段中，使用下拉式清單新增區域，表示您想要將這些區域的流量傳送至此端點。 至少必須新增一個區域。 您可以對應多個區域。
 
 1. 針對您想要在此設定檔下新增的所有端點，重複最後一個步驟，然後選取 [儲存]。
 
-    :::image type="content" source="./media/traffic-manager-geographic-routing-method/traffic-manager-add-endpoint.png" alt-text="建立流量管理員設定檔":::
+    :::image type="content" source="./media/traffic-manager-geographic-routing-method/traffic-manager-add-endpoint.png" alt-text="新增流量管理員端點":::
 
 ## <a name="use-the-traffic-manager-profile"></a>使用流量管理員設定檔
 
 1.  在入口網站的搜尋列中，搜尋您在上一節建立的 **流量管理員設定檔** 名稱，然後在顯示的結果中選取流量管理員設定檔。
     
-    :::image type="content" source="./media/traffic-manager-geographic-routing-method/search-traffic-manager-profile.png" alt-text="建立流量管理員設定檔":::
+    :::image type="content" source="./media/traffic-manager-geographic-routing-method/search-traffic-manager-profile.png" alt-text="搜尋流量管理員設定檔":::
 
 1. [流量管理員設定檔]  會顯示新建立之流量管理員設定檔的 DNS 名稱。 此名稱可由任何用戶端使用 (例如使用網頁瀏覽器進行瀏覽)，以路由傳送至由路由類型所決定的正確端點。 透過地理路由，流量管理員可查看連入要求的來源 IP，並判斷其來源區域。 如果該區域對應至端點，流量會路由傳送至該處。 如果此區域未對應至端點，流量管理員會傳回 NODATA 查詢回應。
 
-    :::image type="content" source="./media/traffic-manager-geographic-routing-method/traffic-manager-geographic-overview.png" alt-text="建立流量管理員設定檔":::
+    :::image type="content" source="./media/traffic-manager-geographic-routing-method/traffic-manager-geographic-overview.png" alt-text="地理流量管理員的概觀":::
 
 ## <a name="clean-up-resources"></a>清除資源
 
 如果您不再需要流量管理員設定檔，請找出設定檔，然後選取 [刪除設定檔]。
 
-:::image type="content" source="./media/traffic-manager-geographic-routing-method/delete-traffic-manager-profile.png" alt-text="建立流量管理員設定檔":::
+:::image type="content" source="./media/traffic-manager-geographic-routing-method/delete-traffic-manager-profile.png" alt-text="刪除流量管理員設定檔":::
 
 ## <a name="next-steps"></a>後續步驟
 

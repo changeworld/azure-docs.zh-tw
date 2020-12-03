@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
 ms.openlocfilehash: d13619b818e18c64d9882f9e3181824173403859
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519260"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181385"
 ---
 # <a name="tutorial-integrate-wandera-radar-admin-with-azure-active-directory"></a>教學課程：整合 Wandera RADAR Admin 與 Azure Active Directory
 
@@ -50,7 +50,7 @@ ms.locfileid: "92519260"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Wandera RADAR Admin** 。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Wandera RADAR Admin**。
 1. 從結果面板選取 [Wandera RADAR Admin]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 

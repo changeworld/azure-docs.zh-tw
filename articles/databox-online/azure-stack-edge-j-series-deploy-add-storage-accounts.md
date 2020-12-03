@@ -10,11 +10,11 @@ ms.date: 08/31/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: c24970b30e522d593a491194dbbabb0421ad7f4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891059"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185524"
 ---
 # <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-pro-gpu"></a>教學課程：以 Azure Stack Edge Pro GPU 透過儲存體帳戶傳輸資料 
 
@@ -147,9 +147,9 @@ key2    6VANuHzHcJV04EFeyPiWRsFWnHPkgmX1+a3bt5qOQ2qIzohyskIF/2gfNMqp9rlNC/w+mBqQ
 
 請採取下列步驟，在 Azure 儲存體總管上匯入憑證：
 
-1. 請確定 Azure 儲存體總管的目標是 Azure Stack API。 移至**編輯 > 目標 Azure Stack API**。 出現提示時，請重新啟動儲存體總管，變更才會生效。
+1. 請確定 Azure 儲存體總管的目標是 Azure Stack API。 移至 **編輯 > 目標 Azure Stack API**。 出現提示時，請重新啟動儲存體總管，變更才會生效。
 
-2. 若要匯入 SSL 憑證，請移至**編輯 > SSL 憑證 > 匯入憑證**。
+2. 若要匯入 SSL 憑證，請移至 **編輯 > SSL 憑證 > 匯入憑證**。
 
   
    ![將憑證匯入儲存體總管](./media/azure-stack-edge-j-series-deploy-add-storage-accounts/import-cert-storage-explorer-1.png) 

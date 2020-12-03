@@ -15,11 +15,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b82dcc633f0f2bb13cb84f80873117f9eb94a24f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91313157"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176115"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>教學課程：使用密碼雜湊同步處理整合單一 AD 樹系 (PHS)
 
@@ -82,7 +82,7 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 5. 按一下 [立即安裝]  。
 6. 輸入您的授權金鑰，然後按一下 [下一步]  。
 7. 選取 [我接受授權條款]，然後按一下 [下一步]  。
-8. 選取**自訂：只安裝 Windows (進階)**
+8. 選取 **自訂：只安裝 Windows (進階)**
 9. 按 **[下一步]**
 10. 安裝完成之後，請重新啟動虛擬機器、登入並執行 Windows 更新，以確保 VM 為最新。  安裝最新的更新。
 
@@ -181,12 +181,12 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 現在我們必須建立 Azure AD 租用戶，以便將使用者同步至雲端。  若要建立新的 Azure AD 租用戶，請執行下列動作。
 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)並使用具有 Azure 訂用帳戶的帳戶登入。
-2. 選取**加號圖示 (+)** 並搜尋 **Azure Active Directory**。
+2. 選取 **加號圖示 (+)** 並搜尋 **Azure Active Directory**。
 3. 在搜尋結果中選取 [Azure Active Directory]  。
 4. 選取 [建立]  。</br>
 ![顯示如何建立 Azure AD 租用戶的螢幕擷取畫面。](media/tutorial-password-hash-sync/create1.png)</br>
-5. 提供**組織名稱**與**初始網域名稱**。 然後選取 [建立]  。 這將會建立您的目錄。
-6. 完成此動作之後，請按一下**這裡**以管理目錄。
+5. 提供 **組織名稱** 與 **初始網域名稱**。 然後選取 [建立]  。 這將會建立您的目錄。
+6. 完成此動作之後，請按一下 **這裡** 以管理目錄。
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>在 Azure AD 中建立全域系統管理員
 現在我們已有 Azure AD 租用戶，我們將建立全域系統管理員帳戶。  此帳戶會用來在 Azure AD Connect 安裝期間建立 Azure AD Connector 帳戶。  Azure AD Connector 帳戶會用來將資訊寫入到 Azure AD。   若要建立全域系統管理員帳戶，請執行下列動作。

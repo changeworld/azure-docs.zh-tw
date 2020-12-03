@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/13/2020
 ms.author: jeedes
-ms.openlocfilehash: ef49a8a3ac1779071a4d4906bfd053530063102d
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: b70c50e7c2900f884dd4d91c6650205bc626326e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984459"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96177998"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>教學課程：Azure Active Directory 與 Keeper Password Manager & Digital Vault 整合
 
@@ -157,7 +157,7 @@ ms.locfileid: "94984459"
 
 * 您可以直接移至應用程式的登入 URL，然後從該處起始登入。
 
-* 您可以使用 Microsoft 存取面板。 當您選取存取面板中的 [Keeper Password Manager & Digital Vault] 圖格時，應該會重新導向至應用程式的登入 URL。 如需存取面板的詳細資訊，請參閱[登入我的應用程式入口網站並啟動應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 您可以使用 Microsoft 存取面板。 當您選取存取面板中的 [Keeper Password Manager & Digital Vault] 圖格時，應該會重新導向至應用程式的登入 URL。 如需存取面板的詳細資訊，請參閱[登入我的應用程式入口網站並啟動應用程式](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>後續步驟

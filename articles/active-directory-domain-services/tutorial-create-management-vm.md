@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: cc183a047023e5377d7a45088b7c9ae2407f6829
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 52a97b824824d8e9eaf79cfa4a447494bf1525cf
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967115"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175146"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>教學課程：建立管理 VM 來設定及管理 Azure Active Directory Domain Services 受控網域
 
@@ -57,7 +57,7 @@ Azure AD DS 會為您的使用者、應用程式和服務提供可取用的受�
 
 ### <a name="administrative-tasks-you-can-perform-on-a-managed-domain"></a>可在受控網域中執行的系統管理工作
 
-*AAD DC 系統管理員*群組的成員已獲授與受控網域的權限，這些權限讓他們可以進行如下工作：
+*AAD DC 系統管理員* 群組的成員已獲授與受控網域的權限，這些權限讓他們可以進行如下工作：
 
 * 為受控網域中的「AADDC 電腦」和「AADDC 使用者」容器設定內建群組原則物件 (GPO)。
 * 管理受控網域上的 DNS。
@@ -160,4 +160,4 @@ Azure AD DS 會為您的使用者、應用程式和服務提供可取用的受�
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [create-join-windows-vm]: join-windows-vm.md
-[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[azure-bastion]: ../bastion/tutorial-create-host-portal.md

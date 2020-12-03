@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: e5f5baca5f092dac23be69d6e0361e3945b33346
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e018d0460945a0d256c189a851c4824ce61442e3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133202"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180344"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-appsec-flow-sso"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 AppSec Flow SSO 整合
 
@@ -121,10 +121,8 @@ ms.locfileid: "93133202"
 
 1. 在 Azure 入口網站中按一下 [測試此應用程式]，您應該會自動登入您已設定 SSO 的 AppSec Flow SSO
 
-1. 您可以使用 Microsoft 存取面板。 當您在存取面板中按一下 [AppSec Flow SSO] 圖格時，應該會自動登入您設定 SSO 的 AppSec Flow SSO。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+1. 您可以使用 Microsoft 存取面板。 當您在存取面板中按一下 [AppSec Flow SSO] 圖格時，應該會自動登入您設定 SSO 的 AppSec Flow SSO。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-設定 AppSec Flow SSO 後，您可以強制執行工作階段控制項，以即時防止組織的敏感性資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+設定 AppSec Flow SSO 後，您可以強制執行工作階段控制項，以即時防止組織的敏感性資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。

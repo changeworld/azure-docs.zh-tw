@@ -13,11 +13,11 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: 39a3b9d7dd9efbda93de0b5d7c5f9938922d0012
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631285"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183808"
 ---
 # <a name="add-an-api-manually"></a>手動新增 API
 
@@ -56,12 +56,12 @@ ms.locfileid: "91631285"
 1. 選取您在上一個步驟中建立的 API。
 2. 按一下 [+ 新增作業]  。
 3. 在 **URL** 中選取 **GET**，並在資源中輸入 " */get*"。
-4. 輸入 "*FetchData* 作為**顯示名稱**。
+4. 輸入 "*FetchData* 作為 **顯示名稱**。
 5. 選取 [儲存]  。
 
 ### <a name="test-an-operation"></a>測試作業
 
-在 Azure 入口網站中測試作業。 或者，您可以在**開發人員入口網站**中測試作業。
+在 Azure 入口網站中測試作業。 或者，您可以在 **開發人員入口網站** 中測試作業。
 
 1. 選取 [測試]  索引標籤。
 2. 選取 **FetchData**。
@@ -78,12 +78,12 @@ ms.locfileid: "91631285"
 1. 選取您在上一個步驟中建立的 API。
 2. 按一下 [+ 新增作業]  。
 3. 在 **URL** 中選取 **GET**，並在資源中輸入" */status/{code}* "。 您可以選擇性地提供與此參數相關聯的一些資訊。 例如，在 [類型]  中輸入「數字」  ，在 [值]  中輸入「200」  (預設)。
-4. 輸入 "GetStatus" 作為**顯示名稱**。
+4. 輸入 "GetStatus" 作為 **顯示名稱**。
 5. 選取 [儲存]  。
 
 ### <a name="test-the-operation"></a>測試作業 
 
-在 Azure 入口網站中測試作業。  或者，您可以在**開發人員入口網站**中測試作業。
+在 Azure 入口網站中測試作業。  或者，您可以在 **開發人員入口網站** 中測試作業。
 
 1. 選取 [測試]  索引標籤。
 2. 選取 **GetStatus**。 依預設，此字碼值會設定為 "200  "。 您可以加以變更以測試其他值。 例如，輸入 "418  "。

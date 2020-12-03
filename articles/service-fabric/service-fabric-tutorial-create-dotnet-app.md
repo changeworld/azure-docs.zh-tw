@@ -4,12 +4,12 @@ description: 在本教學課程中，您會了解如何建立含有 ASP.NET Core
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.custom: mvc, devx-track-js, devx-track-csharp
-ms.openlocfilehash: e9014f2f5e4d0149d1b0c37c9dbf007358242189
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a783f5338dbc7ce0832b346492490525da332e39
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326366"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96297112"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>教學課程：建立和部署含有 ASP.NET Core Web API 前端服務和具狀態後端服務的應用程式
 
@@ -36,16 +36,16 @@ ms.locfileid: "91326366"
 
 開始進行本教學課程之前：
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [安裝 Visual Studio 2019](https://www.visualstudio.com/) 15.5 版或更新版本，其中包含 **Azure 開發**及 **ASP.NET 和 Web 開發**工作負載。
+* [安裝 Visual Studio 2019](https://www.visualstudio.com/) 15.5 版或更新版本，其中包含 **Azure 開發** 及 **ASP.NET 和 Web 開發** 工作負載。
 * [安裝 Service Fabric SDK](service-fabric-get-started.md)
 
 ## <a name="create-an-aspnet-web-api-service-as-a-reliable-service"></a>建立 ASP.NET Web API 服務成為可靠的服務
 
 首先，使用 ASP.NET Core 建立投票應用程式的 web 前端。 ASP.NET Core 是輕量型、跨平台的 Web 開發架構，可供您用來建立新式 Web UI 和 Web API。 若要完整了解 ASP.NET Core 如何與 Service Fabric 整合，強烈建議您仔細閱讀 [Service Fabric Reliable Services 中的 ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) 文章。 現在，您可以依照本教學課程來快速上手。 若要深入了解 ASP.NET Core，請參閱 [ASP.NET Core 文件](/aspnet/core/)。
 
-1. 以**系統管理員**身分啟動 Visual Studio。
+1. 以 **系統管理員** 身分啟動 Visual Studio。
 
-2. 使用**檔案**->**新增**->**專案**建立專案。
+2. 使用 **檔案**->**新增**->**專案** 建立專案。
 
 3. 在 [新增專案]  對話方塊中，選擇 [雲端] > [Service Fabric 應用程式]。
 
@@ -147,17 +147,17 @@ app.controller('VotingAppController', ['$rootScope', '$scope', '$http', '$timeou
                 </div>
                 <div class="row top-buffer" ng-repeat="vote in votes.data">
                     <div class="col-xs-8">
-                        <button class="btn btn-success text-left btn-block" ng-click="add(vote.key)">
+                        <button class="btn btn-success text-left btn-block" ng-click="add(vote.Key)">
                             <span class="pull-left">
-                                {{vote.key}}
+                                {{vote.Key}}
                             </span>
                             <span class="badge pull-right">
-                                {{vote.value}} Votes
+                                {{vote.Value}} Votes
                             </span>
                         </button>
                     </div>
                     <div class="col-xs-4">
-                        <button class="btn btn-danger pull-right btn-block" ng-click="remove(vote.key)">
+                        <button class="btn btn-danger pull-right btn-block" ng-click="remove(vote.Key)">
                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                             Remove
                         </button>
@@ -316,7 +316,7 @@ namespace VotingWeb.Controllers
 同時更新 Voting 專案中的 [應用程式 URL] 屬性值，以便您在進行應用程式偵錯時，網頁瀏覽器會開啟至正確的連接埠。  在 [方案總管] 中，選取 [Voting] 專案，並將 [應用程式 URL] 屬性更新至 **8080**。
 
 ### <a name="deploy-and-run-the-voting-application-locally"></a>在本機部署和執行 Voting 應用程式
-您現在可以繼續執行 Voting 應用程式以供偵錯。 在 Visual Studio 中，按 **F5** 將應用程式部署到偵錯模式中的本機 Service Fabric 叢集。 如果您先前並未以**系統管理員**身分開啟 Visual Studio，此應用程式將會失敗。
+您現在可以繼續執行 Voting 應用程式以供偵錯。 在 Visual Studio 中，按 **F5** 將應用程式部署到偵錯模式中的本機 Service Fabric 叢集。 如果您先前並未以 **系統管理員** 身分開啟 Visual Studio，此應用程式將會失敗。
 
 > [!NOTE]
 > 您第一次在本機執行及部署應用程式時，Visual Studio 會建立本機 Service Fabric 叢集以供偵錯。  建立叢集可能需要一些時間。 叢集建立狀態會顯示在 Visual Studio 輸出視窗中。
@@ -325,7 +325,7 @@ namespace VotingWeb.Controllers
 
 ![ASP.NET Core 前端](./media/service-fabric-tutorial-create-dotnet-app/debug-front-end.png)
 
-若要停止應用程式偵錯，請返回 Visual Studio 並且按**Shift+F5**。
+若要停止應用程式偵錯，請返回 Visual Studio 並且按 **Shift+F5**。
 
 ## <a name="add-a-stateful-back-end-service-to-your-application"></a>將具狀態後端服務新增到應用程式
 

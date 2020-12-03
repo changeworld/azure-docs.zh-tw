@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
 ms.openlocfilehash: 7bb74732074482c12d3bc760e259bb014ccf006f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454179"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179244"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Ekarda 整合
 
@@ -52,7 +52,7 @@ ms.locfileid: "92454179"
 1. 在左窗格中選取 [Azure Active Directory]  服務。
 1. 移至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Ekarda** 。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Ekarda**。
 1. 從結果面板選取 [Ekarda]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-ekarda"></a>設定及測試 Ekarda 的 Azure AD 單一登入
@@ -75,20 +75,20 @@ ms.locfileid: "92454179"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 1. 在 **Ekarda** 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入] 頁面上，選取鉛筆圖示以編輯 **基本 SAML 組態** 的設定。
 
    ![以 SAML 設定單一登入頁面的螢幕擷取畫面，其中的鉛筆圖示已醒目提示。](common/edit-urls.png)
 
-1. 如果您看見 **服務提供者中繼資料檔案** ，請在 [基本 SAML 設定] 區段中遵循下列步驟：
-    1. 選取 [上傳中繼資料檔案]  。
+1. 如果您看見 **服務提供者中繼資料檔案**，請在 [基本 SAML 設定] 區段中遵循下列步驟：
+    1. 選取 [上傳中繼資料檔案]。
     1. 選取資料夾圖示以選取中繼資料檔案，然後選取 [上傳]。
     1. 成功上傳中繼資料檔案後，Ekarda 區段文字方塊中會自動出現 [識別碼] 和 [回覆 URL]。
 
     > [!Note]
     > 如果 [識別碼] 和 [回覆 URL] 值未自動出現，請根據您的需求手動填入這些值。
 
-1. 如果您在 [基本 SAML 設定] 區段中看不到 **服務提供者中繼資料檔案** ，而且想要以 IDP 起始模式設定應用程式，請輸入下列欄位的值：
+1. 如果您在 [基本 SAML 設定] 區段中看不到 **服務提供者中繼資料檔案**，而且想要以 IDP 起始模式設定應用程式，請輸入下列欄位的值：
 
     1. 在 [識別碼] 文字方塊中，以下列模式輸入 URL：`https://my.ekarda.com/users/saml_metadata/<COMPANY_ID>`
     1. 在 [回覆 URL] 文字方塊中，以下列模式輸入 URL︰`https://my.ekarda.com/users/saml_acs/<COMPANY_ID>`
