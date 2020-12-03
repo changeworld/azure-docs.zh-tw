@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: dd4586128bf2ce657352c0a1d4608637ecf9dba9
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 69fda41249ced8518e430af8305c0cb10822b214
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531219"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559060"
 ---
 # <a name="azure-monitor-logs-overview"></a>Azure 監視器記錄概觀 (機器翻譯)
 Azure 監視器記錄是 Azure 監視器的功能，可從 [受監視的資源](../monitor-reference.md)收集及組織記錄和效能資料。 來自不同來源的資料，例如來自 Azure 服務的 [平臺記錄](platform-logs-overview.md) 、 [虛擬機器代理](agents-overview.md)程式的記錄和效能資料，以及 [應用程式](../app/app-insights-overview.md) 的使用方式和效能資料，都可以合併到單一工作區中，因此可以使用能夠快速分析數百萬筆記錄的精密查詢語言來分析它們。 您可以執行簡單的查詢，只抓取一組特定的記錄，或執行精密的資料分析，以識別監視資料中的重要模式。 使用 Log Analytics 以互動方式使用記錄查詢及其結果、在警示規則中使用它們，以主動通知問題，或是在活頁簿或儀表板中將其結果視覺化。
@@ -42,7 +42,7 @@ Azure 監視器記錄是 Azure 監視器的功能，可從 [受監視的資源](
 
 
 ## <a name="log-analytics-workspaces"></a>Log Analytics 工作區
-Azure 監視器記錄所收集的資料會儲存在一個以上的 [Log Analytics 工作區](./design-logs-deployment.md)中。 工作區會定義資料的地理位置、定義使用者可以存取資料的存取權限，以及定價層和資料保留等設定。  
+Azure 監視器記錄所收集的資料會儲存在一或多個 [Log Analytics 工作區](./design-logs-deployment.md)中。 工作區會定義資料的地理位置、定義使用者可以存取資料的存取權限，以及定價層和資料保留等設定。  
 
 您必須建立至少一個工作區，才能使用 Azure 監視器記錄。 單一工作區對於您的所有監視資料而言可能就已足夠，也可以選擇根據您的需求建立多個工作區。 例如，您可能會有一個工作區用於生產資料，而另一個工作區用於測試。 
 

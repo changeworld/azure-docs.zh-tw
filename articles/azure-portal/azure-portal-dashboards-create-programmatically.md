@@ -3,21 +3,21 @@ title: 以程式設計方式建立 Azure Dashboards
 description: 使用 Azure 入口網站中的儀表板作為範本，以程式設計方式建立 Azure 儀表板。 包含 JSON 參考。
 services: azure-portal
 documentationcenter: ''
-author: adamabmsft
+author: mgblythe
 manager: mtillman
 ms.service: azure-portal
 ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 03/23/2020
+ms.date: 12/4/2020
 ms.author: mblythe
-ms.openlocfilehash: 7f52bd94a0286ea50d09ab7c77dce339e8a3ebf3
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 7e6819b01af3fc9357417a838fefce7f2c73dcce
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089361"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558211"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以程式設計方式建立 Azure Dashboards
 
@@ -37,7 +37,7 @@ ms.locfileid: "92089361"
 
 ## <a name="create-a-dashboard"></a>建立儀表板
 
-若要建立儀表板，請從[Azure 入口網站](https://portal.azure.com)] 功能表中選取 [**儀表板**]，然後選取 [**新增儀表板**]。
+若要建立儀表板，請從 [Azure 入口網站](https://portal.azure.com)] 功能表中選取 [**儀表板**]，然後選取 [**新增儀表板**]。
 
 ![新儀表板命令](./media/azure-portal-dashboards-create-programmatically/new-dashboard-command.png)
 
@@ -658,3 +658,49 @@ id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/v
 ```
 
 現在您已看過使用參數化範本部署儀表板的範例，您可以嘗試使用 [AZURE RESOURCE MANAGER REST api](/rest/api/)、 [Azure CLI](/cli/azure)或 [Azure PowerShell 命令](/powershell/azure/get-started-azureps)來部署範本。
+
+## <a name="programmatically-create-a-dashboard-by-using-azure-cli"></a>使用 Azure CLI 以程式設計方式建立儀表板
+
+備妥環境以使用 Azure CLI。
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- 這些範例會使用下列儀表板： [portal-dashboard-template-testvm.js開啟](https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-portal/portal-dashboard-template-testvm.json)。 將角括弧中的內容取代為您的值。
+
+執行 [az portal 儀表板 create](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_create) 命令以建立儀表板：
+
+```azurecli
+az portal dashboard create --resource-group myResourceGroup --name 'Simple VM Dashboard' \
+   --input-path portal-dashboard-template-testvm.json --location centralus
+```
+
+您可以使用 [az portal 儀表板更新](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_update) 命令來更新儀表板：
+
+```azurecli
+az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Dashboard' \
+--input-path portal-dashboard-template-testvm.json --location centralus
+```
+
+執行 [az portal 儀表板 show](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_show) 命令以查看儀表板的詳細資料：
+
+```azurecli
+az portal dashboard show --resource-group myResourceGroup --name 'Simple VM Dashboard'
+```
+
+若要查看目前訂用帳戶的所有儀表板，請使用 [az portal 儀表板清單](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_list)：
+
+```azurecli
+az portal dashboard list
+```
+
+您也可以查看資源群組的所有儀表板：
+
+```azurecli
+az portal dashboard list --resource-group myResourceGroup
+```
+
+## <a name="next-steps"></a>後續步驟
+
+如需桌面的詳細資訊，請參閱 [管理 Azure 入口網站設定和喜好設定](set-preferences.md)。
+
+如需有關儀表板 Azure CLI 支援的詳細資訊，請參閱 [az 入口網站儀表板](/cli/azure/ext/portal/portal/dashboard)。

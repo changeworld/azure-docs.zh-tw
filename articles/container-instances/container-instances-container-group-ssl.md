@@ -3,12 +3,12 @@ title: 啟用具有側車容器的 TLS
 description: 在側車容器中執行 Nginx，為在 Azure 容器實例中執行的容器群組建立 SSL 或 TLS 端點
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: f7f5d8e8136f4357067888f5a39fa0c3635122d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6587a84e7cbe655c509f74e9e39e93010e7058be
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86169845"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558074"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>在側車容器中啟用 TLS 端點
 
@@ -22,9 +22,9 @@ ms.locfileid: "86169845"
 
 請參閱 [後續步驟](#next-steps) ，以瞭解在容器群組中啟用 TLS 的其他方法。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-您可以使用 Azure Cloud Shell 或安裝在本機的 Azure CLI 來完成本文。 如果您想要在本機使用，建議使用 2.0.55 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+- 本文需要 Azure CLI 的版本使用2.0.55 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-self-signed-certificate"></a>建立自我簽署憑證
 
@@ -232,7 +232,7 @@ app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-
 
 >
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 本文說明如何設定 Nginx 容器，以啟用對容器群組中執行之 web 應用程式的 TLS 連線。 您可以針對接聽埠80以外埠的應用程式，調整此範例。 您也可以更新 Nginx 設定檔，以自動將埠80上的伺服器連線重新導向 (HTTP) 以使用 HTTPS。
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/19/2020
+ms.date: 12/02/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: e7f017c1f3dc189af2b0fc053912decca3459478
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 27af0ffdeb254dbb671a0618d0e9973336a7f529
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952755"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559009"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>How to：使用文字分析的健全狀況 (預覽) 
 
@@ -28,6 +28,8 @@ ms.locfileid: "94952755"
 
 * 以 web 為基礎的 API (非同步)  
 * Docker 容器 (同步)    
+
+> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Introducing-Text-Analytics-for-Health/player]
 
 ## <a name="features"></a>特性
 
@@ -106,7 +108,7 @@ ms.locfileid: "94952755"
 
 您必須具有此格式的 JSON 文件：識別碼、文字和語言。 
 
-每份文件的大小必須低於 5,120 個字元。 如需集合中允許的檔數目上限，請參閱概念底下的 [資料限制](../concepts/data-limits.md?tabs=version-3) 文章。 集合會在要求本文中提交。
+每份文件的大小必須低於 5,120 個字元。 如需集合中允許的文件數目上限，請參閱＜概念＞底下的[資料限制](../concepts/data-limits.md?tabs=version-3)一文。 集合會在要求本文中提交。
 
 ### <a name="structure-the-api-request-for-the-hosted-asynchronous-web-api"></a>為託管的非同步 web API 的 API 要求結構
 

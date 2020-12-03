@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 03b112466ef094a578d47586a44ab383a5da1a9b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8dd3c60c3d1b714ab75b496a94ba4bd5aec4e43d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744887"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558465"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR 服務驗證
 
@@ -45,11 +45,11 @@ ms.locfileid: "92744887"
 
 若要完成本教學課程，您必須具備下列先決條件：
 
-* 已在 [GitHub](https://github.com/) 建立帳戶
-* [Git](https://git-scm.com/)
-* [.NET Core SDK](https://www.microsoft.com/net/download/windows)
-* [已設定 Azure Cloud Shell](../cloud-shell/quickstart.md)
-* 下載或複製 [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) \(英文\) GitHub 存放庫。
+- 已在 [GitHub](https://github.com/) 建立帳戶
+- [Git](https://git-scm.com/)
+- [.NET Core SDK](https://www.microsoft.com/net/download/windows)
+- 針對 bash 環境設定[Azure Cloud Shell](/azure/cloud-shell/quickstart) 。
+- 下載或複製 [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) \(英文\) GitHub 存放庫。
 
 ## <a name="create-an-oauth-app"></a>建立 OAuth 應用程式
 
@@ -384,17 +384,13 @@ ms.locfileid: "92744887"
 
     聊天應用程式現在會使用 GitHub 執行驗證，並將驗證資訊儲存為 Cookie，所以您接著應該將其部署至 Azure，讓其他使用者可以使用他們的帳戶進行驗證，並從其他工作站進行通訊。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="deploy-the-app-to-azure"></a>將應用程式部署至 Azure
 
-在本區段中，您將從 Azure Cloud Shell 使用 Azure 命令列介面 (CLI)，在 [Azure App Service](../app-service/index.yml) 中建立新的 Web 應用程式，以在 Azure 中裝載 ASP.NET 應用程式。 您會將 Web 應用程式設定為使用本機 Git 部署。 您也會使用您的 SignalR 連接字串、GitHub OAuth 應用程式祕密和部署使用者來設定 Web 應用程式。
+備妥環境以使用 Azure CLI：
 
-本節中的步驟會使用適用於 Azure CLI 的 signalr 擴充功能。 執行下列命令以安裝適用於 Azure CLI 的 signalr 擴充功能：
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-```azurecli-interactive
-az extension add -n signalr
-```
+在本節中，您將使用 Azure 命令列介面 (CLI) 在 [Azure App Service](../app-service/index.yml) 中建立新的 web 應用程式，以在 Azure 中裝載您的 ASP.NET 應用程式。 您會將 Web 應用程式設定為使用本機 Git 部署。 您也會使用您的 SignalR 連接字串、GitHub OAuth 應用程式祕密和部署使用者來設定 Web 應用程式。
 
 在建立下列資源時，請務必使用 SignalR 服務資源所在的相同資源群組。 當您之後想要移除所有資源時，這種方法會讓清除作業變得更容易。 所提供的範例假設您使用先前教學課程中所建議的群組名稱 SignalRTestResources。
 
@@ -541,7 +537,7 @@ az webapp deployment source config-local-git --name $WebAppName \
 4. 將您的程式碼部署至 Azure 中的 Web 應用程式。
 
     ```bash
-    git push Azure master
+    git push Azure main
     ```
 
     系統會提示您進行驗證，以將程式碼部署至 Azure。 輸入您在上面針對部署使用者所建立的使用者名稱和密碼。
@@ -552,7 +548,7 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 1. 在瀏覽器中開啟 [https://github.com](https://github.com)，然後瀏覽至您帳戶的 [設定] >  [開發人員設定] >  [Oauth應用程式]。
 
-2. 按一下您的驗證應用程式，然後更新 **首頁 URL** 和 **授權回呼 URL** ，如下所示：
+2. 按一下您的驗證應用程式，然後更新 **首頁 URL** 和 **授權回呼 URL**，如下所示：
 
     | 設定 | 範例 |
     | ------- | ------- |

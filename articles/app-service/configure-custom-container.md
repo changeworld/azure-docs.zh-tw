@@ -4,12 +4,12 @@ description: 瞭解如何在 Azure App Service 中設定自訂容器。 本文�
 ms.topic: article
 ms.date: 09/22/2020
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 9f71efbf7cc606efd598880e90ade3a549402245
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2aece0550d7b78ac4312e71b2671de4a64e4b86b
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787052"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96557921"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>設定 Azure App Service 的自訂容器
 
@@ -139,7 +139,17 @@ Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"DB
 
 停用持續性儲存體時，不會 `C:\home` 保存目錄的寫入。 [Docker 主機記錄和容器記錄](#access-diagnostic-logs) 會儲存在未附加至容器的預設持續性共用存放裝置中。 啟用持續性儲存體時，會保存目錄的所有寫入， `C:\home` 並可由相應放大應用程式的所有實例存取，而且可以在上存取記錄檔 `C:\home\LogFiles` 。
 
-預設會 *停用* 持續性儲存區，而且不會在應用程式設定中公開設定。 若要啟用它，請透過 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` [Cloud Shell](https://shell.azure.com)設定應用程式設定。 在 Bash 中：
+::: zone-end
+
+::: zone pivot="container-linux"
+
+您可以使用應用程式檔案系統中的 */home* 目錄，在重新開機時保存檔案，並在實例之間共用檔案。 `/home`提供應用程式中的，以讓您的容器應用程式存取持續性儲存體。
+
+停用持續性儲存體時， `/home` 不會跨應用程式重新開機或跨多個實例保存寫入目錄。 唯一的例外狀況是 `/home/LogFiles` 用來儲存 Docker 和容器記錄檔的目錄。 啟用持續性儲存體時，會保存目錄的所有寫入， `/home` 並且可供相應放大應用程式的所有實例存取。
+
+::: zone-end
+
+預設會停用持續性儲存體，而不會在應用程式設定中公開設定。 若要啟用它，請透過 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` [Cloud Shell](https://shell.azure.com)設定應用程式設定。 在 Bash 中：
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=true
@@ -150,28 +160,6 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 ```azurepowershell-interactive
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITES_ENABLE_APP_SERVICE_STORAGE"=true}
 ```
-
-::: zone-end
-
-::: zone pivot="container-linux"
-
-您可以使用應用程式檔案系統中的 */home* 目錄，在重新開機時保存檔案，並在實例之間共用檔案。 `/home`提供應用程式中的，以讓您的容器應用程式存取持續性儲存體。
-
-停用持續性儲存體時， `/home` 不會跨應用程式重新開機或跨多個實例保存寫入目錄。 唯一的例外狀況是 `/home/LogFiles` 用來儲存 Docker 和容器記錄檔的目錄。 啟用持續性儲存體時，會保存目錄的所有寫入， `/home` 並且可供相應放大應用程式的所有實例存取。
-
-依預設，會 *啟用* 持續性儲存體，而不會在應用程式設定中公開設定。 若要停用，請透過 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` [Cloud Shell](https://shell.azure.com)設定應用程式設定。 在 Bash 中：
-
-```azurecli-interactive
-az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
-```
-
-在 PowerShell 中：
-
-```azurepowershell-interactive
-Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITES_ENABLE_APP_SERVICE_STORAGE"=false}
-```
-
-::: zone-end
 
 > [!NOTE]
 > 您也可以 [設定自己的持續性儲存體](configure-connect-to-azure-storage.md)。
@@ -212,7 +200,7 @@ App Service 會記錄 Docker 主機的動作，以及來自容器內的活動。
 
 ### <a name="in-azure-portal"></a>Azure 入口網站
 
-Docker 記錄會顯示在入口網站的應用程式 [ **容器設定** ] 頁面中。 記錄會被截斷，但您可以按一下 [ **下載** ] 來下載所有記錄。 
+Docker 記錄會顯示在入口網站的應用程式 [ **容器設定** ] 頁面中。 記錄會被截斷，但您可以按一下 [ **下載**] 來下載所有記錄。 
 
 ### <a name="from-the-kudu-console"></a>從 Kudu 主控台
 
@@ -242,7 +230,7 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITE_MEMORY_LIMIT_MB"=2000}
 ```
 
-值的定義為 MB，而且必須小於或等於主機的總實體記憶體。 例如，在具有 8 GB RAM 的 App Service 方案中， `WEBSITE_MEMORY_LIMIT_MB` 所有應用程式的累積總計不得超過 8 gb。 如需每個定價層有多少可用記憶體的相關資訊，請參閱「高階 **容器 (Windows) 規劃** 」一節的 [App Service 定價](https://azure.microsoft.com/pricing/details/app-service/windows/)。
+值的定義為 MB，而且必須小於或等於主機的總實體記憶體。 例如，在具有 8 GB RAM 的 App Service 方案中， `WEBSITE_MEMORY_LIMIT_MB` 所有應用程式的累積總計不得超過 8 gb。 如需每個定價層有多少可用記憶體的相關資訊，請參閱「高階 **容器 (Windows) 規劃**」一節的 [App Service 定價](https://azure.microsoft.com/pricing/details/app-service/windows/)。
 
 ## <a name="customize-the-number-of-compute-cores"></a>自訂計算核心數目
 
@@ -268,7 +256,7 @@ Get-ComputerInfo | ft CsNumberOfLogicalProcessors # Total number of enabled logi
 Get-ComputerInfo | ft CsNumberOfProcessors # Number of physical processors.
 ```
 
-處理器可能是多核心或超執行緒處理器。 如需每個定價層的可用核心數目的相關資訊，請參閱「高階 **容器 (Windows) 方案** 」一節的 [App Service 定價](https://azure.microsoft.com/pricing/details/app-service/windows/)。
+處理器可能是多核心或超執行緒處理器。 如需每個定價層的可用核心數目的相關資訊，請參閱「高階 **容器 (Windows) 方案**」一節的 [App Service 定價](https://azure.microsoft.com/pricing/details/app-service/windows/)。
 
 ## <a name="customize-health-ping-behavior"></a>自訂健全狀況偵測行為
 
@@ -325,7 +313,7 @@ SSH 可讓容器和用戶端之間進行安全通訊。 為了讓自訂容器支
     ```
 
     > [!NOTE]
-    > sshd_config  檔案必須包含下列項目︰
+    > sshd_config 檔案必須包含下列項目︰
     > - `Ciphers` 必須在此清單中包含至少一個項目：`aes128-cbc,3des-cbc,aes256-cbc`。
     > - `MACs` 必須在此清單中包含至少一個項目：`hmac-sha1,hmac-sha1-96`。
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: ef06faa17739153b2a04e777498e1de6e97c0646
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 804d739efa5ac96c0b2d7228573f031f324e590e
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957090"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558975"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文字分析中使用命名實體辨識
 
@@ -31,7 +31,7 @@ ms.locfileid: "94957090"
 
 ## <a name="personally-identifiable-information-pii"></a>個人識別資訊 (PII)
 
-PII 功能是 NER 的一部分，而且可以識別和修訂與個別人員相關聯之文字中的敏感實體，例如電話號碼、電子郵件地址、郵寄地址、passport 號碼。  
+PII 功能是 NER 的一部分，而且可以識別和修訂與個別人員相關聯之文字中的敏感實體，例如電話號碼、電子郵件地址、郵寄地址、passport 號碼。
 
 ## <a name="named-entity-recognition-features-and-versions"></a>命名實體辨識功能和版本
 
@@ -298,7 +298,7 @@ PII 回應的範例：
 ---
 
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 在本文中，您已了解在認知服務中使用文字分析的實體連結概念和工作流程。 摘要說明：
 

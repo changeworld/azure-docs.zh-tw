@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/15/2020
-ms.openlocfilehash: f1d8715fcadeda5ccd1a98192a70939b0c359c88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5a893ee1923ba4b2bec53b20fb164337bd65902
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84976671"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558108"
 ---
 # <a name="skillset-concepts-in-azure-cognitive-search"></a>Azure 認知搜尋中的技能集概念
 
@@ -222,8 +222,6 @@ ms.locfileid: "84976671"
 若要進一步擴充範例，您可以選擇移除內嵌塑形，並使用塑形器技能來為關鍵片語建立新的節點。 若要建立投影到三個資料表的圖形，也就是 `hotelReviewsDocument`、`hotelReviewsPages` 和 `hotelReviewsKeyPhrases`，以下幾節會說明這兩個選項。
 
 #### <a name="shaper-skill-and-projection"></a>塑形器技能和投影
-
-此 
 
 > [!Note]
 > 為了簡潔起見，已將文件資料表中的一些資料行從這個範例中移除。

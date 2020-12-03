@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 1b23d6c7952e60ee693bb481fec04d358654632c
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 3f2cbd7afe206866ae4d5b7c0925c8f3be9ab785
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530488"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558805"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>選擇 Azure 認知搜尋的定價層
 
@@ -21,7 +21,7 @@ ms.locfileid: "96530488"
 
 + 索引數量和其他物件 (上限) 
 + 分割區的大小和速度 (實體儲存體)
-+ 可計費費率，也是以使用中的資料分割和複本數目會的固定成本
++ 可計費費率，每月固定成本，但如果您新增資料分割或複本，也會遞增成本
 
 此外，有幾個高階 [功能](#premium-features) 會隨附于階層需求。
 
@@ -49,7 +49,7 @@ ms.locfileid: "96530488"
 
 下表說明階層相關的功能條件約束。
 
-| 特徵 | 限制 |
+| 功能 | 限制 |
 |---------|-------------|
 | [索引](search-indexer-overview.md) | S3 HD 上無法使用索引子。  |
 | [AI 擴充](search-security-manage-encryption-keys.md) | 在免費層上執行，但不建議使用。 |

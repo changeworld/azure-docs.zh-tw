@@ -2,14 +2,14 @@
 title: 針對邏輯組織標記資源、資源群組和訂用帳戶
 description: 示範如何套用標籤以針對計費及管理來組織 Azure 資源。
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 12/03/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9e9ef96a712e5ac2ba483170fb8ef9c89115b4f8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e47d3acf15ce5e4f5cb70444419b76beb21ae98b
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95972552"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558142"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>使用標記來組織您的 Azure 資源和管理階層
 
@@ -26,9 +26,11 @@ ms.locfileid: "95972552"
 
 ## <a name="required-access"></a>必要的存取權
 
-若要將標記套用至資源，您必須擁有對 **Microsoft .resources/tag** 資源類型的寫入存取權。 [標記參與者](../../role-based-access-control/built-in-roles.md#tag-contributor)角色可讓您將標記套用至實體，而不需要存取實體本身。 目前，標記參與者角色無法透過入口網站將標記套用至資源或資源群組。 它可以透過入口網站將標記套用至訂用帳戶。 它透過 PowerShell 和 REST API 支援所有標記作業。  
+有兩種方式可取得標記資源的必要存取權。
 
-[參與者](../../role-based-access-control/built-in-roles.md#contributor)角色也會授與必要的存取權，以將標記套用至任何實體。 若只要將標記套用到一個資源類型，則使用適用於該資源的參與者角色。 例如，若要將標記套用到虛擬機器，可使用[虛擬機器參與者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)。
+- 您可以擁有對 **Microsoft .resources/tag** 資源類型的寫入存取權。 這種存取權可讓您標記任何資源，即使您沒有資源本身的存取權。 [標記參與者](../../role-based-access-control/built-in-roles.md#tag-contributor)角色會授與此存取權。 目前，標記參與者角色無法透過入口網站將標記套用至資源或資源群組。 它可以透過入口網站將標記套用至訂用帳戶。 它透過 PowerShell 和 REST API 支援所有標記作業。  
+
+- 您可以擁有資源本身的寫入權限。 [參與者](../../role-based-access-control/built-in-roles.md#contributor)角色會授與必要的存取權，以將標記套用至任何實體。 若只要將標記套用到一個資源類型，則使用適用於該資源的參與者角色。 例如，若要將標記套用到虛擬機器，可使用[虛擬機器參與者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -277,7 +279,7 @@ az tag create --resource-id $resource --tags Team=Compliance Environment=Product
 },
 ```
 
-若要將標記新增至已經有標記的資源，請使用 **az tag update**。 將 **--operation** 參數設定為 **Merge**。
+若要將標記新增至已經有標記的資源，請使用 `az tag update` 。 將 `--operation` 參數設定為 `Merge`。
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Merge --tags Dept=Finance Status=Normal
@@ -313,7 +315,7 @@ az tag update --resource-id $resource --operation Merge --tags Status=Green
 },
 ```
 
-當您將 **--operation** 參數設定為 **Replace** 時，現有的標記會取代為新的標記集。
+當您將 `--operation` 參數設定為時 `Replace` ，現有的標記會取代為新的標記集。
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Replace --tags Project=ECommerce CostCenter=00123 Team=Web
@@ -406,7 +408,7 @@ az group list --tag Dept=Finance
 
 ### <a name="remove-tags"></a>移除標記
 
-若要移除特定標記，請使用 **az tag update** 並將 **--Operation** 設定為 **Delete**。 傳入您想要刪除的標記。
+若要移除特定標記，請使用 `az tag update` 並將設定 `--operation` 為 `Delete` 。 傳入您想要刪除的標記。
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Delete --tags Project=ECommerce Team=Web

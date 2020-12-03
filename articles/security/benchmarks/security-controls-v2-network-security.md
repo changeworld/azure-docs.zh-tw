@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b6aaad9cce330d755fb69f8be48737f9a8f6c4a7
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 38ab16fbadee245810a4486170dd54922c0c38f9
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487740"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558907"
 ---
 # <a name="security-control-v2-network-security"></a>安全性控制 V2：網路安全性
 
@@ -126,7 +126,11 @@ ms.locfileid: "96487740"
 
 **客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
-無
+- [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
+
+- [狀態管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+
+- [應用程式安全性與 DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 ## <a name="ns-5-deploy-intrusion-detectionintrusion-prevention-systems-idsips"></a>NS-5：部署入侵偵測/入侵防護系統 (IDS/IPS) 
 

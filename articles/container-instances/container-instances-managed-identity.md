@@ -3,12 +3,12 @@ title: 在容器群組中啟用受控識別
 description: 瞭解如何在可使用其他 Azure 服務驗證的 Azure 容器實例中啟用受控識別
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 23f2347593137a4846c8fd22e3b90f22db39bda3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67ef17b77a9db92e539dd860a3083760fe1160db
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259618"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558941"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>如何搭配 Azure 容器執行個體使用受控識別
 
@@ -45,9 +45,9 @@ ms.locfileid: "86259618"
 * 您目前無法在部署至虛擬網路的容器群組中使用受控識別。
 * 建立容器群組時，您無法使用受控識別從 Azure Container Registry 提取映射。 身分識別僅適用于執行中的容器。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-如果您選擇在本機安裝並使用 CLI，本文會要求您執行 Azure CLI 2.0.49 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+- 本文需要 Azure CLI 的版本2.0.49 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-an-azure-key-vault"></a>建立 Azure 金鑰保存庫
 
@@ -383,7 +383,7 @@ identity:
    {'myResourceID1':{}}
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已了解「Azure 容器執行個體」中的受控識別，以及如何：
 

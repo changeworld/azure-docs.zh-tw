@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 04/22/2020
+ms.date: 12/03/2020
 ms.author: memildin
-ms.openlocfilehash: ab9be4b14ca51b56ec0a52147b409a56f87cf302
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 8d2b43ab57ea7a3b1dc1d13bcdea9932ccecb9dc
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341884"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559026"
 ---
 # <a name="using-custom-security-policies"></a>使用自訂安全性原則
 
@@ -84,7 +84,7 @@ ms.locfileid: "92341884"
  "metadata": {
     "securityCenter": {
         "RemediationDescription": "Custom description goes here",
-        "Severity": "High",
+        "Severity": "High"
     },
 ```
 
@@ -99,8 +99,8 @@ ms.locfileid: "92341884"
     "description": "Audit required resource groups lock",
     "metadata": {
         "securityCenter": {
-            "remediationDescription": "Resource Group locks can be set via Azure Portal -> Resource Group -> Locks",
-            "severity": "High"
+            "RemediationDescription": "Resource Group locks can be set via Azure Portal -> Resource Group -> Locks",
+            "Severity": "High"
         }
     },
     "parameters": {

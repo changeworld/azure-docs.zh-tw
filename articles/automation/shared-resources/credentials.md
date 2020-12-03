@@ -3,18 +3,18 @@ title: 管理 Azure 自動化中的認證
 description: 本文說明如何建立認證資產及在 Runbook 或 DSC 設定中加以使用。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 09/10/2020
+ms.date: 12/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4fbcf74c2c70d3dffd86728132d58430472271b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec35653f67c46a7032e834020d8e2ca4ab3125c8
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90004659"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558825"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>管理 Azure 自動化中的認證
 
-自動化認證資產會保存物件，其中包含安全性認證，例如使用者名稱和密碼。 Runbook 和 DSC 組態會使用接受 [PSCredential](/dotnet/api/system.management.automation.pscredential) 物件進行驗證的 Cmdlet。 或者，其可以解壓縮 `PSCredential` 物件的使用者名稱和密碼，以提供給某些需要驗證的應用程式或服務。 
+自動化認證資產會保存物件，其中包含安全性認證，例如使用者名稱和密碼。 Runbook 和 DSC 組態會使用接受 [PSCredential](/dotnet/api/system.management.automation.pscredential) 物件進行驗證的 Cmdlet。 或者，其可以解壓縮 `PSCredential` 物件的使用者名稱和密碼，以提供給某些需要驗證的應用程式或服務。
 
 >[!NOTE]
 >Azure 自動化中的安全資產包括認證、憑證、連接和加密的變數。 這些資產都會經過加密，並使用為每個自動化帳戶產生的唯一金鑰，儲存在 Azure 自動化中。 Azure 自動化會將金鑰儲存在系統管理的 Key Vault 中。 在儲存安全資產之前，自動化會從 Key Vault 載入金鑰，然後將其用來加密資產。 
@@ -44,7 +44,7 @@ ms.locfileid: "90004659"
 
 若要在程式碼中擷取 `PSCredential` 物件，您必須匯入 `Orchestrator.AssetManagement.Cmdlets` 模組。 如需詳細資訊，請參閱[在 Azure 自動化中管理模組](modules.md)。
 
-```azurepowershell
+```powershell
 Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 ```
 
@@ -69,15 +69,15 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 ### <a name="create-a-new-credential-asset-with-the-azure-portal"></a>使用 Azure 入口網站建立新的認證資產
 
 1. 從您的自動化帳戶，在左窗格中選取 [**共用資源**] 底下的 [**認證**]。
-1. 在 [ **認證** ] 頁面上，選取 [ **新增認證**]。
-2. 在 [新增認證] 窗格中，按照您的命名標準輸入適當的認證名稱。
-3. 在 [使用者名稱] 欄位中輸入您的存取識別碼。
-4. 在兩個 [密碼] 欄位中，輸入您的祕密存取金鑰。
+2. 在 [ **認證** ] 頁面上，選取 [ **新增認證**]。
+3. 在 [新增認證] 窗格中，按照您的命名標準輸入適當的認證名稱。
+4. 在 [使用者名稱] 欄位中輸入您的存取識別碼。
+5. 在兩個 [密碼] 欄位中，輸入您的祕密存取金鑰。
 
     ![建立新認證](../media/credentials/credential-create.png)
 
-5. 如果已核取 [多重要素驗證] 方塊，請將其取消選取。
-6. 按一下 [建立] 以儲存新的憑證資產。
+6. 如果已核取 [多重要素驗證] 方塊，請將其取消選取。
+7. 按一下 [建立] 以儲存新的憑證資產。
 
 > [!NOTE]
 > 「Azure 自動化」不支援使用多重要素驗證的使用者帳戶。
@@ -106,8 +106,7 @@ Runbook 或 DSC 組態會使用內部 `Get-AutomationPSCredential` Cmdlet 來擷
 
 下列範例示範如何在 Runbook 中使用 PowerShell 認證。 其會擷取認證，並將其使用者名稱和密碼指派給變數。
 
-
-```azurepowershell
+```powershell
 $myCredential = Get-AutomationPSCredential -Name 'MyCredential'
 $userName = $myCredential.UserName
 $securePassword = $myCredential.Password
@@ -116,14 +115,13 @@ $password = $myCredential.GetNetworkCredential().Password
 
 您也可以使用認證，透過 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 向 Azure 進行驗證。 在大部分的情況下，您應該使用[執行身分帳戶](../manage-runas-account.md)，並使用 [Get-AzAutomationConnection](../automation-connections.md) 來擷取連線。
 
-
-```azurepowershell
+```powershell
 $myCred = Get-AutomationPSCredential -Name 'MyCredential'
 $userName = $myCred.UserName
 $securePassword = $myCred.Password
 $password = $myCred.GetNetworkCredential().Password
 
-$myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$password)
+$myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$securePassword)
 
 Connect-AzAccount -Credential $myPsCred
 ```
@@ -145,7 +143,6 @@ Connect-AzAccount -Credential $myPsCred
 ## <a name="use-credentials-in-a-python-2-runbook"></a>在 Python 2 Runbook 中使用認證
 
 下列範例示範存取 Python 2 Runbook 中認證的範例。
-
 
 ```python
 import automationassets

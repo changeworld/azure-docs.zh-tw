@@ -6,13 +6,13 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/22/2020
-ms.openlocfilehash: b286533da90565429f96c5701aaa72dab0fb21d0
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.date: 12/03/2020
+ms.openlocfilehash: 195ddfcc3c781c1866a7751f989c9460463edbb9
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552293"
+ms.locfileid: "96558159"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>在 Azure 範疇中自動標示您的資料
 
@@ -36,13 +36,7 @@ ms.locfileid: "96552293"
 > 雖然分類會直接符合 (社會安全號碼具有) 的 **社會安全號碼** 分類，但在一或多個分類和案例一起找到時，會套用敏感度標籤。 
 > 
 
-Azure 範疇中的敏感度標籤可以用來：
-
-- **自動將標籤** 套用至檔案和資料庫資料行
-
-- **控制** 誰可以和無法存取您的資料
-
-- 在標示的資料上 **強制執行保護設定**，例如加密
+Azure 範疇中的敏感度標籤可以用來自動將標籤套用至檔案和資料庫資料行。
 
 如需詳細資訊，請參閱：
 
