@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 9/30/2020
+ms.date: 12/3/2020
 ms.subservice: alerts
-ms.openlocfilehash: d1a1a31d5894338e0deeed27fabcde9fdbf6f588
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: dfcc1f15ebec1337cfa7d484319c7b942ff052b2
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566481"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548234"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure 監視器中計量警示所支援的資源
 
@@ -85,7 +85,8 @@ Azure 監視器現已可支援[新的計量警示類型](./alerts-overview.md)�
 |Microsoft.Network/applicationGateways | 是 | 否 | [應用程式閘道](./metrics-supported.md#microsoftnetworkapplicationgateways) |
 |Microsoft.Network/azurefirewalls | 是 | 否 | [防火牆](./metrics-supported.md#microsoftnetworkazurefirewalls) |
 |Microsoft.Network/dnsZones | 否 | 否 | [DNS 區域](./metrics-supported.md#microsoftnetworkdnszones) |
-|Microsoft.Network/expressRouteCircuits | N/A | 否 |[ExpressRoute 線路](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft.Network/expressRouteCircuits | 是 | 否 |[ExpressRoute 線路](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft.Network/expressRoutePorts | 是 | 否 |[ExpressRoute Direct](./metrics-supported.md#microsoftnetworkexpressrouteports) |
 |Microsoft.Network/loadBalancers (僅適用於標準 SKU)| 是| 否 | [負載平衡器](./metrics-supported.md#microsoftnetworkloadbalancers) |
 |Microsoft. Network/natGateways| 否 | 否 | |
 |Microsoft. Network/privateEndpoints| 否 | 否 | |
@@ -107,6 +108,9 @@ Azure 監視器現已可支援[新的計量警示類型](./alerts-overview.md)�
 |Microsoft.StorageCache/caches | 是 | 否 | |
 |Microsoft.storagesync/storageSyncServices | 是 | 否 | [儲存體同步服務](./metrics-supported.md#microsoftstoragesyncstoragesyncservices) |
 |Microsoft.StreamAnalytics/streamingjobs | 是 | 否 | [串流分析](./metrics-supported.md#microsoftstreamanalyticsstreamingjobs) |
+|Microsoft.Synapse/workspaces | 是 | 否 | [Synapse Analytics](./metrics-supported.md#microsoftsynapseworkspaces) |
+|Synapse/workspace/bigDataPools | 是 | 否 | [Synapse Analytics Apache Spark 集區](./metrics-supported.md#microsoftsynapseworkspacesbigdatapools) |
+|Synapse/workspace/sqlPools | 是 | 否 | [Synapse Analytics SQL 集區](./metrics-supported.md#microsoftsynapseworkspacessqlpools) |
 |VMWareCloudSimple/virtualMachines | 是 | 否 | [CloudSimple 虛擬機器](./metrics-supported.md#microsoftvmwarecloudsimplevirtualmachines) |
 |Microsoft.Web/hostingEnvironments/multiRolePools | 是 | 否 | [App Service 環境多角色集區](./metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
 |Microsoft.Web/hostingEnvironments/workerPools | 是 | 否 | [App Service 環境背景工作集區](./metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|

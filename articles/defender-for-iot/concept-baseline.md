@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: d97fa4c3c57f6f0dcc5c55b76d839308156c40fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75c6841b7fed354843b955a971f02946be349a02
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934490"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548880"
 ---
 # <a name="azure-defender-for-iot-baseline-and-custom-checks"></a>適用于 IoT 的 Azure Defender 基準和自訂檢查
 
@@ -36,7 +36,7 @@ ms.locfileid: "90934490"
 
 1. 在 IoT 中樞內，找出並選取您想要變更的裝置。
 1. 按一下裝置，然後按一下 [ **azureiotsecurity** ] 模組。
-1. 按一下 [ **模組身分識別**對應項]。
+1. 按一下 [ **模組身分識別** 對應項]。
 1. 將 **基準自訂檢查** 檔案上傳至裝置。
 1. 將基準屬性新增至安全性模組，然後按一下 [ **儲存**]。
 
@@ -62,9 +62,9 @@ ms.locfileid: "90934490"
 
 ## <a name="baseline-custom-check-properties"></a>基準自訂檢查屬性
 
-| 名稱| 狀態 | 有效值| 預設值| 描述 |
-|----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|baselineCustomChecksEnabled|必要： true |有效值：**布林**值 |預設值： **false** |傳送高優先順序訊息之前的最大時間間隔。|
+| Name| 狀態 | 有效值| 預設值| 說明 |
+|------|-----|------|-----|-----|
+|baselineCustomChecksEnabled|必要： true |有效值：**布林** 值 |預設值： **false** |傳送高優先順序訊息之前的最大時間間隔。|
 |baselineCustomChecksFilePath |必要： true|有效的值： **字串**、 **null** |預設值： **null** |基準 xml 設定的完整路徑|
 |baselineCustomChecksFileHash |必要： true|有效的值： **字串**、 **null** |預設值： **null** |`sha256sum` 的 xml 設定檔。 如需其他資訊，請使用 [sha256sum 參考](https://linux.die.net/man/1/sha256sum) 。 |
 

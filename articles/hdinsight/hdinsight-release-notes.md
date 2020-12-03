@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: d4983ecd1b8afe1ec6bd3cc31df8b711cebaddf1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 00b5d220cdbc511a309d55cfca2049508049fa30
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350257"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548999"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight 版本資訊
 
@@ -46,8 +46,9 @@ HDInsight 3.6 ML 服務叢集類型將于 31 2020 年12月結束支援。 客戶
 ### <a name="disabled-vm-sizes"></a>停用的 VM 大小
 從 16 2020 年11月開始，HDInsight 將會封鎖新客戶使用 standand_A8、standand_A9、standand_A10 和 standand_A11 VM 大小來建立叢集。 過去三個月內使用這些 VM 大小的現有客戶將不會受到影響。 從 9 2021 年1月開始，HDInsight 將會封鎖所有使用 standand_A8、standand_A9 standand_A10 和 standand_A11 VM 大小來建立叢集的客戶。 現有的叢集將會依原樣執行。 請考慮移至 HDInsight 4.0，以避免潛在的系統/支援中斷。
 
-### <a name="behavior-changes"></a>行為變更
-此版本沒有任何行為變更。
+## <a name="behavior-changes"></a>行為變更
+### <a name="add-nsg-rule-checking-before-scaling-operation"></a>在調整作業之前新增 NSG 規則檢查
+HDInsight 將網路安全性群組新增 (Nsg) 和使用者定義的路由 (Udr) 檢查調整作業。 除了建立叢集之外，還會針對叢集調整進行相同的驗證。 這種驗證有助於防止無法預期的錯誤。 如果未通過驗證，則無法調整規模。 若要深入瞭解如何正確設定 Nsg 和 Udr，請參閱 [HDInsight 管理 IP 位址](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)。
 
 ## <a name="upcoming-changes"></a>即將推出的變更
 即將發行的版本中將會發生下列變更。

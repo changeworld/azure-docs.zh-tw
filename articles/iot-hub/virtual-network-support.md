@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 12/02/2020
 ms.author: jlian
-ms.openlocfilehash: fdc106a1a446f51d309ac4317062c8fd20204bae
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: f79b03884109ffbd856ff4f60909565daeb0e792
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413389"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549103"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT 中樞利用 Private Link 和受控識別支援虛擬網路
 
@@ -36,7 +36,7 @@ IoT 中樞功能 (包括[訊息路由](./iot-hub-devguide-messages-d2c.md)、[�
 
 ## <a name="ingress-connectivity-to-iot-hub-using-azure-private-link"></a>使用 Azure Private Link 輸入連線到 IoT 中樞
 
-私人端點是在客戶所擁有 VNet 內配置的私人 IP 位址，可透過它來連線到 Azure 資源。 透過 Azure Private Link，您可為 IoT 中樞設定私人端點，以允許 VNet 內的服務連線到 IoT 中樞，而不需要將流量傳送至 IoT 中樞的公用端點。 同樣地，內部部署裝置可使用[虛擬私人網路 (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) 或 [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 對等互連來取得與 VNet 和 IoT 中樞 (透過其私人端點) 的連線。 因此，您可使用 [IoT 中樞 IP 篩選器](./iot-hub-ip-filtering.md)，並[設定路由不要將任何資料傳送至內建端點](#built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint)，以限制或完全封鎖 IoT 中樞公用端點的連線。 此方法可保持使用裝置的私人端點進行中樞的連線。 此設定主要是針對內部部署網路內的裝置。 若是部署在廣域網路中的裝置，則不建議此設定。
+私人端點是在客戶所擁有 VNet 內配置的私人 IP 位址，可透過它來連線到 Azure 資源。 透過 Azure Private Link，您可為 IoT 中樞設定私人端點，以允許 VNet 內的服務連線到 IoT 中樞，而不需要將流量傳送至 IoT 中樞的公用端點。 同樣地，內部部署裝置可使用[虛擬私人網路 (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) 或 [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 對等互連來取得與 VNet 和 IoT 中樞 (透過其私人端點) 的連線。 因此，您可以使用 [Iot 中樞 IP 篩選器](./iot-hub-ip-filtering.md) 或 [公用網路存取切換](iot-hub-public-network-access.md)，來限制或完全封鎖對 IoT 中樞公用端點的連線。 此方法可保持使用裝置的私人端點進行中樞的連線。 此設定主要是針對內部部署網路內的裝置。 若是部署在廣域網路中的裝置，則不建議此設定。
 
 ![IoT 中樞虛擬網路 engress](./media/virtual-network-support/virtual-network-ingress.png)
 
@@ -64,17 +64,12 @@ IoT 中樞功能 (包括[訊息路由](./iot-hub-devguide-messages-d2c.md)、[�
 
 1. 按一下 [檢閱 + 建立] 以建立 Private Link 資源。
 
-### <a name="built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint"></a>內建事件中樞相容端點不支援透過私人端點存取
+### <a name="built-in-event-hub-compatible-endpoint"></a>內建事件中樞相容端點 
 
-[內建事件中樞相容端點](iot-hub-devguide-messages-read-builtin.md)不支援透過私人端點存取。 設定時，IoT 中樞的私人端點僅供輸入連線使用。 只能透過公用網際網路從內建事件中樞相容端點取用資料。 
+內 [建的事件中樞相容端點](iot-hub-devguide-messages-read-builtin.md) 也可以透過私人端點來存取。 設定 private link 時，您應該會看到內建端點的額外私人端點連線。 它是 `servicebus.windows.net` 在 FQDN 中的那個。
 
-IoT 中樞的 [IP 篩選器](iot-hub-ip-filtering.md) 也不會控制對內建端點進行公用存取。 若要完全封鎖對 IoT 中樞的公用網路存取，您必須： 
+:::image type="content" source="media/virtual-network-support/private-built-in-endpoint.png" alt-text="顯示每個 IoT 中樞私用連結所提供的兩個私人端點的影像":::
 
-1. 設定 IoT 中樞的私人端點存取
-1. 關閉[公用網路存取](iot-hub-public-network-access.md)，或使用 ip 篩選器來封鎖所有 IP
-1. 藉由[設定路由不要傳送資料給它](iot-hub-devguide-messages-d2c.md)，停止使用內建的事件中樞端點
-1. 關閉[後援路由](iot-hub-devguide-messages-d2c.md#fallback-route)
-1. 使用[信任的 Microsoft 服務](#egress-connectivity-from-iot-hub-to-other-azure-resources)來設定其他 Azure 資源的輸出
 
 ### <a name="pricing-for-private-link"></a>Private Link 的定價
 
@@ -200,7 +195,7 @@ IoT 中樞可設定為將訊息路由傳送至客戶擁有的事件中樞命名�
 
 5. 巡覽至 [自訂端點] 區段，然後按一下 [新增]。 選取 [事件中樞] 作為 [端點類型]。
 
-6. 在顯示的頁面上，提供您的端點名稱，然後選取您的事件中樞命名空間和實例。 選取 [以身分 **識別為基礎** ] 作為 **驗證類型** ，然後按一下 [ **建立** ] 按鈕。
+6. 在顯示的頁面上，提供您的端點名稱，然後選取您的事件中樞命名空間和實例。 選取 [以身分 **識別為基礎** ] 作為 **驗證類型**，然後按一下 [ **建立** ] 按鈕。
 
 現在，自訂事件中樞已設定為使用中樞系統指派的身分識別，且即使有防火牆限制，也有權存取事件中樞資源。 您現在可使用此端點來設定路由規則。
 
@@ -218,7 +213,7 @@ IoT 中樞可設定為將訊息路由傳送至客戶擁有的服務匯流排命�
 
 5. 巡覽至 [自訂端點] 區段，然後按一下 [新增]。 選取 [服務匯流排佇列] 或 [服務匯流排主題] (如果適用的話) 作為 [端點類型]。
 
-6. 在顯示的頁面上，提供端點的名稱，並選取服務匯流排的命名空間以及佇列或主題 (如果適用的話)。 選取 [以身分 **識別為基礎** ] 作為 **驗證類型** ，然後按一下 [ **建立** ] 按鈕。
+6. 在顯示的頁面上，提供端點的名稱，並選取服務匯流排的命名空間以及佇列或主題 (如果適用的話)。 選取 [以身分 **識別為基礎** ] 作為 **驗證類型**，然後按一下 [ **建立** ] 按鈕。
 
 現在，服務匯流排已設定為使用中樞系統指派的身分識別，且即使有防火牆限制，也有權存取服務匯流排資源。 您現在可使用此端點來設定路由規則。
 

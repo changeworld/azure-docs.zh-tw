@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 0a180c8325e9b379e919e68afd9a0af6c196b55f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e27f9c0af62c4cbdd550fd9907a0dd88d72bba6e
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93332605"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549203"
 ---
 # <a name="array-functions-azure-cosmos-db"></a>陣列函數 (Azure Cosmos DB) 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -38,4 +38,4 @@ ms.locfileid: "93332605"
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 簡介](introduction.md)
 - [使用者定義的函式](sql-query-udfs.md)
-- [彙總](sql-query-aggregates.md)
+- [彙總](sql-query-aggregate-functions.md)

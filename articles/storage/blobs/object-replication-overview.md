@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 11/13/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4105698198e6fb7f4e3d3526ff9590ebca4898f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47a2aae39be93361e1e0e581efb56cc678b444cd
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612161"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549084"
 ---
 # <a name="object-replication-for-block-blobs"></a>區塊 blob 的物件複寫
 
@@ -43,14 +43,36 @@ ms.locfileid: "91612161"
 
 啟用變更摘要和 Blob 版本設定可能會產生額外的成本。 如需詳細資訊，請參閱 [Azure 儲存體價格頁面](https://azure.microsoft.com/pricing/details/storage/)。
 
+## <a name="how-object-replication-works"></a>物件複寫的運作方式
+
+物件複寫會根據您設定的規則，以非同步方式複製容器中的區塊 blob。 Blob 的內容、任何與 blob 相關聯的版本，以及 blob 的中繼資料和屬性，全都從源容器複製到目的地容器。
+
+> [!IMPORTANT]
+> 因為區塊 Blob 資料會以非同步方式複寫，所以來源帳戶和目的地帳戶不會立即同步。目前不提供將資料複寫至目的地帳戶所需時間的 SLA。 您可以檢查來源 blob 上的複寫狀態，以判斷複寫是否已完成。 如需詳細資訊，請參閱 [檢查 blob 的複寫狀態](object-replication-configure.md#check-the-replication-status-of-a-blob)。
+
+### <a name="blob-versioning"></a>Blob 版本設定
+
+物件複寫需要在來源和目的地帳戶上啟用 blob 版本設定。 修改來源帳戶中的複寫 blob 時，會在來源帳戶中建立新版本的 blob，以反映 blob 先前的狀態，然後再進行修改。 來源帳戶中 (或基底 blob) 的目前版本會反映最新的更新。 更新的目前版本和新的舊版本都會複寫到目的地帳戶。 如需寫入作業如何影響 blob 版本的詳細資訊，請參閱 [寫入作業的版本控制](versioning-overview.md#versioning-on-write-operations)。
+
+刪除來源帳戶中的 blob 時，會在先前的版本中捕捉 blob 的目前版本，然後刪除。 即使在刪除目前的版本之後，仍會保留所有舊版的 blob。 此狀態會複寫至目的地帳戶。 如需刪除作業如何影響 blob 版本的詳細資訊，請參閱 [刪除作業的版本控制](versioning-overview.md#versioning-on-delete-operations)。
+
+### <a name="snapshots"></a>快照集
+
+物件複寫不支援 blob 快照集。 來源帳戶中 blob 的任何快照集都不會複寫到目的地帳戶。
+
+### <a name="blob-tiering"></a>Blob 階層處理
+
+當來源和目的地帳戶在經常性存取層或非經常性存取層時，就會支持對象複寫。 來源和目的地帳戶可能位於不同的層級。 但是，如果來源或目的地帳戶中的 blob 已移至封存層，則物件複寫將會失敗。 如需有關 blob 層的詳細資訊，請參閱 [Azure Blob 儲存體經常性存取、非經常性存取層和封存的存取層](storage-blob-storage-tiers.md)。
+
+### <a name="immutable-blobs"></a>固定 Blob
+
+物件複寫不支援不可變的 blob。 如果來源或目的地容器具有以時間為基礎的保留原則或合法保存，則物件複寫會失敗。 如需不可變 blob 的詳細資訊，請參閱 [使用不可變的儲存體儲存商務關鍵 blob 資料](storage-blob-immutable-storage.md)。
+
 ## <a name="object-replication-policies-and-rules"></a>物件複寫原則和規則
 
 當您設定物件複寫時，您會建立複寫原則，指定來源儲存體帳戶和目的地帳戶。 複寫原則包含一或多個規則，可指定來源容器和目的地容器，並指出將複寫來源容器中的哪些區塊 Blob。
 
 在您設定物件複寫之後，Azure 儲存體會定期檢查來源帳戶的變更摘要，並以非同步方式將任何寫入或刪除作業複寫至目的地帳戶。 複寫延遲取決於所複寫區塊 Blob 的大小。
-
-> [!IMPORTANT]
-> 因為區塊 Blob 資料會以非同步方式複寫，所以來源帳戶和目的地帳戶不會立即同步。目前不提供將資料複寫至目的地帳戶所需時間的 SLA。
 
 ### <a name="replication-policies"></a>複寫原則
 

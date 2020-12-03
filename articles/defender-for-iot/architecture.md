@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: rkarlin
-ms.openlocfilehash: 4189cb8628db58343c816535836af82825014b7e
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: a8697094a3366e3b82ca65f1b962101243b22f84
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096312"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548914"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>適用于 IoT 的 Azure Defender 架構
 
@@ -37,7 +37,7 @@ ms.locfileid: "92096312"
 - 本機網站管理的內部部署管理主控台
 - 內嵌的安全性代理程式 (選擇性) 
 
-** (離線) 部署的空調**
+**(離線) 部署的空調**
 
 - 適用于 IoT 的 Azure Defender 感應器 VM 或設備
 - 本機網站管理的內部部署管理主控台
@@ -82,7 +82,7 @@ Defender for IoT 感應器會連線至 SPAN 埠或網路點，並立即開始執
 - Azure 入口網站
 
 #### <a name="sensor-console"></a>感應器主控台
-感應器偵測會顯示在感應器主控台中，可供您在網路地圖、資產清查和廣泛的報表中進行查看、調查及分析，例如風險評量報告、資料採礦查詢和攻擊媒介。 您也可以使用主控台來查看和處理感應器引擎偵測到的威脅、將資訊轉送至協力廠商系統、管理使用者等。
+感應器偵測會顯示在感應器主控台中，可供您在網路地圖、資產清查和廣泛的報表中進行查看、調查及分析，例如風險評量報告、資料採礦查詢和攻擊媒介。 您也可以使用主控台來查看和處理感應器引擎偵測到的威脅、將資訊轉送至協力廠商系統、管理使用者等等。
 
 ![適用于 IoT 的 Defender 感應器主控台](./media/architecture/sensor-console.png)
 

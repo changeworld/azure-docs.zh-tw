@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: 尋找有關 Azure Dev Spaces 的一些常見問題解答
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
-ms.openlocfilehash: a25ebd88d022ff278b3e3d9cc9cbf4d8b9b670cd
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: e83bed86714e4b92c63f4e7b7eb55df7a2a7eaff
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636090"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548829"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>關於 Azure Dev Spaces 的常見問題
 
@@ -20,7 +20,7 @@ ms.locfileid: "94636090"
 
 ## <a name="what-versions-of-kubernetes-are-supported-for-azure-dev-spaces"></a>Azure Dev Spaces 支援哪些版本的 Kubernetes？
 
-Azure Dev Spaces 支援 [AKS 中所有目前支援的正式運作 (GA) 版本的 Kubernetes][aks-supported-k8s]。
+Azure Dev Spaces 支援 [目前在 AKS 高達1.18 的正式運作) 版本 Kubernetes 正式 (推出][aks-supported-k8s]。 AKS 上的 Kubernetes 1.19 和更新版本會使用 ContainerD 作為容器執行時間，而不會使用 Azure Dev Spaces。
 
 ## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>哪些 Azure 區域目前提供 Azure Dev Spaces？
 
@@ -38,7 +38,7 @@ Azure Dev Spaces 支援 [AKS 中所有目前支援的正式運作 (GA) 版本的
 * 如果只使用一個 Dockerfile，它必須包含啟用開發案例所需的所有專案，例如語言 SDK 而不只是執行時間。 如果針對 Azure Dev Spaces 使用不同的 Dockerfile （例如 Dockerfile），則您必須在該 Dockerfile 中包含啟用開發案例所需的一切。
 * 您的 Helm 圖必須支援將部分或整個影像標記作為值 *. yaml* 的值傳遞。
 * 如果您要使用輸入來修改任何事物，也可以更新您的 Helm 圖表，以使用 Azure Dev Spaces 所提供的輸入解決方案。
-* 如果您想要使用 [Azure Dev Spaces 所提供的路由功能][dev-spaces-routing]，個別專案的所有服務都必須符合單一 Kubernetes 命名空間，而且必須以簡單的命名（例如 *服務-a* ）進行部署。 在標準 Helm 圖中，您可以藉由指定 *fullnameOverride* 屬性的值來完成此具名更新。
+* 如果您想要使用 [Azure Dev Spaces 所提供的路由功能][dev-spaces-routing]，個別專案的所有服務都必須符合單一 Kubernetes 命名空間，而且必須以簡單的命名（例如 *服務-a*）進行部署。 在標準 Helm 圖中，您可以藉由指定 *fullnameOverride* 屬性的值來完成此具名更新。
 
 ## <a name="can-i-modify-the-files-generated-by-azure-dev-spaces"></a>我可以修改 Azure Dev Spaces 產生的檔案嗎？
 

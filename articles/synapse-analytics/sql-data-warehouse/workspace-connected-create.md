@@ -10,21 +10,21 @@ ms.subservice: sql-dw
 ms.date: 11/25/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: b105c4c9ee0bd27af11fe09a0fd756467e30bb35
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a1fbc6eede6c82020b765185602c672c1162fdf8
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466351"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548183"
 ---
 # <a name="enabling-synapse-workspace-features-for-a-dedicated-sql-pool-formerly-sql-dw"></a>針對 (先前為 SQL DW) 的專用 SQL 集區啟用 Synapse 工作區功能
 
 所有 SQL 資料倉儲使用者現在都可以透過 Synapse Studio 和工作區，存取和使用現有的專用 SQL 集區 (先前的 SQL DW) 實例。 使用者可以使用 Synapse Studio 和工作區，而不會影響自動化、連接或工具。 本文說明現有的 Azure Synapse Analytics 使用者如何為現有的專用 SQL 集區 (先前的 SQL DW) 啟用 Synapse 工作區功能。 使用者可以利用現在可透過 Synapse 工作區和 Studio 取得的新功能豐富功能，來擴充其現有的分析解決方案。   
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 啟用資料倉儲上的 Synapse 工作區功能之前，您必須確定您具有下列各項：
-- 建立及管理 SQL 邏輯伺服器上所裝載 SQL 資源的許可權。
-- 建立 Synapse 資源的許可權。
+- 建立及管理 sql 邏輯伺服器上所裝載之 SQL 資源的許可權。
+- 建立 Azure Synapse 資源的許可權。
 - 邏輯伺服器上識別的 Azure Active Directory 系統管理員
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 5374871a51586a573e9ab41121f3f2dd95baf876
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: ead878daaab977c77b3ab36f42ccfe4d01d7bc03
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695243"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548625"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>步驟1：部署記錄轉寄站
 
@@ -57,6 +57,9 @@ ms.locfileid: "94695243"
 1. 當腳本正在執行時，請檢查以確定您沒有收到任何錯誤或警告訊息。
     - 您可能會收到一則訊息，引導您執行命令以更正 *電腦* 欄位對應的問題。 如需詳細資訊，請參閱 [部署腳本中的說明](#mapping-command) 。
 
+1. 繼續進行 [步驟2：設定您的安全性解決方案以轉寄 CEF 訊息](connect-cef-solution-config.md) 。
+
+
 > [!NOTE]
 > **使用相同的電腦來轉送一般 Syslog *和* CEF 訊息**
 >
@@ -67,7 +70,16 @@ ms.locfileid: "94695243"
 > 1. 您必須在這些電腦上執行下列命令，以在 Azure Sentinel 中停用 Syslog 設定的代理程式同步處理。 這可確保您在前一個步驟中所做的設定變更不會遭到覆寫。<br>
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
 
-繼續進行 [步驟2：設定您的安全性解決方案以轉寄 CEF 訊息](connect-cef-solution-config.md) 。
+> [!NOTE]
+> **變更 TimeGenerated 欄位的來源**
+>
+> - 根據預設，Log Analytics 代理程式會在代理程式從 Syslog 背景程式收到事件時，填入架構中的 *TimeGenerated* 欄位。 因此，在來源系統上產生事件的時間並不會記錄在 Azure Sentinel 中。
+>
+> - 但是，您可以執行下列命令，它會下載並執行 `TimeGenerated.py` 腳本。 此腳本會設定 Log Analytics 代理程式，以在其來源系統上以事件的原始時間填入 *TimeGenerated* 欄位，而不是代理程式收到的時間。
+>
+>    ```bash
+>    wget -O TimeGenerated.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/TimeGenerated.py && python TimeGenerated.py {ws_id}
+>    ```
 
 ## <a name="deployment-script-explained"></a>說明的部署腳本
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: e2ed3680a0867ab8f7e2ad41603883f07a4be427
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: fec3f25c4b401ff7c3bc73d249b716b9c12e6529
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655743"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548540"
 ---
 # <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>步驟2：設定您的安全性解決方案以傳送 CEF 訊息
 
@@ -34,12 +34,13 @@ ms.locfileid: "94655743"
 - [Cisco](connect-cisco.md)
 - [ExtraHop Reveal(x)](connect-extrahop.md)
 - [F5 ASM](connect-f5.md)  
+- [Forcepoint 產品](connect-forcepoint-casb-ngfw.md)
 - [Fortinet](connect-fortinet.md)
+- [Illusive Networks AMS](connect-illusive-attack-management-system.md)
 - [One Identity Safeguard](connect-one-identity.md)
 - [Palo Alto Networks](connect-paloalto.md)
 - [趨勢科技 Deep Security](connect-trend-micro.md)
-- [Zscaler](connect-zscaler.md)   
-
+- [Zscaler](connect-zscaler.md)
 ## <a name="configure-any-other-solution"></a>設定其他任何解決方案
 
 如果特定安全性解決方案的連接器不存在，請使用下列將記錄轉送至 CEF 代理程式的一般指示。
@@ -50,12 +51,22 @@ ms.locfileid: "94655743"
     - 格式 = CEF
     - IP 位址-請務必將 CEF 訊息傳送至您專用的虛擬機器 IP 位址。
 
-   > [!NOTE]
-   > 此解決方案支援 Syslog RFC 3164 或 RFC 5424。
+   此解決方案支援 Syslog RFC 3164 或 RFC 5424。
 
-1. 若要在 Log Analytics 中針對 CEF 事件使用相關的架構，請搜尋 `CommonSecurityLog` 。
+1. 若要在 Log Analytics 中搜尋 CEF 事件，請 `CommonSecurityLog` 在查詢視窗中輸入。
 
 1. 繼續進行步驟3： [驗證連線能力](connect-cef-verify.md)。
+
+> [!NOTE]
+> **變更 TimeGenerated 欄位的來源**
+>
+> - 根據預設，Log Analytics 代理程式會在代理程式從 Syslog 背景程式收到事件時，填入架構中的 *TimeGenerated* 欄位。 因此，在來源系統上產生事件的時間並不會記錄在 Azure Sentinel 中。
+>
+> - 但是，您可以執行下列命令，它會下載並執行 `TimeGenerated.py` 腳本。 此腳本會設定 Log Analytics 代理程式，以在其來源系統上以事件的原始時間填入 *TimeGenerated* 欄位，而不是代理程式收到的時間。
+>
+>    ```bash
+>    wget -O TimeGenerated.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/TimeGenerated.py && python TimeGenerated.py {ws_id}
+>    ```
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何建立及設定復原服務保存�
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: c7e7509f18e7511cd60099a70785b4e2c890afad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ef3d464c051f15d656a4a60937bb05ac496ee52d
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019288"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548421"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>建立和設定復原服務保存庫
 
@@ -65,7 +65,7 @@ Azure 備份會自動處理保存庫的儲存體。 您必須指定該儲存體�
 >開始之前：
 >
 >- 請參閱 [支援矩陣](backup-support-matrix.md#cross-region-restore) ，以取得支援的 managed 類型和區域清單。
->- 現在已在所有 Azure 公用區域和主權雲端中預覽跨區域還原 (CRR) 功能。
+>- 現在已在所有 Azure 公用區域中預覽跨區域還原 (CRR) 功能。
 >- 針對任何 GRS 保存庫，CRR 都是保存庫層級的加入宣告功能， (預設關閉) 。
 >- 加入宣告後，最多可能需要48小時的時間，才能在次要區域中使用備份專案。
 >- 目前只有 azure Resource manager Azure Vm 支援 Azure Vm 的 CRR。 不支援傳統 Azure Vm。  當其他管理類型支援 CRR 時，系統就會 **自動** 註冊它們。

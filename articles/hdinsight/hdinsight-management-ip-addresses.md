@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 682db0ef52e624a23d95aa18a007f05a78f39677
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 9fa38e045bbe29e5d45587adf0d277c1414fee4c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518782"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549033"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight 管理 IP 位址
 
@@ -27,6 +27,8 @@ ms.locfileid: "96518782"
 如果您使用網路安全性群組 (Nsg) 或使用者定義的路由 (Udr) 控制您 HDInsight 叢集的輸入流量，您必須確定您的叢集可以與重要的 Azure 健康狀態和管理服務通訊。  這些服務的部分 IP 位址是區域專屬的，有些則適用于所有 Azure 區域。 如果您不是使用自訂 DNS，您可能也需要允許來自 Azure DNS 服務的流量。
 
 如果您需要此處未列出之區域的 IP 位址，您可以使用 [服務標記探索 API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) 來尋找您區域的 ip 位址。 如果您無法使用 API，請下載 [服務標記 JSON](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) 檔案，並搜尋您想要的區域。
+
+HDInsight 會驗證這些規則，並建立叢集並進行調整以防止進一步的錯誤。 如果驗證未通過，建立和調整就會失敗。
 
 下列各節將討論必須允許的特定 IP 位址。
 
@@ -76,7 +78,7 @@ ms.locfileid: "96518782"
 | &nbsp; | 日本西部 | 40.74.125.69</br>138.91.29.150 | \*：443 | 連入 |
 | 南韓 | 南韓中部 | 52.231.39.142</br>52.231.36.209 | \*：443 | 連入 |
 | &nbsp; | 南韓南部 | 52.231.203.16</br>52.231.205.214 | \*：443 | 連入
-| United Kingdom | 英國西部 | 51.141.13.110</br>51.141.7.20 | \*：443 | 連入 |
+| 英國 | 英國西部 | 51.141.13.110</br>51.141.7.20 | \*：443 | 連入 |
 | &nbsp; | 英國南部 | 51.140.47.39</br>51.140.52.16 | \*：443 | 連入 |
 | 美國 | 美國中部 | 13.89.171.122</br>13.89.171.124 | \*：443 | 連入 |
 | &nbsp; | 美國東部 | 13.82.225.233</br>40.71.175.99 | \*：443 | 連入 |

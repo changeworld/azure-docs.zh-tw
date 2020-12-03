@@ -7,13 +7,13 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: troubleshooting
-ms.date: 11/27/2020
-ms.openlocfilehash: e0b4b31a1d732cbd5cbfaa9b6e5e021caa3adf01
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.date: 12/03/2020
+ms.openlocfilehash: d5cf39cf91b69574fc1423cfe0942b567cf9a278
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301962"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548200"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>針對 ADF 中的 CI-CD、Azure DevOps 和 GitHub 問題進行疑難排解 
 
@@ -58,7 +58,7 @@ CI/CD 管線失敗，並出現下列錯誤：
 
 #### <a name="recommendation"></a>建議
 
-發生此錯誤的原因是，我們經常刪除已參數化的觸發程式，因此 (的 ARM 範本中將無法使用參數，因為該觸發程式已不存在) 。 因為參數不再位於 ARM 範本中，所以我們必須更新 DevOps 管線中的覆寫參數。 否則，每次 ARM 範本中的參數變更時，都必須在部署工作) 的 DevOps 管線 (中更新覆寫的參數。
+發生此錯誤的原因是我們經常刪除已參數化的觸發程式，因此 (的 ARM 範本中將無法使用參數，因為該觸發程式不存在) 。 因為參數不再位於 ARM 範本中，所以我們必須更新 DevOps 管線中的覆寫參數。 否則，每次 ARM 範本中的參數變更時，都必須在部署工作) 的 DevOps 管線 (中更新覆寫的參數。
 
 ### <a name="updating-property-type-is-not-supported"></a>不支援更新屬性類型
 
@@ -107,7 +107,7 @@ CI/CD 發行管線因下列錯誤而失敗：
 
 您已卸離 Git 設定，並使用選取的 [匯入資源] 旗標再次設定，這會將 Data Factory 設定為「同步」。 這表示沒有要發行的變更。
 
-**解決方法**
+#### <a name="resolution"></a>解決方法
 
 卸離 Git 設定並再次設定，並確定不要勾選 [匯入現有資源] 核取方塊。
 

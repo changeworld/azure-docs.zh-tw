@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 8f46c402c8c25a144cd4c12137aeabfdfa31e096
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 50d0119b08d2c76a5f6111e485408ebcdace83c6
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463160"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549016"
 ---
 # <a name="manage-your-bill-in-an-iot-central-application"></a>在 IoT Central 應用程式中管理您的帳單
 
@@ -34,11 +34,11 @@ ms.locfileid: "96463160"
 
 1. 移至 [系統 **管理**] 區段中的 [**定價**] 頁面。
 
-    ![試用狀態](media/howto-view-bill/freetrialbilling.png)
+    :::image type="content" source="media/howto-view-bill/freetrialbilling.png" alt-text="試用狀態":::
 
 1. 選取 [ **轉換成付費方案**]。
 
-    ![轉換試用](media/howto-view-bill/convert.png)
+    :::image type="content" source="media/howto-view-bill/convert.png" alt-text="轉換試用":::
 
 1. 選取適當的 Azure Active Directory，然後選取要用於使用付費方案的應用程式的 Azure 訂用帳戶。
 
@@ -55,7 +55,7 @@ ms.locfileid: "96463160"
 
 1. 移至 [系統 **管理**] 區段中的 [**定價**] 頁面。
 
-    ![升級 prcing 方案](media/howto-view-bill/pricing.png)
+    :::image type="content" source="media/howto-view-bill/pricing.png" alt-text="升級定價方案":::
 
 1. 選取 **方案** ，然後選取 [ **儲存** ] 以升級或降級。
 

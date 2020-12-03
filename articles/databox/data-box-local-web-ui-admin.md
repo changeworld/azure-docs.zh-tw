@@ -6,36 +6,30 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 09/23/2020
+ms.date: 12/01/2020
 ms.author: alkohli
-ms.openlocfilehash: f5bcb5c42661c375372d4d0b17571d784152dd5f
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 751ac870996fa1a2805bb018c991f85525fd797d
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337282"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548937"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>使用本機 web UI 來管理您的資料箱和 Data Box Heavy
 
 本文說明在 Data Box 和 Data Box Heavy 裝置上執行的一些設定和管理工作。 您可以透過 Azure 入口網站 UI 和裝置的本機 web UI 來管理資料箱和 Data Box Heavy 裝置。 本文將焦點放在使用本機 web UI 執行的工作。
 
-適用于資料箱和 Data Box Heavy 的本機 web UI 可用於裝置的初始設定。 您也可以使用本機 web UI 來關閉或重新開機裝置、執行診斷測試、更新軟體、查看複製記錄，以及產生 Microsoft 支援服務的記錄套件。 在具有兩個獨立節點的 Data Box Heavy 裝置上，您可以存取兩個對應至裝置每個節點的不同本機 web Ui。
-
-本文包含下列教學課程：
-
-- 產生支援套件
-- 關閉或重新啟動您的裝置
-- 下載物料清單 (BOM) 或資訊清單檔案
-- 檢視裝置的可用容量
-- 跳過總和檢查碼驗證
+適用于 Data Box 和 Data Box Heavy 的本機 web UI 可用於裝置的初始設定。 您也可以使用本機 web UI 來關閉或重新開機裝置、執行診斷測試、更新軟體、查看複製記錄檔、清除裝置中的本機資料，以及產生 Microsoft 支援服務的支援封裝。 在具有兩個獨立節點的 Data Box Heavy 裝置上，您可以存取兩個對應至裝置每個節點的不同本機 web Ui。
 
 [!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="generate-support-package"></a>產生支援套件
 
-如果您遇到任何裝置問題，您可以從系統記錄建立支援套件。 Microsoft 支援服務會使用此套件來針對問題進行疑難排解。 若要產生支援封裝，請執行下列步驟：
+如果您遇到任何裝置問題，您可以從系統記錄建立支援套件。 Microsoft 支援服務會使用此套件來針對問題進行疑難排解。
 
-1. 在本機 web UI 中，移至 [ **連絡人支援** ]，然後選取 [ **建立支援套件** ]。
+若要產生支援封裝，請執行下列步驟：
+
+1. 在本機 web UI 中，移至 [ **連絡人支援** ]，然後選取 [ **建立支援套件**]。
 
     ![建立支援套件 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
@@ -43,7 +37,7 @@ ms.locfileid: "94337282"
 
     ![建立支援套件 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 
-3. 當支援封裝建立完成後，請選取 [ **下載支援套件** ]。
+3. 當支援封裝建立完成後，請選取 [ **下載支援套件**]。
 
     ![建立支援套件 4](media/data-box-local-web-ui-admin/create-support-package-4.png)
 
@@ -51,9 +45,29 @@ ms.locfileid: "94337282"
 
     ![建立支援套件 5](media/data-box-local-web-ui-admin/create-support-package-5.png)
 
+## <a name="erase-local-data-from-your-device"></a>清除裝置中的本機資料
+
+您可以使用本機 web UI 來清除裝置中的本機資料，然後再將它返回 Azure 資料中心。
+
+> [!IMPORTANT]
+> 無法反轉資料清除。 清除裝置中的本機資料之前，請務必備份檔案。
+
+若要清除裝置中的本機資料，請執行下列步驟：
+
+1. 在本機 web UI 中，移至 **[資料清除**]。
+2. 輸入裝置密碼，然後選取 **[清除資料**]。
+
+    ![裝置的資料清除選項](media/data-box-local-web-ui-admin/erase-local-data-1.png)
+
+3. 在確認提示中，選取 **[是]** 以繼續。 資料清除可能需要長達50分鐘的時間。
+
+   從裝置中清除之前，請務必先備份您的本機資料。 無法反轉資料清除。
+
+    ![資料清除確認提示](media/data-box-local-web-ui-admin/erase-local-data-2.png)
+
 ## <a name="shut-down-or-restart-your-device"></a>關閉或重新啟動您的裝置
 
-您可以使用本機 web UI 關閉或重新開機您的裝置。 我們建議在重新開機之前，先讓主機上的共用離線，然後再讓裝置離線。 這樣做可將資料損毀的可能性降至最低。 當您關閉裝置時，請確定資料複製不在進行中。
+您可以使用本機 web UI 關閉或重新開機您的裝置。 建議您在重新開機之前，先讓主機上的共用離線，再讓裝置離線。 這樣做可將資料損毀的可能性降至最低。 當您關閉裝置時，請確定資料複製不在進行中。
 
 若要關閉您的裝置，請執行下列步驟。
 
@@ -153,7 +167,7 @@ BOM 或資訊清單檔包含複製到資料箱或 Data Box Heavy 的檔案清單
 <file size="3603" crc64="0x7e34c25d5606693f">\databox\TOC.yml</file>
 ```
 
-此檔案包含已複製到資料箱或 Data Box Heavy 的所有檔案清單。 在此檔案中， *crc64* 值與針對對應檔案產生的總和檢查碼有關。
+此檔案包含已複製到資料箱或 Data Box Heavy 的所有檔案清單。 在此檔案中，*crc64* 值與針對對應檔案產生的總和檢查碼有關。
 
 ## <a name="view-available-capacity-of-the-device"></a>檢視裝置的可用容量
 
@@ -168,11 +182,11 @@ BOM 或資訊清單檔包含複製到資料箱或 Data Box Heavy 的檔案清單
 
 在您準備寄送時，系統預設會針對您的資料產生總和檢查碼。 在某些罕見的情況下，根據資料類型的不同 (小型檔案)，效能可能很緩慢。 在這種情況下，您可以跳過總和檢查碼。
 
-準備寄送期間的總和檢查碼計算只適用于匯入順序，而不是針對匯出訂單進行。 
+準備寄送期間的總和檢查碼計算只適用于匯入順序，而不是針對匯出訂單進行。
 
 我們強烈建議您不要停用總和檢查碼，除非效能已嚴重受到影響。
 
-1. 在裝置本機 web UI 的右上角，移至 [ **設定** ]。
+1. 在裝置本機 web UI 的右上角，移至 [ **設定**]。
 
     ![停用總和檢查碼](media/data-box-local-web-ui-admin/disable-checksum.png)
 
@@ -190,7 +204,7 @@ BOM 或資訊清單檔包含複製到資料箱或 Data Box Heavy 的檔案清單
 
 若要在您的 Azure 裝置中啟用 SMB 簽署：
 
-1. 在裝置本機 web UI 的右上角，選取 [ **設定** ]。
+1. 在裝置本機 web UI 的右上角，選取 [ **設定**]。
 
     ![開啟 \[設定\]](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
@@ -210,7 +224,7 @@ BOM 或資訊清單檔包含複製到資料箱或 Data Box Heavy 的檔案清單
 
 若要在您的 Azure 裝置中啟用備份操作員許可權：
 
-1. 在裝置本機 web UI 的右上角，選取 [ **設定** ]。
+1. 在裝置本機 web UI 的右上角，選取 [ **設定**]。
 
    ![開啟資料箱設定-1](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
@@ -218,7 +232,7 @@ BOM 或資訊清單檔包含複製到資料箱或 Data Box Heavy 的檔案清單
 
    ![啟用備份操作員許可權](media/data-box-local-web-ui-admin/data-box-backup-operator-privileges-1.png)
 
-3. **選取** [套用]。
+3. **選取**[套用]。
 4. 在本機 Web UI 中，移至 [關機或重新啟動]。
 5. 選取 [重新啟動]。
 
@@ -233,7 +247,7 @@ BOM 或資訊清單檔包含複製到資料箱或 Data Box Heavy 的檔案清單
 
 若要啟用 Azure 檔案儲存體的 Acl 傳輸：
 
-1. 在裝置本機 web UI 的右上角，選取 [ **設定** ]。
+1. 在裝置本機 web UI 的右上角，選取 [ **設定**]。
 
     ![開啟資料箱設定-2](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
@@ -253,7 +267,7 @@ BOM 或資訊清單檔包含複製到資料箱或 Data Box Heavy 的檔案清單
 
 若要在您的 Azure 裝置中啟用 TLS 1.1：
 
-1. 在裝置本機 web UI 的右上角，選取 [ **設定** ]。
+1. 在裝置本機 web UI 的右上角，選取 [ **設定**]。
 
     ![開啟資料箱設定-3](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 

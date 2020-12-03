@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 12/03/2020
 ms.author: mlottner
-ms.openlocfilehash: aec750d246ce99fa65431e23ef68e70418db0017
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f7575697706363c082a4e6374b3df7a49e65cdf
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936874"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548846"
 ---
 # <a name="defender-for-iot-event-aggregation"></a>Defender for IoT 事件匯總
 
@@ -26,7 +26,7 @@ Defender for IoT 安全性代理程式會從您的本機裝置收集資料和系
 
 為了減少額外的配額和成本，同時保護您的裝置，IoT 代理程式的 Defender 會匯總這些類型的事件。
 
-事件匯總預設為**開啟**，雖然不建議這麼做，但可以隨時手動**關閉。**
+事件匯總預設為 **開啟**，雖然不建議這麼做，但可以隨時手動 **關閉。**
 
 匯總目前適用于下列類型的事件：
 
@@ -36,7 +36,7 @@ Defender for IoT 安全性代理程式會從您的本機裝置收集資料和系
 
 ## <a name="how-does-event-aggregation-work"></a>事件匯總的運作方式為何？
 
-當事件匯總保持 **開啟**時，Defender for IoT 代理程式會匯總間隔期間或時間範圍的事件。
+當事件匯總保持 **開啟** 時，Defender for IoT 代理程式會匯總間隔期間或時間範圍的事件。
 經過一段時間後，代理程式會將匯總的事件傳送至 Azure 雲端，以供進一步分析。
 匯總的事件會儲存在記憶體中，直到傳送到 Azure 雲端為止。
 
@@ -44,7 +44,7 @@ Defender for IoT 安全性代理程式會從您的本機裝置收集資料和系
 
 只有在符合下列條件時，事件才會被視為相同：
 
-* ProcessCreate 事件-當**命令列**、**可執行檔**、**使用者****名稱**和 userid 相同時
+* ProcessCreate 事件-當 **命令列**、**可執行檔**、**使用者****名稱** 和 userid 相同時
 * ConnectionCreate 事件-當 **命令列**、 **userId**、 **方向**、 **本機位址**、 **遠端位址**、* * 通訊協定和 **目的地埠** 相同時
 * ProcessTerminate 事件- **可執行檔** 和結束 **狀態** 完全相同
 
@@ -52,8 +52,8 @@ Defender for IoT 安全性代理程式會從您的本機裝置收集資料和系
 
 在匯總期間，系統會捨棄未匯總的事件屬性，並以0值顯示于 log analytics 中。
 
-* ProcessCreate 事件- **processId**和 **parentProcessId** 設定為0
-* ConnectionCreate 事件- **processId**和 **來源埠** 設定為0
+* ProcessCreate 事件- **processId** 和 **parentProcessId** 設定為0
+* ConnectionCreate 事件- **processId** 和 **來源埠** 設定為0
 
 ## <a name="event-aggregation-based-alerts"></a>以事件匯總為基礎的警示
 
@@ -65,7 +65,7 @@ Defender for IoT 安全性代理程式會從您的本機裝置收集資料和系
 
 ## <a name="event-aggregation-twin-configuration"></a>事件匯總對應項設定
 
-在**azureiotsecurity**模組之模組對應項身分識別的[代理程式設定物件](how-to-agent-configuration.md)內，變更 Defender for IoT 事件匯總的設定。
+在 **azureiotsecurity** 模組之模組對應項身分識別的 [代理程式設定物件](how-to-agent-configuration.md)內，變更 Defender for IoT 事件匯總的設定。
 
 | 組態名稱 | 可能值 | 詳細資料 | 備註 |
 |:-----------|:---------------|:--------|:--------|
