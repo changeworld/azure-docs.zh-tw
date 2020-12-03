@@ -8,24 +8,24 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 76084a9ddd6842194bb4c6b25d62e62c2ed2d4a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92dcbfd360938724bb65b734d7c69ea61d7826b0
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89660310"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533038"
 ---
 # <a name="adjust-the-capacity-of-an-azure-cognitive-search-service"></a>調整 Azure 認知搜尋服務的容量
 
 在 [提供搜尋服務](search-create-service-portal.md) 並鎖定特定定價層之前，請花幾分鐘的時間來瞭解容量的運作方式，以及如何調整複本和資料分割以因應工作負載波動。
 
-容量是 [您選擇](search-sku-tier.md) 的階層函式 (層會決定) 的硬體特性，以及投影工作負載所需的複本和資料分割組合。 您可以個別增加或減少複本或資料分割的數目。 視層級和調整大小而定，增加或減少容量可能需要15分鐘到數小時的時間。
+容量是 [您選擇](search-sku-tier.md) 的階層函式 (層會決定) 的硬體特性，以及投影工作負載所需的複本和資料分割組合。 一旦建立服務之後，您就可以單獨增加或減少複本或資料分割的數目。 成本會隨著每個額外的實體資源而增加，但在大型工作負載完成後，您可以減少調整以降低帳單。 視層級和調整大小而定，增加或減少容量可能需要15分鐘到數小時的時間。
 
 修改複本和分割區的配置時，建議使用 Azure 入口網站。 入口網站會對允許的組合強制執行限制，而這些組合仍低於層級的最大限制。 但是，如果您需要以腳本為基礎或以程式碼為基礎的布建方法， [Azure PowerShell](search-manage-powershell.md) 或 [管理 REST API](/rest/api/searchmanagement/services) 是替代的解決方案。
 
 ## <a name="concepts-search-units-replicas-partitions-shards"></a>概念：搜尋單位、複本、資料分割、分區
 
-容量是以可透過資料*分割和**複本*組合來配置的*搜尋單位*來表示，並使用基礎*分區化*機制來支援彈性設定：
+容量是以可透過資料 *分割和**複本* 組合來配置的 *搜尋單位* 來表示，並使用基礎 *分區化* 機制來支援彈性設定：
 
 | 概念  | 定義|
 |----------|-----------|
@@ -36,7 +36,7 @@ ms.locfileid: "89660310"
 
 下圖顯示覆本、磁碟分割、分區和搜尋單位之間的關聯性。 它會顯示一個範例，說明如何在具有兩個複本和兩個數據分割的服務中，跨越四個搜尋單位的單一索引。 這四個搜尋單位的每一個都只會儲存索引的一半分區。 左欄中的搜尋單位會儲存第一半的分區，其中包含第一個資料分割，而右邊資料行中的資料行則是由第二個數據分割組成的分區後半部。 由於有兩個複本，因此每個索引分區都有兩個複本。 頂端資料列中的搜尋單位會儲存一個複本，其中包含第一個複本，而底部資料列中的資料會儲存另一個複本，其中包含第二個複本。
 
-:::image type="content" source="media/search-capacity-planning/shards.png" alt-text="搜尋索引會跨資料分割分區化。&quot;:::
+:::image type="content" source="media/search-capacity-planning/shards.png" alt-text="搜尋索引會跨資料分割分區化。":::
 
 上圖只是一個範例。 有許多分割區和複本的組合可供使用，最多可達36的搜尋單位總數。
 
@@ -44,7 +44,7 @@ ms.locfileid: "89660310"
 
 + 排名異常：先在分區層級計算搜尋分數，然後匯總成單一結果集。 根據分區內容的特性而定，一個分區的相符專案可能會高於另一個的相符專案。 如果您注意到搜尋結果中的圈子排名，最可能的原因是分區化的影響，特別是當索引較小時。 您可以選擇在 [整個索引的全域計算分數](index-similarity-and-scoring.md#scoring-statistics-and-sticky-sessions)，以避免這些排名異常，但是這樣做會導致效能的負面影響。
 
-+ 自動完成異常：自動完成查詢，在部分輸入詞彙的前幾個字元上進行相符專案的情況下，接受模糊參數以 forgives 模糊的微小偏差。 針對自動完成，模糊比對會限制為目前分區內的詞彙。 例如，如果分區包含 &quot;Microsoft&quot; 且輸入了 &quot;micor" 的部分詞彙，則搜尋引擎會比對該分區中的 "Microsoft"，但不會比對剩餘索引部分的其他分區。
++ 自動完成異常：自動完成查詢，在部分輸入詞彙的前幾個字元上進行相符專案的情況下，接受模糊參數以 forgives 模糊的微小偏差。 針對自動完成，模糊比對會限制為目前分區內的詞彙。 例如，如果分區包含 "Microsoft" 且輸入了 "micor" 的部分詞彙，則搜尋引擎會比對該分區中的 "Microsoft"，但不會比對剩餘索引部分的其他分區。
 
 ## <a name="when-to-add-nodes"></a>新增節點的時機
 

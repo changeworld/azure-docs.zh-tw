@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 11/02/2020
-ms.openlocfilehash: 8b372cc0fc19c6bf163d9d4e61cde6ce74cb3f28
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: cc853285e193dd3ac4e348525b8bf0db9f8cb023
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95538373"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533939"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>在合作夥伴中心管理您的商業市集帳戶
 
@@ -293,7 +293,7 @@ ms.locfileid: "95538373"
 您公司的使用者可以在合作夥伴中心上指派下列角色和許可權給商業 marketplace 方案：
 
 - **擁有者**
-  - 「這是第一次建立帳戶並具有完整存取權的人員，包括建立和編輯所有帳戶使用者，以及變更所有財務和帳戶設定的能力。 帳戶通常只有一個擁有者。」
+  - 這是第一次建立帳戶並具有完整存取權的人員，包括建立和編輯所有帳戶使用者，以及變更所有財務和帳戶設定的能力。 帳戶通常只有一個擁有者。
 - **管理員**
   - 可存取所有 Microsoft 帳戶功能，但稅金和支出設定除外
   - 可管理使用者、角色和公司帳戶 (租用戶)

@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 18f8df90cd59a1fb32024ec93674fed7eb49519a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: baf2734c2f3c4de86b75a20239ecf7440c61a632
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451983"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96534041"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics 版本資訊中先前 (SQL DW) 專用 SQL 集區
 
@@ -39,6 +39,13 @@ ms.locfileid: "96451983"
 >
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
+
+## <a name="dec-2020"></a>12月2020
+
+| 服務改進功能 | 詳細資料 |
+| --- | --- |
+|**(預覽) 的資料行預存程式 sp_rename**|在沒有 [CTAS](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-develop-ctas) 的情況下重新命名資料行就變得更簡單。 Azure Synapse SQL 現在已新增對系統預存程式的支援 sp_rename (preview) 在使用者資料表中重新命名非散發資料行。 這項功能目前為預覽狀態，在 GA 的工具中將會支援此功能。 如需詳細資訊，請參閱 [sp_rename](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql?view=azure-sqldw-latest)。|
+|**T-sql Predict 的其他參數**|在這個新版本中，會為現有的 T-sql PREDICT 語句加入名為 ' RUNTIME ' 的必要額外參數。 如需更新現有的腳本，請參閱 [T-SQL PREDICT](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)中的範例。|
 
 ## <a name="oct-2020"></a>10月2020
 

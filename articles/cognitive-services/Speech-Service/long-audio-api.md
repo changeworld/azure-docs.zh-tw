@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: trbye
-ms.openlocfilehash: 0a538deb3b7da19261e1bc2b7c0d29f35315f786
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 255cfe11f8601abc89a1d96f702f453c2af1ccbd
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015408"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533055"
 ---
 # <a name="long-audio-api-preview"></a>長音訊 API (預覽) 
 
@@ -287,15 +287,11 @@ ID : xxx , Name : xxx : Succeeded
 
 | 區域 | 端點 |
 |--------|----------|
-| 澳大利亞東部 | `https://australiaeast.customvoice.api.speech.microsoft.com` |
-| 加拿大中部 | `https://canadacentral.customvoice.api.speech.microsoft.com` |
 | 美國東部 | `https://eastus.customvoice.api.speech.microsoft.com` |
 | 印度中部 | `https://centralindia.customvoice.api.speech.microsoft.com` |
-| 美國中南部 | `https://southcentralus.customvoice.api.speech.microsoft.com` |
 | 東南亞 | `https://southeastasia.customvoice.api.speech.microsoft.com` |
 | 英國南部 | `https://uksouth.customvoice.api.speech.microsoft.com` |
 | 西歐 | `https://westeurope.customvoice.api.speech.microsoft.com` |
-| 美國西部 2 | `https://westus2.customvoice.api.speech.microsoft.com` |
 
 ## <a name="audio-output-formats"></a>音訊輸出格式
 

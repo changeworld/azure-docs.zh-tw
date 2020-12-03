@@ -4,12 +4,12 @@ description: 在 Azure Service Fabric 上建立第一個 Linux 容器應用程�
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: d085f8704850cdbb03e21b15b3cca7c8998b96fb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0481cc2d36f7882bbd8eea9b984c3dc388de5dee
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004223"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96534075"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>在 Linux 建立第一個 Service Fabric 容器應用程式
 > [!div class="op_single_selector"]
@@ -21,7 +21,7 @@ ms.locfileid: "96004223"
 > [!NOTE]
 > 本文適用於 Linux 開發環境。  Service Fabric 叢集執行階段與 Docker 執行階段必須在相同的作業系統上執行。  您無法在 Windows 叢集上執行 Linux 容器。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 * 執行下列項目的開發電腦︰
   * [SERVICE FABRIC SDK 和工具](service-fabric-get-started-linux.md)。
   * [Docker CE for Linux](https://docs.docker.com/engine/installation/#prior-releases). 
@@ -87,10 +87,17 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
 ```
 
-## <a name="build-the-image"></a>建立映像
-執行 `docker build` 命令來建立可執行 Web 應用程式的映像。 開啟 PowerShell 視窗並瀏覽至 *c:\temp\helloworldapp*。 執行以下命令：
+## <a name="login-to-docker-and-build-the-image"></a>登入 Docker 並建立映射
 
-```bash
+接下來，我們將建立可執行 web 應用程式的映射。 從 Docker 提取公用映射 (如 `python:2.7-slim` Dockerfile) 中所示，最佳作法是使用您的 Docker Hub 帳戶進行驗證，而不是發出匿名提取要求。
+
+> [!NOTE]
+> 當您經常進行匿名提取要求時，可能會看到類似于 `ERROR: toomanyrequests: Too Many Requests.` 或 Docker Hub 驗證的 Docker 錯誤 `You have reached your pull rate limit.` ，以防止這些錯誤。 如需詳細資訊，請參閱 [使用 Azure Container Registry 管理公用內容](../container-registry/buffer-gate-public-content.md) 。
+
+開啟 PowerShell 視窗，然後瀏覽至包含 Dockerfile 的目錄。 然後，執行下列命令：
+
+```
+docker login
 docker build -t helloworldapp .
 ```
 
@@ -266,7 +273,7 @@ sfctl cluster select --endpoint http://localhost:19080
 ![Hello World!][hello-world]
 
 
-## <a name="clean-up"></a>清除
+## <a name="clean-up"></a>清理
 使用範本中提供的解除安裝指令碼，刪除本機開發叢集中的應用程式執行個體並取消註冊應用程式類型。
 
 ```bash

@@ -1,20 +1,20 @@
 ---
-title: 教學課程 - 設定微服務應用程式的自動調整
+title: 設定微服務應用程式的自動調整
 description: 本文說明如何使用 Microsoft Azure 入口網站或 Azure CLI 為您的應用程式設定自動調整。
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 6023d1ebd27ebaccacfce85ce0f49b7ef87e17ad
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: d59d5de0d98380be215747c7daa33721fcebf33c
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742667"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533820"
 ---
-# <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>教學課程：設定微服務應用程式的自動調整
+# <a name="set-up-autoscale-for-microservice-applications"></a>設定微服務應用程式的自動調整
 
 **本文適用於：** ✔️ Java ✔️ C#
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 22d2ddc65616bbeb0c511afa6f60bc12c6ec67ef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: caad292f06710fca8d6f64476eead5dfcb164e9d
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022028"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96536944"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>支援的作業系統和驅動程式
 
@@ -39,9 +39,11 @@ Azure 所轉散發的方格驅動程式無法在非 NV 系列 Vm （例如 NC、
 請注意，Nvidia 延伸模組一律會安裝最新的驅動程式。 針對相依于較舊版本的客戶，我們提供了先前版本的連結。
 
 若為 Windows Server 2019、Windows Server 2016 和 Windows 10 () 建立2004：
-- [方格 11.1 (452.39) ](https://go.microsoft.com/fwlink/?linkid=874181) ( .exe) 
-- [方格 11.0 (451.48) ](https://download.microsoft.com/download/C/1/4/c147a482-1364-4d12-b9e3-0beda0f00a13/451.48_grid_win10_server2016_server2019_64bit_international.exe) ( .exe)  
+- [方格 11.2 (452.57) ](https://go.microsoft.com/fwlink/?linkid=874181) ( .exe) 
+- [方格 11.1 (452.39) ](https://download.microsoft.com/download/9/9/1/99186e1b-d27d-47d5-9957-175c88f4efbe/452.39_grid_win10_64bit_whql.exe) ( .exe)  
 
 若為 Windows Server 2012 R2： 
-- [方格 11.0 (451.48) ](https://download.microsoft.com/download/C/1/4/c147a482-1364-4d12-b9e3-0beda0f00a13/451.48_grid_win10_server2016_server2019_64bit_international.exe) ( .exe)  
+- [方格 11.0 (451.48) ](https://download.microsoft.com/download/f/7/2/f729e28b-57b8-4141-b577-38d2390973ef/451.48_grid_server2012R2_64bit_international.exe) ( .exe)  
 - [方格 10.1 (442.66) ](https://download.microsoft.com/download/4/3/3/4330fd5c-c685-4ca1-abca-3b2fb3c11d2e/442.06_grid_win8_win7_64bit_international_whql.exe) ( .exe)   
+
+如需所有先前的 Nvidia GRID 驅動程式連結的完整清單，請造訪 [GitHub](https://github.com/Azure/azhpc-extensions/blob/master/NvidiaGPU/resources.json)

@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/25/2020
+ms.date: 12/02/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: dcc84dc252001721a3848a008a3db80dcc7822d2
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: c90b7ce86e06669696a4b9f7e0b2f5287e9dd97e
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301262"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533191"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>針對 Azure Data Factory 連接器進行疑難排解
 
@@ -205,7 +205,7 @@ ms.locfileid: "96301262"
 - **解決方法**：在數分鐘後重新執行複製活動。
                   
 
-## <a name="azure-synapse-analytics-formerly-sql-data-warehouseazure-sql-databasesql-server"></a>Azure Synapse Analytics (先前的 SQL 資料倉儲) /Azure SQL Database/SQL Server
+## <a name="azure-synapse-analyticsazure-sql-databasesql-server"></a>Azure Synapse Analytics/Azure SQL Database/SQL Server
 
 ### <a name="error-code--sqlfailedtoconnect"></a>錯誤碼：SqlFailedToConnect
 
@@ -488,7 +488,28 @@ ms.locfileid: "96301262"
 
 - **建議**：重新執行管線。 如果持續失敗，請嘗試減少平行處理原則。 如果仍然失敗，請連絡 Dynamics 支援服務。
 
+## <a name="excel-format"></a>Excel 格式
 
+### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>剖析大型 Excel 檔案時的效能超時或效能變慢
+
+- **徵兆**：
+
+    1. 當您建立 Excel 資料集，並從連接/存放區匯入架構、預覽資料、列出或重新整理工作表時，如果 Excel 檔案大小很大，您可能會遇到逾時錯誤。
+    2. 當您使用複製活動將資料從大型 Excel 檔案複製 ( # B0 = 100MB) 至其他資料存放區時，可能會遇到效能變慢或 OOM 問題。
+
+- **原因**： 
+
+    1. 針對匯入架構、預覽資料，以及在 excel 資料集上列出工作表等作業，timeout 為100和靜態。 針對大型 Excel 檔案，這些作業可能無法在 timeout 值中完成。
+
+    2. ADF 複製活動會將整個 Excel 檔案讀取到記憶體中，然後找出指定的工作表和資料格以讀取資料。 這是因為基礎 SDK ADF 使用的行為。
+
+- **解決方案**： 
+
+    1. 若要匯入架構，您可以產生較小的範例檔案，其為原始檔案的子集，然後選擇 [從範例檔案匯入架構]，而不是 [從連接/存放區匯入架構]。
+
+    2. 針對 [清單 workseet]，在工作表下拉式清單中，您可以按一下 [編輯]，並改為輸入工作表名稱/索引。
+
+    3. 若要將大型 excel 檔案 ( # B0 100MB) 複製到其他存放區，您可以使用資料流程 Excel 來源，讓串流讀取和執行效能更好。
 
 ## <a name="json-format"></a>JSON 格式
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 73887515eea344e920455e3c24f3eae3d5ad515a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 50cce15d14561bb1c8ebfdbbeeedd99dc8efcda1
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95013752"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532987"
 ---
 # <a name="optical-character-recognition-ocr"></a>光學字元辨識 (OCR)
 
@@ -133,7 +133,7 @@ Azure 的電腦視覺 API 包含光學字元辨識 (OCR) 功能，可從影像�
 ### <a name="read-32-preview-adds-text-line-style-latin-languages-only"></a>閱讀 3.2 preview 只會將文字行樣式新增 (拉丁語言) 
 [Read 3.2 PREVIEW API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005)會輸出 **外觀** 物件，以分類每個文字行是列印或手寫樣式，以及信賴分數。 這項功能僅支援拉丁語言。
 
-開始使用 [電腦視覺 READ OCR SDK 快速入門](./quickstarts-sdk/client-library.md) 和 [read REST API 快速](./QuickStarts/CSharp-hand-text.md) 入門，開始將 OCR 功能整合到您的應用程式中。
+開始使用 [電腦視覺 REST API 或用戶端程式庫快速入門](./quickstarts-sdk/client-library.md) ，開始將 OCR 功能整合到您的應用程式中。
 
 ## <a name="supported-languages-for-print-text"></a>列印文字支援的語言
 [讀取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005)支援以英文、西班牙文、德文、法文、義大利文、葡萄牙文和荷蘭文語言來解壓縮印刷文字。
@@ -195,9 +195,8 @@ Read API 也可以將 PDF 檔做為輸入。
 > [!NOTE]
 > 電腦 Vison 2.0 RecognizeText 作業正在淘汰，以促進本文涵蓋的新讀取 API。 現有的客戶應該 [轉換成使用讀取作業](upgrade-api-versions.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
-- 開始使用以 c #、JAVA、JavaScript 或 Python 撰寫的 [電腦視覺讀取 SDK 快速入門](./quickstarts-sdk/client-library.md) 。
-- 使用 c #、JAVA、JavaScript 或 Python 中的 [Read REST API 快速入門](./QuickStarts/CSharp-hand-text.md) ，瞭解如何使用 REST api。
+- [電腦視覺 REST API 或用戶端程式庫快速入門](./quickstarts-sdk/client-library.md)開始使用。
 - 瞭解 [讀取 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005)。
 - 深入瞭解 [Read 3.2 公開預覽版 REST API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) ，並新增對簡體中文和日文的支援。

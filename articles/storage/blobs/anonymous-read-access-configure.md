@@ -10,12 +10,12 @@ ms.date: 11/03/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: a808a6bb0d4dc75f02147bbfdd74d17b34e96f6e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: feac7b890c973b1541c5362f860432687082953f
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313977"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533871"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>設定容器和 blob 的匿名公用讀取權限
 
@@ -53,15 +53,15 @@ Azure 儲存體支援容器和 blob 的選擇性匿名公用讀取權限。 根�
 
 若要允許或不允許存取儲存體帳戶的公用存取權，請設定帳戶的 **AllowBlobPublicAccess** 屬性。 此屬性適用于使用 Azure Resource Manager 部署模型建立的所有儲存體帳戶。 如需詳細資訊，請參閱 [儲存體帳戶總覽](../common/storage-account-overview.md)。
 
-預設不會設定 **AllowBlobPublicAccess** 屬性，而且在您明確設定之後，才會傳回值。 當屬性值為 **null** 或 **true** 時，儲存體帳戶允許公用存取。
+預設不會針對儲存體帳戶設定 **AllowBlobPublicAccess** 屬性，而且在您明確設定它之前，不會傳回值。 當屬性值為 **null** 或 **true** 時，儲存體帳戶允許公用存取。
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
 若要允許或不允許 Azure 入口網站中儲存體帳戶的公用存取，請遵循下列步驟：
 
 1. 在 Azure 入口網站中巡覽至您的儲存體帳戶。
-1. 在 [ **設定** ] 下找 **出設定。**
-1. 將 **Blob 公用存取** 設定為 [ **已啟用** ] 或 [ **已停用** ]。
+1. 在 [**設定**] 下找 **出設定。**
+1. 將 **Blob 公用存取** 設定為 [ **已啟用** ] 或 [ **已停用**]。
 
     :::image type="content" source="media/anonymous-read-access-configure/blob-public-access-portal.png" alt-text="顯示如何允許或不允許帳戶的 blob 公用存取的螢幕擷取畫面":::
 
@@ -69,7 +69,7 @@ Azure 儲存體支援容器和 blob 的選擇性匿名公用讀取權限。 根�
 
 若要允許或不允許使用 PowerShell 的儲存體帳戶進行公用存取，請安裝 [Azure PowerShell 4.4.0 版](https://www.powershellgallery.com/packages/Az/4.4.0) 或更新版本。 接下來，為新的或現有的儲存體帳戶設定 **AllowBlobPublicAccess** 屬性。
 
-下列範例會建立儲存體帳戶，並明確地將 **AllowBlobPublicAccess** 屬性設定為 **true** 。 然後，它會更新儲存體帳戶，以將 **AllowBlobPublicAccess** 屬性設定為 **false** 。 此範例也會在每個案例中捕獲屬性值。 請記得以您自己的值取代括弧中的預留位置值：
+下列範例會建立儲存體帳戶，並明確地將 **AllowBlobPublicAccess** 屬性設定為 **true**。 然後，它會更新儲存體帳戶，以將 **AllowBlobPublicAccess** 屬性設定為 **false**。 此範例也會在每個案例中捕獲屬性值。 請記得以您自己的值取代括弧中的預留位置值：
 
 ```powershell
 $rgName = "<resource-group>"
@@ -99,7 +99,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName `
 
 若要允許或不允許具有 Azure CLI 之儲存體帳戶的公用存取，請安裝 Azure CLI 2.9.0 版版或更新版本。 如需詳細資訊，請參閱 [安裝 Azure CLI](/cli/azure/install-azure-cli)。 接下來，為新的或現有的儲存體帳戶設定 **allowBlobPublicAccess** 屬性。
 
-下列範例會建立儲存體帳戶，並明確地將 **allowBlobPublicAccess** 屬性設定為 **true** 。 然後，它會更新儲存體帳戶，以將 **allowBlobPublicAccess** 屬性設定為 **false** 。 此範例也會在每個案例中捕獲屬性值。 請記得以您自己的值取代括弧中的預留位置值：
+下列範例會建立儲存體帳戶，並明確地將 **allowBlobPublicAccess** 屬性設定為 **true**。 然後，它會更新儲存體帳戶，以將 **allowBlobPublicAccess** 屬性設定為 **false**。 此範例也會在每個案例中捕獲屬性值。 請記得以您自己的值取代括弧中的預留位置值：
 
 ```azurecli-interactive
 az storage account create \
@@ -131,10 +131,10 @@ az storage account show \
 
 若要允許或不允許具有範本的儲存體帳戶的公用存取，請建立 **AllowBlobPublicAccess** 屬性設定為 **true** 或 **false** 的範本。 下列步驟說明如何在 Azure 入口網站中建立範本。
 
-1. 在 [Azure 入口網站中，選擇 [ **建立資源** ]。
-1. 在 **[搜尋 Marketplace** ] 中，輸入 **範本部署** ，然後按 **enter** 。
-1. 選擇 [ **使用自訂範本部署範本部署 (])  (預覽)** ，選擇 **[建立]，然後****在編輯器中選擇 [建立您自己的範本** ]。
-1. 在範本編輯器中，貼上下列 JSON 以建立新的帳戶，並將 **AllowBlobPublicAccess** 屬性設定為 **true** 或 **false** 。 請記得將角括弧中的預留位置取代為您自己的值。
+1. 在 [Azure 入口網站中，選擇 [ **建立資源**]。
+1. 在 **[搜尋 Marketplace**] 中，輸入 **範本部署**，然後按 **enter**。
+1. 選擇 [**使用自訂範本部署範本部署 (])  (預覽)**，選擇 **[建立]，然後****在編輯器中選擇 [建立您自己的範本**]。
+1. 在範本編輯器中，貼上下列 JSON 以建立新的帳戶，並將 **AllowBlobPublicAccess** 屬性設定為 **true** 或 **false**。 請記得將角括弧中的預留位置取代為您自己的值。
 
     ```json
     {
@@ -195,7 +195,7 @@ az storage account show \
 若要更新 Azure 入口網站中一或多個現有容器的公用存取層級，請遵循下列步驟：
 
 1. 在 Azure 入口網站中，流覽至您的儲存體帳戶總覽。
-1. 在 [功能表] 分頁的 [ **Blob 服務** ] 底下，選取 [ **容器** ]。
+1. 在 [功能表] 分頁的 [ **Blob 服務** ] 底下，選取 [ **容器**]。
 1. 選取您要設定其公用存取層級的容器。
 1. 使用 [ **變更存取層級** ] 按鈕以顯示公用存取設定。
 1. 從 [ **公用存取層級** ] 下拉式清單中選取所需的公用存取層級，然後按一下 [確定] 按鈕，將變更套用至選取的容器。

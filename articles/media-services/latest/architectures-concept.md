@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: inhenkel
-ms.openlocfilehash: e00079190371b3ae0e318aaadd8cf724d9d339d0
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: c14dbe4253696e01e99111a24319e455c1d551e9
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512560"
+ms.locfileid: "96533990"
 ---
 # <a name="media-services-architectures"></a>媒體服務架構
 
@@ -30,12 +30,6 @@ ms.locfileid: "96512560"
 此解決方案建基於 Azure 受控服務：媒體服務和內容傳遞網路。 這些服務是在高可用性環境中執行（經過修補和支援），可讓您專注于解決方案，而不是其執行所在的環境。
 
 請參閱 Azure 架構中心內的 [即時串流數位媒體](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/digital-media-live-stream) 。
-
-## <a name="instant-broadcasting-on-serverless-architecture"></a>無伺服器架構上的即時廣播
-
-使用無伺服器程式碼，簡化一對多即時通訊和更新。 此架構會使用 Azure Functions、SignalR Service、儲存體帳戶和 SQL database。
-
-請參閱 Azure 架構中心內 [無伺服器架構的即時廣播](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/instant-broadcasting-on-serverless-architecture) 。
 
 ## <a name="video-on-demand-digital-media"></a>點播視訊數位媒體
 

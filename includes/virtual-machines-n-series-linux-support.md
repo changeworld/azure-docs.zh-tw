@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 86f687bd4fd8be93efbf77c883c723046c2c96d8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5bfe077a99a3e89efe5fe4257a646484fb3810da
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016114"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96537037"
 ---
 ## <a name="supported-distributions-and-drivers"></a>支援的散發套件和驅動程式
 
@@ -27,13 +27,15 @@ ms.locfileid: "96016114"
 
 ### <a name="nvidia-grid-drivers"></a>NVIDIA GRID 驅動程式
 
-Microsoft 會針對用來作為虛擬工作站或虛擬應用程式的 NV 和 NVv3 系列 Vm，轉散發 NVIDIA GRID 驅動程式安裝程式。 請僅將這些 GRID 驅動程式安裝在 Azure NV 虛擬機器上，且僅安裝在下表所列的作業系統上。 這些驅動程式包含在 Azure 的 GRID 虛擬 GPU 軟體的授權中。 您不需要設定 NVIDIA vGPU 軟體授權伺服器。
+Microsoft 會針對用來作為虛擬工作站或虛擬應用程式的 NV 和 NVv3 系列 Vm，轉散發 NVIDIA GRID 驅動程式安裝程式。 請僅將這些 GRID 驅動程式安裝在 Azure NV 虛擬機器上，且僅安裝在下表所列的作業系統上。 這些驅動程式包含在 Azure 的 GRID 虛擬 GPU 軟體的授權中。 您不需要設定 NVIDIA vGPU software 授權伺服器。
 
 Azure 所轉散發的方格驅動程式無法在非 NV 系列 Vm （例如 NC、NCv2、NCv3、ND 和 NDv2 系列 Vm）上運作。
 
-| 散發 | 驅動程式 |
+|散發|驅動程式|
 | --- | -- |
-|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.6 至7.8、8.0、8。1<br/><br/>以 CentOS 為基礎的7.6、7.7、8.0、8 (1911) <br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA GRID 11.1，驅動程式分支 [bk-r450](https://go.microsoft.com/fwlink/?linkid=874272) ( .exe) |
+|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.6 至7.8、8.0、8。1<br/><br/>以 CentOS 為基礎的7.6、7.7、8.0、8 (1911) <br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA GRID 11.2，驅動程式分支 [bk-r450](https://go.microsoft.com/fwlink/?linkid=874272) ( .exe) |
+
+如需所有先前的 Nvidia GRID 驅動程式連結的完整清單，請流覽 [GitHub](https://github.com/Azure/azhpc-extensions/blob/master/NvidiaGPU/resources.json) 。
 
 > [!WARNING] 
 > 在 Red Hat 產品上安裝第三方軟體可能會影響 Red Hat 支援條款。 請參閱 [Red Hat 知識庫文件 (英文)](https://access.redhat.com/articles/1067)。

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/09/2020
+ms.date: 12/02/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 01a5c696a41b9361c35e7af90f68088acea2944b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f12a899d3b6daa3b233e6a799871afca1e24d046
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913771"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533737"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>防止對容器和 blob 進行匿名公用讀取存取
 
@@ -166,6 +166,8 @@ New-AzStorageContainer -Name $containerName -Permission Blob -Context $ctx
 
 若要在一組儲存體帳戶間檢查公用存取設定，並獲得最佳效能，您可以使用 Azure 入口網站中的 Azure Resource Graph Explorer。 若要深入瞭解如何使用 Resource Graph Explorer，請參閱 [快速入門：使用 Azure Resource Graph Explorer 執行您的第一個 Resource Graph 查詢](../../governance/resource-graph/first-query-portal.md)。
 
+預設不會針對儲存體帳戶設定 **AllowBlobPublicAccess** 屬性，而且在您明確設定它之前，不會傳回值。 當屬性值為 **null** 或 **true** 時，儲存體帳戶允許公用存取。
+
 在 Resource Graph Explorer 中執行下列查詢，會傳回儲存體帳戶的清單，並顯示每個帳戶的公用存取設定：
 
 ```kusto
@@ -174,6 +176,10 @@ resources
 | extend allowBlobPublicAccess = parse_json(properties).allowBlobPublicAccess
 | project subscriptionId, resourceGroup, name, allowBlobPublicAccess
 ```
+
+下圖顯示跨訂用帳戶查詢的結果。 請注意，對於已明確設定 **AllowBlobPublicAccess** 屬性的儲存體帳戶，它會以 **true** 或 **false** 的形式出現在結果中。 如果尚未針對儲存體帳戶設定 **AllowBlobPublicAccess** 屬性，它會在查詢結果中顯示為空白 (或 null) 。
+
+:::image type="content" source="media/anonymous-read-access-prevent/check-public-access-setting-accounts.png" alt-text="顯示跨儲存體帳戶之公用存取設定的查詢結果螢幕擷取畫面":::
 
 ## <a name="use-azure-policy-to-audit-for-compliance"></a>使用 Azure 原則來針對合規性進行審核
 
