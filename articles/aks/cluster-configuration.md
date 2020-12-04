@@ -2,16 +2,16 @@
 title: Azure Kubernetes Service (AKS) 的叢集設定
 description: 了解如何在 Azure Kubernetes Service (AKS) 中設定叢集
 services: container-service
-ms.topic: conceptual
+ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 88774450fb196da5de24bcad047ecdb8c424f653
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: dcd9ec52992da8037bb498dc09701879c4c94667
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736524"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572570"
 ---
 # <a name="configure-an-aks-cluster"></a>設定 AKS 叢集
 
@@ -302,7 +302,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup --node-resour
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解如何使用 `Kured`，在您的叢集中[將安全性和核心更新套用至 Linux 節點](node-updates-kured.md)。
+- 瞭解如何 [升級叢集中的節點映射](node-image-upgrade.md) 。
 - 請參閱[升級 Azure Kubernetes Service (AKS) 叢集](upgrade-cluster.md)，了解如何將叢集升級至最新版本的 Kubernetes。
 - 閱讀更多關於[ `containerd` 和 Kubernetes 的](https://kubernetes.io/blog/2018/05/24/kubernetes-containerd-integration-goes-ga/)資訊
 - 關於 AKS 常見問題的解答，請參閱 [AKS 的常見問題集](faq.md)。

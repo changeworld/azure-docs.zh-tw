@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: 2d041782e8df795acb120ba1357cec5ef204dc28
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 9032e4c04279d87bf4422d3a87d19fdbecec1a64
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656322"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571788"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>使用現有的內部部署 Proxy 伺服器
 
@@ -167,6 +167,9 @@ OS 元件會嘗試藉由對 wpad.domainsuffix 執行 DNS 查閱來尋找 Proxy �
 找出連接器連線問題並進行疑難排解的最佳方式，是在啟動連接器服務時進行網路擷取。 以下是擷取和篩選網路追蹤的一些快速秘訣。
 
 您可以使用您選擇的監視工具。 基於本文的目的，我們使用 Microsoft Message Analyzer。
+
+> [!NOTE]
+> [Microsoft Message Analyzer (MMA) 已淘汰](https://docs.microsoft.com/openspecs/blog/ms-winintbloglp/dd98b93c-0a75-4eb0-b92e-e760c502394f) ，並已在 25 2019 年11月從 microsoft.com 網站移除其下載套件。  目前，在開發期間，Microsoft Message Analyzer 目前沒有 Microsoft 取代。  如需類似的功能，請考慮使用協力廠商網路通訊協定分析工具，例如 Wireshark。
 
 下列範例針對的是 Message Analyzer，但是這些原則可以套用到任何分析工具。
 

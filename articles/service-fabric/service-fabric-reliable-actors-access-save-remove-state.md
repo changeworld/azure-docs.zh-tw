@@ -1,17 +1,15 @@
 ---
 title: 管理 Azure Service Fabric 狀態
 description: 瞭解如何存取、儲存和移除 Azure Service Fabric 可靠動作專案的狀態，以及設計應用程式時的考慮。
-author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e97fadb374fc45110f5071aab48da0a57eef4284
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e796232719342883efc2aa5dd377d586f3039ad
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012784"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571312"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>存取、儲存、移除 Reliable Actors 狀態
 [Reliable Actors](service-fabric-reliable-actors-introduction.md) 是可封裝邏輯和狀態並穩定維持狀態的單一執行緒物件。 每個動作專案實例都有它自己的 [狀態管理員](service-fabric-reliable-actors-state-management.md)：可哥靠地儲存索引鍵/值組的字典式資料結構。 狀態管理員是包住狀態供應器的包裝函式。 可以用來儲存資料，無論所用的是何種[持續性設定](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication)。

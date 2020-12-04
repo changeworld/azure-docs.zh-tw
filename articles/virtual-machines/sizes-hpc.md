@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 09/23/2020
+ms.date: 12/03/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 29033cbabfcfa00c9f8458cbc161af67df5806cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21b1004a347dec3a7f2a6460d8b853350bf36ff0
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325958"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571040"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>高效能計算 VM 大小
 
@@ -40,14 +40,14 @@ HBv2 Vm 具有 200 Gb/秒的 Mellanox HDR 空間，同時 HB 和 HC 系列的 Vm
 此介面可讓支援 RDMA 的實例透過未 (IB) 網路進行通訊、以 HDR 費率操作 HBv2、HB、HC、NDv2、FDR 費率、H16r、H16mr 及其他支援 RDMA 的 N 系列虛擬機器，以及 A8 和 A9 Vm 的 QDR 費率。 這些 RDMA 功能可以提高特定訊息傳遞介面 (MPI) 應用程式的延展性和效能。
 
 > [!NOTE]
-> 在 Azure HPC 中，有兩個類別的 Vm，取決於是否已啟用用於進行無用的 SR-IOV。 目前，已啟用已啟用功能的 Vm 的 SR-IOV 為： HBv2、HB、HC、NCv3 和 NDv2。 目前已啟用未啟用的 Vm 的其餘部分目前未啟用 SR-IOV。
+> 在 Azure HPC 中，有兩個類別的 Vm，取決於是否已啟用用於進行無用的 SR-IOV。 目前，除了 H16r、H16mr、NC24r、A8、A9 之外，Azure 上的所有新世代、支援 RDMA 的 Vm 或已啟用的已啟用功能的 Vm 幾乎都已啟用 SR-IOV。
 > RDMA 僅可透過 (IB) 網路來啟用，而且支援所有支援 RDMA 的 Vm。
 > 只有已啟用 SR-IOV 的 Vm 才支援透過 IB 進行的 IP。
 > 未透過 Ethernet 網路啟用 RDMA。
 
 - **作業系統** -LINUX 對 HPC vm 的支援非常完善;通常會使用散發版本，例如 CentOS、RHEL、Ubuntu、SUSE。 關於 Windows 支援，所有 HPC 系列 Vm 都支援 Windows Server 2016 和更新版本。 非 SR-IOV 啟用的 Vm 上也支援 windows Server 2012 R2、Windows Server 2012 (H16r、H16mr、A8 和 A9) 。 請注意， [HBv2 和其他具有64以上 (虛擬或實體) 核心的 vm 不支援 Windows Server 2012 R2](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)。 請參閱 [Vm 映射](./workloads/hpc/configure.md) 以取得 Marketplace 上支援的 vm 映射清單，以及如何適當地設定這些映射。
 
-- 使用已啟用的已啟用虛擬機器上的全像**和驅動程式**，需要適當的驅動程式才能啟用 RDMA。 在 Linux 上，針對 SR-IOV 和非 SR-IOV 啟用的 Vm，Marketplace 中的 CentOS-HPC VM 映射已預先設定適當的驅動程式。 您可以使用 [此處的指示](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)，使用正確的驅動程式來設定 Ubuntu VM 映射。 如需現成可用 VM Linux OS 映射的詳細資訊，請參閱 [設定和優化 LINUX os 的 vm](./workloads/hpc/configure.md) 。
+- 使用已啟用的已啟用虛擬機器上的全像 **和驅動程式**，需要適當的驅動程式才能啟用 RDMA。 在 Linux 上，針對 SR-IOV 和非 SR-IOV 啟用的 Vm，Marketplace 中的 CentOS-HPC VM 映射已預先設定適當的驅動程式。 您可以使用 [此處的指示](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)，使用正確的驅動程式來設定 Ubuntu VM 映射。 如需現成可用 VM Linux OS 映射的詳細資訊，請參閱 [設定和優化 LINUX os 的 vm](./workloads/hpc/configure.md) 。
 
    在 Linux 上， [INFINIBANDDRIVERLINUX VM 延伸](./extensions/hpc-compute-infiniband-linux.md) 模組可以用來安裝 Mellanox OFED 驅動程式，並在啟用 Sr-iov 的 H 和 N 系列 vm 上啟用自動感知。 深入瞭解如何在 [HPC 工作負載](./workloads/hpc/enable-infiniband.md)上啟用支援 RDMA 的 vm 上的強大功能。
 
@@ -55,7 +55,7 @@ HBv2 Vm 具有 200 Gb/秒的 Mellanox HDR 空間，同時 HB 和 HC 系列的 Vm
 
    若要將 VM 擴充功能新增至 VM，您可以使用 [Azure PowerShell](/powershell/azure/) Cmdlet。 如需詳細資訊，請參閱[虛擬機器擴充功能和功能](./extensions/overview.md)。 您也可以針對已在[傳統部署模型](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic)中部署的 VM 使用擴充功能。
 
-- **MPI** -在 Azure 上啟用 SR-IOV 的 VM 大小 (HBV2、HB、HC、NCv3、NDv2) 允許幾乎所有的 MPI 類別都能搭配 Mellanox OFED 使用。 在啟用非 SR-IOV 的 Vm 上，支援的 MPI 會使用 Microsoft Network Direct (ND) 介面，在 Vm 之間進行通訊。 因此，只支援 Microsoft MPI (MS-CHAP) 2012 R2 或更新版本和 Intel MPI 5.x 版。 較新版本 (2017、2018) Intel MPI 執行時間程式庫可能會與 Azure RDMA 驅動程式不相容。 如需在 Azure 上的 HPC Vm 上設定 MPI 的詳細資訊，請參閱 [設定適用于 hpc 的 mpi](./workloads/hpc/setup-mpi.md) 。
+- **MPI** -在 Azure 上啟用 SR-IOV 的 VM 大小幾乎可讓所有的 MPI 類別與 Mellanox OFED 搭配使用。 在啟用非 SR-IOV 的 Vm 上，支援的 MPI 會使用 Microsoft Network Direct (ND) 介面，在 Vm 之間進行通訊。 因此，只支援 Microsoft MPI (MS-CHAP) 2012 R2 或更新版本和 Intel MPI 5.x 版。 較新版本 (2017、2018) Intel MPI 執行時間程式庫可能會與 Azure RDMA 驅動程式不相容。 如需在 Azure 上的 HPC Vm 上設定 MPI 的詳細資訊，請參閱 [設定適用于 hpc 的 mpi](./workloads/hpc/setup-mpi.md) 。
 
 - **RDMA 網路位址空間** - Azure 中的 RDMA 網路會保留位址空間 172.16.0.0/16。 若要在 Azure 虛擬網路中已部署的執行個體上執行 MPI 應用程式，請確定虛擬網路位址空間不會與 RDMA 網路重疊。
 
@@ -88,7 +88,7 @@ Azure 提供數個選項來建立 Windows HPC VM 的叢集，而這些 VM 可以
   
 - **虛擬網路** – 使用計算密集型執行個體時，並不需要 Azure [虛擬網路](https://azure.microsoft.com/documentation/services/virtual-network/) 。 不過，您可能需要至少一個以雲端為基礎的 Azure 虛擬網路來處理許多部署，或者如果您需要存取內部部署資源，則需要站對站連線。 如有需要，請建立新的虛擬網路來部署執行個體。 不支援將計算密集型 VM 新增至同質群組中的虛擬網路。
 
-- 重設**大小**–因為它們的特殊硬體，您只能調整相同大小系列內的大量運算實例， (H 系列或 N 系列) 。 例如，您只能將 H 系列 VM 的大小，從某一個 H 系列大小重新調整為另一個大小。 針對特定 Vm，可能需要考慮不支援的自動考慮驅動程式和 NVMe 磁片的其他考慮。
+- 重設 **大小**–因為它們的特殊硬體，您只能調整相同大小系列內的大量運算實例， (H 系列或 N 系列) 。 例如，您只能將 H 系列 VM 的大小，從某一個 H 系列大小重新調整為另一個大小。 針對特定 Vm，可能需要考慮不支援的自動考慮驅動程式和 NVMe 磁片的其他考慮。
 
 
 ## <a name="other-sizes"></a>其他大小

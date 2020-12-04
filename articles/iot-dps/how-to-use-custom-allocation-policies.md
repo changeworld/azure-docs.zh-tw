@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 9db4328ce6519bef05017ba697d8f0f029f2096a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 26615b82bb9dcbc1247bec9b7a06b579dfa1eb2b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967392"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571635"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>如何使用自訂配置原則
 
@@ -44,11 +44,11 @@ ms.locfileid: "94967392"
 
 下列必要條件適用於 Windows 開發環境。 針對 Linux 或 macOS，請參閱 SDK 文件中[準備您的開發環境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的適當章節。
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 並啟用[使用 C++ 的桌面開發](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作負載。 也會支援 Visual Studio 2015 和 Visual Studio 2017。
+- [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 並啟用[使用 C++ 的桌面開發](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作負載。 也會支援 Visual Studio 2015 和 Visual Studio 2017。
 
-* 已安裝最新版的 [Git](https://git-scm.com/download/)。
+- 已安裝最新版的 [Git](https://git-scm.com/download/)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="create-the-provisioning-service-and-two-divisional-iot-hubs"></a>建立布建服務和兩個部門 IoT 中樞
 
@@ -133,7 +133,7 @@ ms.locfileid: "94967392"
 
 7. 在下一個頁面上，針對 [ **建立函數** ] 步驟，選取 [ **Webhook + API** ] 磚，然後選取 [ **建立**]。 隨即建立名為 **>HTTPtrigger1** 的函式，而入口網站會顯示 **.csx** 程式碼檔案的內容。
 
-8. 參考需要的 Nuget 套件。 若要建立初始裝置對應項，自訂配置函式會使用兩個必須載入裝載環境之 Nuget 套件中所定義的類別。 使用 Azure Functions，會使用函式的 *主機* 檔案參考 Nuget 套件。 在此步驟中，您會儲存並上傳 *function* 檔案。
+8. 參考需要的 NuGet 套件。 若要建立初始裝置對應項，自訂配置函式會使用兩個必須載入裝載環境之 NuGet 套件中所定義的類別。 使用 Azure Functions，會使用函式的 *主機* 檔案參考 NuGet 套件。 在此步驟中，您會儲存並上傳 *function* 檔案。
 
     1. 將下列幾行複製到您最愛的編輯器中，並將檔案儲存在您的電腦上作為 *function。*
 
@@ -559,7 +559,7 @@ ms.locfileid: "94967392"
 
 下表顯示您可能會收到的預期案例和結果錯誤碼。 您可以利用此表格對 Azure Functions 的自訂配置原則失敗進行疑難排解。
 
-| 狀況 | 佈建服務的註冊結果 | 佈建 SDK 結果 |
+| 案例 | 佈建服務的註冊結果 | 佈建 SDK 結果 |
 | -------- | --------------------------------------------- | ------------------------ |
 | Webhook 傳回「200 確定」，且 'iotHubHostName' 設定為有效的 IoT 中樞主機名稱 | 結果狀態：已指派  | SDK 傳回 PROV_DEVICE_RESULT_OK 與中樞資訊 |
 | Webhook 傳回「200 確定」，且回應中包含 'iotHubHostName'，但設定為空字串或 Null | 結果狀態：失敗<br><br> 錯誤碼：CustomAllocationIotHubNotSpecified (400208) | SDK 傳回 PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |

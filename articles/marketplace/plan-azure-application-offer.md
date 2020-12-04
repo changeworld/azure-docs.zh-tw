@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: bcb8cc6da3d2fc631058386103575549e376a32c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4e256d97d055b56df8c917c841416e5c7eb52465
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452159"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573522"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>規劃商用 marketplace 的 Azure 應用程式供應專案
 
@@ -177,7 +177,7 @@ ms.locfileid: "96452159"
   - .png 檔案
   - 必須包含標題
 - **媒體–** 影片 (選用) ：您最多可以新增五部具有下列需求的影片，以示範您的供應專案：
-  - 名稱
+  - Name
   - URL：必須僅裝載于 YouTube 或 Vimeo 上。
   - 縮圖： 1280 x 720 .png 檔案
 
@@ -210,7 +210,7 @@ ms.locfileid: "96452159"
 您可以加入宣告 Microsoft 支援的行銷和銷售通路。 在合作夥伴中心中建立供應專案時，您會在程式結束時看到兩個索引標籤：
 
 - **透過 Csp 轉售**：使用此選項可讓 Microsoft 雲端解決方案提供者 (CSP) 合作夥伴將您的解決方案轉售為配套供應專案的一部分。 如需詳細資訊，請參閱 [雲端解決方案提供者程式](./cloud-solution-providers.md) 。
-- **與 Microsoft 共同銷售**：此選項可讓 microsoft 銷售團隊在評估客戶的需求時，考慮您的 IP 共同銷售合格解決方案。 如需如何準備您的供應專案以進行評估的詳細資訊，請參閱 [合作夥伴中心中的共同銷售選項](partner-center-portal/commercial-marketplace-co-sell.md) 。 如需透過 Microsoft CSP 合作夥伴通路行銷供應專案的詳細資訊，請參閱 [雲端解決方案提供者](cloud-solution-providers.md)。
+- **與 Microsoft 共同銷售**：此選項可讓 microsoft 銷售團隊在評估客戶的需求時，考慮您的 IP 共同銷售合格解決方案。 如需如何準備您的供應專案以進行評估的詳細資訊，請參閱 [合作夥伴中心中的共同銷售選項](commercial-marketplace-co-sell.md) 。 如需透過 Microsoft CSP 合作夥伴通路行銷供應專案的詳細資訊，請參閱 [雲端解決方案提供者](cloud-solution-providers.md)。
 
 若要深入瞭解，請參閱 [使用 Azure Marketplace 拓展您的雲端業務](https://azuremarketplace.microsoft.com/sell)。
 

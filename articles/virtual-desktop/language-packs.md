@@ -3,15 +3,15 @@ title: 在 Windows 虛擬桌面中的 Windows 10 Vm 上安裝語言套件-Azure
 description: 如何在 Windows 虛擬桌面中安裝 Windows 10 多會話 Vm 的語言套件。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 11/06/2020
+ms.date: 12/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 10d79d08e3f6ed422f0354074ebc6e0acc125553
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ca4b5486b54de28497ea41765337bfa19f12e3d7
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94354031"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573114"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>將語言套件新增至 Windows 10 多會話映射
 
@@ -24,7 +24,7 @@ Windows 虛擬桌面是您的使用者可以隨時隨地部署的服務。 這�
 
 第二種方法更有效率且符合成本效益。 不過，您決定哪一種方法最適合您的需求。 本文將示範如何為您的影像自訂語言。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 您需要下列專案來自訂您的 Windows 10 企業版多會話映射以新增多種語言：
 
@@ -34,20 +34,24 @@ Windows 虛擬桌面是您的使用者可以隨時隨地部署的服務。 這�
      
      - 語言 ISO：
         - [Windows 10，版本1903或1909語言套件 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
-        - [Windows 10，2004版語言套件 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
+        - [Windows 10，版本2004或20H2 語言套件 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
 
      - FOD Disk 1 ISO：
         - [Windows 10，版本1903或 1909 FOD Disk 1 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
-        - [Windows 10，2004版 FOD Disk 1 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
+        - [Windows 10，version 2004 或 20H2 FOD Disk 1 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
         
      - 收件匣應用程式 ISO：
         - [Windows 10，版本1903或1909收件匣應用程式 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_InboxApps.iso)
         - [Windows 10，2004版收件匣應用程式 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_InboxApps.iso)
         - [Windows 10，20H2 版收件匣應用程式 ISO](https://software-download.microsoft.com/download/pr/19041.508.200905-1327.vb_release_svc_prod1_amd64fre_InboxApps.iso)
      
-     - 如果您使用 Windows 10 2004 版或20H2 版，您可以使用當地體驗套件 (LXP) Iso 來下載新的語言。 使用在 Windows 10 中 [新增語言的資訊：已知問題](/windows-hardware/manufacture/desktop/language-packs-known-issue) ，找出您是否應該下載9B 或9C 版本：
-        - [Windows 10，版本2004或 20H2 **9B** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_64_ARM64_MultiLang_LangPckAll_LIP_LXP_ONLY)
-        - [Windows 10，版本2004或 20H2 **9C** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY) 
+     - 如果您使用當地體驗套件 (LXP) ISO 檔案來將映射當地語系化，您也必須下載適當的 LXP ISO，以獲得最佳的語言體驗
+        - 如果您使用的是 Windows 10 1903 或1909版：
+          - [Windows 10，版本1903或 1909 LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_1903_32_64_ARM64_MultiLng_LngPkAll_LXP_ONLY.iso)
+        - 如果您使用的是2004或20H2 版 Windows 10，請使用在 [Windows 10 中新增語言的資訊：已知問題](/windows-hardware/manufacture/desktop/language-packs-known-issue) ，找出下列哪一個 LXP iso 最適合您：
+          - [Windows 10，版本2004或 20H2 **9B** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_64_ARM64_MultiLang_LangPckAll_LIP_LXP_ONLY)
+          - [Windows 10，版本2004或 20H2 **9C** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY)
+          - [Windows 10，版本2004或 20H2 **10C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2010C.iso)
 
 - Windows 檔案伺服器虛擬機器上的 Azure 檔案儲存體共用或檔案共用
 
@@ -169,7 +173,7 @@ Set-WinUserLanguageList $LanguageList -force
 
 腳本可能需要一些時間，視您需要安裝的語言數目而定。
 
-腳本完成執行之後，請檢查以確定語言套件已正確安裝，方法是前往 [ **開始**  >  **設定**  >  **時間] & 語言**  >  **語言** 。 如果有語言檔案，您就可以全部設定。
+腳本完成執行之後，請檢查以確定語言套件已正確安裝，方法是前往 [**開始**  >  **設定**  >  **時間] & 語言**  >  **語言**。 如果有語言檔案，您就可以全部設定。
 
 在 Windows 映像中新增其他語言之後，也需要更新收件匣應用程式以支援新增的語言。 這可以藉由使用收件匣應用程式 ISO 的內容重新整理預先安裝的應用程式來完成。 若要在中斷連線的環境中執行此重新整理 (無法從 VM 進行網際網路存取) ，您可以使用下列 PowerShell 腳本範例將程式自動化。
 

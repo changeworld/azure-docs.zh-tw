@@ -1,17 +1,15 @@
 ---
 title: 刪除 Azure Service Fabric 執行者
 description: 瞭解如何在 Azure Service Fabric 應用程式中手動和完全刪除 Reliable Actors 及其狀態。
-author: amanbha
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: amanbha
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 80192aef564317e36fba56025aa31c787676d974
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16d4ab6a3c155f897cf9212fb1cd6c34d977b9ec
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006851"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574015"
 ---
 # <a name="delete-reliable-actors-and-their-state"></a>刪除 Reliable Actors 及其狀態
 已停用動作項目的記憶體回收只會清除動作項目物件；但不會移除動作項目的狀態管理員中儲存的資料。 重新啟用動作項目後，會再次透過狀態管理員提供其資料。 在動作項目將資料儲存於狀態管理員後停用，而永遠不會重新啟用的情況下，可能需要清除其資料。

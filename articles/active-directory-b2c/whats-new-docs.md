@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 企業對客戶 (B2C) 的新功能
 description: Azure Active Directory 的企業對客戶 (B2C) 的全新和更新的檔。
-ms.date: 11/10/2020
+ms.date: 12/03/2020
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,23 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: f89537d1e221ecc9a871343e863f021723965239
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 4c204ec33604ff5edd1551f9728c28e3dcab9a61
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94550049"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571074"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C：新功能
 
 歡迎使用 Azure Active Directory B2C 檔中的新功能。 本文列出已新增的檔，以及過去三個月內有重大更新的新檔。 若要瞭解 B2C 服務的新功能，請參閱 [Azure Active Directory 中的新功能](../active-directory/fundamentals/whats-new.md)。
+
+## <a name="november-2020"></a>2020 年 11 月
+
+### <a name="updated-articles"></a>更新的文章
+- [使用 Azure 監視器監視 Azure AD B2C](azure-monitor.md)
+- [教學課程：在單頁應用程式中透過 Azure AD B2C 啟用驗證](tutorial-single-page-app.md)
+
 
 ## <a name="october-2020"></a>2020 年 10 月
 

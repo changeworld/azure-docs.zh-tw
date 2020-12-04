@@ -7,20 +7,20 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 12/03/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d93ced4b45befec207494909de61d30a98d2a67e
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: eddab12e8ecf2e4757998bbd1e6e07c4c4d85f3c
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "91333727"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573857"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>收集搜尋流量分析的遙測資料
 
 搜尋流量分析是一種模式，用來收集有關使用者與 Azure 認知搜尋應用程式互動的遙測資料，例如使用者起始的按一下事件和鍵盤輸入。 您可以使用此資訊來判斷搜尋解決方案的有效性，包括熱門搜尋字詞、點選連結率，以及哪些查詢輸入未產生任何結果。
 
-此模式會相依於 [Application Insights](../azure-monitor/app/app-insights-overview.md) ([Azure 監視器](../azure-monitor/index.yml)的一個功能)，以收集使用者資料。 您必須如此文章所述，在用戶端程式碼中加入檢測設備。 最後，您將需要一個報告機制來分析資料。 我們建議使用 Power BI，但您可以使用應用程式儀表板，或任何連線至 Application Insights 的工具。
+此模式會相依於 [Application Insights](../azure-monitor/app/app-insights-overview.md) ([Azure 監視器](../azure-monitor/index.yml)的一個功能)，以收集使用者資料。 您必須如此文章所述，在用戶端程式碼中加入檢測設備。 最後，您將需要一個報告機制來分析資料。 我們建議 Power BI，但您可以使用應用程式儀表板或任何連接至 Application Insights 的工具。
 
 > [!NOTE]
 > 此文章中描述的模式適用於您新增至用戶端的程式碼所產生的進階案例和點選流資料。 服務記錄相對容易設定，而且可提供一系列的計量，還可以在入口網站中完成，不需要撰寫程式碼。 因此無論是什麼情況，都建議啟用記錄。 如需詳細資訊，請參閱[收集和分析記錄資料](search-monitor-logs.md)。
@@ -29,7 +29,7 @@ ms.locfileid: "91333727"
 
 若要讓搜尋流量分析產生有用的計量，必須針對搜尋應用程式的使用者記錄一些訊號。 這些訊號代表使用者感興趣且認為與其相關的內容。 針對搜尋流量分析，這些訊號包括：
 
-+ 使用者產生的搜尋事件：只有使用者起始的搜尋查詢才有意義。 用來填入 Facet、其他內容或任何內部資訊的搜尋要求並不重要，而且還會扭曲和偏差結果。
++ 使用者產生的搜尋事件：只有使用者起始的搜尋查詢才有意義。 其他搜尋要求（例如用來填入 facet 或取得內部資訊的搜尋要求）並不重要。 請務必只檢測使用者起始的事件，以避免結果中出現扭曲或偏差。
 
 + 使用者產生的按一下事件：在搜尋結果頁面上，點選事件通常表示文件為特定搜尋查詢的相關結果。
 
@@ -37,7 +37,7 @@ ms.locfileid: "91333727"
 
 ## <a name="add-search-traffic-analytics"></a>新增搜尋流量分析
 
-在 Azure 認知搜尋服務的[入口網站](https://portal.azure.com)頁面中，搜尋流量分析頁面包含了遵循此遙測模式的速查表。 您可以從這個頁面，選取或建立 Application Insights 資源、取得檢測金鑰、複製可針對解決方案調整的程式碼片段，以及下載依據模式中反映的結構描述所建置的 Power BI 報表。
+在 Azure 認知搜尋服務的 [ [入口網站](https://portal.azure.com) ] 頁面中，開啟 [搜尋流量分析] 頁面，以存取功能相關的工作表來遵循此遙測模式。 您可以從這個頁面，選取或建立 Application Insights 資源、取得檢測金鑰、複製可針對解決方案調整的程式碼片段，以及下載依據模式中反映的結構描述所建置的 Power BI 報表。
 
 ![入口網站中的搜尋流量分析頁面](media/search-traffic-analytics/azuresearch-trafficanalytics.png "入口網站中的搜尋流量分析頁面")
 
@@ -71,7 +71,7 @@ ms.locfileid: "91333727"
 
 **使用 C#**
 
-如果使用 C#，就會在您的應用程式設定中找到 **InstrumentationKey** ，例如，如果專案為 ASP.NET，就會找到 appsettings.json。 如果您不確定金鑰位置，請回去參閱註冊指示。
+針對 c #， **InstrumentationKey** 應該在您的應用程式設定中定義，例如，如果您的專案是 ASP.NET，則為 appsettings.js。 如果您不確定金鑰位置，請回去參閱註冊指示。
 
 ```csharp
 private static TelemetryClient _telemetryClient;
@@ -98,9 +98,26 @@ window.appInsights=appInsights;
 
 若要透過點選將搜尋要求相互關聯，必須擁有一組與這兩個不同事件相關的相互關聯識別碼。 當您使用 HTTP 標頭要求取得搜尋識別碼時，Azure 認知搜尋會提供您一組搜尋識別碼。
 
-擁有搜尋識別碼可讓 Azure 認知搜尋針對要求發出的計量，與您在 Application Insights 中記錄的自訂計量相互關聯。  
+擁有搜尋識別碼可讓 Azure 認知搜尋針對要求發出的計量，與您在 Application Insights 中記錄的自訂計量相互關聯。
 
-**使用 C#**
+**使用 c # (較新的 v11 SDK)**
+
+```csharp
+// This sample uses the .NET SDK https://www.nuget.org/packages/Azure.Search.Documents
+
+var client = new SearchClient(<SearchServiceName>, <IndexName>, new AzureKeyCredentials(<QueryKey>)
+
+// Use HTTP headers so that you can get the search ID from the response
+var headers = new Dictionary<string, List<string>>() { { "x-ms-azs-return-searchid", new List<string>() { "true" } } };
+var response = await client.searchasync(searchText: searchText, searchOptions: options, customHeaders: headers);
+string searchId = string.Empty;
+if (response.Response.Headers.TryGetValues("x-ms-azs-searchid", out IEnumerable<string> headerValues))
+{
+    searchId = headerValues.FirstOrDefault();
+}
+```
+
+**使用 c # (舊版 v10 SDK)**
 
 ```csharp
 // This sample uses the .NET SDK https://www.nuget.org/packages/Microsoft.Azure.Search
@@ -129,12 +146,12 @@ var searchId = request.getResponseHeader('x-ms-azs-searchid');
 
 每當使用者發出搜尋要求時，您應該將其記錄為搜尋事件，並包含下列關於 Application Insights 自訂事件的結構描述。 請記得只記錄使用者產生的搜尋查詢。
 
-+ **SearchServiceName** ：(字串) 搜尋服務名稱
-+ **SearchId** ：(guid) 搜尋查詢的唯一識別碼 (出現在搜尋回應中)
-+ **IndexName** ：(字串) 要查詢的搜尋服務索引
-+ **QueryTerms** ：(字串) 使用者輸入的搜尋字詞
-+ **ResultCount** ：(int) 傳回文件的數目 (出現在搜尋回應中)
-+ **ScoringProfile** ：(字串) 所使用評分設定檔的名稱 (如果有的話)
++ **SearchServiceName**：(字串) 搜尋服務名稱
++ **SearchId**：(guid) 搜尋查詢的唯一識別碼 (出現在搜尋回應中)
++ **IndexName**：(字串) 要查詢的搜尋服務索引
++ **QueryTerms**：(字串) 使用者輸入的搜尋字詞
++ **ResultCount**：(int) 傳回文件的數目 (出現在搜尋回應中)
++ **ScoringProfile**：(字串) 所使用評分設定檔的名稱 (如果有的話)
 
 > [!NOTE]
 > 請將 $count=true 新增至搜尋查詢，以要求使用者所產生查詢的計數。 如需詳細資訊，請參閱[搜尋文件 (REST)](/rest/api/searchservice/search-documents#counttrue--false)。
@@ -172,10 +189,10 @@ appInsights.trackEvent("Search", {
 
 每當使用者點選文件時，必須記錄這個訊號才可進行搜尋分析。 使用 Application Insights 自訂事件，記錄包含下列結構描述的這些事件：
 
-+ **ServiceName** ：(字串) 搜尋服務名稱
-+ **SearchId** ：(guid) 相關搜尋查詢的唯一識別碼
-+ **DocId** ：(字串) 文件識別碼
-+ **Position** ：(int) 搜尋結果頁面中文件的順位
++ **ServiceName**：(字串) 搜尋服務名稱
++ **SearchId**：(guid) 相關搜尋查詢的唯一識別碼
++ **DocId**：(字串) 文件識別碼
++ **Position**：(int) 搜尋結果頁面中文件的順位
 
 > [!NOTE]
 > 位置是指您應用程式中的基本順序。 您可以自由地設定這個數字 (只要它一律相同) 以便進行比較。

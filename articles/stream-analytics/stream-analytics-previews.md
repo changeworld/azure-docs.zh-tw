@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 8/07/2020
-ms.openlocfilehash: 4179b06759802025f97bd32a355b788c96c9eddb
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a32491453812d74d4bd93f3f97b7e6a32036f65f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123315"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573369"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure 串流分析預覽功能
 
@@ -22,7 +22,7 @@ ms.locfileid: "93123315"
 
 下列功能目前處於公開預覽狀態。 您目前可以利用這些功能，但請勿將其用於生產環境。
 
-### <a name="authenticate-to-sql-database-output-with-managed-identities"></a>使用受控識別向 SQL Database 輸出進行驗證
+### <a name="authenticate-to-sql-database-output-with-managed-identities-preview"></a>使用受控識別 (預覽版驗證 SQL Database 輸出) 
 
 Azure 串流分析支援 Azure SQL Database 輸出接收的[受控識別驗證](../active-directory/managed-identities-azure-resources/overview.md)。 受控識別消除了以使用者為基礎的驗證方法限制，例如因密碼變更而需要重新驗證。 
 

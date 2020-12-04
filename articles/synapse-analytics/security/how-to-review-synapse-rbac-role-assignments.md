@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6d6a0bdb9a6aaa2d9ca75ccd4a6d71e9046bee4a
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 9ebbe54dd41cd7d7b83ef12f465326db3ef2b9ab
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523454"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572179"
 ---
 # <a name="how-to-review-synapse-rbac-role-assignments"></a>如何審核 Synapse RBAC 角色指派
 
@@ -21,7 +21,10 @@ Synapse RBAC 角色是用來將許可權指派給使用者、群組和其他安�
 
 本文說明如何檢查工作區目前的角色指派。
 
-您可以使用任何 Synapse RBAC 角色來列出所有範圍的 Synapse RBAC 角色指派，包括您無法存取的物件指派。 只有 Synapse 系統管理員可以授與 Synapse RBAC 存取權。   
+您可以使用任何 Synapse RBAC 角色來列出所有範圍的 Synapse RBAC 角色指派，包括您無法存取的物件指派。 只有 Synapse 系統管理員可以授與 Synapse RBAC 存取權。  
+
+>[!Note]
+>來賓使用者 (來自不同 AD 租使用者的使用者) 無法查看或管理角色指派，即使已指派 Synapse 系統管理員角色。    
 
 ## <a name="open-synapse-studio"></a>開啟 Synapse Studio  
 

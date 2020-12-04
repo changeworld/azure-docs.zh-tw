@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: bae214fb8eff9747bf3f79323d8eb9ce1cb6cdb7
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: a978113265e5e61c0fc09ef0daeb1da9826f294d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531593"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572791"
 ---
 # <a name="synapse-rbac-roles"></a>Synapse RBAC 角色
 
@@ -28,7 +28,7 @@ ms.locfileid: "96531593"
 - 針對數個角色引進 **新的較低層級範圍**。  這些範圍允許將角色限制為特定的資源或物件。
 
 >[!Note]
->- **新的角色和較低層級的範圍目前為預覽** 狀態。  建議您使用這些新的角色和範圍，這些都是完全支援的角色和範圍，並提供其使用的意見反應。
+>**新的 SYNAPSE RBAC 角色和較低層級的範圍目前為預覽** 狀態。  建議您使用這些新的角色和範圍，這些都是完全支援的角色和範圍，並提供其使用的意見反應。
 
 ## <a name="built-in-synapse-rbac-roles-and-scopes"></a>內建 Synapse RBAC 角色和範圍
 

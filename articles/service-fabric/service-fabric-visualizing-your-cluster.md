@@ -1,16 +1,14 @@
 ---
 title: 使用 Azure Service Fabric Explorer 來視覺化您的叢集
 description: Service Fabric Explorer 是一種應用程式，可檢查和管理 Microsoft Azure Service Fabric 叢集中的雲端應用程式和節點。
-author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.author: mikhegn
-ms.openlocfilehash: 5627aa614a7e2819b6f3cc1401c8458552e57219
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a45aff305f97610cb2660c2e3f4b4427b905d7d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085168"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574050"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>使用 Service Fabric 總管視覺化叢集
 
@@ -69,7 +67,7 @@ Service Fabric 叢集中的節點會橫跨容錯網域和升級網域的二維�
 
 您可以使用應用程式檢視瀏覽 Service Fabric 的邏輯階層：應用程式、服務、資料分割，以及複本。
 
-在以下範例中， **MyApp** 應用程式是由 **MyStatefulService** 與 **WebService** 兩個服務組成。 由於 **MyStatefulService** 可設定狀態，因此它包含一個具有一個主要複本和兩個次要複本的資料分割。 對比之下，WebSvcService 則無狀態，而且只包含單一執行個體。
+在以下範例中，**MyApp** 應用程式是由 **MyStatefulService** 與 **WebService** 兩個服務組成。 由於 **MyStatefulService** 可設定狀態，因此它包含一個具有一個主要複本和兩個次要複本的資料分割。 對比之下，WebSvcService 則無狀態，而且只包含單一執行個體。
 
 ![Service Fabric 總管應用程式檢視][sfx-application-tree]
 
@@ -83,7 +81,7 @@ Service Fabric 叢集中的節點會橫跨容錯網域和升級網域的二維�
 ## <a name="actions"></a>動作
 「Service Fabric 總管」提供一個對您叢集內的節點、應用程式及服務快速叫用動作的方式。
 
-例如，若要刪除應用程式實例，請從左邊的樹狀目錄中選擇應用程式，然後選擇 [ **動作**  >  **刪除應用程式** ]。
+例如，若要刪除應用程式實例，請從左邊的樹狀目錄中選擇應用程式，然後選擇 [**動作**  >  **刪除應用程式**]。
 
 ![在 Service Fabric 總管中刪除應用程式][sfx-delete-application]
 
@@ -133,7 +131,7 @@ Service Fabric Explorer 提供與 [備份和還原](./service-fabric-reliable-se
 * 觸發和追蹤磁碟分割的還原。
 
 如需有關備份和還原服務的詳細資訊，請參閱 [REST API 參考](/rest/api/servicefabric/sfclient-index-backuprestore)。
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * [在 Visual Studio 中管理您的 Service Fabric 應用程式](service-fabric-manage-application-in-visual-studio.md)
 * [使用 PowerShell 部署 Service Fabric 應用程式](service-fabric-deploy-remove-applications.md)
 

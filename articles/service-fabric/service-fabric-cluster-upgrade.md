@@ -3,13 +3,12 @@ title: 升級 Azure Service Fabric 叢集
 description: 瞭解如何升級 Azure Service Fabric 叢集的版本或設定，包括設定叢集更新模式、升級憑證、新增應用程式埠、執行 OS 修補程式，以及在執行升級時所能預期的情況。
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.custom: sfrev
-ms.openlocfilehash: d92ac90e0e41d534231bafbe991a05764dbee07d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 028c91f85a6e318f7ea686c1bcd50262eb7c6bf1
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82789550"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571023"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>升級和更新 Azure Service Fabric 叢集
 
@@ -102,7 +101,7 @@ Service Fabric 會使用您建立叢集時指定的 [X.509 伺服器憑證](serv
 
 修補程式協調流程應用程式 (POA) 是 Service Fabric 應用程式，可在 Service Fabric 叢集上將作業系統修補自動化，而不需要停機。 [適用於 Windows 的修補程式協調流程應用程式](service-fabric-patch-orchestration-application.md)可在叢集上部署，以協調的方式安裝修補程式，同時讓服務隨時可供使用。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解如何自訂某些 [service fabric 叢集網狀架構設定](service-fabric-cluster-fabric-settings.md)
 * 了解如何 [相應放大和相應縮小叢集](service-fabric-cluster-scale-in-out.md)

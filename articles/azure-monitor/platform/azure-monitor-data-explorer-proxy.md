@@ -7,12 +7,12 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 8884fd56cfc1e18a0a358d6902f7f8bcbfc1f5d3
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 5cb2f7b3b07c20e09d61e97412bc35f03b15cb3b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552001"
+ms.locfileid: "96572145"
 ---
 # <a name="cross-resource-query-azure-data-explorer-using-azure-monitor"></a>使用 Azure 監視器跨資源查詢 Azure 資料總管
 Azure 監視器支援 Azure 資料總管、 [Application Insights (AI) ](/azure/azure-monitor/app/app-insights-overview)和 [LOG Analytics (LA) ](/azure/azure-monitor/platform/data-platform-logs)之間的跨服務查詢。 然後，您可以使用 Log Analytics/Application Insights 工具來查詢 Azure 資料總管叢集，並在跨服務查詢中加以參考。 本文說明如何進行跨服務查詢。
@@ -20,7 +20,7 @@ Azure 監視器支援 Azure 資料總管、 [Application Insights (AI) ](/azure/
 Azure 監視器的跨服務流程： :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-monitor-data-explorer-flow.png" alt-text="azure 監視器和 azure 資料總管跨服務流程。":::
 
 >[!NOTE]
->* Azure 監視器 proxy 處於私人預覽狀態-必須有 AllowListing。
+>* Azure 監視器的跨服務查詢處於私人預覽狀態-必須有 AllowListing。
 >* 如有任何問題，請洽詢 [服務小組](mailto:ADXProxy@microsoft.com) 。
 ## <a name="cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer"></a>跨查詢 Log Analytics 或 Application Insights 資源和 Azure 資料總管
 
@@ -66,9 +66,3 @@ Kusto Explorer 會自動將您登入使用者帳戶原本所屬的租使用者�
 * [撰寫查詢](https://docs.microsoft.com/azure/data-explorer/write-queries)
 * [使用 Azure 資料總管在 Azure 監視器中查詢資料](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)
 * [在 Azure 監視器中執行跨資源記錄查詢](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query)
-
-
-
-
-
-

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1245010ae0b21c5bb8e3ebd93a9fe851d48c858b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 77a43d5bd5f2b228d5ed4384fc1efdca76f8ea0b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835504"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573879"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>使用 AD FS 應用程式活動報告 (預覽) 將應用程式遷移至 Azure AD
 
@@ -26,9 +26,10 @@ ms.locfileid: "94835504"
 
 Azure 入口網站中的 AD FS 應用程式活動報表 (preview) 可讓您快速識別哪些應用程式可以遷移至 Azure AD。 它會評估所有 AD FS 應用程式的相容性 Azure AD、檢查是否有任何問題，並提供準備個別應用程式以進行遷移的指引。 使用 AD FS 應用程式活動報表，您可以：
 
-* **探索 AD FS 的應用程式，並為您的遷移進行範圍。** [AD FS 應用程式活動] 報表會列出您組織中的所有 AD FS 應用程式，並指出他們是否已準備好遷移至 Azure AD。
+* **探索 AD FS 的應用程式，並為您的遷移進行範圍。** [AD FS 應用程式活動] 報表會列出組織中過去30天內有作用中使用者登入的所有 AD FS 應用程式。 此報表表示應用程式已準備好遷移至 Azure AD。 報表不會在 AD FS （例如 Office 365）中顯示 Microsoft 相關的信賴憑證者。 例如，名為 ' urn：同盟： MicrosoftOnline ' 的信賴憑證者。
+
 * **排定應用程式的優先順序以進行遷移。** 取得過去1天、7天或30天內已登入應用程式的唯一使用者數目，以協助判斷遷移應用程式的重要性或風險。
-* **執行遷移測試並修正問題。** 報表服務會自動執行測試，以判斷應用程式是否準備好遷移。 結果會顯示在 [AD FS 應用程式活動] 報表中，作為遷移狀態。 如果發現潛在的遷移問題，您可以取得如何解決問題的特定指引。
+* **執行遷移測試並修正問題。** 報表服務會自動執行測試，以判斷應用程式是否準備好遷移。 結果會顯示在 [AD FS 應用程式活動] 報表中，作為遷移狀態。 如果 AD FS 設定與 Azure AD 設定不相容，您可以取得有關如何在 Azure AD 中解決設定的特定指引。
 
 AD FS 的應用程式活動資料可供指派任何系統管理員角色的使用者使用：全域管理員、報表讀取者、安全性讀取者、應用程式系統管理員或雲端應用程式系統管理員。
 
@@ -39,6 +40,9 @@ AD FS 的應用程式活動資料可供指派任何系統管理員角色的使�
 * 必須安裝 AD FS agent 的 Azure AD Connect Health。
    * [深入瞭解 Azure AD Connect Health](../hybrid/how-to-connect-health-adfs.md)
    * [開始設定 Azure AD Connect Health，並安裝 AD FS 代理程式](../hybrid/how-to-connect-health-agent-install.md)
+
+>[!IMPORTANT] 
+>在安裝 Azure AD Connect Health 之後，有幾個原因會讓您看不到預期的所有應用程式。 AD FS 的應用程式活動報表只會顯示過去30天內具有使用者登入 AD FS 的信賴憑證者。 此外，報表也不會顯示 Microsoft 相關的信賴憑證者，例如 Office 365。
 
 ## <a name="discover-ad-fs-applications-that-can-be-migrated"></a>探索可遷移的 AD FS 應用程式 
 
@@ -74,7 +78,7 @@ AD FS 的應用程式活動報告可在 Azure AD Azure 入口網站的 [ **使�
 
 下表列出在 AD FS 應用程式上執行的所有設定測試。
 
-|結果  |Pass/警告/失敗  |說明  |
+|結果  |Pass/警告/失敗  |描述  |
 |---------|---------|---------|
 |Test-ADFSRPAdditionalAuthenticationRules <br> 偵測到至少有一個非可移轉規則的 AdditionalAuthentication。       | Pass/警告          | 信賴憑證者有規則，可提示 (MFA) 的多重要素驗證。 若要移至 Azure AD，請將這些規則轉譯成條件式存取原則。 如果您使用的是內部部署 MFA，建議您移至 Azure AD MFA。 [深入瞭解條件式存取](../authentication/concept-mfa-howitworks.md)。        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> 信賴憑證者的 AdditionalWSFedEndpoint 設為 true。       | 通過/失敗          | AD FS 中的信賴憑證者允許多個 WS-Fed 判斷提示端點。Azure AD 目前僅支援一個。如果您有此結果正在封鎖遷移的案例，請 [讓我們知道](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints)。     |
@@ -110,7 +114,7 @@ AD FS 的應用程式活動報告可在 Azure AD Azure 入口網站的 [ **使�
 
 下表列出在 AD FS 應用程式上執行的所有宣告規則測試。
 
-|屬性  |說明  |
+|屬性  |描述  |
 |---------|---------|
 |UNSUPPORTED_CONDITION_PARAMETER      | Condition 語句會使用正則運算式來評估宣告是否符合特定模式。若要在 Azure AD 中達成類似的功能，您可以使用預先定義的轉換（例如 IfEmpty ( # A1、StartWith ( # A3），其中包含 ( # A5 等等。 如需詳細資訊，請參閱 [針對企業應用程式自訂 SAML 權杖中發出的宣告](../develop/active-directory-saml-claims-customization.md)。          |
 |UNSUPPORTED_CONDITION_CLASS      | 條件陳述式具有多個必須在執行發行語句之前評估的條件。Azure AD 可能會使用宣告的轉換函式來支援這項功能，您可以在其中評估多個宣告值。如需詳細資訊，請參閱 [針對企業應用程式自訂 SAML 權杖中發出的宣告](../develop/active-directory-saml-claims-customization.md)。          |
@@ -121,6 +125,17 @@ AD FS 的應用程式活動報告可在 Azure AD Azure 入口網站的 [ **使�
 |EXTERNAL_ATTRIBUTE_STORE      | 此發行語句使用 Active Directory 的屬性存放區。 目前，Azure AD 不是 Active Directory 或 Azure AD 不同的存放區的來源宣告。 如果此結果封鎖您將應用程式遷移至 Azure AD，請 [讓我們知道](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695717-allow-to-source-user-attributes-from-external-dire)。          |
 |UNSUPPORTED_ISSUANCE_CLASS      | 此發行語句使用 ADD，將宣告新增至連入宣告集。 在 Azure AD 中，這可以設定為多個宣告轉換。如需詳細資訊，請參閱 [針對企業應用程式自訂 SAML 權杖中發出的宣告](../develop/active-directory-claims-mapping.md)。         |
 |UNSUPPORTED_ISSUANCE_TRANSFORMATION      | 發行語句會使用正則運算式來轉換要發出的宣告值。若要在 Azure AD 中達成類似的功能，您可以使用預先定義的轉換，例如將 ( # A1、Trim ( # A3、ToLower 和其他專案之間的解壓縮。 如需詳細資訊，請參閱 [針對企業應用程式自訂 SAML 權杖中發出的宣告](../develop/active-directory-saml-claims-customization.md)。          |
+
+## <a name="troubleshooting"></a>疑難排解
+
+### <a name="cant-see-all-my-ad-fs-applications-in-the-report"></a>看不到報表中所有的 AD FS 應用程式
+
+ 如果您已安裝 Azure AD Connect 健康狀態，但仍看到安裝該命令的提示，或您沒有在報表中看到所有 AD FS 應用程式，可能是因為您沒有作用中的 AD FS 應用程式，或您的 AD FS 應用程式是 microsoft 應用程式。
+ 
+ 「AD FS 應用程式活動報表」會列出您組織中過去30天內有作用中使用者登入的所有 AD FS 應用程式。 此外，報表也不會在 AD FS （例如 Office 365）中顯示 microsoft 相關的信賴憑證者。 例如，名稱為 ' urn：同盟： MicrosoftOnline '、' MicrosoftOnline '、' microsoft： winhello： cert： >prov： server ' 的信賴憑證者將不會顯示在清單中。
+
+
+
 
 
 ## <a name="next-steps"></a>後續步驟

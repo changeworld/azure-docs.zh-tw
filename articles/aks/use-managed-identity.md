@@ -5,16 +5,16 @@ services: container-service
 ms.topic: article
 ms.date: 07/17/2020
 ms.author: thomasge
-ms.openlocfilehash: 1f8cb98ea36fdad9a67eca26c6fbea7ede1f811a
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 96a1eebbdcbf269b06d2ece77987ce7813f1d5f5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94627875"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571057"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes Service 中使用受控識別
 
-目前，Azure Kubernetes Service (AKS) 叢集 (明確地說，Kubernetes 雲端提供者) 需要身分識別，才能在 Azure 中建立額外的資源，例如負載平衡器和受控磁片。 此身分識別可以是 *受控識別* 或 *服務主體* 。 如果您使用 [服務主體](kubernetes-service-principal.md)，您必須提供一個或 AKS 代表您建立一個。 如果您使用受控識別，則會自動 AKS 為您建立。 使用服務主體的叢集最後會達到必須更新服務主體以保持叢集運作的狀態。 管理服務主體會增加複雜度，因此更容易使用受控識別。 相同的許可權需求適用于服務主體和受控識別。
+目前，Azure Kubernetes Service (AKS) 叢集 (明確地說，Kubernetes 雲端提供者) 需要身分識別，才能在 Azure 中建立額外的資源，例如負載平衡器和受控磁片。 此身分識別可以是 *受控識別* 或 *服務主體*。 如果您使用 [服務主體](kubernetes-service-principal.md)，您必須提供一個或 AKS 代表您建立一個。 如果您使用受控識別，則會自動 AKS 為您建立。 使用服務主體的叢集最後會達到必須更新服務主體以保持叢集運作的狀態。 管理服務主體會增加複雜度，因此更容易使用受控識別。 相同的許可權需求適用于服務主體和受控識別。
 
 *受控* 識別本質上是服務主體的包裝函式，讓其管理更為簡單。 MI 的認證輪替會根據 Azure Active Directory 預設，每隔46天自動進行。 AKS 會使用系統指派的和使用者指派的受控識別類型。 這些身分識別目前是不可變的。 若要深入瞭解，請參閱 [適用于 Azure 資源的受控](../active-directory/managed-identities-azure-resources/overview.md)識別。
 
@@ -36,7 +36,7 @@ ms.locfileid: "94627875"
 
 AKS 針對內建服務和附加元件使用了數個受控識別。
 
-| 身分識別                       | 名稱    | 使用案例 | 預設許可權 | 攜帶您自己的身分識別
+| 身分識別                       | Name    | 使用案例 | 預設許可權 | 攜帶您自己的身分識別
 |----------------------------|-----------|----------|
 | 控制平面 | 看不到 | AKS 用於受控網路資源，包括輸入負載平衡器和 AKS 受控公用 Ip | 節點資源群組的參與者角色 | 預覽
 | Kubelet | AKS 叢集名稱-agentpool | 使用 Azure Container Registry (ACR) 進行驗證 | NA 適用于 kubernetes v 1.15 +) 的 ( | 目前不支援
@@ -105,17 +105,29 @@ az aks show -g myResourceGroup -n myManagedCluster --query "identity"
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
-## <a name="update-an-existing-service-principal-based-aks-cluster-to-managed-identities"></a>將以服務主體為基礎的現有 AKS 叢集更新為受控識別
+## <a name="update-an-aks-cluster-to-managed-identities-preview"></a>將 AKS 叢集更新為受控識別 (預覽版) 
 
-您現在可以使用下列 CLI 命令來更新具有受控識別的 AKS 叢集。
+您現在可以使用下列 CLI 命令，更新目前正在使用服務主體的 AKS 叢集，以使用受控識別。
 
-首先，更新系統指派的身分識別：
+首先，為系統指派的身分識別註冊功能旗標：
+
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n MigrateToMSIClusterPreview
+```
+
+更新系統指派的身分識別：
 
 ```azurecli-interactive
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity
 ```
 
-然後，更新使用者指派的身分識別：
+更新使用者指派的身分識別：
+
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n UserAssignedIdentityPreview
+```
+
+更新使用者指派的身分識別：
 
 ```azurecli-interactive
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identity <UserAssignedIdentityResourceID> 

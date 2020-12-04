@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 應用程式布建的新功能
 description: Azure Active Directory 應用程式布建的新增和更新的檔。
-ms.date: 11/05/2020
+ms.date: 12/03/2020
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -9,16 +9,24 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 51a2facfdaccc6cb29264873e9ffd60fc48735da
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: fd9be81e8c23686695f8cdb49d873d5a663d69c4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174657"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571754"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory 應用程式布建：新功能
 
 歡迎使用 Azure Active Directory 應用程式布建檔的新功能。 本文列出已新增的檔，以及過去三個月內有重大更新的新檔。 若要瞭解布建服務的新功能，請參閱 [Azure Active Directory 中的新功能](../fundamentals/whats-new.md)。
+
+## <a name="november-2020"></a>2020 年 11 月
+
+### <a name="updated-articles"></a>更新的文章
+- [教學課程 - 在 Azure Active Directory 中自訂 SaaS 應用程式的使用者佈建屬性對應](customize-application-attributes.md)
+- [佈建運作方式](how-provisioning-works.md)
+- [教學課程 - 建置 SCIM 端點並設定使用 Azure AD 的使用者佈建](use-scim-to-provision-users-and-groups.md)
+
 
 ## <a name="october-2020"></a>2020 年 10 月
 

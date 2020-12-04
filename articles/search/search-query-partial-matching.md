@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 9f36502eb464f051cd50b51245db69fa76daa915
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/03/2020
+ms.openlocfilehash: 79ba186351cc145e012658abc30572e99b123dbb
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499538"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573981"
 ---
-# <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>具有特殊字元的部分詞彙搜尋和模式 (萬用字元、RegEx、模式) 
+# <a name="partial-term-search-and-patterns-with-special-characters-hyphens-wildcard-regex-patterns"></a>具有特殊字元的部分詞彙搜尋和模式 (連字號、萬用字元、RegEx、模式) 
 
-*部分詞彙搜尋* 是指由詞彙片段所組成的查詢，而不是整個詞彙，您可能只會有開始、中間或結束詞彙 (有時也稱為前置詞、中置或後置詞查詢) 。 部分詞彙搜尋可能包含片段的組合，通常會有特殊字元，例如作為查詢字串一部分的虛線或斜線。 常見的使用案例包括電話號碼、URL、代碼或以字元分隔的複合字組的部分。
+*部分詞彙搜尋* 是指由詞彙片段所組成的查詢，而不是整個詞彙，您可能只會有開始、中間或結束詞彙 (有時也稱為前置詞、中置或後置詞查詢) 。 部分詞彙搜尋可能包含片段的組合，通常會有特殊字元，例如連字號、連字號或斜線（屬於查詢字串的一部分）。 常見的使用案例包括電話號碼、URL、代碼或以字元分隔的複合字組的部分。
 
 如果索引沒有預期格式的權杖，則部分詞彙搜尋和包含特殊字元的查詢字串可能會造成問題。 在編制索引的 [詞法分析階段](search-lucene-query-architecture.md#stage-2-lexical-analysis) 期間 (假設預設標準分析器) ，會捨棄特殊字元、將複合字分割，以及刪除空白字元;在找不到相符的情況時，所有的都會導致查詢失敗。 例如，像 `+1 (425) 703-6214` (標記為、、) 的電話號碼將 `"1"` `"425"` `"703"` `"6214"` 不會顯示在查詢中， `"3-62"` 因為該內容實際上並不存在於索引中。 
 
@@ -26,7 +26,7 @@ ms.locfileid: "96499538"
 > [!TIP]
 > 如果您熟悉 Postman 和 REST Api，請 [下載查詢範例集合](https://github.com/Azure-Samples/azure-search-postman-samples/) ，以查詢本文中所述的部分詞彙和特殊字元。
 
-## <a name="what-is-partial-term-search-in-azure-cognitive-search"></a>什麼是 Azure 認知搜尋中的部分詞彙搜尋
+## <a name="about-partial-term-search"></a>關於部分詞彙搜尋
 
 Azure 認知搜尋會掃描索引中的整個 token 化詞彙，除非您將萬用字元預留位置運算子 (`*` 和 `?`) ，或將查詢格式化為正則運算式，否則不會找到部分詞彙的相符項。 部分詞彙會使用這些技術來指定：
 
@@ -45,15 +45,15 @@ Azure 認知搜尋會掃描索引中的整個 token 化詞彙，除非您將萬�
 
 當您需要對片段或模式或特殊字元進行搜尋時，您可以使用以較簡單的 token 化規則運作的自訂分析器來覆寫預設分析器，以保留索引中的整個字串。 回到一步，方法看起來像這樣：
 
-+ 定義欄位來儲存字串的完整版本， (假設您想要在查詢時分析和未分析的文字) 
-+ 評估並選擇在適當的資料細微性層級發出權杖的各種分析器
-+ 將分析器指派給欄位
-+ 建立並測試索引
+1. 定義欄位來儲存字串的完整版本， (假設您想要在查詢時分析和未分析的文字) 
+1. 評估並選擇在適當的資料細微性層級發出權杖的各種分析器
+1. 將分析器指派給欄位
+1. 建立並測試索引
 
 > [!TIP]
 > 評估分析器是需要經常重建索引的反復程式。 您可以使用 Postman、REST Api 來 [建立索引](/rest/api/searchservice/create-index)、 [刪除索引](/rest/api/searchservice/delete-index)、[載入檔](/rest/api/searchservice/addupdate-or-delete-documents)和 [搜尋檔](/rest/api/searchservice/search-documents)，以簡化此步驟。 針對載入檔，要求本文應該包含您想要測試的小型代表性資料集 (例如，具有電話號碼或產品代碼的欄位) 。 使用這些 Api 在相同的 Postman 集合中，您可以快速地迴圈執行這些步驟。
 
-## <a name="duplicate-fields-for-different-scenarios"></a>不同案例的重複欄位
+## <a name="1---create-a-dedicated-field"></a>1-建立專用欄位
 
 分析器會決定如何在索引中 token 化詞彙。 因為分析器是以每個欄位為基礎來指派，所以您可以在索引中建立欄位，以針對不同的案例進行優化。 例如，您可以定義 "featureCode" 和 "featureCodeRegex"，以支援第一個的一般全文檢索搜尋，以及第二個的先進模式比對。 指派給每個欄位的分析器會決定如何在索引中標記每個欄位的內容。  
 
@@ -74,7 +74,9 @@ Azure 認知搜尋會掃描索引中的整個 token 化詞彙，除非您將萬�
 },
 ```
 
-## <a name="choose-an-analyzer"></a>選擇分析器
+<a name="set-an-analyzer"></a>
+
+## <a name="2---set-an-analyzer"></a>2-設定分析器
 
 選擇會產生整個詞彙標記的分析器時，下列分析器是常見的選擇：
 
@@ -98,7 +100,7 @@ Azure 認知搜尋會掃描索引中的整個 token 化詞彙，除非您將萬�
    }
     ```
 
-1. 評估回應以查看如何在索引中標記文字。 請注意每個詞彙如何以較低的大寫和中斷。 只有符合這些權杖的查詢才會在結果中傳回這份檔。 包含 "10-或" 的查詢將會失敗。
+1. 評估回應以查看如何在索引中標記文字。 請注意每個詞彙的小寫、移除的連字號，以及子字串分成個別的權杖。 只有符合這些權杖的查詢才會在結果中傳回這份檔。 包含 "10-或" 的查詢將會失敗。
 
     ```json
     {
@@ -152,7 +154,7 @@ Azure 認知搜尋會掃描索引中的整個 token 化詞彙，除非您將萬�
 > [!Important]
 > 請注意，在建立查詢樹狀結構時，查詢剖析器通常會在搜尋運算式中使用較低案例的詞彙。 如果您使用的分析器在編制索引期間不會以較低案例的文字輸入，而且您沒有收到預期的結果，這可能是原因。 解決方法是新增較低案例的權杖篩選準則，如下面的「使用自訂分析器」一節所述。
 
-## <a name="configure-an-analyzer"></a>設定分析器
+## <a name="3---configure-an-analyzer"></a>3-設定分析器
  
 無論您正在評估分析器或使用特定設定繼續進行，您都必須在欄位定義上指定分析器，如果您不是使用內建的分析器，也可能設定分析器本身。 交換分析器時，您通常需要重建索引， (卸載、重新建立和重載) 。 
 
@@ -216,7 +218,7 @@ Azure 認知搜尋會掃描索引中的整個 token 化詞彙，除非您將萬�
 > [!NOTE]
 > `keyword_v2` `lowercase` 系統會知道 tokenizer 和 token 篩選器，並使用其預設設定，這就是為什麼您可以依名稱參考它們，而不需要先定義它們。
 
-## <a name="build-and-test"></a>建置和測試
+## <a name="4---build-and-test"></a>4-組建和測試
 
 當您使用支援您案例的分析器和欄位定義來定義索引之後，請載入具有代表性字串的檔，讓您可以測試部分字串查詢。 
 
@@ -228,7 +230,7 @@ Azure 認知搜尋會掃描索引中的整個 token 化詞彙，除非您將萬�
 
 + [載入檔](/rest/api/searchservice/addupdate-or-delete-documents) 會匯入具有和您的索引相同結構的檔，以及可搜尋的內容。 完成此步驟之後，您的索引即可進行查詢或測試。
 
-+ [[測試分析器](/rest/api/searchservice/test-analyzer)] 是在[[選擇分析器](#choose-an-analyzer)] 中引進的。 使用各種分析器測試索引中的一些字串，以瞭解如何 token 化詞彙。
++ [測試分析器](/rest/api/searchservice/test-analyzer) 已在 [設定分析器](#set-an-analyzer)中推出。 使用各種分析器測試索引中的一些字串，以瞭解如何 token 化詞彙。
 
 + [搜尋檔](/rest/api/searchservice/search-documents) 說明如何使用 [簡單語法](query-simple-syntax.md) 或萬用字元和正則運算式的 [完整 Lucene 語法](query-lucene-syntax.md) 來建立查詢要求。
 

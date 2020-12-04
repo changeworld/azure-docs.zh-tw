@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 應用程式管理的新功能
 description: Azure Active Directory 應用程式管理的新檔和更新的檔。
-ms.date: 11/05/2020
+ms.date: 12/03/2020
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -9,16 +9,26 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 10861438334bc804d1b1e4b9a669280f7e09ffde
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 38602482f1a25f212829342fe691d7bb75666d31
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654004"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571006"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory 應用程式管理：新功能
 
 歡迎使用 Azure Active Directory 應用程式管理檔中的新功能。 本文列出已新增的檔，以及過去三個月內有重大更新的新檔。 若要瞭解應用程式管理服務的新功能，請參閱 [Azure Active Directory 中的新功能](../fundamentals/whats-new.md)。
+
+## <a name="november-2020"></a>2020 年 11 月
+
+### <a name="new-articles"></a>新文章
+- [使用 Azure AD App Proxy (Preview 的內部部署應用程式以標頭為基礎的單一登入) ](application-proxy-configure-single-sign-on-with-headers.md)
+
+### <a name="updated-articles"></a>更新的文章
+- [Azure Active Directory 應用程式管理：新功能](whats-new-docs.md)
+- [登入 SAML 型單一登入設定的應用程式時發生問題](application-sign-in-problem-federated-sso-gallery.md)
+
 
 ## <a name="october-2020"></a>2020 年 10 月
 
@@ -32,7 +42,7 @@ ms.locfileid: "94654004"
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [登入已設定 SAML 型單一登入的應用程式時發生問題](application-sign-in-problem-federated-sso-gallery.md)
+- [登入 SAML 型單一登入設定的應用程式時發生問題](application-sign-in-problem-federated-sso-gallery.md)
 - [安裝應用程式 Proxy 代理程式連接器時遇到問題](application-proxy-connector-installation-problem.md)
 - [將應用程式驗證從 Active Directory 同盟服務移至 Azure Active Directory](migrate-adfs-apps-to-azure.md)
 - [設定使用者同意應用程式的方式](configure-user-consent.md)
@@ -65,7 +75,7 @@ ms.locfileid: "94654004"
 - [Azure Active Directory 中的應用程式使用者體驗](end-user-experiences.md)
 - [如何使用自助應用程式存取](access-panel-manage-self-service-access.md)
 - [針對從 Azure AD 我的應用程式登入應用程式的問題進行疑難排解](application-sign-in-other-problem-access-panel.md)
-- [針對 Azure AD 中的密碼型單一登入進行疑難排解](troubleshoot-password-based-sso.md)
+- [Azure AD 中的密碼型單一登入疑難排解](troubleshoot-password-based-sso.md)
 - [規劃 Azure Active Directory 我的應用程式部署](access-panel-deployment-plan.md)
 - [什麼是單一登入 (SSO)？](what-is-single-sign-on.md)
 - [在 Azure Active Directory 中對 overprivileged 或可疑應用程式採取動作](manage-application-permissions.md)

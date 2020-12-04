@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 15810e65873c685565ccaad6c2dcdc1707713f2c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1c28b4e9821f31f927ef4f640aa664d330cf8792
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182643"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96570989"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>使用 Azure Pipelines 將設定提取至應用程式設定
 
@@ -27,7 +27,7 @@ ms.locfileid: "96182643"
 
 ## <a name="create-a-service-connection"></a>建立服務連線
 
-服務連接可讓您從 Azure DevOps 專案存取 Azure 訂用帳戶中的資源。
+[服務連接](/azure/devops/pipelines/library/service-endpoints)可讓您從 Azure DevOps 專案存取 Azure 訂用帳戶中的資源。
 
 1. 在 Azure DevOps 中，移至包含目標管線的專案，然後開啟左下方的 **專案設定** 。
 1. 在 [ **管線** ] 下，選取 [ **服務連接**]。

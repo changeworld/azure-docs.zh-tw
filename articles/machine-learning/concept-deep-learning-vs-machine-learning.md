@@ -10,12 +10,12 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 09/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 43b03abb2aac13358a2187a0a5dc570c1e45934e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c612e2a95e2596b2732ed8282037c8ded908a0a0
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458491"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571380"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Azure Machine Learning 中的深度學習與機器學習
 
@@ -93,8 +93,6 @@ ms.locfileid: "96458491"
 
 公司會使用深度學習來執行文字分析，以偵測內部交易與政府法規的合規性。 另一個常見的例子是保險詐騙：文字分析通常用來分析大量檔，以辨識保險索賠詐騙的機會。 
 
-瞭解如何在 Azure Machine Learning 中使用 TensorFlow 模型： [使用 TensorFlow 模型將手寫數位分類](./how-to-train-tensorflow.md?WT.mc_id=docs-article-lazzeri)
-
 ## <a name="artificial-neural-networks"></a>人工類神經網路
 
 人工類神經網路是由已連線節點的圖層所組成。 深度學習模型會使用具有大量圖層的神經網路。 
@@ -118,6 +116,9 @@ Feedforward 類神經網路是最簡單的人工類神經網路類型。 在 fee
 ## <a name="next-steps"></a>後續步驟
 
 下列文章說明在 [Azure Machine Learning](./index.yml?WT.mc_id=docs-article-lazzeri)中使用開放原始碼深度學習模型的更多選項：
+
+
+- [使用 TensorFlow 模型將手寫數位分類](./how-to-train-tensorflow.md?WT.mc_id=docs-article-lazzeri) 
 
 - [使用 TensorFlow 估算器和 Keras 分類手寫數位](./how-to-train-keras.md?WT.mc_id=docs-article-lazzeri)
 

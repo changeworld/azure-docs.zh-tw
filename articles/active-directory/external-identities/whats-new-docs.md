@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 外部身分識別的新功能
 description: Azure Active Directory 外部身分識別的新檔和更新的檔。
-ms.date: 11/10/2020
+ms.date: 12/03/2020
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,24 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: f7c296b4a5bed0c3e599f59e9f0461295b86f197
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 35fa6909160ca707035ee9fc599e4035c2ae7981
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94550067"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573896"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory 外部身分識別：新功能
 
 歡迎使用 Azure Active Directory 外部身分識別檔的新功能。 本文列出已新增的檔，以及過去三個月內有重大更新的新檔。 若要瞭解外部身分識別服務的新功能，請參閱 [Azure Active Directory 中的新功能](../fundamentals/whats-new.md)。
+
+## <a name="november-2020"></a>2020 年 11 月
+
+### <a name="updated-articles"></a>更新的文章
+- [Microsoft 365 的外部共用和 Azure Active Directory (Azure AD) B2B 共同作業](o365-external-user.md)
+- [使用 Azure AD B2B 共同作業對本機管理的夥伴帳戶授與雲端資源的存取權](hybrid-on-premises-to-cloud.md)
+- [Azure Active Directory B2B 共同作業使用者的屬性](user-properties.md)
+
 
 ## <a name="october-2020"></a>2020 年 10 月
 

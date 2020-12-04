@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 19a4645e2bde4cf6b9f9a78123b334c290581ac4
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: a15ebd43861e2116ddbb2d9055b289645962e203
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484527"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573913"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>適用於定期資料轉送的解決方案
  
@@ -52,7 +52,7 @@ ms.locfileid: "96484527"
 
 ### <a name="continuous-data-ingestion-over-network"></a>透過網路持續擷取資料
 
-| 特徵                                       | 資料箱閘道 | 資料箱邊緣   | Azure Data Factory        |
+| 功能                                       | 資料箱閘道 | 資料箱邊緣   | Azure Data Factory        |
 |----------------------------------|-----------------------------------------|--------------------------|---------------------------|
 | 板型規格                                   | 虛擬裝置             | 實體裝置          | Azure 入口網站中的服務、內部部署代理程式                                                            |
 | 硬體                                      | 您的 Hypervisor            | 由 Microsoft 提供    | NA                                                            |
@@ -68,6 +68,6 @@ ms.locfileid: "96484527"
 - [使用 AzCopy 傳輸資料](./storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
 - [使用 Azure 儲存體 REST API 轉送資料的詳細資訊](/dotnet/api/overview/azure/storage)。
 - 了解如何：
-    - [使用資料箱閘道傳輸資料](../../databox-online/data-box-gateway-deploy-add-shares.md)。
+    - [使用資料箱閘道傳輸資料](../../databox-gateway/data-box-gateway-deploy-add-shares.md)。
     - [在傳送至 Azure 之前，使用 Data Box Edge 來轉換資料](../../databox-online/azure-stack-edge-deploy-configure-compute.md)。
 - [了解如何使用 Azure Data Factory 轉送資料](../../data-factory/tutorial-bulk-copy-portal.md)。

@@ -1,7 +1,7 @@
 ---
 title: 監視公用基礎負載平衡器的作業、事件和計數器
 titleSuffix: Azure Load Balancer
-description: 了解如何啟用 Basic Load Balancer 的警示事件和探查健康情況狀態記錄
+description: 瞭解如何啟用 Azure Load Balancer 的記錄
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,23 +13,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: f24ab2c646757f0241748336243b0d5f977d081c
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 6742723e24df83ac8112e224f1999f116ab82c94
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698320"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572774"
 ---
-# <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>公用基礎負載平衡器的 Azure 監視器記錄
+# <a name="azure-monitor-logs-for-the-standard-azure-load-balancer"></a>標準 Azure Load Balancer 的 Azure 監視器記錄
 
-您可以在 Azure 中使用不同類型的記錄來管理 Basic Load Balancer，並對其進行疑難排解。 透過入口網站可以存取其中一些記錄。 記錄可以串流至事件中樞或 Log Analytics 工作區。 所有記錄都可以從 Azure blob 儲存體解壓縮，並以不同的工具（例如 Excel 和 Power BI）來查看。  您可以從下列清單進一步了解不同類型的記錄。
+您可以在 Azure 中使用不同類型的記錄來管理標準負載平衡器，並對其進行疑難排解。 記錄可以串流至事件中樞或 Log Analytics 工作區。 所有記錄都可以從 Azure blob 儲存體解壓縮，並以不同的工具（例如 Excel 和 Power BI）來查看。  您可以從下列清單進一步了解不同類型的記錄。
 
-* **活動記錄：** 您可以使用 [View 活動記錄來監視資源的動作](../azure-resource-manager/management/view-activity-logs.md) ，以查看提交至您的 Azure 訂用帳戶 () 的所有活動及其狀態。 預設會啟用活動記錄，並可在 Azure 入口網站中查看。
-* **警示事件記錄：** 您可以使用此記錄來檢視負載平衡器所引發的警示。 系統每五分鐘會收集一次負載平衡器的狀態。 只有在引發負載平衡器警示事件時，才會寫入此記錄檔。
-* **健康狀態探查記錄︰** 您可以使用此記錄來檢視健康狀態探查所偵測到的問題，例如後端集區中因為健康狀態探查失敗而未從負載平衡器接收要求的執行個體數目。 健康狀態探查狀態發生變更時會寫入此記錄。
+* **活動記錄：** 您可以使用 [View 活動記錄來監視資源的動作](../azure-resource-manager/management/view-activity-logs.md) ，以查看提交至您的 Azure 訂用帳戶 () 的所有活動及其狀態。 預設會啟用活動記錄，並可在 Azure 入口網站中查看。 這些記錄適用于基本和標準負載平衡器。
+* **Standard Load Balancer 計量：** 您可以使用此記錄來查詢作為標準 Azure Load Balancer 的記錄匯出的度量。 這些記錄僅適用于標準負載平衡器。
 
 > [!IMPORTANT]
-> **健康情況探查事件記錄檔目前無法運作，而且會列在 [Azure Load Balancer 的已知問題](whats-new.md#known-issues)中。** 記錄僅適用於在資源管理員部署模型中部署的資源。 您無法將記錄使用於傳統部署模型中的資源。 如需這些部署模型的詳細資訊，請參閱[了解 Resource Manager 部署和傳統部署](../azure-resource-manager/management/deployment-models.md)。
+> **健康情況探查和 Load Balancer 警示事件記錄檔目前無法運作，而且會列在 [Azure Load Balancer 的已知問題](whats-new.md#known-issues)中。** 
+
+> [!IMPORTANT]
+> 記錄僅適用於在資源管理員部署模型中部署的資源。 您無法將記錄使用於傳統部署模型中的資源。 如需這些部署模型的詳細資訊，請參閱[了解 Resource Manager 部署和傳統部署](../azure-resource-manager/management/deployment-models.md)。
 
 ## <a name="enable-logging"></a>啟用記錄
 
@@ -75,94 +77,30 @@ ms.locfileid: "94698320"
     3. 在下拉式清單方塊中選取 **Log Analytics 工作區** 。
 
 
-8. 在 [**診斷設定**] 窗格中的 [**記錄**] 區段底下，選取 [兩者] 旁的核取方塊：
-   * **LoadBalancerAlertEvent**
-   * **LoadBalancerProbeHealthStatus**
+8.  在 [**診斷設定**] 窗格的 [計量 **] 區段下方**，選取 [： **AllMetrics** ] 旁邊的核取方塊。
 
-9.  在 [**診斷設定**] 窗格中的 [計量 **] 區段底下**，選取下列核取方塊：
-   * **AllMetrics**
-
-11. 確認一切看起來正確，然後按一下 [建立 **診斷設定**] 窗格頂端的 [**儲存**]。
+9. 確認一切看起來正確，然後按一下 [建立 **診斷設定**] 窗格頂端的 [**儲存**]。
 
 ## <a name="activity-log"></a>活動記錄檔
 
-預設會產生活動記錄。 記錄會在 Azure 的 [事件記錄] 存放區中保留 90 天。 若要深入瞭解這些記錄，請閱讀 [View 活動記錄以監視資源的動作](../azure-resource-manager/management/view-activity-logs.md) 文章。
-
-## <a name="archive-to-storage-account-logs"></a>封存至儲存體帳戶記錄
-
-### <a name="alert-event-log"></a>警示事件記錄檔
-
-您必須對每一個負載平衡器進行啟用，才會產生此記錄檔。 事件會以 JSON 格式記錄，並儲存在您啟用記錄時所指定的儲存體帳戶中。 下列範例是事件。
-
-```json
-{
-    "time": "2016-01-26T10:37:46.6024215Z",
-    "systemId": "32077926-b9c4-42fb-94c1-762e528b5b27",
-    "category": "LoadBalancerAlertEvent",
-    "resourceId": "/SUBSCRIPTIONS/XXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXXXXXXX/RESOURCEGROUPS/RG7/PROVIDERS/MICROSOFT.NETWORK/LOADBALANCERS/WWEBLB",
-    "operationName": "LoadBalancerProbeHealthStatus",
-    "properties": {
-        "eventName": "Resource Limits Hit",
-        "eventDescription": "Ports exhausted",
-        "eventProperties": {
-            "public ip address": "40.117.227.32"
-        }
-    }
-}
-```
-
-JSON 輸出會顯示 *事件事件名稱* 屬性，其將描述負載平衡器建立警示的原因。 在此情況下，產生的警示是因為來源 IP NAT 限制 (SNAT) 所造成的 TCP 埠耗盡。
-
-### <a name="health-probe-log"></a>健全狀況探查記錄檔
-
-如果您已如上所述對每一個負載平衡器進行啟用，才會產生此記錄檔。 資料會儲存在您啟用記錄時所指定的儲存體帳戶中。 系統會建立名為 'insights-logs-loadbalancerprobehealthstatus' 的容器，並記錄下列資料：
-
-```json
-{
-    "records":[
-    {
-        "time": "2016-01-26T10:37:46.6024215Z",
-        "systemId": "32077926-b9c4-42fb-94c1-762e528b5b27",
-        "category": "LoadBalancerProbeHealthStatus",
-        "resourceId": "/SUBSCRIPTIONS/XXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX/RESOURCEGROUPS/RG7/PROVIDERS/MICROSOFT.NETWORK/LOADBALANCERS/WWEBLB",
-        "operationName": "LoadBalancerProbeHealthStatus",
-        "properties": {
-            "publicIpAddress": "40.83.190.158",
-            "port": "81",
-            "totalDipCount": 2,
-            "dipDownCount": 1,
-            "healthPercentage": 50.000000
-        }
-    },
-    {
-        "time": "2016-01-26T10:37:46.6024215Z",
-        "systemId": "32077926-b9c4-42fb-94c1-762e528b5b27",
-        "category": "LoadBalancerProbeHealthStatus",
-        "resourceId": "/SUBSCRIPTIONS/XXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX/RESOURCEGROUPS/RG7/PROVIDERS/MICROSOFT.NETWORK/LOADBALANCERS/WWEBLB",
-        "operationName": "LoadBalancerProbeHealthStatus",
-        "properties": {
-            "publicIpAddress": "40.83.190.158",
-            "port": "81",
-            "totalDipCount": 2,
-            "dipDownCount": 0,
-            "healthPercentage": 100.000000
-        }
-    }]
-}
-```
-
-JSON 輸出在屬性欄位中顯示了探查健全狀況狀態的基本資訊。 [ *DipDownCount* ] 屬性會顯示後端上的實例總數，因為探查回應失敗，所以不會接收網路流量。
+預設會產生活動記錄。 您可以 [遵循本文中的指示](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log)，將其設定為在訂用帳戶層級上匯出。 若要深入瞭解這些記錄，請閱讀 [View 活動記錄以監視資源的動作](../azure-resource-manager/management/view-activity-logs.md) 文章。
 
 ### <a name="view-and-analyze-the-activity-log"></a>檢視和分析活動記錄檔
 
 您可以使用下列任何方法，檢視和分析活動記錄檔資料：
 
 * **Azure 工具：** 透過 Azure PowerShell、Azure 命令列介面 (CLI) 、Azure REST API 或 Azure 入口網站，從活動記錄中取出資訊。 [稽核作業與資源管理員](../azure-resource-manager/management/view-activity-logs.md) 一文會詳述每個方法的逐步指示。
-* **Power BI︰** 如果還沒有 [Power BI](https:// .microsoft.com/pricing) 帳戶，您可以免費試用。 使用 [Power BI 的 Azure 稽核記錄內容套件](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)，您可以使用預先設定的儀表板來分析資料，或根據您的需求自訂檢視。
+* **Power BI︰** 如果還沒有 [Power BI](https://powerbi.microsoft.com/pricing) 帳戶，您可以免費試用。 您可以使用 [適用于 Power BI 的 Azure Audit Logs 整合](https://powerbi.microsoft.com/integrations/azure-audit-logs/)，利用預先設定的儀表板來分析您的資料，也可以自訂視圖以符合您的需求。
 
-### <a name="view-and-analyze-the-health-probe-and-event-log"></a>檢視和分析健全狀況探查與事件記錄檔
+## <a name="metrics-as-logs"></a>以記錄形式的計量
+使用計量來記錄 Azure 監視器所提供的匯出功能時，您可以匯出 Load Balancer 計量。 這些計量會產生每個分鐘取樣間隔的記錄專案。
 
-連接到您的儲存體帳戶，並取得事件和健康情況探查記錄的 JSON 記錄專案。 下載 JSON 檔案後，您可以將它們轉換成 CSV，並在 Excel、Power BI 或任何其他資料視覺化檢視中查看。
+每個資源層級都會啟用計量至記錄匯出。 您可以前往 [診斷設定] 分頁、依資源群組篩選，然後選取您想要啟用計量匯出的 Load Balancer 來啟用這些記錄。 當 Load Balancer 診斷設定] 頁面開啟時，選取 [AllMetrics] 以將合格的計量匯出為記錄。
+
+請參閱本文的「 [限制](#limitations) 」一節，以瞭解計量匯出的限制。
+
+### <a name="view-and-analyze-metrics-as-logs"></a>以記錄形式來查看和分析計量
+在 Standard Load Balancer 的診斷設定中啟用 AllMetrics 之後，如果使用事件中樞或 Log Analytics 工作區，這些記錄將會填入 AzureMonitor 資料表中。 如果匯出至儲存體，請連接到您的儲存體帳戶，並取得事件和健康情況探查記錄的 JSON 記錄專案。 下載 JSON 檔案後，您可以將它們轉換成 CSV，並在 Excel、Power BI 或任何其他資料視覺化檢視中查看。 
 
 > [!TIP]
 > 如果您熟悉 Visual Studio 以及在 C# 中變更常數和變數值的基本概念，您可以使用 GitHub 所提供的[記錄檔轉換器工具 (英文)](https://github.com/Azure-Samples/networking-dotnet-log-converter)。
@@ -173,6 +111,13 @@ JSON 輸出在屬性欄位中顯示了探查健全狀況狀態的基本資訊。
 ## <a name="send-to-log-analytics"></a>傳送至 Log Analytics
 Azure 中的資源可以將其診斷資訊直接傳送至 Log Analytics 工作區，其中可針對疑難排解和分析資訊來執行複雜的查詢。  如需詳細資訊，請參閱 Azure 監視器中的 [收集 Log Analytics 工作區中的 Azure 資源記錄](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="limitations"></a>限制
+使用計量來記錄負載平衡器的匯出功能時，目前有下列限制：
+* 當匯出為記錄時，目前會使用內部名稱顯示計量，您可以在下表中找到對應
+* 不會保留度量的維度。 例如，使用 DipAvailability (健康情況探查狀態) 的計量，您將無法依後端 IP 位址進行分割或查看
+* 使用的 SNAT 埠和已配置的 SNAT 埠計量目前無法作為記錄匯出
 
-[了解負載平衡器偵查](load-balancer-custom-probe-overview.md)
+## <a name="next-steps"></a>後續步驟
+* [檢查您 Load Balancer 的可用計量](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics)
+* [依照 Azure 監視器的指示建立和測試查詢](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
+* 您可以使用下列連結，在本文中提供意見反應或 Load Balancer 功能

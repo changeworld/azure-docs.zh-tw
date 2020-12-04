@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
-ms.openlocfilehash: 90fc35249daea51a08cb83143c6be024e78964a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b86f9bcbc863a78fd5f8f748e973a20ea709636
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804005"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573165"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>建立、變更或刪除公用 IP 位址首碼
 
@@ -41,58 +41,61 @@ ms.locfileid: "91804005"
 
 ## <a name="create-a-public-ip-address-prefix"></a>建立公用 IP 位址首碼
 
-1. 在入口網站的左上角，選取 [+ 建立資源]****。
-2. 在 [*搜尋 Marketplace* ] 方塊中輸入*公用 ip 首碼*。 當 [公用 IP 位址首碼]**** 出現於搜尋結果時，將其選取。
-3. 在 [公用 IP 位址首碼]**** 下方，選取 [建立]****。
-4. 在 [建立公用 IP 位址首碼]**** 下方，輸入或選取下列設定的值，然後選取 [建立]****：
+1. 在入口網站的左上角，選取 [+ 建立資源]。
+2. 在 [*搜尋 Marketplace* ] 方塊中輸入 *公用 ip 首碼*。 當 [公用 IP 位址首碼] 出現於搜尋結果時，將其選取。
+3. 在 [公用 IP 位址首碼] 下方，選取 [建立]。
+4. 在 [建立公用 IP 位址首碼] 下方，輸入或選取下列設定的值，然後選取 [建立]：
 
    |設定|必要？|詳細資料|
    |---|---|---|
    |訂用帳戶|是|所在的[訂用帳戶](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)必須與您想要與公用 IP 位址建立關聯的資源相同。|
    |資源群組|是|所在的[資源群組](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)可以與您想要與公用 IP 位址建立關聯的資源相同或不同。|
-   |名稱|是|名稱必須是您選取的資源群組中唯一的名稱。|
+   |Name|是|名稱必須是您選取的資源群組中唯一的名稱。|
    |區域|是|必須與您從範圍指派位址的公用 IP 位址存在於相同[區域](https://azure.microsoft.com/regions)。|
    |首碼大小|是| 您需要的首碼大小。 /28 或 16 個 IP 位址為預設值。
 
 **命令**
 
-|工具|Command|
+|工具|命令|
 |---|---|
 |CLI|[az network public-ip prefix create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
 |PowerShell|[新 >new-azpublicipprefix](/powershell/module/az.network/new-azpublicipprefix)|
 
+>[!NOTE]
+>在具有可用性區域的區域中，您可以使用 PowerShell 或 CLI 命令，將公用 IP 位址首碼建立為非區域、與特定區域相關聯，或使用區域冗余。  針對 API 版本2020-08-01 或更新版本，如果未提供區域參數，則會建立非區域的公用 IP 位址首碼。 若是早于2020-08-01 的 API 版本，則會建立區域冗余公用 IP 位址首碼。 
+
 ## <a name="create-a-static-public-ip-address-from-a-prefix"></a>從首碼建立靜態公用 IP 位址
 建立首碼之後，您必須從首碼建立靜態 IP 位址。 若要這樣做，請遵循下面的步驟。
 
-1. 在 Azure 入口網站頂端包含「搜尋資源」** 文字的方塊中，鍵入「公用 IP 位址首碼」**。 當 [公用 IP 位址首碼]**** 出現於搜尋結果時，將其選取。
+1. 在 Azure 入口網站頂端包含「搜尋資源」文字的方塊中，鍵入「公用 IP 位址首碼」。 當 [公用 IP 位址首碼] 出現於搜尋結果時，將其選取。
 2. 選取您要從中建立公用 IP 的首碼。
-3. 當它出現在搜尋結果時，請選取它，然後按一下 [概觀] 區段中的 [+ 新增 IP 位址]****。
-4. 在 [建立公用 IP 位址]**** 下方，輸入或選取下列設定的值。 由於首碼適用於標準 SKU、IPv4 和靜態，因此您只需要提供下列資訊：
+3. 當它出現在搜尋結果時，請選取它，然後按一下 [概觀] 區段中的 [+ 新增 IP 位址]。
+4. 在 [建立公用 IP 位址] 下方，輸入或選取下列設定的值。 由於首碼適用於標準 SKU、IPv4 和靜態，因此您只需要提供下列資訊：
 
    |設定|必要？|詳細資料|
    |---|---|---|
    |名稱|是|公用 IP 位址名稱在您選取的資源群組中必須是唯一。|
    |閒置逾時 (分鐘)|否|不需依賴用戶端傳送保持連線訊息，讓 TCP 或 HTTP 連線保持開啟的分鐘數。 |
-   |DNS 名稱標籤|否|在您建立名稱的 Azure 區域 (跨越所有訂用帳戶和所有客戶) 中必須是唯一。 Azure 會在其 DNS 中自動登錄名稱和 IP 位址，以便您連線至具有此名稱的資源。 Azure 會將 *location.cloudapp.azure.com* (其中 location 是您選取的位置) 之類的預設子網路附加至您提供的名稱，以建立完整的 DNS 名稱。如需詳細資訊，請參閱[使用具有 Azure 公用 IP 位址的 Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address)。|
+   |DNS 名稱標籤|否|在您建立名稱的 Azure 區域 (跨越所有訂用帳戶和所有客戶) 中必須是唯一。 Azure 會在其 DNS 中自動登錄名稱和 IP 位址，以便您連線至具有此名稱的資源。 Azure 會將 *location.cloudapp.azure.com* (其中 location 是您選取的位置) 之類的預設子網路附加至您提供的名稱，以建立完整的 DNS 名稱。如需詳細資訊，請參閱 [使用具有 Azure 公用 IP 位址的 Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address)。|
 
 或者，您可以使用下列 CLI 和 PS 命令搭配--public-ip 首碼 (CLI) 和-PublicIpPrefix (PS) 參數，以建立公用 IP 位址資源。 
 
-|工具|Command|
+|工具|命令|
 |---|---|
 |CLI|[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)|
 |PowerShell|[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress?view=azps-2.0.0)|
 
 ## <a name="view-or-delete-a-prefix"></a>檢視或刪除首碼
 
-1. 在 Azure 入口網站頂端包含「搜尋資源」** 文字的方塊中，鍵入「公用 IP 位址首碼」**。 當 [公用 IP 位址首碼]**** 出現於搜尋結果時，將其選取。
+1. 在 Azure 入口網站頂端包含「搜尋資源」文字的方塊中，鍵入「公用 IP 位址首碼」。 當 [公用 IP 位址首碼] 出現於搜尋結果時，將其選取。
 2. 選取您要檢視、變更設定，或從清單中刪除的公用 IP 位址首碼名稱。
 3. 根據您要檢視、刪除或變更公用 IP 位址首碼，完成下列其中一個選項。
-   - **檢視**：[概觀]**** 區段會顯示公用 IP 位址首碼的索引鍵設定，例如首碼。
-   - **刪除**：若要刪除公用 IP 位址首碼，請在 [概觀]**** 區段中選取 [刪除]****。 如果首碼內的位址與公用 IP 位址資源相關聯，則您必須先刪除公用 IP 位址資源。 請參閱[刪除公用 IP 位址](virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address)。
+   - **檢視**：[概觀] 區段會顯示公用 IP 位址首碼的索引鍵設定，例如首碼。
+   - **刪除**：若要刪除公用 IP 位址首碼，請在 [概觀] 區段中選取 [刪除]。 如果首碼內的位址與公用 IP 位址資源相關聯，則您必須先刪除公用 IP 位址資源。 請參閱[刪除公用 IP 位址](virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address)。
 
 **命令**
 
-|工具|Command|
+|工具|命令|
 |---|---|
 |CLI|[az network public-ip prefix list](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) 可列出公用 IP 位址、[az network public-ip prefix show](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) 可顯示設定；[az network public-ip prefix update](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-update) 可進行更新；[az network public-ip prefix delete](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) 可進行刪除|
 |PowerShell|[>new-azpublicipprefix](/powershell/module/az.network/get-azpublicipprefix) 以取得公用 IP 位址物件，並查看其設定、 [設定 >new-azpublicipprefix](/powershell/module/az.network/set-azpublicipprefix) 以更新設定; [移除->new-azpublicipprefix](/powershell/module/az.network/remove-azpublicipprefix) 以刪除|
@@ -101,7 +104,7 @@ ms.locfileid: "91804005"
 
 若要針對公用 IP 位址首碼執行工作，您的帳戶必須指派為[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色，或為已指派下表所列適當動作的[自訂](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)角色：
 
-| 動作                                                            | 名稱                                                           |
+| 動作                                                            | Name                                                           |
 | ---------                                                         | -------------                                                  |
 | Microsoft.Network/publicIPPrefixes/read                           | 讀取公用 IP 位址首碼                                |
 | Microsoft.Network/publicIPPrefixes/write                          | 建立或更新公用 IP 位址首碼                    |
