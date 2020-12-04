@@ -39,6 +39,8 @@
       href: restart-resize-error-troubleshooting.md
     - name: 重新啟動、關閉或停止服務
       href: boot-error-troubleshoot-windows.md
+    - name: Linux 虛擬機器上完整 OS 磁碟的問題
+      href: os-disk-full-linux.md
 - name: 非預期的重新啟動
   items:
     - name: 包含連結 VHD 的 VM 非預期重新開機

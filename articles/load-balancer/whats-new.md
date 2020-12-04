@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: anavin
-ms.openlocfilehash: 3a20b69189226486de8cfceb95e2fa79a976cb12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a30a42e8a8c4049b53274da512089dd29965e775
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841028"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573148"
 ---
 # <a name="whats-new-in-azure-load-balancer"></a>Azure Load Balancer 的新功能
 
@@ -42,7 +42,7 @@ Azure Load Balancer 會定期更新。 請隨時掌握最新公告。 本文提�
 
 |問題 |描述  |降低  |
 | ---------- |---------|---------|
-| Log Analytics 匯出 | Log Analytics 無法匯出 Standard Load Balancer 的計量，也無法匯出基本 Load Balancer 的健全狀態探查狀態記錄  | [針對 Standard Load Balancer，使用 Azure 監視器取得多維度計量](load-balancer-standard-diagnostics.md)。 雖然無法使用 Log Analytics 進行監視，但 Azure 監視器會提供一組豐富的多維度計量視覺效果。 您可以透過 Load Balancer 的 [深入解析] 子刀鋒視窗，利用預先設定的計量儀表板。 如果使用基本 Load Balancer，請[升級至標準](upgrade-basic-standard.md)以進行生產層級計量監視。
+| Load Balancer 警示事件和健全狀態探查狀態記錄 | 記錄功能不適用於 Basic 和 Standard Load Balancer 的 Load Balancer 警示事件，而健全狀態探查狀態記錄也不適用於 Basic Load Balancer  | [針對 Standard Load Balancer，使用 Azure 監視器取得多維度計量](load-balancer-standard-diagnostics.md)。 Azure 監視器會提供一組豐富的多維度計量視覺效果，其可匯出為記錄。 您可以透過 Load Balancer 的 [深入解析] 子刀鋒視窗，利用預先設定的計量儀表板。 如果使用基本 Load Balancer，請[升級至標準](upgrade-basic-standard.md)以進行生產層級計量監視。
 
   
 

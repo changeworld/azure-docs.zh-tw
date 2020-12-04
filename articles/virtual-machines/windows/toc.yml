@@ -51,98 +51,6 @@
       href: tutorial-iis-sql.md
     - name: 16 - 使用 SSL 保護網路伺服器
       href: tutorial-secure-web-server.md
-- name: 範例
-  items:
-    - name: PowerShell 索引
-      href: powershell-samples.md
-    - name: PowerShell
-      items:
-        - name: 建立
-          items:
-            - name: 快速
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md
-            - name: 完整設定的 VM
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm.md
-            - name: 具有高可用性的 VM
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-nlb-vm.md
-            - name: 自訂指令碼範例
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md
-            - name: 使用 DSC
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-iis-using-dsc.md
-            - name: VHD 上傳的 VM
-              href: ./../scripts/virtual-machines-windows-powershell-upload-generalized-script.md
-            - name: 連結 OS 磁碟
-              href: ./../scripts/virtual-machines-powershell-sample-create-vm-from-managed-os-disks.md
-            - name: 來自快照集的 VM
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md
-        - name: 管理儲存體
-          items:
-            - name: 從 VHD 建立受控磁碟
-              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-vhd.md
-            - name: 從快照集建立受控磁碟
-              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot.md
-            - name: 複製受控磁碟
-              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md
-            - name: 將快照集以 VHD 形式匯出到儲存體帳戶
-              href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md
-            - name: 將受控磁碟的 VHD 匯出到儲存體帳戶
-              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md
-            - name: 從 VDH 建立快照集
-              href: ../scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd.md
-            - name: 複製快照集
-              href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription.md
-        - name: 安全
-          items:
-            - name: 加密 VM 及其資料磁碟
-              href: ./../scripts/virtual-machines-windows-powershell-sample-encrypt-vm.md?
-        - name: 監視
-          items:
-            - name: Azure 監視器
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md
-            - name: 收集訂用帳戶中所有 VM 的詳細資料
-              href: ../scripts/virtual-machines-powershell-sample-collect-vm-details.md
-    - name: Azure CLI 索引
-      href: cli-samples.md
-    - name: CLI
-      items:
-        - name: 建立
-          items:
-            - name: 快速
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-quick-create.md
-            - name: 完整設定的 VM
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm.md
-            - name: 具有高可用性的 VM
-              href: ./../scripts/virtual-machines-windows-cli-sample-nlb.md
-            - name: 自訂指令碼範例
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-iis.md
-            - name: 使用 DSC 組態
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-iis-using-dsc.md
-        - name: 管理儲存體
-          items:
-            - name: 從 VHD 建立受控磁碟
-              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd.md
-            - name: 從快照集建立受控磁碟
-              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-snapshot.md
-            - name: 複製受控磁碟
-              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription.md
-            - name: 將快照集以 VHD 格式匯出至儲存體帳戶
-              href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md
-            - name: 將受控磁碟的 VHD 匯出到儲存體帳戶
-              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md
-            - name: 複製快照集
-              href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-same-or-different-subscription.md
-        - name: 網路
-          items:
-            - name: 保護 VM 之間的網路流量
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-nsg.md
-        - name: 安全
-          items:
-            - name: 加密 VM 和資料磁碟
-              href: ./../scripts/virtual-machines-windows-cli-sample-encrypt-vm.md
-        - name: 監視
-          items:
-            - name: Azure 監視器
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
 - name: 概念
   items:
     - name: 影像
@@ -197,7 +105,7 @@
               href: ../dv4-dsv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 計算最佳化
           items:
-            - name: 概觀
+            - name: 總覽
               href: ../sizes-compute.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Fsv2 系列
               href: ../fsv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -232,7 +140,7 @@
               href: storage-performance.md
         - name: GPU - 加速計算
           items:
-            - name: 概觀
+            - name: 總覽
               href: ../sizes-gpu.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
             - name: NC 系列
               href: ../nc-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -259,7 +167,7 @@
         - name: 高效能計算
           displayName: H-series
           items:
-            - name: 概觀
+            - name: 總覽
               href: ../sizes-hpc.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: H 系列
               href: ../h-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -672,9 +580,6 @@
           href: change-drive-letter.md
         - name: 變更可用性設定組
           href: change-availability-set.md
-        - name: 匯出 ARM 範本
-          displayName: Azure Resource Manager
-          href: download-template.md
         - name: Azure VM 代理程式
           href: ../extensions/agent-windows.md
         - name: 減輕風險的理論式執行
@@ -689,7 +594,7 @@
       items:
         - name: 維修通知
           items:
-            - name: 概觀
+            - name: 總覽
               href: ../maintenance-notifications.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: CLI
               href: ../maintenance-notifications-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -951,6 +856,8 @@
           href: find-unattached-disks.md
         - name: 尋找未連接的磁碟 - 入口網站
           href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: 將 Azure 磁碟對應至來賓磁碟
+          href: azure-to-guest-disk-mapping.md
         - name: 磁碟常見問題
           href: ../faq-for-disks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 管理網路服務

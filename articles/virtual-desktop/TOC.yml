@@ -124,7 +124,7 @@
           href: shortpath.md
         - name: 實作服務品質 (QoS)
           href: rdp-quality-of-service-qos.md
-        - name: 安全 URL 清單
+        - name: 必要的 URL 清單
           href: safe-url-list.md
         - name: 頻寬考量
           href: rdp-bandwidth.md

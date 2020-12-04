@@ -68,7 +68,7 @@
             - name: 基本概念
               href: data-lake-analytics-u-sql-get-started.md
             - name: 程式設計語言參考
-              href: /u-sql/
+              href: 'https://docs.microsoft.com/u-sql'
             - name: 目錄
               href: data-lake-analytics-u-sql-catalog.md
             - name: 使用者定義的運算子
@@ -79,8 +79,6 @@
               href: data-lake-analytics-u-sql-r-extensions.md
             - name: 認知擴充功能
               href: data-lake-analytics-u-sql-cognitive.md
-            - name: 可程式性指南
-              href: data-lake-analytics-u-sql-programmability-guide.md
         - name: Visual Studio
           items:
             - name: 安裝
@@ -115,6 +113,28 @@
               href: data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md
             - name: 本機執行和偵錯
               href: data-lake-tools-for-vscode-local-run-and-debug.md
+        - name: 可程式性指南
+          items:
+            - name: 可程式性指南概觀
+              href: data-lake-analytics-u-sql-programmability-guide.md
+            - name: 可程式性指南 - UDT 和 UDAGG
+              href: data-lake-analytics-u-sql-programmability-guide-UDT-AGG.md
+            - name: 可程式性指南 - UDO
+              items:
+                - name: 使用者定義物件概觀
+                  href: data-lake-analytics-u-sql-programmability-guide-UDO.md
+                - name: 使用使用者定義擷取器
+                  href: data-lake-analytics-u-sql-programmability-guide-extractor.md
+                - name: 使用使用者定義輸出器
+                  href: data-lake-analytics-u-sql-programmability-guide-outputter.md
+                - name: 使用使用者定義處理器
+                  href: data-lake-analytics-u-sql-programmability-guide-processor.md
+                - name: 使用使用者定義套用器
+                  href: data-lake-analytics-u-sql-programmability-guide-applier.md
+                - name: 使用使用者定義結合器
+                  href: data-lake-analytics-u-sql-programmability-guide-combiner.md
+                - name: 使用使用者定義歸納器
+                  href: data-lake-analytics-u-sql-programmability-guide-reducer.md
     - name: 排程 U-SQL 作業
       items:
         - name: 使用 SSIS 排程作業

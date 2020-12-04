@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: bbaa44fb64becee85b29cd44bee44e593ec55bf6
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 1095222f332e7a66f684feddf1fdab17704ca658
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372630"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573539"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>將您的 GCP 帳戶連線到 Azure 資訊安全中心
 
@@ -44,12 +44,14 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
 
 ## <a name="connect-your-gcp-account"></a>連接 GCP 帳戶
 
+請遵循下列步驟來建立 GCP 雲端連接器。 
+
 ### <a name="step-1-set-up-gcp-security-command-center-with-security-health-analytics"></a>步驟 1： 使用安全性健康情況分析設定 GCP 安全性命令中心
 
 對於組織中的所有 GCP 專案，您也必須：
 
-1. 使用 [GCP 文件中的指示](https://cloud.google.com/security-command-center/docs/quickstart-scc-setup)，設定 **GCP 安全性命令中心** 。
-1. 使用 [GCP 文件中的指示](https://cloud.google.com/security-command-center/docs/how-to-use-security-health-analytics)，啟用 **安全性健康情況分析** 。
+1. 使用 [GCP 文件中的指示](https://cloud.google.com/security-command-center/docs/quickstart-scc-setup)，設定 **GCP 安全性命令中心**。
+1. 使用 [GCP 文件中的指示](https://cloud.google.com/security-command-center/docs/how-to-use-security-health-analytics)，啟用 **安全性健康情況分析**。
 1. 確認有資料流向安全性命令中心。
 
 連接您的 GCP 環境以進行安全性設定的指示，會遵循 Google 在使用安全性設定方面的建議。 此整合會運用 Google 安全性命令中心，且會使用可能影響到計費的其他資源。

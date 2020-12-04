@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 7aa65cb8e37ce48a59c276fdf2631f75397d3236
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 23609613cace2f9be90ad5c88d4d51bb1c2f1a9b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122503"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573505"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>將您的 AWS 帳戶連線到 Azure 資訊安全中心
 
@@ -48,6 +48,8 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
 
 
 ## <a name="connect-your-aws-account"></a>連接 AWS 帳戶
+
+請遵循下列步驟來建立 AWS 雲端連接器。 
 
 ### <a name="step-1-set-up-aws-security-hub"></a>步驟 1： 設定 AWS 安全性中樞：
 
@@ -160,7 +162,7 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
 
         您可以在[使用標籤來組織 Azure 資源和管理階層](../azure-resource-manager/management/tag-resources.md)中深入了解 Azure 標籤。
 
-### <a name="step-7-confirmation"></a>步驟 7： 確認
+### <a name="step-6-confirmation"></a>步驟 6. 確認
 
 在成功建立連接器並正確設定 AWS 安全性中樞之後：
 

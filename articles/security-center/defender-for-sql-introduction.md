@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: bb24c04681b142aaa1c80738090afe2a13949495
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 102d4916caf9dcae577006b6b847979f98ab3673
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96014530"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499895"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>適用於 SQL 的 Azure Defender 簡介
 
@@ -25,7 +25,7 @@ ms.locfileid: "96014530"
 |----|:----|
 |版本狀態：|**適用於 Azure SQL 資料庫伺服器的 Azure Defender** - 正式發行 (GA)<br>**適用於機器上的 SQL 伺服器的 Azure Defender** - 預覽<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |定價：|構成 **適用於 SQL 的 Azure Defender** 的兩個方案，會依照 [定價頁面](security-center-pricing.md)顯示的方式計費|
-|受保護的 SQL 版本：|Azure 虛擬機器上的 SQL - [Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) 和 [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md)<br>[已啟用 Arc 的 SQL Server](https://docs.microsoft.com/sql/sql-server/azure-arc/overview) (包括內部部署 SQL Server)<br>Azure SQL [單一資料庫](../azure-sql/database/single-database-overview.md)和[彈性集區](../azure-sql/database/elastic-pool-overview.md)<br>[Azure SQL 受控執行個體](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure Synapse Analytics (先前稱為 SQL DW) 專用 SQL 集區](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse)|
+|受保護的 SQL 版本：|Azure 虛擬機器上的 SQL - [Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) 和 [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md)<br>[已啟用 Arc 的 SQL Server](/sql/sql-server/azure-arc/overview) (包括內部部署 SQL Server)<br>Azure SQL [單一資料庫](../azure-sql/database/single-database-overview.md)和[彈性集區](../azure-sql/database/elastic-pool-overview.md)<br>[Azure SQL 受控執行個體](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure Synapse Analytics 專用 SQL 集區](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov、其他 Gov|
 |||
 
@@ -36,7 +36,7 @@ ms.locfileid: "96014530"
 - **適用於 Azure SQL 資料庫伺服器的 Azure Defender** 可保護：
   - [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md)
   - [Azure SQL 受控執行個體](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)
-  - [Azure Synapse 中的專用 SQL 集區](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse)
+  - [Azure Synapse 中的專用 SQL 集區](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
 - **適用於機器上的 SQL 伺服器的 Azure Defender (預覽)** 可擴充 Azure 原生 SQL Server 的保護，以完整支援混合式環境，並保護裝載於 Azure、其他雲端環境，甚至是內部部署機器的 SQL 伺服器 (所有支援的版本)
 

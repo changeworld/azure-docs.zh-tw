@@ -1305,7 +1305,7 @@
           href: tutorial-setup-ci-cd.md
         - name: 使用 Azure 儲存體總管
           href: storage-explorer.md
-        - name: 使用 Azure Cosmos 總管
+        - name: 使用 Azure Cosmos DB 總管
           href: data-explorer.md
     - name: 具有 Azure Synapse Link 的 Analytics 和 BI
       items:

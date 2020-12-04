@@ -2,7 +2,7 @@
   href: index.yml
 - name: 切換至專用 SQL 集區 (先前稱為 SQL DW)
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
-- name: 概觀
+- name: 總覽
   items:
     - name: 什麼是 Azure Synapse？
       href: overview-what-is.md
@@ -109,6 +109,10 @@
                   displayname: vnet
                 - name: Synapse 工作區的受控私人端點
                   href: ./security/synapse-workspace-managed-private-endpoints.md
+                - name: Synapse 工作區資料外流保護
+                  href: ./security/workspace-data-exfiltration-protection.md
+                - name: 具有 Private Link 中樞的 Synapse 工作區
+                  href: ./security/synapse-private-link-hubs.md
             - name: 驗證和傳遞
               items:
                 - name: Azure Active Directory
@@ -121,8 +125,13 @@
             - name: 存取控制
               items:
                 - name: 概觀
-                  href: ./security/access-control.md
-                  displayname: 'access, control'
+                  href: ./security/synapse-workspace-access-control-overview.md
+                - name: Synapse RBAC
+                  href: ./security/synapse-workspace-synapse-rbac.md
+                - name: Synapse RBAC 角色
+                  href: ./security/synapse-workspace-synapse-rbac-roles.md
+                - name: 了解 Synapse RBAC 角色
+                  href: ./security/synapse-workspace-understand-what-role-you-need.md
                 - name: Synapse 工作區的受控識別
                   href: ./security/synapse-workspace-managed-identity.md
     - name: 操作指南
@@ -135,11 +144,19 @@
           items:
             - name: 管理存取控制
               items:
+                - name: 設定存取控制
+                  href: ./security/how-to-set-up-access-control.md
+                - name: 檢閱 Synapse 角色指派
+                  href: ./security/how-to-review-synapse-rbac-role-assignments.md
+                - name: 管理 Synapse 角色指派
+                  href: ./security/how-to-manage-synapse-rbac-role-assignments.md
                 - name: 為 Azure Synapse 工作區的受控識別設定權限
                   href: security/how-to-grant-workspace-managed-identity-permissions.md
                   displayname: grant
-                - name: 設定存取控制
-                  href: security/how-to-set-up-access-control.md
+            - name: 資料外洩保護
+              items:
+                - name: 使用資料外洩保護來建立和管理工作區
+                  href: security/how-to-create-a-workspace-with-data-exfiltration-protection.md
             - name: 管理私人端點
               items:
                 - name: 對資料來源設定受控私人端點
@@ -248,7 +265,7 @@
               href: sql/load-data-overview.md
         - name: 部署
           items:
-            - name: 概觀
+            - name: 總覽
               href: sql/develop-overview.md
             - name: 最佳作法
               href: sql/develop-best-practices.md
