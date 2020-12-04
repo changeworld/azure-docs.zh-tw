@@ -50,7 +50,7 @@
         - name: 共同銷售合作夥伴參與
           href: marketplace-co-sell.md
         - name: 合作夥伴中心內的共同銷售選項
-          href: partner-center-portal/commercial-marketplace-co-sell.md
+          href: commercial-marketplace-co-sell.md
         - name: 透過 CSP 合作夥伴轉售
           href: cloud-solution-providers.md
         - name: Connect 計畫上線指南
@@ -382,9 +382,9 @@
     - name: 支援的國家/區域
       href: sell-from-countries.md
     - name: 共同銷售國家及區域代碼
-      href: partner-center-portal/commercial-marketplace-co-sell-countries.md
+      href: commercial-marketplace-co-sell-countries.md
     - name: 共同銷售狀態碼
-      href: partner-center-portal/commercial-marketplace-co-sell-states.md
+      href: commercial-marketplace-co-sell-states.md
     - name: 類別與子類別
       href: categories.md
     - name: 支援的 HTML 標籤
