@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect 同步 V2 端點公開預覽 | Microsoft Docs
+title: Azure AD Connect sync V2 endpoint |Microsoft Docs
 description: 本文件涵蓋 Azure AD Connect 同步 V2 端點 API 的更新。
 services: active-directory
 author: billmath
@@ -12,34 +12,24 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b9b73e30094ed7d07e19f4b93f2fe8ab8f6af3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ffb298bca53a06bd1ef14a750648fe6e76fd45ee
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339416"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602099"
 ---
-# <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect sync V2 端點 API (公開預覽) 
+# <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Azure AD Connect sync V2 端點 API 
 Microsoft 已為 Azure AD Connect 部署了新的端點 (API)，以提升 Azure Active Directory 同步處理服務作業的效能。 藉由使用新的 V2 端點，您將會在匯出和匯入至 Azure AD 時，遇到顯著的效能提升。 這個新的端點支援下列項目：
     
- -  同步處理最多 250k 個成員的群組
+ - 同步處理最多 250k 個成員的群組
  - 匯出和匯入至 Azure AD 的效能提升
  
 > [!NOTE]
 > 目前，新的端點對於回寫的 Microsoft 365 群組沒有設定的群組大小限制。 這可能會對您的 Active Directory 和同步處理週期延遲有所影響。 建議您以累加方式增加群組大小。  
 
-
 ## <a name="pre-requisites"></a>必要條件  
 若要使用新的 V2 端點，您必須使用 [Azure AD Connect 1.5.30.0 版](https://www.microsoft.com/download/details.aspx?id=47594)或更新版本，並遵循下面提供的部署步驟，為您的 Azure AD Connect 伺服器啟用 V2 端點。   
-
->[!NOTE]
->此公開預覽目前僅適用於 Azure 全球雲端，不適用於[國家雲端](../develop/authentication-national-cloud.md)。
-
-### <a name="public-preview-limitations"></a>公開預覽限制  
-雖然此版本經過大量測試，但您可能仍會遇到問題。 此公開預覽版本的其中一個目標，是尋找並修正任何這類的問題。  
-
->[!IMPORTANT]
-> 雖然提供此公開預覽版本的支援，但 Microsoft 不一定能夠立即修正您可能遇到的所有問題。 基於這個理由，建議您在實際執行環境中部署此版本之前，先運用您的最佳判斷。 
 
 ## <a name="deployment-guidance"></a>部署指導 
 您將需要部署 [Azure AD Connect 1.5.30.0 版](https://www.microsoft.com/download/details.aspx?id=47594)或更新版本，才能使用 V2 端點。 使用所提供的連結進行下載。 
@@ -184,17 +174,9 @@ Microsoft 已為 Azure AD Connect 部署了新的端點 (API)，以提升 Azure 
 > 從 V2 切換回 V1 端點時，在執行完整同步處理之後，將會刪除以超過50k 的成員進行同步處理的群組，並針對布建至 Azure AD 的 AD 群組，以及布建至 AD 的 Microsoft 365 統一群組。 
 
 ## <a name="frequently-asked-questions"></a>常見問題集  
-**問：客戶可以在生產環境中使用這項功能嗎？**   
-</br>可以，這可以在實際執行環境中使用，需注意先前所述的警告。
  
-**問：當發生問題時，客戶可以聯絡誰？**   
-</br>如果您在使用這項功能時需要支援，應該開啟支援案例。 
- 
-**問：我是否可預期會經常更新公開預覽？**   
-</br>在公開預覽期間進行中的變更有一定限度。 在生產環境中部署公開預覽功能時，您應該評估這項風險。  
- 
-**問：到下一個里程碑需要多少時間？**   
-</br>公開預覽功能可能會撤銷，且可能會在到達進一步里程碑之前進行重新設計。  
+**新的結束點何時會成為升級和新安裝的預設值？**  
+</br>我們打算在2021年1月發行新版的 AADConnect 以供下載。 此版本預設會使用 V2 端點，而且會啟用大於50K 的群組 withuot 任何其他設定。 此版本後續將會發行，以自動升級為合格的伺服器。
  
 ## <a name="next-steps"></a>後續步驟
 

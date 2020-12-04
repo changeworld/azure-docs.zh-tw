@@ -11,18 +11,20 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: 683a6c9f31947355a5415a5b8b57b621f717af91
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 92d440d019942219b322ef084b45317983d04fbe
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967659"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602235"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>如何在 Azure Active Directory Domain Services 受控網域中同步處理物件和認證
 
 Azure Active Directory Domain Services (Azure AD DS) 受控網域中的物件和認證，可以在網域內本機建立，或從 Azure Active Directory (Azure AD) 租使用者進行同步處理。 當您第一次部署 Azure AD DS 時，會設定並啟動自動單向同步處理，以從 Azure AD 複寫物件。 此單向同步處理會繼續在背景中執行，以 Azure AD 進行任何變更，讓 Azure AD DS 受控網域保持在最新狀態。 從 Azure AD DS 回到 Azure AD 不會進行任何同步處理。
 
 在混合式環境中，您可以使用 Azure AD Connect，將內部部署 AD DS 網域中的物件和認證同步處理到 Azure AD。 一旦將這些物件順利同步處理至 Azure AD 之後，自動背景同步就會將這些物件和認證提供給使用受控網域的應用程式。
+
+如果使用 ADFS 針對同盟驗證設定了內部內部部署 AD DS 和 Azure AD，則 Azure DS 中不會有 (目前/有效的) 密碼雜湊。 在執行送出驗證之前建立的 Azure AD 使用者帳戶可能會有舊的密碼雜湊，但這可能不符合其內部內部部署密碼的雜湊。 因此 Azure AD DS 將無法驗證使用者認證。
 
 下圖說明同步處理在 Azure AD DS、Azure AD 和選擇性內部部署 AD DS 環境之間的運作方式：
 
@@ -40,16 +42,16 @@ Azure Active Directory Domain Services (Azure AD DS) 受控網域中的物件和
 
 下表列出一些常見的屬性，以及它們如何同步處理至 Azure AD DS。
 
-| Azure AD DS 中的屬性 | 來源 | 注意 |
+| Azure AD DS 中的屬性 | 來源 | 備註 |
 |:--- |:--- |:--- |
 | UPN | Azure AD 租使用者中的使用者 *UPN* 屬性 | Azure AD 租使用者的 UPN 屬性會依原樣同步處理至 Azure AD DS。 登入受控網域最可靠的方式是使用 UPN。 |
-| SAMAccountName | Azure AD 租使用者中的使用者 *mailNickname* 屬性或自動產生 | *SAMAccountName*屬性是源自 Azure AD 租使用者中的*mailNickname*屬性。 如果有多個使用者帳戶具有相同的 *mailNickname* 屬性，就會自動產生 *SAMAccountName* 。 如果使用者的 *mailNickname* 或 *UPN* 前置長度超過20個字元，則會自動產生 *samaccountname* 以符合 *samaccountname* 屬性的20個字元限制。 |
+| SAMAccountName | Azure AD 租使用者中的使用者 *mailNickname* 屬性或自動產生 | *SAMAccountName* 屬性是源自 Azure AD 租使用者中的 *mailNickname* 屬性。 如果有多個使用者帳戶具有相同的 *mailNickname* 屬性，就會自動產生 *SAMAccountName* 。 如果使用者的 *mailNickname* 或 *UPN* 前置長度超過20個字元，則會自動產生 *samaccountname* 以符合 *samaccountname* 屬性的20個字元限制。 |
 | 密碼 | Azure AD 租使用者的使用者密碼 | NTLM 或 Kerberos 驗證所需的舊版密碼雜湊會從 Azure AD 租使用者同步處理。 如果 Azure AD 租使用者已設定為使用 Azure AD Connect 進行混合式同步處理，則這些密碼雜湊源自內部部署 AD DS 環境。 |
 | 主要使用者/群組 SID | 貨 | 使用者/群組帳戶的主要 SID 會在 Azure AD DS 中自動產生。 此屬性與內部部署 AD DS 環境中物件的主要使用者/群組 SID 不相符。 這種不相符的原因是受控網域具有與內部部署 AD DS 網域不同的 SID 命名空間。 |
 | 使用者和群組的 SID 歷程記錄 | 內部部署主要使用者和群組 SID | Azure AD DS 中使用者和群組的 *SidHistory* 屬性會設定為符合內部部署 AD DS 環境中對應的主要使用者或群組 SID。 這項功能有助於將內部部署應用程式隨即轉移至 Azure AD DS，因為您不需要重新建立 ACL 資源。 |
 
 > [!TIP]
-> **使用 UPN 格式登入受控網域**可能*SAMAccountName*會 `AADDSCONTOSO\driley` 針對受控網域中的某些使用者帳戶自動產生 SAMAccountName 屬性（例如）。 使用者的自動產生 *SAMAccountName* 可能與 UPN 首碼不同，因此不一定是可靠的登入方式。
+> **使用 UPN 格式登入受控網域** 可能 *SAMAccountName* 會 `AADDSCONTOSO\driley` 針對受控網域中的某些使用者帳戶自動產生 SAMAccountName 屬性（例如）。 使用者的自動產生 *SAMAccountName* 可能與 UPN 首碼不同，因此不一定是可靠的登入方式。
 >
 > 例如，如果有多個使用者具有相同的 *mailNickname* 屬性，或使用者的 UPN 前置詞太長，可能會自動產生這些使用者的 *SAMAccountName* 。 使用 UPN 格式（例如）， `driley@aaddscontoso.com` 可靠地登入受控網域。
 
@@ -80,7 +82,7 @@ Azure Active Directory Domain Services (Azure AD DS) 受控網域中的物件和
 | postalCode |postalCode |
 | preferredLanguage |preferredLanguage |
 | proxyAddresses | proxyAddresses |
-| 狀態 |st |
+| state |st |
 | streetAddress |streetAddress |
 | surname |sn |
 | telephoneNumber |telephoneNumber |

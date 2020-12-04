@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 706fa1666dc327955294fb350b673aed40d6bf48
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 8e21bac5dd78cb9c9f40e6b91ff80fedabb9bc75
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95520657"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602252"
 ---
 # <a name="continuous-access-evaluation"></a>持續存取評估
 
@@ -28,7 +28,7 @@ ms.locfileid: "95520657"
 
 連續存取評估的初始實行著重于 Exchange、小組和 SharePoint Online。
 
-若要準備您的應用程式以使用 CAE，請參閱 [如何在您的應用程式中使用持續存取評估啟用的 api](/develop/app-resilience-continuous-access-evaluation.md)。
+若要準備您的應用程式以使用 CAE，請參閱 [如何在您的應用程式中使用持續存取評估啟用的 api](/azure/active-directory/develop/app-resilience-continuous-access-evaluation)。
 
 ### <a name="key-benefits"></a>主要權益
 

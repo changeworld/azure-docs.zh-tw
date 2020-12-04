@@ -1,22 +1,22 @@
 ---
-title: 合作夥伴中心中的共同銷售選項 |Azure Marketplace
-description: Microsoft 銷售團隊將使用您在供應專案的 [共同銷售] 索引標籤上提供的資訊，在評估其符合客戶需求時，深入瞭解您的供應專案。
+title: 商業 marketplace 中的共同銷售選項 |Azure Marketplace
+description: Microsoft 銷售團隊將會使用您在供應專案的 [與 Microsoft 共同銷售] 索引標籤上提供的資訊，在評估其符合客戶需求時，深入瞭解您的供應專案。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
-ms.date: 12/03/2020
-ms.openlocfilehash: f424cd85e26511f8fe3d863b1f2c77bc1e5e7537
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.date: 12/04/2020
+ms.openlocfilehash: baa99518498b05b0a658627d9908298eb58f7775
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96581879"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602728"
 ---
-# <a name="co-sell-option-in-partner-center"></a>合作夥伴中心內的共同銷售選項
+# <a name="co-sell-option-in-the-commercial-marketplace"></a>商業 marketplace 中的共同銷售選項
 
-在 [共同銷售] 索引標籤上提供資訊完全是選擇性的。 您必須達成 [共同銷售就緒和 IP 共同銷售受到激勵狀態](/legal/marketplace/certification-policies.md#3000-requirements-for-co-sell-status)。 Microsoft 銷售團隊將使用您提供的資訊，在評估其符合客戶需求時，深入瞭解您的供應專案。 您的解決方案無法直接提供給客戶。 如需詳細資訊，請參閱 [與 Microsoft 共同銷售](https://partner.microsoft.com/membership/co-sell-with-microsoft)。
+在 [ **與 Microsoft 共同銷售** ] 索引標籤上提供的資訊完全是選擇性的。 您必須達成 [共同銷售就緒和 IP 共同銷售受到激勵狀態](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。 Microsoft 銷售團隊將使用您提供的資訊，在評估其符合客戶需求時，深入瞭解您的供應專案。 您的解決方案無法直接提供給客戶。 如需詳細資訊，請參閱 [與 Microsoft 共同銷售](https://partner.microsoft.com/membership/co-sell-with-microsoft)。
 
 合作夥伴中心中的共同銷售選項目前提供下列供應專案類型。
 
@@ -46,7 +46,7 @@ ms.locfileid: "96581879"
 | 裝置 (硬體)  | 牽涉到從裝置製造商建立或銷售硬體的供應專案。 |
 | IP (應用程式)  | 授權給客戶使用的應用程式或其他 copyrightable 材料。 例如：可在內部部署授權及安裝的 CRM 程式。 |
 | Service | 特定一次性專案的實際操作專長，通常是透過顧問提供。 例如：將用戶端的用戶端 (設定為用戶端，並假設負責在傳遞) 之後運算元據庫。 |
-| 受控服務 | 雲端式專案的實際操作專長，通常會持續進行。 例如：提供平臺和工具來執行線上資料庫，並提供受控服務提供者所提供的持續管理。 |
+| 受管理的服務 | 雲端式專案的實際操作專長，通常會持續進行。 例如：提供平臺和工具來執行線上資料庫，並提供受控服務提供者所提供的持續管理。 |
 
 ### <a name="solution-areas"></a>解決方案區域
 

@@ -10,14 +10,14 @@ author: lobrien
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy
-ms.openlocfilehash: 1d2e25f76d9a68eeb01a45c34651fe1537297980
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 71f393897dff266f1b0922a19eefd70cffea133d
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510568"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600348"
 ---
-# <a name="deploy-on-your-local-machines-models-trained-with-azure-machine-learning"></a>在以 Azure Machine Learning 定型的本機電腦模型上部署
+# <a name="deploy-models-trained-with-azure-machine-learning-on-your-local-machines"></a>在本機電腦上部署使用 Azure Machine Learning 定型的模型 
 
 本文說明如何使用本機電腦作為定型或部署在 Azure Machine Learning 中建立之模型的目標。 Azure Machine Learning 有足夠的彈性可使用大部分的 Python 機器學習架構。 機器學習解決方案通常有複雜的相依性，可能難以複製。 本文將說明如何以簡單易用的方式平衡總控制。
 

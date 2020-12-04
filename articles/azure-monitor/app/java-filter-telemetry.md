@@ -3,13 +3,15 @@ title: 在 JAVA web 應用程式中篩選 Azure 應用程式見解遙測
 description: 篩選出您不需要監視的事件，以減少遙測流量。
 ms.topic: conceptual
 ms.date: 3/14/2019
+author: MS-jgol
 ms.custom: devx-track-java
-ms.openlocfilehash: 329f07a530a584a14d5312631ec977773e70af29
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.author: jgol
+ms.openlocfilehash: 9a57874652fa5ee58f39483903be211305c683f2
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378188"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601232"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>在 Java Web 應用程式中篩選遙測
 

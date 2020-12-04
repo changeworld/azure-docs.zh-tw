@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 94ab7e235f0796277d65aebb33d9011fc76b74ce
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 3d84f0df44f17bdc7dd68aa9cae1f01b06d261b4
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532783"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601636"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>適用于 App Service 的 Azure 安全性基準
 
@@ -71,7 +71,7 @@ ms.locfileid: "96532783"
 
 - [瞭解 Azure 資訊安全中心所提供的網路安全性](../security-center/security-center-network-recommendations.md)
 
-- [如何啟用 App Service 的監視和保護](/azure/security-center/defender-for-app-service-intro)
+- [如何啟用 App Service 的監視和保護](/azure/security-center/defender-for-app-service-introduction)
 
 **Azure 資訊安全中心監視**：是
 

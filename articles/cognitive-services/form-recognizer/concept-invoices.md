@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: eb1be4c78be0eb7fb943700b168fa82ede4d3861
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9a3a6bd6489baea90ed4143b42a09e7d697bbc50
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458399"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602439"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>表單辨識器預建發票模型
 
@@ -74,14 +74,14 @@ JSON 輸出有3個部分：
 
 發票服務將會將文字、資料表和26張發票欄位解壓縮。 以下是從 JSON 輸出回應中的發票解壓縮的欄位 (下列輸出使用此 [範例發票](./media/sample-invoice.jpg))   
 
-|名稱| 類型 | 描述 | Text | 值 (標準化輸出)  |
+|名稱| 類型 | 描述 | 文字 | 值 (標準化輸出)  |
 |:-----|:----|:----|:----| :----|
 | CustomerName | 字串 | 客戶的發票 | Microsoft Corp |  |
 | CustomerId | 字串 | 客戶的參考識別碼 | CID-12345 |  |
 | PurchaseOrder | 字串 | 採購單參考編號 | PO-3333 | |  |
 | InvoiceId | 字串 | 此特定發票的識別碼 (通常是「發票號碼」 )  | 庫存-100 | |  |
-| InvoiceDate | date | 發票的發行日期 | 11/15/2019 | 
-| DueDate | date | 此發票的付款日期為逾期 | 12/15/2019 | 2019-12-15 | 2019-11-15 |
+| InvoiceDate | 日期 | 發票的發行日期 | 11/15/2019 | 
+| DueDate | 日期 | 此發票的付款日期為逾期 | 12/15/2019 | 2019-12-15 | 2019-11-15 |
 | VendorName | 字串 | 已建立此發票的廠商 | CONTOSO 公司。 | |
 | VendorAddress | 字串 | 廠商的郵寄地址 | 123 456th 聖紐約，紐約州10001 | |
 | VendorAddressRecipient | 字串 | 與 VendorAddress 相關聯的名稱 | Contoso 總部 | |
@@ -99,8 +99,8 @@ JSON 輸出有3個部分：
 | ServiceAddressRecipient | 字串 | 與 Serviceaddress.uri 相關聯的名稱 | Microsoft 服務 | |
 | RemittanceAddress | 字串 | 客戶的明確匯款或付款位址 | 123匯款聖紐約、紐約州、10001 |  |
 | RemittanceAddressRecipient | 字串 | 與 RemittanceAddress 相關聯的名稱 | Contoso 帳單 |  |
-| ServiceStartDate | date | 服務期間的第一個日期 (例如，公用程式帳單服務期間)  | 2019/10/14 | 2019-10-14 |
-| ServiceEndDate | date | 服務期間的結束日期 (例如，公用程式帳單服務期間)  | 11/14/2019 | 2019-11-14 |
+| ServiceStartDate | 日期 | 服務期間的第一個日期 (例如，公用程式帳單服務期間)  | 2019/10/14 | 2019-10-14 |
+| ServiceEndDate | 日期 | 服務期間的結束日期 (例如，公用程式帳單服務期間)  | 11/14/2019 | 2019-11-14 |
 | PreviousUnpaidBalance | 數目 | 明確的先前未付款餘額 | $500.00 | 500 |
 
 
@@ -112,4 +112,4 @@ JSON 輸出有3個部分：
 ## <a name="see-also"></a>請參閱
 
 * [什麼是表單辨識器？](./overview.md)
-* [REST API 參考檔](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeInvoiceAsync)
+* [REST API 參考檔](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9843c2794cbb1a96291)

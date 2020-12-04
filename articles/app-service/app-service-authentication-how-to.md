@@ -4,12 +4,12 @@ description: 瞭解如何針對不同的案例自訂 App Service 中的驗證和
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 0e07dc42a45a697b293e2ebc90bdd92aa924f071
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 85fd7fdba4c62f4837a419af44c83f7e46cb9e39
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302034"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601776"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>在 Azure App Service 中進階使用驗證和授權
 
@@ -24,6 +24,7 @@ ms.locfileid: "96302034"
 * [如何設定 App 使用 Microsoft 帳戶登入](configure-authentication-provider-microsoft.md)
 * [如何設定 App 以使用 Twitter 登入](configure-authentication-provider-twitter.md)
 * [如何設定您的應用程式使用 OpenID Connect 提供者登入 (預覽) ](configure-authentication-provider-openid-connect.md)
+* [如何設定您的應用程式以使用 Apple (Preview 登入登入) ](configure-authentication-provider-apple.md)
 
 ## <a name="use-multiple-sign-in-providers"></a>使用多個登入提供者
 
@@ -41,6 +42,7 @@ ms.locfileid: "96302034"
 <a href="/.auth/login/facebook">Log in with Facebook</a>
 <a href="/.auth/login/google">Log in with Google</a>
 <a href="/.auth/login/twitter">Log in with Twitter</a>
+<a href="/.auth/login/apple">Log in with Apple</a>
 ```
 
 當使用者按一下其中一個連結時，隨即會開啟個別登入頁面將使用者登入。
@@ -315,7 +317,6 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
         "enabled": <true|false>
     },
     "globalValidation": {
-        "requireAuthentication": <true|false>,
         "unauthenticatedClientAction": "RedirectToLoginPage|AllowAnonymous|Return401|Return403",
         "redirectToProvider": "<default provider alias>",
         "excludedPaths": [
@@ -349,13 +350,13 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
             }
         },
         "preserveUrlFragmentsForLogins": <true|false>,
-        "allowedExternalRedirectUri": [
+        "allowedExternalRedirectUrls": [
             "https://uri1.azurewebsites.net/",
             "https://uri2.azurewebsites.net/",
             "url_scheme_of_your_app://easyauth.callback"
         ],
         "cookieExpiration": {
-            "convention": "FixedTime|IdentityProviderDerived",
+            "convention": "FixedTime|IdentityDerived",
             "timeToExpiration": "<timespan>"
         },
         "nonce": {
@@ -437,13 +438,26 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
                 "consumerSecretSettingName": "APP_SETTING_CONTAINING TWITTER_CONSUMER_SECRET"
             }
         },
+        "apple": {
+            "enabled": <true|false>,
+            "registration": {
+                "clientId": "<client id>",
+                "clientSecretSettingName": "APP_SETTING_CONTAINING_APPLE_SECRET"
+            },
+            "login": {
+                "scopes": [
+                    "profile",
+                    "email"
+                ]
+            }
+        },
         "openIdConnectProviders": {
             "<providerName>": {
                 "enabled": <true|false>,
                 "registration": {
                     "clientId": "<client id>",
                     "clientCredential": {
-                        "secretSettingName": "<name of app setting containing client secret>"
+                        "clientSecretSettingName": "<name of app setting containing client secret>"
                     },
                     "openIdConnectConfiguration": {
                         "authorizationEndpoint": "<url specifying authorization endpoint>",
@@ -455,7 +469,7 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
                 },
                 "login": {
                     "nameClaimType": "<name of claim containing name>",
-                    "scope": [
+                    "scopes": [
                         "openid",
                         "profile",
                         "email"
@@ -486,7 +500,7 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
 
 #### <a name="view-the-current-runtime-version"></a>檢視目前的執行階段版本
 
-您可以使用 Azure CLI，或透過您應用程式中的其中一個 built0 版本 HTTP 端點，來查看平臺驗證中介軟體的目前版本。
+您可以使用 Azure CLI，或透過您應用程式中的其中一個內建版本 HTTP 端點，來查看平臺驗證中介軟體的目前版本。
 
 ##### <a name="from-the-azure-cli"></a>從 Azure CLI
 

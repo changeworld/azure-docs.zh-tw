@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29580564ffa2fed579065e6a8551a6f44597e41a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: d8825dcb2d8dbcf4a1296d8bace84b3d2716687f
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433252"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602025"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory 中的預設使用者權限是什麼？
 在 Azure Active Directory (Azure AD) 中，所有使用者都會獲得一組預設權限。 使用者的存取權包含使用者類型、其[角色指派](active-directory-users-assign-role-azure-portal.md)，以及個別物件的擁有權。 本文說明這些預設權限，並包含成員與來賓使用者預設值的比較。 只能在 Azure AD 中的使用者設定中變更預設使用者權限。
@@ -32,7 +32,7 @@ ms.locfileid: "96433252"
 
 **領域** | **成員使用者權限** | **預設來賓使用者權限** | **受限制的來賓使用者權限 (預覽)**
 ------------ | --------- | ---------- | ----------
-使用者和連絡人 | <ul><li>列舉所有使用者和連絡人的清單<li>讀取使用者和連絡人的所有公用屬性</li><li>邀請來賓<li>變更自己的密碼<li>管理自己的行動電話號碼<li>管理自己的相片<li>使自己的重新整理權杖失效</li></ul> | <ul><li>讀取自己的屬性<li>讀取顯示名稱、電子郵件、登入名稱、相片、使用者主體名稱，以及其他使用者和連絡人的使用者類型屬性<li>變更自己的密碼<li>依顯示名稱、使用者主體名稱或 ObjectId (搜尋其他使用者（如果允許）) <li>讀取其他使用者的管理員和直屬報告資訊</li></ul> | <ul><li>讀取自己的屬性<li>變更自己的密碼</li></ul>
+使用者和連絡人 | <ul><li>列舉所有使用者和連絡人的清單<li>讀取使用者和連絡人的所有公用屬性</li><li>邀請來賓<li>變更自己的密碼<li>管理自己的行動電話號碼<li>管理自己的相片<li>使自己的重新整理權杖失效</li></ul> | <ul><li>讀取自己的屬性<li>讀取顯示名稱、電子郵件、登入名稱、相片、使用者主體名稱，以及其他使用者和連絡人的使用者類型屬性<li>變更自己的密碼<li>如果允許，請依 ObjectId (搜尋其他使用者) <li>讀取其他使用者的管理員和直屬報告資訊</li></ul> | <ul><li>讀取自己的屬性<li>變更自己的密碼</li></ul>
 群組 | <ul><li>建立安全性群組<li>建立 Microsoft 365 群組<li>列舉所有群組的清單<li>讀取群組的所有屬性<li>讀取非隱藏的群組成員資格<li>讀取已加入群組的隱藏 Microsoft 365 群組成員資格<li>管理使用者擁有之群組的屬性、擁有權及成員資格<li>將來賓新增至擁有的群組<li>管理動態成員資格設定<li>刪除擁有的群組<li>還原擁有的 Microsoft 365 群組</li></ul> | <ul><li>讀取非隱藏群組的屬性，包括成員資格和擁有權 (甚至未加入的群組) <li>讀取已加入群組的隱藏 Microsoft 365 群組成員資格<li>依顯示名稱或 ObjectId (搜尋群組（如果允許）) </li></ul> | <ul><li>讀取已加入群組的物件識別碼<li>如果允許，請在部分 Microsoft 365 應用程式 (中，讀取已加入群組的成員資格和擁有權) </li></ul>
 應用程式 | <ul><li>註冊 (建立) 新的應用程式<li>列舉所有應用程式的清單<li>讀取已註冊和企業應用程式的屬性<li>管理擁有之應用程式的應用程式屬性、指派及認證<li>建立或刪除使用者的應用程式密碼<li>刪除擁有的應用程式<li>還原擁有的應用程式</li></ul> | <ul><li>讀取已註冊和企業應用程式的屬性</li></ul> | <ul><li>讀取已註冊和企業應用程式的屬性
 裝置</li></ul> | <ul><li>列舉所有裝置的清單<li>讀取裝置的所有屬性<li>管理擁有之裝置的所有屬性</li></ul> | 沒有權限 | 沒有權限

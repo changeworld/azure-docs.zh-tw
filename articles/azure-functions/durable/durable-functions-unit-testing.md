@@ -3,12 +3,12 @@ title: Azure Durable Functions 單元測試
 description: 深入了解如何針對 Durable Functions 進行單元測試。
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: 86733f8b5b80799bad3e52c643ed27465dfc7641
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7786a0a2e2d31086e1938b70e63fe2374e16fe7f
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74231233"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601351"
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions 單元測試
 
@@ -17,7 +17,7 @@ ms.locfileid: "74231233"
 > [!NOTE]
 > 本文針對以 Durable Functions 1.x 為目標的 Durable Functions 應用程式，提供單元測試的指引。 尚未更新，以考慮 Durable Functions 2.x 中引入的變更。 如需版本之間差異的詳細資訊，請參閱 [Durable Functions 版本](durable-functions-versions.md) 文章。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 這篇文章中的範例需要下列概念和架構的知識：
 
@@ -25,7 +25,7 @@ ms.locfileid: "74231233"
 
 * 長期函式
 
-* [xUnit](https://xunit.github.io/) - 測試架構
+* [xUnit](https://github.com/xunit/xunit) - 測試架構
 
 * [moq](https://github.com/moq/moq4) - 模擬架構
 
@@ -179,6 +179,6 @@ ms.locfileid: "74231233"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [深入了解 xUnit](https://xunit.github.io/docs/getting-started-dotnet-core)
+> [深入了解 xUnit](https://xunit.net/docs/getting-started/netcore/cmdline)
 > 
 > [深入了解 moq](https://github.com/Moq/moq4/wiki/Quickstart)

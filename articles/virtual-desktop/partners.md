@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bf314510a8569a825ccd309ec855e3ff186bba86
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7a1b178450a1aa06db07d7b1ef525f7f781db9ef
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023372"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602813"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虛擬桌面合作夥伴整合
 
@@ -114,7 +114,7 @@ deviceTRUST 是 Windows 虛擬桌面增值服務提供者，可就企業企業�
 
 deviceTRUST 將 Windows 虛擬桌面的價值延伸至其內容相關的安全性技術。 deviceTRUST 可啟用安全 Windows 虛擬桌面存取的條件式存取、Windows 虛擬桌面內的條件式應用程式存取，以及套用條件式 Windows 虛擬桌面原則，而不需要任何額外的基礎結構。 使用 deviceTRUST 可讓行動彈性的工作區符合所有安全性、合規性和法規需求。
 
-- [前往合作夥伴網站](https://devicetrust.com/wvd)。
+- [前往合作夥伴網站](https://devicetrust.com/)。
 
 ## <a name="ekran-system"></a>Ekran 系統
 
@@ -406,7 +406,7 @@ Workspot control 藉由簡化雲端桌面基礎結構的布建程式，擴充了
 - [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P)。
 - [前往合作夥伴網站](https://www.workspot.com/wvd)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [深入瞭解 Windows 虛擬桌面](overview.md)。
 - [在 Windows 虛擬桌面中建立租](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)使用者。

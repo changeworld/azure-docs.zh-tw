@@ -4,18 +4,18 @@ description: Azure 儲存體清查是協助您瞭解儲存體帳戶內所有 blo
 services: storage
 author: mhopkins-msft
 ms.service: storage
-ms.date: 11/04/2020
+ms.date: 12/03/2020
 ms.topic: conceptual
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 149fb9c888c54ea45d273890f3fe2cd59730fa01
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 86ded3dea819702631b1fa04dbc56f727566fc98
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96354966"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602677"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>使用 Azure 儲存體 blob 清查來管理 blob 資料 (預覽) 
 
@@ -23,7 +23,7 @@ Azure 儲存體 blob 清查功能可概述儲存體帳戶內的 blob 資料。 �
 
 ## <a name="availability"></a>可用性
 
-Blob 清查支援一般用途第2版 (GPv2) 、高階區塊 blob 儲存體，以及 Azure DataLake 儲存體 Gen2 (ADLS Gen2) 帳戶。
+一般用途第2版 (GPv2) 和 premium 區塊 blob 儲存體帳戶支援 blob 清查。 當或未啟用 [階層命名空間](data-lake-storage-namespace.md) 功能時，支援此功能。
 
 ### <a name="preview-regions"></a>預覽區域
 
@@ -50,7 +50,7 @@ Blob 清查預覽適用于下欄區域中的儲存體帳戶：
 1. 選取清查報表的 **Blob 類型**
 1. 新增前置詞相符以篩選清查報表
 1. 選取是否要在清查報告中 **包含 blob 版本** 並 **包含快照** 集。 您必須在帳戶上啟用版本和快照集，才能在啟用對應選項的情況下儲存新規則。
-1. 選取 [儲存]。
+1. 選取 [儲存]
 
 :::image type="content" source="./media/blob-inventory/portal-blob-inventory.png" alt-text="顯示如何使用 Azure 入口網站新增 blob 清查規則的螢幕擷取畫面":::
 

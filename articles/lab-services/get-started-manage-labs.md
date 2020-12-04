@@ -3,12 +3,12 @@ title: 開始使用 Azure 實驗室服務
 description: 本文說明如何開始使用 Azure 實驗室服務。
 ms.topic: article
 ms.date: 11/18/2020
-ms.openlocfilehash: 6fb0da7f91e0eecdeefecdb6635b657245fda9af
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 44afe13fb6f555b12dfce939ce8e88e3af8dc7ef
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434425"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602660"
 ---
 # <a name="get-started-with-lab-services"></a>開始使用實驗室服務 
 
@@ -115,12 +115,8 @@ VM 是作為虛擬電腦的虛擬環境。 Vm 有自己的處理器、記憶體�
 
 1. 從 [Azure 實驗室服務網站](https://labs.azure.com/) 按一下視窗左側的 [ **使用者** ]。
 1. 在視窗頂端，按一下 [ **新增使用者** ]，然後選取 [透過 **電子郵件地址新增**]。 
-
-    :::image type="content" source="./media/how-to-configure-student-usage/add-users-button.png" alt-text="[新增使用者] 按鈕":::
 1. 在顯示于右側的 [ **新增使用者** ] 窗格中，在個別行上輸入學生的電子郵件地址，或在同一行上輸入學生的電子郵件地址，並以分號分隔。
-1. 按一下 [儲存]。
-
-    :::image type="content" source="./media/get-started-manage-labs/add-students.png" alt-text="將學生新增至實驗室":::
+1. 按一下 **[儲存]** 。
 1. 現在會使用電子郵件、狀態、邀請和配額時數來更新您的使用者清單。
 
     註冊實驗室的學生之後，其名稱將會更新 Azure Active Directory 的名字和姓氏。
@@ -138,7 +134,7 @@ VM 是作為虛擬電腦的虛擬環境。 Vm 有自己的處理器、記憶體�
 1. 選取包含學生電子郵件地址的 CSV 檔案，然後按一下 [ **開啟**]。
 
     :::image type="content" source="./media/get-started-manage-labs/add-users-spreadsheet.png" alt-text="使用試算表新增使用者":::
-1. 電子郵件現在會出現在右側的視窗中。 按一下 [儲存]。
+1. 電子郵件現在會出現在右側的視窗中。 按一下 **[儲存]** 。
 
     :::image type="content" source="./media/get-started-manage-labs/register-users.png" alt-text="註冊使用者":::
 

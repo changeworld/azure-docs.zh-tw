@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 12/3/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 77e34e4a18012f15b9e907e3b9efc1965b98f824
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3222c790ccd0cee936b246253a16b5c434c61c8
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612115"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602201"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft 身分識別平台的應用程式驗證憑證認證
 
@@ -36,7 +36,7 @@ Microsoft 身分識別平臺可讓應用程式在可使用用戶端密碼的任�
 | --- | --- |
 | `alg` | 應該是 **RS256** |
 | `typ` | 應該是 **JWT** |
-| `x5t` | X.509 憑證雜湊的 (也稱為 cert 的 SHA-1 *指紋*) 十六進位標記法，以 Base64 字串值編碼。 例如，假設有 (Hex) 的 x.509 憑證雜湊 `84E05C1D98BCE3A5421D225B140B36E86A3D5534` ，則宣告會 `x5t` `hOBcHZi846VCHSJbFAs26Go9VTQ=` (Base64) 。 |
+| `x5t` | X.509 憑證雜湊的 (也稱為 cert 的 SHA-1 *指紋*) 十六進位標記法，編碼為 Base64url 的字串值。 例如，假設有 (Hex) 的 x.509 憑證雜湊 `84E05C1D98BCE3A5421D225B140B36E86A3D5534` ，則宣告會 `x5t` `hOBcHZi846VCHSJbFAs26Go9VTQ=` (Base64url) 。 |
 
 ### <a name="claims-payload"></a>宣告 (承載)
 

@@ -3,12 +3,12 @@ title: 使用適用于駭客松的 Azure 實驗室服務
 description: 本文說明如何使用 Azure 實驗室服務來建立可供您用來執行駭客松的實驗室。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 561351636a37c2cd5c3070dbfef2a3122e5c29b0
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: a0917ede4502dcbb59d1a30b7985b06c06975599
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434255"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602575"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>為您的下一個駭客松使用 Azure 實驗室服務
 Azure 實驗室服務的設計可供輕量且容易使用，讓您可以快速啟動虛擬機器的新實驗室， (Vm) 駭客松。  使用下列檢查清單，以確保您的駭客松盡可能順暢。 這份檢查清單應由您的 IT 部門或教職員完成，負責建立及管理您的駭客松實驗室。 
@@ -39,7 +39,7 @@ Azure 實驗室服務的設計可供輕量且容易使用，讓您可以快速�
 
 - **決定是否要限制實驗室的存取**。 
 
-    將使用者新增至實驗室時，預設會啟用 [限制存取] 選項。 這項功能需要您先將所有駭客松參與者的電子郵件新增至清單，他們才能使用註冊連結來註冊及存取實驗室。 如果您有不知道參與者在活動之前的駭客松，您可以選擇停用 [限制存取] 選項，讓任何人都能使用註冊連結向實驗室註冊。 如需詳細資訊，請參閱 [新增使用者](how-to-configure-student-usage.md#add-users-to-a-lab)的操作指南。
+    將使用者新增至實驗室時，預設會啟用 [限制存取] 選項。 這項功能需要您先將所有駭客松參與者的電子郵件新增至清單，他們才能使用註冊連結來註冊及存取實驗室。 如果您有不知道參與者在活動之前的駭客松，您可以選擇停用 [限制存取] 選項，讓任何人都能使用註冊連結向實驗室註冊。 如需詳細資訊，請參閱 [新增使用者](how-to-configure-student-usage.md)的操作指南。
 
 - **確認 [排程]、[配額] 和 [自動關機] 設定**。 
 

@@ -2,16 +2,16 @@
 title: 如何搭配 Azure Application Insights Java SDK 使用 Micrometer
 description: 搭配 Application Insights Spring Boot 和非 Spring Boot 應用程式使用 Micrometer 的逐步解說指南。
 ms.topic: conceptual
-author: lgayhardt
+author: MS-jgol
 ms.custom: devx-track-java
-ms.author: lagayhar
+ms.author: jgol
 ms.date: 11/01/2018
-ms.openlocfilehash: 30bd45cee962395ad6c6b87e393ea0f1b7329908
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: a80684fbaa34f8906d321f56d3819039d3798ecb
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616836"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600977"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk-not-recommended"></a>如何使用 Micrometer 搭配 Azure 應用程式 Insights JAVA SDK (不建議使用) 
 

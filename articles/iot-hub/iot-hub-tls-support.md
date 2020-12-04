@@ -1,24 +1,42 @@
 ---
 title: Azure IoT 中樞的 TLS 支援
-description: 使用安全 TLS 連線讓裝置和服務與 IoT 中樞通訊的最佳做法
+description: 瞭解如何使用安全的 TLS 連線來與 IoT 中樞通訊的裝置和服務
 services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 11/13/2020
+ms.date: 11/25/2020
 ms.author: jlian
-ms.openlocfilehash: c9dd66fe9d71f0a857e4b0821190bceb5d6d4680
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: ddb89f60c9fe380012c299afaafb6046bf6849c9
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628793"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602745"
 ---
-# <a name="tls-support-in-iot-hub"></a>IoT 中樞的 TLS 支援
+# <a name="transport-layer-security-tls-support-in-iot-hub"></a>IoT 中樞內的傳輸層安全性 (TLS) 支援
 
 IoT 中樞使用傳輸層安全性 (TLS) 來保護 IoT 裝置和服務的連線。 目前支援三種 TLS 通訊協定版本，亦即 1.0、1.1 和 1.2 版。
 
-TLS 1.0 和 1.1 被視為舊版，並已規劃淘汰。 如需詳細資訊，請參閱 [IoT 中樞即將淘汰 TLS 1.0 和 1.1](iot-hub-tls-deprecating-1-0-and-1-1.md)。 強烈建議在連線到 IoT 中樞時，使用 TLS 1.2 作為慣用的 TLS 版本。
+TLS 1.0 和 1.1 被視為舊版，並已規劃淘汰。 如需詳細資訊，請參閱 [IoT 中樞即將淘汰 TLS 1.0 和 1.1](iot-hub-tls-deprecating-1-0-and-1-1.md)。 若要避免未來發生問題，請在連線到 IoT 中樞時，使用 TLS 1.2 作為唯一的 TLS 版本。
+
+## <a name="iot-hubs-server-tls-certificate"></a>IoT 中樞的伺服器 TLS 憑證
+
+在 TLS 信號交換期間，IoT 中樞會提供 RSA 金鑰的伺服器憑證來連接用戶端。 它的根是巴爾的摩 Cybertrust 根 CA。 最近， (ICAs) 的新中繼憑證授權單位單位有變更簽發者。 如需詳細資訊，請參閱 [IoT 中樞 TLS 憑證更新](https://azure.microsoft.com/updates/iot-hub-tls-certificate-update/)
+
+### <a name="elliptic-curve-cryptography-ecc-server-tls-certificate-preview"></a> (ECC 的橢圓曲線密碼編譯) server TLS 憑證 (預覽) 
+
+IoT 中樞 ECC 伺服器 TLS 憑證可供公開預覽。 雖然提供與 RSA 憑證類似的安全性，但 ECC 憑證驗證 (使用僅限 ECC 的加密套件，) 使用的計算、記憶體和頻寬最高可達40%。 這些節省對於 IoT 裝置而言很重要，因為它們的設定檔和記憶體較小，而且支援網路頻寬受限環境中的使用案例。 
+
+若要預覽 IoT 中樞的 ECC 伺服器憑證：
+
+1. [建立新的 IoT 中樞，並開啟預覽模式](iot-hub-preview-mode.md)。
+1. [將您的用戶端設定](#tls-configuration-for-sdk-and-iot-edge) 為 *僅* 包含 ECDSA 加密套件，並 *排除* 任何 RSA。 以下是 ECC 憑證公開預覽的加密套件：
+    - `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`
+    - `TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`
+    - `TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256`
+    - `TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384`
+1. 將用戶端連線至預覽版 IoT 中樞。
 
 ## <a name="tls-12-enforcement-available-in-select-regions"></a>選取區域中可用的 TLS 1.2 強制
 
@@ -88,7 +106,7 @@ TLS 1.0 和 1.1 被視為舊版，並已規劃淘汰。 如需詳細資訊，請
 
 用戶端可以建議在期間使用的較高加密套件清單 `ClientHello` 。 不過，IoT 中樞可能不支援其中部分 (例如 `ECDHE-ECDSA-AES256-GCM-SHA384`) 。 在此情況下，「IoT 中樞」會嘗試遵循用戶端的喜好設定，但最後會與加密套件進行協調 `ServerHello` 。
 
-## <a name="use-tls-12-in-your-iot-hub-sdks"></a>在 IoT 中樞 SDK 中使用 TLS 1.2
+## <a name="tls-configuration-for-sdk-and-iot-edge"></a>適用于 SDK 和 IoT Edge 的 TLS 設定
 
 使用下列連結，在 IoT 中樞用戶端 SDK 中設定 TLS 1.2 和允許的加密。
 
@@ -100,11 +118,25 @@ TLS 1.0 和 1.1 被視為舊版，並已規劃淘汰。 如需詳細資訊，請
 | Java     | 1\.19.0 版或更新版本            | [連結](https://aka.ms/Tls_Java_SDK_IoT) |
 | NodeJS   | 1\.12.2 版或更新版本            | [連結](https://aka.ms/Tls_Node_SDK_IoT) |
 
-
-## <a name="use-tls-12-in-your-iot-edge-setup"></a>在 IoT Edge 設定中使用 TLS 1.2
-
 您可將 IoT Edge 裝置設定為使用 TLS 1.2 來與 IoT 中樞通訊。 基於此目的，請使用 [IoT Edge 文件頁面](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md)。
 
 ## <a name="device-authentication"></a>裝置驗證
 
 成功進行 TLS 信號交換之後，IoT 中樞可以使用對稱金鑰或 x.509 憑證來驗證裝置。 若是以憑證為基礎的驗證，這可以是任何的 x.509 憑證（包括 ECC）。 IoT 中樞會根據您提供的憑證指紋或憑證授權單位單位來驗證憑證 (CA) 。 若要深入瞭解，請參閱 [支援的 x.509 憑證](iot-hub-devguide-security.md#supported-x509-certificates)。
+
+## <a name="tls-maximum-fragment-length-negotiation-preview"></a>TLS 最大片段長度協商 (預覽) 
+
+IoT 中樞也支援 TLS 最大片段長度的協商，有時也稱為 TLS 框架大小的協商。 這項功能處於公開預覽狀態。 
+
+您可以使用這項功能，將純文字片段長度上限指定為小於預設值 2 ^ 14 個位元組的值。 一旦經過協商之後，IoT 中樞和用戶端就會開始將訊息，以確保所有片段都小於協商長度。 此行為對計算或記憶體限制裝置很有説明。 若要深入瞭解，請參閱 [官方 TLS 延伸模組規格](https://tools.ietf.org/html/rfc6066#section-4)。
+
+此公開預覽功能目前尚未提供正式的 SDK 支援。 快速入門
+
+1. [建立新的 IoT 中樞，並開啟預覽模式](iot-hub-preview-mode.md)。
+1. 將您的用戶端設定為 `SSL_CTX_set_tlsext_max_fragment_length` 下列其中一個值： 2 ^ 9、2 ^ 10、2 ^ 11 和 2 ^ 12。
+1. 將用戶端連線至預覽版 IoT 中樞。
+
+## <a name="next-steps"></a>後續步驟
+
+- 若要深入瞭解 IoT 中樞的安全性和存取控制，請參閱 [控制 Iot 中樞的存取權](iot-hub-devguide-security.md)。
+- 若要深入瞭解如何使用 X509 憑證進行裝置驗證，請參閱 [使用 X.509 CA 憑證的裝置驗證。](iot-hub-x509ca-overview.md)

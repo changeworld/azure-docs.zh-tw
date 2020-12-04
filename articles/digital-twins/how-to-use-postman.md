@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: f9be9dd94aad8c206b562f2c984ec944f70d3957
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5dbe161af172b65919328fca0b272f3b658f1b32
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187931"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600484"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>如何使用 Postman 將要求傳送至 Azure 數位 Twins Api
 
@@ -25,7 +25,7 @@ ms.locfileid: "96187931"
 1. 設定 Postman 集合，並將 Postman REST 用戶端設定為使用您的持有人權杖進行驗證。
 1. 使用已設定的 Postman 來建立要求，並將其傳送至 Azure 數位 Twins Api。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 若要繼續使用 Postman 來存取 Azure 數位 Twins Api，您必須設定 Azure 數位 Twins 實例並下載 Postman。 本節的其餘部分會引導您完成這些步驟。
 
@@ -130,7 +130,7 @@ Postman 中的要求會) 的要求 (群組中儲存在 **集合** 中。 當您�
 
 為了繼續進行範例查詢，本文將使用查詢 API (及其 [參考檔](/rest/api/digital-twins/dataplane/query/querytwins)) 來查詢實例中的所有數位 twins。
 
-1. 從參考檔中取得要求 URL 和類型。 針對查詢 API，這是 *POST https://digitaltwins-name.digitaltwins.azure.net/query?api-version=2020-10-31*。
+1. 從參考檔中取得要求 URL 和類型。 針對查詢 API，這是 *POST `https://digitaltwins-name.digitaltwins.azure.net/query?api-version=2020-10-31`*。
 1. 在 Postman 中，設定要求的類型，並輸入要求 URL，並視需要填入 URL 中的預留位置。 您將從 [[*必要條件*](#prerequisites)] 區段使用實例的 **主機名稱**。
     
    :::image type="content" source="media/how-to-use-postman/postman-request-url.png" alt-text="在新要求的詳細資料中，參考檔中的查詢 URL 已填入 [要求 URL] 方塊中。" lightbox="media/how-to-use-postman/postman-request-url.png":::

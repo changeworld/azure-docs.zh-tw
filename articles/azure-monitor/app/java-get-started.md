@@ -2,16 +2,16 @@
 title: 快速入門：使用 Azure 應用程式 Insights 的 JAVA web 應用程式分析
 description: '使用 Application Insights 針對 Java Web 應用程式進行應用程式效能監視。 '
 ms.topic: conceptual
-author: lgayhardt
-ms.custom: devx-track-java
-ms.author: lagayhar
 ms.date: 11/22/2020
-ms.openlocfilehash: 288b7463098b1c63b816f5544581e6222c7548c9
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+author: MS-jgol
+ms.custom: devx-track-java
+ms.author: jgol
+ms.openlocfilehash: 25d0d409c8112292afd20f052e82494dd8e656ea
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351549"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601300"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>快速入門：開始使用 JAVA Web 專案中的 Application Insights
 
@@ -293,7 +293,7 @@ Application Insights 可讓您定期測試網站，以檢查網站運作中且�
 
 [深入瞭解如何設定可用性 web 測試。][availability]
 
-## <a name="questions-problems"></a>有問題嗎？ 有問題嗎？
+## <a name="questions-problems"></a>有任何問題嗎？ 有問題嗎？
 [疑難排解 Java](java-troubleshoot.md)
 
 ## <a name="next-steps"></a>後續步驟

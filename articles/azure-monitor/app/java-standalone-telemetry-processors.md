@@ -3,12 +3,15 @@ title: 遙測處理器 (預覽) -Azure 監視器 Application Insights JAVA
 description: Azure 監視器 Application Insights JAVA 的遙測處理器
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: e3c41a7a9968a7de743f0c513b1f2b194501d0df
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+author: MS-jgol
+ms.custom: devx-track-java
+ms.author: jgol
+ms.openlocfilehash: 316243e130345ce1b009e065cf9d8250c501ee84
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425791"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601028"
 ---
 # <a name="telemetry-processors-preview-for-azure-monitor-application-insights-java"></a>適用于 Azure 監視器 Application Insights JAVA 的遙測處理器 (預覽) 
 
@@ -56,10 +59,10 @@ ms.locfileid: "94425791"
 
 屬性處理器和範圍處理器會公開選項，以提供一組要比對的範圍屬性，以判斷是否應該在處理器中包含或排除該範圍。 若要設定此選項， `include` 必須在和/或 `exclude` 至少一個 `matchType` 和 `spanNames` 或 `attributes` 。 包含/排除設定支援有一個以上的指定條件。 所有指定的條件都必須評估為 true，才會發生相符的情況。 
 
-**必要欄位** ： 
+**必要欄位**： 
 * `matchType` 控制如何 `spanNames` 解讀和陣列中的專案 `attributes` 。 可能的值為 `regexp` 或 `strict`。 
 
-**選用欄位** ： 
+**選用欄位**： 
 * `spanNames` 至少必須符合其中一個專案。 
 * `attributes` 指定要比對的屬性清單。 所有這些屬性都必須完全相符，才會發生相符的情況。
 

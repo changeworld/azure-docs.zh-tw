@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 5985c30973f703b897fa2eedc2be3b939d97900b
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 3d3c452dd883316520e0c28f01c241af74d597c8
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558992"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602779"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何呼叫文字分析 REST API
 
@@ -260,6 +260,8 @@ example.json
 3. 將加入 `Operation-Location` 至要求。
 
 4. 回應將會是單一 JSON 檔，其中包含要求中所提供的每個檔識別碼的專案。
+
+請注意， `/analyze` `/health` 在上述步驟2中的 GET 要求結果，從建立作業的時間開始，有24小時的時間可供使用。  此時間會 `expirationDateTime` 以 GET 回應中的值表示。  在這段時間之後，結果會被清除，而且無法再供抓取。    
 
 ## <a name="example-api-responses"></a>範例 API 回應
  

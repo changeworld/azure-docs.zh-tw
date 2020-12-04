@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 10ad0b83f3c85b48f9d066e1feec8d8aac4dd057
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: a6a1b41dd4ede055ba81c069c2164bb36da99876
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533667"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602303"
 ---
 # <a name="azure-security-baseline-for-azure-lighthouse"></a>適用于 Azure Lighthouse 的 Azure 安全性基準
 
@@ -306,7 +306,7 @@ Azure Lighthouse 可讓您使用 Azure 內建角色來存取委派的客戶資�
 
 ## <a name="logging-and-threat-detection"></a>記錄與威脅偵測
 
-如需詳細資訊，請參閱 [Azure 安全性效能評定：記錄與威脅偵測](/azure/security/benchmarks/security-controls-v2-logging-threat-protection)。
+如需詳細資訊，請參閱 [Azure 安全性效能評定：記錄與威脅偵測](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)。
 
 ### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1：啟用 Azure 資源的威脅偵測
 
@@ -676,7 +676,7 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 -   不同威脅和攻擊案例的補救策略
 
--   網際網路邊緣與輸入和輸出策略/azure/security/benchmarks/security-controls-v2-logging-threat-protection
+-   網際網路邊緣與輸入和輸出策略/azure/security/benchmarks/security-controls-v2-logging-threat-detection
 -   混合式雲端和內部部署互連能力策略
 
 -   最新的網路安全性成品 (例如網路圖、參考網路架構)
@@ -748,7 +748,7 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 - [Azure 安全性效能評定 - 記錄與威脅偵測](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
-- [Azure 安全性效能評定 - 事件回應](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure 安全性效能評定 - 事件回應](/azure/security/benchmarks/security-controls-v2-incident-response)
 
 - [Azure 安全性最佳做法 4 - 流程。更新雲端的事件回應流程](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud) (機器翻譯)
 

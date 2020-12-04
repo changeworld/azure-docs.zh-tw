@@ -9,15 +9,15 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 01/09/2020
+ms.date: 12/04/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 921c88f4771fedb910dc41983d559987a8cdfb0c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ec006636ed7e975b696aa32300b32089e3209bb5
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349328"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600467"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>在 Python 中啟動、監視及取消定型回合
 
@@ -34,7 +34,7 @@ ms.locfileid: "96349328"
 > 如果您要尋找有關監視 Azure Machine Learning 服務和相關 Azure 服務的資訊，請參閱 [如何監視 Azure Machine Learning](monitor-azure-machine-learning.md)。
 > 如果您要尋找部署為 web 服務或 IoT Edge 模組之模型的相關資訊，請參閱[使用 Application Insights](how-to-enable-app-insights.md)[收集模型資料](how-to-enable-data-collection.md)和監視。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 您將需要下列專案：
 

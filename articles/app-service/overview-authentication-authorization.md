@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 09460e4e38ea1842d58ecf3a9b3cd00a072c271e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4f1aceed7e6a41a8ad4f3a062f23a796e31e34ad
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008441"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601674"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service 和 Azure Functions 中的驗證和授權
 
@@ -166,6 +166,7 @@ App Service 使用[同盟身分識別](https://en.wikipedia.org/wiki/Federated_i
 * [如何設定 App 使用 Microsoft 帳戶登入][MSA]
 * [如何設定 App 以使用 Twitter 登入][Twitter]
 * [如何設定您的應用程式以使用 OpenID Connect 提供者登入 (預覽) ][OIDC]
+* [如何設定您的應用程式以使用 Apple (preview) 的登入 ][Apple]
 
 [AAD]: configure-authentication-provider-aad.md
 [Facebook]: configure-authentication-provider-facebook.md
@@ -173,6 +174,7 @@ App Service 使用[同盟身分識別](https://en.wikipedia.org/wiki/Federated_i
 [MSA]: configure-authentication-provider-microsoft.md
 [Twitter]: configure-authentication-provider-twitter.md
 [OIDC]: configure-authentication-provider-openid-connect.md
+[Apple]: configure-authentication-provider-apple.md
 
 [custom-auth]: /previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#custom-auth
 

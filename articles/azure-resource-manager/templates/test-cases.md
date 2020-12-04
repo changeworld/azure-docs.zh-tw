@@ -2,15 +2,15 @@
 title: 測試控管組的測試案例
 description: 描述 ARM 範本測試控管組所執行的測試。
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 12/03/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: dda8e92c17029126e7f473a6aee03acfc970e04b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff9ad659e15a88725e4c3905ab6c623fda7610fd
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378112"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600899"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>ARM 範本測試控管組的預設測試案例
 
@@ -116,7 +116,7 @@ ms.locfileid: "89378112"
 }
 ```
 
-使用[concat](template-functions-string.md#concat)或[uri](template-functions-string.md#uri)時，測試也**會失敗**。
+使用 [concat](template-functions-string.md#concat)或 [uri](template-functions-string.md#uri)時，測試也 **會失敗**。
 
 ```json
 "variables":{
@@ -137,9 +137,11 @@ ms.locfileid: "89378112"
 
 測試名稱： **不應將位置硬式編碼**
 
-您範本的使用者可以使用有限的區域。 當您將資源位置設定為時 `"[resourceGroup().location]"` ，可能已在其他使用者無法存取的區域中建立資源群組。 這些使用者會被封鎖而無法使用該範本。
+您的範本應該要有一個名為 location 的參數。 使用此參數可設定範本中資源的位置。 在) 上名為 azuredeploy.json 或 mainTemplate.js的主要範本 (中，此參數可以預設為資源群組位置。 在連結或嵌套範本中，location 參數不應該有預設位置。
 
-定義每個資源的位置時，請使用預設為資源群組位置的參數。 藉由提供此參數，使用者可以在方便的情況下使用預設值，但也可以指定不同的位置。
+您範本的使用者可以使用有限的區域。 當您將資源位置硬程式碼時，使用者可能會遭到封鎖而無法在該區域中建立資源。 即使您將資源位置設定為，也可以封鎖使用者 `"[resourceGroup().location]"` 。 資源群組可能已在其他使用者無法存取的區域中建立。 這些使用者會被封鎖而無法使用該範本。
+
+藉由提供預設為資源群組位置的位置參數，使用者可以在方便的情況下使用預設值，但也可以指定不同的位置。
 
 下列範例會因為資源上的位置設定為，而導致測試 **失敗** `resourceGroup().location` 。
 
@@ -195,7 +197,7 @@ ms.locfileid: "89378112"
 }
 ```
 
-相反地，請建立預設為資源群組位置的參數，但允許使用者提供不同的值。 下列範例會 **傳遞** 這項測試。
+相反地，請建立預設為資源群組位置的參數，但允許使用者提供不同的值。 下列範例會在範本用作主要範本時 **傳遞** 此測試。
 
 ```json
 {
@@ -227,6 +229,8 @@ ms.locfileid: "89378112"
     "outputs": {}
 }
 ```
+
+但是，如果上述範例是當做連結的範本使用，則測試 **會失敗**。 當做連結的範本使用時，請移除預設值。
 
 ## <a name="resources-should-have-location"></a>資源應該有位置
 
@@ -407,7 +411,7 @@ ms.locfileid: "89378112"
 
 有時您需要根據另一個變數或參數的值，以動態方式來建立變數。 設定值時，請勿使用 [concat](template-functions-string.md#concat) 函數。 相反地，請使用包含可用選項的物件，並在部署期間以動態方式取得物件的其中一個屬性。
 
-下列範例會 **傳遞** 這項測試。 **CurrentImage**變數會在部署期間動態設定。
+下列範例會 **傳遞** 這項測試。 **CurrentImage** 變數會在部署期間動態設定。
 
 ```json
 {
@@ -445,7 +449,7 @@ ms.locfileid: "89378112"
 
 ## <a name="use-recent-api-version"></a>使用最新的 API 版本
 
-測試名稱： **ApiVersions 應該是最新**的
+測試名稱： **ApiVersions 應該是最新** 的
 
 每個資源的 API 版本都應使用最新版本。 測試會評估您針對該資源類型可用的版本所使用的版本。
 
@@ -571,11 +575,11 @@ ms.locfileid: "89378112"
 
 測試名稱： **部署資源不得為 Debug**
 
-當您使用**Microsoft .resources/部署**資源類型來定義[嵌套或連結的範本](linked-templates.md)時，您可以啟用該範本的偵錯工具。 當您需要測試該範本時，如果您已準備好在生產環境中使用該範本，則偵錯工具就很好用。
+當您使用 **Microsoft .resources/部署** 資源類型來定義 [嵌套或連結的範本](linked-templates.md)時，您可以啟用該範本的偵錯工具。 當您需要測試該範本時，如果您已準備好在生產環境中使用該範本，則偵錯工具就很好用。
 
 ## <a name="admin-user-names-cant-be-literal-value"></a>管理使用者名稱不能是常值
 
-測試名稱： **AdminUsername 不能是常**值
+測試名稱： **AdminUsername 不能是常** 值
 
 設定管理員使用者名稱時，請勿使用常值。
 
@@ -603,7 +607,7 @@ ms.locfileid: "89378112"
 
 ## <a name="use-stable-vm-images"></a>使用穩定的 VM 映射
 
-測試名稱：**虛擬機器不得為預覽**狀態
+測試名稱：**虛擬機器不得為預覽** 狀態
 
 虛擬機器不應使用預覽映射。
 
