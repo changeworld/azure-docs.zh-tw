@@ -2,23 +2,24 @@
 title: 建立 Azure 事件中樞架構登錄
 description: 本文說明如何在 Azure 事件中樞命名空間中建立架構登錄。
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 12/03/2020
 ms.custom: references_regions
-ms.openlocfilehash: 90556e0843cda94dc79330321d027f8d28eb7d20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45791cd69772be97ca6768184ed17179e04ad9dc
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652188"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576803"
 ---
 # <a name="create-an-azure-event-hubs-schema-registry-preview"></a>建立 Azure 事件中樞 schema registry (preview) 
 本文說明如何在 Azure 事件中樞所裝載的架構登錄中建立具有架構的架構群組。 如需 Azure 事件中樞架構登錄功能的總覽，請參閱 [事件中樞的 Azure 架構登錄](schema-registry-overview.md)。
 
 > [!NOTE]
-> - **結構描述登錄**功能目前處於**預覽**狀態，不建議用於生產工作負載。
-> - 此功能僅適用於**標準**和**專用**階層，而不適用於**基本**階層。
+> - **結構描述登錄** 功能目前處於 **預覽** 狀態，不建議用於生產工作負載。
+> - 此功能僅適用於 **標準** 和 **專用** 階層，而不適用於 **基本** 階層。
+> - 如果事件中樞位於 **虛擬網路** 中，除非您從相同虛擬網路中的 VM 存取入口網站，否則您將無法在 Azure 入口網站中建立架構。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 [建立事件中樞命名空間](event-hubs-create.md#create-an-event-hubs-namespace)。 您也可以使用現有的命名空間。 
 
 ## <a name="create-a-schema-group"></a>建立架構群組
@@ -33,10 +34,10 @@ ms.locfileid: "91652188"
     1. 然後，選取 [ **建立** ] 以建立架構群組。 
 1. 在架構群組清單中，選取 **架構群組** 的名稱。
 
-    :::image type="content" source="./media/create-schema-registry/select-schema-group.png" alt-text="架構登錄頁面":::    
+    :::image type="content" source="./media/create-schema-registry/select-schema-group.png" alt-text="在清單中選取您的架構群組":::    
 1. 您會看到群組的 [ **架構群組** ] 頁面。
 
-    :::image type="content" source="./media/create-schema-registry/schema-group-page.png" alt-text="架構登錄頁面":::
+    :::image type="content" source="./media/create-schema-registry/schema-group-page.png" alt-text="架構群組頁面":::
     
 
 ## <a name="add-a-schema-to-the-schema-group"></a>將架構新增至架構群組
@@ -64,30 +65,30 @@ ms.locfileid: "91652188"
             ]
         }
         ```
-    1. 選取 [建立]****。 
+    1. 選取 [建立]。 
 1. 從架構清單中選取 **架構** 。 
 
-    :::image type="content" source="./media/create-schema-registry/select-schema.png" alt-text="架構登錄頁面":::
+    :::image type="content" source="./media/create-schema-registry/select-schema.png" alt-text="選取結構描述":::
 1. 您會看到架構的 **架構總覽** 頁面。 
 
-    :::image type="content" source="./media/create-schema-registry/schema-overview-page.png" alt-text="架構登錄頁面":::    
+    :::image type="content" source="./media/create-schema-registry/schema-overview-page.png" alt-text="架構總覽頁面":::    
 1. 如果有多個版本的架構，您會在 [ **版本** ] 下拉式清單中看到它們。 選取要切換至該版本架構的版本。 
 
 ## <a name="create-a-new-version-of-schema"></a>建立新版本的架構
 
 1. 更新文字方塊中的架構，然後選取 [ **驗證**]。 在下列範例中，已將新欄位 `id` 加入至架構。 
 
-    :::image type="content" source="./media/create-schema-registry/update-schema.png" alt-text="架構登錄頁面":::    
+    :::image type="content" source="./media/create-schema-registry/update-schema.png" alt-text="更新架構":::    
     
 1. 檢查驗證狀態和變更，然後選取 [ **儲存**]。 
 
-    :::image type="content" source="./media/create-schema-registry/compare-save-schema.png" alt-text="架構登錄頁面":::     
+    :::image type="content" source="./media/create-schema-registry/compare-save-schema.png" alt-text="檢查驗證狀態、變更和儲存":::     
 1. 您會看到在 `2` [**架構總覽**] 頁面上已選取 [**版本**]。 
 
-    :::image type="content" source="./media/create-schema-registry/new-version.png" alt-text="架構登錄頁面":::    
+    :::image type="content" source="./media/create-schema-registry/new-version.png" alt-text="新版本的架構":::    
 1. 選取 `1` 以查看架構的第1版。 
 
-    :::image type="content" source="./media/create-schema-registry/select-version.png" alt-text="架構登錄頁面":::    
+    :::image type="content" source="./media/create-schema-registry/select-version.png" alt-text="選取版本":::    
 
 
 ## <a name="next-steps"></a>後續步驟

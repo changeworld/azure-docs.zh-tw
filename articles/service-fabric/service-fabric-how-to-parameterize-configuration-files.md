@@ -1,16 +1,14 @@
 ---
 title: 在 Azure Service Fabric 中參數化設定檔
 description: 瞭解如何在 Service Fabric 中參數化設定檔，這是管理多個環境時的實用技巧。
-author: mikkelhegn
 ms.topic: conceptual
 ms.date: 10/09/2018
-ms.author: mikhegn
-ms.openlocfilehash: 4e96a732cffd70b0a5c24e7ebafe214297a72720
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ca376230c427c47e839b2dee96e8daa83ccedf15
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006042"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576752"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>如何參數化 Service Fabric 中的設定檔
 

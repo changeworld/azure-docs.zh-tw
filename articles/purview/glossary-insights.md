@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/20/2020
-ms.openlocfilehash: 9f7d81423c75c3e1a51f5b5d5f37c54307488eb3
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: f61d99a61cb50886d70489b586d948bfa751e196
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552029"
+ms.locfileid: "96576769"
 ---
 # <a name="glossary-insights-on-your-data-in-azure-purview"></a>Azure 範疇中資料的詞彙見解
 
@@ -20,6 +20,7 @@ ms.locfileid: "96552029"
 
 在本操作指南中，您將瞭解如何：
 
+> [!div class="checklist"]
 > - 從您的範疇帳戶前往見解
 > - 取得資料的鳥瞰圖
 

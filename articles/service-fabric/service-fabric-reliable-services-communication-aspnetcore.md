@@ -1,23 +1,21 @@
 ---
 title: 服務與 ASP.NET Core 的通訊
 description: 瞭解如何在無狀態和具狀態的 Azure Service Fabric Reliable Services 應用程式中使用 ASP.NET Core。
-author: vturecek
 ms.topic: conceptual
 ms.date: 10/12/2018
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 69423e7545178fd74ad44f5cab7b37b6f24b3577
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba5626d477bbd6aa07d89703cc37b157f4cfd4d5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022185"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576786"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Azure Service Fabric Reliable Services 中的 ASP.NET Core
 
 ASP.NET Core 是開放原始碼和跨平臺架構。 此架構的設計目的是要建立雲端式、網際網路連線的應用程式，例如 web 應用程式、IoT 應用程式和行動後端。
 
-本文是使用**ServiceFabric AspNetCore**在 Service Fabric Reliable Services 中裝載 ASP.NET Core 服務的深入指南。 NuGet 套件的集合。
+本文是使用 **ServiceFabric AspNetCore** 在 Service Fabric Reliable Services 中裝載 ASP.NET Core 服務的深入指南。 NuGet 套件的集合。
 
 如需 Service Fabric 中 ASP.NET Core 的簡介教學課程，以及如何設定開發環境的指示，請參閱 [教學課程：使用 ASP.NET Core WEB API 前端服務和具狀態後端服務來建立和部署應用程式](service-fabric-tutorial-create-dotnet-app.md)。
 
@@ -33,9 +31,9 @@ ASP.NET Core 和 Service Fabric 應用程式都可以在 .NET Core 或完整 .NE
 
 ## <a name="service-fabric-service-hosting"></a>Service Fabric 服務裝載
 
-在 Service Fabric 中，服務的一個或多個實例及/或複本會在 *服務主機進程*中執行：執行您的服務程式代碼的可執行檔。 您以服務作者的身份，擁有服務主機進程，Service Fabric 為您啟用並監視。
+在 Service Fabric 中，服務的一個或多個實例及/或複本會在 *服務主機進程* 中執行：執行您的服務程式代碼的可執行檔。 您以服務作者的身份，擁有服務主機進程，Service Fabric 為您啟用並監視。
 
-傳統 ASP.NET (直到 MVC 5) 已透過 System.Web.dll 與 IIS 緊密結合。 ASP.NET Core 能區別網頁伺服器與 web 應用程式。 這種分隔可讓 web 應用程式在不同的網頁伺服器之間可移植。 它也可讓 web 伺服器 *自我*裝載。 這表示您可以在自己的程式中啟動網頁伺服器，而不是由專用 web 伺服器軟體（例如 IIS）所擁有的進程啟動。
+傳統 ASP.NET (直到 MVC 5) 已透過 System.Web.dll 與 IIS 緊密結合。 ASP.NET Core 能區別網頁伺服器與 web 應用程式。 這種分隔可讓 web 應用程式在不同的網頁伺服器之間可移植。 它也可讓 web 伺服器 *自我* 裝載。 這表示您可以在自己的程式中啟動網頁伺服器，而不是由專用 web 伺服器軟體（例如 IIS）所擁有的進程啟動。
 
 若要結合 Service Fabric 服務和 ASP.NET （可做為來賓可執行檔或可靠的服務），您必須能夠在服務主機進程內啟動 ASP.NET。 ASP.NET Core 自我裝載可讓您執行這項操作。
 
@@ -187,7 +185,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
   </Resources>
 ```
 
-由設定所配置的動態埠 `Endpoint` 只提供 *每個主機進程*一個埠。 目前的 Service Fabric 裝載模型允許在相同的進程中裝載多個服務實例及/或複本。 這表示在透過設定配置時，每一個埠都會共用相同的埠 `Endpoint` 。 多個 **HTTP.sys** 實例可以使用基礎 **HTTP.sys** 埠共用功能來共用埠。 但 `HttpSysCommunicationListener` 由於用戶端要求所帶來的複雜性，因此不支援。 針對動態埠使用方式，Kestrel 是建議的 web 伺服器。
+由設定所配置的動態埠 `Endpoint` 只提供 *每個主機進程* 一個埠。 目前的 Service Fabric 裝載模型允許在相同的進程中裝載多個服務實例及/或複本。 這表示在透過設定配置時，每一個埠都會共用相同的埠 `Endpoint` 。 多個 **HTTP.sys** 實例可以使用基礎 **HTTP.sys** 埠共用功能來共用埠。 但 `HttpSysCommunicationListener` 由於用戶端要求所帶來的複雜性，因此不支援。 針對動態埠使用方式，Kestrel 是建議的 web 伺服器。
 
 ## <a name="kestrel-in-reliable-services"></a>Reliable Services 中的 Kestrel
 您可以在 Reliable Services 中使用 Kestrel，方法是匯入 **ServiceFabric. AspNetCore. Kestrel** NuGet 套件。 此封裝包含的 `KestrelCommunicationListener` 實作為 `ICommunicationListener` 。 `KestrelCommunicationListener` 可讓您使用 Kestrel 作為網頁伺服器，在可靠的服務內建立 ASP.NET Core WebHost。
@@ -249,7 +247,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 在此範例中，`IReliableStateManager` 的單一執行個體會提供給 WebHost 相依性插入容器。 這並不是絕對必要的，但可讓您 `IReliableStateManager` 在 MVC 控制器動作方法中使用和可靠的集合。
 
-`Endpoint` 組態名稱*不*提供給具狀態服務中的 `KestrelCommunicationListener`。 我們會在下列各節中詳細說明這個部分。
+`Endpoint` 組態名稱 *不* 提供給具狀態服務中的 `KestrelCommunicationListener`。 我們會在下列各節中詳細說明這個部分。
 
 ### <a name="configure-kestrel-to-use-https"></a>將 Kestrel 設定為使用 HTTPS
 在您的服務中啟用 HTTPS 與 Kestrel 時，您必須設定數個接聽選項。 更新 `ServiceInstanceListener` 以使用 *EndpointHttps* 端點，並在特定埠上接聽 (例如埠 443) 。 將 web 主機設定為使用 Kestrel web 伺服器時，您必須設定 Kestrel 以接聽所有網路介面上的 IPv6 位址： 
@@ -322,7 +320,7 @@ new KestrelCommunicationListener(serviceContext, "ServiceEndpoint", (url, listen
 如果 ServiceManifest.xml 未使用設定 `Endpoint` ，請省略函式中的名稱 `KestrelCommunicationListener` 。 在此情況下，它會使用動態埠。 如需有關這個的詳細資訊，請參閱下一節。
 
 #### <a name="use-kestrel-with-a-dynamic-port"></a>搭配使用 Kestrel 與動態連接埠
-Kestrel 無法使用 ServiceManifest.xml 中設定的自動埠指派 `Endpoint` 。 這是因為從設定的自動埠指派 `Endpoint` 會為每個 *主機進程*指派唯一的埠，而單一主機進程可以包含多個 Kestrel 實例。 這不適用於 Kestrel，因為它不支援埠共用。 因此，每個 Kestrel 實例都必須在唯一的埠上開啟。
+Kestrel 無法使用 ServiceManifest.xml 中設定的自動埠指派 `Endpoint` 。 這是因為從設定的自動埠指派 `Endpoint` 會為每個 *主機進程* 指派唯一的埠，而單一主機進程可以包含多個 Kestrel 實例。 這不適用於 Kestrel，因為它不支援埠共用。 因此，每個 Kestrel 實例都必須在唯一的埠上開啟。
 
 若要使用動態通訊埠指派與 Kestrel，請完全略過 `Endpoint` ServiceManifest.xml 中的設定，而且不要將端點名稱傳遞至函式，如下所示 `KestrelCommunicationListener` ：
 
@@ -375,7 +373,7 @@ public void ConfigureServices(IServiceCollection services)
 $"{this.PackageName}{ConfigurationPath.KeyDelimiter}{section.Name}{ConfigurationPath.KeyDelimiter}{property.Name}"
 ```
 
-例如，如果您的設定套件 `MyConfigPackage` 以下列內容命名，則 `IConfiguration` 透過 *MyConfigPackage： MyConfigSection： >myparameter*可在 ASP.NET Core 上取得設定值。
+例如，如果您的設定套件 `MyConfigPackage` 以下列內容命名，則 `IConfiguration` 透過 *MyConfigPackage： MyConfigSection： >myparameter* 可在 ASP.NET Core 上取得設定值。
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">  
@@ -459,7 +457,7 @@ Service Fabric 設定提供者也支援設定更新。 您可以使用 ASP.NET C
  - 僅內部 ASP.NET Core 無狀態服務
  - 僅內部 ASP.NET Core 具狀態服務
 
-**外部公開的服務**是一種公開從叢集外部呼叫之端點的服務，通常是透過負載平衡器。
+**外部公開的服務** 是一種公開從叢集外部呼叫之端點的服務，通常是透過負載平衡器。
 
 僅供 **內部** 使用的服務是指只從叢集內呼叫端點的服務。
 

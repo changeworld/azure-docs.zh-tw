@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/01/2020
+ms.date: 12/03/2020
 ms.author: alkohli
-ms.openlocfilehash: 751ac870996fa1a2805bb018c991f85525fd797d
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 90869af032a381cecd3e65f5d5b367156dd047c5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548937"
+ms.locfileid: "96576828"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>使用本機 web UI 來管理您的資料箱和 Data Box Heavy
 
-本文說明在 Data Box 和 Data Box Heavy 裝置上執行的一些設定和管理工作。 您可以透過 Azure 入口網站 UI 和裝置的本機 web UI 來管理資料箱和 Data Box Heavy 裝置。 本文將焦點放在使用本機 web UI 執行的工作。
+本文說明在 Data Box 和 Data Box Heavy 裝置上執行的一些設定和管理工作。 您可以透過 Azure 入口網站 UI 和裝置的本機 web UI 來管理資料箱和 Data Box Heavy 裝置。 本文著重于使用本機 web UI 執行的工作。
 
-適用于 Data Box 和 Data Box Heavy 的本機 web UI 可用於裝置的初始設定。 您也可以使用本機 web UI 來關閉或重新開機裝置、執行診斷測試、更新軟體、查看複製記錄檔、清除裝置中的本機資料，以及產生 Microsoft 支援服務的支援封裝。 在具有兩個獨立節點的 Data Box Heavy 裝置上，您可以存取兩個對應至裝置每個節點的不同本機 web Ui。
+適用于資料箱和 Data Box Heavy 的本機 web UI 可用於裝置的初始設定。 您也可以使用本機 web UI 來關閉或重新開機裝置、執行診斷測試、更新軟體、查看複製記錄檔、清除裝置中的本機資料，以及產生 Microsoft 支援服務的支援封裝。 在具有兩個獨立節點的 Data Box Heavy 裝置上，您可以存取兩個對應至裝置每個節點的不同本機 web Ui。
 
 [!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
@@ -29,21 +29,25 @@ ms.locfileid: "96548937"
 
 若要產生支援封裝，請執行下列步驟：
 
-1. 在本機 web UI 中，移至 [ **連絡人支援** ]，然後選取 [ **建立支援套件**]。
+1. 在本機 web UI 中，移至 [ **連絡人支援**]。 （選擇性）選取 [ **包含記憶體傾印**]。 然後選取 [ **建立支援套件**]。
+
+    記憶體傾印是裝置記憶體的內容，會在系統失敗後儲存。
+
+    除非支援人員要求，否則您不應該選取 [ **包含記憶體傾印** ] 選項。 收集包含記憶體傾印的支援封裝需要很長的時間，而且會包含機密資料。
 
     ![建立支援套件 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
-2. 已收集支援套件。 此作業需要幾分鐘的時間。
+    已收集支援套件。 如果您只包含系統記錄，此作業需要幾分鐘的時間。 如果您包含記憶體傾印，則需要較長的時間。
 
     ![建立支援套件 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 
-3. 當支援封裝建立完成後，請選取 [ **下載支援套件**]。
+2. 一旦支援封裝建立完成，請選取 [ **下載支援套件**]。
+
+    ![建立支援封裝3](media/data-box-local-web-ui-admin/create-support-package-3.png)
+
+3. 瀏覽並選擇下載位置。 開啟資料夾以檢視內容。
 
     ![建立支援套件 4](media/data-box-local-web-ui-admin/create-support-package-4.png)
-
-4. 瀏覽並選擇下載位置。 開啟資料夾以檢視內容。
-
-    ![建立支援套件 5](media/data-box-local-web-ui-admin/create-support-package-5.png)
 
 ## <a name="erase-local-data-from-your-device"></a>清除裝置中的本機資料
 
@@ -72,6 +76,7 @@ ms.locfileid: "96548937"
 若要關閉您的裝置，請執行下列步驟。
 
 1. 在本機 Web UI 中，移至 [關機或重新啟動]。
+
 2. 選取 [關機]。
 
     ![將資料箱關機 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
@@ -107,7 +112,7 @@ BOM 或資訊清單檔包含複製到資料箱或 Data Box Heavy 的檔案清單
 
     <!-- ![Select Download list of files](media/data-box-portal-admin/download-list-of-files.png) -->
 
-3. 在檔案總管中，您會看到根據用來連接到裝置的通訊協定和使用的 Azure 儲存體類型，產生不同的檔案清單。
+3. 在檔案總管中，視用來連接到裝置的通訊協定和使用的 Azure 儲存體類型而定，會產生個別的檔案清單。
 
     <!-- ![Files for storage type and connection protocol](media/data-box-portal-admin/files-storage-connection-type.png) -->
     ![儲存體類型和連接通訊協定的檔案](media/data-box-local-web-ui-admin/prepare-to-ship-5.png)
@@ -184,7 +189,7 @@ BOM 或資訊清單檔包含複製到資料箱或 Data Box Heavy 的檔案清單
 
 準備寄送期間的總和檢查碼計算只適用于匯入順序，而不是針對匯出訂單進行。
 
-我們強烈建議您不要停用總和檢查碼，除非效能已嚴重受到影響。
+強烈建議您不要停用總和檢查碼，除非效能受到嚴重的影響。
 
 1. 在裝置本機 web UI 的右上角，移至 [ **設定**]。
 
@@ -263,7 +268,7 @@ BOM 或資訊清單檔包含複製到資料箱或 Data Box Heavy 的檔案清單
 
 根據預設，Azure 資料箱會使用傳輸層安全性 (TLS) 1.2 進行加密，因為它比 TSL 1.1 更安全。 但是，如果您或您的用戶端使用瀏覽器來存取不支援 TLS 1.2 的資料，您可能會啟用 TLS 1.1。
 
-如需與 TLS 相關的詳細資訊，請參閱 [Azure 資料箱閘道安全性](../databox-online/data-box-gateway-security.md)。
+如需與 TLS 相關的詳細資訊，請參閱 [Azure 資料箱閘道安全性](../databox-gateway/data-box-gateway-security.md)。
 
 若要在您的 Azure 裝置中啟用 TLS 1.1：
 

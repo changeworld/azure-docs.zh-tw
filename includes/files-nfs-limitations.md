@@ -5,15 +5,15 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 09/15/2020
+ms.date: 12/02/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 10177dd949ac531027e13cf633b11c16674fd4ab
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: db4bc51b937535b7b53273bf01057d9b6c5198b3
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94386639"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96584623"
 ---
 在預覽期間，NFS 有下列限制：
 
@@ -21,6 +21,7 @@ ms.locfileid: "94386639"
 - 如果大部分的要求都是以中繼資料為中心，則相較于讀取/寫入/更新作業，延遲會較差。
 - 必須建立新的儲存體帳戶，才能建立 NFS 共用。
 - 僅支援管理平面 REST Api。 資料平面 REST Api 無法使用，這表示儲存體總管之類的工具將無法與 NFS 共用搭配運作，也無法流覽 Azure 入口網站中的 NFS 共用資料。
+- 目前不支援 AzCopy。
 - 僅適用于 premium 層。
 - 目前僅適用于本機冗余儲存體 (LRS) 。
 
