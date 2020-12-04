@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 8c4e600e012268337a5e6c63d5b3ce4f532ccec0
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: aaf614846618f3781559ad7f9ce31cb47dd11b63
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970923"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96009563"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>快速入門：搭配使用 REST API 與 Python 將表單辨識器模型定型並擷取表單資料
 
@@ -27,7 +27,7 @@ ms.locfileid: "91970923"
 
 若要完成此快速入門，您必須：
 - 已安裝 [Python](https://www.python.org/downloads/) (如果您想要在本機執行此範例)。
-- 至少有五個相同類型的表單。 您將使用此資料來定型模型。 您的表單可以是不同的檔案類型，但必須是相同類型的文件。 您可使用[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451) (下載 *sample_data .zip* 並將其解壓縮) 來進行本快速入門。 將訓練檔案上傳至標準效能層級 Azure 儲存體帳戶中 Blob 儲存體容器的根目錄。
+- 至少有五個相同類型的表單。 您將使用此資料來定型模型。 您的表單可以是不同的檔案類型，但必須是相同類型的文件。 您可使用 [範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451) (下載 *sample_data .zip* 並將其解壓縮) 來進行本快速入門。 將訓練檔案上傳至標準效能層級 Azure 儲存體帳戶中 Blob 儲存體容器的根目錄。
 
 > [!NOTE]
 > 本快速入門使用 URL 存取的遠端文件。 若要改為使用本機檔案，請參閱[參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) (英文)。
@@ -50,6 +50,7 @@ ms.locfileid: "91970923"
 1. 將 `<subscription key>` 取代為您在先前的步驟中複製的訂用帳戶金鑰。
 1. 將 `<endpoint>` 取代為您表單辨識器資源的端點 URL。
 1. 將 `<Blob folder name>` 取代為您的表單所在之 Blob 儲存體中的資料夾路徑。 如果您的表單位於容器的根目錄，請將此字串保留為空白。
+1. 選擇性地以您想要提供給模型的易記名稱取代 `<your model name>`。
 
     # <a name="v20"></a>[v2.0](#tab/v2-0)
     ```python
@@ -78,6 +79,7 @@ ms.locfileid: "91970923"
             "prefix": prefix,
             "includeSubFolders": includeSubFolders
         },
+        "modelName":"<your model name>",
         "useLabelFile": useLabelFile
     }
     
@@ -101,7 +103,7 @@ ms.locfileid: "91970923"
     
     # Endpoint URL
     endpoint = r"<endpoint>"
-    post_url = endpoint + r"/formrecognizer/v2.1-preview.1/custom/models"
+    post_url = endpoint + r"/formrecognizer/v2.1-preview.2/custom/models"
     source = r"<SAS URL>"
     prefix = "<Blob folder name>"
     includeSubFolders = False

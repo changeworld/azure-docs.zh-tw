@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 37239f9c7857a8e72bb293cfa3caeb429962a542
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 095f2c3ed17042bb616fb091d1af52a64c913709
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363335"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460507"
 ---
 # <a name="getting-started"></a>開始使用
 
@@ -37,13 +37,13 @@ ms.locfileid: "94363335"
 
 如果您的應用程式或工作負載使用大型資料集、需要私人網路功能，或無法連線到雲端，則可能無法與雲端服務通訊。 在此情況下，容器化的認知服務具有下列優點：
 
-* **低連線能力** ：您可以在任何計算環境中 (雲端上還是雲端下都行) 部署容器化的認知服務。 如果您的應用程式無法與雲端連線，請考慮在應用程式上部署容器化的認知服務。
+* **低連線能力**：您可以在任何計算環境中 (雲端上還是雲端下都行) 部署容器化的認知服務。 如果您的應用程式無法與雲端連線，請考慮在應用程式上部署容器化的認知服務。
 
-* **低延遲** ：因為容器化服務不需要與雲端來回通訊，所以在傳回回應時的延遲較低。
+* **低延遲**：因為容器化服務不需要與雲端來回通訊，所以在傳回回應時的延遲較低。
 
-* **隱私權和資料安全性** ：您可以將容器化服務部署到私人網路，以免敏感性資料離開網路。
+* **隱私權和資料安全性**：您可以將容器化服務部署到私人網路，以免敏感性資料離開網路。
 
-* **高可擴縮性** ：容器化服務沒有「速率限制」，且會在使用者管理的電腦上執行。 因此，您可以無限制地擴大認知服務，以處理更大的工作負載。
+* **高可擴縮性**：容器化服務沒有「速率限制」，且會在使用者管理的電腦上執行。 因此，您可以無限制地擴大認知服務，以處理更大的工作負載。
 
 請遵循[本指南](../cognitive-services-container-support.md?tabs=luis)以建立容器化認知服務。
 
@@ -65,14 +65,14 @@ Azure Databricks 是 Apache Spark 型的分析平台，具有單鍵設定、簡�
     * 將程式庫安裝到叢集上  
       <img src="media/install-library.png" alt="Install Library on Cluster" width="50%"/>
 
-### <a name="synapse-analytics-optional"></a>Synapse Analytics (選擇性)
+### <a name="azure-synapse-analytics-optional"></a>Azure Synapse Analytics (選擇性)
 
-(選擇性) 您可以使用 Synapse Analytics 來建立 Spark 叢集。 Azure Synapse Analytics 可將企業資料倉儲和巨量資料分析整合在一起。 其可讓您自由使用無伺服器隨選或佈建資源，隨意且大規模地查詢您的資料。 若要開始使用 Synapse Analytics，請遵循下列步驟：
+(選擇性) 您可以使用 Synapse Analytics 來建立 Spark 叢集。 Azure Synapse Analytics 可將企業資料倉儲和巨量資料分析整合在一起。 其可讓您自由使用無伺服器隨選或佈建資源，隨意且大規模地查詢您的資料。 若要開始使用 Azure Synapse Analytics，請遵循下列步驟：
 
 1. [建立 Synapse 工作區 (預覽)](../../synapse-analytics/quickstart-create-workspace.md)。
 1. [使用 Azure 入口網站建立新的無伺服器 Apache Spark 集區 (預覽)](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)。
 
-在 Synapse Analytics 中，預設會安裝巨量資料認知服務。
+在 Azure Synapse Analytics 中，預設會安裝巨量資料認知服務。
 
 ### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 

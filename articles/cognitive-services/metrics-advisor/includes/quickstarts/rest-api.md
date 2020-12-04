@@ -1,5 +1,5 @@
 ---
-title: 計量監視器 REST API 快速入門
+title: 計量建議程式 REST API 快速入門
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: mrbullwinkle
@@ -9,12 +9,12 @@ ms.subservice: metrics-advisor
 ms.topic: include
 ms.date: 09/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: 416f28f51a3ebe00e7227503f189898406229c8a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 42ea166119d3cc405b3d73e184c44dbfd6708a97
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047451"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96231475"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -115,7 +115,7 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 x-content-type-options: nosniff
 Date: Thu, 03 Sep 2020 18:29:27 GMT
 ```
-在上述回應中，**位置**標題是您所建立之資料摘要的 URL，其中包含 **dataFeedID**。 
+在上述回應中，**位置** 標題是您所建立之資料摘要的 URL，其中包含 **dataFeedID**。 
 
 使用上述 URL，您可以查詢在上一個步驟中建立之資料摘要的詳細資訊。 (我們會在下列步驟中使用資料摘要資訊中的 **metricID** )
 
@@ -295,9 +295,9 @@ x-content-type-options: nosniff
 Date: Tue, 08 Sep 2020 09:50:38 GMT
 ```
 
-在上述**位置**標題中，其包含新建立之資源的 URL (偵測組態)。 
+在上述 **位置** 標題中，其包含新建立之資源的 URL (偵測組態)。 
 
-在**位置**標題中使用上述 URL，您可以查詢已建立的偵測組態 (我們將在下列步驟中使用回應內容中的 **anomalyDetectionConfigurationId**)
+在 **位置** 標題中使用上述 URL，您可以查詢已建立的偵測組態 (我們將在下列步驟中使用回應內容中的 **anomalyDetectionConfigurationId**)
 
 ```bash
 curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/enrichment/anomalyDetection/configurations/REPLACE-WITH-YOUR-DETECTION-CONFIGURATION-ID \
@@ -379,7 +379,7 @@ x-content-type-options: nosniff
 Date: Tue, 08 Sep 2020 10:37:59 GMT
 ```
 
-在**位置**標題中使用上述 URL，您可以查詢所建立的 Webhook。
+在 **位置** 標題中使用上述 URL，您可以查詢所建立的 Webhook。
 
 ```bash
 curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/hooks/REPLACE-WITH-YOUR-HOOK-ID \
@@ -467,9 +467,9 @@ x-content-type-options: nosniff
 Date: Tue, 08 Sep 2020 09:50:38 GMT
 ```
 
-在上述**位置**標題中，其包含新建立之資源的 URL (偵測組態)。 
+在上述 **位置** 標題中，其包含新建立之資源的 URL (偵測組態)。 
 
-在**位置**標題中使用上述 URL，您可以查詢所建立的警示組態。 (我們會在下列步驟中使用警示組態中的 **anomalyAlertingConfigurationId**)
+在 **位置** 標題中使用上述 URL，您可以查詢所建立的警示組態。 (我們會在下列步驟中使用警示組態中的 **anomalyAlertingConfigurationId**)
 
 ```bash
 curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/alert/anomaly/configurations/REPLACE-WITH-YOUR-ANOMALY-ALERTING-CONFIGURATION-ID \

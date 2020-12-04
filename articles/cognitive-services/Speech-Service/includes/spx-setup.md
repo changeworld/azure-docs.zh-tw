@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 6f80d41001d11c52a00454ea2a593f3f1fce32db
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: da88b8554d6c3214da9a386613538c237a318f73
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025914"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546893"
 ---
 ## <a name="download-and-install"></a>下載並安裝
 
@@ -53,15 +53,19 @@ ms.locfileid: "96025914"
 
 輸入 `spx` 以查看語音 CLI 的說明。
 
-#### <a name="docker-install"></a>[Docker 安裝](#tab/dockerinstall)
-
-> [!NOTE]
-> 必須<a href="https://www.docker.com/get-started" target="_blank">為您的平台安裝 Docker Desktop<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+#### <a name="docker-install-windows-linux-macos"></a>[Docker 安裝 (Windows、Linux、macOS)](#tab/dockerinstall)
 
 請遵循下列步驟，在 Docker 容器中安裝語音 CLI：
 
-1. 在新的命令提示字元或終端機中，輸入下列命令：`docker pull msftspeech/spx`
-2. 輸入此命令。 您應該會看到語音 CLI 的說明資訊：`docker run -it --rm msftspeech/spx help`
+1. 為您的平台<a href="https://www.docker.com/get-started" target="_blank">安裝 Docker Desktop<span class="docon docon-navigate-external x-hidden-focus"></span></a> (如果尚未安裝)。
+2. 在新的命令提示字元或終端機中，輸入下列命令：
+   ```shell   
+   docker pull msftspeech/spx
+   ```
+3. 輸入此命令。 您應該會看到語音 CLI 的說明資訊：
+   ```shell 
+   docker run -it --rm msftspeech/spx help
+   ```
 
 ### <a name="mount-a-directory-in-the-container"></a>在容器中掛接目錄
 
@@ -72,7 +76,7 @@ ms.locfileid: "96025914"
 
 `mkdir c:\spx-data`
 
-或者在 Linux 或 Mac 上，於終端機中輸入此命令來建立目錄，並查看其絕對路徑：
+或者在 Linux 或 macOS 上，於終端機中輸入此命令來建立目錄，並查看其絕對路徑：
 
 ```bash
 mkdir ~/spx-data
@@ -86,13 +90,17 @@ pwd
 
 本文件顯示在非 Docker 安裝中使用的語音 CLI `spx` 命令。
 在 Docker 容器中呼叫 `spx` 命令時，您必須將容器中的目錄掛接至您的檔案系統，讓語音 CLI 可以在其中儲存和尋找設定值，並讀取和寫入檔案。
+
 在 Windows 上，命令的開頭會如下所示：
 
-`docker run -it -v c:\spx-data:/data --rm msftspeech/spx`
+```shell
+docker run -it -v c:\spx-data:/data --rm msftspeech/spx
+```
 
-在 Linux 或 Mac 上，命令的開頭會如下所示：
-
-`sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx`
+在 Linux 或 macOS 上，命令的開頭會如下所示：
+```shell   
+sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx
+```
 
 > [!NOTE]
 > 將 `/ABSOLUTE_PATH` 取代為上一節中 `pwd` 命令所顯示的絕對路徑。
@@ -100,12 +108,43 @@ pwd
 若要使用容器中安裝的 `spx` 命令，請一律輸入如上所示的完整命令，後面接著您的要求參數。
 例如，在 Windows 上，此命令會設定您的金鑰：
 
-`docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY`
+```shell
+docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY
+```
 
-> [!NOTE]
-> 在 Docker 容器內執行語音 CLI 時，無法使用電腦的麥克風或喇叭。
-> 若要使用這些裝置，請將音訊檔案傳入和傳出語音 CLI，以在 Docker 容器外錄製/播放。
-> 語音 CLI 工具可以存取您在上述步驟中設定的本機目錄。
+> [!WARNING]
+> 在 Docker 容器內執行語音 CLI 時，無法使用電腦的喇叭。 不過，您可以在本機掛接的目錄中讀取及儲存音訊檔案。 
+
+### <a name="optional-create-a-command-line-shortcut"></a>選用：建立命令列快速鍵
+
+如果您是從 Linux 或 macOS 上的 Docker 容器執行語音 CLI，您可以建立快捷鍵。 
+
+遵循下列指示以建立快捷鍵：
+1. 使用您慣用的文字編輯器開啟 `.bash_profile`。 例如：
+   ```shell
+   nano ~/.bash_profile
+   ```
+2. 接下來，將此函式新增至 `.bash_profile`。 請確定您使用已掛接目錄的正確路徑，更新此函式：
+   ```shell   
+   spx(){
+       sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx
+   }
+   ```
+3. 追蹤您的設定檔來源：
+   ```shell
+   source ~/.bash_profile
+   ```
+4. 現在，您可以直接輸入 `spx` 後面接著引數，而不是執行 `sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx`。 例如： 
+   ```shell
+   // Get some help
+   spx help recognize
+
+   // Recognize speech from an audio file 
+   spx recognize --file /mounted/directory/file.wav
+   ```
+
+> [!WARNING]
+> 如果您變更 Docker 所參考的掛接目錄，則必須更新 `.bash_profile` 中的函式。
 
 ***
 

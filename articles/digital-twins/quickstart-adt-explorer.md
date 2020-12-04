@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: d203cb5ccef90fd09659ba64b7bcbc8b9be9e47a
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: d42a32e236eb73f2aa9f2f61d9708314783564dd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358066"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187287"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>快速入門 - 使用 ADT Explorer 探索 Azure Digital Twins 案例的範例
 
@@ -66,6 +66,7 @@ ms.locfileid: "94358066"
 1. 依照[此安裝連結](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)中的程序，完成符合您作業系統的安裝。
 1. 在您的機器上開啟主控台視窗。
 1. 執行 `az login`，並依照驗證提示登入您的 Azure 帳戶。
+1. 可能的最後一個步驟：如果您在此帳戶下使用多個 Azure 訂用帳戶，請執行 `az account set --subscription "<your-subscription-name-or-ID>"` (訂用帳戶的名稱或識別碼值都可以) 來將驗證內容設定為包含 Azure Digital Twins 執行個體的 Azure 訂用帳戶。
 
 登入之後，當您在下一節中執行時，ADT Explorer 應該會自動選擇您的 Azure 認證。
 
@@ -90,7 +91,7 @@ ms.locfileid: "94358066"
 
    :::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="醒目提示視窗頂端旁 [登入] 圖示的 ADT Explorer。圖示會顯示簡易人像剪影，並在上方覆疊鑰匙剪影。" lightbox="media/quickstart-adt-explorer/sign-in.png":::
 
-1. 輸入您先前在必要條件一節中收集到的 [Azure Digital Twins 執行個體 URL](#prerequisites)，格式為 *https://{執行個體主機名稱}* 。
+1. 輸入您稍早在[設定 Azure Digital Twins 執行個體](#set-up-an-azure-digital-twins-instance)一節中收集的 Azure Digital Twins 執行個體 URL，格式為「 https://{instance host name}」。
 
 >[!NOTE]
 > 若要重新瀏覽或編輯此資訊，您可以隨時選取相同圖示來再次開啟 **登入** 方塊。 其會保留您傳入的值。

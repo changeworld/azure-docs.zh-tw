@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 28849620863f8593e5187dbef9fc6cc978de1824
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f944a793d721e93d818723eae25a9ce80d9c15bc
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961780"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96005075"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>使用 REST API 和 Python 以標籤定型表單辨識器模型
 
@@ -27,10 +27,10 @@ ms.locfileid: "91961780"
 
 若要完成此快速入門，您必須：
 - 已安裝 [Python](https://www.python.org/downloads/) (如果您想要在本機執行此範例)。
-- 至少有六個相同類型的表單。 您將使用此資料來定型模型和測試表單。 您可以使用本快速入門的[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)。 下載 *sample_data .zip*並將其解壓縮。 將訓練檔案上傳至標準效能層級 Azure 儲存體帳戶中 Blob 儲存體容器的根目錄。
+- 至少有六個相同類型的表單。 您將使用此資料來定型模型和測試表單。 您可以使用本快速入門的[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)。 下載 *sample_data .zip* 並將其解壓縮。 將訓練檔案上傳至標準效能層級 Azure 儲存體帳戶中 Blob 儲存體容器的根目錄。
 
 > [!NOTE]
-> 本快速入門使用 URL 存取的遠端文件。 若要改為使用本機檔案，請參閱 [v2.0 的參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)和 [v2.1 的參考文件](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/TrainCustomModelAsync)。
+> 本快速入門使用 URL 存取的遠端文件。 若要改為使用本機檔案，請參閱 [v2.0 的參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)和 [v2.1 的參考文件](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/TrainCustomModelAsync)。
 
 ## <a name="create-a-form-recognizer-resource"></a>建立表單辨識器資源
 
@@ -308,7 +308,7 @@ from requests import get, post
 
 # Endpoint URL
 endpoint = r"<Endpoint>"
-post_url = endpoint + r"/formrecognizer/v2.1-preview.1/custom/models"
+post_url = endpoint + r"/formrecognizer/v2.1-preview.2/custom/models"
 source = r"<SAS URL>"
 prefix = "<Blob folder name>"
 includeSubFolders = False
@@ -588,7 +588,7 @@ print("Train operation did not complete within the allocated time.")
   }
 }
 ```
-# <a name="v21-preview"></a>[v2.1 預覽](#tab/v2-1) 
+# <a name="v-2"></a>[v 2](#tab/v2-1) 
 ```json   
 {
   "status": "succeeded",

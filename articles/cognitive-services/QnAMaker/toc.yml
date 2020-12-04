@@ -67,6 +67,8 @@
       items:
         - name: 編輯 QnA 配對
           href: How-To/edit-knowledge-base.md
+        - name: 新增中繼資料標記
+          href: Quickstarts/add-question-metadata-portal.md
         - name: 新增後續提示
           href: How-To/multiturn-conversation.md
           displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: c658f0a4f700a4588b238f2bb009b263da94e753
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: b897690e08f07f2506aa79c873af03b604f94664
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759974"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96009580"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>快速入門：搭配使用表單辨識器 REST API 和 Python 來擷取收據資料
 
@@ -84,7 +84,7 @@ ms.locfileid: "91759974"
         quit()
 ```
     
-# <a name="v21-preview1"></a>[v2.1-preview.1](#tab/v2-1)    
+# <a name="v21-preview2"></a>[v2.1-preview.2](#tab/v2-1)    
 ```python
     ########### Python Form Recognizer Async Receipt #############
 
@@ -95,7 +95,7 @@ ms.locfileid: "91759974"
     # Endpoint URL
     endpoint = r"<Endpoint>"
     apim_key = "<subscription key>"
-    post_url = endpoint + "/formrecognizer/v2.1-preview.1/prebuilt/receipt/analyze"
+    post_url = endpoint + "/formrecognizer/v2.1-preview.2/prebuilt/receipt/analyze"
     source = r"<path to your receipt>"
     
     headers = {
@@ -143,13 +143,13 @@ https://cognitiveservice/formrecognizer/v2.0/prebuilt/receipt/operations/54f0b07
 ```
 # <a name="v21-preview1"></a>[v2.1-preview.1](#tab/v2-1)    
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 ---
 
 ## <a name="get-the-receipt-results"></a>取得收據結果
 
-呼叫**分析收據** API 之後，您可以呼叫 **[取得分析收據結果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeReceiptResult)** API 來取得作業狀態並擷取資料。 將下列程式碼新增到 Python 指令碼底部。 這會在新的 API 呼叫中使用作業識別碼值。 此指令碼會定期呼叫 API，直到有結果為止。 我們建議的間隔為一秒以上。
+呼叫 **分析收據** API 之後，您可以呼叫 **[取得分析收據結果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeReceiptResult)** API 來取得作業狀態並擷取資料。 將下列程式碼新增到 Python 指令碼底部。 這會在新的 API 呼叫中使用作業識別碼值。 此指令碼會定期呼叫 API，直到有結果為止。 我們建議的間隔為一秒以上。
 
 ```python
 n_tries = 10
@@ -183,7 +183,7 @@ while n_try < n_tries:
 
 ### <a name="examine-the-response"></a>檢查回應
 
-此指令碼會將回應輸出到主控台，直到**分析收據**作業完成為止。 接著，指令碼會將已擷取的文字資料以 JSON 格式輸出。 `"readResults"` 欄位會包含擷取自收據的每一行文字，而 `"documentResults"` 欄位會包含收據中最相關部分的索引鍵/值資訊。
+此指令碼會將回應輸出到主控台，直到 **分析收據** 作業完成為止。 接著，指令碼會將已擷取的文字資料以 JSON 格式輸出。 `"readResults"` 欄位會包含擷取自收據的每一行文字，而 `"documentResults"` 欄位會包含收據中最相關部分的索引鍵/值資訊。
 
 請參閱下列收據影像和其對應的 JSON 輸出。 為了方便閱讀，我們已將輸出縮短。
 

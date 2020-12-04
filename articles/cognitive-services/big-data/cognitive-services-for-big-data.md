@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: overview
 ms.date: 07/09/2020
 ms.author: marhamil
-ms.openlocfilehash: 1b08925db12edffdaf5c85f1fa6f5934a412d81f
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: aaade03edbbb109656fb7371a063cdc2512c5a20
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363301"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461615"
 ---
 # <a name="azure-cognitive-services-for-big-data"></a>適用於巨量資料的 Azure 認知服務
 
@@ -84,11 +84,11 @@ ms.locfileid: "94363301"
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-[Azure Synapse Analytics](/azure/databricks/data/data-sources/azure/synapse-analytics) (先前稱為 SQL 資料倉儲) 是使用大量平行處理的企業資料倉儲。 透過 Synapse Analytics，您可以快速地在數 PB 的資料中執行複雜的查詢。 Azure Synapse Analytics 提供了受控 Spark 集區，可使用直覺式的 Jupyter Notebook 介面來執行 Spark 作業。
+[Azure Synapse Analytics](/azure/databricks/data/data-sources/azure/synapse-analytics) 是使用大量平行處理的企業資料倉儲。 透過 Synapse Analytics，您可以快速地在數 PB 的資料中執行複雜的查詢。 Azure Synapse Analytics 提供了受控 Spark 集區，可使用直覺式的 Jupyter Notebook 介面來執行 Spark 作業。
 
 ### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-[Azure Kubernetes Service (AKS)](../../aks/index.yml) 會以大規模的方式協調 Docker 容器和分散式應用程式。 AKS 是受控的 Kubernetes 供應項目，可簡化在 Azure 中使用 Kubernetes 的方式。 Kubernetes 可以讓您更精細地控制認知服務的規模、延遲和網路。 不過，如果您不熟悉 Apache Spark，則建議您使用 Azure Databricks 或 Synapse Analytics。
+[Azure Kubernetes Service (AKS)](../../aks/index.yml) 會以大規模的方式協調 Docker 容器和分散式應用程式。 AKS 是受控的 Kubernetes 供應項目，可簡化在 Azure 中使用 Kubernetes 的方式。 Kubernetes 可以讓您更精細地控制認知服務的規模、延遲和網路。 不過，如果您不熟悉 Apache Spark，則建議您使用 Azure Databricks 或 Azure Synapse Analytics。
 
 ### <a name="data-connectors"></a>資料連接器
 

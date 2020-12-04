@@ -1,17 +1,19 @@
 ---
-author: craigktreasure
+author: msftradford
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.date: 12/13/2018
-ms.author: crtreasu
-ms.openlocfilehash: b83951cd743afc7e249e3ee37182007bbe40cb5c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: 131b21ea7bc47df9654dd7c163eb22adb68e6678
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971275"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185246"
 ---
 ## <a name="create-a-spatial-anchors-resource"></a>建立 Spatial Anchors 資源
+
+### <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 移至 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>。
 
@@ -53,3 +55,72 @@ ms.locfileid: "91971275"
 在 [設定] 底下，選取 [金鑰]。 將 [主要金鑰] 值、[帳戶金鑰] 複製到文字編輯器，以供稍後使用。
 
 ![帳戶 [金鑰] 窗格的螢幕擷取畫面。](./media/spatial-anchors-get-started-create-resource/view-account-key.png)
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+從準備適用於 Azure CLI 的環境開始：
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](azure-cli-prepare-your-environment-no-header.md)]
+
+1. 登入之後，請使用 [az account set](/cli/azure/account#az_account_set) 命令來選取要在其中設定空間錨點帳戶的訂用帳戶：
+
+   ```azurecli
+   az account set --subscription 00000000-0000-0000-0000-000000000000
+   ```
+
+1. 執行 [az group create](/cli/azure/group#az_group_create) 命令以建立資源群組，或使用現有的資源群組：
+
+   ```azurecli
+   az group create --name myResourceGroup --location eastus2
+   ```
+
+   [!INCLUDE [resource group intro text](resource-group.md)]
+
+   您可以使用 [az spatial-anchors-account list](/cli/azure/ext/mixed-reality/spatial-anchors-account#ext_mixed_reality_az_spatial_anchors_account_list) 命令來檢視資源群組的目前空間錨點帳戶：
+
+   ```azurecli
+   az spatial-anchors-account list --resource-group myResourceGroup
+   ```
+
+   您也可以檢視訂用帳戶的空間錨點帳戶：
+
+   ```azurecli
+   az spatial-anchors-account list
+   ```
+
+1. 執行 [az spatial-anchors-account create](/cli/azure/ext/mixed-reality/spatial-anchors-account#ext_mixed_reality_az_spatial_anchors_account_create) 命令來建立您的空間錨點帳戶：
+
+   ```azurecli
+   az spatial-anchors-account create --resource-group myResourceGroup --name MySpatialAnchorsQuickStart --location eastus2
+   ```
+
+1. 使用 [az spatial-anchors-account show](/cli/azure/ext/mixed-reality/spatial-anchors-account#ext_mixed_reality_az_spatial_anchors_account_show) 命令來檢視資源屬性：
+
+   ```azurecli
+   az spatial-anchors-account show --resource-group myResourceGroup --name MySpatialAnchorsQuickStart
+   ```
+
+   將資源 [帳戶識別碼] 值和資源 [帳戶網域] 值複製到文字編輯器以供稍後使用。
+
+1. 執行 [az spatial-anchors-account key show](/cli/azure/ext/mixed-reality/spatial-anchors-account/key#ext_mixed_reality_az_spatial_anchors_account_key_show) 命令來取得主要和次要金鑰：
+
+   ```azurecli
+   az spatial-anchors-account key show --resource-group myResourceGroup --name MySpatialAnchorsQuickStart
+   ```
+
+   將金鑰值複製到文字編輯器以供稍後使用。
+
+   如果您需要重新產生金鑰，請使用 [az spatial-anchors-account key renew](/cli/azure/ext/mixed-reality/spatial-anchors-account/key#ext_mixed_reality_az_spatial_anchors_account_key_renew) 命令：
+
+   ```azurecli
+   az spatial-anchors-account key renew --resource-group myResourceGroup --name example --key primary
+   az spatial-anchors-account key renew --resource-group myResourceGroup --name example --key secondary
+   ```
+
+您可以使用 [az spatial-anchors-account delete](/cli/azure/ext/mixed-reality/spatial-anchors-account#ext_mixed_reality_az_spatial_anchors_account_delete) 命令來刪除帳戶：
+
+```azurecli
+az spatial-anchors-account delete --resource-group myResourceGroup --name MySpatialAnchorsQuickStart
+```
+
+---

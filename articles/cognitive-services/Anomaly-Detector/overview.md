@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 11/23/2020
 ms.author: mbullwin
 keywords: 異常偵測, 機器學習, 演算法
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 9b540f2e04ae8533a00f79d05e220d99964d9a34
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 1a13b962a000e6e3b2143dc23f94b63c122bd963
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016598"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95999090"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>什麼是異常偵測器 API？
 
@@ -85,6 +85,10 @@ Anomaly Detector API 是一種 RESTful Web 服務，因此可輕易地從任何�
 
 
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
+
+## <a name="deploy-on-premises-using-docker-containers"></a>使用 Docker 容器在內部部署環境進行部署
+
+[使用異常偵測器容器](anomaly-detector-container-howto.md)在內部部署環境中部署 API 功能。 Docker 容器可讓服務更加契合您的資料，以實現合規性、安全性或其他操作性原因。
 
 ## <a name="join-the-anomaly-detector-community"></a>加入異常偵測器社群
 
