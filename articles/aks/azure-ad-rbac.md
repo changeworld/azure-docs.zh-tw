@@ -5,12 +5,12 @@ description: '瞭解如何使用 Azure Active Directory 群組成員資格，以
 services: container-service
 ms.topic: article
 ms.date: 07/21/2020
-ms.openlocfilehash: f49e9f6b4f5aaf58ff055043b52cfe99e3e39f19
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 89bf785a082ff479dcd824a773123fcd061dc22d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684282"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576106"
 ---
 # <a name="control-access-to-cluster-resources-using-kubernetes-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes Service 中使用 Kubernetes 角色型存取控制和 Azure Active Directory 身分識別來控制對叢集資源的存取
 

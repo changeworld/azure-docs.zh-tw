@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f705150f927a08b5ca2f91b702ee0853766ac23a
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: cfd7b5ac981fcb87d0fc929d944205dec9432b74
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511112"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575817"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>如何管理已加入 Azure AD 的裝置上的本機系統管理員群組
 
@@ -81,7 +81,7 @@ Azure AD 也會將 Azure AD 裝置管理員角色新增至本機系統管理員�
 
 目前，Intune 中沒有任何 UI 可用來管理這些原則，而且必須使用 [自訂 Oma-uri 設定](/mem/intune/configuration/custom-settings-windows-10)來設定它們。 使用其中一種原則的幾個考慮： 
 
-- 透過原則新增 Azure AD 群組需要可透過執行群組 API 取得的群組 SID。 SID 是由群組 API 中的屬性所定義 `securityIdentifier` 。
+- 透過原則新增 Azure AD 群組需要可以藉由執行 [群組的 MICROSOFT GRAPH API](/graph/api/resources/group?view=graph-rest-beta)來取得群組的 SID。 SID 是由 API 回應中的屬性所定義 `securityIdentifier` 。
 - 強制使用受限制的群組原則時，會移除不在成員清單上之群組的目前成員。 因此，使用新的成員或群組來強制執行此原則，將會移除現有的系統管理員，也就是已加入裝置的使用者、裝置系統管理員角色，以及裝置的全域管理員角色。 若要避免移除現有的成員，您必須將它們設定為 [受限制的群組] 原則中成員清單的一部分。 如果您使用允許對群組成員資格進行累加式更新的本機使用者和群組原則，就會解決這項限制
 - 使用這兩個原則的系統管理員許可權只會針對 Windows 10 裝置上的下列已知群組進行評估：系統管理員、使用者、來賓、Power Users、遠端桌面使用者和遠端系統管理使用者。 
 - 使用 Azure AD 群組來管理本機系統管理員，並不適用于混合式 Azure AD 已加入或 Azure AD 註冊的裝置。

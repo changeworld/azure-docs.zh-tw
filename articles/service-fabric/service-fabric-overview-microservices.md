@@ -3,13 +3,12 @@ title: Azure 上的微服務簡介
 description: 概述在現代應用程式開發中，為何使用微服務方法建置雲端應用程式很重要，以及 Azure Service Fabric 如何提供平台以達成此目標。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.custom: sfrev
-ms.openlocfilehash: 4345c919e73e57667fb3b9c90c42224326bc3552
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d20e04820c87a7390d9c20e511259ee9860c27f5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91300763"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575647"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>為何要使用微服務方法來建立應用程式
 
@@ -21,7 +20,7 @@ ms.locfileid: "91300763"
 * 更快速地傳遞特性和功能，以敏捷的方式回應客戶的需求。
 * 提高資源使用率來降低成本。
 
-這些商務需求會影響我們「如何」 ** 建置應用程式。
+這些商務需求會影響我們「如何」  建置應用程式。
 
 如需 Azure 微服務方法的詳細資訊，請參閱 [微服務：雲端提供的應用程式革命](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)。
 
@@ -43,7 +42,7 @@ ms.locfileid: "91300763"
 
 標準使微服務方法運作的方式，是指定如何與服務通訊，並只容許您需要的服務，而不是固定合約。 請務必在設計中預先定義這些合約，因為服務會彼此獨立更新。 另一個在設計微服務方法時出現的描述是「細緻的服務導向架構 (SOA)」。
 
-***最簡單的微服務設計方法是關於服務的分離同盟，並對每個與同意的通訊標準進行獨立變更。***
+*最 **簡單的微服務設計方法是關於服務的分離同盟，並對每個與同意的通訊標準進行獨立變更。** _
 
 隨著越來越多的雲端應用程式產生，人們發現這種將整體應用程式分解成獨立、以案例為焦點的服務，是更好的長期方法。
 
@@ -67,7 +66,7 @@ ms.locfileid: "91300763"
 
 有不同的微服務定義。 但大部分的微服務特性都已廣泛接受：
 
-* 封裝客戶或商務案例。 您要解決什麼問題？
+_ 封裝客戶或商務案例。 您要解決什麼問題？
 * 由小型工程團隊開發。
 * 使用任何架構以任何程式設計語言撰寫。
 * 由程式碼和選擇性的狀態所組成，這兩種都是獨立版本設定、部署和縮放。
@@ -77,7 +76,7 @@ ms.locfileid: "91300763"
 
 加總：
 
-***微服務應用程式是由獨立控制版本和可調整的客戶焦點式服務所組成，這些服務透過標準通訊協定和定義完善的介面彼此通訊。***
+***微服務應用程式是由小型、獨立設定版本和可擴充的客戶導向服務所組成，這些服務會透過標準通訊協定與定義完善的介面彼此通訊。** _
 
 ### <a name="written-in-any-programming-language-using-any-framework"></a>以任何程式設計語言撰寫，使用任何架構
 
@@ -95,9 +94,9 @@ ms.locfileid: "91300763"
 
 ![Service Fabric 平台狀態儲存體][Image2]
 
-***左邊的整合型方法具有單一資料庫和特定技術層級。***
+_*_左邊的整合型方法具有單一資料庫和特定技術層級。_*_
 
-***右側的微服務方法具有互連微服務的圖表，其中狀態通常範圍設定為微服務，並使用各種技術。***
+_*_右側的微服務方法具有互連微服務的圖表，其中狀態通常範圍設定為微服務，並使用各種技術。_*_
 
 在單體式方法中，應用程式通常會使用單一資料庫。 使用一個資料庫的優點是它會在單一位置，讓部署工作變得更容易。 每個元件可以有單一資料表來儲存其狀態。 挑戰之處在於團隊必須嚴格區分狀態。 不可避免的情況下，有人會想要將資料行加入至現有的 customer 資料表、在資料表之間進行聯結，並在儲存層建立相依性。 發生這種情況後，您無法調整個別的元件。
 
@@ -137,18 +136,18 @@ ms.locfileid: "91300763"
 
 當 Microsoft 從提供盒裝產品（通常是整合式產品）轉換為提供服務時，就會出現 Azure Service Fabric。 建立和操作大型服務的體驗，例如 Azure SQL Database 和 Azure Cosmos DB，並成形 Service Fabric。 隨著越來越多的服務採用平臺，平臺會隨著時間演進。 Service Fabric 不僅必須在 Azure 中執行，也必須在獨立式 Windows Server 部署中執行。
 
-***Service Fabric 的目的是要解決建立和執行服務的困難問題，並有效率地使用基礎結構資源，讓小組可以使用微服務方法來解決商務問題。***
+_*_Service Fabric 的目的是要解決建立和執行服務的困難問題，並有效率地使用基礎結構資源，讓小組可以使用微服務方法來解決商務問題。_*_
 
 此短片將介紹 Service Fabric 和微服務：
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
 
 Service Fabric 透過提供下列項目，來協助您使用微服務方法建置應用程式：
 
-* 一個提供系統服務的平台 - 這些服務可進行部署、升級、偵測及重新啟動失敗的服務、探索服務、路由傳送訊息、管理狀態，以及監視健康情況。
+_ 提供系統服務的平臺，可部署、升級、偵測及重新開機失敗的服務、探索服務、路由傳送訊息、管理狀態，以及監視健全狀況。
 * 能夠部署在容器中執行的應用程式，或是部署為進程的應用程式。 Service Fabric 是一個容器和處理序協調者。
 * 具生產力的程式設計 Api，可協助您將應用程式建立為微服務： [ASP.NET Core、Reliable Actors 和 Reliable Services](service-fabric-choose-framework.md)。 例如，您可以取得健康情況和診斷資訊，或利用內建的高可用性。
 
-***Service Fabric 與您建立服務的方式無關，而且可以使用任何技術。但它提供內建的程式設計 Api，讓您更輕鬆地建立微服務。***
+***Service Fabric 與您建立服務的方式無關，而且可以使用任何技術。但它提供內建的程式設計 Api，讓您更輕鬆地建立微服務。** _
 
 ### <a name="migrating-existing-applications-to-service-fabric"></a>將現有的應用程式移轉到 Service Fabric
 
@@ -162,7 +161,7 @@ Service Fabric 可讓您重複使用現有的程式碼，並使用新的微服�
 
 ![遷移至微服務][Image3]
 
-請記住，您可以 *在任何階段開始和停止*。 您不需要進行下一個階段。 
+請記住，您可以 _start 並停止任何這些階段 *。 您不需要進行下一個階段。 
 
 讓我們看看每個階段的範例。
 

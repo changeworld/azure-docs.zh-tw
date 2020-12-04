@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 27cf5fef027b1e4786c0ff77f9f673bafea15f98
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9ef585d83c0606bedaf4c0a05c6c87fd52423b9a
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487264"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575528"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>語音服務的語言和語音支援
 
@@ -41,12 +41,14 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 |阿拉伯文 (巴林)，現代標準  |`ar-BH` | 語言模型                                   |
 |阿拉伯文 (埃及)                     |`ar-EG` | 語言模型                                   |
 |阿拉伯文 (伊拉克)                      |`ar-IQ` | 語言模型                                   |
+|阿拉伯文 (以色列)                              |`ar-IL` | 語言模型                                                   |
 |阿拉伯文 (約旦)                    |`ar-JO` | 語言模型                                   |
 |阿拉伯文 (科威特)                    |`ar-KW` | 語言模型                                   |
 |阿拉伯文 (黎巴嫩)                   |`ar-LB` | 語言模型                                   |
 |阿拉伯文 (阿曼)                      |`ar-OM` | 語言模型                                   |
 |阿拉伯文 (卡達)                     |`ar-QA` | 語言模型                                   |
 |阿拉伯文 (沙烏地阿拉伯)              |`ar-SA` | 語言模型                                   |
+|巴勒斯坦) 的阿拉伯文 (狀態            |`ar-PS` | 語言模型                                   |
 |阿拉伯文 (敘利亞)                     |`ar-SY` | 語言模型                                   |
 |阿拉伯文 (阿拉伯酋長國)       |`ar-AE` | 語言模型                                   |
 |保加利亞文 (保加利亞)               |`bg-BG` | 語言模型                                   |
@@ -64,6 +66,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 |英文 (印度)                    |`en-IN` | 原音模型<br>語言模型                 |
 |英文 (愛爾蘭)                  |`en-IE` | 語言模型                                   |
 |英文 (紐西蘭)              |`en-NZ` | 原音模型<br>語言模型                 |
+|英文 (奈及利亞)                           |`en-NG` | 語言模型                                                     |
 |英文 (菲律賓)              |`en-PH` | 語言模型                                   |
 |英文 (新加坡)                |`en-SG` | 語言模型                                   |
 |英文 (南非)             |`en-ZA` | 語言模型                                   |
@@ -103,6 +106,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 |西班牙文 (多明尼加)       |`es-DO` | 語言模型                                   |
 |西班牙文 (厄瓜多)                  |`es-EC` | 語言模型                                   |
 |西班牙文 (薩爾瓦多)              |`es-SV` | 語言模型                                   |
+|西班牙文 (赤道幾內亞)             |`es-GQ` | 語言模型                                   |
 |西班牙文 (瓜地馬拉)                |`es-GT` | 語言模型                                   |
 |西班牙文 (宏都拉斯)                 |`es-HN` | 語言模型                                   |
 |西班牙文 (墨西哥)                   |`es-MX` | 原音模型<br>語言模型                 |

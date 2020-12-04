@@ -1,16 +1,14 @@
 ---
 title: 雲端服務與 Service Fabric 之間的差異
 description: 這是將應用程式從雲端服務移轉到 Service Fabric 的概念性概觀。
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 763b9977f756075789b826c2f1e01cd41ac60a73
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: c7e7d346b5a39a262d1d55265becadb1c718cc04
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091163"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575766"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>移轉應用程式之前，先了解「雲端服務」與 Service Fabric 之間的差異。
 Microsoft Azure Service Fabric 為次世代雲端應用程式平台，適用於高度可調整且高度可靠的分散式應用程式。 其中導入了許多封裝、部署、更新及管理分散式雲端應用程式的新功能。 
@@ -84,7 +82,7 @@ Service Fabric 提供服務探索機制 (稱為「名稱服務」)，可用來�
 [雲端服務與 Service Fabric 的控制程度和易用性很類似，但現在是舊版服務，建議您在新的開發環境中使用 Service Fabric](/azure/architecture/guide/technology-choices/compute-decision-tree)。以下是 API 比較：
 
 
-| **雲端服務 API** | **Service Fabric API** | **備註** |
+| **雲端服務 API** | **Service Fabric API** | **注意事項** |
 | --- | --- | --- |
 | RoleInstance. GetID | FabricRuntime. GetNodeCoNtext 或。NodeName | ID 是 NodeName 的屬性 |
 | RoleInstance. GetFaultDomain | FabricClient. QueryManager. GetNodeList | 對 NodeName 進行篩選並使用 FD 屬性 |

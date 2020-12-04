@@ -1,17 +1,15 @@
 ---
 title: 連線到 Azure Service Fabric 中的服務並與其進行通訊
 description: 了解如何解析、連接至 Service Fabric 應用程式中的服務並與其進行通訊。
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 715089d40f584fbbaf23f674e4243c92c718e9d1
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 11f525eba89dc963deee0ba9a86566361ef644de
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093322"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576293"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>連接至 Service Fabric 中的服務並與其進行通訊
 在 Service Fabric 中，服務會在 Service Fabric 叢集中的某處執行，通常是分散到多個 VM。 它可以由服務擁有者或是 Service Fabric 自動從某個位置移到其他位置。 服務無法以靜態方式繫結至特定電腦或位址。
@@ -62,11 +60,11 @@ Service Fabric 提供稱為「命名服務」的探索和解析服務。 「命�
 叢集內彼此連接的服務通常可以直接存取其他服務的端點，因為叢集中的節點位於相同的本機網路上。 不過，在某些環境中，叢集可能會在負載平衡器後方，該負載平衡器會透過一組有限的埠來路由輸入流量。 在這些情況下，服務仍然可以使用「命名服務」，彼此進行通訊及解析位址，但是必須採取額外的步驟，讓外部用戶端連接至服務。
 
 ## <a name="service-fabric-in-azure"></a>Azure 中的 Service Fabric
-Azure 中的 Service Fabric 叢集位於 Azure 負載平衡器後方。 到叢集的所有外部流量必須經過負載平衡器。 負載平衡器會自動將指定連接埠上的輸入流量轉送至具有相同的開啟連接埠的隨機「節點」 ** 。 Azure Load Balancer 只會知道「節點」** 上開啟的連接埠，它不知道由個別「服務」** 開啟的連接埠。
+Azure 中的 Service Fabric 叢集位於 Azure 負載平衡器後方。 到叢集的所有外部流量必須經過負載平衡器。 負載平衡器會自動將指定連接埠上的輸入流量轉送至具有相同的開啟連接埠的隨機「節點」  。 Azure Load Balancer 只會知道「節點」上開啟的連接埠，它不知道由個別「服務」開啟的連接埠。
 
 ![Azure 負載平衡器和 Service Fabric 拓撲][3]
 
-例如，若要在連接埠 **80**上接受外部流量，必須設定下列項目︰
+例如，若要在連接埠 **80** 上接受外部流量，必須設定下列項目︰
 
 1. 寫入在連接埠 80 上接聽的服務。 在服務的 ServiceManifest.xml 中設定連接埠 80，並且在服務中開啟接聽程式，例如自我裝載的 Web 伺服器。
 
@@ -148,7 +146,7 @@ Azure 中的 Service Fabric 叢集位於 Azure 負載平衡器後方。 到叢�
             ...
         }
     ```
-2. 在 Azure 中建立 Service Fabric 叢集，並指定連接埠 **80** 做為將裝載服務的節點類型的自訂端點連接埠。 如果您有一個以上的節點類型，您可以在服務上設定「放置條件約束」 ** ，以確保它只會在具有已開啟的自訂端點連接埠的節點類型上執行。
+2. 在 Azure 中建立 Service Fabric 叢集，並指定連接埠 **80** 做為將裝載服務的節點類型的自訂端點連接埠。 如果您有一個以上的節點類型，您可以在服務上設定「放置條件約束」  ，以確保它只會在具有已開啟的自訂端點連接埠的節點類型上執行。
 
     ![開啟節點類型上的連接埠][4]
 3. 一旦建立叢集，在叢集的資源群組中設定 Azure 負載平衡器，以轉送連接埠 80 上的流量。 透過 Azure 入口網站建立叢集時，會針對每個已設定的自訂端點連接埠設定這個項目。
@@ -158,7 +156,7 @@ Azure 中的 Service Fabric 叢集位於 Azure 負載平衡器後方。 到叢�
 
     ![轉送 Azure 負載平衡器的流量][8]
 
-請務必記住，Azure Load Balancer 和探查只知道「節點」**，不知道在節點上執行的「服務」**。 Azure 負載平衡器一律會將流量傳送到回應探查的節點，因此必須小心以確保可以在能夠回應探查的節點上使用服務。
+請務必記住，Azure Load Balancer 和探查只知道「節點」，不知道在節點上執行的「服務」。 Azure 負載平衡器一律會將流量傳送到回應探查的節點，因此必須小心以確保可以在能夠回應探查的節點上使用服務。
 
 ## <a name="reliable-services-built-in-communication-api-options"></a>Reliable Services：內建的通訊 API 選項
 Reliable Services 架構隨附數個預先建置的通訊選項。 最適合您選項的決定取決於如何選擇程式設計模型、通訊架構以及用來撰寫您服務的程式語言。

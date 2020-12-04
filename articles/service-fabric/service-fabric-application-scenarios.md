@@ -3,13 +3,12 @@ title: 應用程式案例和設計
 description: Service Fabric 中雲端應用程式類別概觀。 討論使用具狀態和無狀態服務的應用程式設計。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.custom: sfrev
-ms.openlocfilehash: aaf8204158f720d8c69c98af758071cd91f6eff0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c3cc931a85b91fc02b8086ca5c2481153691e54
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86248164"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575664"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric 應用程式案例
 
@@ -65,7 +64,7 @@ Service Fabric 中的具狀態服務會為所有類型的應用程式帶來高�
 
 以下是使用具狀態服務的範例應用程式： ![ 使用具狀態服務的應用程式][Image2]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 開始使用 Service Fabric [Reliable Services](service-fabric-reliable-services-quick-start.md) 和 [Reliable Actors](service-fabric-reliable-actors-get-started.md) 程式設計模型建立無狀態和具狀態服務。
 * 請造訪 Azure 架構中心，以取得在 [Azure 上建立微服務](/azure/architecture/microservices/)的指引。

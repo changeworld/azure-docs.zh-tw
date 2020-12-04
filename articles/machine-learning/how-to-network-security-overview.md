@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: fdfaef554e4e641656abd3fd2b4a5d3bbc519ccd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6398d23aeb0e26fbc336c0c1066078f327fa2f73
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325429"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576565"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虛擬網路隔離和隱私權總覽
 
@@ -28,7 +28,7 @@ ms.locfileid: "93325429"
 
 **1. VNet 總覽**  >  [2。保護工作區](how-to-secure-workspace-vnet.md)  >  [3。保護定型環境](how-to-secure-training-vnet.md)  >  [4。保護推斷環境](how-to-secure-inferencing-vnet.md)  >  [5。啟用 studio 功能](how-to-enable-studio-virtual-network.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 本文假設您已熟悉下列主題：
 + [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)
@@ -43,7 +43,7 @@ ms.locfileid: "93325429"
 
 下表比較服務如何存取 Azure Machine Learning 網路的不同部分，以及 VNet 和沒有 VNet。
 
-| 狀況 | 工作區 | 相關聯的資源 | 訓練計算環境 | 推斷計算環境 |
+| 案例 | 工作區 | 相關聯的資源 | 訓練計算環境 | 推斷計算環境 |
 |-|-|-|-|-|-|
 |**沒有虛擬網路**| 公用 IP | 公用 IP | 公用 IP | 公用 IP |
 |**保護虛擬網路中的資源**| 私人 IP (私人端點)  | 公用 IP (服務端點)  <br> **等於** <br> 私人 IP (私人端點)  | 私人 IP | 私人 IP  | 
@@ -145,10 +145,11 @@ ms.locfileid: "93325429"
 
 * 預覽 studio 中的資料。
 * 視覺化設計工具中的資料。
+* 在設計工具中部署模型。
 * 提交 AutoML 實驗。
 * 開機磁碟區標專案。
 
-若要在 VNet 內啟用完整 studio 功能，請參閱 [在虛擬網路中使用 Azure Machine Learning studio](how-to-enable-studio-virtual-network.md#access-data-using-the-studio)。 Studio 支援使用服務端點或私人端點的儲存體帳戶。
+若要在 VNet 內啟用完整 studio 功能，請參閱 [在虛擬網路中使用 Azure Machine Learning studio](how-to-enable-studio-virtual-network.md#configure-data-access-in-the-studio)。 Studio 支援使用服務端點或私人端點的儲存體帳戶。
 
 ### <a name="limitations"></a>限制
 - [ML 輔助資料標記](how-to-create-labeling-projects.md#use-ml-assisted-labeling) 不支援在虛擬網路後方保護的預設儲存體帳戶。 您必須使用非預設儲存體帳戶進行 ML 輔助資料標記。 請注意，非預設儲存體帳戶可以在虛擬網路後方受到保護。 

@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 1e263886d0cc199bb30fd28877be32209ab32a22
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 09a4dc8467b9b3c11c8daeb5ca8c62a0e26e79de
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462384"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575001"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>使用 Windows 資料科學虛擬機器的資料科學
 
@@ -25,7 +25,7 @@ DSVM 可與 Azure 服務緊密搭配運作。 它可以讀取和處理已儲存�
 
 在本文中，您將瞭解如何使用 DSVM 來執行資料科學工作，並與其他 Azure 服務互動。 以下是您可以在 DSVM 上做的一些事：
 
-- 使用 Jupyter 筆記本，在瀏覽器中使用 Python 2、Python 3 和 Microsoft R 來試驗您的資料。 (的 Microsoft R 是針對效能設計的 R 企業就緒版。 ) 
+- 使用 Jupyter Notebook，在瀏覽器中使用 Python 2、Python 3 和 Microsoft R 來試驗您的資料。 (Microsoft R 是針對效能設計的 R 符合企業需求的版本。 ) 
 - 使用 Microsoft Machine Learning Server 和 Python，探索資料並在 DSVM 本機開發模型。
 - 使用 Azure 入口網站或 PowerShell 管理您的 Azure 資源。
 - 藉由在 DSVM 上建立 Azure 檔案儲存體共用作為可掛接的磁片磁碟機，來擴充您的儲存空間，並在整個小組之間共用大規模的資料集/程式碼。
@@ -40,7 +40,7 @@ DSVM 可與 Azure 服務緊密搭配運作。 它可以讀取和處理已儲存�
 > 
 > 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 您需要 Azure 訂用帳戶。 您可以 [註冊免費試用](https://azure.microsoft.com/free/)。
 * 在 Azure 入口網站上布建資料科學虛擬機器的指示可用於 [建立虛擬機器](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016)。
@@ -50,7 +50,7 @@ DSVM 可與 Azure 服務緊密搭配運作。 它可以讀取和處理已儲存�
 
 
 ## <a name="use-jupyter-notebooks"></a>使用 Jupyter Notebook
-Jupyter Notebook 針對資料探索和模型化提供以瀏覽器為基礎的 IDE。 您可以在 Jupyter 筆記本中使用 Python 2、Python 3 或 R (開放原始碼和 Microsoft R Server) 。
+Jupyter Notebook 針對資料探索和模型化提供以瀏覽器為基礎的 IDE。 您可以使用 Python 2、Python 3 或 R (Jupyter Notebook 中的開放原始碼和 Microsoft R Server) 。
 
 若要啟動 Jupyter Notebook，請選取 [**開始**] 功能表或桌面上的 [ **Jupyter Notebook** ] 圖示。 在 DSVM 命令提示字元中，您也可以 ```jupyter notebook``` 從已有筆記本的目錄或您要在其中建立新筆記本的目錄執行命令。  
 
@@ -156,7 +156,7 @@ git clone https://github.com/Azure/DataScienceVM.git
 ### <a name="azure-blob-storage"></a>Azure Blob 儲存體
 Azure Blob 儲存體是可靠、經濟實惠的雲端儲存體服務，適用于資料的規模和小型儲存體服務。 本節說明如何將資料移至 Blob 儲存體，以及存取儲存在 Azure blob 中的資料。
 
-#### <a name="prerequisites"></a>必要條件
+#### <a name="prerequisites"></a>先決條件
 
 * 從 [Azure 入口網站](https://portal.azure.com)建立您的 Azure Blob 儲存體帳戶。
 
@@ -201,7 +201,7 @@ AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.ne
 
 #### <a name="read-data-from-an-azure-blob-python-odbc"></a>從 Azure blob 讀取資料： Python ODBC
 
-您可以使用 BlobService 程式庫，直接從 Jupyter 筆記本中的 blob 或 Python 程式讀取資料。
+您可以使用 BlobService 程式庫，直接從 Jupyter Notebook 或 Python 程式中的 blob 讀取資料。
 
 首先，匯入必要的套件：
 

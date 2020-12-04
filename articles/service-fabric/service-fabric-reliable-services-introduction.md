@@ -5,13 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: masnider
-ms.custom: sfrev
-ms.openlocfilehash: 66fc58941de206d0bff086f44852d0f2a31587f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50b8cae11cef5ee8670e2e0270fd8506b1dad4d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86253077"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576531"
 ---
 # <a name="reliable-services-overview"></a>Reliable Services 概觀
 
@@ -64,7 +63,7 @@ Reliable Services 與您之前撰寫的服務不同，因為 Service Fabric 會�
 
 ### <a name="stateless-reliable-services"></a>無狀態的可靠的服務
 
-*無狀態服務*是指服務之間沒有任何在呼叫期間維護的狀態。 任何已存在的狀態完全可丟棄，不需要同步處理、複寫、持續性或高可用性。
+*無狀態服務* 是指服務之間沒有任何在呼叫期間維護的狀態。 任何已存在的狀態完全可丟棄，不需要同步處理、複寫、持續性或高可用性。
 
 例如，想想沒有記憶體且會接收要一次執行之所有項和作業的計算機。
 
@@ -74,7 +73,7 @@ Reliable Services 與您之前撰寫的服務不同，因為 Service Fabric 會�
 
 不儲存任何內部狀態會讓此範例計算機變得較簡單。 不過大多數服務並不是真正無狀態。 相反地，它們是將狀態外部化到其他某些存放區  (例如，任何依賴在備份存放區或快取中保留工作階段狀態的 Web 應用程式便不是無狀態)。
 
-Service Fabric 中常見的無狀態服務使用範例是做為前端，其公開 Web 應用程式的公用 API。 前端服務接著和具狀態服務交談，以完成使用者的要求。 在此情況下，用戶端的呼叫會導向至無狀態服務接聽的已知連接埠 (例如 80)。 這個無狀態服務收到呼叫，並判斷呼叫是否來自受信任的合作對象，以及其預定為哪些服務。  然後，無狀態服務將呼叫轉送至正確的具狀態服務分割，並等候回應。 當無狀態服務收到回應時，它會回覆原始用戶端。 這類服務的範例是*Service Fabric 消費者入門*範例 ([c #](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)  /  [JAVA](https://github.com/Azure-Samples/service-fabric-java-getting-started)) ，以及該存放庫中的其他 Service Fabric 範例。
+Service Fabric 中常見的無狀態服務使用範例是做為前端，其公開 Web 應用程式的公用 API。 前端服務接著和具狀態服務交談，以完成使用者的要求。 在此情況下，用戶端的呼叫會導向至無狀態服務接聽的已知連接埠 (例如 80)。 這個無狀態服務收到呼叫，並判斷呼叫是否來自受信任的合作對象，以及其預定為哪些服務。  然後，無狀態服務將呼叫轉送至正確的具狀態服務分割，並等候回應。 當無狀態服務收到回應時，它會回覆原始用戶端。 這類服務的範例是 *Service Fabric 消費者入門* 範例 ([c #](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)  /  [JAVA](https://github.com/Azure-Samples/service-fabric-java-getting-started)) ，以及該存放庫中的其他 Service Fabric 範例。
 
 ### <a name="stateful-reliable-services"></a>具狀態可靠的服務
 
@@ -104,7 +103,7 @@ Service Fabric 中常見的無狀態服務使用範例是做為前端，其公�
 * 您的應用程式需要維護其狀態單位的變更歷程記錄。
 * 您想要開發或使用協力廠商開發的自訂狀態提供器。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [Reliable Services 快速入門](service-fabric-reliable-services-quick-start.md)
 * [可靠的集合](service-fabric-reliable-services-reliable-collections.md)

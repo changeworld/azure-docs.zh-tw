@@ -1,16 +1,14 @@
 ---
 title: 使用參數指定服務的埠號碼
 description: 示範如何使用參數在 Service Fabric 中指定應用程式的連接埠
-author: mikkelhegn
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.author: mikhegn
-ms.openlocfilehash: a53626b8fd362397ba89df30b099fa3c9ff7b0a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba2fb459dc9c981ad168aca4d0edf969650ccf48
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75609854"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576701"
 ---
 # <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>如何在 Service Fabric 中使用參數指定服務的連接埠號碼
 

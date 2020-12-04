@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: c8fa2efe708823ff4154edfd58f1b18e0176a990
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ccc5a63da40950fbf9f05e3e029393fce8814d7
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89380795"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576684"
 ---
 # <a name="how-to-market-your-saas-offer"></a>如何行銷 SaaS 供應專案
 
@@ -23,7 +23,7 @@ ms.locfileid: "89380795"
 
 提供 **Microsoft Page 共同銷售** 的資訊完全是選擇性的。 但必須達成 _共同銷售就緒_ 和 _IP 共同銷售就緒_ 狀態。 Microsoft 銷售團隊會在評估其符合客戶需求時，使用此資訊來深入瞭解您的解決方案。 您在此索引標籤上提供的資訊無法直接提供給客戶。
 
-如需設定 [ **與 Microsoft 共同銷售** ] 索引標籤的詳細資訊和指示，請參閱 [合作夥伴中心中的共同銷售選項](partner-center-portal/commercial-marketplace-co-sell.md)。
+如需設定 [ **與 Microsoft 共同銷售** ] 索引標籤的詳細資訊和指示，請參閱 [合作夥伴中心中的共同銷售選項](commercial-marketplace-co-sell.md)。
 
 ## <a name="resell-through-csps"></a>透過 CSP 轉售
 

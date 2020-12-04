@@ -1,15 +1,14 @@
 ---
 title: 應用程式升級：資料序列化
 description: 資料序列化的最佳作法，以及它如何影響應用程式輪流升級。
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.openlocfilehash: d502e74139c543d4183a75faa6bea1948d9f3e56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9474a0bf8041ac541389f782f60bf1220d690cde
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86247977"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575630"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>資料序列化如何影響應用程式升級
 在 [輪流應用程式升級](service-fabric-application-upgrade.md)中，升級會套用至節點的子集，一次一個升級網域。 在此過程中，有些升級網域會有您應用程式的新版本，有些升級網域則有您應用程式的舊版本。 在首度發行期間，新版的應用程式必須能夠讀取舊版的資料，而舊版的應用程式必須能夠讀取新版的資料。 如果資料格式沒有向前及向後相容，升級便可能會失敗，或是發生更糟糕的狀況，像是資料可能會遺失或損毀。 本文將討論您資料格式的構成項目並提供最佳作法，以確保您的資料向前及向後相容。
@@ -43,7 +42,7 @@ ms.locfileid: "86247977"
 
 資料合約是建議的解決方案，以確保您的資料相容。 它有新增、移除及變更欄位的定義完善版本控制規則。 它也支援處理未知欄位、連結到序列化和還原序列化程序，以及處理類別繼承。 如需詳細資訊，請參閱 [使用資料合約](/dotnet/framework/wcf/feature-details/using-data-contracts)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 [使用 Visual Studio 升級您的應用程式](service-fabric-application-upgrade-tutorial.md) 會逐步引導您使用 Visual Studio 進行應用程式升級。
 
 [使用 Powershell 升級您的應用程式](service-fabric-application-upgrade-tutorial-powershell.md) 會逐步引導您使用 powershell 來升級應用程式。

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 5c5be9089992104d27af3db84eb2c9a165f779f2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 6432cc9affd34c0fa9b832aea91932a2b9e7540f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552073"
+ms.locfileid: "96576667"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Azure 範疇中支援的資料來源和檔案類型
 
@@ -32,7 +32,7 @@ Azure 範疇支援下列來源：
 | Azure 資料總管                      | 服務主體                              | Ux            |
 | Azure Data Lake Storage Gen1 (ADLS Gen1)  | 服務主體，MSI                              | Ux            |
 | Azure Data Lake Storage Gen2 (ADLS Gen2)  | 帳戶金鑰、服務主體、MSI            | Ux            |
-| Cosmos DB                                 | 帳戶金鑰                                    | Ux            |
+| Azure Cosmos DB                          | 帳戶金鑰                                    | Ux            |
 
 
 > [!Note]

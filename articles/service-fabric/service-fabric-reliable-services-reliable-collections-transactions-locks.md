@@ -3,19 +3,18 @@ title: 可靠集合中的交易和鎖定模式
 description: Azure Service Fabric Reliable State Manager 和 Reliable Collections 交易和鎖定。
 ms.topic: conceptual
 ms.date: 5/1/2017
-ms.custom: sfrev
-ms.openlocfilehash: d1094462ebabcea1fbead3d5b30fdfb8dda6463a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57ca46047641b79d5e4c50ede4a27e16dcec5d89
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500277"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576718"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric Reliable Collections 中的交易和鎖定模式
 
 ## <a name="transaction"></a>交易
 
-交易就是以單一工作邏輯單元執行的一連串作業。 它展現了常見[ACID](https://en.wikipedia.org/wiki/ACID)的 ACID * (不可*部分完成性、*一致性*、*隔離*、*持久性*) 資料庫交易的屬性：
+交易就是以單一工作邏輯單元執行的一連串作業。 它展現了常見 [ACID](https://en.wikipedia.org/wiki/ACID)的 ACID *(不可* 部分完成性、*一致性*、*隔離*、*持久性*) 資料庫交易的屬性：
 
 * **不可部分完成性**︰交易必須是不可部分完成的工作單位。 換句話說，執行其所有資料修改，或完全不執行。
 * **一致性**︰交易完成時，所有資料必須維持一致的狀態。 所有內部資料結構在交易結束時必須是正確的。
@@ -79,7 +78,7 @@ ms.locfileid: "87500277"
 這樣很可能會形成死結，因為它們最後都會有共用鎖定。
 在此情況下，其中一項或兩項作業都會超時。在此案例中，更新鎖定可能會導致這類鎖死。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [使用可靠的集合](service-fabric-work-with-reliable-collections.md)
 * [Reliable Services 通知](service-fabric-reliable-services-notifications.md)

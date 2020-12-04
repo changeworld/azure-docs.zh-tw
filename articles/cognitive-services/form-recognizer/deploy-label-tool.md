@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: df800938d568af0b94cfb1d368ef32e9b085b6eb
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 543e6115be30963600d867bb9c2a03dfbb54e9f1
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913104"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576548"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>部署範例標籤工具
 
@@ -42,8 +42,8 @@ ms.locfileid: "92913104"
 請遵循下列步驟，使用 Azure 入口網站建立新的資源： 
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/signin/index/)。
-2. 選取 [建立資源]  。 
-3. 接著，選取 [ **Web 應用程式** ]。 
+2. 選取 [建立資源]。 
+3. 接著，選取 [ **Web 應用程式**]。 
 
    > [!div class="mx-imgBorder"]
    > ![選取 web 應用程式](./media/quickstarts/formre-create-web-app.png)
@@ -95,7 +95,7 @@ ms.locfileid: "92913104"
    > [!div class="mx-imgBorder"]
    > ![設定 Docker](./media/quickstarts/formre-configure-docker.png)
 
-7. 就這麼簡單。 接下來，選取 [ **審核 + 建立** ]，然後選取 [ **建立** ] 以部署您的 web 應用程式。 完成時，您可以在資源 **總覽** 中提供的 URL 存取您的 web 應用程式。
+7. 就這麼簡單。 接下來，選取 [ **審核 + 建立**]，然後選取 [ **建立** ] 以部署您的 web 應用程式。 完成時，您可以在資源 **總覽** 中提供的 URL 存取您的 web 應用程式。
 
 > [!NOTE]
 > 建立您的 web 應用程式時，您也可以設定授權/驗證。 這不是開始使用的必要條件。 
@@ -136,7 +136,7 @@ DNS_NAME_LABEL=aci-demo-$RANDOM
 az container create \
   --resource-group <resource_group_name> \
   --name <name> \
-  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview \
   --ports 3000 \
   --dns-name-label $DNS_NAME_LABEL \
   --location <region name> \
@@ -155,6 +155,6 @@ az container create \
 
 OCR 表單圖章工具也可做為 GitHub 上的開放原始碼專案。 此工具是使用 React + Redux 建置的 Web 應用程式，並以 TypeScript 撰寫。 若要深入了解或參與，請參閱 [OCR 表單標籤工具](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 使用「 [使用標籤定型](./quickstarts/label-tool.md) 」快速入門，以瞭解如何使用此工具手動標示定型資料並執行受監督的學習。

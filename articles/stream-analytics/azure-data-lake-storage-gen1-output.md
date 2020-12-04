@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 59b4a04231df3b93b093750cc6c9d70982a418a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 688cd7c2e54a6b4c6b5a11705e10c33604324f09
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665339"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576276"
 ---
 # <a name="azure-data-lake-storage-gen-1-output-from-azure-stream-analytics"></a>從 Azure 串流分析 Azure Data Lake Storage Gen 1 輸出
 
@@ -35,8 +35,8 @@ Azure Data Lake Storage 來自串流分析的輸出，在 Azure 中國世紀和 
 | 事件序列化格式 | 輸出資料的序列化格式。 支援 JSON、CSV 和 Avro。|
 | 編碼 | 如果您使用 CSV 或 JSON 格式，則必須指定編碼。 UTF-8 是目前唯一支援的編碼格式。|
 | 分隔符號 | 僅適用於 CSV 序列化。 串流分析可支援多種序列化 CSV 資料常用的分隔符號。 支援的值是逗號、分號、空格、索引標籤和分隔號。|
-| [格式] | 僅適用於 JSON 序列化。 **分隔的行**會指定輸出的格式化方式為利用新行分隔每個 JSON 物件。 如果您選取**分隔的行**，JSON 會一次讀取一個物件。 整個內容本身不是有效的 JSON。  **陣列**會指定輸出將會格式化為 JSON 物件的陣列。 只有在作業停止或串流分析已移動到下一個時間範圍時，才會關閉這個陣列。 一般情況下，最好使用分行的 JSON，因為其不需要任何特殊處理，同時仍會寫入輸出檔案。|
-| 驗證模式 | 您可以使用[受控識別](stream-analytics-managed-identities-adls.md)或使用者權杖來授權 Data Lake Storage 帳戶的存取權。 授與存取權之後，您可以藉由變更使用者帳戶密碼、刪除此作業的 Data Lake Storage 輸出，或刪除串流分析作業，來撤銷存取權。 |
+| [格式] | 僅適用於 JSON 序列化。 **分隔的行** 會指定輸出的格式化方式為利用新行分隔每個 JSON 物件。 如果您選取 **分隔的行**，JSON 會一次讀取一個物件。 整個內容本身不是有效的 JSON。  **陣列** 會指定輸出將會格式化為 JSON 物件的陣列。 只有在作業停止或串流分析已移動到下一個時間範圍時，才會關閉這個陣列。 一般情況下，最好使用分行的 JSON，因為其不需要任何特殊處理，同時仍會寫入輸出檔案。|
+| 驗證模式 | 您可以使用 [受控識別](stream-analytics-managed-identities-adls.md) (preview) 或使用者權杖來授權存取您的 Data Lake Storage 帳戶。 授與存取權之後，您可以藉由變更使用者帳戶密碼、刪除此作業的 Data Lake Storage 輸出，或刪除串流分析作業，來撤銷存取權。 |
 
 ## <a name="partitioning"></a>資料分割
 

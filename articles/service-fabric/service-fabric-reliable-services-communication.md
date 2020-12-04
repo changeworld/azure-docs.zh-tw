@@ -1,17 +1,15 @@
 ---
 title: Reliable Services 通訊總覽
 description: Reliable Services 通訊模型概觀，其中包括開啟服務的接聽程式、解析端點和服務間通訊。
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b45ceaed9f0d3d64a0fc6890549542acc6b1c21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7dc10055633c8e6dd2c645f28b774d5d5f3ac3f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018632"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574321"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>如何使用 Reliable Services 通訊 API
 「Azure Service Fabric 即平台」完全不受服務間的通訊影響。 所有通訊協定和堆疊 (從 UDP 到 HTTP) 都可接受。 它是由服務開發人員選擇服務應有的通訊方式。 Reliable Services 應用程式架構會提供內建的通訊堆疊以及 API，讓您可用來建置自訂通訊元件。
@@ -88,7 +86,7 @@ public class MyStatefulService : StatefulService
 }
 ```
 
-在這兩種情況下，您會傳回接聽程式的集合。 這可讓您的服務透過多個接聽程式，可能使使用不同的通訊協定，在多個端點上接聽。 例如，您可能有 HTTP 接聽程式和個別的 WebSocket 接聽程式。 每個接聽程式都會獲得一個名稱及所產生的名稱集合**：當用戶端要求服務執行個體或資料分割的接聽位址時，系統會以 JSON 物件的形式呈現位址配對。
+在這兩種情況下，您會傳回接聽程式的集合。 這可讓您的服務透過多個接聽程式，可能使使用不同的通訊協定，在多個端點上接聽。 例如，您可能有 HTTP 接聽程式和個別的 WebSocket 接聽程式。 每個接聽程式都會獲得一個名稱及所產生的名稱集合：當用戶端要求服務執行個體或資料分割的接聽位址時，系統會以 JSON 物件的形式呈現位址配對。
 
 在無狀態服務中，覆寫項會傳回 ServiceInstanceListeners 的集合。 `ServiceInstanceListener` 會包含可建立 `ICommunicationListener(C#) / CommunicationListener(Java)` 的函式，並會為它命名。 就具狀態服務而言，覆寫項則會傳回 ServiceReplicaListeners 集合。 這與其無狀態的對應項稍有不同，因為 `ServiceReplicaListener` 可以選擇在次要複本上將 `ICommunicationListener` 開啟。 您不僅可以在服務中使用多個通訊接聽程式，也可以指定哪些接聽程式要在次要複本上接受要求，以及哪些接聽程式只在主要複本上進行接聽。
 
@@ -148,7 +146,7 @@ int port = codePackageActivationContext.getEndpoint("ServiceEndpoint").getPort()
 >
 
 ### <a name="service-address-registration"></a>服務位址註冊
-名為「命名服務」 ** 的系統服務會在 Service Fabric 叢集上執行。 命名服務是適用於服務及其位址的註冊機構，而服務的每個執行個體或複本正在其上接聽。 當 `ICommunicationListener(C#) / CommunicationListener(Java)` 的 `OpenAsync(C#) / openAsync(Java)` 方法完成時，它的傳回值會在命名服務中註冊。 這個在命名服務中發佈的傳回值是一個字串，其值完全可以是任何項目。 這個字串值是用戶端向命名服務要求服務的位址時將會看見的內容。
+名為「命名服務」  的系統服務會在 Service Fabric 叢集上執行。 命名服務是適用於服務及其位址的註冊機構，而服務的每個執行個體或複本正在其上接聽。 當 `ICommunicationListener(C#) / CommunicationListener(Java)` 的 `OpenAsync(C#) / openAsync(Java)` 方法完成時，它的傳回值會在命名服務中註冊。 這個在命名服務中發佈的傳回值是一個字串，其值完全可以是任何項目。 這個字串值是用戶端向命名服務要求服務的位址時將會看見的內容。
 
 ```csharp
 public Task<string> OpenAsync(CancellationToken cancellationToken)
@@ -197,7 +195,7 @@ Service Fabric 提供 API，讓用戶端和其他服務之後能夠依服務名�
 Reliable Services API 提供下列程式庫來撰寫與服務通訊的用戶端。
 
 ### <a name="service-endpoint-resolution"></a>服務端點解析
-與服務通訊的第一個步驟是，解析您想要通訊之服務的分割區或執行個體的端點位址。 `ServicePartitionResolver(C#) / FabricServicePartitionResolver(Java)` 公用程式類別是一個基本類型，可協助用戶端在執行階段判斷服務的端點。 在 Service Fabric 術語中，判斷服務端點的程序稱為「服務端點解析」 **。
+與服務通訊的第一個步驟是，解析您想要通訊之服務的分割區或執行個體的端點位址。 `ServicePartitionResolver(C#) / FabricServicePartitionResolver(Java)` 公用程式類別是一個基本類型，可協助用戶端在執行階段判斷服務的端點。 在 Service Fabric 術語中，判斷服務端點的程序稱為「服務端點解析」 。
 
 若要連線到叢集內的服務，可以使用預設設定建立 ServicePartitionResolver。 這是大多數情況的建議用法︰
 
@@ -333,14 +331,14 @@ public class MyCommunicationClientFactory extends CommunicationClientFactoryBase
 }
 ```
 
-最後，例外狀況處理常式會負責判斷發生例外狀況時所要採取的動作。 例外狀況會分類為**可重試**和**不可重試**。
+最後，例外狀況處理常式會負責判斷發生例外狀況時所要採取的動作。 例外狀況會分類為 **可重試** 和 **不可重試**。
 
-* **不可重試**的例外狀況只會重新擲回給呼叫端。
-* **不可重試**的例外狀況會進一步分類為**暫時性**和**非暫時性**。
+* **不可重試** 的例外狀況只會重新擲回給呼叫端。
+* **不可重試** 的例外狀況會進一步分類為 **暫時性** 和 **非暫時性**。
   * **暫時性** 例外狀況是只會重試而不會重新解析服務端點位址的例外狀況。 這類例外狀況包括暫時性網路問題或服務錯誤回應，但不包括指出服務端點位址不存在的錯誤回應。
   * **非暫時性** 例外狀況是需要重新解析服務端點位址的例外狀況。 這類例外狀況包括指出無法連上服務端點 (表示服務已移至其他節點) 的例外狀況。
 
-`TryHandleException` 會做出有關特定例外狀況的決定。 如果它**不知道**要對例外狀況做出哪些決定，則應傳回 **false**。 如果它**知道**如何做決定，則應該據以設定結果並傳回 **true**。
+`TryHandleException` 會做出有關特定例外狀況的決定。 如果它 **不知道** 要對例外狀況做出哪些決定，則應傳回 **false**。 如果它 **知道** 如何做決定，則應該據以設定結果並傳回 **true**。
 
 ```csharp
 class MyExceptionHandler : IExceptionHandler

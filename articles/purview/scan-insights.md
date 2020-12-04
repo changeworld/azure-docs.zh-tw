@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/20/2020
-ms.openlocfilehash: ea12bf8a8d93f14c5364864b97d1173fe8602765
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 00f72e1de230cdc68f86010b7b25d86debaa5eb5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552082"
+ms.locfileid: "96575783"
 ---
 # <a name="scan-insights-on-your-data-in-azure-purview"></a>在 Azure 範疇中掃描資料的見解
 
@@ -20,8 +20,9 @@ ms.locfileid: "96552082"
 
 在本操作指南中，您將瞭解如何：
 
-* 從您的範疇帳戶查看見解。
-* 取得您的掃描的鳥觀點。
+> [!div class="checklist"]
+> * 從您的範疇帳戶查看見解。
+> * 取得您的掃描的鳥觀點。
 
 ## <a name="prerequisites"></a>先決條件
 

@@ -1,17 +1,15 @@
 ---
 title: 將 Azure 雲端服務應用程式轉換成 Service Fabric
 description: 本指南會比較雲端服務的 Web 角色和背景工作角色以及 Service Fabric 的無狀態服務，以協助您從雲端服務移轉到 Service Fabric。
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 24a411403fc139a7e7fa6644690c57a3b2729bf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf593f793aabf2a0650684ed8d02fe02d756ec2b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89002278"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575732"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>將 Web 角色和背景工作角色轉換成 Service Fabric 無狀態服務的指南
 本文說明如何將雲端服務的 Web 角色和背景工作角色移轉至 Service Fabric 無狀態服務。 對於整體架構會大致保持相同的應用程式來說，這是最簡單的雲端服務至 Service Fabric 移轉路徑。
@@ -43,7 +41,7 @@ ms.locfileid: "89002278"
 
 | **進入點** | **背景工作角色** | **Service Fabric 服務** |
 | --- | --- | --- |
-| Processing |`Run()` |`RunAsync()` |
+| 處理 |`Run()` |`RunAsync()` |
 | VM 啟動 |`OnStart()` |N/A |
 | VM 停止 |`OnStop()` |N/A |
 | 開啟接聽程式以接收用戶端要求 |N/A |<ul><li> `CreateServiceInstanceListener()` (針對無狀態)</li><li>`CreateServiceReplicaListener()` (針對具狀態)</li></ul> |

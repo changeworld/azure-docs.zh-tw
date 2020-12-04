@@ -1,17 +1,15 @@
 ---
 title: '在 Service Fabric 中使用 c # 進行服務遠端處理'
 description: Service Fabric 遠端處理可讓用戶端和服務使用遠端程序呼叫與 C# 服務進行通訊。
-author: vturecek
 ms.topic: conceptual
 ms.date: 09/20/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 246b1456c05605c4015c19e1a139e9ad65f6eaba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3659fea73abae3c9c5264f227b90d0af95a93e7
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022151"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576650"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>使用 Reliable Services 在 C# 中進行服務遠端處理
 
@@ -269,7 +267,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ### <a name="use-explicit-remoting-classes-to-create-a-listenerclient-factory-for-the-v2-interface-compatible-version"></a>使用明確的遠端類別來建立 V2 (介面相容) 版本的接聽程式/用戶端處理站。
 
-請遵循下列步驟：
+請依照下列步驟進行操作：
 
 1. 在服務資訊清單中新增名稱為 "ServiceEndpointV2_1" 的端點資源。
 
@@ -358,7 +356,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 ### <a name="use-custom-serialization-with-a-remoting-wrapped-message"></a>使用自訂序列化搭配遠端包裝訊息
 
 對於遠端包裝訊息，我們會建立含有所有參數的單一包裝物件作為其中的欄位。
-請遵循下列步驟：
+請依照下列步驟進行操作：
 
 1. 實作 `IServiceRemotingMessageSerializationProvider` 介面，以提供自訂序列化的實作。
     此程式碼片段會顯示實作情況。

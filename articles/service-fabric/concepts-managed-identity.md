@@ -3,19 +3,18 @@ title: 適用于 Azure 的受控識別
 description: 瞭解如何使用適用于 Azure 的受控識別搭配 Service Fabric。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.custom: sfrev
-ms.openlocfilehash: 786d9b4b577f4a686367a103542ae4f8fa5453da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28c992792d4572a43e12f5d32855f8411b0f4c6f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257626"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574746"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>使用適用于 Azure 的受控識別搭配 Service Fabric
 
 建立雲端應用程式時，常見的挑戰是如何安全地管理程式碼中的認證，以驗證各種服務，而不需要將它們儲存在開發人員工作站或原始檔控制中。 *適用于 Azure 的受控* 識別可針對 Azure Active Directory (Azure AD) 中的所有資源解決此問題，方法是在 Azure AD 中提供自動管理的身分識別。 您可以使用服務的身分識別，向任何支援 Azure AD 驗證的服務進行驗證，包括 Key Vault，而不會在您的程式碼中儲存任何認證。
 
-適用于 azure*資源的受控*識別可透過 azure 訂用帳戶的 Azure AD 免費使用。 沒有任何額外成本。
+適用于 azure *資源的受控* 識別可透過 azure 訂用帳戶的 Azure AD 免費使用。 沒有任何額外成本。
 
 > [!NOTE]
 > *適用于 Azure 的受控* 識別是先前稱為「受控服務識別」 (MSI) 之服務的新名稱。
@@ -32,8 +31,8 @@ ms.locfileid: "86257626"
 
 受控身分識別有兩種：
 
-- **系統指派的受控識別**會直接在 Azure 服務實例上啟用。  系統指派的身分識別生命週期對其啟用的 Azure 服務實例而言是唯一的。
-- **使用者指派的受控識別**會以獨立 Azure 資源的形式建立。 身分識別可以指派給一或多個 Azure 服務實例，並與這些實例的生命週期分開管理。
+- **系統指派的受控識別** 會直接在 Azure 服務實例上啟用。  系統指派的身分識別生命週期對其啟用的 Azure 服務實例而言是唯一的。
+- **使用者指派的受控識別** 會以獨立 Azure 資源的形式建立。 身分識別可以指派給一或多個 Azure 服務實例，並與這些實例的生命週期分開管理。
 
 若要進一步瞭解受控識別類型之間的差異，請參閱適用 [于 Azure 資源的受控識別如何運作？](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)。
 
@@ -59,7 +58,7 @@ ms.locfileid: "86257626"
 
 - 目前未將受控識別的 Service Fabric 支援整合到 [azureservicetokenprovider 會](../key-vault/general/service-to-service-authentication.md)中。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [使用受控識別支援部署新的 Azure Service Fabric 叢集](./configure-new-azure-service-fabric-enable-managed-identity.md)
 - [在現有的 Azure Service Fabric 叢集中啟用受控識別支援](./configure-existing-cluster-enable-managed-identity-token-service.md)

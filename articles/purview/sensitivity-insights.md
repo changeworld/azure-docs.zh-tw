@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: beaa231eddd57e29578a1d69ee30af05ce7c8d0f
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 74f4391fcd071ac510fc66b2f8bc36ec4549dc47
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552075"
+ms.locfileid: "96575749"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Azure 範疇中資料的敏感度標籤深入解析
 
@@ -66,7 +66,7 @@ ms.locfileid: "96552075"
 
    主要 **敏感度標籤深入** 解析頁面會顯示下欄區域：
 
-   |區域  |說明  |
+   |區域  |描述  |
    |---------|---------|
    |**使用敏感度標籤的來源總覽**     |顯示提供下列各圖的圖格： <br>-在您的資料中找到的訂閱數目。 <br>-在您的資料上套用的唯一敏感度標籤數目 <br>-套用敏感度標籤的來源數目 <br>-已套用敏感度標籤的檔案和資料表數目|
    |**過去30天內加上標籤資料的熱門來源 ()**     | 顯示過去30天內套用敏感度標籤之來源數目的趨勢。       |
@@ -75,6 +75,7 @@ ms.locfileid: "96552075"
    |**在資料表上套用的上方標籤**     | 顯示套用至資料中資料庫資料表的最上層敏感度標籤。 |   
    |  **標記活動**  |  針對檔案和資料表顯示個別的圖表，每個圖表都會顯示在所選時間範圍內標記的檔案或資料表數目。 <br>**預設值**：30天<br>選取圖形上方的 **時間** 篩選器，以選取要顯示的其他時間範圍。    |
    |    |    |
+
 ## <a name="sensitivity-labeling-insights-drilldown"></a>敏感度標籤深入解析摘要
 
 在下列任何敏感性卷 **標見解** 圖表中，選取 [ **View 更多** ] 連結以深入瞭解詳細資料：
@@ -90,7 +91,7 @@ ms.locfileid: "96552075"
 
 若要深入瞭解，請執行下列其中一項：
 
-|選項  |說明  |
+|選項  |描述  |
 |---------|---------|
 |**篩選資料**     |  使用方格上方的篩選來篩選顯示的資料，包括標籤名稱、訂用帳戶名稱或來源類型。 <br><br>如果您不確定確切的標籤名稱，您可以在 [ **依關鍵字篩選** ] 方塊中輸入部分或全部名稱。       |
 |**排序方格** |選取資料行標頭，依該資料行排序方格。 | 
@@ -98,6 +99,7 @@ ms.locfileid: "96552075"
 |**進一步向下切入**     | 若要向下切入到特定標籤，請在 [ **敏感度標籤** ] 資料行中選取名稱，以依來源報表來查看 **標籤** 。 <br><br>這份報表會顯示所選標籤的資料，包括來源名稱、來源類型、訂用帳戶識別碼，以及已分類的檔案和資料表的數目。      |
 |**流覽資產**     |  若要流覽具有特定標籤或來源的資產，請選取一或多個標籤或來源（視您所看到的報表而定），然後選取 [ **流覽** :::image type="icon" source="media/insights/ico-browse-assets.png" border="false"::: 篩選上方的資產]。 <br><br>搜尋結果會顯示針對所選篩選準則找到的所有標記資產。  如需詳細資訊，請參閱 [搜尋 Azure 範疇資料目錄](how-to-search-catalog.md)。       |
 | | |
+
 ## <a name="sensitivity-label-integration-with-microsoft-365-compliance"></a>敏感度標籤與 Microsoft 365 合規性的整合
 
 Microsoft 365 中所提供的 [Microsoft 資訊保護](/microsoft-365/compliance/information-protection) 的緊密整合，表示範疇能讓您直接擴充資料資產的可見度，以及將資料分類和標籤。
@@ -108,15 +110,9 @@ Microsoft 365 中所提供的 [Microsoft 資訊保護](/microsoft-365/compliance
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解 Azure 範疇 insights 報表
-> [!div class="nextstepaction"]
-> [詞彙見解](glossary-insights.md)
+深入瞭解這些 Azure 範疇深入解析報表：
 
-> [!div class="nextstepaction"]
-> [掃描見解](scan-insights.md)
-
-> [!div class="nextstepaction"]
-> [分類見解](./classification-insights.md)
-
-> [!div class="nextstepaction"]
-> [副檔名見解](file-extension-insights.md)
+- [詞彙見解](glossary-insights.md)
+- [掃描見解](scan-insights.md)
+- [分類見解](./classification-insights.md)
+- [副檔名見解](file-extension-insights.md)

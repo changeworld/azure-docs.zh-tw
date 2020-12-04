@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
-ms.date: 10/13/2020
+ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: d82cbafbbdeb379c8eb97494ca8d3243f356b7a1
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 18eb952d06d83b4604625a795be3c8512c3f90d7
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542111"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576582"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>使用 Azure Machine Learning 管理和提高資源配額
 
@@ -45,31 +45,35 @@ Azure 會使用限制和配額來防止因詐騙而產生的預算溢出，並�
 
 在本節中，您會瞭解下列資源的預設和最大配額限制：
 
++ Azure Machine Learning 資產
+  + Azure Machine Learning Compute
+  + Azure Machine Learning 管線
 + 虛擬機器
-+ Azure Machine Learning Compute
-+ Azure Machine Learning 管線
-+ Azure Container Instances
++ Azure 容器執行個體
 + Azure 儲存體
 
 > [!IMPORTANT]
 > 限制日後有可能會變更。 如需最新資訊，請參閱 [azure 訂用帳戶和服務限制、配額和](../azure-resource-manager/management/azure-subscription-service-limits.md) 所有 azure 的限制。
 
-### <a name="virtual-machines"></a>虛擬機器
-每個 Azure 訂用帳戶對於所有服務的虛擬機器數目都有限制。 虛擬機器核心有區域總計限制和每個大小系列的區域限制。 這兩項限制會分別強制執行。
+### <a name="azure-machine-learning-assets"></a>Azure Machine Learning 資產
+下列資產限制適用于每個工作區。 
 
-例如，請考慮美國東部訂用帳戶的總計 VM 核心限制為 30、A 系列核心限制為 30，和 D 系列核心限制為 30。 此訂用帳戶可部署 30 A1 Vm 或30個 D1 Vm，或兩個未超過總計30個核心的組合。
+| **Resource** | **上限** |
+| --- | --- |
+| 資料集 | 1000 萬 |
+| 執行 | 1000 萬 |
+| 模型 | 1000 萬|
+| Artifacts | 1000 萬 |
 
-您無法針對下表所顯示的值，提高虛擬機器的限制。
+此外， **執行時間** 上限為30天，而 **每次執行所記錄的度量** 數目上限為1000000。
 
-[!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
-
-### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Compute
+#### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Compute
 [Azure Machine Learning 計算](concept-compute-target.md#azure-machine-learning-compute-managed) 具有在訂用帳戶中每個區域所允許的核心數目和唯一計算資源數目的預設配額限制。 此配額與上一節中的 VM 核心配額不同。
 
 [要求增加配額](#request-quota-increases) 來提高此區段中的限制，直到資料表中顯示的上限為止。
 
 可用的資源：
-+ 根據您的訂用帳戶供應專案類型而定， **每個區域的專用核心** 預設限制為24到300。 您可以為每個 VM 系列增加每個訂用帳戶的專用核心數目。 特製化 VM 系列（例如 NCv2、NCv3 或 ND 系列）開頭為零核心的預設值。
++ 根據您的訂用帳戶供應專案類型而定，**每個區域的專用核心** 預設限制為24到300。 您可以為每個 VM 系列增加每個訂用帳戶的專用核心數目。 特製化 VM 系列（例如 NCv2、NCv3 或 ND 系列）開頭為零核心的預設值。
 
 + 依訂用帳戶供應專案類型而 **定，每個區域的低優先順序核心** 預設限制為100到3000。 您可以增加每個訂用帳戶的低優先順序核心數目，而這是跨 VM 系列的單一值。
 
@@ -90,7 +94,7 @@ Azure 會使用限制和配額來防止因詐騙而產生的預算溢出，並�
 <sup>1</sup> 最大存留期是執行開始和完成時之間的持續時間。 已完成的執行會無限期保存。 無法存取未在最長存留期內完成的執行資料。
 如果有容量限制，則低優先順序節點上的<sup>2</sup>個作業可被優先佔用。 建議您在作業中執行檢查點。
 
-### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning 管線
+#### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning 管線
 [Azure Machine Learning 管線](concept-ml-pipelines.md) 有下列限制。
 
 | **Resource** | **限制** |
@@ -98,7 +102,16 @@ Azure 會使用限制和配額來防止因詐騙而產生的預算溢出，並�
 | 管線中的步驟 | 30,000 |
 | 每個資源群組的工作區 | 800 |
 
-### <a name="container-instances"></a>容器執行個體
+### <a name="virtual-machines"></a>虛擬機器
+每個 Azure 訂用帳戶對於所有服務的虛擬機器數目都有限制。 虛擬機器核心有區域總計限制和每個大小系列的區域限制。 這兩項限制會分別強制執行。
+
+例如，請考慮美國東部訂用帳戶的總計 VM 核心限制為 30、A 系列核心限制為 30，和 D 系列核心限制為 30。 此訂用帳戶可部署 30 A1 Vm 或30個 D1 Vm，或兩個未超過總計30個核心的組合。
+
+您無法針對下表所顯示的值，提高虛擬機器的限制。
+
+[!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
+
+### <a name="container-instances"></a>Container Instances
 
 如需詳細資訊，請參閱 [容器實例限制](../azure-resource-manager/management/azure-subscription-service-limits.md#container-instances-limits)。
 
@@ -115,7 +128,7 @@ Azure 會使用限制和配額來防止因詐騙而產生的預算溢出，並�
 根據預設，所有工作區都會共用與 VM 系列的訂用帳戶層級配額相同的配額。 不過，您可以在訂用帳戶中的工作區上設定個別 VM 系列的最大配額。 這可讓您共用容量並避免資源爭用問題。
 
 1. 移至訂用帳戶中的任何工作區。
-1. 在左窗格中，選取 [ **使用量 + 配額** ]。
+1. 在左窗格中，選取 [ **使用量 + 配額**]。
 1. 選取 [ **設定配額** ] 索引標籤以查看配額。
 1. 展開 VM 系列。
 1. 在該 VM 系列下所列的任何工作區上設定配額限制。
@@ -131,7 +144,7 @@ Azure 會使用限制和配額來防止因詐騙而產生的預算溢出，並�
 
 若要查看各種 Azure 資源（例如虛擬機器、儲存體或網路）的配額，請使用 Azure 入口網站：
 
-1. 在左窗格中，選取 [ **所有服務** ]，然後選取 [ **一般** ] 類別底下的 [ **訂用帳戶** ]。
+1. 在左窗格中，選取 [**所有服務**]，然後選取 [**一般**] 類別底下的 [**訂用帳戶**]。
 
 2. 從訂用帳戶清單中，選取您要尋找其配額的訂用帳戶。
 
@@ -177,7 +190,7 @@ Azure Machine Learning 會在 (客戶) 訂用帳戶中建立資源，但在某�
     | 欄位 | 選取項目 |
     | ----- | ----- |
     | 問題類型 | **技術** |
-    | 服務 | **我的服務** 。 然後，在下拉式清單中選取 [ __Machine Learning__ ]。 |
+    | Service | **我的服務**。 然後，在下拉式清單中選取 [ __Machine Learning__ ]。 |
     | 問題類型 | **工作區設定和安全性** |
     | 問題子類型 | **私人端點和私人 DNS 區域額度要求** |
 

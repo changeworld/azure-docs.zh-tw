@@ -3,13 +3,12 @@ title: Azure 和獨立 Service Fabric 叢集的總覽
 description: 您可以在執行 Windows Server 或 Linux 的任何 VM 或電腦上建立 Service Fabric 叢集。 這表示在任何環境中，只要有一組互連式 Windows Server 或 Linux 電腦，不論是在內部部署、Microsoft Azure 或透過任何雲端提供者，您都能夠部署和執行 Service Fabric 應用程式。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.custom: sfrev
-ms.openlocfilehash: 8313d75bb6398bbe614c6f56b494079548c99954
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d83ec139c367d9a539db173a42ae909f57d5d71a
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842592"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576123"
 ---
 # <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>比較 Windows Server 和 Linux 上的 Azure 和獨立 Service Fabric 叢集
 

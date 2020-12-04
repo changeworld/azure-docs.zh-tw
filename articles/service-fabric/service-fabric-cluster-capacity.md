@@ -4,29 +4,28 @@ description: 規劃 Service Fabric 叢集時，應考慮的節點類型、持久
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.custom: sfrev
-ms.openlocfilehash: d2b303c22eea9fb46a68bb3c8e36991d47d61554
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 731dcfdf25efc4b2f44669dacd8a400037ed47f4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91817741"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576327"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 叢集容量規劃考量
 
 叢集容量規劃對於每個 Service Fabric 生產環境都很重要。 重要考慮包括：
 
-* **叢集*節點類型*的初始數目和屬性**
+* **叢集 *節點類型* 的初始數目和屬性**
 
-* **每個節點類型的*持久性*層級**，決定 Azure 基礎結構內 Service Fabric VM 許可權
+* **每個節點類型的 *持久性* 層級**，決定 Azure 基礎結構內 Service Fabric VM 許可權
 
-* 叢集的***可靠性*層級**，可判斷 Service Fabric 系統服務和整體叢集功能的穩定性
+* 叢集的 ***可靠性* 層級**，可判斷 Service Fabric 系統服務和整體叢集功能的穩定性
 
 本文將逐步引導您瞭解每個區域的重要決策點。
 
 ## <a name="initial-number-and-properties-of-cluster-node-types"></a>叢集節點類型的初始數目和屬性
 
-*節點類型*會定義叢集中一組節點 (虛擬機器) 的大小、數目和屬性。 在 Service Fabric 叢集中定義的每個節點類型都會對應到一個[虛擬機器擴展集](../virtual-machine-scale-sets/overview.md)。
+*節點類型* 會定義叢集中一組節點 (虛擬機器) 的大小、數目和屬性。 在 Service Fabric 叢集中定義的每個節點類型都會對應到一個[虛擬機器擴展集](../virtual-machine-scale-sets/overview.md)。
 
 因為每個節點類型都是不同的擴展集，所以可以獨立相應增加或相應減少、開啟不同組的埠，並擁有不同的容量計量。 如需節點類型與虛擬機器擴展集之間關聯性的詳細資訊，請參閱 [Service Fabric 叢集節點類型](service-fabric-cluster-nodetypes.md)。
 
@@ -34,27 +33,27 @@ ms.locfileid: "91817741"
 
 **非主要節點類型** 可以用來定義應用程式角色 (例如 *前端* 和 *後端* 服務) ，以及實際隔離叢集中的服務。 Service Fabric 叢集可以有零或多個非主要節點類型。
 
-主要節點類型是使用 `isPrimary` Azure Resource Manager 部署範本中節點類型定義下的屬性來設定。 如需節點型別屬性的完整清單，請參閱 [NodeTypeDescription 物件](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) 。 如需使用方式，請在[Service Fabric 叢集範例](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/)中開啟檔案的任何*AzureDeploy.js* ，並*在頁面*搜尋中尋找 `nodeTypes` 物件。
+主要節點類型是使用 `isPrimary` Azure Resource Manager 部署範本中節點類型定義下的屬性來設定。 如需節點型別屬性的完整清單，請參閱 [NodeTypeDescription 物件](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) 。 如需使用方式，請在 [Service Fabric 叢集範例](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/)中開啟檔案的任何 *AzureDeploy.js* ，並 *在頁面* 搜尋中尋找 `nodeTypes` 物件。
 
 ### <a name="node-type-planning-considerations"></a>節點類型規劃考慮
 
 初始節點類型的數目取決於您叢集的用途和在其上執行的應用程式和服務。 請考量下列問題：
 
-* ***您的應用程式是否有多個服務，而且其中是否有任何服務必須是公開或網際網路對向的服務？***
+* ***您的應用程式是否有多個服務，而這些服務需要是公用或網際網路對向的？** _
 
     一般應用程式包含可接收用戶端輸入的前端閘道服務，以及一或多個與前端服務通訊的後端服務，前端和後端服務之間會有不同的網路功能。 這些情況通常需要三個節點類型：一個主要節點類型，以及兩個非主要節點類型分別 (前端和後端服務) 的節點類型。
 
-* ***組成您應用程式的服務是否有不同的基礎結構需求，例如更大的 RAM 或更高的 CPU 週期？***
+_ ***執行應用程式的服務是否有不同的基礎結構需求，例如 RAM 更高或更高的 CPU 週期？** _
 
-    前端服務通常可以在較小的 Vm 上執行 (VM 大小，例如在網際網路上開啟埠的 D2) 。  需要大量運算的後端服務，可能需要在較大的 vm 上執行， (VM 大小，例如 D4、D6、D15) 而非網際網路對向。 針對這些服務定義不同的節點類型，可讓您更有效率且更安全地使用基礎 Service Fabric Vm，並可讓它們獨立進行調整。 如需估計所需資源量的詳細資訊，請參閱 [Service Fabric 應用程式的容量規劃](service-fabric-capacity-planning.md)
+    Often, front-end service can run on smaller VMs (VM sizes like D2) that have ports open to the internet.  Computationally intensive back-end services might need to run on larger VMs (with VM sizes like D4, D6, D15) that are not internet-facing. Defining different node types for these services allow you to make more efficient and secure use of underlying Service Fabric VMs, and enables them to scale them independently. For more on estimating the amount of resources you'll need, see [Capacity planning for Service Fabric applications](service-fabric-capacity-planning.md)
 
-* ***是否有任何應用程式服務需要向外延展到100節點以外的範圍？***
+_ ***您是否有任何應用程式服務需要向外延展到100節點以外的範圍？** _
 
-    單一節點類型無法針對 Service Fabric 應用程式，針對每個虛擬機器擴展集可靠地調整超過100節點。 執行超過100個節點需要額外的虛擬機器擴展集 (，因此) 其他節點類型。
+    A single node type can't reliably scale beyond 100 nodes per virtual machine scale set for Service Fabric applications. Running more than 100 nodes requires additional virtual machine scale sets (and therefore additional node types).
 
-* ***您的叢集會跨可用性區域嗎？***
+_ ***您的叢集會跨可用性區域嗎？** _
 
-    Service Fabric 透過部署釘選至特定區域的節點類型，以支援跨 [可用性區域](../availability-zones/az-overview.md) 的叢集，以確保應用程式的高可用性。 可用性區域需要額外的節點類型規劃和最低需求。 如需詳細資訊，請參閱 [跨可用性區域跨越的 Service Fabric 叢集主要節點類型的建議拓撲](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones)。 
+    Service Fabric supports clusters that span across [Availability Zones](../availability-zones/az-overview.md) by deploying node types that are pinned to specific zones, ensuring high-availability of your applications. Availability Zones require additional node type planning and minimum requirements. For details, see [Recommended topology for primary node type of Service Fabric clusters spanning across Availability Zones](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones). 
 
 當您在初始建立叢集時，判斷節點類型的數目和屬性時，請記住，在部署叢集之後，您隨時都可以新增、修改或移除 (的非主要) 節點類型。 您也可以在執行中的叢集內[修改主要節點類型](service-fabric-scale-up-primary-node-type.md) (不過這類作業需要在生產環境中進行大量的規劃和警告) 。
 
@@ -62,10 +61,10 @@ ms.locfileid: "91817741"
 
 ## <a name="durability-characteristics-of-the-cluster"></a>叢集的持久性特性
 
-*持久性層級*會指定 Service Fabric vm 與基礎 Azure 基礎結構的許可權。 此許可權可讓 Service Fabric 暫停任何 VM 層級基礎結構要求 (例如，重新開機、重新安裝映射或遷移) ，而這些會影響 Service Fabric 系統服務和具狀態服務的仲裁需求。
+_Durability 層級 * 會指定 Service Fabric Vm 與基礎 Azure 基礎結構的許可權。 此許可權可讓 Service Fabric 暫停任何 VM 層級基礎結構要求 (例如，重新開機、重新安裝映射或遷移) ，而這些會影響 Service Fabric 系統服務和具狀態服務的仲裁需求。
 
 > [!IMPORTANT]
-> 持久性層級是針對每個節點類型所設定。 如果未指定，則會使用 *銅* 級層，但不會提供自動 OS 升級。 針對生產工作負載，建議使用*銀*級或*金*級持久性。
+> 持久性層級是針對每個節點類型所設定。 如果未指定，則會使用 *銅* 級層，但不會提供自動 OS 升級。 針對生產工作負載，建議使用 *銀* 級或 *金* 級持久性。
 
 下表列出 Service Fabric 耐久性層、其需求和 affordances。
 
@@ -132,7 +131,7 @@ ms.locfileid: "91817741"
 可靠性層級可以採用以下的值：
 
 * **白金** 級系統服務執行時的目標複本集計數為9
-* 具**金**級的系統服務會以七個目標複本集計數執行
+* 具 **金** 級的系統服務會以七個目標複本集計數執行
 * **銀** 級系統服務執行時的目標複本集計數為五
 * **銅牌** -系統服務執行時的目標複本集計數為三
 
@@ -163,9 +162,9 @@ ms.locfileid: "91817741"
 
 #### <a name="primary-node-type"></a>主要節點類型
 
-Azure 上的**生產工作負載**至少需要五個主要節點 (VM 實例) 和您的銀級可靠性層。 建議將叢集主要節點類型專用於系統服務，並使用放置條件約束將應用程式部署到次要節點類型。
+Azure 上的 **生產工作負載** 至少需要五個主要節點 (VM 實例) 和您的銀級可靠性層。 建議將叢集主要節點類型專用於系統服務，並使用放置條件約束將應用程式部署到次要節點類型。
 
-Azure 中的**測試工作負載**最少可執行一或三個主要節點。 若要設定一個節點叢集，請確定您的 `reliabilityLevel` Resource Manager 範本中的設定完全省略， (指定的空字串值的 `reliabilityLevel`) 不足。 如果您使用 Azure 入口網站設定一個節點叢集，則會自動完成此設定。
+Azure 中的 **測試工作負載** 最少可執行一或三個主要節點。 若要設定一個節點叢集，請確定您的 `reliabilityLevel` Resource Manager 範本中的設定完全省略， (指定的空字串值的 `reliabilityLevel`) 不足。 如果您使用 Azure 入口網站設定一個節點叢集，則會自動完成此設定。
 
 > [!WARNING]
 > 單一節點叢集會以不具可靠性的特殊設定執行，不支援 scale out。

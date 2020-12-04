@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 439337233e24dfcae2c8c911a9224fd3394d6846
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a7e9cdb18d109abeef7d7d7237444ac55f9e7da1
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462695"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576344"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>在 Azure Synapse Link Preview 中使用無伺服器 SQL 集區查詢 Azure Cosmos DB 資料
 
@@ -33,6 +33,12 @@ ms.locfileid: "96462695"
 
 ## <a name="overview"></a>概觀
 
+無伺服器 SQL 集區可讓您使用函數來查詢 Azure Cosmos DB 分析儲存體 `OPENROWSET` 。 
+- `OPENROWSET` 具有內嵌索引鍵。 這個語法可以用來查詢 Azure Cosmos DB 的集合，而不需要準備認證。
+- `OPENROWSET` 該參考包含 Cosmos DB 帳戶金鑰的認證。 這個語法可以用來建立 Azure Cosmos DB 集合的視圖。
+
+### <a name="openrowset-with-key"></a>[使用 key 的 OPENROWSET](#tab/openrowset-key)
+
 若要支援查詢及分析 Azure Cosmos DB 分析存放區中的資料，無伺服器 SQL 集區會使用下列 `OPENROWSET` 語法：
 
 ```sql
@@ -45,17 +51,39 @@ OPENROWSET(
 
 Azure Cosmos DB 連接字串會指定函式的 Azure Cosmos DB 帳戶名稱、資料庫名稱、資料庫帳戶主要金鑰，以及選擇性的區功能變數名稱稱 `OPENROWSET` 。
 
-> [!IMPORTANT]
-> 例如，請確定您使用的是某些 UTF-8 資料庫定序， `Latin1_General_100_CI_AS_SC_UTF8` 因為 Azure Cosmos DB 分析存放區中的字串值會編碼為 utf-8 文字。
-> 檔案和定序中的文字編碼不相符可能會導致非預期的文字轉換錯誤。
-> 您可以使用 T-sql 語句，輕鬆地變更目前資料庫的預設定序 `alter database current collate Latin1_General_100_CI_AI_SC_UTF8` 。
-
 連接字串的格式如下：
 ```sql
 'account=<database account name>;database=<database name>;region=<region name>;key=<database account master key>'
 ```
 
 在語法中，指定了不含引號的 Azure Cosmos DB 容器名稱 `OPENROWSET` 。 如果容器名稱具有任何特殊字元，例如，虛線 (-) ，則名稱應該以方括弧括住 (`[]`) 在 `OPENROWSET` 語法中。
+
+### <a name="openrowset-with-credential"></a>[使用 credential 的 OPENROWSET](#tab/openrowset-credential)
+
+您可以使用 `OPENROWSET` 參考認證的語法：
+
+```sql
+OPENROWSET( 
+       PROVIDER = 'CosmosDB',
+       CONNECTION = '<Azure Cosmos DB connection string without account key>',
+       OBJECT = '<Container name>',
+       [ CREDENTIAL | SERVER_CREDENTIAL ] = '<credential name>'
+    )  [ < with clause > ] AS alias
+```
+
+在此情況下，Azure Cosmos DB 連接字串不包含索引鍵。 連接字串的格式如下：
+```sql
+'account=<database account name>;database=<database name>;region=<region name>'
+```
+
+資料庫帳戶主要金鑰放在伺服器層級認證或資料庫範圍認證中。 
+
+---
+
+> [!IMPORTANT]
+> 例如，請確定您使用的是某些 UTF-8 資料庫定序， `Latin1_General_100_CI_AS_SC_UTF8` 因為 Azure Cosmos DB 分析存放區中的字串值會編碼為 utf-8 文字。
+> 檔案和定序中的文字編碼不相符可能會導致非預期的文字轉換錯誤。
+> 您可以使用 T-sql 語句，輕鬆地變更目前資料庫的預設定序 `alter database current collate Latin1_General_100_CI_AI_SC_UTF8` 。
 
 > [!NOTE]
 > 無伺服器 SQL 集區不支援查詢 Azure Cosmos DB 交易式存放區。
@@ -76,6 +104,9 @@ Azure Cosmos DB 連接字串會指定函式的 Azure Cosmos DB 帳戶名稱、�
 
 若要在 Azure Cosmos DB 中探索資料，最簡單的方式就是使用自動架構推斷功能。 藉由省略 `WITH` 語句中的子句 `OPENROWSET` ，您可以指示無伺服器 SQL 集區來自動偵測 (推斷) Azure Cosmos DB 容器的分析存放區架構。
 
+
+### <a name="openrowset-with-key"></a>[使用 key 的 OPENROWSET](#tab/openrowset-key)
+
 ```sql
 SELECT TOP 10 *
 FROM OPENROWSET( 
@@ -83,6 +114,25 @@ FROM OPENROWSET(
        'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
        EcdcCases) as documents
 ```
+
+### <a name="openrowset-with-credential"></a>[使用 credential 的 OPENROWSET](#tab/openrowset-credential)
+
+```sql
+/*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
+    CREATE CREDENTIAL MyCosmosDbAccountCredential
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+*/
+SELECT TOP 10 *
+FROM OPENROWSET(
+      PROVIDER = 'CosmosDB',
+      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
+      OBJECT = 'EcdcCases',
+      SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
+    ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+```
+
+---
+
 在上述範例中，我們指示無伺服器 SQL 集區連接到 `covid` Azure Cosmos DB 帳戶中 `MyCosmosDbAccount` 使用 Azure Cosmos DB 金鑰所驗證的資料庫， (上述範例中的虛擬) 。 接著，我們會 `EcdcCases` 在區域中存取容器的分析存放區 `West US 2` 。 因為沒有特定屬性的投射，所以函式 `OPENROWSET` 會傳回 Azure Cosmos DB 專案中的所有屬性。
 
 假設 Azure Cosmos DB 容器中的專案具有 `date_rep` 、 `cases` 和 `geo_id` 屬性，下表顯示此查詢的結果：
@@ -119,6 +169,7 @@ FROM OPENROWSET(
 
 Azure Cosmos DB 中的這些一般 JSON 檔可以表示為 Synapse SQL 中的一組資料列和資料行。 `OPENROWSET`函數可讓您指定要讀取的屬性子集，以及子句中的精確資料行類型 `WITH` ：
 
+### <a name="openrowset-with-key"></a>[使用 key 的 OPENROWSET](#tab/openrowset-key)
 ```sql
 SELECT TOP 10 *
 FROM OPENROWSET(
@@ -127,7 +178,21 @@ FROM OPENROWSET(
        EcdcCases
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
-
+### <a name="openrowset-with-credential"></a>[使用 credential 的 OPENROWSET](#tab/openrowset-credential)
+```sql
+/*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
+    CREATE CREDENTIAL MyCosmosDbAccountCredential
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+*/
+SELECT TOP 10 *
+FROM OPENROWSET(
+      PROVIDER = 'CosmosDB',
+      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
+      OBJECT = 'EcdcCases',
+      SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
+    ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+```
+---
 此查詢的結果看起來可能如下表所示：
 
 | date_rep | 案例 | geo_id |
@@ -137,6 +202,26 @@ FROM OPENROWSET(
 | 2020-08-11 | 163 | RS |
 
 如需有關 Azure Cosmos DB 值所應使用之 SQL 類型的詳細資訊，請參閱本文結尾的 [sql 型別對應規則](#azure-cosmos-db-to-sql-type-mappings) 。
+
+## <a name="create-view"></a>建立視圖
+
+一旦您識別架構，您就可以在 Azure Cosmos DB 資料的最上層準備一個觀點。 您應該將 Azure Cosmos DB 帳戶金鑰放在個別的認證中，並從函式參考此認證 `OPENROWSET` 。 請勿將您的帳戶金鑰保留在 view 定義中。
+
+```sql
+CREATE CREDENTIAL MyCosmosDbAccountCredential
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+GO
+CREATE OR ALTER VIEW EcdcCases
+AS SELECT *
+FROM OPENROWSET(
+      PROVIDER = 'CosmosDB',
+      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
+      OBJECT = 'EcdcCases',
+      SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
+    ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+```
+
+請勿使用未 `OPENROWSET` 明確定義的架構，因為它可能會影響您的效能。 請確定您使用的是資料行的最小可能大小 (例如 VARCHAR (100) ，而不是預設的 VARCHAR (8000) # A5。 您應使用部分 UTF-8 定序作為預設資料庫定序，或將它設定為明確的資料行定序，以避免發生 [utf-8 轉換問題](/troubleshoot/reading-utf8-text)。 `Latin1_General_100_BIN2_UTF8`當 yu 使用一些字串資料行來篩選資料時，定序會提供最佳效能。
 
 ## <a name="query-nested-objects-and-arrays"></a>查詢嵌套的物件和陣列
 

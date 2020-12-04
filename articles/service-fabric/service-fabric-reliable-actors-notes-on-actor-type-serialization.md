@@ -1,17 +1,15 @@
 ---
 title: 動作專案類型序列化的 Reliable Actors 注意事項
 description: 說明定義可用於定義 Service Fabric Reliable Actors 狀態與介面其可序列化類別的基本需求
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 33a15b3c6f570d3b4d36a205f91bce7b042f3bb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a1118e394046b217a288663659a2c910098e992
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016575"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576004"
 ---
 # <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Service Fabric Reliable Actors 類型序列化的注意事項
 所有方法的引數、動作專案介面中每個方法所傳回之工作的結果類型，以及動作專案的狀態管理員中儲存的物件，都必須是可序列化的 [資料合約](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer)。 這也適用於在 [動作項目事件介面](service-fabric-reliable-actors-events.md)中定義的方法引數。 (動作項目事件介面方法一律會傳回無效)。

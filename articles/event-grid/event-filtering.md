@@ -2,13 +2,13 @@
 title: 適用於 Azure 事件格線的事件篩選
 description: 描述如何在建立 Azure 事件格線訂用帳戶期間篩選事件。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 837209d4197c271598155776b8d171a705e1f454
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/03/2020
+ms.openlocfilehash: bc3e84037693fcd909961ba409871d947ef1de7d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86120087"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574901"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解適用於事件格線訂用帳戶的事件篩選
 
@@ -72,7 +72,7 @@ ms.locfileid: "86120087"
 ]
 ```
 
-如果您指定多個不同的篩選，則會執行 **AND** 作業，因此必須符合每個篩選準則。 範例如下： 
+如果您指定多個不同的篩選器，就會完成 **和** 作業，因此必須符合每個篩選準則。 以下是範例： 
 
 ```json
 "advancedFilters": [
@@ -95,7 +95,7 @@ ms.locfileid: "86120087"
 
 ### <a name="operators"></a>操作員
 
-**數位**的可用運算子為：
+**數位** 的可用運算子為：
 
 * NumberGreaterThan
 * NumberGreaterThanOrEquals
@@ -104,10 +104,10 @@ ms.locfileid: "86120087"
 * NumberIn
 * NumberNotIn
 
-**布林**值的可用運算子為： 
+**布林** 值的可用運算子為： 
 - BoolEquals
 
-**字串**的可用運算子為：
+**字串** 的可用運算子為：
 
 * StringContains
 * StringBeginsWith
@@ -117,7 +117,24 @@ ms.locfileid: "86120087"
 
 所有字串比較都 **不** 區分大小寫。
 
-### <a name="key"></a>機碼
+> [!NOTE]
+> 如果事件 JSON 未包含 advanced filter 索引鍵，則下列運算子的篩選準則會 evaulated 為 **不相符** ： 
+> - NumberGreaterThan
+> - NumberGreaterThanOrEquals
+> - NumberLessThan
+> - NumberLessThanOrEquals
+> - NumberIn
+> - BoolEquals
+> - StringContains
+> - StringBeginsWith
+> - StringEndsWith
+> - StringIn
+> 
+>篩選準則會 evaulated 為 **符合** 下列運算子：
+> - NumberNotIn
+> - StringNotIn
+
+### <a name="key"></a>答案
 
 針對事件格線結構描述中的事件，請使用下列值作為索引鍵：
 
@@ -142,7 +159,7 @@ ms.locfileid: "86120087"
 
 其值可能是：
 
-* 數字
+* 數目
 * 字串
 * boolean
 * array
@@ -154,7 +171,7 @@ ms.locfileid: "86120087"
 * 每個事件方格訂用帳戶的每個篩選器都有5個 advanced 濾波器和25個篩選值
 * 每個字串值只能有 512 個字元
 * **in** 和 **not in** 運算子個別只能有五個值
-* 其中有** `.` (點) **字元的索引鍵。 例如：`http://schemas.microsoft.com/claims/authnclassreference` 或 `john.doe@contoso.com`。 目前並不支援在索引鍵中有 escape 字元。 
+* 其中有 **`.` (點)** 字元的索引鍵。 例如：`http://schemas.microsoft.com/claims/authnclassreference` 或 `john.doe@contoso.com`。 目前並不支援在索引鍵中有 escape 字元。 
 
 相同的索引鍵可以用在多個篩選中。
 
@@ -307,7 +324,7 @@ ms.locfileid: "86120087"
 ```
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 若要了解搭配 PowerShell 和 Azure CLI 來篩選事件，請參閱[針對事件格線篩選事件](how-to-filter-events.md)。
 * 若要快速地開始使用 Event Grid，請參閱[使用 Azure Event Grid 建立和路由傳送自訂事件](custom-event-quickstart.md)。

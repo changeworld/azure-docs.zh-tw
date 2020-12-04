@@ -1,16 +1,15 @@
 ---
 title: Service Fabric 程式設計模型概觀
 description: Service Fabric 提供兩種架構來建置服務：動作項目架構和服務架構。 它們在簡化與控制中提供不同的取捨。
-author: vturecek
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: 8e1c96d0b04140f8c1121cfb74b43969b49cfdda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 523c9e0064d8b78698f1a0dd3544bda58436800c
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260530"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575715"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Service Fabric 程式設計模型概觀
 
@@ -28,7 +27,7 @@ Service Fabric 提供多種撰寫和管理服務的方式。 服務可選擇使�
 
 [深入了解如何在 Windows 或 Linux 中將服務容器化](./service-fabric-get-started-containers.md)
 
-## <a name="reliable-services"></a>Reliable Services
+## <a name="reliable-services"></a>可靠的服務
 
 Reliable Services 是輕量級的服務撰寫架構，這些服務與 Service Fabric 平台整合，並得益於完整的平台功能。 Reliable Services 提供最基本的 API 集合，允許 Service Fabric 執行階段管理服務的生命週期，也允許服務與執行階段互動。 應用程式架構最為精簡，讓您完整掌控設計和實作選擇，而且可用來裝載任何其他應用程式架構，例如 ASP.NET Core。
 
@@ -54,7 +53,7 @@ ASP.NET Core 是一個開放原始碼、跨平臺的架構，可用於建立現�
 
 [使用 ASP.NET Core 組建前端服務](service-fabric-reliable-services-communication-aspnetcore.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [Service Fabric 和容器概觀](service-fabric-containers-overview.md)
 

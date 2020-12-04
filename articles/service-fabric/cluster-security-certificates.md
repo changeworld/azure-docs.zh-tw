@@ -3,13 +3,12 @@ title: X.509 Service Fabric 叢集中以憑證為基礎的驗證
 description: 瞭解 Service Fabric 叢集中以憑證為基礎的驗證，以及如何偵測、緩和和修正憑證相關問題。
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.custom: sfrev
-ms.openlocfilehash: 36717f526f88af753f3929d62e84ee65be4320e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d81cb9d224bdc2e3002c621c86729df235e0d81
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259023"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574763"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>X.509 Service Fabric 叢集中以憑證為基礎的驗證
 
@@ -222,7 +221,7 @@ Service Fabric 叢集的安全性設定會描述下列層面：
 我們將使用下列標記法來描述節點的安全性設定：
 
 Nk.bin： {P:{TP = A}，V:{TP = A}}，其中：
-  - ' Nk.bin ' 代表升級網域*k*中的節點
+  - ' Nk.bin ' 代表升級網域 *k* 中的節點
   - ' P ' 代表節點目前的簡報規則 (假設我們只參考叢集憑證) ; 
   - ' V ' 代表節點目前的驗證規則 (叢集憑證) 
   - ' TP = A ' 代表以指紋為基礎的宣告 (TP) ，其中 ' A ' 是憑證指紋

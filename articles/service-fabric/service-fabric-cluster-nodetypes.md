@@ -4,19 +4,18 @@ description: 瞭解 Azure Service Fabric 節點類型與虛擬機器擴展集的
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
-ms.custom: sfrev
-ms.openlocfilehash: 870467760a2baaa887b06fb8e01335f225f04d6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7df7ed9fa1f872cd9554dcf4c8880b7c9d5e53c4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90561885"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576395"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric 節點類型與虛擬機器擴展集
 
 [虛擬機器擴展集](../virtual-machine-scale-sets/index.yml)是 Azure 計算資源。 您可以使用擴展集來將虛擬機器集合以一組的方式加以部署和管理。 您在 Azure Service Fabric 叢集中定義的每個節點類型都只會設定一個擴展集：多個節點類型不能受到相同擴展集的支援，而且在大多數情況下，不應該 (一個節點類型，) 由多個擴展集支援。 例外狀況是當您暫時有兩個具有相同值的擴展集，而將複本從原始的擴展集遷移到升級的擴展集時，在 [垂直調整](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations) 節點類型時，這是很罕見的情況 `nodeTypeRef` 。
 
-*ServiceFabric*虛擬機器擴充功能會在擴展集中的每部虛擬機器上安裝 Service Fabric 執行時間。 您可以分開相應增加或減少每個節點類型、變更每個叢集節點上執行的 OS SKU、開啟不同組的連接埠，並使用不同的容量計量。
+*ServiceFabric* 虛擬機器擴充功能會在擴展集中的每部虛擬機器上安裝 Service Fabric 執行時間。 您可以分開相應增加或減少每個節點類型、變更每個叢集節點上執行的 OS SKU、開啟不同組的連接埠，並使用不同的容量計量。
 
 下圖顯示具有兩個節點類型的叢集，名為 *前端* 和 *後端*。 每個節點類型各有五個節點。
 
@@ -72,10 +71,10 @@ Service Fabric 的虛擬機器擴充功能可用來啟動 Azure 虛擬機器 Ser
 
 以下是屬性描述：
 
-| **名稱** | **允許的值** | **指引或簡短描述** |
+| 名稱 | **允許的值** | **指引或簡短描述** |
 | --- | --- | --- | --- |
 | NAME | 字串 | 延伸模組的唯一名稱 |
-| type | "ServiceFabricLinuxNode" 或 "ServiceFabricWindowsNode" | 識別啟動的作業系統 Service Fabric |
+| 類型 | "ServiceFabricLinuxNode" 或 "ServiceFabricWindowsNode" | 識別啟動的作業系統 Service Fabric |
 | autoUpgradeMinorVersion | true 或 false | 啟用 SF Runtime 次要版本的自動升級 |
 | publisher | ServiceFabric | Service Fabric 副檔名發行者的名稱 |
 | clusterEndpont | 字串 | URI：管理端點的埠 |

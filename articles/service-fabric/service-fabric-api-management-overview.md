@@ -1,16 +1,14 @@
 ---
 title: 使用 API 管理的 Azure Service Fabric 總覽
 description: 本文是使用「Azure API 管理」作為 Service Fabric 應用程式閘道的簡介。
-author: vturecek
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.author: vturecek
-ms.openlocfilehash: 8cbec0b4b28574bfbe46516de54f1b8a3fad7ce2
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 32f47d62cc9dda7cc88421dbf616bf69ffe152fc
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091129"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575681"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric 搭配 Azure API 管理概觀
 
@@ -21,7 +19,7 @@ ms.locfileid: "92091129"
 ## <a name="availability"></a>可用性
 
 > [!IMPORTANT]
-> 由於這項功能需要支援虛擬網路，因此可用於 API 管理的**進階**與**開發人員**層級。
+> 由於這項功能需要支援虛擬網路，因此可用於 API 管理的 **進階** 與 **開發人員** 層級。
 
 ## <a name="architecture"></a>架構
 
@@ -55,7 +53,7 @@ Service Fabric 中的服務可以是無狀態或具狀態服務，並且可使�
 
 ## <a name="send-traffic-to-a-stateful-service"></a>將流量傳送到具狀態服務
 
-與無狀態服務案例類似，系統可以將流量轉送到具狀態服務執行個體。 在此情況下，「API 管理」作業會包含一個具有 Service Fabric 後端的輸入處理原則，此後端會將要求對應至特定「具狀態」** 服務執行個體的特定分割區。 與每個要求對應的分割區是使用來自傳入 HTTP 要求的一些輸入資料 (例如 URL 路徑中的值) 透過 Lambda 方法計算來得出的。 您可以將原則設定為只將要求傳送到主要複本，或針對讀取作業傳送到隨機複本。
+與無狀態服務案例類似，系統可以將流量轉送到具狀態服務執行個體。 在此情況下，「API 管理」作業會包含一個具有 Service Fabric 後端的輸入處理原則，此後端會將要求對應至特定「具狀態」服務執行個體的特定分割區。 與每個要求對應的分割區是使用來自傳入 HTTP 要求的一些輸入資料 (例如 URL 路徑中的值) 透過 Lambda 方法計算來得出的。 您可以將原則設定為只將要求傳送到主要複本，或針對讀取作業傳送到隨機複本。
 
 **範例**
 
@@ -86,7 +84,7 @@ Service Fabric 中的服務可以是無狀態或具狀態服務，並且可使�
 
 ## <a name="send-traffic-to-multiple-stateful-services"></a>將流量傳送到多個具狀態服務
 
-與無狀態服務範例類似，「API 管理」可以將要求對應至多個「具狀態」**** 服務執行個體，在此情況下，您可能也需要為每個具狀態服務執行個體執行分割區解析。
+與無狀態服務範例類似，「API 管理」可以將要求對應至多個「具狀態」服務執行個體，在此情況下，您可能也需要為每個具狀態服務執行個體執行分割區解析。
 
 為了達成此目的，「API 管理」作業會包含一個具有 Service Fabric 後端的輸入處理原則，此後端會根據從傳入 HTTP 要求擷取到的值，對應至 Service Fabric 後端中的具狀態服務執行個體。 除了將要求對應至特定服務執行個體之外，也可以將要求對應至服務執行個體內的特定分割區，以及視需要對應至分割區內的主要複本或隨機次要複本。
 

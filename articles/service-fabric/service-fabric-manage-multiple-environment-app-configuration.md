@@ -1,16 +1,14 @@
 ---
 title: 管理多個環境的應用程式
 description: Azure Service Fabric 應用程式可以在任意大小 (從一部機器至數千部機器) 的叢集上執行。 在某些情況下，您會想要針對各種環境以不同的方式設定應用程式。 本文說明如何定義每個環境的不同應用程式參數。
-author: mikkelhegn
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: mikhegn
-ms.openlocfilehash: b6d6ff37024a3181a43b67d2af26b067225654fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51bc77abca8ce2b3878df1c1859203618d3e2e27
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257485"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574440"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>管理多個環境的應用程式
 
@@ -44,7 +42,7 @@ Azure Service Fabric 叢集可讓您使用任意數量的機器 (從一部至數
   - 使用 sfctl 時，此 [`sfctl application create`](./service-fabric-sfctl-application.md#sfctl-application-create) 命令會使用參數作為 JSON 字串。 install.sh 指令碼會使用 sfctl。
   - Visual Studio 會在應用程式專案的 [參數] 資料夾中為您提供一組參數檔案。 使用 Azure DevOps Services 或 Azure DevOps Server 從 Visual Studio 發佈時，會使用這些參數檔案。 在 Visual Studio 中，參數檔案會傳遞至 Deploy-FabricApplication.ps1 指令碼。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 下列文章將示範如何使用此處所述的一些概念：
 
 - [如何在 Service Fabric 中指定服務的環境變數](service-fabric-how-to-specify-environment-variables.md)

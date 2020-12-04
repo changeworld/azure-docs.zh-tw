@@ -3,13 +3,12 @@ title: 在現有的 Service Fabric 叢集中設定受控識別支援
 description: 以下說明如何在現有的 Azure Service Fabric 叢集中啟用受控識別支援
 ms.topic: article
 ms.date: 03/11/2019
-ms.custom: sfrev
-ms.openlocfilehash: 722c507300cc5766d162f336f77f60293c5c90dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7bcba34e941f6fee038aa475d7c0869eb65aca2e
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257615"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574695"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>在現有的 Service Fabric 叢集中設定受控識別支援
 
@@ -22,7 +21,7 @@ ms.locfileid: "86257615"
 >
 > 如果叢集處於 **手動** 升級模式，您必須先將它升級至6.5.658.9590 或更新版本。
 
-## <a name="enable-managed-identity-token-service-in-an-existing-cluster"></a>在現有的叢集中啟用*受控識別權杖服務*
+## <a name="enable-managed-identity-token-service-in-an-existing-cluster"></a>在現有的叢集中啟用 *受控識別權杖服務*
 
 若要在現有叢集中啟用受控識別權杖服務，您必須起始指定兩項變更的叢集升級： (1) 啟用受控識別權杖服務，以及 (2) 要求重新開機每個節點。 首先，將下列程式碼片段新增至您的叢集 Azure Resource Manager 範本：
 
@@ -68,7 +67,7 @@ ms.locfileid: "86257615"
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [使用系統指派的受控識別部署 Azure Service Fabric 應用程式](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [使用使用者指派的受控識別部署 Azure Service Fabric 應用程式](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [從服務程式代碼利用 Service Fabric 應用程式的受控識別](./how-to-managed-identity-service-fabric-app-code.md)
