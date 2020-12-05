@@ -3,19 +3,22 @@ title: Windows 虛擬桌面需要 URL 清單-Azure
 description: 您必須解除封鎖的 Url 清單，以確保您的 Windows 虛擬桌面部署如預期運作。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 12/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6b3fdc18a04dadf4bf1cf380c7bb51d21f826633
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 70b7042e4006cc59419d0ea6798fe7626a82c086
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512336"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621071"
 ---
 # <a name="required-url-list"></a>必要的 URL 清單
 
-若要部署和使用 Windows 虛擬桌面，您必須解除封鎖某些 Url，讓虛擬機器 (Vm) 可隨時存取這些 Url。 本文列出您必須解除封鎖所需的 Url。
+若要部署和使用 Windows 虛擬桌面，您必須解除封鎖某些 Url，讓虛擬機器 (Vm) 可隨時存取這些 Url。 本文列出您必須解除封鎖才能讓 Windows 虛擬桌面正常運作所需的 Url。 
+
+>[!IMPORTANT]
+>Windows 虛擬桌面不支援封鎖本文所列 Url 的部署。
 
 ## <a name="virtual-machines"></a>虛擬機器
 

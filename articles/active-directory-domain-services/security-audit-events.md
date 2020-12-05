@@ -2,7 +2,7 @@
 title: 啟用 Azure AD Domain Services 的安全性審核 |Microsoft Docs
 description: 瞭解如何在 Azure AD Domain Services 中啟用安全性審核，以集中分析事件的記錄和警示
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 662362c3-1a5e-4e94-ae09-8e4254443697
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: b4fb5c1dcb2bb34b472c2a3eda88ca4c219303d0
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.author: justinha
+ms.openlocfilehash: 13bdc8797af8facaa73d3e43ecfbe504a6bd1dc2
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175163"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618870"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>啟用 Azure Active Directory Domain Services 的安全性審核
 
@@ -39,7 +39,7 @@ Azure Active Directory Domain Services (Azure AD DS) 安全性審核，可讓 Az
 | 目標資源 | 案例 |
 |:---|:---|
 |Azure 儲存體| 當您的主要需求是為了封存而儲存安全性審核事件時，應使用此目標。 其他目標可用於封存用途，不過這些目標除了需要封存的主要需求之外，也提供了功能。 <br /><br />啟用 Azure AD DS 安全性審核事件之前，請先 [建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md)。|
-|Azure 事件中心| 當您的主要需求是與其他軟體（例如資料分析軟體或安全性資訊）共用安全性審核事件時，請使用此目標，& 事件管理 (SIEM) 軟體。<br /><br />啟用 Azure AD DS 安全性審核事件之前，請先 [使用 Azure 入口網站建立事件中樞](../event-hubs/event-hubs-create.md)|
+|Azure 事件中樞| 當您的主要需求是與其他軟體（例如資料分析軟體或安全性資訊）共用安全性審核事件時，請使用此目標，& 事件管理 (SIEM) 軟體。<br /><br />啟用 Azure AD DS 安全性審核事件之前，請先 [使用 Azure 入口網站建立事件中樞](../event-hubs/event-hubs-create.md)|
 |Azure Log Analytics 工作區| 當您的主要需求是直接分析和審核來自 Azure 入口網站的安全審核時，應使用此目標。<br /><br />在您啟用 Azure AD DS 安全性審核事件之前，請先 [在 Azure 入口網站中建立 Log Analytics 工作區。](../azure-monitor/learn/quick-create-workspace.md)|
 
 ## <a name="enable-security-audit-events-using-the-azure-portal"></a>使用 Azure 入口網站啟用安全性審核事件

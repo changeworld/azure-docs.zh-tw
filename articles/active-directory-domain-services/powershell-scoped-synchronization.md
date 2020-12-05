@@ -2,20 +2,20 @@
 title: 使用 PowerShell 進行 Azure AD Domain Services 的限域同步處理 |Microsoft Docs
 description: 瞭解如何使用 Azure AD PowerShell 來設定從 Azure AD 到 Azure Active Directory Domain Services 受控網域的限域同步處理
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/24/2020
-ms.author: joflore
-ms.openlocfilehash: dc6ebb88440ecdccc3ea78d85f0b6186100da01a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: c078117baf84d7dbfaaaa2b569abb8a5f5c67e6d
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967878"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619006"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-azure-ad-powershell"></a>使用 Azure AD PowerShell 設定從 Azure AD 到 Azure Active Directory Domain Services 的限域同步處理
 
@@ -142,7 +142,7 @@ Write-Output "******************************************************************
 
 1. 先在 Azure AD DS 資源上設定 *"filteredSync" = "Enabled"* ，然後更新受控網域。
 
-    出現提示時，請使用[AzureAD][Connect-AzureAD] Cmdlet 指定*全域管理員*的認證來登入您的 Azure AD 租使用者：
+    出現提示時，請使用 [AzureAD][Connect-AzureAD] Cmdlet 指定 *全域管理員* 的認證來登入您的 Azure AD 租使用者：
 
     ```powershell
     // Connect to your Azure AD tenant
@@ -180,7 +180,7 @@ Write-Output "******************************************************************
 > [!WARNING]
 > 您必須將 *AAD DC 系統管理員* 群組包含在限域同步處理的群組清單中。 如果您未包含此群組，受控網域將無法使用。
 
-出現提示時，請使用[AzureAD][Connect-AzureAD] Cmdlet 指定*全域管理員*的認證來登入您的 Azure AD 租使用者：
+出現提示時，請使用 [AzureAD][Connect-AzureAD] Cmdlet 指定 *全域管理員* 的認證來登入您的 Azure AD 租使用者：
 
 ```powershell
 .\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", "GroupName1", "GroupName3")
@@ -192,7 +192,7 @@ Write-Output "******************************************************************
 
 若要停用受控網域的群組型限域同步處理，請在 Azure AD DS 資源上設定 *"filteredSync" = "Disabled* "，然後更新受控網域。 完成時，所有使用者和群組都會設定為從 Azure AD 同步處理。
 
-出現提示時，請使用[AzureAD][Connect-AzureAD] Cmdlet 指定*全域管理員*的認證來登入您的 Azure AD 租使用者：
+出現提示時，請使用 [AzureAD][Connect-AzureAD] Cmdlet 指定 *全域管理員* 的認證來登入您的 Azure AD 租使用者：
 
 ```powershell
 // Connect to your Azure AD tenant

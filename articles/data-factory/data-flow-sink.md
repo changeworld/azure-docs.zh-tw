@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/17/2020
-ms.openlocfilehash: 63be912986542741359cd5e88227f06905d42647
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: da89d4fbc3f9e03e76d901c2215e4f16c5273013
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350869"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621105"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>對應資料流程中的接收轉換
 
@@ -103,6 +103,10 @@ Azure Data Factory 可以存取90以上的 [原生連接器](connector-overview.
 > 使用快取 [查閱](./concepts-data-flow-expression-builder.md#cached-lookup)時，請確定您的接收順序將快取的接收設定為1、最低的 (或依序排序的第一個) 。
 
 ![自訂接收順序](media/data-flow/cache-2.png "自訂接收順序")
+
+### <a name="sink-groups"></a>接收群組
+
+您可以將相同的訂單編號套用至一系列接收器，以將接收器群組在一起。 ADF 會將這些接收器視為可以平行執行的群組。 平行執行的選項會顯示在管線資料流程活動中。
 
 ## <a name="error-row-handling"></a>處理資料列時發生錯誤
 

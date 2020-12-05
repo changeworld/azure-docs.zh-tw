@@ -2,7 +2,7 @@
 title: Azure Active Directory Domain Services 疑難排解 |Microsoft Docs '
 description: 瞭解如何對建立或管理 Azure Active Directory Domain Services 時常見的錯誤進行疑難排解
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 9593fe71fc4a29678d58d7c67699210a4a39f95e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 89b04f86d41f8e4828580f70a9aec8acea3e0053
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967370"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618445"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 的常見錯誤和疑難排解步驟
 
@@ -114,7 +114,7 @@ if ($sp -ne $null)
 
 **解決方法**
 
-檢查您是否已停用識別碼為 *00000002-0000-0000-c000-000000000000*的應用程式。 此應用程式是 Microsoft Azure AD 應用程式，可提供 Azure AD 租用戶的圖形 API 存取權。 若要同步處理您的 Azure AD 租使用者，必須啟用此應用程式。
+檢查您是否已停用識別碼為 *00000002-0000-0000-c000-000000000000* 的應用程式。 此應用程式是 Microsoft Azure AD 應用程式，可提供 Azure AD 租用戶的圖形 API 存取權。 若要同步處理您的 Azure AD 租使用者，必須啟用此應用程式。
 
 若要檢查此應用程式的狀態，並在需要時加以啟用，請完成下列步驟：
 
@@ -132,7 +132,7 @@ if ($sp -ne $null)
 
     如果您的租使用者中有多個使用者具有相同的 UPN 前置詞，或您的 UPN 前置詞太長，您帳戶的 *SAMAccountName* （例如 *AADDSCONTOSO\driley* ）可能會自動產生。 因此，您帳戶的 *SAMAccountName* 格式可能會與您在內部部署網域中預期或使用的格式不同。
 
-* **密碼同步化**-請確定您已[使用 Azure AD Connect][hybrid-phs]為[僅限雲端的使用者][cloud-only-passwords]或混合式環境啟用密碼同步化。
+* **密碼同步化**-請確定您已 [使用 Azure AD Connect][hybrid-phs]為 [僅限雲端的使用者][cloud-only-passwords]或混合式環境啟用密碼同步化。
     * **混合式同步處理的帳戶：** 如果受影響的使用者帳戶會從內部部署目錄同步處理，請確認下欄區域：
     
       * 您已部署或更新為 [最新建議的 Azure AD Connect 版本](https://www.microsoft.com/download/details.aspx?id=47594)。
@@ -147,8 +147,8 @@ if ($sp -ne $null)
 
     * **僅限雲端的帳戶**：如果受影響的使用者帳戶是僅限雲端的使用者帳戶，請在 [啟用 Azure AD DS 之後，確定使用者已變更其密碼][cloud-only-passwords]。 此密碼重設會導致產生受控網域所需的認證雜湊。
 
-* **確認使用者帳戶為**作用中：根據預設，受控網域2分鐘內的五次無效密碼嘗試會導致使用者帳戶遭到鎖定30分鐘。 當帳戶被鎖定時，使用者無法登入。30分鐘之後，使用者帳戶會自動解除鎖定。
-  * 受控網域上的密碼嘗試無效，無法在 Azure AD 中鎖定使用者帳戶。 使用者帳戶只會在受控網域內鎖定。 在 Active Directory 系統管理主控台中檢查使用者帳戶狀態 * (ADAC) * 使用 [管理 VM][management-vm]，而不是在 Azure AD 中。
+* **確認使用者帳戶為** 作用中：根據預設，受控網域2分鐘內的五次無效密碼嘗試會導致使用者帳戶遭到鎖定30分鐘。 當帳戶被鎖定時，使用者無法登入。30分鐘之後，使用者帳戶會自動解除鎖定。
+  * 受控網域上的密碼嘗試無效，無法在 Azure AD 中鎖定使用者帳戶。 使用者帳戶只會在受控網域內鎖定。 在 Active Directory 系統管理主控台中檢查使用者帳戶狀態 *(ADAC)* 使用 [管理 VM][management-vm]，而不是在 Azure AD 中。
   * 您也可以 [設定更細緻的密碼原則][password-policy] ，以變更預設的鎖定閾值和持續時間。
 
 * **外部帳戶** ：檢查受影響的使用者帳戶不是 Azure AD 租使用者中的外部帳戶。 外部帳戶的範例包括 Microsoft 帳戶（例如， `dee@live.com` 或來自外部 Azure AD 目錄的使用者帳戶）。 Azure AD DS 不會儲存外部使用者帳戶的認證，因此無法登入受控網域。

@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 11/08/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 8cf0652148ad54eeacdec874823ea680f39f670c
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: b09eb03994098f8cb68033f3c42309a77e15f91c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372722"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620986"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database 和 Azure Synapse Analytics 的審核
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -44,8 +44,8 @@ ms.locfileid: "94372722"
 
 ### <a name="auditing-limitations"></a>審核限制
 
-- **不支援****進階儲存體** 。
-- 目前 **不支援** **Azure Data Lake Storage Gen2 儲存體帳戶** 的 **階層命名空間** 。
+- **不支援****進階儲存體**。
+- 目前 **不支援** **Azure Data Lake Storage Gen2 儲存體帳戶** 的 **階層命名空間**。
 - 不支援在已暫停的 **Azure Synapse** 上啟用審核。 若要啟用審核，請繼續 Azure Synapse。
 
 #### <a name="define-server-level-vs-database-level-auditing-policy"></a><a id="server-vs-database-level"></a>定義伺服器層級與資料庫層級的稽核原則
@@ -54,17 +54,29 @@ ms.locfileid: "94372722"
 
 - 伺服器原則會套用至伺服器上所有現有和新建立的資料庫。
 
-- 如果 *已啟用伺服器審核* ，它 *一律會套用到資料庫* 。 不論資料庫稽核資料是什麼，都會稽核資料庫。
+- 如果 *已啟用伺服器審核*，它 *一律會套用到資料庫*。 不論資料庫稽核資料是什麼，都會稽核資料庫。
 
 - 除了在伺服器上啟用資料庫之外，在資料庫上啟用審核並 *不* 會覆寫或變更伺服器審核的任何設定。 這兩種稽核將會並存。 換句話說，系統將會對資料庫進行兩次相同的稽核；一次是由伺服器原則，一次是由資料庫原則。
 
    > [!NOTE]
    > 您應該避免同時啟用伺服器審核和資料庫 blob 審核，除非：
     >
-    > - 您想要為特定資料庫使用不同的 *儲存體帳戶* 、 *保留週期* 或 *Log Analytics 工作區* 。
+    > - 您想要為特定資料庫使用不同的 *儲存體帳戶*、 *保留週期* 或 *Log Analytics 工作區* 。
     > - 您想要針對伺服器上不同於其餘資料庫的特定資料庫，稽核其事件類型或類別。 例如，您可能只需要針對特定資料庫稽核資料表插入。
    >
    > 否則，建議您只啟用伺服器層級的審核，並讓所有資料庫的資料庫層級審核保持停用。
+
+#### <a name="remarks"></a>備註
+
+- 在 Azure 訂用帳戶的 Azure Blob 儲存體中，會寫入審核記錄以 **附加 blob**
+- Audit 記錄檔是 xel 格式，而且可以使用 [SQL Server Management Studio (SSMS) ](/sql/ssms/download-sql-server-management-studio-ssms)來開啟。
+- 若要為伺服器或資料庫層級的 audit 事件設定不可變的記錄存放區，請遵循 [Azure 儲存體所提供的指示](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)。 當您設定不可變的 blob 儲存體時，請確定您已選取 [ **允許其他附加** ]。
+- 您可以將 audit 記錄寫入至 VNet 或防火牆後方的 Azure 儲存體帳戶。 如需特定指示，請參閱將 [Audit 寫入至 VNet 和防火牆後方的儲存體帳戶](audit-write-storage-account-behind-vnet-firewall.md)。
+- 如需有關記錄格式、儲存體資料夾階層和命名慣例的詳細資訊，請參閱 [Blob 稽核記錄格式參考](./audit-log-format.md)。
+- [唯讀複本](read-scale-out.md)上的審核會自動啟用。 如需有關儲存體資料夾階層、命名慣例和記錄格式的進一步詳細資訊，請參閱 [SQL Database Audit 記錄檔格式](audit-log-format.md)。
+- 使用 Azure AD 驗證時，失敗的登入記錄將 *不* 會出現在 SQL audit 記錄檔中。 若要檢視失敗的登入稽核記錄，您需要瀏覽 [Azure Active Directory 入口網站](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)，其中會記錄這些事件的詳細資料。
+- 登入是由閘道路由傳送到資料庫所在的特定實例。  在 AAD 登入的情況下，會先驗證認證，然後再嘗試使用該使用者登入要求的資料庫。  如果發生失敗，則永遠不會存取要求的資料庫，因此不會進行任何審核。  在 SQL 登入的情況下，會在要求的資料上驗證認證，因此在此情況下，可以進行審核。  在這兩種情況下，都可以同時審核成功的登入（顯然會到達資料庫）。
+- 設定您的稽核設定之後，您可以開啟新的威脅偵測功能，並設定電子郵件以接收安全性警示。 使用威脅偵測時，您會接收與指示潛在安全性威脅的異常資料庫活動相關的主動式警示。 如需詳細資訊，請參閱[開始使用威脅偵測](threat-detection-overview.md)。
 
 ## <a name="set-up-auditing-for-your-server"></a><a id="setup-auditing"></a>設定伺服器的稽核
 
@@ -76,14 +88,14 @@ ms.locfileid: "94372722"
   
 您可以使用 PowerShell 設定不同類型的動作和動作群組的審核，如 [使用 Azure PowerShell 管理 SQL Database 審核](#manage-auditing) 一節中所述。
 
-Azure SQL Database 和 Azure Synapse Audit 會針對審核記錄中的字元欄位儲存4000個字元的資料。 當 **陳述式** 或從可稽核的動作傳回的 **data_sensitivity_information** 值包含超過 4000 個字元，超過前 4000 個字元的任何資料將會 **截斷且不會稽核** 。
+Azure SQL Database 和 Azure Synapse Audit 會針對審核記錄中的字元欄位儲存4000個字元的資料。 當 **陳述式** 或從可稽核的動作傳回的 **data_sensitivity_information** 值包含超過 4000 個字元，超過前 4000 個字元的任何資料將會 **截斷且不會稽核**。
 下節描述使用 Azure 入口網站進行稽核的設定。
 
   > [!NOTE]
   > 不可能在暫停的專用 SQL 集區上啟用審核。 若要啟用審核，請取消暫停專用的 SQL 集區。 深入瞭解 [專用的 SQL 集](../..//synapse-analytics/sql/best-practices-sql-pool.md)區。
 
-1. 前往 [Azure 入口網站](https://portal.azure.com)。
-2. 在 [ **sql database** ] 或 **[sql server** ] 窗格的 [安全性] 標題下，流覽至 [ **審核** ]。
+1. 移至 [Azure 入口網站](https://portal.azure.com)。
+2. 在 [ **sql database** ] 或 **[sql server** ] 窗格的 [安全性] 標題下，流覽至 [**審核**]。
 3. 如果您想要設定伺服器稽核原則，可以選取資料庫稽核頁面上的 [檢視伺服器設定] 連結。 然後，您可以檢視或修改伺服器稽核設定。 伺服器稽核原則適用于這部伺服器上所有現有和新建立的資料庫。
 
     ![顯示 [資料庫審核] 頁面上醒目提示 [View server settings] 連結的螢幕擷取畫面。](./media/auditing-overview/2_auditing_get_started_server_inherit.png)
@@ -98,7 +110,7 @@ Azure SQL Database 和 Azure Synapse Audit 會針對審核記錄中的字元欄�
 
 Azure SQL Server 的 Microsoft 支援服務作業 (預覽) 的審核功能，可讓您在支援要求期間，于 Microsoft 支援工程師的作業需要存取您的伺服器時，對其進行審核。 使用這項功能以及您的審核功能，可讓您的員工擁有更多的透明度，並可進行異常偵測、趨勢視覺效果和資料遺失防護。
 
-若要啟用 Microsoft 支援服務作業的 (預覽) 流覽至 [ **AZURE SQL server** ] 窗格中 [安全性] 標題下的 [ **審核** ]，並將 [ **預覽] (預覽)** 切換至 [ **開啟** ]。
+若要啟用 Microsoft 支援服務作業的 (預覽) 流覽至 [ **AZURE SQL server** ] 窗格中 [安全性] 標題下的 [**審核**]，並將 [**預覽] (預覽)** 切換至 [**開啟**]。
 
   > [!IMPORTANT]
   >  (預覽版的 Microsoft 支援作業審核) 不支援儲存體帳戶目的地。 若要啟用此功能，必須設定 Log Analytics 工作區或事件中樞目的地。
@@ -121,17 +133,6 @@ AzureDiagnostics
 
   ![storage account](./media/auditing-overview/auditing_select_storage.png)
 
-#### <a name="remarks"></a>備註
-
-- 在 Azure 訂用帳戶的 Azure Blob 儲存體中，會寫入審核記錄以 **附加 blob**
-- Audit 記錄檔是 xel 格式，而且可以使用 [SQL Server Management Studio (SSMS) ](/sql/ssms/download-sql-server-management-studio-ssms)來開啟。
-- 若要為伺服器或資料庫層級的 audit 事件設定不可變的記錄存放區，請遵循 [Azure 儲存體所提供的指示](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)。 當您設定不可變的 blob 儲存體時，請確定您已選取 [ **允許其他附加** ]。
-- 您可以將 audit 記錄寫入至 VNet 或防火牆後方的 Azure 儲存體帳戶。 如需特定指示，請參閱將 [Audit 寫入至 VNet 和防火牆後方的儲存體帳戶](audit-write-storage-account-behind-vnet-firewall.md)。
-- 設定您的稽核設定之後，您可以開啟新的威脅偵測功能，並設定電子郵件以接收安全性警示。 使用威脅偵測時，您會接收與指示潛在安全性威脅的異常資料庫活動相關的主動式警示。 如需詳細資訊，請參閱[開始使用威脅偵測](threat-detection-overview.md)。
-- 如需有關記錄格式、儲存體資料夾階層和命名慣例的詳細資訊，請參閱 [Blob 稽核記錄格式參考](./audit-log-format.md)。
-- 使用 Azure AD 驗證時，失敗的登入記錄將 *不* 會出現在 SQL audit 記錄檔中。 若要檢視失敗的登入稽核記錄，您需要瀏覽 [Azure Active Directory 入口網站](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)，其中會記錄這些事件的詳細資料。
-- [唯讀複本](read-scale-out.md)上的審核會自動啟用。 如需有關儲存體資料夾階層、命名慣例和記錄格式的進一步詳細資訊，請參閱 [SQL Database Audit 記錄檔格式](audit-log-format.md)。
-
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Audit 至 Log Analytics 目的地
   
 若要設定將稽核記錄寫入至 Log Analytics 工作區，請選取 [Log Analytics (預覽)]，然後開啟 [Log Analytics 詳細資料]。 選取或建立將寫入記錄的 Log Analytics 工作區，然後按一下 [確定]。
@@ -150,17 +151,17 @@ AzureDiagnostics
 
 如果您選擇將 audit 記錄寫入 Azure 監視器記錄：
 
-- 使用 [Azure 入口網站](https://portal.azure.com)。 開啟相關的資料庫。 在資料庫的 [ **審核** ] 頁面頂端，選取 [ **View audit logs** ]。
+- 使用 [Azure 入口網站](https://portal.azure.com)。 開啟相關的資料庫。 在資料庫的 [ **審核** ] 頁面頂端，選取 [ **View audit logs**]。
 
     ![檢視稽核記錄](./media/auditing-overview/auditing-view-audit-logs.png)
 
 - 然後，您有兩種方式可以查看記錄：
 
-    按一下 [ **審核記錄** ] 頁面頂端的 [ **log analytics** ]，將會開啟 log analytics 工作區中的 [記錄]，您可以在其中自訂時間範圍和搜尋查詢。
+    按一下 [**審核記錄**] 頁面頂端的 [ **log analytics** ]，將會開啟 log analytics 工作區中的 [記錄]，您可以在其中自訂時間範圍和搜尋查詢。
 
     ![在 Log Analytics 工作區中開啟](./media/auditing-overview/auditing-log-analytics.png)
 
-    按一下 [ **審核記錄** ] 頁面頂端的 [ **View 儀表板** ]，將會開啟儀表板，其中顯示 [審核記錄] 資訊，您可以在其中深入探討安全性見解、機密資料的存取等。 此儀表板的設計目的是協助您取得資料的安全性見解。
+    按一下 [**審核記錄**] 頁面頂端的 [ **View 儀表板**]，將會開啟儀表板，其中顯示 [審核記錄] 資訊，您可以在其中深入探討安全性見解、機密資料的存取等。 此儀表板的設計目的是協助您取得資料的安全性見解。
     您也可以自訂時間範圍和搜尋查詢。
     ![查看 Log Analytics 儀表板](media/auditing-overview/auditing-view-dashboard.png)
 
@@ -221,7 +222,7 @@ AzureDiagnostics
 
 使用異地複寫資料庫，當您在主要資料庫啟用稽核，次要資料庫會有相同的稽核原則。 也可以在 **次要伺服器** 上啟用稽核，設定次要資料庫稽核，和主要資料庫分開。
 
-- 伺服器層級 ( **建議** )：啟動 **主要伺服器** 和 **次要伺服器** 上的稽核 - 將根據其個別的伺服器層級原則對主要和次要資料庫分開進行稽核。
+- 伺服器層級 (**建議**)：啟動 **主要伺服器** 和 **次要伺服器** 上的稽核 - 將根據其個別的伺服器層級原則對主要和次要資料庫分開進行稽核。
 - 資料庫層級：只能從主要資料庫稽核設定來設定次要資料庫的資料庫層級稽核。
   - 必須在「主要資料庫本身」 (而不是在伺服器上) 啟用稽核。
   - 在主要資料庫上啟用稽核之後，它也會在次要資料庫上變成啟用狀態。
@@ -246,7 +247,7 @@ AzureDiagnostics
 
 ### <a name="using-azure-powershell"></a>使用 Azure PowerShell
 
-**PowerShell Cmdlet (包含其他篩選的 WHERE 子句支援)** ：
+**PowerShell Cmdlet (包含其他篩選的 WHERE 子句支援)**：
 
 - [建立或更新資料庫稽核原則 (設定 AzSqlDatabaseAudit) ](/powershell/module/az.sql/set-azsqldatabaseaudit)
 - [建立或補救伺服器稽核原則 (設定 AzSqlServerAudit) ](/powershell/module/az.sql/set-azsqlserveraudit)
@@ -259,7 +260,7 @@ AzureDiagnostics
 
 ### <a name="using-rest-api"></a>使用 REST API
 
-**REST API** ：
+**REST API**：
 
 - [建立或更新資料庫稽核原則](/rest/api/sql/database%20auditing%20settings/createorupdate)
 - [建立或更新伺服器稽核原則](/rest/api/sql/server%20auditing%20settings/createorupdate)

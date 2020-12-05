@@ -2,7 +2,7 @@
 title: 針對 Azure AD Domain Services 的安全 LDAP 進行疑難排解 |Microsoft Docs
 description: 瞭解如何針對 Azure Active Directory Domain Services 受控網域的安全 LDAP (LDAPS) 進行疑難排解
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 445c60da-e115-447b-841d-96739975bdf6
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: dc4a8e6783c699cd81ecab342f5611e564577fad
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: e21ec7d8fdf7a5c7a8ba7a9f22aa5709581cbae6
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967319"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618394"
 ---
 # <a name="troubleshoot-secure-ldap-connectivity-issues-to-an-azure-active-directory-domain-services-managed-domain"></a>針對 Azure Active Directory Domain Services 受控網域的安全 LDAP 連接問題進行疑難排解
 

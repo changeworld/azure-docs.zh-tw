@@ -2,7 +2,7 @@
 title: Azure AD Domain Services 中的同步處理運作方式 |Microsoft Docs
 description: 瞭解從 Azure AD 租使用者或內部部署 Active Directory Domain Services 環境到 Azure Active Directory Domain Services 受控網域的物件和認證，同步處理常式的運作方式。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 57cbf436-fc1d-4bab-b991-7d25b6e987ef
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 92d440d019942219b322ef084b45317983d04fbe
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.author: justinha
+ms.openlocfilehash: 41ba337765b4a0a93be52f08ae6656707cf7aa73
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602235"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618802"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>如何在 Azure Active Directory Domain Services 受控網域中同步處理物件和認證
 

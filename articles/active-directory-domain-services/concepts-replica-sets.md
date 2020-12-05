@@ -2,20 +2,20 @@
 title: Azure AD Domain Services 的複本集概念 |Microsoft Docs
 description: 瞭解 Azure Active Directory Domain Services 中的複本集，以及它們如何為需要身分識別服務的應用程式提供冗余。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.author: joflore
-ms.openlocfilehash: 499f4df303993d97ebb4eb38de98828b085aff00
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 5359a955ea97b559b7e3d244bfb6c4fb09e8681b
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961063"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620030"
 ---
 # <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services-preview"></a>複本會設定 Azure Active Directory Domain Services (預覽) 的概念和功能
 

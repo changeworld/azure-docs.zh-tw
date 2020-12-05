@@ -2,20 +2,20 @@
 title: 變更 Azure AD Domain Services 的 SKU |Microsoft Docs
 description: 瞭解如果您的業務需求變更，如何使用 Azure AD Domain Services 受控網域的 SKU 層
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: c85a3f3262da6002e9604b1506552b9188a64460
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 320bd87aa78d26cee44c48f27365febd1dd426ff
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962746"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620285"
 ---
 # <a name="change-the-sku-for-an-existing-azure-active-directory-domain-services-managed-domain"></a>變更現有 Azure Active Directory Domain Services 受控網域的 SKU
 
@@ -38,12 +38,12 @@ ms.locfileid: "91962746"
 
 ## <a name="sku-change-limitations"></a>SKU 變更限制
 
-部署受控網域之後，您可以將 Sku 變更為相應增加或減少。 不過，如果您使用資源樹系，並已建立從 Azure AD DS 到內部部署 AD DS 環境的單向輸出樹系信任，則 SKU 變更作業有一些限制。 *Premium*和*Enterprise* sku 會定義您可建立之信任數目的限制。 您無法變更為具有低於目前設定之最大限制的 SKU。
+部署受控網域之後，您可以將 Sku 變更為相應增加或減少。 不過，如果您使用資源樹系，並已建立從 Azure AD DS 到內部部署 AD DS 環境的單向輸出樹系信任，則 SKU 變更作業有一些限制。 *Premium* 和 *Enterprise* sku 會定義您可建立之信任數目的限制。 您無法變更為具有低於目前設定之最大限制的 SKU。
 
 例如：
 
-* 如果您已在 *Premium* sku 上建立兩個樹系信任，則無法變更為 *標準* sku。 *標準*SKU 不支援樹系信任。
-* 或者，如果您已在 *Premium* sku 上建立了七個信任，您將無法變更為 *企業* SKU。 *企業*SKU 最多可支援五個信任。
+* 如果您已在 *Premium* sku 上建立兩個樹系信任，則無法變更為 *標準* sku。 *標準* SKU 不支援樹系信任。
+* 或者，如果您已在 *Premium* sku 上建立了七個信任，您將無法變更為 *企業* SKU。 *企業* SKU 最多可支援五個信任。
 
 如需這些限制的詳細資訊，請參閱 [AZURE AD DS SKU 的功能和限制][concepts-sku]。
 

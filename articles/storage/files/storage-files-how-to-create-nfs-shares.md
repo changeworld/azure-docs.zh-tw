@@ -4,16 +4,16 @@ description: 瞭解如何建立可使用網路檔案系統通訊協定來裝載�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 7680e251d8411ce154e1f7dfb8af1d66514dd579
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 3cf22ee22c35b850aff33290a59a7043bb57c984
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629456"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620934"
 ---
 # <a name="how-to-create-an-nfs-share"></a>如何建立 NFS 磁碟區
 
@@ -64,7 +64,7 @@ az feature register --name AllowNfsFileShares \
 az provider register --namespace Microsoft.Storage
 ```
 
-## <a name="verify-that-the-feature-is-registered"></a>確認已註冊功能
+## <a name="verify-feature-registration"></a>確認功能註冊
 
 註冊核准最多可能需要一小時的時間。 若要確認註冊是否已完成，請使用下列命令：
 
@@ -80,6 +80,34 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNfs
 az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscription <yourSubscriptionIDHere>
 ```
 
+## <a name="verify-storage-account-kind"></a>確認儲存體帳戶種類
+
+目前，只有 FileStorage 帳戶可以建立 NFS 共用。 
+
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
+
+若要確認您擁有的儲存體帳戶種類，請在 Azure 入口網站中流覽至該帳戶。 然後，從您的儲存體帳戶選取 [ **屬性**]。 從 [屬性] 分頁中，檢查 [ **帳戶類型**] 下的值，此值應該是 **FileStorage**。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+若要確認您有 FileStorage 帳戶，您可以使用下列命令：
+
+```azurepowershell
+$accountKind=Get-AzStorageAccount -ResourceGroupName "yourResourceGroup" -Name "yourStorageAccountName"
+$accountKind.Kind
+```
+
+輸出應該是 **FileStorage**，如果不是，則您的儲存體帳戶是不正確的類型。 若要建立 **FileStorage** 帳戶，請參閱 [如何建立 Azure premium 檔案共用](storage-how-to-create-premium-fileshare.md)。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+若要確認您有 FileStorage 帳戶，您可以使用下列命令：
+
+```azurecli
+az storage account show -g yourResourceGroup -n yourStorageAccountName
+```
+
+輸出應包含 **"kind"： "FileStorage"**，如果沒有，則您的儲存體帳戶是不正確的類型。 若要建立 **FileStorage** 帳戶，請參閱 [如何建立 Azure premium 檔案共用](storage-how-to-create-premium-fileshare.md)。
+
+---
 ## <a name="create-an-nfs-share"></a>建立 NFS 磁碟區
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
@@ -89,7 +117,7 @@ az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscr
 1. 瀏覽至您的儲存體帳戶，並選取 [檔案共用]。
 1. 選取 [ **+ 檔案共用** ] 以建立新的檔案共用。
 1. 命名您的檔案共用，選取布建的容量。
-1. 針對 **通訊協定** ，請選取 [ **NFS (預覽])** 。
+1. 針對 **通訊協定** ，請選取 [ **NFS (預覽])**。
 1. 針對 **根 Squash** 進行選取。
 
     - Root squash (預設) 存取遠端超級使用者 (根) 對應到 UID (65534) 和 GID (65534) 。
@@ -120,7 +148,7 @@ az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscr
 
 1. 關閉，然後重新開啟 PowerShell 主控台。
 
-1. 安裝 **Az. Storage** preview module 版本 **2.5.2-preview** 。
+1. 安裝 **Az. Storage** preview module 版本 **2.5.2-preview**。
 
    ```powershell
    Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  

@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure 監視器活頁簿搭配 Azure AD Domain Services |Microsoft Docs
 description: 瞭解如何使用 Azure 監視器活頁簿來檢查安全性審核，以及瞭解 Azure Active Directory Domain Services 受控網域中的問題。
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: 5d19cddc82d9fb092887c5cdeba36b8ab7127f94
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.author: justinha
+ms.openlocfilehash: 3067388265fb69b916fe0e179cb896401b7c2dc4
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175129"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618156"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>使用 Azure 監視器活頁簿，在 Azure Active Directory Domain Services 中檢查安全性審核事件
 

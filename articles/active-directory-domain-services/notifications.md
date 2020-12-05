@@ -2,7 +2,7 @@
 title: Azure AD Domain Services 的電子郵件通知 |Microsoft Docs
 description: 瞭解如何設定電子郵件通知，以警示您 Azure Active Directory Domain Services 受控網域中的問題
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: b9af1792-0b7f-4f3e-827a-9426cdb33ba6
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: c273b1a6c497ec8dcb8c5bc5f50ccfccc9fce155
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 4242092af86f8bc06ef9c9eba068ce07725de01f
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968012"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619159"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>針對 Azure Active Directory Domain Services 中的問題設定電子郵件通知
 
@@ -68,7 +68,7 @@ Azure AD DS 的電子郵件收件者清單應由能夠管理及變更受控網�
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
-### <a name="i-received-an-email-notification-for-an-alert-but-when-i-logged-on-to-the-azure-portal-there-was-no-alert-what-happened"></a>我收到警示的電子郵件通知，但是登入 Azure 入口網站時並沒有任何警示。 結果如何？
+### <a name="i-received-an-email-notification-for-an-alert-but-when-i-logged-on-to-the-azure-portal-there-was-no-alert-what-happened"></a>我收到警示的電子郵件通知，但是登入 Azure 入口網站時並沒有任何警示。 發生什麼事？
 
 如果警示已解決，就會從 Azure 入口網站中清除警示。 最可能的原因是，收到電子郵件通知的其他人已解決受控網域上的警示，或 Azure 平臺已自動解決該警示。
 
@@ -76,7 +76,7 @@ Azure AD DS 的電子郵件收件者清單應由能夠管理及變更受控網�
 
 如果您無法存取 Azure 入口網站中的 [通知設定] 頁面，就沒有編輯受控網域的許可權。 請洽詢全域管理員，以取得編輯 Azure AD DS 資源或從收件者清單中移除的許可權。
 
-### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>即使我已經提供電子郵件地址，似乎還是無法接收電子郵件通知。 為什麼？
+### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>即使我已經提供電子郵件地址，似乎還是無法接收電子郵件通知。 原因為何？
 
 請在電子郵件中檢查您的垃圾郵件或垃圾資料夾中的通知，並確定允許的寄件者 `azure-noreply@microsoft.com` 。
 

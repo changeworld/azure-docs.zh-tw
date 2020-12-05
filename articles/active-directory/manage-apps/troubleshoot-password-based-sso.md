@@ -10,14 +10,14 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 1823de88597756ba3db9aee0dc29501b1ba914a4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: d122cedbad41d6984614a0edccb2fd98269710f2
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646231"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618071"
 ---
-# <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>針對 Azure AD 中的密碼型單一登入進行疑難排解
+# <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Azure AD 中的密碼型單一登入疑難排解
 
 若要在我的應用程式中使用以密碼為基礎的單一登入 (SSO) ，必須安裝瀏覽器擴充功能。 當您選取已設定密碼型 SSO 的應用程式時，會自動下載擴充功能。 若要瞭解如何從終端使用者的觀點來使用我的應用程式，請參閱 [我的應用程式入口網站](../user-help/my-apps-portal-end-user-access.md)說明。
 
@@ -150,6 +150,13 @@ ms.locfileid: "94646231"
 - 請確定您的使用者不會在 *incognito*、 *inPrivate* 或 *私用模式* 中嘗試從我的應用程式登入應用程式。
 - 再次嘗試手動捕獲程式。 請確定紅色標記超過正確的欄位。
 - 如果手動捕獲程式似乎停止回應，或登入頁面沒有回應，請再次嘗試手動捕獲程式。 但這次在完成此程式之後，請按 F12 鍵以開啟瀏覽器的開發人員主控台。 選取 [**主控台**] 索引標籤。 [**位置 =] 您在設定 *&lt; 應用程式 &gt; 時所指定的登入 URL***]，然後按 enter。 這會強制執行頁面重新導向，以結束捕獲程式並儲存已捕捉的欄位。
+
+### <a name="i-cant-add-another-user-to-my-password-based-sso-app"></a>我無法將其他使用者新增至我的密碼型 SSO 應用程式
+
+以密碼為基礎的 SSO 應用程式限制為48位使用者。 因此，每個應用程式的使用者名稱/密碼組的限制為48個索引鍵。
+如果您想要新增其他使用者，您可以：
+-   新增應用程式的其他實例
+-   移除不再使用應用程式的使用者
 
 ## <a name="request-support"></a>要求支援 
 如果您在設定 SSO 並指派使用者時收到錯誤訊息，請開啟支援票證。 盡可能包含下列最多資訊：

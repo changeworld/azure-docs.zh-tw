@@ -2,20 +2,20 @@
 title: 將 SLE VM 加入 Azure AD Domain Services |Microsoft Docs
 description: 瞭解如何設定 SUSE Linux Enterprise 虛擬機器，並將其加入 Azure AD Domain Services 受控網域。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.author: joflore
-ms.openlocfilehash: 607d3bc8eca3bd969f0f47ca95923040fb22591e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.author: justinha
+ms.openlocfilehash: f2f421d95dfc376aed373c718198db33a870d9dc
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275853"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619601"
 ---
 # <a name="join-a-suse-linux-enterprise-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>將 SUSE Linux Enterprise 虛擬機器加入 Azure Active Directory Domain Services 受控網域
 
@@ -23,7 +23,7 @@ ms.locfileid: "92275853"
 
 本文說明如何將 SUSE Linux Enterprise (SLE) VM 加入受控網域。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成此教學課程，您需要下列資源和權限：
 
@@ -89,7 +89,7 @@ sudo vi /etc/hosts
 
     在 YaST 中，選取 [ **系統 > 網路設定**]。
 
-1. 選取 [ *主機名稱/DNS* ] 索引標籤，然後在文字方塊 *名稱伺服器 1*中輸入受控網域的 IP 位址 (es) 。 這些 IP 位址會顯示在受控網域 Azure 入口網站的 [ *屬性* ] 視窗中，例如 *10.0.2.4* 和 *10.0.2.5*。
+1. 選取 [ *主機名稱/DNS* ] 索引標籤，然後在文字方塊 *名稱伺服器 1* 中輸入受控網域的 IP 位址 (es) 。 這些 IP 位址會顯示在受控網域 Azure 入口網站的 [ *屬性* ] 視窗中，例如 *10.0.2.4* 和 *10.0.2.5*。
 
     新增您自己的受控網域 IP 位址，然後選取 **[確定]**。
 
@@ -127,11 +127,11 @@ sudo vi /etc/hosts
 
 1. 系統會顯示一則訊息，確認您已成功註冊。 若要完成，請選取 **[確定]**。
 
-在受控網域中註冊 VM 之後，請使用 [ *管理網域使用者登*入] 設定用戶端，如下列範例螢幕擷取畫面所示：
+在受控網域中註冊 VM 之後，請使用 [ *管理網域使用者登* 入] 設定用戶端，如下列範例螢幕擷取畫面所示：
 
 ![YaST 中 [管理網域使用者登入] 視窗的範例螢幕擷取畫面](./media/join-suse-linux-vm/manage-domain-user-logon-window.png)
 
-1. 若要允許使用受控網域提供的資料進行登入，請核取 [ *允許網域使用者登*入] 的核取方塊。
+1. 若要允許使用受控網域提供的資料進行登入，請核取 [ *允許網域使用者登* 入] 的核取方塊。
 
 1. （選擇性）在 [ *啟用網域資料來源*] 下，視您的環境需要檢查額外的資料來源。 這些選項包括允許使用 **sudo** 的使用者，或可使用的網路磁碟機機。
 
@@ -139,11 +139,11 @@ sudo vi /etc/hosts
 
 1. 從側邊列選取 [ **服務選項›名稱切換**]，然後選取 [ *擴充選項*]。 在該視窗中，選取 [ *fallback_homedir* ] 或 [ *override_homedir*]，然後選取 [ **新增**]。
 
-1. 指定主目錄位置的值。 若要讓主目錄遵循 */home/USER_NAME*的格式，請使用 */home/%u*。 如需可能變數的詳細資訊，請參閱 sssd 中的「 (」 `man 5 sssd.conf` 一節 *override_homedir*的) 。
+1. 指定主目錄位置的值。 若要讓主目錄遵循 */home/USER_NAME* 的格式，請使用 */home/%u*。 如需可能變數的詳細資訊，請參閱 sssd 中的「 (」 `man 5 sssd.conf` 一節 *override_homedir* 的) 。
 
-1. 選取 [確定]  。
+1. 選取 [確定]。
 
-1. 若要儲存變更，請選取 **[確定]**。 然後，請確定顯示的值是正確的。 若要離開對話方塊，請選取 [ **取消**]。
+1. 若要儲存變更，請選取 [確定]。 然後，請確定顯示的值是正確的。 若要離開對話方塊，請選取 [ **取消**]。
 
 1. 如果您想要同時執行 SSSD 和 Winbind (例如透過 SSSD 聯結，然後執行 Samba 檔案伺服器) ，則必須將 Samba 選項 *kerberos 方法* 設定為 *秘密，並* 在中設定 keytab。 SSSD 選項 *ad_update_samba_machine_account_password* 在 SSSD 中也應該設定為 *true* 。 這些選項會防止系統 keytab 同步。
 
@@ -153,7 +153,7 @@ sudo vi /etc/hosts
 
 1. 在 YaST 中，選取 [ **網路服務] > Windows 網域成員資格**]。
 
-1. 在 [ *Windows 網域成員資格*] 畫面中，輸入網域*或工作組*要加入的網域。 輸入受控功能變數名稱，例如 *aaddscontoso.com*。
+1. 在 [ *Windows 網域成員資格*] 畫面中，輸入網域 *或工作組* 要加入的網域。 輸入受控功能變數名稱，例如 *aaddscontoso.com*。
 
     ![YaST 中 Windows 網域成員資格視窗的範例螢幕擷取畫面](./media/join-suse-linux-vm/samba-client-window.png)
 
@@ -165,7 +165,7 @@ sudo vi /etc/hosts
 
 1. 如果您想要變更 Samba 使用者和群組的 UID 和 GID 範圍，請選取 [ *專家設定*]。
 
-1. 選取 [ *ntp*設定]，為受控網域設定網路時間通訊協定 (NTP) 時間同步處理。 輸入受控網域的 IP 位址。 這些 IP 位址會顯示在受控網域 Azure 入口網站的 [ *屬性* ] 視窗中，例如 *10.0.2.4* 和 *10.0.2.5*。
+1. 選取 [ *ntp* 設定]，為受控網域設定網路時間通訊協定 (NTP) 時間同步處理。 輸入受控網域的 IP 位址。 這些 IP 位址會顯示在受控網域 Azure 入口網站的 [ *屬性* ] 視窗中，例如 *10.0.2.4* 和 *10.0.2.5*。
 
 1. 選取 **[確定]** ，並在出現提示時確認加入網域。
 
@@ -177,7 +177,7 @@ sudo vi /etc/hosts
 
 ## <a name="join-vm-to-the-managed-domain-using-winbind-from-the-yast-command-line-interface"></a>從 YaST 命令列介面使用 Winbind 將 VM 加入受控網域
 
-若要使用 **winbind** 和 *YaST 命令列介面*加入受控網域：
+若要使用 **winbind** 和 *YaST 命令列介面* 加入受控網域：
 
 * 加入網域：
 
@@ -187,7 +187,7 @@ sudo vi /etc/hosts
 
 ## <a name="join-vm-to-the-managed-domain-using-winbind-from-the-terminal"></a>從終端機使用 Winbind 將 VM 加入受控網域
 
-若要使用**winbind**和* `samba net` 命令*加入受控網域：
+若要使用 **winbind** 和 *`samba net` 命令* 加入受控網域：
 
 1. 安裝 kerberos 用戶端和 samba-winbind：
 
@@ -330,7 +330,7 @@ sudo vi /etc/hosts
     sudo visudo
     ```
 
-1. 將下列專案新增至 */etc/sudoers* 檔案的結尾。 *AAD DC 系統管理員*群組包含名稱中的空白字元，因此請在組名中包含反斜線 escape 字元。 新增您自己的功能變數名稱，例如 *aaddscontoso.com*：
+1. 將下列專案新增至 */etc/sudoers* 檔案的結尾。 *AAD DC 系統管理員* 群組包含名稱中的空白字元，因此請在組名中包含反斜線 escape 字元。 新增您自己的功能變數名稱，例如 *aaddscontoso.com*：
 
     ```console
     # Add 'AAD DC Administrators' group members as admins.

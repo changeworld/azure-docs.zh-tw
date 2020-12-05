@@ -2,7 +2,7 @@
 title: 將 Ubuntu VM 加入 Azure AD Domain Services |Microsoft Docs
 description: 瞭解如何設定 Ubuntu Linux 虛擬機器，並將其加入 Azure AD Domain Services 受控網域。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 804438c4-51a1-497d-8ccc-5be775980203
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
-ms.author: joflore
+ms.author: justinha
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ac620ffa36bdeb35ef524ef2956db03c8edcb566
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8b6d022b9a1f3be70f69943a53754c9dd909ca99
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962083"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619482"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>將 Ubuntu Linux 虛擬機器加入 Azure Active Directory Domain Services 受控網域
 
@@ -156,7 +156,7 @@ Successfully enrolled machine in realm
 
 如果您的 VM 無法順利完成網域加入程式，請確定 VM 的網路安全性群組允許 TCP + UDP 埠464上的輸出 Kerberos 流量連至受控網域的虛擬網路子網。
 
-如果您收到 *未指定的 GSS 失敗的錯誤，則為。 次要程式碼可能會提供 (Server 在 Kerberos 資料庫) 中找不到的詳細資訊 *，請開啟檔案 */etc/krb5.conf* ，並在區段中新增下列程式碼， `[libdefaults]` 然後再試一次：
+如果您收到 *未指定的 GSS 失敗的錯誤，則為。 次要程式碼可能會提供 (Server 在 Kerberos 資料庫) 中找不到的詳細資訊*，請開啟檔案 */etc/krb5.conf* ，並在區段中新增下列程式碼， `[libdefaults]` 然後再試一次：
 
 ```console
 rdns=false
@@ -178,7 +178,7 @@ rdns=false
     # use_fully_qualified_names = True
     ```
 
-    完成時，請使用編輯器的命令儲存並結束*sssd。* `:wq`
+    完成時，請使用編輯器的命令儲存並結束 *sssd。* `:wq`
 
 1. 若要套用變更，請重新開機 SSSD 服務：
 

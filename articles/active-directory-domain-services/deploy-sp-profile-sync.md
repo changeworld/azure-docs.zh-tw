@@ -2,7 +2,7 @@
 title: 使用 Azure AD DS 啟用 SharePoint 使用者設定檔服務 |Microsoft Docs
 description: 瞭解如何設定 Azure Active Directory Domain Services 受控網域以支援 SharePoint Server 的設定檔同步處理
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: 7bd63ece1ec32e5e4cecfd2a458124a4f24ccaa6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 8fbde10ccf5a7f083f5fbddaadd6668d880a1fac
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962474"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619822"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>設定 Azure Active Directory Domain Services 以支援 SharePoint Server 的使用者設定檔同步處理
 
@@ -44,10 +44,10 @@ SharePoint Server 包含用來同步處理使用者設定檔的服務。 這項�
 
 在受控網域中，名為「 *AAD DC 服務帳戶* 」的安全性群組會在「 *使用者* 組織單位」 (OU) 中存在。 下列權限會委派給此安全性群組的成員：
 
-- 在根 DSE 上複寫**目錄變更**許可權。
-- *在 (* 容器) 的設定命名內容上複寫**目錄變更**許可權 `cn=configuration` 。
+- 在根 DSE 上複寫 **目錄變更** 許可權。
+- *在 (* 容器) 的設定命名內容上複寫 **目錄變更** 許可權 `cn=configuration` 。
 
-*AAD DC 服務帳戶*安全性群組也是內建組*Windows 之前的 Windows 2000 相容存取權*的成員。
+*AAD DC 服務帳戶* 安全性群組也是內建組 *Windows 之前的 Windows 2000 相容存取權* 的成員。
 
 當加入至此安全性群組時，會授與 SharePoint Server 使用者設定檔同步處理服務的服務帳戶正確運作所需的許可權。
 

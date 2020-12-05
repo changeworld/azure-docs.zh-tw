@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b9ed43019e7af0cb810c3e0fc849281a458a43e1
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 426cf78f6b87acf1d8c7551b0b0a6172a30167b1
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023628"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621090"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批次轉譯
 
@@ -30,7 +30,7 @@ ms.locfileid: "95023628"
 |    抓取已驗證訂閱的轉譯清單。    |    GET       |    speechtotext/v3.0/轉譯            |
 |    取得支援的離線轉譯地區設定清單。              |    GET       |    speechtotext/v3.0/轉譯/地區設定    |
 |    更新識別碼所識別之轉譯的可變詳細資料。    |    PATCH     |    speechtotext/v3.0/轉譯/{id}       |
-|    刪除指定的轉譯工作。                                 |    刪除    |    speechtotext/v3.0/轉譯/{id}       |
+|    刪除指定的轉譯工作。                                 |    DELETE    |    speechtotext/v3.0/轉譯/{id}       |
 |    取得指定之識別碼所識別的轉譯。                        |    GET       |    speechtotext/v3.0/轉譯/{id}       |
 |    取得指定之識別碼所識別之轉譯的結果檔。    |    GET       |    speechtotext/v3.0/轉譯/{id}/files |
 
@@ -39,7 +39,7 @@ ms.locfileid: "95023628"
 批次轉譯作業會以最大量的方式進行排程。
 您無法預估工作何時會變更為「執行中」狀態，但它應該會在正常系統載入的幾分鐘內發生。 一旦處於執行中狀態，轉譯的速度會比音訊執行時間的播放速度快。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 如同語音服務的所有功能，您可以依照我們的[快速入門指南](overview.md#try-the-speech-service-for-free)從 [Azure 入口網站](https://portal.azure.com)建立訂用帳戶金鑰。
 
@@ -64,7 +64,7 @@ ms.locfileid: "95023628"
 針對身歷聲音訊串流，會在轉譯期間分割左邊和右邊的通道。 正在為每個通道建立 JSON 結果檔。
 若要建立已排序的最終文字記錄，請使用每個語句所產生的時間戳記。
 
-### <a name="configuration"></a>組態
+### <a name="configuration"></a>設定
 
 設定參數會以 JSON 形式提供。
 
@@ -214,7 +214,7 @@ ms.locfileid: "95023628"
       "duration": "PT1.59S",            // audio duration of this phrase, ISO 8601 encoded duration
       "offsetInTicks": 700000.0,        // offset in audio of this phrase in ticks (1 tick is 100 nanoseconds)
       "durationInTicks": 15900000.0,    // audio duration of this phrase in ticks (1 tick is 100 nanoseconds)
-      
+
       // possible transcriptions of the current phrase with confidences
       "nBest": [
         {
@@ -224,7 +224,7 @@ ms.locfileid: "95023628"
           "itn": "hello world",
           "maskedITN": "hello world",
           "display": "Hello world.",
-          
+
           // if wordLevelTimestampsEnabled is `true`, there will be a result for each word of the phrase, otherwise this property is not present
           "words": [
             {
@@ -245,7 +245,7 @@ ms.locfileid: "95023628"
             }
           ]
         }
-      ]    
+      ]
     }
   ]
 }
@@ -416,6 +416,6 @@ while (completed < 1)
 > [!NOTE]
 > 針對基準轉譯，您不需要宣告基準模型的識別碼。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [語音轉換文字 v3 API 參考](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)

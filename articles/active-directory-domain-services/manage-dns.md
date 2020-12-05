@@ -1,7 +1,7 @@
 ---
 title: 管理 Azure AD Domain Services 的 DNS |Microsoft Docs
 description: 瞭解如何安裝 DNS 伺服器工具來管理 DNS，以及建立 Azure Active Directory Domain Services 受控網域的條件轉寄站。
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -9,13 +9,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: b347f8043216d4347099d68ff1c62156410582a3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: afa6920a36a5a7218571239b36815004d8f2d450
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963171"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619346"
 ---
 # <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-active-directory-domain-services-managed-domain"></a>管理 DNS 並在 Azure Active Directory Domain Services 受控網域中建立條件轉寄站
 
@@ -54,7 +54,7 @@ ms.locfileid: "91963171"
 1. 針對 [安裝類型]，保持勾選 [角色型或功能型安裝] 選項，然後選取 [下一步]。
 1. 在 [伺服器選擇] 頁面上，從伺服器集區中選擇目前的 VM，例如 myvm.aaddscontoso.com，然後選取 [下一步]。
 1. 在 [伺服器角色] 頁面上，按 [下一步]。
-1. 在 [功能] 頁面上，展開 [遠端伺服器管理工具] 節點，然後展開 [角色管理工具] 節點。 從角色管理工具清單中，選取 [DNS 伺服器工具]**** 功能。
+1. 在 [功能] 頁面上，展開 [遠端伺服器管理工具] 節點，然後展開 [角色管理工具] 節點。 從角色管理工具清單中，選取 [DNS 伺服器工具] 功能。
 
     ![從可用的角色管理工具清單選擇安裝 DNS 伺服器工具](./media/manage-dns/install-dns-tools.png)
 
@@ -89,12 +89,12 @@ Azure AD DS DNS 區域應只包含受控網域本身的區域和記錄。 請勿
 若要在受控網域中建立條件轉寄站，請完成下列步驟：
 
 1. 選取您的 DNS 區域，例如 *aaddscontoso.com*。
-1. 選取**條件**式轉寄站，然後以滑鼠右鍵選取並選擇 [**新增條件**轉寄站]。
+1. 選取 **條件** 式轉寄站，然後以滑鼠右鍵選取並選擇 [**新增條件** 轉寄站]。
 1. 輸入您的其他 **Dns 網域**（例如 *contoso.com*），然後為該命名空間輸入 DNS 伺服器的 IP 位址，如下列範例所示：
 
     ![新增及設定 DNS 伺服器的條件轉寄站](./media/manage-dns/create-conditional-forwarder.png)
 
-1. 核取 [ **在 Active Directory 中儲存此條件**轉寄站的方塊，並將其複寫如下，然後為 *此網域中的所有 DNS 伺服器*選取選項，如下列範例所示：
+1. 核取 [ **在 Active Directory 中儲存此條件** 轉寄站的方塊，並將其複寫如下，然後為 *此網域中的所有 DNS 伺服器* 選取選項，如下列範例所示：
 
     ![DNS 主控台-選取此網域中的所有 DNS 伺服器](./media/manage-dns/store-in-domain.png)
 

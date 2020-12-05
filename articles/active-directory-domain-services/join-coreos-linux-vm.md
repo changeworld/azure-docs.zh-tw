@@ -2,7 +2,7 @@
 title: 將 CoreOS VM 加入 Azure AD Domain Services |Microsoft Docs
 description: 瞭解如何設定 CoreOS 虛擬機器，並將其加入 Azure AD Domain Services 受控網域。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 5db65f30-bf69-4ea3-9ea5-add1db83fdb8
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
-ms.author: joflore
-ms.openlocfilehash: c3a88f96f7391fedd973b7965a7c469ce1805d76
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 1e98f32bd6fe7d5373d5ab6621ffdce5e79abc08
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962406"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619584"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>將 CoreOS 虛擬機器加入 Azure Active Directory Domain Services 受控網域
 
@@ -84,12 +84,12 @@ sudo vi /etc/sssd/sssd.conf
 
 針對下列參數指定您自己的受控功能變數名稱：
 
-* 全大寫字母的*網域*
+* 全大寫字母的 *網域*
 * *[網域/AADDSCONTOSO]* ，其中 AADDSCONTOSO 是全大寫
 * *ldap_uri*
 * *ldap_search_base*
 * *krb5_server*
-* 全部大寫的*krb5_realm*
+* 全部大寫的 *krb5_realm*
 
 ```console
 [sssd]
@@ -122,7 +122,7 @@ krb5_realm = AADDSCONTOSO.COM
 
 更新 SSSD 設定檔後，現在將虛擬機器加入受控網域。
 
-1. 首先，使用 `adcli info` 命令來確認您可以看到受控網域的相關資訊。 下列範例會取得網域 *AADDSCONTOSO.COM*的資訊。 以全部大寫指定您自己的受控功能變數名稱：
+1. 首先，使用 `adcli info` 命令來確認您可以看到受控網域的相關資訊。 下列範例會取得網域 *AADDSCONTOSO.COM* 的資訊。 以全部大寫指定您自己的受控功能變數名稱：
 
     ```console
     sudo adcli info AADDSCONTOSO.COM

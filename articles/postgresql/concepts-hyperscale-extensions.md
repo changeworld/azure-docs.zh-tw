@@ -7,16 +7,16 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 2e4a09ba07a5fa5eb3a5af7aa88e092feb3e7efc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 000f8a1457298901dcfc94bc5e0923e94ba35dc7
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487971"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620897"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>適用於 PostgreSQL 的 Azure 資料庫中的于 postgresql 延伸模組-超大規模 (Citus) 
 
-于 postgresql 可讓您使用擴充功能來擴充資料庫的功能。 擴充功能可在單一封裝中一併統合多個相關的 SQL 物件，其可使用單一命令從您的資料庫加以載入或移除。 在資料庫中載入之後，擴充功能可以像內建功能一樣運作。 如需于 postgresql 擴充功能的詳細資訊，請參閱 [將相關物件封裝成擴充](https://www.postgresql.org/docs/current/static/extend-extensions.html)功能。
+PostgreSQL 可以使用延伸模組讓您擴充資料庫的功能。 擴充功能可在單一封裝中一併統合多個相關的 SQL 物件，其可使用單一命令從您的資料庫加以載入或移除。 載入到資料庫之後，延伸模組即可發揮和內建功能一樣的作用。 如需于 postgresql 擴充功能的詳細資訊，請參閱 [將相關物件封裝成擴充](https://www.postgresql.org/docs/current/static/extend-extensions.html)功能。
 
 ## <a name="use-postgresql-extensions"></a>使用於 postgresql 延伸模組
 
@@ -35,8 +35,8 @@ ms.locfileid: "92487971"
 > |---|---|
 > | [citext](https://www.postgresql.org/docs/current/static/citext.html) | 提供不區分大小寫的字元字串類型。 |
 > | [立方體](https://www.postgresql.org/docs/current/static/cube.html) | 提供多維度 Cube 的資料類型。 |
-> | [hstore](https://www.postgresql.org/docs/current/static/hstore.html) | 提供用來儲存索引鍵/值組集合的資料類型。 |
 > | [hll](https://github.com/citusdata/postgresql-hll) | 提供 HyperLogLog 資料結構。 |
+> | [hstore](https://www.postgresql.org/docs/current/static/hstore.html) | 提供用來儲存索引鍵/值組集合的資料類型。 |
 > | [isn](https://www.postgresql.org/docs/current/static/isn.html) | 提供國際產品編號標準的資料類型。 |
 > | [高低](https://www.postgresql.org/docs/current/lo.html) | 大型物件維護。 |
 > | [ltree](https://www.postgresql.org/docs/current/static/ltree.html) | 提供階層式樹狀結構的資料類型。 |
@@ -65,9 +65,9 @@ ms.locfileid: "92487971"
 > | [intagg](https://www.postgresql.org/docs/current/intagg.html) | 整數匯總工具和列舉值 (過時的) 。 |
 > | [intarray](https://www.postgresql.org/docs/current/static/intarray.html) | 提供函數和運算子來操作無 null 的整數陣列。 |
 > | [moddatetime](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.9) | 用來追蹤上次修改時間的函式。 |
-> | [pgcrypto](https://www.postgresql.org/docs/current/static/pgcrypto.html) | 提供密碼編譯函式。 |
 > | [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | 依時間或識別碼管理分割的資料表。 |
 > | [pg\_trgm](https://www.postgresql.org/docs/current/static/pgtrgm.html) | 提供可根據三併詞比對判斷英數文字相似度的函式和運算子。 |
+> | [pgcrypto](https://www.postgresql.org/docs/current/static/pgcrypto.html) | 提供密碼編譯函式。 |
 > | [refint](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.5) | 用來執行參考完整性 (過時) 的函式。 |
 > | 會話 \_ 分析 | 用於查詢 hstore 陣列的函數。 |
 > | [tablefunc](https://www.postgresql.org/docs/current/static/tablefunc.html) | 提供操縱整個資料表 (包括交叉資料表) 的函式。 |
@@ -81,7 +81,6 @@ ms.locfileid: "92487971"
 > | **分機** | **描述** |
 > |---|---|
 > | [citus](https://github.com/citusdata/citus) | Citus 分散式資料庫。 |
-> | 分區 \_ rebalancer | 在新增或移除節點時，安全地重新平衡伺服器群組中的資料。 |
 
 ### <a name="index-types-extensions"></a>索引類型延伸模組
 
@@ -106,6 +105,7 @@ ms.locfileid: "92487971"
 > |---|---|
 > | [adminpack](https://www.postgresql.org/docs/current/adminpack.html) | 于 postgresql 的系統管理功能。 |
 > | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | 用於驗證關聯性完整性的函數。 |
+> | [dblink](https://www.postgresql.org/docs/current/dblink.html) | 支援從資料庫工作階段連線至其他 PostgreSQL 資料庫的模組。 如需此延伸模組的相關資訊，請參閱「dblink 和 postgres_fdw」一節。 |
 > | [file \_ fdw](https://www.postgresql.org/docs/current/file-fdw.html) | 一般檔案存取的外部資料包裝函式。 |
 > | [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) | 檢查低層級的資料庫頁面內容。 |
 > | [pg\_buffercache](https://www.postgresql.org/docs/current/static/pgbuffercache.html) | 提供一種方法，即時檢查共用緩衝區快取中發生的狀況。 |
@@ -120,8 +120,6 @@ ms.locfileid: "92487971"
 > | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) | TLS/SSL 憑證的相關資訊。 |
 > | [tsm \_ 系統資料 \_ 列](https://www.postgresql.org/docs/current/tsm-system-rows.html) | TABLESAMPLE 方法，它會接受資料列數的限制。 |
 > | [tsm \_ 系統 \_ 時間](https://www.postgresql.org/docs/current/tsm-system-time.html) | TABLESAMPLE 方法，接受以毫秒為單位的時間限制。 |
-> | [hypopg](https://hypopg.readthedocs.io/en/latest/) | 提供方法建立不使用 CPU 或磁碟的假設索引。 |
-> | [dblink](https://www.postgresql.org/docs/current/dblink.html) | 支援從資料庫工作階段連線至其他 PostgreSQL 資料庫的模組。 如需此延伸模組的相關資訊，請參閱「dblink 和 postgres_fdw」一節。 |
 > | [xml2](https://www.postgresql.org/docs/current/xml2.html) | XPath 查詢和 XSLT。 |
 
 
@@ -146,5 +144,5 @@ Pg_stat_statements 提供的查詢執行資訊與記錄每個 SQL 語句的伺�
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink 和 postgres_fdw
 
-您可以使用 dblink 和 postgres \_ fdw，從一個于 postgresql 伺服器連接到另一個，或連接到同一部伺服器中的另一個資料庫。  接收端伺服器必須允許來自傳送端伺服器通過其防火牆的連線。  若要使用這些擴充功能在適用於 PostgreSQL 的 Azure 資料庫伺服器或超大規模 (Citus) 伺服器群組之間進行連線，請將 [ **允許 Azure 服務和資源存取此伺服器群組] (或 [伺服器) ** ] 設定為 [開啟]。  如果您想要使用擴充功能來迴圈回到相同的伺服器，也必須開啟此設定。
+您可以使用 dblink 和 postgres \_ fdw，從一個于 postgresql 伺服器連接到另一個，或連接到同一部伺服器中的另一個資料庫。  接收端伺服器必須允許來自傳送端伺服器通過其防火牆的連線。  若要使用這些擴充功能在適用於 PostgreSQL 的 Azure 資料庫伺服器或超大規模 (Citus) 伺服器群組之間進行連線，請將 [ **允許 Azure 服務和資源存取此伺服器群組] (或 [伺服器)** ] 設定為 [開啟]。  如果您想要使用擴充功能來迴圈回到相同的伺服器，也必須開啟此設定。
 [ **允許 Azure 服務和資源存取此伺服器群組** ] 設定可在 [ **網路**] 下的超大規模 (Citus) 伺服器群組的 [Azure 入口網站] 頁面中找到。  目前並不支援來自適用於 PostgreSQL 的 Azure 資料庫單一伺服器和超大規模 (Citus) 的輸出連線，除了其他適用於 PostgreSQL 的 Azure 資料庫伺服器和超大規模 (Citus) 伺服器群組的連接之外。

@@ -2,20 +2,20 @@
 title: 適用于雲端解決方案提供者的 Azure AD Domain Services |Microsoft Docs
 description: 瞭解如何啟用及管理 Azure 雲端解決方案提供者的 Azure Active Directory Domain Services 受控網域
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 ms.assetid: 56ccb219-11b2-4e43-9f07-5a76e3cd8da8
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: fae04d929be7ae6f266ff136b4fbd90f7d8a4e02
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: d8edafff9b6534e5f1ce1c4581595ee187dfd432
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960961"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619894"
 ---
 # <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>適用于 Azure 雲端解決方案提供者的 Azure Active Directory Domain Services 部署和管理
 
@@ -53,8 +53,8 @@ Azure AD DS 支援 Azure CSP 訂閱。 您可以將應用程式部署在與客�
 
 在此部署模型中，會在屬於 Azure CSP 訂用帳戶的虛擬網路內啟用 Azure AD DS。 CSP 合作夥伴的管理專員擁有下列權限：
 
-* 客戶 Azure AD 租使用者中的*全域管理員*許可權。
-* Azure CSP 訂用帳戶的訂用帳戶*擁有*者許可權。
+* 客戶 Azure AD 租使用者中的 *全域管理員* 許可權。
+* Azure CSP 訂用帳戶的訂用帳戶 *擁有* 者許可權。
 
 ![直接部署模型](./media/csp/csp_direct_deployment_model.png)
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
 ms.openlocfilehash: acb05da0255445de31e08f2724dcb484a3e05b17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 12/05/2020
 ms.locfileid: "84764260"
 ---
 # <a name="networking-limit-increase"></a>增加網路限制
@@ -27,7 +27,7 @@ ms.locfileid: "84764260"
 您可以使用 [說明 **+ 支援** ] 或入口網站中的 [ **使用方式 + 配額** ] 來要求增加。
 
 > [!Note]
-> 若要變更 **公用 Ip 首碼**的預設大小，請從下拉式清單中選取 [ **公用 Ip 網際網路前置長度下限** ]。
+> 若要變更 **公用 Ip 首碼** 的預設大小，請從下拉式清單中選取 [ **公用 Ip 網際網路前置長度下限** ]。
 
 ## <a name="request-networking-quota-increase-at-subscription-level-using-help--support"></a>使用 [說明 + 支援] 在訂用帳戶層級增加要求網路配額
 
@@ -41,7 +41,7 @@ ms.locfileid: "84764260"
 
     ![新增支援要求](./media/networking-quota-request/new-support-request.png)
 
-1. 針對 [ **問題類型**]，選擇 [ **服務與訂用帳戶限制] (配額) **。
+1. 針對 [ **問題類型**]，選擇 [ **服務與訂用帳戶限制] (配額)**。
 
     ![從問題類型下拉式清單中選取訂用帳戶限制](./media/networking-quota-request/select-quota-issue-type.png)
 
@@ -69,13 +69,13 @@ ms.locfileid: "84764260"
 
 依照下列指示，使用 Azure 入口網站中的 **使用量 + 配額** 來建立支援要求。
 
-1. 在中 https://portal.azure.com ，搜尋並選取**Subscriptions**訂用帳戶。
+1. 在中 https://portal.azure.com ，搜尋並選取 **Subscriptions** 訂用帳戶。
 
     ![訂用帳戶](./media/networking-quota-request/search-for-suscriptions.png)
 
 1. 選取需要增加配額的訂用帳戶。
 
-    ![選取訂閱](./media/networking-quota-request/select-subscription-change-quota.png)
+    ![選取訂用帳戶](./media/networking-quota-request/select-subscription-change-quota.png)
 
 1. 選取 **使用量 + 配額**
 

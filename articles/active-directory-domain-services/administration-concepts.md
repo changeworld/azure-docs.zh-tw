@@ -2,20 +2,20 @@
 title: Azure AD Domain Services 的管理概念 |Microsoft Docs
 description: 瞭解如何管理 Azure Active Directory Domain Services 受控網域以及使用者帳戶和密碼的行為
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.author: joflore
-ms.openlocfilehash: 95c6a1f24335849fb2d2c4de56b4ed60e8e5f73f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 76af477af8290634d2658c58574b8f96cff7b1fb
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962814"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620336"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 中的使用者帳戶、密碼和管理的管理概念
 
@@ -81,7 +81,7 @@ Azure AD DS 包含預設的密碼原則，可定義帳戶鎖定、密碼最長�
 | SKU 名稱   | 最大物件計數 | 備份頻率 | 輸出樹系信任的最大數目 |
 |------------|----------------------|------------------|----|
 | 標準   | 無限制            | 每7天     | 0  |
-| Enterprise | 無限制            | 每3天     | 5  |
+| 企業 | 無限制            | 每3天     | 5  |
 | 進階    | 無限制            | 每日            | 10 |
 
 在這些 Azure AD DS Sku 之前，會使用根據受控網域中) 的物件數目 (的計費模型。 根據受控網域中的物件數目，不再有變化的定價。

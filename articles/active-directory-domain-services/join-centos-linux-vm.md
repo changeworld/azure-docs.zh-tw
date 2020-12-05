@@ -2,7 +2,7 @@
 title: 將 CentOS VM 加入 Azure AD Domain Services |Microsoft Docs
 description: 瞭解如何設定 CentOS Linux 虛擬機器，並將其加入 Azure Active Directory Domain Services 受控網域。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 16100caa-f209-4cb0-86d3-9e218aeb51c6
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
-ms.author: joflore
-ms.openlocfilehash: 6aa85564390728331f682c31d14655844d68b3c3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 76fc11384b55337f581a74239d4a40b90b284f32
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962168"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619652"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>將 CentOS Linux 虛擬機器加入 Azure Active Directory Domain Services 受控網域
 
@@ -154,7 +154,7 @@ Successfully enrolled machine in realm
     sudo visudo
     ```
 
-1. 將下列專案新增至 */etc/sudoers* 檔案的結尾。 *AAD DC 系統管理員*群組包含名稱中的空白字元，因此請在組名中包含反斜線 escape 字元。 新增您自己的功能變數名稱，例如 *aaddscontoso.com*：
+1. 將下列專案新增至 */etc/sudoers* 檔案的結尾。 *AAD DC 系統管理員* 群組包含名稱中的空白字元，因此請在組名中包含反斜線 escape 字元。 新增您自己的功能變數名稱，例如 *aaddscontoso.com*：
 
     ```console
     # Add 'AAD DC Administrators' group members as admins.

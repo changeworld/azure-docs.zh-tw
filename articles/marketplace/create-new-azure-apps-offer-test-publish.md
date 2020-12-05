@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: b54e965188be51ec54110bb85d8cda8f01256836
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 461f9354bb3a6eae0af186de8fe9f39c6b5fff2c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369994"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620914"
 ---
 # <a name="how-to-test-and-publish-an-azure-application-offer"></a>如何測試和發佈 Azure 應用程式供應專案
 
@@ -23,14 +23,14 @@ ms.locfileid: "94369994"
 
 1. 登入 [合作夥伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)中的商用 marketplace 儀表板。
 1. 在 [ **總覽** ] 頁面上，選取您要發佈的供應專案。
-1. 選取入口網站右上角的 [ **審核併發布** ]。
-1. 請確定每個頁面的 [ **狀態** ] 資料行都顯示 [ **完成** ]。 三種可能的狀態如下：
+1. 選取入口網站右上角的 [ **審核併發布**]。
+1. 請確定每個頁面的 [ **狀態** ] 資料行都顯示 [ **完成**]。 三種可能的狀態如下：
     - **未啟動** –頁面未完成。
     - **未完成** -頁面遺漏必要資訊，或有需要修正的錯誤。 您必須返回頁面，並加以更新。
     - **完成** –頁面已完成。 已提供所有必要的資料，而且沒有任何錯誤。
-1. 如果有任何頁面的狀態不是 [ **完成** ]，請選取頁面名稱，更正問題，儲存頁面，然後選取 [檢查]，然後再 **發佈** 一次，以返回此頁面。
+1. 如果有任何頁面的狀態不是 [ **完成**]，請選取頁面名稱，更正問題，儲存頁面，然後選取 [檢查]，然後再 **發佈** 一次，以返回此頁面。
 1. 所有頁面都完成後，請在 [憑證 **注意事項** ] 方塊中提供測試指示給認證小組，以確保您的應用程式已正確測試。 提供可説明您瞭解應用程式的任何補充附注。
-1. 若要啟動供應專案的發佈程式，請選取 [ **發佈** ]。 [ **供應專案總覽** ] 頁面隨即出現，並顯示供應專案的 **發佈狀態** 。
+1. 若要啟動供應專案的發佈程式，請選取 [ **發佈**]。 [ **供應專案總覽** ] 頁面隨即出現，並顯示供應專案的 **發佈狀態**。
 
 您供應專案的發佈狀態將會在整個發行流程中變更。 如需此程式的詳細資訊，請參閱 [驗證和發佈步驟](review-publish-offer.md#validation-and-publishing-steps)。
 
@@ -57,7 +57,7 @@ ms.locfileid: "94369994"
 完成預覽的所有測試之後，請選取 [上線] **，將您** 的供應專案即時發佈到商業 marketplace。
 
    > [!TIP]
-   > 如果您的供應專案已在商用市集中上線，您所做的任何更新都不會上線，除非 **您選取 [上線]** 。
+   > 如果您的供應專案已在商用市集中上線，您所做的任何更新都不會上線，除非 **您選取 [上線]**。
 
 既然您已選擇讓供應專案在商業 marketplace 中提供，我們會執行一系列的最終驗證檢查，以確保即時供應專案的設定與預覽版本的供應專案一樣。 如需這些驗證檢查的詳細資訊，請參閱 [發行階段](review-publish-offer.md#publish-phase)。
 
@@ -72,4 +72,4 @@ ms.locfileid: "94369994"
 ## <a name="next-step"></a>後續步驟
 
 - [在合作夥伴中心中存取商用 marketplace 的分析報表](partner-center-portal/analytics.md)
-- 瞭解如何透過與 Microsoft 共同銷售並轉售給 Csp 方案， [來行銷您的 Azure 應用程式供應](create-new-azure-apps-offer-marketing.md) 專案。
+- 瞭解如何透過與 Microsoft 共同銷售的 [方式銷售您的 Azure 應用程式供應](create-new-azure-apps-offer-marketing.md) 專案，並透過 Csp 方案轉售。

@@ -2,7 +2,7 @@
 title: Azure AD Domain Services 中常見的警示和解決方法 |Microsoft Docs
 description: 瞭解如何解決 Azure Active Directory Domain Services 的健全狀況狀態中產生的常見警示
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 54319292-6aa0-4a08-846b-e3c53ecca483
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: 5324018bace0ad530dea8ae94cecdc5b41b618c7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 80011b2ae2a70ce4c540ac31897cc8be4a6580c3
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967591"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618615"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>已知問題： Azure Active Directory Domain Services 中的常見警示和解決方式
 
@@ -40,7 +40,7 @@ ms.locfileid: "91967591"
 
 ### <a name="alert-message"></a>警示訊息
 
-無法在 Azure AD B2C 目錄中啟用 Azure AD Domain Services。**
+無法在 Azure AD B2C 目錄中啟用 Azure AD Domain Services。
 
 ### <a name="resolution"></a>解決方法
 
@@ -135,7 +135,7 @@ Azure AD DS 會建立其他資源以正常運作，例如公用 IP 位址、虛�
 
 1. 在 [Azure 入口網站中，搜尋並選取 [ **網域服務**]。 選擇您的受控網域，例如 aaddscontoso.com。
 1. 在左側導覽中，選取 [ **健全狀況**]。
-1. 在 [健康情況] 頁面中，選取識別碼為 *AADDS109*的警示。
+1. 在 [健康情況] 頁面中，選取識別碼為 *AADDS109* 的警示。
 1. 警示具有第一次找到時的時間戳記。 如果該時間戳記小於4小時前，Azure 平臺可能會自動重新建立資源，並自行解決警示。
 
     如果警示已出現超過 4 小時，受控網域就會處於無法復原的狀態。 [刪除受控網域](delete-aadds.md) ，然後 [建立替代受控網域](tutorial-create-instance.md)。

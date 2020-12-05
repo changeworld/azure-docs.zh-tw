@@ -2,20 +2,20 @@
 title: 針對 Azure AD Domain Services 中的登入問題進行疑難排解 |Microsoft Docs
 description: 瞭解如何對 Azure Active Directory Domain Services 中常見的使用者登入問題和錯誤進行疑難排解。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 9343af5b29289a152db84e64f81fa8ca74ce7bc3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 85b261b8754f35c7705690d15671144b858c0a43
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967387"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618564"
 ---
 # <a name="troubleshoot-account-sign-in-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>針對 Azure Active Directory Domain Services 受控網域的帳戶登入問題進行疑難排解
 
@@ -60,7 +60,7 @@ net start 'Microsoft Azure AD Sync'
     * 如果您停用 Azure AD DS 後再重新啟用，則每個帳戶都必須再次遵循這些步驟來變更其密碼，並產生所需的密碼雜湊。
 * **是，密碼已變更。**
     * 請嘗試使用 *UPN* 格式（例如）來登入， `driley@aaddscontoso.com` 而不使用 *SAMAccountName* 格式（例如） `AADDSCONTOSO\deeriley` 。
-    * 如果使用者的 UPN 前置詞過長或與受控網域上的另一位使用者相同，則會自動產生 *SAMAccountName* 。 *UPN*格式在 Azure AD 租使用者中保證是唯一的。
+    * 如果使用者的 UPN 前置詞過長或與受控網域上的另一位使用者相同，則會自動產生 *SAMAccountName* 。 *UPN* 格式在 Azure AD 租使用者中保證是唯一的。
 
 ## <a name="the-account-is-locked-out"></a>帳戶已鎖定
 

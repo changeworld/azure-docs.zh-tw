@@ -2,7 +2,7 @@
 title: Azure AD Domain Services 的群組受管理的服務帳戶 |Microsoft Docs
 description: 瞭解如何 (gMSA) 建立群組受管理的服務帳戶，以搭配 Azure Active Directory Domain Services 受控網域使用
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: e6faeddd-ef9e-4e23-84d6-c9b3f7d16567
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: af1df1dd95d570038c44ea9052db88ae80586c32
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: f975d3e0e605b7c24b9fd31dc8fc78f0f37bb6b9
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960978"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619979"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-active-directory-domain-services"></a>在 Azure Active Directory Domain Services 中建立群組受管理的服務帳戶 (gMSA) 
 
@@ -65,7 +65,7 @@ ms.locfileid: "91960978"
 > [!TIP]
 > 若要完成這些步驟來建立 gMSA，請 [使用您的管理 VM][tutorial-create-management-vm]。 此管理 VM 應已具有所需的 AD PowerShell Cmdlet 和受控網域的連線。
 
-下列範例會在名為*aaddscontoso.com*的受控網域中建立名為*myNewOU*的自訂 OU。 使用您自己的 OU 和受控功能變數名稱：
+下列範例會在名為 *aaddscontoso.com* 的受控網域中建立名為 *myNewOU* 的自訂 OU。 使用您自己的 OU 和受控功能變數名稱：
 
 ```powershell
 New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=aaddscontoso,DC=COM"
@@ -75,7 +75,7 @@ New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=aaddscontoso,DC=COM"
 
 * **-Name** 設定為 *WebFarmSvc*
 * **-Path** 參數會指定在上一個步驟中建立之 gMSA 的自訂 OU。
-* 針對*WebFarmSvc.aaddscontoso.com*設定 DNS 專案和服務主體名稱
+* 針對 *WebFarmSvc.aaddscontoso.com* 設定 DNS 專案和服務主體名稱
 * *AADDSCONTOSO-SERVER $* 中的主體可以取出密碼並使用身分識別。
 
 指定您自己的名稱和功能變數名稱。

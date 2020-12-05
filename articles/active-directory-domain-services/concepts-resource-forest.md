@@ -2,20 +2,20 @@
 title: 適用於 Azure AD Domain Services 的資源樹系概念 | Microsoft Docs
 description: 了解 Azure Active Directory Domain Services 中的資源樹系，以及其在混合式環境中如何使用有限的使用者驗證選項或安全性考慮來讓組織受益。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 1f8c09e7e260d22aa6864327d6a890ef3beaa039
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 79cf408bcb9060c247b97e6a81204c5a5517d384
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962508"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619996"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 的資源樹系概念及功能
 

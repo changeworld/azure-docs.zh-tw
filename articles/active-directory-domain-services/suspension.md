@@ -2,7 +2,7 @@
 title: Azure AD Domain Services 中的已暫止網域 |Microsoft Docs
 description: 瞭解 Azure AD DS 受控網域的不同健全狀況狀態，以及如何還原已暫止的網域。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 95e1d8da-60c7-4fc1-987d-f48fde56a8cb
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: 9bcecdfaf3121ea024fee567dbe83544229373be
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: b0b48e7ad494386052e6d94c32d7215b3f4f0202
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967693"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618819"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>瞭解 Azure Active Directory Domain Services 中的健全狀況狀態和解決擱置的網域
 
@@ -39,7 +39,7 @@ ms.locfileid: "91967693"
 
 ## <a name="running-state"></a>正在執行狀態
 
-已正確設定且沒有問題的受控網域處於執行*中狀態。* 這是受控網域的預期狀態。
+已正確設定且沒有問題的受控網域處於執行 *中狀態。* 這是受控網域的預期狀態。
 
 ### <a name="what-to-expect"></a>預期的情況
 
@@ -66,7 +66,7 @@ ms.locfileid: "91967693"
 * 無法修補或更新受控網域的網域控制站。
 * Azure Active Directory 的變更可能不會同步處理至受控網域。
 * 可能不會執行受控網域的備份。
-* 如果您解決了影響受控網域的非重大警示，健全狀況應該會返回執行*中狀態。*
+* 如果您解決了影響受控網域的非重大警示，健全狀況應該會返回執行 *中狀態。*
 * 針對 Azure 平臺無法連線到網域控制站的設定問題，會觸發重大警示。 如果未在15天內解決這些重大警示，受控網域就會進入 *暫停* 狀態。
 
 ## <a name="suspended-state"></a>暫止狀態
@@ -98,7 +98,7 @@ ms.locfileid: "91967693"
 若要還原處于 *暫停* 狀態之受控網域的健全狀況，請完成下列步驟：
 
 1. 在 [Azure 入口網站中，搜尋並選取 [ **網域服務**]。
-1. 從清單中選擇您的受控網域（例如 *aaddscontoso.com*），然後選取 [ **健康**情況]。
+1. 從清單中選擇您的受控網域（例如 *aaddscontoso.com*），然後選取 [ **健康** 情況]。
 1. 視擱置的原因而定，選取警示，例如 *AADDS503* 或 *AADDS504*。
 1. 選擇警示中提供的解決方式連結，並遵循步驟來解決此問題。
 

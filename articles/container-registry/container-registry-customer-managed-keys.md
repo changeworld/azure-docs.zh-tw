@@ -2,14 +2,14 @@
 title: 使用客戶管理的金鑰來加密登錄
 description: 深入瞭解 Azure container registry 的待用加密，以及如何使用儲存在 Azure Key Vault 中客戶管理的金鑰來加密您的 Premium 登錄
 ms.topic: article
-ms.date: 11/17/2020
+ms.date: 12/03/2020
 ms.custom: ''
-ms.openlocfilehash: 6dac2239f223b5dee6ec728833caa01562873210
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 708a42a4f965f484060d42d89ea4f535c4365a10
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95255015"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620427"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>使用客戶管理的金鑰來加密登錄
 
@@ -46,12 +46,9 @@ ms.locfileid: "95255015"
 
 * **手動更新金鑰版本** -若要使用特定版本的金鑰進行登錄加密，請在使用客戶管理的金鑰啟用登錄加密時，指定該金鑰版本。 使用特定的金鑰版本加密登錄時，Azure Container Registry 會使用該版本進行加密，直到您手動輪替客戶管理的金鑰。
 
-> [!NOTE]
-> 目前您只能使用 Azure CLI 設定登錄，以自動更新客戶管理的金鑰版本。 使用入口網站啟用加密時，您必須手動更新金鑰版本。
-
 如需詳細資訊，請參閱本文稍後的 [選擇不含金鑰版本](#choose-key-id-with-or-without-key-version) 和 [更新金鑰版本](#update-key-version)的金鑰識別碼。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要使用本文中的 Azure CLI 步驟，您需要 Azure CLI 版本2.2.0 或更新版本，或 Azure Cloud Shell。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
@@ -252,7 +249,7 @@ az acr encryption show --name <registry-name>
 
 ### <a name="create-a-key-vault"></a>建立金鑰保存庫
 
-如需建立金鑰保存庫的步驟，請參閱 [快速入門：使用 Azure 入口網站建立 Azure Key Vault](../key-vault/general/quick-create-portal.md)。
+如需建立金鑰保存庫的步驟，請參閱 [快速入門：使用 Azure 入口網站建立金鑰保存庫](../key-vault/general/quick-create-portal.md)。
 
 為客戶管理的金鑰建立金鑰保存庫時，請在 [ **基本** ] 索引標籤中啟用 **清除保護** 設定。 這項設定有助於防止意外刪除金鑰或金鑰保存庫所導致的資料遺失。
 
@@ -279,13 +276,15 @@ az acr encryption show --name <registry-name>
     1. 將存取權指派給 **使用者指派的受控識別**。
     1. 選取使用者指派的受控識別的資源名稱，然後選取 [ **儲存**]。
 
-### <a name="create-key"></a>建立金鑰
+### <a name="create-key-optional"></a>建立金鑰 (選用) 
+
+（選擇性）在金鑰保存庫中建立金鑰以用來加密登錄。 如果您想要選取特定的金鑰版本做為客戶管理的金鑰，請遵循下列步驟。 
 
 1. 瀏覽至您的金鑰保存庫。
 1. 選取 [設定] > [金鑰]。
 1. 選取 [+產生/匯入]，然後輸入唯一的金鑰名稱。
 1. 接受其餘預設值並選取 [建立]。
-1. 建立之後，請選取金鑰，並記下目前的金鑰版本。
+1. 建立之後，請選取金鑰，然後選取目前的版本。 複製金鑰版本的 **金鑰識別碼** 。
 
 ### <a name="create-azure-container-registry"></a>建立 Azure Container Registry
 
@@ -293,10 +292,11 @@ az acr encryption show --name <registry-name>
 1. 在 [基本概念] 索引標籤中，選取或建立資源群組，然後輸入登錄名稱。 在 **SKU** 中，選取 [進階]。
 1. 在 [加密] 索引標籤的 **客戶管理的金鑰** 中，選取 [已啟用]。
 1. 在 **身分識別** 中，選取您建立的受控識別。
-1. 在 **加密** 中，選取 [從 Key Vault 選取]。
-1. 在 [從 Azure Key Vault 選取金鑰] 視窗中，選取您在上一節中建立的金鑰保存庫、金鑰及和版本。
+1. 在 [ **加密**] 中，選擇下列其中一項：
+    * 選取 [ **從 Key Vault 選取**]，然後選取現有的金鑰保存庫和金鑰，或 **建立新** 的金鑰保存庫。 您選取的索引鍵未建立版本，並可自動進行金鑰輪替。
+    * 選取 [ **輸入金鑰 URI**]，然後直接提供金鑰識別碼。 您可以提供已建立版本的金鑰 URI (給必須以手動方式旋轉的金鑰) 或未建立版本的金鑰 URI (以啟用自動金鑰輪替) 。 
 1. 在 [加密] 索引標籤中，選取 [檢閱+建立]。
-1. 選取 [ **建立** ] 以建立登錄實例。
+1. 選取 [建立] 以部署登錄執行個體。
 
 :::image type="content" source="media/container-registry-customer-managed-keys/create-encrypted-registry.png" alt-text="在 Azure 入口網站中建立加密的登錄":::
 
@@ -498,11 +498,11 @@ az acr encryption rotate-key \
 
 1. 在入口網站中，瀏覽到您的登錄。
 1. 在 [設定]下，選取 [加密] > [變更金鑰]。
-1. 選取 [ **選取金鑰**]。
 
     :::image type="content" source="media/container-registry-customer-managed-keys/rotate-key.png" alt-text="在 Azure 入口網站中輪替金鑰":::
-1. 在 [從 Azure Key Vault 中選取金鑰] 視窗中選取您先前設定的金鑰保存庫和金鑰，然後在 [版本] 中，選取 [建立新的]。
-1. 在 [建立金鑰] 視窗中，選取 [產生]，然後選取 [建立]。
+1. 在 [ **加密**] 中，選擇下列其中一項：
+    * 選取 [ **從 Key Vault 選取**]，然後選取現有的金鑰保存庫和金鑰，或 **建立新** 的金鑰保存庫。 您選取的索引鍵未建立版本，並可自動進行金鑰輪替。
+    * 選取 [ **輸入金鑰 URI**]，然後直接提供金鑰識別碼。 您可以提供已建立版本的金鑰 URI (給必須以手動方式旋轉的金鑰) 或未建立版本的金鑰 URI (以啟用自動金鑰輪替) 。
 1. 完成金鑰選取，然後選取 [儲存]。
 
 ## <a name="revoke-key"></a>撤銷金鑰

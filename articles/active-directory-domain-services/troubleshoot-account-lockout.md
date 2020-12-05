@@ -2,20 +2,20 @@
 title: 針對 Azure AD Domain Services 中的帳戶鎖定進行疑難排解 |Microsoft Docs
 description: 瞭解如何針對在 Azure Active Directory Domain Services 中導致使用者帳戶遭到鎖定的常見問題進行疑難排解。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 340811ee1c518cdccb5bbb0ae9b5f215f5564cfa
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 7967347fa63c657ba6211328bdd1d55512358521
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967608"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618768"
 ---
 # <a name="troubleshoot-account-lockout-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>針對 Azure Active Directory Domain Services 受控網域的帳戶鎖定問題進行疑難排解
 
@@ -66,7 +66,7 @@ AADDomainServicesAccountManagement
 | where OperationName has "4740"
 ```
 
-針對名為 *driley*的帳戶，查看過去七天內的所有帳戶鎖定事件。
+針對名為 *driley* 的帳戶，查看過去七天內的所有帳戶鎖定事件。
 
 ```Kusto
 AADDomainServicesAccountLogon

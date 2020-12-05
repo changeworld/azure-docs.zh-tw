@@ -2,7 +2,7 @@
 title: 檢查 Azure Active Directory Domain Services 的健全狀況 |Microsoft Docs
 description: 瞭解如何檢查 Azure Active Directory Domain Services (Azure AD DS) 受控網域的健康情況，並使用 Azure 入口網站瞭解狀態訊息。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 8999eec3-f9da-40b3-997a-7a2587911e96
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: bf65657ea60e94f167bfbb6585026702b64e9658
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 92cc6157c590d3e05b4002e0f071c08e4ec23a16
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962729"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620319"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>檢查 Azure Active Directory Domain Services 受控網域的健康情況
 
@@ -47,7 +47,7 @@ Azure Active Directory Domain Services (Azure AD DS) 會執行一些背景工作
 
 ## <a name="understand-monitors-and-alerts"></a>瞭解監視和警示
 
-受控網域的健全狀況狀態會顯示兩種類型的資訊- *監視器*和 *警示*。 監視器會顯示核心背景工作完成的時間。 警示會提供資訊或建議，以改善受控網域的穩定性。
+受控網域的健全狀況狀態會顯示兩種類型的資訊- *監視器* 和 *警示*。 監視器會顯示核心背景工作完成的時間。 警示會提供資訊或建議，以改善受控網域的穩定性。
 
 ### <a name="monitors"></a>監視器
 

@@ -1,7 +1,7 @@
 ---
 title: 在 Azure AD Domain Services 中建立和管理群組原則 |Microsoft Docs
 description: 瞭解如何 (Gpo) 編輯內建群組原則物件，並在 Azure Active Directory Domain Services 受控網域中建立您自己的自訂原則。
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -9,17 +9,17 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: deefcb66e05199896e8997d707a06e45f397adec
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: f1f2499c49c4adf16b632bc75c246a28330ad27b
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963732"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619380"
 ---
 # <a name="administer-group-policy-in-an-azure-active-directory-domain-services-managed-domain"></a>管理 Azure Active Directory Domain Services 受控網域中的群組原則
 
-Azure Active Directory Domain Services (Azure AD DS) 中使用者和電腦物件的設定，通常是使用群組原則 Gpo () 物件來管理。 Azure AD DS 包含適用于 *AADDC 使用者* 和 *AADDC 電腦* 容器的內建 gpo。 您可以自訂這些內建 Gpo，以視您的環境需要設定群組原則。 *AZURE AD DC 系統管理員*群組的成員具有 Azure AD DS 網域中群組原則的系統管理許可權，也可以 (ou) 建立自訂 gpo 和組織單位。 如需群組原則及其運作方式的詳細資訊，請參閱 [群組原則總覽][group-policy-overview]。
+Azure Active Directory Domain Services (Azure AD DS) 中使用者和電腦物件的設定，通常是使用群組原則 Gpo () 物件來管理。 Azure AD DS 包含適用于 *AADDC 使用者* 和 *AADDC 電腦* 容器的內建 gpo。 您可以自訂這些內建 Gpo，以視您的環境需要設定群組原則。 *AZURE AD DC 系統管理員* 群組的成員具有 Azure AD DS 網域中群組原則的系統管理許可權，也可以 (ou) 建立自訂 gpo 和組織單位。 如需群組原則及其運作方式的詳細資訊，請參閱 [群組原則總覽][group-policy-overview]。
 
 在混合式環境中，內部部署 AD DS 環境中設定的群組原則不會同步到 Azure AD DS。 若要定義 Azure AD DS 中的使用者或電腦的設定，請編輯其中一個預設 Gpo，或建立自訂 GPO。
 
@@ -51,13 +51,13 @@ Azure Active Directory Domain Services (Azure AD DS) 中使用者和電腦物件
 若要建立及設定 (Gpo) 的群組原則物件，您需要安裝群組原則管理工具。 這些工具可以安裝為 Windows Server 中的一項功能。 如需有關如何在 Windows 用戶端上安裝系統管理工具的詳細資訊，請參閱安裝 [遠端伺服器管理工具 (RSAT) ][install-rsat]。
 
 1. 登入您的管理 VM。 如需如何使用 Azure 入口網站連接的步驟，請參閱連線 [到 Windows SERVER VM][connect-windows-server-vm]。
-1. 當您登入 VM 時，預設應該會開啟 [伺服器管理員]****。 如果沒有，請在 [開始]**** 功能表上，選取 [伺服器管理員]****。
+1. 當您登入 VM 時，預設應該會開啟 [伺服器管理員]。 如果沒有，請在 [開始] 功能表上，選取 [伺服器管理員]。
 1. 在 [伺服器管理員] 視窗的 [儀表板] 窗格內，選取 [新增角色及功能]。
 1. 在 [新增角色及功能精靈] 的 [開始之前] 頁面上，選取 [下一步]。
 1. 針對 [安裝類型]，保持勾選 [角色型或功能型安裝] 選項，然後選取 [下一步]。
 1. 在 [伺服器選擇] 頁面上，從伺服器集區中選擇目前的 VM，例如 myvm.aaddscontoso.com，然後選取 [下一步]。
 1. 在 [伺服器角色] 頁面上，按 [下一步]。
-1. 在 [功能]**** 頁面上，選取 [群組原則管理]**** 功能。
+1. 在 [功能] 頁面上，選取 [群組原則管理] 功能。
 
     ![從 [功能] 頁面安裝 [群組原則管理]](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management.png)
 
@@ -98,7 +98,7 @@ Azure Active Directory Domain Services (Azure AD DS) 中使用者和電腦物件
 
 若要將類似的原則設定分組，您通常會建立其他 Gpo，而不是套用單一預設 GPO 中所有必要的設定。 您可以使用 Azure AD DS 來建立或匯入自己的自訂群組策略物件，並將其連結至自訂 OU。 如果您需要先建立自訂 OU，請參閱 [在受控網域中建立自訂的 ou](create-ou.md)。
 
-1. 在 **群組原則管理** 主控台中，選取您的自訂群組織單位 (OU) ，例如 *MyCustomOU*。 以滑鼠右鍵選取 OU，然後選擇 [ **在這個網域中建立 GPO 並連結**到]：
+1. 在 **群組原則管理** 主控台中，選取您的自訂群組織單位 (OU) ，例如 *MyCustomOU*。 以滑鼠右鍵選取 OU，然後選擇 [ **在這個網域中建立 GPO 並連結** 到]：
 
     ![在群組原則管理主控台中建立自訂 GPO](./media/active-directory-domain-services-admin-guide/gp-create-gpo.png)
 
@@ -110,7 +110,7 @@ Azure Active Directory Domain Services (Azure AD DS) 中使用者和電腦物件
 
     ![選擇 [編輯] 您的自訂 GPO 選項](./media/active-directory-domain-services-admin-guide/gp-gpo-created.png)
 
-1. **群組原則管理編輯器**隨即開啟，讓您自訂 GPO：
+1. **群組原則管理編輯器** 隨即開啟，讓您自訂 GPO：
 
     ![自訂 GPO 以視需要設定設定](./media/active-directory-domain-services-admin-guide/gp-customize-gpo.png)
 

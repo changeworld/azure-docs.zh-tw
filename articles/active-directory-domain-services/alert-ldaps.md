@@ -2,7 +2,7 @@
 title: 解決 Azure AD Domain Services 中的安全 LDAP 警示 |Microsoft Docs
 description: 瞭解如何使用安全 LDAP 進行 Azure Active Directory Domain Services 的一般警示進行疑難排解和解決。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 81208c0b-8d41-4f65-be15-42119b1b5957
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: b9bdcc7e338c0dffc97bd05a6ae9b64947542b2e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 15c1f3a1731edf7b45061646d43688b4aacc6104
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962797"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620302"
 ---
 # <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>已知問題：安全 LDAP Azure Active Directory Domain Services 中的警示
 
@@ -35,12 +35,12 @@ ms.locfileid: "91962797"
 當您啟用安全 LDAP 時，建議您建立其他規則，以限制對特定 IP 位址的輸入 LDAPS 存取。 這些規則會保護受控網域免于暴力密碼破解攻擊。 若要更新網路安全性群組以限制安全 LDAP 的 TCP 埠636存取，請完成下列步驟：
 
 1. 在 [Azure 入口網站中，搜尋並選取 [ **網路安全性群組**]。
-1. 選擇與您的受控網域相關聯的網路安全性群組，例如*AADDS-contoso.com-NSG*，然後選取 [**輸入安全性規則**]
+1. 選擇與您的受控網域相關聯的網路安全性群組，例如 *AADDS-contoso.com-NSG*，然後選取 [**輸入安全性規則**]
 1. 選取 [ **+ 新增** ] 以建立 TCP 通訊埠636的規則。 如有需要，請在視窗中選取 [ **Advanced** ] 以建立規則。
 1. 針對 [ **來源**]，從下拉式功能表中選擇 [ *IP 位址* ]。 輸入您想要授與安全 LDAP 流量存取權的來源 IP 位址。
 1. 選擇 [ *任何* ] 作為 **目的地**，然後輸入 *636* 作為 **目的地埠範圍**。
 1. 將 **通訊協定** 設定 *為 TCP* ，並將 **動作** 設定為 [ *允許*]。
-1. 指定規則的優先順序，然後輸入 *RestrictLDAPS*之類的名稱。
+1. 指定規則的優先順序，然後輸入 *RestrictLDAPS* 之類的名稱。
 1. 準備好時，請選取 [ **新增** ] 以建立規則。
 
 受控網域的健康情況會在兩小時內自動更新，並移除警示。

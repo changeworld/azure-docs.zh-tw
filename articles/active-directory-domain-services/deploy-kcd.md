@@ -2,7 +2,7 @@
 title: Azure AD Domain Services 的 Kerberos 限制委派 |Microsoft Docs
 description: 瞭解如何在 Azure Active Directory Domain Services 受控網域中 (KCD) 啟用以資源為基礎的 Kerberos 限制委派。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 949dbfd4cc2e4ac05cddf035e22119bfb16e306f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 138b90a33ff1dbc4b014f17fa0098112e1da66e4
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960706"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619771"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>在 Azure Active Directory Domain Services 中設定 Kerberos 限制委派 (KCD) 
 
@@ -58,7 +58,7 @@ Windows Server 2012 和更新版本讓服務系統管理員能夠設定其服務
 
 ## <a name="configure-resource-based-kcd-for-a-computer-account"></a>為電腦帳戶設定以資源為基礎的 KCD
 
-在此案例中，假設您有一個在名為 *contoso-webapp.aaddscontoso.com*的電腦上執行的 web 應用程式。
+在此案例中，假設您有一個在名為 *contoso-webapp.aaddscontoso.com* 的電腦上執行的 web 應用程式。
 
 Web 應用程式必須存取在網域使用者內容中名為 *contoso-api.aaddscontoso.com* 的電腦上執行的 web API。
 
@@ -81,7 +81,7 @@ Web 應用程式必須存取在網域使用者內容中名為 *contoso-api.aadds
 
 ## <a name="configure-resource-based-kcd-for-a-user-account"></a>為使用者帳戶設定以資源為基礎的 KCD
 
-在此案例中，讓我們假設您有一個以名為 *appsvc*的服務帳戶執行的 web 應用程式。 Web 應用程式必須存取在網域使用者的環境中，以名為 *backendsvc* 的服務帳戶執行的 web API。 請完成下列步驟來設定此案例：
+在此案例中，讓我們假設您有一個以名為 *appsvc* 的服務帳戶執行的 web 應用程式。 Web 應用程式必須存取在網域使用者的環境中，以名為 *backendsvc* 的服務帳戶執行的 web API。 請完成下列步驟來設定此案例：
 
 1. [建立自訂 OU](create-ou.md)。 您可以將管理這個自訂 OU 的權限委派給受控網域內的使用者。
 1. 將執行後端 web API/資源[的虛擬機器網域加入][create-join-windows-vm]至受控網域。 請在自訂 OU 內建立其電腦帳戶。

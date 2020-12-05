@@ -2,20 +2,20 @@
 title: 使用 Azure AD Domain Services 對加入網域進行疑難排解 |Microsoft Docs
 description: 瞭解如何在嘗試將 VM 加入網域，或將應用程式連線到 Azure Active Directory Domain Services，且無法連線或驗證受控網域時，針對常見問題進行疑難排解。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: ee60b684d64ef49fbb669de8c98203e2df5268bf
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 86d6ca79a12e4706f558e92c3c83c5bddaa99b3c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967506"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618598"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>針對 Azure Active Directory Domain Services 受控網域的網域聯結問題進行疑難排解
 
@@ -31,7 +31,7 @@ ms.locfileid: "91967506"
 如果 VM 找不到受控網域，通常會有網路連線或設定問題。 請參閱下列疑難排解步驟，找出並解決問題：
 
 1. 確定 VM 已連線至與受控網域相同的或對等互連的虛擬網路。 如果沒有，VM 就找不到網域，並連接到網域以加入。
-    * 如果 VM 未連線至相同的虛擬網路，請確認虛擬網路對等互連或 VPN 連線為*使用中或**已連線*，以允許流量正常地流動。
+    * 如果 VM 未連線至相同的虛擬網路，請確認虛擬網路對等互連或 VPN 連線為 *使用中或**已連線*，以允許流量正常地流動。
 1. 請嘗試使用受控網域的功能變數名稱偵測網域，例如 `ping aaddscontoso.com` 。
     * 如果 ping 回應失敗，請嘗試針對您的受控網域（例如），在入口網站中針對 [總覽] 頁面上顯示的網域偵測 IP 位址 `ping 10.0.0.4` 。
     * 如果您可以成功 ping IP 位址，但不能偵測到網域，DNS 可能設定不正確。 請確定您已 [為虛擬網路設定受控網域 DNS 伺服器][configure-dns]。
@@ -43,7 +43,7 @@ ms.locfileid: "91967506"
 
 如果您持續發生連線問題，請參閱下列疑難排解步驟：
 
-1. 在 Azure 入口網站中檢查受控網域的健康情況狀態。 如果您有 *AADDS001*的警示，網路安全性群組規則會封鎖存取。
+1. 在 Azure 入口網站中檢查受控網域的健康情況狀態。 如果您有 *AADDS001* 的警示，網路安全性群組規則會封鎖存取。
 1. 檢查 [必要的埠和網路安全性群組規則][network-ports]。 請確定沒有任何網路安全性群組規則套用至您要連線的 VM 或虛擬網路，而無法封鎖這些網路埠。
 1. 一旦解決任何網路安全性群組設定問題，就會在大約2小時內從健康情況頁面中消失 *AADDS001* 警示。 現在可以使用網路連線，請再次嘗試將 VM 加入網域。
 

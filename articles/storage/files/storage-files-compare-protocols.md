@@ -4,16 +4,16 @@ description: 在建立 Azure 檔案共用之前，請先瞭解可用的通訊協
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: c4cbbc437b633232ea65dd202b7531a1a5ac2c58
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 288d1740c1c4c67dd8756de5fc0652966ae89488
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "96022578"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620969"
 ---
 # <a name="azure-file-share-protocols"></a>Azure 檔案共用通訊協定
 
@@ -26,17 +26,17 @@ Azure 檔案儲存體提供兩種通訊協定來連線及掛接您的 Azure 檔�
 |存取通訊協定     |NFS 4。1         |SMB 2.1、SMB 3。0         |
 |支援的 OS     |Linux 核心4.3 版 +         |Windows 2008 R2 +、Linux 核心版本 4.11 +         |
 |[可用層](storage-files-planning.md#storage-tiers)     |進階儲存體         |Premium 儲存體、交易優化、經常性存取、非經常性存取         |
-|[備援](storage-files-planning.md#redundancy)     |LRS、ZRS         |LRS、ZRS、GRS         |
+|[備援性](storage-files-planning.md#redundancy)     |LRS、ZRS         |LRS、ZRS、GRS         |
 |驗證     |僅限以主機為基礎的驗證        |以身分識別為基礎的驗證，以使用者為基礎的驗證         |
 |權限     |UNIX 樣式許可權         |NTFS 樣式許可權         |
 |檔案系統語義     |POSIX 相容         |不符合 POSIX 規範         |
 |區分大小寫     |區分大小寫         |不區分大小寫         |
-|硬連結支援     |支援         |不受支援         |
-|符號連結支援     |支援         |不受支援         |
-|刪除或修改開啟的檔案     |支援         |不受支援         |
+|硬連結支援     |支援         |不支援         |
+|符號連結支援     |支援         |不支援         |
+|刪除或修改開啟的檔案     |支援         |不支援         |
 |鎖定     |位元組範圍諮詢網路鎖定管理員         |支援         |
-|公用 IP 安全清單 | 不受支援 | 支援|
-|通訊協定 interop| 不受支援 | FileREST|
+|公用 IP 安全清單 | 不支援 | 支援|
+|通訊協定 interop| 不支援 | FileREST|
 
 ## <a name="nfs-shares-preview"></a>NFS 共用 (預覽) 
 
@@ -74,7 +74,7 @@ Azure 檔案儲存體提供兩種通訊協定來連線及掛接您的 Azure 檔�
 
 使用 SMB 掛接的 Azure 檔案共用提供更 Azure 檔案儲存體的功能，且沒有 Azure 檔案儲存體功能限制，因為它已正式推出。
 
-### <a name="features"></a>功能
+### <a name="features"></a>特性
 
 - Azure 檔案同步
 - 以身分識別為基礎的驗證

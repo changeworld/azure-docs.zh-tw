@@ -2,7 +2,7 @@
 title: 使用範本將 Windows VM 加入 Azure AD DS |Microsoft Docs
 description: 瞭解如何使用 Azure Resource Manager 範本將新的或現有的 Windows Server VM 加入 Azure Active Directory Domain Services 受控網域。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 4eabfd8e-5509-4acd-86b5-1318147fddb5
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: 988f009527f26a9f2be965b635d57f0bc38913c2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: e7245e8e468ea051ee095d97cc250ad303aa80a5
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960689"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619431"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>使用 Resource Manager 範本將 Windows Server 虛擬機器加入 Azure Active Directory Domain Services 受控網域
 
@@ -81,7 +81,7 @@ Resource Manager 範本可讓您在程式碼中定義 Azure 基礎結構。 必�
 
 若要建立 Windows Server VM，然後將它加入受控網域，請完成下列步驟：
 
-1. 流覽至 [快速入門範本](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)。 選取要 **部署到 Azure**的選項。
+1. 流覽至 [快速入門範本](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)。 選取要 **部署到 Azure** 的選項。
 1. 在 [ **自訂部署** ] 頁面上，輸入下列資訊，以建立 WINDOWS Server VM 並將其加入至受控網域：
 
     | 設定                   | 值 |
@@ -114,7 +114,7 @@ Resource Manager 範本可讓您在程式碼中定義 Azure 基礎結構。 必�
 
 若要將現有的 Windows Server VM 加入受控網域，請完成下列步驟：
 
-1. 流覽至 [快速入門範本](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)。 選取要 **部署到 Azure**的選項。
+1. 流覽至 [快速入門範本](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)。 選取要 **部署到 Azure** 的選項。
 1. 在 [ **自訂部署** ] 頁面上，輸入下列資訊以將 VM 加入受控網域：
 
     | 設定                   | 值 |
