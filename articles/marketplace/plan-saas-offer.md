@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: d2d890db3c246ad7f3d0a56a3df264d5f78bd54d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5f7278a688147842b7dbfab79a20afea2b4a9288
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571125"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621598"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>如何規劃商用 marketplace 的 SaaS 供應專案
 
@@ -202,7 +202,7 @@ _現在就 (免費的)_、_免費試用_，以及 _透過 Microsoft_ 清單選�
   - .png 檔案
   - 必須包含標題
 - **媒體-** 影片 (選用) ：您最多可以新增四部具有下列需求的影片，以示範您的供應專案：
-  - Name
+  - 名稱
   - URL：必須僅裝載于 YouTube 或 Vimeo 上。
   - 縮圖： 1280 x 720 .png 檔案
 
@@ -250,15 +250,15 @@ SaaS 供應專案可以使用兩個定價模型的其中一個搭配每個方案
 | Microsoft 向您支付授權成本的 80%<br>`*` 針對合格的 SaaS 應用程式，Microsoft 會向您的授權成本支付90% 的費用| 每月 $80.00<br>``*`` 每月 $90.00 |
 |||
 
-**`*` 減少 Marketplace 服務費用**–針對您已在商業市集中發佈的特定 SaaS 供應專案，microsoft 將從20% 的 (降低其 marketplace 服務費用，如 microsoft Publisher 合約) 至10% 所述。 若您的供應專案 () 符合資格，則您的供應專案 (s) 必須由 Microsoft 指定為 Azure IP 共同銷售受到激勵。 在每個日曆月份結束之前，至少必須符合五 (5) 個工作天，才能獲得每月降低的 Marketplace 服務費用。 降低的 Marketplace 服務費用也適用于 Azure IP 共同銷售受到激勵 Vm、受控應用程式，以及透過商業 Marketplace 提供的任何其他合格可交易 IaaS 供應專案。
+**`*` 減少 Marketplace 服務費用**–針對您已在商業市集中發佈的特定 SaaS 供應專案，microsoft 將從20% 的 (降低其 marketplace 服務費用，如 microsoft Publisher 合約) 至10% 所述。 若您的供應專案 () 符合資格，則您的供應專案 (s) 必須由 Microsoft 指定為 Azure IP 共同銷售受到激勵。 在每個日曆月份結束之前，至少必須符合五 (5) 個工作天，才能獲得每月降低的 Marketplace 服務費用。 如需 IP 共同銷售資格的詳細資訊，請參閱 [共同銷售狀態的需求](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。 降低的 Marketplace 服務費用也適用于 Azure IP 共同銷售受到激勵 Vm、受控應用程式，以及透過商業 Marketplace 提供的任何其他合格可交易 IaaS 供應專案。
 
 ## <a name="additional-sales-opportunities"></a>其他銷售商機
 
 您可以加入宣告 Microsoft 支援的行銷和銷售通路。 在合作夥伴中心中建立供應專案時，您會在程式結束時看到兩個索引標籤：
 
-- **透過 Csp 轉售**：使用此選項可讓 Microsoft 雲端解決方案提供者 (CSP) 合作夥伴將您的解決方案轉售為配套供應專案的一部分。 如需詳細資訊，請參閱 [雲端解決方案提供者程式](cloud-solution-providers.md) 。
+- **透過 Csp 轉售**：使用此選項可讓 Microsoft 雲端解決方案提供者 (CSP) 合作夥伴將您的解決方案轉售為配套供應專案的一部分。 如需此程式的詳細資訊，請參閱 [雲端解決方案提供者程式](cloud-solution-providers.md)。
 
-- **與 Microsoft 共同銷售**：此選項可讓 microsoft 銷售團隊在評估客戶的需求時，考慮您的 IP 共同銷售合格解決方案。 如需如何準備您的供應專案以進行評估的詳細資訊，請參閱 [合作夥伴中心中的共同銷售選項](commercial-marketplace-co-sell.md) 。
+- **與 Microsoft 共同銷售**：此選項可讓 microsoft 銷售團隊在評估客戶的需求時，考慮您的 IP 共同銷售合格解決方案。 如需共同銷售資格的詳細資訊，請參閱 [共同銷售狀態的需求](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。 如需如何準備您的供應專案以進行評估的詳細資訊，請參閱 [合作夥伴中心中的共同銷售選項](commercial-marketplace-co-sell.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

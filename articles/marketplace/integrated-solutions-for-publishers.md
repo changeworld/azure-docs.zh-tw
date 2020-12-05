@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: 705b0f02682b6aa41cb5c8e77d8da39faa5edb1f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 70dfccb32389d2f1fb492669c9f84a3e6ae77bbb
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450122"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621343"
 ---
 # <a name="publish-an-integrated-solution"></a>發佈整合式解決方案
 
@@ -32,18 +32,17 @@ ms.locfileid: "96450122"
 ## <a name="eligibility-criteria"></a>適用性準則
 
 * 參與的合作夥伴必須擁有 MPN 識別碼。
-* 參與的服務提供者應已準備好共同銷售。
-* 參與的軟體廠商應已準備好 IP 共同銷售。
+* 參與的服務提供者應 [共同銷售就緒](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。
+* 參與的軟體廠商應為 [IP 共同銷售準備就緒](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。
 * 至少一個參與的合作夥伴必須具有下列其中一個領域的金級專長認證：
-
-    * 應用程式開發
-    * 應用程式整合
-    * 應用程式生命週期管理
-    * 雲端平台
-    * 資料分析
-    * 資料中心
-    * 資料平台
-    * DevOps
+    - 應用程式開發
+    - 應用程式整合
+    - 應用程式生命週期管理
+    - 雲端平台
+    - 資料分析
+    - 資料中心
+    - 資料平台
+    - DevOps
 
 * 解決方案必須包含至少兩個夥伴組織，將 IP 和服務結合在一起，以提供完整的客戶解決方案和體驗。
 * 合作夥伴 IP 必須建置於 Azure、Dynamics 365 或 Power Platform 之上。

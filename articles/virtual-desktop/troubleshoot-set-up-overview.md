@@ -3,20 +3,20 @@ title: Windows 虛擬桌面疑難排解總覽-Azure
 description: 針對設定 Windows 虛擬桌面環境時的問題進行疑難排解的總覽。
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 06/05/2020
+ms.date: 12/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 171322fbec099aa9fafc36c4f951213b33007976
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d051594572f742b290867d12e0fb148f2abbf370
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88009353"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621309"
 ---
 # <a name="troubleshooting-overview-feedback-and-support-for-windows-virtual-desktop"></a>Windows 虛擬桌面的疑難排解總覽、意見反應和支援
 
 >[!IMPORTANT]
->此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統版)，請參閱[這篇文章](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統)，請參閱[此文章](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md)。
 
 本文概述您在設定 Windows 虛擬桌面環境時可能會遇到的問題，並提供解決問題的方法。
 
@@ -45,7 +45,7 @@ ms.locfileid: "88009353"
 | 連接用戶端                                                                    | 請參閱 [Windows 虛擬桌面服務](troubleshoot-service-connection.md) 連線，如果無法解決您的問題，請參閱 [工作階段主機虛擬機器](troubleshoot-vm-configuration.md)設定。 |
 | 遠端應用程式或桌面的回應                                      | 如果問題系結至特定的應用程式或產品，請洽詢負責該產品的小組。 |
 | 授權訊息或錯誤                                                          | 如果問題系結至特定的應用程式或產品，請洽詢負責該產品的小組。 |
-| 協力廠商驗證方法的問題 | 確認協力廠商提供者支援 Windows 虛擬桌面案例，並將其與任何已知問題相關。 |
+| 協力廠商驗證方法或工具的問題 | 確認協力廠商提供者支援 Windows 虛擬桌面案例，並將其與任何已知問題相關。 |
 | 使用適用于 Windows 虛擬桌面的 Log Analytics 的問題 | 針對診斷架構的問題，請 [開啟 Azure 支援要求](https://azure.microsoft.com/support/create-ticket/)。<br><br>針對 Log Analytics 中的查詢、視覺效果或其他問題，請在 Log Analytics 底下選取適當的問題類型。 |
 | 使用 M365 apps 的問題 | 使用其中一個 [M365 系統管理中心](/microsoft-365/admin/contact-support-for-business-products/)的 [說明] 選項來聯絡 M365 系統管理中心。 |
 

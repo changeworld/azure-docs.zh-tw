@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: a915b5a348e3167d2cf81906b19abd9850584ce9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 694f501efc565ed498c1c8d8e2e38326277e8605
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460973"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621411"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>針對 Azure 應用程式供應專案規劃 Azure 受控應用程式
 
@@ -32,7 +32,7 @@ Azure _受控應用程式_ 方案是在 Azure Marketplace 中發佈 azure 應用
 | ------------ | ------------- |
 | Azure 訂用帳戶 | 受控應用程式必須部署至客戶的訂用帳戶，但可由協力廠商管理。 |
 | 計費和計量 | 這些資源會在客戶的 Azure 訂用帳戶中提供。 使用隨用隨付付款模型的 Vm 會透過 Microsoft 與客戶交易，並透過客戶的 Azure 訂用帳戶計費。 <br><br> 針對自備授權 Vm，Microsoft 會針對客戶訂用帳戶中所產生的任何基礎結構費用進行計費，但您會向客戶收取軟體授權費用。 |
-| Azure 相容的虛擬硬碟 (VHD) | VM 必須建置在 Windows 或 Linux 上。 如需詳細資訊，請參閱<br> •建立適用于 Windows Vhd) 的 [AZURE VM 技術資產](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (。<br> • Linux  [發行版本背書于 Azure](../virtual-machines/linux/endorsed-distros.md) (linux vhd) 。 |
+| Azure 相容的虛擬硬碟 (VHD) | VM 必須建置在 Windows 或 Linux 上。 如需詳細資訊，請參閱：<br> •建立適用于 Windows Vhd) 的 [AZURE VM 技術資產](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (。<br> • Linux  [發行版本背書于 Azure](../virtual-machines/linux/endorsed-distros.md) (linux vhd) 。 |
 | 客戶使用狀況屬性 | 所有新的 Azure 應用程式供應項目也必須包含一個 [Azure 合作夥伴客戶使用方式屬性 GUID](azure-partner-customer-usage-attribution.md) \(部分機器翻譯\)。 如需客戶使用方式屬性和如何啟用的詳細資訊，請參閱 [Azure 合作夥伴客戶使用狀況](azure-partner-customer-usage-attribution.md)屬性。 |
 | 部署封裝 | 您將需要一個可讓客戶部署方案的部署套件。 如果您建立多個需要相同技術設定的方案，您可以使用相同的套件。 如需詳細資訊，請參閱下一節：部署套件。 |
 |||
@@ -90,7 +90,7 @@ Azure 訂用帳戶不支援私人方案，此訂用帳戶是透過雲端解決�
 JIT 存取可讓您對受控應用程式的資源要求更高的存取權，以進行疑難排解或維護。 您一律會擁有資源的唯讀存取權，但在特定期間內，您可以擁有更高的存取權。 如需詳細資訊，請參閱[啟用並要求 Azure 受控應用程式的 Just-In-Time 存取](../azure-resource-manager/managed-applications/request-just-in-time-access.md) \(部分機器翻譯\)。
 
 > [!NOTE]
-> 即使 skimmingBe 確定更新您 `createUiDefinition.json` 的檔案以支援這項功能，使用者也應該注意的資訊。
+> 請務必更新您的 `createUiDefinition.json` 檔案，才能支援此功能。
 
 ## <a name="deployment-mode"></a>部署模式
 

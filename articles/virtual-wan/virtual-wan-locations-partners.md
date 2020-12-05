@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: c689c83e50a42885900f62d1a65d0aa75f36f2ec
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 188bc14de502640ae05f1d1eb55330d86cee50b4
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014016"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621474"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>虛擬 WAN 夥伴與虛擬中樞位置
 
@@ -43,7 +43,7 @@ Azure 虛擬 WAN 是一種網路服務，透過 Azure 提供最佳且自動化�
 下列合作夥伴會在我們的藍圖上規劃，這些公司會指出要將夥伴裝置與 Azure 虛擬 WAN VPN 閘道之間的 IPsec 連線能力自動化的工作範圍：128技術、Arista、F5 網路、Oracle SD-WAN (Talari) 和 SharpLink。
 
 ## <a name="partners-with-integrated-virtual-hub-offerings"></a>具有整合式虛擬中樞供應專案的合作夥伴
-除了具有自動化的分公司 IPSec 連線能力之外，某些夥伴還提供 **網路虛擬裝置 (nva) ** ，可直接整合到 AZURE 虛擬 WAN 中樞。  這可讓客戶選擇將其分支連線終止至虛擬中樞內的相容協力廠商應用裝置。  
+除了具有自動化的分公司 IPSec 連線能力之外，某些夥伴還提供 **網路虛擬裝置 (nva)** ，可直接整合到 AZURE 虛擬 WAN 中樞。  這可讓客戶選擇將其分支連線終止至虛擬中樞內的相容協力廠商應用裝置。  
 
 在虛擬 WAN Hub 中提供 NVA 的合作夥伴必須：
 
@@ -60,7 +60,7 @@ Azure 虛擬 WAN 是一種網路服務，透過 Azure 提供最佳且自動化�
 |[Barracuda Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overviewus/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overview)| [Barracuda CloudGen WAN 部署指南](https://campus.barracuda.com/product/cloudgenwan/doc/91980640/deployment/)|
 |[Cisco Cloud Service 路由器 (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| 在 Cisco 雲端服務的公開預覽期間， (CSR) WAN 進入 VWAN hub 時，Cisco 需要終端客戶將電子郵件傳送至 vwan_public_preview@external.cisco.com ，並要求 VManage 部署指南，將電子郵件註冊為 CISCO EFT (早期欄位試用版) 客戶。 |
 
-下列合作夥伴預定在不久的未來將 NVA 帶入虛擬中樞供應專案： Citrix，反之亦然： Networks 和 VeloCloud。
+下列合作夥伴預定在不久的未來讓虛擬中樞提供 NVA： Aviatrix、Citrix、VeloCloud 和反向網路。
 
 ## <a name="locations"></a><a name="locations"></a>位置
 

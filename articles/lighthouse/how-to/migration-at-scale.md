@@ -1,14 +1,14 @@
 ---
 title: 使用 Azure Migrate 大規模管理遷移專案
 description: 瞭解如何有效地在委派的客戶資源上使用 Azure Migrate。
-ms.date: 12/3/2020
+ms.date: 12/4/2020
 ms.topic: how-to
-ms.openlocfilehash: 184307814bd3ceae6047734946f79b0ba5cb2e10
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: d1a01149c80b30f279f7d68551946c3ffe404d5e
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96603175"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621564"
 ---
 # <a name="manage-migration-projects-at-scale-with-azure-migrate"></a>使用 Azure Migrate 大規模管理遷移專案
 
@@ -38,7 +38,7 @@ Azure Lighthouse 與 Azure Migrate 整合，可讓服務提供者大規模探索
 
 此模型的工作流程將如下所示：
 
-1. 客戶已 [上線 Azure Lighthouse](onboard-customer.md)。 將與 Azure Migrate 搭配使用的身分識別需要參與者內建角色。
+1. 客戶已 [上線 Azure Lighthouse](onboard-customer.md)。 將與 Azure Migrate 搭配使用的身分識別需要參與者內建角色。 如需使用此角色的範例，請參閱 [委派的資源管理-azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) 範例範本。
 1. 指定的使用者登入 Azure 入口網站中的管理租使用者，然後移至 Azure Migrate。 此使用者會 [建立 Azure Migrate 專案](/migrate/create-manage-projects.md)，然後選取適當的委派客戶訂用帳戶。
 1. 然後，使用者會 [執行探索和評估的步驟](../../migrate/tutorial-discover-vmware.md)。
 
@@ -60,13 +60,15 @@ Azure Lighthouse 與 Azure Migrate 整合，可讓服務提供者大規模探索
 
 此模型的工作流程將如下所示：
 
-1. 客戶已 [上線 Azure Lighthouse](onboard-customer.md)。 將與 Azure Migrate 搭配使用的身分識別需要參與者內建角色。
+1. 客戶已 [上線 Azure Lighthouse](onboard-customer.md)。 將與 Azure Migrate 搭配使用的身分識別需要參與者內建角色。 如需使用此角色的範例，請參閱 [委派的資源管理-azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) 範例範本。
 1. 指定的使用者登入 Azure 入口網站中的管理租使用者，然後移至 Azure Migrate。 此使用者會在屬於管理租使用者的訂用帳戶中 [建立 Azure Migrate 專案](/migrate/create-manage-projects.md) 。
 1. 然後，使用者會 [執行探索和評估的步驟](../../migrate/tutorial-discover-vmware.md)。 內部部署 Vm 將在管理租使用者中建立的遷移專案內進行探索和評估，然後從該處遷移。
 
    如果您要在相同的 Hyper-v 主機中管理多個客戶，您可以一次探索所有工作負載。 您可以在相同群組中選取客戶專屬的 Vm，然後建立評量，並藉由選取適當的客戶訂用帳戶做為目標目的地來執行遷移。 不需要限制探索範圍，而且您可以在一個遷移專案中全面瞭解所有客戶工作負載。
 
 1. 準備好時，請選取委派的客戶訂用帳戶作為複寫和遷移工作負載的目標目的地，以繼續進行遷移。 新建立的資源將會存在於客戶訂用帳戶中，而與遷移專案相關的評定資料和資源將會保留在管理租使用者中。
+
+注意：在部署之前，您必須先修改參數檔案以反映您的環境 https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate
 
 ## <a name="partner-recognition-for-customer-migrations"></a>客戶遷移的合作夥伴辨識
 

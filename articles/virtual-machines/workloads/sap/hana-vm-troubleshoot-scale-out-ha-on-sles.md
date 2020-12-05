@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 7cf18e2d375d7a45c3641876b8a3ed5974882927
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 87758100299eb170a7950a1a7a2c6bd2029b27fb
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010022"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621547"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>在 SLES 12 SP3 上驗證 SAP HANA scale-out 高可用性設定並為其進行疑難排解 
 
@@ -45,6 +45,9 @@ SAP HANA scale-out 與 SAP HANA System Replication 和 Pacemaker 的所有測試
 SUSE 已發佈[此效能最佳化設定的詳細描述][sles-hana-scale-out-ha-paper]。
 
 針對 SAP HANA scale-out 所支援的虛擬機器類型，檢查 [SAP HANA 認證 IaaS 目錄][sap-hana-iaas-list]。
+
+> [!NOTE]
+> 本文包含「 *主要* 」和「 *從屬*」條款的參考，也就是 Microsoft 不再使用的條款。 從軟體移除這些條款之後，我們會將其從本文中移除。
 
 搭配使用 SAP HANA scale-out 與多個子網路和 vNIC 並設定 HSR 時發生技術問題。 必須使用已修正此問題的最新 SAP HANA 2.0 修補程式。 支援的 SAP HANA 版本如下： 
 

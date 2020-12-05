@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: jlian
-ms.openlocfilehash: 5299a049ab2cc2246a861dd3fb81f466b56afad3
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 864870c4392b12477c321c86afd9da848120490c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96603187"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621700"
 ---
 # <a name="turn-on-preview-mode-for-iot-hub-to-try-select-new-features"></a>開啟 IoT 中樞的預覽模式以嘗試選取新功能
 
@@ -66,7 +66,7 @@ IoT 中樞的新功能處於公開預覽狀態，包括：
 
 請勿在生產環境 *中使用處于* 預覽模式的 IoT 中樞。 預覽模式 *的目的是* 要預覽此頁面上方所列的選取功能。 IoT 中樞預覽模式的其他限制為
 
-- 某些現有的 IoT 中樞功能，例如私用連結、受控識別、裝置串流和容錯移轉，可能會意外運作或根本無法運作。
+- 某些現有的 IoT 中樞功能，例如 IP 篩選、私人連結、受控識別、裝置串流和容錯移轉，可能會意外運作或根本無法運作。
 - 處於預覽模式的 IoT 中樞無法變更或升級為一般 IoT 中樞。
 - 我們無法保證標準的 [IoT 中樞 SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/v1_2/) -請勿用於生產環境。
 

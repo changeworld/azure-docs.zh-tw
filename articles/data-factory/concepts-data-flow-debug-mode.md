@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/11/2020
-ms.openlocfilehash: 2cfd498f73646b0021d5fbb3e982dc82871ef35c
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.date: 12/04/2020
+ms.openlocfilehash: 87465ff381c62343a11c54130378b48580ca40e2
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026984"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621634"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>對應資料流程的偵測模式
 
@@ -25,9 +25,9 @@ Azure Data Factory 對應資料流程的 debug 模式，可讓您在建立及偵
 
 ![調試滑杆](media/data-flow/debugbutton.png "調試滑杆")
 
-一旦開啟滑杆，系統將會提示您選取想要使用的整合執行時間設定。 如果選擇了 AutoResolveIntegrationRuntime，則會啟動具有8個一般計算核心計算的叢集，且具有60分鐘的存留時間。 如需有關「資料流程整合執行時間」的詳細資訊，請參閱 [資料流程效能](concepts-data-flow-performance.md#ir)。
+一旦開啟滑杆，系統將會提示您選取想要使用的整合執行時間設定。 如果選擇 AutoResolveIntegrationRuntime，則會啟動具有八個一般計算核心（預設為60分鐘的時間）的叢集。 如果您想要在會話超時之前讓更多閒置的小組，您可以選擇較高的 TTL 設定。 如需有關「資料流程整合執行時間」的詳細資訊，請參閱 [資料流程效能](concepts-data-flow-performance.md#ir)。
 
-![Debug IR 選取專案](media/data-flow/debugbutton2.png "Debug IR 選取專案")
+![Debug IR 選取專案](media/data-flow/debug-new-1.png "Debug IR 選取專案")
 
 當偵錯工具模式為 on 時，您會以互動方式建立使用中 Spark 叢集的資料流程。 在 Azure Data Factory 中關閉偵錯後，將會關閉此工作階段。 您應該留意在您已開啟偵錯工作階段的期間內，由 Azure Databricks 所產生的每小時費用。
 
@@ -36,7 +36,7 @@ Azure Data Factory 對應資料流程的 debug 模式，可讓您在建立及偵
 ![查看資料流程的 debug 會話](media/iterative-development-debugging/view-dataflow-debug-sessions.png)
 
 > [!NOTE]
-> 使用者從 ADF 瀏覽器 UI 啟動的每個偵錯工具都是具有自己 Spark 叢集的新會話。 您可以使用上述的「監視」視圖來查看和管理每個處理站的偵錯工具會話。
+> 使用者從 ADF 瀏覽器 UI 啟動的每個偵錯工具都是具有自己 Spark 叢集的新會話。 您可以使用上述的「監視」視圖來查看和管理每個處理站的偵錯工具會話。 您需支付每個執行中的偵測會話所需的每小時費用，包括 TTL 時間。
 
 ## <a name="cluster-status"></a>叢集狀態
 

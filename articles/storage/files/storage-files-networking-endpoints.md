@@ -4,16 +4,16 @@ description: 瞭解如何設定 Azure File network 端點。
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/17/2020
+ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 880eeb87d8727d65b2aaecdad8b0ed9ccaacea7a
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 079d7aa9b654a318c7269a41605c3e146b08f127
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629847"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621326"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>設定 Azure 檔案儲存體網路端點
 
@@ -45,15 +45,26 @@ Azure 檔案儲存體提供兩種主要的端點類型來存取 Azure 檔案共�
 
 為您的儲存體帳戶建立私人端點時會部署下列 Azure 資源：
 
-- **私人端點** ：代表儲存體帳戶私人端點的 Azure 資源。 您可以將此視為連線儲存體帳戶和網路介面的資源。
+- **私人端點**：代表儲存體帳戶私人端點的 Azure 資源。 您可以將此視為連線儲存體帳戶和網路介面的資源。
 - **網路介面 (NIC)** ：維護指定虛擬網路/子網路中私人 IP 位址的網路介面。 這與您部署虛擬機器時所部署的資源完全相同，但此資源不會指派給 VM，而是由私人端點所擁有。
-- **私人 DNS 區域** ：如果您之前從未對此虛擬網路部署過私人端點，系統將會為虛擬網路部署新的私人 DNS 區域。 同時也會為此 DNS 區域中的儲存體帳戶建立 DNS A 記錄。 如果您已在此虛擬網路中部署私人端點，新的儲存體帳戶 A 記錄將會新增至現有 DNS 區域。 部署 DNS 區域是選擇性的，但強烈建議您部署，而且如果您使用 AD 服務主體或 FileREST API 來掛接 Azure 檔案共用，則這是必要動作。
+- **私人 DNS 區域**：如果您之前從未對此虛擬網路部署過私人端點，系統將會為虛擬網路部署新的私人 DNS 區域。 同時也會為此 DNS 區域中的儲存體帳戶建立 DNS A 記錄。 如果您已在此虛擬網路中部署私人端點，新的儲存體帳戶 A 記錄將會新增至現有 DNS 區域。 部署 DNS 區域是選擇性的，但強烈建議您部署，而且如果您使用 AD 服務主體或 FileREST API 來掛接 Azure 檔案共用，則這是必要動作。
 
 > [!Note]  
 > 本文會針對 Azure 公用區域使用儲存體帳戶 DNS 尾碼 `core.windows.net`。 此註解也適用於 Azure 主權雲端 (例如 Azure 美國政府雲端和 Azure 中國雲端)，只需替換為適合您環境的尾碼即可。 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 [!INCLUDE [storage-files-networking-endpoints-private-portal](../../../includes/storage-files-networking-endpoints-private-portal.md)]
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+[!INCLUDE [storage-files-networking-endpoints-private-powershell](../../../includes/storage-files-networking-endpoints-private-powershell.md)]
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+[!INCLUDE [storage-files-networking-endpoints-private-cli](../../../includes/storage-files-networking-endpoints-private-cli.md)]
+---
+
+## <a name="verify-connectivity"></a>驗證連線能力
+
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 如果您的虛擬網路中有虛擬機器，或已依照 [設定 Azure 檔案儲存體的 DNS 轉送](storage-files-networking-dns.md) 其中所述來設定 DNS 轉送，您便可透過 PowerShell、命令列或終端機 (適用於 Windows、Linux 或 macOS) 執行下列命令，藉此測試您的私人端點是否已正確設定。 您必須將 `<storage-account-name>` 取代為適當的儲存體帳戶名稱：
 
@@ -74,7 +85,6 @@ Aliases:  storageaccount.file.core.windows.net
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-[!INCLUDE [storage-files-networking-endpoints-private-powershell](../../../includes/storage-files-networking-endpoints-private-powershell.md)]
 
 如果您的虛擬網路內有虛擬機器，或已如 [設定 Azure 檔案儲存體的 DNS 轉送](storage-files-networking-dns.md) 其中所述來設定 DNS 轉送，您便可藉由下列命令來測試您的私人端點是否已正確設定：
 
@@ -101,7 +111,6 @@ IP4Address : 192.168.0.5
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-[!INCLUDE [storage-files-networking-endpoints-private-cli](../../../includes/storage-files-networking-endpoints-private-cli.md)]
 
 如果您的虛擬網路內有虛擬機器，或已如 [設定 Azure 檔案儲存體的 DNS 轉送](storage-files-networking-dns.md) 其中所述來設定 DNS 轉送，您便可藉由下列命令來測試您的私人端點是否已正確設定：
 
@@ -127,10 +136,9 @@ storageaccount.file.core.windows.net      canonical name = storageaccount.privat
 Name:   storageaccount.privatelink.file.core.windows.net
 Address: 192.168.0.5
 ```
-
 ---
 
-### <a name="restrict-public-endpoint-access"></a>限制公用端點存取
+## <a name="restrict-public-endpoint-access"></a>限制公用端點存取
 
 限制公用端點存取首先需要您停用公用端點的一般存取。 停用對公用端點的存取並不會影響私人端點。 停用公用端點之後，您可以選取可繼續存取的特定網路或 IP 位址。 一般而言，儲存體帳戶的大部分防火牆原則會限制對一或多個虛擬網路的網路存取。
 

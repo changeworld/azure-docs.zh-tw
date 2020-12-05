@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 0fda0b659dd2500e811fac1f53c99a9987276185
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ef284661d44f700cf0b5282efcd2e6f7b94fa3b6
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537468"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621513"
 ---
 # <a name="azure-cache-for-redis-network-isolation-options"></a>Azure Cache for Redis 網路隔離選項 
 在本文中，您將瞭解如何根據您的需求判斷最適合的網路隔離解決方案。 我們將探討 Azure Private Link、Azure 虛擬網路 (VNet) 插入和 Azure 防火牆規則的基本概念，並提供其優點與限制。  
@@ -22,7 +22,7 @@ Azure Private Link 提供從虛擬網路到 Azure PaaS 服務的私人連線能�
 ### <a name="advantages"></a>優點
 * 在基本、標準和高階 Azure Cache for Redis 實例上支援。 
 * 藉由使用 [Azure Private Link](../private-link/private-link-overview.md)，您可以透過私人端點從虛擬網路連線到 Azure 快取實例，這會在虛擬網路內的子網中獲指派私人 IP 位址。 如此一來，來自 VNet 內的快取實例也可公開使用。  
-* 私人端點建立之後，就可以透過旗標限制存取公用網路 `publicNetworkAccess` 。 依預設，此旗標會設為 `Enabled` ，讓您可以選擇允許公用和私用連結存取快取。 如果設定為 `Disabled` ，則只會允許私用連結存取。 您可以使用 PATCH 要求將值設定為 `Disabled` 。 如需詳細資訊，請參閱 [Azure Private Link (Preview) Azure Cache for Redis ](cache-private-link.md)。 
+* 私人端點建立之後，就可以透過旗標限制存取公用網路 `publicNetworkAccess` 。 依預設，此旗標會設為 `Disabled` ，這只允許存取私用連結。 您可以 `Enabled` 使用 PATCH 要求將值設定為或 `Disabled` 。 如需詳細資訊，請參閱 [Azure Private Link (Preview) Azure Cache for Redis ](cache-private-link.md)。 
 * 所有外部快取相依性都不會影響 VNet 的 NSG 規則。
 
 ### <a name="limitations"></a>限制 
@@ -60,7 +60,7 @@ VNet 是您在 Azure 中私人網路的基本組建區塊。 VNet 可讓許多 A
 * 防火牆規則可以與 VNet 插入快取搭配使用，但目前不能搭配私人端點使用。 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * 瞭解如何為 [Premium Azure Cache for Redis 實例設定 VNet 插入](cache-how-to-premium-vnet.md)快取。  
 * 瞭解如何設定 [所有 Azure Cache for Redis 層的防火牆規則](cache-configure.md#firewall)。 
 * 瞭解如何 [設定所有 Azure Cache for Redis 層的私人端點](cache-private-link.md)。

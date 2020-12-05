@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 12/04/2020
-ms.openlocfilehash: baa99518498b05b0a658627d9908298eb58f7775
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 7b335c3db5fb52c4323b797556d48e3ed9ae410a
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602728"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621615"
 ---
 # <a name="co-sell-option-in-the-commercial-marketplace"></a>商業 marketplace 中的共同銷售選項
 
-在 [ **與 Microsoft 共同銷售** ] 索引標籤上提供的資訊完全是選擇性的。 您必須達成 [共同銷售就緒和 IP 共同銷售受到激勵狀態](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。 Microsoft 銷售團隊將使用您提供的資訊，在評估其符合客戶需求時，深入瞭解您的供應專案。 您的解決方案無法直接提供給客戶。 如需詳細資訊，請參閱 [與 Microsoft 共同銷售](https://partner.microsoft.com/membership/co-sell-with-microsoft)。
+在 [ **與 Microsoft 共同銷售** ] 索引標籤上提供的資訊完全是選擇性的。 您必須達成 [共同銷售就緒和 IP 共同銷售受到激勵狀態](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。 Microsoft 銷售團隊將使用您提供的資訊，在評估其符合客戶需求時，深入瞭解您的供應專案。 您的解決方案無法直接提供給客戶。 如需詳細資訊，請參閱 [與 Microsoft 共同銷售](https://partner.microsoft.com/membership/co-sell-with-microsoft)。
 
 合作夥伴中心中的共同銷售選項目前提供下列供應專案類型。
 
