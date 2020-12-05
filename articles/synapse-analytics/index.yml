@@ -12,12 +12,12 @@ metadata:
   author: julieMSFT
   ms.author: jrasnick
   ms.date: 12/01/2020
-  ms.openlocfilehash: 6de11d0830c332d19a133592b060caca1382b667
-  ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+  ms.openlocfilehash: 4fe151be6bf542b387b7b8dea915918fd59f34f8
+  ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 12/01/2020
-  ms.locfileid: "96463335"
+  ms.lasthandoff: 12/04/2020
+  ms.locfileid: "96606881"
 landingContent:
 - title: 關於 Azure Synapse Analytics
   linkLists:
@@ -25,8 +25,8 @@ landingContent:
     links:
     - text: 什麼是 Azure Synapse
       url: overview-what-is.md
-    - text: 祕訣和最佳作法
-      url: overview-cheat-sheet.md
+    - text: 術語
+      url: overview-terminology.md
     - text: 常見問題集
       url: overview-faq.md
 - title: Synapse SQL
@@ -39,7 +39,7 @@ landingContent:
     links:
     - text: 使用無伺服器 SQL 集區
       url: quickstart-sql-on-demand.md
-    - text: 使用 Synapse Studio 建立專用 SQL 集區
+    - text: 使用 Synapse Studio 建立專用的 SQL 集區
       url: quickstart-create-sql-pool-studio.md
 - title: 開始使用 Azure Synapse Analytics
   linkLists:
