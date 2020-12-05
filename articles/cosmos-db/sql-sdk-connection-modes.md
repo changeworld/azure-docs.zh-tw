@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet, contperfq2
-ms.openlocfilehash: 892d73c2b23a9806cd38b188f594f129fda9303d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 7901ad4f67f6f3243a2d3b8dc25733ac68b612db
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340714"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608362"
 ---
 # <a name="azure-cosmos-db-sql-sdk-connectivity-modes"></a>Azure Cosmos DB SQL SDK 連接模式
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,7 +47,7 @@ ms.locfileid: "93340714"
 |連線模式  |支援的通訊協定  |支援的 SDK  |API/服務連接埠  |
 |---------|---------|---------|---------|
 |閘道  |   HTTPS    |  所有 Sdk    |   SQL (443) 、MongoDB (10250、10255、10256) 、資料表 (443) 、Cassandra (10350) 、Graph (443)  <br> 埠10250會對應到預設的 Azure Cosmos DB API for MongoDB 實例，但不含異地複寫。 而埠10255和10256則對應到具有異地複寫的實例。   |
-|直接    |     TCP    |  .NET SDK    | 使用公用/服務端點時：10000到20000範圍中的埠<br>使用私人端點時：0到65535範圍中的埠 |
+|直接    |     TCP    |  .NET SDK JAVA SDK    | 使用公用/服務端點時：10000到20000範圍中的埠<br>使用私人端點時：0到65535範圍中的埠 |
 
 ## <a name="next-steps"></a>後續步驟
 

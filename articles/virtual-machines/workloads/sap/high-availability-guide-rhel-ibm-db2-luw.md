@@ -15,16 +15,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: juergent
-ms.openlocfilehash: fcc247e9e3122515ebe9230f58860df8c6dd3948
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 85f268990ac9e0c04cba1b9c409a232a24ce0d61
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484323"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608629"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Red Hat Enterprise Linux Server 上 Azure VM 的 IBM Db2 LUW 高可用性
 
 IBM Db2 for Linux、UNIX 和 Windows (LUW) 在 [高可用性和嚴重損壞修復 (HADR) ](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html) 設定包含一個節點來執行主資料庫實例，以及至少一個執行次要資料庫實例的節點。 主資料庫實例的變更會以同步或非同步方式複寫至次要資料庫實例，視您的設定而定。 
+
+> [!NOTE]
+> 本文包含「 *主要* 」和「 *從屬*」條款的參考，也就是 Microsoft 不再使用的條款。 從軟體移除這些條款之後，我們會將其從本文中移除。
 
 本文說明如何 (Vm) 部署及設定 Azure 虛擬機器、安裝叢集架構，以及使用 HADR 設定安裝 IBM Db2 LUW。 
 
@@ -432,7 +435,7 @@ sudo pcs property set maintenance-mode=false</pre></code>
 
    e. 選取 IBM Db2 叢集的虛擬機器。
 
-   f. 選取 [確定]  。
+   f. 選取 [確定]。
 
 1. 建立健康情況探查：
 
@@ -510,7 +513,7 @@ j2ee/dbhost = db-virt-hostname
 
 建議您設定通用 NFS 共用或 GlusterFS，其中記錄會從兩個節點寫入。 NFS 共用或 GlusterFS 必須具備高可用性。 
 
-您可以使用現有的高可用性 NFS 共用或 GlusterFS 進行傳輸或設定檔目錄。 如需詳細資訊，請參閱
+您可以使用現有的高可用性 NFS 共用或 GlusterFS 進行傳輸或設定檔目錄。 如需詳細資訊，請參閱：
 
 - [Red Hat Enterprise Linux for SAP NetWeaver 上適用於 Azure VM 的 GlusterFS][glusterfs] 
 - [Azure Vm 上的 SAP NetWeaver 的高可用性，適用于 SAP 應用程式的 Azure NetApp Files Red Hat Enterprise Linux][anf-rhel]

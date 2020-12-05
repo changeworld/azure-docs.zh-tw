@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: da1f7ce1474513fd9de286495f59aca63d8628b6
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 04dcf8edbce7782e6d196271bfa85f2f8d1c5ba3
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377201"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608328"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>針對無代理程式 VMware VM 遷移中的複寫問題進行疑難排解
 
@@ -139,7 +139,7 @@ Set-AzureRmKeyVaultAccessPolicy-VaultName "keyvaultname"-ObjectId $userPrincipal
     
     此命令將會嘗試 TCP 連線，並傳回輸出。
     
-     - 在輸出中，檢查 " _TcpTestSucceeded_ " 欄位。 如果值為 " _True_ "，Azure Migrate 設備和 Azure Key Vault 之間沒有連線問題。 如果值為 "False"，就會發生連線問題。
+     - 在輸出中，檢查 "_TcpTestSucceeded_" 欄位。 如果值為 "_True_"，Azure Migrate 設備和 Azure Key Vault 之間沒有連線問題。 如果值為 "False"，就會發生連線問題。
     
     **解決方式：** 如果此測試失敗，Azure Migrate 設備和 Azure Key Vault 之間會發生連線問題。 與您的當地網路團隊合作，檢查連線問題。 一般而言，可能會有一些會導致失敗的防火牆設定。
     
@@ -225,7 +225,7 @@ Set-AzureRmKeyVaultAccessPolicy-VaultName "keyvaultname"-ObjectId $userPrincipal
     
     此命令將會嘗試 TCP 連線，並傳回輸出。
     
-    1. 在輸出中，檢查 " _TcpTestSucceeded_ " 欄位。 如果值為 " _True_ "，Azure Migrate 設備和 Azure Key Vault 之間沒有連線問題。 如果值為 "False"，就會發生連線問題。
+    1. 在輸出中，檢查 "_TcpTestSucceeded_" 欄位。 如果值為 "_True_"，Azure Migrate 設備和 Azure Key Vault 之間沒有連線問題。 如果值為 "False"，就會發生連線問題。
     
     **解決方式：** 如果此測試失敗，Azure Migrate 設備和 Azure Key Vault 之間會發生連線問題。 與您的當地網路團隊合作，檢查連線問題。 一般而言，可能會有一些會導致失敗的防火牆設定。
     
@@ -242,7 +242,7 @@ Set-AzureRmKeyVaultAccessPolicy-VaultName "keyvaultname"-ObjectId $userPrincipal
 
 VMware KB 2048201 中說明了可能導致 VMware vSphere 5.5 上的虛擬機器的 CBT 重設的一個已知問題，請參閱 [VMware KB：](https://go.microsoft.com/fwlink/?linkid=2138888) vSphere 5.x 中的儲存體 vMotion 作業之後重設變更的區塊追蹤。 如果您使用 VMware vSphere 5.5，請確實套用此 KB 中說明的更新。
 
-或者，您也可以使用 VMware PowerCLI，在虛擬機器上 [重設 VMware 變更區塊追蹤]。
+或者，您也可以使用 VMware PowerCLI 重設虛擬機器上的 VMware 變更區塊追蹤。
 
 ## <a name="an-internal-error-occurred"></a>發生內部錯誤
 
@@ -276,7 +276,7 @@ _錯誤訊息：發生內部錯誤。[錯誤訊息]_
 
 當快照集產生停止回應時，就會發生此問題。 發生此問題時，您可以看到 [建立快照集工作停止于95% 或 99%]。 請參閱此 [VMWARE KB](https://go.microsoft.com/fwlink/?linkid=2138969) 以解決此問題。
 
-### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>錯誤訊息：發生內部錯誤。 [無法合併 VM 上的磁片 _[原因]_ ]
+### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>錯誤訊息：發生內部錯誤。 [無法合併 VM 上的磁片 _[原因]_]
 
 當我們在複寫週期結束時合併磁片時，操作會失敗。 請選取適當的 _原因_ 來解決問題，以遵循 [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138970)中的指示。
 

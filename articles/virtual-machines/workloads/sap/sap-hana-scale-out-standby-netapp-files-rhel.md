@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/15/2020
 ms.author: radeltch
-ms.openlocfilehash: f4693af9c29a36aad60b7b525fec024509a4d586
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d2cc8487f9864a27c1a2b02ef6e846bc43727e27
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958739"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608532"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>在 Red Hat Enterprise Linux 上使用 Azure NetApp Files 於 Azure VM 上部署 SAP HANA 擴增系統與待命節點 \(部分機器翻譯\) 
 
@@ -59,6 +59,10 @@ ms.locfileid: "94958739"
 本文說明如何使用 [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) 作為共用存放磁片區，以在 Azure Red Hat Enterprise Linux 虛擬機器 () vm 上使用待命，在相應放大設定中部署高可用性 SAP Hana 系統。  
 
 在範例設定、安裝命令等等中，HANA 實例為 **03** ，而 HANA 系統識別碼是 **HN1**。 這些範例是以 HANA 2.0 SP4 和 SAP 7.6 Red Hat Enterprise Linux 為基礎。 
+
+> [!NOTE]
+> 本文包含「 *主要* 」和「 *從屬*」條款的參考，也就是 Microsoft 不再使用的條款。 從軟體移除這些條款之後，我們會將其從本文中移除。
+
 
 開始之前，請參閱下列 SAP 附注和論文：
 

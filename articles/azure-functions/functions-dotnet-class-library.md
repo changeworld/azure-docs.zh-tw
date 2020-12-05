@@ -4,12 +4,12 @@ description: 了解如何使用 C# 開發 Azure Functions。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 3c363d13933e6554a6eefbeaf02d87dc6b382628
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dc08e378d68743ed7906f4dec7c8f31202959880
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002375"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608277"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# 開發人員參考
 
@@ -327,6 +327,8 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
 {
     logger.LogInformation("Request for item with key={itemKey}.", id);
 ```
+
+若要深入瞭解函式的實現方式 `ILogger` ，請參閱 [收集遙測資料](functions-monitoring.md#collecting-telemetry-data)。 前面加上的類別 `Function` 會假設您使用的是 `ILogger` 實例。 如果您選擇改為使用 `ILogger<T>` ，則可以改為依據類別目錄名稱 `T` 。  
 
 ### <a name="structured-logging"></a>結構化記錄
 

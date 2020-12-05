@@ -5,12 +5,12 @@ description: 瞭解如何使用 GitHub Actions 來更新 AKS 節點
 services: container-service
 ms.topic: article
 ms.date: 11/27/2020
-ms.openlocfilehash: 7a24911fd771663c7edbbdf0c8d2d763a74fc586
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 504c99a7305a5010f8dbe56a30b53d6fc3a13c5b
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96535187"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607835"
 ---
 # <a name="apply-security-updates-to-azure-kubernetes-service-aks-nodes-automatically-using-github-actions"></a>使用 GitHub Actions 自動將安全性更新套用至 Azure Kubernetes Service (AKS) 節點
 
@@ -169,9 +169,9 @@ ms.locfileid: "96535187"
 當您建立認可之後，工作流程將會儲存，並可供執行。
 
 > [!NOTE]
-> 若要升級單一節點集區，而不是叢集中的所有節點集區，請將 `--name` 參數新增至 `az aks nodepool upgrade` 命令以指定節點集區名稱。 例如︰
-> ```
-> inlineScript: az aks nodepool upgrade -g {resourceGroupName} --cluster-name {aksClusterName} --name {{nodePoolName}} --node-image-only
+> 若要升級單一節點集區，而不是叢集中的所有節點集區，請將 `--name` 參數新增至 `az aks nodepool upgrade` 命令以指定節點集區名稱。 例如：
+> ```azurecli-interactive
+> az aks nodepool upgrade -g {resourceGroupName} --cluster-name {aksClusterName} --name {{nodePoolName}} --node-image-only
 > ```
 
 ## <a name="run-the-github-action-manually"></a>手動執行 GitHub 動作

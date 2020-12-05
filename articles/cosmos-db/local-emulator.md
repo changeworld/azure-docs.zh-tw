@@ -7,12 +7,12 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: 6fb1ef45ff4e77ab21480a1013a3cec6bcc7cfa1
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: bfab099c3b81164e0d9ffaa009ea13f42aefb875
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030895"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608617"
 ---
 # <a name="install-and-use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>安裝和使用 Azure Cosmos DB 模擬器進行本機開發和測試
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -60,7 +60,7 @@ Azure Cosmos DB 模擬器提供 Azure Cosmos DB 服務的高逼真度模擬。 �
 安裝模擬器之前，請確定您有下列硬體和軟體需求：
 
 * 軟體需求：
-  * 目前支援 Windows Server 2012 R2、Windows Server 2016、2019或 Windows 8、10個主機 OS。 目前不支援已啟用 Active Directory 的主機作業系統。
+  * 目前支援 Windows Server 2016、2019或 Windows 10 主機 OS。 目前不支援已啟用 Active Directory 的主機作業系統。
   * 64 位元作業系統
 
 * 最低硬體需求：
@@ -302,7 +302,7 @@ services:
 
 基於開發目的，只建議停用 SSL 驗證，且不應在生產環境中執行時進行。 下列範例示範如何停用 .NET 和 Node.js 應用程式的 SSL 驗證。
 
-# <a name="net-standard-21"></a>[.NET Standard 2.1 +](#tab/ssl-netstd21)
+# <a name="net-standard-21"></a>[.NET Standard 2.1+](#tab/ssl-netstd21)
 
 針對在與 .NET Standard 2.1 或更新版本相容的架構中執行的任何應用程式，我們可以利用 `CosmosClientOptions.HttpClientFactory` ：
 
@@ -333,7 +333,7 @@ services:
 
 ## <a name="authenticate-connections-when-using-emulator"></a><a id="authenticate-requests"></a>使用模擬器時驗證連接
 
-就像雲端的 Azure Cosmos DB 一樣，您對 Azure Cosmos DB 模擬器的每個要求都必須經過驗證。 Azure Cosmos DB 模擬器僅支援透過 TLS 的安全通訊。 Azure Cosmos DB 模擬器支援主要金鑰驗證的單一固定帳戶和知名驗證金鑰。 此帳戶和金鑰都是唯一允許搭配 Azure Cosmos DB 模擬器使用的認證， 其中包括：
+就像雲端的 Azure Cosmos DB 一樣，您對 Azure Cosmos DB 模擬器的每個要求都必須經過驗證。 Azure Cosmos DB 模擬器僅支援透過 TLS 的安全通訊。 Azure Cosmos DB 模擬器支援主要金鑰驗證的單一固定帳戶和知名驗證金鑰。 此帳戶和金鑰都是唯一允許搭配 Azure Cosmos DB 模擬器使用的認證， 這些包括：
 
 ```bash
 Account name: localhost:<port>

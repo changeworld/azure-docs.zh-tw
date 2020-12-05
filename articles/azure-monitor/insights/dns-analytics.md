@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: 947b509468857b98b868881bdd48adf67a5d60db
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7bdea9239faa4ec66fffa236bea40afd5e628e62
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994619"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607138"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>收集搭配 DNS 分析預覽版解決方案使用 DNS 基礎結構的深入解析
 
@@ -44,7 +44,7 @@ DNS 分析可協助您︰
 
 此解決方案會從已安裝 Log Analytics 代理程式的 DNS 伺服器收集 DNS 清查和 DNS 事件相關資料。 這項資料會再上傳至 Azure 監視器，並顯示在解決方案儀表板中。 清查相關資料 (例如 DNS 伺服器數目、區域和資源記錄) 的收集方式是執行 DNS PowerShell Cmdlet。 此資料每兩天會更新一次。 事件相關資料是以接近即時的方式，從 Windows Server 2012 R2 增強的 DNS 記錄與診斷功能所提供的[分析和稽核記錄](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11)#enhanc)進行收集。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 請使用下列資訊來設定此解決方案：
 
@@ -57,13 +57,13 @@ DNS 分析可協助您︰
 
 在解決方案儀表板中，按一下 [組態] 以開啟 [DNS 分析組態] 頁面。 您可以進行兩種類型的組態變更︰
 
-- **列入** 允許清單的功能變數名稱。 該解決方案不會處理所有查閱查詢。 它會維護一份網域名稱尾碼的允許清單。 若查閱查詢解析為符合此允許清單中之網域名稱尾碼的網域名稱，此解決方案就不會處理它們。 不處理列入允許清單的網域名稱，有助於最佳化傳送至 Azure 監視器的資料。 預設允許清單包含熱門的公用網域名稱，例如 www.google.com 和 www.facebook.com。 您可以捲動來檢視完整的預設清單。
+- **Allowlisted 功能變數名稱**。 該解決方案不會處理所有查閱查詢。 它會維護功能變數名稱尾碼的允許清單。 解決方案不會處理解析為與此允許清單中之功能變數名稱尾碼相符之功能變數名稱的查閱查詢。 不處理 allowlisted 的功能變數名稱有助於優化傳送至 Azure 監視器的資料。 預設允許清單包含熱門的公用功能變數名稱，例如 www.google.com 和 www.facebook.com。 您可以捲動來檢視完整的預設清單。
 
   您可以修改清單，將您想要檢視查閱深入解析的任何網域名稱尾碼加以新增。 您也可以將您不想要檢視查閱深入解析的任何網域名稱尾碼加以移除。
 
 - **Talkative 用戶端閾值**。 超過查閱要求數目閾值的 DNS 用戶端，在 [DNS 用戶端] 刀鋒視窗中會反白顯示。 預設閾值為 1,000。 您可以編輯閾值。
 
-    ![列入允許清單的網域名稱](./media/dns-analytics/dns-config.png)
+    ![Allowlisted 功能變數名稱](./media/dns-analytics/dns-config.png)
 
 ## <a name="management-packs"></a>管理組件
 
@@ -110,7 +110,7 @@ DNS 圖格包含收集到的資料所在的 DNS 伺服器之數目。 它也包�
 - 網域名稱解析成的 IP 位址。
 - 惡意 IP 位址。
 - 問題的嚴重性。
-- 將惡意 IP 列入封鎖清單的原因。
+- 封鎖惡意 IP 的原因。
 - 偵測時間。
 
 **查詢的網域**。 提供您環境中的 DNS 用戶端最常查詢的網域名稱。 您可以檢視查詢的所有網域名稱清單。 您也可以在記錄搜尋中向下切入至特定網域名稱的查閱要求詳細資料。

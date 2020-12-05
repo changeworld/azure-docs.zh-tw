@@ -14,18 +14,21 @@ ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7c1b09cdcf987c7ed0e489a8a67f77a4099e39a9
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cdc6dd49fe98085edf3c6fb16606b9f540b5a3a0
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955458"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608685"
 ---
 # <a name="operating-system-upgrade"></a>作業系統升級
 本文件會詳述 Hana 大型執行個體作業系統升級的詳細資訊。
 
 >[!NOTE]
 >作業系統升級是客戶的責任，Microsoft 作業支援可以指引您在升級期間要注意的重要區域。 規劃升級之前，請先諮詢您的作業系統廠商。
+
+> [!NOTE]
+> 本文包含「詞彙封鎖項」的參考，這是 Microsoft 不再使用 *的詞彙。* 從軟體移除字詞時，我們會將它從本文中移除。
 
 在快速布建的過程中，Microsoft 作業小組會安裝作業系統。
 隨時間過去，會需要維護 HLI 單元上的作業系統 (例如：修補、調整、升級等)。

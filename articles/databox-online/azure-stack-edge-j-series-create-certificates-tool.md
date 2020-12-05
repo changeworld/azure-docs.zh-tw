@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 11/24/2020
 ms.author: alkohli
-ms.openlocfilehash: 5e5cb077868a224620d1a23e1ff1aac9c8d9f095
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: ab9559e1e8265b3adf08b36d1a8097a00297c61a
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874469"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96606985"
 ---
 # <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>使用 Azure Stack Hub 的就緒檢查程式工具建立 Azure Stack Edge Pro 的憑證 
 
@@ -23,7 +23,7 @@ ms.locfileid: "94874469"
 
 ## <a name="using-azure-stack-hub-readiness-checker-tool"></a>使用 Azure Stack Hub 的準備檢查工具
 
-使用 Azure Stack Hub 的「準備就緒檢查工具」來建立憑證簽署要求， (Csr) 進行 Azure Stack Edge Pro 裝置部署。 您可以在下一 Azure Stack Edge Pro 裝置的訂單並等待裝置抵達之前，建立這些要求。 
+使用 Azure Stack Hub 的「準備就緒檢查工具」來建立憑證簽署要求， (Csr) 進行 Azure Stack Edge Pro 裝置部署。 您可以在將 Azure Stack Edge Pro 裝置的訂單，並等待裝置抵達之後，建立這些要求。
 
 > [!NOTE]
 > 此工具僅適用于測試或開發用途，不適用於生產裝置。 
@@ -59,19 +59,19 @@ ms.locfileid: "94874469"
     Install-Module -Name Microsoft.AzureStack.ReadinessChecker
     ```
 
-    若要確認已安裝的版本，請輸入：  
+    若要取得已安裝的版本，請輸入：  
 
     ```azurepowershell
     Get-InstalledModule -Name Microsoft.AzureStack.ReadinessChecker  | ft Name, Version 
     ```
 
-3. 為所有憑證建立目錄（如果不存在的話）。 輸入： 
+3. 為所有憑證建立一個目錄（如果您還沒有的話）。 輸入： 
     
     ```azurepowershell
     New-Item "C:\certrequest" -ItemType Directory
     ``` 
     
-4. 若要建立憑證要求，請提供下列資訊。 如果您要產生 VPN 憑證，其中有些輸入不適用。 
+4. 若要建立憑證要求，請提供下列資訊。 如果您要產生 VPN 憑證，其中有些輸入不適用。
     
     |輸入 |描述  |
     |---------|---------|
@@ -107,7 +107,7 @@ ms.locfileid: "94874469"
     ```
 
     
-5. 您會在上述 OutputRequestPath 參數中指定的目錄下找到憑證要求檔案。 使用參數時 `MultipleCSR` ，您會看到4個副檔名為的檔案 `.req` 。 這些檔案如下所示：
+5. 您會在上述 OutputRequestPath 參數中指定的目錄中找到憑證要求檔案。 使用參數時 `MultipleCSR` ，您會看到下列四個副檔名為的檔案 `.req` ：
 
     
     |檔案名稱  |憑證要求的類型  |
@@ -115,17 +115,17 @@ ms.locfileid: "94874469"
     |從您的 `DeviceName`     |本機 web UI 憑證要求      |
     |從您的 `NodeSerialNumber`     |節點憑證要求         |
     |從 `login` 開始     |Azure Resource Manager 端點憑證要求       |
-    |從 `wildcard` 開始     |Blob 儲存體憑證要求;它包含萬用字元，因為它涵蓋您可能在裝置上建立的所有儲存體帳戶。          |
+    |從 `wildcard` 開始     |Blob 儲存體憑證要求。 它包含萬用字元，因為它涵蓋您可能在裝置上建立的所有儲存體帳戶。          |
     |從 `AzureStackEdgeVPNCertificate` 開始     |VPN 用戶端憑證要求。         |
 
     您也會看到 INF 資料夾。 這包含一項管理。 <邊緣-devicename> 資訊檔，以純文字說明憑證詳細資料。  
 
 
-6. 將這些檔案提交給您的憑證授權單位單位， (內部或公用) 。 請確定您的 CA 會使用您產生的要求來產生憑證，以符合 [節點憑證](azure-stack-edge-j-series-manage-certificates.md#node-certificates)、 [端點憑證](azure-stack-edge-j-series-manage-certificates.md#endpoint-certificates)和 [本機 UI 憑證](azure-stack-edge-j-series-manage-certificates.md#local-ui-certificates)的 Azure Stack Edge Pro 憑證需求。
+6. 將這些檔案提交給您的憑證授權單位單位， (內部或公用) 。 確定您的 CA 會使用您產生的要求產生憑證，以符合 [節點憑證](azure-stack-edge-j-series-manage-certificates.md#node-certificates)、 [端點憑證](azure-stack-edge-j-series-manage-certificates.md#endpoint-certificates)和 [本機 UI 憑證](azure-stack-edge-j-series-manage-certificates.md#local-ui-certificates)的 Azure Stack Edge Pro 憑證需求。
 
 ## <a name="prepare-certificates-for-deployment"></a>準備憑證以進行部署
 
-您從憑證授權單位單位取得的憑證檔案 (CA) 必須使用符合 Azure Stack Edge Pro 裝置的憑證需求的屬性來匯入和匯出。 在您產生憑證簽署要求的相同系統上，完成下列步驟。
+您從憑證授權單位單位 (CA) 取得的憑證檔案，必須使用符合 Azure Stack Edge Pro 裝置憑證需求的屬性來匯入和匯出。 在您產生憑證簽署要求的相同系統上，完成下列步驟。
 
 - 若要匯入憑證，請依照 [存取 Azure Stack Edge Pro 裝置的用戶端上的匯入憑證](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)中的步驟執行。
 

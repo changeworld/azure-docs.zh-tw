@@ -6,18 +6,21 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 6cf0998eb4d769f2d1a7891892a5a462cd907e32
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4b88550ad489607bb66eb737067190d45a466a43
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422496"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607070"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>使用 OpenCensus Python 追蹤連入要求
 
 傳入的要求資料是使用 OpenCensus Python 及其各種整合來收集。 追蹤傳送至 web 應用程式的傳入要求資料（建立在熱門的 web 架構 `django` 和上） `flask` `pyramid` 。 然後，資料會傳送至 Azure 監視器作為遙測下的 Application Insights `requests` 。
 
 首先，使用最新的 [OpenCensus PYTHON SDK](./opencensus-python.md)來檢測您的 python 應用程式。
+
+> [!NOTE]
+> 本文包含「詞彙封鎖項」的參考，這是 Microsoft 不再使用 *的詞彙。* 從軟體移除字詞時，我們會將它從本文中移除。
 
 ## <a name="tracking-django-applications"></a>追蹤 Django 應用程式
 

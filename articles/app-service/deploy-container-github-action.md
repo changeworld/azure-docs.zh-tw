@@ -3,18 +3,18 @@ title: GitHub Actions 的自訂容器 CI/CD
 description: 瞭解如何使用 GitHub Actions 將自訂 Linux 容器部署至來自 CI/CD 管線的 App Service。
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2020
+ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: 068fc9dcb9a4f4a62c2dd879bf8144097452f1e0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 76d82695f0f43638e840589c52d6713ae36c1608
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099023"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607801"
 ---
-# <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>使用 GitHub Actions 將自訂容器部署到 App Service
+# <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>使用 GitHub Actions 將自訂容器部署至 App Service
 
 [GitHub Actions](https://help.github.com/en/articles/about-github-actions) 可讓您彈性地建立自動化軟體發展工作流程。 透過 [Azure Web Deploy 動作](https://github.com/Azure/webapps-deploy)，您可以將工作流程自動化，以使用 GitHub Actions 將自訂容器部署到 [App Service](overview.md) 。
 
@@ -28,13 +28,13 @@ ms.locfileid: "93099023"
 |**建置** | 1. 建立環境。 <br /> 2. 建立容器映射。 |
 |**部署** | 1. 部署容器映射。 |
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- GitHub 帳戶。 如果您沒有帳戶，請 [免費](https://github.com/join)註冊。  
-- 適用于容器的工作容器登錄和 Azure App Service 應用程式。 這個範例會使用 Azure Container Registry。 
+- GitHub 帳戶。 如果您沒有帳戶，請[免費](https://github.com/join)註冊。 您必須要有 GitHub 存放庫中的程式碼，才能部署至 Azure App Service。 
+- 適用于容器的工作容器登錄和 Azure App Service 應用程式。 這個範例會使用 Azure Container Registry。 請務必完成完整的部署，以針對容器 Azure App Service。 不同于一般 web 應用程式，適用于容器的 web apps 沒有預設登陸頁面。 發佈容器以取得可運作的範例。
     - [瞭解如何使用 Docker 建立容器化的 Node.js 應用程式、將容器映射推送至登錄，然後將映射部署到 Azure App Service](/azure/developer/javascript/tutorial-vscode-docker-node-01)
-
+        
 ## <a name="generate-deployment-credentials"></a>產生部署認證
 
 使用 Azure App Services 進行 GitHub Actions 驗證的建議方式是使用發行設定檔。 您也可以使用服務主體進行驗證，但此程式需要更多步驟。 
@@ -47,10 +47,10 @@ ms.locfileid: "93099023"
 
 1. 在 Azure 入口網站中，移至您的 app service。 
 
-1. 在 [ **總覽** ] 頁面上，選取 [ **取得發行設定檔** ]。
+1. 在 [ **總覽** ] 頁面上，選取 [ **取得發行設定檔**]。
 
     > [!NOTE]
-    > 從2020年10月起，Linux web apps 將需要在 `WEBSITE_WEBDEPLOY_USE_SCM` `true` **下載檔案之前** 將應用程式設定設為。 未來將會移除這項需求。
+    > 從2020年10月起，Linux web apps 將需要在 `WEBSITE_WEBDEPLOY_USE_SCM` `true` **下載檔案之前** 將應用程式設定設為。 未來將會移除這項需求。 請參閱 [Azure 入口網站中的設定 App Service 應用程式](/azure/app-service/configure-common)，以瞭解如何設定常見的 web 應用程式設定。  
 
 1. 儲存下載的檔案。 您將使用檔案的內容來建立 GitHub 秘密。
 
@@ -64,7 +64,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
                             --sdk-auth
 ```
 
-在此範例中，請將預留位置取代為您的訂用帳戶識別碼、資源組名和應用程式名稱。 輸出是具有角色指派認證的 JSON 物件，可讓您存取您的 App Service 應用程式。 複製此 JSON 物件以供稍後之用。
+在此範例中，請將預留位置取代為您的訂用帳戶識別碼、資源組名和應用程式名稱。 輸出是具有角色指派認證的 JSON 物件，可讓您存取您的 App Service 應用程式。 複製此 JSON 物件以供後續使用。
 
 ```output 
   {
@@ -80,26 +80,11 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 > 授與最小存取權永遠是最佳作法。 上一個範例中的範圍僅限於特定的 App Service 應用程式，而非整個資源群組。
 
 ---
-
-## <a name="configure-the-github-secret"></a>設定 GitHub 密碼
-
-在 [GitHub](https://github.com/)中，流覽您的存放庫，選取 **> 秘密 > 新增密碼的設定** 。
-
-貼上 JSON 輸出的內容作為 secret 變數的值。 為秘密命名，例如 `AZURE_CREDENTIALS` 。
-
-當您稍後設定工作流程檔案時，會將祕密用於 Azure 登入動作的輸入 `creds`。 例如：
-
-```yaml
-- uses: azure/login@v1
-  with:
-    creds: ${{ secrets.AZURE_CREDENTIALS }}
-```
-
 ## <a name="configure-the-github-secret-for-authentication"></a>設定 GitHub 秘密以進行驗證
 
 # <a name="publish-profile"></a>[發行設定檔](#tab/publish-profile)
 
-在 [GitHub](https://github.com/)中，流覽您的存放庫，選取 **> 秘密 > 新增密碼的設定** 。
+在 [GitHub](https://github.com/)中，流覽您的存放庫，選取 **> 秘密 > 新增密碼的設定**。
 
 若要使用 [應用層級的認證](#generate-deployment-credentials)，請將所下載發行設定檔的內容貼入秘密的 [值] 欄位中。 為秘密命名 `AZURE_WEBAPP_PUBLISH_PROFILE` 。
 
@@ -113,7 +98,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 # <a name="service-principal"></a>[服務主體](#tab/service-principal)
 
-在 [GitHub](https://github.com/)中，流覽您的存放庫，選取 **> 秘密 > 新增密碼的設定** 。
+在 [GitHub](https://github.com/)中，流覽您的存放庫，選取 **> 秘密 > 新增密碼的設定**。
 
 若要使用 [使用者層級的認證](#generate-deployment-credentials)，請將 Azure CLI 命令中的整個 JSON 輸出貼到秘密的值欄位中。 為秘密命名，例如 `AZURE_CREDENTIALS` 。
 
@@ -129,9 +114,9 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 ## <a name="configure-github-secrets-for-your-registry"></a>為您的登錄設定 GitHub 秘密
 
-定義要與 Docker 登入動作搭配使用的秘密。 
+定義要與 Docker 登入動作搭配使用的秘密。 本檔中的範例會使用容器登錄的 Azure Container Registry。 
 
-1. 移至 Azure 入口網站或 Docker 中的容器，並複製使用者名稱和密碼。 
+1. 移至 Azure 入口網站或 Docker 中的容器，並複製使用者名稱和密碼。 您可以在 [設定] 底下的 Azure 入口網站 [**設定**  >  **存取金鑰**] 底下找到 Azure Container Registry 的使用者名稱和密碼。 
 
 2. 為名為的登錄使用者名稱定義新的密碼 `REGISTRY_USERNAME` 。 
 
@@ -163,7 +148,7 @@ jobs:
         docker push mycontainer.azurecr.io/myapp:${{ github.sha }}     
 ```
 
-您也可以使用 [Docker 登](https://github.com/azure/docker-login) 入同時登入多個容器登錄。 此範例包含兩個新的 GitHub 秘密，可使用 docker.io 進行驗證。
+您也可以使用 [Docker 登](https://github.com/azure/docker-login) 入同時登入多個容器登錄。 此範例包含兩個新的 GitHub 秘密，可使用 docker.io 進行驗證。 此範例假設登錄的根目錄層級有 Dockerfile。 
 
 ```yml
 name: Linux Container Node Workflow
@@ -248,7 +233,7 @@ jobs:
     steps:
     # checkout the repo
     - name: 'Checkout GitHub Action' 
-      uses: actions/checkout@master
+      uses: actions/checkout@main
     
     - name: 'Login via Azure CLI'
       uses: azure/login@v1

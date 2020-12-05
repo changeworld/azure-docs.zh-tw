@@ -4,12 +4,12 @@ description: 瞭解如何將您的函數應用程式連接至 Application Insigh
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperfq2, devx-track-azurecli
-ms.openlocfilehash: 0b8aae707f0fb055677af111f1e88c0a2e19b227
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 02d5ad2e9697c14818a985325267d7caea80f65e
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175741"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607121"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>如何設定 Azure Functions 的監視
 
@@ -28,7 +28,7 @@ Azure Functions 記錄器包括每個記錄的「類別」。 類別指出寫入
 
 # <a name="v2x"></a>[v2. x +](#tab/v2)
 
-| 類別 | Table | 描述 |
+| 類別 | 資料表 | 描述 |
 | ----- | ----- | ----- |
 | **`Function.<YOUR_FUNCTION_NAME>`** | **依賴**| 某些服務會自動收集相依性資料。 針對成功的執行，這些記錄位於 `Information` 層級。 若要深入瞭解， [請參閱相依](functions-monitoring.md#dependencies)性。 例外狀況會記錄在 `Error` 層級。 運行 `Warning` 時間也會建立層級記錄，例如將佇列訊息傳送至 [有害佇列](functions-bindings-storage-queue-trigger.md#poison-messages)的時間。 | 
 | **`Function.<YOUR_FUNCTION_NAME>`** | **customMetrics**<br/>**customEvents** | C # 和 JavaScript Sdk 可讓您收集自訂計量和記錄自訂事件。 若要深入瞭解，請參閱 [自訂遙測資料](functions-monitoring.md#custom-telemetry-data)。|
@@ -39,9 +39,12 @@ Azure Functions 記錄器包括每個記錄的「類別」。 類別指出寫入
 | **`Microsoft`** | **traces** | 反映主機叫用之 .NET 執行時間元件的完整記錄類別。  |
 | **`Worker`** | **traces** | Non-.NET 語言的語言工作者進程所產生的記錄。 語言背景工作記錄檔也可以記錄在 `Microsoft.*` 類別中，例如 `Microsoft.Azure.WebJobs.Script.Workers.Rpc.RpcFunctionInvocationDispatcher` 。 這些記錄會以 `Information` 層級寫入。|
 
+> [!NOTE]
+> 針對 .NET 類別庫函式，這些類別會假設您使用的 `ILogger` 不是 `ILogger<T>` 。 若要深入瞭解，請參閱函式 [ILogger 檔](functions-dotnet-class-library.md#ilogger)。 
+
 # <a name="v1x"></a>[v1.x](#tab/v1)
 
-| 類別 | Table | 描述 |
+| 類別 | 資料表 | 描述 |
 | ----- | ----- | ----- |
 | **`Function`** | **traces**| 使用者產生的記錄檔，可能是任何記錄層級。 若要深入瞭解如何寫入您函式中的記錄，請參閱 [寫入記錄](functions-monitoring.md#writing-to-logs)檔。 | 
 | **`Host.Aggregator`** | **customMetrics** | 這些執行時間產生的記錄 [可在可](#configure-the-aggregator) 設定的時間內，提供函式呼叫的計數和平均值。 預設期間為 30 秒或 1,000 個結果，視何者較早達到而定。 範例包括執行次數、成功率和持續時間。 所有這些記錄都會在 `Information` 層級寫入。 如果您在 `Warning` 或以上層級進行篩選，就不會看到此資料。 |
@@ -192,7 +195,7 @@ Application Insights 具有[取樣](../azure-monitor/app/sampling.md)功能，�
 
 ## <a name="configure-scale-controller-logs"></a>設定調整控制器記錄
 
-_這項功能目前為預覽狀態。_ 
+此功能處於預覽狀態。 
 
 您可以讓 [Azure Functions 的調整控制器](./functions-scale.md#runtime-scaling) 發出記錄至 Application Insights 或 Blob 儲存體，以進一步瞭解調整控制器針對您的函數應用程式所做的決策。
 

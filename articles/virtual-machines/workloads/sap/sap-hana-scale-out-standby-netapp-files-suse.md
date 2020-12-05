@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 1383db44922a044f5e51075b6e1feafa70c78009
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 13644872fca06ad8fc5806326736aea23e504520
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958747"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608651"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>在 SUSE Linux Enterprise Server 上使用 Azure NetApp Files 於 Azure VM 上部署 SAP HANA 擴增系統與待命節點 \(部分機器翻譯\) 
 
@@ -655,6 +655,9 @@ Azure NetApp Files 磁片區的輸送量是磁片區大小和服務層級的功�
    > 請注意 SAP Note [2631285](https://launchpad.support.sap.com/#/notes/2631285)。 
 
 ## <a name="test-sap-hana-failover"></a>測試 SAP Hana 容錯移轉 
+
+> [!NOTE]
+> 本文包含「 *主要* 」和「 *從屬*」條款的參考，也就是 Microsoft 不再使用的條款。 從軟體移除這些條款之後，我們會將其從本文中移除。
 
 1. 模擬 SAP Hana 背景工作節點上的節點損毀。 執行下列動作： 
 

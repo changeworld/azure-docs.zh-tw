@@ -4,12 +4,12 @@ description: 為 Azure Kubernetes Service (AKS) 中的叢集建立及管理 Azur
 services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 7f62c7dc7aacf9be4a59498aa5c556e9991ad578
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e95eae3ab8d992bc169e54700e7e31715e72102e
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85298543"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607818"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>服務主體與 Azure Kubernetes Service (AKS)
 
@@ -23,7 +23,7 @@ ms.locfileid: "85298543"
 
 如果您使用來自不同 Azure AD 租使用者的服務主體，則在部署叢集時，有關于可用許可權的其他考慮。 您可能沒有適當的許可權可以讀取和寫入目錄資訊。 如需詳細資訊，請參閱 [Azure Active Directory 中的預設使用者許可權為何？][azure-ad-permissions]
 
-您也必須安裝並設定 Azure CLI 2.0.59 版或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您也必須安裝並設定 Azure CLI 2.0.59 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][install-azure-cli]。
 
 ## <a name="automatically-create-and-use-a-service-principal"></a>自動建立並使用服務主體
 
@@ -70,9 +70,9 @@ az aks create \
 > [!NOTE]
 > 如果您使用現有的服務主體和自訂的密碼，請確定密碼不超過190個位元組。
 
-若使用 Azure 入口網站來部署 AKS 叢集，請在 [建立 Kubernetes 叢集]**** 對話方塊的 [驗證]** 頁面選擇 [設定服務主體]****。 選取 [一般]**** 索引標籤，並指定下列值：
+若使用 Azure 入口網站來部署 AKS 叢集，請在 [建立 Kubernetes 叢集] 對話方塊的 [驗證] 頁面選擇 [設定服務主體]。 選取 [一般] 索引標籤，並指定下列值：
 
-- **服務主體用戶端識別碼**是您的 *appId*
+- **服務主體用戶端識別碼** 是您的 *appId*
 - **服務主體用戶端祕密** 是 *password* 值
 
 ![瀏覽至 Azure 投票的影像](media/kubernetes-service-principal/portal-configure-service-principal.png)
@@ -105,7 +105,6 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 - 建立[自訂角色][rbac-custom-role]，然後定義下列角色權限：
   - *Microsoft.Network/virtualNetworks/subnets/join/action*
   - *Microsoft.Network/virtualNetworks/subnets/read*
-  - *Microsoft.Network/virtualNetworks/subnets/write*
   - *Microsoft.Network/publicIPAddresses/join/action*
   - *Microsoft. Network/publicIPAddresses/read*
   - *Microsoft.Network/publicIPAddresses/write*
@@ -123,9 +122,9 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
   - *Microsoft.Compute/disks/write*
 - 或是，指派資源群組上的內建[儲存體帳戶參與者][rbac-storage-contributor]角色
 
-### <a name="azure-container-instances"></a>Azure Container Instances
+### <a name="azure-container-instances"></a>Azure 容器執行個體
 
-如果您使用 Virtual Kubelet 來與 AKS 整合，並選擇在與 AKS 叢集不同的資源群組中執行「Azure 容器執行個體」(ACI)，就必須將 ACI 資源群組的「參與者」** 權限授與 AKS 服務主體。
+如果您使用 Virtual Kubelet 來與 AKS 整合，並選擇在與 AKS 叢集不同的資源群組中執行「Azure 容器執行個體」(ACI)，就必須將 ACI 資源群組的「參與者」權限授與 AKS 服務主體。
 
 ## <a name="additional-considerations"></a>其他考量
 
@@ -134,13 +133,13 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 - Kubernetes 的服務主體是叢集組態的一部分。 不過，請勿使用身分識別來部署叢集。
 - 根據預設，服務主體認證的有效期為一年。 您可以隨時 [更新或輪替服務主體認證][update-credentials] 。
 - 每個服務主體都會與 Azure AD 應用程式相關聯。 Kubernetes 叢集的服務主體可與任何有效的 Azure AD 應用程式名稱相關聯 (例如： *https://www.contoso.org/example*) 。 應用程式的 URL 不一定是實際端點。
-- 當您指定服務主體**用戶端識別碼**時，請使用 `appId` 的值。
+- 當您指定服務主體 **用戶端識別碼** 時，請使用 `appId` 的值。
 - 在 Kubernetes 叢集中的代理程式節點 Vm 上，服務主體認證會儲存在檔案中 `/etc/kubernetes/azure.json`
 - 當您使用 [az aks create][az-aks-create] 命令自動產生服務主體時，服務主體認證會寫入用來執行命令之電腦上的 `~/.azure/aksServicePrincipal.json` 檔案。
 - 如果您未在其他 AKS CLI 命令中明確地傳遞服務主體，則會使用位於的預設服務主體 `~/.azure/aksServicePrincipal.json` 。  
 - 您也可以選擇性地移除檔案上的 aksServicePrincipal.js，AKS 會建立新的服務主體。
 - 當您刪除使用 [az aks create][az-aks-create] 建立的叢集時，不會刪除自動建立的服務主體。
-    - 若要刪除服務主體，請查詢您的叢集 servicePrincipalProfile.clientId**，然後使用 [az ad app delete][az-ad-app-delete] 來刪除。 請將下列資源群組和叢集名稱更換為您自己的值：
+    - 若要刪除服務主體，請查詢您的叢集 servicePrincipalProfile.clientId，然後使用 [az ad app delete][az-ad-app-delete] 來刪除。 請將下列資源群組和叢集名稱更換為您自己的值：
 
         ```azurecli
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
@@ -162,7 +161,7 @@ Details: The credentials in ServicePrincipalProfile were invalid. Please see htt
 ls -la $HOME/.azure/aksServicePrincipal.json
 ```
 
-服務主體認證的預設到期時間是一年。 如果您 * 在檔案上的aksServicePrincipal.js* 超過一年，請刪除該檔案，然後再次嘗試部署 AKS 叢集。
+服務主體認證的預設到期時間是一年。 如果您 *在檔案上的aksServicePrincipal.js* 超過一年，請刪除該檔案，然後再次嘗試部署 AKS 叢集。
 
 ## <a name="next-steps"></a>後續步驟
 

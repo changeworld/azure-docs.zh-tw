@@ -1,14 +1,14 @@
 ---
 title: 移除委派的存取權
 description: 瞭解如何移除已委派給服務提供者進行 Azure Lighthouse 之資源的存取權。
-ms.date: 08/12/2020
+ms.date: 12/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 72a2c49dde8cccfcc298d4128384a10bb7e8840f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3442bb9fd2f6e7423fd4bf28cace1f7fd91ad80
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167217"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608447"
 ---
 # <a name="remove-access-to-a-delegation"></a>移除委派的存取權
 
@@ -41,7 +41,7 @@ ms.locfileid: "88167217"
     ] 
 ```
 
-[建立受控服務供應](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#authorization)專案以發佈至 Azure Marketplace 時，也可以在**授權**中選取此角色。
+[建立受控服務供應](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#authorization)專案以發佈至 Azure Marketplace 時，也可以在 **授權** 中選取此角色。
 
 擁有此權限的使用者可以使用下列其中一種方式移除委派。
 
@@ -99,3 +99,4 @@ az managedservices assignment delete --assignment <id or full resourceId>
 
 - 了解 [Azure 委派的資源管理](../concepts/azure-delegated-resource-management.md)。
 - 前往 Azure 入口網站中的 [我的客戶]，以[檢視及管理客戶](view-manage-customers.md)。
+- 瞭解如何 [更新先前的委派](update-delegation.md)。

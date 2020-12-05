@@ -6,12 +6,12 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 204e087908ff978880966332b4619935dc6f0458
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 7ade24b6478f78a51e0be68ae69ae0b076ecff1f
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96559111"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607869"
 ---
 # <a name="configure-premiumv3-tier-for-azure-app-service"></a>設定 Azure App Service 的 PremiumV3 層
 
@@ -82,7 +82,7 @@ App Service 應用程式的定價層會定義在其執行所在的 [App Service 
 如果您的應用程式在無法使用 **PremiumV3** 的 App Service 部署中執行，或如果您的應用程式在目前不支援 **PremiumV3** 的區域中執行，則需要重新部署應用程式，以利用 **PremiumV3**。  您有兩個選擇：
 
 - 在新的資源群組中建立應用程式，並使用新的 App Service 方案。 建立 App Service 方案時，請選取 **PremiumV3** 層。 此步驟可確保 App Service 方案部署至支援 **PremiumV3** 的部署單位。 然後，將您的應用程式程式碼重新部署到新建立的應用程式。 即使您將 App Service 方案調整為較低的層級來節省成本，但您一律可以調整為 **PremiumV3** ，因為部署單元支援。
-- 如果您的應用程式已 **在現有的** 進階層中執行，則您可以將應用程式與所有應用程式設定、連接字串和部署設定複製到使用 **PremiumV3** 的新 app service 方案。
+- 如果您的應用程式已 **在現有的** 進階層中執行，則您可以使用 **PremiumV3** 將應用程式的所有應用程式設定、連接字串和部署設定複製到新的 app service 方案上的新資源群組。
 
     ![顯示如何複製您的應用程式的螢幕擷取畫面。](media/app-service-configure-premium-tier/clone-app.png)
 
