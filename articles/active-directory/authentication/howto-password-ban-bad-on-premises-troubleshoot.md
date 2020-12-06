@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3508d3942626c319221f4b690aaf444e034195bf
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6ca00785bfe8a99b8a3d620559c4fa492ee60c63
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966622"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741740"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>疑難排解：內部部署 Azure AD 密碼保護
 
@@ -217,8 +217,8 @@ PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion 
 > [!IMPORTANT]
 > 這些步驟務必要依序執行。 如果有任何 Proxy 服務的執行個體仍繼續執行，它將會定期重新建立其 serviceConnectionPoint 物件。 如果有任何 DC 代理程式服務的執行個體仍繼續執行，它將會定期重新建立其 serviceConnectionPoint 物件與 sysvol 狀態。
 
-1. 從所有機器解除安裝 Proxy 軟體。 此步驟**不需要**重新開機。
-2. 從所有網域控制站解除安裝 DC 代理程式軟體。 此步驟**需要**重新開機。
+1. 從所有機器解除安裝 Proxy 軟體。 此步驟 **不需要** 重新開機。
+2. 從所有網域控制站解除安裝 DC 代理程式軟體。 此步驟 **需要** 重新開機。
 3. 手動移除每個網域命名內容中的所有 Proxy 服務連接點。 您可以使用下列 Active Directory PowerShell 命令來找出這些物件的位置：
 
    ```powershell

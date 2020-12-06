@@ -7,16 +7,16 @@ ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: baselden
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4c06e53d3ddfb5f344a759e31d83cb22ce6d4d3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a786907c5c954aa45de266b6d92dd47867a8445d
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174131"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743610"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>規劃 Azure Active Directory 中的無密碼 authentication 部署
 
@@ -61,7 +61,7 @@ Microsoft 的無密碼 authentication 方法可實現不同的案例。 請考�
 
 如需為您的組織選取最佳方法的詳細資訊，請參閱 [決定無密碼方法](./concept-authentication-passwordless.md#choose-a-passwordless-method)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 在開始進行無密碼部署之前，組織必須符合下列必要條件：
 
@@ -308,7 +308,7 @@ Azure AD 會在下列情況將專案新增至 audit 記錄：
 
 ### <a name="troubleshoot-phone-sign-in"></a>針對手機登入進行疑難排解
 
-| 案例 | 解決方法 |
+| 案例 | 解決方案 |
 | --- | --- |
 | 使用者無法執行合併的註冊。 | 確定已啟用 [合併註冊](concept-registration-mfa-sspr-combined.md) 。 |
 | 使用者無法啟用手機登入驗證器應用程式。 | 確定使用者已在部署範圍內。 |
@@ -316,7 +316,7 @@ Azure AD 會在下列情況將專案新增至 audit 記錄：
 
 ### <a name="troubleshoot-security-key-sign-in"></a>對安全性金鑰登入進行疑難排解
 
-| 案例 | 解決方法 |
+| 案例 | 解決方案 |
 | --- | --- |
 | 使用者無法執行合併的註冊。 | 確定已啟用 [合併註冊](concept-registration-mfa-sspr-combined.md) 。 |
 | 使用者無法在其 [安全性設定](https://aka.ms/mysecurityinfo)中新增安全性金鑰。 | 確定已啟用 [安全性金鑰](howto-authentication-passwordless-security-key.md) 。 |

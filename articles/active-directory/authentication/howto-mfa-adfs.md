@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 999fb350aaa5f11510db0d4ecc036e188d76e20f
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b42f920726d4b3046ab0c292e1090f5217e8b1f9
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839330"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743236"
 ---
 # <a name="securing-cloud-resources-with-azure-ad-multi-factor-authentication-and-ad-fs"></a>使用 Azure AD Multi-Factor Authentication 和 AD FS 來保護雲端資源
 
@@ -80,8 +80,8 @@ ms.locfileid: "94839330"
 ```
 
 13. 按一下 [完成] 。
-14. 按一下 [套用]。
-15. 按一下 [確定] 。
+14. 按一下 [套用] 。
+15. 按一下 [確定]  。
 16. 關閉 [AD FS 管理]。
 
 ### <a name="configure-azure-ad-multi-factor-authentication-trusted-ips-with-federated-users"></a>設定同盟使用者 Multi-Factor Authentication 信任 Ip Azure AD
@@ -97,4 +97,4 @@ ms.locfileid: "94839330"
 4. 在 [服務設定] 頁面的 [信任的 IP] 下，選取 [對於來自內部網路之同盟使用者的要求略過多重要素驗證]。  
 5. 按一下 [ **儲存**]。
 
-就這麼簡單！ 此時，同盟 Microsoft 365 使用者應該只在來自公司內部網路外的宣告時，才需要使用 MFA。
+這樣就完成了！ 此時，同盟 Microsoft 365 使用者應該只在來自公司內部網路外的宣告時，才需要使用 MFA。

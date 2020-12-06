@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/20/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baffe307a560f2668c2d93e36939a695cf963e89
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b8a57e77ea572f899bf540714e8ac9968988f028
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968373"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741723"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>使用 Azure Active Directory smart 鎖定保護使用者帳戶免于攻擊
 
@@ -58,7 +58,7 @@ ms.locfileid: "91968373"
 
 1. 開啟群組原則管理工具。
 2. 編輯包含貴組織帳戶鎖定原則的群組原則，例如 **預設網域原則**。
-3. 流覽至 [**電腦**  >  設定**原則**]  >  **Windows 設定**  >  **安全性設定**  >  **帳戶原則**  >  **帳戶鎖定原則**。
+3. 流覽至 [**電腦**  >  設定 **原則**]  >  **Windows 設定**  >  **安全性設定**  >  **帳戶原則**  >  **帳戶鎖定原則**。
 4. 確認您的 **帳戶鎖定閾值** ，並 **在值之後重設帳戶鎖定計數器** 。
 
 ![修改內部部署 Active Directory 帳戶鎖定原則](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
@@ -70,12 +70,12 @@ ms.locfileid: "91968373"
 若要檢查或修改組織的智慧鎖定值，請完成下列步驟：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 搜尋並選取 [ *Azure Active Directory*]，然後**Security**選取 [  >  **Authentication methods**  >  **密碼保護**] 安全性驗證方法。
-1. 根據帳戶遭到鎖定之前所允許的失敗登入次數，設定 [鎖定閾值]****。
+1. 搜尋並選取 [ *Azure Active Directory*]，然後 **Security** 選取 [  >  **Authentication methods**  >  **密碼保護**] 安全性驗證方法。
+1. 根據帳戶遭到鎖定之前所允許的失敗登入次數，設定 [鎖定閾值]。
 
     預設值為 10。
 
-1. 將 [鎖定持續時間 (秒)]**** 設為每次鎖定的秒數。
+1. 將 [鎖定持續時間 (秒)] 設為每次鎖定的秒數。
 
     預設值為 60 秒 (一分鐘)。
 

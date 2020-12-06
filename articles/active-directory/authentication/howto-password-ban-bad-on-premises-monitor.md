@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6efcadf85816bb6aa014893bb9b20476a0701990
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: edc246a414401c4c1c0248787eda0381fcd63037
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886748"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741757"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>監視和查看內部部署 Azure AD 密碼保護環境的記錄
 
@@ -240,7 +240,7 @@ HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionDCAgent\Paramete
 
 DC 代理程式服務軟體會安裝名為 **Azure AD 密碼保護** 的效能計數器物件。 以下是目前可用的效能計數器：
 
-|效能計數器名稱 | 說明|
+|效能計數器名稱 | 描述|
 | --- | --- |
 |已處理的密碼 |此計數器會顯示自上次重新啟動後已處理 (已接受或拒絕) 的密碼總數。|
 |已接受的密碼 |此計數器會顯示自上次重新啟動後已接受的密碼總數。|

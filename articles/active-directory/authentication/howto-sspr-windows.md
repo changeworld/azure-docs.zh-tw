@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/17/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1cd40b8df0251aee7692df24e9bc3f7186c155d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 478ae6146caeb8a27cdaf13b7f33e421b8121afc
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966503"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741485"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>在 Windows 登入畫面上啟用 Azure Active Directory 自助式密碼重設
 
@@ -45,7 +45,7 @@ ms.locfileid: "91966503"
     - *HideFastUserSwitching* 設定為 enabled 或1
     - *DontDisplayLastUserName* 設定為 enabled 或1
     - *NoLockScreen* 設定為 enabled 或1
-    - 裝置上已設定*EnableLostMode*
+    - 裝置上已設定 *EnableLostMode*
     - Explorer.exe 會取代為自訂殼層
 - 下列三個特定設定的組合，可能會導致此功能無法正常運作。
     - [互動式登入:不要求按 CTRL+ALT+DEL 鍵] = [已停用]
@@ -75,7 +75,7 @@ ms.locfileid: "91966503"
 #### <a name="create-a-device-configuration-policy-in-intune"></a>在 Intune 中建立裝置設定原則
 
 1. 登入 [Azure 入口網站](https://portal.azure.com) ，然後選取 [ **Intune**]。
-1. 前往**裝置配置**  >  **檔**，然後選取 [ **+ 建立設定檔**]，以建立新的裝置設定檔
+1. 前往 **裝置配置**  >  **檔**，然後選取 [ **+ 建立設定檔**]，以建立新的裝置設定檔
    - 若為 **平臺** ，請選擇 *Windows 10 和更新版本*
    - 針對 [**配置檔案類型**]，選擇 [*自訂*]
 1. 選取 [ **建立**]，然後為設定檔提供有意義的名稱，例如 Windows 10 的登 *入畫面 SSPR*
@@ -101,7 +101,7 @@ ms.locfileid: "91966503"
 若要在使用登錄機碼的登入畫面上啟用 SSPR，請完成下列步驟：
 
 1. 使用系統管理認證登入 Windows 電腦。
-1. 按**Windows**  +  **R**以開啟 [*執行*] 對話方塊，然後以系統管理員身分執行**regedit**
+1. 按 **Windows**  +  **R** 以開啟 [*執行*] 對話方塊，然後以系統管理員身分執行 **regedit**
 1. 設定下列登錄機碼：
 
     ```cmd

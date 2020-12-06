@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 08/17/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 240fb04068f255128f33e79748762305e4d6b704
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 749829f641119273813d3c8ca826daf8b4dc4d11
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94838769"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742658"
 ---
 # <a name="enable-per-user-azure-ad-multi-factor-authentication-to-secure-sign-in-events"></a>啟用每個使用者 Azure AD Multi-Factor Authentication 來保護登入事件
 
@@ -41,10 +41,10 @@ ms.locfileid: "94838769"
 
 使用者的狀態會反映系統管理員是否已在每位使用者的 Azure AD Multi-Factor Authentication 中註冊它們。 Azure AD Multi-Factor Authentication 中的使用者帳戶具有下列三種不同的狀態：
 
-| State | 描述 | 受影響的舊版驗證 | 受影響的瀏覽器應用程式 | 受影響的新式驗證 |
+| 州 | 描述 | 受影響的舊版驗證 | 受影響的瀏覽器應用程式 | 受影響的新式驗證 |
 |:---:| --- |:---:|:--:|:--:|
 | 已停用 | 未在每位使用者 Azure AD Multi-Factor Authentication 註冊之使用者的預設狀態。 | 否 | 否 | 否 |
-| 啟用 | 使用者會在每個使用者 Azure AD Multi-Factor Authentication 中註冊，但仍可使用其密碼進行舊版驗證。 如果使用者尚未註冊 MFA 驗證方法，則會在下一次使用新式驗證 (（例如透過網頁瀏覽器) ）登入時收到註冊的提示。 | 否。 舊版驗證會繼續運作，直到註冊程式完成為止。 | 是。 會話到期之後，需要 Azure AD Multi-Factor Authentication 註冊。| 是。 存取權杖到期之後，需要 Azure AD Multi-Factor Authentication 註冊。 |
+| 啟用 | 使用者會在每個使用者 Azure AD Multi-Factor Authentication 中註冊，但仍可使用其密碼進行舊版驗證。 如果使用者尚未註冊 MFA 驗證方法，則會在下一次使用新式驗證 (（例如透過網頁瀏覽器) ）登入時收到註冊的提示。 | 不可以。 舊版驗證會繼續運作，直到註冊程式完成為止。 | 是。 會話到期之後，需要 Azure AD Multi-Factor Authentication 註冊。| 是。 存取權杖到期之後，需要 Azure AD Multi-Factor Authentication 註冊。 |
 | 已強制 | 使用者會在 Azure AD Multi-Factor Authentication 中向每位使用者註冊。 如果使用者尚未註冊驗證方法，則會在下一次使用新式驗證 (（例如透過網頁瀏覽器) ）登入時收到註冊的提示。 在 *啟用* 狀態下完成註冊的使用者會自動移至 *強制執行* 的狀態。 | 是。 應用程式需要應用程式密碼。 | 是。 登入時需要 Azure AD Multi-Factor Authentication。 | 是。 登入時需要 Azure AD Multi-Factor Authentication。 |
 
 所有使用者一開始都是「已停用」狀態。 當您以每位使用者的 Azure AD Multi-Factor Authentication 註冊使用者時，他們的狀態會變更為 [ *已啟用*]。 當已啟用的使用者登入並完成註冊程序之後，他們的狀態就會變更為「已強制」。 系統管理員可以在狀態之間移動使用者，包括從 *強制執行* 到 *已啟用* 或 *已停用*。

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6658eb6f74474d4394310bd39e897c50fc742a95
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8961cccbd57294e477f0d33202fe91cd292b7814
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94838428"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742216"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP 驗證和 Azure Multi-Factor Authentication Server
 
@@ -44,7 +44,7 @@ ms.locfileid: "94838428"
 
 3. 如果 Azure Multi-Factor Authentication LDAP 服務應該系結至非標準埠，以接聽 LDAP 要求，請在 [用戶端] 索引標籤上，將 TCP 通訊埠和 SSL (TLS) 埠。
 4. 如果您打算使用從用戶端到 Azure Multi-Factor Authentication Server 的 LDAPS，TLS/SSL 憑證必須安裝在與 MFA Server 相同的伺服器上。 按一下 [SSL (TLS) 憑證] 方塊旁的 **[流覽** ]，然後選取要用於安全連線的憑證。
-5. 按一下 [新增] 。
+5. 按一下 [加入]  。
 6. 在 [新增 LDAP 用戶端] 對話方塊中，輸入要向「伺服器」驗證的應用裝置、伺服器或應用程式的 IP 位址，以及應用程式名稱 (選擇性)。 應用程式名稱會出現在 Azure Multi-Factor Authentication 報表中，而且可能顯示在簡訊或行動應用程式驗證訊息內。
 7. 如果所有使用者都已經或將要匯入到「伺服器」，且必須接受雙步驟驗證，請核取 [需要進行 Azure Multi-Factor Authentication 使用者比對] 方塊。 如果有大量使用者尚未匯入伺服器及/或將免除雙步驟驗證，請勿核取此方塊。 如需此功能的其他資訊，請參閱 MFA 伺服器說明檔。
 

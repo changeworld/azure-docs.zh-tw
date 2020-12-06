@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ad3d76227e833f648070bd55469861dffe3d540
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 20b0150c18f2c007ed104d34daacd49ab03131a7
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839551"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743372"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用網路原則伺服器 (NPS) 擴充功能和 Azure AD 整合遠端桌面閘道基礎結構
 
@@ -198,7 +198,7 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
    ![輸入 NPS 伺服器的名稱或 IP 位址](./media/howto-mfa-nps-extension-rdg/image10.png)
   
-1. 按一下 [新增] 。
+1. 按一下 [加入]  。
 1. 在 [共用祕密] 對話方塊中，輸入共用祕密，然後按一下 [確定]。 務必記錄此共用祕密並安全地儲存記錄。
 
    >[!NOTE]
@@ -207,7 +207,7 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
    ![建立共用密碼以建立信任](./media/howto-mfa-nps-extension-rdg/image11.png)
 
-1. 按一下 **[確定]** ，關閉對話方塊。
+1. 按一下 [確定]  關閉對話方塊。
 
 ### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>在遠端桌面閘道 NPS 上設定 RADIUS 逾時值
 

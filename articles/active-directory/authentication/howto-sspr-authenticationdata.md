@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 10/05/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ed2366884f53eafe89800e7ae60a6a560dc292b4
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 6b51fe1349b2ece89b97cf9436ad3374374ad309
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164989"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741570"
 ---
 # <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>預先填入使用者驗證連絡人資訊，以 Azure Active Directory 自助式密碼重設 (SSPR) 
 
@@ -69,7 +69,7 @@ ms.locfileid: "92164989"
 * **驗證電子郵件**
 * **安全性問題和答案**
 
-如果您提供 *行動電話* 或 *備用電子郵件*的值，使用者可以立即使用這些值來重設其密碼，即使他們尚未註冊服務也一樣。
+如果您提供 *行動電話* 或 *備用電子郵件* 的值，使用者可以立即使用這些值來重設其密碼，即使他們尚未註冊服務也一樣。
 
 使用者在第一次註冊時，也會看到這些值，如果需要，也可以修改它們。 成功註冊之後，這些值會分別保存在 [ *驗證電話* ] 和 [ *驗證電子郵件* ] 欄位中。
 
@@ -115,7 +115,7 @@ Get-MsolUser | select DisplayName,UserPrincipalName,AlternateEmailAddresses,Mobi
 
 #### <a name="read-the-authentication-phone-and-authentication-email-options"></a>讀取 [驗證電話] 和 [驗證電子郵件] 選項
 
-使用 PowerShell 第 1 版時，若要讀取 [驗證電話]**** 和 [驗證電子郵件]****，請使用下列命令：
+使用 PowerShell 第 1 版時，若要讀取 [驗證電話] 和 [驗證電子郵件]，請使用下列命令：
 
 ```PowerShell
 Connect-MsolService

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13cfed6bf378ff9dacc4b6446cdfc246a87949bb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d144716dbc5636451405f1124d4c3949f585d6b2
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994225"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742641"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>設定 Azure Multi-Factor Authentication Server 以與 AD FS 2.0 搭配運作
 
@@ -63,7 +63,7 @@ ms.locfileid: "95994225"
 
 12. 因為 AD FS Proxy 伺服器不可能加入網域，您可以使用 LDAP 連接到您的網域控制站，以便使用者匯入和預先驗證。 在 [Advanced Form-Based 網站] 對話方塊中，按一下 [ **主要驗證** ] 索引標籤，然後針對 [預先驗證驗證類型] 選取 [ **LDAP** 系結]。
 13. 完成時，按一下 [確定] 以返回 [新增表單架構網站] 對話方塊。
-14. 按一下 **[確定]** ，關閉對話方塊。
+14. 按一下 [確定]  關閉對話方塊。
 15. 偵測到或已輸入 URL 和頁面變數後，網站資料就會顯示在表單架構面板中。
 16. 按一下 [ **原生模組** ] 索引標籤，然後選取伺服器、AD FS proxy 執行所在的網站 (例如「預設的網站」 ) ，或 AD FS proxy 應用程式 (例如 "adfs" 下的 "ls"，以在所需的層級啟用 IIS 外掛程式。
 17. 按一下畫面頂端的 [啟用 IIS 驗證] 方塊。

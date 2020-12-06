@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed0d4b754911dda49776379fb318390eae411000
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c2124ca9fae76d87a695a2c453f7b222e7a08794
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839007"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742788"
 ---
 # <a name="azure-ad-multi-factor-authentication-user-data-collection"></a>Azure AD Multi-Factor Authentication 使用者資料收集
 
@@ -30,7 +30,7 @@ MFA Server、NPS 擴充功能和 Windows Server 2016 Azure AD MFA AD FS Adapter 
 
 驗證嘗試 (用於報告和疑難排解)：
 
-- 時間戳記
+- Timestamp
 - 使用者名稱
 - 名字
 - 姓氏
@@ -71,7 +71,7 @@ MFA Server、NPS 擴充功能和 Windows Server 2016 Azure AD MFA AD FS Adapter 
 啟用 (嘗試啟用 Microsoft Authenticator 行動應用程式中的帳戶)：
 - 使用者名稱
 - 帳戶名稱
-- 時間戳記
+- Timestamp
 - 取得啟用代碼結果
 - 啟用成功
 - 啟用錯誤
@@ -89,7 +89,7 @@ MFA Server、NPS 擴充功能和 Windows Server 2016 Azure AD MFA AD FS Adapter 
 - 國碼 (地區碼)
 - 電話號碼
 - 設有格式的電話號碼
-- 副檔名
+- 分機
 - 清除分機
 - 封鎖
 - 封鎖原因
@@ -98,7 +98,7 @@ MFA Server、NPS 擴充功能和 Windows Server 2016 Azure AD MFA AD FS Adapter 
 - 帳戶鎖定
 - 詐騙警示
 - 不封鎖詐騙警示
-- 語言
+- Language
 
 略過 (用於報告)：
 
@@ -109,7 +109,7 @@ MFA Server、NPS 擴充功能和 Windows Server 2016 Azure AD MFA AD FS Adapter 
 - 國碼 (地區碼)
 - 電話號碼
 - 設有格式的電話號碼
-- 副檔名
+- 分機
 - 清除分機
 - 略過原因
 - 完成時間戳記

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 08/19/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5cc6847332765419001eadc5944905f55a425ef
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 98cb990ede7c4d6e261bba05b0b8c97d758e6c32
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964786"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743525"
 ---
 # <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad-preview"></a>Azure AD (preview 中混合式 FIDO2 安全性金鑰的部署常見問題 (常見問題) ) 
 
@@ -69,7 +69,7 @@ FIDO2 安全性金鑰具有安全記憶體保護區，可保護儲存在這些�
 
 否，目前沒有。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * [如果沒有網際網路連線能力，這項功能是否適用？](#does-this-feature-work-if-theres-no-internet-connectivity)
 * [有哪些特定端點需要開放給 Azure AD？](#what-are-the-specific-end-points-that-are-required-to-be-open-to-azure-ad)
@@ -123,7 +123,7 @@ EnterpriseJoined: NO
 DomainedJoined: NO
 ```
 
-下列範例輸出顯示裝置為混合式 Azure AD 聯結，因為 *DomainedJoined* 也設定為 *[是]*。 *DomainName*也會顯示：
+下列範例輸出顯示裝置為混合式 Azure AD 聯結，因為 *DomainedJoined* 也設定為 *[是]*。 *DomainName* 也會顯示：
 
 ```output
 +---------------------+
@@ -160,11 +160,11 @@ nltest /dsgetdc:<domain> /keylist /kdc
 
 否，僅限內部部署裝置不支援此功能。 FIDO2 認證提供者將不會顯示。
 
-### <a name="fido2-security-key-sign-in-isnt-working-for-my-domain-admin-or-other-high-privilege-accounts-why"></a>FIDO2 安全性金鑰登入無法針對我的網域系統管理員或其他高許可權帳戶運作。 為什麼？
+### <a name="fido2-security-key-sign-in-isnt-working-for-my-domain-admin-or-other-high-privilege-accounts-why"></a>FIDO2 安全性金鑰登入無法針對我的網域系統管理員或其他高許可權帳戶運作。 原因為何？
 
 預設安全性原則不會授與在內部部署資源上簽署高許可權帳戶的 Azure AD 許可權。
 
-若要解除封鎖帳戶，請使用**Active Directory 消費者和電腦**修改*msDS-NeverRevealGroup* *Azure AD Kerberos 電腦物件的 Msds-neverrevealgroup 屬性 (CN = AzureADKerberos，OU = 網域控制站， \<domain-DN>) *。
+若要解除封鎖帳戶，請使用 **Active Directory 消費者和電腦** 修改 *msDS-NeverRevealGroup* *Azure AD Kerberos 電腦物件的 Msds-neverrevealgroup 屬性 (CN = AzureADKerberos，OU = 網域控制站， \<domain-DN>)*。
 
 ## <a name="under-the-hood"></a>背後原理
 
@@ -179,13 +179,13 @@ nltest /dsgetdc:<domain> /keylist /kdc
 
 有兩個部分-內部部署 AD DS 環境，以及 Azure AD 的租使用者。
 
-**Active Directory Domain Services (AD DS) **
+**Active Directory Domain Services (AD DS)**
 
 Azure AD 的 Kerberos 伺服器會在內部部署 AD DS 環境中表示為網域控制站 (DC) 物件。 此 DC 物件是由多個物件所組成：
 
 * *CN = AzureADKerberos，OU = 網域控制站，\<domain-DN>*
     
-    *電腦*物件，代表 AD DS 中 (RODC) 的 Read-Only 網域控制站。 沒有與這個物件相關聯的電腦。 相反地，它是 DC 的邏輯標記法。
+    *電腦* 物件，代表 AD DS 中 (RODC) 的 Read-Only 網域控制站。 沒有與這個物件相關聯的電腦。 相反地，它是 DC 的邏輯標記法。
 
 * *CN = krbtgt_AzureAD，CN = Users，\<domain-DN>*
 
@@ -193,7 +193,7 @@ Azure AD 的 Kerberos 伺服器會在內部部署 AD DS 環境中表示為網域
 
 * *CN = 900274c4-b7d2-43c8-90ee-00a9f650e335，CN = AzureAD，CN = System，\<domain-DN>*
 
-    *ServiceConnectionPoint*物件，儲存 Azure AD Kerberos 伺服器物件的相關中繼資料。 系統管理工具會使用此物件來識別並找出 Azure AD 的 Kerberos 伺服器物件。
+    *ServiceConnectionPoint* 物件，儲存 Azure AD Kerberos 伺服器物件的相關中繼資料。 系統管理工具會使用此物件來識別並找出 Azure AD 的 Kerberos 伺服器物件。
 
 **Azure Active Directory**
 

@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 06/05/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: adca22b3a8d9b93dfbc62202106127a5833a4c38
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 964cd77a24a7a73bf1151ba9e6ab43509e664b9f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839194"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743066"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>設定 Azure AD Multi-Factor Authentication 設定
 
@@ -25,7 +25,7 @@ ms.locfileid: "94839194"
 
 Azure 入口網站提供下列 Azure AD Multi-Factor Authentication 設定：
 
-| 功能 | 說明 |
+| 功能 | 描述 |
 | ------- | ----------- |
 | [帳戶鎖定](#account-lockout) | 如果資料列中有太多拒絕的驗證嘗試，請使用 Azure AD Multi-Factor Authentication 暫時鎖定帳戶。 這項功能僅適用於輸入 PIN 以進行驗證的使用者。 (MFA 伺服器) |
 | [封鎖/解除封鎖使用者](#block-and-unblock-users) | 封鎖特定使用者無法接收 Azure AD Multi-Factor Authentication 要求。 系統會自動拒絕已封鎖使用者的任何驗證嘗試。 使用者在封鎖或手動解除封鎖時，會持續封鎖90天。 |

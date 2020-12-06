@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 08/19/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 690d4761657b8bf6e5ba63ddfbce7163584e64e2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ea034974e85febcffeb2494d87b666a39e524eb1
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174029"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743270"
 ---
 # <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad-preview"></a>針對 Azure AD (preview) 中 FIDO2 安全性金鑰的混合式部署進行疑難排解
 
@@ -145,7 +145,7 @@ Azure AD Kerberos Server PowerShell Cmdlet 會使用與標準 Azure AD Connect W
 
 | 屬性           | 描述  |
 |--------------------|--------------|
-| Id                 | AD DS 網域控制站物件的唯一 *識別碼* 。 |
+| 識別碼                 | AD DS 網域控制站物件的唯一 *識別碼* 。 |
 | DomainDnsName      | AD DS 網域的 DNS 功能變數名稱。 |
 | ComputerAccount    | Azure AD Kerberos 伺服器物件的電腦帳戶物件 (DC) 。 |
 | UserAccount        | 停用的使用者帳戶物件，該物件保留 Azure AD Kerberos 伺服器 TGT 加密金鑰。 此帳戶的 DN 是 *cn = krbtgt_AzureAD，cn = Users，<網域-DN>* |

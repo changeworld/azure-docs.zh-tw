@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: mijos, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 11/20/2020
-ms.openlocfilehash: 59c60c876058f8664b38411b562e57c2d5cdc2a8
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 0057a4671dbc63bf53bafa8d2d742d4edcda1e5e
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510619"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741043"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>設定客戶管理的金鑰，以在 Azure Logic Apps 中 (Ise) 為整合服務環境加密待用資料
 
@@ -37,7 +37,7 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存和自動 [加密待用資料](.
 
   * **使用者指派的受控識別**：在您傳送建立 ISE 的 HTTPS PUT 要求之前，請先將 [金鑰保存庫的存取權授與 ise 的受控識別](#identity-access-to-key-vault)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * [啟用 ise 存取權](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)的相同[必要條件](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites)和需求，如同當您在 Azure 入口網站中建立 ise 時
 
@@ -101,7 +101,7 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存和自動 [加密待用資料](.
 
 ```json
 {
-   "id": "/subscriptions/{Azure-subscription-ID/resourceGroups/{Azure-resource-group}/providers/Microsoft.Logic/integrationServiceEnvironments/{ISE-name}",
+   "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Logic/integrationServiceEnvironments/{ISE-name}",
    "name": "{ISE-name}",
    "type": "Microsoft.Logic/integrationServiceEnvironments",
    "location": "{Azure-region}",

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4802c4faf245819f57f9885129fa876110407dd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8f5df1cb158821fb0cd85d90f9ba3b79d80adf45
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965228"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743916"
 ---
 # <a name="enforce-on-premises-azure-ad-password-protection-for-active-directory-domain-services"></a>針對 Active Directory Domain Services 強制執行內部部署 Azure AD 密碼保護
 
@@ -51,7 +51,7 @@ Azure AD 的密碼保護 DC 代理程式軟體只能在安裝到 DC 時驗證密
 
 * Azure AD 的密碼保護 Proxy 服務會在目前 AD DS 樹系中任何已加入網域的電腦上執行。 服務的主要目的是將密碼原則下載要求從 Dc 轉送到 Azure AD，然後將回應從 Azure AD 傳回至 DC。
 * DC 代理程式的密碼篩選 DLL 會接收來自作業系統的使用者密碼驗證要求。 篩選器會將它們轉送到 dc 上本機執行的 DC 代理程式服務。
-* Azure AD 密碼保護的 DC 代理程式服務會接收來自 DC 代理程式密碼篩選 DLL 的密碼驗證要求。 DC 代理程式服務會使用目前 (本機可用) 密碼原則來處理它們，並 *傳回通過* 或 *失敗*的結果。
+* Azure AD 密碼保護的 DC 代理程式服務會接收來自 DC 代理程式密碼篩選 DLL 的密碼驗證要求。 DC 代理程式服務會使用目前 (本機可用) 密碼原則來處理它們，並 *傳回通過* 或 *失敗* 的結果。
 
 ## <a name="how-azure-ad-password-protection-works"></a>Azure AD 密碼保護的運作方式
 

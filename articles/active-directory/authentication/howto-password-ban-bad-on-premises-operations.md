@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 03/05/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d72aa65f18896ebbecf651da32558059ba782cc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f2e11fa1bb9f1d3a3986a19da8ed44229829ec81
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968390"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741774"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>啟用內部部署 Azure Active Directory 密碼保護
 
@@ -32,7 +32,7 @@ ms.locfileid: "91968390"
 
 ## <a name="enable-on-premises-password-protection"></a>啟用內部部署密碼保護
 
-1. 登入[Azure 入口網站](https://portal.azure.com)，然後流覽至**Azure Active Directory**  >  **安全性**  >  **驗證方法**  >  **密碼保護**。
+1. 登入 [Azure 入口網站](https://portal.azure.com)，然後流覽至 **Azure Active Directory**  >  **安全性**  >  **驗證方法**  >  **密碼保護**。
 1. 將 [ **啟用 Windows Server 上的密碼保護 Active Directory** ] 選項設定為 *[是]*。
 
     當此設定設為 [ *否*] 時，所有已部署 Azure AD 密碼保護 DC 代理程式都會進入「靜止」模式，其中所有密碼都會依原樣接受。 不會執行任何驗證活動，也不會產生審核事件。
