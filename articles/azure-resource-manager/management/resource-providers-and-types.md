@@ -2,14 +2,14 @@
 title: 資源提供者和資源類型
 description: 描述支援 Azure Resource Manager 的資源提供者。 它描述其架構、可用的 API 版本，以及可裝載資源的區域。
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 12/04/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6413a1279c9c7a995bb144097e3db55d5f3a90d2
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6d114fdfae12dd9ee96a23e4dafc3847c6429d0c
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452100"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745097"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure 資源提供者和類型
 
@@ -45,20 +45,28 @@ ms.locfileid: "96452100"
 
 ## <a name="azure-portal"></a>Azure 入口網站
 
+### <a name="register-resource-provider"></a>註冊資源提供者
+
 若要查看所有資源提供者，以及您訂用帳戶的登錄狀態：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 在 Azure 入口網站功能表上，選取 [所有服務]。
+1. 在 [Azure 入口網站] 功能表上，搜尋 **訂閱**。 從可用的選項中進行選取。
 
-    ![選取 [訂用帳戶]](./media/resource-providers-and-types/select-all-services.png)
+   :::image type="content" source="./media/resource-providers-and-types/search-subscriptions.png" alt-text="搜尋訂閱":::
 
-3. 在 [所有服務] 方塊中，輸入 [訂用帳戶]，然後選取 [訂用帳戶]。
-4. 從訂用帳戶清單中選取要檢視的訂用帳戶。
-5. 選取 **資源提供者** 並檢視可用資源提供者的清單。
+1. 選取您要查看的訂用帳戶。
 
-    ![顯示資源提供者](./media/resource-providers-and-types/show-resource-providers.png)
+   :::image type="content" source="./media/resource-providers-and-types/select-subscription.png" alt-text="選取訂用帳戶":::
 
-6. 若要註冊資源提供者，請選取 [註冊]。 在前一個螢幕擷取畫面中，已針對 **Microsoft.Blueprint** 醒目提示 [註冊] 連結。 若要在您的訂用帳戶中維持最低許可權，請只註冊您已備妥可使用的資源提供者。
+1. 在左側功能表的 [設定]  下，選取 [資源提供者]  。
+
+   :::image type="content" source="./media/resource-providers-and-types/select-resource-providers.png" alt-text="選取資源提供者":::
+
+6. 尋找您想要註冊的資源提供者，然後選取 [ **註冊**]。 若要在您的訂用帳戶中維持最低許可權，請只註冊您已備妥可使用的資源提供者。
+
+   :::image type="content" source="./media/resource-providers-and-types/register-resource-provider.png" alt-text="註冊資源提供者":::
+
+### <a name="view-resource-provider"></a>查看資源提供者
 
 若要查看特定資源提供者的資訊：
 

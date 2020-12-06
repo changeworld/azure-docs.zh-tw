@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d69ba7b4393a815c9f9685d2e2679c6423ac65a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2c8454d2ca83d4f406149e7eb73feb19ce59554f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965245"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744120"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>何時使用 Azure Multi-Factor Authentication Provider
 
@@ -25,7 +25,7 @@ ms.locfileid: "91965245"
 
 預設會針對擁有 Azure Active Directory 和 Microsoft 365 使用者的全域管理員，提供雙步驟驗證。 不過，如果您想要充分利用[進階功能](howto-mfa-mfasettings.md)，則應該購買完整版的 Azure Multi-Factor Authentication (MFA)。
 
-Azure Multi-Factor Auth Provider 可讓**沒有授權**的使用者能夠充分利用 Azure Multi-Factor Authentication 提供的功能。
+Azure Multi-Factor Auth Provider 可讓 **沒有授權** 的使用者能夠充分利用 Azure Multi-Factor Authentication 提供的功能。
 
 ## <a name="caveats-related-to-the-azure-mfa-sdk"></a>Azure MFA SDK 的相關注意事項
 
@@ -48,11 +48,11 @@ Azure Multi-Factor Auth Provider 可讓**沒有授權**的使用者能夠充分�
 > [!CAUTION]
 > 刪除驗證提供者時，不會有任何確認。 選取 [ **刪除** ] 是永久性的流程。
 
-驗證提供者可在**Azure 入口網站**  >  **Azure Active Directory**  >  **安全性**  >  **MFA**  >  **提供者**中找到。 按一下列出的提供者，查看與該提供者相關的詳細資料和設定。
+驗證提供者可在 **Azure 入口網站**  >  **Azure Active Directory**  >  **安全性**  >  **MFA**  >  **提供者** 中找到。 按一下列出的提供者，查看與該提供者相關的詳細資料和設定。
 
 移除驗證提供者之前，請記下您的提供者中所設定的任何自訂設定。 決定需要將哪些設定遷移至提供者的一般 MFA 設定，並完成這些設定的遷移。 
 
-連結至提供者 Azure MFA 伺服器必須使用在**Azure 入口網站**  >  **Azure Active Directory**  >  **安全性**  >  **MFA**  >  **伺服器設定**下產生的認證來重新開機。 在重新開機之前，您必須先從 `\Program Files\Multi-Factor Authentication Server\Data\` 環境中 Azure MFA 伺服器上的目錄中刪除下列檔案：
+連結至提供者 Azure MFA 伺服器必須使用在 **Azure 入口網站**  >  **Azure Active Directory**  >  **安全性**  >  **MFA**  >  **伺服器設定** 下產生的認證來重新開機。 在重新開機之前，您必須先從 `\Program Files\Multi-Factor Authentication Server\Data\` 環境中 Azure MFA 伺服器上的目錄中刪除下列檔案：
 
 - caCert
 - cert
@@ -64,7 +64,7 @@ Azure Multi-Factor Auth Provider 可讓**沒有授權**的使用者能夠充分�
 
 ![從 Azure 入口網站中刪除 auth provider](./media/concept-mfa-authprovider/authentication-provider-removal.png)
 
-當您確認所有設定都已遷移之後，您可以流覽至**Azure 入口網站**  >  **Azure Active Directory**  >  **安全性**  >  **MFA**  >  **提供者**，然後選取省略號 **...** 然後選取 [**刪除**]。
+當您確認所有設定都已遷移之後，您可以流覽至 **Azure 入口網站**  >  **Azure Active Directory**  >  **安全性**  >  **MFA**  >  **提供者**，然後選取省略號 **...** 然後選取 [**刪除**]。
 
 > [!WARNING]
 > 刪除驗證提供者將會刪除與該提供者相關聯的任何報告資訊。 在刪除您的提供者之前，您可能會想要儲存活動報表。

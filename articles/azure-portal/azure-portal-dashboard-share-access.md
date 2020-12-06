@@ -1,24 +1,15 @@
 ---
 title: 使用 Azure 角色型存取控制來共用 Azure 入口網站儀表板
 description: 本文說明如何使用 Azure 角色型存取控制來共用 Azure 入口網站中的儀表板。
-services: azure-portal
-documentationcenter: ''
-author: mgblythe
-manager: mtillman
 ms.assetid: 8908a6ce-ae0c-4f60-a0c9-b3acfe823365
-ms.service: azure-portal
-ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: na
 ms.date: 03/23/2020
-ms.author: mblythe
-ms.openlocfilehash: b74cae439ce351a4d720f215679cc0802eebe898
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: de2efd75d07c3dc7df771aad1bd9c73453dad212
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092200"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745973"
 ---
 # <a name="share-azure-dashboards-by-using-azure-role-based-access-control"></a>使用 Azure 角色型存取控制來共用 Azure 儀表板
 
@@ -41,7 +32,7 @@ ms.locfileid: "92092200"
 
 您指派的許可權繼承自訂用帳戶到資源。 發佈的儀表板是一種資源。 您可能已經將使用者指派給適用于已發行儀表板的訂用帳戶角色。
 
-假設您有 Azure 訂用帳戶，而且已為小組各種成員指派訂用帳戶的*擁有者*、*參與者*或*讀取者*角色。 身為擁有者或參與者的使用者可以列出、查看、建立、修改或刪除訂用帳戶內的儀表板。 讀者可以列出和查看儀表板，但無法修改或刪除儀表板。 具有讀者存取權的使用者可以對已發佈的儀表板進行本機編輯，例如針對問題進行疑難排解時，但無法將這些變更發佈回伺服器。 他們可以自行建立儀表板的私用複本。
+假設您有 Azure 訂用帳戶，而且已為小組各種成員指派訂用帳戶的 *擁有者*、*參與者* 或 *讀取者* 角色。 身為擁有者或參與者的使用者可以列出、查看、建立、修改或刪除訂用帳戶內的儀表板。 讀者可以列出和查看儀表板，但無法修改或刪除儀表板。 具有讀者存取權的使用者可以對已發佈的儀表板進行本機編輯，例如針對問題進行疑難排解時，但無法將這些變更發佈回伺服器。 他們可以自行建立儀表板的私用複本。
 
 您也可以將許可權指派給包含數個儀表板的資源群組，或指派給個別儀表板。 例如，您可能會決定，一群使用者應具有有限的訂用帳戶權限，但對特定儀表板則具有更大範圍的存取權。 將這些使用者指派給該儀表板的角色。
 
@@ -51,7 +42,7 @@ ms.locfileid: "92092200"
 
 在指派存取權之前，您必須先發佈儀表板。
 
-1. 在儀表板中選取 [共用] ****。
+1. 在儀表板中選取 [共用] 。
 
     ![選取儀表板的共用](./media/azure-portal-dashboard-share-access/share-dashboard-for-access-control.png)
 
@@ -79,7 +70,7 @@ ms.locfileid: "92092200"
 
     ![新增使用者以存取儀表板](./media/azure-portal-dashboard-share-access/manage-users-existing-users.png)
 
-1. 選取代表要授與之許可權的角色。 在此範例中，請選取 [參與者] ****。
+1. 選取代表要授與之許可權的角色。 在此範例中，請選取 [參與者] 。
 
 1. 選取要指派給角色的使用者或群組。 如果您在清單中看不到您要尋找的使用者或群組，請使用 [搜尋] 方塊。 可用群組的清單取決於您在 Active Directory 中建立的群組。
 

@@ -8,19 +8,19 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: ed0c7ef98e70774350c9a3ff12b0cc3f4186e1bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 041df9b77e85f09d2cf680773edc995c6288acaa
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89380780"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746415"
 ---
 # <a name="how-to-add-a-preview-audience-for-your-saas-offer"></a>如何為您的 SaaS 供應專案新增預覽物件
 
 當您在合作夥伴中心中建立軟體即服務 (SaaS) 供應專案時，您需要定義預覽物件，以便在上線之前先審核您的供應專案清單。 本文說明如何設定預覽物件。
 
 > [!NOTE]
-> 如果您選擇單獨處理交易，將不會看到此選項。 相反地，請跳至 [如何行銷 SaaS 供應](create-new-saas-offer-marketing.md)專案。
+> 如果您選擇單獨處理交易，將不會看到此選項。 相反地，請跳至 [如何銷售您的 SaaS 供應](create-new-saas-offer-marketing.md)專案。
 
 ## <a name="define-a-preview-audience"></a>定義預覽物件
 
@@ -33,21 +33,21 @@ ms.locfileid: "89380780"
 
 1. 在 [ **預覽物件** ] 頁面上，于提供的方塊中新增單一 AZURE AD 或 MSA 電子郵件地址和選擇性描述。
 1. 若要新增其他電子郵件地址，請選取 [ **新增其他電子郵件** ] 連結。
-1. 選取 [ **儲存草稿** ]，然後繼續進行下一個索引標籤： [ **技術**設定]。
+1. 選取 [ **儲存草稿** ]，然後繼續進行下一個索引標籤： [ **技術** 設定]。
 1. 繼續 [瞭解如何為您的 SaaS 供應專案新增技術詳細資料](create-new-saas-offer-technical.md)。
 
 ### <a name="add-email-addresses-using-the-csv-file"></a>使用 CSV 檔案新增電子郵件地址
 
-1. 在 [ **預覽物件** ] 頁面上，選取 [ **匯出物件 (csv]) ** 連結。
+1. 在 [ **預覽物件** ] 頁面上，選取 [ **匯出物件 (csv])** 連結。
 1. 開啟。應用程式中的 CSV 檔案，例如 Microsoft Excel。
 1. 在。CSV 檔案，在 [ **識別碼** ] 欄中，輸入您想要新增至預覽物件的電子郵件地址。
 1. 在 [ **描述** ] 欄中，您可以選擇性地新增每個電子郵件地址的描述。
 1. 在 [ **類型** ] 資料行中，將 **MixedAadMsaId** 加入至具有電子郵件地址的每個資料列。
 1. 將檔案另存為。CSV 檔案。
-1. 在 [ **預覽物件** ] 頁面上，選取 [匯 **入物件 (csv]) ** 連結。
+1. 在 [ **預覽物件** ] 頁面上，選取 [匯 **入物件 (csv])** 連結。
 1. 在 [ **確認** ] 對話方塊中，選取 [ **是]**。
 1. 選取。CSV 檔案，然後選取 [ **開啟**]。
-1. 選取 [ **儲存草稿** ]，然後繼續進行下一個索引標籤： [ **技術**設定]。
+1. 選取 [ **儲存草稿** ]，然後繼續進行下一個索引標籤： [ **技術** 設定]。
 
 ## <a name="next-steps"></a>後續步驟
 

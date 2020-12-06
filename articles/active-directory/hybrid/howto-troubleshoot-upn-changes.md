@@ -11,16 +11,16 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46ecc2cba96b07d9105020e69ae3198a3765be7c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 59b304505c29f424d85d5b1e16dc83c060ac2ac1
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96172226"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744593"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>在 Azure Active Directory 中規劃使用者主體名稱變更並進行疑難排解
 
-使用者主體名稱 (UPN) 是使用者帳戶的網際網路通訊標準屬性。 UPN 是由 UPN 前置詞 (使用者帳戶名稱) 和 UPN 尾碼 (DNS 網域名稱) 所組成。 前置詞會使用 "@" 符號加入尾碼。 例如 someone@example.com。 在目錄樹系的所有安全性主體物件之間，UPN 必須是唯一的。 
+使用者主體名稱 (UPN) 是使用者帳戶的網際網路通訊標準屬性。 UPN 是由 UPN 前置詞 (使用者帳戶名稱) 和 UPN 尾碼 (DNS 網域名稱) 所組成。 前置詞會使用 " \@ " 符號加入尾碼。 例如： someone@example.com 。 在目錄樹系的所有安全性主體物件之間，UPN 必須是唯一的。 
 
 **本文假設您是使用 UPN 做為使用者識別碼。它可解決 UPN 變更的規劃，以及從 UPN 變更可能產生的問題中復原。**
 
@@ -58,7 +58,7 @@ Bsimon@contoso.com至Britta.Simon@contoso.com
     例如，如果某人變更了部門，您可能會變更其網域： 
 
    * Britta.Simon@contoso.com 到 Britta.Simon@contosolabs.com <br>
-     或<br>
+     Or<br>
     * Britta.Simon@corp.contoso.com 到 Britta.Simon@labs.contoso.com 
 
 建議您每次更新其主要電子郵件地址時，變更使用者的 UPN。

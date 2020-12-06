@@ -6,15 +6,15 @@ author: jovanpop-msft
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
-ms.date: 09/15/2020
+ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: a7e9cdb18d109abeef7d7d7237444ac55f9e7da1
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 129534727248ff05b5d38da60dead7903d9a5815
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576344"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744460"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>在 Azure Synapse Link Preview 中使用無伺服器 SQL 集區查詢 Azure Cosmos DB 資料
 
@@ -98,12 +98,13 @@ OPENROWSET(
 
 * [已啟用 Azure Synapse 連結](../../cosmos-db/configure-synapse-link.md)的 Azure Cosmos DB 資料庫帳戶。
 * 名為的 Azure Cosmos DB 資料庫 `covid` 。
-* 兩個名為 `EcdcCases` 和 `Cord19` 載入上述範例資料集的 Azure Cosmos DB 容器。
+* 兩個名為 `Ecdc` 和 `Cord19` 載入上述範例資料集的 Azure Cosmos DB 容器。
+
+您可以使用下列連接字串作為測試用途： `Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==` 。 請注意，此連線將無法保證效能，因為相較于您的 Synapse SQL 端點，此帳戶可能位於遠端區域。
 
 ## <a name="explore-azure-cosmos-db-data-with-automatic-schema-inference"></a>使用自動架構推斷探索 Azure Cosmos DB 資料
 
 若要在 Azure Cosmos DB 中探索資料，最簡單的方式就是使用自動架構推斷功能。 藉由省略 `WITH` 語句中的子句 `OPENROWSET` ，您可以指示無伺服器 SQL 集區來自動偵測 (推斷) Azure Cosmos DB 容器的分析存放區架構。
-
 
 ### <a name="openrowset-with-key"></a>[使用 key 的 OPENROWSET](#tab/openrowset-key)
 
@@ -111,8 +112,8 @@ OPENROWSET(
 SELECT TOP 10 *
 FROM OPENROWSET( 
        'CosmosDB',
-       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases) as documents
+       'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
+       Ecdc) as documents
 ```
 
 ### <a name="openrowset-with-credential"></a>[使用 credential 的 OPENROWSET](#tab/openrowset-credential)
@@ -120,20 +121,20 @@ FROM OPENROWSET(
 ```sql
 /*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
     CREATE CREDENTIAL MyCosmosDbAccountCredential
-    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
 */
 SELECT TOP 10 *
 FROM OPENROWSET(
       PROVIDER = 'CosmosDB',
-      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
-      OBJECT = 'EcdcCases',
+      CONNECTION = 'Account=synapselink-cosmosdb-sqlsample;Database=covid',
+      OBJECT = 'Ecdc',
       SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
 
 ---
 
-在上述範例中，我們指示無伺服器 SQL 集區連接到 `covid` Azure Cosmos DB 帳戶中 `MyCosmosDbAccount` 使用 Azure Cosmos DB 金鑰所驗證的資料庫， (上述範例中的虛擬) 。 接著，我們會 `EcdcCases` 在區域中存取容器的分析存放區 `West US 2` 。 因為沒有特定屬性的投射，所以函式 `OPENROWSET` 會傳回 Azure Cosmos DB 專案中的所有屬性。
+在上述範例中，我們指示無伺服器 SQL 集區連接到 `covid` Azure Cosmos DB 帳戶中 `MyCosmosDbAccount` 使用 Azure Cosmos DB 金鑰所驗證的資料庫， (上述範例中的虛擬) 。 接著，我們會 `Ecdc` 在區域中存取容器的分析存放區 `West US 2` 。 因為沒有特定屬性的投射，所以函式 `OPENROWSET` 會傳回 Azure Cosmos DB 專案中的所有屬性。
 
 假設 Azure Cosmos DB 容器中的專案具有 `date_rep` 、 `cases` 和 `geo_id` 屬性，下表顯示此查詢的結果：
 
@@ -149,7 +150,7 @@ FROM OPENROWSET(
 SELECT TOP 10 *
 FROM OPENROWSET( 
        'CosmosDB',
-       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+       'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
        Cord19) as cord19
 ```
 
@@ -174,21 +175,21 @@ Azure Cosmos DB 中的這些一般 JSON 檔可以表示為 Synapse SQL 中的一
 SELECT TOP 10 *
 FROM OPENROWSET(
       'CosmosDB',
-      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases
+      'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
+       Ecdc
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
 ### <a name="openrowset-with-credential"></a>[使用 credential 的 OPENROWSET](#tab/openrowset-credential)
 ```sql
 /*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
     CREATE CREDENTIAL MyCosmosDbAccountCredential
-    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
 */
 SELECT TOP 10 *
 FROM OPENROWSET(
       PROVIDER = 'CosmosDB',
-      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
-      OBJECT = 'EcdcCases',
+      CONNECTION = 'Account=synapselink-cosmosdb-sqlsample;Database=covid',
+      OBJECT = 'Ecdc',
       SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
@@ -209,14 +210,14 @@ FROM OPENROWSET(
 
 ```sql
 CREATE CREDENTIAL MyCosmosDbAccountCredential
-WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
 GO
-CREATE OR ALTER VIEW EcdcCases
+CREATE OR ALTER VIEW Ecdc
 AS SELECT *
 FROM OPENROWSET(
       PROVIDER = 'CosmosDB',
-      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
-      OBJECT = 'EcdcCases',
+      CONNECTION = 'Account=synapselink-cosmosdb-sqlsample;Database=covid',
+      OBJECT = 'Ecdc',
       SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
@@ -241,41 +242,28 @@ FROM OPENROWSET(
 }
 ```
 
-當函式讀取時，Azure Cosmos DB 中的嵌套物件和陣列會以 JSON 字串的形式呈現在查詢結果中 `OPENROWSET` 。 將這些複雜類型的值讀取為 SQL 資料行的其中一個選項是使用 SQL JSON 函數：
+當函式讀取時，Azure Cosmos DB 中的嵌套物件和陣列會以 JSON 字串的形式呈現在查詢結果中 `OPENROWSET` 。 當您使用子句時，可以在物件中指定嵌套值的路徑 `WITH` ：
 
 ```sql
-SELECT
-    title = JSON_VALUE(metadata, '$.title'),
-    authors = JSON_QUERY(metadata, '$.authors'),
-    first_author_name = JSON_VALUE(metadata, '$.authors[0].first')
-FROM
-    OPENROWSET(
-      'CosmosDB',
-      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       Cord19
-    WITH ( metadata varchar(MAX) ) AS docs;
+SELECT TOP 10 *
+FROM OPENROWSET( 
+       'CosmosDB',
+       'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
+       Cord19)
+WITH (  paper_id    varchar(8000),
+        title        varchar(1000) '$.metadata.title',
+        metadata     varchar(max),
+        authors      varchar(max) '$.metadata.authors'
+) AS docs;
 ```
 
 此查詢的結果看起來可能如下表所示：
 
-| title | authors | first_autor_name |
+| paper_id | title | 中繼資料 | authors |
 | --- | --- | --- |
-| Epidemi 的補充資訊 .。。 |   `[{"first":"Julien","last":"Mélade","suffix":"","affiliation":{"laboratory":"Centre de Recher…` | 朱利安 |  
-
-另一個選項是使用子句時，您也可以在物件中指定嵌套值的路徑 `WITH` ：
-
-```sql
-SELECT
-    *
-FROM
-    OPENROWSET(
-      'CosmosDB',
-      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       Cord19
-    WITH ( title varchar(1000) '$.metadata.title',
-           authors varchar(max) '$.metadata.authors'
-    ) AS docs;
-```
+| bb11206963e831f... | Epidemi 的補充資訊 .。。 | `{"title":"Supplementary Informati…` | `[{"first":"Julien","last":"Mélade","suffix":"","af…`| 
+| bb1206963e831f1... | 使用 Convalescent Sera in 免疫-E .。。 | `{"title":"The Use of Convalescent…` | `[{"first":"Antonio","last":"Lavazza","suffix":"", …` |
+| bb378eca9aac649... | Tylosema esculentum (Marama) Tuber 和 b。 | `{"title":"Tylosema esculentum (Ma…` | `[{"first":"Walter","last":"Chingwaru","suffix":"",…` | 
 
 深入瞭解如何在[無伺服器 SQL 集](query-parquet-nested-types.md)區中分析 Azure Synapse 連結和嵌套結構中的[複雜資料類型](../how-to-analyze-complex-schema.md)。
 
@@ -315,7 +303,7 @@ SELECT
 FROM
     OPENROWSET(
       'CosmosDB',
-      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+      'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
        Cord19
     ) WITH ( title varchar(1000) '$.metadata.title',
              authors varchar(max) '$.metadata.authors' ) AS docs
@@ -365,7 +353,7 @@ SELECT *
 FROM OPENROWSET(
       'CosmosDB',
       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases
+       Ecdc
     ) as rows
 ```
 
@@ -400,7 +388,7 @@ SELECT geo_id, cases = SUM(cases)
 FROM OPENROWSET(
       'CosmosDB'
       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases
+       Ecdc
     ) WITH ( geo_id VARCHAR(50) '$.geo_id.string',
              cases INT '$.cases.int32'
     ) as rows
@@ -416,7 +404,7 @@ SELECT geo_id, cases = SUM(cases_int) + SUM(cases_bigint) + SUM(cases_float)
 FROM OPENROWSET(
       'CosmosDB',
       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases
+       Ecdc
     ) WITH ( geo_id VARCHAR(50) '$.geo_id.string', 
              cases_int INT '$.cases.int32',
              cases_bigint BIGINT '$.cases.int64',
@@ -430,13 +418,13 @@ GROUP BY geo_id
 ## <a name="known-issues"></a>已知問題
 
 - 無伺服器 SQL 集區針對 [Azure Cosmos DB 完整精確度架構](#full-fidelity-schema) 提供的查詢體驗，是根據預覽意見反應而變更的暫時行為。 請勿依賴沒有子句的函式在 `OPENROWSET` `WITH` 公開預覽期間提供的架構，因為查詢體驗可能會根據客戶的意見反應，與妥善定義的架構對齊。 若要提供意見反應，請洽詢 [Azure Synapse Link 產品團隊](mailto:cosmosdbsynapselink@microsoft.com)。
-- 如果資料 `OPENROWSET` 行定序沒有 utf-8 編碼，無伺服器 SQL 集區將不會傳回編譯時期錯誤。 您可以使用 T-sql 語句，輕鬆地變更目前資料庫中執行之所有函式的預設定序 `OPENROWSET` `alter database current collate Latin1_General_100_CI_AI_SC_UTF8` 。
+- 如果資料 `OPENROWSET` 行定序沒有 utf-8 編碼，無伺服器 SQL 集區會傳回編譯時間警告。 您可以使用 T-sql 語句，輕鬆地變更 `OPENROWSET` 目前資料庫中執行之所有函式的預設定序 `alter database current collate Latin1_General_100_CI_AS_SC_UTF8` 。
 
 下表列出可能的錯誤和疑難排解動作。
 
 | 錯誤 | 根本原因 |
 | --- | --- |
-| 語法錯誤：<br/> -"Openrowset" 附近的語法不正確<br/> - `...` 不是可辨識的大量 OPENROWSET 提供者選項。<br/> -接近的語法不正確 `...` | 可能的根本原因：<br/> -不使用 CosmosDB 做為第一個參數。<br/> -使用字串常值，而不是第三個參數中的識別碼。<br/> -未指定第三個參數 (容器名稱) 。 |
+| 語法錯誤：<br/> -接近的語法不正確 `Openrowset`<br/> - `...` 不是可辨識的 `BULK OPENROWSET` 提供者選項。<br/> -接近的語法不正確 `...` | 可能的根本原因：<br/> -不使用 CosmosDB 做為第一個參數。<br/> -使用字串常值，而不是第三個參數中的識別碼。<br/> -未指定第三個參數 (容器名稱) 。 |
 | CosmosDB 連接字串中發生錯誤。 | -未指定帳戶、資料庫或金鑰。 <br/> -無法辨識的連接字串中有一些選項。<br/> -分號 (`;`) 放置於連接字串的結尾。 |
 | 解析 CosmosDB 路徑失敗，錯誤為「帳戶名稱不正確」或「資料庫名稱不正確」。 | 找不到指定的帳號名稱、資料庫名稱或容器，或尚未對指定的集合啟用分析儲存體。|
 | 解析 CosmosDB 路徑失敗，發生錯誤「密碼值不正確」或「秘密為 null 或空白」。 | 帳戶金鑰無效或遺失。 |

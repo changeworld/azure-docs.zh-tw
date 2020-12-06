@@ -8,19 +8,19 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: d84e1508dec4d4a5802f7a2ac8c0e6ada5a8044c
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 28c0be40387f411286230f94c19fa23a80e650af
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128686"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746398"
 ---
 # <a name="how-to-add-technical-details-for-your-saas-offer"></a>如何為您的 SaaS 供應專案新增技術詳細資料
 
 本文說明如何輸入技術詳細資料，以協助 Microsoft 商業市場連接到您的解決方案。 如果客戶選擇取得和管理您的供應專案，此連線可讓我們為客戶布建供應專案。 如需這些設定的詳細資訊，請參閱 [技術資訊](plan-saas-offer.md#technical-information)。
 
 > [!NOTE]
-> 如果您選擇單獨處理交易，將不會看到此選項。 相反地，請跳至 [如何行銷 SaaS 供應](create-new-saas-offer-marketing.md)專案。
+> 如果您選擇單獨處理交易，將不會看到此選項。 相反地，請跳至 [如何銷售您的 SaaS 供應](create-new-saas-offer-marketing.md)專案。
 
 ## <a name="technical-configuration"></a>技術設定
 

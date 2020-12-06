@@ -5,21 +5,20 @@ author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
 ms.topic: how-to
-ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 26fc916a2bacc0f6ae9791a53b642e93bb031466
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5db3e538a64e275313e1e0ab01f6cc6350eabb77
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077978"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745429"
 ---
 # <a name="standard-quota-increase-limits-by-vm-series"></a>標準配額：調高 VM 系列的限制
 
 Azure Resource Manager 針對虛擬機器支援兩種類型的 vCPU 配額：
 
 * *隨用隨付 vm* 和 *保留的 vm 實例* 受限於 *標準 vCPU 配額*。
-* 現成的*vm*會受到*點 vCPU 配額*的限制。
+* 現成的 *vm* 會受到 *點 vCPU 配額* 的限制。
 
 隨用隨付和保留的虛擬機器實例的標準 vCPU 配額，會針對每個區域中的每個訂用帳戶在兩個層級上強制執行：
 
@@ -53,11 +52,11 @@ Azure Resource Manager 針對虛擬機器支援兩種類型的 vCPU 配額：
 
     ![建立新的支援要求](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-1. 針對 [ **問題類型**]，選取 [ **服務與訂用帳戶限制] (配額) **。
+1. 針對 [ **問題類型**]，選取 [ **服務與訂用帳戶限制] (配額)**。
 
    ![選取問題類型](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
 
-1. 針對 [ **訂**用帳戶]，選取您要增加其配額的訂用帳戶。
+1. 針對 [ **訂** 用帳戶]，選取您要增加其配額的訂用帳戶。
 
    ![選取提高配額的訂用帳戶](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
 
@@ -65,7 +64,7 @@ Azure Resource Manager 針對虛擬機器支援兩種類型的 vCPU 配額：
 
    ![選取配額類型](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-1. 選取 **[下一步]：** 開啟 **問題詳細資料**的解決方案。 選取 [ **提供詳細資料** ] 以輸入其他資訊。
+1. 選取 **[下一步]：** 開啟 **問題詳細資料** 的解決方案。 選取 [ **提供詳細資料** ] 以輸入其他資訊。
 
    ![「提供詳細資料」連結](./media/resource-manager-core-quotas-request/provide-details-link.png)
 
@@ -99,7 +98,7 @@ Azure Resource Manager 針對虛擬機器支援兩種類型的 vCPU 配額：
 
 ## <a name="request-a-standard-quota-increase-from-subscriptions"></a>要求從訂用帳戶增加標準配額
 
-若要從訂用帳戶要求每個 VM 系列 **的標準**vCPU 配額增加：
+若要從訂用帳戶要求每個 VM 系列 **的標準** vCPU 配額增加：
 
 > [!NOTE]
 > 您也可以透過單一支援案例，要求增加多個區域的配額限制。 如需詳細資訊，請參閱步驟7。

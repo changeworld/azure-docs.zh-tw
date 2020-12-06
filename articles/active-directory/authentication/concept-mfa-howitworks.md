@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9563ed283229eb6f43d036629cfe8b84fcde25fc
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1cc5227cb4b5de02cba65a60dd469da93d3767e5
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839874"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744050"
 ---
 # <a name="how-it-works-azure-ad-multi-factor-authentication"></a>運作方式： Azure AD Multi-Factor Authentication
 
@@ -26,13 +26,13 @@ ms.locfileid: "94839874"
 
 ![不同多重要素驗證形式的概念影像](./media/concept-mfa-howitworks/methods.png)
 
-Azure AD Multi-Factor Authentication 的運作方式是要求下列兩個或多個驗證方法：
+Azure AD Multi-Factor Authentication 的運作需要下列二種或更多的驗證方法：
 
 * 您知道的某些資訊 (通常是密碼)。
 * 您擁有的某些資訊，例如不容易複製的信任裝置 (如電話或硬體金鑰)。
 * 代表您個人身分的某些資訊 - 指紋或臉部掃描之類的生物識別特徵。
 
-使用者可以自行註冊自助式密碼重設和 Azure AD Multi-Factor Authentication，以簡化上線體驗。 系統管理員可定義可以使用的次要驗證形式。 當使用者執行自助式密碼重設以進一步保護該程式時，也可能需要 Azure AD Multi-Factor Authentication。
+使用者可以在單一步驟中將其身分註冊至自助式密碼重設和 Azure AD Multi-Factor Authentication，以簡化上線體驗。 系統管理員可定義可以使用的次要驗證形式。 在使用者執行自助式密碼重設以進一步保護該程序時，也可以要求 Azure AD Multi-Factor Authentication。
 
 ![在 [登入] 畫面使用中的驗證方法](media/concept-authentication-methods/overview-login.png)
 
@@ -48,7 +48,7 @@ Azure AD Multi-Factor Authentication 可協助保護資料和應用程式的存�
 
 * Microsoft Authenticator 應用程式
 * OATH 硬體權杖
-* sms
+* SMS
 * 語音通話
 
 ## <a name="how-to-enable-and-use-azure-ad-multi-factor-authentication"></a>如何啟用和使用 Azure AD Multi-Factor Authentication

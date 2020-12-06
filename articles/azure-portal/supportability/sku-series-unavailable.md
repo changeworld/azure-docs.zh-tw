@@ -1,18 +1,16 @@
 ---
-title: 無法使用區域或 SKU 系列 - Azure
+title: 無法使用區域或 SKU 系列
 description: 某些 SKU 系列不適用於此區域所選的訂用帳戶，這可能需要訂用帳戶管理支援要求。
-services: Azure Supportability
 author: stevendotwang
-ms.service: azure-supportability
 ms.topic: troubleshooting
 ms.date: 01/27/2020
 ms.author: xingwan
-ms.openlocfilehash: fccde344a06d39bd4bb8e3178444ec20677e2f50
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 2bbe1dff6bbf8fed481300db95482c46b0e8a7b7
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078505"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745276"
 ---
 # <a name="region-or-sku-unavailable"></a>無法使用區域或 SKU
 
@@ -60,7 +58,7 @@ Message: This size is currently unavailable in this location for this subscripti
 
 1. 從 [Azure 入口網站](https://portal.azure.com)功能表中，選取 [説明 + 支援]。 然後選取 [新增支援要求]。
 
-1. 在 [基本] 中，對於**問題類型**，選取 [訂用帳戶管理]。
+1. 在 [基本] 中，對於 **問題類型**，選取 [訂用帳戶管理]。
 
 1. 選取 [訂用帳戶]，然後在 [摘要] 中輸入簡短描述。
 
@@ -72,7 +70,7 @@ Message: This size is currently unavailable in this location for this subscripti
 
    ![指定要求的問題](./media/SKU-series-unavailable/support-request-select-problem-type.png)
 
-1. 完成時，選取 下一步:**解決方案**探索可能的解決方案。 如有必要，請選取 **[下一步：詳細資料]** 繼續進行。
+1. 完成時，選取 下一步:**解決方案** 探索可能的解決方案。 如有必要，請選取 **[下一步：詳細資料]** 繼續進行。
 
 1. 輸入您可以提供的其他任何資訊，以及您的連絡人資訊。
 

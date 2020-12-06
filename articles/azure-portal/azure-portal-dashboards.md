@@ -1,24 +1,15 @@
 ---
 title: 在 Azure 入口網站中建立和共用儀表板
 description: 本文說明如何建立、自訂、發佈和共用 Azure 入口網站中的儀表板。
-services: azure-portal
-documentationcenter: ''
-author: sewatson
-manager: mtillman
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
-ms.service: azure-portal
-ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: na
 ms.date: 03/23/2020
-ms.author: mblythe
-ms.openlocfilehash: b4241e51f186ea973702562ab27bb7f13a77de57
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 10c322c9d9d18f7b79a4419bd9efa2e366a5b7c3
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089480"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745820"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>在 Azure 入口網站中建立和共用儀表板
 
@@ -40,7 +31,7 @@ Azure 入口網站會將預設儀表板提供為起始點。 您可以編輯預�
 
     ![新儀表板的螢幕擷取畫面](./media/azure-portal-dashboards/create-new-dashboard.png)
 
-    此動作會開啟 **圖**格資源庫，您可以在其中選取磚，以及空白方格來排列磚。
+    此動作會開啟 **圖** 格資源庫，您可以在其中選取磚，以及空白方格來排列磚。
 
     ![磚庫和空白方格的螢幕擷取畫面](./media/azure-portal-dashboards/dashboard-name.png)
 
@@ -89,7 +80,7 @@ Azure 入口網站會將預設儀表板提供為起始點。 您可以編輯預�
 
 ### <a name="additional-tile-configuration"></a>其他圖格設定
 
-某些磚可能需要更多的設定，才能顯示您想要的資訊。 例如，您必須設定 **計量圖表** 磚，以顯示來自 **Azure 監視器**的度量。 您也可以自訂磚資料來覆寫儀表板的預設時間設定。
+某些磚可能需要更多的設定，才能顯示您想要的資訊。 例如，您必須設定 **計量圖表** 磚，以顯示來自 **Azure 監視器** 的度量。 您也可以自訂磚資料來覆寫儀表板的預設時間設定。
 
 任何需要設定的磚都會顯示設定 **磚** 橫幅，直到您自訂磚為止。 自訂磚：
 
@@ -142,7 +133,7 @@ Azure 入口網站會將預設儀表板提供為起始點。 您可以編輯預�
 
 ## <a name="publish-and-share-a-dashboard"></a>發佈和共用儀表板
 
-當您建立儀表板時，預設為私用，這表示您是唯一可以看到的儀表板。 若要讓儀表板可供其他人使用，您可以發佈和共用儀表板。 如需詳細資訊，請參閱 [使用 azure 角色型存取控制來共用 azure 儀表板](azure-portal-dashboard-share-access.md)。
+當您建立儀表板時，預設為私用，這表示您是唯一可以看到的儀表板。 若要讓儀表板可供其他人使用，您可以發佈和共用儀表板。 如需詳細資訊，請參閱[使用 Azure 角色型存取控制共用 Azure 儀表板](azure-portal-dashboard-share-access.md)。
 
 ### <a name="open-a-shared-dashboard"></a>開啟共用儀表板
 
@@ -170,7 +161,7 @@ Azure 入口網站會將預設儀表板提供為起始點。 您可以編輯預�
 
 1. 從儀表板名稱旁邊的清單中，選取您要刪除的儀表板。
 
-1. ![ ](./media/azure-portal-dashboards/dashboard-delete-icon.png) 從頁面標頭中選取 [刪除圖示**刪除**]。
+1. ![ ](./media/azure-portal-dashboards/dashboard-delete-icon.png) 從頁面標頭中選取 [刪除圖示 **刪除**]。
 
 1. 若為私人儀表板，請在確認對話方塊上選取 **[確定** ] 以移除儀表板。 針對共用儀表板，請在 [確認] 對話方塊中選取核取方塊，以確認其他人將無法再看到已發佈的儀表板。 然後選取 [確定]  。
 

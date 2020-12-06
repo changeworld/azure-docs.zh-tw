@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 63bb235dcebc67b753e01dd8b193ef1a2b66787d
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 222106f5838a1eb237987afaa93924f1efe4a1f4
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552284"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746279"
 ---
 # <a name="file-extension-insights-about-your-data-from-azure-purview"></a>Azure 範疇中資料的檔案延伸模組深入解析 
 
@@ -39,6 +39,9 @@ ms.locfileid: "96552284"
 ## <a name="use-purview-file-extension-insights"></a>使用範疇副檔名深入解析
 
 在掃描您的資產時，Azure 範疇能夠偵測您資料資產中的檔案類型，並提供有關每個檔案類型的詳細資料。 詳細資料包括您擁有之每個類型的檔案數目、這些檔案的所在位置，以及是否可流覽敏感性資料。
+
+> [!NOTE]
+> 在您掃描來源類型之後，請在幾小時內提供 **副檔名** 見解，以反映新的資產。
 
 **若要查看副檔名見解：**
 
@@ -79,7 +82,7 @@ ms.locfileid: "96552284"
 
 使用方格上方的篩選準則來篩選顯示的資料：
 
-|選項  |說明  |
+|選項  |描述  |
 |---------|---------|
 |**依關鍵字篩選**     |    在 [ **依關鍵字篩選**  ] 方塊中輸入文字，以依名稱查看篩選您的檔案類型。 例如，若只要查看 Pdf，請輸入 `PDF` 。     |
 |**Time**        | 選取此項可依特定時間範圍篩選資料的建立時間。 <br>**預設值：** 30 天  |

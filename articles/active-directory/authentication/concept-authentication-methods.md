@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: a166a451c405c2321453e02751baad91c2a14c60
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c5b2003a290152533a0a8c0f88fe8eb1a410ccf9
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840012"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744324"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory 中有哪些可用的驗證方法？
 
@@ -43,7 +43,7 @@ Azure AD Multi-Factor Authentication 只會在使用者登入時，使用密碼�
 |  (預覽版的 FIDO2 安全性金鑰)    | 高     | 高      | 高         |
 | OATH 硬體權杖 (預覽) | 適中   | 適中    | 高         |
 | OATH 軟體權杖           | 適中   | 適中    | 高         |
-| sms                            | 中型   | 高      | 中       |
+| SMS                            | 中型   | 高      | 中       |
 | 語音                          | 適中   | 適中    | 適中       |
 | 密碼                       | 低度      | 高      | 高         |
 
@@ -65,7 +65,7 @@ Azure AD Multi-Factor Authentication 只會在使用者登入時，使用密碼�
 |  (預覽版的 FIDO2 安全性金鑰)    | 是                    | MFA                       |
 | OATH 硬體權杖 (預覽) | 否                     | MFA                       |
 | OATH 軟體權杖           | 否                     | MFA                       |
-| sms                            | 是 (預覽)          | MFA 和 SSPR              |
+| SMS                            | 是 (預覽)          | MFA 和 SSPR              |
 | 語音通話                     | 否                     | MFA 和 SSPR              |
 | 密碼                       | 是                    |                           |
 
@@ -93,7 +93,7 @@ Azure AD Multi-Factor Authentication 只會在使用者登入時，使用密碼�
 
 ## <a name="next-steps"></a>後續步驟
 
-若要開始使用，請參閱 [自助式密碼重設的教學課程 (SSPR) ][tutorial-sspr] 和 [Azure AD Multi-Factor Authentication][tutorial-azure-mfa]。
+若要開始使用，請參閱[自助式密碼重設 (SSPR) 的教學課程][tutorial-sspr]和 [Azure AD Multi-Factor Authentication][tutorial-azure-mfa]。
 
 若要深入了解 SSPR 概念，請參閱 [Azure AD 自助式密碼重設的運作方式][concept-sspr]。
 

@@ -1,20 +1,15 @@
 ---
-title: 管理 Azure 入口網站設定和喜好設定 |Microsoft Docs
+title: 管理 Azure 入口網站設定和喜好設定
 description: 您可以變更 Azure 入口網站預設設定，以符合您自己的喜好設定。 設定包括非使用中會話超時、預設視圖、功能表模式、對比、主題、通知，以及語言和區域格式
-services: azure-portal
 keywords: 設定、超時、語言、區域
-author: mgblythe
-ms.author: mblythe
 ms.date: 08/05/2020
 ms.topic: how-to
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: 0f94f694163ba836091e522a29f73cabd64e22b5
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 07dd3eb5cb132adf87852f29d867be772294d189
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145934"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745633"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>管理 Azure 入口網站設定和喜好設定
 
@@ -33,7 +28,7 @@ ms.locfileid: "93145934"
 
 1. 當您啟動入口網站時，請選取您想要作為預設訂用帳戶的訂用帳戶。 
 
-    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="依訂用帳戶篩選資源清單。"::: 
+    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="當您啟動入口網站時，請選取您想要作為預設訂用帳戶的訂用帳戶。"::: 
 
 
 ## <a name="choose-your-default-view"></a>選擇您的預設視圖 
@@ -44,7 +39,7 @@ ms.locfileid: "93145934"
 
 - 無法自訂 **Home** 。  它會顯示熱門 Azure 服務的快捷方式，並列出您最近使用過的資源。 我們也會提供有用的資源連結，例如 Microsoft Learn 和 Azure 藍圖。
 
-- 您可以自訂儀表板，以建立專為您設計的工作區。 例如，您可以建立以專案、工作或角色為焦點的儀表板。 如果您選取 [ **儀表板** ]，您的預設視圖將會移至最近使用的儀表板。 如需詳細資訊，請參閱[在 Azure 入口網站中建立和共用儀表板](azure-portal-dashboards.md)。
+- 您可以自訂儀表板，以建立專為您設計的工作區。 例如，您可以建立以專案、工作或角色為焦點的儀表板。 如果您選取 [ **儀表板**]，您的預設視圖將會移至最近使用的儀表板。 如需詳細資訊，請參閱[在 Azure 入口網站中建立和共用儀表板](azure-portal-dashboards.md)。
 
 ## <a name="choose-a-portal-menu-mode"></a>選擇入口網站功能表模式
 
@@ -68,7 +63,7 @@ ms.locfileid: "93145934"
 
 通知是與您目前會話相關的系統訊息。 例如，當您剛才建立的資源變成可用，或確認您的最後一個動作時，它們會提供您目前的點數餘額等資訊。 開啟快顯通知時，訊息會短暫顯示在畫面的右上角。 
 
-若要啟用或停用快顯通知，請選取或清除 [啟用快顯 **通知** ]。
+若要啟用或停用快顯通知，請選取或清除 [啟用快顯 **通知**]。
 
 ![顯示已醒目提示快顯通知 Azure 入口網站設定的螢幕擷取畫面](./media/set-preferences/popup-notifications.png)
 
@@ -84,7 +79,7 @@ ms.locfileid: "93145934"
 
 ### <a name="change-your-individual-timeout-setting-user"></a>變更您的個別 timeout 設定 (使用者) 
 
-選取 [非使用中 **時將我登出** ] 下的下拉式清單。 選擇您的 Azure 入口網站會話在閒置之後登出的持續時間。
+選取 [非使用中 **時將我登出**] 下的下拉式清單。 選擇您的 Azure 入口網站會話在閒置之後登出的持續時間。
 
 ![顯示反白顯示非作用中 timeout 設定之入口網站設定的螢幕擷取畫面](./media/set-preferences/inactive-signout-user.png)
 
@@ -100,7 +95,7 @@ ms.locfileid: "93145934"
 
 如果您是全域管理員，而且想要為 Azure 入口網站的所有使用者強制執行閒置的 timeout 設定，請遵循下列步驟：
 
-1. 選取連結文字 **設定目錄層級的超時時間** 。
+1. 選取連結文字 **設定目錄層級的超時時間**。
 
     ![顯示入口網站設定的螢幕擷取畫面，其中已醒目提示連結文字](./media/set-preferences/settings-admin.png)
 
@@ -108,7 +103,7 @@ ms.locfileid: "93145934"
 
 1. 接下來，輸入使用者可閒置的時間上限（ **小時** 和 **分鐘）** ，然後才會自動將其會話登出。
 
-1. 選取 [套用]  。
+1. 選取 [套用]。
 
     ![顯示頁面的螢幕擷取畫面，可設定目錄層級的非啟用時間](./media/set-preferences/configure.png)
 
@@ -118,7 +113,7 @@ ms.locfileid: "93145934"
 
 ## <a name="restore-default-settings"></a>還原預設設定
 
-如果您對 Azure 入口網站設定進行了變更，而且想要捨棄這些設定，請選取 [ **還原預設設定** ]。 您對入口網站設定所做的任何變更都將遺失。 此選項不會影響儀表板自訂專案。
+如果您對 Azure 入口網站設定進行了變更，而且想要捨棄這些設定，請選取 [ **還原預設設定**]。 您對入口網站設定所做的任何變更都將遺失。 此選項不會影響儀表板自訂專案。
 
 ![顯示還原預設設定的螢幕擷取畫面](./media/set-preferences/useful-links-restore-defaults.png)
 
@@ -132,7 +127,7 @@ ms.locfileid: "93145934"
 
 如果您打算刪除您的設定，最好先匯出和檢查您的設定。 重建儀表板或重做設定可能會很耗時。
 
-若要匯出您的入口網站設定，請選取 [ **匯出所有設定** ]。
+若要匯出您的入口網站設定，請選取 [ **匯出所有設定**]。
 
 ![顯示匯出設定的螢幕擷取畫面](./media/set-preferences/useful-links-export-settings.png)
 
@@ -150,7 +145,7 @@ ms.locfileid: "93145934"
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-若要刪除您的入口網站設定，請選取 [ **刪除所有設定和私人儀表板** ]。
+若要刪除您的入口網站設定，請選取 [ **刪除所有設定和私人儀表板**]。
 
 ![顯示刪除設定的螢幕擷取畫面](./media/set-preferences/useful-links-delete-settings.png)
 
@@ -175,7 +170,7 @@ ms.locfileid: "93145934"
 >這些語言和地區設定只會影響 Azure 入口網站。 在新索引標籤或視窗中開啟的檔連結會使用瀏覽器的語言設定來決定要顯示的語言。
 >
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Azure 入口網站的鍵盤快速鍵](azure-portal-keyboard-shortcuts.md)
 - [支援的瀏覽器和裝置](azure-portal-supported-browsers-devices.md)

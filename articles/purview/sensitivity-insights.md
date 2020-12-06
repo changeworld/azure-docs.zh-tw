@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 74f4391fcd071ac510fc66b2f8bc36ec4549dc47
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e6a92282d2bcd316a771742048dacd9a7181de4f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575749"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746177"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Azure 範疇中資料的敏感度標籤深入解析
 
@@ -48,6 +48,9 @@ ms.locfileid: "96575749"
 雖然分類會直接符合 (社會安全號碼具有) 的 **社會安全號碼** 分類，但在一或多個分類和案例一起找到時，會套用敏感度標籤。 
 
 範疇會使用相同的分類，也稱為敏感性資訊類型，Microsoft 365。 這可讓您在 Azure 範疇資產之間擴充現有的敏感度標籤。
+
+> [!NOTE]
+> 掃描來源類型之後，請在幾小時內提供 **敏感度標籤** 見解，以反映新的資產。
 
 **若要查看敏感度標籤見解：**
 

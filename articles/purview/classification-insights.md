@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 34accbf218a782b79579d2f9857c101cc8147ab8
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 553c33b3d5ea2e3f1ee81503cb69fe15db387af6
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551978"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745021"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Azure 範疇中資料的分類見解
 
@@ -43,6 +43,9 @@ ms.locfileid: "96551978"
 
 範疇使用與 Microsoft 365 相同的機密資訊類型，可讓您將現有的安全性原則和保護延伸至整個資料資產。
 
+> [!NOTE]
+> 掃描來源類型之後，請在幾小時內提供 **分類標籤** 見解，以反映新的資產。
+
 **若要查看分類見解：**
 
 1. 移至 [Azure 入口網站中](https://aka.ms/purviewportal)的 [ **Azure 範疇** 實例] 畫面，然後選取您的範疇帳戶。
@@ -57,7 +60,7 @@ ms.locfileid: "96551978"
 
    [主要 **分類見解** ] 頁面會顯示下欄區域：
 
-   |區域  |說明  |
+   |區域  |描述  |
    |---------|---------|
    |**具有分類的來源總覽**     |顯示提供下列各圖的圖格： <br>-在您的資料中找到的訂用帳戶數目 <br>-在您的資料中找到的唯一分類數目 <br>-找到的分類來源數目 <br>-找到的分類檔案數目 <br>-找到的分類資料表數目         |
    |**具有分類資料的熱門來源 (過去30天)**     |顯示在過去30天內，以分類資料找到的來源數量的趨勢。            |
@@ -82,7 +85,7 @@ ms.locfileid: "96551978"
 
 若要深入瞭解，請執行下列其中一項：
 
-|選項  |說明  |
+|選項  |描述  |
 |---------|---------|
 |**篩選資料**     |  使用方格上方的篩選準則來篩選顯示的資料，包括分類名稱、訂用帳戶名稱或來源類型。 <br><br>如果您不確定確切的分類名稱，可以在 [ **依關鍵字篩選** ] 方塊中輸入部分或全部名稱。       |
 |**排序方格** |選取資料行標頭，依該資料行排序方格。 | 

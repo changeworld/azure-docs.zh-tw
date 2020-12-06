@@ -1,25 +1,19 @@
 ---
-title: 在 Azure 入口網站中新增、移除及排列我的最愛 |Microsoft Docs
+title: 在 Azure 入口網站中新增、移除及排列我的最愛
 description: 瞭解如何從 [我的最愛] 清單新增或移除專案，以及重新排列專案的順序
-services: azure-portal
 keywords: 我的最愛，入口網站
-author: mgblythe
-ms.author: mblythe
 ms.date: 12/20/2019
 ms.topic: how-to
-ms.service: azure-portal
-ms.custom: ''
-manager: mtillman
-ms.openlocfilehash: 359a544df906a277a89333e3aee2f6203a707f8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01ed34c2e72890c6aeeef9371312825273722ac6
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764123"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745786"
 ---
 # <a name="add-remove-and-rearrange-favorites"></a>新增、移除及重新排列我的最愛
 
-在您的 [我的最愛 **]** 清單中新增或移除專案，讓您可以快速地移至您最常使用的服務。 我們已在您的 [我的最愛 **]** 清單中新增一些常用的服務，但您可能會想要自訂它。 您是唯一看到 **您對我**的最愛之變更的人。
+在您的 [我的最愛 **]** 清單中新增或移除專案，讓您可以快速地移至您最常使用的服務。 我們已在您的 [我的最愛 **]** 清單中新增一些常用的服務，但您可能會想要自訂它。 您是唯一看到 **您對我** 的最愛之變更的人。
 
 ## <a name="add-a-favorite"></a>新增我的最愛
 
@@ -63,7 +57,7 @@ ms.locfileid: "84764123"
 
 1. 繼續進行時，請將專案拖曳到 [我的最愛 **]** 上方，然後放開。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 若要建立以專案為主的工作區，請參閱在 [Azure 入口網站中建立和共用儀表板](../azure-portal/azure-portal-dashboards.md)
 * 深入瞭解 [Azure 入口網站的 how-to 影片系列](https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR)

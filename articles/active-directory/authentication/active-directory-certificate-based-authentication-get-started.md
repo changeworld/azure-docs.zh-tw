@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ddff11caba9d83e9ed21748fd50a3480d866d8a9
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6db7037cbcad335db77784ecfa624f08e88b1e83
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174559"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744426"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>開始在 Azure Active Directory 中使用憑證式驗證
 
@@ -33,7 +33,7 @@ ms.locfileid: "96174559"
 - 提供為 Office 365 企業版、商務版、教育版、美國政府方案的租用戶使用者，設定和使用憑證式驗證的步驟。 在 Office 365 China、US Government Defense 及 US Government Federal 方案中，這項功能處於預覽版。
 - 假設您已經設定[公開金鑰基礎結構 (PKI)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831740(v=ws.11)) 和 [AD FS](../hybrid/how-to-connect-fed-whatis.md)。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
 若要設定憑證式驗證，必須符合下列陳述：
 

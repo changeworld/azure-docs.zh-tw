@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 61ee0b769664d1f574177e27b5b1fb10e9845035
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a67a721b8d94112347282e1cd9be4d43f4ac85da
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463099"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744630"
 ---
 # <a name="configure-a-managed-application-plan"></a>設定受控應用程式方案
 
@@ -188,4 +188,4 @@ ms.locfileid: "96463099"
 ## <a name="next-steps"></a>後續步驟
 
 - [如何測試及發佈您的 Azure 應用程式供應](create-new-azure-apps-offer-test-publish.md)專案。
-- 瞭解如何透過與 Microsoft 共同銷售並轉售給 Csp 方案， [來行銷您的 Azure 應用程式供應](create-new-azure-apps-offer-marketing.md) 專案。
+- 瞭解如何透過與 Microsoft 共同銷售的 [方式銷售您的 Azure 應用程式供應](create-new-azure-apps-offer-marketing.md) 專案，並透過 Csp 方案轉售。

@@ -1,26 +1,16 @@
 ---
-title: Azure 入口網站鍵盤快速鍵 | Microsoft Docs
+title: Azure 入口網站鍵盤快速鍵
 description: Azure 入口網站支援全域鍵盤快速鍵，以協助您執行動作、流覽和移至 Azure 入口網站中的位置。
-services: azure-portal
-documentationcenter: ''
-author: adamabmsft
-manager: lwelicki
-editor: ''
 ms.assetid: d9f58c69-9163-458d-a339-ab0855e342c6
-ms.service: azure-portal
-ms.devlang: NA
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: na
 ms.date: 12/20/2019
-ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: e3f078cdaa54246d91e6bff5393171c05935d755
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de107d88fc404ead889a08f775054ce999e3233f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88826781"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745905"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Azure 入口網站的鍵盤快速鍵
 
@@ -37,7 +27,7 @@ ms.locfileid: "88826781"
 |上移選取的左方側邊欄專案 |ALT+Shift+向上鍵|
 |將選取的左方側邊欄專案向下移動 |ALT+Shift+向下鍵|
 
-## <a name="navigation"></a>瀏覽
+## <a name="navigation"></a>巡覽
 
 |若要進行此導覽 |按鍵 |
 | --- | --- |

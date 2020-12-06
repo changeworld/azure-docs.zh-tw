@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 8d28a1f2040cfec7b81081754a6abd3bc3e14439
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 5d13a6a77ede6277eebc7fdab7cd42165cb602fa
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511469"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746336"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Data Factory 的 Azure Private Link
 
@@ -96,20 +96,26 @@ Azure Data Factory 服務的通訊會通過 Private Link 並協助提供安全�
 ## <a name="set-up-private-link-for-azure-data-factory"></a>設定 Azure Data Factory 的 Private Link
 您可以使用 [Azure 入口網站](../private-link/create-private-endpoint-portal.md)來建立私人端點。
 
+您可以選擇是否要透過公用端點或私人端點，將自我裝載整合執行時間連線到 Azure Data Factory。 
+
+![封鎖自我裝載 Integration Runtime 之公用存取的螢幕擷取畫面。](./media/data-factory-private-link/disable-public-access-shir.png)
+
+
 您也可以移至 Azure 入口網站中的 Azure data factory，並建立私人端點，如下所示：
 
 ![用來建立私人端點的 [私人端點連線] 窗格螢幕擷取畫面。](./media/data-factory-private-link/create-private-endpoint.png)
 
+在 [ **資源**] 步驟中，選取 [ **Datafactory]/** [Factory] 作為 [ **資源類型**]。 而且，如果您想要為自我裝載整合執行時間和 Azure Data Factory 服務之間的命令通訊建立私人端點，請選取 [ **datafactory** ] 作為 [ **目標子資源**]。
 
-如果您想要封鎖對 Azure data factory 的公用存取，而且只允許透過 Private Link 存取，請停用 Azure 入口網站中 Azure Data Factory 的網路存取，如下所示：
-
-![用來建立私人端點的 [網路存取] 窗格螢幕擷取畫面。](./media/data-factory-private-link/disable-network-access.png)
+![選取資源的 [私人端點連線] 窗格螢幕擷取畫面。](./media/data-factory-private-link/private-endpoint-resource.png)
 
 > [!NOTE]
 > 停用公用網路存取只適用于自我裝載整合執行時間，而不是 Azure Integration Runtime 和 SQL Server Integration Services (SSIS) Integration Runtime。
 
+如果您想要建立私人端點，以在虛擬網路中撰寫和監視資料處理站，請選取 [ **入口網站** ] 作為 [ **目標子資源**]。
+
 > [!NOTE]
-> 您仍然可以在停用公用網路存取之後，透過公用網路存取 Azure Data Factory 入口網站。
+> 您仍然可以在建立入口網站的私人端點之後，透過公用網路存取 Azure Data Factory 入口網站。
 
 ## <a name="next-steps"></a>後續步驟
 

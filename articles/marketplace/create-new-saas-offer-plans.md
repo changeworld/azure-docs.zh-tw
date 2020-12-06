@@ -8,19 +8,19 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 63629f32c97611fa8bc57ecdac968552375125f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 238ef9ec80b01470e28535d0eb42dbb3a377b005
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89380789"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746432"
 ---
 # <a name="how-to-create-plans-for-your-saas-offer"></a>如何建立 SaaS 供應專案的方案
 
 透過 Microsoft 商業 marketplace 銷售的優惠必須至少有一個方案。 您可以在相同的供應專案內使用不同的選項來建立各種不同的方案。 這些方案 (有時稱為 Sku) 在版本、營收或服務層級方面可能會有所不同。 如需方案的詳細指引，請參閱 [商業 marketplace 供應專案的方案和定價](plans-pricing.md)。
 
 > [!NOTE]
-> 如果您選擇單獨處理交易，將不會看到此選項。 相反地，請跳至 [如何行銷 SaaS 供應](create-new-saas-offer-marketing.md)專案。
+> 如果您選擇單獨處理交易，將不會看到此選項。 相反地，請跳至 [如何銷售您的 SaaS 供應](create-new-saas-offer-marketing.md)專案。
 
 ## <a name="create-a-plan"></a>建立方案
 
@@ -30,7 +30,7 @@ ms.locfileid: "89380789"
 
 1. 在 [ **方案名稱** ] 方塊中，輸入此方案的唯一名稱。 最多使用50個字元。
 
-1. 選取 [建立]****。
+1. 選取 [建立]。
 
 ## <a name="define-the-plan-listing"></a>定義計畫清單
 
@@ -69,7 +69,7 @@ ms.locfileid: "89380789"
 
 只有當您選取 [一般費率定價] 時，才能使用此選項。 如需詳細資訊，請參閱 [使用商用 marketplace 計量服務進行 SaaS 的計量計費](./partner-center-portal/saas-metered-billing.md)。
 
-1. 在 [ **Marketplace 計量服務維度**] 下，選取 [ **新增自訂計量維度 (最大 30) ** ] 連結。
+1. 在 [ **Marketplace 計量服務維度**] 下，選取 [ **新增自訂計量維度 (最大 30)** ] 連結。
 1. 在 [ **識別碼** ] 方塊中，輸入在發出使用事件時不可變的識別碼參考。
 1. 在 [ **顯示名稱** ] 方塊中，輸入與維度相關聯的顯示名稱。 例如，「傳送的文字訊息」。
 1. 在 [ **測量單位** ] 方塊中，輸入計費單位的描述。 例如，「每一文字訊息」或「每100電子郵件」。
@@ -130,12 +130,12 @@ ms.locfileid: "89380789"
 ### <a name="use-a-csv-file-for-a-private-plan"></a>使用。私人方案的 CSV 檔案
 
 1. 在 [ **計畫可見度**] 下，選取 [ **這是私人方案** ] 方塊。
-2. 選取 [ **匯出物件 (csv]) ** 連結。
+2. 選取 [ **匯出物件 (csv])** 連結。
 3. 開啟。CSV 檔案，並將您想要授與私人供應專案存取權的 Azure 識別碼新增至 [ **識別碼** ] 資料行。
 4. （選擇性）在 [ **描述** ] 欄中輸入每個物件的描述。
 5. 針對具有 Azure 識別碼的每個資料列，在 [ **類型** ] 資料行中新增 "TenantID"。
 6. 儲存。CSV 檔案。
-7. 在 [ **定價和可用性** ] 索引標籤的 [ **計畫可見度**] 下，選取 [匯 **入物件 (csv]) ** 連結。
+7. 在 [ **定價和可用性** ] 索引標籤的 [ **計畫可見度**] 下，選取 [匯 **入物件 (csv])** 連結。
 8. 在出現的對話方塊中，選取 [ **是**]。
 9. 選取。CSV 檔案，然後選取 [ **開啟**]。
 10. 選取 [ **儲存草稿**]，然後在索引標籤的左上方，選取 [ **計畫總覽** ] 返回 [ **計畫總覽** ] 索引標籤。
@@ -152,5 +152,5 @@ ms.locfileid: "89380789"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解如何透過**與 Microsoft 共同銷售**並**轉售 Csp**計畫的[方式來行銷 SaaS 供應](create-new-saas-offer-marketing.md)專案。
+- 瞭解如何透過 **與 Microsoft 共同銷售** 的 [銷售 SaaS 供應](create-new-saas-offer-marketing.md)專案，並 **透過 csp 計畫轉售**。
 - [如何測試 SaaS 供應專案並將其發佈至商用 marketplace](test-publish-saas-offer.md)。

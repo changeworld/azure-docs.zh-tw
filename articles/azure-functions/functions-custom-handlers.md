@@ -1,18 +1,18 @@
 ---
-title: 'Azure Functions 自訂處理常式 (預覽) '
+title: Azure Functions 自訂處理常式
 description: 瞭解如何使用任何語言或執行階段版本的 Azure Functions。
 author: anthonychu
 ms.author: antchu
-ms.date: 8/18/2020
+ms.date: 12/1/2020
 ms.topic: article
-ms.openlocfilehash: 402ce1e9e92ab87689abe9c18a503a479d7421f9
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 099f90ba8c5d9dabb6c4c505e50d8c077e3eaf0f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164545"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746024"
 ---
-# <a name="azure-functions-custom-handlers-preview"></a>Azure Functions 自訂處理常式 (預覽) 
+# <a name="azure-functions-custom-handlers"></a>Azure Functions 自訂處理常式
 
 每個函式應用程式都是由特定語言的處理常式執行。 雖然 Azure Functions 預設支援許多 [語言處理常式](./supported-languages.md) ，但在某些情況下，您可能會想要使用其他語言或執行時間。
 
@@ -20,10 +20,12 @@ ms.locfileid: "92164545"
 
 自訂處理常式最適用于您想要執行下列動作的情況：
 
-- 使用目前不支援的語言（例如 Go 和 Rust）來執行函數應用程式。
+- 使用目前不支援的語言（例如 Go 或 Rust）來執行函數應用程式。
 - 在目前不支援的執行時間中執行函數應用程式，例如 Deno。
 
 使用自訂處理常式時，您可以透過[延伸](./functions-bindings-register.md)模組套件組合使用[觸發程式和輸入和輸出](./functions-triggers-bindings.md)系結。
+
+使用 [Go 和 Rust 中的快速入門，](create-first-function-vs-code-other.md)開始使用 Azure Functions 自訂處理常式。
 
 ## <a name="overview"></a>概觀
 
@@ -36,18 +38,18 @@ ms.locfileid: "92164545"
 1. Web 服務器會執行個別的函式，並將 [回應](#response-payload) 內容傳回給函式主機。
 1. 函數主機會將回應中的資料傳遞給函式的輸出系結，以進行處理。
 
-實作為自訂處理常式的 Azure Functions 應用程式必須根據幾個慣例，在檔案上設定 *host.json*、 *local.settings.json*和 *function.js* 。
+實作為自訂處理常式的 Azure Functions 應用程式必須根據幾個慣例，在檔案上設定 *host.json*、 *local.settings.json* 和 *function.js* 。
 
 ## <a name="application-structure"></a>應用程式結構
 
 若要執行自訂處理常式，您需要應用程式的下列層面：
 
-- 位於應用程式根目錄的檔案*host.js*
-- 位於應用程式根目錄的檔案*local.settings.js*
+- 位於應用程式根目錄的檔案 *host.js*
+- 位於應用程式根目錄的檔案 *local.settings.js*
 - 在符合函式名稱的資料夾內，每個函式 (的 *function.js* 檔案) 
 - 執行網頁伺服器的命令、腳本或可執行檔
 
-下圖顯示這些檔案如何在檔案系統中尋找名為 "MyQueueFunction" 的函式，以及名為 *handler.exe*的自訂處理常式可執行檔。
+下圖顯示這些檔案如何在檔案系統中尋找名為 "MyQueueFunction" 的函式，以及名為 *handler.exe* 的自訂處理常式可執行檔。
 
 ```bash
 | /MyQueueFunction
@@ -58,9 +60,9 @@ ms.locfileid: "92164545"
 | handler.exe
 ```
 
-### <a name="configuration"></a>組態
+### <a name="configuration"></a>設定
 
-應用程式是透過的 *host.js* 設定，並 * 在檔案上local.settings.js* 。
+應用程式是透過的 *host.js* 設定，並 *在檔案上local.settings.js* 。
 
 #### <a name="hostjson"></a>host.json
 
@@ -103,13 +105,13 @@ ms.locfileid: "92164545"
 
 ##### <a name="bindings-support"></a>系結支援
 
-標準觸發程式，以及輸入和輸出系結，可透過參考檔案*host.js*中的[延伸](./functions-bindings-register.md)模組組合來取得。
+標準觸發程式，以及輸入和輸出系結，可透過參考檔案 *host.js* 中的 [延伸](./functions-bindings-register.md)模組組合來取得。
 
 #### <a name="localsettingsjson"></a>local.settings.json
 
 *local.settings.json* 定義在本機執行函數應用程式時所使用的應用程式設定。 因為它可能包含秘密，所以應從原始檔控制中排除 *local.settings.js的* 。 在 Azure 中，請改為使用應用程式設定。
 
-若為自訂處理常式，請在 `FUNCTIONS_WORKER_RUNTIME` `Custom` *local.settings.js的上*將設定為。
+若為自訂處理常式，請在 `FUNCTIONS_WORKER_RUNTIME` `Custom` *local.settings.js的上* 將設定為。
 
 ```json
 {
@@ -125,9 +127,9 @@ ms.locfileid: "92164545"
 
 ### <a name="function-metadata"></a>函數中繼資料
 
-與自訂處理常式搭配使用時，內容 * 上的function.js* 與在任何其他內容中定義函數的方式並無不同。 唯一的需求是檔案 * 上的function.js* 必須位於名為的資料夾中，才能符合函式名稱。
+與自訂處理常式搭配使用時，內容 *上的function.js* 與在任何其他內容中定義函數的方式並無不同。 唯一的需求是檔案 *上的function.js* 必須位於名為的資料夾中，才能符合函式名稱。
 
-下列 *function.js* 設定具有佇列觸發程式和佇列輸出系結的函式。 因為它位於名為 *MyQueueFunction*的資料夾中，所以它會定義名為 *MyQueueFunction*的函式。
+下列 *function.js* 設定具有佇列觸發程式和佇列輸出系結的函式。 因為它位於名為 *MyQueueFunction* 的資料夾中，所以它會定義名為 *MyQueueFunction* 的函式。
 
 **MyQueueFunction/function.js開啟**
 
@@ -158,7 +160,7 @@ ms.locfileid: "92164545"
 
 下列程式碼代表範例要求承載。 承載包含具有兩個成員的 JSON 結構： `Data` 和 `Metadata` 。
 
-`Data`成員包含的索引鍵符合輸入和觸發程式名稱，如*function.json*檔案的系結陣列中所定義。
+`Data`成員包含的索引鍵符合輸入和觸發程式名稱，如 *function.json* 檔案的系結陣列中所定義。
 
 `Metadata`成員包含[從事件來源產生的中繼資料](./functions-bindings-expressions-patterns.md#trigger-metadata)。
 
@@ -189,7 +191,7 @@ ms.locfileid: "92164545"
 
 | <nobr>承載金鑰</nobr>   | 資料類型 | 備註                                                      |
 | ------------- | --------- | ------------------------------------------------------------ |
-| `Outputs`     | 物件 (object)    | 保留 `bindings` *function.js*中陣列所定義的回應值。<br /><br />比方說，如果函式是使用名為 "myQueueOutput" 的佇列輸出系結來設定，則會 `Outputs` 包含名為的索引鍵，該索引鍵 `myQueueOutput` 是由自訂處理常式設定為傳送至佇列的訊息。 |
+| `Outputs`     | 物件 (object)    | 保留 `bindings` *function.js* 中陣列所定義的回應值。<br /><br />比方說，如果函式是使用名為 "myQueueOutput" 的佇列輸出系結來設定，則會 `Outputs` 包含名為的索引鍵，該索引鍵 `myQueueOutput` 是由自訂處理常式設定為傳送至佇列的訊息。 |
 | `Logs`        | array     | 訊息會出現在函式呼叫記錄中。<br /><br />在 Azure 中執行時，訊息會出現在 Application Insights 中。 |
 | `ReturnValue` | 字串    | 當輸出設定為 `$return` 在檔案的 *function.js* 時，用來提供回應。 |
 
@@ -226,7 +228,7 @@ ms.locfileid: "92164545"
 
 #### <a name="implementation"></a>實作
 
-在名為 *order*的資料夾中， *function.json* file 會設定 HTTP 觸發的函式。
+在名為 *order* 的資料夾中， *function.json* file 會設定 HTTP 觸發的函式。
 
 **訂單/function.js開啟**
 
@@ -257,7 +259,7 @@ ms.locfileid: "92164545"
 
 此函式會定義為 [HTTP 觸發](./functions-bindings-http-webhook-trigger.md) 函式，此函式會傳回 [HTTP 回應](./functions-bindings-http-webhook-output.md) 並輸出 [佇列儲存體](./functions-bindings-storage-queue-output.md) 訊息。
 
-在應用程式的根目錄中，檔案 * 上的host.js* 設定為 `handler.exe` `handler` 在 Linux 或 macOS) 中執行名為 (的可執行檔。
+在應用程式的根目錄中，檔案 *上的host.js* 設定為 `handler.exe` `handler` 在 Linux 或 macOS) 中執行名為 (的可執行檔。
 
 ```json
 {
@@ -415,7 +417,7 @@ func main() {
 
 #### <a name="implementation"></a>實作
 
-在名為 *hello*的資料夾中， *function.json* file 會設定 HTTP 觸發的函式。
+在名為 *hello* 的資料夾中， *function.json* file 會設定 HTTP 觸發的函式。
 
 **hello/function.js開啟**
 
@@ -440,7 +442,7 @@ func main() {
 
 函數設定為接受 `GET` 和 `POST` 要求，且結果值是透過名為的引數提供 `res` 。
 
-在應用程式的根目錄中，檔案 * 上的host.js* 設定為執行， `handler.exe` 並 `enableForwardingHttpRequest` 設定為 `true` 。
+在應用程式的根目錄中，檔案 *上的host.js* 設定為執行， `handler.exe` 並 `enableForwardingHttpRequest` 設定為 `true` 。
 
 ```json
 {
@@ -544,7 +546,7 @@ func azure functionapp publish $functionAppName
 
 如果您的自訂處理常式進程無法啟動，或是與函式主機進行通訊時發生問題，您可以將函式應用程式的記錄層級增加至， `Trace` 以查看主機的更多診斷訊息。
 
-若要變更函數應用程式的預設記錄層級，請在 `logLevel`host.js的區段中設定設定 `logging` * *。
+若要變更函數應用程式的預設記錄層級，請在 `logLevel`host.js的區段中設定設定 `logging` **。
 
 ```json
 {
@@ -583,3 +585,7 @@ func azure functionapp publish $functionAppName
 如果您在具有自訂處理常式的函式應用程式上需要協助，您可以透過一般支援管道提交要求。 不過，由於用來建立自訂處理常式應用程式的各種可能語言，支援並不是無限的。
 
 如果函數主機在啟動或與自訂處理常式進行通訊時發生問題，就可以使用支援。 針對您的自訂處理常式流程內部運作的特定問題，例如所選語言或架構的問題，我們的支援小組無法在此內容中提供協助。
+
+## <a name="next-steps"></a>後續步驟
+
+使用 [自訂處理常式快速入門](create-first-function-vs-code-other.md)，開始在 Go 或 Rust 中建立 Azure Functions 應用程式。

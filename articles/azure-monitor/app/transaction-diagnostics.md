@@ -4,12 +4,12 @@ description: Application Insights 端對端交易診斷
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 552e80d6c90a18180ab41dce72e995b6804a91bc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7623b7131e6344a67c468d0436884ebfef9b0058
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002046"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746092"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>整合跨元件交易診斷
 
@@ -80,9 +80,7 @@ ms.locfileid: "96002046"
 
 * 您是否曾使用 Application Insights 檢測其他元件？
 * 使用的是否為最新的穩定版 Application Insights SDK？
-* 如果這些元件是個別的 Application Insights 資源，您是否擁有存取其遙測資料的必要權限？
-
-如果您擁有存取權限，而且元件是由最新的 Application Insights SDK 進行檢測，請透過右上角的意見反應管道告訴我們。
+* 如果這些元件是不同的 Application Insights 資源，如果您確實具有 [存取權，](resources-roles-access-control.md) 且元件是以最新的 Application Insights sdk 進行檢測，請透過右上方的意見反應通道讓我們知道。
 
 *我看到相依性的重復資料列。這是預期的嗎？*
 

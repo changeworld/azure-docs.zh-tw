@@ -5,21 +5,20 @@ author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
 ms.topic: how-to
-ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: bd4a770aee43709c46ab4c1baf965941d8d2c3ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eadf740c6b5caccbf678a1238f993d4ec0b34095
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763851"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745412"
 ---
 # <a name="standard-quota-increase-limits-by-region"></a>標準配額：依區域增加限制
 
 Azure Resource Manager 針對虛擬機器支援兩種類型的 vCPU 配額：
 
 * *隨用隨付 vm* 和 *保留的 vm 實例* 受限於 *標準 vCPU 配額*。
-* 現成的*vm*會受到*點 vCPU 配額*的限制。
+* 現成的 *vm* 會受到 *點 vCPU 配額* 的限制。
 
 隨用隨付和保留的虛擬機器實例的標準 vCPU 配額，會針對每個區域中的每個訂用帳戶在兩個層級上強制執行：
 
@@ -50,11 +49,11 @@ Azure Resource Manager 針對虛擬機器支援兩種類型的 vCPU 配額：
 
     ![新增支援要求](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-1. 針對 [ **問題類型**]，選取 [ **服務與訂用帳戶限制] (配額) **。
+1. 針對 [ **問題類型**]，選取 [ **服務與訂用帳戶限制] (配額)**。
 
    ![選取問題類型](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
 
-1. 針對 [ **訂**用帳戶]，選取您要增加其配額的訂用帳戶。
+1. 針對 [ **訂** 用帳戶]，選取您要增加其配額的訂用帳戶。
 
    ![選取一個訂用帳戶](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
 
@@ -62,7 +61,7 @@ Azure Resource Manager 針對虛擬機器支援兩種類型的 vCPU 配額：
 
    ![選取配額類型](./media/resource-manager-core-quotas-request/regional-quotatype.png)
 
-1. 選取 **[下一步]：** 開啟 **問題詳細資料**的解決方案。 在 [ **描述**] 中，提供下列資訊：
+1. 選取 **[下一步]：** 開啟 **問題詳細資料** 的解決方案。 在 [ **描述**] 中，提供下列資訊：
 
     1. 針對 **部署模型**，指定 **Resource Manager**。  
     1. 針對 [ **區域**]，指定所需的區域，例如「 **美國東部 2**」。  
@@ -74,7 +73,7 @@ Azure Resource Manager 針對虛擬機器支援兩種類型的 vCPU 配額：
 
 ## <a name="request-a-quota-increase-by-region-from-subscriptions"></a>依區域的訂用帳戶要求增加配額
 
-若 **要從訂用帳戶**依區域要求增加 vCPU 配額：
+若 **要從訂用帳戶** 依區域要求增加 vCPU 配額：
 
 1. 在 [ [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 [ **訂閱**]。
 
@@ -96,7 +95,7 @@ Azure Resource Manager 針對虛擬機器支援兩種類型的 vCPU 配額：
 
    ![選取配額類型](./media/resource-manager-core-quotas-request/regional-quotatype.png)
 
-1. 選取 **[下一步]：** 開啟 **問題詳細資料**的解決方案。 在 [ **描述** ] 方塊中，提供下列其他資訊：
+1. 選取 **[下一步]：** 開啟 **問題詳細資料** 的解決方案。 在 [ **描述** ] 方塊中，提供下列其他資訊：
 
     1. 針對 **部署模型**，指定 **Resource Manager**。  
     1. 針對 [ **區域**]，指定所需的區域，例如「 **美國東部 2**」。  

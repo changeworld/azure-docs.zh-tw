@@ -5,14 +5,13 @@ author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
 ms.topic: how-to
-ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: afdb8b2b677321239f240e74d49711195ac186c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5b5e8c11bfe164aaa3539742dac8c4d267c69e1
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763902"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745599"
 ---
 # <a name="classic-deployment-model"></a>傳統部署模型
 
@@ -38,7 +37,7 @@ ms.locfileid: "84763902"
 
    ![在 Azure 入口網站中建立新的支援要求](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-1. 在 [ **問題類型**] 中，選擇 [ **服務與訂用帳戶限制] (配額) **。
+1. 在 [ **問題類型**] 中，選擇 [ **服務與訂用帳戶限制] (配額)**。
 
    ![選取 [配額] 作為問題類型](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
 
@@ -50,7 +49,7 @@ ms.locfileid: "84763902"
 
    ![選取要增加的配額類型](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-1. 選取 **[下一步]：** 開啟 **問題詳細資料**的解決方案。 選取 [ **提供詳細資料** ] 以提供其他資訊。
+1. 選取 **[下一步]：** 開啟 **問題詳細資料** 的解決方案。 選取 [ **提供詳細資料** ] 以提供其他資訊。
 
    ![提供詳細資料以協助您提出要求](./media/resource-manager-core-quotas-request/provide-details-link.png)
 
@@ -90,7 +89,7 @@ ms.locfileid: "84763902"
 
    ![選取配額類型](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-1. 選取 **[下一步]：** 開啟 **問題詳細資料**的解決方案。 選取 [ **提供詳細資料** ] 以提供其他資訊。
+1. 選取 **[下一步]：** 開啟 **問題詳細資料** 的解決方案。 選取 [ **提供詳細資料** ] 以提供其他資訊。
 
    ![為您的要求提供詳細資料](./media/resource-manager-core-quotas-request/provide-details-link.png)
 

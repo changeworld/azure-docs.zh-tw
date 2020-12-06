@@ -5,12 +5,12 @@ description: 了解如何透過 Azure 檔案服務以動態方式建立永續性
 services: container-service
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 08752f8aaa76d83e13eeea86db3048a6d29a4d99
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2ad2affee34348e8c2fc7b734c8b49d0aec8db40
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126391"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744904"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中以動態方式建立和使用 Azure 檔案服務的永續性磁碟區
 
@@ -26,7 +26,7 @@ ms.locfileid: "93126391"
 
 ## <a name="create-a-storage-class"></a>建立儲存體類別
 
-儲存體類別可用來定義 Azure 檔案共用的建立方式。 [節點資源群組][node-resource-group]中會自動建立儲存體帳戶，供儲存體類別用來保存 Azure 檔案共用。 針對 *skuName* ，請 選擇下列 [Azure 儲存體備援][storage-skus]：
+儲存體類別可用來定義 Azure 檔案共用的建立方式。 [節點資源群組][node-resource-group]中會自動建立儲存體帳戶，供儲存體類別用來保存 Azure 檔案共用。 針對 *skuName*，請 選擇下列 [Azure 儲存體備援][storage-skus]：
 
 * *Standard_LRS* - 標準本地備援儲存體 (LRS)
 * *Standard_GRS* - 標準異地備援儲存體 (GRS)
@@ -55,6 +55,7 @@ mountOptions:
   - gid=0
   - mfsymlinks
   - cache=strict
+  - actimeo=30
 parameters:
   skuName: Standard_LRS
 ```
@@ -86,7 +87,7 @@ spec:
 ```
 
 > [!NOTE]
-> 如果儲存體類別使用 *Premium_LRS* sku，則 *storage* 的最小值必須為 *100Gi* 。
+> 如果儲存體類別使用 *Premium_LRS* sku，則 *storage* 的最小值必須為 *100Gi*。
 
 使用 [kubectl apply][kubectl-apply] 命令建立永續性磁碟區宣告：
 
@@ -105,7 +106,7 @@ my-azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        R
 
 ## <a name="use-the-persistent-volume"></a>使用永續性磁碟區
 
-下列 YAML 會建立使用永久性磁片區宣告 *azurefile* 的 pod，以在 */mnt/azure* 路徑上掛接 Azure 檔案共用。 對於 Windows Server 容器，請採用 Windows 路徑慣例來指定 *mountPath* ，例如 *'D:'* 。
+下列 YAML 會建立使用永久性磁片區宣告 *azurefile* 的 pod，以在 */mnt/azure* 路徑上掛接 Azure 檔案共用。 對於 Windows Server 容器，請採用 Windows 路徑慣例來指定 *mountPath*，例如 *'D:'* 。
 
 建立名為 `azure-pvc-files.yaml` 的檔案，然後將下列 YAML 複製進來。 請確定claimName 與最後一個步驟中建立的 PVC 相符。
 
@@ -165,7 +166,7 @@ Volumes:
 
 ## <a name="mount-options"></a>掛接選項
 
-若為 Kubernetes 1.13.0 版和更新版本，則 *fileMode* 和 *dirMode* 的預設值為 *0777* 。 如果以儲存體類別動態建立永續性磁碟區，則可以在儲存體類別物件上指定裝載選項。 下列範例會設定 0777：
+若為 Kubernetes 1.13.0 版和更新版本，則 *fileMode* 和 *dirMode* 的預設值為 *0777*。 如果以儲存體類別動態建立永續性磁碟區，則可以在儲存體類別物件上指定裝載選項。 下列範例會設定 0777：
 
 ```yaml
 kind: StorageClass
@@ -180,6 +181,7 @@ mountOptions:
   - gid=0
   - mfsymlinks
   - cache=strict
+  - actimeo=30
 parameters:
   skuName: Standard_LRS
 ```

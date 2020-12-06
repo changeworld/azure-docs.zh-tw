@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4510dac833d0576273472b6f925d546b55257614
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: c9d3a00491bc0628244a5a7907f0dee03a5f8d3c
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886799"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744188"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Azure Active Directory-phone 選項中的驗證方法
 
@@ -75,7 +75,7 @@ Microsoft 不保證一致的 SMS 或以語音為基礎的 Azure AD Multi-Factor 
 
 ## <a name="next-steps"></a>後續步驟
 
-若要開始使用，請參閱 [自助式密碼重設的教學課程 (SSPR) ][tutorial-sspr] 和 [Azure AD Multi-Factor Authentication][tutorial-azure-mfa]。
+若要開始使用，請參閱[自助式密碼重設 (SSPR) 的教學課程][tutorial-sspr]和 [Azure AD Multi-Factor Authentication][tutorial-azure-mfa]。
 
 若要深入了解 SSPR 概念，請參閱 [Azure AD 自助式密碼重設的運作方式][concept-sspr]。
 

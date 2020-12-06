@@ -1,19 +1,16 @@
 ---
 title: 管理 Azure 支援要求
 description: 說明如何查看支援要求、傳送訊息、變更要求嚴重性層級、與 Azure 支援共用診斷資訊、重新開啟已關閉的支援要求，以及上傳檔案。
-author: mgblythe
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
-ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.author: mblythe
-ms.openlocfilehash: f3b4806bf46750d74a54f68bd2ab58e402e75091
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9dd703dc0a3f5e8f85b1022fa2a71ff9a8c295d
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85852245"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745565"
 ---
 # <a name="manage-an-azure-support-request"></a>管理 Azure 支援要求
 
@@ -45,17 +42,17 @@ ms.locfileid: "85852245"
 
 1. 在 [ **支援要求** ] 頁面上，選取 [ **變更**]。
 
-    :::image type="content" source="media/how-to-manage-azure-support-request/change-severity.png" alt-text="所有支援要求":::
+    :::image type="content" source="media/how-to-manage-azure-support-request/change-severity.png" alt-text="變更支援要求嚴重性":::
 
 1. 根據您的要求是否已指派給支援工程師，Azure 入口網站會顯示兩個畫面中的其中一個畫面：
 
     - 如果您尚未指派您的要求，您會看到如下所示的畫面。 選取新的嚴重性層級，然後選取 [ **變更**]。
 
-        :::image type="content" source="media/how-to-manage-azure-support-request/unassigned-can-change-severity.png" alt-text="所有支援要求":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/unassigned-can-change-severity.png" alt-text="選取新的嚴重性層級":::
 
     - 如果已指派您的要求，您會看到如下所示的畫面。 選取 **[確定]**，然後建立 [新的訊息](#send-a-message) 來要求嚴重性層級的變更。
 
-        :::image type="content" source="media/how-to-manage-azure-support-request/assigned-cant-change-severity.png" alt-text="所有支援要求":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/assigned-cant-change-severity.png" alt-text="無法選取新的嚴重性層級":::
 
 ## <a name="share-diagnostic-information-with-azure-support"></a>使用 Azure 支援共用診斷資訊
 
@@ -69,7 +66,7 @@ ms.locfileid: "85852245"
     
     1. 在 [ **支援要求** ] 頁面上，選取 **[授與許可權**]，然後選取 [ **是** ] 和 **[確定]**。
     
-        :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="所有支援要求":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="授與診斷資訊的許可權":::
 
 ## <a name="upload-files"></a>上傳檔案
 
@@ -79,7 +76,7 @@ ms.locfileid: "85852245"
 
 1. 在 [ **支援要求** ] 頁面上，流覽以尋找您的檔案，然後選取 **[上傳**]。 如果您有多個檔案，請重複此程式。
 
-    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="所有支援要求":::
+    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="上傳檔案":::
 
 ### <a name="file-upload-guidelines"></a>檔案上傳指導方針
 
@@ -126,7 +123,7 @@ ms.locfileid: "85852245"
 
 如果您需要重新開啟已關閉的支援要求，請建立 [新的訊息](#send-a-message)，此訊息會自動重新開啟要求。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [如何建立 Azure 支援要求](how-to-create-azure-support-request.md)
 

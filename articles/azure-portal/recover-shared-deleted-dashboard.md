@@ -1,19 +1,14 @@
 ---
-title: 復原 Azure 入口網站中已刪除的儀表板 |Microsoft Docs
+title: 在 Azure 入口網站中復原已刪除的儀表板
 description: 如果您在 Azure 入口網站中刪除已發佈的儀表板，就可以復原儀表板。
-services: azure-portal
-author: mgblythe
-ms.author: mblythe
 ms.date: 01/21/2020
 ms.topic: troubleshooting
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: 7b3cc088a87731d2a118a4fe5183831e4d1bd6cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 095964691a3cb22f8a805af2e8fe37af4c47cb28
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763970"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745616"
 ---
 # <a name="recover-a-deleted-dashboard-in-the-azure-portal"></a>在 Azure 入口網站中復原已刪除的儀表板
 

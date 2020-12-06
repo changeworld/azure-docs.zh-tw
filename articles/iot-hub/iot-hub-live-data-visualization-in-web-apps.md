@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 8f7baca94d653d9851c506068ccf7ecf84063641
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 3218df4601ef7a5e1b1e04c20c89eefc367b720b
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832172"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746449"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>使用 Web 應用程式，將來自 Azure IoT 中樞的即時感應器資料視覺化
 
@@ -184,7 +184,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
 
 5. 若要將程式碼部署至 App Service，請利用[使用者層級部署認證](../app-service/deploy-configure-credentials.md)。 使用者層級部署認證可用於 Web 應用程式的 Git 本機和 FTP 部署，其與 Azure 認證不同。 一旦設定使用者層級部署認證之後，該認證在 Azure 帳戶中每個訂用帳戶的所有 App Service 應用程式均有效。 如果先前已設定使用者層級部署認證，則可直接使用。
 
-   如果先前尚未設定使用者層級部署認證，或不記得密碼，請執行下列命令。 部署使用者名稱在 Azure 中必須是唯一名稱，且不得包含 ‘@’ 符號才能用於本機 Git 推送。 收到系統提示時，請輸入新密碼並確認。 密碼長度必須至少為 8 個字元，包含下列三個元素其中兩個：字母、數字及符號。
+   如果先前尚未設定使用者層級部署認證，或不記得密碼，請執行下列命令。 您的部署使用者名稱在 Azure 內必須是唯一的，且不能包含 \@ 本機 Git 推送的 ' ' 符號。 收到系統提示時，請輸入新密碼並確認。 密碼長度必須至少為 8 個字元，包含下列三個元素其中兩個：字母、數字及符號。
 
    ```azurecli-interactive
    az webapp deployment user set --user-name <your deployment user name>

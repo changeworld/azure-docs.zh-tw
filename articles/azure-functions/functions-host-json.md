@@ -3,12 +3,12 @@ title: 適用於 Azure Functions 2.x 的 host.json 參考
 description: Azure Functions host.json 檔案與 v2 執行階段的參考文件。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: c12a9244cdc1a76f678578e281532c73bc9385ba
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 96d6b884e9e2c835316af01140c6fc7208ee5ab9
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917234"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746075"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 和更新版本的 host.json 參考 (機器翻譯) 
 
@@ -219,6 +219,28 @@ ms.locfileid: "94917234"
 
 可在 [Cosmos DB 觸發程序和繫結](functions-bindings-cosmosdb-v2-output.md#host-json)中找到組態設定。
 
+## <a name="customhandler"></a>customHandler
+
+自訂處理常式的設定。 如需詳細資訊，請參閱 [Azure Functions 自訂處理常式](functions-custom-handlers.md#configuration)。
+
+```json
+"customHandler": {
+  "description": {
+    "defaultExecutablePath": "server",
+    "workingDirectory": "handler",
+    "arguments": [ "--port", "%FUNCTIONS_CUSTOMHANDLER_PORT%" ]
+  },
+  "enableForwardingHttpRequest": false
+}
+```
+
+|屬性 | 預設 | 描述 |
+| --------- | --------- | --------- |
+| defaultExecutablePath | n/a | 要作為自訂處理常式進程啟動的可執行檔。 這是使用自訂處理常式時的必要設定，且其值與函式應用程式根目錄相關。 |
+| workingDirectory | *函數應用程式根目錄* | 要在其中啟動自訂處理常式進程的工作目錄。 這是選擇性的設定，而且其值會相對於函式應用程式根目錄。 |
+| 引數 | n/a | 要傳遞至自訂處理常式進程的命令列引數陣列。 |
+| enableForwardingHttpRequest | false | 如果設定，只會將所有包含 HTTP 觸發程式和 HTTP 輸出的函式轉寄給原始 HTTP 要求，而不是自訂處理常式 [要求](functions-custom-handlers.md#request-payload)承載。 |
+
 ## <a name="durabletask"></a>durableTask
 
 可在 [Durable Functions 的繫結](durable/durable-functions-bindings.md#host-json)中找到組態設定。
@@ -411,7 +433,7 @@ Singleton 鎖定行為的組態設定。 如需詳細資訊，請參閱[單一�
 |lockAcquisitionTimeout|00:01:00|執行階段將嘗試取得鎖定的時間量上限。| 
 |lockAcquisitionPollingInterval|n/a|鎖定取得嘗試之間的間隔。| 
 
-## <a name="version"></a>版本
+## <a name="version"></a>version
 
 此值指出 host.js的架構版本。 `"version": "2.0"`目標為 v2 執行時間（或更新版本）的函式應用程式需要版本字串。 V2 和 v3 之間的架構變更沒有 host.js。
 

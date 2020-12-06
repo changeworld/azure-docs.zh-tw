@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 12/2/2020
-ms.openlocfilehash: 3e4c793e7822021fd1690d53a2d9df5399f3e6e2
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 3693ff8ea213d0823237956c532e65d5094bf1ce
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572978"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746313"
 ---
 # <a name="co-sell-partner-engagement"></a>共同銷售合作夥伴參與
 
@@ -30,30 +30,30 @@ ms.locfileid: "96572978"
 
 提供 **AZURE IP 共同銷售受到激勵** 狀態的優惠可獲得下列額外的 marketplace 權益：
 
-- Marketplace 服務費用從20% 減少為10%。 此折扣適用于透過商業市場銷售的 IaaS 或 SaaS 供應專案。 如需詳細資訊，請參閱 [商業 marketplace 服務費用](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees) 以取得詳細資料。
+- Marketplace 服務費用從20% 減少為10%。 此折扣適用于透過商業市場銷售的 IaaS 或 SaaS 供應專案。 如需詳細資訊，請參閱 [商業 marketplace 服務費用](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees)。
 - 雲端解決方案提供者 (CSP) 合作夥伴可享有10% 的獎勵來銷售您的 IaaS 或 SaaS 供應專案。 若要深入瞭解 CSP 方案，請參閱 [雲端解決方案提供者計畫](cloud-solution-providers.md)。
 - 透過商業 marketplace 的供應專案銷售，將會對客戶的 Azure 耗用量承諾有所貢獻。 合格客戶會在 Azure 入口網站中看到標示為「 **Azure 權益符合資格** 」的供應專案。 如需詳細資訊，請參閱 [Azure 使用量承諾用量權益](azure-consumption-commitment-benefit.md)。
 - 提供 **AZURE IP 共同銷售受到激勵** 或 **Business Applications 共同銷售受到激勵** 狀態的供應專案，將會在店面中收到「 **偏好的解決方案** 」徽章。 徽章可提升供應專案品質、效能，以及滿足特定產業垂直或解決方案領域中客戶需求的能力。 若要深入瞭解，請參閱 [Microsoft AppSource 和 Azure Marketplace 的慣用解決方案](preferred-solutions.md)。
 
 ## <a name="co-sell-publishing-steps-and-requirements"></a>共同銷售發佈步驟和需求
 
-下表列出讓 marketplace 供應專案共同銷售就緒或共同銷售受到激勵的步驟和需求。 並非所有的商業 marketplace 供應專案類型都可在合作夥伴中心中進行共同銷售。 如需支援共同銷售的最新供應專案類型清單，請參閱 [合作夥伴中心中的共同銷售選項](commercial-marketplace-co-sell.md)。 
+下表列出讓 marketplace 供應專案共同銷售就緒或共同銷售受到激勵的步驟和需求。 並非所有的商業 marketplace 供應專案類型都可在合作夥伴中心中進行共同銷售。 如需支援共同銷售的最新供應專案類型清單，請參閱 [商業 marketplace 中的共同銷售選項](commercial-marketplace-co-sell.md)。 
 
 |步驟    |供應項目類型    |規格需求    |共同銷售狀態    |
 |----    |-------------    |------------    |---------------   |
 |<ol start=1><li>在合作夥伴中心中建立帳戶，並將您的供應專案發佈至商用 marketplace。</li>|全部|<ul><li>供應專案符合商業 marketplace 發佈需求。</li><li>您在合作夥伴中心中有完整的商務設定檔。</li></ul>| 市場 |
-|<ol start=2><li>提交所需的共同銷售教材。</li>|合作夥伴中心中 *具有*[共同銷售選項](commercial-marketplace-co-sell.md)的 IP 供應專案|[在合作夥伴中心上傳所需的材質](#how-to-submit-co-sell-materials-in-partner-center)|共同銷售準備就緒|
-||合作夥伴中心中 *沒有*[共同銷售選項](commercial-marketplace-co-sell.md)的 IP 優惠|<ul><li>要求與 [雲端專家合作](https://partner.microsoft.com/campaigns/ced-nomination-form/) ，以提供所需的共同銷售檔。</li></ul>|共同銷售準備就緒|
+|<ol start=2><li>提交所需的共同銷售教材。</li>|*with* [商業 marketplace 中具有共同銷售選項](commercial-marketplace-co-sell.md)的 IP 優惠|[在合作夥伴中心上傳所需的材質](#how-to-submit-co-sell-materials-in-partner-center)|共同銷售準備就緒|
+||*without* [商業 marketplace 中沒有共同銷售選項](commercial-marketplace-co-sell.md)的 IP 優惠|<ul><li>要求與 [雲端專家合作](https://partner.microsoft.com/campaigns/ced-nomination-form/) ，以提供所需的共同銷售檔。</li></ul>|共同銷售準備就緒|
 ||諮詢服務|<ul><li>要求與 [雲端專家合作](https://partner.microsoft.com/campaigns/ced-nomination-form/) ，以提供所需的共同銷售檔。</li><li>主動式金級專長認證。</li></ul>|共同銷售準備就緒|
-|<ol start=3><li>符合 IP 共同銷售獎勵的資格</li>|Azure 應用程式，Azure 容器，IoT Edge 模組，SaaS，Vm|共同銷售準備就緒之後，有兩個額外的需求： <ul> 需求1：達成下列任一項：<ul><li>*在組織層級上：* 在過去12個月內，達到或超過 $100000 美元的 Azure 取用收益。</li><li>*在供應專案層級：* 累積的 marketplace 計費收益（$100000 美元）。</li></ul><br>需求2：您的供應專案基礎結構必須在 Azure 上執行超過50%：<ul><li>[在合作夥伴中心中使用共同銷售選項](commercial-marketplace-co-sell.md)*的* IP 供應專案：上傳具有共同銷售合作夥伴中心檔的架構圖表以供審查。</li><li>*without* [在合作夥伴中心中，沒有共同銷售選項](commercial-marketplace-co-sell.md)的 IP 供應專案：將架構圖上傳至 OCP 操作人員。|Azure IP 共同銷售受到激勵|
+|<ol start=3><li>符合 IP 共同銷售獎勵的資格</li>|Azure 應用程式，Azure 容器，IoT Edge 模組，SaaS，Vm|共同銷售準備就緒之後，有兩個額外的需求： <ul> 需求1：達成下列任一項：<ul><li>*在組織層級上：* 在過去12個月內，達到或超過 $100000 美元的 Azure 取用收益。</li><li>*在供應專案層級：* 累積的 marketplace 計費收益（$100000 美元）。</li></ul><br>需求2：您的供應專案基礎結構必須在 Azure 上執行超過50%：<ul><li>*with* [商業 marketplace 中具有共同銷售選項](commercial-marketplace-co-sell.md)的 IP 供應專案：使用合作夥伴中心中的共同銷售檔上傳架構圖表以進行審查。</li><li>*without* [商業 marketplace 中沒有共同銷售選項](commercial-marketplace-co-sell.md)的 IP 供應專案：將架構圖上傳至 OCP 操作人員。|Azure IP 共同銷售受到激勵|
 ||Dynamics|<ul><li>您在 ISV Connect premium 層中有作用中的註冊。</li></ul>|Business Applications 共同銷售受到激勵|
 |||
 
-如需共同銷售解決方案供應專案需求的詳細資訊，請參閱 [3000 的共同銷售狀態需求](/legal/marketplace/certification-policies.md#3000-requirements-for-co-sell-status)。
+如需共同銷售解決方案優惠需求的詳細資訊，請參閱 [共同銷售狀態的需求](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。
 
 ## <a name="how-to-submit-co-sell-materials-in-partner-center"></a>如何在合作夥伴中心中提交共同銷售教材
 
-遵循下列步驟，直接在合作夥伴中心中開始共同銷售旅程。 如需詳細資訊，請參閱 [合作夥伴中心中的共同銷售選項](commercial-marketplace-co-sell.md)。
+遵循下列步驟，直接在合作夥伴中心中開始共同銷售旅程。 如需詳細資訊，請參閱 [商業 marketplace 中的共同銷售選項](commercial-marketplace-co-sell.md)。
 
 1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard/home)。
 1. 在左窗格中，選取 [**商業 Marketplace**  >  **總覽**]，然後選取您要共同銷售的供應專案。
@@ -90,7 +90,7 @@ ms.locfileid: "96572978"
 
 ## <a name="see-your-offers-co-sell-status"></a>查看您供應專案的共同銷售狀態
 
-如 [合作夥伴中心中有共同銷售選項](commercial-marketplace-co-sell.md)的供應專案，您可以在 [供應專案] 總覽頁面上看到供應專案的目前共同銷售狀態：
+針對 [商業市集中具有共同銷售選項](commercial-marketplace-co-sell.md)的供應專案，您可以在 [供應專案總覽] 頁面上看到供應專案的目前共同銷售狀態：
 
  :::image type="content" source="media/co-sell/co-sell-status.png" alt-text="此影像顯示供應專案目前的共同銷售狀態。":::
 
@@ -98,5 +98,5 @@ ms.locfileid: "96572978"
 ## <a name="next-steps"></a>後續步驟
 
 - 深入了解如何[透過 Microsoft 銷售](https://partner.microsoft.com/membership/sell-with-microsoft)。
-- 深入瞭解 [合作夥伴中心中的共同銷售選項](commercial-marketplace-co-sell.md)。
+- 深入瞭解 [商業 marketplace 中的共同銷售選項](commercial-marketplace-co-sell.md)。
 - 閱讀 [共同銷售](https://aka.ms/Co-sellPartnerengagementguidepartnerlink) 腳本 (PDF) 。

@@ -1,20 +1,14 @@
 ---
-title: 擷取瀏覽器追蹤以進行疑難排解 | Microsoft Docs
+title: 擷取瀏覽器追蹤以進行疑難排解
 description: 從瀏覽器追蹤擷取網路資訊，以協助疑難排解 Azure 入口網站的問題。
-services: azure-portal
-keywords: ''
-author: mgblythe
-ms.author: mblythe
 ms.date: 05/11/2020
 ms.topic: troubleshooting
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: aac7357939ab2d14949c967630840ed6d267d251
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 504a32fb63022f97e8049c7c1ccc7721bbac31ab
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145730"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745990"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>擷取瀏覽器追蹤以進行疑難排解
 
@@ -30,7 +24,7 @@ Google Chrome 和 Microsoft Edge (Chromium) 都是以 [Chromium 開放原始碼�
 
 1. 在入口網站中，瀏覽至發生問題之前的步驟。
 
-1. 按 F12 或選取 ![ 顯示瀏覽器設定圖示的螢幕擷取畫面。](media/capture-browser-trace/chromium-icon-settings.png) > **其他工具**  > **開發人員工具** 。
+1. 按 F12 或選取 ![ 顯示瀏覽器設定圖示的螢幕擷取畫面。](media/capture-browser-trace/chromium-icon-settings.png) > **其他工具**  > **開發人員工具**。
 
 1. 根據預設，瀏覽器只會保留目前載入頁面的追蹤資訊。 設定下列選項，讓瀏覽器保留所有的追蹤資訊，即使您的重現需要前往一個以上的頁面：
 
@@ -76,7 +70,7 @@ Google Chrome 和 Microsoft Edge (Chromium) 都是以 [Chromium 開放原始碼�
 
 1. 在入口網站中，瀏覽至發生問題之前的步驟。
 
-1. 按 F12 或選取 ![ 瀏覽器設定圖示的螢幕擷取畫面。](media/capture-browser-trace/edge-icon-settings.png) > **其他工具**  > **開發人員工具** 。
+1. 按 F12 或選取 ![ 瀏覽器設定圖示的螢幕擷取畫面。](media/capture-browser-trace/edge-icon-settings.png) > **其他工具**  > **開發人員工具**。
 
 1. 根據預設，瀏覽器只會保留目前載入頁面的追蹤資訊。 設定下列選項，讓瀏覽器保留所有的追蹤資訊，即使您的重現需要前往一個以上的頁面：
 

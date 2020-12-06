@@ -1,18 +1,17 @@
 ---
-title: 找出虛擬機器配額-Azure
+title: 找出虛擬機器配額
 description: 增加適用于現成 Vm 的配額限制，以提供 Azure 使用量的模型，讓您可以在 exchange 中採用較低的成本，讓 Azure 視需要移除 Vm。
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
 ms.topic: how-to
-ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 513bde930f9c7c8892164c50c3866ff6e948ed4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8b9a2251d7923fe1919b7b934f6c97877cd5b37
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763868"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745480"
 ---
 # <a name="spot-quota-increase-limits-for-all-vm-series"></a>找出配額：提高所有 VM 系列的限制
 
@@ -21,7 +20,7 @@ ms.locfileid: "84763868"
 Azure Resource Manager 針對虛擬機器支援兩種類型的 vCPU 配額：
 
 * *隨用隨付 vm* 和 *保留的 vm 實例* 受限於 *標準 vCPU 配額*。
-* 現成的*vm*會受到*點 vCPU 配額*的限制。
+* 現成的 *vm* 會受到 *點 vCPU 配額* 的限制。
 
 針對 [點 vCPU 配額類型]，Resource Manager vCPU 配額會在所有可用的虛擬機器系列上強制執行為單一區域限制。
 
@@ -48,11 +47,11 @@ Azure Resource Manager 針對虛擬機器支援兩種類型的 vCPU 配額：
 
     ![建立新的支援要求](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-1. 針對 [ **問題類型**]，選取 [ **服務與訂用帳戶限制] (配額) **。
+1. 針對 [ **問題類型**]，選取 [ **服務與訂用帳戶限制] (配額)**。
 
    ![選取問題類型](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
 
-1. 針對 [ **訂**用帳戶]，選取您要增加其配額的訂用帳戶。
+1. 針對 [ **訂** 用帳戶]，選取您要增加其配額的訂用帳戶。
 
    ![選取提高配額的訂用帳戶](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
 
@@ -60,7 +59,7 @@ Azure Resource Manager 針對虛擬機器支援兩種類型的 vCPU 配額：
 
    ![選取配額類型](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-1. 選取 **[下一步]：** 開啟 **問題詳細資料**的解決方案。 選取 [ **提供詳細資料** ] 以輸入其他資訊。
+1. 選取 **[下一步]：** 開啟 **問題詳細資料** 的解決方案。 選取 [ **提供詳細資料** ] 以輸入其他資訊。
 
    ![「提供詳細資料」連結](./media/resource-manager-core-quotas-request/provide-details-link.png)
 
@@ -115,7 +114,7 @@ Azure Resource Manager 針對虛擬機器支援兩種類型的 vCPU 配額：
 
    ![選取配額類型](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-1. 選取 **[下一步]：** 開啟 **問題詳細資料**的解決方案。 選取 [ **提供詳細資料** ] 以輸入其他資訊。 在 [ **配額詳細資料**] 中，輸入下列資訊：
+1. 選取 **[下一步]：** 開啟 **問題詳細資料** 的解決方案。 選取 [ **提供詳細資料** ] 以輸入其他資訊。 在 [ **配額詳細資料**] 中，輸入下列資訊：
 
    1. 針對 [ **部署模型**] 選取適當的模型，並針對 [ **位置**] 選取位置。
 
