@@ -223,6 +223,8 @@
               href: configure-authentication-provider-twitter.md
             - name: 使用 OpenID Connect 提供者進行驗證 (預覽)
               href: configure-authentication-provider-openid-connect.md
+            - name: 使用「以 Apple 登入」進行驗證 (預覽)
+              href: configure-authentication-provider-apple.md
         - name: 進階驗證
           href: app-service-authentication-how-to.md
         - name: 限制存取

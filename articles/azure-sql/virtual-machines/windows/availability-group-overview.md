@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d04f689dec3a3c182c0da23007247c20c4f8063d
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 8573e45270dfd1ff984eae3dc5fbf1dc5f2fc6da
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504385"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600858"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Azure VM 上 SQL Server 的 Always On 可用性群組
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -39,7 +39,9 @@ Azure 虛擬機器上的 Always On 可用性群組與[內部部署的 Always On 
 
 若要提高備援能力與高可用性，SQL Server VM 應位於相同的[可用性設定組](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview)，或不同的[可用性區域](../../../availability-zones/az-overview.md)。
 
-可用性設定組是一組資源，這些資源已設定為不會落在相同的可用性區域中兩次。 這可避免在部署推出期間影響群組中的多個資源。 
+將一組 VM 放在相同的可用性設定組中，可防止因設備故障 (可用性設定組中的 VM 不會共用資源) 或更新 (可用性設定組中的 VM 不會同時更新) 而造成資料中心內的中斷。 可用性區域可保護整個資料中心避免故障，每個區域都代表一個區域內的資料中心集合。  藉由確保將資源放在不同的可用性區域，資料中心層級的中斷不會讓所有的 VM 離線。
+
+建立 Azure VM 時，必須在設定可用性設定組和可用性區域之間進行選擇。  Azure VM 無法同時參與兩者。
 
 
 ## <a name="connectivity"></a>連線能力 

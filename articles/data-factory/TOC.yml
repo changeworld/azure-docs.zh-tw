@@ -145,6 +145,10 @@
           href: tutorial-deploy-ssis-packages-azure-powershell.md
         - name: 加入虛擬網路
           href: tutorial-deploy-ssis-virtual-network.md
+    - name: 歷程
+      items:
+        - name: 將 Data Factory 歷程資料推送至 Azure Purview
+          href: turorial-push-lineage-to-purview.md
     - name: 端對端實驗室
       items:
         - name: 使用資料處理站和資料共用進行資料整合
@@ -688,6 +692,10 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: 建立輪轉視窗觸發程序相依性
           href: tumbling-window-trigger-dependency.md
+    - name: 歷程
+      items:
+        - name: 將 Data Factory 連線至 Azure Purview
+          href: connect-data-factory-to-azure-purview.md
     - name: 案例
       items:
         - name: 資料湖和 EDW 的資料移轉

@@ -74,7 +74,9 @@
       items:
         - name: Azure Migrate 支援
           href: migrate-support-matrix.md
-        - name: 適用於 Azure Migrate 的安全性基準
+    - name: 安全性
+      items:
+        - name: 安全性基準
           href: security-baseline.md
     - name: 探索
       items:

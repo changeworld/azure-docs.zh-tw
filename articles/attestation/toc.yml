@@ -39,6 +39,8 @@
       href: audit-logs.md
 - name: 參考資料
   items:
+    - name: 區域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation'
     - name: 常見問題集
       href: faq.md
     - name: REST

@@ -5,15 +5,15 @@ description: 本文將概述應用程式閘道上的 Web 應用程式防火牆 (
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 09/16/2020
+ms.date: 12/04/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: f15a739904c28361a60210a0cc4606c7048d0f53
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 36f04b02774a01814811ea131388629de27e9f07
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518969"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621020"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>什麼是 Azure 應用程式閘道上的 Web 應用程式防火牆?
 
@@ -143,7 +143,7 @@ OWASP 有兩種可用來決定是否要封鎖流量的模式：傳統模式和�
 用於封鎖流量的異常分數閾值為 5 分。 因此，符合一個「重大」規則就足以讓應用程式閘道 WAF 封鎖要求，即使在預防模式下也一樣。 但是符合「警告」規則只會將異常分數提高 3 分，其本身並不足以封鎖流量。
 
 > [!NOTE]
-> WAF 規則符合流量時所記錄的訊息會包含「已封鎖」動作值。 但是實際上只會封鎖異常分數為 5 分或更高的流量。  
+> WAF 規則符合流量時所記錄的訊息會包含「已封鎖」動作值。 但是實際上只會封鎖異常分數為 5 分或更高的流量。 如需詳細資訊，請參閱[針對 Azure 應用程式閘道的 Web 應用程式防火牆 (WAF) 進行疑難排解](web-application-firewall-troubleshoot.md#understanding-waf-logs)。 
 
 ### <a name="waf-monitoring"></a>WAF 監視
 
