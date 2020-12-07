@@ -4,12 +4,12 @@ description: 在您的裝置或桌面應用程式、網頁或服務中插入幾�
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e9f175e2585a5254922c9e859cf5ece2afbbc3e3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d1ed05cd7337a7e82a02b25a2f29d54567b9f9a3
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011334"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96748887"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>自訂事件和度量的 Application Insights API
 
@@ -32,7 +32,7 @@ ms.locfileid: "96011334"
 
 您可以 [附加屬性和度量](#properties) 至這裡大部分的遙測呼叫。
 
-## <a name="before-you-start"></a><a name="prep"></a>開始之前
+## <a name="before-you-start"></a><a name="prep"></a>在您開始使用 Intune 之前
 
 如果您還沒有 Application Insights SDK 的參考：
 
@@ -530,6 +530,9 @@ telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties
 ## <a name="trackdependency"></a>TrackDependency
 
 您可以使用 TrackDependency 呼叫來追蹤回應時間以及呼叫外部程式碼片段的成功率。 結果會出現在入口網站中的相依性圖表中。 在進行相依性呼叫的任何地方，都必須新增下列程式碼片段。
+
+> [!NOTE]
+> 針對 .NET 和 .NET Core，您也可以使用 `TelemetryClient.StartOperation` (擴充功能) 方法，以填滿 `DependencyTelemetry` 相互關聯所需的屬性，以及一些其他屬性（例如開始時間和持續時間），因此您不需要建立自訂計時器，如下列範例所示。 如需詳細資訊，請參閱這篇文章中有關連出相依性 [追蹤的章節](https://docs.microsoft.com/azure/azure-monitor/app/custom-operations-tracking#outgoing-dependencies-tracking)。
 
 *C#*
 

@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 70edf224494fdf1395d59d1c591d0369b9b20557
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cf84a8abcc0f1c890a51bf07056ac31d37107e53
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018081"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96749108"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-powershell"></a>教學課程：使用 PowerShell 設計適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
 
@@ -100,7 +100,7 @@ New-AzPostgreSqlFirewallRule -Name AllowMyIP -ResourceGroupName myresourcegroup 
 ```
 
 > [!NOTE]
-> 適用於 PostgreSQL 的 Azure 資料庫的連線透過連接埠 3306 進行通訊。 如果您嘗試從公司網路內進行連線，可能不允許透過連接埠 3306 的輸出流量。 在此案例中，唯有 IT 部門開啟連接埠 3306，您才能連線到伺服器。
+> 適用於 PostgreSQL 的 Azure 資料庫的連線會透過連接埠 5432 進行通訊。 如果您嘗試從公司網路內進行連線，可能不允許透過連接埠 5432 的輸出流量。 在此案例中，唯有 IT 部門開啟連接埠 5432，您才能連線到伺服器。
 
 ## <a name="get-the-connection-information"></a>取得連線資訊
 

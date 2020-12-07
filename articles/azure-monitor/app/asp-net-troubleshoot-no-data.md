@@ -4,12 +4,12 @@ description: 在 Azure Application Insights 中看不到資料？ 試試這裡�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 9c053796dd887722d1d767229621c0a1ae004b5c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c3f0350152ece32829291012d583be87a90227cf
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083162"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96748927"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>針對沒有資料進行疑難排解 - Application Insights for .NET/.NET Core
 
@@ -39,8 +39,36 @@ ms.locfileid: "93083162"
 
 * 請參閱 [疑難排解狀態監視器](./monitor-performance-live-website-now.md#troubleshoot)。
 
+## <a name="filenotfoundexception-could-not-load-file-or-assembly-microsoftaspnet-telemetrycorrelation"></a>FileNotFoundException：無法載入檔案或元件 ' Microsoft AspNet >microsoft.aspnet.telemetrycorrelation
+
+如需此錯誤的詳細資訊，請參閱 [GitHub 問題 1610] (https://github.com/microsoft/ApplicationInsights-dotnet/issues/1610) 。
+
+從早于 (2.4 的 Sdk 進行升級時) 您需要確定下列變更已套用至 `web.config` 和 `ApplicationInsights.config` ：
+
+1. 兩個 HTTP 模組，而不是一個。 在中 `web.config` ，您應該有兩個 HTTP 模組。 在某些案例中，訂單是很重要的：
+
+    ``` xml
+    <system.webServer>
+      <modules>
+          <add name="TelemetryCorrelationHttpModule" type="Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule, Microsoft.AspNet.TelemetryCorrelation" preCondition="integratedMode,managedHandler" />
+          <add name="ApplicationInsightsHttpModule" type="Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule, Microsoft.AI.Web" preCondition="managedHandler" />
+      </modules>
+    </system.webServer>
+    ```
+
+2. `ApplicationInsights.config`除了 `RequestTrackingTelemetryModule` 您應該具有下列遙測模組之外：
+
+    ``` xml
+    <TelemetryModules>
+      <Add Type="Microsoft.ApplicationInsights.Web.AspNetDiagnosticTelemetryModule, Microsoft.AI.Web"/>
+    </TelemetryModules>
+    ```
+
+***如果無法正確升級，可能會導致未預期的例外狀況或遙測無法收集。** _
+
+
 ## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>在 Visual Studio 中沒有「新增 Application Insights」選項
-當我以滑鼠右鍵按一下 [方案總管] 中的現有專案時，沒有看到任何 Application Insights 選項。
+_When 我以滑鼠右鍵按一下方案總管中的現有專案，我看不到任何 Application Insights 選項。 *
 
 * 工具並非支援所有類型的 .NET 專案。 支援 Web 和 WCF 專案。 對於其他像是傳統型或服務應用程式的專案類型，您仍然可以 [手動將 Application Insights SDK 新增至您的專案](./windows-desktop.md)。
 * 請確定您有 [Visual Studio 2013 Update 3 或更新版本](/visualstudio/releasenotes/vs2013-update3-rtm-vs)。 它會預先安裝開發人員分析工具，這些工具提供 Application Insights SDK。
@@ -239,9 +267,9 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 ```
 
 您可以視需要修改這些參數：
-- **MaxCollectSec** 。 設定此參數可防止 PerfView 永無止盡地執行，而影響到伺服器的效能。
-- **OnlyProviders** 。 將此參數設定為只從 SDK 收集記錄。 您可以根據特定調查來自訂此清單。 
-- **NoGui** 。 設定此參數可在不使用 GUI 的情況下收集記錄。
+- **MaxCollectSec**。 設定此參數可防止 PerfView 永無止盡地執行，而影響到伺服器的效能。
+- **OnlyProviders**。 將此參數設定為只從 SDK 收集記錄。 您可以根據特定調查來自訂此清單。 
+- **NoGui**。 設定此參數可在不使用 GUI 的情況下收集記錄。
 
 
 如需詳細資訊，

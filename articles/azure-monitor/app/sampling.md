@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 87e33940d927fc9116c03345011e21398384d484
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3ec9718d313e7e8d757eb41c230225bdcf9ebd49
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024410"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96749040"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights 中的取樣
 
@@ -34,7 +34,7 @@ ms.locfileid: "95024410"
 |-|-|-|-|
 | ASP.NET | [是 (預設為開啟) ](#configuring-adaptive-sampling-for-aspnet-applications) | [是](#configuring-fixed-rate-sampling-for-aspnet-applications) | 只有在沒有其他取樣生效時 |
 | ASP.NET Core | [是 (預設為開啟) ](#configuring-adaptive-sampling-for-aspnet-core-applications) | [是](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | 只有在沒有其他取樣生效時 |
-| Azure Functions | [是 (預設為開啟) ](#configuring-adaptive-sampling-for-azure-functions) | No | 只有在沒有其他取樣生效時 |
+| Azure Functions | [是 (預設為開啟) ](#configuring-adaptive-sampling-for-azure-functions) | 否 | 只有在沒有其他取樣生效時 |
 | Java | 否 | [是](#configuring-fixed-rate-sampling-for-java-applications) | 只有在沒有其他取樣生效時 |
 | Node.JS | 否 | [是](./nodejs.md#sampling) | 只有在沒有其他取樣生效時
 | Python | 否 | [是](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | 只有在沒有其他取樣生效時 |
@@ -54,7 +54,7 @@ ms.locfileid: "95024410"
 * 內嵌 **取樣** 會在 Application Insights 服務端點進行。 它會根據您設定的取樣比例，捨棄來自您應用程式的一些遙測。 這不會減少從應用程式傳送的遙測流量，但可協助您讓流量不要超過每月配額。 內嵌取樣的主要優點是您可以設定取樣率，而不需要重新部署應用程式。 內嵌取樣適用于所有伺服器和用戶端，但在作業中任何其他類型的取樣時都不適用。
 
 > [!IMPORTANT]
-> 如果自調適型或固定速率取樣方法正在運作中，則會停用內嵌取樣。
+> 如果已針對遙測類型啟用調適型或固定速率取樣方法，則會停用該遙測的內嵌取樣。 不過，在 SDK 層級從取樣中排除的遙測類型仍會依照入口網站中所設定的速率，進行內嵌取樣。
 
 ## <a name="adaptive-sampling"></a>調適性取樣
 
@@ -531,7 +531,7 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
 
 *遙測是否可以進行一次以上的取樣？*
 
-* 否。 如果已取樣專案，SamplingTelemetryProcessors 會忽略取樣考慮的專案。 內嵌取樣也是如此，這也不會將取樣套用至已在 SDK 本身取樣的專案。
+* 不可以。 如果已取樣專案，SamplingTelemetryProcessors 會忽略取樣考慮的專案。 內嵌取樣也是如此，這也不會將取樣套用至已在 SDK 本身取樣的專案。
 
 *為什麼不取樣簡單的「收集每個遙測類型百分之 X」？*
 
@@ -586,7 +586,7 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
 
 在2.5.0 之前的 ASP.NET SDK Beta2，以及 ASP.NET Core SDK 的 v 2.2.0-Beta3 之前，取樣決策是根據定義 "user" (的應用程式使用者識別碼的雜湊，也就是最常見的 web 應用程式) 。 針對未定義使用者 (例如 web 服務的應用程式類型) 取樣決策是根據要求的作業識別碼。 ASP.NET 和 ASP.NET Core Sdk 的最新版本會使用運算識別碼進行取樣決策。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [篩選](./api-filtering-sampling.md) 可以對您的 SDK 所傳送的內容，提供更嚴格的控制。
 * 閱讀開發人員網路文章， [利用 Application Insights 將遙測優化](/archive/msdn-magazine/2017/may/devops-optimize-telemetry-with-application-insights)。
