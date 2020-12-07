@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
-ms.openlocfilehash: 1ab6f5e9c7b602ce124116c02584c5a48a3f597f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7c1b9ad033ade3b577dc4a06e84801dab3b7eb70
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999972"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763956"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>設定 Azure 入口網站中的 App Service 應用程式
 
@@ -29,7 +29,7 @@ ms.locfileid: "95999972"
 
 ![應用程式設定](./media/configure-common/open-ui.png)
 
-針對 ASP.NET 和 ASP.NET Core 開發人員，在 App Service 中設定應用程式設定，就像是在 `<appSettings>` *Web.config* 或 *appsettings.js* 中設定它們，但 App Service 中的值會覆寫 *Web.config* 或 *appsettings.js* 中的值。 您可以保留開發設定 (例如， *Web.config* 或 *appsettings.js* 中的本機 MySQL 密碼) ，但生產秘密 (例如，Azure MySQL 資料庫密碼) 在 App Service 中安全。 當您在本機進行偵錯工具時，相同的程式碼會使用您的開發設定，並在部署至 Azure 時使用您的生產秘密。
+針對 ASP.NET 和 ASP.NET Core 開發人員，在 App Service 中設定應用程式設定，就像是在 `<appSettings>` *Web.config* 或 *appsettings.js* 中設定它們，但 App Service 中的值會覆寫 *Web.config* 或 *appsettings.js* 中的值。 您可以保留開發設定 (例如， *Web.config* 中的本機 MySQL 密碼) ，或 *appsettings.js* 和生產秘密 (例如，Azure MySQL 資料庫密碼) 安全的 App Service。 當您在本機進行偵錯工具時，相同的程式碼會使用您的開發設定，並在部署至 Azure 時使用您的生產秘密。
 
 同樣地，其他語言堆疊會在執行時間取得應用程式設定作為環境變數。 如需語言堆疊的特定步驟，請參閱：
 

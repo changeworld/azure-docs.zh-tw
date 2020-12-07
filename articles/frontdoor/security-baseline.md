@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 87e7f959dd932c874604df43fa61112d181ac581
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 53324709e2d3dd11160ee0b7837d86d9e9594571
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531695"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763922"
 ---
 # <a name="azure-security-baseline-for-azure-front-door"></a>適用于 Azure Front Door 的 Azure 安全性基準
 
@@ -206,7 +206,7 @@ Front Door 支援 TLS 版本1.0、1.1 和1.2。 尚不支援 TLS 1.3。 在2019�
 
 ### <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3：啟用 Azure 網路活動的記錄功能
 
-**指導** 方針： Azure 前端門不適合部署至虛擬網路;因為此客戶無法啟用網路安全性群組流量記錄，請透過防火牆或執行封包捕獲來路由傳送流量。
+**指導** 方針： Azure Front Door 不會部署到虛擬網路;因為此客戶無法啟用網路安全性群組流量記錄，請透過防火牆或執行封包捕獲來路由傳送流量。
 
 Azure Front Door 會記錄它為客戶存取所處理的所有網路流量。 啟用網路流量記錄功能，並設定將這些記錄傳送至儲存體帳戶，以進行長期保留和審核。
 

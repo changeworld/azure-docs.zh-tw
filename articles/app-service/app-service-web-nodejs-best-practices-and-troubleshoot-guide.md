@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: d826b80c11b700d753acc18f8d4c626a65510f93
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 370b84f451e22c20c798018951a7a801e0bba826
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833804"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763939"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows 上節點應用程式的最佳作法和疑難排解指南
 
@@ -140,7 +140,7 @@ let keepaliveAgent = new Agent({
 
 #### <a name="my-node-application-is-consuming-too-much-cpu"></a>我的節點應用程式目前耗用太多 CPU
 
-您可能會在入口網站上收到 Azure App Service 建議的高 CPU 耗用量。 您也可以設定監視器以監看某些[計量](web-sites-monitor.md)。 在 [Azure 入口網站儀表板](../azure-monitor/app/web-monitor-performance.md)上檢查 CPU 使用量時，請檢查 CPU 的 MAX 值，您才不會錯過尖峰值。
+您可能會在入口網站上收到 Azure App Service 建議的高 CPU 耗用量。 您也可以設定監視器以監看某些[計量](web-sites-monitor.md)。 檢查 [Azure 入口網站儀表板](../azure-monitor/platform/metrics-charts.md)上的 cpu 使用量時，請檢查 CPU 的最大值，如此您就不會錯過尖峰值。
 在您認為應用程式耗用太多 CPU，但您無法解釋原因的情況下，您可以剖析節點應用程式以找出原因。
 
 #### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>在 Azure App Service 上使用 V8 分析工具剖析節點應用程式
@@ -213,7 +213,7 @@ http.createServer(function (req, res) {
 
 ### <a name="my-node-application-is-consuming-too-much-memory"></a>我的節點應用程式目前耗用太多記憶體
 
-如果您的應用程式耗用太多記憶體，則會在入口網站上看到來自 Azure App Service 的通知，說明關於高記憶體耗用量。 您可以設定監視器以監看某些[計量](web-sites-monitor.md)。 在 [Azure 入口網站儀表板](../azure-monitor/app/web-monitor-performance.md)上檢查記憶體使用量時，務必檢查記憶體的 MAX 值，才不會錯過尖峰值。
+如果您的應用程式耗用太多記憶體，則會在入口網站上看到來自 Azure App Service 的通知，說明關於高記憶體耗用量。 您可以設定監視器以監看某些[計量](web-sites-monitor.md)。 檢查 [Azure 入口網站儀表板](../azure-monitor/platform/metrics-charts.md)上的記憶體使用量時，請務必檢查記憶體的最大值，如此您就不會錯過尖峰值。
 
 #### <a name="leak-detection-and-heap-diff-for-nodejs"></a>node.js 的流失偵測和堆積區分
 

@@ -4,18 +4,18 @@ description: 使用 Ethereum 區塊鏈連接器搭配 Azure Logic Apps，觸發�
 ms.date: 08/31/2020
 ms.topic: how-to
 ms.reviewer: caleteet
-ms.openlocfilehash: 4364d2f616c8eaadedf12baf4bf77810eec69fdb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 411337908553e58c252a0ed1a42d17f76195c720
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230529"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763786"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>使用 Ethereum 區塊鏈連接器搭配 Azure Logic Apps
 
 使用 [Ethereum 區塊鏈連接器](/connectors/blockchainethereum/)搭配 [Azure Logic Apps](../../logic-apps/index.yml)，執行智慧型合約動作及回應智慧型合約事件。 本文說明如何使用乙太坊區塊鏈連接器將區塊鏈資訊傳送至另一個服務，或呼叫區塊鏈函式。 例如，假設您想要建立以 REST 為基礎的微服務，以傳回區塊鏈總帳中的資訊。 使用邏輯應用程式時，您可以接受所查詢的資訊儲存在區塊鏈總帳中的 HTTP 要求。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 完成選用的必要條件 [快速入門：使用 Visual Studio Code 連接到 Azure 區塊鏈服務聯盟網路](connect-vscode.md)。 此快速入門會引導您安裝[適用於 Ethereum 的 Azure 區塊鏈服務開發套件](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)，並設定您的區塊鏈開發環境。
 - 如果您不熟悉 Azure Logic Apps，請考慮參閱 Azure Logic Apps 的 Microsoft Learn 模組 [簡介](/learn/modules/intro-to-logic-apps/) ，並 [使用自訂連接器從 Logic Apps 工作流程呼叫 API](/learn/modules/logic-apps-and-custom-connectors/)。
@@ -25,7 +25,7 @@ ms.locfileid: "89230529"
 當您需要整合系統和服務時，Azure Logic Apps 可協助您排程及自動化商務程序和工作流程。 首先，您必須建立使用 Ethereum 區塊鏈連接器的邏輯。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 [建立資源]   > [整合]   > [邏輯應用程式]  。
-1. 在 [建立邏輯應用程式]**** 底下，提供關於應在何處建立邏輯應用程式的詳細資訊。 在完成作業後，選取 [建立]  。
+1. 在 [建立邏輯應用程式] 底下，提供關於應在何處建立邏輯應用程式的詳細資訊。 在完成作業後，選取 [建立]  。
 
     如需如何建立邏輯應用程式的詳細資訊，請參閱[使用 Azure Logic Apps 來建立自動化工作流程](../../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -47,7 +47,7 @@ Ethereum 區塊鏈連接器有一個觸發程序和數個動作。 您應使用�
 如果您想要讓邏輯應用程式在智慧型合約事件發生之後執行，請使用 Ethereum 區塊鏈事件觸發程序。 例如，您想要在呼叫智慧型合約函式時傳送電子郵件。
 
 1. 在 Logic Apps 設計工具中，選取 Ethereum 區塊鏈連接器。
-1. 在 [觸發程序]**** 索引標籤中，選取 [當智慧型合約事件發生時]****。
+1. 在 [觸發程序] 索引標籤中，選取 [當智慧型合約事件發生時]。
 1. 對 Azure 區塊鏈服務變更或[建立 API 連線](#create-an-api-connection)。
 1. 輸入您想要檢查事件之智慧型合約的相關詳細資料。
 
@@ -58,9 +58,9 @@ Ethereum 區塊鏈連接器有一個觸發程序和數個動作。 您應使用�
     | **合約 ABI** | 合約應用程式二進位介面 (ABI) 會定義智慧型合約介面。 如需詳細資訊，請參閱[取得合約 ABI](#get-the-contract-abi)。 |
     | **智慧型合約位址** | 合約位址是 Ethereum 區塊鏈上的智慧型合約目的地位址。 如需詳細資訊，請參閱[取得合約位址](#get-the-contract-address)。 |
     | **事件名稱** | 選取要檢查的智慧型合約事件。 此事件會觸發邏輯應用程式。 |
-    | **間隔**和**頻率** | 選取您要檢查事件的頻率。 |
+    | **間隔** 和 **頻率** | 選取您要檢查事件的頻率。 |
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 
 若要完成您的邏輯應用程式，您可以新增一個根據 Ethereum 區塊鏈事件觸發程序執行動作的步驟。 例如，傳送電子郵件。
 
@@ -70,9 +70,9 @@ Ethereum 區塊鏈連接器有一個觸發程序和數個動作。 您應使用�
 
 連接器動作需要觸發程序。 您可以使用 Ethereum 區塊鏈連接器動作來作為觸發程序之後的下一個步驟，例如微服務的 HTTP 要求觸發程序。
 
-1. 在 Logic Apps 設計工具中，選取 [新增步驟]**** (在觸發程序之後)。
+1. 在 Logic Apps 設計工具中，選取 [新增步驟] (在觸發程序之後)。
 1. 選取 Ethereum 區塊鏈連接器。
-1. 在 [動作]**** 索引標籤中，選取其中一個可用的動作。
+1. 在 [動作] 索引標籤中，選取其中一個可用的動作。
 
     ![具有動作屬性的 Logic Apps 設計工具](./media/ethereum-logic-app/action-properties.png)
 
@@ -103,13 +103,13 @@ Ethereum Visual Studio Code 延伸模組的 Azure 區塊鏈服務開發套件可
 
 例如，下列步驟會根據快速入門 **HelloBlockchain** 智慧型合約，產生以 REST 為基礎的微服務邏輯應用程式：
 
-1. 在 Visual Studio Code 總管的提要欄位中，展開解決方案中的 [合約]**** 資料夾。
-1. 對 [HelloBlockchain.sol]**** 按一下滑鼠右鍵，然後從功能表中選取 [產生智慧型合約的微服務]****。
+1. 在 Visual Studio Code 總管的提要欄位中，展開解決方案中的 [合約] 資料夾。
+1. 對 [HelloBlockchain.sol] 按一下滑鼠右鍵，然後從功能表中選取 [產生智慧型合約的微服務]。
 
     ![Visual Studio Code 窗格，已選取 [產生智慧型合約的微服務]](./media/ethereum-logic-app/generate-logic-app.png)
 
-1. 在命令選擇區中，選取 [邏輯應用程式]****。
-1. 輸入**合約位址**。 如需詳細資訊，請參閱[取得合約位址](#get-the-contract-address)。
+1. 在命令選擇區中，選取 [邏輯應用程式]。
+1. 輸入 **合約位址**。 如需詳細資訊，請參閱[取得合約位址](#get-the-contract-address)。
 1. 選取邏輯應用程式的 Azure 訂用帳戶和資源群組。
 
     邏輯應用程式組態和程式碼檔案會在 **generatedLogicApp** 目錄中產生。
@@ -119,17 +119,17 @@ Ethereum Visual Studio Code 延伸模組的 Azure 區塊鏈服務開發套件可
 
     ![JSON 檔案，具有要複製的程式碼](./media/ethereum-logic-app/requestmessage.png)
 
-1. 在您的邏輯應用程式中，選取 [邏輯應用程式程式碼檢視]****。 將現有的 JSON 取代為產生的邏輯應用程式 JSON。
+1. 在您的邏輯應用程式中，選取 [邏輯應用程式程式碼檢視]。 將現有的 JSON 取代為產生的邏輯應用程式 JSON。
 
     ![邏輯應用程式程式碼檢視，具有已取代的新應用程式程式碼](./media/ethereum-logic-app/code-view.png)
 
-1. 選取 [設計工具]**** 以切換至設計工具檢視。
+1. 選取 [設計工具] 以切換至設計工具檢視。
 1. 邏輯應用程式包含案例的基本步驟。 不過，您必須更新 Ethereum 區塊鏈連接器的組態詳細資料。
-1. 選取**連線**步驟，並對 Azure 區塊鏈服務變更或[建立 API 連線](#create-an-api-connection)。
+1. 選取 **連線** 步驟，並對 Azure 區塊鏈服務變更或 [建立 API 連線](#create-an-api-connection)。
 
     ![設計工具檢視，已選取 [連線]](./media/ethereum-logic-app/microservice-logic-app.png)
 
-1. 您現在可以使用邏輯應用程式。 若要測試以 REST 為基礎的微服務，請對邏輯應用程式要求 URL 發出 HTTP POST 要求。 **當收到 HTTP 要求時**，從複製**HTTP POST URL**內容。
+1. 您現在可以使用邏輯應用程式。 若要測試以 REST 為基礎的微服務，請對邏輯應用程式要求 URL 發出 HTTP POST 要求。 **當收到 HTTP 要求時**，從複製 **HTTP POST URL** 內容。
 
     ![具有 HTTP POST URL 的 Logic Apps 設計工具窗格](./media/ethereum-logic-app/post-url.png)
 
@@ -168,8 +168,8 @@ Ethereum 區塊鏈連接器需要與區塊鏈的 API 連線。 您可以對多�
 
 **若要使用開發套件：**
 
-1. 在 Visual Studio Code 的 [Azure 區塊鏈服務]**** 下方，以滑鼠右鍵按一下聯盟。
-1. 選取 [複製 RPC 端點位址]****。
+1. 在 Visual Studio Code 的 [Azure 區塊鏈服務] 下方，以滑鼠右鍵按一下聯盟。
+1. 選取 [複製 RPC 端點位址]。
 
     ![Visual Studio Code 窗格，會顯示已選取 [複製 RPC 端點位址] 的聯盟](./media/ethereum-logic-app/devkit-rpc.png)
 
@@ -183,7 +183,7 @@ Ethereum 區塊鏈連接器需要與區塊鏈的 API 連線。 您可以對多�
     ![交易節點頁面，已選取 [(預設節點)]](./media/ethereum-logic-app/transaction-nodes.png)
 
 1. 選取 [**連接字串**]  >  **存取金鑰**。
-1. 從 [HTTPS (存取金鑰 1)]**** 或 [HTTPS (存取金鑰 2)]**** 複製端點位址。
+1. 從 [HTTPS (存取金鑰 1)] 或 [HTTPS (存取金鑰 2)] 複製端點位址。
 
     ![具有連接字串存取金鑰的 Azure 入口網站](./media/ethereum-logic-app/connection-string.png)
 
@@ -194,7 +194,7 @@ Ethereum 區塊鏈連接器需要與區塊鏈的 API 連線。 您可以對多�
 您可以在將交易傳送至區塊鏈時，使用 Ethereum 帳戶的私密金鑰來進行驗證。 您的 Ethereum 帳戶公開和私密金鑰是由 12 個字的助憶鍵產生的。 當您連線至 Azure 區塊鏈服務聯盟成員時，適用於 Ethereum 的 Azure 區塊鏈服務開發套件就會產生助憶鍵。 您可以使用開發套件延伸模組來取得端點位址。
 
 1. 在 Visual Studio Code 中，開啟命令選擇區 (F1)。
-1. 選取 **Azure 區塊鏈：取出私密金鑰**。
+1. Select **區塊鏈：取出私密金鑰**。
 1. 選取您連線至聯盟成員時所儲存的助憶鍵。
 
     ![命令選擇區，具有可選取助憶鍵的選項](./media/ethereum-logic-app/private-key.png)
@@ -246,7 +246,7 @@ Ethereum 區塊鏈連接器需要與區塊鏈的 API 連線。 您可以對多�
 
 1. 在 Visual Studio Code 總管窗格中，展開 Solidity 專案的 **build/contracts** 資料夾。
 1. 以滑鼠右鍵按一下合約中繼資料 JSON 檔案。 檔案名稱是智慧型合約名稱再加上 **.json** 副檔名。
-1. 選取 [複製合約位元組程式碼]****。
+1. 選取 [複製合約位元組程式碼]。
 
     ![Visual Studio Code 窗格，已選取 [複製合約位元組程式碼]](./media/ethereum-logic-app/bytecode-devkit.png)
 
@@ -255,8 +255,8 @@ Ethereum 區塊鏈連接器需要與區塊鏈的 API 連線。 您可以對多�
 **若要使用合約中繼資料檔案：**
 
 1. 開啟您 Solidity 專案的 **build/contracts** 資料夾中包含的合約中繼資料檔案。 檔案名稱是智慧型合約名稱再加上 **.json** 副檔名。
-1. 尋找 JSON 檔案中的**位元組程式碼**元素。
-1. 複製**位元組程式碼**值。
+1. 尋找 JSON 檔案中的 **位元組程式碼** 元素。
+1. 複製 **位元組程式碼** 值。
 
     ![Visual Studio Code 窗格，具有中繼資料內的位元組程式碼](./media/ethereum-logic-app/bytecode-metadata.png)
 
@@ -270,16 +270,16 @@ Ethereum 區塊鏈連接器需要與區塊鏈的 API 連線。 您可以對多�
 
 **若要使用 Truffle 遷移輸出：**
 
-Truffle 會在智慧型合約部署後顯示合約位址。 從輸出複製**合約位址**。
+Truffle 會在智慧型合約部署後顯示合約位址。 從輸出複製 **合約位址**。
 
 ![在 Visual Studio Code 中具有合約位址的 Truffle 移轉輸出](./media/ethereum-logic-app/contract-address-truffle.png)
 
 **若要使用合約中繼資料檔案：**
 
 1. 開啟您 Solidity 專案的 **build/contracts** 資料夾中包含的合約中繼資料檔案。 檔案名稱是智慧型合約名稱再加上 **.json** 副檔名。
-1. 尋找 JSON 檔案中的**網路**區段。
+1. 尋找 JSON 檔案中的 **網路** 區段。
 1. 私人網路會以整數網路識別碼來識別。 尋找網路區段內的位址值。
-1. 複製**位址**值。
+1. 複製 **位址** 值。
 
 ![在 Visual Studio Code 中具有位址值的中繼資料](./media/ethereum-logic-app/contract-address-metadata.png)
 

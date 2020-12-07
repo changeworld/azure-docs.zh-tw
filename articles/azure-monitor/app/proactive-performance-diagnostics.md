@@ -4,12 +4,12 @@ description: Application Insights 會執行您應用程式遙測的智慧型分�
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 28a32c714618a3b6b0c3126d8060295f134ddc7c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ead71a5ac6e2cfa0df6654c7ba9aa7b5b9238d04
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186230"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763769"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智慧型偵測 - 效能異常
 
@@ -99,7 +99,7 @@ Application Insights 偵測到您的應用程式以下列其中一種方式降�
 
 開啟 [瀏覽器] 計量刀鋒視窗。 分段顯示的瀏覽器頁面載入時間可顯示時間的進度。 
 
-* 如果 [傳送要求時間]  太久，不是伺服器回應速度緩慢，就是要求是含有大量資料的文章。 查看 [效能計量](./web-monitor-performance.md#metrics) 以調查回應時間。
+* 如果 [傳送要求時間]  太久，不是伺服器回應速度緩慢，就是要求是含有大量資料的文章。 查看 [效能計量](./performance-counters.md) 以調查回應時間。
 * 設定 [相依性追蹤](./asp-net-dependencies.md) 以查看速度慢是否是外部服務或您的資料庫所造成。
 * 如果 [接收回應]  是主導因素，您的頁面和其相依組件 (JavaScript、CSS 及影像等，而非以非同步方式載入的資料) 會很長。 設定 [可用性測試](./monitor-web-app-availability.md)，而且務必設定載入相依組件的選項。 當您取得一些結果時，請開啟結果的詳細資料並將它展開，以查看不同檔案的載入時間。
 * [用戶端處理時間]  過長表示指令碼執行速度很慢。 如果原因不明顯，請考慮加入一些時間計時程式碼並在 trackMetric 呼叫中傳送時間。

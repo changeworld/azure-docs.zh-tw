@@ -9,12 +9,12 @@ ms.date: 04/26/2019
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: carmonm
-ms.openlocfilehash: 3c5e19a948298dead5ab3fc1183fb11b09acf455
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2388d4be0f7d51f9d5897998049b445595648c0a
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976125"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763973"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>使用執行命令在 Windows 虛擬機器中執行 PowerShell 指令碼
 
@@ -104,7 +104,7 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 ## <a name="limiting-access-to-run-command"></a>限制於執行命令的存取
 
-列出執行命令或顯示命令的詳細資料需要 `Microsoft.Compute/locations/runCommands/read` 權限。 內建[讀者](../../role-based-access-control/built-in-roles.md#reader)角色和較高層級具備此權限。
+列出執行命令或顯示命令的詳細資料，需要訂用帳戶 `Microsoft.Compute/locations/runCommands/read` 層級的許可權。 內建[讀者](../../role-based-access-control/built-in-roles.md#reader)角色和較高層級具備此權限。
 
 執行命令需要 `Microsoft.Compute/virtualMachines/runCommand/action` 權限。 [虛擬機器參與者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)角色和較高層級具有此權限。
 

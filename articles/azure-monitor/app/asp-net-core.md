@@ -4,12 +4,12 @@ description: 監視 ASP.NET Core Web 應用程式的可用性、效能和使用�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 404e820168c64bd47b6e94598ad5bb13faf32a86
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 8505e67e3db7460308d208ce4f83d29a1fb4d862
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751337"
+ms.locfileid: "96763191"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core 應用程式的 Application Insights
 
@@ -142,7 +142,7 @@ ms.locfileid: "96751337"
 
 ### <a name="performance-counters"></a>效能計數器
 
-ASP.NET Core 中的 [效能計數器](./web-monitor-performance.md) 支援有限：
+ASP.NET Core 中的 [效能計數器](./performance-counters.md) 支援有限：
 
 * 如果應用程式是在 Azure Web Apps (Windows) 中執行，SDK 版本2.4.1 和以後版本會收集效能計數器。
 * 如果應用程式是在 Windows 中執行，而且目標是 `NETSTANDARD2.0` 或以後版本，SDK 版本2.7.1 和更新版本會收集效能計數器。

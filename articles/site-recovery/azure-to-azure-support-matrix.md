@@ -4,12 +4,12 @@ description: 摘要說明如何使用 Azure Site Recovery 將 Azure VM 災害復
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: f0aebd09c06677aeba7cddda246e3e37992e0d9e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8123dbc18ad2fc162b9b92ae40920417e6b874ce
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485275"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763276"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure 區域之間的 Azure VM 災害復原支援矩陣
 
@@ -102,7 +102,7 @@ Red Hat Enterprise Linux | 6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4�
 CentOS | 6.5、6.6、6.7、6.8、6.9、6.10 </br> 7.0、7.1、7.2、7.3、7.4、7.5、7.6、7.7、 [7.8](https://support.microsoft.com/help/4564347/)、 [7.9 預先 GA 版本](https://support.microsoft.com/help/4578241/)、7.9 熱修正程式支援 9.37 ga 版本 * * </br> 8.0、8.1、 [8.2](https://support.microsoft.com/en-us/help/4570609)、 [8.3](https://support.microsoft.com/help/4597409/)
 Ubuntu 14.04 LTS 伺服器 | 包含所有14.04 的支援。*x* 版本; [支援的核心版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines); 
 Ubuntu 16.04 LTS 伺服器 | 包含所有16.04 的支援。*x* 版本; [支援的核心版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> 使用密碼型驗證和登入並使用雲端 init 封裝來設定雲端 VM 的 Ubuntu 伺服器，可能對容錯移轉停用密碼型登入 (取決於 cloudinit 組態)。 針對已容錯移轉的 VM，從 Azure 入口網站中的 [支援] > [疑難排解] > [設定功能表] 中重設密碼，即可在虛擬機器上重新啟用密碼型登入。
-Ubuntu 18.04 LTS 伺服器 | 包含所有18.04 的支援。*x* 版本; [支援的核心版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines) |
+Ubuntu 18.04 LTS 伺服器 | 包含所有18.04 的支援。*x* 版本; [支援的核心版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> 使用密碼型驗證和登入並使用雲端 init 封裝來設定雲端 VM 的 Ubuntu 伺服器，可能對容錯移轉停用密碼型登入 (取決於 cloudinit 組態)。 針對已容錯移轉的 VM，從 Azure 入口網站中的 [支援] > [疑難排解] > [設定功能表] 中重設密碼，即可在虛擬機器上重新啟用密碼型登入。
 Ubuntu 20.04 LTS 伺服器 | 包含所有20.04 的支援。*x* 版本; [支援的核心版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 Debian 7 | 包含所有7的支援。 *x* 版本 [支援的核心版本](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 8 | 包含所有8的支援。 *x* 版本 [支援的核心版本](#supported-debian-kernel-versions-for-azure-virtual-machines)

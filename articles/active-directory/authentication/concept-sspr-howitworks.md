@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 12/07/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eaa8b586b7d1ae073d0746569d61de837eec3b7d
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 620b696be0b9a06cf0d68145b06e3cacf2bedff2
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743865"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762545"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>運作方式：Azure AD 自助式密碼重設
 
@@ -69,11 +69,8 @@ Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者�
 > [!div class="nextstepaction"]
 > [教學課程：啟用 (SSPR) 的自助式密碼重設 ](tutorial-enable-sspr.md)
 
-## <a name="registration-options"></a>註冊選項
 
-使用者必須先註冊自己和要使用的驗證方法，使用者才能使用 SSPR 重設或變更其密碼。 如上一節所述，使用者必須註冊 SSPR，並已套用適當的授權。
-
-### <a name="require-users-to-register-when-they-sign-in"></a>登入時要求使用者註冊
+## <a name="require-users-to-register-when-they-sign-in"></a>登入時要求使用者註冊
 
 如果使用者使用 Azure AD 登入任何應用程式，您可以啟用此選項以要求使用者完成 SSPR 註冊。 此工作流程包括下列應用程式︰
 
@@ -92,7 +89,7 @@ Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者�
 >
 > 註冊 SSPR 的這個插斷會中斷使用者的連線（如果已登入）。
 
-### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>設定要求使用者重新確認其驗證資訊的等候天數
+## <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>設定要求使用者重新確認其驗證資訊的等候天數
 
 為確保驗證方法在需要重設或變更其密碼時正確無誤，您可以要求使用者在一段時間後確認其資訊已註冊的資訊。 只有當您啟用 [ **需要使用者在登入時註冊** ] 選項時，才能使用此選項。
 

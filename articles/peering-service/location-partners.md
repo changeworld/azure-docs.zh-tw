@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 11/06/2020
 ms.author: derekol
-ms.openlocfilehash: 29ce0c1421019b95adb00c4eab3f9c1d90da0510
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: c2c16e6b5be4e187a776f75454ecf9377da911e3
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353776"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763167"
 ---
 # <a name="peering-service-partners"></a>對等互連服務合作夥伴
 
@@ -30,7 +30,7 @@ Microsoft 已與網際網路服務提供者合作 (Isp) 、網際網路交換服
 
 | **夥伴** | **Market**|
 |-----------|---------|
-| [CenturyLink](https://www.ctl.io/microsoft-azure-peering-services/) |美國|
+| [Lumen 技術](https://www.ctl.io/microsoft-azure-peering-services/) |北美洲、歐洲|
 | [BBIX](https://www.bbix.net/en/service/) |日本 |
 | [覆 銅板](https://concepts.co.nz/news/general-news/) |大洋洲 |
 | [Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/)|歐洲、亞洲|
@@ -40,8 +40,8 @@ Microsoft 已與網際網路服務提供者合作 (Isp) 、網際網路交換服
 | [Kordia](https://www.kordia.co.nz/cloudconnect) |大洋洲  |
 | [Liquid Telecom](https://liquidcloud.africa/keep-expanding-365-direct/) | 非洲  |
 | [NTT Communications](https://www.ntt.com/en/services/network/software-defined-network.html) | 日本 |
-| [PCCW](https://www.pccwglobal.com/en/enterprise/products/network/ep-global-internet-access) |Asia |
-| [Singtel](https://www.singtel.com/business/campaign/singnet-cloud-connect-microsoft-direct) |Asia |
+| [PCCW](https://www.pccwglobal.com/en/enterprise/products/network/ep-global-internet-access) |亞洲 |
+| [Singtel](https://www.singtel.com/business/campaign/singnet-cloud-connect-microsoft-direct) |亞洲 |
 | [NAP 非洲](https://www.napafrica.net/technical/microsoft-azure-peering-service/) |非洲|
 | [Swisscom](https://www.swisscom.ch/en/business/enterprise/offer/wireline/ip-plus.html) |歐洲|
 

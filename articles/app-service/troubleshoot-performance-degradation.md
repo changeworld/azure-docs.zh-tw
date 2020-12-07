@@ -7,12 +7,12 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: 82373dcd9e1d55e0c4a5867ddaff6875ee57da5a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cf8b0e1fda03a74d30ec77c911d705bf12cf0126
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147506"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763803"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>針對 Azure App Service 中應用程式效能變慢的問題進行疑難排解
 本文可協助您針對 [Azure App Service](./overview.md) 中應用程式效能變慢的問題進行疑難排解。
@@ -64,7 +64,7 @@ ms.locfileid: "92147506"
 * [接收警示通知](../azure-monitor/platform/alerts-overview.md)
 
 #### <a name="monitor-web-endpoint-status"></a>監視 Web 端點狀態
-若您在**標準**定價層中執行應用程式，App Service 可讓您從三個地理位置監視兩個端點。
+若您在 **標準** 定價層中執行應用程式，App Service 可讓您從三個地理位置監視兩個端點。
 
 端點監視能讓您設定從不同地理位置執行，且用來測試 Web URL 之回應時間和運作時間的 Web 測試。 這項測試會針對 Web URL 執行 HTTP GET 作業，以從每個位置判斷回應時間和執行時間。 各個已設定的位置會每隔五分鐘執行一次測試。
 
@@ -82,7 +82,7 @@ ms.locfileid: "92147506"
 - 原始程式碼編輯器，例如 [Azure DevOps](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx)。 
 - 適用於已連線的資源的管理工具，例如連線到應用程式的 MySQL 資料庫。
 
-[Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 也是可使用的效能監視網站擴充功能。 若要使用 Application Insights，您可以使用 SDK 重建您的程式碼。 您也可以安裝擴充功能來存取供其他資料。 SDK 可讓您撰寫程式碼來監視應用程式的詳細使用狀況和效能。 如需詳細資訊，請參閱[監視 Web 應用程式中的效能](../azure-monitor/app/web-monitor-performance.md)。
+[Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 也是可使用的效能監視網站擴充功能。 若要使用 Application Insights，您可以使用 SDK 重建您的程式碼。 您也可以安裝擴充功能來存取供其他資料。 SDK 可讓您撰寫程式碼來監視應用程式的詳細使用狀況和效能。 如需詳細資訊，請參閱[監視 Web 應用程式中的效能](../azure-monitor/app/app-insights-overview.md)。
 
 <a name="collect"></a>
 
@@ -124,7 +124,7 @@ App Service 提供智慧型和互動式的體驗，可協助您對應用程式�
 若要存取 App Service 診斷，請在 [Azure 入口網站](https://portal.azure.com)中瀏覽至您的 App Service 應用程式或 App Service Environment。 在左方導覽列中，按一下 [診斷並解決問題]。
 
 #### <a name="use-the-kudu-debug-console"></a>使用 Kudu 偵錯主控台
-App Service 隨附可用於偵錯、探索、上傳檔案的偵錯主控台，以及可取得您環境相關資訊的 JSON 端點。 此主控台稱為應用程式的 *Kudu 主控台*或 *SCM 儀表板*。
+App Service 隨附可用於偵錯、探索、上傳檔案的偵錯主控台，以及可取得您環境相關資訊的 JSON 端點。 此主控台稱為應用程式的 *Kudu 主控台* 或 *SCM 儀表板*。
 
 您可以前往連結 **https://&lt;Your app name>.scm.azurewebsites.net/** 存取此儀表板。
 
@@ -133,7 +133,7 @@ Kudu 提供的部分項目為：
 * 您的應用程式的環境設定
 * 記錄檔串流
 * 診斷傾印
-* 您可以執行 Powershell Cmdlet 和基本 DOS 命令的偵錯主控台。
+* 您可以在其中執行 PowerShell Cmdlet 和基本 DOS 命令的 debug 主控台。
 
 Kudu 的另一項實用功能是，如果應用程式擲回第一次例外狀況，您可以使用 Kudu 和 SysInternals 工具 Procdump 建立記憶體傾印。 這些記憶體傾印是處理序的快照集，通常可以協助您疑難排解應用程式較複雜的問題。
 
@@ -161,4 +161,4 @@ AutoHeal 會根據您選擇的設定 (例如組態變更、要求、以記憶體
 
  ![重新啟動應用程式以解決效能問題](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-您也可以使用 Azure Powershell 管理應用程式。 如需詳細資訊，請參閱 [將 Azure PowerShell 與 Azure 資源管理員搭配使用](../azure-resource-manager/management/manage-resources-powershell.md)。
+您也可以使用 Azure PowerShell 來管理您的應用程式。 如需詳細資訊，請參閱 [將 Azure PowerShell 與 Azure 資源管理員搭配使用](../azure-resource-manager/management/manage-resources-powershell.md)。
