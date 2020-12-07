@@ -1,14 +1,17 @@
 ---
-title: 選取包含 Azure Migrate Server 遷移的 VMware 遷移選項 |Microsoft Docs
+title: 選取包含 Azure Migrate Server 遷移的 VMware 遷移選項
 description: 提供使用 Azure Migrate Server 遷移將 VMware Vm 遷移至 Azure 的選項總覽
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: ac08075212d885a1aca755f94906b50754e23b9d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5e4aaea5b565e126f633b04215bbc3a24faf2cde
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534102"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753598"
 ---
 # <a name="select-a-vmware-migration-option"></a>選取 VMware 遷移選項
 
@@ -45,13 +48,13 @@ ms.locfileid: "92534102"
 **準備 VMware 以進行遷移** | 設定 VMware 伺服器和 Vm 上的設定。 | 必要 | 必要
 **在 Vm 上安裝行動服務** | 行動服務在您想要複寫的每個 VM 上執行 | 不需要 | 必要
 **部署複寫設備** | 複寫 [設備](migrate-replication-appliance.md) 用於以代理程式為基礎的遷移。 它會在 Vm 上執行的行動服務以及伺服器遷移之間進行連接。 | 不需要 | 必要
-複寫 **vm** 。 啟用 VM 複寫。 | 設定複寫設定並選取要複寫的 Vm | 必要 | 必要
+複寫 **vm**。 啟用 VM 複寫。 | 設定複寫設定並選取要複寫的 Vm | 必要 | 必要
 **執行測試移轉** | 執行測試移轉，確定一切都沒問題。 | 必要 | 必要
 **執行完整遷移** | 遷移 Vm。 | 必要 | 必要
 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 使用無代理程式遷移來[遷移 VMware vm](tutorial-migrate-vmware.md) 。
 

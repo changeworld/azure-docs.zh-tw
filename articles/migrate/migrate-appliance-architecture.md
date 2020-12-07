@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate 設備架構
 description: 提供伺服器評估和移轉中所使用 Azure Migrate 設備的概觀。
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: d38796d4c4a1149d096f5bb06f7a11bc71b33cc5
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 42d4a722be25eec4b3e27012350346018fdba0f3
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428151"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754108"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Migrate 設備架構
 
@@ -21,7 +24,7 @@ ms.locfileid: "92428151"
 **案例** | **工具** | **用於** 
 --- | --- | ---
 **VMware VM 評估** | Azure Migrate：伺服器評量 | 探索 VMware Vm。<br/><br/> 探索機器應用程式和相依性。<br/><br/> 收集電腦中繼資料和效能中繼資料，並傳送至 Azure。
-**VMware VM 遷移 (無代理程式) ** | Azure Migrate：伺服器移轉 | 探索 VMware VM<br/><br/>  使用 [無代理程式遷移](server-migrate-overview.md)來複寫 VMware vm。
+**VMware VM 遷移 (無代理程式)** | Azure Migrate：伺服器移轉 | 探索 VMware VM<br/><br/>  使用 [無代理程式遷移](server-migrate-overview.md)來複寫 VMware vm。
 **Hyper-V VM 評估** | Azure Migrate：伺服器評量 | 探索 Hyper-v Vm。<br/><br/> 收集電腦中繼資料和效能中繼資料，並傳送至 Azure。
 **實體機器** |  Azure Migrate：伺服器評量 |  探索實體伺服器。<br/><br/> 收集電腦中繼資料和效能中繼資料，並傳送至 Azure。
 

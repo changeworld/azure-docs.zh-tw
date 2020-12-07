@@ -1,14 +1,17 @@
 ---
 title: 準備要使用 Azure Migrate 進行遷移的 Windows Server 2003 伺服器
 description: 瞭解如何準備 Windows Server 2003 伺服器，以 Azure Migrate 進行遷移。
+author: rahulg1190
+ms.author: rahugup
+ms.manager: bsiva
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: 350eab98a2b40d5ca1382bbfc24245e7cb47b48e
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: f8d3dea970d07d951467a44661e12000ba413f72
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146836"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753737"
 ---
 # <a name="prepare-windows-server-2003-machines-for-migration"></a>準備 Windows Server 2003 電腦以進行遷移
 
@@ -42,14 +45,14 @@ ms.locfileid: "93146836"
 2. 流覽至位於 **C:\Windows\System32\vmguest.iso** 的安裝檔案，然後掛接檔案。
 3. 將安裝資料夾複製到 VMware VM。
 4. 從 VM 上的命令列執行 ```gpedit.msc``` 。
-5. 開啟 [ **電腦**  >  **設定 Windows 設定**  >  **腳本] (啟動/關機)** 。
-6. 在 [ **啟動**  >  **新增**  >  **腳本名稱** ] 中，輸入 setup.exe 位址。
+5. 開啟 [**電腦**  >  **設定 Windows 設定**  >  **腳本] (啟動/關機)**。
+6. 在 [**啟動**  >  **新增**  >  **腳本名稱**] 中，輸入 setup.exe 位址。
 7. 在遷移至 Azure 之後，腳本會在 Azure VM 第一次啟動時執行。
 8. 手動重新開機 Azure VM。 開機診斷中會出現一個快顯視窗，指出需要重新開機。
 9. 在執行腳本並將 Hyper-v Integration Services 安裝在 Azure VM 之後，您可以從啟動中移除腳本。
 10. 安裝之後，您可以保留 Integration Services 中的預設設定。 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 檢查 [VMware](migrate-support-matrix-vmware-migration.md) 和 [hyper-v](migrate-support-matrix-hyper-v-migration.md) vm 的遷移需求。
 - 遷移 [VMware](server-migrate-overview.md) 和 [hyper-v](tutorial-migrate-hyper-v.md) vm。

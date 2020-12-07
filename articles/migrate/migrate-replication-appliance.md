@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate 複寫設備
 description: 瞭解以代理程式為基礎的 VMWare 遷移的 Azure Migrate 複寫設備。
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: af9e45e47c2f0645d81a571161f15f7d69cfec61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec277bcc3e361561f54e72c54526d65487c113b4
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532115"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754091"
 ---
 # <a name="replication-appliance"></a>複寫設備
 
@@ -19,9 +22,9 @@ ms.locfileid: "90532115"
 
 當您設定以代理程式為基礎的 VMware Vm 或實體伺服器的遷移時，會部署複寫設備。 它是以單一內部部署機器的形式部署，可作為 VMware VM 或實體伺服器。 它會執行：
 
-- 複寫**設備**：複寫設備會協調內部部署 VMware vm 和實體伺服器複寫至 Azure 的通訊，以及管理資料複寫。
+- 複寫 **設備**：複寫設備會協調內部部署 VMware vm 和實體伺服器複寫至 Azure 的通訊，以及管理資料複寫。
 - **進程伺服器**：依預設安裝在複寫設備上的進程伺服器，並執行下列動作：
-    - 複寫**閘道**：它會作為複寫閘道。 它會從已啟用複寫的機器接收復寫資料。 它會使用快取、壓縮和加密來優化複寫資料，並將其傳送至 Azure。
+    - 複寫 **閘道**：它會作為複寫閘道。 它會從已啟用複寫的機器接收復寫資料。 它會使用快取、壓縮和加密來優化複寫資料，並將其傳送至 Azure。
     - **代理程式安裝程式**：執行行動服務的推送安裝。 這項服務必須安裝在您想要複寫以進行遷移的每個內部部署機器上。
 
 ## <a name="appliance-deployment"></a>設備部署

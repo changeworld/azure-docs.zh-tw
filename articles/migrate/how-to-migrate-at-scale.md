@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate 中的自動化遷移機器遷移
 description: 描述如何在 Azure Migrate 中使用腳本來遷移大量電腦
-author: snehaamicrosoft
-ms.service: azure-migrate
-ms.topic: article
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
+ms.topic: how-to
 ms.date: 04/01/2019
-ms.author: snehaa
-ms.openlocfilehash: c354c1c9dfacfcb6bf84f1140b58deca60c1874e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01196b23ce5bf9ce842da89d0773a77e6a1d5107
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86109836"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754227"
 ---
 # <a name="scale-migration-of-vms"></a>調整 Vm 的規模 
 
@@ -25,7 +25,7 @@ ms.locfileid: "86109836"
 
 ## <a name="how-does-it-work"></a>運作方式
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 開始之前，您需要執行下列步驟：
 - 確定 Site Recovery 保存庫是在 Azure 訂用帳戶中建立
 - 確定組態伺服器和處理序伺服器安裝在來源環境，且保存庫可以探索環境
@@ -52,7 +52,7 @@ ms.locfileid: "86109836"
 ### <a name="script-execution"></a>指令碼執行
 CSV 準備就緒之後，您可以執行下列步驟來執行內部部署 VM 的移轉：
 
-**步驟 #** | **腳本名稱** | **描述**
+**步驟 #** | **腳本名稱** | **說明**
 --- | --- | ---
 1 | asr_startmigration.ps1 | 針對 CSV 中列出的所有 VM 啟用複寫，指令碼會建立 CSV 輸出，其中具有每部 VM 的作業詳細資料
 2 | asr_replicationstatus.ps1 | 檢查複寫的狀態，指令碼會建立 CSV，其中具有每部 VM 的狀態
@@ -67,6 +67,6 @@ CSV 準備就緒之後，您可以執行下列步驟來執行內部部署 VM 的
 ## <a name="how-to-migrate-to-managed-disks"></a>如何遷移至受控磁片？
 根據預設，腳本會將 Vm 遷移至 Azure 中的受控磁片。 如果提供的目標儲存體帳戶是 premium 儲存體帳戶，則會在遷移後建立高階受控磁片。 快取儲存體帳戶仍可為標準帳戶。 如果目標儲存體帳戶是標準儲存體帳戶，則會在遷移後建立標準磁片。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [深入了解](../site-recovery/migrate-tutorial-on-premises-azure.md)使用 Azure Site Recovery 將伺服器遷移至 Azure

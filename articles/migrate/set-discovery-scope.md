@@ -1,14 +1,17 @@
 ---
 title: 使用 Azure Migrate 設定 VMware VM 探索的範圍
 description: 說明如何使用 Azure Migrate 設定 VMware VM 評量和遷移的探索領域。
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 8c61f544e3222dba83123aa1be5e53a19e671035
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: dc5bd178c837deea7a22fb3be5ba438085c0e748
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314035"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753547"
 ---
 # <a name="set-discovery-scope-for-vmware-vms"></a>設定 VMware Vm 的探索範圍
 
@@ -19,7 +22,7 @@ ms.locfileid: "92314035"
 
 當您設定設備時，它會連接到 vCenter Server 並開始探索。 將設備連線到 vCenter Server 之前，您可以將探索限制為 vCenter Server 的資料中心、叢集、叢集的資料夾、主機、主機的資料夾或個別 Vm。 若要設定範圍，請在設備用來存取 vCenter Server 的帳戶上指派許可權。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 如果您尚未設定 Azure Migrate 用於探索的 vCenter 使用者帳戶，請立即進行 [評定](./tutorial-discover-vmware.md#prepare-vmware) 或 [無代理程式遷移](./migrate-support-matrix-vmware-migration.md#agentless-migration)。
 

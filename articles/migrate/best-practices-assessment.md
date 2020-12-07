@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate 伺服器評量中的評估最佳作法
 description: 使用 Azure Migrate Server 評量建立評量的秘訣。
-author: rayne-wiselman
-ms.service: azure-migrate
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: e007f0272a693f5117b0182dad82de2f4a6e252a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1fff5b5b7f6450ad8d1977e55a1f6b255f3d668
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576875"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754312"
 ---
 # <a name="best-practices-for-creating-assessments"></a>建立評量的最佳做法
 
@@ -40,7 +40,7 @@ ms.locfileid: "91576875"
 #### <a name="example"></a>範例
 例如，如果您的內部部署 VM 有四個核心的20% 使用率，而記憶體 8 GB 的使用率有10%，則 Azure VM 評量如下所示：
 
-- 以**效能為基礎的評**量：
+- 以 **效能為基礎的評** 量：
     - 識別以核心 (4 x 0.20 = 0.8) 為基礎的有效核心和記憶體，以及記憶體 (8 GB x 0.10 = 0.8) 使用率。
     - 套用評量屬性中指定的緩和因素 (假設為 1.3 x) ，以取得要用於調整大小的值。 
     - 建議 Azure 中最接近的 VM 大小，可支援 ~ 1.04 核心 (0.8 x 1.3) ，以及 ~ 1.04 GB (0.8 x 1.3) 記憶體。
@@ -53,16 +53,16 @@ ms.locfileid: "91576875"
 
 Azure Migrate 設備會持續分析您的內部部署環境，並將中繼資料和效能資料傳送至 Azure。 遵循下列最佳作法來評定使用設備探索到的伺服器：
 
-- 依原樣**建立評定**：當您的機器出現在 Azure Migrate 入口網站中時，您就可以立即建立同型評量。
-- **建立以效能為基礎的評**量：設定探索之後，建議您至少等候一天，再執行以效能為基礎的評量：
+- 依原樣 **建立評定**：當您的機器出現在 Azure Migrate 入口網站中時，您就可以立即建立同型評量。
+- **建立以效能為基礎的評** 量：設定探索之後，建議您至少等候一天，再執行以效能為基礎的評量：
     - 收集效能資料需要一些時間。 等候至少一天，可確保在執行評量之前有足夠的效能資料點。
     - 當您執行以效能為基礎的評量時，請務必分析您的環境中的評估持續時間。 例如，如果您建立的評量將效能持續時間設定為一周，則在開始探索之後，您需要至少等待一周，以收集所有資料點。 如果您沒有這麼做，評量將不會得到五顆星的評等。
 - **重新計算評定**：由於評量是時間點快照集，因此不會自動更新為最新的資料。 若要以最新的資料更新評量，您需要重新計算。
 
 遵循這些最佳作法，以透過將匯入 Azure Migrate 的伺服器進行評量。CSV 檔案：
 
-- 依原樣**建立評定**：當您的機器出現在 Azure Migrate 入口網站中時，您就可以立即建立同型評量。
-- **建立以效能為基礎的評**量：這有助於取得更好的成本估計值，特別是當您在內部部署過度布建伺服器容量時。 不過，以效能為基礎的評量的精確度取決於您針對伺服器所指定的效能資料。 
+- 依原樣 **建立評定**：當您的機器出現在 Azure Migrate 入口網站中時，您就可以立即建立同型評量。
+- **建立以效能為基礎的評** 量：這有助於取得更好的成本估計值，特別是當您在內部部署過度布建伺服器容量時。 不過，以效能為基礎的評量的精確度取決於您針對伺服器所指定的效能資料。 
 - **重新計算評定**：由於評量是時間點快照集，因此不會自動更新為最新的資料。 若要使用最新匯入的資料來更新評量，您需要重新計算。
  
 ### <a name="ftt-sizing-parameters-for-avs-assessments"></a>適用于 AVS 評量的 FTT 調整大小參數

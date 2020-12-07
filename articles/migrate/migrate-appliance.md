@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate 設備
 description: 提供 Azure Migrate 設備支援的摘要。
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ac3c90f1c09d290d5112a0e0d7abc5218788caf7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f3357fcc070ca4ca2212cf0424e4baf8208a3ca1
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008696"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754125"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 設備
 
@@ -215,7 +218,7 @@ NIC 寫入輸送量 (MB 每秒) | net.transmitted.average  |VM 大小的計算
 
 以下是設備從每個啟用應用程式探索的 VM 收集到的已安裝應用程式資料。 此資料會傳送至 Azure。
 
-**Data** | **登錄位置** | **Key**
+**Data** | **登錄位置** | **金鑰**
 --- | --- | ---
 應用程式名稱  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
 版本  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
@@ -235,7 +238,7 @@ NIC 寫入輸送量 (MB 每秒) | net.transmitted.average  |VM 大小的計算
 
 以下是設備從執行 Microsoft SQL server 以進行應用程式探索的 Vm 收集的 SQL server 中繼資料。 此資料會傳送至 Azure。
 
-**Data**  | **登錄位置**  | **Key**
+**Data**  | **登錄位置**  | **金鑰**
 --- | --- | ---
 名稱  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL 伺服器 \ 實例 Names\SQL  | installedInstance
 版本  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | 版本 
@@ -268,7 +271,7 @@ Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceN
 
 **Data**  | **命令** 
 --- | --- | ---
-名稱 <br/> 版本 | 從下列一或多個檔案收集：<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+名稱 <br/> version | 從下列一或多個檔案收集：<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
 架構 | uname
 
 

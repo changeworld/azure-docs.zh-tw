@@ -1,15 +1,17 @@
 ---
 title: 使用 Azure Migrate 準備電腦以進行移轉
 description: 了解如何使用 Azure Migrate 準備內部部署電腦以進行移轉。
-ms.topic: tutorial
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
+ms.topic: how-to
 ms.date: 06/08/2020
-ms.custom: MVC
-ms.openlocfilehash: ed5a1b6dc47c91815cc88200ddd1b1246603f806
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 979f40e13aab71f02a316e4ddf60306170166845
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275399"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753921"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>準備內部部署電腦以移轉至 Azure
 
@@ -33,7 +35,7 @@ ms.locfileid: "91275399"
 
 **案例** | **專案** | **探索/評估** | **移轉**
 --- | --- | --- | ---
-**VMware VM** | 在單一 Azure Migrate 專案中探索及評估多達 35,000 個 VM。 | 在 VMware 的單一 [Azure Migrate 設備](common-questions-appliance.md)上，最多可探索 10,000 個 VMware VM。 | **無代理程式移轉**：您可以同時複寫最多 300 個 VM。 為了達到最佳效能，建議您在數量超過 50 個時建立多個批次的 VM。<br/><br/> **以代理程式為基礎的移轉**：您可以[擴增](./agent-based-migration-architecture.md#performance-and-scaling)[複寫設備](migrate-replication-appliance.md)，以複寫大量的 VM。<br/><br/> 在入口網站中，您最多可以選取 10 個機器進行複寫。 若要複寫更多機器，請分批新增 (一批 10 個)。
+**VMware VM** | 在單一 Azure Migrate 專案中探索及評估多達 35,000 個 VM。 | 在 VMware 的單一 [Azure Migrate 設備](common-questions-appliance.md)上，最多可探索 10,000 個 VMware VM。 | **無代理程式移轉**：您可以同時複寫最多 300 個 VM。 為了達到最佳效能，建議您在數量超過 50 個時建立多個批次的 VM。<br/><br/> **以代理程式為基礎的移轉**：您可以 [擴增](./agent-based-migration-architecture.md#performance-and-scaling)[複寫設備](migrate-replication-appliance.md)，以複寫大量的 VM。<br/><br/> 在入口網站中，您最多可以選取 10 個機器進行複寫。 若要複寫更多機器，請分批新增 (一批 10 個)。
 **Hyper-V VM** | 在單一 Azure Migrate 專案中探索及評估多達 35,000 個 VM。 | 在單一 Azure Migrate 設備上探索多達 5,000 個 Hyper-V VM | 設備不會用於 Hyper-V 移轉。 Hyper-V 複寫提供者會在每個 Hyper-V 主機上執行。<br/><br/> 複寫容量會受到效能因素的影響，例如 VM 變換量，以及複寫資料的上傳頻寬。<br/><br/> 在入口網站中，您最多可以選取 10 個機器進行複寫。 若要複寫更多機器，請分批新增 (一批 10 個)。
 **實體機器** | 在單一 Azure Migrate 專案中探索及評估多達 35,000 個機器。 | 在實體伺服器的單一 Azure Migrate 設備上，探索多達 250 個實體伺服器。 | 您可以[擴增](./agent-based-migration-architecture.md#performance-and-scaling)[複寫設備](migrate-replication-appliance.md)，以複寫大量的伺服器。<br/><br/> 在入口網站中，您最多可以選取 10 個機器進行複寫。 若要複寫更多機器，請分批新增 (一批 10 個)。
 
@@ -194,6 +196,6 @@ Azure VM 會在移轉至 Azure 期間建立。 移轉之後，您必須能夠連
 
 針對 VMware VM，伺服器移轉支援[無代理程式或代理程式型移轉](server-migrate-overview.md)。
 
-- **VMware VM**：確認 Hyper-V VM 的[移轉需求和支援](migrate-support-matrix-vmware-migration.md)。
-- **Hyper-V VM**：確認 Hyper-V VM 的[移轉需求和支援](migrate-support-matrix-hyper-v-migration.md)。
-- **實體機器**：確認內部部署實體機器和其他虛擬化伺服器的[移轉需求和支援](migrate-support-matrix-physical-migration.md)。 
+- **VMware VM**：確認 Hyper-V VM 的 [移轉需求和支援](migrate-support-matrix-vmware-migration.md)。
+- **Hyper-V VM**：確認 Hyper-V VM 的 [移轉需求和支援](migrate-support-matrix-hyper-v-migration.md)。
+- **實體機器**：確認內部部署實體機器和其他虛擬化伺服器的 [移轉需求和支援](migrate-support-matrix-physical-migration.md)。 

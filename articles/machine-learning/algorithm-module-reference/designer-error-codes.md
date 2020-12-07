@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 11/25/2020
-ms.openlocfilehash: af7ac49fd6c1a31a8363c4ba0bf925787613ecc2
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 846c5519dced06ed16f5a0d12b0bb25443961f93
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030402"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753904"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>設計工具的例外狀況和錯誤碼
 
@@ -279,7 +279,7 @@ Azure Machine Learning 不支援某些較新的帳戶類型。 例如，新的�
 ## <a name="error-0014"></a>錯誤 0014  
  如果資料行唯一值的計數大於允許計數，就會發生例外狀況。  
 
- 當資料行包含太多唯一值時，就會發生此錯誤。  例如，如果您指定要將資料行當作類別資料來處理，但資料行中有太多唯一值而無法完成處理，就可能會出現此錯誤。 如果兩個輸入中的唯一值數目不相符，也可能會出現此錯誤。   
+ 當資料行包含太多唯一值時（例如識別碼資料行或文字資料行），就會發生此錯誤。 如果您指定要將資料行視為類別資料來處理，但資料行中有太多唯一值，以允許處理完成，您可能會看到這個錯誤。 如果兩個輸入中的唯一值數目不相符，也可能會出現此錯誤。   
 
 如果符合下列 **兩個** 條件，唯一值的錯誤就會大於允許的值：
 
@@ -292,7 +292,9 @@ Azure Machine Learning 不支援某些較新的帳戶類型。 例如，新的�
 
 對於您想要用於分組或分類的資料行，請採取相關步驟以減少資料行中的唯一值數目。 有多種方式可以減少此數目，視資料行的資料類型而定。 
 
-通常在這種情況下，發生錯誤的資料行會成為定型模型的功能。 因此，您可以使用 [ [編輯中繼資料](../algorithm-module-reference/edit-metadata.md) ] 將該資料行標示為 [ **清除] 功能** ，而不會在定型模型時使用。 
+針對在定型模型期間不具意義之功能的識別碼資料行，您可以使用 [ [編輯中繼資料](../algorithm-module-reference/edit-metadata.md) ] 將該資料行標示為 [ **清除] 功能** ，而不會在定型模型期間使用。 
+
+若為文字資料行，您可以使用 [特徵雜湊](../algorithm-module-reference/feature-hashing.md) ，或 [從文字模塊中解壓縮 N 語法特徵](../algorithm-module-reference/extract-n-gram-features-from-text.md) 來前置處理文字資料行。
 <!--
 + For text data, you might be able to use [Preprocess Text](preprocess-text.md) to collapse similar entries. 
 + For numeric data, you can create a smaller number of bins using [Group Data into Bins](group-data-into-bins.md), remove or truncate values using [Clip Values](clip-values.md), or use machine learning methods such as [Principal Component Analysis](principal-component-analysis.md) or [Learning with Counts](data-transformation-learning-with-counts.md) to reduce the dimensionality of the data.  

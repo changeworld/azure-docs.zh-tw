@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate 中的實體伺服器評量支援
 description: 瞭解 Azure Migrate Server 評定的實體伺服器評量支援
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 58ecba6bcedc036e31046aef292e482085ad7cc6
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: cfbbc1d218f590241fab804e389acd689c009dac
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148400"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754006"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>實體伺服器評量的支援矩陣 
 
@@ -36,15 +39,15 @@ ms.locfileid: "93148400"
 **作業系統：** 所有 Windows 和 Linux 作業系統都可進行評估以進行遷移。
 
 **權限：**
-- 若為 Windows 伺服器，請針對已加入網域的電腦使用網域帳戶，並針對未加入網域的電腦使用本機帳戶。 使用者帳戶應新增至下列群組：遠端管理使用者、效能監視器使用者，以及效能記錄使用者。
-- 對於 Linux 伺服器，您在要探索的 Linux 伺服器上需要有根帳戶。 或者，您可以使用下列命令，設定具有所需功能的非根帳號：
+- 若為 Windows 伺服器，對已加入網域的機器使用網域帳戶，對未加入網域的機器使用本機帳戶。 使用者帳戶應新增至下列群組：遠端管理使用者、效能監視器使用者，以及效能記錄使用者。
+- 對於 Linux 伺服器，您在要探索的 Linux 伺服器上需要有根帳戶。 或者，您可以使用下列命令來設定具有必要功能的非根帳號：
 
 **命令** | **目的**
 --- | --- |
-setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/fdisk <br></br> setcap CAP_DAC_READ_SEARCH + eip/sbin/fdisk _(是否有/usr/sbin/fdisk)_ | 收集磁片設定資料
-setcap "cap_dac_override、cap_dac_read_search、cap_fowner、cap_fsetid、cap_setuid、<br>cap_setpcap、cap_net_bind_service、cap_net_admin、cap_sys_chroot、cap_sys_admin、<br>cap_sys_resource，cap_audit_control，cap_setfcap = + eip "/sbin/lvm | 收集磁片效能資料
-setcap CAP_DAC_READ_SEARCH + eip/usr/sbin/dmidecode | 收集 BIOS 序號
-chmod a + r/sys/class/dmi/id/product_uuid | 收集 BIOS GUID
+setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/fdisk <br></br> setcap CAP_DAC_READ_SEARCH+eip /sbin/fdisk _(if /usr/sbin/fdisk is not present)_ | 若要收集磁碟設定資料
+setcap "cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_setuid,<br>cap_setpcap,cap_net_bind_service,cap_net_admin,cap_sys_chroot,cap_sys_admin,<br>cap_sys_resource,cap_audit_control,cap_setfcap=+eip" /sbin/lvm | 若要收集磁碟效能資料
+setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/dmidecode | 若要收集 BIOS 序號
+chmod a+r /sys/class/dmi/id/product_uuid | 若要收集 BIOS GUID
 
 
 

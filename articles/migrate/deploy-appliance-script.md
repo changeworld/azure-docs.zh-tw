@@ -1,14 +1,17 @@
 ---
 title: 使用腳本設定 Azure Migrate 設備
 description: 瞭解如何使用腳本設定 Azure Migrate 設備
-ms.topic: article
+ms.topic: how-to
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
 ms.date: 04/16/2020
-ms.openlocfilehash: c4f92d787ea2a72dd534e514e27fa1a5defef39c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 38db1e68adde21d0e566256e9393f6fa4fc58824
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317322"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753785"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>使用腳本設定設備
 
@@ -26,7 +29,7 @@ ms.locfileid: "92317322"
 
 - 將作為設備的電腦必須符合下列硬體和作業系統需求：
 
-狀況 | 需求
+案例 | 規格需求
 --- | ---
 VMware | Windows Server 2016 （具有 32 GB 的記憶體）、八個 vcpu、大約 80 GB 的磁片儲存體
 Hyper-V | Windows Server 2016 （含 16 GB 的記憶體）、八個 vcpu、大約 80 GB 的磁片儲存體
@@ -65,7 +68,7 @@ Hyper-V | Windows Server 2016 （含 16 GB 的記憶體）、八個 vcpu、大�
 - 使用 Azure Migrate 的持續性設定，更新 (HKLM) 的登錄機碼。
 - 建立記錄檔和設定檔，如下所示：
     - **設定檔**：%ProgramData%\Microsoft Azure\Config
-    - **記錄**檔：%ProgramData%\Microsoft Azure\Logs
+    - **記錄** 檔：%ProgramData%\Microsoft Azure\Logs
 
 執行指令碼：
 
@@ -78,7 +81,7 @@ Hyper-V | Windows Server 2016 （含 16 GB 的記憶體）、八個 vcpu、大�
    
 5. 腳本順利執行之後，它會啟動設備 web 應用程式，讓您可以設定設備。 如果您遇到任何問題，請參閱 C:\ProgramData\Microsoft Azure\Logs\ 的腳本記錄檔，AzureMigrateScenarioInstaller_<em>Timestamp</em>. .log。
 
-### <a name="verify-access"></a>驗證存取
+### <a name="verify-access"></a>驗證存取權
 
 請確定設備可以連線至 [公用](migrate-appliance.md#public-cloud-urls) 雲端的 Azure url。
 
@@ -112,7 +115,7 @@ Hyper-V | Windows Server 2016 （含 16 GB 的記憶體）、八個 vcpu、大�
 - 使用 Azure Migrate 的持續性設定，更新 (HKLM) 的登錄機碼。
 - 建立記錄檔和設定檔，如下所示：
     - **設定檔**：%ProgramData%\Microsoft Azure\Config
-    - **記錄**檔：%ProgramData%\Microsoft Azure\Logs
+    - **記錄** 檔：%ProgramData%\Microsoft Azure\Logs
 
 執行指令碼：
 
@@ -125,7 +128,7 @@ Hyper-V | Windows Server 2016 （含 16 GB 的記憶體）、八個 vcpu、大�
    
 5. 腳本順利執行之後，它會啟動設備 web 應用程式，讓您可以設定設備。 如果您遇到任何問題，請參閱 C:\ProgramData\Microsoft Azure\Logs\ 的腳本記錄檔，AzureMigrateScenarioInstaller_<em>Timestamp</em>. .log。
 
-### <a name="verify-access"></a>驗證存取
+### <a name="verify-access"></a>驗證存取權
 
 請確定設備可以連線至 [公用](migrate-appliance.md#public-cloud-urls) 雲端的 Azure url。
 

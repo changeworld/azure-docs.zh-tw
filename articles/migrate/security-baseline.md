@@ -2,17 +2,16 @@
 title: 適用于 Azure Migrate 的 Azure 安全性基準
 description: Azure Migrate 安全性基準提供的程式指引和資源，可讓您執行 Azure 安全性基準測試中所指定的安全性建議。
 author: msmbaldwin
-ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 338052e8bc9b25a3cf04069f2a44ede8180e508f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 04621a37b53989ef36901c74421161eddd0a18f4
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744749"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753632"
 ---
 # <a name="azure-security-baseline-for-azure-migrate"></a>適用于 Azure Migrate 的 Azure 安全性基準
 

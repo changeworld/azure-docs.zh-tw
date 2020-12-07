@@ -2,16 +2,16 @@
 title: 針對無代理程式 VMware VM 遷移中的複寫問題進行疑難排解
 description: 取得複寫週期失敗的協助
 author: anvar-ms
-ms.manager: bsiva
 ms.author: anvar
+ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 04dcf8edbce7782e6d196271bfa85f2f8d1c5ba3
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: e19c5064dd69538dfc025b0d244baf4fa74706b2
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608328"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753530"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>針對無代理程式 VMware VM 遷移中的複寫問題進行疑難排解
 

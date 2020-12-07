@@ -1,17 +1,17 @@
 ---
 title: 針對 Azure Migrate 設備部署和探索進行疑難排解
-description: 取得部署 Azure Migrate 設備及探索機器的協助。
-author: musa-57
+description: 取得設備部署和機器探索的協助。
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
-ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 0d4630cad94a30e0dd53785c512e452d7b4a7d38
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 26bb61e0c5a473a56c57391b53009419453956fd
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494438"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753411"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>針對 Azure Migrate 設備和探索進行疑難排解
 

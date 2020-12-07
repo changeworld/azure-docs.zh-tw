@@ -1,17 +1,17 @@
 ---
 title: 刪除 Azure Migrate 專案
 description: 在本文中，您將瞭解如何使用 Azure 入口網站來刪除 Azure Migrate 專案。
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
+author: ms-psharma
+ms.author: panshar
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 10/22/2019
-ms.author: raynew
-ms.openlocfilehash: c58081e7cf88ac4820aa7d4f367b7344f3340a77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: face3d02ee72d1e05c6c08330dae4fffc2fd0e0b
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307869"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754244"
 ---
 # <a name="delete-an-azure-migrate-project"></a>刪除 Azure Migrate 專案
 
@@ -26,7 +26,7 @@ ms.locfileid: "91307869"
 - 如果您已將 Log Analytics 工作區附加至伺服器評定工具以進行相依性分析，請決定是否要刪除工作區。 
     - 工作區不會自動刪除。 請手動將其刪除。
     - 在刪除工作區之前，請先確認該工作區的用途。 相同的 Log Analytics 工作區可用於多個案例。
-    - 刪除專案之前，您可以在 [OMS 工作區] 下的 [ **Azure Migrate-伺服器**  >  **Azure Migrate-伺服器評定**] 中**OMS Workspace**找到工作區的連結。
+    - 刪除專案之前，您可以在 [OMS 工作區] 下的 [ **Azure Migrate-伺服器**  >  **Azure Migrate-伺服器評定**] 中 **OMS Workspace** 找到工作區的連結。
     - 若要在刪除專案之後刪除工作區，請在相關的資源群組中尋找工作區，然後依照 [這些指示](../azure-monitor/platform/delete-workspace.md)進行。
 
 
@@ -51,7 +51,7 @@ ms.locfileid: "91307869"
 
 ### <a name="vmwarephysical-server"></a>VMware/實體伺服器
 
-**Resource** | **型別**
+**Resource** | **類型**
 --- | ---
 "Appliancename" kv | 金鑰保存庫
 "Appliancename" 網站 | Microsoft.offazure/VMwareSites
@@ -67,7 +67,7 @@ migrateapplisbns16041 | 服務匯流排 命名空間
 
 ### <a name="hyper-v-vm"></a>Hyper-V VM 
 
-**Resource** | **型別**
+**Resource** | **類型**
 --- | ---
 ProjectName | Microsoft. 遷移/migrateprojects
 "專案名稱" 專案 | Microsoft. 遷移/assessmentProjects

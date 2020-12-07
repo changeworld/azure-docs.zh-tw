@@ -1,18 +1,17 @@
 ---
 title: 針對 Azure Migrate 中的評定和相依性視覺效果進行疑難排解
-description: 在 Azure Migrate 中取得疑難排解評定和相依性視覺效果的協助。
-ms.service: azure-migrate
-ms.topic: troubleshooting
-author: musa-57
+description: 取得 Azure Migrate 中評定和相依性視覺效果的協助。
+author: rashi-ms
+ms.author: rajosh
 ms.manager: abhemraj
-ms.author: hamusa
+ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 4da0f40c25d322953fea968396ef33924877c2e1
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: cefcd4ce287eecfe2c764d88d5d2233cc8ac0a5c
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505218"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753440"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>評量/相依性視覺效果疑難排解
 
@@ -75,7 +74,7 @@ ms.locfileid: "94505218"
 Azure Migrate 伺服器評量可能會建議 Azure VM Sku 的核心和記憶體比目前內部部署配置更多（根據評量類型而定）：
 
 - VM SKU 建議取決於評量屬性。
-- 這會受到您在伺服器評量中執行的評量類型所影響：以 *效能為基礎* 或 *作為內部部署* 。
+- 這會受到您在伺服器評量中執行的評量類型所影響：以 *效能為基礎* 或 *作為內部部署*。
 - 針對以效能為基礎的評量，伺服器評量會考慮內部部署 Vm (CPU、記憶體、磁片和網路使用量) 的使用量資料，以判斷適用于內部部署 Vm 的正確目標 VM SKU。 在判定有效的使用率時，也會增加緩和因數。
 - 若為內部部署調整大小，則不會考慮效能資料，而是根據內部部署配置建議目標 SKU。
 
@@ -83,7 +82,7 @@ Azure Migrate 伺服器評量可能會建議 Azure VM Sku 的核心和記憶體�
 
 我們的內部部署 VM 具有四個核心和 8 GB 的記憶體，具有50% 的 CPU 使用率和50% 的記憶體使用量，以及指定的緩和因數1.3。
 
--  如果評量是 **內部部署** ，則建議使用具有四個核心和 8 GB 記憶體的 AZURE VM SKU。
+-  如果評量是 **內部部署**，則建議使用具有四個核心和 8 GB 記憶體的 AZURE VM SKU。
 - 如果評量以效能為基礎，則根據有效的 CPU 和記憶體使用量 (50% 的4個核心 * 1.3 = 2.6 核心和50% 的 8 GB 記憶體 * 1.3 = 5.3-GB 記憶體) ，四個核心的最便宜 VM SKU (最接近支援的核心計數) 和 8 GB 的記憶體 (建議的最接近支援記憶體大小) 。
 - [深入瞭解](concepts-assessment-calculation.md#types-of-assessments) 評量調整大小。
 
@@ -91,8 +90,8 @@ Azure Migrate 伺服器評量可能會建議 Azure VM Sku 的核心和記憶體�
 
 Azure Migrate Server 評定可能會根據評量類型建議較大的磁片。
 - 伺服器評量中的磁片大小調整取決於兩個評估屬性：調整大小準則和儲存體類型。
-- 如果調整大小準則是以 **效能為基礎** ，而且儲存體類型設定為 [ **自動** ]，則在識別目標磁片類型 (標準 HDD、標準 SSD 或 Premium) 時，會考慮磁片的 IOPS 和輸送量值。 然後建議磁片類型的磁片 SKU，建議您考慮內部部署磁片的大小需求。
-- 如果調整大小準則是以 **效能為基礎** ，而且儲存體類型是 **Premium** ，則建議使用 Azure 中的 Premium 磁片 SKU，根據內部部署磁片的 IOPS、輸送量和大小需求。 當調整大小準則為內部 **部署** ，且儲存體類型為 **標準 HDD** 、 **標準 SSD** 或 **Premium** 時，會使用相同的邏輯來執行磁片調整大小。
+- 如果調整大小準則是以 **效能為基礎**，而且儲存體類型設定為 [ **自動**]，則在識別目標磁片類型 (標準 HDD、標準 SSD 或 Premium) 時，會考慮磁片的 IOPS 和輸送量值。 然後建議磁片類型的磁片 SKU，建議您考慮內部部署磁片的大小需求。
+- 如果調整大小準則是以 **效能為基礎**，而且儲存體類型是 **Premium**，則建議使用 Azure 中的 Premium 磁片 SKU，根據內部部署磁片的 IOPS、輸送量和大小需求。 當調整大小準則為內部 **部署** ，且儲存體類型為 **標準 HDD**、 **標準 SSD** 或 **Premium** 時，會使用相同的邏輯來執行磁片調整大小。
 
 例如，如果您的內部部署磁片具有 32 GB 的記憶體，但磁片的匯總讀取和寫入 IOPS 是 800 IOPS，伺服器評量會建議 premium 磁片 (因為) 的 IOPS 需求較高，然後建議可支援所需 IOPS 和大小的磁片 SKU。 在此範例中最接近的相符項目為 P15 (256 GB、1100 IOPS)。 即使內部部署磁片所需的大小是 32 GB，伺服器評量仍建議使用較大的磁片，因為內部部署磁片的高 IOPS 需求。
 
@@ -165,8 +164,8 @@ Azure Government 不支援以代理程式為基礎的相依性分析。 請使�
 
 ## <a name="supported-operating-systems"></a>支援的作業系統
 
-- **MMS 代理程式** ：檢查支援的 [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)和 [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) 作業系統。
-- **Dependency agent** ：支援的 [Windows 和 Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) 作業系統。
+- **MMS 代理程式**：檢查支援的 [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)和 [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) 作業系統。
+- **Dependency agent**：支援的 [Windows 和 Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) 作業系統。
 
 ## <a name="visualize-dependencies-for--hour"></a>將 > 小時的相依性視覺化
 
@@ -206,11 +205,11 @@ Azure Migrate 目前支援在「美國東部」、「東南亞」和「西歐」
    - 在 Microsoft Edge 和 Internet Explorer 中，記錄應該會自動啟動。 如果沒有，請選取綠色的 [播放] 按鈕。
 4. 嘗試重現錯誤。
 5. 您在記錄時發生錯誤之後，請停止錄製，並儲存一份記錄的活動：
-   - 在 Chrome 中，以滑鼠右鍵按一下並選取 [ **與內容一起另存為 HAR** ]。 此動作會將記錄壓縮並匯出為 har 檔案。
+   - 在 Chrome 中，以滑鼠右鍵按一下並選取 [ **與內容一起另存為 HAR**]。 此動作會將記錄壓縮並匯出為 har 檔案。
    - 在 Microsoft Edge 或 Internet Explorer 中，選取 [ **匯出已捕捉的流量** ] 選項。 此動作會壓縮並匯出記錄。
 6. 選取 [ **主控台** ] 索引標籤，以檢查是否有任何警告或錯誤。 若要儲存主控台記錄：
    - 在 Chrome 中，以滑鼠右鍵按一下主控台記錄的任何位置。 選取 [ **另存** 新檔]、匯出並壓縮記錄檔。
-   - 在 Microsoft Edge 或 Internet Explorer 中，以滑鼠右鍵按一下錯誤，然後選取 [ **全部複製** ]。
+   - 在 Microsoft Edge 或 Internet Explorer 中，以滑鼠右鍵按一下錯誤，然後選取 [ **全部複製**]。
 7. 關閉 Developer Tools。
 
 

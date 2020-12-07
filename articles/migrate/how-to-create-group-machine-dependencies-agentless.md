@@ -1,14 +1,17 @@
 ---
 title: 在 Azure Migrate 伺服器評量中設定無代理程式相依性分析
 description: 在 Azure Migrate 伺服器評量中設定無代理程式相依性分析。
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 722ad4cc27132815c1416331aaf0691754ccee05
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d84c85326c6f5d87189a2c24a3b13654f157cb05
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500779"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754278"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>分析機器相依性 (無代理程式)
 
@@ -50,7 +53,7 @@ ms.locfileid: "96500779"
 2. 流覽至 [ **提供 vCenter 詳細資料** ] 面板。
 3. 在 [**探索 vm 上的應用程式和** 相依性] 中，按一下 [**新增認證**]
 3. 選擇 **作業系統**、提供帳戶的易記名稱和 **使用者名稱** / **密碼**
-6. 按一下 [儲存]。
+6. 按一下 **[儲存]** 。
 7. 按一下 [ **儲存並開始探索**]。
 
     ![新增 VM 使用者帳戶](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)

@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate Server 遷移中的代理程式型遷移
 description: 提供 Azure Migrate 中以代理程式為基礎的 VMware VM 遷移概述。
-author: rayne-wiselman
-ms.service: azure-migrate
+author: rahulg1190
+ms.author: rahugup
+ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.author: raynew
-ms.openlocfilehash: 90e499b436a3ae44fa29cec1138d939a106a4db7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1389b03d87beb24cba50fec0a782de8b7f935557
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357160"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753887"
 ---
 # <a name="agent-based-migration-architecture"></a>代理程式移轉架構
 
@@ -40,7 +40,7 @@ ms.locfileid: "91357160"
 
 **元件** | **詳細資料** | **安裝**
 --- | --- | ---
-**複寫設備** | 複寫設備 (設定伺服器/進程伺服器) 是內部部署電腦，可做為內部部署環境與伺服器遷移之間的橋樑。 設備會探索內部部署機器清查，讓伺服器遷移可以協調複寫和遷移。 設備有兩個元件：<br/><br/> 設定**伺服器**：連接至伺服器遷移並協調複寫。<br/> **進程伺服器**：處理資料複寫。 進程伺服器會接收電腦資料、將其壓縮和加密，然後傳送至 Azure。 在 Azure 中，伺服器遷移會將資料寫入受控磁片。 | 依預設，進程伺服器會與複寫設備上的設定伺服器一起安裝。
+**複寫設備** | 複寫設備 (設定伺服器/進程伺服器) 是內部部署電腦，可做為內部部署環境與伺服器遷移之間的橋樑。 設備會探索內部部署機器清查，讓伺服器遷移可以協調複寫和遷移。 設備有兩個元件：<br/><br/> 設定 **伺服器**：連接至伺服器遷移並協調複寫。<br/> **進程伺服器**：處理資料複寫。 進程伺服器會接收電腦資料、將其壓縮和加密，然後傳送至 Azure。 在 Azure 中，伺服器遷移會將資料寫入受控磁片。 | 依預設，進程伺服器會與複寫設備上的設定伺服器一起安裝。
 **行動服務** | 行動服務是在您想要複寫和遷移的每部電腦上安裝的代理程式。 它會將複寫資料從電腦傳送至進程伺服器。 | 不同行動服務版本的安裝檔案位於複寫設備上。 您可以根據您想要複寫之機器的作業系統和版本，下載並安裝所需的代理程式。
 
 ## <a name="mobility-service-installation"></a>行動服務安裝
@@ -119,8 +119,8 @@ ms.locfileid: "91357160"
 - 此外，您可以節流處理伺服器電腦上的頻寬，如下所示：
 
     1. 在進程伺服器電腦上，開啟 Azure 備份 MMC 嵌入式管理單元。 桌面上的快捷方式，或在 C:\Program Files\Microsoft Azure Recovery Services Agent\bin. 的資料夾中。 
-    2. 在嵌入式管理單元中，選取 [變更內容]****。
-    3. 在 [ **節流**] 中，選取 [ **啟用備份作業的網際網路頻寬使用節流**設定]。 設定工作和非工作時數的限制。 有效範圍是 512 Kbps 到 1,023 Mbps。
+    2. 在嵌入式管理單元中，選取 [變更內容]。
+    3. 在 [ **節流**] 中，選取 [ **啟用備份作業的網際網路頻寬使用節流** 設定]。 設定工作和非工作時數的限制。 有效範圍是 512 Kbps 到 1,023 Mbps。
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -1,14 +1,17 @@
 ---
 title: 準備 Azure Migrate 以便搭配 ISV 工具/Movere
 description: 此文章描述如何準備 Azure Migrate 以搭配 ISV 工具或 Movere，然後描述如何開始使用此工具。
+author: ms-psharma
+ms.author: panshar
+ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/10/2020
-ms.openlocfilehash: 885e64536e516e4fd96233c37a68f6e77fb84e33
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1716db0476169e12822b3f47f7199bf6e2c4ee92
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369143"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753768"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>準備使用 ISV 工具或 Movere
 
@@ -33,7 +36,7 @@ ms.locfileid: "92369143"
  
 在您的 Azure 訂用帳戶中，您的帳戶需要 **Microsoft.Authorization/*/Write** 存取權，才能將角色指派給 Azure AD 應用程式。 
 
-1. 在 Azure 入口網站中，開啟**訂用帳戶**。
+1. 在 Azure 入口網站中，開啟 **訂用帳戶**。
 2. 選取相關的訂用帳戶。 如果您沒有看到該訂用帳戶，請選取 [全域訂閱篩選]。 
 3. 選取 [我的權限]。 然後，選取 [按一下這裡以詳細檢視此訂用帳戶的完整存取權]。
 4. 在 [角色指派] > [檢視] 中，檢查權限。 如果您的帳戶沒有權限，請要求訂用帳戶管理員將您新增至[使用者存取系統管理員](../role-based-access-control/built-in-roles.md#user-access-administrator) \(部分機器翻譯\) 角色或[擁有者](../role-based-access-control/built-in-roles.md#owner) \(部分機器翻譯\) 角色。

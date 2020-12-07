@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 12/07/2020
 ms.author: alexeyo
-ms.openlocfilehash: a304628e05054124fde6ffe5c2b63177991d8cfd
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 9b923ba208dd2a5111a59f67401b1e4f080b7187
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345392"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754159"
 ---
 # <a name="speech-services-quotas-and-limits"></a>語音服務配額和限制
 
@@ -104,25 +104,25 @@ ms.locfileid: "93345392"
 Azure 入口網站、Command-Line 工具或 API 要求都看 **不** 到並行要求限制參數的現有值。 若要確認現有的值，請建立 Azure 支援要求。
 
 >[!NOTE]
->[語音容器](speech-container-howto.md) 不需要增加並行要求的限制，因為容器只受限於裝載的硬體 cpu。
+>[語音容器](speech-container-howto.md) 不需要增加並行要求的限制，因為容器只受限於裝載的硬體 cpu。 不過，語音容器有自己的容量限制，應納入考慮。 請參閱問題 *：「您可以協助進行容量規劃，以及內部部署語音轉換文字容器的成本估計」。* 從 [語音容器的常見問題](speech-container-faq.md)。
 
 #### <a name="have-the-required-information-ready"></a>備妥所需的資訊：
-- 針對 **基底模型** ：
+- 針對 **基底模型**：
   - 語音資源識別碼
   - 區域
-- **自訂模型** ： 
+- **自訂模型**： 
   - 區域
   - 自訂端點識別碼
 
-- **如何 (基底模型) 取得資訊** ：  
+- **如何 (基底模型) 取得資訊**：  
   - 移至 [Azure 入口網站](https://portal.azure.com/)
   - 選取您要增加並行要求限制的語音資源
-  - 選取 [ *資源管理* 群組] (的 [ *屬性* ])  
+  - 選取 [*資源管理* 群組] (的 [*屬性*])  
   - 複製並儲存下欄欄位的值：
     - **資源識別碼**
-    - 端點區域 ( **位置** ) 
+    - 端點區域 (**位置**) 
 
-- **如何 (自訂模型) 取得資訊** ：
+- **如何 (自訂模型) 取得資訊**：
   - 前往 [Speech Studio](https://speech.microsoft.com/) 入口網站
   - 必要時登入
   - 移至自訂語音
@@ -130,7 +130,7 @@ Azure 入口網站、Command-Line 工具或 API 要求都看 **不** 到並行�
   - 移至 *部署*
   - 選取所需的端點
   - 複製並儲存下欄欄位的值：
-    - 端點區域 (的 **服務區域** ) 
+    - 端點區域 (的 **服務區域**) 
     - **端點識別碼**
   
 #### <a name="create-and-submit-support-request"></a>建立並提交支援要求
@@ -139,7 +139,7 @@ Azure 入口網站、Command-Line 工具或 API 要求都看 **不** 到並行�
 - 確定您有 [必要的資訊](#have-the-required-information-ready)
 - 移至 [Azure 入口網站](https://portal.azure.com/)
 - 選取您要增加 (的語音資源，或檢查) 並行要求限制
-- 選取 [ *新增支援要求* ( *支援 + 疑難排解* ] 群組)  
+- 選取 [ *新增支援要求* (*支援 + 疑難排解* ] 群組)  
 - 新的視窗隨即出現，其中包含 Azure 訂用帳戶和 Azure 資源的自動填入資訊
 - 輸入 *摘要* (例如「增加 STT 並行要求限制」 ) 
 - 在 [ *問題類型* ] 中，選取 [配額或訂用帳戶問題]
@@ -152,7 +152,7 @@ Azure 入口網站、Command-Line 工具或 API 要求都看 **不** 到並行�
   - 請注意，要求是關於 **語音轉換文字** 配額
   - **基底** 或 **自訂** 模型
   - 您[之前收集](#have-the-required-information-ready)的 Azure 資源資訊 
-  - 完成輸入必要資訊，然後按一下 [ *檢查 + 建立* ] 索引標籤中的 [ *建立* ] 按鈕
+  - 完成輸入必要資訊，然後按一下 [*檢查 + 建立*] 索引標籤中的 [*建立*] 按鈕
   - 請注意 Azure 入口網站通知中的支援要求號碼。 即將聯繫您以進行進一步的處理
 
 ### <a name="speech-to-text-example-of-a-workload-pattern-best-practice"></a>語音轉換文字：工作負載模式最佳作法的範例
@@ -182,7 +182,7 @@ Azure 入口網站、Command-Line 工具或 API 要求都看 **不** 到並行�
 - 移至 *部署*
 - 選取所需的端點
 - 複製並儲存下欄欄位的值：
-    - 端點區域 (的 **服務區域** ) 
+    - 端點區域 (的 **服務區域**) 
     - **端點識別碼**
   
 #### <a name="create-and-submit-support-request"></a>建立並提交支援要求
@@ -191,7 +191,7 @@ Azure 入口網站、Command-Line 工具或 API 要求都看 **不** 到並行�
 - 確定您有 [必要的資訊](#prepare-the-required-information)
 - 移至 [Azure 入口網站](https://portal.azure.com/)
 - 選取您要增加 (的語音資源，或檢查) 並行要求限制
-- 選取 [ *新增支援要求* ( *支援 + 疑難排解* ] 群組)  
+- 選取 [ *新增支援要求* (*支援 + 疑難排解* ] 群組)  
 - 新的視窗隨即出現，其中包含 Azure 訂用帳戶和 Azure 資源的自動填入資訊
 - 輸入 *摘要* (例如「增加 TTS 自訂端點並行要求限制」 ) 
 - 在 [ *問題類型* ] 中，選取 [配額或訂用帳戶問題]
@@ -203,6 +203,6 @@ Azure 入口網站、Command-Line 工具或 API 要求都看 **不** 到並行�
 - 在 [ *詳細資料* ] 索引標籤的 [ *描述* ] 欄位中輸入：
   - 請注意，要求是關於 **文字轉換語音** 配額
   - 您[之前收集](#prepare-the-required-information)的 Azure 資源資訊 
-  - 完成輸入必要資訊，然後按一下 [ *檢查 + 建立* ] 索引標籤中的 [ *建立* ] 按鈕
+  - 完成輸入必要資訊，然後按一下 [*檢查 + 建立*] 索引標籤中的 [*建立*] 按鈕
   - 請注意 Azure 入口網站通知中的支援要求號碼。 即將聯繫您以進行進一步的處理
 

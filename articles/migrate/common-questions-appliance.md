@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate 設備常見問題
 description: 取得 Azure Migrate 設備的常見問題解答。
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 7be6260a7d3eb25ce2854f6949554e2c66019980
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9badbfe6cfe12d67e07f0889d175ed32bc455321
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337586"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753870"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate 設備：常見問題
 
@@ -66,9 +69,9 @@ Azure Migrate 設備會持續分析內部部署機器，以測量效能資料。
 
 請參閱下列文章，以取得 Azure Migrate 設備在 Vm 上收集之資料的相關資訊：
 
-- **VMWARE VM** ： [檢查](migrate-appliance.md#collected-data---vmware) 收集的資料。
-- **HYPER-V VM** ： [檢查](migrate-appliance.md#collected-data---hyper-v) 收集的資料。
-- **實體或虛擬伺服器** ： [檢查](migrate-appliance.md#collected-data---physical) 收集的資料。
+- **VMWARE VM**： [檢查](migrate-appliance.md#collected-data---vmware) 收集的資料。
+- **HYPER-V VM**： [檢查](migrate-appliance.md#collected-data---hyper-v) 收集的資料。
+- **實體或虛擬伺服器**：[檢查](migrate-appliance.md#collected-data---physical) 收集的資料。
 
 ## <a name="how-is-data-stored"></a>儲存資料的方式
 
@@ -102,7 +105,7 @@ Azure Migrate 設備所收集的資料會儲存在您建立 Azure Migrate 專案
 
 ## <a name="can-the-azure-migrate-appliance-connect-to-multiple-vcenter-servers"></a>Azure Migrate 設備是否可以連接到多部 vCenter Server？
 
-否。 [Azure Migrate 設備](migrate-appliance.md)與 vCenter Server 之間有一對一的對應。 若要在多個 vCenter Server 實例上探索 Vm，您必須部署多個設備。 
+不會。 [Azure Migrate 設備](migrate-appliance.md)與 vCenter Server 之間有一對一的對應。 若要在多個 vCenter Server 實例上探索 Vm，您必須部署多個設備。 
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Azure Migrate 專案可以有多個設備嗎？
 
@@ -132,11 +135,11 @@ Azure Migrate 設備所收集的資料會儲存在您建立 Azure Migrate 專案
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>我可以在 Azure VM 上設定設備嗎？
 
-否。 目前不支援此選項。 
+不會。 目前不支援此選項。 
 
 ## <a name="can-i-discover-on-an-esxi-host"></a>我可以在 ESXi 主機上探索嗎？
 
-否。 若要探索 VMware Vm，您必須有 vCenter Server。
+不會。 若要探索 VMware Vm，您必須有 vCenter Server。
 
 ## <a name="how-do-i-update-the-appliance"></a>如何? 更新設備？
 
