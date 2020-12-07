@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/03/2020
+ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8273d4bbb0b58a256521cf11cacf6d1fed67e10d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2010f55a28d393086aad544cbec3f5c009801872
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345111"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750487"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義 OpenID Connect 技術設定檔
 
@@ -80,6 +80,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供 [OpenID Connect](https://openid
 | IdTokenAudience | 否 | id_token 的對象。 如果有指定，Azure AD B2C 會檢查 `aud` 識別提供者所傳回之權杖中的宣告是否等於 IdTokenAudience 中繼資料中指定的宣告。  |
 | METADATA | 是 | 指向 OpenID Connect 身分識別提供者設定檔的 URL，也稱為 OpenID 知名的設定端點。 URL 可以包含 `{tenant}` 運算式，該運算式會取代為租使用者名稱。  |
 | authorization_endpoint | 否 | 指向 OpenID Connect 身分識別提供者設定授權端點的 URL。 Authorization_endpoint 中繼資料的值會優先于 `authorization_endpoint` OpenID 知名設定端點中的指定。 URL 可以包含 `{tenant}` 運算式，該運算式會取代為租使用者名稱。 |
+| end_session_endpoint | 否 | 結束交談端點的 URL。 Authorization_endpoint 中繼資料的值會優先于 `end_session_endpoint` OpenID 知名設定端點中的指定。 |
 | 簽發者 | 否 | OpenID Connect 識別提供者的唯一識別碼。 簽發者中繼資料的值會優先于 `issuer` OpenID 知名設定端點中的指定。  如果有指定，Azure AD B2C 會檢查 `iss` 識別提供者所傳回之權杖中的宣告是否等於簽發者中繼資料中指定的宣告。 |
 | ProviderName | 否 | 識別提供者的名稱。  |
 | response_types | 否 | 根據 OpenID Connect Core 1.0 規格的回應類型。 可能的值：`id_token`、`code` 或 `token`。 |
@@ -92,7 +93,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供 [OpenID Connect](https://openid
 | DiscoverMetadataByTokenIssuer | 否 | 表明是否應該使用 JWT 權杖中的簽發者探索 OIDC 中繼資料。 |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含 [宣告解析](claim-resolver-overview.md) 。 可能的值為：`true` 或 `false` (預設)。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 `true` 。 |
 |token_endpoint_auth_method| 否| 指定 Azure AD B2C 將驗證標頭傳送至權杖端點的方式。 可能的值： `client_secret_post` (預設) 和 `client_secret_basic` (公開預覽) 。 如需詳細資訊，請參閱 [OpenID Connect 用戶端驗證一節](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)。 |
-
+|SingleLogoutEnabled| 否| 指出在登入技術設定檔時，是否嘗試從同盟身分識別提供者登出。 如需詳細資訊，請參閱 [Azure AD B2C 會話登出](session-overview.md#sign-out)。 可能的值： `true` (預設) 或 `false` 。|
 
 ```xml
 <Metadata>
@@ -111,7 +112,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供 [OpenID Connect](https://openid
  
 您可以使用下列設定來設定失敗時所顯示的錯誤訊息。 中繼資料應該在 OpenID Connect 技術設定檔中設定。 錯誤訊息可以[當地語系化](localization-string-ids.md#sign-up-or-sign-in-error-messages)。
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | UserMessageIfClaimsPrincipalDoesNotExist | 否 | 如果在目錄中找不到具有所提供使用者名稱的帳戶，則為使用者顯示的訊息。 |
 | UserMessageIfInvalidPassword | 否 | 如果密碼不正確，要向使用者顯示的訊息。 |
@@ -121,7 +122,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供 [OpenID Connect](https://openid
 
 **CryptographicKeys** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 識別提供者應用程式的用戶端密碼。 只有在 **response_types** 中繼資料設為 `code` 時，才需要密碼編譯金鑰。 在此情況下，Azure AD B2C 會進行另一次呼叫，以交換存取權杖的授權碼。 如果中繼資料設為 `id_token`，則可以省略密碼編譯金鑰。  |
 

@@ -7,12 +7,12 @@ ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 992fb4422974dad7a48e5fea953ac4530bb52d5c
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: a517f7a796b6543c8d60f0d1ebdba16afa0bc4b7
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122598"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751422"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>使用 Azure IoT Central 解決方案中的屬性
 
@@ -40,12 +40,12 @@ ms.locfileid: "96122598"
 | 語意類型   | 屬性的語意類型，例如溫度、狀態或事件。 所選擇的語意類型會決定下列哪些欄位可供使用。                                                                       |
 | 結構描述          | 屬性的資料類型，例如雙精度浮點數、字串或向量。 可用的選項取決於語意類型。 結構描述不適用於事件和狀態這兩種語意類型。                                               |
 | 可寫入       | 如果屬性無法寫入，則裝置可以向 Azure IoT Central 報告屬性值。 如果屬性為可寫入，則裝置可以向 Azure IoT Central 報告屬性值。 然後 Azure IoT Central 可以將屬性更新傳送至裝置。 |
-| 嚴重性        | 僅適用於事件語意類型。 嚴重性為 [錯誤]、[資訊]或 [警告]。                                                                                                                         |
+| Severity        | 僅適用於事件語意類型。 嚴重性為 [錯誤]、[資訊]或 [警告]。                                                                                                                         |
 | 狀態值    | 僅適用於狀態語意類型。 會定義可能的狀態值，每個狀態值都會有顯示名稱、名稱、列舉類型和值。                                                                                   |
 | 單位            | 屬性值的單位，例如 **>mph**、 **%** 或 **&deg; C**。                                                                                                                                                              |
 | 顯示單位    | 要在儀表板和表單上使用的顯示單位。                                                                                                                                                                                    |
 | 註解         | 屬性功能的任何相關註解。                                                                                                                                                                                        |
-| 說明     | 屬性功能的說明。                                                                                                                                                                                          |
+| 描述     | 屬性功能的說明。                                                                                                                                                                                          |
 
 屬性也可以在裝置範本的介面中定義，如下所示：
 
@@ -79,7 +79,7 @@ ms.locfileid: "96122598"
 
 * `@type` 指定功能的類型： `Property` 。 上一個範例也會顯示 `Temperature` 這兩個屬性的語義型別。
 * `name` 適用于屬性。
-* `schema` 指定屬性的資料類型。 這個值可以是基本類型，例如 double、integer、Boolean 或 string。 也支援複雜物件類型、陣列和對應。
+* `schema` 指定屬性的資料類型。 這個值可以是基本類型，例如 double、integer、Boolean 或 string。 也支援複雜物件類型和對應。
 * `writable` 依預設，屬性為唯讀。 您可以使用此欄位將屬性標示為可寫入。
 
 選擇性欄位（例如 [顯示名稱] 和 [描述]）可讓您將更多詳細資料新增至介面和功能。

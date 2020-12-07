@@ -1,14 +1,17 @@
 ---
 title: 在 Azure Government 中設定 Azure Migrate 設備
 description: 瞭解如何在 Azure Government 中設定 Azure Migrate 設備
-ms.topic: article
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 1060bda13cc593980850bc6563555cf5dd4b7fd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f31211c4448ad5bbe8d839b2ec86b0b61970f568
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450029"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752187"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>在 Azure Government 中設定設備 
 
@@ -19,7 +22,7 @@ ms.locfileid: "91450029"
 > Azure Government 不支援使用適用于 VMware Vm 和 Hyper-v Vm 的範本 (部署設備的選項) 。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 腳本會在現有的實體機器或 VM 上設定 Azure Migrate 設備。
 
@@ -64,7 +67,7 @@ ms.locfileid: "91450029"
 - 使用 Azure Migrate 的持續性設定，更新 (HKLM) 的登錄機碼。
 - 建立記錄檔和設定檔，如下所示：
     - **設定檔**：%ProgramData%\Microsoft Azure\Config
-    - **記錄**檔：%ProgramData%\Microsoft Azure\Logs
+    - **記錄** 檔：%ProgramData%\Microsoft Azure\Logs
 
 執行指令碼：
 
@@ -76,7 +79,7 @@ ms.locfileid: "91450029"
     ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-VMWare-USGov>.\AzureMigrateInstaller.ps1 ```
 1. 腳本順利執行之後，它會啟動設備 web 應用程式，讓您可以設定設備。 如果您遇到任何問題，請參閱 C:\ProgramData\Microsoft Azure\Logs\ 的腳本記錄檔，AzureMigrateScenarioInstaller_<em>Timestamp</em>. .log。
 
-### <a name="verify-access"></a>驗證存取
+### <a name="verify-access"></a>驗證存取權
 
 請確定設備可以連線到適用于 [政府](migrate-appliance.md#government-cloud-urls)雲端的 Azure url。
 
@@ -88,7 +91,7 @@ ms.locfileid: "91450029"
 ### <a name="download-the-script"></a>下載腳本
 
 1.  在 [移轉目標] > [伺服器] >  **[Azure Migrate：伺服器評量]** 中，按一下 [探索]。
-2.  在 [探索機器]**** > [機器是否已虛擬化?]**** 中，選取 [是，使用 Hyper-V]****。
+2.  在 [探索機器] > [機器是否已虛擬化?] 中，選取 [是，使用 Hyper-V]。
 3.  按一下 [ **下載**] 以下載 zip 壓縮檔案。 
 
 
@@ -119,7 +122,7 @@ ms.locfileid: "91450029"
 - 使用 Azure Migrate 的持續性設定，更新 (HKLM) 的登錄機碼。
 - 建立記錄檔和設定檔，如下所示：
     - **設定檔**：%ProgramData%\Microsoft Azure\Config
-    - **記錄**檔：%ProgramData%\Microsoft Azure\Logs
+    - **記錄** 檔：%ProgramData%\Microsoft Azure\Logs
 
 執行指令碼：
 
@@ -131,7 +134,7 @@ ms.locfileid: "91450029"
     ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-HyperV-USGov>.\AzureMigrateInstaller.ps1 ``` 
 1. 腳本順利執行之後，它會啟動設備 web 應用程式，讓您可以設定設備。 如果您遇到任何問題，請參閱 C:\ProgramData\Microsoft Azure\Logs\ 的腳本記錄檔，AzureMigrateScenarioInstaller_<em>Timestamp</em>. .log。
 
-### <a name="verify-access"></a>驗證存取
+### <a name="verify-access"></a>驗證存取權
 
 請確定設備可以連線到適用于 [政府](migrate-appliance.md#government-cloud-urls)雲端的 Azure url。
 
@@ -158,7 +161,7 @@ ms.locfileid: "91450029"
 
 3. 確認最新的設備版本和雜湊值：
 
-    **案例** | **下載*** | **雜湊值**
+    **案例** | **下載** _ | _ *雜湊值**
     --- | --- | ---
     實體： (85 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140338) | cfed44bb52c9ab3024a628dc7a5d0df8c624f156ec1ecc3507116bae330b257f
           
@@ -173,7 +176,7 @@ ms.locfileid: "91450029"
 - 使用 Azure Migrate 的持續性設定，更新 (HKLM) 的登錄機碼。
 - 建立記錄檔和設定檔，如下所示：
     - **設定檔**：%ProgramData%\Microsoft Azure\Config
-    - **記錄**檔：%ProgramData%\Microsoft Azure\Logs
+    - **記錄** 檔：%ProgramData%\Microsoft Azure\Logs
 
 執行指令碼：
 
@@ -185,7 +188,7 @@ ms.locfileid: "91450029"
     ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>.\AzureMigrateInstaller.ps1 ```
 1. 腳本順利執行之後，它會啟動設備 web 應用程式，讓您可以設定設備。 如果您遇到任何問題，請參閱 C:\ProgramData\Microsoft Azure\Logs\ 的腳本記錄檔，AzureMigrateScenarioInstaller_<em>Timestamp</em>. .log。
 
-### <a name="verify-access"></a>驗證存取
+### <a name="verify-access"></a>驗證存取權
 
 請確定設備可以連線到適用于 [政府](migrate-appliance.md#government-cloud-urls)雲端的 Azure url。
 

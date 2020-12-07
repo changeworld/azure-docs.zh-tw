@@ -3,12 +3,12 @@ title: 使用 Azure 資料箱進行離線備份
 description: 瞭解如何使用 Azure 資料箱將從 MARS 代理程式離線的大型初始備份資料植入復原服務保存庫。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 5a4aeebeddcca4adcac511c7c225c8809dd29c93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e789b6c9f4ff2e8cd168e6b5c138d423911d4743
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89180927"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752578"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>使用 Azure 資料箱進行 Azure 備份離線備份
 
@@ -32,7 +32,7 @@ ms.locfileid: "89180927"
 | Windows 8.1 64 位元                    | Enterprise、Pro                                             |
 | Windows 8 64 位元                      | Enterprise、Pro                                             |
 | Windows 7 64 位元                      | Ultimate、Enterprise、Professional、Home Premium、Home Basic、Starter |
-| **Server**                             |                                                              |
+| **伺服器**                             |                                                              |
 | Windows Server 2019 64 位元            | Standard、Datacenter、Essentials                            |
 | Windows Server 2016 64 位元            | Standard、Datacenter、Essentials                            |
 | Windows Server 2012 R2 64 位元         | Standard、Datacenter、Foundation                            |
@@ -56,7 +56,7 @@ ms.locfileid: "89180927"
 >[!IMPORTANT]
 >單一伺服器的初始備份資料必須包含在單一 Azure 資料箱實例或 Azure 資料箱磁片中，且不能在相同或不同 Sku 的多個裝置之間共用。 但 Azure 資料箱的裝置可以包含來自多部伺服器的初始備份。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 ### <a name="azure-subscription-and-required-permissions"></a>Azure 訂用帳戶和必要許可權
 
@@ -116,7 +116,7 @@ ms.locfileid: "89180927"
 使用 MARS 和 Azure 資料箱的離線備份程式要求資料箱裝置必須處於已傳送的狀態，您才能使用 MARS 代理程式來觸發離線備份。 若要為您的需求訂購最適合的 SKU，請參閱 [備份資料大小和支援的資料箱 sku](#backup-data-size-and-supported-data-box-skus)。 遵循教學課程中的步驟 [：訂購 Azure 資料箱磁片](../databox/data-box-disk-deploy-ordered.md) 來訂購和接收您的資料箱裝置。
 
 > [!IMPORTANT]
-> 請勿選取**帳戶種類**的*BlobStorage* 。 MARS 代理程式需要支援分頁 blob 的帳戶，但在選取 *BlobStorage* 時不支援此選項。 當您建立 Azure 資料箱作業的目標儲存體帳戶時，請選取 **儲存體 V2 (一般用途 V2) ** 作為 **帳戶類型** 。
+> 請勿選取 **帳戶種類** 的 *BlobStorage* 。 MARS 代理程式需要支援分頁 blob 的帳戶，但在選取 *BlobStorage* 時不支援此選項。 當您建立 Azure 資料箱作業的目標儲存體帳戶時，請選取 **儲存體 V2 (一般用途 V2)** 作為 **帳戶類型** 。
 
 ![選擇實例詳細資料中的帳戶種類](./media/offline-backup-azure-data-box/instance-details.png)
 
@@ -183,7 +183,7 @@ MARS 代理程式會在本機系統內容中運作，因此需要將相同層級
     ![將專案新增至備份](./media/offline-backup-azure-data-box/add-items.png)
 
 1. 針對檔案 **、資料夾** 和 **系統狀態**，選取適當的備份排程和保留原則。 系統狀態僅適用于 Windows 伺服器，不適用於 Windows 用戶端。
-1. 在嚮導的 [ **選擇初始備份類型 (檔案和資料夾]) ** 頁面上，選取 [ **使用 Microsoft Azure 資料箱磁片傳送** ] 選項，然後選取 **[下一步]**。
+1. 在嚮導的 [ **選擇初始備份類型 (檔案和資料夾])** 頁面上，選取 [ **使用 Microsoft Azure 資料箱磁片傳送** ] 選項，然後選取 **[下一步]**。
 
     ![選擇初始備份類型](./media/offline-backup-azure-data-box/initial-backup-type.png)
 
@@ -195,11 +195,11 @@ MARS 代理程式會在本機系統內容中運作，因此需要將相同層級
 
     ![提取訂用帳戶識別碼的資料箱作業](./media/offline-backup-azure-data-box/fetching-databox-jobs.png)
 
-1. 選取您已解除封裝、連線並解除鎖定資料箱磁片的正確資料箱訂單。 選取 [下一步]  。
+1. 選取您已解除封裝、連線並解除鎖定資料箱磁片的正確資料箱訂單。 選取 [下一步] 。
 
     ![選取資料箱訂單](./media/offline-backup-azure-data-box/select-databox-order.png)
 
-1. 選取 [在**資料箱裝置偵測上偵測****裝置**] 頁面。 此動作會讓 MARS 代理程式在本機連接的 Azure 資料箱磁片進行掃描，並偵測到它們。
+1. 選取 [在 **資料箱裝置偵測上偵測****裝置**] 頁面。 此動作會讓 MARS 代理程式在本機連接的 Azure 資料箱磁片進行掃描，並偵測到它們。
 
     ![資料箱裝置偵測](./media/offline-backup-azure-data-box/databox-device-detection.png)
 
@@ -208,11 +208,11 @@ MARS 代理程式會在本機系統內容中運作，因此需要將相同層級
     ![輸入網路路徑](./media/offline-backup-azure-data-box/enter-network-path.png)
 
     >[!IMPORTANT]
-    > 提供 Azure 資料箱磁碟根目錄的網路路徑。 此目錄必須包含名稱為 *PageBlob*的目錄。
+    > 提供 Azure 資料箱磁碟根目錄的網路路徑。 此目錄必須包含名稱為 *PageBlob* 的目錄。
     >
     >![Azure 資料箱磁片的根目錄](./media/offline-backup-azure-data-box/root-directory.png)
     >
-    >例如，如果磁片的路徑是 `\\mydomain\myserver\disk1\` ，而 *disk1* 包含名為 *PageBlob*的目錄，則您在 MARS 代理程式的 [代理程式] 頁面上輸入的路徑就是 `\\mydomain\myserver\disk1\` 。
+    >例如，如果磁片的路徑是 `\\mydomain\myserver\disk1\` ，而 *disk1* 包含名為 *PageBlob* 的目錄，則您在 MARS 代理程式的 [代理程式] 頁面上輸入的路徑就是 `\\mydomain\myserver\disk1\` 。
     >
     >如果您 [設定 Azure 資料箱 100-TB 裝置](#set-up-azure-data-box-devices)，請輸入 `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` 作為裝置的網路路徑。
 
@@ -277,14 +277,14 @@ Microsoft Azure 復原服務 (MARS) 代理程式會在您的租使用者中為�
 
 #### <a name="step-1-of-workaround"></a>解決方法的步驟1
 
-使用在將建立匯入或匯出作業的訂用帳戶上具有系統管理員存取權的不同帳戶，登入出現在 MAB UI 上的 PowerShell。
+使用在訂用帳戶上具有系統管理員存取權的不同帳戶，登入出現在 MAB UI 上的 PowerShell，該帳戶將會建立資料箱工作。
 
 #### <a name="step-2-of-workaround"></a>解決方法的步驟2
 
-如果沒有其他伺服器已設定離線植入，而且沒有其他伺服器相依于 `AzureOfflineBackup_<Azure User Id>` 應用程式，請刪除此應用程式。 選取**Azure 入口網站**  >  **Azure Active Directory**  >  **應用程式註冊**。
+如果沒有其他伺服器已設定離線植入，而且沒有其他伺服器相依于 `AzureOfflineBackup_<Azure User Id>` 應用程式，請刪除此應用程式。 選取 **Azure 入口網站**  >  **Azure Active Directory**  >  **應用程式註冊**。
 
 >[!NOTE]
-> 檢查應用程式是否沒有設定 `AzureOfflineBackup_<Azure User Id>` 任何其他離線植入，以及其他伺服器是否相依于此應用程式。 移至**Settings**  >  [**公開金鑰**] 區段下的 [設定] 索引**鍵**。 它不應該加入任何其他的公開金鑰。 請參閱下列螢幕擷取畫面以取得參考。
+> 檢查應用程式是否沒有設定 `AzureOfflineBackup_<Azure User Id>` 任何其他離線植入，以及其他伺服器是否相依于此應用程式。 移至 **Settings**  >  [**公開金鑰**] 區段下的 [設定] 索引 **鍵**。 它不應該加入任何其他的公開金鑰。 請參閱下列螢幕擷取畫面以取得參考。
 >
 >![公開金鑰](./media/offline-backup-azure-data-box/public-keys.png)
 
@@ -294,7 +294,7 @@ Microsoft Azure 復原服務 (MARS) 代理程式會在您的租使用者中為�
 
 1. 移至 [**管理電腦憑證應用程式**  >  **個人**] 索引標籤，然後尋找名稱為的憑證 `CB_AzureADCertforOfflineSeeding_<ResourceId>` 。
 
-2. 選取憑證，以滑鼠右鍵按一下 [ **所有**工作]，然後選取 [不使用私密金鑰的 **匯出** ] （.cer 格式）。
+2. 選取憑證，以滑鼠右鍵按一下 [ **所有** 工作]，然後選取 [不使用私密金鑰的 **匯出** ] （.cer 格式）。
 
 3. 移至步驟2中所述的 Azure 離線備份應用程式。 選取 [**設定**] 索引  >  **鍵**  >  **上傳公開金鑰**。 上傳您在上一個步驟中匯出的憑證。
 
@@ -310,7 +310,7 @@ Microsoft Azure 復原服務 (MARS) 代理程式會在您的租使用者中為�
     >- 從與 Azure 連線的 PowerShell 中，執行 `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` 命令。
     > - 移至名稱為 CurrentUserId 的登錄路徑 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` 。 *CurrentUserId*
 
-6. 以滑鼠右鍵按一下上一個步驟中所新增的字串，然後選取 [ **修改**]。 在 [值] 中，提供您在步驟2中匯出之憑證的指紋。 選取 [確定]  。
+6. 以滑鼠右鍵按一下上一個步驟中所新增的字串，然後選取 [ **修改**]。 在 [值] 中，提供您在步驟2中匯出之憑證的指紋。 選取 [確定]。
 
 7. 若要取得憑證指紋的值，請按兩下該憑證。 選取 [ **詳細資料** ] 索引標籤，直到您看到 [指紋] 欄位為止。 選取 [ **指紋**]，然後複製值。
 

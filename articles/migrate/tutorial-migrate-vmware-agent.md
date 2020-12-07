@@ -1,15 +1,18 @@
 ---
 title: 使用代理程式型 Azure Migrate 伺服器移轉來遷移 VMware VM
 description: 了解如何使用 Azure Migrate 執行 VMware VM 的代理程式型移轉。
+author: rahulg1190
+ms.author: rahugup
+ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 46f23953e6572b752f8773bc9db86be946ccf212
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0c3b86fc823e4b563dc747a5604fcb2e04995fed
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492992"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752646"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>將 VMware VM 遷移至 Azure (代理程式型)
 
@@ -198,7 +201,7 @@ Azure Migrate 伺服器移轉需要 VMware 伺服器的存取權，才能探索�
     - 將 Proxy 名稱指定為 **http://ip-address** 或 **http://FQDN** 。 不支援 HTTPS Proxy 伺服器。
 5. 當系統提示您輸入訂用帳戶、資源群組和保存庫詳細資料時，請新增您下載設備範本時所記下的詳細資料。
 6. 在 [安裝第三方軟體]  中，接受授權合約。 選取 [下載並安裝]  以安裝 MySQL Server。
-7. 選取 [安裝 VMware PowerCLI]。 在您執行這項作業之前，確定所有瀏覽器視窗都已關閉。 然後選取 [繼續]。
+7. 選取 [安裝 VMware PowerCLI]。 在您執行這項作業之前，確定所有瀏覽器視窗都已關閉。 然後選取 [繼續]  。
 8. 在 [驗證設備設定]  中，必要條件會在您繼續之前進行驗證。
 9. 在 [設定 vCenter 伺服器/vSphere ESXi 伺服器] 中，輸入 vCenter 伺服器或 vSphere 主機 (您要複寫的 VM 位於其上) 的 FQDN 或 IP 位址。 輸入伺服器所接聽的連接埠。 輸入要用於保存庫中 VMware 伺服器的易記名稱。
 10. 輸入您為 VMware 探索[建立](#prepare-an-account-to-discover-vms)的帳戶認證。 選取 [新增] > [繼續]。

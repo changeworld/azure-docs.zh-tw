@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: d8c0a5ce6f3befd41c0e1399363fd73726693837
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1c3c3d38ac0d8334f70f681d8ef86c0d6f86ecfa
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949712"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750215"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的建議和最佳作法
 
@@ -28,7 +28,7 @@ ms.locfileid: "94949712"
 |--|--|
 | 選擇大部分案例的使用者流程 | Azure AD B2C 的 Identity Experience Framework 是服務的核心強度。 原則可完整描述身分識別體驗，例如註冊、登入或設定檔編輯。 為了協助您設定最常見的身分識別工作，Azure AD B2C 入口網站包含預先定義且可設定的原則，稱為使用者流程。 透過使用者流程，只要按幾下滑鼠，您就可以在幾分鐘內建立絕佳的使用者體驗。 [瞭解何時使用使用者流程與自訂原則](custom-policy-overview.md#comparing-user-flows-and-custom-policies)。|
 | 應用程式註冊 | 每個應用程式 (web、原生) 和受保護的 API 都必須在 Azure AD B2C 中註冊。 如果應用程式同時具有 web 和原生版本的 iOS 和 Android，您可以使用相同的用戶端識別碼，將它們註冊為 Azure AD B2C 中的一個應用程式。 瞭解如何 [註冊 OIDC、SAML、web 和原生應用程式](./tutorial-register-applications.md?tabs=applications)。 深入瞭解 [可在 Azure AD B2C 中使用的應用程式類型](./application-types.md)。 |
-| 移至每月活躍使用者計費 | Azure AD B2C 已從每月主動驗證移至每月作用中的使用者 (MAU) 帳單。 大部分的客戶都會發現此模型符合成本效益。 [深入瞭解每月活躍使用者計費](https://azure.microsoft.com/updates/mau-billing/)。 |
+| 移至每月活躍使用者計費 | Azure AD B2C 已從每月主動驗證移至每月作用中的使用者 (MAU) 帳單。 大部分的客戶都會發現此模型符合成本效益。 [深入瞭解每月活躍使用者計費](https://azure.microsoft.com/updates/mau-billing/)。 [儲存此連結](b2clogin.md) |
 
 ## <a name="planning-and-design"></a>規劃與設計
 
@@ -70,7 +70,7 @@ ms.locfileid: "94949712"
 | 節流 |  如果在短時間內從相同來源傳送太多要求，Azure AD B2C 節流流量。 在負載測試時使用數個流量來源，並 `AADB2C90229` 在您的應用程式中正常處理錯誤碼。 |
 | 自動化 | 使用持續整合和傳遞 (CI/CD) 管線來自動化測試和部署，例如 [Azure DevOps](deploy-custom-policies-devops.md)。 |
 
-## <a name="operations"></a>作業
+## <a name="operations"></a>Operations
 
 管理您的 Azure AD B2C 環境。
 
@@ -84,7 +84,7 @@ ms.locfileid: "94949712"
 | 設定主動警示和監視 | 使用 Application Insights 追蹤 Azure AD B2C 中的[使用者行為](./analytics-with-application-insights.md)。 |
 
 ## <a name="support-and-status-updates"></a>支援和狀態更新
-
+## <a name="todays-support-and-status-updates"></a>今天的支援和狀態更新
 隨時掌握最新的服務狀態，並尋找支援選項。
 
 | 最佳做法 | 描述 |

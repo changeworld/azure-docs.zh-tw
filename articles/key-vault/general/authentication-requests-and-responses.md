@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 48f223a55e4a1e4db4ac7057065d67ae64fa0f2c
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 58616b647affd33e96357e556ab61f85d1c62129
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288478"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752272"
 ---
 # <a name="authentication-requests-and-responses"></a>驗證、要求和回應
 
@@ -134,3 +134,6 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 -   authorization：可能用來取得要求存取權杖之 OAuth2 授權服務的位址。  
 
 -   資源： `https://vault.azure.net` 要在授權要求中使用的資源 () 名稱。
+
+> [!NOTE]
+> 在第一次呼叫 Key Vault 時，Key Vault SDK 用戶端取得秘密、憑證和金鑰，並不提供存取權杖來取得租使用者資訊。 它預期會使用 Key Vault SDK 用戶端來接收 HTTP 401，其中 Key Vault 向應用程式顯示包含資源的 WWW-Authenticate 標頭，以及需要要求權杖的租使用者。 如果一切都設定正確，從應用程式到 Key Vault 的第二次呼叫會包含有效的權杖，而且將會成功。 

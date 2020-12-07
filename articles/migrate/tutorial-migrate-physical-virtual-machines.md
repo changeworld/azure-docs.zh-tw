@@ -1,15 +1,18 @@
 ---
 title: 使用 Azure Migrate 將機器視為實體伺服器遷移至 Azure。
 description: 本文說明如何使用 Azure Migrate 將實體機器遷移至 Azure。
+author: rahulg1190
+ms.author: rahugup
+ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: c783cb22ce8a31d346e98c53dee365fa59b73b8a
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: af1c321e5c537fbd3af770cb392c538e6056e075
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302900"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752867"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>將機器視為實體伺服器遷移至 Azure
 

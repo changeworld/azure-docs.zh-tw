@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate 中探索、評量和相依性分析的相關問題
 description: 取得 Azure Migrate 中探索、評量和相依性分析的常見問題解答。
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: cb1696c521f436280177f0263abd66aa2bfed7dc
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4531d68c2fbd0698c33d70a75bb82ac9c7f52f49
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312926"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752238"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>探索、評量和相依性分析-常見問題
 
@@ -31,9 +34,9 @@ ms.locfileid: "92312926"
 
 ## <a name="how-do-i-choose-the-assessment-type"></a>如何選擇評量類型？
 
-- 當您想要評估內部部署[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[實體伺服器](how-to-set-up-appliance-physical.md)以遷移至 Azure VM 時，請使用**Azure VM 評**量。 [深入了解](concepts-assessment-calculation.md)
+- 當您想要評估內部部署 [VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和 [實體伺服器](how-to-set-up-appliance-physical.md)以遷移至 Azure VM 時，請使用 **Azure VM 評** 量。 [深入了解](concepts-assessment-calculation.md)
 
-- 當您想要使用此評量類型來評估內部部署[Vmware vm](how-to-set-up-appliance-vmware.md)以遷移至[Azure VMWARE 解決方案 (AVS) ](../azure-vmware/introduction.md)時，請使用**Azure VMware Solution (AVS) **評量。 [深入了解](concepts-azure-vmware-solution-assessment-calculation.md)
+- 當您想要使用此評量類型來評估內部部署 [Vmware vm](how-to-set-up-appliance-vmware.md)以遷移至 [Azure VMWARE 解決方案 (AVS)](../azure-vmware/introduction.md)時，請使用 **Azure VMware Solution (AVS)** 評量。 [深入了解](concepts-azure-vmware-solution-assessment-calculation.md)
 
 - 您只能使用與 VMware 機器相同的通用群組來執行這兩種類型的評量。 請注意，如果您是第一次在 Azure Migrate 中執行 AVS 評量，建議您建立新的 VMware 機器群組。
  
@@ -44,7 +47,7 @@ ms.locfileid: "92312926"
 
 - VM 在您建立評量的持續時間內是否開啟電源
 - 如果只有記憶體計數器遺失，而且您想要評估 Hyper-V VM，那麼請檢查您是否已在這些 VM 上啟用動態記憶體。 目前有已知問題導致 Azure Migrate 設備無法對此類 VM 收集記憶體使用量。
-- 如果遺失了所有效能計數器，請確定已允許連接埠 443 上的輸出連線 (HTTPS)。
+- 如果所有的效能計數器都遺失，請確定允許埠 443 (HTTPS) 的輸出連線。
 
 注意：如果遺漏任何效能計數器，則 Azure Migrate：伺服器評量會回復為已配置的內部部署核心/記憶體，並據此建議 VM 大小。
 
@@ -54,7 +57,7 @@ ms.locfileid: "92312926"
 
 - 您未針對正在建立評量的持續時間剖析環境。 例如，如果您要建立將效能持續時間設定為一週的評量，您需要至少等待一週後再開始探索，才能收集到所有資料點。 如果您無法等待該持續時間，請將效能持續時間變更為較短的期間，並「重新計算」評量。
  
-- 伺服器評量在評估期間內無法收集部分或所有 VM 的效能資料。 請檢查 VM 在評估期間內是否開啟電源，並允許連接埠 443 上的輸出連線。 針對 Hyper-V VM，如果啟用了動態記憶體，記憶體計數器將會遺失，因而導致信賴評等偏低。 請「重新計算」評量，以反映信賴評等的最新變更。 
+- 伺服器評定無法收集評定期間內部分或所有 Vm 的效能資料。 請檢查 VM 在評估期間內是否開啟電源，並允許連接埠 443 上的輸出連線。 針對 Hyper-V VM，如果啟用了動態記憶體，記憶體計數器將會遺失，因而導致信賴評等偏低。 請「重新計算」評量，以反映信賴評等的最新變更。 
 
 - 有少數 VM 是在伺服器評量中的探索啟動後建立的。 例如，如果您要建立過去一個月的效能記錄評量，但是少數虛擬機器在一週前才建立在環境中。 在此情況下，將無法取得新的 VM 在這整段期間內的效能資料，且信賴評等將會偏低。
 
@@ -119,7 +122,7 @@ Azure Migrate 設備會持續收集內部部署環境的相關資訊。  評量�
 ## <a name="how-are-import-based-assessments-different-from-assessments-with-discovery-source-as-appliance"></a>以匯入為基礎的評量與探索來源為設備的評量有何不同？
 
 以匯入為基礎的 Azure VM 評量是使用 CSV 檔案匯入 Azure Migrate 的機器所建立的評量。 匯入只需要四個欄位：伺服器名稱、核心、記憶體和作業系統。 以下是一些要注意的事項： 
- - 在開機類型參數上以匯入為基礎的評量中，就緒準則較不嚴格。 如果未提供開機類型，則會假設電腦具有 BIOS 開機類型，而且電腦未標示為有條件地 **備**妥。 在探索來源為設備的評量中，如果遺失開機類型，就會將就緒狀態標示為有 **條件地備** 妥。 這項準備工作的差異在於，在完成以匯入為基礎的評量完成時，使用者可能不會在遷移規劃的早期階段中擁有電腦上的所有資訊。 
+ - 在開機類型參數上以匯入為基礎的評量中，就緒準則較不嚴格。 如果未提供開機類型，則會假設電腦具有 BIOS 開機類型，而且電腦未標示為有條件地 **備** 妥。 在探索來源為設備的評量中，如果遺失開機類型，就會將就緒狀態標示為有 **條件地備** 妥。 這項準備工作的差異在於，在完成以匯入為基礎的評量完成時，使用者可能不會在遷移規劃的早期階段中擁有電腦上的所有資訊。 
  - 以效能為基礎的匯入評量會使用使用者提供的使用率值來進行正確大小的計算。 由於使用率值是由使用者提供，因此在評量屬性中，會停用 **效能歷程記錄** 和 **百分位數使用量** 選項。 在以探索來源作為設備的評量中，選擇的百分位數值會從設備所收集的效能資料中挑選。
 
 ## <a name="why-is-the-suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>為什麼以匯入為基礎的 AVS 評定中的建議遷移工具標示為未知？
@@ -156,7 +159,7 @@ Log Analytics | 不需要。 | Azure Migrate 會使用 [Azure 監視器記錄](.
 
 ## <a name="do-i-pay-for-dependency-visualization"></a>相依性視覺效果需要付費嗎？
 
-不正確。 深入瞭解 [Azure Migrate 定價](https://azure.microsoft.com/pricing/details/azure-migrate/)。
+不會。 深入瞭解 [Azure Migrate 定價](https://azure.microsoft.com/pricing/details/azure-migrate/)。
 
 ## <a name="what-do-i-install-for-agent-based-dependency-visualization"></a>我要針對以代理程式為基礎的相依性視覺效果安裝什麼？
 

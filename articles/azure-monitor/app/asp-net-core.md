@@ -4,12 +4,12 @@ description: 監視 ASP.NET Core Web 應用程式的可用性、效能和使用�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 825cd451120f06597922c142dfc6bf8c10f5c700
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 404e820168c64bd47b6e94598ad5bb13faf32a86
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875116"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751337"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core 應用程式的 Application Insights
 
@@ -31,7 +31,7 @@ ms.locfileid: "91875116"
 > [!NOTE]
 > ASP.NET Core 3.x 需要 [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) 或更新版本。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 正常運作的 ASP.NET Core 應用程式。 如果您需要建立 ASP.NET Core 應用程式，請遵循此 [ASP.NET Core 教學](/aspnet/core/getting-started/)課程。
 - 有效的 Application Insights 檢測金鑰。 需要有此金鑰才能將任何遙測資料傳送至 Application Insights。 如果您需要建立新的 Application Insights 資源以取得檢測金鑰，請參閱 [建立 Application Insights 資源](./create-new-resource.md)。
@@ -51,7 +51,7 @@ ms.locfileid: "91875116"
 
 4. 選取您的訂用帳戶。 然後選取 [**資源**  >  **註冊**]。
 
-5. 將 Application Insights 新增至您的專案之後，請檢查以確認您使用的是最新穩定版本的 SDK。 移至**Project**  >  **管理 NuGet 套件**  >  **ApplicationInsights. AspNetCore**。 如有需要，請選擇 [ **更新**]。
+5. 將 Application Insights 新增至您的專案之後，請檢查以確認您使用的是最新穩定版本的 SDK。 移至 **Project**  >  **管理 NuGet 套件**  >  **ApplicationInsights. AspNetCore**。 如有需要，請選擇 [ **更新**]。
 
      ![顯示要在哪裡選取更新 Application Insights 套件的螢幕擷取畫面](./media/asp-net-core/update-nuget-package.png)
 
@@ -261,6 +261,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
+> [!NOTE]
+> `services.AddSingleton<ITelemetryInitializer, MyCustomTelemetryInitializer>();` 適用于簡單的初始化運算式。 針對其他人，需要下列專案： `services.AddSingleton(new MyCustomTelemetryInitializer() { fieldName = "myfieldName" });`
+    
 ### <a name="removing-telemetryinitializers"></a>移除 TelemetryInitializers
 
 預設會出現遙測初始化運算式。 若要移除所有或特定的遙測初始化運算式，請在呼叫 *後* ，使用下列範例程式碼 `AddApplicationInsightsTelemetry()` 。
@@ -478,7 +481,7 @@ public class HomeController : Controller
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>我可以使用狀態監視器之類的工具來啟用 Application Insights 監視嗎？
 
-否。 [狀態監視器](./monitor-performance-live-website-now.md) 和 [狀態監視器 v2](./status-monitor-v2-overview.md) 目前只支援 ASP.NET 4.x。
+不會。 [狀態監視器](./monitor-performance-live-website-now.md) 和 [狀態監視器 v2](./status-monitor-v2-overview.md) 目前只支援 ASP.NET 4.x。
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>如果我在 Linux 中執行我的應用程式，是否支援所有功能？
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3fdb3b2b23d07b79a8e9979450bee653d646196c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 552cac01cd492229a19bdbc297665eb7d3ccb401
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182796"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751286"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>設定在停機期間啟動/停止 VM
 
@@ -48,7 +48,7 @@ ms.locfileid: "96182796"
 
 2. 在 [ **VMList** 參數] 欄位中，新增以逗號分隔的 vm 清單， (沒有空格) 。 範例清單為 `vm1,vm2,vm3` 。
 
-3. 將 [ **WHATIF** 參數] 欄位設定為 [True]。
+3. 將 [ **WHATIF** 參數] 欄位設定為 [True] 以預覽您的變更。
 
 4. `External_ExcludeVMNames`使用以逗號分隔的 vm 清單來設定變數 (VM1、VM2、VM3) ，逗號分隔值之間沒有空格。
 
@@ -79,7 +79,7 @@ ms.locfileid: "96182796"
 
 3. 在 [ **VMList** 參數] 欄位中，新增以逗號分隔的 vm 清單， (沒有空格) 。 範例清單為 `vm1,vm2,vm3` 。
 
-4. 將 **WHATIF** 設定為 True。 
+4. 將 **WHATIF** 設定為 True 以預覽您的變更。 
 
 5. `External_ExcludeVMNames`使用以逗號分隔的 vm 清單來設定變數，以逗點分隔值之間沒有空格。
 

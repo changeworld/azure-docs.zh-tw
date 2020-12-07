@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 8df24b44d648343c46532eed443717f444bd0058
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dc262e133f6e91271d7e9848bdca9d3a6062fc66
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95975627"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751694"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>應用程式閘道相關的常見問題集
 
@@ -192,7 +192,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="are-service-endpoint-policies-supported-in-the-application-gateway-subnet"></a>應用程式閘道子網是否支援服務端點原則？
 
-否。 應用程式閘道子網不支援儲存體帳戶的[服務端點原則](../virtual-network/virtual-network-service-endpoint-policies-overview.md)，並設定它將會封鎖 Azure 基礎結構流量。
+不會。 應用程式閘道子網不支援儲存體帳戶的[服務端點原則](../virtual-network/virtual-network-service-endpoint-policies-overview.md)，並設定它將會封鎖 Azure 基礎結構流量。
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>應用程式閘道的限制為何？ 是否可以增加這些限制？
 
@@ -466,12 +466,9 @@ AGIC 會嘗試自動建立路由表資源與應用程式閘道子網的關聯性
 
 存取後端時，若遭到應用程式閘道子網路上的網路安全性群組 (NSG)、自訂 DNS 或使用者定義路由 (UDR) 封鎖，您通常會看到不明狀態。 如需詳細資訊，請參閱[應用程式閘道的後端健康情況、診斷記錄和計量](application-gateway-diagnostics.md)。
 
-### <a name="is-there-any-case-where-nsg-flow-logs-wont-show-allowed-traffic"></a>是否有任何情況會導致 NSG 流量記錄不顯示允許的流量？
+### <a name="are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet"></a>Nsg 是否支援與應用程式閘道 v2 子網相關聯的 NSG 流量記錄？
 
-是。 如果您的設定符合下列情況，則在 NSG 流量記錄中就看不到允許的流量：
-- 您已部署應用程式閘道 v2
-- 您在應用程式閘道子網路上有 NSG
-- 您已在該 NSG 上啟用 NSG 流量記錄
+由於目前的平臺限制，如果您在應用程式閘道 v2 上有 NSG (Standard_v2，WAF_v2) 子網，而且如果您已在其上啟用 NSG 流量記錄，您將會看到不具決定性的行為，而且目前不支援此案例。
 
 ### <a name="does-application-gateway-store-customer-data"></a>應用程式閘道是否會儲存客戶資料？
 

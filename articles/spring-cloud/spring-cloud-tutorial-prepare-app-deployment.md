@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 9e613331760a1715c3821bdc7dbbf0469e8bfd97
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 5d160c46b235c6890426cab9de52ec7b827efe4a
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337605"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750708"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>準備要在 Azure 中部署的應用程式（春季雲端）
 
@@ -128,7 +128,7 @@ using (var client = new HttpClient(discoveryHandler, false))
 
 其他範例說明在已設定 POM 檔案時，如何將應用程式部署至 Azure Spring Cloud。 
 * [啟動您的第一個應用程式](spring-cloud-quickstart.md)
-* [建立並執行微服務](spring-cloud-quickstart-sample-app-introduction.md)
+* [建置和執行微服務](spring-cloud-quickstart-sample-app-introduction.md)
 
 本文說明必要的相依性，以及如何將其新增至 POM 檔案。
 
@@ -149,6 +149,9 @@ Spring Boot 版本 | Spring Cloud 版本
 2.1 | Greenwich.RELEASE
 2.2 | Hoxton.SR8
 2.3 | Hoxton.SR8
+
+> [!NOTE]
+> 我們發現您的應用程式與 Eureka 之間的 TLS 驗證有開機2.4 的問題，目前正在與春季團體合作來解決問題。 請參閱我們的 [常見問題](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) 以取得解決方法。
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>Spring Boot 2.1 版的相依性
 

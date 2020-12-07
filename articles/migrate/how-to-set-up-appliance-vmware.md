@@ -1,14 +1,17 @@
 ---
 title: 設定適用于 VMware 的 Azure Migrate 設備
 description: 瞭解如何設定 Azure Migrate 設備來評定和遷移 VMware Vm。
-ms.topic: article
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: f20bb77c29d98ab4e3549bfed43d47d1f1f7dc0c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cc479f8e4dc87155721b25fab2ba522880b0ac4f
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013627"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751052"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>為 VMware Vm 設定設備
 

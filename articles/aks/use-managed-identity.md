@@ -3,14 +3,13 @@ title: 在 Azure Kubernetes Service 中使用受控識別
 description: '瞭解如何在 Azure Kubernetes Service (AKS 中使用受控識別) '
 services: container-service
 ms.topic: article
-ms.date: 07/17/2020
-ms.author: thomasge
-ms.openlocfilehash: 96a1eebbdcbf269b06d2ece77987ce7813f1d5f5
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.date: 12/06/2020
+ms.openlocfilehash: e2a80ea869e17665e8a6d4fbd6960c3ccc8c1042
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571057"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751269"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes Service 中使用受控識別
 
@@ -22,28 +21,27 @@ ms.locfileid: "96571057"
 
 您必須安裝下列資源：
 
-- Azure CLI 版本2.8.0 或更新版本
+- Azure CLI 版本2.15.1 或更新版本
 
 ## <a name="limitations"></a>限制
 
-* 只有在叢集建立期間，才能啟用具有受控識別的 AKS 叢集。
 * 在叢集 **升級** 作業期間，受控識別暫時無法使用。
 * 不支援租使用者移動/遷移受控識別啟用的叢集。
-* 如果叢集已 `aad-pod-identity` 啟用，節點受控身分識別 (NMI) pod 會修改節點的 iptables，以攔截對 Azure 實例中繼資料端點的呼叫。 這項設定表示即使 pod 不使用，對中繼資料端點所提出的任何要求都會被 NMI 攔截 `aad-pod-identity` 。 您可以設定 AzurePodIdentityException .CRD，以通知 `aad-pod-identity` 來自符合 .crd 中所定義標籤之中繼資料端點的任何要求，都應該是 proxy，而不需要在 NMI 中處理。 在 `kubernetes.azure.com/managedby: aks` _kube_ 系統命名空間中具有標籤的系統 pod，應設定 `aad-pod-identity` AzurePodIdentityException .crd 來排除。 如需詳細資訊，請參閱 [停用 aad-pod-特定 pod 或應用程式](https://azure.github.io/aad-pod-identity/docs/configure/application_exception)的身分識別。
+* 如果叢集已 `aad-pod-identity` 啟用，Node-Managed 身分識別 (NMI) pod 會修改節點的 iptables 來攔截對 Azure 實例中繼資料端點的呼叫。 這項設定表示即使 pod 不使用，對中繼資料端點所提出的任何要求都會被 NMI 攔截 `aad-pod-identity` 。 您可以設定 AzurePodIdentityException .CRD，以通知 `aad-pod-identity` 來自符合 .crd 中所定義標籤之中繼資料端點的任何要求，都應該是 proxy，而不需要在 NMI 中處理。 在 `kubernetes.azure.com/managedby: aks` _kube_ 系統命名空間中具有標籤的系統 pod，應設定 `aad-pod-identity` AzurePodIdentityException .crd 來排除。 如需詳細資訊，請參閱 [停用 aad-pod-特定 pod 或應用程式](https://azure.github.io/aad-pod-identity/docs/configure/application_exception)的身分識別。
   若要設定例外狀況，請安裝 [mic 例外狀況 YAML](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml)。
 
 ## <a name="summary-of-managed-identities"></a>受控識別的摘要
 
 AKS 針對內建服務和附加元件使用了數個受控識別。
 
-| 身分識別                       | Name    | 使用案例 | 預設許可權 | 攜帶您自己的身分識別
+| 身分識別                       | 名稱    | 使用案例 | 預設許可權 | 攜帶您自己的身分識別
 |----------------------------|-----------|----------|
-| 控制平面 | 看不到 | AKS 用於受控網路資源，包括輸入負載平衡器和 AKS 受控公用 Ip | 節點資源群組的參與者角色 | 預覽
+| 控制平面 | 看不到 | 由 AKS 控制平面元件用來管理叢集資源，包括輸入負載平衡器、AKS 受控公用 Ip 和叢集自動調整程式作業 | 節點資源群組的參與者角色 | 預覽
 | Kubelet | AKS 叢集名稱-agentpool | 使用 Azure Container Registry (ACR) 進行驗證 | NA 適用于 kubernetes v 1.15 +) 的 ( | 目前不支援
 | 附加元件 | AzureNPM | 不需要身分識別 | NA | 否
 | 附加元件 | AzureCNI 網路監視 | 不需要身分識別 | NA | 否
-| 附加元件 | azurepolicy (閘道管理員)  | 不需要身分識別 | NA | 否
-| 附加元件 | azurepolicy | 不需要身分識別 | NA | 否
+| 附加元件 | azure-原則 (閘道管理員)  | 不需要身分識別 | NA | 否
+| 附加元件 | azure-原則 | 不需要身分識別 | NA | 否
 | 附加元件 | Calico | 不需要身分識別 | NA | 否
 | 附加元件 | 儀表板 | 不需要身分識別 | NA | 否
 | 附加元件 | HTTPApplicationRouting | 管理必要的網路資源 | 節點資源群組的讀取者角色，DNS 區域的參與者角色 | 否
@@ -135,44 +133,14 @@ az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identi
 > [!NOTE]
 > 當系統指派或使用者指派的身分識別更新為受控識別之後，請 `az nodepool upgrade --node-image-only` 在您的節點上執行，以完成受控識別的更新。
 
-## <a name="bring-your-own-control-plane-mi-preview"></a>將您自己的控制平面 MI (Preview) 
-自訂控制平面身分識別可讓您在建立叢集之前，將存取權授與現有的身分識別。 這可讓您使用自訂 VNET 或 UDR 的 outboundType 搭配受控識別等案例。
+## <a name="bring-your-own-control-plane-mi"></a>攜帶您自己的控制平面 MI
+自訂控制平面身分識別可讓您在建立叢集之前，將存取權授與現有的身分識別。 這項功能可讓您使用自訂 VNET 或 UDR outboundType 搭配預先建立的受控識別等案例。
 
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+您必須安裝 Azure CLI 2.15.1 版或更新版本。
 
-您必須先安裝下列資源：
-- Azure CLI 版本2.9.0 版或更新版本
-- Aks-preview 0.4.57 延伸模組
-
-攜帶您自己的控制平面 MI (Preview) 的限制：
+### <a name="limitations"></a>限制
 * 目前不支援 Azure Government。
 * 目前不支援 Azure 中國的世紀。
-
-```azurecli-interactive
-az extension add --name aks-preview
-az extension list
-```
-
-```azurecli-interactive
-az extension update --name aks-preview
-az extension list
-```
-
-```azurecli-interactive
-az feature register --name UserAssignedIdentityPreview --namespace Microsoft.ContainerService
-```
-
-可能需要幾分鐘的時間，狀態才會顯示為 [已註冊]。 您可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) 命令檢查註冊狀態：
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UserAssignedIdentityPreview')].{Name:name,State:properties.state}"
-```
-
-當狀態顯示為已註冊時，請使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) 命令重新整理 `Microsoft.ContainerService` 資源提供者的註冊：
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
 
 如果您還沒有受控識別，您應該繼續建立一個範例，例如使用 [az IDENTITY CLI][az-identity-create]。
 

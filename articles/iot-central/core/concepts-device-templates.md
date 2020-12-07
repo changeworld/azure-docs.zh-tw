@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: e82a377d62184c8ae1d2e8f076b228e36005887a
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 1a352849cb5bb8563a7e09500f081139a24e97ea
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992670"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750691"
 ---
 # <a name="what-are-device-templates"></a>什麼是裝置範本？
 
@@ -225,7 +225,7 @@ DTDL 可讓您描述裝置的功能。 相關的功能會分組為介面。 介�
 
 - `@type` 若要指定功能的類型： `Telemetry` 、 `Property` 或 `Command` 。  在某些情況下，類型會包含一種語義型別，可讓 IoT Central 針對如何處理值提出一些假設。
 - `name` 適用于遙測值。
-- `schema` 指定遙測或屬性的資料類型。 這個值可以是基本類型，例如 double、integer、boolean 或 string。 也支援複雜物件類型、陣列和對應。
+- `schema` 指定遙測或屬性的資料類型。 這個值可以是基本類型，例如 double、integer、boolean 或 string。 也支援複雜物件類型和對應。
 
 選擇性欄位（例如 [顯示名稱] 和 [描述]）可讓您將更多詳細資料新增至介面和功能。
 
@@ -287,7 +287,7 @@ IoT Central 可讓您在儀表板和圖表上查看遙測，並在達到閾值�
 
 您可以新增至視圖的遙測、屬性和命令，取決於裝置模型、雲端屬性和裝置範本中的自訂專案。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 作為裝置開發人員，您現在已瞭解裝置範本，建議的後續步驟是閱讀 [遙測、屬性和命令](./concepts-telemetry-properties-commands.md) 承載，以深入瞭解裝置與 IoT Central 交換的資料。
 

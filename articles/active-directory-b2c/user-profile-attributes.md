@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/20/2020
+ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 98c33d4b9e749e804f70d9dccb7198884c80dfe7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 85030285810433dc77d1f466d160c50d1f89770e
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952695"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750402"
 ---
 # <a name="user-profile-attributes"></a>使用者設定檔屬性
 
@@ -75,16 +75,22 @@ ms.locfileid: "94952695"
 |streetAddress   |String|使用者公司所在位置的街道地址。 長度上限為 1024。|是|是|保留，輸出|
 |strongAuthentication AlternativePhoneNumber<sup>1</sup>|String|用於多重要素驗證的使用者次要電話號碼。|是|否|保留，輸出|
 |strongAuthenticationEmailAddress<sup>1</sup>|String|使用者的 SMTP 位址。 範例："bob@contoso.com" 此屬性用於以使用者名稱原則登入，以儲存使用者的電子郵件地址。 然後此電子郵件地址會在密碼重設流程中使用。|是|否|保留，輸出|
-|strongAuthenticationPhoneNumber<sup>1</sup>|String|用於多重要素驗證的使用者主要電話號碼。|是|否|保留，輸出|
+|strongAuthenticationPhoneNumber<sup>2</sup>|String|用於多重要素驗證的使用者主要電話號碼。|是|否|保留，輸出|
 |surname         |String|使用者的姓氏。 長度上限為 64。|是|是|保留，輸出|
 |telephoneNumber (businessPhones 的第一個項目)|String|使用者公司所在位置的主要電話號碼。|是|否|保留，輸出|
 |userPrincipalName    |String|使用者的使用者主體名稱 (UPN)。 UPN 是依據網際網路標準 RFC 822 的使用者網際網路樣式登入名稱。 網域必須存在於租用戶的已驗證網域集合內。 建立帳戶時需要此屬性。 不可變。|否|否|輸入，保留，輸出|
 |usageLocation   |String|根據法律的要求，所有要指派以授權的使用者皆須指定，才能查看該國家/地區的服務供應狀況。 不可為 Null。 兩個字母的國家/區域代碼 (ISO 標準 3166)。 範例："US"、"JP" 和 "GB"。|是|否|保留，輸出|
 |userType        |String|字串值可用來在目錄中分類使用者類型。 值必須是「成員」。 唯讀。|唯讀|否|保留，輸出|
-|userState (externalUserState)<sup>2</sup>|String|僅供 Azure AD B2B 帳戶使用，指出邀請狀態為待接受或已接受。|否|否|保留，輸出|
+|userState (externalUserState) <sup>3</sup>|String|僅供 Azure AD B2B 帳戶使用，指出邀請狀態為待接受或已接受。|否|否|保留，輸出|
 |userStateChangedOn (externalUserStateChangeDateTime)<sup>2</sup>|Datetime|顯示 UserState 屬性的最新變更時間戳記。|否|否|保留，輸出|
-|<sup>1 </sup>不受 Microsoft Graph 支援<br><sup>2 </sup>不應搭配 Azure AD B2C 一起使用||||||
 
+<sup>1 </sup>不受 Microsoft Graph 支援<br><sup>2 </sup>如需詳細資訊，請參閱 [MFA 電話號碼屬性](#mfa-phone-number-attribute)<br><sup>3 </sup>不應搭配 Azure AD B2C 使用
+
+## <a name="mfa-phone-number-attribute"></a>MFA 電話號碼屬性
+
+使用電話進行多重要素驗證 (MFA) 時，會使用行動電話來驗證使用者身分識別。 若 [要](https://docs.microsoft.com/graph/api/authentication-post-phonemethods) 以程式設計方式新增電話號碼，請 [更新](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-update)、 [取得](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-get)或 [刪除](https://docs.microsoft.com/graph/api/phoneauthenticationmethod-delete) 電話號碼，使用 MS 圖形 API [電話驗證方法](https://docs.microsoft.com/graph/api/resources/phoneauthenticationmethod)。
+
+在 Azure AD B2C [自訂原則](custom-policy-overview.md)中，可透過宣告類型取得電話號碼 `strongAuthenticationPhoneNumber` 。
 
 ## <a name="extension-attributes"></a>擴充屬性
 

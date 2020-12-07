@@ -1,18 +1,17 @@
 ---
 title: 使用伺服器端加密將 VMware 虛擬機器遷移至 Azure (SSE) 和客戶管理的金鑰 (CMK) 使用 Azure Migrate Server 遷移
 description: 瞭解如何使用伺服器端加密 (SSE) 和客戶管理的金鑰，將 VMware Vm 遷移至 Azure (CMK) 使用 Azure Migrate 伺服器遷移
-author: bsiva
-ms.service: azure-migrate
-ms.manager: carmonm
-ms.topic: article
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
+ms.topic: how-to
 ms.date: 03/12/2020
-ms.author: raynew
-ms.openlocfilehash: 89b795011460ee2803d07d14b9c2abe9c8ffca55
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8a174c3b2bfb390eb7d691ae1bdcb0e28dde9032
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483346"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751082"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>使用伺服器端加密和客戶管理的金鑰，將 VMware Vm 遷移至啟用的 Azure Vm
 

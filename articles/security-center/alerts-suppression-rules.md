@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 4f5049d1589b741e60db69c782107cab1f047b77
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 1ca2ded69b0279a60d8ed83cf310a58dadf1a337
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436788"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751983"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>隱藏來自 Azure Defender 的警示
 
@@ -23,7 +23,7 @@ ms.locfileid: "96436788"
 
 |層面|詳細資料|
 |----|:----|
-|版本狀態：|預覽<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|版本狀態：| 正式推出 |
 |定價：|免費<br> (大部分的安全性警示僅適用于 Azure Defender) |
 |必要的角色和權限：|**安全性系統管理員** 和 **擁有** 者可以建立/刪除規則。<br>**安全性讀取者** 和 **讀者** 可以檢視規則。|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|

@@ -1,14 +1,17 @@
 ---
 title: 在 Azure Migrate 中新增遷移工具
 description: 瞭解如何在 Azure Migrate 中新增遷移工具。
-ms.topic: article
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
+ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 5ff5fb54e077896fb6169ad53ce29483cd2c2f89
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 97051e97ec9868f6941b579241e16e62fdd2162b
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95545289"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751779"
 ---
 # <a name="add-migration-tools"></a>新增移轉工具
 

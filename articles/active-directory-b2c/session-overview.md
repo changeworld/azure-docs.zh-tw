@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0004c874a2011a78bb5cfe67ff0a840224d47bbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e02323df3a12c4a74de1fb62b36762fc739e9e5
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258960"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750434"
 ---
 # <a name="azure-ad-b2c-session"></a>Azure AD B2C 會話
 
@@ -30,8 +30,8 @@ ms.locfileid: "91258960"
 與 Azure AD B2C 的整合牽涉到三種類型的 SSO 會話：
 
 - **Azure AD B2C** -由 Azure AD B2C 管理的會話
-- 同盟**識別提供者**-由身分識別提供者管理的會話，例如 Facebook、Salesforce 或 Microsoft 帳戶
-- Web、行動或單一頁面應用程式所管理的**應用程式**會話
+- 同盟 **識別提供者**-由身分識別提供者管理的會話，例如 Facebook、Salesforce 或 Microsoft 帳戶
+- Web、行動或單一頁面應用程式所管理的 **應用程式** 會話
 
 ![SSO 工作階段](media/session-overview/sso-session-types.png)
 
@@ -47,7 +47,7 @@ ms.locfileid: "91258960"
 
 社交或企業身分識別提供者會管理自己的會話。 Cookie 會儲存在身分識別提供者的功能變數名稱下，例如 `https://login.salesforce.com` 。 Azure AD B2C 不會控制同盟身分識別提供者會話。 相反地，會話行為是由同盟身分識別提供者所決定。 
 
-請考慮下列案例：
+考慮下列案例：
 
 1. 使用者登入 Facebook 以檢查其摘要。
 2. 之後，使用者會開啟您的應用程式，並開始登入程式。 應用程式會將使用者重新導向至 Azure AD B2C，以完成登入程式。
@@ -72,7 +72,7 @@ ms.locfileid: "91258960"
 
 ### <a name="session-life-time"></a>會話存留時間
 
-**會話的存留時間**是在成功驗證之後，Azure AD B2C 會話 cookie 儲存在使用者瀏覽器上的時間量。 您可以將會話存留時間設定為15到720分鐘的值。
+**會話的存留時間** 是在成功驗證之後，Azure AD B2C 會話 cookie 儲存在使用者瀏覽器上的時間量。 您可以將會話存留時間設定為15到720分鐘的值。
 
 ### <a name="keep-me-signed-in"></a>讓我保持登入
 
@@ -82,9 +82,9 @@ ms.locfileid: "91258960"
 
 ### <a name="session-expiry-type"></a>會話到期類型
 
-**會話到期類型**表示會話如何透過會話生命時間設定或 [讓我保持登入] 設定來延長。
+**會話到期類型** 表示會話如何透過會話生命時間設定或 [讓我保持登入] 設定來延長。
 
-- 輪流 **-指出**每次使用者執行以 cookie 為基礎的驗證 (預設) 時，會將會話延伸。
+- 輪流 **-指出** 每次使用者執行以 cookie 為基礎的驗證 (預設) 時，會將會話延伸。
 - [**絕對**]-表示在指定的時間週期之後，會強制使用者重新驗證。
 
 ## <a name="sign-out"></a>登出
@@ -96,8 +96,12 @@ ms.locfileid: "91258960"
 1. 使 Azure AD B2C cookie 型會話失效。
 1. 嘗試從同盟身分識別提供者登出：
    - OpenId Connect-如果識別提供者的知名設定端點指定一個 `end_session_endpoint` 位置。
-   - SAML-如果識別提供者中繼資料包含 `SingleLogoutService` 位置。
+   - OAuth2-如果 [識別提供者中繼資料](oauth2-technical-profile.md#metadata) 包含 `end_session_endpoint` 位置。
+   - SAML-如果 [識別提供者中繼資料](saml-identity-provider-technical-profile.md#metadata) 包含 `SingleLogoutService` 位置。
 1. （選擇性）登出其他應用程式。 如需詳細資訊，請參閱 [單一登出](#single-sign-out) 一節。
+
+> [!NOTE]
+> 使用 [自訂原則](custom-policy-overview.md)，您可以將身分識別提供者技術設定檔中繼資料設定為，以停用從同盟身分識別提供者登出 `SingleLogoutEnabled` `false` 。
 
 登出會使用 Azure AD B2C 來清除使用者的單一登入狀態，但可能不會將使用者登出其社交身分識別提供者會話。 如果使用者在後續登入時選取相同的身分識別提供者，他們可能會在未輸入認證的情況下重新驗證。 如果使用者想要登出應用程式，則不一定表示他們想要登出其 Facebook 帳戶。 但是，如果使用本機帳戶，使用者的會話就會正確結束。
 

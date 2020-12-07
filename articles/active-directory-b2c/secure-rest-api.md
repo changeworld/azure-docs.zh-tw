@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 18979ba8cbc4e68bf79275059c6c1c976578c407
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3e3245053fcc9943814268835fa5ac0f40a6f94c
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953367"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750504"
 ---
 # <a name="secure-your-restful-services"></a>保護您的 RESTful 服務 
 
@@ -358,6 +358,69 @@ Authorization: Bearer <token>
       </Metadata>
       <CryptographicKeys>
         <Key Id="BearerAuthenticationToken" StorageReferenceId="B2C_1A_RestApiBearerToken" />
+      </CryptographicKeys>
+      ...
+    </TechnicalProfile>
+  </TechnicalProfiles>
+</ClaimsProvider>
+```
+
+## <a name="api-key-authentication"></a>API 金鑰驗證
+
+API 金鑰是用來驗證使用者以存取 REST API 端點的唯一識別碼。 金鑰會在自訂 HTTP 標頭中傳送。 例如， [AZURE FUNCTIONS HTTP 觸發](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) 程式會使用 `x-functions-key` HTTP 標頭來識別要求者。  
+
+### <a name="add-api-key-policy-keys"></a>新增 API 金鑰原則金鑰
+
+若要使用 API 金鑰驗證來設定 REST API 技術設定檔，請建立下列密碼編譯金鑰來儲存 API 金鑰：
+
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+1. 確定您使用的目錄包含您的 Azure AD B2C 租用戶。 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選擇您的 Azure AD B2C 目錄。
+1. 選擇 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
+1. 在 [概觀] 頁面上，選取 [識別體驗架構]。
+1. 選取 [原則金鑰]，然後選取 [新增]。
+1. 針對 [選項]，選取 [手動]。
+1. 針對 [ **名稱**]，輸入 **RestApiKey**。
+    可能會自動新增前置詞 B2C_1A_。
+1. 在 [ **密碼** ] 方塊中，輸入 REST API 金鑰。
+1. 針對 [金鑰使用方法] 選取 [加密]。
+1. 選取 [建立]。
+
+
+### <a name="configure-your-rest-api-technical-profile-to-use-api-key-authentication"></a>設定您的 REST API 技術設定檔以使用 API 金鑰驗證
+
+建立必要的金鑰之後，請設定您的 REST API 技術設定檔中繼資料以參考認證。
+
+1. 在您的工作目錄中，開啟擴充原則檔案 (TrustFrameworkExtensions.xml)。
+1. 搜尋 REST API 技術設定檔。 例如 `REST-ValidateProfile` 或 `REST-GetProfile`。
+1. 找出 `<Metadata>` 元素。
+1. 將 *AuthenticationType* 變更為 `ApiKeyHeader`。
+1. 將 *AllowInsecureAuthInProduction* 變更為 `false`。
+1. 在關閉 `</Metadata>` 元素之後，立即新增下列 XML 程式碼片段：
+    ```xml
+    <CryptographicKeys>
+        <Key Id="x-functions-key" StorageReferenceId="B2C_1A_RestApiKey" />
+    </CryptographicKeys>
+    ```
+
+密碼編譯金鑰的 **識別碼** 會定義 HTTP 標頭。 在此範例中，API 金鑰會以 **x 函式金鑰** 的形式傳送。
+
+以下範例是設定為使用 API 金鑰驗證呼叫 Azure 函式的 RESTful 技術設定檔：
+
+```xml
+<ClaimsProvider>
+  <DisplayName>REST APIs</DisplayName>
+  <TechnicalProfiles>
+    <TechnicalProfile Id="REST-GetProfile">
+      <DisplayName>Get user extended profile Azure Function web hook</DisplayName>
+      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+      <Metadata>
+        <Item Key="ServiceUrl">https://your-account.azurewebsites.net/api/GetProfile?code=your-code</Item>
+        <Item Key="SendClaimsIn">Body</Item>
+        <Item Key="AuthenticationType">ApiKeyHeader</Item>
+        <Item Key="AllowInsecureAuthInProduction">false</Item>
+      </Metadata>
+      <CryptographicKeys>
+        <Key Id="x-functions-key" StorageReferenceId="B2C_1A_RestApiKey" />
       </CryptographicKeys>
       ...
     </TechnicalProfile>

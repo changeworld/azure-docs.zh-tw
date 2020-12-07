@@ -2,13 +2,16 @@
 title: Azure Migrate 伺服器評量中的相依性分析
 description: 說明如何使用 Azure Migrate 伺服器評量的相依性分析進行評量。
 ms.topic: conceptual
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.date: 09/15/2020
-ms.openlocfilehash: a284d549f13595e0ce8a5d06cc017602e559b648
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f198d47191e7893e74b072ae8fd10546e3a6ee7
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530245"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752204"
 ---
 # <a name="dependency-analysis"></a>相依性分析
 
@@ -77,7 +80,7 @@ ms.locfileid: "90530245"
 **代理程式** | 您想要分析的機器上不需要代理程式。 | 每個您想要分析的內部部署電腦上都需要代理程式。
 **Log Analytics** | 不需要。 | Azure Migrate 在[Azure 監視器記錄](../azure-monitor/log-query/log-query-overview.md)檔中使用[服務對應](../azure-monitor/insights/service-map.md)方案進行相依性分析。<br/><br/> 您可以將 Log Analytics 工作區與 Azure Migrate 專案產生關聯。 此工作區必須位於「美國東部」、「東南亞」或「西歐」區域。 此工作區必須位於[支援服務對應](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)的區域中。
 **處理** | 捕捉 TCP 連接資料。 探索之後，會依五分鐘的間隔收集資料。 | 電腦上安裝的服務對應代理程式會收集 TCP 處理常式的相關資料，以及每個處理常式的輸入/輸出連接。
-**Data** | 來源電腦伺服器名稱、進程、應用程式名稱。<br/><br/> 目的地電腦伺服器名稱、進程、應用程式名稱和埠。 | 來源電腦伺服器名稱、進程、應用程式名稱。<br/><br/> 目的地電腦伺服器名稱、進程、應用程式名稱和埠。<br/><br/> 系統會收集並提供 Log Analytics 查詢的連線、延遲和資料傳輸資訊的數目。 
+**資料** | 來源電腦伺服器名稱、進程、應用程式名稱。<br/><br/> 目的地電腦伺服器名稱、進程、應用程式名稱和埠。 | 來源電腦伺服器名稱、進程、應用程式名稱。<br/><br/> 目的地電腦伺服器名稱、進程、應用程式名稱和埠。<br/><br/> 系統會收集並提供 Log Analytics 查詢的連線、延遲和資料傳輸資訊的數目。 
 **視覺效果** | 單一伺服器的相依性對應可在一小時到30天的期間內查看。 | 單一伺服器的相依性對應。<br/><br/> 伺服器群組的相依性對應。<br/><br/>  您只能在一小時內查看 Map。<br/><br/> 從地圖視圖新增和移除群組中的伺服器。
 資料匯出 | 您可以使用 CSV 格式來下載過去30天的資料。 | 您可以使用 Log Analytics 來查詢資料。
 

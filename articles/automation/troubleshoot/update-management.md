@@ -2,22 +2,56 @@
 title: 針對 Azure 自動化更新管理問題進行疑難排解
 description: 本文說明如何針對 Azure 自動化更新管理進行疑難排解及解決問題。
 services: automation
-ms.date: 10/14/2020
+ms.date: 12/04/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 8818047dd4fef9c495c46b353e68841f83e9677c
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e8fc2a840ce019282625f286a6d54b132a1806c8
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217213"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751252"
 ---
 # <a name="troubleshoot-update-management-issues"></a>針對更新管理問題進行疑難排解
 
 本文討論在您的電腦上部署更新管理功能時，可能會遇到的問題。 混合式 Runbook 背景工作角色代理程式有代理程式疑難排解員可判斷根本問題。 若要深入了解疑難排解員，請參閱[針對 Windows 更新代理程式問題進行疑難排解](update-agent-issues.md)和[針對 Linux 更新代理程式問題進行疑難排解](update-agent-issues-linux.md)。 對於其他功能部署問題，請參閱[針對功能部署問題進行疑難排解](onboarding.md)。
 
 >[!NOTE]
->如果您在 Windows 電腦上部署更新管理時遇到問題，請開啟 Windows 事件檢視器，然後在本機電腦上的 [**應用程式和服務記錄**檔] 底下檢查**Operations Manager**事件記錄檔。 尋找事件識別碼為 4502 的事件，以及包含 `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` 的事件詳細資料。
+>如果您在 Windows 電腦上部署更新管理時遇到問題，請開啟 Windows 事件檢視器，然後在本機電腦上的 [**應用程式和服務記錄** 檔] 底下檢查 **Operations Manager** 事件記錄檔。 尋找事件識別碼為 4502 的事件，以及包含 `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` 的事件詳細資料。
+
+## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a>案例： Linux 更新顯示為擱置且已安裝的變更
+
+### <a name="issue"></a>問題
+
+針對 Linux 機器，更新管理會顯示 [分類 **安全性** ] 和 [ **其他**] 下可用的特定更新。 但是，在電腦上執行更新排程時，例如，只安裝符合 **安全性** 分類的更新，安裝的更新會與先前比對該分類的更新子集或部分更新不同。
+
+### <a name="cause"></a>原因
+
+當您的 Linux 機器的作業系統更新擱置中的評定完成時，) 更新管理會使用 Linux 發行版本廠商提供的 [開放弱點和評定語言](https://oval.mitre.org/) (OVAL 來進行分類。 針對 Linux 更新以 **安全性** 或 **其他** 方式執行的分類是以表示更新解決安全性問題或弱點的 OVAL 檔案為基礎。 但是，當更新排程執行時，它會使用適當的套件管理員（例如 YUM、APT 或 ZYPPER）在 Linux 機器上執行，以進行安裝。 Linux 發行版本的套件管理員可能會有不同的機制來分類更新，其中的結果可能會與從 OVAL 檔案取得的結果不同（更新管理）。
+
+### <a name="resolution"></a>解決方法
+
+您可以根據發行版本的封裝管理員，手動檢查 Linux 機器、適用的更新，以及其分類。 若要瞭解您的套件管理員會將哪些更新分類為 **安全性** ，請執行下列命令。
+
+針對 YUM，下列命令會傳回由 Red Hat 分類為 **安全性** 的非零更新清單。 請注意，在 CentOS 的案例中，它一律會傳回空的清單，而且不會進行安全性分類。
+
+```bash
+sudo yum -q --security check-update
+```
+
+針對 ZYPPER，下列命令會傳回由 SUSE 分類為 **安全性** 的非零更新清單。
+
+```bash
+sudo LANG=en_US.UTF8 zypper --non-interactive patch --category security --dry-run
+```
+
+若為 APT，下列命令會傳回一份非零的更新清單，而這些更新會分類為針對 Ubuntu Linux 散發版本的標準 **安全性** 。
+
+```bash
+sudo grep security /etc/apt/sources.list > /tmp/oms-update-security.list LANG=en_US.UTF8 sudo apt-get -s dist-upgrade -oDir::Etc::Sourcelist=/tmp/oms-update-security.list
+```
+
+從這份清單中，您可以執行命令 `grep ^Inst` 以取得所有擱置中的安全性更新。
 
 ## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a><a name="failed-to-enable-error"></a>案例：您收到「無法啟用更新解決方案」錯誤
 

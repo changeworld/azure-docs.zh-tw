@@ -3,12 +3,12 @@ title: 使用 DPM 和 MABS 的 Azure 資料箱進行離線備份
 description: 您可以使用 Azure 資料箱從 DPM 與 MABS 離線植入初始備份資料。
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 80b3977a9fb886b90c3d48d54f4cda1abfd77df9
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 1cfd9131099ad6a8ccd3d43e93f3d97641514f03
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172227"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752544"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>使用 DPM 和 MABS (Preview) 的 Azure 資料箱進行離線植入
 
@@ -67,7 +67,7 @@ ms.locfileid: "92172227"
 請先確定所需的資料箱裝置處於已 *傳遞* 狀態，再觸發離線備份。 請參閱[備份資料大小和支援的資料箱 SKU](#backup-data-size-and-supported-data-box-skus) 以訂購最適合您需求的 SKU。 請遵循[這篇文章](../databox/data-box-disk-deploy-ordered.md)中的步驟，訂購並接收您的資料箱裝置。
 
 > [!IMPORTANT]
-> 請勿選取**帳戶種類**的*BlobStorage* 。 DPM/MABS 伺服器需要支援頁面 Blob 的帳戶，但在選取 *BlobStorage* 時不支援此選項。 在建立 Azure 資料箱作業的目標儲存體帳戶時，選取  **儲存體 v2 (一般用途 V2) ** 作為 **帳戶類型** 。
+> 請勿選取 **帳戶種類** 的 *BlobStorage* 。 DPM/MABS 伺服器需要支援頁面 Blob 的帳戶，但在選取 *BlobStorage* 時不支援此選項。 在建立 Azure 資料箱作業的目標儲存體帳戶時，選取  **儲存體 v2 (一般用途 V2)** 作為 **帳戶類型** 。
 
 ![設定 Azure 資料箱](./media/offline-backup-azure-data-box-dpm-mabs/setup-azure-databox.png)
 
@@ -110,7 +110,7 @@ DPM/MABS 伺服器會在系統內容中運作，因此需要將相同層級的�
 
 ## <a name="transfer-initial-backup-data-to-azure-data-box-devices"></a>將初始備份資料傳輸至 Azure 資料箱裝置
 
-1. 在您的 DPM/MABS 伺服器上，依照下列步驟 [建立新的保護群組](/system-center/dpm/create-dpm-protection-groups)。 如果您要將線上保護新增至現有的保護群組，請以滑鼠右鍵按一下現有的保護群組，然後選取 [ **新增線上保護** ]，然後從 **步驟 8**開始。
+1. 在您的 DPM/MABS 伺服器上，依照下列步驟 [建立新的保護群組](/system-center/dpm/create-dpm-protection-groups)。 如果您要將線上保護新增至現有的保護群組，請以滑鼠右鍵按一下現有的保護群組，然後選取 [ **新增線上保護** ]，然後從 **步驟 8** 開始。
 2. 在 [選取群組成員] 頁面上，指定您想要備份的電腦和來源。
 3. 在 [選取資料保護方法] 頁面上，指定短期與長期備份的處理方式。 請務必選取 [我想要線上保護]。
 
@@ -162,7 +162,7 @@ DPM/MABS 伺服器會在系統內容中運作，因此需要將相同層級的�
     >
     > ![USB 磁碟機](./media/offline-backup-azure-data-box-dpm-mabs/usb-drive.png)
     >
-    > 例如，如果磁片的路徑是 `\\mydomain\myserver\disk1\` 且 *disk1* 包含名為 *PageBlob*的目錄，則 DPM/MABS Server wizard 上提供的路徑為 `\\mydomain\myserver\disk1\` 。
+    > 例如，如果磁片的路徑是 `\\mydomain\myserver\disk1\` 且 *disk1* 包含名為 *PageBlob* 的目錄，則 DPM/MABS Server wizard 上提供的路徑為 `\\mydomain\myserver\disk1\` 。
     > 如果您[設定 Azure 資料箱 100 TB 裝置](./offline-backup-azure-data-box.md#set-up-azure-data-box)，請提供下列路徑作為裝置的網路路徑 `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob`。
 
 15. 選取 [下一步] 。 在 [ **摘要** ] 頁面上，檢查您的設定，然後選取 [ **建立群組**]。
@@ -177,7 +177,7 @@ DPM/MABS 伺服器會在系統內容中運作，因此需要將相同層級的�
 
     如此一來，資料的初始複寫就會發生在 DPM/MABS 磁片上。 當它完成保護時，[**保護**] 頁面上的 [群組狀態] 會顯示 [保護狀態 **]** 。
 
-17. 若要起始離線備份複製到 Azure 資料箱裝置，請在 **保護群組**上按一下滑鼠右鍵，然後選擇 [ **建立復原點** ] 選項。 然後選擇 [線上保護] 選項。
+17. 若要起始離線備份複製到 Azure 資料箱裝置，請在 **保護群組** 上按一下滑鼠右鍵，然後選擇 [ **建立復原點** ] 選項。 然後選擇 [線上保護] 選項。
 
     ![建立復原點](./media/offline-backup-azure-data-box-dpm-mabs/create-recovery-point.png)
 
@@ -194,7 +194,7 @@ DPM/MABS 伺服器會在系統內容中運作，因此需要將相同層級的�
 一旦成功將資料備份到 Azure 資料箱磁碟後，請遵循下列步驟。
 
 - 遵循[本文](../databox/data-box-disk-deploy-picked-up.md)中的步驟，將 Azure 資料箱磁碟寄送至 Azure。 如果您使用 Azure 資料箱 100 TB 裝置，請遵循[這些步驟](../databox/data-box-deploy-picked-up.md)將 Azure 資料箱寄送到 Azure。
-- 在 Azure 入口網站中[監視資料箱作業](../databox/data-box-disk-deploy-upload-verify.md)。 Azure 資料箱作業 *完成*之後，DPM/MABS 伺服器會在下一次排程備份時，自動將資料從儲存體帳戶移至復原服務保存庫。 如果成功建立復原點，其便會將備份作業標示為 [作業完成]。
+- 在 Azure 入口網站中[監視資料箱作業](../databox/data-box-disk-deploy-upload-verify.md)。 Azure 資料箱作業 *完成* 之後，DPM/MABS 伺服器會在下一次排程備份時，自動將資料從儲存體帳戶移至復原服務保存庫。 如果成功建立復原點，其便會將備份作業標示為 [作業完成]。
 
   > [!NOTE]
   > DPM/MABS 伺服器會在保護群組建立期間，于排程的時間觸發備份。 不過，這些作業會標示為 [等候 Azure 資料箱作業完成]，直到作業完成為止。
@@ -230,7 +230,7 @@ DPM 伺服器上的 Microsoft Azure 備份 (MAB) 代理程式會在您的租用�
 
 若要解決此問題，請執行下列步驟並重試原則設定。
 
-1. 使用不同的帳戶登入出現在 DPM/MABS 伺服器 UI 上的 Azure 登入頁面，該帳戶具有在建立匯入匯出作業的訂用帳戶上具有系統管理員存取權。
+1. 使用在訂用帳戶上具有系統管理員存取權的其他帳戶，登入出現在 DPM/MABS 伺服器 UI 的 Azure 登入頁面，該帳戶將會建立資料箱工作。
 2. 如果沒有任何其他伺服器已設定離線植入，且沒有其他任何伺服器相依於 `AzureOfflineBackup_<Azure User Id>` 應用程式，則從 Azure 入口網站 > [Azure Active Directory] > [應用程式註冊] 刪除此應用程式。
 
    > [!NOTE]
@@ -244,11 +244,11 @@ DPM 伺服器上的 Microsoft Azure 備份 (MAB) 代理程式會在您的租用�
 
 1. 開啟 [管理電腦憑證應用程式] > [個人] 索引標籤，然後尋找名稱為 `CB_AzureADCertforOfflineSeeding_<ResourceId>` 的憑證。
 2. 選取上面的憑證，以滑鼠右鍵按一下 [ **所有** 工作]，然後以 .Cer 格式 **匯出** ，但不含私密金鑰。
-3. 移至**第 2 點**中所提到的 Azure 離線備份應用程式。 在 [設定] > [金鑰] > [上傳公開金鑰] 中，上傳上述步驟中所匯出的憑證。
+3. 移至 **第 2 點** 中所提到的 Azure 離線備份應用程式。 在 [設定] > [金鑰] > [上傳公開金鑰] 中，上傳上述步驟中所匯出的憑證。
 
    ![上傳公開金鑰](./media/offline-backup-azure-data-box-dpm-mabs/upload-public-keys.png)
 
-4. 在伺服器中，在 [**執行**] 視窗中輸入**regedit**以開啟登錄。
+4. 在伺服器中，在 [**執行**] 視窗中輸入 **regedit** 以開啟登錄。
 5. 移至登錄 *Computer\HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider*。 以滑鼠右鍵按一下 [CloudBackupProvider]，並新增名稱為 `AzureADAppCertThumbprint_<Azure User Id>` 的新字串值。
 
     >[!NOTE]
