@@ -152,6 +152,8 @@
           href: node-updates-kured.md
         - name: 設定 AKS 叢集
           href: cluster-configuration.md
+        - name: 自訂節點設定 (預覽)
+          href: custom-node-configuration.md
         - name: 整合具有 AKS 叢集的 ACR
           href: cluster-container-registry-integration.md
         - name: 建立虛擬節點

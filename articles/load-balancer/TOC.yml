@@ -61,7 +61,7 @@
           href: load-balancer-insights.md
         - name: 標準 Load Balancer計量和診斷
           href: load-balancer-standard-diagnostics.md
-        - name: 適用於基本 Load Balancer 的 Azure 監視器記錄
+        - name: Load Balancer 的 Azure 監視器記錄
           href: load-balancer-monitor-log.md
         - name: 使用 REST 取得 Load Balancer 計量
           href: load-balancer-query-metrics-rest-api.md

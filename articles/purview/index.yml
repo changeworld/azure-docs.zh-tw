@@ -1,0 +1,116 @@
+### YamlMime:Landing
+title: Azure Purview 文件
+summary: 了解如何使用 Azure Purview，以便組織可以尋找、了解及取用資料來源。
+metadata:
+  title: Azure Purview 文件
+  description: 了解如何使用 Azure Purview，讓組織可以在其中尋找、了解及取用資料來源。 教學課程、REST API 參考和其他文件會示範如何規劃和設定資料儲存機制，以便資料取用者探索可用的資料來源，並取得由主題專家所提供的知識。
+  ms.service: purview
+  ms.topic: landing-page
+  author: hrasheed-msft
+  ms.author: hrasheed
+  ms.date: 11/29/2020
+  ms.openlocfilehash: 378a335653acf31275c312bcf4fa53b36bfa614e
+  ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 12/03/2020
+  ms.locfileid: "96549411"
+landingContent:
+- title: 關於 Azure Purview
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure Purview？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 部署最佳做法
+      url: deployment-best-practices.md
+    - text: 資料目錄權限
+      url: catalog-permissions.md
+    - text: 支援的資料來源和檔案類型
+      url: sources-and-scans.md
+- title: 開始使用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 建立 Purview 帳戶 - 入口網站
+      url: create-catalog-portal.md
+    - text: 建立 Purview 帳戶 - PowerShell/CLI
+      url: create-catalog-powershell.md
+  - linkListType: tutorial
+    links:
+    - text: 下載入門套件
+      url: https://download.microsoft.com/download/9/7/9/979db3b1-0916-4997-a7fb-24e3d8f83174/PurviewStarterKitV4.zip
+    - text: 執行入門套件並掃描資料
+      url: tutorial-scan-data.md
+    - text: 瀏覽 Purview 首頁和搜尋
+      url: tutorial-asset-search.md
+    - text: 瀏覽資產和檢視譜系
+      url: tutorial-browse-and-view-lineage.md
+    - text: 探索資源集、資產、結構描述、分類
+      url: tutorial-schemas-and-classifications.md
+    - text: 建立字彙
+      url: tutorial-import-create-glossary-terms.md
+- title: 掃描 Azure 資料來源
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 執行入門套件並掃描資料
+      url: tutorial-scan-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: 掃描 Azure SQL Database
+      url: register-scan-azure-sql-database.md
+    - text: 掃描 Azure Data Lake Storage Gen 2
+      url: register-scan-adls-gen2.md
+    - text: 掃描 Azure Cosmos DB
+      url: register-scan-azure-cosmos-database.md
+    - text: Power BI 租用戶
+      url: register-scan-power-bi-tenant.md
+    - text: 註冊和掃描 Azure Blob 儲存體
+      url: register-scan-azure-blob-storage-source.md
+- title: 掃描非 Azure 資料來源
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 掃描 SQL Server 內部部署
+      url: register-scan-on-premises-sql-server.md
+- title: 了解資料資產
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 檢視資產深入解析
+      url: asset-insights.md
+    - text: 檢視詞彙深入解析
+      url: glossary-insights.md
+    - text: 檢視掃描深入解析
+      url: scan-insights.md
+    - text: 檢視分類深入解析
+      url: classification-insights.md
+- title: 策展資料
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 資源集、資產、結構描述、分類
+      url: tutorial-schemas-and-classifications.md
+    - text: 字彙
+      url: tutorial-import-create-glossary-terms.md
+  - linkListType: how-to-guide
+    links:
+    - text: 建立、編輯和刪除自訂分類與規則
+      url: create-a-custom-classification-and-classification-rule.md
+    - text: 建立、匯入和匯出詞彙
+      url: how-to-create-import-export-glossary.md
+- title: 探索資料
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 瀏覽和譜系
+      url: tutorial-browse-and-view-lineage.md
+  - linkListType: how-to-guide
+    links:
+    - text: 依資產類型瀏覽
+      url: how-to-browse-catalog.md
+    - text: 搜尋資產、字詞、註釋和連絡人
+      url: how-to-search-catalog.md

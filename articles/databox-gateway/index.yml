@@ -1,0 +1,75 @@
+### YamlMime:Landing
+title: Azure 資料箱閘道文件 - 線上傳輸
+summary: 針對雲端封存用途、災害復原或以雲端規模處理資料，使用 Azure 資料箱閘道裝置來透過網路傳輸資料。
+metadata:
+  title: Azure 資料箱閘道文件 - 線上傳輸
+  description: 透過網路將資料高效傳輸至 Azure 的資料箱閘道文件。
+  services: databox
+  ms.service: databox
+  ms.subservice: gateway
+  ms.topic: landing-page
+  ms.collection: collection
+  author: v-dalc
+  ms.author: alkohli
+  ms.date: 10/29/2020
+  ms.openlocfilehash: 811d0555e6fd39f372b4742501a3114bbc9a25b4
+  ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 12/03/2020
+  ms.locfileid: "96579910"
+landingContent:
+- title: 關於資料箱閘道
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是資料箱閘道？
+      url: data-box-gateway-overview.md
+  - linkListType: architecture
+    links:
+    - text: 選擇資料傳輸選項
+      url: /azure/storage/common/storage-choose-data-transfer-solution
+    - text: 使用網路或離線傳輸
+      url: /azure/storage/common/storage-solution-large-dataset-low-network#offline-transfer-or-network-transfer
+  - linkListType: whats-new
+    links:
+    - text: 2007 版本資訊 - 目前
+      url: data-box-gateway-2007-release-notes.md
+- title: 需求和限制
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 規格需求
+      url: data-box-gateway-system-requirements.md
+    - text: 限制
+      url: data-box-gateway-limits.md
+- title: 部署
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 準備部署
+      url: data-box-gateway-deploy-prep.md
+    - text: 在 Hyper-V 中佈建
+      url: data-box-gateway-deploy-provision-hyperv.md
+    - text: 連線、設定、啟用
+      url: data-box-gateway-deploy-connect-setup-activate.md
+    - text: 傳送資料
+      url: data-box-gateway-deploy-add-shares.md
+- title: 管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 管理共用
+      url: data-box-gateway-manage-shares.md
+    - text: 透過 PowerShell 管理
+      url: data-box-gateway-connect-powershell-interface.md
+- title: 疑難排解
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 疑難排解
+      url: data-box-gateway-troubleshoot.md
+    - text: 監視
+      url: data-box-gateway-monitor.md
+    - text: 開啟支援票證
+      url: ../databox-online/azure-stack-edge-contact-microsoft-support.md

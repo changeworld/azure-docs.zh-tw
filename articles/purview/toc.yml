@@ -1,0 +1,153 @@
+items:
+  - name: Azure Purview 文件
+    href: index.yml
+  - name: 概觀
+    items:
+      - name: 什麼是 Azure Purview？
+        href: overview.md
+  - name: 快速入門
+    expanded: true
+    items:
+      - name: 建立 Purview 帳戶 - Azure 入口網站
+        href: create-catalog-portal.md
+      - name: 建立 Purview 帳戶 - Azure PowerShell
+        href: create-catalog-powershell.md
+  - name: 教學課程
+    items:
+      - name: 入門套件
+        items:
+          - name: 掃描資料
+            href: tutorial-scan-data.md
+          - name: 瀏覽首頁和搜尋
+            href: tutorial-asset-search.md
+          - name: 瀏覽資產和檢視譜系
+            href: tutorial-browse-and-view-lineage.md
+          - name: 探索資源集、資產、結構描述、分類
+            href: tutorial-schemas-and-classifications.md
+          - name: 建立字彙
+            href: tutorial-import-create-glossary-terms.md
+      - name: 註冊及掃描內部內部 SQL 伺服器
+        href: register-scan-on-premises-sql-server.md
+  - name: 概念
+    items:
+      - name: 使用 Purview Studio
+        href: use-purview-studio.md
+      - name: 部署最佳做法
+        href: deployment-best-practices.md
+      - name: Azure Purview 限制
+        href: how-to-manage-quotas.md
+      - name: 掃描如何偵測已刪除的資產
+        href: concept-detect-deleted-assets.md
+      - name: 了解資源集
+        href: concept-resource-sets.md
+      - name: 資料譜系
+        href: concept-data-lineage.md
+      - name: 支援的資料來源和檔案類型
+        href: sources-and-scans.md
+      - name: 目錄權限
+        href: catalog-permissions.md
+      - name: 目錄搜尋
+        href: concept-search.md
+      - name: 商務詞彙
+        href: concept-business-glossary.md
+      - name: 資料見解
+        href: concept-insights.md
+      - name: 常見問題集
+        href: frequently-asked-questions.md
+  - name: 操作指南
+    items:
+      - name: 註冊和掃描
+        items:
+          - name: 管理認證
+            href: manage-credentials.md
+            displayName: Create and manage Credentials
+          - name: 建立掃描規則集
+            href: create-a-scan-rule-set.md
+          - name: 管理整合執行階段
+            href: manage-integration-runtimes.md
+          - name: 連線問題疑難排解
+            href: troubleshoot-connections.md
+          - name: 來源
+            items:
+              - name: 管理資料來源
+                href: manage-data-sources.md
+              - name: Purview 連接器概觀
+                href: purview-connector-overview.md
+              - name: Azure Blob 儲存體
+                href: register-scan-azure-blob-storage-source.md
+                displayName: Register and scan azure blob storage
+              - name: Azure Cosmos DB
+                href: register-scan-azure-cosmos-database.md
+                displayName: Register and scan Azure Cosmos DB
+              - name: Azure 資料總管
+                href: register-scan-azure-data-explorer.md
+                displayName: Register and scan Azure Data Explorer Kusto
+              - name: Azure Data Lake Storage Gen 1
+                href: register-scan-adls-gen1.md
+                displayName: Register and scan Azure Data Lake Storage Gen 1 ADLS
+              - name: Azure Data Lake Storage Gen 2
+                href: register-scan-adls-gen2.md
+                displayName: Register and scan Azure Data Lake Storage Gen 2 ADLS
+              - name: Azure SQL Database
+                href: register-scan-azure-sql-database.md
+                displayName: Register and scan Azure SQL DB
+              - name: 具有防火牆的 Azure SQL DB
+                href: scan-sqlresource-firewall.md
+                displayName: Register and scan Azure SQL DB with a firewall
+              - name: Azure SQL Database 受控執行個體
+                href: register-scan-azure-sql-database-managed-instance.md
+                displayName: Register and scan Azure SQL DB Managed Instance
+              - name: Azure Synapse Analytics
+                href: register-scan-azure-synapse-analytics.md
+              - name: Power BI 租用戶 - 入口網站
+                href: register-scan-power-bi-tenant.md
+              - name: Power BI 租用戶 - PowerShell
+                href: powershell-register-scan-power-bi.md
+              - name: 內部部署 SQL 伺服器
+                href: register-scan-on-premises-sql-server.md
+      - name: 商務詞彙
+        items:
+          - name: 建立、匯入和匯出字彙
+            href: how-to-create-import-export-glossary.md
+          - name: 管理字詞範本
+            href: how-to-manage-term-templates.md
+      - name: 分類
+        items:
+          - name: 建立自訂分類和分類規則
+            href: create-a-custom-classification-and-classification-rule.md
+          - name: 套用分類
+            href: apply-classifications.md
+          - name: 自動為內容加上標籤
+            href: create-sensitivity-label.md
+      - name: 搜尋和瀏覽
+        items:
+          - name: 瀏覽資料目錄
+            href: how-to-browse-catalog.md
+          - name: 搜尋資料目錄
+            href: how-to-search-catalog.md
+      - name: 歷程
+        items:
+          - name: 譜系使用者指南
+            href: catalog-lineage-user-guide.md
+          - name: Azure Data Factory 譜系
+            href: how-to-link-azure-data-factory.md
+          - name: Azure Data Share 譜系
+            href: how-to-link-azure-data-share.md
+      - name: 深入解析
+        items:
+          - name: 檢視資產深入解析
+            href: asset-insights.md
+          - name: 檢視詞彙深入解析
+            href: glossary-insights.md
+          - name: 檢視掃描深入解析
+            href: scan-insights.md
+          - name: 檢視分類深入解析
+            href: classification-insights.md
+          - name: 檢視敏感度標籤深入解析
+            href: sensitivity-insights.md
+          - name: 檢視副檔名深入解析
+            href: file-extension-insights.md
+  - name: 參考
+    items:
+      - name: 支援的分類
+        href: supported-classifications.md

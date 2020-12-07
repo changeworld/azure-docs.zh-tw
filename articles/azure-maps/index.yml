@@ -9,12 +9,12 @@ metadata:
   author: anastasia-ms
   ms.author: v-stharr
   ms.date: 1/15/2020
-  ms.openlocfilehash: 0038fff540df95f6c6e24275eb39ef6bc1ecbe75
-  ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+  ms.openlocfilehash: 49de6739fe4d084bc119ffeaa0ffb3e8156f935b
+  ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 11/26/2020
-  ms.locfileid: "96186315"
+  ms.lasthandoff: 12/03/2020
+  ms.locfileid: "96546296"
 landingContent:
 - title: 關於 Azure 地圖服務
   linkLists:
@@ -172,6 +172,16 @@ landingContent:
       url: /rest/api/maps/traffic
     - text: 時區服務
       url: /rest/api/maps/timezone
+- title: 使用提高權限服務進行開發
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 如何擷取和使用提高權限資料
+      url: how-to-request-elevation-data.md
+  - linkListType: reference
+    links:
+    - text: 提高權限服務
+      url: /rest/api/maps/elevation/
 - title: 空間分析
   linkLists:
   - linkListType: concept

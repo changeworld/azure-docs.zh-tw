@@ -1055,6 +1055,8 @@
                   href: virtual-machines/windows/azure-key-vault-integration-configure.md
                 - name: 將儲存體遷移至 UltraSSD
                   href: virtual-machines/windows/storage-migrate-to-ultradisk.md
+                - name: 啟用 SQL 弱點評估
+                  href: virtual-machines/windows/sql-vulnerability-assessment-enable.md
                 - name: 安裝 SQL IaaS Agent 擴充功能
                   displayName: 'resource provider, registration, sql vm rp'
                   items:
@@ -1094,7 +1096,7 @@
                           href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
                         - name: 手動設定
                           items:
-                            - name: 必要條件
+                            - name: Prerequisites
                               href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
                             - name: 教學課程
                               href: virtual-machines/windows/availability-group-manually-configure-tutorial.md

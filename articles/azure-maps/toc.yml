@@ -134,6 +134,8 @@
           href: how-to-request-real-time-data.md
         - name: 要求即時和預測的天氣資料
           href: how-to-request-weather-data.md
+        - name: 要求提高權限資料
+          href: how-to-request-elevation-data.md
     - name: 利用 Web SDK 進行開發
       items:
         - name: 地圖控制項
