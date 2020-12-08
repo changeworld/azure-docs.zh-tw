@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 12/03/2020
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b836c28443790466084b1840edcf08dc09dcf4cc
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 2999fb8b3c3687c68e7eb38a60f128e24028871f
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518272"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779697"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能？
 
@@ -311,7 +311,7 @@ Azure Active Directory 將在2021年3月31日取代下列通訊協定：
 **服務類別：** 存取評論  
 **產品功能：** 身分識別治理
  
-在 Azure AD 存取權審核中，建立評論的系統管理員現在可以將自訂訊息寫入審核者。 審核者會在收到的電子郵件中看到訊息，提示他們完成評論。 若要深入瞭解如何使用這項功能，請參閱 [Advanced Settings](../governance/create-access-review.md#advanced-settings) 區段的步驟6。
+在 Azure AD 存取權審核中，建立評論的系統管理員現在可以將自訂訊息寫入審核者。 審核者會在收到的電子郵件中看到訊息，提示他們完成評論。 若要深入瞭解如何使用這項功能，請參閱 [建立一或多個存取權評論](../governance/create-access-review.md#create-one-or-more-access-reviews) 一節中的步驟14。
 
 ---
 

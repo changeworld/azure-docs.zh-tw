@@ -2,13 +2,13 @@
 title: 依資源類型區分的移動作業支援
 description: 列出可移至新資源群組或訂用帳戶的 Azure 資源類型。
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.openlocfilehash: 5b71c991136533096604c8a35af7989a227b6d2a
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.date: 12/07/2020
+ms.openlocfilehash: 226686e51c8b59b6963609a95a2cb3c2cc03d621
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364224"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780989"
 ---
 # <a name="move-operation-support-for-resources"></a>資源的移動作業支援
 
@@ -1026,7 +1026,7 @@ ms.locfileid: "94364224"
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
 > | hanainstances | 否 | 否 |
-> | sapmonitors | 是 | 是 |
+> | sapmonitors | 否 | 否 |
 
 ## <a name="microsofthardwaresecuritymodules"></a>Microsoft.HardwareSecurityModules
 

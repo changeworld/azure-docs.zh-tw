@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: d33c368c271c4d1809834e2eeac8c4b5c0ba0441
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 16ae2f9e74202aff47e58a22dbe21a28d8280a7e
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011118"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780717"
 ---
 # <a name="azure-blob-storage-monitoring-data-reference"></a>Azure Blob 儲存體監視資料參考
 
@@ -38,7 +38,7 @@ Azure 儲存體會提供下列 Azure 監視器容量計量。
 
 下表顯示 [Blob 儲存體計量](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices)。
 
-| Metric | 描述 |
+| 計量 | 描述 |
 | ------------------- | ----------------- |
 | BlobCapacity | 儲存體帳戶中所使用的 Blob 儲存體總計。 <br/><br/> 單位：位元組 <br/> 彙總類型：Average <br/> 值範例：1024 <br/> 維度：**BlobType** 和 **BlobTier** ([定義](#metrics-dimensions)) |
 | BlobCount    | 儲存體帳戶中所儲存的 Blob 物件數目。 <br/><br/> 單位：Count <br/> 彙總類型：Average <br/> 值範例：1024 <br/> 維度：**BlobType** 和 **BlobTier** ([定義](#metrics-dimensions)) |
@@ -74,7 +74,7 @@ Azure 儲存體支援下列 Azure 監視器計量維度。
 ## <a name="resource-logs-preview"></a>資源記錄 (預覽)
 
 > [!NOTE]
-> Azure 監視器中的 Azure 儲存體記錄處於公開預覽狀態，可在所有公用雲端區域中進行預覽測試。 若要註冊預覽，請參閱[本頁](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)。  此預覽可啟用 Blob (包括 Azure Data Lake Storage Gen2)、檔案、佇列、資料表、一般用途 v1 進階儲存體帳戶及一般用途 v2 儲存體帳戶的記錄。 不支援傳統儲存體帳戶。
+> Azure 監視器中的 Azure 儲存體記錄處於公開預覽狀態，可在所有公用雲端區域中進行預覽測試。 此預覽可啟用 Blob (包括 Azure Data Lake Storage Gen2)、檔案、佇列、資料表、一般用途 v1 進階儲存體帳戶及一般用途 v2 儲存體帳戶的記錄。 不支援傳統儲存體帳戶。
 
 下表列出在 Azure 監視器記錄或 Azure 儲存體中收集時，Azure 儲存體資源記錄的屬性。 屬性會描述作業、服務，以及用來執行作業的授權類型。
 

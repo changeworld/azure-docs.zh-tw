@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 12/07/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 8e9013db93f5cd67448b5af8c415db0862e5d332
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ccc545b15f16879582c671b082cab40f6b11aa08
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842714"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778966"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>使用適用于 Azure 資源的受控識別來授權 blob 和佇列資料的存取
 
@@ -50,6 +50,11 @@ Azure 身分識別用戶端程式庫的優點是，它可讓您使用相同的�
 
 當 Azure AD 安全性主體嘗試存取 blob 或佇列資料時，該安全性主體必須具有該資源的許可權。 無論安全性主體是 Azure 中的受控識別，或是在開發環境中執行程式碼 Azure AD 使用者帳戶，都必須將 Azure 角色指派給安全性主體，以授與 Azure 儲存體中 blob 或佇列資料的存取權。 如需透過 Azure RBAC 指派許可權的相關資訊，請參閱 [使用 Azure Active Directory 來授與 azure blob 和佇列的存取](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights)權的「**指派 azure 角色的存取權**」一節。
 
+> [!NOTE]
+> 當您建立 Azure 儲存體帳戶時，系統不會自動將許可權指派給您透過 Azure AD 存取資料。 您必須明確地將 Azure 儲存體的 Azure 角色指派給自己。 您可以在訂用帳戶、資源群組、儲存體帳戶或容器/佇列層級上指派此角色。
+>
+> 在為自己指派資料存取的角色之前，您將能夠透過 Azure 入口網站存取儲存體帳戶中的資料，因為 Azure 入口網站也可以使用帳戶金鑰來進行資料存取。 如需詳細資訊，請參閱 [選擇如何授權存取 Azure 入口網站中的 blob 資料](../blobs/authorize-data-operations-portal.md)。
+
 ### <a name="authenticate-the-user-in-the-development-environment"></a>在開發環境中驗證使用者
 
 當您的程式碼在開發環境中執行時，可以自動處理驗證，也可能需要瀏覽器登入，視您使用的工具而定。 例如，Microsoft Visual Studio 支援 (SSO) 的單一登入，讓 active Azure AD 使用者帳戶自動用於驗證。 如需 SSO 的詳細資訊，請參閱 [應用程式的單一登入](../../active-directory/manage-apps/what-is-single-sign-on.md)。
@@ -71,7 +76,7 @@ Azure 身分識別用戶端程式庫的優點是，它可讓您使用相同的�
 ```azurecli-interactive
 az ad sp create-for-rbac \
     --name <service-principal> \
-    --role "Storage Blob Data Reader" \
+    --role "Storage Blob Data Contributor" \
     --scopes /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 

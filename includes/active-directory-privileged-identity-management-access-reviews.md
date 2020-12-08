@@ -2,18 +2,18 @@
 title: 包含檔案
 description: 包含檔案
 services: active-directory
-author: rolyon
+author: barclayn
 ms.service: active-directory
 ms.topic: include
-ms.date: 05/26/2020
+ms.date: 12/07/2020
 ms.author: barclayn
 ms.custom: include file
-ms.openlocfilehash: ee02200f1fb32d430a858d218e27534561ebc24a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbcd4b459faa3bf67f591cc7afab0bf0027062e1
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83868078"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96842365"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>建立一或多個存取權檢閱
 
@@ -39,11 +39,11 @@ ms.locfileid: "83868078"
     > - 此處選取的角色包括[永久和符合資格的角色](../articles/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)。
     > - 選取一個以上的角色將會建立多個存取權檢閱。 例如，選取五個角色將會建立五個不同的存取權檢閱。
 
-    如果您要建立 **Azure AD 角色**的存取權檢閱，下圖顯示檢閱成員資格清單的範例。
+    如果您要建立 **Azure AD 角色** 的存取權檢閱，下圖顯示檢閱成員資格清單的範例。
 
     ![檢閱成員資格窗格，其中列出您可選取的 Azure AD 角色](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
 
-    如果您要建立 **Azure 資源角色**的存取權檢閱，下圖顯示檢閱成員資格清單的範例。
+    如果您要建立 **Azure 資源角色** 的存取權檢閱，下圖顯示檢閱成員資格清單的範例。
 
     ![檢閱成員資格窗格，其中列出您可選取的 Azure 資源角色](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
 
@@ -53,6 +53,7 @@ ms.locfileid: "83868078"
 
     - **選取的使用者**- 如果您不知道誰需要存取權，請使用此選項。 使用此選項，您可以指派資源擁有者或群組管理員完成檢閱。
     - **成員 (自我)** - 若要讓使用者檢閱自己的角色指派，請使用此選項。
+    - **(Preview) 管理員** -使用此選項可讓使用者的經理審核其角色指派。 選取 (Preview) Manager 時，您也可以選擇指定回溯審核者。 當使用者未在目錄中指定管理員時，系統會要求回溯審核者審核使用者。
 
 ### <a name="upon-completion-settings"></a>完成時的設定
 
@@ -82,3 +83,6 @@ ms.locfileid: "83868078"
 1. 將 [郵件通知] 設為 [啟用]，會讓 Azure AD 在存取權檢閱開始時傳送電子郵件通知給檢閱者，並在檢閱完成時傳送電子郵件通知給管理員。
 
 1. 將 [提醒] 設為 [啟用]，會讓 Azure AD 對尚未完成其檢閱的檢閱者傳送存取權檢閱正在進行中的提醒。
+1. 傳送給審核者之電子郵件的內容會根據審核詳細資料自動產生，例如審核名稱、資源名稱、到期日等。如果您需要一種方式來傳達額外的資訊，例如其他指示或連絡人資訊，您可以在 **評論者電子郵件的其他內容** 中指定這些詳細資料，該電子郵件會包含在傳送給指派審核者的邀請和提醒電子郵件中。 以下反白顯示的區段是將顯示這項資訊的位置。
+
+    ![傳送給審核者之電子郵件的內容醒目顯示](./media/active-directory-privileged-identity-management-access-reviews/email-info.png)

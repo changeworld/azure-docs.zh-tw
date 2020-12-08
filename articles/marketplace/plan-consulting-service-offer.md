@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: c56d83e551265f3fb4de106cb8fa77efd6dcbabc
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7f56ff94c4dcf276accc56e8d1076266099d635d
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452112"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780700"
 ---
 # <a name="how-to-plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>如何在商業市場中規劃諮詢服務供應專案
 
@@ -27,10 +27,24 @@ ms.locfileid: "96452112"
 
 ## <a name="primary-products-and-online-stores"></a>主要產品和線上商店
 
-每個諮詢服務供應專案都應著重于稱為「 **主要產品**」的 Microsoft 產品。 您在合作夥伴中心中選取的主要產品，會決定您的供應專案是否會發佈至 Microsoft AppSource 或 Azure Marketplace。
+每個諮詢服務都必須專注于下列其中一項 Microsoft 產品，稱為供應專案的 **主要產品** ：
 
-* 如果諮詢服務的主要產品是 Azure，此供應專案將會列在 Azure Marketplace 中。
-* 如果主要產品不是 Azure，此供應專案將會列在 AppSource 中。
+|主要產品                               |                   |
+|-------------------------------|-------------------|
+|Azure                          |Dynamics 365 Project Service Automation |
+|Dynamics 365 Business Central  |Dynamics 365 Sales |
+|Dynamics 365 Commerce          |Dynamics 365 Supply Chain Management |
+|Dynamics 365 Customer Insights |Microsoft 365 |
+|Dynamics 365 Customer Service  |Power Apps |
+|Dynamics 365 Field Service     |Power Automate |
+|Dynamics 365 Finance           |Power BI |
+|Dynamics 365 Marketing         |Power Virtual Agents |
+|    |    |
+
+您在合作夥伴中心中選取的主要產品，會決定您的供應專案是否會發佈至 Microsoft AppSource 或 Azure Marketplace。
+
+* 如果諮詢服務的主要產品是 Azure，此供應專案將會列在 Azure Marketplace 上。
+* 如果主要產品不是 Azure，供應專案將會列在 AppSource 上。
 
 若要深入瞭解 AppSource 與 Azure Marketplace 之間的差異，請參閱 [商用 Marketplace 線上商店](./overview.md#commercial-marketplace-online-stores)。
 
@@ -91,6 +105,7 @@ ms.locfileid: "96452112"
 |在製造中開始使用 Azure IoT |製造 IoT：2 天評量 |
 |Smart Toaster 工作坊 |Smart 烤箱：1周的研討會 |
 |依 Contoso SQL Server 遷移 PoC |SQL 移轉：3 週概念證明 |
+| | |
 
 **搜尋結果摘要**：以200個字元或更少的方式描述您供應專案的目的或目標。 此摘要可用於商業市場清單搜尋結果。 它不應該與標題相同。 請考慮包含您最熱門的 SEO 關鍵字。
 
@@ -105,6 +120,7 @@ ms.locfileid: "96452112"
 |實作 |包含時間超過一天的詳細議程，並描述客戶可預期成為參與成果的工程變更、技術成品或其他成品。 |
 |概念證明 |描述客戶可預期成為參與專案成果的工程變更、技術成品或其他成品。 |
 |工作坊 |根據您的供應專案持續時間，包含詳細的每日、每週或每月的議程。 清楚表達研討會的學習目標或其他交付成果。 |
+| | |
 
 以下是撰寫描述的一些祕訣：
 
@@ -142,6 +158,11 @@ ms.locfileid: "96452112"
 **Marketplace 媒體-螢幕擷取畫面**：新增至少一個和最多五個影像來示範您的供應專案。 所有影像的大小都必須是 1280 x 720 圖元。PNG 格式。
 
 **Marketplace 媒體–** 影片 (選用) ：您最多可以新增四個影片來示範您的供應專案。 影片必須裝載于 YouTube 或 Vimeo 上，並且 (1280 x 720 PNG 檔案) 的縮圖。
+
+## <a name="pricing-and-availability"></a>價格與可用性
+
+您的諮詢服務供應專案可在一或多個國家或地區提供使用。 在合作夥伴中心中，您可以決定每個所選市場的價格。 如需支援的市場與貨幣的完整清單，請參閱 [商用 marketplace 的地理供應和貨幣支援](./marketplace-geo-availability-currencies.md)。
+
 
 ## <a name="next-steps"></a>後續步驟
 

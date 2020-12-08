@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/01/2020
+ms.date: 12/07/2020
 ms.custom: dpalled
-ms.openlocfilehash: 3460cd8a88733ede041f6c0635ba40797675ed03
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0f7ac9844bfe7eac7094d3b7fdf653e07f236599
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025322"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780819"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>在 Azure 時間序列深入解析 Gen2 中加入 long 資料類型的支援
 
@@ -240,6 +240,6 @@ ms.locfileid: "95025322"
 
 如果您是具有大量屬性的暖存放區使用者，且認為這項變更會將您的環境推送至1000暖存放區屬性名稱限制，請透過 Azure 入口網站提交支援票證，並提及此通訊。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 查看 [支援的資料類型](concepts-supported-data-types.md)的完整清單。

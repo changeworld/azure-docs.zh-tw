@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 12/07/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 19262441df87b96bbb43a010ca47861ec2b236d3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 852375cc7948fc7f6bd106380b3194f2dc84b8ca
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488753"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778915"
 ---
 # <a name="use-powershell-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>使用 PowerShell 指派 Azure 角色以存取 blob 和佇列資料
 
@@ -60,6 +60,9 @@ Storage Queue Data Reader                 Allows for read access to Azure Storag
 
 若要將 Azure 角色指派給安全性主體，請使用 [>new-azroleassignment](/powershell/module/az.resources/new-azroleassignment) 命令。 命令的格式會根據指派的範圍而有所不同。 若要執行命令，您必須在對應的範圍中指派「擁有者」或「參與者」角色。 下列範例示範如何將角色指派給不同範圍的使用者，但您可以使用相同的命令將角色指派給任何安全性主體。
 
+> [!NOTE]
+> 當您建立 Azure 儲存體帳戶時，系統不會自動將許可權指派給您透過 Azure AD 存取資料。 您必須明確地將 Azure 儲存體的 Azure 角色指派給自己。 您可以在訂用帳戶、資源群組、儲存體帳戶或容器/佇列層級上指派此角色。
+
 ### <a name="container-scope"></a>容器範圍
 
 若要指派範圍為容器的角色，請指定包含參數容器範圍的字串 `--scope` 。 容器的範圍格式如下：
@@ -68,7 +71,7 @@ Storage Queue Data Reader                 Allows for read access to Azure Storag
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container-name>
 ```
 
-下列範例會將 **儲存體 Blob 資料參與者** 角色指派給使用者，範圍設定為 *範例容器*的容器。 請務必以您自己的值取代括弧中的範例值和預留位置值： 
+下列範例會將 **儲存體 Blob 資料參與者** 角色指派給使用者，範圍設定為 *範例容器* 的容器。 請務必以您自己的值取代括弧中的範例值和預留位置值： 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -84,7 +87,7 @@ New-AzRoleAssignment -SignInName <email> `
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/<queue-name>
 ```
 
-下列範例會將 **儲存體佇列資料參與者** 角色指派給使用者，範圍設定為名為 *範例佇列*的佇列。 請務必以您自己的值取代括弧中的範例值和預留位置值： 
+下列範例會將 **儲存體佇列資料參與者** 角色指派給使用者，範圍設定為名為 *範例佇列* 的佇列。 請務必以您自己的值取代括弧中的範例值和預留位置值： 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 620b696be0b9a06cf0d68145b06e3cacf2bedff2
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: e5bcc6503af5f5f685ee589ed7671b4715834fef
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762545"
+ms.locfileid: "96779357"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>運作方式：Azure AD 自助式密碼重設
 
@@ -89,7 +89,7 @@ Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者�
 >
 > 註冊 SSPR 的這個插斷會中斷使用者的連線（如果已登入）。
 
-## <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>設定要求使用者重新確認其驗證資訊的等候天數
+## <a name="reconfirm-authentication-information"></a>重新確認驗證資訊
 
 為確保驗證方法在需要重設或變更其密碼時正確無誤，您可以要求使用者在一段時間後確認其資訊已註冊的資訊。 只有當您啟用 [ **需要使用者在登入時註冊** ] 選項時，才能使用此選項。
 

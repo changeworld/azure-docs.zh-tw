@@ -9,18 +9,82 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 03825e0f091df01b98355dd6789eb5c9cb2897b0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4998469fa353fef9e8a91d078349150d9f739ac2
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444543"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779408"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning 版本資訊
 
 在本文中，您將瞭解 Azure Machine Learning 版本。  如需完整的 SDK 參考內容，請造訪 Azure Machine Learning 的 [**適用于 Python 的主要 SDK**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 參考頁面。
 
 若要了解已知的 Bug 和因應措施，請參閱[已知問題的清單](resource-known-issues.md)。
+
+## <a name="2020-12-07"></a>2020-12-07
+
+### <a name="azure-machine-learning-sdk-for-python-v1190"></a>Azure Machine Learning SDK for Python v 1.19。0
++ **Bug 修正和改善**
+  + **azureml-automl-core**
+    + 已將測試資料的實驗性支援新增至 AutoMLStep。
+    + 已新增測試集內嵌功能的初始核心執行。
+    + 已將參考移至 sklearn，以直接相依于 joblib。
+    + 引進新的 AutoML 工作類型「映射-實例分割」。
+  + **azureml-automl-runtime**
+    + 已新增測試集內嵌功能的初始核心執行。
+    + 當文字資料行中的所有字串長度剛好為1個字元時，TfIdf 的字組語法 featurizer 將無法運作，因為它的 tokenizer 會忽略少於2個字元的字串。 目前的程式碼變更將允許 AutoML 處理此使用案例。
+    + 引進新的 AutoML 工作類型「映射-實例分割」。
+  + **azureml-contrib-automl-dnn-nlp**
+    + 新 dnn-nlp 封裝的初始 PR
+  + **azureml-contrib-automl-dnn-願景**
+    + 引進新的 AutoML 工作類型「映射-實例分割」。
+  + **azureml-contrib-automl-管線-步驟**
+    + 這個新的封裝負責建立許多模型定型/推斷案例所需的步驟。 -它也會將定型/推斷程式碼移至 azureml. automl 套件，以便任何未來的修正都會透過策劃環境版本自動提供。
+  + **azureml-contrib-dataset**
+    + 引進新的 AutoML 工作類型「映射-實例分割」。
+  + **azureml-core**
+    + 已新增測試集內嵌功能的初始核心執行。
+    + 修正 azureml 核心封裝中檔的 x 警告
+    + SDK 中命令支援功能的 Doc 字串修正
+    + 正在將命令屬性加入至 RunConfiguration。 這項功能可讓使用者透過 AzureML SDK 在計算上執行實際的命令或可執行檔。
+    + 使用者可以在指定該實驗的識別碼時，刪除空的實驗。
+  + **azureml-dataprep**
+    + 已新增使用 Scala 2.12 建立之 Spark 的資料集支援。 這會新增至現有的2.11 支援。
+  + **azureml-mlflow**
+    + AzureML-MLflow 新增遠端腳本的安全防護，以避免提早終止提交的執行。
+  + **azureml-pipeline-core**
+    + 修正針對透過 UI 所建立的管線端點設定預設管線時的錯誤（bug）
+  + **azureml-pipeline-steps**
+    + 已將測試資料的實驗性支援新增至 AutoMLStep。
+  + **azureml-tensorboard**
+    + 修正 azureml 核心封裝中檔的 x 警告
+  + **azureml-train-automl-client**
+    + 已將測試資料的實驗性支援新增至 AutoMLStep。
+    + 已新增測試集內嵌功能的初始核心執行。
+    + 引進新的 AutoML 工作類型「映射-實例分割」。
+  + **azureml-train-automl-runtime**
+    + 已新增測試集內嵌功能的初始核心執行。
+    + 如果使用 validation_size 設定來定型 AutoML 模型，請修正最佳 AutoML 模型的原始說明的計算。
+    + 已將參考移至 sklearn，以直接相依于 joblib。
+  + **azureml-train-core**
+    + HyperDriveRun.get_children_sorted_by_primary_metric ( # A1 現在應更快速完成
+    + 改進 HyperDrive SDK 中的錯誤處理。
+    +  已淘汰所有的估算器類別，以利使用 ScriptRunConfig 來設定實驗執行。 已淘汰的類別包括：
+        + MMLBaseEstimator
+        + 評估工具
+        + PyTorch 
+        + TensorFlow 
+        + Chainer 
+        + SKLearn
+    + 已淘汰使用 Nccl 和 Gloo 做為估算器類別的有效輸入類型，以配合使用 PyTorchConfiguration 與 ScriptRunConfig。
+    + 已淘汰使用 Mpi 作為估算器類別的有效輸入類型，以配合搭配使用 MpiConfiguration 與 ScriptRunConfig。
+    + 正在將命令屬性加入至 runconfiguration。 這項功能可讓使用者透過 AzureML SDK 在計算上執行實際的命令或可執行檔。
+
+    +  已淘汰所有的估算器類別，以利使用 ScriptRunConfig 來設定實驗執行。 已淘汰的類別包括： + MMLBaseEstimator + 估算器 + PyTorch + TensorFlow + Chainer + SKLearn
+    + 已淘汰使用 Nccl 和 Gloo 做為估算器類別的有效輸入類型，以配合使用 PyTorchConfiguration 與 ScriptRunConfig。 
+    + 已淘汰使用 Mpi 作為估算器類別的有效輸入類型，以配合搭配使用 MpiConfiguration 與 ScriptRunConfig。
+
 
 
 ## <a name="2020-11-09"></a>2020-11-09
@@ -47,12 +111,6 @@ ms.locfileid: "96444543"
     + 已調整連結服務 API。 我們不會提供資源識別碼，而是在設定中定義3個不同的參數 sub_id、rg 和名稱。
     + 為了讓客戶能夠自行解決權杖損毀問題，請啟用工作區權杖同步處理成為公用方法。
     + 這種變更可讓您使用空字串做為 script_param 的值
-  + **azureml-pipeline-core**
-    + SDK 以支援 SynapseCompute 類型和 SynapseSparkStep。 客戶可以在 synapse spark 集區上執行實驗和管線執行。
-  + **azureml-pipeline-steps**
-    + SDK 以支援 SynapseCompute 類型和 SynapseSparkStep。 客戶可以在 synapse spark 集區上執行實驗和管線執行。
-  + **azureml-synapse**
-    + 新增 Synapse 魔術和 SparkMonitor，以啟用使用者提交 Syanpse 作業，並查看筆記本中的作業進度。
   + **azureml-train-automl-client**
     +  藉由允許以高斯雜訊填補，來改善短時間序列的處理。
   + **azureml-train-automl-runtime**
@@ -90,7 +148,6 @@ ms.locfileid: "96444543"
     + 修正 VotingRegressor 預測在 refitting 模型之後可能不正確的問題。
   + **azureml-core**
     + 已新增有關 AKS 部署設定和 Azure Kubernetes Service 概念之間關聯性的額外詳細資料。
-    + 客戶可以使用連結的服務 SDK 將 synapse 工作區連結至 AML 工作區。 支援 CRUD。
     + 支援環境用戶端標籤。 使用者可以加上標籤，並依標籤參考環境。
   + **azureml-dataprep**
     + 使用目前不支援的 Spark 搭配 Scala 2.12 時，有更好的錯誤訊息。

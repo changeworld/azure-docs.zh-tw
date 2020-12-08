@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: ad40515475a10f41fd7ab1d8d44f89673877f054
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: df74a15a84ba04addb75b021d3b77b06cfe2ea48
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488309"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96781108"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM 上的 Azure 磁碟加密案例
 
@@ -158,7 +158,7 @@ NVMe 磁片將在下列案例中未初始化：
 
 - 解除配置之後啟動 VM
 - 服務修復
-- 備份
+- Backup
 
 在這些情況下，NVMe 磁片必須在 VM 啟動之後初始化。 若要在 NVMe 磁片上啟用加密，請執行命令，在 NVMe 磁片初始化之後再次啟用 Azure 磁碟加密。
 
@@ -267,6 +267,7 @@ Azure 磁碟加密不適用於下列案例、功能和技術：
 - 將 ADE 套用至 VM 時，會使用 [伺服器端加密搭配客戶管理的金鑰](../disk-encryption.md) 來加密 (SSE + CMK) 的磁片。 將 SSE + CMK 套用至以 ADE 加密的 VM 上的資料磁片也是不支援的案例。
 - 您可以使用客戶管理的金鑰， **將已加密** 的 VM，或使用 ade 加密的 VM 遷移至 [伺服器端加密](../disk-encryption.md)。
 - [沒有本機暫存磁片的 AZURE VM 大小](../azure-vms-no-temp-disk.md);具體而言，是 Dv4、Dsv4、Ev4 和 Esv4。
+- 加密容錯移轉叢集中的 Vm。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,6 +1,6 @@
 ---
 title: 跨租使用者共用資源庫影像
-description: 瞭解如何使用 Linux 範例，透過共用映射資源庫在 Azure 租使用者之間共用 VM 映射。
+description: 瞭解如何使用 Azure CLI，透過共用映射資源庫，跨 Azure 租使用者共用 VM 映射。
 author: axayjo
 ms.service: virtual-machines
 ms.subservice: imaging
@@ -10,14 +10,14 @@ ms.date: 05/04/2019
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a5e71f09179d414be84896a49a66480f19a0665d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f0192a6eb60c72c9f7ac605db492f4e5f97b76ed
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843582"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779255"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants---linux-examples"></a>跨 Azure 租使用者共用資源庫 VM 映射-Linux 範例
+# <a name="share-gallery-vm-images-across-azure-tenants-using-the-azure-cli"></a>使用 Azure CLI 在 Azure 租使用者之間共用資源庫 VM 映射
 
 共用映射庫可讓您使用 Azure RBAC 共用映射。 您可以使用 Azure RBAC 來共用您租使用者中的影像，甚至是租使用者以外的個人。 如需這個簡單共用選項的詳細資訊，請參閱 [共用資源庫](./shared-images-portal.md#share-the-gallery)。
 

@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: dccb734ef4eaa9f22b70488918f14ad94f723453
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: abd30c22aa2b4df20cdb795013768cd175cfef4c
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437128"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780734"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>從 IoT Edge 的部署取出記錄
 
@@ -33,7 +33,7 @@ ms.locfileid: "96437128"
 <{Log Level}> {Timestamp} {Message Text}
 ```
 
-`{Log Level}` 應遵循 [Syslog 嚴重性層級格式](https://wikipedia.org/wiki/Syslog#Severity_level) ，且 `{Timestamp}` 應格式化為 `yyyy-mm-dd hh:mm:ss.fff zzz` 。
+`{Log Level}` 應遵循 [Syslog 嚴重性層級格式](https://wikipedia.org/wiki/Syslog#Severity_level) ，且 `{Timestamp}` 應格式化為 `yyyy-MM-dd hh:mm:ss.fff zzz` 。
 
 [IoT Edge 中的記錄器類別](https://github.com/Azure/iotedge/blob/master/edge-util/src/Microsoft.Azure.Devices.Edge.Util/Logger.cs)可作為標準的實作為。
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/07/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23266043d5efd65a4e6e79dd515a54a2c321b077
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6491de18e65c5071ac0972e7ff49d1253cbd402
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87798829"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779531"
 ---
 # <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 存取權評論中完成群組和應用程式的存取權審核
 
@@ -29,7 +29,7 @@ ms.locfileid: "87798829"
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - Azure AD Premium P2
 - 全域管理員、使用者系統管理員、安全性系統管理員或安全性讀取者
@@ -46,11 +46,19 @@ ms.locfileid: "87798829"
 
 1. 在清單中，按一下存取權審核。
 
-    若要查看一系列的存取權評論，請流覽至存取權評論，您將會在已排程的評論中找到即將發生的專案。
+    若要查看未來的存取權審核實例，請流覽至存取權審核，然後選取 [排定的評論]。
 
     在 [ **總覽** ] 頁面上，您可以看到進度。 在完成檢閱之前，不會變更目錄中的任何存取權限。
 
     ![存取評論進度](./media/complete-access-review/overview-progress.png)
+    
+    如果您正在查看可在 Microsoft 365 群組間審核來賓存取的存取權審核 (預覽) ，則總覽分頁會列出評論中的每個群組。  
+
+   ![查看跨 Microsoft 365 群組的來賓存取權](./media/complete-access-review/review-guest-access-across-365-groups.png)
+
+    按一下群組以查看該群組的評論進度。
+
+   ![詳細審視跨 Microsoft 365 群組的來賓存取](./media/complete-access-review/progress-group-review.png)
 
 1. 如果您想要在到達排程結束日期之前停止存取權審核，請按一下 [ **停止** ] 按鈕。
 
@@ -60,21 +68,21 @@ ms.locfileid: "87798829"
 
 ## <a name="apply-the-changes"></a>套用變更
 
-如果已啟用 [ **自動將結果套用至資源** ]，並根據您在 **完成設定**時所做的選擇，自動套用將會在審核的結束日期之後或您手動停止審核之後執行。
+如果已啟用 [ **自動將結果套用至資源** ]，並根據您在 **完成設定** 時所做的選擇，自動套用將會在審核的結束日期之後或您手動停止審核之後執行。
 
 如果審核未啟用 [ **自動將結果套用至資源** ]， **請按一下 [** 套用] 以手動套用變更。 如果審核中的使用者存取遭到 **拒絕，當您按一下 [** 套用] 時，Azure AD 會移除其成員資格或應用程式指派。
 
 ![套用存取權檢查變更](./media/complete-access-review/apply-changes.png)
 
-審核的狀態將會從 [已完成]**變更為 [** **已完成**]，例如 [套用] 和 [最後] 以套用狀態**結果**。 您應該會看到遭到拒絕的使用者 (若有的話)，在幾分鐘內從群組成員資格或應用程式指派中移除。
+審核的狀態將會從 [已完成]**變更為 [** **已完成**]，例如 [套用] 和 [最後] 以套用狀態 **結果**。 您應該會看到遭到拒絕的使用者 (若有的話)，在幾分鐘內從群組成員資格或應用程式指派中移除。
 
-已設定的自動套用檢閱，或選取 [套用]**** 並不會影響源自內部部署目錄中的群組，或動態群組。 如果您想要變更源自於內部部署的群組，請下載結果，並將那些變更套用至該目錄中的群組圖像。
+已設定的自動套用檢閱，或選取 [套用] 並不會影響源自內部部署目錄中的群組，或動態群組。 如果您想要變更源自於內部部署的群組，請下載結果，並將那些變更套用至該目錄中的群組圖像。
 
 ## <a name="retrieve-the-results"></a>擷取結果
 
 若要查看單次存取檢查的結果，請按一下 [ **結果** ] 頁面。 若要只查看使用者的存取權，請在 [搜尋] 方塊中，輸入已審核其存取權之使用者的顯示名稱或使用者主體名稱。
 
-![取得存取權檢查的結果](./media/complete-access-review/retrieve-results.png)
+![取得存取權檢查的結果](./media/complete-access-review/retrieve-results.png) 
 
 若要查看重複使用中存取審核的進度，請按一下 [ **結果** ] 頁面。
 

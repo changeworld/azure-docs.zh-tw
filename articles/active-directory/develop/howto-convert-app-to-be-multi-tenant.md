@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: ryanwi
 ms.reviewer: marsma, jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 0c5b06fd14f526ca90b1b922be281af55ba00116
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 22d6cacc36363b17f9bc32d354982eb71974b31d
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995211"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779748"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>操作說明：讓任何 Azure Active Directory (AD) 使用者以多租用戶應用程式的模式登入
 
@@ -116,6 +116,8 @@ https://sts.windows.net/{tenantid}/
 * 僅限應用程式的權限會直接授與應用程式的識別身分。 例如，您可以將僅限應用程式的權限授與應用程式來讀取租用戶中的使用者清單，而且不論是誰登入此應用程式。
 
 有些權限可以由一般使用者同意，有些則需要租用戶系統管理員的同意。
+
+若要深入瞭解使用者和系統管理員的同意，請參閱 [設定管理員同意工作流程](../manage-apps/configure-admin-consent-workflow.md)。
 
 ### <a name="admin-consent"></a>系統管理員同意
 

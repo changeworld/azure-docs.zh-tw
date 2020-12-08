@@ -8,12 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/19/2020
-ms.openlocfilehash: 043020abd44bc1f8e671cf386149d6a818136de9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6ee72a25fc8435159ae75ac3296742eda58617b6
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014358"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779935"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>建立私人端點，以 Azure 認知搜尋的安全連線
 
@@ -22,7 +22,7 @@ ms.locfileid: "96014358"
 私人端點是由 [Azure Private Link](../private-link/private-link-overview.md)以個別服務的形式提供。 如需成本的詳細資訊，請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/private-link/)。
 
 > [!Important]
-> 您可以使用 Azure 入口網站或 [管理 REST API 2020-03-13 版](/rest/api/searchmanagement/)來設定 Azure 認知搜尋的私人端點支援。 當服務端點為私用時，會停用某些入口網站功能。 您將能夠查看和管理服務等級資訊，但基於安全性考慮，會限制入口網站存取索引資料和服務中的各種元件，例如索引、索引子和技能集定義。
+> 您可以使用 Azure 入口網站或 [管理 REST API 2020-03-13 版](/rest/api/searchmanagement/)來設定 Azure 認知搜尋的私人端點支援。 當服務端點為私用時，會停用某些入口網站功能。 您將能夠查看和管理服務等級資訊，但基於安全性考慮，會限制入口網站存取索引資料和服務中的各種元件，例如索引、索引子和技能集定義。 作為入口網站的替代方案，您可以使用 [VS Code 擴充](https://aka.ms/vscode-search) 功能來與服務中的各種元件互動。
 
 ## <a name="why-use-a-private-endpoint-for-secure-access"></a>為何要使用私人端點進行安全存取？
 

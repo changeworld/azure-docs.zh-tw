@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 3f4791c5cbcf731e118bac4bf692adcad7e9ff44
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d0fad3a257b6d1b3723cdf337179573b4667b054
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483584"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780105"
 ---
 # <a name="using-snat-for-outbound-connections"></a>使用 SNAT 進行輸出連線
 
-Azure 公用負載平衡器的前端 Ip 可用來為後端實例提供網際網路的輸出連線能力。此設定會使用 **來源網路位址轉譯 (SNAT)**。 SNAT 會將後端的 IP 位址重寫為負載平衡器的公用 IP 位址。 
+Azure 公用負載平衡器的前端 Ip 可用來為後端實例提供網際網路的輸出連線能力。 此設定會使用 **來源網路位址轉譯 (SNAT)**。 SNAT 會將後端的 IP 位址重寫為負載平衡器的公用 IP 位址。 
 
 SNAT 可 **偽裝** 出後端實例的 IP。 這種偽裝會防止外部來源擁有後端實例的直接位址。 在後端實例之間共用 IP 位址可降低靜態公用 Ip 的成本，並支援像是簡化 IP 允許清單以及來自已知公用 Ip 的流量等案例。 
 

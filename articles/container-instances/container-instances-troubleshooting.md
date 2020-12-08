@@ -4,12 +4,12 @@ description: 瞭解如何針對您部署、執行或管理 Azure 容器實例時
 ms.topic: article
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ac75fff3b088a7d595de2b27c92126ce592aff47
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: d8e7fb85e369f5f278436370944eafeb1fb6a50e
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746908"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779510"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>在 Azure 容器執行個體中針對常見問題進行疑難排解
 
@@ -99,7 +99,7 @@ Azure 中有各種不同的地區資源負載，因此您在嘗試部署容器�
 ## <a name="issues-during-container-group-runtime"></a>容器群組執行時間期間的問題
 ### <a name="container-continually-exits-and-restarts-no-long-running-process"></a>容器不斷結束又重新啟動 (沒有長時間執行的程序)
 
-容器群組的  ，因此容器群組中的群組在執行完成後一律會重新啟動。 如果您要執行以工作為基礎的容器，則可能需要將此設定變更為 [OnFailure]  或 [永不]  。 如果指定 **OnFailure** 後仍持續重新啟動，可能是容器中執行的應用程式或指令碼的問題。
+容器群組的[重新啟動原則](container-instances-restart-policy.md)預設為 [一律]，因此容器群組中的群組在執行完成後一律會重新啟動。 如果您要執行以工作為基礎的容器，則可能需要將此設定變更為 [OnFailure] 或 [永不]。 如果指定 **OnFailure** 後仍持續重新啟動，可能是容器中執行的應用程式或指令碼的問題。
 
 如果執行的容器群組不含長時間執行的程序，您可能會看到 Ubuntu 或 Alpine 之類的映像重複地結束並重新啟動。 透過 [EXEC](container-instances-exec.md) 連線是不可行的，因為容器沒有任何程序可維持其存留狀態。 若要解決此問題，請在容器群組部署中包含如下所示的啟動命令，讓容器保持執行狀態。
 
@@ -187,7 +187,7 @@ mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 month
 
 #### <a name="cached-images"></a>快取的影像
 
-Azure 容器實例會使用快取機制，以協助加速建立于通用 [Windows 基礎映射](container-instances-faq.md#what-windows-base-os-images-are-supported)（包括、和）之映射的容器啟動時間 `nanoserver:1809` `servercore:ltsc2019` `servercore:1809` 。 常用的 Linux 映射（例如 `ubuntu:1604` 和） `alpine:3.6` 也會快取。 如需快取映射和標記的最新清單，請使用列出快取 [影像][list-cached-images] API。
+Azure 容器實例會使用快取機制，以協助加速建立于通用 [Windows 基礎映射](container-instances-faq.md#what-windows-base-os-images-are-supported)（包括、和）之映射的容器啟動時間 `nanoserver:1809` `servercore:ltsc2019` `servercore:1809` 。 常用的 Linux 映射（例如 `ubuntu:1604` 和） `alpine:3.6` 也會快取。 針對 Windows 和 Linux 映射，請避免使用 `latest` 標記。 請參閱 Container Registry 的 [映射標記最佳做法](../container-registry/container-registry-image-tag-version.md) ，以取得指導方針。 如需快取映射和標記的最新清單，請使用列出快取 [影像][list-cached-images] API。
 
 > [!NOTE]
 > 在 Azure 容器執行個體中使用以 Windows Server 2019 為基礎的映像是預覽功能。

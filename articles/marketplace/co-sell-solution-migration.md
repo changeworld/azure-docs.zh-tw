@@ -4,15 +4,15 @@ description: 瞭解如何將共同銷售解決方案從 OCP 操作人員遷移�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: keferna
-ms.author: keferna
-ms.date: 12/04/2020
-ms.openlocfilehash: 6af7095dbb57c5ceb17989b2d6106a42e1d23fb9
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+author: vamahtan
+ms.author: vamahtan
+ms.date: 12/07/2020
+ms.openlocfilehash: 6ad58283ad9078088f241a67426657eb7a538e10
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/07/2020
-ms.locfileid: "96771983"
+ms.locfileid: "96781125"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>將協力公司的共同銷售解決方案遷移至商業市場
 
@@ -79,7 +79,8 @@ Microsoft 正在移動發佈體驗。 [商業 marketplace](overview.md)藉由在
 1. 識別現有的供應專案。
     1. 選取 **[我想要將此解決方案與商業 marketplace 中的類似供應專案合併**] (查看 [上述](#beginmigration)) **所需的動作** 映射。
     1. [ **動作 1** ] 索引標籤會顯示您的 OCP 可與您的 OCP 可建立關聯的即時商業 marketplace 供應專案。 從清單中選取 live 供應專案（如果有的話）。 如果沒有可供選擇的供應專案清單，請從 Microsoft AppSource 或 Azure Marketplace 輸入客戶導向的位址 (URL) 。
-        [![合併處理的 [動作 1] 索引標籤。](media/co-sell-migrate/action-1-merge.png)](media/co-sell-migrate/action-1-merge.png#lightbox)    1. 選取 [繼續]。
+        [![合併處理的 [動作 1] 索引標籤。](media/co-sell-migrate/action-1-merge.png)](media/co-sell-migrate/action-1-merge.png#lightbox)
+    1. 選取 [繼續]。
 1. 要求合併。
     1. [ **動作 2** ] 索引標籤會顯示要求與您所識別的 OCP 的進行合併的解決方案合併的指示。 若要要求合併，請選取 [ **儲存] & 連絡人支援**，這會在瀏覽器中開啟合作夥伴支援頁面。
     1. 選取 [**提供問題詳細資料**]，然後輸入下列內容： [ ![ 合併處理的 [動作 2]](media/co-sell-migrate/action-2-merge.png)](media/co-sell-migrate/action-2-merge.png#lightbox)索引標籤。
@@ -93,7 +94,7 @@ Microsoft 正在移動發佈體驗。 [商業 marketplace](overview.md)藉由在
 1. 選取 **[我想要將此解決方案從 OCP 轉移到商用 marketplace** ] (查看 [上述](#beginmigration)的 **必要** 影像) ，然後 **繼續** 進行。
 1. 在 [ **動作 1** ] 索引標籤上，選取 [供應專案類型](publisher-guide-by-offer-type.md)，然後 **繼續**。
 
-    [![遷移進程的 [動作 1] 索引標籤。](media/co-sell-migrate/action-1-migrate.png)](media/co-sell-migrate/action-1-migrate.png#lightbox)    1. 選取 [繼續]。
+    [![遷移進程的 [動作 1] 索引標籤。](media/co-sell-migrate/action-1-migrate.png)](media/co-sell-migrate/action-1-migrate.png#lightbox)
 
 1. 在 [ **動作 2** ] 索引標籤上，從提供的清單中選取 [ [發行者設定檔](partner-center-portal/create-account.md) ]。 如果您沒有發行者帳戶，請在 [合作夥伴中心](https://partner.microsoft.com/solutions/migration)建立一個帳戶，在這裡選取它。
 

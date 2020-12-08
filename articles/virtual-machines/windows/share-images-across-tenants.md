@@ -1,22 +1,22 @@
 ---
 title: 在 Azure 中跨租使用者共用資源庫映射
-description: 瞭解如何使用 Windows 範例，透過共用映射資源庫，跨 Azure 租使用者共用 VM 映射。
+description: 瞭解如何使用共用映射資源庫和 PowerShell 在 Azure 租使用者之間共用 VM 映射。
 author: axayjo
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/15/2019
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 89987ccc975f5d473a493c48be61094de1177c1b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 84998182081c6a681668fbd9bc05446357beb959
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832410"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96781040"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>跨 Azure 租使用者共用資源庫 VM 映射
+# <a name="share-gallery-vm-images-across-azure-tenants-using-powershell"></a>使用 PowerShell 在 Azure 租使用者之間共用資源庫 VM 映射
 
 共用映射庫可讓您使用 Azure RBAC 共用映射。 您可以使用 Azure RBAC 來共用您租使用者中的影像，甚至是租使用者以外的個人。 如需這個簡單共用選項的詳細資訊，請參閱 [共用資源庫](./shared-images-portal.md#share-the-gallery)。
 

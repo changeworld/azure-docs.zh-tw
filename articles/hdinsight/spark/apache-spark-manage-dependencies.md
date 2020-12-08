@@ -8,27 +8,27 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: dafb4485ae9b10d89fa36bd790dcf3a799054de3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2cd50b1b35b87b1a11301ddc36ac355bef20dc4
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90064112"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780610"
 ---
 # <a name="manage-spark-application-dependencies"></a>管理 Spark 應用程式相依性
 
 在本文中，您將瞭解如何管理在 HDInsight 上執行的 Spark 應用程式的相依性。 我們在 Spark 應用程式和叢集範圍涵蓋了 Scala 和 PySpark。
 
 根據您的使用者案例，使用快速連結跳至區段：
-* [使用 Jupyter 筆記本設定 Spark 作業 jar 相依性](#use-jupyter-notebook)
+* [使用 Jupyter Notebook 設定 Spark 作業 jar 相依性](#use-jupyter-notebook)
 * [使用 Use Azure Toolkit for IntelliJ 設定 Spark 作業 jar 相依性](#use-azure-toolkit-for-intellij)
 * [設定 Spark 叢集的 jar 相依性](#jar-libs-for-cluster)
 * [安全地管理 Jar 相依性](#safely-manage-jar-dependencies)
-* [使用 Jupyter 筆記本設定 Spark 作業 Python 套件](#use-jupyter-notebook-1)
+* [使用 Jupyter Notebook 設定 Spark 作業 Python 套件](#use-jupyter-notebook-1)
 * [安全地管理適用于 Spark 叢集的 Python 套件](#python-packages-for-cluster)
 
 ## <a name="jar-libs-for-one-spark-job"></a>一個 Spark 作業的 Jar 程式庫
-### <a name="use-jupyter-notebook"></a>使用 Jupyter 筆記本
+### <a name="use-jupyter-notebook"></a>使用 Jupyter Notebook
 當 Spark 會話以 Scala 的 Spark 核心開始 Jupyter Notebook 時，您可以從下列設定套件：
 
 * [Spark 套件](https://spark-packages.org/)上的[Maven 存放庫](https://search.maven.org/)或由社區貢獻的套件。
@@ -42,7 +42,7 @@ ms.locfileid: "90064112"
 
 **Maven 存放庫或 Spark 套件中套件的範例**
 
-從 Maven 存放庫尋找封裝之後，請收集 **GroupId**、 **ArtifactId**和 **Version**的值。 串連三個值，其中以冒號分隔 (**:**)。
+從 Maven 存放庫尋找封裝之後，請收集 **GroupId**、 **ArtifactId** 和 **Version** 的值。 串連三個值，其中以冒號分隔 (**:**)。
 
    ![串連封裝架構](./media/apache-spark-manage-dependencies/spark-package-schema.png "串連封裝架構")
 
@@ -102,8 +102,8 @@ import com.microsoft.azure.cosmosdb.spark._
 HDInsight 叢集有內建的 jar 相依性，而這些 jar 版本的更新會在一段時間內進行。 若要避免內建 jar 和您所提供的 jar 之間發生版本衝突，請考慮 [將應用程式](./safely-manage-jar-dependency.md)相依性加上陰影。
 
 ## <a name="python-packages-for-one-spark-job"></a>適用于一個 Spark 作業的 Python 套件
-### <a name="use-jupyter-notebook"></a>使用 Jupyter 筆記本
-HDInsight Jupyter 筆記本 PySpark 核心不支援直接從 PyPi 或 Anaconda 套件存放庫安裝 Python 套件。 如果您有 `.zip` 、 `.egg` 或相依性 `.py` ，而且想要針對一個 Spark 會話參考這些相依性，請遵循下列步驟：
+### <a name="use-jupyter-notebook"></a>使用 Jupyter Notebook
+HDInsight Jupyter Notebook PySpark 核心不支援直接從 PyPi 或 Anaconda 套件存放庫安裝 Python 套件。 如果您有 `.zip` 、 `.egg` 或相依性 `.py` ，而且想要針對一個 Spark 會話參考這些相依性，請遵循下列步驟：
 
 1. 執行下列範例腳本動作，以將主要儲存體的檔案或檔案複製 `.zip` `.egg` 到叢集 `.py` `wasb://mycontainer@mystorageaccount.blob.core.windows.net/libs/*` 本機檔案系統 `/usr/libs/pylibs` 。 需要執行此步驟，因為 linux 會使用 `:` 來分隔搜尋路徑清單，但 HDInsight 僅支援像這樣的配置儲存體路徑 `wasb://` 。 當您使用時，遠端存放裝置路徑將無法正常運作 `sys.path.insert` 。
 
