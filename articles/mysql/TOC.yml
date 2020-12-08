@@ -453,6 +453,8 @@
               href: flexible-server/connect-python.md
     - name: 教學課程
       items:
+        - name: Azure Kubernetes 上的 WordPress
+          href: flexible-server/tutorial-deploy-wordpress-on-aks.md
         - name: 建置具有資料庫的 PHP (Laravel) 應用程式
           href: flexible-server/tutorial-php-database-app.md
         - name: 與私人 Web 應用程式連線

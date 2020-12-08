@@ -274,6 +274,8 @@
                   href: log-query/resource-expression.md
                 - name: 統一應用程式資料資源
                   href: log-query/unify-app-resource-data.md
+                - name: Azure 監視器與 Azure 資料總管之間的跨服務查詢概觀
+                  href: platform/azure-data-explorer-monitor-cross-service-query.md
                 - name: 從 Azure 監視器查詢 Azure 資料總管
                   href: platform/azure-monitor-data-explorer-proxy.md
         - name: 資料匯出

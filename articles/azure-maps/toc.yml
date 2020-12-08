@@ -79,7 +79,7 @@
           href: routing-coverage.md
         - name: 行動涵蓋範圍
           href: mobility-coverage.md
-        - name: 天氣涵蓋範圍
+        - name: 氣象涵蓋範圍
           href: weather-coverage.md
     - name: 當地語系化支援
       href: supported-languages.md
@@ -87,10 +87,12 @@
       href: supported-map-styles.md
     - name: 縮放層級和圖格格線
       href: zoom-levels-and-tile-grid.md
-    - name: 行動服務資料結構
+    - name: 行動服務
       href: mobility-service-data-structure.md
-    - name: 天氣服務概念
+    - name: 氣象服務概念
       href: weather-services-concepts.md
+    - name: 氣象服務常見問題集
+      href: weather-services-faq.md
 - name: 操作指南
   items:
     - name: 管理地圖服務帳戶
@@ -304,7 +306,7 @@
           href: /rest/api/maps/timezone
         - name: 交通服務
           href: /rest/api/maps/traffic
-        - name: 天氣服務
+        - name: 氣象服務
           href: /rest/api/maps/weather
         - name: 地圖建立者服務
           items:

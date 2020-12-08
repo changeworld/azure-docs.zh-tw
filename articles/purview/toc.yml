@@ -28,6 +28,8 @@ items:
             href: tutorial-import-create-glossary-terms.md
       - name: 註冊及掃描內部內部 SQL 伺服器
         href: register-scan-on-premises-sql-server.md
+      - name: 呼叫 REST API 以取得目錄
+        href: tutorial-using-rest-apis.md
   - name: 概念
     items:
       - name: 使用 Purview Studio
@@ -133,6 +135,10 @@ items:
             href: how-to-link-azure-data-factory.md
           - name: Azure Data Share 譜系
             href: how-to-link-azure-data-share.md
+      - name: 監視
+        items:
+          - name: 使用 Azure 監視器進行監視
+            href: how-to-monitor-with-azure-monitor.md
       - name: 深入解析
         items:
           - name: 檢視資產深入解析

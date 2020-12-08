@@ -8,11 +8,9 @@
   expanded: true
   items:
     - name: 建立和管理 VPN 閘道
-      items:
-        - name: Azure 入口網站
-          href: tutorial-create-gateway-portal.md
-        - name: Azure PowerShell
-          href: vpn-gateway-tutorial-create-gateway-powershell.md
+      href: tutorial-create-gateway-portal.md
+    - name: 設定站對站連線
+      href: tutorial-site-to-site-portal.md
 - name: 範例
   items:
     - name: Azure PowerShell
@@ -88,7 +86,7 @@
         - name: 設定 S2S 連線
           items:
             - name: Azure 入口網站
-              href: vpn-gateway-howto-site-to-site-resource-manager-portal.md
+              href: tutorial-site-to-site-portal.md
             - name: Azure PowerShell
               href: vpn-gateway-create-site-to-site-rm-powershell.md
             - name: Azure CLI

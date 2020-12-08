@@ -111,6 +111,8 @@
               href: data-lake-analytics-data-lake-tools-for-vscode.md
             - name: 自訂程式碼
               href: data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md
+            - name: 存取資源
+              href: data-lake-analytics-data-lake-tools-for-vscode-access-resource.md
             - name: 本機執行和偵錯
               href: data-lake-tools-for-vscode-local-run-and-debug.md
         - name: 可程式性指南

@@ -66,6 +66,8 @@
           href: sap-hana-backup-support-matrix.md
         - name: Azure 檔案共用備份支援矩陣
           href: azure-file-share-support-matrix.md
+        - name: Active Directory 網域控制站
+          href: active-directory-backup-restore.md
         - name: Azure 原則支援的 VM SKU
           href: backup-azure-policy-supported-skus.md
     - name: 常見問題集 (FAQ)
