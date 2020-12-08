@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2020
+ms.date: 12/07/2020
 ms.author: memildin
-ms.openlocfilehash: 0dbd208cea64a3b2dc22f7603f654127e5b46294
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d8b690201ea4349f9577377ff24c91bd75ecd58b
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511758"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751864"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -37,6 +37,7 @@ ms.locfileid: "96511758"
 
 - [適用於機器上的 SQL 伺服器的 Azure Defender 已正式發行](#azure-defender-for-sql-servers-on-machines-is-generally-available)
 - [Azure Synapse Analytics 專用 SQL 集區的「適用於 SQL 的 Azure Defender」支援已正式發行](#azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available)
+- [兩個新的 Azure Defender 方案：適用於 DNS 的 Azure Defender 和適用於 Resource Manager 的 Azure Defender (預覽)](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>適用於機器上的 SQL 伺服器的 Azure Defender 已正式發行
 
@@ -68,6 +69,24 @@ Azure Synapse Analytics (先前為 SQL DW) 是一項結合企業資料倉儲和�
 適用於 SQL 的 Azure Defender 對 Azure Synapse Analytics SQL 集區的支援會自動新增至 Azure 資訊安全中心的 Azure SQL 資料庫組合。 您可以在 Azure 入口網站的 Synapse 工作區頁面中找到新的 [適用於 SQL 的 Azure Defender] 索引標籤。
 
 深入了解[適用於 SQL 的 Azure Defender](defender-for-sql-introduction.md)。
+
+
+### <a name="two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview"></a>兩個新的 Azure Defender 方案：適用於 DNS 的 Azure Defender 和適用於 Resource Manager 的 Azure Defender (預覽)
+
+我們為 Azure 環境新增了兩個新的雲端原生廣度威脅防護功能。
+
+這些新的防護功能可大幅提升抵禦威脅執行者攻擊的復原能力，並顯著增加了 Azure Defender 保護的 Azure 資源數目。
+
+- **適用於 Resource Manager 的 Azure Defender** - 會自動監視組織中執行的所有資源管理作業。 如需詳細資訊，請參閱：
+    - [適用於 Resource Manager 的 Azure Defender 簡介](defender-for-resource-manager-introduction.md)
+    - [回應適用於 Resource Manager 的 Azure Defender 警示](defender-for-resource-manager-usage.md)
+    - [適用於 Resource Manager 的 Azure Defender 所提供的警示清單](alerts-reference.md#alerts-resourcemanager)
+
+- **適用於 DNS 的 Azure Defender** - 持續監視來自 Azure 資源的所有 DNS 查詢。 如需詳細資訊，請參閱：
+    - [適用於 DNS 的 Azure Defender 簡介](defender-for-dns-introduction.md)
+    - [回應適用於 DNS 的 Azure Defender 警示](defender-for-dns-usage.md)
+    - [適用於 DNS 的 Azure Defender 所提供的警示清單](alerts-reference.md#alerts-dns)
+
 
 ## <a name="november-2020"></a>2020 年 11 月
 
@@ -124,7 +143,7 @@ NIST SP 800-171 R2 標準版現已提供內建方案，可與 Azure 資訊安全
 
 您現在可以根據準則範圍來篩選安全性建議清單。 在下列範例中，已篩選建議清單以顯示下列建議：
 
-- **正式推出** (亦即不預覽)
+- **正式推出** (亦即非預覽)
 - 用於 **儲存體帳戶**
 - 支援 **快速修正** 補救
 
@@ -226,7 +245,7 @@ NIST SP 800-171 R2 標準版現已提供內建方案，可與 Azure 資訊安全
 
 **Kubernetes Service 上應定義授權 IP 範圍** 建議現在具有快速修正選項。
 
-如需此建議及所有其他資訊安全中心建議的詳細資料，請參閱[安全性建議 - 參考指南](recommendations-reference.md)。
+如需此建議及所有其他資訊安全中心建議的詳細資訊，請參閱[安全性建議 - 參考指南](recommendations-reference.md)。
 
 :::image type="content" source="./media/release-notes/authorized-ip-ranges-recommendation.png" alt-text="具有快速修正選項的「Kubernetes Service 上應定義授權 IP 範圍」建議":::
 

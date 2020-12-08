@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 90e3464ac9ddf1e839c3a731f79ac2c0771c37ea
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: a6aa4ad009d037e6ea0d1ade3cc9735351bd634a
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532687"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558856"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>教學課程：設定 8x8 來自動佈建使用者
 
-本教學課程說明您需要在 8x8 Configuration Manager 與 Azure Active Directory (Azure AD) 中執行的步驟，以設定自動使用者佈建。 設定後，Azure AD 就會使用 Azure AD 佈建服務，自動對 [8x8](https://www.8x8.com) 佈建及取消佈建使用者和群組。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。 
+此教學課程說明您在 8x8 管理主控台與 Azure Active Directory (Azure AD) 中設定自動使用者佈建所需的步驟。 設定後，Azure AD 就會使用 Azure AD 佈建服務，自動對 [8x8](https://www.8x8.com) 佈建及取消佈建使用者和群組。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。 
 
 ## <a name="capabilities-supported"></a>支援的功能
 > [!div class="checklist"]
@@ -36,7 +36,7 @@ ms.locfileid: "96532687"
 * [Azure AD 租用戶](../develop/quickstart-create-new-tenant.md) 
 * Azure AD 中具有設定佈建[權限](../roles/permissions-reference.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。
 * 任何層級的 8x8 X 系列訂用帳戶。
-* 在 [Configuration Manager](https://vo-cm.8x8.com) 中具有系統管理員權限的 8x8 使用者帳戶。
+* 在[管理主控台](https://vo-cm.8x8.com) 中具有系統管理員權限的 8x8 使用者帳戶。
 * 已設定[使用 Azure AD 進行單一登入](./8x8virtualoffice-tutorial.md)。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步驟 1： 規劃佈建部署
@@ -48,7 +48,7 @@ ms.locfileid: "96532687"
 
 本節會引導您完成設定 8x8 以支援使用 Azure AD 佈建的步驟。
 
-### <a name="to-configure-a-user-provisioning-access-token-in-8x8-configuration-manager"></a>若要在 8x8 Configuration Manager 中設定使用者佈建存取權杖：
+### <a name="to-configure-a-user-provisioning-access-token-in-8x8-admin-console"></a>若要在 8x8 管理主控台中設定使用者佈建存取權杖：
 
 1. 登入[管理主控台](https://admin.8x8.com)。 選取 [身分識別管理]。
 
@@ -60,7 +60,7 @@ ms.locfileid: "96532687"
 
 3. 複製 **8x8 URL** 和 **8x8 API 權杖** 值。 這些值會分別輸入到 Azure 入口網站 8x8 應用程式 [佈建] 索引標籤中的 [租用戶 URL] 和 [祕密權杖] 欄位。
 
-   ![Token](./media/8x8-provisioning-tutorial/8x8-copy-url-token.png)
+   ![權杖](./media/8x8-provisioning-tutorial/8x8-copy-url-token.png)
 
 ## <a name="step-3-add-8x8-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫新增 8x8
 
@@ -102,7 +102,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![[佈建模式] 下拉式清單的螢幕擷取畫面，並已指出 [自動] 選項。](common/provisioning-automatic.png)
 
-5. 在 [管理員認證] 區段下，將 **8x8 URL** 從 Configuration Manager 複製到 **租用戶 URL**。 將 **8x8 API 權杖** 從 Configuration Manager 複製到 **祕密權杖**。 按一下 [測試連線]，以確保 Azure AD 可以連線至 8x8。 如果連線失敗，請確定您的 8x8 帳戶具有系統管理員權限並再試一次。
+5. 在 [管理員認證] 區段下，將 **8x8 URL** 從管理主控台複製到 **租用戶 URL**。 將 **8x8 API 權杖** 從管理主控台複製到 **祕密權杖**。 按一下 [測試連線]，以確保 Azure AD 可以連線至 8x8。 如果連線失敗，請確定您的 8x8 帳戶具有系統管理員權限並再試一次。
 
     ![顯示 [管理員認證] 對話方塊的螢幕擷取畫面，您可以在其中輸入您的租用戶 URL 和祕密權杖。](./media/8x8-provisioning-tutorial/provisioning.png)
 
