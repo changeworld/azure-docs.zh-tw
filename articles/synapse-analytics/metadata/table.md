@@ -1,6 +1,6 @@
 ---
 title: 共用中繼資料表
-description: Azure Synapse Analytics 會提供共用中繼資料模型，您在無伺服器 Apache Spark 集區中建立資料表，將能夠透過無伺服器 SQL 集區 (預覽) 和 SQL 集區引擎存取，而不需要複製資料。
+description: Azure Synapse Analytics 會提供共用中繼資料模型，您在無伺服器 Apache Spark 集區中建立資料表，將能夠透過無伺服器 SQL 集區和 SQL 集區引擎存取，而不需要複製資料。
 services: sql-data-warehouse
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,18 +10,17 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f269217908bea4b5e8ef3c0004a9cec9d5d682c7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9ee18edd563d94a85dedf48b7a4d6df394c09707
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314539"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461392"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics 共用中繼資料資料表
 
-[!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Azure Synapse Analytics 可讓不同的工作區計算引擎在其 Apache Spark 集區 (預覽) 和無伺服器 SQL 集區 (預覽) 引擎之間共用資料庫和 Parquet 支援的資料表。
+Azure Synapse Analytics 可讓不同的工作區計算引擎在其 Apache Spark 集區和無伺服器 SQL 集區引擎之間共用資料庫和 Parquet 支援的資料表。
 
 Spark 作業建立資料庫之後，您就可以透過 Spark，在其中建立使用 Parquet 儲存格式的資料表。 這些資料表隨即可供任何 Azure Synapse 工作區 Spark 集區查詢。 若具有適當權限，您也可以從任何 Spark 作業中使用這些資料表。
 

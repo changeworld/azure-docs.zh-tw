@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 12/01/2020
 ms.author: banders
-ms.openlocfilehash: f90d1fe22ae2f46fdc6d764ce98db8e0f48b8b35
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3182da0d04d61d5bad4ce3e41f213ecc3be7ecaf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408017"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444453"
 ---
 # <a name="cancel-your-azure-subscription"></a>取消 Azure 訂用帳戶
 
@@ -38,6 +38,9 @@ ms.locfileid: "94408017"
     ![顯示 [取消] 按鈕的螢幕擷取畫面](./media/cancel-azure-subscription/cancel_ibiza.png)
 1. 遵循提示並完成取消作業。
 
+> [!NOTE]
+> 如果客戶要求，或發生未付款或詐騙的狀況，合作夥伴可以暫停或取消訂用帳戶。 如需詳細資訊，請參閱[暫停或取消訂用帳戶](/partner-center/create-a-new-subscription#suspend-or-cancel-a-subscription)。
+
 ## <a name="who-can-cancel-a-subscription"></a>誰可以取消訂用帳戶？
 
 下表描述取消訂用帳戶所需的權限。
@@ -48,7 +51,7 @@ ms.locfileid: "94408017"
 |[Microsoft Enterprise 合約](https://azure.microsoft.com/pricing/enterprise-agreement/)與 [Enterprise 開發/測試](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  帳戶擁有者和訂用帳戶的擁有者       |
 |[Azure 方案](https://azure.microsoft.com/offers/ms-azr-0017g/)和 [適用於 DevTest 的 Azure 方案](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  訂用帳戶的擁有者      |
 
-## <a name="what-happens-after-i-cancel-my-subscription"></a>取消訂用帳戶之後會發生什麼情況？
+## <a name="what-happens-after-subscription-cancellation"></a>取消訂用帳戶後會發生什麼情況？
 
 在您取消之後，計費會立即停止。 不過，最多可能需要 10 分鐘，取消作業才會在入口網站中顯示。 如果您在計費期間中途取消訂用帳戶，我們會在該期間結束後的一般發票核發日傳送最後一張發票。
 
@@ -65,7 +68,7 @@ ms.locfileid: "94408017"
 1. 選取您要刪除的訂用帳戶。
 1. 選取[概觀]，然後選取 [刪除訂用帳戶]。
 
-## <a name="reactivate-subscription"></a>重新啟動訂用帳戶
+## <a name="reactivate-a-subscription"></a>重新啟用訂用帳戶
 
 如果您不小心取消採用隨用隨付費率的訂用帳戶，您可以[在帳戶中心重新啟動它](subscription-disabled.md)。
 
@@ -73,7 +76,7 @@ ms.locfileid: "94408017"
 
 ## <a name="why-dont-i-see-the-cancel-subscription-option-on-the-azure-portal"></a>為何我在 Azure 入口網站上看不到 [取消訂用帳戶] 選項？ 
 
-您可能沒有取消訂用帳戶所需的權限。 請參閱[誰可以取消訂用帳戶？](https://docs.microsoft.com/azure/cost-management-billing/manage/cancel-azure-subscription#who-can-cancel-a-subscription)，了解哪些人可取消不同類型的訂用帳戶。
+您可能沒有取消訂用帳戶所需的權限。 請參閱[誰可以取消訂用帳戶？](#who-can-cancel-a-subscription)，了解哪些人可取消不同類型的訂用帳戶。
 
 ## <a name="how-do-i-delete-my-azure-account"></a>如何刪除我的 Azure 帳戶？
 
@@ -85,7 +88,7 @@ ms.locfileid: "94408017"
 
 ## <a name="how-do-i-cancel-a-visual-studio-professional-account"></a>如何取消 Visual Studio Professional 帳戶？
 
-請參閱[續約和取消](https://docs.microsoft.com/visualstudio/subscriptions/faq/admin/renewal-cancellation)一文。 如果您有任何 Visual Studio 的 Azure 訂用帳戶，則必須一併加以取消和刪除。
+請參閱[續約和取消](/visualstudio/subscriptions/faq/admin/renewal-cancellation)一文。 如果您有任何 Visual Studio 的 Azure 訂用帳戶，則必須一併加以取消和刪除。
 
 ## <a name="next-steps"></a>後續步驟
 

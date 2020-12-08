@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 088300d4b6f92886310315b67763536e39cbb019
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 5109139c7168026c74a475128832fbb0733ce832
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789517"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447126"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>適用於 Azure SQL Database 和 Azure Synapse Analytics 的 Azure Private Link
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "92789517"
 Private Link 可讓您透過 **私人端點** 連線到 Azure 中的各種 PaaS 服務。 如需支援 Private Link 功能的 PaaS 服務清單，請移至 [Private Link 文件](../../private-link/index.yml)頁面。 私用端點為特定 [VNet](../../virtual-network/virtual-networks-overview.md) 和子網路內的私用 IP 位址。
 
 > [!IMPORTANT]
-> 本文適用於 Azure SQL Database 和 Azure Synapse Analytics (先前的 SQL 資料倉儲)。 簡單來說，「資料庫」一詞同時指稱 Azure SQL Database 和 Azure Synapse Analytics 中的資料庫。 同樣地，只要提到「伺服器」，也都是指裝載 Azure SQL Database 和 Azure Synapse Analytics 的[邏輯 SQL 伺服器](logical-servers.md)。 本文「不」適用於 **Azure SQL Database 受控執行個體** 。
+> 本文適用於 Azure SQL Database 和 Azure Synapse Analytics。 簡單來說，「資料庫」一詞同時指稱 Azure SQL Database 和 Azure Synapse Analytics 中的資料庫。 同樣地，只要提到「伺服器」，也都是指裝載 Azure SQL Database 和 Azure Synapse Analytics 的[邏輯 SQL 伺服器](logical-servers.md)。 本文「不」適用於 **Azure SQL Database 受控執行個體**。
 
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>如何設定適用於 Azure SQL Database 的 Private Link 
 
@@ -149,7 +149,7 @@ where session_id=@@SPID
 1. 僅允許使用 VM 的私人 IP 位址對 SQL Database 資料庫傳送流量。 如需詳細資訊，請參閱有關[服務端點](vnet-service-endpoint-rule-overview.md)和[虛擬網路防火牆規則](firewall-configure.md)的文章。
 1. 在 Azure VM 上，請使用[網路安全性群組 (NSG)](../../virtual-network/manage-network-security-group.md) 和服務標籤來縮小傳出連線的範圍，如下所示
     - 指定 NSG 規則，以允許服務標記 = SQL.WestUs 的流量 - 僅允許連線到位於美國西部的 SQL Database
-    - 指定 NSG 規則 (使用 **較高的優先順序** ) 以拒絕服務標籤 = SQL 的流量 - 拒絕連線到所有區域中的 SQL Database
+    - 指定 NSG 規則 (使用 **較高的優先順序**) 以拒絕服務標籤 = SQL 的流量 - 拒絕連線到所有區域中的 SQL Database
 
 在此設定結束時，Azure VM 只能連線到美國西部區域的 SQL Database 資料庫。 不過，連線並不限於單一 SQL Database 資料庫。 VM 仍然可以連線到美國西部區域的任何資料庫，包括不屬於訂用帳戶的資料庫。 雖然在上述案例中，我們已將資料外泄範圍縮減到特定區域，但我們尚未完全消除此問題。
 

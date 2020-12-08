@@ -5,12 +5,12 @@ author: emaher
 ms.topic: overview
 ms.date: 09/16/2020
 ms.author: enewman
-ms.openlocfilehash: ac390fb6624ffc762f77b676c778165e7382f73f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 71d59e8bcf7b4078255d6b119e9d62f366e46033
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334033"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437315"
 ---
 # <a name="architecture-fundamentals-in-azure-lab-services"></a>Azure 實驗室服務中的架構基礎
 
@@ -20,7 +20,7 @@ Azure 實驗室服務提供了幾個區域，讓您將自己的資源與實驗�
 
 以下是教室實驗室的基本架構。  實驗室帳戶裝載於您的訂用帳戶中。 學生 VM 以及為了支援 VM 所需的資源，都裝載於實驗室服務所擁有的訂用帳戶中。 讓我們更詳細地討論實驗室服務訂用帳戶所含的資源。
 
-![教室實驗室的基本架構](./media/classroom-labs-fundamentals/labservices-basic-architecture.png)
+![實驗室基本架構](./media/classroom-labs-fundamentals/labservices-basic-architecture.png)
 
 ## <a name="hosted-resources"></a>裝載的資源
 

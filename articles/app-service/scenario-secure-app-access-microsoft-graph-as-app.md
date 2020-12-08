@@ -7,15 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: a7b8ca309bf5710ddbd88413935bef5e97a1ed9f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.custom: azureday1
+ms.openlocfilehash: facc6a4ab8344f9f72fc7abc27433c18ab435504
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95999666"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436533"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-app"></a>教學課程：從安全的應用程式以應用程式身分存取 Microsoft Graph
 
@@ -23,7 +24,7 @@ ms.locfileid: "95999666"
 
 :::image type="content" alt-text="顯示存取 Microsoft Graph 的圖表。" source="./media/scenario-secure-app-access-microsoft-graph/web-app-access-graph.svg" border="false":::
 
-您想要呼叫 Web 應用程式的 Microsoft Graph。 讓 Web 應用程式存取資料的安全方式，是使用[系統指派的受控識別](/azure/active-directory/managed-identities-azure-resources/overview)。 來自 Azure Active Directory 的受控識別可讓應用程式服務透過角色型存取控制 (RBAC) 存取資源，而不需要應用程式認證。 將受控識別指派給您的 Web 應用程式後，Azure 會負責建立和散發憑證。 您不需要擔心管理祕密或應用程式認證。
+您想要呼叫 Web 應用程式的 Microsoft Graph。 讓 Web 應用程式存取資料的安全方式，是使用[系統指派的受控識別](../active-directory/managed-identities-azure-resources/overview.md)。 來自 Azure Active Directory 的受控識別可讓應用程式服務透過角色型存取控制 (RBAC) 存取資源，而不需要應用程式認證。 將受控識別指派給您的 Web 應用程式後，Azure 會負責建立和散發憑證。 您不需要擔心管理祕密或應用程式認證。
 
 在本教學課程中，您會了解如何：
 
@@ -120,6 +121,8 @@ az rest --method post --uri $uri --body $body --headers "Content-Type=applicatio
 ## <a name="call-microsoft-graph-net"></a>呼叫 Microsoft Graph (.NET)
 
 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) 類別是用來取得程式碼的權杖認證，以授權 Microsoft Graph 的要求。 建立 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) 類別的執行個體，此執行個體會使用受控識別擷取權杖，並將其附加至服務用戶端。 下列程式碼範例會取得已驗證的權杖認證，並用來建立服務用戶端物件，以取得群組中的使用者。
+
+若要在範例應用程式中查看此程式碼，請參閱 [GitHub 上的範例](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/3-WebApp-graphapi-managed-identity)。
 
 ### <a name="install-the-microsoftgraph-client-library-package"></a>安裝 Microsoft.Graph 用戶端程式庫套件
 

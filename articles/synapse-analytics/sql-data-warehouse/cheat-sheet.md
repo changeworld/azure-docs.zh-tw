@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Analytics (先前為 SQL DW) 的速查表
-description: 尋找快速建置 Azure Synapse Analytics (先前為 SQL DW) 解決方案的連結和最佳做法。
+title: 專用 SQL 集區 (先前稱為 SQL DW) 的功能提要
+description: 尋找在 Azure Synapse Analytics 中快速建置專用 SQL 集區 (先前稱為 SQL DW) 的連結和最佳做法。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,18 +10,18 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 648f06ef1af5d6dce9fa3583c6358d3bd173f209
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a236cf99d3131e83619cfab06e8ec028938a87ba
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319671"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454609"
 ---
-# <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics (先前為 SQL DW) 的速查表
+# <a name="cheat-sheet-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytic"></a>Azure Synapse Analytics 中的專用 SQL 集區 (先前稱為 SQL DW) 的功能提要
 
-本速查表提供實用的秘訣和最佳做法，協助您建置 Azure Synapse 解決方案。
+此功能提要提供實用的秘訣和最佳做法，協助您建立專用 SQL 集區 (先前稱為 SQL DW) 解決方案。
 
-下圖顯示資料倉儲的設計流程：
+下圖顯示使用專用 SQL 集區 (先前稱為 SQL DW) 設計資料倉儲的程序：
 
 ![草圖](./media/cheat-sheet/picture-flow.png)
 
@@ -121,13 +121,13 @@ ms.locfileid: "93319671"
 
 如果您注意到查詢時間過長，請檢查您的使用者沒有在大型的資源類別中執行。 大型的資源類別會耗用許多並行處理的位置。 它們會導致其他查詢排入佇列。
 
-最後，藉由使用 [SQL 集區](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse)的 Gen2，每個資源類別都會獲得比 Gen1 多 2.5 倍的記憶體。
+最後，藉由使用[專用 SQL 集區 (先前稱為 SQL DW)](sql-data-warehouse-overview-what-is.md) 的 Gen2，每個資源類別都會獲得比 Gen1 多 2.5 倍的記憶體。
 
 深入了解如何使用[資源類別與並行處理](resource-classes-for-workload-management.md)。
 
 ## <a name="lower-your-cost"></a>降低您的成本
 
-Azure Synapse 的主要功能就是能夠[管理計算資源](sql-data-warehouse-manage-compute-overview.md)。 您可以在不使用 SQL 集區時予以暫停，這會停止計算資源的計費。 您可以調整資源，以符合您的效能需求。 若要暫停，請使用 [Azure 入口網站](pause-and-resume-compute-portal.md)或 [PowerShell](pause-and-resume-compute-powershell.md)。 若要調整規模，請使用 [Azure 入口網站](quickstart-scale-compute-portal.md)、[Powershell](quickstart-scale-compute-powershell.md)、[T-SQL](quickstart-scale-compute-tsql.md) 或 [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute)。
+Azure Synapse 的主要功能就是能夠[管理計算資源](sql-data-warehouse-manage-compute-overview.md)。 您可以在不使用專用 SQL 集區 (先前稱為 SQL DW) 時予以暫停，這會停止計算資源的計費。 您可以調整資源，以符合您的效能需求。 若要暫停，請使用 [Azure 入口網站](pause-and-resume-compute-portal.md)或 [PowerShell](pause-and-resume-compute-powershell.md)。 若要調整規模，請使用 [Azure 入口網站](quickstart-scale-compute-portal.md)、[PowerShell](quickstart-scale-compute-powershell.md)、[T-SQL](quickstart-scale-compute-tsql.md) 或 [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute)。
 
 使用 Azure 函式，在您想要的時間自動調整規模：
 
@@ -137,8 +137,8 @@ Azure Synapse 的主要功能就是能夠[管理計算資源](sql-data-warehouse
 
 建議您考量中樞架構和支點架構中的 SQL 資料庫和 Azure Analysis Services。 該解決方案可以隔離不同使用者群組之間的工作負載，也可以使用 SQL Database 和 Azure Analysis Services 的進階安全性功能。 這也是將無限制的並行處理提供給您的使用者的一種方法。
 
-深入了解[利用 Azure Synapse 的一般架構](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/)。
+深入了解[利用 Azure Synapse Analytics 中的專用 SQL 集區 (先前稱為 SQL DW) 的一般架構](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/)。
 
-按一下 SQL 資料庫中的支點，從 SQL 集區進行部署：
+按一下 SQL 資料庫中的支點，從專用 SQL 集區 (先前稱為 SQL DW) 進行部署：
 
 [![顯示標示為「部署至 Azure」的按鈕影像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json)

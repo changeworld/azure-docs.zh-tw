@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: 4f6e194f04789fbcaf24d69965dfa8ac61b20a38
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: e1a5370501fe73fb783db9a039d9f060acdb0a35
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886323"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511027"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>教學課程：使用自動化機器學習預測計程車車資
 
@@ -210,7 +210,7 @@ x_train, x_test = train_test_split(final_df, test_size=0.2, random_state=223)
 
 |屬性| 本教學課程中的值 |描述|
 |----|----|---|
-|**iteration_timeout_minutes**|2|每次反覆運算的時間限制 (分鐘)。 降低此值以減少總執行時間。|
+|**iteration_timeout_minutes**|10|每次反覆運算的時間限制 (分鐘)。 對於每次反覆運算都需要較多時間的較大資料集，請提高此值。|
 |**experiment_timeout_hours**|0.3|在實驗終止之前，所有反覆運算合在一起所花費的時間量上限 (以小時為單位)。|
 |**enable_early_stopping**|True|此旗標可在分數未在短期內改善時啟用提早終止。|
 |**primary_metric**| spearman_correlation | 您想要最佳化的度量。 最適化模型將根據此計量來選擇。|
@@ -222,7 +222,7 @@ x_train, x_test = train_test_split(final_df, test_size=0.2, random_state=223)
 import logging
 
 automl_settings = {
-    "iteration_timeout_minutes": 2,
+    "iteration_timeout_minutes": 10,
     "experiment_timeout_hours": 0.3,
     "enable_early_stopping": True,
     "primary_metric": 'spearman_correlation',

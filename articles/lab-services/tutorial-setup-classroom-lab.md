@@ -3,12 +3,12 @@ title: 使用 Azure 實驗室服務設定教室實驗室 | Microsoft Docs
 description: 在本教學課程中，您會使用 Azure Lab Services 來設定教室實驗室，且其中包含您教室中學生所使用的虛擬機器。
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: 1155646d31ddb8a0a3abce025acde5c4cb645f54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8981a03b53b1cfb67b03d89f8a1468511d9b1b93
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336729"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434850"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>教學課程：設定教室實驗室 
 您將在本教學課程中設定教室實驗室，且其中包含教室中學生所使用的虛擬機器。  
@@ -26,7 +26,7 @@ ms.locfileid: "91336729"
 
 以下是使用 Azure 實驗室服務時的一般工作流程：
 
-1. 實驗室帳戶建立者將其他使用者新增至**實驗室建立者**角色。 例如，實驗室帳戶建立者/管理員將教師新增至**實驗室建立者**角色，讓這些教師可為其課程建立實驗室。 
+1. 實驗室帳戶建立者將其他使用者新增至 **實驗室建立者** 角色。 例如，實驗室帳戶建立者/管理員將教師新增至 **實驗室建立者** 角色，讓這些教師可為其課程建立實驗室。 
 2. 然後，教師為其課程建立具有 VM 的實驗室，並將註冊連結傳送給修習此課程的學生。 
 3. 學生會使用教師提供的註冊連結向實驗室註冊。 註冊後，他們就可以使用實驗室中的 VM 來進行班級工作和在家工作。 
 
@@ -39,10 +39,10 @@ ms.locfileid: "91336729"
     
     ![顯示「Azure 實驗室服務」並已選取 [新建實驗室] 按鈕的螢幕擷取畫面。](./media/tutorial-setup-classroom-lab/new-lab-button.png)
 4. 在 [新增實驗室] 視窗中，執行下列動作： 
-    1. 指定實驗室的**名稱**，然後選取 [下一步]。  
+    1. 指定實驗室的 **名稱**，然後選取 [下一步]。  
 
         ![建立教室實驗室](./media/tutorial-setup-classroom-lab/new-lab-window.png)
-    2. 在 [虛擬機器認證] 頁面上，指定實驗室中所有 VM 的預設認證。 指定使用者的**名稱**和**密碼**，然後選取 [下一步]。  
+    2. 在 [虛擬機器認證] 頁面上，指定實驗室中所有 VM 的預設認證。 指定使用者的 **名稱** 和 **密碼**，然後選取 [下一步]。  
 
         ![[新增實驗室] 視窗](./media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
 
@@ -54,14 +54,14 @@ ms.locfileid: "91336729"
 5. 您應該會看到下列畫面，其中顯示範本 VM 的建立狀態。 此作業最多需要 20 分鐘的時間。 
 
     ![範本 VM 的建立狀態](./media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
-8. 在 [範本] 頁面上，執行下列步驟：這些都是本教學課程的**選擇性**步驟。
+8. 在 [範本] 頁面上，執行下列步驟：這些都是本教學課程的 **選擇性** 步驟。
 
     1. 選取 [連線] 以連線至範本 VM。 如果是 Linux 範本 VM，您可選擇是否要使用 SSH 或 RDP 連線 (若已啟用 RDP)。
     3. 在範本 VM 上安裝和設定您的類別所需的軟體。 
-    4. **停止**範本 VM。  
+    4. **停止** 範本 VM。  
 
     > [!NOTE]
-    > 範本 VM 會在執行時產生**成本**，因此確保當您不需要範本 VM 執行時，其已關閉。 
+    > 範本 VM 會在執行時產生 **成本**，因此確保當您不需要範本 VM 執行時，其已關閉。 
 
 ## <a name="publish-the-template-vm"></a>發佈範本 VM
 在此步驟中，請發佈範本 VM。 當您發佈範本 VM 時，Azure 實驗室服務會使用範本在實驗室中建立 VM。 所有虛擬機器都有與範本相同的設定。
@@ -75,7 +75,7 @@ ms.locfileid: "91336729"
 2. 在 [發佈範本] 頁面上，輸入您要在實驗室中建立的虛擬機器數目，然後選取 [發佈]。 
 
     ![發佈範本 - VM 的數目](./media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
-3. 您會在頁面上看到範本的**發佈狀態**。 此程序最多可能需要一小時。 
+3. 您會在頁面上看到範本的 **發佈狀態**。 此程序最多可能需要一小時。 
 
     ![發佈範本 - 進度](./media/tutorial-setup-classroom-lab/publish-template-progress.png)
 4. 等候發佈完成，然後藉由選取左側功能表上的 [虛擬機器] 或選取 [虛擬機器] 圖格，以切換到 [虛擬機器集區] 頁面。 確認您看到處於 [未指派] 狀態的虛擬機器。 這些虛擬機器尚未指派給任何學生。 它們應處於 [已停止] 狀態。 您可以在此頁面上啟動學生 VM、連線到 VM、停止 VM，以及刪除 VM。 您可以在此頁面啟動 VM，或是讓學生啟動 VM。 
@@ -103,7 +103,7 @@ ms.locfileid: "91336729"
 5. 在 [重複] 對話方塊中，執行下列步驟：
     1. 確認已為 [重複] 欄位設定 [每週]。 
     2. 選取您想要讓排程生效的日期。 下列範例中選取了星期一至星期五。 
-    3. 選取排程的**結束日期**。
+    3. 選取排程的 **結束日期**。
     8. 選取 [儲存]。 
 
         ![設定重複排程](./media/how-to-create-schedules/set-repeat-schedule.png)
@@ -116,7 +116,7 @@ ms.locfileid: "91336729"
     
     ![行事曆中的排程](./media/how-to-create-schedules/schedule-calendar.png)
 
-    如需建立和管理班級排程的詳細資訊，請參閱[建立和管理教室實驗室的排程](how-to-create-schedules.md)。
+    如需建立和管理班級排程的詳細資訊，請參閱[建立和管理實驗室的排程](how-to-create-schedules.md)。
 
 
 ## <a name="add-users-to-the-lab"></a>將使用者新增至實驗室

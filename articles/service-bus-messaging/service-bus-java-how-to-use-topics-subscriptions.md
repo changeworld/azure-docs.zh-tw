@@ -4,18 +4,18 @@ description: 在本快速入門中，您會使用 azure-messaging-servicebus 套
 ms.devlang: Java
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: 6a63e907e01174042f679c57e1ef0994ad2a11b9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 011dbfef1155b82daca216e9519db07188260130
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95909572"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489542"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-java"></a>將訊息傳送到 Azure 服務匯流排主題，並從訂用帳戶接收來自主題的訊息 (Java)
 在本快速入門中，您會使用 azure-messaging-servicebus 套件撰寫 Java 程式碼，以將訊息傳送至 Azure 服務匯流排主題，然後從該主題的訂用帳戶接收訊息。
 
 > [!IMPORTANT]
-> 本快速入門使用新的 azure-messaging-servicebus 套件，目前為 **預覽版**。 如需使用目前推出 (GA) 之 azure-servicebus 套件的快速入門，請參閱[使用 azure-servicebus 傳送和接收訊息](service-bus-java-how-to-use-topics-subscriptions-legacy.md)。
+> 本快速入門使用新的 azure-messaging-servicebus 套件。 如需使用舊版 azure-servicebus 套件的快速入門，請參閱[使用 azure-servicebus 傳送和接收訊息](service-bus-java-how-to-use-topics-subscriptions-legacy.md)。
 
 ## <a name="prerequisites"></a>先決條件
 
@@ -37,7 +37,7 @@ ms.locfileid: "95909572"
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-messaging-servicebus</artifactId>
-    <version>7.0.0-beta.7</version>
+    <version>7.0.0</version>
 </dependency>
 ```
 
@@ -226,7 +226,7 @@ Stopping and closing the processor
 
 - [適用於 Java 的 Azure 服務匯流排用戶端程式庫 - 讀我檔案](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/README.md)
 - [GitHub 範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/servicebus/azure-messaging-servicebus/src/samples)
-- [Java API 參考](https://docs.microsoft.com/java/api/overview/azure/servicebus?view=azure-java-preview&preserve-view=true)
+- [Java API 參考](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-preview)
 
 
 [Azure SDK for Java]: /java/api/overview/azure/
@@ -235,4 +235,3 @@ Stopping and closing the processor
 [SqlFilter]: /dotnet/api/microsoft.azure.servicebus.sqlfilter
 [SqlFilter.SqlExpression]: /dotnet/api/microsoft.azure.servicebus.sqlfilter.sqlexpression
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
-

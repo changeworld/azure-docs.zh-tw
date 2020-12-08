@@ -890,8 +890,6 @@
               items:
                 - name: 深入診斷 Web Apps 和服務
                   href: app/devops.md
-                - name: 監視 Web 應用程式的效能
-                  href: app/web-monitor-performance.md
                 - name: 區分開發、測試及生產環境
                   href: app/separate-resources.md
                 - name: 我如何在 Application Insights 中...？

@@ -8,12 +8,12 @@ ms.author: tamram
 ms.topic: quickstart
 ms.date: 12/02/2019
 ms.subservice: tables
-ms.openlocfilehash: d592dd6ac705d0f1a0b3ed55e115d06023b0a511
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 93c6cb0f61185457ef0684d2a1ba691a0534aa13
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88236262"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326755"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Azure 儲存體資料表 
 
@@ -31,15 +31,15 @@ ms.locfileid: "88236262"
 
 1. 按一下 [概觀] > [資料表]。
 
-   ![Azure 入口網站](media/table-storage-quickstart-portal/table-storage-quickstart-01.png)
+   ![在儲存體帳戶 vmamcgestorage 上，[概觀] 索引標籤已反白顯示。 在 [概觀] 窗格的 [服務] 底下，[資料表] 已反白顯示。](media/table-storage-quickstart-portal/table-storage-quickstart-01.png)
 
-2. 按一下 [+ 資料表]****。
+2. 按一下 [+ 資料表]。
 
-   ![Azure 入口網站](media/table-storage-quickstart-portal/table-storage-quickstart-02.png)
+   ![在 vmamcgestorage 的資料表服務上，[+ 資料表] 選項已反白顯示。](media/table-storage-quickstart-portal/table-storage-quickstart-02.png)
 
-3. 在 [資料表名稱]**** 方塊中輸入資料表的名稱，然後按一下 [確定]****。 
+3. 在 [資料表名稱] 方塊中輸入資料表的名稱，然後按一下 [確定]。 
 
-   ![Azure 入口網站](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
+   ![在資料表服務的 [新增資料表] 索引標籤上，「我的資料表」已輸入資料表名稱中，並反白顯示。 已選取 [確定] 按鈕並反白顯示。](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
 
 ## <a name="next-steps"></a>後續步驟
 

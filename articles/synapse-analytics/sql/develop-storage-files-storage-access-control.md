@@ -1,6 +1,6 @@
 ---
-title: 控制無伺服器 SQL 集區 (預覽版) 的儲存體帳戶存取
-description: 說明無伺服器 SQL 集區 (預覽版) 如何存取 Azure 儲存體，以及您如何在 Azure Synapse Analytics 中控制無伺服器 SQL 集區的儲存體存取。
+title: 控制無伺服器 SQL 集區的儲存體帳戶存取
+description: 說明無伺服器 SQL 集區如何存取 Azure 儲存體，以及您如何在 Azure Synapse Analytics 中控制無伺服器 SQL 集區的儲存體存取。
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 958f371a0018d20331e73d0eabba9354614d121c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 631aaf3c6a99e093f6ed59089f7ce99803f3f054
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315735"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446621"
 ---
-# <a name="control-storage-account-access-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制無伺服器 SQL 集區 (預覽版) 的儲存體帳戶存取
+# <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制無伺服器 SQL 集區的儲存體帳戶存取
 
 無伺服器 SQL 集區查詢會直接從 Azure 儲存體讀取檔案。 存取 Azure 儲存體上檔案的權限會由兩個層級來控制：
 - **儲存體層級** - 使用者應該具有存取基礎儲存體檔案的權限。 您的儲存體管理員應允許 Azure AD 主體讀取/寫入檔案，或產生將用來存取儲存體的 SAS 金鑰。
@@ -29,7 +29,7 @@ ms.locfileid: "93315735"
 已登入無伺服器 SQL 集區的使用者必須獲得授權，才能存取及查詢 Azure 儲存體中未公開使用的檔案。 您可以使用三種授權類型來存取非公用儲存體：[使用者身分識別](?tabs=user-identity)、[共用存取簽章](?tabs=shared-access-signature)以及[受控識別](?tabs=managed-identity)。
 
 > [!NOTE]
-> 當您建立工作區時， **Azure AD 傳遞** 是預設的行為。
+> 當您建立工作區時，**Azure AD 傳遞** 是預設的行為。
 
 ### <a name="user-identity"></a>[使用者身分識別](#tab/user-identity)
 
@@ -144,7 +144,7 @@ SQL 使用者無法使用 Azure AD 驗證來存取儲存體。
 
 下列指令碼會建立伺服器層級的認證，讓 `OPENROWSET` 函式可以使用 SAS 權杖來存取 Azure 儲存體上的任何檔案。 建立此認證可讓 SQL 主體執行 `OPENROWSET` 函式，在符合認證名稱中 URL 的 Azure 儲存體上讀取以 SAS 金鑰保護的檔案。
 
-請將 < *mystorageaccountname* > 替換為實際的儲存體帳戶名稱，以及將 < *mystorageaccountcontainername* > 替換為實際的容器名稱：
+請將 <*mystorageaccountname*> 替換為實際的儲存體帳戶名稱，以及將 <*mystorageaccountcontainername*> 替換為實際的容器名稱：
 
 ```sql
 CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]

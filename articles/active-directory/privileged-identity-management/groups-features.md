@@ -12,20 +12,23 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/27/2020
+ms.date: 12/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30724edafdee0c04f0c8b004ce335072b4ce0fd4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 759781fd61cd42d05f2823d390e99d128dd2fcac
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367443"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512387"
 ---
 # <a name="management-capabilities-for-privileged-access-azure-ad-groups-preview"></a>具 Azure AD 群組 (預覽) 特殊存取權限的管理功能
 
 在 Privileged Identity Management (PIM) 中，您現在可以指派具特殊存取權限群組的成員資格或所有權資格。 從本預覽版開始，您可以將 Azure Active Directory (Azure AD) 內建角色指派給雲端群組，並使用 PIM 來管理群組成員和擁有者資格與啟用。 如需 Azure AD 中可指派角色群組的詳細資訊，請參閱[使用雲端群組來管理 Azure Active Directory (預覽) 中的角色指派](../roles/groups-concept.md)。
+
+>[!Important]
+> 若要將特殊權限存取群組指派給某個角色，以對 Exchange、安全性與合規性中心或 SharePoint 進行管理存取，請使用 Azure AD 入口網站的 **角色和系統管理員** 體驗 (而不是特殊權限存取群組的體驗)，讓使用者或群組有資格在群組中啟用。
 
 ## <a name="require-different-policies-for-each-role-assignable-group"></a>每個可指派角色的群組都需要不同的原則
 

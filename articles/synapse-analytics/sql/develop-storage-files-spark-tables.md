@@ -1,6 +1,6 @@
 ---
-title: 在無伺服器 SQL 集區 (預覽) 中同步處理 Apache Spark 外部資料表定義
-description: 概述如何使用無伺服器 SQL 集區 (預覽) 查詢 Spark 資料表
+title: 在無伺服器 SQL 集區中同步處理 Apache Spark 外部資料表定義
+description: 概述如何使用無伺服器 SQL 集區查詢 Spark 資料表
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: ea4e7cd009be8a78faa0dcfab44371a350b6a200
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 057a69881b8b407e5d75fa3510ca1c3eb1830bc7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315826"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446488"
 ---
-# <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-serverless-sql-pool-preview"></a>在無伺服器 SQL 集區 (預覽) 中同步處理 Apache Spark for Azure Synapse 的外部資料表定義
+# <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-serverless-sql-pool"></a>在無伺服器 SQL 集區中同步處理 Apache Spark for Azure Synapse 的外部資料表定義
 
-無伺服器 SQL 集區 (預覽) 可以自動同步處理來自 Apache Spark 的中繼資料。 系統會針對 Spark 集區 (預覽) 中的每個資料庫建立無伺服器 SQL 集區資料庫。 
+無伺服器 SQL 集區可以自動同步處理來自 Apache Spark 的中繼資料。 系統會針對 Spark 集區中的每個資料庫建立無伺服器 SQL 集區資料庫。 
 
 針對以 Parquet 為基礎且位於 Azure 儲存體中的每個 Spark 外部資料表，系統會在無伺服器 SQL 集區資料庫中建立一個外部資料表。 因此，您可以在關閉 Spark 集區後，繼續從無伺服器 SQL 集區查詢 Spark 外部資料表。
 

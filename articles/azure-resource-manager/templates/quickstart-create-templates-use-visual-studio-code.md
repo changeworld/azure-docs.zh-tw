@@ -1,20 +1,20 @@
 ---
 title: 建立範本 - Visual Studio Code
-description: 利用 Visual Studio Code 和 Azure Resource Manager Tools 擴充功能來使用 Resource Manager 範本。
+description: 利用 Visual Studio Code 和 Azure Resource Manager Tools 擴充功能來使用 Azure Resource Manager 範本 (ARM 範本)。
 author: neilpeterson
 ms.date: 08/09/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: 5375fedcd05aefa5d23ee872325373ce631d43bb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d8fd44a1e4c1ddfd78b2afa3280bb05c8fde91e3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88034971"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350138"
 ---
-# <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本
+# <a name="quickstart-create-arm-templates-with-visual-studio-code"></a>快速入門：使用 Visual Studio Code 建立 ARM 範本
 
-適用於 Visual Studio Code 的 Azure Resource Manager 工具可提供語言支援、資原始程式碼段和資源自動完成。 這些工具可協助建立和驗證 Azure Resource Manager 範本。 在本快速入門中，您將使用擴充功能從頭開始建立 Azure Resource Manager 範本。 執行此作業時，您會用到 ARM 範本程式碼片段、驗證、完成和參數檔案支援等擴充功能。
+適用於 Visual Studio Code 的 Azure Resource Manager 工具可提供語言支援、資原始程式碼段和資源自動完成。 這些工具可協助建立和驗證 Azure Resource Manager 範本 (ARM 範本)。 在本快速入門中，您將使用擴充功能從頭開始建立 ARM 範本。 執行此作業時，您會用到 ARM 範本程式碼片段、驗證、完成和參數檔案支援等擴充功能。
 
 若要完成本快速入門，您需要已安裝 [Azure Resource Manager 工具擴充功能](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)的 [Visual Studio Code](https://code.visualstudio.com/)。 您也需要安裝 [Azure CLI](/cli/azure/?view=azure-cli-latest) 或 [Azure PowerShell 模組](/powershell/azure/new-azureps-module-az?view=azps-3.7.0)，並且通過驗證。
 
@@ -54,7 +54,7 @@ ms.locfileid: "88034971"
 
 ## <a name="completion-and-validation"></a>完成和驗證
 
-擴充功能最強大的功能之一，就是與 Azure 結構描述整合。 Azure 結構描述提供具有驗證和資源感知完成功能的擴充功能。 讓我們修改儲存體帳戶，以查看驗證和完成如何進行。 
+擴充功能最強大的功能之一，就是與 Azure 結構描述整合。 Azure 結構描述提供具有驗證和資源感知完成功能的擴充功能。 讓我們修改儲存體帳戶，以查看驗證和完成如何進行。
 
 首先，將儲存體帳戶種類更新為不正確的值，例如 `megaStorage`。 請注意，此動作會產生一則警告，指出 `megaStorage` 不是有效的值。
 
@@ -80,7 +80,7 @@ Azure 儲存體帳戶名稱最少為 3 個字元長，最多為 24 個字元長�
 
 ![顯示 minLength 和 maxLength 新增至 ARM 範本參數的影像](./media/quickstart-create-templates-use-visual-studio-code/11.png)
 
-現在，在儲存體資源上，將 name 屬性更新為使用該參數。 若要這麼做，請移除目前的名稱。 輸入雙引號和左方括弧 `[`，這會產生 ARM 範本函式的清單。 從清單中選取 parameters  。 
+現在，在儲存體資源上，將 name 屬性更新為使用該參數。 若要這麼做，請移除目前的名稱。 輸入雙引號和左方括弧 `[`，這會產生 ARM 範本函式的清單。 從清單中選取 parameters  。
 
 ![在 ARM 範本資源中使用參數時顯示自動完成的影像](./media/quickstart-create-templates-use-visual-studio-code/12.png)
 

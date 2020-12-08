@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: monitoring
 ms.topic: tutorial
 ms.date: 10/15/2020
-ms.openlocfilehash: 2970bb58bb73d52c75729b00a8209a9c576d4ec0
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: c2260cc0d2c6b889b44c738576e33abceebe23f1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427406"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444396"
 ---
 # <a name="monitor-your-synapse-workspace"></a>監視您的 Synapse 工作區
 
@@ -47,6 +47,9 @@ ms.locfileid: "94427406"
 1. 選取要監視的 [集區]。 現在，您可以看到在該集區的工作區中正在執行或已執行的所有 SQL 要求。
 1. 尋找特定的 SQL 要求，並將滑鼠暫留在該項目上。 暫留之後，您會看到 [SQL 指令碼] 圖示隨即出現。
 1. 按一下 [SQL 指令碼] 圖示，以查看 SQL 要求的完整文字。
+
+    > [!NOTE] 
+    > 在已啟用工作區的專用 SQL 集區 (先前稱為 SQL DW) 中，透過 Synapse Studio 提交的 SQL 要求可以在監視中樞內檢視。 對於所有其他的監視活動，您可以移至 Azure 入口網站中的專用 SQL 集區 (先前稱為 SQL DW) 監視，加以檢視。
 
 ## <a name="next-steps"></a>後續步驟
 

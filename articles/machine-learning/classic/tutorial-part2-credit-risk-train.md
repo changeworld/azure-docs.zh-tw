@@ -9,19 +9,18 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 59567cf2dc03952a78852f3288e78ba06aa769ee
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 557c624b6ed683f701b6a8d38854cd8604e05b31
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325691"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325259"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>教學課程 2：訓練信用風險模型 - Azure Machine Learning Studio (傳統)
 
-**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用於：** ![這是一個核取記號，表示本文適用於 Machine Learning Studio (傳統)。](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (傳統)  ![這是 X，這表示本文適用於 Azure Machine Learning。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-
-在本教學課程中，您將進一步了解開發預測性分析解決方案的程序。 您將在 Machine Learning Studio (傳統) 中建立簡單的模型。  接著，您會將該模型部署為 Azure Machine Learning Web 服務。  這個已部署的模型可使用新資料進行預測。 本教學課程是 **三部分教學課程系列的第二部分** 。
+在本教學課程中，您將進一步了解開發預測性分析解決方案的程序。 您將在 Machine Learning Studio (傳統) 中建立簡單的模型。  接著，您會將該模型部署為 Azure Machine Learning Web 服務。  這個已部署的模型可使用新資料進行預測。 本教學課程是 **三部分教學課程系列的第二部分**。
 
 假設您必須根據某個人在信用申請書上提供的資訊預測其信用風險。  
 

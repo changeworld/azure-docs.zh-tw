@@ -11,14 +11,14 @@ ms.date: 04/27/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 9132c9609961053e7f60344dc387b2a8d01bd6b9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ae21368269a2c098b4e35bf83b8c9fdf2749a297
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85212984"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460558"
 ---
-# <a name="quickstart-configure-workload-isolation-using-t-sql"></a>快速入門：使用 T-SQL 設定工作負載隔離
+# <a name="quickstart-configure-workload-isolation-in-a-dedicated-sql-pool-using-t-sql"></a>快速入門：使用 T-SQL 在專用 SQL 集區中設定工作負載隔離
 
 在本快速入門中，您將快速建立一個工作負載群組和分類器，以保留載入資料的資源。 工作負載群組會將 20% 的系統資源配置給資料載入。  工作負載分類器會將要求指派給資料載入工作負載群組。  透過 20% 的資料載入隔離，保證資源能夠達到 SLA。
 
@@ -29,7 +29,7 @@ ms.locfileid: "85212984"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-本快速入門假設您已有 Azure Synapse 中的 Synapse SQL 執行個體，且已有 CONTROL DATABASE 權限。 若您需要建立 SQL 資料倉儲，請使用[建立與連線 - 入口網站](create-data-warehouse-portal.md)來建立稱為 **mySampleDataWarehouse** 的資料倉儲。
+本快速入門假設您已有 Azure Synapse 中的 Synapse SQL 執行個體，且已有 CONTROL DATABASE 權限。 若您需要建立 SQL 集區，請使用 [建立與連線 - 入口網站](create-data-warehouse-portal.md)建立名為 **mySampleDataWarehouse** 的專用 SQL 集區。
 
 ## <a name="create-login-for-dataloads"></a>建立 DataLoads 的登入
 
@@ -103,10 +103,10 @@ DROP USER [ELTLogin]
 ;
 ```
 
-您需對資料倉儲單位和資料倉儲中儲存的資料付費。 這些計算和儲存體資源會分開計費。
+您需對資料倉儲單位和專用 SQL 集區中儲存的資料付費。 這些計算和儲存體資源會分開計費。
 
-- 如果您需要將資料保留在儲存體中，可以在您不使用 SQL 集區時暫停計算。 暫停計算，您只需支付資料儲存體的費用。 當您準備好使用資料時，會繼續計算。
-- 如果您需要移除未來的費用，可以將資料倉儲刪除。
+- 如果您需要將資料保留在儲存體中，可以在您不使用專用 SQL 集區時暫停計算。 暫停計算，您只需支付資料儲存體的費用。 當您準備好使用資料時，會繼續計算。
+- 如果您想要移除未來的費用，可以將專用 SQL 集區刪除。
 
 ## <a name="next-steps"></a>後續步驟
 

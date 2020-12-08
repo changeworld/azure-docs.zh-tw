@@ -1,17 +1,17 @@
 ---
-ms.openlocfilehash: 67d90836c382728f989ab2cb4fde4d81bac9eb25
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5fa8377b3cdddb2818c04c5a75e347ff73dc07d8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88690917"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509501"
 ---
 本教學課程需要下列 Azure 資源：
 
 * IoT 中樞
 * 儲存體帳戶
 * Azure 媒體服務帳戶
-* Azure 中的 Linux VM，已安裝 [IoT Edge 執行階段](../../../../../iot-edge/how-to-install-iot-edge-linux.md)
+* Azure 中的 Linux VM，已安裝 [IoT Edge 執行階段](../../../../../iot-edge/how-to-install-iot-edge.md)
 
 在本快速入門中，我們建議您使用 [Live Video Analytics 資源設定指令碼](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)，在您的 Azure 訂用帳戶中部署所需的資源。 若要這樣做，請依照下列步驟執行：
 
@@ -29,10 +29,9 @@ ms.locfileid: "88690917"
     如果指令碼成功完成，您應該會在訂用帳戶中看到所有所需資源。
 1. 在指令碼完成後，選取大括弧以公開資料夾結構。 您會在 *~/clouddrive/lva-sample* 目錄下看到一些檔案。 與本快速入門相關的項目包括：
 
-     * ***~/clouddrive/lva-sample/edge-deployment/.env*** - 此檔案包含 Visual Studio Code 用來將模組部署至邊緣裝置的屬性。
-     * ***~/clouddrive/lva-sample/appsetting.json*** - Visual Studio Code 會使用此檔案來執行範例程式碼。
+     * * **~/clouddrive/lva-sample/edge-deployment/.env** - 此檔案包含 Visual Studio Code 用來將模組部署至邊緣裝置的屬性。
+     ***~/clouddrive/lva-sample/appsetting.json*** - Visual Studio Code 會使用此檔案來執行範例程式碼。
      
     在下一節的 Visual Studio Code 中設定開發環境時，您將需要這些檔案。 目前，您可以將這些檔案複製到本機檔案。
     
     ![應用程式設定](../../../media/quickstarts/clouddrive.png)
-    

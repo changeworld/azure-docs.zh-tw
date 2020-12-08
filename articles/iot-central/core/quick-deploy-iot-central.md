@@ -3,17 +3,17 @@ title: 快速入門 - 建立 Azure IoT Central 應用程式 | Microsoft Docs
 description: 快速入門 - 建立新的 Azure IoT Central 應用程式。 使用免費定價方案或其中一個標準定價方案來建立應用程式。
 author: viv-liu
 ms.author: viviali
-ms.date: 11/16/2020
+ms.date: 11/23/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: afe3e9812271f4b8e049fb2a53efd45fe746e514
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: a156150c2cd28964658fa8529181a70ef546b78f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992806"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457344"
 ---
 # <a name="quickstart---create-an-azure-iot-central-application"></a>快速入門 - 建立 Azure IoT Central 應用程式
 
@@ -50,7 +50,7 @@ ms.locfileid: "94992806"
 1. 選擇使用 7 天免費試用定價方案或其中一個標準定價方案來建立此應用程式：
 
     - 使用「免費」  方案建立的應用程式可以免費試用七天，且最多可支援五個裝置。 您可以在到期前，隨時將其轉換為使用標準定價方案。
-    - 您使用「標準」  方案建立的應用程式會根據每個裝置來計費，您可以選擇 **標準 1** 或 **標準 2** 定價方案，而且前兩個裝置免費。 若要深入了解免費和標準定價方案，請參閱 [Azure IoT Central 定價頁面](https://azure.microsoft.com/pricing/details/iot-central/)。 如果您使用標準定價方案來建立應用程式，則必須選取 [目錄]  、[Azure 訂用帳戶]  和 [位置]  ：
+    - 您使用「標準」方案建立的應用程式會根據每個裝置來計費，您可以選擇 **標準 0**、**標準 1** 或 **標準 2** 定價方案，而且前兩個裝置免費。 若要深入了解免費和標準定價方案，請參閱 [Azure IoT Central 定價頁面](https://azure.microsoft.com/pricing/details/iot-central/)。 如果您使用標準定價方案來建立應用程式，則必須選取 [目錄]  、[Azure 訂用帳戶]  和 [位置]  ：
         - [目錄]  是您用來建立應用程式的 Azure Active Directory。 Azure Active Directory 包含使用者身分識別、認證和其他組織資訊。 如果您沒有 Azure Active Directory，系統會在您建立 Azure 訂用帳戶時為您建立一個租用戶。
         - *Azure 訂用帳戶* 可讓您建立 Azure 服務執行個體。 IoT Central 會在您的訂用帳戶中佈建資源。 如果您沒有 Azure 訂用帳戶，則可以在 [Azure 註冊頁面](https://aka.ms/createazuresubscription)上免費建立一個。 建立 Azure 訂用帳戶之後，請瀏覽回到 [新增應用程式]  頁面。 新的訂用帳戶現在會出現在 [Azure 訂用帳戶]  下拉式清單中。
         - [位置]  是您要在其中建立應用程式的[地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)。 一般而言，您應選擇實際上與您的裝置最接近的位置，以取得最佳效能。 選擇位置後，就無法再將應用程式移到不同的位置。
@@ -68,4 +68,4 @@ ms.locfileid: "94992806"
 
 如果您是裝置開發人員，而且想要深入了解一些程式碼，建議的後續步驟是：
 > [!div class="nextstepaction"]
-> [建立用戶端應用程式並將其連線到您的 Azure IoT Central 應用程式](./tutorial-connect-device-nodejs.md)
+> [建立用戶端應用程式並將其連線到您的 Azure IoT Central 應用程式](./tutorial-connect-device.md)

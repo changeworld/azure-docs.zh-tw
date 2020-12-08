@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 11/30/2020
 ms.author: banders
-ms.openlocfilehash: 2aae71836a4eaba845e4752edf708607977763fa
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8c3ab3f4f9bc56e9651a98e5c011cad65f21fd9d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014276"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348974"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>從其他帳戶接管 Azure 訂用帳戶的帳單擁有權
 
@@ -28,7 +28,7 @@ ms.locfileid: "96014276"
 1. 以發票區段擁有者或參與者的身分登入 [Azure 入口網站](https://portal.azure.com)，以存取 Microsoft 客戶合約的計費帳戶。
 1. 搜尋 [成本管理 + 帳單]。  
     ![顯示在 Azure 入口網站中搜尋 [成本管理 + 計費] 的螢幕擷取畫面](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
-1. 在 [計費範圍] 頁面中選取 [計費帳戶]，以供用來支付訂用帳戶的使用量。 計費帳戶的類型應該是 **Microsoft 客戶合約**。  
+1. 在 [計費範圍] 頁面中選取 [計費範圍]，然後選取計費帳戶，用以支付訂用帳戶的使用量費用。 計費帳戶的類型應該是 **Microsoft 客戶合約**。  
     [![顯示在入口網站中搜尋 [成本管理 + 計費] 的螢幕擷取畫面](./media/mca-request-billing-ownership/list-of-scopes.png)](./media/mca-request-billing-ownership/list-of-scopes.png#lightbox)
     > [!NOTE]
     > Azure 入口網站會記住您所存取的最後一個計費範圍，並在您下一次進入 [成本管理 + 帳單] 頁面時顯示該範圍。 如果您先前已造訪過 [成本管理 + 帳單]，就不會看到 [計費範圍] 頁面。 若是如此，請確認您已位於[正確的範圍](#check-for-access)。 如果沒有，請[切換範圍](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)以選取 Microsoft 客戶合約的計費帳戶。

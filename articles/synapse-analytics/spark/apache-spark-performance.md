@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: bb64fb3c9e25e629a0bcb36fe60fd5ae2d7fc906
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b94ece73d5f9dc9b8343e45fb1f616599b9a1c1f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368599"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450934"
 ---
-# <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>最佳化 Azure Synapse Analytics 中的 Apache Spark 作業 (預覽)
+# <a name="optimize-apache-spark-jobs-in-azure-synapse-analytics"></a>最佳化 Azure Synapse Analytics 中的 Apache Spark 作業
 
 了解如何特定工作負載最佳化 [Apache Spark](https://spark.apache.org/) 叢集設定。  最常見的挑戰是記憶體壓力，因為不正確的設定 (特別是錯誤大小的執行程式)、長時間執行的作業，以及導致笛卡兒 (Cartesian) 作業的工作。 您可以使用適當的快取，並允許[資料扭曲](#optimize-joins-and-shuffles)，以便作業加速執行。 為了達到最佳效能，必須監視和檢閱長時間執行而且耗用資源的 Spark 作業執行。
 

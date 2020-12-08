@@ -1,6 +1,6 @@
 ---
 title: 共用中繼資料模型
-description: Azure Synapse Analytics 可讓不同的工作區計算引擎在其無伺服器 Apache Spark 集區 (預覽) 、無伺服器 SQL 集區 (預覽) 和專用 SQL 集區之間共用資料庫和資料表。
+description: Azure Synapse Analytics 可讓不同的工作區計算引擎在其無伺服器 Apache Spark 集區、無伺服器 SQL 集區和專用 SQL 集區之間共用資料庫和資料表。
 services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
@@ -9,18 +9,16 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 64c19f3331be8ffda433207da88ebf22c546ee4e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b10b6f011fa7daee4094f0cc7b819d36127fedcd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324665"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460345"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Azure Synapse Analytics 共用中繼資料
 
-Azure Synapse Analytics 可讓不同的工作區計算引擎在其無伺服器 Apache Spark 集區 (預覽) 和無伺服器 SQL 集區 (預覽) 之間共用資料庫和資料表。
-
-[!INCLUDE [preview](../includes/note-preview.md)]
+Azure Synapse Analytics 可讓不同的工作區計算引擎在其無伺服器 Apache Spark 集區和無伺服器 SQL 集區之間共用資料庫和資料表。
 
 共用支援所謂的新式資料倉儲模式，並可讓工作區 SQL 引擎存取以 Spark 建立的資料庫和資料表。 也可讓 SQL 引擎建立自己的物件，而不會與其他引擎共用。
 

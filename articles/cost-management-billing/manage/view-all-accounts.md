@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/30/2020
 ms.author: banders
-ms.openlocfilehash: 0049efda603532099cc9bf24dc9d9411b5aaa389
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 3df6b694f3a40cef17c6e0114464ad4aa2fa30ce
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132120"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344329"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Azure 入口網站中的計費帳戶和範圍
 
@@ -33,6 +33,12 @@ Azure 入口網站支援下列計費帳戶類型：
 
 ## <a name="scopes-for-billing-accounts"></a>計費帳戶的範圍
 範圍是計費帳戶內可供您用來檢視和管理計費的節點。 您可在此管理計費資料、付款、發票，以及進行一般帳戶管理。
+
+如果您沒有檢視或管理計費帳戶的存取權，可能就沒有存取權限。 您可以要求計費帳戶管理員為您授與存取權。 如需詳細資訊，請參閱下列文章：
+
+- [Microsoft Online Services 計劃存取權](manage-billing-access.md)
+- [Microsoft 客戶合約存取權](understand-mca-roles.md)
+- [Enterprise 合約存取權](understand-ea-roles.md)
 
 ### <a name="microsoft-online-services-program"></a>Microsoft Online Services 方案
 

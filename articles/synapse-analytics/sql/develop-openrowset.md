@@ -1,6 +1,6 @@
 ---
-title: 如何在無伺服器 SQL 集區中使用 OPENROWSET (預覽)
-description: 本文將說明無伺服器 SQL 集區 (預覽) 中的 OPENROWSET 語法，並說明如何使用引數。
+title: 如何在無伺服器 SQL 集區中使用 OPENROWSET
+description: 本文將說明無伺服器 SQL 集區中的 OPENROWSET 語法，並說明如何使用引數。
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2458b5f3f0c0091bb6ec24e62a1d5614e4e1ecd8
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 97ee6c17d62a924686e3e4f4717d7bb7f4375988
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888584"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446687"
 ---
-# <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>如何在 Azure Synapse Analytics 中使用無伺服器 SQL 集區 (預覽) 使用 OPENROWSET
+# <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>如何在 Azure Synapse Analytics 中使用無伺服器 SQL 集區使用 OPENROWSET
 
-`OPENROWSET(BULK...)` 函式可讓您存取 Azure 儲存體中的檔案。 `OPENROWSET` 函式會讀取遠端資料來源 (例如檔案) 的內容，並以一組資料列傳回內容。 在無伺服器 SQL 集區 (預覽) 資源中，OPENROWSET BULK 資料列集提供者可透過呼叫 OPENROWSET 函數及指定 BULK 選項加以存取。  
+`OPENROWSET(BULK...)` 函式可讓您存取 Azure 儲存體中的檔案。 `OPENROWSET` 函式會讀取遠端資料來源 (例如檔案) 的內容，並以一組資料列傳回內容。 在無伺服器 SQL 集區資源中，OPENROWSET BULK 資料列集提供者可透過呼叫 OPENROWSET 函式及指定 BULK 選項加以存取。  
 
 您可以依照參考資料表名稱 `OPENROWSET` 的相同方式，在查詢的 `FROM` 子句中參考 `OPENROWSET` 函式。 其也支援透過內建 BULK 提供者執行大量作業，可讓檔案資料被讀取，並且當做資料列集傳回。
 
@@ -147,7 +147,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 
 WITH 子句可讓您指定要從檔案讀取的資料行。
 
-- 針對 CSV 資料檔案，應提供資料行名稱及其資料類型，才能讀取所有資料行。 如果您想要讀取一小組資料行，請使用序數從原始資料檔案中依序挑選資料行。 資料行將會以加上順序的指派來繫結。 
+- 針對 CSV 資料檔案，應提供資料行名稱及其資料類型，才能讀取所有資料行。 如果您想要讀取一小組資料行，請使用序數從原始資料檔案中依序挑選資料行。 資料行將會以加上順序的指派來繫結。 如果使用 HEADER_ROW = TRUE，則會以資料行名稱來執行資料行繫結，而不是序數位置。
     > [!TIP]
     > 您也可以針對 CSV 檔案省略 WITH 子句。 系統會從檔案內容自動推斷資料類型。 您可以使用 HEADER_ROW 引數指定標頭資料列的存在；在此情況下，系統會從標頭資料列讀取資料行名稱 。 如需詳細資料，請參閱[自動結構描述探索](#automatic-schema-discovery)。
     
@@ -231,7 +231,7 @@ CSV 剖析器 2.0 版的詳細資訊：
 
 HEADER_ROW = { TRUE | FALSE }
 
-指定 CSV 檔案是否包含標頭資料列。 預設值為 FALSE。 僅在 PARSER_VERSION='2.0' 中支援。 若為 TRUE，則會根據 FIRSTROW 引數，從第一個資料列讀取資料行名稱。
+指定 CSV 檔案是否包含標頭資料列。 預設值為 FALSE。 僅在 PARSER_VERSION='2.0' 中支援。 若為 TRUE，則會根據 FIRSTROW 引數，從第一個資料列讀取資料行名稱。 若為 TRUE，且結構描述是使用 WITH 指定的，則會以資料行名稱來執行資料行名稱的繫結，而不是序數位置。
 
 DATAFILETYPE = { 'char' | 'widechar' }
 

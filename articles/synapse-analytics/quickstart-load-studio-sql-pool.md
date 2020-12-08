@@ -9,20 +9,20 @@ ms.topic: quickstart
 ms.date: 11/16/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8d70a45b89142f6f9c6990fdbb4b79751c82275f
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 312c57c103bf733bc72c5de1d22ab3239d5b5e96
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95237471"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484644"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>快速入門：使用 Synapse SQL 進行大量載入
 
-在 Synapse Studio 中使用「大量載入」精靈時，載入資料的作業變得輕鬆無比。 此精靈會引導您使用 [COPY 陳述式](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)來建立 T-SQL 指令碼，以大量載入資料。 
+使用 Synapse Studio 中的大量載入精靈可以輕鬆載入資料。 大量載入精靈會引導您使用 [COPY 陳述式](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)來建立 T-SQL 指令碼，以大量載入資料。 
 
 ## <a name="entry-points-to-the-bulk-load-wizard"></a>大量載入精靈的進入點
 
-您現在只要在 Synapse Studio 內的下欄區域按一下滑鼠右鍵，即可使用專用 SQL 集區輕鬆地大量載入資料：
+您只要在 Synapse Studio 內的下列區域按一下滑鼠右鍵，即可使用專用 SQL 集區輕鬆地大量載入資料：
 
 - 連結到工作區的 Azure 儲存體帳戶所擁有的檔案或資料夾 ![以滑鼠右鍵按一下儲存體帳戶中的檔案或資料夾](./sql/media/bulk-load/bulk-load-entry-point-0.png)
 

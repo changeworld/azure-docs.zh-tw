@@ -1,6 +1,6 @@
 ---
-title: 在無伺服器 SQL 集區 (預覽) 中建立及使用檢視
-description: 在本節中，您將了解如何建立和使用檢視來包裝無伺服器 SQL 集區 (預覽) 查詢。 檢視可讓您重複使用這些查詢。 如果您想要使用工具 (例如 Power BI) 來搭配無伺服器 SQL 集區，也是需要檢視。
+title: 在無伺服器 SQL 集區中建立及使用檢視
+description: 在本節中，您將了解如何建立和使用檢視來包裝無伺服器 SQL 集區查詢。 檢視可讓您重複使用這些查詢。 如果您想要使用工具 (例如 Power BI) 來搭配無伺服器 SQL 集區，也是需要檢視。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 302cf97db7c1d2ba489a84b6be912816d20f6091
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 0948c7c82d7577bae07057bff9d1be4d7e09f978
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685557"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462282"
 ---
-# <a name="create-and-use-views-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用無伺服器 SQL 集區 (預覽) 建立及使用檢視
+# <a name="create-and-use-views-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用無伺服器 SQL 集區建立及使用檢視
 
-在本節中，您將了解如何建立和使用檢視來包裝無伺服器 SQL 集區 (預覽) 查詢。 檢視可讓您重複使用這些查詢。 如果您想要使用工具 (例如 Power BI) 來搭配無伺服器 SQL 集區，也是需要檢視。
+在本節中，您將了解如何建立和使用檢視來包裝無伺服器 SQL 集區查詢。 檢視可讓您重複使用這些查詢。 如果您想要使用工具 (例如 Power BI) 來搭配無伺服器 SQL 集區，也是需要檢視。
 
 ## <a name="prerequisites"></a>Prerequisites
 

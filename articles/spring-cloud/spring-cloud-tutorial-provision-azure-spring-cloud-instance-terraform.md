@@ -1,24 +1,24 @@
 ---
-title: 教學課程 - 使用 Terraform 佈建 Azure Spring Cloud 執行個體
+title: 使用 Terraform 佈建 Azure Spring Cloud 執行個體
 description: 使用 Terraform 佈建 Azure Spring Cloud 執行個體。
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: ed66da991df4dbe89c327a9a28ee28527c3da87b
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 060ef2d08b849706b47b24748142c608292971b5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091639"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533786"
 ---
-# <a name="tutorial-provision-an-azure-spring-cloud-instance-with-terraform"></a>教學課程：使用 Terraform 佈建 Azure Spring Cloud 執行個體
+# <a name="provision-an-azure-spring-cloud-instance-with-terraform"></a>使用 Terraform 佈建 Azure Spring Cloud 執行個體
 
 **本文適用於：** ✔️ Java ✔️ C#
 
-本教學課程會使用 Terraform 建立 Azure Spring Cloud 執行個體。 這些程序會逐步引導您建立下列資源：
+此範例會使用 Terraform 建立 Azure Spring Cloud 執行個體。 這些程序會逐步引導您建立下列資源：
 
 > [!div class="checklist"]
 > * 資源群組
@@ -33,7 +33,7 @@ ms.locfileid: "92091639"
 
 ## <a name="prerequisites"></a>必要條件
 
-- **Azure 訂用帳戶**：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- **Azure 訂用帳戶**：如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 ## <a name="create-configuration-file"></a>建立組態檔
 
@@ -161,7 +161,7 @@ ms.locfileid: "92091639"
 
 如果不再需要本文中建立的資源，請予以刪除。
 
-執行 [terraform destroy](https://www.terraform.io/docs/commands/destroy.html) 命令，以移除在本教學課程中建立的 Azure 資源：
+執行 [terraform destroy](https://www.terraform.io/docs/commands/destroy.html) 命令，以移除在此練習中建立的 Azure 資源：
 
 ```bash
 terraform destroy -auto-approve

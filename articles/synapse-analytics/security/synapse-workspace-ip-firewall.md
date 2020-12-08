@@ -8,14 +8,14 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 00b4f38f4a2a44b88718224db2b2442033816f83
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3cbd9fd697bbae8779f5b2b9fa4ab817efce30ac
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313885"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454643"
 ---
-# <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>Azure Synapse Analytics IP 防火牆規則 (預覽)
+# <a name="azure-synapse-analytics-ip-firewall-rules"></a>Azure Synapse Analytics IP 防火牆規則
 
 本文將說明 IP 防火牆規則，並教您如何在 Azure Synapse Analytics 中進行設定。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0ed56d200c2b5a472dbf93d45ad25156ea02a884
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 90e3464ac9ddf1e839c3a731f79ac2c0771c37ea
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181147"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532687"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>教學課程：設定 8x8 來自動佈建使用者
 
@@ -50,17 +50,17 @@ ms.locfileid: "96181147"
 
 ### <a name="to-configure-a-user-provisioning-access-token-in-8x8-configuration-manager"></a>若要在 8x8 Configuration Manager 中設定使用者佈建存取權杖：
 
-1. 登入 [Configuration Manager](https://vo-cm.8x8.com)。 選取 [身分識別管理]。
+1. 登入[管理主控台](https://admin.8x8.com)。 選取 [身分識別管理]。
 
-   ![身分識別管理](./media/8x8-provisioning-tutorial/8x8-identity-management.png)
+   ![Admin](./media/8x8-provisioning-tutorial/8x8-identity-management.png)
 
 2. 按一下 [顯示使用者佈建資訊] 連結以產生權杖。
 
-   ![顯示使用者佈建](./media/8x8-provisioning-tutorial/8x8-show-user-provisioning.png)
+   ![顯示](./media/8x8-provisioning-tutorial/8x8-show-user-provisioning.png)
 
 3. 複製 **8x8 URL** 和 **8x8 API 權杖** 值。 這些值會分別輸入到 Azure 入口網站 8x8 應用程式 [佈建] 索引標籤中的 [租用戶 URL] 和 [祕密權杖] 欄位。
 
-   ![複製 URL 和權杖](./media/8x8-provisioning-tutorial/8x8-copy-url-token.png)
+   ![Token](./media/8x8-provisioning-tutorial/8x8-copy-url-token.png)
 
 ## <a name="step-3-add-8x8-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫新增 8x8
 

@@ -1,30 +1,33 @@
 ---
-title: 在無伺服器 Apache Spark 集區 (預覽) 和 SQL 集區之間匯入和匯出資料
-description: 本文提供相關資訊來讓您了解如何使用自訂連接器，於專用 SQL 集區和無伺服器 Apache Spark 集區 (預覽) 之間移動資料。
+title: 在無伺服器 Apache Spark 集區和 SQL 集區之間匯入和匯出資料
+description: 本文提供相關資訊來讓您了解如何使用自訂連接器，於專用 SQL 集區和無伺服器 Apache Spark 集區之間移動資料。
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: spark
-ms.date: 04/15/2020
+ms.date: 11/19/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: ee82fbaa9687e064747908600c7e5c9017f8f1a9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e0bdfa4a451269e82b73194e921f9067d848868e
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323890"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511078"
 ---
 # <a name="introduction"></a>簡介
 
-Azure Synapse Apache Spark 對 Synapse SQL 連接器的設計目的是要讓您在 Azure Synapse 中於無伺服器 Apache Spark 集區 (預覽) 和 SQL 集區之間有效率地傳輸資料。 Azure Synapse Apache Spark 對 Synapse SQL 連接器僅適用於專用 SQL 集區，不適用於無伺服器 SQL 集區。
+Azure Synapse Apache Spark 對 Synapse SQL 連接器的設計目的是要讓您在 Azure Synapse 中於無伺服器 Apache Spark 集區和專用 SQL 集區之間有效率地傳輸資料。 Azure Synapse Apache Spark 對 Synapse SQL 連接器僅適用於專用 SQL 集區，不適用於無伺服器 SQL 集區。
+
+> [!WARNING]
+> **sqlanalytics()** 函式名稱已變更為 **synapsesql()** 。 sqlanalytics 函式會繼續運作，但即將淘汰。  請將對 **sqlanalytics()** 的任何參考變更為 **synapsesql()** ，以防止未來發生任何中斷狀況。
 
 ## <a name="design"></a>設計
 
 若要在 Spark 集區和 SQL 集區之間傳輸資料，可使用 JDBC 來進行。 不過，在有兩個分散式系統 (例如 Spark 和 SQL 集區) 的情況下，JDBC 往往會成為序列資料傳輸的瓶頸。
 
-Azure Synapse Apache Spark 集區對 Synapse SQL 連接器是適用於 Apache Spark 的資料來源實作。 其會使用 Azure Data Lake Storage Gen2 以及專用 SQL 集區中的 Polybase，以在 Spark 叢集與 Synapse SQL 執行個體之間有效率地傳輸資料。
+Azure Synapse Apache Spark 集區對 Synapse SQL 連接器是適用於 Apache Spark 的資料來源實作。 其會使用 Azure Data Lake Storage Gen2 以及專用 SQL 集區中的 Polybase，以在 Spark 叢集與 Synapse 專用 SQL 執行個體之間有效率地傳輸資料。
 
 ![連接器架構](./media/synapse-spark-sqlpool-import-export/arch1.png)
 
@@ -37,6 +40,8 @@ Azure Synapse Apache Spark 集區對 Synapse SQL 連接器是適用於 Apache Sp
 ## <a name="constraints"></a>條件約束
 
 - 此連接器僅適用於 Scala。
+- 對於 pySpark，請參閱[使用 Python](#use-pyspark-with-the-connector) 一節中的詳細資料。
+- 此連接器不支援查詢 SQL 檢視。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -80,7 +85,7 @@ EXEC sp_addrolemember 'db_exporter',[mike@contoso.com]
 #### <a name="read-api"></a>讀取 API
 
 ```scala
-val df = spark.read.sqlanalytics("<DBName>.<Schema>.<TableName>")
+val df = spark.read.synapsesql("<DBName>.<Schema>.<TableName>")
 ```
 
 在 SQL 集區中，上述 API 會同時適用於內部 (受控) 以及外部資料表。
@@ -88,7 +93,7 @@ val df = spark.read.sqlanalytics("<DBName>.<Schema>.<TableName>")
 #### <a name="write-api"></a>寫入 API
 
 ```scala
-df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
+df.write.synapsesql("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 寫入 API 會在專用 SQL 集區中建立資料表，然後叫用 Polybase 來載入資料。  資料表不能存在於專用 SQL 集區中，否則會傳回錯誤，指出「已經有物件名為...」
@@ -101,7 +106,7 @@ TableType 值
 SQL 集區受控資料表
 
 ```scala
-df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
+df.write.synapsesql("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 ```
 
 SQL 集區外部資料表
@@ -130,7 +135,7 @@ WITH (
 df.write.
     option(Constants.DATA_SOURCE, <DataSourceName>).
     option(Constants.FILE_FORMAT, <FileFormatName>).
-    sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.EXTERNAL)
+    synapsesql("<DBName>.<Schema>.<TableName>", Constants.EXTERNAL)
 
 ```
 
@@ -149,7 +154,7 @@ df.write.
 ```scala
 val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
-sqlanalytics("<DBName>.<Schema>.<TableName>")
+synapsesql("<DBName>.<Schema>.<TableName>")
 ```
 
 #### <a name="write-api"></a>寫入 API
@@ -157,7 +162,7 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 ```scala
 df.write.
 option(Constants.SERVER, "samplews.database.windows.net").
-sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
+synapsesql("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 ### <a name="use-sql-auth-instead-of-azure-ad"></a>使用 SQL 驗證而非 Azure AD
@@ -171,7 +176,7 @@ val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
 option(Constants.USER, <SQLServer Login UserName>).
 option(Constants.PASSWORD, <SQLServer Login Password>).
-sqlanalytics("<DBName>.<Schema>.<TableName>")
+synapsesql("<DBName>.<Schema>.<TableName>")
 ```
 
 #### <a name="write-api"></a>寫入 API
@@ -181,10 +186,10 @@ df.write.
 option(Constants.SERVER, "samplews.database.windows.net").
 option(Constants.USER, <SQLServer Login UserName>).
 option(Constants.PASSWORD, <SQLServer Login Password>).
-sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
+synapsesql("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-### <a name="use-the-pyspark-connector"></a>使用 PySpark 連接器
+### <a name="use-pyspark-with-the-connector"></a>搭配使用 PySpark 與連接器
 
 > [!NOTE]
 > 請記住，這個範例僅針對筆記本體驗來提供。
@@ -203,7 +208,7 @@ pyspark_df.createOrReplaceTempView("pysparkdftemptable")
 %%spark
 val scala_df = spark.sqlContext.sql ("select * from pysparkdftemptable")
 
-scala_df.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
+scala_df.write.synapsesql("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
 ```
 
 同樣地，在讀取案例中，請使用 Scala 讀取資料並將其寫入暫存資料表，並在 PySpark 中使用 Spark SQL 將暫存資料表查詢至資料框架。
@@ -234,6 +239,7 @@ scala_df.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
 
 > [!IMPORTANT]
 > 如果您不想要設定預設值的話，請確定您未選取 [預設]。
+
 
 ## <a name="next-steps"></a>後續步驟
 

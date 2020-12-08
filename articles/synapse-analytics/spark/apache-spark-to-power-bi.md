@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: ea8fcb602f49dec61187260e08d3ccd1b148cee8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 791cab369dcbf9cab8d1256377cfee4a433c21b9
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95918915"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450900"
 ---
 # <a name="tutorial-create-a-power-bi-report-using-apache-spark-and-azure-synapse-analytics"></a>教學課程：使用 Apache Spark 和 Azure Synapse Analytics 建立 Power BI 報表
 
@@ -69,9 +69,12 @@ ms.locfileid: "95918915"
                                     & (filtered_df.paymentType.isin({"1", "2"})))
     ```
 4. 最後，我們會使用 Apache Spark ```saveAsTable``` 方法來儲存我們的資料框架。 這可讓您在稍後使用無伺服器 SQL 集區來查詢和連線到相同的資料表。
+  ```python
+     taxi_df.write.mode("overwrite").saveAsTable("NycTlcTutorial.nyctaxi")
+  ```
    
 ## <a name="query-data-using-serverless-sql-pools"></a>使用無伺服器 SQL 集區查詢資料
-Azure Synapse Analytics 可讓不同的工作區計算引擎在其無伺服器 Apache Spark 集區 (預覽) 和無伺服器 SQL 集區 (預覽) 之間共用資料庫和資料表。 這是透過 Synapse 的[共用中繼資料管理](../metadata/overview.md)功能來提供支援。 因此，Spark 建立的資料庫及其受 Parquet 支援的資料表會在工作區無伺服器 SQL 集區引擎中顯示。
+Azure Synapse Analytics 可讓不同的工作區計算引擎在其無伺服器 Apache Spark 集區和無伺服器 SQL 集區之間共用資料庫和資料表。 這是透過 Synapse 的[共用中繼資料管理](../metadata/overview.md)功能來提供支援。 因此，Spark 建立的資料庫及其受 Parquet 支援的資料表會在工作區無伺服器 SQL 集區引擎中顯示。
 
 若要使用無伺服器 SQL 集區來查詢您的 Apache Spark 資料表：
    1. 儲存 Apache Spark 資料表之後，切換至 [資料] 索引標籤。

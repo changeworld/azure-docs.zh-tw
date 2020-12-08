@@ -4,15 +4,15 @@ description: 教學課程：說明如何使用 Azure 事件方格和事件中樞
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e6dfcac17d79edd417af07179224fdf922906c4e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 42a2f7fd557970328f6d88b08e296317cecd8c66
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841337"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462158"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>教學課程：將巨量資料串流處理至資料倉儲
-Azure [Event Grid](overview.md) 是一項智慧型事件路由服務，可讓您對應用程式和服務發出的通知 (事件) 做出回應。 例如，它可以觸發 Azure 函式以處理已擷取至 Azure Blob 儲存體或 Azure Data Lake Storage 的事件中樞資料，並將資料移轉至其他資料存放庫。 此[事件中樞和事件方格整合範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)說明如何使用事件中樞與事件方格，將已擷取的事件中樞資料從 Blob 儲存體順暢地遷移至 Azure Synapse Analytics (先前為 SQL 資料倉儲)。
+Azure [Event Grid](overview.md) 是一項智慧型事件路由服務，可讓您對應用程式和服務發出的通知 (事件) 做出回應。 例如，它可以觸發 Azure 函式以處理已擷取至 Azure Blob 儲存體或 Azure Data Lake Storage 的事件中樞資料，並將資料移轉至其他資料存放庫。 此[事件中樞和事件方格整合範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)說明如何使用事件中樞與事件方格，將已擷取的事件中樞資料從 Blob 儲存體順暢地移轉至 Azure Synapse Analytics。
 
 ![應用程式概觀](media/event-grid-event-hubs-integration/overview.png)
 
@@ -27,8 +27,8 @@ Azure [Event Grid](overview.md) 是一項智慧型事件路由服務，可讓您
 在本文中，您會執行下列步驟：
 
 > [!div class="checklist"]
-> * 使用 Azure Resource Manager 範本部署基礎結構：事件中樞、儲存體帳戶、函式應用程式、Synapse Analytics。
-> * 在資料倉儲中建立資料表。
+> * 使用 Azure Resource Manager 範本部署基礎結構：事件中樞、儲存體帳戶、函式應用程式、專用 SQL 集區。
+> * 在專用 SQL 集區中建立資料表。
 > * 將程式碼新增至函式應用程式。
 > * 訂閱事件。 
 > * 執行應用程式，將資料傳送至事件中樞。

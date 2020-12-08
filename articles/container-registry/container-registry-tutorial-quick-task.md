@@ -2,18 +2,18 @@
 title: 教學課程 - 快速容器映像建置
 description: 在本教學課程中，您將了解如何使用 Azure Container Registry 工作 (ACR 工作) 在 Azure 中建置 Docker 容器映像，然後將其部署至 Azure 容器執行個體。
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: 43d2c277fe3297c7e5ee55046118add352853640
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b218f47348d5a26297f14c4bc788a6cf6b78cc60
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739530"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030319"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>教學課程：使用 Azure Container Registry 工作在雲端中建置和部署容器映像
 
-**ACR 工作** 是 Azure Container Registry 內的一組功能，可在 Azure 中提供精簡而有效率的 Docker 容器映像組建。 在本文中，您將了解如何使用 ACR 工作的 *快速工作* 功能。
+[ACR 工作](container-registry-tasks-overview.md)是 Azure Container Registry 內的一組功能，可在 Azure 中提供精簡而有效率的 Docker 容器映像組建。 在本文中，您將了解如何使用 ACR 工作的 *快速工作* 功能。
 
 「內部迴圈」開發週期是在認可至原始檔控制之前撰寫程式碼、建置和測試應用程式的反覆程序。 快速工作可將您的內部迴圈延伸至雲端，讓您能夠進行建置成功驗證，並將成功建置的映像自動推送至容器登錄。 您的映像依原生狀態會建置在雲端中接近您的登錄之處，因此有助於快速部署。
 
@@ -27,10 +27,6 @@ ms.locfileid: "92739530"
 > * 將容器部署至 Azure 容器執行個體
 
 在後續的教學課程中，您將了解如何將 ACR 工作工作用於程式碼認可和基礎映像更新的自動化容器映像建置。 ACR 工作也可執行[多步驟工作](container-registry-tasks-multi-step.md)，使用 YAML 檔案來定義相關步驟，以建置、推送並選擇性地測試多個容器。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-如果您想要在本機使用 Azure CLI，必須安裝 Azure CLI **2.0.46** 版或更新版本，並使用 [az login][az-login] 登入。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級 CLI，請參閱[安裝 Azure CLI][azure-cli]。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -66,13 +62,13 @@ cd acr-build-helloworld-node
 
 本教學課程系列中的命令採用 Bash 殼層適用的格式。 如果您想要使用 PowerShell、命令提示字元或其他殼層，您可能需要據以調整行接續符號和環境變數格式。
 
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+
 ## <a name="build-in-azure-with-acr-tasks"></a>使用 ACR 工作在 Azure 中進行建置
 
 現在，您已將原始程式碼提取至電腦，接著請依照下列步驟建立容器登錄，並使用 ACR 工作來建置容器映像。
 
 為了方便執行範例命令，在這一系列的教學課程中，將會使用殼層環境變數。 請執行下列命令以設定 `ACR_NAME` 變數。 請將 **\<registry-name\>** 取代為新容器登錄的唯一名稱。 登錄名稱在 Azure 內必須是唯一的，只能包含小寫字母和 5-50 個英數字元。 您在本教學課程中建立的其他資源將以此名稱為基礎，因此，您只需要修改第一個變數，即此變數。
-
-[![內嵌啟動](https://shell.azure.com/images/launchcloudshell.png "啟動 Azure Cloud Shell")](https://shell.azure.com)
 
 ```console
 ACR_NAME=<registry-name>
@@ -80,16 +76,16 @@ ACR_NAME=<registry-name>
 
 在填入容器登錄環境變數後，您現在應該可以複製並貼上教學課程中的其餘命令，而不需編輯的任何值。 請執行下列命令，以建立資源群組和容器登錄：
 
-```azurecli-interactive
+```azurecli
 RES_GROUP=$ACR_NAME # Resource Group name
 
 az group create --resource-group $RES_GROUP --location eastus
 az acr create --resource-group $RES_GROUP --name $ACR_NAME --sku Standard --location eastus
 ```
 
-現在您已具有登錄，接著請使用 ACR 工作，從範例程式碼建置容器映像。 請執行 [az acr build][az-acr-build] 命令以執行 *快速工作* ：
+現在您已具有登錄，接著請使用 ACR 工作，從範例程式碼建置容器映像。 請執行 [az acr build][az-acr-build] 命令以執行 *快速工作*：
 
-```azurecli-interactive
+```azurecli
 az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
 ```
 
@@ -100,16 +96,16 @@ Packing source code into tar file to upload...
 Sending build context (4.813 KiB) to ACR...
 Queued a build with build ID: da1
 Waiting for build agent...
-2018/08/22 18:31:42 Using acb_vol_01185991-be5f-42f0-9403-a36bb997ff35 as the home volume
-2018/08/22 18:31:42 Setting up Docker configuration...
-2018/08/22 18:31:43 Successfully set up Docker configuration
-2018/08/22 18:31:43 Logging in to registry: myregistry.azurecr.io
-2018/08/22 18:31:55 Successfully logged in
+2020/11/18 18:31:42 Using acb_vol_01185991-be5f-42f0-9403-a36bb997ff35 as the home volume
+2020/11/18 18:31:42 Setting up Docker configuration...
+2020/11/18 18:31:43 Successfully set up Docker configuration
+2020/11/18 18:31:43 Logging in to registry: myregistry.azurecr.io
+2020/11/18 18:31:55 Successfully logged in
 Sending build context to Docker daemon   21.5kB
-Step 1/5 : FROM node:9-alpine
-9-alpine: Pulling from library/node
+Step 1/5 : FROM node:15-alpine
+15-alpine: Pulling from library/node
 Digest: sha256:8dafc0968fb4d62834d9b826d85a8feecc69bd72cd51723c62c7db67c6dec6fa
-Status: Image is up to date for node:9-alpine
+Status: Image is up to date for node:15-alpine
  ---> a56170f59699
 Step 2/5 : COPY . /src
  ---> 88087d7e709a
@@ -131,7 +127,7 @@ Removing intermediate container fe7027a11787
  ---> 20a27b90eb29
 Successfully built 20a27b90eb29
 Successfully tagged myregistry.azurecr.io/helloacrtasks:v1
-2018/08/22 18:32:11 Pushing image: myregistry.azurecr.io/helloacrtasks:v1, attempt 1
+2020/11/18 18:32:11 Pushing image: myregistry.azurecr.io/helloacrtasks:v1, attempt 1
 The push refers to repository [myregistry.azurecr.io/helloacrtasks]
 6428a18b7034: Preparing
 c44b9827df52: Preparing
@@ -144,8 +140,8 @@ c44b9827df52: Pushed
 6428a18b7034: Pushed
 8c9992f4e5dd: Pushed
 v1: digest: sha256:b038dcaa72b2889f56deaff7fa675f58c7c666041584f706c783a3958c4ac8d1 size: 1366
-2018/08/22 18:32:43 Successfully pushed image: myregistry.azurecr.io/helloacrtasks:v1
-2018/08/22 18:32:43 Step ID acb_step_0 marked as successful (elapsed time in seconds: 15.648945)
+2020/11/18 18:32:43 Successfully pushed image: myregistry.azurecr.io/helloacrtasks:v1
+2020/11/18 18:32:43 Step ID acb_step_0 marked as successful (elapsed time in seconds: 15.648945)
 The following dependencies were found:
 - image:
     registry: myregistry.azurecr.io
@@ -155,7 +151,7 @@ The following dependencies were found:
   runtime-dependency:
     registry: registry.hub.docker.com
     repository: library/node
-    tag: 9-alpine
+    tag: 15-alpine
     digest: sha256:8dafc0968fb4d62834d9b826d85a8feecc69bd72cd51723c62c7db67c6dec6fa
   git: {}
 
@@ -178,7 +174,7 @@ ACR 工作依預設會自動將已建置的映像順利推送至登錄，讓您�
 
 如果您在 [Azure Key Vault](../key-vault/index.yml) 中還沒有保存庫，使用 Azure CLI 以下列命令建立一個。
 
-```azurecli-interactive
+```azurecli
 AKV_NAME=$ACR_NAME-vault
 
 az keyvault create --resource-group $RES_GROUP --name $AKV_NAME
@@ -190,7 +186,7 @@ az keyvault create --resource-group $RES_GROUP --name $AKV_NAME
 
 使用 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] 命令建立服務主體，並使用 [az keyvault secret set][az-keyvault-secret-set] 將服務主體的 **密碼** 儲存在保存庫中：
 
-```azurecli-interactive
+```azurecli
 # Create service principal, store its password in AKV (the registry *password*)
 az keyvault secret set \
   --vault-name $AKV_NAME \
@@ -205,9 +201,9 @@ az keyvault secret set \
 
 在前面的命令中，`--role` 引數設定服務主體具有 acrpull 角色，授與主體僅限提取登錄的存取權。 若要同時授與發送和提取存取權，請將 `--role` 引數變更為 acrpush。
 
-接下來，在保存庫中儲存服務主體的 appId，也就是您傳遞給 Azure Container Registry 進行驗證的 **使用者名稱** ：
+接下來，在保存庫中儲存服務主體的 appId，也就是您傳遞給 Azure Container Registry 進行驗證的 **使用者名稱**：
 
-```azurecli-interactive
+```azurecli
 # Store service principal ID in AKV (the registry *username*)
 az keyvault secret set \
     --vault-name $AKV_NAME \
@@ -217,8 +213,8 @@ az keyvault secret set \
 
 您已建立 Azure Key Vault，並在其中儲存兩個祕密：
 
-* `$ACR_NAME-pull-usr`:服務主體識別碼，用來作為容器登錄 **使用者名稱** 。
-* `$ACR_NAME-pull-pwd`:服務主體密碼，用來作為容器登錄 **密碼** 。
+* `$ACR_NAME-pull-usr`:服務主體識別碼，用來作為容器登錄 **使用者名稱**。
+* `$ACR_NAME-pull-pwd`:服務主體密碼，用來作為容器登錄 **密碼**。
 
 現在，當您或應用程式和服務從登錄提取映像時，您可以依名稱參考這些祕密。
 
@@ -228,7 +224,7 @@ az keyvault secret set \
 
 執行下列 [az container create][az-container-create] 命令來部署容器執行個體。 此命令會使用儲存在 Azure Key Vault 中的服務主體認證向您的容器登錄進行驗證。
 
-```azurecli-interactive
+```azurecli
 az container create \
     --resource-group $RES_GROUP \
     --name acr-tasks \
@@ -255,7 +251,7 @@ acr-tasks-myregistry.eastus.azurecontainer.io
 
 若要查看容器的啟動程序，請使用 [az container attach][az-container-attach] 命令：
 
-```azurecli-interactive
+```azurecli
 az container attach --resource-group $RES_GROUP --name acr-tasks
 ```
 
@@ -263,10 +259,10 @@ az container attach --resource-group $RES_GROUP --name acr-tasks
 
 ```output
 Container 'acr-tasks' is in state 'Running'...
-(count: 1) (last timestamp: 2018-08-22 18:39:10+00:00) pulling image "myregistry.azurecr.io/helloacrtasks:v1"
-(count: 1) (last timestamp: 2018-08-22 18:39:15+00:00) Successfully pulled image "myregistry.azurecr.io/helloacrtasks:v1"
-(count: 1) (last timestamp: 2018-08-22 18:39:17+00:00) Created container
-(count: 1) (last timestamp: 2018-08-22 18:39:17+00:00) Started container
+(count: 1) (last timestamp: 2020-11-18 18:39:10+00:00) pulling image "myregistry.azurecr.io/helloacrtasks:v1"
+(count: 1) (last timestamp: 2020-11-18 18:39:15+00:00) Successfully pulled image "myregistry.azurecr.io/helloacrtasks:v1"
+(count: 1) (last timestamp: 2020-11-18 18:39:17+00:00) Created container
+(count: 1) (last timestamp: 2020-11-18 18:39:17+00:00) Started container
 
 Start streaming logs:
 Server running at http://localhost:80
@@ -274,7 +270,7 @@ Server running at http://localhost:80
 
 當 `Server running at http://localhost:80` 出現時，請瀏覽至容器在您瀏覽器中的 FQDN，以查看執行中的應用程式。 FQDN 應已顯示在您在上一節中執行的 `az container create` 命令所產生的輸出中。
 
-![呈現在瀏覽器中的範例應用程式的螢幕擷取畫面][quick-build-02-browser]
+:::image type="content" source="media/container-registry-tutorial-quick-build/quick-build-02-browser.png" alt-text="在瀏覽器中執行的範例應用程式":::
 
 若要從容器將您的主控台中斷連結，請點按 `Control+C`。
 
@@ -282,20 +278,20 @@ Server running at http://localhost:80
 
 使用 [az container delete][az-container-delete] 命令停止容器執行個體：
 
-```azurecli-interactive
+```azurecli
 az container delete --resource-group $RES_GROUP --name acr-tasks
 ```
 
 若要移除您在本教學課程中建立的 *所有* 資源 (包括容器登錄、金鑰保存庫和服務主體)，請發出下列命令。 不過，本系列的[下一個教學課程](container-registry-tutorial-build-task.md)將會使用這些資源，因此如果您要直接移至下一個教學課程，可以選擇加以保留。
 
-```azurecli-interactive
+```azurecli
 az group delete --resource-group $RES_GROUP
 az ad sp delete --id http://$ACR_NAME-pull
 ```
 
 ## <a name="next-steps"></a>後續步驟
 
-現在，您已使用快速工作測試您的內部迴圈，接下來請設定您將原始程式碼認可至 Git 存放庫時用來觸發容器映像建置的 **建置工作** ：
+現在，您已使用快速工作測試您的內部迴圈，接下來請設定您將原始程式碼認可至 Git 存放庫時用來觸發容器映像建置的 **建置工作**：
 
 > [!div class="nextstepaction"]
 > [使用工作觸發自動建置](container-registry-tutorial-build-task.md)

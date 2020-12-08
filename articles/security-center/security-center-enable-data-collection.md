@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 7d96b03598f90b45b7ecf88027be7408d8f161ea
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: f5cf432e3824ca0bb441a458a08fc7353291cf1f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638762"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490052"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>從 Azure 資訊安全中心自動佈建代理程式和擴充功能
 
@@ -24,7 +24,7 @@ ms.locfileid: "94638762"
 收集資料的方式：
 
 - **Log Analytics 代理程式** 會讀取機器的各種安全性相關設定和事件記錄，並將資料複製到工作區進行分析。 這類資料的範例包括︰作業系統類型和版本、作業系統記錄 (Windows 事件記錄)、執行中程序、電腦名稱、IP 位址和已登入的使用者。
-- **安全性延伸模組** (例如[適用於 Kubernetes 的 Azure 原則附加元件](../governance/policy/concepts/policy-for-kubernetes.md)) 也可以提供特殊資源類型的相關資料給資訊安全中心。
+- **安全性延伸模組** (例如 [適用於 Kubernetes 的 Azure 原則附加元件](../governance/policy/concepts/policy-for-kubernetes.md)) 也可以提供特殊資源類型的相關資料給資訊安全中心。
 
 > [!TIP]
 > 隨著資訊安全中心增長，可以監視的資源類型也會隨之增加。 延伸模組的數目也會增加。 自動佈建會藉由運用 Azure 原則的功能來擴充，以支援其他資源類型。
@@ -138,7 +138,7 @@ Log Analytics 代理程式的自動佈建開啟時，資訊安全中心會在所
 將資料儲存在 Log Analytics 中，可能會產生額外的資料儲存費用。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。
 
 ### <a name="information-for-azure-sentinel-users"></a>Azure Sentinel 使用者的資訊 
-Azure Sentinel 的使用者：請注意，可以從 Azure 資訊安全中心或 Azure Sentinel (但不能兩者) 設定在單一工作區的內容中收集安全性事件。 如果您打算將 Azure Sentinel 新增至已經收到來自 Azure 資訊安全中心的 Azure Defender 警示並已設定要收集安全性事件的工作區，您有兩個選項：
+Azure Sentinel 的使用者：請注意，可以從 Azure 資訊安全中心或 Azure Sentinel (但不能兩者) 設定在單一工作區的內容中收集安全性事件。 如果您打算將 Azure Sentinel 新增至已收到來自 Azure 資訊安全中心的警示，並已設定要收集安全性事件的工作區，您有兩個選項：
 - 讓 Azure 資訊安全中心的 [安全性事件] 收集保持原狀。 您將能夠在 Azure Sentinel 和 Azure Defender 中查詢及分析這些事件。 但是，您將無法在 Azure Sentinel 中監視連接器的連線狀態或變更其組態。 如果這對您很重要，請考慮第二個選項。
 - 停用 Azure 資訊安全中心內的安全性事件收集 (在 Log Analytics 代理程式的設定中，將 [Windows 安全性事件] 設定為 [無])。 然後在 Azure Sentinel 中新增安全性事件連接器。 如同第一個選項，您將能夠同時在 Azure Sentinel 和 Azure Defender/ASC 中查詢及分析事件，但您現在能夠監視連接器的連線狀態，或只在 Azure Sentinel 中變更其組態。
 
@@ -211,8 +211,8 @@ Azure Sentinel 的使用者：請注意，可以從 Azure 資訊安全中心或 
 
 1. 若要使用 PowerShell 來部署代理程式，請使用虛擬機器文件中的指示：
 
-    - [Windows 電腦](../virtual-machines/extensions/oms-windows.md?toc=%252fazure%252fazure-monitor%252ftoc.json#powershell-deployment)
-    - [Linux 機器](../virtual-machines/extensions/oms-linux.md?toc=%252fazure%252fazure-monitor%252ftoc.json#azure-cli-deployment)
+    - [Windows 電腦](../virtual-machines/extensions/oms-windows.md?toc=%2fazure%2fazure-monitor%2ftoc.json#powershell-deployment)
+    - [Linux 機器](../virtual-machines/extensions/oms-linux.md?toc=%2fazure%2fazure-monitor%2ftoc.json#azure-cli-deployment)
 
 > [!TIP]
 > 如需有關如何使用 PowerShell 上架資訊安全中心的說明，請參閱[使用 PowerShell 自動化上架 Azure 資訊安全中心](security-center-powershell-onboarding.md)。

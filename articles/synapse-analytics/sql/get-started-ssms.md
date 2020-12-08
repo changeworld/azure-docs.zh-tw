@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4239b5400e919621dfff001ca7e6cb9de1626658
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: da698a1a8d91273321d4633abd683a06cb4cf403
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686203"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451635"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 連線到 Synapse SQL
 > [!div class="op_single_selector"]
@@ -26,9 +26,9 @@ ms.locfileid: "94686203"
 > 
 > 
 
-您可以使用 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)，透過無伺服器 SQL 集區 (預覽) 或 SQL 集區資源，連線至 Azure Synapse Analytics 中的專用 SQL 並加以查詢。 
+您可以使用 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)，透過無伺服器 SQL 集區或 SQL 集區資源，連線至 Azure Synapse Analytics 中的專用 SQL 並加以查詢。 
 
-### <a name="supported-tools-for-serverless-sql-pool-preview"></a>無伺服器 SQL 集區支援的工具 (預覽)
+### <a name="supported-tools-for-serverless-sql-pool"></a>無伺服器 SQL 集區支援的工具
 
 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) 從 1.18.0 版開始便已獲得完整支援。 SSMS 從 18.5 版開始只獲得部分支援，因此只能用來連線和查詢。
 
@@ -63,7 +63,7 @@ ms.locfileid: "94686203"
     ![探索 AdventureWorksDW 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
 
 
-### <a name="serverless-sql-pool-preview"></a>無伺服器 SQL 集區 (預覽)
+### <a name="serverless-sql-pool"></a>無伺服器 SQL 集區
 
 若要使用無伺服器 SQL 集區連線到 Synapse SQL，請遵循下列步驟： 
 
@@ -109,7 +109,7 @@ ms.locfileid: "94686203"
 既然已建立資料庫連線，您現在可以查詢資料。
 
 1. 在 [SQL Server 物件總管] 中您的資料庫上按一下滑鼠右鍵。
-2. 選取 [新增查詢]  。 隨即開啟 [新增查詢] 視窗。
+2. 選取 [新增查詢]。 隨即開啟 [新增查詢] 視窗。
    
     ![新增查詢 2](./media/get-started-ssms/new-query.png)
 3. 將下列 T-SQL 查詢複製到查詢視窗：

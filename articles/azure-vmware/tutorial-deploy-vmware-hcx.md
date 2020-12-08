@@ -2,13 +2,13 @@
 title: 教學課程 - 部署及設定 VMWare HCX
 description: 了解如何為您的 Azure VMware 解決方案私人雲端部署及設定 VMware HCX 解決方案。
 ms.topic: tutorial
-ms.date: 11/18/2020
-ms.openlocfilehash: afb5c653ce7c4b4a453a4031c5664042357de6c0
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.date: 11/25/2020
+ms.openlocfilehash: e50454c2299ed0f7e249563eecac1935a29a9c47
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95999617"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352453"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>部署及設定 VMWare HCX
 
@@ -16,8 +16,8 @@ ms.locfileid: "95999617"
 
 VMware HCX Advanced Connector 已預先部署在 Azure VMware 解決方案中。 最多可支援三個網站連線 (內部部署至雲端或雲端到雲端)。 如果您需要三個以上的網站連線，請提交[支援要求](https://portal.azure.com/#create/Microsoft.Support)以啟用 [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) 附加元件。 此附加元件目前為預覽狀態。 
 
->[!Note]
->雖然 VMware Configuration Maximum 工具描述，內部部署連接器與雲端管理員之間的網站配對上限為 25 個，但授權再次將此值限制為 3 個 (若為進階版) 和 10 個 (若為企業版)。
+>[!TIP]
+>雖然 VMware Configuration Maximum 工具描述，內部部署連接器與雲端管理員之間的網站配對上限為 25 個，但授權將此值限制為 3 個 (若為進階版) 和 10 個 (若為企業版)。
 
 >[!NOTE]
 >VMware HCX Enterprise 會以 Azure VMware 解決方案的預覽服務形式提供。 這是免費的附加元件，並且受限於預覽服務的條款及條件。 當 VMware HCX Enterprise 服務正式發行後，您會收到帳單即將切換的 30 天通知。 您也可以選擇關閉或退出服務。 從 VMware HCX Enterprise 到 VMware HCX Advanced 沒有簡單的降級路徑。 如果您決定要降級，就必須重新部署，因而會產生停機時間。
@@ -79,7 +79,7 @@ VMware HCX Advanced Connector 已預先部署在 Azure VMware 解決方案中。
 1. 選取 [管理] > [身分識別]，然後選取 [vCenter 管理員密碼]，以識別密碼。
 
    > [!TIP]
-   > vCenter 密碼是在您設定私人雲端時定義的，這是您用來登入 Azure VMware 解決方案 HCX 管理員的相同密碼。
+   > VCenter 密碼是在您設定私人雲端時所定義。 這是您用來登入 Azure VMware 解決方案 HCX 管理員的相同密碼。
 
    :::image type="content" source="media/tutorial-vmware-hcx/hcx-admin-password.png" alt-text="尋找 hcx 密碼。" lightbox="media/tutorial-vmware-hcx/hcx-admin-password.png":::
 
@@ -91,7 +91,7 @@ VMware HCX Advanced Connector 已預先部署在 Azure VMware 解決方案中。
 
 ## <a name="deploy-the-vmware-hcx-connector-ova-on-premises"></a>部署內部部署的 VMware HCX Connector OVA
 
-1. 在您的內部部署 vCenter 中選取 [OVF 範本](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-17BEDA21-43F6-41F4-8FB2-E01D275FE9B4.html)，以將 HCX Connector 部署至您的內部部署 vCenter。 
+1. 在您的內部部署 vCenter 中選取 [OVF 範本](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-17BEDA21-43F6-41F4-8FB2-E01D275FE9B4.html)，以將 VMware HCX Connector 部署至您的內部部署 vCenter。 
 
    > [!TIP]
    > 您將選取您在上一節下載的 OVA 檔案。  
@@ -111,12 +111,12 @@ VMware HCX Advanced Connector 已預先部署在 Azure VMware 解決方案中。
 
    :::image type="content" source="media/tutorial-vmware-hcx/customize-template.png" alt-text="自訂範本的方塊螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/customize-template.png":::
 
-1. 確認設定，然後選取 [完成] 以部署 HCX Connector OVA。
+1. 確認設定，然後選取 [完成] 以部署 VMware HCX Connector OVA。
    
    > [!IMPORTANT]
    > 您將需要手動開啟虛擬設備。  在開啟電源後，請等候 10-15 分鐘，再繼續進行下一個步驟。
 
-如需此程序的端對端概觀，請檢視 [Azure VMware 解決方案：HCX 設備部署](https://www.youtube.com/embed/BwSnQeefnso)影片。 
+如需此程序的端對端概觀，請檢視 [Azure VMware 解決方案：HCX 設備部署](https://www.youtube.com/embed/UKmSTYrL6AY)影片。 
 
 
 ## <a name="activate-vmware-hcx"></a>啟用 VMware HCX
@@ -163,7 +163,7 @@ VMware HCX Advanced Connector 已預先部署在 Azure VMware 解決方案中。
 
 :::image type="content" source="media/tutorial-vmware-hcx/activation-done.png" alt-text="具有綠色 vCenter 狀態的儀表板螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/activation-done.png":::  
 
-如需此程序的端對端概觀，請檢視 [Azure VMware 解決方案：啟用 HCX](https://www.youtube.com/embed/BkAV_TNYxdE) 的影片。
+如需此程序的端對端概觀，請檢視 [Azure VMware 解決方案：啟用 HCX](https://www.youtube.com/embed/jzQZawslF8w) 的影片。
 
    > [!IMPORTANT]
    > 無論您使用 VMware HCX Advanced 還是 VMware HCX Enterprise，都可能需要從 VMware 的[知識庫文章 81558](https://kb.vmware.com/s/article/81558) 安裝修補程式。 
@@ -174,7 +174,7 @@ VMware HCX Advanced Connector 已預先部署在 Azure VMware 解決方案中。
 
 ### <a name="add-a-site-pairing"></a>新增網站配對
 
-您可以透過資料中心內的 VMware HCX Connector，連線 (配對) Azure VMware 解決方案中的 VMware HCX 雲端管理員。 
+您可以透過資料中心內的 VMware HCX Connector，連線或配對 Azure VMware 解決方案中的 VMware HCX 雲端管理員。 
 
 1. 登入您的內部部署 vCenter，然後在 [主資料夾] 底下，選取 [HCX]。
 
@@ -183,15 +183,16 @@ VMware HCX Advanced Connector 已預先部署在 Azure VMware 解決方案中。
 1. 輸入 Azure VMware 解決方案 HCX 雲端管理員 URL 或您先前記下的 IP 位址 `https://x.x.x.9`、Azure VMware 解決方案 cloudadmin@vsphere.local 使用者名稱和密碼。 然後選取 [連線]  。
 
    > [!NOTE]
-   > 若要成功建立網站配對，您的 HCX Connector 必須能夠透過連接埠 443 路由至您的 HCX 雲端管理員 IP。
+   > 若要成功建立網站配對：
+   > * 您的 VMware HCX Connector 必須能夠透過連接埠 443 路由至您的 HCX 雲端管理員 IP。
    >
-   > 該密碼會與您用來登入 vCenter 的密碼相同。 您已在初始部署畫面上定義此密碼。
+   > * 使用您用來登入 vCenter 的相同密碼。 您已在初始部署畫面上定義此密碼。
 
-   您會看到一個畫面，其中顯示您 Azure VMware 解決方案中的 HCX 雲端管理員，以及您的內部部署 HCX Connector 已連線 (配對)。
+   您會看到一個畫面，其中顯示您 Azure VMware 解決方案中的 VMware HCX 雲端管理員，以及您的內部部署 VMware HCX Connector 已連線 (配對)。
 
-   :::image type="content" source="media/tutorial-vmware-hcx/site-pairing-complete.png" alt-text="此螢幕擷取畫面顯示 Azure VMware 解決方案中的 HCX 管理員與 HCX 連接器的配對。":::
+   :::image type="content" source="media/tutorial-vmware-hcx/site-pairing-complete.png" alt-text="此螢幕擷取畫面顯示 Azure VMware 解決方案中的 HCX 管理員與 VMware HCX Connector 的配對。":::
 
-如需此程序的端對端概觀，請檢視 [Azure VMware 解決方案：HCX 網站配對](https://www.youtube.com/embed/sKizDCRHOko)的影片。
+如需此程序的端對端概觀，請檢視 [Azure VMware 解決方案：HCX 網站配對](https://www.youtube.com/embed/iTJtjbiwvsw)的影片。
 
 ### <a name="create-network-profiles"></a>建立網路設定檔
 
@@ -212,7 +213,7 @@ VMware HCX Connector 會部署需要多個 IP 區段的幾個虛擬設備 (自�
 
    :::image type="content" source="media/tutorial-vmware-hcx/example-configurations-network-profile.png" alt-text="新網路設定檔的詳細資料螢幕擷取畫面。":::
 
-如需此程序的端對端概觀，請檢視 [Azure VMware 解決方案：HCX 網路設定檔](https://www.youtube.com/embed/NhyEcLco4JY)的影片。
+如需此程序的端對端概觀，請檢視 [Azure VMware 解決方案：HCX 網路設定檔](https://www.youtube.com/embed/O0rU4jtXUxc)的影片。
 
 
 ### <a name="create-a-compute-profile"></a>建立計算設定檔
@@ -274,18 +275,20 @@ VMware HCX Connector 會部署需要多個 IP 區段的幾個虛擬設備 (自�
 
    :::image type="content" source="media/tutorial-vmware-hcx/compute-profile-done.png" alt-text="顯示計算設定檔資訊的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/compute-profile-done.png":::
 
-如需此程序的端對端概觀，請檢視 [Azure VMware 解決方案：計算設定檔](https://www.youtube.com/embed/qASXi5xrFzM)的影片。
+如需此程序的端對端概觀，請檢視 [Azure VMware 解決方案：計算設定檔](https://www.youtube.com/embed/e02hsChI3b8)的影片。
 
 ### <a name="create-a-service-mesh"></a>建立服務網格
 
 現在可以開始在內部部署與 Azure VMware 解決方案 SDDC 之間設定服務網格。
 
-   > [!NOTE]
-   > 若要使用 Azure VMware 解決方案成功建立服務網格：
-   >
-   > 連接埠 UDP 500/4500 會在內部部署 HCX 連接器定義的「上行」網路設定檔位址與 Azure VMware 解決方案 HCX 雲端「上行」網路設定檔位址之間開啟。
-   >
-   > 請務必參閱 [HCX 所需的連接埠](https://ports.vmware.com/home/VMware-HCX)。
+
+
+> [!NOTE]
+> 若要使用 Azure VMware 解決方案成功建立服務網格：
+>
+> * 連接埠 UDP 500/4500 會在內部部署 VMware HCX Connector 的「上行」網路設定檔位址與 Azure VMware 解決方案 HCX 雲端「上行」網路設定檔位址之間開啟。
+>
+> * 請務必參閱 [VMware HCX 所需的連接埠](https://ports.vmware.com/home/VMware-HCX)。
 
 1. 在 [基礎結構] 下，選取 [互連] > [服務網格] > [建立服務網格]。    
 
@@ -312,6 +315,10 @@ VMware HCX Connector 會部署需要多個 IP 區段的幾個虛擬設備 (自�
   
 1. 在 [進階組態 - 網路延伸模組設備擴增] 中，檢閱並選取 [繼續]。 
 
+   每個設備最多可以有 8 個 VLAN，但您可以部署另一個設備，並另行新增 8 個 VLAN。 您也必須有 IP 空間供額外的設備使用，每個設備各一個 IP。  如需詳細資訊，請參閱 [VMware HCX 設定限制](https://configmax.vmware.com/guest?vmwareproduct=VMware%20HCX&release=VMware%20HCX&categories=41-0,42-0,43-0,44-0,45-0)。
+   
+   :::image type="content" source="media/tutorial-vmware-hcx/extend-networks-increase-vlan.png" alt-text="顯示要在何處增加 VLAN 計數的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/extend-networks-increase-vlan.png":::
+
 1. 在 [進階組態 - 流量工程] 中，檢閱並進行任何您認為必要的修改，然後選取 [繼續]。
 
 1. 檢閱拓撲預覽，然後選取 [繼續]。
@@ -332,7 +339,7 @@ VMware HCX Connector 會部署需要多個 IP 區段的幾個虛擬設備 (自�
 
    :::image type="content" source="media/tutorial-vmware-hcx/interconnect-appliance-state.png" alt-text="顯示用來檢查設備狀態的選項螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/interconnect-appliance-state.png":::
 
-如需此程序的端對端概觀，請檢視 [Azure VMware 解決方案：服務網格](https://www.youtube.com/embed/FyZ0d3P_T24)的影片。
+如需此程序的端對端概觀，請檢視 [Azure VMware 解決方案：服務網格](https://www.youtube.com/embed/COY3oIws108)的影片。
 
 ### <a name="optional-create-a-network-extension"></a>(選擇性) 建立網路延伸模組
 
@@ -354,7 +361,7 @@ VMware HCX Connector 會部署需要多個 IP 區段的幾個虛擬設備 (自�
 
    :::image type="content" source="media/tutorial-vmware-hcx/extension-complete.png" alt-text="顯示延伸模組完成狀態的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/extension-complete.png":::
 
-如需此程序的端對端概觀，請檢視 [Azure VMware 解決方案：網路延伸模組](https://www.youtube.com/embed/cNlp0f_tTr0)的影片。
+如需此程序的端對端概觀，請檢視 [Azure VMware 解決方案：網路延伸模組](https://www.youtube.com/embed/gYR0nftKui0)的影片。
 
 
 ## <a name="next-steps"></a>後續步驟
@@ -364,5 +371,5 @@ VMware HCX Connector 會部署需要多個 IP 區段的幾個虛擬設備 (自�
 如需有關使用 HCX 的詳細資訊，請移至 VMware 技術文件：
 
 * [VMware HCX 文件](https://docs.vmware.com/en/VMware-HCX/index.html)
-* [使用 VMware HCX 遷移虛擬機器](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)。
+* [使用 VMware HCX 遷移虛擬機器](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)
 * [HCX 所需的連接埠](https://ports.vmware.com/home/VMware-HCX)

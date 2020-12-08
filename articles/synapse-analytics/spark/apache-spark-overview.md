@@ -9,20 +9,18 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 0ea46122cffe03ffe2e6a4e07afc6995d88a3acb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b31fe5daaa0882dc0927c1340902b20df56eb6b6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93306998"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450438"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 Apache Spark
 
-Apache Spark 是一個平行處理架構，可支援記憶體內部處理，以大幅提升巨量資料分析應用程式的效能。 Azure Synapse Analytics 中的 Apache Spark 是 Microsoft 在雲端中的其中一種 Apache Spark 實作。 Azure Synapse 可讓您輕鬆地在 Azure 中建立和設定無伺服器 Apache Spark 集區 (預覽)。 Azure Synapse 中的 Spark 集區與 Azure 儲存體和 Azure Data Lake Generation 2 Storage 相容。 因此，您可以使用 Spark 集區來處理儲存於 Azure 的資料。
+Apache Spark 是一個平行處理架構，可支援記憶體內部處理，以大幅提升巨量資料分析應用程式的效能。 Azure Synapse Analytics 中的 Apache Spark 是 Microsoft 在雲端中的其中一種 Apache Spark 實作。 Azure Synapse 可讓您輕鬆地在 Azure 中建立和設定無伺服器 Apache Spark 集區。 Azure Synapse 中的 Spark 集區與 Azure 儲存體和 Azure Data Lake Generation 2 Storage 相容。 因此，您可以使用 Spark 集區來處理儲存於 Azure 的資料。
 
 ![Spark：統一架構](./media/apache-spark-overview/spark-overview.png)
-
-[!INCLUDE [preview](../includes/note-preview.md)]
 
 ## <a name="what-is-apache-spark"></a>什麼是 Apache Spark
 
@@ -30,14 +28,14 @@ Apache Spark 提供用於記憶體內部叢集運算的基本項目。 Spark 作
 
 ![傳統 MapReduce 與Spark](./media/apache-spark-overview/map-reduce-vs-spark.png)
 
-Azure Synapse 中的 Spark 集區提供完全受控的 Spark 服務。 這裡列出在 Synapse Analytics 中建立 Spark 集區的優點。
+Azure Synapse 中的 Spark 集區提供完全受控的 Spark 服務。 這裡列出在 Azure Synapse Analytics 中建立 Spark 集區的優點。
 
-| 功能 | 描述 |
+| 特徵 | 描述 |
 | --- | --- |
 | 速度與效率 |若少於 60 個節點，Spark 執行個體大約會在 2 分鐘內啟動，而超過 60 個節點大約需要 5 分鐘。 根據預設，執行個體會在最後一個作業執行後的 5 分鐘關閉，除非該作業是透過筆記本連線保持運作。 |
-| 容易建立 |您可以使用 Azure 入口網站、Azure PowerShell 或 Synapse Analytics .NET SDK，在幾分鐘內就能於 Azure Synapse 中建立新的 Spark 集區。 請參閱[開始使用 Synapse Analytics 中的 Spark 集區](../quickstart-create-apache-spark-pool-studio.md)。 |
+| 容易建立 |您可以使用 Azure 入口網站、Azure PowerShell 或 Synapse Analytics .NET SDK，在幾分鐘內就能於 Azure Synapse 中建立新的 Spark 集區。 請參閱[開始使用 Azure Synapse Analytics 中的 Spark 集區](../quickstart-create-apache-spark-pool-studio.md)。 |
 | 容易使用 |Synapse Analytics 包括衍生自 [Nteract](https://nteract.io/) 的自訂筆記本。 您可以使用這些 Notebook 來進行互動式的資料處理和視覺化。|
-| REST API |Synapse Analytics 中的 Spark 叢集包含 [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)，這是是 REST-API 型 Spark 作業伺服器，可用來遠端提交及監視作業。 |
+| REST API |Azure Synapse Analytics 中的 Spark 叢集包含 [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)，這是是 REST-API 型 Spark 作業伺服器，可用來遠端提交及監視作業。 |
 | 支援 Azure Data Lake Storage Generation 2| Azure Synapse 中的 Spark 集區可以使用 Azure Data Lake Storage Generation 2 以及 Blob 儲存體。 如需有關 Data Lake Storage 的詳細資訊，請參閱 [Azure Data Lake Storage 概觀](../../data-lake-store/data-lake-store-overview.md)。 |
 | 第三方 IDE 整合 | Azure Synapse 提供 [Jetbrains' IntelliJ IDEA](https://www.jetbrains.com/idea/) 的 IDE 外掛程式，在建立應用程式並將其提交至 Spark 集區上很有幫助。 |
 | 預先載入的 Anaconda 程式庫 |Azure Synapse 中的 Spark 集區隨附預先安裝的 Anaconda 程式庫。 [Anaconda](https://docs.continuum.io/anaconda/) 為機器學習、資料分析、視覺化等主題提供將近 200 個程式庫。 |
@@ -52,7 +50,7 @@ Azure Synapse 中的 Spark 集區提供完全受控的 Spark 服務。 這裡列
 
 ## <a name="spark-pool-architecture"></a>Spark 集區架構
 
-您可以了解 Spark 在 Synapse Analytics 上的執行方式，輕鬆地了解 Spark 的元件。
+您可以了解 Spark 在 Azure Synapse Analytics 上的執行方式，輕鬆地了解 Spark 的元件。
 
 Spark 應用程式會在集區上以獨立的處理序組合來執行，並由主程式 (稱為驅動程式) 中的 SparkContext 物件來協調。
 
@@ -62,21 +60,21 @@ SparkContext 會執行使用者的主要函式，並在節點上執行各種平�
 
 SparkCoNtext 會連線至 Spark 集區，並負責將應用程式轉換為有向非循環圖 (DAG)。 圖形包含在節點上的執行程式流程內執行的個別工作。 每個應用程式都會取得自己的執行程式處理序，而這些處理序會在整個應用程式的持續時間保持運作，並且在多個執行緒中執行工作。
 
-## <a name="apache-spark-in-synapse-analytics-use-cases"></a>Synapse Analytics 中的 Apache Spark 使用案例
+## <a name="apache-spark-in-azure-synapse-analytics-use-cases"></a>Azure Synapse Analytics 中的 Apache Spark 使用案例
 
-Synapse Analytics 中的 Spark 集區會啟用下列主要案例：
+Azure Synapse Analytics 中的 Spark 集區會啟用下列主要案例：
 
 ### <a name="data-engineeringdata-preparation"></a>資料工程/資料準備
 
-Apache Spark 包含許多語言功能，可支援準備和處理大量資料，使其更有價值，並可供 Synapse Analytics 內的其他服務使用。 這項功能可透過多種語言 (C#、Scala、PySpark、Spark SQL) 和提供的程式庫來處理和連線。
+Apache Spark 包含許多語言功能，可支援準備和處理大量資料，使其更有價值，並可供 Azure Synapse Analytics 內的其他服務使用。 這項功能可透過多種語言 (C#、Scala、PySpark、Spark SQL) 和提供的程式庫來處理和連線。
 
 ### <a name="machine-learning"></a>Machine Learning
 
-Apache Spark 隨附 [MLlib](https://spark.apache.org/mllib/)，這是以 Spark 為基礎的機器學習程式庫，您可以從 Synapse Analytics 中的 Spark 集區使用。 Synapse Analytics 中的 Spark 集區也包含 Anaconda，這是一種 Python 散發套件，其中包含適用於資料科學的各種套件，包括機器學習服務。 搭配內建的 Notebooks 支援，就能擁有適用於建立機器學習應用程式的環境。
+Apache Spark 隨附 [MLlib](https://spark.apache.org/mllib/)，這是以 Spark 為基礎的機器學習程式庫，您可以從 Azure Synapse Analytics 中的 Spark 集區使用。 Azure Synapse Analytics 中的 Spark 集區也包含 Anaconda，這是一種 Python 散發套件，其中包含適用於資料科學的各種套件，包括機器學習服務。 搭配內建的 Notebooks 支援，就能擁有適用於建立機器學習應用程式的環境。
 
 ## <a name="where-do-i-start"></a>我該從哪裡開始
 
-使用下列文章來深入了解 Synapse Analytics 中的 Apache Spark：
+使用下列文章來深入了解 Azure Synapse Analytics 中的 Apache Spark：
 
 - [快速入門：在 Azure Synapse 中建立 Spark 集區](../quickstart-create-apache-spark-pool-portal.md)
 - [快速入門：建立 Apache Spark 筆記本](../quickstart-apache-spark-notebook.md)

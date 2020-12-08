@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7518d6ac8bc0cde515ab8da2f3d9c1496cb93f08
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b8b0ac002cb52acdc043e4e8ca4fa91daae4e665
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311712"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457981"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>使用 Azure Active Directory 驗證向 Synapse SQL 進行驗證
 
@@ -36,7 +36,7 @@ Azure Active Directory 驗證機制會使用 Azure Active Directory (Azure AD) �
 
 1. 建立和填入 Azure AD。
 2. 建立 Azure Active Directory 身分識別
-3. 將角色指派給 Synapse 工作區中建立的 Azure Active Directory 身分識別 (預覽)
+3. 將角色指派給 Synapse 工作區中建立的 Azure Active Directory 身分識別
 4. 使用 Azure AD 身分識別連線到 Synapse Studio。
 
 ## <a name="azure-ad-pass-through-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 Azure AD 傳遞
@@ -65,7 +65,7 @@ Azure Synapse Analytics 可讓您使用 Azure Active Directory 身分識別來�
 
 Azure AD 系統管理員登入可以是 Azure AD 使用者或 Azure AD 群組。 當系統管理員是群組帳戶時，其可供任何群組成員使用，啟用 Synapse SQL 執行個體的多個 Azure AD 系統管理員。 
 
-以系統管理員的身分使用群組帳戶，可讓您集中新增和移除 Azure AD 中的群組成員，而不需要變更 Synapse Analytics 工作區中的使用者或權限，藉以增強管理性。 一律只能設定一個 Azure AD 系統管理員 (使用者或群組)。
+以系統管理員的身分使用群組帳戶，可讓您集中新增和移除 Azure AD 中的群組成員，而不需要變更 Azure Synapse Analytics 工作區中的使用者或權限，藉以增強管理性。 一律只能設定一個 Azure AD 系統管理員 (使用者或群組)。
 
 ![系統管理員結構](./media/aad-authentication/3-admin-structure.png)
 
@@ -109,7 +109,7 @@ Azure Active Directory 驗證支援下列方法，使用 Azure AD 身分識別�
 - 包含 MFA 的 Active Directory 通用驗證
 - 使用應用程式權杖驗證
 
-Azure AD 伺服器主體 (登入) ( **公開預覽** ) 支援下列驗證方法：
+Azure AD 伺服器主體 (登入) 支援下列驗證方法：
 
 - Azure Active Directory 密碼
 - Azure Active Directory 整合式
@@ -119,7 +119,7 @@ Azure AD 伺服器主體 (登入) ( **公開預覽** ) 支援下列驗證方法�
 
 - 若要增強管理性，建議您以系統管理員身分佈建專用的 Azure AD 群組。
 - 任何時候都只能為 Synapse SQL 集區設定一個 Azure AD 系統管理員 (使用者或群組)。
-  - Azure AD 伺服器主體 (登入) 新增到 Synapse SQL (預覽) 之後，就能建立可以加入 `sysadmin` 角色的多個 Azure AD 伺服器主體 (登入)。
+  - Azure AD 伺服器主體 (登入) 新增到 Synapse SQL 之後，就能建立可以加入 `sysadmin` 角色的多個 Azure AD 伺服器主體 (登入)。
 - 只有 Synapse SQL 的 Azure AD 系統管理員可以在一開始使用 Azure Active Directory 帳戶連線到 Synapse SQL。 Active Directory 系統管理員可以設定後續的 Azure AD 資料庫使用者。
 - 建議將連接逾時設定為 30 秒。
 - SQL Server 2016 Management Studio 和 SQL Server Data Tools for Visual Studio 2015 (版本 14.0.60311.1 (2016 年 4 月) 或更新版本) 支援 Azure Active Directory 驗證。 ( **.NET Framework Data Provider for SqlServer** 支援 Azure AD 驗證，最低版本 .NET Framework 4.6)。 因此，這些工具和資料層應用程式 (DAC 和 .BACPAC) 的最新版本可以使用 Azure AD 驗證。

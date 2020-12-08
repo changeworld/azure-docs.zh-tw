@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
-ms.openlocfilehash: f07aaa3b1d133d8011b7e98df5c36a8bac1b5f29
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b9a85c7093d0f42ac97c4a548ba6f0feebae8b89
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92506882"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350716"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 NetDocuments 整合
 
@@ -70,7 +70,7 @@ ms.locfileid: "92506882"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [NetDocuments]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -132,7 +132,7 @@ ms.locfileid: "92506882"
 
 1. 在不同的 Web 瀏覽器視窗中，以系統管理員身分登入您的 NetDocuments 公司網站。
 
-2. 在右上角選取您的名稱> **Admin** 。
+2. 在右上角選取您的名稱>**Admin**。
 
 3. 選取 [資訊安全中心]  。
    
@@ -146,7 +146,7 @@ ms.locfileid: "92506882"
    
     ![同盟身分識別](./media/netdocuments-tutorial/federated-id.png "同盟身分識別")
    
-    a. 對於 **同盟識別身分伺服器類型** ，請選取 [Active Directory 同盟服務]  。
+    a. 對於 **同盟識別身分伺服器類型**，請選取 [Active Directory 同盟服務]  。
     
     b.  選取 [選擇檔案]  ，上傳您從 Azure 入口網站下載的中繼資料檔案。
     
@@ -160,7 +160,7 @@ ms.locfileid: "92506882"
 
 1. 以系統管理員身分登入 **NetDocuments** 公司網站。
 
-2. 在右上角選取您的名稱> **Admin** 。
+2. 在右上角選取您的名稱>**Admin**。
    
     ![管理員](./media/netdocuments-tutorial/user-admin.png "管理")
 

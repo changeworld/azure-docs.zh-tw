@@ -3,18 +3,18 @@ title: Azure Data Factory 簡介
 description: 了解 Azure Data Factory，這是一項雲端資料整合服務，用來協調及自動移動和轉換資料。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 730141d22b318d79c8c2b7d995b98ee1c311aaf5
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: d8b6a852ff0aeb287b12d63bfa689a38a56d418f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491268"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485005"
 ---
 # <a name="what-is-azure-data-factory"></a>Azure 資料處理站是什麼？
 
@@ -28,7 +28,7 @@ ms.locfileid: "94491268"
 
 為了分析這些記錄，此公司必須使用參考資料，例如內部部署資料存放區中的客戶資訊、遊戲資訊及行銷活動資訊。 此公司想要利用這份來自內部部署資料存放區的資料，將其與雲端資料存放區中的額外記錄資料結合。 
 
-為了擷取深入解析，它希望使用雲端中的 Spark 叢集 (Azure HDInsight) 來處理聯結的資料，然後將轉換後的資料發佈到雲端資料倉儲 (例如 Azure Synapse Analytics (前稱為 SQL 資料倉儲))，來輕鬆地以該資料建立報告。 他們想要自動執行此工作流程，並且每日按照排程監視和管理此工作流程。 他們也想要在檔案進入 Blob 存放區容器時執行該工作流程。
+為了擷取深入解析，它希望使用雲端中的 Spark 叢集 (Azure HDInsight) 來處理聯結的資料，然後將轉換後的資料發佈至雲端資料倉儲 (例如 Azure Synapse Analytics)，輕鬆地以該資料建立報表。 他們想要自動執行此工作流程，並且每日按照排程監視和管理此工作流程。 他們也想要在檔案進入 Blob 存放區容器時執行該工作流程。
 
 Azure Data Factory 就是解決這類資料案例的平台。 這是一項 *雲端式 ETL 和資料整合服務，可讓您在建立資料驅動工作流程，以便協調資料移動和大規模轉換資料*。 使用 Azure Data Factory，可以建立並排程資料驅動的工作流程 (稱為管線)，它可以從不同的資料存放區擷取資料。 您可以建立複雜的 ETL 程序，透過資料流程或使用計算服務 (例如 Azure HDInsight Hadoop、Azure Databricks 和 Azure SQL Database) 以視覺化方式轉換資料。 
 

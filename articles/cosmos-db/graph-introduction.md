@@ -5,14 +5,14 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 07/10/2020
+ms.date: 11/25/2020
 ms.author: chrande
-ms.openlocfilehash: d0bd94037a75db8d69cfd44820a80ae8b403c9ea
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: c2165ea6273ad90cfb95242dfe72538c0a5ef64c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357074"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350053"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 Gremlin API 簡介
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -24,6 +24,9 @@ ms.locfileid: "93357074"
 本文提供 Azure Cosmos DB Gremlin API 的概觀，並說明如何用此功能來儲存包含數十億個頂點和邊緣的巨大圖表。 您可以在幾毫秒延遲的情況下查詢圖形，並輕鬆地發展圖形結構。 Azure Cosmos DB 的 Gremlin API 奠基於 [Apache TinkerPop](https://tinkerpop.apache.org) 圖形計算架構。 Azure Cosmos DB 中的 Gremlin API 會使用 Gremlin 查詢語言。
 
 Azure Cosmos DB 的 Gremlin API 結合了圖形資料庫演算法的強大功能，其具有調整性高的受控基礎結構，可針對因缺乏彈性和關聯式方法而產生的常見資料問題，提供唯一且有彈性的解決方案。
+
+> [!NOTE]
+> [無伺服器容量模式](serverless.md)現已可在 Azure Cosmos DB 的 Gremlin API 上使用。
 
 ## <a name="features-of-azure-cosmos-dbs-gremlin-api"></a>Azure Cosmos DB Gremlin API 的功能
  
@@ -53,7 +56,7 @@ Azure Cosmos DB 是一種完全受控的圖表資料庫，提供全域散發、�
 
 * **自動編製索引**
 
-  根據預設，Azure Cosmos DB 會自動為圖表中節點 (也稱為頂點) 和邊緣內的屬性編製索引，而不要求或需要任何結構描述或建立次要索引。 深入了解 [Azure Cosmos DB 的索引編製](/azure/cosmos-db/index-overview)。
+  根據預設，Azure Cosmos DB 會自動為圖表中節點 (也稱為頂點) 和邊緣內的屬性編製索引，而不要求或需要任何結構描述或建立次要索引。 深入了解 [Azure Cosmos DB 的索引編製](./index-overview.md)。
 
 * **Apache TinkerPop 相容性**
 
@@ -111,19 +114,19 @@ Azure Cosmos DB 是一種完全受控的圖表資料庫，提供全域散發、�
 
 此圖形有下列 *頂點* 類型 (在 Gremlin 中稱為「標籤」)︰
 
-* **人員** ：圖表中有三個人：Robin、Thomas 和 Ben
-* **興趣** ：在此範例中他們的興趣是足球比賽
-* **裝置** ：人員使用的裝置
-* **作業系統** ：執行裝置的作業系統
-* **位置** ：從中存取裝置的位置
+* **人員**：圖表中有三個人：Robin、Thomas 和 Ben
+* **興趣**：在此範例中他們的興趣是足球比賽
+* **裝置**：人員使用的裝置
+* **作業系統**：執行裝置的作業系統
+* **位置**：從中存取裝置的位置
 
 我們透過下列 *邊緣* 類型，表示這些實體之間的關聯性︰
 
-* **認識** ：例如，「Thomas 認識 Robin」
-* **有興趣** ：在圖表中表示人員的興趣，例如「Ben 對足球有興趣」
-* **執行 OS** ︰膝上型電腦執行 Windows OS
-* **使用** ：代表某個人使用的裝置。 例如，Robin 使用序號 77 的 Motorola 手機
-* **位於** ：代表從中存取裝置的位置
+* **認識**：例如，「Thomas 認識 Robin」
+* **有興趣**：在圖表中表示人員的興趣，例如「Ben 對足球有興趣」
+* **執行 OS**︰膝上型電腦執行 Windows OS
+* **使用**：代表某個人使用的裝置。 例如，Robin 使用序號 77 的 Motorola 手機
+* **位於**：代表從中存取裝置的位置
 
 Gremlin 主控台是 Apache TinkerPop 所提供的互動式終端機，此終端機會用來與圖表資料互動。 若要深入了解，請參閱[如何使用 Gremlin 主控台](create-graph-gremlin-console.md)的快速入門文件。 也可以在您選擇的平台 (Java、Node.js、Python 或 .NET) 使用 Gremlin 驅動程式執行這些作業。 下列範例會示範如何使用 Gremlin 主控台對此圖表資料執行查詢。
 

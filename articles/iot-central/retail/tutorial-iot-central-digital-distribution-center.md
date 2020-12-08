@@ -7,18 +7,18 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: a76df67d1ef9d203d5e5d54cb95bb8fc90f70180
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d19310dbd54c8bd5f9854ff86af051b68c5cd378
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980742"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463291"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>教學課程：部署及逐步執行數位配送中心應用程式範本
 
 
 
-此教學課程示範如何透過部署 IoT Central **數位配送中心**應用程式範本來開始。 您將了解如何部署範本、現成可用的項目，以及您接下來可能想要執行的動作。
+此教學課程示範如何透過部署 IoT Central **數位配送中心** 應用程式範本來開始。 您將了解如何部署範本、現成可用的項目，以及您接下來可能想要執行的動作。
 
 在此教學課程中，您將了解如何： 
 * 建立數位配送中心應用程式 
@@ -34,8 +34,7 @@ ms.locfileid: "90980742"
 
 1. 瀏覽至 Azure IoT Central 應用程式管理員網站。 從左側導覽列選取 [建置]  ，然後按一下 [零售]  索引標籤。
 
-    > [!div class="mx-imgBorder"]
-    > ![顯示如何選取數位配送中心應用程式範本的螢幕擷取畫面](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
+    :::image type="content" source="media/tutorial-iot-central-ddc/iotc-retail-homepage.png" alt-text="數位配送中心應用程式範本":::
 
 2. 選取 [零售]  索引標籤，並選取 [數位配送中心應用程式]  下的 [建立應用程式] 
 
@@ -45,11 +44,9 @@ ms.locfileid: "90980742"
    **帳單資訊**：您需要目錄、Azure 訂用帳戶和區域詳細資料，才能佈建資源。
    **建立**：選取頁面底部的 [建立]，以部署您的應用程式。
 
-    > [!div class="mx-imgBorder"]
-    > ![顯示如何從數位配送中心應用程式範本建立應用程式的螢幕擷取畫面](./media/tutorial-iot-central-ddc/ddc-create.png)
+   :::image type="content" source="media/tutorial-iot-central-ddc/ddc-create.png" alt-text="顯示如何從數位配送中心應用程式範本建立應用程式的螢幕擷取畫面":::
 
-    > [!div class="mx-imgBorder"]
-    > ![顯示當您建立應用程式時計費選項的螢幕擷取畫面](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
+   :::image type="content" source="media/tutorial-iot-central-ddc/ddc-create-billinginfo.png" alt-text="顯示當您建立應用程式時計費選項的螢幕擷取畫面":::
 
 ## <a name="walk-through-the-application-dashboard"></a>逐步執行應用程式儀表板 
 
@@ -66,7 +63,7 @@ ms.locfileid: "90980742"
 
 ## <a name="device-template"></a>裝置範本
 
-按一下 [裝置範本] 索引標籤，您將看到閘道功能模型。 功能模型建構在兩個不同的介面 (**攝影機**與**數位配送閘道**) 上
+按一下 [裝置範本] 索引標籤，您將看到閘道功能模型。 功能模型建構在兩個不同的介面 (**攝影機** 與 **數位配送閘道**) 上
 
 > [!div class="mx-imgBorder"]
 > ![顯示應用程式中數位配送閘道裝置範本的螢幕擷取畫面](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)

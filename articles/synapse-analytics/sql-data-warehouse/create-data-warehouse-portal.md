@@ -1,6 +1,6 @@
 ---
-title: 快速入門：建立和查詢 Synapse SQL 集區 (Azure 入口網站)
-description: 使用 Azure 入口網站來建立及查詢 Synapse SQL 集區
+title: 快速入門：建立和查詢專用 SQL 集區 (Azure 入口網站)
+description: 使用 Azure 入口網站建立和查詢專用 SQL 集區
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 05/28/2019
 ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 470892aa46d3f75ce8e17200f7d0549ae14b0e86
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3d4884fd64c773647f78a98dc7aeb1063d539edf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023781"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456742"
 ---
-# <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站來建立及查詢 Synapse SQL 集區
+# <a name="quickstart-create-and-query-a-dedicated-sql-pool-in-azure-synapse-analytics-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立和查詢 Azure Synapse Analytics 中的專用 SQL 集區
 
-使用 Azure 入口網站在 Azure Synapse Analytics (先前為 SQL DW) 中快速建立和查詢 Synapse SQL 集區 (資料倉儲)。
+使用 Azure 入口網站在 Azure Synapse Analytics 中快速建立和查詢 Synapse SQL 集區 (資料倉儲)。
 
 ## <a name="prerequisites"></a>必要條件
 

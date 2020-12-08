@@ -9,14 +9,14 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: f5c5edc067b3f7b525fd129462c48ca50fdafc8f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 605a5f2f74ca6fb46d851c41f60001c48a95be95
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314039"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450871"
 ---
-# <a name="tutorial-machine-learning-model-scoring-wizard-for-dedicated-sql-pools"></a>教學課程：專用 SQL 集區的機器學習模型評分精靈
+# <a name="tutorial-machine-learning-model-scoring-wizard-preview-for-dedicated-sql-pools"></a>教學課程：專用 SQL 集區的機器學習模型評分精靈 (預覽)
 
 了解如何使用預測性機器學習模型，輕鬆地擴充專用 SQL 集區中的資料。  您資料科學家所建立的模型現在可輕鬆地供資料專業人員進行預測性分析。 Synapse 中的資料專業人員可以直接從 Azure Machine Learning 模型登錄中選取模型，以便在 Synapse SQL 集區中進行部署，並啟動預測來擴充資料。
 
@@ -31,8 +31,8 @@ ms.locfileid: "93314039"
 ## <a name="prerequisites"></a>必要條件
 
 - [Synapse Analytics 工作區](../get-started-create-workspace.md)，並將 ADLS Gen2 儲存體帳戶設定為預設儲存體。 您必須是所要使用 ADLS Gen2 檔案系統的 **儲存體 Blob 資料參與者**。
-- 在您 Synapse Analytics 工作區中的專用 SQL 集區。 如需詳細資訊，請參閱[建立專用 SQL 集區](../quickstart-create-sql-pool-studio.md)。
-- 在 Synapse Analytics 工作區中 Azure Machine Learning 已連結的服務。 如需詳細資料，請參閱[在 Synapse 中建立 Azure Machine Learning 已連結的服務](quickstart-integrate-azure-machine-learning.md)。
+- 在您 Azure Synapse Analytics 工作區中的專用 SQL 集區。 如需詳細資訊，請參閱[建立專用 SQL 集區](../quickstart-create-sql-pool-studio.md)。
+- Azure Synapse Analytics 工作區中的 Azure Machine Learning 連結服務。 如需詳細資料，請參閱[在 Synapse 中建立 Azure Machine Learning 已連結的服務](quickstart-integrate-azure-machine-learning.md)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -149,4 +149,4 @@ ms.locfileid: "93314039"
 ## <a name="next-steps"></a>後續步驟
 
 - [快速入門：在 Synapse 中建立新的 Azure Machine Learning 連結服務](quickstart-integrate-azure-machine-learning.md)
-- [Azure Synapse Analytics 中的機器學習功能 (工作區預覽)](what-is-machine-learning.md)
+- [Azure Synapse Analytics 中的機器學習功能](what-is-machine-learning.md)

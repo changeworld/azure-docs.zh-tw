@@ -4,12 +4,12 @@ description: 要與復原服務保存庫和 Azure 備份功能搭配使用的 Az
 ms.topic: sample
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 29a2499bfd3125cad98e72f7543bb9a29293f624
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a4c2f444cb821f7979571b9d777895a59450e7c2
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88755189"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309574"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>適用於 Azure 備份的 Azure Resource Manager 範本
 
@@ -29,4 +29,6 @@ ms.locfileid: "88755189"
 | [使用 Azure 監視器記錄搭配 Azure 備份](https://github.com/Azure/azure-quickstart-templates/tree/master/101-backup-oms-monitoring) | 範本可部署適用於 Azure 備份的 Azure 監視器記錄，讓您監視備份和還原作業、備份警示，以及您復原服務保存庫中使用的雲端儲存體。|  
 |**Azure VM 中的備份 SQL Server** |  |
 | [Azure VM 中的備份 SQL Server](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vm-workload-backup) | 範本會建立復原服務保存庫和工作負載特定的備份原則。 其會向 Azure 備份服務註冊 VM，並在該 VM 上設定保護。 目前，範本只適用於 SQL 資源庫映像。 |
+|**備份 Azure 檔案共用** |  |
+| [備份 Azure 檔案共用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-backup-file-share) | 此範本會藉由指定復原服務保存庫和備份原則的適當詳細資料，為現有的 Azure 檔案共用設定保護功能。 範本可以選擇性地建立新的復原服務保存庫和備份原則，並將包含檔案共用的儲存體帳戶註冊到復原服務保存庫。 |
 |   |   |

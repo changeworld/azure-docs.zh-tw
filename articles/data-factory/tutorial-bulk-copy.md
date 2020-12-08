@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 4a9aaca8128570af74370213e9848e26dec25156
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a9a5f6a4644717227d0b659407e9ba0bc56675
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89490253"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452404"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>使用 PowerShell 以 Azure Data Factory 大量複製多份資料表
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-本教學課程示範如何**從 Azure SQL Database 將多個資料表複製到 Azure Synapse Analytics (先前為 SQL 資料倉儲)** 。 您也可以在其他複製案例中套用相同模式。 例如，將資料表從 SQL Server/Oracle 複製到 Azure SQL Database/資料倉儲/Azure Blob，將不同的路徑從 Blob 複製到 Azure SQL Database 資料表。
+本教學課程示範如何 **從 Azure SQL Database 將多個資料表複製到 Azure Synapse Analytics**。 您也可以在其他複製案例中套用相同模式。 例如，將資料表從 SQL Server/Oracle 複製到 Azure SQL Database/資料倉儲/Azure Blob，將不同的路徑從 Blob 複製到 Azure SQL Database 資料表。
 
 概括而言，本教學課程包含下列步驟：
 
@@ -263,7 +263,7 @@ ms.locfileid: "89490253"
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlTableDataset
     ```
 
-### <a name="create-a-dataset-for-sink-synapse-analytics"></a>建立接收 Synapse Analytics 的資料集
+### <a name="create-a-dataset-for-sink-azure-synapse-analytics"></a>建立接收 Azure Synapse Analytics 的資料集
 
 1. 在 **C:\ADFv2TutorialBulkCopy** 資料夾中 建立名為 **AzureSqlDWDataset.json** 的 JSON 檔案，加上下列內容："tableName" 已設定作為參數，稍後參考此資料集的複製活動會傳遞實際值至該資料集。
 

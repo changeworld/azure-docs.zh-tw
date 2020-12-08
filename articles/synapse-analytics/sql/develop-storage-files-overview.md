@@ -1,6 +1,6 @@
 ---
-title: 在無伺服器 SQL 集區中存取儲存體的檔案 (預覽)
-description: 在 Azure Synapse Analytics 中使用無伺服器 SQL 集區 (預覽) 說明查詢儲存體檔案。
+title: 在無伺服器 SQL 集區中存取儲存體的檔案
+description: 說明如何在 Azure Synapse Analytics 中使用無伺服器 SQL 集區查詢儲存體檔案。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 64148cd8fd467be6a5f09ee723e230bdc8181d2d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 82a4ded3a64a8a8bbc62f99a8854eb6d2b5f0d0b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685676"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446571"
 ---
-# <a name="access-external-storage-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用無伺服器 SQL 集區 (預覽) 存取外部儲存體
+# <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用無伺服器 SQL 集區存取外部儲存體
 
 本文件說明使用者如何在無伺服器 SQL 集區中讀取儲存在 Azure 儲存體中的檔案資料。 使用者可以使用下列選項來存取儲存體：
 

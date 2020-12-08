@@ -2,18 +2,18 @@
 title: 教學課程 - 在基底映像更新時觸發映像建置
 description: 在本教學課程中，您將了解如何設定 Azure Container Registry 工作，以在相同登錄中有基礎映像更新時自動觸發雲端中的容器映像建置。
 ms.topic: tutorial
-ms.date: 01/22/2020
+ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 8188fb715e4e24c523bc25399cea6cdc76f8696b
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 32b4dbe2563731664030dbc32c2b570ccc3e1d12
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027647"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030640"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>教學課程：在 Azure Container Registry 中更新基底映像時自動執行容器映像建置 
 
-ACR 工作支援在容器的[基礎映像更新時](container-registry-tasks-base-images.md)自動建置容器映像，例如，當您在其中一個基礎映像中修補作業系統或應用程式架構時。 
+[ACR 工作](container-registry-tasks-overview.md)支援在容器的[基礎映像更新時](container-registry-tasks-base-images.md)自動建置容器映像，例如，當您在其中一個基礎映像中修補作業系統或應用程式架構時。 
 
 在本教學課程中，您將了解如何建立 ACR 工作，以在將容器的基礎映像推送至相同登錄時，在雲端中觸發建置。 您也可以嘗試使用教學課程來建立 ACR 工作，以在基礎映像推送至[另一個 Azure 容器登錄](container-registry-tutorial-private-base-image-update.md)時觸發映像建置。 
 
@@ -26,15 +26,11 @@ ACR 工作支援在容器的[基礎映像更新時](container-registry-tasks-bas
 > * 顯示已觸發的工作
 > * 確認更新的應用程式映像
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-如果您想要在本機使用 Azure CLI，您必須安裝 Azure CLI **2.0.46** 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級 CLI，請參閱[安裝 Azure CLI][azure-cli]。
-
 ## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="complete-the-previous-tutorials"></a>完成先前的教學課程
 
-本教學課程假設您已完成本系列前兩個教學課程中的步驟，其間您完成了下列作業：
+本教學課程假設您已設定環境，並完成本系列前兩個教學課程中的步驟，其間您完成了下列作業：
 
 * 建立 Azure Container Registry
 * 派生範例存放庫
@@ -50,8 +46,6 @@ ACR 工作支援在容器的[基礎映像更新時](container-registry-tasks-bas
 ### <a name="configure-the-environment"></a>建立環境
 
 請在這些殼層環境變數中填入您的環境適用的值。 此步驟並不是必要動作，但可簡化在本教學課程中執行多行 Azure CLI 命令的作業。 若未填入這些環境變數，則必須手動取代命令範例中出現的每個值。
-
-[![內嵌啟動](https://shell.azure.com/images/launchcloudshell.png "啟動 Azure Cloud Shell")](https://shell.azure.com)
 
 ```console
 ACR_NAME=<registry-name>        # The name of your Azure container registry
@@ -78,18 +72,18 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 
 首先請使用 [az acr build][az-acr-build]，透過 ACR 工作的快速工作  來建置基礎映像。 如本系列的[第一個教學課程](container-registry-tutorial-quick-task.md)所討論的，此程序不僅會建置映像，也會在建置成功時將映像推送至您的容器登錄。
 
-```azurecli-interactive
-az acr build --registry $ACR_NAME --image baseimages/node:9-alpine --file Dockerfile-base .
+```azurecli
+az acr build --registry $ACR_NAME --image baseimages/node:15-alpine --file Dockerfile-base .
 ```
 
 ## <a name="create-a-task"></a>建立工作
 
 接著，請使用 [az acr task create][az-acr-task-create] 建立工作：
 
-```azurecli-interactive
+```azurecli
 az acr task create \
     --registry $ACR_NAME \
-    --name taskhelloworld \
+    --name baseexample1 \
     --image helloworld:{{.Run.ID}} \
     --arg REGISTRY_NAME=$ACR_NAME.azurecr.io \
     --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
@@ -97,10 +91,10 @@ az acr task create \
     --git-access-token $GIT_PAT
 ```
 
-此工作類似於[上一個教學課程](container-registry-tutorial-build-task.md)中建立的工作。 它會指示 ACR 工作在認可推送至 `--context` 所指定的存放庫時觸發映像建置。 在上一個教學課程中用來建置映像的 Dockerfile 會指定公用基底映像 (`FROM node:9-alpine`)，而此工作中的 Dockerfile [Dockerfile-app][dockerfile-app]，則是會指定相同登錄中的基底映像：
+此工作類似於[上一個教學課程](container-registry-tutorial-build-task.md)中建立的工作。 它會指示 ACR 工作在認可推送至 `--context` 所指定的存放庫時觸發映像建置。 在上一個教學課程中用來建置映像的 Dockerfile 會指定公用基底映像 (`FROM node:15-alpine`)，而此工作中的 Dockerfile [Dockerfile-app][dockerfile-app]，則是會指定相同登錄中的基底映像：
 
 ```dockerfile
-FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
+FROM ${REGISTRY_NAME}/baseimages/node:15-alpine
 ```
 
 此組態可以讓稍後在本教學課程中的基底映像模擬架構修補程式變得容易。
@@ -109,8 +103,8 @@ FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
 
 請使用 [az acr task run][az-acr-task-run] 手動觸發工作，並建置應用程式映像。 必須執行此步驟，工作才會在基礎映像上追蹤應用程式映像的相依性。
 
-```azurecli-interactive
-az acr task run --registry $ACR_NAME --name taskhelloworld
+```azurecli
+az acr task run --registry $ACR_NAME --name baseexample1
 ```
 
 工作完成後，如果您想要完成下列選擇性步驟，請記下 **回合識別碼** (例如 "da6")。
@@ -133,7 +127,7 @@ docker run -d -p 8080:80 --name myapp --rm $ACR_NAME.azurecr.io/helloworld:<run-
 
 在瀏覽器中瀏覽至 `http://localhost:8080`，您應該會看到 Node.js 版本號碼呈現於網頁中，如下所示。 在後續步驟中，您可以在版本字串中加上 "a"，以變更版本。
 
-![此螢幕擷取畫面顯示瀏覽器中呈現的範例應用程式。][base-update-01]
+:::image type="content" source="media/container-registry-tutorial-base-image-update/base-update-01.png" alt-text="瀏覽器中的範例應用程式的螢幕擷取畫面":::
 
 若要停止和移除容器，請執行下列命令：
 
@@ -145,35 +139,34 @@ docker stop myapp
 
 接著，使用 [az acr task list-runs][az-acr-task-list-runs] 命令，列出 ACR 工作已為登錄完成的工作回合：
 
-```azurecli-interactive
+```azurecli
 az acr task list-runs --registry $ACR_NAME --output table
 ```
 
 如果您已完成上一個教學課程 (且未刪除登錄)，您應該會看到如下的輸出。 請記下工作回合數目和最新的回合識別碼，以便在下一節更新基底映像後比較輸出。
 
 ```output
-RUN ID    TASK            PLATFORM    STATUS     TRIGGER     STARTED               DURATION
---------  --------------  ----------  ---------  ----------  --------------------  ----------
-da6       taskhelloworld  Linux       Succeeded  Manual      2018-09-17T23:07:22Z  00:00:38
-da5                       Linux       Succeeded  Manual      2018-09-17T23:06:33Z  00:00:31
-da4       taskhelloworld  Linux       Succeeded  Git Commit  2018-09-17T23:03:45Z  00:00:44
-da3       taskhelloworld  Linux       Succeeded  Manual      2018-09-17T22:55:35Z  00:00:35
-da2       taskhelloworld  Linux       Succeeded  Manual      2018-09-17T22:50:59Z  00:00:32
-da1                       Linux       Succeeded  Manual      2018-09-17T22:29:59Z  00:00:57
+RUN ID    TASK            PLATFORM    STATUS     TRIGGER    STARTED               DURATION
+--------  --------------  ----------  ---------  ---------  --------------------  ----------
+cax       baseexample1    linux       Succeeded  Manual     2020-11-20T23:33:12Z  00:00:30
+caw       taskhelloworld  linux       Succeeded  Commit     2020-11-20T23:16:07Z  00:00:29
+cav       example2        linux       Succeeded  Commit     2020-11-20T23:16:07Z  00:00:55
+cau       example1        linux       Succeeded  Commit     2020-11-20T23:16:07Z  00:00:40
+cat       taskhelloworld  linux       Succeeded  Manual     2020-11-20T23:07:29Z  00:00:27
 ```
 
 ## <a name="update-the-base-image"></a>更新基底映像
 
-在此您將模擬基底映像中的架構修補程式。 請編輯 **Dockerfile-base** ，並在 `NODE_VERSION` 中定義的版本號碼後面加上 "a"：
+在此您將模擬基底映像中的架構修補程式。 請編輯 **Dockerfile-base**，並在 `NODE_VERSION` 中定義的版本號碼後面加上 "a"：
 
 ```dockerfile
-ENV NODE_VERSION 9.11.2a
+ENV NODE_VERSION 15.2.1a
 ```
 
-執行快速工作，以建置經過修改的基底映像。 請記下輸出中的 **回合識別碼** 。
+執行快速工作，以建置經過修改的基底映像。 請記下輸出中的 **回合識別碼**。
 
-```azurecli-interactive
-az acr build --registry $ACR_NAME --image baseimages/node:9-alpine --file Dockerfile-base .
+```azurecli
+az acr build --registry $ACR_NAME --image baseimages/node:15-alpine --file Dockerfile-base .
 ```
 
 當建置完成，且 ACR 工作已將新的基底映像推送至您的登錄後，它會觸發應用程式映像的建置。 您先前建立的工作可能需要一些時間才能觸發應用程式映像建置，因為它必須偵測最新建置並推送的基底映像。
@@ -182,7 +175,7 @@ az acr build --registry $ACR_NAME --image baseimages/node:9-alpine --file Docker
 
 現在您已更新基底映像，接下來可以再次列出您的工作回合，將其與先前的清單比較。 若起初輸出並無差異，請定期執行命令，以查看清單中出現的新工作回合。
 
-```azurecli-interactive
+```azurecli
 az acr task list-runs --registry $ACR_NAME --output table
 ```
 
@@ -191,17 +184,17 @@ az acr task list-runs --registry $ACR_NAME --output table
 ```output
 Run ID    TASK            PLATFORM    STATUS     TRIGGER       STARTED               DURATION
 --------  --------------  ----------  ---------  ------------  --------------------  ----------
-da8       taskhelloworld  Linux       Succeeded  Image Update  2018-09-17T23:11:50Z  00:00:33
-da7                       Linux       Succeeded  Manual        2018-09-17T23:11:27Z  00:00:35
-da6       taskhelloworld  Linux       Succeeded  Manual        2018-09-17T23:07:22Z  00:00:38
-da5                       Linux       Succeeded  Manual        2018-09-17T23:06:33Z  00:00:31
-da4       taskhelloworld  Linux       Succeeded  Git Commit    2018-09-17T23:03:45Z  00:00:44
-da3       taskhelloworld  Linux       Succeeded  Manual        2018-09-17T22:55:35Z  00:00:35
-da2       taskhelloworld  Linux       Succeeded  Manual        2018-09-17T22:50:59Z  00:00:32
-da1                       Linux       Succeeded  Manual        2018-09-17T22:29:59Z  00:00:57
+ca11      baseexample1    linux       Succeeded  Image Update  2020-11-20T23:38:24Z  00:00:34
+ca10      taskhelloworld  linux       Succeeded  Image Update  2020-11-20T23:38:24Z  00:00:24
+cay                       linux       Succeeded  Manual        2020-11-20T23:38:08Z  00:00:22
+cax       baseexample1    linux       Succeeded  Manual        2020-11-20T23:33:12Z  00:00:30
+caw       taskhelloworld  linux       Succeeded  Commit        2020-11-20T23:16:07Z  00:00:29
+cav       example2        linux       Succeeded  Commit        2020-11-20T23:16:07Z  00:00:55
+cau       example1        linux       Succeeded  Commit        2020-11-20T23:16:07Z  00:00:40
+cat       taskhelloworld  linux       Succeeded  Manual        2020-11-20T23:07:29Z  00:00:27
 ```
 
-如果您想要執行下列選擇性步驟以執行新建置的容器，並查看更新的版本號碼，請記下映像更新觸發之組建的 **RUN ID** 值 (在上述輸出中，其值為 "da8")。
+如果您想要執行下列選擇性步驟以執行新建置的容器，並查看更新的版本號碼，請記下映像更新觸發之組建的 **RUN ID** 值 (在上述輸出中，其值為 "ca11")。
 
 ### <a name="optional-run-newly-built-image"></a>選擇性：執行新建置的映像
 
@@ -213,7 +206,8 @@ docker run -d -p 8081:80 --name updatedapp --rm $ACR_NAME.azurecr.io/helloworld:
 
 在瀏覽器中瀏覽至 http://localhost:8081 ，您應該會在網頁中看到更新的 Node.js 版本號碼 (附有 "a")：
 
-![呈現在瀏覽器中的範例應用程式的螢幕擷取畫面][base-update-02]
+:::image type="content" source="media/container-registry-tutorial-base-image-update/base-update-02.png" alt-text="瀏覽器中已更新的範例應用程式的螢幕擷取畫面":::
+
 
 務必留意的是，您是使用新的版本號碼更新 **基底** 映像，但最後建置的 **應用程式** 映像會顯示新版本。 ACR 工作會取用您對基底映像的變更，並自動重建您的應用程式映像。
 
@@ -245,7 +239,3 @@ docker stop updatedapp
 [az-acr-login]: /cli/azure/acr#az-acr-login
 [az-acr-task-list-runs]: /cli/azure/acr
 [az-acr-task]: /cli/azure/acr
-
-<!-- IMAGES -->
-[base-update-01]: ./media/container-registry-tutorial-base-image-update/base-update-01.png
-[base-update-02]: ./media/container-registry-tutorial-base-image-update/base-update-02.png

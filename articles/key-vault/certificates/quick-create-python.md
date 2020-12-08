@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 05b1ea8e6daa9fae0588535534c4a8be45ab91d5
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: d9fdfc89c8c02749fdf677ad119f1eed5a4b1fa2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285255"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185176"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-python"></a>快速入門：適用於 Python 的 Azure Key Vault 憑證用戶端程式庫
 
@@ -70,10 +70,10 @@ ms.locfileid: "93285255"
 
 ### <a name="grant-access-to-your-key-vault"></a>授與對金鑰保存庫的存取權
 
-建立金鑰保存庫的存取原則，將祕密權限授與服務主體
+建立金鑰保存庫的存取原則，將憑證權限授與服務主體
 
 ```console
-az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --certificate-permissions delete get list create
 ```
 
 #### <a name="set-environment-variables"></a>設定環境變數

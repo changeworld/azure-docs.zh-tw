@@ -9,21 +9,20 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 946435175ea5cd366103bc1254bae0d9afe0926e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 62cecc011980c2d11e6f99895c90b0ced744039a
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325810"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325344"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>教學課程 1：預測信用風險 - Azure Machine Learning Studio (傳統)
 
-**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
-
+**適用於：** ![這是一個核取記號，表示本文適用於 Machine Learning Studio (傳統)。](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (傳統)  ![這是 X，這表示本文適用於 Azure Machine Learning。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
-在本教學課程中，您將進一步了解開發預測性分析解決方案的程序。 您將在 Machine Learning Studio (傳統) 中建立簡單的模型。  接著，您會將該模型部署為 Azure Machine Learning Web 服務。  這個已部署的模型可使用新資料進行預測。 本教學課程是 **三部分教學課程系列的第一部分** 。
+在本教學課程中，您將進一步了解開發預測性分析解決方案的程序。 您將在 Machine Learning Studio (傳統) 中建立簡單的模型。  接著，您會將該模型部署為 Azure Machine Learning Web 服務。  這個已部署的模型可使用新資料進行預測。 本教學課程是 **三部分教學課程系列的第一部分**。
 
 假設您必須根據某個人在信用申請書上提供的資訊預測其信用風險。  
 
@@ -119,13 +118,13 @@ sed 's/ /,/g' german.data > german.csv
 
 1. 開啟 Machine Learning Studio (傳統) 首頁 ([https://studio.azureml.net](https://studio.azureml.net))。 
 
-2. 按一下視窗左上角的功能表![功能表](./media/tutorial-part1-credit-risk/menu.png)，按一下 [Azure Machine Learning]，選取 [Studio] 然後登入。
+2. 按一下功能表 ![這是功能表圖示 - 三組堆疊線條。](./media/tutorial-part1-credit-risk/menu.png) 在視窗的左上角，按一下 [Azure Machine Learning]，選取 [Studio] 然後登入。
 
 3. 按一下視窗底部的 [ **+新增** ]。
 
-4. 選取 [ **資料集** ]。
+4. 選取 [ **資料集**]。
 
-5. 選取 [ **從本機檔案** ]。
+5. 選取 [ **從本機檔案**]。
 
     ![從本機檔案新增資料集](./media/tutorial-part1-credit-risk/add-dataset.png)
 

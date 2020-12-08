@@ -3,17 +3,17 @@ title: 什麼是 Azure IoT 中心 | Microsoft Docs
 description: Azure IoT Central 是一個 IoT 應用程式平台，能簡化 IoT 解決方案的建立，有助於降低 IoT 管理、作業與開發的負擔及費用。 本文提供 Azure IoT 中心的功能概觀。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/10/2019
+ms.date: 11/23/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: b62a0da7074676787b7e1c0182ca7588b83cdbe0
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 55f187781a0f11417b0c918034dcfe3362be4468
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985037"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457668"
 ---
 # <a name="what-is-azure-iot-central"></a>何謂 Azure IoT 中心？
 
@@ -137,7 +137,7 @@ IoT Central 應用程式完全由 Microsoft 裝載，可降低管理您的應用
 您可以使用 7 天免費試用版或標準版定價方案來建立 IoT Central 應用程式。
 
 - 使用「免費」  方案建立的應用程式可以免費試用七天，且最多可支援五個裝置。 您可以在到期前，隨時將其轉換為使用標準定價方案。
-- 您使用「標準」方案建立的應用程式會根據每個裝置來計費，您可以選擇 **標準 1** 或 **標準 2** 定價方案，而且前兩個裝置免費。 深入了解 [IoT Central 價格](https://aka.ms/iotcentral-pricing)。
+- 您使用「標準」方案建立的應用程式會根據每個裝置來計費，您可以選擇 **標準 0**、**標準 1** 或 **標準 2** 定價方案，而且前兩個裝置免費。 深入了解 [IoT Central 價格](https://aka.ms/iotcentral-pricing)。
 
 ## <a name="quotas"></a>配額
 
@@ -157,7 +157,7 @@ IoT Central 應用程式完全由 Microsoft 裝載，可降低管理您的應用
 既然您已大致了解 IoT Central，以下是一些建議的後續步驟：
 
 - 了解可用於[建立 IoT 解決方案的 Azure 技術和服務](../../iot-fundamentals/iot-services-and-technologies.md)。
-- 如果您是裝置開發人員，而且想要深入了解一些程式碼，建議的下一個步驟是[建立用戶端應用程式並將其連線到您的 Azure IoT Central 應用程式](./tutorial-connect-device-nodejs.md)。
+- 如果您是裝置開發人員，而且想要深入了解一些程式碼，建議的下一個步驟是[建立用戶端應用程式並將其連線到您的 Azure IoT Central 應用程式](./tutorial-connect-device.md)。
 - 熟悉 [Azure IoT 中心 UI](overview-iot-central-tour.md)。
 - 從[建立 Azure IoT 中心應用程式](quick-deploy-iot-central.md)著手。
 - 了解如何[讓 Azure IoT Edge 裝置連線](./tutorial-add-edge-as-leaf-device.md)。

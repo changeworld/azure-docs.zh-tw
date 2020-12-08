@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 2597aa1f0589fea75af0a3ac41244e3718d5eb3e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a5d84b936679cdd5ebd5bec4938d6db7fcb641e7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307960"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455497"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>快速入門：在 Synapse 中建立新的 Azure Machine Learning 連結服務
 
-在本快速入門中，您會將 Synapse Analytics 工作區連結至 Azure Machine Learning 工作區。 連結這些工作區可讓您利用 Synapse 中各種體驗的 Azure Machine Learning。
+在本快速入門中，您會將 Azure Synapse Analytics 工作區連結至 Azure Machine Learning 工作區。 連結這些工作區可讓您利用 Synapse 中各種體驗的 Azure Machine Learning。
 
 例如，這會連結到 Azure Machine Learning 的工作區，可實現下列體驗：
 
@@ -29,7 +29,7 @@ ms.locfileid: "93307960"
 ## <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)。
-- [Synapse Analytics 工作區](../get-started-create-workspace.md)，並將 ADLS Gen2 儲存體帳戶設定為預設儲存體。 您必須是所要使用 ADLS Gen2 檔案系統的 **儲存體 Blob 資料參與者** 。
+- [Synapse Analytics 工作區](../get-started-create-workspace.md)，並將 ADLS Gen2 儲存體帳戶設定為預設儲存體。 您必須是所要使用 ADLS Gen2 檔案系統的 **儲存體 Blob 資料參與者**。
 - [Azure Machine Learning 工作區](/azure/machine-learning/how-to-manage-workspace)。
 - 您需要權限 (或具有權限使用者的要求) 來建立服務主體和祕密，讓您可以用來建立連結的服務。 請注意，必須在 Azure Machine Learning 工作區中將「參與者」角色指派給此服務主體。
 
@@ -80,4 +80,4 @@ ms.locfileid: "93307960"
 ## <a name="next-steps"></a>後續步驟
 
 - [教學課程：機器學習模型評分精靈 - 專用 SQL 集區](tutorial-sql-pool-model-scoring-wizard.md)
-- [Azure Synapse Analytics 中的機器學習功能 (工作區預覽)](what-is-machine-learning.md)
+- [Azure Synapse Analytics 中的機器學習功能](what-is-machine-learning.md)

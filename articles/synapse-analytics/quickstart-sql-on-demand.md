@@ -1,6 +1,6 @@
 ---
 title: 快速入門：使用無伺服器 SQL 集區
-description: 在本快速入門中，您將了解如何使用無伺服器 SQL 集區 (預覽) 來查詢各種類型的檔案。
+description: 在本快速入門中，您將了解如何使用無伺服器 SQL 集區來查詢各種類型的檔案。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 270942392e028964c7e9b1c110e4d9f118bd4953
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: e75bab664bdd0d6a4ac898905226c9956f62b4ff
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682971"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450509"
 ---
 # <a name="quickstart-use-serverless-sql-pool"></a>快速入門：使用無伺服器 SQL 集區
 
-Synapse 無伺服器 SQL 集區 (預覽) 是一項無伺服器查詢服務，可讓您對放在 Azure 儲存體中的檔案執行 SQL 查詢。 在本快速入門中，您將了解如何使用無伺服器 SQL 集區來查詢各種類型的檔案。 支援的格式會列在 [OPENROWSET](sql/develop-openrowset.md) 中。
+Synapse 無伺服器 SQL 集區是一項無伺服器查詢服務，可讓您對放在 Azure 儲存體中的檔案執行 SQL 查詢。 在本快速入門中，您將了解如何使用無伺服器 SQL 集區來查詢各種類型的檔案。 支援的格式會列在 [OPENROWSET](sql/develop-openrowset.md) 中。
 
 本快速入門示範如何查詢：CSV、Apache Parquet 和 JSON 檔案。
 

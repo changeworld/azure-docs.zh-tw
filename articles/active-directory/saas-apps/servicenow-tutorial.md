@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 3413e594179cdca0704cb5db7908276b7502e719
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7a15248300150c9b79c4678701f81fac923d56a3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004750"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353601"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 ServiceNow 整合
 
@@ -25,6 +25,8 @@ ms.locfileid: "96004750"
 * 在 Azure AD 中控制可存取 ServiceNow 的人員。
 * 讓使用者使用其 Azure AD 帳戶自動登入 ServiceNow。
 * 在 Azure 入口網站中集中管理您的帳戶。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Jao6]
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -230,7 +232,7 @@ ms.locfileid: "96004750"
 
     * 針對 [使用者資料表上的欄位...]  ，輸入 **電子郵件**。
   
-    * 選取 [儲存]  。
+    * 選取 [儲存]。
 
 1. 您可以自動或手動設定 ServiceNow。 若要自動設定 ServiceNow，請依照下列步驟操作：
 
@@ -478,5 +480,4 @@ ms.locfileid: "96004750"
 
 ## <a name="next-steps"></a>後續步驟
 
-設定 ServiceNow 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
-
+設定 ServiceNow 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-aad)

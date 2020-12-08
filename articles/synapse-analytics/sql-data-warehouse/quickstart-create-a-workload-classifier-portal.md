@@ -11,14 +11,14 @@ ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 691cdcb525f8e9e3d1fb914372b9f62366f4bfba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4c761404ab5a95bc0189407cc97ce779b66356fe
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85213018"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460648"
 ---
-# <a name="quickstart-create-a-synapse-sql-pool-workload-classifier-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站來建立 Synapse SQL 集區工作負載分類器
+# <a name="quickstart-create-a-dedicated-sql-pool-workload-classifier-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立專用 SQL 集區工作負載分類器
 
 在本快速入門中，您將建立[工作負載分類器](sql-data-warehouse-workload-classification.md)，將查詢指派給工作負載群組。  分類器會將要求從 `ELTLogin` SQL 使用者指派給 `DataLoads` 工作負載群組群組。   遵循 [快速入門：設定工作負載隔離](quickstart-configure-workload-isolation-portal.md)教學課程，以建立 `DataLoads` 工作負載群組。  本教學課程將使用 WLM_LABEL 選項來建立工作負載分類器，以協助正確地進一步分類要求。  分類器也會將`HIGH` [工作負載重要性](sql-data-warehouse-workload-importance.md)指派給這些要求。
 
@@ -31,16 +31,16 @@ ms.locfileid: "85213018"
 登入 [Azure 入口網站](https://portal.azure.com/)。
 
 > [!NOTE]
-> 在 Azure Synapse Analytics 中建立 SQL 集區執行個體，可能會產生新的可計費服務。  如需詳細資訊，請參閱 [Azure Synapse Analytics 定價](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)。
+> 在 Azure Synapse Analytics 中建立專用 SQL 集區執行個體，可能會產生新的可計費服務。  如需詳細資訊，請參閱 [Azure Synapse Analytics 定價](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-本快速入門假設您已擁有 Synapse SQL 中的 SQL 集區執行個體，且已有 CONTROL DATABASE 權限。 若您需要建立 SQL 資料倉儲，請使用[建立與連線 - 入口網站](create-data-warehouse-portal.md)來建立稱為 **mySampleDataWarehouse** 的資料倉儲。
+本快速入門假設您已有專用 SQL 集區執行個體，且已有 CONTROL DATABASE 權限。 若您需要建立 SQL 集區，請使用 [建立與連線 - 入口網站](create-data-warehouse-portal.md)建立名為 **mySampleDataWarehouse** 的專用 SQL 集區。
 <br><br>
 工作負載群組 `DataLoads` 存在。  請參閱 [快速入門：設定工作負載隔離](quickstart-configure-workload-isolation-portal.md)教學課程，以建立工作負載群組。
 <br><br>
 >[!IMPORTANT] 
->您的 SQL 集區需要上線才可設定工作負載管理。 
+>您的專用 SQL 集區需要上線才可設定工作負載管理。 
 
 
 ## <a name="create-a-login-for-eltlogin"></a>建立適用於 ELTLogin 的登入
@@ -72,27 +72,26 @@ END
 分類可讓您根據一組規則，將要求路由傳送至工作負載群組。  在[快速入門：設定工作負載隔離](quickstart-configure-workload-isolation-portal.md)教學課程中，我們建立了 `DataLoads` 工作負載群組。  現在您將建立工作負載分類器，將查詢路由至 `DataLoads` 工作負載群組。
 
 
-1.  按一下 Azure 入口網站左側頁面中的 [Azure Synapse Analytics (先前為 SQL DW)]  。
-2.  從 [Azure Synapse Analytics (先前為 SQL DW)]  頁面中選取 [mySampleDataWarehouse]  。 SQL 集區隨即開啟。
-3.  按一下 [工作負載管理]  。
+1.  瀏覽至您的 **mySampleDataWarehouse** 專用 SQL 集區頁面。
+3.  選取 [工作負載管理]。
 
     ![按一下功能表](./media/quickstart-create-a-workload-classifier-portal/menu.png)
 
-4.  按一下 `DataLoads` 工作負載群組右側的 [設定和分類器]  。
+4.  選取 `DataLoads` 工作負載群組右側的 [設定和分類器]。
 
     ![按一下 [建立專案]。](./media/quickstart-create-a-workload-classifier-portal/settings-classifiers.png)
 
-5. 按一下 [分類器]  。
-6. 按一下 [新增分類器]  。
+5. 在 [分類器] 資料行底下，選取 [未設定]。
+6. 選取 [+ 新增分類器]。
 
     ![按一下 [新增]](./media/quickstart-create-a-workload-classifier-portal/add-wc.png)
 
-7.  針對**名稱**輸入 `ELTLoginDataLoads`。
-8.  針對**成員**輸入 `ELTLogin`。
-9.  針對**要求重要性**選取 `High`。  選用  ，預設值為一般重要性。
-10. 針對**標籤**輸入 `fact_loads`。
-11. 按一下 [新增]  。
-12. 按一下 [檔案]  。
+7.  針對 **名稱** 輸入 `ELTLoginDataLoads`。
+8.  針對 **成員** 輸入 `ELTLogin`。
+9.  針對 **要求重要性** 選取 `High`。  選用  ，預設值為一般重要性。
+10. 針對 **標籤** 輸入 `fact_loads`。
+11. 選取 [新增]。
+12. 選取 [儲存]。
 
     ![按一下設定](./media/quickstart-create-a-workload-classifier-portal/config-wc.png)
 
@@ -135,8 +134,6 @@ WHERE [label] = 'fact_loads'
 ORDER BY submit_time DESC
 ```
 
-
-
 ## <a name="clean-up-resources"></a>清除資源
 
 若要刪除在本教學課程中建立的 `ELTLoginDataLoads` 工作負載分類器：
@@ -152,24 +149,20 @@ ORDER BY submit_time DESC
 
     ![按一下 [Save] \(儲存)。](./media/quickstart-create-a-workload-classifier-portal/delete-save-wc.png)
 
-您需對資料倉儲單位和資料倉儲中儲存的資料付費。 這些計算和儲存體資源會分開計費。
+您需對資料倉儲單位和專用 SQL 集區中儲存的資料付費。 這些計算和儲存體資源會分開計費。
 
-- 如果您需要將資料保留在儲存體中，可以在您不使用資料倉儲時暫停計算。 暫停計算，您只需支付資料儲存體的費用。 當您準備好使用資料時，會繼續計算。
-- 如果您需要移除未來的費用，可以將資料倉儲刪除。
+- 如果您需要將資料保留在儲存體中，可以在您不使用專用 SQL 集區時暫停計算。 暫停計算，您只需支付資料儲存體的費用。 當您準備好使用資料時，會繼續計算。
+- 如果您想要移除未來的費用，可以將專用 SQL 集區刪除。
 
 遵循下列步驟清除資源。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)，選取您的資料倉儲。
+1. 登入 [Azure 入口網站](https://portal.azure.com)，然後選取您的專用 SQL 集區。
 
     ![清除資源](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. 若要暫停計算，請選取 [暫停]  按鈕。 資料倉儲暫停時，您會看到 [啟動]  按鈕。  若要繼續計算，請選取 [啟動]  。
+2. 若要暫停計算，請選取 [暫停] 按鈕。 專用 SQL 集區暫停時，您會看到 [啟動] 按鈕。  若要繼續計算，請選取 [啟動]  。
 
-3. 若要移除資料倉儲，而不再支付計算或儲存體的費用，請選取 [刪除]  。
-
-4. 若要移除您所建立的 SQL Server，請選取上圖中的 [sqlpoolservername.database.windows.net]  ，然後選取 [刪除]  。  請謹慎使用刪除，因為刪除伺服器也會刪除所有指派給伺服器的資料庫。
-
-5. 若要移除此資源群組，請選取 [myResourceGroup]  ，然後選取 [刪除資源群組]  。
+3. 若要移除專用 SQL 集區，而不再支付計算或儲存體的費用，請選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -9,16 +9,16 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 10/16/2020
-ms.openlocfilehash: b20f2ce88695cb68de496d126c5e3cd52f9eb6c8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 38b0f23a44a16125726e7810b2045d244a2e6b06
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316139"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454650"
 ---
 # <a name="quickstart-create-a-serverless-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>快速入門：使用 Web 工具在 Azure Synapse Analytics 中建立無伺服器 Apache Spark 集區
 
-在本快速入門中，您將了解如何使用 Web 工具在 Azure Synapse 中建立無伺服器 Apache Spark 集區 (預覽)。 接著，您將了解如何連線到 Apache Spark 集區，並對檔案和資料表執行 Spark SQL 查詢。 Apache Spark 能夠運用記憶體內部處理，使得資料分析及叢集運算更為快速。 若要深入了解 Azure Synapse 中的 Spark，請參閱[概觀：Azure Synapse 上的 Apache Spark 集區](./spark/apache-spark-overview.md)。
+在本快速入門中，您將了解如何使用 Web 工具在 Azure Synapse 中建立無伺服器 Apache Spark 集區。 接著，您將了解如何連線到 Apache Spark 集區，並對檔案和資料表執行 Spark SQL 查詢。 Apache Spark 能夠運用記憶體內部處理，使得資料分析及叢集運算更為快速。 若要深入了解 Azure Synapse 中的 Spark，請參閱[概觀：Azure Synapse 上的 Apache Spark 集區](./spark/apache-spark-overview.md)。
 
 > [!IMPORTANT]
 > 無論使用與否，Spark 執行個體都是按分鐘計費。 當您使用完 Spark 執行個體之後，請務必將其關閉，或設定短暫的逾時時間。 如需詳細資訊，請參閱本文的 **清除資源** 一節。
@@ -61,7 +61,7 @@ Notebook 是支援各種程式設計語言的互動式環境。 Notebook 可讓�
 
 9. 現在，使用下列其中一種方法來執行資料格：
 
-   - 按下 **SHIFT + ENTER** 。
+   - 按下 **SHIFT + ENTER**。
    - 選取儲存格左邊的藍色播放圖示。
    - 選取工具列上的 [全部執行] 按鈕。
 
@@ -120,7 +120,7 @@ Notebook 是支援各種程式設計語言的互動式環境。 Notebook 可讓�
 6. 在 [X 軸資料行] 欄位中，選取 [州]。
 7. 在 [Y 軸資料行] 欄位中，選取 [薪資]。
 8. 在 [彙總] 欄位中，選取 [平均]。
-9. 選取 [套用]  。
+9. 選取 [套用]。
 
    ![Azure Synapse Spark 中的圖表輸出](./media/quickstart-apache-spark-notebook/spark-get-started-query-chart-output.png "Azure Synapse Spark 中的圖表輸出")
 
@@ -130,7 +130,7 @@ Notebook 是支援各種程式設計語言的互動式環境。 Notebook 可讓�
     display(spark.sql('SELECT * FROM demo_df'))
     ```
 
-11. 先前執行的每個資料格都可以選擇移至 **記錄伺服器** 及 **監視** 。 按一下連結會帶您前往使用者體驗的不同部分。
+11. 先前執行的每個資料格都可以選擇移至 **記錄伺服器** 及 **監視**。 按一下連結會帶您前往使用者體驗的不同部分。
 
 > [!NOTE]
 > 某些[ Apache Spark 官方文件](https://spark.apache.org/docs/latest/)會依賴使用 Spark 主控台，但 Synapse Spark 不提供這項功能。 請改用 [Notebook](quickstart-apache-spark-notebook.md) 或 [IntelliJ](./spark/intellij-tool-synapse.md) 體驗。

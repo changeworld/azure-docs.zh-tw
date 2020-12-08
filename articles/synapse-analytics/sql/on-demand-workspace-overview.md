@@ -1,5 +1,5 @@
 ---
-title: 無伺服器 SQL 集區 (預覽)
+title: 無伺服器 SQL 集區
 description: 了解 Azure Synapse Analytics 中的無伺服器 SQL 集區。
 services: synapse analytics
 author: filippopovic
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e0d47567c3bc0b05c47efafa3bdc8b297a7bdbea
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 34ce36f0ff348f896b7c2ea680c113b5e9e4ea09
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93306871"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463177"
 ---
-# <a name="serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的無伺服器 SQL 集區 (預覽) 
+# <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的無伺服器 SQL 集區 
 
-每個 Azure Synapse Analytics 工作區 (預覽) 都會隨附無伺服器 SQL 集區 (預覽) 端點，供您用來查詢資料湖中的資料。
+每個 Azure Synapse Analytics 工作區都會隨附無伺服器 SQL 集區端點，供您用來查詢資料湖中的資料。
 
 無伺服器 SQL 集區是針對資料湖資料進行的查詢服務。 其可讓您透過下列功能存取您的資料：
  
@@ -123,7 +123,7 @@ ms.locfileid: "93306871"
 
   此驗證方法會使用使用者名稱和密碼。
 
-- **Azure Active Directory 驗證** ：
+- **Azure Active Directory 驗證**：
 
   此驗證方法會使用由 Azure Active Directory 管理的身分識別。 您可以為 Azure AD 使用者啟用多重要素驗證。 [盡可能](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)使用 Active Directory 驗證 (整合式安全性)。
 

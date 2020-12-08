@@ -3,12 +3,12 @@ title: 追蹤 Azure 實驗室服務中的實驗室的使用情況 | Microsoft Do
 description: 在本教學課程中，身為實驗室建立者/擁有者的您可以追蹤實驗室的使用情況。
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: a9a9b49b568decc621be1969a8578d61ac7e4861
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a3ca9e011eb89b3db8b202bab11d14f10d74e7e
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85445027"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434612"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>教學課程：追蹤 Azure 實驗室服務中的實驗室的使用情況
 本教學課程會說明實驗室建立者/擁有者如何追蹤實驗室的使用情況。
@@ -50,4 +50,4 @@ ms.locfileid: "85445027"
 > 當教育工作者開啟學生 VM 時，學生的配額不會受到影響。 使用者的配額會指定使用者可在排定的上課時間外使用的實驗室時數。 如需配額的詳細資訊，請參閱[為使用者設定配額](how-to-configure-student-usage.md?#set-quotas-for-users)。
 
 ## <a name="next-steps"></a>後續步驟
-若要深入了解教室實驗室，請參閱[操作指南](how-to-manage-lab-accounts.md)底下的文章。
+若要深入了解實驗室，請參閱[操作指南](how-to-manage-lab-accounts.md)底下的文章。

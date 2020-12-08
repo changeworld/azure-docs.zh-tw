@@ -1,5 +1,5 @@
 ---
-title: 快速入門：使用 Azure 入口網站建立專用 SQL 集區 (預覽)
+title: 快速入門：使用 Azure 入口網站建立專用 SQL 集區
 description: 遵循本指南中的步驟，使用 Azure 入口網站建立新的專用 SQL 集區。
 services: synapse-analytics
 author: julieMSFT
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: b558e34d3f5d224515eee669dfa7b8f2c6bbb3cd
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3537b126adf082c8b00a02d999789d8a32b3f51d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541006"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462006"
 ---
-# <a name="quickstart-create-a-dedicated-sql-pool-preview-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立專用 SQL 集區 (預覽)
+# <a name="quickstart-create-a-dedicated-sql-pool-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立專用 SQL 集區
 
 Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、模型化及分析您的資料。 專用 SQL 集區提供以 T-SQL 為基礎的計算和儲存功能。 在 Synapse 工作區中建立專用 SQL 集區後，就可以載入、模型化、處理及提供資料，以提供更快速的分析見解。
 

@@ -1,6 +1,6 @@
 ---
-title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 New Relic (依組織) 整合 | Microsoft Docs
-description: 了解如何設定 Azure Active Directory 與 New Relic (依組織) 之間的單一登入。
+title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 New Relic 整合 | Microsoft Docs
+description: 了解如何設定 Azure Active Directory 與 New Relic 之間的單一登入。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 0bb58c864dce24f646b3145f7ad43eb5a75c0dec
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 4cf3f9d0ae23bab4d2412b47e5841d6b8a56b65a
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522524"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327061"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-organization"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 New Relic (依組織) 整合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 New Relic 整合
 
-在本教學課程中，您將了解如何整合 New Relic (依組織) 與 Azure Active Directory (Azure AD)。 當您將 New Relic (依組織) 與 Azure AD 整合時，您可以：
+在本教學課程中，您將了解如何整合 New Relic 與 Azure Active Directory (Azure AD)。 在整合 New Relic 與 Azure AD 時，您可以：
 
-* 在 Azure AD 中控制可存取 New Relic (依組織) 的人員。
-* 讓使用者使用其 Azure AD 帳戶自動登入 New Relic (依組織)。
+* 在 Azure AD 中控制可存取 New Relic 的人員。
+* 讓使用者使用其 Azure AD 帳戶自動登入 New Relic。
 * 在 Azure 入口網站集中管理您的帳戶。
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
@@ -33,116 +33,149 @@ ms.locfileid: "92522524"
 若要開始，您需要下列項目：
 
 * Azure AD 訂用帳戶。 如果沒有訂用帳戶，您可以取得[免費帳戶](https://azure.microsoft.com/free/)。
-* 已啟用 New Relic (依組織) 單一登入 (SSO) 的訂用帳戶。
+* 已啟用 New Relic 單一登入 (SSO) 的訂用帳戶。
 
 ## <a name="scenario-description"></a>案例描述
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
-* New Relic (依組織) 支援 **IDP** 起始的 SSO
-
+* New Relic 支援由 **SP 和 IDP** 起始的 SSO。
 * 設定 New Relic 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
-## <a name="adding-new-relic-by-organization-from-the-gallery"></a>從資源庫新增 New Relic (依組織)
+## <a name="add-new-relic-application-from-the-gallery"></a>從資源庫新增 New Relic 應用程式
 
-若要設定將 New Relic (依組織) 整合到 Azure AD 中，您需要從資源庫將 New Relic (依組織) 新增到受控 SaaS 應用程式清單。
+若要進行將 New Relic 整合到 Azure AD 中的設定，您必須從資源庫將 **New Relic (依組織)** 新增至受控 SaaS 應用程式清單。
 
 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
-1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **New Relic (依組織)** 。
-1. 從 [結果] 面板中選取 [New Relic (依組織)]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
+1. 選取 [Azure Active Directory]  服務。
+1. 選取 [企業應用程式]。
+1. 若要新增新的應用程式，請選取 [新增應用程式]  。
+1. 在 [瀏覽 Azure AD 資源庫] 頁面的搜尋方塊中，輸入 **New Relic (依組織)** 。
+1. 從結果面板中選取 [New Relic (依組織)]，然後選取 [建立]。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
+## <a name="configure-and-test-azure-ad-sso-for-new-relic"></a>設定和測試 New Relic 的 Azure AD SSO
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-new-relic-by-organization"></a>設定及測試 New Relic (依組織) 的 Azure AD 單一登入
+以名為 **B.Simon** 的測試使用者，設定及測試與 New Relic 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 New Relic 中相關使用者之間的連結關聯性。
 
-以名為 **B.Simon** 的測試使用者，設定及測試與 New Relic (依組織) 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 New Relic (依組織) 中相關使用者之間的連結關聯性。
-
-若要設定及測試與 New Relic (依組織) 搭配運作的 Azure AD SSO，請完成下列建置組塊：
+若要設定及測試與 New Relic 搭配運作的 Azure AD SSO，請完成下列建置組塊：
 
 1. **[設定 Azure AD SSO](#configure-azure-ad-sso)** - 讓您的使用者能夠使用此功能。
-    * **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 B.Simon 測試 Azure AD 單一登入。
-    * **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 B.Simon 能夠使用 Azure AD 單一登入。
-1. **[設定 New Relic (依組織) SSO](#configure-new-relic-by-organization-sso)** - 在應用程式端設定單一登入設定。
-    * **[建立 New Relic (依組織) 測試使用者](#create-new-relic-by-organization-test-user)** - 在 New Relic (依組織) 中建立一個與 Azure AD 中代表 Britta Simon 之使用者連結的 Britta Simon 對應項目。
+   1. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 B.Simon 測試 Azure AD 單一登入。
+   1. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 B.Simon 能夠使用 Azure AD 單一登入。
+1. **[設定 New Relic SSO](#configure-new-relic-sso)** - 在 New Relic 端設定單一登入設定。
+   1. **[建立 New Relic 測試使用者](#create-a-new-relic-test-user)** - 使 New Relic 中對應的 B.Simon 連結到 Azure AD 使用者。
 1. **[測試 SSO](#test-sso)** - 驗證組態是否能運作。
 
 ## <a name="configure-azure-ad-sso"></a>設定 Azure AD SSO
 
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [New Relic (依組織)]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [New Relic (依組織)] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
+
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 如果您有 **服務提供者中繼資料檔案** ，請在 [基本 SAML 設定]  區段上執行下列步驟：
+1. 在 [基本 SAML 設定] 區段中，輸入 [識別碼] 和 [回覆 URL] 的值。
 
-    a. 按一下 [上傳中繼資料檔案]  。
+   * 您可以使用 New Relic **My Organization** 應用程式來擷取這些值。 若要使用此應用程式，請執行下列步驟：
+      1. [登入](https://login.newrelic.com/) New Relic。
+      1. 在頂端功能表上，選取 [應用程式]。
+      1. 在 [您的應用程式] 區段中，選取 [My Organization]。
+      1. 按一下 [驗證網域]。
+      1. 選擇您要讓 Azure AD SSO 連線到的驗證網域 (如果您有多個驗證網域)。 大部分的公司只會有一個名為 **預設** 的驗證網域。 若只有一個驗證網域，則無須選取。
+      1. 在 [驗證] 區段中，[判斷提示取用者 URL] 包含 [回覆 URL] 所使用的值。
+      1. 在 [驗證] 區段中，[我們的實體識別碼] 包含 [識別碼] 所使用的值。
 
-    ![此螢幕擷取畫面顯示具有上傳中繼資料檔案連結的基本 SAML 設定。](common/upload-metadata.png)
+1. 在 [使用者屬性與宣告] 區段中，請確定 [唯一使用者識別碼] 對應至 New Relic 所使用的電子郵件地址所在的欄位。
 
-    b. 按一下 **資料夾圖示** 以選取中繼資料檔案，然後按一下 [上傳]  。
+   * 預設欄位 **user.userprincipalname** 的值若與 New Relic 電子郵件地址相同，則可以使用預設值。
+   * 如果 **user.userprincipalname** 不是 New Relic 電子郵件地址，則 **user.mail** 欄位可能較為適用。
 
-    ![此螢幕擷取畫面顯示您可以在其中選取並上傳檔案的對話方塊。](common/browse-upload-metadata.png)
+1. 在 [SAML 簽署憑證] 區段中，複製 [應用程式同盟中繼資料 URL] 並儲存其值，以供後續使用。
 
-    c. 成功上傳中繼資料檔案後，就會在 [基本 SAML 設定] 區段中自動填入 [識別碼]  和 [回覆 URL]  值：
-
-    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入識別碼、回覆 URL 以及選取 [儲存]。](common/idp-intiated.png)
-
-    > [!Note]
-    > 如果 [識別碼]  和 [回覆 URL]  值未自動填入，請根據您的需求手動填入這些值。
-
-1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [複製] 按鈕以複製 [應用程式同盟中繼資料 URL]  ，並將資料儲存在您的電腦上。
-
-    ![憑證下載連結](common/copy-metadataurl.png)
+1. 在 [設定 New Relic (依組織)] 區段中，複製 [登入 URL] 並儲存其值，以供後續使用。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
-1. 在畫面頂端選取 [新增使用者]  。
-1. 在 [使用者]  屬性中，執行下列步驟：
+1. 在 Azure 入口網站中，選取 [Azure Active Directory] 服務
+1. 選取 [使用者]。
+1. 若要新增使用者，請在畫面頂端選取 [新增使用者]。
+1. 在 [新增使用者] 頁面上，依照下列步驟操作：
+   1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `b.simon@contoso.com` 。 此項目應與您將在 New Relic 端使用的電子郵件地址相符。
    1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
-   1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
-   1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 按一下頁面底部的 [新增]  。
+   1. 勾選 [顯示密碼] 核取方塊，然後儲存 [初始密碼] 欄位中顯示的值。
+   1. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
-在本節中，您會將 New Relic (依組織) 的存取權授與 B.Simon，讓其能夠使用 Azure 單一登入。
+在本節中，您會將 **New Relic (依組織)** 應用程式的存取權授與 B.Simon，讓其能夠使用 Azure AD 單一登入。
 
-1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 [New Relic (依組織)]  。
+1. 在 Azure 入口網站中，選取 [Azure Active Directory] 服務
+1. 選取 [企業應用程式]。
+1. 在應用程式清單中，選取 [New Relic (依組織)]。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
+1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組] (或選取 [使用者]，視您的方案層級而定)。
 
-    ![[新增使用者] 連結](common/add-assign-user.png)
+   ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組]  對話方塊的 [使用者] 清單中選取 [B.Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
+1. 在 [使用者和群組] (或 [使用者]) 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
 1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
 
-## <a name="configure-new-relic-by-organization-sso"></a>設定 New Relic (依組織) SSO
+## <a name="configure-new-relic-sso"></a>設定 New Relic SSO
 
-若要在 **New Relic (依組織)** 端設定單一登入，您必須將 [應用程式同盟中繼資料 URL]  傳送給 [New Relic (依組織) 支援小組](https://support.newrelic.com/)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+請依照下列步驟在 New Relic 上設定 SSO。
 
+1. [登入](https://login.newrelic.com/) New Relic。
 
-### <a name="create-new-relic-by-organization-test-user"></a>建立 New Relic (依組織) 測試使用者
+1. 在頂端功能表上，選取 [應用程式]。
 
-在本節中，您會在 New Relic (依組織) 中建立名為 B.Simon 的使用者。 請與 [New Relic (依組織) 支援小組](https://support.newrelic.com/)合作，在 New Relic (依組織) 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+1. 在 [您的應用程式] 區段中，選取 [My Organization]。
+
+1. 按一下 [驗證網域]。
+
+1. 選擇您要讓 Azure AD SSO 連線到的驗證網域 (如果您有多個驗證網域)。 大部分的公司只會有一個名為 **預設** 的驗證網域。 若只有一個驗證網域，則無須選取。
+
+1. 在 [驗證] 區段中，按一下 [設定]。
+
+   1. 在 [SAML 中繼資料的來源] 欄位中，輸入您先前從 Azure AD 端的 [應用程式同盟中繼資料 URL] 欄位儲存的值。
+
+   1. 在 [SSO 目標 URL] 欄位中，輸入您先前從 Azure AD 端的 [登入 URL] 欄位儲存的值。
+
+   1. 在確認 Azure AD 和 New Relic 端都已設定妥當後，按一下 [儲存]。 如果兩端未同時正確設定，您的使用者將無法登入 New Relic。
+
+### <a name="create-a-new-relic-test-user"></a>建立 New Relic 測試使用者
+
+在本節中，您會在 New Relic 中建立名為 B.Simon 的使用者。 請依照下列步驟建立使用者。
+
+1. [登入](https://login.newrelic.com/) New Relic。
+
+1. 在頂端功能表上，選取 [應用程式]。
+
+1. 在 [您的應用程式] 區段中，選取 [使用者管理]。
+
+1. 按一下 [新增使用者] 按鈕。
+
+   1. 在 [名稱]  欄位中，輸入 **B.Simon**。
+   
+   1. 在 [電子郵件] 欄位中，輸入 Azure AD SSO 所將傳送的值。
+   
+   1. 選擇使用者的使用者 [類型] 和使用者 [群組]。 針對測試使用者，可以選擇 [基本使用者] 作為類型，並選擇 [使用者] 作為群組。
+   
+   1. 按一下 [新增使用者] 以儲存使用者。
 
 ## <a name="test-sso"></a>測試 SSO 
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 New Relic (依組織) 圖格時，應該會自動登入您已設定 SSO 的 New Relic (依組織)。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
+當您在存取面板中按一下 [New Relic (依組織)] 圖格時，應該會自動登入 New Relic。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -152,6 +185,6 @@ ms.locfileid: "92522524"
 
 - [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
-- [嘗試搭配 Azure AD 使用 New Relic (依組織)](https://aad.portal.azure.com/)
+- [嘗試搭配 Azure AD 使用 New Relic](https://aad.portal.azure.com/)
 
 - [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)

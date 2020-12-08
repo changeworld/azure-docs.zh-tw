@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: 06442e861a247f545ca6f22ecc82e5f5dc910553
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9a6faec2542337eedbe4aafb69f1061582f92cc7
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790231"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531559"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教學課程：在 Azure 中為 RHEL 虛擬機器上的 SQL Server 設定可用性群組 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -263,7 +263,7 @@ az vm availability-set create \
 > [!IMPORTANT]
 > 使用上述命令建立的預設映像，依預設會建立 32GB 的作業系統磁碟。 此預設安裝可能會耗盡可用空間。 您可以使用在上述 `az vm create` 命令中新增的參數，建立具有 128GB 的作業系統磁碟作為範例：`--os-disk-size-gb 128`。
 >
-> 接著，如果您需要擴充適當的資料夾磁碟區以容納您的安裝，您可以[設定邏輯磁碟區管理員 (LVM)](../../../virtual-machines/linux/configure-lvm.md)。
+> 接著，如果您需要擴充適當的資料夾磁碟區以容納您的安裝，您可以[設定邏輯磁碟區管理員 (LVM)](/previous-versions/azure/virtual-machines/linux/configure-lvm)。
 
 ### <a name="test-connection-to-the-created-vms"></a>測試與已建立的 VM 之間的連線
 
@@ -304,7 +304,7 @@ ssh <username>@publicipaddress
 1. 使用下列命令，在所有節點上更新及安裝 Pacemaker 套件：
 
     > [!NOTE]
-    > **nmap** 會安裝為此命令區塊中的一項工具，用以尋找您網路中可用的 IP 位址。 您不需要安裝 **nmap** ，但其效用將在本教學課程稍後的步驟中彰顯出來。
+    > **nmap** 會安裝為此命令區塊中的一項工具，用以尋找您網路中可用的 IP 位址。 您不需要安裝 **nmap**，但其效用將在本教學課程稍後的步驟中彰顯出來。
 
     ```bash
     sudo yum update -y
@@ -324,7 +324,7 @@ ssh <username>@publicipaddress
     sudo vi /etc/hosts
     ```
 
-    在 **vi** 編輯器中，輸入 `i` 以插入文字，並在空白行上新增對應 VM 的 **私人 IP** 。 然後，在 IP 旁的空格後面新增 VM 名稱。 各行應包含個別的項目。
+    在 **vi** 編輯器中，輸入 `i` 以插入文字，並在空白行上新增對應 VM 的 **私人 IP**。 然後，在 IP 旁的空格後面新增 VM 名稱。 各行應包含個別的項目。
 
     ```output
     <IP1> <VM1>
@@ -699,7 +699,7 @@ sudo systemctl restart mssql-server
 
 我們目前不支援對 AG 端點進行 AD 驗證。 因此，我們必須使用憑證為 AG 端點加密。
 
-1. 使用 SQL Server Management Studio (SSMS) 或 SQL CMD 連線至 **所有節點** 。 執行下列命令，以啟用 AlwaysOn_health 工作階段，並建立主要金鑰：
+1. 使用 SQL Server Management Studio (SSMS) 或 SQL CMD 連線至 **所有節點**。 執行下列命令，以啟用 AlwaysOn_health 工作階段，並建立主要金鑰：
 
     > [!IMPORTANT]
     > 如果您是從遠端連線至 SQL Server 執行個體，則必須在防火牆上開啟連接埠 1433。 您也必須在每個 VM 的 NSG 中，允許對連接埠 1433 的輸入連線。 如需詳細資訊，請參閱[建立安全性規則](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)，以了解如何建立輸入安全性規則。
@@ -1132,6 +1132,34 @@ Daemon Status:
     sudo pcs resource move ag_cluster-clone <VM2> --master
     ```
 
+   您也可以指定其他選項，讓為了將資源移至所需節點而建立的暫時性條件約束自動停用，而無須執行以下的步驟 2 和 3。
+
+   **RHEL 7**
+
+    ```bash
+    sudo pcs resource move ag_cluster-master <VM2> --master lifetime=30S
+    ```
+
+   **RHEL 8**
+
+    ```bash
+    sudo pcs resource move ag_cluster-clone <VM2> --master lifetime=30S
+    ```
+
+   另一個替代方法，是在單一行中合併多個命令將以下的步驟 2 和 3 自動化，以清除資源移動命令本身的暫時性條件約束。 
+
+   **RHEL 7**
+
+    ```bash
+    sudo pcs resource move ag_cluster-master <VM2> --master && sleep 30 && pcs resource clear ag_cluster-master
+    ```
+
+   **RHEL 8**
+
+    ```bash
+    sudo pcs resource move ag_cluster-clone <VM2> --master && sleep 30 && pcs resource clear ag_cluster-clone
+    ```
+    
 2. 如果您再次檢查限制式，您會看到因為手動容錯移轉而新增了另一個限制式：
     
     **RHEL 7**

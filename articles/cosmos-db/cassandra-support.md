@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: ecf4229c95ff9103cd27fd161fdd19c9e7a0f76b
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 8c51450fb6ce5c381784e6aaf9b1a66c3c4ff153
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636957"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188542"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支援的 Apache Cassandra 功能 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -205,7 +205,7 @@ Azure Cosmos DB Cassandra API 是受控服務平台。 它不會造成任何管�
 
 ## <a name="hosted-cql-shell-preview"></a>裝載的 CQL Shell (預覽)
 
-您可以直接從 [Azure 入口網站](data-explorer.md)中的資料總管或 [Azure Cosmos 總管](https://cosmos.azure.com/)，開啟裝載的原生 Cassandra Shell (CQLSH v5.0.1)。 啟用 CQL Shell 之前，您必須先在帳戶中[啟用筆記本](enable-notebooks.md)功能 (如果尚未啟用，在按一下 `Open Cassandra Shell` 時將會出現提示)。 查看[為 Azure Cosmos DB 帳戶啟用筆記本](enable-notebooks.md)中反白顯示的附註，以了解支援的 Azure 區域。
+您可以直接從 [Azure 入口網站](data-explorer.md)中的資料總管或 [Azure Cosmos DB 總管](https://cosmos.azure.com/)，開啟裝載的原生 Cassandra Shell (CQLSH v5.0.1)。 啟用 CQL Shell 之前，您必須先在帳戶中[啟用筆記本](enable-notebooks.md)功能 (如果尚未啟用，在按一下 `Open Cassandra Shell` 時將會出現提示)。 查看[為 Azure Cosmos DB 帳戶啟用筆記本](enable-notebooks.md)中反白顯示的附註，以了解支援的 Azure 區域。
 
 :::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="開啟 CQLSH":::
 

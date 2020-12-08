@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acb08d5430f13ad9a339b2cdd072fce9c196d05f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 021550598452516d45ae67c1139c2f891629a875
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92451476"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296568"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 FortiGate SSL VPN 整合
 
@@ -55,7 +55,7 @@ FortiGate SSL VPN 支援由 SP 起始的 SSO。
 1. 在左窗格中，選取 [Azure Active Directory]。
 1. 移至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **FortiGate SSL VPN** 。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **FortiGate SSL VPN**。
 1. 在結果面板中選取 [FortiGate SSL VPN]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-sso-for-fortigate-ssl-vpn"></a>設定和測試 FortiGate SSL VPN 的 Azure AD SSO
@@ -76,7 +76,7 @@ FortiGate SSL VPN 支援由 SP 起始的 SSO。
 依照下列步驟，在 Azure 入口網站中啟用 Azure AD SSO：
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [FortiGate SSL VPN] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入] 頁面上，選取 [基本 SAML 組態] 的鉛筆按鈕，以編輯設定：
 
    ![顯示用於編輯基本 SAML 設定之鉛筆按鈕的螢幕擷取畫面。](common/edit-urls.png)
@@ -92,7 +92,7 @@ FortiGate SSL VPN 支援由 SP 起始的 SSO。
     d. 在 [登出 URL] 方塊中，輸入 `https://<FQDN>/remote/saml/logout` 模式的 URL。
 
     > [!NOTE]
-    > 這些值只是模式。 您需要使用實際的「登入 URL」、「識別碼」、「回覆 URL」及「登出 URL」。 請連絡 [FortiGate SSL VPN 用戶端支援小組](mailto:tac_amer@fortinet.com)以取得實際的值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
+    > 這些值只是模式。 您需要使用實際的「登入 URL」、「識別碼」、「回覆 URL」及「登出 URL」。 如需指引，請連絡 [Fortinet 支援](https://support.fortinet.com)。 您也可以參考 Fortinet 文件和 Azure 入口網站的 [基本 SAML 設定] 區段中顯示的範例模式。
 
 1. FortiGate SSL VPN 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至設定中。 以下螢幕擷取畫面顯示預設屬性清單。
 
@@ -109,13 +109,13 @@ FortiGate SSL VPN 支援由 SP 起始的 SSO。
    
    1. 在 [使用者屬性與宣告] 旁，選取 [編輯]。
    1. 選取 [新增宣告]。
-   1. 針對 [名稱]，輸入 **username** 。
+   1. 針對 [名稱]，輸入 **username**。
    1. 針對 [來源屬性]，選取 [user.userprincipalname]。
    1. 選取 [儲存]。
    1. 選取 [新增群組宣告]。
    1. 選取 [所有群組]。
    1. 選取 [自訂群組宣告的名稱] 核取方塊。
-   1. 針對 [名稱]，輸入 **group** 。
+   1. 針對 [名稱]，輸入 **group**。
    1. 選取 [儲存]。   
 
 1. 在 [設定使用 SAML 的單一登入] 頁面的 [SAML 簽署憑證] 區段中，選取 [憑證 (Base64)] 旁的 [下載] 連結，以下載憑證並將其儲存在電腦上：
@@ -131,9 +131,9 @@ FortiGate SSL VPN 支援由 SP 起始的 SSO。
 在本節中，您會在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
 1. 在 Azure 入口網站的左側窗格中，選取 [Azure Active Directory]。 選取 [使用者 ]，然後選取 [所有使用者]。
-1. 在畫面頂端選取 [新增使用者]。
+1. 在畫面頂端選取 [新增使用者]  。
 1. 在 [使用者] 屬性中，完成下列步驟：
-   1. 在 [名稱] 方塊中，輸入 **B.Simon** 。  
+   1. 在 [名稱] 方塊中，輸入 **B.Simon**。  
    1. 在 [使用者名稱] 方塊中，輸入 \<username>@\<companydomain>.\<extension>。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼]，然後記下 [密碼] 方塊中顯示的值。
    1. 選取 [建立]。
@@ -164,7 +164,7 @@ FortiGate SSL VPN 支援由 SP 起始的 SSO。
 1. 在畫面頂端選取 [新增群組]。
 1. 在 [新增群組] 屬性中，完成這些步驟：
    1. 在 [群組類型] 清單中，選取 [安全性]。
-   1. 在 [群組名稱] 方塊中，輸入 **FortiGateAccess** 。
+   1. 在 [群組名稱] 方塊中，輸入 **FortiGateAccess**。
    1. 在 [群組描述] 方塊中，輸入 [用來授與 FortiGate VPN 存取的群組]。
    1. 針對 **系統可以將 Azure AD 角色指派到群組 (預覽)** 設定，選取 [否]。
    1. 在 [成員資格類型] 方塊中，選取 [已指派]。

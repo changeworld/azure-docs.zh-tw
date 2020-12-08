@@ -1,6 +1,6 @@
 ---
-title: Synapse SQL (預覽) 的連接字串
-description: Synapse SQL (預覽) 的連接字串
+title: Synapse SQL 的連接字串
+description: Synapse SQL 的連接字串
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,16 +10,16 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e34563a312c5a248e97c4aac72d06030a836727b
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 6859d0582997ee861713090ccb4c22ed58ec4ca7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684828"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462339"
 ---
-# <a name="connection-strings-for-synapse-sql-preview"></a>Synapse SQL (預覽) 的連接字串
+# <a name="connection-strings-for-synapse-sql"></a>Synapse SQL 的連接字串
 
-您可以使用數個不同的應用程式通訊協定 (例如 [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx)、[ODBC](https://msdn.microsoft.com/library/jj730314.aspx)、[PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396) 及 [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)) 連線到 Synapse SQL (預覽)。 以下是每個通訊協定連接字串的一些範例。 
+您可以使用數個不同的應用程式通訊協定 (例如 [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx)、[ODBC](https://msdn.microsoft.com/library/jj730314.aspx)、[PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396) 及 [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)) 連線至 Synapse SQL。 以下是每個通訊協定連接字串的一些範例。 
 
 您也可以使用 Azure 入口網站來建立連接字串。  若要使用 Azure 入口網站建置連接字串，請瀏覽至您資料庫的刀鋒視窗，在 [程式集] 底下，選取 [顯示資料庫連接字串]。
 

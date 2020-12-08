@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: aea5f0428fe55c0dae3734e196008cbc26a974b9
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: d66fe736936963e601aad7cba7bdaa94f0c3ec3f
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576211"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518442"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure 金鑰保存庫的可用性與備援
 
@@ -23,11 +23,13 @@ Azure 金鑰保存庫具備多層備援功能，以確保您的金鑰和密碼�
 > [!NOTE]
 > 本指南適用於保存庫。 受控 HSM 集區使用不同的高可用性和災害復原模型。 如需詳細資訊，請參閱[受控 HSM 災害復原指南](../managed-hsm/disaster-recovery-guide.md)。
 
-金鑰保存庫的內容會在區域內複寫，以及複寫到至少距離 150 英哩、但位於相同地理位置內的次要區域，以便讓金鑰和祕密保有高持久性。 如需特定區域配對的詳細資訊，請參閱 [Azure 配對區域](../../best-practices-availability-paired-regions.md)。 配對區域模型的例外為巴西南部，此模型僅允許將資料保存在巴西南部內的選項。 巴西南部會使用本地備援儲存體 (LRS)，在單一位置/區域內複寫您的資料三次。   
+金鑰保存庫的內容會在區域內複寫，以及複寫到至少距離 150 英哩、但位於相同地理位置內的次要區域，以便讓金鑰和祕密保有高持久性。 如需特定區域配對的詳細資訊，請參閱 [Azure 配對區域](../../best-practices-availability-paired-regions.md)。 配對區域模型的例外為巴西南部，此模型僅允許將資料保存在巴西南部內的選項。 巴西南部會使用區域備援儲存體 (ZRS)，在單一位置/區域內複寫您的資料三次。   
 
 如果金鑰保存庫服務內的個別元件失敗，則區域內的替代元件會接替來處理您的要求，以確保不會導致功能的效能降低。 您不需要採取任何動作來啟動此程序，其會以您無法察覺的方式自動發生。
 
-在整個 Azure 區域都無法供使用的罕見情況下，您在該區域中所發出的「Azure 金鑰保存庫」要求會自動路由傳送 (容錯移轉  ) 到次要地區。 當主要區域再次可用時，要求就會路由傳送回 (容錯回復  ) 主要區域。 同樣地，您不需要採取任何動作，因為這會自動發生。
+在整個 Azure 區域都無法供使用的罕見情況下，您在該區域中所發出的「Azure 金鑰保存庫」要求會自動路由 (*容錯移轉*) 至次要區域，但巴西南部區域的案例除外。 當主要區域再次可用時，要求就會路由傳送回 (容錯回復  ) 主要區域。 同樣地，您不需要採取任何動作，因為這會自動發生。
+
+在巴西南部區域，您必須為 Azure 金鑰保存庫規劃區域失敗發生時的復原工作。 若要將您的 Azure 金鑰保存庫備份並還原至您選擇的區域，請完成 [Azure Key Vault 備份](backup.md)中詳述的步驟。 
 
 透過此高可用性設計，Azure Key Vault 不需要停機即可進行維護活動。
 

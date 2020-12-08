@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
-ms.openlocfilehash: ad6a4d075ea861068ad0c929d92cd2f12efa6121
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 78324cfa58a8ac015b085052bdec7e3793befc1b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516098"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348393"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>教學課程：Azure Active Directory 與 Signagelive 整合
 
@@ -60,7 +60,7 @@ Signagelive 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Signagelive** 。 
+4. 在搜尋方塊中，輸入 **Signagelive**。 
 
      ![結果清單中的 Signagelive](common/search-new-app.png)
 
@@ -141,7 +141,7 @@ Signagelive 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
   
     b. 在 [使用者名稱]  欄位中，輸入 "brittasimon@yourcompanydomain.extension"。 例如，在此情況下，您可以輸入 "BrittaSimon@contoso.com"。
 

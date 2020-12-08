@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: fa63cc2c76d8bd47ca80050a369bda7211f5db24
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 98c9012969051e4370239a0f4098e0ea1d7a55a0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896713"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348308"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>教學課程：Azure Active Directory 與 Zoho One 整合
 
@@ -61,7 +61,7 @@ ms.locfileid: "92896713"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Zoho One** ，從結果面板中選取 [Zoho One]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Zoho One**，從結果面板中選取 [Zoho One]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Zoho One](common/search-new-app.png)
 
@@ -190,7 +190,7 @@ ms.locfileid: "92896713"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
   
     b. 在 [使用者名稱]  欄位中，輸入 `brittasimon@yourcompanydomain.extension`。 例如， BrittaSimon@contoso.com
 
@@ -232,7 +232,7 @@ ms.locfileid: "92896713"
 
 1. 以安全性系統管理員身分登入 Zoho One。
 
-2. 在 [Users]\(使用者\)  索引標籤上，按一下 **使用者標誌** 。
+2. 在 [Users]\(使用者\)  索引標籤上，按一下 **使用者標誌**。
 
     ![Zoho One：使用者](./media/zohoone-tutorial/tutorial_zohoone_users.png)
 
@@ -240,7 +240,7 @@ ms.locfileid: "92896713"
 
     ![Zoho One：新增使用者](./media/zohoone-tutorial/tutorial_zohoone_adduser.png)
     
-    a. 在 [Name] \(名稱\)  文字方塊中，輸入使用者的名稱，例如 **Britta Simon** 。
+    a. 在 [Name] \(名稱\)  文字方塊中，輸入使用者的名稱，例如 **Britta Simon**。
     
     b. 在 [電子郵件地址]  文字方塊中，輸入使用者的電子郵件，例如 brittasimon@contoso.com。
 

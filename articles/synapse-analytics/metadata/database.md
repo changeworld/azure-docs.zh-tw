@@ -1,6 +1,6 @@
 ---
 title: 共用資料庫
-description: Azure Synapse Analytics 會提供共用中繼資料模型，只要是在無伺服器 Apache Spark 集區中建立的資料庫，便可從其無伺服器 SQL 集區 (預覽) 和 SQL 集區引擎存取。
+description: Azure Synapse Analytics 會提供共用中繼資料模型，只要是在無伺服器 Apache Spark 集區中建立的資料庫，便可從其無伺服器 SQL 集區和 SQL 集區引擎存取。
 services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,20 +10,18 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e17eb44a5f4f4aace9ce9d541b8218b35db0f5d3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 14ae8b8670db53761d085bc019711e829633601b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317829"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451816"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Azure Synapse Analytics 共用資料庫
 
-Azure Synapse Analytics 可讓不同的工作區計算引擎在其無伺服器 Apache Spark 集區 (預覽) 和無伺服器 SQL 集區 (預覽) 之間共用資料庫和資料表。
+Azure Synapse Analytics 可讓不同的工作區計算引擎在其無伺服器 Apache Spark 集區和無伺服器 SQL 集區之間共用資料庫和資料表。
 
-[!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
-
-使用 Spark 作業所建立的資料庫將會以同樣的名稱顯示給工作區中所有目前和未來的 Spark 集區 (預覽)，包括無伺服器 SQL 集區引擎。
+使用 Spark 作業所建立的資料庫將會以同樣的名稱顯示給工作區中所有目前和未來的 Spark 集區，包括無伺服器 SQL 集區引擎。
 
 Spark 預設資料庫 (稱為 `default`) 也會在無伺服器 SQL 集區內容中顯示為稱為 `default` 的資料庫。
 

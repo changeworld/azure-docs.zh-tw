@@ -8,20 +8,20 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 00920f30061832bd1d685f04113a63781df718b4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b605c2c9f3c7468d0fe1f2cccd8c3602c556714b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313730"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501068"
 ---
-# <a name="azure-synapse-analytics-managed-virtual-network-preview"></a>Azure Synapse Analytics 受控虛擬網路 (預覽)
+# <a name="azure-synapse-analytics-managed-virtual-network"></a>Azure Synapse Analytics 受控虛擬網路
 
 本文會說明 Azure Synapse Analytics 中的受控虛擬網路。
 
 ## <a name="managed-workspace-virtual-network"></a>受控工作區虛擬網路
 
-建立您的 Azure Synapse 工作區時，可以選擇將其與 Microsoft Azure 虛擬網路建立關聯。 與您工作區相關聯的虛擬網路是由 Azure Synapse 管理。 此虛擬網路稱為 *受控工作區虛擬網路* 。
+建立您的 Azure Synapse 工作區時，可以選擇將其與 Microsoft Azure 虛擬網路建立關聯。 與您工作區相關聯的虛擬網路是由 Azure Synapse 管理。 此虛擬網路稱為 *受控工作區虛擬網路*。
 
 受控工作區虛擬網路可以四種方式提供價值：
 
@@ -52,10 +52,8 @@ ms.locfileid: "93313730"
 
 ![啟用受控工作區虛擬網路](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
 
->[!NOTE]
->來自受控工作區虛擬網路的所有輸出流量 (除了透過受控的私人端點以外) 未來都會遭到封鎖。 建議您建立受控私人端點，以連線到工作區外部的所有 Azure 資料來源。 
 
-您可以從 Azure 入口網站選取 **概觀** ，以檢查您的 Azure Synapse 工作區是否與受控工作區虛擬網路相關聯。
+您可以從 Azure 入口網站選取 **概觀**，以檢查您的 Azure Synapse 工作區是否與受控工作區虛擬網路相關聯。
 
 ![Azure 入口網站中的 工作區概觀](./media/synapse-workspace-managed-vnet/enable-managed-vnet-2.png)
 

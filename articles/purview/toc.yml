@@ -101,12 +101,14 @@ items:
                 displayName: Register and scan Azure SQL DB Managed Instance
               - name: Azure Synapse Analytics
                 href: register-scan-azure-synapse-analytics.md
+              - name: 內部部署 SQL 伺服器
+                href: register-scan-on-premises-sql-server.md
               - name: Power BI 租用戶 - 入口網站
                 href: register-scan-power-bi-tenant.md
               - name: Power BI 租用戶 - PowerShell
                 href: powershell-register-scan-power-bi.md
-              - name: 內部部署 SQL 伺服器
-                href: register-scan-on-premises-sql-server.md
+              - name: Teradata
+                href: register-scan-teradata-source.md
       - name: 商務詞彙
         items:
           - name: 建立、匯入和匯出字彙
@@ -135,7 +137,7 @@ items:
             href: how-to-link-azure-data-factory.md
           - name: Azure Data Share 譜系
             href: how-to-link-azure-data-share.md
-      - name: 監視
+      - name: 監視器
         items:
           - name: 使用 Azure 監視器進行監視
             href: how-to-monitor-with-azure-monitor.md

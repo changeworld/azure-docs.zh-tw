@@ -1,19 +1,19 @@
 ---
-title: 關於 Azure 實驗室服務中的教室實驗室 | Microsoft Docs
+title: 關於 Azure 實驗室服務中的實驗室 | Microsoft Docs
 description: 了解如何在雲端快速設定教室實驗室環境 - 以具有課程所需軟體的範本 VM 來設定實驗室，並將 VM 複本提供給課程中的每個學生使用。
 ms.topic: overview
 ms.date: 06/26/2020
-ms.openlocfilehash: e6ff56a831282c3abf5eec644573b9a3e88c6543
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 79d6f1cc9f2a6d8d8be872359a4677b36602eea5
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85445622"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434799"
 ---
-# <a name="introduction-to-classroom-labs"></a>教室實驗室簡介
+# <a name="introduction-to-labs"></a>實驗室簡介
 Azure 實驗室服務可讓您在雲端中快速設定教室實驗室環境。 教育工作者可建立教室實驗室、佈建 Windows 或 Linux 虛擬機器、在教室中安裝必要的軟體和工具實驗室，然後使其可供學生使用。 教室中的學生可連線至實驗室中的虛擬機器 (VM)，並將這些機器用於專案、指派、教室練習等。 
 
-教室實驗室受到 Azure 管理的受控實驗室類型。 服務本身會處理受控實驗室類型的所有基礎結構管理，從啟動虛擬機器 (VM) 以處理錯誤，到調整基礎結構的規模。 您指定您需要何種基礎結構，並安裝課堂所需的任何工具或軟體。 
+實驗室是由 Azure 管理的受控實驗室類型。 服務本身會處理受控實驗室類型的所有基礎結構管理，從啟動虛擬機器 (VM) 以處理錯誤，到調整基礎結構的規模。 您指定您需要何種基礎結構，並安裝課堂所需的任何工具或軟體。 
 
 ## <a name="automatic-management-of-azure-infrastructure-and-scale"></a>Azure 基礎結構和規模的自動管理 
 Azure 實驗室服務是一項受控服務，這表示此服務會自動處理實驗室的基礎結構的佈建和管理。 您可只專注於為您的使用者準備合適的實驗室體驗。 讓服務處理其餘部分，並且向您的目標對象推出您實驗室的虛擬機器。 只要按一下，即可將您的實驗室調整為數百部的虛擬機器。

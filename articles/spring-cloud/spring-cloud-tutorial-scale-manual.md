@@ -1,24 +1,24 @@
 ---
-title: 教學課程：在 Azure Spring Cloud 中調整應用程式 | Microsoft Docs
+title: 在 Azure Spring Cloud 中調整應用程式 | Microsoft Docs
 description: 了解如何在 Azure 入口網站中使用 Azure Spring Cloud 調整應用程式
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 33d25edafa9249300406365699930ded1c8ec75b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5632f9a6126615255306cc89425bd08a9ffa9753
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906858"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531797"
 ---
-# <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>教學課程：在 Azure Spring Cloud 中調整應用程式
+# <a name="scale-an-application-in-azure-spring-cloud"></a>在 Azure Spring Cloud 中調整應用程式
 
 **本文適用於：** ✔️ Java ✔️ C#
 
-此教學課程示範如何使用 Azure 入口網站中的 Azure Spring Cloud 儀表板來調整任何微服務應用程式。
+本文件示範如何使用 Azure 入口網站中的 Azure Spring Cloud 儀表板來調整任何微服務應用程式。
 
 修改虛擬 CPU (vCPU) 數目和記憶體數量，以相應增加或減少您的應用程式。 修改應用程式執行個體的數目，將您的應用程式相應縮小或放大。
 
@@ -67,7 +67,7 @@ ms.locfileid: "90906858"
 
 ## <a name="next-steps"></a>後續步驟
 
-在此教學課程中，您已了解如何手動調整 Azure Spring Cloud 應用程式。 若要了解如何藉由設定警示來監視應用程式，請繼續進行下一個教學課程。
+此範例說明了如何手動調整 Azure Spring Cloud 應用程式。 若要了解如何藉由設定警示來監視應用程式，請參閱[設定自動調整](spring-cloud-tutorial-setup-autoscale.md)。
 
 > [!div class="nextstepaction"]
 > [了解如何設定警示](spring-cloud-tutorial-alerts-action-groups.md)

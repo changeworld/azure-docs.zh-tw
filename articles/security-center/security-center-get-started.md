@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 3a523421c128ea26503c0848ad8fcf7d74636a04
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: bd8c5c31579ac22cd6c77dffd31103680e393f69
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341324"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187165"
 ---
 # <a name="quickstart-setting-up-azure-security-center"></a>快速入門：設定 Azure 資訊安全中心
 
@@ -49,7 +49,7 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
 
 在第一次啟動資訊安全中心的數分鐘內，您可能看到：
 
-- 改善連線資源安全性的 **數種建議方法** 。
+- 改善連線資源安全性的 **數種建議方法**。
 - 資訊安全中心正在評估您的資源庫存，以及每項資源的安全性狀態。
 
 若要充分利用資訊安全中心，您需要完成下列步驟，才能啟用 Azure Defender 並安裝 Log Analytics 代理程式。
@@ -63,7 +63,7 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
 
 1. 從資訊安全中心的側邊欄中，選取 [開始使用]。
 
-    :::image type="content" source="./media/security-center-get-started/get-started-upgrade-tab.png" alt-text="資訊安全中心的概觀儀表板"::: 
+    :::image type="content" source="./media/security-center-get-started/get-started-upgrade-tab.png" alt-text="開始使用頁面的升級索引標籤"::: 
 
     **升級** 索引標籤會列出符合上線資格的訂用帳戶和工作區。
 
@@ -84,7 +84,7 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
 1. 在 **資料收集** 頁面中，將 [自動佈建] 設定為 [開啟]。
 1. 選取 [儲存]。
 
-    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="資訊安全中心的概觀儀表板":::
+    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="啟用 Log Analytics 代理程式的自動佈建功能":::
 
 >[!TIP]
 > 如果需要佈建工作區，代理程式安裝最多可能需要 25 分鐘的時間。

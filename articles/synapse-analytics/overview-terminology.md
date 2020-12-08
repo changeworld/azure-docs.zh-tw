@@ -1,5 +1,5 @@
 ---
-title: 術語 - Azure Synapse Analytics (工作區預覽)
+title: 術語 - Azure Synapse Analytics
 description: 帶領使用者了解 Azure Synapse Analytics 的參考指南
 services: synapse-analytics
 author: saveenr
@@ -9,16 +9,14 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: c58ee46a608ccdcbb01a082ee278d9e0f8a07f6e
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 7f0ca83c194aae6f4a8d04d70c2d4f3746ad2ca5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030674"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446706"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Azure Synapse Analytics 術語
-
-[!INCLUDE [preview](includes/note-preview.md)]
 
 本文件將引導您了解 Azure Synapse Analytics 的基本概念。
 
@@ -36,8 +34,7 @@ ms.locfileid: "96030674"
 
 **Synapse SQL** 可在 Synapse 工作區中執行 T-SQL 型分析。 Synapse SQL 有兩種耗用模型：專用和無伺服器。  若為專用模型，請使用專用的 **SQL 集區**。 一個工作區可以具有任意數目的集區。 若要使用無伺服器模型，請使用 **無伺服器 SQL 集區**。 每個工作區都有其中一個集區。
 
-* **SQL 要求** - 例如透過專用 SQL 集區或無伺服器 SQL 集區執行查詢的作業。
-* **SQL 指令碼** - 儲存在檔案中的 SQL 命令集。 SQL 指令碼可以包含一或多個 SQL 陳述式。 可以用來透過專用 SQL 集區或無伺服器 SQL 隨選執行 SQL 要求。
+在 Synapse Studio 中，您可以藉由建立及執行 **SQL 指令碼** 來使用 SQL 集區。
 
 ## <a name="apache-spark-for-synapse"></a>適用於 Synapse 的 Apache Spark
 
@@ -47,19 +44,13 @@ ms.locfileid: "96030674"
 * **Spark Notebooks**，用來執行資料科學和工程，使用 Scala、PySpark、C# 和 SparkSQL
 * **Spark 作業定義**，可讓您使用 jar 檔案執行批次 Spark 作業。
 
-版本支援：
-* Spark 2.4
-* Python 3.6.1
-* Scala 2.11.12
-* .NET for Apache Spark 1.0
-* Delta Lake 0.3。  
-
 ## <a name="pipelines"></a>Pipelines
 
-* **資料整合** - 其功能可用來在各種來源之間內嵌資料，以及協調在工作區中或工作區外部執行的活動。
-* **資料流程** - 提供完全視覺化的體驗，您不需要撰寫任何程式碼來進行巨量資料轉換。 所有最佳化和執行都會以無伺服器的方式處理。
-* **管線** - 一起執行某個工作的活動邏輯群組。
-* **活動** - 定義要對資料執行的動作，例如複製資料、執行 Notebook 或 SQL 指令碼。
+管線是 Azure Synapse 提供資料整合的方式，可讓您在服務之間移動資料並協調活動。
+
+* **管線** 是一起執行某個工作的活動邏輯群組。
+* **活動** 會定義要在管線中對資料執行的動作，例如複製資料、執行 Notebook 或 SQL 指令碼。
+* **資料流程** 是一種特定類型的活動，可針對使用 Synapse Spark 的資料轉換提供無程式碼的體驗。
 * **觸發程序** - 執行管線。 可以手動執行或自動執行 (排程、輪轉視窗或以事件為基礎)
 * **整合資料集** - 具名的資料檢視，只會指向或參考要在活動中作為輸入和輸出的資料。 其屬於連結服務。
 

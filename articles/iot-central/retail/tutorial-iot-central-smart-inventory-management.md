@@ -7,18 +7,18 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 827d571a6545d0aaffb0f96134fcf094eaa5f26b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1b7069cb723bffd758c3603cc957329dd6d2a9b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980610"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463253"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>教學課程：部署和逐步執行智慧庫存管理應用程式範本
 
 
 
-此教學課程示範如何開始部署 IoT Central **智慧庫存管理**應用程式範本。 您將了解如何部署範本、現成可用的項目，以及您接下來可能想要執行的動作。
+此教學課程示範如何開始部署 IoT Central **智慧庫存管理** 應用程式範本。 您將了解如何部署範本、現成可用的項目，以及您接下來可能想要執行的動作。
 
 在此教學課程中，您將了解如何： 
 * 建立智慧庫存管理應用程式 
@@ -35,22 +35,19 @@ ms.locfileid: "90980610"
 
 1. 瀏覽至 Azure IoT Central 應用程式管理員網站。 從左側導覽列選取 [建置]  ，然後按一下 [零售]  索引標籤。
 
-    > [!div class="mx-imgBorder"]
-    > ![顯示如何選取智慧庫存管理應用程式範本的螢幕擷取畫面](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
+    :::image type="content" source="media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png" alt-text="顯示如何選取智慧庫存管理應用程式範本的螢幕擷取畫面":::
 
 2. 選取 [零售]  索引標籤，然後選取 [智慧庫存管理]  底下的 [建立應用程式]  。
 
 3. [建立應用程式]  將開啟 [新增應用程式] 表單，並填寫要求的詳細資料，如下所示。
-   **應用程式名稱**：您可以使用建議的預設名稱，或輸入易記應用程式名稱。
-   **URL**：您可以使用建議的預設 URL，或輸入易記且獨特的 URL。 接下來，若您已經有 Azure 訂用帳戶，將建議預設設定。 您可以從 7 天免費試用定價方案開始，並隨時在免費試用到期之前選擇轉換成標準定價方案。
-   **帳單資訊**：您需要目錄、Azure 訂用帳戶和區域詳細資料，才能佈建資源。
-   **建立**：選取頁面底部的 [建立]，以部署您的應用程式。
+    **應用程式名稱**：您可以使用建議的預設名稱，或輸入易記應用程式名稱。
+    **URL**：您可以使用建議的預設 URL，或輸入易記且獨特的 URL。 接下來，若您已經有 Azure 訂用帳戶，將建議預設設定。 您可以從 7 天免費試用定價方案開始，並隨時在免費試用到期之前選擇轉換成標準定價方案。
+    **帳單資訊**：您需要目錄、Azure 訂用帳戶和區域詳細資料，才能佈建資源。
+    **建立**：選取頁面底部的 [建立]，以部署您的應用程式。
 
-    > [!div class="mx-imgBorder"]
-    > ![顯示如何從智慧庫存管理應用程式範本建立應用程式的螢幕擷取畫面](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
+    :::image type="content" source="media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png" alt-text="顯示如何從智慧庫存管理應用程式範本建立應用程式的螢幕擷取畫面":::
 
-    > [!div class="mx-imgBorder"]
-    > ![顯示當您建立應用程式時計費選項的螢幕擷取畫面](./media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png)
+    :::image type="content" source="media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png" alt-text="顯示當您建立應用程式時計費選項的螢幕擷取畫面":::
 
 ## <a name="walk-through-the-application"></a>逐步執行應用程式 
 

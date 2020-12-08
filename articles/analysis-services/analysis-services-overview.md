@@ -4,16 +4,16 @@ description: 了解 Azure Analysis Services，此為完全受控的平台即服�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/19/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: a05da5fae748e799d7965c51415956c2e2a524b1
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: e70d02c02ba9a3f14d1659851919fbccf71776d1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201506"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487349"
 ---
 # <a name="what-is-azure-analysis-services"></a>什麼是 Azure Analysis Services？
 
@@ -35,7 +35,7 @@ Azure Analysis Services 與許多 Azure 服務整合，讓您能建置複雜的�
 
 ## <a name="the-right-tier-when-you-need-it"></a>當您需要時在右層
 
-Azure Analysis Services 會以 **開發人員** 、 **基本** 及 **標準** 層提供。 每一層中的計劃成本會依據處理能力、查詢處理單位 (QPU) 和記憶體大小而有所不同。 當您建立伺服器時，可以選取一個層級內的計劃。 您可以在同一層內上下調動計劃，或升級為較高層，但是無法從較高層降級為較低層。
+Azure Analysis Services 會以 **開發人員**、**基本** 及 **標準** 層提供。 每一層中的計劃成本會依據處理能力、查詢處理單位 (QPU) 和記憶體大小而有所不同。 當您建立伺服器時，可以選取一個層級內的計劃。 您可以在同一層內上下調動計劃，或升級為較高層，但是無法從較高層降級為較低層。
 
 ### <a name="developer-tier"></a>開發人員層
 
@@ -145,7 +145,7 @@ Azure Analysis Services 與 SQL Server Analysis Services Enterprise Edition 中�
 
 分割能實現累加式載入、增加平行處理能力，並降低記憶體耗用量。 其他進階的資料模型功能 (例如，導出的資料表和所有的 DAX 函式) 都可獲得支援。 記憶體內部模型必須經過重新整理 (處理)，才能從資料來源更新快取資料。 搭配 Azure 服務主體支援，使用 PowerShell、TOM、TMSL 和 REST 的自動重新整理作業可提供彈性，確保模型資料永遠是最新的。 
 
-DirectQuery 模式* 會利用後端關聯式資料庫來提供儲存和查詢執行功能。 單一的 SQL Server、SQL Server 資料倉儲、Azure SQL Database、Azure Synapse Analytics (先前的 SQL 資料倉儲)、Oracle 和 Teradata 資料來源都可支援超大型資料集。 後端資料集可超過可用的伺服器資源記憶體。 不需要複雜的資料模型重新整理案例。 此模式也有一些限制，例如，資料來源類型有限、DAX 公式限制，且不支援某些進階的資料模型化功能。 請先參閱[直接查詢模式](/analysis-services/tabular-models/directquery-mode-ssas-tabular)，再來判斷最適合您的模式。
+DirectQuery 模式* 會利用後端關聯式資料庫來提供儲存和查詢執行功能。 單一的 SQL Server、SQL Server 資料倉儲、Azure SQL Database、Azure Synapse Analytics、Oracle 和 Teradata 資料來源都可支援超大型資料集。 後端資料集可超過可用的伺服器資源記憶體。 不需要複雜的資料模型重新整理案例。 此模式也有一些限制，例如，資料來源類型有限、DAX 公式限制，且不支援某些進階的資料模型化功能。 請先參閱[直接查詢模式](/analysis-services/tabular-models/directquery-mode-ssas-tabular)，再來判斷最適合您的模式。
 
 \* 功能是否可用取決於服務層。
 
@@ -160,7 +160,7 @@ Azure Analysis Services 中的表格式模型可支援各種資料來源，從�
 
 ## <a name="your-data-is-secure"></a>您的資料很安全
 
-Azure Analysis Services 可為敏感性資料提供多種層級的安全性。 Analysis Services 是一項 Azure 服務，可在 Azure 平台中自動啟用 **基本** 層級的分散式阻斷服務 (DDoS) 攻擊防護。 若要深入了解，請參閱 [Azure DDoS 保護標準概觀](../virtual-network/ddos-protection-overview.md)。 
+Azure Analysis Services 可為敏感性資料提供多種層級的安全性。 Analysis Services 是一項 Azure 服務，可在 Azure 平台中自動啟用 **基本** 層級的分散式阻斷服務 (DDoS) 攻擊防護。 若要深入了解，請參閱 [Azure DDoS 保護標準概觀](../ddos-protection/ddos-protection-overview.md)。 
 
 在伺服器層級，Analysis Services 提供防火牆、Azure 驗證、伺服器系統管理員角色和伺服器端加密。 在資料模型層級，使用者角色、資料列層級和物件層級的安全性可確保您的資料安全無虞，只有應該看到資料的使用者能看到資料。
 
@@ -243,7 +243,7 @@ Azure Analysis Services 也支援使用[動態管理檢視 (DMV)](/analysis-serv
 
 這裡會有 Azure Analysis Services 專屬文件。 請使用瀏覽器畫面左側的目錄來尋找文章。 
 
-由於 Azure Analysis Services 中的表格式模型與 SQL Server Analysis Services 和 Power BI 進階資料集中的表格式模型極為類似，因此 [Analysis Services 文件](/analysis-services/?view=azure-analysis-services-current)中收納了共用資料模型教學課程、概念、程序、開發人員和參考文章的廣泛文件庫。 共用 Analysis Services 文件中的文章，會透過標題下方的「適用於」橫幅顯示其是否也適用於 Azure Analysis Services。 您也可以使用目錄上方的版本選取器，只查看適用於您所使用之平台的文章。
+由於 Azure Analysis Services 中的表格式模型與 SQL Server Analysis Services 和 Power BI 進階資料集中的表格式模型極為類似，因此 [Analysis Services 文件](/analysis-services/?view=azure-analysis-services-current&preserve-view=true)中收納了共用資料模型教學課程、概念、程序、開發人員和參考文章的廣泛文件庫。 共用 Analysis Services 文件中的文章，會透過標題下方的「適用於」橫幅顯示其是否也適用於 Azure Analysis Services。 您也可以使用目錄上方的版本選取器，只查看適用於您所使用之平台的文章。
 
 ![共用文件](./media/analysis-services-overview/aas-overview-applies-to.png)
 

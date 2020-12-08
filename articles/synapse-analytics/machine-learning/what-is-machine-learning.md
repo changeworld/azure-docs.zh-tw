@@ -9,16 +9,14 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 382ba871f95b3b36c3f819de8d582ba2c5dc358a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 20f095a058434c36373c30ed2a633db12643814d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316078"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448284"
 ---
-# <a name="machine-learning-capabilities-in-azure-synapse-analytics-workspaces-preview"></a>Azure Synapse Analytics 中的機器學習功能 (工作區預覽)
-
-[!INCLUDE [preview](../includes/note-preview.md)]
+# <a name="machine-learning-capabilities-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的機器學習功能
 
 Azure Synapse Analytics 提供各種機器學習功能。 本文概述如何在 Azure Synapse 的內容中套用機器學習。
 
@@ -48,11 +46,11 @@ Azure Synapse Analytics 提供各種機器學習功能。 本文概述如何在 
 
 機器學習程序的重要部分是透過探索和視覺效果來了解資料。
 
-根據儲存資料的位置而定，Synapse 會提供一組不同的工具來探索並準備用於分析和機器學習。 開始使用資料探索最快速的方式之一，就是使用 Apache Spark 或直接透過 Data Lake 中的資料使用 Synapse SQL 無伺服器集區。
+根據儲存資料的位置而定，Synapse 會提供一組不同的工具來探索並準備用於分析和機器學習。 開始使用資料探索最快速的方式之一，就是使用 Apache Spark 或直接透過 Data Lake 中的資料使用無伺服器 SQL 集區。
 
 * [適用於 Azure Synapse 的 Apache Spark](../spark/apache-spark-overview.md) 提供了大規模轉換、準備及探索資料的功能。 這些 Spark 集區提供 PySpark/Python、Scala 和 .NET 等工具，以進行大規模的資料處理。 使用強大的視覺效果程式庫，可以增強資料探索體驗，以協助您更深入了解資料。 [深入了解如何使用 Spark 在 Synapse 中瀏覽及視覺化資料](../get-started-analyze-spark.md)。
 
-* [Synapse SQL 無伺服器集區](../sql/on-demand-workspace-overview.md)提供一種方法，可透過 Data Lake 直接使用 TSQL 來探索資料。 Synapse SQL 無伺服器集區也會在 Synapse Studio 中提供一些內建的視覺效果。 [深入了解如何使用 Synapse SQL 無伺服器集區來瀏覽資料](../get-started-analyze-sql-on-demand.md)。
+* [無伺服器 SQL 集區](../sql/on-demand-workspace-overview.md)提供一種方法，可透過 Data Lake 直接使用 TSQL 來探索資料。 無伺服器 SQL 集區也會在 Synapse Studio 中提供一些內建的視覺效果。 [深入了解如何使用無伺服器 SQL 集區來瀏覽資料](../get-started-analyze-sql-on-demand.md)。
 
 ### <a name="modeling"></a>模型化
 

@@ -1,6 +1,6 @@
 ---
-title: 無伺服器 SQL 集區 (預覽) 自助服務
-description: 本節所包含的資訊可協助您針對無伺服器 SQL 集區 (預覽) 的問題進行疑難排解。
+title: 無伺服器 SQL 集區自助服務
+description: 本節所包含的資訊可協助您針對無伺服器 SQL 集區的問題進行疑難排解。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: aefdb90c3e6c8d3abc3924ecebb2aa46739e99ad
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 12ff369cb931eb36014b7c9598b036afdc158750
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682616"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457191"
 ---
-# <a name="self-help-for-serverless-sql-pool-preview"></a>無伺服器 SQL 集區 (預覽) 自助服務
+# <a name="self-help-for-serverless-sql-pool"></a>無伺服器 SQL 集區的自助服務
 
-關於如何針對 Azure Synapse Analytics 中的無伺服器 SQL 集區 (預覽) 最常見問題進行疑難排解，本文會有相關資訊。
+關於如何針對 Azure Synapse Analytics 中的無伺服器 SQL 集區最常見問題進行疑難排解，本文會有相關資訊。
 
 ## <a name="serverless-sql-pool-is-grayed-out-in-synapse-studio"></a>Synapse Studio 中的無伺服器 SQL 集區呈現灰色
 
@@ -37,7 +37,7 @@ ms.locfileid: "94682616"
 
 - 確定您已使用適當大小的資料類型。 此外，請針對字串資料行指定 Parquet 檔案的結構描述，因為其預設會是 VARCHAR (8000)。 
 
-- 如果您的查詢以 CSV 檔案作為目標，請考慮[建立統計資料](develop-tables-statistics.md#statistics-in-serverless-sql-pool-preview)。 
+- 如果您的查詢以 CSV 檔案作為目標，請考慮[建立統計資料](develop-tables-statistics.md#statistics-in-serverless-sql-pool)。 
 
 - 請瀏覽[無伺服器 SQL 集區的效能最佳做法](best-practices-sql-on-demand.md)以將查詢最佳化。  
 

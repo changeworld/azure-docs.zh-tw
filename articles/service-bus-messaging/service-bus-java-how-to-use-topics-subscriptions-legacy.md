@@ -5,18 +5,19 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: ff52e4c8056d25f2577d077ca0499236a78adc02
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 33d8aa9be6a6ee4182e49e658bd41ebf6da588e5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95909453"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456559"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>快速入門：透過 Java 使用服務匯流排主題和訂用帳戶
 在本快速入門中，您會撰寫 Java 程式碼，以將訊息傳送至 Azure 服務匯流排主題，然後從該主題的訂用帳戶接收訊息。 
 
 > [!WARNING]
->  此快速入門使用目前正式發行 (GA) 的 azure-servicebus 套件。 如果快速入門使用處於 **預覽** 階段的新 azure-messaging-servicebus 套件，請參閱[使用 azure-messaging-servicebus 傳送和接收訊息](service-bus-java-how-to-use-topics-subscriptions.md)。
+>  本快速入門使用舊的 azure-servicebus 套件。 如果快速入門使用最新 azure-messaging-servicebus 套件，請參閱[使用 azure-messaging-servicebus 傳送和接收訊息](service-bus-java-how-to-use-topics-subscriptions.md)。
+
 
 ## <a name="prerequisites"></a>先決條件
 
@@ -119,62 +120,69 @@ public class MyServiceBusTopicClient {
 更新 **main** 方法來為三個訂用帳戶建立三個 **SubscriptionClient** 物件，並叫用 helper 方法，以非同步方式接收來自服務匯流排主題的訊息。 範例程式碼會假設您已建立名為 **BasicTopic** 的主題，以及三個名為 **Subscription1**、**Subscription2** 和 **Subscription3** 的訂用帳戶。 如果您對這些項目使用不同名稱，請先更新程式碼，然後再進行測試。 
 
 ```java
-public class MyServiceBusTopicClient {
+import com.microsoft.azure.servicebus.*;
+import com.microsoft.azure.servicebus.primitives.ConnectionStringBuilder;
+import com.microsoft.azure.servicebus.primitives.ServiceBusException;
+import com.google.gson.Gson;
+import static java.nio.charset.StandardCharsets.*;
+import java.time.Duration;
+import java.util.*;
+import java.util.concurrent.*;
 
+public class MyServiceBusSubscriptionClient {
     static final Gson GSON = new Gson();
     
     public static void main(String[] args) throws Exception, ServiceBusException {
+        String connectionString = "Endpoint=sb://<NameOfServiceBusNamespace>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<AccessKey>";
+        
         SubscriptionClient subscription1Client = new SubscriptionClient(new ConnectionStringBuilder(connectionString, "BasicTopic/subscriptions/Subscription1"), ReceiveMode.PEEKLOCK);
         SubscriptionClient subscription2Client = new SubscriptionClient(new ConnectionStringBuilder(connectionString, "BasicTopic/subscriptions/Subscription2"), ReceiveMode.PEEKLOCK);
         SubscriptionClient subscription3Client = new SubscriptionClient(new ConnectionStringBuilder(connectionString, "BasicTopic/subscriptions/Subscription3"), ReceiveMode.PEEKLOCK);        
 
-        registerMessageHandlerOnClient(subscription1Client);
-        registerMessageHandlerOnClient(subscription2Client);
-        registerMessageHandlerOnClient(subscription3Client);
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        registerMessageHandlerOnClient(subscription1Client, executorService);
+        registerMessageHandlerOnClient(subscription2Client, executorService);
+        registerMessageHandlerOnClient(subscription3Client, executorService);
     }
     
-    static void registerMessageHandlerOnClient(SubscriptionClient receiveClient) throws Exception {
-
+    static void registerMessageHandlerOnClient(SubscriptionClient receiveClient, ExecutorService executorService) throws Exception {
         // register the RegisterMessageHandler callback
-        IMessageHandler messageHandler = new IMessageHandler() {
-            // callback invoked when the message handler loop has obtained a message
-            public CompletableFuture<Void> onMessageAsync(IMessage message) {
-                // receives message is passed to callback
-                if (message.getLabel() != null &&
-                        message.getContentType() != null &&
-                        message.getLabel().contentEquals("Scientist") &&
-                        message.getContentType().contentEquals("application/json")) {
-
-                    byte[] body = message.getBody();
-                    Map scientist = GSON.fromJson(new String(body, UTF_8), Map.class);
-
-                    System.out.printf(
-                            "\n\t\t\t\t%s Message received: \n\t\t\t\t\t\tMessageId = %s, \n\t\t\t\t\t\tSequenceNumber = %s, \n\t\t\t\t\t\tEnqueuedTimeUtc = %s," +
-                                    "\n\t\t\t\t\t\tExpiresAtUtc = %s, \n\t\t\t\t\t\tContentType = \"%s\",  \n\t\t\t\t\t\tContent: [ firstName = %s, name = %s ]\n",
-                            receiveClient.getEntityPath(),
-                            message.getMessageId(),
-                            message.getSequenceNumber(),
-                            message.getEnqueuedTimeUtc(),
-                            message.getExpiresAtUtc(),
-                            message.getContentType(),
-                            scientist != null ? scientist.get("firstName") : "",
-                            scientist != null ? scientist.get("name") : "");
-                }
-                return receiveClient.completeAsync(message.getLockToken());
-            }
-            
-            public void notifyException(Throwable throwable, ExceptionPhase exceptionPhase) {
-                System.out.printf(exceptionPhase + "-" + throwable.getMessage());
-            }
-        };
-
- 
         receiveClient.registerMessageHandler(
-                    messageHandler,
-                    // callback invoked when the message handler has an exception to report
-                // 1 concurrent call, messages aren't auto-completed, auto-renew duration
-                new MessageHandlerOptions(1, false, Duration.ofMinutes(1)));
+                new IMessageHandler() {
+                    // callback invoked when the message handler loop has obtained a message
+                    public CompletableFuture<Void> onMessageAsync(IMessage message) {
+                        // receives message is passed to callback
+                        if (message.getLabel() != null &&
+                                message.getContentType() != null &&
+                                message.getLabel().contentEquals("Scientist") &&
+                                message.getContentType().contentEquals("application/json")) {
 
+                            byte[] body = message.getBody();
+                            Map scientist = GSON.fromJson(new String(body, UTF_8), Map.class);
+
+                            System.out.printf(
+                                    "\n\t\t\t\t%s Message received: \n\t\t\t\t\t\tMessageId = %s, \n\t\t\t\t\t\tSequenceNumber = %s, \n\t\t\t\t\t\tEnqueuedTimeUtc = %s," +
+                                            "\n\t\t\t\t\t\tExpiresAtUtc = %s, \n\t\t\t\t\t\tContentType = \"%s\",  \n\t\t\t\t\t\tContent: [ firstName = %s, name = %s ]\n",
+                                    receiveClient.getEntityPath(),
+                                    message.getMessageId(),
+                                    message.getSequenceNumber(),
+                                    message.getEnqueuedTimeUtc(),
+                                    message.getExpiresAtUtc(),
+                                    message.getContentType(),
+                                    scientist != null ? scientist.get("firstName") : "",
+                                    scientist != null ? scientist.get("name") : "");
+                        }
+                        return receiveClient.completeAsync(message.getLockToken());
+                    }
+
+                    // callback invoked when the message handler has an exception to report
+                    public void notifyException(Throwable throwable, ExceptionPhase exceptionPhase) {
+                        System.out.printf(exceptionPhase + "-" + throwable.getMessage());
+                    }
+                },
+                // 1 concurrent call, messages are auto-completed, auto-renew duration
+                new MessageHandlerOptions(1, false, Duration.ofMinutes(1)),
+                executorService);
     }
 }
 ```

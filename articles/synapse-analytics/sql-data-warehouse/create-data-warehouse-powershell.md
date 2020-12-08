@@ -1,6 +1,6 @@
 ---
-title: 快速入門：使用 Azure PowerShell 建立 Synapse SQL 集區
-description: 使用 Azure PowerShell，透過伺服器層級的防火牆規則快速建立 Synapse SQL 集區。
+title: 快速入門：使用 Azure PowerShell 建立專用 SQL 集區 (先前稱為 SQL DW)
+description: 使用 Azure PowerShell，透過伺服器層級的防火牆規則快速建立專用 SQL 集區 (先前稱為 SQL DW)。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,23 +11,23 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse    , devx-track-azurepowershell
-ms.openlocfilehash: 5408944f16509f83c30b9ee066d6f0a93dab95f0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0ce94b62d67048896cdf7355043ec2dde7f2df79
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91567650"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456589"
 ---
-# <a name="quickstart-create-a-synapse-sql-pool-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立 Synapse SQL 集區
+# <a name="quickstart-create-a-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立專用 SQL 集區 (先前稱為 SQL DW)
 
-使用 Azure PowerShell 在 Azure Synapse Analytics 中建立 Synapse SQL 集區。
+使用 Azure PowerShell，在 Azure Synapse Analytics 中建立專用 SQL 集區 (先前稱為 SQL DW)。
 
 ## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
 > [!IMPORTANT]
-> 建立 SQL 集區可能會產生新的可計費服務。  如需詳細資訊，請參閱 [Azure Synapse Analytics 定價](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)。
+> 建立專用 SQL 集區 (先前稱為 SQL DW) 可能會產生新的可計費服務。  如需詳細資訊，請參閱 [Azure Synapse Analytics 定價](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -93,7 +93,7 @@ New-AzSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-level-firewall-rule"></a>設定伺服器層級防火牆規則
 
-使用 [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 命令建立[伺服器層級防火牆規則](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 伺服器層級防火牆規則可讓外部應用程式 (例如 SQL Server Management Studio 或 SQLCMD 公用程式) 穿過 SQL 集區服務防火牆連線到 SQL 集區。
+使用 [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 命令建立[伺服器層級防火牆規則](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 伺服器層級防火牆規則可讓外部應用程式 (例如 SQL Server Management Studio 或 SQLCMD 公用程式) 通過專用 SQL 集區服務防火牆連線至專用 SQL 集區 (先前稱為 SQL DW)。
 
 在下列範例中，只會針對其他 Azure 資源開啟防火牆。 若要啟用外部連線，請將 IP 位址變更為適合您環境的地址。 若要開啟所有 IP 位址，請使用 0.0.0.0 作為起始 IP 位址，並使用 255.255.255.255 作為結束位址。
 
@@ -107,9 +107,9 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 > SQL 端點會透過連接埠 1433 進行通訊。 如果您嘗試從公司網路連線，您網路的防火牆可能不允許透過連接埠 1433 的連出流量。 若是如此，除非 IT 部門開啟連接埠 1433，否則您將無法連線到您的伺服器。
 >
 
-## <a name="create-a-sql-pool"></a>建立 SQL 集區
+## <a name="create-a-dedicated-sql-pool-formerly-sql-dw"></a>建立專用 SQL 集區 (先前稱為 SQL DW)
 
-以下範例會使用先前定義的變數建立 SQL 集區，  並將服務目標指定為成本較低的 SQL 集區起點 DW100c。
+下列範例會使用先前定義的變數來建立專用 SQL 集區 (先前稱為 SQL DW)。  並將服務目標指定為成本較低的專用 SQL 集區 (先前稱為 SQL DW) 起點 DW100c。
 
 ```Powershell
 New-AzSqlDatabase `
@@ -124,11 +124,11 @@ New-AzSqlDatabase `
 
 必要參數如下：
 
-* **RequestedServiceObjectiveName**：您要求的[資料倉儲單位](what-is-a-data-warehouse-unit-dwu-cdwu.md)數量。 增加此數量會增加計算成本。 如需支援值的清單，請參閱[記憶體和並行存取限制](memory-concurrency-limits.md)。
-* **DatabaseName**：您要建立的 SQL 集區名稱。
+* **RequestedServiceObjectiveName**：您要求的 [資料倉儲單位](what-is-a-data-warehouse-unit-dwu-cdwu.md)數量。 增加此數量會增加計算成本。 如需支援值的清單，請參閱[記憶體和並行存取限制](memory-concurrency-limits.md)。
+* **DatabaseName**：您所建立的專用 SQL 集區 (先前稱為 SQL DW) 的名稱。
 * **ServerName**：您用來建立的伺服器名稱。
 * **ResourceGroupName**：您使用的資源群組。 若要尋找訂用帳戶中可用的資源，請使用 Get-AzureResource。
-* **版本**：必須是 "DataWarehouse"，才能建立 SQL 集區。
+* **版本**：必須是 "DataWarehouse"，才能建立專用 SQL 集區 (先前稱為 SQL DW)。
 
 選擇性參數如下：
 
@@ -151,4 +151,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>後續步驟
 
-您現在已建立了 SQL 集區、防火牆規則並連線到您的 SQL 集區。 若要深入了解，請繼續閱讀[將資料載入 SQL 集區](load-data-from-azure-blob-storage-using-polybase.md)一文。
+現在，您已建立專用 SQL 集區 (先前稱為 SQL DW)、建立防火牆規則，並連線至您的專用 SQL 集區。 若要深入了解，請繼續閱讀[將資料載入專用 SQL 集區](load-data-from-azure-blob-storage-using-polybase.md)一文。

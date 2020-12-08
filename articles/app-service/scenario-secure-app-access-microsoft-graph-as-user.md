@@ -7,15 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: d3706c26d9b15e9ea607996ace222b29ccd84458
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: azureday1
+ms.openlocfilehash: e07ec17a4e14f0099d82bd444f2ee8d37abe9908
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95999649"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434986"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>教學課程：從安全的應用程式以使用者身分存取 Microsoft Graph
 
@@ -75,10 +76,12 @@ Web 應用程式現在具有必要權限，能夠以登入使用者的身分存�
 
 您的應用程式現已具有必要的權限，且會將 Microsoft Graph 的用戶端識別碼新增至登入參數。 使用 [Microsoft.Identity.Web library](https://github.com/AzureAD/microsoft-identity-web/)，Web 應用程式會取得 Microsoft Graph 驗證的存取權杖。 在 1.2.0 和更新版本中，Microsoft.Identity.Web 會與 App Service 整合，並可與 App Service 驗證/授權模組一起執行。 Microsoft 會偵測到 Web 應用程式裝載在應用程式服務中，並從應用程式服務驗證/授權模組取得存取權杖。 接著會使用 Microsoft Graph API，將存取權杖傳遞給已驗證的要求。
 
+若要在範例應用程式中查看此程式碼，請參閱 [GitHub 上的範例](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/2-WebApp-graphapi-on-behalf)。
+
 > [!NOTE]
 > Web 應用程式中的基本驗證/授權不需要 Microsoft.Identity.Web 程式庫，也不需使用 Microsoft Graph 驗證要求。 您可以只啟用 App Service 驗證/授權模組，[安全地呼叫下游 API](tutorial-auth-aad.md#call-api-securely-from-server-code)。
 > 
-> 不過，App Service 的驗證/授權是針對更基本的驗證案例所設計。 針對更複雜的案例 (例如，處理自訂宣告)，您需要有 Microsoft.Identity.Web 程式庫或 [Microsoft 驗證程式庫](/azure/active-directory/develop/msal-overview)。 一開始還有更多的安裝和設定工作，但是 Microsoft.Identity.Web 程式庫可以與 App Service 驗證/授權模組一起執行。 之後，當 Web 應用程式需要處理更複雜的案例時，您可以停用 App Service 驗證/授權模組，而 Microsoft.Identity.Web 會是您應用程式的一部分。
+> 不過，App Service 的驗證/授權是針對更基本的驗證案例所設計。 針對更複雜的案例 (例如，處理自訂宣告)，您需要有 Microsoft.Identity.Web 程式庫或 [Microsoft 驗證程式庫](../active-directory/develop/msal-overview.md)。 一開始還有更多的安裝和設定工作，但是 Microsoft.Identity.Web 程式庫可以與 App Service 驗證/授權模組一起執行。 之後，當 Web 應用程式需要處理更複雜的案例時，您可以停用 App Service 驗證/授權模組，而 Microsoft.Identity.Web 會是您應用程式的一部分。
 
 ### <a name="install-client-library-packages"></a>安裝用戶端程式庫套件
 

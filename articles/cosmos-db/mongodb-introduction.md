@@ -4,20 +4,23 @@ description: 了解如何使用適用於 MongoDB 的 Azure Cosmos DB API 以 Azu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 10/1/2019
+ms.date: 11/25/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: a9c4931338635e53054801885e071ad21723dea3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8205ecab3abfc7a944c12db1aca2bf594f6cd98f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096456"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349447"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>適用於 MongoDB 的 Azure Cosmos DB API
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 [Azure Cosmos DB](introduction.md) 是 Microsoft 全域發佈的多模型資料庫服務，適用於任務關鍵性應用程式。 Azure Cosmos DB 提供[一站式全域散發](distribute-data-globally.md)、全球[彈性調整的輸送量和儲存體](partitioning-overview.md)、達到第 99 個百分位數的個位數毫秒延遲，以及保證的高可用性，全部都由[領先業界的 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) \(英文\) 所支援。 Azure Cosmos DB 會[自動編製資料的索引](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)，您不需要處理結構描述和索引管理。 它是多重模型，支援文件、索引鍵/值、圖表和單欄式資料模型。 Azure Cosmos DB 服務為 Cassandra、MongoDB、Gremlin 和 Azure 表格儲存體等常見 NoSQL API 實作 Wire Protocol。 這可讓您使用熟悉的 NoSQL 用戶端驅動程式和工具來與您的 Cosmos 資料庫互動。
+
+> [!NOTE]
+> [無伺服器容量模式](serverless.md)現已可在 Azure Cosmos DB 的 MongoDB API 上使用。
 
 ## <a name="wire-protocol-compatibility"></a>Wire Protocol 相容性
 
@@ -53,7 +56,7 @@ Cosmos DB 作為完全受控且全域散發之資料庫的主要優點如[這裡
 
 * 遵循[將 MongoDB 應用程式連線到 Azure Cosmos DB](connect-mongodb-account.md) 教學課程，以了解如何取得您的帳戶連接字串資訊。
 * 依照[使用 Studio 3T 搭配 Azure Cosmos DB](mongodb-mongochef.md) 教學課程，了解如何在 Studio 3T 中建立 Azure Cosmos DB 資料庫和 MongoDB 應用程式之間的連線。
-* 遵循[將 MongoDB 資料匯入到 Azure Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json) 教學課程，以將您的資料匯入 Cosmos 資料庫。
+* 遵循[將 MongoDB 資料匯入到 Azure Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json) 教學課程，以將您的資料匯入 Cosmos 資料庫。
 * 使用 [Robo 3T](mongodb-robomongo.md) 連線到 Cosmos 帳戶。
 * 了解如何[設定全球分散式應用程式的讀取喜好設定](../cosmos-db/tutorial-global-distribution-mongodb.md)。
 * 在我們的 [疑難排解指南](mongodb-troubleshoot.md)中尋找常見錯誤的解決方案

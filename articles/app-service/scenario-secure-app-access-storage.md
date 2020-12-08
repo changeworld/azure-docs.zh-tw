@@ -7,15 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: 250e95b33b985aedcc1b1537f57338d29e848451
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: azureday1
+ms.openlocfilehash: 72b1d4fe864c23c0ac065e47d96ab0c78866defa
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96020206"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435836"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>教學課程：從 Web 應用程式存取 Azure 儲存體
 
@@ -23,7 +24,7 @@ ms.locfileid: "96020206"
 
 :::image type="content" alt-text="說明如何存取儲存體的圖表。" source="./media/scenario-secure-app-access-storage/web-app-access-storage.svg" border="false":::
 
-您想從 Web 應用程式新增對 Azure 資料平面 (Azure 儲存體、Azure SQL Database、Azure Key Vault 或其他服務) 的存取權。 您可以使用共用金鑰，但必須擔心哪些人可以建立、部署和管理祕密的操作安全性。 金鑰也會簽入 GitHub，此舉可能引來駭客掃描金鑰。 讓 Web 應用程式存取資料的安全方式，是使用[受控識別](/azure/active-directory/managed-identities-azure-resources/overview)。
+您想從 Web 應用程式新增對 Azure 資料平面 (Azure 儲存體、Azure SQL Database、Azure Key Vault 或其他服務) 的存取權。 您可以使用共用金鑰，但必須擔心哪些人可以建立、部署和管理祕密的操作安全性。 金鑰也會簽入 GitHub，此舉可能引來駭客掃描金鑰。 讓 Web 應用程式存取資料的安全方式，是使用[受控識別](../active-directory/managed-identities-azure-resources/overview.md)。
 
 來自 Azure Active Directory (Azure AD) 的受控識別可讓應用程式服務透過角色型存取控制 (RBAC) 存取資源，而不需要應用程式認證。 將受控識別指派給您的 Web 應用程式後，Azure 會負責建立和散發憑證。 不再需要擔心管理祕密或應用程式認證。
 
@@ -210,6 +211,8 @@ az role assignment create --assignee $spID --role 'Storage Blob Data Contributor
 ## <a name="access-blob-storage-net"></a>存取 Blob 儲存體 (.NET)
 
 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) 類別是用來取得程式碼的權杖認證，以授權 Azure 儲存體的要求。 建立 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) 類別的執行個體，此執行個體會使用受控識別擷取權杖，並將其附加至服務用戶端。 下列程式碼範例會取得已驗證的權杖認證，並用來建立服務用戶端物件，以上傳新的 Blob。
+
+若要在範例應用程式中查看此程式碼，請參閱 [GitHub 上的範例](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/1-WebApp-storage-managed-identity)。
 
 ### <a name="install-client-library-packages"></a>安裝用戶端程式庫套件
 

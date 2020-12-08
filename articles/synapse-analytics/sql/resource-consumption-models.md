@@ -9,16 +9,16 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1a78142ded7be46bdc06c49d6e0a26ef8b266300
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0e3bbb2532340664d0fc54b29bea3ef3af75f9b6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318399"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459162"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse SQL 資源耗用量
 
-本文說明 Synapse SQL (預覽) 的資源耗用量模型。
+本文說明 Synapse SQL 的資源耗用量模型。
 
 ## <a name="serverless-sql-pool"></a>無伺服器 SQL 集區
 

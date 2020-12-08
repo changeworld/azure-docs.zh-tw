@@ -9,20 +9,18 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2052e27cde3427986dbf7784dcd5dbb179c5b209
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: c315dae7e5f02f112dfdfbec02e1ebaaa5e48a9f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380924"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445778"
 ---
-# <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>什麼是 Azure Synapse Analytics (工作區預覽)？
-
-[!INCLUDE [preview](includes/note-preview.md)]
+# <a name="what-is-azure-synapse-analytics"></a>什麼是 Azure Synapse Analytics？
 
 企業分析必須在任何類型的資料上進行大規模作業，不論是未經處理、精簡或高度策劃的資料都是如此。 這通常需要企業將巨量資料和資料倉儲技術與複雜的資料管線結合，以便在關聯式存放區和資料湖中處理資料。 這類解決方案很不容易建立、維護及保護。 其複雜度會讓企業所需的深入解析更難以傳達。
 
-**Azure Synapse** 是一種整合式分析服務，可讓您在資料倉儲和巨量資料系統之間，更快地取得深入解析。 Azure Synapse 會將企業資料倉儲中所用的 **SQL** 技術、巨量資料所用的 **Spark** 技術及 **管線** 完美地結合在一起，以便進行資料整合與 ETL/ELT。 **Synapse Studio** 提供整合的管理、監視、編碼和安全性體驗。 Synapse 會與其他 Azure 服務 (例如 **PowerBI**、 **CosmosDB** 和 **AzureML**) 深入整合。
+**Azure Synapse** 是一種整合式分析服務，可讓您在資料倉儲和巨量資料系統之間，更快地取得深入解析。 Azure Synapse 會將企業資料倉儲中所用的 **SQL** 技術、巨量資料所用的 **Spark** 技術及 **管線** 完美地結合在一起，以便進行資料整合與 ETL/ELT。 **Synapse Studio** 提供整合的管理、監視、編碼和安全性體驗。 Synapse 會與其他 Azure 服務 (例如 **Power BI**、**CosmosDB** 和 **AzureML**) 深入整合。
 
 ## <a name="key-features--benefits"></a>主要功能及優點
 
@@ -53,7 +51,7 @@ Azure Synapse 移除了同時使用 SQL 和 Spark 的傳統技術障礙。 您�
 
 ### <a name="built-in-data-integration-via-pipelines"></a>透過管線的內建資料整合
 
-Azure Synapse 內建與 Azure Data Factory 相同的資料整合引擎和體驗，可讓您建立豐富的大規模 ETL 管線，而不需離開 Synapse Analytics。
+Azure Synapse 內建與 Azure Data Factory 相同的資料整合引擎和體驗，可讓您建立豐富的大規模 ETL 管線，而不需離開 Azure Synapse Analytics。
 
 * 從 90 個以上的資料來源內嵌資料
 * 搭配資料流程活動的無程式碼 ETL

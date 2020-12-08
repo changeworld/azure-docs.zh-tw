@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 02635c93f9fa7704429a75fad750320f10847cb3
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 13d0bdf82052ff2c61c5b2c6010956c8fb27574d
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511628"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122468"
 ---
 本快速入門說明如何建置範例 IoT 隨插即用裝置應用程式、將其連線至您的 IoT 中樞，並使用 Azure IoT 總管工具檢視其所傳送的遙測資料。 範例應用程式是以 C# 撰寫的，並隨附於適用於 C# 的 Azure IoT 範例中。 解決方案建置人員可以使用 Azure IoT 總管工具來了解 IoT 隨插即用裝置的功能，而不需檢視任何裝置程式碼。
 
@@ -26,7 +26,7 @@ ms.locfileid: "95511628"
 
 您會在本快速入門中準備開發環境，以用來複製及建置適用於 C# 存放庫的 Azure IoT 範例。
 
-在您選擇的資料夾中開啟命令提示字元。 執行下列命令，將[適用於 c# (.NET) 的 Microsoft Azure IoT 範例](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub 存放庫複製到下列位置：
+在您選擇的資料夾中開啟命令提示字元。 執行下列命令，將[適用於 C# (.NET) 的 Microsoft Azure IoT 範例](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub 存放庫複製到下列位置：
 
 ```cmd
 git clone  https://github.com/Azure-Samples/azure-iot-samples-csharp.git

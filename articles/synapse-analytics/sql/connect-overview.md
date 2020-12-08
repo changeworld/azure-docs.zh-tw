@@ -10,17 +10,17 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0897ca35dd5ae1b7209a36aee4bd5335d4ea4d25
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 2ff2d9708642c347a829de290d45849d8629807f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681526"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462346"
 ---
 # <a name="connect-to-synapse-sql"></a>連線到 Synapse SQL
 連線到 Azure Synapse Analytics 中的 Synapse SQL 功能。
 
-## <a name="supported-tools-for-serverless-sql-pool-preview"></a>無伺服器 SQL 集區支援的工具 (預覽)
+## <a name="supported-tools-for-serverless-sql-pool"></a>無伺服器 SQL 集區支援的工具
 
 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) 從 1.18.0 版開始便已獲得完整支援。 SSMS 從 18.5 版開始只獲得部分支援，因此只能用來連線和查詢。
 

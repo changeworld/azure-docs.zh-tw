@@ -1,5 +1,5 @@
 ---
-title: 快速入門：使用 Synapse Studio 建立無伺服器 Apache Spark 集區 (預覽)
+title: 快速入門：使用 Synapse Studio 建立無伺服器 Apache Spark 集區
 description: 遵循本指南中的步驟，使用 Synapse Studio 建立無伺服器 Apache Spark 集區。
 services: synapse-analytics
 author: saveenr
@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 10/16/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 313ad0c620fe06158e96c208ae265702134b58d1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d280e96b354f38a86545ed5f6bcaa6c9a314c46b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324180"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462037"
 ---
-# <a name="quickstart-create-a-serverless-apache-spark-pool-preview-using-synapse-studio"></a>快速入門：使用 Synapse Studio 建立無伺服器 Apache Spark 集區 (預覽)
+# <a name="quickstart-create-a-serverless-apache-spark-pool-using-synapse-studio"></a>快速入門：使用 Synapse Studio 建立無伺服器 Apache Spark 集區
 
 Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、模型化、分析及處理您的資料。 Apache Spark 集區提供開放原始碼的巨量資料計算功能。 在 Synapse 工作區中建立 Apache Spark 集區後，就可以載入、模型化、處理和提供資料，以取得深入解析。  
 
@@ -100,7 +100,7 @@ Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、�
 若確定要刪除 Apache Spark 集區，請執行下列動作：
 
 1. 在 Synapse Studio 中，瀏覽至管理中樞內的 Apache Spark 集區。
-1. 選取要刪除之 Apache 集區旁的省略號 (在此案例中為 **contosospark** )，以顯示 Apache Spark 集區的命令。
+1. 選取要刪除之 Apache 集區旁的省略號 (在此案例中為 **contosospark**)，以顯示 Apache Spark 集區的命令。
 
     ![已選取最近建立之集區的 Apache Spark 集區清單。](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-29.png)
 

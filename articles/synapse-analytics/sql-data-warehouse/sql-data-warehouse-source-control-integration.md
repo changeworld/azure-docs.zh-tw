@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 766837cacb4ef2acf874c2872b347b6d35633faa
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 862fa839c56746042c072ae3100832fb2b78451a
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700992"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296841"
 ---
 # <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的原始檔控制整合
 
@@ -38,11 +38,13 @@ ms.locfileid: "94700992"
    ![管理連線](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "管理連線")
 
 3. 若要連線到您的專案，請選取 [管理連線]，然後選取 [連線到專案]。
- ![Connect1](./media/sql-data-warehouse-source-control-integration/3-connect-project.png "連線")
+ 
+    ![Connect1](./media/sql-data-warehouse-source-control-integration/3-connect-project.png "連線")
 
 
 4. 尋找您在步驟一中建立的專案，選取 [連線]。
-![Connect2](./media/sql-data-warehouse-source-control-integration/3.5-connect.png "連線")
+ 
+    ![Connect2](./media/sql-data-warehouse-source-control-integration/3.5-connect.png "連線")
 
 
 3. 將您的 Azure DevOps 存放庫從您的專案複製到本機電腦。
@@ -85,7 +87,7 @@ ms.locfileid: "94700992"
 
    ![Verify](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "驗證變更")
 
-4. (**選用**) 使用 [結構描述比較]，並使用 SSDT 更新目標資料倉儲的變更，以確保 Azure Repo 存放庫和本機存放庫中的物件定義會反映您的資料倉儲。
+4. (**選用**) 使用 [結構描述比較]，並使用 SSDT 更新目標專用 SQL 集區的變更，以確保 Azure Repo 存放庫和本機存放庫中的物件定義會反映您的專用 SQL 集區。
 
 ## <a name="next-steps"></a>後續步驟
 

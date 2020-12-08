@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 846599414c0bca95a3f41e127dc01e06d0fd43f9
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: af63eb68ec82a0725befed723298c079e82bdfdb
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747105"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327095"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自訂容器建立函式
 
@@ -18,7 +18,7 @@ ms.locfileid: "92747105"
 
 在自訂 Linux 容器中部署您的函式程式碼需要[進階方案](functions-premium-plan.md#features)或[專用 (App Service) 方案](functions-scale.md#app-service-plan)裝載。 完成本教學課程會在您的 Azure 帳戶中產生費用 (以美元計價)，您可以在完成時[清除資源](#clean-up-resources)，將這些成本降到最低。
 
-您也可以如[建立您在 Linux 上託管的第一個函式](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)所述，使用預設 Azure App Service 容器。 在 [Azure Functions 基底映像存放庫](https://hub.docker.com/_/microsoft-azure-functions-base)中可找到針對 Azure Functions 支援的基底映像。
+您也可以如[建立您在 Linux 上託管的第一個函式](./create-first-function-cli-csharp.md?pivots=programming-language-python)所述，使用預設 Azure App Service 容器。 在 [Azure Functions 基底映像存放庫](https://hub.docker.com/_/microsoft-azure-functions-base)中可找到針對 Azure Functions 支援的基底映像。
 
 在本教學課程中，您會了解如何：
 
@@ -54,34 +54,34 @@ ms.locfileid: "92747105"
 在終端機或命令提示字元中，針對您所選擇的語言執行下列命令，以在名為 `LocalFunctionsProject` 的資料夾中建立函式應用程式專案。  
 ::: zone-end  
 ::: zone pivot="programming-language-csharp"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime dotnet --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-javascript"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime node --language javascript --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime powershell --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-python"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime python --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime node --language typescript --docker
 ```
 ::: zone-end
 ::: zone pivot="programming-language-java"  
 在空的資料夾中，執行下列命令以從 [Maven 原型](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) \(英文\) 產生 Functions 專案。
 
-# <a name="bash"></a>[bash](#tab/bash)
+# <a name="bash"></a>[Bash](#tab/bash)
 ```bash
 mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -DjavaVersion=8 -Ddocker
 ```
@@ -118,41 +118,41 @@ Maven 會以 _artifactId_ 名稱在新資料夾中建立專案檔案，在此例
 
 瀏覽至專案資料夾：
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
-```
+```console
 cd LocalFunctionsProject
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-java"  
-```
+```console
 cd fabrikam-functions
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
 使用下列命令，將函式新增至您的專案，其中 `--name` 引數是函式的唯一名稱，而 `--template` 引數可指定函式的觸發程序。 `func new` 建立符合函式名稱的子資料夾，其中包含適合專案所選語言的程式碼檔案，以及名為 *function.json* 的組態檔。
 
-```
+```console
 func new --name HttpExample --template "HTTP trigger"
 ```
 ::: zone-end  
 若要在本機測試函式，請啟動專案根資料夾中的本機 Azure Functions 執行階段主機： 
 ::: zone pivot="programming-language-csharp"  
-```
+```console
 func start --build  
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-javascript,programming-language-powershell,programming-language-python"   
-```
+```console
 func start  
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
-```
+```console
 npm install
 npm start
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-java"  
-```
+```console
 mvn clean package  
 mvn azure-functions:run
 ```
@@ -163,11 +163,11 @@ mvn azure-functions:run
 
 ## <a name="build-the-container-image-and-test-locally"></a>建立容器映像並在本機進行測試
 
-(選用) 檢查專案根資料夾中的 *Dockerfile* 。 Dockerfile 描述在 Linux 上執行函式應用程式所需的環境。  在 [Azure Functions 基底映像頁面](https://hub.docker.com/_/microsoft-azure-functions-base)中可找到針對 Azure Functions 支援的完整基底映像清單。
+(選用) 檢查專案根資料夾中的 *Dockerfile*。 Dockerfile 描述在 Linux 上執行函式應用程式所需的環境。  在 [Azure Functions 基底映像頁面](https://hub.docker.com/_/microsoft-azure-functions-base)中可找到針對 Azure Functions 支援的完整基底映像清單。
     
 在根專案資料夾中，執行 [docker build](https://docs.docker.com/engine/reference/commandline/build/) 命令，然後提供名稱、`azurefunctionsimage` 和標記 (`v1.0.0`)。 將 `<DOCKER_ID>` 取代為 Docker Hub 帳戶識別碼。 此命令會建置容器的 Docker 映像。
 
-```
+```console
 docker build --tag <DOCKER_ID>/azurefunctionsimage:v1.0.0 .
 ```
 
@@ -175,7 +175,7 @@ docker build --tag <DOCKER_ID>/azurefunctionsimage:v1.0.0 .
     
 若要測試組建，請使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令在本機容器中執行映像，再以您的 Docker ID 取代 `<DOCKER_ID` 並新增連接埠引數 `-p 8080:80`：
 
-```
+```console
 docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
 ```
 
@@ -197,13 +197,13 @@ Docker Hub 是一個容器登錄，其裝載映像並提供映像和容器服務
 
 1. 如果您尚未登入 Docker，請使用 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令，將 `<docker_id>` 取代為您的 Docker 識別碼。 此命令會提示您輸入使用者名稱和密碼。 「登入成功」訊息會確認您已登入。
 
-    ```
+    ```console
     docker login
     ```
     
 1. 登入之後，使用 [docker push](https://docs.docker.com/engine/reference/commandline/push/) 命令將映像推送到 Docker Hub，再次將 `<docker_id>` 取代為您的 Docker 識別碼。
 
-    ```
+    ```console
     docker push <docker_id>/azurefunctionsimage:v1.0.0
     ```
 
@@ -279,7 +279,7 @@ Docker Hub 是一個容器登錄，其裝載映像並提供映像和容器服務
 1. 函式現在可以使用此連接字串來存取儲存體帳戶。
 
     > [!TIP]
-    > 在 bash 中，您可以使用殼層變數 (而不是使用剪貼簿) 來擷取連接字串。 首先，使用下列命令來建立具有連接字串的變數：
+    > 在 Bash 中，您可以使用殼層變數 (而不是使用剪貼簿) 來擷取連接字串。 首先，使用下列命令來建立具有連接字串的變數：
     > 
     > ```bash
     > storageConnectionString=$(az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv)
@@ -419,13 +419,13 @@ SSH 可讓容器和用戶端之間進行安全通訊。 啟用 SSH 之後，您�
     
 1. 再次使用 `docker build` 命令重建映像，並以您的 Docker ID 取代 `<docker_id>`：
 
-    ```
+    ```console
     docker build --tag <docker_id>/azurefunctionsimage:v1.0.0 .
     ```
     
 1. 將已更新的映像推送至 Docker Hub，這應該比第一次只推送所需上傳的映像更新後區段少很多時間。
 
-    ```
+    ```console
     docker push <docker_id>/azurefunctionsimage:v1.0.0
     ```
     
@@ -492,13 +492,13 @@ Azure Functions 可讓您無須撰寫自己的整合程式碼，就能將函式�
 
 1. 在根資料夾中，再次執行 `docker build`，這次會將標記中的版本更新為 `v1.0.1`。 和之前一樣，以您的 Docker Hub 帳戶識別碼取代 `<docker_id>`：
 
-    ```
+    ```console
     docker build --tag <docker_id>/azurefunctionsimage:v1.0.1 .
     ```
     
 1. 使用 `docker push` 將已更新的映像推送回存放庫：
 
-    ```
+    ```console
     docker push <docker_id>/azurefunctionsimage:v1.0.1
     ```
 

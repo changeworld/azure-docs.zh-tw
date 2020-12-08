@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 6eb76c9d8cc8447755e045972a7aceddefd1604a
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ebde8048c26364d77d95b9c7b34f9d1d7a4a20ee
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532965"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326251"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>教學課程：在 Jupyter Notebook 中開始使用 Azure Machine Learning
 
@@ -80,7 +80,7 @@ Azure Machine Learning 會在您的工作區中包含雲端 Notebook 伺服器�
     > [!IMPORTANT]
     > 您可以查看 **samples** 資料夾中的筆記本，但無法從該處執行筆記本。 若要執行筆記本，請務必在 [使用者檔案] 區段中開啟複製的筆記本版本。
     
-1. 在您的 **tutorials/image-classification-mnist-data** 資料夾中選取 **tutorial-1st-experiment-sdk-train.ipynb** 檔案。
+1. 在您的 **tutorials/image-classification-mnist-data** 資料夾中選取 **img-classification-part1-training.ipynb** 檔案。
 
     :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="顯示開啟教學課程資料夾的螢幕擷取畫面。":::
 

@@ -1,6 +1,6 @@
 ---
 title: 使用 Power BI Professional 連線到 Synapse SQL
-description: 在本教學課程中，我們將逐步解說如何將 Power BI Desktop 連線到無伺服器 SQL 集區 (預覽) 的步驟。
+description: 在本教學課程中，我們將逐步解說如何將 Power BI Desktop 連線至無伺服器 SQL 集區的步驟。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: c26e2bd27c0c3187768252fd922c31a2cc23d735
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: b33edb99109b7516e1792497a936031cf954bc15
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682083"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451612"
 ---
 # <a name="connect-to-serverless-sql-pool-with-power-bi-professional"></a>使用 Power BI Professional 連線到無伺服器 SQL 集區
 
@@ -26,7 +26,7 @@ ms.locfileid: "94682083"
 > - [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > - [SSMS](get-started-ssms.md)
 
-在本教學課程中，我們將逐步解說用來將 Power BI Desktop 連線到無伺服器 SQL 集區 (預覽) 的步驟。
+在本教學課程中，我們將逐步解說用來將 Power BI Desktop 連線至無伺服器 SQL 集區的步驟。
 
 ## <a name="prerequisites"></a>Prerequisites
 

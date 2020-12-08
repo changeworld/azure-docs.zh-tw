@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c7225adcfe970d17f8f86afdd15e36e2ba76de3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eeea88d8c21ba754fbeadbb24891126b639616c7
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91287010"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437221"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>快速入門：在 Azure Active Directory 中建立新的租用戶
 您可以使用 Azure Active Directory (Azure AD) 入口網站執行所有的系統管理工作，包括為您的組織建立新的租用戶。 
@@ -33,37 +33,41 @@ ms.locfileid: "91287010"
 
 1. 登入組織的 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 從 Azure 入口網站功能表選取 [建立資源]  。  
+1. 在 Azure 入口網站功能表中，選取 [Azure Active Directory]。  
 
-    ![Azure Active Directory 建立資源頁面](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+    <kbd>![Azure Active Directory - 概觀頁面 - 建立租用戶](media/active-directory-access-create-new-tenant/azure-ad-portal.png)</kbd>  
 
-1. 搜尋並選取 [Azure Active Directory]  。
+1. 選取 [建立租用戶]。
 
-    [建立目錄]  頁面隨即出現。
+1. 在 [基本] 索引標籤上，選取您要建立的租用戶類型 (**Azure Active Directory** 或 **Azure Active Directory (B2C)** )。
 
-    ![Azure Active Directory 建立頁面](media/active-directory-access-create-new-tenant/azure-ad-create-new-tenant.png)
+1. 完成時，選取 [下一步:設定] 以移至 [設定] 索引標籤。
 
-1.  在 [建立目錄]  頁面上，輸入下列資訊：
+    <kbd>![Azure Active Directory - 建立租用戶頁面 - 設定索引標籤](media/active-directory-access-create-new-tenant/azure-ad-create-new-tenant.png)</kbd>
+
+1.  在 [設定] 索引標籤上，輸入下列資訊：
     
-    - 在 [組織名稱]  方塊中輸入 _Contoso_。
+    - 在 [組織名稱] 方塊中輸入 _Contoso Organization_。
 
-    - 在 [初始網域名稱]  方塊中輸入 _Contoso_。
+    - 在 [初始網域名稱] 方塊中輸入 _Contosoorg_。
 
-    - 保留 [國家或地區]  方塊中的 [美國]  選項。
+    - 保留 [國家或地區] 方塊中的 [美國] 選項。
 
-1. 選取 [建立]  。
+1. 完成時，選取 [下一步:檢閱 + 建立]。 請檢閱您輸入的資訊，如果資訊正確，請選取 [建立]。
+
+    <kbd>![Azure Active Directory - 檢閱並建立租用戶頁面](media/active-directory-access-create-new-tenant/azure-ad-review.png)</kbd>
 
 您的新的租用戶是使用網域 contoso.onmicrosoft.com 建立。
 
 ## <a name="clean-up-resources"></a>清除資源
 如果您不打算繼續使用此應用程式，可以使用下列步驟刪除租用戶：
 
-- 請確定您已透過 Azure 入口網站中的 [目錄 + 訂用帳戶]  篩選器登入您要刪除的目錄，並視需要切換至目標目錄。
-- 選取 [Azure Active Directory]  ，然後在 [Contoso - 概觀]  頁面上，選取 [刪除目錄]  。
+- 請確定您已透過 Azure 入口網站中的 [目錄 + 訂用帳戶] 篩選器登入您要刪除的目錄，並視需要切換至目標目錄。
+- 選取 [Azure Active Directory]，然後在 [Contoso - 概觀] 頁面上，選取 [刪除目錄]。
 
     這將刪除租用戶與其相關聯的資訊。
 
-    ![概觀頁面，包含醒目提示的 [刪除目錄] 按鈕](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)
+    <kbd>![概觀頁面，包含醒目提示的 [刪除目錄] 按鈕](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)</kbd>
 
 ## <a name="next-steps"></a>後續步驟
 - 變更或新增額外的網域名稱，請參閱[如何將自訂網域名稱新增至 Azure Active Directory](add-custom-domain.md)

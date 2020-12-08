@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 846059c5c20255f9bddba59673458e12e1f354d3
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 01de8ab86ff5f511fd5e45c4a6e88febdb4fbb15
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95503562"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340861"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>什麼是 Azure Active Directory 的自助式註冊？
 
@@ -76,7 +76,7 @@ AllowEmailVerifiedUsers 和 AllowAdHocSubscriptions 是用於整個目錄的設�
 
 ![自助式註冊控制項的流程圖](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
 
-下列 PowerShell Cmdlet Get-MsolCompanyInformation 可擷取這項設定的詳細資料。 如需其詳細資訊，請參閱 [Get-MsolCompanyInformation](/powershell/module/msonline/get-msolcompanyinformation?view=azureadps-1.0)
+下列 PowerShell Cmdlet Get-MsolCompanyInformation 可擷取這項設定的詳細資料。 如需其詳細資訊，請參閱 [Get-MsolCompanyInformation](/powershell/module/msonline/get-msolcompanyinformation?view=azureadps-1.0)。
 
 ```powershell
     Get-MsolCompanyInformation | Select AllowEmailVerifiedUsers, AllowAdHocSubscriptions

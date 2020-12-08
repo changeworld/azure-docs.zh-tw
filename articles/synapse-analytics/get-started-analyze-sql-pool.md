@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 11/17/2020
-ms.openlocfilehash: ae7b15bf2e2efd72184110a105f68815516569ab
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9014469ca063ca52be0965ecbd4e8b21709d10a0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843905"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455167"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>使用專用 SQL 集區來分析資料
 
@@ -94,8 +94,9 @@ Azure Synapse Analytics 可為您提供使用專用 SQL 集區分析資料的功
 
     此查詢會顯示總行程距離和平均路程距離與乘客數的關聯。
 1. 在 [SQL 指令碼結果] 視窗中，將 [視圖] 變更為 [圖表]，以折線圖形式查看結果的視覺效果。
-
-
+    
+    > [!NOTE]
+    > 您可以透過資料中樞的工具提示，來識別已啟用工作區的專用 SQL 集區 (先前稱為 SQL DW)。
 
 ## <a name="next-steps"></a>後續步驟
 

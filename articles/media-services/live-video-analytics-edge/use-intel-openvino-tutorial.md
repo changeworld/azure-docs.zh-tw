@@ -4,12 +4,12 @@ description: 在本教學課程中，您將使用 Intel 提供的 AI 模型伺�
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: d03737f43ee719b72860e7ffeff076e3f156cade
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: a15984917b854a9f3e2dbc80dd0775989c80bf81
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776335"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483673"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>教學課程：使用 Intel 提供的 AI 擴充功能 OpenVINO™ Model Server 來分析即時影片 - Intel 提供的 AI 擴充功能 
 
@@ -84,11 +84,11 @@ Intel® 發佈的 [OpenVINO™ 工具組](https://software.intel.com/content/www
 
 1. 移至 *src/cloud-to-device-console-app* 資料夾。 在這裡，您會看到 *appsettings.json* 檔案和其他幾個檔案：
 
-    * ***c2d-console-app.csproj*** - Visual Studio Code 的專案檔。
-    * ***operations.json*** - 您想要讓程式執行的作業清單。
-    * ***Program.cs*** - 範例程式碼。 此程式碼：
+    * ***c2d-console-app.csproj** - Visual Studio Code 的專案檔。
+    ***operations.json** - 您想要讓程式執行的作業清單。
+    ***Program.cs** - 範例程式碼。 此程式碼：
 
-        * 載入應用程式設定。
+        載入應用程式設定。
         * 叫用 IoT Edge 模組上 Live Video Analytics 所公開的直接方法。 您可以使用模組，藉由叫用其[直接方法](direct-methods.md)來分析即時影片串流。
         * 會暫停，讓您可以在 [終端機] 視窗中檢查程式的輸出，並在 [輸出] 視窗中檢查模組所產生的事件。
         * 叫用直接方法來清除資源。
@@ -145,11 +145,38 @@ Intel® 發佈的 [OpenVINO™ 工具組](https://software.intel.com/content/www
 1. 按一下滑鼠右鍵，然後選取 [延伸模組設定]。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="概觀":::
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="延伸模組設定":::
 1. 搜尋並啟用「顯示詳細資訊訊息」。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="概觀"
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="顯示詳細資訊訊息":::
+1. 若要啟動偵錯工作階段，請選取 F5 鍵。 您會在 [終端機] 視窗中看到一些列印的訊息。
+1. *operations.json* 程式碼首先會呼叫直接方法 `GraphTopologyList` 和 `GraphInstanceList`。 如果您在完成先前的快速入門之後清除了資源，則此程序會傳回空的清單，然後暫停。 若要繼續，請選取 Enter 鍵。
+
+    [終端機] 視窗會顯示下一組直接方法呼叫：
+
+     * 會使用上述 `topologyUrl` 的對 `GraphTopologySet` 呼叫
+     * 會使用下列主體的對 `GraphInstanceSet` 呼叫：
+
+         ```
+         {
+           "@apiVersion": "1.0",
+           "name": "Sample-Graph-1",
+           "properties": {
+             "topologyName": "InferencingWithOpenVINO",
+             "description": "Sample graph description",
+             "parameters": [
+               {
+                 "name": "rtspUrl",
+                 "value": "rtsp://rtspsim:554/media/lots_015.mkv"
+               },
+               {
+                 "name": "rtspUserName",
+                 "value": "testuser"
+               },
+               {
+                 "name": "rtspPassword",
+                 "value": "testpassword"
                }
              ]
            }
@@ -365,4 +392,4 @@ HTTP 擴充功能處理器節點會接收 Intel 提供的 AI 擴充功能模組 
 檢閱進階使用者的其他挑戰：
 
 * 使用具有 RTSP 支援的 [IP 攝影機](https://en.wikipedia.org/wiki/IP_camera)，而非使用 RTSP 模擬器。 您可以在[符合 ONVIF 標準的](https://www.onvif.org/conformant-products/)產品頁面上，搜尋支援 RTSP 的 IP 攝影機。 尋找符合設定檔 G、S 或 T 的裝置。
-* 使用 AMD64 或 x64 Linux 裝置 (而非使用 Azure Linux VM)。 此裝置必須與 IP 攝影機位於相同的網路中。 您可以遵循[在 Linux 上安裝 Azure IoT Edge 執行階段](../../iot-edge/how-to-install-iot-edge-linux.md)中的指示。 然後遵循[將您的第一個 IoT Edge 模組部署至虛擬 Linux 裝置](../../iot-edge/quickstart-linux.md)中的指示，向 Azure IoT 中樞註冊裝置。
+* 使用 AMD64 或 x64 Linux 裝置 (而非使用 Azure Linux VM)。 此裝置必須與 IP 攝影機位於相同的網路中。 您可以遵循[在 Linux 上安裝 Azure IoT Edge 執行階段](../../iot-edge/how-to-install-iot-edge.md)中的指示。 然後遵循[將您的第一個 IoT Edge 模組部署至虛擬 Linux 裝置](../../iot-edge/quickstart-linux.md)中的指示，向 Azure IoT 中樞註冊裝置。

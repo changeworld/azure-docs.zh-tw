@@ -3,8 +3,8 @@ title: Data Factory (資料整合服務) 簡介
 description: 了解 Azure Data Factory 是什麼：這是一項雲端資料整合服務，用來協調及自動移動和轉換資料。
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.assetid: cec68cb5-ca0d-473b-8ae8-35de949a009e
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 06f308b4e0b2df0487a351ae38f16f3872961cfb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 101de32aea47bb3dd3c8a04434993c8614939c37
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89436251"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495560"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory 簡介 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -35,7 +35,7 @@ ms.locfileid: "89436251"
 
 為了分析這些記錄，此公司必須使用參考資料，例如內部部署資料存放區中的客戶資訊、遊戲資訊及行銷活動資訊。 因此，公司想要從雲端資料存放區內嵌記錄資料，以及從內部部署資料存放區內嵌參考資料。 
 
-然後，他們想要使用雲端的 Hadoop (Azure HDInsight) 來處理資料。 想要將結果資料發佈至雲端資料倉儲，例如 Azure Synapse Analytics (前稱 SQL 資料倉儲) 或內部部署資料存放區 (例如 SQL Server)。 該公司希望一週執行此工作流程一次。 
+然後，他們想要使用雲端的 Hadoop (Azure HDInsight) 來處理資料。 想要將結果資料發佈至雲端資料倉儲 (例如 Azure Synapse Analytics) 或內部部署資料存放區 (例如 SQL Server)。 該公司希望一週執行此工作流程一次。 
 
 該公司需要他們可以在其中建立工作流程的平台，該工作流程可以從內部部署和雲端資料存放區擷取資料。 該公司也必須能夠藉由使用現有的計算服務 (例如 Hadoop) 來轉換或處理資料，並且將結果發佈至內部部署或雲端資料存放區，讓 BI 應用程式使用。 
 
@@ -112,7 +112,7 @@ Data Factory 中的複製活動會將資料從來源資料存放區複製到接�
 
 Data Factory 中的連結服務，有兩個原因：
 
-* 用來代表*資料存放區*，其包含但不限於 SQL Server 資料庫、Oracle 資料庫、檔案共用或 Azure blob 儲存體帳戶。 如需支援的資料存放區清單，請參閱 [資料移動活動](#data-movement-activities) 一節。
+* 用來代表 *資料存放區*，其包含但不限於 SQL Server 資料庫、Oracle 資料庫、檔案共用或 Azure blob 儲存體帳戶。 如需支援的資料存放區清單，請參閱 [資料移動活動](#data-movement-activities) 一節。
 
 * 用來代表可裝載活動執行的 *計算資源* 。 例如，HDInsightHive 活動會在 HDInsight Hadoop 叢集上執行。 如需支援的計算環境清單，請參閱[資料轉換活動](#data-transformation-activities)一節。
 

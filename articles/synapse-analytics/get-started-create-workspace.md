@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 11/21/2020
-ms.openlocfilehash: 42b586062378c59b66ca945880bf723418264071
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 949992418cb19c5c69ed8da92e9c2f0fc5f2f791
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95241925"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445426"
 ---
 # <a name="creating-a-synapse-workspace"></a>建立 Synapse 工作區
 
@@ -28,7 +28,7 @@ ms.locfileid: "95241925"
 ## <a name="create-a-synapse-workspace-in-the-azure-portal"></a>在 Azure 入口網站中建立 Synapse 工作區
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com)，並在頂端搜尋 **Synapse**。
-1. 在 [服務] 底下的搜尋結果中，選取 [Azure Synapse Analytics (工作區預覽)]。
+1. 在 [服務] 底下的搜尋結果中，選取 [Azure Synapse Analytics]。
 1. 選取 [新增] 以建立工作區。
 1. 在 [基本] 中，輸入您偏好的 **訂用帳戶**、**資源群組** 和 **區域**，然後選擇工作區名稱。 在本教學課程中，我們將使用 **myworkspace**。
 1. 瀏覽至 [選取 Data Lake Storage Gen 2]。 
@@ -36,6 +36,10 @@ ms.locfileid: "95241925"
 1. 按一下 [檔案系統]，並將其命名為 **users**。 這會建立名為 **users** 的容器
 1. 工作區會使用此儲存體帳戶作為 Spark 資料表和 Spark 應用程式記錄的「主要」儲存體帳戶。
 1. 選取 [檢閱+建立] > [建立]。 您的工作區將會在幾分鐘內就緒。
+
+> [!NOTE]
+> 若要從現有的專用 SQL 集區 (先前稱為 SQL DW) 啟用工作區功能，請參閱[如何為您的專用 SQL 集區 (先前稱為 SQL DW) 啟用工作區](./sql-data-warehouse/workspace-connected-create.md)。
+
 
 ## <a name="open-synapse-studio"></a>開啟 Synapse Studio
 
@@ -53,6 +57,9 @@ ms.locfileid: "95241925"
 1. 選取 [檢閱+建立] > [建立]。 您的專用 SQL 集區將會在幾分鐘內就緒。 您的專用 SQL 集區會與專用 SQL 集區資料庫 (也稱為 **SQLPOOL1**) 相關聯。
 
 專用 SQL 集區只要在作用中，就會取用計費的資源。 您可於稍後暫停集區，以降低成本。
+
+> [!NOTE] 
+> 在您的工作區中建立新的專用 SQL 集區 (先前稱為 SQL DW) 時，將會開啟專用 SQL 集區佈建頁面。 佈建會在邏輯 SQL 伺服器上進行。
 
 ## <a name="create-a-serverless-apache-spark-pool"></a>建立無伺服器 Apache Spark 集區
 

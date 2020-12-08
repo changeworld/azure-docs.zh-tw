@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 7f1acc44a80d5ef70145997698a928e6f9ce0d48
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: a460d77a032f36505c8036bc60aa37017f630e55
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888873"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501136"
 ---
 # <a name="what-is-azure-iot-hub"></a>何謂 Azure IoT 中心？
 
@@ -91,6 +91,7 @@ IoT 中樞提供了安全的通訊通道，以便讓裝置傳送資料。
 使用 [Azure IoT 裝置 SDK](./iot-hub-devguide-sdks.md) 程式庫，以建置在您的裝置上執行並與 IoT 中樞互動的應用程式。 支援的平台包括多個 Linux 散發套件、Windows 和即時作業系統。 支援的語言包括：
 
 * C
+* 內嵌 C
 * C#
 * Java
 * Python

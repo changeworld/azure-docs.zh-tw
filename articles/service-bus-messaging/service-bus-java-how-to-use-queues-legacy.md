@@ -5,12 +5,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 68d8270c4ca3cff07f3a70c6022b963f750ad4e9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 774f9e485c58712ea8648a148c92b6f9ef6a58c0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022095"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452619"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>快速入門：透過 Java 使用 Azure 服務匯流排佇列來傳送和接收訊息
 
@@ -18,7 +18,8 @@ ms.locfileid: "96022095"
 在本教學課程中，您將了解如何建立 Java 應用程式以對 Azure 服務匯流排佇列傳送和接收訊息。 
 
 > [!WARNING]
->  此快速入門使用目前正式發行 (GA) 的 azure-servicebus 套件。 如果快速入門使用處於 **預覽** 階段的新 azure-messaging-servicebus 套件，請參閱[使用 azure-messaging-servicebus 傳送和接收訊息](service-bus-java-how-to-use-queues.md)。 
+>  本快速入門使用舊的 azure-servicebus 套件。 如果快速入門使用最新的 azure-messaging-servicebus 套件，請參閱[使用 azure-messaging-servicebus 傳送和接收訊息](service-bus-java-how-to-use-queues.md)。 
+
 
 ## <a name="prerequisites"></a>先決條件
 1. Azure 訂用帳戶。 若要完成此教學課程，您需要 Azure 帳戶。 您可以[啟用自己的 MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或是[註冊免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。

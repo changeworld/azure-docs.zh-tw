@@ -5,18 +5,19 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 11/09/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: a91ed2a358a9595a4d22dd629b8d470423b786d6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 041229ffb047c922e1f1f97993fada3841133d35
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95909521"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489644"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-java"></a>在 Azure 服務匯流排佇列 (Java) 中傳送和接收訊息
 在本快速入門中，您將建立 Java 應用程式以將訊息傳送至 Azure 服務匯流排佇列，並從中接收訊息。 
 
 > [!IMPORTANT]
-> 本快速入門使用新的 azure-messaging-servicebus 套件，目前為 **預覽版**。 如需使用目前推出 (GA) 之 azure-servicebus 套件的快速入門，請參閱[使用 azure-servicebus 傳送和接收訊息](service-bus-java-how-to-use-queues-legacy.md)。
+> 本快速入門使用新的 azure-messaging-servicebus 套件。 如需使用舊版 azure-servicebus 套件的快速入門，請參閱[使用 azure-servicebus 傳送和接收訊息](service-bus-java-how-to-use-queues-legacy.md)。
+
 
 ## <a name="prerequisites"></a>先決條件
 - Azure 訂用帳戶。 若要完成此教學課程，您需要 Azure 帳戶。 您可以[啟用自己的 MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或是[註冊免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
@@ -37,7 +38,7 @@ ms.locfileid: "95909521"
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-messaging-servicebus</artifactId>
-    <version>7.0.0-beta.7</version>
+    <version>7.0.0</version>
 </dependency>
 ```
 
@@ -220,7 +221,7 @@ Stopping and closing the processor
 
 - [適用於 Java 的 Azure 服務匯流排用戶端程式庫 - 讀我檔案](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/README.md)
 - [GitHub 範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/servicebus/azure-messaging-servicebus/src/samples)
-- [Java API 參考](https://docs.microsoft.com/java/api/overview/azure/servicebus?view=azure-java-preview&preserve-view=true)
+- [Java API 參考](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-preview)
 
 請參閱 [GitHub 上的更多範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/servicebus/azure-messaging-servicebus)。 
 

@@ -12,20 +12,20 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.custom: has-adal-ref
-ms.openlocfilehash: ce4cccba678a934780dc987f1441ea658a70f8eb
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 17d78b4d6db9e65868995d8ea7835a0d911e8589
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996610"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348684"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>從 Azure AD 應用程式資源庫設定 OpenID/OAuth 應用程式
 
 ## <a name="process-of-adding-an-openid-application-from-the-gallery"></a>從資源庫新增 OpenID 應用程式的程序
 
-1. 在 [Azure 入口網站](https://portal.azure.com)的左側窗格中，選取 [Azure Active Directory]  。
+1. 在 [Azure 入口網站](https://portal.azure.com) 中，選取 [Azure Active Directory]。
 
-    ![Azure Active Directory 按鈕](common/select-azuread.png))
+    ![Azure Active Directory 按鈕](common/select-azuread.png)
 
 2. 移至 [企業應用程式]   > [所有應用程式]  。
 
@@ -39,17 +39,23 @@ ms.locfileid: "91996610"
 
     ![結果清單中的 Openid](common/search-new-app.png)
 
-    > [!NOTE]
-    > 對於 OpenID Connect 和 OAuth 應用程式，預設會停用 [新增]  按鈕。 租用戶系統管理員應該選取 [註冊] 按鈕並為該應用程式提供同意。 然後，應用程式就會新增至客戶租用戶，您可以在其中進行設定。 您不需要明確地新增應用程式。
+
+1. 在 [應用程式名稱] 頁面中，按一下 [註冊] 按鈕。
 
     ![[新增] 按鈕](./media/openidoauth-tutorial/addbutton.png)
 
-5. 當您選取 [註冊] 連結時，系統會將您重新導向至 Azure Active Directory (Azure AD) 頁面以進行登入認證。
+    > [!NOTE]
+    > 租用戶系統管理員應該選取 [註冊] 按鈕並為該應用程式提供同意。 然後，應用程式就會新增至客戶租用戶，您可以在其中進行設定。 您不需要明確地新增應用程式。
+
+5. 系統會將您重新導向至 [應用程式登入] 頁面或 [Azure Active Directory (Azure AD)] 頁面，以取得登入認證。
 
 6. 驗證成功之後，您必須接受同意頁面上的同意。 在那之後，應用程式首頁會隨即出現。
 
     > [!NOTE]
     > 您只可以新增一個應用程式執行個體。 如果您已經新增一個並嘗試再次提供同意，系統將不會再次將它新增至租用戶。 因此，邏輯上您只能在租用戶中使用一個應用程式執行個體。
+
+1. 請依照下列影片的指示，從資源庫新增 OpenID 應用程式。
+    >[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4HoNI]
 
 ## <a name="authentication-flow-using-openid-connect"></a>使用 OpenID Connect 驗證流程
 
@@ -151,3 +157,7 @@ Graph API 也會提供 Azure AD 中的使用者和群組存取權，以及多個
 要求的權限不需要系統管理員同意的應用程式，也可以使用 prompt=admin_consent  參數。 例如，應用程式需要的體驗是，租用戶系統管理員「註冊」一次，此後就不會再提示其他使用者要表示同意。
 
 假設應用程式需要系統管理員同意，而系統管理員登入時不需要傳送 prompt=admin_consent  參數。 當系統管理員順利同意此應用程式時，這只會套用至其使用者帳戶。 一般使用者將仍然無法登入此應用程式或對其行使同意權。 當您想要先讓租用戶系統管理員能夠瀏覽您的應用程式，然後才允許其他使用者存取時，這個功能相當有用。
+
+## <a name="next-steps"></a>後續步驟
+
+[為您 Azure Active Directory (Azure AD) 租用戶中的應用程式設定 OIDC 型單一登入 (SSO)](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal-setup-oidc-sso)

@@ -1,14 +1,14 @@
 ---
 title: Azure 快速入門 - 使用 Azure 入口網站建立事件中樞
-description: 在本快速入門中，您將了解如何使用 Azure 入口網站建立 Azure 事件中樞，然後使用 .NET Standard SDK 傳送和接收事件。
+description: 在本快速入門中，您將了解如何使用 Azure 入口網站建立 Azure 事件中樞。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 84cafcc86142cb9b97639c023971e7d290fc79fc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c1244317655815da91429585eff9ffbcc16662d4
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88927879"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435496"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>快速入門：使用 Azure 入口網站建立事件中樞
 Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可接收和處理數百萬個事件。 事件中樞可以處理及儲存分散式軟體和裝置所產生的事件、資料或遙測。 傳送至事件中樞的資料可以透過任何即時分析提供者或批次/儲存體配接器來轉換和儲存。 如需事件中樞的詳細概觀，請參閱[事件中樞概觀](event-hubs-about.md)和[事件中樞功能](event-hubs-features.md)。
@@ -26,13 +26,13 @@ Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可�
 資源群組是 Azure 資源的邏輯集合。 所有資源都會在資源群組中部署與管理。 若要建立資源群組︰
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左側導覽中，按一下 [資源群組]  。 然後按一下 [ **新增**]。
+1. 在左側瀏覽中，選取 [資源群組]  。 然後選取 [新增]  。
 
    ![資源群組 - 新增按鈕](./media/event-hubs-quickstart-portal/resource-groups1.png)
 
 1. 在 [訂用帳戶]  中，選取要在其中建立資源群組的 Azure 訂用帳戶名稱。
-1. 輸入**資源群組的唯一名稱**。 系統會立即檢查名稱是否可用於目前選取的 Azure 訂用帳戶。
-1. 選取資源群組的**區域**。
+1. 輸入 **資源群組的唯一名稱**。 系統會立即檢查名稱是否可用於目前選取的 Azure 訂用帳戶。
+1. 選取資源群組的 **區域**。
 1. 選取 [檢閱 + 建立]  。
 
    ![資源群組 - 建立](./media/event-hubs-quickstart-portal/resource-groups2.png)
@@ -40,9 +40,9 @@ Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可�
 
 ## <a name="create-an-event-hubs-namespace"></a>建立事件中樞命名空間
 
-事件中樞命名空間提供唯一的範圍容器 (依其完整網域名稱來參考)，您可以在其中建立一或多個事件中樞。 若要使用入口網站在您的資源群組中建立命名空間，請執行下列動作：
+事件中樞命名空間提供唯一的範圍容器，您可以在其中建立一或多個事件中樞。 若要使用入口網站在您的資源群組中建立命名空間，請執行下列動作：
 
-1. 在 Azure 入口網站中，按一下畫面左上方的 [建立資源]  。
+1. 在 Azure 入口網站中，選取畫面左上方的 [建立資源]。
 1. 選取左側功能表中的 [所有服務]  ，然後選取 [分析]  類別中 [事件中樞]  旁邊的 **星號 (`*`)** 。 確認 [事件中樞]  已新增至左側導覽功能表中的 [我的最愛]  。 
     
    ![搜尋事件中樞](./media/event-hubs-quickstart-portal/select-event-hubs-menu.png)
@@ -50,12 +50,12 @@ Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可�
 
    ![[新增] 按鈕](./media/event-hubs-quickstart-portal/event-hubs-add-toolbar.png)
 1. 在 [建立命名空間]  頁面上，採取下列步驟：  
-   1. 選取您要在其中建立命名空間的**訂用帳戶**。  
-   1. 選取您在上一個步驟中建立的**資源群組**。   
-   1. 輸入命名空間的**名稱**。 系統會立即檢查此名稱是否可用。  
-   1. 選取命名空間的**位置**。      
-   1. 選擇**定價層** (基本或標準)。    
-   1. 保留 [輸送量單位]  的原始設定。 若要了解輸送量單位，請參閱[事件中樞可擴縮性](event-hubs-scalability.md#throughput-units)。  
+   1. 選取您要在其中建立命名空間的 **訂用帳戶**。  
+   1. 選取您在上一個步驟中建立的 **資源群組**。   
+   1. 輸入命名空間的 **名稱**。 系統會立即檢查此名稱是否可用。  
+   1. 選取命名空間的 **位置**。
+   1. 選擇 **定價層** (基本或標準)。 若要了解基本與標準層之間的一些差異，請參閱[事件中樞定價](https://azure.microsoft.com/pricing/details/event-hubs/)、[各層之間的差異](event-hubs-faq.md#what-is-the-difference-between-event-hubs-basic-and-standard-tiers)以及[配額和限制](event-hubs-quotas.md)。 
+   1. 保留 [輸送量單位]  的原始設定。 輸送量單位是預先購買的容量單位。 若要了解輸送量單位，請參閱[事件中樞可擴縮性](event-hubs-scalability.md#throughput-units)。  
    1. 選取頁面底部的 [檢閱 + 建立]  。
       
       ![建立事件中樞命名空間](./media/event-hubs-quickstart-portal/create-event-hub1.png)
@@ -78,19 +78,23 @@ Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可�
 若要在命名空間內建立事件中樞，請執行下列動作：
 
 1. 在 [事件中樞命名空間] 頁面上，選取左功能表中的 [事件中樞]  。
-1. 在視窗頂端，按一下 [+ 事件中樞]  。
+1. 在視窗頂端選取 [+ 事件中樞]。
    
     ![新增事件中樞 - 按鈕](./media/event-hubs-quickstart-portal/create-event-hub4.png)
-1. 輸入您的事件中樞名稱，然後按一下 [建立]  。
+1. 輸入您的事件中樞名稱，然後選取 [建立]。
    
     ![建立事件中樞](./media/event-hubs-quickstart-portal/create-event-hub5.png)
-1. 您可以檢查警示中事件中樞建立的狀態。 建立事件中樞之後，您會在事件中樞清單中看到它 (如下圖所示)：
+
+    **分割區計數** 可讓您跨眾多取用者平行處理取用量。 如需詳細資訊，請參閱[分割區](event-hubs-scalability.md#partitions)。
+
+    **訊息保留期** 設定會指定事件中樞服務保留資料的時間長度。 若要了解此設定的最大限制，請參閱[配額和限制](event-hubs-quotas.md)。
+1. 您可以檢查警示中事件中樞建立的狀態。 建立事件中樞之後，您會在事件中樞清單中看到該中樞。
 
     ![已建立事件中樞](./media/event-hubs-quickstart-portal/event-hub-created.png)
-
+    
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已建立資源群組、事件中樞命名空間和事件中樞。 如需將事件傳送至事件中樞或從事件中樞接收事件的逐步指示，請參閱**傳送及接收事件**教學課程： 
+在本文中，您已建立資源群組、事件中樞命名空間和事件中樞。 如需將事件傳送至事件中樞或從事件樞接收事件的逐步指示，請參閱下列教學課程： 
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
 - [Java](event-hubs-java-get-started-send.md)

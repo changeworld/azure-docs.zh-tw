@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: b138b3eb52a0bfb6dca2ec6fdf0b855223bab698
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 1f4d0d5c2d5442d14d68922c4d0c27b45b2b841e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984442"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324715"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>標記標籤專案中的影像 
 
@@ -119,7 +119,7 @@ ms.locfileid: "94984442"
 
 根據預設，您可以編輯現有的週框方塊。 **鎖定/解除鎖定區域** 工具 ![鎖定/解除鎖定區域工具](./media/how-to-label-images/lock-bounding-boxes-tool.png) 或 "L" 會切換該行為。 如果區域已鎖定，您就只能變更新週框方塊的形狀或位置。
 
-使用 **區域操作** 工具 ![區域操作工具](./media/how-to-label-images/regions-tool.png) 或 "M" 可調整現有的週框方塊。 拖曳邊緣或角落，以調整形狀。 按住內部，可以拖曳整個週框方塊。 如果您無法編輯區域，表示您可能切換了 **鎖定/解除鎖定區域** 工具。
+使用 **區域操作** 工具 ![這是區域操作工具的圖示 - 從中心指向上、右、下、左的四個箭號。](./media/how-to-label-images/regions-tool.png) 或 "M" 來調整現有的週框方塊。 拖曳邊緣或角落，以調整形狀。 按住內部，可以拖曳整個週框方塊。 如果您無法編輯區域，表示您可能切換了 **鎖定/解除鎖定區域** 工具。
 
 使用 **範本型方塊** 工具 ![範本方塊工具](./media/how-to-label-images/template-box-tool.png) 或 "T"，可建立相同大小的多個週框方塊。 如果影像沒有週框方塊，當您啟用範本型方塊後，此工具將會產生 50x50 像素的方塊。 如果您在建立週框方塊後啟用了範本型方塊，則新週框方塊的大小將會與您建立的最後一個方塊相同。 範本型方塊在放置後可調整大小。 調整範本型方塊的大小時，只會調整特定方塊的大小。
 
@@ -143,7 +143,7 @@ ms.locfileid: "94984442"
 
 您可以編輯現有的多邊形。 **鎖定/解除鎖定區域** 工具![使用鎖定/解除鎖定區域工具編輯多邊形](./media/how-to-label-images/lock-bounding-boxes-tool.png) 或 [L] 以切換該行為。 如果區域已鎖定，您就只能變更新多邊形的形狀或位置。
 
-使用 **新增或移除多邊形點** 工具![新增或移除多邊形點工具](./media/how-to-label-images/add-remove-points-tool.png)或 [U] 來調整現有的多邊形。 按一下多邊形以新增或移除點。 如果您無法編輯區域，表示您可能切換了 **鎖定/解除鎖定區域** 工具。
+使用 **新增或移除多邊形點** 工具 ![這是新增或移除多邊形點工具的圖示。](./media/how-to-label-images/add-remove-points-tool.png) 或 "U" 來調整現有的多邊形。 按一下多邊形以新增或移除點。 如果您無法編輯區域，表示您可能切換了 **鎖定/解除鎖定區域** 工具。
 
 若要刪除目前影像中的「所有」多邊形，請選取 **刪除所有區域** 工具![刪除所有區域工具](./media/how-to-label-images/delete-regions-tool.png)。
 

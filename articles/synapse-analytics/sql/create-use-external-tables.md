@@ -1,6 +1,6 @@
 ---
-title: 在無伺服器 SQL 集區 (預覽) 中建立及使用外部資料表
-description: 在本節中，您將了解如何在無伺服器 SQL 集區 (預覽) 中建立和使用外部資料表。
+title: 在無伺服器 SQL 集區中建立及使用外部資料表
+description: 在本節中，您將了解如何在無伺服器 SQL 集區中建立和使用外部資料表。
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0a52db131311d9956cf7217d910f22c3a4f07738
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5dcd4b7b76752ca5396fc68afc8d4c8e4e1edca5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314716"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462296"
 ---
-# <a name="create-and-use-external-tables-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用無伺服器 SQL 集區 (預覽) 建立及使用外部資料表
+# <a name="create-and-use-external-tables-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用無伺服器 SQL 集區建立及使用外部資料表
 
-在本節中，您將了解如何在無伺服器 SQL 集區 (預覽) 中建立和使用[外部資料表](develop-tables-external-tables.md)。 當您想要在無伺服器 SQL 集區中控制外部資料的存取權，以及想要使用 Power BI 等工具搭配無伺服器 SQL 集區時，外部資料表會很實用。 外部資料表可以存取兩種類型的儲存體：
+在本節中，您將了解如何在無伺服器 SQL 集區中建立和使用[外部資料表](develop-tables-external-tables.md)。 當您想要在無伺服器 SQL 集區中控制外部資料的存取權，以及想要使用 Power BI 等工具搭配無伺服器 SQL 集區時，外部資料表會很實用。 外部資料表可以存取兩種類型的儲存體：
 - 公用儲存體，可供使用者存取公用儲存體檔案。
 - 受保護的儲存體，可供使用者使用 SAS 認證、Azure AD 身分識別或 Synapse 工作區受控識別來存取儲存體檔案。
 

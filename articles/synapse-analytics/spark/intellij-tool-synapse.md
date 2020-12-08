@@ -1,6 +1,6 @@
 ---
 title: 教學課程 - Azure Toolkit for IntelliJ (Spark 應用程式)
-description: 教學課程 - 使用 Azure Toolkit for IntelliJ 來開發以 Scala 撰寫的 Spark 應用程式，並將其提交至無伺服器 Apache Spark 集區 (預覽)。
+description: 教學課程 - 使用 Azure Toolkit for IntelliJ 來開發以 Scala 撰寫的 Spark 應用程式，並將其提交至無伺服器 Apache Spark 集區。
 services: synapse-analytics
 author: hrasheed-msft
 ms.author: jejiang
@@ -9,16 +9,16 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 5a9fcf3e13c2f86a11e9626be486a585ec659044
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 75cc23df41741a95e87ad64d168aea4fa4f45733
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013763"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451041"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>教學課程：使用 Synapse 工作區搭配 IntelliJ 來建立 Apache Spark 應用程式
 
-本教學課程說明如何使用 Azure Toolkit for IntelliJ 外掛程式來開發以 [Scala](https://www.scala-lang.org/) 撰寫的 Apache Spark 應用程式，然後直接從 IntelliJ 整合式開發環境 (IDE) 將其提交至無伺服器 Apache Spark 集區 (預覽)。 您可以利用數個方式來使用此外掛程式：
+本教學課程說明如何使用 Azure Toolkit for IntelliJ 外掛程式來開發以 [Scala](https://www.scala-lang.org/) 撰寫的 Apache Spark 應用程式，然後直接從 IntelliJ 整合式開發環境 (IDE) 將其提交至無伺服器 Apache Spark 集區。 您可以利用數個方式來使用此外掛程式：
 
 - 在 Spark 集區上開發並提交 Scala Spark 應用程式。
 - 存取 Spark 集區資源。

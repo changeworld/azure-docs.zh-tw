@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: ba903793844e44b26931a70183860c983adaf18a
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 52f0bcbb332b5d5e47440accff9d9895dcef7056
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743398"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449358"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>教學課程：安裝搭配 GPU 的 Azure Stack Edge Pro
 
@@ -117,7 +117,7 @@ ms.locfileid: "91743398"
 ### <a name="install-and-remove-tooled-rails-threaded-hole-racks"></a>安裝及移除工具式滑軌 (已穿孔的機架)
 
 > [!TIP]
-> 這個選項需用到工具，因為其需要工具 (一字型螺絲起子__) 才能將滑軌安裝到機架中的螺紋圓形孔，以及從中移除滑軌。
+> 這個選項需用到工具，因為其需要工具 (一字型螺絲起子) 才能將滑軌安裝到機架中的螺紋圓形孔，以及從中移除滑軌。
 
 1. 使用一字型螺絲起子，從前端和後端安裝托架移除定位銷。
 2. 拉開並旋轉滑軌閂鎖子組件，從安裝托架將其移除。
@@ -228,7 +228,7 @@ ms.locfileid: "91743398"
 7. 將連接埠 2、連接埠 3、連接埠 4、連接埠 5 或連接埠 6 的其中一或多個連接埠連接到資料中心網路/網際網路。
 
     - 如果連接到連接埠 2，請使用 1-GbE RJ-45 網路線。
-    - 針對 10/25-GbE 網路介面，請使用 SFP + 銅纜線。
+    - 針對 10/25-GbE 網路介面，請使用 SFP + 銅纜線或光纖。 如果使用光纖，請使用光學 SFP 配接器。
 
 ## <a name="next-steps"></a>後續步驟
 
