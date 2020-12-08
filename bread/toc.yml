@@ -464,6 +464,9 @@
         - name: 資料箱線上傳輸
           tocHref: /azure/databox-online/
           topicHref: /azure/databox-online/
+        - name: 資料箱閘道
+          tocHref: /azure/databox-gateway/
+          topicHref: /azure/databox-gateway/
     - name: 資料目錄
       tocHref: /azure/data-catalog/
       topicHref: /azure/data-catalog/
@@ -908,3 +911,6 @@
         - name: Reservations
           tocHref: /azure/cost-management-billing/reservations/
           topicHref: /azure/cost-management-billing/reservations/
+    - name: Purview
+      tocHref: /azure/purview/
+      topicHref: /azure/purview/
