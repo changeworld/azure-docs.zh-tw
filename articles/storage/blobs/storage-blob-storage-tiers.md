@@ -3,17 +3,17 @@ title: Azure Blob 儲存體經常性存取層、非經常性存取層和封存�
 description: 閱讀 Azure Blob 儲存體的經常性存取、非經常性存取層和封存存取層。 查看支援階層處理的儲存體帳戶。 比較區塊 blob 儲存體選項。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/29/2020
+ms.date: 12/08/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 87106cce018a2b2663de2a9abbb43b31ab58c125
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 51998c159018b614ab519766c54fdddf7437e95b
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96007319"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96923983"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Azure Blob 儲存體經常性存取層、非經常性存取層和封存的存取層
 
@@ -111,6 +111,11 @@ Blob 儲存體生命週期管理提供豐富、以規則為基礎的原則，可
 ### <a name="cool-and-archive-early-deletion"></a>非經常性存取和封存提前刪除
 
 移入非經常性存取層的任何 blob (GPv2 帳戶僅) 受限於30天的很酷的早期刪除期間。 移入封存層的任何 blob 都受限於180天的封存提早刪除期間。 此費用按比例計算。 例如，如果將 blob 移至封存，然後在45天后刪除或移至經常性存取層，將會向您收取相當於 135 (180 減去 45) 天將 blob 儲存在封存中的提早刪除費用。
+
+在非經常性存取層和封存層之間移動時，有一些詳細資料：
+
+1. 如果根據儲存體帳戶的預設存取層將 blob 推斷為非經常性存取層，且 blob 移至封存，則不會提早刪除費用。
+1. 如果 blob 明確地移至非經常性存取層，然後移至封存，則會收取提早刪除費用。
 
 如果沒有存取層變更，您可以使用 [ **上次修改時間**] blob 屬性來計算早期刪除。 否則，您可以在存取層上次修改為非經常性或封存的時候，透過查看 blob 屬性： **存取層變更時間** 來使用。 如需 Blob 屬性的詳細資訊，請參閱[取得 Blob 屬性](/rest/api/storageservices/get-blob-properties)。
 

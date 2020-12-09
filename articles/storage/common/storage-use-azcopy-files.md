@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 087af322240322e44e70a9b5279eb7d251e735be
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 050e6b5007b9fbaedc412d8062430f1c2c1691fd
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96901859"
+ms.locfileid: "96923944"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>使用 AzCopy 和檔案儲存體傳輸資料 (機器翻譯) 
 
-AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob 或檔案。 本文包含可搭配 Azure 檔案儲存體使用的命令範例。
+AzCopy 是一種命令列公用程式，可讓您用來將檔案複製到儲存體帳戶或從中複製檔案。 本文包含可搭配 Azure 檔案儲存體使用的命令範例。
 
 開始之前，請先參閱開始 [使用 AzCopy](storage-use-azcopy-v10.md) 文章，以下載 AzCopy 並熟悉此工具。
 
@@ -53,8 +53,6 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 > |---|---|
 > |將存取控制清單 (Acl) 和檔案一起複製。|**--preserve-smb-許可權** = \[true \| false\]|
 > |複製 SMB 屬性資訊和檔案。|**--preserve-smb-資訊** = \[true \| false\]|
-> |以附加 Blob 或分頁 Blob 的形式上傳檔案。|**--blob 類型** = \[BlockBlob \| PageBlob \| AppendBlob\]|
-> |上傳至特定存取層 (例如封存層)。|**--區塊-blob 層** = \[無 \| 熱 \| 冷 \| 封存\]|
 > 
 > 如需完整清單，請參閱 [選項](storage-ref-azcopy-copy.md#options)。
 
@@ -217,8 +215,8 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 
 |    |     |
 |--------|-----------|
-| **語法** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name><SAS-token>' '<local-directory-path>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
-| **範例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
+| **語法** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name><SAS-token>' '<local-directory-path>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
+| **範例** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 
 您也可以使用選項來排除檔案 `--exclude-pattern` 。 若要深入瞭解，請參閱 [azcopy 複製](storage-ref-azcopy-copy.md) 參考檔。
 
@@ -236,11 +234,24 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 
 如需詳細參考，請參閱 [azcopy 複製](storage-ref-azcopy-copy.md) 參考檔。
 
+#### <a name="download-from-a-share-snapshot"></a>從共用快照集下載
+
+您可以藉由參考共用快照集的 **日期時間** 值，來下載特定版本的檔案或目錄。 若要深入瞭解共用快照集，請參閱 [Azure 檔案儲存體的共用快照集總覽](/azure/storage/files/storage-snapshots-files)。 
+
+|    |     |
+|--------|-----------|
+| **語法** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-name>/<file-path-or-directory-name><SAS-token>&sharesnapshot=<DateTime-of-snapshot>' '<local-file-or-directory-path>'` |
+| **範例** (下載檔案)  | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z' 'C:\myDirectory\myTextFile.txt'` |
+| **範例** (下載目錄)  | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z' 'C:\myDirectory'  --recursive`|
+
+
 ## <a name="copy-files-between-storage-accounts"></a>在儲存體帳戶之間複製檔案
 
 您可以使用 AzCopy 將檔案複製到其他儲存體帳戶。 複製作業是同步的，因此當命令傳回時，表示已複製所有檔案。
 
 AzCopy 會使用 [伺服器對伺服器](/rest/api/storageservices/put-block-from-url) [api](/rest/api/storageservices/put-page-from-url)，因此會直接在儲存體伺服器之間複製資料。 這些複製作業不會使用您電腦的網路頻寬。 您可以藉由設定環境變數的值，來增加這些作業的輸送量 `AZCOPY_CONCURRENCY_VALUE` 。 若要深入瞭解，請參閱 [優化輸送量](storage-use-azcopy-configure.md#optimize-throughput)。
+
+您也可以藉由參考共用快照集的 **日期時間** 值，複製檔案的特定版本。 若要深入瞭解共用快照集，請參閱 [Azure 檔案儲存體的共用快照集總覽](/azure/storage/files/storage-snapshots-files)。 
 
 本區段包含下列範例：
 
@@ -257,8 +268,6 @@ AzCopy 會使用 [伺服器對伺服器](/rest/api/storageservices/put-block-fro
 > |---|---|
 > |將存取控制清單 (Acl) 和檔案一起複製。|**--preserve-smb-許可權** = \[true \| false\]|
 > |複製 SMB 屬性資訊和檔案。|**--preserve-smb-資訊** = \[true \| false\]|
-> |將檔案複製為附加 Blob 或分頁 Blob。|**--blob 類型** = \[BlockBlob \| PageBlob \| AppendBlob\]|
-> |複製到特定的存取層 (例如封存層) 。|**--區塊-blob 層** = \[無 \| 熱 \| 冷 \| 封存\]|
 > 
 > 如需完整清單，請參閱 [選項](storage-ref-azcopy-copy.md#options)。
 
@@ -268,13 +277,16 @@ AzCopy 會使用 [伺服器對伺服器](/rest/api/storageservices/put-block-fro
 |--------|-----------|
 | **語法** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<file-path><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>/<file-path><SAS-token>'` |
 | **範例** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D'` |
+|  (共用快照集) **範例** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z' 'https://mydestinationaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D'` |
 
 ### <a name="copy-a-directory-to-another-storage-account"></a>將目錄複寫到另一個儲存體帳戶
 
 |    |     |
 |--------|-----------|
 | **語法** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-path><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
-| **範例** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+| **範例** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/myFileShare/myFileDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+|  (共用快照集) **範例** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/myFileShare/myFileDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+
 
 ### <a name="copy-a-file-share-to-another-storage-account"></a>將檔案共用複製到另一個儲存體帳戶
 
@@ -282,6 +294,8 @@ AzCopy 會使用 [伺服器對伺服器](/rest/api/storageservices/put-block-fro
 |--------|-----------|
 | **語法** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
 | **範例** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+|  (共用快照集) **範例** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+
 
 ### <a name="copy-all-file-shares-directories-and-files-to-another-storage-account"></a>將所有檔案共用、目錄和檔案複製到另一個儲存體帳戶
 
@@ -289,6 +303,8 @@ AzCopy 會使用 [伺服器對伺服器](/rest/api/storageservices/put-block-fro
 |--------|-----------|
 | **語法** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<SAS-token>' --recursive'` |
 | **範例** | `azcopy copy 'https://mysourceaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+|  (共用快照集) **範例** | `azcopy copy 'https://mysourceaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z' 'https://mydestinationaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+
 
 ## <a name="synchronize-files"></a>同步處理檔案
 

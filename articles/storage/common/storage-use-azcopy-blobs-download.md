@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f09e30d6bf68cfb11d9bf808838f6cc029ed942a
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 0a2490a104d18f77a0ec326933f463eb4ebb4339
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907504"
+ms.locfileid: "96923965"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>使用 AzCopy v10 從 Azure Blob 儲存體下載 blob
 
@@ -139,13 +139,18 @@ ms.locfileid: "96907504"
 
 然後，將 [azcopy copy](storage-ref-azcopy-copy.md) 命令與選項搭配使用 `--list-of-versions` 。 指定包含版本清單之文字檔的位置 (例如： `D:\\list-of-versions.txt`) 。  
 
+#### <a name="download-a-blob-snapshot"></a>下載 Blob 快照集
+
+您可以藉由參考 blob 快照集的 **日期時間** 值來下載 [blob 快照](/azure/storage/blobs/snapshots-overview.md)集。 
+
 |    |     |
 |--------|-----------|
-| **語法** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-directory-path>' --list-of-versions '<list-of-versions-file>'`|
-| **範例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt' --list-of-versions 'D:\\list-of-versions.txt'` |
-| 階層命名空間 (**範例**)  | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt' --list-of-versions 'D:\\list-of-versions.txt'` |
+| **語法** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>?sharesnapshot=<DateTime-of-snapshot>' '<local-file-path>'` |
+| **範例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sharesnapshot=2020-09-23T08:21:07.0000000Z' 'C:\myDirectory\myTextFile.txt'` |
+| 階層命名空間 (**範例**)  | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt?sharesnapshot=2020-09-23T08:21:07.0000000Z' 'C:\myDirectory\myTextFile.txt'` |
 
-每個已下載檔案的名稱會以版本識別碼開頭，後面接著 blob 的名稱。 
+> [!NOTE]
+> 如果您使用 SAS 權杖來授與 blob 資料的存取權，請在 SAS 權杖之後附加快照 **日期時間** 。 例如：`'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z'`。
 
 ## <a name="download-with-optional-flags"></a>使用選擇性旗標下載
 
