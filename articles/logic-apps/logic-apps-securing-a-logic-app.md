@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 11/05/2020
-ms.openlocfilehash: 331c55a9f7a489aa58f9d3add7303dc18917215d
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.date: 12/08/2020
+ms.openlocfilehash: cdaa054559be9db52eeef6f3aaa0f86ccf84206f
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331935"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922948"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>在 Azure Logic Apps 中保護存取和資料
 
@@ -137,7 +137,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 * 授權原則至少必須包含 **簽發者** 宣告，此宣告的值開頭為 `https://sts.windows.net/` 或 `https://login.microsoftonline.com/` (OAuth V2) 作為 Azure AD 簽發者識別碼。
 
-  例如，假設您的邏輯應用程式有一個授權原則，需要兩個宣告類型： **物件** 和 **簽發者** 。 針對已解碼存取權杖的這個範例承載 [區段](../active-directory/develop/access-tokens.md#payload-claims) 包含宣告類型，其中 `aud` 是 **物件** 的值，而 `iss` 是 **簽發者** 值：
+  例如，假設您的邏輯應用程式有一個授權原則，需要兩個宣告類型： **物件** 和 **簽發者**。 針對已解碼存取權杖的這個範例承載 [區段](../active-directory/develop/access-tokens.md#payload-claims) 包含宣告類型，其中 `aud` 是 **物件** 的值，而 `iss` 是 **簽發者** 值：
 
   ```json
   {
@@ -199,7 +199,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
    | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
    | **原則名稱** | 是 | 您想要用於授權原則的名稱 |
-   | **宣告** | 是 | 邏輯應用程式所接受來自輸入呼叫的宣告類型和值。 宣告值的限制為80個字元。 以下是可用的宣告類型： <p><p>- **簽發者** <br>- **對象** <br>- **主旨** <br>- **JWT 識別碼** (JSON Web 權杖識別碼) <p><p>**宣告** 清單至少必須包含 **簽發者** 宣告，此宣告的值開頭為 `https://sts.windows.net/` 或 `https://login.microsoftonline.com/` Azure AD 簽發者識別碼。 如需這些宣告類型的詳細資訊，請參閱 [Azure AD 安全性權杖中的宣告](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)。 您也可以指定自己的宣告類型和值。 |
+   | **宣告** | 是 | 邏輯應用程式所接受來自輸入呼叫的宣告類型和值。 宣告值限制為 [最大字元數](logic-apps-limits-and-config.md#authentication-limits)。 以下是可用的宣告類型： <p><p>- **簽發者** <br>- **對象** <br>- **主旨** <br>- **JWT 識別碼** (JSON Web 權杖識別碼) <p><p>**宣告** 清單至少必須包含 **簽發者** 宣告，此宣告的值開頭為 `https://sts.windows.net/` 或 `https://login.microsoftonline.com/` Azure AD 簽發者識別碼。 如需這些宣告類型的詳細資訊，請參閱 [Azure AD 安全性權杖中的宣告](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)。 您也可以指定自己的宣告類型和值。 |
    |||
 
 1. 若要新增另一個宣告，請從下列選項中選取：
@@ -319,20 +319,20 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 1. 在邏輯應用程式功能表的 [設定] 底下，選取 [工作流程設定]。
 
-1. 在 [ **存取控制** 設定] 區段的 [ **允許的輸入 IP 位址** ] 下，選擇您案例的路徑：
+1. 在 [ **存取控制** 設定] 區段的 [ **允許的輸入 IP 位址**] 下，選擇您案例的路徑：
 
-   * 若要使用內建的 [Azure Logic Apps 動作](../logic-apps/logic-apps-http-endpoint.md)，讓邏輯應用程式只能以嵌套的邏輯應用程式的方式來呼叫，請 **只選取其他 Logic Apps** ，此作業 *只* 會在您使用 **Azure Logic Apps** 動作來呼叫嵌套邏輯應用程式時使用。
+   * 若要使用內建的 [Azure Logic Apps 動作](../logic-apps/logic-apps-http-endpoint.md)，讓邏輯應用程式只能以嵌套的邏輯應用程式的方式來呼叫，請 **只選取其他 Logic Apps**，此作業 *只* 會在您使用 **Azure Logic Apps** 動作來呼叫嵌套邏輯應用程式時使用。
    
      此選項會將空的陣列寫入您的邏輯應用程式資源，而且只需要使用內建 **Azure Logic Apps** 動作的父邏輯應用程式呼叫，就可以觸發嵌套邏輯應用程式。
 
-   * 若要使用 HTTP 動作，讓邏輯應用程式只能以嵌套的應用程式來呼叫，請選取 **特定的 IP 範圍** ， *而不***只是其他 Logic Apps** 。 出現 [ **觸發程式的 IP 範圍** ] 方塊時，輸入父邏輯應用程式的 [輸出 IP 位址](../logic-apps/logic-apps-limits-and-config.md#outbound)。 有效的 IP 範圍會使用下列格式： x.x.x.x. x */x* 或 *x.x.x.x*. x. x. x. x. x. x. x. x. x. x. x. x. x。
+   * 若要使用 HTTP 動作，讓邏輯應用程式只能以嵌套的應用程式來呼叫，請選取 **特定的 IP 範圍**，*而不***只是其他 Logic Apps**。 出現 [ **觸發程式的 IP 範圍** ] 方塊時，輸入父邏輯應用程式的 [輸出 IP 位址](../logic-apps/logic-apps-limits-and-config.md#outbound)。 有效的 IP 範圍會使用下列格式： x.x.x.x. x */x* 或 *x.x.x.x*. x. x. x. x. x. x. x. x. x. x. x. x. x。
    
      > [!NOTE]
      > 如果您使用 **唯一的其他 Logic Apps** 選項和 HTTP 動作來呼叫您的嵌套邏輯應用程式，則會封鎖呼叫，而您會收到「401未經授權」的錯誤。
         
    * 如果您想要限制來自其他 Ip 的輸入呼叫，請在 [ **觸發程式的 IP 範圍** ] 方塊出現時，指定觸發程式可接受的 ip 位址範圍。 有效的 IP 範圍會使用下列格式： x.x.x.x. x */x* 或 *x.x.x.x*. x. x. x. x. x. x. x. x. x. x. x. x. x。
 
-1. （選擇性）在 **[限制呼叫] 下，從執行歷程記錄取得輸入和輸出訊息至提供的 IP 位址** ，您可以在執行歷程記錄中指定可存取輸入和輸出訊息之輸入呼叫的 IP 位址範圍。
+1. （選擇性）在 **[限制呼叫] 下，從執行歷程記錄取得輸入和輸出訊息至提供的 IP 位址**，您可以在執行歷程記錄中指定可存取輸入和輸出訊息之輸入呼叫的 IP 位址範圍。
 
 <a name="restrict-inbound-ip-template"></a>
 
@@ -340,7 +340,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 如果您 [使用 Resource Manager 範本將邏輯應用程式的部署自動化](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)，您可以使用區段，在邏輯應用程式的資源定義中指定允許的輸入 IP 位址範圍 `accessControl` 。 在本節中，您可以將區段包含在屬性中， `triggers` `actions` `contents` `allowedCallerIpAddresses` `addressRange` 並將屬性值設定為 *x.x.x.x/x* *x.x.x.x-x.x.x.x* . x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x
 
-* 如果您的嵌套邏輯應用程式使用 **唯一的 Logic Apps** 選項，只允許來自使用 Azure Logic Apps 動作之其他邏輯應用程式的輸入呼叫，請將屬性設定 `addressRange` 為空陣列 ( **[]** ) 。
+* 如果您的嵌套邏輯應用程式使用 **唯一的 Logic Apps** 選項，只允許來自使用 Azure Logic Apps 動作之其他邏輯應用程式的輸入呼叫，請將屬性設定 `addressRange` 為空陣列 (**[]**) 。
 
 * 如果您的嵌套邏輯應用程式針對其他輸入呼叫（例如使用 HTTP 動作的其他邏輯應用程式）使用 **特定的 ip 範圍** 選項，請將 `addressRange` 屬性設定為允許的 IP 範圍。
 
@@ -484,7 +484,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 1. 在 [內容的 IP 範圍] 底下，指定可存取輸入和輸出內容的 IP 位址範圍。
 
-   有效的 IP 範圍使用這些格式： *x.x.x.x/x* 或 *x.x.x.x-x.x.x.x*
+   有效的 IP 範圍使用這些格式：*x.x.x.x/x* 或 *x.x.x.x-x.x.x.x*
 
 #### <a name="restrict-ip-ranges-in-azure-resource-manager-template"></a>在 Azure Resource Manager 範本中限制 IP 範圍
 
@@ -884,9 +884,9 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
     1. 在邏輯應用程式設計工具中，于 `api management` [搜尋] 方塊中輸入。 根據您要新增觸發程式或動作來選擇步驟：<p>
 
-       * 如果您要新增觸發程式，這一律是工作流程中的第一個步驟，請選取 **[選擇 AZURE API 管理觸發程式** ]。
+       * 如果您要新增觸發程式，這一律是工作流程中的第一個步驟，請選取 **[選擇 AZURE API 管理觸發程式**]。
 
-       * 如果您要新增動作，請選取 **[選擇 AZURE API 管理動作** ]。
+       * 如果您要新增動作，請選取 **[選擇 AZURE API 管理動作**]。
 
        此範例會新增觸發程式：
 
@@ -904,7 +904,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 ### <a name="add-authentication-to-outbound-calls"></a>將驗證新增至輸出呼叫
 
-HTTP 和 HTTPS 端點支援各種類型的驗證。 在您用來將輸出呼叫或要求傳送至這些端點的某些觸發程式和動作上，您可以指定驗證類型。 在邏輯應用程式設計工具中，支援選擇驗證類型的觸發程式和動作都具有 **驗證** 屬性。 不過，預設不一定會顯示此屬性。 在這些情況下，請在 [觸發程式] 或 [動作] 上，開啟 [ **加入新參數** ] 清單，然後選取 [ **驗證** ]。
+HTTP 和 HTTPS 端點支援各種類型的驗證。 在您用來將輸出呼叫或要求傳送至這些端點的某些觸發程式和動作上，您可以指定驗證類型。 在邏輯應用程式設計工具中，支援選擇驗證類型的觸發程式和動作都具有 **驗證** 屬性。 不過，預設不一定會顯示此屬性。 在這些情況下，請在 [觸發程式] 或 [動作] 上，開啟 [ **加入新參數** ] 清單，然後選取 [ **驗證**]。
 
 > [!IMPORTANT]
 > 若要保護邏輯應用程式處理的機密資訊，請視需要使用安全的參數並編碼資料。
@@ -960,7 +960,7 @@ HTTP 和 HTTPS 端點支援各種類型的驗證。 在您用來將輸出呼叫�
 
 | 屬性 (設計工具) | 屬性 (JSON) | 必要 | 值 | 描述 |
 |---------------------|-----------------|----------|-------|-------------|
-| **驗證** | `type` | 是 | **用戶端憑證** <br>或 <br>`ClientCertificate` | 要使用的驗證類型。 您可以使用 [AZURE API 管理](../api-management/api-management-howto-mutual-certificates.md)來管理憑證。 <p></p>**注意** ：自訂連接器不支援傳入和撥出電話的憑證型驗證。 |
+| **驗證** | `type` | 是 | **用戶端憑證** <br>或 <br>`ClientCertificate` | 要使用的驗證類型。 您可以使用 [AZURE API 管理](../api-management/api-management-howto-mutual-certificates.md)來管理憑證。 <p></p>**注意**：自訂連接器不支援傳入和撥出電話的憑證型驗證。 |
 | **Pfx** | `pfx` | 是 | <*encoded-pfx-file-content*> | Base64 編碼的個人資訊交換 (PFX) 檔案內容 <p><p>若要將 PFX 檔案轉換成 base64 編碼格式，您可以依照下列步驟使用 PowerShell： <p>1.將憑證內容儲存至變數： <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2.使用 `ToBase64String()` 函式來轉換憑證內容，並將該內容儲存至文字檔： <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **密碼** | `password`| 否 | <*password-for-pfx-file*> | 用於存取 PFX 檔案的密碼 |
 |||||
@@ -1089,8 +1089,8 @@ Authorization: OAuth realm="Photos",
    | 屬性 (設計工具) | 屬性 (JSON) | 必要 | 值 | 描述 |
    |---------------------|-----------------|----------|-------|-------------|
    | **驗證** | `type` | 是 | **受控身分識別** <br>或 <br>`ManagedServiceIdentity` | 要使用的驗證類型 |
-   | **受控身分識別** | `identity` | 是 | * **系統指派的受控識別** <br>或 <br>`SystemAssigned` <p><p>* < *user-assigned-identity-name*> | 要使用的受控識別 |
-   | **目標對象** | `audience` | 是 | <*target-resource-ID*> | 資源識別碼，代表您想要存取的目標資源。 <p>例如，`https://storage.azure.com/` 為所有儲存體帳戶提供有效的驗證[存取權杖](../active-directory/develop/access-tokens.md)。 不過，您也可以為特定儲存體帳戶指定根服務 URL，例如 `https://fabrikamstorageaccount.blob.core.windows.net`。 <p>**注意** ：某些觸發程序或動作中，可能會隱藏 [對象] 屬性。 若要顯示此屬性，請在觸發程序或動作中開啟 [新增參數] 清單，然後選取 [對象]。 <p><p>**重要** ：請確定目標資源識別碼 *完全符合* Azure AD 所預期的值，包括任何必要的尾端斜線。 因此，所有 Azure Blob 儲存體帳戶的 `https://storage.azure.com/` 資源識別碼需要有尾端斜線。 不過，特定儲存體帳戶的資源識別碼不需要尾端斜線。 若要尋找這些資源識別碼，請參閱[支援 Azure AD 的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。 |
+   | **受控身分識別** | `identity` | 是 | * **系統指派的受控識別** <br>或 <br>`SystemAssigned` <p><p>* <*user-assigned-identity-name*> | 要使用的受控識別 |
+   | **目標對象** | `audience` | 是 | <*target-resource-ID*> | 資源識別碼，代表您想要存取的目標資源。 <p>例如，`https://storage.azure.com/` 為所有儲存體帳戶提供有效的驗證[存取權杖](../active-directory/develop/access-tokens.md)。 不過，您也可以為特定儲存體帳戶指定根服務 URL，例如 `https://fabrikamstorageaccount.blob.core.windows.net`。 <p>**注意**：某些觸發程序或動作中，可能會隱藏 [對象] 屬性。 若要顯示此屬性，請在觸發程序或動作中開啟 [新增參數] 清單，然後選取 [對象]。 <p><p>**重要**：請確定目標資源識別碼 *完全符合* Azure AD 所預期的值，包括任何必要的尾端斜線。 因此，所有 Azure Blob 儲存體帳戶的 `https://storage.azure.com/` 資源識別碼需要有尾端斜線。 不過，特定儲存體帳戶的資源識別碼不需要尾端斜線。 若要尋找這些資源識別碼，請參閱[支援 Azure AD 的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。 |
    |||||
 
    當您使用[受保護的參數](#secure-action-parameters)來處理和保護敏感性資訊時，例如，在[用於自動化部署的 Azure Resource Manager 範本](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)中，您可以使用運算式在執行階段存取這些參數值。 這個 HTTP 動作定義範例將驗證 `type` 指定為 `ManagedServiceIdentity`，並使用 [parameters() 函式](../logic-apps/workflow-definition-language-functions-reference.md#parameters) 來取得參數值：

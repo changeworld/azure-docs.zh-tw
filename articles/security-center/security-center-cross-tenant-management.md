@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 68338341d47b8fa15d0bd88ea23e951210105fc4
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: d76ecc55c2e156199b2db789721946fd1f36de27
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340779"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922906"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>安全性中心的跨租使用者管理
 
@@ -30,10 +30,8 @@ ms.locfileid: "92340779"
 
 ## <a name="set-up-cross-tenant-management"></a>設定跨租用戶管理
 
-使用 [Azure 委派的資源管理](../lighthouse/concepts/azure-delegated-resource-management.md)，將受控租使用者資源的存取權委派給您自己的租使用者，以設定跨租使用者管理。
+Azure 委派的資源管理是 Azure Lighthouse 的重要元件之一。 使用 Azure Lighthouse 檔中的這些指示，將受控租使用者資源的存取權委派給您自己的租使用者，以設定跨租使用者管理： [Azure 委派的資源管理](../lighthouse/concepts/azure-delegated-resource-management.md)。
 
-> [!NOTE]
-> Azure 委派的資源管理是 Azure Lighthouse 的重要元件之一。
 
 ## <a name="how-does-cross-tenant-management-work-in-security-center"></a>跨租使用者管理如何在安全性中心內運作
 
@@ -46,7 +44,7 @@ ms.locfileid: "92340779"
 視圖和動作基本上是相同的。 以下是一些範例：
 
 - **管理安全性原則**：從一個觀點來看，使用 [原則](tutorial-security-policy.md)來管理許多資源的安全性狀態、採取具有安全性建議的動作，以及收集和管理安全性相關資料。
-- **改善安全分數和合規性**狀態：跨租使用者可見度可讓您查看所有租使用者的整體安全性狀態，以及在何處及如何針對每個租使用者獲得最佳的 [安全分數](secure-score-security-controls.md) 和 [合規性](security-center-compliance-dashboard.md) 狀態。
+- **改善安全分數和合規性** 狀態：跨租使用者可見度可讓您查看所有租使用者的整體安全性狀態，以及在何處及如何針對每個租使用者獲得最佳的 [安全分數](secure-score-security-controls.md) 和 [合規性](security-center-compliance-dashboard.md) 狀態。
 - **補救建議**：一次從不同的租使用者監視及修復許多資源的 [建議](security-center-recommendations.md) 。 然後，您可以立即處理在所有租使用者之間呈現最高風險的弱點。
 - **管理警示**：偵測不同租使用者中的 [警示](security-center-alerts-overview.md) 。 使用可採取動作的 [補救步驟](security-center-managing-and-responding-alerts.md)，對不符合規範的資源採取動作。
 

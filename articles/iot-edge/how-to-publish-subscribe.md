@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: acde6f401404596212b713f248bb6d11c25b4671
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 005830575ba7f45d30fed71a73e7a419e4d98220
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461425"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922586"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>發佈和訂閱 Azure IoT Edge
 
@@ -177,7 +177,6 @@ IoT 中樞的授權與使用者自訂主題的處理方式稍有不同。 以下
 
 - Azure IoT 裝置或模組需要明確的授權規則，才能連線至 IoT Edge hub MQTT 訊息代理程式。 以下提供預設的 connect 授權原則。
 - 依預設，Azure IoT 裝置或模組可以存取自己的 IoT 中樞主題，而不需要任何明確的授權規則。 不過，在該情況下，授權源自于父/子關聯性，而且必須設定這些關聯性。 IoT Edge 模組會自動設定為其 IoT Edge 裝置的子系，但必須將裝置明確設定為其 IoT Edge 閘道的子系。
-- Azure IoT 裝置或模組可以存取其他裝置或模組的相關主題，這些主題包括定義適當的明確授權規則。
 
 以下是預設的授權原則，可用來啟用所有 Azure IoT 裝置或模組以 **連接** 到 broker：
 
@@ -275,7 +274,7 @@ IoT 中樞的授權與使用者自訂主題的處理方式稍有不同。 以下
                },
                {
                   "identities": [
-                     "sub_client"
+                     "<iot_hub_name>.azure-devices.net/sub_client"
                   ],
                   "allow":[
                      {
@@ -284,13 +283,13 @@ IoT 中樞的授權與使用者自訂主題的處理方式稍有不同。 以下
                         ],
                         "resources":[
                            "test_topic"
-                        ],
+                        ]
                      }
                   ],
                },
                {
                   "identities": [
-                     "pub_client"
+                     "<iot_hub_name>.azure-devices.net/pub_client"
                   ],
                   "allow":[
                      {
@@ -299,9 +298,9 @@ IoT 中樞的授權與使用者自訂主題的處理方式稍有不同。 以下
                         ],
                         "resources":[
                            "test_topic"
-                        ],
+                        ]
                      }
-                  ],
+                  ]
                }
             ]
          }
@@ -333,7 +332,7 @@ mosquitto_sub \
 
 **Sub_client** 的 MQTT 用戶端現在已啟動，且正在等候傳入訊息 `test_topic` 。
 
-#### <a name="publish"></a>發行
+#### <a name="publish"></a>發佈
 
 在您的 IoT Edge 裝置上，從另一個終端機執行下列命令，以將 **pub_client** MQTT 用戶端連線至 MQTT 訊息代理程式，並將訊息發佈至與上述相同的訊息 `test_topic` ：
 
