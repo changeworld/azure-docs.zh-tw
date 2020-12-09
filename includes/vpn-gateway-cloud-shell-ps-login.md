@@ -17,7 +17,7 @@ ms.locfileid: "93061591"
 ---
 如果您在本機執行 PowerShell，請以較高的許可權開啟 PowerShell 主控台，並連接到您的 Azure 帳戶。 *Connect-AzAccount* Cmdlet 會提示您輸入認證。 驗證後即會下載您的帳戶設定供 Azure PowerShell 使用。
 
-如果您使用 Azure Cloud Shell 而不是在本機執行 PowerShell，您會發現您不需要執行 *disconnect-azaccount* 。 當您選取 [ **試試看** ] 之後，Azure Cloud Shell 會自動連接到您的 Azure 帳戶。
+如果您使用 Azure Cloud Shell 而不是在本機執行 PowerShell，您會發現您不需要執行 *disconnect-azaccount*。 當您選取 [ **試試看**] 之後，Azure Cloud Shell 會自動連接到您的 Azure 帳戶。
 
 1. 如果您正在本機執行 PowerShell，請登入。
 
