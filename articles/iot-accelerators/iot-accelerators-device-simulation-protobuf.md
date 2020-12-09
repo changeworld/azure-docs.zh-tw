@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: 12aa18c966745b450b3c9aa55e87e576b0c3f99b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 77a795b8f704084b612a2dcbd364b8d5be0a3333
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018523"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852144"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>使用 Protocol Buffers 將遙測資料序列化
 
@@ -32,7 +32,7 @@ Protocol Buffers (Protobuf) 是結構化資料的二進位序列化格式。 Pr
 1. 產生 Protobuf 類別
 1. 本機測試
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要遵循本操作指南中的步驟，您需要：
 
@@ -277,4 +277,4 @@ az iot hub monitor-events --hub-name device-simulation-test
 
 ## <a name="next-steps"></a>後續步驟
 
-現在您已了解如何自訂裝置模擬，以使用 Protobuf 傳送遙測資料，現在的下一個步驟就是了解如何[將自訂映像部署到雲端](iot-accelerators-device-simulation-deploy-image.md)。
+現在您已瞭解如何自訂裝置模擬以使用 Protobuf 來傳送遙測，下一步是造訪 GitHub 存放庫，以深入瞭解 [裝置模擬](https://github.com/Azure/device-simulation-dotnet)。

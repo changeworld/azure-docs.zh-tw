@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: cb74a799efb6099b55c9da9650d9cca7358ecbed
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 55651b3201676ee5cddb5412e950791afaa4e87a
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552068"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852127"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>如何連接 Azure Data Factory 和 Azure 範疇
 
@@ -34,7 +34,7 @@ ms.locfileid: "96552068"
     - 已 **中斷** 連線：資料處理站具有目錄的存取權，但已連線到另一個目錄。 如此一來，資料歷程將不會自動回報給目錄。
     - **CannotAccess**：目前的使用者沒有 data factory 的存取權，因此連接狀態為 unknown。
  >[!Note]
- >若要查看 Data Factory 連接，您必須獲指派任何一個 Azure 內建角色：
+ >若要查看 Data Factory 連接，您必須將任何一個範疇角色指派給您：
  >- 參與者
  >- 擁有者
  >- 讀者
@@ -72,9 +72,9 @@ ms.locfileid: "96552068"
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="顯示如何選取 data factory 以移除連接的螢幕擷取畫面。" lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
 
 >[!Note]
->若要新增或移除 Data Factory 連接，您必須將任何一個 Azure 內建角色指派給您：
+>若要新增或移除 Data Factory 連接，您必須被指派任何一個範疇角色：
 >- 擁有者
->- 使用者存取系統管理員
+>- 除了使用者存取系統管理員之外，還要求使用者必須是 data factory 的「擁有者」、「參與者」或「Data Factory 參與者」。 
 
 ## <a name="configure-a-self-hosted-ir-to-collect-lineage-from-on-prem-sql"></a>設定自我裝載 IR 來收集內部內部部署 SQL 的歷程
 
@@ -100,9 +100,9 @@ Data Factory 與範疇之間的整合僅支援 Data Factory 支援的資料系�
 | ADLS Gen1 (沒有 JSON 支援)  | 是 | 是 (非二進位複製)  |
 | ADLS Gen2 (沒有 JSON 支援)  | 是 | 是 |
 | Azure Blob (沒有 JSON 支援)  | 是 | 是 |
-| Azure Cosmos DB (SQL API)  | 是 | 是 |
+| Azure Cosmos DB (SQL API) | 是 | 是 |
 | Azure Cosmos DB (Mongo API)  | 是 | 是 |
-| Azue 認知搜尋 | 是 | 是 |
+| Azure 認知搜尋 | 是 | 是 |
 | Azure 資料總管 | 是 | 是 |
 | 適用于 Maria 資料庫的 Azure 資料庫 \* | 是 | 是 |
 | 適用于 MYSQL 的 Azure 資料庫 \* | 是 | 是 |

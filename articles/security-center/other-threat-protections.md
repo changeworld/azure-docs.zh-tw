@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: 7d59c0e751054522f4c54fe059f19aa0a941464e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 5b9e9f5cc5184a083f45999eaeb031eb83b17c58
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489991"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754329"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Azure 資訊安全中心提供的其他威脅防護
 除了內建的 [Azure Defender 保護](azure-defender.md)以外，Azure 資訊安全中心也提供下列威脅防護功能。
@@ -41,7 +41,7 @@ ms.locfileid: "96489991"
 
 資訊安全中心會利用 Azure Resource Manager 事件來提供額外的保護層，我們將其視為 Azure 的控制平面。 藉由分析 Azure Resource Manager 記錄，資訊安全中心會在 Azure 訂用帳戶環境中偵測不尋常或可能有害的作業。
 
-如需 Azure Resource Manager (預覽) 警示的清單，請參閱[警示的參考資料表](alerts-reference.md#alerts-azureresourceman)。
+如需 Resource Manager 的 Azure Defender 警示清單，請參閱[警示的參考資料表](alerts-reference.md#alerts-resourcemanager)。
 
 
 >[!NOTE]

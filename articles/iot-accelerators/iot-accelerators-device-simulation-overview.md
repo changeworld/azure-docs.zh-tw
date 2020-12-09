@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
-ms.openlocfilehash: f58eb05ed582cf18157a76f4d637d72a228f4e96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7be0278fd8870395b8495168eb9723780eba4b26
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "65464881"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852365"
 ---
 # <a name="device-simulation-solution-accelerator-overview"></a>裝置模擬解決方案加速器概觀
 
@@ -36,7 +36,7 @@ ms.locfileid: "65464881"
 
 ## <a name="sample-simulations"></a>範例模擬
 
-當您部署「裝置模擬」時，會取得一些範例模擬和範例裝置。 您可以利用這些範例來了解如何使用「裝置模擬」。 若要開始進行，請執行一個[模擬 10 輛卡車的範例模擬](quickstart-device-simulation-deploy.md)。 您也可以[使用所提供眾多範例裝置的其中一個來建立自己的模擬](iot-accelerators-device-simulation-create-simulation.md)。
+當您部署「裝置模擬」時，會取得一些範例模擬和範例裝置。 您可以利用這些範例來了解如何使用「裝置模擬」。 若要開始使用，請執行 [模擬範例](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)。 您也可以[使用所提供眾多範例裝置的其中一個來建立自己的模擬](iot-accelerators-device-simulation-create-simulation.md)。
 
 ![模擬組態](media/iot-accelerators-device-simulation-overview/samplesimulation1.png)
 
@@ -60,7 +60,7 @@ ms.locfileid: "65464881"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已了解「裝置模擬」解決方案加速器及其功能。 若要開始使用解決方案加速器，請繼續進行快速入門：
+在本文中，您已了解「裝置模擬」解決方案加速器及其功能。 若要部署解決方案加速器，請造訪 GitHub 存放庫：
 
 > [!div class="nextstepaction"]
-> [在 Azure 中部署和執行 IoT 裝置模擬](quickstart-device-simulation-deploy.md)
+> [在 Azure 中部署和執行 IoT 裝置模擬](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)

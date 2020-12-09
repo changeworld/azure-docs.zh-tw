@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 3295815be035544d27da52926e5271c2c5551f28
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 58891bdb4601744129c97454f43202d3ba07b709
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076040"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852552"
 ---
 # <a name="create-an-advanced-device-model"></a>建立進階裝置型號
 
@@ -30,15 +30,11 @@ ms.locfileid: "92076040"
 
 若要依照本操作指南中的步驟進行，您在 Azure 訂用帳戶中必須要有一個已部署的裝置模擬執行個體。
 
-如果您尚未部署裝置模擬，您應先完成[在 Azure 中部署和執行 IoT 裝置模擬](quickstart-device-simulation-deploy.md)快速入門。
+如果您尚未部署裝置模擬，請參閱 GitHub 上的 [裝置模擬部署](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) 。
 
 ### <a name="open-device-simulation"></a>開啟裝置模擬
 
-若要在您的瀏覽器中執行裝置模擬，請先瀏覽至 [Microsoft Azure IoT 解決方案加速器](https://www.azureiotsolutions.com)。
-
-系統可能會要求您使用 Azure 訂用帳戶認證來登入。
-
-接著，請針對[在 Azure 中部署和執行 IoT 裝置模擬](quickstart-device-simulation-deploy.md)快速入門中所部署的裝置模擬，按一下其圖格上的 [啟動]。
+如果您尚未部署裝置模擬，請參閱 GitHub 上的 [裝置模擬部署](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) 。
 
 ## <a name="device-models"></a>裝置型號
 

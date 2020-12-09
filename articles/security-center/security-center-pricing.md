@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/24/2020
+ms.date: 12/06/2020
 ms.author: memildin
-ms.openlocfilehash: 6c0e92c566dd69cdea14c9c7d346a5ec65f892bf
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d92047a5b24f04ee7e0d08454867ec9e1a52a8b1
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487944"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754365"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure 資訊安全中心的定價
 Azure 資訊安全中心提供統一的安全性管理和進階的威脅防護，保護 Azure、內部部署和其他雲端中執行的工作負載。 其提供了針對混合式雲端工作負載的可見性和控制能力、可降低威脅曝露度的主動防禦措施、還有智慧型偵測可幫助您跟上網路風險快速發展的腳步。
@@ -37,7 +37,9 @@ Azure 資訊安全中心提供統一的安全性管理和進階的威脅防護�
     - **混合式安全性** – 取得您所有內部部署和雲端工作負載中安全性的統一檢視。 套用安全性原則，並持續評估您混合式雲端工作負載的安全性，以確保符合安全性標準。 從多種來源 (包括防火牆和其他合作夥伴解決方案) 收集、搜尋及分析安全性資料。
     - **威脅防護警示** - 進階的行為分析和 Microsoft Intelligent Security Graph 可勝過不斷演進的網路攻擊。 內建行為分析和機器學習服務可識別攻擊和零時差惡意探索。 監視網路、機器和雲端服務中是否有傳入攻擊和侵入後活動。 使用互動式工具和內容相關威脅情報來簡化調查。
     - **存取與應用程式控制** (AAC) - 套用依特定工作負載調整並由機器學習服務提供支援的建議，以建立允許與拒絕清單來封鎖惡意程式碼和其他不想要的應用程式。 使用 Just-In-Time 來控制針對 Azure VM 上管理連接埠的存取，以減少您網路的受攻擊面。 AAC 會大幅減少暴力密碼破解和其他網路攻擊的風險。
-    - **容器安全性功能** - 受益於您容器化環境的弱點管理和即時威脅防護。 啟用 **適用於容器登錄的 Azure Defender** 時，最多可能需要 12 小時才能啟用所有功能。 我們會以推送至已連線登錄的唯一容器映像數目來計費。 在映像經過一次掃描之後，您就不需要再向此支付費用，除非進行修改並再推送一次。 
+    - **容器安全性功能** - 受益於您容器化環境的弱點管理和即時威脅防護。 啟用 **適用於容器登錄的 Azure Defender** 時，最多可能需要 12 小時才能啟用所有功能。 我們會以推送至已連線登錄的唯一容器映像數目來計費。 在映像經過一次掃描之後，您就不需要再向此支付費用，除非進行修改並再推送一次。
+    - **為連線到 Azure 環境的資源提供完整的威脅防護** - Azure Defender 包含Azure 原生完整威脅防護，適用於所有資源通用的 Azure 服務，包括：Azure Resource Manager、Azure DNS、Azure 網路層，以及 Azure Key Vault。 Azure Defender 對 Azure 管理層和 Azure DNS 層具有獨特的可見度，因此可保護已連線到這些層的雲端資源。
+
 
 ## <a name="try-azure-defender-free-for-30-days"></a>免費試用 Azure Defender 30 天
 Azure Defender 在前 30 天免費。 在 30 天結束時，如果您選擇繼續使用服務，我們會自動開始針對使用量計費。

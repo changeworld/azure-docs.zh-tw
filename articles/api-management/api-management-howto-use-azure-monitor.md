@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 031b3bfd30e0272589c5c7ee2c546b9459767b33
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5e5c59d611cb7f4b5333b9919488e6fc083611cd
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183187"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779238"
 ---
 # <a name="tutorial-monitor-published-apis"></a>教學課程：監視發佈的 API
 
@@ -27,10 +27,12 @@ ms.locfileid: "96183187"
 > * 檢視活動記錄
 > * 啟用和檢視資源記錄
 
+您也可以使用 API 管理的內建[分析](howto-use-analytics.md)來監視 API 的使用量和效能。
+
 ## <a name="prerequisites"></a>必要條件
 
 + 了解 [Azure API 管理術語](api-management-terminology.md)。
-+ 完成下列快速入門：[建立 Azure API 管理執行個體](get-started-create-service-instance.md)。
++ 完成下列快速入門：[建立 Azure APIM 執行個體](get-started-create-service-instance.md)。
 + 此外，請完成下列教學課程：[匯入和發佈您的第一個 API](import-and-publish.md)。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]

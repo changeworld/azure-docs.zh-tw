@@ -2,19 +2,19 @@
 title: 連結範本以進行部署
 description: 描述如何在「Azure 資源管理員」範本中使用連結的範本，以建立模組化範本方案。 示範如何傳遞參數值、指定參數檔案，以及動態建立 URL。
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.openlocfilehash: 603445fdd96cc72a2d64bae21a47cfeabd6dd167
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.date: 12/07/2020
+ms.openlocfilehash: 1e2ccc57b42f8072c9aa28612d534507b9a674ed
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366329"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852093"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 資源時使用連結和巢狀的範本
 
 若要部署複雜的解決方案，您可以將範本分成許多相關的範本，然後透過主要範本將它們部署在一起。 相關的範本可以是內嵌于主要範本內的個別檔案或範本語法。 本文使用「連結的 **範本** 」一詞來參考另一個範本檔案，該檔案是透過主要範本中的連結所參考。 它使用「 **嵌套** 」一詞來參考主要範本內的內嵌範本語法。
 
-若為小型至中型的解決方案，單一範本會比較容易了解和維護。 您可以在單一檔案中看到所有的資源和值。 針對進階案例，連結範本可供將解決方案拆解為目標元件。 您可以輕鬆地在其他案例中重複使用這些範本。
+若為小型至中型的解決方案，單一範本會比較容易了解和維護。 您可以在單一檔案中看到所有的資源和值。 針對進階案例，連結範本可供將解決方案拆解為目標元件。 您可在其他案例中，輕鬆地重複使用這些範本。
 
 如需教學課程，請參閱[建立連結的 Azure Resource Manager 範本](./deployment-tutorial-linked-template.md)。
 
@@ -318,7 +318,7 @@ ms.locfileid: "94366329"
 "uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]"
 ```
 
-如果您要連結至 GitHub 中的範本，請使用原始 URL。 連結的格式為： `https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-with-templates/quickstart-template/azuredeploy.json` 。 若要取得原始連結，請選取 [ **raw** ]。
+如果您要連結至 GitHub 中的範本，請使用原始 URL。 連結的格式為： `https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-with-templates/quickstart-template/azuredeploy.json` 。 若要取得原始連結，請選取 [ **raw**]。
 
 :::image type="content" source="./media/linked-templates/select-raw.png" alt-text="選取原始 URL":::
 
@@ -375,10 +375,16 @@ ms.locfileid: "94366329"
 
 您可以建立 [範本規格](template-specs.md) ，將主要範本和其連結的範本封裝到您可以部署的單一實體，而不是在可存取的端點上維護連結的範本。 範本規格是您 Azure 訂用帳戶中的資源。 這可讓您輕鬆安全地與組織中的使用者共用範本。 您可以使用 Azure 角色型存取控制 (Azure RBAC) 來授與範本規格的存取權。這項功能目前為預覽狀態。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 - [教學課程：使用連結的範本建立範本規格](./template-specs-create-linked.md)。
 - [教學課程：將範本規格部署為連結的範本](./template-specs-deploy-linked-template.md)。
+
+## <a name="dependencies"></a>相依性
+
+如同其他資源類型，您可以設定連結的範本之間的相依性。 如果某個連結範本中的資源必須先部署在第二個連結範本中的資源之前，請設定第二個範本（相依于第一個範本）。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/linked-dependency.json" highlight="10,22,24":::
 
 ## <a name="contentversion"></a>contentVersion
 
@@ -388,7 +394,7 @@ ms.locfileid: "94366329"
 
 先前的範例示範了範本連結的硬式編碼 URL 值。 這種方法可能適用于簡單的範本，但不適用於一組大型的模組化範本。 不過，您可以建立一個儲存主要範本之基底 URL 的靜態變數，然後再從該基底 URL 連結動態建立連結的範本之 URL。 這種方法的優點是您可以輕鬆地移動或派生範本，因為您只需要變更主要範本中的靜態變數。 主要範本會於整個分解的範本傳遞正確的 URI。
 
-下列範例示範如何使用基底 URL 來為連結的範本 ( **sharedTemplateUrl** 和 **vmTemplate** ) 建立兩個 URL。
+下列範例示範如何使用基底 URL 來為連結的範本 (**sharedTemplateUrl** 和 **vmTemplate**) 建立兩個 URL。
 
 ```json
 "variables": {
@@ -472,156 +478,19 @@ ms.locfileid: "94366329"
 
 下列範例會示範如何參考連結的範本，並擷取輸出值。 連結的範本會傳回簡單的訊息。  首先，連結的範本：
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [],
-  "outputs": {
-    "greetingMessage": {
-      "value": "Hello World",
-      "type" : "string"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/helloworld.json":::
 
 主要範本會部署連結的範本，並取得傳回的值。 請注意，它會依名稱參考部署資源，並使用連結的範本所傳回之屬性的名稱。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
-      "name": "linkedTemplate",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[uri(deployment().properties.templateLink.uri, 'helloworld.json')]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    }
-  ],
-  "outputs": {
-    "messageFromLinkedTemplate": {
-      "type": "string",
-      "value": "[reference('linkedTemplate').outputs.greetingMessage.value]"
-    }
-  }
-}
-```
-
-如同其他資源類型，您可以設定連結的範本和其他資源之間的相依性。 當其他資源需要來自連結範本的輸出值時，請確定已在連結的範本之前部署連結的範本。 或者，當連結的範本仰賴其他資源時，請確定在所連結的範本之前部署其他資源。
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/helloworldparent.json" highlight="10,23":::
 
 下列範例顯示的範本會部署公用 IP 位址，並傳回該公用 IP 的 Azure 資源資源識別碼：
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "publicIPAddresses_name": {
-      "type": "string"
-    }
-  },
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Network/publicIPAddresses",
-      "apiVersion": "2018-11-01",
-      "name": "[parameters('publicIPAddresses_name')]",
-      "location": "eastus",
-      "properties": {
-        "publicIPAddressVersion": "IPv4",
-        "publicIPAllocationMethod": "Dynamic",
-        "idleTimeoutInMinutes": 4
-      },
-      "dependsOn": []
-    }
-  ],
-  "outputs": {
-    "resourceID": {
-      "type": "string",
-      "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_name'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/public-ip.json" highlight="27":::
 
 若要在部署負載平衡器時使用上述範本中的公用 IP 位址，請連結至範本並宣告資源的相依性 `Microsoft.Resources/deployments` 。 負載平衡器上的公用 IP 位址會設定為從連結的範本傳回的輸出值。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "loadBalancers_name": {
-      "defaultValue": "mylb",
-      "type": "string"
-    },
-    "publicIPAddresses_name": {
-      "defaultValue": "myip",
-      "type": "string"
-    }
-  },
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Network/loadBalancers",
-      "apiVersion": "2018-11-01",
-      "name": "[parameters('loadBalancers_name')]",
-      "location": "eastus",
-      "properties": {
-        "frontendIPConfigurations": [
-          {
-            "name": "LoadBalancerFrontEnd",
-            "properties": {
-              "privateIPAllocationMethod": "Dynamic",
-              "publicIPAddress": {
-                // this is where the output value from linkedTemplate is used
-                "id": "[reference('linkedTemplate').outputs.resourceID.value]"
-              }
-            }
-          }
-        ],
-        "backendAddressPools": [],
-        "loadBalancingRules": [],
-        "probes": [],
-        "inboundNatRules": [],
-        "outboundNatRules": [],
-        "inboundNatPools": []
-      },
-      // This is where the dependency is declared
-      "dependsOn": [
-        "linkedTemplate"
-      ]
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
-      "name": "linkedTemplate",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[uri(deployment().properties.templateLink.uri, 'publicip.json')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters":{
-          "publicIPAddresses_name":{"value": "[parameters('publicIPAddresses_name')]"}
-        }
-      }
-    }
-  ]
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json" highlight="28,41":::
 
 ## <a name="deployment-history"></a>部署歷程記錄
 
@@ -765,7 +634,7 @@ done
 }
 ```
 
-在 PowerShell 中，您會取得容器的 Token 並使用下列命令部署範本。 請注意， **containerSasToken** 參數會定義於範本中。 它不是 **New-AzResourceGroupDeployment** 命令中的參數。
+在 PowerShell 中，您會取得容器的 Token 並使用下列命令部署範本。 請注意，**containerSasToken** 參數會定義於範本中。 它不是 **New-AzResourceGroupDeployment** 命令中的參數。
 
 ```azurepowershell-interactive
 Set-AzCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
@@ -803,7 +672,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 下列範例顯示連結範本的一般用途。
 
-|主要的範本  |連結的範本 |說明  |
+|主要的範本  |連結的範本 |描述  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[連結的範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | 從連結的範本傳回字串。 |
 |[使用公用 IP 位址的負載平衡器](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[連結的範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |從連結的範本傳回公用 IP 位址，並且在負載平衡器中設定該值。 |

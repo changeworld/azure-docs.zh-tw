@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 41d98750f3c869eff5abf7482a9bb04435407318
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 8bf3959651048a7a568df1d94aa07aa206663d50
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436754"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750980"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender 簡介
 
@@ -39,6 +39,8 @@ Azure Defender 可為虛擬機器、SQL 資料庫、容器、Web 應用程式及
 - [適用於 Kubernetes 的 Azure Defender](defender-for-kubernetes-introduction.md)
 - [適用於容器登錄的 Azure Defender](defender-for-container-registries-introduction.md)
 - [適用於 Key Vault 的 Azure Defender](defender-for-key-vault-introduction.md)
+- [適用於 Resource Manager 的 Azure Defender](defender-for-resource-manager-introduction.md)
+- [適用於 DNS 的 Azure Defender](defender-for-dns-introduction.md)
 
 這些方案會分別在資訊安全中心文件中說明。
 
@@ -61,9 +63,9 @@ Azure Defender 可為虛擬機器、SQL 資料庫、容器、Web 應用程式及
 
 
 
-## <a name="security-alerts"></a>安全性警示 
+## <a name="azure-defender-security-alerts"></a>Azure Defender 安全性警示 
 
-Azure Defender 在您環境的任何區域中偵測到威脅時，將會產生警示。 這些警示會說明受影響資源的詳細資料、建議的補救步驟，以及在某些情況下會說明觸發邏輯應用程式以進行回應的選項。
+Azure Defender 在您環境的任何區域中偵測到威脅時，將會產生安全性警示。 這些警示會說明受影響資源的詳細資料、建議的補救步驟，以及在某些情況下會說明觸發邏輯應用程式以進行回應的選項。
 
 無論是由資訊安全中心產生的警示，還是資訊安全中心從整合式安全性產品接收到的警示，您都可以將其匯出。 若要將您的警示匯出至 Azure Sentinel、任何協力廠商 SIEM 或任何其他外部工具，請依照[將警示串流至 SIEM、SOAR 或 IT 服務管理解決方案](export-to-siem.md)中的指示操作。
 

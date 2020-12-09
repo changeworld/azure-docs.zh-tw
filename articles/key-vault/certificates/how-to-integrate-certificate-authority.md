@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 4d29d7401cf944e8d999db847ce2e1266169ea34
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4635bcc51d2ab626b16ddcf02e772bf3df3cad4d
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448411"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763735"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>將 Key Vault 與 DigiCert 憑證授權單位整合
 
@@ -127,6 +127,9 @@ Add-AzKeyVaultCertificate -VaultName "Contoso-Vaultname" -Name "ExampleCertifica
 如果在 Azure 入口網站中發出的憑證處於「已停用」狀態，請繼續檢視 **憑證作業**，來檢閱該憑證的 DigiCert 錯誤訊息。
 
  ![憑證作業](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
+
+「請執行合併以完成此憑證要求」錯誤訊息。
+您必須合併 CA 簽署的 CSR，才能完成此要求。 在[這裡](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request)深入了解
 
 如需詳細資訊，請參閱 [Key Vault REST API 參考中的憑證作業](/rest/api/keyvault)。 如需建立權限的相關資訊，請參閱[保存庫 - 建立或更新](/rest/api/keyvault/vaults/createorupdate)和[保存庫 - 更新存取原則](/rest/api/keyvault/vaults/updateaccesspolicy)。
 

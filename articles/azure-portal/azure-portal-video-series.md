@@ -4,12 +4,12 @@ description: 在入口網站中尋找如何使用 Azure 服務的影片示範。
 keywords: ''
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0762174a3207c0620d3b6413d14c817014fc49a0
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 131ec94e321388a3578cd2fd59fdb2fd75339c5e
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745854"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852603"
 ---
 # <a name="azure-portal-how-to-video-series"></a>Azure 入口網站操作說明影片系列
 
@@ -17,17 +17,17 @@ Azure 入口網站的 how-to 影片系列示範如何使用 Azure 入口網站�
 
 ## <a name="featured-video"></a>精選影片
 
-在這段精選的影片中，我們將示範如何建立和管理 App Service 網域。
+在這段精選影片中，我們會示範如何使用 Azure 快速入門中心開始使用 Azure。
 
-> [!VIDEO https://www.youtube.com/embed/b1kDT8-6a3g]
+> [!VIDEO https://www.youtube.com/embed/mb5k9nXMtBM]
 
-[如何建立和管理 App Service 網域](https://www.youtube.com/watch?v=b1kDT8-6a3g)
+[如何使用 Azure 快速入門中心在 Azure 中開始使用](https://www.youtube.com/watch?v=mb5k9nXMtBM)
 
 趕上您可能錯過的最新影片：
 
-| [如何在 App Service web 應用程式中新增和保護自訂網域](https://www.youtube.com/watch?v=bXP6IvNYISw)  | [Linux 虛擬機器體驗的增強功能](https://www.youtube.com/watch?v=obg6Fq2T898)  | [如何使用 blob 版本設定](https://www.youtube.com/watch?v=m7e9h1gedWQ)  |
+| [如何在 Azure Kubernetes Service 中管理應用程式](https://www.youtube.com/watch?v=YfARHb52Bp4)  | [如何使用記錄和參數建立 Azure 活頁簿](https://www.youtube.com/watch?v=EC7n1Oo6D-o)  | [如何在 App Service web 應用程式中新增和保護自訂網域](https://www.youtube.com/watch?v=bXP6IvNYISw) |
 | ------| ------ | ------ |
-| [![有關如何在 App Service web 應用程式上新增和保護自訂網域的 YouTube 影片影像](https://i.ytimg.com/vi/bXP6IvNYISw/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=bXP6IvNYISw) | [![關於 Linux 虛擬機器體驗改善的 YouTube 影片影像](https://i.ytimg.com/vi/obg6Fq2T898/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](https://www.youtube.com/watch?obg6Fq2T898) | [![有關如何使用 blob 版本設定的 YouTube 影片影像](https://i.ytimg.com/vi/m7e9h1gedWQ/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=m7e9h1gedWQ) |
+| [![有關如何在 Azure Kubernetes Service 中管理應用程式的 YouTube 影片影像](https://i.ytimg.com/vi/YfARHb52Bp4/hqdefault.jpg)](https://www.youtube.com/watch?YfARHb52Bp4) | [![有關如何使用記錄和參數建立 Azure 活頁簿的 YouTube 影片影像](https://i.ytimg.com/vi/EC7n1Oo6D-o/hqdefault.jpg)](http://www.youtube.com/watch?v=EC7n1Oo6D-o) | [![有關如何在 App Service web 應用程式上新增和保護自訂網域的 YouTube 影片影像](https://i.ytimg.com/vi/bXP6IvNYISw/hqdefault.jpg)](http://www.youtube.com/watch?v=bXP6IvNYISw) |
 
 ## <a name="video-playlist"></a>影片播放清單
 
