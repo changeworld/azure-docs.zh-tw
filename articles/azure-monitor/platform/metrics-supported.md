@@ -4,15 +4,15 @@ description: AAzure 監視器每一個資源類型的可用計量清單。
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 07/16/2020
+ms.date: 10/01/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 1741331c57427c57507376afdb878edc18259b72
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3e5dd5c83468e867c746393642a1e40ff07763c4
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93306835"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921503"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>支援 Azure 監視器的計量
 
@@ -50,13 +50,12 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 > [!TIP]
 > 最佳做法是使用並設定 [Azure 診斷延伸](diagnostics-extension-overview.md) 模組，將「客體作業系統」效能度量傳送至儲存平臺計量的相同 Azure 監視器計量資料庫中。 此延伸模組會透過 [自訂計量](metrics-custom-overview.md) API 來路由傳送來賓 OS 計量。 然後，您可以製作圖表、警示，並以其他方式使用來賓 OS 計量（例如平臺計量）。 或者，您也可以使用 Log Analytics 代理程式，將來賓 OS 計量傳送至 Azure 監視器記錄檔或 Log Analytics。 您可以在此查詢這些計量與非計量資料的組合。 
 
-如需重要的其他資訊，請參閱 [監視代理程式總覽](agents-overview.md)。    
+如需重要的其他資訊，請參閱 [監視代理程式總覽](agents-overview.md)。
 
 ## <a name="table-formatting"></a>表格格式設定
 
 > [!IMPORTANT] 
 > 此最新的更新會新增資料行，並將計量重新排序為字母。 額外資訊表示，下表可能會在底部有水準捲軸，視瀏覽器視窗的寬度而定。 如果您認為遺失資訊，請使用捲軸來查看整個資料表。
-
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
 
@@ -94,7 +93,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |qpu_metric|是|QPU|Count|Average|QPU。 範圍 0-100 (S1)、0-200 (S2) 和 0-400 (S4)|ServerResourceType|
 |QueryPoolBusyThreads|是|查詢集區忙碌執行緒|Count|Average|查詢執行緒集區中的忙碌執行緒數目。|ServerResourceType|
 |QueryPoolIdleThreads|是|執行緒：查詢集區的閒置執行緒數|Count|Average|處理執行緒集區中 I/O 作業的閒置執行緒數目。|ServerResourceType|
-|QueryPoolJobQueueLength|是|執行緒：查詢集區的作業佇列長度|Count|Average|查詢執行緒集區佇列中的作業數目。|ServerResourceType|
+|QueryPoolJobQueueLength|是|執行緒︰查詢集區的作業佇列長度|Count|Average|查詢執行緒集區佇列中的作業數目。|ServerResourceType|
 |Quota|是|記憶體：Quota|位元組|Average|目前的記憶體配額，以位元組為單位。 記憶體配額也就是指授與使用的記憶體，或是保留的記憶體。|ServerResourceType|
 |QuotaBlocked|是|記憶體：封鎖的配額|Count|Average|在釋放其他記憶體配額之前，目前已封鎖的配額要求數目。|ServerResourceType|
 |RowsConvertedPerSec|是|處理：每秒轉換的資料列|每秒計數|Average|處理期間資料列轉換的速率。|ServerResourceType|
@@ -116,16 +115,16 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|---|
 |BackendDuration|是|後端要求的持續時間|毫秒|Average|後端要求的持續時間（以毫秒為單位）|位置，主機名稱|
-|Capacity|是|Capacity|百分比|Average|ApiManagement 服務的使用率衡量標準|Location|
-|Duration|是|閘道要求的整體持續期間|毫秒|Average|閘道要求的整體持續期間，以毫秒為單位|位置，主機名稱|
-|EventHubDroppedEvents|是|已卸除的 EventHub 事件|Count|總計|因為達到佇列大小限制而略過的事件數目|Location|
-|EventHubRejectedEvents|是|已拒絕的 EventHub 事件|Count|總計| (錯誤的設定或未授權) 的已拒絕 EventHub 事件數目|Location|
-|EventHubSuccessfulEvents|是|成功的 EventHub 事件|Count|總計|成功的 EventHub 事件數目|Location|
-|EventHubThrottledEvents|是|已節流的 EventHub 事件|Count|總計|節流的 EventHub 事件數目|Location|
-|EventHubTimedoutEvents|是|已逾時的 EventHub 事件|Count|總計|發生超時的 EventHub 事件數目|Location|
-|EventHubTotalBytesSent|是|EventHub 事件的大小|位元組|總計|EventHub 事件的大小總計（以位元組為單位）|Location|
-|EventHubTotalEvents|是|EventHub 事件總數|Count|總計|傳送至 EventHub 的事件數目|Location|
-|EventHubTotalFailedEvents|是|失敗的 EventHub 事件|Count|總計|失敗的 EventHub 事件數目|Location|
+|Capacity|是|Capacity|百分比|Average|ApiManagement 服務的使用率衡量標準|位置|
+|持續時間|是|閘道要求的整體持續期間|毫秒|Average|閘道要求的整體持續期間，以毫秒為單位|位置，主機名稱|
+|EventHubDroppedEvents|是|已卸除的 EventHub 事件|Count|總計|因為達到佇列大小限制而略過的事件數目|位置|
+|EventHubRejectedEvents|是|已拒絕的 EventHub 事件|Count|總計| (錯誤的設定或未授權) 的已拒絕 EventHub 事件數目|位置|
+|EventHubSuccessfulEvents|是|成功的 EventHub 事件|Count|總計|成功的 EventHub 事件數目|位置|
+|EventHubThrottledEvents|是|已節流的 EventHub 事件|Count|總計|節流的 EventHub 事件數目|位置|
+|EventHubTimedoutEvents|是|已逾時的 EventHub 事件|Count|總計|發生超時的 EventHub 事件數目|位置|
+|EventHubTotalBytesSent|是|EventHub 事件的大小|位元組|總計|EventHub 事件的大小總計（以位元組為單位）|位置|
+|EventHubTotalEvents|是|EventHub 事件總數|Count|總計|傳送至 EventHub 的事件數目|位置|
+|EventHubTotalFailedEvents|是|失敗的 EventHub 事件|Count|總計|失敗的 EventHub 事件數目|位置|
 |FailedRequests|是|失敗的閘道要求 (已淘汰)|Count|總計|閘道要求中的失敗次數-請改用具有 GatewayResponseCodeCategory 維度的多重維度要求度量|位置，主機名稱|
 |NetworkConnectivity|是|資源 (預覽) 的網路線上狀態|Count|Average|API 管理服務的相依資源類型的網路線上狀態|Location、ResourceType|
 |OtherRequests|是|其他閘道要求 (已淘汰)|Count|總計|其他閘道要求數目-請改用具有 GatewayResponseCodeCategory 維度的多重維度要求度量|位置，主機名稱|
@@ -157,8 +156,8 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |jvm。已認可|是|jvm。已認可|位元組|Average|指派給 JVM 的記憶體（以位元組為單位）|部署、AppName、Pod|
 |jvm。記憶體。最大值|是|jvm。記憶體。最大值|位元組|最大值|可用於記憶體管理的最大記憶體數量（以位元組為單位）|部署、AppName、Pod|
 |jvm. memory. 使用|是|jvm. memory. 使用|位元組|Average|使用的應用程式記憶體（位元組）|部署、AppName、Pod|
-|處理常式。 cpu。使用量|是|處理常式。 cpu。使用量|百分比|Average|應用程式 JVM CPU 使用量百分比|部署、AppName、Pod|
-|系統。使用量|是|系統。使用量|百分比|Average|整個系統的最近 cpu 使用量|部署、AppName、Pod|
+|處理常式。 cpu。使用量|是|處理常式。 cpu。使用量|百分比|Average|JVM 進程的最近 CPU 使用量|部署、AppName、Pod|
+|系統。使用量|是|系統。使用量|百分比|Average|整個系統的最近 CPU 使用量|部署、AppName、Pod|
 |tomcat。錯誤|是|tomcat。錯誤|計數|總計|Tomcat 全域錯誤|部署、AppName、Pod|
 |tomcat. global. received|是|tomcat. global. received|位元組|總計|Tomcat 接收到的位元組總數|部署、AppName、Pod|
 |tomcat. avg. time|是|tomcat. avg. time|毫秒|Average|Tomcat 要求平均時間|部署、AppName、Pod|
@@ -247,19 +246,19 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|---|
-|BroadcastProcessedCount|是|廣播已處理計數|Count|Average|已處理的交易數目|Node、channel、type、status|
+|BroadcastProcessedCount|是|BroadcastProcessedCountDisplayName|Count|Average|已處理的交易數目。|Node、channel、type、status|
 |ConnectionAccepted|是|已接受的連線|Count|總計|已接受的連線|節點|
 |ConnectionActive|是|作用中的連線|Count|Average|作用中的連線|節點|
 |ConnectionHandled|是|已處理的連線|Count|總計|已處理的連線|節點|
-|ConsensusEtcdraftCommittedBlockNumber|是|共識 Etcdraft 認可的區塊編號|Count|Average|認可的最新區塊的區塊編號|節點、通道|
+|ConsensusEtcdraftCommittedBlockNumber|是|ConsensusEtcdraftCommittedBlockNumberDisplayName|Count|Average|認可的最新區塊區塊數目。|節點、通道|
 |CpuUsagePercentageInDouble|是|CPU 使用率百分比|百分比|最大值|CPU 使用率百分比|節點|
-|EndorserEndorsementFailures|是|Endorser 簽署失敗|Count|Average|失敗的簽署數目。|Node、channel、鏈碼、chaincodeerror|
-|GossipLeaderElectionLeader|是|Gossip 領導人選舉領導人|計數|總計|對等是領導者 (1) 或 (0) |節點、通道|
-|GossipMembershipTotalPeersKnown|是|Gossip 成員資格總數已知|Count|Average|已知對等總數|節點、通道|
-|GossipStateHeight|是|Gossip 狀態高度|Count|Average|目前的總帳高度|節點、通道|
+|EndorserEndorsementFailures|是|EndorserEndorsementFailuresDisplayName|Count|Average|失敗的簽署數目。|Node、channel、鏈碼、chaincodeerror|
+|GossipLeaderElectionLeader|是|GossipLeaderElectionLeaderDisplayName|Count|Average|對等是領導者 (1) 或 (0) 。|節點、通道|
+|GossipMembershipTotalPeersKnown|是|GossipMembershipTotalPeersKnownDisplayName|Count|Average|已知對等總數。|節點、通道|
+|GossipStateHeight|是|GossipStateHeightDisplayName|Count|Average|目前的總帳高度。|節點、通道|
 |IOReadBytes|是|IO 讀取位元組|位元組|總計|IO 讀取位元組|節點|
 |IOWriteBytes|是|IO 寫入位元組|位元組|總計|IO 寫入位元組|節點|
-|LedgerTransactionCount|是|總帳交易計數|Count|Average|已處理的交易數目|Node、channel、transaction_type、鏈碼、validation_code|
+|LedgerTransactionCount|是|LedgerTransactionCountDisplayName|Count|Average|已處理的交易數目。|Node、channel、transaction_type、鏈碼、validation_code|
 |MemoryLimit|是|記憶體限制|位元組|Average|記憶體限制|節點|
 |MemoryUsage|是|記憶體使用量|位元組|Average|記憶體使用量|節點|
 |MemoryUsagePercentageInDouble|是|記憶體使用量百分比|百分比|Average|記憶體使用量百分比|節點|
@@ -275,6 +274,22 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|---|
+|allcachehits|是|快取點擊 (以實例為基礎的) |計數|總計||ShardId、Port、Primary|
+|allcachemisses|是|快取遺漏 (以實例為基礎) |計數|總計||ShardId、Port、Primary|
+|allcacheRead|是|快取讀取 (以實例為基礎) |每秒位元組|最大值||ShardId、Port、Primary|
+|allcacheWrite|是|快取寫入 (以實例為基礎) |每秒位元組|最大值||ShardId、Port、Primary|
+|allconnectedclients|是|連線的用戶端 (以實例為基礎的) |Count|最大值||ShardId、Port、Primary|
+|allevictedkeys|是| (實例) 收回的金鑰|計數|總計||ShardId、Port、Primary|
+|allexpiredkeys|是| (實例) 的過期金鑰|計數|總計||ShardId、Port、Primary|
+|allgetcommands|是|取得以 (實例為基礎的) |計數|總計||ShardId、Port、Primary|
+|alloperationsPerSecond|是|每秒的作業數 (以實例為基礎的) |Count|最大值||ShardId、Port、Primary|
+|allserverLoad|是|伺服器負載 (以) 為基礎的實例|百分比|最大值||ShardId、Port、Primary|
+|allsetcommands|是|設定以 (實例為基礎的) |計數|總計||ShardId、Port、Primary|
+|alltotalcommandsprocessed|是|以實例為基礎) 的作業總數 (|計數|總計||ShardId、Port、Primary|
+|alltotalkeys|是|以實例為基礎)  (的總索引鍵|Count|最大值||ShardId、Port、Primary|
+|allusedmemory|是|以 (實例為基礎) 使用的記憶體|位元組|最大值||ShardId、Port、Primary|
+|allusedmemorypercentage|是| (實例) 使用的記憶體百分比|百分比|最大值||ShardId、Port、Primary|
+|allusedmemoryRss|是| (以實例為基礎的) 使用的記憶體 RSS|位元組|最大值||ShardId、Port、Primary|
 |cachehits|是|快取點擊|Count|總計||ShardId|
 |cachehits0|是|快取點擊 (分區 0)|Count|總計||無維度|
 |cachehits1|是|快取點擊 (分區 1)|Count|總計||無維度|
@@ -474,7 +489,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |Disk Write Operations/Sec|是|Disk Write Operations/Sec|每秒計數|Average|磁碟寫入 IOPS。|RoleInstanceId|
 |Network In|是|Network In|位元組|總計|虛擬機器 (連入流量) 在所有網路介面上接收到的位元組數目。|RoleInstanceId|
 |Network Out|是|Network Out|位元組|總計|虛擬機器 (連出流量) 在所有網路介面上送出的位元組數目。|RoleInstanceId|
-|CPU 百分比|是|Percentage CPU|百分比|Average|虛擬機器目前使用的配置計算單位百分比。|RoleInstanceId|
+|Percentage CPU|是|Percentage CPU|百分比|Average|虛擬機器目前使用的配置計算單位百分比。|RoleInstanceId|
 
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.ClassicCompute/virtualMachines
@@ -487,7 +502,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |Disk Write Operations/Sec|是|Disk Write Operations/Sec|每秒計數|Average|磁碟寫入 IOPS。|無維度|
 |Network In|是|Network In|位元組|總計|虛擬機器 (連入流量) 在所有網路介面上接收到的位元組數目。|無維度|
 |Network Out|是|Network Out|位元組|總計|虛擬機器 (連出流量) 在所有網路介面上送出的位元組數目。|無維度|
-|CPU 百分比|是|Percentage CPU|百分比|Average|虛擬機器目前使用的配置計算單位百分比。|無維度|
+|Percentage CPU|是|Percentage CPU|百分比|Average|虛擬機器目前使用的配置計算單位百分比。|無維度|
 
 
 ## <a name="microsoftclassicstoragestorageaccounts"></a>Microsoft.ClassicStorage/storageAccounts
@@ -578,7 +593,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |DataIn|是|資料輸入|位元組|總計|內送資料大小，以位元組為單位。|ApiName、OperationName、Region|
 |DataOut|是|資料輸出|位元組|總計|輸出資料大小，以位元組為單位。|ApiName、OperationName、Region|
 |Latency|是|Latency|毫秒|Average|延遲，以毫秒為單位。|ApiName、OperationName、Region|
-|ProcessedImages|是|處理的影像|計數|總計| 影像處理的交易數目。|ApiName、功能區、UsageChannel、區域|
+|ProcessedImages|是|處理的影像|計數|總計|影像處理的交易數目。|ApiName、功能區、UsageChannel、區域|
 |ServerErrors|是|伺服器錯誤|Count|總計|具有服務內部錯誤 (HTTP 回應碼 5xx) 的呼叫數目。|ApiName、OperationName、Region|
 |SpeechSessionDuration|是|語音工作階段持續時間|秒|總計|語音工作階段的總持續時間 (秒)。|ApiName、OperationName、Region|
 |SuccessfulCalls|是|成功的呼叫|Count|總計|成功的呼叫數。|ApiName、OperationName、Region|
@@ -588,12 +603,25 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |TotalTransactions|是|交易數總計|Count|總計|交易總數。|無維度|
 
 
+## <a name="microsoftcomputecloudservices"></a>Microsoft. Compute/cloudServices
+
+|計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
+|---|---|---|---|---|---|---|
+|Disk Read Bytes|是|Disk Read Bytes|位元組|總計|在監視期間從磁片讀取的位元組|RoleInstanceId|
+|Disk Read Operations/Sec|是|Disk Read Operations/Sec|每秒計數|Average|磁碟讀取 IOPS|RoleInstanceId|
+|Disk Write Bytes|是|Disk Write Bytes|位元組|總計|在監視期間寫入磁片的位元組|RoleInstanceId|
+|Disk Write Operations/Sec|是|Disk Write Operations/Sec|每秒計數|Average|磁碟寫入 IOPS|RoleInstanceId|
+|Percentage CPU|是|Percentage CPU|百分比|Average|目前虛擬機器正在使用中的已配置計算單位百分比|RoleInstanceId|
+
+
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|---|
 |CPU Credits Consumed|是|CPU Credits Consumed|Count|Average|由虛擬機器取用的信用額度總數|無維度|
 |剩餘 CPU 信用額度|是|剩餘 CPU 信用額度|Count|Average|可用於高載的信用額度總數|無維度|
+|資料磁片頻寬耗用百分比|是|資料磁片頻寬耗用百分比|百分比|Average|每分鐘耗用的資料磁片頻寬百分比|LUN|
+|資料磁片 IOPS 耗用百分比|是|資料磁片 IOPS 耗用百分比|百分比|Average|每分鐘耗用的資料磁片 i/o 百分比|LUN|
 |資料磁碟佇列深度|是|資料磁碟佇列深度 (預覽)|Count|Average|資料磁碟佇列深度 (或佇列長度)|LUN|
 |資料磁碟讀取位元組數/秒|是|資料磁碟讀取位元組/秒 (預覽)|每秒計數|Average|在監視期間從單一磁片讀取的位元組/秒|LUN|
 |資料磁碟讀取作業/秒|是|資料磁碟讀取作業/秒 (預覽)|每秒計數|Average|在監視期間從單一磁片讀取 IOPS|LUN|
@@ -609,6 +637,8 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |網路流入量總計|是|網路流入量總計|位元組|總計|虛擬機器 (連入流量) 在所有網路介面上接收到的位元組數目|無維度|
 |Network Out|是|計費網路流出量 (已淘汰)|位元組|總計|虛擬機器 (s 的所有網路介面上的可計費位元組數目)  (連出流量)  (已淘汰) |無維度|
 |網路流出量總計|是|網路流出量總計|位元組|總計|虛擬機器 (連出流量) 在所有網路介面上送出的位元組數目|無維度|
+|作業系統磁片頻寬耗用百分比|是|作業系統磁片頻寬耗用百分比|百分比|Average|每分鐘耗用的作業系統磁片頻寬百分比|LUN|
+|作業系統磁片 IOPS 耗用百分比|是|作業系統磁片 IOPS 耗用百分比|百分比|Average|每分鐘耗用的作業系統磁片 i/o 百分比|LUN|
 |OS 磁碟佇列深度|是|OS 磁碟佇列深度 (預覽)|Count|Average|OS 磁碟佇列深度 (或佇列長度)|無維度|
 |OS 磁碟讀取位元組/秒|是|OS 磁碟讀取位元組/秒 (預覽)|每秒計數|Average|OS 磁片在監視期間從單一磁片讀取的位元組/秒|無維度|
 |OS 磁碟讀取作業/秒|是|OS 磁碟讀取作業/秒 (預覽)|每秒計數|Average|在 OS 磁片監視期間從單一磁片讀取 IOPS|無維度|
@@ -626,11 +656,15 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |每一磁碟讀取作業/秒|是|資料磁碟讀取作業數/秒 (已淘汰)|每秒計數|Average|在監視期間從單一磁片讀取 IOPS|SlotId|
 |每一磁碟寫入位元組/秒|是|資料磁碟寫入位元組數/秒 (已淘汰)|每秒計數|Average|在監視期間寫入單一磁片的位元組/秒|SlotId|
 |每一磁碟寫入作業/秒|是|資料磁碟寫入作業數/秒 (已淘汰)|每秒計數|Average|在監視期間從單一磁片寫入 IOPS|SlotId|
-|CPU 百分比|是|Percentage CPU|百分比|Average|目前虛擬機器正在使用中的已配置計算單位百分比|無維度|
+|Percentage CPU|是|Percentage CPU|百分比|Average|目前虛擬機器正在使用中的已配置計算單位百分比|無維度|
 |進階資料磁碟快取讀取命中|是|進階資料磁碟快取讀取命中 (預覽)|百分比|Average|進階資料磁碟快取讀取命中|LUN|
 |進階資料磁碟快取讀取遺漏|是|進階資料磁碟快取讀取遺漏 (預覽)|百分比|Average|進階資料磁碟快取讀取遺漏|LUN|
 |進階 OS 磁碟快取讀取命中|是|進階 OS 磁碟快取讀取命中 (預覽)|百分比|Average|進階 OS 磁碟快取讀取命中|無維度|
 |進階 OS 磁碟快取讀取遺漏|是|進階 OS 磁碟快取讀取遺漏 (預覽)|百分比|Average|進階 OS 磁碟快取讀取遺漏|無維度|
+|已耗用 VM 的頻寬百分比|是|已耗用 VM 的頻寬百分比|百分比|Average|VM 耗用的快取磁片頻寬百分比|無維度|
+|VM 快取的 IOPS 耗用百分比|是|VM 快取的 IOPS 耗用百分比|百分比|Average|VM 耗用的快取磁片 IOPS 百分比|無維度|
+|VM 未快取的頻寬使用量百分比|是|VM 未快取的頻寬使用量百分比|百分比|Average|VM 耗用的未快取磁片頻寬百分比|無維度|
+|VM 未快取的已耗用 IOPS 百分比|是|VM 未快取的已耗用 IOPS 百分比|百分比|Average|VM 耗用的未快取磁片 IOPS 百分比|無維度|
 
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
@@ -671,7 +705,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |每一磁碟讀取作業/秒|是|資料磁碟讀取作業數/秒 (已淘汰)|每秒計數|Average|在監視期間從單一磁片讀取 IOPS|SlotId|
 |每一磁碟寫入位元組/秒|是|資料磁碟寫入位元組數/秒 (已淘汰)|每秒計數|Average|在監視期間寫入單一磁片的位元組/秒|SlotId|
 |每一磁碟寫入作業/秒|是|資料磁碟寫入作業數/秒 (已淘汰)|每秒計數|Average|在監視期間從單一磁片寫入 IOPS|SlotId|
-|CPU 百分比|是|Percentage CPU|百分比|Average|目前虛擬機器正在使用中的已配置計算單位百分比|VMName|
+|Percentage CPU|是|Percentage CPU|百分比|Average|目前虛擬機器正在使用中的已配置計算單位百分比|VMName|
 |進階資料磁碟快取讀取命中|是|進階資料磁碟快取讀取命中 (預覽)|百分比|Average|進階資料磁碟快取讀取命中|LUN，VMName|
 |進階資料磁碟快取讀取遺漏|是|進階資料磁碟快取讀取遺漏 (預覽)|百分比|Average|進階資料磁碟快取讀取遺漏|LUN，VMName|
 |進階 OS 磁碟快取讀取命中|是|進階 OS 磁碟快取讀取命中 (預覽)|百分比|Average|進階 OS 磁碟快取讀取命中|VMName|
@@ -716,7 +750,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |每一磁碟讀取作業/秒|是|資料磁碟讀取作業數/秒 (已淘汰)|每秒計數|Average|在監視期間從單一磁片讀取 IOPS|SlotId|
 |每一磁碟寫入位元組/秒|是|資料磁碟寫入位元組數/秒 (已淘汰)|每秒計數|Average|在監視期間寫入單一磁片的位元組/秒|SlotId|
 |每一磁碟寫入作業/秒|是|資料磁碟寫入作業數/秒 (已淘汰)|每秒計數|Average|在監視期間從單一磁片寫入 IOPS|SlotId|
-|CPU 百分比|是|Percentage CPU|百分比|Average|目前虛擬機器正在使用中的已配置計算單位百分比|無維度|
+|Percentage CPU|是|Percentage CPU|百分比|Average|目前虛擬機器正在使用中的已配置計算單位百分比|無維度|
 |進階資料磁碟快取讀取命中|是|進階資料磁碟快取讀取命中 (預覽)|百分比|Average|進階資料磁碟快取讀取命中|LUN|
 |進階資料磁碟快取讀取遺漏|是|進階資料磁碟快取讀取遺漏 (預覽)|百分比|Average|進階資料磁碟快取讀取遺漏|LUN|
 |進階 OS 磁碟快取讀取命中|是|進階 OS 磁碟快取讀取命中 (預覽)|百分比|Average|進階 OS 磁碟快取讀取命中|無維度|
@@ -753,7 +787,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |kube_node_status_allocatable_memory_bytes|否|受控叢集中可用的記憶體總量|位元組|Average|受控叢集中可用的記憶體總量|無維度|
 |kube_node_status_condition|否|各種節點條件的狀態|Count|Average|各種節點條件的狀態|condition、status、status2、node|
 |kube_pod_status_phase|否|各階段的 Pod 數目|Count|Average|各階段的 Pod 數目|階段、命名空間、pod|
-|kube_pod_status_ready|否|處於就緒狀態的 Pod 數目|Count|Average|處於就緒狀態的 Pod 數目|命名空間、pod|
+|kube_pod_status_ready|否|處於就緒狀態的 Pod 數目|Count|Average|處於就緒狀態的 Pod 數目|命名空間、pod、條件|
 
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>>microsoft.customproviders/resourceproviders
@@ -867,6 +901,33 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |storage_used|是|已使用儲存體|位元組|Average|已使用儲存體|無維度|
 
 
+## <a name="microsoftdbforpostgresqlflexibleservers"></a>Microsoft.DBforPostgreSQL/flexibleServers
+
+|計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
+|---|---|---|---|---|---|---|
+|active_connections|是|作用中的連線|Count|Average|作用中的連線|無維度|
+|backup_storage_used|是|已使用的備份儲存體|位元組|Average|已使用的備份儲存體|無維度|
+|connections_failed|是|失敗的連線|Count|總計|失敗的連線|無維度|
+|connections_succeeded|是|成功的連接|計數|總計|成功的連接|無維度|
+|cpu_credits_consumed|是|CPU Credits Consumed|Count|Average|資料庫伺服器所耗用的點數總數|無維度|
+|cpu_credits_remaining|是|剩餘 CPU 信用額度|Count|Average|可用於高載的信用額度總數|無維度|
+|cpu_percent|是|CPU 百分比|百分比|Average|CPU 百分比|無維度|
+|disk_queue_depth|是|磁片佇列深度|Count|Average|資料磁片的未完成 i/o 作業數目|無維度|
+|iops|是|IOPS|Count|Average|每秒 IO 作業數|無維度|
+|maximum_used_transactionIDs|是|使用的最大交易識別碼|Count|Average|使用的最大交易識別碼|無維度|
+|memory_percent|是|記憶體百分比|百分比|Average|記憶體百分比|無維度|
+|network_bytes_egress|是|Network Out|位元組|總計|跨作用中連線的網路輸出|無維度|
+|network_bytes_ingress|是|Network In|位元組|總計|跨作用中連線的網路輸入|無維度|
+|read_iops|是|讀取 IOPS|Count|Average|每秒的資料磁片 i/o 讀取作業數目|無維度|
+|read_throughput|是|讀取輸送量位元組數/秒|Count|Average|監視期間從資料磁片每秒讀取的位元組數|無維度|
+|storage_free|是|免費儲存體|位元組|Average|免費儲存體|無維度|
+|storage_percent|是|儲存體百分比|百分比|Average|儲存體百分比|無維度|
+|storage_used|是|已使用儲存體|位元組|Average|已使用儲存體|無維度|
+|txlogs_storage_used|是|使用的交易記錄儲存體|位元組|Average|使用的交易記錄儲存體|無維度|
+|write_iops|是|寫入 IOPS|Count|Average|每秒的資料磁片 i/o 寫入作業數|無維度|
+|write_throughput|是|寫入輸送量位元組數/秒|Count|Average|在監視期間每秒寫入資料磁片的位元組|無維度|
+
+
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
 
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
@@ -903,23 +964,6 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |storage_used|是|已使用儲存體|位元組|Average|已使用儲存體|無維度|
 
 
-## <a name="microsoftdbforpostgresqlsingleservers"></a>DBforPostgreSQL/singleservers
-
-|計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
-|---|---|---|---|---|---|---|
-|active_connections|是|作用中的連線|Count|Average|作用中的連線|無維度|
-|connections_failed|是|失敗的連線|Count|總計|失敗的連線|無維度|
-|connections_succeeded|是|成功的連接|計數|總計|成功的連接|無維度|
-|cpu_percent|是|CPU 百分比|百分比|Average|CPU 百分比|無維度|
-|iops|是|IOPS|Count|Average|每秒 IO 作業數|無維度|
-|maximum_used_transactionIDs|是|使用的最大交易識別碼|Count|Average|使用的最大交易識別碼|無維度|
-|memory_percent|是|記憶體百分比|百分比|Average|記憶體百分比|無維度|
-|network_bytes_egress|是|Network Out|位元組|總計|跨作用中連線的網路輸出|無維度|
-|network_bytes_ingress|是|Network In|位元組|總計|跨作用中連線的網路輸入|無維度|
-|storage_percent|是|儲存體百分比|百分比|Average|儲存體百分比|無維度|
-|storage_used|是|已使用儲存體|位元組|Average|已使用儲存體|無維度|
-
-
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/IotHubs
 
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
@@ -937,9 +981,9 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |c2d.twin.update.failure|是|後端的失敗對應項更新|Count|總計|後端起始的所有失敗對應項更新的計數。|無維度|
 |c2d.twin.update.size|是|後端的對應項更新大小|位元組|Average|後端起始的所有成功對應項更新的大小平均值、最小值和最大值。|無維度|
 |c2d.twin.update.success|是|後端的成功對應項更新|Count|總計|後端起始的所有成功對應項更新的計數。|無維度|
-|C2DMessagesExpired|是|已過期的 C2D 訊息 (預覽)|Count|總計|已過期的雲端到裝置訊息數目|無維度|
+|C2DMessagesExpired|是|C2D 訊息已過期|計數|總計|已過期的雲端到裝置訊息數目|無維度|
 |組態|是|設定計量|Count|總計|設定作業的計量|無維度|
-|connectedDeviceCount|否|連接的裝置 (預覽)|Count|Average|連接至 IoT 中樞的裝置數目|無維度|
+|connectedDeviceCount|否|已連線的裝置|Count|Average|連接至 IoT 中樞的裝置數目|無維度|
 |d2c.endpoints.egress.builtIn.events|是|路由：傳遞至訊息/事件的訊息|Count|總計|IoT 中樞路由成功將訊息傳遞至內建端點 (訊息/事件) 的次數。|無維度|
 |d2c.endpoints.egress.eventHubs|是|路由：傳遞至事件中樞的訊息|Count|總計|IoT 中樞路由成功將訊息傳遞至事件中樞端點的次數。|無維度|
 |d2c.endpoints.egress.serviceBusQueues|是|路由：傳遞至服務匯流排佇列的訊息|Count|總計|IoT 中樞路由成功將訊息傳遞至服務匯流排佇列端點的次數。|無維度|
@@ -971,8 +1015,8 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |deviceDataUsageV2|是|裝置資料使用量總計 (預覽)|位元組|總計|傳輸至任何已連線至 IotHub 之裝置或從該裝置傳出的位元組數|無維度|
 |devices.connectedDevices.allProtocol|是|連接的裝置 (已淘汰) |Count|總計|連接至 IoT 中樞的裝置數目|無維度|
 |devices.totalDevices|是|裝置總計 (已淘汰)|Count|總計|向 IoT 中樞註冊的裝置數目|無維度|
-|EventGridDeliveries|是|事件方格傳遞 (預覽) |計數|總計|發佈至事件方格的 IoT 中樞事件數目。 您可使用 [結果] 維度來取得成功和失敗要求的數目。 [事件種類] 維度會顯示事件 (的類型 https://aka.ms/ioteventgrid) 。|結果、產生結果|
-|EventGridLatency|是|事件方格延遲 (預覽)|毫秒|Average|當事件發佈到事件方格時，從 Iot 中樞事件產生到的平均延遲 (毫秒) 。 此數位是所有事件種類之間的平均值。 您可以使用 [事件種類] 維度來查看特定事件種類的延遲。|EventType|
+|EventGridDeliveries|是|事件方格傳遞|計數|總計|發佈至事件方格的 IoT 中樞事件數目。 您可使用 [結果] 維度來取得成功和失敗要求的數目。 [事件種類] 維度會顯示事件 (的類型 https://aka.ms/ioteventgrid) 。|結果、產生結果|
+|EventGridLatency|是|事件方格延遲|毫秒|Average|當事件發佈到事件方格時，從 Iot 中樞事件產生到的平均延遲 (毫秒) 。 此數位是所有事件種類之間的平均值。 您可以使用 [事件種類] 維度來查看特定事件種類的延遲。|EventType|
 |jobs.cancelJob.failure|是|取消作業失敗|Count|總計|所有呼叫取消作業失敗的計數。|無維度|
 |jobs.cancelJob.success|是|成功取消作業|Count|總計|所有成功呼叫取消作業的計數。|無維度|
 |jobs.completed|是|已完成的工作|Count|總計|所有已完成的作業計數。|無維度|
@@ -988,7 +1032,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |RoutingDataSizeInBytesDelivered|是|路由傳送訊息大小（位元組） (預覽) |位元組|總計|IoT 中樞傳送至端點的訊息大小總計（以位元組為單位）。 您可以使用 [端點] 和 [EndpointType] 維度來查看傳遞給不同端點的訊息大小（以位元組為單位）。 度量值會隨著每個傳遞的訊息而增加，包括訊息傳遞至多個端點，或訊息是否多次傳遞至相同的端點。|EndpointType、終結點、RoutingSource|
 |RoutingDeliveries|是|路由傳遞 (預覽) |計數|總計|IoT 中樞嘗試使用路由將訊息傳遞至所有端點的次數。 若要查看成功或失敗的嘗試次數，請使用「結果」維度。 若要查看失敗的原因（例如無效、已捨棄或孤立），請使用 FailureReasonCategory 維度。 您也可以使用「端點」和「EndpointType」維度來瞭解有多少訊息傳遞至不同的端點。 每次傳遞嘗試的計量值都會增加一個，包括將訊息傳遞至多個端點，或將訊息傳遞至相同的端點多次。|EndpointType、等點、FailureReasonCategory、結果、RoutingSource|
 |RoutingDeliveryLatency|是|路由傳送延遲 (預覽) |毫秒|Average|訊息輸入到 IoT 中樞與遙測訊息輸入到端點之間的平均延遲 (毫秒) 。 您可以使用 [端點] 和 [EndpointType] 維度來瞭解不同端點的延遲。|EndpointType、終結點、RoutingSource|
-|totalDeviceCount|否|裝置總計 (預覽)|Count|Average|向 IoT 中樞註冊的裝置數目|無維度|
+|totalDeviceCount|否|裝置總計|Count|Average|向 IoT 中樞註冊的裝置數目|無維度|
 |twinQueries.failure|是|失敗對應項查詢|Count|總計|所有失敗對應項查詢的計數。|無維度|
 |twinQueries.resultSize|是|對應項查詢結果大小|位元組|Average|所有成功對應項查詢的結果大小平均值、最小值和最大值。|無維度|
 |twinQueries.success|是|成功對應項查詢|Count|總計|所有成功對應項查詢的計數。|無維度|
@@ -1009,7 +1053,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |---|---|---|---|---|---|---|
 |AddRegion|是|已新增區域|Count|Count|已新增區域|區域|
 |AutoscaleMaxThroughput|否|自動調整最大輸送量|Count|最大值|自動調整最大輸送量|DatabaseName、CollectionName|
-|AvailableStorage|否| (已淘汰) 可用的儲存體|位元組|總計|2020年9月底將會從 Azure 監視器移除「可用的儲存體」。 Cosmos DB 集合儲存體大小現在是無限制的。 唯一的限制是每個邏輯分割區索引鍵的儲存體大小為 20 gb。 您可以啟用診斷記錄中的 PartitionKeyStatistics，以瞭解最上層分割區索引鍵的儲存體耗用量。 如需 Cosmos DB 儲存體配額的詳細資訊，請參閱此檔 https://docs.microsoft.com/azure/cosmos-db/concepts-limits 。 淘汰之後，仍在淘汰的計量上定義的其餘警示規則，會在淘汰日期之後自動停用。|CollectionName，DatabaseName，區域|
+|AvailableStorage|否| (已淘汰) 可用的儲存體|位元組|總計|2023年9月底將會從 Azure 監視器移除「可用的儲存體」。 Cosmos DB 集合儲存體大小現在是無限制的。 唯一的限制是每個邏輯分割區索引鍵的儲存體大小為 20 gb。 您可以啟用診斷記錄中的 PartitionKeyStatistics，以瞭解最上層分割區索引鍵的儲存體耗用量。 如需 Cosmos DB 儲存體配額的詳細資訊，請參閱此檔 https://docs.microsoft.com/azure/cosmos-db/concepts-limits 。 淘汰之後，仍在淘汰的計量上定義的其餘警示規則，會在淘汰日期之後自動停用。|CollectionName，DatabaseName，區域|
 |CassandraConnectionClosures|否|Cassandra 連線終止|Count|總計|已關閉的 Cassandra 連線數，以1分鐘的資料細微性回報|Region、ClosureReason|
 |CassandraConnectorAvgReplicationLatency|否|Cassandra 連接器平均 ReplicationLatency|毫秒|Average|Cassandra 連接器平均 ReplicationLatency|無維度|
 |CassandraConnectorReplicationHealthStatus|否|Cassandra 連接器複寫健全狀況狀態|Count|Count|Cassandra 連接器複寫健全狀況狀態|NotStarted、ReplicationInProgress、Error|
@@ -1046,13 +1090,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |MongoDatabaseThroughputUpdate|否|已更新 Mongo 資料庫輸送量|Count|Count|已更新 Mongo 資料庫輸送量|CoNtext.resourcename |
 |MongoDBDatabaseCreate|否|已建立 Mongo 資料庫|Count|Count|已建立 Mongo 資料庫|CoNtext.resourcename |
 |MongoDBDatabaseUpdate|否|Mongo 資料庫已更新|Count|Count|Mongo 資料庫已更新|CoNtext.resourcename |
-|MongoRequestCharge|是|Mongo 要求收費|Count|總計|已使用的 Mongo 要求單位|DatabaseName、CollectionName、Region、CommandName、ErrorCode、Status|
 |MongoRequests|是|Mongo 要求|Count|Count|已提出的 Mongo 要求數目|DatabaseName、CollectionName、Region、CommandName、ErrorCode、Status|
-|MongoRequestsCount|否|Mongo 要求率|每秒計數|Average|每秒的 Mongo 要求計數|DatabaseName、CollectionName、Region、ErrorCode|
-|MongoRequestsDelete|否|Mongo 刪除要求率|每秒計數|Average|每秒 Mongo 刪除要求數|DatabaseName、CollectionName、Region、ErrorCode|
-|MongoRequestsInsert|否|Mongo 插入要求率|每秒計數|Average|Mongo 每秒插入計數|DatabaseName、CollectionName、Region、ErrorCode|
-|MongoRequestsQuery|否|Mongo 查詢要求率|每秒計數|Average|每秒 Mongo 查詢要求數|DatabaseName、CollectionName、Region、ErrorCode|
-|MongoRequestsUpdate|否|Mongo 更新要求率|每秒計數|Average|每秒 Mongo 更新要求數|DatabaseName、CollectionName、Region、ErrorCode|
 |NormalizedRUConsumption|否|正規化的 RU 耗用量|百分比|最大值|每分鐘的最大 RU 耗用量百分比|CollectionName、DatabaseName、Region、PartitionKeyRangeId|
 |ProvisionedThroughput|否|佈建的輸送量|Count|最大值|佈建的輸送量|DatabaseName、CollectionName|
 |RegionFailover|是|區域已容錯移轉|Count|Count|區域已容錯移轉|無維度|
@@ -1268,6 +1306,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |要求/速率|否|伺服器要求率|每秒計數|Average|每秒伺服器要求的速率|request/performanceBucket、request/resultCode、operation/synthetic、cloud/roleInstance、request/success、cloud/roleName|
 |traces/count|是|追蹤|Count|Count|追蹤文件計數|trace/severityLevel、operation/synthetic、cloud/roleName、cloud/roleInstance|
 
+
 ## <a name="microsoftiotcentraliotapps"></a>Microsoft.iotcentral/IoTApps
 
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
@@ -1300,23 +1339,35 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |---|---|---|---|---|---|---|
 |BatchBlobCount|是|Batch Blob 計數|Count|Average|內嵌的匯總批次中的資料來源數目。|資料庫|
 |BatchDuration|是|批次持續時間|秒|Average|內嵌流程中匯總階段的持續時間。|資料庫|
-|BatchesProcessed|是|已處理的批次|Count|Average|針對內嵌匯總的批次數目。 批次完成原因：批次是否達到批次處理時間、資料大小或批次處理原則所設定的檔案數目限制|Database、SealReason|
+|BatchesProcessed|是|已處理的批次|Count|Average|針對內嵌匯總的批次數目。 批次處理類型：批次是否達到批次處理時間、資料大小或批次處理原則所設定的檔案數目限制|Database、SealReason|
 |BatchSize|是|批次大小|位元組|Average|內嵌的匯總批次中，未壓縮的預期資料大小。|資料庫|
+|BlobsProcessed|是|已處理的 blob|Count|Average|元件所處理的 blob 數目。|Database、ComponentType、ComponentName|
+|BlobsReceived|是|收到的 blob|Count|Average|元件從輸入資料流程接收的 blob 數目。|Database、ComponentType、ComponentName|
+|BlobsRejected|是|已拒絕 blob|Count|Average|元件永久拒絕的 blob 數目。|Database、ComponentType、ComponentName|
 |CacheUtilization|是|快取使用率|百分比|Average|在叢集範圍的使用率等級|無維度|
 |ContinuousExportMaxLatenessMinutes|是|連續匯出最大延遲|Count|最大值|延遲 (（分鐘），) 由叢集中的連續匯出工作回報|無維度|
 |ContinuousExportNumOfRecordsExported|是|連續匯出–匯出記錄的數目|計數|總計|匯出作業期間所寫入的每個儲存成品所匯出的記錄數目|ContinuousExportName，資料庫|
 |ContinuousExportPendingCount|是|連續匯出擱置計數|Count|最大值|準備執行的暫止連續匯出作業數目|無維度|
 |ContinuousExportResult|是|連續匯出結果|Count|Count|指出連續匯出是否成功或失敗|ContinuousExportName，結果，資料庫|
 |CPU|是|CPU|百分比|Average|CPU 使用率等級|無維度|
+|CumulativeLatency|是|累計延遲|秒|Average|從探索訊息到報告元件接收到處理 (探索時間之前的累計時間，會在訊息加入內嵌佇列的佇列時，或資料連線) 找到時設定。|Database、ComponentType|
+|DiscoveryLatency|是|探索延遲|秒|Average| (如果存在) ，資料連線會回報。 以秒為單位的時間，從訊息排入佇列或建立事件直到資料連線發現為止。 此時間不包含在 Azure 資料總管的內嵌持續時間總計中。|ComponentType、ComponentName|
 |EventsProcessedForEventHubs|是|已處理的事件 (針對事件/IoT 中樞)|Count|總計|從事件/IoT 中樞擷取時，叢集所處理的事件數目|EventStatus|
 |ExportUtilization|是|匯出使用率|百分比|最大值|匯出使用率|無維度|
-|IngestionLatencyInSeconds|是|擷取延遲 (以秒為單位)|秒|Average|從來源 (例如，訊息位於 EventHub 中) 擷取到叢集的擷取時間，以秒為單位|無維度|
+|IngestionLatencyInSeconds|是|內嵌延遲|秒|Average|從來源 (例如，訊息位於 EventHub 中) 擷取到叢集的擷取時間，以秒為單位|無維度|
 |IngestionResult|是|擷取結果|Count|Count|擷取作業數|IngestionResultDetails|
 |IngestionUtilization|是|擷取使用率|百分比|Average|在叢集中使用的擷取位置的比率|無維度|
-|IngestionVolumeInMB|是|擷取量 (以 MB 為單位)|Count|總計|擷取到叢集的資料總量 (以 MB 為單位)|無維度|
+|IngestionVolumeInMB|是|擷取量 (以 MB 為單位)|位元組|總計|擷取到叢集的資料總量 (以 MB 為單位)|無維度|
 |InstanceCount|是|執行個體計數|Count|Average|實例計數總計|無維度|
 |KeepAlive|是|保持運作|Count|Average|例行性檢查指出對查詢的叢集回應|無維度|
+|MaterializedViewAgeMinutes|是|具體化視圖存留期|Count|Average|具體化視圖存留期（分鐘）|Database、MaterializedViewName|
+|MaterializedViewDataLoss|是|具體化視圖資料遺失|Count|最大值|指出具體化視圖可能遺失資料|Database、MaterializedViewName、Kind|
+|MaterializedViewExtentsRebuild|是|具體化視圖範圍重建|Count|Average|範圍重建數目|Database、MaterializedViewName|
+|MaterializedViewHealth|是|具體化視圖健全狀況|Count|Average|具體化視圖的健全狀況 (1 適用于狀況良好、0表示狀況良好的) |Database、MaterializedViewName|
+|MaterializedViewRecordsInDelta|是|差異中的具體化 View 記錄|Count|Average|視圖的非具體化部分中的記錄數目|Database、MaterializedViewName|
+|MaterializedViewResult|是|具體化視圖結果|Count|Average|具體化進程的結果|資料庫、MaterializedViewName、結果|
 |QueryDuration|是|查詢持續時間|毫秒|Average|查詢持續時間 (以秒為單位)|QueryStatus|
+|QueryResult|否|查詢結果|Count|Count|查詢總數。|狀態|
 |SteamingIngestRequestRate|是|串流內嵌要求率|Count|RateRequestsPerSecond|串流每秒 (要求的內嵌要求速率) |無維度|
 |StreamingIngestDataRate|是|串流內嵌資料速率|Count|Average|串流內嵌資料速率 (每秒 MB) |無維度|
 |StreamingIngestDuration|是|串流內嵌持續時間|毫秒|Average|串流內嵌持續時間（毫秒）|無維度|
@@ -1411,38 +1462,38 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |---|---|---|---|---|---|---|
 |作用中核心|是|作用中核心|Count|Average|使用中核心數目|案例，ClusterName|
 |作用中節點|是|作用中節點|Count|Average|Acitve 節點的數目。 這些是目前正在執行作業的節點。|案例，ClusterName|
-|取消要求的執行|是|取消要求的執行|計數|總計|針對此工作區要求取消的執行數目。 已收到執行的取消要求時，就會更新計數。|案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
-|取消的執行|是|取消的執行|計數|總計|針對此工作區取消的執行數目。 當執行成功取消時，會更新計數。|案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
-|已完成的執行|是|已完成的執行|Count|總計|已成功完成此工作區的執行數目。 當執行完成且已收集輸出時，就會更新計數。|案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
-|CpuUtilization|是|CpuUtilization|Count|Average|CPU 節點的記憶體使用率百分比。 使用量會以一分鐘的間隔回報。|案例、runId、ClusterName|
-|Errors|是|Errors|Count|總計|此工作區中的執行錯誤數目。 每當執行發生錯誤時，就會更新計數。|狀況|
-|失敗的執行|是|失敗的執行|Count|總計|此工作區的執行失敗數目。 當執行失敗時，會更新計數。|案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
-|正在完成執行|是|正在完成執行|計數|總計|此工作區的已進入完成狀態的執行數目。 當執行完成但輸出收集仍在進行時，就會更新計數。|案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
-|GpuUtilization|是|GpuUtilization|Count|Average|GPU 節點的記憶體使用率百分比。 使用量會以一分鐘的間隔回報。|案例、runId、等、DeviceId、ClusterName|
+|取消要求的執行|是|取消要求的執行|計數|總計|針對此工作區要求取消的執行數目。 已收到執行的取消要求時，就會更新計數。|案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
+|取消的執行|是|取消的執行|計數|總計|針對此工作區取消的執行數目。 當執行成功取消時，會更新計數。|案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
+|已完成的執行|是|已完成的執行|Count|總計|已成功完成此工作區的執行數目。 當執行完成且已收集輸出時，就會更新計數。|案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
+|CpuUtilization|是|CpuUtilization|Count|Average|CPU 節點的使用率百分比。 使用量會以一分鐘的間隔回報。|案例、runId、ClusterName|
+|Errors|是|Errors|Count|總計|此工作區中的執行錯誤數目。 每當執行發生錯誤時，就會更新計數。|案例|
+|失敗的執行|是|失敗的執行|Count|總計|此工作區的執行失敗數目。 當執行失敗時，會更新計數。|案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
+|正在完成執行|是|正在完成執行|計數|總計|此工作區的已進入完成狀態的執行數目。 當執行完成但輸出收集仍在進行時，就會更新計數。|案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
+|GpuUtilization|是|GpuUtilization|Count|Average|GPU 節點的使用率百分比。 使用量會以一分鐘的間隔回報。|案例、runId、等、DeviceId、ClusterName|
 |閒置核心|是|閒置核心|Count|Average|閒置核心數目|案例，ClusterName|
 |閒置節點|是|閒置節點|Count|Average|閒置節點數目。 閒置節點是指不會執行任何作業但可以接受新作業（如果有的話）的節點。|案例，ClusterName|
 |正在離開的核心|是|正在離開的核心|Count|Average|離開的核心數目|案例，ClusterName|
 |正在離開的節點|是|正在離開的節點|Count|Average|離開節點的數目。 離開節點是剛剛完成處理工作且將進入閒置狀態的節點。|案例，ClusterName|
 |失敗的模型部署|是|失敗的模型部署|Count|總計|在此工作區中失敗的模型部署數目|案例，StatusCode|
-|已啟動的模型部署|是|已啟動的模型部署|Count|總計|在此工作區中開始的模型部署數目|狀況|
-|成功的模型部署|是|成功的模型部署|Count|總計|在此工作區中成功的模型部署數目|狀況|
+|已啟動的模型部署|是|已啟動的模型部署|Count|總計|在此工作區中開始的模型部署數目|案例|
+|成功的模型部署|是|成功的模型部署|Count|總計|在此工作區中成功的模型部署數目|案例|
 |失敗的模型註冊|是|失敗的模型註冊|Count|總計|在此工作區中失敗的模型註冊數目|案例，StatusCode|
-|成功的模型註冊|是|成功的模型註冊|Count|總計|在此工作區中成功的模型註冊數目|狀況|
-|沒有回應的執行|是|沒有回應的執行|計數|總計|此工作區的未回應執行數目。 當執行進入沒有回應的狀態時，就會更新計數。|案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
-|未開始執行|是|未開始執行|計數|總計|此工作區的 [未啟動] 狀態的執行數目。 當收到要求以建立執行但尚未填入執行資訊時，會更新計數。 |案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
+|成功的模型註冊|是|成功的模型註冊|Count|總計|在此工作區中成功的模型註冊數目|案例|
+|沒有回應的執行|是|沒有回應的執行|計數|總計|此工作區的未回應執行數目。 當執行進入沒有回應的狀態時，就會更新計數。|案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
+|未開始執行|是|未開始執行|計數|總計|此工作區的 [未啟動] 狀態的執行數目。 當收到要求以建立執行但尚未填入執行資訊時，會更新計數。 |案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
 |先佔節點|是|先佔節點|Count|Average|搶先的核心數目|案例，ClusterName|
 |先佔節點|是|先佔節點|Count|Average|搶先節點數目。 這些節點是從可用節點集區中移除的低優先順序節點。|案例，ClusterName|
-|準備執行|是|準備執行|計數|總計|為此工作區準備的執行數目。 在準備執行環境時，當執行進入準備狀態時，就會更新計數。|案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
-|布建執行|是|布建執行|計數|總計|為此工作區布建的執行數目。 當執行正在等候計算目標建立或布建時，就會更新計數。|案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
-|佇列執行|是|佇列執行|計數|總計|此工作區已排入佇列的執行數目。 當執行在計算目標中排入佇列時，會更新計數。 等候所需的計算節點就緒時，可能會發生此問題。|案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
+|準備執行|是|準備執行|計數|總計|為此工作區準備的執行數目。 在準備執行環境時，當執行進入準備狀態時，就會更新計數。|案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
+|布建執行|是|布建執行|計數|總計|為此工作區布建的執行數目。 當執行正在等候計算目標建立或布建時，就會更新計數。|案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
+|佇列執行|是|佇列執行|計數|總計|此工作區已排入佇列的執行數目。 當執行在計算目標中排入佇列時，會更新計數。 等候所需的計算節點就緒時，可以 occure。|案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
 |配額使用率百分比|是|配額使用率百分比|Count|Average|使用的配額百分比|案例、ClusterName、VmFamilyName、VmPriority|
-|已啟動的執行|是|已啟動的執行|Count|總計|針對此工作區執行的執行數目。 當執行開始在必要的資源上執行時，會更新計數。|案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
-|開始執行|是|開始執行|計數|總計|針對此工作區啟動的執行數目。 計數會在建立執行和執行資訊的要求之後更新，例如執行識別碼。|案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
+|已啟動的執行|是|已啟動的執行|Count|總計|針對此工作區執行的執行數目。 當執行開始在必要的資源上執行時，會更新計數。|案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
+|開始執行|是|開始執行|計數|總計|針對此工作區啟動的執行數目。 計數會在建立執行和執行資訊的要求之後更新，例如執行識別碼。|案例、RunType、PublishedPipelineId、ComputeType、PipelineStepType、ExperimentName|
 |總核心數|是|總核心數|Count|Average|核心總數|案例，ClusterName|
-|節點總計|是|節點總計|Count|Average|節點總數。 此總計包含一些作用中節點、閒置節點、無法使用的節點、優先佔用的節點，以及離開節點|案例，ClusterName|
+|節點總計|是|節點總計|Count|Average|節點總數。 此總計包含一些作用中節點、閒置節點、無法使用的節點、Premepted 節點、離開節點|案例，ClusterName|
 |無法使用的核心|是|無法使用的核心|Count|Average|無法使用的核心數目|案例，ClusterName|
 |無法使用的節點|是|無法使用的節點|Count|Average|無法使用的節點數目。 無法使用的節點因為某些無法解析的問題而無法運作。 Azure 會回收這些節點。|案例，ClusterName|
-|警告|是|警告|計數|總計|此工作區中的執行警告數目。 每當執行發生警告時，就會更新計數。|狀況|
+|警告|是|警告|計數|總計|此工作區中的執行警告數目。 每當執行發生警告時，就會更新計數。|案例|
 
 
 ## <a name="microsoftmapsaccounts"></a>Microsoft.Maps/accounts
@@ -1450,7 +1501,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|---|
 |可用性|是|可用性|百分比|Average|Api 的可用性|ApiCategory、ApiName|
-|使用方式|否|使用量|Count|Count|API 呼叫的計數|ApiCategory、ApiName、ResultType、ResponseCode|
+|使用量|否|使用量|Count|Count|API 呼叫的計數|ApiCategory、ApiName、ResultType、ResponseCode|
 
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft.Media/mediaservices
@@ -1538,7 +1589,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |MatchedCount|是|Web 應用程式防火牆的規則散發總計|Count|總計|連入流量的 Web 應用程式防火牆規則分佈總計|RuleGroup、RuleId|
 |NewConnectionsPerSecond|否|每秒新的連接數|每秒計數|Average|每秒與應用程式閘道建立的新連接|無維度|
 |ResponseStatus|是|回應狀態|Count|總計|應用程式閘道傳回的 Http 回應狀態|HttpStatusGroup|
-|輸送量|否|Throughput|每秒位元組|Average|應用程式閘道每秒已服務的位元組數目|無維度|
+|Throughput|否|Throughput|每秒位元組|Average|應用程式閘道每秒已服務的位元組數目|無維度|
 |TlsProtocol|是|用戶端 TLS 通訊協定|Count|總計|建立與應用程式閘道連線的用戶端所起始的 TLS 和非 TLS 要求數目。 若要查看 TLS 通訊協定分佈，請依維度 TLS 通訊協定篩選。|接聽程式，TlsProtocol|
 |TotalRequests|是|要求總數|Count|總計|應用程式閘道已服務的成功要求計數|BackendSettingsPool|
 |UnhealthyHostCount|是|狀況不良的主機計數|Count|Average|狀況不良的後端主機數目|BackendSettingsPool|
@@ -1553,15 +1604,15 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |FirewallHealth|是|防火牆健全狀態|百分比|Average|指出此防火牆的整體健全狀況|狀態，原因|
 |NetworkRuleHit|是|網路規則命中計數|Count|總計|網路規則的點擊次數|狀態，原因，通訊協定|
 |SNATPortUtilization|是|SNAT 連接埠使用率|百分比|Average|目前使用中輸出 SNAT 埠的百分比|通訊協定|
-|輸送量|否|輸送量|BitsPerSecond|平均|此防火牆處理的輸送量|無維度|
+|Throughput|否|Throughput|BitsPerSecond|平均|此防火牆處理的輸送量|無維度|
 
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.Network/connections
 
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|---|
-|BitsInPerSecond|是|BitsInPerSecond|每秒計數|Average|每秒輸入到 Azure 的位元數|無維度|
-|BitsOutPerSecond|是|BitsOutPerSecond|每秒計數|Average|每秒從 Azure 輸出的位元數|無維度|
+|BitsInPerSecond|是|BitsInPerSecond|BitsPerSecond|平均|每秒輸入到 Azure 的位元數|無維度|
+|BitsOutPerSecond|是|BitsOutPerSecond|BitsPerSecond|平均|每秒從 Azure 輸出的位元數|無維度|
 
 
 ## <a name="microsoftnetworkdnszones"></a>Microsoft.Network/dnszones
@@ -1579,28 +1630,28 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |---|---|---|---|---|---|---|
 |ArpAvailability|是|Arp 可用性|百分比|Average|從 MSEE 到所有對等的 ARP 可用性。|PeeringType，對等|
 |BgpAvailability|是|Bgp 可用性|百分比|Average|從 MSEE 到所有對等的 BGP 可用性。|PeeringType，對等|
-|BitsInPerSecond|否|BitsInPerSecond|每秒計數|Average|每秒輸入到 Azure 的位元數|PeeringType|
-|BitsOutPerSecond|否|BitsOutPerSecond|每秒計數|Average|每秒從 Azure 輸出的位元數|PeeringType|
-|GlobalReachBitsInPerSecond|否|GlobalReachBitsInPerSecond|每秒計數|Average|每秒輸入到 Azure 的位元數|PeeredCircuitSKey|
-|GlobalReachBitsOutPerSecond|否|GlobalReachBitsOutPerSecond|每秒計數|Average|每秒從 Azure 輸出的位元數|PeeredCircuitSKey|
-|QosDropBitsInPerSecond|否|DroppedInBitsPerSecond|每秒計數|Average|每秒捨棄的資料輸入位|無維度|
-|QosDropBitsOutPerSecond|否|DroppedOutBitsPerSecond|每秒計數|Average|每秒捨棄的資料輸出位|無維度|
+|BitsInPerSecond|否|BitsInPerSecond|BitsPerSecond|平均|每秒輸入到 Azure 的位元數|PeeringType、DeviceRole|
+|BitsOutPerSecond|否|BitsOutPerSecond|BitsPerSecond|平均|每秒從 Azure 輸出的位元數|PeeringType、DeviceRole|
+|GlobalReachBitsInPerSecond|否|GlobalReachBitsInPerSecond|BitsPerSecond|平均|每秒輸入到 Azure 的位元數|PeeredCircuitSKey|
+|GlobalReachBitsOutPerSecond|否|GlobalReachBitsOutPerSecond|BitsPerSecond|平均|每秒從 Azure 輸出的位元數|PeeredCircuitSKey|
+|QosDropBitsInPerSecond|是|DroppedInBitsPerSecond|BitsPerSecond|平均|每秒捨棄的資料輸入位|無維度|
+|QosDropBitsOutPerSecond|是|DroppedOutBitsPerSecond|BitsPerSecond|平均|每秒捨棄的資料輸出位|無維度|
 
 
 ## <a name="microsoftnetworkexpressroutecircuitspeerings"></a>Microsoft.Network/expressRouteCircuits/peerings
 
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|---|
-|BitsInPerSecond|是|BitsInPerSecond|每秒計數|Average|每秒輸入到 Azure 的位元數|無維度|
-|BitsOutPerSecond|是|BitsOutPerSecond|每秒計數|Average|每秒從 Azure 輸出的位元數|無維度|
+|BitsInPerSecond|是|BitsInPerSecond|BitsPerSecond|平均|每秒輸入到 Azure 的位元數|無維度|
+|BitsOutPerSecond|是|BitsOutPerSecond|BitsPerSecond|平均|每秒從 Azure 輸出的位元數|無維度|
 
 
 ## <a name="microsoftnetworkexpressroutegateways"></a>Microsoft.Network/expressRouteGateways
 
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|---|
-|ErGatewayConnectionBitsInPerSecond|否|BitsInPerSecond|每秒計數|Average|每秒輸入到 Azure 的位元數|ConnectionName|
-|ErGatewayConnectionBitsOutPerSecond|否|BitsOutPerSecond|每秒計數|Average|每秒從 Azure 輸出的位元數|ConnectionName|
+|ErGatewayConnectionBitsInPerSecond|否|BitsInPerSecond|BitsPerSecond|平均|每秒輸入到 Azure 的位元數|ConnectionName|
+|ErGatewayConnectionBitsOutPerSecond|否|BitsOutPerSecond|BitsPerSecond|平均|每秒從 Azure 輸出的位元數|ConnectionName|
 
 
 ## <a name="microsoftnetworkexpressrouteports"></a>Microsoft.Network/expressRoutePorts
@@ -1609,8 +1660,8 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |---|---|---|---|---|---|---|
 |AdminState|是|AdminState|Count|Average|埠的系統管理狀態|連結|
 |LineProtocol|是|LineProtocol|Count|Average|埠的線路通訊協定狀態|連結|
-|PortBitsInPerSecond|是|BitsInPerSecond|每秒計數|Average|每秒輸入到 Azure 的位元數|連結|
-|PortBitsOutPerSecond|是|BitsOutPerSecond|每秒計數|Average|每秒從 Azure 輸出的位元數|連結|
+|PortBitsInPerSecond|是|BitsInPerSecond|BitsPerSecond|平均|每秒輸入到 Azure 的位元數|連結|
+|PortBitsOutPerSecond|是|BitsOutPerSecond|BitsPerSecond|平均|每秒從 Azure 輸出的位元數|連結|
 |RxLightLevel|是|RxLightLevel|Count|Average|Rx Light 等級（dBm）|連結，航道|
 |TxLightLevel|是|TxLightLevel|Count|Average|Tx light 等級（dBm）|連結，航道|
 
@@ -1635,7 +1686,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|---|
 |AllocatedSnatPorts|否|配置的 SNAT 埠|Count|Average|在期間內配置的 SNAT 連接埠總數|FrontendIPAddress、BackendIPAddress、ProtocolType、 |
-|ByteCount|是|位元組計數|Count|總計|在期間內傳輸的位元組總數|FrontendIPAddress、FrontendPort、Direction|
+|ByteCount|是|位元組計數|位元組|總計|在期間內傳輸的位元組總數|FrontendIPAddress、FrontendPort、Direction|
 |DipAvailability|是|健全狀況探查狀態|Count|Average|每個持續時間 Load Balancer 健全狀況探查狀態的平均值|ProtocolType、BackendPort、FrontendIPAddress、FrontendPort、BackendIPAddress|
 |PacketCount|是|封包計數|Count|總計|在期間內傳輸的封包總數|FrontendIPAddress、FrontendPort、Direction|
 |SnatConnectionCount|是|SNAT 連線計數|Count|總計|在期間內建立的新 SNAT 連線總數|FrontendIPAddress、BackendIPAddress、ConnectionState|
@@ -1659,16 +1710,16 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|---|
 |AverageRoundtripMs|是|Avg.來回時間 (毫秒)|毫秒|Average|在來源與目的地之間所傳送連線能力監視探查的平均網路來回時間 (毫秒)|無維度|
-|ChecksFailedPercent|是|檢查失敗百分比 (預覽)|百分比|Average|% 的連線能力監視檢查失敗|SourceAddress、SourceResourceId、SourceType、Protocol、DestinationAddress、DestinationName、DestinationResourceId、DestinationType、DestinationPort、TestGroupName、TestConfigurationName|
+|ChecksFailedPercent|是|檢查失敗百分比 (預覽)|百分比|Average|% 的連線能力監視檢查失敗|SourceAddress、SourceResourceId、SourceType、Protocol、DestinationAddress、DestinationName、DestinationResourceId、DestinationType、DestinationPort、TestGroupName、TestConfigurationName、SourceIP、DestinationIP、SourceSubnet、DestinationSubnet|
 |ProbesFailedPercent|是|失敗的探查百分比|百分比|Average|失敗的連線能力監視探查百分比|無維度|
-|RoundTripTimeMs|是|來回時間 (毫秒) (預覽)|毫秒|Average|連線能力監視檢查的來回行程時間（毫秒）|SourceAddress、SourceResourceId、SourceType、Protocol、DestinationAddress、DestinationName、DestinationResourceId、DestinationType、DestinationPort、TestGroupName、TestConfigurationName|
+|RoundTripTimeMs|是|來回時間 (毫秒) (預覽)|毫秒|Average|連線能力監視檢查的來回行程時間（毫秒）|SourceAddress、SourceResourceId、SourceType、Protocol、DestinationAddress、DestinationName、DestinationResourceId、DestinationType、DestinationPort、TestGroupName、TestConfigurationName、SourceIP、DestinationIP、SourceSubnet、DestinationSubnet|
 
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft.Network/publicIPAddresses
 
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|---|
-|ByteCount|是|位元組計數|Count|總計|在期間內傳輸的位元組總數|連接埠，方向|
+|ByteCount|是|位元組計數|位元組|總計|在期間內傳輸的位元組總數|連接埠，方向|
 |BytesDroppedDDoS|是|傳入位元組數捨棄 DDoS|每秒位元組|最大值|傳入位元組數捨棄 DDoS|無維度|
 |BytesForwardedDDoS|是|傳入位元組數轉送 DDoS|每秒位元組|最大值|傳入位元組數轉送 DDoS|無維度|
 |BytesInDDoS|是|傳入位元組數 DDoS|每秒位元組|最大值|傳入位元組數 DDoS|無維度|
@@ -1869,10 +1920,8 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|---|
-|EgressTrafficRate|是|輸出流量率|BitsPerSecond|平均|每秒輸出流量速率（位數）|ConnectionId|
-|IngressTrafficRate|是|輸入流量率|BitsPerSecond|平均|每秒位數的輸入流量率|ConnectionId|
-|SessionAvailabilityV4|是|會話可用性 V4|百分比|Average|V4 會話的可用性|ConnectionId|
-|SessionAvailabilityV6|是|會話可用性 V6|百分比|Average|V6 會話的可用性|ConnectionId|
+|EgressTrafficRate|是|輸出流量率|BitsPerSecond|平均|每秒輸出流量速率（位數）|ConnectionId、SessionIp、TrafficClass|
+|IngressTrafficRate|是|輸入流量率|BitsPerSecond|平均|每秒位數的輸入流量率|ConnectionId、SessionIp、TrafficClass|
 
 
 ## <a name="microsoftpeeringpeeringservices"></a>Microsoft 對等互連/peeringServices
@@ -1899,7 +1948,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |---|---|---|---|---|---|---|
 |ActiveConnections|否|ActiveConnections|Count|總計|Microsoft.Relay 的 ActiveConnections 總計。|EntityName|
 |ActiveListeners|否|ActiveListeners|Count|總計|Microsoft.Relay 的 ActiveListeners 總計。|EntityName|
-|BytesTransferred|是|BytesTransferred|Count|總計|Microsoft.Relay 的 BytesTransferred 總計。|EntityName|
+|BytesTransferred|是|BytesTransferred|位元組|總計|Microsoft.Relay 的 BytesTransferred 總計。|EntityName|
 |ListenerConnections-ClientError|否|ListenerConnections-ClientError|Count|總計|Microsoft.Relay 的 ListenerConnections 上發生的 ClientError。|EntityName |
 |ListenerConnections-ServerError|否|ListenerConnections-ServerError|Count|總計|Microsoft.Relay 的 ListenerConnections 上發生的 ServerError。|EntityName |
 |ListenerConnections-Success|否|ListenerConnections-Success|Count|總計|Microsoft.Relay 的成功 ListenerConnections。|EntityName |
@@ -1929,7 +1978,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |ActiveMessages|否|佇列/主題中的作用中訊息計數。|Count|Average|佇列/主題中的作用中訊息計數。|EntityName|
 |ConnectionsClosed|否|已關閉的連線。|Count|Average|Microsoft.ServiceBus 的已關閉連線。|EntityName|
 |ConnectionsOpened|否|已開啟的連線。|Count|Average|Microsoft.ServiceBus 的已開啟連線。|EntityName|
-|CPUXNS|否|CPU (已淘汰)|百分比|最大值|服務匯流排 premium 命名空間 CPU 使用量計量。 此計量已過時。 請改用 CPU 度量 (NamespaceCpuUsage) 。|無維度|
+|CPUXNS|否|CPU (已淘汰)|百分比|最大值|服務匯流排 premium 命名空間 CPU 使用量計量。 這是淘汰的度量。 請改用 CPU 度量 (NamespaceCpuUsage) 。|無維度|
 |DeadletteredMessages|否|佇列/主題中的無效訊息計數。|Count|Average|佇列/主題中的無效訊息計數。|EntityName|
 |IncomingMessages|是|傳入訊息|Count|總計|Microsoft.ServiceBus 的傳入訊息。|EntityName|
 |IncomingRequests|是|傳入的要求|Count|總計|Microsoft.ServiceBus 的傳入要求。|EntityName|
@@ -2011,9 +2060,6 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |dtu_consumption_percent|是|DTU 百分比|百分比|Average|DTU 百分比。 適用于以 DTU 為基礎的資料庫。|無維度|
 |dtu_limit|是|DTU 限制|Count|Average|DTU 限制。 適用于以 DTU 為基礎的資料庫。|無維度|
 |dtu_used|是|已使用 DTU|Count|Average|使用的 DTU。 適用于以 DTU 為基礎的資料庫。|無維度|
-|dw_backup_size_gb|是|資料儲存體大小 (GB)|計數|總計|資料儲存體大小是由您的資料和交易記錄檔大小所組成。 計量會計入帳單的「儲存體」部分。 只適用于資料倉儲。|無維度|
-|dw_geosnapshot_size_gb|是|嚴重損壞修復儲存體大小 (GB) |計數|總計|嚴重損壞修復儲存體大小會在您的帳單中反映為「嚴重損壞修復儲存體」。 只適用于資料倉儲。|無維度|
-|dw_snapshot_size_gb|是|快照儲存體大小 (GB) |計數|總計|快照集儲存體大小是快照集所捕獲增量變更的大小，用來建立使用者定義和自動還原點。 計量會計入帳單的「儲存體」部分。 只適用于資料倉儲。|無維度|
 |dwu_consumption_percent|是|DWU 百分比|百分比|最大值|DWU 百分比。 只適用于資料倉儲。|無維度|
 |dwu_limit|是|DWU 限制|Count|最大值|DWU 限制。 只適用于資料倉儲。|無維度|
 |dwu_used|是|已使用 DWU|Count|最大值|使用的 DWU。 只適用于資料倉儲。|無維度|
@@ -2030,9 +2076,9 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |sqlserver_process_memory_percent|是|SQL Server 進程記憶體百分比|百分比|最大值|記憶體使用量（以 SQL DB 進程的百分比表示）。 不適用於資料倉儲。|無維度|
 |儲存|是|已使用的資料空間|位元組|最大值|使用的資料空間。 不適用於資料倉儲。|無維度|
 |storage_percent|是|已使用的資料空間百分比|百分比|最大值|使用的資料空間百分比。 不適用於資料倉儲或超大規模資料庫。|無維度|
-|tempdb_data_size|是|TempDB 資料檔案大小 (KB)|Count|最大值|Tempdb 資料檔案大小（Kb）。 不適用於資料倉儲。|無維度|
-|tempdb_log_size|是|Tempdb 記錄檔大小 (KB)|Count|最大值|Tempdb 記錄檔大小（Kb）。 不適用於資料倉儲。|無維度|
-|tempdb_log_used_percent|是|Tempdb 使用的記錄百分比|百分比|最大值|使用的 Tempdb Percent 記錄檔。 不適用於資料倉儲。|無維度|
+|tempdb_data_size|是|TempDB 資料檔案大小 (KB)|Count|最大值|Tempdb 資料檔案中使用的空間（以 kb 為單位）。 不適用於資料倉儲。|無維度|
+|tempdb_log_size|是|Tempdb 記錄檔大小 (KB)|Count|最大值|Tempdb 交易記錄檔中使用的空間（以 kb 為單位）。 不適用於資料倉儲。|無維度|
+|tempdb_log_used_percent|是|Tempdb 使用的記錄百分比|百分比|最大值|Tempdb 交易記錄檔中已使用的空間百分比。 不適用於資料倉儲。|無維度|
 |wlg_active_queries|是|工作負載群組使用中查詢|計數|總計|工作負載群組內的主動式查詢。 只適用于資料倉儲。|WorkloadGroupName、IsUserDefined|
 |wlg_active_queries_timeouts|是|工作負載群組查詢逾時|計數|總計|工作負載群組的查詢已超時。 只適用于資料倉儲。|WorkloadGroupName、IsUserDefined|
 |wlg_allocation_relative_to_system_percent|是|依系統百分比配置的工作負載群組|百分比|最大值|配置給每個工作負載群組之整個系統的資源百分比。 只適用于資料倉儲。|WorkloadGroupName、IsUserDefined|
@@ -2075,9 +2121,9 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |storage_limit|是|資料大小上限|位元組|Average|資料大小上限|無維度|
 |storage_percent|是|已使用的資料空間百分比|百分比|Average|已使用的資料空間百分比|無維度|
 |storage_used|是|已使用的資料空間|位元組|Average|已使用的資料空間|無維度|
-|tempdb_data_size|是|TempDB 資料檔案大小 (KB)|Count|最大值|TempDB 資料檔案大小 (KB)|無維度|
-|tempdb_log_size|是|Tempdb 記錄檔大小 (KB)|Count|最大值|Tempdb 記錄檔大小 (KB)|無維度|
-|tempdb_log_used_percent|是|Tempdb 使用的記錄百分比|百分比|最大值|Tempdb 使用的記錄百分比|無維度|
+|tempdb_data_size|是|TempDB 資料檔案大小 (KB)|Count|最大值|Tempdb 資料檔案中使用的空間（以 kb 為單位）。|無維度|
+|tempdb_log_size|是|Tempdb 記錄檔大小 (KB)|Count|最大值|Tempdb 交易記錄檔中使用的空間（以 kb 為單位）。|無維度|
+|tempdb_log_used_percent|是|Tempdb 使用的記錄百分比|百分比|最大值|Tempdb 交易記錄檔中已使用的空間百分比|無維度|
 |workers_percent|是|背景工作角色百分比|百分比|Average|背景工作角色百分比|無維度|
 |xtp_storage_percent|是|記憶體內部 OLTP 儲存體百分比|百分比|Average|記憶體內部 OLTP 儲存體百分比|無維度|
 
@@ -2171,7 +2217,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |StorageSyncRecalledTotalNetworkBytes|是|雲端階層處理重新叫用大小|位元組|總計|重新叫用的資料大小|SyncGroupName、ServerName|
 |StorageSyncRecallIOTotalSizeBytes|是|雲端階層處理重新叫用|位元組|總計|伺服器重新叫用的資料大小總計|ServerName|
 |StorageSyncRecallThroughputBytesPerSecond|是|雲端階層處理重新叫用輸送量|每秒位元組|Average|資料重新叫用輸送量的大小|SyncGroupName、ServerName|
-|StorageSyncServerHeartbeat|是|伺服器線上狀態|Count|最大值|每次已註冊的伺服器成功記錄與雲端端點的信號時，會記錄值1的度量|ServerName|
+|StorageSyncServerHeartbeat|是|伺服器線上狀態|Count|最大值|每次 resigtered 伺服器成功記錄與雲端端點的信號時，會記錄值1的度量|ServerName|
 |StorageSyncSyncSessionAppliedFilesCount|是|同步的檔案|Count|總計|同步的檔案計數|SyncGroupName、ServerEndpointName、SyncDirection|
 |StorageSyncSyncSessionPerItemErrorsCount|是|檔案無法同步|Count|總計|無法同步的檔案計數|SyncGroupName、ServerEndpointName、SyncDirection|
 
@@ -2180,7 +2226,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|---|
-|ServerHeartbeat|是|伺服器線上狀態|Count|最大值|每次已註冊的伺服器成功記錄與雲端端點的信號時，會記錄值1的度量|ServerResourceId、ServerName|
+|ServerHeartbeat|是|伺服器線上狀態|Count|最大值|每次 resigtered 伺服器成功記錄與雲端端點的信號時，會記錄值1的度量|ServerResourceId、ServerName|
 |ServerRecallIOTotalSizeBytes|是|雲端階層處理重新叫用|位元組|總計|伺服器重新叫用的資料大小總計|ServerResourceId、ServerName|
 
 
@@ -2228,42 +2274,46 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|---|
-|OrchestrationActivityRunsEnded|否|活動執行結束|計數|總計|成功、失敗或已取消的協調流程活動計數|Result、FailureType、Activity、ActivityType、Pipeline|
-|OrchestrationPipelineRunsEnded|否|管線執行結束|計數|總計|成功、失敗或已取消之協調流程管線執行的計數|Result、FailureType、Pipeline|
-|OrchestrationTriggersEnded|否|觸發程式已結束|計數|總計|成功、失敗或已取消之協調流程觸發程式的計數|Result、FailureType、Trigger|
-|SQLOnDemandLoginAttempts|否|登入嘗試|計數|總計|成功或失敗的登入嘗試計數|結果|
-|SQLOnDemandQueriesEnded|否|查詢結束|計數|總計|成功、失敗或已取消的查詢計數|結果|
-|SQLOnDemandQueryProcessedBytes|否|已處理的資料量|位元組|總計|查詢所處理的資料量|無維度|
+|BuiltinSqlPoolDataProcessedBytes|否| (位元組處理的資料) |位元組|總計|查詢所處理的資料量|無維度|
+|BuiltinSqlPoolLoginAttempts|否|登入嘗試|計數|總計|成功或失敗的登入嘗試計數|結果|
+|BuiltinSqlPoolRequestsEnded|否|要求已結束|計數|總計|成功、失敗或已取消的要求計數|結果|
+|IntegrationActivityRunsEnded|否|活動執行結束|計數|總計|成功、失敗或已取消的整合活動計數|Result、FailureType、Activity、ActivityType、Pipeline|
+|IntegrationPipelineRunsEnded|否|管線執行結束|計數|總計|成功、失敗或已取消的整合管線執行計數|Result、FailureType、Pipeline|
+|IntegrationTriggerRunsEnded|否|觸發程式執行結束|計數|總計|成功、失敗或已取消的整合觸發程式計數|Result、FailureType、Trigger|
 
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Synapse/workspace/bigDataPools
 
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|---|
-|CoresCapacity|否|核心容量|Count|最大值|核心容量|無維度|
-|MemoryCapacityGB|否|記憶體容量 (GB) |Count|最大值|記憶體容量 (GB) |無維度|
-|SparkJobsEnded|是|結束的應用程式|計數|總計|結束的應用程式計數|JobType、Jobresult.txt|
+|BigDataPoolAllocatedCores|否|虛擬核心已配置|Count|最大值|為 Apache Spark 集區配置的虛擬核心|SubmitterId|
+|BigDataPoolAllocatedMemory|否|配置給 (GB) 的記憶體|Count|最大值|配置給 Apach Spark 集區的記憶體 (GB) |SubmitterId|
+|BigDataPoolApplicationsActive|否|Active Apache Spark 應用程式|Count|Count|Active Apache Spark 集區應用程式總計|JobState|
+|BigDataPoolApplicationsEnded|否|Apache Spark 應用程式結束|Count|Count|已結束的 Apache Spark 集區應用程式計數|JobType、Jobresult.txt|
 
 
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Synapse/workspace/sqlPools
 
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|---|
+|ActiveQueries|否|現用查詢|計數|總計|使用中的查詢。 使用這個未篩選的度量，解除會顯示在系統上執行的所有使用中查詢|IsUserDefined|
 |AdaptiveCacheHitPercent|否|適應性快取命中百分比|百分比|最大值|測量工作負載使用調適型快取的程度。 使用此計量搭配快取命中百分比計量，以判斷是否要針對額外容量進行調整，或重新執行工作負載以以提供快取|無維度|
 |AdaptiveCacheUsedPercent|否|彈性快取使用百分比|百分比|最大值|測量工作負載使用調適型快取的程度。 使用此計量搭配快取使用百分比計量，以判斷是否要針對額外容量進行調整，或重新執行工作負載以以提供快取|無維度|
-|連接|是|連接|Count|總計|專用 SQL 集區的總登入計數|結果|
-|ConnectionsBlockedByFirewall|否|防火牆封鎖的連接|計數|總計|防火牆規則封鎖的連接計數。 重新流覽您專用的 SQL 集區的存取控制原則，並在計數很高時監視這些連接|無維度|
-|DWULimit|否|DWU 限制|Count|最大值|專用 SQL 集區的服務等級目標|無維度|
-|DWUUsed|否|已使用 DWU|Count|最大值|代表跨專用 SQL 集區之使用方式的高階標記法。 測量依據 DWU limit * DWU 百分比|無維度|
-|DWUUsedPercent|否|DWU 使用的百分比|百分比|最大值|代表跨專用 SQL 集區之使用方式的高階標記法。 測量方式是在 CPU 百分比與資料 IO 百分比之間取得最大值|無維度|
+|連接|是|連接|Count|總計|SQL 集區的總登入計數|結果|
+|ConnectionsBlockedByFirewall|否|防火牆封鎖的連接|計數|總計|防火牆規則封鎖的連接計數。 重新流覽您 SQL 集區的存取控制原則，並在計數很高時監視這些連線|無維度|
+|CPUPercent|否|CPU 使用百分比|百分比|最大值|SQL 集區中所有節點的 CPU 使用率|無維度|
+|DWULimit|否|DWU 限制|Count|最大值|SQL 集區的服務等級目標|無維度|
+|DWUUsed|否|已使用 DWU|Count|最大值|代表跨 SQL 集區之使用方式的高階標記法。 測量依據 DWU limit * DWU 百分比|無維度|
+|DWUUsedPercent|否|DWU 使用的百分比|百分比|最大值|代表跨 SQL 集區之使用方式的高階標記法。 測量方式是在 CPU 百分比與資料 IO 百分比之間取得最大值|無維度|
 |LocalTempDBUsedPercent|否|本機 tempdb 使用的百分比|百分比|最大值|跨所有計算節點的本機 tempdb 使用量-值每五分鐘發出一次|無維度|
-|MemoryUsedPercent|否|記憶體使用百分比|百分比|最大值|專用 SQL 集區中所有節點的記憶體使用量|無維度|
+|MemoryUsedPercent|否|記憶體使用百分比|百分比|最大值|SQL 集區中所有節點的記憶體使用量|無維度|
+|QueuedQueries|否|排入佇列的查詢|計數|總計|達到最大並行限制之後佇列的累計要求計數|IsUserDefined|
 |wlg_effective_min_resource_percent|是|有效的最低資源百分比|百分比|最小值|考慮服務層級和工作負載群組設定所允許的有效最低資源百分比設定。 有效的 min_percentage_resource 可以在較低的服務層級上調整|IsUserDefined、WorkloadGroup|
 |WLGActiveQueries|否|工作負載群組使用中查詢|計數|總計|工作負載群組內的作用中查詢。 使用這個未篩選的度量，解除會顯示在系統上執行的所有使用中查詢|IsUserDefined、WorkloadGroup|
 |WLGActiveQueriesTimeouts|否|工作負載群組查詢逾時|計數|總計|查詢已超時的工作負載群組。只有當查詢開始執行時，此計量所報告的查詢超時才會 (它不包含因為鎖定或資源等候而等待的時間) |IsUserDefined、WorkloadGroup|
 |WLGAllocationByMaxResourcePercent|否|依最大資源百分比配置的工作負載群組|百分比|最大值|顯示相對於每個工作負載群組的有效上限資源百分比的資源配置百分比。 此度量可提供工作負載群組的有效使用率|IsUserDefined、WorkloadGroup|
 |WLGAllocationBySystemPercent|否|依系統百分比配置的工作負載群組|百分比|最大值|相對於整個系統的資源配置百分比|IsUserDefined、WorkloadGroup|
-|WLGEffectiveCapResourcePercent|是|有效的容量資源百分比|百分比|最大值|工作負載群組的有效 cap 資源百分比。 如果有其他 min_percentage_resource > 0 的工作負載群組，effective_cap_percentage_resource 會按比例減少|IsUserDefined、WorkloadGroup|
+|WLGEffectiveCapResourcePercent|否|有效的容量資源百分比|百分比|最大值|工作負載群組的有效 cap 資源百分比。 如果有其他 min_percentage_resource > 0 的工作負載群組，effective_cap_percentage_resource 會按比例減少|IsUserDefined、WorkloadGroup|
 |WLGQueuedQueries|否|已排入佇列的工作負載群組查詢|計數|總計|達到最大並行限制之後佇列的累計要求計數|IsUserDefined、WorkloadGroup|
 
 
@@ -2318,7 +2368,7 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |Network Out|是|Network Out|位元組|總計|傳輸流量的總網路輸送量。|無維度|
 |NetworkInBytesPerSecond|是|網路輸入位元組數/秒|每秒位元組|Average|接收流量的平均網路輸送量。|無維度|
 |NetworkOutBytesPerSecond|是|網路輸出位元組數/秒|每秒位元組|Average|傳輸流量的平均網路輸送量。|無維度|
-|CPU 百分比|是|Percentage CPU|百分比|Average|CPU 使用率。 此值會回報100%，表示系統上的所有處理器核心。 舉例來說，使用50% 的四核心系統的雙向 VM 完全使用兩個核心。|無維度|
+|Percentage CPU|是|Percentage CPU|百分比|Average|CPU 使用率。 此值會回報100%，表示系統上的所有處理器核心。 舉例來說，使用50% 的四核心系統的雙向 VM 完全使用兩個核心。|無維度|
 |PercentageCpuReady|是|CPU 已就緒百分比|毫秒|總計|[就緒時間] 是等候 CPU () 在過去的更新間隔內變成可用的時間。|無維度|
 
 
@@ -2326,26 +2376,26 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|---|
-|ActiveRequests|是|使用中的要求|Count|總計|使用中的要求|執行個體|
-|AverageResponseTime|是|平均回應時間|秒|Average|平均回應時間|執行個體|
-|BytesReceived|是|資料輸入|位元組|總計|資料輸入|執行個體|
-|BytesSent|是|資料輸出|位元組|總計|資料輸出|執行個體|
-|CpuPercentage|是|CPU 百分比|百分比|Average|CPU 百分比|執行個體|
-|DiskQueueLength|是|磁碟佇列長度|Count|Average|磁碟佇列長度|執行個體|
-|Http101|是|Http 101|Count|總計|Http 101|執行個體|
-|Http2xx|是|Http 2xx|Count|總計|Http 2xx|執行個體|
-|Http3xx|是|Http 3xx|Count|總計|Http 3xx|執行個體|
-|Http401|是|Http 401|Count|總計|Http 401|執行個體|
-|Http403|是|Http 403|Count|總計|Http 403|執行個體|
-|Http404|是|Http 404|Count|總計|Http 404|執行個體|
-|Http406|是|Http 406|Count|總計|Http 406|執行個體|
-|Http4xx|是|Http 4xx|Count|總計|Http 4xx|執行個體|
-|Http5xx|是|Http 伺服器錯誤|Count|總計|Http 伺服器錯誤|執行個體|
-|HttpQueueLength|是|Http 佇列長度|Count|Average|Http 佇列長度|執行個體|
+|ActiveRequests|是|使用中的要求 (已淘汰) |計數|總計|使用中的要求|執行個體|
+|AverageResponseTime|是| (已淘汰的平均回應時間) |秒|Average|前端用來服務要求的平均時間（以秒為單位）。|執行個體|
+|BytesReceived|是|資料輸入|位元組|總計|在所有前端（MiB）中使用的平均連入頻寬。|執行個體|
+|BytesSent|是|資料輸出|位元組|總計|在所有前端（MiB）中使用的平均連入頻寬。|執行個體|
+|CpuPercentage|是|CPU 百分比|百分比|Average|在前端的所有實例上使用的平均 CPU。|執行個體|
+|DiskQueueLength|是|磁碟佇列長度|Count|Average|儲存體上已排入佇列的平均讀取和寫入要求數目。 磁片佇列長度很高，表示應用程式可能因為磁片 i/o 過多而變慢。|執行個體|
+|Http101|是|Http 101|Count|總計|導致 HTTP 狀態碼101的要求計數。|執行個體|
+|Http2xx|是|Http 2xx|Count|總計|導致 HTTP 狀態碼 = 200 但 < 300 的要求計數。|執行個體|
+|Http3xx|是|Http 3xx|Count|總計|導致 HTTP 狀態碼 = 300 但 < 400 的要求計數。|執行個體|
+|Http401|是|Http 401|Count|總計|導致 HTTP 401 狀態碼的要求計數。|執行個體|
+|Http403|是|Http 403|Count|總計|導致 HTTP 403 狀態碼的要求計數。|執行個體|
+|Http404|是|Http 404|Count|總計|導致 HTTP 404 狀態碼的要求計數。|執行個體|
+|Http406|是|Http 406|Count|總計|導致 HTTP 406 狀態碼的要求計數。|執行個體|
+|Http4xx|是|Http 4xx|Count|總計|導致 HTTP 狀態碼 = 400 但 < 500 的要求計數。|執行個體|
+|Http5xx|是|Http 伺服器錯誤|Count|總計|導致 HTTP 狀態碼 = 500 但 < 600 的要求計數。|執行個體|
+|HttpQueueLength|是|Http 佇列長度|Count|Average|必須在履行前排入佇列的平均 HTTP 要求數目。 HTTP 佇列長度很大或不斷增加是方案負載過重的徵兆。|執行個體|
 |LargeAppServicePlanInstances|是|大型 App Service 方案背景工作角色|Count|Average|大型 App Service 方案背景工作角色|無維度|
 |MediumAppServicePlanInstances|是|中型 App Service 方案背景工作角色|Count|Average|中型 App Service 方案背景工作角色|無維度|
-|MemoryPercentage|是|記憶體百分比|百分比|Average|記憶體百分比|執行個體|
-|Requests|是|Requests|Count|總計|Requests|執行個體|
+|MemoryPercentage|是|記憶體百分比|百分比|Average|在前端的所有實例上使用的平均記憶體。|執行個體|
+|Requests|是|Requests|Count|總計|要求總數 (不論其導致的 HTTP 狀態碼為何)。|執行個體|
 |SmallAppServicePlanInstances|是|小型 App Service 方案背景工作角色|Count|Average|小型 App Service 方案背景工作角色|無維度|
 |TotalFrontEnds|是|前端總數|Count|Average|前端總數|無維度|
 
@@ -2354,8 +2404,8 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|---|
-|CpuPercentage|是|CPU 百分比|百分比|Average|CPU 百分比|執行個體|
-|MemoryPercentage|是|記憶體百分比|百分比|Average|記憶體百分比|執行個體|
+|CpuPercentage|是|CPU 百分比|百分比|Average|在背景工作集區的所有實例上使用的平均 CPU。|執行個體|
+|MemoryPercentage|是|記憶體百分比|百分比|Average|在背景工作集區的所有實例上使用的平均記憶體。|執行個體|
 |WorkersAvailable|是|可用的背景工作角色|Count|Average|可用的背景工作角色|無維度|
 |WorkersTotal|是|背景工作角色總數|Count|Average|背景工作角色總數|無維度|
 |WorkersUsed|是|已使用的背景工作角色|Count|Average|已使用的背景工作角色|無維度|
@@ -2365,12 +2415,12 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|---|
-|BytesReceived|是|資料輸入|位元組|總計|資料輸入|執行個體|
-|BytesSent|是|資料輸出|位元組|總計|資料輸出|執行個體|
-|CpuPercentage|是|CPU 百分比|百分比|Average|CPU 百分比|執行個體|
-|DiskQueueLength|是|磁碟佇列長度|Count|Average|磁碟佇列長度|執行個體|
-|HttpQueueLength|是|Http 佇列長度|Count|Average|Http 佇列長度|執行個體|
-|MemoryPercentage|是|記憶體百分比|百分比|Average|記憶體百分比|執行個體|
+|BytesReceived|是|資料輸入|位元組|總計|方案的所有執行個體使用的平均連入頻寬。|執行個體|
+|BytesSent|是|資料輸出|位元組|總計|方案的所有執行個體使用的平均連出頻寬。|執行個體|
+|CpuPercentage|是|CPU 百分比|百分比|Average|方案的所有執行個體使用的平均 CPU。|執行個體|
+|DiskQueueLength|是|磁碟佇列長度|Count|Average|儲存體上已排入佇列的平均讀取和寫入要求數目。 磁片佇列長度很高，表示應用程式可能因為磁片 i/o 過多而變慢。|執行個體|
+|HttpQueueLength|是|Http 佇列長度|Count|Average|必須在履行前排入佇列的平均 HTTP 要求數目。 HTTP 佇列長度很大或不斷增加是方案負載過重的徵兆。|執行個體|
+|MemoryPercentage|是|記憶體百分比|百分比|Average|方案的所有執行個體使用的平均記憶體。|執行個體|
 |SocketInboundAll|是|SocketInboundAll|Count|Average|SocketInboundAll|執行個體|
 |SocketLoopback|是|SocketLoopback|Count|Average|SocketLoopback|執行個體|
 |SocketOutboundAll|是|SocketOutboundAll|Count|Average|SocketOutboundAll|執行個體|
@@ -2386,129 +2436,97 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |TcpSynSent|是|已傳送的 TCP 同步|Count|Average|已傳送的 TCP 同步|執行個體|
 |TcpTimeWait|是|TCP 等候時間|Count|Average|TCP 等候時間|執行個體|
 
-## <a name="microsoftwebsites-excluding-functions"></a>Microsoft.Web/sites (不包括函式) 
 
-> [!NOTE]
-> **檔案系統使用** 方式是全域推出的新計量，除非您已列入個人預覽版的允許清單中，否則不會有任何資料。
-
-> [!IMPORTANT]
-> **平均回應時間** 將會被取代，以避免與計量匯總混淆。 使用 **回應時間** 取代。
+## <a name="microsoftwebsites"></a>Microsoft.Web/sites
 
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|---|
-|AppConnections|是|連接|Count|Average|連接|執行個體|
-|AverageMemoryWorkingSet|是|平均記憶體工作集|位元組|Average|平均記憶體工作集|執行個體|
-|AverageResponseTime|是|**(已淘汰** 的平均回應時間) |秒|Average|平均回應時間|執行個體|
-|BytesReceived|是|資料輸入|位元組|總計|資料輸入|執行個體|
-|BytesSent|是|資料輸出|位元組|總計|資料輸出|執行個體|
-|CpuTime|是|CPU 時間|秒|總計|CPU 時間|執行個體|
-|CurrentAssemblies|是|目前的組件|Count|Average|目前的組件|執行個體|
-|FileSystemUsage|是|檔案系統使用量|位元組|Average|檔案系統使用量|無維度|
-|Gen0Collections|是|Gen 0 記憶體回收|Count|總計|Gen 0 記憶體回收|執行個體|
-|Gen1Collections|是|Gen 1 記憶體回收|Count|總計|Gen 1 記憶體回收|執行個體|
-|Gen2Collections|是|Gen 2 記憶體回收|Count|總計|Gen 2 記憶體回收|執行個體|
-|處理|是|控制代碼計數|Count|Average|控制代碼計數|執行個體|
-|HealthCheckStatus|是|健康情況檢查狀態|Count|Average|健康情況檢查狀態|執行個體|
-|Http101|是|Http 101|Count|總計|Http 101|執行個體|
-|Http2xx|是|Http 2xx|Count|總計|Http 2xx|執行個體|
-|Http3xx|Http 3xx|Count|總計|Http 3xx|執行個體|
-|Http401|是|Http 401|Count|總計|Http 401|執行個體|
-|Http403|是|Http 403|Count|總計|Http 403|執行個體|
-|Http404|是|Http 404|Count|總計|Http 404|執行個體|
-|Http406|是|Http 406|Count|總計|Http 406|執行個體|
-|Http4xx|是|Http 4xx|Count|總計|Http 4xx|執行個體|
-|Http5xx|是|Http 伺服器錯誤|Count|總計|Http 伺服器錯誤|執行個體|
-|HttpResponseTime|是|回應時間|秒|Average|回應時間|執行個體|
-|IoOtherBytesPerSecond|是|每秒的 IO 其他位元組數|每秒位元組|總計|每秒的 IO 其他位元組數|執行個體|
-|IoOtherOperationsPerSecond|是|每秒的 IO 其他作業數|每秒位元組|總計|每秒的 IO 其他作業數|執行個體|
-|IoReadBytesPerSecond|是|每秒的 IO 讀取位元組數|每秒位元組|總計|每秒的 IO 讀取位元組數|執行個體|
-|IoReadOperationsPerSecond|是|每秒的 IO 讀取作業數|每秒位元組|總計|每秒的 IO 讀取作業數|執行個體|
-|IoWriteBytesPerSecond|是|每秒的 IO 寫入位元組數|每秒位元組|總計|每秒的 IO 寫入位元組數|執行個體|
-|IoWriteOperationsPerSecond|是|每秒的 IO 寫入作業數|每秒位元組|總計|每秒的 IO 寫入作業數|執行個體|
-|MemoryWorkingSet|是|記憶體工作集|位元組|Average|記憶體工作集|執行個體|
-|PrivateBytes|是|私用位元組|位元組|Average|私用位元組|執行個體|
-|Requests|是|Requests|Count|總計|Requests|執行個體|
-|RequestsInApplicationQueue|是|應用程式佇列中的要求數|Count|Average|應用程式佇列中的要求數|執行個體|
-|Threads|是|執行緒計數|Count|Average|執行緒計數|執行個體|
-|TotalAppDomains|是|應用程式網域總計|Count|Average|應用程式網域總計|執行個體|
-|TotalAppDomainsUnloaded|是|已卸載的應用程式網域總計|Count|Average|已卸載的應用程式網域總計|執行個體|
-
-## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (函式)
-
-> [!NOTE]
-> **檔案系統使用** 方式是全域推出的新計量，除非您已列入個人預覽版的允許清單中，否則不會有任何資料。
-
-|計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
-|---|---|---|---|---|---|---|
-|AverageMemoryWorkingSet|是|平均記憶體工作集|位元組|Average|平均記憶體工作集|執行個體|
-|BytesReceived|是|資料輸入|位元組|總計|資料輸入|執行個體|
-|BytesSent|是|資料輸出|位元組|總計|資料輸出|執行個體|
-|CurrentAssemblies|是|目前的組件|Count|Average|目前的組件|執行個體|
-|FileSystemUsage|是|檔案系統使用量|位元組|Average|檔案系統使用量|無維度|
+|AppConnections|是|連接|Count|Average|存在於沙箱 (w3wp.exe 及其子處理序) 中的已繫結通訊端數目。 建立已繫結通訊端時，會透過呼叫 bind()/connect() API 來建立，然後保留直到使用 CloseHandle()/closesocket() 來關閉上述通訊端為止。|執行個體|
+|AverageMemoryWorkingSet|是|平均記憶體工作集|位元組|Average|應用程式使用的平均記憶體數量 (以 MiB 為單位)。|執行個體|
+|AverageResponseTime|是| (已淘汰的平均回應時間) |秒|Average|應用程式服務要求所花費的平均時間（以秒為單位）。|執行個體|
+|BytesReceived|是|資料輸入|位元組|總計|應用程式所耗用的連入頻寬量 (MiB)。|執行個體|
+|BytesSent|是|資料輸出|位元組|總計|應用程式所耗用的連出頻寬量 (MiB)。|執行個體|
+|CpuTime|是|CPU 時間|秒|總計|應用程式所耗用的 CPU 數量 (以秒為單位)。 如需此度量的詳細資訊。 請參閱 https://docs.microsoft.com/azure/app-service/web-sites-monitor#cpu-time-vs-cpu-percentage (cpu 時間與 cpu 百分比) 。|執行個體|
+|CurrentAssemblies|是|目前的組件|Count|Average|在此應用程式的所有 AppDomain 載入的目前組件數目。|執行個體|
+|FileSystemUsage|是|檔案系統使用量|位元組|Average|應用程式所耗用的檔案系統配額百分比。|無維度|
 |FunctionExecutionCount|是|函式執行計數|Count|總計|函式執行計數|執行個體|
-|FunctionExecutionUnits|是|函式執行單位|Count|總計|[函式執行單位](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ#how-can-i-view-graphs-of-execution-count-and-gb-seconds)|執行個體|
-|Gen0Collections|是|Gen 0 記憶體回收|Count|總計|Gen 0 記憶體回收|執行個體|
-|Gen1Collections|是|Gen 1 記憶體回收|Count|總計|Gen 1 記憶體回收|執行個體|
-|Gen2Collections|是|Gen 2 記憶體回收|Count|總計|Gen 2 記憶體回收|執行個體|
+|FunctionExecutionUnits|是|函式執行單位|Count|總計|函式執行單位|執行個體|
+|Gen0Collections|是|Gen 0 記憶體回收|Count|總計|自應用程式處理序啟動後，對層代 0 物件進行記憶體回收的次數。 較高層代的 GC 包含所有較低層代的 GC。|執行個體|
+|Gen1Collections|是|Gen 1 記憶體回收|Count|總計|自應用程式處理序啟動後，對層代 1 物件進行記憶體回收的次數。 較高層代的 GC 包含所有較低層代的 GC。|執行個體|
+|Gen2Collections|是|Gen 2 記憶體回收|Count|總計|自應用程式處理序啟動後，對層代 2 物件進行記憶體回收的次數。|執行個體|
+|處理|是|控制代碼計數|Count|Average|應用程式處理序目前開啟的控制代碼總數。|執行個體|
 |HealthCheckStatus|是|健康情況檢查狀態|Count|Average|健康情況檢查狀態|執行個體|
-|Http5xx|是|Http 伺服器錯誤|Count|總計|Http 伺服器錯誤|執行個體|
-|IoOtherBytesPerSecond|是|每秒的 IO 其他位元組數|每秒位元組|總計|每秒的 IO 其他位元組數|執行個體|
-|IoOtherOperationsPerSecond|是|每秒的 IO 其他作業數|每秒位元組|總計|每秒的 IO 其他作業數|執行個體|
-|IoReadBytesPerSecond|是|每秒的 IO 讀取位元組數|每秒位元組|總計|每秒的 IO 讀取位元組數|執行個體|
-|IoReadOperationsPerSecond|是|每秒的 IO 讀取作業數|每秒位元組|總計|每秒的 IO 讀取作業數|執行個體|
-|IoWriteBytesPerSecond|是|每秒的 IO 寫入位元組數|每秒位元組|總計|每秒的 IO 寫入位元組數|執行個體|
-|IoWriteOperationsPerSecond|是|每秒的 IO 寫入作業數|每秒位元組|總計|每秒的 IO 寫入作業數|執行個體|
-|MemoryWorkingSet|是|記憶體工作集|位元組|Average|記憶體工作集|執行個體|
-|PrivateBytes|是|私用位元組|位元組|Average|私用位元組|執行個體|
-|RequestsInApplicationQueue|是|應用程式佇列中的要求數|Count|Average|應用程式佇列中的要求數|執行個體|
-|TotalAppDomains|是|應用程式網域總計|Count|Average|應用程式網域總計|執行個體|
-|TotalAppDomainsUnloaded|是|已卸載的應用程式網域總計|Count|Average|已卸載的應用程式網域總計|執行個體|
+|Http101|是|Http 101|Count|總計|導致 HTTP 狀態碼101的要求計數。|執行個體|
+|Http2xx|是|Http 2xx|Count|總計|導致 HTTP 狀態碼 = 200 但 < 300 的要求計數。|執行個體|
+|Http3xx|是|Http 3xx|Count|總計|導致 HTTP 狀態碼 = 300 但 < 400 的要求計數。|執行個體|
+|Http401|是|Http 401|Count|總計|導致 HTTP 401 狀態碼的要求計數。|執行個體|
+|Http403|是|Http 403|Count|總計|導致 HTTP 403 狀態碼的要求計數。|執行個體|
+|Http404|是|Http 404|Count|總計|導致 HTTP 404 狀態碼的要求計數。|執行個體|
+|Http406|是|Http 406|Count|總計|導致 HTTP 406 狀態碼的要求計數。|執行個體|
+|Http4xx|是|Http 4xx|Count|總計|導致 HTTP 狀態碼 = 400 但 < 500 的要求計數。|執行個體|
+|Http5xx|是|Http 伺服器錯誤|Count|總計|導致 HTTP 狀態碼 = 500 但 < 600 的要求計數。|執行個體|
+|HttpResponseTime|是|回應時間|秒|Average|應用程式處理要求所花費的時間（以秒為單位）。|執行個體|
+|IoOtherBytesPerSecond|是|每秒的 IO 其他位元組數|每秒位元組|總計|應用程式進程發出位元組給不牽涉到資料的 i/o 作業（例如控制作業）的速率。|執行個體|
+|IoOtherOperationsPerSecond|是|每秒的 IO 其他作業數|每秒位元組|總計|應用程式進程發出非讀取或寫入作業 i/o 作業的速率。|執行個體|
+|IoReadBytesPerSecond|是|每秒的 IO 讀取位元組數|每秒位元組|總計|應用程式處理序從 I/O 作業讀取位元組的速率。|執行個體|
+|IoReadOperationsPerSecond|是|每秒的 IO 讀取作業數|每秒位元組|總計|應用程式處理序發出讀取 I/O 作業的速率。|執行個體|
+|IoWriteBytesPerSecond|是|每秒的 IO 寫入位元組數|每秒位元組|總計|應用程式處理序將位元組寫入至 I/O 作業的速率。|執行個體|
+|IoWriteOperationsPerSecond|是|每秒的 IO 寫入作業數|每秒位元組|總計|應用程式處理序發出寫入 I/O 作業的速率。|執行個體|
+|MemoryWorkingSet|是|記憶體工作集|位元組|Average|應用程式目前使用的記憶體數量 (MiB)。|執行個體|
+|PrivateBytes|是|私用位元組|位元組|Average|私用位元組是指應用程式進程已配置且無法與其他進程共用的目前記憶體大小（以位元組為單位）。|執行個體|
+|Requests|是|Requests|Count|總計|要求總數 (不論其導致的 HTTP 狀態碼為何)。|執行個體|
+|RequestsInApplicationQueue|是|應用程式佇列中的要求數|Count|Average|應用程式要求佇列中的要求數目。|執行個體|
+|執行緒|是|執行緒計數|Count|Average|應用程式處理序中目前作用中的執行緒數目。|執行個體|
+|TotalAppDomains|是|應用程式網域總計|Count|Average|在此應用程式中載入的目前 AppDomain 數目。|執行個體|
+|TotalAppDomainsUnloaded|是|已卸載的應用程式網域總計|Count|Average|自應用程式啟動後，已卸載的 AppDomain 總數。|執行個體|
+
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft.Web/sites/slots
 
 |計量|是否可透過診斷設定匯出？|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|---|
-|AppConnections|是|連接|Count|Average|連接|執行個體|
-|AverageMemoryWorkingSet|是|平均記憶體工作集|位元組|Average|平均記憶體工作集|執行個體|
-|AverageResponseTime|是|平均回應時間|秒|Average|平均回應時間|執行個體|
-|BytesReceived|是|資料輸入|位元組|總計|資料輸入|執行個體|
-|BytesSent|是|資料輸出|位元組|總計|資料輸出|執行個體|
-|CpuTime|是|CPU 時間|秒|總計|CPU 時間|執行個體|
-|CurrentAssemblies|是|目前的組件|Count|Average|目前的組件|執行個體|
-|FileSystemUsage|是|檔案系統使用量|位元組|Average|檔案系統使用量|無維度|
+|AppConnections|是|連接|Count|Average|存在於沙箱 (w3wp.exe 及其子處理序) 中的已繫結通訊端數目。 建立已繫結通訊端時，會透過呼叫 bind()/connect() API 來建立，然後保留直到使用 CloseHandle()/closesocket() 來關閉上述通訊端為止。|執行個體|
+|AverageMemoryWorkingSet|是|平均記憶體工作集|位元組|Average|應用程式使用的平均記憶體數量 (以 MiB 為單位)。|執行個體|
+|AverageResponseTime|是| (已淘汰的平均回應時間) |秒|Average|應用程式服務要求所花費的平均時間（以秒為單位）。|執行個體|
+|BytesReceived|是|資料輸入|位元組|總計|應用程式所耗用的連入頻寬量 (MiB)。|執行個體|
+|BytesSent|是|資料輸出|位元組|總計|應用程式所耗用的連出頻寬量 (MiB)。|執行個體|
+|CpuTime|是|CPU 時間|秒|總計|應用程式所耗用的 CPU 數量 (以秒為單位)。 如需此度量的詳細資訊。 請參閱 https://docs.microsoft.com/azure/app-service/web-sites-monitor#cpu-time-vs-cpu-percentage (cpu 時間與 cpu 百分比) 。|執行個體|
+|CurrentAssemblies|是|目前的組件|Count|Average|在此應用程式的所有 AppDomain 載入的目前組件數目。|執行個體|
+|FileSystemUsage|是|檔案系統使用量|位元組|Average|應用程式所耗用的檔案系統配額百分比。|無維度|
 |FunctionExecutionCount|是|函式執行計數|Count|總計|函式執行計數|執行個體|
 |FunctionExecutionUnits|是|函式執行單位|Count|總計|函式執行單位|執行個體|
-|Gen0Collections|是|Gen 0 記憶體回收|Count|總計|Gen 0 記憶體回收|執行個體|
-|Gen1Collections|是|Gen 1 記憶體回收|Count|總計|Gen 1 記憶體回收|執行個體|
-|Gen2Collections|是|Gen 2 記憶體回收|Count|總計|Gen 2 記憶體回收|執行個體|
-|處理|是|控制代碼計數|Count|Average|控制代碼計數|執行個體|
+|Gen0Collections|是|Gen 0 記憶體回收|Count|總計|自應用程式處理序啟動後，對層代 0 物件進行記憶體回收的次數。 較高層代的 GC 包含所有較低層代的 GC。|執行個體|
+|Gen1Collections|是|Gen 1 記憶體回收|Count|總計|自應用程式處理序啟動後，對層代 1 物件進行記憶體回收的次數。 較高層代的 GC 包含所有較低層代的 GC。|執行個體|
+|Gen2Collections|是|Gen 2 記憶體回收|Count|總計|自應用程式處理序啟動後，對層代 2 物件進行記憶體回收的次數。|執行個體|
+|處理|是|控制代碼計數|Count|Average|應用程式處理序目前開啟的控制代碼總數。|執行個體|
 |HealthCheckStatus|是|健康情況檢查狀態|Count|Average|健康情況檢查狀態|執行個體|
-|Http101|是|Http 101|Count|總計|Http 101|執行個體|
-|Http2xx|是|Http 2xx|Count|總計|Http 2xx|執行個體|
-|Http3xx|是|Http 3xx|Count|總計|Http 3xx|執行個體|
-|Http401|是|Http 401|Count|總計|Http 401|執行個體|
-|Http403|是|Http 403|Count|總計|Http 403|執行個體|
-|Http404|是|Http 404|Count|總計|Http 404|執行個體|
-|Http406|是|Http 406|Count|總計|Http 406|執行個體|
-|Http4xx|是|Http 4xx|Count|總計|Http 4xx|執行個體|
-|Http5xx|是|Http 伺服器錯誤|Count|總計|Http 伺服器錯誤|執行個體|
-|HttpResponseTime|是|回應時間|秒|Average|回應時間|執行個體|
-|IoOtherBytesPerSecond|是|每秒的 IO 其他位元組數|每秒位元組|總計|每秒的 IO 其他位元組數|執行個體|
-|IoOtherOperationsPerSecond|是|每秒的 IO 其他作業數|每秒位元組|總計|每秒的 IO 其他作業數|執行個體|
-|IoReadBytesPerSecond|是|每秒的 IO 讀取位元組數|每秒位元組|總計|每秒的 IO 讀取位元組數|執行個體|
-|IoReadOperationsPerSecond|是|每秒的 IO 讀取作業數|每秒位元組|總計|每秒的 IO 讀取作業數|執行個體|
-|IoWriteBytesPerSecond|是|每秒的 IO 寫入位元組數|每秒位元組|總計|每秒的 IO 寫入位元組數|執行個體|
-|IoWriteOperationsPerSecond|是|每秒的 IO 寫入作業數|每秒位元組|總計|每秒的 IO 寫入作業數|執行個體|
-|MemoryWorkingSet|是|記憶體工作集|位元組|Average|記憶體工作集|執行個體|
-|PrivateBytes|是|私用位元組|位元組|Average|私用位元組|執行個體|
-|Requests|是|Requests|Count|總計|Requests|執行個體|
-|RequestsInApplicationQueue|是|應用程式佇列中的要求數|Count|Average|應用程式佇列中的要求數|執行個體|
-|Threads|是|執行緒計數|Count|Average|執行緒計數|執行個體|
-|TotalAppDomains|是|應用程式網域總計|Count|Average|應用程式網域總計|執行個體|
-|TotalAppDomainsUnloaded|是|已卸載的應用程式網域總計|Count|Average|已卸載的應用程式網域總計|執行個體|
+|Http101|是|Http 101|Count|總計|導致 HTTP 狀態碼101的要求計數。|執行個體|
+|Http2xx|是|Http 2xx|Count|總計|導致 HTTP 狀態碼 = 200 但 < 300 的要求計數。|執行個體|
+|Http3xx|是|Http 3xx|Count|總計|導致 HTTP 狀態碼 = 300 但 < 400 的要求計數。|執行個體|
+|Http401|是|Http 401|Count|總計|導致 HTTP 401 狀態碼的要求計數。|執行個體|
+|Http403|是|Http 403|Count|總計|導致 HTTP 403 狀態碼的要求計數。|執行個體|
+|Http404|是|Http 404|Count|總計|導致 HTTP 404 狀態碼的要求計數。|執行個體|
+|Http406|是|Http 406|Count|總計|導致 HTTP 406 狀態碼的要求計數。|執行個體|
+|Http4xx|是|Http 4xx|Count|總計|導致 HTTP 狀態碼 = 400 但 < 500 的要求計數。|執行個體|
+|Http5xx|是|Http 伺服器錯誤|Count|總計|導致 HTTP 狀態碼 = 500 但 < 600 的要求計數。|執行個體|
+|HttpResponseTime|是|回應時間|秒|Average|應用程式處理要求所花費的時間（以秒為單位）。|執行個體|
+|IoOtherBytesPerSecond|是|每秒的 IO 其他位元組數|每秒位元組|總計|應用程式進程發出位元組給不牽涉到資料的 i/o 作業（例如控制作業）的速率。|執行個體|
+|IoOtherOperationsPerSecond|是|每秒的 IO 其他作業數|每秒位元組|總計|應用程式進程發出非讀取或寫入作業 i/o 作業的速率。|執行個體|
+|IoReadBytesPerSecond|是|每秒的 IO 讀取位元組數|每秒位元組|總計|應用程式處理序從 I/O 作業讀取位元組的速率。|執行個體|
+|IoReadOperationsPerSecond|是|每秒的 IO 讀取作業數|每秒位元組|總計|應用程式處理序發出讀取 I/O 作業的速率。|執行個體|
+|IoWriteBytesPerSecond|是|每秒的 IO 寫入位元組數|每秒位元組|總計|應用程式處理序將位元組寫入至 I/O 作業的速率。|執行個體|
+|IoWriteOperationsPerSecond|是|每秒的 IO 寫入作業數|每秒位元組|總計|應用程式處理序發出寫入 I/O 作業的速率。|執行個體|
+|MemoryWorkingSet|是|記憶體工作集|位元組|Average|應用程式目前使用的記憶體數量 (MiB)。|執行個體|
+|PrivateBytes|是|私用位元組|位元組|Average|私用位元組是指應用程式進程已配置且無法與其他進程共用的目前記憶體大小（以位元組為單位）。|執行個體|
+|Requests|是|Requests|Count|總計|要求總數 (不論其導致的 HTTP 狀態碼為何)。|執行個體|
+|RequestsInApplicationQueue|是|應用程式佇列中的要求數|Count|Average|應用程式要求佇列中的要求數目。|執行個體|
+|執行緒|是|執行緒計數|Count|Average|應用程式處理序中目前作用中的執行緒數目。|執行個體|
+|TotalAppDomains|是|應用程式網域總計|Count|Average|在此應用程式中載入的目前 AppDomain 數目。|執行個體|
+|TotalAppDomainsUnloaded|是|已卸載的應用程式網域總計|Count|Average|自應用程式啟動後，已卸載的 AppDomain 總數。|執行個體|
 
 
 ## <a name="next-steps"></a>後續步驟
-* [了解 Azure 監視器中的計量](data-platform.md)
-* [建立計量警示](alerts-overview.md)
-* [將計量匯出至儲存體、事件中樞或 Log Analytics](platform-logs-overview.md)
+
+- [了解 Azure 監視器中的計量](data-platform.md)
+- [建立計量警示](alerts-overview.md)
+- [將計量匯出至儲存體、事件中樞或 Log Analytics](platform-logs-overview.md)

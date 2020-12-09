@@ -4,12 +4,12 @@ description: 取得頁面流覽和會話計數、web 用戶端資料、單一頁
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: b109aaea1ae5e751f40b55a3c703f0739661e10d
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: f5f81fe5d3f7f7d24e5e6618ba3956b80451570c
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876204"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921870"
 ---
 # <a name="application-insights-for-web-pages"></a>適用於網頁的 Application Insights
 
@@ -19,8 +19,11 @@ Application Insights 可以使用於任何網頁 - 您剛剛新增 JavaScript �
 
 ## <a name="adding-the-javascript-sdk"></a>新增 JavaScript SDK
 
+> [!IMPORTANT]
+> 新的 Azure 區域 **需要** 使用連接字串，而不是檢測金鑰。 [連接字串](./sdk-connection-string.md?tabs=js) 會識別您想要與遙測資料相關聯的資源。 它也可讓您修改您的資源將用來做為遙測目的地的端點。 您必須複製連接字串，並將它加入應用程式的程式碼或加入環境變數。
+
 1. 首先，您需要 Application Insights 資源。 如果您還沒有資源和檢測金鑰，請遵循 [建立新的資源指示](create-new-resource.md)。
-2. 將 _檢測金鑰_ (也稱為 "iKey" ) 適用于您想要在步驟 1 (傳送 JavaScript 遙測的資源。 ) 您會將它新增至 `instrumentationKey` Application Insights JavaScript SDK 的設定。
+2. 將 _檢測金鑰_ （ (也稱為 "iKey"）複製到您要從中傳送 JavaScript 遙測 (之資源的 ) 或 [連接字串](#connection-string-setup) 。 ) 您會將它新增至 `instrumentationKey` `connectionString` Application Insights JavaScript SDK 的或設定。
 3. 透過下列兩個選項的其中一種，將 Application Insights JavaScript SDK 新增至您的網頁或應用程式：
     * [npm 設定](#npm-based-setup)
     * [JavaScript 程式碼片段](#snippet-based-setup)
@@ -40,7 +43,7 @@ npm i --save @microsoft/applicationinsights-web
 ```
 
 > [!Note]
-> **Typings 隨附于此套件**中，因此您 **不** 需要安裝個別的 Typings 套件。
+> **Typings 隨附于此套件** 中，因此您 **不** 需要安裝個別的 Typings 套件。
     
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
@@ -102,7 +105,7 @@ IE 8 (或較少的) 不支援報告 SDK 載入失敗。 這有助於減少程式
 
 每個設定選項都會在新行上顯示，如果您不想要覆寫列為 [選擇性] 的專案預設值，您可以移除該行以將所傳回頁面的結果大小降到最低。
 
-可用的設定選項為 
+可用的設定選項為
 
 | 名稱 | 類型 | 描述
 |------|------|----------------
@@ -113,16 +116,30 @@ IE 8 (或較少的) 不支援報告 SDK 載入失敗。 這有助於減少程式
 | crossOrigin | 字串 *[選用]* | 藉由包含這項設定，加入至下載 SDK 的腳本標記將會包含 crossOrigin 屬性，此字串值為。 未定義時 (預設) 不會加入任何 crossOrigin 屬性。 建議的值 (預設) 不會定義;"";或「匿名」 (所有有效值的詳細資料，請參閱[HTML 屬性： `crossorigin` ](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)檔) 
 | cfg | 物件 **[必要]** | 初始化期間傳遞至 Application Insights SDK 的設定。
 
+### <a name="connection-string-setup"></a>連接字串設定
+
+針對 NPM 或程式碼片段的設定，您也可以使用連接字串來設定 Application Insights 的實例。 只要 `instrumentationKey` 以欄位取代欄位即可 `connectionString` 。
+```js
+import { ApplicationInsights } from '@microsoft/applicationinsights-web'
+
+const appInsights = new ApplicationInsights({ config: {
+  connectionString: 'YOUR_CONNECTION_STRING_GOES_HERE'
+  /* ...Other Configuration Options... */
+} });
+appInsights.loadAppInsights();
+appInsights.trackPageView();
+```
+
 ### <a name="sending-telemetry-to-the-azure-portal"></a>將遙測傳送至 Azure 入口網站
 
-根據預設，Application Insights JavaScript SDK 會 autocollects 許多遙測專案，這些專案有助於判斷您的應用程式和基礎使用者體驗的健康情況。 其中包括：
+根據預設，Application Insights JavaScript SDK 會 autocollects 許多遙測專案，這些專案有助於判斷您的應用程式和基礎使用者體驗的健康情況。 其中包含：
 
-- 您應用程式中未攔截到的**例外**狀況，包括有關的資訊
+- 您應用程式中未攔截到的 **例外** 狀況，包括有關的資訊
     - 堆疊追蹤
     - 例外狀況詳細資料和伴隨錯誤的訊息
     - 錯誤行 & 錯誤的資料行數目
     - 引發錯誤的 URL
-- 依預設會停用您的應用程式**XHR**和**提取** (提取集合所提出的網路相依性**要求**，) 的要求，包含相關資訊
+- 依預設會停用您的應用程式 **XHR** 和 **提取** (提取集合所提出的網路相依性 **要求**，) 的要求，包含相關資訊
     - 相依性來源的 Url
     - 用來要求相依性的命令 & 方法
     - 要求的持續時間
@@ -163,8 +180,8 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | maxBatchInterval | 15000 | 傳送 (毫秒之前，批次遙測的時間長度)  |
 | disableExceptionTracking | false | 若為 true，則不會實驗自動收集例外狀況。 預設值為 false。 |
 | disableTelemetry | false | 若為 true，則不會收集或傳送遙測。 預設值為 false。 |
-| enableDebug | false | 若為 true，則不論 SDK 記錄設定為何， **內部** 偵錯工具資料都會擲回為例外狀況， **而不** 是記錄。 預設值為 false。 <br>***注意：*** 啟用此設定將會在發生內部錯誤時，導致中斷的遙測。 這有助於快速找出您的設定或使用 SDK 的問題。 如果您不想在進行偵錯工具時遺失遙測，請考慮使用 `consoleLoggingLevel` 或， `telemetryLoggingLevel` 而不是 `enableDebug` 。 |
-| loggingLevelConsole | 0 | 將 **內部** Application Insights 錯誤記錄到主控台。 <br>0：關閉、 <br>1：僅嚴重錯誤， <br>2：所有 (錯誤 & 警告)  |
+| enableDebug | false | 若為 true，則不論 SDK 記錄設定為何， **內部** 偵錯工具資料都會擲回為例外狀況， **而不** 是記錄。 預設值為 false。 <br>**_注意：_* _ 啟用這項設定時，將會在發生內部錯誤時，導致中斷的遙測。 這有助於快速找出您的設定或使用 SDK 的問題。 如果您不想在進行偵錯工具時遺失遙測，請考慮使用 `consoleLoggingLevel` 或， `telemetryLoggingLevel` 而不是 `enableDebug` 。 |
+| loggingLevelConsole | 0 | 記錄 _ *內部** Application Insights 錯誤至主控台。 <br>0：關閉、 <br>1：僅嚴重錯誤， <br>2：所有 (錯誤 & 警告)  |
 | loggingLevelTelemetry | 1 | 以遙測的形式傳送 **內部** Application Insights 錯誤。 <br>0：關閉、 <br>1：僅嚴重錯誤， <br>2：所有 (錯誤 & 警告)  |
 | diagnosticLogInterval | 10000 | 內部記錄佇列的 (內部) 輪詢間隔 (毫秒)  |
 | samplingPercentage | 100 | 將傳送的事件百分比。 預設值為100，表示傳送所有事件。 如果您想要保留大型應用程式的資料上限，請設定此設定。 |
@@ -241,7 +258,7 @@ cfg: { // Application Insights Configuration
 
 目前，我們提供個別的 [回應外掛程式](javascript-react-plugin.md)，您可以使用此 SDK 進行初始化。 它也會為您完成路由變更追蹤，以及收集其他回應特定的遙測。
 > [!NOTE]
-> `enableAutoRouteTracking: true`只有當您**未**使用回應外掛程式時，才使用。 兩者都能夠在路由變更時傳送新的 PageViews。 如果兩者都啟用，可能會傳送重複的 PageViews。
+> `enableAutoRouteTracking: true`只有當您 **未** 使用回應外掛程式時，才使用。 兩者都能夠在路由變更時傳送新的 PageViews。 如果兩者都啟用，可能會傳送重複的 PageViews。
 
 ## <a name="extensions"></a>延伸模組
 
@@ -273,7 +290,7 @@ cfg: { // Application Insights Configuration
 
 ### <a name="analytics"></a>分析
 
-若要查詢 JavaScript SDK 所收集的遙測，請選取 [ **在記錄中查看 (分析]) ** 按鈕。 藉由加入的 `where` 語句 `client_Type == "Browser"` ，您將只會看到來自 JavaScript SDK 的資料，以及其他 sdk 所收集的任何伺服器端遙測都將被排除。
+若要查詢 JavaScript SDK 所收集的遙測，請選取 [ **在記錄中查看 (分析])** 按鈕。 藉由加入的 `where` 語句 `client_Type == "Browser"` ，您將只會看到來自 JavaScript SDK 的資料，以及其他 sdk 所收集的任何伺服器端遙測都將被排除。
  
 ```kusto
 // average pageView duration by name
@@ -354,7 +371,7 @@ SDK V2 版本的重大變更：
 > - ![npm 版本](https://badge.fury.io/js/%40microsoft%2Fapplicationinsights-web.svg)
 > - ![gzip 壓縮大小](https://img.badgesize.io/https://js.monitor.azure.com/scripts/b/ai.2.min.js.svg?compression=gzip)
 > - **15 毫秒** 整體初始化時間
-> - 頁面生命週期期間缺少**零**追蹤
+> - 頁面生命週期期間缺少 **零** 追蹤
 
 ## <a name="browser-support"></a>瀏覽器支援
 

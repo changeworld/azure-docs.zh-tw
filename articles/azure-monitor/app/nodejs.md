@@ -4,12 +4,12 @@ description: 使用 Application Insights 監視 Node.js 服務的效能和診斷
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 4c350cbfdf92d19a084940941351cf1f028c93d2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7aea6c03b0ce35fa0e74c39ff5f94f714447ad6f
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186274"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920581"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>使用 Application Insights 監視 Node.js 服務和應用程式
 
@@ -25,7 +25,7 @@ Node.js SDK 可以自動監視傳入和傳出 HTTP 要求、例外狀況、和�
 
 完成下列工作來設定應用程式或服務的監視。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 開始之前，請確定您有 Azure 訂用帳戶或[免費取得一個新訂用帳戶][azure-free-offer]。 如果您的組織已經有 Azure 訂用帳戶，系統管理員可以依照 [這些指示][add-aad-user] 將您新增至該訂用帳戶。
 
@@ -40,6 +40,9 @@ Node.js SDK 可以自動監視傳入和傳出 HTTP 要求、例外狀況、和�
 ### <a name="set-up-the-nodejs-sdk"></a><a name="sdk"></a> 設定 Node.js SDK
 
 在您的應用程式中包含 SDK，以便蒐集資料。
+
+> [!IMPORTANT]
+> 新的 Azure 區域 **需要** 使用連接字串，而不是檢測金鑰。 [連接字串](./sdk-connection-string.md?tabs=nodejs) 會識別您想要與遙測資料相關聯的資源。 它也可讓您修改您的資源將用來做為遙測目的地的端點。 您必須複製連接字串，並將它加入應用程式的程式碼或加入環境變數。
 
 1. 從新建立的資源中，複製資源的檢測金鑰 (也稱為 *ikey*) 。 Application Insights 使用 ikey 來將資料對應至您的 Azure 資源。 在 SDK 可以使用您的 ikey 之前，您必須在環境變數或程式碼中指定 ikey。  
 

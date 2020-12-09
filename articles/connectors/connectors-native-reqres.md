@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/19/2020
 tags: connectors
-ms.openlocfilehash: b8f95e7e173dd6d1ad43301aab8ff3ec7cf78018
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 4997853fea97d14491bd9e9101f79f324807a6a1
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980995"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920826"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>在 Azure Logic Apps 中接收和回應輸入 HTTPS 要求
 
@@ -42,7 +42,7 @@ ms.locfileid: "94980995"
 
 此內建觸發程式會建立可透過 HTTPS *只* 處理輸入要求的手動可呼叫端點。 當呼叫端將要求傳送至此端點時， [要求觸發](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) 程式會引發並執行邏輯應用程式。 如需如何呼叫此觸發程式的詳細資訊，請參閱 [在 Azure Logic Apps 中呼叫、觸發或使用 HTTPS 端點來嵌套工作流程](../logic-apps/logic-apps-http-endpoint.md)。
 
-您的邏輯應用程式只會在 [有限的時間](../logic-apps/logic-apps-limits-and-config.md#request-limits)內將輸入要求保持開啟狀態。 假設您的邏輯應用程式包含 [回應動作](#add-response)，如果您的邏輯應用程式未在這段時間過後將回應傳回給呼叫者，則邏輯應用程式會將 `504 GATEWAY TIMEOUT` 狀態傳回給呼叫者。 如果您的邏輯應用程式未包含回應動作，您的邏輯應用程式會立即將 `202 ACCEPTED` 狀態傳回給呼叫者。
+您的邏輯應用程式只會在 [有限的時間](../logic-apps/logic-apps-limits-and-config.md#http-limits)內將輸入要求保持開啟狀態。 假設您的邏輯應用程式包含 [回應動作](#add-response)，如果您的邏輯應用程式未在這段時間過後將回應傳回給呼叫者，則邏輯應用程式會將 `504 GATEWAY TIMEOUT` 狀態傳回給呼叫者。 如果您的邏輯應用程式未包含回應動作，您的邏輯應用程式會立即將 `202 ACCEPTED` 狀態傳回給呼叫者。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 建立空白邏輯應用程式。
 
@@ -179,7 +179,7 @@ ms.locfileid: "94980995"
 
    例如，您可以[新增回應動作](#add-response)來回應要求，此動作可用來傳回自訂的回應，本主題稍後會說明。
 
-   邏輯應用程式只在[有限時間](../logic-apps/logic-apps-limits-and-config.md#request-limits)內保持開啟傳入要求。 假設邏輯應用程式工作流程包含回應動作，如果邏輯應用程式在此時間過後沒有傳回任何回應，則邏輯應用程式會將 `504 GATEWAY TIMEOUT` 傳回給呼叫者。 另外，如果邏輯應用程式不含回應動作，則邏輯應用程式會立即將 `202 ACCEPTED` 回應傳回給呼叫者。
+   邏輯應用程式只在[有限時間](../logic-apps/logic-apps-limits-and-config.md#http-limits)內保持開啟傳入要求。 假設邏輯應用程式工作流程包含回應動作，如果邏輯應用程式在此時間過後沒有傳回任何回應，則邏輯應用程式會將 `504 GATEWAY TIMEOUT` 傳回給呼叫者。 另外，如果邏輯應用程式不含回應動作，則邏輯應用程式會立即將 `202 ACCEPTED` 回應傳回給呼叫者。
 
 1. 完成後，儲存邏輯應用程式。 在設計工具的工具列上，選取 [儲存]。
 

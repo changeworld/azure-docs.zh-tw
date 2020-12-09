@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: a0b0dc8c29bcdb51f7b348dd62e3d27796819a7d
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: e0a1d8dba9ea284322584de3b4be2ae390d15fdf
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552100"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920254"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>註冊並掃描 Azure Synapse Analytics
 
@@ -22,7 +22,11 @@ ms.locfileid: "96552100"
 
 Azure Synapse Analytics (先前的 SQL DW) 支援完整和增量掃描，以捕捉中繼資料和架構。 掃描也會根據系統和自訂分類規則自動分類資料。
 
-## <a name="prerequisites"></a>先決條件
+### <a name="known-limitations"></a>已知限制
+
+Azure 範疇不支援在 Azure Synapse Analytics 中掃描[視圖](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15)
+
+## <a name="prerequisites"></a>必要條件
 
 - 註冊資料來源之前，請先建立 Azure 範疇帳戶。 如需有關建立範疇帳戶的詳細資訊，請參閱 [快速入門：建立 Azure 範疇帳戶](create-catalog-portal.md)。
 - 您必須是 Azure 範疇資料來源管理員

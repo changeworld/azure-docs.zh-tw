@@ -1,19 +1,19 @@
 ---
 title: 範本資源位置
-description: 說明如何設定 Azure Resource Manager 範本中的資源位置。
+description: 說明如何在 Azure Resource Manager 範本中設定資源位置 (ARM 範本) 。
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.custom: ''
-ms.openlocfilehash: e1310c81d7b726e9be2fe9f38a0bb8d701035ba4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a818109e6681b8d0e18de4d2d7969310582818
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613691"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922407"
 ---
 # <a name="set-resource-location-in-arm-template"></a>在 ARM 範本中設定資源位置
 
-部署 Azure Resource Manager (ARM) 範本時，您必須提供每個資源的位置。 位置不需要與資源群組位置相同的位置。
+部署 Azure Resource Manager 範本 (ARM 範本) 時，您必須提供每個資源的位置。 位置不需要與資源群組位置相同的位置。
 
 ## <a name="get-available-locations"></a>取得可用的位置
 
@@ -96,5 +96,5 @@ az provider show \
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需範本函數的完整清單，請參閱 [Azure 資源管理員範本函數](template-functions.md)。
+* 如需範本函式的完整清單，請參閱 [ARM 範本函數](template-functions.md)。
 * 如需範本檔案的詳細資訊，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。

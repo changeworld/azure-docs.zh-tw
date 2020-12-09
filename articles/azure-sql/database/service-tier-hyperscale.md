@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/19/2020
-ms.openlocfilehash: ee9bcedea15b039982e73304a25073c85b496635
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 56c3475ae6a03600723e7a12b3f3809f003ce7c4
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780048"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922271"
 ---
 # <a name="hyperscale-service-tier"></a>超大規模資料庫服務層級
 
@@ -67,11 +67,11 @@ Azure SQL Database 中的超大規模資料庫服務層級提供下列額外功�
 
 超大規模資料庫服務層級僅在[虛擬核心模型](service-tiers-vcore.md)中提供。 為配合新的架構，定價模型會與一般用途或業務關鍵服務層級稍微不同：
 
-- **計算** ：
+- **計算**：
 
   超大規模資料庫計算單位價格是按每個複本計算。 [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) 價格會自動套用到讀取縮放複本。 根據預設，我們會為每個超大規模資料庫建立一個主要複本和一個唯讀複本。  使用者可以調整包含主要自1-5 的複本總數。
 
-- **存放裝置** ：
+- **存放裝置**：
 
   您設定超大規模資料庫時，不需要指定資料大小上限。 在超大規模層中，您需支付資料庫儲存空間的費用（以實際配置為基礎）。 儲存體會在 40 GB 和 100 TB 之間自動設定，以 10 GB 為單位遞增。 如有需要，多個資料檔案可能會同時成長。 建立超大規模資料庫的起始大小為 10 GB，且每隔10分鐘就會開始增加 10 GB，直到達到 40 GB 的大小。
 
@@ -216,7 +216,7 @@ Azure SQL Database 超大規模層適用于所有區域，但預設為啟用，�
 - 美國西部
 - 美國西部 2
 
-## <a name="known-limitations"></a>已知的限制
+## <a name="known-limitations"></a>已知限制
 
 這些是超大規模服務層級目前在 GA 的限制。  我們正積極地盡可能移除這些限制。
 
@@ -231,7 +231,6 @@ Azure SQL Database 超大規模層適用于所有區域，但預設為啟用，�
 | 使用 In-Memory OLTP 物件遷移資料庫 | 超大規模支援 In-Memory OLTP 物件的子集，包括記憶體優化資料表類型、資料表變數和原生編譯模組。 不過，當要遷移的資料庫中有任何種類的 In-Memory OLTP 物件時，不支援從高階和業務關鍵服務層級遷移至超大規模。 若要將這類資料庫移轉至超大規模，必須卸載所有 In-Memory OLTP 物件及其相依性。 遷移資料庫之後，就可以重新建立這些物件。 超大規模目前不支援持久性和非持久性記憶體優化資料表，且必須重新建立為磁片資料表。|
 | 異地複寫  | 您還無法設定 Azure SQL Database 超大規模的異地複寫。 |
 | 資料庫複製 | 超大規模上的資料庫複製現在處於公開預覽狀態。 |
-| TDE/AKV 整合 | 使用 Azure Key Vault (的透明資料庫加密通常稱為「自備金鑰」或「BYOK) 」，目前處於公開預覽狀態。 |
 | 智慧型資料庫功能 | 除了 [強制執行計畫] 選項之外，超大規模上還不支援所有其他自動調整選項：可能會顯示選項已啟用，但不會有任何建議或動作。 |
 | 查詢效能深入解析 | 超大規模資料庫目前不支援查詢效能深入解析。 |
 | 壓縮資料庫 | 超大規模資料庫目前不支援 DBCC SHRINKDATABASE 或 DBCC SHRINKFILE。 |

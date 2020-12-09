@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/14/2018
-ms.openlocfilehash: 8d1ff372009c6158f2148847dd77126bcb4d189f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/09/2020
+ms.openlocfilehash: d89fd8b4102333603fa71b2cc28a49b732b91b08
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461229"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920891"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>使用控制資料表從資料庫進行大量複製
 
@@ -44,7 +44,7 @@ ms.locfileid: "96461229"
 - *Data_Destination_Container* 是目的地存放區中資料複製目標的根資料夾路徑。 
 - *Data_Destination_Directory* 是根目錄下將資料複製到目的地存放區的目錄路徑。 
 
-最後三個參數會定義目的地存放區的路徑，只有在您所選目的地是檔案型儲存體時，才會顯示這些參數。 如果選擇「Azure Synapse Analytics (先前稱為 SQL DW)」作為目的地存放區，則不需要這些參數。 但是，Azure Synapse Analytics 中的資料表名稱和架構必須與源資料庫中的資料表名稱和架構相同。
+最後三個參數會定義目的地存放區的路徑，只有在您所選目的地是檔案型儲存體時，才會顯示這些參數。 如果您選擇 [Azure Synapse Analytics] 作為目的地存放區，則不需要這些參數。 但是，Azure Synapse Analytics 中的資料表名稱和架構必須與源資料庫中的資料表名稱和架構相同。
 
 ## <a name="how-to-use-this-solution-template"></a>如何使用此解決方案範本
 
@@ -94,7 +94,7 @@ ms.locfileid: "96461229"
 
     ![檢閱結果](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9.  (選擇性) 如果您選擇「Azure Synapse Analytics (先前的 SQL DW) 」作為資料目的地，則必須輸入 Azure Blob 儲存體的連線以進行預備，如 Azure Synapse Analytics Polybase 所要求。 此範本會自動為 Blob 儲存體產生容器路徑。 檢查是否已在管線執行之後建立容器。
+9.  (選擇性) 如果您選擇 "Azure Synapse Analytics" 作為資料目的地，則必須輸入 Azure Blob 儲存體的連線以進行預備，如 Azure Synapse Analytics Polybase 所要求。 此範本會自動為 Blob 儲存體產生容器路徑。 檢查是否已在管線執行之後建立容器。
     
     ![Polybase 設定](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        

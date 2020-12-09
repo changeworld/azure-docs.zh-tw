@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 11/19/2020
-ms.openlocfilehash: dc09edee08e97e354ef006416e2d5c0a333a3980
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.date: 12/07/2020
+ms.openlocfilehash: 154be7e4340c798ba1d014b210361f666864797e
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917812"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921524"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps 的限制和設定資訊
 
@@ -19,7 +19,7 @@ ms.locfileid: "94917812"
 
 <a name="definition-limits"></a>
 
-## <a name="definition-limits"></a>定義限制
+## <a name="logic-app-definition-limits"></a>邏輯應用程式定義限制
 
 以下是單一邏輯應用程式定義的限制：
 
@@ -37,7 +37,9 @@ ms.locfileid: "94917812"
 | 最大數目 `parameters` | 50 | |
 | 最大數目 `outputs` | 10 | |
 | `trackedProperties` 的大小上限 | 16,000 個字元 |
-| 內嵌程式碼動作-最大程式碼字元數 | 1024個字元 <p>若為100000個字元的限制，請使用 Visual Studio Code 和 [預覽 **Azure Logic Apps** 擴充](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)功能來建立邏輯應用程式。 |
+| 內嵌程式碼動作-最大程式碼字元數 | 1024個字元 | 若要將此限制延伸為100000個字元，請 [使用 Azure 入口網站](create-stateful-stateless-workflows-azure-portal.md)或 [使用 Visual Studio Code 和 **Azure Logic Apps (preview)** 擴充](create-stateful-stateless-workflows-visual-studio-code.md)功能，透過 **邏輯應用程式** 建立邏輯應用程式 (Preview) 資源類型。 |
+| 內嵌程式碼動作-執行程式碼的持續時間上限 | 5 秒 | 若要將此限制延長為15秒，請 [使用 Azure 入口網站](create-stateful-stateless-workflows-azure-portal.md)或 [使用 Visual Studio Code 和 **Azure Logic Apps (preview)** 延伸](create-stateful-stateless-workflows-visual-studio-code.md)模組，透過 **邏輯應用程式** 建立邏輯應用程式 (預覽版) 資源類型。 |
+||||
 
 <a name="run-duration-retention-limits"></a>
 
@@ -211,21 +213,23 @@ ms.locfileid: "94917812"
 
 Azure Logic Apps 透過閘道支援寫入作業，包括插入和更新。 不過，這些作業的[承載大小有限制](/data-integration/gateway/service-gateway-onprem#considerations)。
 
-<a name="request-limits"></a>
+<a name="http-limits"></a>
 
 ## <a name="http-limits"></a>HTTP 限制
 
-以下是單一傳出或傳入 HTTP 呼叫的限制：
+以下是單一輸入或輸出呼叫的限制：
 
-#### <a name="timeout"></a>逾時
+<a name="http-timeout-limits"></a>
+
+#### <a name="timeout-duration"></a>超時時間
 
 某些連接器作業會進行非同步呼叫或接聽 Webhook 要求，因此這些作業的逾時可能會超過這些限制。 如需詳細資訊，請參閱特定連接器的技術詳細資料以及[工作流程觸發程序和動作](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)。
 
-| 名稱 | 多租用戶限制 | 整合服務環境限制 | 注意 |
-|------|--------------------|---------------------------------------|-------|
-| 輸出要求 | 120 秒 <br>(2 分鐘) | 240 秒 <br>(4 分鐘) | 輸出要求的範例包括 HTTP 觸發程序發出的呼叫。 <p><p>**提示**：對於執行時間較久的作業，請使用 [非同步輪詢模式](../logic-apps/logic-apps-create-api-app.md#async-pattern)或 [until 迴圈](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)。 若要在您呼叫另一個具有[可呼叫端點](logic-apps-http-endpoint.md)的邏輯應用程式時解決逾時限制，可以改為使用內建的 Azure Logic Apps 動作，而您可以在連接器選擇器中的 [內建] 底下找到此動作。 |
-| 輸入要求 | 120 秒 <br>(2 分鐘) | 240 秒 <br>(4 分鐘) | 輸入要求的範例包括要求觸發程序和 Webhook 觸發程序所接收的呼叫。 <p><p>**注意**：為了讓原始呼叫者取得回應，除非您以巢狀工作流程的形式呼叫另一個邏輯應用程式，否則回應中的所有步驟都必須在限制時間內完成。 如需詳細資訊，請參閱[呼叫、觸發或巢狀邏輯應用程式](../logic-apps/logic-apps-http-endpoint.md)。 |
-|||||
+| 名稱 | Logic Apps (多租使用者)  | Logic Apps (preview)  | 整合服務環境 | 注意 |
+|------|---------------------------|----------------------|---------------------------------|-------|
+| 輸出要求 | 120 秒 <br>(2 分鐘) | 230 秒 <br> (3.9 分鐘)  | 240 秒 <br>(4 分鐘) | 輸出要求的範例包括 HTTP 觸發程式或動作所發出的呼叫。 如需預覽版本的詳細資訊，請參閱 [Azure Logic Apps 預覽](logic-apps-overview-preview.md)。 <p><p>**提示**：對於執行時間較久的作業，請使用 [非同步輪詢模式](../logic-apps/logic-apps-create-api-app.md#async-pattern)或 [until 迴圈](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)。 若要在您呼叫另一個具有[可呼叫端點](logic-apps-http-endpoint.md)的邏輯應用程式時解決逾時限制，可以改為使用內建的 Azure Logic Apps 動作，而您可以在連接器選擇器中的 [內建] 底下找到此動作。 |
+| 輸入要求 | 120 秒 <br>(2 分鐘) | 230 秒 <br> (3.9 分鐘)  | 240 秒 <br>(4 分鐘) | 輸入要求的範例包括要求觸發程式、HTTP Webhook 觸發程式和 HTTP Webhook 動作所收到的呼叫。 如需預覽版本的詳細資訊，請參閱 [Azure Logic Apps 預覽](logic-apps-overview-preview.md)。 <p><p>**注意**：為了讓原始呼叫者取得回應，除非您以巢狀工作流程的形式呼叫另一個邏輯應用程式，否則回應中的所有步驟都必須在限制時間內完成。 如需詳細資訊，請參閱[呼叫、觸發或巢狀邏輯應用程式](../logic-apps/logic-apps-http-endpoint.md)。 |
+||||||
 
 <a name="message-size-limits"></a>
 
@@ -266,6 +270,7 @@ Azure Logic Apps 透過閘道支援寫入作業，包括插入和更新。 不�
 | ---- | ----- | ----- |
 | Azure AD 授權原則 | 5 | |
 | 每個授權原則宣告數 | 10 | |
+| 索取值-最大字元數 | 150 |
 ||||
 
 <a name="custom-connector-limits"></a>
@@ -338,7 +343,7 @@ Azure Logic Apps 透過閘道支援寫入作業，包括插入和更新。 不�
 | 構件 | 限制 | 注意 |
 | -------- | ----- | ----- |
 | 組件 | 8 MB | 若要上傳大於 2 MB 的檔案，請使用 [Azure 儲存體帳戶和 Blob 容器](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 |
-| 對應 (XSLT 檔案) | 8 MB | 若要上傳大於 2 MB 的檔案，請使用 [Azure Logic Apps REST API - 對應](/rest/api/logic/maps/createorupdate)。 <p><p>**注意**：對應可以成功處理的資料或記錄數量是以 Azure Logic Apps 中的訊息大小和動作逾時限制為基礎。 例如，如果您使用 HTTP 動作，則根據 [HTTP 訊息大小和逾時限制](#request-limits)，若作業在 HTTP 逾時限制內完成，對應可以處理最大到 HTTP 訊息大小限制的資料。 |
+| 對應 (XSLT 檔案) | 8 MB | 若要上傳大於 2 MB 的檔案，請使用 [Azure Logic Apps REST API - 對應](/rest/api/logic/maps/createorupdate)。 <p><p>**注意**：對應可以成功處理的資料或記錄數量是以 Azure Logic Apps 中的訊息大小和動作逾時限制為基礎。 例如，如果您使用 HTTP 動作，則根據 [HTTP 訊息大小和逾時限制](#http-limits)，若作業在 HTTP 逾時限制內完成，對應可以處理最大到 HTTP 訊息大小限制的資料。 |
 | 結構描述 | 8 MB | 若要上傳大於 2 MB 的檔案，請使用 [Azure 儲存體帳戶和 Blob 容器](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 |
 ||||
 

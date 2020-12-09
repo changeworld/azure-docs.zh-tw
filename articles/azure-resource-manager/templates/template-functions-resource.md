@@ -1,18 +1,18 @@
 ---
 title: 範本函式 - 資源
-description: 描述 Azure Resource Manager 範本中用來擷取資源相關值的函式。
+description: 描述在 Azure Resource Manager 範本中使用的函式 (ARM 範本) 取得資源的值。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 3b5a2642ebbabac61e46f4d9b0a2dfec9610a673
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 166e9104a9d791ac6d82ed0e8e2d3659efd2ae0d
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902658"
+ms.locfileid: "96919988"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 範本的資源函式
 
-Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 範本中取得資源值：
+Resource Manager 提供下列函式，以在 Azure Resource Manager 範本中取得資源值 (ARM 範本) ：
 
 * [extensionResourceId](#extensionresourceid)
 * [list*](#list)
@@ -1632,7 +1632,7 @@ resource myPolicyAssignment 'Microsoft.Authorization/policyAssignments@2019-09-0
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需有關 Azure Resource Manager 範本中各區段的說明，請參閱[編寫 Azure Resource Manager 範本](template-syntax.md)。
-* 若要合併多個範本，請參閱[透過 Azure Resource Manager 使用連結的範本](linked-templates.md)。
-* 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](copy-resources.md)。
-* 若要了解如何部署已建立的範本，請參閱[使用 Azure Resource Manager 範本部署應用程式](deploy-powershell.md)。
+* 如需 ARM 範本中各區段的說明，請參閱 [瞭解 arm 範本的結構和語法](template-syntax.md)。
+* 若要合併多個範本，請參閱 [在部署 Azure 資源時使用連結和嵌套範本](linked-templates.md)。
+* 若要在建立資源類型時反覆運算指定的次數，請參閱 [ARM 範本中的資源反復](copy-resources.md)專案。
+* 若要瞭解如何部署已建立的範本，請參閱 [使用 ARM 範本部署資源和 Azure PowerShell](deploy-powershell.md)。

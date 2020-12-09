@@ -1,18 +1,18 @@
 ---
 title: 範本函式-物件
-description: 描述在 Azure Resource Manager 範本中用來處理物件的函數。
+description: 描述在 Azure Resource Manager 範本中使用的函式 (ARM 範本) 用來處理物件。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 7ed317b3506f00e71bbf97d5564cacec05032744
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5e13177db1a7cf2f19a822363cb3884474566add
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004512"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920442"
 ---
 # <a name="object-functions-for-arm-templates"></a>ARM 範本的物件函式
 
-Resource Manager 提供數個函式來處理 Azure Resource Manager (ARM) 範本中的物件。
+Resource Manager 提供數個函式，可在 Azure Resource Manager 範本中使用物件 (ARM 範本) ：
 
 * [contains](#contains)
 * [createObject](#createobject)
@@ -131,11 +131,11 @@ output arrayFalse bool = contains(arrayToTest, 'four')
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
-| stringFalse | Bool | False |
+| stringFalse | Bool | 否 |
 | objectTrue | Bool | True |
-| objectFalse | Bool | False |
+| objectFalse | Bool | 否 |
 | arrayTrue | Bool | True |
-| arrayFalse | Bool | False |
+| arrayFalse | Bool | 否 |
 
 ## <a name="createobject"></a>createObject
 
@@ -394,7 +394,7 @@ output arrayOutput array = intersection(firstArray, secondArray)
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| objectOutput | Object | {"one": "a", "three": "c"} |
+| objectOutput | 物件 | {"one": "a", "three": "c"} |
 | arrayOutput | Array | ["two", "three"] |
 
 <a id="json"></a>
@@ -523,12 +523,12 @@ output concatObjectOutput object = json(concat('{"a": "', concatValue, '"}'))
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
 | emptyObjectOutput | 布林值 | True |
-| objectOutput | Object | {"a": "b"} |
-| stringOutput | String | test |
+| objectOutput | 物件 | {"a": "b"} |
+| stringOutput | 字串 | test |
 | booleanOutput | 布林值 | True |
 | intOutput | 整數 | 3 |
 | arrayOutput | Array | [ 1, 2, 3 ] |
-| concatObjectOutput | Object | {"a"： "示範值"} |
+| concatObjectOutput | 物件 | {"a"： "示範值"} |
 
 ## <a name="length"></a>長度
 
@@ -787,9 +787,9 @@ output arrayOutput array = union(firstArray, secondArray)
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| objectOutput | Object | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
+| objectOutput | 物件 | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
 | arrayOutput | Array | ["one", "two", "three", "four"] |
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需 Azure Resource Manager 範本中各區段的說明，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
+* 如需 ARM 範本中各區段的說明，請參閱 [瞭解 arm 範本的結構和語法](template-syntax.md)。

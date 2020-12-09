@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: a807c76a08bf075973cd0f358c67b61b10b40ba0
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 9003366ec0d64057ca7426d5b6b99986bc21fc9d
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552094"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920292"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>註冊和掃描內部部署 SQL server
 
@@ -32,7 +32,11 @@ SQL server 內部部署資料來源支援：
 
 - 驗證方法： SQL 驗證
 
-## <a name="prerequisites"></a>先決條件
+### <a name="known-limitations"></a>已知限制
+
+Azure 範疇不支援在 SQL Server 中掃描 [視圖](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) 。 
+
+## <a name="prerequisites"></a>必要條件
 
 - 註冊資料來源之前，請先建立 Azure 範疇帳戶。 如需有關建立範疇帳戶的詳細資訊，請參閱 [快速入門：建立 Azure 範疇帳戶](create-catalog-portal.md)。
 

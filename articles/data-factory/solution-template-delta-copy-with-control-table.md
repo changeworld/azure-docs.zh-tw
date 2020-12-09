@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/24/2018
-ms.openlocfilehash: e7b7acb7e67d809229825b3d393fe49af12b3642
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/09/2020
+ms.openlocfilehash: 3f15ffd6f7ed784cce398d419e013a69c60289d8
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461210"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921802"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>從具有控制資料表的資料庫進行差異複製
 
@@ -45,7 +45,7 @@ ms.locfileid: "96461210"
 - *Data_Source_WaterMarkColumn* 是用來識別新的或更新的資料列之來源資料表中的資料行名稱。 此資料行的類型通常是 *datetime*、 *INT* 或類似的。
 - *Data_Destination_Container* 是要將資料複製到目的地存放區中之位置的根路徑。
 - *Data_Destination_Directory* 是在目的地存放區中將資料複製到其中的根目錄下的目錄路徑。
-- *Data_Destination_Table_Name* 是將資料複製到目的地存放區中的位置， (適用于選取 [Azure Synapse Analytics (先前的 SQL DW) ] 作為 [資料目的地]) 。
+- *Data_Destination_Table_Name* 是當選取 [Azure Synapse Analytics] 做為資料目的地) 時，將資料複製到目的地存放區中的位置 (適用的位置。
 - *Data_Destination_Folder_Path* 是當選取 [檔案系統] 或 [Azure Data Lake Storage Gen1] 做為資料目的地) 時，將資料複製到目的地存放區中的位置 (適用的位置。
 - *Control_Table_Table_Name* 是儲存高水位線值的外部控制資料表。
 - *Control_Table_Column_Name* 是外部控制資料表中儲存高水位線值的資料行。

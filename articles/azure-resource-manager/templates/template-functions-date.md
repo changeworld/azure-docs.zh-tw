@@ -1,18 +1,18 @@
 ---
 title: 範本函式-日期
-description: 描述在 Azure Resource Manager 範本中用來處理日期的函式。
+description: 描述在 Azure Resource Manager 範本中使用的函式 (ARM 範本) 以使用日期。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 83e601adb649098f7a4e19cb71170b96a3287d9b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 58d865f109ecca2629b89eeb55e554743824c195
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004580"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920498"
 ---
 # <a name="date-functions-for-arm-templates"></a>ARM 範本的日期函數
 
-Resource Manager 提供下列函式來處理 Azure Resource Manager (ARM) 範本中的日期：
+Resource Manager 提供下列函式來處理 Azure Resource Manager 範本中的日期 (ARM 範本) ：
 
 * [dateTimeAdd](#datetimeadd)
 * [utcNow](#utcnow)
@@ -96,9 +96,9 @@ output add1HourOutput string = add1Hour
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| add3YearsOutput | String | 4/7/2023 2:53:14 PM |
-| subtract9DaysOutput | String | 3/29/2020 2:53:14 PM |
-| add1HourOutput | String | 4/7/2020 3:53:14 PM |
+| add3YearsOutput | 字串 | 4/7/2023 2:53:14 PM |
+| subtract9DaysOutput | 字串 | 3/29/2020 2:53:14 PM |
+| add1HourOutput | 字串 | 4/7/2020 3:53:14 PM |
 
 下一個範例範本顯示如何設定自動化排程的開始時間。
 
@@ -182,7 +182,7 @@ resource scheduler 'Microsoft.Automation/automationAccounts/schedules@2015-10-31
 
 `utcNow(format)`
 
-以指定的格式傳回目前的 (UTC) 日期時間值。 如果未提供格式，則會使用 ISO 8601 (yyyyMMddTHHmmssZ) 格式。 **此函數只能用於參數的預設值。**
+以指定的格式傳回目前的 (UTC) 日期時間值。 如果未提供格式，則會使用 ISO 8601 (`yyyyMMddTHHmmssZ`) 格式。 **此函數只能用於參數的預設值。**
 
 ### <a name="parameters"></a>參數
 
@@ -326,4 +326,4 @@ output utcShortOutput string = utcShort
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需 Azure Resource Manager 範本中各區段的說明，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
+* 如需 ARM 範本中各區段的說明，請參閱 [瞭解 arm 範本的結構和語法](template-syntax.md)。

@@ -1,18 +1,18 @@
 ---
 title: 範本函式-陣列
-description: 描述在 Azure Resource Manager 範本中用來處理陣列的函數。
+description: 描述在 Azure Resource Manager 範本中使用的函式 (ARM 範本) 來處理陣列。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 85f910f6143fd16f996a200172d0efd852897d8c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 40a6815bb10ce9725405d68498b9a554706f3af8
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004614"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920544"
 ---
 # <a name="array-functions-for-arm-templates"></a>ARM 範本的陣列函數
 
-Resource Manager 提供數個函式來處理 Azure Resource Manager (ARM) 範本中的陣列。
+Resource Manager 提供數個函式來處理 Azure Resource Manager 範本中的陣列 (ARM 範本) ：
 
 * [array](#array)
 * [concat](#concat)
@@ -242,7 +242,7 @@ output concatOutput string = concat(prefix, '-', uniqueString(resourceGroup().id
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| concatOutput | String | prefix-5yj4yjf5mbg72 |
+| concatOutput | 字串 | prefix-5yj4yjf5mbg72 |
 
 ## <a name="contains"></a>contains
 
@@ -350,11 +350,11 @@ output arrayFalse bool = contains(arrayToTest, 'four')
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
-| stringFalse | Bool | False |
+| stringFalse | Bool | 否 |
 | objectTrue | Bool | True |
-| objectFalse | Bool | False |
+| objectFalse | Bool | 否 |
 | arrayTrue | Bool | True |
-| arrayFalse | Bool | False |
+| arrayFalse | Bool | 否 |
 
 ## <a name="createarray"></a>createArray
 
@@ -587,8 +587,8 @@ output stringOutput string = first('One Two Three')
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| arrayOutput | String | one |
-| stringOutput | String | O |
+| arrayOutput | 字串 | one |
+| stringOutput | 字串 | O |
 
 ## <a name="intersection"></a>交集
 
@@ -695,7 +695,7 @@ output arrayOutput array = intersection(firstArray, secondArray)
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| objectOutput | Object | {"one": "a", "three": "c"} |
+| objectOutput | 物件 | {"one": "a", "three": "c"} |
 | arrayOutput | Array | ["two", "three"] |
 
 ## <a name="last"></a>last
@@ -764,8 +764,8 @@ output stringOutput string = last('One Two three')
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| arrayOutput | String | three |
-| stringOutput | String | e |
+| arrayOutput | 字串 | three |
+| stringOutput | 字串 | e |
 
 ## <a name="length"></a>長度
 
@@ -889,7 +889,7 @@ output objectLength int = length(objectToTest)
 
 ---
 
-如需有關在此陣列中使用函式的詳細資訊，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](copy-resources.md)。
+如需搭配使用此函式與陣列的詳細資訊，請參閱 [ARM 範本中的資源反復](copy-resources.md)專案。
 
 ## <a name="max"></a>max
 
@@ -961,7 +961,7 @@ output intOutput int = max(0,3,2,5,4)
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
 
-## <a name="min"></a>分鐘
+## <a name="min"></a>Min
 
 `min(arg1)`
 
@@ -1181,7 +1181,7 @@ output stringOutput string = skip(testString, charactersToSkip)
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
-| stringOutput | String | two three |
+| stringOutput | 字串 | two three |
 
 ## <a name="take"></a>take
 
@@ -1269,7 +1269,7 @@ output stringOutput string = take(testString, charactersToTake)
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
-| stringOutput | String | on |
+| stringOutput | 字串 | on |
 
 ## <a name="union"></a>union
 
@@ -1376,9 +1376,9 @@ output arrayOutput array = union(firstArray, secondArray)
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| objectOutput | Object | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
+| objectOutput | 物件 | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
 | arrayOutput | Array | ["one", "two", "three", "four"] |
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需 Azure Resource Manager 範本中各區段的說明，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
+* 如需 ARM 範本中各區段的說明，請參閱 [瞭解 arm 範本的結構和語法](template-syntax.md)。

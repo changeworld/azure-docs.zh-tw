@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 02d9e65f5422b7b12900d051f01c1d6f55e8685b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 61ff5d05eb74804af69b90d839115a8468619275
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844671"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921712"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>設定 Azure 檔案同步網路端點
 Azure 檔案儲存體和 Azure 檔案同步提供兩種主要類型的端點，用來存取 Azure 檔案共用： 
@@ -34,7 +34,7 @@ Azure 檔案儲存體和 Azure 檔案同步提供兩種主要類型的端點，�
 
 此外：
 - 如果您想要使用 Azure PowerShell，請[安裝最新版本](/powershell/azure/install-az-ps)。
-- 如果您想要使用 Azure CLI，請[安裝最新版本](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+- 如果您想要使用 Azure CLI，請[安裝最新版本](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
 
 ## <a name="create-the-private-endpoints"></a>建立私人端點
 當您建立 Azure 資源的私人端點時，便會部署下列資源：
@@ -588,7 +588,7 @@ done
 Azure 檔案同步可讓您僅透過私人端點來限制對特定虛擬網路的存取；Azure 檔案同步不支援服務端點，以限制對特定虛擬網路的公用端點的存取。 這表示儲存體同步服務的公用端點的兩個狀態分別為「已啟用」和「已停用」。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
-這不可能通過 Azure 入口網站。 請選取 [Azure PowerShell] 或 [Azure CLI] 索引標籤指示，取得如何停用儲存體同步服務公用端點的相關指示。 
+這不可能通過 Azure 入口網站。 請選取 [Azure PowerShell] 索引標籤，以取得如何停用儲存體同步服務公用端點的指示。 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 若要停用對儲存體同步服務的公用端點的存取權，我們會將儲存體同步服務上的 `incomingTrafficPolicy` 屬性設定為 `AllowVirtualNetworksOnly`。 如果您想要啟用儲存體同步服務的公用端點的存取權，請改為將 `incomingTrafficPolicy` 設定為 `AllowAllTraffic`。 請記得取代 `<storage-sync-service-resource-group>` 和 `<storage-sync-service>`。
@@ -603,23 +603,11 @@ $storageSyncService = Get-AzResource `
         -ResourceType "Microsoft.StorageSync/storageSyncServices"
 
 $storageSyncService.Properties.incomingTrafficPolicy = "AllowVirtualNetworksOnly"
-$storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Force
+$storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Force -UsePatchSemantics
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-若要停用對儲存體同步服務的公用端點的存取權，我們會將儲存體同步服務上的 `incomingTrafficPolicy` 屬性設定為 `AllowVirtualNetworksOnly`。 如果您想要啟用儲存體同步服務的公用端點的存取權，請改為將 `incomingTrafficPolicy` 設定為 `AllowAllTraffic`。 請記得取代 `<storage-sync-service-resource-group>` 和 `<storage-sync-service>`。
-
-```bash
-storageSyncServiceResourceGroupName="<storage-sync-service-resource-group>"
-storageSyncServiceName="<storage-sync-service>"
-
-az resource update \
-        --resource-group $storageSyncServiceResourceGroupName \
-        --name $storageSyncServiceName \
-        --resource-type "Microsoft.StorageSync/storageSyncServices" \
-        --set "properties.incomingTrafficPolicy=AllowVirtualNetworksOnly" \
-        --output none
-```
+<a name="azure-cli-does-not-support-setting-the-incomingtrafficpolicy-property-on-the-storage-sync-service-please-select-the-azure-powershell-tab-to-get-instructions-on-how-to-disable-the-storage-sync-service-public-endpoint"></a>Azure CLI 不支援在 `incomingTrafficPolicy` 儲存體同步服務上設定屬性。 請選取 [Azure PowerShell] 索引標籤，以取得如何停用儲存體同步服務公用端點的指示。
 ---
 
 ## <a name="see-also"></a>另請參閱

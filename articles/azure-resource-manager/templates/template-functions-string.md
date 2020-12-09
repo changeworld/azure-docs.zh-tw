@@ -1,18 +1,18 @@
 ---
 title: 範本函式-字串
-description: 描述 Azure Resource Manager 範本中用來使用字串的函式。
+description: 描述在 Azure Resource Manager 範本中使用的函式 (ARM 範本) 來處理字串。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: e94037b40f4937a40e00215aa7a3f99fd3280b49
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a70aaff91f701c0ba8d26db2488b82e052dd905d
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96005991"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920001"
 ---
 # <a name="string-functions-for-arm-templates"></a>ARM 範本的字串函式
 
-Resource Manager 提供下列函式，可在您的 Azure Resource Manager (ARM) 範本中使用字串：
+Resource Manager 提供下列函式，可在 Azure Resource Manager 範本中使用字串 (ARM 範本) ：
 
 * [base64](#base64)
 * [base64ToJson](#base64tojson)
@@ -129,9 +129,9 @@ output toJsonOutput object = base64ToJson(base64Object)
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | one, two, three |
-| toJsonOutput | Object | {"one": "a", "two": "b"} |
+| base64Output | 字串 | b25lLCB0d28sIHRocmVl |
+| toStringOutput | 字串 | one, two, three |
+| toJsonOutput | 物件 | {"one": "a", "two": "b"} |
 
 ## <a name="base64tojson"></a>base64ToJson
 
@@ -213,9 +213,9 @@ output toJsonOutput object = base64ToJson(base64Object)
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | one, two, three |
-| toJsonOutput | Object | {"one": "a", "two": "b"} |
+| base64Output | 字串 | b25lLCB0d28sIHRocmVl |
+| toStringOutput | 字串 | one, two, three |
+| toJsonOutput | 物件 | {"one": "a", "two": "b"} |
 
 ## <a name="base64tostring"></a>base64ToString
 
@@ -296,9 +296,9 @@ output toJsonOutput object = base64ToJson(base64Object)
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | one, two, three |
-| toJsonOutput | Object | {"one": "a", "two": "b"} |
+| base64Output | 字串 | b25lLCB0d28sIHRocmVl |
+| toStringOutput | 字串 | one, two, three |
+| toJsonOutput | 物件 | {"one": "a", "two": "b"} |
 
 ## <a name="concat"></a>concat
 
@@ -359,7 +359,7 @@ output concatOutput string = concat(prefix, '-', uniqueString(resourceGroup().id
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| concatOutput | String | prefix-5yj4yjf5mbg72 |
+| concatOutput | 字串 | prefix-5yj4yjf5mbg72 |
 
 下一個[範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json)顯示如何結合兩個陣列。
 
@@ -529,11 +529,11 @@ output arrayFalse bool = contains(arrayToTest, 'four')
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
-| stringFalse | Bool | False |
+| stringFalse | Bool | 否 |
 | objectTrue | Bool | True |
-| objectFalse | Bool | False |
+| objectFalse | Bool | 否 |
 | arrayTrue | Bool | True |
-| arrayFalse | Bool | False |
+| arrayFalse | Bool | 否 |
 
 ## <a name="datauri"></a>dataUri
 
@@ -601,8 +601,8 @@ output toStringOutput string = dataUriToString(dataFormattedString)
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | String | Hello, World! |
+| dataUriOutput | 字串 | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | 字串 | Hello, World! |
 
 ## <a name="datauritostring"></a>dataUriToString
 
@@ -670,8 +670,8 @@ output toStringOutput string = dataUriToString(dataFormattedString)
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | String | Hello, World! |
+| dataUriOutput | 字串 | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | 字串 | Hello, World! |
 
 ## <a name="empty"></a>empty
 
@@ -830,10 +830,10 @@ output endsFalse bool = endsWith('abcdef', 'e')
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
-| startsFalse | Bool | False |
+| startsFalse | Bool | 否 |
 | endsTrue | Bool | True |
 | endsCapTrue | Bool | True |
-| endsFalse | Bool | False |
+| endsFalse | Bool | 否 |
 
 ## <a name="first"></a>first
 
@@ -901,8 +901,8 @@ output stringOutput string = first('One Two Three')
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| arrayOutput | String | one |
-| stringOutput | String | O |
+| arrayOutput | 字串 | one |
+| stringOutput | 字串 | O |
 
 ## <a name="format"></a>format
 
@@ -973,7 +973,7 @@ output formatTest string = format('{0}, {1}. Formatted number: {2:N0}', greeting
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| formatTest | String | Hello，User。 格式化數位：8175133 |
+| formatTest | 字串 | Hello，User。 格式化數位：8175133 |
 
 ## <a name="guid"></a>guid
 
@@ -1237,8 +1237,8 @@ output stringOutput string = last('One Two Three')
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| arrayOutput | String | three |
-| stringOutput | String | e |
+| arrayOutput | 字串 | three |
+| stringOutput | 字串 | e |
 
 ## <a name="lastindexof"></a>lastIndexOf
 
@@ -1613,7 +1613,7 @@ output stringOutput string = padLeft(testString, 10, '0')
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| stringOutput | String | 0000000123 |
+| stringOutput | 字串 | 0000000123 |
 
 ## <a name="replace"></a>取代
 
@@ -1678,8 +1678,8 @@ output secondOutput string = replace(testString, '1234', 'xxxx')
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| firstOutput | String | 1231231234 |
-| secondOutput | String | 123-123-xxxx |
+| firstOutput | 字串 | 1231231234 |
+| secondOutput | 字串 | 123-123-xxxx |
 
 ## <a name="skip"></a>skip
 
@@ -1767,7 +1767,7 @@ output stringOutput string = skip(testString, charactersToSkip)
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
-| stringOutput | String | two three |
+| stringOutput | 字串 | two three |
 
 ## <a name="split"></a>split
 
@@ -1923,7 +1923,7 @@ output endsFalse bool = endsWith('abcdef', 'e')
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
-| startsFalse | Bool | False |
+| startsFalse | Bool | 否 |
 | endsTrue | Bool | True |
 | endsCapTrue | Bool | True |
 | endsFalse | Bool | False |
@@ -2018,9 +2018,9 @@ output intOutput string = string(testInt)
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| objectOutput | String | {"valueA":10,"valueB":"Example Text"} |
-| arrayOutput | String | ["a","b","c"] |
-| intOutput | String | 5 |
+| objectOutput | 字串 | {"valueA":10,"valueB":"Example Text"} |
+| arrayOutput | 字串 | ["a","b","c"] |
+| intOutput | 字串 | 5 |
 
 ## <a name="substring"></a>substring
 
@@ -2106,7 +2106,7 @@ output substringOutput string = substring(testString, 4, 3)
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| substringOutput | String | two |
+| substringOutput | 字串 | two |
 
 ## <a name="take"></a>take
 
@@ -2194,7 +2194,7 @@ output stringOutput string = take(testString, charactersToSkip)
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
-| stringOutput | String | on |
+| stringOutput | 字串 | on |
 
 ## <a name="tolower"></a>toLower
 
@@ -2257,8 +2257,8 @@ output toUpperOutput string = toUpper(testString)
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| toLowerOutput | String | one two three |
-| toUpperOutput | String | ONE TWO THREE |
+| toLowerOutput | 字串 | one two three |
+| toUpperOutput | 字串 | ONE TWO THREE |
 
 ## <a name="toupper"></a>toUpper
 
@@ -2321,8 +2321,8 @@ output toUpperOutput string = toUpper(testString)
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| toLowerOutput | String | one two three |
-| toUpperOutput | String | ONE TWO THREE |
+| toLowerOutput | 字串 | one two three |
+| toUpperOutput | 字串 | ONE TWO THREE |
 
 ## <a name="trim"></a>修剪
 
@@ -2380,7 +2380,7 @@ output return string = trim(testString)
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| return | String | one two three |
+| return | 字串 | one two three |
 
 ## <a name="uniquestring"></a>uniqueString
 
@@ -2615,9 +2615,9 @@ output toStringOutput string = uriComponentToString(uriEncoded)
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
-| componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
-| toStringOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
+| uriOutput | 字串 | `http://contoso.com/resources/nested/azuredeploy.json` |
+| componentOutput | 字串 | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
+| toStringOutput | 字串 | `http://contoso.com/resources/nested/azuredeploy.json` |
 
 ## <a name="uricomponent"></a>uriComponent
 
@@ -2685,9 +2685,9 @@ output toStringOutput string = uriComponentToString(uriEncoded)
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
-| componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
-| toStringOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
+| uriOutput | 字串 | `http://contoso.com/resources/nested/azuredeploy.json` |
+| componentOutput | 字串 | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
+| toStringOutput | 字串 | `http://contoso.com/resources/nested/azuredeploy.json` |
 
 ## <a name="uricomponenttostring"></a>uriComponentToString
 
@@ -2755,13 +2755,13 @@ output toStringOutput string = uriComponentToString(uriEncoded)
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
-| componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
-| toStringOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
+| uriOutput | 字串 | `http://contoso.com/resources/nested/azuredeploy.json` |
+| componentOutput | 字串 | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
+| toStringOutput | 字串 | `http://contoso.com/resources/nested/azuredeploy.json` |
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需有關 Azure Resource Manager 範本中各區段的說明，請參閱[編寫 Azure Resource Manager 範本](template-syntax.md)。
-* 若要合併多個範本，請參閱[透過 Azure Resource Manager 使用連結的範本](linked-templates.md)。
-* 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](copy-resources.md)。
-* 若要了解如何部署已建立的範本，請參閱[使用 Azure Resource Manager 範本部署應用程式](deploy-powershell.md)。
+* 如需 ARM 範本中各區段的說明，請參閱 [瞭解 arm 範本的結構和語法](template-syntax.md)。
+* 若要合併多個範本，請參閱 [在部署 Azure 資源時使用連結和嵌套範本](linked-templates.md)。
+* 若要在建立資源類型時反覆運算指定的次數，請參閱 [ARM 範本中的資源反復](copy-resources.md)專案。
+* 若要瞭解如何部署已建立的範本，請參閱 [使用 ARM 範本部署資源和 Azure PowerShell](deploy-powershell.md)。

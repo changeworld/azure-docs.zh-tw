@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
-ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d4bff4ee7980002d911426ed46ffef6fc28c43e9
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014732"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920749"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>處理 Azure Logic Apps 中的錯誤和例外狀況
 
@@ -32,10 +32,10 @@ ms.locfileid: "96014732"
 | **預設值** | 此原則會以 *指數漸增* 的間隔 (依 7.5 秒調整，但限制在 5 到 45 秒之間) 傳送最多 4 次重試。 |
 | **指數間隔**  | 此原則會先等待選自指數成長範圍內的隨機間隔時間，再傳送下一個要求。 |
 | **固定間隔**  | 此原則會先等待指定的間隔時間，再傳送下一個要求。 |
-| **None**  | 不重新傳送要求。 |
+| **無**  | 不重新傳送要求。 |
 |||
 
-如需有關重試原則限制的資訊，請參閱 [Logic Apps 限制和設定](../logic-apps/logic-apps-limits-and-config.md#request-limits)。
+如需有關重試原則限制的資訊，請參閱 [Logic Apps 限制和設定](../logic-apps/logic-apps-limits-and-config.md#http-limits)。
 
 ### <a name="change-retry-policy"></a>變更重試原則
 
@@ -71,8 +71,8 @@ ms.locfileid: "96014732"
 
 | 值 | 類型 | 描述 |
 |-------|------|-------------|
-| <*重試原則類型*> | String | 您想要使用的重試原則類型：`default`、`none`、`fixed` 或 `exponential` |
-| <*重試間隔*> | String | 值必須使用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)的重試間隔。 預設最小間隔是 `PT5S`，最大間隔則是 `PT1D`。 當您使用指數間隔原則時，您可以指定不同的最小和最大值。 |
+| <*重試原則類型*> | 字串 | 您想要使用的重試原則類型：`default`、`none`、`fixed` 或 `exponential` |
+| <*重試間隔*> | 字串 | 值必須使用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)的重試間隔。 預設最小間隔是 `PT5S`，最大間隔則是 `PT1D`。 當您使用指數間隔原則時，您可以指定不同的最小和最大值。 |
 | <*重試次數*> | 整數 | 重試次數必須介於 1 到 90 之間 |
 ||||
 
@@ -80,8 +80,8 @@ ms.locfileid: "96014732"
 
 | 值 | 類型 | 描述 |
 |-------|------|-------------|
-| <*最小間隔*> | String | 對於指數間隔原則，此為隨機選取間隔的最小間隔，且採用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
-| <*最大間隔*> | String | 對於指數間隔原則，此為隨機選取間隔的最大間隔，且採用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
+| <*最小間隔*> | 字串 | 對於指數間隔原則，此為隨機選取間隔的最小間隔，且採用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
+| <*最大間隔*> | 字串 | 對於指數間隔原則，此為隨機選取間隔的最大間隔，且採用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
 ||||
 
 以下是不同原則類型的詳細資訊。
@@ -112,7 +112,7 @@ ms.locfileid: "96014732"
 }
 ```
 
-### <a name="none"></a>None
+### <a name="none"></a>無
 
 若要將動作或觸發程序指定為不會重試失敗的要求，請將 <retry-policy-type> 設定為 `none`。
 

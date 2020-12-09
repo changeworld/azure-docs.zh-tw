@@ -6,14 +6,14 @@ ms.date: 11/22/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 25d0d409c8112292afd20f052e82494dd8e656ea
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 6bdad71f0b36995abdeb3b1edb87cbef32df8b67
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601300"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96919425"
 ---
-# <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>快速入門：開始使用 JAVA Web 專案中的 Application Insights
+# <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>快速入門：開始在 Java Web 專案中使用 Application Insights (機器翻譯)
 
 
 > [!CAUTION]
@@ -30,6 +30,8 @@ Application Insights 是一項 Web 開發人員可延伸的分析服務，可幫
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>取得 Application Insights 檢測金鑰
 
+> [!IMPORTANT]
+> 新的 Azure 區域 **需要** 使用連接字串，而不是檢測金鑰。 [連接字串](./sdk-connection-string.md?tabs=java) 會識別您想要與遙測資料相關聯的資源。 它也可讓您修改您的資源將用來做為遙測目的地的端點。 您必須複製連接字串，並將它加入應用程式的程式碼或加入環境變數。
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 在 Azure 入口網站中，建立 Application Insights 資源。 將應用程式類型設定為 Java Web 應用程式。
 
@@ -293,7 +295,7 @@ Application Insights 可讓您定期測試網站，以檢查網站運作中且�
 
 [深入瞭解如何設定可用性 web 測試。][availability]
 
-## <a name="questions-problems"></a>有任何問題嗎？ 有問題嗎？
+## <a name="questions-problems"></a>有問題嗎？ 有問題嗎？
 [疑難排解 Java](java-troubleshoot.md)
 
 ## <a name="next-steps"></a>後續步驟

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 092320db9b7fe2b1f3fe142f84ad201d40dc6e2e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1318aaf50d4f05b8a999e5661318dc83997a2f02
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492279"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920788"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 資料靜態加密
 
@@ -33,7 +33,7 @@ Microsoft Azure 包含的工具，可根據貴公司的安全性和合規性需�
 
 ## <a name="what-is-encryption-at-rest"></a>什麼是靜態加密？
 
-待用加密就是將存留的資料進行編碼 (加密)。 Azure 中的靜態加密設計是使用對稱加密，根據簡單概念模型，快速將大量資料加密及解密：
+加密是用來保護資料機密性的資料安全編碼。 Azure 中的靜態加密設計是使用對稱加密，根據簡單概念模型，快速將大量資料加密及解密：
 
 - 對稱式加密金鑰可用來在寫入儲存體時將資料加密。
 - 當資料準備好在記憶體中使用時，相同的加密金鑰可用來將資料解密。

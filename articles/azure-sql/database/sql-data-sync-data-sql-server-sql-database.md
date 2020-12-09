@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: b23b5a81fdff8a05742092f517128e08723103fc
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 55fa106f0515405dcad969f05d28e0bc7b975b40
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531134"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922304"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>什麼是適用于 Azure 的 SQL 資料同步？
 
@@ -26,7 +26,7 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您同步�
 > Azure SQL 資料同步目前不支援 Azure SQL 受控執行個體。
 
 
-## <a name="overview"></a>概觀 
+## <a name="overview"></a>總覽 
 
 資料同步是以同步處理群組的概念為基礎。 同步處理群組是您想要同步處理的資料庫群組。
 
@@ -81,6 +81,14 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您同步�
 | **優點** | - 主動-主動支援<br/>- 在內部部署與 Azure SQL Database 之間雙向進行 | - 更低的延遲性<br/>- 交易一致性<br/>- 移轉後重複使用現有的拓撲 <br/>-Azure SQL 受控執行個體支援 |
 | **缺點** | - 無交易一致性<br/>- 更高的效能影響 | -無法從 Azure SQL Database 發行 <br/>- 高維護成本 |
 
+## <a name="private-link-for-data-sync-preview"></a>資料同步 (預覽) 的 Private link
+新的 private link (preview) 功能可讓您選擇服務管理的私人端點，以在資料同步處理期間，于同步服務和成員/中樞資料庫之間建立安全連線。 服務管理的私人端點是特定虛擬網路和子網內的私人 IP 位址。 在資料同步中，服務管理的私人端點是由 Microsoft 所建立，並由資料同步服務專門用於指定的同步作業。 在設定 private link 之前，請先閱讀功能的 [一般需求](sql-data-sync-data-sql-server-sql-database.md#general-requirements) 。 
+
+![資料同步的 Private link](./media/sql-data-sync-data-sql-server-sql-database/sync-private-link-overview.png)
+
+> [!NOTE]
+> 您必須在同步處理群組部署期間，或使用 PowerShell，在 Azure 入口網站的 [ **私人端點** 連線] 頁面中手動核准服務管理的私人端點。
+
 ## <a name="get-started"></a>開始使用 
 
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>在 Azure 入口網站中設定資料同步
@@ -126,6 +134,8 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您同步�
 
 - 同步成員和中樞都必須啟用快照集隔離。 如需詳細資訊，請參閱 [SQL Server 中的快照集隔離](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)。
 
+- 若要搭配資料同步使用 private link，成員和中樞資料庫都必須裝載在 Azure (相同或不同的區域) ，在相同的雲端類型中 (例如，在公用雲端或政府雲端) 兩者中。 此外，若要使用 private link，必須為裝載中樞和成員伺服器的訂用帳戶註冊網路資源提供者。 最後，您必須在同步處理期間，于 Azure 入口網站的 [私人端點連線] 區段內或透過 PowerShell，手動核准資料同步的私人連結。 如需有關如何核准私用連結的詳細資訊，請參閱 [設定 SQL 資料同步](./sql-data-sync-sql-server-configure.md)。一旦您核准服務管理的私人端點，同步處理服務和成員/中樞資料庫之間的所有通訊都會透過私人連結進行。 您可以更新現有的同步處理群組，以啟用此功能。
+
 ### <a name="general-limitations"></a>一般限制
 
 - 資料表不能有不是主鍵的識別資料行。
@@ -148,7 +158,7 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您同步�
 
 #### <a name="unsupported-column-types"></a>不支援的資料行類型
 
-資料同步無法同步處理唯讀或系統產生的資料行。 例如︰
+資料同步無法同步處理唯讀或系統產生的資料行。 例如：
 
 - 計算資料行。
 - 適用於時態表的系統所產生的資料行。
@@ -169,6 +179,9 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您同步�
 > 如果只有一個同步群組，則在單一同步群組中最多可有 30 個端點。 如果有多個同步群組，則所有同步群組之間的端點總數不能超過 30 個。 如果資料庫屬於多個同步群組，系統會將它計算為多個端點，而不是一個。
 
 ### <a name="network-requirements"></a>網路需求
+
+> [!NOTE]
+> 如果您使用 private link，則不適用這些網路需求。 
 
 建立同步處理群組時，資料同步服務需要連接到中樞資料庫。 當您建立同步處理群組時，Azure SQL server 的設定中必須有下列 `Firewalls and virtual networks` 設定：
 

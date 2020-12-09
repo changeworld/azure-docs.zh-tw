@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: jingwang
-ms.openlocfilehash: 333a1de5977857697af87cf9d8df6750936ff932
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: afb940d63f76acce6575b74bf5a21a7fb912fc4e
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023163"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920110"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製到檔案系統或從該處複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -59,8 +59,8 @@ ms.locfileid: "96023163"
 |:--- |:--- |:--- |
 | type | 類型屬性必須設定為：**FileServer**。 | 是 |
 | 主機 | 指定想要複製之資料夾的根路徑。 針對字串中的特殊字元，請使用逸出字元 "\"。 如需範例，請參閱 [範例連結服務和資料集定義](#sample-linked-service-and-dataset-definitions) 。 | 是 |
-| userid | 指定具有伺服器存取權之使用者的識別碼。 | 是 |
-| 密碼 | 指定使用者 (userid) 的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
+| userId | 指定具有伺服器存取權之使用者的識別碼。 | 是 |
+| 密碼 | 指定使用者 (userId) 的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 深入了解[必要條件](#prerequisites)一節。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>範例連結服務和資料集定義
@@ -82,7 +82,7 @@ ms.locfileid: "96023163"
         "type": "FileServer",
         "typeProperties": {
             "host": "<host>",
-            "userid": "<domain>\\<user>",
+            "userId": "<domain>\\<user>",
             "password": {
                 "type": "SecureString",
                 "value": "<password>"

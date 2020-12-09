@@ -1,18 +1,18 @@
 ---
 title: 範本函式-邏輯
-description: 描述 Azure Resource Manager 範本中用來決定邏輯值的函式。
+description: 描述在 Azure Resource Manager 範本中使用的函式 (ARM 範本) 用來判斷邏輯值。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: b54c104c8af5bb742b2c82d8a075515b8696501b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 27d94f10374daf0b9a351469579a5eb659cf5445
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004546"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920472"
 ---
 # <a name="logical-functions-for-arm-templates"></a>ARM 範本的邏輯函數
 
-Resource Manager 提供數個函式，可在您的 Azure Resource Manager (ARM) 範本中進行比較。
+Resource Manager 提供數個功能，可讓您在 Azure Resource Manager 範本中進行比較， (ARM 範本) ：
 
 * [and](#and)
 * [bool](#bool)
@@ -84,9 +84,9 @@ output notExampleOutput bool = !(bool('true'))
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | False |
+| andExampleOutput | Bool | 否 |
 | orExampleOutput | Bool | True |
-| notExampleOutput | Bool | False |
+| notExampleOutput | Bool | 否 |
 
 ## <a name="bool"></a>bool
 
@@ -155,9 +155,9 @@ output falseInt bool = bool(0)
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
 | trueString | Bool | True |
-| falseString | Bool | False |
+| falseString | Bool | 否 |
 | trueInt | Bool | True |
-| falseInt | Bool | False |
+| falseInt | Bool | 否 |
 
 ## <a name="false"></a>false
 
@@ -205,7 +205,7 @@ output falseOutput bool = false
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| falseOutput | Bool | False |
+| falseOutput | Bool | 否 |
 
 ## <a name="if"></a>if
 
@@ -227,7 +227,7 @@ output falseOutput bool = false
 
 ### <a name="remarks"></a>備註
 
-當條件為 **true** 時，只會評估 true 值。 當條件為 **false** 時，只會評估 false 值。 使用 **if** 函式時，您可以包含只有有條件地有效的運算式。 例如，您可以參考存在於某個條件下但未在另一個條件下的資源。 下一節顯示有條件地評估運算式的範例。
+當條件為 **true** 時，只會評估 true 值。 當條件為 **false** 時，只會評估 false 值。 使用函式時 `if` ，您可以包含只有有條件地有效的運算式。 例如，您可以參考存在於某個條件下但未在另一個條件下的資源。 下一節顯示有條件地評估運算式的範例。
 
 ### <a name="examples"></a>範例
 
@@ -273,8 +273,8 @@ output objectOutput object = 'a' == 'a' ? json('{"test": "value1"}') : json('nul
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
 | yesOutput | String | 是 |
-| noOutput | String | 否 |
-| objectOutput | Object | { "test": "value1" } |
+| noOutput | 字串 | 否 |
+| objectOutput | 物件 | { "test": "value1" } |
 
 下列 [範例範本](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json) 顯示如何使用此函式搭配僅有條件地有效的運算式。
 
@@ -391,9 +391,9 @@ output notExampleOutput bool = !(bool('true'))
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | False |
+| andExampleOutput | Bool | 否 |
 | orExampleOutput | Bool | True |
-| notExampleOutput | Bool | False |
+| notExampleOutput | Bool | 否 |
 
 下列 [範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json)使用 **not** 搭配 [equals](template-functions-comparison.md#equals)。
 
@@ -488,9 +488,9 @@ output notExampleOutput bool = !(bool('true'))
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | False |
+| andExampleOutput | Bool | 否 |
 | orExampleOutput | Bool | True |
-| notExampleOutput | Bool | False |
+| notExampleOutput | Bool | 否 |
 
 ## <a name="true"></a>true
 
@@ -542,4 +542,4 @@ output trueOutput bool = true
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需 Azure Resource Manager 範本中各區段的說明，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
+* 如需 ARM 範本中各區段的說明，請參閱 [瞭解 arm 範本的結構和語法](template-syntax.md)。

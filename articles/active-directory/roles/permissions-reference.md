@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf91c9e081bff9860153b342648fedc0990b68b9
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 1d634978333e2b833324228fb0908cfba61a786d
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862052"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96919756"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -1016,6 +1016,7 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 | microsoft.directory/users/appRoleAssignments/update | 更新 Azure Active Directory 中的 users.appRoleAssignments 屬性。 |
 | microsoft.directory/users/assignLicense | 管理 Azure Active Directory 中的使用者授權。 |
 | microsoft.directory/users/basic/update | 更新 Azure Active Directory 中 users 的基本屬性。 |
+| microsoft.directory/users/create | 在 Azure Active Directory 中建立 users。 |
 | microsoft 目錄/使用者/停用 | 在 Azure Active Directory 中停用使用者帳戶。 |
 | microsoft 目錄/使用者/啟用 | 在 Azure Active Directory 中啟用使用者帳戶 |
 | microsoft.directory/users/invalidateAllRefreshTokens | 使 Azure Active Directory 中的所有使用者重新整理權杖失效，要求使用者在下次登入時重新驗證 |

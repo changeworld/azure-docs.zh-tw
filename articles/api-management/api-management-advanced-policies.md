@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 46bcdac41497eea91b5af0c512a7118e33d5d7c3
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: 3a37cde79cef59eaf9c3ef130bfbae9cff958bd7
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638898"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96919448"
 ---
 # <a name="api-management-advanced-policies"></a>API 管理進階原則
 
@@ -78,7 +78,7 @@ ms.locfileid: "94638898"
 ```xml
 <policies>
     <inbound>
-        <set-variable name="isMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />
+        <set-variable name="isMobile" value="@(context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPad") || context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPhone"))" />
         <base />
         <choose>
             <when condition="@(context.Variables.GetValueOrDefault<bool>("isMobile"))">
@@ -258,7 +258,7 @@ ms.locfileid: "94638898"
 | 緩衝區-回應 = "false &#124; true" | 影響區塊回應的處理。 當設定為 "false" 時，從後端收到的每個區塊都會立即傳回給呼叫端。 當設定為 "true" 時，會緩衝處理 (8KB 的區塊，除非偵測到資料流程的結尾) ，而且只傳回給呼叫端。 | 否 | true |
 | 失敗-錯誤-狀態-代碼 = "false &#124; true" | 當設為 true 時，會在 [錯誤](api-management-error-handling-policies.md) 區段中觸發回應碼，範圍從400到599（含）。                                                                                                                                                                      | 否       | false   |
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -308,7 +308,7 @@ ms.locfileid: "94638898"
 | 索引鍵       | 字串。 允許的運算式。 指定並行範圍。 可由多個原則共用。 | 是      | N/A     |
 | max-count | 整數。 指定允許輸入原則的要求數目上限。           | 是      | N/A     |
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -362,7 +362,7 @@ ms.locfileid: "94638898"
 | partition-id  | 指定訊息傳送目的地的資料分割索引。             | 選擇性。 如果使用 `partition-key`，就不能使用這個屬性。 |
 | partition-key | 指定在傳送訊息時，用來指派資料分割的值。 | 選擇性。 如果使用 `partition-id`，就不能使用這個屬性。  |
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -406,7 +406,7 @@ status code and media type. If no example or schema found, the content is empty.
 | status-code  | 指定回應狀態碼，且用來選取對應範例或結構描述。                 | 否       | 200     |
 | Content-Type | 指定 `Content-Type` 回應標頭值，且用來選取對應範例或結構描述。 | 否       | None    |
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -474,7 +474,7 @@ status code and media type. If no example or schema found, the content is empty.
 > 當只有指定 `interval` 和 `delta` 時，會使用 **線性** 的間隔重試演算法，其中，重試之間的等待時間會根據下列公式來進行計算：`interval + (count - 1)*delta`。
 > 當指定了 `interval`、`max-interval` 和 `delta` 時，則會套用 **指數** 的間隔重試演算法，其中，重試之間的等待時間會根據下列公式，以指數方式從 `interval` 的值增加到 `max-interval` 的值：`min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`。
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。 請注意，此原則會繼承子原則的使用方式限制。
 
@@ -524,7 +524,7 @@ status code and media type. If no example or schema found, the content is empty.
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- |
 | response-variable-name | 所參考的內容變數名稱，其參考來源為 (舉例來說) 上游 [send-request](api-management-advanced-policies.md#SendRequest) 原則，且包含 `Response` 物件 | 選擇性。 |
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -598,7 +598,7 @@ status code and media type. If no example or schema found, the content is empty.
 | NAME          | 指定要設定之標頭的名稱。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 是      | N/A      |
 | exists-action | 指定當已指定標頭時要採取的動作。 此屬性必須具有下列其中一個值。<br /><br /> -override-取代現有標頭的值。<br />-skip-不取代現有的標頭值。<br />-append-將值附加至現有的標頭值。<br />-delete-移除要求中的標頭。<br /><br /> 設為 `override` 時，編列多個相同名稱的項目會導致根據所有項目來設定標頭 (列出多次)；只有列出的值才會設定在結果中。 | 否       | override |
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -685,7 +685,7 @@ status code and media type. If no example or schema found, the content is empty.
 | NAME                            | 指定要設定之標頭的名稱。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 是      | N/A      |
 | exists-action                   | 指定當已指定標頭時要採取的動作。 此屬性必須具有下列其中一個值。<br /><br /> -override-取代現有標頭的值。<br />-skip-不取代現有的標頭值。<br />-append-將值附加至現有的標頭值。<br />-delete-移除要求中的標頭。<br /><br /> 設為 `override` 時，編列多個相同名稱的項目會導致根據所有項目來設定標頭 (列出多次)；只有列出的值才會設定在結果中。 | 否       | override |
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -727,7 +727,7 @@ status code and media type. If no example or schema found, the content is empty.
 | username="string" | 用於向 Proxy 驗證的使用者名稱。 | 否       | N/A     |
 | password="string" | 用於向 Proxy 驗證的密碼。 | 否       | N/A     |
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -782,7 +782,7 @@ status code and media type. If no example or schema found, the content is empty.
 | ---------- | ----------------------------------------------------------------- | -------- |
 | set-method | 根元素。 元素的值會指定 HTTP 方法。 | 是      |
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -832,7 +832,7 @@ status code and media type. If no example or schema found, the content is empty.
 | code="integer"  | 要傳回的 HTTP 狀態碼。                            | 是      | N/A     |
 | reason="string" | 狀態碼傳回原因的描述。 | 是      | N/A     |
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -854,7 +854,7 @@ status code and media type. If no example or schema found, the content is empty.
 下列範例會示範 inbound 區段中的設定變數原則。 此設定變數原則建立 `isMobile` 布林值[內容](api-management-policy-expressions.md#ContextVariables)變數，如果 `User-Agent` 要求標頭包含文字 `iPad` 或 `iPhone`，此變數會設為 true。
 
 ```xml
-<set-variable name="IsMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />
+<set-variable name="IsMobile" value="@(context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPad") || context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPhone"))" />
 ```
 
 ### <a name="elements"></a>元素
@@ -868,9 +868,9 @@ status code and media type. If no example or schema found, the content is empty.
 | 屬性 | 描述                                                              | 必要 |
 | --------- | ------------------------------------------------------------------------ | -------- |
 | NAME      | 變數的名稱。                                                | 是      |
-| value     | 變數的值。 此值可為運算式或常值。 | 是      |
+| 值     | 變數的值。 此值可為運算式或常值。 | 是      |
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -956,9 +956,9 @@ status code and media type. If no example or schema found, the content is empty.
 | source    | 對追蹤檢視器有意義，並指定了訊息來源的字串常值。                                   | 是      | N/A     |
 | severity  | 指定追蹤的嚴重性層級。 允許的值為 `verbose` 、 `information` 、 `error` (從最低到最高) 。 | 否       | 「詳細資訊」 |
 | NAME      | 屬性的名稱。                                                                                                     | 是      | N/A     |
-| value     | 屬性的值。                                                                                                    | 是      | N/A     |
+| 值     | 屬性的值。                                                                                                    | 是      | N/A     |
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -1026,9 +1026,9 @@ status code and media type. If no example or schema found, the content is empty.
 
 | 屬性 | 描述                                                                                                                                                                                                                                                                                                                                                                                                            | 必要 | 預設 |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| for       | 決定 `wait` 原則是要等候所有直屬子原則完成或只等候一個完成。 允許的值包括：<br /><br /> - `all` - 等候所有直屬子原則完成<br />-any-等待任何直屬子原則完成。 第一個直屬子原則完成後，`wait` 原則便會完成，並終止執行任何其他直屬子原則。 | 否       | all     |
+| 對象       | 決定 `wait` 原則是要等候所有直屬子原則完成或只等候一個完成。 允許的值包括：<br /><br /> - `all` - 等候所有直屬子原則完成<br />-any-等待任何直屬子原則完成。 第一個直屬子原則完成後，`wait` 原則便會完成，並終止執行任何其他直屬子原則。 | 否       | all     |
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 

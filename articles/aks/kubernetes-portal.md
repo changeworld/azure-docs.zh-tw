@@ -1,25 +1,23 @@
 ---
-title: '從 Azure 入口網站 (Preview 存取 Kubernetes 資源) '
+title: 從 Azure 入口網站存取 Kubernetes 資源
 description: 瞭解如何與 Kubernetes 資源互動，以管理 Azure 入口網站中 (AKS) 叢集的 Azure Kubernetes Service。
 services: container-service
 ms.topic: article
-ms.date: 09/21/2020
-ms.openlocfilehash: cfd09e469de68a1eee7440773347e9fe58bf8619
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.date: 12/09/2020
+ms.openlocfilehash: 8e31c41573ced403a034999de71a5595a54281df
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571618"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921577"
 ---
-# <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>從 Azure 入口網站 (Preview 存取 Kubernetes 資源) 
+# <a name="access-kubernetes-resources-from-the-azure-portal"></a>從 Azure 入口網站存取 Kubernetes 資源
 
-Azure 入口網站包含 Kubernetes 資源檢視器 (預覽) ，以便輕鬆存取 Azure Kubernetes Service (AKS) 叢集中的 Kubernetes 資源。 從 Azure 入口網站觀看 Kubernetes 資源可減少 Azure 入口網站與命令列工具之間的內容切換 `kubectl` ，以簡化查看和編輯 Kubernetes 資源的體驗。 資源檢視器目前包含多個資源類型，例如部署、pod 和複本集。
+Azure 入口網站包含 Kubernetes 資源查看，可讓您輕鬆存取 Azure Kubernetes Service (AKS) 叢集中的 Kubernetes 資源。 從 Azure 入口網站觀看 Kubernetes 資源可減少 Azure 入口網站與命令列工具之間的內容切換 `kubectl` ，以簡化查看和編輯 Kubernetes 資源的體驗。 資源檢視器目前包含多個資源類型，例如部署、pod 和複本集。
 
 Azure 入口網站中的 Kubernetes 資源檢視會取代已淘汰的 [AKS 儀表板附加][kubernetes-dashboard]元件。
 
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要查看 Azure 入口網站中的 Kubernetes 資源，您需要 AKS 叢集。 所有叢集都受到支援，但如果使用 Azure Active Directory (Azure AD) 整合，則您的叢集必須使用 [AKS 管理的 Azure AD 整合][aks-managed-aad]。 如果您的叢集使用舊版 Azure AD，您可以在入口網站中或使用 [Azure CLI][cli-aad-upgrade]升級您的叢集。
 

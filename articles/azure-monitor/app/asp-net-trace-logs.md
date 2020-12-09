@@ -4,19 +4,19 @@ description: 搜尋 Trace、NLog 或 Log4Net 產生的記錄。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/08/2019
-ms.openlocfilehash: ab3b12bf0401c4060823c6ed1d20dd6385cc397f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90777da4d0b67587afebaa7111e3503af2afcb9a
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90973838"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920342"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>在 Application Insights 中探索 .NET/.NET Core 和 Python 追蹤記錄
 
 將 ASP.NET/ASP.NET Core 應用程式的診斷追蹤記錄從 ILogger、NLog、log4Net 或 System.Diagnostics.Trace 傳送至 [Azure Application Insights][start]。 若為 Python 應用程式，請在 OpenCensus Python for Azure Monitor 中使用 AzureLogHandler 傳送診斷追蹤記錄。 然後，您可以探索並搜尋這些記錄。 這些記錄會與來自應用程式的其他記錄檔合併，讓您可以識別與每個使用者要求相關聯的追蹤，並將這些追蹤與其他事件和例外狀況報告相互關聯。
 
 > [!NOTE]
-> 您需要記錄擷取模組嗎？ 對於第三方記錄器來說，其是一個有用的配接器。 但是，如果您還沒使用 NLog、log4Net 或 System.Diagnostics.Trace，請考慮直接呼叫 [**Application Insights TrackTrace()** ](./api-custom-events-metrics.md#tracktrace)。
+> 您需要記錄擷取模組嗎？ 對於第三方記錄器來說，其是一個有用的配接器。 但是，如果您還沒使用 NLog、log4Net 或 System.Diagnostics.Trace，請考慮直接呼叫 [**Application Insights TrackTrace()**](./api-custom-events-metrics.md#tracktrace)。
 >
 >
 ## <a name="install-logging-on-your-app"></a>在您的 app 上安裝記錄
@@ -37,7 +37,7 @@ ms.locfileid: "90973838"
 ## <a name="configure-application-insights-to-collect-logs"></a>設定 Application Insights 收集記錄
 如果您尚未這麼做，請[將 Application Insights 新增至您的專案](./asp-net.md)。 您將會看見包含記錄收集器的選項。
 
-或者，在 [方案總管] 中以滑鼠右鍵按一下您的專案，來**設定 Application Insights**。 選取 [設定追蹤集合] 選項。
+或者，在 [方案總管] 中以滑鼠右鍵按一下您的專案，來 **設定 Application Insights**。 選取 [設定追蹤集合] 選項。
 
 > [!NOTE]
 > 沒有 Application Insights 功能表或記錄收集器選項嗎？ 請嘗試進行[疑難排解](#troubleshooting)。
@@ -139,7 +139,8 @@ System.Diagnostics.Trace.TraceWarning("Slow response - database01");
 例如：
 
 ```csharp
-var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
+TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
+var telemetryClient = new TelemetryClient(configuration);
 telemetry.TrackTrace("Slow response - database01");
 ```
 
@@ -148,10 +149,11 @@ TrackTrace 的優點在於您可以將較長的資料放在訊息中。 例如�
 您也可以將嚴重性層級新增至訊息。 就像其他遙測一樣，您可以新增屬性值，以協助篩選或搜尋不同的追蹤集。 例如：
 
   ```csharp
-  var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
-  telemetry.TrackTrace("Slow database response",
-                 SeverityLevel.Warning,
-                 new Dictionary<string,string> { {"database", db.ID} });
+  TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
+  var telemetryClient = new TelemetryClient(configuration);
+  telemetryClient.TrackTrace("Slow database response",
+                              SeverityLevel.Warning,
+                              new Dictionary<string, string> { { "database", "db.ID" } });
   ```
 
 這可讓您在[搜尋][diagnostic]中輕鬆地篩選出與特定資料庫相關且具有特定嚴重性層級的所有訊息。
@@ -186,7 +188,7 @@ logger.warning('Hello, World!')
 * 將頁面的組態儲存為我的最愛。
 
 > [!NOTE]
->如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調*適性取樣功能*可能會運作，並只傳送一部分的遙測資料。 [深入了解取樣。](./sampling.md)
+>如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調 *適性取樣功能* 可能會運作，並只傳送一部分的遙測資料。 [深入了解取樣。](./sampling.md)
 >
 
 ## <a name="troubleshooting"></a>疑難排解
@@ -201,7 +203,7 @@ logger.warning('Hello, World!')
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>組態工具中沒有記錄配接器選項
 * 請先安裝記錄架構。
-* 如果您使用 System.Diagnostics.Trace，請確定已將其[設定在 *web.config* 中](/dotnet/api/system.diagnostics.eventlogtracelistener?view=dotnet-plat-ext-3.1)。
+* 如果您使用 System.Diagnostics.Trace，請確定已將其 [設定在 *web.config* 中](/dotnet/api/system.diagnostics.eventlogtracelistener?view=dotnet-plat-ext-3.1)。
 * 確定您有最新版的 Application Insights。 在 Visual Studio 中，移至 [工具] > [擴充功能和更新]，然後開啟 [更新] 索引標籤。如果發現 **Developer Analytics Tools**，請選取以進行更新。
 
 ### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>我收到「檢測金鑰不能是空白」的錯誤訊息

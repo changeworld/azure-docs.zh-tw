@@ -4,19 +4,19 @@ description: 使用 Application Insights 有效地監視您的 Web 和背景工�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 29482403358936b95fc5e814b68238cc8c25f7a8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ccd863db55ef0ff9f4051947321321c8b01430c4
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186349"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920678"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure 雲端服務的 Application Insights
 [Application Insights][start] 透過將 Application Insights SDK 的資料與 [Azure 診斷](../platform/diagnostics-extension-overview.md) 資料結合的方式，監視 [Azure 雲端服務應用程式](https://azure.microsoft.com/services/cloud-services/)的可用性、效能、故障與使用狀況。 當您取得有關應用程式在現實世界的效能和效率的意見反應時，您可以在每個開發生命週期中針對設計方向做出明智的抉擇。
 
 ![概觀儀表板](./media/cloudservices/overview-graphs.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 在開始之前，您需要：
 
 * [Azure](https://azure.com)訂用帳戶。 使用 Windows、Xbox Live 或其他 Microsoft 雲端服務適用的 Microsoft 帳戶登入。 
@@ -110,15 +110,14 @@ ms.locfileid: "96186349"
 
     b. 新增[適用於 Windows 伺服器的 Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)。
 
-    ![搜尋「Application Insights」](./media/cloudservices/04-ai-nuget.png)
-
 1. 若要設定 SDK 以將資料傳送給 Application Insights 資源：
 
     a. 在適當的啟動函式中，從 *.cscfg* 檔案中的設定設定檢測金鑰：
  
     ```csharp
-   
-     TelemetryConfiguration.Active.InstrumentationKey = RoleEnvironment.GetConfigurationSettingValue("APPINSIGHTS_INSTRUMENTATIONKEY");
+        TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
+        configuration.InstrumentationKey = RoleEnvironment.GetConfigurationSettingValue("APPINSIGHTS_INSTRUMENTATIONKEY");
+        var telemetryClient = new TelemetryClient(configuration);
     ```
    
     b. 對您應用程式中的每個角色重複「步驟 a」。 請參閱範例：

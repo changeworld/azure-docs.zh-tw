@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: c5839589c35ea5a9c52303801a8767fc598434fc
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 96030f0e74c29848f675ae2e0867eefa2e79a8a7
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905871"
+ms.locfileid: "96920403"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>在 Azure SQL Database 中使用伺服器的虛擬網路服務端點和規則
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -52,8 +52,8 @@ ms.locfileid: "96905871"
 
 有一組獨立的安全性角色負責管理虛擬網路服務端點。 下列每個角色都需要採取動作：
 
-- **網路管理員：** &nbsp;開啟端點。
-- **資料庫管理員：** &nbsp; 更新 (ACL) 的存取控制清單，以將指定的子網新增至伺服器。
+- **網路系統管理員 ([網路參與者](../../role-based-access-control/built-in-roles.md#network-contributor) 角色) ：** &nbsp; 開啟端點。
+- **資料庫管理員 ([SQL Server 參與者](../../role-based-access-control/built-in-roles.md#sql-server-contributor) 角色) ：** &nbsp; 更新 (ACL) 的存取控制清單，以將指定的子網新增至伺服器。
 
 *Azure RBAC 替代方案：*
 

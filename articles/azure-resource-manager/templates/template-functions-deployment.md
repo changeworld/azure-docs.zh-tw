@@ -1,18 +1,18 @@
 ---
 title: 範本函式-部署
-description: 描述 Azure Resource Manager 範本中用來擷取部署資訊的函式。
+description: 描述在 Azure Resource Manager 範本中使用的函式 (ARM 範本) 取得部署資訊。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 9d6a1783bcd6d84c181edae84063ed7c0964c3d8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e63caef669a2c28d29cd0bbd649b0997cea14ee1
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004563"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920516"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM 範本的部署功能
 
-Resource Manager 提供下列函式來取得與目前部署 Azure Resource Manager (ARM) 範本相關的值：
+Resource Manager 提供下列函式來取得與目前部署 Azure Resource Manager 範本 (ARM 範本) 相關的值：
 
 * [部署](#deployment)
 * [environment (環境)](#environment)
@@ -428,13 +428,13 @@ output crossOutput string = crossParameter
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| stringOutput | String | 選項 1 |
+| stringOutput | 字串 | 選項 1 |
 | intOutput | Int | 1 |
-| objectOutput | Object | {"one": "a", "two": "b"} |
+| objectOutput | 物件 | {"one": "a", "two": "b"} |
 | arrayOutput | Array | [1, 2, 3] |
-| crossOutput | String | 選項 1 |
+| crossOutput | 字串 | 選項 1 |
 
-如需使用參數的詳細資訊，請參閱 [Azure Resource Manager 範本中的參數](template-parameters.md)。
+如需使用參數的詳細資訊，請參閱 [ARM 範本中的參數](template-parameters.md)。
 
 ## <a name="variables"></a>variables
 
@@ -566,13 +566,13 @@ output exampleOutput4 object = var4
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| exampleOutput1 | String | myVariable |
+| exampleOutput1 | 字串 | myVariable |
 | exampleOutput2 | Array | [1, 2, 3, 4] |
-| exampleOutput3 | String | myVariable |
-| exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
+| exampleOutput3 | 字串 | myVariable |
+| exampleOutput4 |  物件 | {"property1": "value1", "property2": "value2"} |
 
-如需使用變數的詳細資訊，請參閱 [Azure Resource Manager 範本中的變數](template-variables.md)。
+如需使用變數的詳細資訊，請參閱 [ARM 範本中的變數](template-variables.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需 Azure Resource Manager 範本中各區段的說明，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
+* 如需 ARM 範本中各區段的說明，請參閱 [瞭解 arm 範本的結構和語法](template-syntax.md)。

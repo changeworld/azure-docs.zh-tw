@@ -1,18 +1,18 @@
 ---
 title: 範本函式-比較
-description: 描述 Azure Resource Manager 範本中用來比較值的函式。
+description: 描述在 Azure Resource Manager 範本中使用的函式 (ARM 範本) 來比較值。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: c5ffcfe7688935da6ea5602cdb2c66a8b86a8d88
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1b7192db361f510e0246a737de47930534a1cb9d
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004597"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920526"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM 範本的比較函式
 
-Resource Manager 提供數個函式，可在您的 Azure Resource Manager (ARM) 範本中進行比較。
+Resource Manager 提供數個功能，可讓您在 Azure Resource Manager 範本中進行比較， (ARM 範本) ：
 
 * [coalesce](#coalesce)
 * [equals](#equals)
@@ -119,9 +119,9 @@ output emptyOutput bool =empty(coalesce(objectToTest.null1, objectToTest.null2))
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| stringOutput | String | default |
+| stringOutput | 字串 | 預設 |
 | intOutput | Int | 1 |
-| objectOutput | Object | {"first": "default"} |
+| objectOutput | 物件 | {"first": "default"} |
 | arrayOutput | Array |  [1] |
 | emptyOutput | Bool | True |
 
@@ -387,7 +387,7 @@ output checkStrings bool = firstString > secondString
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| checkInts | Bool | False |
+| checkInts | Bool | 否 |
 | checkStrings | Bool | True |
 
 ## <a name="greaterorequals"></a>greaterOrEquals
@@ -468,7 +468,7 @@ output checkStrings bool = firstString >= secondString
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| checkInts | Bool | False |
+| checkInts | Bool | 否 |
 | checkStrings | Bool | True |
 
 ## <a name="less"></a>less
@@ -550,7 +550,7 @@ output checkStrings bool = firstString < secondString
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
-| checkStrings | Bool | False |
+| checkStrings | Bool | 否 |
 
 ## <a name="lessorequals"></a>lessOrEquals
 
@@ -631,8 +631,8 @@ output checkStrings bool = firstString <= secondString
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
-| checkStrings | Bool | False |
+| checkStrings | Bool | 否 |
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需 Azure Resource Manager 範本中各區段的說明，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
+* 如需 ARM 範本中各區段的說明，請參閱 [瞭解 arm 範本的結構和語法](template-syntax.md)。

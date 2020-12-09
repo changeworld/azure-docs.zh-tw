@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 12/3/2020
 ms.subservice: alerts
-ms.openlocfilehash: dfcc1f15ebec1337cfa7d484319c7b942ff052b2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 0e4674c9e0513a0b8dae29f5868b1da79da8ab84
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548234"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920572"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure 監視器中計量警示所支援的資源
 
@@ -60,7 +60,7 @@ Azure 監視器現已可支援[新的計量警示類型](./alerts-overview.md)�
 |Microsoft.DBforPostgreSQL/flexibleServers | 是 | 否 | |
 |Microsoft.DBforPostgreSQL/servers | 否 | 否 | [適用於 PostgreSQL 的 DB](./metrics-supported.md#microsoftdbforpostgresqlservers)|
 |Microsoft.DBforPostgreSQL/serversv2 | 否 | 否 | [適用于于 postgresql V2 的 DB](./metrics-supported.md#microsoftdbforpostgresqlserversv2)|
-|DBforPostgreSQL/singleservers | 否 | 否 | [適用于于 postgresql 的 DB (單一伺服器) ](./metrics-supported.md#microsoftdbforpostgresqlsingleservers)|
+|DBforPostgreSQL/彈性 | 否 | 否 | [適用于于 postgresql 的 DB (flexiable 伺服器) ](./metrics-supported.md#microsoftdbforpostgresqlflexibleservers)|
 |Microsoft.Devices/IotHubs | 是 | 否 |[IoT 中心](./metrics-supported.md#microsoftdevicesiothubs) |
 |Microsoft.Devices/provisioningServices| 是 | 否 | [裝置布建服務](./metrics-supported.md#microsoftdevicesprovisioningservices) |
 |DigitalTwins/digitalTwinsInstances | 是 | 否 | |
@@ -115,7 +115,7 @@ Azure 監視器現已可支援[新的計量警示類型](./alerts-overview.md)�
 |Microsoft.Web/hostingEnvironments/multiRolePools | 是 | 否 | [App Service 環境多角色集區](./metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
 |Microsoft.Web/hostingEnvironments/workerPools | 是 | 否 | [App Service 環境背景工作集區](./metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
 |Microsoft.Web/serverfarms | 是 | 否 | [App Service 方案](./metrics-supported.md#microsoftwebserverfarms)|
-|Microsoft.Web/sites | 是 | 否 | [App Service](./metrics-supported.md#microsoftwebsites-excluding-functions) 與[函式](./metrics-supported.md#microsoftwebsites-functions)|
+|Microsoft.Web/sites | 是 | 否 | [App Service 與函式](./metrics-supported.md#microsoftwebsites)|
 |Microsoft.Web/sites/slots | 是 | 否 | [App Service 位置](./metrics-supported.md#microsoftwebsitesslots)|
 
 <sup>1</sup> 不支援虛擬機器網路計量 (網路總計、網路輸出、輸入流量、輸出流量、輸入流量最大建立速率、輸出流量最大建立速率) 和自訂計量。

@@ -1,18 +1,18 @@
 ---
 title: 範本函式-數值
-description: 描述 Azure Resource Manager 範本中用來使用數值的函式。
+description: 描述在 Azure Resource Manager 範本中使用的函式 (ARM 範本) 以使用數位。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 26f4b846c67ee7b926ea984ceefd84bf9ea56952
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1484826b2377fe2adb2ac6ae2ab3ee6243b26c2c
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004529"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920438"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>ARM 範本的數值函數
 
-Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 範本中使用整數：
+Resource Manager 提供下列函式，可在 Azure Resource Manager 範本中使用整數 (ARM 範本) ：
 
 * [add](#add)
 * [copyIndex](#copyindex)
@@ -415,7 +415,7 @@ output intOutput int = max(0,3,2,5,4)
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
 
-## <a name="min"></a>分鐘
+## <a name="min"></a>Min
 
 `min (arg1)`
 
@@ -700,5 +700,5 @@ output subResult int = first - second
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需 Azure Resource Manager 範本中各區段的說明，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
-* 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](copy-resources.md)。
+* 如需 ARM 範本中各區段的說明，請參閱 [瞭解 arm 範本的結構和語法](template-syntax.md)。
+* 若要在建立資源類型時反覆運算指定的次數，請參閱 [ARM 範本中的資源反復](copy-resources.md)專案。

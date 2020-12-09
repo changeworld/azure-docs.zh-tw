@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.custom: devx-track-csharp
 ms.reviewer: lmolkova
-ms.openlocfilehash: 98f1ea8a4994515b437841174ae95563ea53ed88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa39a1eca04621fc4db75f755402d3679403e814
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88933336"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920596"
 ---
 # <a name="application-insights-for-net-console-applications"></a>適用於 .NET 主控台應用程式的 Application Insights
 
@@ -19,9 +19,12 @@ ms.locfileid: "88933336"
 您需要 [Microsoft Azure](https://azure.com) 的訂用帳戶。 使用 Microsoft 帳戶登入，此帳戶可能是您針對 Windows、Xbox Live 或其他 Microsoft 雲端服務所擁有的帳戶。 您的小組可能已有 Azuare 組織訂用帳戶：請洽詢擁有者將您的 Microsoft 帳戶新增至其中。
 
 > [!NOTE]
-> *強烈建議您*在任何主控台應用程式中使用[ApplicationInsights 的 WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)套件和[相關的指示](./worker-service.md)。 此封裝 [`NetStandard2.0`](/dotnet/standard/net-standard) 是以 .Net Core 2.1 或更高版本為目標，因此可用於 .Net Core 或更高版本，並 .NET Framework 4.7.2 或更新版本。
+> *強烈建議您* 在任何主控台應用程式中使用 [ApplicationInsights 的 WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)套件和 [相關的指示](./worker-service.md)。 此封裝 [`NetStandard2.0`](/dotnet/standard/net-standard) 是以 .Net Core 2.1 或更高版本為目標，因此可用於 .Net Core 或更高版本，並 .NET Framework 4.7.2 或更新版本。
 
 ## <a name="getting-started"></a>開始使用
+
+> [!IMPORTANT]
+> 新的 Azure 區域 **需要** 使用連接字串，而不是檢測金鑰。 [連接字串](./sdk-connection-string.md?tabs=net) 會識別您想要與遙測資料相關聯的資源。 它也可讓您修改您的資源將用來做為遙測目的地的端點。 您必須複製連接字串，並將它加入應用程式的程式碼或加入環境變數。
 
 * 在 [Azure 入口網站](https://portal.azure.com)中，建立 [Application Insights 資源](./create-new-resource.md)。 針對應用程式類型，選擇 [一般]。
 * 取得檢測金鑰的副本。 在您建立之新資源的 [基本資訊] 下拉式清單中尋找金鑰。
@@ -65,7 +68,7 @@ var telemetryClient = new TelemetryClient(configuration);
 
 如需詳細資訊，請參閱[設定檔參考](configuration-with-applicationinsights-config.md)。
 
-您可能會藉由安裝最新版的 [Microsoft.ApplicationInsights.WindowsServer](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer) \(英文\) 封裝，來取得設定檔的完整範例。 以下是相當於程式碼範例之相依性集合的**最基本**設定。
+您可能會藉由安裝最新版的 [Microsoft.ApplicationInsights.WindowsServer](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer) \(英文\) 封裝，來取得設定檔的完整範例。 以下是相當於程式碼範例之相依性集合的 **最基本** 設定。
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
