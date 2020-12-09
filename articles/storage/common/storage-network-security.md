@@ -5,16 +5,16 @@ services: storage
 author: santoshc
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 12/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 9638d4f8a44b044bb02d3f77d259860128d2e9db
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 07ad0714d0294ad90150acb9df14f17bfc1f5f0d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462233"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905361"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>設定 Azure 儲存體防火牆和虛擬網路
 
@@ -390,6 +390,7 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您根據所使�
 | :----------------------------- | :------------------------------------- | :----------------- |
 | Azure API 管理           | Microsoft.ApiManagement/service        | 使用原則讓 Api 管理服務存取防火牆後方的儲存體帳戶。 [深入了解](../../api-management/api-management-authentication-policies.md#use-managed-identity-in-send-request-policy)。 |
 | Azue 認知搜尋         | Microsoft.Search/searchServices        | 可讓認知搜尋服務存取儲存體帳戶以進行編製索引、處理和查詢。 |
+| Azure 認知服務       | CognitiveService             | 啟用認知服務以存取儲存體帳戶。 |
 | Azure Container Registry 工作 | Microsoft.ContainerRegistry/registries | 建立容器映像時，ACR 工作可以存取儲存體帳戶。 |
 | Azure Data Factory             | Microsoft.DataFactory/factories        | 允許透過 ADF 執行階段存取儲存體帳戶。 |
 | Azure Data Share               | Microsoft.DataShare/accounts           | 允許透過 Data Share 存取儲存體帳戶。 |

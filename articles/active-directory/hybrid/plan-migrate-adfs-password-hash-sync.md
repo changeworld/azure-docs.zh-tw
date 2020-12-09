@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c058f74bb4e390fe7a5003d6ab5d963c56ef2d5
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: dca888bf9e3dc75e80764949a11d95efe3514635
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836371"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861811"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>從同盟移轉至 Azure Active Directory 的密碼雜湊同步處理
 
@@ -83,7 +83,7 @@ Azure AD Connect Active Directory Domain Services (AD DS) 服務帳戶需要有�
 
 #### <a name="verify-the-azure-ad-connect-configuration"></a>確認 Azure AD Connect 設定
 
-1. 在 Azure AD Connect 伺服器上，開啟 Azure AD Connect。 選取 [設定]  。
+1. 在 Azure AD Connect 伺服器上，開啟 Azure AD Connect。 選取 [設定] 。
 2. 在 [其他工作] 頁面上選取 [檢視目前的設定]，然後選取 [下一步]。<br />
 
    ![螢幕擷取畫面：[其他工作] 頁面上已選取 [檢視目前的設定] 選項](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image2.png)<br />
@@ -115,7 +115,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 如需詳細資訊，請參閱下列文章：
 
 * [AD FS prompt=login 參數支援](/windows-server/identity/ad-fs/operations/ad-fs-prompt-login)
-* [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
+* [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication)
 
 > [!NOTE]
 > 如果 **SupportsMfa** 設定為 **True**，表示您是使用內部部署多重要素驗證解決方案，將第二個要素挑戰納入使用者驗證流程中。 此安裝程式在將此網域從同盟轉換成受控驗證之後，不再適用于 Azure AD 驗證案例。 停用同盟之後，您會將與內部部署同盟的關聯性伺服器在一起，這包括內部部署 MFA 介面卡。 

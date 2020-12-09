@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: e41fa9f9918f4f17bd89e80610ae608e83eb3402
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 1892afde42ccbcf1c28b7d6a757875772ee3ac5d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996396"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905599"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>使用 Azure 監視器持續監視
 
@@ -28,7 +28,7 @@ ms.locfileid: "91996396"
 - [Azure DevOps Projects](../devops-project/overview.md) 為您提供了現有程式碼和 Git 存放庫的簡化體驗，或者從其中一個範例應用程式中進行選擇，以在 Azure 中建立持續整合 (CI) 和持續傳遞 (CD) 管線。
 - [DevOps 發行管線中的持續監視](./app/continuous-monitoring.md)允許您根據監視資料對部署進行閘道設定或復原。
 - [狀態監視器](./app/monitor-performance-live-website-now.md)允許您使用 Azure Application Insights 在 Windows 上檢測即時 .NET 應用程式，而不需修改或重新部署您的程式碼。
-- 如果您有權存取應用程式的程式碼，則透過為[.NET](./learn/quick-monitor-portal.md)、[Java](./app/java-get-started.md)、[Node.js](./learn/nodejs-quick-start.md) 或[任何其他程式設計語言](./app/platforms.md)安裝 Azure Monitor Application Insights SDK，啟用 [Application Insights](./app/app-insights-overview.md) 的完全監視。 這允許您指定與您的應用程式和業務相關的自訂事件、計量或頁面檢視。
+- 如果您可以存取應用程式的程式碼，請安裝適用于[.net](./app/asp-net.md)的 AZURE 監視器 Application Insights SDK、 [.Net Core](./app/asp-net-core.md)、 [JAVA](./app/java-get-started.md)、 [Node.js](./learn/nodejs-quick-start.md)或[任何其他程式設計語言](./app/platforms.md)，以啟用[Application Insights](./app/app-insights-overview.md)的完整監視。 這允許您指定與您的應用程式和業務相關的自訂事件、計量或頁面檢視。
 
 
 

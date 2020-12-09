@@ -4,16 +4,16 @@ description: AzCopy 是一種命令列公用程式，可讓您用來在儲存體
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/09/2020
+ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperfq2
-ms.openlocfilehash: ad9b40b448b48500cd6882ac614611f91370ec9e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 9379417fcb96dce8a59f7d81335cec44e1bb5e6a
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410261"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96901767"
 ---
 # <a name="get-started-with-azcopy"></a>開始使用 AzCopy
 
@@ -95,19 +95,20 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 若要深入瞭解 SAS 權杖，以及如何取得 SAS 權杖，請參閱 [使用共用存取簽章 (SAS) ](./storage-sas-overview.md)。
 
+<a id="transfer-data"></a>
+
 ## <a name="transfer-data"></a>傳送資料
 
 授權您的身分識別或取得 SAS 權杖之後，您就可以開始傳輸資料。
 
 若要尋找範例命令，請參閱這些文章。
 
-- [使用 AzCopy 和 Blob 儲存體轉送資料](storage-use-azcopy-blobs.md)
-
-- [使用 AzCopy 和檔案儲存體轉送資料](storage-use-azcopy-files.md)
-
-- [使用 AzCopy 和 Amazon S3 貯體轉送資料](storage-use-azcopy-s3.md)
-
-- [使用 AzCopy 和 Azure Stack 儲存體傳輸資料](/azure-stack/user/azure-stack-storage-transfer#azcopy)
+| 服務 | 發行項 |
+|--------|-----------|
+|Azure Blob 儲存體 |[將檔案上傳至 Azure Blob 儲存體](storage-use-azcopy-blobs-upload.md)<br><br>[從 Azure Blob 儲存體下載 blob](storage-use-azcopy-blobs-download.md)<br><br>[在 Azure 儲存體帳戶之間複製 blob](storage-use-azcopy-blobs-download.md)<br><br>[與 Azure Blob 儲存體同步處理](storage-use-azcopy-blobs-download.md)|
+|Azure 檔案 |[使用 AzCopy 和檔案儲存體傳輸資料](storage-use-azcopy-files.md) (機器翻譯)|
+|Amazon S3|[使用 AzCopy 和 Amazon S3 貯體轉送資料](storage-use-azcopy-s3.md)|
+|Azure Stack 儲存體|[使用 AzCopy 和 Azure Stack 儲存體傳輸資料](/azure-stack/user/azure-stack-storage-transfer#azcopy)|
 
 ## <a name="use-in-a-script"></a>在腳本中使用
 
@@ -119,7 +120,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 若要取得連結，請執行下列命令：
 
-| 作業系統  | Command |
+| 作業系統  | 命令 |
 |--------|-----------|
 | **Linux** | `curl -s -D- https://aka.ms/downloadazcopy-v10-linux | grep ^Location` |
 | **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).headers.location` |
@@ -129,7 +130,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 URL 會出現在此命令的輸出中。 然後，您的腳本就可以使用該 URL 來下載 AzCopy。
 
-| 作業系統  | Command |
+| 作業系統  | 命令 |
 |--------|-----------|
 | **Linux** | `wget -O azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux && tar -xf azcopy_v10.tar.gz --strip-components=1` |
 | **Windows** | `Invoke-WebRequest https://azcopyvnext.azureedge.net/release20190517/azcopy_windows_amd64_10.1.2.zip -OutFile azcopyv10.zip <<Unzip here>>` |

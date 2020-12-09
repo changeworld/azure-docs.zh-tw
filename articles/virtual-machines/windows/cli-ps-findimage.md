@@ -1,48 +1,86 @@
 ---
-title: 尋找和使用 Azure Marketplace 映射
-description: 使用 Azure PowerSHell 來判斷 Marketplace VM 映像的發行者、供應項目、SKU 及版本。
+title: 尋找和使用 Azure Marketplace 映射和方案
+description: 使用 Azure PowerShell 來尋找並使用 Marketplace VM 映射的發行者、供應專案、SKU、版本和方案資訊。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 01/25/2019
+ms.date: 12/07/2020
 ms.author: cynthn
-ms.openlocfilehash: 96b5e3770a3f5e08237d61eab05cfeafbc72a5db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45e6b157dba5ef7410d8a5c0223fd3ecb52f39d0
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288350"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906262"
 ---
-# <a name="find-and-use-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>使用 Azure PowerShell 在 Azure Marketplace 中尋找並使用 VM 映射
+# <a name="find-and-use-azure-marketplace-vm-images-with-azure-powershell"></a>使用 Azure PowerShell 尋找並使用 Azure Marketplace VM 映射     
 
-本文描述如何使用 Azure PowerShell 在 Azure Marketplace 中尋找 Windows VM 映像。 然後，您可以在建立 VM 時指定 Marketplace 映射。
+本文描述如何使用 Azure PowerShell 在 Azure Marketplace 中尋找 Windows VM 映像。 然後，您可以在建立 VM 時指定 Marketplace 映射和方案資訊。
 
 您也可以使用 [Azure Marketplace](https://azuremarketplace.microsoft.com/) 店面、[Azure 入口網站](https://portal.azure.com)或 [Azure CLI](../linux/cli-ps-findimage.md) 來瀏覽可用的映像和供應項目。 
 
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
-## <a name="table-of-commonly-used-windows-images"></a>常用 Windows 映像表
 
-下表顯示指示發行者和供應項目可用 SKU 的子網路。
+## <a name="create-a-vm-from-vhd-with-plan-information"></a>使用方案資訊從 VHD 建立 VM
 
-| 發行者 | 供應項目 | SKU |
-|:--- |:--- |:--- |
-| MicrosoftWindowsServer |WindowsServer |2019-Datacenter |
-| MicrosoftWindowsServer |WindowsServer |2019-Datacenter-Core |
-| MicrosoftWindowsServer |WindowsServer |2019-Datacenter-with-Containers |
-| MicrosoftWindowsServer |WindowsServer |2016-Datacenter |
-| MicrosoftWindowsServer |WindowsServer |2016-Datacenter-Server-Core |
-| MicrosoftWindowsServer |WindowsServer |2016-Datacenter-with-Containers |
-| MicrosoftWindowsServer |WindowsServer |2012-R2-Datacenter |
-| MicrosoftWindowsServer |WindowsServer |2012-Datacenter |
-| MicrosoftSharePoint |MicrosoftSharePointServer |sp2019 |
-| MicrosoftSQLServer |SQL2019-WS2016 |企業 |
-| MicrosoftRServer |RServer-WS2016 |企業 |
+如果您現有的 VHD 是使用 Azure Marketplace 映射建立的，則當您從該 VHD 建立新的 VM 時，可能需要提供購買方案資訊。
 
-## <a name="navigate-the-images"></a>瀏覽映像
+如果您仍有原始 VM，或從相同映射建立的其他 VM，您可以使用 New-azvm 取得方案名稱、發行者和產品資訊。 此範例會在 *myResourceGroup* 資源群組中取得名為 *myVM* 的 VM，然後顯示購買方案資訊。
+
+```azurepowershell-interactive
+$vm = Get-azvm `
+   -ResourceGroupName myResourceGroup `
+   -Name myVM
+$vm.Plan
+```
+
+如果您在刪除原始 VM 之前未取得方案資訊，您可以 [提出支援要求](https://ms.portal.azure.com/#create/Microsoft.Support)。 他們將需要 VM 名稱、訂用帳戶識別碼，以及刪除作業的時間戳記。
+
+若要使用 VHD 建立 VM，請參閱這篇文章 [從特製化 VHD 建立 vm](create-vm-specialized.md) ，並新增一行以將方案資訊新增至 VM 設定，其方式是使用 [>set-azvmplan](/powershell/module/az.compute/set-azvmplan) ，如下所示：
+
+```azurepowershell-interactive
+$vmConfig = Set-AzVMPlan `
+   -VM $vmConfig `
+   -Publisher "publisherName" `
+   -Product "productName" `
+   -Name "planName"
+```
+
+## <a name="create-a-new-vm-from-a-marketplace-image"></a>從 marketplace 映射建立新的 VM
+
+如果您已經有想要使用之映射的相關資訊，您可以將該資訊傳遞至 [>set-azvmsourceimage](/powershell/module/az.compute/set-azvmsourceimage) 指令程式，以將映射資訊新增至 VM 設定。 請參閱下一節，以搜尋並列出 marketplace 中可用的映射。
+
+有些付費映射也需要您使用 [>set-azvmplan](/powershell/module/az.compute/set-azvmplan)來提供購買方案資訊。 
+
+```powershell
+...
+
+$vmConfig = New-AzVMConfig -VMName "myVM" -VMSize Standard_D1
+
+# Set the Marketplace image
+$offerName = "windows-data-science-vm"
+$skuName = "windows2016"
+$version = "19.01.14"
+$vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Offer $offerName -Skus $skuName -Version $version
+
+# Set the Marketplace plan information, if needed
+$publisherName = "microsoft-ads"
+$productName = "windows-data-science-vm"
+$planName = "windows2016"
+$vmConfig = Set-AzVMPlan -VM $vmConfig -Publisher $publisherName -Product $productName -Name $planName
+
+...
+```
+
+接著，您會將 VM 設定以及其他設定物件傳遞給 `New-AzVM` Cmdlet。 如需搭配 PowerShell 使用 VM 設定的詳細範例，請參閱此 [腳本](https://github.com/Azure/azure-docs-powershell-samples/blob/master/virtual-machine/create-vm-detailed/create-windows-vm-detailed.ps1)。
+
+如果您收到關於接受影像條款的訊息，請參閱本文稍後的「 [接受條款](#accept-the-terms) 」一節。
+
+## <a name="list-images"></a>列出映像
 
 在位置中尋找映像的其中一個方法是依序執行 [Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) \(英文\)、[Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) \(英文\) 及 [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) \(英文\) Cmdlet：
 
@@ -113,7 +151,7 @@ advantys
 ...
 ```
 
-針對 MicrosoftWindowsServer** 發佈者：
+針對 MicrosoftWindowsServer 發佈者：
 
 ```powershell
 $pubName="MicrosoftWindowsServer"
@@ -130,7 +168,7 @@ WindowsServer
 WindowsServerSemiAnnual
 ```
 
-針對 WindowsServer** 供應項目：
+針對 WindowsServer 供應項目：
 
 ```powershell
 $offerName="WindowsServer"
@@ -276,43 +314,9 @@ Accepted          : True
 Signdate          : 2/23/2018 7:49:31 PM
 ```
 
-### <a name="deploy-using-purchase-plan-parameters"></a>使用購買方案的參數進行部署
 
-接受映像的條款之後，您便可以在該訂用帳戶中部署 VM。 如下列程式碼片段所示，使用 [Set-AzVMPlan](/powershell/module/az.compute/set-azvmplan) \(英文\) Cmdlet 來設定 VM 物件的 Marketplace 方案資訊。 如需建立 VM 網路設定及完成部署的完整指令碼，請參閱 [PowerShell 指令碼範例](powershell-samples.md)。
 
-```powershell
-...
-
-$vmConfig = New-AzVMConfig -VMName "myVM" -VMSize Standard_D1
-
-# Set the Marketplace plan information
-
-$publisherName = "microsoft-ads"
-
-$productName = "windows-data-science-vm"
-
-$planName = "windows2016"
-
-$vmConfig = Set-AzVMPlan -VM $vmConfig -Publisher $publisherName -Product $productName -Name $planName
-
-$cred=Get-Credential
-
-$vmConfig = Set-AzVMOperatingSystem -Windows -VM $vmConfig -ComputerName "myVM" -Credential $cred
-
-# Set the Marketplace image
-
-$offerName = "windows-data-science-vm"
-
-$skuName = "windows2016"
-
-$version = "19.01.14"
-
-$vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Offer $offerName -Skus $skuName -Version $version
-...
-```
-接著，您會將 VM 設定連同網路設定物件傳遞給 `New-AzVM` Cmdlet。
-
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要使用基本映像資訊透過 `New-AzVM` Cmdlet 快速建立虛擬機器，請參閱[使用 PowerShell 來建立 Windows 虛擬機器](quick-create-powershell.md)。
 

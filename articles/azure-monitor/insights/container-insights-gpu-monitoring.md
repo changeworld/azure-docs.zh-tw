@@ -3,16 +3,16 @@ title: 使用容器的 Azure 監視器設定 GPU 監視 |Microsoft Docs
 description: 本文說明如何使用具有適用于容器 Azure 監視器的 NVIDIA 和 AMD GPU 啟用節點來設定監視 Kubernetes 叢集。
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 4c6044d407dc4abd0e69bac0190cc19c901022c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e391117ab57211aa5d178d11c27b934b4ccd37f8
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569691"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905582"
 ---
 # <a name="configure-gpu-monitoring-with-azure-monitor-for-containers"></a>使用容器的 Azure 監視器設定 GPU 監視
 
-從代理程式版本 *ciprod03022019*開始，適用于容器的 Azure 監視器整合式代理程式現在支援監視 gpu (圖形處理單位) 在 gpu 感知的 Kubernetes 叢集節點上使用，以及監視要求和使用 gpu 資源的 pod/容器。
+從代理程式版本 *ciprod03022019* 開始，適用于容器的 Azure 監視器整合式代理程式現在支援監視 gpu (圖形處理單位) 在 gpu 感知的 Kubernetes 叢集節點上使用，以及監視要求和使用 gpu 資源的 pod/容器。
 
 ## <a name="supported-gpu-vendors"></a>支援的 GPU 廠商
 
@@ -39,7 +39,7 @@ ms.locfileid: "89569691"
 
 ## <a name="gpu-performance-charts"></a>GPU 效能圖表 
 
-容器的 Azure 監視器包括先前在資料表中為每個叢集的 GPU 活頁簿所列的計量預先設定的圖表。 您可以從左側窗格中選取活頁**簿**，以及從深入解析的 [**查看活頁簿**] 下拉式清單中，直接從 AKS 叢集尋找 GPU 活頁簿**節點 gpu** 。
+容器的 Azure 監視器包括先前在資料表中為每個叢集的 GPU 活頁簿所列的計量預先設定的圖表。 請參閱 [容器 Azure 監視器中](container-insights-reports.md) 的活頁簿，以取得可供容器 Azure 監視器的活頁簿描述。
 
 ## <a name="next-steps"></a>後續步驟
 

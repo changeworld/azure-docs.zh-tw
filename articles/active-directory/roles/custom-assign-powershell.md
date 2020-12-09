@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cd9148f1084727141f725d76f7ae756f44e210e
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: d4695d0844ef8b707edce53a05de611c91223a46
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379514"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861947"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>在 Azure Active Directory 中使用 PowerShell 以資源範圍指派自訂角色
 
-本文說明如何在 Azure Active Directory (Azure AD) 的全組織範圍內建立角色指派。 在整個組織範圍指派角色，會授與跨 Azure AD 組織的存取權。 若要建立具有單一 Azure AD 資源範圍的角色指派，請參閱 [如何建立自訂角色，並在資源範圍中指派該角色](custom-create.md)。本文使用 [Azure Active Directory PowerShell 第2版](/powershell/module/azuread/?view=azureadps-2.0#directory_roles) 模組。
+本文說明如何在 Azure Active Directory (Azure AD) 的全組織範圍內建立角色指派。 在整個組織範圍指派角色，會授與跨 Azure AD 組織的存取權。 若要建立具有單一 Azure AD 資源範圍的角色指派，請參閱 [如何建立自訂角色，並在資源範圍中指派該角色](custom-create.md)。本文使用 [Azure Active Directory PowerShell 第2版](/powershell/module/azuread/#directory_roles) 模組。
 
 如需 Azure AD 系統管理員角色的詳細資訊，請參閱 [Azure Active Directory 中指派系統管理員角色](permissions-reference.md)。
 
@@ -69,7 +69,7 @@ $resourceScope = '/' + $appRegistration.objectId
 $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
-若要將角色指派給服務主體，而不是使用者，請使用 [AzureADMSServicePrincipal Cmdlet](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0)。
+若要將角色指派給服務主體，而不是使用者，請使用 [AzureADMSServicePrincipal Cmdlet](/powershell/module/azuread/get-azureadserviceprincipal)。
 
 ## <a name="operations-on-roledefinition"></a>RoleDefinition 上的作業
 

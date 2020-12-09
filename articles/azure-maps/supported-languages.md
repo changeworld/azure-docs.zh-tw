@@ -1,19 +1,19 @@
 ---
-title: 當地語系化支援 |Microsoft Azure 地圖服務
+title: Microsoft Azure Maps 提供當地語系化支援
 description: 查看哪些區域 Azure 地圖服務支援服務，例如地圖、搜尋、路線規劃、天氣和交通事件。 瞭解如何設定 View 參數。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/20/2019
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a6664b5a2c0c6b4de2435ee5c8bb29f63560c342
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50e5d0721eb14d1fcdfad26aaf081bfa370e954e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037689"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904511"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure 地圖服務中的當地語系化支援
 
@@ -22,7 +22,7 @@ Azure 地圖服務根據國家/地區支援各種語言和檢視。 本文提供
 
 ## <a name="azure-maps-supported-languages"></a>Azure 地圖服務支援的語言
 
-Azure 地圖服務已經跨其服務以各種語言當地語系化。 下表提供每個服務的支援語言代碼。  
+Azure 地圖服務已經跨其服務以各種語言當地語系化。 下表提供每個服務的支援語言代碼。  
   
 
 | ID         | 名稱                   |  地圖 | 搜尋 | 路由 | Weather | 流量事件 | JS 地圖控制項 |
@@ -129,10 +129,10 @@ Azure 地圖服務已經跨其服務以各種語言當地語系化。 下表提�
  * 取得位址反轉搜尋
  * 取得交叉路口位址反轉搜尋
  * 在幾何內搜尋後
- * 搜尋後位址批次後預覽
- * 搜尋位址反轉批次後預覽
+ * Post 搜尋位址批次
+ * Post 搜尋位址反向批次
  * 沿路線搜尋後
- * 模糊搜尋批次後預覽
+ * 張貼搜尋模糊批次
 
  
 ### <a name="sdks"></a>SDK

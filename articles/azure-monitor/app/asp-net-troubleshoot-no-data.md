@@ -4,12 +4,12 @@ description: 在 Azure Application Insights 中看不到資料？ 試試這裡�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: c3f0350152ece32829291012d583be87a90227cf
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 26ba586715c7b76ff8972c6574c3c29b837713a1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748927"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904460"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>針對沒有資料進行疑難排解 - Application Insights for .NET/.NET Core
 
@@ -39,6 +39,10 @@ ms.locfileid: "96748927"
 
 * 請參閱 [疑難排解狀態監視器](./monitor-performance-live-website-now.md#troubleshoot)。
 
+> [!IMPORTANT]
+> 新的 Azure 區域 **需要** 使用連接字串，而不是檢測金鑰。 [連接字串](./sdk-connection-string.md?tabs=net) 會識別您想要與遙測資料相關聯的資源。 它也可讓您修改您的資源將用來做為遙測目的地的端點。 您必須複製連接字串，並將它加入應用程式的程式碼或加入環境變數。
+
+
 ## <a name="filenotfoundexception-could-not-load-file-or-assembly-microsoftaspnet-telemetrycorrelation"></a>FileNotFoundException：無法載入檔案或元件 ' Microsoft AspNet >microsoft.aspnet.telemetrycorrelation
 
 如需此錯誤的詳細資訊，請參閱 [GitHub 問題 1610] (https://github.com/microsoft/ApplicationInsights-dotnet/issues/1610) 。
@@ -64,7 +68,7 @@ ms.locfileid: "96748927"
     </TelemetryModules>
     ```
 
-***如果無法正確升級，可能會導致未預期的例外狀況或遙測無法收集。** _
+**_如果無法正確升級，可能會導致未預期的例外狀況或遙測無法收集。_* _
 
 
 ## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>在 Visual Studio 中沒有「新增 Application Insights」選項

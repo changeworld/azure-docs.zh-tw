@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 4280932787cfb2220dab1da84dca41ca0c40e302
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: cf7c5fa8563544add55a7fad5075848eb5116fe1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485251"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96901927"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>網路功能總覽-適用於 PostgreSQL 的 Azure 資料庫-彈性的伺服器
 
@@ -21,7 +21,7 @@ ms.locfileid: "92485251"
 本文說明適用於 PostgreSQL 的 Azure 資料庫彈性伺服器的連線能力和網路概念。 
 
 ## <a name="choosing-a-networking-option"></a>選擇網路選項
-您有兩個網路選項可供適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器使用。 包括**私人存取 (VNet 整合)** 和**公用存取 (允許的 IP 位址)** 。 在建立伺服器時，您必須挑選一個選項。 
+您有兩個網路選項可供適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器使用。 包括 **私人存取 (VNet 整合)** 和 **公用存取 (允許的 IP 位址)** 。 在建立伺服器時，您必須挑選一個選項。 
 
 > [!NOTE]
 > 建立伺服器之後，就無法變更您的網路功能選項。 
@@ -33,7 +33,7 @@ ms.locfileid: "92485251"
    * 使用 VPN 或 ExpressRoute 從非 Azure 資源連線到您的彈性伺服器
    * 彈性伺服器沒有公用端點
 
-* **公用存取 (允許的 IP 位址) ** –您可透過公用端點存取彈性的伺服器。 公用端點是可公開解析的 DNS 位址。 「允許的 IP 位址」一詞指的是您選擇授與伺服器存取權的 IP 範圍。 這些權限稱為**防火牆規則**。 
+* **公用存取 (允許的 IP 位址)** –您可透過公用端點存取彈性的伺服器。 公用端點是可公開解析的 DNS 位址。 「允許的 IP 位址」一詞指的是您選擇授與伺服器存取權的 IP 範圍。 這些權限稱為 **防火牆規則**。 
 
    如果您想要下列功能，請選擇公用存取方法：
    * 從不支援虛擬網路的 Azure 資源連接
@@ -62,7 +62,7 @@ ms.locfileid: "92485251"
 
    您的于 postgresql 彈性伺服器必須位於 **委派** 的子網中，以供于 postgresql 彈性的伺服器使用。 此委派表示只有適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器可以使用該子網。 委派的子網路中不可以有其他 Azure 資源類型。 您可以委派子網，方法是將其委派屬性指派為 DBforPostgreSQL/flexibleServers。
 
-* ** (NSG) 的網路安全性群組 ** 網路安全性群組中的安全性規則可讓您篩選可流入和流出虛擬網路子網和網路介面的網路流量類型。 如需詳細資訊，請參閱 [網路安全性群組總覽](../../virtual-network/network-security-groups-overview.md) 。
+* **(NSG) 的網路安全性群組** 網路安全性群組中的安全性規則可讓您篩選可流入和流出虛擬網路子網和網路介面的網路流量類型。 如需詳細資訊，請參閱 [網路安全性群組總覽](../../virtual-network/network-security-groups-overview.md) 。
 
 
 ### <a name="unsupported-virtual-network-scenarios"></a>不支援的虛擬網路案例
@@ -107,8 +107,9 @@ ms.locfileid: "92485251"
    * 要求您的網際網路服務提供者 (ISP) 將可存取適用於 PostgreSQL 的 Azure 資料庫伺服器之 IP 位址範圍指派給您的用戶端電腦，然後將 IP 位址範圍新增為防火牆規則。
    * 改為針對您的用戶端電腦取得靜態 IP 位址，然後將該靜態 IP 位址新增為防火牆規則。
 
+* **IPv6 格式無法使用防火牆規則：** 防火牆規則必須是 IPv4 格式。 如果您指定 IPv6 格式的防火牆規則，則會顯示驗證錯誤。
 
-## <a name="hostname"></a>主機名稱
+## <a name="hostname"></a>Hostname (主機名稱)
 無論您選擇何種網路選項，我們建議您在連線到彈性的伺服器時，一律使用 (FQDN) 作為主機名稱的完整功能變數名稱。 伺服器的 IP 位址不保證保持靜態。 使用 FQDN 將有助於避免變更您的連接字串。 
 
 範例
@@ -122,5 +123,5 @@ ms.locfileid: "92485251"
 適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器只支援使用傳輸層安全性加密的連接。 TLS 1.0 和 TLS 1.1 的所有連入連線都會遭到拒絕。 
 
 ## <a name="next-steps"></a>後續步驟
-* 瞭解如何在[Azure 入口網站](how-to-manage-virtual-network-portal.md)或[Azure CLI](how-to-manage-virtual-network-cli.md)中使用**私人存取 (VNet 整合) **來建立具彈性的伺服器。
-* 瞭解如何建立具有公用存取權的彈性伺服器 ([Azure 入口網站](how-to-manage-firewall-portal.md)或[Azure CLI](how-to-manage-firewall-cli.md)中 **) 允許的 IP 位址**。
+* 瞭解如何在 [Azure 入口網站](how-to-manage-virtual-network-portal.md)或 [Azure CLI](how-to-manage-virtual-network-cli.md)中使用 **私人存取 (VNet 整合)** 來建立具彈性的伺服器。
+* 瞭解如何建立具有公用存取權的彈性伺服器 ([Azure 入口網站](how-to-manage-firewall-portal.md)或 [Azure CLI](how-to-manage-firewall-cli.md)中 **) 允許的 IP 位址**。

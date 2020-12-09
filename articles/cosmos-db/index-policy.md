@@ -5,21 +5,21 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 12/07/2020
 ms.author: tisande
-ms.openlocfilehash: 9e62d6c475a4aeb366d034af1c80fc728f1a9211
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 2d99e0e2b65f7131e564e6ab64e454d2947c58a6
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93335801"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903015"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引編製原則
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 在 Azure Cosmos DB 中，每個容器都有索引編製原則，以指示容器項目應該如何編制索引。 新建立的容器所套用之每個項目的每個屬性之預設索引編製原則，會對任何字串或數字強制執行範圍索引。 這可讓您獲得良好的查詢效能，而不需要事先考慮索引編制和索引管理。
 
-在某些情況下，您可以覆寫此自動行為，使其更符合您的需求。 您可以藉由設定 *索引編制模式* 來自訂容器的編制索引原則，以及包含或排除 *屬性路徑* 。
+在某些情況下，您可以覆寫此自動行為，使其更符合您的需求。 您可以藉由設定 *索引編制模式* 來自訂容器的編制索引原則，以及包含或排除 *屬性路徑*。
 
 > [!NOTE]
 > 本文章中所述的更新編制索引原則的方法只適用于 Azure Cosmos DB 的 SQL (Core) API。 瞭解如何在[Azure Cosmos DB 的 MONGODB API](mongodb-indexing.md)中編制索引
@@ -28,8 +28,8 @@ ms.locfileid: "93335801"
 
 Azure Cosmos DB 支援兩種索引編制模式：
 
-- **一致** ：當您建立、更新或刪除專案時，會以同步方式更新索引。 這表示您的讀取查詢一致性將會是 [為帳戶設定的一致性](consistency-levels.md)。
-- **無** ：容器上的索引已停用。 當容器作為純索引鍵-值存放區，而不需要次要索引時，通常會使用這種方式。 它也可以用來改善大量作業的效能。 完成大量作業之後，索引模式可以設定為一致，然後使用 [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) 進行監視，直到完成為止。
+- **一致**：當您建立、更新或刪除專案時，會以同步方式更新索引。 這表示您的讀取查詢一致性將會是 [為帳戶設定的一致性](consistency-levels.md)。
+- **無**：容器上的索引已停用。 當容器作為純索引鍵-值存放區，而不需要次要索引時，通常會使用這種方式。 它也可以用來改善大量作業的效能。 完成大量作業之後，索引模式可以設定為一致，然後使用 [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) 進行監視，直到完成為止。
 
 > [!NOTE]
 > Azure Cosmos DB 也支援延遲編制索引模式。 當引擎並未執行任何其他工作時，延遲索引會以較低的優先順序層級對更新執行索引。 這可能會導致 **不一致或不完整的** 查詢結果。 如果您打算查詢 Cosmos 容器，則不應該選取延遲索引。 新的容器無法選取延遲索引。 除非您在[無伺服器](serverless.md)模式下使用不支援延遲索引) 的 Azure Cosmos 帳戶，否則您可以藉由[Azure 支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) (來要求豁免。
@@ -79,7 +79,7 @@ Azure Cosmos DB 支援兩種索引編制模式：
 
 - `_etag`預設會排除系統屬性，除非將 etag 新增至包含的路徑以進行索引編制。
 
-- 如果索引模式設定為 [ **一致** ]，系統 `id` 就會自動為系統屬性 `_ts` 編制索引。
+- 如果索引模式設定為 [ **一致**]，系統 `id` 就會自動為系統屬性 `_ts` 編制索引。
 
 包含和排除路徑時，您可能會遇到下列屬性：
 
@@ -105,9 +105,9 @@ Azure Cosmos DB 支援兩種索引編制模式：
 
 以下是範例：
 
-**包含的路徑** ： `/food/ingredients/nutrition/*`
+**包含的路徑**： `/food/ingredients/nutrition/*`
 
-**排除的路徑** ： `/food/ingredients/*`
+**排除的路徑**： `/food/ingredients/*`
 
 在此情況下，包含的路徑會優先于排除的路徑，因為它較為精確。 根據這些路徑，路徑中或嵌套的任何資料 `food/ingredients` 都會從索引中排除。 例外狀況是包含的路徑中的資料： `/food/ingredients/nutrition/*` ，它會進行索引。
 
@@ -125,7 +125,7 @@ Azure Cosmos DB 支援兩種索引編制模式：
 
 * Point
 
-* Polygon
+* 多邊形
 
 * MultiPolygon
 
@@ -201,6 +201,7 @@ SELECT * FROM c WHERE c.name = "John" AND c.age > 18
 - 當您建立複合索引來優化具有多個篩選準則的查詢時， `ORDER` 複合索引的不會影響結果。 這是選用屬性。
 - 如果您沒有針對具有多個屬性篩選的查詢定義複合索引，查詢仍然會成功。 不過，您可以使用複合索引來縮減查詢的 RU 成本。
 - 具有這兩個匯總的查詢 (例如，COUNT 或 SUM) 和篩選也受益于複合索引。
+- 篩選條件運算式可以使用多個複合索引。
 
 請考慮下列範例，其中會在屬性名稱、年齡和時間戳記上定義複合索引：
 
@@ -213,6 +214,7 @@ SELECT * FROM c WHERE c.name = "John" AND c.age > 18
 | ```(name ASC, age ASC)```     | ```SELECT * FROM c WHERE c.name != "John" AND c.age > 18``` | ```No```             |
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age = 18 AND c.timestamp > 123049923``` | ```Yes```            |
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp = 123049923``` | ```No```            |
+| ```(name ASC, age ASC) and (name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp > 123049923``` | ```Yes```            |
 
 ### <a name="queries-with-a-filter-as-well-as-an-order-by-clause"></a>具有篩選條件和 ORDER BY 子句的查詢
 

@@ -1,26 +1,30 @@
 ---
-title: 使用 Azure 地圖服務提高許可權服務來要求提高許可權資料
-description: 瞭解如何使用 Azure 地圖服務提高許可權服務來要求提高許可權的資料。
+title: '使用 Azure 地圖服務提高許可權服務 (預覽來要求提高許可權資料) '
+description: 瞭解如何使用 Azure 地圖服務提高許可權服務 (預覽) 來要求提高許可權的資料。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/02/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9937d72b44eb33df8027eddb9a9f500a372c9037
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: af3653d9e4509b1aa31a377dfc22cb6b6b2ff34e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552059"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906058"
 ---
-# <a name="request-elevation-data-using-the-azure-maps-elevation-service"></a>使用 Azure 地圖服務提高許可權服務來要求提高許可權資料
+# <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>使用 Azure 地圖服務提高許可權服務 (預覽來要求提高許可權資料) 
 
-Azure 地圖服務提高 [許可權服務](https://docs.microsoft.com/rest/api/maps/elevation) 會提供 api 來查詢地球位置的提高許可權資料。 您可以在路徑上、定義的周框方塊內或特定座標要求取樣的提高許可權資料。 此外，您也可以使用轉譯 [V2-Get Map 圖格 API](https://docs.microsoft.com/rest/api/maps/renderv2) ，以磚格式抓取提高許可權的資料。 圖格會以 GeoTIFF 的點陣格式傳遞。 本文說明如何使用 Azure 地圖服務提高許可權服務和「取得地圖磚」 API 來要求提高許可權資料。 GeoJSON 和 GeoTiff 兩種格式都可以要求提高許可權的資料。
+> [!IMPORTANT]
+> Azure 地圖服務提升許可權服務目前處於公開預覽狀態。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>先決條件
+Azure 地圖服務提高 [許可權服務](https://docs.microsoft.com/rest/api/maps/elevation) 提供 api，可在地球表面上的任何位置查詢提升許可權資料。 您可以在路徑上、定義的周框方塊內或特定座標要求取樣的提高許可權資料。 此外，您也可以使用轉譯 [V2-Get Map 圖格 API](https://docs.microsoft.com/rest/api/maps/renderv2) ，以磚格式抓取提高許可權的資料。 圖格會以 GeoTIFF 的點陣格式傳遞。 本文說明如何使用 Azure 地圖服務提高許可權服務和「取得地圖磚」 API 來要求提高許可權資料。 GeoJSON 和 GeoTiff 兩種格式都可以要求提高許可權的資料。
+
+## <a name="prerequisites"></a>必要條件
 
 1. [在 S1 定價層中建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [取得主要訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為主要金鑰或訂用帳戶金鑰。
@@ -50,7 +54,7 @@ Azure 地圖服務提高 [許可權服務](https://docs.microsoft.com/rest/api/m
 
 ## <a name="request-elevation-data-in-geojson-format"></a>要求 GeoJSON 格式的提高許可權資料
 
-使用提高許可權服務 Api 來要求 GeoJSON 格式的提高許可權資料。 本節將說明這三個 Api 的每一個：
+使用「提高許可權服務」 (預覽版) Api 來要求 GeoJSON 格式的提高許可權資料。 本節將說明這三個 Api 的每一個：
 
 * [取得點數的資料](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
 * [張貼點資料](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates)
@@ -443,7 +447,7 @@ URL 中的緯度和經度預期會在 WGS84 (World Geodetic System) 小數度。
     }
     ```
 
-## <a name="samples-use-elevation-service-apis-in-azure-maps-control"></a>範例：使用 Azure 地圖服務控制項中的提高許可權服務 Api
+## <a name="samples-use-elevation-service-preview-apis-in-azure-maps-control"></a>範例：使用 Azure 地圖服務控制項中的提高許可權服務 (預覽版) Api
 
 ### <a name="get-elevation-data-by-coordinate-position"></a>依座標位置取得提高許可權資料
 
@@ -478,16 +482,16 @@ URL 中的緯度和經度預期會在 WGS84 (World Geodetic System) 小數度。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要進一步探索 Azure 地圖服務提高許可權的 Api，請參閱：
+若要進一步探索 Azure 地圖服務提升 (Preview) Api 的許可權，請參閱：
 
 > [!div class="nextstepaction"]
-> [提高許可權-取得 Lat 長座標的資料](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
+> [提高許可權 (預覽) -取得 Lat 長座標的資料](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
 
 > [!div class="nextstepaction"]
-> [提高許可權-取得周框方塊的資料](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
+> [提高許可權 (預覽) -取得周框方塊的資料](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
 
 > [!div class="nextstepaction"]
-> [提高許可權-取得聚合線條的資料](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
+> [提高許可權 (預覽) -取得聚合線條的資料](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
 
 > [!div class="nextstepaction"]
 > [轉譯 V2 –取得地圖底圖](https://docs.microsoft.com/rest/api/maps/renderv2)

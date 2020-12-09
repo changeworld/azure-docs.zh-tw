@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: jingwang
-ms.openlocfilehash: ef7f7ba659d874d4514c45e9391912f3027e2265
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 0b10a4de78c44e4c0a113a1f1a46c316b13a1f78
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592051"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96902150"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory 中的複製活動
 
@@ -61,7 +61,7 @@ ms.locfileid: "94592051"
 * 從 Azure Blob 儲存體中複製 Gzip 壓縮文字 (CSV) 格式的資料，並將其寫入 Azure SQL Database。
 * 許多需要序列化/還原序列化或壓縮/解壓縮的活動。
 
-## <a name="supported-regions"></a>支援的區域
+## <a name="supported-regions"></a>支援區域
 
 啟用複製活動的服務可在 [Azure integration runtime 位置](concepts-integration-runtime.md#integration-runtime-location)中所列的區域和地理位置全域取得。 全域可用的拓撲可確保進行有效率的資料移動，通常可避免發生跨區域躍點的情況。 查看各 [區域的產品](https://azure.microsoft.com/regions/#services) ，以檢查特定區域中 Data Factory 和資料移動的可用性。
 
@@ -75,7 +75,7 @@ ms.locfileid: "94592051"
 2. **建立來源和接收的資料集。** 如需設定資訊和支援的屬性，請參閱來源和接收連接器文章的「資料集屬性」章節。
 3. **建立具有複製活動的管線。** 下一節提供範例。
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>語法
 
 下列複製活動範本包含支援屬性的完整清單。 請指定適合您案例的屬性。
 
@@ -129,7 +129,7 @@ ms.locfileid: "94592051"
 
 | 屬性 | 描述 | 必要？ |
 |:--- |:--- |:--- |
-| 類型 | 若為複製活動，請將設定為 `Copy` | 是 |
+| 型別 | 若為複製活動，請將設定為 `Copy` | 是 |
 | 輸入 | 指定您所建立的資料集，以指向來源資料。 複製活動僅支援單一輸入。 | 是 |
 | 輸出 | 指定您所建立指向接收資料的資料集。 複製活動僅支援單一輸出。 | 是 |
 | typeProperties | 指定要設定複製活動的屬性。 | 是 |
@@ -254,7 +254,7 @@ Data Factory 可讓您以累加方式將差異資料從來源資料存放區複�
 
 - [Azure SQL Database](connector-azure-sql-database.md)
 - [Azure SQL Database 受控執行個體](connector-azure-sql-managed-instance.md)
-- [Azure Synapse Analytics (先前稱為 SQL 資料倉儲)](connector-azure-sql-data-warehouse.md)
+- [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md)
 - [SQL Server](connector-sql-server.md)
 
 ![建立接收資料表](media/copy-activity-overview/create-sink-table.png)

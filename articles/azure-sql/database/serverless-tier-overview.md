@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 9/17/2020
-ms.openlocfilehash: 1a51d2140528e3f6ed6da0ca699d7b71b91638ec
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.date: 12/8/2020
+ms.openlocfilehash: bd8f5a28b709a45e99e846fb4e242f774aca80c5
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743161"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902505"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database 無伺服器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -128,16 +128,17 @@ SQL 快取會隨著資料以相同方式從磁片提取，且速度與布建的�
 
 當下列任何條件成立時，就會觸發 Autoresuming：
 
-|功能|自動繼續觸發程序|
+|特徵|自動繼續觸發程序|
 |---|---|
-|驗證與授權|登入|
+|驗證和授權|登入|
 |威脅偵測|啟用/停用資料庫或伺服器層級的威脅偵測設定。<br>修改資料庫或伺服器層級的威脅偵測設定。|
 |資料探索與分類|新增、修改、刪除或檢視敏感度標籤|
 |稽核|檢視稽核記錄。<br>正在更新或查看稽核原則。|
 |資料遮罩|新增、修改、刪除或檢視資料遮罩處理規則|
-|透明資料加密|檢視透明資料加密的狀態|
+|透明資料加密|查看透明資料加密的狀態或狀態|
 |弱點評估|臨機操作掃描和定期掃描（如果已啟用）|
 |查詢 (效能) 資料存放區|修改或查看查詢存放區設定|
+|效能建議|查看或套用效能建議|
 |自動微調|自動微調建議的應用和驗證，例如自動編製索引|
 |資料庫複製|將資料庫建立為複製。<br>匯出至 BACPAC 檔案。|
 |SQL 資料同步|按照可設定的排程執行或定期執行中樞與成員資料庫之間的同步|
@@ -148,7 +149,7 @@ SQL 快取會隨著資料以相同方式從磁片提取，且速度與布建的�
 
 在部署某些需要線上資料庫的服務更新期間，也會觸發 Autoresuming。
 
-### <a name="connectivity"></a>連接性
+### <a name="connectivity"></a>連線能力
 
 如果無伺服器資料庫已暫停，則第一次登入將會繼續執行資料庫，並傳回錯誤訊息，指出資料庫無法使用，錯誤碼為40613。 資料庫一旦繼續，則必須重試登入來建立連線。 具有連線重試邏輯的資料庫用戶端應該不需要修改。
 
@@ -275,7 +276,7 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 下表列出用來監視無伺服器資料庫之應用程式封裝和使用者集區之資源使用量的計量：
 
-|單位|計量|描述|單位|
+|實體|計量|描述|單位|
 |---|---|---|---|
 |應用程式套件|app_cpu_percent|應用程式所使用的虛擬核心百分比，相對於應用程式所允許的最大虛擬核心數。|百分比|
 |應用程式套件|app_cpu_billed|在報告期間內針對應用程式計費的計算數量。 在這段期間所支付的金額為此計量與虛擬核心單價的乘積。 <br><br>彙總一段時間內每秒使用的最大 CPU 與記憶體，即可判斷此計量的值。 如果使用的數量小於依照最小虛擬核心數與最小記憶體所設定的最小佈建數量，就會收取最小佈建數量的費用。為了比較 CPU 與記憶體以供計費用途，記憶體會依每個虛擬核心 3 GB 重新調整記憶體量，藉此規範成虛擬核心單位。|虛擬核心秒數|
@@ -314,17 +315,17 @@ az sql db show --name $databasename --resource-group $resourcegroupname --server
 
 計算數量的計費方式為每秒使用的最大 CPU 與記憶體。 若使用的 CPU 與使用的記憶體數量小於各自的最小佈建數量，就會收取佈建數量的費用。 為了比較 CPU 與記憶體以供計費用途，記憶體會依每個虛擬核心 3 GB 重新調整記憶體量，藉此規範成虛擬核心單位。
 
-- **資源計費** ： CPU 和記憶體
-- **計費金額** ： vCore unit price * max (min 虛擬核心、虛擬核心 used、MIN memory GB * 1/3、memory gb used * 1/3)  
-- **計費頻率** ：每秒
+- **資源計費**： CPU 和記憶體
+- **計費金額**： vCore unit price * max (min 虛擬核心、虛擬核心 used、MIN memory GB * 1/3、memory gb used * 1/3)  
+- **計費頻率**：每秒
 
 VCore unit price 是每個 vCore 的每秒成本。 如需指定區域中的特定單位價格，請參閱 [Azure SQL Database 定價頁面](https://azure.microsoft.com/pricing/details/sql-database/single/)。
 
 計費的計算數量會依下列度量公開：
 
-- **計量** ：app_cpu_billed (虛擬核心秒數)
-- **定義** ：最大值 (最小虛擬核心數, 使用的虛擬核心, 最小記憶體 GB * 1/3, 使用的記憶體 GB * 1/3)
-- **報告頻率** ：每分鐘
+- **計量**：app_cpu_billed (虛擬核心秒數)
+- **定義**：最大值 (最小虛擬核心數, 使用的虛擬核心, 最小記憶體 GB * 1/3, 使用的記憶體 GB * 1/3)
+- **報告頻率**：每分鐘
 
 此數量會每秒計算，並彙總超過 1 分鐘。
 

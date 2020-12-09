@@ -3,17 +3,17 @@ title: Azure 地圖服務繪製轉換錯誤和警告
 description: 了解您在使用 Azure 地圖轉換服務時可能會遇到的轉換錯誤和警告。 請參閱相關建議和範例，以了解如何解決錯誤和警告。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 04a43e3e2fa9ad77e11f82ff38a144a1de3add78
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: cecc19f0984ce1801d50e5cbda73e98a01e2825b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895931"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906211"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>繪製轉換錯誤和警告
 
@@ -27,7 +27,7 @@ ms.locfileid: "92895931"
 
 #### <a name="description-for-geometrywarning"></a>*geometryWarning 的描述*
 
-當繪圖包含無效的實體時，就會發生 **geometryWarning** 。 無效的實體是不符合幾何條件約束的實體。 舉例來說，僅支援封閉幾何圖形的圖層中包含的自我相交多邊形或非封閉聚合線條，都是無效實體。
+當繪圖包含無效的實體時，就會發生 **geometryWarning**。 無效的實體是不符合幾何條件約束的實體。 舉例來說，僅支援封閉幾何圖形的圖層中包含的自我相交多邊形或非封閉聚合線條，都是無效實體。
 
 轉換服務無法從無效的實體建立地圖功能，而會加以忽略。
 
@@ -45,7 +45,7 @@ ms.locfileid: "92895931"
 
 #### <a name="how-to-fix-geometrywarning"></a>*如何修正 geometryWarning*
 
-檢查每個實體的 **geometryWarning** ，以確認實體符合幾何條件約束。
+檢查每個實體的 **geometryWarning**，以確認實體符合幾何條件約束。
 
 ### <a name="unexpectedgeometryinlayer"></a>**unexpectedGeometryInLayer**
 
@@ -159,13 +159,13 @@ ms.locfileid: "92895931"
 
 #### <a name="how-to-fix-redundantattribution"></a>*如何修正 redundantAttribution*
 
-若要修正 * *redundantAttribution* 警告，請移除多餘或衝突的物件屬性。
+若要修正 **redundantAttribution* 警告，請移除多餘或衝突的物件屬性。
 
 ### <a name="manifestwarning"></a>**manifestWarning**
 
 #### <a name="description-for-manifestwarning"></a>*manifestWarning 的描述*
 
-當資訊清單包含在轉換期間未使用的 unitProperties 或 zoneProperties 物件時，就會發生 **manifestWarning** 。
+當資訊清單包含在轉換期間未使用的 unitProperties 或 zoneProperties 物件時，就會發生 **manifestWarning**。
 
 #### <a name="examples-for-manifestwarning"></a>*manifestWarning 的範例*
 
@@ -175,7 +175,7 @@ ms.locfileid: "92895931"
 
 #### <a name="how-to-fix-manifestwarning"></a>*如何修正 manifestWarning*
 
-若要修正 **manifestWarning** ，請從資訊清單中移除未使用的 `unitProperties` 或 `zoneProperties` 物件，或將單元/區域標籤新增至繪圖，以便在轉換期間使用屬性物件。
+若要修正 **manifestWarning**，請從資訊清單中移除未使用的 `unitProperties` 或 `zoneProperties` 物件，或將單元/區域標籤新增至繪圖，以便在轉換期間使用屬性物件。
 
 ## <a name="wall-warnings"></a>牆警告
 
@@ -257,7 +257,7 @@ ms.locfileid: "92895931"
 
 #### <a name="description-for-zonewarning"></a>*zoneWarning 的描述*
 
-當區域未包含標籤時，就會發生 **zoneWarning** 。 轉換服務會捨棄未加上標籤的區域。
+當區域未包含標籤時，就會發生 **zoneWarning**。 轉換服務會捨棄未加上標籤的區域。
 
 #### <a name="example-for-zonewarning"></a>*zoneWarning 的範例*
 
@@ -267,7 +267,7 @@ ms.locfileid: "92895931"
 
 #### <a name="how-to-fix-zonewarning"></a>*如何修正 zoneWarning*
 
-若要修正 **zoneWarning** ，請確認每個區域都有單一標籤。
+若要修正 **zoneWarning**，請確認每個區域都有單一標籤。
 
 ## <a name="label-warnings"></a>標籤警告
 
@@ -275,7 +275,7 @@ ms.locfileid: "92895931"
 
 #### <a name="description-for-labelwarning"></a>*labelWarning 的描述*
 
-當繪圖包含不明確或衝突的標籤功能時，就會發生 **labelWarning** 。
+當繪圖包含不明確或衝突的標籤功能時，就會發生 **labelWarning**。
 
 **labelWarning** 可能由於下列一或多個原因而發生：
 
@@ -291,7 +291,7 @@ ms.locfileid: "92895931"
 
 #### <a name="how-to-fix-labelwarning"></a>*如何修正 labelWarning*
 
-若要修正 **labelWarning** ，請確定：
+若要修正 **labelWarning**，請確定：
 
 * 所有單元標籤都位於單元內。
 * 所有區域標籤都位於區域內。
@@ -311,7 +311,7 @@ ms.locfileid: "92895931"
 
 若要修正 **invalidArchiveFormat** 錯誤，請確認：
 
-* 封存檔案名稱的結尾是 _.zip_ 。
+* 封存檔案名稱的結尾是 _.zip_。
 * ZIP 封存包含資料。
 * 您可以開啟 ZIP 封存。
 
@@ -330,16 +330,16 @@ ms.locfileid: "92895931"
 若要修正 **invalidUserData** 錯誤，請確認：
 
 * 您已為上傳的套件提供了正確的 `udid`。
-* 您已為用來上傳繪圖套件的 Azure 地圖服務帳戶啟用 Azure 地圖服務建立工具。
+* 已針對您用來上傳繪圖套件的 Azure 地圖服務帳戶啟用 Azure 地圖服務 Creator (Preview) 。
 * 對轉換服務的 API 要求包含您用來上傳繪圖套件的 Azure 地圖服務帳戶的訂用帳戶金鑰。
 
 ### <a name="dwgerror"></a>**dwgError**
 
 #### <a name="description-for-dwgerror"></a>*dwgError 的描述*
 
-當繪圖套件包含上傳的 ZIP 封存中一或多個 DWG 檔案的問題時，就會發生 **dwgError** 。
+當繪圖套件包含上傳的 ZIP 封存中一或多個 DWG 檔案的問題時，就會發生 **dwgError**。
 
-當繪圖套件包含因無效或已損毀而無法開啟的 DWG 檔案時，就會發生 **dwgError** 。
+當繪圖套件包含因無效或已損毀而無法開啟的 DWG 檔案時，就會發生 **dwgError**。
 
 * DWG 檔案不是有效的 AutoCAD DWG 檔案格式繪圖。
 * DWG 檔案已損毀。
@@ -347,7 +347,7 @@ ms.locfileid: "92895931"
 
 #### <a name="how-to-fix-dwgerror"></a>*如何修正 dwgError*
 
-若要修正 **dwgError** ，請檢查您的 _manifest.json_ 檔案以確認：
+若要修正 **dwgError**，請檢查您的 _manifest.json_ 檔案以確認：
 
 * ZIP 封存中的所有 DWG 檔案都是有效的 AutoCAD DWG 格式繪圖。請在 AutoCAD 中開啟每個檔案。 移除或修正所有無效的繪圖。
 * _manifest.json_ 中的 DWG 檔案清單與 ZIP 封存中的 DWG 檔案相符。
@@ -385,7 +385,7 @@ _manifest. json_file 因 JSON 格式或語法錯誤而無法讀取。 若要深�
 **missingManifest** 錯誤可能由於下列一或多個原因而發生：
 
 * The _manifest.json_ 檔案的拼字錯誤。
-* 遺漏 _manifest.json_ 。
+* 遺漏 _manifest.json_。
 * _manifest.json_ 不在 ZIP 封存的根目錄中。
 
 #### <a name="how-to-fix-missingmanifest"></a>*如何修正 missingManifest*
@@ -461,7 +461,7 @@ _manifest. json_file 因 JSON 格式或語法錯誤而無法讀取。 若要深�
 
 #### <a name="description-for-wallerror"></a>*wallError 的描述*
 
-如果繪圖在嘗試建立牆功能時包含錯誤，就會發生 **wallError** 。
+如果繪圖在嘗試建立牆功能時包含錯誤，就會發生 **wallError**。
 
 #### <a name="example-scenario-for-wallerror"></a>*wallError 的範例案例*
 
@@ -479,7 +479,7 @@ _manifest. json_file 因 JSON 格式或語法錯誤而無法讀取。 若要深�
 
 #### <a name="description-for-verticalpenetrationerror"></a>*verticalPenetrationError 的描述*
 
-當繪圖包含不明確的垂直穿透功能時，就會發生 **verticalPenetrationError** 。
+當繪圖包含不明確的垂直穿透功能時，就會發生 **verticalPenetrationError**。
 
 **verticalPenetrationError** 錯誤可能由於下列一或多個原因而發生：
 
@@ -506,4 +506,4 @@ _manifest. json_file 因 JSON 格式或語法錯誤而無法讀取。 若要深�
 > [如何使用 Azure 地圖服務繪製錯誤視覺化檢視](drawing-error-visualizer.md)
 
 > [!div class="nextstepaction"]
-> [室內位置對應的建立工具](creator-indoor-maps.md)
+> [適用于室內對應的建立者 (預覽) ](creator-indoor-maps.md)

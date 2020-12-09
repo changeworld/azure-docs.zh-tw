@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ce068f1b43fcd6611d4abf65029cbcc5de3b7d30
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c9ee57baf63867e4dca4236d484321586cfb3b17
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311606"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862338"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>使用可解譯性套件以 Python (preview & 預測來說明 ML 模型) 
 
@@ -47,7 +47,7 @@ ms.locfileid: "93311606"
     pip install azureml-interpret
     ```
 
-2. 在本機 Jupyter 筆記本中將範例模型定型。
+2. 在本機 Jupyter Notebook 中將範例模型定型。
 
     ```python
     # load breast cancer dataset, a well-known small dataset that comes with scikit-learn
@@ -242,7 +242,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
     ```bash
     pip install azureml-interpret
     ```
-1. 在本機 Jupyter Notebook 中建立定型指令碼。 例如： `train_explain.py` 。
+1. 在本機 Jupyter Notebook 中建立定型腳本。 例如： `train_explain.py` 。
 
     ```python
     from azureml.interpret import ExplanationClient
@@ -275,7 +275,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 1. 將 Azure Machine Learning 計算設定為您的計算目標，並提交定型回合。 如需相關指示，請參閱 [建立和管理 Azure Machine Learning 計算](how-to-create-attach-compute-cluster.md) 叢集。 您也可能會發現 [範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation) 很有用。
 
-1. 請下載您本機 Jupyter 筆記本中的說明。
+1. 請下載您本機 Jupyter Notebook 中的說明。
 
     ```python
     from azureml.interpret import ExplanationClient
@@ -296,7 +296,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 ## <a name="visualizations"></a>視覺效果
 
-在您的本機 Jupyter 筆記本中下載說明之後，您可以使用 [視覺效果] 儀表板來瞭解和解讀您的模型。
+在您的本機 Jupyter Notebook 下載說明之後，您可以使用 [視覺效果] 儀表板來瞭解和解讀您的模型。
 
 ### <a name="understand-entire-model-behavior-global-explanation"></a>瞭解完整的模型行為 (全域說明)  
 

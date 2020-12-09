@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: pafarley
-ms.openlocfilehash: 0be77dc1ac249c37f9b59078451d8fbe35f17458
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6eb2a2d2762b60a12bb9a24b92e2edae4b846cd1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72754246"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904137"
 ---
 # <a name="define-and-use-moderation-workflows"></a>定義和使用仲裁工作流程
 
@@ -23,7 +23,7 @@ ms.locfileid: "72754246"
 
 ## <a name="create-a-new-workflow"></a>建立新的工作流程
 
-移至 [內容仲裁審核工具](https://contentmoderator.cognitive.microsoft.com/) 並登入。 在 [設定]**** 索引標籤中，選取 [工作流程]****。
+移至 [內容仲裁審核工具](https://contentmoderator.cognitive.microsoft.com/) 並登入。 在 [設定] 索引標籤中，選取 [工作流程]。
 
 ![[工作流程] 設定](images/2-workflows-0.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "72754246"
 
 ![工作流程測試](images/image-workflow-execute.PNG)
 
-將此 [範例映射](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg) 儲存到您的本機磁片磁碟機。 然後選取 **[選擇檔案 (s) ** ，然後將影像上傳至工作流程。
+將此 [範例映射](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg) 儲存到您的本機磁片磁碟機。 然後選取 **[選擇檔案 (s)** ，然後將影像上傳至工作流程。
 
 ![在影像上重迭引號的執行器](images/sample-text.jpg)
 
@@ -77,10 +77,10 @@ ms.locfileid: "72754246"
 
 ### <a name="verify-workflow-action"></a>確認工作流程動作
 
-移至 [正在**審核**] 下的 [**映射**] 索引標籤，並確認有新建立的影像審核。
+移至 [正在 **審核**] 下的 [**映射**] 索引標籤，並確認有新建立的影像審核。
 
 ![檢閱映像](images/image-workflow-review.PNG)
 
 ## <a name="next-steps"></a>後續步驟
 
-在本指南中，您已瞭解如何設定和使用內容仲裁 [審核工具](https://contentmoderator.cognitive.microsoft.com)中的審核工作流程。 接下來，請參閱 [REST API 指南](../try-review-api-workflow.md) ，以瞭解如何以程式設計方式建立工作流程。
+在本指南中，您已瞭解如何設定和使用內容仲裁 [審核工具](https://contentmoderator.cognitive.microsoft.com)中的審核工作流程。 接下來，請參閱 [API 主控台指南](../try-review-api-workflow.md) ，以瞭解如何以程式設計方式建立工作流程。

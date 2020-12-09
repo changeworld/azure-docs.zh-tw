@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: e677aef7a90e7372c5af4bfa48c6160c439b3ee8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08c0d05ac10d9e61497d36793740c8e827fbeca1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707960"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903678"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的防火牆規則-單一伺服器
 除非您指定哪些電腦擁有許可權，否則適用於 PostgreSQL 的 Azure 資料庫伺服器防火牆會防止對您資料庫伺服器的所有存取。 此防火牆會根據每一個要求的來源 IP 位址來授與伺服器存取權。
@@ -34,13 +34,13 @@ ms.locfileid: "91707960"
 ## <a name="connecting-from-azure"></a>從 Azure 連線
 建議您尋找任何應用程式或服務的連出 IP 位址，並明確地允許存取這些個別的 IP 位址或範圍。 例如，您可以找到 Azure App Service 的連出 IP 位址，或使用系結至虛擬機器或其他資源的公用 IP (請參閱以下資訊，以取得透過服務端點) 的虛擬機器私人 IP 連接的相關資訊。 
 
-如果您的 Azure 服務無法使用固定的連出 IP 位址，您可以考慮啟用來自所有 Azure 資料中心 IP 位址的連線。 您可以從 [連線**安全性**] 窗格中，將 [**允許存取 Azure 服務**] 選項設定為 [**開啟**]，以從 Azure 入口網站啟用此設定，然後按 [**儲存**]。 從 Azure CLI 中，啟動和結束位址等於0.0.0.0 的防火牆規則設定會執行相同的設定。 如果不允許連線嘗試，要求就不會到達適用於 PostgreSQL 的 Azure 資料庫伺服器。
+如果您的 Azure 服務無法使用固定的連出 IP 位址，您可以考慮啟用來自所有 Azure 資料中心 IP 位址的連線。 您可以從 [連線 **安全性**] 窗格中，將 [**允許存取 Azure 服務**] 選項設定為 [**開啟**]，以從 Azure 入口網站啟用此設定，然後按 [**儲存**]。 從 Azure CLI 中，啟動和結束位址等於0.0.0.0 的防火牆規則設定會執行相同的設定。 如果不允許連線嘗試，要求就不會到達適用於 PostgreSQL 的 Azure 資料庫伺服器。
 
 > [!IMPORTANT]
 > [ **允許存取 azure 服務** ] 選項會設定防火牆，以允許所有來自 Azure 的連線，包括來自其他客戶訂用帳戶的連接。 選取這個選項時，請確定您的登入和使用者權限會限制為只有授權的使用者才能存取。
 > 
 
-:::image type="content" source="media/concepts-firewall-rules/allow-azure-services.png" alt-text="防火牆運作方式的範例流程":::
+:::image type="content" source="media/concepts-firewall-rules/allow-azure-services.png" alt-text="在入口網站中設定 [允許存取 Azure 服務]":::
 
 ### <a name="connecting-from-a-vnet"></a>從 VNet 連接
 若要從 VNet 安全地連接到您的適用於 PostgreSQL 的 Azure 資料庫伺服器，請考慮使用 [vnet 服務端點](./concepts-data-access-and-security-vnet.md)。 
@@ -70,6 +70,9 @@ ms.locfileid: "91707960"
 * **無法從 Azure 資源連線到允許的 IP：** 檢查您要連接的子網是否已啟用 **Microsoft Sql** 服務端點。 如果已啟用 **Sql** ，則表示您只想要在該子網上使用 [VNet 服務端點規則](concepts-data-access-and-security-vnet.md) 。
 
    例如，如果您從已啟用 **Microsoft .sql** 但沒有對應 VNet 規則的子網中的 Azure VM 連線，您可能會看到下列錯誤：  `FATAL: Client from Azure Virtual Networks is not allowed to access the server`
+
+* **IPv6 格式無法使用防火牆規則：** 防火牆規則必須是 IPv4 格式。 如果您指定 IPv6 格式的防火牆規則，則會顯示驗證錯誤。
+
 
 ## <a name="next-steps"></a>後續步驟
 * [使用 Azure 入口網站建立和管理適用於 PostgreSQL 的 Azure 資料庫防火牆規則](howto-manage-firewall-using-portal.md)

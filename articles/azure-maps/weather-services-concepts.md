@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Maps 中的天氣服務概念
-description: 瞭解適用于 Microsoft Azure Maps 氣象服務的概念。
+title: Microsoft Azure Maps 中的氣象服務業 (預覽版) 概念
+description: 瞭解適用于 Microsoft Azure Maps 氣象服務 (Preview) 的概念。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/10/2020
@@ -8,20 +8,24 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ea8698b7bf402850e506ec126cd2a7bb6ce05823
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 657cb6a86122d267b86e82b6f02eb58e968cddd3
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896722"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904732"
 ---
-# <a name="weather-services-in-azure-maps"></a>Azure 地圖服務的氣象服務
+# <a name="weather-services-preview-in-azure-maps"></a>Azure 地圖服務中的氣象服務 (預覽版) 
 
-本文介紹適用于 [Azure 地圖服務氣象服務](/rest/api/maps/weather)的概念。 我們建議您在開始使用氣象 Api 之前，先閱讀這篇文章。
+> [!IMPORTANT]
+> Azure 地圖服務天氣服務目前處於公開預覽狀態。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+本文介紹適用于 Azure 地圖服務 [氣象服務](/rest/api/maps/weather)的概念。 我們建議您在開始使用氣象 Api 之前，先閱讀這篇文章。
 
 ## <a name="unit-types"></a>單位類型
 
-某些氣象服務 Api 可讓使用者指定資料是否以公制或英制單位傳回。 針對這些 Api 傳回的回應包含 Unittype.pixel 表示以及可用於單元翻譯的數值。 請參閱下表以解讀這些值。
+部分氣象服務 (Preview) Api 可讓使用者指定資料是否以公制或英制單位傳回。 針對這些 Api 傳回的回應包含 Unittype.pixel 表示以及可用於單元翻譯的數值。 請參閱下表以解讀這些值。
 
 |Unittype.pixel 表示|描述         |
 |--------|--------------------|
@@ -46,13 +50,13 @@ ms.locfileid: "92896722"
 |18      |華氏          |
 |19      |克式              |
 |20      |percent             |
-|21      |float               |
+|21      |FLOAT               |
 |22      |integer             |
 
 
 ## <a name="weather-icons"></a>氣象圖示
 
-某些氣象服務 Api 會 `iconCode` 在回應中傳回。 `iconCode`是用來定義圖示的數位值。 不要直接從您的應用程式連結到這些映射，Url 可以和將會變更。
+某些氣象服務 (Preview) Api 會 `iconCode` 在回應中傳回。 `iconCode`是用來定義圖示的數位值。 不要直接從您的應用程式連結到這些映射，Url 可以和將會變更。
 
 | 圖示編號 |圖示| 天 | 晚上 | Text |
 |-------------|:----:|-----|-------|------|
@@ -84,7 +88,7 @@ ms.locfileid: "92896722"
 | 30           | :::image type="icon" source="./media/weather-services-concepts/hot-i.png"::: | 是 |  是   | 經常性存取層|
 | 31           | :::image type="icon" source="./media/weather-services-concepts/cold-i.png"::: | 是 |  是   | 冷|
 | 32           | :::image type="icon" source="./media/weather-services-concepts/windy-i.png"::: | 是 |  是   | 風|
-| 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | 否  |  是   | Clear|
+| 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | 否  |  是   | 清除|
 | 34           | :::image type="icon" source="./media/weather-services-concepts/mostly-clear-night.png"::: | 否  |  是   | 大多明確|
 | 35           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-night.png"::: | 否  |  是   | 部分的雲|
 | 36           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds-Night.png"::: | 否  |  是   | 間歇雲|
@@ -540,10 +544,10 @@ ms.locfileid: "92896722"
   7       |海灘和航海 | 海灘 & 集區 (10)  </br> 釣魚 (13)  </br> Sailing (11) 
   8       |運動員 | 釣魚 (13)  </br> 搜尋 (20)  </br> 室外活動 (29) </br>
   9       |農業 |  現場就緒 (32)  </br>   (34) 的泥土濕度
-  10      |健全狀況 | Arthritis 難題 (21)  </br> Asthma (23)  </br> 常見的冷 (25)  </br> 灰塵 & Dander (18)  </br> 流感 (26)  </br> 狀況良好的核心健身 (16)  </br> Migraine 的麻煩 (27) 
+  10      |醫療 | Arthritis 難題 (21)  </br> Asthma (23)  </br> 常見的冷 (25)  </br> 灰塵 & Dander (18)  </br> 流感 (26)  </br> 狀況良好的核心健身 (16)  </br> Migraine 的麻煩 (27) 
   11      |戶外 | 戶外烤肉 (24)  </br> 海灘 & 集區 (10)  </br> 騎腳踏車 (4)  </br> 戶外音樂會 (8)  </br>  現場就緒 (32)  </br> 釣魚 (13)  </br> 高爾夫球氣象 (5)  </br> 健行 (3)  </br> 搜尋 (20)  </br> Jogging (2)  </br> Kite 飛行 (9)  </br> Mosquito 活動 (17) </br> 草坪 Mowing (28)  </br> 室外活動 (29)  </br> 正在執行 (1)  </br> Sailing (11)  </br> Skateboarding (7)  </br> Ski 氣象 (15)  </br>   (34) 的泥土濕度</br> Stargazing (12)  </br> 網球 (6) 
   12      |體育 | 騎腳踏車 (4)  </br> 高爾夫球氣象 (5)  </br> 健行 (3)  </br>  Jogging (2)  </br> 正在執行 (1)  </br> Skateboarding (7)  </br> Ski 氣象 (15)  </br>網球 (6) 
-  13      |家庭 | 家用能源效率 (36)  </br> 燃料經濟 (37)  </br> 室內活動 (-2) 
+  13      |首頁 | 家用能源效率 (36)  </br> 燃料經濟 (37)  </br> 室內活動 (-2) 
 
 ## <a name="daily-index-range-sets"></a>每日索引範圍集合
 

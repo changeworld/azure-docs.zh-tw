@@ -1,23 +1,27 @@
 ---
-title: 'Microsoft Azure (常見問題將天氣服務的常見問題對應) '
-description: 尋找有關 Azure 地圖服務天氣服務資料和功能的常見問題的解答。
+title: 'Microsoft Azure 將天氣服務 (預覽) 常見問題 (常見問題) '
+description: 尋找 Azure 地圖服務天氣服務 (預覽) 資料和功能的常見問題解答。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/04/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 2a5a58c1515c647bb76bf35f3a5eaade3d00588a
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 8b7726e4e8fee0044a7865c8c494ef6451425676
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747319"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903865"
 ---
-# <a name="azure-maps-weather-services-frequently-asked-questions-faq"></a>Azure 地圖服務天氣服務的常見問題 (常見問題) 
+# <a name="azure-maps-weather-services-preview-frequently-asked-questions-faq"></a>Azure 地圖服務天氣服務 (預覽) 常見問題 (常見問題) 
 
-本文將回答有關 [Azure 地圖服務天氣服務](https://docs.microsoft.com/rest/api/maps/weather) 資料和功能的常見問題。 其中包含下列主題：
+> [!IMPORTANT]
+> Azure 地圖服務天氣服務目前處於公開預覽狀態。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+本文將回答有關 Azure 地圖服務 [天氣服務](https://docs.microsoft.com/rest/api/maps/weather) 資料和功能的常見問題。 其中包含下列主題：
 
 * 資料來源和資料模型
 * 氣象服務涵蓋範圍和可用性
@@ -51,7 +55,7 @@ AccuWeather 具有世界各地的即時天氣和環境資訊，主要是因為�
 
 使用許多氣象預測指引系統來制定全球預測。 每一天都會使用超過150的數值預測模型，這兩種模型都是外部和內部資料集。 這包括政府模型，例如歐洲中心 ECMWF 和美國全球預測系統 (GFS) 。 此外，AccuWeather 也併入專屬的高解析度模型，可將預測縮小至特定位置和策略性地區網域，以更精確地預測天氣。 過去數十年來，AccuWeather 的獨特混合和加權演算法已經過開發。 這些演算法會以最佳方式運用大量的預測輸入，以提供高度精確的預測。
 
-## <a name="weather-services-coverage-and-availability"></a>氣象服務涵蓋範圍和可用性
+## <a name="weather-services-preview-coverage-and-availability"></a>氣象服務 (預覽版) 涵蓋範圍和可用性
 
 **針對不同的國家/地區，我可以預期何種涵蓋範圍？**
 
@@ -73,11 +77,11 @@ Azure 地圖服務的預測 Api 會快取最多30分鐘。 若要查看快取的
 
 ## <a name="developing-with-azure-maps-sdks"></a>使用 Azure 地圖服務 Sdk 進行開發
 
-**Azure 地圖服務 Web SDK 原本就支援氣象服務整合嗎？**
+**Azure 地圖服務 Web SDK 原生支援氣象服務 (Preview) 整合嗎？**
 
 Azure 地圖服務 Web SDK 提供服務模組。 [服務] 模組是協助程式程式庫，可讓您輕鬆地在 web 或 Node.js 應用程式中使用 Azure 地圖服務 REST 服務。 使用 JavaScript 或 TypeScript。 若要開始使用，請參閱我們的 [檔](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module)。
 
-**Azure 地圖服務 Android SDK 原本就支援氣象服務整合嗎？**
+**Azure 地圖服務 Android SDK 原生支援氣象服務 (預覽) 整合嗎？**
 
 Azure 地圖服務 Android Sdk 支援 Mercator 圖格圖層，其可以有 x/y/縮放標記法、四個按鍵標記法，或 EPSG 3857 周框方塊標記法。
 
@@ -99,7 +103,7 @@ Azure 地圖服務 [天氣概念文章](https://docs.microsoft.com/azure/azure-m
 
 **您是否提供不同天氣狀況的圖示？**
 
-是。 您可以在 [這裡](https://docs.microsoft.com/azure/azure-maps/weather-services-concepts#weather-icons)找到圖示及其各自的代碼。 請注意，只有部分氣象服務 Api （例如「  [取得目前的條件」 api](https://aka.ms/azuremapsweathercurrentconditions)）會在回應中傳回 *iconCode* 。 如需詳細資訊，請參閱目前的 WeatherConditions 開放原始 [碼程式碼範例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location)。
+是。 您可以在 [這裡](https://docs.microsoft.com/azure/azure-maps/weather-services-concepts#weather-icons)找到圖示及其各自的代碼。 請注意，只有部分氣象服務 (預覽) Api （例如「  [取得目前的條件」 api](https://aka.ms/azuremapsweathercurrentconditions)）會在回應中傳回 *iconCode* 。 如需詳細資訊，請參閱目前的 WeatherConditions 開放原始 [碼程式碼範例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -110,15 +114,15 @@ Azure 地圖服務 [天氣概念文章](https://docs.microsoft.com/azure/azure-m
 * Microsoft 支援服務。 若要建立新的支援要求，請在 [Azure 入口網站](https://portal.azure.com/)的 [說明] 索引標籤上，選取 [說明 **+** 支援] 按鈕，然後選取 [ **新增支援要求**]。
 * [Azure 地圖服務 UserVoice](https://feedback.azure.com/forums/909172-azure-maps) 提交功能要求。
 
-瞭解如何使用 Azure 地圖服務天氣服務來要求即時和預測的氣象資料：
+瞭解如何使用 Azure 地圖服務天氣服務 (預覽) 來要求即時和預測的氣象資料：
 > [!div class="nextstepaction"]
 > [要求即時天氣資料 ](how-to-request-weather-data.md)
 
-Azure 地圖服務天氣服務概念文章：
+Azure 地圖服務天氣服務 (預覽) 概念文章：
 > [!div class="nextstepaction"]
-> [天氣服務概念](weather-coverage.md)
+> [氣象服務概念](weather-coverage.md)
 
-探索 Azure 地圖服務的氣象服務 API 檔：
+探索 Azure 地圖服務的氣象服務 (預覽) API 檔：
 
 > [!div class="nextstepaction"]
 > [Azure 地圖服務天氣服務](/rest/api/maps/weather)

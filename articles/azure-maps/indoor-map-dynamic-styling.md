@@ -1,21 +1,25 @@
 ---
-title: 實作 Azure 地圖服務建立工具室內地圖的動態樣式
-description: 了解如何實作建立工具室內地圖的動態樣式
+title: 針對 Azure 地圖服務建立者 (預覽) 室內地圖上實行動態樣式
+description: 瞭解如何為建立者 (預覽) 室內地圖上實行動態樣式
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b9ce0d0770c7e6c4579469cc16d8c76c309a33d1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 266dc5d62f6224495075546528ad71d806d415ac
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895370"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903440"
 ---
-# <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>實作建立工具室內地圖的動態樣式
+# <a name="implement-dynamic-styling-for-creator-preview-indoor-maps"></a>針對 Creator (預覽) 室內地圖執行動態樣式
+
+> [!IMPORTANT]
+> Azure 地圖服務 Creator 服務目前處於公開預覽狀態。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Azure 地圖服務建立工具的[功能狀態服務](/rest/api/maps/featurestate)可讓您根據室內地圖資料功能的動態屬性來套用樣式。  例如，您可以使用特定色彩來顯示公用會議室，以反映使用狀態。 在本文中，我們將說明如何使用[功能狀態服務](/rest/api/maps/featurestate)和[室內 Web 模組](how-to-use-indoor-module.md)，以動態方式顯示室內地圖功能。
 
@@ -23,7 +27,7 @@ Azure 地圖服務建立工具的[功能狀態服務](/rest/api/maps/featurestat
 
 1. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [取得主要訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為主要金鑰或訂用帳戶金鑰。
-3. [建立一個建立工具資源](how-to-manage-creator.md)
+3. [建立建立者 (預覽版) 資源](how-to-manage-creator.md)
 4. 下載[範例繪圖套件](https://github.com/Azure-Samples/am-creator-indoor-data-examples)。
 5. [建立室內地圖](tutorial-creator-indoor-maps.md)以取得 `tilesetId` 和 `statesetId`。
 6. 依照[如何使用室內地圖模組](how-to-use-indoor-module.md)中的步驟建置 Web 應用程式。
@@ -36,7 +40,7 @@ Azure 地圖服務建立工具的[功能狀態服務](/rest/api/maps/featurestat
 
 ### <a name="select-features"></a>特性選取
 
-若要實作動態樣式，一項功能 (例如會議或會議室) 必須以其功能 `id` 來參考。 您將使用功能 `id` 來更新該功能的動態屬性或 *狀態* 。 若要檢視資料集內定義的功能，您可以使用下列其中一種方法：
+若要實作動態樣式，一項功能 (例如會議或會議室) 必須以其功能 `id` 來參考。 您將使用功能 `id` 來更新該功能的動態屬性或 *狀態*。 若要檢視資料集內定義的功能，您可以使用下列其中一種方法：
 
 * WFS API (Web Feature Service)。 資料集可使用 WFS API 來查詢。 WFS 會依循開放地理空間協會 API 功能。 WFS API 有助於查詢資料集內的功能。 例如，您可以使用 WFS 來尋找特定設施和樓層的所有中型會議室。
 
@@ -66,7 +70,7 @@ map.events.add("click", function(e){
 
  現在，我們將更新 `UNIT26` 和 `UNIT27` 這兩個辦公室的狀態：
 
-1. 在 Postman 應用程式中，選取 [新增]。 在 [新建] 視窗中，選取 [要求]。 輸入 **要求名稱** ，然後選取集合。 按一下 [儲存] 
+1. 在 Postman 應用程式中，選取 [新增]。 在 [新建] 視窗中，選取 [要求]。 輸入 **要求名稱**，然後選取集合。 按一下 [儲存] 
 
 2. 使用[功能更新狀態 API](/rest/api/maps/featurestate/updatestatespreview) 來更新狀態。 傳遞狀態集識別碼，兩個單元其中之一的識別碼為 `UNIT26`。 附加您的 Azure 地圖服務訂用帳戶金鑰。 以下是更新狀態之 **POST** 要求的 URL：
 
@@ -113,7 +117,7 @@ map.events.add("click", function(e){
 閱讀下列資訊以深入了解：
 
 > [!div class="nextstepaction"]
-> [室內位置對應的建立工具](creator-indoor-maps.md)
+> [適用于室內對應的建立者 (預覽) ](creator-indoor-maps.md)
 
 請參閱本文所述之 API 的參考：
 
@@ -127,7 +131,7 @@ map.events.add("click", function(e){
 > [資料集](creator-indoor-maps.md#datasets)
 
 > [!div class="nextstepaction"]
-> [圖格集](creator-indoor-maps.md#tilesets)
+> [地圖底圖集](creator-indoor-maps.md#tilesets)
 
 > [!div class="nextstepaction"]
 > [功能狀態集](creator-indoor-maps.md#feature-statesets)

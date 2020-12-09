@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 6fa9f5d86d3640bf3ae0233e7d6d8a00752f5b6d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 895b8441f340d085932cade513c9f8929491b374
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460808"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904256"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 金鑰保存庫開發人員指南
 
@@ -22,7 +22,7 @@ Key Vault 可讓您從應用程式內安全地存取機密資訊︰
 - 金鑰、秘密和憑證會受到保護，而不需要自行撰寫程式碼，而且您可以輕鬆地從您的應用程式使用它們。
 - 您可以讓客戶擁有及管理他們自己的金鑰、秘密和憑證，以便您專注于提供核心軟體功能。 如此一來，您的應用程式就不會擁有客戶租使用者金鑰、秘密和憑證的責任或潛在責任。
 - 您的應用程式可以使用金鑰進行簽署和加密，但可讓您的應用程式從外部管理金鑰。 如需有關金鑰的詳細資訊，請參閱 [關於金鑰](../keys/about-keys.md)
-- 您可以管理諸如密碼、存取金鑰、sas 權杖將憑證儲存在 Key Vault 作為秘密的認證，請參閱 [關於秘密](../secrets/about-secrets.md)
+- 您可以藉由將密碼、存取金鑰和 sas 權杖儲存在 Key Vault 中作為秘密來管理認證，請參閱 [關於秘密](../secrets/about-secrets.md)
 - 管理憑證。 如需詳細資訊，請參閱 [關於憑證](../certificates/about-certificates.md)
 
 如需 Azure 金鑰保存庫的一般詳細資訊，請參閱 [什麼是金鑰保存庫？](overview.md)。

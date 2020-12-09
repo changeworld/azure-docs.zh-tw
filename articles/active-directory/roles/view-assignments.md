@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9f7c6ec0917adbca5b44feee1ec285f4337ac4c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8546c2b50c78c7a24d07c75d2d730fd2566e8ba0
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579023"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862083"
 ---
 # <a name="view-custom-role-assignments-using-azure-active-directory"></a>使用 Azure Active Directory 查看自訂角色指派
 
@@ -32,14 +32,14 @@ ms.locfileid: "94579023"
 此程式描述如何在整個組織範圍內查看角色指派。
 
 1. 使用 Azure AD 組織的特殊權限角色管理員或全域系統管理員許可權登入 [Azure AD admin center](https://aad.portal.azure.com) 。
-1. 選取 **Azure Active Directory** 、選取 [ **角色和系統管理員** ]，然後選取要開啟的角色，並查看其屬性。
+1. 選取 **Azure Active Directory**、選取 [ **角色和系統管理員**]，然後選取要開啟的角色，並查看其屬性。
 1. 選取 [ **指派** ] 以查看角色的指派。
 
     ![從清單中開啟角色時查看角色指派和許可權](./media/view-assignments/role-assignments.png)
 
 ## <a name="view-role-assignments-using-azure-ad-powershell"></a>使用 Azure AD PowerShell 來查看角色指派
 
-本節說明如何在整個組織範圍內查看角色的指派。 本文使用 [Azure Active Directory PowerShell 第2版](/powershell/module/azuread/?view=azureadps-2.0#directory_roles) 模組。 若要使用 PowerShell 來查看單一應用程式範圍指派，您可以在使用 [Powershell 指派自訂角色](custom-assign-powershell.md)時使用 Cmdlet。
+本節說明如何在整個組織範圍內查看角色的指派。 本文使用 [Azure Active Directory PowerShell 第2版](/powershell/module/azuread/#directory_roles) 模組。 若要使用 PowerShell 來查看單一應用程式範圍指派，您可以在使用 [Powershell 指派自訂角色](custom-assign-powershell.md)時使用 Cmdlet。
 
 ### <a name="prepare-powershell"></a>準備 PowerShell
 
@@ -105,11 +105,11 @@ HTTP/1.1 200 OK
 本節說明如何透過單一應用程式範圍來查看角色的指派。 此功能目前為公開預覽狀態。
 
 1. 使用 Azure AD 組織的特殊權限角色管理員或全域系統管理員許可權登入 [Azure AD admin center](https://aad.portal.azure.com) 。
-1. 選取 **應用程式註冊** ，然後選取 [應用程式註冊] 以查看其屬性。 您可能必須選取 [所有應用程式] 才能查看 Azure AD 組織中的完整應用程式註冊清單。
+1. 選取 **應用程式註冊**，然後選取 [應用程式註冊] 以查看其屬性。 您可能必須選取 [所有應用程式] 才能查看 Azure AD 組織中的完整應用程式註冊清單。
 
     ![從應用程式註冊頁面建立或編輯應用程式註冊](./media/view-assignments/app-reg-all-apps.png)
 
-1. 在應用程式註冊中，選取 [ **角色和系統管理員** ]，然後選取要查看其屬性的角色。
+1. 在應用程式註冊中，選取 [ **角色和系統管理員**]，然後選取要查看其屬性的角色。
 
     ![從應用程式註冊頁面查看應用程式註冊角色指派](./media/view-assignments/app-reg-assignments.png)
 

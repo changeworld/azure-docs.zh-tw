@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Data Factory 從 REST 來源複製資料
-description: 了解如何使用 Azure Data Factory 管線中的複製活動，從雲端或內部部署 REST 來源將資料複製到支援的接收資料存放區。
+title: 使用 Azure Data Factory 從 REST 端點複製資料和複製資料
+description: 瞭解如何使用 Azure Data Factory 管線中的複製活動，將資料從雲端或內部部署 REST 來源複製到支援的接收資料存放區，或從支援的來源資料存放區複製到 REST 接收器。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,41 +9,41 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 7b6fa2395e81089e8b4523929a4a7a583b0788a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8cd6386ed6004935b0a1e45a53c01668166c0e4
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360764"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902250"
 ---
-# <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 REST 端點複製資料
+# <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 REST 端點複製資料和複製資料
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述如何使用 Azure Data Factory 中的「複製活動」，從 REST 端點複製資料。 本文是以 [Azure Data Factory 中的複製活動](copy-activity-overview.md)為基礎，該文提供複製活動的一般概觀。
+本文概述如何使用 Azure Data Factory 中的「複製活動」，從 REST 端點複製資料及將資料複製到 REST 端點。 本文是以 [Azure Data Factory 中的複製活動](copy-activity-overview.md)為基礎，該文提供複製活動的一般概觀。
 
 此 REST 連接器、 [HTTP 連接器](connector-http.md)和 [Web 資料表連接器](connector-web-table.md) 之間的差異如下：
 
 - **REST 連接器** 專門支援從 RESTful api 複製資料; 
 - **Http 連接器** 是一般的，可從任何 HTTP 端點取出資料，例如下載檔案。 在此 REST 連接器可供使用之前，您可能會使用 HTTP 連接器從 RESTful API 複製資料，這是可支援的方式，但功能性比 REST 連接器低。
-- **Web 資料表連接器**會從 HTML 網頁擷取資料表內容。
+- **Web 資料表連接器** 會從 HTML 網頁擷取資料表內容。
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-您可以將資料從 REST 來源複製到任何支援的接收資料存放區。 如需複製活動作為來源和接收端支援的資料存放區清單，請參閱[支援的資料存放區和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
+您可以將資料從 REST 來源複製到任何支援的接收資料存放區。 您也可以將資料從任何支援的來源資料存放區複製到 REST 接收器。 如需複製活動作為來源和接收端支援的資料存放區清單，請參閱[支援的資料存放區和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
 
 具體而言，此泛型 REST 連接器支援：
 
-- 使用 **GET** 或 **POST** 方法，從 REST 端點擷取資料。
-- 使用下列其中一種驗證來抓取資料： **匿名**、 **基本**、 **AAD 服務主體**和 **適用于 Azure 資源的受控**識別。
-- REST API 中的**[分頁](#pagination-support)**。
-- 複製 REST JSON 回應的[原狀](#export-json-response-as-is)或使用[結構描述對應](copy-activity-schema-and-type-mapping.md#schema-mapping)加以剖析。 僅支援 **JSON** 格式的回應承載。
+- 使用 **GET** 或 **POST** 方法，從 rest 端點複製資料，並使用 **POST**、 **PUT** 或 **PATCH** 方法將資料複製到 rest 端點。
+- 使用下列其中一種驗證來複製資料： **匿名**、 **基本**、 **AAD 服務主體** 和 **適用于 Azure 資源的受控** 識別。
+- REST API 中的 **[分頁](#pagination-support)**。
+- 若是 REST 作為來源，請依原樣複製 REST [JSON 回應，](#export-json-response-as-is) 或使用 [架構對應](copy-activity-schema-and-type-mapping.md#schema-mapping)來剖析它。 僅支援 **JSON** 格式的回應承載。
 
 > [!TIP]
 > 若要在 Data Factory 中設定 REST 連接器之前，測試擷取資料的要求，請先了解 API 規格中的標頭和本文需求。 您可以使用 Postman 或網頁瀏覽器之類的工具進行驗證。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -59,15 +59,15 @@ ms.locfileid: "91360764"
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | **Type**屬性必須設為**RestService**。 | 是 |
+| type | **Type** 屬性必須設為 **RestService**。 | 是 |
 | url | REST 服務的基底 URL。 | 是 |
 | enableServerCertificateValidation | 是否要在連接到端點時驗證服務器端 TLS/SSL 憑證。 | 否<br />  (預設值為 **true**)  |
-| authenticationType | 用來連線到 REST 服務的驗證類型。 允許的值為 **Anonymous**、 **Basic**、 **>aadserviceprincipal**和 **ManagedServiceIdentity**。 請分別參閱下列有關更多屬性和範例的對應區段。 | 是 |
+| authenticationType | 用來連線到 REST 服務的驗證類型。 允許的值為 **Anonymous**、 **Basic**、 **>aadserviceprincipal** 和 **ManagedServiceIdentity**。 請分別參閱下列有關更多屬性和範例的對應區段。 | 是 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 從[必要條件](#prerequisites)一節深入了解。 如果未指定，此屬性會使用預設的 Azure Integration Runtime。 |否 |
 
 ### <a name="use-basic-authentication"></a>使用基本驗證
 
-將 **authenticationType** 屬性設定為 [Basic]****。 除了上一節所述的一般屬性以外，請指定下列屬性：
+將 **authenticationType** 屬性設定為 [Basic]。 除了上一節所述的一般屬性以外，請指定下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
@@ -100,15 +100,15 @@ ms.locfileid: "91360764"
 
 ### <a name="use-aad-service-principal-authentication"></a>使用 AAD 服務主體驗證
 
-將 **authenticationType** 屬性設定為 [AadServicePrincipal]****。 除了上一節所述的一般屬性以外，請指定下列屬性：
+將 **authenticationType** 屬性設定為 [AadServicePrincipal]。 除了上一節所述的一般屬性以外，請指定下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | servicePrincipalId | 指定 Azure Active Directory 應用程式的用戶端識別碼。 | 是 |
-| servicePrincipalKey | 指定 Azure Active Directory 應用程式的金鑰。 將此欄位標記為 **SecureString**，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
+| servicePrincipalKey | 指定 Azure Active Directory 應用程式的金鑰。 將此欄位標記為 **SecureString**，將它安全地儲存在 Data Factory 中，或 [參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
 | tenant | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 將滑鼠游標暫留在 Azure 入口網站右上角，即可擷取它。 | 是 |
 | aadResourceId | 指定您要求授權的 AAD 資源，例如 `https://management.core.windows.net` 。| 是 |
-| azureCloudType | 針對服務主體驗證，請指定您的 AAD 應用程式所註冊的 Azure 雲端環境類型。 <br/> 允許的值為 **AzurePublic**、 **AzureChina**、 **AzureUsGovernment**和 **AzureGermany**。 根據預設，會使用 data factory 的雲端環境。 | 否 |
+| azureCloudType | 針對服務主體驗證，請指定您的 AAD 應用程式所註冊的 Azure 雲端環境類型。 <br/> 允許的值為 **AzurePublic**、 **AzureChina**、 **AzureUsGovernment** 和 **AzureGermany**。 根據預設，會使用 data factory 的雲端環境。 | 否 |
 
 **範例**
 
@@ -138,7 +138,7 @@ ms.locfileid: "91360764"
 
 ### <a name="use-managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a>使用 Azure 資源的受控識別驗證
 
-將 **authenticationType** 屬性設定為 [ManagedServiceIdentity]****。 除了上一節所述的一般屬性以外，請指定下列屬性：
+將 **authenticationType** 屬性設定為 [ManagedServiceIdentity]。 除了上一節所述的一般屬性以外，請指定下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
@@ -174,10 +174,10 @@ ms.locfileid: "91360764"
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的 **type** 屬性必須設定為 [RestResource]****。 | 是 |
+| type | 資料集的 **type** 屬性必須設定為 [RestResource]。 | 是 |
 | relativeUrl | 包含資料之資源的相對 URL。 若未指定此屬性，則只會使用在連結服務定義中指定的 URL。 HTTP 連接器會從結合的 URL 複製資料： `[URL specified in linked service]/[relative URL specified in dataset]` 。 | 否 |
 
-如果您 `requestMethod` `additionalHeaders` `requestBody` 在資料集中設定、和， `paginationRules` 仍會依原樣受到支援，但建議您繼續使用活動來源中的新模型。
+如果您 `requestMethod` `additionalHeaders` `requestBody` 在資料集中設定、和， `paginationRules` 仍會依原樣受到支援，但建議您在後續活動中使用新模型。
 
 **範例︰**
 
@@ -200,7 +200,7 @@ ms.locfileid: "91360764"
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 
-本節提供 REST 來源所支援的屬性清單。
+本節提供 REST 來源和接收所支援的屬性清單。
 
 如需可用來定義活動的區段和屬性完整清單，請參閱[管線](concepts-pipelines-activities.md)。 
 
@@ -210,13 +210,13 @@ ms.locfileid: "91360764"
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動來源的 **type** 屬性必須設定為 [RestSource]****。 | 是 |
-| requestMethod | HTTP 方法。 允許的值為 **Get** (預設值) 和 **Post**。 | 否 |
+| type | 複製活動來源的 **type** 屬性必須設定為 [RestSource]。 | 是 |
+| requestMethod | HTTP 方法。 允許的值為 **GET** (預設) 和 **POST**。 | 否 |
 | additionalHeaders | 其他 HTTP 要求標頭。 | 否 |
 | requestBody | HTTP 要求的主體。 | 否 |
 | paginationRules | 用來撰寫下一個頁面要求的分頁規則。 請參閱[分頁支援](#pagination-support)區段以取得詳細資料。 | 否 |
 | httpRequestTimeout | 用來取得回應的 HTTP 要求會有的逾時值 (**TimeSpan** 值)。 此值是取得回應的逾時值，而非讀取回應資料的逾時值。 預設值為 **00:01:40**。  | 否 |
-| requestInterval | 傳送下一個頁面要求之前的等候時間。 預設值為 [00:00:01]**** |  否 |
+| requestInterval | 傳送下一個頁面要求之前的等候時間。 預設值為 [00:00:01] |  否 |
 
 >[!NOTE]
 >REST 連接器會忽略中指定的任何「接受」標頭 `additionalHeaders` 。 因為 REST 連接器只支援 JSON 中的回應，所以會自動產生的標頭 `Accept: application/json` 。
@@ -293,6 +293,59 @@ ms.locfileid: "91360764"
 ]
 ```
 
+### <a name="rest-as-sink"></a>REST 作為接收
+
+複製活動的 **sink** 區段支援下列屬性：
+
+| 屬性 | 描述 | 必要 |
+|:--- |:--- |:--- |
+| type | 複製活動接收的 **type** 屬性必須設為 **RestSink**。 | 是 |
+| requestMethod | HTTP 方法。 允許的值為 **POST** (預設) 、 **PUT** 和 **PATCH**。 | 否 |
+| additionalHeaders | 其他 HTTP 要求標頭。 | 否 |
+| httpRequestTimeout | 用來取得回應的 HTTP 要求會有的逾時值 (**TimeSpan** 值)。 此值是取得回應的超時時間，而不是寫入資料的超時時間。 預設值為 **00:01:40**。  | 否 |
+| requestInterval | Milisecond 中不同要求之間的間隔時間。 要求間隔值應為介於 [10，60000] 之間的數位。 |  否 |
+| HTTPCompressionType | 以最佳壓縮等級傳送資料時所要使用的 HTTP 壓縮類型。 允許的值為 **none** 和 **gzip**。 | 否 |
+| writeBatchSize | 每個批次要寫入 REST 接收器的記錄數目。 預設值為 10000。 | 否 |
+
+>[!NOTE]
+>REST 連接器作為接收器可搭配接受 JSON 的 REST 端點運作。 資料只會以 JSON 傳送。
+
+**範例︰**
+
+```json
+"activities":[
+    {
+        "name": "CopyToREST",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<REST output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "<source type>"
+            },
+            "sink": {
+                "type": "RestSink",
+                "requestMethod": "POST",
+                "httpRequestTimeout": "00:01:40",
+                "requestInterval": 10,
+                "writeBatchSize": 10000,
+                "httpCompressionType": "none",
+            },
+        }
+    }
+]
+```
+
 ## <a name="pagination-support"></a>分頁支援
 
 一般來說，REST API 會以合理的數目限制單一要求的回應承載大小;雖然傳回大量資料，但是它會將結果分割成多個頁面，並且要求呼叫端傳送連續要求以取得結果的下一頁。 通常，單一頁面要求是動態的，並且由前頁回應所傳回的資訊所組成。
@@ -308,7 +361,7 @@ ms.locfileid: "91360764"
 
 **分頁規則** 會定義為資料集內的字典，其中包含一或多個區分大小寫的索引鍵/值組。 此設定將用來產生從第二個頁面開始的要求。 連接器會在收到 HTTP 狀態碼 204 (沒有內容) ，或 "paginationRules" 中的任何 JSONPath 運算式傳回 null 時，停止反復進行反覆運算。
 
-分頁規則中的**支援金鑰**：
+分頁規則中的 **支援金鑰**：
 
 | Key | 描述 |
 |:--- |:--- |
@@ -316,7 +369,7 @@ ms.locfileid: "91360764"
 | QueryParameters.*request_query_parameter* 或 QueryParameters['request_query_parameter'] | 「request_query_parameter」是使用者定義的，它會在下一個 HTTP 要求 URL 中參考一個查詢參數名稱。 |
 | Headers.*request_header* 或 Headers['request_header'] | 「request_header」是使用者定義的，會在下一個 HTTP 要求中參考一個標頭名稱。 |
 
-分頁規則中的**支援值**：
+分頁規則中的 **支援值**：
 
 | 值 | 描述 |
 |:--- |:--- |
@@ -325,7 +378,7 @@ ms.locfileid: "91360764"
 
 **範例︰**
 
-Facebook 圖形 API 會傳回採用下列結構的回應，在該案例中，下個頁面的 URL 會在 ***paging.next*** 中指出：
+Facebook 圖形 API 會傳回下列結構中的回應，在此情況下，下一頁的 URL 會以 * page 表示 *_。下_* _：
 
 ```json
 {
@@ -380,7 +433,7 @@ Facebook 圖形 API 會傳回採用下列結構的回應，在該案例中，下
 ### <a name="about-the-solution-template"></a>關於解決方案範本
 
 範本包含兩個活動：
-- **Web** 活動會抓取持有人權杖，然後將其傳遞至後續的複製活動作為授權。
+- _ *Web** 活動會取出持有人權杖，然後將其傳遞至後續的複製活動作為授權。
 - **複製** 活動會將資料從 REST 複製到 Azure Data Lake Storage。
 
 範本定義兩個參數：
@@ -406,13 +459,13 @@ Facebook 圖形 API 會傳回採用下列結構的回應，在該案例中，下
 
 4. 您會看到建立的管線，如下列範例所示：  ![ 螢幕擷取畫面顯示從範本建立的管線。](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
 
-5. 選取 [ **Web** 活動]。 在 [ **設定**] 中，指定對應的 **URL**、 **方法**、 **標頭**和 **主體** ，從您想要從中複製資料的服務登入 API 取得 OAuth 持有人權杖。 範本中的預留位置會展示 Azure Active Directory (AAD) OAuth 的範例。 請注意，REST 連接器原本就支援 AAD 驗證，以下是 OAuth 流程的範例。 
+5. 選取 [ **Web** 活動]。 在 [ **設定**] 中，指定對應的 **URL**、 **方法**、 **標頭** 和 **主體** ，從您想要從中複製資料的服務登入 API 取得 OAuth 持有人權杖。 範本中的預留位置會展示 Azure Active Directory (AAD) OAuth 的範例。 請注意，REST 連接器原本就支援 AAD 驗證，以下是 OAuth 流程的範例。 
 
     | 屬性 | 描述 |
     |:--- |:--- |:--- |
     | URL |指定要從中取出 OAuth 持有人權杖的 url。 例如，在此範例中，它是 https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
     | 方法 | HTTP 方法。 允許的值為 **Post** 和 **Get**。 | 
-    | headers | 標頭是使用者定義的，它會參考 HTTP 要求中的一個標頭名稱。 | 
+    | 標題 | 標頭是使用者定義的，它會參考 HTTP 要求中的一個標頭名稱。 | 
     | 主體 | HTTP 要求的主體。 | 
 
     ![管線](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
@@ -445,7 +498,7 @@ Facebook 圖形 API 會傳回採用下列結構的回應，在該案例中，下
 
 ## <a name="export-json-response-as-is"></a>匯出 JSON 回應的原狀
 
-您可以使用此 REST 連接器將 REST API 的 JSON 回應原狀匯出到各種檔案型存放區。 若要完成這種跨平台結構描述的複製，請跳過資料集中的「結構」(也稱為「結構描述」**) 區段，以及複製活動中的結構描述對應。
+您可以使用此 REST 連接器將 REST API 的 JSON 回應原狀匯出到各種檔案型存放區。 若要完成這種跨平台結構描述的複製，請跳過資料集中的「結構」(也稱為「結構描述」) 區段，以及複製活動中的結構描述對應。
 
 ## <a name="schema-mapping"></a>結構描述對應
 

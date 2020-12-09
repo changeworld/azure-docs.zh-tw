@@ -1,21 +1,26 @@
 ---
-title: Azure 地圖建立工具中的繪圖套件需求
+title: 'Microsoft Azure Maps Creator (Preview 中繪製套件需求) '
 description: 瞭解轉換設備設計檔案以對應資料的繪圖套件需求
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 6/12/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 2c3e46bf386e70cbe35d96728ede896d6bf0dc7d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 26b6273b4dd2371790025515e35b71d1fc863ebe
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013117"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903457"
 ---
 # <a name="drawing-package-requirements"></a>繪圖套件需求
+
+
+> [!IMPORTANT]
+> Azure 地圖服務 Creator 服務目前處於公開預覽狀態。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 您可以使用 [Azure 地圖服務轉換服務](/rest/api/maps/conversion)，將已上傳的繪圖封裝轉換成對應資料。 本文將說明轉換 API 的繪圖套件需求。 若要查看範例套件，您可以下載[繪圖套件](https://github.com/Azure-Samples/am-creator-indoor-data-examples)範例。
 
@@ -407,10 +412,10 @@ zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔�
 當您的繪圖套件符合需求時，您可以使用 [Azure 地圖服務轉換服務](/rest/api/maps/conversion) 將封裝轉換成地圖資料集。 然後，您可以使用「室內地圖」模組，使用資料集來產生室內地圖。
 
 > [!div class="nextstepaction"]
->[室內地圖的建立工具](creator-indoor-maps.md)
+>[適用于室內地圖的建立者 (預覽) ](creator-indoor-maps.md)
 
 > [!div class="nextstepaction"]
-> [教學課程：建立建立工具的室內地圖](tutorial-creator-indoor-maps.md)
+> [教學課程：建立建立者 (預覽) 室內地圖](tutorial-creator-indoor-maps.md)
 
 > [!div class="nextstepaction"]
 > [室內地圖動態樣式](indoor-map-dynamic-styling.md)

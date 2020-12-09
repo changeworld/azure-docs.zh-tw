@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 12/08/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0b67761b3c765e202505d442647b3ba034ef15a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2a618da7c9a66b8f687c1b75914530080ed56bea
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372492"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905820"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中建立 Azure 資源角色的存取權審核
 
@@ -28,7 +28,7 @@ ms.locfileid: "92372492"
 
 本文說明如何針對具特殊許可權的 Azure 資源角色建立一或多個存取權審核。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [特殊權限角色管理員](../roles/permissions-reference.md#privileged-role-administrator)
 
@@ -40,7 +40,7 @@ ms.locfileid: "92372492"
 
 1. 在左側功能表中，選取 [ **Azure 資源**]。
 
-1. 選取您要管理的資源，例如訂用帳戶或管理群組。
+1. 選取您要管理的資源，例如訂用帳戶。
 
 1. 在 [管理] 底下，選取 [ **存取審核**]。
 
@@ -50,7 +50,7 @@ ms.locfileid: "92372492"
 
 ## <a name="start-the-access-review"></a>開始存取權檢閱
 
-在指定存取權檢閱的設定後，請按一下 [啟動]****。 存取權審核將會出現在清單中，並顯示其狀態的指標。
+在指定存取權檢閱的設定後，請按一下 [啟動]。 存取權審核將會出現在清單中，並顯示其狀態的指標。
 
 ![顯示已開始審核狀態的存取權審核清單](./media/pim-resource-roles-start-access-review/access-reviews-list.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "92372492"
 
 若要管理一系列的存取權評論，請流覽至存取權評論，您將會在已排程的評論中找到即將發生的專案，並據以編輯結束日期或新增/移除審核者。
 
-根據您在 **完成設定時**所做的選擇，自動套用將會在審核的結束日期之後或您手動停止審核之後執行。 審核的狀態將會從 [已完成] 變更為 [ **已完成** ]，例如 [套用 **] 和 [** 最後] 套用至 **[狀態]**。 在幾分鐘內，您應該會看到遭到拒絕的使用者（如果有的話）會從角色中移除。
+根據您在 **完成設定時** 所做的選擇，自動套用將會在審核的結束日期之後或您手動停止審核之後執行。 審核的狀態將會從 [已完成] 變更為 [ **已完成** ]，例如 [套用 **] 和 [** 最後] 套用至 **[狀態]**。 在幾分鐘內，您應該會看到遭到拒絕的使用者（如果有的話）會從角色中移除。
 
 ## <a name="next-steps"></a>後續步驟
 

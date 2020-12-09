@@ -1,23 +1,28 @@
 ---
-title: 行動 (傳輸) 涵蓋範圍
-description: 瞭解 Azure 地圖服務行動服務在哪些區域中提供公開傳輸功能（例如路由和服務警示）的涵蓋範圍層級。
+title: Microsoft Azure Maps 行動服務 (Preview) 的行動 (傳輸) 涵蓋範圍
+description: 瞭解 Azure 地圖服務行動服務 (Preview) 在哪些區域提供公開傳輸功能（例如路由和服務警示）的涵蓋範圍層級。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/23/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 10a0f9b1b21b060d7c33aeb52fb72f950cedf0e6
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: e902f313edf22d75f6b183575c3dc8d0dd94bc1f
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779145"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904749"
 ---
-# <a name="azure-maps-mobility-coverage"></a>Azure 地圖服務行動性涵蓋範圍
+# <a name="azure-maps-mobility-services-preview-coverage"></a>Azure 地圖服務行動服務 (預覽) 涵蓋範圍
 
-Azure 地圖服務 [行動服務](/rest/api/maps/mobility) 可改善具有公開傳輸功能之應用程式的開發時間，例如，傳送路由和搜尋附近的公用運輸停止。 使用者可以擷取有關運輸站點、路線和時刻表的詳細資訊。 行動服務也可讓使用者擷取站點和路線幾何圖形、站點提醒、路線和服務區域，以及即時的大眾運輸抵達和服務提醒。 此外，行動服務也會提供具有多模式行程規劃選項的路線功能。 多模式行程規劃將步行、騎腳踏車和大眾運輸選項全都納入到一個行程中。 使用者也可以存取詳細的多模式逐步路線。 
+> [!IMPORTANT]
+> Azure 地圖服務行動服務目前處於公開預覽狀態。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+
+Azure 地圖服務 [行動服務](/rest/api/maps/mobility) 可改善具有公用傳輸功能的應用程式的開發時間，例如傳送路由和搜尋附近的公用運輸停止。 使用者可以擷取有關運輸站點、路線和時刻表的詳細資訊。 行動服務也可讓使用者抓取停止和線條幾何、停止、行和服務區域的警示，以及即時公共運輸抵達和服務警示。 此外，行動服務會以更多功能的行程規劃選項提供路由功能。 多模式行程規劃將步行、騎腳踏車和大眾運輸選項全都納入到一個行程中。 使用者也可以存取詳細的多模式逐步路線。
 
 Azure 地圖服務不會針對所有城市和國家/地區提供相同層級的資訊和精確度。 呼叫公開傳輸資料的功能取決於 metro 區域。 此外，地圖資料可能不包含所有公用運輸選項和提供 metro 區域的機構。
 
@@ -149,17 +154,17 @@ Azure 地圖服務不會針對所有城市和國家/地區提供相同層級的�
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何使用行動服務來要求傳輸資料：
+瞭解如何使用行動服務 (預覽) 來要求傳輸資料：
 
 > [!div class="nextstepaction"]
 > [如何要求傳輸資料](how-to-request-transit-data.md)
 
-瞭解如何使用行動服務來要求即時資料：
+瞭解如何使用行動服務 (預覽版) 來要求即時資料：
 
 > [!div class="nextstepaction"]
 > [如何要求即時資料](how-to-request-real-time-data.md)
 
-探索 Azure 地圖服務行動服務 API 檔
+探索 Azure 地圖服務行動服務 (預覽) API 檔
 
 > [!div class="nextstepaction"]
 > [行動服務 API 檔](/rest/api/maps/mobility)

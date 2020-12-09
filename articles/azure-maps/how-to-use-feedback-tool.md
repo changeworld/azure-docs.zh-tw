@@ -3,24 +3,24 @@ title: 提供資料意見反應給 Azure 地圖服務 |Microsoft Azure 對應
 description: 使用 Microsoft Azure Maps 意見反應工具提供資料意見反應。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 08/19/2019
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b53ea7cf3ec29d7bad7e65a535cd140877bcea09
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4be775d8a6a8c476bcc659a902c7f43c12a6d6d0
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895506"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905327"
 ---
 # <a name="provide-data-feedback-to-azure-maps"></a>提供資料意見反應給 Azure 地圖服務
 
 自2018年5月起，Azure 地圖服務已可使用。 Azure 地圖服務已提供全新的地圖資料、便於使用的 REST Api，以及功能強大的 Sdk，以支援具有不同類型之商務使用案例的企業客戶。 真實世界正在每秒變更，因此請務必為客戶提供實際的數位標記法。 打算開啟或關閉設施的客戶需要我們的地圖立即更新。 因此，他們可以在適當的設備上有效率地規劃傳遞、維護或客戶服務。 我們已建立 Azure 地圖服務資料意見反應網站，讓客戶能夠提供直接資料的意見反應。 客戶的資料意見反應會直接移至我們的資料提供者及其地圖編輯器。 他們可以在我們的地圖產品中快速評估並納入意見反應。  
 
-[Azure 地圖服務資料意見反應網站](https://feedback.azuremaps.com) 提供簡單的方法，讓客戶能夠提供地圖資料意見反應，特別是在感興趣的商務點和住家住址。 本文將引導您瞭解如何使用 Azure 地圖服務意見反應網站來提供不同類型的意見反應。
+[Azure 地圖服務 Data (Preview) 意見反應網站](https://feedback.azuremaps.com) 可讓客戶輕鬆地提供地圖資料的意見反應，特別是在感興趣的商務點與居住位址。 本文將引導您瞭解如何使用 Azure 地圖服務意見反應網站來提供不同類型的意見反應。
 
 ## <a name="add-a-business-place-or-a-residential-address"></a>新增業務地點或住家住址 
 

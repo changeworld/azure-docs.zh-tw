@@ -1,22 +1,27 @@
 ---
-title: Microsoft Azure Maps 的氣象涵蓋範圍
-description: 瞭解 Microsoft Azure Maps 中的氣象涵蓋範圍。
+title: Microsoft Azure 對應天氣服務 (預覽) 涵蓋範圍
+description: 瞭解 Microsoft Azure Maps 氣象服務 (預覽) 涵蓋範圍
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 09/17/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 ms.custom: references_regions
 manager: philmea
-ms.openlocfilehash: 61e529e44f48343027457f18ba503e4bbb5930f1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 6c4e9eb765a72b7a0b495f81a954b484ef6aa2b7
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896611"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905480"
 ---
-# <a name="azure-maps-weather-coverage"></a>Azure 地圖服務天氣涵蓋範圍
+# <a name="azure-maps-weather-services-preview-coverage"></a>Azure 地圖服務天氣服務 (預覽) 涵蓋範圍
+
+> [!IMPORTANT]
+> Azure 地圖服務天氣服務目前處於公開預覽狀態。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 
 本文提供 Azure 地圖服務 [氣象服務](/rest/api/maps/weather)的涵蓋範圍資訊。 Azure 地圖服務天氣資料服務會傳回詳細資料，例如雷達圖、目前天氣狀況、天氣預報，以及沿著路線的氣象。
 

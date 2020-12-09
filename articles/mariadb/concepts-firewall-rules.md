@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: f8233e9974964e5d760d6b0b388278ff4eee7b34
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 452ef4787812dbdf88eb541cf5a164f2888dddcc
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534478"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905429"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>適用於 MariaDB 的 Azure 資料庫伺服器防火牆規則
 防火牆會防止對您資料庫伺服器的所有存取，直到您指定哪些電腦擁有權限。 此防火牆會根據每一個要求的來源 IP 位址來授與伺服器存取權。
@@ -37,7 +37,7 @@ ms.locfileid: "94534478"
 ## <a name="connecting-from-azure"></a>從 Azure 連線
 建議您尋找任何應用程式或服務的連出 IP 位址，並明確地允許存取這些個別的 IP 位址或範圍。 例如，您可以找到 Azure App Service 的連出 IP 位址，或使用系結至虛擬機器或其他資源的公用 IP (請參閱以下資訊，以取得透過服務端點) 的虛擬機器私人 IP 連接的相關資訊。 
 
-如果您的 Azure 服務無法使用固定的連出 IP 位址，您可以考慮啟用來自所有 Azure 資料中心 IP 位址的連線。 您可以從 [連線 **安全性** ] 窗格中，將 [ **允許存取 Azure 服務** ] 選項設定為 [ **開啟** ]，以從 Azure 入口網站啟用此設定，然後按 [ **儲存** ]。 從 Azure CLI 中，啟動和結束位址等於0.0.0.0 的防火牆規則設定會執行相同的設定。 如果不允許連線嘗試，要求就不會到達適用於 MariaDB 的 Azure 資料庫伺服器。
+如果您的 Azure 服務無法使用固定的連出 IP 位址，您可以考慮啟用來自所有 Azure 資料中心 IP 位址的連線。 您可以從 [連線 **安全性**] 窗格中，將 [**允許存取 Azure 服務**] 選項設定為 [**開啟**]，以從 Azure 入口網站啟用此設定，然後按 [**儲存**]。 從 Azure CLI 中，啟動和結束位址等於0.0.0.0 的防火牆規則設定會執行相同的設定。 如果不允許連線嘗試，要求就不會到達適用於 MariaDB 的 Azure 資料庫伺服器。
 
 > [!IMPORTANT]
 > [ **允許存取 azure 服務** ] 選項會設定防火牆，以允許所有來自 Azure 的連線，包括來自其他客戶訂用帳戶的連接。 選取這個選項時，請確定您的登入和使用者權限會限制為只有授權的使用者才能存取。
@@ -72,6 +72,7 @@ ms.locfileid: "94534478"
 
    例如，如果您從已啟用 **Microsoft .sql** 但沒有對應 VNet 規則的子網中的 Azure VM 連線，您可能會看到下列錯誤：  `FATAL: Client from Azure Virtual Networks is not allowed to access the server`
 
+* **IPv6 格式無法使用防火牆規則：** 防火牆規則必須是 IPv4 格式。 如果您指定 IPv6 格式的防火牆規則，則會顯示驗證錯誤。
 
 ## <a name="next-steps"></a>後續步驟
 - [使用 Azure 入口網站建立和管理適用於 MariaDB 的 Azure 資料庫防火牆規則](./howto-manage-firewall-portal.md)

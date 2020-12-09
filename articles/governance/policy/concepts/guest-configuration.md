@@ -3,12 +3,12 @@ title: 了解如何稽核虛擬機器的內容
 description: 了解 Azure 原則如何使用「來賓設定」代理程式來稽核虛擬機器內的設定。
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: e941938fce09e8729856322a5b6572b46a3714be
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: a956d5e8dcfa82f85020928e1427a08ac8fe7a69
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075479"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906245"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure 原則的來賓設定
 
@@ -62,7 +62,7 @@ Azure 原則可以針對在 Azure 中執行的機器和 [Arc 連接的機器](..
 
 |發行者|名稱|版本|
 |-|-|-|
-|Canonical|Ubuntu Server|14.04 和更新版本|
+|Canonical|Ubuntu Server|14.04-18.04|
 |Credativ|Debian|8 和更新版本|
 |Microsoft|Windows Server|2012 和更新版本|
 |Microsoft|Windows 用戶端|Windows 10|
@@ -111,10 +111,10 @@ Azure Arc 的機器會使用內部部署網路基礎結構進行連線，以連�
 
 來賓設定原則定義會使用 **AuditIfNotExists** 效果。 當指派定義時，後端服務會自動處理 `Microsoft.GuestConfiguration` Azure 資源提供者中所有需求的生命週期。
 
-**AuditIfNotExists**原則定義在電腦上符合所有需求之前，不會傳回合規性結果。 [Azure 虛擬機器的部署需求](#deploy-requirements-for-azure-virtual-machines)一節中會說明這些需求
+**AuditIfNotExists** 原則定義在電腦上符合所有需求之前，不會傳回合規性結果。 [Azure 虛擬機器的部署需求](#deploy-requirements-for-azure-virtual-machines)一節中會說明這些需求
 
 > [!IMPORTANT]
-> 在先前的來賓設定版本中，需要有一個方案來結合 **DeployIfNoteExists** 和 **AuditIfNotExists** 定義。 不再需要**DeployIfNotExists**定義。 定義和 intiaitives 會加上標籤， `[Deprecated]` 但現有的指派仍將繼續運作。 如需詳細資訊，請參閱 blog 文章： [針對來賓設定稽核原則所發行的重要變更](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
+> 在先前的來賓設定版本中，需要有一個方案來結合 **DeployIfNoteExists** 和 **AuditIfNotExists** 定義。 不再需要 **DeployIfNotExists** 定義。 定義和 intiaitives 會加上標籤， `[Deprecated]` 但現有的指派仍將繼續運作。 如需詳細資訊，請參閱 blog 文章： [針對來賓設定稽核原則所發行的重要變更](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
 Azure 原則使用 [來賓設定資源提供者 **>compliancestatus** ] 屬性來報告 **合規** 性節點中的合規性。 如需詳細資訊，請參閱[取得合規性資料](../how-to/get-compliance-data.md)。
 

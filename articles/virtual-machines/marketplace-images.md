@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 07/07/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 3de79e5cb3db2d0c52d13826900ec7160271edf9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a971f6e56f441ab05a6a9b483eeef990d3ea31f
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86225063"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903746"
 ---
 # <a name="supply-azure-marketplace-purchase-plan-information-when-creating-images"></a>在建立映射時提供 Azure Marketplace 採購方案資訊
 
@@ -24,15 +24,13 @@ ms.locfileid: "86225063"
 
 
 ## <a name="get-the-source-vm-information"></a>取得來源 VM 資訊
-如果您仍有原始 VM，您可以使用 New-azvm 從該 VM 取得方案、發行者和 sku 資訊。 此範例會在*myResourceGroup*資源群組中取得名為*myVM*的 VM，然後顯示購買方案資訊。
+如果您仍有原始 VM，您可以使用 New-azvm 取得方案名稱、發行者和產品資訊。 此範例會在 *myResourceGroup* 資源群組中取得名為 *myVM* 的 VM，然後顯示 vm 的購買方案資訊。
 
 ```azurepowershell-interactive
 $vm = Get-azvm `
    -ResourceGroupName myResourceGroup `
    -Name myVM
-$vm.Plan.Publisher
-$vm.Plan.Name
-$vm.Plan.Product
+$vm.Plan
 ```
 
 ## <a name="create-the-image-definition"></a>建立映射定義
@@ -43,7 +41,7 @@ $vm.Plan.Product
 Get-AzResource -ResourceType Microsoft.Compute/galleries | Format-Table
 ```
 
-然後，為您要使用的資源庫建立變數。 在此範例中，我們會 `$gallery` 在*myGalleryRG*資源群組中建立名為 *>mygalleryrg*的變數。
+然後，為您要使用的資源庫建立變數。 在此範例中，我們會 `$gallery` 在 *myGalleryRG* 資源群組中建立名為 *>mygalleryrg* 的變數。
 
 ```azurepowershell-interactive
 $gallery = Get-AzGallery `
@@ -143,6 +141,6 @@ New-AzVM `
    -VM $vmConfig
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需尋找和使用 Marketplace 映射的詳細資訊，請參閱 [尋找和使用 Azure Marketplace 映射](./windows/cli-ps-findimage.md)。

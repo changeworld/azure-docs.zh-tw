@@ -1,18 +1,18 @@
 ---
 title: 定義輸出值的多個實例
-description: 在 Azure Resource Manager 範本中使用複製作業，可在從部署傳回值時反復執行多次。
+description: 使用 Azure Resource Manager 範本中的複製作業 (ARM 範本) ，以便在從部署傳回值時反復查看多次。
 ms.topic: conceptual
 ms.date: 04/17/2020
-ms.openlocfilehash: 50c4b4b8f301ad88d3dfde98ace1aed4431693db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ae20ed9ec3fdb3b76adbd370f5ba22f9386d613
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82583420"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905939"
 ---
 # <a name="output-iteration-in-arm-templates"></a>ARM 範本中的輸出反復專案
 
-本文說明如何針對 Azure Resource Manager (ARM) 範本中的輸出建立多個值。 藉由將 **copy** 元素新增至範本的輸出區段，您可以在部署期間動態傳回數個專案。
+本文說明如何在 Azure Resource Manager 範本中為輸出建立一個以上的值 (ARM 範本) 。 藉由將 `copy` 專案新增至範本的輸出區段，您可以在部署期間以動態方式傳回數個專案。
 
 您也可以搭配 [資源](copy-resources.md)、 [資源中的屬性](copy-properties.md)和 [變數](copy-variables.md)來使用複製。
 
@@ -27,9 +27,9 @@ Copy 元素具有下列一般格式：
 }
 ```
 
-**Count**屬性會指定您想要用於輸出值的反覆運算次數。
+`count`屬性會指定您想要用於輸出值的反覆運算次數。
 
-**輸入**屬性會指定您想要重複的屬性。 您可以建立從 **輸入** 屬性中的值所建立的元素陣列。 它可以是單一屬性 (例如字串) ，或是具有數個屬性的物件。
+`input`屬性會指定您想要重複的屬性。 您可以建立一個由 `input` 屬性中的值建構的元素陣列。 它可以是單一屬性 (例如字串) ，或是具有數個屬性的物件。
 
 ## <a name="copy-limits"></a>複製限制
 
@@ -164,13 +164,12 @@ Copy 元素具有下列一般格式：
 ]
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 若要進行教學課程，請參閱 [教學課程：使用 ARM 範本建立多個資源實例](template-tutorial-create-multiple-instances.md)。
 * 如需複製元素的其他用途，請參閱：
   * [ARM 範本中的資源反復專案](copy-resources.md)
   * [ARM 範本中的屬性反復專案](copy-properties.md)
   * [ARM 範本中的變數反復專案](copy-variables.md)
-* 如果您想要瞭解範本的區段，請參閱 [撰寫 ARM 範本](template-syntax.md)。
-* 若要瞭解如何部署您的範本，請參閱 [使用 ARM 範本部署應用程式](deploy-powershell.md)。
-
+* 如果您想要瞭解範本的區段，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
+* 若要瞭解如何部署您的範本，請參閱 [使用 ARM 範本部署資源和 Azure PowerShell](deploy-powershell.md)。

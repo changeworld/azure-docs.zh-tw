@@ -3,16 +3,16 @@ title: Azure 轉送混合式連線通訊協定指南 | Microsoft Docs
 description: 本文說明用戶端為了與擔任接聽程式和傳送者角色的用戶端連線而與混合式連線轉送進行的互動。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 893092124961ffa9df2535ca6de75def2930b797
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a812aa401077b81934d89ada99cf1dc312d8dbc
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531440"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862321"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure 轉送混合式連線通訊協定
 
-Azure 轉送是 Azure 服務匯流排平台的重要功能支柱。 轉送的新「混合式連線」__ 功能是以 HTTP 和 Websocket 為基礎的安全、開放式通訊協定演化。 它取代了先前在專屬通訊協定基礎上建立的先前名稱為 _BizTalk 服務_ 功能。 整合到 Azure 應用程式服務的混合式連線會繼續如往常般運作。
+Azure 轉送是 Azure 服務匯流排平台的重要功能支柱。 轉送的新「混合式連線」功能是以 HTTP 和 Websocket 為基礎的安全、開放式通訊協定演化。 它取代了先前在專屬通訊協定基礎上建立的先前名稱為 _BizTalk 服務_ 功能。 整合到 Azure 應用程式服務的混合式連線會繼續如往常般運作。
 
 「混合式連線」可在網路上的兩個應用程式之間，建立雙向的二進位串流通訊和簡單的資料包流程。 讓其中一方或雙方都能位在 NAT 或防火牆之後。
 
@@ -135,9 +135,9 @@ HTTP 要求/回應模型為傳送者提供大致不受限且具有選擇性授�
 
 | 參數        | 必要 | 描述
 | ---------------- | -------- | -------------------------------------------
-| `sb-hc-action`   | 是      | 針對接聽程式角色，參數必須是**sb-hc-action =** 待命
+| `sb-hc-action`   | 是      | 針對接聽程式角色，參數必須是 **sb-hc-action =** 待命
 | `{path}`         | 是      | 用來註冊此接聽程式之預先設定混合式連線的 URL 編碼命名空間路徑。 此運算式會附加至固定的 `$hc/` 路徑部分。
-| `sb-hc-token`    | 是\*    | 針對授予**接聽**權限的命名空間或混合式連線，接聽程式必須提供有效且以 URL 編碼的服務匯流排共用存取權杖。
+| `sb-hc-token`    | 是\*    | 針對授予 **接聽** 權限的命名空間或混合式連線，接聽程式必須提供有效且以 URL 編碼的服務匯流排共用存取權杖。
 | `sb-hc-id`       | 否       | 用戶端提供的這個選擇性識別碼可讓您進行端對端診斷追蹤。
 
 如果因為混合式連線路徑未註冊、權杖無效或遺失或是其他某些錯誤，導致 WebSocket 連線失敗，將使用一般的 HTTP 1.1 狀態回饋模型提供錯誤回饋。 狀態描述會包含錯誤追蹤識別碼，以供您告知 Azure 支援人員︰
@@ -197,7 +197,7 @@ URL 必須保持原樣以用來建立接受通訊端，但要包含下列參數�
 | -------------- | -------- | -------------------------------------------------------------------
 | `sb-hc-action` | 是      | 若要接受通訊端，參數必須是 `sb-hc-action=accept`
 | `{path}`       | 是      | (請參閱下列段落)
-| `sb-hc-id`     | 否       | 請參閱先前的**識別碼**描述。
+| `sb-hc-id`     | 否       | 請參閱先前的 **識別碼** 描述。
 
 `{path}` 是用來註冊此接聽程式之預先設定混合式連線的 URL 編碼命名空間路徑。 此運算式會附加至固定的 `$hc/` 路徑部分。
 
@@ -292,7 +292,7 @@ FEFEFEFEFEFEFEFEFEFEF...
 
 * **address** - URI 字串。 這是要用於此要求的會合位址。 如果傳入的要求大於 64 kB，則此訊息的其餘部分會保持空白，而且用戶端必須啟始相當於如下所述之 `accept` 作業的會合交握。 服務會接著將完整 `request` 至於已建立的Web Socket 上。 如果可預期回應會超過 64 kB，則接聽程式也必須起始會合交握，然後透過所建立的 Web Socket 傳輸此回應。
 * **id** – 字串。 此要求的唯一識別碼。
-* **requestHeaders** – 此物件包含傳送者提供給端點的所有 HTTP 標題 (但是[如上](#request-operation)所說明的授權資訊例外)，以及與透過閘道的連線完全相關的標題。 具體而言，[RFC7230](https://tools.ietf.org/html/rfc7230) 中定義或保留的所有標題 (`Via` 除外) 都會遭到移除且不會轉寄：
+* **requestHeaders** – 此物件包含傳送者提供給端點的所有 HTTP 標題 (但是 [如上](#request-operation)所說明的授權資訊例外)，以及與透過閘道的連線完全相關的標題。 具體而言，[RFC7230](https://tools.ietf.org/html/rfc7230) 中定義或保留的所有標題 (`Via` 除外) 都會遭到移除且不會轉寄：
 
   * `Connection` (RFC7230 的 6.1 節)
   * `Content-Length`  (RFC7230 的 3.3.2 節)
@@ -414,7 +414,7 @@ FEFEFEFEFEFEFEFEFEFEF...
 其目標是讓端對端 WebSocket 擁有最大透明度。 要連線到的位址與接聽程式的情況相同，但其「動作」不同，而且權杖需要不同的權限︰
 
 ```
-wss://{namespace-address}/$hc/{path}?sb-hc-action=...&sb-hc-id=...&sbc-hc-token=...
+wss://{namespace-address}/$hc/{path}?sb-hc-action=...&sb-hc-id=...&sb-hc-token=...
 ```
 
 _namespace-address_ 是裝載混合式連線之 Azure 轉送命名空間的完整網域名稱，其格式通常為 `{myname}.servicebus.windows.net`。
@@ -427,13 +427,13 @@ _namespace-address_ 是裝載混合式連線之 Azure 轉送命名空間的完�
 | -------------- | --------- | -------------------------- |
 | `sb-hc-action` | 是       | 傳送者角色的參數必須是 `sb-hc-action=connect`。
 | `{path}`       | 是       | (請參閱下列段落)
-| `sb-hc-token`  | 是\*     | 針對授予**傳送**權限的命名空間或混合式連線，接聽程式必須提供有效且以 URL 編碼的服務匯流排共用存取權杖。
+| `sb-hc-token`  | 是\*     | 針對授予 **傳送** 權限的命名空間或混合式連線，接聽程式必須提供有效且以 URL 編碼的服務匯流排共用存取權杖。
 | `sb-hc-id`     | 否        | 選擇性的識別碼，允許進行端對端診斷追蹤，並可供接聽程式在接受交握期間使用。
 
  `{path}` 是用來註冊此接聽程式之預先設定混合式連線的 URL 編碼命名空間路徑。 `path` 運算式會使用後置字元和查詢字串運算式進一步通訊來進行擴充。 如果混合式連線在路徑 `hyco` 下註冊，則 `path` 運算式可能是 `hyco/suffix?param=value&...`，後接此處定義的查詢字串參數。 完整運算式則可能如下所示︰
 
 ```
-wss://{namespace-address}/$hc/hyco/suffix?param=value&sb-hc-action=...[&sb-hc-id=...&]sbc-hc-token=...
+wss://{namespace-address}/$hc/hyco/suffix?param=value&sb-hc-action=...[&sb-hc-id=...&]sb-hc-token=...
 ```
 
 `path` 運算式會傳遞至「accept」控制訊息所包含之位址 URI 中的接聽程式。
@@ -462,7 +462,7 @@ HTTP 要求通訊協定允許任意的 HTTP 要求，但通訊協定升級除外
 HTTP 要求會指向於實體的一般執行階段位址，但沒有用於混合式連線 WebSocket 用戶端的 $hc 中置詞。
 
 ```
-https://{namespace-address}/{path}?sbc-hc-token=...
+https://{namespace-address}/{path}?sb-hc-token=...
 ```
 
 _namespace-address_ 是裝載混合式連線之 Azure 轉送命名空間的完整網域名稱，其格式通常為 `{myname}.servicebus.windows.net`。
@@ -473,7 +473,7 @@ _namespace-address_ 是裝載混合式連線之 Azure 轉送命名空間的完�
 
 | Param          | 必要？ | 描述
 | -------------- | --------- | ---------------- |
-| `sb-hc-token`  | 是\*     | 針對授予**傳送**權限的命名空間或混合式連線，接聽程式必須提供有效且以 URL 編碼的服務匯流排共用存取權杖。
+| `sb-hc-token`  | 是\*     | 針對授予 **傳送** 權限的命名空間或混合式連線，接聽程式必須提供有效且以 URL 編碼的服務匯流排共用存取權杖。
 
 `ServiceBusAuthorization` 或 `Authorization` HTTP 標題中也可以帶有權杖。 如果混合式連線設定為允許匿名要求，則可以省略此權杖。
 

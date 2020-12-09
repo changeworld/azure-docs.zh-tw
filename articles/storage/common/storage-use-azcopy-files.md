@@ -4,15 +4,15 @@ description: 使用 AzCopy 和檔案儲存體傳輸資料。 AzCopy 是一種命
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: a19cca515bafa1d06f93d71b4868011a7c922354
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 087af322240322e44e70a9b5279eb7d251e735be
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792832"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96901859"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>使用 AzCopy 和檔案儲存體傳輸資料 (機器翻譯) 
 
@@ -72,7 +72,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 
 ### <a name="upload-a-directory"></a>上傳目錄
 
-此範例會將目錄 (和該目錄中的所有檔案) 複製到檔案共用。 結果會是檔案共用中相同名稱的目錄。
+此範例會將目錄 (以及該目錄中的所有檔案) 複製到檔案共用。 結果是會在檔案共用中建立具有相同名稱的目錄。
 
 |    |     |
 |--------|-----------|
@@ -184,7 +184,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 
 ### <a name="download-the-contents-of-a-directory"></a>下載目錄的內容
 
-您可以使用萬用字元符號 ( * ) ，在不復制包含目錄本身的情況下下載目錄的內容。
+您可以下載目錄的內容，而不需使用萬用字元符號 (*) 複製包含的目錄本身。
 
 |    |     |
 |--------|-----------|
@@ -207,7 +207,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 | **語法** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name><SAS-token>' '<local-directory-path>'  --include-path <semicolon-separated-file-list>` |
 | **範例** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
 
-在此範例中，AzCopy 會傳送 `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` 目錄和檔案 `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/documents/myFile.txt` 。 您必須包含在 `--recursive` 目錄中傳送所有檔案的選項 `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` 。
+在此範例中，AzCopy 會傳送 `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` 目錄和檔案 `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/documents/myFile.txt` 。 包含在 `--recursive` 目錄中傳送所有檔案的選項 `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` 。
 
 您也可以使用選項來排除檔案 `--exclude-path` 。 若要深入瞭解，請參閱 [azcopy 複製](storage-ref-azcopy-copy.md) 參考檔。
 
@@ -292,14 +292,14 @@ AzCopy 會使用 [伺服器對伺服器](/rest/api/storageservices/put-block-fro
 
 ## <a name="synchronize-files"></a>同步處理檔案
 
-您可以將檔案共用的內容與另一個檔案共用進行同步處理。 您也可以將檔案共用中的目錄內容與位於另一個檔案共用中的目錄內容同步處理。 同步處理是單向的。 換句話說，您可以選擇這兩個端點中的哪一個是來源，哪一個是目的地。 同步處理也會使用伺服器對伺服器 Api。
+您可以將檔案共用的內容與另一個檔案共用進行同步處理。 您也可以將檔案共用中的目錄內容與位於另一個檔案共用中的目錄內容同步處理。 同步處理是一種方式。 換句話說，您可以選擇這兩個端點中的哪一個是來源，哪一個是目的地。 同步處理也會使用伺服器對伺服器 Api。
 
 > [!NOTE]
 > 目前，只有沒有階層命名空間的帳戶支援此案例。 目前的 AzCopy 版本不會在 Azure 檔案儲存體和 Blob 儲存體之間進行同步處理。
 
 [Sync](storage-ref-azcopy-sync.md)命令會比較檔案名和上次修改的時間戳記。 將 `--delete-destination` 選擇性旗標設定為的值， `true` `prompt` 如果這些檔案不再存在於來原始目錄中，則刪除目的地目錄中的檔案。
 
-如果您將旗標設定 `--delete-destination` 為 `true` AzCopy 刪除檔案，而不提供提示。 如果您想要在 AzCopy 刪除檔案之前出現提示，請將旗標設定 `--delete-destination` 為 `prompt` 。
+如果您將旗標設 `--delete-destination` 為 `true` ，AzCopy 就會刪除檔案，而不會提供提示。 如果您想要在 AzCopy 刪除檔案之前出現提示，請將旗標設定 `--delete-destination` 為 `prompt` 。
 
 > [!TIP]
 > 您可以使用選擇性旗標來調整同步處理作業。 以下是一些範例。
@@ -348,8 +348,6 @@ AzCopy 會使用 [伺服器對伺服器](/rest/api/storageservices/put-block-fro
 
 - [開始使用 AzCopy](storage-use-azcopy-v10.md)
 
-- [使用 AzCopy 和 Blob 儲存體轉送資料](storage-use-azcopy-blobs.md)
-
-- [使用 AzCopy 和 Amazon S3 貯體轉送資料](storage-use-azcopy-s3.md)
+- [傳送資料](storage-use-azcopy-v10.md#transfer-data)
 
 - [對 AzCopy 進行設定、最佳化及疑難排解](storage-use-azcopy-configure.md)

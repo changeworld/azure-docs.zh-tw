@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b5b83d75df734c667c365f20fad2e1f62f997d7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 95f70005f2c7f53833163dcd5f0d2ee89b3db37c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994276"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861284"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 來建立具彈性的存取控制管理策略
 
@@ -266,7 +266,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 3. 將您在中斷情況發生期間所進行和記載的任何其他變更復原。
 4. 如果您使用了緊急存取帳戶，請記得重新產生認證，並在您的緊急存取帳戶程序中一併實際保護新的認證詳細資料。
 5. 繼續將可疑活動中斷後所 [回報的所有風險](../reports-monitoring/concept-sign-ins.md) 偵測分類。
-6. [使用 PowerShell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) 來撤銷所有已簽發的重新整理權杖，以將一組使用者設為目標。 對於在中斷情況發生期間所使用的特殊權限帳戶來說，撤銷所有重新整理權杖是很重要的，此做法將強制他們重新驗證並符合所還原原則的控制措施。
+6. [使用 PowerShell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) 來撤銷所有已簽發的重新整理權杖，以將一組使用者設為目標。 對於在中斷情況發生期間所使用的特殊權限帳戶來說，撤銷所有重新整理權杖是很重要的，此做法將強制他們重新驗證並符合所還原原則的控制措施。
 
 ## <a name="emergency-options"></a>緊急選項
 
@@ -287,7 +287,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 * [Azure AD 驗證文件](./howto-mfaserver-iis.md)
 * [在 Azure AD 中管理緊急存取系統管理帳戶](../roles/security-emergency-access.md)
 * [在 Azure Active Directory 中設定命名位置](../reports-monitoring/quickstart-configure-named-locations.md)
-  * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
+  * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings)
 * [如何設定混合式 Azure Active Directory 已聯結裝置](../devices/hybrid-azuread-join-plan.md)
 * [Windows Hello 企業版部署指南](/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
   * [密碼指引 - Microsoft 研究](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf) \(英文\)

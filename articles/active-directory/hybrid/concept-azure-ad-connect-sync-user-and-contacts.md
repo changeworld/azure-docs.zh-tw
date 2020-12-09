@@ -15,12 +15,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9470e9af38fdd814f5059538656e6a3dbb8e3a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e015f7937db6788aa4473a8a04434121299901e9
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279307"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861777"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect 同步處理：了解使用者、群組和連絡人
 您可能有幾種不同的原因，而擁有多個 Active Directory 樹系並且具有幾種不同的部署拓撲。 常見的模型包括合併與收購之後的帳戶-資源部署與 GAL 同步處理的樹系。 雖然有單純的模型，但混合模型也同樣常見。 Azure AD Connect 同步處理中的預設組態不會採用任何特定的模型，但是根據在安裝指南中選取使用者比對的方式，可以觀察到不同的行為。
@@ -41,7 +41,7 @@ ms.locfileid: "89279307"
 
 * Azure AD Connect 不支援將[主要群組成員資格](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771489(v=ws.11))同步至 Azure AD。
 
-* Azure AD Connect 不支援將[動態通訊群組成員資格](/Exchange/recipients/dynamic-distribution-groups/dynamic-distribution-groups?view=exchserver-2019)同步至 Azure AD。
+* Azure AD Connect 不支援將[動態通訊群組成員資格](/Exchange/recipients/dynamic-distribution-groups/dynamic-distribution-groups)同步至 Azure AD。
 
 * 若要將 Active Directory 群組同步至 Azure AD 做為擁有郵件功能的群組：
 

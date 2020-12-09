@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: 9408aaa8fd5b677f012392ef4bd51c8826650eee
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 5b8dd911952a63ba8775f27a6128ff61e849e823
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395150"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861420"
 ---
 # <a name="enable-and-disable-data-retention-policies"></a>啟用及停用資料保留原則
 
@@ -88,7 +88,7 @@ where is_data_deletion_filter_column =1
 and object_id = object_id(N'dbo.data_retention_table', N'U')
 ```
 
-## <a name="corelating-db-and-table-data-retention-settings"></a>相互關聯 DB 和資料表資料保留設定
+## <a name="correlating-db-and-table-data-retention-settings"></a>關聯 DB 和資料表資料保留設定
 
 資料庫和資料表上的資料保留設定會搭配使用，以判斷是否要在資料表上執行過時資料列的自動清除。 
 

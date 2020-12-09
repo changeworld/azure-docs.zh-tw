@@ -3,18 +3,18 @@ title: 開始使用 Azure 地圖服務 Power BI visual |Microsoft Azure 對應
 description: 在本文中，您將瞭解如何使用適用于 Power BI 的 Microsoft Azure Maps 視覺效果。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 06/26/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 5c89922aef1ba802ee694aaed9bae2ac2dd273ee
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: a563a7776e84289e38743057778e8fe10fd17503
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896237"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904698"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>開始使用 Azure 地圖服務 Power BI visual
 
@@ -45,17 +45,17 @@ Azure 地圖服務的視覺效果會連接到裝載于 Azure 中的雲端服務�
 
 若要深入瞭解與 Azure 地圖服務視覺效果相關的隱私權和使用規定，請參閱 [Microsoft Azure 法律資訊](https://azure.microsoft.com/support/legal/)。
 
-## <a name="preview-behavior-and-requirements"></a>預覽行為及需求
+## <a name="azure-maps-visual-preview-behavior-and-requirements"></a>Azure 地圖服務 visual (Preview) 行為和需求
 
-此預覽版本的 _ * Azure 地圖服務 * * 有幾個考慮和需求：
+_ *Azure 地圖服務** 視覺效果有幾個考慮和需求。 :
 
--   **Azure 地圖服務** 的視覺效果處於預覽狀態，必須在 Power BI Desktop 中啟用。 若要啟用 **Azure 地圖服務** ， **請選取** &gt; [檔案選項] 和 [ **設定** &gt; **選項** &gt; ] **預覽功能** ，然後選取 [ **Azure 地圖服務視覺效果** ] 核取方塊。 如果您在執行此操作之後無法使用 Azure 地圖服務的視覺效果，就可能必須啟用系統管理員入口網站中的租使用者系統管理切換。
+-   **Azure 地圖服務** Visual (Preview) 必須在 Power BI Desktop 中啟用。 若要啟用 **Azure 地圖服務** 視覺效果， **請選取** &gt; [檔案選項] **和 [設定** &gt; **選項**] &gt; **預覽功能**，然後選取 [ **Azure 地圖服務視覺效果** ] 核取方塊。 如果您在執行此操作之後無法使用 Azure 地圖服務的視覺效果，就可能必須啟用系統管理員入口網站中的租使用者系統管理切換。
 -   資料集的欄位必須包含 **緯度** 和 **經度** 資訊。 將在未來的更新中新增位置欄位的地理編碼。
 -   Power BI 的內建圖例控制項目前不會出現在此預覽中。 它將會在未來的更新中新增。
 
-## <a name="use-the-azure-maps-visual"></a>使用 Azure 地圖服務視覺效果
+## <a name="use-the-azure-maps-visual-preview"></a>使用 Azure 地圖服務 visual (Preview) 
 
-一旦啟用 **Azure 地圖服務** 視覺效果，請從 [視覺 **效果** ] 窗格中選取 **Azure 地圖服務** 圖示。
+一旦啟用 **Azure 地圖服務** 視覺效果，請從 [視覺 **效果**] 窗格中選取 **Azure 地圖服務** 圖示。
 
 ![[視覺效果] 窗格上的 Azure 地圖服務視覺效果按鈕](media/power-bi-visual/azure-maps-in-visualizations-pane.png)
 
@@ -70,7 +70,7 @@ Power BI 會建立空白的 Azure 地圖服務視覺化設計畫布。 在預覽
     > [!div class="mx-imgBorder"]
     > ![在提供的緯度和經度欄位之後，Azure 地圖服務視覺效果顯示地圖上的點](media/power-bi-visual/bubble-layer.png)
 
-2.  若要根據分類來建立資料的色彩，請將 [類別目錄] 欄位拖曳到 [ **欄位** ] 窗格的 [ **圖例** ] 值區中。 在此範例中，我們會使用 **AdminDistrict** 資料行 (也稱為州或省) 。  
+2.  若要根據分類來建立資料的色彩，請將 [類別目錄] 欄位拖曳到 [**欄位**] 窗格的 [**圖例**] 值區中。 在此範例中，我們會使用 **AdminDistrict** 資料行 (也稱為州或省) 。  
     
     > [!div class="mx-imgBorder"]
     > ![在提供圖例欄位之後，Azure 地圖服務視覺效果將點顯示為彩色的氣泡](media/power-bi-visual/bubble-layer-with-legend-color.png)
@@ -78,7 +78,7 @@ Power BI 會建立空白的 Azure 地圖服務視覺化設計畫布。 在預覽
     > [!NOTE]
     > Power BI 的內建圖例控制項目前不會出現在此預覽中。 它將會在未來的更新中新增。
 
-3.  若要相對地調整資料，請將量值拖曳到 [ **欄位** ] 窗格的 [ **大小** ] 值區中。 在此範例中，我們使用 [ **Sales** ] 資料行。  
+3.  若要相對地調整資料，請將量值拖曳到 [**欄位**] 窗格的 [**大小**] 值區中。 在此範例中，我們使用 [ **Sales** ] 資料行。  
     
     > [!div class="mx-imgBorder"]
     > ![Azure 地圖服務視覺效果，在提供的 [大小] 欄位之後，將點顯示為彩色和縮放的氣泡。](media/power-bi-visual/bubble-layer-with-legend-color-and-size.png)
@@ -173,7 +173,7 @@ Azure 地圖服務的視覺效果可在下列服務和應用程式中使用：
 自訂視覺效果：
 
 > [!div class="nextstepaction"]
-> [在 Power BI 中色彩格式化的秘訣和訣竅](/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
+> [在 Power BI 中色彩格式設定的秘訣和訣竅](/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
 
 > [!div class="nextstepaction"]
 > [自訂視覺效果標題、背景和圖例](/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)

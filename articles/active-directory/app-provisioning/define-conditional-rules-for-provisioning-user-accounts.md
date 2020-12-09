@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
-ms.openlocfilehash: 1765c6a7d19a11730567acd5e41deebc0a20cec2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 88d004836d5311fc3a971df81a3dc6e6ab605ca9
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993987"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861386"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>含範圍篩選器的屬性型應用程式佈建
 本文的目標在於說明如何使用範圍篩選條件來定義以屬性為基礎的規則，以決定將哪些使用者佈建到應用程式。
@@ -94,7 +94,7 @@ Azure AD 佈建服務所處理的每個使用者或群組，一律會根據每�
    
    j. **Greater_Than_OR_EQUALS。** 如果評估的屬性大於或等於值，子句會傳回 "true"。 範圍篩選器上指定的值必須是整數，而且使用者的屬性必須是整數 [0，1，2,...]。 
    
-   k. **包括。** 如果評估的屬性包含字串值 (區分大小寫的) ，子句會傳回 "true" [，如下所述。](/dotnet/api/system.string.contains?view=netframework-4.8) 
+   k. **包括。** 如果評估的屬性包含字串值 (區分大小寫的) ，子句會傳回 "true" [，如下所述。](/dotnet/api/system.string.contains) 
 
 
 >[!IMPORTANT] 

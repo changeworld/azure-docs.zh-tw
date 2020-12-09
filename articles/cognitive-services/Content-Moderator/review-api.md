@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: e2d87d4322ac6b91a19a4775c23ceec75d528030
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 43c39c40af6e02861211a8666fefa57c34072f32
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325327"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905191"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>內容仲裁審核、工作流程和作業
 
@@ -42,7 +42,7 @@ ms.locfileid: "96325327"
 > [!div class="mx-imgBorder"]
 > ![[搜尋] 工具列會顯示。 它有各種用來輸入搜尋準則的下拉式方塊，例如檢查狀態和標記。](./Review-Tool-user-Guide/images/review-search.png)
 
-請參閱 [審核工具指南](./review-tool-user-guide/review-moderated-images.md) 以開始建立評論，或參閱 [REST API 指南](./try-review-api-review.md) ，以瞭解如何以程式設計方式進行。
+請參閱 [審核工具指南](./review-tool-user-guide/review-moderated-images.md) 以開始建立評論，或參閱 [API 主控台指南](./try-review-api-review.md) ，以瞭解如何以程式設計方式進行。
 
 ## <a name="workflows"></a>工作流程
 
@@ -80,13 +80,13 @@ ms.locfileid: "96325327"
 }
 ```
 
-若要瞭解如何以程式設計方式進行，請參閱「 [審核工具指南](./review-tool-user-guide/workflows.md) 」以開始建立和使用工作流程，或參閱 [REST API 指南](./try-review-api-workflow.md) 。
+請參閱 [審核工具指南](./review-tool-user-guide/workflows.md) 以開始建立和使用工作流程，或參閱 [API 主控台指南](./try-review-api-workflow.md) ，以瞭解如何以程式設計方式進行。
 
 ## <a name="jobs"></a>工作
 
 仲裁作業可作為內容仲裁、工作流程和評論功能的一種包裝函式。 作業會使用內容仲裁影像仲裁 API 或文字仲裁 API 來掃描您的內容，然後針對指定的工作流程進行檢查。 根據工作流程的結果，它不一定會在 [審核工具](./review-tool-user-guide/human-in-the-loop.md)中建立內容的評論。 雖然您可以使用各自的 Api 來建立和設定評論和工作流程，但作業 API 可讓您取得整個程式的詳細報表， (可將其傳送至指定的回呼端點) 。
 
-若要開始使用作業，請參閱 [REST API 指南](./try-review-api-job.md) 。
+若要開始使用作業，請參閱 [API 主控台指南](./try-review-api-job.md) 。
 
 ## <a name="next-steps"></a>後續步驟
 

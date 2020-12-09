@@ -3,18 +3,18 @@ title: Azure 地圖服務社區開放原始碼專案 |Microsoft Azure 對應
 description: 針對 Microsoft Azure Maps 平臺協調的開放原始碼專案。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/17/2019
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: ebe633bbfa8ec950e7726c127e38adecf0d1872f
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 138160eb1515d1443302dbc23bbafa482e2eb905
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896254"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904545"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure 地圖服務共同體-開放原始碼專案
 
@@ -62,7 +62,7 @@ ms.locfileid: "92896254"
 | 專案名稱 | 描述 |
 |-|-|
 | [Azure 地圖服務檔](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/azure-maps) | 所有 Azure 位置服務檔的來源。 |
-| [Azure 地圖服務建立者工具](https://github.com/Azure-Samples/AzureMapsCreator) | 適用于 Azure 地圖服務建立者工具的 Python 工具。 |
+| [Azure 地圖服務 Creator (Preview) 工具](https://github.com/Azure-Samples/AzureMapsCreator) | Python tools for Azure 地圖服務 Creator (Preview) 工具。 |
 
 您可以在[這裡](https://github.com/microsoft/Maps/blob/master/AzureMaps.md)找到包含所建立專案之 Azure 地圖服務的開放原始碼專案清單
 

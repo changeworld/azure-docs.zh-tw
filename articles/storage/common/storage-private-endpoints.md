@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 96e6b7a672e2967403626cb9ba7db87fc4dd795c
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 0da970724a5d6f0ad42ba64939f316ec1ada855b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980196"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905548"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>使用私人端點進行 Azure 儲存體
 
@@ -125,10 +125,6 @@ StorageAccountA 的 DNS 資源記錄（由裝載私人端點的 VNet 中的用�
 ## <a name="known-issues"></a>已知問題
 
 請記住下列 Azure 儲存體私人端點的已知問題。
-
-### <a name="copy-blob-support"></a>複製 Blob 支援
-
-如果儲存體帳戶受到防火牆保護，而帳戶是透過私人端點存取，則該帳戶將無法作為 [複製 Blob](/rest/api/storageservices/copy-blob) 作業的來源。
 
 ### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>具有私人端點的 Vnet 中用戶端的儲存體存取限制
 

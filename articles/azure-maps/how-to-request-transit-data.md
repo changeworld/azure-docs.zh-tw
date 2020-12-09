@@ -1,22 +1,27 @@
 ---
-title: 使用 Microsoft Azure Maps 要求傳輸資料行動服務
-description: 瞭解如何使用 Azure 地圖服務行動服務來要求公開傳輸資料，例如 metro 區域識別碼、運輸停止、路線和路線路線。
+title: '使用 Microsoft Azure Maps 行動服務來要求傳輸資料 (Preview) '
+description: 瞭解如何使用 Azure 地圖服務行動服務 (預覽) 來要求公開傳輸資料，例如 metro 區域識別碼、運輸停止、路線和路線路線。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/22/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 3f6f50d0ffeb48b5f359221992cc9a51d2ebb056
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 740080d742f535f868b2ae194b24bebe5ac6ac24
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895659"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906024"
 ---
-# <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>使用 Azure 地圖服務行動服務要求公開傳輸資料
+# <a name="request-public-transit-data-using-the-azure-maps-mobility-services-preview"></a>使用 Azure 地圖服務行動服務 (預覽) 要求公開傳輸資料 
+
+> [!IMPORTANT]
+> Azure 地圖服務行動服務目前處於公開預覽狀態。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 
 本文說明如何使用 Azure 地圖服務 [行動服務](/rest/api/maps/mobility) 來要求公開傳輸資料。 傳輸資料包含傳輸停止、路線資訊和行進時間估計。
 
@@ -36,7 +41,7 @@ ms.locfileid: "92895659"
 
 ## <a name="get-a-metro-area-id"></a>取得 metro 區域識別碼
 
-為了要求有關運輸機關的詳細資訊，以及特定的大都市區域支援的傳輸類型，您需要該 `metroId` 區域的。 「 [取得 Metro 區域 API](/rest/api/maps/mobility/getmetroareapreview) 」可讓您要求 Azure 地圖服務行動服務可用的 metro 區域。 回應包含詳細資料 `metroId` ，例如、 `metroName` 和 GeoJSON 格式的 metro 區域幾何標記法。
+為了要求有關運輸機關的詳細資訊，以及特定的大都市區域支援的傳輸類型，您需要該 `metroId` 區域的。 「 [取得 Metro 區域 API](/rest/api/maps/mobility/getmetroareapreview) 」可讓您要求 Metro 區域，其中 Azure 地圖服務行動服務可供使用。 回應包含詳細資料 `metroId` ，例如、 `metroName` 和 GeoJSON 格式的 metro 區域幾何標記法。
 
 讓我們提出要求，以取得 Seattle-Tacoma metro 區域識別碼的 Metro 區域。 若要要求 metro 區域的識別碼，請完成下列步驟：
 
@@ -115,9 +120,9 @@ Azure 地圖服務 [取得鄰近傳輸](/rest/api/maps/mobility/getnearbytransit
 
 若要對「 [取得鄰近的傳輸](/rest/api/maps/mobility/getnearbytransitpreview)」提出要求，請依照下列步驟執行：
 
-1. 在 [Postman] 中，按一下 [ **新增要求**  |  **get 要求** ]，並將其命名為 **附近的停止** 。
+1. 在 [Postman] 中，按一下 [**新增要求**  |  **get 要求**]，並將其命名為 **附近的停止**。
 
-2. 在 [建立器] 索引標籤上，選取 [ **取得** HTTP 方法]，為您的 API 端點輸入下列要求 URL，然後按一下 [ **傳送** ]。
+2. 在 [建立器] 索引標籤上，選取 [ **取得** HTTP 方法]，為您的 API 端點輸入下列要求 URL，然後按一下 [ **傳送**]。
 
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/nearby/json?subscription-key={subscription-key}&api-version=1.0&query=47.63096,-122.126&radius=300&objectType=stop
@@ -224,9 +229,9 @@ Azure 地圖服務 [取得傳輸路由 API](/rest/api/maps/mobility/gettransitro
 
 若要對「模糊搜尋」服務提出要求，請依照下列步驟執行：
 
-1. 在 [Postman] 中，按一下 [ **新增要求**  |  **get 要求** ]，並將其命名為 **取得位置座標** 。
+1. 在 [Postman] 中，按一下 [**新增要求**  |  **get 要求**]，並將其命名為 **取得位置座標**。
 
-2. 在 [建立器] 索引標籤上，選取 [ **取得** HTTP 方法]，輸入下列要求 URL，然後按一下 [ **傳送** ]。
+2. 在 [建立器] 索引標籤上，選取 [ **取得** HTTP 方法]，輸入下列要求 URL，然後按一下 [ **傳送**]。
 
     ```HTTP
     https://atlas.microsoft.com/search/fuzzy/json?subscription-key={subscription-key}&api-version=1.0&query=space needle
@@ -331,11 +336,11 @@ Azure 地圖服務 [取得傳輸路由 API](/rest/api/maps/mobility/gettransitro
 
 若要建立路由要求，請完成下列步驟：
 
-1. 在 [Postman] 中，按一下 [ **新增要求**  |  **get 要求** ]，並將其命名為 **取得路由資訊** 。
+1. 在 [Postman] 中，按一下 [**新增要求**  |  **get 要求**]，並將其命名為 **取得路由資訊**。
 
-2. 在 [建立器] 索引標籤上，選取 [ **取得** HTTP 方法]，為您的 API 端點輸入下列要求 URL，然後按一下 [ **傳送** ]。
+2. 在 [建立器] 索引標籤上，選取 [ **取得** HTTP 方法]，為您的 API 端點輸入下列要求 URL，然後按一下 [ **傳送**]。
 
-    我們會藉由指定和參數來要求匯流排的公用傳輸路由 `modeType` `transitType` 。 要求 URL 包含在上一節中取出的位置。 針對 `originType` ，我們現在有一個 **stopId** 。 而且 `destionationType` ，我們有 **位置** 。
+    我們會藉由指定和參數來要求匯流排的公用傳輸路由 `modeType` `transitType` 。 要求 URL 包含在上一節中取出的位置。 針對 `originType` ，我們現在有一個 **stopId**。 而且 `destionationType` ，我們有 **位置**。
 
     查看您可以在要求中使用的 [URI 參數清單](/rest/api/maps/mobility/gettransitroutepreview#uri-parameters) ，以 [取得傳輸路由 API](/rest/api/maps/mobility/gettransitroutepreview)。
   
@@ -520,15 +525,15 @@ Azure 地圖服務 [取得傳輸路由 API](/rest/api/maps/mobility/gettransitro
     }
     ```
 
-4. 如果您仔細觀察，回應中會有多個 **匯流排** 路由。 每個路線都有唯一的 **路線識別碼** 、描述路線中每個階段的摘要，以及 `itineraryFare` 提供各項和總價格的匯流排票證。 路由階段是兩個停止導航點之間路由的一部分。 接下來，我們將使用回應中的來要求最快路由的詳細資料 `itineraryId` 。
+4. 如果您仔細觀察，回應中會有多個 **匯流排** 路由。 每個路線都有唯一的 **路線識別碼**、描述路線中每個階段的摘要，以及 `itineraryFare` 提供各項和總價格的匯流排票證。 路由階段是兩個停止導航點之間路由的一部分。 接下來，我們將使用回應中的來要求最快路由的詳細資料 `itineraryId` 。
 
 ## <a name="request-fastest-route-itinerary"></a>要求最快的路線路線
 
-Azure 地圖服務 [取得傳輸路線](/rest/api/maps/mobility/gettransititinerarypreview)服務可讓您使用「 [取得傳輸路由 API](/rest/api/maps/mobility/gettransitroutepreview) 」服務所傳回的路線路線 **識別碼** ，要求特定路由的資料。 若要提出要求，請完成下列步驟：
+Azure 地圖服務 [取得傳輸路線](/rest/api/maps/mobility/gettransititinerarypreview)服務可讓您使用「[取得傳輸路由 API](/rest/api/maps/mobility/gettransitroutepreview) 」服務所傳回的路線路線 **識別碼**，要求特定路由的資料。 若要提出要求，請完成下列步驟：
 
-1. 在 Postman 中，按一下 [ **新增要求**  |  **get 要求** ]，並將其命名為 **取得傳輸資訊** 。
+1. 在 Postman 中，按一下 [**新增要求**  |  **get 要求**]，並將其命名為 **取得傳輸資訊**。
 
-2. 在 [建立器] 索引標籤上，選取 [ **取得** HTTP 方法]。 為您的 API 端點輸入下列要求 URL，然後按一下 [ **傳送** ]。
+2. 在 [建立器] 索引標籤上，選取 [ **取得** HTTP 方法]。 為您的 API 端點輸入下列要求 URL，然後按一下 [ **傳送**]。
 
     我們會將 `detailType` 參數設定為 **geometry** ，讓回應包含公用傳輸的停止訊息，以及路線的導覽與自行車腿的輪流導覽。
 
@@ -796,12 +801,12 @@ Azure 地圖服務 [取得傳輸路線](/rest/api/maps/mobility/gettransititiner
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何使用行動服務要求即時資料：
+瞭解如何使用行動服務 (預覽版) 來要求即時資料：
 
 > [!div class="nextstepaction"]
 > [如何要求即時資料](how-to-request-real-time-data.md)
 
-探索 Azure 地圖服務行動服務 API 檔
+探索 Azure 地圖服務行動服務 (預覽) API 檔
 
 > [!div class="nextstepaction"]
 > [行動服務檔](/rest/api/maps/mobility)

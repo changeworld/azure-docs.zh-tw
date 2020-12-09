@@ -10,14 +10,14 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: pafarley
-ms.openlocfilehash: a9726e41a84926d00d48b51e31f534a3d8c2fe0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 479c7c455f07d098edd327196803e85df24dfb6d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72757149"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905124"
 ---
-# <a name="create-human-reviews-rest"></a>建立人工審核 (REST) 
+# <a name="create-human-reviews-api-console"></a> (API 主控台建立人工審核) 
 
 [審核](./review-api.md#reviews) 儲存和顯示內容，讓人力仲裁者進行評估。 當使用者完成審核時，結果會傳送到指定的回呼端點。 在本指南中，您將瞭解如何透過 API 主控台使用審核 REST Api 來設定評論。 瞭解 Api 的結構之後，您就可以輕鬆地將這些呼叫移植到任何與 REST 相容的平臺。
 
@@ -27,16 +27,16 @@ ms.locfileid: "72757149"
 
 ## <a name="create-a-review"></a>建立審核
 
-若要建立評論，請移至 [**[審核-建立](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)** API 參考] 頁面，然後選取您的金鑰區域的按鈕 (您可以在[審核工具](https://contentmoderator.cognitive.microsoft.com/)) 之 [**認證**] 頁面的 [端點 URL] 中找到此資訊。 這會啟動 API 主控台，您可以在其中輕鬆地建立及執行 REST API 呼叫。
+若要建立評論，請移至 [**[審核-建立](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)** API 參考] 頁面，然後選取您的金鑰區域的按鈕 (您可以在 [審核工具](https://contentmoderator.cognitive.microsoft.com/)) 之 [**認證**] 頁面的 [端點 URL] 中找到此資訊。 這會啟動 API 主控台，您可以在其中輕鬆地建立及執行 REST API 呼叫。
 
 ![審核-取得區域選擇](images/test-drive-region.png)
 
 ### <a name="enter-rest-call-parameters"></a>輸入 REST 呼叫參數
 
-輸入 **teamName**的值，以及 **Ocp Apim-訂**用帳戶金鑰：
+輸入 **teamName** 的值，以及 **Ocp Apim-訂** 用帳戶金鑰：
 
 - **teamName**：當您設定 [審核工具](https://contentmoderator.cognitive.microsoft.com/) 帳戶時所建立的小組識別碼 (在審核工具的認證畫面) 的 [ **識別碼** ] 欄位中找到。
-- **Ocp Apim-訂用帳戶-金鑰**：您的內容仲裁金鑰。 您可以在[審核工具](https://contentmoderator.cognitive.microsoft.com)的 [**設定**] 索引標籤上找到此資訊。
+- **Ocp Apim-訂用帳戶-金鑰**：您的內容仲裁金鑰。 您可以在 [審核工具](https://contentmoderator.cognitive.microsoft.com)的 [**設定**] 索引標籤上找到此資訊。
 
 ### <a name="enter-a-review-definition"></a>輸入評論定義
 
@@ -135,7 +135,7 @@ ms.locfileid: "72757149"
 
 ### <a name="examine-the-new-review"></a>檢查新評論
 
-在[審核工具](https://contentmoderator.cognitive.microsoft.com)中，視您) 使用的內容而定，選取 [**審核**  >  **影像** / **文字** / **影片** (]。 您上傳的內容應該會出現，可供人工審核。
+在 [審核工具](https://contentmoderator.cognitive.microsoft.com)中，視您) 使用的內容而定，選取 [**審核**  >  **影像** / **文字** / **影片** (]。 您上傳的內容應該會出現，可供人工審核。
 
 ![足球的審查工具影像](images/test-drive-review-5.PNG)
 

@@ -10,14 +10,14 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 3e58be4b94457d95d28cf6528b9151e4be1802cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79749533d636f4b73ff3bef6b12d9e842ac485ea
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72754175"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905137"
 ---
-# <a name="define-and-use-moderation-workflows-rest"></a> (REST) 定義和使用仲裁工作流程
+# <a name="define-and-use-moderation-workflows-api-console"></a> (API 主控台定義和使用仲裁工作流程) 
 
 工作流程是以雲端為基礎的自訂篩選準則，可讓您更有效率地處理內容。 工作流程可以連接到各種不同的服務，以不同的方式篩選內容，然後採取適當的動作。 本指南說明如何透過 API 主控台使用工作流程 REST Api 來建立及使用工作流程。 瞭解 Api 的結構之後，您就可以輕鬆地將這些呼叫移植到任何與 REST 相容的平臺。
 
@@ -27,17 +27,17 @@ ms.locfileid: "72754175"
 
 ## <a name="create-a-workflow"></a>建立工作流程
 
-若要建立或更新工作流程，請移至 [**[工作流程-建立或更新](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59)** API 參考] 頁面，然後選取您的金鑰區域的按鈕 (您可以在[審核工具](https://contentmoderator.cognitive.microsoft.com/)) 的 [**認證**] 頁面上的 [端點 URL] 中找到此資訊。 這會啟動 API 主控台，您可以在其中輕鬆地建立及執行 REST API 呼叫。
+若要建立或更新工作流程，請移至 [ **[工作流程-建立或更新](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59)** API 參考] 頁面，然後選取您的金鑰區域的按鈕。 您可以在 [審核工具](https://contentmoderator.cognitive.microsoft.com/)的 [**認證**] 頁面上的端點 URL 中找到您的區域。 這會啟動 API 主控台，您可以在其中輕鬆地建立及執行 REST API 呼叫。
 
 ![[工作流程 - 建立或更新] 頁面的區域選取項目](images/test-drive-region.png)
 
 ### <a name="enter-rest-call-parameters"></a>輸入 REST 呼叫參數
 
-輸入 **team**、 **Workflowname**和 **Ocp Apim**的值-訂用帳戶金鑰：
+輸入 **team**、 **Workflowname** 和 **Ocp Apim** 的值-訂用帳戶金鑰：
 
 - **小組**：當您設定 [審核工具](https://contentmoderator.cognitive.microsoft.com/) 帳戶時所建立的小組識別碼 (在審核工具的認證畫面) 的 [ **識別碼** ] 欄位中找到。
 - **workflowname**：如果您想要更新現有的工作流程) ，要新增 (的新工作流程名稱或現有的名稱。
-- **Ocp Apim-訂用帳戶-金鑰**：您的內容仲裁金鑰。 您可以在[審核工具](https://contentmoderator.cognitive.microsoft.com)的 [**設定**] 索引標籤上找到此資訊。
+- **Ocp Apim-訂用帳戶-金鑰**：您的內容仲裁金鑰。 您可以在 [審核工具](https://contentmoderator.cognitive.microsoft.com)的 [**設定**] 索引標籤上找到此金鑰。
 
 ![[工作流程 - 建立或更新] 主控台查詢參數和標頭](images/workflow-console-parameters.PNG)
 
@@ -80,11 +80,11 @@ ms.locfileid: "72754175"
 
 ### <a name="submit-your-request"></a>提交您的要求
   
-選取 [傳送]。 如果作業成功，[Response status] \(回應狀態\)**** 就會是 `200 OK`，而 [Response content] \(回應內容\)**** 方塊則會顯示 `true`。
+選取 [傳送]。 如果作業成功，[Response status] \(回應狀態\) 就會是 `200 OK`，而 [Response content] \(回應內容\) 方塊則會顯示 `true`。
 
 ### <a name="examine-the-new-workflow"></a>檢查新的工作流程
 
-在[審核工具](https://contentmoderator.cognitive.microsoft.com/)中，選取 [**設定**  >  **工作流程**]。 您的新工作流程應該會出現在清單中。
+在 [審核工具](https://contentmoderator.cognitive.microsoft.com/)中，選取 [**設定**  >  **工作流程**]。 您的新工作流程應該會出現在清單中。
 
 ![工作流程的審核工具清單](images/workflow-console-new-workflow.PNG)
 
@@ -102,7 +102,7 @@ ms.locfileid: "72754175"
 
 ![取得查詢參數和標頭](images/workflow-get-default.PNG)
 
-選取 [傳送]。 如果作業成功，則 **回應狀態** 為 `200 OK` ，而且 [ **回應內容** ] 方塊會顯示 JSON 格式的工作流程，如下所示：
+選取 [傳送]。 如果作業成功，則 **回應狀態** 為 `200 OK` ，而且 [ **回應內容** ] 方塊會顯示 JSON 格式的工作流程，如下列範例所示：
 
 ```json
 {

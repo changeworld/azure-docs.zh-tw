@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: 092981f9d74a3f9f18c491ca6cee539a29e73c83
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 342491178d55dacbdc68e6c9042623d381dff898
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782496"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861539"
 ---
 # <a name="canceling-azure-sql-managed-instance-management-operations"></a>取消 Azure SQL 受控執行個體管理作業
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -61,7 +61,7 @@ Azure SQL 受控執行個體可以取消某些 [管理作業](management-operati
 
 1. 選取頁面底部的 **[取消操作** ]。 
 
-   :::image type="content" source="media/management-operations-cancel/cancel-operation.png" alt-text="選取 [進行中的作業] 方塊，以開啟進行中的動作頁面。":::
+   :::image type="content" source="media/management-operations-cancel/cancel-operation.png" alt-text="選取 [取消] 以取消作業。":::
 
 1. 確認您要取消操作。 
 
@@ -116,13 +116,12 @@ done
 
 ## <a name="canceled-deployment-request"></a>已取消部署要求
 
-使用 API 版本2020-02-02 時，只要接受實例建立要求，此實例就會開始以資源的形式存在，無論 **部署程式 (** 受控實例狀態是布建) 的進度。 如果您取消實例部署要求 (建立) 的新實例，受控實例將會從布建 **狀態移** 至 **FailedToCreate** 。
+使用 API 版本2020-02-02 時，只要接受實例建立要求，此實例就會開始以資源的形式存在，無論 **部署程式 (** 受控實例狀態是布建) 的進度。 如果您取消實例部署要求 (建立) 的新實例，受控實例將會從布建 **狀態移** 至 **FailedToCreate**。
 
 無法建立的實例仍會以資源的形式出現，而且： 
 
 - 不收費
 - 請勿會計入 (子網或 vCore 配額的資源限制) 
-- 保留實例名稱，以部署具有相同名稱的實例，刪除失敗的實例以釋放名稱
 
 
 > [!NOTE]

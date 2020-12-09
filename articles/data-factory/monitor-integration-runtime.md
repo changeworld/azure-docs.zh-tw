@@ -10,12 +10,12 @@ ms.date: 08/11/2020
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: 4eb9b0077d1d0591953a40d98a220d7aa0683de7
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: fa71dc1e6b3a09827f2ad3d9f714622da5a36222
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497940"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862440"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure Data Factory 中監視整合執行階段
 
@@ -48,8 +48,8 @@ Cmdlet 會為不同類型的整合執行階段傳回不同的資訊。 本文說
 | 屬性 | 描述 |
 -------- | ------------- | 
 | 名稱 | Azure 整合執行階段的名稱。 |  
-| 州 | Azure 整合執行階段的狀態。 | 
-| Location | Azure 整合執行階段的位置。 如需 Azure 整合執行階段的位置詳細資訊，請參閱[整合執行階段簡介](concepts-integration-runtime.md)。 |
+| 狀態 | Azure 整合執行階段的狀態。 | 
+| 位置 | Azure 整合執行階段的位置。 如需 Azure 整合執行階段的位置詳細資訊，請參閱[整合執行階段簡介](concepts-integration-runtime.md)。 |
 | DataFactoryName | Azure 整合執行階段所屬的資料處理站名稱。 | 
 | resourceGroupName | 資料處理站所屬的資源群組名稱。  |
 | 描述 | 整合執行階段的說明。  |
@@ -104,7 +104,7 @@ Cmdlet 會為不同類型的整合執行階段傳回不同的資訊。 本文說
 | 線上 | 節點已連線至 Data Factory 服務。 |
 | 離線 | 節點已離線。 |
 | 升級中 | 節點正在自動更新。 |
-| 限制 | 由於連線能力問題。 可能是因為 HTTP 連接埠 8050 問題、服務匯流排連線問題或認證同步問題。 |
+| 限制 | 由於連線能力問題。 可能是因為 HTTP 埠8060問題、服務匯流排連線問題或認證同步問題。 |
 | 非使用中 | 節點所在的組態不同於其他大多數節點的組態。 |
 
 節點無法連線至其他節點時，便會處於非使用中狀態。
@@ -181,8 +181,8 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 | 節點                        | 您 Azure-SSIS IR 具有節點特定狀態的已配置/可用節點 (啟動/可用/回收/無法使用) 和可採取動作的錯誤。 |
 | OtherErrors                  | 您 Azure-SSIS IR 上的非節點特定可操作錯誤。 |
 | LastOperation                | 在您的 Azure-SSIS IR 上，最後一次啟動/停止作業的結果具有可採取動作的錯誤 (s) 如果失敗的話）。 |
-| 州                        | 整體狀態 (Azure-SSIS IR 的初始/啟動/啟動/停止/停止) 。 |
-| Location                     | Azure-SSIS IR 的位置。 |
+| 狀態                        | 整體狀態 (Azure-SSIS IR 的初始/啟動/啟動/停止/停止) 。 |
+| 位置                     | Azure-SSIS IR 的位置。 |
 | NodeSize                     | 您 Azure-SSIS IR 中每個節點的大小。 |
 | NodeCount                    | 您 Azure-SSIS IR 中的節點數目。 |
 | MaxParallelExecutionsPerNode | 您 Azure-SSIS IR 中每個節點的平行執行數目上限。 |

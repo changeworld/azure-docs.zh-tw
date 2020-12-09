@@ -4,12 +4,12 @@ description: 針對裝載在內部部署環境或 Azure 的 ASP.NET 網站，設
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 861a9f53c2f149268e06005053206a7411e842f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 970971082e684ebcb6efce07bb707ffbb20ed228
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91838937"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904171"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>設定 ASP.NET 網站的 Application Insights
 
@@ -26,6 +26,10 @@ ms.locfileid: "91838937"
 
 - 建立以 [工作區為基礎的 Application Insights 資源](create-workspace-resource.md)。
 
+> [!IMPORTANT]
+> 新的 Azure 區域 **需要** 使用連接字串，而不是檢測金鑰。 [連接字串](./sdk-connection-string.md?tabs=net) 會識別您想要與遙測資料相關聯的資源。 它也可讓您修改您的資源將用來做為遙測目的地的端點。 您必須複製連接字串，並將它加入應用程式的程式碼或加入環境變數。
+
+
 ## <a name="create-a-basic-aspnet-web-app"></a>建立基本 ASP.NET web 應用程式
 
 1. 啟動 Visual Studio 2019。
@@ -38,7 +42,7 @@ ms.locfileid: "91838937"
 
 本節將引導您將 Application Insights 自動新增至以範本為基礎的 ASP.NET web 應用程式。 在 Visual Studio 中的 ASP.NET web 應用程式專案內：
 
-1. 選取 [**新增 Application Insights 遙測**  >  **Application Insights Sdk (本機) **  >  **下一步**  >  **]**  >  **關閉**。
+1. 選取 [**新增 Application Insights 遙測**  >  **Application Insights Sdk (本機)**  >  **下一步**  >  **]**  >  **關閉**。
 2. 開啟 `ApplicationInsights.config` 檔案。 
 3. 在結束記號之前，請先 `</ApplicationInsights>` 加入一行，其中包含您 Application Insights 資源的檢測金鑰。  您可以在新建立的 Application Insights 資源的 [總覽] 窗格中，找到您在本文必要條件中所建立的檢測金鑰。
 
@@ -342,7 +346,7 @@ ms.locfileid: "91838937"
 
 上述各節提供自動和手動設定伺服器端監視的方法指引。 若要新增用戶端監視，您將需要使用用戶端 [JAVASCRIPT SDK](javascript.md)。 您可以藉由在頁面的 HTML 結束記號之前新增 [JavaScript 程式碼片段](javascript.md#snippet-based-setup) ，來監視任何網頁的用戶端交易 `</head>` 。 
 
-雖然可以手動將程式碼片段加入至每個 HTML 網頁的標頭中，但建議您改為將程式碼片段加入至主頁面，這會將程式碼片段插入至網站的所有頁面。 針對本文中以範本為基礎的 ASP.NET MVC 應用程式，系統會呼叫您需要編輯的檔案， `_Layout.cshtml` 並在 [共用的**視圖**] 下找到它  >  ** **。
+雖然可以手動將程式碼片段加入至每個 HTML 網頁的標頭中，但建議您改為將程式碼片段加入至主頁面，這會將程式碼片段插入至網站的所有頁面。 針對本文中以範本為基礎的 ASP.NET MVC 應用程式，系統會呼叫您需要編輯的檔案， `_Layout.cshtml` 並在 [共用的 **視圖**] 下找到它  >  ****。
 
 若要新增用戶端監視，請開啟檔案 `_Layout.cshtml` ，並遵循用戶端 JAVASCRIPT SDK 設定文章中的 [程式碼片段型安裝指示](javascript.md#snippet-based-setup) 。
 
