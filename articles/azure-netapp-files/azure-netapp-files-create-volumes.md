@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: b-juche
-ms.openlocfilehash: e88cf0c063b3ba42dadd72c19c23be8fcf919b86
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2cc9d3e0fb711a0662852ce4f2c5a08dc626f246
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006605"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854728"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>建立適用於 Azure NetApp Files 的 NFS 磁碟區
 
-Azure NetApp Files 支援使用 NFS 建立磁片區 (NFSv3 和 Nfsv4.1 4.1) 、SMBv3 或雙重通訊協定 (NFSv3 和 SMB) 。 磁碟區的容量耗用量是根據其集區的佈建容量進行計算。 本文說明如何建立 NFS 磁片區。 
+Azure NetApp Files 支援使用 NFS 建立磁片區 (NFSv3 和 Nfsv4.1 4.1) 、SMB3 或雙重通訊協定 (NFSv3 和 SMB) 。 磁碟區的容量耗用量是根據其集區的佈建容量進行計算。 本文說明如何建立 NFS 磁片區。 
 
 ## <a name="before-you-begin"></a>開始之前 
 * 您必須已經設定容量集區。  

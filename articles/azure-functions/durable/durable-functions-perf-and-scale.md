@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 56a9861f0e25e1dcdf741cfdf5c8830dd9b6fc1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9fc465b5e5f132264fd36e004fa3ee7623b87a5
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325805"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854983"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 中的效能和級別
 
@@ -20,29 +20,29 @@ ms.locfileid: "91325805"
 
 ## <a name="history-table"></a>記錄資料表
 
-[歷程記錄]**** 資料表是 Azure 儲存體資料表，含有工作中樞內所有協調流程執行個體的歷程記錄事件。 此資料表的名稱格式為 *TaskHubName*History。 隨著執行個體執行，此資料表中會新增資料列。 此資料表的資料分割索引鍵衍生自協調流程的執行個體識別碼。 在大部分情況下，執行個體識別碼都是隨機的，可確保 Azure 儲存體中的內部資料分割有最佳的分佈。
+[歷程記錄] 資料表是 Azure 儲存體資料表，含有工作中樞內所有協調流程執行個體的歷程記錄事件。 此資料表的名稱格式為 *TaskHubName* History。 隨著執行個體執行，此資料表中會新增資料列。 此資料表的資料分割索引鍵衍生自協調流程的執行個體識別碼。 在大部分情況下，執行個體識別碼都是隨機的，可確保 Azure 儲存體中的內部資料分割有最佳的分佈。
 
-當協調流程執行個體需要執行時，系統會將 [歷程記錄] 資料表的適當資料列載入記憶體中。 這些「歷程記錄事件」** 會接著重新顯示為協調器函式程式碼，使其回到先前的檢查點狀態。 以這種方式使用執行歷程記錄重建狀態，會受[事件來源模式](/azure/architecture/patterns/event-sourcing)所影響。
+當協調流程執行個體需要執行時，系統會將 [歷程記錄] 資料表的適當資料列載入記憶體中。 這些「歷程記錄事件」會接著重新顯示為協調器函式程式碼，使其回到先前的檢查點狀態。 以這種方式使用執行歷程記錄重建狀態，會受[事件來源模式](/azure/architecture/patterns/event-sourcing)所影響。
 
 ## <a name="instances-table"></a>執行個體資料表
 
-**實例**資料表是另一個 Azure 儲存體資料表，其中包含工作中樞內所有協調流程和實體實例的狀態。 隨著執行個體的建立，此資料表中會新增資料列。 此資料表的資料分割索引鍵是協調流程實例識別碼或實體索引鍵，而資料列索引鍵是固定的常數。 每個協調流程或實體實例都有一個資料列。
+**實例** 資料表是另一個 Azure 儲存體資料表，其中包含工作中樞內所有協調流程和實體實例的狀態。 隨著執行個體的建立，此資料表中會新增資料列。 此資料表的資料分割索引鍵是協調流程實例識別碼或實體索引鍵，而資料列索引鍵是空字串。 每個協調流程或實體實例都有一個資料列。
 
-此資料表用來滿足來自 ( .NET) 的實例查詢要求 `GetStatusAsync` ，並 `getStatus` (JavaScript) api 以及 [狀態查詢 HTTP API](durable-functions-http-api.md#get-instance-status)。 它終於與先前所述的 [歷程記錄]**** 資料表內容保持一致。 以這種方式使用不同的 Azure 儲存體資料表有效地滿足執行個體查詢作業，會受到[命令和查詢責任隔離 (CQRS) 模式](/azure/architecture/patterns/cqrs)所影響。
+此資料表用來滿足來自 ( .NET) 的實例查詢要求 `GetStatusAsync` ，並 `getStatus` (JavaScript) api 以及 [狀態查詢 HTTP API](durable-functions-http-api.md#get-instance-status)。 它終於與先前所述的 [歷程記錄] 資料表內容保持一致。 以這種方式使用不同的 Azure 儲存體資料表有效地滿足執行個體查詢作業，會受到[命令和查詢責任隔離 (CQRS) 模式](/azure/architecture/patterns/cqrs)所影響。
 
 ## <a name="internal-queue-triggers"></a>內部佇列觸發程序
 
-協調器函式和活動函式都是由函式應用程式的工作中樞內的內部佇列所觸發。 以這種方式使用佇列會提供可靠的「至少一次」訊息傳遞保證。 Durable Functions 中有兩種佇列：**控制佇列**和**工作項目佇列**。
+協調器函式和活動函式都是由函式應用程式的工作中樞內的內部佇列所觸發。 以這種方式使用佇列會提供可靠的「至少一次」訊息傳遞保證。 Durable Functions 中有兩種佇列：**控制佇列** 和 **工作項目佇列**。
 
 ### <a name="the-work-item-queue"></a>工作項目佇列
 
-在 Durable Functions 中，每個工作中樞各有一個工作項目佇列。 這是基本佇列，運作方式類似於 Azure Functions 中的其他任何 `queueTrigger` 佇列。 此佇列用來觸發無狀態「活動函式」**，做法是一次從佇列中清除一則訊息。 上述每則訊息都包含活動函式輸入和其他中繼資料，例如要執行哪個函式。 當 Durable Functions 應用程式向外延展至多個虛擬機器時，這些虛擬機器全部會從工作項目佇列中爭奪工作。
+在 Durable Functions 中，每個工作中樞各有一個工作項目佇列。 這是基本佇列，運作方式類似於 Azure Functions 中的其他任何 `queueTrigger` 佇列。 此佇列用來觸發無狀態「活動函式」，做法是一次從佇列中清除一則訊息。 上述每則訊息都包含活動函式輸入和其他中繼資料，例如要執行哪個函式。 當 Durable Functions 應用程式向外延展至多個虛擬機器時，這些虛擬機器全部會從工作項目佇列中爭奪工作。
 
 ### <a name="control-queues"></a>控制佇列
 
-在 Durable Functions 中，每個工作中樞都有多個「控制佇列」**。 「控制佇列」** 比簡單的工作項目佇列更複雜。 控制佇列可用來觸發具狀態協調器和實體函數。 因為協調器和實體函式實例是具狀態的 singleton，所以無法使用競爭取用者模型來將負載分散到各個 Vm。 相反地，協調器和實體訊息會在控制佇列之間進行負載平衡。 後續各節對此行為有更詳細的說明。
+在 Durable Functions 中，每個工作中樞都有多個「控制佇列」。 「控制佇列」比簡單的工作項目佇列更複雜。 控制佇列可用來觸發具狀態協調器和實體函數。 因為協調器和實體函式實例是具狀態的 singleton，所以無法使用競爭取用者模型來將負載分散到各個 Vm。 相反地，協調器和實體訊息會在控制佇列之間進行負載平衡。 後續各節對此行為有更詳細的說明。
 
-控制佇列包含各種不同的協調流程生命週期訊息類型。 例如，[協調器控制訊息](durable-functions-instance-management.md)、活動函式「回應」** 訊息，以及計時器訊息。 將有 32 則訊息會在單一輪詢中從控制佇列中清除。 這些訊息包含承載資料以及中繼資料，包括適用於哪個協調流程執行個體。 如果有多則已從佇列中清除的訊息適用於相同的協調流程執行個體，系統會將這些訊息當作一個批次處理。
+控制佇列包含各種不同的協調流程生命週期訊息類型。 例如，[協調器控制訊息](durable-functions-instance-management.md)、活動函式「回應」訊息，以及計時器訊息。 將有 32 則訊息會在單一輪詢中從控制佇列中清除。 這些訊息包含承載資料以及中繼資料，包括適用於哪個協調流程執行個體。 如果有多則已從佇列中清除的訊息適用於相同的協調流程執行個體，系統會將這些訊息當作一個批次處理。
 
 ### <a name="queue-polling"></a>佇列輪詢
 
@@ -231,7 +231,7 @@ Azure Functions 支援在單一應用程式執行個體中同時執行多個函�
 
 ### <a name="orchestrator-function-replay"></a>協調器函式重新執行
 
-如先前所述，使用 [歷程記錄]**** 資料表的內容可重新執行協調器函式。 根據預設，每次從控制佇列中清除一批訊息時，就會重新執行協調器函式程式碼。 即使您使用展開傳送、收合傳送模式，以及等待所有工作完成 (例如， `Task.WhenAll` 在 .net 中或 `context.df.Task.all` 在 JavaScript) 中使用，將會在一段時間內處理工作回應的批次時，才會發生重新執行。 當擴充的會話啟用時，協調器函式實例會保留在記憶體中，而且可以處理新的訊息，而不需要完整的歷程記錄。
+如先前所述，使用 [歷程記錄] 資料表的內容可重新執行協調器函式。 根據預設，每次從控制佇列中清除一批訊息時，就會重新執行協調器函式程式碼。 即使您使用展開傳送、收合傳送模式，以及等待所有工作完成 (例如， `Task.WhenAll` 在 .net 中或 `context.df.Task.all` 在 JavaScript) 中使用，將會在一段時間內處理工作回應的批次時，才會發生重新執行。 當擴充的會話啟用時，協調器函式實例會保留在記憶體中，而且可以處理新的訊息，而不需要完整的歷程記錄。
 
 在下列情況中，最常觀察到擴充會話的效能改進：
 
@@ -254,17 +254,17 @@ Azure Functions 支援在單一應用程式執行個體中同時執行多個函�
 在規劃將 Durable Functions 用於生產應用程式時，請務必在規劃初期考慮效能需求。 本節涵蓋一些基本使用案例，以及預期的最大輸送量數字。
 
 * **循序活動執行**：這個案例說明的協調器函式會一個接一個執行一系列活動函式。 它最類似於[函式鏈結](durable-functions-sequence.md)範例。
-* **平行活動執行**：這個案例說明的協調器函式會使用[展開傳送、收合傳送](durable-functions-cloud-backup.md)模式平行執行許多活動函式。
-* **平行處理回應**：這個案例是[展開傳送、收合傳送](durable-functions-cloud-backup.md)模式的第二個部份。 它著重於收合傳送的效能。 請務必請注意，不同於展開傳送，收合傳送是由單一協調器函式執行個體進行，因此只能在單一 VM 上執行。
-* **外部事件處理**：這個案例代表為[外部事件](durable-functions-external-events.md)服務的單一協調器函式執行個體 (一次一個)。
-* **實體工作處理**：此案例會測試_單一_[計數器實體](durable-functions-entities.md)可以處理常數資料流程的速度。
+* **平行活動執行**：這個案例說明的協調器函式會使用 [展開傳送、收合傳送](durable-functions-cloud-backup.md)模式平行執行許多活動函式。
+* **平行處理回應**：這個案例是 [展開傳送、收合傳送](durable-functions-cloud-backup.md)模式的第二個部份。 它著重於收合傳送的效能。 請務必請注意，不同於展開傳送，收合傳送是由單一協調器函式執行個體進行，因此只能在單一 VM 上執行。
+* **外部事件處理**：這個案例代表為 [外部事件](durable-functions-external-events.md)服務的單一協調器函式執行個體 (一次一個)。
+* **實體工作處理**：此案例會測試 _單一_[計數器實體](durable-functions-entities.md)可以處理常數資料流程的速度。
 
 > [!TIP]
 > 不同於展開傳送，收合傳送作業受限制於單一 VM。 如果您的應用程式使用展開傳送、收合傳送模式，而且您很在意收合傳送效能，請考慮將活動函式展開傳送細分到多個[子協調流程](durable-functions-sub-orchestrations.md)。
 
-下表顯示先前所述案例的預期「最大」** 輸送量數字。 「執行個體」是指在 Azure App Service 中單一小型 ([A1](../../virtual-machines/sizes-previous-gen.md)) VM 上執行之協調器函式的單一執行個體。 在所有情況下，假設已啟用[擴充工作階段](#orchestrator-function-replay)。 實際結果可能會因函式程式碼所執行的 CPU 或 I/O 工作而有所不同。
+下表顯示先前所述案例的預期「最大」輸送量數字。 「執行個體」是指在 Azure App Service 中單一小型 ([A1](../../virtual-machines/sizes-previous-gen.md)) VM 上執行之協調器函式的單一執行個體。 在所有情況下，假設已啟用[擴充工作階段](#orchestrator-function-replay)。 實際結果可能會因函式程式碼所執行的 CPU 或 I/O 工作而有所不同。
 
-| 狀況 | 最大輸送量 |
+| 案例 | 最大輸送量 |
 |-|-|
 | 循序活動執行 | 每個執行個體每秒 5 個活動 |
 | 平行活動執行 (展開傳送) | 每個執行個體每秒 100 個活動 |

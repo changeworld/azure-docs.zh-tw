@@ -1,18 +1,18 @@
 ---
-title: Microsoft 商業市集的地理可用性和貨幣支援
+title: Microsoft 商用 marketplace 的地理可用性和貨幣支援
 description: 商業市集交易的地理可用性和貨幣支援
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: keferna
 ms.author: keferna
-ms.date: 07/29/2020
-ms.openlocfilehash: bdb746c75a175d906301bcfca0b1472383fceff9
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.date: 12/07/2020
+ms.openlocfilehash: 118fe70abf52a6c96f4f2dc47e3ad23a388f3598
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778065"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853742"
 ---
 # <a name="geographic-availability-and-currency-support-for-the-commercial-marketplace"></a>商業 marketplace 的地理可用性和貨幣支援
 
@@ -46,22 +46,22 @@ ms.locfileid: "96778065"
 | 汶萊                              | BN        | 美元          | BND，EUR，SGD，美元 |
 | 保加利亞                            | BG        | 歐元          | BGN、歐元、美元 |
 | 維德角                          | CV        | 美元          | CVE、歐元、美元 |
-| 喀麥隆                            | CM        | 美元          | XAF、歐元、美元 |
-| Canada                              | CA        | 加拿大幣          | CAD、歐元、美元  |
-| 開曼群島                      | KY        | 美元          | KYD、歐元、美元 |
+| 喀麥隆                            | CM        | 美元          | EUR、USD、XAF |
+| Canada                              | CA        | 加拿大幣          | CAD、歐元、美元 |
+| 開曼群島                      | KY        | 美元          | 歐元、KYD、美元 |
 | 智利                               | CL        | 美元          | CLP、歐元、美元 |
 | 中國\**                            | CN        | N/A          | N/A |
 | 哥倫比亞                            | CO        | 美元          | COP、歐元、美元 |
 | 哥斯大黎加                          | CR        | 美元          | CRC、歐元、美元 |
-| 象牙海岸                       | CI        | 美元          | XOF、歐元、美元 |
-| 克羅埃西亞                             | HR        | 歐元          | HRK、歐元、美元 |
+| 象牙海岸                       | CI        | 美元          | EUR、USD、XOF |
+| 克羅埃西亞                             | HR        | 歐元          | 歐元、HRK、美元 |
 | 古拉果                             | CW        | 美元          | ANG，EUR，美元 |
 | 賽浦路斯                              | CY        | 歐元          | 歐元，美元  |
-| 捷克                             | CZ        | 歐元          | EUR、USD、CZK |
+| 捷克                             | CZ        | 歐元          | CZK、歐元、美元 |
 | 丹麥                             | DK        | 丹麥幣          | 丹麥幣、歐元、美元 |
 | 多明尼加共和國                  | DO        | 美元          | DOP、歐元、美元 |
 | 厄瓜多                             | EC        | 美元          | 歐元，美元 |
-| 埃及                               | EG        | 美元          | 歐元，美元 EGP |
+| 埃及                               | EG        | 美元          | EGP、歐元、美元 |
 | 薩爾瓦多                         | SV        | 美元          | 歐元，美元 |
 | 愛沙尼亞                             | EE        | 歐元          | 歐元，美元 |
 | 衣索比亞                            | ET        | 美元          | ETB、歐元、美元 |
@@ -91,7 +91,7 @@ ms.locfileid: "96778065"
 | 肯亞                               | KE        | 美元          | 歐元、KES、美元 |
 | 南韓                       | KR        | 韓元          | 歐元、KRW、美元 |
 | 科威特                              | KW        | 美元          | 歐元、KWD、美元 |
-| 吉爾吉斯                          | KG        | 美元          | 美元、歐元、公斤 |
+| 吉爾吉斯                          | KG        | 美元          | 歐元、公斤、美元 |
 | 拉脫維亞                              | LV        | 歐元          | 歐元，美元 |
 | 黎巴嫩                             | LB        | 美元          | 歐元、LBP、美元 |
 | 利比亞                               | LY        | 美元          | 歐元、LYD、美元 |
@@ -139,8 +139,8 @@ ms.locfileid: "96778065"
 | 斯洛維尼亞                            | SI        | 歐元          | 歐元，美元 |
 | 南非                        | ZA        | 美元          | EUR、USD、餘額 |
 | 西班牙                               | ES        | 歐元          | 歐元，美元 |
-| 斯里蘭卡                           | LK        | 美元          | EUR、USD、LKR |
-| 瑞典                              | SE        | 瑞典克朗          | EUR、USD、克朗 |
+| 斯里蘭卡                           | LK        | 美元          | 歐元、LKR、美元 |
+| 瑞典                              | SE        | 瑞典克朗          | 歐元、克朗、美元  |
 | 瑞士                         | CH        | 瑞士法郎          | CHF、歐元、美元 |
 | 台灣                              | TW        | 新台幣          | 歐元、新臺幣、美元 |
 | 塔吉克                          | TJ        | 美元          | 歐元、TJS、美元 |
@@ -151,7 +151,7 @@ ms.locfileid: "96778065"
 | 土耳其                              | TR        | 美元          | EUR、TRY、美元 |
 | 土庫曼                        | TM        | 美元          | 歐元、TMT、美元 |
 | 烏干達                              | UG        | 美元          | 歐元、UGX、美元 |
-| 烏克蘭                             | UA        | 美元          | EUR、UAH、難處在於、美元 |
+| 烏克蘭                             | UA        | 美元          | EUR、難處在於、UAH、美元 |
 | 阿拉伯聯合大公國                | AE        | 美元          | AED、歐元、美元 |
 | United Kingdom                      | GB        | 英鎊          | 歐元、GBP、美元 |
 | 美國                       | US        | 美元          | 歐元，美元 |

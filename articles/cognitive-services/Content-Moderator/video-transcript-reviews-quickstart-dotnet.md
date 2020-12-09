@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e3f7b877818056fc73f10d54b94a6b6c26c605e8
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 326fc2cc162a2ab54b40888250fbeef55ad8800a
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911268"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853453"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>使用 .NET 來建立影片文字記錄審核項目
 
@@ -26,7 +26,7 @@ ms.locfileid: "92911268"
 - 將仲裁過的文字記錄新增至審核項目
 - 發佈審核項目
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - 如果您尚未這麼做，請在內容仲裁者 [審核工具](https://contentmoderator.cognitive.microsoft.com/) 網站上登入或建立帳戶。
 - 本文假設您已[仲裁影片](video-moderation-api.md)，並已在審核工具中[建立影片審核項目](video-reviews-quickstart-dotnet.md)以供進行人工決策。 您現在想要在審核工具中新增仲裁過的影片文字記錄。
@@ -49,9 +49,9 @@ ms.locfileid: "92911268"
 
 ## <a name="create-your-visual-studio-project"></a>建立 Visual Studio 專案
 
-1. 將一個新的 [主控台應用程式 (.NET Framework)]  專案新增到您的解決方案。
+1. 將一個新的 [主控台應用程式 (.NET Framework)] 專案新增到您的解決方案。
 
-1. 將專案命名為 **VideoTranscriptReviews** 。
+1. 將專案命名為 **VideoTranscriptReviews**。
 
 1. 選取此專案作為解決方案的單一啟始專案。
 
@@ -81,7 +81,7 @@ using Newtonsoft.Json;
 
 ### <a name="add-private-properties"></a>新增私有屬性
 
-將下列私用屬性新增至命名空間 **videotranscriptreviews、program** 類別 **程式** 。 `AzureEndpoint` `CMSubscriptionKey` 使用您的端點 URL 和訂用帳戶金鑰的值來更新和欄位。 您可以在 Azure 入口網站中資源的 [ **快速入門** ] 索引標籤中找到這些選項。
+將下列私用屬性新增至命名空間 **videotranscriptreviews、program** 類別 **程式**。 `AzureEndpoint` `CMSubscriptionKey` 使用您的端點 URL 和訂用帳戶金鑰的值來更新和欄位。 您可以在 Azure 入口網站中資源的 [ **快速入門** ] 索引標籤中找到這些選項。
 
 ```csharp
 namespace VideoReviews
@@ -148,9 +148,9 @@ public static ContentModeratorClient NewClient()
 1. 一個 **IList\<CreateVideoReviewsBodyItem>** 物件。 每個 **CreateVideoReviewsBodyItem** 物件皆代表一個影片審核項目。 這個快速入門會一次建立一個審核項目。
 
 **CreateVideoReviewsBodyItem** 具有數個屬性。 您必須至少設定下列屬性：
-- **內容** 。 要審核的影片 URL。
-- **ContentId** 。 要指派給影片審核項目的識別碼。
-- **狀態** 。 請將值設定為 "Unpublished"。 如果您未設定此屬性，則會預設為 "Pending"，意謂著已發佈影片審核項目而正等待人工審核。 發佈影片審核項目之後，您就無法再將影片畫面、文字記錄或文字記錄仲裁結果新增至該審核項目。
+- **內容**。 要審核的影片 URL。
+- **ContentId**。 要指派給影片審核項目的識別碼。
+- **狀態**。 請將值設定為 "Unpublished"。 如果您未設定此屬性，則會預設為 "Pending"，意謂著已發佈影片審核項目而正等待人工審核。 發佈影片審核項目之後，您就無法再將影片畫面、文字記錄或文字記錄仲裁結果新增至該審核項目。
 
 > [!NOTE]
 > **CreateVideoReviews** 會傳回 IList\<string>。 這些字串中每個都包含影片審核項目的識別碼。 這些識別碼是 GUID 且與 **ContentId** 屬性的值不同。
@@ -236,14 +236,14 @@ static void AddTranscript(ContentModeratorClient client, string review_id, strin
 1. 您的 Content Moderator 小組名稱。
 1. **CreateVideoReviews** 所傳回的影片審核項目識別碼。
 1. 一個 IList\<TranscriptModerationBodyItem>。 **TranscriptModerationBodyItem** 具有下列屬性：
-1. **條款** 。 一個 IList\<TranscriptModerationBodyItemTermsItem>。 **TranscriptModerationBodyItemTermsItem** 具有下列屬性：
-1. **索引** 。 字詞的從零開始索引。
-1. **詞彙** 。 一個包含字詞的字串。
-1. **時間戳記** 。 一個包含在文字記錄中找到字詞之時間 (以秒為單位) 的字串。
+1. **條款**。 一個 IList\<TranscriptModerationBodyItemTermsItem>。 **TranscriptModerationBodyItemTermsItem** 具有下列屬性：
+1. **索引**。 字詞的從零開始索引。
+1. **詞彙**。 一個包含字詞的字串。
+1. **時間戳記**。 一個包含在文字記錄中找到字詞之時間 (以秒為單位) 的字串。
 
 文字記錄的格式必須是 WebVTT。 如需詳細資訊，請參閱 [WebVTT：網路影片文字播放軌格式](https://www.w3.org/TR/webvtt1/) \(英文\)。
 
-將下列方法定義新增至 VideoTranscriptReviews 命名空間、Program 類別。 此方法會將文字記錄提交給 **ContentModeratorClient.TextModeration.ScreenText** 方法。 此外，也會將會將結果轉譯成 IList\<TranscriptModerationBodyItem>，然後提交給 **AddVideoTranscriptModerationResult** 。
+將下列方法定義新增至 VideoTranscriptReviews 命名空間、Program 類別。 此方法會將文字記錄提交給 **ContentModeratorClient.TextModeration.ScreenText** 方法。 此外，也會將會將結果轉譯成 IList\<TranscriptModerationBodyItem>，然後提交給 **AddVideoTranscriptModerationResult**。
 
 ```csharp
 /// <summary>
@@ -367,7 +367,7 @@ Press any key to close the application.
 
 ## <a name="navigate-to-your-video-transcript-review"></a>瀏覽至您的影片文字記錄審核項目
 
-在 [ **審核** > **影片** 文字 > **記錄** ] 畫面上，移至內容仲裁審核工具中的影片文字記錄。
+在 [**審核** > **影片** 文字 > **記錄**] 畫面上，移至內容仲裁審核工具中的影片文字記錄。
 
 您會看到下列功能：
 - 您新增的兩行文字記錄
@@ -376,10 +376,8 @@ Press any key to close the application.
 
 ![給人工仲裁者的影片文字記錄審核項目](images/ams-video-transcript-review.PNG)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 針對這個及其他適用於 .NET 的 Content Moderator 快速入門取得 [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 和 [Visual Studio 解決方案](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)。
 
 了解如何在審核工具中產生[影片審核項目](video-reviews-quickstart-dotnet.md)。
-
-查看有關如何開發[完整影片審查解決方案](video-transcript-moderation-review-tutorial-dotnet.md)的詳細教學課程。

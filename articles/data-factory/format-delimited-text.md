@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/29/2020
+ms.date: 12/07/2020
 ms.author: jingwang
-ms.openlocfilehash: bb284db102ea2fcb9086f65f9d19bdfee2c2936c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 0fa68a8dbdcb1f2c0cc4af1b4df751fd81c0de14
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348881"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854626"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Azure Data Factory 中的分隔文字格式
 
@@ -28,7 +28,7 @@ ms.locfileid: "96348881"
 
 如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供分隔的文字資料集所支援的屬性清單。
 
-| 屬性         | 說明                                                  | 必要 |
+| 屬性         | 描述                                                  | 必要 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 資料集的 type 屬性必須設為 **DelimitedText**。 | 是      |
 | location         | 檔案 (s) 的位置設定。 每個以檔案為基礎的連接器都有自己的位置類型和支援的屬性 `location` 。  | 是      |
@@ -78,7 +78,7 @@ ms.locfileid: "96348881"
 
 複製活動 **_ \_ 來源 \**** 區段支援下列屬性。
 
-| 屬性       | 說明                                                  | 必要 |
+| 屬性       | 描述                                                  | 必要 |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | 複製活動來源的 type 屬性必須設為 **DelimitedTextSource**。 | 是      |
 | formatSettings | 屬性的群組。 請參閱下方的 **分隔文字讀取設定** 表格。 |  否       |
@@ -86,7 +86,7 @@ ms.locfileid: "96348881"
 
 支援的 **分隔文字讀取設定** `formatSettings` 如下：
 
-| 屬性      | 說明                                                  | 必要 |
+| 屬性      | 描述                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | FormatSettings 的類型必須設定為 **DelimitedTextReadSettings**。 | 是      |
 | skipLineCount | 指出從輸入檔讀取資料時，要略過的 **非空白** 資料列數。 <br>如果同時指定 skipLineCount 和 firstRowAsHeader，則會先略過行，然後從輸入檔讀取標頭資訊。 | 否       |
@@ -126,7 +126,7 @@ ms.locfileid: "96348881"
 
 複製活動 **_ \_ 接收 \**** 區段支援下列屬性。
 
-| 屬性       | 說明                                                  | 必要 |
+| 屬性       | 描述                                                  | 必要 |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | 複製活動來源的 type 屬性必須設為 **DelimitedTextSink**。 | 是      |
 | formatSettings | 屬性的群組。 請參閱下面的 **分隔文字寫入設定** 表格。 |    否      |
@@ -134,7 +134,7 @@ ms.locfileid: "96348881"
 
 以下是支援的 **分隔文字寫入設定** `formatSettings` ：
 
-| 屬性      | 說明                                                  | 必要                                              |
+| 屬性      | 描述                                                  | 必要                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | FormatSettings 的類型必須設定為 **DelimitedTextWriteSettings**。 | 是                                                   |
 | fileExtension | 用來命名輸出檔的副檔名，例如， `.csv` `.txt` 。 當在 `fileName` Output DelimitedText 資料集中未指定時，必須指定此資料集。 在輸出資料集中設定檔案名時，將會使用此名稱做為接收檔案名，而且會忽略副檔名設定。  | 如果未在輸出資料集中指定檔案名，則為 Yes |
@@ -149,13 +149,13 @@ ms.locfileid: "96348881"
 
 下表列出分隔文字來源所支援的屬性。 您可以在 [ **來源選項** ] 索引標籤中編輯這些屬性。
 
-| 名稱 | 說明 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 萬用字元路徑 | 將會處理所有符合萬用字元路徑的檔案。 覆寫資料集中設定的資料夾和檔案路徑。 | 否 | String[] | wildcardPaths |
-| 分割區根路徑 | 針對已分割的檔案資料，您可以輸入磁碟分割根路徑，以便將分割的資料夾讀取為數據行 | 否 | String | partitionRootPath |
+| 分割區根路徑 | 針對已分割的檔案資料，您可以輸入磁碟分割根路徑，以便將分割的資料夾讀取為數據行 | 否 | 字串 | partitionRootPath |
 | 檔案清單 | 您的來源是否指向列出要處理之檔案的文字檔 | 否 | `true` 或 `false` | fileList |
 | 多行資料列 | 來源檔案是否包含跨多行的資料列。 多行值必須以引號括住。 | 否 `true` 或 `false` | multiLineRow |
-| 儲存檔案名稱的資料行 | 使用來原始檔案名和路徑建立新的資料行 | 否 | String | rowUrlColumn |
+| 儲存檔案名稱的資料行 | 使用來原始檔案名和路徑建立新的資料行 | 否 | 字串 | rowUrlColumn |
 | 完成後 | 在處理之後刪除或移動檔案。 從容器根目錄開始的檔案路徑 | 否 | Delete： `true` 或 `false` <br> 移動： `['<from>', '<to>']` | purgeFiles <br> moveFiles |
 | 依上次修改篩選 | 選擇根據上次修改檔案的時間進行篩選 | 否 | 時間戳記 | modifiedAfter <br> modifiedBefore |
 | 不允許找到任何檔案 | 若為 true，如果找不到任何檔案，就不會擲回錯誤 | 否 | `true` 或 `false` | ignoreNoFilesFound |
@@ -176,11 +176,14 @@ source(
     wildcardPaths:['*.csv']) ~> CSVSource
 ```
 
+> [!NOTE]
+> 資料流程來源支援 Hadoop 檔案系統支援的一組有限的 Linux 萬用字元
+
 ### <a name="sink-properties"></a>接收屬性
 
 下表列出分隔的文字接收所支援的屬性。 您可以在 [ **設定** ] 索引標籤中編輯這些屬性。
 
-| 名稱 | 說明 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 清除資料夾 | 如果在寫入之前清除目的資料夾 | 否 | `true` 或 `false` | truncate |
 | [檔案名] 選項 | 寫入之資料的命名格式。 依預設，每個資料分割的一個檔案格式為 `part-#####-tid-<guid>` | 否 | 模式：字串 <br> 每個分割區：字串 [] <br> 做為資料行中的資料：字串 <br> 輸出至單一檔案： `['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |

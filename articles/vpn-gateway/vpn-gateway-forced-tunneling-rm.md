@@ -1,49 +1,39 @@
 ---
 title: 設定站對站連線的強制通道
-description: 如何重新導向或「強制」所有網際網路繫結流量回到內部部署位置。
+description: 如何重新導向 (強制) 所有網際網路系結的流量回到您的內部部署位置。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 12/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 00f98a5086b9a9bf21054138cf01d26a550338da
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c12297019b49d7b3cb644ae9c7a904e4ca697f0b
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92673839"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855034"
 ---
-# <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>使用 Azure Resource Manager 部署模型設定強制通道
+# <a name="configure-forced-tunneling"></a>設定強制通道
 
-強制通道可讓您透過站對站 VPN 通道，重新導向或「強制」所有網際網路繫結流量傳回內部部署位置，以便進行檢查和稽核。 這是多數企業 IT 原則的重要安全性需求。 若不使用強制通道處理，則來自您 Azure 中 VM 的網際網路繫結流量一律會從 Azure 網路基礎結構直接向外周遊到網際網路，而您無法選擇檢查或稽核流量。 未經授權的網際網路存取可能會導致資訊洩漏或其他類型的安全性漏洞。
+強制通道可讓您透過站對站 VPN 通道，重新導向或「強制」所有網際網路繫結流量傳回內部部署位置，以便進行檢查和稽核。 這是多數企業 IT 原則的重要安全性需求。 如果您未設定強制通道，則 Azure 中來自 Vm 的網際網路系結流量一律會直接從 Azure 網路基礎結構流向網際網路，而不會有可讓您檢查或審核流量的選項。 未經授權的網際網路存取可能會導致資訊洩漏或其他類型的安全性漏洞。
 
-
-
-[!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)] 
-
-本文會引導您為使用 Resource Manager 部署模型建立的虛擬網路設定強制通道。 強制通道可使用 PowerShell 設定，而非透過入口網站。 如果想要設定傳統部署模型的強制通道，請從下列下拉式清單選取傳統文章：
-
-> [!div class="op_single_selector"]
-> * [PowerShell - 傳統](vpn-gateway-about-forced-tunneling.md)
-> * [PowerShell - Resource Manager](vpn-gateway-forced-tunneling-rm.md)
-> 
-> 
+您可以使用 Azure PowerShell 來設定強制通道。 無法使用 Azure 入口網站進行設定。 本文可協助您設定使用 Resource Manager 部署模型所建立之虛擬網路的強制通道。 如果您想要設定傳統部署模型的強制通道，請參閱 [強制通道-傳統](vpn-gateway-about-forced-tunneling.md)。
 
 ## <a name="about-forced-tunneling"></a>有關強制通道
 
-下圖說明如何使強制通道正常運作。 
+下圖說明如何使強制通道正常運作。
 
-![強制通道](./media/vpn-gateway-forced-tunneling-rm/forced-tunnel.png)
+:::image type="content" source="./media/vpn-gateway-forced-tunneling-rm/forced-tunnel.png" alt-text="圖表顯示強制通道。":::
 
-在上述範例中，前端子網路不會使用強制通道。 前端子網路中的工作負載可以直接從網際網路繼續接受並回應客戶要求。 中間層和後端的子網路會使用強制通道。 任何從這兩個子網路到網際網路的輸出連接會強制或重新導向回 S2S VPN 通道的其中一個內部部署網站。
+在此範例中，前端子網不會強制通道。 前端子網路中的工作負載可以直接從網際網路繼續接受並回應客戶要求。 中間層和後端的子網路會使用強制通道。 從這兩個子網到網際網路的任何輸出連線，都會透過其中一個站對站 (S2S) VPN 通道，強制或重新導向回內部部署網站。
 
 這可讓您在 Azure 中限制並檢查來自虛擬機器或雲端服務的網際網路存取，同時繼續啟用您所需的多層式服務架構。 如果虛擬網路中沒有任何網際網路對向工作負載，您也可以將強制通道處理套用至整個虛擬網路。
 
 ## <a name="requirements-and-considerations"></a>需求和考量
 
-Azure 中的強制通道處理會透過虛擬網路使用者定義的路由進行設定。 將流量重新導向至在內部部署網站時，會表示為至 Azure VPN 閘道的「預設路由」。 如需有關使用者定義路由和虛擬網路的詳細資訊，請參閱[使用者定義路由和 IP 轉送](../virtual-network/virtual-networks-udr-overview.md)。
+Azure 中的強制通道是使用虛擬網路自訂使用者定義的路由進行設定。 將流量重新導向至在內部部署網站時，會表示為至 Azure VPN 閘道的「預設路由」。 如需使用者定義路由和虛擬網路的詳細資訊，請參閱 [自訂使用者定義的路由](../virtual-network/virtual-networks-udr-overview.md#user-defined)。
 
 * 每個虛擬網路的子網路皆有內建的系統路由表。 系統路由表具有下列 3 個路由群組：
   
@@ -70,9 +60,9 @@ Azure 中的強制通道處理會透過虛擬網路使用者定義的路由進�
 >
 >
 
-### <a name="to-log-in"></a>登入
+### <a name="to-sign-in"></a>登入
 
-[!INCLUDE [To log in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
+[!INCLUDE [Sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
 ## <a name="configure-forced-tunneling"></a>設定強制通道
 

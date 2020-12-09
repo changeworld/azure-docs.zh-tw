@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: b-juche
-ms.openlocfilehash: 06885e3f6a1ceeebc7c0bb1053e36e9e95a0043e
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: ee5e1230acd059d69648144b84a8fbfa652ef6e7
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888771"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854048"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>建立適用于 Azure NetApp Files 的雙重通訊協定 (NFSv3 和 SMB) 磁片區
 
-Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMBv3 或雙協定來建立磁片區。 本文說明如何建立使用 NFSv3 和 SMB 雙重通訊協定的磁片區，並提供 LDAP 使用者對應的支援。  
+Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMB3 或雙協定來建立磁片區。 本文說明如何建立使用 NFSv3 和 SMB 雙重通訊協定的磁片區，並提供 LDAP 使用者對應的支援。  
 
 
 ## <a name="before-you-begin"></a>開始之前 

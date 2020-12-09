@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: devx-track-csharp
 ms.reviewer: sdash
-ms.openlocfilehash: 642a382f2ec5da7821c9d709bd27d592ced31c8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3383b4a3c2eab1f62d180c31e278f07b92c649c5
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90974029"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853510"
 ---
 # <a name="application-map-triage-distributed-applications"></a>應用程式對應：對分散式應用程式進行分級
 
@@ -44,7 +44,7 @@ ms.locfileid: "90974029"
 
 ### <a name="investigate-failures"></a>調查失敗
 
-選取 [調查失敗]**** 以啟動 [失敗] 窗格。
+選取 [調查失敗] 以啟動 [失敗] 窗格。
 
 ![調查失敗按鈕的螢幕擷取畫面](media/app-map/investigate-failures.png)
 
@@ -68,7 +68,7 @@ ms.locfileid: "90974029"
 
 ### <a name="view-logs-analytics"></a>查看記錄 (分析) 
 
-若要進一步查詢及調查應用程式資料，請按一下 [ **記錄 (分析]) 中的 [view **]。
+若要進一步查詢及調查應用程式資料，請按一下 [ **記錄 (分析]) 中的 [view**]。
 
 ![在 Analytics 中檢視按鈕的螢幕擷取畫面](media/app-map/view-logs.png)
 
@@ -76,7 +76,7 @@ ms.locfileid: "90974029"
 
 ### <a name="alerts"></a>警示
 
-若要檢視作用中警示和導致警示觸發的基礎規則，請選取 [警示]****。
+若要檢視作用中警示和導致警示觸發的基礎規則，請選取 [警示]。
 
 ![警示按鈕的螢幕擷取畫面](media/app-map/alerts.png)
 
@@ -165,10 +165,8 @@ ASP.NET Web 應用程式的替代方法是在程式碼中具現化初始化運�
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "roleName": "my cloud role name"
-    }
+  "role": {
+    "name": "my cloud role name"
   }
 }
 ```
@@ -249,7 +247,7 @@ appInsights.addTelemetryInitializer((envelope) => {
     715: string      CloudRoleInstance = "ai.cloud.roleInstance";
 ```
 
-或者，當**雲端角色名稱**指出您的 web 前端某處有問題時，**雲端角色實例**可能很有説明，但您可能會在多個負載平衡的伺服器上執行 web 前端，以便能夠透過 Kusto 查詢更深入地深入探索，以及瞭解問題是否影響到所有 web 前端伺服器/實例，或只是一個非常重要。
+或者，當 **雲端角色名稱** 指出您的 web 前端某處有問題時，**雲端角色實例** 可能很有説明，但您可能會在多個負載平衡的伺服器上執行 web 前端，以便能夠透過 Kusto 查詢更深入地深入探索，以及瞭解問題是否影響到所有 web 前端伺服器/實例，或只是一個非常重要。
 
 如果您的應用程式是在容器化的環境中執行，而您想要覆寫雲端角色實例的值，您可能會想要覆寫雲端角色實例的值，其中只知道個別伺服器的資訊可能不足以找出指定的問題。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 4dc5b84ff127aef173deecfd2be705004d92ee0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7df04bd75f3fd11b1caa702655cbd204fc2b4fda
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449929"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854795"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure 監視器中的 Azure 網路監視解決方案
 
@@ -37,17 +37,23 @@ Azure 監視器提供下列解決方案來監視網路：
 
 如需詳細資訊，請參閱[網路效能監視器](../../networking/network-monitoring-overview.md)。
 
-## <a name="azure-application-gateway-and-network-security-group-analytics"></a>Azure 應用程式閘道和網路安全性群組分析
-若要使用解決方案：
+## <a name="network-security-group-analytics"></a>網路安全性群組分析
+
 1. 將管理解決方案新增至 Azure 監視器，以及
 2. 啟用診斷功能以將診斷導向至 Azure 監視器中的 Log Analytics 工作區。 不需要將記錄寫入 Azure Blob 儲存體。
 
-您可以針對應用程式閘道和網路安全性群組其中之一 (或兩者) 啟用診斷與對應的解決方案。
+如果未啟用診斷記錄，該資源的儀表板 blade 會是空白，並顯示錯誤訊息。
 
-如果沒有針對特定資源類型啟用診斷資源記錄，但安裝了解決方案，則該資源的儀表板刀鋒視窗會是空白，並顯示一則錯誤訊息。
+## <a name="azure-application-gateway-analytics"></a>Azure 應用程式閘道分析
+
+1. 啟用診斷功能以將診斷導向至 Azure 監視器中的 Log Analytics 工作區。
+2. 使用應用程式閘道的活頁簿範本，取用資源的詳細摘要。
+
+如果未啟用應用程式閘道的診斷記錄，則只會在活頁簿內填入預設的度量資料。
+
 
 > [!NOTE]
-> 從 2017 年 1 月開始，從應用程式閘道和網路安全性群組傳送記錄到 Log Analytics 工作區的支援方式已變更。 如果您看到 **Azure 網路分析 (已過時)** 解決方案，請參閱[從舊的網路分析解決方案進行移轉](#migrating-from-the-old-networking-analytics-solution)，以取得您必須遵循的步驟。
+> 從 2017 年 1 月開始，從應用程式閘道和網路安全性群組傳送記錄到 Log Analytics 工作區的支援方式已變更。 如果您看到 **Azure 網路分析 (已過時)** 解決方案，請參閱 [從舊的網路分析解決方案進行移轉](#migrating-from-the-old-networking-analytics-solution)，以取得您必須遵循的步驟。
 >
 >
 
@@ -61,37 +67,15 @@ Azure 應用程式閘道分析和網路安全性群組分析管理解決方案�
 | Azure |  |  |&#8226; |  |  |登入時 |
 
 
-## <a name="azure-application-gateway-analytics-solution-in-azure-monitor"></a>Azure 監視器中的 Azure 應用程式閘道分析解決方案
-
-![Azure 應用程式閘道分析符號](media/azure-networking-analytics/azure-analytics-symbol.png)
-
-應用程式閘道支援下列記錄︰
-
-* ApplicationGatewayAccessLog
-* ApplicationGatewayPerformanceLog
-* ApplicationGatewayFirewallLog
-
-應用程式閘道支援下列計量︰again
-
-
-* 5 分鐘輸送量
-
-### <a name="install-and-configure-the-solution"></a>安裝和設定解決方案
-使用下列指示來安裝和設定 Azure 應用程式閘道分析解決方案：
-
-1. 從 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) 或使用[從方案庫新增 Azure 監視器解決方案](./solutions.md)中所述的程序，以啟用 Azure 應用程式閘道分析解決方案。
-2. 針對您想要監視的[應用程式閘道](../../application-gateway/application-gateway-diagnostics.md)啟用診斷記錄。
-
-#### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>在入口網站中啟用 Azure 應用程式閘道診斷
+### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>在入口網站中啟用 Azure 應用程式閘道診斷
 
 1. 在 Azure 入口網站中，巡覽至要監視的應用程式閘道資源。
-2. 選取 [診斷記錄] 以開啟下列頁面。
+2. 選取 [ *診斷設定* ] 以開啟下列頁面。
 
-   ![應用程式閘道資源 [診斷記錄] 頁面的螢幕擷取畫面，其中顯示開啟診斷的選項。](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
-3. 按一下 [開啟診斷] 以開啟下列頁面。
+   ![應用程式閘道資源之診斷設定設定的螢幕擷取畫面。](media/azure-networking-analytics/diagnostic-settings-1.png)
 
-   ![設定診斷設定頁面的螢幕擷取畫面。 [傳送至 Log Analytics] 的選項已選取為三種記錄類型和度量。](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
-4. 若要開啟診斷，請按一下 [狀態] 下的 [開啟]。
+   [![設定診斷設定頁面的螢幕擷取畫面。](media/azure-networking-analytics/diagnostic-settings-2.png)](media/azure-networking-analytics/application-gateway-diagnostics-2.png#lightbox)
+
 5. 按一下 [傳送到 Log Analytics] 核取方塊。
 6. 選取現有的 Log Analytics 工作區，或建立工作區。
 7. 針對每一個要收集的記錄類型，按一下 [記錄] 下的核取方塊。
@@ -109,28 +93,33 @@ $gateway = Get-AzApplicationGateway -Name 'ContosoGateway'
 Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspaceId -Enabled $true
 ```
 
-### <a name="use-azure-application-gateway-analytics"></a>使用 Azure 應用程式閘道分析
-![Azure 應用程式閘道分析圖格的影像](media/azure-networking-analytics/log-analytics-appgateway-tile.png)
+#### <a name="accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights"></a>透過 Azure 監視器 Network insights 存取 Azure 應用程式閘道分析
 
-在您按一下 [概觀] 上的 [Azure 應用程式閘道分析] 圖格之後，您可以檢視記錄摘要，然後深入探索下列類別的詳細資訊：
+您可以透過應用程式閘道資源中的 [見解] 索引標籤來存取 application insights。
 
-* 應用程式閘道存取記錄
-  * 應用程式閘道存取記錄的用戶端和伺服器錯誤
-  * 每個應用程式閘道的每小時要求數
-  * 每個應用程式閘道的每小時失敗要求數
-  * 應用程式閘道依使用者代理程式分類的錯誤
-* 應用程式閘道效能
-  * 應用程式閘道的主機健康狀態
-  * 應用程式閘道失敗要求的最大和第 95 個百分位數
+![應用程式閘道見解的螢幕擷取畫面 ](media/azure-networking-analytics/azure-appgw-insights.png
+)
 
-![[應用程式閘道存取記錄] 儀表板的螢幕擷取畫面，其中顯示具有閘道錯誤、要求和失敗要求資料的磚。](media/azure-networking-analytics/log-analytics-appgateway01.png)
+[View 詳細計量] 索引標籤會開啟預先填入的活頁簿，摘要列出來自您應用程式閘道的資料。
 
-![[應用程式閘道存取記錄] 儀表板的螢幕擷取畫面，其中顯示依使用者代理程式、主機健全狀況和失敗的要求而出現錯誤資料的磚。](media/azure-networking-analytics/log-analytics-appgateway02.png)
+[![應用程式閘道活頁簿的螢幕擷取畫面](media/azure-networking-analytics/azure-appgw-workbook.png)](media/azure-networking-analytics/application-gateway-workbook.png#lightbox)
 
-在 [Azure 應用程式閘道分析] 儀表板上，檢閱其中一個刀鋒視窗中的摘要資訊，然後按一下其中一個以在記錄搜尋頁面中檢視詳細資訊。
+## <a name="migrating-from-azure-gateway-analytics-solution-to-azure-monitor-workbooks"></a>從 Azure 閘道分析解決方案遷移至 Azure 監視器活頁簿
 
-您可以在任何 [記錄搜尋] 頁面上，按時間、詳細結果和您的記錄搜尋記錄來檢視結果。 您也可以按 Facet 篩選以縮減結果。
+> [!NOTE]
+> Azure 應用程式閘道分析解決方案已過期，而取用分析的建議方式是透過應用程式閘道資源 Azure 監視器網路深入解析所公開的活頁簿。
 
+* 如果已啟用診斷設定，以將記錄儲存到 Log Analytics 工作區，Azure 監視器 Network insights 活頁簿可以使用相同位置的資料。 不需要新的設定。
+
+* 已啟用從點診斷設定開始，活頁簿中所有過去的資料都已可供使用。 不需要進行資料傳輸。
+
+* 切換至活頁簿時，不需要使用任何活動切換。 分析解決方案和網路深入解析活頁簿都可以平行運作。
+
+* Azure 監視器活頁簿沒有相關聯的額外成本。 Log Analytics 工作區將繼續依使用量計費。
+
+* 若要從您的工作區清除 Azure 閘道分析解決方案，您可以從解決方案資源頁面刪除解決方案。
+
+[![Azure 應用程式閘道分析解決方案的 [刪除] 選項的螢幕擷取畫面。](media/azure-networking-analytics/azure-appgw-analytics-delete.png)](media/azure-networking-analytics/application-gateway-analytics-delete.png#lightbox)
 
 ## <a name="azure-network-security-group-analytics-solution-in-azure-monitor"></a>Azure 監視器中的 Azure 網路安全性群組分析解決方案
 

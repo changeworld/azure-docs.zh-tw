@@ -1,6 +1,6 @@
 ---
 title: 建立適用於 Azure NetApp Files 的 SMB | Microsoft Docs
-description: 本文說明如何在 Azure NetApp Files 中建立 SMBv3 磁片區。 瞭解 Active Directory 連接和網域服務的需求。
+description: 本文說明如何在 Azure NetApp Files 中建立 SMB3 磁片區。 瞭解 Active Directory 連接和網域服務的需求。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: b-juche
-ms.openlocfilehash: 682a97738e94c2a8188b4976a229d6a850a5b6ac
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: cd2a293ebcc35d4884211f50783738a502dcc7de
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511996"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854820"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>建立適用於 Azure NetApp Files 的 SMB 磁碟區
 
-Azure NetApp Files 支援使用 NFS 建立磁片區 (NFSv3 和 Nfsv4.1 4.1) 、SMBv3 或雙重通訊協定 (NFSv3 和 SMB) 。 磁碟區的容量耗用量是根據其集區的佈建容量進行計算。 本文說明如何建立 SMBv3 磁碟區。
+Azure NetApp Files 支援使用 NFS 建立磁片區 (NFSv3 和 Nfsv4.1 4.1) 、SMB3 或雙重通訊協定 (NFSv3 和 SMB) 。 磁碟區的容量耗用量是根據其集區的佈建容量進行計算。 本文說明如何建立 SMB3 磁片區。
 
 ## <a name="before-you-begin"></a>開始之前 
 您必須已經設定容量集區。   

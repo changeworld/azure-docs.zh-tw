@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 268862d6e868342a252ca9d5eb08b9753142e8b1
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 99246ecee27f7ded693e2a797f8e98480e350983
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750741"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854524"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure 春季雲端常見問題
 
@@ -37,7 +37,7 @@ Azure 春季 Cloud 藉由整合 Azure 監視器、Application Insights 和 Log A
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>哪些區域可以使用 Azure 春季 Cloud？
 
-美國東部、美國東部2、美國中部、美國中南部、美國西部2、西歐、歐洲北部、英國南部、東南亞及澳大利亞東部。
+美國東部、美國東部2、美國中部、美國中南部、美國中北部、美國西部、美國西部2、西歐、北歐、英國南部、東南亞、澳大利亞東部、加拿大中部和阿拉伯聯合大公國北部。
 
 ### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>是否有任何客戶資料儲存在指定的區域之外？
 

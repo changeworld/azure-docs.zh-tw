@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 5be6a2d73be35b3d637df9364364784d373dabb3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 08d30fb72398c4b43422eb21f132d5fddd5502b7
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186689"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853133"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure 監視器監視的項目為何？
 本文說明 Azure 監視器監視的不同應用程式和服務。 
@@ -177,7 +177,7 @@ ms.locfileid: "96186689"
 
 | 代理程式 |  計量 | 記錄 |
 |:---|:---|:---|:---|
-| [Azure 監視器代理程式 (預覽) ](platform/azure-monitor-agent-overview.md) | 是 | 是 |
+| [Azure 監視器代理程式 (預覽)](platform/azure-monitor-agent-overview.md) | 是 | 是 |
 | [Log Analytics 代理程式](platform/log-analytics-agent.md) | 否 | 是|
 | [診斷擴充功能](platform/diagnostics-extension-overview.md) | 是 | 否 |
 | [Telegraf 代理程式](platform/collect-custom-metrics-linux-telegraf.md) | 是 | 否 |
@@ -194,7 +194,7 @@ ms.locfileid: "96186689"
 | [Azure 資訊安全中心](../security-center/index.yml) | 收集和分析安全性事件，並執行威脅分析。 請參閱 [Azure 資訊安全中心的資料收集](../security-center/security-center-enable-data-collection.md)。 |
 | [Azure Sentinel](../sentinel/index.yml) | 連線到不同的來源，包括 Office 365 和 Amazon Web Services 雲端軌跡。 請參閱[連線資料來源](../sentinel/connect-data-sources.md)。 |
 | [Microsoft Intune](/intune/) | 建立診斷設定，以將記錄檔傳送至 Azure 監視器。 請參閱[將記錄資料傳送至儲存體、事件中樞或 Intune 中的記錄分析 (預覽)](/intune/fundamentals/review-logs-using-azure-monitor)。  |
-| 網路  | [網路效能監控](insights/network-performance-monitor.md) - 監視服務和應用程式端點的網路連線能力和效能。<br>[Azure 應用程式閘道](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) - 分析來自 Azure 應用程式閘道的記錄和計量。<br>[流量分析](../network-watcher/traffic-analytics.md) - 分析網路監看員網路安全性群組 (NSG) 流量記錄，讓您深入了解 Azure 雲端中的流量。 |
+| 網路  | [網路效能監控](insights/network-performance-monitor.md) - 監視服務和應用程式端點的網路連線能力和效能。<br>[Azure 應用程式閘道](insights/azure-networking-analytics.md#azure-application-gateway-analytics) - 分析來自 Azure 應用程式閘道的記錄和計量。<br>[流量分析](../network-watcher/traffic-analytics.md) - 分析網路監看員網路安全性群組 (NSG) 流量記錄，讓您深入了解 Azure 雲端中的流量。 |
 | [Office 365](insights/solution-office-365.md) | 監視您的 Office 365 環境。 已透過 Azure Sentinel 提供改善上線體驗的更新版本。 |
 | [SQL Analytics](insights/azure-sql.md) | 跨多個訂用帳戶大規模監視 Azure SQL 資料庫和 SQL 受控實例的效能。 |
 | [Surface Hub](insights/surface-hubs.md) | 追蹤 Surface Hub 裝置的健康情況和使用情況。 |

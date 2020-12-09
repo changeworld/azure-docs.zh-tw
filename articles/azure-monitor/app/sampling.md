@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3ec9718d313e7e8d757eb41c230225bdcf9ebd49
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: e9334d222d443679362514481ecd83b90bbda0ac
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96749040"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855068"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights 中的取樣
 
@@ -315,18 +315,12 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 1. 下載 [applicationinsights-agent-3.0.0 >>.0.9.0-preview.nupkg. 5. .jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar)
 
-1. 若要啟用取樣，請將下列內容新增至您的檔案 `ApplicationInsights.json` ：
+1. 若要啟用取樣，請將下列內容新增至您的檔案 `applicationinsights.json` ：
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "sampling": {
-        "fixedRate": {
-          "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
-        }
-      }
-    }
+  "sampling": {
+    "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
   }
 }
 ```
@@ -531,7 +525,7 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
 
 *遙測是否可以進行一次以上的取樣？*
 
-* 不可以。 如果已取樣專案，SamplingTelemetryProcessors 會忽略取樣考慮的專案。 內嵌取樣也是如此，這也不會將取樣套用至已在 SDK 本身取樣的專案。
+* 不會。 如果已取樣專案，SamplingTelemetryProcessors 會忽略取樣考慮的專案。 內嵌取樣也是如此，這也不會將取樣套用至已在 SDK 本身取樣的專案。
 
 *為什麼不取樣簡單的「收集每個遙測類型百分之 X」？*
 
@@ -559,7 +553,7 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
 
 * 如果 SDK 未執行取樣，則擷取取樣會在任何遙測超過特定數量時自動運作。 例如，如果您使用較舊版本的 ASP.NET SDK 或 JAVA SDK，此設定將會運作。
 * 如果您使用目前的 ASP.NET 或 ASP.NET Core Sdk (裝載于 Azure 或您自己的伺服器) 上，則預設會取得適應性取樣，但您可以依照上述步驟切換為固定速率。 使用固定取樣率，瀏覽器 SDK 會自動同步至取樣相關的事件。 
-* 如果您使用目前的 JAVA 代理程式，您可以設定 `ApplicationInsights.json` JAVA SDK 的 (、設定 `ApplicationInsights.xml`) 來開啟固定速率取樣。 根據預設取樣功能為關閉。 使用固定速率取樣時，瀏覽器 SDK 和伺服器會自動同步處理至範例相關事件。
+* 如果您使用目前的 JAVA 代理程式，您可以設定 `applicationinsights.json` JAVA SDK 的 (、設定 `ApplicationInsights.xml`) 來開啟固定速率取樣。 根據預設取樣功能為關閉。 使用固定速率取樣時，瀏覽器 SDK 和伺服器會自動同步處理至範例相關事件。
 
 *我一律想要看見特定罕見的事件。我要如何讓它們通過取樣模組？*
 

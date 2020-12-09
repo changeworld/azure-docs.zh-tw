@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a00dc5beb2bde02f71b40f6eb374502136c37c67
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 141daa485fae5aba2db23647fada30ba5b621cd0
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410482"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854609"
 ---
 # <a name="data-encryption-models"></a>資料加密模型
 
@@ -146,10 +146,10 @@ Azure Key Vault 中使用客戶管理之金鑰的伺服器端加密模型，需�
 | 產品、功能或服務 | 使用服務管理金鑰的伺服器端   | 使用 Customer-Managed 機碼 Server-Side | 使用 Client-Managed 機碼 Client-Side  |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 | **AI 與機器學習**      |                    |                    |                    |
-| Azue 認知搜尋           | 是                | 是                | -                  |
+| Azure 認知搜尋           | 是                | 是                | -                  |
 | Azure 認知服務         | 是                | 是                | -                  |
 | Azure Machine Learning           | 是                | 是                | -                  |
-| Azure Machine Learning Studio (傳統)  | Yes         | 預覽，RSA 2048 位元 | -               |
+| Azure Machine Learning Studio (傳統)  | 是         | 預覽，RSA 2048 位元 | -               |
 | 內容仲裁者                | 是                | 是                | -                  |
 | 臉部                             | 是                | 是                | -                  |
 | Language Understanding           | 是                | 是                | -                  |
@@ -159,12 +159,12 @@ Azure Key Vault 中使用客戶管理之金鑰的伺服器端加密模型，需�
 | 翻譯工具文字                  | 是                | 是                | -                  |
 | Power BI                         | 是                | 是，RSA 4096 位  | -                  |
 | **分析**                    |                    |                    |                    |
-| Azure 串流分析           | Yes                | N/A\*              | -                  |
+| Azure 串流分析           | 是                | 是\*\*            | -                  |
 | 事件中樞                       | 是                | 是                | -                  |
 | 函式                        | 是                | 是                | -                  |
 | Azure Analysis Services          | 是                | -                  | -                  |
-| Azure 資料目錄               | Yes                | -                  | -                  |
-| Azure HDInsight                  | Yes                | 全部                | -                  |
+| Azure 資料目錄               | 是                | -                  | -                  |
+| Azure HDInsight                  | 是                | 全部                | -                  |
 | Azure 監視器 Application Insights | 是                | 是                | -                  |
 | Azure 監視器 Log Analytics      | 是                | 是                | -                  |
 | Azure 資料總管              | 是                | 是                | -                  |
@@ -181,28 +181,28 @@ Azure Key Vault 中使用客戶管理之金鑰的伺服器端加密模型，需�
 | App Service 方案                      | 是                | 是\*\*            | -                  |
 | 自動化                       | 是                | 是\*\*            | -                  |
 | Azure Functions                  | 是                | 是\*\*            | -                  |
-| Azure 入口網站                     | Yes                | 是\*\*            | -                  |
+| Azure 入口網站                     | 是                | 是\*\*            | -                  |
 | Logic Apps                       | 是                | 是                | -                  |
-| Azure 受控應用程式       | Yes                | 是\*\*            | -                  |
+| Azure 受控應用程式       | 是                | 是\*\*            | -                  |
 | 服務匯流排                      | 是                | 是                | -                  |
 | Site Recovery                    | 是                | 是                | -                  |
 | **資料庫**                    |                    |                    |                    |
 | 虛擬機器上的 SQL Server   | 是                | 是                | 是                |
-| Azure SQL Database               | 是                | 是，RSA 3072 位  | Yes                |
-| 適用于適用于 mariadb 的 Azure SQL Database   | Yes                | -                  | -                  |
+| Azure SQL Database               | 是                | 是，RSA 3072 位  | 是                |
+| 適用于適用于 mariadb 的 Azure SQL Database   | 是                | -                  | -                  |
 | 適用于 MySQL 的 Azure SQL Database     | 是                | 是                | -                  |
 | 適用于于 postgresql 的 Azure SQL Database | 是               | 是                | -                  |
 | Azure Synapse Analytics          | 是                | 是，RSA 3072 位  | -                  |
-| SQL Server Stretch Database      | 是                | 是，RSA 3072 位  | Yes                |
+| SQL Server Stretch Database      | 是                | 是，RSA 3072 位  | 是                |
 | 表格儲存體                    | 是                | 是                | 是                |
 | Azure Cosmos DB                  | 是                | 是                | -                  |
 | Azure Databricks                 | 是                | 是                | -                  |
-| Azure 資料庫移轉服務 | Yes                | N/A\*              | -                  |
+| Azure 資料庫移轉服務 | 是                | N/A\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps Services            | 是                | -                  | 是                |
 | Azure Repos                      | 是                | -                  | 是                |
 | **身分識別**                     |                    |                    |                    |
-| Azure Active Directory           | Yes                | -                  | -                  |
+| Azure Active Directory           | 是                | -                  | -                  |
 | Azure Active Directory Domain Services | 是          | 是                | -                  |
 | **整合**                  |                    |                    |                    |
 | 服務匯流排                      | 是                | 是                | 是                |
@@ -212,10 +212,10 @@ Azure Key Vault 中使用客戶管理之金鑰的伺服器端加密模型，需�
 | IoT 中樞                          | 是                | 是                | 是                |
 | IoT 中樞裝置布建      | 是                | 是                | -                  |
 | **管理和治理**    |                    |                    |                    |
-| Azure Site Recovery              | Yes                | -                  | -                  |
+| Azure Site Recovery              | 是                | -                  | -                  |
 | Azure Migrate                    | 是                | 是                | -                  |
 | **媒體**                        |                    |                    |                    |
-| 媒體服務                   | 是                | -                  | 是                |
+| 媒體服務                   | 是                | 是                | 是                |
 | **安全性**                     |                    |                    |                    |
 | IoT 的 Azure 資訊安全中心    | 是                | 是                | -                  |
 | Azure Sentinel                   | 是                | 是                | -                  |
@@ -229,8 +229,8 @@ Azure Key Vault 中使用客戶管理之金鑰的伺服器端加密模型，需�
 | 檔案進階儲存體             | 是                | 是                | -                  |
 | 檔案同步                        | 是                | 是                | -                  |
 | 佇列儲存體                    | 是                | 是                | 是                |
-| Avere vFXT                       | Yes                | -                  | -                  |
-| Azure Cache for Redis            | Yes                | N/A\*              | -                  |
+| Avere vFXT                       | 是                | -                  | -                  |
+| Azure Cache for Redis            | 是                | N/A\*              | -                  |
 | Azure NetApp Files               | 是                | 是                | -                  |
 | 封存儲存體                  | 是                | 是                | -                  |
 | StorSimple                       | 是                | 是                | 是                |

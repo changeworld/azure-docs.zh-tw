@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b2fb06c838de480bb73501307ab11cb3d6831921
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9f80de5a18e27de4a9f8e85613e3c2eee6c111c
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919313"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853470"
 ---
 # <a name="create-video-reviews-using-net"></a>使用 .NET 來建立影片審核項目
 
@@ -28,7 +28,7 @@ ms.locfileid: "88919313"
 - 取得審核項目的狀態和詳細資料
 - 發佈審核項目
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - 在內容仲裁者 [審核工具](https://contentmoderator.cognitive.microsoft.com/) 網站上登入或建立帳戶。
 - 本文假設您已[仲裁影片 (請參閱快速入門)](video-moderation-api.md)，而且具有回應資料。 您需要使用它來為人工仲裁者建立以畫面為基礎的審核項目。
@@ -62,7 +62,7 @@ ms.locfileid: "88919313"
 
 ## <a name="create-your-visual-studio-project"></a>建立 Visual Studio 專案
 
-1. 將一個新的 [主控台應用程式 (.NET Framework)]**** 專案新增到您的解決方案。
+1. 將一個新的 [主控台應用程式 (.NET Framework)] 專案新增到您的解決方案。
 
 1. 將專案命名為 **VideoReviews**。
 
@@ -93,7 +93,7 @@ using Newtonsoft.Json;
 
 ### <a name="add-private-properties"></a>新增私有屬性
 
-將下列私用屬性新增至命名空間 **videoreviews、program**類別 **程式**。 `AzureEndpoint` `CMSubscriptionKey` 使用您的端點 URL 和訂用帳戶金鑰的值來更新和欄位。 您可以在 Azure 入口網站中資源的 [ **快速入門** ] 索引標籤中找到這些選項。
+將下列私用屬性新增至命名空間 **videoreviews、program** 類別 **程式**。 `AzureEndpoint` `CMSubscriptionKey` 使用您的端點 URL 和訂用帳戶金鑰的值來更新和欄位。 您可以在 Azure 入口網站中資源的 [ **快速入門** ] 索引標籤中找到這些選項。
 
 
 ```csharp
@@ -542,14 +542,10 @@ Press any key to close the application.
 
 ## <a name="check-out-your-video-review"></a>查看您的影片審核項目
 
-最後，您會在**審核** > **影片**畫面上的內容仲裁者審核工具帳戶中看到影片評論。
+最後，您會在 **審核** > **影片** 畫面上的內容仲裁者審核工具帳戶中看到影片評論。
 
 ![給人工仲裁者的影片審核項目](images/ams-video-review.PNG)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 針對這個及其他適用於 .NET 的 Content Moderator 快速入門取得 [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 和 [Visual Studio 解決方案](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)。
-
-了解如何將[文字記錄仲裁](video-transcript-moderation-review-tutorial-dotnet.md)新增至影片審核項目。 
-
-查看有關如何開發[完整影片審查解決方案](video-transcript-moderation-review-tutorial-dotnet.md)的詳細教學課程。

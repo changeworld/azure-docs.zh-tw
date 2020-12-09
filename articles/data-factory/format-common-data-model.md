@@ -5,14 +5,14 @@ author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 12/07/2020
 ms.author: makromer
-ms.openlocfilehash: 7fc3a63f841a88451746d088a527a41d756e711f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e3152f1dff4a80ce3ae8bd121215ceb2595b9ee2
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015166"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853999"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure Data Factory 中的 Common Data Model 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -20,9 +20,6 @@ ms.locfileid: "95015166"
 Common Data Model (CDM) 中繼資料系統，可讓您輕鬆地在應用程式和商務程式之間共用資料和其意義。 若要深入瞭解，請參閱 [Common Data Model](/common-data-model/) 總覽。
 
 在 Azure Data Factory 中，使用者可以使用對應資料流程，從儲存在 [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) model.js中的 CDM 實體轉換資料。 您也可以使用 CDM 實體參考，以 CDM 格式接收資料，以將資料以 CSV 或 Parquet 格式傳入資料分割資料夾。 
-
-> [!NOTE]
-> 適用于 ADF 資料流程的 Common Data Model (CDM) 格式連接器目前以公開預覽形式提供。
 
 ## <a name="mapping-data-flow-properties"></a>對應資料流程屬性
 
@@ -35,10 +32,10 @@ Common Data Model 是以 [內嵌資料集](data-flow-source.md#inline-datasets) 
 
 下表列出 CDM 來源所支援的屬性。 您可以在 [ **來源選項** ] 索引標籤中編輯這些屬性。
 
-| Name | 說明 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| 格式 | 格式必須是 `cdm` | 是 | `cdm` | format |
-| 元資料格式 | 資料所在的實體參考。 如果使用 CDM 版本1.0，請選擇 [資訊清單]。 如果使用1.0 之前的 CDM 版本，請選擇 [開啟 model.js]。 | Yes | `'manifest'` 或 `'model'` | manifestType |
+| [格式] | 格式必須是 `cdm` | 是 | `cdm` | format |
+| 元資料格式 | 資料所在的實體參考。 如果使用 CDM 版本1.0，請選擇 [資訊清單]。 如果使用1.0 之前的 CDM 版本，請選擇 [開啟 model.js]。 | 是 | `'manifest'` 或 `'model'` | manifestType |
 | 根位置：容器 | CDM 資料夾的容器名稱 | 是 | 字串 | fileSystem |
 | 根位置：資料夾路徑 | CDM 資料夾的根資料夾位置 | 是 | 字串 | folderPath |
 | 資訊清單檔：實體路徑 | 根資料夾內實體的資料夾路徑 | 否 | 字串 | entityPath |
@@ -88,7 +85,6 @@ CDM 只能做為內嵌資料集使用，而且預設不會有相關聯的架構�
 2. 尋找磁碟分割。Location 屬性 
 3. 將 "blob.core.windows.net" 變更為 "dfs.core.windows.net"
 4. 將 URL 中的任何 "% 2F" 編碼修正為 "/"
- 
 
 ### <a name="cdm-source-data-flow-script-example"></a>CDM 來源資料流腳本範例
 
@@ -118,9 +114,9 @@ source(output(
 
 下表列出 CDM 接收所支援的屬性。 您可以在 [ **設定** ] 索引標籤中編輯這些屬性。
 
-| Name | 說明 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| 格式 | 格式必須是 `cdm` | 是 | `cdm` | format |
+| [格式] | 格式必須是 `cdm` | 是 | `cdm` | format |
 | 根位置：容器 | CDM 資料夾的容器名稱 | 是 | 字串 | fileSystem |
 | 根位置：資料夾路徑 | CDM 資料夾的根資料夾位置 | 是 | 字串 | folderPath |
 | 資訊清單檔：實體路徑 | 根資料夾內實體的資料夾路徑 | 否 | 字串 | entityPath |
@@ -161,6 +157,6 @@ CDMSource sink(allowSchemaDrift: true,
 
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在對應的資料流程中建立 [來源轉換](data-flow-source.md) 。

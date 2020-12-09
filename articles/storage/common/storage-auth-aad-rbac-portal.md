@@ -10,12 +10,12 @@ ms.date: 12/07/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 96f316b1ca6a7684630c1ab14d722651c1f3ffbc
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 40003db9c3bd2c736f9cedd73b8b7a31a77f625f
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778899"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854575"
 ---
 # <a name="use-the-azure-portal-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>使用 Azure 入口網站指派 Azure 角色以存取 blob 和佇列資料
 
@@ -47,8 +47,6 @@ Azure Active Directory (Azure AD) 透過 [AZURE RBAC (的 azure 角色型存取�
 > 當您建立 Azure 儲存體帳戶時，系統不會自動將許可權指派給您透過 Azure AD 存取資料。 您必須明確地將 Azure 儲存體的 Azure 角色指派給自己。 您可以在訂用帳戶、資源群組、儲存體帳戶或容器/佇列層級上指派此角色。
 >
 > 在為自己指派資料存取的角色之前，您將能夠透過 Azure 入口網站存取儲存體帳戶中的資料，因為 Azure 入口網站也可以使用帳戶金鑰來進行資料存取。 如需詳細資訊，請參閱 [選擇如何授權存取 Azure 入口網站中的 blob 資料](../blobs/authorize-data-operations-portal.md)。
->
-> 如果您的儲存體帳戶已啟用階層命名空間，您就無法指派範圍為容器或佇列的角色。
 
 ### <a name="assign-an-azure-built-in-role"></a>指派 Azure 內建角色
 
@@ -68,7 +66,7 @@ Azure Active Directory (Azure AD) 透過 [AZURE RBAC (的 azure 角色型存取�
 
     :::image type="content" source="media/storage-auth-aad-rbac-portal/add-rbac-role.png" alt-text="顯示如何指派 Azure 角色的螢幕擷取畫面":::
 
-1. 按一下 **[儲存]** 。 您對其指派角色的身分識別會出現在該角色下方。 如下圖所示，新增的使用者現在有權對名為 sample-container 容器讀取資料。
+1. 按一下 [儲存]。 您對其指派角色的身分識別會出現在該角色下方。 如下圖所示，新增的使用者現在有權對名為 sample-container 容器讀取資料。
 
     :::image type="content" source="media/storage-auth-aad-rbac-portal/container-scoped-role.png" alt-text="顯示指派給角色的使用者清單螢幕擷取畫面":::
 

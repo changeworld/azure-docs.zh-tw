@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/03/2020
+ms.date: 12/07/2020
 ms.author: alkohli
-ms.openlocfilehash: 90869af032a381cecd3e65f5d5b367156dd047c5
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 859eb6abd138f0660407618bba4550daf9158ab9
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576828"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855000"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>使用本機 web UI 來管理您的資料箱和 Data Box Heavy
 
@@ -37,7 +37,7 @@ ms.locfileid: "96576828"
 
     ![建立支援套件 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
-    已收集支援套件。 如果您只包含系統記錄，此作業需要幾分鐘的時間。 如果您包含記憶體傾印，則需要較長的時間。
+    已收集支援套件。 如果您只包含系統記錄，此作業需要幾分鐘的時間。 如果您包含記憶體傾印，需要花費很長的時間。
 
     ![建立支援套件 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 

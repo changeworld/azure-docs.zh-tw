@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: 6585718a549c0e0a6eac1ab50788798e1021fef9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b05ed6e1239721bcf3c1cf33d3ee63a992fd9843
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446808"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853217"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>使用 AzureIoTSolutions.com 網站部署解決方案加速器
 
@@ -22,7 +22,7 @@ ms.locfileid: "96446808"
 ![AzureIoTSolutions.com](media/iot-accelerators-permissions/iotsolutionscom.png)
 
 > [!TIP]
-> 如果您需要更充分掌控部署程序，可以使用 [CLI 來部署解決方案加速器](iot-accelerators-remote-monitoring-deploy-cli.md)。
+> 如果您需要更充分掌控部署程序，可以使用 CLI 來部署解決方案加速器。
 
 您可以在下列設定中部署解決方案加速器：
 
@@ -64,9 +64,4 @@ AzureIoTSolutions.com 網站會連結至 [Azure IoT 認證裝置目錄](https://
 
 ## <a name="next-steps"></a>後續步驟
 
-若要試用其中一個 IoT 解決方案加速器，請參閱快速入門：
-
-* [試用遠端監視解決方案](quickstart-remote-monitoring-deploy.md)
-* [試用連線工廠解決方案](quickstart-connected-factory-deploy.md)
-* [試用預測性維護解決方案](quickstart-predictive-maintenance-deploy.md)
-* [試用裝置模擬解決方案](quickstart-device-simulation-deploy.md)
+若要試用其中一個 IoT 解決方案加速器，請參閱快速入門： [試用連線的工廠解決方案](quickstart-connected-factory-deploy.md)。
