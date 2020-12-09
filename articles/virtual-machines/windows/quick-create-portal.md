@@ -9,10 +9,10 @@ ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 46119b9f7cdac47920d4bba8e00c3fc56b0edc78
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 12/05/2020
 ms.locfileid: "87494514"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Windows 虛擬機器
@@ -27,7 +27,7 @@ ms.locfileid: "87494514"
 
 ## <a name="create-virtual-machine"></a>建立虛擬機器
 
-1. 在搜尋中輸入**虛擬機器**。
+1. 在搜尋中輸入 **虛擬機器**。
 1. 在 [服務] 底下，選取 [虛擬機器]。
 1. 在 [虛擬機器]  頁面中，選取 [新增]  。 
 1. 在 [基本資料]  索引標籤中的 [專案詳細資料]  底下，確認已選取正確的訂用帳戶，然後選擇 [新建]  資源群組。 輸入 myResourceGroup  作為名稱。 

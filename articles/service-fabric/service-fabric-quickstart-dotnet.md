@@ -1,17 +1,15 @@
 ---
 title: 在 Azure 中的 Service Fabric 上快速建立 .NET 應用程式
 description: 在本快速入門中，您會使用 Service Fabric 可靠服務範例應用程式建立適用於 Azure 的 .NET 應用程式。
-author: mikkelhegn
 ms.topic: quickstart
 ms.date: 06/26/2019
-ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: b88dfedd5454d708386afa6912a26dac41c6d6b4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 15e2180e44acaa5ebefb403b2da3755396a45ba4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86258569"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575885"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>快速入門：將 .NET 可靠服務應用程式部署至 Service Fabric
 
@@ -34,7 +32,7 @@ Azure Service Fabric 是一個分散式系統平台，可讓您部署及管理�
 
 若要完成本快速入門：
 
-1. [安裝 Visual Studio 2019](https://www.visualstudio.com/)，其中包含 **Azure 開發**以及 **ASP.NET 和 Web 開發**工作負載。
+1. [安裝 Visual Studio 2019](https://www.visualstudio.com/)，其中包含 **Azure 開發** 以及 **ASP.NET 和 Web 開發** 工作負載。
 2. [安裝 Git](https://git-scm.com/)
 3. [安裝 Microsoft Azure Service Fabric SDK](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK)
 4. 執行下列命令以將 Visual Studio 部署到本機 Service Fabric 叢集：

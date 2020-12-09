@@ -4,17 +4,19 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 121f6ffa5c1a7c903e59be8a5bc3e1e1db0834fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ef3bd0f401ba54d56ed42df34cd2e761681dbc7
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80673374"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904056"
 ---
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
+
 ## <a name="add-an-output-binding-definition-to-the-function"></a>將輸出繫結定義新增至函式
 
 一個函式只能有一個觸發程序，但可以有多個輸入和輸出繫結，如此，您無須撰寫自訂整合程式碼，即可連線至其他 Azure 服務和資源。 
-
+::: zone-end
 ::: zone pivot="programming-language-python,programming-language-javascript,programming-language-powershell,programming-language-typescript"  
 您會在函式資料夾中的 *function.json* 檔案中宣告這些繫結。 在先前的快速入門中，*HttpExample* 資料夾中的 *function.json* 檔案包含 `bindings` 集合中的兩個繫結：  
 ::: zone-end
@@ -60,5 +62,5 @@ ms.locfileid: "80673374"
 ::: zone-end  
 
 ::: zone pivot="programming-language-python,programming-language-javascript,programming-language-powershell,programming-language-typescript"  
-在此案例下，會將 `msg` 提供給函式作為輸出引數。 針對 `queue` 類型，您也必須在 `queueName` 中指定佇列的名稱，並在 `connection` 中提供 Azure 儲存體連線 (來自 *local.settings.json*) 的*名稱*。 
+在此案例下，會將 `msg` 提供給函式作為輸出引數。 針對 `queue` 類型，您也必須在 `queueName` 中指定佇列的名稱，並在 `connection` 中提供 Azure 儲存體連線 (來自 *local.settings.json*) 的 *名稱*。 
 ::: zone-end  

@@ -1,20 +1,15 @@
 ---
-title: Azure 入口網站概觀 | Microsoft Docs
+title: Azure 入口網站概觀
 description: Azure 入口網站是可用來管理 Azure 服務的圖形化使用者介面。 了解如何在 Azure 入口網站中瀏覽及尋找資源。
-services: azure-portal
 keywords: 入口網站
-author: mgblythe
-ms.author: mblythe
 ms.date: 12/20/2019
 ms.topic: overview
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: 4a00c1dcf973098895e80d5e3d656efd4a35d0d0
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 1e9cf1a9609b9d4f30e51094f1d0542335ead0e2
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147040"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745922"
 ---
 # <a name="azure-portal-overview"></a>Azure 入口網站概觀
 
@@ -40,7 +35,7 @@ Azure 入口網站專門設計來提供復原和持續可用性。 其存在於�
 
 ## <a name="azure-home"></a>Azure 首頁
 
-身為 Azure 服務的新訂閱者，您在 [登入入口網站](https://portal.azure.com)之後，首先會看到 **Azure 首頁** 。 此頁面會編譯資源，協助您充分利用您的 Azure 訂用帳戶。 我們已包含免費線上課程、文件、核心服務和實用網站的連結，可讓您保持最新狀態並管理貴組織的變更。 為了讓您快速而輕鬆地存取進行中的工作，我們也會顯示您最近瀏覽過的資源清單。 您無法自訂此頁面，但可以選擇要看到 [Azure 首頁] 或 [Azure 儀表板] 作為預設檢視。 第一次登入時，頁面頂端會出現提示，您可以在其中儲存您的喜好設定。
+身為 Azure 服務的新訂閱者，您在 [登入入口網站](https://portal.azure.com)之後，首先會看到 **Azure 首頁**。 此頁面會編譯資源，協助您充分利用您的 Azure 訂用帳戶。 我們已包含免費線上課程、文件、核心服務和實用網站的連結，可讓您保持最新狀態並管理貴組織的變更。 為了讓您快速而輕鬆地存取進行中的工作，我們也會顯示您最近瀏覽過的資源清單。 您無法自訂此頁面，但可以選擇要看到 [Azure 首頁] 或 [Azure 儀表板] 作為預設檢視。 第一次登入時，頁面頂端會出現提示，您可以在其中儲存您的喜好設定。
 
 ![顯示偏好儲存位置的螢幕擷取畫面。](./media/azure-portal-overview/azure-portal-default-view.png)
 

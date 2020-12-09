@@ -7,19 +7,20 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.topic: overview
 ms.workload: identity
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01de8ab86ff5f511fd5e45c4a6e88febdb4fbb15
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 95625886ed11256a40e5993540d7e545134d6dd6
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340861"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860859"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>什麼是 Azure Active Directory 的自助式註冊？
 
@@ -76,13 +77,13 @@ AllowEmailVerifiedUsers 和 AllowAdHocSubscriptions 是用於整個目錄的設�
 
 ![自助式註冊控制項的流程圖](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
 
-下列 PowerShell Cmdlet Get-MsolCompanyInformation 可擷取這項設定的詳細資料。 如需其詳細資訊，請參閱 [Get-MsolCompanyInformation](/powershell/module/msonline/get-msolcompanyinformation?view=azureadps-1.0)。
+下列 PowerShell Cmdlet Get-MsolCompanyInformation 可擷取這項設定的詳細資料。 如需其詳細資訊，請參閱 [Get-MsolCompanyInformation](/powershell/module/msonline/get-msolcompanyinformation)。
 
 ```powershell
     Get-MsolCompanyInformation | Select AllowEmailVerifiedUsers, AllowAdHocSubscriptions
 ```
 
-如需如何使用這些參數的詳細資訊和相關範，請參閱 [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)。
+如需如何使用這些參數的詳細資訊和相關範，請參閱 [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -90,5 +91,5 @@ AllowEmailVerifiedUsers 和 AllowAdHocSubscriptions 是用於整個目錄的設�
 * [如何安裝和設定 Azure PowerShell](/powershell/azure/)
 * [Azure PowerShell](/powershell/azure/)
 * [Azure Cmdlet 參考](/powershell/azure/get-started-azureps)
-* [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
+* [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings)
 * [關閉非受控目錄中的公司或學校帳戶](users-close-account.md)

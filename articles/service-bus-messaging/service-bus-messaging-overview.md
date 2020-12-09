@@ -3,12 +3,12 @@ title: Azure 服務匯流排傳訊概觀 | Microsoft Docs
 description: 本文提供 Azure 服務匯流排的高階總覽，其為完全受控的企業整合訊息代理程式。
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: ca04b4a41489fba61e7c0ee2bb3f4f7f0b8b80f4
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b795d0c5b429a812d90e0759fbcde3d348b86e22
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489474"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602711"
 ---
 # <a name="what-is-azure-service-bus"></a>什麼是 Azure 服務匯流排？
 Microsoft Azure 服務匯流排是完全受控的企業訊息代理程式，具有訊息佇列和公用訂閱主題。 服務匯流排可用來將應用程式和服務彼此分離，而提供下列優點：
@@ -32,7 +32,7 @@ Microsoft Azure 服務匯流排是完全受控的企業訊息代理程式，具�
     2. 將處理的結果張貼至一或多個不同的佇列。
     3. 移動原始佇列的輸入訊息。 
     
-    只有在成功時，下游取用者才會看到結果，包括成功處置輸入訊息，允許僅限一次的處理語意。 此交易模型可供較大解決方案內容中的[補償交易](https://docs.microsoft.com/azure/architecture/patterns/compensating-transaction.md)模式作為健全的基礎。 
+    只有在成功時，下游取用者才會看到結果，包括成功處置輸入訊息，允許僅限一次的處理語意。 此交易模型可供較大解決方案內容中的[補償交易](https://docs.microsoft.com/azure/architecture/patterns/compensating-transaction)模式作為健全的基礎。 
 * *訊息工作階段*。 針對需要嚴格訊息排序或訊息延遲的工作流程和多工傳輸，實作大規模的協調。
 
 如果您熟悉其他訊息代理程式 (例如 Apache ActiveMQ)，您對服務匯流排的概念就不會感到陌生。 服務匯流排是一個平台即服務 (PaaS) 供應項目，主要的差異在於，您無須費心處理下列動作。 Azure 會為您代勞。 

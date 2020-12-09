@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/27/2020
-ms.openlocfilehash: 1301af3bd17ce44720d77aa1b812b78bbe57ffc9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ff195f7a0071c06d5309f95f77e32ae75f584f82
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101386"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96749159"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>快速入門：使用 Azure Logic Apps 建立自動化工作、程序和工作流程 - Visual Studio
 
@@ -37,7 +37,7 @@ ms.locfileid: "93101386"
     > [!IMPORTANT]
     > 當您安裝 Visual Studio 2019 或 2017 時，請務必選取 **Azure 開發** 工作負載。
 
-  * [Microsoft Azure SDK for .NET (2.9.1 或更新版本)](https://azure.microsoft.com/downloads/)。 深入了解 [Azure SDK for .NET](/dotnet/azure/dotnet-tools?tabs=vs)。
+  * [Microsoft Azure SDK for .NET (2.9.1 或更新版本)](https://azure.microsoft.com/downloads/)。 深入了解 [Azure SDK for .NET](/dotnet/azure/intro)。
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
@@ -70,7 +70,7 @@ ms.locfileid: "93101386"
 
 ### <a name="visual-studio-2019"></a>Visual Studio 2019
 
-若要在 Azure Logic Apps 中使用 Azure Government 訂用帳戶，您必須[將 Azure Government 雲端的探索端點新增至 Visual Studio](../azure-government/documentation-government-connect-vs.md)。 不過， *在使用 Azure Government 帳戶登入 Visual Studio 之前* ，您必須先遵循下列步驟來重新命名您在新增探索端點後所產生的 JSON 檔案：
+若要在 Azure Logic Apps 中使用 Azure Government 訂用帳戶，您必須[將 Azure Government 雲端的探索端點新增至 Visual Studio](../azure-government/documentation-government-connect-vs.md)。 不過，*在使用 Azure Government 帳戶登入 Visual Studio 之前*，您必須先遵循下列步驟來重新命名您在新增探索端點後所產生的 JSON 檔案：
 
 1. 關閉 Visual Studio。
 
@@ -100,12 +100,12 @@ ms.locfileid: "93101386"
 
    ![在 [檔案] 功能表上，選取 [新增] > [專案]](./media/quickstart-create-logic-apps-with-visual-studio/create-new-visual-studio-project.png)
 
-1. 在 [已安裝] 之下，選取 **Visual C#** 或 **Visual Basic** 。 選取 [雲端] > [Azure 資源群組]。 替您的專案命名，例如：
+1. 在 [已安裝] 之下，選取 **Visual C#** 或 **Visual Basic**。 選取 [雲端] > [Azure 資源群組]。 替您的專案命名，例如：
 
    ![建立 Azure 資源群組專案](./media/quickstart-create-logic-apps-with-visual-studio/create-azure-cloud-service-project.png)
 
    > [!NOTE]
-   > 資源群組名稱只能包含字母、數字、句點 (`.`)、底線 (`_`)、連字號 (`-`) 和括弧 (`(`、`)`)，但不能以句號 (`.`) *結尾* 。
+   > 資源群組名稱只能包含字母、數字、句點 (`.`)、底線 (`_`)、連字號 (`-`) 和括弧 (`(`、`)`)，但不能以句號 (`.`) *結尾*。
    >
    > 如果 [雲端] 或 [Azure 資源群組] 未出現，請確定您安裝 Azure SDK for Visual Studio。
 
@@ -119,7 +119,7 @@ ms.locfileid: "93101386"
 
    ![選取 [邏輯應用程式] 範本](./media/quickstart-create-logic-apps-with-visual-studio/select-logic-app-template.png)
 
-   在 Visual Studio 建立您的專案之後，[方案總管] 隨即開啟並顯示您的方案。 在您的解決方案中， **LogicApp.json** 檔案不只會儲存邏輯應用程式定義，同時也是您可以用於部署的 Azure Resource Manager 範本。
+   在 Visual Studio 建立您的專案之後，[方案總管] 隨即開啟並顯示您的方案。 在您的解決方案中，**LogicApp.json** 檔案不只會儲存邏輯應用程式定義，同時也是您可以用於部署的 Azure Resource Manager 範本。
 
    ![[方案總管] 會顯示新的邏輯應用程式方案和部署檔案](./media/quickstart-create-logic-apps-with-visual-studio/logic-app-solution-created.png)
 
@@ -145,7 +145,7 @@ ms.locfileid: "93101386"
    | 使用者帳戶 | Fabrikam <br> sophia-owen@fabrikam.com | 您登入 Visual Studio 時所使用的帳戶 |
    | **訂用帳戶** | Pay-As-You-Go <br> (sophia-owen@fabrikam.com) | Azure 訂用帳戶的名稱和相關聯的帳戶 |
    | **資源群組** | MyLogicApp-RG <br> (美國西部) | Azure 資源群組和位置，以供儲存及部署邏輯應用程式的資源 |
-   | **位置** | **與資源群組相同** | 用於部署邏輯應用程式的位置類型和特定位置。 位置類型是 Azure 區域或現有的[整合服務環境 (ISE)](connect-virtual-network-vnet-isolated-environment.md)。 <p>在本快速入門中，請將 [位置類型] 設定為 [區域]，並將 [位置] 設定為 [與資源群組相同]。 <p>**注意** ：建立資源群組專案之後，您可以 [變更位置類型和位置](manage-logic-apps-with-visual-studio.md#change-location)，但不同的位置類型會以各種方式影響您的邏輯應用程式。 |
+   | **位置** | **與資源群組相同** | 用於部署邏輯應用程式的位置類型和特定位置。 位置類型是 Azure 區域或現有的[整合服務環境 (ISE)](connect-virtual-network-vnet-isolated-environment.md)。 <p>在本快速入門中，請將 [位置類型] 設定為 [區域]，並將 [位置] 設定為 [與資源群組相同]。 <p>**注意**：建立資源群組專案之後，您可以 [變更位置類型和位置](manage-logic-apps-with-visual-studio.md#change-location)，但不同的位置類型會以各種方式影響您的邏輯應用程式。 |
    ||||
 
 1. Logic Apps 設計工具會開啟一個頁面，其中顯示簡介影片和常用的觸發程序。 向下捲動過影片和觸發程序直至 [範本]，然後選取 [空白邏輯應用程式]。
@@ -156,7 +156,7 @@ ms.locfileid: "93101386"
 
 接下來，新增可在新摘要項目出現時引發的 RSS [觸發程序](../logic-apps/logic-apps-overview.md#logic-app-concepts)。 每個邏輯應用程式都會以觸發程序啟動，而該觸發程序會在符合特定條件時引發。 每次引發觸發程序時，Logic Apps 引擎會建立邏輯應用程式執行個體，以執行您的工作流程。
 
-1. 在邏輯應用程式設計工具中的搜尋方塊底下，選取 [全部]。 在搜尋方塊中，輸入 "rss"。 從觸發程序清單中，選取此觸發程序： **摘要項目發佈時**
+1. 在邏輯應用程式設計工具中的搜尋方塊底下，選取 [全部]。 在搜尋方塊中，輸入 "rss"。 從觸發程序清單中，選取此觸發程序：**摘要項目發佈時**
 
    ![藉由新增觸發程序和動作來建置邏輯應用程式](./media/quickstart-create-logic-apps-with-visual-studio/add-trigger-logic-app.png)
 

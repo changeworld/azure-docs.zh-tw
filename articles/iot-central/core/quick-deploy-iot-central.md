@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: a156150c2cd28964658fa8529181a70ef546b78f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a2d48a6f4e451e2a9b4140618c7c590293cb5ef5
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457344"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548523"
 ---
 # <a name="quickstart---create-an-azure-iot-central-application"></a>快速入門 - 建立 Azure IoT Central 應用程式
 
@@ -29,7 +29,7 @@ ms.locfileid: "96457344"
 
 1. 瀏覽至 [建置]  頁面：
 
-    ![建置 IoT 應用程式頁面](media/quick-deploy-iot-central/iotcentralcreate-new-application.png)
+    :::image type="content" source="media/quick-deploy-iot-central/iotcentralcreate-new-application.png" alt-text="建置 IoT 應用程式頁面":::
 
 1. 選擇 [自訂應用程式]  ，然後確定已選取 [自訂應用程式]  範本。
 
@@ -37,9 +37,9 @@ ms.locfileid: "96457344"
 
 1. Azure IoT Central 也會根據應用程式名稱，為您產生唯一的 **應用程式 URL** 前置詞。 您可以使用此 URL 來存取應用程式。 依個人需求將其變更為更好記的 URL 前置詞。
 
-    ![Azure IoT Central 的建立應用程式頁面](media/quick-deploy-iot-central/iotcentralcreate-custom.png)
+    :::image type="content" source="media/quick-deploy-iot-central/iotcentralcreate-custom.png" alt-text="Azure IoT Central 的建立應用程式頁面":::
 
-    ![Azure IoT Central 計費資訊](media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png)
+    :::image type="content" source="media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png" alt-text="Azure IoT Central 計費資訊":::
 
     > [!NOTE]
     > 如果您在上一頁選擇 [自訂應用程式]，就會看到 [應用程式範本] 下拉式清單。 下拉式清單會顯示組織提供的其他可用範本。
@@ -57,7 +57,7 @@ ms.locfileid: "96457344"
 
 1. 檢閱條款和條件，然後選取頁面底部的 [建立]  。 幾分鐘後，IoT Central 應用程式便已準備好而可供使用：
 
-    ![Azure IoT Central 應用程式](media/quick-deploy-iot-central/iotcentral-application.png)
+    :::image type="content" source="media/quick-deploy-iot-central/iotcentral-application.png" alt-text="Azure IoT Central 應用程式":::
 
 ## <a name="next-steps"></a>後續步驟
 

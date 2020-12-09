@@ -6,18 +6,18 @@ ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
 ms.author: rohink
-ms.openlocfilehash: 5df2c2f686a1993dcd25d5391d5b553f2b42d937
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7c3aa5505ca15238b2f9e84069de58ab6b700521
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965641"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608481"
 ---
 # <a name="what-is-azure-dns"></a>什麼是 Azure DNS？
 
 Azure DNS 是 DNS 網域的主機服務，採用 Microsoft Azure 基礎結構來提供名稱解析。 只要將您的網域裝載於 Azure，就可以像管理其他 Azure 服務一樣，使用相同的認證、API、工具和計費方式來管理 DNS 記錄。
 
-您無法使用 Azure DNS 來購買網域名稱。 如果支付年費，則可以使用 [App Service 網域](../app-service/manage-custom-dns-buy-domain.md#buy-the-domain)或第三方網域名稱註冊機構來購買網域名稱。 然後，便可以在 Azure DNS 中裝載您的網域以管理記錄。 如需詳細資訊，請參閱[將網域委派給 Azure DNS](dns-domain-delegation.md)。
+您無法使用 Azure DNS 來購買網域名稱。 如果支付年費，則可以使用 [App Service 網域](../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain)或第三方網域名稱註冊機構來購買網域名稱。 然後，便可以在 Azure DNS 中裝載您的網域以管理記錄。 如需詳細資訊，請參閱[將網域委派給 Azure DNS](dns-domain-delegation.md)。
 
 Azure DNS 包含下列功能。
 

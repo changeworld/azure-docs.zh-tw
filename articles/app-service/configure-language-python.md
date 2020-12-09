@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 11/16/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: f12ed42755af64f024fdcb0452173134f7b58482
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7589b5c66bf4fa86db243574f551ec585ccccea1
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183731"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855051"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>設定適用於 Azure App Service 的 Linux Python 應用程式
 
@@ -101,19 +101,19 @@ ms.locfileid: "96183731"
 1. **來源存放庫**：在適合的存放庫 (例如 GitHub) 中維護您的原始程式碼，這可讓您稍後在此程序中設定持續部署。
     1. 您的 *requirements.txt* 檔案必須位於存放庫的根目錄，App Service 才能自動安裝必要的套件。    
 
-1. **資料庫：** 如果您的應用程式相依於資料庫，也請在 Azure 上佈建必要的資源。 請參閱[教學課程：使用 PostgreSQL 部署 Django Web 應用程式 - 建立資料庫](tutorial-python-postgresql-app.md#create-postgres-database-in-azure)，以取得範例。
+1. **資料庫：** 如果您的應用程式相依於資料庫，也請在 Azure 上佈建必要的資源。 請參閱[教學課程：使用 PostgreSQL 部署 Django Web 應用程式 - 建立資料庫](tutorial-python-postgresql-app.md#3-create-postgres-database-in-azure)，以取得範例。
 
-1. **App Service 資源**：建立資源群組、App Service 方案和 App Service Web 應用程式，以裝載您的應用程式。 最簡單的做法，是透過 Azure CLI 命令 `az webapp up` 進行程式碼的初始部署，如[教學課程：使用 PostgreSQL 部署 Django Web 應用程式 - 部署程式碼](tutorial-python-postgresql-app.md#deploy-the-code-to-azure-app-service)所說明。 請取代資源群組、App Service 方案和 Web 應用程式的名稱，使其更適合您的應用程式。
+1. **App Service 資源**：建立資源群組、App Service 方案和 App Service Web 應用程式，以裝載您的應用程式。 最簡單的做法，是透過 Azure CLI 命令 `az webapp up` 進行程式碼的初始部署，如[教學課程：使用 PostgreSQL 部署 Django Web 應用程式 - 部署程式碼](tutorial-python-postgresql-app.md#4-deploy-the-code-to-azure-app-service)所說明。 請取代資源群組、App Service 方案和 Web 應用程式的名稱，使其更適合您的應用程式。
 
 1. **環境變數**：如果您的應用程式需要任何環境變數，請建立對等的 [App Service 應用程式設定](configure-common.md#configure-app-settings)。 這些 App Service 設定會以環境變數的形式顯示在您的程式碼中，如[存取環境變數](#access-app-settings-as-environment-variables)所說明。
-    - 例如，資料庫連線通常會透過這類設定來管理，如[教學課程：使用 PostgreSQL 部署 Django Web 應用程式 - 設定連接資料庫的變數](tutorial-python-postgresql-app.md#configure-environment-variables-to-connect-the-database)所說明。
+    - 例如，資料庫連線通常會透過這類設定來管理，如[教學課程：使用 PostgreSQL 部署 Django Web 應用程式 - 設定連接資料庫的變數](tutorial-python-postgresql-app.md#42-configure-environment-variables-to-connect-the-database)所說明。
     - 如需一般 Django 應用程式的特定設定，請參閱 [Django 應用程式的生產設定](#production-settings-for-django-apps)。
 
 1. **應用程式啟動**：請參閱本文稍後的 [容器啟動程序](#container-startup-process)一節，以了解 App Service 如何嘗試執行您的應用程式。 App Service 依預設會使用 Gunicorn Web 伺服器，而此伺服器必須能夠找到您的應用程式物件或 *wsgi.py* 資料夾。 如有需要，您可以[自訂啟動命令](#customize-startup-command)。
 
 1. **持續部署**：設定持續部署，相關說明請見 [持續部署至 Azure App Service](deploy-continuous-deployment.md) (如果使用 Azure Pipelines 或 Kudu 部署)，或 [使用 GitHub Actions 部署至 App Service](deploy-github-actions.md) (如果使用 GitHub Actions)。
 
-1. **自訂動作**：若要在裝載應用程式的 App Service 容器中執行動作 (例如 Django 資料庫移轉)，您可以 [透過 SSH 連線至容器](configure-linux-open-ssh-session.md)。 如需執行 Django 資料庫移轉的範例，請參閱[教學課程：使用 PostgreSQL 部署 Django Web 應用程式 - 執行資料庫移轉](tutorial-python-postgresql-app.md#run-django-database-migrations)。
+1. **自訂動作**：若要在裝載應用程式的 App Service 容器中執行動作 (例如 Django 資料庫移轉)，您可以 [透過 SSH 連線至容器](configure-linux-open-ssh-session.md)。 如需執行 Django 資料庫移轉的範例，請參閱[教學課程：使用 PostgreSQL 部署 Django Web 應用程式 - 執行資料庫移轉](tutorial-python-postgresql-app.md#43-run-django-database-migrations)。
     - 使用持續部署時，您可以使用建置後命令來執行這些動作，如先前的[自訂組建自動化](#customize-build-automation)所說明。
 
 完成這些步驟之後，您就應該能夠將變更認可至來源存放庫，並將這些更新自動部署至 App Service。

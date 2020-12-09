@@ -6,12 +6,12 @@ ms.author: nimag
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 652566efda4d4f274dc5700d35bcf45c1ebfb9e2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: d35e51d097c2d5e0b66c23efa27ae70c065d547c
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92347190"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96584573"
 ---
 在本快速入門中，您將了解如何使用適用於 JavaScript 的 Azure 通訊服務通話用戶端程式庫以開始通話。
 
@@ -62,7 +62,7 @@ npm install @azure/communication-calling --save
 本快速入門會使用 webpack 來組合應用程式資產。 執行下列命令來安裝 webpack、webpack-cli 和 webpack-dev-server 套件，並將這些套件列為 **package.json** 中的開發相依性：
 
 ```console
-npm install webpack webpack-cli webpack-dev-server --save-dev
+npm install webpack@4.42.0 webpack-cli@3.3.11 webpack-dev-server@3.10.3 --save-dev
 ```
 
 在專案的根目錄中建立 **index.html** 檔案。 我們將使用此檔案來設定基本配置，讓使用者能夠與 Azure Communications Bot 通話。
@@ -124,7 +124,7 @@ const hangUpButton = document.getElementById("hang-up-button");
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-您必須將 `<USER_ACCESS_TOKEN>` 取代為資源的有效使用者存取權杖。 如果您還沒有可用的權杖，請參閱[使用者存取權杖](../../access-tokens.md)文件。 使用 `CallClient`，透過 `CommunicationUserCredential` 來初始化 `CallAgent` 執行個體，讓我們能夠撥打和接收通話。 將下列程式碼新增至 **client.js** ：
+您必須將 `<USER_ACCESS_TOKEN>` 取代為資源的有效使用者存取權杖。 如果您還沒有可用的權杖，請參閱[使用者存取權杖](../../access-tokens.md)文件。 使用 `CallClient`，透過 `CommunicationUserCredential` 來初始化 `CallAgent` 執行個體，讓我們能夠撥打和接收通話。 將下列程式碼新增至 **client.js**：
 
 ```javascript
 async function init() {
