@@ -6,5 +6,5 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 12/01/2020
 ms.locfileid: "96477728"
 ---
-<Token>**適用於：** :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure Data Factory :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure Synapse Analytics </Token> 
+<Token>**適用於：** :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure Data Factory :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure Synapse Analytics</Token> 
 
