@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 929aed28df2725ccde62c348a18ef7b41334e233
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 03f2109a32cd8a8c2643f3c2aa74900f4edd1cee
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96172124"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852841"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表單辨識器的新功能
 
@@ -37,7 +37,7 @@ ms.locfileid: "96172124"
  
   > [深入瞭解版面配置解壓縮](concept-layout.md)
 
-- **用戶端程式庫更新** -適用于 .Net、Python、JAVA 和 JavaScript 的 [用戶端程式庫](quickstarts/client-library.md) 已進入正式運作狀態。
+- **用戶端程式庫更新** -適用于 .Net、Python、JAVA 和 JavaScript 的最新版 [用戶端程式庫](quickstarts/client-library.md) 支援表單辨識器 2.1 API。
 - **支援的新語言：日文** -現在支援下列新語言：適用于 `AnalyzeLayout` 和 `AnalyzeCustomForm` ：日文 (`ja`) 。 [語言支援](language-support.md)
 - **文字行樣式指示 (手寫/其他)  (僅限拉丁語言)** 表單辨識器現在 `appearance` 會輸出物件，以分類每個文字行是否為手寫樣式，以及信賴分數。 這項功能僅支援拉丁語言。
 - **品質改進** -解壓縮改進，包括單一數位的解壓縮改進。

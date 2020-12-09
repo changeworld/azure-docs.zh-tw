@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: d6dbba96160cad36d79c4641861161448f81a49a
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 9b68ba9a19b02c754fdb4c2dfaed022095d4ed0e
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96781142"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852722"
 ---
 # <a name="monitoring-azure-table-storage"></a>監視 Azure 資料表儲存體
 
@@ -98,6 +98,8 @@ Azure 監視器中的計量和記錄只支援 Azure Resource Manager 儲存體�
 
 #### <a name="archive-logs-to-a-storage-account"></a>將記錄封存至儲存體帳戶
 
+如果您選擇將記錄封存至儲存體帳戶，則會支付傳送至儲存體帳戶的記錄數量。 如需特定的定價，請參閱 [Azure 監視器定價](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)頁面的 [**平臺記錄**] 區段。
+
 1. 選取 [封存 **至儲存體帳戶** ] 核取方塊，然後按一下 [ **設定** ] 按鈕。
 
    > [!div class="mx-imgBorder"]   
@@ -109,6 +111,8 @@ Azure 監視器中的計量和記錄只支援 Azure Resource Manager 儲存體�
    > 在您選擇儲存體帳戶作為匯出目的地之前，請參閱封存 [Azure 資源記錄](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) 以瞭解儲存體帳戶上的必要條件。
 
 #### <a name="stream-logs-to-azure-event-hubs"></a>將記錄串流至 Azure 事件中樞
+
+如果您選擇將記錄串流至事件中樞，您將會支付傳送至事件中樞的記錄數量。 如需特定的定價，請參閱 [Azure 監視器定價](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)頁面的 [**平臺記錄**] 區段。
 
 1. 選取 [ **串流至事件中樞** ] 核取方塊，然後按一下 [ **設定** ] 按鈕。
 
@@ -142,6 +146,8 @@ Azure 監視器中的計量和記錄只支援 Azure Resource Manager 儲存體�
 
 #### <a name="archive-logs-to-a-storage-account"></a>將記錄封存至儲存體帳戶
 
+如果您選擇將記錄封存至儲存體帳戶，則會支付傳送至儲存體帳戶的記錄數量。 如需特定的定價，請參閱 [Azure 監視器定價](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)頁面的 [**平臺記錄**] 區段。
+
 使用 [>set-azdiagnosticsetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell Cmdlet 搭配參數來啟用記錄 `StorageAccountId` 。
 
 ```powershell
@@ -159,6 +165,8 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccoun
 如需將資源記錄檔封存至 Azure 儲存體的詳細資訊，請參閱 [Azure 資源記錄](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)。
 
 #### <a name="stream-logs-to-an-event-hub"></a>將記錄串流至事件中樞
+
+如果您選擇將記錄串流至事件中樞，您將會支付傳送至事件中樞的記錄數量。 如需特定的定價，請參閱 [Azure 監視器定價](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)頁面的 [**平臺記錄**] 區段。
 
 使用 [>set-azdiagnosticsetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell Cmdlet 搭配參數來啟用記錄 `EventHubAuthorizationRuleId` 。
 
@@ -200,6 +208,8 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <
 
 #### <a name="archive-logs-to-a-storage-account"></a>將記錄封存至儲存體帳戶
 
+如果您選擇將記錄封存至儲存體帳戶，則會支付傳送至儲存體帳戶的記錄數量。 如需特定的定價，請參閱 [Azure 監視器定價](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)頁面的 [**平臺記錄**] 區段。
+
 使用 [az monitor 診斷-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 命令來啟用記錄。
 
 ```azurecli-interactive
@@ -215,6 +225,8 @@ az monitor diagnostic-settings create --name <setting-name> --storage-account <s
 `az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/tableServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
 
 #### <a name="stream-logs-to-an-event-hub"></a>將記錄串流至事件中樞
+
+如果您選擇將記錄串流至事件中樞，您將會支付傳送至事件中樞的記錄數量。 如需特定的定價，請參閱 [Azure 監視器定價](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)頁面的 [**平臺記錄**] 區段。
 
 使用 [az monitor 診斷-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 命令來啟用記錄。
 

@@ -7,20 +7,19 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: 0678b2c36d341b2bc2bd9be755b9a6213acdd462
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 0cd98705d2d6947ff766f528e4e92f1e51bcc42d
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206079"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852807"
 ---
 # <a name="what-azure-technologies-and-services-can-you-use-to-create-iot-solutions"></a>您可以使用哪些 Azure 技術和服務來建立 IoT 解決方案？
 
 Azure IoT 技術和服務可讓您選擇建立各種 IoT 解決方案，以便讓組織進行數位轉型。 例如，您可以：
 
-- 使用 [Azure IoT Central](https://apps.azureiotcentral.com) (受控 IoT 應用程式平台) 來建置及部署安全的企業級 IoT 解決方案。 IoT Central 具有一系列產業專屬的應用程式範本 (例如零售和醫療保健)，可加速您的解決方案開發流程。
-- 擴充適用於 Azure IoT [解決方案加速器](https://www.azureiotsolutions.com)的開放原始碼程式碼基底，以實作常見的 IoT 案例，例如遠端監視或預測性維護。
-- 使用 Azure IoT 平台服務 (例如 [Azure IoT 中樞](../iot-hub/about-iot-hub.md)和 [Azure IoT 裝置 SDK](../iot-hub/iot-hub-devguide-sdks.md)) 從頭開始建置自訂的 IoT 解決方案。
+* 使用 [Azure IoT Central](https://apps.azureiotcentral.com) (受控 IoT 應用程式平台) 來建置及部署安全的企業級 IoT 解決方案。 IoT Central 具有一系列產業專屬的應用程式範本 (例如零售和醫療保健)，可加速您的解決方案開發流程。
+* 使用 Azure IoT 平台服務 (例如 [Azure IoT 中樞](../iot-hub/about-iot-hub.md)和 [Azure IoT 裝置 SDK](../iot-hub/iot-hub-devguide-sdks.md)) 從頭開始建置自訂的 IoT 解決方案。
 
 ![Azure IoT 技術、服務和解決方案](./media/iot-services-and-technologies/iot-technologies-services.png)
 
@@ -40,10 +39,8 @@ Azure IoT Central 是完全受控的應用程式平台，可供您用來建立�
 
 Azure IoT 解決方案加速器可提升您對 IoT 解決方案的控制能力。 解決方案加速器包含預先建置而可用於常見 IoT 案例的解決方案，因此您可以在幾分鐘內就部署到 Azure 訂用帳戶中。 這些案例包括：
 
-  - 遠端監視
-  - 連線的處理站
-  - 預測性維護
-  - 裝置模擬
+* 連線的處理站
+* 裝置模擬
 
 所有解決方案加速器的開放原始碼程式碼基底都可以在 GitHub 上取得。 請下載程式碼以自訂解決方案加速器來符合您特有的 IoT 需求。
 
@@ -92,4 +89,3 @@ IoT 裝置通常會產生大量的時間序列資料，例如來自感應器的�
 
 - [建立 Azure IoT Central 應用程式](../iot-central/core/quick-deploy-iot-central.md)
 - [將遙測資料從裝置傳送到 IoT 中樞](../iot-hub/quickstart-send-telemetry-cli.md)
-- [試用雲端式遠端監視解決方案](../iot-accelerators/quickstart-remote-monitoring-deploy.md)
