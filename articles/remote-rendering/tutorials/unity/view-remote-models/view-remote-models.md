@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bcee951dc85d9c317bad481ebdb91ff6c761371c
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 834df29597abaaadad98b232ce75b32a6431cfc2
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653667"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574729"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>教學課程：檢視遠端轉譯模型
 
@@ -76,7 +76,7 @@ ms.locfileid: "91653667"
 
 在您修改並儲存資訊清單之後，Unity 會自動重新整理。 確認已在 [專案] 視窗中載入此套件：
 
-:::image type="content" source="./media/confirm-packages.png" alt-text="新增 Unity 專案":::
+:::image type="content" source="./media/confirm-packages.png" alt-text="確認套件匯入":::
 
 如果您的套件未載入，請檢查您的 Unity 主控台是否有錯誤。 如果您沒有任何錯誤，但仍未在 [套件] 資料夾底下看到任何套件，請核取 [套件可見度] 切換按鈕。\
 ![具有箭頭指向套件可見度切換按鈕的螢幕擷取畫面。](./media/unity-package-visibility.png)
@@ -86,8 +86,8 @@ ms.locfileid: "91653667"
 下列步驟可確保您的專案使用最新版的遠端轉譯套件。
 
 1. 在 Unity 編輯器的頂端功能表中，開啟 [視窗] > [套件管理員]。
-1. 選取 **Microsoft Azure 遠端轉譯**套件。
-1. 在 **Microsoft Azure 遠端轉譯**套件的套件管理員頁面中，查看 [更新] 按鈕是否可用。 如果可用，按一下該按鈕會將套件更新為最新可用的版本：\
+1. 選取 **Microsoft Azure 遠端轉譯** 套件。
+1. 在 **Microsoft Azure 遠端轉譯** 套件的套件管理員頁面中，查看 [更新] 按鈕是否可用。 如果可用，按一下該按鈕會將套件更新為最新可用的版本：\
 ![套件管理員中的 ARR 套件](./media/package-manager.png)
 1. 更新套件有時可能會導致主控台錯誤。 如果發生這種情況，請嘗試關閉並重新開啟專案。
 1. 當套件為最新時，套件管理員會顯示 [最新]，而不是 [更新] 按鈕。\
@@ -102,7 +102,7 @@ ms.locfileid: "91653667"
 
 1. 將 [清除旗標] 設定為 [單色]
 
-1. 將**背景**設定為「黑色」(#000000)，且 alpha (A) 為完全透明 (0)
+1. 將 **背景** 設定為「黑色」(#000000)，且 alpha (A) 為完全透明 (0)
 
     ![色彩轉輪](./media/color-wheel-black.png)
 
@@ -171,7 +171,7 @@ ms.locfileid: "91653667"
 
 1. 在 [專案] 窗格的 [資產] 底下，建立名為 RemoteRenderingCore 的新資料夾。 然後在 RemoteRenderingCore 內，建立另一個名為「指令碼」的資料夾。
 
-1. 建立名為 **RemoteRenderingCoordinator** 的[新 C# 指令碼](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html)。
+1. 建立名為 **RemoteRenderingCoordinator** 的 [新 C# 指令碼](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html)。
 您的專案看起來應該像這樣：
 
     ![專案階層](./media/project-structure.png)
@@ -220,7 +220,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     public static RemoteRenderingCoordinator instance;
 
     // AccountDomain must be '<region>.mixedreality.azure.com' - if no '<region>' is specified, connections will fail
-    // For most people '<region>' is either 'westus2' or 'westeurope'
+    // The list of regions is available at https://docs.microsoft.com/azure/remote-rendering/reference/regions
     [SerializeField]
     private string accountDomain = "westus2.mixedreality.azure.com";
     public string AccountDomain
@@ -545,7 +545,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
 ## <a name="initialize-azure-remote-rendering"></a>初始化 Azure 遠端轉譯
 
-既然我們已經有協調器的架構，我們將會從**初始化遠端轉譯**開始，實作四個階段。
+既然我們已經有協調器的架構，我們將會從 **初始化遠端轉譯** 開始，實作四個階段。
 
 ![ARR 堆疊 1](./media/remote-render-stack-1.png)
 

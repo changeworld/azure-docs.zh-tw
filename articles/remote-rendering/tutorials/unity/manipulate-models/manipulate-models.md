@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 003203ef1a25102f9fd3c50001603dbd5d33ce5a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 48c835070329b5cb0892b10760d37708e46bfa1d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565965"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559128"
 ---
 # <a name="tutorial-manipulating-models"></a>教學課程：操作模型
 
@@ -176,7 +176,7 @@ ms.locfileid: "94565965"
 1. 按下 Unity 的播放按鈕來播放場景，然後在 **AppMenu** 內開啟 [模型工具] 功能表。
 ![檢視控制器](./media/model-with-view-controller.png)
 
-**AppMenu** 有一個子功能表 **模型工具**，其會實作與模型繫結的檢視控制器。 當 GameObject 包含 **RemoteBounds** 元件時，檢視控制器將會新增 [**BoundingBox**](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html)元件，這是 MRTK 元件，會在含有 **BoxCollider** 的物件周圍呈現周框方塊。 [**ObjectManipulator**](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/api/Microsoft.MixedReality.Toolkit.Experimental.UI.ObjectManipulator.html?q=ObjectManipulator) 負責與手部互動。 這些指令碼會合併，讓我們能夠移動、旋轉和調整遠端轉譯模型。
+**AppMenu** 有一個子功能表 **模型工具**，其會實作與模型繫結的檢視控制器。 當 GameObject 包含 **RemoteBounds** 元件時，檢視控制器將會新增 [**BoundingBox**](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html)元件，這是 MRTK 元件，會在含有 **BoxCollider** 的物件周圍呈現周框方塊。 [**ObjectManipulator**](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/api/Microsoft.MixedReality.Toolkit.UI.ObjectManipulator.html) 負責與手部互動。 這些指令碼會合併，讓我們能夠移動、旋轉和調整遠端轉譯模型。
 
 1. 將滑鼠移至遊戲面板，並在其中按一下以對焦。
 1. 使用 [MRTK 的手部模擬](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/InputSimulation/InputSimulationService.html#hand-simulation)，按住左側 Shift 鍵。

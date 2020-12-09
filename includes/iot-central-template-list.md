@@ -8,16 +8,18 @@ ms.topic: include
 ms.date: 02/11/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 182296793b46f1900744bf629625906b2d6e9b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08e4fd82bea6bb1b510b127db8dee7803ee112f5
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91377370"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96912181"
 ---
 **應用程式範本**
 
-| 範本                 | 名稱        | 描述 |
+**IoT Central 應用程式範本**
+
+| [範本]                 | 名稱        | 描述 |
 | ------------------------ | ----------- | ----------- |
 | iotc-explorer-pnp-預覽         | 自訂應用程式 | 為您建立空的應用程式，以填入您自己的裝置範本和裝置。 |
 | iotc-explorer-條件           | 店內分析-條件監視 | 建立應用程式來連接及監視存放區環境。 |
@@ -33,3 +35,7 @@ ms.locfileid: "91377370"
 | iotc-explorer-品質             | 水品質監視 | 建立應用程式以數位方式監視水品質。 |
 | iotc-explorer-存放區               | 店內分析-結帳 | 建立應用程式來監視和管理您存放區內的結帳流程。 |
 | iotc-explorer-浪費               | 連線浪費管理 | 建立應用程式來監視廢物箱和分派欄位操作員。 |
+
+**自訂應用程式範本**
+
+如果您已建立自己的應用程式範本，您可以使用它來建立新的應用程式。 當系統要求您提供應用程式範本時，請在您應用程式的 [應用程式範本匯出](../articles/iot-central/core/howto-use-app-templates.md#create-an-application-template) 區段下，輸入所匯出應用程式 URL 可共用的連結中所顯示的應用程式識別碼。 
