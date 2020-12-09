@@ -280,7 +280,7 @@
     - name: 使用 Microsoft 驗證程式庫
       displayName: MSAL
       items:
-        - Name: 所有平台
+        - name: 所有平台
           items:
             - name: 支援的驗證流程
               href: msal-authentication-flows.md

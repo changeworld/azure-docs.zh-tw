@@ -55,6 +55,12 @@
         - name: 適用於 Key Vault 的 Azure Defender
           displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
+        - name: 適用於 Resource Manager 的 Azure Defender
+          displayName: ARM
+          href: defender-for-resource-manager-introduction.md
+        - name: 適用於 DNS 的 Azure Defender
+          displayName: domain
+          href: defender-for-dns-introduction.md
         - name: 適用於 Kubernetes 的 Azure Defender
           displayName: 'clusters, k8s, aks'
           href: defender-for-kubernetes-introduction.md
@@ -253,6 +259,11 @@
         - name: 回應適用於 Key Vault 的 Azure Defender 警示
           displayName: 'akv, kv'
           href: defender-for-key-vault-usage.md
+        - name: 回應適用於 DNS 的 Azure Defender 警示
+          href: defender-for-dns-usage.md
+        - name: 回應適用於 Resource Manager 的 Azure Defender 警示
+          displayName: arm
+          href: defender-for-resource-manager-usage.md
         - name: 管理安全性事件
           href: security-center-incident.md
         - name: 產生威脅情報報告

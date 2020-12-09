@@ -188,15 +188,15 @@
               href: manage/pay-by-invoice.md
             - name: 建立其他訂用帳戶
               href: manage/create-subscription.md
-            - name: 使用最新 API 以程式設計方式建立 EA 訂用帳戶
+            - name: 建立 EA 訂用帳戶 - REST
               href: manage/programmatically-create-subscription-enterprise-agreement.md
-            - name: 使用最新 API 以程式設計方式建立 MCA 訂用帳戶
+            - name: 建立 MCA 訂用帳戶 - REST
               href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
-            - name: 使用最新 API 以程式設計方式建立 MPA 訂用帳戶
+            - name: 建立 MPA 訂用帳戶 - REST
               href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
-            - name: 使用 ARM 範本以程式設計方式建立訂用帳戶
+            - name: 建立訂用帳戶 - ARM 範本
               href: manage/create-subscription-template.md
-            - name: 使用舊的預覽 API 以程式設計方式建立訂用帳戶
+            - name: 建立訂用帳戶 - 預覽 REST
               href: manage/programmatically-create-subscription-preview.md
             - name: 授與存取權以建立 EA 訂用帳戶
               href: manage/grant-access-to-create-subscription.md

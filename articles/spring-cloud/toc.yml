@@ -158,7 +158,7 @@
     - name: 常見問題集
       href: spring-cloud-faq.md
     - name: REST API 參考資料
-      href: /rest/api/azurespringclould/
+      href: /rest/api/azurespringcloud/
     - name: Azure 原則內建
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

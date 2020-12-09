@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/15/2020
 ms.author: trbye
-ms.openlocfilehash: f3a3d897d5cc5a22340dccf3aeeac8d52158a3a0
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: f87db54b43f0ece49b940521bea34737da676a31
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425306"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96912375"
 ---
 語音服務的核心功能之一，就是能夠辨識並轉譯人類語音 (通常稱為語音轉文字)。 在本快速入門中，您將了解如何在您的應用程式和產品中使用語音 SDK，以執行高品質的語音轉換文字辨識。
 
@@ -30,6 +30,8 @@ ms.locfileid: "94425306"
 使用下列程式碼範例，從預設裝置麥克風執行語音辨識。 以您的訂用帳戶和區域金鑰取代 `subscription` 和 `region` 變數。 執行指令碼將會在您的預設麥克風和輸出文字啟動辨識工作階段。
 
 ```go
+package main
+
 import (
     "bufio"
     "fmt"
@@ -104,6 +106,8 @@ func main() {
 使用下列範例，從音訊檔案執行語音辨識。 以您的訂用帳戶和區域金鑰取代 `subscription` 和 `region` 變數。 另外，以 .wav 檔的路徑取代變數 `file`。 執行指令碼會從檔案辨識語音，並輸出文字結果。
 
 ```go
+package main
+
 import (
     "fmt"
     "time"

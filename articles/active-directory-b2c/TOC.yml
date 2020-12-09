@@ -125,10 +125,12 @@
       items:
         - name: 建立流程
           items:
-            - name: 註冊或登入
-              href: tutorial-create-user-flows.md
+            - name: 建立使用者流程
+              href: create-user-flow.md
             - name: 資源擁有者密碼認證
               href: configure-ropc.md
+            - name: 設定電話驗證
+              href: phone-authentication-user-flows.md
             - name: 設定自助密碼重設
               href: user-flow-self-service-password-reset.md
         - name: 新增條件式存取

@@ -687,7 +687,7 @@
                   href: service-fabric-how-to-remove-node-type.md
             - name: 升級
               items:
-                - name: 將 VM 擴展集延伸模組新增至受控叢集節點類型
+                - name: 將虛擬機器擴展集延伸模組新增至受控叢集節點類型
                   href: how-to-managed-cluster-vmss-extension.md
                 - name: 升級 Service Fabric 版本
                   href: service-fabric-cluster-upgrade-version-azure.md
@@ -797,6 +797,8 @@
               href: configure-existing-cluster-enable-managed-identity-token-service.md
             - name: 使用受控識別來設定新的 Azure Service Fabric 叢集
               href: configure-new-azure-service-fabric-enable-managed-identity.md
+            - name: 使用受控識別來設定 Service Fabric 受控叢集
+              href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
         - name: 應用程式設定
           items:
             - name: 如何使用受控識別部署應用程式
