@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0769366ad56e1b7431dbfa7c95f1256c509d24fa
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: bed64df921326ad4d219f934f7a7bc6860bfc7d8
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358162"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861896"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>了解如何在 Azure VM 上使用 Azure 資源受控識別來取得存取權杖 
 
@@ -30,7 +30,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 本文提供各種取得權杖的程式碼和指令碼，以及處理權杖到期和 HTTP 錯誤等重要主題的指引。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -70,7 +70,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
 ```
 
-| 項目 | 描述 |
+| 元素 | 描述 |
 | ------- | ----------- |
 | `GET` | HTTP 指令動詞，指出您想要擷取端點中的資料。 在此案例中是 OAuth 存取權杖。 | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | 適用於 Instance Metadata Service 的 Azure 資源受控識別端點。 |
@@ -88,7 +88,7 @@ GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.
 Metadata: true
 ```
 
-| 項目 | 描述 |
+| 元素 | 描述 |
 | ------- | ----------- |
 | `GET` | HTTP 指令動詞，指出您想要擷取端點中的資料。 在此案例中是 OAuth 存取權杖。 | 
 | `http://localhost:50342/oauth2/token` | Azure 資源受控識別端點，其中 50342 是預設連接埠且可設定。 |
@@ -113,7 +113,7 @@ Content-Type: application/json
 }
 ```
 
-| 項目 | 描述 |
+| 元素 | 描述 |
 | ------- | ----------- |
 | `access_token` | 所要求的存取權杖。 呼叫受保護的 REST API 時，權杖會內嵌在 `Authorization` 要求標頭欄位中成為「持有人」權杖，以允許 API 驗證呼叫端。 | 
 | `refresh_token` | 並未由 Azure 資源受控識別使用。 |
@@ -125,7 +125,7 @@ Content-Type: application/json
 
 ## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>使用適用於 .NET 的 Microsoft.Azure.Services.AppAuthentication 程式庫取得權杖
 
-對於 .NET 應用程式和函式，使用 Azure 資源受控識別的最簡單方式就是透過 Microsoft.Azure.Services.AppAuthentication 套件。 該程式庫還能讓您使用來自 Visual Studio、[Azure CLI](/cli/azure?view=azure-cli-latest) 或 Active Directory 整合式驗證的使用者帳戶，在部署機器上以本機方式測試程式碼。 如需使用此程式庫之本機開發選項的詳細資訊，請參閱 [Microsoft.Azure.Services.AppAuthentication 參考](../../key-vault/general/service-to-service-authentication.md)。 本節示範如何在您的程式碼中開始使用程式庫。
+對於 .NET 應用程式和函式，使用 Azure 資源受控識別的最簡單方式就是透過 Microsoft.Azure.Services.AppAuthentication 套件。 該程式庫還能讓您使用來自 Visual Studio、[Azure CLI](/cli/azure) 或 Active Directory 整合式驗證的使用者帳戶，在部署機器上以本機方式測試程式碼。 如需使用此程式庫之本機開發選項的詳細資訊，請參閱 [Microsoft.Azure.Services.AppAuthentication 參考](../../key-vault/general/service-to-service-authentication.md)。 本節示範如何在您的程式碼中開始使用程式庫。
 
 1. 將 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 和 [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet 套件的參考新增至應用程式。
 
@@ -362,7 +362,7 @@ Azure 資源受控識別端點會透過 HTTP 回應訊息標頭的狀態碼欄�
 
 如果發生錯誤，對應的 HTTP 回應主體會包含 JSON 格式的錯誤詳細資料：
 
-| 項目 | 描述 |
+| 元素 | 描述 |
 | ------- | ----------- |
 | error   | 錯誤識別碼。 |
 | error_description | 錯誤的詳細資訊描述。 **錯誤描述可隨時變更。請勿撰寫根據錯誤描述中的值進行分支的程式碼。**|
@@ -371,7 +371,7 @@ Azure 資源受控識別端點會透過 HTTP 回應訊息標頭的狀態碼欄�
 
 本節會說明可能的錯誤回應。 「200 確定」狀態是成功的回應，而且存取權杖會包含在回應主體 JSON 中 (在 access_token 元素中)。
 
-| 狀態碼 | 錯誤 | 錯誤說明 | 解決方法 |
+| 狀態碼 | 錯誤 | 錯誤說明 | 解決方案 |
 | ----------- | ----- | ----------------- | -------- |
 | 400 不正確的要求 | invalid_resource | AADSTS50001：在名為 *\<URI\>* 的租使用者中找不到名為的應用程式 *\<TENANT-ID\>* 。 如果租用戶的系統管理員尚未安裝此應用程式或租用戶中的任何使用者尚未同意使用此應用程式，也可能會發生此錯誤。 您可能會將驗證要求傳送至錯誤的租用戶。\ | (僅限 Linux) |
 | 400 不正確的要求 | bad_request_102 | 未指定必要的中繼資料標頭 | 要求中遺漏 `Metadata` 要求標頭欄位，或欄位的格式不正確。 值必須指定為 `true` (全部小寫)。 相關範例請參閱前一節 REST 中的「範例要求」。|

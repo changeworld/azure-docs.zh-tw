@@ -1,18 +1,18 @@
 ---
 title: 使用範本的條件式部署
-description: 說明如何有條件地在 Azure Resource Manager 範本中部署資源。
+description: 說明如何在 Azure Resource Manager 範本中，有條件地將資源部署 (ARM 範本) 。
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: effa7fe6ee1393e44a124bc087609da5d4898210
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a31bd1fbf755046f331542b4d5952b27a793360
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84259315"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905990"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>ARM 範本中的條件式部署
 
-有時您需要在 Azure Resource Manager (ARM) 範本中選擇性地部署資源。 使用 `condition` 元素來指定是否要部署資源。 此元素的值會解析為 true 或 false。 當此值為 true 時，會部署資源。 當此值為 false 時，則不會部署資源。 此值只能套用至整個資源。
+有時您需要在 Azure Resource Manager 範本中選擇性地部署資源， (ARM 範本) 。 使用 `condition` 元素來指定是否要部署資源。 此元素的值會解析為 true 或 false。 當此值為 true 時，會部署資源。 當此值為 false 時，則不會部署資源。 此值只能套用至整個資源。
 
 > [!NOTE]
 > 條件式部署不會串聯至 [子資源](child-resource-name-type.md)。 如果您想要有條件地部署資源及其子資源，您必須將相同的條件套用至每個資源類型。
@@ -36,7 +36,7 @@ ms.locfileid: "84259315"
 }
 ```
 
-當參數 **>neworexisting** 設定為 **new**時，條件評估為 true。 已部署儲存體帳戶。 不過，當 **>neworexisting** 設定為 [ **現有**] 時，條件會評估為 false，且不會部署儲存體帳戶。
+當參數 **>neworexisting** 設定為 **new** 時，條件評估為 true。 已部署儲存體帳戶。 不過，當 **>neworexisting** 設定為 [ **現有**] 時，條件會評估為 false，且不會部署儲存體帳戶。
 
 如需使用 `condition` 項目的完整範例範本，請參閱[ 使用新的或現有的虛擬網路、儲存體和公用 IP 的 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions)。
 
@@ -86,9 +86,9 @@ ms.locfileid: "84259315"
 
 ## <a name="complete-mode"></a>完整模式
 
-如果您使用 [完整模式](deployment-modes.md) 部署範本，而且因為條件評估為 false 而未部署資源，則結果取決於您用來部署範本的 REST API 版本。 如果您使用的版本早于2019-05-10，則 **不會刪除**資源。 使用2019-05-10 或更新版本時， **會刪除**資源。 當條件為 false 時，Azure PowerShell 和 Azure CLI 的最新版本會刪除資源。
+如果您使用 [完整模式](deployment-modes.md) 部署範本，而且因為條件評估為 false 而未部署資源，則結果取決於您用來部署範本的 REST API 版本。 如果您使用的版本早于2019-05-10，則 **不會刪除** 資源。 使用2019-05-10 或更新版本時， **會刪除** 資源。 當條件為 false 時，Azure PowerShell 和 Azure CLI 的最新版本會刪除資源。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 如需建立範本的建議，請參閱 [ARM 範本的最佳做法](template-best-practices.md)。
 * 若要建立資源的多個實例，請參閱 [ARM 範本中的資源反復](copy-resources.md)專案。

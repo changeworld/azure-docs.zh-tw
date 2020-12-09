@@ -11,16 +11,14 @@ author: NilsPohlmann
 ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 57806ecaf4b0e295457c78faaff6033126ddb2c8
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2b534f82aeda438b1d2bd5d60eeb4871acffc54a
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463014"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902012"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>使用 Azure Machine Learning SDK 來建立及執行機器學習管線
-
-
 
 在本文中，您將瞭解如何使用[AZURE MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)來建立及執行[機器學習管線](concept-ml-pipelines.md)。 使用 **ML 管線** 來建立可將各種 ML 階段將在一起的工作流程。 然後發佈該管線以供稍後存取，或與其他人共用。 追蹤 ML 管線以查看您的模型在真實世界中的執行方式，以及偵測資料漂移。 ML 管線適用于批次評分案例，使用各種計算，重複使用步驟而不是重新執行步驟，以及與其他人共用 ML 工作流程。
 
@@ -106,6 +104,9 @@ output_data1 = PipelineData(
 
 > [!TIP]
 > 您也可以使用公開預覽類別，在管線步驟之間保存中繼資料 [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) 。 如需使用類別的程式碼範例 `OutputFileDatasetConfig` ，請參閱如何 [建立兩個步驟的 ML 管線](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)。
+
+> [!TIP]
+> 只上傳與手邊相關之工作的檔案。 在下一次執行管線時，即使指定了重複使用，也會看到資料目錄內檔案的任何變更。 
 
 ## <a name="set-up-a-compute-target"></a>設定計算目標
 

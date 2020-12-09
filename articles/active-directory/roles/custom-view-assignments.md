@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c1e46fd55cd7beda931db2e24cc2210753ee26f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: dd887862a2571f4ffaeab9cf1ae42801df779ed0
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180399"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862100"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>在 Azure Active Directory 中查看自訂角色指派
 
@@ -39,7 +39,7 @@ ms.locfileid: "96180399"
 
 ## <a name="view-role-assignments-using-azure-ad-powershell"></a>使用 Azure AD PowerShell 來查看角色指派
 
-本節說明如何在整個組織範圍內查看角色的指派。 本文使用 [Azure Active Directory PowerShell 第2版](/powershell/module/azuread/?view=azureadps-2.0#directory_roles) 模組。 若要使用 PowerShell 來查看單一應用程式範圍指派，您可以在使用 [Powershell 指派自訂角色](./custom-assign-powershell.md)時使用 Cmdlet。
+本節說明如何在整個組織範圍內查看角色的指派。 本文使用 [Azure Active Directory PowerShell 第2版](/powershell/module/azuread/#directory_roles) 模組。 若要使用 PowerShell 來查看單一應用程式範圍指派，您可以在使用 [Powershell 指派自訂角色](./custom-assign-powershell.md)時使用 Cmdlet。
 
 ### <a name="prepare-powershell"></a>準備 PowerShell
 

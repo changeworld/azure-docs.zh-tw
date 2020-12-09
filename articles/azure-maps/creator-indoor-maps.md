@@ -1,21 +1,27 @@
 ---
-title: 在 Azure 地圖服務建立工具中使用室內地圖
-description: 本文介紹適用于 Azure 地圖服務 Creator 服務的概念
+title: '在 Azure 地圖服務 Creator (Preview 中使用室內地圖) '
+description: '本文介紹適用于 Azure 地圖服務 Creator 服務 (Preview 的概念) '
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 558903ead572363c5545a4a3121f7cf61f549df6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4ab00317e71f832bb677c4c7587e2356a37cb7a1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895897"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903559"
 ---
-# <a name="creator-for-indoor-maps"></a>室內地圖的建立工具
+# <a name="creator-preview-for-indoor-maps"></a>適用于室內地圖的建立者 (預覽) 
+
+
+> [!IMPORTANT]
+> Azure 地圖服務 Creator 服務目前處於公開預覽狀態。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 
 本文介紹適用於 Azure 地圖服務建立工具的概念和工具。 建議您先閱讀這篇文章，再開始使用 Azure 地圖服務建立工具 API 和 SDK。
 
@@ -23,15 +29,15 @@ ms.locfileid: "92895897"
 
 ![建立工具地圖資料工作流程](./media/creator-indoor-maps/workflow.png)
 
-## <a name="create-azure-maps-creator"></a>建立 Azure 地圖服務建立工具
+## <a name="create-azure-maps-creator-preview"></a>建立 Azure 地圖服務建立者 (預覽)  
 
-若要使用建立工具服務，必須在 Azure 地圖服務帳戶中建立 Azure 地圖服務建立工具。 如需如何在 Azure 地圖服務中建立 Azure 地圖服務建立工具的詳細資訊，請參閱[管理 Azure 地圖服務建立工具](how-to-manage-creator.md)。
+若要使用建立者服務 (預覽) ，必須在 Azure 地圖服務帳戶中建立 Azure 地圖服務建立者。 如需如何在 Azure 地圖服務中建立 Azure 地圖服務建立工具的詳細資訊，請參閱[管理 Azure 地圖服務建立工具](how-to-manage-creator.md)。
 
 ## <a name="upload-a-drawing-package"></a>上傳繪圖套件
 
-建立工具會藉由轉換上傳的繪圖套件來收集室內地圖資料。 繪圖套件代表已結構化或重新塑造的設施。 如需有關繪圖套件需求的詳細資訊，請參閱[繪圖套件需求](drawing-requirements.md)。
+Creator (Preview) 藉由轉換已上傳的繪圖套件來收集室內地圖資料。 繪圖套件代表已結構化或重新塑造的設施。 如需有關繪圖套件需求的詳細資訊，請參閱[繪圖套件需求](drawing-requirements.md)。
 
-使用 [Azure 地圖服務資料上傳 API](/rest/api/maps/data/uploadpreview)，上傳繪圖套件。  成功上傳時，資料上傳 API 會傳回使用者資料識別碼 (`udid`)。 下一個步驟會使用 `udid`，將已上傳的套件轉換為室內地圖資料。
+使用 [Azure 地圖服務 Data (Preview) 上傳 API](/rest/api/maps/data/uploadpreview) 來上傳繪圖套件。  成功上傳時，資料上傳 API 會傳回使用者資料識別碼 (`udid`)。 下一個步驟會使用 `udid`，將已上傳的套件轉換為室內地圖資料。
 
 ## <a name="convert-a-drawing-package"></a>轉換繪圖套件
 
@@ -41,7 +47,7 @@ ms.locfileid: "92895897"
 
 ## <a name="create-indoor-map-data"></a>建立室內地圖資料
 
-Azure 地圖服務建立工具提供三項服務：
+Azure 地圖服務 Creator (Preview) 提供三種服務：
 
 * [資料集服務](/rest/api/maps/dataset/createpreview)。
 使用資料集服務，從已轉換的繪圖套件資料建立資料集。
@@ -87,9 +93,9 @@ IoT 裝置或其他應用程式可以更新或擷取狀態集中每個「狀態�
 
 ### <a name="render-v2-service"></a>Render V2 服務
 
-Azure 地圖服務 [Render V2 服務-取得地圖底圖 API](/rest/api/maps/renderv2/getmaptilepreview) 已擴充為支援建立工具地圖底圖集。
+Azure 地圖服務 [Render V2 服務-取得地圖底圖 API (preview) ](/rest/api/maps/renderv2/getmaptilepreview) 已擴充為支援 Creator (preview) tilesets。
 
-[ V2 服務-取得地圖狀態地圖底圖 API](/rest/api/maps/renderv2/getmaptilepreview) 允許應用程式要求地圖底圖集。 然後，您可以將地圖底圖集整合到地圖控制項或 SDK 中。 如需使用 Render V2 服務之地圖控制項的範例，請參閱[室內地圖模組](#indoor-maps-module)。
+ V2 服務-取得地圖狀態地圖底圖 API 允許應用程式要求地圖底圖集。 然後，您可以將地圖底圖集整合到地圖控制項或 SDK 中。 如需使用 Render V2 服務之地圖控制項的範例，請參閱[室內地圖模組](#indoor-maps-module)。
 
 ### <a name="web-feature-service-api"></a>Web 功能服務 API
 
@@ -97,7 +103,7 @@ Azure 地圖服務 [Render V2 服務-取得地圖底圖 API](/rest/api/maps/rend
 
 ### <a name="indoor-maps-module"></a>室內地圖模組
 
-[Azure 地圖服務 Web SDK](./index.yml) 包括室內地圖模組。 此模組為 Azure 地圖服務「地圖控制項」程式庫提供擴充功能。 室內地圖模組會轉譯在建立工具中建立的室內地圖。 其會將小工具 (例如「樓層選擇器」) 整合在一起，協助使用者將不同的樓層視覺化。
+[Azure 地圖服務 Web SDK](./index.yml) 包括室內地圖模組。 此模組為 Azure 地圖服務「地圖控制項」程式庫提供擴充功能。 室內地圖模組會轉譯建立在 Creator (Preview) 中建立的室內地圖。 其會將小工具 (例如「樓層選擇器」) 整合在一起，協助使用者將不同的樓層視覺化。
 
 室內地圖模組可讓您建立 Web 應用程式，將室內地圖資料與其他各項 [Azure 地圖服務](./index.yml)進行整合。 最常見的應用程式設定可能包括將知識新增至來自其他地圖的室內地圖，例如道路、影像、天氣和運輸。
 
@@ -109,7 +115,7 @@ Azure 地圖服務 [Render V2 服務-取得地圖底圖 API](/rest/api/maps/rend
 
 ### <a name="data-maintenance"></a>資料維護
 
- Azure 地圖服務建立工具清單、更新和刪除 API 可讓您列出、更新和刪除您的資料集、地圖底圖集和功能狀態集。
+ Azure 地圖服務 Creator (Preview) 清單、更新和刪除 API 可讓您列出、更新及刪除您的資料集、tilesets 和功能 statesets。
 
 >[!NOTE]
 >每當檢閱項目清單，並決定將其刪除時，您必須考慮該刪除動作對所有相依 API 或應用程式的影響。 例如，如果您要透過 [Render V2 - 取得地圖底圖 API](/rest/api/maps/renderv2/getmaptilepreview) 刪除目前由應用程式使用的地圖底圖集，刪除該地圖底圖集會導致應用程式無法轉譯該地圖底圖集。
@@ -129,4 +135,4 @@ Azure 地圖服務 [Render V2 服務-取得地圖底圖 API](/rest/api/maps/rend
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [教學課程：建立「建立工具室內地圖」](tutorial-creator-indoor-maps.md)
+> [教學課程：建立建立者 (預覽) 室內地圖](tutorial-creator-indoor-maps.md)

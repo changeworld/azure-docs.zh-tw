@@ -1,27 +1,27 @@
 ---
-title: 建立對應的資料來源 |Microsoft Azure 對應
+title: 在 Microsoft Azure Maps 中建立地圖的資料來源
 description: 瞭解如何建立對應的資料來源。 瞭解 Azure 地圖服務 Web SDK 使用的資料來源： GeoJSON 來源和向量圖格。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 08/08/2019
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 9c82b74ffdc8672dc3d84a98a036c6083bc6c309
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d09dddbceed773cd723897cc9730198b68be0ff7
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895914"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903610"
 ---
 # <a name="create-a-data-source"></a>建立資料來源
 
 Azure 地圖服務 Web SDK 會將資料儲存在資料來源中。 使用資料來源可將查詢和轉譯的資料作業優化。 目前有兩種類型的資料來源：
 
-- **GeoJSON 來源** ：在本機管理 GeoJSON 格式的原始位置資料。 適用于小型至中型的資料集 () 的上百個圖形。
-- **向量圖格來源** ：根據地圖並排顯示系統，將格式化為目前地圖視圖之向量磚的資料載入。 適用于大型至大型資料集 (上百萬或數十億個圖形) 。
+- **GeoJSON 來源**：在本機管理 GeoJSON 格式的原始位置資料。 適用于小型至中型的資料集 () 的上百個圖形。
+- **向量圖格來源**：根據地圖並排顯示系統，將格式化為目前地圖視圖之向量磚的資料載入。 適用于大型至大型資料集 (上百萬或數十億個圖形) 。
 
 ## <a name="geojson-data-source"></a>GeoJSON 資料來源
 
@@ -86,7 +86,7 @@ Azure 地圖服務遵守 [Mapbox 向量圖格規格](https://github.com/mapbox/v
 - 道路磚[檔](/rest/api/maps/renderv2/getmaptilepreview)  |  [資料格式詳細資料](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
 - 流量事件[檔](/rest/api/maps/traffic/gettrafficincidenttile)  |  [資料格式詳細資料](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
 - 交通流程[檔](/rest/api/maps/traffic/gettrafficflowtile)  |  [資料格式詳細資料](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
-- Azure 地圖服務 Creator 也可讓您透過[取得圖](/rest/api/maps/renderv2/getmaptilepreview)格轉譯 V2 來建立和存取自訂向量磚
+- Azure 地圖服務 Creator (Preview) 也可讓您透過[取得磚轉譯 V2](/rest/api/maps/renderv2/getmaptilepreview)來建立和存取自訂向量磚
 
 > [!TIP]
 > 使用 Azure 地圖服務轉譯服務的向量或點陣影像磚搭配 web SDK 時，您可以取代 `atlas.microsoft.com` 為預留位置 `{azMapsDomain}` 。 此預留位置將會取代為對應所使用的相同網域，且也會自動附加相同的驗證詳細資料。 這可大幅簡化使用 Azure Active Directory authentication 時，轉譯服務的驗證。

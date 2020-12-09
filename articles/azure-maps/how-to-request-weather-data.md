@@ -1,22 +1,26 @@
 ---
-title: 使用 Azure 地圖服務天氣服務要求即時和預測的氣象資料
-description: 瞭解如何使用 Microsoft Azure 地圖天氣服務，要求目前的 (目前) 和預測 (分鐘、每小時、每日) 天氣資料
+title: 使用 Azure 地圖服務天氣服務 (預覽) 要求即時和預測的氣象資料
+description: '瞭解如何使用 Microsoft Azure Maps 天氣服務 (Preview，要求目前的 (目前) 和預測 (分鐘、每小時、每日) 天氣資料) '
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 10/27/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: c11f20286c514056d14b8faa941315345fea71f2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a5ae262d2882bd76e31666f058fa9a7a703a9e1e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186332"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906007"
 ---
-# <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services"></a>使用 Azure 地圖服務天氣服務要求即時和預測的氣象資料
+# <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services-preview"></a>使用 Azure 地圖服務天氣服務 (預覽) 要求即時和預測的氣象資料 
+
+> [!IMPORTANT]
+> Azure 地圖服務天氣服務目前處於公開預覽狀態。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Azure 地圖服務 [氣象服務](/rest/api/maps/weather) 是一組 RESTful 的 api，可讓開發人員將高度動態歷程記錄、即時和預測的氣象資料和視覺效果整合到其解決方案中。 在本文中，我們將示範如何要求即時和預測的氣象資料。
 
@@ -28,7 +32,7 @@ Azure 地圖服務 [氣象服務](/rest/api/maps/weather) 是一組 RESTful 的 
 * 使用 [取得每小時的預測 API](/rest/api/maps/weather/gethourlyforecastpreview)來要求每小時預測。
 * 使用「 [取得分鐘預測 API](/rest/api/maps/weather/getminuteforecastpreview)」來要求以分鐘為單位的預測。
 
-這段影片提供使用 REST 呼叫範例 Azure 地圖服務中的氣象服務總覽。
+這段影片提供對 Azure 地圖服務氣象服務進行 REST 呼叫的範例。
 
 <br/>
 
@@ -751,8 +755,7 @@ Azure 地圖服務 [氣象服務](/rest/api/maps/weather) 是一組 RESTful 的 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [Azure 地圖服務氣象服務概念](./weather-services-concepts.md)
+> [Azure 地圖服務天氣服務 (預覽) 概念](./weather-services-concepts.md)
 
 > [!div class="nextstepaction"]
-> [Azure 地圖服務氣象服務 REST API](/rest/api/maps/weather
-)
+> [Azure 地圖服務天氣服務 (預覽) REST API](/rest/api/maps/weather)

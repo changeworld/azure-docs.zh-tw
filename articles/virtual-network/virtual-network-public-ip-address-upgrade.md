@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/07/2020
+ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 0c248149694c2bf66b8c94e9c0a29a8f7da9f4e4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9ea29c47349fd7ccee469188f8929a864cf7bbef
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843735"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905786"
 ---
 # <a name="upgrade-public-ip-addresses"></a>升級公用 IP 位址
 
@@ -159,6 +159,7 @@ US DoD 中部<br>
 
 * 為了升級基本公用 IP，它無法與任何 Azure 資源相關聯。  請參閱 [此頁面](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) ，以取得如何將公用 ip 解除關聯的詳細資訊。  同樣地，若要遷移保留的 IP，則無法與任何雲端服務相關聯。  請參閱 [此頁面](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm) ，以取得如何將保留的 ip 解除關聯的詳細資訊。  
 * 從基本升級至標準 SKU 的公用 Ip 會繼續沒有 [可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) ，因此無法與區域冗余或區域性的 Azure 資源相關聯。  請注意，這只適用于提供可用性區域的區域。
+* 您無法從標準降級為基本。
 
 ## <a name="next-steps"></a>後續步驟
 

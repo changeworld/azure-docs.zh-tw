@@ -4,12 +4,12 @@ description: 提供有關 Azure VMware 解決方案的一些常見問題解答�
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: dikamath
-ms.openlocfilehash: 0bc3e0ab5b3017c2d051113a57d79214ffce0836
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3033df2021a8d1780caf9b0b7cd4dbe8de2a6050
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967341"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861403"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>關於 Azure VMware 解決方案的常見問題
 
@@ -65,7 +65,7 @@ Azure VMware 解決方案客戶將可使用所有 Azure 服務。 特定服務�
 是的，前提是它安裝所在的系統可以存取私用雲端 vCenter，並且使用公用 DNS 來解析 ESXi 主機名稱。
 
 #### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>是否有針對 Azure VMware 解決方案 Vm 安裝和使用 VMRC 的特殊指示？
-否。 使用 [VMware 提供的指示](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) ，以符合這些指示中指定的 VM 必要條件。 
+不會。 使用 [VMware 提供的指示](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) ，以符合這些指示中指定的 VM 必要條件。 
 
 #### <a name="is-vmware-hcx-supported-on-vpns"></a>Vpn 支援 VMware HCX 嗎？
 否，因為頻寬和延遲需求。
@@ -74,7 +74,7 @@ Azure VMware 解決方案客戶將可使用所有 Azure 服務。 特定服務�
 Azure 防禦服務建議連線到跳躍方塊，以防止將 Azure VMware 解決方案公開到網際網路。 您無法使用 Azure 防禦來連接至 Azure VMware 解決方案 Vm，因為它們不是 Azure IaaS 物件。
 
 #### <a name="can-azure-load-balancer-internal-be-used-for-azure-vmware-solution-vms"></a>Azure VMware 解決方案 Vm 可以 Azure Load Balancer 內部使用嗎？
-否。 Azure Load Balancer 內部-僅支援 Azure IaaS Vm。 Azure Load Balancer 不支援以 IP 為基礎的後端集區;僅 azure VMware 解決方案 Vm 不是 Azure 物件的 Azure Vm 或虛擬機器擴展集物件。
+不會。 Azure Load Balancer 內部-僅支援 Azure IaaS Vm。 Azure Load Balancer 不支援以 IP 為基礎的後端集區;僅 azure VMware 解決方案 Vm 不是 Azure 物件的 Azure Vm 或虛擬機器擴展集物件。
 
 #### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>是否可以使用現有的 ExpressRoute 閘道來連接到 Azure VMware 解決方案？
 是，您可以使用現有的 ExpressRoute 閘道來連接到 Azure VMware 解決方案，只要它不超過每個虛擬網路的四個 ExpressRoute 線路限制。  不過，若要透過 ExpressRoute 從內部部署存取 Azure VMware 解決方案，則必須要有 ExpressRoute Global Reach，因為 ExpressRoute 閘道不會在其連線的線路之間提供可轉移的路由。
@@ -119,7 +119,7 @@ Azure VMware 解決方案中的每個 ESXi 主機都會設定 4 25-Gbps 的 Nic�
 
 #### <a name="are-the-snmp-infrastructure-logs-shared"></a>SNMP 基礎結構記錄檔是共用的嗎？
 
-否。
+不會。
 
 ## <a name="hosts-clusters-and-private-clouds"></a>主機、叢集和私人雲端
 
@@ -188,7 +188,7 @@ Azure VMware 解決方案中的每個 ESXi 主機都會設定 4 25-Gbps 的 Nic�
 
 #### <a name="do-i-need-to-restrict-access-from-the-internet-to-vms-on-logical-networks-in-a-private-cloud"></a>我是否需要對於私人雲端之中邏輯網路上的 VM 限制從網際網路存取的存取權？
 
-否。 不允許從網際網路對私人雲端直接輸入的網路流量。
+不會。 依預設，不允許從網際網路將網路流量直接輸入私人雲端。  不過，您可以透過 Azure VMware Solution 私用雲端 Azure 入口網站中的 [公用 IP](public-ip-usage.md) 選項，將 Azure Vmware 解決方案 vm 公開至網際網路。
 
 #### <a name="do-i-need-to-restrict-internet-access-from-vms-on-logical-networks-to-the-internet"></a>我是否需限制從邏輯網路上的 VM 存取網際網路線的存取權？
 
@@ -302,7 +302,7 @@ VMware HCX Enterprise 提供作為 *預覽* 功能/服務的 Azure vmware 解決
 
 #### <a name="does-azure-vmware-solution-offer-multi-tenancy-for-hosting-csp-partners"></a>Azure VMware 解決方案是否為裝載 CSP 合作夥伴提供多租使用者？
 
-否。 Azure VMware 解決方案目前不提供多租使用者。
+不會。 Azure VMware 解決方案目前不提供多租使用者。
 
 #### <a name="will-traffic-between-on-premises-and-azure-vmware-solution-over-expressroute-incur-any-outbound-data-transfer-charge-in-the-metered-data-plan"></a>內部部署和 Azure VMware 解決方案之間的流量會在計量付費資料方案中產生任何輸出資料傳輸費用嗎？
 

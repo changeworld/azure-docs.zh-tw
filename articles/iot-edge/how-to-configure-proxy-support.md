@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperfq1
-ms.openlocfilehash: ae0c4c69cf500fb352cc889e068888084d1d8f8b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: c39ce2bed63b6efb6224e0e27fdb1104ef7a5ec8
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045953"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862389"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>設定 IoT Edge 裝置以透過 Proxy 伺服器進行通訊
 
@@ -53,11 +53,11 @@ IoT Edge 裝置會傳送 HTTPS 要求以和 IoT 中樞通訊。 如果您的裝�
 
 Proxy URL 採用下列格式：**protocol**://**proxy_host**:**proxy_port**。
 
-* **protocol**是 HTTP 或 HTTPS。 Docker daemon 可以使用任一種通訊協定，視您的容器登錄設定而定，但 IoT Edge daemon 和執行時間容器應該一律使用 HTTP 來連線到 proxy。
+* **protocol** 是 HTTP 或 HTTPS。 Docker daemon 可以使用任一種通訊協定，視您的容器登錄設定而定，但 IoT Edge daemon 和執行時間容器應該一律使用 HTTP 來連線到 proxy。
 
-* **proxy_host**是 Proxy 伺服器的位址。 如果您的 proxy 伺服器需要驗證，您可以使用下列格式提供您的認證作為 proxy 主機的一部分：**使用者**：**密碼** \@ **proxy_host**。
+* **proxy_host** 是 Proxy 伺服器的位址。 如果您的 proxy 伺服器需要驗證，您可以使用下列格式提供您的認證作為 proxy 主機的一部分：**使用者**：**密碼** \@ **proxy_host**。
 
-* **proxy_port**是 Proxy 回應網路流量的網路連接埠。
+* **proxy_port** 是 Proxy 回應網路流量的網路連接埠。
 
 ## <a name="install-the-runtime-through-a-proxy"></a>透過 proxy 安裝執行時間
 
@@ -85,7 +85,7 @@ Proxy URL 採用下列格式：**protocol**://**proxy_host**:**proxy_port**。
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Initialize-IoTEdge
    ```
 
-如果您的 Proxy 伺服器有複雜的認證而無法包含在 URL 中，請在 `-InvokeWebRequestParameters` 中使用 `-ProxyCredential` 參數。 例如，
+如果您的 Proxy 伺服器有複雜的認證而無法包含在 URL 中，請在 `-InvokeWebRequestParameters` 中使用 `-ProxyCredential` 參數。 例如
 
 ```powershell
 $proxyCredential = (Get-Credential).GetNetworkCredential()
@@ -270,6 +270,12 @@ IoT Edge 代理程式是在任何 IoT Edge 裝置上皆應第一個啟動的模�
     }
 }
 ```
+
+## <a name="working-with-traffic-inspecting-proxies"></a>使用流量檢查 proxy
+
+如果您嘗試使用的 proxy 在 TLS 安全的連接上執行流量檢查，請務必注意，使用 x.509 憑證的驗證無法運作。 IoT Edge 建立以提供的憑證和金鑰以端對端方式加密的 TLS 通道。 如果該通道中斷以進行流量檢查，則 proxy 無法使用適當的認證來重新建立通道，而 IoT 中樞和 IoT 中樞裝置布建服務會傳回 `Unauthorized` 錯誤。
+
+若要使用執行流量檢查的 proxy，您必須使用共用存取簽章驗證，或將 IoT 中樞和 IoT 中樞裝置布建服務新增至允許清單，以避免檢查。
 
 ## <a name="next-steps"></a>後續步驟
 

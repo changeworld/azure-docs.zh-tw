@@ -8,39 +8,48 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 40c1fb314a2dea653740e7f87b5caa14c759fffb
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 1fd2b8461bd66c826dc4890c331b740c4703f896
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078216"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903984"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT 解決方案加速器的常見問題集
 
-另請參閱連線處理站 [特定的常見問題](iot-accelerators-faq-cf.md) 和 [遠端監視特定的常見問題](iot-accelerators-faq-rm-v2.md) 。
+另請參閱連線處理站 [特定的常見問題](iot-accelerators-faq-cf.md)。
 
 ### <a name="where-can-i-find-the-source-code-for-the-solution-accelerators"></a>哪裡可以找到解決方案加速器的原始程式碼？
 
 原始程式碼儲存在下列 GitHub 儲存機制中︰
 
-* [遠端監視解決方案加速器 (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet) \(英文\)
-* [遠端監視解決方案加速器 (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) \(英文\)
-* [預測性維護解決方案加速器](https://github.com/Azure/azure-iot-predictive-maintenance) \(英文\)
 * [連線的處理站解決方案加速器](https://github.com/Azure/azure-iot-connected-factory) \(英文\)
+* [裝置模擬解決方案加速器](https://github.com/Azure/device-simulation-dotnet)
+
+### <a name="where-can-i-find-the-remote-monitoring-and-predictive-maintenance-solution-accelerators"></a>哪裡可以找到遠端監視和預測性維護解決方案加速器？
+
+自2020年12月10日起，已從 [Azure IoT 解決方案加速器](https://www.azureiotsolutions.com/Accelerators) 網站移除遠端監視和預測性維護加速器，且不再適用于新的部署。 這兩個加速器的 GitHub 存放庫都已封存。 程式碼仍可供任何人存取，但存放庫不會採取任何新的貢獻。
+
+### <a name="what-happens-to-my-existing-remote-monitoring-and-predictive-maintenance-deployments"></a>我現有的遠端監視和預測性維護部署會發生什麼事？
+
+現有的部署不會因為遠端監視和預測性維護解決方案加速器的移除而受到影響，且會繼續運作。 分叉存放庫也不會受到影響。 GitHub 上的主要存放庫已封存。
+
+### <a name="how-do-i-deploy-device-simulation-solution-accelerator"></a>如何? 部署裝置模擬解決方案加速器？
+
+若要部署裝置模擬解決方案加速器，請參閱 [裝置模擬](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) GitHub 存放庫。
+
+### <a name="where-can-i-find-information-about-the-removed-solution-accelerators"></a>哪裡可以找到已移除解決方案加速器的相關資訊？
+
+請參閱先前版本網站上的下列頁面：
+
+* [遠端監視](/previous-versions/azure/iot-accelerators/about-iot-accelerators)
+* [預測性維護](/previous-versions/azure/iot-accelerators/about-iot-accelerators)
 
 ### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>我可以使用哪些 SDK 來為解決方案加速器開發裝置用戶端？
 
 您可以在 [Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) GitHub 存放庫中找到不同語言 (C、.NET、Java、Node.js、Python) 的 IoT 裝置 SDK 連結。
 
 如果您使用 DevKit 裝置，您可以在 [IoT DevKit SDK](https://github.com/Microsoft/devkit-sdk) GitHub 存放庫中找到資源和範例。
-
-### <a name="is-the-new-microservices-architecture-available-for-all-the-three-solution-accelerators"></a>新的微服務架構是否適用於這三個解決方案加速器？
-
-目前，只有遠端監視解決方案是使用微服務架構，因為它涵蓋最廣泛的情節。
-
-### <a name="what-advantages-does-the-new-open-sourced-microservices-based-architecture-provide-in-the-new-update"></a>以微服務作為基礎的開放原始碼新基礎架構能在更新中提供哪些優點？
-
-在過去兩年中，雲端架構已大幅發展。 微服務問世以來都是絕佳的模式，可達成縮放及彈性，而不必犧牲開發速度。 此架構模式運用於多項在內部使用的 Microsoft 服務，都獲得絕佳的可靠性與延展性結果。 Microsoft 會在解決方案加速器中將這些知識付諸實現，，讓客戶可以從中獲益。
 
 ### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-azure-ad-tenant-how-do-i-complete-this-task"></a>我是服務管理員，我想要變更我的訂用帳戶與特定 Azure AD 租用戶之間的目錄對應。 如何完成這項工作？
 
@@ -63,14 +72,6 @@ ms.locfileid: "92078216"
 
 如果您確定有 Azure 訂用帳戶，請驗證您的訂用帳戶的租用戶對應，並確認已在下拉式清單中選取正確的租用戶。 如果您已驗證租用戶是否正確，請遵循先前圖表並驗證您的訂用帳戶與此 Azure AD 租用戶的對應。
 
-### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>哪裡可以找到舊版遠端監視解決方案的相關資訊？
-
-舊版遠端監視解決方案加速器稱為 IoT 套件遠端監視預先設定解決方案。 您可以在中找到封存的檔 [https://docs.microsoft.com/previous-versions/azure/iot-suite/](/previous-versions/azure/iot-suite/) 。
-
-### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>是否可在與現有解決方案相同的地理區域中使用新的解決方案加速器？
-
-是，可在相同的地理區域中使用新的遠端監視。
-
 ### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>刪除 Azure 入口網站中的資源群組，並在 azureiotsolutions.com 中的解決方案加速器上按一下 [刪除] 有何不同？
 
 * 如果您在 [azureiotsolutions.com](https://www.azureiotsolutions.com/)中刪除解決方案加速器，就會刪除您在建立解決方案加速器時所部署的所有資源。 將額外資源新增到資源群組時，也會一併刪除這些資源。
@@ -88,10 +89,6 @@ ms.locfileid: "92078216"
 
 50 個。 您可以建立 [Azure 支援票證](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)來提高此限制，但每一個訂用帳戶預設只能佈建 50 個 Cosmos DB 執行個體。
 
-### <a name="how-many-free-bing-maps-apis-can-i-provision-in-a-subscription"></a>我可以在一個訂用帳戶中佈建多少個免費 Bing 地圖服務 API？
-
-2 個。 您只可以在 Azure 訂用帳戶中針對 Enterprise 方案建立兩個內部交易層級 1 Bing 地圖。 根據預設，遠端監視解決方案會隨著內部交易層級 1 方案一起佈建。 因此，您只可以在一個訂用帳戶中最多佈建 2 個遠端監視方案。
-
 ### <a name="can-i-create-a-solution-accelerator-if-i-have-microsoft-azure-for-dreamspark"></a>如果我有 Microsoft Azure for DreamSpark，是否可以建立解決方案加速器？
 
 > [!NOTE]
@@ -107,7 +104,5 @@ ms.locfileid: "92078216"
 
 您也可以探索 IoT 解決方案加速器的一些其他特性與功能：
 
-* [探索遠端監視解決方案加速器的功能](quickstart-remote-monitoring-deploy.md)
-* [預測性維護解決方案加速器概觀](./iot-accelerators-predictive-walkthrough.md)
 * [部署連線的處理站解決方案加速器](quickstart-connected-factory-deploy.md) \(英文\)
 * [從頭建立 IoT 安全性](../iot-fundamentals/iot-security-ground-up.md)

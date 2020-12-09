@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: dc262e133f6e91271d7e9848bdca9d3a6062fc66
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: d46c1d8efb5234d47c80ca4256c2f56d56ccf805
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751694"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862168"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>應用程式閘道相關的常見問題集
 
@@ -133,7 +133,7 @@ Set-AzPublicIpAddress -PublicIpAddress $publicIP
 
 ### <a name="does-application-gateway-v2-support-proxying-requests-with-ntlm-authentication"></a>應用程式閘道 V2 是否支援使用 NTLM 驗證來通過 Proxy 處理要求？
 
-否。 應用程式閘道 V2 尚不支援使用 NTLM 驗證來通過 Proxy 處理要求。
+否。 應用程式閘道 V2 不支援使用 NTLM 驗證的 proxy 要求。
 
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>應用程式閘道親和性 Cookie 是否支援 SameSite 屬性？
 是，[Chromium 瀏覽器](https://www.chromium.org/Home) [v80 更新](https://chromiumdash.appspot.com/schedule)強制規定不含 SameSite 屬性的 HTTP Cookie 視同 SameSite=Lax。 這表示在協力廠商環境下，瀏覽器不會傳送應用程式閘道親和性 Cookie。 

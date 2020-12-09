@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: a7d392412aa481d9541cd4987cfb4c18d04dafa0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 84e156074d6db837556ba4ed9febdb43bcdf3318
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500150"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902291"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory 中的持續整合和傳遞
 
@@ -235,7 +235,7 @@ ms.locfileid: "96500150"
       * `-` 表示不保留參數的預設值。
       * `|` 是來自 Azure Key Vault 連接字串或金鑰之秘密的特殊案例。
    * `<name>` 是參數的名稱。 如果空白，便會採用屬性的名稱。 如果值是以 `-` 字元開頭，則名稱會縮短。 例如，`AzureStorage1_properties_typeProperties_connectionString` 會縮短成 `AzureStorage1_connectionString`。
-   * `<stype>` 這是參數的型別。 如果 `<stype>` 是空白，則預設類型為 `string` 。 支援的值：`string`、`bool`、`number`、`object` 和 `securestring`。
+   * `<stype>` 這是參數的型別。 如果 `<stype>` 是空白，則預設類型為 `string` 。 支援的值： `string` 、 `securestring` 、 `int` 、 `bool` 、 `object` `secureobject` 和 `array` 。
 * 在定義檔中指定陣列，就表示範本中的比對屬性是陣列。 Data Factory 會使用陣列的整合執行階段物件中所指定的定義，逐一查看陣列中的所有物件。 第二個物件 (字串) 會變成屬性的名稱，以作為每個反覆項目參數的名稱。
 * 定義不得專屬於特定資源執行個體。 任何定義都會套用至該類型的所有資源。
 * 根據預設，所有安全字串 (例如 Key Vault 秘密) 和安全字串 (例如連接字串、金鑰和權杖) 都會參數化。
@@ -250,7 +250,7 @@ ms.locfileid: "96500150"
         "properties": {
             "activities": [{
                 "typeProperties": {
-                    "waitTimeInSeconds": "-::number",
+                    "waitTimeInSeconds": "-::int",
                     "headers": "=::object"
                 }
             }]
@@ -268,7 +268,7 @@ ms.locfileid: "96500150"
             "typeProperties": {
                 "recurrence": {
                     "*": "=",
-                    "interval": "=:triggerSuffix:number",
+                    "interval": "=:triggerSuffix:int",
                     "frequency": "=:-freq"
                 },
                 "maxConcurrency": "="
@@ -317,7 +317,7 @@ ms.locfileid: "96500150"
 #### <a name="triggers"></a>觸發程序
 
 * 在 `typeProperties` 底下，有兩個屬性已參數化。 第一個是 `maxConcurrency`，其已指定為具有預設值且類型為 `string`。 其具有預設參數名稱 `<entityName>_properties_typeProperties_maxConcurrency`。
-* `recurrence` 屬性也已參數化。 在其底下，該層級的所有屬性都已指定成要參數化為字串，且具有預設值和參數名稱。 `interval` 屬性為例外狀況，其已參數化為 `number` 類型。 參數名稱後面會加上 `<entityName>_properties_typeProperties_recurrence_triggerSuffix`。 同樣地，`freq` 屬性是字串並已參數化為字串。 不過，`freq` 屬性已參數化但沒有預設值。 名稱會縮短並加上尾碼。 例如： `<entityName>_freq` 。
+* `recurrence` 屬性也已參數化。 在其底下，該層級的所有屬性都已指定成要參數化為字串，且具有預設值和參數名稱。 `interval` 屬性為例外狀況，其已參數化為 `int` 類型。 參數名稱後面會加上 `<entityName>_properties_typeProperties_recurrence_triggerSuffix`。 同樣地，`freq` 屬性是字串並已參數化為字串。 不過，`freq` 屬性已參數化但沒有預設值。 名稱會縮短並加上尾碼。 例如： `<entityName>_freq` 。
 
 #### <a name="linkedservices"></a>LinkedServices
 
@@ -668,7 +668,7 @@ ms.locfileid: "96500150"
     - 資料處理站實體彼此相依。 例如，觸發程序取決於管線，而管線取決於資料集和其他管線。 選擇性發佈資源子集可能會導致非預期的行為和錯誤。
     - 在少數情況下，當您需要選擇性發佈時，請考慮使用 Hotfix。 如需詳細資訊，請參閱 [修復生產環境](#hotfix-production-environment)。
 
-- Azure Data Factory 團隊不建議將 Azure RBAC 控制項指派給資料處理站中 (管線、資料集等) 的個別實體。 例如，如果開發人員有管線或資料集的存取權，就應該能夠存取 data factory 中的所有管線或資料集。 如果您認為您需要在資料處理站內執行許多 Azure 角色，請查看部署第二個 data factory。
+- Azure Data Factory 團隊不建議將 Azure RBAC 控制項指派給資料處理站中 (管線、資料集等) 的個別實體。 例如，如果開發人員有管線或資料集的存取權，他們應該能夠存取資料處理站中的所有管線或資料集。 如果您認為您需要在資料處理站內執行許多 Azure 角色，請查看部署第二個 data factory。
 
 -   您無法從私人分支發佈。
 

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/24/2020
-ms.openlocfilehash: c0d0e3154360d787bfc2072c5ae1fe878fa1d138
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.date: 12/08/2020
+ms.openlocfilehash: 49e4a6f7f8c268669a94796257d5740ec6f4e6ff
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96003647"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902080"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>使用 Azure Data Factory 在雪花中複製和轉換資料
 
@@ -151,7 +151,7 @@ ms.locfileid: "96003647"
 | 查詢          | 指定從雪花讀取資料的 SQL 查詢。 如果架構、資料表和資料行的名稱包含小寫，請在查詢中以引號括住物件識別碼，例如 `select * from "schema"."myTable"` 。<br>不支援執行預存程式。 | 否       |
 | exportSettings | 用來從雪花式取出資料的 Advanced 設定。 您可以設定「複製到」命令所支援的專案，當您叫用語句時，Data Factory 將會通過此命令。 | 否       |
 | ***在 `exportSettings` ：** _ |  |  |
-| 類型 | Export 命令的類型，設定為 _ * SnowflakeExportCopyCommand * *。 | 是 |
+| 型別 | Export 命令的類型，設定為 _ * SnowflakeExportCopyCommand * *。 | 是 |
 | additionalCopyOptions | 額外的複製選項，以索引鍵/值組的字典形式提供。 範例： MAX_FILE_SIZE、覆寫。 如需詳細資訊，請參閱 [雪花式複製選項](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions)。 | 否 |
 | additionalFormatOptions | 提供用來複製命令做為機碼值組字典的其他檔案格式選項。 範例： DATE_FORMAT、TIME_FORMAT TIMESTAMP_FORMAT。 如需詳細資訊，請參閱 [雪花式格式類型選項](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions)。 | 否 |
 
@@ -159,7 +159,7 @@ ms.locfileid: "96003647"
 
 如果您的接收資料存放區和格式符合本節所述的準則，您可以使用複製活動，直接從雪花複製到接收。 Data Factory 會檢查設定，並在不符合下列準則時失敗複製活動執行：
 
-- **接收連結服務** 是具有 **共用存取** 簽章驗證的 [**Azure Blob 儲存體**](connector-azure-blob-storage.md)。
+- **接收連結服務** 是具有 **共用存取** 簽章驗證的 [**Azure Blob 儲存體**](connector-azure-blob-storage.md)。 如果您想要將資料直接複製到下列支援格式的 Azure Data Lake Storage Gen2，您可以針對您的 ADLS Gen2 帳戶建立具有 SAS 驗證的 Azure Blob 連結服務，以避免使用 [雪花式的分段複製](#staged-copy-from-snowflake)。
 
 - **接收資料格式** 是 **Parquet**、分隔的 **文字**，或是具有下列設定的 **JSON** ：
 
@@ -173,7 +173,6 @@ ms.locfileid: "96003647"
         - `compression` 不可以是 **壓縮**、 **gzip**、 **bzip2** 或 **deflate**。
         - `encodingName` 會保留為預設值，或設定為 **utf-8**。
         - `filePattern` 在 [複製活動接收] 中，保留預設值或設定為 [ **setOfObjects**]。
-
 - 在複製活動來源中， `additionalColumns` 未指定。
 - 未指定資料行對應。
 
@@ -282,7 +281,7 @@ ms.locfileid: "96003647"
 | preCopyScript     | 針對複製活動指定一個 SQL 查詢，在每次執行時將資料寫入雪花之前執行。 使用此屬性來清除預先載入的資料。 | 否                                            |
 | importSettings | 用來將資料寫入雪花的 Advanced 設定。 您可以設定「複製到」命令所支援的專案，當您叫用語句時，Data Factory 將會通過此命令。 | 否 |
 | **_在 `importSettings` ：_* _ |                                                              |  |
-| 類型 | 匯入命令的類型，設定為 _ * SnowflakeImportCopyCommand * *。 | 是 |
+| 型別 | 匯入命令的類型，設定為 _ * SnowflakeImportCopyCommand * *。 | 是 |
 | additionalCopyOptions | 額外的複製選項，以索引鍵/值組的字典形式提供。 範例： ON_ERROR、FORCE、LOAD_UNCERTAIN_FILES。 如需詳細資訊，請參閱 [雪花式複製選項](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions)。 | 否 |
 | additionalFormatOptions | 提供給 COPY 命令的其他檔案格式選項，提供做為索引鍵/值組的字典。 範例： DATE_FORMAT、TIME_FORMAT TIMESTAMP_FORMAT。 如需詳細資訊，請參閱 [雪花式格式類型選項](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#format-type-options-formattypeoptions)。 | 否 |
 
@@ -290,7 +289,7 @@ ms.locfileid: "96003647"
 
 如果您的來源資料存放區和格式符合本節所述的準則，您可以使用複製活動，直接從來源複製到雪花。 Azure Data Factory 會檢查設定，並在不符合下列準則時失敗複製活動執行：
 
-- **來源連結服務** 是具有 **共用存取** 簽章驗證的 [**Azure Blob 儲存體**](connector-azure-blob-storage.md)。
+- **來源連結服務** 是具有 **共用存取** 簽章驗證的 [**Azure Blob 儲存體**](connector-azure-blob-storage.md)。 如果您想要以下列支援的格式直接複製 Azure Data Lake Storage Gen2 的資料，您可以針對您的 ADLS Gen2 帳戶建立具有 SAS 驗證的 Azure Blob 連結服務，以避免使用  [分段複製到雪花](#staged-copy-to-snowflake)式。
 
 - **源資料格式** 是 **Parquet**、**分隔的文字**，或是具有下列設定的 **JSON** ：
 
@@ -411,7 +410,7 @@ ms.locfileid: "96003647"
 
 | 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Table | 如果您選取 [資料表] 做為輸入，則在使用內嵌資料集時，資料流程將會從雪花式資料集或來源選項中指定的資料表提取所有資料。 | 否 | String | *僅適用于內嵌資料集的 ()*<br>tableName<br>schemaName |
+| 資料表 | 如果您選取 [資料表] 做為輸入，則在使用內嵌資料集時，資料流程將會從雪花式資料集或來源選項中指定的資料表提取所有資料。 | 否 | String | *僅適用于內嵌資料集的 ()*<br>tableName<br>schemaName |
 | 查詢 | 如果您選取 [查詢為輸入]，請輸入查詢以從雪花提取資料。 這項設定會覆寫您在資料集中選擇的任何資料表。<br>如果架構、資料表和資料行的名稱包含小寫，請在查詢中以引號括住物件識別碼，例如 `select * from "schema"."myTable"` 。 | 否 | String | 查詢 |
 
 #### <a name="snowflake-source-script-examples"></a>雪花式來源腳本範例

@@ -1,21 +1,26 @@
 ---
 title: 使用 Azure 地圖服務繪製錯誤視覺化檢視
-description: 在本文中，您將了解如何將建立工具轉換 API 所傳回的警告和錯誤視覺化。
+description: 在本文中，您將瞭解如何將建立者 (預覽版所傳回的警告和錯誤視覺化) 轉換 API。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 06/12/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 99821e51364eb9ffd75cda291c526c3c0b8c8f0e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: db88e347e12783205ea8c31fed0bb374fccb4736
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895846"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903576"
 ---
-# <a name="using-the-azure-maps-drawing-error-visualizer"></a>使用 Azure 地圖服務繪製錯誤視覺化檢視
+# <a name="using-the-azure-maps-drawing-error-visualizer-with-creator-preview"></a>使用 Azure 地圖服務繪圖錯誤視覺化檢視搭配 Creator (Preview) 
+
+> [!IMPORTANT]
+> Azure 地圖服務 Creator 服務目前處於公開預覽狀態。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 
 「繪製錯誤視覺化檢視」是一個獨立的 Web 應用程式，會顯示在轉換程序期間偵測到[繪圖套件警告和錯誤](drawing-conversion-error-codes.md)。 錯誤視覺化檢視 Web 應用程式由靜態頁面所組成，可以在不連接網際網路的情況下使用。  您可以使用錯誤視覺化檢視，根據[繪圖套件需求](drawing-requirements.md)來修正錯誤和警告。 只有在偵測到錯誤時，[Azure 地圖服務轉換 API](/rest/api/maps/conversion) 才會傳回含有錯誤視覺化連結的回應。
 
@@ -25,13 +30,13 @@ ms.locfileid: "92895846"
 
 1. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [取得主要訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為主要金鑰或訂用帳戶金鑰。
-3. [建立一個建立工具資源](how-to-manage-creator.md)
+3. [建立建立者 (預覽版) 資源](how-to-manage-creator.md)
 
 本教學課程使用 [Postman](https://www.postman.com/) 應用程式，但您可以選擇不同的 API 開發環境。
 
 ## <a name="download"></a>下載
 
-1. 將您的繪圖套件上傳至 Azure 地圖建立工具服務，以取得所上傳套件的 `udid`。 如需如何上傳套件的相關步驟，請參閱[上傳繪圖套件](tutorial-creator-indoor-maps.md#upload-a-drawing-package)。
+1. 將您的繪圖套件上傳至 Azure 地圖服務 Creator 服務 (預覽) 以取得 `udid` 上傳封裝的。 如需如何上傳套件的相關步驟，請參閱[上傳繪圖套件](tutorial-creator-indoor-maps.md#upload-a-drawing-package)。
 
 2. 在繪圖套件上傳後，我們將對上傳的套件使用 `udid`，以將套件轉換成地圖資料。 如需如何轉換套件的相關步驟，請參閱[轉換繪圖套件](tutorial-creator-indoor-maps.md#convert-a-drawing-package)。
 
@@ -58,8 +63,8 @@ ms.locfileid: "92895846"
 
 在從 `diagnosticPackageLocation` 連結下載的壓縮套件中，您會發現兩個檔案。
 
-* _VisualizationTool.zip_ ：包含繪製錯誤視覺化檢視的原始程式碼、媒體和網頁。
-* _ConversionWarningsAndErrors.json_ ：包含警告、錯誤和繪製錯誤視覺化檢視所使用之其他詳細資料的格式化清單。
+* _VisualizationTool.zip_：包含繪製錯誤視覺化檢視的原始程式碼、媒體和網頁。
+* _ConversionWarningsAndErrors.json_：包含警告、錯誤和繪製錯誤視覺化檢視所使用之其他詳細資料的格式化清單。
 
 解壓縮 _VisualizationTool.zip_ 資料夾。 其中包含下列項目：
 
@@ -80,13 +85,13 @@ ms.locfileid: "92895846"
 
 :::image type="content" source="./media/drawing-errors-visualizer/start-page.png" alt-text="繪製錯誤視覺化檢視應用程式 - 起始頁面":::
 
-_ConversionWarningsAndErrors.json_ 檔案已放在下載目錄的根目錄中。 若要載入 _ConversionWarningsAndErrors.json_ ，您可以將檔案放拖到方塊上，或按一下方塊，在 [檔案總管] 對話方塊中尋找檔案，然後上傳檔案。
+_ConversionWarningsAndErrors.json_ 檔案已放在下載目錄的根目錄中。 若要載入 _ConversionWarningsAndErrors.json_，您可以將檔案放拖到方塊上，或按一下方塊，在 [檔案總管] 對話方塊中尋找檔案，然後上傳檔案。
 
-:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="繪製錯誤視覺化檢視應用程式 - 起始頁面":::
+:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="繪製錯誤視覺化檢視應用程式 - 藉由拖放載入資料":::
 
 _ConversionWarningsAndErrors.json_ 檔案載入後，您會看到繪圖套件錯誤和警告清單。 每個錯誤或警告皆由圖層、層級和詳細訊息所指定。 若要查看錯誤或警告的詳細資訊，請按一下 [ **詳細資料** ] 連結。 棘手區段接著會出現在清單下方。 此時您可以瀏覽至每個錯誤，以深入了解如何解決錯誤。
 
-:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="繪製錯誤視覺化檢視應用程式 - 起始頁面":::
+:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="繪製錯誤視覺化檢視應用程式 - 錯誤和警告":::
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -96,7 +101,7 @@ _ConversionWarningsAndErrors.json_ 檔案載入後，您會看到繪圖套件錯
 > [繪製轉換錯誤碼](drawing-conversion-error-codes.md)
 
 > [!div class="nextstepaction"]
-> [室內地圖的建立工具](creator-indoor-maps.md)
+> [適用于室內地圖的建立者 (預覽) ](creator-indoor-maps.md)
 
 > [!div class="nextstepaction"]
 > [使用室內地圖模組](how-to-use-indoor-module.md)

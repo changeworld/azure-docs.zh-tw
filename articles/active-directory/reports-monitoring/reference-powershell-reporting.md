@@ -18,12 +18,12 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 25f3402864e2ba873ce63acb6cedcd3f2ea018f7
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9ff923d0231a1b00493a54996c2fcd489012bbe7
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123127"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862032"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>適用於報表的 Azure AD PowerShell Cmdlet
 
@@ -36,7 +36,7 @@ ms.locfileid: "93123127"
 Install-module AzureADPreview
 ```
 
-如需如何使用 PowerShell 連接到 Azure AD 的詳細資訊，請參閱 [Azure AD PowerShell For Graph](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)文章。  
+如需如何使用 PowerShell 連接到 Azure AD 的詳細資訊，請參閱 [Azure AD PowerShell For Graph](/powershell/azure/active-directory/install-adv2)文章。  
 
 使用 Azure Active Directory (Azure AD) 報表，您可以在 (audit 記錄) 和驗證資料 (登入記錄) 的方向，取得有關活動的詳細資料。 雖然使用 MS 圖形 API 可以取得資訊，但現在您可以使用 Azure AD PowerShell Cmdlet 來取得相同的資料，以進行報告。
 

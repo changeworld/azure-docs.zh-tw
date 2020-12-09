@@ -9,19 +9,16 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 7419e8667f07eec03e860634c7b3fddcac0e186b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 97b52159684eca9be59ccc711f6d2f19b5eb8d49
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95901548"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906109"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>使用網路檔案系統 (NFS) 3.0 通訊協定 (預覽來掛接 Blob 儲存體) 
 
 您可以從以 Windows 或 Linux 為基礎的 Azure 虛擬機器 (VM) 或在內部部署執行的 Windows 或 Linux 系統，在 Blob 儲存體中掛接容器（使用 NFS 3.0 通訊協定）。 本文提供逐步指引。 若要深入瞭解 Blob 儲存體中的 NFS 3.0 通訊協定支援，請參閱 [Azure blob 儲存體 (preview) 中的網路檔案系統 (nfs) 3.0 通訊協定支援 ](network-file-system-protocol-support.md)。
-
-> [!NOTE]
-> Azure Blob 儲存體中的 NFS 3.0 通訊協定支援處於公開預覽狀態，可在下欄區域使用：美國東部、美國中部、美國中西部、澳大利亞東南部、歐洲北部、英國西部、韓國中部、南韓南部和加拿大中部。
 
 ## <a name="step-1-register-the-nfs-30-protocol-feature-with-your-subscription"></a>步驟1：向您的訂用帳戶註冊 NFS 3.0 通訊協定功能
 
@@ -48,13 +45,7 @@ ms.locfileid: "95901548"
    Register-AzProviderFeature -FeatureName AllowNFSV3 -ProviderNamespace Microsoft.Storage 
    ```
 
-5. 您 `PremiumHns` 也可以使用下列命令來註冊此功能。
-
-   ```powershell
-   Register-AzProviderFeature -FeatureName PremiumHns -ProviderNamespace Microsoft.Storage  
-   ```
-
-6. 使用下列命令來註冊資源提供者。
+5. 使用下列命令來註冊資源提供者。
     
    ```powershell
    Register-AzResourceProvider -ProviderNamespace Microsoft.Storage   
@@ -66,7 +57,6 @@ ms.locfileid: "95901548"
 
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFSV3
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumHns  
 ```
 
 ## <a name="step-3-create-an-azure-virtual-network-vnet"></a>步驟3：建立 Azure 虛擬網路 (VNet) 
@@ -86,20 +76,20 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 
 若要使用 NFS 3.0 掛接容器，您必須在向訂用帳戶註冊此功能 **之後** ，建立儲存體帳戶。 您無法在註冊功能之前啟用已存在的帳戶。 
 
-在此功能的預覽版本中，只有 [BlockBlobStorage](../blobs/storage-blob-create-account-block-blob.md) 帳戶才支援 NFS 3.0 通訊協定。
+在此功能的預覽版本中， [BlockBlobStorage](../blobs/storage-blob-create-account-block-blob.md) 和 [一般用途 V2](../common/storage-account-overview.md#general-purpose-v2-accounts) 帳戶支援 NFS 3.0 通訊協定。
 
 當您設定帳戶時，請選擇下列值：
 
-|設定 | 值|
-|----|---|
-|Location|下列其中一個區域：美國東部、美國中部、美國中西部、澳大利亞東南部、歐洲北部、英國西部、韓國中部、南韓南部和加拿大中部 |
-|效能|Premium|
-|帳戶種類|BlockBlobStorage|
-|複寫|本地備援儲存體 (LRS)|
-|連線方法| (選取的網路) 或私人端點的公用端點|
-|需要安全傳輸|已停用|
-|階層式命名空間|啟用|
-|NFS V3|啟用|
+|設定 | Premium 效能 | 標準效能  
+|----|---|---|
+|位置|所有可用區域 |下列其中一個區域：澳大利亞東部、韓國中部和美國中南部   
+|效能|Premium| 標準
+|帳戶種類|BlockBlobStorage| 一般用途 V2
+|複寫|本地備援儲存體 (LRS)| 本地備援儲存體 (LRS)
+|連線方法| (選取的網路) 或私人端點的公用端點 | (選取的網路) 或私人端點的公用端點
+|需要安全傳輸|已停用|已停用
+|階層式命名空間|啟用|啟用
+|NFS V3|啟用 |啟用 
 
 您可以接受所有其他設定的預設值。 
 

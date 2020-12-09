@@ -10,14 +10,14 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 83ee8e0c0583cba72da8702e196f0f38128f8d8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 924c21037a464770fac13c9b45ddcf261ff5a058
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72935960"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905128"
 ---
-# <a name="define-and-use-moderation-jobs-rest"></a> (REST) 定義和使用仲裁作業
+# <a name="define-and-use-moderation-jobs-api-console"></a> (API 主控台定義和使用仲裁作業) 
 
 仲裁作業可作為內容仲裁、工作流程和評論功能的一種包裝函式。 本指南說明如何使用作業 REST Api 來起始和檢查內容仲裁作業。 瞭解 Api 的結構之後，您就可以輕鬆地將這些呼叫移植到任何與 REST 相容的平臺。
 
@@ -28,7 +28,7 @@ ms.locfileid: "72935960"
 
 ## <a name="create-a-job"></a>建立作業
 
-若要建立仲裁作業，請移至 [[作業-建立](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5)API 參考] 頁面，然後選取訂用帳戶區域的按鈕 (您可以在[審核工具](https://contentmoderator.cognitive.microsoft.com/)) 的 [**認證**] 頁面上的 [端點 URL] 中找到此資訊。 這會啟動 API 主控台，您可以在其中輕鬆地建立及執行 REST API 呼叫。
+若要建立仲裁作業，請移至 [ [作業-建立](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) API 參考] 頁面，然後選取訂用帳戶區域的按鈕。 您可以在 [審核工具](https://contentmoderator.cognitive.microsoft.com/)的 [**認證**] 頁面上的端點 URL 中找到您的區域。 這會啟動 API 主控台，您可以在其中輕鬆地建立及執行 REST API 呼叫。
 
 ![[作業 - 建立] 頁面區域選取項目](images/test-drive-job-1.png)
 
@@ -41,11 +41,11 @@ ms.locfileid: "72935960"
 - **ContentId**：自訂識別碼字串。 這個字串會傳遞至 API 並透過回呼傳回。 它適用于將內部識別碼或中繼資料與審核作業的結果產生關聯。
 - **Workflowname**：您先前建立 (或預設工作流程) 預設值的工作流程名稱。
 - **>callbackendpoint**： (選擇性) 在完成審核時接收回呼資訊的 URL。
-- **Ocp Apim-訂用帳戶-金鑰**：您的內容仲裁金鑰。 您可以在[審核工具](https://contentmoderator.cognitive.microsoft.com)的 [**設定**] 索引標籤上找到此資訊。
+- **Ocp Apim-訂用帳戶-金鑰**：您的內容仲裁金鑰。 您可以在 [審核工具](https://contentmoderator.cognitive.microsoft.com)的 [**設定**] 索引標籤上找到此金鑰。
 
 ### <a name="fill-in-the-request-body"></a>填寫要求本文
 
-REST 呼叫的主體包含一個欄位 **ContentValue**。 如果您要仲裁文字，請貼上原始文字內容，或如果您要仲裁影像/影片，請輸入影像或影片 URL。 您可以使用下列範例影像 URL： [https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)
+REST 呼叫的主體包含一個欄位 **ContentValue**。 如果您要仲裁文字，請貼上原始文字內容，或如果您要仲裁影像或影片，請輸入影像或影片 URL。 您可以使用下列範例影像 URL： [https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)
 
 ![[作業 - 建立] 主控台查詢參數、標頭和要求本文方塊](images/job-api-console-inputs.PNG)
 
@@ -115,7 +115,7 @@ REST 呼叫的主體包含一個欄位 **ContentValue**。 如果您要仲裁文
 
 ### <a name="examine-the-new-reviews"></a>檢查新的評論 (s) 
 
-如果您的內容作業導致建立評論，您可以在 [審核工具](https://contentmoderator.cognitive.microsoft.com)中加以查看。 選取 [**審核**  >  **影像** / **文字**] / **影片** (取決於您) 使用的內容。 內容應該會出現，可供人工審核。 當人力仲裁者審查自動指派的標記和預測資料並提交最終審核決策之後，作業 API 會將所有資訊提交給指定的回呼端點端點。
+如果您的內容作業導致建立評論，您可以在 [審核工具](https://contentmoderator.cognitive.microsoft.com)中加以查看。 選取 [**審核**  >  **影像** / **文字**] / **影片** (取決於您) 使用的內容。 內容應該會出現，可供人工審核。 在人力審核者審查自動指派的標記和預測資料並提交最終審核決策之後，作業 API 會將所有資訊提交至指定的回呼端點。
 
 ## <a name="next-steps"></a>後續步驟
 

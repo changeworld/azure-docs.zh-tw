@@ -6,27 +6,31 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
-ms.date: 12/04/2020
-ms.openlocfilehash: 7b335c3db5fb52c4323b797556d48e3ed9ae410a
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.date: 12/08/2020
+ms.openlocfilehash: b5001898fa18834ce7c04403de70879084df85f1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621615"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904903"
 ---
-# <a name="co-sell-option-in-the-commercial-marketplace"></a>商業 marketplace 中的共同銷售選項
+# <a name="co-sell-option-in-the-commercial-marketplace"></a>在商業市集中的共同銷售選項
 
 在 [ **與 Microsoft 共同銷售** ] 索引標籤上提供的資訊完全是選擇性的。 您必須達成 [共同銷售就緒和 IP 共同銷售受到激勵狀態](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。 Microsoft 銷售團隊將使用您提供的資訊，在評估其符合客戶需求時，深入瞭解您的供應專案。 您的解決方案無法直接提供給客戶。 如需詳細資訊，請參閱 [與 Microsoft 共同銷售](https://partner.microsoft.com/membership/co-sell-with-microsoft)。
 
-合作夥伴中心中的共同銷售選項目前提供下列供應專案類型。
+合作夥伴中心中的共同銷售選項適用于下列供應專案類型。
 
 - Azure 應用程式
+- Azure 容器
+- Azure 虛擬機器
+- 諮詢服務
 - Dynamics 365 for Customer Engagement & PowerApps
-- Dynamics 365 for Operations
-- Dynamics 365 Business Central
+- 適用于作業的 Dynamics 365
+- Dynamics 365 business central
+- IoT Edge 模組
+- 受管理的服務
+- Power BI 應用程式
 - 軟體即服務 (SaaS)
-
-其他供應專案類型的支援將會在一段時間內提供使用。
 
 ## <a name="listing"></a>清單
 
@@ -41,11 +45,11 @@ ms.locfileid: "96621615"
 
 解決方案類型有助於定義您的供應專案設計來處理的案例。
 
-| **解決方案類型**    | **描述**  |
+| **解決方案類型**    | **說明**  |
 | :------------------- | :-------------------|
 | 裝置 (硬體)  | 牽涉到從裝置製造商建立或銷售硬體的供應專案。 |
 | IP (應用程式)  | 授權給客戶使用的應用程式或其他 copyrightable 材料。 例如：可在內部部署授權及安裝的 CRM 程式。 |
-| Service | 特定一次性專案的實際操作專長，通常是透過顧問提供。 例如：將用戶端的用戶端 (設定為用戶端，並假設負責在傳遞) 之後運算元據庫。 |
+| 服務 | 特定一次性專案的實際操作專長，通常是透過顧問提供。 例如：將用戶端的用戶端 (設定為用戶端，並假設負責在傳遞) 之後運算元據庫。 |
 | 受管理的服務 | 雲端式專案的實際操作專長，通常會持續進行。 例如：提供平臺和工具來執行線上資料庫，並提供受控服務提供者所提供的持續管理。 |
 
 ### <a name="solution-areas"></a>解決方案區域
@@ -58,7 +62,7 @@ ms.locfileid: "96621615"
 
 您可以選擇提供 Microsoft 將用來深入瞭解您的供應專案，並評估其符合您客戶需求的輔助檔檔。
 
-| **文件**    | **描述**  |
+| **文件**    | **說明**  |
 | :------------------- | :-------------------|
 | *客戶 1-需要) 的呼叫器 (* | 您供應專案的客戶就緒描述。 Microsoft 銷售團隊可能會與客戶分享這項資訊，以協助判斷您的供應專案是否適合使用，並確保它是客戶就緒的服務。 <br> <br> 使用合作夥伴中心中提供的其中一個相關範本： <br> <ul> <li> Microsoft Azure 的單一頁面導航模板 </li> <li> Microsoft Dynamics 365 1-呼機範本 </li> <li> Microsoft 365 1-呼機範本 </li> <li> Windows 10 1-呼機範本 </li> </ul> |
 | *需要 (客戶簡報)* | 滑動投影片以推銷您的供應專案及其價值主張。 確定您的供應專案已做好客戶準備之後，Microsoft 銷售團隊可以與客戶共用簡報，以清楚表達您的公司和 Microsoft 在部署聯合解決方案時所帶來的價值。 此簡報應涵蓋您的供應專案用途、其如何協助客戶、供應專案的相關產業，以及其與競爭解決方案的比較。 <br> <br> 使用合作夥伴中心中的可用範本。|

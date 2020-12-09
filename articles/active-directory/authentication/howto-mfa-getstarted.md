@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 978f404aa9b99819460e46ea89df19d27431b8b8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: c9ee81abd7cd0268a7cbd6b16aa6065ec7b54bef
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743134"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861301"
 ---
 # <a name="plan-an-azure-ad-multi-factor-authentication-deployment"></a>規劃 Azure AD Multi-Factor Authentication 部署
 
@@ -165,7 +165,7 @@ Azure AD 的 Multi-Factor Authentication 是藉由使用條件式存取來強制
 2. 使用條件式存取，對此群組強制執行多重要素驗證以存取所有資源。
 3. 定期重新評估群組成員資格，並移除已從群組註冊的使用者。
 
-您可以使用依賴 [MSOnline powershell 模組](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)的 powershell 命令，識別已註冊和未註冊的 Azure AD MFA 使用者。
+您可以使用依賴 [MSOnline powershell 模組](/powershell/azure/active-directory/install-msonlinev1)的 powershell 命令，識別已註冊和未註冊的 Azure AD MFA 使用者。
 
 #### <a name="identify-registered-users"></a>識別已註冊的使用者
 

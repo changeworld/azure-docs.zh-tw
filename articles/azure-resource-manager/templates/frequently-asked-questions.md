@@ -1,39 +1,39 @@
 ---
 title: ARM 範本的常見問題
-description: 常見問題 (有關 Azure Resource Manager 範本的常見問題) 。
+description: 常見問題 (常見問題) 關於 (ARM 範本的 Azure Resource Manager 範本) 。
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: af6a46e16cd888e3ff6a382be2b1a4264fcc2941
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5a23cf031b5d7cf40e2077f2e5287e10de563207
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184003"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902998"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>ARM 範本的常見問題
 
-本文將回答有關 Azure Resource Manager (ARM) 範本的常見問題。
+本文將回答有關 Azure Resource Manager 範本的常見問題)  (ARM 範本。
 
 ## <a name="getting-started"></a>開始使用
 
 * **什麼是 ARM 範本？為何應該使用它們？**
 
   ARM 範本是 JSON 檔案，您可以在其中定義要部署至 Azure 的內容。 範本可協助您為 Azure 實施基礎結構即程式碼解決方案。 您的組織可以重複且可靠地將必要的基礎結構部署至不同的環境。
-  
+
   若要深入瞭解 ARM 範本如何協助您管理 Azure 基礎結構，請參閱 [什麼是 arm 範本？](overview.md)
 
 * **如何? 入門範本？**
 
-  若要簡化編寫 ARM 範本，您需要適當的工具。 建議您安裝 [Visual Studio Code](https://code.visualstudio.com/) 和 [Azure Resource Manager 工具延伸](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)模組。 如需這些工具的快速簡介，請參閱 [快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本](quickstart-create-templates-use-visual-studio-code.md)。
+  若要簡化編寫 ARM 範本，您需要適當的工具。 建議您安裝 [Visual Studio Code](https://code.visualstudio.com/) 和 [Azure Resource Manager 工具延伸](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)模組。 如需這些工具的快速簡介，請參閱 [快速入門：使用 Visual Studio Code 建立 ARM 範本](quickstart-create-templates-use-visual-studio-code.md)。
 
   當您準備好瞭解如何建立 ARM 範本時，請 [在 ARM 範本上啟動初學者教學課程系列](template-tutorial-create-first-template.md)。 這些教學課程會帶您逐步完成建立 ARM 範本的程式。 您將瞭解範本的不同區段，以及它們如何一起運作。 此內容也可做為 [Microsoft Learn 模組](/learn/modules/authoring-arm-templates/)。
 
 * **我應該使用 ARM 範本或 Terraform 來部署到 Azure 嗎？**
 
   使用您最喜歡的選項。 這兩項服務都可協助您將 Azure 的部署自動化。
-  
+
   我們相信，透過其他基礎結構即程式碼服務使用 ARM 範本有其優點。 若要瞭解這些優點，請參閱 [為何選擇 ARM 範本？](overview.md#why-choose-arm-templates)
 
 ## <a name="build-2020"></a>組建2020
@@ -59,7 +59,7 @@ ms.locfileid: "96184003"
 * **我已透過入口網站設定我的環境。有什麼方法可以從現有的資源群組取得範本？**
 
   是，您可以從資源群組 [匯出範本](export-template-portal.md) 。 匯出的範本是學習範本的好起點，但是您可能會想要在實際執行環境中使用範本之前先加以修改。
-  
+
   匯出範本時，您可以選取要包含在範本中的資源。
 
 * **我可以在 ARM 範本中建立資源群組，並將資源部署到該群組嗎？**
@@ -182,11 +182,11 @@ ms.locfileid: "96184003"
 
 * **我可以將 ARM 範本整合到 Azure Pipelines 嗎？**
 
-  是。 如需如何使用範本和管線的說明，請參閱 [教學課程：搭配使用 Azure Pipelines 的 Azure Resource Manager 範本的持續整合](deployment-tutorial-pipeline.md) ，以及 [整合 ARM 範本與 Azure Pipelines](add-template-to-azure-pipelines.md)。
+  是。 如需如何使用範本和管線的說明，請參閱 [教學課程：搭配 Azure Pipelines 的 arm 範本的持續整合](deployment-tutorial-pipeline.md) ，以及將 [arm 範本與 Azure Pipelines 整合](add-template-to-azure-pipelines.md)。
 
 * **是否可以使用 GitHub 動作來部署範本？**
 
-  是，請參閱 [使用 GitHub Actions 部署 Azure Resource Manager 範本](deploy-github-actions.md)。
+  是，請參閱 [使用 GitHub Actions 部署 ARM 範本](deploy-github-actions.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

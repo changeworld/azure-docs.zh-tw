@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6c30dffbc8f97273ee59ce33ae3fe75ed730763
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: b2ce3b362d02e7acb0a11e6d93b8e94ca8e4d04e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356632"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903525"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中建立新的存取套件
 
@@ -67,7 +67,7 @@ ms.locfileid: "93356632"
    
     ![Azure 入口網站中的權利管理](./media/entitlement-management-shared/access-packages-list.png)
 
-## <a name="basics"></a>基本動作
+## <a name="basics"></a>基本
 
 在 [ **基本** ] 索引標籤上，您會提供存取套件的名稱，並指定要在其中建立存取套件的目錄。
 
@@ -79,17 +79,17 @@ ms.locfileid: "93356632"
 
     ![存取套件-基本](./media/entitlement-management-access-package-create/basics.png)
 
-    如果您是全域管理員、使用者系統管理員或目錄建立者，並且想要在未列出的新目錄中建立存取套件，請按一下 [ **建立新目錄** ]。 輸入目錄名稱和描述，然後按一下 [ **建立** ]。
+    如果您是全域管理員、使用者系統管理員或目錄建立者，並且想要在未列出的新目錄中建立存取套件，請按一下 [ **建立新目錄**]。 輸入目錄名稱和描述，然後按一下 [ **建立**]。
 
     您正在建立的存取套件和其中包含的任何資源，將會新增至新的目錄。 您也可以稍後再加入其他目錄擁有者。
 
-1. 按 [下一步]  。
+1. 按一下 [下一步] 。
 
 ## <a name="resource-roles"></a>資源角色
 
 在 [ **資源角色** ] 索引標籤上，您可以選取要包含在存取套件中的資源。 要求和接收存取套件的使用者將會收到存取套件中的所有資源角色。
 
-1. 按一下您想要新增 ( **群組和小組** 、 **應用程式** 或 **SharePoint 網站** ) 的資源類型。
+1. 按一下您想要新增 (**群組和小組**、 **應用程式** 或 **SharePoint 網站**) 的資源類型。
 
 1. 在出現的選取窗格中，從清單中選取一或多個資源。
 
@@ -105,7 +105,10 @@ ms.locfileid: "93356632"
 
     ![存取套件-資源角色選取](./media/entitlement-management-access-package-create/resource-roles-role.png)
 
-1. 按 [下一步]  。
+1. 按一下 [下一步] 。
+
+>[!NOTE]
+>您可以將動態群組新增至目錄和存取套件。 不過，在存取套件中管理動態群組資源時，您只能選取 [擁有者] 角色。
 
 ## <a name="requests"></a>Requests
 

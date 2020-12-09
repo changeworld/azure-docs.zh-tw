@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 022b6eb6595f25af4189d783a6a91031f95c7216
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 07a8d2b394e8ca690925c677af676643064a9ba8
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479352"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96901825"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>使用 AzCopy 將資料從 Amazon S3 複製到 Azure 儲存體
 
@@ -38,13 +38,13 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 
 ### <a name="authorize-with-aws-s3"></a>使用 AWS S3 授權
 
-收集您的 AWS 存取金鑰和秘密存取金鑰，然後設定這些環境變數：
+收集您的 AWS 存取金鑰和秘密存取金鑰，然後設定下列環境變數：
 
-| 作業系統 | Command  |
+| 作業系統 | 命令  |
 |--------|-----------|
 | **Windows** | `set AWS_ACCESS_KEY_ID=<access-key>`<br>`set AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
 | **Linux** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
-| **MacOS** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>`|
+| **macOS** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>`|
 
 ## <a name="copy-objects-directories-and-buckets"></a>複製物件、目錄和 bucket
 
@@ -139,7 +139,7 @@ AWS S3 和 Azure 允許在物件索引鍵的名稱中有不同組的字元。 �
 
 作為 AzCopy 命令的一部分 `copy` ，您可以為選擇性的旗標提供一個值，以 `s2s-handle-invalid-metadata` 指定您要如何處理檔案的中繼資料包含不相容的索引鍵名稱。 下表描述每個旗標值。
 
-| 旗標值 | 說明  |
+| 旗標值 | 描述  |
 |--------|-----------|
 | **ExcludeIfInvalid** |  (預設選項) 中繼資料不會包含在傳送的物件中。 AzCopy 會記錄警告。 |
 | **FailIfInvalid** | 不會複製物件。 AzCopy 會記錄錯誤，並將該錯誤包含在「傳輸摘要」中的失敗計數。  |
@@ -159,7 +159,7 @@ AzCopy 執行下列步驟：
 
 3. 將字串加入 `rename_key_` 至新的有效索引鍵開頭。
    此金鑰將用來儲存原始中繼資料不正確索引 **鍵**。
-   您可以使用此金鑰來嘗試和復原 Azure 端的中繼資料，因為中繼資料索引鍵會保留為 Blob 儲存體服務上的值。
+   您可以使用此金鑰來嘗試復原 Azure 端的中繼資料，因為中繼資料索引鍵會保留為 Blob 儲存體服務上的值。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -167,8 +167,8 @@ AzCopy 執行下列步驟：
 
 - [開始使用 AzCopy](storage-use-azcopy-v10.md)
 
-- [使用 AzCopy 和 Blob 儲存體轉送資料](storage-use-azcopy-blobs.md)
+- [傳送資料](storage-use-azcopy-v10.md#transfer-data)
 
-- [使用 AzCopy 和檔案儲存體轉送資料](storage-use-azcopy-files.md)
+- [使用 AzCopy 和檔案儲存體傳輸資料](storage-use-azcopy-files.md) (機器翻譯)
 
 - [對 AzCopy 進行設定、最佳化及疑難排解](storage-use-azcopy-configure.md)

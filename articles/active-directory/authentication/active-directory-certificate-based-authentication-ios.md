@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffddac13009b84aa8253955d265f11aefe2ce5dd
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a5f9b96fe9ee0781803bbbd86316e8783b60a6f1
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744409"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861318"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>iOS 上的 Azure Active Directory 憑證式驗證
 
@@ -75,7 +75,7 @@ ms.locfileid: "96744409"
 
 啟用新式驗證的某些 Office 應用程式會 `prompt=login` 在其要求中傳送至 Azure AD。 根據預設，Azure AD 會 `prompt=login` 將要求轉譯為 adfs，因為 `wauth=usernamepassworduri` (會要求 Adfs 進行 U/P 驗證) 並 `wfresh=0` (要求 adfs 忽略 SSO 狀態並進行全新驗證) 。 如果您想要為這些應用程式啟用以憑證為基礎的驗證，請修改預設的 Azure AD 行為。
 
-若要更新預設行為，請將同盟網域設定中的 '*PromptLoginBehavior*' 設定為 *停用*。 您可以使用 [get-msoldomainfederationsettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) Cmdlet 來執行這項工作，如下列範例所示：
+若要更新預設行為，請將同盟網域設定中的 '*PromptLoginBehavior*' 設定為 *停用*。 您可以使用 [get-msoldomainfederationsettings](/powershell/module/msonline/set-msoldomainfederationsettings) Cmdlet 來執行這項工作，如下列範例所示：
 
 ```powershell
 Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled

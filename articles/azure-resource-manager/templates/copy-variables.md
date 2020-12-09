@@ -1,18 +1,18 @@
 ---
 title: 定義變數的多個實例
-description: 使用 Azure Resource Manager 範本中的複製作業，在建立變數時反復執行多次。
+description: 在 Azure Resource Manager 範本中使用複製作業 (ARM 範本) 在建立變數時反復查看多次。
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: aca69dd858c7a940592e74123b97b8d364d9e11c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8acd85659b843cb482e1ccc61e28da03431db1b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84678438"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905888"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>ARM 範本中的變數反復專案
 
-本文說明如何在 Azure Resource Manager (ARM) 範本中為變數建立一個以上的值。 藉由將 **copy** 元素新增至範本的 variables 區段，您可以在部署期間動態設定變數的專案數。 您也可以避免重複範本語法。
+本文說明如何在 Azure Resource Manager 範本中為變數建立一個以上的值 (ARM 範本) 。 藉由將 `copy` 專案新增至範本的 [變數] 區段，您可以在部署期間動態設定變數的專案數。 您也可以避免重複範本語法。
 
 您也可以使用具有 [資源](copy-resources.md)的複製、 [資源中的屬性](copy-properties.md)和 [輸出](copy-outputs.md)。
 
@@ -30,9 +30,9 @@ Copy 元素具有下列一般格式：
 ]
 ```
 
-**Name**屬性是任何可識別迴圈的值。 **Count**屬性會指定您想要用於變數的反覆運算次數。
+`name`屬性是任何可識別迴圈的值。 `count`屬性會指定您想要用於變數的反覆運算次數。
 
-**輸入**屬性會指定您想要重複的屬性。 您可以建立從 **輸入** 屬性中的值所建立的元素陣列。 它可以是單一屬性 (例如字串) ，或是具有數個屬性的物件。
+`input`屬性會指定您想要重複的屬性。 您可以建立一個由 `input` 屬性中的值建構的元素陣列。 它可以是單一屬性 (例如字串) ，或是具有數個屬性的物件。
 
 ## <a name="copy-limits"></a>複製限制
 
@@ -92,7 +92,7 @@ Copy 元素具有下列一般格式：
 ]
 ```
 
-下一個範例顯示如何建立具有三個屬性的物件陣列： name、diskSizeGB 和 diskIndex。
+下一個範例顯示如何建立具有三個屬性的物件陣列： `name` 、 `diskSizeGB` 和 `diskIndex` 。
 
 ```json
 {
@@ -160,10 +160,10 @@ Copy 元素具有下列一般格式：
 ```
 
 > [!NOTE]
-> 變數反覆運算支援 offset 引數。 位移必須位於反覆運算的名稱之後，例如 copyIndex ( ' diskNames '，1) 。 如果您未提供位移值，則第一個實例的預設值為0。
+> 變數反覆運算支援 offset 引數。 位移必須在反覆運算的名稱之後，例如 `copyIndex('diskNames', 1)` 。 如果您未提供位移值，則第一個實例的預設值為0。
 >
 
-您也可以在變數中使用 copy 元素。 下列範例會建立一個物件，該物件的陣列為它的其中一個值。
+您也可以使用 `copy` 變數內的元素。 下列範例會建立一個物件，該物件的陣列為它的其中一個值。
 
 ```json
 {
@@ -236,7 +236,7 @@ Copy 元素具有下列一般格式：
 }
 ```
 
-下一個範例顯示您可以使用 copy with variables 的不同方式。
+下一個範例顯示您可以搭配變數使用的不同方式 `copy` 。
 
 ```json
 {
@@ -314,18 +314,17 @@ Copy 元素具有下列一般格式：
 
 下列範例顯示為變數建立一個以上值的常見案例。
 
-|範本  |說明  |
+|[範本]  |描述  |
 |---------|---------|
 |[複製變數](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |示範逐一查看變數的不同方式。 |
 |[多個安全性規則](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |將數個安全性規則部署至網路安全性群組。 從參數建構安全性規則。 如需參數，請參閱[多個 NSG 參數檔案](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json)。 |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 若要進行教學課程，請參閱 [教學課程：使用 ARM 範本建立多個資源實例](template-tutorial-create-multiple-instances.md)。
 * 如需複製元素的其他用途，請參閱：
   * [ARM 範本中的資源反復專案](copy-resources.md)
   * [ARM 範本中的屬性反復專案](copy-properties.md)
   * [ARM 範本中的輸出反復專案](copy-outputs.md)
-* 如果您想要瞭解範本的區段，請參閱 [撰寫 ARM 範本](template-syntax.md)。
-* 若要瞭解如何部署您的範本，請參閱 [使用 ARM 範本部署應用程式](deploy-powershell.md)。
-
+* 如果您想要瞭解範本的區段，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
+* 若要瞭解如何部署您的範本，請參閱 [使用 ARM 範本部署資源和 Azure PowerShell](deploy-powershell.md)。

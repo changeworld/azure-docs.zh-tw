@@ -12,12 +12,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a2036086cfb6da0d7807d4752a5911a358d3c47
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 2044653673da10de59d5ff125da44ac1f89e22f9
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420643"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861845"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同步：如何變更預設組態
 本文的目的在於逐步解說如何對 Azure Active Directory (Azure AD) Connect 同步處理中的預設組態進行變更。其中提供一些常見案例的步驟。 具備此知識，您應該能夠根據自己的商務規則對自己的組態進行簡單的變更。
@@ -56,14 +56,14 @@ ms.locfileid: "93420643"
 1. 按一下 [新增規則] 。
 2. 在 [說明] 頁面上輸入下列各項：  
    ![輸入規則篩選](./media/how-to-connect-sync-change-the-configuration/description2.png)  
-   * **Name** ：賦予規則描述性名稱。
-   * **描述** ：讓其他人可以了解規則用途的一些說明。
-   * **連線系統** ：這是可在其中找到物件的系統。 在此案例中，請選取 [Active Directory 連接器]。
-   * **連線系統/Metaverse 物件類型** ：分別選取 [使用者] 和 [人員]。
-   * **連結類型** ：將此值變更為 [加入]。
-   * **優先順序** ：提供在系統中是唯一的值。 較低的數值表示優先順序較高。
-   * **標籤** ︰將此選項保留空白。 只有 Microsoft 提供的現成可用規則應該在此方塊中填入值。
-3. 在 [範圍篩選器] 頁面上，輸入 **givenName ISNOTNULL** 。  
+   * **Name**：賦予規則描述性名稱。
+   * **描述**：讓其他人可以了解規則用途的一些說明。
+   * **連線系統**：這是可在其中找到物件的系統。 在此案例中，請選取 [Active Directory 連接器]。
+   * **連線系統/Metaverse 物件類型**：分別選取 [使用者] 和 [人員]。
+   * **連結類型**：將此值變更為 [加入]。
+   * **優先順序**：提供在系統中是唯一的值。 較低的數值表示優先順序較高。
+   * **標籤**︰將此選項保留空白。 只有 Microsoft 提供的現成可用規則應該在此方塊中填入值。
+3. 在 [範圍篩選器] 頁面上，輸入 **givenName ISNOTNULL**。  
    ![輸入規則範圍篩選器](./media/how-to-connect-sync-change-the-configuration/scopingfilter.png)  
    此區段用來定義應套用規則的物件。 如果保留空白，規則會套用到所有的使用者物件。 但會包括會議室、服務帳戶，以及其他非人員的使用者物件。
 4. 在 [聯結規則] 頁面上，將欄位保留空白。
@@ -150,7 +150,7 @@ ms.locfileid: "93420643"
 Active Directory 中的某些屬性在結構描述中是多重值，但是在 [Active Directory 使用者和電腦] 中看起來是單一值。 描述屬性是其中一個範例：  
 `description` <- `IIF(IsNullOrEmpty([description]),NULL,Left(Trim(Item([description],1)),448))`＞。
 
-在此運算式中，如果屬性有值，請取屬性中的第一個項目 ( *Item* )、移除開頭和結尾的空格 ( *Trim* )，然後保留字串中的前 448 個字元 ( *Left* )。
+在此運算式中，如果屬性有值，請取屬性中的第一個項目 (*Item*)、移除開頭和結尾的空格 (*Trim*)，然後保留字串中的前 448 個字元 (*Left*)。
 
 ### <a name="do-not-flow-an-attribute"></a>請勿傳送屬性
 如需本節案例的背景，請參閱 [控制屬性流程程序](concept-azure-ad-connect-sync-declarative-provisioning.md#control-the-attribute-flow-process)。
@@ -181,10 +181,10 @@ Active Directory 中的某些屬性在結構描述中是多重值，但是在 [A
 
 您可以指示同步處理引擎，指定要在現成可用的規則前面插入其他規則。 若要取得此行為，請依照下列步驟執行︰
 
-1. 在同步處理規則編輯器中標記第一個現成可用的同步處理規則 ( **In from AD-User Join** )，然後選取 [匯出]。 複製 SR 識別碼值。  
+1. 在同步處理規則編輯器中標記第一個現成可用的同步處理規則 (**In from AD-User Join**)，然後選取 [匯出]。 複製 SR 識別碼值。  
 ![變更前的 PowerShell](./media/how-to-connect-sync-change-the-configuration/powershell1.png)  
 2. 建立新的同步處理規則。 您可以使用同步處理規則編輯器來建立它。 將規則匯出到 PowerShell 指令碼。
-3. 在 **PrecedenceBefore** 屬性中，插入現成可用的規則的識別碼值。 將 **Precedence** 設定為 **0** 。 確定 [識別碼] 屬性是唯一的，而且您沒有重複使用另一個規則的 GUID。 此外，請確定 **ImmutableTag** 屬性未設定。 此屬性只應針對現成可用的規則設定。
+3. 在 **PrecedenceBefore** 屬性中，插入現成可用的規則的識別碼值。 將 **Precedence** 設定為 **0**。 確定 [識別碼] 屬性是唯一的，而且您沒有重複使用另一個規則的 GUID。 此外，請確定 **ImmutableTag** 屬性未設定。 此屬性只應針對現成可用的規則設定。
 4. 儲存 PowerShell 指令碼並執行它。 得到的結果是系統會對您的自訂規則指派優先順序值 100，而且所有其他內建規則會自此開始遞增。  
 ![變更後的 PowerShell](./media/how-to-connect-sync-change-the-configuration/powershell2.png)  
 
@@ -198,13 +198,13 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之 **使用者** 物件的 
 
 內部部署 Active Directory 中沒有對應的 UserType 屬性，因此根據預設，UserType 屬性並未啟用同步處理。 您必須手動啟用同步處理。 在執行此作業之前，您必須記下 Azure AD 所強制執行的下列行為：
 
-- Azure AD 只接受兩個 UserType 屬性值： **Member** 和 **Guest** 。
-- 如果 Azure AD Connect 未啟用 UserType 屬性的同步處理，透過目錄同步處理所建立的 Azure AD 使用者就會將 UserType 屬性設定為 **Member** 。
-- 在 1.5.30.0 版之前，Azure AD 不允許以 Azure AD Connect 變更現有 Azure AD 使用者的 UserType 屬性。 在較舊的版本中，只能在 Azure AD 使用者建立期間設定，並透過 [PowerShell 變更](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0)。
+- Azure AD 只接受兩個 UserType 屬性值：**Member** 和 **Guest**。
+- 如果 Azure AD Connect 未啟用 UserType 屬性的同步處理，透過目錄同步處理所建立的 Azure AD 使用者就會將 UserType 屬性設定為 **Member**。
+- 在 1.5.30.0 版之前，Azure AD 不允許以 Azure AD Connect 變更現有 Azure AD 使用者的 UserType 屬性。 在較舊的版本中，只能在 Azure AD 使用者建立期間設定，並透過 [PowerShell 變更](/powershell/module/azuread/set-azureaduser)。
 
 在啟用 UserType 屬性的同步處理之前，您必須先決定要如何從內部部署 Active Directory 衍生此屬性。 以下是最常見的方法：
 
-- 將未使用的內部部署 AD 屬性 (例如 extensionAttribute1) 指定為來源屬性。 所指定的內部部署 AD 屬性類型應為 **字串** 、具有單一值，且包含 **Member** 或 **Guest** 值。 
+- 將未使用的內部部署 AD 屬性 (例如 extensionAttribute1) 指定為來源屬性。 所指定的內部部署 AD 屬性類型應為 **字串**、具有單一值，且包含 **Member** 或 **Guest** 值。 
 
     如果您選擇此方法，則在啟用 UserType 屬性的同步處理之前，請先確定內部部署 Active Directory 中同步至 Azure AD 之所有現有使用者物件的指定屬性都已填入正確的值。
 
@@ -264,7 +264,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之 **使用者** 物件的 
 
     | 屬性 | 值 | 詳細資料 |
     | --- | --- | --- |
-    | 名稱 | 提供名稱 | 例如， *In from AD – User UserType* |
+    | 名稱 | 提供名稱 | 例如，*In from AD – User UserType* |
     | 描述 | 提供描述 |  |
     | 連線系統 | 選取內部部署 AD 連接器 |  |
     | 連線系統物件類型 | **使用者** |  |
@@ -272,7 +272,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之 **使用者** 物件的 
     | 連結類型 | **Join** |  |
     | 優先順序 | 選擇 1–99 之間的數字 | 1–99 已保留供自訂同步處理規則使用。 請勿挑選已由其他同步處理規則使用的值。 |
 
-5. 移至 [範圍篩選器] 索引標籤，並 **使用下列子句來新增單一範圍篩選器群組** ：
+5. 移至 [範圍篩選器] 索引標籤，並 **使用下列子句來新增單一範圍篩選器群組**：
 
     | 屬性 | 運算子 | 值 |
     | --- | --- | --- |
@@ -306,7 +306,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之 **使用者** 物件的 
 
     | 屬性 | 值 | 詳細資料 |
     | ----- | ------ | --- |
-    | 名稱 | 提供名稱 | 例如， *Out to AAD – User UserType* |
+    | 名稱 | 提供名稱 | 例如，*Out to AAD – User UserType* |
     | 描述 | 提供描述 ||
     | 連線系統 | 選取 AAD 連接器 ||
     | 連線系統物件類型 | **使用者** ||
@@ -314,7 +314,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之 **使用者** 物件的 
     | 連結類型 | **Join** ||
     | 優先順序 | 選擇 1–99 之間的數字 | 1–99 已保留供自訂同步處理規則使用。 請勿挑選已由其他同步處理規則使用的值。 |
 
-5. 移至 [範圍篩選器] 索引標籤，並使用兩個子句來新增 **單一範圍篩選器群組** ：
+5. 移至 [範圍篩選器] 索引標籤，並使用兩個子句來新增 **單一範圍篩選器群組**：
 
     | 屬性 | 運算子 | 值 |
     | --- | --- | --- |
@@ -366,7 +366,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之 **使用者** 物件的 
    2. 在彈出的對話方塊中選取 [完整同步處理]，然後按一下 [確定]。
    3. 請等候作業完成。
 
-5. 確認要對 Azure AD 執行的 **擱置匯出** ：
+5. 確認要對 Azure AD 執行的 **擱置匯出**：
 
    1. 以滑鼠右鍵按一下 [Azure AD 連接器]，然後選取 [搜尋連接器空間]。
    2. 在彈出的 [搜尋連接器空間] 對話方塊中：

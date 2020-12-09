@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e16f33cb8aa7c6ceeb1398dd23ccba31b5f936b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5367e5027bfae2fa3ed7e87a779e50e4048ba608
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776131"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861726"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>開始使用 Azure Active Directory Identity Protection 和 Microsoft Graph
 
-Microsoft Graph 是 Microsoft 統一 API 端點，也是 [Azure Active Directory Identity Protection](./overview-identity-protection.md) API 的寄居地。 有三個 Api 會公開具風險使用者和登入的相關資訊。第一個 API **riskDetection**可讓您查詢 Microsoft Graph，以取得使用者和登入連結的風險偵測以及偵測相關資訊的清單。 第二個 API **riskyUsers** 可讓您查詢 Microsoft Graph 中，Identity Protection 偵測為風險之使用者的相關資訊。 第三個 API **signIn** 可讓您查詢 Microsoft Graph 中，具有與風險狀態、詳細資料以及層級相關特定屬性之 Azure AD 登入的相關資訊。 
+Microsoft Graph 是 Microsoft 統一 API 端點，也是 [Azure Active Directory Identity Protection](./overview-identity-protection.md) API 的寄居地。 有三個 Api 會公開具風險使用者和登入的相關資訊。第一個 API **riskDetection** 可讓您查詢 Microsoft Graph，以取得使用者和登入連結的風險偵測以及偵測相關資訊的清單。 第二個 API **riskyUsers** 可讓您查詢 Microsoft Graph 中，Identity Protection 偵測為風險之使用者的相關資訊。 第三個 API **signIn** 可讓您查詢 Microsoft Graph 中，具有與風險狀態、詳細資料以及層級相關特定屬性之 Azure AD 登入的相關資訊。 
 
 本文可讓您協助開始連線至 Microsoft Graph 並查詢這些 API。 如需深入的簡介、完整文件以及 Graph 總管的存取權，請參閱 [Microsoft Graph 網站](https://graph.microsoft.io/)或這些 API 的特定參考文件：
 
@@ -40,12 +40,12 @@ Microsoft Graph 是 Microsoft 統一 API 端點，也是 [Azure Active Directory
 ### <a name="retrieve-your-domain-name"></a>擷取網域名稱 
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。  
-1. 流覽至**Azure Active Directory**  >  **自訂功能變數名稱**。 
+1. 流覽至 **Azure Active Directory**  >  **自訂功能變數名稱**。 
 1. 記下 `.onmicrosoft.com` 網域，您將在稍後的步驟中需要此資訊。
 
 ### <a name="create-a-new-app-registration"></a>建立新的應用程式註冊
 
-1. 在 Azure 入口網站中，流覽至**Azure Active Directory**  >  **應用程式註冊**。
+1. 在 Azure 入口網站中，流覽至 **Azure Active Directory**  >  **應用程式註冊**。
 1. 選取 [新增註冊]。
 1. 在 [ **建立** ] 頁面上，執行下列步驟：
    1. 在 [ **名稱** ] 文字方塊中，輸入應用程式的名稱 (例如： Azure AD 風險偵測 API) 。
@@ -57,8 +57,8 @@ Microsoft Graph 是 Microsoft 統一 API 端點，也是 [Azure Active Directory
 
 1. 從您所建立的 **應用程式** 中，選取 [ **API 許可權**]。
 1. 在 [ **設定的許可權** ] 頁面上，按一下頂端工具列中的 [ **新增許可權**]。
-1. 在 [新增 API 存取權]**** 頁面中，按一下 [選取 API]****。
-1. 在 [選取 API]**** 頁面中，選取 [Microsoft Graph]****，然後按一下 [選取]****。
+1. 在 [新增 API 存取權] 頁面中，按一下 [選取 API]。
+1. 在 [選取 API] 頁面中，選取 [Microsoft Graph]，然後按一下 [選取]。
 1. 在 [ **要求 API 許可權** ] 頁面上： 
    1. 選取 [應用程式權限]。
    1. 選取 [and] 旁的核取方塊 `IdentityRiskEvent.Read.All` `IdentityRiskyUser.Read.All` 。
@@ -68,7 +68,7 @@ Microsoft Graph 是 Microsoft 統一 API 端點，也是 [Azure Active Directory
 ### <a name="configure-a-valid-credential"></a>設定有效的認證
 
 1. 從您建立的 **應用程式** 中，選取 [ **憑證 & 秘密**]。
-1. 在 [用戶端密碼]**** 底下，選取 [新增用戶端密碼]****。
+1. 在 [用戶端密碼] 底下，選取 [新增用戶端密碼]。
    1. 提供用戶端密碼的 **描述** ，並根據您的組織原則設定到期時間週期。
    1. 選取 [新增]。
 
@@ -173,4 +173,4 @@ GET https://graph.microsoft.com/v1.0/identityProtection/riskyUsers?$filter=riskD
 - [Azure Active Directory Identity Protection 所偵測到的風險偵測類型](./overview-identity-protection.md)
 - [Microsoft Graph](https://developer.microsoft.com/graph/)
 - [Microsoft Graph 概觀](https://developer.microsoft.com/graph/docs)
-- [Azure AD Identity Protection 服務根目錄](/graph/api/resources/identityprotectionroot?view=graph-rest-1.0)
+- [Azure AD Identity Protection 服務根目錄](/graph/api/resources/identityprotectionroot)

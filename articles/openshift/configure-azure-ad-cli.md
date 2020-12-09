@@ -8,12 +8,12 @@ author: sabbour
 ms.author: asabbour
 keywords: aro, openshift, az aro, red hat, cli
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 03ecd0e11df5fa20f134b6fd87baf788078a2203
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 0d69fa10408618fb188b42e1dd8f7b9d02820cc3
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748042"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862406"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>設定 Azure Red Hat OpenShift 4 叢集 (CLI 的 Azure Active Directory authentication) 
 
@@ -21,47 +21,67 @@ ms.locfileid: "92748042"
 
 取出即將用來設定 Azure Active Directory 應用程式的叢集特定 Url。
 
-建立叢集的 OAuth 回呼 URL，並將它儲存在變數 **oauthCallbackURL** 中。 請務必以您的資源群組名稱取代 **aro-rg** ，並以叢集的名稱取代 **aro** 叢集。
+設定資源群組和叢集名稱的變數。
+
+請 **\<resource_group>** 以您的資源群組名稱取代，並 **\<aro_cluster>** 以叢集的名稱取代。
+
+```azurecli-interactive
+resource_group=<resource_group>
+aro_cluster=<aro_cluster>
+```
+
+建立叢集的 OAuth 回呼 URL，並將它儲存在變數 **oauthCallbackURL** 中。 
 
 > [!NOTE]
 > `AAD`Oauth 回呼 URL 中的區段應該符合您稍後將設定的 oauth 身分識別提供者名稱。
 
+
 ```azurecli-interactive
-domain=$(az aro show -g aro-rg -n aro-cluster --query clusterProfile.domain -o tsv)
-location=$(az aro show -g aro-rg -n aro-cluster --query location -o tsv)
-apiServer=$(az aro show -g aro-rg -n aro-cluster --query apiserverProfile.url -o tsv)
-webConsole=$(az aro show -g aro-rg -n aro-cluster --query consoleProfile.url -o tsv)
-oauthCallbackURL=https://oauth-openshift.apps.$domain.$location.aroapp.io/oauth2callback/AAD
+domain=$(az aro show -g $resource_group -n $aro_cluster --query clusterProfile.domain -o tsv)
+location=$(az aro show -g $resource_group -n $aro_cluster --query location -o tsv)
+apiServer=$(az aro show -g $resource_group -n $aro_cluster --query apiserverProfile.url -o tsv)
+webConsole=$(az aro show -g $resource_group -n $aro_cluster --query consoleProfile.url -o tsv)
 ```
+
+OauthCallbackURL 的格式與自訂網域稍有不同：
+
+* 如果您使用自訂網域（例如），請執行下列命令 `contoso.com` 。 
+
+    ```azurecli-interactive
+    oauthCallbackURL=https://oauth-openshift.apps.$domain/oauth2callback/AAD
+    ```
+
+* 如果您不是使用自訂網域，則 `$domain` 會是八個字元的 alnum 字串，且會由擴充 `$location.aroapp.io` 。
+
+    ```azurecli-interactive
+    oauthCallbackURL=https://oauth-openshift.apps.$domain.$location.aroapp.io/oauth2callback/AAD
+    ```
+
+> [!NOTE]
+> `AAD`Oauth 回呼 URL 中的區段應該符合您稍後將設定的 oauth 身分識別提供者名稱。
 
 ## <a name="create-an-azure-active-directory-application-for-authentication"></a>建立 Azure Active Directory 應用程式以進行驗證
 
-建立 Azure Active Directory 應用程式，並取出建立的應用程式識別碼。 **\<ClientSecret>** 以安全密碼取代。
+取代為 **\<client_secret>** 應用程式的安全密碼。
 
 ```azurecli-interactive
-az ad app create \
+client_secret=<client_secret>
+```
+
+建立 Azure Active Directory 應用程式，並取出建立的應用程式識別碼。
+
+```azurecli-interactive
+app_id=$(az ad app create \
   --query appId -o tsv \
   --display-name aro-auth \
   --reply-urls $oauthCallbackURL \
-  --password '<ClientSecret>'
-```
-
-您應取回如下的內容。 請記下它，因為這是您在後續步驟中需要的 **AppId** 。
-
-```output
-6a4cb4b2-f102-4125-b5f5-9ad6689f7224
+  --password $client_secret)
 ```
 
 取出擁有應用程式之訂用帳戶的租使用者識別碼。
 
 ```azure
-az account show --query tenantId -o tsv
-```
-
-您應取回如下的內容。 請記下它，因為這是您在後續步驟中需要的 **TenantId** 。
-
-```output
-72f999sx-8sk1-8snc-js82-2d7cj902db47
+tenant_id=$(az account show --query tenantId -o tsv)
 ```
 
 ## <a name="create-a-manifest-file-to-define-the-optional-claims-to-include-in-the-id-token"></a>建立資訊清單檔案，以定義要包含在識別碼權杖中的選擇性宣告
@@ -97,19 +117,15 @@ EOF
 
 ## <a name="update-the-azure-active-directory-applications-optionalclaims-with-a-manifest"></a>使用資訊清單更新 Azure Active Directory 應用程式的 optionalClaims
 
-取代 **\<AppID>** 為您稍早取得的識別碼。
-
 ```azurecli-interactive
 az ad app update \
   --set optionalClaims.idToken=@manifest.json \
-  --id <AppId>
+  --id $app_id
 ```
 
 ## <a name="update-the-azure-active-directory-application-scope-permissions"></a>更新 Azure Active Directory 應用程式範圍許可權
 
 為了能夠從 Azure Active Directory 讀取使用者資訊，我們需要定義適當的範圍。
-
-取代 **\<AppID>** 為您稍早取得的識別碼。
 
 新增 **Azure Active Directory Graph** 的許可權。若要啟用登入和讀取使用者設定檔，請參閱範圍。
 
@@ -117,11 +133,11 @@ az ad app update \
 az ad app permission add \
  --api 00000002-0000-0000-c000-000000000000 \
  --api-permissions 311a71cc-e848-46a1-bdf8-97ff7156d8e6=Scope \
- --id <AppId>
+ --id $app_id
 ```
 
 > [!NOTE]
-> 除非您是以此 Azure Active Directory 的全域系統管理員身分進行驗證，否則您可以忽略訊息以授與同意，因為當您登入自己的帳戶時，系統會要求您這樣做。
+> 除非您以此 Azure Active Directory 的全域管理員身分進行驗證，否則您可以安全地略過訊息來授與同意。 當標準網域使用者第一次使用其 AAD 認證登入叢集時，系統會要求您授與同意。
 
 ## <a name="assign-users-and-groups-to-the-cluster-optional"></a>將使用者和群組指派給叢集 (選擇性) 
 
@@ -134,35 +150,27 @@ az ad app permission add \
 取出 `kubeadmin` 認證。 執行以下命令來尋找 `kubeadmin` 使用者的密碼。
 
 ```azurecli-interactive
-az aro list-credentials \
-  --name aro-cluster \
-  --resource-group aro-rg
+kubeadmin_password=$(az aro list-credentials \
+  --name $aro_cluster \
+  --resource-group $resource_group \
+  --query kubeadminPassword --output tsv)
 ```
 
-以下範例輸出顯示密碼將位於 `kubeadminPassword` 中。
-
-```json
-{
-  "kubeadminPassword": "<generated password>",
-  "kubeadminUsername": "kubeadmin"
-}
-```
-
-使用下列命令來登入 OpenShift 叢集的 API 伺服器。 `$apiServer`[先前]()已設定變數。 **\<kubeadmin password>** 以您取出的密碼取代。
+使用下列命令來登入 OpenShift 叢集的 API 伺服器。 
 
 ```azurecli-interactive
-oc login $apiServer -u kubeadmin -p <kubeadmin password>
+oc login $apiServer -u kubeadmin -p $kubeadmin_password
 ```
 
-建立 OpenShift 秘密來儲存 Azure Active Directory 應用程式密碼， **\<ClientSecret>** 並以您稍早取出的密碼取代。
+建立 OpenShift 秘密來儲存 Azure Active Directory 的應用程式密碼。
 
 ```azurecli-interactive
 oc create secret generic openid-client-secret-azuread \
   --namespace openshift-config \
-  --from-literal=clientSecret=<ClientSecret>
+  --from-literal=clientSecret=$client_secret
 ```
 
-建立 **oidc yaml** 檔案，以針對 Azure Active Directory 設定 OpenShift OpenID 驗證。 **\<AppID>** **\<TenantId>** 以您稍早取出的值取代和。
+建立 **oidc yaml** 檔案，以針對 Azure Active Directory 設定 OpenShift OpenID 驗證。 
 
 ```bash
 cat > oidc.yaml<< EOF
@@ -176,7 +184,7 @@ spec:
     mappingMethod: claim
     type: OpenID
     openID:
-      clientID: <AppId>
+      clientID: $app_id
       clientSecret:
         name: openid-client-secret-azuread
       extraScopes:
@@ -192,7 +200,7 @@ spec:
         - name
         email:
         - email
-      issuer: https://login.microsoftonline.com/<TenantId>
+      issuer: https://login.microsoftonline.com/$tenant_id
 EOF
 ```
 

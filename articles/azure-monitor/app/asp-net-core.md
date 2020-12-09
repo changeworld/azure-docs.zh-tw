@@ -4,12 +4,12 @@ description: 監視 ASP.NET Core Web 應用程式的可用性、效能和使用�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 8505e67e3db7460308d208ce4f83d29a1fb4d862
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 2921c6379b34e002013b5f0087cefd502ab0ab84
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763191"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904528"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core 應用程式的 Application Insights
 
@@ -31,10 +31,14 @@ ms.locfileid: "96763191"
 > [!NOTE]
 > ASP.NET Core 3.x 需要 [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) 或更新版本。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 正常運作的 ASP.NET Core 應用程式。 如果您需要建立 ASP.NET Core 應用程式，請遵循此 [ASP.NET Core 教學](/aspnet/core/getting-started/)課程。
 - 有效的 Application Insights 檢測金鑰。 需要有此金鑰才能將任何遙測資料傳送至 Application Insights。 如果您需要建立新的 Application Insights 資源以取得檢測金鑰，請參閱 [建立 Application Insights 資源](./create-new-resource.md)。
+
+> [!IMPORTANT]
+> 新的 Azure 區域 **需要** 使用連接字串，而不是檢測金鑰。 [連接字串](./sdk-connection-string.md?tabs=net) 會識別您想要與遙測資料相關聯的資源。 它也可讓您修改您的資源將用來做為遙測目的地的端點。 您必須複製連接字串，並將它加入應用程式的程式碼或加入環境變數。
+
 
 ## <a name="enable-application-insights-server-side-telemetry-visual-studio"></a>啟用 Application Insights 伺服器端遙測 (Visual Studio) 
 

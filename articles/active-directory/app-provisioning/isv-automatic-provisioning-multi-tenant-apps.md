@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 9cb3d8f39d83e27755b1e8982dfe3b807c431413
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d4c6c5b51e00f7f2ed7e29c27aa8e8bb88a2ea94
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069716"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861352"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>啟用多租使用者應用程式的自動使用者布建
 
@@ -89,7 +89,7 @@ Azure AD 布建服務會使用 [SCIM](https://aka.ms/SCIMOverview)，這是許�
 
 ## <a name="microsoft-graph-for-provisioning"></a>布建 Microsoft Graph
 
-當您使用 Microsoft Graph 進行布建時，您可以存取圖形中所有豐富的使用者資料。 除了使用者和群組的詳細資料之外，您還可以提取額外的資訊，例如使用者的角色、管理員和直屬員工、擁有和註冊的裝置，以及 [Microsoft Graph](/graph/api/overview?view=graph-rest-1.0)中提供的數百個其他資料片段。 
+當您使用 Microsoft Graph 進行布建時，您可以存取圖形中所有豐富的使用者資料。 除了使用者和群組的詳細資料之外，您還可以提取額外的資訊，例如使用者的角色、管理員和直屬員工、擁有和註冊的裝置，以及 [Microsoft Graph](/graph/api/overview)中提供的數百個其他資料片段。 
 
 超過15000000的組織和90% 的財富500公司在訂閱 Microsoft 雲端服務（例如 Microsoft 365、Microsoft Azure 或企業行動力套件）時，會使用 Azure AD。 您可以使用 Microsoft Graph 來整合應用程式與系統管理工作流程，例如員工上線 (和終止) 、設定檔維護等等。 
 

@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cd95d01c9b49bb6002c00c805dc82dcf30941e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20088ccc79abe978eb5b3f1c98e958f6c26bcb86
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295031"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861794"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>使用 SAML 2.0 識別提供者 (IdP) 來進行單一登入
 
@@ -250,7 +250,7 @@ Microsoft 支援將 Microsoft 雲端服務（例如 Microsoft 365）與您正確
 
 您可以使用 Azure AD Connect 將主體從內部部署 Active Directory 佈建到您在 Azure AD 目錄中的網域。 如需詳細資訊，請參閱[整合您的內部部署目錄與 Azure Active Directory](whatis-hybrid-identity.md)。
 
-您也可以使用 Windows PowerShell 來自動將新的使用者新增至 Azure AD，並從內部部署目錄同步處理變更。 若要使用 Windows PowerShell Cmdlet，您必須下載 [Azure Active Directory 模組](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) \(英文\)。
+您也可以使用 Windows PowerShell 來自動將新的使用者新增至 Azure AD，並從內部部署目錄同步處理變更。 若要使用 Windows PowerShell Cmdlet，您必須下載 [Azure Active Directory 模組](/powershell/azure/active-directory/install-adv2) \(英文\)。
 
 此程序示範如何將單一使用者新增至 Azure AD。
 

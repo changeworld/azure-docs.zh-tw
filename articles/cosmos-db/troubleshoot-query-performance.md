@@ -8,12 +8,12 @@ ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 012e155737b9251827c668b3a9cacbbe8d59ae77
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 42f01b140a44d7aa6d75dece9a4398fd7b41bf5a
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411349"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905106"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>針對使用 Azure Cosmos DB 時發生的查詢問題進行疑難排解
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -51,7 +51,7 @@ Azure Cosmos DB 中的查詢優化廣泛分類如下：
 
 取得查詢計量之後，請將 **擷取的文件計數** 與查詢的 **輸出文件計數** 進行比較。 使用此比較來識別本文中要檢查的相關章節。
 
-**擷取的文件計數** 是查詢引擎需要載入的文件數目。 **輸出文件計數** 是查詢結果所需的文件數目。 如果 **擷取的文件計數** 明顯高於 **輸出文件計數** ，則表示查詢中至少有一個部分無法使用索引，而且需要進行掃描。
+**擷取的文件計數** 是查詢引擎需要載入的文件數目。 **輸出文件計數** 是查詢結果所需的文件數目。 如果 **擷取的文件計數** 明顯高於 **輸出文件計數**，則表示查詢中至少有一個部分無法使用索引，而且需要進行掃描。
 
 請參閱下列各節，以了解您案例適用的相關查詢最佳化。
 
@@ -93,7 +93,7 @@ Azure Cosmos DB 中的查詢優化廣泛分類如下：
 
 ## <a name="queries-where-retrieved-document-count-exceeds-output-document-count"></a>擷取的文件計數超過輸出文件計數的查詢
 
- **擷取的文件計數** 是查詢引擎需要載入的文件數目。 **輸出文件計數** 是查詢所傳回的文件數目。 如果 **擷取的文件計數** 明顯高於 **輸出文件計數** ，則表示查詢中至少有一個部分無法使用索引，而且需要進行掃描。
+ **擷取的文件計數** 是查詢引擎需要載入的文件數目。 **輸出文件計數** 是查詢所傳回的文件數目。 如果 **擷取的文件計數** 明顯高於 **輸出文件計數**，則表示查詢中至少有一個部分無法使用索引，而且需要進行掃描。
 
 以下是未完全由索引處理的掃描查詢範例：
 
@@ -196,9 +196,7 @@ WHERE c.description = "Malabar spinach, cooked"
 
 ### <a name="understand-which-system-functions-use-the-index"></a>了解哪些系統函數會使用索引
 
-如果運算式可以轉譯成字串值的範圍，則可以使用索引。 否則，就不能這麼做。
-
-以下是一些可使用索引的一般字串函式清單：
+大部分的系統函數都會使用索引。 以下是使用索引的一些常用字串函數清單：
 
 - STARTSWITH(str_expr1, str_expr2, bool_expr)  
 - CONTAINS(str_expr, str_expr, bool_expr)
@@ -214,7 +212,26 @@ WHERE c.description = "Malabar spinach, cooked"
 
 ------
 
-查詢的其他部分可能仍會使用索引，即使系統函數沒有使用。
+如果系統函數使用索引，但仍有高 RU 費用，您可以嘗試新增 `ORDER BY` 至查詢。 在某些情況下，新增 `ORDER BY` 可以改善系統函數索引的使用，特別是當查詢長時間執行或跨越多個頁面時。
+
+例如，請考慮使用下列查詢 `CONTAINS` 。 `CONTAINS` 應該使用索引，但讓我們想像一下，在新增相關索引之後，您仍會在執行下列查詢時看到非常高的 RU 費用：
+
+原始查詢：
+
+```sql
+SELECT *
+FROM c
+WHERE CONTAINS(c.town, "Sea")
+```
+
+以下列方式更新查詢 `ORDER BY` ：
+
+```sql
+SELECT *
+FROM c
+WHERE CONTAINS(c.town, "Sea")
+ORDER BY c.town
+```
 
 ### <a name="understand-which-aggregate-queries-use-the-index"></a>了解哪些彙總查詢彙使用索引
 
@@ -385,7 +402,7 @@ JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 
 ## <a name="queries-where-retrieved-document-count-is-equal-to-output-document-count"></a>擷取的文件計數等於輸出文件計數的查詢
 
-如果 **擷取的文件計數** 大約等於 **輸出文件計數** ，則查詢引擎就不需要掃描許多不必要的文件。 對於許多查詢，例如使用 `TOP` 關鍵字的查詢， **擷取的文件計數** 可能會比 **輸出文件計數** 多出 1 個。 此狀況無須擔心。
+如果 **擷取的文件計數** 大約等於 **輸出文件計數**，則查詢引擎就不需要掃描許多不必要的文件。 對於許多查詢，例如使用 `TOP` 關鍵字的查詢，**擷取的文件計數** 可能會比 **輸出文件計數** 多出 1 個。 此狀況無須擔心。
 
 ### <a name="minimize-cross-partition-queries"></a>將跨分割區查詢最小化
 

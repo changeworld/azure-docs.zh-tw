@@ -3,12 +3,12 @@ title: 生產環境就緒和最佳做法-Azure
 description: 本文提供有關如何在生產環境中的 IoT Edge 模組上設定和部署即時影片分析的指引。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: c34e05e184cfa6f0933701a76177fae3eed70c0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 215427e3524861a842349b197668d92167960e5c
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87071928"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906330"
 ---
 # <a name="production-readiness-and-best-practices"></a>生產環境就緒和最佳做法
 
@@ -62,7 +62,7 @@ sudo adduser --home /home/edgeuser --uid 1010 -gid 1010 edgeuser
 
 IoT Edge 模組上的即時影片分析需要能夠在下列情況將檔案寫入本機檔案系統：
 
-* 使用模組對應項屬性 [[applicationDataDirectory](module-twin-configuration-schema.md#module-twin-properties)]，您應該在此指定本機檔案系統上的目錄來儲存設定資料。
+* 使用模組對應項屬性 [`applicationDataDirectory`](module-twin-configuration-schema.md#module-twin-properties) ，您應該在此指定本機檔案系統上的目錄來儲存設定資料。
 * 使用 media graph 將影片記錄到雲端時，模組需要使用 edge 裝置上的目錄作為快取 (如需詳細資訊，請參閱 [持續的影片記錄](continuous-video-recording-concept.md) 文章) 。
 * [記錄到本機](event-based-video-recording-concept.md#video-recording-based-on-events-from-other-sources)檔案，您應該在其中指定錄製影片的檔案路徑。
 
@@ -124,7 +124,7 @@ Media graph 可讓您建立雲端中的資產或邊緣上的檔。 媒體資產�
 如果您正在執行相同圖形的多個實例，您可以使用圖形拓撲名稱和實例名稱來區分。 例如，您可以在資產接收器上設定 assetNamePattern，如下所示：
 
 ```
-"assetNamePattern": "sampleAssetFromEVR-${System.GraphTopologyName}-${System.GraphInstanceName} -${System.DateTime}"
+"assetNamePattern": "sampleAssetFromEVR-${System.GraphTopologyName}-${System.GraphInstanceName}-${System.DateTime}"
 ```
 
 如果是以事件為基礎的影片在邊緣上產生的多型影片剪輯，建議的命名模式應該包含日期時間，而相同圖表的多個實例則建議使用系統變數 GraphTopologyName 和 GraphInstanceName。 例如，您可以在檔案接收上設定 filePathPattern，如下所示： 
@@ -133,7 +133,7 @@ Media graph 可讓您建立雲端中的資產或邊緣上的檔。 媒體資產�
 "filePathPattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}-${System.DateTime}"
 ```
 
-或者 
+Or 
 
 ```
 "filePathPattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}--${System.GraphTopologyName}-${System.GraphInstanceName} ${System.DateTime}"
@@ -160,6 +160,6 @@ Media graph 可讓您建立雲端中的資產或邊緣上的檔。 媒體資產�
 
     當 edge 模組上發生更新時，您的 docker 可以有較舊版本的 edge 模組仍然存在。 在這種情況下，建議使用 docker rmi 命令來移除映射版本戳記所識別的特定映射。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [快速入門：開始使用 - IoT Edge 上的 Live Video Analytics](get-started-detect-motion-emit-events-quickstart.md)

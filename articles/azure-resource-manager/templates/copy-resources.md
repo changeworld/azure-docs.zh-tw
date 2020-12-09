@@ -1,26 +1,26 @@
 ---
 title: 部署多個資源實例
-description: 使用 Azure Resource Manager 範本中的複製作業和陣列來部署資源類型多次。
+description: 使用 Azure Resource Manager 範本中的複製作業和陣列 (ARM 範本) 部署資源類型多次。
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 411c92061826a6e8bc59380d0440fb69816557a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47f3d693b84347973889a6003360d7113c427f4d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293963"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905905"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM 範本中的資源反復專案
 
-本文說明如何在 Azure Resource Manager (ARM) 範本中建立多個資源的實例。 藉由將 **複製** 元素新增至範本的資源區段，您可以動態設定要部署的資源數目。 您也可以避免重複範本語法。
+本文說明如何在 Azure Resource Manager 範本中建立多個資源的實例 (ARM 範本) 。 藉由將專案新增 `copy` 至範本的資源區段，您可以動態設定要部署的資源數目。 您也可以避免重複範本語法。
 
-您也可以使用具有 [屬性](copy-properties.md)、 [變數](copy-variables.md)和 [輸出](copy-outputs.md)的 copy。
+您也可以使用 `copy` with [屬性](copy-properties.md)、 [變數](copy-variables.md)和 [輸出](copy-outputs.md)。
 
 若需要指定是否要部署資源，請參閱[條件元素](conditional-resource-deployment.md)。
 
 ## <a name="syntax"></a>語法
 
-Copy 元素具有下列一般格式：
+`copy`元素具有下列一般格式：
 
 ```json
 "copy": {
@@ -31,9 +31,9 @@ Copy 元素具有下列一般格式：
 }
 ```
 
-**Name**屬性是任何可識別迴圈的值。 **Count**屬性會指定您想要的資源類型反覆運算次數。
+`name`屬性是任何可識別迴圈的值。 `count`屬性會指定您想要的資源類型反覆運算次數。
 
-使用 **mode** 和 **batchSize** 屬性來指定是否以平行方式或依順序部署資源。 這些屬性會以 [序列或平行](#serial-or-parallel)方式描述。
+使用 `mode` 和 `batchSize` 屬性來指定是否以平行方式或依順序部署資源。 這些屬性會以 [序列或平行](#serial-or-parallel)方式描述。
 
 ## <a name="copy-limits"></a>複製限制
 
@@ -52,7 +52,7 @@ Copy 元素具有下列一般格式：
 
 ## <a name="resource-iteration"></a>資源反覆項目
 
-下列範例會建立在 **storageCount** 參數中指定的儲存體帳戶數目。
+下列範例會建立參數中所指定的儲存體帳戶數目 `storageCount` 。
 
 ```json
 {
@@ -97,7 +97,7 @@ Copy 元素具有下列一般格式：
 * storage1
 * storage2.
 
-若要位移索引值，您可以傳遞 copyIndex() 函式中的值。 在 copy 元素中仍會指定反復專案的數目，但 copyIndex 的值是以指定的值來位移。 因此，下列範例：
+若要位移索引值，您可以在函數中傳遞值 `copyIndex()` 。 在 copy 元素中仍指定反覆運算次數，但的值是以指定的 `copyIndex` 值位移。 因此，下列範例：
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
@@ -187,7 +187,7 @@ Copy 元素具有下列一般格式：
 }
 ```
 
-mode 屬性也接受**平行**，這是預設值。
+`mode`屬性也會接受 **parallel**，這是預設值。
 
 ## <a name="depend-on-resources-in-a-loop"></a>依迴圈中的資源而定
 
@@ -281,7 +281,7 @@ mode 屬性也接受**平行**，這是預設值。
 
 下列範例顯示為資源或屬性建立多個執行個體的常見案例。
 
-|範本  |描述  |
+|[範本]  |描述  |
 |---------|---------|
 |[複製儲存體](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |利用名稱中的索引編號來部署多個儲存體帳戶。 |
 |[序列複製儲存體](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |一次一個部署數個儲存體帳戶。 名稱包含索引編號。 |
@@ -297,6 +297,5 @@ mode 屬性也接受**平行**，這是預設值。
   * [ARM 範本中的變數反復專案](copy-variables.md)
   * [ARM 範本中的輸出反復專案](copy-outputs.md)
 * 如需搭配使用複製與嵌套範本的詳細資訊，請參閱 [使用複製](linked-templates.md#using-copy)。
-* 如果您想要瞭解範本的區段，請參閱 [撰寫 ARM 範本](template-syntax.md)。
-* 若要瞭解如何部署您的範本，請參閱 [使用 ARM 範本部署應用程式](deploy-powershell.md)。
-
+* 如果您想要瞭解範本的區段，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
+* 若要瞭解如何部署您的範本，請參閱 [使用 ARM 範本部署資源和 Azure PowerShell](deploy-powershell.md)。

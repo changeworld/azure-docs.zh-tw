@@ -3,16 +3,16 @@ title: 建立新的 Azure Application Insights 資源 | Microsoft Docs
 description: 針對新的即時應用程式手動設定 Application Insights 監視。
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d2e367e84aed7abac70d803f28d26070f7b0a85e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fd05e6bd68be89b964fe1ad32029bf44f3352ea
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323123"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906364"
 ---
 # <a name="create-an-application-insights-resource"></a>建立 Application Insights 資源
 
-Azure 應用程式 Insights 會在 Microsoft Azure *資源*中顯示您應用程式的相關資料。 因此，建立新的資源是屬於[設定 Application Insights 以監視新應用程式][start]的一環。 建立新資源之後，您可以取得其檢測金鑰，並使用該金鑰來設定 Application Insights SDK。 檢測金鑰會將您的遙測連結至資源。
+Azure 應用程式 Insights 會在 Microsoft Azure *資源* 中顯示您應用程式的相關資料。 因此，建立新的資源是屬於[設定 Application Insights 以監視新應用程式][start]的一環。 建立新資源之後，您可以取得其檢測金鑰，並使用該金鑰來設定 Application Insights SDK。 檢測金鑰會將您的遙測連結至資源。
 
 ## <a name="sign-in-to-microsoft-azure"></a>登入 Microsoft Azure
 
@@ -24,7 +24,7 @@ Azure 應用程式 Insights 會在 Microsoft Azure *資源*中顯示您應用程
 
 ![按一下左上角的 [+] 符號。 選取開發人員工具，後面接著 Application Insights](./media/create-new-resource/new-app-insights.png)
 
-   | 設定        |  值           | 說明  |
+   | 設定        |  值           | 描述  |
    | ------------- |:-------------|:-----|
    | **名稱**      | `Unique value` | 識別您要監視之應用程式的名稱。 |
    | **資源群組**     | `myResourceGroup`      | 用來裝載 App Insights 資料之新的或現有資源群組的名稱。 |
@@ -44,7 +44,8 @@ Azure 應用程式 Insights 會在 Microsoft Azure *資源*中顯示您應用程
 
 檢測金鑰會識別您想要與遙測資料相關聯的資源。 您將需要複製檢測金鑰，並將它新增至您的應用程式程式碼。
 
-![按一下並複製檢測金鑰](./media/create-new-resource/instrumentation-key.png)
+> [!IMPORTANT]
+> 新的 Azure 區域 **需要** 使用連接字串，而不是檢測金鑰。 [連接字串](./sdk-connection-string.md?tabs=net) 會識別您想要與遙測資料相關聯的資源。 它也可讓您修改您的資源將用來做為遙測目的地的端點。 您必須複製連接字串，並將它加入應用程式的程式碼或加入環境變數。
 
 ## <a name="install-the-sdk-in-your-app"></a>在應用程式中安裝 SDK
 
@@ -152,7 +153,7 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 
 如需此命令的完整 Azure CLI 檔，以及瞭解如何取得檢測金鑰，請參閱 [Azure CLI 檔](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [診斷搜尋](./diagnostic-search.md)
 * [探索度量](../platform/metrics-charts.md)
 * [撰寫分析查詢](../log-query/log-query-overview.md)

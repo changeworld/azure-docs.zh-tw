@@ -3,21 +3,25 @@ title: 動態 Azure 地圖服務的 StylesObject 架構參考指南
 description: Dynamic Azure 地圖服務 StylesObject 架構和語法的參考指南。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/20/2020
+ms.date: 12/07/2020
 ms.topic: reference
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: f6bc4c62febf24dee790ac6136b1661426d4d619
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 08379e66c97d34eea53410190475e90e156a58e2
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536943"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903338"
 ---
 # <a name="stylesobject-schema-reference-guide-for-dynamic-maps"></a>動態地圖的 StylesObject 架構參考指南
 
- `StylesObject`是 `StyleObject` 代表 stateset 樣式的陣列。 使用 Azure 地圖服務 Creator [功能狀態服務](/rest/api/maps/featurestate) ，將您的 stateset 樣式套用至室內地圖資料功能。 一旦您建立了 stateset 樣式，並將其與室內地圖功能相關聯，您就可以使用它們來建立動態室內地圖。 如需有關建立動態室內地圖的詳細資訊，請參閱 [為 Creator 室內地圖實行動態樣式](indoor-map-dynamic-styling.md)。
+> [!IMPORTANT]
+> Azure 地圖服務 Creator 服務目前處於公開預覽狀態。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+ `StylesObject`是 `StyleObject` 代表 stateset 樣式的陣列。 使用 Azure 地圖服務 Creator (Preview) [功能狀態服務](/rest/api/maps/featurestate) ，將您的 stateset 樣式套用至室內地圖資料功能。 一旦您建立了 stateset 樣式，並將其與室內地圖功能相關聯，您就可以使用它們來建立動態室內地圖。 如需有關建立動態室內地圖的詳細資訊，請參閱 [為 Creator 室內地圖實行動態樣式](indoor-map-dynamic-styling.md)。
 
 ## <a name="styleobject"></a>StyleObject
 

@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/23/2020
-ms.openlocfilehash: eaccd0559439ce228325205f5845151f0e76bcae
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a8e2d77ff3c7cb2e4352b21cd87d630331e28660
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92484520"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906143"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽) 的連線能力和網路概念
 
@@ -21,7 +21,7 @@ ms.locfileid: "92484520"
 > 適用於 MySQL 的 Azure 資料庫彈性的伺服器處於預覽階段。
 
 ## <a name="choosing-a-networking-option"></a>選擇網路選項
-您有兩個網路選項可供您的適用於 MySQL 的 Azure 資料庫彈性伺服器使用。 包括**私人存取 (VNet 整合)** 和**公用存取 (允許的 IP 位址)** 。 在建立伺服器時，您必須挑選一個選項。 
+您有兩個網路選項可供您的適用於 MySQL 的 Azure 資料庫彈性伺服器使用。 包括 **私人存取 (VNet 整合)** 和 **公用存取 (允許的 IP 位址)** 。 在建立伺服器時，您必須挑選一個選項。 
 
 > [!NOTE]
 > 建立伺服器之後，就無法變更您的網路功能選項。 
@@ -33,7 +33,7 @@ ms.locfileid: "92484520"
    * 使用 VPN 或 ExpressRoute 從非 Azure 資源連線到您的彈性伺服器
    * 彈性伺服器沒有公用端點
 
-* **公用存取 (允許的 IP 位址) ** –您可透過公用端點存取彈性的伺服器。 公用端點是可公開解析的 DNS 位址。 「允許的 IP 位址」一詞指的是您選擇授與伺服器存取權的 IP 範圍。 這些權限稱為**防火牆規則**。 
+* **公用存取 (允許的 IP 位址)** –您可透過公用端點存取彈性的伺服器。 公用端點是可公開解析的 DNS 位址。 「允許的 IP 位址」一詞指的是您選擇授與伺服器存取權的 IP 範圍。 這些權限稱為 **防火牆規則**。 
 
    如果您想要下列功能，請選擇公用存取方法：
    * 從不支援虛擬網路的 Azure 資源連接
@@ -62,7 +62,7 @@ ms.locfileid: "92484520"
 
    您的 MySQL 彈性伺服器必須在 **委派** 的子網中，且僅適用于 mysql 彈性伺服器使用。 此委派表示只有適用於 MySQL 的 Azure 資料庫彈性伺服器可以使用該子網路。 委派的子網路中不可以有其他 Azure 資源類型。 您可以委派子網，方法是將其委派屬性指派為 Microsoft.dbformysql/flexibleServers。
 
-* ** (NSG) 的網路安全性群組 ** 網路安全性群組中的安全性規則可讓您篩選可流入和流出虛擬網路子網和網路介面的網路流量類型。 如需詳細資訊，請參閱 [網路安全性群組總覽](../../virtual-network/network-security-groups-overview.md) 。
+* **(NSG) 的網路安全性群組** 網路安全性群組中的安全性規則可讓您篩選可流入和流出虛擬網路子網和網路介面的網路流量類型。 如需詳細資訊，請參閱 [網路安全性群組總覽](../../virtual-network/network-security-groups-overview.md) 。
 
 
 ### <a name="unsupported-virtual-network-scenarios"></a>不支援的虛擬網路案例
@@ -107,9 +107,11 @@ ms.locfileid: "92484520"
 
    * 針對指派給存取適用於 MySQL 的 Azure 資料庫伺服器的用戶端電腦的 IP 位址範圍，要求您的網際網路服務提供者 (ISP) ，然後將 IP 位址範圍新增為防火牆規則。
    * 改為針對您的用戶端電腦取得靜態 IP 位址，然後將該靜態 IP 位址新增為防火牆規則。
+  
+* **IPv6 格式無法使用防火牆規則：** 防火牆規則必須是 IPv4 格式。 如果您指定 IPv6 格式的防火牆規則，則會顯示驗證錯誤。
 
 
-## <a name="hostname"></a>主機名稱
+## <a name="hostname"></a>Hostname (主機名稱)
 無論您選擇何種網路選項，我們建議您在連線到彈性的伺服器時，一律使用 (FQDN) 作為主機名稱的完整功能變數名稱。 伺服器的 IP 位址不保證保持靜態。 使用 FQDN 將有助於避免變更您的連接字串。 
 
 範例

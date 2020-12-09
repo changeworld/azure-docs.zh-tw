@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf2e3f98bd96c09fe741a24a1332443c876e2e61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af448d5d28c5add39176500b988824b17f85b9fb
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89225905"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861964"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>開始使用 Azure Active Directory 報告 API
 
@@ -47,7 +47,7 @@ Azure Active Directory 會向您提供各種[報告](overview-reports.md)，內�
 
 ## <a name="api-endpoints"></a>API 端點 
 
-稽核記錄的 Microsoft Graph API 端點是 `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits`，登入的 Microsoft Graph API 端點則是 `https://graph.microsoft.com/v1.0/auditLogs/signIns`。 如需詳細資訊，請參閱[稽核 API 參考](/graph/api/resources/directoryaudit?view=graph-rest-1.0)和[登入 API 參考](/graph/api/resources/signIn?view=graph-rest-1.0)。
+稽核記錄的 Microsoft Graph API 端點是 `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits`，登入的 Microsoft Graph API 端點則是 `https://graph.microsoft.com/v1.0/auditLogs/signIns`。 如需詳細資訊，請參閱[稽核 API 參考](/graph/api/resources/directoryaudit)和[登入 API 參考](/graph/api/resources/signIn)。
 
 此外，您可使用 [Identity Protection 風險偵測 API](/graph/api/resources/identityriskevent?view=graph-rest-beta) 來透過 Microsoft Graph 以程式設計方式存取安全性偵測。 如需詳細資訊，請參閱[開始使用 Azure Active Directory Identity Protection 和 Microsoft Graph](../identity-protection/howto-identity-protection-graph-api.md)。 
   

@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 34f43d51bf0df488e04605f7f7c77e9c6dcfe9a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56d2aa9f7aa36808774876ac0f5cfc596887ff26
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374077"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906381"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>使用 Azure CLI 在 Azure Marketplace 中尋找 Linux VM 映像
 
@@ -23,6 +23,45 @@ ms.locfileid: "87374077"
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
+
+## <a name="deploy-from-a-vhd-using-purchase-plan-parameters"></a>使用採購方案參數從 VHD 部署
+
+如果您有使用付費 Azure Marketplace 映射建立的現有 VHD，當您從該 VHD 建立新的 VM 時，可能需要提供購買方案資訊。 
+
+如果您仍有原始 VM，或使用相同 marketplace 映射建立的其他 VM，您可以使用 [az VM get-instance view](/cli/azure/vm#az_vm_get_instance_view)取得方案名稱、發行者和產品資訊。 此範例會在 *myResourceGroup* 資源群組中取得名為 *myVM* 的 VM，然後顯示購買方案資訊。
+
+```azurepowershell-interactive
+az vm get-instance-view -g myResourceGroup -n myVM --query plan
+```
+
+如果您在刪除原始 VM 之前未取得方案資訊，您可以 [提出支援要求](https://ms.portal.azure.com/#create/Microsoft.Support)。 他們將需要 VM 名稱、訂用帳戶識別碼，以及刪除作業的時間戳記。
+
+有了方案資訊之後，您就可以使用 `--attach-os-disk` 參數來指定 VHD 來建立新的 VM。
+
+```azurecli-interactive
+az vm create \
+   --resource-group myResourceGroup \
+  --name myNewVM \
+  --nics myNic \
+  --size Standard_DS1_v2 --os-type Linux \
+  --attach-os-disk myVHD \
+  --plan-name planName \
+  --plan-publisher planPublisher \
+  --plan-product planProduct 
+```
+
+## <a name="deploy-a-new-vm-using-purchase-plan-parameters"></a>使用採購方案參數部署新的 VM
+
+如果您已經有映射的相關資訊，您可以使用命令來部署它 `az vm create` 。 在此範例中，我們會使用 RabbitMQ 認證的 Bitnami 映射來部署 VM：
+
+```azurecli
+az group create --name myResourceGroupVM --location westus
+
+az vm create --resource-group myResourceGroupVM --name myVM --image bitnami:rabbitmq:rabbitmq:latest --plan-name rabbitmq --plan-product rabbitmq --plan-publisher bitnami
+```
+
+如果您收到關於接受影像條款的訊息，請參閱本文稍後的「 [接受條款](#accept-the-terms) 」一節。
+
 ## <a name="list-popular-images"></a>列出常用的映像
 
 執行 [az vm image list](/cli/azure/vm/image) 命令，而不包含 `--all` 選項，以查看 Azure Marketplace 中的常用 VM 映像清單。 例如，執行下列命令，以資料表格式顯示常用映像的快取清單：
@@ -31,7 +70,7 @@ ms.locfileid: "87374077"
 az vm image list --output table
 ```
 
-輸出會包含映像 URN ([Urn]** 欄中的值)。 使用其中一個常用 Marketplace 映像建立 VM 時，您也可以指定 UrnAlias**，例如 UbuntuLTS** 的縮短格式。
+輸出會包含映像 URN ([Urn] 欄中的值)。 使用其中一個常用 Marketplace 映像建立 VM 時，您也可以指定 UrnAlias，例如 UbuntuLTS 的縮短格式。
 
 ```
 You are viewing an offline list of images, use --all to retrieve an up-to-date list
@@ -325,7 +364,7 @@ az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
 }
 ```
 
-### <a name="accept-the-terms"></a>接受條款
+## <a name="accept-the-terms"></a>接受條款
 
 若要檢視並接受授權條款，請使用 [az vm image accept-terms](/cli/azure/vm/image?) 命令。 當您接受條款時，您會在訂用帳戶中啟用以程式設計方式部署。 您只需針對映像的每個訂用帳戶接受一次條款。 例如：
 
@@ -352,15 +391,5 @@ az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest
 }
 ```
 
-### <a name="deploy-using-purchase-plan-parameters"></a>使用購買方案的參數進行部署
-
-接受映像的條款之後，您可以在訂用帳戶中部署 VM。 若要使用 `az vm create` 命令來部署映像，除了映像的 URN 之外，請提供購買方案的參數。 例如，若要使用 RabbitMQ Certified by Bitnami 映像部署 VM：
-
-```azurecli
-az group create --name myResourceGroupVM --location westus
-
-az vm create --resource-group myResourceGroupVM --name myVM --image bitnami:rabbitmq:rabbitmq:latest --plan-name rabbitmq --plan-product rabbitmq --plan-publisher bitnami
-```
-
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 若要使用映像資訊來快速建立虛擬機器，請參閱[使用 Azure CLI 來建立和管理 Linux VM](tutorial-manage-vm.md)。

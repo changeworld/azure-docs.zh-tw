@@ -3,22 +3,26 @@ title: Azure 地圖服務長時間執行作業 API
 description: 了解 Azure 地圖服務中長時間執行的非同步背景處理
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 69c5b9d15c0ba3c7c8b6b01643beac1905c404ad
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: f5fb7c8059c8b98e8ec514a4159e96f48db7b1ad
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895863"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906194"
 ---
-# <a name="creator-long-running-operation-api"></a>建立工具長時間執行作業 API
+# <a name="creator-preview-long-running-operation-api"></a>Creator (預覽版) Long-Running 作業 API
 
-Azure 地圖服務中的某些 API 會使用[非同步要求 - 回復模式](/azure/architecture/patterns/async-request-reply)。 此模式可讓 Azure 地圖服務提供高可用性和回應性的服務。 本文說明 Azure 地圖服務之長時間執行非同步背景處理的特定實作。
+> [!IMPORTANT]
+> Azure 地圖服務 Creator 服務目前處於公開預覽狀態。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+Azure 地圖服務中的某些 Api 使用 [非同步 Request-Reply 模式](/azure/architecture/patterns/async-request-reply)。 此模式可讓 Azure 地圖服務提供高可用性和回應性的服務。 本文說明 Azure 地圖服務之長時間執行非同步背景處理的特定實作。
 
 ## <a name="submitting-a-request"></a>提交要求
 

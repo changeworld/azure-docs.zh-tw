@@ -3,14 +3,14 @@ title: 監視容器 Azure 監視器的成本 |Microsoft Docs
 description: 本文說明 Azure 監視器為容器收集的計量 & 清查資料的監視成本，以協助客戶管理其使用量和相關成本。
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: a03e94fa7650c56a4d3b3beda3c27283329aebbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81a20f564af68c3da6d63394e4cffe7caed91b46
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84204645"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903206"
 ---
-# <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>瞭解容器 Azure 監視器的監視成本
+# <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>了解 Azure 監視器的容器監視成本
 
 本文提供容器 Azure 監視器的定價指導方針，以協助您瞭解下列各項：
 
@@ -37,7 +37,7 @@ Azure 監視器的定價模型主要是根據您的 Log Analytics 工作區中�
 
 - Prometheus 計量的主動式抓取
 
-- 收集 AKS 叢集中 Kubernetes 主要節點記錄的[診斷記錄](../../aks/view-master-logs.md)，以分析主要元件所產生的記錄資料，例如*kube-apiserver*和*kube-controller 管理員*。
+- 收集 AKS 叢集中 Kubernetes 主要節點記錄的 [診斷記錄](../../aks/view-master-logs.md)，以分析主要元件所產生的記錄資料，例如 *kube-apiserver* 和 *kube-controller 管理員*。
 
 ## <a name="what-is-collected-from-kubernetes-clusters"></a>從 Kubernetes 叢集收集的內容
 
@@ -110,7 +110,7 @@ Azure 監視器的定價模型主要是根據您的 Log Analytics 工作區中�
 
 您可以在指派的 Log Analytics 工作區中，看到每小時產生的資料表和資料量。 如需每個資料表的詳細資訊，請參閱 [容器記錄](container-insights-log-search.md#container-records)。
 
-|Table | 大小估計 (MB/小時)  |
+|資料表 | 大小估計 (MB/小時)  |
 |------|---------------|
 |Perf | 12.9 |
 |InsightsMetrics | 11.3 |
@@ -127,19 +127,21 @@ Azure 監視器的定價模型主要是根據您的 Log Analytics 工作區中�
 
 ## <a name="controlling-ingestion-to-reduce-cost"></a>控制內嵌以降低成本
 
-假設您的組織不同業務單位共用 Kubernetes 基礎結構和 Log Analytics 工作區的案例。 每個業務單位都以 Kubernetes 命名空間分隔。 您可以使用最近發行的活頁簿來視覺化每個工作區中內嵌的資料量。 [活頁[簿] 圖庫](../platform/workbooks-overview.md#getting-started)中的 [**容器見解使用量**] 活頁簿可協助您以視覺化方式呈現資料的來源，而不需要建立您自己的查詢程式庫，使其在檔中分享。 在此活頁簿中，您可以使用圖表來查看來自這類透視圖的可計費資料，如下所示：
+假設您的組織不同業務單位共用 Kubernetes 基礎結構和 Log Analytics 工作區的案例。 每個業務單位都以 Kubernetes 命名空間分隔。 您可以使用 [**視圖活頁簿**] 下拉式清單中提供的 [**資料使用狀況**] runbook，將每個工作區中內嵌的資料量視覺化。
+
+[![查看活頁簿下拉式清單](media/container-insights-cost/workbooks-dropdown.png)](media/container-insights-cost/workbooks-dropdown.png#lightbox)
+
+
+此活頁簿可協助您以視覺化方式呈現資料的來源，而不需要建立您自己的查詢程式庫，使其在檔中分享。 在此活頁簿中，您可以使用圖表來查看來自這類透視圖的可計費資料，如下所示：
 
 - 依解決方案的計費資料內嵌（GB）總計
-
 - 容器記錄所內嵌的可計費資料 (應用程式記錄檔) 
-
 - 依 Kubernetes 命名空間的可計費容器記錄資料內嵌
-
 - 依叢集名稱隔離的可計費容器記錄資料內嵌
-
 - 依 logsource 專案內嵌的可計費容器記錄資料
-
 - 診斷主要節點記錄所內嵌的可計費診斷資料
+
+[![數據使用量活頁簿](media/container-insights-cost/data-usage-workbook.png)](media/container-insights-cost/data-usage-workbook.png#lightbox)
 
 若要瞭解如何管理活頁簿的許可權和許可權，請參閱 [存取控制](../platform/workbooks-access-control.md)。
 
@@ -196,6 +198,6 @@ Azure 監視器的定價模型主要是根據您的 Log Analytics 工作區中�
 
 - 透過 pod 注釋抓取時，請確定您依命名空間篩選，以便從不 (使用的命名空間中排除 pod 計量的抓取（例如， **開發/測試** 命名空間) ）。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需有關如何從使用容器的 Azure 監視器收集的資料，瞭解最新使用模式所需成本的詳細資訊，請參閱 [管理您的使用量和估計成本](../platform/manage-cost-storage.md)。

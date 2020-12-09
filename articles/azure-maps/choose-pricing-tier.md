@@ -3,17 +3,17 @@ title: 為 Microsoft Azure 對應選擇正確的定價層
 description: 瞭解 Azure 地圖服務定價層。 查看哪些層級提供哪些功能，以及查看選擇定價層的重要考慮。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 08/12/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3603a4f5d103987b25bd5f976b89f943f98565a8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cb57e424642141e73588a61d026d1ff2f1a8b096
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003679"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905293"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>在 Azure 地圖服務中選擇正確的定價層
 
@@ -48,6 +48,7 @@ S0 和 S1 定價層會處理不同的資料輸送量。 S0 定價層最多可處
 | 行動 (預覽)                        |                     | ✓        |
 | 天氣 (預覽)                         |✓                    |✓        |
 |  Creator (預覽)                          |                   |✓        |
+|  提高許可權 (預覽)                         |                   |✓        |
 
 請考慮下列其他幾點：
 

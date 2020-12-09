@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 2ff8f6134f74e0eda355342a7282e8be81a3d8df
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c5839589c35ea5a9c52303801a8767fc598434fc
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450232"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905871"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>在 Azure SQL Database 中使用伺服器的虛擬網路服務端點和規則
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "96450232"
 *虛擬網路規則* 是一項防火牆安全性功能，可控制 [Azure SQL Database](sql-database-paas-overview.md) 中的資料庫和彈性集區的伺服器，或 [Azure Synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 中的資料庫，是否接受從虛擬網路中的特定子網傳送的通訊。 本文說明為何虛擬網路規則功能有時是安全的選項，可讓您安全地在 Azure SQL Database 和 Azure Synapse Analytics 中對資料庫進行通訊。
 
 > [!NOTE]
-> 本文同時適用于 Azure SQL Database 和 Azure Synapse Analytics。 簡單來說，「資料庫」一詞同時指稱 Azure SQL Database 和 Azure Synapse Analytics 中的資料庫。 同樣地，只要提到「伺服器」，也都是指裝載 Azure SQL Database 和 Azure Synapse Analytics 的[邏輯 SQL 伺服器](logical-servers.md)。
+> 本文適用於 Azure SQL Database 和 Azure Synapse Analytics。 簡單來說，「資料庫」一詞同時指稱 Azure SQL Database 和 Azure Synapse Analytics 中的資料庫。 同樣地，只要提到「伺服器」，也都是指裝載 Azure SQL Database 和 Azure Synapse Analytics 的[邏輯 SQL 伺服器](logical-servers.md)。
 
 若要建立虛擬網路規則，必須先有[虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]規則可供參考。
 
@@ -95,7 +95,7 @@ ms.locfileid: "96450232"
 ### <a name="expressroute"></a>ExpressRoute
 
 如果您使用來自內部部署的 [ExpressRoute](../../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 進行公用對等互連或 Microsoft 對等互連，您將必須識別所使用的 NAT IP 位址。 在公用對等互連中，每個 Expressroute 線路預設都會使用兩個 NAT IP 位址，而這兩個位址會在流量進入 Microsoft Azure 網路骨幹時套用至 Azure 服務流量。 在 Microsoft 對等互連中，所用的 NAT IP 位址是由客戶提供或由服務提供者提供。 若要允許存取您的服務資源，就必須在資源 IP 防火牆設定中允許這些公用 IP 位址。 若要尋找您的公用對等互連 ExpressRoute 線路 IP 位址，請透過 Azure 入口網站[開啟有 ExpressRoute 的支援票證](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 深入了解 [ExpressRoute 公用與 Microsoft 對等互連的 NAT。](../../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering)
-  
+
 若要允許從您的線路與 Azure SQL Database 通訊，您必須為 NAT 的公用 IP 位址建立 IP 網路規則。
 
 <!--
@@ -122,7 +122,7 @@ PolyBase 和 COPY 語句通常用來將資料從 Azure 儲存體帳戶載入 Azu
 
 #### <a name="steps"></a>步驟
 
-1. 在 PowerShell 中，使用 Azure Active Directory (AAD) 註冊裝載 Azure Synapse 的 **伺服器** ：
+1. 如果您有獨立的專用 SQL 集區，請使用 PowerShell 向 Azure Active Directory (AAD) 註冊您的 SQL server： 
 
    ```powershell
    Connect-AzAccount
@@ -130,6 +130,14 @@ PolyBase 和 COPY 語句通常用來將資料從 Azure 儲存體帳戶載入 Azu
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
+   Synapse 工作區中的專用 SQL 集區不需要此步驟。
+
+1. 如果您有 Synapse 工作區，請註冊您工作區的系統管理身分識別：
+
+   1. 移至 Azure 入口網站中的 Synapse 工作區
+   2. 移至受控識別分頁 
+   3. 請確定已啟用 [允許管線] 選項
+   
 1. 以此 [指南](../../storage/common/storage-account-create.md)建立 **一般用途的 v2 儲存體帳戶**。
 
    > [!NOTE]
@@ -137,7 +145,7 @@ PolyBase 和 COPY 語句通常用來將資料從 Azure 儲存體帳戶載入 Azu
    > - 如果您有一般用途 v1 或 Blob 儲存體帳戶，您必須先使用此 [指南](../../storage/common/storage-account-upgrade.md)**升級至 v2**。
    > - 關於 Azure Data Lake Storage Gen2 的已知問題，請參閱此[指南](../../storage/blobs/data-lake-storage-known-issues.md)。
 
-1. 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將 **儲存體 Blob 資料參與者** Azure 角色指派給裝載您 Azure Synapse Analytics 的伺服器，您已向 AZURE ACTIVE DIRECTORY (AAD) 註冊，如同步驟 #1 中所述。
+1. 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將 **儲存體 Blob 資料參與者** Azure 角色指派給裝載您專用 SQL 集區的伺服器或工作區，您已向 AZURE ACTIVE DIRECTORY (AAD) 註冊。
 
    > [!NOTE]
    > 只有在儲存體帳戶上具有擁有者許可權的成員可以執行此步驟。 如需各種 Azure 內建角色，請參閱此[指南](../../role-based-access-control/built-in-roles.md)。

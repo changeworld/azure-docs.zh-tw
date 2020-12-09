@@ -1,26 +1,26 @@
 ---
 title: 使用 GitHub Actions 部署 Resource Manager 範本
-description: 描述如何使用 GitHub Actions 部署 Azure Resource Manager 範本。
+description: 說明如何使用 GitHub Actions)  (ARM 範本部署 Azure Resource Manager 範本。
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: cf705f68544c4c4e0db55d4a375e1e50530c8957
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4cda8307d417880469e6043b84c3ac55ed30071c
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185703"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905837"
 ---
-# <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>使用 GitHub Actions 部署 Azure Resource Manager 範本
+# <a name="deploy-arm-templates-by-using-github-actions"></a>使用 GitHub Actions 部署 ARM 範本
 
 [GitHub Actions](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) 是 GitHub 中的一組功能，可讓您在儲存程式碼及共同處理提取要求和問題的相同位置，自動化軟體發展工作流程。
 
-使用 [ [部署 Azure Resource Manager 範本] 動作](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) ，將 Resource Manager 範本自動部署至 Azure。 
+使用 [ [部署 Azure Resource Manager 範本] 動作](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) ，自動將 Azure Resource Manager 範本 (ARM 範本部署到 Azure) 。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- GitHub 帳戶。 如果您沒有帳戶，請[免費](https://github.com/join)註冊。  
+- GitHub 帳戶。 如果您沒有帳戶，請[免費](https://github.com/join)註冊。
     - 用於儲存 Resource Manager 範本和工作流程檔案的 GitHub 存放庫。 若要建立一個，請參閱[建立新的存放庫](https://help.github.com/en/enterprise/2.14/user/articles/creating-a-new-repository) \(英文\)。
 
 
@@ -40,21 +40,21 @@ ms.locfileid: "96185703"
 
 您可以使用 [Azure CLI](/cli/azure/) 中的 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) 命令來建立[服務主體](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 請使用 Azure 入口網站中的 [Azure Cloud Shell](https://shell.azure.com/)，或選取 [試試看] 按鈕來執行此命令。
 
-如果您還沒有資源群組，請建立一個。 
+如果您還沒有資源群組，請建立一個。
 
 ```azurecli-interactive
     az group create -n {MyResourceGroup}
 ```
 
-將預留位置取代為 `myApp` 您的應用程式名稱。 
+請將預留位置 `myApp` 取代為您的應用程式名稱。
 
 ```azurecli-interactive
    az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth
 ```
 
-在上述範例中，請將預留位置取代為您的訂用帳戶識別碼和資源組名。 輸出是具有角色指派認證的 JSON 物件，可讓您存取您的 App Service 應用程式，如下所示。 複製此 JSON 物件以供稍後之用。 您只需要具有 `clientId` 、 `clientSecret` 、 `subscriptionId` 和值的區段 `tenantId` 。 
+在上述範例中，請將預留位置取代為您的訂用帳戶識別碼和資源群組名稱。 輸出是一個 JSON 物件，內有角色指派認證可讓您存取 App Service 應用程式，如下所示。 複製此 JSON 物件以供後續使用。 您只需要具有 `clientId`、`clientSecret`、`subscriptionId` 和 `tenantId` 值的區段。
 
-```output 
+```output
   {
     "clientId": "<GUID>",
     "clientSecret": "<GUID>",
@@ -71,7 +71,7 @@ ms.locfileid: "96185703"
 
 ## <a name="configure-the-github-secrets"></a>設定 GitHub 祕密
 
-您必須為您的 Azure 認證、資源群組和訂用帳戶建立秘密。 
+您必須為您的 Azure 認證、資源群組和訂用帳戶建立秘密。
 
 1. 在 [GitHub](https://github.com/) 中，瀏覽您的存放庫。
 
@@ -79,9 +79,9 @@ ms.locfileid: "96185703"
 
 1. 將得自 Azure CLI 命令的整個 JSON 輸出貼到祕密的 [值] 欄位中。 將祕密命名為 `AZURE_CREDENTIALS`。
 
-1. 建立另一個名為 `AZURE_RG` 的秘密。 將資源群組的名稱新增至秘密的值欄位， (範例： `myResourceGroup`) 。 
+1. 建立另一個名為 `AZURE_RG` 的秘密。 將資源群組的名稱新增至秘密的值欄位， (範例： `myResourceGroup`) 。
 
-1. 建立名為的其他秘密 `AZURE_SUBSCRIPTION` 。 將您的訂用帳戶識別碼新增至秘密的值欄位， (範例： `90fd3f9d-4c61-432d-99ba-1273f236afa2`) 。 
+1. 建立名為的其他秘密 `AZURE_SUBSCRIPTION` 。 將您的訂用帳戶識別碼新增至秘密的值欄位， (範例： `90fd3f9d-4c61-432d-99ba-1273f236afa2`) 。
 
 ## <a name="add-resource-manager-template"></a>新增 Resource Manager 範本
 
@@ -118,7 +118,7 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
         - uses: azure/login@v1
           with:
             creds: ${{ secrets.AZURE_CREDENTIALS }}
-     
+
           # Deploy ARM template
         - name: Run ARM deploy
           uses: azure/arm-deploy@v1
@@ -126,13 +126,13 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
             subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
             resourceGroupName: ${{ secrets.AZURE_RG }}
             template: ./azuredeploy.json
-            parameters: storageAccountType=Standard_LRS 
-        
+            parameters: storageAccountType=Standard_LRS
+
           # output containerName variable from template
         - run: echo ${{ steps.deploy.outputs.containerName }}
     ```
     > [!NOTE]
-    > 您可以改為在 ARM 部署動作中指定 JSON 格式參數檔案 (範例： `.azuredeploy.parameters.json`) 。  
+    > 您可以改為在 ARM 部署動作中指定 JSON 格式參數檔案 (範例： `.azuredeploy.parameters.json`) 。
 
     工作流程檔案的第一個區段包括：
 
@@ -152,7 +152,7 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
 1. 從功能表選取 [ **執行 ARM 部署** ] 以確認部署。
 
 ## <a name="clean-up-resources"></a>清除資源
-當您的資源群組和儲存機制不再需要時，請刪除資源群組和您的 GitHub 存放庫，以清除您所部署的資源。 
+當您的資源群組和儲存機制不再需要時，請刪除資源群組和您的 GitHub 存放庫，以清除您所部署的資源。
 
 ## <a name="next-steps"></a>後續步驟
 

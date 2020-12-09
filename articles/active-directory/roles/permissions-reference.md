@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cdf89fa3281e070d6b1ac762d30d7c391f4126f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: bf91c9e081bff9860153b342648fedc0990b68b9
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963635"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862052"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -142,7 +142,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 
 ### <a name="compliance-data-administrator"></a>[合規性資料管理員](#compliance-data-administrator-permissions)
 
-具備此角色的使用者有權限追蹤 Microsoft 365 合規性中心、Microsoft 365 系統管理中心和 Azure 中的資料。 使用者也可以追蹤 Exchange 系統管理中心、合規性管理員、Teams 和商務用 Skype 系統管理中心內的合規性資料，並建立適用於 Azure 和 Microsoft 365 的支援票證。 [本檔](/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center?view=o365-worldwide#permissions-needed-to-use-features-in-the-security--compliance-center) 包含合規性管理員和合規性資料管理員之間差異的詳細資料。
+具備此角色的使用者有權限追蹤 Microsoft 365 合規性中心、Microsoft 365 系統管理中心和 Azure 中的資料。 使用者也可以追蹤 Exchange 系統管理中心、合規性管理員、Teams 和商務用 Skype 系統管理中心內的合規性資料，並建立適用於 Azure 和 Microsoft 365 的支援票證。 [本檔](/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center) 包含合規性管理員和合規性資料管理員之間差異的詳細資料。
 
 在 | 可以執行
 ----- | ----------
@@ -276,7 +276,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 
 此角色中的使用者可以建立、管理布建設定，並將其從 AD 部署到使用雲端布建 Azure AD，以及管理同盟設定。 使用者也可以使用此角色針對記錄進行疑難排解和監視。  
 
-### <a name="insights-administrator"></a>[見解管理員](#insights-administrator-permissions)
+### <a name="insights-administrator"></a>[Insights 管理員](#insights-administrator-permissions)
 此角色中的使用者可以存取 [M365 Insights 應用程式](https://go.microsoft.com/fwlink/?linkid=2129521)中的完整管理功能集。 此角色具有讀取目錄資訊、監視服務健康狀態、檔案支援票證，以及存取深入解析管理員設定方面的能力。
 
 ### <a name="insights-business-leader"></a>[Insights 商務領導人](#insights-business-leader-permissions)
@@ -307,7 +307,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 
 此角色的使用者可以在已設定的服務（例如 Exchange、Intune 和 Microsoft 小組）上，為其組織監視 [訊息中心](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) 內的通知和諮詢健康情況更新。 訊息中心的讀者會收到文章、更新的每週電子郵件摘要，並可在 Microsoft 365 分享訊息中心貼文。 在 Azure AD 中，指派至此角色的使用者只會有 Azure AD 服務的唯讀存取權，與使用者和群組一樣。 這個角色沒有檢視、建立或管理支援票證的存取權。
 
-### <a name="modern-commerce-user"></a>[新式商務使用者](#modern-commerce-user-permissions)
+### <a name="modern-commerce-user"></a>[現代化商務使用者](#modern-commerce-user-permissions)
 
 請勿使用。 此角色會從 Commerce 自動指派，不適用於、也不支援任何其他用途。 請參閱下面的詳細資料。
 
@@ -317,7 +317,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 
 **何時會指派新式 Commerce 使用者角色？**
 
-* **Microsoft 365 系統管理中心的自助式採購** - 自助式採購讓使用者有機會藉由自行購買或註冊來試用新產品。 這些產品都是在系統管理中心進行管理。 進行自助式購買的使用者會被指派 commerce 系統中的角色，以及新式的商務使用者角色，讓他們可以在系統管理中心管理他們的購買專案。 系統管理員可透過 [PowerShell](/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide) 來封鎖自助式採購 (針對 Power BI、Power Apps、Power Automate)。 如需詳細資訊，請參閱[自助式購買常見問題集](/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide)。  
+* **Microsoft 365 系統管理中心的自助式採購** - 自助式採購讓使用者有機會藉由自行購買或註冊來試用新產品。 這些產品都是在系統管理中心進行管理。 進行自助式購買的使用者會被指派 commerce 系統中的角色，以及新式的商務使用者角色，讓他們可以在系統管理中心管理他們的購買專案。 系統管理員可透過 [PowerShell](/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell) 來封鎖自助式採購 (針對 Power BI、Power Apps、Power Automate)。 如需詳細資訊，請參閱[自助式購買常見問題集](/microsoft-365/commerce/subscriptions/self-service-purchase-faq)。  
 * **從 Microsoft 商業 Marketplace 購買**  （與自助式購買類似），當使用者從 Microsoft AppSource 或 Azure Marketplace 購買產品或服務時，如果使用者沒有全域管理員或計費管理員角色，就會指派新式商務使用者角色。 在某些情況下，使用者可能會遭到封鎖而無法進行採購。 如需詳細資訊，請參閱 [Microsoft 商業市集](../../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase)。
 * **Microsoft 的提案** – 提案是來自 Microsoft 的正式報價，可供貴組織購買 Microsoft 產品和服務。 當接受提案的人沒有 Azure AD 中的全域管理員或計費管理員角色時，系統會將商務專屬角色指派給他們，以完成提案和新式商務使用者角色來存取系統管理中心。 當他們存取系統管理中心時，只能使用其商務專用角色所授權的功能。
 * **商務專用角色** – 某些使用者會被指派商務專用角色。 如果使用者不是全域或帳單系統管理員，他們會取得新式商務使用者角色，讓他們可以存取系統管理中心。  
@@ -481,7 +481,7 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 
 此角色的使用者可以使用 Microsoft Teams 和商務用 Skype 系統管理中心內的使用者呼叫疑難排解工具，針對 Microsoft Teams 和商務用 Skype 內的通訊問題進行疑難排解。 此角色的使用者只能檢視其所查閱特定使用者的呼叫中所含有的使用者詳細資料。 這個角色沒有檢視、建立或管理支援票證的存取權。
 
-### <a name="teams-devices-administrator"></a>[團隊裝置系統管理員](#teams-devices-administrator-permissions)
+### <a name="teams-devices-administrator"></a>[Teams 裝置管理員](#teams-devices-administrator-permissions)
 
 具有此角色的使用者可以從小組系統管理中心管理 [經過團隊認證的裝置](https://www.microsoft.com/microsoft-365/microsoft-teams/across-devices/devices) 。 此角色可讓您一眼就能查看所有裝置，並能夠搜尋和篩選裝置。 使用者可以查看每個裝置的詳細資料，包括已登入的帳戶、製作裝置和型號。 使用者可以變更裝置上的設定，並更新軟體版本。 此角色不會授與檢查小組活動和呼叫裝置品質的許可權。 
 
@@ -1935,7 +1935,7 @@ Exchange 服務管理員 | Exchange 系統管理員 | 29232cdf-9323-42fd-ade2-1d
 來賓邀請者 | 來賓邀請者 | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 服務台系統管理員 | 服務台管理員 | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 混合式身分識別管理員 | 混合式身分識別管理員 | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2
-見解管理員 | 見解管理員 | eb1f4a8d-243a-41f0-9fbd-c7cdf6c5ef7c
+Insights 管理員 | 見解管理員 | eb1f4a8d-243a-41f0-9fbd-c7cdf6c5ef7c
 Insights 商務領導人 | Insights 商務領導人 | 31e939ad-9672-4796-9c2e-873181342d2d
 Intune 服務管理員 | Intune 管理員 | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Kaizala 管理員 | Kaizala 管理員 | 74ef975b-6605-40af-a5d2-b9539d836353
@@ -1943,7 +1943,7 @@ Kaizala 管理員 | Kaizala 管理員 | 74ef975b-6605-40af-a5d2-b9539d836353
 Lync 服務管理員 | 商務用 Skype 的管理員 | 75941009-915a-4869-abe7-691bff18279e
 訊息中心隱私權讀取者 | 訊息中心隱私權讀取者 | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 訊息中心讀取者 | 訊息中心讀取者 | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
-新式商務使用者 | 新式商務使用者 | d24aef57-1500-4070-84db-2666f29cf966
+現代化商務使用者 | 現代化商務使用者 | d24aef57-1500-4070-84db-2666f29cf966
 網路管理員 | 網路管理員 | d37c8bed-0711-4417-ba38-b4abe66ce4c2
 Office 應用程式管理員 | Office 應用程式管理員 | 2b745bdf-0803-4d80-aa65-822c4493daac
 合作夥伴第 1 層支援 | 未顯示，因為不得使用 | 4ba39ca4-527c-499a-b93d-d9b492c50246
@@ -1966,7 +1966,7 @@ SharePoint 服務管理員 | SharePoint 管理員 | f28a1f50-f6e7-4571-818b-6a12
 Microsoft Teams 通訊系統管理員 | Microsoft Teams 通訊系統管理員 | baf37b3a-610e-45da-9e62-d9d1e5e8914b
 Microsoft Teams 通訊支援工程師 | Microsoft Teams 通訊支援工程師 | f70938a0-fc10-4177-9e90-2178f8765737
 Microsoft Teams 通訊支援專家 | Microsoft Teams 通訊支援專家 | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
-團隊裝置系統管理員 | 團隊裝置系統管理員 | 3d762c5a-1b6c-493f-843e-55a3b42923d4
+Teams 裝置管理員 | Teams 裝置管理員 | 3d762c5a-1b6c-493f-843e-55a3b42923d4
 Microsoft Teams 服務管理員 | Microsoft Teams 服務管理員 | 69091246-20e8-4a56-aa4d-066075b2a7a8
 User | 未顯示，因為不能使用 | a0b1b346-4d3e-4e8b-98f8-753987be4970
 使用者帳戶管理員 | 使用者管理員 | fe930be7-5e62-47db-91af-98c3a49a38b1

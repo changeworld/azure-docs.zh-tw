@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c208da657d30d4a0f5b6f171693c5c6abc2b358b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0671d3dec963c0b475133881b00224cfe11e8370
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649173"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861639"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中停用企業應用程式的使用者登入
 
@@ -39,7 +39,7 @@ ms.locfileid: "94649173"
 
 ## <a name="use-azure-ad-powershell-to-disable-an-unlisted-app"></a>使用 Azure AD PowerShell 來停用未列出的應用程式
 
-如果您知道應用程式的 AppId 未出現在企業應用程式清單上 (例如，因為您已刪除應用程式，或因為 Microsoft) 預先授權的應用程式而尚未建立服務主體，您可以手動建立應用程式的服務主體，然後使用 [AzureAD PowerShell Cmdlet](/powershell/module/azuread/New-AzureADServicePrincipal?view=azureadps-2.0)將它停用。
+如果您知道應用程式的 AppId 未出現在企業應用程式清單上 (例如，因為您已刪除應用程式，或因為 Microsoft) 預先授權的應用程式而尚未建立服務主體，您可以手動建立應用程式的服務主體，然後使用 [AzureAD PowerShell Cmdlet](/powershell/module/azuread/New-AzureADServicePrincipal)將它停用。
 
 ```PowerShell
 # The AppId of the app to be disabled
