@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: f631f8ee022f501cb30af4aae5cf48294b9ca3c2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d7e312f049acc0b74aa0a253864bfce6100044bd
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125830"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929135"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 上使用 GPU 處理計算密集型工作負載
 
-圖形處理單元 (GPU) 通常用來處理計算密集型工作負載 (例如圖形和視覺效果工作負載)。 AKS 可讓您建立已啟用 GPU 的節點集區，以便在 Kubernetes 中執行這些計算密集型工作負載。 若要深入了解已啟用 GPU 的可用 VM，請參閱 [Azure 中的 GPU 最佳化 VM 大小][gpu-skus]。 針對 AKS 節點，我們建議使用最小的大小：Standard_NC6  。
+圖形處理單元 (GPU) 通常用來處理計算密集型工作負載 (例如圖形和視覺效果工作負載)。 AKS 可讓您建立已啟用 GPU 的節點集區，以便在 Kubernetes 中執行這些計算密集型工作負載。 若要深入了解已啟用 GPU 的可用 VM，請參閱 [Azure 中的 GPU 最佳化 VM 大小][gpu-skus]。 針對 AKS 節點，我們建議使用最小的大小：Standard_NC6。
 
 > [!NOTE]
 > 已啟用 GPU 的 VM 包含特定硬體，該特定硬體受限於較高的定價和區域可用性。 如需詳細資訊，請參閱[定價][azure-pricing]工具和[區域可用性][azure-availability]。
@@ -32,7 +32,7 @@ ms.locfileid: "93125830"
 
 如果您需要符合最低需求的 AKS 叢集 (已啟用 GPU 的節點和使用 Kubernetes 1.10 或更新版本)，請完成下列步驟。 如果您已經有符合這些需求的 AKS 叢集，請 [跳到下一節](#confirm-that-gpus-are-schedulable)。
 
-首先，使用 [az group create][az-group-create] 命令來建立叢集的資源群組。 下列範例會在 eastus  地區建立名為 myResourceGroup  的資源群組：
+首先，使用 [az group create][az-group-create] 命令來建立叢集的資源群組。 下列範例會在 eastus 地區建立名為 myResourceGroup 的資源群組：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -58,13 +58,13 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 在可以使用節點中的 Gpu 之前，您必須先為 NVIDIA 裝置外掛程式部署 DaemonSet。 此 DaemonSet 會在每個節點上執行 Pod，為 GPU 提供必要的驅動程式。
 
-首先，使用  ：
+首先，使用 [kubectl create namespace][kubectl-create] 命令建立命名空間，例如 gpu-resources：
 
 ```console
 kubectl create namespace gpu-resources
 ```
 
-建立名為 nvidia-device-plugin-ds.yaml  的檔案，並貼上下列 YAML 資訊清單。 此資訊清單會作為 [Kubernetes 專案的 NVIDIA 裝置外掛程式][nvidia-github]的一部分來提供。
+建立名為 nvidia-device-plugin-ds.yaml 的檔案，並貼上下列 YAML 資訊清單。 此資訊清單會作為 [Kubernetes 專案的 NVIDIA 裝置外掛程式][nvidia-github]的一部分來提供。
 
 ```yaml
 apiVersion: apps/v1
@@ -134,13 +134,13 @@ daemonset "nvidia-device-plugin" created
 az feature register --name GPUDedicatedVHDPreview --namespace Microsoft.ContainerService
 ```
 
-可能需要幾分鐘的時間，狀態才會顯示為 [已註冊]。 您可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) 命令檢查註冊狀態：
+可能需要幾分鐘的時間，狀態才會顯示為 [已註冊]。 您可以使用 [az feature list](/cli/azure/feature#az-feature-list) 命令檢查註冊狀態：
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/GPUDedicatedVHDPreview')].{Name:name,State:properties.state}"
 ```
 
-當狀態顯示為已註冊時，請使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令重新整理 `Microsoft.ContainerService` 資源提供者的註冊：
+當狀態顯示為已註冊時，請使用 [az provider register](/cli/azure/provider#az-provider-register) 命令重新整理 `Microsoft.ContainerService` 資源提供者的註冊：
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -196,9 +196,9 @@ NAME                       STATUS   ROLES   AGE   VERSION
 aks-nodepool1-28993262-0   Ready    agent   13m   v1.12.7
 ```
 
-現在，使用 [kubectl describe node][kubectl-describe] 命令確認 GPU 可進行排程。 在 [容量]  區段下，GPU 應顯示為 `nvidia.com/gpu:  1`。
+現在，使用 [kubectl describe node][kubectl-describe] 命令確認 GPU 可進行排程。 在 [容量] 區段下，GPU 應顯示為 `nvidia.com/gpu:  1`。
 
-下列精簡範例顯示名為 aks-nodepool1-18821093-0  的節點上有 GPU：
+下列精簡範例顯示名為 aks-nodepool1-18821093-0 的節點上有 GPU：
 
 ```console
 $ kubectl describe node aks-nodepool1-28993262-0
@@ -252,7 +252,7 @@ Non-terminated Pods:         (9 in total)
 
 若要查看運作中的 GPU，請使用適當的資源要求對已啟用 GPU 的工作負載進行排程。 在此範例中，我們要針對 [MNIST 資料集](http://yann.lecun.com/exdb/mnist/)執行 [Tensorflow](https://www.tensorflow.org/) 作業。
 
-建立名為 samples-tf-mnist-demo.yaml  的檔案，並貼上下列 YAML 資訊清單。 下列作業資訊清單包含 `nvidia.com/gpu: 1` 的資源限制：
+建立名為 samples-tf-mnist-demo.yaml 的檔案，並貼上下列 YAML 資訊清單。 下列作業資訊清單包含 `nvidia.com/gpu: 1` 的資源限制：
 
 > [!NOTE]
 > 如果您在呼叫驅動程式時發生版本不符的錯誤，例如，CUDA 驅動程式版本不足以 CUDA 執行階段版本，請參閱 NVIDIA 驅動程式矩陣相容性圖表- [https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)

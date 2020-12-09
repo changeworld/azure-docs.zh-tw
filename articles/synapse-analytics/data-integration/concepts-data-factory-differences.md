@@ -2,18 +2,18 @@
 title: 與 Azure Data Factory 的差異
 description: 瞭解 Azure Synapse Analytics 的資料整合功能與 Azure Data Factory 的不同之處
 services: synapse-analytics
-author: djpmsft
+author: shirleywangmsft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.author: daperlov
+ms.author: shwang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 10f5336dd4c8a02acf623b1b14226ca676006953
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: db5d05e1a211ce14926ee4031054669fff5110d9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357644"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930206"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Azure Synapse Analytics 與 Azure Data Factory 中的資料整合
 
@@ -42,7 +42,6 @@ ms.locfileid: "94357644"
 
 * **整頓資料流程：** 整頓資料流程活動目前僅適用于 Azure Data Factory。
 * **解決方案範本資源庫：** 在 Azure Data Factory 中，使用者可以在 [方案範本資源庫] 中找到管線範本。 在 Synapse 工作區中，知識中心包含一組不同的範本，以及其他資料集和 SQL 腳本。 
-* **Git 整合和原生 CI/CD 解決方案：** 目前，Synapse 工作區無法連線到 Git 存放庫，也不會遵循與 Azure Data Factory 相同的持續整合和傳遞程式。
 * **與 Azure 監視器整合：** 如同 Azure Data Factory，Synapse 工作區不會與 Azure 監視器整合。
 * **混合式整合運行** 時間設定：在 Synapse 工作區中，使用者不能同時有受管理的 VNet IR 和 Azure IR。 Azure Data Factory 支援這項功能。
 * **整合執行時間共用：** 在 Synapse 工作區之間無法共用自我裝載整合執行時間。 Azure Data Factory 支援這項功能。

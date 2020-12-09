@@ -2,18 +2,18 @@
 title: 使用受控識別來存取應用程式組態
 titleSuffix: Azure App Configuration
 description: 使用受控識別向 Azure 應用程式組態進行驗證
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: f2d8c6e94638c01fb21e070a756c0c97c330fb26
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8ef3ff20c67eefa2091ffb1732ced813b169e596
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671608"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929747"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>使用受控識別來存取應用程式組態
 
@@ -22,6 +22,9 @@ Azure Active Directory [受控](../active-directory/managed-identities-azure-res
 Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶端程式庫都有內建的受控識別支援。 雖然您不需要使用它，但受控識別不需要包含秘密的存取權杖。 您的程式碼只能使用服務端點來存取應用程式設定存放區。 您可以直接將此 URL 內嵌在程式碼中，而不會公開任何秘密。
 
 本文會說明如何利用受控識別來存取應用程式設定。 本文會以快速入門中介紹的 Web 應用程式作為基礎。 繼續之前，請先  [使用應用程式設定建立 ASP.NET Core 應用程式](./quickstart-aspnet-core-app.md) 。
+
+> [!NOTE]
+> 本文使用 Azure App Service 作為範例，但相同的概念適用于其他任何支援受控身分識別的 Azure 服務，例如 [Azure Kubernetes Service](../aks/use-azure-ad-pod-identity.md)、 [azure 虛擬機器](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)和 [azure 容器實例](../container-instances/container-instances-managed-identity.md)。 如果您的工作負載裝載于其中一個服務中，您也可以利用服務的受控識別支援。
 
 本文也會說明如何搭配使用受控識別與應用程式設定的 Key Vault 參考。 透過單一受控識別，您可以從應用程式設定中的 Key Vault 和設定值順暢地存取這兩個秘密。 如果您想要探索這項功能，請先完成搭配 [ASP.NET Core 使用 Key Vault 參考](./use-key-vault-references-dotnet-core.md) 。
 
@@ -49,9 +52,9 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
 
 1. 如往常一樣，在 [Azure 入口網站](https://portal.azure.com) 中建立應用程式服務實例。 在入口網站中移至該應用程式。
 
-1. 在左側窗格中，向下捲動到 [設定]  群組，然後選取 [身分識別]  。
+1. 在左側窗格中，向下捲動到 [設定] 群組，然後選取 [身分識別]。
 
-1. 在 [系統指派]  索引標籤上，將 [狀態]  切換成 [開啟]  ，然後選取 [儲存]  。
+1. 在 [系統指派] 索引標籤上，將 [狀態] 切換成 [開啟]，然後選取 [儲存]。
 
 1. 當系統提示您啟用系統指派的受控識別時，請回答 **[是]** 。
 
@@ -63,11 +66,11 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
 
 1. 選取 [存取控制 (IAM)]。
 
-1. 在 [檢查存取權]  索引標籤上，選取 [新增角色指派]  卡片 UI 中的 [新增]  。
+1. 在 [檢查存取權] 索引標籤上，選取 [新增角色指派] 卡片 UI 中的 [新增]。
 
-1. 在 [ **角色** ] 底下，選取 [ **應用程式設定資料讀取器** ]。 在 [存取權指派對象為]  底下，選取 [系統指派的受控識別]  底下的 [App Service]  。
+1. 在 [ **角色**] 底下，選取 [ **應用程式設定資料讀取器**]。 在 [存取權指派對象為] 底下，選取 [系統指派的受控識別] 底下的 [App Service]。
 
-1. 在 [訂用帳戶]  底下，選取您的 Azure 訂用帳戶。 選取您應用程式的 App Service 資源。
+1. 在 [訂用帳戶] 底下，選取您的 Azure 訂用帳戶。 選取您應用程式的 App Service 資源。
 
 1. 選取 [儲存]。
 
@@ -85,7 +88,7 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
 
 1. 尋找應用程式設定存放區的端點。 此 URL 會列在 Azure 入口網站中存放區的 [ **存取金鑰** ] 索引標籤上。
 
-1. 開啟 *appsettings.json* ，然後新增下列指令碼。 以 *\<service_endpoint>* 應用程式設定存放區的 URL 取代（包括括弧）。
+1. 開啟 *appsettings.json*，然後新增下列指令碼。 以 *\<service_endpoint>* 應用程式設定存放區的 URL 取代（包括括弧）。
 
     ```json
     "AppConfig": {
@@ -93,7 +96,7 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
     }
     ```
 
-1. 開啟 *Program.cs* ，並加入 `Azure.Identity` 和命名空間的參考 `Microsoft.Azure.Services.AppAuthentication` ：
+1. 開啟 *Program.cs*，並加入 `Azure.Identity` 和命名空間的參考 `Microsoft.Azure.Services.AppAuthentication` ：
 
     ```csharp-interactive
     using Azure.Identity;
@@ -136,7 +139,7 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
     ```
     ---
 
-1. 若要同時使用應用程式設定值和 Key Vault 參考，請更新 *Program.cs* ，如下所示。 這段程式碼會 `KeyVaultClient` 使用來建立新的 `AzureServiceTokenProvider` ，並將這個參考傳遞給方法的呼叫 `UseAzureKeyVault` 。
+1. 若要同時使用應用程式設定值和 Key Vault 參考，請更新 *Program.cs* ，如下所示。 這段程式碼會在中呼叫 `SetCredential` `ConfigureKeyVault` ，告知設定提供者驗證 Key Vault 時要使用的認證。
 
     ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
@@ -151,10 +154,10 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
                    config.AddAzureAppConfiguration(options =>
                    {
                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                           .ConfigureKeyVault(kv =>
-                           {
-                              kv.SetCredential(credentials);
-                           });
+                              .ConfigureKeyVault(kv =>
+                              {
+                                 kv.SetCredential(credentials);
+                              });
                    });
                })
                .UseStartup<Startup>();
@@ -175,10 +178,10 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
                     config.AddAzureAppConfiguration(options =>
                     {
                         options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                            .ConfigureKeyVault(kv =>
-                            {
-                                kv.SetCredential(credentials);
-                            });
+                               .ConfigureKeyVault(kv =>
+                               {
+                                   kv.SetCredential(credentials);
+                               });
                     });
                 });
             })
@@ -186,10 +189,10 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
     ```
     ---
 
-    您現在可以存取 Key Vault 參考，就像任何其他應用程式設定金鑰一樣。 設定提供者會使用 `KeyVaultClient` 您設定的來驗證 Key Vault 並取出值的。
+    您現在可以存取 Key Vault 參考，就像任何其他應用程式設定金鑰一樣。 設定提供者會使用 `ManagedIdentityCredential` 驗證 Key Vault 並取得值。
 
-> [!NOTE]
-> `ManagedIdentityCredential` 僅支援受控識別驗證。 它無法在本機環境中運作。 如果您想要在本機執行程式碼，請考慮使用 `DefaultAzureCredential` ，它也支援服務主體驗證。 請檢查 [連結](/dotnet/api/azure.identity.defaultazurecredential) 以取得詳細資料。
+    > [!NOTE]
+    > `ManagedIdentityCredential`只適用于支援受控識別驗證之服務的 Azure 環境。 它無法在本機環境中運作。 用來 [`DefaultAzureCredential`](/dotnet/api/azure.identity.defaultazurecredential) 讓程式碼在本機和 Azure 環境中運作，因為它會切換回一些驗證選項，包括受控識別。
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
@@ -226,7 +229,7 @@ az webapp deployment source config-local-git --name <app_name> --resource-group 
 
 ### <a name="deploy-your-project"></a>部署您的專案
 
-在 _本機終端機視窗_ 中，將 Azure 遠端新增至您的本機 Git 存放庫。 _\<url>_ 以您從 [ [啟用本機 Git with Kudu](#enable-local-git-with-kudu)] 取得的 Git 遠端 URL 取代。
+在 _本機終端機視窗_ 中，將 Azure 遠端新增至您的本機 Git 存放庫。 _\<url>_ 以您從 [[啟用本機 Git with Kudu](#enable-local-git-with-kudu)] 取得的 Git 遠端 URL 取代。
 
 ```bash
 git remote add azure <url>
@@ -235,7 +238,7 @@ git remote add azure <url>
 推送到 Azure 遠端，使用下列命令來部署您的應用程式。 當系統提示您輸入密碼時，請輸入您在[設定部署使用者](#configure-a-deployment-user)中建立的密碼。 請勿使用您用來登入 Azure 入口網站的密碼。
 
 ```bash
-git push azure master
+git push azure main
 ```
 
 您可能會在輸出中看到執行階段特定的自動化，例如適用於 ASP.NET 的 MSBuild、適用於 Node.js 的 `npm install`，以及適用於 Python 的 `pip install`。

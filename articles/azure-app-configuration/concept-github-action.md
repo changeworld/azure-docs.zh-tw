@@ -1,17 +1,17 @@
 ---
 title: 將您的 GitHub 存放庫同步至應用程式組態
 description: 當您更新 GitHub 存放庫時，請使用 GitHub Actions 自動更新您的應用程式組態執行個體。
-author: lisaguthrie
-ms.author: lcozzens
-ms.date: 02/20/2020
+author: AlexandraKemperMS
+ms.author: alkemper
+ms.date: 05/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 66d0e32e7dfdd5ab2abee5108ac8ce54c5222747
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b2b5f4bcbcc5af07a763ee4dff2d42413750fb7
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87371816"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930274"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>將您的 GitHub 存放庫同步至應用程式組態
 
@@ -35,7 +35,7 @@ GitHub [文件](https://help.github.com/actions/automating-your-workflow-with-gi
 ## <a name="sync-configuration-files-after-a-push"></a>推送之後同步處理設定檔
 當變更推送至 `appsettings.json` 時，此動作會同步處理 Azure 應用程式組態檔案。 當開發人員將變更推送到 `appsettings.json` 時，應用程式組態同步動作會使用新的值來更新應用程式組態執行個體。
 
-此工作流程的第一個區段指定動作將會在「推送」至 *master* 分支的內容包含 `appsettings.json` 時觸發。 第二個區段列出觸發動作之後所執行的作業。 動作會簽出相關檔案，並使用儲存在存放庫中作為祕密的連接字串來更新應用程式組態執行個體。  如需在 GitHub 中使用祕密的詳細資訊，請參閱關於建立及使用已加密祕密的 [GitHub 的文章](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) \(英文\)。
+此工作流程的第一個區段指定在包含至主要分支的 *推送* 上觸發動作 `appsettings.json` 。  第二個區段列出觸發動作之後所執行的作業。 動作會簽出相關檔案，並使用儲存在存放庫中作為祕密的連接字串來更新應用程式組態執行個體。  如需在 GitHub 中使用祕密的詳細資訊，請參閱關於建立及使用已加密祕密的 [GitHub 的文章](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) \(英文\)。
 
 ```json
 on: 
@@ -177,7 +177,7 @@ jobs:
 ## <a name="use-a-dynamic-label-on-sync"></a>在同步處理時使用動態標籤
 下列動作會在每次同步處理時插入動態標籤，確保可以唯一識別每個同步處理，並允許程式碼變更對應至設定變更。
 
-此工作流程的第一個區段指定動作將會在「推送」至 *master* 分支的內容包含 `appsettings.json` 時觸發。 第二個區段會執行作業，其以認可雜湊為基礎來建立設定更新的唯一標籤。 然後，作業會使用新的值和此更新的唯一標籤來更新應用程式組態執行個體。
+此工作流程的第一個區段指定在包含至主要分支的 *推送* 上觸發動作 `appsettings.json` 。  第二個區段會執行作業，其以認可雜湊為基礎來建立設定更新的唯一標籤。 然後，作業會使用新的值和此更新的唯一標籤來更新應用程式組態執行個體。
 
 ```json
 on: 

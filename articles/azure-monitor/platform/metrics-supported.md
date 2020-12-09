@@ -4,26 +4,26 @@ description: AAzure 監視器每一個資源類型的可用計量清單。
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 10/01/2020
+ms.date: 12/09/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 3e5dd5c83468e867c746393642a1e40ff07763c4
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 04f6cdae8a7601f94251516cf5c3c1fab07994a6
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921503"
+ms.locfileid: "96929101"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>支援 Azure 監視器的計量
 
 > [!NOTE]
-> 這份清單大部分是從 Azure 監視器計量 REST API 自動產生的。 透過 GitHub 對此清單所做的任何修改，都可能會在不發出警告的情況下撰寫。 如需有關如何進行永久更新的詳細資訊，請洽詢本文的作者。
+> 這份清單大多是自動產生的。 透過 GitHub 對此清單所做的任何修改，都可能會在不發出警告的情況下撰寫。 如需有關如何進行永久更新的詳細資訊，請洽詢本文的作者。
 
 Azure 監視器提供數種與計量進行互動的方式，包括在入口網站中製作計量圖表、透過 REST API 存取計量，或使用 PowerShell 或 CLI 查詢計量。 
 
-本文是所有平臺 (的完整清單，也就是自動收集 Azure 監視器的匯總計量管線目前可用的) 計量。 此清單上次更新日期：2020年3月27日。 在此日期之後變更或新增的計量可能不會出現在下方。 若要以程式設計方式查詢並存取計量清單，請使用 [2018-01-01 api 版本](/rest/api/monitor/metricdefinitions)。 不在此清單上的其他計量可能會在入口網站或使用舊版 Api 中提供。
+本文是所有平臺 (的完整清單，也就是自動收集 Azure 監視器的匯總計量管線目前可用的) 計量。 在本文頂端的日期之後變更或新增的計量可能尚未出現在下方。 若要以程式設計方式查詢並存取計量清單，請使用 [2018-01-01 api 版本](/rest/api/monitor/metricdefinitions)。 不在此清單上的其他計量可能會在入口網站或使用舊版 Api 中提供。
 
-計量會依資源提供者和資源類型進行組織。 如需服務及其所屬資源提供者的清單，請參閱 [Azure 服務的資源提供者](../../azure-resource-manager/management/azure-services-resource-providers.md)。 
+計量會依資源提供者和資源類型進行組織。 如需服務及其所屬的資源提供者和類型清單，請參閱 [Azure 服務的資源提供者](../../azure-resource-manager/management/azure-services-resource-providers.md)。  
 
 ## <a name="exporting-platform-metrics-to-other-locations"></a>將平臺計量匯出至其他位置
 

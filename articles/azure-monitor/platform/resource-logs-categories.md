@@ -3,13 +3,13 @@ title: Azure 監視器資源記錄支援的服務與類別
 description: 參考 Azure 監視器瞭解 Azure 資源記錄的支援服務和事件架構。
 ms.subservice: logs
 ms.topic: reference
-ms.date: 06/03/2020
-ms.openlocfilehash: 463b1d9d9c3ed1d94728874ba814554deb4f97c6
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 12/09/2020
+ms.openlocfilehash: c7b2d48b40843930bba78f54d2294769d952daf6
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920843"
+ms.locfileid: "96931223"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>支援的 Azure 資源記錄類別
 
@@ -23,7 +23,7 @@ ms.locfileid: "96920843"
 
 ## <a name="costs"></a>成本
 
- 將任何資料傳送至 Log Analytics 和/或事件中樞有相關費用。 資源記錄是您可以傳送至這些位置的一種資料類型。 [匯出某些資源記錄類別](https://azure.microsoft.com/pricing/details/monitor/)需要額外的成本。 其他則是免費的匯出成本。 詳細資訊列在下表中。
+將任何資料傳送至 Log Analytics、Azure 儲存體和/或事件中樞時，會產生相關費用。 您可以支付將資料放入這些位置並加以保留的成本。  資源記錄是您可以傳送至這些位置的一種資料類型。 將 [某些資源記錄類別匯出](https://azure.microsoft.com/pricing/details/monitor/) 至這些位置會產生額外的費用，而有些則是免費的匯出成本。 下表列出匯出的成本詳細資訊。
 
 ## <a name="supported-log-categories-per-resource-type"></a>每個資源類型支援的記錄檔類別
 

@@ -1,23 +1,23 @@
 ---
 title: Azure Active Directory REST API-驗證
 description: 使用 Azure Active Directory 使用 REST API 驗證 Azure 應用程式組態
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 73d951b3e85c170cf068693bb9b374349516ca8f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cbf05245768a663e324e9bb6e1ad422eeee3ab1a
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183476"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930512"
 ---
 # <a name="azure-active-directory-authentication"></a>Azure Active Directory 驗證
 
 您可以使用 `Bearer` 驗證配置搭配從 Azure Active Directory (Azure AD) 取得的權杖來驗證 HTTP 要求。 您必須透過傳輸層安全性 (TLS) 來傳輸這些要求。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您必須將用來要求 Azure AD 權杖的主體指派給其中一個適用的 [Azure 應用程式組態角色](./rest-api-authorization-azure-ad.md)。
 

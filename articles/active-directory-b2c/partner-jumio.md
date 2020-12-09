@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: f3a8881b9fe44727caf07b3cc0d5ee19f0444e98
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 66ec0d4b09dc983eb898d63d45b3dd7cab291c4c
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953656"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928659"
 ---
 # <a name="tutorial-for-configuring-jumio-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 Jumio 的教學課程
 
 在此範例教學課程中，我們會提供有關如何整合 Azure Active Directory B2C (Azure AD B2C) 與 [Jumio](https://www.jumio.com/)的指引。 Jumio 是一項識別碼驗證服務，可啟用即時自動化識別碼驗證，以協助保護客戶資料。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始使用，您需要：
 
@@ -65,7 +65,7 @@ Jumio 整合包含下列元件：
 
 ### <a name="deploy-the-api"></a>部署 API
 
-將提供的 [API 程式碼](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/API/Jumio.Api) 部署至 Azure 服務。 您可以依照下列 [指示](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)，從 Visual Studio 發佈程式碼。
+將提供的 [API 程式碼](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/API/Jumio.Api) 部署至 Azure 服務。 您可以依照下列 [指示](/visualstudio/deployment/quickstart-deploy-to-azure)，從 Visual Studio 發佈程式碼。
 
 >[!NOTE]
 >您將需要已部署之服務的 URL，以使用必要的設定來設定 Azure AD。

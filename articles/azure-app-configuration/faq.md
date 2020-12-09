@@ -2,17 +2,17 @@
 title: Azure 應用程式組態常見問題
 description: 閱讀常見問題的解答 (常見問題) 有關 Azure 應用程式組態的詳細資訊，例如它與 Azure Key Vault 有何不同。
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.author: lcozzens
-ms.openlocfilehash: 5d74b17bdd9c264a983bfdd2e374001dd4a0e2c0
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.author: alkemper
+ms.openlocfilehash: 4e19574e5848d1ee86d13aa02a9cf583b92eff02
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242104"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929560"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure 應用程式組態常見問題
 
@@ -41,7 +41,7 @@ ms.locfileid: "93242104"
 
 ## <a name="does-app-configuration-encrypt-my-data"></a>應用程式設定是否會將我的資料加密？
 
-是。 應用程式設定會加密其保存的所有金鑰值，並將網路通訊加密。 索引鍵名稱和標籤是用來作為抓取設定資料的索引，且不會加密。
+是。 應用程式組態會將其所保存的所有機碼值加密，且會將網路通訊加密。 索引鍵名稱和標籤是用來作為抓取設定資料的索引，且不會加密。
 
 ## <a name="where-does-data-stored-in-app-configuration-reside"></a>應用程式設定中儲存的資料位於何處？ 
 
@@ -87,15 +87,15 @@ Azure App Service 可讓您定義每個 App Service 實例的應用程式設定�
 以下是選擇階層的考慮。
 
 - **每一訂** 用帳戶的資源：資源是由單一設定存放區所組成。 每個訂用帳戶僅限免費層中的一個設定存放區。 訂用帳戶在標準層中可以有無限數量的設定存放區。
-- **每個資源的儲存體** ：在免費層中，每個設定存放區的儲存空間限制為 10 MB。 在標準層中，每個設定存放區最多可使用 1 GB 的儲存體。
-- **修訂歷程記錄** ：應用程式設定會儲存對金鑰所做之所有變更的歷程記錄。 在免費層中，此歷程記錄會儲存七天。 在標準層中，此歷程記錄會儲存30天。
-- **要求配額** ：免費層存放區受限於每日1000個要求。 當商店到達1000要求時，它會針對所有要求傳回 HTTP 狀態碼429，直到午夜 UTC 為止。
+- **每個資源的儲存體**：在免費層中，每個設定存放區的儲存空間限制為 10 MB。 在標準層中，每個設定存放區最多可使用 1 GB 的儲存體。
+- **修訂歷程記錄**：應用程式設定會儲存對金鑰所做之所有變更的歷程記錄。 在免費層中，此歷程記錄會儲存七天。 在標準層中，此歷程記錄會儲存30天。
+- **要求配額**：免費層存放區受限於每日1000個要求。 當商店到達1000要求時，它會針對所有要求傳回 HTTP 狀態碼429，直到午夜 UTC 為止。
 
     標準層存放區受限於每小時20000個要求。 當配額用盡時，會針對所有要求傳回 HTTP 狀態碼429，直到該小時結束為止。
 
-- **服務等級協定** ：標準層具有99.9% 可用性的 SLA。 免費層沒有 SLA。
-- **安全性功能** ：這兩個層級都包含基本安全性功能，包括使用 Microsoft 管理的金鑰進行加密、透過 HMAC 或 Azure Active Directory 進行驗證、Azure RBAC 支援、受控識別，以及服務標記。 標準層提供更先進的安全性功能，包括使用客戶管理的金鑰來 Private Link 支援和加密。
-- **成本** ：標準層商店具有每日使用量費用。 每日的前200000要求都會包含在每日費用中。 每日配置過去的要求也會收取超額費用。 使用免費層存放區不會產生任何費用。
+- **服務等級協定**：標準層具有99.9% 可用性的 SLA。 免費層沒有 SLA。
+- **安全性功能**：這兩個層級都包含基本安全性功能，包括使用 Microsoft 管理的金鑰進行加密、透過 HMAC 或 Azure Active Directory 進行驗證、Azure RBAC 支援、受控識別，以及服務標記。 標準層提供更先進的安全性功能，包括使用客戶管理的金鑰來 Private Link 支援和加密。
+- **成本**：標準層商店具有每日使用量費用。 每日的前200000要求都會包含在每日費用中。 每日配置過去的要求也會收取超額費用。 使用免費層存放區不會產生任何費用。
 
 ## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>是否可以將商店從免費層升級至標準層？ 我可以將存放區從標準層降級至免費層嗎？
 
@@ -130,6 +130,6 @@ Azure App Service 可讓您定義每個 App Service 實例的應用程式設定�
 
 您可以直接在 [GitHub](https://github.com/Azure/AppConfiguration/issues)上聯繫我們。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [關於 Azure 應用程式組態](./overview.md)

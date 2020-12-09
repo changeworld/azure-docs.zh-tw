@@ -3,14 +3,14 @@ title: Azure 自動化更新管理概觀
 description: 此文章提供可對 Windows 和 Linux 機器實作更新的更新管理功能概觀。
 services: automation
 ms.subservice: update-management
-ms.date: 11/30/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 37ab05ce7e963ab7fdc4d2b02e254adaa205446c
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 4b557c9772e76b6b61cdf01799ee30ba6bc11807
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327486"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928421"
 ---
 # <a name="update-management-overview"></a>更新管理概觀
 
@@ -224,7 +224,7 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 >
 > 沒有 Linux 更新的分類，而且它們會在 [ **其他更新** ] 類別下回報。 更新管理使用支援的發行版本所發佈的資料，尤其是其發行的 [橢圓](https://oval.mitre.org/) (開放式弱點和評定語言) 檔。 因為網際網路存取受限於這些國家雲端，所以更新管理無法存取及使用這些檔案。
 
-針對 Linux，更新管理可以區分雲端中的重大更新和安全性更新，同時基於雲端中的資料擴充顯示評量資料。 針對修補，「更新管理」仰賴機器上可用的分類資料。 與其他發行版本不同，CentOS 在 RTM 版本中沒有此資訊可供使用。 如果您將 CentOS 機器設定為傳回以下命令的安全性資料，更新管理就能根據分類進行修補。
+針對 Linux，更新管理可以區別分類 **安全性** 和 **其他** 雲端中的重大更新和安全性更新，同時顯示因雲端中的資料擴充而顯示的評定資料。 針對修補，「更新管理」仰賴機器上可用的分類資料。 與其他發行版本不同，CentOS 在 RTM 版本中沒有此資訊可供使用。 如果您將 CentOS 機器設定為傳回以下命令的安全性資料，更新管理就能根據分類進行修補。
 
 ```bash
 sudo yum -q --security check-update
@@ -233,6 +233,10 @@ sudo yum -q --security check-update
 目前沒有支援的方法可以在 CentOS 上啟用原生分類資料可用性。 目前，有限的支援會提供給可能已自行啟用此功能的客戶。
 
 若要將 Red Hat Enterprise 版本 6 上的更新分類，您必須安裝 yum-security 外掛程式。 在 Red Hat Enterprise Linux 7 上，此外掛程式已經是 yum 本身的一部分，因此不需要安裝任何項目。 如需詳細資訊，請參閱下列 Red Hat [知識文章](https://access.redhat.com/solutions/10021) \(英文\)。
+
+當您將更新排程在 Linux 機器上執行時，此範例會設定為只安裝符合 **安全性** 分類的更新，安裝的更新可能與相同，或者是符合此分類的更新子集。 當您執行 Linux 機器的 OS 更新的評估時，系統會使用 Linux 發行版本廠商提供的 [開放弱點和評定語言](https://oval.mitre.org/) (OVAL) 更新管理進行分類。
+
+您可以根據 OVAL 檔案以 **安全性** 或 **其他** 的形式針對 Linux 更新進行分類，其中包括解決安全性問題或弱點的更新。 但是，當更新排程執行時，它會使用適當的套件管理員（例如 YUM、APT 或 ZYPPER）在 Linux 機器上執行，以進行安裝。 Linux 發行版本的套件管理員可能會有不同的機制來分類更新，其中的結果可能會與從 OVAL 檔案取得的結果不同（更新管理）。 若要手動檢查電腦並瞭解哪些更新是與您的套件管理員相關的安全性，請參閱 [疑難排解 Linux 更新部署](../troubleshoot/update-management.md#updates-linux-installed-different)。
 
 ## <a name="integrate-update-management-with-configuration-manager"></a>整合更新管理與 Configuration Manager
 

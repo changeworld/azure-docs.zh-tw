@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 07a8f785cf2b9a64f3acb9f44c4fca5023c4fcf3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2b6001932b6f53a60eda76b6136611a10011391a
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953741"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928676"
 ---
 # <a name="tutorial-for-configuring-idology-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 IDology 的教學課程 
 
 在此範例教學課程中，我們會提供有關如何將 Azure AD B2C 與 [IDology](https://www.idology.com/solutions/)整合的指引。 IDology 是具有多個解決方案的身分識別驗證和校對提供者。 在此範例中，我們將涵蓋 IDology 的 ExpectID 解決方案。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始使用，您需要：
 
@@ -67,7 +67,7 @@ IDology 整合包含下列元件：
 
 ### <a name="part-1---deploy-the-api"></a>第1部分-部署 API
 
-將提供的 [API 程式碼](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/IDology/Api) 部署至 Azure 服務。 您可以依照下列 [指示](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)，從 Visual Studio 發佈程式碼。
+將提供的 [API 程式碼](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/IDology/Api) 部署至 Azure 服務。 您可以依照下列 [指示](/visualstudio/deployment/quickstart-deploy-to-azure)，從 Visual Studio 發佈程式碼。
 
 您將需要已部署之服務的 URL，以使用必要的設定來設定 Azure AD。
 

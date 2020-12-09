@@ -1,22 +1,22 @@
 ---
 title: 使用客戶管理的金鑰來加密您的設定資料
 description: 使用客戶管理的金鑰來加密您的設定資料
-author: lisaguthrie
-ms.author: lcozzens
-ms.date: 02/18/2020
+author: AlexandraKemperMS
+ms.author: alkemper
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 8942c93b7346613b8cfdc97d9afe09f1c473fb10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46a1e99a7bc75efa85fcb5eff649c14af5abd17b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87384866"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930495"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>使用客戶管理的金鑰來加密您的應用程式設定資料
 Azure 應用程式組態 [加密待用的機密資訊](../security/fundamentals/encryption-atrest.md)。 使用客戶管理的金鑰可讓您管理加密金鑰，以提供增強的資料保護。  使用受控金鑰加密時，應用程式設定中的所有機密資訊都會以使用者提供的 Azure Key Vault 金鑰進行加密。  這可讓您視需要輪替加密金鑰。  它也可撤銷應用程式設定實例對金鑰的存取權，以撤銷 Azure 應用程式組態存取機密資訊的能力。
 
-## <a name="overview"></a>概觀 
+## <a name="overview"></a>總覽 
 Azure 應用程式組態使用 Microsoft 提供的256位 AES 加密金鑰來加密待用的機密資訊。 每個應用程式設定實例都有它自己的加密金鑰，可由服務管理，並用來加密機密資訊。 機密資訊包括在索引鍵/值組中找到的值。  啟用客戶管理的金鑰功能時，應用程式設定會使用指派給應用程式設定實例的受控識別，向 Azure Active Directory 進行驗證。 受控識別接著會呼叫 Azure Key Vault，並包裝應用程式設定實例的加密金鑰。 然後會儲存已包裝的加密金鑰，並在應用程式設定中快取未包裝的加密金鑰一小時。 應用程式設定會每小時重新整理應用程式設定實例之加密金鑰的解除包裝版本。 這可確保正常運作狀況下的可用性。 
 
 >[!IMPORTANT]
@@ -27,7 +27,7 @@ Azure 應用程式組態使用 Microsoft 提供的256位 AES 加密金鑰來加�
 >[!NOTE]
 >所有 Azure 應用程式組態資料都會儲存在隔離備份中最多24小時的時間。 這包括未包裝的加密金鑰。 這項資料不會立即提供給服務或服務小組使用。 萬一發生緊急狀況還原，Azure 應用程式組態將會從受控金鑰資料重新撤銷本身。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 若要成功啟用 Azure 應用程式組態客戶管理的金鑰功能，需要下列元件：
 - 標準層 Azure 應用程式組態實例
 - 啟用虛刪除和清除保護功能的 Azure Key Vault

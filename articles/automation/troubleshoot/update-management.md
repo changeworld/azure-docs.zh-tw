@@ -5,12 +5,12 @@ services: automation
 ms.date: 12/04/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: e8fc2a840ce019282625f286a6d54b132a1806c8
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: c6d0f38eaa25f2fe033a5e2cf48ee6daa51fcbe6
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751252"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929271"
 ---
 # <a name="troubleshoot-update-management-issues"></a>針對更新管理問題進行疑難排解
 
@@ -19,7 +19,7 @@ ms.locfileid: "96751252"
 >[!NOTE]
 >如果您在 Windows 電腦上部署更新管理時遇到問題，請開啟 Windows 事件檢視器，然後在本機電腦上的 [**應用程式和服務記錄** 檔] 底下檢查 **Operations Manager** 事件記錄檔。 尋找事件識別碼為 4502 的事件，以及包含 `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` 的事件詳細資料。
 
-## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a>案例： Linux 更新顯示為擱置且已安裝的變更
+## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a><a name="updates-linux-installed-different"></a>案例： Linux 更新顯示為擱置且已安裝的變更
 
 ### <a name="issue"></a>問題
 
@@ -29,7 +29,7 @@ ms.locfileid: "96751252"
 
 當您的 Linux 機器的作業系統更新擱置中的評定完成時，) 更新管理會使用 Linux 發行版本廠商提供的 [開放弱點和評定語言](https://oval.mitre.org/) (OVAL 來進行分類。 針對 Linux 更新以 **安全性** 或 **其他** 方式執行的分類是以表示更新解決安全性問題或弱點的 OVAL 檔案為基礎。 但是，當更新排程執行時，它會使用適當的套件管理員（例如 YUM、APT 或 ZYPPER）在 Linux 機器上執行，以進行安裝。 Linux 發行版本的套件管理員可能會有不同的機制來分類更新，其中的結果可能會與從 OVAL 檔案取得的結果不同（更新管理）。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 您可以根據發行版本的封裝管理員，手動檢查 Linux 機器、適用的更新，以及其分類。 若要瞭解您的套件管理員會將哪些更新分類為 **安全性** ，請執行下列命令。
 
@@ -93,7 +93,7 @@ Error details: Failed to enable the Update solution
 
 已取代的更新不會在 Windows Server Update Services (WSUS) 中拒絕，因此可視為不適用。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 當被取代的更新變成100% 不適用時，您應該在 WSUS 中將該更新的核准狀態變更為 `Declined` 。 若要變更所有更新的核准狀態：
 

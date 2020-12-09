@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: a8cd6386ed6004935b0a1e45a53c01668166c0e4
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 1b3ab569666ea413ba36da0dc00f6c37336c4443
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902250"
+ms.locfileid: "96931294"
 ---
 # <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 REST 端點複製資料和複製資料
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -43,7 +43,7 @@ ms.locfileid: "96902250"
 > [!TIP]
 > 若要在 Data Factory 中設定 REST 連接器之前，測試擷取資料的要求，請先了解 API 規格中的標頭和本文需求。 您可以使用 Postman 或網頁瀏覽器之類的工具進行驗證。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -303,12 +303,19 @@ ms.locfileid: "96902250"
 | requestMethod | HTTP 方法。 允許的值為 **POST** (預設) 、 **PUT** 和 **PATCH**。 | 否 |
 | additionalHeaders | 其他 HTTP 要求標頭。 | 否 |
 | httpRequestTimeout | 用來取得回應的 HTTP 要求會有的逾時值 (**TimeSpan** 值)。 此值是取得回應的超時時間，而不是寫入資料的超時時間。 預設值為 **00:01:40**。  | 否 |
-| requestInterval | Milisecond 中不同要求之間的間隔時間。 要求間隔值應為介於 [10，60000] 之間的數位。 |  否 |
+| requestInterval | 不同要求之間的間隔時間（毫秒）。 要求間隔值應為介於 [10，60000] 之間的數位。 |  否 |
 | HTTPCompressionType | 以最佳壓縮等級傳送資料時所要使用的 HTTP 壓縮類型。 允許的值為 **none** 和 **gzip**。 | 否 |
 | writeBatchSize | 每個批次要寫入 REST 接收器的記錄數目。 預設值為 10000。 | 否 |
 
->[!NOTE]
->REST 連接器作為接收器可搭配接受 JSON 的 REST 端點運作。 資料只會以 JSON 傳送。
+REST 連接器作為接收，可與接受 JSON 的 REST Api 搭配使用。 資料將會以下列模式以 JSON 格式傳送。 您可以視需要使用「複製活動 [架構對應](copy-activity-schema-and-type-mapping.md#schema-mapping) 」來調整來源資料，以符合 REST API 所預期的承載。
+
+```json
+[
+    { <data object> },
+    { <data object> },
+    ...
+]
+```
 
 **範例︰**
 
@@ -348,7 +355,7 @@ ms.locfileid: "96902250"
 
 ## <a name="pagination-support"></a>分頁支援
 
-一般來說，REST API 會以合理的數目限制單一要求的回應承載大小;雖然傳回大量資料，但是它會將結果分割成多個頁面，並且要求呼叫端傳送連續要求以取得結果的下一頁。 通常，單一頁面要求是動態的，並且由前頁回應所傳回的資訊所組成。
+從 REST Api 複製資料時，REST API 通常會以合理的數目限制單一要求的回應承載大小;雖然傳回大量資料，但是它會將結果分割成多個頁面，並且要求呼叫端傳送連續要求以取得結果的下一頁。 通常，單一頁面要求是動態的，並且由前頁回應所傳回的資訊所組成。
 
 此泛型 REST 連接器支援下列分頁模式： 
 

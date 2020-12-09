@@ -1,20 +1,20 @@
 ---
 title: ARM 範本測試控管組
-description: 說明如何在您的範本上執行 ARM 範本測試控管組。 此工具組可讓您查看是否已實行建議的作法。
+description: 說明如何在您的範本上) 測試控管組中執行 Azure Resource Manager 範本 (ARM 範本。 此工具組可讓您查看是否已實行建議的作法。
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 73f6db8cbd5e4d7a0670c394f6af338aae8e9e79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29ebe2f0ec4d4c39154272bbbdf4d0c9ede9fd95
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439555"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928183"
 ---
 # <a name="use-arm-template-test-toolkit"></a>使用 ARM 範本測試控管組
 
-[Azure Resource Manager (ARM) 範本測試控管](https://aka.ms/arm-ttk)組會檢查您的範本是否使用建議的做法。 當您的範本不符合建議的做法時，會傳回一份警告清單以及建議的變更。 藉由使用測試控管組，您可以瞭解如何避免在範本開發中遇到常見問題。
+[Azure Resource Manager 範本 (ARM 範本) 測試控管](https://aka.ms/arm-ttk)組會檢查您的範本是否使用建議的做法。 當您的範本不符合建議的做法時，會傳回一份警告清單以及建議的變更。 藉由使用測試控管組，您可以瞭解如何避免在範本開發中遇到常見問題。
 
 測試控管組提供一 [組預設測試](test-cases.md)。 這些測試是建議，但不是需求。 您可以決定哪些測試與您的目標相關，並自訂要執行的測試。
 
@@ -22,7 +22,7 @@ ms.locfileid: "89439555"
 
 此工具組是一組 PowerShell 腳本，可從 PowerShell 或 CLI 中的命令執行。
 
-## <a name="install-on-windows"></a>在 Windows 上安裝
+## <a name="install-on-windows"></a>安裝在 Windows 上
 
 1. 如果您還沒有 PowerShell，請 [在 Windows 上安裝 powershell](/powershell/scripting/install/installing-powershell-core-on-windows)。
 
@@ -50,7 +50,7 @@ ms.locfileid: "89439555"
    Test-AzTemplate -TemplatePath \path\to\template
    ```
 
-## <a name="install-on-linux"></a>在 Linux 上安裝
+## <a name="install-on-linux"></a>安裝在 Linux 上
 
 1. 如果您還沒有 PowerShell，請 [在 Linux 上安裝 powershell](/powershell/scripting/install/installing-powershell-core-on-linux)。
 
@@ -162,11 +162,11 @@ Test-AzTemplate -TemplatePath $TemplateFolder -Test "Resources Should Have Locat
 
 ## <a name="customize-tests"></a>自訂測試
 
-針對 ARM 範本，此工具組會執行資料夾 **\arm-ttk\testcases\deploymentTemplate**中的所有測試。 如果您想要永久移除測試，請從資料夾中刪除該檔案。
+針對 ARM 範本，此工具組會執行資料夾 **\arm-ttk\testcases\deploymentTemplate** 中的所有測試。 如果您想要永久移除測試，請從資料夾中刪除該檔案。
 
-針對 [CreateUiDefinition](../managed-applications/create-uidefinition-overview.md) 檔案，它會執行 **\arm-ttk\testcases\CreateUiDefinition**資料夾中的所有測試。
+針對 [CreateUiDefinition](../managed-applications/create-uidefinition-overview.md) 檔案，它會執行 **\arm-ttk\testcases\CreateUiDefinition** 資料夾中的所有測試。
 
-若要加入您自己的測試，請建立具有命名慣例： **Your-Custom-Test-Name.test.ps1**的檔案。
+若要加入您自己的測試，請建立具有命名慣例： **Your-Custom-Test-Name.test.ps1** 的檔案。
 
 測試可以取得範本作為物件參數或字串參數。 一般而言，您會使用其中一個，但您可以同時使用兩者。
 
@@ -282,4 +282,4 @@ param(
 
 ## <a name="next-steps"></a>後續步驟
 
-若要瞭解預設測試，請參閱 [工具組的測試案例](test-cases.md)。
+若要瞭解預設測試，請參閱 [ARM 範本測試控管組的預設測試案例](test-cases.md)。

@@ -3,21 +3,20 @@ title: Azure 應用程式組態最佳作法 |Microsoft Docs
 description: 瞭解使用 Azure 應用程式組態時的最佳做法。 涵蓋的主題包括按鍵群組、索引鍵/值組合、應用程式設定啟動程式等等。
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: c45d1668ad39e9584a89921f46218ba243978a05
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 038d19270fbdb672d397eb2bd56bd27e17ea7af9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078046"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929084"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure 應用程式組態最佳作法
 
@@ -42,7 +41,7 @@ ms.locfileid: "92078046"
 
 應用程式設定會將與它一起儲存的所有金鑰視為獨立的實體。 應用程式設定不會嘗試推斷索引鍵之間的任何關聯性，或根據其階層繼承索引鍵值。 不過，您可以在應用程式程式碼中使用加上適當設定堆疊的標籤，來匯總多組索引鍵。
 
-以下舉例說明。 假設您有一個名為 **Asset1**的設定，其值可能會根據開發環境而有所不同。 您會建立名為 "Asset1" 的機碼，其中包含空白卷標和名為 "開發" 的標籤。 在第一個標籤中，您會放入 **Asset1**的預設值，並在後者放置特定的「開發」值。
+以下舉例說明。 假設您有一個名為 **Asset1** 的設定，其值可能會根據開發環境而有所不同。 您會建立名為 "Asset1" 的機碼，其中包含空白卷標和名為 "開發" 的標籤。 在第一個標籤中，您會放入 **Asset1** 的預設值，並在後者放置特定的「開發」值。
 
 在您的程式碼中，您會先取出沒有任何標籤的索引鍵值，然後再次使用「開發」標籤抓取一組相同的索引鍵值。 當您第二次取出值時，就會覆寫先前的索引鍵值。 .NET Core 設定系統可讓您將多組設定資料「堆疊」在彼此之上。 如果索引鍵存在於一個以上的集合中，則會使用包含它的最後一個集合。 使用新式的程式設計架構（例如 .NET Core）時，如果您使用原生設定提供者來存取應用程式設定，則可免費取得此堆疊功能。 下列程式碼片段會示範如何在 .NET Core 應用程式中執行堆疊：
 

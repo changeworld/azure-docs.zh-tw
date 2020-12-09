@@ -3,17 +3,17 @@ title: 使用每個環境的設定
 titleSuffix: Azure App Configuration
 description: 使用標籤來提供每個環境的設定值。
 ms.service: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 3/12/2020
-ms.author: lcozzens
-ms.openlocfilehash: 689fdbd444aa4b20f5bef225faa259788c47cf9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: alkemper
+ms.openlocfilehash: 84286df063994f3def15079cb9b190550d5bd977
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88206664"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929611"
 ---
 # <a name="use-labels-to-enable-configurations-for-different-environments"></a>使用標籤來啟用不同環境的設定
 
@@ -30,7 +30,7 @@ ms.locfileid: "88206664"
 > [!div class="mx-imgBorder"]
 > ![新增值功能表項目](media/labels-add-value.png)
 
-在 [**加入值**] 畫面上，輸入 [**紅色**] 和 [**開發**]**標籤**的**值**。 將 [ **內容類型** ] 保留空白。 選取 [套用]。
+在 [**加入值**] 畫面上，輸入 [**紅色**] 和 [**開發**]**標籤** 的 **值**。 將 [ **內容類型** ] 保留空白。 選取 [套用]。
 
 ## <a name="load-configuration-values-with-a-specified-label"></a>使用指定的標籤載入設定值
 

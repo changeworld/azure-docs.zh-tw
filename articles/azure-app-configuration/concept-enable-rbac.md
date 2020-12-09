@@ -1,17 +1,17 @@
 ---
 title: 使用 Azure Active Directory 來授權 Azure 應用程式組態的存取權
 description: 啟用 Azure RBAC 以授權存取您的 Azure 應用程式組態實例
-author: lisaguthrie
-ms.author: lcozzens
-ms.date: 02/13/2020
+author: AlexandraKemperMS
+ms.author: alkemper
+ms.date: 05/26/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 9c749dbb1cc78bf06dfe665875bc05f75152778b
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 4768dbe292b7c71770ded1e8ad27025bc9944608
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862134"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930257"
 ---
 # <a name="authorize-access-to-azure-app-configuration-using-azure-active-directory"></a>使用 Azure Active Directory 來授權 Azure 應用程式組態的存取權
 除了使用以雜湊為基礎的訊息驗證碼 (HMAC) ，Azure 應用程式組態支援使用 Azure Active Directory (Azure AD) ，來授權應用程式設定實例的要求。  Azure AD 可讓您使用 Azure 角色型存取控制 (Azure RBAC) 將許可權授與安全性主體。  安全性主體可能是使用者、 [受控識別](../active-directory/managed-identities-azure-resources/overview.md) 或 [應用程式服務主體](../active-directory/develop/app-objects-and-service-principals.md)。  若要深入了解角色和角色指派，請參閱[了解不同的角色](../role-based-access-control/overview.md)。

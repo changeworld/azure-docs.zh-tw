@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: c734c0ceb9c4d5418edc51a2c3ad3c052637ad31
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: fa99920c8e9d8cd532bb6230d6a337a038ee3e31
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696977"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929305"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用 App Service 和 Azure Functions 的受控身分識別
 
@@ -308,7 +308,7 @@ principalId 是身分識別的唯一識別碼，而此身分識別用於 Azure A
 您可能需要設定目標資源，讓應用程式得以存取。 例如，如果您要求權杖來存取 Key Vault，便需要確認是否已新增含有應用程式身分識別的存取原則。 否則即使呼叫含有權杖，依然會遭到拒絕。 若要深入了解哪些資源支援 Azure Active Directory 權杖，請參閱[支援 Azure AD 驗證的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
 > [!IMPORTANT]
-> 受控識別的後端服務會將每個資源的 URI 快取保留大約 8 小時。 如果您更新特定目標資源的存取原則，並立即擷取該資源的權杖，則可以繼續取得具有過期權限的快取權杖，直到該權杖到期為止。 目前沒有任何方法可以強制重新整理權杖。
+> 受控識別的後端服務會將每個資源 URI 的快取保留約24小時。 如果您更新特定目標資源的存取原則，並立即擷取該資源的權杖，則可以繼續取得具有過期權限的快取權杖，直到該權杖到期為止。 目前沒有任何方法可以強制重新整理權杖。
 
 有一個簡單的 REST 通訊協定可用來在 App Service 和 Azure Functions 中取得權杖。 這可用於所有應用程式和語言。 若為 .NET 和 JAVA，Azure SDK 提供此通訊協定的抽象概念，並協助本機開發體驗。
 

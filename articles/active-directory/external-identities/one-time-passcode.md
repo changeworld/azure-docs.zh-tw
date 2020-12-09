@@ -12,14 +12,14 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15debb69172dba00163950fdd301826c903e5307
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: b9bc7d94cff46b54b81615cf064ed63927b3ec60
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548266"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929288"
 ---
-# <a name="email-one-time-passcode-authentication"></a>電子郵件單次密碼驗證
+# <a name="email-one-time-passcode-authentication-preview"></a>電子郵件單次密碼驗證 (預覽) 
 
 本文說明如何針對 B2B 來賓使用者啟用電子郵件單次密碼驗證。 當您無法透過其他方式（例如 Azure AD、Microsoft 帳戶 (MSA) 或 Google 同盟）驗證 B2B 來賓使用者時，電子郵件單次密碼功能會對其進行驗證。 使用單次密碼驗證時，不需要建立 Microsoft 帳戶。 當來賓使用者兌換邀請或存取共用資源時，他們可以要求一個暫時性驗證碼，此驗證碼會傳送到他們的電子郵件地址。 之後，他們便可輸入此驗證碼繼續登入。
 

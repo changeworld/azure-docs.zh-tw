@@ -10,10 +10,10 @@ ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: secdec18
 ms.openlocfilehash: 660b5751e3b3cbc632331e99d797af3392a8aea4
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 12/05/2020
 ms.locfileid: "91371961"
 ---
 # <a name="assign-access-to-cost-management-data"></a>指派成本管理資料的存取權
@@ -182,7 +182,7 @@ ms.locfileid: "91371961"
 
 ## <a name="cross-tenant-authentication-issues"></a>跨租用戶驗證問題
 
-目前，Azure 成本管理對於跨租用戶驗證僅提供有限支援。 在某些情況下，當您嘗試進行跨租用戶驗證時，您可能會在成本分析中收到**拒絕存取**錯誤。 如果您對另一個租用戶的訂用帳戶設定了 Azure 角色型存取控制 (Azure RBAC)，然後嘗試檢視成本資料，就可能會發生此問題。
+目前，Azure 成本管理對於跨租用戶驗證僅提供有限支援。 在某些情況下，當您嘗試進行跨租用戶驗證時，您可能會在成本分析中收到 **拒絕存取** 錯誤。 如果您對另一個租用戶的訂用帳戶設定了 Azure 角色型存取控制 (Azure RBAC)，然後嘗試檢視成本資料，就可能會發生此問題。
 
 *若要解決此問題*：設定跨租用戶 Azure RBAC 之後，請等候一小時。 然後，嘗試在成本分析中檢視成本，或將成本管理存取權授與這兩個租用戶中的使用者。  
 

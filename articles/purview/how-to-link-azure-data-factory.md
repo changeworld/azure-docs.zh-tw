@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: 55651b3201676ee5cddb5412e950791afaa4e87a
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 01af7b251c9ce3bfebb87016c85ea3efd9c0e8ac
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852127"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928761"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>如何連接 Azure Data Factory 和 Azure 範疇
 
@@ -42,6 +42,13 @@ ms.locfileid: "96852127"
 
 ## <a name="create-new-data-factory-connection"></a>建立新的 Data Factory 連接
 
+>[!Note]
+>若要新增或移除 Data Factory 連接，您必須被指派任何一個範疇角色：
+>- 擁有者
+>- 使用者存取系統管理員
+>
+> 此外，它還會要求使用者必須是 data factory 的「擁有者」或「參與者」。 
+
 請遵循下列步驟，將現有的 Data Factory 帳戶連接到您的範疇資料目錄。
 
 1. 選取左側流覽窗格上的 [ **管理中心** ]。
@@ -70,11 +77,6 @@ ms.locfileid: "96852127"
 1. 選取快顯視窗中的 [ **確認** ] 以刪除選取的資料處理站連接。
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="顯示如何選取 data factory 以移除連接的螢幕擷取畫面。" lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
-
->[!Note]
->若要新增或移除 Data Factory 連接，您必須被指派任何一個範疇角色：
->- 擁有者
->- 除了使用者存取系統管理員之外，還要求使用者必須是 data factory 的「擁有者」、「參與者」或「Data Factory 參與者」。 
 
 ## <a name="configure-a-self-hosted-ir-to-collect-lineage-from-on-prem-sql"></a>設定自我裝載 IR 來收集內部內部部署 SQL 的歷程
 

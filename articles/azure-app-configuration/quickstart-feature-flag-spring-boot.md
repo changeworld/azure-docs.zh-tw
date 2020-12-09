@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure 應用程式組態將功能旗標新增至 Spring Boot 應用程式的快速入門
 description: 使用 Azure 應用程式組態將功能旗標新增至 Spring Boot 應用程式並加以管理
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 04/18/2020
-ms.author: lcozzens
+ms.date: 08/06/2020
+ms.author: alkemper
 ms.custom: devx-track-java
-ms.openlocfilehash: 64ccc9c91d9ead567035b1f7f35e0a0088b6200b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e931b974fc48d07237b2698e7782c48be20745d9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001457"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930702"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>快速入門：將功能旗標新增至 Spring Boot 應用程式
 

@@ -3,18 +3,18 @@ title: 比較 Azure 佇列儲存體和服務匯流排佇列
 description: 分析 Azure 所提供之兩種佇列類型之間的差異和相似性。
 ms.topic: article
 ms.date: 11/04/2020
-ms.openlocfilehash: 5c65cf5ef2d572417ea70d0e0259cf2c03ab590e
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 31992aa2012009c51cbeae78010ae8ced65fc872
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379565"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928302"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>儲存體佇列和服務匯流排佇列 - 異同比較
 本文會分析 Microsoft Azure：儲存體佇列和服務匯流排佇列所提供的兩種佇列類型之間的差異和相似性。 您可以使用這項資訊，做出更明智的決策，以決定哪一個解決方案最符合您的需求。
 
 ## <a name="introduction"></a>簡介
-Azure 支援兩種佇列機制： **儲存體佇列** 和 **服務匯流排佇列** 。
+Azure 支援兩種佇列機制：**儲存體佇列** 和 **服務匯流排佇列**。
 
 **儲存體佇列** 是 [Azure 儲存體](https://azure.microsoft.com/services/storage/) 基礎結構的一部分。 它們可讓您儲存大量的訊息。 使用 HTTP 或 HTTPS 透過境過驗證的呼叫，存取來自世界各地的訊息。 一則佇列訊息的大小可能高達 64 KB。 佇列可以包含數百萬則訊息，最高可達儲存體帳戶的總容量限制。 佇列通常用來建立要以非同步方式處理的待處理項目 (backlog)。 如需詳細資訊，請參閱 [什麼是 Azure 儲存體佇列](../storage/queues/storage-queues-introduction.md)。
 
@@ -27,14 +27,14 @@ Azure 支援兩種佇列機制： **儲存體佇列** 和 **服務匯流排佇�
 在判斷哪一種佇列技術符合特定解決方案的目的時，方案架構設計人員和開發人員應考慮這些建議。 
 
 ### <a name="consider-using-storage-queues"></a>考慮使用儲存體佇列
-身為方案架構設計人員/開發人員，您應該在下列情況下 **考慮使用儲存體佇列** ：
+身為方案架構設計人員/開發人員，您應該在下列情況下 **考慮使用儲存體佇列**：
 
 * 您的應用程式必須在佇列中儲存超過 80 gb 的訊息。
 * 您的應用程式想要追蹤處理佇列中訊息的進度。 如果處理訊息的工作者損毀，這會很有用。 然後，另一個工作者可以使用該資訊從先前背景工作的剩餘位置繼續。
 * 您需要有針對佇列執行之所有交易的伺服器端記錄。
 
 ### <a name="consider-using-service-bus-queues"></a>考慮使用服務匯流排佇列
-身為方案架構設計人員/開發人員，您應該在下列情況下 **考慮使用服務匯流排佇列** ：
+身為方案架構設計人員/開發人員，您應該在下列情況下 **考慮使用服務匯流排佇列**：
 
 * 您的解決方案必須在不需要輪詢佇列的情況下接收訊息。 透過服務匯流排，您可以使用服務匯流排支援的 TCP 通訊協定，藉由使用長期輪詢接收作業來達成此目標。
 * 您的方案需要使用佇列來提供保證的先進先出 (FIFO) 排序傳遞。
@@ -131,7 +131,7 @@ Azure 支援兩種佇列機制： **儲存體佇列** 和 **服務匯流排佇�
 | 訊息大小上限 |**64 KB**<br/><br/>(使用 **Base64** 編碼時則為 48 KB)<br/><br/>Azure 可以結合佇列和 Blob 來支援大型訊息，因此您最多可以將 200 GB 的單一項目加入佇列。 |**256 KB** 或 **1 MB**<br/><br/>(包括標頭和主體，標頭大小上限：64 KB)。<br/><br/>取決於[服務層級](service-bus-premium-messaging.md)。 |
 | 訊息 TTL 上限 |**無限** (api 版本2017-07-27 或更新版本)  |**TimeSpan.Max** |
 | 佇列數目上限 |**無限制** |**10,000**<br/><br/>(每一服務命名空間) |
-| 並行用戶端數目上限 |**無限制** |**無限制**<br/><br/>(100 個並行連接限制只適用於以 TCP 通訊協定為基礎的通訊) |
+| 並行用戶端數目上限 |**無限制** |**5,000** |
 
 ### <a name="additional-information"></a>其他資訊
 * 服務匯流排會強制執行佇列大小限制。 建立佇列時，會指定佇列大小上限。 它可以介於 1 GB 和 80 GB 之間。 如果佇列的大小達到此限制，其他內送訊息將會遭到拒絕，而且呼叫端會收到例外狀況。 如需服務匯流排中配額的詳細資訊，請參閱[服務匯流排配額](service-bus-quotas.md)。

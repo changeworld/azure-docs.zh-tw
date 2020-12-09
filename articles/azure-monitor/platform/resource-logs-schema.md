@@ -4,12 +4,12 @@ description: 瞭解 Azure 資源記錄的支援服務和事件架構。
 ms.subservice: logs
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: 1f8754245e394ecdffbb045d7f4cc96ec8a3ff78
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6a76d642863a0baac8021a3da196ad5a2db48126
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184496"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931158"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>適用于 Azure 資源記錄的常見和服務專屬架構
 
@@ -51,6 +51,7 @@ ms.locfileid: "96184496"
 | Azure Active Directory | [總覽](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)、 [Audit log schema 和登](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md)[入架構](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | [Azure Analysis Services-設定診斷記錄](../../analysis-services/analysis-services-logging.md) |
 | API 管理 | [API 管理資源記錄](../../api-management/api-management-howto-use-azure-monitor.md#resource-logs) |
+| App Service 方案 | [App Service 記錄](../../app-service/troubleshoot-diagnostic-logs.md)
 | 應用程式閘道 |[應用程式閘道的記錄](../../application-gateway/application-gateway-diagnostics.md) |
 | Azure 自動化 |[Azure 自動化的 Log analytics](../../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch 記錄](../../batch/batch-diagnostics.md) |

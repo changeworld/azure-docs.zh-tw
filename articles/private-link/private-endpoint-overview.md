@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 8021d659c144bfb68c2714f1680b6ad27a51b56a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ac4763a2d79059eb2608595b616c945af274627e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522340"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928506"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什麼是 Azure 私人端點？
 
@@ -28,7 +28,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 |子網路    |  要從虛擬網路部署和配置私人 IP 位址的子網路。 如需子網路需求，請參閱此文章的＜限制＞一節。         |
 |Private Link 資源    |   從可用類型的清單中使用資源識別碼或別名來連線的私人連結資源。 系統將會為傳送至此資源的所有流量產生唯一的網路識別碼。       |
 |目標子資源   |      要連線的子資源。 每個私人連結資源類型都有不同的選項，可根據喜好設定來選取。    |
-|連線核准方法    |  自動或手動。 根據 Azure 角色型存取控制 (Azure RBAC) 許可權，您的私人端點可以自動核准。 如果您嘗試在沒有 Aure RBAC 的情況下連線到私人連結資源，請使用手動方法來允許資源的擁有者核准連接。        |
+|連線核准方法    |  自動或手動。 根據 Azure 角色型存取控制 (Azure RBAC) 許可權，您的私人端點可以自動核准。 如果您嘗試在沒有 Azure RBAC 的情況下連線到私人連結資源，請使用手動方法來允許資源的擁有者核准連接。        |
 |要求訊息     |  您可以指定要以手動方式核准要求連線的訊息。 此訊息可用來識別特定的要求。        |
 |連線狀態   |   唯讀屬性，可指定私人端點是否作用中。 只有處於核准狀態的私人端點可用來傳送流量。 其他可用的狀態： <br>-**已核准**：已自動或手動核准連線並可供使用。</br><br>-**暫止**：已手動建立連線，且正在等待私人連結資源擁有者核准。</br><br>-**已拒絕**：私人連結資源擁有者已拒絕連線。</br><br>-**已中斷連線**：私人連結資源擁有者已移除連線。 私人端點將提供資訊，應將其刪除以進行清除。 </br>|
 

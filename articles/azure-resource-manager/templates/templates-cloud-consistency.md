@@ -1,23 +1,23 @@
 ---
 title: 跨雲端重複使用範本
-description: 開發在不同雲端環境能一致運行的 Azure Resource Manager 範本。 建立新的或更新現有的 Azure Stack 範本。
+description: 開發 (ARM 範本的 Azure Resource Manager 範本，) 可針對不同的雲端環境一致地運作。 建立新的或更新現有的 Azure Stack 範本。
 author: marcvaneijk
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: ea010a625c3e3cd6228513299d878733bf3775ce
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 806556a8da97ec84fe8141b95198b4a7da95c062
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744753"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928353"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>開發適用于雲端一致性的 ARM 範本
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Azure 的主要優點在於一致性。 對某個位置的開發投資可重複用在另一個位置。 Azure Resource Manager (ARM) 範本可讓您的部署在各環境之間保持一致且可重複使用，包括全域 Azure、Azure 主權雲端和 Azure Stack。 但若要跨雲端重複使用範本，您需要考慮雲端特定的相依性，如本指南所述。
+Azure 的主要優點在於一致性。 對某個位置的開發投資可重複用在另一個位置。  (ARM 範本的 Azure Resource Manager 範本) 讓您的部署在各環境之間保持一致且可重複使用，包括全域 Azure、Azure 主權雲端和 Azure Stack。 但若要跨雲端重複使用範本，您需要考慮雲端特定的相依性，如本指南所述。
 
 Microsoft 在許多位置提供符合企業需求的智慧型雲端服務，包括：
 
@@ -443,8 +443,8 @@ API 設定檔不是範本中的必要項目。 即使您新增項目，它也只
 
 在範本中，一般會避免硬式編碼的端點。 最佳做法是使用參考範本函式動態擷取端點。 例如，最常見的硬式編碼端點是儲存體帳戶的端點命名空間。 每個儲存體帳戶都有唯一的 FQDN，透過串連儲存體帳戶的名稱和端點命名空間所建構。 名為 mystorageaccount1 的 Blob 儲存體帳戶會導致不同的 FQDN，視雲端而定：
 
-* 在全球 Azure 雲端上建立時， **mystorageaccount1.Blob.core.windows.net** 。
-* 在 Azure 中國的世紀雲端建立的 **mystorageaccount1.blob.core.chinacloudapi.cn** 。
+* `mystorageaccount1.blob.core.windows.net` 在全域 Azure 雲端上建立時。
+* `mystorageaccount1.blob.core.chinacloudapi.cn` 在 Azure 中國的世紀雲端中建立時。
 
 下列參考範本函式會從儲存體資源提供者擷取端點命名空間：
 

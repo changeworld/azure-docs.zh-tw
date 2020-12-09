@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 819654ef88584cb91d6032e46256258aaed524fd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ea812df825288eae3822cce01b24ebc82534c541
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500303"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928812"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列高載虛擬機器大小
 
@@ -59,7 +59,7 @@ B16 特性：
 
 ![每小時流量資料的圖表](./media/b-series-burstable/office-workload.png)
 
-| 案例 | Time | CPU 使用量 (% )  | 累積的點數<sup>1</sup> | 可用的點數 |
+| 案例 | 時間 | CPU 使用量 (% )  | 累積的點數<sup>1</sup> | 可用的點數 |
 | --- | --- | --- | --- | --- |
 | B16ms 部署 | 部署 | 部署  | 480 (初始點數)  | 480 |
 | 沒有流量 | 0:00 | 0 | 162 | 642 |
@@ -132,7 +132,7 @@ VM 的 (基礎 CPU 效能-CPU 使用量) /100 = 點數 bank 或每分鐘使用
 
 ### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>問：為何在重新部署或停止/啟動之後，剩餘信用額度會設定為 0？
 
-**答**：當虛擬機器「重新部署」且虛擬機器移到另一個節點時，累積的信用額度會遺失。 如果虛擬機器停止/啟動，但仍留在相同節點上，則虛擬機器會保留累積的信用額度。 每當 VM 在節點上啟動時，它就會取得初始點數，Standard_B8ms 為240。
+**答** ：重新部署 VM 且 vm 移至另一個節點時，累積的點數會遺失。 如果虛擬機器停止/啟動，但仍留在相同節點上，則虛擬機器會保留累積的信用額度。 每當 VM 在節點上啟動時，它就會取得初始點數，Standard_B8ms 為240。
 
 ### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>問：如果我在 B1ls 上部署不支援的 OS 映射，會發生什麼事？
 

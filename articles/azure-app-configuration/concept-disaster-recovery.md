@@ -1,17 +1,17 @@
 ---
 title: Azure 應用程式組態復原和嚴重損壞修復
 description: 瞭解如何使用 Azure 應用程式組態來執行復原和嚴重損壞修復。
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 02/20/2020
-ms.openlocfilehash: 5c62f10d67345d68cde27af7d0a7663b22d978a0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 07/09/2020
+ms.openlocfilehash: 7910e2092259081aade799fc662052e5a1375e25
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002420"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930478"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>復原和災害復原
 
@@ -76,7 +76,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 1. 在開啟的新分頁中，指定次要存放區的訂用帳戶、資源群組和資源名稱， **然後選取 [** 套用]。
 
-1. UI 會更新，供您選擇要匯出至次要存放區的組態資料。 您可以保留預設的時間值，並將其 **從標籤** 和 **標籤** 設定為相同的值。 選取 [ **套用**]。 針對主要存放區中的所有標籤重複此步驟。
+1. UI 會更新，供您選擇要匯出至次要存放區的組態資料。 您可以保留預設的時間值，並將其 **從標籤** 和 **標籤** 設定為相同的值。 選取 [套用]。 針對主要存放區中的所有標籤重複此步驟。
 
 1. 每當您的設定變更時，請重複上述步驟。
 

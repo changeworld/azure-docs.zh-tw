@@ -3,16 +3,16 @@ title: 針對目標物件啟用功能的分段推出
 titleSuffix: Azure App Configuration
 description: 瞭解如何為目標物件啟用功能的分段推出
 ms.service: azure-app-configuration
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.topic: conceptual
-ms.date: 8/7/2020
-ms.openlocfilehash: d1574b8a3f8cda3341c0aaf355911e2e93a7bcab
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.date: 11/20/2020
+ms.openlocfilehash: c415eaeab2edd0a1b324bba4266266201cb50cbf
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557594"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929679"
 ---
 # <a name="enable-staged-rollout-of-features-for-targeted-audiences"></a>針對目標物件啟用功能的分段推出
 
@@ -30,7 +30,7 @@ ms.locfileid: "94557594"
    dotnet new mvc --auth Individual -o TestFeatureFlags
    ```
 
-1. 建立並執行，然後選取右上角的 [ **註冊** ] 連結，以建立新的使用者帳戶。 使用的電子郵件地址 `test@contoso.com` 。 在 [ **註冊確認** ] 畫面上，選取 [ **按一下這裡以確認您的帳戶** ]。
+1. 建立並執行，然後選取右上角的 [ **註冊** ] 連結，以建立新的使用者帳戶。 使用的電子郵件地址 `test@contoso.com` 。 在 [ **註冊確認** ] 畫面上，選取 [ **按一下這裡以確認您的帳戶**]。
 
 1. 遵循快速入門中的指示 [：將功能旗標新增至 ASP.NET Core 應用](./quickstart-feature-flag-aspnet-core.md) 程式，以將功能旗標新增至新的 web 應用程式。
 
@@ -131,9 +131,9 @@ ms.locfileid: "94557594"
 
 ## <a name="update-the-feature-flag-to-use-targetingfilter"></a>將功能旗標更新為使用 TargetingFilter
 
-1. 在 Azure 入口網站中，移至您的應用程式設定存放區，然後選取 [ **功能管理員** ]。
+1. 在 Azure 入口網站中，移至您的應用程式設定存放區，然後選取 [ **功能管理員**]。
 
-1. 選取您在快速入門中建立之 *Beta* 功能旗標的內容功能表。 選取 [編輯]。
+1. 選取您在快速入門中建立之 *Beta* 功能旗標的內容功能表。 選取 [Edit] \(編輯\)。
 
     > [!div class="mx-imgBorder"]
     > ![編輯 Beta 功能旗標](./media/edit-beta-feature-flag.png)
@@ -144,9 +144,9 @@ ms.locfileid: "94557594"
 
 1. 選取下列選項：
 
-    - **預設百分比** ：0
-    - **群組** ：輸入 _contoso.com_ 的 **名稱** ，並使用 _50_ 的 **百分比**
-    - **使用者** ： `test@contoso.com`
+    - **預設百分比**：0
+    - **群組**：輸入 _contoso.com_ 的 **名稱**，並使用 _50_ 的 **百分比**
+    - **使用者**： `test@contoso.com`
 
     [功能篩選器] 畫面看起來會像這樣：
 
@@ -156,12 +156,12 @@ ms.locfileid: "94557594"
     這些設定會導致下列行為：
 
     - 功能旗標一律為使用者啟用 `test@contoso.com` ，因為 `test@contoso.com` 列在 [ _使用者_ ] 區段中。
-    - _Contoso.com_ 群組中的其他使用者可以使用功能旗標50來啟用，因為 _contoso.com_ 會列在 [群組] 區段中，而 [ _群組_ ] 區段的 _百分比_ 為 _50_ 。
-    - 所有其他使用者都一律停用此功能，因為 _預設百分比_ 設定為 _0_ 。
+    - _Contoso.com_ 群組中的其他使用者可以使用功能旗標50來啟用，因為 _contoso.com_ 會列在 [群組] 區段中，而 [_群組_] 區段的 _百分比_ 為 _50_。
+    - 所有其他使用者都一律停用此功能，因為 _預設百分比_ 設定為 _0_。
 
 1. 選取 **[** 套用] 以儲存這些設定，並返回 [ **功能管理員** ] 畫面。
 
-1. 功能旗標的 **功能篩選** 現在會顯示為 *目標* 。 此狀態表示功能旗標將根據 *目標* 功能篩選準則所強制執行的條件，以每個要求為基礎啟用或停用。
+1. 功能旗標的 **功能篩選** 現在會顯示為 *目標*。 此狀態表示功能旗標將根據 *目標* 功能篩選準則所強制執行的條件，以每個要求為基礎啟用或停用。
 
 ## <a name="targetingfilter-in-action"></a>TargetingFilter 實際操作
 

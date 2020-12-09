@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 11/19/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: e0a77e1e4757c8951756c3e41479628c293dfd8f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b8bdb216cbe8d359f35c758ae89f4267ab223483
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174827"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928744"
 ---
 # <a name="known-issues-application-provisioning"></a>已知問題：應用程式布建
 使用應用程式布建時要注意的已知問題。 您可以在 UserVoice 上提供關於應用程式布建服務的意見反應，請參閱 [Azure AD 應用程式](https://aka.ms/appprovisioningfeaturerequest)布建 UserVoice。 我們會密切觀賞 UserVoice，讓我們可以改善服務。 
@@ -56,6 +56,10 @@ Azure AD 目前無法布建 null 屬性。 如果使用者物件上的屬性為 
 **屬性對應運算式的最大字元數**
 
 屬性對應運算式最多可以有10000個字元。 
+
+**不支援的範圍篩選**
+
+目錄延伸模組、appRoleAssignments、userType 和 accountExpires 不支援做為範圍篩選器。
 
 
 ## <a name="service-issues"></a>服務問題 
