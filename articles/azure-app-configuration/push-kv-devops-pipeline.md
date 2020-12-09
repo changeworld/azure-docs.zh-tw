@@ -2,23 +2,23 @@
 title: 使用 Azure Pipelines 將設定推送到應用程式設定
 description: 瞭解如何使用 Azure Pipelines 將索引鍵/值推送到應用程式設定存放區
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.author: lcozzens
-ms.openlocfilehash: 7c0f886f23bc24eeed54043e9a7ee5fb1f645172
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.author: alkemper
+ms.openlocfilehash: fd3f7dbfd824360dcba9f8a166c579e3b55527ba
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572502"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932110"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>使用 Azure Pipelines 將設定推送到應用程式設定
 
 [Azure 應用程式組態 Push](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push)工作會將設定檔中的索引鍵/值推送到您的應用程式設定存放區。 這項工作會啟用管線內的完整圓形功能，因為您現在可以從應用程式設定存放區提取設定，以及將設定推送到應用程式設定存放區。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 - 應用程式設定資源-在 [Azure 入口網站](https://portal.azure.com)中免費建立一個。

@@ -1,18 +1,18 @@
 ---
 title: 範本函式
-description: 描述要在 Azure 資源管理員範本中用來擷取值、搭配字串和數字使用，並擷取部署資訊的函數。
+description: 描述在 Azure Resource Manager 範本中使用的函式 (ARM 範本) 取出值、處理字串和數值，以及取得部署資訊。
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: a479b81d0f0bc378f77885cbd644e70d7be1d857
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2d124893cbe1694671231fd206f8e44cc20f6204
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961165"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931702"
 ---
 # <a name="arm-template-functions"></a>ARM 範本函式
 
-本文說明您可以在 Azure Resource Manager (ARM) 範本中使用的所有功能。 如需在範本中使用函式的詳細資訊，請參閱 [範本語法](template-expressions.md)。
+本文說明您可以在 Azure Resource Manager 範本中使用的所有功能 (ARM 範本) 。 如需在範本中使用函式的詳細資訊，請參閱 [範本語法](template-expressions.md)。
 
 若要建立自己的函式，請參閱[使用者定義的函式](template-syntax.md#functions)。
 
@@ -250,7 +250,7 @@ Resource Manager 提供數個處理物件的功能。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需 ARM 範本中各區段的說明，請參閱 [撰寫 arm 範本](template-syntax.md)
-* 若要合併多個範本，請參閱 [使用連結的範本搭配 Azure Resource Manager](linked-templates.md)
-* 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](copy-resources.md)。
-* 若要瞭解如何部署已建立的範本，請參閱 [使用 ARM 範本部署應用程式](deploy-powershell.md)
+* 如需 ARM 範本中各區段的說明，請參閱 [瞭解 arm 範本的結構和語法](template-syntax.md)。
+* 若要合併多個範本，請參閱 [在部署 Azure 資源時使用連結和嵌套範本](linked-templates.md)。
+* 若要在建立資源類型時反覆運算指定的次數，請參閱 [ARM 範本中的資源反復](copy-resources.md)專案。
+* 若要瞭解如何部署已建立的範本，請參閱 [使用 ARM 範本部署資源和 Azure PowerShell](deploy-powershell.md)。

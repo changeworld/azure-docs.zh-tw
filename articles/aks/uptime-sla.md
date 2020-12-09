@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: f8ec80d178af274c285371b4f53820eb9e41ccf7
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 0d1c2304f68f5e24c45390dca2cc0deb6e8dede2
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96519156"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931940"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes Service (AKS) 運作時間 SLA
 
@@ -42,7 +42,7 @@ ms.locfileid: "96519156"
 
 ## <a name="before-you-begin"></a>開始之前
 
-* 安裝 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 2.8.0 版或更新版本
+* 安裝 [Azure CLI](/cli/azure/install-azure-cli) 2.8.0 版或更新版本
 
 ## <a name="creating-a-new-cluster-with-uptime-sla"></a>使用執行時間 SLA 建立新的叢集
 
@@ -115,7 +115,7 @@ az aks create --resource-group myResourceGroup --name myAKSCluster--node-count 1
   },
   ```
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 若要避免產生費用，請清除您所建立的任何資源。 若要刪除叢集，請使用 [`az group delete`][az-group-delete] 命令來刪除 AKS 資源群組：
 
@@ -139,9 +139,9 @@ az group delete --name myResourceGroup --yes --no-wait
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [faq]: ./faq.md
 [availability-zones]: ./availability-zones.md
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
+[az-aks-create]: /cli/azure/aks?#az-aks-create
 [limit-egress-traffic]: ./limit-egress-traffic.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-update
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool?#az-aks-nodepool-update
 [az-group-delete]: /cli/azure/group#az-group-delete

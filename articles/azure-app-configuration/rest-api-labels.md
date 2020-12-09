@@ -1,17 +1,17 @@
 ---
 title: Azure 應用程式組態 REST API-標籤
 description: 使用 Azure 應用程式組態 REST API 處理標籤的參考頁面
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: e6fcc8399c1dbc36a5b2e915c726f1c2496ee2f9
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 5a59f5910d44f2a2b4cd75e7a1d51c2ed5dd51a4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423923"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932501"
 ---
 # <a name="labels"></a>標籤
 
@@ -97,7 +97,7 @@ GET /labels?name={label-name}&api-version={api-version}
 
 ### <a name="supported-filters"></a>支援的篩選器
 
-|索引鍵篩選|作用|
+|索引鍵篩選|效果|
 |--|--|
 |省略 `name` 或使用 `name=*`|符合 **任何** 標籤|
 |`name=abc`|符合名為 **abc** 的標籤|

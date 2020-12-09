@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 3cf495ca0687e6fa37f619615fb1529659a462dc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: efb91c7b26c67a3672abb3f9cc8992fd45971a25
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020334"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932450"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -39,7 +39,7 @@ Azure Functions Core Tools 可讓您使用命令提示字元或終端機，在�
 
 您只能在指定的電腦上安裝一個版本的 Core Tools。 除非另有說明，否則本文中的範例適用于3.x 版。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 Azure Functions Core Tools 目前相依于使用您的 Azure 帳戶進行驗證的 Azure CLI。 這表示您必須在 [本機安裝 Azure CLI](/cli/azure/install-azure-cli) ，才能從 Azure Functions Core Tools [發佈至 Azure](#publish) 。 
 
@@ -155,7 +155,7 @@ Azure Functions Core Tools 目前相依于使用您的 Azure 帳戶進行驗證�
 
 ## <a name="create-a-local-functions-project"></a>建立本機的 Functions 專案
 
-Functions 專案目錄包含 [host.json](functions-host-json.md) 和 [local.settings.json](#local-settings-file) 檔案，以及包含個別函式程式碼的子資料夾。 此目錄相當於 Azure 中的函式應用程式。 若要深入了解 Functions 的資料夾結構，請參閱 [Azure Functions 的開發人員指南](functions-reference.md#folder-structure)。
+函式專案目錄包含 [host.json](functions-host-json.md) 和 [local.settings.js](#local-settings-file)的檔案，以及包含個別函式程式碼的子資料夾。 此目錄相當於 Azure 中的函式應用程式。 若要深入了解 Functions 的資料夾結構，請參閱 [Azure Functions 的開發人員指南](functions-reference.md#folder-structure)。
 
 3.x/2.x 版需要您在初始化專案時為其選取預設語言。 在 3.x/2.x 版中，所有新增的函式都會使用預設語言範本。 在 1.x 版中，您會在每次建立函式時指定語言。
 

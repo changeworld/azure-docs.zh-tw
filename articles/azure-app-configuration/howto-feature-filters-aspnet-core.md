@@ -4,16 +4,16 @@ titleSuffix: Azure App Configuration
 description: 瞭解如何使用功能篩選來啟用條件式功能旗標
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: af8df66e02dc9316311f36dec60374a7c4e649b8
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 9a6ae1581b3958495010b032980b0de2e267088b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554733"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931872"
 ---
 # <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>使用功能篩選來啟用條件式功能旗標
 
@@ -49,33 +49,33 @@ public void ConfigureServices(IServiceCollection services)
 
 1. 遵循快速入門中的指示 [：將功能旗標新增至 ASP.NET Core 應用程式](./quickstart-feature-flag-aspnet-core.md) ，以使用功能旗標來建立 web 應用程式。
 
-1. 在 Azure 入口網站中，移至您的設定存放區，然後按一下 [ **功能管理員** ]。
+1. 在 Azure 入口網站中，移至您的設定存放區，然後按一下 [ **功能管理員**]。
 
 1. 按一下您在快速入門中建立之 *Beta* 功能旗標的內容功能表。 按一下 **[編輯]** 。
 
     > [!div class="mx-imgBorder"]
     > ![編輯 Beta 功能旗標](./media/edit-beta-feature-flag.png)
 
-1. 在 **編輯** 畫面中，選取 [ **開啟** ] 選項按鈕（如果尚未選取）。 然後按一下 [ **加入篩選** ] 按鈕。  ( **On** 選項按鈕的標籤會變更為 [讀取 **條件** ]。 ) 
+1. 在 **編輯** 畫面中，選取 [ **開啟** ] 選項按鈕（如果尚未選取）。 然後按一下 [ **加入篩選** ] 按鈕。  (**On** 選項按鈕的標籤會變更為 [讀取 **條件**]。 ) 
 
-1. 在 [索引 **鍵** ] 欄位中，輸入 [ *Microsoft. 百分比* ]。
+1. 在 [索引 **鍵** ] 欄位中，輸入 [ *Microsoft. 百分比*]。
 
     > [!div class="mx-imgBorder"]
     > ![新增功能篩選](./media/feature-flag-add-filter.png)
 
-1. 按一下功能篩選索引鍵旁的內容功能表。 按一下 [ **編輯參數** ]。
+1. 按一下功能篩選索引鍵旁的內容功能表。 按一下 [ **編輯參數**]。
 
     > [!div class="mx-imgBorder"]
     > ![編輯功能篩選參數](./media/feature-flag-edit-filter-parameters.png)
 
-1. 將滑鼠停留在 **名稱** 標頭底下，讓文字方塊出現在方格中。 輸入 *值* 的 **名稱** ，並輸入50的 **值** 。 [ **值** ] 欄位表示要啟用功能篩選的要求百分比。
+1. 將滑鼠停留在 **名稱** 標頭底下，讓文字方塊出現在方格中。 輸入 *值* 的 **名稱**，並輸入50的 **值**。 [ **值** ] 欄位表示要啟用功能篩選的要求百分比。
 
     > [!div class="mx-imgBorder"]
     > ![設定功能篩選參數](./media/feature-flag-set-filter-parameters.png)
 
 1. 按一下 **[** 套用] 返回 **編輯功能旗** 標畫面。 然後按一下 **[** 套用] 以儲存功能旗標設定。
 
-1. 功能旗標的 **狀態** 現在會顯示為 [ *條件* ]。 此狀態表示根據功能篩選準則所強制執行的條件，會根據每個要求來啟用或停用功能旗標。
+1. 功能旗標的 **狀態** 現在會顯示為 [ *條件*]。 此狀態表示根據功能篩選準則所強制執行的條件，會根據每個要求來啟用或停用功能旗標。
 
     > [!div class="mx-imgBorder"]
     > ![條件式功能旗標](./media/feature-flag-filter-enabled.png)

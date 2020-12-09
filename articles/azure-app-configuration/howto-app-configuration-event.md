@@ -2,20 +2,20 @@
 title: 使用 Azure 應用程式組態將事件傳送至 web 端點
 description: 瞭解如何使用 Azure 應用程式組態事件訂閱，將索引鍵/值修改事件傳送至 web 端點
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.topic: how-to
-ms.date: 02/25/2020
-ms.author: lcozzens
+ms.date: 03/04/2020
+ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: dc816f54a690a4c72c44d70ecbf2cc0156ac84ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d05b8a2d309cb8d50197a1714f34e1eaa92630cf
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87498305"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932739"
 ---
 # <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>使用 Azure CLI 將 Azure 應用程式組態事件路由傳送至 Web 端點
 
@@ -37,7 +37,7 @@ Event Grid 為 Azure 資源，必須放入 Azure 資源群組中。 資源群組
 
 使用 [az group create](/cli/azure/group) 命令來建立資源群組。 
 
-下列範例會在 westus *`<resource_group_name>` 位置建立名為 * 的資源群組。  以資源群組的唯一名稱取代 `<resource_group_name>`。
+下列範例會在 westus *`<resource_group_name>` 位置建立名為* 的資源群組。  以資源群組的唯一名稱取代 `<resource_group_name>`。
 
 ```azurecli-interactive
 az group create --name <resource_group_name> --location westus
@@ -131,7 +131,7 @@ az appconfig kv set --name <appconfig_name> --key Foo --value Bar --yes
 az group delete --name <resource_group_name>
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 您現在知道如何建立主題和事件訂用帳戶，請深入了解索引鍵/值事件以及 Event Grid 如何協助您：
 

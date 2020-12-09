@@ -1,17 +1,17 @@
 ---
 title: Azure 應用程式組態 REST API-索引鍵-值修訂
 description: 使用 Azure 應用程式組態 REST API 來處理索引鍵/值修訂的參考頁面
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 668345da8bb89412f7b1dd36975c5bed6f229580
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: cfa117d1ed017170c279b7c4e0a146ae4edac108
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95246379"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932467"
 ---
 # <a name="key-value-revisions"></a>索引鍵/值修訂
 

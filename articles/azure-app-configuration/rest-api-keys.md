@@ -1,17 +1,17 @@
 ---
 title: Azure 應用程式組態 REST API 金鑰
 description: 使用 Azure 應用程式組態 REST API 處理金鑰的參考頁面
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: f44ecdf571791d54a78d25dde514d57053b59160
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 65ca190d7fbd6d8d4df473fbe2112eafbd031fde
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424090"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932535"
 ---
 # <a name="keys"></a>索引鍵
 
@@ -25,7 +25,7 @@ api 版本：1。0
 }
 ```
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>作業
 
 重要資源支援下列操作：
 
@@ -97,7 +97,7 @@ GET /keys?name={key-name}&api-version={api-version}
 
 以下是支援的篩選：
 
-|索引鍵篩選|作用|
+|索引鍵篩選|效果|
 |--|--|
 |省略 `name` 或使用 `name=*`|符合 **任何** 索引鍵|
 |`name=abc`|符合名為 **abc** 的索引鍵|

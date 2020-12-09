@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: b4e35296a999070a6f536f4a52cfb7c3a1d4f42a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 917eb52a7255527b55aacd488f33125ad853e894
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186485"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932263"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>使用 IT 服務管理連接器將 Azure 連接至 ITSM 工具
 
@@ -30,7 +30,7 @@ ITSMC 支援與下列 ITSM 工具連線：
 -   Cherwell
 
    >[!NOTE]
-> 從 1-10 月-2020 Cherwell 和 Provance ITSM 與 Azure 警示的整合將不再針對新客戶啟用。 不支援新的 ITSM 連接。 將會支援現有的 ITSM 連接。
+> 我們建議 Cherwell 和 Provance 客戶使用 [Webhook 動作](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) ，以 Cherwell 和 Provance 端點作為整合的另一種解決方案。
 
 使用 ITSMC，您可以：
 
@@ -70,7 +70,7 @@ ITSMC 支援與下列 ITSM 工具連線：
    >[!NOTE]
    >在從 Microsoft Operations Management Suite (OMS) 到 Azure 監視器的持續轉換過程中，OMS 工作區現在稱為 *Log Analytics 工作區*。
 
-5. 選取 [確定]  。
+5. 選取 [確定]。
 
 部署 ITSMC 資源時，視窗右上角會出現通知。
 
@@ -156,7 +156,7 @@ ITSMC 支援與下列 ITSM 工具連線：
    * 如果您在工作專案下拉式清單中選取 [事件]：如果您針對選項按鈕選取範圍中的 **每個記錄專案選取 [建立個別的工作專案** ]，則每個警示都會建立新的工作專案。 如果您針對選項按鈕選取範圍中的 **每個設定專案選取 [建立個別工作專案** ]，則每個設定專案都會有自己的工作專案。
    ![顯示 ITSM 票證視窗的螢幕擷取畫面。](media/itsmc-overview/itsm-action-configuration-event.png)
 
-10. 選取 [確定]  。
+10. 選取 [確定]。
 
 當您建立或編輯 Azure 警示規則時，請使用具有 ITSM 動作的動作群組。 當警示觸發時，會在 ITSM 工具中建立或更新工作專案。
 

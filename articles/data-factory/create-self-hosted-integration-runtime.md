@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 11/25/2020
-ms.openlocfilehash: 4a58f25e6183c674990d1d7722ce3196cce0f47c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 04efb7bcae11ef6cf377d821b49f9b07d41d347f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350461"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932586"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>建立和設定自我裝載整合執行階段
 
@@ -102,29 +102,28 @@ Dmgcmd.exe 包含在自我裝載的安裝程式中。 它通常位於 C:\Program
 使用應用程式，如下所示：
 
 ```powershell
-dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<thumbprint>"] -EnableRemoteAccessInContainer "<port>" ["<thumbprint>"] -DisableRemoteAccess -Key "<AuthenticationKey>" -GenerateBackupFile "<filePath>" "<password>" -ImportBackupFile "<filePath>" "<password>" -Restart -Start -Stop -StartUpgradeService -StopUpgradeService -TurnOnAutoUpdate -TurnOffAutoUpdate -SwitchServiceAccount "<domain\user>" ["<password>"] -Loglevel <logLevel> ]
+dmgcmd ACTION args...
 ```
 
-以下是應用程式參數和屬性的詳細資料： 
+以下是應用程式的動作和引數的詳細資料： 
 
-| 屬性                                                    | 說明                                                  | 必要 |
-| ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
-| **RegisterNewNode** "`<AuthenticationKey>`"                     | 使用指定的驗證金鑰註冊自我裝載整合執行時間節點。 | 否       |
-| **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | 使用指定的驗證金鑰和節點名稱註冊自我裝載的整合執行時間節點。 | 否       |
-| **EnableRemoteAccess** "`<port>`" ["`<thumbprint>`"]            | 啟用目前節點上的遠端存取，以設定高可用性叢集。 或直接針對自我裝載 IR 啟用設定認證，而不需要 Azure Data Factory。 您可以從相同網路中的遠端電腦使用 **AzDataFactoryV2LinkedServiceEncryptedCredential 指令程式** ，以進行後者。 | 否       |
-| **EnableRemoteAccessInContainer** "`<port>`" ["`<thumbprint>`"] | 當節點在容器中執行時，啟用對目前節點的遠端存取。 | 否       |
-| **DisableRemoteAccess**                                         | 停用對目前節點的遠端存取。 多節點設定需要遠端存取。 即使已停用遠端存取， **AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell Cmdlet 仍可運作。 只要 Cmdlet 是在與自我裝載 IR 節點相同的電腦上執行，這種行為就是如此。 | 否       |
-| **金鑰** "`<AuthenticationKey>`"                                 | 覆寫或更新先前的驗證金鑰。 請小心使用此動作。 如果金鑰是新的整合執行時間，您先前的自我裝載 IR 節點可能會離線。 | 否       |
-| **GenerateBackupFile** "`<filePath>`" "`<password>`"            | 產生目前節點的備份檔案。 備份檔案包含節點金鑰和資料存放區認證。 | 否       |
-| **ImportBackupFile** "`<filePath>`" "`<password>`"              | 從備份檔案還原節點。                          | 否       |
-| **重新啟動**                                                     | 重新開機自我裝載 integration runtime 主機服務。   | 否       |
-| **開始**                                                       | 啟動自我裝載 integration runtime 主機服務。     | 否       |
-| **停止**                                                        | 停止自我裝載 integration runtime 主機服務。        | 否       |
-| **StartUpgradeService**                                         | 啟動自我裝載整合執行時間升級服務。       | 否       |
-| **StopUpgradeService**                                          | 停止自我裝載整合執行時間升級服務。        | 否       |
-| **TurnOnAutoUpdate**                                            | 開啟自我裝載整合執行時間自動更新。        | 否       |
-| **TurnOffAutoUpdate**                                           | 關閉自我裝載整合執行時間自動更新。       | 否       |
-| **SwitchServiceAccount** "`<domain\user>`" ["`<password>`"]           | 將 DIAHostService 設定為以新帳戶執行。 針對系統帳戶和虛擬帳戶，請使用空白密碼 ""。 | 否       |
+|ACTION|args|描述|
+|------|----|-----------|
+|rn<br/>-RegisterNewNode|"`<AuthenticationKey>`" ["`<NodeName>`"]|使用指定的驗證金鑰和節點名稱註冊自我裝載的整合執行時間節點。|
+|日曆<br/>-EnableRemoteAccess|"`<port>`" ["`<thumbprint>`"]|啟用目前節點上的遠端存取，以設定高可用性叢集。 或直接針對自我裝載 IR 啟用設定認證，而不需要 Azure Data Factory。 您可以從相同網路中的遠端電腦使用 **AzDataFactoryV2LinkedServiceEncryptedCredential 指令程式** ，以進行後者。|
+|-erac,<br/>-EnableRemoteAccessInContainer|"`<port>`" ["`<thumbprint>`"]|當節點在容器中執行時，啟用對目前節點的遠端存取。|
+|dra<br/>-DisableRemoteAccess||停用對目前節點的遠端存取。 多節點設定需要遠端存取。 即使已停用遠端存取， **AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell Cmdlet 仍可運作。 只要 Cmdlet 是在與自我裝載 IR 節點相同的電腦上執行，這種行為就是如此。|
+|千<br/>-Key|"`<AuthenticationKey>`"|覆寫或更新先前的驗證金鑰。 請小心使用此動作。 如果金鑰是新的整合執行時間，您先前的自我裝載 IR 節點可能會離線。|
+|-gbf,<br/>-GenerateBackupFile|"`<filePath>`" "`<password>`"|產生目前節點的備份檔案。 備份檔案包含節點金鑰和資料存放區認證。|
+|-ibf,<br/>-ImportBackupFile|"`<filePath>`" "`<password>`"|從備份檔案還原節點。|
+|桌上型電腦主機板<br/>-Restart||重新開機自我裝載 integration runtime 主機服務。|
+|！<br/>-Start||啟動自我裝載 integration runtime 主機服務。|
+|10gbase-t<br/>-停止||停止自我裝載 integration runtime 主機服務。|
+|su<br/>-StartUpgradeService||啟動自我裝載整合執行時間升級服務。|
+|tu<br/>-StopUpgradeService||停止自我裝載整合執行時間升級服務。|
+|-tonau,<br/>-TurnOnAutoUpdate||開啟自我裝載整合執行時間自動更新。|
+|-toffau,<br/>-TurnOffAutoUpdate||關閉自我裝載整合執行時間自動更新。|
+|ssa<br/>-SwitchServiceAccount|"`<domain\user>`" ["`<password>`"]|將 DIAHostService 設定為以新帳戶執行。 針對系統帳戶和虛擬帳戶，請使用空白密碼 ""。|
 
 
 ## <a name="command-flow-and-data-flow"></a>命令流程和資料流程
@@ -219,7 +218,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 > 您不需要建立新的自我裝載整合執行時間來關聯每個節點。 您可以將自我裝載整合執行階段安裝在另一部電腦上，並使用相同的驗證金鑰進行註冊。
 
 > [!NOTE]
-> 在您新增其他節點以達到高可用性和擴充性之前，請確定已在第一個節點上啟用 [ **遠端存取內部** 網路] 選項。 若要這樣做， **Microsoft Integration Runtime Configuration Manager** 請選取 [  >  **Settings**  >  **遠端存取內部** 網路] Microsoft Integration Runtime Configuration Manager 設定。
+> 在您新增其他節點以達到高可用性和擴充性之前，請確定已在第一個節點上啟用 [ **遠端存取內部** 網路] 選項。 若要這樣做， 請選取 [  >    >  **遠端存取內部** 網路] Microsoft Integration Runtime Configuration Manager 設定。
 
 ### <a name="scale-considerations"></a>調整考量
 
@@ -262,7 +261,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Hybrid-data-movement-across-multiple-Azure-Data-Factories/player]
 
-### <a name="terminology"></a>術語
+### <a name="terminology"></a>詞彙
 
 - **共用 ir**：在實體基礎結構上執行的原始自我裝載 ir。  
 - **連結的 ir**：參考另一個共用 IR 的 ir。 連結的 IR 是邏輯 IR，並使用另一個共用自我裝載 IR 的基礎結構。
@@ -331,7 +330,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 確定您已在公司防火牆、自我裝載整合執行時間電腦的 Windows 防火牆，以及資料存放區本身上，正確啟用防火牆規則。 啟用這些規則可讓自我裝載整合執行時間成功地連接到來源和接收。 請為複製作業所涉及的每個資料存放區啟用規則。
 
-例如，若要從內部部署資料存放區複製到先前的 SQL 資料倉儲) 接收 SQL Database 接收或 Azure Synapse Analytics (，請執行下列步驟：
+例如，若要從內部部署資料存放區複製到 SQL Database 接收或 Azure Synapse Analytics 接收，請執行下列步驟：
 
 1. 針對 Windows 防火牆和公司防火牆，允許埠1433上的輸出 TCP 通訊。
 1. 設定 SQL Database 的防火牆設定，將自我裝載整合執行時間電腦的 IP 位址新增至允許的 IP 位址清單。
@@ -362,7 +361,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 1. 開啟 [Microsoft Integration Runtime 管理員]。
 1. 選取 [Settings] \(設定\) 索引標籤。
 1. 在 [ **Http proxy**] 底下，選取 [ **變更** ] 連結以開啟 [ **設定 HTTP proxy** ] 對話方塊。
-1. 選取 [下一步] 。 接著，您會看到一則警告，要求您儲存 proxy 設定並重新啟動 integration runtime 主機服務的許可權。
+1. 選取 [下一步]。 接著，您會看到一則警告，要求您儲存 proxy 設定並重新啟動 integration runtime 主機服務的許可權。
 
 您可以使用 configuration manager 工具來查看和更新 HTTP proxy。
 
@@ -416,7 +415,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 如果您看到類似下列的錯誤訊息，可能是因為防火牆或 proxy 伺服器的設定不正確。 這類設定可防止自我裝載的整合執行時間連接到 Data Factory，以驗證自己的身分。 請參閱上一節，以確保您的防火牆和 Proxy 伺服器的設定皆正確。
 
 * 當您嘗試註冊自我裝載整合執行時間時，您會收到下列錯誤訊息：「無法註冊此 Integration Runtime 節點！ 請確認驗證金鑰有效，且 integration service 主機服務正在這部電腦上執行。
-* 當您開啟「Integration Runtime 組態管理員」時，您會看到「已中斷連線」或「正在連線」狀態。 當您在 [**事件檢視器** 應用程式和服務記錄檔] Microsoft Integration Runtime 下查看 Windows 事件記錄檔時  >  **Application and Services Logs**  >  ****，您會看到如下的錯誤訊息：
+* 當您開啟「Integration Runtime 組態管理員」時，您會看到「已中斷連線」或「正在連線」狀態。 當您在 [**事件檢視器** 應用程式和服務記錄檔] Microsoft Integration Runtime 下查看 Windows 事件記錄檔時  >    >  ****，您會看到如下的錯誤訊息：
 
     ```
     Unable to connect to the remote server

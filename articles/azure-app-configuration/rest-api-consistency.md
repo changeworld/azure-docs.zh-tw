@@ -1,17 +1,17 @@
 ---
 title: Azure 應用程式組態 REST API 一致性
 description: 使用 Azure 應用程式組態 REST API 來確保即時一致性的參考頁面
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: db9553c2c9c79a6beb9c66d0cb1a1a60435b2abd
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: b324d23ce9abc1eb3893f316365aff828de2063d
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95253332"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932620"
 ---
 # <a name="real-time-consistency"></a>即時一致性
 
@@ -27,7 +27,7 @@ ms.locfileid: "95253332"
 Sync-Token: <id>=<value>;sn=<sn>
 ```
 
-|參數|說明|
+|參數|描述|
 |--|--|
 | `<id>` | 標記識別項 (不透明)  |
 | `<value>` | 標記值 (不透明) 。 允許 base64 編碼字串。 |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6612e6982ae4826869134dfa46b35a3f202d4bbb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 29bcf2fdd3e20b28b1f2cb014137cfba37ccaf2e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183238"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931804"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>適用于 Azure Kubernetes Service 的 Azure 安全性基準
 
@@ -178,7 +178,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 選擇根據命名空間和具有網路原則的標籤選取器，允許或拒絕叢集中特定的網路路徑。 使用這些命名空間和標籤作為流量設定規則的描述項。 使用 Azure PowerShell 或 Azure 命令列介面 (CLI) 根據其標記查閱或執行資源的動作。
 
-- [使用 CLI Azure 原則](/cli/azure/policy?view=azure-cli-latest)
+- [使用 CLI Azure 原則](/cli/azure/policy)
 
 - [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
@@ -382,7 +382,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 - [如何整合 AKS 與 Azure AD](./azure-ad-integration-cli.md)
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 - [如何使用 Azure 資訊安全中心監視身分識別和存取](../security-center/security-center-identity-access.md)
 
@@ -735,7 +735,7 @@ Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，�
 
 使用 PowerShell Cmdlet "AzSecurityTask" 將安全性工作的抓取自動化，讓安全性中心建議您執行這些工作，以加強安全性狀態及補救弱點掃描結果。
 
-- [如何使用 PowerShell 來查看 Azure 資訊安全中心探索到的弱點](/powershell/module/az.security/get-azsecuritytask?view=azps-3.3.0)
+- [如何使用 PowerShell 來查看 Azure 資訊安全中心探索到的弱點](/powershell/module/az.security/get-azsecuritytask)
 
 **Azure 資訊安全中心監視**：是
 
@@ -763,7 +763,7 @@ Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，�
 
 - [如何使用 Azure Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-- [如何檢視您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何檢視您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -927,15 +927,15 @@ Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，�
 
 使用 Azure AD PowerShell 模組來執行臨機操作查詢，以探索屬於您 AKS 系統管理群組成員的帳戶，並使用它來定期協調存取。 使用 Azure CLI 來進行作業，例如「取得受控 Kubernetes 叢集的存取認證」。 執行資訊安全中心的身分識別和存取管理建議。
 
-- [使用 Azure CLI 管理 AKS](/cli/azure/aks?view=azure-cli-latest)
+- [使用 Azure CLI 管理 AKS](/cli/azure/aks)
 
 - [瞭解 AKS 與 Azure AD 整合](concepts-identity.md)
 
 - [如何整合 AKS 與 Azure AD](./azure-ad-integration-cli.md)
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 - [如何使用 Azure 資訊安全中心監視身分識別和存取](../security-center/security-center-identity-access.md)
 
@@ -1055,7 +1055,7 @@ AKS 代理程式節點主機 OS 的安全性強化
 
 security-hardened-vm-host-image.md
 
-- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow)
 
 **Azure 資訊安全中心監視**：不適用
 

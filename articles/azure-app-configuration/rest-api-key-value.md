@@ -1,17 +1,17 @@
 ---
 title: Azure 應用程式組態 REST API-索引鍵-值
 description: 使用 Azure 應用程式組態 REST API 處理索引鍵/值的參考頁面
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: f89b3f2fa4805eeb2fd9f9d511c8f228b98139ac
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 95081d6f8c2770d01f7836e08b6851860bf47ba8
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95241024"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932552"
 ---
 # <a name="key-values"></a>索引鍵/值
 
@@ -19,7 +19,7 @@ ms.locfileid: "95241024"
 
 本文適用于 API 版本1.0。
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>作業
 
 - Get
 - 清單多個
@@ -30,7 +30,7 @@ ms.locfileid: "95241024"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-rest-api-prereqs.md)]
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>語法
 
 ```json
 {

@@ -1,23 +1,23 @@
 ---
 title: Azure 應用程式組態 REST API-HMAC 驗證
 description: 使用 HMAC 向 Azure 應用程式組態驗證，方法是使用 REST API
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: bd1667f6c17922b6c0b0bfba7a7329a3fc96b62e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f761d86bd7dbe54b687e8db75ecb3df2dbba3384
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182626"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932705"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>HMAC 驗證-REST API 參考
 
 您可以使用 HMAC-SHA256 驗證配置來驗證 HTTP 要求。  (HMAC 指的是以雜湊為基礎的消息驗證碼。 ) 這些要求必須透過 TLS 傳輸。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - **憑據** - \<Access Key ID\>
 - **Secret** -base64 解碼的存取金鑰值。 ``base64_decode(<Access Key Value>)``
@@ -54,7 +54,7 @@ Authorization: HMAC-SHA256 Credential={Access Key ID}&SignedHeaders=x-ms-date;ho
 | **HMAC-SHA256** | 授權配置。 _需要 ()_ |
 | **認證** | 用來計算簽章的存取金鑰識別碼。 _需要 ()_ |
 | **SignedHeaders** | 加入至簽章的 HTTP 要求標頭。 _需要 ()_ |
-| **簽名** | 以 base64 編碼的字串對符號 HMACSHA256。 _需要 ()_|
+| **簽章** | 以 base64 編碼的字串對符號 HMACSHA256。 _需要 ()_|
 
 ### <a name="credential"></a>認證
 
@@ -545,7 +545,7 @@ Invoke-RestMethod -Uri $uri -Method $method -Headers $headers -Body $body
 
 *必要條件*：
 
-| 必要條件 | Command | 測試的版本 |
+| 必要條件 | 命令 | 測試的版本 |
 | ------------ | ------- | --------------- |
 | [Bash](https://www.gnu.org/software/bash/) | Bash | 3.5.27, 4.4.23 |
 | [coreutils](https://www.gnu.org/software/coreutils/) | tr | 8.28 |
