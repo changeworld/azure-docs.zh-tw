@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: 13cbeca909b445d75fcbcf7b3751183421479d42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a799d7c32ad632303931adf838ca8e2e715b2adc
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052557"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860179"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 
@@ -34,7 +34,7 @@ Microsoft Graph 目前支援兩種版本：1.0 版和 Beta 版。 1.0 版包含�
 
 若要開始使用搶鮮版（Beta） Api，請參閱 [Microsoft Graph Beta 端點參考](/graph/api/overview?view=graph-rest-beta)
 
-若要開始使用 v1.0 Api，請參閱 [Microsoft Graph REST API v1.0 參考](/graph/api/overview?view=graph-rest-1.0)
+若要開始使用 v1.0 Api，請參閱 [Microsoft Graph REST API v1.0 參考](/graph/api/overview)
 
 ## <a name="get-started"></a>開始使用
 

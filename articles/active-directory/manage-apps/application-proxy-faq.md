@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: ef38c5364a0df1df63be825e2c46009174840b72
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e9a03c82fd4bd79e7a47fa34ff7a69870c52f018
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658123"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858377"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) 應用程式 Proxy 常見問題
 
@@ -58,7 +58,7 @@ ms.locfileid: "94658123"
 應用程式 Proxy 連接器會對 Azure 執行以憑證為基礎的驗證。 TLS 終止 (TLS/HTTPS 檢查或加速) 會中斷此驗證方法，而且不受支援。 從連接器到 Azure 的流量，必須略過任何正在執行 TLS 終止的裝置。  
 
 ### <a name="is-tls-12-required-for-all-connections"></a>所有連接都需要 TLS 1.2 嗎？
-可以。 為了將頂級的加密提供給客戶，應用程式 Proxy 服務會限制僅接受 TLS 1.2 通訊協定的存取。 這些變更已逐漸推出，並於 2019 年 8 月 31 日起生效。 請確定所有用戶端-伺服器和瀏覽器-伺服器組合都已更新為使用 TLS 1.2，以保持與應用程式 Proxy 服務的連線。 其中包括使用者存取透過應用程式 Proxy 發佈的應用程式時，所使用的用戶端。 請參閱準備 [Office 365 中的 TLS 1.2](/microsoft-365/compliance/prepare-tls-1.2-in-office-365)，以取得實用的參考和資源。
+是。 為了將頂級的加密提供給客戶，應用程式 Proxy 服務會限制僅接受 TLS 1.2 通訊協定的存取。 這些變更已逐漸推出，並於 2019 年 8 月 31 日起生效。 請確定所有用戶端-伺服器和瀏覽器-伺服器組合都已更新為使用 TLS 1.2，以保持與應用程式 Proxy 服務的連線。 其中包括使用者存取透過應用程式 Proxy 發佈的應用程式時，所使用的用戶端。 請參閱準備 [Office 365 中的 TLS 1.2](/microsoft-365/compliance/prepare-tls-1.2-in-office-365)，以取得實用的參考和資源。
 
 ### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>我可以在連接器伺服器 (s) 和後端應用程式伺服器之間放置轉寄 proxy 裝置嗎？
 是，從連接器版本1.5.1526.0 開始支援此案例。 請參閱使用 [現有的內部部署 proxy 伺服器](application-proxy-configure-connectors-with-proxy-servers.md)。
@@ -177,7 +177,7 @@ NTLM 驗證無法用作預先驗證或單一登入方法。 只有當您可以�
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>我可以使用 Azure AD 應用程式 Proxy 做為 AD FS Proxy (例如 Web 應用程式 Proxy) 嗎？
 
-否。 Azure AD 應用程式 Proxy 是設計用來與 Azure AD 搭配使用，而且不符合作為 AD FS Proxy 的需求。
+不會。 Azure AD 應用程式 Proxy 是設計用來與 Azure AD 搭配使用，而且不符合作為 AD FS Proxy 的需求。
 
 ## <a name="websocket"></a>WebSocket
 
@@ -191,7 +191,7 @@ Windows Admin Center (WAC) 或遠端桌面 Web 用戶端 (HTML5) 中 (檢視、P
 
 ### <a name="does-using-link-translation-affect-performance"></a>使用連結轉譯會影響效能嗎？
 
-可以。 連結轉譯會影響效能。 應用程式 Proxy 服務會掃描應用程式中的硬式編碼連結，並將其取代為其各自發布的外部 Url，然後再呈現給使用者。 
+是。 連結轉譯會影響效能。 應用程式 Proxy 服務會掃描應用程式中的硬式編碼連結，並將其取代為其各自發布的外部 Url，然後再呈現給使用者。 
 
 為了達到最佳效能，建議您設定 [自訂網域](./application-proxy-configure-custom-domain.md)，以使用相同的內部和外部 url。 如果無法使用自訂網域，您可以在行動裝置上使用我的應用程式安全登入延伸模組或 Microsoft Edge 瀏覽器，以改善連結轉譯效能。 請參閱 [針對使用 Azure AD 應用程式 Proxy 發佈的應用程式重新導向硬式編碼連結](application-proxy-configure-hard-coded-link-translation.md)。
 
@@ -204,5 +204,5 @@ Windows Admin Center (WAC) 或遠端桌面 Web 用戶端 (HTML5) 中 (檢視、P
 1. 使用萬用字元以個別的應用程式發佈 HTTP 和 HTTPS Url，但為每個 Url 提供不同的自訂網域。 這種設定將會運作，因為它們具有不同的外部 URL。
 
 2. 透過萬用字元應用程式發佈 HTTPS URL。 使用下列應用程式 Proxy PowerShell Cmdlet 來分開發布 HTTP 應用程式：
-   - [應用程式 Proxy 應用程式管理](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management&preserve-view=true)
-   - [應用程式 Proxy 連接器管理](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management&preserve-view=true)
+   - [應用程式 Proxy 應用程式管理](/powershell/module/azuread/#application_proxy_application_management&preserve-view=true)
+   - [應用程式 Proxy 連接器管理](/powershell/module/azuread/#application_proxy_connector_management&preserve-view=true)

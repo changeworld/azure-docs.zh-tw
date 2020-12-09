@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4931006ba690ff7e059da5de8b0bc816271af30c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 3b40171d87ccffa7c5c4fb72d2e79af015b1d16f
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547894"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859958"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>將敏感度標籤指派給 Azure Active Directory 中的 Microsoft 365 群組
 
@@ -68,7 +68,7 @@ Azure Active Directory (Azure AD) 支援將 [Microsoft 365 合規性中心](http
     Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
     ```
 
-您也需要同步處理您的敏感度標籤以 Azure AD。 如需相關指示，請參閱 [如何啟用容器的敏感度標籤和同步處理標籤](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide#how-to-enable-sensitivity-labels-for-containers-and-synchronize-labels)。
+您也需要同步處理您的敏感度標籤以 Azure AD。 如需相關指示，請參閱 [如何啟用容器的敏感度標籤和同步處理標籤](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#how-to-enable-sensitivity-labels-for-containers-and-synchronize-labels)。
 
 ## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>將標籤指派給 Azure 入口網站中的新群組
 

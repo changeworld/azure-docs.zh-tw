@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: videor, jeevanb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 607df39833a5ae787e9acb8d3b4df3c52dd7709d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6d4dd6e64053af41d66e3accbb7fc9b21d951fc6
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173680"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860208"
 ---
 # <a name="conditional-access-programmatic-access"></a>條件式存取：以程式設計方式存取
 
@@ -62,7 +62,7 @@ Microsoft Graph 提供統一的可程式性模型，可讓組織用來與 Micros
 
 - [使用核准工作流程將條件式存取原則部署到生產環境](https://github.com/Azure-Samples/azure-ad-conditional-access-apis/tree/main/03-deploy)
 
-## <a name="monitor"></a>監視
+## <a name="monitor"></a>監視器
 
 此範例提供一種機制來監視一段時間的條件式存取原則變更，並且可在變更金鑰原則時觸發警示。
 
@@ -96,6 +96,6 @@ Microsoft Graph 提供統一的可程式性模型，可讓組織用來與 Micros
 
 - [Microsoft Graph 概觀](/graph/overview)
 
-- [條件式存取 API](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-1.0)
+- [條件式存取 API](/graph/api/resources/conditionalaccesspolicy)
 
-- [命名位置 API](/graph/api/resources/namedlocation?view=graph-rest-1.0)
+- [命名位置 API](/graph/api/resources/namedlocation)

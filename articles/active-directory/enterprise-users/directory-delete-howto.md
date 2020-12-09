@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73210420f873729a10381b3cea0005d895c5163b
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 2edc6fb98359c5360836bc369e5ae1928464df92
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547452"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861025"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>在 Azure Active Directory 中刪除租用戶
 
@@ -85,7 +85,7 @@ ms.locfileid: "96547452"
 
    ![用於刪除訂用帳戶的 [刪除] 連結](./media/directory-delete-howto/delete-command.png)
 
-6. 選取 [刪除訂用帳戶] 以刪除訂用帳戶並接受條款及條件。 所有資料都會在三天內永久刪除。 若您改變了心意，在這三天內都可以[重新啟用訂用帳戶](/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide)。
+6. 選取 [刪除訂用帳戶] 以刪除訂用帳戶並接受條款及條件。 所有資料都會在三天內永久刪除。 若您改變了心意，在這三天內都可以[重新啟用訂用帳戶](/office365/admin/subscriptions-and-billing/reactivate-your-subscription)。
   
    ![仔細閱讀條款及條件](./media/directory-delete-howto/delete-terms.png)
 
@@ -97,7 +97,7 @@ ms.locfileid: "96547452"
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>我有阻擋刪除的試用版訂用帳戶
 
-有一種 [自助式註冊產品](/office365/admin/misc/self-service-sign-up?view=o365-worldwide) （例如 Microsoft Power BI、Rights Management 服務、microsoft Power Apps 或 Dynamics 365），個別使用者可以透過 Microsoft 365 註冊，這也會在您的 Azure AD 組織中建立來賓使用者進行驗證。 這些自助產品會阻擋目錄刪除，直到產品完全從組織中刪除為止，以避免資料遺失。 只有在使用者個別註冊或被指派產品的情況下，Azure AD 系統管理員才可以將其刪除。
+有一種 [自助式註冊產品](/office365/admin/misc/self-service-sign-up) （例如 Microsoft Power BI、Rights Management 服務、microsoft Power Apps 或 Dynamics 365），個別使用者可以透過 Microsoft 365 註冊，這也會在您的 Azure AD 組織中建立來賓使用者進行驗證。 這些自助產品會阻擋目錄刪除，直到產品完全從組織中刪除為止，以避免資料遺失。 只有在使用者個別註冊或被指派產品的情況下，Azure AD 系統管理員才可以將其刪除。
 
 自助式註冊產品的指派有兩種類型： 
 
@@ -106,9 +106,9 @@ ms.locfileid: "96547452"
 
 當您開始刪除自助式註冊產品時，此動作會永久刪除資料，並移除該服務的所有使用者存取權。 個別或在組織層級獲指派供應項目的使用者，會遭到封鎖而無法登入或存取任何現有的資料。 如果您想要使用自助式註冊產品 (例如 [Microsoft Power BI 儀表板](/power-bi/service-export-to-pbix)或 [Rights Management Services 原則設定](/azure/information-protection/configure-policy#how-to-configure-the-azure-information-protection-policy)) 來防止資料遺失，請確定資料已備份並儲存在其他位置。
 
-如需目前可用自助式註冊產品與服務的詳細資訊，請參閱[可用的自助式程式](/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs)。
+如需目前可用自助式註冊產品與服務的詳細資訊，請參閱[可用的自助式程式](/office365/admin/misc/self-service-sign-up#available-self-service-programs)。
 
-若要瞭解試用版 Microsoft 365 訂用帳戶到期的情況 (不包括付費夥伴/CSP、Enterprise 合約或大量授權) ，請參閱下表。 如需 Microsoft 365 資料保留和訂閱生命週期的詳細資訊，請參閱 [當我的商務用 Microsoft 365 結束時，我的資料和存取權會發生什麼情況？](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide)。
+若要瞭解試用版 Microsoft 365 訂用帳戶到期的情況 (不包括付費夥伴/CSP、Enterprise 合約或大量授權) ，請參閱下表。 如需 Microsoft 365 資料保留和訂閱生命週期的詳細資訊，請參閱 [當我的商務用 Microsoft 365 結束時，我的資料和存取權會發生什麼情況？](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires)。
 
 產品狀態 | 資料 | 資料存取權
 ------------- | ---- | --------------

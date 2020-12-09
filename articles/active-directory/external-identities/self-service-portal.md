@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f9cd421224ad134b4df853b06b3bc34333a0613
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 8a5b800e78448afcc970010535ba12b543d3cc74
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896101"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860502"
 ---
 # <a name="self-service-for-azure-ad-b2b-collaboration-sign-up"></a>Azure AD B2B 共同作業註冊的自助服務
 
@@ -28,7 +28,7 @@ ms.locfileid: "92896101"
 
 ## <a name="azure-active-directory-b2b-invitation-api"></a>Azure Active Directory B2B 邀請 API
 
-組織可以使用 [Microsoft Graph 邀請管理員 API](/graph/api/resources/invitation?view=graph-rest-1.0)，為 B2B 來賓使用者建立自己的上線體驗。 如果您想要提供自助式的 B2B 來賓使用者註冊，建議您使用 [Azure AD 權利管理](../governance/entitlement-management-overview.md)。 但是，如果您想要建立自己的體驗，則可以使用[建立邀請 API](/graph/api/invitation-post?tabs=http&view=graph-rest-1.0)，自動將自訂的邀請電子郵件直接傳送給 B2B 使用者等收件者。 或者，您的應用程式可以使用建立回應中所傳回的 inviteRedeemUrl，製作您自己的邀請 (透過您選擇的通訊機制) 給受邀使用者。
+組織可以使用 [Microsoft Graph 邀請管理員 API](/graph/api/resources/invitation)，為 B2B 來賓使用者建立自己的上線體驗。 如果您想要提供自助式的 B2B 來賓使用者註冊，建議您使用 [Azure AD 權利管理](../governance/entitlement-management-overview.md)。 但是，如果您想要建立自己的體驗，則可以使用[建立邀請 API](/graph/api/invitation-post?tabs=http)，自動將自訂的邀請電子郵件直接傳送給 B2B 使用者等收件者。 或者，您的應用程式可以使用建立回應中所傳回的 inviteRedeemUrl，製作您自己的邀請 (透過您選擇的通訊機制) 給受邀使用者。
 
 ## <a name="next-steps"></a>後續步驟
 

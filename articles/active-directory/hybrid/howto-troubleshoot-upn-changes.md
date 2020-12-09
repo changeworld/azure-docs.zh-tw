@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59b304505c29f424d85d5b1e16dc83c060ac2ac1
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 19e40d135316c1c7cd270d2804fff1f487937685
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744593"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858530"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>在 Azure Active Directory 中規劃使用者主體名稱變更並進行疑難排解
 
@@ -135,7 +135,7 @@ username@labs.contoso.com.
 本章節所述的問題已在 Windows 10 2020 年5月更新 (2004) 上修正。
 
 **因應措施** <br>
-允許足夠的時間讓 UPN 變更同步至 Azure AD。 一旦您確認新的 UPN 反映在 Azure AD 入口網站上，請要求使用者選取 [其他使用者] 磚，以使用新的 UPN 登入。 您也可以透過 [PowerShell](/powershell/module/azuread/get-azureaduser?view=azureadps-2.0)進行驗證。 使用新的 UPN 登入之後，舊 UPN 的參考可能仍會出現在 [存取公司或學校] Windows 設定上。
+允許足夠的時間讓 UPN 變更同步至 Azure AD。 一旦您確認新的 UPN 反映在 Azure AD 入口網站上，請要求使用者選取 [其他使用者] 磚，以使用新的 UPN 登入。 您也可以透過 [PowerShell](/powershell/module/azuread/get-azureaduser)進行驗證。 使用新的 UPN 登入之後，舊 UPN 的參考可能仍會出現在 [存取公司或學校] Windows 設定上。
 
 ![已驗證網域的螢幕擷取畫面](./media/howto-troubleshoot-upn-changes/other-user.png)
 

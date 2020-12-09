@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da8fe904f71fdf6f01c926bf6fa3f050ba825309
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 70387717c15dade349a323e663ac0fd31935a15f
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548132"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859873"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>設定群組設定的 Azure Active Directory Cmdlet
 
@@ -28,7 +28,7 @@ ms.locfileid: "96548132"
 > [!IMPORTANT]
 > 某些設定需要 Azure Active Directory Premium P1 授權。 如需詳細資訊，請參閱[範本設定](#template-settings)資料表。
 
-如需有關如何防止非系統管理員的使用者建立安全性群組的詳細資訊，請依照 [Set-MSOLCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) 中所述來設定 `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False`。
+如需有關如何防止非系統管理員的使用者建立安全性群組的詳細資訊，請依照 [Set-MSOLCompanySettings](/powershell/module/msonline/set-msolcompanysettings) 中所述來設定 `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False`。
 
 Microsoft 365 群組設定是使用 Settings 物件和 SettingsTemplate 物件來設定。 一開始，您在目錄中不會看到任何設定物件，因為已使用預設設定來設定您的目錄。 若要變更預設設定，您必須使用設定範本來建立新的設定物件。 設定範本是由 Microsoft 所定義。 有數個不同的設定範本。 若要為您的目錄設定 Microsoft 365 群組設定，請使用名為 "Group. 統一" 的範本。 若要在單一群組上設定 Microsoft 365 群組設定，請使用名為 "Group. Guest" 的範本。 此範本可用來管理對 Microsoft 365 群組的來賓存取。 
 
@@ -319,7 +319,7 @@ Cmdlet 是 Azure Active Directory PowerShell V2 模組的一部分。 如需有�
    ```
 
 ## <a name="cmdlet-syntax-reference"></a>Cmdlet 語法參考
-您可以在 [Azure Active Directory Cmdlet](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)中找到更多 Azure Active Directory PowerShell 文件。
+您可以在 [Azure Active Directory Cmdlet](/powershell/azure/active-directory/install-adv2)中找到更多 Azure Active Directory PowerShell 文件。
 
 ## <a name="additional-reading"></a>延伸閱讀
 

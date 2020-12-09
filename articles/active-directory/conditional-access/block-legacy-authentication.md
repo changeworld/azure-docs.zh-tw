@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e85f36f1b970a4848ee132fe37bd1b0f4f4fdc82
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: d8bc1a96109eda9cc2ee1f86cec892cc5ce9308d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489517"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860315"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用條件式存取封鎖對 Azure AD 的舊式驗證   
 
@@ -82,7 +82,7 @@ Azure AD 支援數個最常用的驗證和授權通訊協定，包括舊式驗�
 
 1. 瀏覽至 [Azure 入口網站]  >  [Azure Active Directory]  >  [登入]。
 1. 如果未顯示 [用戶端應用程式] 欄，請按一下 [欄]  >  [用戶端應用程式] 來新增此欄。
-1. **新增篩選**  > **用戶端應用程式** > 選取所有舊版驗證通訊協定。 選取 [篩選] 對話方塊以外的範圍，以套用您的選取專案並關閉對話方塊。
+1. **新增篩選**  > **用戶端應用程式**> 選取所有舊版驗證通訊協定。 選取 [篩選] 對話方塊以外的範圍，以套用您的選取專案並關閉對話方塊。
 
 篩選後，只會顯示您使用舊式驗證通訊協定的登入嘗試。 按一下各項登入嘗試，即會顯示更多詳細資料。 [基本資訊] 索引標籤下方的 [用戶端應用程式] 欄位，會標明使用的舊式驗證通訊協定。
 
@@ -97,7 +97,7 @@ Azure AD 支援數個最常用的驗證和授權通訊協定，包括舊式驗�
  
 ### <a name="directly-blocking-legacy-authentication"></a>直接封鎖舊版驗證
 
-若要封鎖整個組織的舊版驗證，最簡單的方式就是設定適用于舊版驗證用戶端的條件式存取原則，並封鎖存取。 將使用者和應用程式指派給原則時，請務必排除仍需要使用舊版驗證登入的使用者和服務帳戶。 選取 [ **Exchange ActiveSync 用戶端** ] 和 [ **其他用戶端** ] 來設定用戶端應用程式條件。 若要封鎖這些用戶端應用程式的存取，請設定存取控制以封鎖存取。
+若要封鎖整個組織的舊版驗證，最簡單的方式就是設定適用于舊版驗證用戶端的條件式存取原則，並封鎖存取。 將使用者和應用程式指派給原則時，請務必排除仍需要使用舊版驗證登入的使用者和服務帳戶。 選取 [ **Exchange ActiveSync 用戶端** ] 和 [ **其他用戶端**] 來設定用戶端應用程式條件。 若要封鎖這些用戶端應用程式的存取，請設定存取控制以封鎖存取。
 
 ![設定為封鎖舊版驗證的用戶端應用程式條件](./media/block-legacy-authentication/client-apps-condition-configured-yes.png)
 
@@ -119,7 +119,7 @@ Azure AD 支援數個最常用的驗證和授權通訊協定，包括舊式驗�
 
 ### <a name="sharepoint-online-and-b2b-guest-users"></a>SharePoint Online 和 B2B 來賓使用者
 
-若要透過舊版驗證來封鎖 B2B 使用者對 SharePoint Online 的存取，組織必須使用 PowerShell 命令停用 SharePoint 上的舊版驗證， `Set-SPOTenant` 並將 `-LegacyAuthProtocolsEnabled` 參數設定為 `$false` 。 如需有關設定此參數的詳細資訊，請參閱有關[set-spotenant](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps)的 SharePoint PowerShell 參考檔
+若要透過舊版驗證來封鎖 B2B 使用者對 SharePoint Online 的存取，組織必須使用 PowerShell 命令停用 SharePoint 上的舊版驗證， `Set-SPOTenant` 並將 `-LegacyAuthProtocolsEnabled` 參數設定為 `$false` 。 如需有關設定此參數的詳細資訊，請參閱有關[set-spotenant](/powershell/module/sharepoint-online/set-spotenant)的 SharePoint PowerShell 參考檔
 
 ## <a name="next-steps"></a>後續步驟
 

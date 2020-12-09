@@ -13,12 +13,12 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: b683eaaf4c93ef0dcf74680e1e174e0f867a7041
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8be41f3fcf4d32ee81d1290c6a50a27f2cd45ee7
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173391"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860961"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>使用 MSAL.NET 來登入具有社交身分識別的使用者
 
@@ -165,7 +165,7 @@ ROPC 流程 **僅適用于本機帳戶**，您的使用者已使用電子郵件�
 
 ### <a name="known-issue-with-azure-ad-b2c"></a>Azure AD B2C 的已知問題
 
-MSAL.NET 支援 [權杖](/dotnet/api/microsoft.identity.client.tokencache?view=azure-dotnet)快取。 權杖快取金鑰是根據身分識別提供者傳回的宣告 (IdP) 。
+MSAL.NET 支援 [權杖](/dotnet/api/microsoft.identity.client.tokencache)快取。 權杖快取金鑰是根據身分識別提供者傳回的宣告 (IdP) 。
 
 目前，MSAL.NET 需要兩個宣告來建立權杖快取金鑰：
 

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a23056445331c82aded878a77d1e0e730e4e2ceb
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5beae56a5d38c4620481c27c3f42c52602984e6b
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339467"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860621"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>直接與來賓使用者的 AD FS 和第三方提供者同盟 (預覽)
 
@@ -66,7 +66,7 @@ ms.locfileid: "96339467"
 如果您在識別提供者設定中指定中繼資料 URL，Azure AD 便會在簽署憑證到期時自動予以更新。 不過，如果憑證因任何原因而在到期之前輪替，或如果您未提供中繼資料 URL，Azure AD 便無法加以更新。 在此情況下，您必須手動更新簽署憑證。
 
 ### <a name="limit-on-federation-relationships"></a>同盟關聯性的限制
-目前支援的同盟關聯性上限為 1,000 個。 這項限制包括[內部同盟](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)和直接同盟。
+目前支援的同盟關聯性上限為 1,000 個。 這項限制包括[內部同盟](/powershell/module/msonline/set-msoldomainfederationsettings)和直接同盟。
 
 ### <a name="limit-on-multiple-domains"></a>多個網域的限制
 我們目前不支援與來自相同租用戶的多個網域直接同盟。

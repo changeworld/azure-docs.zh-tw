@@ -17,12 +17,12 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1efafd353bea20ea1ada0b5e92a9e6df00deb78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c075e19422341ad7ccfd3ad951517876ab26a495
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273595"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858411"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect：帳戶和權限
 
@@ -50,7 +50,7 @@ Azure AD Connect 會使用 3 個帳戶，以便將資訊從內部部署或 Windo
 
 
 >[!IMPORTANT]
-> 從組建 1.4.###.# 開始，不再支援使用企業管理員或網域管理員帳戶作為 AD DS 連接器帳戶。  如果您在指定**使用現有帳戶**時，嘗試輸入屬於企業管理員或網域管理員的帳戶，您將會收到錯誤。
+> 從組建 1.4.###.# 開始，不再支援使用企業管理員或網域管理員帳戶作為 AD DS 連接器帳戶。  如果您在指定 **使用現有帳戶** 時，嘗試輸入屬於企業管理員或網域管理員的帳戶，您將會收到錯誤。
 
 > [!NOTE]
 > 支援從 ESAE 系統管理樹系 (也稱為「紅色樹系」) 管理 Azure AD Connect 中使用的系統管理帳戶。
@@ -58,7 +58,7 @@ Azure AD Connect 會使用 3 個帳戶，以便將資訊從內部部署或 Windo
 > 若要深入了解專用的系統管理樹系，請參閱 [ESAE 系統管理樹系設計方法](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)。
 
 > [!NOTE]
-> 初始設定之後就不需要全域管理員角色，唯一需要的帳戶是**目錄同步作業帳戶**角色帳戶。 這不一定表示您只想要移除具有全域管理員角色的帳戶。 最好是將角色變更為較不強大的角色，因為如果您需要重新執行精靈，完全移除帳戶可能會導致問題。 藉由降低角色的權限，如果您必須再次使用 Azure AD Connect 精靈，則一律可以重新提升權限。 
+> 初始設定之後就不需要全域管理員角色，唯一需要的帳戶是 **目錄同步作業帳戶** 角色帳戶。 這不一定表示您只想要移除具有全域管理員角色的帳戶。 最好是將角色變更為較不強大的角色，因為如果您需要重新執行精靈，完全移除帳戶可能會導致問題。 藉由降低角色的權限，如果您必須再次使用 Azure AD Connect 精靈，則一律可以重新提升權限。 
 
 ## <a name="installing-azure-ad-connect"></a>安裝 Azure AD Connect
 Azure AD Connect 安裝精靈提供兩個不同的路徑：
@@ -173,7 +173,7 @@ AD DS 連接器帳戶是為了在 Windows Server AD 中讀取和寫入而建立�
 如果您使用自訂設定，您就必須負責在開始安裝之前建立帳戶。  請參閱建立 AD DS 連接器帳戶。
 
 ### <a name="adsync-service-account"></a>ADSync 服務帳戶
-同步處理服務可以在不同帳戶下執行。 它可以在**虛擬服務帳戶** (VSA)、**群組受控服務帳戶** (gMSA/sMSA) 或一般使用者帳戶下執行。 當您執行全新安裝時，2017 年 4 月版之 Connect 的支援選項已變更。 如果您從舊版的 Azure AD Connect 升級，將無法使用這些額外選項。
+同步處理服務可以在不同帳戶下執行。 它可以在 **虛擬服務帳戶** (VSA)、**群組受控服務帳戶** (gMSA/sMSA) 或一般使用者帳戶下執行。 當您執行全新安裝時，2017 年 4 月版之 Connect 的支援選項已變更。 如果您從舊版的 Azure AD Connect 升級，將無法使用這些額外選項。
 
 | 帳戶類型 | 安裝選項 | 描述 |
 | --- | --- | --- |
@@ -191,7 +191,7 @@ AD DS 連接器帳戶是為了在 Windows Server AD 中讀取和寫入而建立�
 
 圖例：
 
-- **粗體**代表預設選項，大部分情況下也代表建議選項。
+- **粗體** 代表預設選項，大部分情況下也代表建議選項。
 - *斜體* 代表建議選項 (若該選項不是預設選項)。
 - 2008 - 安裝在 Windows Server 2008 時的預設選項
 - 非粗體 - 支援選項
@@ -215,7 +215,7 @@ VSA 適用於同步處理引擎和 SQL 位於相同伺服器的情況。 如果�
 這項功能需要 Windows Server 2008 R2 或更新版本。 如果您在 Windows Server 2008 上安裝 Azure AD Connect，則安裝會改回使用[使用者帳戶](#user-account)。
 
 #### <a name="group-managed-service-account"></a>群組受控服務帳戶
-如果您使用遠端 SQL Server，我們建議使用**群組受控服務帳戶**。 如需如何讓 Active Directory 準備好使用群組受控服務帳戶的詳細資訊，請參閱[群組受控服務帳戶概觀](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11))。
+如果您使用遠端 SQL Server，我們建議使用 **群組受控服務帳戶**。 如需如何讓 Active Directory 準備好使用群組受控服務帳戶的詳細資訊，請參閱[群組受控服務帳戶概觀](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11))。
 
 若要使用此選項，請在 [安裝必要元件](how-to-connect-install-custom.md#install-required-components) 頁面上，依序選取 [使用現有的服務帳戶] 和 [受控服務帳戶]。  
 ![VSA](./media/reference-connect-accounts-permissions/serviceaccount.png)  
@@ -245,14 +245,14 @@ VSA 適用於同步處理引擎和 SQL 位於相同伺服器的情況。 如果�
 
 使用帳戶所在伺服器的名稱可以透過使用者名稱的第二個部分來識別。 在圖中，伺服器名稱是 DC1。 如果您有預備伺服器，則每個伺服器會有自己的帳戶。
 
-系統會使用不會過期的長複雜密碼建立帳戶。 且該帳戶會獲得特殊角色**目錄同步處理帳戶**，其僅具有執行目錄同步處理工作的權限。 您無法透過 Azure AD Connect 精靈以外的方式授與特殊的內建角色。 Azure 入口網站會顯示此帳戶具備 [使用者] 角色。
+系統會使用不會過期的長複雜密碼建立帳戶。 且該帳戶會獲得特殊角色 **目錄同步處理帳戶**，其僅具有執行目錄同步處理工作的權限。 您無法透過 Azure AD Connect 精靈以外的方式授與特殊的內建角色。 Azure 入口網站會顯示此帳戶具備 [使用者] 角色。
 
 Azure AD 中有 20 個同步服務帳戶的限制。 若要取得 Azure AD 中現有 Azure AD 服務帳戶的清單，請執行下列 Azure AD PowerShell Cmdlet：`Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
 
 若要移除未使用的 Azure AD 服務帳戶，請執行下列 Azure AD PowerShell Cmdlet：`Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
 
 >[!NOTE]
->在您可以使用上述 PowerShell 命令之前，您必須安裝 [Azure Active Directory PowerShell for Graph 模組](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module)，並且使用 [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) 連線至您的 Azure AD 執行個體
+>在您可以使用上述 PowerShell 命令之前，您必須安裝 [Azure Active Directory PowerShell for Graph 模組](/powershell/azure/active-directory/install-adv2#installing-the-azure-ad-module)，並且使用 [Connect-AzureAD](/powershell/module/azuread/connect-azuread) 連線至您的 Azure AD 執行個體
 
 如需如何管理或重設 Azure AD 連接器帳戶密碼的詳細資訊，請參閱[管理 Azure AD Connect 帳戶](how-to-connect-azureadaccount.md)
 

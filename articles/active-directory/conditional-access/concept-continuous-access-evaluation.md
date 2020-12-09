@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e21bac5dd78cb9c9f40e6b91ff80fedabb9bc75
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: b7519b6c7e1f3381be77b9a0734ddda250228e7d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602252"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860298"
 ---
 # <a name="continuous-access-evaluation"></a>持續存取評估
 
@@ -105,7 +105,7 @@ Exchange 和 SharePoint 可以同步處理重要的條件式存取原則，以�
 
 1. 具有 CAE 功能的用戶端會出示認證或重新整理權杖，以 Azure AD 要求某些資源的存取權杖。
 1. 存取權杖連同其他成品一起傳回至用戶端。
-1. 系統管理員明確地 [撤銷使用者的所有](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)重新整理權杖。 撤銷事件將會從 Azure AD 傳送到資源提供者。
+1. 系統管理員明確地 [撤銷使用者的所有](/powershell/module/azuread/revoke-azureaduserallrefreshtoken)重新整理權杖。 撤銷事件將會從 Azure AD 傳送到資源提供者。
 1. 存取權杖會呈現給資源提供者。 資源提供者會評估權杖的有效性，並檢查是否有使用者的任何撤銷事件。 資源提供者會使用此資訊來決定是否授與資源的存取權。
 1. 在此情況下，資源提供者會拒絕存取，並將 401 + 宣告挑戰傳送回用戶端。
 1. 支援 CAE 的用戶端瞭解 401 + 索取挑戰。 它會略過快取並回到步驟1，將其重新整理權杖連同宣告挑戰傳送回 Azure AD。 Azure AD 接著會重新評估所有的條件，並提示使用者在此情況下重新驗證。

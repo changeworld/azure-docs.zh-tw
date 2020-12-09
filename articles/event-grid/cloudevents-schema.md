@@ -4,12 +4,12 @@ description: 說明如何在 Azure 事件方格中將 CloudEvents 結構描述�
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: d794996a699bdd1bb63e7a894346128aa108e95c
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: baac7311a23bb4de032a8ab8b2e99a5ad9cae786
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504368"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858275"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>搭配使用 CloudEvents v1.0 結構描述與事件方格
 除了[預設事件結構描述](event-schema.md)以外，Azure 事件方格在本質上也支援 [CloudEvents v1.0 的 JSON 實作](https://github.com/cloudevents/spec/blob/v1.0/json-format.md)和 [HTTP 通訊協定繫結](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)中的事件。 [CloudEvents](https://cloudevents.io/) 是用來說明事件資料的[開放式規格](https://github.com/cloudevents/spec/blob/v1.0/spec.md)。
@@ -62,16 +62,20 @@ CloudEvents 提供用以發佈和取用雲端型事件的常見事件結構描�
 
 ## <a name="configure-event-grid-for-cloudevents"></a>設定 CloudEvents 的事件方格
 
-您可以使用事件方格來輸入和輸出 CloudEvents 結構描述中的事件。 您可以將 CloudEvents 用於系統事件 (例如 Blob 儲存體事件和 IoT 中樞事件) 及自訂事件。 它也可以在線上來回轉換這些事件。
+在 CloudEvents 架構中，您可以使用事件方格來輸入和輸出事件。 下表描述可能的轉換：
+
+ 事件方格資源 | 輸入結構描述       | 傳遞架構
+|---------------------|-------------------|---------------------
+| 系統主題       | 事件方格架構 | 事件方格架構或 CloudEvent 架構
+| 使用者主題/網域 | 事件方格架構 | 事件方格架構
+| 使用者主題/網域 | CloudEvent 架構 | CloudEvent 架構
+| 使用者主題/網域 | 自訂架構     | 自訂架構或事件方格架構或 CloudEvent 架構
+| PartnerTopics       | CloudEvent 架構 | CloudEvent 架構
 
 
-| 輸入結構描述       | 輸出結構描述
-|--------------------|---------------------
-| CloudEvents 格式 | CloudEvents 格式
-| 事件方格格式  | CloudEvents 格式
-| 事件方格格式  | 事件方格格式
+針對所有事件架構，事件方格需要在發行至事件方格主題時，以及建立事件訂閱時進行驗證。
 
-對於所有的事件結構描述，事件方格在發佈至事件方格主題和建立事件訂閱時，都需要進行驗證。 如需詳細資訊，請參閱 [Event Grid 安全性和驗證](security-authentication.md)。
+如需詳細資訊，請參閱 [Event Grid 安全性和驗證](security-authentication.md)。
 
 ### <a name="input-schema"></a>輸入結構描述
 

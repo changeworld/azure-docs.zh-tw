@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd0a2b44fd54eb716b5e1b8f9eabc923ccd7977f
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 4c97958add682a4c49d7832843c0b95ffd2663bf
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285847"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859626"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B 共同作業使用者的屬性
 
@@ -28,7 +28,7 @@ ms.locfileid: "93285847"
 - 狀態 1：位於 Azure AD 的外部執行個體並表示為提出邀請之組織中的來賓使用者。 在此情況下，B2B 使用者會使用屬於受邀租用戶的 Azure AD 帳戶登入。 如果夥伴組織未使用 Azure AD，仍會在 Azure AD 中建立來賓使用者。 他們必須兌換其邀請，而且 Azure AD 必須確認其電子郵件地址。 此排列也稱為 Just-In-Time (JIT) 租用或「熱門」租用。
 
    > [!IMPORTANT]
-   > **自 2021 年 3 月 31 日起** ，Microsoft 將不再支援兌換邀請，而是建立適用於 B2B 共同作業案例的非受控 Azure AD 帳戶和租用戶。 在準備過程中，我們鼓勵客戶選擇使用[電子郵件一次性密碼驗證](one-time-passcode.md)。 我們歡迎您提供此公開預覽功能的意見反應，而且期待能建立更多共同作業的方式。
+   > **自 2021 年 3 月 31 日起**，Microsoft 將不再支援兌換邀請，而是建立適用於 B2B 共同作業案例的非受控 Azure AD 帳戶和租用戶。 在準備過程中，我們鼓勵客戶選擇使用[電子郵件一次性密碼驗證](one-time-passcode.md)。 我們歡迎您提供此公開預覽功能的意見反應，而且期待能建立更多共同作業的方式。
 
 - 狀態2：位於 Microsoft 或其他帳戶中，並以主機組織中的來賓使用者表示。 在此情況下，來賓使用者會使用 Microsoft 帳戶或社交帳戶 (google.com 或類似帳戶) 來登入。 受邀使用者的身分識別會在供應項目兌換期間，建立為邀請方組織目錄中的 Microsoft 帳戶。
 
@@ -43,23 +43,23 @@ ms.locfileid: "93285847"
 
 ### <a name="before-invitation-redemption"></a>邀請兌換之前
 
-狀態 1 和狀態 2 帳戶是邀請來賓使用者使用自有認證來進行共同作業的結果。 當邀請初次傳送給來賓使用者時，您的目錄中就會建立帳戶。 此帳戶沒有任何與其相關聯的認證，因為驗證會由來賓使用者的識別提供者來執行。 您目錄中來賓使用者帳戶的 **來源** 屬性會設定為 **受邀使用者** 。 
+狀態 1 和狀態 2 帳戶是邀請來賓使用者使用自有認證來進行共同作業的結果。 當邀請初次傳送給來賓使用者時，您的目錄中就會建立帳戶。 此帳戶沒有任何與其相關聯的認證，因為驗證會由來賓使用者的識別提供者來執行。 您目錄中來賓使用者帳戶的 **來源** 屬性會設定為 **受邀使用者**。 
 
 ![顯示供應專案兌換之前使用者屬性的螢幕擷取畫面](media/user-properties/before-redemption.png)
 
 ### <a name="after-invitation-redemption"></a>邀請兌換之後
 
-在來賓使用者接受邀請之後， **來源** 屬性會根據來賓使用者的識別提供者來進行更新。
+在來賓使用者接受邀請之後，**來源** 屬性會根據來賓使用者的識別提供者來進行更新。
 
-針對狀態 1 的來賓使用者， **來源** 是 **外部 Azure Active Directory** 。
+針對狀態 1 的來賓使用者，**來源** 是 **外部 Azure Active Directory**。
 
 ![兌換供應項目之後的狀態 1 來賓使用者](media/user-properties/after-redemption-state1.png)
 
-針對狀態 2 的來賓使用者， **來源** 是 **Microsoft 帳戶** 。
+針對狀態 2 的來賓使用者，**來源** 是 **Microsoft 帳戶**。
 
 ![兌換供應項目之後的狀態 2 來賓使用者](media/user-properties/after-redemption-state2.png)
 
-針對狀態 3 和狀態 4 的來賓使用者， **來源** 屬性會設定為 **Azure Active Directory** 或 **Windows Server Active Directory** ，如下一節中所述。
+針對狀態 3 和狀態 4 的來賓使用者，**來源** 屬性會設定為 **Azure Active Directory** 或 **Windows Server Active Directory**，如下一節中所述。
 
 ## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Azure AD B2B 共同作業使用者的金鑰屬性
 ### <a name="usertype"></a>UserType
@@ -106,11 +106,11 @@ ms.locfileid: "93285847"
 ![顯示 [使用者設定] 中 [外部使用者] 選項的螢幕擷取畫面](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>能否在 Exchange 全域通訊清單中顯示來賓使用者？
-是。 根據預設，來賓物件不會在貴組織的全域通訊清單中顯示，但您可以使用 Azure Active Directory PowerShell 讓其顯示。 如需詳細資訊，請參閱 [ [管理 Microsoft 365 群組中的來賓存取](/office365/admin/create-groups/manage-guest-access-in-groups)] 中 **的 [我可以在全域通訊清單中顯示來賓物件嗎？** ]。
+是。 根據預設，來賓物件不會在貴組織的全域通訊清單中顯示，但您可以使用 Azure Active Directory PowerShell 讓其顯示。 如需詳細資訊，請參閱 [[管理 Microsoft 365 群組中的來賓存取](/office365/admin/create-groups/manage-guest-access-in-groups)] 中 **的 [我可以在全域通訊清單中顯示來賓物件嗎？** ]。
 
 ## <a name="can-i-update-a-guest-users-email-address"></a>我可以更新來賓使用者的電子郵件地址嗎？
 
-如果來賓使用者接受您的邀請，且後續變更其電子郵件地址，則新的電子郵件不會自動同步至您目錄中的來賓使用者物件。 Mail 屬性是透過 [MICROSOFT GRAPH API](/graph/api/resources/user?view=graph-rest-1.0)所建立。 您可以透過 Microsoft Graph API、Exchange 系統管理中心或 [Exchange Online PowerShell](/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps)來更新 mail 屬性。 變更將會反映在 Azure AD guest 使用者物件中。
+如果來賓使用者接受您的邀請，且後續變更其電子郵件地址，則新的電子郵件不會自動同步至您目錄中的來賓使用者物件。 Mail 屬性是透過 [MICROSOFT GRAPH API](/graph/api/resources/user)所建立。 您可以透過 Microsoft Graph API、Exchange 系統管理中心或 [Exchange Online PowerShell](/powershell/module/exchange/users-and-groups/set-mailuser)來更新 mail 屬性。 變更將會反映在 Azure AD guest 使用者物件中。
 
 ## <a name="next-steps"></a>後續步驟
 

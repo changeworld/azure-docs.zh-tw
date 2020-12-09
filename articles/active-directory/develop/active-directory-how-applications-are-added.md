@@ -13,12 +13,12 @@ ms.date: 12/01/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 0e37065e6fa61f3784d1a6165bd88c515bdfc29f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1f6fd0160988802e198ff9388cfeb3232b34b100
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484102"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861114"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>將應用程式加入至 Azure AD 的方式和原因
 
@@ -104,7 +104,7 @@ ms.locfileid: "96484102"
   * 宣告轉換規則
   * 屬性對應 (使用者佈建)
 * 如需有關服務主體和應用程式物件的詳細資訊，請參閱 Microsoft Graph API 參考檔：
-  * [應用程式](/graph/api/resources/application?view=graph-rest-1.0)
+  * [應用程式](/graph/api/resources/application)
   * [Service Principal](/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>應用程式為何要與 Azure AD 整合？

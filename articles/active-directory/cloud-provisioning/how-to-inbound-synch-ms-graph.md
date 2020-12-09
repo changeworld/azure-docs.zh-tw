@@ -11,12 +11,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b797bf5c7e69990a29f0d14c31586d0e85b42426
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: f308f46fc021a1d08f4065d48558a6dd71786c7c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96737967"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860350"
 ---
 # <a name="inbound-synchronization-for-cloud-provisioning-using-ms-graph-api"></a>使用 MS 圖形 API 進行雲端布建的輸入同步處理
 
@@ -30,7 +30,7 @@ ms.locfileid: "96737967"
 - [開始同步處理作業](#start-sync-job)
 - [審核狀態](#review-status)
 
-使用這些 [適用於 Windows PowerShell 的 Microsoft Azure Active Directory 模組](https://docs.microsoft.com/powershell/module/msonline/?view=azureadps-1.0) 命令來啟用生產環境租使用者的同步處理，這是能夠呼叫該租使用者之管理 Web 服務的先決條件。
+使用這些 [適用於 Windows PowerShell 的 Microsoft Azure Active Directory 模組](https://docs.microsoft.com/powershell/module/msonline/) 命令來啟用生產環境租使用者的同步處理，這是能夠呼叫該租使用者之管理 Web 服務的先決條件。
 
 ## <a name="basic-setup"></a>基本設定
 

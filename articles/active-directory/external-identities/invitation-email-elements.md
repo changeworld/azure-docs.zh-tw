@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1e1bbdfe1cb83f9b479861840081cd0bb138957
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: bb134a2fb784e02f5e00c9e88ab0df1794489e0c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441873"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860587"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B 共同作業邀請電子郵件的元素 - Azure Active Directory
 
@@ -69,7 +69,7 @@ ms.locfileid: "92441873"
 
 ### <a name="blocking-an-organization-unsubscribing"></a>封鎖組織 (取消訂閱) 
 
-在組織的邀請中，頁尾包含 **封鎖未來邀請**的選項。 來賓使用者可以選取此連結，以封鎖任何未來來自組織的邀請。 此動作也會將組織新增至使用者的取消訂閱清單 [https://invitations.microsoft.com/unsubscribe/manage](https://invitations.microsoft.com/unsubscribe/manage) 。
+在組織的邀請中，頁尾包含 **封鎖未來邀請** 的選項。 來賓使用者可以選取此連結，以封鎖任何未來來自組織的邀請。 此動作也會將組織新增至使用者的取消訂閱清單 [https://invitations.microsoft.com/unsubscribe/manage](https://invitations.microsoft.com/unsubscribe/manage) 。
 
 ### <a name="viewing-organizations-youve-blocked"></a>查看您已封鎖的組織
 
@@ -85,10 +85,10 @@ ms.locfileid: "92441873"
 
 在邀請電子郵件中向來賓使用者顯示的語言取決於下列設定。 這些設定是依優先順序列出的。 如果未設定某個設定，就會由清單中的下一個設定決定語言。
 
-- [invitedUserMessageInfo](/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) 物件的 **messageLanguage** 屬性 (如果使用「建立邀請」API)
--   來賓[使用者物件](/graph/api/resources/user?view=graph-rest-1.0)中指定的 **preferredLanguage** 屬性
--   來賓使用者主租用戶的屬性中設定的**通知語言** (僅適用於 Azure AD 租用戶)
--   來源租用戶的屬性中設定的**通知語言**
+- [invitedUserMessageInfo](/graph/api/resources/invitedusermessageinfo) 物件的 **messageLanguage** 屬性 (如果使用「建立邀請」API)
+-   來賓 [使用者物件](/graph/api/resources/user)中指定的 **preferredLanguage** 屬性
+-   來賓使用者主租用戶的屬性中設定的 **通知語言** (僅適用於 Azure AD 租用戶)
+-   來源租用戶的屬性中設定的 **通知語言**
 
 如果未設定任何這些設定，語言就會預設為英文 (美國)。
 

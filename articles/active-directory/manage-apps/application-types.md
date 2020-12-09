@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: d83b69ea7c2a4459d30c4ceb90f62ab6a1a10cc2
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 49dd8b65db771a182138f13218adda2f0e7f7396
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648169"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858224"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>使用您的 Azure AD 租使用者來查看身分識別管理的應用程式
 [應用程式管理的快速入門系列](view-applications-portal.md)將帶領您瞭解基本概念。 在其中，您將瞭解如何使用您的 Azure AD 租使用者來查看身分識別管理的所有應用程式。 本文將更深入地探討您將找到的應用程式類型。
@@ -31,7 +31,7 @@ ms.locfileid: "94648169"
 - 當您使用[應用程式登錄](../develop/quickstart-register-app.md)建立自訂開發的應用程式來新增應用程式註冊時
 - 當您使用 [V2.0 應用程式註冊入口網站](../develop/quickstart-register-app.md)建立自訂開發的應用程式來新增應用程式註冊時
 - 當您新增應用程式時，您正在使用 Visual Studio 的 [ASP.NET Authentication 方法](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) 進行開發，或 [已連線的服務](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/)
-- 當您使用 [Azure AD PowerShell 模組](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)建立服務主體物件時
+- 當您使用 [Azure AD PowerShell 模組](/powershell/azure/active-directory/install-adv2)建立服務主體物件時
 - 當您以系統管理員身分[同意應用程式](../develop/howto-convert-app-to-be-multi-tenant.md)使用您租用戶中的資料時
 - 當[使用者同意應用程式](../develop/howto-convert-app-to-be-multi-tenant.md)使用您租用戶中的資料時
 - 當您啟用的某些服務會在您的租用戶中儲存資料時。 其中一個範例是「密碼重設」，它會模擬成服務主體，安全地儲存您的密碼重設原則。

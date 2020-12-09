@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f88091fdf1bd39961ccf7a542aab3e7d2c3646e2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: bea6f4161bcca063cd2c58d4c463473426f159ba
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96172664"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859126"
 ---
 # <a name="certificate-authorities-used-by-azure-active-directory"></a>Azure Active Directory 使用的憑證授權單位單位
 
@@ -98,4 +98,4 @@ ms.locfileid: "96172664"
 | DigiCert Basic RSA CN CA G2| 02f7e1f982bad 009aff47dc95741b2f6| 2020年3月4日<br>2030年3月4日| 4d1fa5d1fb1ac3917c08e 43f65015e6aea571179| [友邦 保險](http://cacerts.digicert.cn/DigiCertBasicRSACNCAG2.crt)<br>[Cdp](http://crl.digicert.cn/DigiCertBasicRSACNCAG2.crl)<br>[OCSP](http://ocsp.digicert.cn/) |
 
 ## <a name="next-steps"></a>後續步驟
-[瞭解 Microsoft 365 加密鏈](/microsoft-365/compliance/encryption-office-365-certificate-chains?view=o365-worldwide)
+[瞭解 Microsoft 365 加密鏈](/microsoft-365/compliance/encryption-office-365-certificate-chains)

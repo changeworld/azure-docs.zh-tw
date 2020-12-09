@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2999fb8b3c3687c68e7eb38a60f128e24028871f
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: fed7123d916c1dc0facab3bd22e6b3f03d39684f
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779697"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858955"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能？
 
@@ -279,7 +279,7 @@ Azure Active Directory 將在2021年3月31日取代下列通訊協定：
 
 受影響的環境包括：
 - Azure US Gov
-- [Office 365 GCC High & DoD](/microsoft-365/compliance/tls-1-2-in-office-365-gcc?view=o365-worldwide)
+- [Office 365 GCC High & DoD](/microsoft-365/compliance/tls-1-2-in-office-365-gcc)
  
 ---
 
@@ -354,7 +354,7 @@ Azure Active Directory 將在2021年3月31日取代下列通訊協定：
 
 您現在可以在 Azure 入口網站中查看每個 Azure AD 角色的範本識別碼。 在 Azure AD 中，選取所選角色的  **描述** 。 
 
-建議客戶在其 PowerShell 腳本和程式碼（而不是顯示名稱）中使用角色範本識別碼。 角色範本識別碼可支援用來 [directoryRoles](/graph/api/resources/directoryrole?view=graph-rest-1.0) 和 [roleDefinition](/graph/api/resources/unifiedroledefinition?view=graph-rest-beta) 物件。 如需角色範本識別碼的詳細資訊，請參閱 [角色範本識別碼](../roles/permissions-reference.md#role-template-ids)。
+建議客戶在其 PowerShell 腳本和程式碼（而不是顯示名稱）中使用角色範本識別碼。 角色範本識別碼可支援用來 [directoryRoles](/graph/api/resources/directoryrole) 和 [roleDefinition](/graph/api/resources/unifiedroledefinition?view=graph-rest-beta) 物件。 如需角色範本識別碼的詳細資訊，請參閱 [角色範本識別碼](../roles/permissions-reference.md#role-template-ids)。
 
 ---
 
@@ -678,7 +678,7 @@ Azure AD 權利管理中新增了新的「存取套件指派管理員」角色�
 **類型：** 方案變更  
 **服務類別：** 身分識別保護 **產品功能：** 身分識別安全性 & 保護
 
-我們正在更新身分識別安全分數入口網站，以配合 Microsoft 安全分數 [新版本](/microsoft-365/security/mtp/microsoft-secure-score-whats-new?view=o365-worldwide)所引進的變更。 
+我們正在更新身分識別安全分數入口網站，以配合 Microsoft 安全分數 [新版本](/microsoft-365/security/mtp/microsoft-secure-score-whats-new)所引進的變更。 
 
 包含變更的預覽版本將于9月開始提供。 預覽版本中的變更包括：
 - 「身分識別安全分數」已重新命名為「身分識別的安全分數」，與 Microsoft 安全分數的品牌一致
@@ -1057,7 +1057,7 @@ Azure AD 條件式存取原則中的使用者風險支援，可讓您建立多�
 **產品功能：** B2B/B2C
  
 
-ExternalUserState 和 externalUserStateChangedDateTime 屬性可用來尋找尚未接受其邀請的受邀 B2B 來賓，以及建立自動化，例如在幾天後刪除尚未接受邀請的使用者。 這些屬性現在可在 MS Graph v1 中使用。 如需使用這些屬性的指引，請參閱 [使用者資源類型](/graph/api/resources/user?view=graph-rest-1.0)。
+ExternalUserState 和 externalUserStateChangedDateTime 屬性可用來尋找尚未接受其邀請的受邀 B2B 來賓，以及建立自動化，例如在幾天後刪除尚未接受邀請的使用者。 這些屬性現在可在 MS Graph v1 中使用。 如需使用這些屬性的指引，請參閱 [使用者資源類型](/graph/api/resources/user)。
  
 ---
 
@@ -1131,7 +1131,7 @@ Azure AD 布建服務目前以迴圈的方式運作。 服務每隔40分鐘執�
 **服務類別：** 身分識別保護  
 **產品功能：** 身分識別安全性 & 保護
  
-RiskyUsers 和 riskDetections Microsoft Graph Api 現已正式推出。 現在已可在 v1.0 端點上使用它們，我們邀請您在生產環境中使用它們。 如需詳細資訊，請參閱 [Microsoft Graph](/graph/api/resources/identityprotectionroot?view=graph-rest-1.0)檔。
+RiskyUsers 和 riskDetections Microsoft Graph Api 現已正式推出。 現在已可在 v1.0 端點上使用它們，我們邀請您在生產環境中使用它們。 如需詳細資訊，請參閱 [Microsoft Graph](/graph/api/resources/identityprotectionroot)檔。
  
 ---
 

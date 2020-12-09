@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e46dabc665d383279a12fc6bd8eb67475d88a2ea
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 82f0408b7e46493f6c3ec62d48a992e87f196f78
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896067"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860604"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>將自訂核准工作流程新增至自助式註冊
 
@@ -33,8 +33,8 @@ ms.locfileid: "92896067"
 
 1. 以 Azure AD 系統管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
 2. 在 [Azure 服務] 底下，選取 [Azure Active Directory]。
-3. 在左側功能表中，選取 [ **應用程式註冊** ]，然後選取 [ **新增註冊** ]。
-4. 輸入應用程式的 **名稱** ，例如 _註冊核准_ 。
+3. 在左側功能表中，選取 [ **應用程式註冊**]，然後選取 [ **新增註冊**]。
+4. 輸入應用程式的 **名稱** ，例如 _註冊核准_。
 
    <!-- ![Register an application for the approval system](./self-service-sign-up-add-approvals/approvals/register-an-approvals-application.png) -->
 
@@ -42,15 +42,15 @@ ms.locfileid: "92896067"
 
    ![醒目顯示 [註冊] 按鈕的螢幕擷取畫面。](media/self-service-sign-up-add-approvals/register-approvals-app.png)
 
-6. 在左側功能表的 [ **管理** ] 底下，選取 [ **API 許可權** ]，然後選取 [ **新增許可權** ]。
-7. 在 [ **要求 API 許可權** ] 頁面上，選取 [ **Microsoft Graph** ]，然後選取 [ **應用程式許可權** ]。
-8. 在 [ **選取許可權** ] 下，展開 [ **使用者** ]，然後選取 [使用者]。 [ **全部** ] 核取方塊。 此許可權可讓核准系統在核准時建立使用者。 然後選取 [新增權限]。
+6. 在左側功能表的 [ **管理** ] 底下，選取 [ **API 許可權**]，然後選取 [ **新增許可權**]。
+7. 在 [ **要求 API 許可權** ] 頁面上，選取 [ **Microsoft Graph**]，然後選取 [ **應用程式許可權**]。
+8. 在 [ **選取許可權**] 下，展開 [ **使用者**]，然後選取 [使用者]。 [ **全部** ] 核取方塊。 此許可權可讓核准系統在核准時建立使用者。 然後選取 [新增權限]。
 
    ![註冊應用程式的頁面](media/self-service-sign-up-add-approvals/request-api-permissions.png)
 
-9. 在 [ **API 許可權** ] 頁面上，選取 **[授與系統管理員同意，以 (您的租使用者名稱)** ]，然後選取 **[是]** 。
-10. 在左側功能表中的 [ **管理** ] 底下，選取 [ **憑證 & 秘密** ]，然後選取 [ **新增用戶端密碼** ]。
-11. 輸入秘密的 **描述** ，例如 _核准用戶端密碼_ ，然後選取用戶端密碼 **到期** 的持續時間。 然後選取 [新增]。
+9. 在 [ **API 許可權** ] 頁面上，選取 **[授與系統管理員同意，以 (您的租使用者名稱)**]，然後選取 **[是]**。
+10. 在左側功能表中的 [ **管理** ] 底下，選取 [ **憑證 & 秘密**]，然後選取 [ **新增用戶端密碼**]。
+11. 輸入秘密的 **描述** ，例如 _核准用戶端密碼_，然後選取用戶端密碼 **到期** 的持續時間。 然後選取 [新增]  。
 12. 複製用戶端密碼的值。
 
     ![複製用戶端密碼以用於核准系統](media/self-service-sign-up-add-approvals/client-secret-value-copy.png)
@@ -61,7 +61,7 @@ ms.locfileid: "92896067"
 
 接下來，您將建立自助註冊使用者流程 [的 API 連接器](self-service-sign-up-add-api-connector.md#create-an-api-connector) 。 您的核准系統 API 需要兩個連接器和對應的端點，如下列範例所示。 這些 API 連接器會執行下列動作：
 
-- **檢查核准狀態** 。 在使用者登入身分識別提供者之後，立即傳送對核准系統的呼叫，以檢查使用者是否有現有的核准要求或已遭到拒絕。 如果您的核准系統只執行自動核准決策，則可能不需要此 API 連接器。 「檢查核准狀態」 API 連接器範例。
+- **檢查核准狀態**。 在使用者登入身分識別提供者之後，立即傳送對核准系統的呼叫，以檢查使用者是否有現有的核准要求或已遭到拒絕。 如果您的核准系統只執行自動核准決策，則可能不需要此 API 連接器。 「檢查核准狀態」 API 連接器範例。
 
   ![檢查核准狀態 API 連接器設定](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
 
@@ -78,11 +78,11 @@ ms.locfileid: "92896067"
 1. 以 Azure AD 系統管理員身分登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 在 [Azure 服務] 底下，選取 [Azure Active Directory]。
 3. 在左側功能表中，選取 [外部身分識別]。
-4. 選取 [ **使用者流程 (預覽])** ，然後選取您想要啟用 API 連接器的使用者流程。
-5. 選取 [ **api 連接器** ]，然後選取您想要在使用者流程的下列步驟中叫用的 api 端點：
+4. 選取 [ **使用者流程 (預覽])**，然後選取您想要啟用 API 連接器的使用者流程。
+5. 選取 [ **api 連接器**]，然後選取您想要在使用者流程的下列步驟中叫用的 api 端點：
 
-   - **使用身分識別提供者登入之後** ：選取您的核准狀態 API 連接器，例如 _檢查核准狀態_ 。
-   - **建立使用者之前** ：請選取您的核准要求 API 連接器，例如 _要求核准_ 。
+   - **使用身分識別提供者登入之後**：選取您的核准狀態 API 連接器，例如 _檢查核准狀態_。
+   - **建立使用者之前**：請選取您的核准要求 API 連接器，例如 _要求核准_。
 
    ![將 Api 新增至使用者流程](./media/self-service-sign-up-add-approvals/api-connectors-user-flow-api.png)
 
@@ -207,7 +207,7 @@ Content-type: application/json
 
 **要求核准** API 端點應該會在下列情況傳回接續回應：
 
-- 使用者可以 **_自動核准_** 。
+- 使用者可以 **_自動核准_**。
 
 接續回應的範例：
 
@@ -270,7 +270,7 @@ Content-type: application/json
 > [!IMPORTANT]
 > 核准系統應該明確檢查 `identities` ， `identities[0]` 而且 `identities[0].issuer` 存在且 `identities[0].issuer` 等於 ' facebook ' 或 ' google '，才能使用此方法。
 
-如果您的使用者已使用 Google 或 Facebook 帳戶登入，您可以使用 [使用者建立 API](/graph/api/user-post-users?tabs=http&view=graph-rest-1.0)。
+如果您的使用者已使用 Google 或 Facebook 帳戶登入，您可以使用 [使用者建立 API](/graph/api/user-post-users?tabs=http)。
 
 1. 核准系統使用會接收來自使用者流程的 HTTP 要求。
 
@@ -330,7 +330,7 @@ Content-type: application/json
 
 ### <a name="for-a-federated-azure-active-directory-user"></a>同盟 Azure Active Directory 使用者
 
-如果使用者以同盟 Azure Active Directory 帳戶登入，您必須使用 [邀請 api](/graph/api/invitation-post?view=graph-rest-1.0) 來建立使用者，然後選擇性地使用 [使用者更新 api](/graph/api/user-update?view=graph-rest-1.0) ，將更多屬性指派給使用者。
+如果使用者以同盟 Azure Active Directory 帳戶登入，您必須使用 [邀請 api](/graph/api/invitation-post) 來建立使用者，然後選擇性地使用 [使用者更新 api](/graph/api/user-update) ，將更多屬性指派給使用者。
 
 1. 核准系統會從使用者流程接收 HTTP 要求。
 

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4750de0b9b0d44dbe30571e308227d2123b5e447
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 4cd6aa8c1936d9f07421f6508755a5b6d4852813
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602082"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859176"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 新增功能的封存檔
 
@@ -424,7 +424,7 @@ Office 正在啟動一系列行動優先的商務應用程式，這些應用程�
 
 **產品功能：** 開發人員體驗
 
-組織連絡人的 Delta 查詢已正式推出！ 您現在可以在生產應用程式中追蹤變更，而不需要持續輪詢 Microsoft Graph。 取代任何現有的程式碼，以依差異查詢持續輪詢 orgContact 資料，以大幅提升效能。 [深入了解。](/graph/api/orgcontact-delta?tabs=http&view=graph-rest-1.0)
+組織連絡人的 Delta 查詢已正式推出！ 您現在可以在生產應用程式中追蹤變更，而不需要持續輪詢 Microsoft Graph。 取代任何現有的程式碼，以依差異查詢持續輪詢 orgContact 資料，以大幅提升效能。 [深入了解。](/graph/api/orgcontact-delta?tabs=http)
 
 ---
 
@@ -436,7 +436,7 @@ Office 正在啟動一系列行動優先的商務應用程式，這些應用程�
 
 **產品功能：** 開發人員體驗
 
-應用程式的 Delta 查詢已正式推出！ 您現在可以在生產應用程式中追蹤變更，而不需要持續輪詢 Microsoft Graph。 取代任何現有的程式碼，以依差異查詢持續輪詢應用程式資料，以大幅提升效能。 [深入了解。](/graph/api/application-delta?view=graph-rest-1.0)
+應用程式的 Delta 查詢已正式推出！ 您現在可以在生產應用程式中追蹤變更，而不需要持續輪詢 Microsoft Graph。 取代任何現有的程式碼，以依差異查詢持續輪詢應用程式資料，以大幅提升效能。 [深入了解。](/graph/api/application-delta)
 
 ---
 
@@ -654,7 +654,7 @@ Azure Active Directory (Azure AD) 現在提供驗證動態群組規則的方法�
 - 確定所有使用者都可以完成安全存取的多重要素驗證
 - 系統管理角色需要 MFA
 
-這些新的改進動作需要為您的使用者或系統管理員註冊多因素驗證 (MFA) 在您的目錄中，並建立符合您組織需求的正確原則組。 主要的目標是要有彈性，同時確保所有的使用者和系統管理員都可以使用多個因素或以風險為基礎的身分識別驗證提示進行驗證。 這樣做的形式可能會有多個原則套用範圍決策，或設定安全性預設值 (從3月) 16 日開始，讓 Microsoft 決定何時要挑戰使用者進行 MFA。 [深入瞭解 Microsoft 安全分數的新功能](/microsoft-365/security/mtp/microsoft-secure-score?view=o365-worldwide#whats-new)。
+這些新的改進動作需要為您的使用者或系統管理員註冊多因素驗證 (MFA) 在您的目錄中，並建立符合您組織需求的正確原則組。 主要的目標是要有彈性，同時確保所有的使用者和系統管理員都可以使用多個因素或以風險為基礎的身分識別驗證提示進行驗證。 這樣做的形式可能會有多個原則套用範圍決策，或設定安全性預設值 (從3月) 16 日開始，讓 Microsoft 決定何時要挑戰使用者進行 MFA。 [深入瞭解 Microsoft 安全分數的新功能](/microsoft-365/security/mtp/microsoft-secure-score#whats-new)。
 
 ---
 
@@ -844,7 +844,7 @@ Azure AD 布建服務提供一組豐富的設定功能。 客戶必須能夠儲�
 - 確定所有使用者都可以完成 MFA 以進行安全存取
 - 系統管理角色需要 MFA
 
-這些新的改進動作將需要註冊您的使用者或系統管理員，以在您的目錄中進行 MFA，並建立符合您組織需求的正確原則組。 主要的目標是要有彈性，同時確保所有的使用者和系統管理員都可以使用多個因素或以風險為基礎的身分識別驗證提示進行驗證。 這可能會採用設定安全性預設值的形式，讓 Microsoft 決定何時要挑戰使用者進行 MFA，或有多個原則套用限域決策。 在這些改進動作的更新中，基準保護原則將不會再包含在評分計算中。 [深入瞭解 Microsoft 安全分數即將推出的內容](/microsoft-365/security/mtp/microsoft-secure-score-whats-coming?view=o365-worldwide)。
+這些新的改進動作將需要註冊您的使用者或系統管理員，以在您的目錄中進行 MFA，並建立符合您組織需求的正確原則組。 主要的目標是要有彈性，同時確保所有的使用者和系統管理員都可以使用多個因素或以風險為基礎的身分識別驗證提示進行驗證。 這可能會採用設定安全性預設值的形式，讓 Microsoft 決定何時要挑戰使用者進行 MFA，或有多個原則套用限域決策。 在這些改進動作的更新中，基準保護原則將不會再包含在評分計算中。 [深入瞭解 Microsoft 安全分數即將推出的內容](/microsoft-365/security/mtp/microsoft-secure-score-whats-coming)。
 
 ---
 
@@ -2164,7 +2164,7 @@ Azure AD 的應用程式現在可以註冊並使用含有靜態查詢參數的�
 
 我們很高興宣布，Microsoft Graph API 端點正式支援 Azure AD 活動記錄。 隨著這次發行，您現在可以使用 1.0 版的 Azure AD 稽核記錄和登入記錄 API。
 
-如需詳細資訊，請參閱 [Azure AD 稽核記錄 API 概觀](/graph/api/resources/azure-ad-auditlog-overview?view=graph-rest-1.0)。
+如需詳細資訊，請參閱 [Azure AD 稽核記錄 API 概觀](/graph/api/resources/azure-ad-auditlog-overview)。
 
 ---
 
@@ -3783,7 +3783,7 @@ Azure AD 使用規定已從公用預覽變成正式推出。
 
 PowerShell GA 模組現在支援應用程式 Proxy Cmdlet！ 這需要您隨時更新 PowerShell 模組，如果您超過一年未更新，某些 Cmdlet 可能會停止運作。
 
-如需詳細資訊，請參閱 [AzureAD](/powershell/module/Azuread/?view=azureadps-2.0)。
+如需詳細資訊，請參閱 [AzureAD](/powershell/module/Azuread/)。
 
 ---
 
