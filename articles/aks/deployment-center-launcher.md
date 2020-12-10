@@ -5,12 +5,12 @@ ms.author: puagarw
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
-ms.openlocfilehash: 36b2e829e56cf4d3b5ace64af989fa7f71725c44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15b0413eabcfae7e3a4b28243caf2a708260ccae
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360832"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932212"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>適用於 Azure Kubernetes 的部署中心
 
@@ -56,7 +56,7 @@ Azure DevOps 中的部署中心可簡化對您應用程式設定健全 Azure Dev
 
    ![此螢幕擷取畫面顯示 Azure 入口網站，其中有一個箭號指向部署中心。](media/deployment-center-launcher/settings.png)
 
-1. 選擇程式碼的位置，然後選取 [下一步]  。 然後，選取其中一個目前支援的存放庫： **[Azure Repos](/azure/devops/repos/index?view=azure-devops)** 或 **GitHub**。
+1. 選擇程式碼的位置，然後選取 [下一步]  。 然後，選取其中一個目前支援的存放庫： **[Azure Repos](/azure/devops/repos/index)** 或 **GitHub**。
 
     Azure Repos 是一組版本控制工具，可協助您管理程式碼。 無論您的軟體專案大小為何，盡早使用版本控制都是個不錯的主意。
 
@@ -77,7 +77,7 @@ Azure DevOps 中的部署中心可簡化對您應用程式設定健全 Azure Dev
 
     ![此螢幕擷取畫面顯示部署中心，其中有一則訊息指出「在存放庫中找不到 Dockerfile」。](media/deployment-center-launcher/dockerfile.png)
 
-1. 選取現有的容器登錄或建立一個容器登錄，然後選取 [完成]  。 管線會自動建立，並將建置排入 [Azure Pipelines](/azure/devops/pipelines/index?view=azure-devops) 的佇列中。
+1. 選取現有的容器登錄或建立一個容器登錄，然後選取 [完成]  。 管線會自動建立，並將建置排入 [Azure Pipelines](/azure/devops/pipelines/index) 的佇列中。
 
     Azure Pipelines 是一種雲端服務，可讓您用來自動建置和測試程式碼專案，並將其提供給其他使用者使用。 Azure Pipelines 結合了持續整合與持續傳遞，可持續且一致地測試及建置程式碼，並將其傳送至任何目標。
 

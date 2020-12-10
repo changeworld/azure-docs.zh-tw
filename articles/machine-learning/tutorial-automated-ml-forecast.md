@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
 ms.custom: automl
-ms.openlocfilehash: 5577a0d9270f3e4566bf57876b8abc3d1a3ae4be
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 8b354abb98c56a572badf2421b0d7dbbd25f7a63
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356496"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921861"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>教學課程：使用自動化機器學習來預測需求
 
@@ -70,7 +70,7 @@ ms.locfileid: "93356496"
     
     1. 選擇本機電腦上的 **bike-no.csv** 檔案。 這是您作為[必要條件](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv)下載的檔案。
 
-    1. 選取 [ **下一步** ]
+    1. 選取 [**下一步**]
 
        上傳完成時，系統會根據檔案類型，預先填入 [設定與預覽] 表單。 
        
@@ -126,7 +126,7 @@ ms.locfileid: "93356496"
 
         1. 建立完成後，請從下拉式清單選取新的計算目標。
 
-    1. 選取 [下一步]  。
+    1. 選取 [下一步] 。
 
 ## <a name="select-forecast-settings"></a>選取預測設定
 
@@ -145,7 +145,7 @@ ms.locfileid: "93356496"
     主要計量| 用於測量機器學習演算法的評估計量。|標準化均方根誤差
     解釋最佳模型| 自動在自動化 ML 所建立的最佳模型上顯示可解釋性。| 啟用
     封鎖的演算法 | 您要從定型作業中排除的演算法| 極端隨機樹狀結構
-    其他預測設定| 這些設定有助於改善模型的正確性 <br><br> **預測目標延隔：** 您想要將目標變數的延隔往回建構多久 <br> **目標滾動時間範圍** ：指定將會產生特徵 (例如「最大值」、「最小值」和「總和」) 的滾動時間範圍大小。 | <br><br>預測&nbsp;目標&nbsp;延隔：None <br> 目標&nbsp;滾動&nbsp;時間範圍&nbsp;大小：None
+    其他預測設定| 這些設定有助於改善模型的正確性 <br><br> **預測目標延隔：** 您想要將目標變數的延隔往回建構多久 <br> **目標滾動時間範圍**：指定將會產生特徵 (例如「最大值」、「最小值」和「總和」) 的滾動時間範圍大小。 | <br><br>預測&nbsp;目標&nbsp;延隔：None <br> 目標&nbsp;滾動&nbsp;時間範圍&nbsp;大小：None
     結束準則| 如果符合條件，訓練作業就會停止。 |定型作業時間 (小時)：&nbsp;&nbsp;3 <br> 計量分數閾值：&nbsp;&nbsp;None
     驗證 | 選擇交叉驗證類型與測試次數。|驗證類型：<br>K 折交叉驗證&nbsp;&nbsp; <br> <br> 驗證次數：5
     並行| 每個反覆運算已執行的平行反覆運算數目上限| 並行反覆運算上限：&nbsp;&nbsp;6
@@ -158,7 +158,7 @@ ms.locfileid: "93356496"
 
 >[!IMPORTANT]
 > 準備實驗執行需要 **10-15 分鐘** 的時間。
-> 執行之後， **每個反覆項目需要 2-3 分鐘以上的時間** 。  <br> <br>
+> 執行之後，**每個反覆項目需要 2-3 分鐘以上的時間**。  <br> <br>
 > 在生產環境中，此程序需要進行一段時間，因此您可以先離開一會。 在等待時，建議您開始探索 [模型] 索引標籤上已完成測試的演算法。 
 
 ##  <a name="explore-models"></a>探索模型
@@ -235,7 +235,7 @@ Azure Machine Learning Studio 中的自動化機器學習可讓您透過幾個�
 > [取用 Web 服務](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + 深入了解[自動化機器學習](concept-automated-ml.md)。
-+ 如需分類計量與圖表的詳細資訊，請參閱[了解自動化機器學習結果](how-to-understand-automated-ml.md#classification)一文。
++ 如需分類計量與圖表的詳細資訊，請參閱[了解自動化機器學習結果](how-to-understand-automated-ml.md)一文。
 + 深入了解[特徵化](how-to-configure-auto-features.md#featurization)。
 + 深入了解[資料分析](how-to-connect-data-ui.md#profile)。
 

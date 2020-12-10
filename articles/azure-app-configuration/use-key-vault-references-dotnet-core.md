@@ -3,8 +3,7 @@ title: 在 ASP.NET Core 應用程式中使用 Azure 應用程式組態 Key Vault
 description: 在此教學課程中，您將了解如何從 ASP.NET Core 應用程式中使用 Azure 應用程式組態的 Key Vault 參考
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,14 +11,14 @@ ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 04/08/2020
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: ff11546225a3b07cbe9f8773dab2139636af787e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 94bab9506d2bf7c29f997bcbfd400a412d5ac041
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124793"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932229"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>教學課程：在 ASP.NET Core 應用程式中使用 Key Vault 參考
 

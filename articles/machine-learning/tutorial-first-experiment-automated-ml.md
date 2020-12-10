@@ -11,12 +11,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.custom: automl
-ms.openlocfilehash: 866be6a2449f3b10d200968782b90653e1363906
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 4b2769139e74289c4760b5c398c80380afea351f
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359794"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921891"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>教學課程：在 Azure Machine Learning 中使用自動化 ML 建立分類模型
 
@@ -50,7 +50,7 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT] 
-> 記下您的 **工作區** 和 **訂用帳戶** 。 您會需要這些項目，以確保您在正確位置建立實驗。 
+> 記下您的 **工作區** 和 **訂用帳戶**。 您會需要這些項目，以確保您在正確位置建立實驗。 
 
 ## <a name="get-started-in-azure-machine-learning-studio"></a>在 Azure Machine Learning Studio 中開始使用
 
@@ -76,7 +76,7 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 
 1. 透過從 [+建立資料集] 下拉式清單選取 [從本機檔案]，以建立新的資料集。 
 
-    1. 在 [基本資訊] 表單上，為資料集提供名稱，並提供選擇性描述。 自動化 ML 介面目前僅支援表格式資料集，因此資料集類型應預設為 *表格式* 。
+    1. 在 [基本資訊] 表單上，為資料集提供名稱，並提供選擇性描述。 自動化 ML 介面目前僅支援表格式資料集，因此資料集類型應預設為 *表格式*。
 
     1. 選取左下方的 [下一步]。
 
@@ -112,7 +112,7 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
     
     1. 當您的資料集出現在清單中時，請加以選取。
     
-    1. 檢閱 [資料預覽] 以確保您未包含 **day_of_week** ，然後選取 [確定]。
+    1. 檢閱 [資料預覽] 以確保您未包含 **day_of_week**，然後選取 [確定]。
 
     1. 選取 [下一步]。
 
@@ -158,13 +158,13 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
         驗證 | 選擇交叉驗證類型與測試次數。|驗證類型：<br>K 折交叉驗證&nbsp;&nbsp; <br> <br> 驗證次數：2
         並行| 每個反覆運算已執行的平行反覆運算數目上限| 並行反覆運算上限：&nbsp;&nbsp;5
         
-        選取 [儲存]  。
+        選取 [儲存]。
 
 1. 選取 [完成] 以執行實驗。 當實驗準備開始時，[回合詳細資料] 畫面隨即開啟，其頂端顯示 [執行狀態]。
 
 >[!IMPORTANT]
 > 準備實驗執行需要 **10-15 分鐘** 的時間。
-> 執行之後， **每個反覆項目需要 2-3 分鐘以上的時間** 。  
+> 執行之後，**每個反覆項目需要 2-3 分鐘以上的時間**。  
 > 定期選取 [重新整理] 以查看實驗進行時的執行狀態。
 >
 > 在生產環境中，您可以先離開一下。 但是在此教學課程中，在其他項目仍在執行時，我們建議您開始探索 [模型] 索引標籤上完成的已測試演算法。 
@@ -187,7 +187,7 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 
 查看您的實驗執行是否已完成。 若要這麼做，請選取畫面頂端的 [執行 1]，瀏覽回到父執行頁面。 [完成] 狀態會顯示在畫面的左上方。 
 
-一旦實驗執行完成後，[詳細資料] 頁面就會填入 [最佳模型摘要] 區段。 在此實驗內容中，根據 **AUC_weighted** 計量， **VotingEnsemble** 會被視為最佳模型。  
+一旦實驗執行完成後，[詳細資料] 頁面就會填入 [最佳模型摘要] 區段。 在此實驗內容中，根據 **AUC_weighted** 計量，**VotingEnsemble** 會被視為最佳模型。  
 
 我們會部署此模型，但提醒您部署大約需要 20 分鐘的時間才能完成。 部署程序需要幾個步驟，包括註冊模型、產生資源，以及為 Web 服務設定這些資源。
 
@@ -241,7 +241,7 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 > [取用 Web 服務](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + 深入了解[自動化機器學習](concept-automated-ml.md)。
-+ 如需分類計量與圖表的詳細資訊，請參閱[了解自動化機器學習結果](how-to-understand-automated-ml.md#classification)一文。
++ 如需分類計量與圖表的詳細資訊，請參閱[了解自動化機器學習結果](how-to-understand-automated-ml.md)一文。
 + 深入了解[特徵化](how-to-configure-auto-features.md#featurization)。
 + 深入了解[資料分析](how-to-connect-data-ui.md#profile)。
 

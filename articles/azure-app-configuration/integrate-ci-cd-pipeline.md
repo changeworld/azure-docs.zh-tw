@@ -2,18 +2,18 @@
 title: 使用持續整合和傳遞管線來整合 Azure 應用程式組態
 description: 了解如何使用 Azure 應用程式組態來實作持續整合和傳遞
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.date: 01/30/2020
-ms.author: lcozzens
-ms.openlocfilehash: b8756db881448edcaac1fda44b60229975350676
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 04/19/2020
+ms.author: alkemper
+ms.openlocfilehash: d076bdf09626ec9ed08fcf43b95fc63d2f4a7dd7
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074731"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928444"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>與 CI/CD 管線整合
 

@@ -2,19 +2,19 @@
 title: .NET Framework 教學課程：Azure 應用程式組態中的動態設定
 description: 在本教學課程，您將了解如何使用 Azure 應用程式組態，以動態方式更新 .NET Framework 應用程式的組態資料。
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.custom: devx-track-csharp
 ms.topic: tutorial
-ms.date: 10/21/2019
-ms.author: lcozzens
-ms.openlocfilehash: b90334d4978c485033323b398e1409fa5731e813
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 07/24/2020
+ms.author: alkemper
+ms.openlocfilehash: 03940a86176d0bc93c5066977fdc87de5c456060
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767584"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932756"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>教學課程：在 .NET Framework 應用程式中使用動態組態
 

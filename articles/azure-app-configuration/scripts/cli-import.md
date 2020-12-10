@@ -3,19 +3,19 @@ title: Azure CLI 指令碼範例 - 匯入至應用程式組態存放區
 titleSuffix: Azure App Configuration
 description: 使用 Azure CLI 指令碼 - 將組態匯入至 Azure 應用程式組態
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/19/2020
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b7a42e3592eee0bc6f905a83e9b1845746dbfd91
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 2a8bd22629bf0aa269125187a77710f6dc9fd93e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566858"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931300"
 ---
 # <a name="import-to-an-azure-app-configuration-store"></a>匯入到 Azure 應用程式設定存放區
 
