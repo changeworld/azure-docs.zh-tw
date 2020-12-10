@@ -12,19 +12,19 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f10e2b0aa5c7e178ae6b58805703fcb1b0ff3e2b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 8b0955e67c5a35cbea96490a0395522fa145dad1
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352485"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858360"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>適用於Azure AD 應用程式 Proxy 的 Azure AD PowerShell 範例
 
-下表包含適用於 Azure AD 應用程式 Proxy 的 PowerShell 指令碼範例的連結。 這些範例需要 [AzureAD V2 PowerShell for Graph 模組](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)或 [AzureAD V2 PowerShell for Graph 模組預覽版](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)，除非另有註明。
+下表包含適用於 Azure AD 應用程式 Proxy 的 PowerShell 指令碼範例的連結。 這些範例需要 [AzureAD V2 PowerShell for Graph 模組](/powershell/azure/active-directory/install-adv2)或 [AzureAD V2 PowerShell for Graph 模組預覽版](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)，除非另有註明。
 
 
-若要進一步了解這些範例中使用 Cmdlet，請參閱[應用程式 Proxy 應用程式管理](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management)和[應用程式 Proxy 連接器管理](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management)。
+若要進一步了解這些範例中使用 Cmdlet，請參閱[應用程式 Proxy 應用程式管理](/powershell/module/azuread/#application_proxy_application_management)和[應用程式 Proxy 連接器管理](/powershell/module/azuread/#application_proxy_connector_management)。
 
 | 連結 | 描述 |
 |---|---|

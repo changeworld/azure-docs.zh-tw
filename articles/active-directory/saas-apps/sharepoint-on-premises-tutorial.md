@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 1a52fc28d99e0f072323e5042257baec9bf98ecb
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a693b22c609829f3bf6e76637eac5793d73703e6
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518377"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862304"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-sharepoint-on-premises"></a>教學課程：Azure Active Directory 單一登入與 SharePoint 內部部署整合
 
@@ -52,7 +52,7 @@ ms.locfileid: "92518377"
 
 1. 若要新增應用程式，請選取對話方塊頂端的 [新增應用程式]。
 
-1. 在搜尋方塊中，輸入 **SharePoint 內部部署** 。 從結果窗格中選取 [SharePoint 內部部署]。
+1. 在搜尋方塊中，輸入 **SharePoint 內部部署**。 從結果窗格中選取 [SharePoint 內部部署]。
 
     <kbd>![結果清單中的 SharePoint 內部部署](./media/sharepoint-on-premises-tutorial/search-new-app.png)</kbd>
 
@@ -113,13 +113,13 @@ ms.locfileid: "92518377"
     
     - **登入 URL**
     
-        複製登入 URL，並將結尾的 **/saml2** 取代為 **/wsfed** ，使其看起來像 https://login.microsoftonline.com/2c4f1a9f-be5f-10ee-327d-a95dac567e4f/wsfed 。 (此 URL 不正確。)
+        複製登入 URL，並將結尾的 **/saml2** 取代為 **/wsfed**，使其看起來像 https://login.microsoftonline.com/2c4f1a9f-be5f-10ee-327d-a95dac567e4f/wsfed 。 (此 URL 不正確。)
 
     - **Azure AD 識別碼**
     - **登出 URL**
 
     > [!NOTE]
-    > 此 URL 無法在 SharePoint 中按現狀使用。 您必須以 **/wsfed** 取代 **/saml2** 。 SharePoint 內部部署應用程式使用 SAML 1.1 權杖，因此 Azure AD 會預期有來自 SharePoint 伺服器的 WS Fed 要求。 驗證之後，其會發出 SAML 1.1 權杖。
+    > 此 URL 無法在 SharePoint 中按現狀使用。 您必須以 **/wsfed** 取代 **/saml2**。 SharePoint 內部部署應用程式使用 SAML 1.1 權杖，因此 Azure AD 會預期有來自 SharePoint 伺服器的 WS Fed 要求。 驗證之後，其會發出 SAML 1.1 權杖。
 
 ### <a name="configure-sharepoint-on-premises"></a>設定 SharePoint 內部部署
 
@@ -133,7 +133,7 @@ ms.locfileid: "92518377"
     執行下列命令來設定新的受信任識別提供者。
 
     > [!TIP]
-    > 如果您不熟悉 PowerShell 的使用方式，或想要深入了解 PowerShell 的運作方式，請參閱 [SharePoint PowerShell](/powershell/sharepoint/overview?view=sharepoint-ps)。
+    > 如果您不熟悉 PowerShell 的使用方式，或想要深入了解 PowerShell 的運作方式，請參閱 [SharePoint PowerShell](/powershell/sharepoint/overview)。
 
 
     ```
@@ -168,7 +168,7 @@ ms.locfileid: "92518377"
 
 1. 選取 [建立使用者]，然後在使用者屬性中，執行下列步驟。 您可能可以使用您的租用戶尾碼或任何已驗證的網域，在 Azure AD 中建立使用者。 
 
-    1. 在 [名稱] 方塊中，輸入使用者名稱。 我們使用了 **TestUser** 。
+    1. 在 [名稱] 方塊中，輸入使用者名稱。 我們使用了 **TestUser**。
   
     1. 在 [使用者名稱] 方塊中，輸入 `TestUser@yourcompanydomain.extension`。 此範例顯示 `TestUser@contoso.com`。
 
@@ -240,7 +240,7 @@ ms.locfileid: "92518377"
 
 1. 在 [必要宣告] 區域中，選取 [唯一的使用者識別碼 (名稱識別碼)]。
 
-1. 將 [來源屬性] 屬性值變更為 **user.localuserprincipalname** ，然後選取 [儲存]。
+1. 將 [來源屬性] 屬性值變更為 **user.localuserprincipalname**，然後選取 [儲存]。
 
     ![使用者屬性與宣告初始來源屬性](./media/sharepoint-on-premises-tutorial/manage-claim.png)
 

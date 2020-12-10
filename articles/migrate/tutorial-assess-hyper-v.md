@@ -1,15 +1,18 @@
 ---
 title: 使用 Azure Migrate 中的伺服器評量來評估 Hyper-V 是否可移轉至 Azure VM
 description: 了解如何使用伺服器評量來評估 Hyper-V VM 是否可移轉至 Azure VM。
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: be5099aa515a2331cb05fa8bf6ea76c7544ec1df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04570785d80e494134bc50cefe3381277d6440a4
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089144"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753275"
 ---
 # <a name="tutorial-assess-hyper-v-vms-for-migration-to-azure"></a>教學課程：評估 Hyper-V VM 是否可移轉至 Azure
 
@@ -79,7 +82,7 @@ ms.locfileid: "90089144"
         - 如果您想要在評量中使用以效能為基礎的資料，請針對 Azure Migrate 選取 [自動]，以根據磁碟 IOPS 和輸送量來建議儲存體類型。
         - 或者，選取您想要在遷移 VM 時使用的儲存體類型。
     - 在 [保留執行個體] 中，指定是否要在遷移 VM 時使用保留執行個體。
-        - 如果您選取使用保留執行個體，則無法指定**折扣 (%)** 或 **VM 執行時間**。 
+        - 如果您選取使用保留執行個體，則無法指定 **折扣 (%)** 或 **VM 執行時間**。 
         - [深入了解](https://aka.ms/azurereservedinstances)。
 8. 在 [VM 大小] 中：
  

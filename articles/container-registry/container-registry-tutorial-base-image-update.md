@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何設定 Azure Container Re
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 32b4dbe2563731664030dbc32c2b570ccc3e1d12
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 342f7fc37edb3a1623b72c57e8766b1a484d0e8d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030640"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559145"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>教學課程：在 Azure Container Registry 中更新基底映像時自動執行容器映像建置 
 
@@ -32,10 +32,10 @@ ms.locfileid: "96030640"
 
 本教學課程假設您已設定環境，並完成本系列前兩個教學課程中的步驟，其間您完成了下列作業：
 
-* 建立 Azure Container Registry
-* 派生範例存放庫
-* 複製範例存放庫
-* 建立 GitHub 個人存取權杖
+- 建立 Azure Container Registry
+- 派生範例存放庫
+- 複製範例存放庫
+- 建立 GitHub 個人存取權杖
 
 如果您尚未完成，請先完成下列教學課程，再繼續進行：
 
@@ -44,6 +44,9 @@ ms.locfileid: "96030640"
 [使用 Azure Container Registry 工作自動執行容器映像建置](container-registry-tutorial-build-task.md)
 
 ### <a name="configure-the-environment"></a>建立環境
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+- 本文需要 2.0.46 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 請在這些殼層環境變數中填入您的環境適用的值。 此步驟並不是必要動作，但可簡化在本教學課程中執行多行 Azure CLI 命令的作業。 若未填入這些環境變數，則必須手動取代命令範例中出現的每個值。
 

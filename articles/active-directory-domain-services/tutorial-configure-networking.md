@@ -1,20 +1,20 @@
 ---
 title: 教學課程 - 為 Azure AD Domain Services 設定虛擬網路 | Microsoft Docs
 description: 在本教學課程中，您將了解如何使用 Azure 入口網站為 Azure Active Directory Domain Services 受控網域建立和設定 Azure 虛擬網路子網路或網路對等互連。
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 33beb0767ef1f21d4fb3d08c9072d7c8479d2cb1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: ddb8f360304bdb41ae359f293af4d10b0afc6558
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967404"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618411"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-managed-domain"></a>教學課程：為 Azure Active Directory Domain Services 受控網域設定虛擬網路
 
@@ -41,7 +41,7 @@ ms.locfileid: "91967404"
     * 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 與您的訂用帳戶相關聯的 Azure Active Directory 租用戶，可與內部部署目錄或僅限雲端的目錄同步。
     * 如果需要，請[建立 Azure Active Directory 租用戶][create-azure-ad-tenant]或[將 Azure 訂用帳戶與您的帳戶建立關聯][associate-azure-ad-tenant]。
-* 您必須擁有 Azure AD 租用戶的*全域管理員*權限，才能設定 Azure AD DS。
+* 您必須擁有 Azure AD 租用戶的 *全域管理員* 權限，才能設定 Azure AD DS。
 * 您需要 Azure 訂用帳戶中的「參與者」權限，才能建立必要的 Azure AD DS 資源。
 * 已在您的 Azure AD 租用戶中啟用並設定 Azure Active Directory Domain Services 受控網域。
     * 如有需要，第一個教學課程會引導您[建立並設定 Azure Active Directory Domain Services 受控網域][create-azure-ad-ds-instance]。
@@ -87,7 +87,7 @@ ms.locfileid: "91967404"
     ![在 Azure 入口網站中新增額外的虛擬網路 IP 位址範圍](./media/tutorial-configure-networking/add-vnet-address-range.png)
 
 1. 接下來，在虛擬網路視窗的左側功能表中選取 [子網路]，然後選擇 [+ 子網路] 以新增子網路。
-1. 輸入子網路的名稱，例如 *workloads*。 如果您想要在先前的步驟中使用為虛擬網路設定的 IP 位址範圍子集，請視需要更新**位址範圍**。 目前，請暫且將網路安全性群組、路由表、服務端點等選項保留為預設值。
+1. 輸入子網路的名稱，例如 *workloads*。 如果您想要在先前的步驟中使用為虛擬網路設定的 IP 位址範圍子集，請視需要更新 **位址範圍**。 目前，請暫且將網路安全性群組、路由表、服務端點等選項保留為預設值。
 
     在下列範例中，會建立名為 *workloads* 的子網路，並使用 *10.0.3.0/24* IP 位址範圍：
 
@@ -121,7 +121,7 @@ ms.locfileid: "91967404"
 
     除非您的環境有特定需求，否則請保留虛擬網路存取或轉送流量的任何其他預設值，然後選取 [確定]。
 
-1. 在 Azure AD DS 虛擬網路和您選取的虛擬網路上建立對等互連，需要幾分鐘的時間。 準備就緒時，**對等互連狀態**會報告為「已連線」，如下列範例所示：
+1. 在 Azure AD DS 虛擬網路和您選取的虛擬網路上建立對等互連，需要幾分鐘的時間。 準備就緒時，**對等互連狀態** 會報告為「已連線」，如下列範例所示：
 
     ![Azure 入口網站中成功連線的對等互連網路](./media/tutorial-configure-networking/connected-peering.png)
 
@@ -138,7 +138,7 @@ ms.locfileid: "91967404"
 
 1. 在 Azure 入口網站中，選取對等互連虛擬網路的資源群組，例如 *myResourceGroup*。 從資源清單中選擇對等互連的虛擬網路，例如 *myVnet*。
 1. 在虛擬網路視窗的左側功能表中，選取 [DNS 伺服器]。
-1. 根據預設，虛擬網路會使用 Azure 提供的內建 DNS 伺服器。 請選擇使用**自訂** DNS 伺服器。 輸入 Azure AD DS 網域控制站的 IP 位址，通常為 *10.0.2.4* 和 *10.0.2.5*。 請在入口網站中，從您受控網域的 [概觀] 視窗上確認這些 IP 位址。
+1. 根據預設，虛擬網路會使用 Azure 提供的內建 DNS 伺服器。 請選擇使用 **自訂** DNS 伺服器。 輸入 Azure AD DS 網域控制站的 IP 位址，通常為 *10.0.2.4* 和 *10.0.2.5*。 請在入口網站中，從您受控網域的 [概觀] 視窗上確認這些 IP 位址。
 
     ![設定虛擬網路 DNS 伺服器，以使用 Azure AD DS 網域控制站](./media/tutorial-configure-networking/custom-dns.png)
 

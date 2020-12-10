@@ -15,18 +15,18 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 432cc733ee31bdaa18d555d9a6aeb6aee9879a44
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b4de685accf665c7555a454ef247ddf589c6ba5f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748527"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572332"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>教學課程：實作裝置韌體更新程序
 
 您可能需要對連線至 IoT 中樞的裝置更新軔體。 例如，您可以將新功能新增至韌體，或套用安全性修補程式。 在許多 IoT 案例中，實際瀏覽並手動將韌體更新套用至裝置，並非切實可行的做法。 本教學課程將說明透過連線至中樞的後端應用程式，從遠端啟動並監視韌體更新程序。
 
-若要建立及監視韌體更新程序，請在本教學課程中，以後端應用程式在 IoT 中樞內建立 _組態_ 。 IoT 中樞 [自動裝置管理](./iot-hub-automatic-device-management.md)會使用此組態，在您的所有 Chiller 裝置上更新一組 _裝置對應項的所需屬性_ 。 所需屬性會指定必要韌體更新的詳細資料。 Chiller 裝置在執行韌體更新程序時，會使用 _裝置對應項的報告屬性_ 將其狀態報告給後端應用程式。 後端應用程式可使用此組態來監視從裝置傳送的報告屬性，並追蹤韌體更新程序的完成進度：
+若要建立及監視韌體更新程序，請在本教學課程中，以後端應用程式在 IoT 中樞內建立 _組態_。 IoT 中樞 [自動裝置管理](./iot-hub-automatic-device-management.md)會使用此組態，在您的所有 Chiller 裝置上更新一組 _裝置對應項的所需屬性_。 所需屬性會指定必要韌體更新的詳細資料。 Chiller 裝置在執行韌體更新程序時，會使用 _裝置對應項的報告屬性_ 將其狀態報告給後端應用程式。 後端應用程式可使用此組態來監視從裝置傳送的報告屬性，並追蹤韌體更新程序的完成進度：
 
 ![韌體更新程序](media/tutorial-firmware-update/Process.png)
 
@@ -38,11 +38,9 @@ ms.locfileid: "92748527"
 > * 模擬裝置上的軔體更新程序。
 > * 在韌體更新進行時接收來自裝置的狀態更新。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 您在此快速入門中執行的兩個範例應用程式是使用 Node.js 所撰寫的。 您的開發電腦上需要 Node.js 10.x.x 版或更新版本。
 

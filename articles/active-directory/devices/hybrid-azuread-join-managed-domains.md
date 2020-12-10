@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56b0685dee518399ae8328ddac18f03e82918a38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 303f02e0c6b72b7061a996b3ce8e70799954b435
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268412"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861046"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教學課程：設定適用於受控網域的混合式 Azure Active Directory Join
 
@@ -175,29 +175,29 @@ ms.locfileid: "89268412"
 
 1. 使用[直接連結](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)移至裝置頁面。
 2. 如需如何找出裝置的資訊，請參閱[如何使用 Azure 入口網站管理裝置身分識別](./device-management-azure-portal.md)。
-3. 如果**已註冊**資料行顯示為**擱置**，表示混合式 Azure AD Join 尚未完成。
-4. 如果**已註冊**資料行包含**日期/時間**，表示混合式 Azure AD Join 已完成。
+3. 如果 **已註冊** 資料行顯示為 **擱置**，表示混合式 Azure AD Join 尚未完成。
+4. 如果 **已註冊** 資料行包含 **日期/時間**，表示混合式 Azure AD Join 已完成。
 
 ### <a name="using-powershell"></a>使用 PowerShell
 
-請使用 **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** 確認 Azure 租用戶中的裝置註冊狀態。 此 Cmdlet 位於 [Azure Active Directory PowerShell 模組](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0)中。
+請使用 **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** 確認 Azure 租用戶中的裝置註冊狀態。 此 Cmdlet 位於 [Azure Active Directory PowerShell 模組](/powershell/azure/active-directory/install-msonlinev1)中。
 
 使用 **Get-MSolDevice** Cmdlet 來檢查服務詳細資料時：
 
-- 必須要有**裝置識別碼**與 Windows 用戶端上的識別碼相符的物件存在。
+- 必須要有 **裝置識別碼** 與 Windows 用戶端上的識別碼相符的物件存在。
 - **DeviceTrustType** 的值是 [已加入網域]。 此設定相當於 Azure AD 入口網站中的 [裝置] 頁面上所呈現的 [已加入混合式 Azure AD] 狀態。
 - 在條件式存取中使用的裝置，[Enabled] 的值是 [True]，而 [DeviceTrustLevel] 是 [Managed]。
 
 1. 以系統管理員身分開啟 Windows PowerShell。
 2. 輸入 `Connect-MsolService` 以連線至您的 Azure 租用戶。
 
-#### <a name="count-all-hybrid-azure-ad-joined-devices-excluding-pending-state"></a>計算所有已加入混合式 Azure AD 的裝置 (不包括**擱置**狀態)
+#### <a name="count-all-hybrid-azure-ad-joined-devices-excluding-pending-state"></a>計算所有已加入混合式 Azure AD 的裝置 (不包括 **擱置** 狀態)
 
 ```azurepowershell
 (Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
 ```
 
-#### <a name="count-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>計算所有已加入混合式 Azure AD 的裝置 (包括**擱置**狀態)
+#### <a name="count-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>計算所有已加入混合式 Azure AD 的裝置 (包括 **擱置** 狀態)
 
 ```azurepowershell
 (Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
@@ -209,7 +209,7 @@ ms.locfileid: "89268412"
 Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
 ```
 
-#### <a name="list-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>列出所有已加入混合式 Azure AD 的裝置 (包括**擱置**狀態)
+#### <a name="list-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>列出所有已加入混合式 Azure AD 的裝置 (包括 **擱置** 狀態)
 
 ```azurepowershell
 Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}

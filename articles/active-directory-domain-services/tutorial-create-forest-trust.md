@@ -2,20 +2,20 @@
 title: 教學課程 - 在 Azure AD Domain Services 中建立樹系信任 | Microsoft Docs
 description: 了解如何在適用於 Azure AD Domain Services 的 Azure 入口網站中的內部部署 AD DS 網域建立單向輸出樹系
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: cbdcd170e6c6fb768172acfe3eb3c907714cd560
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 0231689acef3345fb2b0f25170522d59552171ba
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967251"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618326"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>教學課程：在 Azure Active Directory Domain Services 中建立內部部署網域的輸出樹系信任
 
@@ -45,7 +45,7 @@ ms.locfileid: "91967251"
     * 如有需要，請[建立並設定 Azure Active Directory Domain Services 受控網域][create-azure-ad-ds-instance-advanced]。
     
     > [!IMPORTANT]
-    > 請確實使用*資源*樹系建立受控網域。 預設選項會建立*使用者*樹系。 只有資源樹系可以建立對內部內部部署 AD DS 環境的信任。
+    > 請確實使用 *資源* 樹系建立受控網域。 預設選項會建立 *使用者* 樹系。 只有資源樹系可以建立對內部內部部署 AD DS 環境的信任。
     >
     > 您至少也必須使用受控網域的 *Enterprise* SKU。 如有需要，請[變更受控網域的 SKU][howto-change-sku]。
 
@@ -73,7 +73,7 @@ ms.locfileid: "91967251"
 
 若要從內部部署環境正確地解析受控網域，建議您將轉寄站新增至現有的 DNS 伺服器。 如果您尚未將內部部署環境設定為可與受控網域通訊，請從內部部署 AD DS 網域的管理工作站完成下列步驟：
 
-1. 選取**開始 | 系統管理工具 | DNS**
+1. 選取 **開始 | 系統管理工具 | DNS**
 1. 以滑鼠右鍵選取 DNS 伺服器，例如 *myAD01*，然後選取 [屬性]
 1. 選擇 [轉寄站]，然後選擇 [編輯] 新增其他轉寄站。
 1. 新增受控網域的 IP 位址，例如 *10.0.2.4* 和 *10.0.2.5*。
@@ -88,9 +88,9 @@ ms.locfileid: "91967251"
 1. 以滑鼠右鍵選取網域，例如 *onprem.contoso.com*，然後選取 [屬性]
 1. 選擇 [信任] 索引標籤，然後選擇 [新增信任]
 1. 輸入 Azure AD DS 網域的名稱，例如 *aaddscontoso.com*，然後選取 [下一步]
-1. 選取選項以建立**樹系信任**，然後建立**單向: 連入** 信任。
-1. 選擇為**僅此網域**建立信任。 在下一個步驟中，您會在 Azure 入口網站中建立受控網域的信任。
-1. 選擇使用**全樹系驗證**，然後輸入並確認信任密碼。 在下一節中，也需要在 Azure 入口網站中輸入相同的密碼。
+1. 選取選項以建立 **樹系信任**，然後建立 **單向: 連入** 信任。
+1. 選擇為 **僅此網域** 建立信任。 在下一個步驟中，您會在 Azure 入口網站中建立受控網域的信任。
+1. 選擇使用 **全樹系驗證**，然後輸入並確認信任密碼。 在下一節中，也需要在 Azure 入口網站中輸入相同的密碼。
 1. 使用預設選項逐步執行接下來的幾個視窗，然後選擇 [否，不要確認外寄信任] 的選項。
 1. 選取 [完成]。
 
@@ -109,7 +109,7 @@ ms.locfileid: "91967251"
 1. 輸入顯示名稱來識別您的信任，然後輸入內部部署信任的樹系 DNS 名稱，例如 *onprem.contoso.com*
 1. 提供在上一節中設定內部部署 AD DS 網域的輸入樹系信任時，所使用的相同信任密碼。
 1. 為內部部署 AD DS 網域提供至少兩部 DNS 伺服器，例如 *10.1.1.4* 和 *10.1.1.5*
-1. 準備好時，**儲存**輸出樹系信任
+1. 準備好時，**儲存** 輸出樹系信任
 
     ![在 Azure 入口網站中建立輸出樹系信任](./media/tutorial-create-forest-trust/portal-create-outbound-trust.png)
 
@@ -155,7 +155,7 @@ ms.locfileid: "91967251"
 1. 開啟 **Windows 設定**，然後搜尋並選取 [網路和共用中心]。
 1. 選擇 [變更進階共用] 設定選項。
 1. 在 [網域設定檔]下，選取 [開啟檔案及印表機共用] 然後選取 [儲存變更]。
-1. 關閉**網路和共用中心**。
+1. 關閉 **網路和共用中心**。
 
 #### <a name="create-a-security-group-and-add-members"></a>建立安全性群組並新增成員
 
@@ -165,13 +165,13 @@ ms.locfileid: "91967251"
 1. 選取並以滑鼠右鍵按一下瀏覽窗格中的 **LocalObjects**。 選取 [新增]，然後選取 [群組]。
 1. 在 [群組名稱] 方塊中，輸入 FileServerAccess。 在 [群組範圍] 中，選取 [網域本機]，然後選擇 [確定]。
 1. 在內容窗格中，按兩下 **FileServerAccess**。 選取 [成員]，選擇 [新增]，然後選取 [位置]。
-1. 從**位置**檢視中選取您的內部部署 Active Directory，然後選擇 [確定]。
+1. 從 **位置** 檢視中選取您的內部部署 Active Directory，然後選擇 [確定]。
 1. 在 [輸入要選取的物件名稱] 方塊中輸入「網域使用者」。 選取 [檢查名稱]並提供內部部署 Active Directory 的認證，然後選取 [確定]。
 
     > [!NOTE]
     > 您必須提供認證，因為信任關係只有單向。 這表示來自 Azure AD DS 受控網域的使用者無法存取資源，也無法在受信任的 (內部部署) 網域中搜尋使用者或群組。
 
-1. 來自內部部署 Active Directory 的**網域使用者**群組應該是 **FileServerAccess** 群組的成員。 選取 [確定] 儲存群組並關閉視窗。
+1. 來自內部部署 Active Directory 的 **網域使用者** 群組應該是 **FileServerAccess** 群組的成員。 選取 [確定] 儲存群組並關閉視窗。
 
 #### <a name="create-a-file-share-for-cross-forest-access"></a>建立跨樹系存取的檔案共用
 
@@ -179,7 +179,7 @@ ms.locfileid: "91967251"
 1. 以滑鼠右鍵按一下資料夾，然後選擇 [屬性]。
 1. 選取 [安全性] 索引標籤，接著選取 [編輯]。
 1. 在 [CrossForestShare 權限] 對話方塊中，選取 [新增]。
-1. 在 **輸入物件名稱以選取**中輸入 FileServerAccess，然後選取 [確定]。
+1. 在 **輸入物件名稱以選取** 中輸入 FileServerAccess，然後選取 [確定]。
 1. 從 [群組或使用者名稱] 清單中選取 FileServerAccess。 在 [FileServerAccess 權限] 清單中，針對 [修改] 和 [寫入] 權限選擇 [允許]，然後選取 [確定]。
 1. 選取 [共用] 索引標籤，然後選擇 [進階共用...]
 1. 選擇 [共用此資料夾]，然後在 [共用名稱] 中，為檔案共用輸入易記的名稱，例如 CrossForestShare。
@@ -189,12 +189,12 @@ ms.locfileid: "91967251"
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>驗證資源的跨樹系驗證
 
 1. 使用內部部署 Active Directory 的使用者帳戶，登入已加入內部部署 Active Directory 的 Windows 電腦。
-1. 使用 **Windows 檔案總管**連線到您使用完整主機名稱和共用 (例如 `\\fs1.aaddscontoso.com\CrossforestShare`) 所建立的共用。
-1. 若要驗證寫入權限，請在資料夾中按一下滑鼠右鍵，選擇 [新增]，然後選取 [文字文件]。 使用預設名稱**新增文字檔**。
+1. 使用 **Windows 檔案總管** 連線到您使用完整主機名稱和共用 (例如 `\\fs1.aaddscontoso.com\CrossforestShare`) 所建立的共用。
+1. 若要驗證寫入權限，請在資料夾中按一下滑鼠右鍵，選擇 [新增]，然後選取 [文字文件]。 使用預設名稱 **新增文字檔**。
 
     如果已正確設定寫入權限，則會建立新的文字檔。 接下來的步驟將會適當地開啟、編輯及刪除檔案。
-1. 若要驗證讀取權限，請開啟**新增文字文件**。
-1. 若要驗證修改權限，請將文字新增至檔案，然後關閉**記事本**。 當系統提示您儲存變更時，請選擇 [儲存]。
+1. 若要驗證讀取權限，請開啟 **新增文字文件**。
+1. 若要驗證修改權限，請將文字新增至檔案，然後關閉 **記事本**。 當系統提示您儲存變更時，請選擇 [儲存]。
 1. 若要驗證刪除權限，請以滑鼠右鍵選取 [新增文字文件]，然後選擇 [刪除]。 選擇 [是] 確認檔案刪除。
 
 ## <a name="next-steps"></a>後續步驟

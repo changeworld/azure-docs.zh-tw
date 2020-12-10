@@ -1,15 +1,18 @@
 ---
 title: 使用 Azure Migrate 伺服器評定來評定要移轉到 Azure 的實體伺服器
 description: 說明如何使用 Azure Migrate 伺服器評定來評定內部部署實體伺服器是否可移轉到 Azure。
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 3669658100681d08e754c19377b82faff5bce1ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca50f41f1f0eadbc9cfb916a7f68a90712bef52e
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090420"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753190"
 ---
 # <a name="tutorial-assess-physical-servers-for-migration-to-azure"></a>教學課程：評估要移轉至 Azure 的實體伺服器
 
@@ -78,7 +81,7 @@ ms.locfileid: "90090420"
         - 如果您想要在評量中使用以效能為基礎的資料，請針對 Azure Migrate 選取 [自動]，以根據磁碟 IOPS 和輸送量來建議儲存體類型。
         - 或者，選取您想要在遷移 VM 時使用的儲存體類型。
     - 在 [保留執行個體] 中，指定是否要在遷移 VM 時使用保留執行個體。
-        - 如果您選取使用保留執行個體，則無法指定**折扣 (%)** 或 **VM 執行時間**。 
+        - 如果您選取使用保留執行個體，則無法指定 **折扣 (%)** 或 **VM 執行時間**。 
         - [深入了解](https://aka.ms/azurereservedinstances)。
 8. 在 [VM 大小] 中：
  

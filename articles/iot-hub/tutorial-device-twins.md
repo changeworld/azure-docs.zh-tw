@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 74d5e5395853bcba20b2012e54dd8f9fea03afe6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9ec2c51f01d6b13f33bc2d537a8f73a6721967d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748553"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572519"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -28,7 +28,7 @@ ms.locfileid: "92748553"
 
 除了從您的裝置接收遙測資料，您可能也需要從後端服務設定您的裝置。 當您將所需的組態傳送至裝置時，您也可以從這些裝置接收狀態和相容性更新。 例如，您可以設定裝置的目標操作溫度範圍，或從裝置收集韌體版本資訊。
 
-若要同步處理裝置與 IoT 中樞之間的狀態資訊，請使用 _裝置對應項_ 。 [裝置對應項](iot-hub-devguide-device-twins.md)是與特定裝置相關聯的 JSON 文件，IoT 中樞會在雲端中將其儲存於可供您[查詢](iot-hub-devguide-query-language.md)之處。 裝置對應項包含 _所需屬性_ 、 _報告屬性_ 和 _標記_ 。 所需屬性由後端應用程式所設定，供裝置讀取。 報告屬性是由裝置所設定，供後端應用程式讀取。 標記由後端應用程式所設定，且一律不會傳送至裝置。 您可以使用標記來組織裝置。 本教學課程說明如何使用所需屬性和報告屬性來同步處理狀態資訊：
+若要同步處理裝置與 IoT 中樞之間的狀態資訊，請使用 _裝置對應項_。 [裝置對應項](iot-hub-devguide-device-twins.md)是與特定裝置相關聯的 JSON 文件，IoT 中樞會在雲端中將其儲存於可供您[查詢](iot-hub-devguide-query-language.md)之處。 裝置對應項包含 _所需屬性_、_報告屬性_ 和 _標記_。 所需屬性由後端應用程式所設定，供裝置讀取。 報告屬性是由裝置所設定，供後端應用程式讀取。 標記由後端應用程式所設定，且一律不會傳送至裝置。 您可以使用標記來組織裝置。 本教學課程說明如何使用所需屬性和報告屬性來同步處理狀態資訊：
 
 ![對應項摘要](media/tutorial-device-twins/DeviceTwins.png)
 
@@ -39,11 +39,9 @@ ms.locfileid: "92748553"
 > * 使用所需屬性將狀態資訊傳送至您的模擬裝置。
 > * 使用報告屬性從您的模擬裝置接收狀態資訊。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 您在此快速入門中執行的兩個範例應用程式是使用 Node.js 所撰寫的。 您的開發電腦上需要 Node.js 10.x.x 版或更新版本。
 
@@ -136,7 +134,7 @@ az iot hub device-identity show-connection-string --device-id MyTwinDevice --hub
 
 ### <a name="handlers-for-multiple-properties"></a>多個屬性的處理常式
 
-在先前顯示的範例所需屬性 JSON 中， **元件** 下的 **氣候** 節點包含兩個屬性： **minTemperature** 和 **maxTemperature** 。
+在先前顯示的範例所需屬性 JSON 中，**元件** 下的 **氣候** 節點包含兩個屬性：**minTemperature** 和 **maxTemperature**。
 
 裝置的本機 **對應項** 物件會儲存一組完整的所需屬性和報告屬性。 從後端傳送的 **差異** 可能僅更新了所需屬性的子集。 在下列程式碼片段中，如果模擬裝置接收到僅對 **minTemperature** 和 **maxTemperature** 其中之一所做的更新，它將會以本機對應項中的值作為另一個值，來設定裝置：
 
@@ -162,7 +160,7 @@ az iot hub device-identity show-connection-string --device-id MyTwinDevice --hub
 
 [!code-javascript[Create registry and get twin](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/ServiceClient.js?name=getregistrytwin&highlight=2,6 "Create registry and get twin")]
 
-下列程式碼片段顯示後端應用程式傳送至裝置的不同所需屬性 *修補程式* ：
+下列程式碼片段顯示後端應用程式傳送至裝置的不同所需屬性 *修補程式*：
 
 [!code-javascript[Patches sent to device](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/ServiceClient.js?name=patches&highlight=2,12,26,41,56 "Patches sent to device")]
 

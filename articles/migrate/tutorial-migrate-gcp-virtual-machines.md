@@ -1,15 +1,18 @@
 ---
 title: 探索和評估 Google Cloud Platform (GCP) VM 執行個體並將其遷移至 Azure
 description: 本文說明如何使用 Azure Migrate 將 GCP VM 遷移至 Azure。
+author: deseelam
+ms.author: deseelam
+ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 0093bb453131eb87172021a976b8019a23e445f1
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: ddde352df5fc6063dbe04aa05fe01fca9747f8fa
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302595"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752833"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>探索和評估 Google Cloud Platform (GCP) VM 並將其遷移至 Azure
 

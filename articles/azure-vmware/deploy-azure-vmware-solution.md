@@ -2,14 +2,13 @@
 title: 部署及設定 Azure VMware 解決方案
 description: 了解如何使用在規劃階段中收集到的資訊來部署 Azure VMware 解決方案私人雲端。
 ms.topic: tutorial
-ms.author: tredavis
 ms.date: 11/09/2020
-ms.openlocfilehash: 47fc894fa1d6204a1bc2c912da7fcbb2394627fa
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 7e31b9236a3c75009d15bde35019036b6db55cab
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95484214"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861508"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>部署及設定 Azure VMware 解決方案
 

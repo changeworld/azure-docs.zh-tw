@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
-ms.openlocfilehash: f76f6bc77a26a8574218a07321ab72acc9280569
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: af1c0702929e7cd700c8d19ab24e40f9c6f43a21
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517985"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602167"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mongodb-cloud"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 MongoDB Cloud 整合
 
@@ -51,7 +51,7 @@ ms.locfileid: "92517985"
 1. 在左窗格上，選取 [Azure Active Directory]  。
 1. 移至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增新的應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **MongoDB Cloud** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **MongoDB Cloud**。
 1. 從結果中選取 [MongoDB Cloud]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -73,7 +73,7 @@ ms.locfileid: "92517985"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [MongoDB Cloud]  應用程式整合頁面上，尋找 [管理]  區段。 選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，選取 [基本 SAML 設定]  的鉛筆圖示，以編輯設定。
 
    ![以 SAML 設定單一登入頁面的螢幕擷取畫面，其中的鉛筆圖示已醒目提示](common/edit-urls.png)
@@ -103,7 +103,7 @@ ms.locfileid: "92517985"
     | firstName | user.givenname |
     | lastName | user.surname |
 
-1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 **同盟中繼資料 XML** 。 選取 [下載]  以下載憑證，並將其儲存在您的電腦上。
+1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 **同盟中繼資料 XML**。 選取 [下載]  以下載憑證，並將其儲存在您的電腦上。
 
     ![已醒目提示 [下載] 連結的 [SAML 簽署憑證] 區段螢幕擷取畫面](common/metadataxml.png)
 
@@ -162,7 +162,7 @@ MongoDB Cloud 支援預設啟用的 Just-In-Time 使用者佈建。 沒有您需
 
 - [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
-- [在 Azure 上註冊 MongoDB Atlas](https://azuremarketplace.microsoft.com/marketplace/apps/mongodb.mongodb_atlas_may_2020?tab=Overview)
+- [在 Azure 上註冊 MongoDB Atlas](https://azuremarketplace.microsoft.com/marketplace/apps/mongodb.mdb_atlas_oct2020?tab=Overview)
 
 - [嘗試搭配 Azure AD 使用 MongoDB Cloud](https://aad.portal.azure.com/)
 

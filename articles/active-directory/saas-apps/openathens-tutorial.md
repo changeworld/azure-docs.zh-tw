@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 7754da168465c58c1481f355f3597a621a99609e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: fc2d1c5dca4265bc0f0c26dd0a6c62a7e1698a38
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522303"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621462"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-openathens"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 OpenAthens 整合
 
@@ -50,7 +50,7 @@ ms.locfileid: "92522303"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **OpenAthens** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **OpenAthens**。
 1. 從結果面板選取 [OpenAthens]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-openathens"></a>設定及測試 OpenAthens 的 Azure AD 單一登入
@@ -71,12 +71,12 @@ ms.locfileid: "92522303"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [OpenAthens]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 組態]  區段上，上傳 **服務提供者中繼資料檔案** ，並執行稍後在本教學課程中提及的步驟。
+1. 在 [基本 SAML 組態]  區段上，上傳 **服務提供者中繼資料檔案**，並執行稍後在本教學課程中提及的步驟。
 
     a. 按一下 [上傳中繼資料檔案]  。
 
@@ -150,7 +150,7 @@ ms.locfileid: "92522303"
 
     a. 在 [顯示名稱對應] 中，選取 [使用屬性]。
 
-    b. 在 [顯示名稱屬性] 文字方塊中，輸入 `http://schema.microsoft.com/identity/claims/displayname` 值。
+    b. 在 [顯示名稱屬性] 文字方塊中，輸入 `http://schemas.microsoft.com/identity/claims/displayname` 值。
 
     c. 在 [唯一使用者對應] 中，選取 [使用屬性]。
 
@@ -168,7 +168,7 @@ ms.locfileid: "92522303"
 
 ### <a name="create-openathens-test-user"></a>建立 OpenAthens 測試使用者
 
-本節會在 OpenAthens 中建立名為 Britta Simon 的使用者。 OpenAthens 支援依預設啟用的 **Just-In-Time 使用者佈建** 。 在這一節沒有您需要進行的動作項目。 如果 OpenAthens 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
+本節會在 OpenAthens 中建立名為 Britta Simon 的使用者。 OpenAthens 支援依預設啟用的 **Just-In-Time 使用者佈建**。 在這一節沒有您需要進行的動作項目。 如果 OpenAthens 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
 
 ## <a name="test-sso"></a>測試 SSO
 

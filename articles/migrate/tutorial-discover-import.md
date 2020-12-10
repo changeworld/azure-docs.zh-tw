@@ -1,14 +1,17 @@
 ---
 title: 透過 Azure Migrate 伺服器評量使用匯入的 CSV 檔案來評估內部部署伺服器
 description: 說明如何在 Azure Migrate 伺服器評量中使用匯入的 CSV 檔案來探索內部部署伺服器是否可移轉至 Azure
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
-ms.openlocfilehash: 30f17bb6b22d4d19cf225aa52d8284f5306a44ee
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: dfa7ee941e2c373b02fe5fb2f2a648a60a677670
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308379"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753104"
 ---
 # <a name="tutorial-assess-servers-using-an-imported-csv-file"></a>教學課程：使用匯入的 CSV 檔案評估伺服器
 
@@ -79,7 +82,7 @@ ms.locfileid: "92308379"
 
 如果您還沒有新的 Azure Migrate 專案，請加以設定。
 
-1. 在 Azure 入口網站 > [所有服務]**** 中，搜尋 **Azure Migrate**。
+1. 在 Azure 入口網站 > [所有服務] 中，搜尋 **Azure Migrate**。
 2. 在 [服務] 下，選取 [Azure Migrate]。
 3. 在 [概觀] 中，選取 [建立專案]。
 5. 在 [建立專案] 中，選取您的 Azure 訂用帳戶和資源群組。 如果您還沒有資源群組，請加以建立。
@@ -90,7 +93,7 @@ ms.locfileid: "92308379"
 7. 選取 [建立]。
 8. 等候幾分鐘讓 Azure Migrate 專案完成部署。
 
-**Azure Migrate：伺服器評量**工具依預設會新增至新專案中。
+**Azure Migrate：伺服器評量** 工具依預設會新增至新專案中。
 
 ![顯示依預設新增伺服器評量工具的頁面](./media/tutorial-discover-import/added-tool.png)
 
@@ -177,7 +180,7 @@ ms.locfileid: "92308379"
 
 ## <a name="update-server-information"></a>更新伺服器資訊
 
-您可以使用相同的**伺服器名稱**再次匯入伺服器的資料，以更新伺服器資訊。 您無法修改 [伺服器名稱] 欄位。 目前不支援刪除伺服器。
+您可以使用相同的 **伺服器名稱** 再次匯入伺服器的資料，以更新伺服器資訊。 您無法修改 [伺服器名稱] 欄位。 目前不支援刪除伺服器。
 
 ## <a name="verify-servers-in-the-portal"></a>在入口網站中驗證伺服器
 

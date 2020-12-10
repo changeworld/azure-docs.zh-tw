@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4854e61b646c0ca2a2070d676e3efc5cfbac6b9b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 564f19a1be5b3ce8a5267a07bd4f1f6de80fecf1
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044576"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621275"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>教學課程：使用自訂視覺服務在邊緣執行影像分類
 
@@ -76,7 +76,7 @@ Azure IoT Edge 可藉由將工作負載從雲端移至邊緣，來提升 IoT 解
    | ----- | ----- |
    | 名稱 | 提供專案名稱，例如 **EdgeTreeClassifier**。 |
    | 描述 | 選擇性的專案描述。 |
-   | 資源 | 選取包含自訂視覺服務資源的其中一個 Azure 資源群組，或如果您尚未新增，請**建立新項目**。 |
+   | 資源 | 選取包含自訂視覺服務資源的其中一個 Azure 資源群組，或如果您尚未新增，請 **建立新項目**。 |
    | 專案類型 | **分類** |
    | 分類類型 | **多類別 (每個影像一個標記)** |
    | 網域 | **一般 (精簡)** |
@@ -98,7 +98,7 @@ Azure IoT Edge 可藉由將工作負載從雲端移至邊緣，來提升 IoT 解
 
 3. 瀏覽至您複製到本機的 git 存放庫，然後瀏覽至第一個影像資料夾 **Cognitive-CustomVision-Windows / Samples / Images / Hemlock**。 將資料夾中的 10 個影像全都選取，然後 [開啟]  。
 
-4. 對這一組影像新增**鐵杉**標記，然後按 **ENTER 鍵**來套用標記。
+4. 對這一組影像新增 **鐵杉** 標記，然後按 **ENTER 鍵** 來套用標記。
 
 5. 選取 [上傳 10 個檔案]  。
 
@@ -110,7 +110,7 @@ Azure IoT Edge 可藉由將工作負載從雲端移至邊緣，來提升 IoT 解
 
 8. 瀏覽至第二個影像資料夾 **Cognitive-CustomVision-Windows / Samples / Images / Japanese Cherry**。 將資料夾中的 10 個影像全都選取，然後 [開啟]  。
 
-9. 對這一組影像新增**日本櫻**標記，然後按 **ENTER 鍵**來套用標記。
+9. 對這一組影像新增 **日本櫻** 標記，然後按 **ENTER 鍵** 來套用標記。
 
 10. 選取 [上傳 10 個檔案]  。 當影像上傳成功時，選取 [完成]  。
 
@@ -152,7 +152,7 @@ Azure IoT Edge 可藉由將工作負載從雲端移至邊緣，來提升 IoT 解
    | 提供解決方案名稱 | 輸入解決方案的描述性名稱 (例如 **CustomVisionSolution**)，或接受預設值。 |
    | 選取模組範本 | 選擇 [Python 模組]  。 |
    | 提供模組名稱 | 將模組命名為 **classifier**。<br><br>此模組名稱必須是小寫。 IoT Edge 在參考模組時會區分大小寫，而且此解決方案所使用的程式庫會將所有要求的格式設為小寫。 |
-   | 提供模組的 Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 系統會預先填入上一個步驟的容器映像。 將 **localhost:5000** 取代為 Azure Container Registry 的**登入伺服器**值。 您可以在 Azure 入口網站中，從容器登錄的概觀頁面擷取登入伺服器。<br><br>最終字串看起來會類似於： **\<registry name\>.azurecr.io/classifier**。 |
+   | 提供模組的 Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 系統會預先填入上一個步驟的容器映像。 將 **localhost:5000** 取代為 Azure Container Registry 的 **登入伺服器** 值。 您可以在 Azure 入口網站中，從容器登錄的概觀頁面擷取登入伺服器。<br><br>最終字串看起來會類似於： **\<registry name\>.azurecr.io/classifier**。 |
  
    ![提供 Docker 映像存放庫](./media/tutorial-deploy-custom-vision/repository.png)
 
@@ -219,7 +219,7 @@ Visual Studio Code 中的 Python 模組範本包含一些程式碼範例，可�
    | 選取部署範本檔案 | 選取 CustomVisionSolution 資料夾中的 **deployment.template.json** 檔案。 |
    | 選取模組範本 | 選取 [Python 模組] |
    | 提供模組名稱 | 將模組命名為 **cameraCapture** |
-   | 提供模組的 Docker 映像存放庫 | 將 **localhost:5000** 取代為 Azure Container Registry 的**登入伺服器**值。<br><br>最終字串看起來會類似於： **\<registryname\>.azurecr.io/cameracapture**。 |
+   | 提供模組的 Docker 映像存放庫 | 將 **localhost:5000** 取代為 Azure Container Registry 的 **登入伺服器** 值。<br><br>最終字串看起來會類似於： **\<registryname\>.azurecr.io/cameracapture**。 |
 
    VS Code 視窗會在解決方案工作區中載入新模組，並更新 deployment.template.json 檔案。 現在您應該會看到兩個模組資料夾：classifier 和 cameraCapture。 
 
@@ -410,7 +410,7 @@ Visual Studio Code 的 IoT Edge 擴充功能會在每個 IoT Edge 解決方案�
 
 3. 選取 **config** 資料夾中的 **deployment.amd64.json** 檔案，然後按一下 [選取 Edge 部署資訊清單]。 請勿使用 deployment.template.json 檔案。
 
-4. 請展開裝置下的**模組**，以查看已部署且執行中的模組清單。 按一下 [重新整理] 按鈕。 您應該會看到新的**分類器**和 **cameraCapture** 模組正在與 **$edgeAgent** 和 **$edgeHub** 一起執行。  
+4. 請展開裝置下的 **模組**，以查看已部署且執行中的模組清單。 按一下 [重新整理] 按鈕。 您應該會看到新的 **分類器** 和 **cameraCapture** 模組正在與 **$edgeAgent** 和 **$edgeHub** 一起執行。  
 
 您也可以查看並確認所有模組均已在裝置本身上啟動並執行。 在 IoT Edge 裝置上執行下列命令，以查看模組的狀態。
 
@@ -449,9 +449,7 @@ Visual Studio Code 的 IoT Edge 擴充功能會在每個 IoT Edge 解決方案�
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已訓練自訂視覺模型，並將它以模組形式部署到 IoT Edge 裝置。 然後，您建置了模組，以便查詢影像分類伺服器，並將其結果回報給 IoT 中樞。 
-
-如果您想要嘗試此案例含有即時觀景窗饋送的更深入版本，請參閱 [Raspberry Pi 3 上的自訂視覺和 Azure IoT Edge](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) GitHub 專案。 
+在本教學課程中，您已訓練自訂視覺模型，並將它以模組形式部署到 IoT Edge 裝置。 然後，您建置了模組，以便查詢影像分類伺服器，並將其結果回報給 IoT 中樞。
 
 請繼續進行後續教學課程，以了解 Azure IoT Edge 有什麼其他方法可協助您將此資料轉換成具有優勢的商業見解。
 

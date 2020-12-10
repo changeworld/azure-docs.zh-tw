@@ -1,20 +1,20 @@
 ---
 title: 教學課程 - 建立 Azure Active Directory Domain Services 受控網域 | Microsoft Docs
 description: 在本教學課程中，您將了解如何使用 Azure 入口網站來建立和設定 Azure Active Directory Domain Services 受控網域。
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 53720b19daa436893073b4f40528a49add653ff3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 945c131394a0a3c6273f79044c8500a2feba70fe
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967234"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618139"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain"></a>教學課程：建立並設定 Azure Active Directory Domain Services 受控網域
 
@@ -39,7 +39,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
     * 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 與您的訂用帳戶相關聯的 Azure Active Directory 租用戶，可與內部部署目錄或僅限雲端的目錄同步。
     * 如果需要，請[建立 Azure Active Directory 租用戶][create-azure-ad-tenant]或[將 Azure 訂用帳戶與您的帳戶建立關聯][associate-azure-ad-tenant]。
-* 您必須擁有 Azure AD 租用戶的*全域管理員*權限，才能啟用 Azure AD DS。
+* 您必須擁有 Azure AD 租用戶的 *全域管理員* 權限，才能啟用 Azure AD DS。
 * 您需要 Azure 訂用帳戶中的「參與者」權限，才能建立必要的 Azure AD DS 資源。
 
 雖然 Azure AD DS 不需要，但建議針對 Azure AD 租用戶[設定自助式密碼重設 (SSPR)][configure-sspr]。 使用者不需 SSPR 即可變更其密碼，但是如果他們忘記密碼且需要加以重設，SSPR 會協助他們。
@@ -59,7 +59,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 1. 在搜尋列中輸入 [Domain Services]，然後從搜尋建議中選擇 [Azure AD Domain Services]。
 1. 在 [Azure AD Domain Services] 頁面中，選取 [建立]。 [啟用 Azure AD Domain Services] 精靈隨即啟動。
 1. 選取您要在其中建立受控網域的 Azure **訂用帳戶**。
-1. 選取受控網域應該隸屬的**資源群組**。 選擇 [新建]，或選取現有的資源群組。
+1. 選取受控網域應該隸屬的 **資源群組**。 選擇 [新建]，或選取現有的資源群組。
 
 在建立受控網域時，您可以指定 DNS 名稱。 以下是選擇此 DNS 名稱時的一些考量：
 
@@ -87,7 +87,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 在 Azure 入口網站中完成 [基本] 視窗中的欄位，以建立受控網域：
 
 1. 輸入受控網域的 **DNS 網域名稱**，並將前面幾項列入考慮。
-1. 選擇應該在其中建立受控網域的 Azure**位置**。 如果您選擇支援 Azure 可用性區域的區域，Azure AD DS 資源會跨區域分散，以供額外的備援。
+1. 選擇應該在其中建立受控網域的 Azure **位置**。 如果您選擇支援 Azure 可用性區域的區域，Azure AD DS 資源會跨區域分散，以供額外的備援。
 
     > [!TIP]
     > 「可用性區域」是 Azure 地區內獨特的實體位置。 每個區域皆由一或多個配備獨立電力、冷卻系統及網路的資料中心所組成。 若要確保復原，所有已啟用的地區中至少要有三個不同的區域。
@@ -96,12 +96,12 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 
 1. **SKU** 將決定效能、備份頻率，以及您可以建立的樹系信任數目上限。 如果您的商務需求或要求條件有所變更，您可以在受控網域建立後變更 SKU。 如需詳細資訊，請參閱 [Azure AD DS SKU 概念][concepts-sku]。
 
-    在本教學課程中，請選取*標準* SKU。
-1. *樹系*是 Active Directory Domain Services 用來將一或多個網域分組的邏輯建構。 根據預設，受控網域會建立為*使用者*樹系。 這種類型的樹系會同步 Azure AD 中的所有物件，包括在內部部署 AD DS 環境中建立的任何使用者帳戶。
+    在本教學課程中，請選取 *標準* SKU。
+1. *樹系* 是 Active Directory Domain Services 用來將一或多個網域分組的邏輯建構。 根據預設，受控網域會建立為 *使用者* 樹系。 這種類型的樹系會同步 Azure AD 中的所有物件，包括在內部部署 AD DS 環境中建立的任何使用者帳戶。
 
-    *資源*樹系只會同步直接在 Azure AD 中建立的使用者和群組。 如需*資源*樹系的詳細資訊，包括您使用某一樹系的原因，以及如何建立與內部部署 AD DS 網域之間的樹系信任，請參閱 [Azure AD DS 資源樹系概觀][resource-forests]。
+    *資源* 樹系只會同步直接在 Azure AD 中建立的使用者和群組。 如需 *資源* 樹系的詳細資訊，包括您使用某一樹系的原因，以及如何建立與內部部署 AD DS 網域之間的樹系信任，請參閱 [Azure AD DS 資源樹系概觀][resource-forests]。
 
-    在本教學課程中，請選擇建立*使用者*樹系。
+    在本教學課程中，請選擇建立 *使用者* 樹系。
 
     ![設定 Azure AD Domain Services 受控網域的基本設定](./media/tutorial-create-instance/basics-window.png)
 
@@ -115,7 +115,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 
 ## <a name="deploy-the-managed-domain"></a>部署受控網域
 
-在精靈的 [摘要] 頁面上，檢閱受控網域的組態設定。 您可以返回精靈的任何步驟以進行變更。 若要使用這些設定選項以一致的方式將受控網域重新部署至不同的 Azure AD 租用戶，您也可以**下載用於自動化的範本**。
+在精靈的 [摘要] 頁面上，檢閱受控網域的組態設定。 您可以返回精靈的任何步驟以進行變更。 若要使用這些設定選項以一致的方式將受控網域重新部署至不同的 Azure AD 租用戶，您也可以 **下載用於自動化的範本**。
 
 1. 若要建立受控網域，請選取 [建立]。 系統會顯示注意事項，告知您某些設定選項 (例如 DNS 名稱或虛擬網路) 在 Azure AD DS 受控網域建立之後就無法變更。 若要繼續，請選取 [確定]。
 1. 佈建受控網域的程序可能需要一小時的時間。 您會在入口網站中看到顯示 Azure AD DS 部署進度的通知。 選取通知以查看部署的詳細進度。
@@ -138,7 +138,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 
 成功部署 Azure AD DS 之後，現在請將虛擬網路設定為允許其他已連線的 VM 和應用程式使用受控網域。 若要提供此連線，請更新虛擬網路的 DNS 伺服器設定，使其指向其中部署受控網域的兩個 IP 位址。
 
-1. 受控網域的 [概觀] 索引標籤會顯示一些**必要的設定步驟**。 第一個設定步驟是更新虛擬網路的 DNS 伺服器設定。 正確設定 DNS 的設定之後，就不會再顯示此步驟。
+1. 受控網域的 [概觀] 索引標籤會顯示一些 **必要的設定步驟**。 第一個設定步驟是更新虛擬網路的 DNS 伺服器設定。 正確設定 DNS 的設定之後，就不會再顯示此步驟。
 
     列出的位址是要在虛擬網路中使用的網域控制站。 在此範例中，這些位址是 *10.0.2.4* 和 *10.0.2.5*。 您稍後可以在 [屬性] 索引標籤上找到這些 IP 位址。
 

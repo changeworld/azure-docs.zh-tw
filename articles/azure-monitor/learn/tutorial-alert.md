@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 706f3913e25eca6240c186e45709faf6c77620bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1aa3ae5be3e9f3fb50909cb5311d167bbeee647
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324568"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904222"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>使用 Azure Application Insights 監視應用程式健康情況並傳送警示
 
@@ -28,7 +28,7 @@ Azure Application Insights 可讓您監視您的應用程式，並在應用程�
 
 若要完成本教學課程：
 
-建立 [Application Insights 資源](./dotnetcore-quick-start.md#enable-application-insights)。
+建立 [Application Insights 資源](../app/create-new-resource.md)。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 

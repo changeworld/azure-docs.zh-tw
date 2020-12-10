@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: 7b6f762dd04244f430f08894cc06991796a11229
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: e5587c4826fea780c1e379ee1599440b2865dd50
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96004920"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862219"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教學課程：使用受控識別保護來自 App Service 的 Azure SQL Database 連線
 
@@ -47,7 +47,9 @@ ms.locfileid: "96004920"
 
 若要使用 SQL Database 作為後端對您的應用程式進行偵錯，請確定您已允許從您的電腦進行用戶端連線。 如果尚未這麼做，請遵循[使用 Azure 入口網站管理伺服器層級 IP 防火牆規則](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)中的步驟來新增用戶端 IP。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+備妥環境以使用 Azure CLI。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="grant-database-access-to-azure-ad-user"></a>將資料庫存取權授與 Azure AD 使用者
 
@@ -87,7 +89,7 @@ Visual Studio for Mac 不會與 Azure AD 驗證整合。 不過，稍後會用�
 
 在本機電腦上安裝 Azure CLI 後，請使用 Azure AD 使用者以下列命令登入 Azure CLI：
 
-```bash
+```azurecli
 az login --allow-no-subscriptions
 ```
 現在您已可開始將 SQL Database 作為後端，使用 Azure AD 驗證開發和偵錯您的應用程式。
@@ -206,7 +208,7 @@ az webapp identity assign --resource-group myResourceGroup --name <app-name>
 
 在 Cloud Shell 中，使用 SQLCMD 命令登入 SQL Database。 以您的伺服器名稱取代 _\<server-name>_ ，將 _\<db-name>_ 取代為應用程式所使用的資料庫名稱，並且將 _\<aad-user-name>_ 和 _\<aad-password>_ 取代為r Azure AD 使用者的憑證。
 
-```azurecli-interactive
+```bash
 sqlcmd -S <server-name>.database.windows.net -d <db-name> -U <aad-user-name> -P "<aad-password>" -G -l 30
 ```
 
@@ -249,7 +251,7 @@ az webapp config connection-string delete --resource-group myResourceGroup --nam
 
 ```bash
 git commit -am "configure managed identity"
-git push azure master
+git push azure main
 ```
 
 當新的網頁顯示待辦事項清單時，表示應用程式正使用受控識別連線到資料庫。
