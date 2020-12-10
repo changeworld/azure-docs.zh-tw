@@ -121,16 +121,48 @@
           href: signin-appauth-ios.md
         - name: 使用 App Auth 的 Android
           href: signin-appauth-android.md
+    - name: 識別提供者
+      items:
+        - name: 加入身分識別提供者
+          href: add-identity-provider.md
+        - name: AD FS
+          href: identity-provider-adfs.md
+        - name: Amazon
+          href: identity-provider-amazon.md
+        - name: Azure AD (單一租用戶)
+          href: identity-provider-azure-ad-single-tenant.md
+        - name: Azure AD (多租用戶)
+          href: identity-provider-azure-ad-multi-tenant.md
+        - name: Facebook
+          href: identity-provider-facebook.md
+        - name: 一般識別提供者
+          href: identity-provider-generic-openid-connect.md
+        - name: GitHub
+          href: identity-provider-github.md
+        - name: Google
+          href: identity-provider-google.md
+        - name: LinkedIn
+          href: identity-provider-linkedin.md
+        - name: Microsoft 帳戶
+          href: identity-provider-microsoft-account.md
+        - name: QQ
+          href: identity-provider-qq.md
+        - name: Salesforce
+          href: identity-provider-salesforce.md
+        - name: Twitter
+          href: identity-provider-twitter.md
+        - name: 微信
+          href: identity-provider-wechat.md
+        - name: 微博
+          href: identity-provider-weibo.md
     - name: 使用者流程
       items:
         - name: 建立流程
           items:
-            - name: 建立使用者流程
-              href: create-user-flow.md
+            - name: 註冊或登入
+              href: tutorial-create-user-flows.md
             - name: 資源擁有者密碼認證
               href: configure-ropc.md
-            - name: 設定電話驗證
-              href: phone-authentication-user-flows.md
             - name: 設定自助密碼重設
               href: user-flow-self-service-password-reset.md
         - name: 新增條件式存取
@@ -150,32 +182,6 @@
             - name: 啟用 MFA
               href: custom-policy-multi-factor-authentication.md
               displayName: multi-factor auth
-        - name: 外部識別提供者
-          items:
-            - name: Amazon
-              href: identity-provider-amazon.md
-            - name: Azure AD (單一租用戶)
-              href: identity-provider-azure-ad-single-tenant.md
-            - name: Microsoft 帳戶
-              href: identity-provider-microsoft-account.md
-            - name: Facebook
-              href: identity-provider-facebook.md
-            - name: GitHub
-              href: identity-provider-github.md
-            - name: Google
-              href: identity-provider-google.md
-            - name: LinkedIn
-              href: identity-provider-linkedin.md
-            - name: QQ
-              href: identity-provider-qq.md
-            - name: Twitter
-              href: identity-provider-twitter.md
-            - name: 微信
-              href: identity-provider-wechat.md
-            - name: 微博
-              href: identity-provider-weibo.md
-            - name: 一般識別提供者
-              href: identity-provider-generic-openid-connect.md
         - name: 權杖和工作階段管理
           items:
             - name: 設定權杖
@@ -236,32 +242,6 @@
               href: javascript-samples.md
             - name: 密碼複雜度
               href: custom-policy-password-complexity.md
-        - name: 外部識別提供者
-          items:
-            - name: OIDC/OAuth 提供者
-              items:
-                - name: Amazon
-                  href: identity-provider-amazon-custom.md
-                - name: Azure AD (單一租用戶)
-                  href: identity-provider-azure-ad-single-tenant-custom.md
-                - name: Azure AD (多租用戶)
-                  href: identity-provider-azure-ad-multi-tenant-custom.md
-                - name: Google
-                  href: identity-provider-google-custom.md
-                - name: LinkedIn
-                  href: identity-provider-linkedin-custom.md
-                - name: Microsoft 帳戶
-                  href: identity-provider-microsoft-account-custom.md
-                - name: Twitter
-                  href: identity-provider-twitter-custom.md
-            - name: SAML 提供者
-              items:
-                - name: AD FS
-                  href: identity-provider-adfs2016-custom.md
-                  displayName: SAML
-                - name: Salesforce
-                  href: identity-provider-salesforce-custom.md
-                  displayName: SAML
         - name: 權杖和工作階段管理
           items:
             - name: 自訂權杖
@@ -525,7 +505,7 @@
       href: 'https://azure.microsoft.com/updates/?product=active-directory-b2c'
     - name: 解決方案與訓練
       href: solution-articles.md
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework'
     - name: 支援
       href: support-options.md
