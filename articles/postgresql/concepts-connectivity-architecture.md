@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: a6e2bc93a589e0a3f709eb1a8956bf8ca3d8bf6b
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 88d2dc456ab3dba1a21babae36712439b6231d30
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242053"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008515"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>適用於 PostgreSQL 的 Azure 資料庫中的連線架構
 本文說明適用於 PostgreSQL 的 Azure 資料庫連線架構，以及如何將流量導向至 Azure 內部和外部用戶端的適用於 PostgreSQL 的 Azure 資料庫資料庫實例。
@@ -50,12 +50,12 @@ ms.locfileid: "93242053"
 | 印度中部 | 104.211.96.159     |
 | 印度南部 | 104.211.224.146  |
 | 印度西部 | 104.211.160.80    |
-| 日本東部 | 13.78.61.196, 191.237.240.43  |
+| 日本東部 | 13.78.61.196, 191.237.240.43, 40.79.192.23 |
 | 日本西部 | 104.214.148.156, 191.238.68.11, 40.74.96.6, 40.74.96.7    |
 | 南韓中部 | 52.231.32.42   |
 | 南韓南部 | 52.231.200.86    |
 | 美國中北部 | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
-| 歐洲北部 | 40.113.93.91, 191.235.193.75, 52.138.224.6, 52.138.224.7    |
+| 北歐 | 40.113.93.91, 191.235.193.75, 52.138.224.6, 52.138.224.7    |
 | 南非北部  | 102.133.152.0    |
 | 南非西部 | 102.133.24.0   |
 | 美國中南部 |13.66.62.124, 23.98.162.75, 104.214.16.39, 20.45.120.0   |
@@ -70,7 +70,7 @@ ms.locfileid: "93242053"
 | 美國西部 2 | 13.66.226.202  |
 ||||
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [使用 Azure 入口網站建立和管理適用於 PostgreSQL 的 Azure 資料庫防火牆規則](./howto-manage-firewall-using-portal.md)
 * [使用 Azure CLI 建立和管理適用於 PostgreSQL 的 Azure 資料庫防火牆規則](./howto-manage-firewall-using-cli.md)

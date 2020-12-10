@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c35647a46cd252ce045d10e8dfefcf78236ba74b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2ab39f090124aaf590798795f446bda5b0fe48a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961715"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008549"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure App Service 常見問題集
 
@@ -40,7 +40,7 @@ ms.locfileid: "88961715"
 
 這些命令或腳本會在內建的 Docker 容器啟動之後，但在您的應用程式程式碼啟動之前執行。
 
-## <a name="management"></a>管理性
+## <a name="management"></a>管理
 
 **當我按下 Azure 入口網站中的 [重新啟動] 按鈕時，會發生什麼事？**
 
@@ -94,7 +94,7 @@ ms.locfileid: "88961715"
 
 ```nodejs
 const io = require('socket.io')(server,{
-  perMessageDeflate :false
+  perMessageDeflate :false
 });
 ```
 
@@ -122,7 +122,7 @@ const io = require('socket.io')(server,{
 
 **私人登錄選項中的映像名稱格式為何？**
 
-新增包括私人登錄 URL 的完整映像名稱 (例如 myacr.azurecr.io/dotnet:latest)。 使用自訂連接埠的映像名稱[無法透過入口網站輸入](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)。 若要設定 `docker-custom-image-name` ，請使用[ `az` 命令列工具](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)。
+新增包括私人登錄 URL 的完整映像名稱 (例如 myacr.azurecr.io/dotnet:latest)。 使用自訂連接埠的映像名稱[無法透過入口網站輸入](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)。 若要設定 `docker-custom-image-name` ，請使用[ `az` 命令列工具](/cli/azure/webapp/config/container#az-webapp-config-container-set)。
 
 **我可以在我的自訂容器映像上公開多個連接埠嗎？**
 
@@ -146,9 +146,9 @@ SCM 網站是在個別的容器中執行。 您無法檢查應用程式容器的
 
 ## <a name="multi-container-with-docker-compose"></a>具有 Docker Compose 的多容器
 
-**如何設定 Azure 容器登錄 (ACR) 與多重容器一起使用？ **
+**如何設定 Azure 容器登錄 (ACR) 與多重容器一起使用？**
 
-為了將 ACR 與多重容器一起使用，**所有容器映像**都必須裝載在相同的 ACR 登錄伺服器上。 一旦在相同的登錄伺服器上，您將需要建立應用程式設定，然後更新 Docker Compose 設定檔，以包含 ACR 映射名稱。
+為了將 ACR 與多重容器一起使用，**所有容器映像** 都必須裝載在相同的 ACR 登錄伺服器上。 一旦在相同的登錄伺服器上，您將需要建立應用程式設定，然後更新 Docker Compose 設定檔，以包含 ACR 映射名稱。
 
 建立下列應用程式設定：
 
@@ -201,7 +201,7 @@ Linux 應用程式支援 Web 通訊端。
 
 您可以在 [Web Apps 意見反應論壇](https://aka.ms/webapps-uservoice) (英文) 提交您的想法。 將 "[Linux]" 新增至您想法的標題。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [何謂 Linux 上的 Azure App Service？](overview.md#app-service-on-linux)
 - [在 Azure App Service 中設定預備環境](deploy-staging-slots.md) \(部分機器翻譯\)

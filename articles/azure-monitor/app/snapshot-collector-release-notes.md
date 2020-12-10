@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
-ms.openlocfilehash: 73fea1e1928cf4e1bd5342aa0a4c885ccb5cf137
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: e4fffe0efa9f6900ef8d83c0a1b150b4249c22b3
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548166"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008566"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>ApplicationInsights. Microsoft.applicationinsights.snapshotcollector 的版本資訊
 
@@ -22,6 +22,11 @@ ms.locfileid: "96548166"
 
 ## <a name="release-notes"></a>版本資訊
 
+## <a name="1375"></a>[1.3.7.5](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.5)
+從1.4.0 將修正的點發行版。
+### <a name="bug-fixes"></a>錯誤修正
+- 修正 [關機時的 ObjectDisposedException](https://github.com/microsoft/ApplicationInsights-dotnet/issues/2097)。
+
 ## <a name="1374"></a>[1.3.7.4](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.4)
 點發行，可解決在測試 Azure App Service 的無程式碼附加案例中發現的問題。
 ### <a name="changes"></a>變更
@@ -29,7 +34,7 @@ ms.locfileid: "96548166"
 
 ## <a name="1373"></a>[1.3.7.3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.3)
 點釋出，可解決一些高度影響的問題。
-### <a name="bug-fixes"></a>Bug 修正
+### <a name="bug-fixes"></a>錯誤修正
 - 修正 wwwroot/bin 資料夾中的 PDB 探索，當我們在1.3.6 中變更符號搜尋演算法時，這會中斷。
 - 修正遙測中的雜訊 ExtractWasCalledMultipleTimesException。
 
@@ -38,7 +43,7 @@ ms.locfileid: "96548166"
 - Microsoft.applicationinsights.snapshotcollector 的 netcoreapp 2.0 目標相依于 ApplicationInsights。 AspNetCore >= 2.1.1 (再次) 。 這會將行為還原為1.3.5 之前的行為。 我們嘗試在1.3.6 中進行升級，但中斷了某些 Azure App Service 案例。
 ### <a name="new-features"></a>新功能
 - Snapshot Collector 從 APPLICATIONINSIGHTS_CONNECTION_STRING 環境變數或從 TelemetryConfiguration 中讀取和剖析 ConnectionString。 這主要是用來設定連接到快照集服務的端點。 如需詳細資訊，請參閱 [連接字串檔](./sdk-connection-string.md)。
-### <a name="bug-fixes"></a>Bug 修正
+### <a name="bug-fixes"></a>錯誤修正
 - 切換為針對 net45 以外的所有目標使用 HttpClient，因為在某些環境中因為不相容的 SecurityProtocol 而導致 WebRequest 失敗 (需要 TLS 1.2) 。
 
 ## <a name="136"></a>[1.3.6](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.6)
@@ -54,7 +59,7 @@ ms.locfileid: "96548166"
 - 上傳小型傾印時，請設定其他中繼資料。
 - 已將初始化的屬性新增至 SnapshotCollectorTelemetryProcessor。 這是 CancellationToken，當 Snapshot Collector 完全初始化並連接至服務端點時，將會取消此工作。
 - 現在可以針對動態產生的方法中的例外狀況來捕捉快照集。 例如，Entity Framework 查詢所產生的已編譯運算式樹狀架構。
-### <a name="bug-fixes"></a>Bug 修正
+### <a name="bug-fixes"></a>錯誤修正
 - AmbiguousMatchException 載入 Snapshot Collector，因為狀態監視器。
 - GetSnapshotCollector 擴充方法現在會搜尋所有 TelemetrySinks。
 - 請勿在不支援的平臺上啟動快照集上載。
@@ -106,7 +111,7 @@ ms.locfileid: "96548166"
   - Azure 計算實例。
   - 容器。
   - Azure 函數應用程式。
-### <a name="bug-fixes"></a>Bug 修正
+### <a name="bug-fixes"></a>錯誤修正
 - 當問題計數器重設間隔設定為24天時，請將其解釋為24小時。
 - 修正當處置快照集發生例外狀況時，快照集上傳程式會停止處理新快照集的 bug。
 
@@ -123,7 +128,7 @@ ms.locfileid: "96548166"
 - 針對您想要以程式設計方式設定 Snapshot Collector 的案例，在 TelemetryConfiguration 上加入 GetSnapshotCollector 擴充方法。
 - 將 Application Insights SDK 版本設定 (，而不是在客戶面向的遙測中) 應用程式版本。
 - 在兩分鐘之後傳送第一個訊號事件。
-### <a name="bug-fixes"></a>Bug 修正
+### <a name="bug-fixes"></a>錯誤修正
 - 修正例外狀況有 null 或不可變的資料字典時的 NullReferenceException。
 - 在上傳中，如果發生共用違規，請重試比對幾次的 PDB。
 - 當一個以上的執行緒在啟動時呼叫遙測管線時，修正重複的遙測。
@@ -133,7 +138,7 @@ ms.locfileid: "96548166"
 - XML 檔批註檔案現在包含在 NuGet 套件中。
 - `System.Exception`針對您知道有雜訊的例外狀況，而且想要避免為其建立快照集的案例，新增了 ExcludeFromSnapshotting 擴充方法。
 - 已新增 IsEnabledWhenProfiling 設定屬性，預設為 true。 這是先前版本的變更，如果 Application Insights Profiler 正在執行詳細的集合，則會暫時停用快照集建立。 將此屬性設定為 false，即可復原舊行為。
-### <a name="bug-fixes"></a>Bug 修正
+### <a name="bug-fixes"></a>錯誤修正
 - 簽署 SnapshotUploader64.exe 正確。
 - 保護遙測處理器的雙重初始化。
 - 防止在具有多個管線的應用程式中重複記錄遙測資料。
@@ -159,7 +164,7 @@ ms.locfileid: "96548166"
 - 偵測和報告 .NET 版本和 OS
 - 偵測及報告其他 Azure 環境 (雲端服務、Service Fabric) 
 - 記錄和報告例外狀況計量 (第一次可能發生的例外狀況，以及在心跳遙測中) 的 TrackException 呼叫數目。
-### <a name="bug-fixes"></a>Bug 修正
+### <a name="bug-fixes"></a>錯誤修正
 - 不會擲回內部例外狀況 (Win32Exception) 的 SqlException 正確處理。
 - 修剪符號資料夾上的尾端空格，這會導致不正確地剖析 Minidumpuploader.exe 的命令列引數。
 - 防止對快照偵錯工具代理程式端點的失敗連接進行無限次重試。

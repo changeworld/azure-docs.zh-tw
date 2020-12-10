@@ -4,12 +4,12 @@ description: 使用 Azure 入口網站從復原點還原 Azure 虛擬機器，�
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 1c28de679bd957a472e543489a2dd15b3883aed5
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: baae35c87f306f5773fa8061f27e9793754ccc9c
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327180"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008498"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 入口網站中還原 Azure VM 資料
 
@@ -53,7 +53,7 @@ Azure 備份提供數種方式來還原 VM。
 
 ## <a name="select-a-restore-point"></a>選取還原點
 
-1. 在與您想要還原之 VM 相關聯的保存庫 **Backup items** 中，選取 [  >  **Azure 虛擬機器** 備份專案]。
+1. 在與您想要還原之 VM 相關聯的保存庫中，選取 [  >  **Azure 虛擬機器** 備份專案]。
 1. 選取 VM。 根據預設，VM 儀表板上會顯示過去 30 天內的復原點。 您可以根據日期、時間範圍和不同類型的快照集一致性來顯示或篩選出超過 30 天的復原點。
 1. 若要還原 VM，請選取 [ **還原 vm**]。
 
@@ -213,6 +213,8 @@ Azure 備份提供數種方式來還原 VM。
 **還原單一網域中的多個網域控制站 Vm** | 如果可以透過網路連線到相同網域中的其他網域控制站，則可以像任何 VM 一樣還原網域控制站。 如果該網域控制站是網域內剩餘的最後一個網域控制站，或者您是在隔離的網路中進行復原，請使用[樹系復原](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)。
 **還原多重網域設定中的單一網域控制站 VM** |  [使用 PowerShell](backup-azure-vms-automation.md#restore-the-disks)復原磁碟並建立 VM  
 **還原單一樹系中的多個網域** | 我們建議使用[樹系復原](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)。
+
+如需詳細資訊，請參閱 [備份和還原 Active Directory 網域控制站](active-directory-backup-restore.md)。
 
 ## <a name="track-the-restore-operation"></a>追蹤還原作業
 

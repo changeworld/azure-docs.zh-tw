@@ -7,13 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.custom: contperfq1
-ms.date: 10/2/2020
-ms.openlocfilehash: 022e2e25c96473f49468f2bd48e5ee997933baea
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.date: 12/9/2020
+ms.openlocfilehash: 70a2d5fac643c9af6954f154e1c91813bbbfa5bc
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348707"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008379"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Azure 串流分析的輸出
 
@@ -25,12 +25,12 @@ Azure 串流分析作業是由輸入、查詢及輸出所組成。 有數種輸�
 
 | 輸出類型 | 資料分割 | 安全性 | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|是|Azure Active Directory 使用者 </br> MSI|
-|[Azure SQL Database](sql-database-output.md)|是，選擇性。|SQL 使用者驗證 </br> MSI (預覽) |
-|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|是|SQL 使用者驗證|
-|[Blob 儲存體和 Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|是|MSI </br> 存取金鑰|
-|[Azure 事件中樞](event-hubs-output.md)|是，需要在輸出設定中設定分割區索引鍵資料行。|存取金鑰|
-|[Power BI](power-bi-output.md)|否|Azure Active Directory 使用者 </br> MSI|
+|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|是|Azure Active Directory 使用者 </br> ，受控識別|
+|[Azure SQL Database](sql-database-output.md)|是，選擇性。|SQL 使用者驗證， </br> 受控識別 (預覽)|
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|是|SQL 使用者驗證， </br> 受控識別 (預覽)|
+|[Blob 儲存體和 Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|是|存取金鑰， </br> 受控識別 (預覽)|
+|[Azure 事件中樞](event-hubs-output.md)|是，需要在輸出設定中設定分割區索引鍵資料行。|存取金鑰， </br> 受控識別 (預覽)|
+|[Power BI](power-bi-output.md)|否|Azure Active Directory 使用者， </br> 受控識別|
 |[Azure 資料表儲存體](table-storage-output.md)|是|帳戶金鑰|
 |[Azure 服務匯流排佇列](service-bus-queues-output.md)|是|存取金鑰|
 |[Azure 服務匯流排主題](service-bus-topics-output.md)|是|存取金鑰|

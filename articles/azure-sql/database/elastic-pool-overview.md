@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
-ms.date: 07/28/2020
-ms.openlocfilehash: 3b76af2c6c949f2591cee880a1991c6f240806a2
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.date: 12/9/2020
+ms.openlocfilehash: d1ba9445441f38c55b40a8f8ca55471ea8b0a06d
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107890"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008583"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>彈性集區可協助您管理及調整 Azure SQL Database 中的多個資料庫
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -74,38 +74,18 @@ SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應
 - 每個資料庫的尖峰使用量會在不同時間點發生。
 - eDTU 會在許多資料庫之間共用。
 
-集區的價格是集區 eDTU 的函式。 雖然集區的 eDTU 單價較單一資料庫的 DTU 單價高 1.5 倍，但是**集區 eDTU 可由多個資料庫共用，而需要的 eDTU 總數會比較少**。 價格方面和 eDTU 共用的這些差異是集區可以提供價格節約潛力的基礎。
+在 DTU 購買模型中，集區的價格是集區 Edtu 的功能。 雖然集區的 eDTU 單價較單一資料庫的 DTU 單價高 1.5 倍，但是 **集區 eDTU 可由多個資料庫共用，而需要的 eDTU 總數會比較少**。 價格方面和 eDTU 共用的這些差異是集區可以提供價格節約潛力的基礎。
 
-下列資料庫計數和資料庫使用量相關規則的經驗法則，可協助確保集區可提供相較於使用單一資料庫的計算大小降低的成本。
-
-### <a name="minimum-number-of-databases"></a>資料庫的最小數目
-
-如果單一資料庫的資源彙總數量大於集區所需資源的 1.5 倍，則彈性集區會更符合成本效益。
-
-以***DTU 為基礎的購買模型範例***100 eDTU 集區至少需要兩個 S3 資料庫或至少15個 S0 資料庫，才能比使用單一資料庫的計算大小更符合成本效益。
-
-### <a name="maximum-number-of-concurrently-peaking-databases"></a>並行尖峰資料庫的最大數目
-
-藉由共用資源，並非集區中的所有資料庫都能同時使用資源達到單一資料庫的最大限制。 同時尖峰的資料庫愈少，可以設定的集區資源愈低，集區就能更符合成本效益。 一般而言，集區中應該不能有超過 2/3 (或 67%) 的資料庫同時達到其資源限制的尖峰。
-
-以***DTU 為基礎的購買模型範例***為了降低 200 eDTU 集區中三個 S3 資料庫的成本，這些資料庫中最多有兩個都可以同時尖峰其使用率。 否則，如果 4 個 S3 資料庫中超過 2 個同時尖峰，則必須將集區調整為超過 200 個 eDTU。 如果將集區調整大小為超過 200 個 eDTU，則需要加入更多的 S3 資料庫至集區，以使成本保持低於單一資料庫的計算大小。
-
-請注意，此範例不考慮集區中其他資料庫的使用率。 如果所有資料庫在任何指定的時間點都有一些使用量，則可同時到達尖峰的資料庫會少於 2/3 (或 67%)。
-
-### <a name="resource-utilization-per-database"></a>每個資料庫的資源使用量
-
-資料庫的尖峰和平均使用量之間的差異為，長時間的低使用量和短時間的高使用量。 這個使用量模式非常適合在資料庫之間共用資源。 若資料庫的尖峰使用量為平均使用量的 1.5 倍大，就應該將該資料庫視為集區。
-
-以***DTU 為基礎的購買模型範例***尖峰至 100 Dtu 且平均使用 67 Dtu 或更低的 S3 資料庫，是在集區中共用 Edtu 的理想候選。 或者，尖峰為 20 個 DTU 且平均使用 13 個 DTU 或更少的 S1 資料庫是集區的良好候選項目。
+在 vCore 購買模型中，彈性集區的 vCore 單價與單一資料庫的 vCore 單位價格相同。
 
 ## <a name="how-do-i-choose-the-correct-pool-size"></a>如何選擇正確的集區大小
 
 集區的最佳大小取決於集區中所有資料庫所需的彙總資源。 這牽涉到決定下列各項：
 
-- 集區中所有資料庫所使用的資源上限 (最大 Dtu 或最大虛擬核心，視您選擇的購買模型) 而定。
+- 集區中所有資料庫所使用的計算資源上限。  計算資源會依據您選擇的購買模型，依 Edtu 或虛擬核心編制索引。
 - 集區中所有資料庫使用的最大儲存體位元組。
 
-如需每個資源模型的可用服務層級和限制，請參閱以 [DTU 為基礎的購買模型](service-tiers-dtu.md) 或以 [vCore 為基礎的購買模型](service-tiers-vcore.md)。
+針對每個購買模型中的服務層級和資源限制，請參閱以 [DTU 為基礎的購買模型](service-tiers-dtu.md) 或以 [vCore 為基礎的購買模型](service-tiers-vcore.md)。
 
 下列步驟可協助您預估集區是否比單一資料庫更符合成本效益：
 
@@ -113,16 +93,16 @@ SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應
 
 對於以 DTU 為基礎的購買模型：
 
-最大 ( # *Total number of DBs* B0*每個 DB 的平均 DTU 使用率*>，<*並行尖峰*Db x*每個 db 的尖峰 dtu 使用率*>) 
+最大 ( #  B0 *每個 DB 的平均 DTU 使用率*>，<*並行尖峰* Db x *每個 db 的尖峰 dtu 使用率*>) 
 
 對於以虛擬核心為基礎的購買模型：
 
-MAX ( # B0 *Total number of DBs* *每個 Db 的平均 vCore 使用率*>，<*同時尖峰*db x*尖峰 vCore 使用量（每個 db*>）) 
+MAX ( # B0  *每個 Db 的平均 vCore 使用率*>，<*同時尖峰* db x *尖峰 vCore 使用量（每個 db*>）) 
 
-2. 加總集區中所有資料庫所需的位元組數目，以估計集區所需的儲存空間。 然後判斷可提供此儲存體數量的 eDTU 集區大小。
+2. 藉由新增集區中所有資料庫所需的資料大小，估計集區所需的總儲存空間。 針對 DTU 購買模型，請判斷可提供此儲存體數量的 eDTU 集區大小。
 3. 針對以 DTU 為基礎的購買模型，採用步驟 1 和步驟 2 中較大的 eDTU 估計值。 針對以虛擬核心為基礎的購買模型，採用步驟 1 中的虛擬核心估計值。
 4. 請參閱 [SQL Database 價格頁面](https://azure.microsoft.com/pricing/details/sql-database/)並尋找大於步驟 3 估計值的最小集區大小。
-5. 將步驟 5 的集區價格與單一資料庫適當計算大小的價格相比較。
+5. 將步驟4中的集區價格與單一資料庫使用適當計算大小的價格相比較。
 
 > [!IMPORTANT]
 > 如果集區中的資料庫數目接近支援的最大值，請務必考慮使用 [密集彈性集區中的資源管理](elastic-pool-resource-management.md)。
@@ -131,7 +111,7 @@ MAX ( # B0 *Total number of DBs* *每個 Db 的平均 vCore 使用率*>，<*同�
 
 ### <a name="elastic-jobs-and-elastic-pools"></a>彈性作業和彈性集區
 
-使用集區，只要在**[彈性作業](elastic-jobs-overview.md)** 中執行指令碼，就能簡化管理工作。 彈性作業會消除與大量資料庫相關聯的冗長工作。
+使用集區，只要在 **[彈性作業](elastic-jobs-overview.md)** 中執行指令碼，就能簡化管理工作。 彈性作業會消除與大量資料庫相關聯的冗長工作。
 
 如需可供使用多個資料庫之其他資料庫工具的詳細資訊，請參閱[使用Azure SQL Database 向上調整](elastic-scale-introduction.md)。
 
@@ -157,7 +137,7 @@ MAX ( # B0 *Total number of DBs* *每個 Db 的平均 vCore 使用率*>，<*同�
 
 1. 移至 [Azure 入口網站](https://portal.azure.com) 以建立彈性集區。 搜尋並選取 **AZURE SQL**。
 2. 選取 [+ 新增] 以開啟 [選取 SQL 部署選項] 頁面。 您可以選取 [**資料庫**] 磚上的 [**顯示詳細資料**]，以查看彈性集區的其他相關資訊。
-3. 在 [**資料庫**] 磚的 [**資源類型**] 下拉式清單中，選取 [**彈性集**區]，然後選取 [**建立**：
+3. 在 [**資料庫**] 磚的 [**資源類型**] 下拉式清單中，選取 [**彈性集** 區]，然後選取 [**建立**：
 
    ![建立彈性集區](./media/elastic-pool-overview/create-elastic-pool.png)
 
@@ -168,7 +148,7 @@ MAX ( # B0 *Total number of DBs* *每個 Db 的平均 vCore 使用率*>，<*同�
 
 集區的服務層級決定了集區中彈性資料庫可用的功能，以及每個資料庫可用的資源數目上限。 如需詳細資訊，請參閱 [DTU 模型](resource-limits-dtu-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes)中彈性集區的資源限制。 如需彈性集區以虛擬核心為基礎的資源限制，請參閱[以虛擬核心為基礎的資源限制 - 彈性集區](resource-limits-vcore-elastic-pools.md)。
 
-若要設定集區的資源和定價，請按一下 [設定集區]****。 然後選取服務層級、將資料庫新增至集區，以及為集區及其資料庫設定資源限制。
+若要設定集區的資源和定價，請按一下 [設定集區]。 然後選取服務層級、將資料庫新增至集區，以及為集區及其資料庫設定資源限制。
 
 當您完成設定集區時，您可以按一下 [套用]，為集區命名，然後按一下 [確定] 以建立集區。
 
@@ -176,34 +156,7 @@ MAX ( # B0 *Total number of DBs* *每個 Db 的平均 vCore 使用率*>，<*同�
 
 在 Azure 入口網站中，您可以監視彈性集區與集區內資料庫的使用率。 也可以對彈性集區進行一些變更，並且一次提交所有的變更。 這些變更包括新增或移除資料庫、變更您的彈性集區設定，或變更您的資料庫設定。
 
-若要開始監視您的彈性集區，請在入口網站中尋找並開啟彈性集區。 您會先看到一個畫面，讓您瞭解彈性集區的狀態。 這包括：
-
-- 監視圖表會顯示彈性集區的資源使用量
-- 彈性集區的最近警示和建議 (如果有的話)
-
-下圖顯示範例彈性集區：
-
-![集區檢視](./media/elastic-pool-overview/basic.png)
-
-如果您想要更多有關集區的資訊，您可以在此概觀中按一下任何可用資訊。 按一下 [資源使用量]**** 圖表，系統將會帶您前往 [Azure 監視] 檢視，您可以在那裡自訂圖表中顯示的計量和時間範圍。 按一下任何可用的通知，系統將會帶您前往一個刀鋒視窗，其中顯示該警示或建議的完整詳細資料。
-
-如果您想要監視集區內的資料庫，您可以按一下左側資源功能表上 [監視]**** 區段中的 [資料庫資源使用量]****。
-
-![資料庫資源使用率頁面](./media/elastic-pool-overview/db-utilization.png)
-
-### <a name="to-customize-the-chart-display"></a>自訂圖表顯示
-
-您可以編輯此圖表和 [計量] 頁面，以顯示其他計量，例如所用的 CPU 百分比、資料 IO 百分比和記錄 IO 百分比。
-
-在 [編輯圖表]**** 表單上，您可以選取固定時間範圍，或按一下 [自訂]**** 以選取最近兩週內的任何 24 小時範圍，然後選取要監視的資源。
-
-### <a name="to-select-databases-to-monitor"></a>選取要監視的資料庫
-
-根據預設，[資料庫資源使用量]**** 刀鋒視窗中的圖表會依照 DTU 或 CPU (取決於您的服務層級) 顯示前 5 名資料庫。 您可以在此圖表中切換資料庫，方法是透過左側的核取方塊，從圖表下方的清單中選取和取消選取資料庫。
-
-您也可以選取更多計量，以在此資料庫資料表中並列檢視，進而取得更完整的資料庫效能檢視。
-
-如需詳細資訊，請參閱[在 Azure 入口網站中建立 SQL Database 警示](alerts-insights-configure-portal.md)。
+您可以使用內建的 [效能監視](https://docs.microsoft.com/azure/azure-sql/database/performance-guidance) 和 [警示工具](https://docs.microsoft.com/azure/azure-sql/database/alerts-insights-configure-portal)，並結合效能評等。  此外，SQL Database 可[發出計量和資源記錄](https://docs.microsoft.com/azure/azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure?tabs=azure-portal)，以供更輕鬆地進行監視。
 
 ## <a name="customer-case-studies"></a>客戶案例研究
 

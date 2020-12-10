@@ -7,19 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/01/2020
-ms.openlocfilehash: e583cedc04113615c50cc9906cbd11a99ff48683
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 12/09/2020
+ms.openlocfilehash: 182ec758a8764a959b39296163e63e800cf5108c
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421714"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008478"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中使用搜尋結果
 
-本文說明如何取得查詢回應，其會以相符檔總數、編頁結果、排序結果，以及點擊醒目提示的詞彙傳回。
+本文說明如何在 Azure 認知搜尋中制訂查詢回應。 回應的結構取決於查詢中的參數：在 .NET SDK 中的 REST API 或[>.searchresults 類別](/dotnet/api/azure.search.documents.models.searchresults-1)中[搜尋檔](/rest/api/searchservice/Search-Documents)。 查詢的參數可透過下列方式用來建構結果集：
 
-回應的結構取決於查詢中的參數：在 .NET SDK 中的 REST API 或[>.searchresults 類別](/dotnet/api/azure.search.documents.models.searchresults-1)中[搜尋檔](/rest/api/searchservice/Search-Documents)。
++ 依預設，限制或批次處理結果中的檔數目 (50) 
++ 選取要包含在結果中的欄位
++ 訂單結果
++ 在搜尋結果的主體中，反白顯示相符的整個或部分詞彙
 
 ## <a name="result-composition"></a>結果組合
 
@@ -38,6 +41,14 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 
 > [!NOTE]
 > 如果想要在結果中包含影像檔案（例如，產品相片或標誌），請將它們儲存在 Azure 認知搜尋的外部，但在您的索引中包含欄位，以參考搜尋檔中的影像 URL。 支援結果中影像的範例索引包括 **realestate-範例-us** 示範、本 [快速入門](search-create-app-portal.md)中所述的範例，以及 [紐約城市工作示範應用程式](https://aka.ms/azjobsdemo)。
+
+### <a name="tips-for-unexpected-results"></a>未預期結果的提示
+
+有時候，結果的本質和結構會不符預期的。 當查詢結果非預期時，您可以嘗試這些查詢修改來查看結果是否改善：
+
++ 將 **`searchMode=any`** (預設) 變更為 **`searchMode=all`** ，以要求符合所有準則，而非任何準則。 此做法在查詢中包含布林運算子時特別有用。
+
++ 使用不同的詞法分析器或自訂分析器來進行實驗，以查看是否變更查詢結果。 預設分析器將會分割斷字元的單字，並將文字減少為根表單，這通常可改善查詢回應的穩定性。 但是，如果您需要保留連字號，或如果字串包含特殊字元，您可能需要設定自訂分析器，以確定索引包含正確格式的權杖。 如需詳細資訊，請參閱 [使用特殊字元的部分詞彙搜尋和模式 (連字號、萬用字元、RegEx、模式) ](search-query-partial-matching.md)。
 
 ## <a name="paging-results"></a>分頁結果
 
@@ -80,9 +91,9 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 
 ## <a name="ordering-results"></a>排序結果
 
-針對全文檢索搜尋查詢，結果會依搜尋分數自動排名，並根據檔中的詞彙頻率和鄰近性計算，並以較高的分數，在搜尋字詞上具有更多或更強的相符檔。 
+針對全文檢索搜尋查詢，結果會自動依搜尋分數進行排名，並根據詞彙頻率和檔中的鄰近性來計算 (衍生自 [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) ，而較高的分數則會在搜尋詞彙上具有更多或更強的相符檔。 
 
-搜尋分數會傳達相關的一般意義，以反映與相同結果集中其他檔相較之下的相符強度。 分數不一定會與下一個查詢一致，因此當您使用查詢時，您可能會注意到搜尋檔的排序方式不一致。 有幾個說明原因可能會發生這種情況。
+搜尋分數會傳達相關的一般意義，以反映與相同結果集中其他檔相關的比對強度。 但是分數不一定會與下一個查詢一致，因此當您使用查詢時，您可能會注意到搜尋檔的排序方式不一致。 有幾個說明原因可能會發生這種情況。
 
 | 原因 | 描述 |
 |-----------|-------------|
@@ -90,11 +101,11 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 | 多個複本 | 針對使用多個複本的服務，會以平行方式對每個複本發出查詢。 用來計算搜尋分數的索引統計資料會依據每個複本計算，並在查詢回應中合併和排序結果。 複本大多是彼此的鏡像，但統計資料可能會因為狀態的小差異而不同。 例如，一個複本可能已刪除參與其統計資料的檔，而這些檔已與其他複本合併。 一般來說，在較小的索引中，每個複本統計資料的差異比較明顯。 |
 | 相同分數 | 如果有多份檔的分數相同，則可能會先出現其中任何一個。  |
 
-### <a name="consistent-ordering"></a>一致排序
+### <a name="how-to-get-consistent-ordering"></a>如何取得一致的順序
 
-由於結果順序的彈性，您可能會想要在一致性為應用程式需求時探索其他選項。 最簡單的方法是依域值排序，例如評等或日期。 針對您想要依特定欄位排序的案例，例如評等或日期，您可以明確定義 [ `$orderby` 運算式](query-odata-filter-orderby-syntax.md)，以套用至任何索引為可 **排序** 的欄位。
+如果一致的順序是應用程式需求，您可以在欄位上明確地定義 [ **`$orderby`** ] 運算式 (query-odata-filter-orderby-syntax.md) 。 只有索引為的欄位 **`sortable`** 可以用來排序結果。 **`$orderby`** 如果您指定 **`orderby`** 參數值來包含功能變數名稱，以及地理空間值 [**`geo.distance()` 的函**](query-odata-filter-orderby-syntax.md)式呼叫，通常會在 [包含評等]、[日期] 和 [位置] 欄位中使用的欄位。
 
-另一個選項是使用 [自訂評分設定檔](index-add-scoring-profiles.md)。 評分設定檔可讓您更充分掌控搜尋結果中的專案排名，並能夠提升在特定欄位中找到的相符專案。 額外的評分邏輯可協助覆寫複本之間的微小差異，因為每份檔的搜尋分數會相距更遠。 我們建議採用此方法的 [排名演算法](index-ranking-similarity.md) 。
+提升一致性的另一種方法是使用 [自訂評分設定檔](index-add-scoring-profiles.md)。 評分設定檔可讓您更充分掌控搜尋結果中的專案排名，並能夠提升在特定欄位中找到的相符專案。 額外的評分邏輯可協助覆寫複本之間的微小差異，因為每份檔的搜尋分數會相距更遠。 我們建議採用此方法的 [排名演算法](index-ranking-similarity.md) 。
 
 ## <a name="hit-highlighting"></a>搜尋結果醒目提示
 

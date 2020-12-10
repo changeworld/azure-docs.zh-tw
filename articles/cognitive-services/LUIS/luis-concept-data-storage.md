@@ -8,16 +8,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/13/2020
-ms.openlocfilehash: fd7499bd5e216f2a625d87ea13996da851a1889e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 12/07/2020
+ms.openlocfilehash: a58bcff4e39c4a4a907cd8567b47b074ff299bd5
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019206"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008447"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Language Understanding (LUIS) 認知服務中的資料儲存和移除
-LUIS 會將資料以加密方式儲存在與金鑰所指定區域對應的 Azure 資料存放區中。 此資料會儲存 30 天。 
+
+LUIS 會將加密的資料儲存在 Azure 資料存放區中，並對應至金鑰 [所指定的區域](luis-reference-regions.md) 。 
+
+* 用來定型模型的資料（例如實體、意圖和語句）將會在應用程式的存留期內儲存在 LUIS 中。 如果擁有者或參與者刪除了該應用程式，將會刪除此資料。 如果未在90天內使用應用程式，則會將其刪除。 
+
+* 應用程式作者可以選擇在傳送至已發佈應用程式的語句上 [啟用記錄](luis-how-to-review-endpoint-utterances.md#log-user-queries-to-enable-active-learning) 。 啟用時，語句會儲存30天，而且可由應用程式作者查看。 如果在發行應用程式時未啟用記錄功能，則不會儲存此資料。
 
 ## <a name="export-and-delete-app"></a>匯出及刪除應用程式
 使用者可以完全控制應用程式的[匯出](luis-how-to-start-new-app.md#export-app)和[刪除](luis-how-to-start-new-app.md#delete-app)。 
@@ -67,7 +72,7 @@ LUIS 會將資料以加密方式儲存在與金鑰所指定區域對應的 Azure
 * 沒有已指派的目前金鑰。
 * 沒有已指派的使用者。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [了解如何匯出及刪除應用程式](luis-how-to-start-new-app.md)

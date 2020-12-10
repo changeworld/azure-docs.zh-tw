@@ -4,14 +4,14 @@ description: 使用 Azure CLI 將 Vm 和擴展集實例部署到專用主機。
 author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 09/25/2020
+ms.date: 11/12/2020
 ms.author: cynthn
-ms.openlocfilehash: d99f8c380b486ed818aff64782ca817dab41c916
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d2cf78d328017f96552bd51794ac997c394d18f1
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975276"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008413"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>使用 Azure CLI 部署至專用主機
  
@@ -44,7 +44,7 @@ az vm list-skus -l eastus2  -r hostGroups/hosts  -o table
  
 ## <a name="create-a-host-group"></a>建立主機群組 
 
-**主機群組**是代表專用主機集合的資源。 您會在區域和可用性區域中建立主機群組，並在其中新增主機。 在規劃高可用性時，還有其他選項。 您可以使用下列其中一個或兩個選項搭配您的專用主機： 
+**主機群組** 是代表專用主機集合的資源。 您會在區域和可用性區域中建立主機群組，並在其中新增主機。 在規劃高可用性時，還有其他選項。 您可以使用下列其中一個或兩個選項搭配您的專用主機： 
 - 跨越多個可用性區域。 在此情況下，您必須在想要使用的每個區域中都有一個主機群組。
 - 跨越多個對應至實體機架的容錯網域。 
  
@@ -65,14 +65,6 @@ az vm host group create \
 
 新增 `--automatic-placement true` 參數，以將 vm 和擴展集實例自動放置在主機群組內的主機上。 如需詳細資訊，請參閱 [手動與自動放置 ](../dedicated-hosts.md#manual-vs-automatic-placement)。
 
-> [!IMPORTANT]
-> 自動放置目前處於公開預覽狀態。
->
-> 若要參與預覽，請完成預覽上線問卷 [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) 。
->
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 
->
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ### <a name="other-examples"></a>其他範例
 
@@ -133,16 +125,7 @@ az vm create \
 > [!WARNING]
 > 如果您在沒有足夠資源的主機上建立虛擬機器，虛擬機器將會以「失敗」狀態建立。 
 
-## <a name="create-a-scale-set-preview"></a> (預覽版建立擴展集) 
-
-> [!IMPORTANT]
-> 專用主機上的虛擬機器擴展集目前處於公開預覽狀態。
->
-> 若要參與預覽，請完成預覽上線問卷 [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) 。
->
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 
->
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+## <a name="create-a-scale-set"></a>建立擴展集 
 
 當您部署擴展集時，請指定主機群組。
 
