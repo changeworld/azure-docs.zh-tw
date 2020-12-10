@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: b6cadbf5c3a33c1a954a47f37b33ad8703f40b69
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2f1fe7c25327e8ecab9b450cab167391d8949b0a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350733"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008147"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Azure Synapse Studio 中的原始檔控制
 
@@ -138,6 +138,24 @@ GitHub 與 Synapse Studio 整合支援公用 GitHub (，也就是 [https://githu
 
 遵循這些步驟之後，您的工作區將能夠連線至組織內的公用和私人存放庫。 如果您無法連線，請嘗試清除瀏覽器快取，然後再試一次。
 
+#### <a name="already-connected-to-github-using-a-personal-account"></a>已使用個人帳戶連接到 GitHub
+
+如果您已連線至 GitHub，而且只授與存取個人帳戶的許可權，請遵循下列步驟來授與許可權給組織。
+
+1. 移至 GitHub 並開啟 [ **設定**]。
+
+    ![開啟 GitHub 設定](media/github-settings.png)
+
+1. 選取 **應用程式**。 在 [ **授權的 OAuth 應用程式** ] 索引標籤中，您應該會看到 *Azure Synapse*。
+
+    ![授權 OAuth 應用程式](media/authorize-app.png)
+
+1. 選取 *Azure Synapse* ，並將存取權授與您的組織。
+
+    ![授與組織許可權](media/grant-organization-permission.png)
+
+完成這些步驟之後，您的工作區將能夠連線至組織內的公用和私人存放庫。
+
 ## <a name="version-control"></a>版本控制
 
 版本控制系統 (也稱為 _原始檔控制_) 可讓開發人員在程式碼上共同作業並追蹤變更。原始檔控制是多開發人員專案的基本工具。
@@ -163,6 +181,7 @@ GitHub 與 Synapse Studio 整合支援公用 GitHub (，也就是 [https://githu
 ```
 
 Azure Synapse Studio 一次只能有一個發佈分支。 當您指定新的發行分支時，不會刪除先前的發行分支。 如果您想要移除先前的發佈分支，請手動將其刪除。
+
 
 ### <a name="publish-code-changes"></a>發佈程式碼變更
 
@@ -192,7 +211,7 @@ Azure Synapse Studio 一次只能有一個發佈分支。 當您指定新的發�
 
 ## <a name="best-practices-for-git-integration"></a>Git 整合的最佳做法
 
--   **權限**。 將 git 存放庫連線到您的工作區之後，任何可存取您工作區中任何角色之 git 存放庫的人，都能夠以 git 模式更新成品，例如 sql 腳本、筆記本、spark 作業定義、資料集、資料流程和管線。 一般來說，您不希望每個小組成員都具有更新工作區的許可權。 只授與 Synapse 工作區成品作者的 git 存放庫許可權。 
+-   **權限**。 當您的 git 存放庫已連線到您的工作區之後，任何可以存取您的 git 存放庫（具有您工作區中任何角色）的人，都能夠以 git 模式更新成品，例如 sql 腳本、筆記本、spark 作業定義、資料集、資料流程和管線。 一般來說，您不希望每個小組成員都具有更新工作區的許可權。 只授與 Synapse 工作區成品作者的 git 存放庫許可權。 
 -   共同 **作業。** 建議您不要允許直接簽入至共同作業分支。 此限制可協助避免錯誤 (bug)，因為每個簽入都會經歷[建立功能分支](source-control.md#creating-feature-branches)所述的提取要求檢閱程序。
 -   **Synapse 即時模式**。 在 git 模式下發布之後，所有變更都會反映在 Synapse live 模式中。 在 Synapse live 模式中，發佈已停用。 而且，如果您已授與正確的許可權，您可以在即時模式中執行成品。 
 -   **編輯 Studio 中的構件**。 Synapse studio 是唯一可讓您啟用工作區原始檔控制，以及自動將變更同步至 git 的位置。 任何透過 SDK、PowerShell 進行的變更都不會同步至 git。 建議您在啟用 git 時，一律在 Studio 中編輯成品。

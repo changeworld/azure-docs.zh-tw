@@ -7,15 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 10/16/2020
+ms.date: 12/09/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: a5b019068368f1c0c076f5a1ed157c288bb7169c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 06a9a955e8a963f94b1885abf5a920cb96c01940
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479913"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007421"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>使用 Azure 入口網站列出 Azure 角色指派
 
@@ -26,7 +25,7 @@ ms.locfileid: "92479913"
 
 ## <a name="list-role-assignments-for-a-user-or-group"></a>列出使用者或群組的角色指派
 
-若要查看在訂用帳戶中指派給使用者或群組的角色，最簡單的方式是使用 [ **Azure 角色指派** ] 窗格。
+若要在訂用帳戶中查看指派給使用者或群組的角色，快速的方法是使用 [ **Azure 角色指派** ] 窗格。
 
 1. 在 [Azure 入口網站中，從 [Azure 入口網站] 功能表選取 [ **所有服務** ]。
 
@@ -56,27 +55,27 @@ ms.locfileid: "92479913"
 
 1. 滾動至 [ **擁有** 者] 區段，以查看已獲指派此訂用帳戶擁有者角色的所有使用者。
 
-   ![[訂用帳戶存取控制-角色指派] 索引標籤](./media/role-assignments-list-portal/access-control-role-assignments-subscription.png)
+   ![[訂用帳戶存取控制-角色指派] 索引標籤](./media/role-assignments-list-portal/sub-access-control-role-assignments-owners.png)
 
 ## <a name="list-role-assignments-at-a-scope"></a>列出範圍內的角色指派
 
-1. 在 [Azure 入口網站中，按一下 [ **所有服務** ]，然後選取範圍。 例如，您可以選取 [管理群組]****、[訂用帳戶]****、[資源群組]**** 或資源。
+1. 在 [Azure 入口網站中，按一下 [ **所有服務** ]，然後選取範圍。 例如，您可以選取 [管理群組]、[訂用帳戶]、[資源群組]或資源。
 
 1. 按一下特定資源。
 
 1. 按一下 [存取控制 (IAM)]。
 
-1. 按一下 [角色指派]**** 索引標籤以檢視此範圍中的所有角色指派。
+1. 按一下 [角色指派] 索引標籤以檢視此範圍中的所有角色指派。
 
-   ![存取控制︰[角色指派] 索引標籤](./media/role-assignments-list-portal/access-control-role-assignments.png)
+   ![存取控制︰[角色指派] 索引標籤](./media/role-assignments-list-portal/rg-access-control-role-assignments.png)
 
-   在 [角色指派] 索引標籤上，您可以看到誰在此範圍中有存取權。 請注意，某些角色的範圍限於**此資源**，而有些角色則是來自 **(繼承自)** 另一個範圍。 存取權不是特別指派給此資源群組，就是繼承自父範圍的指派。
+   在 [角色指派] 索引標籤上，您可以看到誰在此範圍中有存取權。 請注意，某些角色的範圍限於 **此資源**，而有些角色則是來自 **(繼承自)** 另一個範圍。 存取權不是特別指派給此資源群組，就是繼承自父範圍的指派。
 
 ## <a name="list-role-assignments-for-a-user-at-a-scope"></a>列出範圍內使用者的角色指派
 
 若要列出使用者、群組、服務主體或受控識別的存取權，您可以列出其角色指派。 遵循下列步驟來列出特定範圍內單一使用者、群組、服務主體或受控識別的角色指派。
 
-1. 在 [Azure 入口網站中，按一下 [ **所有服務** ]，然後選取範圍。 例如，您可以選取 [管理群組]****、[訂用帳戶]****、[資源群組]**** 或資源。
+1. 在 [Azure 入口網站中，按一下 [ **所有服務** ]，然後選取範圍。 例如，您可以選取 [管理群組]、[訂用帳戶]、[資源群組]或資源。
 
 1. 按一下特定資源。
 
@@ -84,23 +83,27 @@ ms.locfileid: "92479913"
 
 1. 按一下 [檢查存取權]  索引標籤。
 
-    ![存取控制 - [檢查存取權] 索引標籤](./media/role-assignments-list-portal/access-control-check-access.png)
+    ![資源群組存取控制-檢查存取索引標籤](./media/role-assignments-list-portal/rg-access-control-check-access.png)
 
-1. 在 [尋找]  清單中，選取您要檢查其存取權的安全性主體類型。
+1. 在 [ **尋找** ] 清單中，選取您要檢查其存取權的使用者、群組、服務主體或受控識別。
 
 1. 在搜尋方塊中，輸入字串以在目錄中搜尋顯示名稱、電子郵件地址或物件識別碼。
 
-    ![檢查存取權選取清單](./media/role-assignments-list-portal/check-access-select.png)
+    ![檢查存取權選取清單](./media/shared/rg-check-access-select.png)
 
 1. 按一下安全性主體以開啟 [指派]  窗格。
 
-    ![[指派] 窗格](./media/role-assignments-list-portal/check-access-assignments.png)
+    在此窗格中，您可以在此範圍查看所選取安全性主體的存取權，並繼承到此範圍。 未列出子範圍的指派。 您會看到下列指派：
 
-    在此窗格上，您可以看到已指派所選安全性主體的角色與範圍。 若此範圍中有任何拒絕指派，或有任何拒絕指派繼承到此範圍，它們將會被列出。
+    - 使用 Azure RBAC 新增的角色指派。
+    - 使用 Azure 藍圖或 Azure 受控應用程式新增的拒絕指派。
+    - 傳統部署的傳統服務管理員或 Co-Administrator 指派。 
+
+    ![[指派] 窗格](./media/shared/rg-check-access-assignments-user.png)
 
 ## <a name="list-role-assignments-for-a-managed-identity"></a>列出受控識別的角色指派
 
-如先前所述，您可以使用 **存取控制 (IAM) ** 分頁，在特定範圍列出系統指派和使用者指派受控識別的角色指派。 本節說明如何只列出受控識別的角色指派。
+如先前所述，您可以使用 **存取控制 (IAM)** 分頁，在特定範圍列出系統指派和使用者指派受控識別的角色指派。 本節說明如何只列出受控識別的角色指派。
 
 ### <a name="system-assigned-managed-identity"></a>系統指派的受控識別
 
@@ -152,7 +155,7 @@ ms.locfileid: "92479913"
 
 請遵循下列步驟來下載範圍中的角色指派。
 
-1. 在 [Azure 入口網站中，按一下 [ **所有服務** ]，然後選取您想要下載角色指派的範圍。 例如，您可以選取 [管理群組]****、[訂用帳戶]****、[資源群組]**** 或資源。
+1. 在 [Azure 入口網站中，按一下 [ **所有服務** ]，然後選取您想要下載角色指派的範圍。 例如，您可以選取 [管理群組]、[訂用帳戶]、[資源群組]或資源。
 
 1. 按一下特定資源。
 

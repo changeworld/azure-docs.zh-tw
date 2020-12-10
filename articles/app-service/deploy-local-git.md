@@ -6,18 +6,18 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 84e257111e8da0546cf104e0cc5d3ac95a9294ba
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 5ed3e858168ce5ad9a7f089b723bb75ca8a49fca
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558669"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007512"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>本機 Git 部署至 Azure App Service
 
 本操作指南說明如何將您的應用程式部署至本機電腦上的 Git 儲存機制，以 [Azure App Service](overview.md) 。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 遵循本使用說明指南中的步驟：
 
@@ -45,7 +45,7 @@ ms.locfileid: "96558669"
 
 ### <a name="get-the-deployment-url"></a>取得部署 URL
 
-若要取得 URL 以針對現有的應用程式啟用本機 Git 部署，請 [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) 在 Cloud Shell 中執行。 將 \<app-name> 和取代 \<group-name> 為您的應用程式及其 Azure 資源群組的名稱。
+若要取得 URL 以針對現有的應用程式啟用本機 Git 部署，請 [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-local-git) 在 Cloud Shell 中執行。 將 \<app-name> 和取代 \<group-name> 為您的應用程式及其 Azure 資源群組的名稱。
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>
@@ -54,7 +54,7 @@ az webapp deployment source config-local-git --name <app-name> --resource-group 
 > 如果您使用的是 linux 應用程式服務方案，則必須新增此參數：--runtime python | 3。7
 
 
-或者，若要建立新的啟用 Git 的應用程式，請 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 使用參數在 Cloud Shell 中執行 `--deployment-local-git` 。 \<app-name>將、 \<group-name> 和取代為新的 \<plan-name> Git 應用程式、其 Azure 資源群組及其 Azure App Service 方案的名稱。
+或者，若要建立新的啟用 Git 的應用程式，請 [`az webapp create`](/cli/azure/webapp#az-webapp-create) 使用參數在 Cloud Shell 中執行 `--deployment-local-git` 。 \<app-name>將、 \<group-name> 和取代為新的 \<plan-name> Git 應用程式、其 Azure 資源群組及其 Azure App Service 方案的名稱。
 
 ```azurecli-interactive
 az webapp create --name <app-name> --resource-group <group-name> --plan <plan-name> --deployment-local-git
@@ -157,6 +157,6 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
 ## <a name="additional-resources"></a>其他資源
 
 - [專案 Kudu 文件](https://github.com/projectkudu/kudu/wiki)
-- [持續部署到 Azure App Service](deploy-continuous-deployment.md)
+- [持續部署至 Azure App Service](deploy-continuous-deployment.md)
 - [範例：建立 web 應用程式並從本機 Git 存放庫部署程式碼 (Azure CLI) ](./scripts/cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json)
 - [範例：建立 web 應用程式並從本機 Git 存放庫部署程式碼 (PowerShell) ](./scripts/powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json)

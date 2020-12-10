@@ -4,12 +4,12 @@ description: 摘要說明 Azure 備份服務的支援設定和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 70a81b42ad2fb417902a627afb1651d572844648
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: be0c576da6e38233423a79f562f767de806d7640
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548506"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008362"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 備份的支援矩陣
 
@@ -67,7 +67,7 @@ Azure 備份使用復原服務保存庫來協調和管理下列工作負載類�
 
 **機器** | **備份的項目** | **位置** | **功能**
 --- | --- | --- | ---
-**使用 VM 延伸模組的 Azure VM 備份** | 整個 VM | 備份至保存庫。 | 當您為 VM 啟用備份時安裝的延伸模組。<br/><br/> 一天備份一次。<br/><br/> Windows VM 的應用程式感知備份；Linux VM 的檔案一致備份。 您可以使用自訂指令碼，為 Linux 機器腦設定應用程式一致性。<br/><br/> 還原 VM 或磁碟。<br/><br/> 無法將 Azure VM 備份至內部部署位置。
+**使用 VM 延伸模組的 Azure VM 備份** | 整個 VM | 備份至保存庫。 | 當您為 VM 啟用備份時安裝的延伸模組。<br/><br/> 一天備份一次。<br/><br/> Windows VM 的應用程式感知備份；Linux VM 的檔案一致備份。 您可以使用自訂指令碼，為 Linux 機器腦設定應用程式一致性。<br/><br/> 還原 VM 或磁碟。<br/><br/>支援[Active Directory 網域控制站的備份和還原](active-directory-backup-restore.md)。<br><br> 無法將 Azure VM 備份至內部部署位置。
 **使用 MARS 代理程式的 Azure VM 備份** | 檔案、資料夾、系統狀態 | 備份至保存庫。 | 一天備份三次。<br/><br/> 如果您要備份特定的檔案或資料夾，而非整個 VM，則 MARS 代理程式可以與 VM 延伸模組一起執行。
 **使用 DPM 的 Azure VM** | 檔案、資料夾、磁碟區、系統狀態、應用程式資料 | 備份至執行 DPM 的 Azure VM 本機儲存體。 然後，DPM 再備份至保存庫。 | 應用程式感知快照集。<br/><br/> 備份和復原的完整細微性。<br/><br/> VM (Hyper-V/VMware) 支援 Linux。<br/><br/> 不支援 Oracle。
 **使用 MABS 的 Azure VM** | 檔案、資料夾、磁碟區、系統狀態、應用程式資料 | 備份至執行 MABS 的 Azure VM 本機儲存體。 然後，MABS 再備份至保存庫。 | 應用程式感知快照集。<br/><br/> 備份和復原的完整細微性。<br/><br/> VM (Hyper-V/VMware) 支援 Linux。<br/><br/> 不支援 Oracle。

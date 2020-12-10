@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 04/02/2019
-ms.openlocfilehash: 868443e52b7159e6ee9478f64b7b2f376a10f604
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/08/2020
+ms.openlocfilehash: cd9b353300b88c69efb0c458245a86963c579064
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541001"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007733"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>在認知服務的 Language Understanding (LUIS) 中匯出和刪除客戶資料
 
@@ -35,7 +35,7 @@ Language Understanding Intelligent Service (LUIS) 可保存客戶內容以執行
 ## <a name="deleting-customer-data"></a>刪除客戶資料
 LUIS 使用者有完整的控制權可刪除任何使用者內容，不論是透過 LUIS 入口網站或 LUIS 撰寫 (也稱為程式設計) Api。 下表顯示這兩者的輔助連結：
 
-| | **使用者帳戶** | **應用程式** | **範例語句 (s) ** | **使用者查詢** |
+| | **使用者帳戶** | **應用程式** | **範例語句 (s)** | **使用者查詢** |
 | --- | --- | --- | --- | --- |
 | **入口網站** | [連結](luis-concept-data-storage.md#delete-an-account) | [連結](luis-how-to-start-new-app.md#delete-app) | [連結](luis-concept-data-storage.md#utterances-in-an-intent) | [主動式學習語句](luis-how-to-review-endpoint-utterances.md#disable-active-learning)<br>[已記錄語句](luis-concept-data-storage.md#disable-logging-utterances) |
 | **API** | [連結](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c4c) | [連結](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c39) | [連結](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0b) | [連結](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9) |
@@ -44,13 +44,13 @@ LUIS 使用者有完整的控制權可刪除任何使用者內容，不論是透
 ## <a name="exporting-customer-data"></a>匯出客戶資料
 LUIS 使用者具有完整控制權，可在入口網站上查看資料，但必須透過 LUIS 撰寫 (（也稱為程式設計) Api）來匯出。 下表顯示透過 LUIS 撰寫來協助資料匯出的連結 (也稱為程式設計) Api：
 
-| | **使用者帳戶** | **應用程式** | **語句 (s) ** | **使用者查詢** |
+| | **使用者帳戶** | **應用程式** | **語句 (s)** | **使用者查詢** |
 | --- | --- | --- | --- | --- |
 | **API** | [連結](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c48) | [連結](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) | [連結](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0a) | [連結](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36) |
 
 ## <a name="location-of-active-learning"></a>主動式學習的位置
 
-若要啟用 [主動式學習](luis-how-to-review-endpoint-utterances.md#enable-active-learning)，在發佈的 LUIS 端點上收到的使用者記錄語句會儲存在下列 Azure 地理位置：
+若要啟用 [主動式學習](luis-how-to-review-endpoint-utterances.md#log-user-queries-to-enable-active-learning)，在發佈的 LUIS 端點上收到的使用者記錄語句會儲存在下列 Azure 地理位置：
 
 * [歐洲](#europe)
 * [澳大利亞](#australia)

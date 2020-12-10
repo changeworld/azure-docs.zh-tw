@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 653110b953b6947254d5063a9e389505d45ea4cb
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: e5793d21f27128162095e2d86e13006c5b6e7b7c
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149015"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007988"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>設定 Azure App Service 的部署認證
 [Azure App Service](./overview.md) 支援兩種認證類，用於[本機 Git 部署](deploy-local-git.md)和 [FTP/S 部署](deploy-ftp.md)。 這些認證與您的 Azure 訂用帳戶認證不同。
@@ -23,7 +23,7 @@ ms.locfileid: "92149015"
 
 ### <a name="in-the-cloud-shell"></a>在 Cloud Shell 中
 
-若要在 [Cloud Shell](https://shell.azure.com) 中設定部署使用者，請執行 [az webapp deployment user set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) 命令。 以部署使用者的使用者名稱和密碼取代 \<username> 和 \<password>。 
+若要在 [Cloud Shell](https://shell.azure.com) 中設定部署使用者，請執行 [az webapp deployment user set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) 命令。 以部署使用者的使用者名稱和密碼取代 \<username> 和 \<password>。 
 
 - 使用者名稱在 Azure 服務及本機 Git 推送中都必須是唯一的，且不能包含 ‘@’ 符號。 
 - 密碼長度必須至少為 8 個字元，包含下列三個元素其中兩個：字母、數字及符號。 
@@ -96,7 +96,7 @@ az resource update --resource-group <resource-group> --name ftp --namespace Micr
 az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 
-若要確認 WebDeploy 上的發行設定檔認證遭到封鎖，請嘗試 [使用 Visual Studio 2019 發佈 web 應用程式](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)。
+若要確認 WebDeploy 上的發行設定檔認證遭到封鎖，請嘗試 [使用 Visual Studio 2019 發佈 web 應用程式](/visualstudio/deployment/quickstart-deploy-to-azure)。
 
 ### <a name="disable-access-to-the-api"></a>停用對 API 的存取
 

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/30/2017
 ms.author: vikdesai
-ms.openlocfilehash: f23d1fb0162abf05fba97c2f6fb02be9238fabd2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e513bdaa7efa2f1d0f18ff3548d9abfdc5e085d7
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500354"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007393"
 ---
-# <a name="save-costs-with-azure-reserved-vm-instances-linux"></a>使用 Azure 保留的 VM 執行個體 (Linux) 節省成本
+# <a name="save-costs-with-azure-reserved-vm-instances"></a>使用 Azure 保留的 VM 執行個體節省成本
 
 
 

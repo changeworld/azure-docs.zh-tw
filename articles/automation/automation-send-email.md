@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: c01e329e4e4ab403c8966f096239abffee1c1fc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a81ae680a5f04eca0a6cc01ee24b474cc5daabea
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185852"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005200"
 ---
 # <a name="send-an-email-from-a-runbook"></a>從 Runbook 傳送電子郵件
 
@@ -25,7 +25,7 @@ ms.locfileid: "86185852"
 
 ## <a name="create-an-azure-key-vault"></a>建立 Azure Key Vault
 
-您可以使用下列 PowerShell 指令碼來建立 Azure Key Vault。 將變數值取代為您的環境特有的值。 請透過程式碼區塊右上角的**立即試用**按鈕，使用內嵌的 Azure Cloud Shell。 如果您已在本機電腦上安裝 [Az 模組](/powershell/azure/install-az-ps)，也可以在本機複製並執行程式碼。
+您可以使用下列 PowerShell 指令碼來建立 Azure Key Vault。 將變數值取代為您的環境特有的值。 請透過程式碼區塊右上角的 **立即試用** 按鈕，使用內嵌的 Azure Cloud Shell。 如果您已在本機電腦上安裝 [Az 模組](/powershell/azure/install-az-ps)，也可以在本機複製並執行程式碼。
 
 > [!NOTE]
 > 若要擷取您的 API 金鑰，請使用[尋找您的 SendGrid API 金鑰](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key)中所列的步驟。
@@ -100,7 +100,7 @@ Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -P
     $Conn = Get-AutomationConnection -Name AzureRunAsConnection
     Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Out-Null
     $VaultName = "<Enter your vault name>"
-    $SENDGRID_API_KEY = (Get-AzKeyVaultSecret -VaultName $VaultName -Name "SendGridAPIKey").SecretValueText
+    $SENDGRID_API_KEY = (Get-AzKeyVaultSecret -VaultName $VaultName -Name "SendGridAPIKey").SecretValue
     $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
     $headers.Add("Authorization", "Bearer " + $SENDGRID_API_KEY)
     $headers.Add("Content-Type", "application/json")
@@ -136,7 +136,7 @@ Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -P
 
 若要確認 Runbook 是否順利執行，您可以依照[測試 Runbook](manage-runbooks.md#test-a-runbook) 或[啟動 Runbook](start-runbooks.md) 下的步驟操作。
 
-如果您一開始未看到測試電子郵件，請查看 **垃圾郵件**資料夾。
+如果您一開始未看到測試電子郵件，請查看 **垃圾郵件** 資料夾。
 
 ## <a name="clean-up-resources-after-the-email-operation"></a>在電子郵件作業後清除資源
 

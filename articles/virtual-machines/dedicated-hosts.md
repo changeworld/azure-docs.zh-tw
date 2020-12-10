@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure
-ms.date: 07/28/2020
+ms.date: 12/07/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: a42b07254deaf19d253f7523631018bfe7166a57
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4e29bb0fee496af6a8c0fd30d5559bf865123c39
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339586"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007886"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure 專用主機
 
@@ -67,11 +67,6 @@ Azure 專用主機是一個服務，可讓實體伺服器裝載一或多個虛�
 
 ## <a name="manual-vs-automatic-placement"></a>手動與自動放置 
 
-> [!IMPORTANT]
-> 自動放置目前處於公開預覽狀態。
-> 若要參與預覽，請完成預覽上線問卷 [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) 。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 在 Azure 中建立 VM 時，您可以選取要使用的專用主機。 您也可以使用選項，將 Vm 自動放置在主機群組內的現有主機上。 
 
 建立新的主機群組時，請確定已選取 [自動 VM 放置] 的設定。 建立 VM 時，請選取主機群組，並讓 Azure 為您的 VM 挑選最佳主機。 
@@ -91,11 +86,6 @@ Azure 專用主機是一個服務，可讓實體伺服器裝載一或多個虛�
 
 虛擬機器擴展集可讓您將一組虛擬機器視為單一資源，並以群組形式套用可用性、管理、調整和協調流程原則。 您現有的專用主機也可以用於虛擬機器擴展集。 
 
-> [!IMPORTANT]
-> 專用主機上的虛擬機器擴展集目前處於公開預覽狀態。
-> 若要參與預覽，請完成預覽上線問卷 [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) 。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 建立虛擬機器擴展集時，您可以指定現有的主機群組，以在專用主機上建立所有的 VM 實例。
 
 在專用主機群組中建立虛擬機器擴展集時，適用下列需求：
@@ -109,7 +99,7 @@ Azure 專用主機是一個服務，可讓實體伺服器裝載一或多個虛�
 - 您專用主機所支援的 VM 大小應符合您的擴展集所使用的大小。
 
 專用主機不支援所有的擴展集協調流程和優化設定。 將下列設定套用至您的擴展集： 
-- 停用過度布建。
+- 不建議使用過度布建，而且預設為停用。 您可以啟用過度布建，但如果主機群組沒有適用于所有 Vm （包括過度布建實例）的容量，則擴展集配置將會失敗。 
 - 使用 ScaleSetVM 協調流程模式 
 - 請勿針對共置使用鄰近位置群組
 
@@ -173,7 +163,7 @@ Azure 專用主機是一個服務，可讓實體伺服器裝載一或多個虛�
 
 Azure 會監視及管理主機的健全狀況狀態。 當您查詢主機時，將會傳回下列狀態：
 
-| 健全狀況狀態   | 說明       |
+| 健全狀況狀態   | 描述       |
 |----------|----------------|
 | 主機可用     | 您的主機沒有任何已知問題。   |
 | 正在調查的主機  | 我們正在尋找的主機有一些問題。 這是 Azure 用來嘗試的過渡狀態，並識別出問題的範圍和根本原因。 主機上執行的虛擬機器可能會受到影響。 |

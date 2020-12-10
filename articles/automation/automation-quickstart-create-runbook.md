@@ -55,7 +55,7 @@ ms.locfileid: "90987298"
 
 1. 按一下 [儲存] 可儲存 Runbook 草稿副本。
 
-    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-edit-runbook.png" alt-text="[編輯 PowerShell Runbook] 頁面的螢幕擷取畫面。":::
+    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-edit-runbook.png" alt-text="[編輯 PowerShell Runbook] 頁面的螢幕擷取畫面，右側視窗中有程式碼範例。":::
 
 ## <a name="test-the-runbook"></a>測試 Runbook
 
@@ -65,13 +65,13 @@ ms.locfileid: "90987298"
 
 1. 輸入一個 [名稱] 的值，然後按一下 [啟動]。 隨即啟動測試作業，並顯示作業狀態和輸出。
 
-    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-test-runbook.png" alt-text="[編輯 PowerShell Runbook] 頁面的螢幕擷取畫面。":::
+    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-test-runbook.png" alt-text="[測試] 窗格的螢幕擷取畫面，名稱欄位中有範例值。":::
 
 1. 按一下右上角的 **X** 可關閉 [測試] 頁面。 在隨即出現的快顯視窗中選取 [確定]。
 
 1. 在 [編輯 PowerShell Runbook] 頁面上，按一下 [發佈]，可在帳戶中發佈 Runbook 作為官方版本的 Runbook。
 
-   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png" alt-text="[編輯 PowerShell Runbook] 頁面的螢幕擷取畫面。":::
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png" alt-text="[編輯 PowerShell Runbook] 頁面的螢幕擷取畫面，顯示已選取 [發佈] 按鈕。":::
 
 ## <a name="run-the-runbook"></a>執行 Runbook
 
@@ -79,15 +79,15 @@ ms.locfileid: "90987298"
 
 1. 在 Runbook [概觀] 頁面中，按一下 [啟動] 可開啟這個 Runbook 的 [啟動 Runbook] 設定頁面。
 
-   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png" alt-text="[編輯 PowerShell Runbook] 頁面的螢幕擷取畫面。":::
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png" alt-text="[啟動 Runbook 組態] 頁面的螢幕擷取畫面。":::
 
 1. 將 [名稱] 保留空白以便使用預設值，然後按一下 [確定]。 隨即提交 Runbook 作業，且隨即出現 [作業] 頁面。
 
-   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-job-page.png" alt-text="[編輯 PowerShell Runbook] 頁面的螢幕擷取畫面。":::
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-job-page.png" alt-text="[作業] 頁面的螢幕擷取畫面，顯示已選取 [輸出] 按鈕。":::
 
 1. 當作業狀態為 `Running` 或 `Completed` 時，按一下 [輸出] 可開啟 [輸出] 窗格並檢視 Runbook 輸出。
 
-   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png" alt-text="[編輯 PowerShell Runbook] 頁面的螢幕擷取畫面。":::
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png" alt-text="[輸出] 窗格的螢幕擷取畫面，顯示 Runbook 輸出。":::
 
 ## <a name="clean-up-resources"></a>清除資源
 

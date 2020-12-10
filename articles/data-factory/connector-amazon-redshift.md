@@ -2,7 +2,6 @@
 title: 從 Amazon Redshift 複製資料
 description: 了解如何使用 Azure Data Factory 將資料從 Amazon Redshift 複製到支援的接收資料存放區。
 services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
 manager: shwang
@@ -10,13 +9,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2018
-ms.openlocfilehash: a756a3cec5702570751e0bea09a4f59152accafc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/09/2020
+ms.openlocfilehash: b17c567b2e83bef3c37c8f1272091021a1943b15
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89484539"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008313"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure Data Factory 從 Amazon Redshift 複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -24,7 +23,6 @@ ms.locfileid: "89484539"
 > * [目前的版本](connector-amazon-redshift.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
-
 
 本文概述如何使用 Azure Data Factory 中的「複製活動」，從 Amazon Redshift 複製資料。 本文是根據[複製活動概觀](copy-activity-overview.md)一文，該文提供複製活動的一般概觀。
 
@@ -164,9 +162,9 @@ ms.locfileid: "89484539"
 
 [UNLOAD](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) (英文) 是 Amazon Redshift 提供的機制，可以為 Amazon Simple Storage Service (Amazon S3) 中的一或多個檔案卸載查詢結果。 Amazon 建議使用此方式從 Redshift 複製大型資料集。
 
-**範例：使用 UNLOAD、分段複製和 PolyBase，將資料從 Amazon Redshift 複製到 Azure Synapse Analytics (先前的 SQL 資料倉儲) **
+**範例：使用 UNLOAD、分段複製和 PolyBase 將資料從 Amazon Redshift 複製到 Azure Synapse Analytics**
 
-在此範例使用案例中，複製活動會將資料從 Amazon Redshift 卸載至 Amazon S3 （如 "redshiftUnloadSettings" 中所設定），然後將資料從 Amazon S3 複製到 Azure Blob （如 "stagingSettings" 中所指定），最後使用 PolyBase 將資料載入至先前的 SQL 資料倉儲) 的 Azure Synapse Analytics (。 複製活動會正確地處理所有暫時格式。
+針對此範例使用案例，複製活動會將資料從 Amazon Redshift 卸載至 Amazon S3 （如 "redshiftUnloadSettings" 中所設定），然後將資料從 Amazon S3 複製到 Azure Blob （如 "stagingSettings" 中所指定），最後使用 PolyBase 將資料載入 Azure Synapse Analytics。 複製活動會正確地處理所有暫時格式。
 
 ![Redshift 至 Azure Synapse Analytics 複製工作流程](media/copy-data-from-amazon-redshift/redshift-to-sql-dw-copy-workflow.png)
 
@@ -223,7 +221,7 @@ ms.locfileid: "89484539"
 | bigint |Int64 |
 | BOOLEAN |字串 |
 | CHAR |String |
-| DATE |Datetime |
+| 日期 |Datetime |
 | DECIMAL |Decimal |
 | DOUBLE PRECISION |Double |
 | INTEGER |Int32 |

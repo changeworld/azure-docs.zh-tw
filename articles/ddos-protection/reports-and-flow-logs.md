@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 5c3bfbdf133777f0bc219d1306f80bd4d38b56ea
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 0a59c748dba87765537fc7c9d6382c7d2b726f43
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746262"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008056"
 ---
 # <a name="configure-ddos-attack-mitigation-reports-and-flow-logs"></a>設定 DDoS 攻擊風險降低報告和流量記錄 
 
@@ -80,9 +80,15 @@ Azure DDoS 保護標準透過 DDoS 攻擊分析，提供詳細的攻擊見解和
 
 ### <a name="azure-ddos-protection-workbook"></a>Azure DDoS 保護活頁簿
 
-若要在 Azure 分析儀表板中檢視流程記錄資料，您可以從 https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Azure%20DDoS%20Protection%20Workbook 匯入範例儀表板
+您可以使用此 Azure Resource Manager (ARM) 範本來部署攻擊分析活頁簿。 此活頁簿一律會將跨多個可篩選面板的攻擊資料視覺化，以輕鬆瞭解有哪些風險。 部署此 ARM 範本時，您將需要填入下列內容：
 
-流程記錄將會有下列欄位： 
+* 工作區名稱
+* 工作區 ResourceGroup
+* 工作區訂用帳戶識別碼
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520DDoS%2520Protection%2520Workbook%2FAzureDDoSWorkbook_ARM.json)
+
+流程記錄會有下欄欄位： 
 - 來源 IP
 - 目的地 IP
 - 來源連接埠 

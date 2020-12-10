@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 31ae4605b6cc9e26c89beea692fe61fcbda49c4c
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 22bdf93e7236ae5220a6bb7c6ead898628bb51a1
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621496"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007580"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure Cache for Redis 與 Azure Private Link (公開預覽) 
 在本文中，您將瞭解如何使用 Azure 入口網站來建立虛擬網路和具有私人端點的 Azure Cache for Redis 實例。 您也將瞭解如何將私人端點新增至現有的 Azure Cache for Redis 實例。
@@ -224,7 +224,12 @@ PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/
 ```
 
 ### <a name="are-network-security-groups-nsg-enabled-for-private-endpoints"></a>是否已針對私人端點啟用 (NSG) 的網路安全性群組？
-否，私人端點已停用它們。 但是，如果子網上有其他資源，則 NSG 強制會套用至這些資源。
+否，私人端點已停用它們。 雖然包含私人端點的子網路可以有相關聯的 NSG，但這些規則對私人端點所處理的流量無效。 您必須[停用網路原則強制](../private-link/disable-private-endpoint-network-policy.md)，才能在子網路中部署私人端點。 在相同子網路上裝載的其他工作負載上，仍會強制執行 NSG。 任何用戶端子網上的路由都會使用/32 首碼，變更預設路由行為需要類似的 UDR。 
+
+針對來源用戶端上的連出流量使用 NSG 規則，以控制流量。 部署具有 /32 前置詞的個別路由，以覆寫私人端點路由。 連出連線的 NSG 流程記錄和監視資訊仍然受支援且可供使用
+
+### <a name="can-i-use-firewall-rules-with-private-endpoints"></a>我可以搭配私人端點使用防火牆規則嗎？
+否，這是私人端點目前的限制。 如果在快取上設定防火牆規則，私人端點將無法正常運作。
 
 ### <a name="how-can-i-connect-to-a-clustered-cache"></a>如何連接到叢集快取？
 `publicNetworkAccess` 必須設定為 `Disabled` ，而且只能有一個私人端點連接。

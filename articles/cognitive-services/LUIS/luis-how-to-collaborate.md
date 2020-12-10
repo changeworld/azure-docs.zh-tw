@@ -8,23 +8,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 11/19/2019
-ms.openlocfilehash: 60b100e1100b8a4925a967f8b7265f1612e5beb7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 12/08/2020
+ms.openlocfilehash: d4bde21dd13b562ffbb51b27ef083ee53685397a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018900"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007956"
 ---
 # <a name="add-contributors-to-your-app"></a>將參與者新增至您的應用程式
 
-應用程式擁有者可以將參與者新增至應用程式。 這些共同作業者可以修改模型、訓練及發佈應用程式。
-
-[!INCLUDE [Manage collaborators and contributors based on migrated or not-migrated apps](./includes/manage-contributor-collaborator-migration.md)]
+應用程式擁有者可以將參與者新增至應用程式。 這些參與者可以修改模型、定型及發佈應用程式。 [遷移](luis-migration-authoring.md)您的帳戶之後，就會在撰寫資源的 Azure 入口網站中管理 _參與者_，並使用 **存取控制 (IAM)** 頁面。 使用共同作業者的電子郵件地址和 _參與者_ 角色來新增使用者。
 
 ## <a name="add-contributor-to-azure-authoring-resource"></a>將參與者新增至 Azure 撰寫資源
-
-下列程式適用于已 **遷移** 為使用 Azure 撰寫資源的所有使用者。
 
 如果您的 LUIS 撰寫體驗系結至 LUIS 入口網站中 [ **管理-> Azure 資源** ] 頁面上的撰寫資源，則您已遷移。
 
@@ -41,26 +37,15 @@ ms.locfileid: "95018900"
 
     如果您有此角色指派的問題，請參閱 [azure 角色指派](../../role-based-access-control/role-assignments-portal.md) 和 [azure 存取控制疑難排解](../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments)。
 
-## <a name="add-collaborator-to-luis-app"></a>將共同作業者新增至 LUIS 應用程式
+## <a name="view-the-app-as-a-contributor"></a>以參與者的形式來查看應用程式
 
-下列程式適用于尚未 **遷移** 為使用 Azure 撰寫資源的所有使用者。
+當您新增為參與者之後，請登 [入 LUIS 入口網站](sign-in-luis-portal.md)。
 
-如果您的 LUIS 撰寫體驗未系結至 LUIS 入口網站中 [ **管理-> 的 Azure 資源** ] 頁面上的撰寫資源，則不會進行遷移。
-
-一個應用程式只有單一建立者 (擁有者)，但可以有許多共同作業者。 若要允許共同作業者編輯您的 LUIS 應用程式，您必須將他們用來存取 LUIS 入口網站的電子郵件新增至共同作業者清單。 新增之後，應用程式就會顯示在其 LUIS 入口網站中。
-
-1. 從右上方功能表中選取 [管理]，然後選取左側功能表中的 [共同作業者]。
-
-1. 從工具列中選取 [新增共同作業者]。
-
-1. 輸入共同作業者用來登入 LUIS 入口網站的電子郵件地址。
-
-    ![新增共同作業者的電子郵件地址](./media/luis-how-to-collaborate/add-collaborator-pop-up.png)
-
+[!INCLUDE [switch azure directories](includes/switch-azure-directories.md)]
 
 ### <a name="users-with-multiple-emails"></a>具有多個電子郵件的使用者
 
-如果您將參與者/共同作業者新增至 LUIS 應用程式，則會指定確切的電子郵件地址。 當 Azure Active Directory (Azure AD) 允許單一使用者以可交換方式使用多個電子郵件帳戶時，LUIS 會要求使用者以新增參與者/共同作業者時所指定的電子郵件地址登入。
+如果您將參與者新增至 LUIS 應用程式，則會指定確切的電子郵件地址。 雖然 Azure Active Directory (Azure AD) 讓單一使用者能以交替的方式使用多個電子郵件帳戶，LUIS 需要使用者以新增參與者時指定的電子郵件地址登入。
 
 <a name="owner-and-collaborators"></a>
 
@@ -92,7 +77,7 @@ LUIS 使用標準 Azure Active Directory (Azure AD) 同意流程。
 深入了解 Azure Active Directory 使用者和同意：
 * 將[您的應用程式限制](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md)為一組使用者
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解 [如何使用版本](luis-how-to-manage-versions.md) 來控制您的應用程式生命週期。
 * 瞭解包括在該資源上 [撰寫資源](luis-how-to-azure-subscription.md#authoring-key) 和 [參與者](luis-how-to-azure-subscription.md#contributions-from-other-authors) 的概念。

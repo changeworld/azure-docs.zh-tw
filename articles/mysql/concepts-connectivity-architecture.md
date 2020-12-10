@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 5d3842675cf4b36dfaa95ed6041bf8c6f0978a53
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: b23ff9762ef519d66ed55f75f27dcb80e2d18039
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242869"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007240"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的連線架構
 本文說明適用於 MySQL 的 Azure 資料庫連線架構，以及如何將流量導向至 Azure 內部和外部用戶端的適用於 MySQL 的 Azure 資料庫實例。
@@ -50,12 +50,12 @@ ms.locfileid: "93242869"
 | 印度中部 | 104.211.96.159     |
 | 印度南部 | 104.211.224.146  |
 | 印度西部 | 104.211.160.80    |
-| 日本東部 | 13.78.61.196, 191.237.240.43  |
+| 日本東部 | 13.78.61.196, 191.237.240.43, 40.79.192.23 |
 | 日本西部 | 104.214.148.156, 191.238.68.11, 40.74.96.6, 40.74.96.7    |
 | 南韓中部 | 52.231.32.42   |
 | 南韓南部 | 52.231.200.86    |
 | 美國中北部 | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
-| 歐洲北部 | 40.113.93.91, 191.235.193.75, 52.138.224.6, 52.138.224.7    |
+| 北歐 | 40.113.93.91, 191.235.193.75, 52.138.224.6, 52.138.224.7    |
 | 南非北部  | 102.133.152.0    |
 | 南非西部 | 102.133.24.0   |
 | 美國中南部 |13.66.62.124, 23.98.162.75, 104.214.16.39, 20.45.120.0   |
@@ -81,7 +81,7 @@ PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) 擴充功能提�
 > [!IMPORTANT]
 > PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) \(英文\) 延伸模組中的重新導向支援目前為預覽狀態。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [使用 Azure 入口網站建立及管理適用於 MySQL 的 Azure 資料庫防火牆規則](./howto-manage-firewall-using-portal.md)
 * [使用 Azure CLI 建立和管理適用於 MySQL 的 Azure 資料庫防火牆規則](./howto-manage-firewall-using-cli.md)

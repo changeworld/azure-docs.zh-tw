@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: d46aacc441b412a117d906e0201a9bed6046a338
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7178b8079bbb2411e0b38c3ef59a9981fb2d55be
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961600"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005234"
 ---
 # <a name="open-an-ssh-session-to-a-linux-container-in-azure-app-service"></a>在 Azure App Service 中開啟 Linux 容器的 SSH 會話
 
@@ -39,9 +39,9 @@ ms.locfileid: "88961600"
 
 使用 TCP 通道，您可以透過已驗證的 WebSocket 連線，在您的開發電腦與「用於容器的 Web App」之間建立網路連線。 它可讓您從所選的用戶端，開啟您的容器在 App Service 中執行的 SSH 工作階段。
 
-若要開始，您必須安裝 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 若要查看未安裝 Azure CLI 時的運作方式，請開啟 [Azure Cloud Shell](../cloud-shell/overview.md)。 
+若要開始，您必須安裝 [Azure CLI](/cli/azure/install-azure-cli)。 若要查看未安裝 Azure CLI 時的運作方式，請開啟 [Azure Cloud Shell](../cloud-shell/overview.md)。 
 
-使用 [az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) 命令，開啟您應用程式的遠端連線。 _\<subscription-id>_ _\<group-name>_ \_ \<app-name> 為您的應用程式指定和 _。
+使用 [az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection#ext-webapp-az-webapp-remote-connection-create) 命令，開啟您應用程式的遠端連線。 _\<subscription-id>_ _\<group-name>_ \_ \<app-name> 為您的應用程式指定和 _。
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &

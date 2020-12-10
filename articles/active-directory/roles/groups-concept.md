@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d014a901791f16ecdcb9c3d5f0858a8626cc1072
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 54988c8bbc4a9c3d448ac35f31e97e2d20228209
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379072"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007563"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>使用雲端群組來管理 Azure Active Directory (預覽中的角色指派) 
 
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) 推出公開預覽，您可以在其中指派�
 
 ## <a name="how-this-feature-works"></a>這項功能的運作方式
 
-建立新的 Microsoft 365 或安全性群組，並將 ' isAssignableToRole ' 屬性設定為 ' true '。 您也可以藉由開啟 **Azure AD 角色指派給群組** ，在 Azure 入口網站中建立群組時啟用此屬性。 無論何種方式，您都可以將群組指派給一或多個 Azure AD 角色，就像您將角色指派給使用者的方式一樣。 您可以在單一 Azure AD 組織 (租使用者) 中建立最多200個可指派角色的群組。
+建立新的 Microsoft 365 或安全性群組，並將 ' isAssignableToRole ' 屬性設定為 ' true '。 您也可以藉由開啟 **Azure AD 角色指派給群組**，在 Azure 入口網站中建立群組時啟用此屬性。 無論何種方式，您都可以將群組指派給一或多個 Azure AD 角色，就像您將角色指派給使用者的方式一樣。 您可以在單一 Azure AD 組織 (租使用者) 中建立最多200個可指派角色的群組。
 
 如果您不想讓群組成員擁有角色的持續存取權，您可以使用 Azure AD Privileged Identity Management。 將群組指派為 Azure AD 角色的合格成員。 然後，群組的每個成員都有資格針對指派給群組的角色啟用其指派。 然後，他們可以在固定的時間內啟動其角色指派。
 
@@ -52,14 +52,12 @@ Azure AD 可讓您使用名為 isAssignableToRole 的新屬性（稱為群組）
 
 目前不支援下列案例：  
 
-- 將雲端群組指派給 Azure AD 自訂角色
-- 將雲端群組指派給管理單位或應用程式範圍 (內建或自訂) 中 Azure AD 角色。
 - 將內部部署群組指派給 (內建或自訂) 的 Azure AD 角色
 
 ## <a name="known-issues"></a>已知問題
 
 - **啟用受管理使用者登入功能的分段推出** 不支援透過群組進行指派。
-- *僅 Azure AD P2 授權客戶* ：不要透過 Azure AD 和 PRIVILEGED IDENTITY MANAGEMENT (PIM) ，將群組指派為使用中角色。 具體而言，在建立角色時，請勿將角色指派給角色可指派的群組， *並* 在稍後使用 PIM 將角色指派給群組。 這會導致使用者無法在 PIM 中看到其作用中角色指派，以及無法移除該 PIM 指派的問題。 符合資格的指派在此案例中不會受到影響。 如果您嘗試進行此指派，您可能會看到非預期的行為，例如：
+- *僅 Azure AD P2 授權客戶*：不要透過 Azure AD 和 PRIVILEGED IDENTITY MANAGEMENT (PIM) ，將群組指派為使用中角色。 具體而言，在建立角色時，請勿將角色指派給角色可指派的群組， *並* 在稍後使用 PIM 將角色指派給群組。 這會導致使用者無法在 PIM 中看到其作用中角色指派，以及無法移除該 PIM 指派的問題。 符合資格的指派在此案例中不會受到影響。 如果您嘗試進行此指派，您可能會看到非預期的行為，例如：
   - 角色指派的結束時間可能會不正確地顯示。
   - 在 PIM 入口網站中，[ **我的角色** ] 只會顯示一個角色指派，不論指派 (透過一或多個群組授與的方法數目，以及直接) 。
 - *僅 Azure AD P2 授權客戶* 即使在刪除群組之後，它仍會在 PIM UI 中顯示為該角色的合格成員。 功能沒問題;這只是 Azure 入口網站的快取問題。  

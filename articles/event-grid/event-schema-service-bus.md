@@ -3,16 +3,16 @@ title: Azure 服務匯流排作為事件方格來源
 description: 描述 Azure Event Grid 中服務匯流排事件的屬性
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 81293321b3a8fb989023a231c905996b4059bd81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34c6990c4e6e87304c457a5b2ca6459c404c8d9a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86121129"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008107"
 ---
 # <a name="azure-service-bus-as-an-event-grid-source"></a>以事件方格來源 Azure 服務匯流排
 
-本文提供服務匯流排事件的屬性與結構描述。如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
+本文提供服務匯流排事件的屬性與結構描述。 如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
 
 ## <a name="event-grid-event-schema"></a>Event Grid 事件結構描述
 
@@ -24,8 +24,12 @@ ms.locfileid: "86121129"
 | ---------- | ----------- |
 | Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners | 當佇列或訂用帳戶有作用中的訊息但沒有接聽的接收者時，就會引發。 |
 | Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener | 當無效信件佇列中有作用中訊息但沒有作用中的接聽程式時，就會引發。 |
+| ActiveMessagesAvailablePeriodicNotifications | 如果佇列或訂用帳戶中有作用中的訊息，即使該特定佇列或訂用帳戶上有使用中的接聽程式，也會定期引發。 |
+| DeadletterMessagesAvailablePeriodicNotifications | 當佇列或訂用帳戶的 Deadletter 實體中有訊息時，會定期引發，即使該特定佇列或訂閱的 Deadletter 實體上有作用中的接聽程式。 | 
 
 ### <a name="example-event"></a>事件範例
+
+#### <a name="active-messages-available-with-no-listeners"></a>沒有接聽程式的使用中訊息
 
 下列範例會顯示不包含接聽程式事件的作用中訊息結構描述：
 
@@ -49,6 +53,8 @@ ms.locfileid: "86121129"
 }]
 ```
 
+#### <a name="deadletter-messages-available-with-no-listener"></a>Deadletter 無接聽程式的可用訊息
+
 無效信件佇列事件的結構描述如下：
 
 ```json
@@ -61,6 +67,50 @@ ms.locfileid: "86121129"
   "data": {
     "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
     "requestUri": "https://{your-service-bus-namespace}.servicebus.windows.net/{your-topic}/subscriptions/{your-service-bus-subscription}/$deadletterqueue/messages/head",
+    "entityType": "subscriber",
+    "queueName": "QUEUE NAME IF QUEUE",
+    "topicName": "TOPIC NAME IF TOPIC",
+    "subscriptionName": "SUBSCRIPTION NAME"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
+
+#### <a name="active-messages-available-periodic-notifications"></a>使用中訊息的定期通知
+
+```json
+[{
+  "topic": "/subscriptions/<subscription id>/resourcegroups/DemoGroup/providers/Microsoft.ServiceBus/namespaces/<YOUR SERVICE BUS NAMESPACE WILL SHOW HERE>",
+  "subject": "topics/<service bus topic>/subscriptions/<service bus subscription>",
+  "eventType": "Microsoft.ServiceBus.ActiveMessagesAvailablePeriodicNotifications",
+  "eventTime": "2018-02-14T05:12:53.4133526Z",
+  "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
+  "data": {
+    "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
+    "entityType": "subscriber",
+    "queueName": "QUEUE NAME IF QUEUE",
+    "topicName": "TOPIC NAME IF TOPIC",
+    "subscriptionName": "SUBSCRIPTION NAME"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
+
+#### <a name="deadletter-messages-available-periodic-notifications"></a>Deadletter 可用的訊息定期通知
+
+```json
+[{
+  "topic": "/subscriptions/<subscription id>/resourcegroups/DemoGroup/providers/Microsoft.ServiceBus/namespaces/<YOUR SERVICE BUS NAMESPACE WILL SHOW HERE>",
+  "subject": "topics/<service bus topic>/subscriptions/<service bus subscription>",
+  "eventType": "Microsoft.ServiceBus.DeadletterMessagesAvailablePeriodicNotifications",
+  "eventTime": "2018-02-14T05:12:53.4133526Z",
+  "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
+  "data": {
+    "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
     "entityType": "subscriber",
     "queueName": "QUEUE NAME IF QUEUE",
     "topicName": "TOPIC NAME IF TOPIC",
@@ -88,7 +138,7 @@ ms.locfileid: "86121129"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | namespaceName | 字串 | 資源所在的服務匯流排命名空間。 |
 | requestUri | 字串 | 要發出此事件的特定佇列或訂用帳戶 URI。 |
@@ -98,7 +148,7 @@ ms.locfileid: "86121129"
 | subscriptionName | 字串 | 具有作用中訊息的服務匯流排訂用帳戶。 如果使用佇列則為 null 值。 |
 
 ## <a name="tutorials-and-how-tos"></a>教學課程和操作說明
-|標題  |說明  |
+|標題  |描述  |
 |---------|---------|
 | [教學課程：Azure 服務匯流排與 Azure 事件方格的整合範例](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 事件方格會從服務匯流排主題傳送訊息至函式應用程式和邏輯應用程式。 |
 | [Azure 服務匯流排至事件格線整合](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | 整合服務匯流排與事件方格的概觀。 |

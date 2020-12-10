@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 5dbd49312b58dc656e2239e8a0a4acea614023de
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: d38c57a8c8504e1e03406f7cd8a0b61725cb0511
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317117"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008075"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure Synapse 工作區的持續整合和傳遞
 
@@ -107,7 +107,13 @@ ms.locfileid: "96317117"
 
      ![新增延伸模組](media/add-extension-task.png)
 
-1.  在工作中，提供 **workspace_publish** 的相關 git 存放庫資訊，然後選取目標工作區的資源群組、區域、名稱和雲端環境。 如有需要，請提供參數和值。
+1.  在工作中，選取 **...** 在 [ **範本** ] 方塊旁，選擇範本檔案。
+
+1. 選取 [範本參數] 方塊旁的 **…** ，以選擇 parameters 檔案。
+
+1. 選取目標工作區的連線、資源群組和名稱。 
+
+1. 選取 [覆寫範本參數] 方塊旁的 在 [覆 **寫範本參數** ] 方塊旁，輸入目標工作區所需的參數值。 
 
     ![Synapse 工作區部署](media/create-release-artifacts-deployment.png)
 

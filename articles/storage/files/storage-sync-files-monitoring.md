@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 59c489fac8bf02263cc51833675af414d5de6a52
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 87d0b740ec4f7ffb8966b386c273c023f69c42d8
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685999"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008294"
 ---
 # <a name="monitor-azure-file-sync"></a>監視 Azure 檔案同步
 
@@ -49,7 +49,7 @@ ms.locfileid: "94685999"
 | 雲端階層處理重新叫用大小 | 重新叫用的資料大小。<br><br>單位：位元組<br>匯總類型： Sum<br>適用的維度：伺服器名稱、同步組名 |
 | 雲端階層處理重新叫用大小 (依應用程式) | 應用程式重新叫用的資料大小。<br><br>單位：位元組<br>匯總類型： Sum<br>適用的維度：應用程式名稱、伺服器名稱、同步組名 |
 | 雲端階層處理重新叫用輸送量 | 資料重新叫用輸送量的大小。<br><br>單位：位元組<br>匯總類型： Sum<br>適用的維度：伺服器名稱、同步組名 |
-| 檔案無法同步 | 無法同步的檔案計數。<br><br>單位：Count<br>匯總類型： Sum<br>適用維度：伺服器端點名稱、同步處理方向、同步組名 |
+| 檔案無法同步 | 無法同步的檔案計數。<br><br>單位：Count<br>匯總類型： Average、Sum<br>適用維度：伺服器端點名稱、同步處理方向、同步組名 |
 | 同步的檔案 | 傳輸的檔案計數 (上傳和下載)。<br><br>單位：Count<br>匯總類型： Sum<br>適用維度：伺服器端點名稱、同步處理方向、同步組名 |
 | 伺服器線上狀態 | 從伺服器接收到的活動訊號計數。<br><br>單位：Count<br>彙總類型：最大值<br>適用的維度：伺服器名稱 |
 | 同步工作階段結果 | 同步工作階段結果 (1=成功的同步工作階段；0=失敗的同步工作階段)<br><br>單位：Count<br>匯總類型：最大值<br>適用維度：伺服器端點名稱、同步處理方向、同步組名 |
@@ -72,7 +72,7 @@ ms.locfileid: "94685999"
 
 下表列出一些要監視的範例案例，以及要用於警示的適當計量：
 
-| 狀況 | 用於警示的度量 |
+| 案例 | 用於警示的度量 |
 |-|-|
 | 伺服器端點健全狀況會在入口網站中顯示錯誤 | 同步工作階段結果 |
 | 檔案無法同步至伺服器或雲端端點 | 檔案無法同步 |

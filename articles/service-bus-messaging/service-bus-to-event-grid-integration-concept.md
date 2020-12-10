@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: f0aaa82db61b5f40e42d6dad641bc09d5add9d0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 621402975411afb63055a7d6a45d86d9e026e284
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078328"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007750"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服務匯流排與 Event Grid 的整合概觀
 
@@ -32,14 +32,16 @@ Azure 服務匯流排已開始與 Azure Event Grid 進行全新整合。 此功�
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ### <a name="verify-that-you-have-contributor-access"></a>確認您具有參與者存取權
-移至您的服務匯流排命名空間，然後選取 [ **存取控制] (IAM) **，然後選取 [ **角色指派** ] 索引標籤。確認您擁有命名空間的參與者存取權。 
+移至您的服務匯流排命名空間，然後選取 [ **存取控制] (IAM)**，然後選取 [ **角色指派** ] 索引標籤。確認您擁有命名空間的參與者存取權。 
 
 ### <a name="events-and-event-schemas"></a>事件和事件結構描述
 
 服務匯流排目前會針對兩種案例傳送事件：
 
 * [ActiveMessagesWithNoListenersAvailable](#active-messages-available-event)
-* DeadletterMessagesAvailable
+* [DeadletterMessagesAvailable](#deadletter-messages-available-event)
+* [ActiveMessagesAvailablePeriodicNotifications](#active-messages-available-periodic-notifications)
+* [DeadletterMessagesAvailablePeriodicNotifications](#deadletter-messages-available-periodic-notifications)
 
 此外服務匯流排會使用標準 Event Grid 安全性和[驗證機制](../event-grid/security-authentication.md)。
 
@@ -71,7 +73,7 @@ Azure 服務匯流排已開始與 Azure Event Grid 進行全新整合。 此功�
 }
 ```
 
-#### <a name="dead-letter-messages-available-event"></a>無法傳送的訊息可用事件
+#### <a name="deadletter-messages-available-event"></a>Deadletter 訊息可用事件
 
 您可對每個無效信件佇列取得至少一個事件，而此種佇列具有訊息，但沒有作用中的接收者。
 
@@ -97,6 +99,58 @@ Azure 服務匯流排已開始與 Azure Event Grid 進行全新整合。 此功�
 }]
 ```
 
+#### <a name="active-messages-available-periodic-notifications"></a>使用中訊息的定期通知
+
+如果您在特定佇列或訂用帳戶上有作用中的訊息，即使該特定佇列或訂用帳戶上有使用中的接聽程式，也會定期產生此事件。
+
+事件的架構如下所示。
+
+```json
+[{
+  "topic": "/subscriptions/<subscription id>/resourcegroups/DemoGroup/providers/Microsoft.ServiceBus/namespaces/<YOUR SERVICE BUS NAMESPACE WILL SHOW HERE>",
+  "subject": "topics/<service bus topic>/subscriptions/<service bus subscription>",
+  "eventType": "Microsoft.ServiceBus.ActiveMessagesAvailablePeriodicNotifications",
+  "eventTime": "2018-02-14T05:12:53.4133526Z",
+  "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
+  "data": {
+    "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
+    "entityType": "subscriber",
+    "queueName": "QUEUE NAME IF QUEUE",
+    "topicName": "TOPIC NAME IF TOPIC",
+    "subscriptionName": "SUBSCRIPTION NAME"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
+
+#### <a name="deadletter-messages-available-periodic-notifications"></a>Deadletter 可用的訊息定期通知
+
+如果您在特定佇列或訂用帳戶上 deadletter 訊息，則會定期產生此事件，即使該特定佇列或訂用帳戶的 deadletter 實體上有作用中的接聽程式。
+
+事件的架構如下所示。
+
+```json
+[{
+  "topic": "/subscriptions/<subscription id>/resourcegroups/DemoGroup/providers/Microsoft.ServiceBus/namespaces/<YOUR SERVICE BUS NAMESPACE WILL SHOW HERE>",
+  "subject": "topics/<service bus topic>/subscriptions/<service bus subscription>",
+  "eventType": "Microsoft.ServiceBus.DeadletterMessagesAvailablePeriodicNotifications",
+  "eventTime": "2018-02-14T05:12:53.4133526Z",
+  "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
+  "data": {
+    "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
+    "entityType": "subscriber",
+    "queueName": "QUEUE NAME IF QUEUE",
+    "topicName": "TOPIC NAME IF TOPIC",
+    "subscriptionName": "SUBSCRIPTION NAME"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
+
 ### <a name="how-many-events-are-emitted-and-how-often"></a>發出事件的數量和頻率為何？
 
 如果命名空間中有多個佇列和主題或訂用帳戶，您會對每個佇列和每個訂用帳戶取得至少一個事件。 如果服務匯流排實體中沒有任何訊息，而且有一則新訊息送達，系統就會立即發出事件。 除非服務匯流排偵測到作用中的接收者，否則會每兩分鐘發出事件。 瀏覽訊息並不會干擾事件。
@@ -105,7 +159,7 @@ Azure 服務匯流排已開始與 Azure Event Grid 進行全新整合。 此功�
 
 ### <a name="use-filters-to-limit-where-you-get-events-from"></a>使用篩選條件來限制您取得事件的來源
 
-如果您只想從命名空間內的一個佇列或一個訂用帳戶取得事件，您可以使用 Event Grid 所提供的「開頭為」** 或「結尾為」** 篩選條件。 在某些介面中，篩選條件稱為「前置」** 和「尾碼」** 篩選條件。 如果您想取得多個佇列和訂用帳戶 (但並非所有佇列和訂用帳戶) 的事件，您可以建立多個 Event Grid 訂用帳戶並且為每個訂用帳戶提供一個篩選條件。
+如果您只想從命名空間內的一個佇列或一個訂用帳戶取得事件，您可以使用 Event Grid 所提供的「開頭為」或「結尾為」篩選條件。 在某些介面中，篩選條件稱為「前置」和「尾碼」篩選條件。 如果您想取得多個佇列和訂用帳戶 (但並非所有佇列和訂用帳戶) 的事件，您可以建立多個 Event Grid 訂用帳戶並且為每個訂用帳戶提供一個篩選條件。
 
 ## <a name="create-event-grid-subscriptions-for-service-bus-namespaces"></a>如何為服務匯流排命名空間建立 Event Grid 訂用帳戶
 
@@ -119,7 +173,7 @@ Azure 服務匯流排已開始與 Azure Event Grid 進行全新整合。 此功�
 
 若要建立新的 Event Grid 訂用帳戶，請執行下列作業：
 1. 在 Azure 入口網站中，移至您的命名空間。
-2. 在左窗格中，選取 [Event Grid]****。 
+2. 在左窗格中，選取 [Event Grid]。 
 3. 選取 [ **事件訂閱**]。  
 
    下圖顯示一個命名空間，而該命名空間有事件方格訂用帳戶：
@@ -150,7 +204,7 @@ az eventgrid event-subscription create --resource-id $namespaceid --name "<YOUR 
 
 ## <a name="powershell-instructions"></a>PowerShell 指示
 
-確定您已安裝 Azure PowerShell。 [下載安裝程式](/powershell/azure/install-Az-ps)。 選取 [Windows + X]****，然後以系統管理員權限開啟新的 PowerShell 主控台。 或者，也可以在 Azure 入口網站中使用命令 shell。
+確定您已安裝 Azure PowerShell。 [下載安裝程式](/powershell/azure/install-Az-ps)。 選取 [Windows + X]，然後以系統管理員權限開啟新的 PowerShell 主控台。 或者，也可以在 Azure 入口網站中使用命令 shell。
 
 ```powershell-interactive
 Connect-AzAccount

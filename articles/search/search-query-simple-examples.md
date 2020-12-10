@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/05/2020
-ms.openlocfilehash: 834e4fe8c7b3923f40a07c02c0310200db222308
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 12/09/2020
+ms.openlocfilehash: 027852216b3f2055a5a381d00aff94526953b898
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697249"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007869"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>在 Azure 認知搜尋中建立簡單的查詢
 
@@ -22,6 +22,14 @@ ms.locfileid: "94697249"
 在本文中，我們會使用範例來說明簡單的語法，以填入 `search=` [搜尋檔](/rest/api/searchservice/search-documents) 作業的參數。
 
 替代的查詢語法是 [Full Lucene](query-lucene-syntax.md)，支援更複雜的查詢結構，例如模糊和萬用字元搜尋，這可能需要額外的時間來處理。 如需示範完整語法的詳細資訊和範例，請參閱 [使用完整的 Lucene 語法](search-query-lucene-examples.md)。
+
+您可以從下列工具和 Api 中選擇來提交查詢。
+
+| 方法 | 描述 |
+|-------------|-------------|
+| [搜尋 explorer (入口網站) ](search-explorer.md) | 提供搜尋列以及選取索引和 API 版本的選項。 結果會以 JSON 文件的形式傳回。 建議進行探索、測試和驗證。 <br/>[深入了解。](search-get-started-portal.md#query-index) | 
+| [Postman 或 Visual Studio Code](search-get-started-rest.md) | Web 測試控管是用來編寫 [搜尋檔](/rest/api/searchservice/search-documents) REST 呼叫的絕佳選擇。 REST API 支援 Azure 認知搜尋中的每個程式設計作業，因此您可以透過互動方式發出要求，以將探索焦點放在特定工作上。  |
+| [SearchClient ( .NET) ](/dotnet/api/azure.search.documents.searchclient) | 可以用來查詢 Azure 認知搜尋索引的用戶端。  <br/>[深入了解。](search-howto-dotnet-sdk.md)  |
 
 ## <a name="formulate-requests-in-postman"></a>以 Postman 編寫要求
 

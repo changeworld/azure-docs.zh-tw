@@ -3,15 +3,15 @@ title: 建立不具公用 IP 位址的 Azure Batch 集區
 description: 瞭解如何建立不具公用 IP 位址的集區
 author: pkshultz
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 12/9/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 09a5632f969117e69e68bbe0df2bfbab9a8a102b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 806e85fca0a509d56e248fc7779fba0f0a59a61d
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842130"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007665"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>建立不具公用 IP 位址的 Azure Batch 集區
 
@@ -25,7 +25,8 @@ ms.locfileid: "94842130"
 
 > [!IMPORTANT]
 > 在 Azure Batch 中，如果沒有公用 IP 位址的集區支援目前在下欄區域為公開預覽狀態：法國中部、東亞、美國中西部、美國中南部、美國西部2、美國東部、北歐、美國東部2、美國中部、歐洲西部、美國中北部、美國西部、澳大利亞東部、日本東部、日本西部。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
+> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -69,7 +70,7 @@ POST {batchURL}/pools?api-version=2020-03-01.11.0
 client-request-id: 00000000-0000-0000-0000-000000000000
 ```
 
-### <a name="request-body"></a>Request body
+### <a name="request-body"></a>要求本文
 
 ```json
 "pool": {

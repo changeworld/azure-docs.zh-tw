@@ -4,12 +4,12 @@ description: 瞭解如何在 Azure App Service 中設定自訂容器。 本文�
 ms.topic: article
 ms.date: 09/22/2020
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 2aece0550d7b78ac4312e71b2671de4a64e4b86b
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: a7582bbb866a63820abbd959e06628eda5d57e29
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96557921"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007631"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>設定 Azure App Service 的自訂容器
 
@@ -204,7 +204,7 @@ Docker 記錄會顯示在入口網站的應用程式 [ **容器設定** ] 頁面
 
 ### <a name="from-the-kudu-console"></a>從 Kudu 主控台
 
-流覽至 `https://<app-name>.scm.azurewebsites.net/DebugConsole` 並按一下 [ **LogFiles** 記錄檔] 資料夾，以查看個別記錄檔。 若要下載整個記錄檔目錄，請 **按一下目錄名稱** 左側的 [ **下載** ] 圖示。 您也可以使用 FTP 用戶端來存取這個資料夾。
+流覽至 `https://<app-name>.scm.azurewebsites.net/DebugConsole` 並按一下 [ 記錄檔] 資料夾，以查看個別記錄檔。 若要下載整個記錄檔目錄，請 **按一下目錄名稱** 左側的 [ **下載** ] 圖示。 您也可以使用 FTP 用戶端來存取這個資料夾。
 
 在主控台終端機中，預設無法存取 `C:\home\LogFiles` 資料夾，因為未啟用持續性共用存放裝置。 若要在主控台終端機中啟用此行為，請 [啟用持續性共用存放裝置](#use-persistent-shared-storage)。
 
@@ -345,7 +345,7 @@ SSH 可讓容器和用戶端之間進行安全通訊。 為了讓自訂容器支
 
 WordPress 等多容器應用程式需要持續性儲存體才能正常運作。 若要啟用它，您的 Docker Compose 設定必須指向容器 *以外* 的儲存位置。 容器內的儲存位置不會在應用程式重新開機後保存變更。
 
-`WEBSITES_ENABLE_APP_SERVICE_STORAGE`使用[Cloud Shell](https://shell.azure.com)中的[az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set)命令來設定應用程式設定，以啟用持續性儲存體。
+`WEBSITES_ENABLE_APP_SERVICE_STORAGE`使用[Cloud Shell](https://shell.azure.com)中的[az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set)命令來設定應用程式設定，以啟用持續性儲存體。
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
