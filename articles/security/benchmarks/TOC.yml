@@ -95,6 +95,8 @@
       href: ../../mysql/security-baseline.md
     - name: 適用於 MariaDB 的 Azure 資料庫安全性基準
       href: ../../mariadb/security-baseline.md
+    - name: Azure 資料庫移轉服務安全性基準
+      href: ../../dms/security-baseline.md
     - name: 適用於 PostgreSQL 的 Azure 資料庫 - 超大規模資料庫安全性基準
       href: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - name: 適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器安全性基準

@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 11/13/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 15e5d257259bb4dfc98528cb726dbd2cc1f9a903
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f55af61a061bf3a3897569058aace728f7465b64
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498722"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862117"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-net"></a>在 Azure 服務匯流排佇列 (.NET) 中傳送和接收訊息
 在本教學課程中，您會建立 .NET Core 應用程式並使用 **Azure.Messaging.ServiceBus** 套件對服務匯流排佇列傳送和接收訊息。 
@@ -55,26 +55,9 @@ ms.locfileid: "96498722"
         static string queueName = "<QUEUE NAME>";
     ```
 
-    輸入命名空間的連接字串作為 `ServiceBusConnectionString` 變數。 輸入您的佇列名稱。
+    輸入命名空間的連接字串作為 `connectionString` 變數。 輸入您的佇列名稱。
 
-1. 以下列 **非同步** `Main`方法取代 `Main()` 方法。 此方法會呼叫您將在下一個步驟中新增的 `SendMessagesAsync()` 方法，以將訊息傳送至佇列。 
-
-    ```csharp
-    public static async Task Main(string[] args)
-    {    
-        const int numberOfMessages = 10;
-        
-        Console.WriteLine("======================================================");
-        Console.WriteLine("Press ENTER key to exit after sending all the messages.");
-        Console.WriteLine("======================================================");
-
-        // Send messages.
-        await SendMessagesAsync(numberOfMessages);
-
-        Console.ReadKey();
-    }
-    ```
-1. 直接在 `Main()` 方法後面，新增下列 `SendMessagesAsync()` 方法，以執行傳送 `numberOfMessagesToSend` 所指定訊息數目 (目前設為 10) 的工作：
+1. 直接在 `Main()` 方法後面，新增下列 `SendMessagesAsync()` 方法，以執行傳送訊息的工作：
 
     ```csharp
         static async Task SendMessageAsync()
@@ -101,9 +84,9 @@ ms.locfileid: "96498722"
         {
             // create a queue containing the messages and return it to the caller
             Queue<ServiceBusMessage> messages = new Queue<ServiceBusMessage>();
-            messages.Enqueue(new ServiceBusMessage("First message"));
-            messages.Enqueue(new ServiceBusMessage("Second message"));
-            messages.Enqueue(new ServiceBusMessage("Third message"));
+            messages.Enqueue(new ServiceBusMessage("First message in the batch"));
+            messages.Enqueue(new ServiceBusMessage("Second message in the batch"));
+            messages.Enqueue(new ServiceBusMessage("Third message in the batch"));
             return messages;
         }
     ```

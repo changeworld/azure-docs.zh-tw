@@ -346,6 +346,8 @@
           href: monitor-logic-apps.md
         - name: 使用 Azure 監視器記錄監視邏輯應用程式
           href: monitor-logic-apps-log-analytics.md
+        - name: 監視 Azure 資訊安全中心中的邏輯應用程式
+          href: healthy-unhealthy-resource.md
         - name: 使用 Azure 監視器記錄監視 B2B 訊息
           href: monitor-b2b-messages-log-analytics.md
         - name: 建立監視和追蹤查詢

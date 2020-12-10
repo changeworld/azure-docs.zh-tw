@@ -4,20 +4,19 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/19/2020
 ms.author: glenga
-ms.openlocfilehash: ca8da227c97a44abe14354a5c530d508ce357884
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a5c113849296275432acf1f5603377a1909a2c04
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88704188"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96842252"
 ---
 ## <a name="run-the-function-locally"></a>在本機執行函式
 
 Azure Functions Core Tools 與 Visual Studio Code 整合，可讓您在本機執行和偵錯 Azure Functions 專案。 如需如何在 Visual Studio Code 中進行偵錯的詳細資訊，請參閱[在本機進行 PowerShell Azure Functions 偵錯](../articles/azure-functions/functions-debug-powershell-local.md)。 
+1. 若要呼叫您的函式，請按 <kbd>F5</kbd> 以啟動函式應用程式專案。 Core Tools 的輸出會顯示在 **終端機** 面板中。 如果在 Windows 上執行時遇到問題，請確定 Visual Studio Code 的預設終端機未設定為 **WSL Bash**。
 
-1. 按 F5 鍵以啟動函式應用程式專案。 Core Tools 的輸出會顯示在**終端機**面板中。
-
-1. 在**終端機**面板中，複製 HTTP 觸發函式的 URL 端點。
+1. 在 **終端機** 面板中，複製 HTTP 觸發函式的 URL 端點。
 
     ![Azure 本機輸出](./media/functions-run-function-test-local-vs-code-ps/functions-vscode-f5.png)
 

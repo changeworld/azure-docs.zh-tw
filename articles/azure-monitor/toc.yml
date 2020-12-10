@@ -29,10 +29,6 @@
           href: learn/quick-collect-windows-computer.md
     - name: 監視應用程式
       items:
-        - name: .NET 應用程式
-          href: learn/quick-monitor-portal.md
-        - name: .NET Core 應用程式
-          href: learn/dotnetcore-quick-start.md
         - name: Node.js 應用程式
           href: learn/nodejs-quick-start.md
         - name: 行動應用程式
@@ -680,8 +676,10 @@
                       href: app/java-standalone-telemetry-processors.md
                     - name: JVM 引數設定
                       href: app/java-standalone-arguments.md
-                    - name: 從 2.x 升級
+                    - name: 從 2.x SDK 升級
                       href: app/java-standalone-upgrade-from-2x.md
+                    - name: 疑難排解
+                      href: app/java-standalone-troubleshoot.md
             - name: 內部部署伺服器
               items:
                 - name: ASP.NET
@@ -1014,6 +1012,8 @@
           href: insights/container-insights-deployment-hpa-metrics.md
         - name: 監視永久性磁碟區 (PV)
           href: insights/container-insights-persistent-volumes.md
+        - name: '[報表] 索引標籤'
+          href: insights/container-insights-reports.md
         - name: 檢視即時資料
           items:
             - name: 即時資料 (預覽) 概觀

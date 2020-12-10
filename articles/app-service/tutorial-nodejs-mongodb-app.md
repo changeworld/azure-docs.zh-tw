@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-js, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 9c204a07e3c5edff028342af1c88b15ebac0754b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 25d5aa3961ad5dabd29ab4501d8f5076362d9df8
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012187"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862256"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>教學課程：在 Azure 中建置 Node.js 和 MongoDB 應用程式
 
@@ -47,11 +47,12 @@ ms.locfileid: "96012187"
 
 若要完成本教學課程：
 
-1. [安裝 Git](https://git-scm.com/)
-2. [安裝 Node.js 和 NPM](https://nodejs.org/)
-3. [安裝 Bower](https://bower.io/) ([MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started) 的必要項目)
-4. [安裝 Gulp.js](https://gulpjs.com/) ([MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started) 的必要項目)
-5. [安裝及執行 MongoDB Community 版本](https://docs.mongodb.com/manual/administration/install-community/) 
+- [安裝 Git](https://git-scm.com/)
+- [安裝 Node.js 和 NPM](https://nodejs.org/)
+- [安裝 Bower](https://bower.io/) ([MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started) 的必要項目)
+- [安裝 Gulp.js](https://gulpjs.com/) ([MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started) 的必要項目)
+- [安裝及執行 MongoDB Community 版本](https://docs.mongodb.com/manual/administration/install-community/)
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)] 
 
 ## <a name="test-local-mongodb"></a>測試本機的 MongoDB
 
@@ -111,8 +112,6 @@ MEAN.js 範例應用程式會將使用者資料儲存於資料庫中。 如果�
 選取 [系統管理員] > [管理文章] 來新增一些文章。
 
 如需隨時停止 Node.js，請在終端機上按下 `Ctrl+C`。 
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-production-mongodb"></a>建立生產環境 MongoDB
 
@@ -306,7 +305,7 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (5/5), done.
 Writing objects: 100% (5/5), 489 bytes | 0 bytes/s, done.
 Total 5 (delta 3), reused 0 (delta 0)
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id '6c7c716eee'.
 remote: Running custom deployment command...
@@ -317,7 +316,7 @@ remote: Handling node.js deployment.
 .
 remote: Deployment successful.
 To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
- * [new branch]      master -> master
+ * [new branch]      main -> main
 </pre>
 
 您可能會注意到，部署程序會在 `npm install` 之後執行 [Gulp](https://gulpjs.com/)。 App Service 不會在部署期間執行 Gulp 或 Grunt 工作，因此，這個範例存放庫在其根目錄中有兩個其他檔案可啟用它： 
@@ -468,7 +467,7 @@ node server.js
 
 ```bash
 git commit -am "added article comment"
-git push azure master
+git push azure main
 ```
 
 完成 `git push` 之後，巡覽至 Azure 應用程式，然後嘗試執行新功能。

@@ -8,13 +8,13 @@ metadata:
   ms.service: static-web-apps
   author: craigshoemaker
   ms.author: cshoe
-  ms.date: 04/09/2020
-  ms.openlocfilehash: a72c9ab1dfcaf6fd95ac706bc0f0a7b8adb17c0f
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.date: 12/08/2020
+  ms.openlocfilehash: 880d675915a17e24269361c0ceed320a257d0ba9
+  ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "90905352"
+  ms.lasthandoff: 12/09/2020
+  ms.locfileid: "96906126"
 landingContent:
 - title: 關於靜態 Web 應用程式
   linkLists:
@@ -36,8 +36,10 @@ landingContent:
       url: ./getting-started.md?tabs=vanilla-javascript
   - linkListType: learn
     links:
-    - text: 發佈 Angular、React、Svelte 或 Vue JavaScript 應用程式和 API
+    - text: 發佈 Angular、React、Svelte 或 Vue JavaScript 應用程式
       url: /learn/modules/publish-app-service-static-web-app-api
+    - text: 發佈 API
+      url: /learn/modules/publish-static-web-app-api-preview-url
   - linkListType: video
     links:
     - text: 建置和部署靜態 Web 應用程式
@@ -64,6 +66,8 @@ landingContent:
     links:
     - text: 使用 Gatsby 發佈靜態 Web 應用程式
       url: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+    - text: 使用 Blazor 發佈靜態 Web 應用程式
+      url: /learn/modules/publish-app-service-static-web-app-api-dotnet
 - title: 重要概念
   linkLists:
   - linkListType: concept
