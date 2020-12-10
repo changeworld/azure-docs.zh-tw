@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: b65553edf61d8e646e7238a5385656fe75a3156f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python, contperf-fy21q1
+ms.openlocfilehash: a1a0b89dee5a6d57e6f317c5f6c8b61ffeda3c33
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311370"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029068"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>使用 Azure Machine Learning 為您的模型微調超參數
 
@@ -339,8 +339,8 @@ hyperdrive_run = experiment.submit(hd_config)
 
 
 暖開機的處理方式不同于取樣方法：
-- **貝氏取樣** ：先前執行的試用版會用來做為挑選新範例的先前知識，以及改善主要度量。
-- **隨機取樣** 或 **方格取樣** ：提早終止會使用先前回合的知識，判斷執行效能不佳的執行。 
+- **貝氏取樣**：先前執行的試用版會用來做為挑選新範例的先前知識，以及改善主要度量。
+- **隨機取樣** 或 **方格取樣**：提早終止會使用先前回合的知識，判斷執行效能不佳的執行。 
 
 指定您想要暖開機的父執行清單。
 

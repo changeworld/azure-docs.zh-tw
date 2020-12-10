@@ -9,13 +9,13 @@ ms.author: laobri
 author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq4, devx-track-python, data4ml
-ms.openlocfilehash: bf5bfd8c2047764f9a03889c8fdd5012dc38ab65
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
+ms.openlocfilehash: 8a5663df590e0f617f8049f0201e6e508351c755
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359760"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027572"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>將資料匯入 ML 管線步驟並在其中來回移動 (Python)
 
@@ -158,7 +158,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-pipelinedata-for-intermediate-data"></a>用於 `PipelineData` 中繼資料
 
-雖然 `Dataset` 物件代表持續性資料，但 [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) 物件是用於從管線步驟輸出的暫存資料。 因為物件的存留期 `PipelineData` 超過單一管線步驟，所以您可以在管線定義腳本中定義它們。 當您建立 `PipelineData` 物件時，您必須提供資料將存放的名稱和資料存放區。 `PipelineData` `PythonScriptStep` 使用 _both_ `arguments` 和引數，將您的物件 (s) 傳遞給 `outputs` ：
+雖然 `Dataset` 物件代表持續性資料，但 [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) 物件是用於從管線步驟輸出的暫存資料。 因為物件的存留期 `PipelineData` 超過單一管線步驟，所以您可以在管線定義腳本中定義它們。 當您建立 `PipelineData` 物件時，您必須提供資料將存放的名稱和資料存放區。 `PipelineData` `PythonScriptStep` 使用 `arguments` 和引數，將您的物件 (s) 傳遞給 `outputs` ：
 
 ```python
 

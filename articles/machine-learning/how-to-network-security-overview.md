@@ -10,13 +10,13 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: 6398d23aeb0e26fbc336c0c1066078f327fa2f73
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
+ms.openlocfilehash: dd24c4f20fa3a56d25ef142947268b2d2b75474a
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576565"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029595"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虛擬網路隔離和隱私權總覽
 
@@ -28,7 +28,7 @@ ms.locfileid: "96576565"
 
 **1. VNet 總覽**  >  [2。保護工作區](how-to-secure-workspace-vnet.md)  >  [3。保護定型環境](how-to-secure-training-vnet.md)  >  [4。保護推斷環境](how-to-secure-inferencing-vnet.md)  >  [5。啟用 studio 功能](how-to-enable-studio-virtual-network.md)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已熟悉下列主題：
 + [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)

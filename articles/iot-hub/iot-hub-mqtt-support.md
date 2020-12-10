@@ -12,15 +12,15 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-- contperfq1
+- contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 4e06edaf6323c13b3a5af037b5b85b5b0acecc79
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: d206f40380ddb60a53ec8af2802a65af94f5820d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505643"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027793"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 通訊協定來與 IoT 中樞通訊
 
@@ -46,7 +46,7 @@ IoT 中樞不是功能完整的 MQTT 訊息代理程式，而且不支援 MQTT v
 
 ## <a name="using-the-device-sdks"></a>使用裝置 SDK
 
-支援 MQTT 通訊協定的[裝置 SDK](https://github.com/Azure/azure-iot-sdks) 適用於 Java、Node.js、C、C# 和 Python。 裝置 SDK 會使用標準的 IoT 中樞連接字串來連接到 IoT 中樞。 若要使用 MQTT 通訊協定，用戶端通訊協定參數必須設定為 **MQTT** 。 您也可以在用戶端通訊協定參數中指定透過 Web 通訊端的 MQTT。 根據預設，裝置 SDK 會連接到 **CleanSession** 旗標設為 **0** 的 IoT 中樞，並使用 **QoS 1** 來與 IoT 中樞交換訊息。 雖然您可以設定 **QoS 0** 以加快訊息交換的速度，但您應該注意到傳遞不保證也不會被認可。 基於這個理由， **QoS 0** 通常稱為「火災別忘」。
+支援 MQTT 通訊協定的[裝置 SDK](https://github.com/Azure/azure-iot-sdks) 適用於 Java、Node.js、C、C# 和 Python。 裝置 SDK 會使用標準的 IoT 中樞連接字串來連接到 IoT 中樞。 若要使用 MQTT 通訊協定，用戶端通訊協定參數必須設定為 **MQTT**。 您也可以在用戶端通訊協定參數中指定透過 Web 通訊端的 MQTT。 根據預設，裝置 SDK 會連接到 **CleanSession** 旗標設為 **0** 的 IoT 中樞，並使用 **QoS 1** 來與 IoT 中樞交換訊息。 雖然您可以設定 **QoS 0** 以加快訊息交換的速度，但您應該注意到傳遞不保證也不會被認可。 基於這個理由， **QoS 0** 通常稱為「火災別忘」。
 
 當裝置連線到 IoT 中樞時，裝置 SDK 會提供方法讓裝置使用 IoT 中樞交換訊息。
 
@@ -141,11 +141,11 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 如果裝置無法使用裝置 SDK，它仍可使用連接埠 8883 上的 MQTT 通訊協定連線到公用裝置端點。 在 **CONNECT** 封包中，裝置應使用下列值：
 
-* 在 [ClientId] 欄位中，使用 **deviceId** 。
+* 在 [ClientId] 欄位中，使用 **deviceId**。
 
 * 在 [Username] 欄位中，使用 `{iothubhostname}/{device_id}/?api-version=2018-06-30`，其中 `{iothubhostname}` 是 IoT 中樞的完整 CName。
 
-    例如，如果您的 IoT 中樞名稱是 **contoso.azure-devices.net** ，而且如果您的裝置名稱是 **MyDevice01** ，則完整的 [Username] 欄位應包含：
+    例如，如果您的 IoT 中樞名稱是 **contoso.azure-devices.net** ，而且如果您的裝置名稱是 **MyDevice01**，則完整的 [Username] 欄位應包含：
 
     `contoso.azure-devices.net/MyDevice01/?api-version=2018-06-30`
 
@@ -285,7 +285,7 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
 ## <a name="sending-device-to-cloud-messages"></a>傳送裝置到雲端訊息
 
-成功連線之後，裝置可以使用 `devices/{device_id}/messages/events/` 或 `devices/{device_id}/messages/events/{property_bag}` 作為 **主題名稱** ，將訊息傳送至 IoT 中樞。 `{property_bag}` 項目可讓裝置以 URL 編碼格式傳送具有其他屬性的訊息。 例如：
+成功連線之後，裝置可以使用 `devices/{device_id}/messages/events/` 或 `devices/{device_id}/messages/events/{property_bag}` 作為 **主題名稱**，將訊息傳送至 IoT 中樞。 `{property_bag}` 項目可讓裝置以 URL 編碼格式傳送具有其他屬性的訊息。 例如：
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -311,7 +311,7 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 裝置在成功訂閱其裝置特定端點（由主題篩選器表示）之前，不會收到來自 IoT 中樞的任何訊息 `devices/{device_id}/messages/devicebound/#` 。 建立訂閱之後，裝置將會接收在訂閱之後傳送給它的雲端到裝置訊息。 如果裝置是在 **CleanSession** 旗標設定為 **0** 的情況下連線，訂閱將會跨不同的工作階段持續保留。 在此情況下，下次裝置以 **CleanSession 0** 進行連線時，就會收到中斷連線時傳送給它的任何未送訊息。 如果裝置使用設定為 **1** 的 **CleanSession** 旗標，則必須等到訂閱 IoT 中樞的裝置端點之後，才會收到來自 IoT 中樞的訊息。
 
-IoT 中樞會附上 **主題名稱**`devices/{device_id}/messages/devicebound/` 或 `devices/{device_id}/messages/devicebound/{property_bag}` (如果有訊息屬性) 來傳遞訊息。 `{property_bag}` 包含訊息屬性的 url 編碼索引鍵/值組。 屬性包中只會包含應用程式屬性和使用者可設定的系統屬性 (例如 **messageId** 或 **correlationId** )。 系統屬性名稱具有前置詞 **$** ，但應用程式屬性則會使用沒有前置詞的原始屬性名稱。 如需屬性包格式的其他詳細資料，請參閱傳送 [裝置到雲端訊息](#sending-device-to-cloud-messages)。
+IoT 中樞會附上 **主題名稱**`devices/{device_id}/messages/devicebound/` 或 `devices/{device_id}/messages/devicebound/{property_bag}` (如果有訊息屬性) 來傳遞訊息。 `{property_bag}` 包含訊息屬性的 url 編碼索引鍵/值組。 屬性包中只會包含應用程式屬性和使用者可設定的系統屬性 (例如 **messageId** 或 **correlationId**)。 系統屬性名稱具有前置詞 **$** ，但應用程式屬性則會使用沒有前置詞的原始屬性名稱。 如需屬性包格式的其他詳細資料，請參閱傳送 [裝置到雲端訊息](#sending-device-to-cloud-messages)。
 
 在雲端到裝置的訊息中，屬性包中的值會以下表的方式表示：
 
@@ -321,7 +321,7 @@ IoT 中樞會附上 **主題名稱**`devices/{device_id}/messages/devicebound/` 
 | 空字串 | `key=` | 索引鍵，後面接著等號且沒有值 |
 | 非 null、非空白的值 | `key=value` | 後面接著等號和值的索引鍵 |
 
-下列範例顯示內容包，其中包含三個應用程式屬性： **prop1** ，其值為 `null` 。 **this.prop2** ， ( "" 的空字串 ) ;並以 "a string" 的值 **prop3** 。
+下列範例顯示內容包，其中包含三個應用程式屬性： **prop1** ，其值為 `null` 。 **this.prop2**， ( "" 的空字串 ) ;並以 "a string" 的值 **prop3** 。
 
 ```mqtt
 /?prop1&prop2=&prop3=a%20string
@@ -331,7 +331,7 @@ IoT 中樞會附上 **主題名稱**`devices/{device_id}/messages/devicebound/` 
 
 ## <a name="retrieving-a-device-twins-properties"></a>擷取裝置對應項屬性
 
-首先，裝置會訂閱 `$iothub/twin/res/#`，以接收作業的回應。 然後，它會傳送空白訊息給主題 `$iothub/twin/GET/?$rid={request id}`，其中已填入 **要求 ID** 的值。 服務接著會使用和要求相同的 **要求 ID** ，傳送內含關於 `$iothub/twin/res/{status}/?$rid={request id}` 主題之裝置對應項資料的回應訊息。
+首先，裝置會訂閱 `$iothub/twin/res/#`，以接收作業的回應。 然後，它會傳送空白訊息給主題 `$iothub/twin/GET/?$rid={request id}`，其中已填入 **要求 ID** 的值。 服務接著會使用和要求相同的 **要求 ID**，傳送內含關於 `$iothub/twin/res/{status}/?$rid={request id}` 主題之裝置對應項資料的回應訊息。
 
 根據 [IoT 中樞訊息開發人員指南](iot-hub-devguide-messaging.md)，要求識別碼可以是任何有效的訊息屬性值，而狀態會驗證為整數。
 
@@ -371,7 +371,7 @@ IoT 中樞會附上 **主題名稱**`devices/{device_id}/messages/devicebound/` 
 
 2. 裝置會將包含裝置對應項新的訊息傳送至 `$iothub/twin/PATCH/properties/reported/?$rid={request id}` 主題。 此訊息包含 **要求 ID** 值。
 
-3. 服務接著會傳送回應訊息，其中包含`$iothub/twin/res/{status}/?$rid={request id}` 主題上報告之屬性集合的新 ETag 值。 這個回應訊息使用和要求相同的 **要求 ID** 。
+3. 服務接著會傳送回應訊息，其中包含`$iothub/twin/res/{status}/?$rid={request id}` 主題上報告之屬性集合的新 ETag 值。 這個回應訊息使用和要求相同的 **要求 ID**。
 
 要求訊息本文會包含 JSON 文件，其包含已報告屬性的新值。 JSON 文件中的每個成員會在裝置對應項的文件中更新或新增對應的成員。 要 `null` 從包含物件中刪除成員的成員集。 例如：
 
@@ -432,7 +432,7 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
 
 首先，裝置必須訂閱 `$iothub/methods/POST/#`。 IoT 中樞會將方法要求傳送至主題 `$iothub/methods/POST/{method name}/?$rid={request id}`，其中含有有效的 JSON 或空白本文。
 
-若要回應，裝置會將具有有效 JSON 的或內文空白的訊息傳送至 `$iothub/methods/res/{status}/?$rid={request id}` 主題。 在此訊息中， **要求識別碼** 必須與要求訊息中的相符，且 **狀態** 必須是整數。
+若要回應，裝置會將具有有效 JSON 的或內文空白的訊息傳送至 `$iothub/methods/res/{status}/?$rid={request id}` 主題。 在此訊息中，**要求識別碼** 必須與要求訊息中的相符，且 **狀態** 必須是整數。
 
 如需詳細資訊，請參閱 [直接方法開發人員指南](iot-hub-devguide-direct-methods.md)。
 

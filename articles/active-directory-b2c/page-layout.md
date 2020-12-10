@@ -11,20 +11,28 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 868d99a82009dc8545fc24ad1cfa1da3959da131
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bbe40a2329143b9abd4554ec715c64e5c26d4eb
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88852081"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028099"
 ---
 # <a name="page-layout-versions"></a>頁面配置版本
 
 頁面配置套件會定期更新，以包含其頁面元素的修正和增強功能。 下列變更記錄檔會指定每個版本中所引進的變更。
 
-[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
-
 ## <a name="self-asserted-page-selfasserted"></a>自我判斷頁面 (selfasserted) 
+
+**2.1.1**
+
+- `heading`除了在頁面上顯示為標題之外，還新增了 UXString `intro` 。 預設為隱藏。
+- 新增對 iCloud Keychain 儲存密碼的支援。
+- 已新增使用原則或 QueryString 參數的支援， `pageFlavor` 以選取 (傳統、oceanBlue 或青灰) 的版面配置。
+- 在自我判斷頁面上新增了免責聲明。
+- 當頁面載入時，焦點會放在第一個可編輯的欄位上。
+- 當有多個欄位發生錯誤時，焦點會放在第一個錯誤欄位上。
+- 焦點現在會在驗證電子郵件驗證碼後置於 [變更] 按鈕。
 
 **2.1.0**
 
@@ -38,12 +46,16 @@ ms.locfileid: "88852081"
 
 - 使用者名稱/電子郵件和密碼欄位現在會使用 `form` HTML 元素，以允許 Edge 和 Internet Explorer (IE) 適當地儲存這項資訊。
 - 新增可設定的使用者輸入驗證延遲，以改善使用者體驗。
--  協助工具修正
+- 已修正協助工具問題，讓 [朗讀程式] 現在會讀取錯誤訊息。 
+- 現在焦點會放在驗證電子郵件之後的密碼欄位。
+- 已 `autofocus` 從 checkbox 控制項移除。 
+- 已新增支援電話號碼驗證的顯示小工具。
 - 您現在可以 `data-preload="true"` [在 HTML 標籤中](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) 加入屬性，以控制 CSS 和 JavaScript 的載入順序。
   - 同時載入連結的 CSS 檔案與您的 HTML 範本，使其不會在載入檔案時「閃爍」。
   - 控制在 `script` 頁面載入之前提取和執行標記的順序。
-- 電子郵件欄位現在是 `type=email` ，行動鍵盤會提供正確的建議
-- 支援 Chrome 轉譯
+- 電子郵件欄位現在會 `type=email` 提供正確的建議。
+- 支援 Chrome 轉譯。
+- 在使用者流程頁面中新增了租使用者商標的支援。
 
 **1.1.0**
 
@@ -58,6 +70,15 @@ ms.locfileid: "88852081"
 
 ## <a name="unified-sign-in-sign-up-page-with-password-reset-link-unifiedssp"></a>具有密碼重設連結 (unifiedssp) 的整合式登入註冊頁面
 
+**2.1.1**
+- `heading`除了在頁面上顯示為標題之外，還新增了 UXString `intro` 。 預設為隱藏。
+- 已新增使用原則或 QueryString 參數的支援， `pageFlavor` 以選取 (傳統、oceanBlue 或青灰) 的版面配置。
+- 新增對 iCloud Keychain 儲存密碼的支援。
+- 當有多個欄位發生錯誤時，焦點會放在第一個錯誤欄位上。
+- 當頁面載入時，焦點會放在第一個可編輯的欄位上。
+- 為宣告提供者選取專案連結新增位置 `bottomUnderFormClaimsProviderSelections` 。
+- 已移除不再使用的 UXStrings。
+
 **2.1.0**
 
 - 新增多個註冊連結的支援。
@@ -66,12 +87,13 @@ ms.locfileid: "88852081"
 **1.2.0**
 
 - 使用者名稱/電子郵件和密碼欄位現在會使用 `form` HTML 元素，以允許 Edge 和 Internet Explorer (IE) 適當地儲存這項資訊。
--  協助工具修正
+- 協助工具修正。
 - 您現在可以 `data-preload="true"` [在 HTML 標籤中](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) 加入屬性，以控制 CSS 和 JavaScript 的載入順序。
   - 同時載入連結的 CSS 檔案與您的 HTML 範本，使其不會在載入檔案時「閃爍」。
   - 控制在 `script` 頁面載入之前提取和執行標記的順序。
-- 電子郵件欄位現在是 `type=email` ，行動鍵盤會提供正確的建議
-- 支援 Chrome 轉譯
+- 電子郵件欄位現在會 `type=email` 提供正確的建議。
+- 支援 Chrome 轉譯。
+- 在使用者流程頁面中新增了租使用者商標的支援。
 
 **1.1.0**
 
@@ -82,6 +104,12 @@ ms.locfileid: "88852081"
 - 初始版本
 
 ## <a name="mfa-page-multifactor"></a>MFA 頁面 (多因素) 
+
+**1.2.2**
+- 修正了使用 iOS 時自動填入驗證碼的問題。
+- 已修正將權杖從 Android Web 程式重新導向至信賴憑證者的問題。 
+- `heading`除了在頁面上顯示為標題之外，還新增了 UXString `intro` 。 預設為隱藏。  
+- 已新增使用原則或 QueryString 參數的支援， `pageFlavor` 以選取 (傳統、oceanBlue 或青灰) 的版面配置。
 
 **1.2.1**
 
@@ -94,7 +122,8 @@ ms.locfileid: "88852081"
   - 同時載入連結的 CSS 檔案與您的 HTML 範本，使其不會在載入檔案時「閃爍」。
   - 控制在 `script` 頁面載入之前提取和執行標記的順序。
 - 電子郵件欄位現在是 `type=email` ，行動鍵盤會提供正確的建議
-- 支援 Chrome 轉譯
+- 支援 Chrome 轉譯。
+- 在使用者流程頁面中新增了租使用者商標的支援。
 
 **1.1.0**
 
@@ -146,6 +175,6 @@ ms.locfileid: "88852081"
 
 - 初始版本
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需如何在自訂原則中自訂應用程式使用者介面的詳細資訊，請參閱 [使用自訂原則來自訂應用程式的使用者介面](custom-policy-ui-customization.md)。

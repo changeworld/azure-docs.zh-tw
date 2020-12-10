@@ -1,5 +1,5 @@
 ---
-title: 登入已設定 SAML 型單一登入的應用程式時發生問題
+title: 登入 SAML 型單一登入設定的應用程式時發生問題
 description: 登入您使用 Azure Active Directory 的 SAML 型同盟單一登入所設定的應用程式時，特定錯誤的指引
 services: active-directory
 author: kenwith
@@ -11,32 +11,32 @@ ms.topic: troubleshooting
 ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
-ms.custom: contperfq2
-ms.openlocfilehash: e75669c70c67d55c94642a0f6dbe3c9dbc3376e6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: e6d3674aaa4c89f42c2e7b87a6be6cdc8ecabf64
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651544"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028269"
 ---
-# <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>登入已設定 SAML 型單一登入的應用程式時發生問題
+# <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>登入 SAML 型單一登入設定的應用程式時發生問題
 若要針對下列登入問題進行疑難排解，建議您遵循下列步驟來更妥善地進行診斷，並將解決步驟自動化：
 
-- 安裝 [我的應用程式安全瀏覽器延伸](./access-panel-deployment-plan.md) 模組，以協助 Azure Active Directory (Azure AD) ，以在使用 Azure 入口網站中的測試體驗時提供更佳的診斷和解決方式。
-- 使用 Azure 入口網站的 [應用程式設定] 頁面中的測試體驗來重現錯誤。 深入瞭解如何 [調試 SAML 型單一登入應用程式](./debug-saml-sso-issues.md)
+- 安裝[我的應用程式安全瀏覽器延伸](./access-panel-deployment-plan.md)以協助 Azure Active Directory (Azure AD) 在使用 Azure 入口網站中的測試體驗時，提供更佳的診斷和解決方法。
+- 使用 Azure 入口網站的應用程式組態頁面中的測試體驗，重現錯誤。 深入瞭解如何 [調試 SAML 型單一登入應用程式](./debug-saml-sso-issues.md)
 
 如果您使用 Azure 入口網站中的 [測試體驗](./debug-saml-sso-issues.md) 搭配我的應用程式安全瀏覽器延伸模組，則不需要手動遵循下列步驟來開啟 [SAML 型單一登入設定] 頁面。
 
-若要開啟 [SAML 型單一登入設定] 頁面：
+若要開啟 SAML 型單一登入組態頁面：
 1.  開啟 [**Azure 入口網站**](https://portal.azure.com/) ，然後以 **全域系統管理員** 或 **共同管理員** 身分登入。
 1.  選取主左側導覽功能表頂端的 [**所有服務**]，以開啟 **Azure Active Directory 擴充** 功能。
 1.  在篩選搜尋方塊中輸入 **"Azure Active Directory"** ，然後選取 **Azure Active Directory** 專案。
-1.  從 Azure Active Directory 左側導覽功能表中選取 [ **企業應用程式** ]。
-1.  選取 [ **所有應用程式** ] 以查看您所有應用程式的清單。
-    如果您在這裡看不到您想要顯示的應用程式，請使用 [**所有應用程式] 清單** 頂端的 [**篩選**] 控制項，並將 [**顯示**] 選項設定為 [**所有應用程式**]。
+1.  在 Azure Active Directory 左側導覽功能表中，選取 [企業應用程式]。
+1.  選取 [所有應用程式]，以檢視所有應用程式的清單。
+    若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
 1.  選取您要設為單一登入的應用程式。
 1. 應用程式載入之後，請從應用程式的左側導覽功能表中選取 [ **單一登入** ]。
-1. 選取 [SAML 型 SSO]。
+1. 選取 SAML 型 SSO。
 
 ## <a name="application-not-found-in-directory"></a>在目錄中找不到應用程式
 `Error AADSTS70001: Application with Identifier 'https:\//contoso.com' was not found in the directory.`
@@ -145,7 +145,7 @@ Azure AD 無法識別 HTTP 要求中 URL 參數內的 SAML 要求。 如果應�
 
 刪除為應用程式設定的未使用回復 Url。
 
-在 [SAML SSO 設定] 頁面的 [ **回復 URL (判斷提示取用者服務 URL)** ] 區段中，刪除系統所建立的未使用或預設回復 url。 例如 `https://127.0.0.1:444/applications/default.aspx`。
+在 [SAML SSO 設定] 頁面的 [ **回復 URL (判斷提示取用者服務 URL)** ] 區段中，刪除系統所建立的未使用或預設回復 url。 例如： `https://127.0.0.1:444/applications/default.aspx` 。
 
 
 ## <a name="authentication-method-by-which-the-user-authenticated-with-the-service-doesnt-match-requested-authentication-method"></a>使用者用來向服務驗證的驗證方法不符合要求的驗證方法

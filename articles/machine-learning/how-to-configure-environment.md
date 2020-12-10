@@ -10,13 +10,13 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.date: 11/16/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 03d10f71b585090157eff164cc98246f50608fe1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.custom: how-to, devx-track-python, contperf-fy21q1, devx-track-azurecli
+ms.openlocfilehash: 6fe43c39b17e574e1913cd9e7b4292a71f1e418d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018778"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031754"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>針對 Azure Machine Learning 設定 Python 開發環境
 
@@ -37,7 +37,7 @@ ms.locfileid: "96018778"
 
 * Visual Studio Code：如果您使用 Visual Studio Code，則 [Azure Machine Learning 延伸](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) 模組包含 Python 的廣泛語言支援，以及可讓您更方便且更有效率地使用 Azure Machine Learning 的功能。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure Machine Learning 工作區。 如果您沒有帳戶，可以透過 [Azure 入口網站](how-to-manage-workspace.md)、 [Azure CLI](how-to-manage-workspace-cli.md#create-a-workspace)和 [Azure Resource Manager 範本](how-to-create-workspace-template.md)建立 Azure Machine Learning 工作區。
 

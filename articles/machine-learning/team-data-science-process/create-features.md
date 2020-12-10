@@ -10,20 +10,20 @@ ms.subservice: team-data-science-process
 ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: 44b5baa074b62a072873d8097de184a2813b54ec
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
+ms.openlocfilehash: 7cf97edcb2f2f7a23d5c899194d497deade1f507
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322028"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031856"
 ---
 # <a name="feature-engineering-in-data-science"></a>資料科學特徵工程設計
 
 在本文中，您將了解在機器學習中增強資料時的特徵工程及其角色。 從 [Azure Machine Learning Studio (傳統版)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) 實驗中取出的說明範例中學習。 
 
-* **特徵設計** ：從原始資料建立新特徵的程序，其可增加學習演算法的預測能力。 經過工程設計的特徵應該會擷取不容易出現在原始特徵集的其他資訊。
-* **特徵選取** ：選取主要特徵子集的程序，其可縮小定型問題的維度。
+* **特徵設計**：從原始資料建立新特徵的程序，其可增加學習演算法的預測能力。 經過工程設計的特徵應該會擷取不容易出現在原始特徵集的其他資訊。
+* **特徵選取**：選取主要特徵子集的程序，其可縮小定型問題的維度。
 
 通常會先套用 **特徵工程** 以產生其他特徵，然後執行 **特徵選取** 以排除不相關、多餘或高度相關的特徵。
 

@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.custom: contperfq1
-ms.openlocfilehash: 76f3ba000a9bde4a306d19e8281ebeb41f1616e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 4e23c6f25145724a5300c9e5cdcb55431fb0b4f2
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335862"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028762"
 ---
 # <a name="network-security-groups"></a>網路安全性群組
 <a name="network-security-groups"></a>
@@ -56,19 +56,19 @@ Azure 會在您建立的每個網路安全性群組中，建立下列預設規�
 
 ##### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|優先順序|來源|來源連接埠|Destination|目的地連接埠|通訊協定|存取|
+|優先順序|來源|來源連接埠|Destination|目的地連接埠|通訊協定|Access|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|任意|Allow|
 
 ##### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|優先順序|來源|來源連接埠|Destination|目的地連接埠|通訊協定|存取|
+|優先順序|來源|來源連接埠|Destination|目的地連接埠|通訊協定|Access|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|任意|Allow|
 
 ##### <a name="denyallinbound"></a>DenyAllInbound
 
-|優先順序|來源|來源連接埠|Destination|目的地連接埠|通訊協定|存取|
+|優先順序|來源|來源連接埠|Destination|目的地連接埠|通訊協定|Access|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|任意|拒絕|
 
@@ -76,23 +76,23 @@ Azure 會在您建立的每個網路安全性群組中，建立下列預設規�
 
 ##### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | 存取 |
+|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | Access |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | 任意 | Allow |
 
 ##### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | 存取 |
+|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | Access |
 |---|---|---|---|---|---|---|
-| 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | 任意 | Allow |
+| 65001 | 0.0.0.0/0 | 0-65535 | 網際網路 | 0-65535 | 任意 | Allow |
 
 ##### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | 存取 |
+|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | Access |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | 任意 | 拒絕 |
 
-在 [來源]**** 和 [目的地]**** 欄中，*VirtualNetwork*、*AzureLoadBalancer*和 *Internet* 都是[服務標籤](service-tags-overview.md)，而不是 IP 位址。 在 [通訊協定] 資料行中， **任何** 包含 TCP、UDP 和 ICMP。 建立規則時，您可以指定 TCP、UDP、ICMP 或任何。 [來源]**** 和 [目的地]**** 欄中的 *0.0.0.0/0* 代表所有位址。 用戶端（例如 Azure 入口網站、Azure CLI 或 PowerShell）可以使用 * 或任何適用于此運算式的。
+在 [來源] 和 [目的地] 欄中，*VirtualNetwork*、*AzureLoadBalancer* 和 *Internet* 都是 [服務標籤](service-tags-overview.md)，而不是 IP 位址。 在 [通訊協定] 資料行中， **任何** 包含 TCP、UDP 和 ICMP。 建立規則時，您可以指定 TCP、UDP、ICMP 或任何。 [來源] 和 [目的地] 欄中的 *0.0.0.0/0* 代表所有位址。 用戶端（例如 Azure 入口網站、Azure CLI 或 PowerShell）可以使用 * 或任何適用于此運算式的。
  
 您無法移除預設規則，但可以建立較高優先順序的規則來覆寫預設規則。
 
@@ -121,7 +121,7 @@ Azure 會在您建立的每個網路安全性群組中，建立下列預設規�
   如果您在 2017 年 11 月 15 日前建立了 Azure 訂用帳戶，除了能夠使用 SMTP 轉送服務，您還可以直接透過 TCP 連接埠 25 傳送電子郵件。 如果您在 2017 年 11 月 15 日後建立了訂用帳戶，您可能無法直接透過連接埠 25 傳送電子郵件。 透過連接埠 25 的連出通訊行為取決於您擁有的訂用帳戶類型，如下所示：
 
      - **Enterprise 合約**：允許輸出通訊埠 25 通訊。 您可以直接從虛擬機器傳送輸出電子郵件給外部電子郵件提供者，而不受 Azure 平臺的限制。 
-     - **隨用隨付：** 所有資源的輸出連接埠 25 通訊都遭到封鎖。 如果您需要將電子郵件從虛擬機器直接傳送給外部電子郵件提供者 (不使用已驗證的 SMTP 轉送)，可以提出移除限制的要求。 要求是在 Microsoft 的斟酌之下審查與核准，而且只會在執行反詐騙檢查之後授權。 若要提出要求，請開啟問題類型為 [技術]**、[虛擬網路連線]**、[無法傳送電子郵件 (SMTP/連接埠 25)]** 的支援案例。 在您的支援案例中，請包含訂用帳戶需要將電子郵件直接傳送到郵件提供者，而不需經過已驗證 SMTP 轉送之原因的詳細資料。 如果您的訂用帳戶獲得豁免，則只有在豁免日期之後建立的虛擬機器能夠透過連接埠 25 對外通訊。
+     - **隨用隨付：** 所有資源的輸出連接埠 25 通訊都遭到封鎖。 如果您需要將電子郵件從虛擬機器直接傳送給外部電子郵件提供者 (不使用已驗證的 SMTP 轉送)，可以提出移除限制的要求。 要求是在 Microsoft 的斟酌之下審查與核准，而且只會在執行反詐騙檢查之後授權。 若要提出要求，請開啟問題類型為 [技術]、[虛擬網路連線]、[無法傳送電子郵件 (SMTP/連接埠 25)] 的支援案例。 在您的支援案例中，請包含訂用帳戶需要將電子郵件直接傳送到郵件提供者，而不需經過已驗證 SMTP 轉送之原因的詳細資料。 如果您的訂用帳戶獲得豁免，則只有在豁免日期之後建立的虛擬機器能夠透過連接埠 25 對外通訊。
      - **MSDN、Azure Pass、Azure in Open、Education、BizSpark 和免費試用**：所有資源的輸出連接埠 25 通訊都遭到封鎖。 無法進行任何移除限制的要求，因為要求未獲授權。 如果您必須從虛擬機器傳送電子郵件，就必須使用 SMTP 轉送服務。
      - **雲端服務提供者**：透過雲端服務提供者使用 Azure 資源的客戶，可以建立其雲端服務提供者的支援案例，以及在安全的 SMTP 轉送無法使用時，要求提供者代表他們建立解除封鎖案例。
 

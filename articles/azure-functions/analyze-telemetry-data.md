@@ -3,13 +3,13 @@ title: 分析 Application Insights 中的 Azure Functions 遙測
 description: 瞭解如何查看和查詢收集的 Azure Functions 遙測資料，並儲存在 Azure 應用程式 Insights 中。
 ms.topic: how-to
 ms.date: 10/14/2020
-ms.custom: contperfq2
-ms.openlocfilehash: 9091d59cbc3a4cf841e28505531c89c83e705c46
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 1d8d9cc9a7a4111e98b1d9141957769d6f157d45
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217298"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027725"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>分析 Application Insights 中的 Azure Functions 遙測 
 
@@ -48,7 +48,7 @@ Azure Functions 與 Application Insights 整合，讓您能夠監視函數應用
 
 1. 在入口網站中流覽至您的函數應用程式。
 
-1. 在左側頁面的 [**設定**] 下選取**Application Insights** 。 
+1. 在左側頁面的 [**設定**] 下選取 **Application Insights** 。 
 
 1. 如果這是您第一次使用 Application Insights 搭配您的訂用帳戶，系統會提示您啟用它。 若要這樣做，請選取 [ **開啟 Application Insights**]， **然後選取 [套用於下** 一個頁面]。
 
@@ -62,10 +62,10 @@ Azure Functions 與 Application Insights 整合，讓您能夠監視函數應用
 
 | 調查 | 描述 |
 | ---- | ----------- |
-| **[失敗](../azure-monitor/app/asp-net-exceptions.md)** |  根據函式失敗和伺服器例外狀況，建立圖表和警示。 **作業名稱**是函式名稱。 除非您實作自訂遙測來取得相依性，否則不會顯示相依性中的失敗。 |
-| **[效能](../azure-monitor/app/performance-counters.md)** | 藉由檢視每個**雲端角色執行個體**的資源使用率和輸送量，來分析效能問題。 這種效能資料適用于將函式膠著在底層資源的情況下。 |
+| **[失敗](../azure-monitor/app/asp-net-exceptions.md)** |  根據函式失敗和伺服器例外狀況，建立圖表和警示。 **作業名稱** 是函式名稱。 除非您實作自訂遙測來取得相依性，否則不會顯示相依性中的失敗。 |
+| **[效能](../azure-monitor/app/performance-counters.md)** | 藉由檢視每個 **雲端角色執行個體** 的資源使用率和輸送量，來分析效能問題。 這種效能資料適用于將函式膠著在底層資源的情況下。 |
 | **[計量](../azure-monitor/platform/metrics-charts.md)** | 建立以計量為基礎的圖表和警示。 計量包括函式引動過程的數目、執行時間和成功率。 |
-| **[即時計量    ](../azure-monitor/app/live-stream.md)** | 以近乎即時的方式，查看計量資料的建立時間。 |
+| **[即時計量](../azure-monitor/app/live-stream.md)** | 以近乎即時的方式，查看計量資料的建立時間。 |
 
 ## <a name="query-telemetry-data"></a>查詢遙測資料
 
@@ -108,7 +108,7 @@ traces
 
 ## <a name="consumption-plan-specific-metrics"></a>取用方案特有的計量
 
-在取用 [方案](functions-scale.md#consumption-plan)中執行時，單一函數執行的執行 *成本* 會以 *GB 為單位*來測量。 執行成本的計算方式是將其記憶體使用量與執行時間結合在一起。 若要深入瞭解，請參閱 [預估耗用量方案成本](functions-consumption-costs.md)。
+在取用 [方案](functions-scale.md#consumption-plan)中執行時，單一函數執行的執行 *成本* 會以 *GB 為單位* 來測量。 執行成本的計算方式是將其記憶體使用量與執行時間結合在一起。 若要深入瞭解，請參閱 [預估耗用量方案成本](functions-consumption-costs.md)。
 
 下列遙測查詢適用于影響取用方案中執行的函式成本的計量。
 

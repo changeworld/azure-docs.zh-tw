@@ -5,18 +5,18 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 12/10/2020
 ms.author: jgao
-ms.openlocfilehash: dcc968353edf0e9cf3d63408d02baf94c6cabd9f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4ec6796cd0ed91987c1ef52fb5e9494a3142e00e
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95902429"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030445"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在範本中使用部署指令碼 (預覽)
 
-了解如何使用 Azure Resource 範本中的部署指令碼。 使用者可以使用名為 `Microsoft.Resources/deploymentScripts` 的新資源類型，在範本部署中執行部署指令碼，並檢閱執行結果。 這些指令碼可以用來執行自訂步驟，例如：
+了解如何使用 Azure Resource 範本中的部署指令碼。 在呼叫新的資源類型時 `Microsoft.Resources/deploymentScripts` ，使用者可以在範本部署中執行腳本，並查看執行結果。 這些指令碼可以用來執行自訂步驟，例如：
 
 - 將使用者新增到目錄
 - 執行資料平面作業，例如複製 Blob 或種子資料庫
@@ -29,7 +29,6 @@ ms.locfileid: "95902429"
 
 - 易於編寫程式碼、使用和偵錯。 您可以在慣用的開發環境中開發部署指令碼。 這些指令碼可以內嵌在範本或外部指令檔中。
 - 您可以指定指令碼語言和平台。 目前支援在 Linux 環境上的 Azure PowerShell 和 Azure CLI 部署指令碼。
-- 允許指定用來執行指令碼的身分識別。 目前僅支援 [Azure 使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。
 - 允許將命令列引數傳遞至指令碼。
 - 可以指定指令碼輸出，並將其傳回至部署。
 
@@ -38,12 +37,13 @@ ms.locfileid: "95902429"
 > [!IMPORTANT]
 > 執行執行個體及疑難排解時，需要儲存體帳戶和容器執行個體。 您可以選擇指定現有的儲存體帳戶，否則指令碼服務會自動建立儲存體帳戶和容器執行個體。 當部署指令碼執行進入終端狀態時，指令碼服務通常會刪除這兩個自動建立的資源。 在資源刪除之前，您需支付資源費用。 若要深入了解，請參閱[清除部署指令碼資源](#clean-up-deployment-script-resources)。
 
-## <a name="prerequisites"></a>Prerequisites
+> [!IMPORTANT]
+> DeploymentScripts 資源 API 版本2020-10-01 支援 [OnBehalfofTokens (OBO) ](../../active-directory/develop/v2-oauth2-on-behalf-of-flow.md)。 藉由使用 OBO，部署腳本服務會使用部署主體的權杖來建立基礎資源，以執行部署腳本，其中包括 Azure 容器實例、Azure 儲存體帳戶，以及受控識別的角色指派。 在較舊的 API 版本中，會使用受控識別來建立這些資源。
+> Azure 登入的重試邏輯現在已內建至包裝函式腳本。 如果您在執行部署腳本的相同範本中授與許可權。  部署腳本服務會以10秒的間隔重試登入10分鐘，直到複寫受控識別角色指派為止。
 
-- **使用者指派的受控識別，且具有目標資源群組的參與者角色**。 此身分識別會用來執行部署指令碼。 若要在資源群組外部執行作業，您必須授與其他權限。 例如，如果您想要建立新的資源群組，請將身分識別指派給訂用帳戶層級。
+## <a name="prerequisites"></a>必要條件
 
-  > [!NOTE]
-  > 指令碼服務會建立儲存體帳戶 (除非您指定現有的儲存體帳戶) 和背景中的容器執行個體。  如果訂用帳戶尚未註冊 Azure 儲存體帳戶 (Microsoft.Storage) 和 Azure 容器執行個體 (Microsoft.ContainerInstance) 資源提供者，則需要具有訂用帳戶層級參與者角色的使用者指派受控識別。
+- **(選擇性) 使用者指派的受控識別，並具備在腳本中執行作業所需的許可權**。 若為部署腳本 API 2020-10-01 版或更新版本，則會使用部署主體來建立基礎資源。 如果腳本需要向 Azure 進行驗證，並執行 Azure 特定動作，建議您為腳本提供使用者指派的受控識別。 受控識別必須具有目標資源群組中的必要存取權，才能完成腳本中的作業。 您也可以在部署腳本中登入 Azure。 若要在資源群組外部執行作業，您必須授與其他權限。 例如，如果您想要建立新的資源群組，請將身分識別指派給訂用帳戶層級。 
 
   若要建立身分識別，請參閱[使用 Azure 入口網站建立使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)，或[使用 Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)，或是[使用 Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)。 您在部署範本時將需要身分識別的識別碼。 此身分識別的格式為：
 
@@ -135,7 +135,7 @@ ms.locfileid: "95902429"
 
 屬性值詳細資料：
 
-- **身分識別**：部署指令碼服務會使用使用者指派的受控識別來執行指令碼。 目前僅支援使用者指派的受控識別。
+- 身分 **識別**：對於部署腳本 API 2020-10-01 版或更新版本，除非您需要在腳本中執行任何 Azure 特定的動作，否則使用者指派的受控識別是選擇性的。  針對 API 版本 2019-10-01-preview，需要受控識別，因為部署腳本服務會使用它來執行腳本。 目前僅支援使用者指派的受控識別。
 - **kind**：指定指令碼的類型。 目前支援 Azure PowerShell 和 Azure CLI 腳本。 值為 **AzurePowerShell** 和 **AzureCLI**。
 - **forceUpdateTag**：在範本部署之間變更此值，會強制部署指令碼重新執行。 如果您使用 newGuid ( # A1 或 utcNow ( # A3 函式，這兩個函數只能用於參數的預設值。 若要深入了解，請參閱[執行指令碼多次](#run-script-more-than-once)。
 - **containerSettings**：指定自訂 Azure 容器執行個體的設定。  **containerGroupName** 是用來指定容器群組名稱。  如果未指定，則會自動產生組名。
@@ -169,14 +169,11 @@ ms.locfileid: "95902429"
 - [範例 2](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-subscription.json)：在訂用帳戶層級建立資源群組、在資源群組中建立金鑰保存庫，然後使用部署腳本將憑證指派給金鑰保存庫。
 - [範例 3](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-mi.json)：建立使用者指派的受控識別、將參與者角色指派給資源群組層級的身分識別、建立金鑰保存庫，然後使用部署腳本將憑證指派給金鑰保存庫。
 
-> [!NOTE]
-> 建議您建立使用者指派的身分識別，並事先授與權限。 如果您在執行部署指令碼的相同範本中建立身分識別並授與權限，您可能會收到登入和權限相關的錯誤。 需要一些時間，權限才會生效。
-
 ## <a name="use-inline-scripts"></a>使用內嵌指令碼
 
 下列範本有一個以 `Microsoft.Resources/deploymentScripts` 類型定義的資源。 反白顯示的部分是內嵌指令碼。
 
-:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-54" highlight="34-40":::
+:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-44" highlight="24-30":::
 
 > [!NOTE]
 > 因為內嵌部署腳本是以雙引號括住，所以部署腳本內的字串必須使用 **&#92;** 或以單引號括住。 您也可以考慮使用字串替代，如先前的 JSON 範例中所示。
@@ -188,11 +185,10 @@ ms.locfileid: "95902429"
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group to be created"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$id = Read-Host -Prompt "Enter the user-assigned managed identity ID"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.json" -identity $id
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.json"
 
 Write-Host "Press [ENTER] to continue ..."
 ```
@@ -239,7 +235,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 下列範本示範如何在兩個 deploymentScripts 資源之間傳遞值：
 
-:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic.json" range="1-84" highlight="39-40,66":::
+:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic.json" range="1-68" highlight="30-31,50":::
 
 在第一個資源中，您會定義名為 **$DeploymentScriptOutputs** 的變數，並使用其來儲存輸出值。 若要從範本內的另一個資源存取輸出值，請使用：
 
@@ -276,7 +272,7 @@ reference('<ResourceName>').output.text
 
     這些組合支援檔案共用。  如需詳細資訊，請參閱 [建立 Azure 檔案共用](../../storage/files/storage-how-to-create-file-share.md) 和 [儲存體帳戶類型](../../storage/common/storage-account-overview.md)。
 - 尚未支援儲存體帳戶防火牆規則。 如需詳細資訊，請參閱[設定 Azure 儲存體防火牆和虛擬網路](../../storage/common/storage-network-security.md)。
-- 部署指令碼的使用者指派受控識別必須具有管理儲存體帳戶的權限，其中包括讀取、建立、刪除檔案共用。
+- 部署主體必須具有管理儲存體帳戶的許可權，其中包括讀取、建立、刪除檔案共用。
 
 若要指定現有的儲存體帳戶，請將下列 json 新增至 `Microsoft.Resources/deploymentScripts` 的屬性元素：
 
@@ -539,6 +535,8 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 > [!NOTE]
 > 不建議針對其他目的使用由指令碼服務產生的儲存體帳戶和容器執行個體。 視指令碼生命週期而定，可能會移除這兩個資源。
+
+若要保留容器實例和儲存體帳戶以進行疑難排解，您可以將睡眠命令新增至腳本。  例如， [開始睡眠](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep)。
 
 ## <a name="run-script-more-than-once"></a>執行指令碼超過一次
 

@@ -10,13 +10,13 @@ ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
-ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 2b0a56bac1652881e9d1733bcb52b02610e27e9e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
+ms.openlocfilehash: 131feaf6ff01659b7d126604a5d081275e64508f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314162"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029561"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>使用虛擬網路保護 Azure Machine Learning 定型環境
 
@@ -64,7 +64,7 @@ ms.locfileid: "93314162"
 > * 當計算實例部署在私人連結工作區時，只能從虛擬網路中存取。 如果您使用自訂 DNS 或 hosts 檔案，請新增 `<instance-name>.<region>.instances.azureml.ms` 具有工作區私人端點私人 IP 位址的專案。 如需詳細資訊，請參閱 [自訂 DNS](./how-to-custom-dns.md) 文章。
     
 > [!TIP]
-> Machine Learning 計算執行個體或叢集會自動將額外的網路資源配置 __在包含虛擬網路的資源群組中__ 。 針對每個計算執行個體或叢集，服務會配置下列資源：
+> Machine Learning 計算執行個體或叢集會自動將額外的網路資源配置 __在包含虛擬網路的資源群組中__。 針對每個計算執行個體或叢集，服務會配置下列資源：
 > 
 > * 一個網路安全性群組
 > * 一個公用 IP 位址
@@ -80,7 +80,7 @@ ms.locfileid: "93314162"
 
 Batch 服務會在連結至 VM 的網路介面 (NIC) 層級新增網路安全性群組 (NSG)。 這些 NSG 會自動設定輸入和輸出規則，以允許下列流量：
 
-- 連接埠 29876 和 29877 上的輸入 TCP 流量，來自 __BatchNodeManagement__ 的 __服務標籤__ 。
+- 連接埠 29876 和 29877 上的輸入 TCP 流量，來自 __BatchNodeManagement__ 的 __服務標籤__。
 
     ![使用 BatchNodeManagement 服務標籤的輸入規則](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
 
@@ -90,7 +90,7 @@ Batch 服務會在連結至 VM 的網路介面 (NIC) 層級新增網路安全性
 
 - 任何連接埠上傳至網際網路的輸出流量。
 
-- 針對連接埠 44224 上的計算執行個體輸入 TCP 流量，來自 __AzureMachineLearning__ 的 __服務標籤__ 。
+- 針對連接埠 44224 上的計算執行個體輸入 TCP 流量，來自 __AzureMachineLearning__ 的 __服務標籤__。
 
 > [!IMPORTANT]
 > 如果您要在 Batch 設定的 NSG 中修改或新增輸入或輸出規則，請謹慎操作。 如果 NSG 封鎖對計算節點的通訊，則計算服務會將計算節點的狀態設定為 [無法使用]。
@@ -111,9 +111,9 @@ Batch 服務會在連結至 VM 的網路介面 (NIC) 層級新增網路安全性
 
 - 使用 NSG 規則來拒絕輸出網際網路連線。
 
-- 針對 __計算執行個體__ 或 __計算叢集__ ，限制目的地為下列項目的輸出流量：
-   - Azure 儲存體，方法是使用 __Storage.RegionName__ 的 __服務標籤__ 。 其中 `{RegionName}` 是 Azure 區域的名稱。
-   - Azure Container Registry，方法是使用 __AzureContainerRegistry.RegionName__ 的 __服務標籤__ 。 其中 `{RegionName}` 是 Azure 區域的名稱。
+- 針對 __計算執行個體__ 或 __計算叢集__，限制目的地為下列項目的輸出流量：
+   - Azure 儲存體，方法是使用 __Storage.RegionName__ 的 __服務標籤__。 其中 `{RegionName}` 是 Azure 區域的名稱。
+   - Azure Container Registry，方法是使用 __AzureContainerRegistry.RegionName__ 的 __服務標籤__。 其中 `{RegionName}` 是 Azure 區域的名稱。
    - Azure Machine Learning，方法是使用 __AzureMachineLearning__ 的 __服務標籤__
    - Azure Resource Manager，方法是使用 __AzureResourceManager__ 的 __服務標籤__
    - Azure Active Directory，方法是使用 __AzureActiveDirectory__ 的 __服務標籤__
@@ -123,7 +123,7 @@ Batch 服務會在連結至 VM 的網路介面 (NIC) 層級新增網路安全性
 [![Machine Learning Compute 的輸出 NSG 規則](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png#lightbox)
 
 > [!NOTE]
-> 如果您打算使用 Microsoft 提供的預設 Docker 映射，以及啟用使用者管理的相依性，您也必須使用下列 __服務標記__ ：
+> 如果您打算使用 Microsoft 提供的預設 Docker 映射，以及啟用使用者管理的相依性，您也必須使用下列 __服務標記__：
 >
 > * __MicrosoftContainerRegistry__
 > * __AzureFrontDoor.FirstParty__
@@ -253,7 +253,7 @@ except ComputeTargetException:
 
 如果您在 Azure 計算實例上使用筆記本，您必須確定您的筆記本正在相同虛擬網路和子網後方的計算資源上執行，以作為您的資料。 
 
-您必須在 [ **設定**  >  **虛擬網路** ] 下的 [Advanced settings] 下，將您的計算實例設定為在相同的虛擬網路中。 您無法將現有的計算實例新增至虛擬網路。
+您必須在 [**設定**  >  **虛擬網路**] 下的 [Advanced settings] 下，將您的計算實例設定為在相同的虛擬網路中。 您無法將現有的計算實例新增至虛擬網路。
 
 ## <a name="azure-databricks"></a>Azure Databricks
 

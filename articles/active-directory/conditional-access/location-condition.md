@@ -11,13 +11,13 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.custom: contperfq4
-ms.openlocfilehash: 888ed2fa24b82c0dda3361df1c63bb802e58f5fe
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: b647b5ee9dbd7a0447bbb69a47db76685daa1102
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95904098"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030190"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>在條件式存取原則中使用位置條件 
 
@@ -165,7 +165,7 @@ Azure Active Directory (Azure AD) 目前不支援使用 IPv6 的直接網路連�
 
 您也可以按一下報表中的資料列，然後前往登入活動詳細資料中的 [位置] 索引標籤，以尋找用戶端 IP。 
 
-## <a name="what-you-should-know"></a>您應該知道的事項
+## <a name="what-you-should-know"></a>您應該知道的事情
 
 ### <a name="when-is-a-location-evaluated"></a>何時會評估位置？
 

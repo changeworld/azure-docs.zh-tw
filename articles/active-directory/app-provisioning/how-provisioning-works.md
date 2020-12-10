@@ -11,13 +11,13 @@ ms.workload: identity
 ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.custom: contperfq2
-ms.openlocfilehash: 48188adfc3648db76f2ca362f59de6986c7c1339
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 07e3ff76886a935bf0b7b5c83052e0e7cd7a0429
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174946"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027419"
 ---
 # <a name="how-provisioning-works"></a>佈建運作方式
 
@@ -198,7 +198,7 @@ Azure AD 布建服務會在移除使用者存取權時，透過解除布建帳�
 
 如果您在屬性對應中看到 IsSoftDeleted 屬性，此屬性將用來決定使用者的狀態，以及是否要傳送 active = false 的更新要求以虛刪除使用者。
 
-**已知的限制**
+**已知限制**
 
 * 如果先前由布建服務管理的使用者未指派給應用程式或指派給應用程式的群組，則會傳送停用要求。 屆時，使用者不是由服務所管理，而且我們不會在從目錄中刪除時傳送刪除要求。
 * 不支援布建在 Azure AD 中停用的使用者。 在布建之前，它們必須在 Azure AD 中處於作用中狀態。

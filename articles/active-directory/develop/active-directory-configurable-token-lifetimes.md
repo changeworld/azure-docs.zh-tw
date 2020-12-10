@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: ryanwi
-ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperfq1
+ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 4dab75a4e95a7561bc86176816cb402c10de781e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 12d74e2f21678fdbb02719c29a31c0fcdc4fa132
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077416"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030140"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft 身分識別平臺中可設定的權杖存留期 (預覽版) 
 
@@ -117,7 +117,7 @@ ms.locfileid: "93077416"
 ### <a name="single-sign-on-session-tokens"></a>單一登入工作階段權杖
 當使用者使用 Microsoft 身分識別平臺進行驗證時，會使用使用者的瀏覽器和 Microsoft 身分識別平臺來建立單一登入會話 (SSO) 。 SSO 權杖 (採用 Cookie 的形式) 即代表此工作階段。 SSO 會話權杖未系結至特定的資源/用戶端應用程式。 SSO 工作階段權杖是可撤銷的，而每次使用這些權杖時，系統都會檢查其有效性。
 
-Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非持續性。 持續性工作階段權杖是由瀏覽器儲存為持續性 Cookie。 非持續性工作階段權杖是儲存為工作階段 Cookie。 當瀏覽器關閉時， (會話 cookie 會終結。 ) 通常會儲存非持續性會話權杖。 但是，當使用者在驗證期間選取 [讓我保持登入]  核取方塊時，則會儲存一個持續性工作階段權杖。
+Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非持續性。 持續性工作階段權杖是由瀏覽器儲存為持續性 Cookie。 非持續性工作階段權杖是儲存為工作階段 Cookie。 當瀏覽器關閉時， (會話 cookie 會終結。 ) 通常會儲存非持續性會話權杖。 但是，當使用者在驗證期間選取 [讓我保持登入] 核取方塊時，則會儲存一個持續性工作階段權杖。
 
 非持續性工作階段權杖有 24 小時的存留期。 持續性權杖的存留期為90天。 每當 SSO 會話權杖在其有效期間內使用時，會根據權杖類型，將有效期間延長為24小時或90天。 如果未在 SSO 工作階段權杖的有效期內使用此權杖，系統就會將其視為過期而不再接受它。
 

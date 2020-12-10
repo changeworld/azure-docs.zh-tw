@@ -11,13 +11,13 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.custom: contperfq4
-ms.openlocfilehash: 964cd77a24a7a73bf1151ba9e6ab43509e664b9f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: 209125a5cc8d86c1af07966d52681aa91ea7dc19
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743066"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97026994"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>設定 Azure AD Multi-Factor Authentication 設定
 
@@ -263,7 +263,7 @@ Azure AD 的 _受信任 ip_ 功能 Multi-Factor Authentication 會針對從定�
 
 您可以使用條件式存取規則，使用下列步驟來定義命名位置：
 
-1. 在 [Azure 入口網站中，搜尋並選取 [ **Azure Active Directory**]，然後 **Security** 流覽至  >  **Conditional Access**  >  **名為 [位置**] 的安全性條件式存取。
+1. 在 [Azure 入口網站中，搜尋並選取 [ **Azure Active Directory**]，然後流覽至  >    >  **名為 [位置**] 的安全性條件式存取。
 1. 選取 [新增位置]。
 1. 輸入位置的名稱。
 1. 選取 [標記為受信任的位置]。
@@ -274,7 +274,7 @@ Azure AD 的 _受信任 ip_ 功能 Multi-Factor Authentication 會針對從定�
 
 若要使用條件式存取原則啟用受信任的 Ip，請完成下列步驟：
 
-1. 在 [Azure 入口網站中，搜尋並選取 [ **Azure Active Directory**]，然後 **Security** 流覽至  >   **Conditional Access**  >  **名為 [位置**] 的安全性條件式存取。
+1. 在 [Azure 入口網站中，搜尋並選取 [ **Azure Active Directory**]，然後流覽至  >     >  **名為 [位置**] 的安全性條件式存取。
 1. 選取 [設定 MFA 信任的 IP]。
 1. 在 [服務設定] 頁面的 [信任的 IP] 下方，選擇下列兩個選項中的任一項：
 

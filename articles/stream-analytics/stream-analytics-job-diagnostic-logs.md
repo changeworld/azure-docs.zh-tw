@@ -6,14 +6,14 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 06/18/2020
-ms.openlocfilehash: 0e7777cba93706baea815521757b495209431ce6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b29e0f99cb4549370be49dc5a1b11d367e30d8c0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006467"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029136"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>使用資源記錄對 Azure 串流分析進行疑難排解
 
@@ -66,7 +66,7 @@ ms.locfileid: "96006467"
 
     ![將流覽至資源記錄](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  在 [**診斷設定名稱**] 中提供 **名稱**，並核取 [**記錄** 檔] 和 [ **AllMetrics** ] 底下的 [**執行**] 和 [**撰寫** 中]**方塊。** 然後選取 [ **傳送至 Log Analytics** ]，然後選擇您的工作區。 按一下 [儲存]。
+2.  在 [**診斷設定名稱**] 中提供 **名稱**，並核取 [**記錄** 檔] 和 [ **AllMetrics** ] 底下的 [**執行**] 和 [**撰寫** 中]**方塊。** 然後選取 [ **傳送至 Log Analytics** ]，然後選擇您的工作區。 按一下 **[儲存]** 。
 
     ![資源記錄的設定](./media/stream-analytics-job-diagnostic-logs/logs-setup.png)
 
@@ -136,7 +136,7 @@ properties | 記錄項目特定詳細資料 (序列化為 JSON 字串)。 如需
 
 名稱 | 描述
 -------- | --------
-Error | (選用) 錯誤資訊。 這通常是例外狀況資訊 (如果有的話)。
+[錯誤] | (選用) 錯誤資訊。 這通常是例外狀況資訊 (如果有的話)。
 訊息| 記錄訊息。
 類型 | 訊息類型。 對應至錯誤的內部分類。 例如，**JobValidationError** 或 **BlobOutputAdapterInitializationFailure**。
 相互關連識別碼 | 唯一識別作業執行的 GUID (英文)。 從作業開始直到作業停止的所有執行記錄項目皆具有同一個 **相互關聯識別碼** 值。
