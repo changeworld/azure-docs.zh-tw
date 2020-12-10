@@ -5,18 +5,15 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/05/2020
-ms.openlocfilehash: cda305ac705b728e0d2e129d7d42d53ea0251d86
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 12/09/2020
+ms.openlocfilehash: 0ea58050c5dc952392df56b4fb556a0998eef165
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591524"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938897"
 ---
 # <a name="logical-decoding"></a>邏輯解碼
- 
-> [!NOTE]
-> 邏輯解碼在適用於 PostgreSQL 的 Azure 資料庫單一伺服器上處於公開預覽狀態。
 
 [于 postgresql 中的邏輯解碼](https://www.postgresql.org/docs/current/logicaldecoding.html) 可讓您將資料變更串流至外部取用者。 邏輯解碼是用於事件串流處理和變更資料捕獲案例的也就一般。
 
@@ -34,7 +31,7 @@ ms.locfileid: "94591524"
 若要設定正確的記錄層級，請使用 Azure 複寫支援參數。 Azure 複寫支援有三個設定選項：
 
 * **Off** -將最少的資訊放在 WAL 中。 這項設定無法在大部分的適用於 PostgreSQL 的 Azure 資料庫伺服器上使用。  
-* **複本** -更 **詳細的資訊。** 這是 [讀取複本](concepts-read-replicas.md) 正常運作所需的最小記錄層級。 這項設定在大部分伺服器上是預設值。
+* **複本**-更 **詳細的資訊。** 這是 [讀取複本](concepts-read-replicas.md) 正常運作所需的最小記錄層級。 這項設定在大部分伺服器上是預設值。
 * **邏輯** 更詳細的資訊比 **複本** 更詳細。 這是要讓邏輯解碼正常運作的最小記錄層級。 讀取複本也可在此設定中運作。
 
 
@@ -49,19 +46,19 @@ ms.locfileid: "94591524"
    ```azurecli-interactive
    az postgres server restart --resource-group mygroup --name myserver
    ```
-3. 如果您執行 Postgres 9.5 或9.6，並使用公用網路存取權，請新增防火牆規則，以包含您將執行邏輯複寫之用戶端的公用 IP 位址。 防火牆規則名稱必須包含 **_replrule** 。 例如， *test_replrule* 。 若要在伺服器上建立新的防火牆規則，請執行 [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) 命令。 
+3. 如果您執行 Postgres 9.5 或9.6，並使用公用網路存取權，請新增防火牆規則，以包含您將執行邏輯複寫之用戶端的公用 IP 位址。 防火牆規則名稱必須包含 **_replrule**。 例如， *test_replrule*。 若要在伺服器上建立新的防火牆規則，請執行 [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) 命令。 
 
 ### <a name="using-azure-portal"></a>使用 Azure 入口網站
 
-1. 將 Azure 複寫支援設定為 **邏輯** 。 選取 [儲存]  。
+1. 將 Azure 複寫支援設定為 **邏輯**。 選取 [儲存]。
 
    :::image type="content" source="./media/concepts-logical/replication-support.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫複寫-Azure 複寫支援":::
 
-2. 選取 **[是]** ，重新開機伺服器以套用變更。
+2. 選取 **[是]**，重新開機伺服器以套用變更。
 
    :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫複寫-確認重新開機":::
 
-3. 如果您執行 Postgres 9.5 或9.6，並使用公用網路存取權，請新增防火牆規則，以包含您將執行邏輯複寫之用戶端的公用 IP 位址。 防火牆規則名稱必須包含 **_replrule** 。 例如， *test_replrule* 。 然後按一下 [儲存]  。
+3. 如果您執行 Postgres 9.5 或9.6，並使用公用網路存取權，請新增防火牆規則，以包含您將執行邏輯複寫之用戶端的公用 IP 位址。 防火牆規則名稱必須包含 **_replrule**。 例如， *test_replrule*。 然後按一下 [儲存]  。
 
    :::image type="content" source="./media/concepts-logical/client-replrule-firewall.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫-複寫-新增防火牆規則":::
 

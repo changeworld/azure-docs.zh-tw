@@ -5,12 +5,12 @@ ms.assetid: 35fa18ec-21d8-41bf-af2b-e5e92703401d
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.custom: accessibility
-ms.openlocfilehash: 8009d0d4ac971d81e25b276b19605bc6a70cff02
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 81c4ccef688622ec20d111383359053b82045996
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745667"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938081"
 ---
 # <a name="supported-devices"></a>支援的裝置
 
@@ -23,7 +23,7 @@ ms.locfileid: "96745667"
 建議使用與您的作業系統相容的最新瀏覽器。 支援下列瀏覽器：
 
 * Microsoft Edge (最新版本)
-* Internet Explorer 11
+* 2021年3月31日之前支援 Internet Explorer 11 () 
 * Safari (最新版本，僅限 Mac)
 * Chrome (最新版本)
 * Firefox (最新版本)

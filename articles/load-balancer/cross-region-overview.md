@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: f0630599c7c52f11a4cf3153bae38ad2d515b6bc
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 8a2ad6cea4ab97742261b1cfd84975b243a46e87
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029756"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938710"
 ---
 # <a name="cross-region-load-balancer-preview"></a>跨區域負載平衡器 (預覽) 
 
@@ -35,7 +35,7 @@ Azure Standard Load Balancer 支援跨區域負載平衡，可啟用地理冗余
 * [在現有的負載平衡器解決方案上建立](#build-cross-region-solution-on-existing-azure-load-balancer) ，無需學習曲線
 
 > [!IMPORTANT]
-> 跨區域負載平衡器目前為預覽狀態，並在預覽入口網站中隱藏。 登入以 **https://preview.portal.azure.com/?feature.globallb=true** 查看和部署功能。 </br> </br>
+> 跨區域負載平衡器目前為預覽狀態，並隱藏在預覽入口網站中。 登入以 **https://preview.portal.azure.com** 查看和部署功能。 </br> </br>
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 跨區域負載平衡可提供與「區域標準」負載平衡器一樣高效能和低延遲的優點。 
@@ -51,7 +51,7 @@ Azure Standard Load Balancer 支援跨區域負載平衡，可啟用地理冗余
 
 將全域前端公用 IP 位址新增至現有的負載平衡器，以設定區域冗余。 
 
-如果某個區域失敗，流量會路由傳送至下一個最接近的健康區域負載平衡器。  
+如果一個區域失敗，流量會路由至下一個最接近狀況良好的區域負載平衡器。  
 
 跨區域負載平衡器的健康情況探查每隔20秒會收集可用性的相關資訊。 如果有一個區域負載平衡器將其可用性降至0，則跨區域負載平衡器會偵測到失敗。 區域負載平衡器接著會離開旋轉。 
 

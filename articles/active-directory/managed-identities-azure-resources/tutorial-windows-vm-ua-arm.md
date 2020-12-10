@@ -12,19 +12,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/14/2020
+ms.date: 12/02/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d26c7f544c9754f455b67aadf9e923344cda3fdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9757a322922524f181b1fa3f48850efbb7a18dd
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90968685"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546772"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>教學課程：在 Windows VM 上利用使用者指派的受控識別來存取 Azure Resource Manager
-
-[!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
 本教學課程說明如何建立使用者指派的身分識別，並將其指派給 Windows 虛擬機器 (VM)，然後使用該身分識別來存取 Azure Resource Manager API。 由 Azure 自動管理受控服務身分識別。 它們會啟用對支援 Azure AD 驗證之服務的驗證，而不需要在程式碼中內嵌認證。 
 
@@ -154,11 +152,11 @@ CanDelegate: False
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 登入 Azure 入口網站
 
-2. 在入口網站中，瀏覽至 [虛擬機器]****，並移至您的 Windows 虛擬機器，在 [概觀]**** 中按一下 [連線]****。
+2. 在入口網站中，瀏覽至 [虛擬機器]，並移至您的 Windows 虛擬機器，在 [概觀]中按一下 [連線]。
 
-3. 輸入您建立 Windows VM 時使用的**使用者名稱**和**密碼**。
+3. 輸入您建立 Windows VM 時使用的 **使用者名稱** 和 **密碼**。
 
-4. 現在您已經建立虛擬機器的**遠端桌面連線**，請在遠端工作階段中開啟 **PowerShell**。
+4. 現在您已經建立虛擬機器的 **遠端桌面連線**，請在遠端工作階段中開啟 **PowerShell**。
 
 5. 使用 PowerShell 的 `Invoke-WebRequest`，向 Azure 資源端點的本機受控識別提出要求，以取得 Azure Resource Manager 的存取權杖。  `client_id` 值就是您在建立使用者指派受控識別時所傳回的值。
 

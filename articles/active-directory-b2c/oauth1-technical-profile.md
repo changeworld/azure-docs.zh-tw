@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b54cff85da02415bbc9dfa9ead037ced48cb58f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a2cbca8c02dcbfc0e59d31040d1fca7a790cd35
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259419"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936653"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義 OAuth1 技術設定檔
 
@@ -47,7 +47,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供 [OAuth 1.0 通訊協定](https:
 
 下列範例顯示 Twitter 識別提供者傳回的宣告：
 
-- 對應至**issuerUserId**宣告的**user_id**宣告。
+- 對應至 **issuerUserId** 宣告的 **user_id** 宣告。
 - 對應至 **displayName** 宣告的 **screen_name** 宣告。
 - **email** 宣告沒有名稱對應。
 
@@ -92,4 +92,4 @@ Azure Active Directory B2C (Azure AD B2C) 提供 [OAuth 1.0 通訊協定](https:
 
 範例：
 
-- [使用自訂原則新增 Twitter 作為 OAuth1 識別提供者](identity-provider-twitter-custom.md)
+- [使用自訂原則新增 Twitter 作為 OAuth1 識別提供者](identity-provider-twitter.md)

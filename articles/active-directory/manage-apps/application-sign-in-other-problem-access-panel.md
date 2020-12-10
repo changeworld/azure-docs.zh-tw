@@ -12,12 +12,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: 8cbc683f06b809ec4d9c63a61d73a0c731a92cd7
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 14b49c531ae11c056f9b6970e1ac00adcd68b296
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651613"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937163"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>針對從 Azure AD 我的應用程式登入應用程式的問題進行疑難排解
 
@@ -61,6 +61,7 @@ ms.locfileid: "94651613"
 -   [檢查使用者的多重要素驗證狀態](#check-a-users-multi-factor-authentication-status)
 -   [檢查使用者的驗證連絡資訊](#check-a-users-authentication-contact-info)
 -   [檢查使用者的群組成員資格](#check-a-users-group-memberships)
+-   [檢查使用者是否有超過999的應用程式角色指派](#check-if-a-user-has-more-than-999-app-role-assignments)
 -   [檢查使用者獲指派的授權](#check-a-users-assigned-licenses)
 -   [指派授權給使用者](#assign-a-user-a-license)
 
@@ -139,6 +140,16 @@ ms.locfileid: "94651613"
 6.  **搜尋** 您感興趣的使用者，然後選取要選取 **的資料列** 。
 7.  選取 **群組** 以查看使用者為其成員的群組。
 
+### <a name="check-if-a-user-has-more-than-999-app-role-assignments"></a>檢查使用者是否有超過999的應用程式角色指派
+如果使用者已指派超過999個應用程式角色指派，他們可能不會在我的應用程式上看到所有的應用程式。
+
+這是因為我的應用程式目前最多可讀取999個應用程式角色指派，以決定要指派給使用者的應用程式。 如果將使用者指派給999以上的應用程式，則無法控制哪些應用程式會在我的應用程式入口網站中顯示。
+
+若要檢查授與給使用者的應用程式角色指派數量，請遵循下列步驟：
+1. 安裝 [**Microsoft Graph**](https://github.com/microsoftgraph/msgraph-sdk-powershell) PowerShell 模組。
+2. `Connect-MgGraph -Scopes "Directory.Read.All"`以 **全域管理員** 身分執行和驗證。
+3. 執行 `$m = Get-MgUserAppRoleAssignment -UserId "<userId>" | Measure; $m.Count` 以判斷使用者目前已授與的應用程式角色指派數目。
+
 ### <a name="check-a-users-assigned-licenses"></a>檢查使用者獲指派的授權
 若要檢查使用者獲指派的授權，請遵循下列步驟：
 1.  開啟 [Azure 入口網站](https://portal.azure.com/)，以 **全域管理員** 身分登入。
@@ -172,14 +183,14 @@ ms.locfileid: "94651613"
 1. 開啟 [**Azure 入口網站**](https://portal.azure.com/) ，然後以 **全域系統管理員** 或共同管理員身分登入 **。**
 2. 選取主左側導覽功能表頂端的 [**所有服務**]，以開啟 **Azure Active Directory 擴充** 功能。
 3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
-4. 從 Azure Active Directory 左側導覽功能表中選取 [ **企業應用程式** ]。
-5. 選取 [ **所有應用程式** ] 以查看您所有應用程式的清單。
+4. 在 Azure Active Directory 左側導覽功能表中，選取 [企業應用程式]。
+5. 選取 [所有應用程式]，以檢視所有應用程式的清單。
    * 若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
 6. 開啟 [**Azure 入口網站**](https://portal.azure.com/) ，然後以 **全域系統管理員** 或共同管理員身分登入 **。**
 7. 選取主左側導覽功能表頂端的 [**所有服務**]，以開啟 **Azure Active Directory 擴充** 功能。
 8. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
-9. 從 Azure Active Directory 左側導覽功能表中選取 [ **企業應用程式** ]。
-10. 選取 [ **所有應用程式** ] 以查看您所有應用程式的清單。
+9. 在 Azure Active Directory 左側導覽功能表中，選取 [企業應用程式]。
+10. 選取 [所有應用程式]，以檢視所有應用程式的清單。
     * 若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
 11. 選取您要檢查深層連結的應用程式。
 12. 尋找 [使用者存取 URL] 標籤。 您的深層連結應符合此 URL。

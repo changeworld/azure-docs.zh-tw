@@ -8,15 +8,15 @@ ms.author: chgrego
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 11/30/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2, automl
-ms.openlocfilehash: 43ce1c4865b3458ccd9c0ac17589f8ca5d77d92f
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a3b3640922daf84357354efc389e20afea78d216
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922079"
+ms.locfileid: "96937707"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>評估自動化機器學習實驗結果
 
@@ -65,7 +65,7 @@ ms.locfileid: "96922079"
 許多分類度量都是針對兩個類別上的二元分類所定義，而且需要對類別進行平均，以針對多類別分類產生一個分數。 Scikit-learn-learning 提供數個平均值的方法，其中三個是自動化 ML 公開的： **宏**、 **微** 和 **加權**。
 
 - **宏** -計算每個類別的度量，並採用加權平均值
-- **Micro** 藉由計算真正的肯定、誤否定和誤報 (與類別) 無關，來全域計算度量。
+- 藉由計算真正的肯定、誤否定和誤報 (與類別) 無關，來全域計算度量。
 - **加權** -計算每個類別的度量，並根據每個類別的樣本數目來取得加權平均值。
 
 雖然每個平均方法都有其優點，但在選取適當的方法時，其中一個常見的考慮是類別不平衡。 如果類別具有不同數目的樣本，則在將少數類別指定為大部分類別的情況下，使用宏平均可能會更有説明。 深入瞭解 [自動化 ML 中的二元與多元計量](#binary-vs-multiclass-classification-metrics)。 
@@ -81,7 +81,7 @@ balanced_accuracy|Balanced accuracy 是每個類別其召回率的算術平均�
 f1_score|F1 分數是精確度和召回率的調和平均數。 這是誤報和假否定的良好平衡量值。 不過，它並不會對帳戶有真正的否定。 <br> <br>**目標：** 更接近1 <br> **範圍：** [0，1]<br> <br>支援的度量名稱包括：<li>  `f1_score_macro`：每個類別之 F1 分數的算術平均值。 <li> `f1_score_micro`：藉由計算真肯定、誤否定和誤報的總計來計算。 <li> `f1_score_weighted`：每個類別的加權平均（依類別頻率） F1 分數。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|
 log_loss|這是 (多維度中使用的遺失函式) 羅吉斯回歸和它的延伸模組（例如類神經網路），其定義為 true 標籤的負面記錄檔可能性（指定概率分類器的預測）。 <br><br> **目標：** 更接近0 <br> **範圍：** [0，inf) |[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|
 norm_macro_recall| 正規化的宏召回是重新叫用宏（平均和正規化），因此隨機效能的分數為0，而最佳效能的分數為1。 <br> <br>**目標：** 更接近1 <br> **範圍：** [0，1] |`(recall_score_macro - R)`&nbsp;/&nbsp;`(1 - R)` <br><br>其中， `R` 是隨機預測的預期值 `recall_score_macro` 。<br><br>`R = 0.5`&nbsp;針對 &nbsp; 二元 &nbsp; 分類。 <br>`R = (1 / C)` 針對 C 類別分類問題。|
-馬修斯相互關聯係數 | 馬修斯相互關聯係數是精確度的對稱量值，即使某個類別的樣本數超過另一個類別，也可以使用此量值。 係數1表示完美的預測、0個隨機預測和-1 個反向預測。<br><br> **目標：** 更接近1 <br> **範圍：** [-1，1]|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html)|
+matthews_correlation | 馬修斯相互關聯係數是精確度的對稱量值，即使某個類別的樣本數超過另一個類別，也可以使用此量值。 係數1表示完美的預測、0個隨機預測和-1 個反向預測。<br><br> **目標：** 更接近1 <br> **範圍：** [-1，1]|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html)|
 精確度|精確度是指模型避免將負面樣本標記為正面的能力。 <br><br> **目標：** 更接近1 <br> **範圍：** [0，1]<br> <br>支援的度量名稱包括： <li> `precision_score_macro`，每個類別的算術平均精確度。 <li> `precision_score_micro`，藉由計算真肯定和誤報的整體計算。 <li> `precision_score_weighted`，每個類別的算術平均精確度，以每個類別中的 true 實例數目加權。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|
 召回率| 回想一下，您可以使用模型來偵測所有正面樣本。 <br><br> **目標：** 更接近1 <br> **範圍：** [0，1]<br> <br>支援的度量名稱包括： <li>`recall_score_macro`：每個類別的算術平均召回率。 <li> `recall_score_micro`：藉由計算真肯定、誤否定和誤報的總計來計算全域計算。<li> `recall_score_weighted`：每個類別的算術平均數，以每個類別中的 true 實例數目加權。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|
 weighted_accuracy|加權精確度為精確度，其中每個樣本都是由屬於相同類別的樣本總數加權。 <br><br>**目標：** 更接近1 <br>**範圍：** [0，1]|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|
@@ -182,7 +182,7 @@ weighted_accuracy|加權精確度為精確度，其中每個樣本都是由屬�
 
 ## <a name="regressionforecasting-metrics"></a>回歸/預測計量
 
-自動化 ML 會針對每個產生的模型計算相同的效能度量，不論它是回歸或預測實驗。 這些計量也會進行正規化，以便在具有不同範圍之資料上定型的模型之間進行比較。 若要深入瞭解，請參閱[度量](#metric-normalization)正規化  
+自動化 ML 會針對每個產生的模型計算相同的效能度量，不論它是回歸或預測實驗。 這些計量也會進行正規化，以便在具有不同範圍之資料上定型的模型之間進行比較。 若要深入瞭解，請參閱 [度量](#metric-normalization)正規化。  
 
 下表摘要說明針對回歸和預測實驗產生的模型效能計量。 就像分類計量一樣，這些計量也是以 scikit-learn 學習的實作為基礎。 適當的 scikit-learn 學習檔會在 **計算** 欄位中據以連結。
 

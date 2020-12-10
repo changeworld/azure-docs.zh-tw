@@ -9,17 +9,17 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 08/03/2020
 ms.author: amjads
-ms.openlocfilehash: b1dd26fce2e0a761ceed211933cb79ce518905e2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: dd3b713a027df80908e1a8a3ae53e8dc526d7d6e
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965879"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936942"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Azure 虛擬機器擴充功能和功能
 擴充功能是小型的應用程式，可在 Azure Vm 上提供部署後設定和自動化。 Azure 平臺裝載了許多延伸模組，涵蓋了 VM 設定、監視、安全性和公用程式應用程式。 發行者會採用應用程式、將它包裝成擴充功能，並簡化安裝。 您只需要提供必要的參數。 
 
-## <a name="how-can-i-find-what-extensions-are-available"></a>如何找到可用的擴充功能？
+## <a name="how-can-i-find-what-extensions-are-available"></a>我要如何找出哪些延伸模組可以使用？
 您可以藉由選取 VM，然後在左側功能表中選取 **擴充** 功能，來查看可用的擴充功能。 若要提取延伸模組的完整清單，請參閱 [探索適用于 Linux 的 Vm 擴充](features-linux.md) 功能和 [探索適用于 Windows 的 vm 擴充](features-windows.md)功能。
 
 ## <a name="how-can-i-install-an-extension"></a>如何安裝擴充功能？

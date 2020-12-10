@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: deeee689c27008ab71df0a050be3d7a6b5109307
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: c193249ee8cef38650a8a188a59c26a0eab17506
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93361058"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938391"
 ---
 # <a name="enable-logging-in-ml-training-runs"></a>在 ML 訓練回合中啟用記錄
 
@@ -51,12 +51,12 @@ Azure Machine Learning Python SDK 可讓您使用預設的 Python 記錄套件�
 
 1. 建立包含記錄邏輯 `train.py` 的定型指令碼。
 
-   [!code-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train.py)]
+   [!code-python[](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train.py)]
 
 
 1. 提交要在使用者管理的環境中執行的 ```train.py``` 指令碼。 會提交整個指令碼資料夾以進行定型。
 
-   [!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=src)] [!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=run)]
+   [!notebook-python[](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=src)] [!notebook-python[](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=run)]
 
     `show_output` 參數會開啟詳細資訊記錄，這可讓您查看定型過程的詳細資料，以及任何遠端資源或計算目標的相關資訊。 當您提交實驗時，請使用下列程式碼來開啟詳細資訊記錄。
 
@@ -91,7 +91,7 @@ Azure Machine Learning 也可以在定型期間記錄來自其他來源的資訊
 * [how-to-use-azureml/training/train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
 * [how-to-use-azureml/track-and-monitor-experiments/logging-api](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api)
 
-[!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
+[!INCLUDE[aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

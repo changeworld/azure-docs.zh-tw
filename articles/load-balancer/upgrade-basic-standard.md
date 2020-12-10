@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: f97facd8d184be05cbfd79af92dbcaab3a022ebd
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: d54994a7c64718835e70381f92abed83ef693018
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746296"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938506"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>升級 Azure 公用 Load Balancer
 [Azure Standard Load Balancer](load-balancer-overview.md) 透過區域冗余提供一組豐富的功能和高可用性。 若要深入瞭解 Load Balancer SKU，請參閱 [比較表](./skus.md#skus)。
@@ -26,7 +26,7 @@ ms.locfileid: "96746296"
 
 有 Azure PowerShell 腳本可用來執行下列動作：
 
-* 在資源群組和您指定的位置中建立標準 SKU Load Balancer。
+* 使用您在基本 Standard Load Balancer 的相同資源群組中指定的位置，建立標準 SKU Load Balancer。
 * 就地將公用 IP 位址從基本 SKU 升級到標準 SKU。
 * 將基本 SKU Load Balancer 的設定順暢地複製到新建立的 Standard Load Balancer。
 * 建立預設輸出規則，以啟用輸出連線能力。
@@ -58,7 +58,7 @@ ms.locfileid: "96746296"
 
 ## <a name="download-the-script"></a>下載腳本
 
-從  [PowerShell 資源庫](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/2.0)下載遷移腳本。
+從  [PowerShell 資源庫](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/4.0)下載遷移腳本。
 ## <a name="use-the-script"></a>使用腳本
 
 您可以根據本機 PowerShell 環境的設定和喜好設定，選擇兩個選項：
@@ -92,14 +92,13 @@ ms.locfileid: "96746296"
 
    * **oldRgName： [字串]：必要** 項–這是您現有基本 Load Balancer 您想要升級的資源群組。 若要尋找此字串值，請流覽至 [Azure 入口網站]，選取您的基本 Load Balancer 來源，然後按一下負載平衡器的 **總覽** 。 資源群組位於該頁面上。
    * **oldLBName： [字串]：必要** 項–這是您想要升級的現有基本平衡器名稱。 
-   * **newrgName： [字串]：必要** 項–這是將在其中建立 Standard Load Balancer 的資源群組。 它可以是新的資源群組或現有的資源群組。 如果您挑選現有的資源群組，請注意 Load Balancer 的名稱在資源群組內必須是唯一的。 
    * **newLBName： [字串]： Required** –這是要建立之 Standard Load Balancer 的名稱。
 1. 使用適當的參數執行腳本。 可能需要5到七分鐘才能完成。
 
     **範例**
 
    ```azurepowershell
-   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newLbName "LBForUpgrade"
    ```
 
 ### <a name="create-an-outbound-rule-for-outbound-connection"></a>建立輸出連接的輸出規則

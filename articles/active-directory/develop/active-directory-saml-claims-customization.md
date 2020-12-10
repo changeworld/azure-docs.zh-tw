@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/22/2019
+ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: f462a78790e73f3e0f67f55b6417589c7826a75d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1c88b9f77513021609b99c81ea572c2b5b3d365b
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173663"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936789"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：針對企業應用程式自訂 SAML 權杖中發出的宣告
 
@@ -60,7 +60,6 @@ ms.locfileid: "96173663"
 | **持續** | Microsoft 身分識別平臺將會使用持續性作為 NameID 格式。 |
 | **EmailAddress** | Microsoft 身分識別平臺會使用 EmailAddress 作為 NameID 格式。 |
 | **未指定** | Microsoft 身分識別平臺將使用未指定的做為 NameID 格式。 |
-| **Windows 網域限定名稱** | Microsoft 身分識別平臺會使用 WindowsDomainQualifiedName 作為 NameID 格式。 |
 
 也支援暫時性 NameID，但其並未在下拉式清單中提供，也無法在 Azure 端設定。 若要深入了解 NameIDPolicy 屬性，請參閱[單一登入 SAML 通訊協定](single-sign-on-saml-protocol.md)。
 

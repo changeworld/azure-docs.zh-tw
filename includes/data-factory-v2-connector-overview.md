@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 6ac9b975a729e1e24ad5062b69396b064beb9b10
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: d54a8e3fbffee57c7a8e0a36139cf9f51fd4fdb0
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96912144"
+ms.locfileid: "96993012"
 ---
 | 類別              | 資料存放區                                                   | [複製活動](../articles/data-factory/copy-activity-overview.md) (來源/接收) | [對應資料流程](../articles/data-factory/concepts-data-flow-overview.md) (來源/接收) | [查閱活動](../articles/data-factory/control-flow-lookup-activity.md) | [取得中繼資料活動](../articles/data-factory/control-flow-get-metadata-activity.md)/[驗證活動](../articles/data-factory/control-flow-validation-activity.md) | [刪除活動](../articles/data-factory/delete-activity.md) |
 | :-------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | ------------------------------------------------------------ | :----------------------------------------------------------- |
@@ -22,7 +22,7 @@ ms.locfileid: "96912144"
 | &nbsp;                | [Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) \(部分機器翻譯\) | ✓/✓                                                          | ✓/✓                                                          | ✓                                                            | ✓                                                            | ✓                                                            |
 | &nbsp;                | [適用於 MariaDB 的 Azure 資料庫](../articles/data-factory/connector-azure-database-for-mariadb.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [適用於 MySQL 的 Azure 資料庫](../articles/data-factory/connector-azure-database-for-mysql.md) | ✓/✓                                                          |                                                              | ✓                                                            |                                                              |                                                              |
-| &nbsp;                | [適用於 PostgreSQL 的 Azure 資料庫](../articles/data-factory/connector-azure-database-for-postgresql.md) | ✓/✓                                                          |                                                              | ✓                                                            |                                                              |                                                              |
+| &nbsp;                | [適用於 PostgreSQL 的 Azure 資料庫](../articles/data-factory/connector-azure-database-for-postgresql.md) | ✓/✓                                                          | ✓/✓                                                          | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Azure Databricks Delta Lake](../articles/data-factory/connector-azure-databricks-delta-lake.md) | ✓/✓                                                          | ✓/✓ <small>使用 [差異格式](../articles/data-factory/format-delta.md)</small> | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Azure 檔案儲存體](../articles/data-factory/connector-azure-file-storage.md) | ✓/✓                                                          |                                                              | ✓                                                            | ✓                                                            | ✓                                                            |
 | &nbsp;                | [Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) | ✓/✓                                                          | ✓/✓ <br>                                                     | ✓                                                            | ✓                                                            |                                                              |

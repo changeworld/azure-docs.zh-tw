@@ -11,18 +11,18 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 16b5814835ec5cad6b66087fee37676155196339
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7bb38b382add2a0ea3506c31c5e6e76a985df6a1
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952075"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936466"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的新應用程式註冊體驗
 
 Azure Active Directory B2C (Azure AD B2C) 的新 **[應用程式註冊](https://aka.ms/b2cappregistrations)** 體驗現已正式推出。 如果您更熟悉用來註冊應用程式的 **應用程式** 體驗 Azure AD B2C，在此稱為「舊版體驗」，本指南將協助您開始使用新的體驗。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 先前，您必須使用舊版體驗，與應用程式的其餘部分分開管理 Azure AD B2C 取用者面向應用程式。 這表示不同的應用程式在 Azure 中的不同位置之間的建立體驗。
 
 新體驗會顯示所有 Azure AD B2C 應用程式註冊，並在單一位置 Azure AD 應用程式註冊，並提供一致的方式來管理它們。 從建立客戶面向的應用程式，到以 Microsoft Graph 的資源管理許可權來管理應用程式，您只需要學習一種方法來進行工作。
@@ -63,7 +63,7 @@ Azure AD B2C 的應用程式註冊體驗是以任何 Azure AD 租使用者的一
 > [!NOTE]
 > 需要此選項才能執行 Azure AD B2C 使用者流程，以驗證此應用程式的使用者。 瞭解 [如何註冊應用程式以用於使用者流程。](tutorial-register-applications.md)
 
-您也可以使用此選項，將 Azure AD B2C 作為 SAML 服務提供者。 [深入了解](identity-provider-adfs2016-custom.md)。
+您也可以使用此選項，將 Azure AD B2C 作為 SAML 服務提供者。 [深入了解](identity-provider-adfs.md)。
 
 ## <a name="applications-for-devops-scenarios"></a>適用于 DevOps 案例的應用程式
 您可以使用其他帳戶類型來建立應用程式來管理您的 DevOps 案例，例如使用 Microsoft Graph 上傳 Identity Experience Framework 原則或布建使用者。 瞭解 [如何註冊 Microsoft Graph 的應用程式，以管理 Azure AD B2C 的資源](microsoft-graph-get-started.md)。
@@ -116,5 +116,5 @@ Azure AD B2C 的應用程式註冊體驗是以任何 Azure AD 租使用者的一
 * 瞭解 [如何註冊 WEB API](add-web-api-application.md)。
 * 瞭解 [如何註冊原生用戶端應用程式](add-native-application.md)。
 * 瞭解 [如何註冊 Microsoft Graph 的應用程式，以管理 Azure AD B2C 的資源](microsoft-graph-get-started.md)。
-* 瞭解 [如何使用 Azure AD B2C 作為 SAML 服務提供者。](identity-provider-adfs2016-custom.md)
+* 瞭解 [如何使用 Azure AD B2C 作為 SAML 服務提供者。](identity-provider-adfs.md)
 * 深入瞭解 [應用程式類型](application-types.md)。

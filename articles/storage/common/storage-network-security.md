@@ -9,12 +9,12 @@ ms.date: 12/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 07ad0714d0294ad90150acb9df14f17bfc1f5f0d
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: c2074402225c8134329e00003e4fbdfd95b5dba6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905361"
+ms.locfileid: "96938387"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>設定 Azure 儲存體防火牆和虛擬網路
 
@@ -64,7 +64,7 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您根據所使�
 
 1. 移至您要保護的儲存體帳戶。
 
-1. 按一下名為 [防火牆與虛擬網路] 的設定功能表。
+1. 按一下名為 [ **網路**] 的 [設定] 功能表。
 
 1. 若要預設拒絕存取，請選擇允許 **所選網路** 存取權。 若要允許來自所有網路的流量，請選擇允許 **所有網路** 存取權。
 
@@ -148,7 +148,7 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您根據所使�
 
 1. 移至您要保護的儲存體帳戶。
 
-1. 按一下名為 [防火牆與虛擬網路] 的設定功能表。
+1. 按一下名為 [ **網路**] 的 [設定] 功能表。
 
 1. 請確定您已選取允許從 **所選網路** 進行存取。
 
@@ -272,7 +272,7 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您根據所使�
 
 1. 移至您要保護的儲存體帳戶。
 
-1. 按一下名為 [防火牆與虛擬網路] 的設定功能表。
+1. 按一下名為 [ **網路**] 的 [設定] 功能表。
 
 1. 請確定您已選取允許從 **所選網路** 進行存取。
 
@@ -415,7 +415,7 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您根據所使�
 
 1. 移至您要保護的儲存體帳戶。
 
-1. 按一下名為 [防火牆與虛擬網路] 的設定功能表。
+1. 按一下名為 [ **網路**] 的 [設定] 功能表。
 
 1. 請確定您已選取允許從 **所選網路** 進行存取。
 

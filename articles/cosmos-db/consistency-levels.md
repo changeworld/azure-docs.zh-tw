@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 742ff2e6cff4569b5b7eeb131cd4394277b6c3cd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 965e4a8cd704670ec06ae6b927b97c3a8b93030c
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100451"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938659"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 中的一致性層級
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -44,6 +44,9 @@ Azure Cosmos DB 提供適用于熱門資料庫的有線通訊協定相容 Api �
 
 您隨時可以在 Azure Cosmos 帳戶上設定預設一致性層級。 您帳戶上設定的預設一致性層級會套用到該帳戶下的所有 Azure Cosmos 資料庫和容器。 對容器或資料庫發出的所有讀取和查詢，預設都將使用指定的一致性層級。 若要深入了解，請參閱如何[設定預設一致性層級](how-to-manage-consistency.md#configure-the-default-consistency-level)。 您也可以覆寫特定要求的預設一致性層級，若要深入瞭解，請參閱如何覆 [寫預設一致性層級](how-to-manage-consistency.md?#override-the-default-consistency-level) 一文。
 
+> [!IMPORTANT]
+> 變更預設的一致性層級之後，必須重新建立任何 SDK 實例。 這可以藉由重新開機應用程式來完成。 這可確保 SDK 使用新的預設一致性層級。
+
 ## <a name="guarantees-associated-with-consistency-levels"></a>與一致性層級相關的保證
 
 Azure Cosmos DB 可保證100% 的讀取要求符合所選一致性層級的一致性保證。 使用 TLA + 規格語言 Azure Cosmos DB 中五個一致性層級的精確定義，是在 [Azure Cosmos-TLA](https://github.com/Azure/azure-cosmos-tla) github 存放庫中提供。
@@ -54,12 +57,12 @@ Azure Cosmos DB 可保證100% 的讀取要求符合所選一致性層級的一�
 
   下圖說明與音樂附注的強式一致性。 將資料寫入「美國西部2」區域之後，當您從其他區域讀取資料時，您會取得最新的值：
 
-  :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="以頻譜形式顯示的一致性":::
+  :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="強式一致性層級的圖例":::
 
-- **限定過期** ：保證讀取會遵守一致前置詞的保證。 讀取可能會落後寫入最多 *"K"* 個版本 (也就是「更新」 ) 的專案，或「 *T* 」時間間隔（以先達到者為准）。 換句話說，當您選擇限定過期時，可以透過兩種方式來設定「過期」：
+- **限定過期**：保證讀取會遵守一致前置詞的保證。 讀取可能會落後寫入最多 *"K"* 個版本 (也就是「更新」 ) 的專案，或「 *T* 」時間間隔（以先達到者為准）。 換句話說，當您選擇限定過期時，可以透過兩種方式來設定「過期」：
 
-- 專案 ( *K* ) 的版本數目
-- 時間間隔 ( *T* ) 讀取可能會延後寫入
+- 專案 (*K*) 的版本數目
+- 時間間隔 (*T*) 讀取可能會延後寫入
 
 針對單一區域帳戶， *K* 和 *T* 的最小值為10個寫入作業或5秒。 若為多區域帳戶， *K* 和 *T* 的最小值為100000寫入作業或300秒。
 
@@ -74,9 +77,9 @@ Azure Cosmos DB 可保證100% 的讀取要求符合所選一致性層級的一�
 
   限定過期通常是由預期低寫入延遲，但需要總全域訂單保證的全域散發應用程式所選擇。 限定過期適用于具有群組共同作業和共用、股票行情指示器、發佈-訂閱/佇列等的應用程式。下圖說明使用音樂附注的限定過期一致性。 將資料寫入「美國西部2」區域之後，「美國東部2」和「澳大利亞東部」區域會根據設定的最大延隔時間或最大作業數目，讀取寫入的值：
 
-  :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="以頻譜形式顯示的一致性":::
+  :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="限定過期一致性層級的圖例":::
 
-- **會話** ：在單一用戶端會話讀取中，保證可以接受一致前置詞、單純讀取、單純寫入、讀取您的寫入，以及寫入後續讀取的保證。 這會假設單一「寫入器」會話或共用多個寫入器的會話權杖。
+- **會話**：在單一用戶端會話讀取中，保證可以接受一致前置詞、單純讀取、單純寫入、讀取您的寫入，以及寫入後續讀取的保證。 這會假設單一「寫入器」會話或共用多個寫入器的會話權杖。
 
 執行寫入的會話外部用戶端會看到下列保證：
 
@@ -87,7 +90,7 @@ Azure Cosmos DB 可保證100% 的讀取要求符合所選一致性層級的一�
 
   會話一致性是單一區域和全域分散式應用程式最普遍使用的一致性層級。 它提供寫入延遲、可用性及讀取輸送量，相當於最終一致性，但也提供一致的保證，可符合撰寫的應用程式在使用者的內容中運作的需求。 下圖說明與音樂筆記的會話一致性。 「美國西部2寫入器」和「美國西部2讀者」會使用相同的會話 (會話 A) 讓它們同時讀取相同的資料。 雖然「澳大利亞東部」區域使用「會話 B」，但它會在稍後接收資料，但其順序與寫入相同。
 
-  :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="以頻譜形式顯示的一致性":::
+  :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="會話一致性層級的圖例":::
 
 - **一致前置** 詞：傳回的更新會包含所有更新的部分前置詞，而且沒有間距。 一致的前置詞一致性層級可保證讀取永遠不會看到不是順序的寫入。
 
@@ -102,18 +105,18 @@ Azure Cosmos DB 可保證100% 的讀取要求符合所選一致性層級的一�
 
 下圖說明與音樂附注一致的前置詞一致性。 在所有區域中，讀取永遠不會看到沒有順序的寫入：
 
-  :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="以頻譜形式顯示的一致性":::
+  :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="一致前置詞的圖例":::
 
-- **最終** ：讀取沒有排序保證。 如果沒有任何進一步的寫入，則複本最終會趨於一致。  
+- **最終**：讀取沒有排序保證。 如果沒有任何進一步的寫入，則複本最終會趨於一致。  
 最終一致性是最弱的一致性形式，因為用戶端可能會讀取比之前讀取的值還舊的值。 最終一致性是應用程式不需要任何順序保證的理想選擇。 範例包括收藏數、贊或非執行緒批註的計數。 下圖說明與音樂附注的最終一致性。
 
-  :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="以頻譜形式顯示的一致性":::
+  :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="最終一致性 viIllustration":::
 
 ## <a name="consistency-guarantees-in-practice"></a>實際上的一致性保證
 
 在實務上，您通常可能會獲得更強的一致性保證。 讀取作業的一致性保證會對應到您所要求之資料庫狀態的時效性和排序。 讀取一致性會繫結到寫入/更新作業的排序和傳播。  
 
-如果資料庫上沒有寫入作業，則使用「 **最終** 」、「 **會話** 」或「 **一致前置** 詞」一致性層級的讀取作業可能會產生與具有強式一致性層級的讀取作業相同的結果。
+如果資料庫上沒有寫入作業，則使用「 **最終**」、「 **會話**」或「 **一致前置** 詞」一致性層級的讀取作業可能會產生與具有強式一致性層級的讀取作業相同的結果。
 
 如果您的 Azure Cosmos 帳戶設定了強式一致性以外的一致性層級，您可以藉由查看 *機率限定過期* (PBS) 計量，找出用戶端可能會針對您的工作負載取得強式和一致讀取的可能性。 此計量會在 Azure 入口網站公開，若要深入了解，請參閱[監視機率限定過期 (PBS) 計量](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)。
 
@@ -153,7 +156,7 @@ Azure Cosmos DB 可保證100% 的讀取要求符合所選一致性層級的一�
 
 ## <a name="consistency-levels-and-data-durability"></a><a id="rto"></a>一致性層級和資料持久性
 
-在全域分散式資料庫環境內，當發生全區域中斷情況時，一致性層級與資料持久性之間具有直接關聯性。 當您開發商務持續性計劃時，您必須了解應用程式在干擾性事件之後完全復原所需的最大可接受時間。 應用程式完全復原所需的時間，也稱為復原 **時間目標** ( **RTO** ) 。 您也必須了解在干擾性事件之後復原時，應用程式可忍受遺失的最近資料更新最大期間。 您可能會遺失的更新時間期間稱為 **復原點目標** ( **RPO** ) 。
+在全域分散式資料庫環境內，當發生全區域中斷情況時，一致性層級與資料持久性之間具有直接關聯性。 當您開發商務持續性計劃時，您必須了解應用程式在干擾性事件之後完全復原所需的最大可接受時間。 應用程式完全復原所需的時間，也稱為復原 **時間目標** (**RTO**) 。 您也必須了解在干擾性事件之後復原時，應用程式可忍受遺失的最近資料更新最大期間。 您可能會遺失的更新時間期間稱為 **復原點目標** (**RPO**) 。
 
 下表定義在發生全區域中斷時，一致性模型與資料持久性之間的關聯性。 請務必注意，在分散式系統中，即使有強式一致性，也無法讓分散式資料庫的 RPO 和 RTO 為零，因為 [CAP 定理](https://en.wikipedia.org/wiki/CAP_theorem)。
 
@@ -188,7 +191,7 @@ Azure Cosmos DB 可保證100% 的讀取要求符合所選一致性層級的一�
 - [實際部分仲裁的隨機限定過期 (PBS) (英文)](https://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
 - [再論最終一致](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解 Azure Cosmos DB 中的一致性，請閱讀下列文章：
 

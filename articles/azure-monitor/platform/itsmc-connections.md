@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 502d5a5c4b3d13d32fece648ce1de6763d012096
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: a0ef8d9f28f90db77686c3139c8b45eccfb669aa
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932280"
+ms.locfileid: "96938812"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>將 ITSM 產品/服務與 IT Service Management Connector 連線
 本文提供如何設定 ITSM 產品/服務與 Log Analytics 中 IT Service Management Connector (ITSMC) 之間的連線，以集中管理工作項目的相關資訊。 如需 ITSMC 的詳細資訊，請參閱[概觀](./itsmc-overview.md)。
@@ -309,8 +309,7 @@ ms.locfileid: "96932280"
 
 > [!NOTE]
 > 
-> 從 1-10 月-2020 Provance ITSM 與 Azure 警示的整合將不再針對新客戶啟用。 不支援新的 ITSM 連接。 
-> 將會支援現有的 ITSM 連接。
+> 我們建議 Provance 客戶使用 [Webhook 動作](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) ，以 Cherwell 和 Provance 端點作為整合的另一種解決方案。
 
 ### <a name="prerequisites"></a>Prerequisites
 
@@ -367,8 +366,7 @@ ms.locfileid: "96932280"
 
 > [!NOTE]
 > 
-> 從 1-10 月-2020 Cherwell ITSM 與 Azure 警示的整合將不再針對新客戶啟用。 不支援新的 ITSM 連接。 
-> 將會支援現有的 ITSM 連接。
+> 我們建議 Cherwell 客戶使用 [Webhook 動作](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) ，以 Cherwell 和 Provance 端點作為整合的另一種解決方案。
 
 ### <a name="prerequisites"></a>Prerequisites
 

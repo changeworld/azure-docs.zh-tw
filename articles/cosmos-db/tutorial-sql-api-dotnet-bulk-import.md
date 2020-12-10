@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/21/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6e50fe1f5b1658458a2d561f8157f04d1cbceb41
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 6cf0e77657175449b126eeca02a12c164478e568
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341227"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548064"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>使用 .NET SDK 將資料大量匯入至 Azure Cosmos DB SQL API 帳戶
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -86,7 +86,7 @@ ms.locfileid: "93341227"
 
 1.  登入 [Azure 入口網站](https://portal.azure.com/)。
 1.  瀏覽至 Azure Cosmos 帳戶。
-1.  開啟 [金鑰]  窗格，然後複製您帳戶的 **URI** 與 **主索引鍵** 。
+1.  開啟 [金鑰]  窗格，然後複製您帳戶的 **URI** 與 **主索引鍵**。
 
 如果您使用的是 Azure Cosmos DB 模擬器，請[從此發行項中取得模擬器認證](local-emulator.md#authenticate-requests)。
 
@@ -175,7 +175,7 @@ ms.locfileid: "93341227"
 
 如果您沒有時間完成本教學課程中的步驟，或只想要下載程式碼範例，您可以從 [GitHub](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer) 取得程式碼。
 
-複製專案之後，請務必在 [Program.cs](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer/blob/master/src/Program.cs#L25) 內更新所需的認證。
+複製專案之後，請務必在 [Program.cs](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer/blob/main/src/Program.cs#L25) 內更新所需的認證。
 
 您可以透過變更為存放庫目錄並使用 `dotnet`，來執行此範例：
 

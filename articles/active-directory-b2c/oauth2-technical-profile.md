@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 486622b37f02ab8b2a53a273a6eaea4cb5add3a5
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: f9bb53f62c5edf055e17f198b7adb45a36bcb2f8
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750421"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936619"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義 OAuth2 技術設定檔
 
@@ -116,4 +116,4 @@ Azure Active Directory B2C (Azure AD B2C) 提供 OAuth2 通訊協定身分識別
 
 範例：
 
-- [使用自訂原則新增 Google+ 作為 OAuth2 識別提供者](identity-provider-google-custom.md)
+- [使用自訂原則新增 Google+ 作為 OAuth2 識別提供者](identity-provider-google.md)

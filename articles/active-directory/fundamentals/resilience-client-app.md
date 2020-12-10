@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: 9189d4d8cda5f9fcfce7e6ac2097414aa29f0a68
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: fc15176318dcfae99434f50a0b4370f371cec05a
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317464"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938234"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-client-applications-you-develop"></a>提升您開發的用戶端應用程式中驗證和授權的復原能力
 
@@ -30,7 +30,9 @@ MSAL 會快取權杖，並使用無訊息的權杖取得模式。 它也會自�
 
 ![使用 MSAL 呼叫 Microsoft 身分識別之裝置與應用程式的影像](media/resilience-client-app/resilience-with-microsoft-authentication-library.png)
 
-使用 MSAL 時，您可以使用下列模式來取得權杖快取、重新整理和無訊息權杖取得。
+使用 MSAL 時，會自動支援權杖快取、重新整理和無訊息取得。 您可以使用簡單模式來取得新式驗證所需的權杖。 我們支援許多語言，而且您可以在我們的 [範例](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code) 頁面上找到符合您的語言和案例的範例。
+
+## <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 try
@@ -42,6 +44,28 @@ catch(MsalUiRequiredException ex)
     result = await app.AcquireToken(scopes).WithClaims(ex.Claims).ExecuteAsync()
 }
 ```
+
+## <a name="javascript"></a>[Javascript](#tab/javascript)
+
+```javascript
+return myMSALObj.acquireTokenSilent(request).catch(error => {
+    console.warn("silent token acquisition fails. acquiring token using redirect");
+    if (error instanceof msal.InteractionRequiredAuthError) {
+        // fallback to interaction when silent call fails
+        return myMSALObj.acquireTokenPopup(request).then(tokenResponse => {
+            console.log(tokenResponse);
+
+            return tokenResponse;
+        }).catch(error => {
+            console.error(error);
+        });
+    } else {
+        console.warn(error);
+    }
+});
+```
+
+---
 
 在某些情況下，MSAL 可能會主動重新整理權杖。 當 Microsoft 身分識別發出長期的權杖時，它可以將資訊傳送至用戶端，以取得重新整理權杖 ( 「重新整理」 ) 的最佳時間 \_ 。 MSAL 會根據此資訊主動重新整理權杖。 應用程式將會繼續執行，但舊的權杖有效，但會有較長的時間範圍，讓取得其他成功的權杖。
 
@@ -65,7 +89,9 @@ catch(MsalUiRequiredException ex)
 
 [查看最新的 Microsoft 版本和版本資訊](https://github.com/AzureAD/microsoft-identity-web/releases)
 
-## <a name="if-not-using-msal-use-these-resilient-patterns-for-token-handling"></a>如果未使用 MSAL，請使用這些復原模式來處理權杖
+## <a name="use-resilient-patterns-for-token-handling"></a>使用復原模式進行權杖處理
+
+如果您不是使用 MSAL，您可以使用這些復原模式來處理權杖。 MSAL 程式庫會自動實行這些最佳做法。 
 
 一般情況下，使用新式驗證的應用程式將會呼叫端點來取得驗證使用者的權杖，或授權應用程式呼叫受保護的 Api。 MSAL 的目的是要處理驗證的詳細資料，並實施數種模式來改善此程式的復原能力。 如果您選擇使用 MSAL 以外的程式庫，請使用本節中的指導方針來執行最佳作法。 如果您使用 MSAL，您可以免費取得所有這些最佳做法，因為 MSAL 會自動加以執行。
 

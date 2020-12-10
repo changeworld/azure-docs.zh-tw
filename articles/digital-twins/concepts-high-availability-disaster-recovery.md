@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ac75a5b0b59a06855b7ee88d971c269ca915e429
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 35f4aae246f105d832aaf92c5c5797c8a65b44f1
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763158"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938529"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure 數位 Twins 高可用性和嚴重損壞修復
 
@@ -38,6 +38,29 @@ Microsoft **起始的容錯移轉** 是由 microsoft 在罕見的情況下，將
 
 >[!NOTE]
 > 某些 Azure 服務也提供一個稱為「 **客戶起始的容錯移轉**」的額外選項，可讓客戶只針對其實例起始容錯移轉，例如執行 DR 演練。 Azure 數位 Twins 目前 **不支援** 此機制。 
+
+## <a name="monitor-service-health"></a>監視服務健康情況
+
+當 Azure 數位 Twins 實例容錯移轉和復原時，您可以使用 [Azure 服務健康狀態](https://docs.microsoft.com/azure/service-health/service-health-overview) 工具來監視處理常式。 服務健康狀態會追蹤不同區域和訂用帳戶的 Azure 服務健康狀態，並共用有關中斷和停機時間的服務影響通訊。
+
+在容錯移轉事件期間，服務健康狀態可提供您的服務關閉和備份時的指示。
+
+若要查看服務健康狀態事件 .。。
+1. 在 Azure 入口網站中流覽至 [ [服務健康狀態](https://portal.azure.com/?feature.customportal=false#blade/Microsoft_Azure_Health/AzureHealthBrowseBlade/serviceIssues) ] (您可以使用此連結，或使用入口網站搜尋列) 來搜尋它。
+1. 使用左側功能表切換至 [健康情況歷程 *記錄* ] 頁面。
+1. 尋找以 **Azure 數位 Twins** 開頭的 *問題名稱*，然後選取它。
+
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/navigate.png" alt-text="顯示 [健康情況歷程記錄] 頁面 Azure 入口網站的螢幕擷取畫面。過去幾天內有幾個問題的清單，並且反白顯示稱為「Azure 數位 Twins-西歐」的問題。" lightbox="media/concepts-high-availability-disaster-recovery/navigate.png":::
+
+1. 如需中斷的一般資訊，請參閱 [ *摘要* ] 索引標籤。
+
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/summary.png" alt-text="[健康情況歷程記錄] 頁面上會醒目提示 [摘要] 索引標籤。此索引標籤會顯示一般資訊，例如受影響的資源、其區域及其訂用帳戶。" lightbox="media/concepts-high-availability-disaster-recovery/summary.png":::
+1. 如需有關一段時間內問題的詳細資訊和更新，請參閱 [ *問題更新* ] 索引標籤。
+
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/issue-updates.png" alt-text="在 [健康情況歷程記錄] 頁面上，會反白顯示 [問題更新] 索引標籤此索引標籤會顯示數個專案，顯示一天前的目前狀態。" lightbox="media/concepts-high-availability-disaster-recovery/issue-updates.png":::
+
+
+請注意，這項工具所顯示的資訊不是一個 Azure 數位實例所特有。 使用服務健康狀態來瞭解在特定區域或訂用帳戶中使用 Azure 數位 Twins 服務的情況之後，您可以使用 [資源健康狀態工具](troubleshoot-resource-health.md) 進一步監視特定的實例，並查看它們是否受到影響。
 
 ## <a name="best-practices"></a>最佳作法
 

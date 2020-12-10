@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 12/07/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: ce0ea938cac4afa043b8770a4d6a98f08ec145ec
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6a24713a6027c38d2b9817928f3a82161bd37314
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484884"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936721"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>防止 Azure 儲存體帳戶的共用金鑰授權 (預覽) 
 
@@ -23,13 +23,11 @@ Azure 儲存體帳戶的每個安全要求都必須獲得授權。 根據預設�
 如果您不允許儲存體帳戶的共用金鑰授權，Azure 儲存體會拒絕對該帳戶的所有後續要求，該帳戶已獲授權帳戶存取金鑰。 只有獲授權 Azure AD 的安全要求才會成功。 如需使用 Azure AD 的詳細資訊，請參閱 [使用 Azure Active Directory 授權存取 blob 和佇列](storage-auth-aad.md)。
 
 > [!WARNING]
-> Azure 儲存體僅支援對 Blob 和佇列儲存體的要求 Azure AD 授權。 如果您不允許針對儲存體帳戶使用共用金鑰進行授權，則要求使用共用金鑰授權的 Azure 檔案儲存體或資料表儲存體將會失敗。
->
-> 在預覽期間，不允許共用金鑰授權時，對使用共用存取簽章的 Azure 檔案儲存體或資料表儲存體的要求 (使用帳戶存取金鑰產生的 SAS) 權杖將會成功。 如需詳細資訊，請參閱 [關於預覽](#about-the-preview)。
->
-> 若不允許儲存體帳戶的共用金鑰存取，就不會影響 Azure 檔案儲存體的 SMB 連接。
+> Azure 儲存體僅支援對 Blob 和佇列儲存體的要求 Azure AD 授權。 如果您不允許針對儲存體帳戶使用共用金鑰進行授權，則要求使用共用金鑰授權的 Azure 檔案儲存體或資料表儲存體將會失敗。 由於 Azure 入口網站一律會使用共用金鑰授權來存取檔案和資料表資料，如果您不允許以共用金鑰授權給儲存體帳戶，您將無法存取 Azure 入口網站中的檔案或資料表資料。
 >
 > Microsoft 建議您先將任何 Azure 檔案儲存體或資料表儲存體資料移轉至個別的儲存體帳戶，再透過共用金鑰禁止存取帳戶，或者您不將此設定套用至支援 Azure 檔案儲存體或資料表儲存體工作負載的儲存體帳戶。
+>
+> 若不允許儲存體帳戶的共用金鑰存取，就不會影響 Azure 檔案儲存體的 SMB 連接。
 
 本文說明如何偵測以共用金鑰授權傳送的要求，以及如何補救儲存體帳戶的共用金鑰授權。 若要瞭解如何註冊預覽版，請參閱 [關於預覽](#about-the-preview)。
 
@@ -193,15 +191,32 @@ resources
 | project subscriptionId, resourceGroup, name, allowSharedKeyAccess
 ```
 
+## <a name="permissions-for-allowing-or-disallowing-shared-key-access"></a>允許或禁止共用金鑰存取的許可權
+
+若要設定儲存體帳戶的 **AllowSharedKeyAccess** 屬性，使用者必須具有建立及管理儲存體帳戶的許可權。 Azure 角色型存取控制 (Azure RBAC) 提供這些許可權的角色，包括 **microsoft. storage/storageAccounts/write** 或 **microsoft. storage/storageAccounts/ \** _ 動作。 具有此動作的內建角色包括：
+
+- Azure Resource Manager [擁有](../../role-based-access-control/built-in-roles.md#owner) 者角色
+- Azure Resource Manager [參與者](../../role-based-access-control/built-in-roles.md#contributor) 角色
+- [儲存體帳戶參與者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)角色
+
+這些角色無法透過 Azure Active Directory (Azure AD) ，提供儲存體帳戶中資料的存取權。 不過，它們包含 _ * Microsoft. Storage/storageAccounts/listkeys/action * *，可授與帳戶存取金鑰的存取權。 使用此許可權時，使用者可以使用帳戶存取金鑰來存取儲存體帳戶中的所有資料。
+
+角色指派的範圍必須設定為儲存體帳戶或更高的層級，以允許使用者允許或禁止對儲存體帳戶進行共用金鑰存取。 如需角色範圍的詳細資訊，請參閱 [瞭解 AZURE RBAC 的範圍](../../role-based-access-control/scope-overview.md)。
+
+請小心將這些角色的指派限制為需要能夠建立儲存體帳戶或更新其屬性的使用者。 使用最低許可權原則，以確保使用者具有完成其工作所需的最少許可權。 如需使用 Azure RBAC 管理存取權的詳細資訊，請參閱 [AZURE rbac 的最佳做法](../../role-based-access-control/best-practices.md)。
+
+> [!NOTE]
+> 傳統訂用帳戶管理員角色服務系統管理員和 Co-Administrator 包含 Azure Resource Manager [擁有](../../role-based-access-control/built-in-roles.md#owner) 者角色的對等專案。 **擁有** 者角色包含所有動作，因此具有其中一個系統管理角色的使用者也可以建立和管理儲存體帳戶。 如需詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)。
+
 ## <a name="understand-how-disallowing-shared-key-affects-sas-tokens"></a>瞭解禁止共用金鑰如何影響 SAS 權杖
 
-當儲存體帳戶不允許共用金鑰時，Azure 儲存體會根據 SAS 的類型以及要求的目標服務來處理 SAS 權杖。 下表說明每種類型的 SAS 如何獲得授權，以及當儲存體帳戶的 **AllowSharedKeyAccess** 屬性為 **false** 時，Azure 儲存體將如何處理該 sas。
+如果儲存體帳戶不允許共用金鑰存取，Azure 儲存體會根據 SAS 的類型以及要求的目標服務來處理 SAS 權杖。 下表說明每種類型的 SAS 如何獲得授權，以及當儲存體帳戶的 **AllowSharedKeyAccess** 屬性為 **false** 時，Azure 儲存體將如何處理該 sas。
 
 | SAS 類型 | 授權類型 | AllowSharedKeyAccess 為 false 時的行為 |
 |-|-|-|
 | 僅限 (Blob 儲存體的使用者委派 SAS)  | Azure AD | 允許要求。 Microsoft 建議您盡可能使用使用者委派 SAS 來取得較佳的安全性。 |
-| 服務 SAS | 共用金鑰 | Blob 儲存體的要求遭到拒絕。 佇列和資料表儲存體以及 Azure 檔案儲存體都允許要求。 如需詳細資訊，請參閱 **關於預覽** 一節中的 [AllowSharedKeyAccess 為 false 時，在佇列、資料表和檔案中允許使用 SAS 權杖的要求](#requests-with-sas-tokens-are-permitted-for-queues-tables-and-files-when-allowsharedkeyaccess-is-false)。 |
-| 帳戶 SAS | 共用金鑰 | Blob 儲存體的要求遭到拒絕。 佇列和資料表儲存體以及 Azure 檔案儲存體都允許要求。 如需詳細資訊，請參閱 **關於預覽** 一節中的 [AllowSharedKeyAccess 為 false 時，在佇列、資料表和檔案中允許使用 SAS 權杖的要求](#requests-with-sas-tokens-are-permitted-for-queues-tables-and-files-when-allowsharedkeyaccess-is-false)。 |
+| 服務 SAS | 共用金鑰 | 所有 Azure 儲存體服務的要求都會遭到拒絕。 |
+| 帳戶 SAS | 共用金鑰 | 所有 Azure 儲存體服務的要求都會遭到拒絕。 |
 
 如需共用存取簽章的詳細資訊，請參閱[使用共用存取簽章 (SAS) 授與 Azure 儲存體資源的有限存取權](storage-sas-overview.md)。
 
@@ -219,7 +234,7 @@ resources
 | Azure PowerShell | 支援。 如需有關如何使用 Azure AD 為 blob 或佇列作業授權 PowerShell 命令的詳細資訊，請參閱以 [Azure AD 認證執行 powershell 命令以存取 blob 資料](../blobs/authorize-data-operations-powershell.md) ，或 [使用 Azure AD 認證來執行 powershell 命令以存取佇列資料](../queues/authorize-data-operations-powershell.md)。 |
 | Azure CLI | 支援。 如需如何使用 Azure AD 存取 blob 和佇列資料的授權 Azure CLI 命令的詳細資訊，請參閱 [使用 Azure AD 認證執行 Azure CLI 命令以存取 blob 或佇列資料](../blobs/authorize-data-operations-cli.md)。 |
 | Azure IoT 中樞 | 支援。 如需詳細資訊，請參閱 [虛擬網路的 IoT 中樞支援](../../iot-hub/virtual-network-support.md)。 |
-| Azure Cloud Shell | Azure Cloud Shell 是 Azure 入口網站中的整合式 Shell。 Azure Cloud Shell 會在儲存體帳戶中裝載 Azure 檔案共用的持續性檔案。 如果該儲存體帳戶不允許共用金鑰授權，這些檔案將變成無法存取。 如需詳細資訊，請參閱 [連接您的 Microsoft Azure 檔案儲存體](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage)。 <br /><br /> 若要在 Azure Cloud Shell 中執行命令以管理不允許共用金鑰存取的儲存體帳戶，請先確定您已透過 Azure RBAC) 的 Azure 角色型訪問 (控制，授與這些帳戶所需的許可權。 如需詳細資訊，請參閱 [什麼是 AZURE RBAC)  (的 azure 角色型存取控制？](../../role-based-access-control/overview.md)。 |
+| Azure Cloud Shell | Azure Cloud Shell 是 Azure 入口網站中的整合式 Shell。 Azure Cloud Shell 會在儲存體帳戶中裝載 Azure 檔案共用的持續性檔案。 如果該儲存體帳戶不允許共用金鑰授權，這些檔案將變成無法存取。 如需詳細資訊，請參閱 [連接您的 Microsoft Azure 檔案儲存體](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage)。 <br /><br /> 若要在 Azure Cloud Shell 中執行命令以管理不允許共用金鑰存取的儲存體帳戶，請先確定您已透過 Azure RBAC 授與這些帳戶所需的許可權。 如需詳細資訊，請參閱 [什麼是 AZURE RBAC)  (的 azure 角色型存取控制？](../../role-based-access-control/overview.md)。 |
 
 ## <a name="about-the-preview"></a>關於預覽
 
@@ -240,10 +255,6 @@ Azure 監視器中的 Azure 計量和記錄不會在預覽中區分不同類型�
 - 使用者委派 SAS 的授權為 Azure AD，當 **AllowSharedKeyAccess** 屬性設定為 **false** 時，將允許在對 Blob 儲存體的要求上進行。
 
 當您評估儲存體帳戶的流量時，請記住，如「偵測 [用戶端應用程式所使用的授權類型](#detect-the-type-of-authorization-used-by-client-applications) 」中所述的計量和記錄，可能會包含使用者委派 SAS 所提出的要求。 如需 **AllowSharedKeyAccess** 屬性設定為 **false** 時，Azure 儲存體如何回應 sas 的詳細資訊，請參閱瞭解不允許 [共用金鑰如何影響 sas 權杖](#understand-how-disallowing-shared-key-affects-sas-tokens)。
-
-### <a name="requests-with-sas-tokens-are-permitted-for-queues-tables-and-files-when-allowsharedkeyaccess-is-false"></a>當 AllowSharedKeyAccess 為 false 時，允許使用 SAS 權杖的要求提供佇列、資料表和檔案
-
-當儲存體帳戶在預覽期間不允許共用金鑰存取時，會繼續允許以佇列、資料表或 Azure 檔案儲存體資源為目標的共用存取簽章。 這項限制適用于服務 SAS 權杖和帳戶 SAS 權杖。 這兩種類型的 SAS 都具有共用金鑰的授權。
 
 ## <a name="next-steps"></a>後續步驟
 

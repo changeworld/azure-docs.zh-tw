@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 12/03/2020
+ms.date: 12/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 21b1004a347dec3a7f2a6460d8b853350bf36ff0
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5559e491be15f8f848329405736fc977267c70cc
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571040"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938591"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>高效能計算 VM 大小
 
@@ -29,6 +29,9 @@ HBv2 Vm 具有 200 Gb/秒的 Mellanox HDR 空間，同時 HB 和 HC 系列的 Vm
 [HC 系列](hc-series.md) Vm 已針對密集計算所驅動的應用程式優化，例如隱含的有限元素分析、分子 dynamics 和計算化學。 HC Vm 功能 44 Intel 最強白金級8168處理器核心，每個 CPU 核心 8 GB RAM，且無超執行緒。 Intel 的頂級白金平臺支援 Intel 豐富的軟體工具生態系統，例如 Intel Math Kernel Library。
 
 [H 系列](h-series.md) Vm 已針對依核心需求高 CPU 頻率或大型記憶體驅動的應用程式進行優化。 H 系列 Vm 的特色為8或16個 Intel 最高 E5 2667 v3 處理器核心、每個 CPU 核心7或 14 GB RAM，且無超執行緒。 H 系列功能 56 Gb/秒的 Mellanox FDR 可在非封鎖的 fat 樹狀結構設定中使用，以達到一致的 RDMA 效能。 H 系列 Vm 支援 Intel MPI 5.x 和 MS-CHAP。
+
+> [!NOTE]
+> 所有 HBv2、HB 和 HC 系列的 Vm 都具有實體伺服器的獨佔存取權。 每個實體伺服器只有1個 VM，而這些 VM 大小沒有任何其他 Vm 的共用多重租用。
 
 > [!NOTE]
 > [A8 – A11 vm](./sizes-previous-gen.md#a-series---compute-intensive-instances)預計在3/2021 淘汰。 如需詳細資訊，請參閱 [HPC 移轉指南](https://azure.microsoft.com/resources/hpc-migration-guide/)。

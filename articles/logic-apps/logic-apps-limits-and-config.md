@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 12/07/2020
-ms.openlocfilehash: 154be7e4340c798ba1d014b210361f666864797e
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: ee314708f0d564bf1af639a3d864ea19472425cf
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921524"
+ms.locfileid: "96937622"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps 的限制和設定資訊
 
@@ -305,15 +305,15 @@ Azure Logic Apps 透過閘道支援寫入作業，包括插入和更新。 不�
 
 * 總數 1000 的企業整合帳戶，包括任何[整合服務環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中的企業整合帳戶，跨越[開發人員和進階 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)。
 
-* 每個 ISE （不論是 [Developer 或 Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)）都限制為20個整合帳戶：
+* 每個 ISE （不論是 [Developer 或 Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)）僅限於整合帳戶總數，但 [您可以提高此限制，以產生額外成本](logic-apps-pricing.md#fixed-pricing)：
 
   | ISE SKU | 整合帳戶限制 |
   |---------|----------------------------|
-  | **高級** | 總共20個- [標準](../logic-apps/logic-apps-pricing.md#integration-accounts) 帳戶，包括免費的一個標準帳戶。 不允許免費或基本帳戶。 |
-  | **開發人員** | 20個總 [可用](../logic-apps/logic-apps-pricing.md#integration-accounts) (限制為1個帳戶) 和 [標準](../logic-apps/logic-apps-pricing.md#integration-accounts) 組合，或所有標準帳戶。 不允許基本帳戶。 [開發人員 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) 僅供實驗、開發和測試之用，而不是供生產環境或效能測試之用。 |
+  | **高級** | 總共20個- [標準](../logic-apps/logic-apps-pricing.md#integration-accounts) 帳戶，包括免費的一個標準帳戶。 您可以有 [更多的整合帳戶來支付額外費用](logic-apps-pricing.md#fixed-pricing)。 不允許免費或基本帳戶。 |
+  | **開發人員** | 20個總 [可用](../logic-apps/logic-apps-pricing.md#integration-accounts) (限制為1個帳戶) 和 [標準](../logic-apps/logic-apps-pricing.md#integration-accounts) 組合，或所有標準帳戶。 您可以有 [更多的整合帳戶來支付額外費用](logic-apps-pricing.md#fixed-pricing)。 不允許基本帳戶。 [開發人員 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) 僅供實驗、開發和測試之用，而不是供生產環境或效能測試之用。 |
   |||
 
-當您新增的企業整合帳戶超過 ISE 隨附的企業整合帳戶時，額外成本會套用至其中。 若要了解適用於 ISE 的定價和計費方式，請參閱 [Logic Apps 定價模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 如需定價費率，請參閱 [Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps/)。
+若要了解適用於 ISE 的定價和計費方式，請參閱 [Logic Apps 定價模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 如需定價費率，請參閱 [Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps/)。
 
 <a name="artifact-number-limits"></a>
 

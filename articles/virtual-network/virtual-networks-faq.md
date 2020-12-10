@@ -8,17 +8,17 @@ author: KumudD
 manager: twooley
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 00ef685c755c0fa6f5217d567bfa255ea940d72a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3ee9e165ce9c24968b072d19367e0285f5438259
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015964"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938795"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虛擬網路的常見問題 (FAQ)
 
@@ -95,7 +95,7 @@ Azure 虛擬網路 (VNet) 是您的網路在雲端中的身分。 它是專屬�
 否。 不支援多點傳送與廣播。
 
 ### <a name="what-protocols-can-i-use-within-vnets"></a>我可以在 VNet 中使用哪些通訊協定？
-您可以在 VNet 中使用 TCP、UDP 和 ICMP TCP/IP 通訊協定。 Vnet 內支援單播，除了動態主機設定通訊協定 (DHCP) 透過單播 (來源埠 UDP/68/目的地埠 UDP/67) 和為主機保留的 UDP 來源埠65330。 多點傳送、廣播、IP-in-IP 封裝式封包和 Generic Routing Encapsulation (GRE) 封包在 VNet 內會遭到封鎖。 
+您可以在 VNet 中使用 TCP、UDP 和 ICMP TCP/IP 通訊協定。 VNet 內可支援單點傳播，但透過單點傳播 (來源連接埠 UDP/68 / 目的地連接埠 UDP/67) 的動態主機設定通訊協定 (DHCP)，以及保留給主機使用的 UDP 來源連接埠 65330 除外。 多點傳送、廣播、IP-in-IP 封裝式封包和 Generic Routing Encapsulation (GRE) 封包在 VNet 內會遭到封鎖。 
 
 ### <a name="can-i-ping-my-default-routers-within-a-vnet"></a>我可以在 VNet 中偵測我的預設路由器嗎？
 否。

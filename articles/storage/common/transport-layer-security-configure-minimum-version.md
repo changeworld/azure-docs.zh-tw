@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/03/2020
+ms.date: 12/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 683f0e070ad77add62ed76eabd70b42ba15f012e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b6c75bc13bf26510ee72968c5a27407b6b7bfee6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498127"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937486"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>對儲存體帳戶的要求強制執行最小必要版本的傳輸層安全性 (TLS) 
 
@@ -339,6 +339,23 @@ Azure 原則藉由確保 Azure 資源遵守需求和標準，來支援雲端治�
 下圖顯示當您嘗試建立最小 TLS 版本設定為 TLS 1.0 的儲存體帳戶時所發生的錯誤 (新帳戶的預設值) 當具有 Deny 效果的原則需要將最低 TLS 版本設定為 TLS 1.2 時。
 
 :::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="螢幕擷取畫面，顯示在違反原則時建立儲存體帳戶時所發生的錯誤":::
+
+## <a name="permissions-necessary-to-require-a-minimum-version-of-tls"></a>需要最小 TLS 版本的必要許可權
+
+若要設定儲存體帳戶的 **MinimumTlsVersion** 屬性，使用者必須具有建立及管理儲存體帳戶的許可權。 Azure 角色型存取控制 (Azure RBAC) 提供這些許可權的角色，包括 **microsoft. storage/storageAccounts/write** 或 **microsoft. storage/storageAccounts/ \** _ 動作。 具有此動作的內建角色包括：
+
+- Azure Resource Manager [擁有](../../role-based-access-control/built-in-roles.md#owner) 者角色
+- Azure Resource Manager [參與者](../../role-based-access-control/built-in-roles.md#contributor) 角色
+- [儲存體帳戶參與者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)角色
+
+這些角色無法透過 Azure Active Directory (Azure AD) ，提供儲存體帳戶中資料的存取權。 不過，它們包含 _ * Microsoft. Storage/storageAccounts/listkeys/action * *，可授與帳戶存取金鑰的存取權。 使用此許可權時，使用者可以使用帳戶存取金鑰來存取儲存體帳戶中的所有資料。
+
+角色指派的範圍必須設定為儲存體帳戶或更高的層級，以允許使用者要求儲存體帳戶的最低 TLS 版本。 如需角色範圍的詳細資訊，請參閱 [瞭解 AZURE RBAC 的範圍](../../role-based-access-control/scope-overview.md)。
+
+請小心將這些角色的指派限制為需要能夠建立儲存體帳戶或更新其屬性的使用者。 使用最低許可權原則，以確保使用者具有完成其工作所需的最少許可權。 如需使用 Azure RBAC 管理存取權的詳細資訊，請參閱 [AZURE rbac 的最佳做法](../../role-based-access-control/best-practices.md)。
+
+> [!NOTE]
+> 傳統訂用帳戶管理員角色服務系統管理員和 Co-Administrator 包含 Azure Resource Manager [擁有](../../role-based-access-control/built-in-roles.md#owner) 者角色的對等專案。 **擁有** 者角色包含所有動作，因此具有其中一個系統管理角色的使用者也可以建立和管理儲存體帳戶。 如需詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)。
 
 ## <a name="network-considerations"></a>網路考量
 

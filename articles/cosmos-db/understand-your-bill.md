@@ -7,24 +7,24 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 3ac90b79053e59047dbe64598688e77b9df059d1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: b51be165d3d05ae753c7e0e5536a157fbbacf1ab
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358706"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938625"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>了解您的 Azure Cosmos DB 帳單
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB 是完全受控的雲端原生資料庫服務，只針對您的資料庫作業和取用的儲存體付費，以簡化帳單。 相較於內部部署或 IaaS 主控的替代方案，它沒有任何額外的授權費用、硬體、公共事業成本或設備成本需求。 相較於現有的內部部署或 IaaS 解決方案，當您考慮 Azure Cosmos DB 的多重區域功能時，資料庫服務也能大幅降低成本。
 
-- **資料庫作業** ：您對資料庫作業收費的方式取決於您所使用的 Azure Cosmos 帳戶類型。
+- **資料庫作業**：您對資料庫作業收費的方式取決於您所使用的 Azure Cosmos 帳戶類型。
 
-  - 布 **建的輸送量** ：針對指定的小時，以每小時計費，以 100 RU/秒為單位遞增。
-  - **無伺服器** ：針對您的資料庫作業所耗用的要求單位總數，以每小時計費。
+  - 布 **建的輸送量**：針對指定的小時，以每小時計費，以 100 RU/秒為單位遞增。
+  - **無伺服器**：針對您的資料庫作業所耗用的要求單位總數，以每小時計費。
 
-- **儲存體** ：依您的資料和索引) 在指定的一小時內耗用的總 (儲存體量，以固定費率計費。
+- **儲存體**：依您的資料和索引) 在指定的一小時內耗用的總 (儲存體量，以固定費率計費。
 
 如需最新定價資訊，請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/) 。
 
@@ -130,7 +130,7 @@ Azure Cosmos DB 是完全受控的雲端原生資料庫服務，只針對您的�
 |**Item** |**使用量 (月)**|**費率** |**每個月的成本** |
 |---------|---------|---------|-------|
 |美國西部容器的輸送量計費 (所有區域都可寫入)       | 10K RU/秒 * 24 * 30    |每小時每 100 RU/秒 $0.016    |$1,152 |
-|3 個新增區域 (美國東部、北歐與東亞) 的輸送量計費 (所有區域都可寫入)        | (3 + 1) * 10K RU/秒 * 24 * 30    |每小時每 100 RU/秒 $0.016   |$4,608 |
+|3 個新增區域 (美國東部、北歐與東亞) 的輸送量計費 (所有區域都可寫入)        | 3 * 10K RU/秒 * 24 * 30    |每小時每 100 RU/秒 $0.016   |$3456 |
 |美國西部容器的儲存體計費      | 250 GB    |$0.25/GB  |$62.50|
 |其他 3 個區域的儲存體計費 - 美國東部、北歐與東亞      | 3 * 250 GB    |$0.25/GB  |$187.50|
 |**總計**     |     |  |**$6,010**|

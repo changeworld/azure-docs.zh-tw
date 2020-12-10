@@ -6,17 +6,17 @@ documentationcenter: na
 author: yitoh
 ms.service: ddos-protection
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: b3f903b69cebd22e870f7ccd5923e6f08455dff3
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 104c9dcd3b7fd931e4f54841c9de9d17cfd72353
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992381"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937316"
 ---
 # <a name="azure-ddos-protection-standard-features"></a>Azure DDoS 保護標準功能
 
@@ -86,6 +86,6 @@ Azure 基本 DDoS 保護服務可協助保護客戶，並防止對其他客戶�
 
 [透過模擬測試](test-through-simulations.md)來瞭解您的服務將如何回應攻擊。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何 [建立 DDoS 保護計劃](manage-ddos-protection.md)。

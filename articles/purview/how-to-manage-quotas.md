@@ -8,22 +8,22 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 3b0a413db304b4f9d2c50a3d221c480f1e9dc37a
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 57cb1c405e00acb346421d64190a71e9211d21ff
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551968"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938829"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-purview"></a>使用 Azure 範疇管理和提高資源配額
  
 Azure 範疇是一項雲端服務，可供資料使用者使用。 您可以使用 Azure 範疇來集中管理跨雲端和內部內部部署環境之資料資產的資料管理。 服務可讓商務分析師使用有意義的商務詞彙來搜尋相關的資料。 若要提高訂用帳戶的上限，請連絡支援人員。
  
-## <a name="azure-purview-limits"></a>Azure 範疇限制
+## <a name="azure-purview-limits"></a>Azure Purview 限制
  
 |**Resource**|  **預設限制**  |**上限**|
 |---|---|---|
-|範疇每個租使用者的帳戶 (所有訂用帳戶組合) |3|請連絡支援人員|
+|每個區域的範疇帳戶，每個租使用者 (所有訂用帳戶組合) |3|請連絡支援人員|
 |虛擬核心可用於掃描，每個帳戶 *|160|160|
 |並行掃描，每個帳戶在指定的時間點。 限制是以掃描的資料來源類型為基礎 *|5 | 10 |
 |掃描可執行檔時間上限|7 天|7 天|

@@ -10,12 +10,12 @@ ms.date: 11/20/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 118aaa368f48838a33d130d8dddc89bb8dce3f3e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d435ced4c8ec56fae5081ede367b593d2b66ef0f
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498178"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936534"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>使用 (SAS) 的共用存取簽章來授與 Azure 儲存體資源的有限存取權
 
@@ -76,6 +76,9 @@ Azure 儲存體支援三種類型的共用存取簽章：
 ## <a name="how-a-shared-access-signature-works"></a>共用存取簽章的運作方式
 
 共用存取簽章是指向一或多個儲存體資源的帶正負號的 URI。 URI 包含權杖，其中包含一組特殊的查詢參數。 權杖指出用戶端可以如何存取資源。 其中一個查詢參數（簽章）是由 SAS 參數所建立，並以用來建立 SAS 的金鑰進行簽署。 Azure 儲存體會使用此簽章來授權存取儲存體資源。
+
+> [!NOTE]
+> 無法審核 SAS 權杖的產生。 任何有權使用帳戶金鑰或透過 Azure RBAC 角色指派來產生 SAS 權杖的使用者，都可以在不知道儲存體帳戶擁有者的情況下，進行這項作業。 請小心限制允許使用者產生 SAS 權杖的許可權。 若要防止使用者產生使用 blob 和佇列工作負載的帳戶金鑰簽署的 SAS，您可以禁止共用金鑰存取儲存體帳戶。 如需詳細資訊，請參閱 [使用共用金鑰來防止授權](shared-key-authorization-prevent.md)。
 
 ### <a name="sas-signature-and-authorization"></a>SAS 簽章和授權
 

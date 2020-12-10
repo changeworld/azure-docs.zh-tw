@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: bddc4c64feb31f78bed482bbd729ab1c4b8e676e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c7f7f162355b919c395dd0ee6d03b2bc5526e3da
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96171410"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936687"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>使用分層擴充 Azure AD B2C 以保護內部部署應用程式的教學課程
 
@@ -29,7 +29,7 @@ Maverics Identity Orchestrator 擴充 Azure AD B2C，以保護內部部署應用
 
 - **簡易** 設定： Azure AD B2C 提供簡單的逐步使用者介面，可將 Maverics IDENTITY Orchestrator SAML 或 OIDC 連接器連線到 Azure AD B2C。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始使用，您需要：
 
@@ -83,7 +83,7 @@ Maverics Identity Orchestrator 擴充 Azure AD B2C，以保護內部部署應用
 
    c. 為您的應用程式新增重新導向 URI。 此 URI 將符合 `oauthRedirectURL` Orchestrator Azure AD B2C 連接器設定的參數，例如 `https://example.com/oidc-endpoint` 。
 
-2. **建立使用者流程**：建立 [簽署和登入使用者流程](./tutorial-create-user-flows.md)。
+2. **建立使用者流程**：建立 [註冊和登入使用者流程](./tutorial-create-user-flows.md)。
 
 3. **新增 IdP**：選擇使用本機帳戶或社交或企業 [IdP](./tutorial-add-identity-providers.md)登入您的使用者。
 
@@ -259,7 +259,7 @@ appgateways:
 
 請務必保護您 Orchestrator 用來連線到 Azure AD B2C 和任何其他身分識別系統的秘密。 在本教學課程中，Maverics 會預設為以純文字載入密碼， `maverics.yaml` 不過，在本教學課程中，您將使用 Azure Key Vault 作為秘密提供者。
 
-請依照指示 [建立新的 Key Vault](../key-vault/secrets/quick-create-portal.md) ，讓您的協調器實例會將其作為秘密提供者使用。 將您的秘密新增至保存庫，並記下 `SECRET NAME` 提供給每個秘密的。 例如 `AzureADB2CClientSecret`。
+請依照指示 [建立新的 Key Vault](../key-vault/secrets/quick-create-portal.md) ，讓您的協調器實例會將其作為秘密提供者使用。 將您的秘密新增至保存庫，並記下 `SECRET NAME` 提供給每個秘密的。 例如： `AzureADB2CClientSecret` 。
 
 若要將值宣告為 `maverics.yaml` 組態檔中的密碼，請使用角括弧包裝祕密：
 

@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: f270ac736bb5dbc429dc8659cc88e63d0b51a523
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: cc17a66aceb6ab3eba9a18f8f07902822f4c81bb
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366633"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937656"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>適用於 PostgreSQL 的 Azure 資料庫-彈性伺服器的限制
 
@@ -116,6 +116,7 @@ ms.locfileid: "94366633"
 
 * 尚未支援 Azure AD 驗證。 如果您需要 Azure AD authentication，建議使用 [單一伺服器](../overview-single-server.md) 選項。
 * 尚未支援讀取複本。 如果您需要讀取複本，建議使用 [單一伺服器](../overview-single-server.md) 選項。
+* 不支援將資源移至另一個訂用帳戶。 
 
 
 ## <a name="next-steps"></a>後續步驟

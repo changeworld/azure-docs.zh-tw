@@ -3,12 +3,12 @@ title: 使用 Azure 資訊安全中心整合來保護您的 Azure VMware 解決�
 description: 瞭解如何從 Azure 資訊安全中心中的單一儀表板，使用 Azure 的原生安全性工具來保護您的 Azure VMware 解決方案 Vm。
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 53669f2988a7ff7ab1150b155a65c7a187c6f1c8
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e461e7e49619f7063c0583975f36a2e3dfe5a724
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94370151"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937333"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>使用 Azure 資訊安全中心整合來保護您的 Azure VMware 解決方案 Vm
 
@@ -55,7 +55,7 @@ Azure 資訊安全中心是預先設定的工具，不需要部署。 在 Azure 
 
 Azure Defender 在內部部署和雲端中，將 Azure 資訊安全中心的先進威脅防護延伸到混合式工作負載。 因此，若要保護您的 Azure VMware 解決方案 Vm，您將需要啟用 Azure Defender。 
 
-1. 在 [安全性中心] 中，選取 [ **快速入門** ]。
+1. 在 [安全性中心] 中，選取 [ **快速入門**]。
 
 2. 選取 [ **升級** ] 索引標籤，然後選取您的訂用帳戶或工作區。 
 
@@ -65,15 +65,15 @@ Azure Defender 在內部部署和雲端中，將 Azure 資訊安全中心的先�
 
 1. 在 Azure 入口網站中，搜尋 **Azure Arc** 並加以選取。
 
-2. 在 [資源] 底下選取 [ **伺服器** ]，然後選取 [ **+ 新增** ]。
+2. 在 [資源] 底下選取 [ **伺服器** ]，然後選取 [ **+ 新增**]。
 
     :::image type="content" source="media/azure-security-integration/add-server-to-azure-arc.png" alt-text="顯示 Azure Arc 伺服器] 頁面的螢幕擷取畫面，可將 Azure VMware 解決方案 VM 新增至 Azure。":::
 
-3. 選取 [ **產生腳本** ]。
+3. 選取 [ **產生腳本**]。
  
     :::image type="content" source="media/azure-security-integration/add-server-using-script.png" alt-text="Azure Arc 頁面的螢幕擷取畫面，其中顯示使用互動式腳本新增伺服器的選項。"::: 
  
-4. 在 [ **必要條件** ] 索引標籤上選取 **[下一步** ]。
+4. 在 [ **必要條件** ] 索引標籤上選取 **[下一步**]。
 
 5. 在 [ **資源詳細資料** ] 索引標籤上，填寫下列詳細資料： 
     - 訂用帳戶
@@ -82,11 +82,11 @@ Azure Defender 在內部部署和雲端中，將 Azure 資訊安全中心的先�
     - 作業系統
     - Proxy 伺服器詳細資料
     
-    然後選取 **[下一步：標記]** 。
+    然後選取 **[下一步：標記]**。
 
-6. 在 [ **標記** ] 索引標籤上選取 **[下一步]** 。
+6. 在 [ **標記** ] 索引標籤上選取 **[下一步]**。
 
-7. 在 [ **下載並執行腳本** ] 索引標籤上，選取 [ **下載** ]。
+7. 在 [ **下載並執行腳本** ] 索引標籤上，選取 [ **下載**]。
 
 8. 指定您的作業系統，並在 Azure VMware 解決方案 VM 上執行腳本。
 
@@ -94,13 +94,13 @@ Azure Defender 在內部部署和雲端中，將 Azure 資訊安全中心的先�
 
 1. 在 Azure 資訊安全中心中，從左窗格選取 [ **清查** ]。
 
-2. 針對 [資源類型]，選取 [ **伺服器-Azure Arc** ]。
+2. 針對 [資源類型]，選取 [ **伺服器-Azure Arc**]。
  
      :::image type="content" source="media/azure-security-integration/select-resource-in-security-center.png" alt-text="Azure 資訊安全中心清查] 頁面的螢幕擷取畫面，其中顯示 [資源類型] 下選取的伺服器 Azure Arc。":::
 
 3. 選取您資源的名稱。 頁面隨即開啟，其中顯示資源的安全性健康情況詳細資料。
 
-4. 在 [ **建議清單** ] 底下，選取 [ **建議** ]、[已 **通過的評定** ] 和 [ **無法使用的評估** ] 索引標籤，
+4. 在 [ **建議清單**] 底下，選取 [ **建議**]、[已 **通過的評定**] 和 [ **無法使用的評估** ] 索引標籤，
 
     :::image type="content" source="media/azure-security-integration/view-recommendations-assessments.png" alt-text="顯示安全性建議和評量 Azure 資訊安全中心的螢幕擷取畫面。":::
 
@@ -108,11 +108,11 @@ Azure Defender 在內部部署和雲端中，將 Azure 資訊安全中心的先�
 
 Azure Sentinel 是以 Log Analytics 工作區為基礎。 上架 Azure Sentinel 的第一個步驟是選取您想要用於該用途的 Log Analytics 工作區。
 
-1. 在 Azure 入口網站中，搜尋 **Azure Sentinel** ，然後選取它。
+1. 在 Azure 入口網站中，搜尋 **Azure Sentinel**，然後選取它。
 
-2. 在 [Azure Sentinel 工作區] 頁面上，選取 [ **+ 新增** ]。
+2. 在 [Azure Sentinel 工作區] 頁面上，選取 [ **+ 新增**]。
 
-3. 選取 Log Analytics 工作區，然後選取 [ **新增** ]。
+3. 選取 Log Analytics 工作區，然後選取 [ **新增**]。
 
 ## <a name="enable-data-collector-for-security-events-on-azure-vmware-solution-vms"></a>在 Azure VMware 解決方案 Vm 上啟用資料收集器的安全性事件
 
@@ -120,11 +120,11 @@ Azure Sentinel 是以 Log Analytics 工作區為基礎。 上架 Azure Sentinel 
 
 1. 在 [Azure Sentinel 工作區] 頁面上，選取已設定的工作區。
 
-2. 在 [設定] 底下，選取 [ **資料連線器** ]。
+2. 在 [設定] 底下，選取 [ **資料連線器**]。
 
-3. 在 [連接器名稱] 資料行下，從清單中選取 [ **安全性事件** ]，然後選取 [ **開啟連接器] 頁面** 。
+3. 在 [連接器名稱] 資料行下，從清單中選取 [ **安全性事件** ]，然後選取 [ **開啟連接器] 頁面**。
 
-4. 在 [連接器] 頁面上，選取您要串流的事件，然後選取 [套用 **變更** ]。
+4. 在 [連接器] 頁面上，選取您要串流的事件，然後選取 [套用 **變更**]。
 
     :::image type="content" source="media/azure-security-integration/select-events-you-want-to-stream.png" alt-text="Azure Sentinel 的 [安全性事件] 頁面的螢幕擷取畫面，您可以在其中選取要串流的事件。":::
 
@@ -132,9 +132,9 @@ Azure Sentinel 是以 Log Analytics 工作區為基礎。 上架 Azure Sentinel 
 
 1. 在 [Azure Sentinel 工作區] 頁面上，選取已設定的工作區。
 
-2. 在 [設定] 底下，選取 [ **資料連線器** ]。
+2. 在 [設定] 底下，選取 [ **資料連線器**]。
 
-3. 從清單中選取 **Azure 資訊安全中心** ，然後選取 [ **開啟連接器] 頁面** 。
+3. 從清單中選取 **Azure 資訊安全中心** ，然後選取 [ **開啟連接器] 頁面**。
 
     :::image type="content" source="media/azure-security-integration/connect-security-center-with-azure-sentinel.png" alt-text="Azure Sentinel 中的 [資料連線器] 頁面的螢幕擷取畫面，其中顯示連接 Azure 資訊安全中心與 Azure Sentinel 的選取專案。":::
 
@@ -146,21 +146,21 @@ Azure Sentinel 是以 Log Analytics 工作區為基礎。 上架 Azure Sentinel 
 
 將資料來源連接到 Azure Sentinel 之後，您可以建立規則，根據偵測到的威脅來產生警示。 在下列範例中，我們將建立一個規則，以找出嘗試以錯誤的密碼登入 Windows server。
 
-1. 在 [Azure Sentinel 總覽] 頁面的 [設定] 底下，選取 [ **分析** ]。
+1. 在 [Azure Sentinel 總覽] 頁面的 [設定] 底下，選取 [ **分析**]。
 
-2. 在 [設定] 底下，選取 [ **分析** ]。
+2. 在 [設定] 底下，選取 [ **分析**]。
 
-3. 選取 [ **+ 建立** ]，然後在下拉式清單中選取 [已 **排程的查詢規則** ]。
+3. 選取 [ **+ 建立** ]，然後在下拉式清單中選取 [已 **排程的查詢規則**]。
 
 4. 在 [ **一般** ] 索引標籤上，輸入必要的資訊。
 
-    - Name
-    - 說明
+    - 名稱
+    - 描述
     - 策略
     - 嚴重性
     - 狀態
 
-    選取 **[下一步：設定規則邏輯 >]** 。
+    選取 **[下一步：設定規則邏輯 >]**。
 
 5. 在 [ **設定規則邏輯** ] 索引標籤上，輸入必要的資訊。
 
@@ -181,13 +181,13 @@ Azure Sentinel 是以 Log Analytics 工作區為基礎。 上架 Azure Sentinel 
 
     選取 [下一步]。
 
-6. 在 [ **事件設定** ] 索引標籤上，啟用 **此分析規則所觸發之警示的 [建立事件** ]，然後選取 **[下一步：自動回應 >** 。
+6. 在 [ **事件設定** ] 索引標籤上，啟用 **此分析規則所觸發之警示的 [建立事件** ]，然後選取 **[下一步：自動回應 >**。
  
     :::image type="content" source="media/azure-security-integration/create-new-analytic-rule-wizard.png" alt-text="[分析規則] 的螢幕擷取畫面，可讓您在 Azure Sentinel 中顯示此分析規則所觸發之警示的 [建立事件] 為 [已啟用] 來建立新規則。":::
 
-7. 選取 **[下一步：檢查 >]** 。
+7. 選取 **[下一步：檢查 >]**。
 
-8. 在 [ **審核和建立** ] 索引標籤上，檢查資訊並選取 [ **建立** ]。
+8. 在 [ **審核和建立** ] 索引標籤上，檢查資訊並選取 [ **建立**]。
 
 第三次嘗試登入 Windows server 失敗之後，已建立的規則會觸發每次失敗嘗試的事件。
 
@@ -197,7 +197,7 @@ Azure Sentinel 是以 Log Analytics 工作區為基礎。 上架 Azure Sentinel 
 
 1. 移至 [Azure Sentinel 總覽] 頁面。
 
-2. 在 [威脅管理] 下方，選取 [ **事件** ]。
+2. 在 [威脅管理] 下方，選取 [ **事件**]。
 
 3. 選取事件。 然後，您可以將事件指派給小組進行解決。
 
@@ -211,27 +211,27 @@ Azure Sentinel 是以 Log Analytics 工作區為基礎。 上架 Azure Sentinel 
 
 1. 移至 [Azure Sentinel 總覽] 頁面。
 
-2. 在 [威脅管理] 下方，選取 [ **搜尋** ]。 預先定義的查詢清單隨即顯示。
+2. 在 [威脅管理] 下方，選取 [ **搜尋**]。 預先定義的查詢清單隨即顯示。
 
-3. 選取查詢，然後選取 [ **執行查詢** ]。
+3. 選取查詢，然後選取 [ **執行查詢**]。
 
 4. 選取 [ **View results** ] 以檢查結果。
 
 ### <a name="create-a-new-query"></a>建立新的查詢
 
-1.  在 [威脅管理] 下方，選取 [ **搜尋** ]，然後選取 [ **+ 新增查詢** ]。
+1.  在 [威脅管理] 下方，選取 [ **搜尋** ]，然後選取 [ **+ 新增查詢**]。
 
     :::image type="content" source="media/azure-security-integration/create-new-query.png" alt-text="醒目提示 [+ 新增] 查詢的 Azure Sentinel 搜尋頁面的螢幕擷取畫面。":::
 
 2. 填寫下列資訊以建立自訂查詢。
 
-    - Name
-    - 說明
+    - 名稱
+    - 描述
     - 自訂查詢
     - 輸入對應
     - 策略
     
-3. 選取 [建立]  。 然後，您可以選取已建立的查詢、 **執行查詢** 和 **查看結果** 。
+3. 選取 [建立]。 然後，您可以選取已建立的查詢、 **執行查詢** 和 **查看結果**。
 
 ## <a name="next-steps"></a>後續步驟
 

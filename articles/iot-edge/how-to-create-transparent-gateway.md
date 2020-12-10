@@ -11,22 +11,37 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 506f6a2025a61b4d9d16918b2a95de620171c46b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 9f81d059c1a71bf6349d0ef9b4aae8f7a47c161f
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147849"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938778"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>設定 IoT Edge 裝置作為透明閘道
 
 本文提供詳細的指示，說明如何設定 IoT Edge 裝置作為透明閘道，讓其他裝置與 IoT 中樞進行通訊。 本文使用 *IoT Edge 閘道* 的詞彙來參考設定為透明閘道的 IoT Edge 裝置。 如需詳細資訊，請參閱 [如何使用 IoT Edge 裝置作為閘道](./iot-edge-as-gateway.md)。
+
+<!-- 1.0.10 -->
+::: moniker range="iotedge-2018-06"
 
 >[!NOTE]
 >目前狀況：
 >
 > * 已啟用 Edge 的裝置無法連線到 IoT Edge 閘道。
 > * 下游裝置無法使用檔案上傳。
+
+::: moniker-end
+
+<!-- 1.2.0 -->
+::: moniker range=">=iotedge-2020-11"
+
+>[!NOTE]
+>目前狀況：
+>
+> * 下游裝置無法使用檔案上傳。
+
+::: moniker-end
 
 設定成功的透明閘道連線有三個一般步驟。 本文涵蓋第一個步驟：
 
@@ -114,7 +129,7 @@ ms.locfileid: "92147849"
 
 1. 在 Azure 入口網站中，瀏覽至您的 IoT 中樞。
 
-2. 移至 [IoT Edge]****，並選取要作為閘道的 IoT Edge 裝置。
+2. 移至 [IoT Edge]，並選取要作為閘道的 IoT Edge 裝置。
 
 3. 選取 [ **設定模組**]。
 

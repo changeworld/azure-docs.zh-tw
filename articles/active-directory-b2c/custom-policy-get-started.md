@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 54d92da469625a3b81d0027558ec14166d916b80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae3865c1ee5e656fc4feda48de9ab67995619593
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88163181"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936364"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中開始使用自訂原則
 
@@ -34,7 +34,7 @@ ms.locfileid: "88163181"
 ## <a name="add-signing-and-encryption-keys"></a>新增簽署與加密金鑰
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在入口網站工具列中選取**目錄 + 訂用帳戶**圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
+1. 在入口網站工具列中選取 **目錄 + 訂用帳戶** 圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
 1. 在 Azure 入口網站中，搜尋並選取 [Azure AD B2C]。
 1. 在 [概觀] 頁面的 [原則] 下，選取 [識別體驗架構]。
 
@@ -213,6 +213,6 @@ Azure AD B2C 會要求註冊兩個用來以本機帳戶註冊和登入使用者�
 
 ## <a name="next-steps"></a>後續步驟
 
-接下來，嘗試新增 Azure Active Directory (Azure AD) 作為識別提供者。 此入門指南中所使用的基底檔案已經包含新增其他識別提供者 (例如 Azure AD) 時所需部分內容。 如需將 Azure AD 設定為身分識別提供者的相關資訊，請參閱 [使用 Active Directory B2C 自訂原則，以 Azure Active Directory 帳戶設定註冊和登入](identity-provider-azure-ad-single-tenant-custom.md)。 
+接下來，嘗試新增 Azure Active Directory (Azure AD) 作為識別提供者。 此入門指南中所使用的基底檔案已經包含新增其他識別提供者 (例如 Azure AD) 時所需部分內容。 如需將 Azure AD 設定為身分識別提供者的相關資訊，請參閱 [使用 Active Directory B2C 自訂原則，以 Azure Active Directory 帳戶設定註冊和登入](identity-provider-azure-ad-single-tenant.md)。 
 
 請造訪我們的 [合作夥伴資源庫](partner-gallery.md) ，以深入瞭解如何使用自訂原則來實施 ISV 整合。 

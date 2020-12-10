@@ -6,17 +6,17 @@ documentationcenter: na
 author: yitoh
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: 749d8d6edf9c94185c8363c5fec1b91e60ae9272
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: c3931cafb6c755c6119bf8deb4ecc6b58ea7bc51
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746466"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938438"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection Standard 概觀
 
@@ -30,7 +30,7 @@ Azure DDoS 保護 Standard （結合應用程式設計最佳作法）提供增�
 
 Azure DDoS 保護不會儲存客戶資料。
 
-## <a name="features"></a>特性
+## <a name="features"></a>功能
 
 - **原生平台整合**：原生整合到 Azure。 包括透過 Azure 入口網站進行設定。 DDoS Protection Standard 了解您的資源和資源組態。
 - 通行 **保護：** 簡化的設定會在啟用 DDoS 保護標準時立即保護虛擬網路上的所有資源。 不需要任何介入或使用者定義。 一旦偵測到攻擊，DDoS Protection Standard 就會立即自動減輕攻擊。

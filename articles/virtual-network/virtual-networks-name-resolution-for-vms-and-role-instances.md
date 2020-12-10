@@ -7,18 +7,18 @@ documentationcenter: na
 author: rohinkoul
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 46b3a782d93a55ed7f6eee6c76886f27c2652572
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 340ca07ba605359f71c1dbf23ca38abd75d84416
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469638"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937044"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虛擬網路中的資源名稱解析
 
@@ -38,7 +38,7 @@ ms.locfileid: "89469638"
 > [!NOTE]
 > 如果您使用 Azure 提供的 DNS，則會自動將適當的 DNS 尾碼套用至您的虛擬機器。 針對其他所有選項，您必須使用完整功能變數名稱 (FQDN) 或手動將適當的 DNS 尾碼套用至您的虛擬機器。
 
-| **案例** | **解決方案** | **DNS 尾碼** |
+| **案例** | **方案** | **DNS 尾碼** |
 | --- | --- | --- |
 | 相同虛擬網路內的 VM 之間或相同雲端服務的 Azure 雲端服務角色執行個體之間所進行的名稱解析。 | [Azure DNS 私人區域](../dns/private-dns-overview.md) 或 [Azure 提供的名稱解析](#azure-provided-name-resolution) |主機名稱或 FQDN |
 | 不同虛擬網路的 VM 之間或不同雲端服務的角色執行個體之間所進行的名稱解析。 |[Azure DNS 私人區域](../dns/private-dns-overview.md) 或客戶管理的 DNS 伺服器會在虛擬網路之間轉送查詢，以供 AZURE (DNS proxy) 解析。 請參閱 [使用您自己的 DNS 伺服器的名稱解析](#name-resolution-that-uses-your-own-dns-server)。 |僅 FQDN |
@@ -60,7 +60,7 @@ Azure 提供的名稱解析只會提供基本的授權 DNS 功能。 如果您�
 > 使用雲端服務 Web 和背景工作角色時，您也可以使用 Azure 服務管理 REST API，存取角色執行個體的內部 IP 位址。 如需詳細資訊，請參閱[服務管理 REST API 參考](https://msdn.microsoft.com/library/azure/ee460799.aspx)。 此位址是以角色名稱和執行個體數目為基礎。 
 >
 
-### <a name="features"></a>特性
+### <a name="features"></a>功能
 
 Azure 提供的名稱解析包含下列功能：
 * 容易使用。 不需要組態。
@@ -107,19 +107,19 @@ Azure 提供的名稱解析包含下列功能：
 
 有許多不同的 DNS 快取套件可用 (例如 dnsmasq)。 以下是在最常見的發行版本上安裝 dnsmasq 的方式：
 
-* **Ubuntu (使用 resolvconf) **：
+* **Ubuntu (使用 resolvconf)**：
   * 使用 `sudo apt-get install dnsmasq` 安裝 dnsmasq 套件。
-* **SUSE (使用 netconf) **：
+* **SUSE (使用 netconf)**：
   * 使用 `sudo zypper install dnsmasq` 安裝 dnsmasq 套件。
   * 使用 `systemctl enable dnsmasq.service` 啟用 dnsmasq 服務。 
   * 使用 `systemctl start dnsmasq.service` 啟動 dnsmasq 服務。 
   * 編輯 **/etc/sysconfig/network/config**，並將 *NETCONFIG_DNS_FORWARDER = ""* 變更為 *dnsmasq*。
   * 使用 `netconfig update` 更新 resolv.conf 來設定快取作為本機 DNS 解析程式。
-* **CentOS (會使用 NetworkManager) **：
+* **CentOS (會使用 NetworkManager)**：
   * 使用 `sudo yum install dnsmasq` 安裝 dnsmasq 套件。
   * 使用 `systemctl enable dnsmasq.service` 啟用 dnsmasq 服務。
   * 使用 `systemctl start dnsmasq.service` 啟動 dnsmasq 服務。
-  * 在 **/etc/dhclient-eth0.conf**中新增*前置功能變數名稱-伺服器127.0.0.1。*
+  * 在 **/etc/dhclient-eth0.conf** 中新增 *前置功能變數名稱-伺服器127.0.0.1。*
   * 使用 `service network restart` 重新啟動網路服務來設定快取作為本機 DNS 解析程式。
 
 > [!NOTE]
@@ -133,19 +133,19 @@ DNS 主要是 UDP 通訊協定。 因為 UDP 通訊協定並不保證訊息傳�
 * Windows 作業系統會在 1 秒後重試，然後再依序隔 2 秒、4 秒、再過 4 秒後重試。 
 * 預設 Linux 安裝程式會在 5 秒之後重試。 我們建議您將重試規格變更為 5 次，間隔為 1 秒。
 
-請使用 `cat /etc/resolv.conf` 檢查 Linux VM 上的目前設定。 查看 [選項]** 行，例如：
+請使用 `cat /etc/resolv.conf` 檢查 Linux VM 上的目前設定。 查看 [選項] 行，例如：
 
 ```bash
 options timeout:1 attempts:5
 ```
 
-resolv.conf 檔案通常是自動產生的，且不可編輯。 新增 [選項]** 行的特定步驟會因發行版本而有所不同：
+resolv.conf 檔案通常是自動產生的，且不可編輯。 新增 [選項] 行的特定步驟會因發行版本而有所不同：
 
 * **Ubuntu** (使用 resolvconf) ：
-  1. 將 options** 行新增至 **/etc/resolvconf/resolv.conf.d/tail**。
+  1. 將 options 行新增至 **/etc/resolvconf/resolv.conf.d/tail**。
   2. 執行 `resolvconf -u` 以更新。
 * **SUSE** (使用 netconf) ：
-  1. 新增*timeout：1嘗試： 5*至 **/etc/sysconfig/network/config**中的**NETCONFIG_DNS_RESOLVER_OPTIONS = ""** 參數。
+  1. 新增 *timeout：1嘗試： 5* 至 **/etc/sysconfig/network/config** 中的 **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** 參數。
   2. 執行 `netconfig update` 以更新。
 * **CentOS** (會使用 NetworkManager) ：
   1. 將 *echo "options timeout：1次嘗試： 5"* 新增至 **/etc/NetworkManager/dispatcher.d/11-dhclient**。
@@ -172,7 +172,7 @@ DNS 轉送也會實現虛擬網路之間的 DNS 解析，並使內部部署電�
 
 ![虛擬網路之間 DNS 的圖表](./media/virtual-networks-name-resolution-for-vms-and-role-instances/inter-vnet-dns.png)
 
-當您使用 Azure 提供的名稱解析時，Azure 動態主機設定通訊協定 (DHCP) 會將內部 DNS 尾碼 (**.internal.cloudapp.net**) 提供給每部虛擬機器。 此尾碼會啟用主機名稱解析，因為主機名稱記錄是在 **internal.cloudapp.net** 區域中。 當您使用自己的名稱解析解決方案時，則不會提供此尾碼給虛擬機器，因為它會干擾其他 DNS 架構 (例如在已加入網域的案例中)。 而是 Azure 會提供一個沒有作用的預留位置 (reddog.microsoft.com**)。
+當您使用 Azure 提供的名稱解析時，Azure 動態主機設定通訊協定 (DHCP) 會將內部 DNS 尾碼 (**.internal.cloudapp.net**) 提供給每部虛擬機器。 此尾碼會啟用主機名稱解析，因為主機名稱記錄是在 **internal.cloudapp.net** 區域中。 當您使用自己的名稱解析解決方案時，則不會提供此尾碼給虛擬機器，因為它會干擾其他 DNS 架構 (例如在已加入網域的案例中)。 而是 Azure 會提供一個沒有作用的預留位置 (reddog.microsoft.com)。
 
 如有需要，您可以使用 PowerShell 或 API 來判斷內部 DNS 尾碼︰
 
@@ -192,7 +192,7 @@ DNS 轉送也會實現虛擬網路之間的 DNS 解析，並使內部部署電�
 ### <a name="web-apps"></a>Web 應用程式
 假設您需要從使用 App Service 建置之 Web 應用程式執行名稱解析，請連結至虛擬網路以及相同虛擬網路中的虛擬機器。 除了設定自訂 DNS 伺服器 (它具有可將查詢轉送至 Azure (虛擬 IP 168.63.129.16) 的 DNS 轉送工具) 以外，請執行下列步驟：
 1. 如果您的 Web 應用程式尚未與虛擬網路整合，則透過[將您的應用程式與虛擬網路整合](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)中所述加以整合。
-2. 在 Azure 入口網站中，針對裝載 Web 應用程式的 AppService 方案，選取 [網路]****、[虛擬網路整合]**** 底下的 [同步網路]****。
+2. 在 Azure 入口網站中，針對裝載 Web 應用程式的 AppService 方案，選取 [網路]、[虛擬網路整合] 底下的 [同步網路]。
 
     ![虛擬網路名稱解析的螢幕擷取畫面](./media/virtual-networks-name-resolution-for-vms-and-role-instances/webapps-dns.png)
 
@@ -202,7 +202,7 @@ DNS 轉送也會實現虛擬網路之間的 DNS 解析，並使內部部署電�
 * 在 VM 上的來源虛擬網路中設定 DNS 轉送工具。 設定此 DNS 轉送工具以將查詢轉送至目標虛擬網路中的 DNS 伺服器。
 * 在來源虛擬網路的設定中設定來源 DNS 伺服器。
 * 遵循[將您的應用程式與虛擬網路整合](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)中的指示，針對您的 Web 應用程式啟用虛擬網路整合，以連結至來源虛擬網路。
-* 在 Azure 入口網站中，針對裝載 Web 應用程式的 AppService 方案，選取 [網路]****、[虛擬網路整合]**** 底下的 [同步網路]****。
+* 在 Azure 入口網站中，針對裝載 Web 應用程式的 AppService 方案，選取 [網路]、[虛擬網路整合] 底下的 [同步網路]。
 
 ## <a name="specify-dns-servers"></a>指定 DNS 伺服器
 當您使用自己的 DNS 伺服器時，Azure 會提供對每個虛擬網路指定多個 DNS 伺服器的能力。 您也可以對每個網路介面 (適用於 Azure Resource Manager) 或對每個雲端服務 (適用於傳統部署模型) 指定多個 DNS 伺服器。 針對網路介面或雲端服務所指定的 DNS 伺服器，優先順序高於針對虛擬網路所指定的 DNS 伺服器。

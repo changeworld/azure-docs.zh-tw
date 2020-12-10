@@ -4,12 +4,12 @@ description: 了解如何在 Azure 中調整您的資源 Web 應用程式、雲�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 95f94bd1e80c05658d9033047950d4b49fca4643
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: bf0194e82acde0406cfeb57af027831f92a90c92
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920658"
+ms.locfileid: "96938302"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>開始在 Azure 中自動調整規模
 本文說明如何在 Microsoft Azure 入口網站中為您的資源設定自動調整規模。
@@ -136,9 +136,11 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 > [!NOTE]
 > 請記住，您的 App Service 方案必須相應放大為2個或更多個實例，而且必須是 **基本層或更高** ，才能進行負載平衡器排除。 如果您只有1個實例，就不會從負載平衡器中移除它，即使其狀況不良也一樣。 
 
-其餘狀況良好的實例可能會產生更高的負載。 為了避免剩餘的實例過多，系統不會排除超過一半的實例。 例如，如果 App Service 的方案相應放大至4個實例，其中3個狀況不良，則會將最多2個從 loadbalancer 旋轉中排除。 其他2個實例 (1 狀況良好，而1個狀況不良的) 將會繼續接收要求。 在所有實例都狀況不良的最糟情況下，將不會排除任何實例。如果您想要覆寫此行為，您可以將 `WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` 應用程式設定設為和之間的值 `0` `100` 。 將此設定為較高的值表示將會移除更多狀況不良的實例 (預設值為 50) 。
+此外，當新增或重新開機實例時，也會 ping 健康情況檢查路徑，例如在相應放大作業期間、手動重新開機，或透過 SCM 網站部署程式碼。 如果健康狀態檢查在這些作業期間失敗，將不會將失敗的實例新增至負載平衡器。 這可防止這些作業對您應用程式的可用性造成負面影響。
 
-如果實例在一小時內保持不健全，則會以新的實例取代。 每小時最多隻能取代一個實例，每個 App Service 方案最多可有三個實例。
+使用 healthcheck 時，您的剩餘狀況良好實例可能會產生更高的負載。 為了避免剩餘的實例過多，系統不會排除超過一半的實例。 例如，如果 App Service 的方案相應放大至4個實例，其中3個狀況不良，則會將最多2個從 loadbalancer 旋轉中排除。 其他2個實例 (1 狀況良好，而1個狀況不良的) 將會繼續接收要求。 在所有實例都狀況不良的最糟情況下，將不會排除任何實例。如果您想要覆寫此行為，您可以將 `WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` 應用程式設定設為和之間的值 `0` `100` 。 將此設定為較高的值表示將會移除更多狀況不良的實例 (預設值為 50) 。
+
+如果實例上所有應用程式的健康情況檢查失敗一小時，則會取代該實例。 每小時最多隻能取代一個實例，每個 App Service 方案最多可有三個實例。
 
 ### <a name="monitoring"></a>監視
 
