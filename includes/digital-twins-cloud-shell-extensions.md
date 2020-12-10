@@ -27,7 +27,7 @@ az extension list
    az extension update --name azure-iot
    ```
 
-* 如果清單中**未**包含 `azure-iot`：您必須安裝此擴充功能。 使用此命令：
+* 如果清單中 **未** 包含 `azure-iot`：您必須安裝此擴充功能。 使用此命令：
 
     ```azurecli
     az extension add --name azure-iot

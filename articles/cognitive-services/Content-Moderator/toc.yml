@@ -12,7 +12,7 @@
   items:
     - name: 在 Web 上試用 Content Moderator
       href: quick-start.md
-    - name: 使用用戶端程式庫
+    - name: 使用用戶端程式庫或 REST API
       href: client-libraries.md
 - name: 教學課程
   items:
@@ -20,8 +20,6 @@
       href: ecommerce-retail-catalog-moderation.md
     - name: 仲裁 Facebook 內容
       href: facebook-post-moderation.md
-    - name: 影片及文字記錄仲裁
-      href: video-transcript-moderation-review-tutorial-dotnet.md
 - name: 概念
   items:
     - name: 影像仲裁
@@ -38,7 +36,7 @@
   items:
     - name: 調節內容
       items:
-        - name: REST API
+        - name: API 主控台
           items:
             - name: 映像 - API 主控台
               href: try-image-api.md
@@ -60,7 +58,7 @@
       items:
         - name: 檢閱工具 (瀏覽器)
           href: Review-Tool-User-Guide/Review-Moderated-Images.md
-        - name: REST API
+        - name: API 主控台
           href: try-review-api-review.md
         - name: 影片檢閱 (.NET)
           href: video-reviews-quickstart-dotnet.md
@@ -70,11 +68,11 @@
       items:
         - name: 檢閱工具 (瀏覽器)
           href: Review-Tool-User-Guide/Workflows.md
-        - name: REST API
+        - name: API 主控台
           href: try-review-api-workflow.md
     - name: 定義和使用作業
       items:
-        - name: REST API
+        - name: API 主控台
           href: try-review-api-job.md
         - name: .NET SDK
           href: moderation-jobs-quickstart-dotnet.md
