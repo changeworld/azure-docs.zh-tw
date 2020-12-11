@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 96cd460ddfea863eb27a1087ff59f3b87acf65d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41cfff11e44a3d052614aa3c81a4623f59bbbbf5
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531299"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095282"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric 的容量規劃和調整
 
@@ -50,21 +50,11 @@ ms.locfileid: "90531299"
 > [!NOTE]
 > 裝載具狀態 Service Fabric 系統服務的主要節點類型必須是銀級持久性層級或更高。 啟用銀級耐久性之後，叢集作業（例如升級、新增或移除節點等）將會變慢，因為系統會針對資料安全的作業速度優化。
 
-垂直調整虛擬機器擴展集是一項破壞性作業。 相反地，請使用所需的 SKU 新增擴展集，以水準調整您的叢集。 然後，將您的服務遷移至您想要的 SKU，以完成安全的垂直調整作業。 變更虛擬機器擴展集資源 SKU 是一種破壞性作業，因為它會映射您的主機，以移除所有本機保存的狀態。
+垂直調整虛擬機器擴展集的方式只是變更其資源 SKU 是一項破壞性作業，因為它會重新建立主機映射，因此會移除所有本機保存的狀態。 相反地，您會想要將新的擴展集新增至所需的 SKU，然後將服務遷移至新的擴展集，以完成安全的垂直調整作業，以水準調整叢集規模。
 
-您的叢集會使用 Service Fabric [節點屬性和放置條件約束](./service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints) 來決定要裝載應用程式服務的位置。 當您要垂直調整主要節點類型時，請為提供相同的屬性值 `"nodeTypeRef"` 。 您可以在虛擬機器擴展集的 Service Fabric 擴充功能中找到這些值。 
-
-下列 Resource Manager 範本的程式碼片段會顯示您將宣告的屬性。 它的值適用于您要調整規模的新布建擴展集，而且僅支援作為叢集的暫時具狀態服務。
-
-```json
-"settings": {
-   "nodeTypeRef": ["[parameters('primaryNodetypeName')]"]
-}
-```
+您的叢集會使用 Service Fabric [節點屬性和放置條件約束](./service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints) 來決定要裝載應用程式服務的位置。 垂直調整主要節點類型時，您將部署第二個主要節點類型，然後在 `"isPrimary": false` 原始主要節點類型上設定 () ，然後繼續停用其節點，並移除其擴展集及其相關資源。 如需詳細資訊，請參閱 [擴大 Service Fabric 叢集的主要節點類型](service-fabric-scale-up-primary-node-type.md)。
 
 > [!NOTE]
-> 請勿讓您的叢集以使用相同屬性值的多個擴展集來執行， `nodeTypeRef` 以完成成功的垂直調整作業。
->
 > 在您嘗試變更生產環境之前，請一律先驗證測試環境中的作業。 根據預設，Service Fabric 叢集系統服務只有目標主要節點類型的放置條件約束。
 
 在宣告節點屬性和放置條件約束後，請逐一對各個 VM 執行個體執行下列步驟。 這可讓系統服務 (和您的具狀態服務) 在您要移除的 VM 實例上正常關閉，因為您會在其他位置建立新複本。
@@ -198,7 +188,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ## <a name="durability-levels"></a>持久性層級
 
 > [!WARNING]
-> 執行 Bronze 持久性的節點類型「沒有權限」__。 影響無狀態工作負載的基礎結構作業將不會停止或延遲，這可能會影響您的工作負載。 
+> 執行 Bronze 持久性的節點類型「沒有權限」。 影響無狀態工作負載的基礎結構作業將不會停止或延遲，這可能會影響您的工作負載。 
 >
 > 銅級持久性僅適用於執行無狀態工作負載的節點類型。 針對生產工作負載，請執行銀級或更高版本以確保狀態一致性。 請根據[容量規劃文件](./service-fabric-cluster-capacity.md)中的指導方針選擇正確的可靠性。
 

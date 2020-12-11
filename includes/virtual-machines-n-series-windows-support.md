@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: caad292f06710fca8d6f64476eead5dfcb164e9d
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: f99aedc21c3b51975649f8944ab53536d365a7d1
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96536944"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97096279"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>支援的作業系統和驅動程式
 
@@ -34,7 +34,9 @@ ms.locfileid: "96536944"
 
 Microsoft 會針對用來作為虛擬工作站或虛擬應用程式的 NV 和 NVv3 系列 Vm，轉散發 NVIDIA GRID 驅動程式安裝程式。 僅在下表所列的作業系統上安裝 Azure NV 系列 Vm 上的這些方格驅動程式。 這些驅動程式包含在 Azure 的 GRID 虛擬 GPU 軟體的授權中。 您不需要設定 NVIDIA vGPU software 授權伺服器。
 
-Azure 所轉散發的方格驅動程式無法在非 NV 系列 Vm （例如 NC、NCv2、NCv3、ND 和 NDv2 系列 Vm）上運作。 其中一個例外狀況是 NCas_T4_V3 VM 系列，格線驅動程式會在其中啟用類似于 NV 系列的圖形功能。
+Azure 所轉散發的方格驅動程式無法在非 NV 系列 Vm （例如 NCv2、NCv3、ND 和 NDv2 系列 Vm）上運作。 其中一個例外狀況是 NCas_T4_V3 VM 系列，格線驅動程式會在其中啟用類似于 NV 系列的圖形功能。
+
+具有 Nvidia K80 Gpu 的 NC-Series 不支援方格/圖形應用程式。  
 
 請注意，Nvidia 延伸模組一律會安裝最新的驅動程式。 針對相依于較舊版本的客戶，我們提供了先前版本的連結。
 

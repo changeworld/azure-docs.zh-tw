@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 10/06/2020
+ms.date: 12/10/2020
 ms.author: rolyon
-ms.openlocfilehash: ad0ba3c63f6f0ef6e7e02051031cf215c2e72cce
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 92b27690ab1f2ca8d98eb2231c5a27bc508613f8
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648237"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095418"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄
 
@@ -53,7 +53,12 @@ ms.locfileid: "94648237"
 - 您部分的公司已分割成不同的公司，而您需要將某些資源移至不同的 Azure AD 目錄。
 - 基於安全隔離的目的，您想要在不同的 Azure AD 目錄中管理部分資源。
 
-傳送訂用帳戶需要停機才能完成此程式。 視您的案例而定，只需重新建立資源並將資料複製到目標目錄和訂用帳戶，可能會比較好。
+### <a name="alternate-approaches"></a>替代方法
+
+傳送訂用帳戶需要停機才能完成此程式。 視您的案例而定，您可以考慮下列替代方法：
+
+- 重新建立資源，並將資料複製到目標目錄和訂用帳戶。
+- 採用多重目錄架構，然後將訂用帳戶保留在來原始目錄中。 使用 Azure Lighthouse 來委派資源，讓目標目錄中的使用者可以存取來原始目錄中的訂用帳戶。 如需詳細資訊，請參閱 [企業案例中的 Azure Lighthouse](../lighthouse/concepts/enterprise.md)。
 
 ### <a name="understand-the-impact-of-transferring-a-subscription"></a>瞭解傳輸訂用帳戶的影響
 
@@ -68,7 +73,7 @@ ms.locfileid: "94648237"
 | 自訂角色 | 是 | 是 | [列出自訂角色](#save-custom-roles) | 所有自訂角色都會永久刪除。 您必須重新建立自訂角色和任何角色指派。 |
 | 系統指派的受控識別 | 是 | 是 | [列出受控識別](#list-role-assignments-for-managed-identities) | 您必須停用並重新啟用受控識別。 您必須重新建立角色指派。 |
 | 使用者指派的受控識別 | 是 | 是 | [列出受控識別](#list-role-assignments-for-managed-identities) | 您必須刪除、重新建立，然後將受控識別附加至適當的資源。 您必須重新建立角色指派。 |
-| Azure Key Vault | 是 | 是 | [列出 Key Vault 存取原則](#list-key-vaults) | 您必須更新與金鑰保存庫相關聯的租使用者識別碼。 您必須移除並新增新的存取原則。 |
+| Azure 金鑰保存庫 | 是 | 是 | [列出 Key Vault 存取原則](#list-key-vaults) | 您必須更新與金鑰保存庫相關聯的租使用者識別碼。 您必須移除並新增新的存取原則。 |
 | 已啟用 Azure AD authentication 整合的 Azure SQL 資料庫 | 是 | 否 | [使用 Azure AD authentication 檢查 Azure SQL 資料庫](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
 | Azure 儲存體和 Azure Data Lake Storage Gen2 | 是 | 是 |  | 您必須重新建立任何 Acl。 |
 | Azure Data Lake Storage Gen1 | 是 | 是 |  | 您必須重新建立任何 Acl。 |
@@ -83,7 +88,7 @@ ms.locfileid: "94648237"
 > [!WARNING]
 > 如果您針對資源（例如儲存體帳戶或 SQL database）使用待用資料加密，但其相依于金鑰保存庫，但該金鑰保存庫 **不** 在要傳輸的相同訂用帳戶中，則可能會導致無法復原的情況。 如果您有這種情況，您應該採取步驟來使用不同的金鑰保存庫，或暫時停用客戶管理的金鑰，以避免此無法復原的情況。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要完成這些步驟，您將需要：
 
@@ -383,3 +388,4 @@ ms.locfileid: "94648237"
 - [將 Azure 訂用帳戶的帳單擁有權轉移給另一個帳戶](../cost-management-billing/manage/billing-subscription-transfer.md)
 - [在訂閱者與 CSP 之間轉移 Azure 訂用帳戶](../cost-management-billing/manage/transfer-subscriptions-subscribers-csp.md)
 - [將 Azure 訂用帳戶關聯或新增至您的 Azure Active Directory 租用戶](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+- [Azure Lighthouse 在企業案例中的運用](../lighthouse/concepts/enterprise.md)

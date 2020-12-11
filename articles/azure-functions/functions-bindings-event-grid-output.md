@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: 6bd4d5d82af213063b2000693e46d22744604480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 888afdc2764fed9f0b2c8b548c3e2b1c48e9a31e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88214117"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094671"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>適用於 Azure Functions 的 Azure 事件方格輸出繫結
 
@@ -100,6 +100,10 @@ public static void Run(TimerInfo myTimer, ICollector<EventGridEvent> outputEvent
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+Java 無法使用事件方格輸出繫結。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 下列範例顯示 *function.json* 檔案中的事件方格輸出繫結資料。
@@ -160,6 +164,70 @@ module.exports = function(context) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+下列範例示範如何設定函式來輸出事件方格事件訊息。 區段，其中 `type` 設定為 `eventGrid` 建立事件方格輸出系結所需的值。
+
+```powershell
+{
+  "bindings": [
+    {
+      "type": "eventGrid",
+      "name": "outputEvent",
+      "topicEndpointUri": "MyEventGridTopicUriSetting",
+      "topicKeySetting": "MyEventGridTopicKeySetting",
+      "direction": "out"
+    },
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "Request",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "Response"
+    }
+  ]
+}
+```
+
+在您的函式中，透過事件方格輸出系結，使用將 `Push-OutputBinding` 事件傳送至自訂主題。
+
+```powershell
+using namespace System.Net
+
+# Input bindings are passed in via param block.
+param($Request, $TriggerMetadata)
+
+# Write to the Azure Functions log stream.
+Write-Host "PowerShell HTTP trigger function processed a request."
+
+# Interact with query parameters or the body of the request.
+$message = $Request.Query.Message
+
+Push-OutputBinding -Name outputEvent -Value  @{
+    id = "1"
+    EventType = "testEvent"
+    Subject = "testapp/testPublish"
+    EventTime = "2020-08-27T21:03:07+00:00"
+    Data = @{
+        Message = $message
+    }
+    DataVersion = "1.0"
+}
+
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = 200
+    Body = "OK"
+})
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 下列範例示範 *function.json* 檔案中的觸發程序繫結，以及使用此繫結的 [Python 函式](functions-reference-python.md)。 然後，它會將事件傳送至自訂主題，如所指定 `topicEndpointUri` 。
@@ -194,7 +262,6 @@ import logging
 import azure.functions as func
 import datetime
 
-
 def main(eventGridEvent: func.EventGridEvent, 
          outputEvent: func.Out[func.EventGridOutputEvent]) -> None:
 
@@ -209,10 +276,6 @@ def main(eventGridEvent: func.EventGridEvent,
             event_time=datetime.datetime.utcnow(),
             data_version="1.0"))
 ```
-
-# <a name="java"></a>[Java](#tab/java)
-
-Java 無法使用事件方格輸出繫結。
 
 ---
 
@@ -239,17 +302,21 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 C# 指令碼不支援屬性。
 
+# <a name="java"></a>[Java](#tab/java)
+
+Java 無法使用事件方格輸出繫結。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支援屬性。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 不支援屬性。
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python 無法使用事件方格輸出繫結。
-
-# <a name="java"></a>[Java](#tab/java)
-
-Java 無法使用事件方格輸出繫結。
 
 ---
 
@@ -280,17 +347,21 @@ Java 無法使用事件方格輸出繫結。
 
 使用方法參數 (例如 `out EventGridEvent paramName`) 來傳送訊息。 在 C# 指令碼中，`paramName` 是 *function.json* 之 `name` 屬性中指定的值。 若要寫入多則訊息，您可以使用 `ICollector<EventGridEvent>` 或 `IAsyncCollector<EventGridEvent>` 取代 `out EventGridEvent`。
 
+# <a name="java"></a>[Java](#tab/java)
+
+Java 無法使用事件方格輸出繫結。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 使用 `context.bindings.<name>` 存取輸出事件，其中 `<name>` 是 *function.json* 的 `name` 屬性中指定的值。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+使用 `Push-OutputBinding` commandlet 將事件傳送至事件方格輸出系結，以存取輸出事件。
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python 無法使用事件方格輸出繫結。
-
-# <a name="java"></a>[Java](#tab/java)
-
-Java 無法使用事件方格輸出繫結。
 
 ---
 

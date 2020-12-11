@@ -122,7 +122,7 @@
               href: ../dv4-dsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 計算最佳化
           items:
-            - name: 概觀
+            - name: 總覽
               href: ../sizes-compute.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Fsv2 系列
               href: ../fsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -157,7 +157,7 @@
               href: storage-performance.md
         - name: GPU - 加速計算
           items:
-            - name: 概觀
+            - name: 總覽
               href: ../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: NC 系列
               href: ../nc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -182,7 +182,7 @@
         - name: 高效能計算
           displayName: H-series
           items:
-            - name: 概觀
+            - name: 總覽
               href: ../sizes-hpc.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: H 系列
               href: ../h-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -646,7 +646,7 @@
       items:
         - name: 維修通知
           items:
-            - name: 概觀
+            - name: 總覽
               href: ../maintenance-notifications.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: CLI
               href: ../maintenance-notifications-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -709,7 +709,7 @@
                   href: ../../azure-monitor/insights/solution-agenthealth.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                 - name: 資料來源
                   items:
-                    - name: 概觀
+                    - name: 總覽
                       href: ../../azure-monitor/platform/agent-data-sources.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                     - name: 自訂 JSON 資料
                       href: ../../azure-monitor/platform/data-sources-json.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -944,8 +944,6 @@
               href: ../disks-enable-ultra-ssd.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 基準測試磁碟
               href: disks-benchmarks.md
-            - name: 最佳化效能
-              href: optimization.md
         - name: 尋找未連接的磁碟 - CLI
           href: find-unattached-disks.md
         - name: 尋找未連接的磁碟 - 入口網站
@@ -1104,7 +1102,7 @@
       href: 'https://azure.microsoft.com/pricing/details/#Linux'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-machine'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'

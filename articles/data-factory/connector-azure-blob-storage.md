@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/08/2020
-ms.openlocfilehash: 1dd40756c05370d32b26c0a97ba23d0d7d7f1208
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: c13f3e2e4e5ee6fb60f6691abe8164e9e7a03712
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902335"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094653"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure Blob 儲存體中複製和轉換資料
 
@@ -284,7 +284,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
     - **作為接收**，在 **存取控制 (IAM)** 中，請至少授與 **儲存體 Blob 資料參與者** 角色。
 
 >[!IMPORTANT]
->如果您使用 PolyBase 或 COPY 語句將資料從 Blob 儲存體 (載入作為來源，或作為暫存) 至 Azure Synapse Analytics，則當您針對 Blob 儲存體使用受控識別驗證時，請確定您也遵循 [本指南](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)中的步驟1到3。 這些步驟會向 Azure AD 註冊您的伺服器，並將「儲存體 Blob 資料參與者」角色指派給您的伺服器。 Data Factory 會處理其餘部分。 如果您使用 Azure 虛擬網路端點來設定 Blob 儲存體，您也需要讓 [允許信任的 Microsoft 服務] 在 Synapse 所要求的 [Azure 儲存體帳戶 **防火牆和虛擬網路** 設定] 功能表下，**存取此儲存體帳戶**。
+>如果您使用 PolyBase 或 COPY 語句將資料從 Blob 儲存體 (載入作為來源，或作為暫存) 至 Azure Synapse Analytics，則當您針對 Blob 儲存體使用受控識別驗證時，請確定您也遵循 [本指南](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)中的步驟1到3。 這些步驟會向 Azure AD 註冊您的伺服器，並將「儲存體 Blob 資料參與者」角色指派給您的伺服器。 Data Factory 會處理其餘部分。 如果您使用 Azure 虛擬網路端點來設定 Blob 儲存體，您也需要讓 [允許信任的 Microsoft 服務] 在 Synapse 所要求的 [Azure 儲存體帳戶 **防火牆和虛擬網路** 設定] 功能表下，**存取此儲存體帳戶**。
 
 以下是支援 Azure Blob 儲存體連結服務的屬性：
 

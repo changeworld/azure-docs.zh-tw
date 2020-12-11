@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7555a0b9d7b3336b1020e8f1d9c3445e09afc6f0
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: 6c03009b08dcf33bf4b84bc91232af96e7ba2c71
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317992"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095180"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>在 Azure IaaS 中部署 F5 大型 IP 虛擬 Edition VM 以進行安全混合式存取的教學課程
 
@@ -44,7 +44,7 @@ ms.locfileid: "96317992"
 
 -  (SAN) 憑證的萬用字元或主體替代名稱，可透過安全通訊端層 (SSL) 發佈 web 應用程式。 [讓我們加密](https://letsencrypt.org/) 提供免費的90天憑證來進行測試。
 
-- SSL 憑證，用於保護 BIG-IPs 管理介面。 如果憑證的主體對應至大型 IP 的完整功能變數名稱 (FQDN) ，則可以使用用來發佈 web 應用程式的憑證。 例如，以 subject *. contoso.com 定義的萬用字元憑證適合 https://big-ip-vm.contoso.com:8443
+- SSL 憑證，用於保護 BIG-IPs 管理介面。 如果憑證的主體對應至大型 IP 的完整功能變數名稱 (FQDN) ，則可以使用用來發佈 web 應用程式的憑證。 例如，以 subject *. contoso.com 定義的萬用字元憑證適合 `https://big-ip-vm.contoso.com:8443`
 
 VM 部署和基本系統組態大約需要30分鐘的時間，此時您的大型 IP 平臺將會準備好執行 [此處](f5-aad-integration.md)所列的任何 SHA 案例。
 
@@ -71,7 +71,7 @@ VM 部署和基本系統組態大約需要30分鐘的時間，此時您的大型
 
 5. 選取 [ **f5 BIG-ip Virtual Edition] (BYOL)**  >  **選取軟體方案**  >  **F5 BIG-ip VE-ALL (BYOL，2個開機位置)**
 
-6. 選取 [建立]  。
+6. 選取 [建立]。
 
 ![此影像顯示選取軟體方案的步驟](./media/f5ve-deployment-plan/software-plan.png)
 
@@ -85,7 +85,7 @@ VM 部署和基本系統組態大約需要30分鐘的時間，此時您的大型
  |虛擬機器名稱| 大型 IP-VM 範例 |
  |區域 | 大型 IP VM 的目標 Azure 地理位置 |
  |可用性選項| 只有在生產環境中使用 VM 時才啟用|
- |Image| F5 BIG-IP VE-ALL (BYOL，2個啟動位置) |
+ |映像| F5 BIG-IP VE-ALL (BYOL，2個啟動位置) |
  |Azure Spot 執行個體| 否，但如果適用，可以隨意啟用 |
  |大小| 最小規格應該是2個 vcpu 和 8 Gb 記憶體|
  |**系統管理員帳戶**|  |
@@ -125,7 +125,7 @@ VM 部署和基本系統組態大約需要30分鐘的時間，此時您的大型
 
 12. 選取 **[下一步：檢查 + 建立]** ，以檢查您的大型 IP VM 設定，然後選取 [ **建立** ] 以開始部署。
 
-13. 完整部署大型 IP VM 的時間通常是5分鐘。 [完成] 時，請選取 [ **移至資源**]，而不是展開 Azure 入口網站的左側功能表，然後選取 [ **資源群組** ] 以流覽至新的大 IP VM。 如果 VM 建立失敗，請選取 **Back** [上一頁 **] 和 [下一步]**。
+13. 完整部署大型 IP VM 的時間通常是5分鐘。 [完成] 時，請選取 [ **移至資源**]，而不是展開 Azure 入口網站的左側功能表，然後選取 [ **資源群組** ] 以流覽至新的大 IP VM。 如果 VM 建立失敗，請選取 [上一頁 **] 和 [下一步]**。
 
 ## <a name="network-configuration"></a>網路組態
 
@@ -411,7 +411,7 @@ VM 公用 IP 與私人 IP 之間的1對1對應可讓外部流量抵達 VM。 不
 
 現在完整布建了大 IP 系統，建議您完整備份其設定：
 
-1. 移至 **系統** 封存  >  **Archives**  >  **建立**
+1. 移至 **系統** 封存  >    >  **建立**
 
 2. 提供唯一的 **檔案名**，並使用複雜密碼啟用 **加密**
 
@@ -450,7 +450,7 @@ New-AzVmSnapshot -ResourceGroupName '<E.g.contoso-RG>' -VmName '<E.g.BIG-IP-VM>'
 
 還原大型 IP 時，會遵循與備份類似的程式，也可以用來在大型 IP Vm 之間遷移。 您應該先觀察支援的升級路徑詳細資料，然後再匯入備份。
 
-1. 移至 **系統**  >  **Archives** 封存
+1. 移至 **系統**  >  封存
 
 2. 選擇您想要還原之備份的連結，或選取 [ **上傳** ] 按鈕，流覽至先前儲存但不在清單中的 UCS 封存
 

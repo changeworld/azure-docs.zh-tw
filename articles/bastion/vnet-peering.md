@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 11/05/2020
+ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: ad3cf33dacffc8bcda9376857206784afedf7139
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 472261666c86b666efd09c7217d12e5a795a50d9
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94361980"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094877"
 ---
 # <a name="vnet-peering-and-azure-bastion-preview"></a>VNet 對等互連和 Azure 防禦 (預覽) 
 
@@ -44,7 +44,7 @@ Azure 防禦適用于下列類型的對等互連：
 1. 跨對等互連 VNet 順暢地偵測到 Azure 防禦。
 1. 只要按一下，RDP/SSH 工作階段就會在瀏覽器中開啟。 如需 RDP 和 SSH 並行會話限制，請參閱 [rdp 和 ssh 會話](bastion-faq.md#limits)。
 
-   :::image type="content" source="../../includes/media/bastion-vm-rdp/connect-vm.png" alt-text="[連接]":::
+  :::image type="content" source="../../includes/media/bastion-vm-rdp/connect-vm.png" alt-text="[連接]":::
 
    如需透過 Azure 防禦連接至 VM 的詳細資訊，請參閱：
 

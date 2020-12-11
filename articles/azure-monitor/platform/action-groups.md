@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: fd773ade0173fc1c238a5ce44e864e1255ed9044
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 9b5b20de1b86eae72de54b3f2c1cf37074fba144
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920645"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095163"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理動作群組
 動作群組是 Azure 訂用帳戶擁有者定義的通知喜好設定集合。 Azure 監視器和服務健康狀態警示使用動作群組來通知使用者警示已被觸發。 根據使用者的需求而定，不同的警示可能使用相同的動作群組或不同的動作群組。 
@@ -251,8 +251,46 @@ Write-Host $myApp.AppRoles
 
 支援的國家/區域定價會列在 [Azure 監視器定價頁面](https://azure.microsoft.com/pricing/details/monitor/)。
 
-支援 SMS 通知 **的國家/地區清單** 
-|**國家/地區代碼**  | **國家/地區名稱**| | 61 |澳大利亞 | | 43 |奧地利 | | 32 |比利時 | | 55 |巴西 | | 1 |加拿大 | | 56 |智利 | | 86 |中國 | | 420 |捷克共和國 | | 45 |丹麥 | | 372 |愛沙尼亞 | | 358 |芬蘭 | | 33 |法國 | | 49 |德國 | | 852 |香港特別行政區 | | 91 |印度 | | 353 |愛爾蘭 | | 972 |以色列 | | 39 |義大利 | | 81 |日本 | | 352 |盧森堡 | | 60 |馬來西亞 | | 52 |墨西哥 | | 31 |荷蘭 | | 64 |紐西蘭 | | 47 |挪威 | | 351 |葡萄牙 | | 1 |波多黎各 | | 40 |羅馬尼亞 | | 65 |新加坡 | | 27 |南非 | | 82 |南韓國 | | 34 |西班牙 | | 41 |瑞士 | | 886 |臺灣 | | 44 | 英國 | | 1 |美國 |
+**支援 SMS 通知的國家/地區清單**
+
+| 國碼 (地區碼) | 國家/地區名稱 |
+|:---|:---|
+| 61 | 澳洲 |
+| 43 | 奧地利 |
+| 32 | 比利時 |
+| 55 | 巴西 |
+| 1 |加拿大 |
+| 56 | 智利 |
+| 86 | 中國 |
+| 420 | 捷克共和國 |
+| 45 | 丹麥 |
+| 372 | 愛沙尼亞 |
+| 358 | 芬蘭 |
+| 33 | 法國 |
+| 49 | 德國 |
+| 852 | 香港 |
+| 91 | 印度 |
+| 353 | 愛爾蘭 |
+| 972 | 以色列 |
+| 39 | 義大利 |
+| 81 | 日本 |
+| 352 | 盧森堡 |
+| 60 | 馬來西亞 |
+| 52 | 墨西哥 |
+| 31 | 荷蘭 |
+| 64 | 紐西蘭 |
+| 47 | 挪威 |
+| 351 | 葡萄牙 |
+| 1 | 波多黎各 |
+| 40 | 羅馬尼亞 |
+| 65 | 新加坡 |
+| 27 | 南非 |
+| 82 | 南韓 |
+| 34 | 西班牙 |
+| 41 | 瑞士 |
+| 886 | 台灣 |
+| 44 | 英國 |
+| 1 | 美國 |
 
 ### <a name="voice"></a>語音
 針對其他重要行為，請參閱[速率限制資訊](./alerts-rate-limiting.md)一文。
@@ -407,7 +445,7 @@ Webhook 會使用下列規則來處理
 4. 新視窗會在右窗格中開啟。
     1.  選取來源： **服務標記**
     1.  來源服務標記： **ActionGroup**
-    1.  按一下 [新增]  。
+    1.  按一下 [新增] 。
     
     :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="如何新增服務標記的範例。"border="true":::
 

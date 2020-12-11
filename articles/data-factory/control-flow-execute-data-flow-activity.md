@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 11/24/2020
-ms.openlocfilehash: c436d75384c527ba7666cd2e6e780b9d8a93eae2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1c0ed7cf38cc01623169216ec45e88d198ede3d2
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003936"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095078"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory 中的資料流程活動
 
@@ -61,8 +61,8 @@ ms.locfileid: "96003936"
 integrationRuntime | 執行資料流程的計算環境。 如果未指定，將會使用自動解析 Azure integration runtime。 | IntegrationRuntimeReference | 否
 compute. coreCount | Spark 叢集中使用的核心數目。 只有在使用自動解析 Azure Integration runtime 時才能指定 | 8、16、32、48、80、144、272 | 否
 compute. computeType | Spark 叢集中使用的計算類型。 只有在使用自動解析 Azure Integration runtime 時才能指定 | "General"、"ComputeOptimized"、"MemoryOptimized" | 否
-暫存. linkedService | 如果您使用 Azure Synapse Analytics 來源或接收，請指定用於 PolyBase 暫存的儲存體帳戶。<br/><br/>如果您的 Azure 儲存體設定了 VNet 服務端點，您必須使用在儲存體帳戶上啟用「允許信任的 Microsoft 服務」的受控識別驗證，請參閱 [使用 VNet 服務端點搭配 Azure 儲存體的影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 此外，也會分別瞭解 [Azure Blob](connector-azure-blob-storage.md#managed-identity) 和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) 所需的設定。<br/> | LinkedServiceReference | 只有當資料流程讀取或寫入 Azure Synapse Analytics
-暫存. folderPath | 如果您使用 Azure Synapse Analytics 來源或接收器，則為用於 PolyBase 暫存的 blob 儲存體帳戶中的資料夾路徑 | String | 只有當資料流程讀取或寫入 Azure Synapse Analytics
+暫存. linkedService | 如果您使用 Azure Synapse Analytics 來源或接收，請指定用於 PolyBase 暫存的儲存體帳戶。<br/><br/>如果您的 Azure 儲存體設定了 VNet 服務端點，您必須使用在儲存體帳戶上啟用「允許信任的 Microsoft 服務」的受控識別驗證，請參閱 [使用 VNet 服務端點搭配 Azure 儲存體的影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)。 此外，也會分別瞭解 [Azure Blob](connector-azure-blob-storage.md#managed-identity) 和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) 所需的設定。<br/> | LinkedServiceReference | 只有當資料流程讀取或寫入 Azure Synapse Analytics
+暫存. folderPath | 如果您使用 Azure Synapse Analytics 來源或接收器，則為用於 PolyBase 暫存的 blob 儲存體帳戶中的資料夾路徑 | 字串 | 只有當資料流程讀取或寫入 Azure Synapse Analytics
 traceLevel | 設定資料流程活動執行的記錄層級 | 精細、粗略、無 | 否
 
 ![執行資料流程](media/data-flow/activity-data-flow.png "執行資料流程")
@@ -88,7 +88,7 @@ traceLevel | 設定資料流程活動執行的記錄層級 | 精細、粗略、�
 
 ### <a name="polybase"></a>PolyBase
 
-如果您使用 Azure Synapse Analytics (先前的 SQL 資料倉儲) 作為接收或來源，則必須為您的 PolyBase 批次負載選擇預備位置。 PolyBase 允許大量載入批次，而不是逐列載入資料。 PolyBase 大幅減少了 Azure Synapse Analytics 的載入時間。
+如果您使用 Azure Synapse Analytics 作為接收或來源，則必須為您的 PolyBase 批次載入選擇預備位置。 PolyBase 允許大量載入批次，而不是逐列載入資料。 PolyBase 大幅減少了 Azure Synapse Analytics 的載入時間。
 
 ## <a name="logging-level"></a>記錄層級
 

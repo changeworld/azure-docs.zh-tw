@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 4e914b7b49393964f17cc6d9515cb2f4a3bebd2e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9921ed500f831f2a002335fe83eae8f1bb47ecd4
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499980"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095333"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>了解和使用 Azure IoT 中樞 SDK
 
@@ -59,7 +59,7 @@ Microsoft Azure IoT 裝置 SDK 包含有助於建置應用程式的程式碼，�
 * [建立內嵌 C SDK](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot#build)
 * [原始程式碼](https://github.com/Azure/azure-sdk-for-c)
 * 受限制裝置的[大小圖表](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot#size-chart)。
-* [API 參考](https://azuresdkdocs.blob.core.windows.net/$web/c/docs/1.0.0/index.html)
+* [API 參考](https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.Identity/1.0.0/api/index.html)
 
 
 適用於 C 的 Azure IoT 中樞裝置 SDK (ANSI C - C99)：

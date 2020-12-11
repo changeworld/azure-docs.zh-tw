@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 45393f116149f6cf16763d2d7033f8425df235bf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fd33ca4c5d637e31230d8c124fdb9ec7c71d2ba7
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998822"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094840"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>適用于 Azure Functions 的 Azure Blob 儲存體觸發程式
 
@@ -323,6 +323,9 @@ Python 指令碼不支援屬性。
 
 您可以在 *function.json* 中的 `path` 屬性或 `BlobTrigger` 屬性建構函式中，指定 Blob 名稱模式。 名稱模式可以是[篩選條件或繫結運算式](./functions-bindings-expressions-patterns.md)。 下列各節提供相關範例。
 
+> [!TIP]
+> 容器名稱不能包含名稱模式中的解析程式。
+
 ### <a name="get-file-name-and-extension"></a>取得檔案名稱和副檔名
 
 下列範例示範如何分別繫結至 Blob 檔案名稱和副檔名：
@@ -359,7 +362,7 @@ Python 指令碼不支援屬性。
 "path": "images/{{20140101}}-{name}",
 ```
 
-如果 blob 命名為 *{20140101}-soundfile.mp3*，則會soundfile.mp3函式程式 `name` 代碼中的 *soundfile.mp3* 變數值。
+如果 blob 命名為 *{20140101}-soundfile.mp3*，則會soundfile.mp3函式程式 `name` 代碼中的變數值。
 
 ## <a name="metadata"></a>中繼資料
 

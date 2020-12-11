@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 129534727248ff05b5d38da60dead7903d9a5815
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 22103ad580fa474f44eaf42c696d19bbbd137c8e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744460"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095095"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>在 Azure Synapse Link Preview 中使用無伺服器 SQL 集區查詢 Azure Cosmos DB 資料
 
@@ -222,7 +222,7 @@ FROM OPENROWSET(
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
 
-請勿使用未 `OPENROWSET` 明確定義的架構，因為它可能會影響您的效能。 請確定您使用的是資料行的最小可能大小 (例如 VARCHAR (100) ，而不是預設的 VARCHAR (8000) # A5。 您應使用部分 UTF-8 定序作為預設資料庫定序，或將它設定為明確的資料行定序，以避免發生 [utf-8 轉換問題](/troubleshoot/reading-utf8-text)。 `Latin1_General_100_BIN2_UTF8`當 yu 使用一些字串資料行來篩選資料時，定序會提供最佳效能。
+請勿使用未 `OPENROWSET` 明確定義的架構，因為它可能會影響您的效能。 請確定您使用的是資料行的最小可能大小 (例如 VARCHAR (100) ，而不是預設的 VARCHAR (8000) # A5。 您應使用部分 UTF-8 定序作為預設資料庫定序，或將它設定為明確的資料行定序，以避免發生 [utf-8 轉換問題](/azure/synapse-analytics/troubleshoot/reading-utf8-text)。 `Latin1_General_100_BIN2_UTF8`當 yu 使用一些字串資料行來篩選資料時，定序會提供最佳效能。
 
 ## <a name="query-nested-objects-and-arrays"></a>查詢嵌套的物件和陣列
 
@@ -338,7 +338,7 @@ SQL (Core) API 的 Azure Cosmos DB 帳戶支援數位、字串、布林值、nul
 | 布林值 | bit |
 | 整數 | BIGINT |
 | Decimal | FLOAT |
-| String | Varchar (UTF-8 資料庫定序)  |
+| 字串 | Varchar (UTF-8 資料庫定序)  |
 | 日期時間 (ISO 格式的字串)  | Varchar (30)  |
 | 日期時間 (UNIX 時間戳記)  | BIGINT |
 | Null | `any SQL type` 
@@ -422,7 +422,7 @@ GROUP BY geo_id
 
 下表列出可能的錯誤和疑難排解動作。
 
-| 錯誤 | 根本原因 |
+| [錯誤] | 根本原因 |
 | --- | --- |
 | 語法錯誤：<br/> -接近的語法不正確 `Openrowset`<br/> - `...` 不是可辨識的 `BULK OPENROWSET` 提供者選項。<br/> -接近的語法不正確 `...` | 可能的根本原因：<br/> -不使用 CosmosDB 做為第一個參數。<br/> -使用字串常值，而不是第三個參數中的識別碼。<br/> -未指定第三個參數 (容器名稱) 。 |
 | CosmosDB 連接字串中發生錯誤。 | -未指定帳戶、資料庫或金鑰。 <br/> -無法辨識的連接字串中有一些選項。<br/> -分號 (`;`) 放置於連接字串的結尾。 |

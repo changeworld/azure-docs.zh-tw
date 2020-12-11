@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 11/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 0aaad18ba5bf98ca2ad53bd86605dfc6cce3e52c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: cf70b24dae70ad2e64f3443e4c4d959d46fb4ea4
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466228"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095027"
 ---
 # <a name="use-compute-acceleration-on-azure-stack-edge-pro-gpu-for-kubernetes-deployment"></a>在 Azure Stack Edge Pro GPU 上使用計算加速以進行 Kubernetes 部署
 
@@ -28,8 +28,8 @@ ms.locfileid: "96466228"
 
 本文將僅針對下列裝置使用 GPU 或 VPU 討論計算加速：
 
-- **Azure Stack Edge PRO GPU** -這些裝置可以有1或2個 Nvidia T4 TENSOR 核心 GPU。 如需詳細資訊，請參閱 [NVIDIA T4](https://www.nvidia.com/data-center/tesla-t4/)。
-- **Azure Stack Edge Pro R** -這些裝置有1個 Nvidia T4 TENSOR 核心 GPU。 如需詳細資訊，請參閱 [NVIDIA T4](https://www.nvidia.com/data-center/tesla-t4/)。
+- **Azure Stack Edge PRO GPU** -這些裝置可以有1或2個 Nvidia T4 TENSOR 核心 GPU。 如需詳細資訊，請參閱 [NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/)。
+- **Azure Stack Edge Pro R** -這些裝置有1個 Nvidia T4 TENSOR 核心 GPU。 如需詳細資訊，請參閱 [NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/)。
 - **Azure Stack Edge 迷你 R** -這些裝置有1個 Intel Movidius 無數 X VPU。 如需詳細資訊，請參閱 [Intel Movidius 無數 X VPU](https://www.movidius.com/MyriadX)。
 
 

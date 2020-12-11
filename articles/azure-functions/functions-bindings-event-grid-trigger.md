@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 0e2e09bc72991330ccdec7a35400460cbeba26fc
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 0e3ba9aa4eac30c3387bdf6c2890a1172ebef544
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327027"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094721"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions 的 Azure 事件方格觸發程序
 
@@ -128,78 +128,6 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-下列範例示範的是使用繫結之 function.json 檔案，以及 [JavaScript 函式](functions-reference-node.md)中的觸發程序繫結。
-
-以下是 *function.json* 檔案中的繫結資料：
-
-```json
-{
-  "bindings": [
-    {
-      "type": "eventGridTrigger",
-      "name": "eventGridEvent",
-      "direction": "in"
-    }
-  ],
-  "disabled": false
-}
-```
-
-以下是 JavaScript 程式碼：
-
-```javascript
-module.exports = function (context, eventGridEvent) {
-    context.log("JavaScript Event Grid function processed a request.");
-    context.log("Subject: " + eventGridEvent.subject);
-    context.log("Time: " + eventGridEvent.eventTime);
-    context.log("Data: " + JSON.stringify(eventGridEvent.data));
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-下列範例示範 *function.json* 檔案中的觸發程序繫結，以及使用此繫結的 [Python 函式](functions-reference-python.md)。
-
-以下是 *function.json* 檔案中的繫結資料：
-
-```json
-{
-  "bindings": [
-    {
-      "type": "eventGridTrigger",
-      "name": "event",
-      "direction": "in"
-    }
-  ],
-  "disabled": false,
-  "scriptFile": "__init__.py"
-}
-```
-
-以下是 Python 程式碼：
-
-```python
-import json
-import logging
-
-import azure.functions as func
-
-def main(event: func.EventGridEvent):
-
-    result = json.dumps({
-        'id': event.id,
-        'data': event.get_json(),
-        'topic': event.topic,
-        'subject': event.subject,
-        'event_type': event.event_type,
-    })
-
-    logging.info('Python EventGrid trigger processed an event: %s', result)
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 本區段包含下列範例：
@@ -265,6 +193,103 @@ public class EventSchema {
 
 在 [Java 函式執行階段程式庫](/java/api/overview/azure/functions/runtime)中，對其值來自事件方格的參數使用 `EventGridTrigger` 註釋。 具有這些附註的參數會使得函式在事件抵達時執行。  此註釋可以搭配原生 Java 類型、POJO 或使用 `Optional<T>` 的可為 Null 值使用。
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+下列範例示範的是使用繫結之 function.json 檔案，以及 [JavaScript 函式](functions-reference-node.md)中的觸發程序繫結。
+
+以下是 *function.json* 檔案中的繫結資料：
+
+```json
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+以下是 JavaScript 程式碼：
+
+```javascript
+module.exports = function (context, eventGridEvent) {
+    context.log("JavaScript Event Grid function processed a request.");
+    context.log("Subject: " + eventGridEvent.subject);
+    context.log("Time: " + eventGridEvent.eventTime);
+    context.log("Data: " + JSON.stringify(eventGridEvent.data));
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+下列範例示範如何在檔案的 *function.js* 中設定事件方格觸發程式系結。
+
+```powershell
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    }
+  ]
+}
+```
+
+事件方格事件是透過名為的參數提供給函式 `eventGridEvent` ，如下列 PowerShell 範例所示。
+
+```powershell
+param($eventGridEvent, $TriggerMetadata)
+
+# Make sure to pass hashtables to Out-String so they're logged correctly
+$eventGridEvent | Out-String | Write-Host
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+下列範例示範 *function.json* 檔案中的觸發程序繫結，以及使用此繫結的 [Python 函式](functions-reference-python.md)。
+
+以下是 *function.json* 檔案中的繫結資料：
+
+```json
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "event",
+      "direction": "in"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "__init__.py"
+}
+```
+
+以下是 Python 程式碼：
+
+```python
+import json
+import logging
+
+import azure.functions as func
+
+def main(event: func.EventGridEvent):
+
+    result = json.dumps({
+        'id': event.id,
+        'data': event.get_json(),
+        'topic': event.topic,
+        'subject': event.subject,
+        'event_type': event.event_type,
+    })
+
+    logging.info('Python EventGrid trigger processed an event: %s', result)
+```
+
 ---
 
 ## <a name="attributes-and-annotations"></a>屬性和註釋
@@ -289,17 +314,21 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 C# 指令碼不支援屬性。
 
+# <a name="java"></a>[Java](#tab/java)
+
+[EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) 註釋可讓您藉由提供設定值，以宣告方式設定事件方格繫結。 如需詳細資訊，請參閱[範例](#example)和[設定](#configuration)區段。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支援屬性。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 不支援屬性。
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python 指令碼不支援屬性。
-
-# <a name="java"></a>[Java](#tab/java)
-
-[EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) 註釋可讓您藉由提供設定值，以宣告方式設定事件方格繫結。 如需詳細資訊，請參閱[範例](#example)和[設定](#configuration)區段。
 
 ---
 
@@ -343,17 +372,21 @@ Python 指令碼不支援屬性。
 > [!NOTE]
 > 在 Functions v1 中，如果您嘗試繫結至 `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`，編譯器將會顯示「已淘汰」訊息，並建議您改用 `Microsoft.Azure.EventGrid.Models.EventGridEvent`。 若要使用較新的類型，請參考 [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet 套件，並且為 `EventGridEvent` 類型名稱加上 `Microsoft.Azure.EventGrid.Models` 首碼，加以完整限定。 如需如何在 C# 指令碼函式中參考 NuGet 套件的相關資訊，請參閱[使用 NuGet 套件](functions-reference-csharp.md#using-nuget-packages)
 
+# <a name="java"></a>[Java](#tab/java)
+
+您可以透過關聯至 `EventGridTrigger` 屬性的參數取得事件方格事件執行個體，輸入為 `EventSchema`。 如需詳細資訊，請參閱[範例](#example)。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+您可以透過在 function.json 檔案 `name` 屬性中設定的參數，取得事件方格執行個體。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 您可以透過在 function.json 檔案 `name` 屬性中設定的參數，取得事件方格執行個體。
 
 # <a name="python"></a>[Python](#tab/python)
 
 您可以透過在 function.json 檔案 `name` 屬性中設定的參數取得事件方格執行個體，輸入為 `func.EventGridEvent`。
-
-# <a name="java"></a>[Java](#tab/java)
-
-您可以透過關聯至 `EventGridTrigger` 屬性的參數取得事件方格事件執行個體，輸入為 `EventSchema`。 如需詳細資訊，請參閱[範例](#example)。
 
 ---
 

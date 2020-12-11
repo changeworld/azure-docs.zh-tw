@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/28/2020
-ms.openlocfilehash: aedaedd29082c9ad51c03aa919181649a6dcf281
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 02cd14e29cfd51709e0a26e951a3124eb88bbd09
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913342"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094602"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure Data Lake Storage Gen2 中複製和轉換資料
 
@@ -73,7 +73,7 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 類型屬性必須設為 **AzureBlobFS** 。 |是 |
+| type | 類型屬性必須設為 **AzureBlobFS**。 |是 |
 | url | 具有 `https://<accountname>.dfs.core.windows.net` 模式的 Data Lake Storage Gen2 所適用的端點。 | 是 |
 | accountKey | Data Lake Storage Gen2 的帳戶金鑰。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 |是 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 如果您的資料存放區位於私人網路中，則可使用 Azure Integration Runtime 或自我裝載整合執行階段。 如果未指定此屬性，則會使用預設的 Azure Integration Runtime。 |否 |
@@ -115,8 +115,8 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 2. 將適當的權限授與服務主體。 請參閱[檔案和目錄的存取控制清單](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)，了解 Data Lake Storage Gen2 中權限運作方式的範例。
 
-    - **作為來源** ：在 [儲存體總管] 中，至少授與對所有上游資料夾和檔案系統的 [執行] 權限，以及對接收資料夾的 [讀取] 權限。 或者，在存取控制 (IAM) 中，至少授與 [儲存體 Blob 資料讀取者] 角色。
-    - **作為接收** ：在 [儲存體總管] 中，至少授與對所有上游資料夾和檔案系統的 [執行] 權限，以及對接收資料夾的 [寫入] 權限。 或者，在存取控制 (IAM) 中，至少授與 [儲存體 Blob 資料參與者] 角色。
+    - **作為來源**：在 [儲存體總管] 中，至少授與對所有上游資料夾和檔案系統的 [執行] 權限，以及對接收資料夾的 [讀取] 權限。 或者，在存取控制 (IAM) 中，至少授與 [儲存體 Blob 資料讀取者] 角色。
+    - **作為接收**：在 [儲存體總管] 中，至少授與對所有上游資料夾和檔案系統的 [執行] 權限，以及對接收資料夾的 [寫入] 權限。 或者，在存取控制 (IAM) 中，至少授與 [儲存體 Blob 資料參與者] 角色。
 
 >[!NOTE]
 >如果您使用 Data Factory UI 進行撰寫，而且未在 IAM 中使用「儲存體 Blob 資料讀取者/參與者」角色設定服務主體，則在進行測試連線或瀏覽/導覽資料夾時，請選擇 [測試與檔案路徑的連線] 或 [從指定的路徑瀏覽]，然後指定具有 [讀取 + 執行] 權限的路徑以繼續。
@@ -125,14 +125,14 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 類型屬性必須設為 **AzureBlobFS** 。 |是 |
+| type | 類型屬性必須設為 **AzureBlobFS**。 |是 |
 | url | 具有 `https://<accountname>.dfs.core.windows.net` 模式的 Data Lake Storage Gen2 所適用的端點。 | 是 |
 | servicePrincipalId | 指定應用程式的用戶端識別碼。 | 是 |
-| servicePrincipalCredentialType | 要用於服務主體驗證的認證類型。 允許的值為 **ServicePrincipalKey** 和 **ServicePrincipalCert** 。 | 是 |
+| servicePrincipalCredentialType | 要用於服務主體驗證的認證類型。 允許的值為 **ServicePrincipalKey** 和 **ServicePrincipalCert**。 | 是 |
 | servicePrincipalCredential | 服務主體認證。 <br/> 當您使用 **ServicePrincipalKey** 做為認證類型時，請指定應用程式的金鑰。 將此欄位標示為 **SecureString** ，以安全地將它儲存在 Data Factory 中，或 [參考儲存在 Azure Key Vault 中的密碼](store-credentials-in-key-vault.md)。 <br/> 當您使用 **ServicePrincipalCert** 作為認證時，請參考 Azure Key Vault 中的憑證。 | 是 |
 | servicePrincipalKey | 指定應用程式的金鑰。 將此欄位標示為 **SecureString** ，以安全地將它儲存在 Data Factory 中，或 [參考儲存在 Azure Key Vault 中的密碼](store-credentials-in-key-vault.md)。 <br/> 這個屬性仍支援對的 `servicePrincipalId`  +  `servicePrincipalKey` 。 當 ADF 新增服務主體憑證驗證時，服務主體驗證的新模型為 `servicePrincipalId`  +  `servicePrincipalCredentialType`  +  `servicePrincipalCredential` 。 | 否 |
 | tenant | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 將滑鼠游標暫留在 Azure 入口網站右上角，即可加以擷取。 | 是 |
-| azureCloudType | 針對服務主體驗證，請指定您的 Azure Active Directory 應用程式註冊所在的 Azure 雲端環境類型。 <br/> 允許的值為 **AzurePublic** 、 **AzureChina** 、 **AzureUsGovernment** 和 **AzureGermany** 。 根據預設，會使用 data factory 的雲端環境。 | 否 |
+| azureCloudType | 針對服務主體驗證，請指定您的 Azure Active Directory 應用程式註冊所在的 Azure 雲端環境類型。 <br/> 允許的值為 **AzurePublic**、 **AzureChina**、 **AzureUsGovernment** 和 **AzureGermany**。 根據預設，會使用 data factory 的雲端環境。 | 否 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 如果您的資料存放區位於私人網路中，則可使用 Azure Integration Runtime 或自我裝載整合執行階段。 若未指定，則會使用預設 Azure Integration Runtime。 |否 |
 
 **範例：使用服務主體金鑰驗證**
@@ -196,24 +196,24 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 若要使用 Azure 資源的受控識別驗證，請遵循下列步驟。
 
-1. 複製與處理站一起產生的 **受控識別物件識別碼** ，藉此 [擷取 Data Factory 受控識別資訊](data-factory-service-identity.md#retrieve-managed-identity)。
+1. 複製與處理站一起產生的 **受控識別物件識別碼**，藉此 [擷取 Data Factory 受控識別資訊](data-factory-service-identity.md#retrieve-managed-identity)。
 
 2. 將適當的權限授予受控識別。 請參閱[檔案和目錄的存取控制清單](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)，了解 Data Lake Storage Gen2 中權限運作方式的範例。
 
-    - **作為來源** ：在 [儲存體總管] 中，至少授與對所有上游資料夾和檔案系統的 [執行] 權限，以及對接收資料夾的 [讀取] 權限。 或者，在存取控制 (IAM) 中，至少授與 [儲存體 Blob 資料讀取者] 角色。
-    - **作為接收** ：在 [儲存體總管] 中，至少授與對所有上游資料夾和檔案系統的 [執行] 權限，以及對接收資料夾的 [寫入] 權限。 或者，在存取控制 (IAM) 中，至少授與 [儲存體 Blob 資料參與者] 角色。
+    - **作為來源**：在 [儲存體總管] 中，至少授與對所有上游資料夾和檔案系統的 [執行] 權限，以及對接收資料夾的 [讀取] 權限。 或者，在存取控制 (IAM) 中，至少授與 [儲存體 Blob 資料讀取者] 角色。
+    - **作為接收**：在 [儲存體總管] 中，至少授與對所有上游資料夾和檔案系統的 [執行] 權限，以及對接收資料夾的 [寫入] 權限。 或者，在存取控制 (IAM) 中，至少授與 [儲存體 Blob 資料參與者] 角色。
 
 >[!NOTE]
 >如果您使用 Data Factory UI 進行撰寫，而且未在 IAM 中使用「儲存體 Blob 資料讀取者/參與者」角色設定受控識別，則在進行測試連線或瀏覽/導覽資料夾時，請選擇 [測試與檔案路徑的連線] 或 [從指定的路徑瀏覽]，然後指定具有 [讀取 + 執行] 權限的路徑以繼續。
 
 >[!IMPORTANT]
->如果您使用 PolyBase 或 COPY 語句將資料從 Data Lake Storage Gen2 載入 Azure Synapse Analytics 中，當您使用受控識別驗證進行 Data Lake Storage Gen2 時，請確定您也遵循 [本指南](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)中的步驟1到3。 這些步驟會向 Azure AD 註冊您的伺服器，並將「儲存體 Blob 資料參與者」角色指派給您的伺服器。 Data Factory 會處理其餘部分。 如果您使用 Azure 虛擬網路端點來設定 Blob 儲存體，您也需要讓 [允許信任的 Microsoft 服務] 在 Synapse 所要求的 [Azure 儲存體帳戶 **防火牆和虛擬網路** 設定] 功能表下， **存取此儲存體帳戶** 。
+>如果您使用 PolyBase 或 COPY 語句將資料從 Data Lake Storage Gen2 載入 Azure Synapse Analytics 中，當您使用受控識別驗證進行 Data Lake Storage Gen2 時，請確定您也遵循 [本指南](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)中的步驟1到3。 這些步驟會向 Azure AD 註冊您的伺服器，並將「儲存體 Blob 資料參與者」角色指派給您的伺服器。 Data Factory 會處理其餘部分。 如果您使用 Azure 虛擬網路端點來設定 Blob 儲存體，您也需要讓 [允許信任的 Microsoft 服務] 在 Synapse 所要求的 [Azure 儲存體帳戶 **防火牆和虛擬網路** 設定] 功能表下，**存取此儲存體帳戶**。
 
 以下是連結服務支援的屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 類型屬性必須設為 **AzureBlobFS** 。 |是 |
+| type | 類型屬性必須設為 **AzureBlobFS**。 |是 |
 | url | 具有 `https://<accountname>.dfs.core.windows.net` 模式的 Data Lake Storage Gen2 所適用的端點。 | 是 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 如果您的資料存放區位於私人網路中，則可使用 Azure Integration Runtime 或自我裝載整合執行階段。 若未指定，則會使用預設 Azure Integration Runtime。 |否 |
 
@@ -245,7 +245,7 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 | 屬性   | 描述                                                  | 必要 |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | 資料集中 `location` 下的 type 屬性必須設定為 **AzureBlobFSLocation** 。 | 是      |
+| type       | 資料集中 `location` 下的 type 屬性必須設定為 **AzureBlobFSLocation**。 | 是      |
 | fileSystem | Data Lake Storage Gen2 檔案系統名稱。                              | 否       |
 | folderPath | 所指定檔案系統下的資料夾路徑。 如果您想要使用萬用字元來篩選資料夾，請略過此設定，並在活動來源設定中指定。 | 否       |
 | fileName   | 所指定 fileSystem + folderPath 下方的檔案名稱。 如果您想要使用萬用字元來篩選檔案，請略過此設定，並在活動來源設定中指定。 | 否       |
@@ -295,18 +295,18 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 | 屬性                 | 描述                                                  | 必要                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | `storeSettings` 下的 type 屬性必須設定為 **AzureBlobFSReadSettings** 。 | 是                                           |
+| type                     | `storeSettings` 下的 type 屬性必須設定為 **AzureBlobFSReadSettings**。 | 是                                           |
 | **_找出要複製的檔案：_* _ |  |  |
 | 選項 1：靜態路徑<br> | 從在資料集內指定的檔案系統或資料夾/檔案路徑複製。 如果您想要複製檔案系統/資料夾中的所有檔案，請另外將 `wildcardFileName` 指定為 `_`。 |  |
 | 選項 2：萬用字元<br>- wildcardFolderPath | 在資料集內設定的指定檔案系統底下，具有萬用字元的資料夾路徑，用來篩選來源資料夾。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。 <br>如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 否                                            |
 | 選項 2：萬用字元<br>- wildcardFileName | 在指定 file system + folderPath/wildcardFolderPath 之下，含有萬用字元的檔案名稱，可用來篩選來源檔案。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。  如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 是 |
 | 選項 3：檔案清單<br>- fileListPath | 表示要複製指定的檔案集。 指向文字檔，其中包含您要複製的檔案清單，每行一個檔案，也就是在資料集中設定之路徑的相對路徑。<br/>使用此選項時，請勿指定資料集中的檔案名稱。 [檔案清單範例](#file-list-examples) (英文) 有更多範例可供參閱。 |否 |
 | ***其他設定：** _ |  | |
-| 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當遞迴設定為 true 且接收是檔案型存放區時，就不會在接收上複製或建立空的資料夾或子資料夾。 <br>允許的值為 _ *true* * (預設值) 和 **false** 。<br>設定 `fileListPath` 時，不適用此屬性。 |否 |
+| 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當遞迴設定為 true 且接收是檔案型存放區時，就不會在接收上複製或建立空的資料夾或子資料夾。 <br>允許的值為 _ *true** (預設值) 和 **false**。<br>設定 `fileListPath` 時，不適用此屬性。 |否 |
 | deleteFilesAfterCompletion | 指出是否要在成功移至目的地存放區之後，從來源存放區刪除二進位檔案。 檔案刪除是針對每個檔案，因此當複製活動失敗時，您會看到部分檔案已複製到目的地並從來源刪除，其他檔案仍在來源存放區上。 <br/>這個屬性只在二進位檔案複製案例中有效。 預設值： false。 |否 |
 | modifiedDatetimeStart    | 檔案篩選會根據以下屬性：上次修改時間。 <br>若檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br> 屬性可以是 Null，這表示不會將任何檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 具有日期時間值，但 `modifiedDatetimeEnd` 為 NULL 時，意謂著系統將會選取上次更新時間屬性大於或等於此日期時間值的檔案。  當 `modifiedDatetimeEnd` 具有日期時間值，但 `modifiedDatetimeStart` 為 NULL 時，則意謂著系統將會選取上次更新時間屬性小於此日期時間值的檔案。<br/>設定 `fileListPath` 時，不適用此屬性。 | 否                                            |
 | modifiedDatetimeEnd      | 同上。                                               | 否                                            |
-| enablePartitionDiscovery | 針對已分割的檔案，指定是否從檔案路徑剖析分割區，並將它們新增為其他來源資料行。<br/>允許的值為 **false** (預設) 和 **true** 。 | 否                                            |
+| enablePartitionDiscovery | 針對已分割的檔案，指定是否從檔案路徑剖析分割區，並將它們新增為其他來源資料行。<br/>允許的值為 **false** (預設) 和 **true**。 | 否                                            |
 | partitionRootPath | 當資料分割探索已啟用時，請指定絕對根路徑，以便將分割的資料夾讀取為數據行。<br/><br/>如果未指定，則預設為<br/>-當您在資料集或來源上的檔案清單中使用檔案路徑時，資料分割根路徑是在資料集中設定的路徑。<br/>-當您使用萬用字元資料夾篩選時，資料分割根路徑是第一個萬用字元之前的子路徑。<br/><br/>例如，假設您將資料集中的路徑設定為 "root/folder/year = 2020/month = 08/day = 27"：<br/>-如果您將資料分割根路徑指定為 "root/folder/year = 2020"，則除了檔案內的資料行之外，複製活動會分別產生兩個數據行， `month` 以及 `day` 值為 "08" 和 "27" 的資料行。<br/>-如果未指定資料分割根路徑，將不會產生額外的資料行。 | 否                                            |
 | maxConcurrentConnections | 可同時連線到儲存體存放區的連線數目。 只有當您想要限制同時連線到資料存放區的連線數目時才指定。 | 否                                            |
 
@@ -359,9 +359,9 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 | 屬性                 | 描述                                                  | 必要 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | `storeSettings` 下的 type 屬性必須設定為 **AzureBlobFSWriteSettings** 。 | 是      |
+| type                     | `storeSettings` 下的 type 屬性必須設定為 **AzureBlobFSWriteSettings**。 | 是      |
 | copyBehavior             | 當來源是來自檔案型資料存放區的檔案時，會定義複製行為。<br/><br/>允許的值包括：<br/><b>- PreserveHierarchy (預設)</b>：保留目標資料夾中的檔案階層。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><b>- FlattenHierarchy</b>：來自來源資料夾的所有檔案都會在目標資料夾的第一層中。 目標檔案會有自動產生的名稱。 <br/><b>- MergeFiles</b>：將來自來源資料夾的所有檔案合併成一個檔案。 若已指定檔案名稱，合併檔案的名稱會是指定的名稱。 否則，就會是自動產生的檔案名稱。 | 否       |
-| blockSizeInMB | 指定用於將資料寫入 ADLS Gen2 的區塊大小 (以 MB 為單位)。 深入了解[區塊 Blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs)。 <br/>允許的值 **介於 4 mb 和 100 mb 之間** 。 <br/>根據預設，ADF 會根據您的來源存放區類型和資料，自動決定區塊大小。 若為非二進位複製到 ADLS Gen2，預設區塊大小為 100 MB，因此最多可容納 4.95 TB 的資料。 這在資料不大時可能並非最理想，尤其在使用「自我裝載整合執行階段」，而且網路連線不佳的情況下，將導致作業逾時或效能問題。 您可以明確指定區塊大小，同時確保 blockSizeInMB*50000 夠大足以儲存資料，否則複製活動執行會失敗。 | 否 |
+| blockSizeInMB | 指定用於將資料寫入 ADLS Gen2 的區塊大小 (以 MB 為單位)。 深入了解[區塊 Blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs)。 <br/>允許的值 **介於 4 mb 和 100 mb 之間**。 <br/>根據預設，ADF 會根據您的來源存放區類型和資料，自動決定區塊大小。 若為非二進位複製到 ADLS Gen2，預設區塊大小為 100 MB，因此最多可容納 4.95 TB 的資料。 這在資料不大時可能並非最理想，尤其在使用「自我裝載整合執行階段」，而且網路連線不佳的情況下，將導致作業逾時或效能問題。 您可以明確指定區塊大小，同時確保 blockSizeInMB*50000 夠大足以儲存資料，否則複製活動執行會失敗。 | 否 |
 | maxConcurrentConnections | 可同時連線到資料存放區的連線數目。 只有在想要限制資料存放區的同時連線數目時，才需指定此屬性。 | 否       |
 
 **範例︰**
@@ -526,11 +526,11 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 **清除資料夾：** 決定是否在寫入資料之前先清除目的地資料夾。
 
 **檔案名稱選項：** 決定目的地檔案在目的地資料夾中的命名方式。 檔案名稱的選項如下：
-   * **預設值** ：可讓 Spark 根據 PART 預設值來命名檔案。
-   * **模式** ：輸入模式來列舉每個分割區的輸出檔案。 例如， **loans[n].csv** 會建立 loans1.csv、loans2.csv，依此類推。
-   * **每個分割區** ：針對每個分割區輸入一個檔案名稱。
-   * **作為資料行中的資料** ：將輸出檔案設定為資料行的值。 路徑相對於資料集容器，而不是目的地資料夾。 如果資料集含有資料夾路徑，則會被覆寫。
-   * **輸出至單一檔案** ：將分割的輸出檔案結合成單一的具名檔案。 路徑相對於資料集資料夾。 請注意，根據節點的大小而定，「合併」作業可能失敗。 對於大型資料集，不建議使用此選項。
+   * **預設值**：可讓 Spark 根據 PART 預設值來命名檔案。
+   * **模式**：輸入模式來列舉每個分割區的輸出檔案。 例如，**loans[n].csv** 會建立 loans1.csv、loans2.csv，依此類推。
+   * **每個分割區**：針對每個分割區輸入一個檔案名稱。
+   * **作為資料行中的資料**：將輸出檔案設定為資料行的值。 路徑相對於資料集容器，而不是目的地資料夾。 如果資料集含有資料夾路徑，則會被覆寫。
+   * **輸出至單一檔案**：將分割的輸出檔案結合成單一的具名檔案。 路徑相對於資料集資料夾。 請注意，根據節點的大小而定，「合併」作業可能失敗。 對於大型資料集，不建議使用此選項。
 
 **全部以引號括住：** 決定是否用引號括住所有的值
 
@@ -555,16 +555,16 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的類型屬性必須設為 **AzureBlobFSFile** 。 |是 |
+| type | 資料集的類型屬性必須設為 **AzureBlobFSFile**。 |是 |
 | folderPath | Data Lake Storage Gen2 中資料夾的路徑。 若未指定，它會指向根。 <br/><br/>支援萬用字元篩選。 允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。 如果實際資料夾名稱內有萬用字元或逸出字元 `^`，請使用此逸出字元來逸出。 <br/><br/>範例：filesystem/folder/。 如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 |否 |
 | fileName | 在指定 "folderPath" 之下檔案的名稱或萬用字元篩選。 若未指定此屬性的值，資料集就會指向資料夾中的所有檔案。 <br/><br/>篩選時，允許的萬用字元為 `*` (符合零或多個字元) 和 `?` (符合零或單一字元)。<br/>- 範例 1：`"fileName": "*.csv"`<br/>- 範例 2：`"fileName": "???20180427.txt"`<br/>如果實際檔案名稱內有萬用字元或逸出字元 `^`，請使用此逸出字元來逸出。<br/><br/>沒有為輸出資料集指定 fileName 且活動接收器中未指定 **preserveHierarchy** 時，複製活動會自動以下列模式產生檔案名稱："Data.[activity run ID GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]"，例如，"Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz"。 如果您使用資料表名稱 (而非查詢) 從表格來源複製，則名稱模式會是 "[table name].[format].[compression if configured]"，例如 "MyTable.csv"。 |否 |
 | modifiedDatetimeStart | 檔案篩選會根據「上次修改」屬性。 如果檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br/><br/> 當您想要對大量檔案進行檔案篩選時，啟用這項設定會影響資料移動的整體效能。 <br/><br/> 此屬性可以是 NULL，這意謂著不會對資料集套用任何檔案屬性篩選。 當 `modifiedDatetimeStart` 有日期時間值，但 `modifiedDatetimeEnd` 為 NULL 時，表示系統將會選取上次修改時間屬性大於或等於此日期時間值的檔案。 當 `modifiedDatetimeEnd` 有日期時間值，但 `modifiedDatetimeStart` 為 NULL 時，則表示系統將會選取上次修改時間屬性小於此日期時間值的檔案。| 否 |
 | modifiedDatetimeEnd | 檔案篩選會根據「上次修改」屬性。 如果檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br/><br/> 當您想要對大量檔案進行檔案篩選時，啟用這項設定會影響資料移動的整體效能。 <br/><br/> 此屬性可以是 NULL，這意謂著不會對資料集套用任何檔案屬性篩選。 當 `modifiedDatetimeStart` 有日期時間值，但 `modifiedDatetimeEnd` 為 NULL 時，表示系統將會選取上次修改時間屬性大於或等於此日期時間值的檔案。 當 `modifiedDatetimeEnd` 有日期時間值，但 `modifiedDatetimeStart` 為 NULL 時，則表示系統將會選取上次修改時間屬性小於此日期時間值的檔案。| 否 |
-| format | 如果您想要在檔案型存放區之間依原樣複製檔案 (二進位複本)，請在輸入和輸出資料集定義中略過格式區段。<br/><br/>如果您想要剖析或產生特定格式的檔案，以下是支援的檔案格式類型： **TextFormat** 、 **JsonFormat** 、 **AvroFormat** 、 **OrcFormat** 和 **ParquetFormat** 。 將 [format] 下的 [type] 屬性設定為下列其中一個值。 如需詳細資訊，請參閱[文字格式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[JSON 格式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[ORC 格式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)章節。 |否 (僅適用於二進位複製案例) |
-| compression | 指定此資料的壓縮類型和層級。 如需詳細資訊，請參閱[支援的檔案格式和壓縮轉碼器](supported-file-formats-and-compression-codecs-legacy.md#compression-support)。<br/>支援的類型為：GZip、Deflate、BZip2 及 ZipDeflate。<br/>支援的層級為 **Optimal** 和 **Fastest** 。 |否 |
+| format | 如果您想要在檔案型存放區之間依原樣複製檔案 (二進位複本)，請在輸入和輸出資料集定義中略過格式區段。<br/><br/>如果您想要剖析或產生特定格式的檔案，以下是支援的檔案格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 將 [format] 下的 [type] 屬性設定為下列其中一個值。 如需詳細資訊，請參閱[文字格式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[JSON 格式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[ORC 格式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)章節。 |否 (僅適用於二進位複製案例) |
+| compression | 指定此資料的壓縮類型和層級。 如需詳細資訊，請參閱[支援的檔案格式和壓縮轉碼器](supported-file-formats-and-compression-codecs-legacy.md#compression-support)。<br/>支援的類型為：GZip、Deflate、BZip2 及 ZipDeflate。<br/>支援的層級為 **Optimal** 和 **Fastest**。 |否 |
 
 >[!TIP]
->若要複製資料夾下的所有檔案，請只指定 **folderPath** 。<br>若要複製指定名稱的單一檔案，請以資料夾部分指定 **folderPath** ，並以檔案名稱指定 **fileName** 。<br>若要複製資料夾下的檔案子集，請以 **folderPath** 指定資料夾部分 ，並以 **fileName** 指定萬用字元篩選。 
+>若要複製資料夾下的所有檔案，請只指定 **folderPath**。<br>若要複製指定名稱的單一檔案，請以資料夾部分指定 **folderPath**，並以檔案名稱指定 **fileName**。<br>若要複製資料夾下的檔案子集，請以 **folderPath** 指定資料夾部分 ，並以 **fileName** 指定萬用字元篩選。 
 
 **範例︰**
 
@@ -600,8 +600,8 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動來源的類型屬性必須設為 **AzureBlobFSSource** 。 |是 |
-| 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 當遞迴設定為 true 且接收是檔案型存放區時，就不會在接收上複製或建立空的資料夾或子資料夾。<br/>允許的值為 **true** (預設值) 和 **false** 。 | 否 |
+| type | 複製活動來源的類型屬性必須設為 **AzureBlobFSSource**。 |是 |
+| 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 當遞迴設定為 true 且接收是檔案型存放區時，就不會在接收上複製或建立空的資料夾或子資料夾。<br/>允許的值為 **true** (預設值) 和 **false**。 | 否 |
 | maxConcurrentConnections | 可同時連線到資料存放區的連線數目。 只有在想要限制資料存放區的同時連線數目時，才需指定此屬性。 | 否 |
 
 **範例︰**
@@ -640,7 +640,7 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動接收的類型屬性必須設為 **AzureBlobFSSink** 。 |是 |
+| type | 複製活動接收的類型屬性必須設為 **AzureBlobFSSink**。 |是 |
 | copyBehavior | 當來源是來自檔案型資料存放區的檔案時，會定義複製行為。<br/><br/>允許的值包括：<br/><b>- PreserveHierarchy (預設)</b>：保留目標資料夾中的檔案階層。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><b>- FlattenHierarchy</b>：來自來源資料夾的所有檔案都會在目標資料夾的第一層中。 目標檔案會有自動產生的名稱。 <br/><b>- MergeFiles</b>：將來自來源資料夾的所有檔案合併成一個檔案。 若已指定檔案名稱，合併檔案的名稱會是指定的名稱。 否則，就會是自動產生的檔案名稱。 | 否 |
 | maxConcurrentConnections | 可同時連線到資料存放區的連線數目。 只有在想要限制資料存放區的同時連線數目時，才需指定此屬性。 | 否 |
 

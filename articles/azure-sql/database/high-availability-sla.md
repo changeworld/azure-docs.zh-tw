@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: sstein, sashan
 ms.date: 10/28/2020
-ms.openlocfilehash: e5e58f8592fcf8627870c3a574335bbe34394064
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 15067a046d8adc0ba38101bbe24cdc48cd433d56
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452452"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095435"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database 和 SQL 受控執行個體的高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -122,7 +122,7 @@ Premium 和業務關鍵服務層級會利用高階可用性模型，將計算資
 
 |部署類型|PowerShell|REST API| Azure CLI|
 |:---|:---|:---|:---|
-|資料庫|[Invoke-AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[資料庫容錯移轉](/rest/api/sql/databases(failover)/failover/)|[az rest](/cli/azure/reference-index#az-rest) 可用來從 Azure CLI 叫用 REST API 呼叫|
+|資料庫|[Invoke-AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[資料庫容錯移轉](/rest/api/sql/databases/failover)|[az rest](/cli/azure/reference-index#az-rest) 可用來從 Azure CLI 叫用 REST API 呼叫|
 |彈性集區|[Invoke-AzSqlElasticPoolFailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[彈性集區容錯移轉](/rest/api/sql/elasticpools(failover)/failover/)|[az rest](/cli/azure/reference-index#az-rest) 可用來從 Azure CLI 叫用 REST API 呼叫|
 |受控執行個體|[Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[受控實例-容錯移轉](/rest/api/sql/managed%20instances%20-%20failover/failover)|[az sql mi 容錯移轉](/cli/azure/sql/mi/#az-sql-mi-failover)|
 

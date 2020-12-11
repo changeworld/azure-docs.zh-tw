@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: d889c82142cda60b920f7b29bd91755cbc34f525
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 48ff32655b107958a3e8e42dbd7de0f405a6fffa
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701444"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094857"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的存取控制
 
@@ -33,8 +33,6 @@ Azure Data Lake Storage Gen1 實作的存取控制模型衍生自 HDFS，而 HDF
 
 
 存取 ACL 和預設 ACL 有相同的結構。
-
-
 
 > [!NOTE]
 > 變更父代的預設 ACL 並不會影響現存子項目的存取 ACL 或預設 ACL。
@@ -71,10 +69,10 @@ Azure Data Lake Storage Gen1 實作的存取控制模型衍生自 HDFS，而 HDF
 
 以下是一些常見的案例，可協助您了解在 Data Lake Storage Gen1 帳戶上執行某些作業所需的權限。
 
-| 作業 | Object              |    /      | Seattle/   | Portland/   | Data.txt       |
+| 作業 | 物件              |    /      | Seattle/   | Portland/   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
 | 讀取      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| 附加至 | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| 附加至 | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `-W-`          |
 | 刪除    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | 建立    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | 清單      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |

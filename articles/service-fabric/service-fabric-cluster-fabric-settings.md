@@ -3,12 +3,12 @@ title: 變更 Azure Service Fabric 叢集設定
 description: 本文說明您可以自訂的網狀架構設定和網狀架構升級原則。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 1f16e89dd1131f6aea64e5e72a342b3b737f3728
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c055ad1dad8b9574c8d811284a34619ee3648a10
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187216"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095265"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自訂 Service Fabric 叢集設定
 本文說明您可以為 Service Fabric 叢集自訂的各種網狀架構設定。 針對裝載於 Azure 中的叢集，您可以透過 [Azure 入口網站](https://portal.azure.com)或使用 Azure Resource Manager 範本來自訂設定。 如需詳細資訊，請參閱[升級 Azure 叢集的設定](service-fabric-cluster-config-upgrade-azure.md)。 針對獨立叢集，您會透過更新 *ClusterConfig.json* 檔案並在叢集上執行設定升級來自訂設定。 如需詳細資訊，請參閱[升級獨立叢集的設定](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -877,7 +877,7 @@ ms.locfileid: "96187216"
 | --- | --- | --- | --- |
 |ConnectionOpenTimeout|時間範圍，預設值為 Common::TimeSpan::FromSeconds(60)|靜態|以秒為單位指定時間範圍。 內送和接收端 (包括安全模式下的安全性交涉) 的連線設定逾時 |
 |FrameHeaderErrorCheckingEnabled|布林值，預設值為 TRUE|靜態|在非安全模式的框架標題上檢查時發生錯誤的預設設定；元件設定會加以覆寫。 |
-|MessageErrorCheckingEnabled|布林值，預設值為 FALSE|靜態|在非安全模式的訊息標題和本文上檢查時發生錯誤的預設設定；元件設定會加以覆寫。 |
+|MessageErrorCheckingEnabled|布林值，預設值為 TRUE|靜態|在非安全模式的訊息標題和本文上檢查時發生錯誤的預設設定；元件設定會加以覆寫。 |
 |ResolveOption|string，預設值為 "unspecified"|靜態|決定 FQDN 的解析方式。  有效值為 "unspecified/ipv4/ipv6"。 |
 |SendTimeout|時間範圍，預設值為 Common::TimeSpan::FromSeconds(300)|動態|以秒為單位指定時間範圍。 偵測停滯連線時傳送逾時。 TCP 失敗報告在某些環境中並不可靠。 這可能必須根據可用的網路頻寬和輸出資料的大小進行調整 (MaxMessageSize\/\*\*SendQueueSizeLimit)。 |
 

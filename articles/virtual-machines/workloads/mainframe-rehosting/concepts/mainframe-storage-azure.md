@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 9a3a7cad8399146834eed0282e0655a551bc083a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8f57210ff6b65ee3a893fb344a48629466e90004
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977267"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095350"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>將大型主機儲存體移至 Azure
 
@@ -33,7 +33,7 @@ IBM 大型主機的儲存方式有兩種。 第一個是 (DASD) 的直接存取�
 
 - *線上儲存體* (也知道每日作業需要經常性儲存體) 。 DASD 儲存體通常用於此用途。 不過，順序儲存（例如 (邏輯或實體) 的每日磁帶備份）也可用於此用途。
 
-- 封存*儲存體* (也稱為冷儲存體) 不保證會在指定的時間掛接。 相反地，它會視需要掛接和存取。 封存儲存體通常會使用順序磁帶備份來執行， (邏輯或實體) 以進行儲存。
+- 封存 *儲存體* (也稱為冷儲存體) 不保證會在指定的時間掛接。 相反地，它會視需要掛接和存取。 封存儲存體通常會使用順序磁帶備份來執行， (邏輯或實體) 以進行儲存。
 
 ## <a name="mainframe-versus-io-latency-and-iops"></a>大型主機與 IO 延遲和 IOPS
 
@@ -127,4 +127,4 @@ Blob 儲存體會在 Azure 上提供最大量的儲存體。 除了儲存體大�
 ### <a name="more-migration-resources"></a>更多的遷移資源
 
 - [Azure 虛擬資料中心：原形移轉指南](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
-- [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
+- [GlusterFS iSCSI](https://glusterdocs.readthedocs.io/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

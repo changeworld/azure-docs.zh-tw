@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 4f1aceed7e6a41a8ad4f3a062f23a796e31e34ad
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 1b95b1e96dc26fb72338518fc969c69b035d5f68
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601674"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095231"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service 和 Azure Functions 中的驗證和授權
 
@@ -152,6 +152,7 @@ App Service 使用[同盟身分識別](https://en.wikipedia.org/wiki/Federated_i
 
 ## <a name="more-resources"></a>其他資源
 
+* [教學課程：在存取 Azure 儲存體和 Microsoft Graph 的 web 應用程式中驗證和授權使用者](scenario-secure-app-authentication-app-service.md)
 * [教學課程：在 Azure App Service 中端對端驗證和授權使用者 (Windows)](tutorial-auth-aad.md)  
 * [教學課程：在適用於 Linux 的 Azure App Service 中端對端驗證和授權使用者](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
 * [自訂 App Service 中的驗證與授權](app-service-authentication-how-to.md)

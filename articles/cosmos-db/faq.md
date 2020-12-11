@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 9e0c5ae119b734f91e8cfa1e7afb11a96e13035c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 2e4ff4d9159947ea87f97d56f3fb9c2825698227
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549067"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095061"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>關於 Azure Cosmos DB 內不同 API 的常見問題集
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -41,7 +41,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 當�
 
 ### <a name="is-azure-cosmos-db-hipaa-compliant"></a>Azure Cosmos DB 符合 HIPAA 規範嗎？
 
-是，Azure Cosmos DB 符合 HIPAA 規範。 HIPAA 建立了使用、洩漏與保護個別辨識健全狀況資訊的需求。 如需詳細資訊，請參閱 [Microsoft 信任中心](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA)。
+是，Azure Cosmos DB 符合 HIPAA 規範。 HIPAA 建立了使用、洩漏與保護個別辨識健全狀況資訊的需求。 如需詳細資訊，請參閱 [Microsoft 信任中心](/compliance/regulatory/offering-hipaa-hitech)。
 
 ### <a name="what-are-the-storage-limits-of-azure-cosmos-db"></a>Azure Cosmos DB 的儲存體限制有哪些？
 
