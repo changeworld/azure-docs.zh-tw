@@ -65,7 +65,7 @@ ms.locfileid: "92457481"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Autotask Workplace** ，從結果面板中選取 [Autotask Workplace]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Autotask Workplace**，從結果面板中選取 [Autotask Workplace]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![在結果清單中的 Autotask Workplace](common/search-new-app.png)
 
@@ -118,7 +118,7 @@ ms.locfileid: "92457481"
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Autotask Workplace 用戶端支援小組](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -149,7 +149,7 @@ ms.locfileid: "92457481"
 
     ![Autotask 單一登入核准組態](./media/autotaskworkplace-tutorial/tutorial_autotaskssoconfig2.png)
 
-    c. 選取 [我確認這項資訊正確，而且我信任此 IdP]  核取方塊。
+    c. 選取 [我確認這項資訊正確，而且我信任此 IdP] 核取方塊。
 
     d. 按一下 [核准]  。
 
@@ -172,7 +172,7 @@ ms.locfileid: "92457481"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com

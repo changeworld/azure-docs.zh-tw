@@ -67,8 +67,14 @@
           href: logic-apps-move-from-mabs.md
         - name: 從 Power Automate 匯出流程，並部署至 Azure Logic Apps
           href: export-from-microsoft-flow-logic-app-template.md
-        - name: 在 Visual Studio Code 中建立具狀態或無狀態工作流程
-          href: create-stateful-stateless-workflows-visual-studio-code.md
+        - name: Azure Logic Apps 預覽
+          items:
+            - name: Azure Logic Apps 預覽的概觀
+              href: logic-apps-overview-preview.md
+            - name: 建立具狀態和無狀態工作流程 - Azure 入口網站
+              href: create-stateful-stateless-workflows-azure-portal.md
+            - name: 建立具狀態或無狀態工作流程 - Visual Studio Code
+              href: create-stateful-stateless-workflows-visual-studio-code.md
         - name: 從 Power Automate 和 Power Apps 呼叫邏輯應用程式
           href: call-from-power-automate-power-apps.md
         - name: 控制工作流程執行

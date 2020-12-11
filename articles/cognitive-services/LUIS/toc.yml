@@ -21,14 +21,8 @@
           displayName: 'assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish'
     - name: 使用瀏覽器
       href: luis-get-started-get-intent-from-browser.md
-    - name: 使用 SDK
-      href: azure-sdk-quickstart.md
-    - name: 使用 REST API
-      items:
-        - name: 取得意圖
-          href: luis-get-started-rest-get-intent.md
-        - name: 變更模式
-          href: luis-get-started-rest-get-model.md
+    - name: 使用用戶端程式庫和 REST API
+      href: client-libraries-rest-api.md
 - name: 教學課程
   items:
     - name: 建置可分解的應用程式
