@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 39625914f179dfc8d5511b9a3d386cc8332b7efa
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a96d49a029eb83e24c1fb86954406693aa9c33a3
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456304"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093956"
 ---
 # <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用專用的 SQL 集區載入資料的最佳作法
 
@@ -71,6 +71,9 @@ ms.locfileid: "96456304"
        ,MEMBERNAME = 'loader'
    );
 ```
+<br><br>
+>[!IMPORTANT] 
+>這是將 SQL 集區的100% 資源配置到單一負載的極端範例。 這會為您提供最大並行值1。 請注意，這應該僅用於初始負載，您必須使用自己的設定來建立額外的工作負載群組，以在您的工作負載之間 balanace 資源。 
 
 若要使用載入工作負載群組的資源來執行負載，請以載入器登入並執行負載。
 

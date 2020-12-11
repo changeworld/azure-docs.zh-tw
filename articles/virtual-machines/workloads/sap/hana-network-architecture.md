@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf9fd361dea43b1cfa6ae45710a3a7bbf4e4de03
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b18e1cd20a4b0a886258fd56003cd273d92381fa
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006280"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093973"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (大型執行個體) 網路架構
 
@@ -149,7 +149,7 @@ Azure ExpressRoute 閘道可搭配 ExpressRoute 使用於 Azure 外部的基礎�
 在這些情況下，有三種方式可以啟用轉移路由：
 
 - 路由資料的反向 Proxy，往返方向皆有可能。 例如，在連線到 HANA 大型實例的 Azure 虛擬網路中，使用流量管理員部署的 NGINX，以及作為虛擬防火牆/流量路由解決方案的內部部署。
-- 在 Linux VM 中使用 [IPTables 規則](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ)，以啟用在內部部署位置和 HANA 大型執行個體單位之間的路由，或不同區域中 HANA 大型執行個體單位之間的路由。 執行 IPTables 的 VM 必須部署在連線到 HANA 大型實例和內部部署的 Azure 虛擬網路中。 VM 必須適當地調整大小，如此一來，VM 的網路輸送量就足以應付預期的網路流量。 如需 VM 網路頻寬的詳細資訊，請參閱 [Azure 中 Linux 虛擬機器](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的文章大小。
+- 在 Linux VM 中使用 IPTables 規則，以啟用在內部部署位置和 HANA 大型執行個體單位之間的路由，或不同區域中 HANA 大型執行個體單位之間的路由。 執行 IPTables 的 VM 必須部署在連線到 HANA 大型實例和內部部署的 Azure 虛擬網路中。 VM 必須適當地調整大小，如此一來，VM 的網路輸送量就足以應付預期的網路流量。 如需 VM 網路頻寬的詳細資訊，請參閱 [Azure 中 Linux 虛擬機器](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的文章大小。
 - [Azure 防火牆](https://azure.microsoft.com/services/azure-firewall/) 是另一種可在內部部署與 HANA 大型實例單位之間啟用直接流量的解決方案。 
 
 這些解決方案的所有流量都會透過 Azure 虛擬網路路由傳送，因此流量可能會另外受到 Azure 網路安全性群組所使用之軟設備的限制，因此，內部部署的特定 IP 位址或 IP 位址範圍可能會遭到封鎖或明確允許存取 HANA 大型實例。 

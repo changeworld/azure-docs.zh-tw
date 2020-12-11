@@ -192,9 +192,9 @@
     - name: Logic Apps 安全性基準
       href: ../../logic-apps/security-baseline.md
     - name: Microsoft Cloud App Security 基準
-      href: /cloud-app-security/security-baseline.md
+      href: 'https://docs.microsoft.com/cloud-app-security/security-baseline'
     - name: 適用於身分識別的 Microsoft Defender 安全性基準
-      href: /defender-for-identity/security-baseline.md
+      href: 'https://docs.microsoft.com/defender-for-identity/security-baseline'
     - name: 網路監看員安全性基準
       href: ../../network-watcher/security-baseline.md
     - name: Power BI 基準

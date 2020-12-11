@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: af3653d9e4509b1aa31a377dfc22cb6b6b2ff34e
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 76232a917e8856a06645fabc0ab4716195c5c0e1
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906058"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094194"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>使用 Azure 地圖服務提高許可權服務 (預覽來要求提高許可權資料) 
 
@@ -56,8 +56,8 @@ Azure 地圖服務提高 [許可權服務](https://docs.microsoft.com/rest/api/m
 
 使用「提高許可權服務」 (預覽版) Api 來要求 GeoJSON 格式的提高許可權資料。 本節將說明這三個 Api 的每一個：
 
-* [取得點數的資料](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
-* [張貼點資料](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates)
+* [取得點數的資料](/rest/api/maps/elevation/getdataforpoints)
+* [張貼點資料](/rest/api/maps/elevation/postdataforpoints)
 * [取得聚合線條的資料](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
 * [針對聚合線條張貼資料](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline)
 * [取得周框方塊的資料](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
@@ -67,7 +67,7 @@ Azure 地圖服務提高 [許可權服務](https://docs.microsoft.com/rest/api/m
 
 ### <a name="request-elevation-data-for-points"></a>要求點數的提高許可權資料
 
-在此範例中，我們將使用「 [取得資料點」 API](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates) ，在 Mt 要求提升許可權資料。 Everest 和 Chamlang 山脈。 然後，我們會使用 [點 API 的 Post 資料](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates) ，透過相同的兩個點來要求提高許可權的資料。 URL 中的緯度和經度預期會在 WGS84 (World Geodetic System) 小數度。
+在此範例中，我們將使用「 [取得資料點」 API](/rest/api/maps/elevation/getdataforpoints) ，在 Mt 要求提升許可權資料。 Everest 和 Chamlang 山脈。 然後，我們會使用 [點 API 的 Post 資料](/rest/api/maps/elevation/postdataforpoints) ，透過相同的兩個點來要求提高許可權的資料。 URL 中的緯度和經度預期會在 WGS84 (World Geodetic System) 小數度。
 
  >[!IMPORTANT]
  >由於 URL 字元長度限制為2048，因此無法在 URL GET 要求中傳遞100個以上的座標作為管線分隔字串。 如果您想要傳遞100個以上的座標作為管線分隔字串，請使用 POST 資料來取得點。
@@ -103,7 +103,7 @@ Azure 地圖服務提高 [許可權服務](https://docs.microsoft.com/rest/api/m
     }
     ```
 
-4. 現在，我們將呼叫 [點 API 的 Post 資料](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates) ，以取得相同兩個點的提高許可權資料。 在 [建立器] 索引標籤中選取 **POST** HTTP 方法，然後輸入下列 URL。 對於此要求以及本文中提及的其他要求，請將 `{Azure-Maps-Primary-Subscription-key}` 取代為您的主要訂用帳戶金鑰。
+4. 現在，我們將呼叫 [點 API 的 Post 資料](/rest/api/maps/elevation/postdataforpoints) ，以取得相同兩個點的提高許可權資料。 在 [建立器] 索引標籤中選取 **POST** HTTP 方法，然後輸入下列 URL。 對於此要求以及本文中提及的其他要求，請將 `{Azure-Maps-Primary-Subscription-key}` 取代為您的主要訂用帳戶金鑰。
 
     ```http
     https://atlas.microsoft.com/elevation/point/json?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
@@ -466,7 +466,7 @@ URL 中的緯度和經度預期會在 WGS84 (World Geodetic System) 小數度。
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="依周框方塊的提升" src="https://codepen.io/azuremaps/embed/619c888c70089c3350a3e95d499f3e48?height=500&theme-id=default&default-tab=js,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-在 >codepen 上 Azure 地圖服務 () ，<a href='https://codepen.io/azuremaps/pen/619c888c70089c3350a3e95d499f3e48'>以依周框</a>方塊查看畫筆提升 <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+在 >codepen 上 Azure 地圖服務 () ，<a href='https://codepen.io/azuremaps/pen/619c888c70089c3350a3e95d499f3e48'>以依周框</a>方塊查看畫筆提升 <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'></a>
 </iframe>
 
 ### <a name="get-elevation-data-by-polyline-path"></a>依聚合線條路徑取得提升許可權資料
@@ -476,7 +476,7 @@ URL 中的緯度和經度預期會在 WGS84 (World Geodetic System) 小數度。
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="提高許可權路徑漸層" src="https://codepen.io/azuremaps/embed/7bee08e5cb13d05cb0a11636b60f14ca?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-請參閱 >codepen 上的 Azure 地圖服務 () ，查看畫筆提高<a href='https://codepen.io/azuremaps/pen/7bee08e5cb13d05cb0a11636b60f14ca'>許可權路徑</a>漸層 <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+請參閱 >codepen 上的 Azure 地圖服務 () ，查看畫筆提高<a href='https://codepen.io/azuremaps/pen/7bee08e5cb13d05cb0a11636b60f14ca'>許可權路徑</a>漸層 <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'></a>
 </iframe>
 
 
@@ -485,7 +485,7 @@ URL 中的緯度和經度預期會在 WGS84 (World Geodetic System) 小數度。
 若要進一步探索 Azure 地圖服務提升 (Preview) Api 的許可權，請參閱：
 
 > [!div class="nextstepaction"]
-> [提高許可權 (預覽) -取得 Lat 長座標的資料](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
+> [提高許可權 (預覽) -取得 Lat 長座標的資料](/rest/api/maps/elevation/getdataforpoints)
 
 > [!div class="nextstepaction"]
 > [提高許可權 (預覽) -取得周框方塊的資料](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)

@@ -7,12 +7,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: f50c84212e62fae378d9d95e8990e084c82bb99a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4067d157a13618b008e2cb1a5fee31259bfd43a9
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000363"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094347"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>使用 Azure IoT DPS IP 連線篩選器
 
@@ -135,7 +135,7 @@ Azure CLI 或 Azure PowerShell 目前不支援更新 DPS IP 篩選器規則，�
 
 | 屬性                | 描述 |
 | ------------------------ | ----------- |
-| **FilterName**           | 提供 IP 篩選器規則的名稱。 名稱必須是唯一的、不區分大小寫的英數字元字串，長度上限為 128 個字元。 所能接受的字元只有 ASCII 7 位元英數字元以及 {'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''} 。 |
+| **FilterName**           | 提供 IP 篩選器規則的名稱。 名稱必須是唯一的、不區分大小寫的英數字元字串，長度上限為 128 個字元。 只接受 ASCII 7 位英數位元和  `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`   。 |
 | **動作**               | 接受的值為 [接受]  或 [拒絕] ****   以作為 IP 篩選器規則的動作。 |
 | **ipMask**               | 提供單一 IPv4 位址或以 CIDR 標記法表示的 IP 位址區塊。 例如，在 CIDR 表示法中，192.168.100.0/22 表示從 192.168.100.0 到 192.168.103.255 的 1024 個 IPv4 位址。 |
 

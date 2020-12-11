@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: 9e34ce05d055e6933ecfbacf672bb8b1eba544bd
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 5a666d265550de6e24d791db6daa954d50ddde38
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512268"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094177"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>在 Azure Data Factory 中資料移動的安全性考量
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -39,13 +39,13 @@ Data Factory 已通過下列各項規範的認證：
 | **[CSA STAR Certification](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
 | :----------------------------------------------------------- |
 | **[ISO 20000-1:2011](https://www.microsoft.com/trustcenter/Compliance/ISO-20000-1)** |
-| **[ISO 22301:2012](https://www.microsoft.com/trustcenter/compliance/iso-22301)** |
+| **[ISO 22301:2012](/compliance/regulatory/offering-iso-22301)** |
 | **[ISO 27001:2013](https://www.microsoft.com/trustcenter/compliance/iso-iec-27001)** |
 | **[ISO 27017:2015](https://www.microsoft.com/trustcenter/compliance/iso-iec-27017)** |
 | **[ISO 27018:2014](https://www.microsoft.com/trustcenter/compliance/iso-iec-27018)** |
 | **[ISO 9001:2015](https://www.microsoft.com/trustcenter/compliance/iso-9001)** |
 | **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
-| **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
+| **[HIPAA BAA](/compliance/regulatory/offering-hipaa-hitech)** |
 
 如果您對 Azure 法規遵循以及 Azure 如何保護其專屬基礎結構感興趣，請瀏覽 [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/default.aspx)。 如需所有 Azure 合規性供應項目的最新清單，請查看 - https://aka.ms/AzureCompliance。
 
@@ -173,7 +173,7 @@ Azure 虛擬網路是您網路在雲端的邏輯呈現方式。 您可以透過�
 
 下表提供 Windows 防火牆的輸入連接埠需求：
 
-| 輸入連接埠 | 說明                              |
+| 輸入連接埠 | 描述                              |
 | ------------- | ---------------------------------------- |
 | 8060 (TCP)     | PowerShell 加密 Cmdlet (如[在 Azure Data Factory 中加密內部部署資料存放區的認證](encrypt-credentials-self-hosted-integration-runtime.md)中所述) 和認證管理員應用程式皆需要此連接埠，以便為自我裝載整合執行階段的內部部署資料存放區安全地設定認證。 |
 

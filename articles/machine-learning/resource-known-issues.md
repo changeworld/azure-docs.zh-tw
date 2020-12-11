@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperf-fy20q4
 ms.date: 11/09/2020
-ms.openlocfilehash: e383ac260a67c7334b806612325ed0b6a9fbbef9
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 010d37baff76a046bef2da877262f6427cb3d5c9
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030972"
+ms.locfileid: "97094432"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 中的已知問題和疑難排解
 
@@ -358,7 +358,14 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     pip install --upgrade pandas==0.23.4
     pip install --upgrade scikit-learn==0.20.3
   ```
- 
+
+* **部署失敗**：針對 SDK 的版本 <= 1.18.0，為部署所建立的基底映射可能會失敗，並出現下列錯誤：「ImportError：無法從匯入名稱」 `cached_property` `werkzeug` 。 
+
+  下列步驟可以解決此問題：
+  1. 下載模型套件
+  2. 將套件取消壓縮
+  3. 使用取消壓縮的資產進行部署
+
 * **預測 R2 分數一律為零**：如果所提供的定型資料具有的時間序列包含與最後一個 `n_cv_splits`  +  資料點相同的值，就會發生此問題 `forecasting_horizon` 。 如果您的時間序列中必須要有這種模式，您可以將主要計量切換為正規化的根本平方誤差。
  
 * **TensorFlow**：從 SDK 版本1.5.0 版來，自動化機器學習預設不會安裝 TensorFlow 模型。 若要安裝 TensorFlow 並搭配自動化 ML 實驗使用，請透過 CondaDependecies 安裝 TensorFlow = = 1.12.0。 

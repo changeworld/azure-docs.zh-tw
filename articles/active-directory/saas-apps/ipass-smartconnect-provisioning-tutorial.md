@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: fa9723b466045ebe7b932f837e0fa7c45c898b6b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 405a7bc3b653ca7bca026d3318763a4922244e88
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353879"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093701"
 ---
 # <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>教學課程：設定 iPass SmartConnect 來自動佈建使用者
 
@@ -82,7 +82,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 本節將引導您逐步設定 Azure AD 佈建服務，以根據 Azure AD 中的使用者和/或群組指派，在 iPass SmartConnect 中建立、更新和停用使用者和/或群組。
 
 > [!TIP]
->  建議您選擇為 BitaBIZ 啟用 SAML 型單一登入，方法是遵循 [iPass SmartConnect 單一登入教學課程](ipasssmartconnect-tutorial.md)中提供的指示。 雖然自動使用者佈建和單一登入這兩個功能互相補充，您還是可以將它們分開設定。
+>  建議您選擇為 iPass SmartConnect 啟用 SAML 型單一登入，方法是遵循 [iPass SmartConnect 單一登入教學課程](ipasssmartconnect-tutorial.md)中提供的指示。 雖然自動使用者佈建和單一登入這兩個功能互相補充，您還是可以將它們分開設定。
 
 ### <a name="to-configure-automatic-user-provisioning-for-ipass-smartconnect-in-azure-ad"></a>若要在 Azure AD 中為 iPass SmartConnect 設定自動使用者佈建：
 
@@ -98,7 +98,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![[管理] 選項的螢幕擷取畫面，並已指出 [佈建] 選項。](common/provisioning.png)
 
-4. 將 [佈建模式] 設定為 [自動]。
+4. 將 [佈建模式]  設定為 [自動]  。
 
     ![[佈建模式] 下拉式清單的螢幕擷取畫面，並已指出 [自動] 選項。](common/provisioning-automatic.png)
 
@@ -131,7 +131,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![佈建範圍](common/provisioning-scope.png)
 
-13. 當您準備好要佈建時，按一下 [儲存]  。
+13. 當您準備好要佈建時，按一下 [儲存]。
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 

@@ -93,9 +93,6 @@ items:
               - name: Azure SQL Database
                 href: register-scan-azure-sql-database.md
                 displayName: Register and scan Azure SQL DB
-              - name: 具有防火牆的 Azure SQL DB
-                href: scan-sqlresource-firewall.md
-                displayName: Register and scan Azure SQL DB with a firewall
               - name: Azure SQL Database 受控執行個體
                 href: register-scan-azure-sql-database-managed-instance.md
                 displayName: Register and scan Azure SQL DB Managed Instance

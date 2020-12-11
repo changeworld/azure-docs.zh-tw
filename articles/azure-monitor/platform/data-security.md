@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 5aa379f6601bc324bd08c53f251b2097141eec69
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 87cdecd29d684c712853970c8246002132d274ac
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911629"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094330"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 資料安全性
 本文件旨在提供 Log Analytics (Azure 監視器的功能) 的特定資訊，以補充 [Azure 信任中心](https://www.microsoft.com/en-us/trust-center?rtc=1)上的資訊。  
@@ -79,7 +79,7 @@ Log Analytics 服務會使用下列方法安全地管理您以雲端為基礎的
 | 事件 |EventId、EventOriginalID、BaseManagedEntityInternalId、RuleId、PublisherId、PublisherName、FullNumber、Number、Category、ChannelLevel、LoggingComputer、EventData、EventParameters、TimeGenerated、TimeAdded <br>**注意：** 當您使用自訂欄位將事件寫入 Windows 事件記錄檔時，Log Analytics 會收集它們。 |
 | 中繼資料 |BaseManagedEntityId、ObjectStatus、OrganizationalUnit、ActiveDirectoryObjectSid、PhysicalProcessors、NetworkName、IPAddress、ForestDNSName、NetbiosComputerName、VirtualMachineName、LastInventoryDate、HostServerNameIsVirtualMachine、IP 位址、NetbiosDomainName、LogicalProcessors、DNSName、DisplayName、DomainDnsName、ActiveDirectorySite、PrincipalName、OffsetInMinuteFromGreenwichTime |
 | 效能 |ObjectName、CounterName、PerfmonInstanceName、PerformanceDataId、PerformanceSourceInternalID、SampleValue、TimeSampled、TimeAdded |
-| 州 |StateChangeEventId、StateId、NewHealthState、OldHealthState、Context、TimeGenerated、TimeAdded、StateId2、BaseManagedEntityId、MonitorId、HealthState、LastModified、LastGreenAlertGenerated、DatabaseTimeModified |
+| 狀況 |StateChangeEventId、StateId、NewHealthState、OldHealthState、Context、TimeGenerated、TimeAdded、StateId2、BaseManagedEntityId、MonitorId、HealthState、LastModified、LastGreenAlertGenerated、DatabaseTimeModified |
 
 ## <a name="physical-security"></a>實體安全性
 Log Analytics 服務是由 Microsoft 人員所管理，所有活動都有記錄並且可供稽核。 Log Analytics 會作為 Azure 服務操作，並符合所有 Azure 合規性與安全性需求。 您可以在 [Microsoft Azure 安全性概觀](https://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf)的第 18 頁上檢視 Azure 資產之實體安全性的詳細資料。 不再負責管理 Log Analytics 服務的人員，其用來確保區域安全的實體存取權限 (包括傳輸和終止) 將會在一個工作天內變更。 若要了解我們使用的全域實體基礎結構，請參閱 [Microsoft 資料中心](https://azure.microsoft.com/global-infrastructure/)。
@@ -127,7 +127,7 @@ Azure Log Analytics 符合下列需求︰
 * [ISO 22301](https://azure.microsoft.com/blog/iso22301/)
 * PCI 安全標準委員會的[支付卡產業 (PCI 相容) 資料安全標準 (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI)。
 * [服務組織控制 (SOC) 1 類型 1 和 SOC 2 類型 1](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) 相容
-* 擁有 HIPAA 商業夥伴合約之公司的 [HIPAA 和 HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa)
+* 擁有 HIPAA 商業夥伴合約之公司的 [HIPAA 和 HITECH](/compliance/regulatory/offering-hipaa-hitech)
 * Windows 通用工程準則
 * Microsoft 高可信度電腦運算 (英文)
 * 作為 Azure 服務，Log Analytics 使用的元件會遵守 Azure 的合規性需求。 若要深入了解，請前往 [Microsoft 信任中心法規遵循](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)。

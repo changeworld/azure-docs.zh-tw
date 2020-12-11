@@ -90,6 +90,8 @@
               href: data-box-local-web-ui-admin.md
             - name: 使用自我管理寄送
               href: data-box-portal-customer-managed-shipping.md
+            - name: 攜帶您自己的憑證
+              href: data-box-bring-your-own-certificates.md
             - name: 啟用客戶管理的金鑰
               href: data-box-customer-managed-encryption-key-portal.md
             - name: 使用客戶加密箱

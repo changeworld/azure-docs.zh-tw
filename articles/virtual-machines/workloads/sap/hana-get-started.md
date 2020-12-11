@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
-ms.openlocfilehash: 6c1b19927207e1accb4ae6c47625eed41a6b0b92
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 83c149e92276265b5b5236ae56c475d7307c18e4
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967783"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093905"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>在 Azure 虛擬機器上安裝 SAP Hana
 ## <a name="introduction"></a>簡介
@@ -30,7 +30,7 @@ ms.locfileid: "94967783"
 > [!NOTE]
 > 本指南說明如何將 SAP HANA 部署到 Azure VM。 如需如何將 SAP Hana 部署到 HANA 大型實例的相關資訊，請參閱 [如何在 Azure 上安裝和設定 SAP Hana (大型) 實例](./hana-installation.md)。
  
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 本指南也假設您已經熟悉：
 * SAP HANA 與 SAP NetWeaver，以及如何加以內部部署安裝。
 * 如何在 Azure 上安裝和操作 SAP Hana 和 SAP 應用程式實例。
@@ -88,7 +88,7 @@ ms.locfileid: "94967783"
 -  [適用於 SAP NetWeaver 的 Azure 虛擬機器部署](./deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca)
 
 ## <a name="sap-hana-installation"></a>SAP HANA 安裝
-部署 Azure 虛擬機器並註冊並設定作業系統之後，您就可以根據 SAP 安裝來安裝 SAP Hana。 若要開始使用此檔，請從這個 SAP 網站[HANA 資源](https://www.sap.com/products/hana/implementation/resources.html)開始著手
+部署 Azure 虛擬機器並註冊並設定作業系統之後，您就可以根據 SAP 安裝來安裝 SAP Hana。 若要開始使用此檔，請從這個 SAP 網站[HANA 資源](https://www.sap.com/products/s4hana-erp.html?btp=9d3e6f82-d8ab-4122-8d2d-bf4971217afd)開始著手
 
 針對使用 Azure 進階儲存體或 Ultra 磁片的直接連接磁片 SAP Hana 相應放大設定，請閱讀檔[SAP Hana 基礎結構設定和 azure](./hana-vm-operations.md#configuring-azure-infrastructure-for-sap-hana-scale-out)中的作業的詳細資訊
 
