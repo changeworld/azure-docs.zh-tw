@@ -55,6 +55,8 @@
               href: manage-vm-extensions-powershell.md
             - name: 使用 ARM 範本部署擴充功能
               href: manage-vm-extensions-template.md
+        - name: 在伺服器上使用受控識別
+          href: managed-identity-authentication.md
         - name: 管理代理程式
           href: manage-agent.md
     - name: 案例

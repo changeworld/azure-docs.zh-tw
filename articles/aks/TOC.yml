@@ -179,7 +179,7 @@
         - name: 使用 Terraform 部署 AKS
           href: /azure/developer/terraform/create-k8s-cluster-with-tf-and-aks
           maintainContext: true
-        - name: 使用 Kubernetes 資源檢視器 (預覽)
+        - name: Azure 入口網站 Kubernetes 資源檢視
           href: kubernetes-portal.md
         - name: 使用 Kubernetes 儀表板
           href: kubernetes-dashboard.md

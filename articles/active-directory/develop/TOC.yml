@@ -563,10 +563,10 @@
             - name: OAuth 2.0 資源擁有者密碼認證授與
               displayName: ROPC
               href: v2-oauth-ropc.md
-            - name: OAuth 2.0 SAML 持有人宣告流程
-              href: v2-saml-bearer-assertion.md
             - name: 簽署金鑰變換
               href: active-directory-signing-key-rollover.md
+            - name: 權杖交換案例
+              href: scenario-token-exchange-saml-oauth.md
             - name: ID 權杖
               href: id-tokens.md
             - name: 存取權杖
