@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c03c2c55988df04cc45ef4a1d66d959513c1626d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75839893d0048841440f2c790df7d23ad825d962
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87908232"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093463"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>邀請內部使用者進行 B2B 共同作業
 
@@ -32,13 +32,13 @@ ms.locfileid: "87908232"
 
 在公開預覽期間，這篇文章中所述用來邀請內部使用者進行 B2B 共同作業的方法，無法在這些情況下使用：
 
-- 已將 Exchange 授權指派給內部使用者。
+- 內部使用者有指派的 Exchange 授權。
 - 使用者來自于您目錄中設定為直接同盟的網域。
 - 內部使用者是僅限雲端的帳戶，而其主要帳戶不在 Azure AD 中。
 
 在這些情況下，如果內部使用者必須變更為 B2B 使用者，您應該刪除內部帳戶，並將 B2B 共同作業的邀請傳送給使用者。
 
-內部**部署同步**處理的使用者：對於在內部部署與雲端之間同步處理的使用者帳戶，內部部署目錄會在其受邀使用 B2B 共同作業之後，維持授權來源。 您對內部部署帳戶所做的任何變更都會同步至雲端帳戶，包括停用或刪除帳戶。 因此，您無法防止使用者登入其內部部署帳戶，同時保留其雲端帳戶，只要刪除內部部署帳戶即可。 相反地，您可以將內部部署帳戶密碼設定為隨機 GUID 或其他未知值。
+內部 **部署同步** 處理的使用者：對於在內部部署與雲端之間同步處理的使用者帳戶，內部部署目錄會在其受邀使用 B2B 共同作業之後，維持授權來源。 您對內部部署帳戶所做的任何變更都會同步至雲端帳戶，包括停用或刪除帳戶。 因此，您無法防止使用者登入其內部部署帳戶，同時保留其雲端帳戶，只要刪除內部部署帳戶即可。 相反地，您可以將內部部署帳戶密碼設定為隨機 GUID 或其他未知值。
 
 ## <a name="how-to-invite-internal-users-to-b2b-collaboration"></a>如何邀請內部使用者進行 B2B 共同作業
 

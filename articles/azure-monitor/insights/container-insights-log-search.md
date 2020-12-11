@@ -3,12 +3,12 @@ title: 如何查詢容器 Azure 監視器的記錄 |Microsoft Docs
 description: 適用于容器的 Azure 監視器會收集計量和記錄資料，而本文將說明記錄並包含範例查詢。
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 08c42fab84cb5180497f8da4f077b9bd82283ad4
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 9bfa63a49da33289b8c811007f210e6546579d9d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95747674"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033556"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>如何查詢容器 Azure 監視器的記錄
 
@@ -20,8 +20,8 @@ ms.locfileid: "95747674"
 
 | 資料 | 資料來源 | 資料類型 | 欄位 |
 |------|-------------|-----------|--------|
-| 容器清查 | Kubelet | `ContainerInventory` | TimeGenerated、Computer、container name、ContainerHostname、Image、ImageTag、ContainerState、ExitCode、EnvironmentVar、Command、CreatedTime、StartedTime、FinishedTime、SourceSystem、ContainerID、ImageID |
-| 容器記錄檔 | Docker | `ContainerLog` | TimeGenerated、Computer、image ID、container name、LogEntrySource、LogEntry、SourceSystem、ContainerID |
+| 容器清查 | Kubelet | `ContainerInventory` | TimeGenerated、Computer、Name、ContainerHostname、Image、ImageTag、ContainerState、ExitCode、EnvironmentVar、Command、CreatedTime、StartedTime、FinishedTime、SourceSystem、ContainerID、ImageID |
+| 容器記錄檔 | Docker | `ContainerLog` | TimeGenerated、Computer、image ID、Name、LogEntrySource、LogEntry、SourceSystem、ContainerID |
 | 容器節點清查 | Kube API | `ContainerNodeInventory`| TimeGenerated、Computer、ClassName_s、DockerVersion_s、OperatingSystem_s、Volume_s、Network_s、NodeRole_s、OrchestratorType_s、InstanceID_g、SourceSystem|
 | 清查 Kubernetes 叢集中的 Pod | Kube API | `KubePodInventory` | TimeGenerated、Computer、ClusterId、ContainerCreationTimeStamp、PodUid、PodCreationTimeStamp、ContainerRestartCount、PodRestartCount、PodStartTime、ContainerStartTime、ServiceName、ControllerKind、ControllerName、ContainerStatus、ContainerStatusReason、ContainerID、容器名稱、Name、PodLabel、Namespace、PodStatus、ClusterName、PodIp、SourceSystem |
 | 清查 Kubernetes 叢集中的節點部分 | Kube API | `KubeNodeInventory` | TimeGenerated、Computer、ClusterName、ClusterId、LastTransitionTimeReady、Labels、Status、KubeletVersion、KubeProxyVersion、CreationTimeStamp、SourceSystem | 

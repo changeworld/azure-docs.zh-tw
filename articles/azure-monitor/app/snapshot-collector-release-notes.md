@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
-ms.openlocfilehash: e4fffe0efa9f6900ef8d83c0a1b150b4249c22b3
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 4a787c6e2a9b59874f965a2bbcebea9ce02d8082
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008566"
+ms.locfileid: "97093255"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>ApplicationInsights. Microsoft.applicationinsights.snapshotcollector 的版本資訊
 
@@ -18,7 +18,7 @@ ms.locfileid: "97008566"
 
 [深入瞭解](./snapshot-debugger.md) .net 應用程式的 Application Insights 快照偵錯工具。
 
-關於 bug 報告和意見反應，請在 GitHub 上開啟問題： https://github.com/microsoft/ApplicationInsights-dotnet
+關於 bug 報告和意見反應，請在 GitHub 上開啟問題： https://github.com/microsoft/ApplicationInsights-SnapshotCollector
 
 ## <a name="release-notes"></a>版本資訊
 

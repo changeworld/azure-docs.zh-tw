@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 0dfb518a22fd84e0280577382715d6e554e914e8
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: fa8f9ad2d15730d2a0a2c1a722aa3970bbc8f173
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753989"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033981"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 遷移的支援矩陣
 
@@ -73,7 +73,7 @@ ms.locfileid: "96753989"
 **IPv6** | 不支援。
 **目標磁片** | Vm 只能遷移至受控磁片， (標準 HDD、標準 SSD、Azure 中的 premium SSD) 。
 **同時複寫** | 每 vCenter Server 300 部 Vm。 如果您有更多，請以300批次的方式遷移它們。
-
+**自動安裝 Azure VM 代理程式 (Windows 代理程式)** | Windows Server 2008 R2 的支援。
 
 ### <a name="appliance-requirements-agentless"></a> (無代理程式) 的設備需求
 

@@ -11,12 +11,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f308f46fc021a1d08f4065d48558a6dd71786c7c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 5c6ed106462d7dcac3f31a2ab157e5b634391006
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860350"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093446"
 ---
 # <a name="inbound-synchronization-for-cloud-provisioning-using-ms-graph-api"></a>使用 MS 圖形 API 進行雲端布建的輸入同步處理
 
@@ -43,7 +43,7 @@ ms.locfileid: "96860350"
 這兩個命令的第一個命令需要 Azure Active Directory 認證。 這些 commandlet 會隱含地識別租使用者，並加以啟用以進行同步處理。
 
 ## <a name="create-service-principals"></a>建立服務主體
-接下來，我們需要建立 [AD2AAD 應用程式/服務主體](https://docs.microsoft.com/graph/apiapplicationtemplate-instantiate?view=graph-rest-beta&tabs=http)
+接下來，我們需要建立 [AD2AAD 應用程式/服務主體](/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http)
 
 您必須使用此應用程式識別碼 1a4721b3-e57f-4451-ae87-ef078703ec94。 如果在入口網站中使用，則 displayName 是 AD 網域 url (例如，contoso.com) ，但可能會將它命名為其他內容。
 

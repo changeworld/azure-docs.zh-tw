@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: d5d182276cd77493be5184503a1afc47934bf8ea
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 43d7a697b3cb013a73a0b14db8ec1758244ae3b9
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344188"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092185"
 ---
 # <a name="use-jupyter-notebook-to-hunt-for-security-threats"></a>使用 Jupyter Notebook 來搜尋安全性威脅
 
@@ -23,7 +23,7 @@ Azure Sentinel 的基礎是資料存放區;它結合高效能查詢、動態架�
 
 ![範例 Notebook](./media/notebooks/sentinel-notebooks-map.png)
 
-我們已將 Jupyter 體驗整合到 Azure 入口網站中，讓您得以輕鬆地建立及執行 Notebook 來分析您的資料。 *Kqlmagic* 程式庫提供的黏附功能，可讓您從 Azure Sentinel 進行查詢，並直接在 Notebook 內執行查詢。 查詢會使用 [Kusto 查詢語言](https://kusto.azurewebsites.net/docs/query/index.html)。 某些由 Microsoft 的安全性分析師開發的多個 Notebook 會與 Azure Sentinel 封裝在一起。 其中有些 Notebook 是針對特定案例而建立，可按現況使用。 其他則是作為範例，解釋您可複製或改寫以在自己的 Notebook 中使用的技術和功能。 其他筆記本也可以從 Azure Sentinel 的社區 GitHub 匯入。
+我們已將 Jupyter 體驗整合到 Azure 入口網站中，讓您得以輕鬆地建立及執行 Notebook 來分析您的資料。 *Kqlmagic* 程式庫提供的黏附功能，可讓您從 Azure Sentinel 進行查詢，並直接在 Notebook 內執行查詢。 查詢會使用 [Kusto 查詢語言](https://kusto.azurewebsites.net/docs/kusto/query/index.html)。 某些由 Microsoft 的安全性分析師開發的多個 Notebook 會與 Azure Sentinel 封裝在一起。 其中有些 Notebook 是針對特定案例而建立，可按現況使用。 其他則是作為範例，解釋您可複製或改寫以在自己的 Notebook 中使用的技術和功能。 其他筆記本也可以從 Azure Sentinel 的社區 GitHub 匯入。
 
 整合式 Jupyter 體驗會使用 [Azure Notebooks](https://notebooks.azure.com/) 來儲存、共用和執行 Notebook。 如果您在電腦上或在其他 JupterHub 環境 (例如 Azure Databricks) 中有 Python 環境和 Jupyter，也可以在本機執行這些 Notebook。
 

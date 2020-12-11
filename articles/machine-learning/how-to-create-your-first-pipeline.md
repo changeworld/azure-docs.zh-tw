@@ -10,13 +10,13 @@ ms.author: nilsp
 author: NilsPohlmann
 ms.date: 10/21/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 2b534f82aeda438b1d2bd5d60eeb4871acffc54a
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.custom: how-to, devx-track-python, contperf-fy21q1
+ms.openlocfilehash: fe36b7789be6e885f3fbe0fa4ede044c0593f5ef
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902012"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033386"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>使用 Azure Machine Learning SDK 來建立及執行機器學習管線
 
@@ -306,7 +306,7 @@ ws = Run.get_context().experiment.workspace
 ## <a name="caching--reuse"></a>快取 & 重複使用  
 
 為了優化和自訂管線的行為，您可以在快取和重複使用方面做一些事。 例如，您可以選擇：
-+ 藉由在步驟定義期間設定，關閉 **步驟執行輸出的預設重複使用** `allow_reuse=False` 。 [step definition](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py) 在共同作業環境中使用管線時，重複使用是關鍵，因為消除不必要的執行可提供靈活性。 不過，您可以選擇不重複使用。
++ 藉由在步驟定義期間設定，關閉 **步驟執行輸出的預設重複使用** `allow_reuse=False` 。 [](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py) 在共同作業環境中使用管線時，重複使用是關鍵，因為消除不必要的執行可提供靈活性。 不過，您可以選擇不重複使用。
 + **執行中所有步驟的強制輸出** 重新產生 `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
 
 依預設， `allow_reuse` 會啟用，並且會 `source_directory` 雜湊步驟定義中指定的。 因此，如果指定步驟的腳本維持相同的 (`script_name` 、輸入和參數) ，而中沒有任何其他專案已 ` source_directory` 變更，則會重複使用上一個步驟執行的輸出，作業不會提交至計算，而從上一次執行的結果則會立即提供給下一個步驟。

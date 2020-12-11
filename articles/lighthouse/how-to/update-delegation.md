@@ -3,12 +3,12 @@ title: 更新委派
 description: 瞭解如何更新客戶先前上線至 Azure Lighthouse 的委派。
 ms.date: 12/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 90827281ac9b05105700298494af0b60b0fa511f
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: e204d1f3546e6e978f91c7e808065a388a4af4b3
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96610893"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093412"
 ---
 # <a name="update-a-delegation"></a>更新委派
 
@@ -17,7 +17,7 @@ ms.locfileid: "96610893"
 > [!TIP]
 > 雖然我們會在本主題中參考服務提供者和客戶，但 [管理多個](../concepts/enterprise.md) 租使用者的企業可以使用相同的程式來設定 Azure Lighthouse 以及合併其管理經驗。
 
-如果您 [透過 Azure Resource Manager (ARM) 範本上線客戶](onboard-customer.md)，則必須為該客戶執行新的部署。 根據您要變更的專案，您可能會想要更新原始供應專案，或移除原始供應專案並建立新的供應專案。
+如果您 [透過 Azure Resource Manager 範本 (ARM 範本) 來上線客戶 ](onboard-customer.md)，則必須為該客戶執行新的部署。 根據您要變更的專案，您可能會想要更新原始供應專案，或移除原始供應專案並建立新的供應專案。
 
 - **如果您只變更授權**：您可以只變更 ARM 範本的 **授權** 區段來更新委派。
 - **如果您要變更管理租使用者**：您必須使用與先前供應專案不同的 **>mspoffername** 來建立新的 ARM 範本。

@@ -4,13 +4,13 @@ description: 了解如何使用 Azure Application Insights 搭配 Azure Function
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.custom: devx-track-csharp, fasttrack-edit, contperfq2, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: b27fb14341e07683d66418485158a94c18e7a997
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
+ms.openlocfilehash: 7dbaa8712e09de9084e2bcb66d43f2181af292a0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748164"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033029"
 ---
 # <a name="monitor-azure-functions"></a>監視 Azure Functions
 
@@ -95,15 +95,15 @@ Application Insights 會產生所收集相依性資料的 _應用程式對應_ �
 
 有兩種方式可以查看您的函數執行所產生的記錄資料串流。
 
-* **內建記錄資料流** ：App Service 平台可讓您檢視應用程式記錄檔的資料流。 當您在 [本機開發](functions-develop-local.md) 期間，以及在入口網站中使用 [ **測試** ] 索引標籤時，此資料流程相當於您在調試函式時所看到的輸出。 隨即會顯示所有以記錄為基礎的資訊。 如需詳細資訊，請參閱[串流處理記錄](../app-service/troubleshoot-diagnostic-logs.md#stream-logs)。 此串流處理方法僅支援單一執行個體，且不能與在使用量方案中的 Linux 上執行的應用程式搭配使用。
+* **內建記錄資料流**：App Service 平台可讓您檢視應用程式記錄檔的資料流。 當您在 [本機開發](functions-develop-local.md) 期間，以及在入口網站中使用 [ **測試** ] 索引標籤時，此資料流程相當於您在調試函式時所看到的輸出。 隨即會顯示所有以記錄為基礎的資訊。 如需詳細資訊，請參閱[串流處理記錄](../app-service/troubleshoot-diagnostic-logs.md#stream-logs)。 此串流處理方法僅支援單一執行個體，且不能與在使用量方案中的 Linux 上執行的應用程式搭配使用。
 
-* **即時計量資料流** ：當您的函式應用程式 [連線到 Application Insights](configure-monitoring.md#enable-application-insights-integration)時，您可以使用 [即時計量資料流](../azure-monitor/app/live-stream.md)，在 Azure 入口網站中近乎即時地查看記錄資料和其他度量。 當您在使用量方案中監視在多個執行個體或 Linux 上執行的函式時，請使用此方法。 此方法會使用[取樣資料](configure-monitoring.md#configure-sampling)。
+* **即時計量資料流**：當您的函式應用程式 [連線到 Application Insights](configure-monitoring.md#enable-application-insights-integration)時，您可以使用 [即時計量資料流](../azure-monitor/app/live-stream.md)，在 Azure 入口網站中近乎即時地查看記錄資料和其他度量。 當您在使用量方案中監視在多個執行個體或 Linux 上執行的函式時，請使用此方法。 此方法會使用[取樣資料](configure-monitoring.md#configure-sampling)。
 
 您可以在入口網站和大部分的本機開發環境中檢視記錄資料流。 若要瞭解如何啟用記錄資料流程，請參閱 [Azure Functions 中的啟用串流執行記錄](streaming-logs.md)。
 
 ## <a name="diagnostic-logs"></a>診斷記錄
 
-_這項功能目前為預覽狀態。_ 
+此功能處於預覽狀態。 
 
 Application Insights 可讓您將遙測資料匯出至長期儲存或其他 analysis services。  
 
@@ -111,7 +111,7 @@ Application Insights 可讓您將遙測資料匯出至長期儲存或其他 anal
 
 ## <a name="scale-controller-logs"></a>調整控制器記錄
 
-_這項功能目前為預覽狀態。_ 
+此功能處於預覽狀態。 
 
 [Azure Functions 調整控制器](./functions-scale.md#runtime-scaling)會監視您的應用程式執行所在 Azure Functions 主機的實例。 此控制器會決定何時要根據目前的效能來新增或移除實例。 您可以讓調整控制器發出記錄來 Application Insights，以深入瞭解調整控制器針對您的函數應用程式所做的決策。 您也可以將產生的記錄儲存在 Blob 儲存體中，以供其他服務進行分析。 
 

@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 44f6d700ff25f0c2f2cb8bedc5c2d15ad2adcb83
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python, contperf-fy21q1
+ms.openlocfilehash: c25f3965775c6518629c92ccc371855d9178e648
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320832"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033709"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>設定模型定型和部署的計算目標
 
@@ -47,7 +47,7 @@ ms.locfileid: "93320832"
 
 ## <a name="limitations"></a>限制
 
-* 請勿從您的工作區 **建立多個同時附加至相同計算的附件** 。 例如，使用兩個不同的名稱，將一個 Azure Kubernetes Service 叢集附加至工作區。 每個新的附件都會中斷先前現有的附件 (s) 。
+* 請勿從您的工作區 **建立多個同時附加至相同計算的附件**。 例如，使用兩個不同的名稱，將一個 Azure Kubernetes Service 叢集附加至工作區。 每個新的附件都會中斷先前現有的附件 (s) 。
 
     如果您想要重新連接計算目標，例如變更 TLS 或其他叢集設定，您必須先移除現有的附件。
 
@@ -70,14 +70,14 @@ Azure Machine Learning 也支援提供您自己的計算資源，並將其附加
 
 針對此案例，請使用 Azure 資料科學虛擬機器 (DSVM) 作為選擇的 Azure VM。 此虛擬機器是 Azure 中預先設定的資料科學和 AI 開發環境。 VM 會針對整個生命週期的機器學習開發，提供精心選擇的工具和架構。 如需有關如何使用 DSVM 搭配 Azure Machine Learning 的詳細資訊，請參閱[設定開發環境](./how-to-configure-environment.md#dsvm)。
 
-1. **建立** ：先建立 DSVM，才能使用它定型模型。 若要建立此資源，請參閱[佈建適用於 Linux (Ubuntu) 的資料科學虛擬機器](./data-science-virtual-machine/dsvm-ubuntu-intro.md)。
+1. **建立**：先建立 DSVM，才能使用它定型模型。 若要建立此資源，請參閱[佈建適用於 Linux (Ubuntu) 的資料科學虛擬機器](./data-science-virtual-machine/dsvm-ubuntu-intro.md)。
 
     > [!WARNING]
     > Azure Machine Learning 僅支援執行 **Ubuntu** 的虛擬機器。 當您建立 VM 或選擇現有的 VM 時，您必須選取使用 Ubuntu 的 VM。
     > 
-    > Azure Machine Learning 也需要虛擬機器具有 __公用 IP 位址__ 。
+    > Azure Machine Learning 也需要虛擬機器具有 __公用 IP 位址__。
 
-1. **連結** ：若要附加現有的虛擬機器作為計算目標，您必須提供虛擬機器的資源識別碼、使用者名稱與密碼。 您可以使用訂用帳戶識別碼、資源群組名稱和 VM 名稱，以下列字串格式建構 VM 的資源識別碼：`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
+1. **連結**：若要附加現有的虛擬機器作為計算目標，您必須提供虛擬機器的資源識別碼、使用者名稱與密碼。 您可以使用訂用帳戶識別碼、資源群組名稱和 VM 名稱，以下列字串格式建構 VM 的資源識別碼：`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
 
  
    ```python
@@ -102,7 +102,7 @@ Azure Machine Learning 也支援提供您自己的計算資源，並將其附加
     > [!WARNING]
     > 請勿從您的工作區建立多個同時附加至相同 DSVM 的附件。 每個新的附件都會中斷先前現有的附件 (s) 。
 
-1. **設定** ：為 DSVM 計算目標建立回合組態。 Docker 和 Conda 用來建立和設定 DSVM 上的定型環境。
+1. **設定**：為 DSVM 計算目標建立回合組態。 Docker 和 Conda 用來建立和設定 DSVM 上的定型環境。
 
    ```python
    from azureml.core import ScriptRunConfig
@@ -128,16 +128,16 @@ Azure Machine Learning 也支援提供您自己的計算資源，並將其附加
 
 Azure HDInsight 是巨量資料分析的常用平台。 此平台會提供 Apache Spark，可用來將您的模型定型。
 
-1. **建立** ：先建立 HDInsight 叢集，才能使用它定型模型。 若要在 HDInsight 叢集上建立 Spark，請參閱[在 HDInsight 中建立 Spark 叢集](../hdinsight/spark/apache-spark-jupyter-spark-sql.md)。 
+1. **建立**：先建立 HDInsight 叢集，才能使用它定型模型。 若要在 HDInsight 叢集上建立 Spark，請參閱[在 HDInsight 中建立 Spark 叢集](../hdinsight/spark/apache-spark-jupyter-spark-sql.md)。 
 
     > [!WARNING]
-    > Azure Machine Learning 要求 HDInsight 叢集必須有 __公用 IP 位址__ 。
+    > Azure Machine Learning 要求 HDInsight 叢集必須有 __公用 IP 位址__。
 
     建立叢集時，必須指定 SSH 使用者名稱與密碼。 請記下這些值，因為使用 HDInsight 作為計算目標時會需要它們。
     
     叢集建立之後，請使用主機名稱 ssh.azurehdinsight.net 連接到該叢集 \<clustername> ，其中 \<clustername> 是您為叢集提供的名稱。 
 
-1. **連結** ：若要連結 HDInsight 叢集作為計算目標，必須提供 HDInsight 叢集的資源識別碼、使用者名稱與密碼。 您可以使用訂用帳戶識別碼、資源群組名稱和 HDInsight 叢集名稱，以下列字串格式建構 HDInsight 叢集的資源識別碼：`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
+1. **連結**：若要連結 HDInsight 叢集作為計算目標，必須提供 HDInsight 叢集的資源識別碼、使用者名稱與密碼。 您可以使用訂用帳戶識別碼、資源群組名稱和 HDInsight 叢集名稱，以下列字串格式建構 HDInsight 叢集的資源識別碼：`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
 
     ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -165,7 +165,7 @@ Azure HDInsight 是巨量資料分析的常用平台。 此平台會提供 Apach
     > [!WARNING]
     > 請勿從您的工作區建立多個同時附加至相同 HDInsight 的附件。 每個新的附件都會中斷先前現有的附件 (s) 。
 
-1. **設定** ：為 HDI 計算目標建立回合組態。 
+1. **設定**：為 HDI 計算目標建立回合組態。 
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
@@ -178,9 +178,9 @@ Azure Batch 可用來在雲端有效率地執行大規模的平行和高效能�
 
 若要連結 Azure Batch 來作為計算目標，您必須使用 Azure Machine Learning SDK，並提供下列資訊：
 
--    **Azure Batch 計算名稱** ：要用於工作區內計算的自訂名稱
--    **Azure Batch 帳戶名稱** ：Azure Batch 帳戶的名稱
--    **資源群組** ：包含 Azure Batch 帳戶的資源群組。
+-    **Azure Batch 計算名稱**：要用於工作區內計算的自訂名稱
+-    **Azure Batch 帳戶名稱**：Azure Batch 帳戶的名稱
+-    **資源群組**：包含 Azure Batch 帳戶的資源群組。
 
 下列程式碼示範如何連結 Azure Batch 來作為計算目標：
 
@@ -223,11 +223,11 @@ Azure Databricks 是 Azure 雲端中的 Apache Spark 型環境。 它可與 Azur
 
 若要連結 Azure Databricks 作為計算目標，請提供下列資訊：
 
-* __Databricks 計算名稱__ ：您要指派給這個計算資源的名稱。
-* __Databricks 工作區名稱__ ： Azure Databricks 工作區的名稱。
-* __Databricks 存取權杖__ ：用來向 Azure Databricks 驗證的存取權杖。 若要產生存取權杖，請參閱[驗證](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html)文件。
+* __Databricks 計算名稱__：您要指派給這個計算資源的名稱。
+* __Databricks 工作區名稱__： Azure Databricks 工作區的名稱。
+* __Databricks 存取權杖__：用來向 Azure Databricks 驗證的存取權杖。 若要產生存取權杖，請參閱[驗證](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html)文件。
 
-下列程式碼示範如何使用 Azure Machine Learning SDK 來附加 Azure Databricks 作為計算目標 ( __Databricks 工作區必須存在於與 AML 工作區) 相同的訂用帳戶中__ ：
+下列程式碼示範如何使用 Azure Machine Learning SDK 來附加 Azure Databricks 作為計算目標 (__Databricks 工作區必須存在於與 AML 工作區) 相同的訂用帳戶中__ ：
 
 ```python
 import os
@@ -279,9 +279,9 @@ Azure Data Lake Analytics 是 Azure 雲端中的巨量資料分析平台。 它�
 
 若要連結 Data Lake Analytics 來作為計算目標，您必須使用 Azure Machine Learning SDK，並提供下列資訊：
 
-* __計算名稱__ ：您想要指派給這個計算資源的名稱。
-* __資源群組__ ：包含 Data Lake Analytics 帳戶的資源群組。
-* __帳戶名稱__ ： Data Lake Analytics 的帳戶名稱。
+* __計算名稱__：您想要指派給這個計算資源的名稱。
+* __資源群組__：包含 Data Lake Analytics 帳戶的資源群組。
+* __帳戶名稱__： Data Lake Analytics 的帳戶名稱。
 
 下列程式碼示範如何連結 Data Lake Analytics 來作為計算目標：
 

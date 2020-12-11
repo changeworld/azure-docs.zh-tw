@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom:
-- contperfq1
+- contperf-fy21q1
 - device-developer
-ms.openlocfilehash: f5b3e461408242553822024bc59c56a3feb29c44
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9e5e96d97494f4ba9aa28e84b046cd057fe8eba7
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999513"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033403"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>在 Azure IoT Central 應用程式中定義新的 IoT 裝置類型
 
@@ -126,7 +126,7 @@ ms.locfileid: "95999513"
 | 功能類型 | 遙測。 |
 | 語意類型 | 遙測的語意類型，例如溫度、狀態或事件。 所選擇的語意類型會決定下列哪些欄位可供使用。 |
 | 結構描述 | 遙測的資料類型，例如雙精度浮點數、字串或向量。 可用的選項取決於語意類型。 結構描述不適用於事件和狀態這兩種語意類型。 |
-| Severity | 僅適用於事件語意類型。 嚴重性為 [錯誤]、[資訊]或 [警告]。 |
+| 嚴重性 | 僅適用於事件語意類型。 嚴重性為 [錯誤]、[資訊]或 [警告]。 |
 | 狀態值 | 僅適用於狀態語意類型。 會定義可能的狀態值，每個狀態值都會有顯示名稱、名稱、列舉類型和值。 |
 | 單位 | 遙測值的單位，例如 **>mph**、 **%** 或 **&deg; C**。 |
 | 顯示單位 | 要在儀表板和表單上使用的顯示單位。 |
@@ -147,7 +147,7 @@ ms.locfileid: "95999513"
 | 語意類型 | 屬性的語意類型，例如溫度、狀態或事件。 所選擇的語意類型會決定下列哪些欄位可供使用。 |
 | 結構描述 | 屬性的資料類型，例如雙精度浮點數、字串或向量。 可用的選項取決於語意類型。 結構描述不適用於事件和狀態這兩種語意類型。 |
 | 可寫入 | 如果屬性不可寫入，則裝置可以向 IoT Central 報告屬性值。 如果屬性為可寫入，則裝置可以將屬性值回報給 IoT Central，IoT Central 可以將屬性更新傳送至裝置。
-| Severity | 僅適用於事件語意類型。 嚴重性為 [錯誤]、[資訊]或 [警告]。 |
+| 嚴重性 | 僅適用於事件語意類型。 嚴重性為 [錯誤]、[資訊]或 [警告]。 |
 | 狀態值 | 僅適用於狀態語意類型。 會定義可能的狀態值，每個狀態值都會有顯示名稱、名稱、列舉類型和值。 |
 | 單位 | 屬性值的單位，例如 **>mph**、 **%** 或 **&deg; C**。 |
 | 顯示單位 | 要在儀表板和表單上使用的顯示單位。 |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 110a25fca0b0e764650665635dbe545de7a350cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b53c0002af3680567aabf0955f6bb4e0d99c2ab1
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653991"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093429"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>因應 Azure Kubernetes Service (AKS) 中商務持續性和災害復原的最佳做法
 
@@ -81,7 +81,7 @@ AKS 區域可用性和配對區域是聯合考慮。 請將 AKS 叢集部署到�
 
 * **更快速**：從相同 Azure 區域內的高速、低延遲網路連線提取映射。
 * **更可靠**：如果區域無法使用，您的 AKS 叢集會從可用的容器登錄中提取映射。
-* **成本**低廉：資料中心之間沒有網路輸出費用。
+* **成本** 低廉：資料中心之間沒有網路輸出費用。
 
 異地複寫是 *Premium* SKU 容器登錄的功能。 如需有關如何設定異地複寫的詳細資訊，請參閱 [Container Registry 異地](../container-registry/container-registry-geo-replication.md)複寫。
 
@@ -113,7 +113,7 @@ AKS 區域可用性和配對區域是聯合考慮。 請將 AKS 叢集部署到�
 
 即使在 pod 刪除之後，您的應用程式也可能需要持續性儲存體。 在 Kubernetes 中，您可以使用持續性磁片區來保存資料存放區。 持續性磁片區會掛接到節點 VM，然後公開至 pod。 即使 pod 移至相同叢集中的不同節點，持續性磁片區仍會遵循 pod。
 
-您使用的複寫策略取決於您的儲存體解決方案。 一般儲存體解決方案（例如 [Gluster](https://docs.gluster.org/en/latest/Administrator%20Guide/Geo%20Replication/)、 [Ceph](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/)、 [城堡](https://rook.io/docs/rook/v1.2/ceph-disaster-recovery.html)和 [Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) ）提供有關嚴重損壞修復和複寫的指引。
+您使用的複寫策略取決於您的儲存體解決方案。 一般儲存體解決方案（例如 [Gluster](https://docs.gluster.org/en/latest/Administrator-Guide/Geo-Replication/)、 [Ceph](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/)、 [城堡](https://rook.io/docs/rook/v1.2/ceph-disaster-recovery.html)和 [Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) ）提供有關嚴重損壞修復和複寫的指引。
 
 典型的策略是提供可讓應用程式寫入其資料的一般儲存點。 然後，此資料會複寫到各個區域，再於本機存取。
 
@@ -130,7 +130,7 @@ Kubernetes 目前沒有針對以應用程式為基礎的非同步複寫提供原
 
 ![以應用程式為基礎的非同步複寫](media/operator-best-practices-bc-dr/aks-app-based-async-repl.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 本文著重于 AKS 叢集的商務持續性和嚴重損壞修復考慮。 如需有關 AKS 中叢集操作的詳細資訊，請參閱下列關於最佳做法的文章：
 

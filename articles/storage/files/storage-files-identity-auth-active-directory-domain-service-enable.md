@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.custom: contperfq1, devx-track-azurecli
-ms.openlocfilehash: 5d900f105728efc6f58c4f9f7412cea157cbfe20
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.custom: contperf-fy21q1, devx-track-azurecli
+ms.openlocfilehash: deed7c3dce2d7da1940a8a4871efac7453e2cf60
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630374"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033675"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>在 Azure 檔案儲存體上啟用 Azure Active Directory Domain Services authentication
 
@@ -25,7 +25,7 @@ ms.locfileid: "94630374"
 > Azure 檔案儲存體支援搭配 RC4-HMAC 加密的 Azure AD DS 進行 Kerberos 驗證。 尚不支援 AES Kerberos 加密。
 > Azure 檔案儲存體支援 Azure AD DS 驗證與 Azure AD 的完整同步處理。 如果您已啟用 Azure AD DS 中的限域同步處理，只會從 Azure AD 同步處理一組有限的身分識別，就不支援驗證和授權。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 針對 Azure 檔案共用啟用 Azure AD over SMB 之前，請確定您已完成下列必要條件：
 
@@ -88,8 +88,8 @@ ms.locfileid: "94630374"
 
 1. 在 Azure 入口網站中，移至您現有的儲存體帳戶，或 [建立儲存體帳戶](../common/storage-account-create.md)。
 1. 在 [設定] 區段中，選取 [組態]。
-1. 在檔案共用的 [ **以身分識別為基礎的存取** ] 下，將 **Azure Active Directory 網域服務 (AAD DS)** 切換為 [ **已啟用** ]。
-1. 選取 [儲存]  。
+1. 在檔案共用的 [ **以身分識別為基礎的存取** ] 下，將 **Azure Active Directory 網域服務 (AAD DS)** 切換為 [ **已啟用**]。
+1. 選取 [儲存]。
 
 下圖顯示如何針對您的儲存體帳戶啟用透過 SMB 進行 Azure AD DS 驗證。
 
@@ -99,7 +99,7 @@ ms.locfileid: "94630374"
 
 若要使用 Azure PowerShell 啟用透過 SMB Azure AD DS 驗證，請安裝最新的 Az 模組 (2.4 或更新版本的) 或 Az. Storage 模組 (1.5 或更新版本的) 。 如需安裝 PowerShell 的詳細資訊，請參閱 [使用 PowerShellGet 在 Windows 上安裝 Azure PowerShell](/powershell/azure/install-Az-ps)。
 
-若要建立新的儲存體帳戶，請呼叫 [new-new-azstorageaccount](/powershell/module/az.storage/New-azStorageAccount?view=azps-2.5.0)，然後將 **EnableAzureActiveDirectoryDomainServicesForFile** 參數設定為 **true** 。 在下列範例中，請記得使用您自己的值來取代預留位置值。  (如果您使用先前的預覽模組，則啟用功能的參數是 **>enableazurefilesaadintegrationforsmb** 。 ) 
+若要建立新的儲存體帳戶，請呼叫 [new-new-azstorageaccount](/powershell/module/az.storage/New-azStorageAccount?view=azps-2.5.0)，然後將 **EnableAzureActiveDirectoryDomainServicesForFile** 參數設定為 **true**。 在下列範例中，請記得使用您自己的值來取代預留位置值。  (如果您使用先前的預覽模組，則啟用功能的參數是 **>enableazurefilesaadintegrationforsmb**。 ) 
 
 ```powershell
 # Create a new storage account
@@ -125,7 +125,7 @@ Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
 
 若要使用 Azure CLI 啟用透過 SMB 進行 Azure AD 驗證，請安裝最新的 CLI 版本 (版本2.0.70 或更新版本的) 。 如需安裝 Azure CLI 的詳細資訊，請參閱 [安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-若要建立新的儲存體帳戶，請呼叫 [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)，然後將 `--enable-files-aadds` 屬性設定為 **true** 。 在下列範例中，請記得使用您自己的值來取代預留位置值。  (如果您使用先前的預覽模組，功能啟用的參數會是檔案 **aad** 。 ) 
+若要建立新的儲存體帳戶，請呼叫 [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)，然後將 `--enable-files-aadds` 屬性設定為 **true**。 在下列範例中，請記得使用您自己的值來取代預留位置值。  (如果您使用先前的預覽模組，功能啟用的參數會是檔案 **aad**。 ) 
 
 ```azurecli-interactive
 # Create a new storage account

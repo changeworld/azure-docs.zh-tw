@@ -4,16 +4,16 @@ description: 瞭解 Azure Vm 的 ultra 磁片
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 12/10/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: aa1c681d4b34199456f3447bcac5587005a044ce
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 9c3c1acbc2606d882ad45744457137be5014bc4c
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96016621"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093480"
 ---
 # <a name="using-azure-ultra-disks"></a>使用 Azure ultra 磁片
 
@@ -120,7 +120,7 @@ UltraSSDAvailable                            True
 
 如果您想要建立具有多個 ultra 磁片的 VM，請參閱範例 [建立具有多個 ultra 磁片的 vm](https://aka.ms/ultradiskArmTemplate)。
 
-如果您想要使用自己的範本，請確定 **apiVersion** `Microsoft.Compute/virtualMachines` `Microsoft.Compute/Disks` 已將 apiVersion 設定為 `2018-06-01` (或更新版本) 。
+如果您想要使用自己的範本，請確定 `Microsoft.Compute/virtualMachines` `Microsoft.Compute/Disks` 已將 apiVersion 設定為 `2018-06-01` (或更新版本) 。
 
 將磁片 sku 設定為 **UltraSSD_LRS**，然後設定磁片容量、IOPS、可用性區域和輸送量（以 MBps 為單位）來建立 ultra 磁片。
 
@@ -170,9 +170,6 @@ UltraSSDAvailable                            True
 ```azurecli-interactive
 az disk create --subscription $subscription -n $diskname -g $rgname --size-gb 1024 --location $location --sku UltraSSD_LRS --disk-iops-read-write 8192 --disk-mbps-read-write 400
 az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --size Standard_D4s_v3 --location $location --attach-data-disks $diskname
-
-#create an ultra disk with 512 sector size
-az disk create --subscription $subscription -n $diskname -g $rgname --size-gb 1024 --location $location --sku UltraSSD_LRS --disk-iops-read-write 8192 --disk-mbps-read-write 400 --logical-sector-size 512
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -225,8 +222,59 @@ $vm = Get-AzVM -ResourceGroupName $resourceGroup -Name $vmName
 $disk = Get-AzDisk -ResourceGroupName $resourceGroup -Name $diskName
 $vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Attach -ManagedDiskId $disk.Id -Lun $lun
 Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
+```
 
-# Example for creating a disk with 512 sector size
+---
+
+## <a name="deploy-an-ultra-disk---512-byte-sector-size"></a>部署 ultra 磁片-512 位元組磁區大小
+
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
+
+Azure 入口網站目前不支援以512位元組磁區大小建立 ultra 磁片。 您可以改為使用 Azure PowerShell 模組或 Azure CLI 來建立具有512位元組磁區大小的 ultra 磁片。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+首先，判斷要部署的 VM 大小。 如需支援的 VM 大小清單，請參閱 [GA 範圍和限制](#ga-scope-and-limitations) 一節。
+
+您必須建立能夠使用 ultra 磁片的 VM，才能連接 ultra 磁片。
+
+以您自己的值取代或設定 **$vmname**、 **$rgname**、 **$diskname**、 **$location**、 **$password**、 **$user** 變數。 將 **$zone**  設定為您從本文 [開頭](#determine-vm-size-and-region-availability)取得的可用性區域值。 然後執行下列 CLI 命令，以建立具有512位元組磁區大小之 ultra 磁片的 VM：
+
+```azurecli
+#create an ultra disk with 512 sector size
+az disk create --subscription $subscription -n $diskname -g $rgname --size-gb 1024 --location $location --sku UltraSSD_LRS --disk-iops-read-write 8192 --disk-mbps-read-write 400 --logical-sector-size 512
+az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --size Standard_D4s_v3 --location $location --attach-data-disks $diskname
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+首先，判斷要部署的 VM 大小。 如需支援的 VM 大小清單，請參閱 [GA 範圍和限制](#ga-scope-and-limitations) 一節。
+
+若要使用 ultra 磁片，您必須建立能夠使用 ultra 磁片的 VM。 以您自己的值取代或設定 **$resourcegroup** 和 **$vmName** 變數。 將 **$zone** 設定為您從本文 [開頭](#determine-vm-size-and-region-availability)取得的可用性區域值。 然後執行下列 [new-azvm](/powershell/module/az.compute/new-azvm) 命令，以建立啟用 ULTRA 的 VM：
+
+```powershell
+New-AzVm `
+    -ResourceGroupName $resourcegroup `
+    -Name $vmName `
+    -Location "eastus2" `
+    -Image "Win2016Datacenter" `
+    -EnableUltraSSD `
+    -size "Standard_D4s_v3" `
+    -zone $zone
+```
+
+若要建立並連接具有512位元組磁區大小的 ultra 磁片，您可以使用下列腳本：
+
+```powershell
+# Set parameters and select subscription
+$subscription = "<yourSubscriptionID>"
+$resourceGroup = "<yourResourceGroup>"
+$vmName = "<yourVMName>"
+$diskName = "<yourDiskName>"
+$lun = 1
+Connect-AzAccount -SubscriptionId $subscription
+
+# Create the disk
 $diskconfig = New-AzDiskConfig `
 -Location 'EastUS2' `
 -DiskSizeGB 8 `
@@ -237,8 +285,17 @@ $diskconfig = New-AzDiskConfig `
 -CreateOption Empty `
 -zone $zone;
 
-```
+New-AzDisk `
+-ResourceGroupName $resourceGroup `
+-DiskName $diskName `
+-Disk $diskconfig;
 
+# add disk to VM
+$vm = Get-AzVM -ResourceGroupName $resourceGroup -Name $vmName
+$disk = Get-AzDisk -ResourceGroupName $resourceGroup -Name $diskName
+$vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Attach -ManagedDiskId $disk.Id -Lun $lun
+Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
+```
 ---
 ## <a name="attach-an-ultra-disk"></a>連接 ultra 磁片
 

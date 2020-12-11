@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 09/13/2020
-ms.openlocfilehash: 8250f7154cfb2739d065980284da67a200680d89
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 805bc2aecda37599234c81dd928868d8c14aea4e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919487"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97091984"
 ---
 # <a name="train-machine-learning-models"></a>訓練機器學習模型
 Azure Synapse Analytics 中的 Apache Spark 能以大量資料進行機器學習，讓您能夠從大量的結構化、非結構化和快速移動的資料中取得寶貴的見解。 在 Azure Synapse Analytics 中使用 Azure Spark 定型機器學習模型時，有數個選項： Apache Spark MLlib、Azure Machine Learning，以及各種其他開放原始碼程式庫。 
@@ -44,13 +44,13 @@ Azure Synapse Analytics 中的每個 Apache Spark 集區都隨附一組預先載
 建立可調整的 ML 模型時 (例如，編製索引字串)，MMLSpark 會在 SparkML 的低階 API 上提供一個層級，將資料強制轉型成機器學習服務演算法預期的版面配置，並組合功能向量。 MMLSpark 程式庫簡化了這些流程，以及在 PySpark 中建立模型的常見工作。
 
 ## <a name="automated-ml-in-azure-machine-learning"></a>Azure Machine Learning 中的自動化 ML 
-Azure Machine Learning 是一個雲端式環境，可讓您定型、部署、自動化、管理和追蹤機器學習模型。 Azure Machine Learning 中的自動化 ML (AutoML) 接受定型資料和設定，並自動逐一查看不同功能正規化/標準化方法、模型和超參數設定的組合，以達到最佳模型。 
+Azure Machine Learning 是一個雲端式環境，可讓您定型、部署、自動化、管理和追蹤機器學習模型。 Azure Machine Learning 中的自動化 ML 接受定型資料和設定設定，並自動逐一查看不同功能正規化/標準化方法、模型和超參數設定的組合，以達到最佳模型。 
 
-在 Azure Synapse Analytics 內使用 AutoML 時，您可以利用不同服務之間的深層整合，以簡化 & 模型定型的驗證。 
+在 Azure Synapse Analytics 中使用自動化 ML 時，您可以利用不同服務之間的深層整合，以簡化驗證 & 模型定型。 
 
 > [!NOTE]
 > 
-> 您可以遵循本 [教學](./spark/../apache-spark-azure-machine-learning-tutorial.md)課程，深入瞭解如何建立 Azure Machine Learning AutoML 實驗。
+> 您可以遵循本 [教學](./spark/../apache-spark-azure-machine-learning-tutorial.md)課程，深入瞭解如何建立 AZURE MACHINE LEARNING 自動化 ML 實驗。
 
 ## <a name="azure-cognitive-services"></a>Azure 認知服務
 [Azure 認知服務](https://docs.microsoft.com/azure/cognitive-services/what-are-cognitive-services) 提供機器學習服務功能，可解決一般問題，例如分析情緒情感的文字，或分析影像以辨識物件或臉部。 您不需要具備機器學習或資料科學的專門知識，即可使用這些服務。 認知服務會在機器學習解決方案中提供部分或所有元件：資料、演算法和定型的模型。 這些服務的目的是要要求您資料的一般知識，而不需要使用機器學習或資料科學的經驗。 您可以在 Azure Synapse Analytics 內自動利用這些預先定型的認知服務。
@@ -58,6 +58,6 @@ Azure Machine Learning 是一個雲端式環境，可讓您定型、部署、自
 ## <a name="next-steps"></a>後續步驟
 本文概述在 Azure Synapse Analytics 的 Apache Spark 集區中訓練機器學習模型的各種選項。 您可以遵循下列教學課程來深入瞭解模型定型：
 
-- 使用 Azure Machine Learning 和 Azure Synapse Analytics 執行自動化 ML 實驗： [AutoML 教學](./spark/../apache-spark-autoscale.md)課程 
+- 使用 Azure Machine Learning 和 Azure Synapse Analytics 執行自動化 ML 實驗：[自動化 Ml 教學](./spark/../apache-spark-autoscale.md)課程 
 - 執行 SparkML 實驗： [Apache SparkML 教學](../spark/apache-spark-azure-machine-learning-tutorial.md)課程
 - 查看預設程式庫： [Azure Synapse Analytics 運行](../spark/apache-spark-version-support.md)時間

@@ -2,14 +2,14 @@
 title: 概念-監視和修復 Azure VMware 解決方案私人雲端
 description: 瞭解 Azure VMware 解決方案如何監視和修復 Azure VMware 解決方案私人雲端上的 VMware ESXi 伺服器。
 ms.topic: conceptual
-ms.custom: contperfq2
+ms.custom: contperf-fy21q2
 ms.date: 11/20/2020
-ms.openlocfilehash: 6c37ff6cc0715182453669f67306094af2f00cdf
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7f367a6ef9b86f235a16a698735cfb58a11f6862
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024342"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033590"
 ---
 # <a name="monitor-and-repair-azure-vmware-solution-private-clouds"></a>監視及修復 Azure VMware 解決方案私人雲端
 
@@ -41,7 +41,7 @@ Azure VMware 解決方案會監視主機上失敗狀況的下列各項：
 
 主機補救程式一開始會將新的狀況良好節點新增至叢集中。 如此一來，故障的主機可能會在 VMware vSphere 維護模式下放置。 VMware vMotion 可用來將 Vm 從故障的主機移至叢集中的其他可用伺服器，這可能會讓工作負載的即時移轉不會中斷。 在故障主機無法置於維護模式的情況下，主機會從叢集移除。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 以下是您可能想要深入瞭解的一些主題：
 

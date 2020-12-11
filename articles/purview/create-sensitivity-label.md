@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 195ddfcc3c781c1866a7751f989c9460463edbb9
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: c824e0abea7320a20441e51caa2a05d534ff61b3
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558159"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092681"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>在 Azure 範疇中自動標示您的資料
 
@@ -38,7 +38,7 @@ ms.locfileid: "96558159"
 
 Azure 範疇中的敏感度標籤可以用來自動將標籤套用至檔案和資料庫資料行。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 - 瞭解 Microsoft 365 檔中的[敏感度標籤](/microsoft-365/compliance/sensitivity-labels)
 - [什麼是 pdf 規則？](#what-are-autolabeling-rules)
@@ -68,7 +68,7 @@ Azure 範疇中支援下列資料類型的敏感度標籤：
 
 如果您還沒有敏感度標籤，您必須建立它們，並使其可供 Azure 範疇使用。 您也可以修改現有的敏感度標籤，使其可供 Azure 範疇使用。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 - [授權需求](#licensing-requirements)
 - [將敏感度標籤擴充至 Azure 範疇](#extending-sensitivity-labels-to-azure-purview)
@@ -190,7 +190,6 @@ MIP 敏感度標籤是在 Microsoft 365 安全性與合規性中心建立和管�
 |**Azure Blob 儲存體**     |[註冊並掃描 Azure Blob 儲存體](register-scan-azure-blob-storage-source.md)         |
 |**Azure Data Lake 儲存體**     |[註冊並掃描 Azure Data Lake Storage Gen1](register-scan-adls-gen1.md) </br>[註冊並掃描 Azure Data Lake Storage Gen2](register-scan-adls-gen2.md)         |
 |**Azure SQL Database**|[註冊並掃描 Azure SQL Database](register-scan-azure-sql-database.md) </br>[註冊並掃描 Azure SQL Database 受控執行個體](register-scan-azure-sql-database-managed-instance.md)|
-|**防火牆後方的儲存體帳戶**     |[在 Azure 範疇中掃描防火牆後方的儲存體帳戶](scan-sqlresource-firewall.md)         |
 | | |
 
 ## <a name="view-labels-on-assets"></a>查看資產上的標籤

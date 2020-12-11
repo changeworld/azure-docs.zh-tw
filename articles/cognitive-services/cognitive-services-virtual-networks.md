@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 12/04/2020
 ms.author: aahi
-ms.openlocfilehash: f79cfce514b81c5829ee7791c18e24d3bc6563b5
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 3b6c2a5a50cedadd8818eae735df55b661e794ef
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369370"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97034015"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>設定 Azure 認知服務虛擬網路
 
@@ -43,25 +43,28 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 [可使用認知服務的區域](https://azure.microsoft.com/global-infrastructure/services/)支援虛擬網路 (vnet) 。 認知服務支援網路規則設定的服務標記。 以下列出的服務包含在 **CognitiveServicesManagement** 服務標記中。
 
 > [!div class="checklist"]
-> * 異常偵測器
+> * Anomaly Detector
 > * 電腦視覺
-> * 內容仲裁
+> * 內容仲裁者
 > * 自訂視覺
 > * 臉部
 > * 表單辨識器
+> * 沈浸式閱讀程式
 > * 語言理解 (LUIS)
 > * 個人化工具
+> * 語音服務
 > * 文字分析
 > * QnA Maker
 > * 翻譯工具文字
-> * 沈浸式閱讀程式
+
 
 > [!NOTE]
 > 如果您使用的是 LUIS， **CognitiveServicesManagement** 標記只會讓您使用 SDK 或 REST API 來使用服務。 若要從虛擬網路存取和使用 LUIS 入口網站，您將需要使用下列標記：  
-> * **AzureResourceManager** 
-> * **CognitiveServicesManagement**
 > * **AzureActiveDirectory**
 > * **AzureFrontDoor.Frontend**
+> * **AzureResourceManager** 
+> * **CognitiveServicesManagement**
+
 
 
 ## <a name="change-the-default-network-access-rule"></a>變更預設的網路存取規則
@@ -79,7 +82,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 1. 移至您想要保護的認知服務資源。
 
-1. 選取名為 [ **虛擬網路** ] 的 **資源管理** 功能表。
+1. 選取名為 [**虛擬網路**] 的 **資源管理** 功能表。
 
    ![虛擬網路選項](media/vnet/virtual-network-blade.png)
 
@@ -92,7 +95,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. 安裝 [Azure PowerShell](/powershell/azure/install-az-ps) 並登 [入](/powershell/azure/authenticate-azureps)，或選取 [ **試試看** ]。
+1. 安裝 [Azure PowerShell](/powershell/azure/install-az-ps) 並登 [入](/powershell/azure/authenticate-azureps)，或選取 [ **試試看**]。
 
 1. 顯示認知服務資源的預設規則狀態。
 
@@ -128,7 +131,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. 安裝 [Azure CLI](/cli/azure/install-azure-cli) 並登 [入](/cli/azure/authenticate-azure-cli)，或選取 [ **試試看** ]。
+1. 安裝 [Azure CLI](/cli/azure/install-azure-cli) 並登 [入](/cli/azure/authenticate-azure-cli)，或選取 [ **試試看**]。
 
 1. 顯示認知服務資源的預設規則狀態。
 
@@ -181,23 +184,23 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 1. 移至您想要保護的認知服務資源。
 
-1. 選取名為 [ **虛擬網路** ] 的 **資源管理** 功能表。
+1. 選取名為 [**虛擬網路**] 的 **資源管理** 功能表。
 
 1. 請確定您已選取允許從 **所選網路** 進行存取。
 
-1. 若要授與具有現有網路規則之虛擬網路的存取權，請選取 [ **虛擬網路** ] 下的 [ **新增現有的虛擬網路** ]。
+1. 若要授與具有現有網路規則之虛擬網路的存取權，請選取 [ **虛擬網路**] 下的 [ **新增現有的虛擬網路**]。
 
    ![新增現有的 vNet](media/vnet/virtual-network-add-existing.png)
 
-1. 選取 [ **虛擬網路** ] 和 [ **子網** ] 選項，然後選取 [ **啟用** ]。
+1. 選取 [ **虛擬網路** ] 和 [ **子網** ] 選項，然後選取 [ **啟用**]。
 
    ![新增現有的 vNet 詳細資料](media/vnet/virtual-network-add-existing-details.png)
 
-1. 若要建立新的虛擬網路並授與存取權，請選取 [ **新增虛擬網路** ]。
+1. 若要建立新的虛擬網路並授與存取權，請選取 [ **新增虛擬網路**]。
 
    ![新增 vNet](media/vnet/virtual-network-add-new.png)
 
-1. 提供建立新虛擬網路所需的資訊，然後選取 [ **建立** ]。
+1. 提供建立新虛擬網路所需的資訊，然後選取 [ **建立**]。
 
    ![建立 vNet](media/vnet/virtual-network-create.png)
 
@@ -206,7 +209,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
     >
     > 目前，只有屬於相同 Azure Active Directory 租用戶的虛擬網路，才會在建立規則時顯示以供選取。 當虛擬網路屬於另一個租用戶時，若要授與權限存取其中的子網路，請使用 Powershell、CLI 或 REST Api。
 
-1. 若要移除虛擬網路或子網規則，請選取 [ **...** ] 開啟虛擬網路或子網的內容功能表，然後選取 [ **移除** ]。
+1. 若要移除虛擬網路或子網規則，請選取 [ **...** ] 開啟虛擬網路或子網的內容功能表，然後選取 [ **移除**]。
 
    ![移除 vNet](media/vnet/virtual-network-remove.png)
 
@@ -214,7 +217,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. 安裝 [Azure PowerShell](/powershell/azure/install-az-ps) 並登 [入](/powershell/azure/authenticate-azureps)，或選取 [ **試試看** ]。
+1. 安裝 [Azure PowerShell](/powershell/azure/install-az-ps) 並登 [入](/powershell/azure/authenticate-azureps)，或選取 [ **試試看**]。
 
 1. 列出虛擬網路規則。
 
@@ -274,7 +277,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. 安裝 [Azure CLI](/cli/azure/install-azure-cli) 並登 [入](/cli/azure/authenticate-azure-cli)，或選取 [ **試試看** ]。
+1. 安裝 [Azure CLI](/cli/azure/install-azure-cli) 並登 [入](/cli/azure/authenticate-azure-cli)，或選取 [ **試試看**]。
 
 1. 列出虛擬網路規則。
 
@@ -357,11 +360,11 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 1. 移至您想要保護的認知服務資源。
 
-1. 選取名為 [ **虛擬網路** ] 的 **資源管理** 功能表。
+1. 選取名為 [**虛擬網路**] 的 **資源管理** 功能表。
 
 1. 請確定您已選取允許從 **所選網路** 進行存取。
 
-1. 若要授與網際網路 IP 範圍的存取權，請在 [ **防火牆** 位址範圍] 下，輸入 (為 [CIDR 格式](https://tools.ietf.org/html/rfc4632)) 的 IP 位址或位址範圍  >  **** 。 只接受有效的公用 IP (非保留) 位址。
+1. 若要授與網際網路 IP 範圍的存取權，請在 [**防火牆** 位址範圍] 下，輸入 (為 [CIDR 格式](https://tools.ietf.org/html/rfc4632)) 的 IP 位址或位址範圍  >  ****。 只接受有效的公用 IP (非保留) 位址。
 
    ![新增 IP 範圍](media/vnet/virtual-network-add-ip-range.png)
 
@@ -373,7 +376,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. 安裝 [Azure PowerShell](/powershell/azure/install-az-ps) 並登 [入](/powershell/azure/authenticate-azureps)，或選取 [ **試試看** ]。
+1. 安裝 [Azure PowerShell](/powershell/azure/install-az-ps) 並登 [入](/powershell/azure/authenticate-azureps)，或選取 [ **試試看**]。
 
 1. 列出 IP 網路規則。
 
@@ -431,7 +434,7 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. 安裝 [Azure CLI](/cli/azure/install-azure-cli) 並登 [入](/cli/azure/authenticate-azure-cli)，或選取 [ **試試看** ]。
+1. 安裝 [Azure CLI](/cli/azure/install-azure-cli) 並登 [入](/cli/azure/authenticate-azure-cli)，或選取 [ **試試看**]。
 
 1. 列出 IP 網路規則。
 
@@ -491,13 +494,13 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 私人端點是您 [VNet](../virtual-network/virtual-networks-overview.md)中 Azure 資源的特殊網路介面。 為您的認知服務資源建立私人端點，可在 VNet 中的用戶端與您的資源之間提供安全的連線能力。 私人端點會從 VNet 的 IP 位址範圍中指派 IP 位址。 私人端點與認知服務服務之間的連接會使用安全的私用連結。
 
-VNet 中的應用程式可以順暢地透過私人端點連接到服務，並使用它們將使用的相同連接字串和授權機制。 例外狀況是語音服務，需要個別的端點。 請參閱 [使用語音服務的私人端點](#private-endpoints-with-the-speech-service)上的一節。 私人端點可與認知服務資源所支援的所有通訊協定搭配使用，包括 REST。
+VNet 中的應用程式可以順暢地透過私人端點連接到服務，並使用它們將使用的相同連接字串和授權機制。 例外狀況是語音服務，需要個別的端點。 請參閱 [使用語音服務的私人端點](#private-endpoints-with-the-speech-services)上的一節。 私人端點可與認知服務資源所支援的所有通訊協定搭配使用，包括 REST。
 
 私人端點可以在使用 [服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)的子網中建立。 子網中的用戶端可以使用私人端點連接至一個認知服務資源，同時使用服務端點來存取其他服務。
 
 當您為 VNet 中的認知服務資源建立私人端點時，會傳送同意要求以供認知服務資源擁有者核准。 如果要求建立私人端點的使用者也是資源的擁有者，則會自動核准此同意要求。
 
-認知服務資源擁有者可以透過 [Azure 入口網站](https://portal.azure.com)中認知服務資源的 [ *私人端點* ] 索引標籤，來管理同意要求和私人端點。
+認知服務資源擁有者可以透過 [Azure 入口網站](https://portal.azure.com)中認知服務資源的 [*私人端點*] 索引標籤，來管理同意要求和私人端點。
 
 ### <a name="private-endpoints"></a>私人端點
 
@@ -509,17 +512,17 @@ VNet 中的應用程式可以順暢地透過私人端點連接到服務，並使
 
 ### <a name="connecting-to-private-endpoints"></a>連接至私人端點
 
-使用私人端點的 VNet 上的用戶端，應該針對認知服務資源使用相同的連接字串，作為連接至公用端點的用戶端。 例外狀況是語音服務，需要個別的端點。 請參閱 [使用語音服務的私人端點](#private-endpoints-with-the-speech-service)上的一節。 我們依賴 DNS 解析，以透過私人連結，自動將 VNet 的連線路由至認知服務資源。 語音服務 
+使用私人端點的 VNet 上的用戶端，應該針對認知服務資源使用相同的連接字串，作為連接至公用端點的用戶端。 例外狀況是語音服務，需要個別的端點。 請參閱 [使用語音服務的私人端點](#private-endpoints-with-the-speech-services)上的一節。 我們依賴 DNS 解析，以透過私人連結，自動將 VNet 的連線路由至認知服務資源。 
 
 根據預設，我們會建立附加至 VNet 的 [私人 DNS 區域](../dns/private-dns-overview.md) ，並具有私人端點的必要更新。 但是，如果您使用自己的 DNS 伺服器，您可能需要對 DNS 設定進行額外的變更。 下列 [DNS 變更](#dns-changes-for-private-endpoints) 一節說明私人端點所需的更新。
 
-### <a name="private-endpoints-with-the-speech-service"></a>具有語音服務的私人端點
+### <a name="private-endpoints-with-the-speech-services"></a>具有語音服務的私人端點
 
-使用私人端點搭配語音服務時，您必須使用自訂端點來呼叫語音服務。 您無法使用全域端點。 端點必須遵循此模式： `{account}.{stt|tts|voice|dls}.speech.microsoft.com` 。
+請參閱 [使用語音服務搭配 Azure Private Link 提供的私用端點](Speech-Service/speech-services-private-link.md)。
 
 ### <a name="dns-changes-for-private-endpoints"></a>私人端點的 DNS 變更
 
-當您建立私人端點時，認知服務資源的 DNS CNAME 資源記錄會更新為首碼為 ' *privatelink* ' 的子域中的別名。 根據預設，我們也會建立對應至 ' *privatelink* ' 子域的 [私人 dns 區域](../dns/private-dns-overview.md)，並以 DNS 為私人端點的資源記錄。
+當您建立私人端點時，認知服務資源的 DNS CNAME 資源記錄會更新為首碼為 '*privatelink*' 的子域中的別名。 根據預設，我們也會建立對應至 '*privatelink*' 子域的 [私人 dns 區域](../dns/private-dns-overview.md)，並以 DNS 為私人端點的資源記錄。
 
 當您從 VNet 外部將端點 URL 解析為私人端點時，它會解析為認知服務資源的公用端點。 從裝載私人端點的 VNet 解析時，端點 URL 會解析為私人端點的 IP 位址。
 

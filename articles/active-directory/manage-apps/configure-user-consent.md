@@ -11,13 +11,13 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.custom: contperfq2
-ms.openlocfilehash: 1617015d6d4a026d5dadda667dcd03447a20c288
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: c279b7f4ec2d70e7eb6a97abf02cfbf4f2ef87f0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649495"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033607"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>設定使用者同意應用程式的方式
 
@@ -161,7 +161,7 @@ Set-AzureADMSAuthorizationPolicy `
     $riskBasedConsentEnabledValue.Value = "True"
     ```
 
-1. 儲存您的設定。
+1. 儲存設定。
 
     ```powershell
     if ($settings.Id) {

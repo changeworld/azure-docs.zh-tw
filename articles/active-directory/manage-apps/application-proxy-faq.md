@@ -11,13 +11,13 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: contperfq2
-ms.openlocfilehash: e9a03c82fd4bd79e7a47fa34ff7a69870c52f018
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: c40a0cb362f8c43541194cd1ca0c57abbf8fa974
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858377"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033097"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) 應用程式 Proxy 常見問題
 
@@ -177,7 +177,7 @@ NTLM 驗證無法用作預先驗證或單一登入方法。 只有當您可以�
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>我可以使用 Azure AD 應用程式 Proxy 做為 AD FS Proxy (例如 Web 應用程式 Proxy) 嗎？
 
-不會。 Azure AD 應用程式 Proxy 是設計用來與 Azure AD 搭配使用，而且不符合作為 AD FS Proxy 的需求。
+否。 Azure AD 應用程式 Proxy 是設計用來與 Azure AD 搭配使用，而且不符合作為 AD FS Proxy 的需求。
 
 ## <a name="websocket"></a>WebSocket
 

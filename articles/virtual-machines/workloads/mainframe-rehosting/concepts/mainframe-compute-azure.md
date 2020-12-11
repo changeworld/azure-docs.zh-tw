@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 9c5941ec88cd793961ad66245d0dc0b5e0d7772f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04ec652c6e7ce8de003a464c6427439cf1519eab
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86998930"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092664"
 ---
 # <a name="move-mainframe-compute-to-azure"></a>將大型主機計算移至 Azure
 
@@ -29,7 +29,7 @@ ms.locfileid: "86998930"
 
 ## <a name="mainframe-compute-at-a-glance"></a>大型主機計算一覽
 
-在 z14 大型主機中，處理器最多會排列在四個 *抽屜*內。 隱藏式選單 *只是處理器和晶片組的叢集* 。 每個隱藏式選單都可以有六個主動中央處理器 (CP) 晶片，而每個 CP 都有10個系統控制器 (SC) 晶片。 在 Intel x86 術語中，每個抽屜都有六個通訊端，每個通訊端10個核心，以及四個抽屜。 此架構針對 z14 提供相當於24個通訊端和240核心（最大值）的粗略。
+在 z14 大型主機中，處理器最多會排列在四個 *抽屜* 內。 隱藏式選單 *只是處理器和晶片組的叢集* 。 每個隱藏式選單都可以有六個主動中央處理器 (CP) 晶片，而每個 CP 都有10個系統控制器 (SC) 晶片。 在 Intel x86 術語中，每個抽屜都有六個通訊端，每個通訊端10個核心，以及四個抽屜。 此架構針對 z14 提供相當於24個通訊端和240核心（最大值）的粗略。
 
 Fast z14 CP 具有 5.2 GHz 的頻率速度。 一般而言，z14 會隨方塊中的所有 CPs 一起傳遞。 您可以視需要啟動它們。 客戶通常會在每個月至少收取四小時的計算時間，而不是實際的使用量。
 
@@ -112,7 +112,7 @@ M 系列 Vm 在撰寫本文時，最多可擴大至128個 vcpu () 。 針對每�
 
 ![支援嚴重損壞修復的高可用性部署](media/mainframe-compute-dr.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [大型主機遷移](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
 - [Azure 虛擬機器上的大型主機重新裝載](../overview.md)
@@ -135,4 +135,4 @@ M 系列 Vm 在撰寫本文時，最多可擴大至128個 vcpu () 。 針對每�
 ### <a name="more-migration-resources"></a>更多的遷移資源
 
 - [Azure 虛擬資料中心：原形移轉指南](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
-- [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
+- [GlusterFS iSCSI](https://glusterdocs.readthedocs.io/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

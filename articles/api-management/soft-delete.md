@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vladvino
 ms.author: apimpm
 ms.date: 11/27/2020
-ms.openlocfilehash: fca98414a87f3b8a4f3c0969a28ee95c7ed47dc3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 72e91715398b4920c62afae5f36aa09954a577f9
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501469"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092137"
 ---
 # <a name="api-management-soft-delete-preview"></a>API 管理虛刪除 (預覽) 
 
@@ -30,7 +30,7 @@ ms.locfileid: "96501469"
 | 作業 | 描述 | API 管理命名空間 | 最小 API 版本 |
 |--|--|--|--|
 | [建立或更新](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) | 建立或更新 API 管理服務。  | API 管理服務 | 任意 |
-| [Create or Update](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate)使用 `restore` 設定為 **true** 的屬性建立或更新 | Undeletes API 管理服務（如果先前已虛刪除）。 如果 `restore` 指定，而且設定為 `true` 其他所有屬性，將會被忽略。  | API 管理服務 |  2020-06-01-預覽 |
+| [](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate)使用 `restore` 設定為 **true** 的屬性建立或更新 | Undeletes API 管理服務（如果先前已虛刪除）。 如果 `restore` 指定，而且設定為 `true` 其他所有屬性，將會被忽略。  | API 管理服務 |  2020-06-01-預覽 |
 | [刪除](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/delete) | 刪除現有的 API 管理服務。 | API 管理服務 | 2020-01-01-預覽|
 | [依名稱取得](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) | 依名稱取得虛刪除的 Api 管理服務。 | 刪除的服務 | 2020-06-01-預覽 |
 | [依訂用帳戶列出](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) | 列出指定訂用帳戶可取消刪除的所有虛刪除服務。 | 刪除的服務 | 2020-06-01-預覽
@@ -48,7 +48,7 @@ ms.locfileid: "96501469"
 
 ## <a name="list-deleted-apim-instances"></a>列出已刪除的 APIM 實例
 
-您可以使用依名稱或依[訂](/deletedservices/listbysubscription)用帳戶作業[取得](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname)的已刪除服務，來確認已虛刪除的 APIM 實例可用於還原 (取消刪除) 。
+您可以使用依名稱或依[訂](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription)用帳戶作業[取得](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname)的已刪除服務，來確認已虛刪除的 APIM 實例可用於還原 (取消刪除) 。
 
 ### <a name="get-a-soft-deleted-instance-by-name"></a>依名稱取得虛刪除的實例
 
@@ -76,7 +76,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Micros
 
 ### <a name="list-all-soft-deleted-instances-for-a-given-subscription"></a>列出指定訂用帳戶的所有虛刪除實例
 
-[依訂](/deletedservices/listbysubscription)用帳戶作業使用 API 管理清單， `{subscriptionId}` 並以您的訂用帳戶識別碼取代：
+[依訂](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription)用帳戶作業使用 API 管理清單， `{subscriptionId}` 並以您的訂用帳戶識別碼取代：
 
 ```rest
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/deletedservices?api-version=2020-06-01-preview

@@ -9,12 +9,12 @@ ms.date: 11/18/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: bad71cfeb8f15f463bb9659be704374325d1f50a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5efdfcea7b6d727038bad124368179b9395bfafd
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461995"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093272"
 ---
 # <a name="azure-synapse-analytics-notebooks"></a>Azure Synapse Analytics 筆記本
 
@@ -51,4 +51,4 @@ Synapse Studio 筆記本是一個 web 介面，可讓您建立包含即時程式
   - [建立筆記本](./spark/../../quickstart-apache-spark-notebook.md)
   - [使用 Synapse Studio 筆記本建立視覺效果](./spark/../apache-spark-data-visualization-tutorial.md)
   - [使用 Apache Spark MLlib 建立機器學習模型](./spark/../apache-spark-machine-learning-mllib-notebook.md)
-  - [使用 Azure AutoML 建立機器學習模型](./spark/../apache-spark-azure-machine-learning-tutorial.md)
+  - [使用 Azure 自動化 ML 建立機器學習模型](./spark/../apache-spark-azure-machine-learning-tutorial.md)

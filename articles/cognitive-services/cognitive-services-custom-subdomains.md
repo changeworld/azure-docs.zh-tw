@@ -7,14 +7,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 12/04/2020
 ms.author: erhopf
-ms.openlocfilehash: 95f3de0fe26678f6b4bcd97a78c06e92b72a7135
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 4746aad2d7cd62cb309a1823f8c50487e6f7e87c
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368809"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032961"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>認知服務的自訂子功能變數名稱稱
 
@@ -27,7 +27,7 @@ Azure 認知服務會針對透過 [Azure 入口網站](https://portal.azure.com)
 如果您想要遷移現有資源以利用自訂子功能變數名稱稱，讓您可以啟用如 Azure AD 的功能，請遵循下列指示：
 
 1. 登入 Azure 入口網站，並找出您想要新增自訂子功能變數名稱稱的認知服務資源。
-2. 在 [ **總覽** ] 分頁中，找出並選取 [ **產生自訂功能變數名稱** ]。
+2. 在 [ **總覽** ] 分頁中，找出並選取 [ **產生自訂功能變數名稱**]。
 3. 這會開啟一個面板，說明如何為您的資源建立唯一的自訂子域。
    > [!WARNING]
    > 在您建立自訂子功能變數名稱稱之後，便 **無法** 變更。
@@ -39,7 +39,7 @@ Azure 認知服務會針對透過 [Azure 入口網站](https://portal.azure.com)
 ## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>如果 SDK 要求我提供資源的區域，該怎麼辦？
 
 > [!WARNING]
-> 語音服務目前 **不** 支援自訂子域。 使用語音服務和相關聯的 Sdk 時，請使用區域端點。
+> 語音服務 **只** 會使用自訂子域搭配 [私人端點](Speech-Service/speech-services-private-link.md)。 在所有其他情況下，使用 **區域端點** 搭配語音服務和相關聯的 sdk。
 
 同時支援區域端點和自訂子功能變數名稱稱，而且可以交換使用。 但是，必須要有完整的端點。
 
@@ -83,7 +83,7 @@ Azure 認知服務會針對透過 [Azure 入口網站](https://portal.azure.com)
 | | 日本東部 | `https://japaneast.api.cognitive.microsoft.com` |
 | | 南韓中部 | `https://koreacentral.api.cognitive.microsoft.com` |
 | | 美國中北部 | `https://northcentralus.api.cognitive.microsoft.com` |
-| | 歐洲北部 | `https://northeurope.api.cognitive.microsoft.com` |
+| | 北歐 | `https://northeurope.api.cognitive.microsoft.com` |
 | | 南非北部 | `https://southafricanorth.api.cognitive.microsoft.com` |
 | | 美國中南部 | `https://southcentralus.api.cognitive.microsoft.com` |
 | | 東南亞 | `https://southeastasia.api.cognitive.microsoft.com` |
@@ -96,7 +96,7 @@ Azure 認知服務會針對透過 [Azure 入口網站](https://portal.azure.com)
 | 中國 | 中國東部 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | 中國北部 | `https://chinanorth.api.cognitive.azure.cn` |
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [什麼是認知服務？](./what-are-cognitive-services.md)
 * [驗證](authentication.md)

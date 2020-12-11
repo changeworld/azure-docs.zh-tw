@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 11/13/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: ced78955c71f37a5a6f5231f61e5327428834f00
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ca55186a53b228aa97cc82d33a09aa3ffe455eee
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919392"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092001"
 ---
 # <a name="machine-learning-with-apache-spark"></a>使用 Apache Spark 的機器學習
 
@@ -43,8 +43,8 @@ Synapse 執行時間是最適合用於資料科學和機器學習的策劃環境
 ### <a name="sparkml-and-mllib"></a>SparkML 與 MLlib
 Spark 的記憶體內分散式計算功能，使其成為機器學習和圖表計算中所使用反覆演算法的絕佳選擇。 ```spark.ml``` 提供一組統一的高階 Api，可協助使用者建立及調整機器學習管線。若要深入瞭解 ```spark.ml``` ，您可以造訪 [Apache Spark ML 程式設計指南](https://spark.apache.org/docs/1.2.2/ml-guide.html)。
 
-### <a name="azure-machine-learning-automl"></a>Azure Machine Learning AutoML
-[Azure Machine Learning AutoML](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) (自動化機器學習) 有助於將開發機器學習模型的程式自動化。 其可讓資料科學家、分析師和開發人員以高擴充性、效率和生產力來建置 ML 模型，同時維持模型品質。 執行 Azure Machine Learning AutoML SDK 的元件會直接內建在 Synapse 執行時間中。
+### <a name="azure-machine-learning-automated-ml"></a>Azure Machine Learning 自動化 ML
+[Azure Machine Learning 自動化 ML](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) (自動化機器學習) 有助於將開發機器學習模型的程式自動化。 其可讓資料科學家、分析師和開發人員以高擴充性、效率和生產力來建置 ML 模型，同時維持模型品質。 執行 Azure Machine Learning 自動化 ML SDK 的元件會直接內建到 Synapse 執行時間。
 
 ### <a name="open-source-libraries"></a>開放原始碼程式庫
 Azure Synapse Analytics 中的每個 Apache Spark 集區都隨附一組預先載入和熱門的機器學習程式庫。  有些相關的機器學習程式庫預設包含：
@@ -68,7 +68,7 @@ Azure Synapse Analytics 中的每個 Apache Spark 集區都隨附一組預先載
 若要開始使用 Azure Synapse Analytics 中的機器學習，請務必查看下列教學課程：
 - [使用 Azure Synapse 筆記本分析資料](../spark/apache-spark-data-visualization-tutorial.md)
 
-- [使用 AutoML 定型機器學習模型](../spark/apache-spark-azure-machine-learning-tutorial.md)
+- [使用自動化 ML 訓練機器學習模型](../spark/apache-spark-azure-machine-learning-tutorial.md)
 
 - [使用 Apache Spark MLlib 訓練機器學習模型](../spark/apache-spark-machine-learning-mllib-notebook.md)
   

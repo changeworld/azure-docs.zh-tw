@@ -17,12 +17,12 @@ ms.date: 11/05/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc5f902d75084d649f211d589e53041f1eb37f0e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4e240e8ec53ce007be1a858af7b6e41273ca8831
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012709"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093633"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Azure AD 儲存報表資料的時間長度為何？
 
@@ -47,7 +47,7 @@ ms.locfileid: "96012709"
 
 ### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>在取得進階授權之後，我能夠多快能看見活動資料？
 
-如果您在使用免費授權時即已經有活動資料，您便可以在升級時立即看見該資料。 如果您沒有任何資料，則您升級到進階授權後，必須花一或兩天的時間，資料才會顯示在報告中。
+如果您在使用免費授權時即已經有活動資料，您便可以在升級時立即看見該資料。 如果您沒有任何資料，則在升級至 premium 授權之後，最多需要三天的時間，資料才會顯示在報告中。
 
 ---
 
@@ -61,7 +61,7 @@ ms.locfileid: "96012709"
 
 **活動報告**    
 
-| Report                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| 報表                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--                    | :--           | :--                 | :--                 |
 | 稽核記錄             | 7 天        | 30 天             | 30 天             |
 | 登入               | 7 天        | 30 天             | 30 天             |
@@ -71,10 +71,10 @@ ms.locfileid: "96012709"
 
 **安全性信號**
 
-| Report         | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| 報表         | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--            | :--           | :--                 | :--                 |
 | 有風險的使用者  | 7 天        | 30 天             | 90 天             |
-| 有風險的登入 | 7 天        | 30 天             | 90 天             |
+| 風險性登入 | 7 天        | 30 天             | 90 天             |
 
 ---
 

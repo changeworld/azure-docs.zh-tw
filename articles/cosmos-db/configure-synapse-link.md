@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: 32b64cd0d83c51a77b7bc58bde80e00e1980c233
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6f9d8603467ac62d443a181fa45615501023a78b
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463319"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093565"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>設定及使用適用於 Azure Cosmos DB 的 Azure Synapse Link
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -227,7 +227,7 @@ container.replace(containerProperties).block();
 
 ## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> 開始使用 Azure Synpase 連結 - 範例
 
-您可以在 [GitHub](https://aka.ms/cosmosdb-synapselink-samples)上找到開始使用 Azure Synapse 連結的範例。 這些都展示了 IoT 和零售案例的端對端解決方案。 您也可以在 [mongodb](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/MongoDB) 資料夾下的相同存放庫中，找到對應至 Azure Cosmos DB API for mongodb 的範例。 
+您可以在 [GitHub](https://aka.ms/cosmosdb-synapselink-samples)上找到開始使用 Azure Synapse 連結的範例。 這些都展示了 IoT 和零售案例的端對端解決方案。 您也可以在 [mongodb](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples) 資料夾下的相同存放庫中，找到對應至 Azure Cosmos DB API for mongodb 的範例。 
 
 ## <a name="next-steps"></a>後續步驟
 

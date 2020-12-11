@@ -3,13 +3,13 @@ title: 指定 Service Fabric 服務端點
 description: 如何在服務資訊清單中描述端點資源，包括如何設定 HTTPS 端點
 ms.topic: conceptual
 ms.date: 09/16/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 5e8f39fe25011d02b989614fdc6538cd92c12d4e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 0ed5a4aa8993f52d42b97288cd143e6114ff36ff
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313576"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033301"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服務資訊清單中指定資源
 ## <a name="overview"></a>概觀
@@ -40,7 +40,7 @@ Service Fabric 的應用程式和服務會使用資訊清單檔案來定義和�
 </Resources>
 ```
 
-如果單一服務套件中有多個程式碼套件，則也需要在 [端點]**** 區段中參考程式碼套件。  例如，如果 **ServiceEndpoint2a** 和 **ServiceEndpoint2b** 是來自參考不同程式碼套件之相同服務套件的端點，則對應至每個端點的程式碼套件釐清如下：
+如果單一服務套件中有多個程式碼套件，則也需要在 [端點] 區段中參考程式碼套件。  例如，如果 **ServiceEndpoint2a** 和 **ServiceEndpoint2b** 是來自參考不同程式碼套件之相同服務套件的端點，則對應至每個端點的程式碼套件釐清如下：
 
 ```xml
 <Resources>
@@ -102,7 +102,7 @@ Service Fabric 的應用程式和服務會使用資訊清單檔案來定義和�
 ```
 
 ## <a name="example-specifying-an-https-endpoint-for-your-service"></a>範例：指定服務的 HTTPS 端點
-HTTPS 通訊協定提供伺服器驗證，也能用於加密用戶端-伺服器通訊。 若要在 Service Fabric 服務上啟用 HTTPS，請在服務資訊清單的 [資源] -> [端點] -> [端點]** 區段指定通訊協定，如先前針對 *ServiceEndpoint3* 端點所示。
+HTTPS 通訊協定提供伺服器驗證，也能用於加密用戶端-伺服器通訊。 若要在 Service Fabric 服務上啟用 HTTPS，請在服務資訊清單的 [資源] -> [端點] -> [端點] 區段指定通訊協定，如先前針對 *ServiceEndpoint3* 端點所示。
 
 > [!NOTE]
 > 服務的通訊協定不能在應用程式升級期間變更。 如果它在升級期間變更，將會發生中斷變更。
@@ -161,7 +161,7 @@ HTTPS 通訊協定提供伺服器驗證，也能用於加密用戶端-伺服器�
 如需利用 HTTPS 端點的完整應用程式範例，請參閱 [使用 Kestrel 將 HTTPs 端點新增至 ASP.NET Core WEB API 前端服務](./service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest)。
 
 ## <a name="port-acling-for-http-endpoints"></a>HTTP 端點的埠執行 acl
-Service Fabric 預設會自動 ACL HTTP (S) 端點。 如果端點沒有與其相關聯的[SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md) ，且 Service Fabric 設定為使用具有系統管理員許可權的帳戶來執行，則它**不**會執行自動執行 acl。
+Service Fabric 預設會自動 ACL HTTP (S) 端點。 如果端點沒有與其相關聯的 [SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md) ，且 Service Fabric 設定為使用具有系統管理員許可權的帳戶來執行，則它 **不** 會執行自動執行 acl。
 
 ## <a name="overriding-endpoints-in-servicemanifestxml"></a>在 ServiceManifest.xml 中覆寫端點
 
