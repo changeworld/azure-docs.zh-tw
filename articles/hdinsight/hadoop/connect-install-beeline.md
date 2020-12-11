@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 05/27/2020
-ms.openlocfilehash: be33c968499052b2b254754f37e5163012bcadd0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a0a693b2dc2c236cbac79ec4789b2a480ce65427
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547583"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028932"
 ---
 # <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>連線到 Apache Beeline on HDInsight 或將其安裝在本機
 
@@ -128,7 +128,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
         export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
         ```
 
-        然後按下 **Ctrl + X** 、 **Y** ，然後輸入。
+        然後按下 **Ctrl + X**、 **Y**，然後輸入。
 
 1. 下載 Hadoop 和 Beeline 封存，輸入下列命令：
 
@@ -156,13 +156,13 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
         PATH=$PATH:$HIVE_HOME/bin
         ```
 
-    1. 然後按下 **Ctrl + X** 、 **Y** ，然後輸入。
+    1. 然後按下 **Ctrl + X**、 **Y**，然後輸入。
 
 1. 關閉並重新開啟 bash 會話。
 
 1. 測試您的連接。 使用上述的連接格式，透過 [公用或私人端點](#over-public-or-private-endpoints)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 如需搭配 Apache Hive 使用 Beeline 用戶端的範例，請參閱搭配 [使用 Apache Beeline 與 Apache Hive](apache-hadoop-use-hive-beeline.md)
 * 如需 HDInsight 中 Hive 的一般資訊，請參閱 [在 hdinsight 上搭配使用 Apache Hive 與 Apache Hadoop](hdinsight-use-hive.md)

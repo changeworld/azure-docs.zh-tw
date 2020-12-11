@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
-ms.custom: contperfq2
-ms.openlocfilehash: 9379417fcb96dce8a59f7d81335cec44e1bb5e6a
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 6232b315abf8840d6fd77d02e3e928c0004746a0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96901767"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029323"
 ---
 # <a name="get-started-with-azcopy"></a>開始使用 AzCopy
 
@@ -103,7 +103,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 若要尋找範例命令，請參閱這些文章。
 
-| 服務 | 發行項 |
+| Service | 發行項 |
 |--------|-----------|
 |Azure Blob 儲存體 |[將檔案上傳至 Azure Blob 儲存體](storage-use-azcopy-blobs-upload.md)<br><br>[從 Azure Blob 儲存體下載 blob](storage-use-azcopy-blobs-download.md)<br><br>[在 Azure 儲存體帳戶之間複製 blob](storage-use-azcopy-blobs-download.md)<br><br>[與 Azure Blob 儲存體同步處理](storage-use-azcopy-blobs-download.md)|
 |Azure 檔案 |[使用 AzCopy 和檔案儲存體傳輸資料](storage-use-azcopy-files.md) (機器翻譯)|

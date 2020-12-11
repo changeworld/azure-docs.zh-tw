@@ -10,13 +10,13 @@ ms.date: 09/08/2020
 ms.author: tamram
 ms.reviewer: ozguns
 ms.subservice: queues
-ms.custom: contperfq1
-ms.openlocfilehash: 9b3ae58544504495c89fce0ca07bc96d5f2c6028
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 68ac9cd5e89617a820cba9a1d6c61890e50a56a7
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637327"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031737"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>選擇如何授權存取 Azure 入口網站中的佇列資料
 
@@ -28,7 +28,7 @@ ms.locfileid: "94637327"
 
 ### <a name="use-the-account-access-key"></a>使用帳戶存取金鑰
 
-若要使用帳戶存取金鑰來存取佇列資料，您必須擁有指派給您的 Azure 角色，其中包含 Azure RBAC 動作 **Microsoft. Storage/storageAccounts/listkeys/action** 。 此 Azure 角色可能是內建或自訂角色。 支援 **Microsoft Storage/storageAccounts/listkeys/action** 的內建角色包括：
+若要使用帳戶存取金鑰來存取佇列資料，您必須擁有指派給您的 Azure 角色，其中包含 Azure RBAC 動作 **Microsoft. Storage/storageAccounts/listkeys/action**。 此 Azure 角色可能是內建或自訂角色。 支援 **Microsoft Storage/storageAccounts/listkeys/action** 的內建角色包括：
 
 - Azure Resource Manager [擁有](../../role-based-access-control/built-in-roles.md#owner) 者角色
 - Azure Resource Manager [參與者](../../role-based-access-control/built-in-roles.md#contributor) 角色
@@ -37,7 +37,7 @@ ms.locfileid: "94637327"
 當您嘗試存取 Azure 入口網站中的佇列資料時，入口網站會先檢查您是否已使用 **Microsoft. Storage/storageAccounts/listkeys/action** 指派角色。 如果您已獲指派具有此動作的角色，則入口網站會使用帳戶金鑰來存取佇列資料。 如果您未獲指派具有此動作的角色，則入口網站會嘗試使用您的 Azure AD 帳戶來存取資料。
 
 > [!NOTE]
-> 傳統訂用帳戶管理員角色服務系統管理員和 Co-Administrator 包含 Azure Resource Manager [擁有](../../role-based-access-control/built-in-roles.md#owner) 者角色的對等專案。 **擁有** 者角色包含所有動作（包括 **Microsoft. Storage/storageAccounts/listkeys/action** ），因此具有其中一個系統管理角色的使用者也可以使用帳戶金鑰來存取佇列資料。 如需詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)。
+> 傳統訂用帳戶管理員角色服務系統管理員和 Co-Administrator 包含 Azure Resource Manager [擁有](../../role-based-access-control/built-in-roles.md#owner) 者角色的對等專案。 **擁有** 者角色包含所有動作（包括 **Microsoft. Storage/storageAccounts/listkeys/action**），因此具有其中一個系統管理角色的使用者也可以使用帳戶金鑰來存取佇列資料。 如需詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)。
 
 ### <a name="use-your-azure-ad-account"></a>使用您的 Azure AD 帳戶
 

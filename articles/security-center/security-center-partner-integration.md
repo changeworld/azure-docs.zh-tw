@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/19/2020
+ms.date: 12/10/2020
 ms.author: memildin
-ms.openlocfilehash: cf297cdeec88a31950d007246f987957db80e247
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ecfb4bdbd523dd1514333a2185186eab0a7e4aaa
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785879"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032672"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 資訊安全中心整合安全性解決方案
 這份文件可協助您管理已連線到 Azure 資訊安全中心的安全性解決方案，並且新增新的項目。
@@ -26,11 +26,11 @@ ms.locfileid: "92785879"
 ## <a name="integrated-azure-security-solutions"></a>整合式 Azure 安全性解決方案
 資訊安全中心可以使得在 Azure 中啟用整合式安全性解決方案變得簡單。 好處包括：
 
-- **簡化部署** ：資訊安全中心提供整合式合作夥伴解決方案的精簡佈建。 針對反惡意程式碼和弱點評估等解決方案，資訊安全中心可以在您的虛擬機器上布建代理程式。 針對防火牆設備，安全中心可以處理所需的大部分網路設定。
+- **簡化部署**：資訊安全中心提供整合式合作夥伴解決方案的精簡佈建。 針對反惡意程式碼和弱點評估等解決方案，資訊安全中心可以在您的虛擬機器上布建代理程式。 針對防火牆設備，安全中心可以處理所需的大部分網路設定。
 - **整合** 式偵測：來自合作夥伴解決方案的安全性事件會自動收集、匯總，並顯示為安全性中心警示和事件的一部分。 這些事件也會與來自其他來源的偵測整合，以提供進階的威脅偵測功能。
-- **統一的健全狀況監視與管理** ：客戶可以使用整合式的健康情況事件，一眼就能監視所有合作夥伴解決方案。 提供基本管理功能，而且可以讓您輕鬆使用夥伴解決方案存取進階設定。
+- **統一的健全狀況監視與管理**：客戶可以使用整合式的健康情況事件，一眼就能監視所有合作夥伴解決方案。 提供基本管理功能，而且可以讓您輕鬆使用夥伴解決方案存取進階設定。
 
-目前，整合式安全性解決方案包含 [Qualys](https://www.qualys.com/public-cloud/#azure) 和 [Rapid7](https://www.rapid7.com/products/insightvm/) 和 Microsoft 應用程式閘道 Web 應用程式防火牆的弱點評定。
+目前，整合式安全性解決方案包含 [Qualys](https://www.qualys.com/public-cloud/#azure) 和 [Rapid7](https://www.rapid7.com/products/insightvm/) 的弱點評定，以及 [Azure 應用程式閘道上 Microsoft Azure 的 Web 應用程式防火牆](../web-application-firewall/ag/ag-overview.md)。
 
 > [!NOTE]
 > 資訊安全中心不會在夥伴虛擬裝置上安裝 Log Analytics 代理程式，因為大部分的安全性廠商會禁止在其應用裝置上執行的外部代理程式。
@@ -49,9 +49,9 @@ ms.locfileid: "92785879"
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>管理整合式 Azure 安全性解決方案和其他資料來源
 
-1. 在 [Azure 入口網站](https://azure.microsoft.com/features/azure-portal/)中，開啟 [ **安全性中心** ]。
+1. 從 [Azure 入口網站](https://azure.microsoft.com/features/azure-portal/)中開啟 **資訊安全中心**。
 
-1. 從 [安全性中心] 功能表中，選取 [ **安全性解決方案** ]。
+1. 從 [安全性中心] 功能表中，選取 [ **安全性解決方案**]。
 
 在 [ **安全性解決方案** ] 頁面中，您可以看到整合式 Azure 安全性解決方案的健康情況，並執行基本管理工作。
 
@@ -95,7 +95,7 @@ ms.locfileid: "92785879"
 
 ### <a name="add-data-sources"></a>新增資料來源
 
-[新增資料來源]  區段包含可以連線的其他可用資料來源。 如需從這些來源新增資料的指示，請按一下 [新增]  。
+[新增資料來源] 區段包含可以連線的其他可用資料來源。 如需從這些來源新增資料的指示，請按一下 [新增]。
 
 ![資料來源](./media/security-center-partner-integration/add-data-sources.png)
 

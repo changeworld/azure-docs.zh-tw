@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq1
-ms.openlocfilehash: 6cb455880852295d7176e813208a93919a2c14bb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, contperf-fy21q1
+ms.openlocfilehash: ab7a74166e85f2ba9fd73e7323cf9cd200cf32e4
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318264"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031023"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>在 Azure Machine Learning studio 中建立模型定型和部署的計算目標
 
@@ -45,7 +45,7 @@ ms.locfileid: "93318264"
 
 1. 瀏覽至 [Azure Machine Learning Studio](https://ml.azure.com)。
  
-1. 在 [ __管理__ ] 底下，選取 [ __計算__ ]。
+1. 在 [ __管理__] 底下，選取 [ __計算__]。
 
 1. 選取頂端的索引標籤，以顯示每種類型的計算目標。
 
@@ -93,7 +93,7 @@ ms.locfileid: "93318264"
 |虛擬機器類型 |  選擇 CPU 或 GPU。 建立之後，即無法變更此類型     |
 |虛擬機器大小     |  受支援的虛擬機器大小可能會在您的區域中受到限制。 檢查 [可用性清單](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 |啟用/停用 SSH 存取     |   預設會停用 SSH 存取。  無法使用 SSH 存取。 在建立後變更。 如果您打算以互動方式使用[VS Code 遠端](how-to-set-up-vs-code-remote.md)進行調試，請務必啟用存取   |
-|進階設定     |  選擇性。 設定虛擬網路。 指定 **資源群組** 、 **虛擬網路** 和 **子網** ，以在 Azure 虛擬網路內建立計算實例， (vnet) 。 如需詳細資訊，請參閱這些 vnet 的 [網路需求](./how-to-secure-training-vnet.md) 。  |
+|進階設定     |  選擇性。 設定虛擬網路。 指定 **資源群組**、 **虛擬網路** 和 **子網** ，以在 Azure 虛擬網路內建立計算實例， (vnet) 。 如需詳細資訊，請參閱這些 vnet 的 [網路需求](./how-to-secure-training-vnet.md) 。  |
 
 ### <a name="compute-clusters"></a><a name="amlcompute"></a> 計算叢集
 
@@ -104,17 +104,17 @@ ms.locfileid: "93318264"
 |---------|---------|
 |計算名稱     |  <li>名稱是必要的，且長度必須介於3到24個字元之間。</li><li>有效字元是大寫和小寫字母、數位及  **-** 字元。</li><li>名稱必須以字母開頭</li><li>名稱在 Azure 區域內的所有現有計算中都必須是唯一的。 如果您選擇的名稱不是唯一的，您會看到警示</li><li>如果 **-**  使用字元，則在名稱後面必須接著至少一個字母</li>     |
 |虛擬機器類型 |  選擇 CPU 或 GPU。 建立之後，即無法變更此類型     |
-|虛擬機器優先順序 | 選擇 [ **專用** ] 或 [ **低] 優先順序** 。  低優先順序的虛擬機器較便宜，但不保證計算節點。 您的作業可能會被優先佔用。
+|虛擬機器優先順序 | 選擇 [ **專用** ] 或 [ **低] 優先順序**。  低優先順序的虛擬機器較便宜，但不保證計算節點。 您的作業可能會被優先佔用。
 |虛擬機器大小     |  受支援的虛擬機器大小可能會在您的區域中受到限制。 檢查 [可用性清單](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 |最小節點數目 | 您要布建的節點數目下限。 如果您想要有專用數目的節點，請在這裡設定該計數。 將最小值設定為0，即可節省成本，因此當叢集閒置時，您不需要支付任何節點的費用。 |
 |節點數目上限 | 您要布建的節點數目上限。 當提交工作時，計算會自動調整為此節點計數的最大值。 |
-|進階設定     |  選擇性。 設定虛擬網路。 指定 **資源群組** 、 **虛擬網路** 和 **子網** ，以在 Azure 虛擬網路內建立計算實例， (vnet) 。 如需詳細資訊，請參閱這些 vnet 的 [網路需求](./how-to-secure-training-vnet.md) 。   同時附加 [受控](#managed-identity) 識別以授與資源的存取權     |
+|進階設定     |  選擇性。 設定虛擬網路。 指定 **資源群組**、 **虛擬網路** 和 **子網** ，以在 Azure 虛擬網路內建立計算實例， (vnet) 。 如需詳細資訊，請參閱這些 vnet 的 [網路需求](./how-to-secure-training-vnet.md) 。   同時附加 [受控](#managed-identity) 識別以授與資源的存取權     |
 
 #### <a name="set-up-managed-identity"></a><a name="managed-identity"></a> 設定受控識別
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-intro.md)]
 
-在叢集建立期間或編輯計算叢集詳細資料時，請在 [ **Advanced settings** ] 中，切換 **指派受控識別** ，並指定系統指派的身分識別或使用者指派的身分識別。
+在叢集建立期間或編輯計算叢集詳細資料時，請在 [ **Advanced settings**] 中，切換 **指派受控識別** ，並指定系統指派的身分識別或使用者指派的身分識別。
 
 #### <a name="managed-identity-usage"></a>受控識別使用方式
 
@@ -141,7 +141,7 @@ ms.locfileid: "93318264"
 
 ### <a name="attached-compute"></a>附加的計算
 
-若要使用在 Azure Machine Learning 外建立的計算目標，您必須進行連結。 連結計算目標可讓您的工作區使用它們。  使用 **附加計算** 來附加用於 **定型** 的計算目標。  使用 **推斷** 叢集來附加 AKS 叢集以進行 **推斷** 。
+若要使用在 Azure Machine Learning 外建立的計算目標，您必須進行連結。 連結計算目標可讓您的工作區使用它們。  使用 **附加計算** 來附加用於 **定型** 的計算目標。  使用 **推斷** 叢集來附加 AKS 叢集以進行 **推斷**。
 
 使用 [上述步驟](#portal-create) 來附加計算。  然後填寫表單，如下所示：
 

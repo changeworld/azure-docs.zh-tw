@@ -10,13 +10,13 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 8082694b9f08023653d47e1f7fb442219cf8b475
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, contperf-fy20q4, tracking-python, contperf-fy21q1
+ms.openlocfilehash: 07b8c130a2a22554e4cd5b33996d5a5ee967d47f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316691"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029527"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>使用虛擬網路保護 Azure Machine Learning 工作區
 
@@ -74,7 +74,7 @@ Azure Machine Learning 支援設定為使用服務端點或私人端點的儲存
 
    [![連結至 Azure Machine Learning 工作區的儲存體](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
 
-1. 在 [儲存體服務帳戶] 頁面上，選取 [ __防火牆和虛擬網路__ ]。
+1. 在 [儲存體服務帳戶] 頁面上，選取 [ __防火牆和虛擬網路__]。
 
    ![Azure 入口網站中 [Azure 儲存體] 頁面上的 [防火牆和虛擬網路] 區域](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
 
@@ -87,7 +87,7 @@ Azure Machine Learning 支援設定為使用服務端點或私人端點的儲存
 
     1. 選取 [允許信任的 Microsoft 服務存取此儲存體帳戶] 核取方塊。 這不會將所有 Azure 服務存取權授與您的儲存體帳戶。
     
-        * 某些服務的資源（ **在您的訂用帳戶中註冊** ）可以存取 **相同訂用帳戶中** 的儲存體帳戶，以進行選取作業。 例如，寫入記錄或建立備份。
+        * 某些服務的資源（ **在您的訂用帳戶中註冊**）可以存取 **相同訂用帳戶中** 的儲存體帳戶，以進行選取作業。 例如，寫入記錄或建立備份。
         * 某些服務的資源可以透過將 __Azure 角色指派__ 給其系統指派的受控識別，來授與對您儲存體帳戶的明確存取權。
 
         如需詳細資訊，請參閱[設定 Azure 儲存體防火牆和虛擬網路](../storage/common/storage-network-security.md#trusted-microsoft-services)。
@@ -175,12 +175,12 @@ Azure Machine Learning 會使用相關聯的 Key Vault 實例來儲存下列認�
 
 1. 移至與工作區相關聯的 Key Vault。
 
-1. 在 [ __Key Vault__ ] 頁面的左窗格中，選取 [ __網路__ ]。
+1. 在 [ __Key Vault__ ] 頁面的左窗格中，選取 [ __網路__]。
 
 1. 在 [ __防火牆和虛擬網路__ ] 索引標籤上，執行下列動作：
-    1. 在 [ __允許存取來源__ ] 底下，選取 [ __私人端點] 和 [選取的網路__ ]。
+    1. 在 [ __允許存取來源__] 底下，選取 [ __私人端點] 和 [選取的網路__]。
     1. 在 [虛擬網路] 底下選取 [新增現有虛擬網路]，以新增測試計算所在的虛擬網路。
-    1. 在 [ __允許信任的 Microsoft 服務略過此防火牆？__ ] 下，選取 __[是]__ 。
+    1. 在 [ __允許信任的 Microsoft 服務略過此防火牆？__] 下，選取 __[是]__。
 
    [![[金鑰保存庫] 窗格中的 [防火牆和虛擬網路] 區段](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png#lightbox)
 

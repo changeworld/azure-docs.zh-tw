@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/28/2020
-ms.custom: contperfq1, contperfq2
-ms.openlocfilehash: 756c87299db85e426b4793d51bea833aa694a830
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.custom: contperf-fy21q1, contperf-fy21q2
+ms.openlocfilehash: 70fbbdfc5d8f1bac5fa27175ea25be1503a77594
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145951"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031890"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>使用 Apache Beeline 用戶端搭配 Apache Hive
 
@@ -56,7 +56,7 @@ Beeline 是 Hive 用戶端，隨附於您的 HDInsight 叢集的前端節點。 
     show tables;
     ```
 
-    新的叢集上只會列出一個資料表： **hivesampletable** 。
+    新的叢集上只會列出一個資料表：**hivesampletable**。
 
 4. 使用下列命令來顯示 hivesampletable 的結構描述：
 
@@ -181,7 +181,7 @@ Beeline 是 Hive 用戶端，隨附於您的 HDInsight 叢集的前端節點。 
     > [!NOTE]  
     > 與外部資料表不同之處在於，捨棄內部資料表也會刪除基礎資料。
 
-1. 若要儲存檔案，請使用 **Ctrl** + **X** ，然後輸入 **Y** ，最後 **輸入** 。
+1. 若要儲存檔案，請使用 **Ctrl** + **X**，然後輸入 **Y**，最後 **輸入**。
 
 1. 使用下列命令，以使用 Beeline 來執行檔案：
 
@@ -211,7 +211,7 @@ Beeline 是 Hive 用戶端，隨附於您的 HDInsight 叢集的前端節點。 
     3 rows selected (0.813 seconds)
     ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 如需 HDInsight 中 Hive 的一般資訊，請參閱 [在 hdinsight 上搭配使用 Apache Hive 與 Apache Hadoop](hdinsight-use-hive.md)
 

@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.custom: contperfq2
-ms.openlocfilehash: cbe3bedb188b563bb29ad1aa6e6e53e3039f1d51
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 2f0b6feea5e586c87191b22f42e3ab86e85ba7b3
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170348"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032519"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>在 Azure IoT Central 應用程式中管理裝置
 
@@ -48,9 +48,9 @@ ms.locfileid: "92170348"
 
 1. 選擇要用來建立裝置的裝置範本。
 
-1. 選擇 [+ 新增]****。
+1. 選擇 [+ 新增]。
 
-1. **開啟或****關閉****模擬**切換。 真實裝置是您連線至 Azure IoT Central 應用程式的實體裝置。 模擬裝置具有由 Azure IoT Central 為您產生的範例資料。
+1. **開啟或****關閉****模擬** 切換。 真實裝置是您連線至 Azure IoT Central 應用程式的實體裝置。 模擬裝置具有由 Azure IoT Central 為您產生的範例資料。
 
 1. 選取 [建立]。
 
@@ -72,7 +72,7 @@ ms.locfileid: "92170348"
     > [!NOTE]
     > 如果您還沒有裝置範本，您可以在 **所有裝置** 下匯入裝置，並在沒有範本的情況下註冊它們。 匯入裝置之後，您就可以將它們遷移至範本。
 
-1. 選取 [匯入]。
+1. 選取 [匯入]  。
 
     ![匯入動作](./media/howto-manage-devices/bulkimport1a.png)
 
@@ -166,7 +166,7 @@ ms.locfileid: "92170348"
 
 1. 將屬性修改為您所需的值。 您可以一次修改多個屬性，並同時更新所有屬性。
 
-1. 選擇 [儲存]。 如果您儲存了可寫入的屬性，這些值會傳送至您的裝置。 當裝置確認可寫入屬性的變更時，狀態就會回到 [已 **同步**]。 如果您儲存了雲端屬性，就會更新此值。
+1. 選擇 [儲存]  。 如果您儲存了可寫入的屬性，這些值會傳送至您的裝置。 當裝置確認可寫入屬性的變更時，狀態就會回到 [已 **同步**]。 如果您儲存了雲端屬性，就會更新此值。
 
 ## <a name="next-steps"></a>後續步驟
 

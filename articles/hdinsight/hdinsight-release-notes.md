@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 00b5d220cdbc511a309d55cfca2049508049fa30
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 0895e84363d40bdbf30408f2b2a0d95f951eb303
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548999"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032553"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight 版本資訊
 
@@ -64,3 +64,18 @@ HDInsight 會持續改善叢集的可靠性和效能。
 
 ## <a name="component-version-change"></a>元件版本變更
 此發行版本沒有任何元件版本變更。 您可以在 [本](./hdinsight-component-versioning.md)檔中找到 hdinsight 4.0 和 hdinsight 3.6 目前的元件版本。
+
+## <a name="known-issues"></a>已知問題
+### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>防止 HDInsight 叢集 Vm 定期重新開機
+
+自2020年11月起，您可能已注意到 HDInsight 叢集 Vm 定期重新開機。 這可能是由下列原因所造成：
+
+1.  已在您的叢集上啟用 Clamav。 新的 azsec clamav 套件會耗用大量的記憶體，以觸發節點重新開機。 
+2.  CRON 作業會每日排程，以監視 Azure 服務所使用的憑證授權單位單位清單 (Ca) 。 當有新的 CA 憑證可供使用時，腳本會將憑證新增至 JDK 信任存放區，並排定重新開機。
+
+針對這兩個問題，HDInsight 會為所有執行中的叢集部署修正程式並套用修補程式。 若要立即套用修正程式並避免非預期的 Vm 重新開機，您可以在所有叢集節點上執行下列腳本動作，作為持續性腳本動作。 在修正和修補完成之後，HDInsight 會張貼另一個通知。
+```
+https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/replace_cacert_script.sh
+https://healingscriptssa.blob.core.windows.net/healingscripts/ChangeOOMPolicyAndApplyLatestConfigForClamav.sh
+```
+

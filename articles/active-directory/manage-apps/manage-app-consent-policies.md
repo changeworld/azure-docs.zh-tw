@@ -11,13 +11,13 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.custom: contperfq2
-ms.openlocfilehash: 4368f20171da0c1896e642361578580b1d958296
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 3587beaeb788665c68c1fcb6376af40566b6c35e
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659041"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032774"
 ---
 # <a name="manage-app-consent-policies"></a>管理應用程式同意原則
 
@@ -130,7 +130,7 @@ ms.locfileid: "94659041"
 
 下表提供應用程式同意原則的支援條件清單。
 
-| 條件 | 說明|
+| 條件 | 描述|
 |:---------------|:----------|
 | PermissionClassification | 所授與之許可權的 [許可權分類](configure-permission-classifications.md) ，或「全部」符合任何許可權分類 (包括未分類) 的許可權。 預設值為 "all"。 |
 | PermissionType | 所授與之許可權的許可權類型。 使用「應用程式」以取得應用程式許可權 (例如) 的應用程式角色或委派許可權的「委派」。 <br><br>**注意**： "delegatedUserConsentable" 值指出 API 發行者尚未設定為需要系統管理員同意的委派許可權，此值可用於內建許可權授與原則，但不能用於自訂許可權授與原則。 必要。 |
@@ -139,7 +139,7 @@ ms.locfileid: "94659041"
 | ClientApplicationIds | 要比對之用戶端應用程式的 **AppId** 值清單，或具有單一值「全部」以符合任何用戶端應用程式的清單。 預設值為單一值 "all"。 |
 | ClientApplicationTenantIds | 註冊用戶端應用程式的 Azure Active Directory 租使用者識別碼清單，或單一值為「全部」的清單，以符合在任何租使用者中註冊的用戶端應用程式。 預設值為單一值 "all"。 |
 | ClientApplicationPublisherIds | Microsoft 合作夥伴網路的清單 (MPN 用戶端應用程式之 [已驗證發行者](../develop/publisher-verification-overview.md) 的) 識別碼，或單一值為「全部」的清單，以符合任何發行者的用戶端應用程式。 預設值為單一值 "all"。 |
-| ClientApplicationsFromVerifiedPublisherOnly | 設定為 `$true` 只在用戶端應用程式與 [已驗證的發行者](../develop/publisher-verification-overview.md)相符。 將設定為 `$false` ，以在任何用戶端應用程式上相符，即使它沒有已驗證的發行者。 預設值為 `$false`。 |
+| ClientApplicationsFromVerifiedPublisherOnly | 設定為 `$true` 只在用戶端應用程式與 [已驗證的發行者](../develop/publisher-verification-overview.md)相符。 將設定為 `$false` ，以在任何用戶端應用程式上相符，即使它沒有已驗證的發行者。 預設為 `$false`。 |
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,13 +3,13 @@ title: 使用 Azure 應用程式 Insights 設定 ASP.NET 監視 |Microsoft Docs
 description: 針對裝載在內部部署環境或 Azure 的 ASP.NET 網站，設定效能、可用性及使用者行為分析工具。
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 970971082e684ebcb6efce07bb707ffbb20ed228
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: f9cb5370dcddf783e533664c4c141779402103f0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904171"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028983"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>設定 ASP.NET 網站的 Application Insights
 
