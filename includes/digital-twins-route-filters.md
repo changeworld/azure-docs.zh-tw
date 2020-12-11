@@ -3,22 +3,22 @@ author: baanders
 description: 包含 Azure 數位 Twins 路由篩選選項的檔案
 ms.service: digital-twins
 ms.topic: include
-ms.date: 11/18/2020
+ms.date: 12/04/2020
 ms.author: baanders
-ms.openlocfilehash: 261c5fa47cddcc527e7c0a18fbd18aad9320ed4b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5eafac1c1bc2e7dd28e0cae544dc178e5bdc601e
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018951"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96748228"
 ---
-| 篩選名稱 | 描述 | 篩選文字架構 | 支援的值 | 
+| 篩選名稱 | 說明 | 篩選文字架構 | 支援的值 | 
 | --- | --- | --- | --- |
 | True/False | 允許建立未篩選的路由，或停用路由，不傳送任何事件 | `<true/false>` | `true` = 未篩選的路由已啟用 <br> `false` = 路由已停用 |
 | 類型 | 流經數位對應項實例的[事件種類](../articles/digital-twins/concepts-route-events.md#types-of-event-messages) | `type = '<eventType>'` | 以下是可能的事件種類值： <br>`Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
 | 來源 | Azure 數位 Twins 實例的名稱 | `source = '<hostname>'`| 以下是可能的主機名稱值： <br> **針對通知**： `<yourDigitalTwinInstance>.api.<yourRegion>.digitaltwins.azure.net` <br> **針對遙測**： `<yourDigitalTwinInstance>.api.<yourRegion>.digitaltwins.azure.net/<twinId>`|
 | 主體 | 上述事件來源內容中事件的描述 | `subject = '<subject>'` | 以下是可能的主體值： <br>**針對通知**：主體為 `<twinid>` <br> 或主體的 URI 格式，可由多個元件或識別碼唯一識別：<br>`<twinid>/relationships/<relationshipid>`<br> **針對遙測**：主體是元件路徑 (如果遙測是從對應項元件) 發出，例如 `comp1.comp2` 。 如果遙測並非從元件發出，則其 [主旨] 欄位為空白。 |
-| 資料結構描述 | DTDL 模型識別碼 | `dataschema = '<model-dtmi-ID>'` | 若 **為遙測**：資料架構是對應項的模型識別碼或發出遙測的元件。 例如， `dtmi:example:com:floor4;2` <br>**針對通知**：可于下列位置存取通知主體中的資料架構： `$body.$metadata.$model`|
+| 資料結構描述 | DTDL 模型識別碼 | `dataschema = '<model-dtmi-ID>'` | 若 **為遙測**：資料架構是對應項的模型識別碼或發出遙測的元件。 例如， `dtmi:example:com:floor4;2` <br>**針對 (建立/刪除) 的通知**：在的通知主體中，可以存取資料架構 `$body.$metadata.$model` 。 <br>**針對 (更新) 的通知**：可于下列位置存取通知主體中的資料架構： `$body.modelId`|
 | 內容類型 | 資料值的內容類型 | `datacontenttype = '<contentType>'` | 內容類型為 `application/json` |
 | 規格版本 | 您正在使用的事件架構版本 | `specversion = '<version>'` | 版本必須是 `1.0` 。 這表示 CloudEvents 架構版本1。0 |
 | 通知主體 | 參考通知欄位中的任何屬性 `data` | `$body.<property>` | 請參閱作法：瞭解通知範例的 [*事件資料*](../articles/digital-twins/how-to-interpret-event-data.md) 。 您 `data` 可以使用來參考欄位中的任何屬性。 `$body`
@@ -39,7 +39,7 @@ ms.locfileid: "96018951"
 
 | 資料類型 | 範例 |
 |-|-|-|
-|**String**| `STARTS_WITH($body.$metadate.$model, 'dtmi:example:com:floor')` <br> `CONTAINS(subject, '<twinID>')`|
+|**String**| `STARTS_WITH($body.$metadata.$model, 'dtmi:example:com:floor')` <br> `CONTAINS(subject, '<twinID>')`|
 |**整數**|`$body.errorCode > 200`|
 |**Double**|`$body.temperature <= 5.5`|
 |**Bool**|`$body.poweredOn = true`|
@@ -54,7 +54,7 @@ ms.locfileid: "96018951"
 
 定義路由篩選時支援下列功能：
 
-|函式|描述|範例|
+|函式|說明|範例|
 |--|--|--|
 |STARTS_WITH (x，y) |如果值是以字串開頭，則傳回 true `x` `y` 。|`STARTS_WITH($body.$metadata.$model, 'dtmi:example:com:floor')`|
 |ENDS_WITH (x，y)  | 如果值 `x` 以字串結尾，則傳回 true `y` 。|`ENDS_WITH($body.$metadata.$model, 'floor;1')`|
