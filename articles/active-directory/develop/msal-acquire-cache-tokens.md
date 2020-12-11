@@ -13,12 +13,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: da79a74121318993f807ec3bde101b652a8b49da
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 34cdaa42f3a41ae04c73c570bb4fede01a786af2
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628130"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107833"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>使用 Microsoft 驗證程式庫 (MSAL) 取得和快取權杖
 
@@ -122,6 +122,8 @@ MSAL 會維護權杖快取 (或) 的機密用戶端應用程式的兩個快取�
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您是使用 MSAL for JAVA，請瞭解 [MSAL For java 中的自訂權杖](msal-java-token-cache-serialization.md)快取序列化。
-
-了解如何[處理錯誤和例外狀況](msal-handling-exceptions.md)。
+MSAL 支援的數個平臺在該平臺程式庫的檔中有額外的權杖快取相關資訊。 例如：
+- [使用 MSAL.NET 從權杖快取中取得權杖](msal-net-acquire-token-silently.md)
+- [使用 MSAL.js 進行單一登入](msal-js-sso.md)
+- [適用于 Python 的 MSAL 中的自訂權杖快取序列化](msal-python-token-cache-serialization.md)
+- [MSAL for JAVA 的自訂權杖快取序列化](msal-java-token-cache-serialization.md)

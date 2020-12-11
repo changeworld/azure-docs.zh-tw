@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 11/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4fa0f4d87567bd77faacfd2373dba0d2b8996446
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 81a1263d0eacbffa77e2e35e4594e23235394183
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873364"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108666"
 ---
 # <a name="localization-string-ids"></a>當地語系化字串識別碼
 
@@ -27,7 +27,7 @@ ms.locfileid: "94873364"
 
 下列識別碼會用於識別碼為的內容定義 `api.signuporsignin` ，以及自我判斷的 [技術設定檔](self-asserted-technical-profile.md)。
 
-| ID | 預設值 | 頁面配置版本 |
+| 識別碼 | 預設值 | 頁面配置版本 |
 | -- | ------------- | ------ |
 | **forgotpassword_link** | 忘記密碼了嗎? | `All` |
 | **createaccount_intro** | 還沒有帳戶嗎？ | `All` |
@@ -95,7 +95,7 @@ ms.locfileid: "94873364"
 
 ### <a name="sign-up-or-sign-in-error-messages"></a>註冊或登入錯誤訊息
 
-| ID | 預設值 |
+| 識別碼 | 預設值 |
 | -- | ------------- |
 | **UserMessageIfInvalidPassword** | 您的密碼不正確。 |
 | **UserMessageIfPasswordExpired**| 您的密碼過期。|
@@ -145,7 +145,7 @@ ms.locfileid: "94873364"
 
 以下是內容定義的識別碼，其識別碼為 `api.localaccountsignup` 或開頭為的任何內容定義 `api.selfasserted` ，例如 `api.selfasserted.profileupdate` 和 `api.localaccountpasswordreset` ，以及 [自我判斷技術設定檔](self-asserted-technical-profile.md)。
 
-| ID | 預設值 |
+| 識別碼 | 預設值 |
 | -- | ------------- |
 | **ver_sent** | 已將驗證碼傳送至： |
 | **ver_but_default** | 預設 |
@@ -184,7 +184,7 @@ ms.locfileid: "94873364"
 
 ### <a name="sign-up-and-self-asserted-pages-error-messages"></a>註冊和自我判斷頁面的錯誤訊息
 
-| ID | 預設值 |
+| 識別碼 | 預設值 |
 | -- | ------------- |
 | **UserMessageIfClaimsPrincipalAlreadyExists** | 已存在具有所指定識別碼的使用者。 請選擇不同的識別碼。 |
 | **UserMessageIfClaimNotVerified** | 宣告未驗證: {0} |
@@ -258,7 +258,7 @@ ms.locfileid: "94873364"
 
 以下是識別碼為之內容定義的識別碼 `api.phonefactor` ，以及 [電話係數技術設定檔](phone-factor-technical-profile.md)。
 
-| ID | 預設值 |
+| 識別碼 | 預設值 |
 | -- | ------------- |
 | **button_verify** | 撥電話給我 |
 | **country_code_label** | 國碼 (地區碼) |
@@ -354,7 +354,7 @@ ms.locfileid: "94873364"
 
 以下是具有[頁面配置版本](page-layout.md)2.1.0 或更高版本之[驗證顯示控制項](display-control-verification.md)的識別碼。
 
-| ID | 預設值 |
+| 識別碼 | 預設值 |
 | -- | ------------- |
 |intro_msg| 必須進行驗證。 請按一下 [傳送] 按鈕。|
 |success_send_code_msg | 驗證碼已經傳送到您的收件匣。 請將其複製到下方輸入方塊。|
@@ -389,7 +389,7 @@ ms.locfileid: "94873364"
 
 以下是具有[頁面配置版本](page-layout.md)2.0.0 之[驗證顯示控制項](display-control-verification.md)的識別碼。
 
-| ID | 預設值 |
+| 識別碼 | 預設值 |
 | -- | ------------- |
 |verification_control_but_change_claims |變更 |
 |verification_control_fail_send_code |無法傳送程式碼，請稍後再試一次。 |
@@ -419,7 +419,7 @@ ms.locfileid: "94873364"
 
 以下是 [Restful 服務技術設定檔](restful-technical-profile.md) 錯誤訊息的識別碼：
 
-| ID | 預設值 |
+| 識別碼 | 預設值 |
 | -- | ------------- |
 |DefaultUserMessageIfRequestFailed | 無法建立與 restful 服務端點的連接。 Restful 服務 URL： {0} |
 |UserMessageIfCircuitOpen | {0} Restful 服務 URL： {1} |
@@ -444,7 +444,7 @@ ms.locfileid: "94873364"
 
 以下是 [AZURE AD MFA 技術設定檔](multi-factor-auth-technical-profile.md) 錯誤訊息的識別碼：
 
-| ID | 預設值 |
+| 識別碼 | 預設值 |
 | -- | ------------- |
 |UserMessageIfCouldntSendSms | 無法將 SMS 傳送至電話，請嘗試另一個電話號碼。 |
 |UserMessageIfInvalidFormat | 您的電話號碼格式不正確，請更正它，然後再試一次。|
@@ -472,7 +472,7 @@ ms.locfileid: "94873364"
 
 以下是 [AZURE AD SSPR 技術設定檔](aad-sspr-technical-profile.md) 錯誤訊息的識別碼：
 
-| ID | 預設值 |
+| 識別碼 | 預設值 |
 | -- | ------------- |
 |UserMessageIfChallengeExpired | 程式碼已過期。|
 |UserMessageIfInternalError | 電子郵件服務發生內部錯誤，請稍後再試一次。|
@@ -499,7 +499,7 @@ ms.locfileid: "94873364"
 
 以下是 [一次性密碼技術設定檔](one-time-password-technical-profile.md) 錯誤訊息的識別碼
 
-| ID | 預設值 |
+| 識別碼 | 預設值 |
 | -- | ------------- |
 |UserMessageIfMaxRetryAttempted |一次提供的密碼驗證超過嘗試次數上限 |
 |UserMessageIfSessionDoesNotExist |單次密碼驗證會話已過期 |
@@ -525,7 +525,7 @@ ms.locfileid: "94873364"
 
 以下是宣告轉換錯誤訊息的識別碼：
 
-| ID | 宣告轉換 | 預設值 |
+| 識別碼 | 宣告轉換 | 預設值 |
 | -- | ------------- |------------- |
 |UserMessageIfClaimsTransformationBooleanValueIsNotEqual |[AssertBooleanClaimIsEqualToValue](boolean-transformations.md#assertbooleanclaimisequaltovalue) | 宣告類型 "inputClaim" 的布林值宣告值比較失敗。| 
 |DateTimeGreaterThan |[AssertDateTimeIsGreaterThan](date-transformations.md#assertdatetimeisgreaterthan) | 宣告值比較失敗：提供的左運算元大於右運算元。|
@@ -547,5 +547,5 @@ ms.locfileid: "94873364"
 
 請參閱下列文章以取得當地語系化範例：
 
-- [在 Azure Active Directory B2C 中使用自訂原則進行語言自訂](custom-policy-localization.md)
-- [使用 Azure Active Directory B2C 中的使用者流程進行語言自訂](user-flow-language-customization.md)
+- [在 Azure Active Directory B2C 中使用自訂原則進行語言自訂](language-customization.md)
+- [使用 Azure Active Directory B2C 中的使用者流程進行語言自訂](language-customization.md)

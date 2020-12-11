@@ -3,22 +3,16 @@ title: 將自訂欄位對應到 Azure 事件格線結構描述
 description: 本文說明如何在您的事件資料不符合事件方格架構的情況下，將您的自訂架構轉換為 Azure 事件方格架構。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 836e7b340c5c89100207e2f9409710b8dfa5e3bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34381782c9337631b0aa04e47eb5897a8071139a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86105518"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109193"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>將自訂欄位對應到事件格線結構描述
 
 如果您的事件資料不符合預期的[事件方格結構描述](event-schema.md)，您仍然可以使用事件方格來將事件路由傳送給訂閱者。 本文說明如何將結構描述對應到事件格線結構描述。
-
-[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
-
-## <a name="install-preview-feature"></a>安裝預覽功能
-
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="original-event-schema"></a>原始的事件結構描述
 
@@ -40,19 +34,15 @@ ms.locfileid: "86105518"
 
 建立自訂主題時，指定如何將欄位從您的原始事件對應到事件格線結構描述。 您可用來自訂對應的值有三個：
 
-* **輸入結構描述**值會指定結構描述的類型。 可用的選項為 CloudEvents 結構描述、自訂事件結構描述或事件方格結構描述。 預設值為事件方格結構描述。 在您的結構描述與事件方格結構描述之間建立自訂對應時，請使用自訂事件結構描述。 當事件位於 CloudEvents 結構描述時，則使用 Cloudevents 結構描述。
+* **輸入結構描述** 值會指定結構描述的類型。 可用的選項為 CloudEvents 結構描述、自訂事件結構描述或事件方格結構描述。 預設值為事件方格結構描述。 在您的結構描述與事件方格結構描述之間建立自訂對應時，請使用自訂事件結構描述。 當事件採用 CloudEvents 格式時，請使用 CloudEvents 架構。
 
-* **對應預設值**屬性會針對事件方格結構描述中的欄位指定預設值。 您可以設定 `subject`、`eventtype` 和 `dataversion` 的預設值。 一般而言，當您的自訂結構描述不包含對應到那三個欄位其中一個的欄位時，您會使用此參數。 例如，您可以指定一律將該資料版本設定為 **1.0**。
+* **對應預設值** 屬性會針對事件方格結構描述中的欄位指定預設值。 您可以設定 `subject`、`eventtype` 和 `dataversion` 的預設值。 一般而言，當您的自訂結構描述不包含對應到那三個欄位其中一個的欄位時，您會使用此參數。 例如，您可以指定一律將該資料版本設定為 **1.0**。
 
-* **對應欄位**值會將欄位從您的結構描述對應到事件方格結構描述。 您會以空格分隔的索引鍵/值組來指定值。 針對索引鍵名稱，使用事件格線欄位的名稱。 針對值，使用欄位的名稱。 您可以針對 `id`、`topic`、`eventtime`、`subject`、`eventtype` 和 `dataversion` 使用索引鍵名稱。
+* **對應欄位** 值會將欄位從您的結構描述對應到事件方格結構描述。 您會以空格分隔的索引鍵/值組來指定值。 針對索引鍵名稱，使用事件格線欄位的名稱。 針對值，使用欄位的名稱。 您可以針對 `id`、`topic`、`eventtime`、`subject`、`eventtype` 和 `dataversion` 使用索引鍵名稱。
 
 若要使用 Azure CLI 建立自訂主題，請使用：
 
 ```azurecli-interactive
-# If you have not already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid topic create \
   -n demotopic \
   -l eastus2 \
@@ -65,11 +55,7 @@ az eventgrid topic create \
 對於 PowerShell，請使用：
 
 ```azurepowershell-interactive
-# If you have not already installed the module, do it now.
-# This module is required for preview features.
-Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
-
-New-AzureRmEventGridTopic `
+New-AzEventGridTopic `
   -ResourceGroupName myResourceGroup `
   -Name demotopic `
   -Location eastus2 `
@@ -107,9 +93,9 @@ az eventgrid event-subscription create \
 下列範例會訂閱事件方格主題，並使用事件方格結構描述。 對於 PowerShell，請使用：
 
 ```azurepowershell-interactive
-$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName myResourceGroup -Name demoTopic).Id
+$topicid = (Get-AzEventGridTopic -ResourceGroupName myResourceGroup -Name demoTopic).Id
 
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -ResourceId $topicid `
   -EventSubscriptionName eventsub1 `
   -EndpointType webhook `
@@ -120,7 +106,7 @@ New-AzureRmEventGridSubscription `
 下一個範例會使用事件的輸入結構描述：
 
 ```azurepowershell-interactive
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -ResourceId $topicid `
   -EventSubscriptionName eventsub2 `
   -EndpointType webhook `
@@ -146,8 +132,8 @@ curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 對於 PowerShell，請使用：
 
 ```azurepowershell-interactive
-$endpoint = (Get-AzureRmEventGridTopic -ResourceGroupName myResourceGroup -Name demotopic).Endpoint
-$keys = Get-AzureRmEventGridTopicKey -ResourceGroupName myResourceGroup -Name demotopic
+$endpoint = (Get-AzEventGridTopic -ResourceGroupName myResourceGroup -Name demotopic).Endpoint
+$keys = Get-AzEventGridTopicKey -ResourceGroupName myResourceGroup -Name demotopic
 
 $htbody = @{
     myEventTypeField="Created"
@@ -200,7 +186,7 @@ Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-ke
 
 請注意已傳遞原始欄位。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 如需事件傳遞和重試的相關資訊，請參閱[事件格線訊息傳遞與重試](delivery-and-retry.md)。
 * 如需 Event Grid 的簡介，請參閱[關於 Event Grid](overview.md)。

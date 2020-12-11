@@ -11,18 +11,18 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7bb38b382add2a0ea3506c31c5e6e76a985df6a1
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 7c9e3344ed819f607feeab88ac43a9dc286a61e0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936466"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109091"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的新應用程式註冊體驗
 
 Azure Active Directory B2C (Azure AD B2C) 的新 **[應用程式註冊](https://aka.ms/b2cappregistrations)** 體驗現已正式推出。 如果您更熟悉用來註冊應用程式的 **應用程式** 體驗 Azure AD B2C，在此稱為「舊版體驗」，本指南將協助您開始使用新的體驗。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 先前，您必須使用舊版體驗，與應用程式的其餘部分分開管理 Azure AD B2C 取用者面向應用程式。 這表示不同的應用程式在 Azure 中的不同位置之間的建立體驗。
 
 新體驗會顯示所有 Azure AD B2C 應用程式註冊，並在單一位置 Azure AD 應用程式註冊，並提供一致的方式來管理它們。 從建立客戶面向的應用程式，到以 Microsoft Graph 的資源管理許可權來管理應用程式，您只需要學習一種方法來進行工作。
@@ -97,7 +97,7 @@ Azure AD B2C 的應用程式註冊體驗是以任何 Azure AD 租使用者的一
 ## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>Azure AD B2C 租使用者中不適用的功能
 下列 Azure AD 應用程式註冊功能不適用於 Azure AD B2C 租使用者或可供使用：
 - **角色和系統管理員** -目前不適用於 Azure AD B2C。
-- **商標** -UI/UX 自訂是在 **公司商標** 體驗中設定，或做為使用者流程的一部分。 瞭解如何 [在 Azure Active Directory B2C 中自訂使用者介面](customize-ui-overview.md)。
+- **商標** -UI/UX 自訂是在 **公司商標** 體驗中設定，或做為使用者流程的一部分。 瞭解如何 [在 Azure Active Directory B2C 中自訂使用者介面](customize-ui-with-html.md)。
 - **發行者網域驗證** -您的應用程式已在 *onmicrosoft.com* 上註冊，這不是經過驗證的網域。 此外，「發行者」網域主要是用來授與使用者同意，這不適用於使用者驗證 Azure AD B2C 應用程式。 [深入瞭解發行者網域](../active-directory/develop/howto-configure-publisher-domain.md)。
 - **權杖** 設定-權杖會設定為使用者流程的一部分，而不是應用程式的一部分。
 - Azure AD B2C 的租使用者目前無法使用 **快速入門** 體驗。

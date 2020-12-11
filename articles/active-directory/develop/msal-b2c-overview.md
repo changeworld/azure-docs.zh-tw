@@ -13,12 +13,12 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev devx-track-js
-ms.openlocfilehash: 327280c193c3c2fb829e468bccfc352f35edfdb5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: ef1c0003978251dd2637915e56dc396e85f4438f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92673505"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107867"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>使用適用于 JavaScript 的 Microsoft 驗證程式庫來處理 Azure AD B2C
 
@@ -32,7 +32,7 @@ ms.locfileid: "92673505"
 - 支援在單一頁面應用程式中 (SPA) 登入，並呼叫受保護 *的* web API
 - 啟用密碼重設支援
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您還沒有這麼做，請建立 [Azure AD B2C 的租](../../active-directory-b2c/tutorial-create-tenant.md)使用者。
 
@@ -207,9 +207,9 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
     重設其密碼之後，會將使用者重新傳回給應用程式，以重新登入。
 
-    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Azure AD B2C 顯示的登入畫面" border="false":::
+    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Azure AD B2C 顯示密碼重設流程畫面" border="false":::
 
-    如需錯誤碼和處理例外狀況的詳細資訊，請參閱 [MSAL 錯誤和例外狀況代碼](msal-handling-exceptions.md)。
+    如需錯誤碼和處理例外狀況的詳細資訊，請參閱 [MSAL 錯誤和例外狀況代碼](msal-error-handling-js.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -217,4 +217,4 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 - [使用者流程](../../active-directory-b2c/tutorial-create-user-flows.md)
 - [自訂原則](../../active-directory-b2c/custom-policy-get-started.md)
-- [UX 自訂](../../active-directory-b2c/custom-policy-configure-user-input.md)
+- [UX 自訂](../../active-directory-b2c/configure-user-input.md)

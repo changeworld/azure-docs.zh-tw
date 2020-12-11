@@ -5,12 +5,12 @@ description: 了解叢集運算子在 Azure Kubernetes Service (AKS) 中使用�
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: c0c1f587b4e52607e9466300f976a52874c9e5ad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1a8138b4b2fdab2cdef8d2cb4c27de8d12ef38cd
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993698"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107341"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) 中進階排程器功能的最佳做法
 
@@ -131,7 +131,7 @@ spec:
 
 ### <a name="node-affinity"></a>節點親和性
 
-節點選取器是將 pod 指派給指定節點的基本方法。 使用 *節點親和性* 可以獲得更多的彈性。 使用節點親和性，您可以定義如果pod無法與節點匹配會發生什麼事。 您可以 *要求* Kubernetes 排程器與加上標籤的主機的 pod 相符。 或者，您可以 *偏好* 相符項目，但如果沒有相符項目，則允許在其他主機上排程 pod。
+節點選取器是將 pod 指派給指定節點的基本方法。 使用 *節點親和性* 可以獲得更多的彈性。 使用節點親和性，您可以定義如果pod無法與節點匹配會發生什麼事。 您可以 *要求* Kubernetes 排程器與加上標籤的主機的 pod 相符。 或者，您可以 *偏好* 進行比對，但如果沒有相符的可用，則允許在不同的主機上排程 pod。
 
 下列範例將節點親和性設定為 *requiredDuringSchedulingIgnoredDuringExecution*。 此親和性要求Kubernetes計劃使用具有匹配標籤的節點。 如果沒有可用節點，則 pod 必須等候排程以繼續。 若要允許在不同的節點上排程 pod，您可以改為將值設定為 *preferredDuringSchedulingIgnoreDuringExecution*：
 

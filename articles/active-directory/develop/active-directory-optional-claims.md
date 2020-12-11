@@ -12,12 +12,12 @@ ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: e71ab0293dade56c14dce7318fc96021a040b102
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 3fd91bb86b32a958344dc366cfcd142bff369c1f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433315"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108139"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：為您的應用程式提供選擇性宣告
 
@@ -76,7 +76,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 **表 3：僅限 v2.0 的選擇性宣告**
 
-| JWT 宣告     | 名稱                            | 描述                                | 注意 |
+| JWT 宣告     | 名稱                            | 說明                                | 注意 |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP 位址                      | 用戶端的登入來源 IP 位址。   |       |
 | `onprem_sid`  | 內部部署安全性識別碼 |                                             |       |
@@ -139,7 +139,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 1. 選取 [新增]。
 
 > [!NOTE]
-> 目前在 Azure AD B2C 租使用者中註冊的應用程式無法使用 UI 選項 **權杖** 設定分頁。 針對在 B2C 租使用者中註冊的應用程式，可以藉由修改應用程式資訊清單來設定選擇性宣告。 如需詳細資訊，請參閱 [在 Azure Active Directory B2C 中使用自訂原則新增宣告和自訂使用者輸入](../../active-directory-b2c/custom-policy-configure-user-input.md) 
+> 目前在 Azure AD B2C 租使用者中註冊的應用程式無法使用 UI 選項 **權杖** 設定分頁。 針對在 B2C 租使用者中註冊的應用程式，可以藉由修改應用程式資訊清單來設定選擇性宣告。 如需詳細資訊，請參閱 [在 Azure Active Directory B2C 中使用自訂原則新增宣告和自訂使用者輸入](../../active-directory-b2c/configure-user-input.md) 
 
 **透過應用程式資訊清單設定選擇性宣告：**
 

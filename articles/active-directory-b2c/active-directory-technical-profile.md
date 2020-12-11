@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 67acf675c6636c5d1066d4fe25310d875fa7c064
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49d8e83c158cd14357a74b9dde4af1daba26dc36
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201509"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109108"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的 Azure Active Directory 技術設定檔
 
@@ -60,9 +60,9 @@ Azure Active Directory B2C (Azure AD B2C) 提供 Azure Active Directory 使用�
 
 InputClaims 元素包含宣告，可用來查閱目錄中的帳戶，或建立一個新的帳戶。 所有 Azure AD 技術設定檔的輸入宣告集合中必須只有一個 InputClaim 元素。 您可能需要將原則中定義的宣告名稱對應至 Azure Active Directory 中定義的名稱。
 
-若要讀取、更新或刪除現有的使用者帳戶，輸入宣告是可唯一識別 Azure AD 目錄中帳戶的金鑰。 例如， **objectId**、 **userPrincipalName**、 **>signinnames.emailaddress. emailAddress**、>signinnames.emailaddress、 **userName**或 **>alternativesecurityid**。 
+若要讀取、更新或刪除現有的使用者帳戶，輸入宣告是可唯一識別 Azure AD 目錄中帳戶的金鑰。 例如， **objectId**、 **userPrincipalName**、 **>signinnames.emailaddress. emailAddress**、>signinnames.emailaddress、 **userName** 或 **>alternativesecurityid**。 
 
-若要建立新的使用者帳戶，輸入宣告是可唯一識別本機或同盟帳戶的金鑰。 例如，本機帳戶： **>signinnames.emailaddress. emailAddress**或 **>signinnames.emailaddress。 userName**。 針對同盟帳戶： **>alternativesecurityid**。
+若要建立新的使用者帳戶，輸入宣告是可唯一識別本機或同盟帳戶的金鑰。 例如，本機帳戶： **>signinnames.emailaddress. emailAddress** 或 **>signinnames.emailaddress。 userName**。 針對同盟帳戶： **>alternativesecurityid**。
 
 [InputClaimsTransformations](technicalprofiles.md#inputclaimstransformations)元素可以包含輸入宣告轉換元素的集合，這些專案是用來修改輸入宣告或產生新的宣告。
 
@@ -92,7 +92,7 @@ InputClaims 元素包含宣告，可用來查閱目錄中的帳戶，或建立�
 
 ## <a name="persistedclaims"></a>PersistedClaims
 
-**PersistedClaims**元素包含應由 Azure AD 保存的所有值，以及在原則的[ClaimsSchema](claimsschema.md)區段中已定義的宣告類型和 Azure AD 屬性名稱之間可能的對應資訊。
+**PersistedClaims** 元素包含應由 Azure AD 保存的所有值，以及在原則的 [ClaimsSchema](claimsschema.md)區段中已定義的宣告類型和 Azure AD 屬性名稱之間可能的對應資訊。
 
 **AAD-UserWriteUsingLogonEmail** 技術設定檔，可建立新的本機帳戶，持續使用下列宣告：
 
@@ -124,7 +124,7 @@ InputClaims 元素包含宣告，可用來查閱目錄中的帳戶，或建立�
 
 ### <a name="read"></a>讀取
 
-**讀取**作業可讀取單一使用者帳戶的相關資料。 以下技術設定檔會利用使用者的 objectId 讀取使用者帳戶的相關資料：
+**讀取** 作業可讀取單一使用者帳戶的相關資料。 以下技術設定檔會利用使用者的 objectId 讀取使用者帳戶的相關資料：
 
 ```xml
 <TechnicalProfile Id="AAD-UserReadUsingObjectId">
@@ -154,7 +154,7 @@ InputClaims 元素包含宣告，可用來查閱目錄中的帳戶，或建立�
 
 ### <a name="write"></a>寫入
 
-**寫入**作業可建立或更新單一使用者帳戶。 下列技術設定檔會建立新的社交帳戶：
+**寫入** 作業可建立或更新單一使用者帳戶。 下列技術設定檔會建立新的社交帳戶：
 
 ```xml
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
@@ -246,20 +246,20 @@ InputClaims 元素包含宣告，可用來查閱目錄中的帳戶，或建立�
 ```
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
 | 作業 | 是 | 要執行的作業。 可能的值：`Read`、`Write`、`DeleteClaims` 或 `DeleteClaimsPrincipal`。 |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | 否 | 如果使用者物件不存在目錄中，會發生錯誤。 可能的值：`true` 或 `false`。 |
 | RaiseErrorIfClaimsPrincipalAlreadyExists | 否 | 如果使用者物件已存在，則會引發錯誤。 可能的值：`true` 或 `false`。|
 | ApplicationObjectId | 否 | 擴充屬性的應用程式物件識別碼。 值：應用程式的 ObjectId。 如需詳細資訊，請參閱 [在自訂設定檔編輯原則中使用自訂屬性](custom-policy-custom-attributes.md)。 |
 | ClientId | 否 | 以協力廠商身分存取租用戶的用戶端識別碼。 如需詳細資訊，請參閱[在自訂設定檔編輯原則中使用自訂屬性](custom-policy-custom-attributes.md) |
-| IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含 [宣告解析](claim-resolver-overview.md) 。 可能的值： `true` 或 `false`   (預設) 。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 `true` 。 |
+| IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含 [宣告解析](claim-resolver-overview.md) 。 可能的值為：`true` 或 `false` (預設)。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 `true` 。 |
 
 ### <a name="ui-elements"></a>UI 元素
  
 您可以使用下列設定來設定失敗時所顯示的錯誤訊息。 中繼資料應該在 [自我](self-asserted-technical-profile.md) 判斷技術設定檔中設定。 錯誤訊息可以[當地語系化](localization.md)。
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
 | UserMessageIfClaimsPrincipalAlreadyExists | 否 | 如果會引發錯誤 (請參閱 RaiseErrorIfClaimsPrincipalAlreadyExists 屬性說明)，請指定當使用者物件存在時，要向使用者顯示的訊息。 |
 | UserMessageIfClaimsPrincipalDoesNotExist | 否 | 如果會引發錯誤 (請參閱 RaiseErrorIfClaimsPrincipalDoesNotExist 屬性的說明)，請指定當使用者物件不存在時，要向使用者顯示的訊息。 |
@@ -269,7 +269,7 @@ InputClaims 元素包含宣告，可用來查閱目錄中的帳戶，或建立�
 
 請參閱下列文章，例如使用 Azure AD 技術設定檔：
 
-- [在 Azure Active Directory B2C 中使用自訂原則來新增宣告並自訂使用者輸入](custom-policy-configure-user-input.md)
+- [在 Azure Active Directory B2C 中使用自訂原則來新增宣告並自訂使用者輸入](configure-user-input.md)
 
 
 

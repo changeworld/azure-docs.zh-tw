@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: jgao
-ms.openlocfilehash: 3a229d1e6752eabd099a5bc60ef93f1d4e85a26b
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 7566235cf92965d5d3de1ec7f40353430ec7e0c6
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092749"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107136"
 ---
 # <a name="use-deployment-scripts-in-arm-templates-preview"></a>在 ARM 範本中使用部署腳本 (預覽) 
 
@@ -41,7 +41,7 @@ ms.locfileid: "97092749"
 > DeploymentScripts 資源 API 版本2020-10-01 支援 [OnBehalfofTokens (OBO) ](../../active-directory/develop/v2-oauth2-on-behalf-of-flow.md)。 藉由使用 OBO，部署腳本服務會使用部署主體的權杖來建立基礎資源，以執行部署腳本，其中包括 Azure 容器實例、Azure 儲存體帳戶，以及受控識別的角色指派。 在較舊的 API 版本中，會使用受控識別來建立這些資源。
 > Azure 登入的重試邏輯現在已內建至包裝函式腳本。 如果您在執行部署腳本的相同範本中授與許可權。  部署腳本服務會以10秒的間隔重試登入10分鐘，直到受控識別角色指派已複寫為止。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - **(選擇性) 使用者指派的受控識別，並具備在腳本中執行作業所需的許可權**。 若為部署腳本 API 2020-10-01 版或更新版本，則會使用部署主體來建立基礎資源。 如果腳本需要向 Azure 進行驗證，並執行 Azure 特定的動作，建議您為腳本提供使用者指派的受控識別。 受控識別必須具有目標資源群組中的必要存取權，才能完成腳本中的作業。 您也可以在部署腳本中登入 Azure。 若要在資源群組外部執行作業，您必須授與其他權限。 例如，如果您想要建立新的資源群組，請將身分識別指派給訂用帳戶層級。 
 
@@ -529,14 +529,14 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
   - **一律**：一旦指令碼執行進入終端狀態後，即刪除自動建立的資源。 如果使用現有的儲存體帳戶，指令碼服務會刪除在儲存體帳戶中建立的檔案共用。 由於 deploymentScripts 資源在清除資源之後可能仍會出現，因此腳本服務會在刪除資源之前，先保存腳本執行結果，例如 stdout、輸出、傳回值等等。
   - **OnSuccess**：只有在指令碼執行成功時，才刪除自動建立的資源。 如果使用現有的儲存體帳戶，指令碼服務只會在指令碼執行成功時，才會移除檔案共用。 您仍然可以存取資源來尋找偵錯資訊。
-  - **>onexpiration**：只有在 **retentionInterval** 設定過期時，才會刪除自動建立的資源。 如果使用現有的儲存體帳戶，指令碼服務會移除檔案共用，但會保留儲存體帳戶。
+  - **>onexpiration**：只有在 **retentionInterval** 設定過期時，才會刪除自動建立的資源。 如果使用現有的儲存體帳戶，腳本服務會移除檔案共用，但會保留儲存體帳戶。
 
 - **retentionInterval**：指定將保留指令碼資源的時間間隔，在其後將會過期並加以刪除。
 
 > [!NOTE]
 > 不建議針對其他目的使用由指令碼服務產生的儲存體帳戶和容器執行個體。 視指令碼生命週期而定，可能會移除這兩個資源。
 
-若要保留容器實例和儲存體帳戶以進行疑難排解，您可以將睡眠命令新增至腳本。  例如，使用 [ [開始-睡眠](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep)]。
+容器實例和儲存體帳戶會根據 **cleanupPreference** 刪除。 但是，如果腳本失敗且 **cleanupPreference** 未設定為 [ **永遠**]，部署程式就會自動讓容器執行一小時的時間。 您可以使用此小時來對腳本進行疑難排解。 如果您想要在成功部署之後讓容器保持執行，請將睡眠步驟新增至腳本。 例如，將 [ [開始-睡眠](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) ] 新增至腳本的結尾。 如果您未新增睡眠步驟，容器會設定為終端狀態，而且即使尚未刪除也無法存取。
 
 ## <a name="run-script-more-than-once"></a>執行指令碼超過一次
 

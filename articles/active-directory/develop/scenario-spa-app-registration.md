@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: c9fde904d6befebfcfd87b55bd7b2bf4e4c825f2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e42b6b7ffa39110ce356094de690bb353a3fb10f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443818"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107782"
 ---
 # <a name="single-page-application-app-registration"></a>單頁應用程式：應用程式註冊
 
@@ -27,10 +27,12 @@ ms.locfileid: "94443818"
 
 針對以 MSAL.js 1.0 和 2.0 為基礎的應用程式，請先完成下列步驟，以建立初始應用程式註冊。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 如果您的帳戶可存取多個租用戶，請選取頂端功能表中的 [目錄 + 訂用帳戶] 篩選條件，然後選取應包含您即將建立之應用程式註冊的租用戶。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
 1. 搜尋並選取 [Azure Active Directory]。
-1. 在 [管理] 底下選取 [應用程式註冊]。
-1. 選取 [新增註冊]，輸入應用程式的 [名稱]，然後選擇應用程式 [支援的帳戶類型]。 請 **不要** 輸入 **重新導向 URI** 。 如需不同帳戶類型的說明，請參閱[使用 Azure 入口網站註冊新的應用程式](quickstart-register-app.md)。
+1. 在 [**管理**] 底下，選取 [**應用程式註冊**  >  **新增註冊**]。
+1. 輸入應用程式的 **名稱**。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
+1. 選擇應用程式 **支援的帳戶類型** 。 請 **不要** 輸入 **重新導向 URI**。 如需不同帳戶類型的說明，請參閱 [註冊應用程式](quickstart-register-app.md)。
 1. 選取 [註冊] 以建立應用程式註冊。
 
 接下來，使用 **重新導向 URI** 設定應用程式註冊，以指定 Microsoft 身分識別平台應將用戶端與任何安全性權杖一起重新導向的目標位置。 使用適用於您應用程式中所使用之 MSAL.js 版本的步驟：
@@ -43,7 +45,7 @@ ms.locfileid: "94443818"
 請遵循這些步驟，為使用 MSAL.js 2.0 或更新版本的應用程式新增重新導向 URI。 MSAL.js 2.0+ 支援使用 PKCE 和 CORS 的授權碼流程，以回應[瀏覽器協力廠商 Cookie 限制](reference-third-party-cookies-spas.md)。 MSAL.js 2.0+ 不支援隱含授與流程。
 
 1. 在 Azure 入口網站中，選取您稍早在[建立應用程式註冊](#create-the-app-registration)中建立的應用程式註冊。
-1. 在 [管理] 底下，選取 [驗證]，然後選取 [新增平台]。
+1. 在 [**管理**] 底下，選取 [**驗證**  >  **新增平臺**]。
 1. 在 [Web 應用程式] 底下，選取 [單頁應用程式] 圖格。
 1. 在 [重新導向 URI] 底下，輸入[重新導向 URI](reply-url.md)。 請 **不要** 選取 [隱含授與] 底下的任一核取方塊。
 1. 選取 [設定] 以完成新增重新導向 URI。
@@ -57,10 +59,10 @@ ms.locfileid: "94443818"
 請遵循這些步驟，針對使用 MSAL.js 1.3 或更早版本及隱含授與流程的單頁應用程式新增重新導向 URI。 使用 MSAL.js 1.3 或更早版本的應用程式不支援驗證碼流程。
 
 1. 在 Azure 入口網站中，選取您稍早在[建立應用程式註冊](#create-the-app-registration)中建立的應用程式註冊。
-1. 在 [管理] 底下，選取 [驗證]，然後選取 [新增平台]。
+1. 在 [**管理**] 底下，選取 [**驗證**  >  **新增平臺**]。
 1. 在 [Web 應用程式] 底下，選取 [單頁應用程式] 圖格。
 1. 在 [重新導向 URI] 底下，輸入[重新導向 URI](reply-url.md)。
-1. 啟用 **隱含流程** ：
+1. 啟用 **隱含流程**：
     - 如果您的應用程式會登入使用者，請選取 [識別碼權杖]。
     - 如果您的應用程式也需要呼叫受保護的 Web API，請選取 [存取權杖]。 如需有關這些權杖類型的詳細資訊，請參閱[識別碼權杖](id-tokens.md)與[存取權杖](access-tokens.md)。
 1. 選取 [設定] 以完成新增重新導向 URI。
@@ -79,4 +81,4 @@ ms.locfileid: "94443818"
 
 ## <a name="next-steps"></a>後續步驟
 
-接下來，設定應用程式的程式碼，以使用您在先前步驟中建立的應用程式註冊： [應用程式的程式碼](scenario-spa-app-configuration.md)設定。
+設定您的應用程式程式碼，以使用您在先前步驟中建立的應用程式註冊： [應用程式的程式碼](scenario-spa-app-configuration.md)設定。

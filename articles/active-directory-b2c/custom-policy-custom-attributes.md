@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dbeb2540084fad2cfab3ce360dd15b60a75e5e59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ec99558f3a168b770ad19fb4f6c811a31c44f08
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85389321"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108871"
 ---
 # <a name="azure-active-directory-b2c-enable-custom-attributes-in-a-custom-profile-policy"></a>Azure Active Directory B2C：在自訂設定檔原則中啟用自訂屬性
 
-在 [ [使用自訂原則新增宣告和自訂使用者輸入](custom-policy-configure-user-input.md) ] 文章中，您將瞭解如何使用內建的 [使用者設定檔屬性](user-profile-attributes.md)。 在本文中，您會在 Azure Active Directory B2C (Azure AD B2C) 目錄中啟用自訂屬性。 稍後，您可以在 [使用者流程](user-flow-overview.md) 或 [自訂原則](custom-policy-get-started.md) 中同時使用新的屬性做為自訂宣告。
+在 [ [使用自訂原則新增宣告和自訂使用者輸入](configure-user-input.md) ] 文章中，您將瞭解如何使用內建的 [使用者設定檔屬性](user-profile-attributes.md)。 在本文中，您會在 Azure Active Directory B2C (Azure AD B2C) 目錄中啟用自訂屬性。 稍後，您可以在 [使用者流程](user-flow-overview.md) 或 [自訂原則](custom-policy-get-started.md) 中同時使用新的屬性做為自訂宣告。
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -42,7 +42,7 @@ Azure AD B2C 可讓您擴充儲存在每個使用者帳戶上的屬性集。 您
 
 擴充屬性只能在應用程式物件上註冊，即使它們可能包含使用者的資料也一樣。 擴充屬性會附加至名為 b2c-extensions-app 的應用程式。 請勿修改此應用程式，因為 Azure AD B2C 會使用此應用程式來儲存使用者資料。 您可以在 [應用程式註冊 Azure AD B2C] 下找到此應用程式。
 
-「擴充屬性」**、「自訂屬性」** 及「自訂宣告」** 等術語在本文內容中係指相同的動作。 名稱會根據內容 (例如應用程式、物件或原則) 而有所不同。
+「擴充屬性」、「自訂屬性」及「自訂宣告」等術語在本文內容中係指相同的動作。 名稱會根據內容 (例如應用程式、物件或原則) 而有所不同。
 
 ## <a name="get-the-application-properties"></a>取得應用程式屬性
 
@@ -57,7 +57,7 @@ Azure AD B2C 可讓您擴充儲存在每個使用者帳戶上的屬性集。 您
 
 ## <a name="modify-your-custom-policy"></a>修改您的自訂原則
 
-若要在您的原則中啟用自訂屬性，請在 AAD-Common 技術設定檔中繼資料中提供 **應用程式識別碼** 和應用程式 **物件識別碼** 。 *AAD 一般*技術設定檔可在基底[Azure Active Directory](active-directory-technical-profile.md)技術設定檔中找到，並提供 Azure AD 使用者管理的支援。 其他 Azure AD 技術設定檔包含 AAD-Common，以利用其設定。 覆寫擴充檔中的 AAD-Common 技術設定檔。
+若要在您的原則中啟用自訂屬性，請在 AAD-Common 技術設定檔中繼資料中提供 **應用程式識別碼** 和應用程式 **物件識別碼** 。 *AAD 一般* 技術設定檔可在基底 [Azure Active Directory](active-directory-technical-profile.md)技術設定檔中找到，並提供 Azure AD 使用者管理的支援。 其他 Azure AD 技術設定檔包含 AAD-Common，以利用其設定。 覆寫擴充檔中的 AAD-Common 技術設定檔。
 
 1. 開啟您原則的擴充檔。 例如，<em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>。
 1. 尋找 ClaimsProviders 元素。 將新的 ClaimsProvider 加入至 Claimsprovider 元素。
@@ -88,7 +88,7 @@ Azure AD B2C 可讓您擴充儲存在每個使用者帳戶上的屬性集。 您
 5. 選取 **[上傳自訂原則**]，然後上傳您變更的 TrustFrameworkExtensions.xml 原則檔。
 
 > [!NOTE]
-> 第一次 Azure AD 技術設定檔將宣告保存至目錄時，它會檢查自訂屬性是否存在。 如果沒有，則會建立自訂屬性。  
+> 第一次 Azure AD 技術設定檔將宣告保存至目錄時，它會檢查自訂屬性是否存在。 如果沒有，則會建立自訂屬性。  
 
 ## <a name="create-a-custom-attribute-through-azure-portal"></a>透過 Azure 入口網站建立自訂屬性
 
@@ -132,7 +132,7 @@ Azure AD B2C 可讓您擴充儲存在每個使用者帳戶上的屬性集。 您
 
 ## <a name="use-a-custom-attribute-in-a-policy"></a>在原則中使用自訂屬性
 
-遵循如何 [使用自訂原則新增宣告和自訂使用者輸入](custom-policy-configure-user-input.md)的指引。 此範例會使用內建的宣告「city」。 若要使用自訂屬性，請將 ' city ' 取代為您自己的自訂屬性。
+遵循如何 [使用自訂原則新增宣告和自訂使用者輸入](configure-user-input.md)的指引。 此範例會使用內建的宣告「city」。 若要使用自訂屬性，請將 ' city ' 取代為您自己的自訂屬性。
 
 
 ## <a name="next-steps"></a>後續步驟

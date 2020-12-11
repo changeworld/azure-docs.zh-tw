@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fd2f7d46df09085d19b19709c7f45cd3d6566988
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 018d90db06948f3fd6a34b56c65088641a9ca874
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628655"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108972"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -61,13 +61,13 @@ ms.locfileid: "92628655"
 
 **ContentDefinition** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| Id | 是 | 內容定義的識別碼。 此值是本頁面後面的 **內容定義識別碼** 區段中指定的值。 |
+| 識別碼 | 是 | 內容定義的識別碼。 此值是本頁面後面的 **內容定義識別碼** 區段中指定的值。 |
 
 **ContentDefinition** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 說明 |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | 此字串包含內容定義之 HTML5 頁面的 URL。 |
 | RecoveryUri | 1:1 | 此字串包含 HTML 頁面的 URL，以顯示與內容定義相關的錯誤。 目前未使用，此值必須是 `~/common/default_page_error.html` 。 |
@@ -79,7 +79,7 @@ ms.locfileid: "92628655"
 
 **DataUri** 元素用於指定頁面識別碼。 Azure AD B2C 使用頁面識別碼以載入並初始化 UI 元素與用戶端 JavaScript。 值的格式為 `urn:com:microsoft:aad:b2c:elements:page-name:version`。 下表列出您可以使用的頁面識別碼。
 
-| 頁面識別碼 | 描述 |
+| 頁面識別碼 | 說明 |
 | ----- | ----------- |
 | `globalexception` | 發生例外狀況或錯誤時，會顯示錯誤頁面。 |
 | `providerselection`, `idpselection` | 列出使用者可以在登入期間選擇的識別提供者。  |
@@ -90,13 +90,13 @@ ms.locfileid: "92628655"
 
 ### <a name="select-a-page-layout"></a>選取頁面配置
 
-您可以在和頁面類型之間插入，藉以啟用 [JavaScript 用戶端程式代碼](javascript-samples.md) `contract` `elements` 。 例如： `urn:com:microsoft:aad:b2c:elements:contract:page-name:version` 。
+您可以在和頁面類型之間插入，藉以啟用 [JavaScript 用戶端程式代碼](javascript-and-page-layout.md) `contract` `elements` 。 例如： `urn:com:microsoft:aad:b2c:elements:contract:page-name:version` 。
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 的 [版本](page-layout.md) 部分會 `DataUri` 針對原則中的使用者介面專案，指定包含 HTML、CSS 和 JavaScript 的內容套件。 如果您想要啟用 JavaScript 用戶端程式代碼，您的 JavaScript 所依據的元素必須是不可變的。 如果它們不是不可變的，則任何變更可能會在使用者頁面上造成非預期的行為。 若要避免這些問題，請強制使用頁面配置，並指定頁面配置版本。 這麼做可確保您以 JavaScript 為基礎的所有內容定義都是不可變的。 即使您不打算啟用 JavaScript，仍然需要指定頁面的頁面配置版本。
 
-下列範例會顯示版本 **DataUri** 的 DataUri `selfasserted` `1.2.0` ：
+下列範例會顯示版本的 DataUri `selfasserted` `1.2.0` ：
 
 ```xml
 <ContentDefinition Id="api.localaccountpasswordreset">
@@ -111,7 +111,7 @@ ms.locfileid: "92628655"
 
 #### <a name="migrating-to-page-layout"></a>遷移至頁面配置
 
-值的格式必須包含 " `contract` _urn： com： microsoft： aad： b2c： elements： **contract** :p age： version_ 。 若要在自訂原則中指定使用舊 **DataUri** 值的頁面配置，請使用下表來遷移至新的格式。
+值的格式必須包含 " `contract` _urn： com： microsoft： aad： b2c： elements：**contract**:p age： version_。 若要在自訂原則中指定使用舊 **DataUri** 值的頁面配置，請使用下表來遷移至新的格式。
 
 | 舊的 DataUri 值 | 新的 DataUri 值 |
 | ----------------- | ----------------- |
@@ -178,7 +178,7 @@ ms.locfileid: "92628655"
 
 內容定義支援下列中繼資料專案：
 
-| 機碼 | 必要 | 描述 |
+| 答案 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | DisplayName | 否 | 字串，其中包含內容定義的名稱。 |
 
@@ -186,15 +186,15 @@ ms.locfileid: "92628655"
 
 **LocalizedResourcesReferences** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 說明 |
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1:n | 內容定義的當地語系化資源參考清單。 |
 
 **LocalizedResourcesReference** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| Language | 是 | 此字串針對每個 RFC 5646 - 標記的原則包含支援的語言，以進行識別語言。 |
+| 語言 | 是 | 此字串針對每個 RFC 5646 - 標記的原則包含支援的語言，以進行識別語言。 |
 | LocalizedResourcesReferenceId | 是 | **LocalizedResources** 元素的識別碼。 |
 
 下列範例顯示的是註冊或登入內容定義，其參考英文、法文和西班牙文的當地語系化：
@@ -221,12 +221,12 @@ ms.locfileid: "92628655"
 
 **ContentDefinition** 元素的識別碼屬性會指定與內容定義相關的頁面類型。 此元素會定義自訂 HTML5/CSS 範本即將套用的內容。 下表說明身分識別體驗架構所能辨識之內容定義識別碼的集合，以及這些識別碼的相關頁面類型。 您可以使用任意識別碼建立自己的內容定義。
 
-| 識別碼 | 預設範本 | 描述 |
+| 識別碼 | 預設範本 | 說明 |
 | -- | ---------------- | ----------- |
-| api.error  | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **錯誤頁面** - 發生例外狀況或錯誤時，會顯示錯誤頁面。 |
-| api.idpselections  | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **識別提供者選取頁面** - 列出使用者可以在登入期間選擇的識別提供者。 這些選項通常是企業識別提供者、社交識別提供者 (如 Facebook 和 Google+) 或本機帳戶。 |
-| api.idpselections.signup  | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **適用於註冊的識別提供者選取項目** - 列出使用者可以在註冊期間選擇的識別提供者。 這些選項通常是企業識別提供者、社交識別提供者 (如 Facebook 和 Google+) 或本機帳戶。 |
-| api.localaccountpasswordreset  | [selfasserted](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **忘記密碼頁面** - 顯示一份表單，使用者必須填妥表單，然後才能開始密碼重設。 |
+| api.error | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **錯誤頁面** - 發生例外狀況或錯誤時，會顯示錯誤頁面。 |
+| api.idpselections | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **識別提供者選取頁面** - 列出使用者可以在登入期間選擇的識別提供者。 這些選項通常是企業識別提供者、社交識別提供者 (如 Facebook 和 Google+) 或本機帳戶。 |
+| api.idpselections.signup | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **適用於註冊的識別提供者選取項目** - 列出使用者可以在註冊期間選擇的識別提供者。 這些選項通常是企業識別提供者、社交識別提供者 (如 Facebook 和 Google+) 或本機帳戶。 |
+| api.localaccountpasswordreset | [selfasserted](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **忘記密碼頁面** - 顯示一份表單，使用者必須填妥表單，然後才能開始密碼重設。 |
 | **api.localaccountsignin** | [selfasserted](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **本機帳戶登入頁面** - 顯示一份表單，可供以電子郵件地址或使用者名稱為基礎的本機帳戶進行登入。 此表單可以包含文字輸入方塊和密碼輸入方塊。 |
 | **api.localaccountsignup** | [selfasserted](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **本機帳戶註冊頁面** - 顯示一份表單，可供以電子郵件地址或使用者名稱為基礎的本機帳戶進行註冊。 此表單可以包含各種輸入控制項，例如文字輸入方塊、密碼輸入方塊、選項按鈕、單選下拉式清單方塊和多選核取方塊。 |
 | **api.phonefactor** | [multifactor-1.0.0.cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **多重要素驗證頁面** - 在註冊或登入期間，藉由使用簡訊或語音，驗證電話號碼。 |
@@ -238,4 +238,4 @@ ms.locfileid: "92628655"
 
 如需使用內容定義自訂使用者介面的範例，請參閱：
 
-[使用自訂原則來自訂應用程式的使用者介面](custom-policy-ui-customization.md)
+[使用自訂原則來自訂應用程式的使用者介面](customize-ui-with-html.md)

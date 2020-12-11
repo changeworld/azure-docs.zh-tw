@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 4befcaf6b8c6b6bc4fddacb179883551609f7e19
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 5f408699cae9580188a3780fc8f8654eaa97c26b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928642"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108428"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 LexisNexis 的教學課程
 
@@ -27,7 +27,7 @@ ms.locfileid: "96928642"
 - 電話號碼
 - 從使用者的電腦收集到的程式碼剖析資訊
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始使用，您需要：
 
@@ -49,7 +49,7 @@ ThreatMetrix 整合包含下列元件：
 
 ![lexisnexis 的螢幕擷取畫面-架構-圖表](media/partner-lexisnexis/lexisnexis-architecture-diagram.png)
 
-|步驟 | 描述 |
+|步驟 | 說明 |
 |:--------------|:-------------|
 |1. | 使用者抵達登入頁面。 使用者選取註冊來建立新的帳戶，並在頁面中輸入資訊。 Azure AD B2C 會收集使用者屬性。
 | 2. | Azure AD B2C 會呼叫中介層 API，並傳遞使用者屬性。
@@ -82,7 +82,7 @@ ThreatMetrix 整合包含下列元件：
 
 您可以在 [Azure 中的 App service 中設定](../app-service/configure-common.md#configure-app-settings)應用程式設定。  使用這個方法，可以安全地設定設定，而不需要將它們簽入存放庫。 您必須提供下列設定給 Rest API：
 
-| 應用程式設定 | 來源 | 注意 |
+| 應用程式設定 | 來源 | 附註 |
 | :-------- | :------------| :-----------|
 |ThreatMetrix： Url | ThreatMetrix 帳戶設定 |     |
 |ThreatMetrix： OrgId | ThreatMetrix 帳戶設定 |     |
@@ -95,7 +95,7 @@ ThreatMetrix 整合包含下列元件：
 
 此解決方案會使用 Azure AD B2C 載入的自訂 UI 範本。 這些 UI 範本會進行直接傳送至 ThreatMetrix 服務的分析。
 
-請參閱這些 [指示](./custom-policy-ui-customization.md#custom-page-content-walkthrough) ，將內含的 [UI](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template) 檔案部署至 blob 儲存體帳戶。 這些指示包括設定 blob 儲存體帳戶、設定 CORS，以及啟用公用存取。
+請參閱這些 [指示](./customize-ui-with-html.md#custom-page-content-walkthrough) ，將內含的 [UI](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template) 檔案部署至 blob 儲存體帳戶。 這些指示包括設定 blob 儲存體帳戶、設定 CORS，以及啟用公用存取。
 
 UI 是以 [海洋藍範本](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template/ocean_blue)為基礎。 UI 內的所有連結都應更新為參考部署的位置。 在 [UI] 資料夾中，尋找並取代 https://yourblobstorage/blobcontainer 為部署的位置。
 

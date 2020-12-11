@@ -14,12 +14,12 @@ ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: marsma, rayluo, nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 731c608b8ac280a3a3c4e77c3a94533d258cb85d
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 213184409c9f5ee21ac9f61be1ad138fbbaa3590
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618037"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107850"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>適用于 Python 的 ADAL 至 MSAL 遷移指南
 
@@ -50,7 +50,7 @@ ADAL Python 會取得資源的權杖，但 MSAL Python 會取得範圍的權杖�
 
 ### <a name="error-handling"></a>錯誤處理
 
-適用于 Python 的 Azure Active Directory Authentication Library (ADAL) 會使用例外狀況 `AdalError` 來指出發生問題。 MSAL for Python 通常會使用錯誤碼，而不是。 如需詳細資訊，請參閱  [MSAL For Python 錯誤處理](./msal-handling-exceptions.md?tabs=python)。
+適用于 Python 的 Azure Active Directory Authentication Library (ADAL) 會使用例外狀況 `AdalError` 來指出發生問題。 MSAL for Python 通常會使用錯誤碼，而不是。 如需詳細資訊，請參閱 [MSAL For Python 錯誤處理](msal-error-handling-python.md)。
 
 ### <a name="api-changes"></a>API 變更
 

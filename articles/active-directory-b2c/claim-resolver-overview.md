@@ -11,20 +11,20 @@ ms.topic: reference
 ms.date: 10/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 39b61815c33f933e0cdf08bd46382e74eea2f806
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: e55bb9ba49cfcaf07e8d3dc17dc13e30036e100f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040461"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109040"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>關於 Azure Active Directory B2C 自訂原則中的宣告解析程式
 
 Azure Active Directory B2C (Azure AD B2C 中的宣告解析程式) [自訂原則](custom-policy-overview.md) 會提供有關授權要求的內容資訊，例如原則名稱、要求相互關聯識別碼、使用者介面語言等等。
 
-若要在輸入或輸出宣告中使用宣告解析程式，您必須在 [ClaimsSchema](claimsschema.md) 元素下方定義字串 **ClaimType** ，然後在輸入或輸出宣告元素中設定宣告解析程式的 **DefaultValue** 。 Azure AD B2C 會讀取宣告解析程式的值，並在技術設定檔中使用該值。
+若要在輸入或輸出宣告中使用宣告解析程式，您必須在 [ClaimsSchema](claimsschema.md) 元素下方定義字串 **ClaimType**，然後在輸入或輸出宣告元素中設定宣告解析程式的 **DefaultValue**。 Azure AD B2C 會讀取宣告解析程式的值，並在技術設定檔中使用該值。
 
-在下列範例中，會定義名為 `correlationId`、 **DataType** 為 `string` 的宣告類型。
+在下列範例中，會定義名為 `correlationId`、**DataType** 為 `string` 的宣告類型。
 
 ```xml
 <ClaimType Id="correlationId">
@@ -46,16 +46,16 @@ Azure Active Directory B2C (Azure AD B2C 中的宣告解析程式) [自訂原則
 
 ### <a name="culture"></a>文化特性
 
-| 宣告 | 描述 | 範例 |
+| 宣告 | 說明 | 範例 |
 | ----- | ----------- | --------|
 | {Culture:LanguageName} | 語言的雙字母 ISO 代碼。 | en |
 | {Culture:LCID}   | 語言代碼的 LCID。 | 1033 |
-| {Culture:RegionName} | 區域的雙字母 ISO 代碼。 | 美國 |
-| {Culture:RFC5646} | RFC5646 語言代碼。 | zh-TW |
+| {Culture:RegionName} | 區域的雙字母 ISO 代碼。 | US |
+| {Culture:RFC5646} | RFC5646 語言代碼。 | en-US |
 
 ### <a name="policy"></a>原則
 
-| 宣告 | 描述 | 範例 |
+| 宣告 | 說明 | 範例 |
 | ----- | ----------- | --------|
 | {Policy:PolicyId} | 信賴憑證者原則名稱。 | B2C_1A_signup_signin |
 | {Policy:RelyingPartyTenantId} | 信賴憑證者原則的租用戶識別碼。 | your-tenant.onmicrosoft.com |
@@ -64,7 +64,7 @@ Azure Active Directory B2C (Azure AD B2C 中的宣告解析程式) [自訂原則
 
 ### <a name="openid-connect"></a>OpenID Connect
 
-| 宣告 | 描述 | 範例 |
+| 宣告 | 說明 | 範例 |
 | ----- | ----------- | --------|
 | {OIDC:AuthenticationContextReferences} |`acr_values` 查詢字串參數。 | N/A |
 | {OIDC:ClientId} |`client_id` 查詢字串參數。 | 00000000-0000-0000-0000-000000000000 |
@@ -81,18 +81,18 @@ Azure Active Directory B2C (Azure AD B2C 中的宣告解析程式) [自訂原則
 
 ### <a name="context"></a>Context
 
-| 宣告 | 描述 | 範例 |
+| 宣告 | 說明 | 範例 |
 | ----- | ----------- | --------|
 | {Context:BuildNumber} | 身分識別體驗架構版本 (組建編號)。  | 1.0.507.0 |
 | {Context:CorrelationId} | 相互關連識別碼。  | 00000000-0000-0000-0000-000000000000 |
 | {Context:DateTimeInUtc} |日期時間 (UTC)。  | 10/10/2018 12:00:00 PM |
-| {Context:DeploymentMode} |原則部署模式。  | Production |
+| {Context:DeploymentMode} |原則部署模式。  | 生產 |
 | {Context:IPAddress} | 使用者 IP 位址。 | 11.111.111.11 |
 | {CoNtext： KMSI} | 指出是否已選取 [ [讓我保持登入](custom-policy-keep-me-signed-in.md) ] 核取方塊。 |  true |
 
 ### <a name="claims"></a>宣告 
 
-| 宣告 | 描述 | 範例 |
+| 宣告 | 說明 | 範例 |
 | ----- | ----------- | --------|
 | {索取：宣告類型} | 已在原則檔或父原則檔之 ClaimsSchema 區段中定義的宣告類型識別碼。  例如： `{Claim:displayName}` 、或 `{Claim:objectId}` 。 | 宣告類型值。|
 
@@ -101,7 +101,7 @@ Azure Active Directory B2C (Azure AD B2C 中的宣告解析程式) [自訂原則
 
 OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者旅程圖中的宣告。 例如，來自應用程式的要求可能包含名稱為 `app_session`、`loyalty_number` 或任何自訂查詢字串的查詢字串參數。
 
-| 宣告 | 描述 | 範例 |
+| 宣告 | 說明 | 範例 |
 | ----- | ----------------------- | --------|
 | {OAUTH-KV:campaignId} | 查詢字串參數。 | Hawaii |
 | {OAUTH-KV:app_session} | 查詢字串參數。 | A3C5R |
@@ -110,7 +110,7 @@ OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者�
 
 ### <a name="oauth2"></a>OAuth2
 
-| 宣告 | 描述 | 範例 |
+| 宣告 | 說明 | 範例 |
 | ----- | ----------------------- | --------|
 | {oauth2:access_token} | 存取權杖。 | N/A |
 | {oauth2： refresh_token} | 重新整理權杖。 | N/A |
@@ -118,7 +118,7 @@ OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者�
 
 ### <a name="saml"></a>SAML
 
-| 宣告 | 描述 | 範例 |
+| 宣告 | 說明 | 範例 |
 | ----- | ----------- | --------|
 | {SAML： AuthnCoNtextClassReferences} | `AuthnContextClassRef`SAML 要求中的元素值。 | urn： oasis： names： tc： SAML：2.0： ac：類別： PasswordProtectedTransport |
 | {SAML： NameIdPolicyFormat} | `Format`從 SAML 要求的元素中的屬性 `NameIDPolicy` 。 | urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress |
@@ -133,7 +133,7 @@ OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者�
 
 您可以使用宣告解析程式搭配下列元素：
 
-| 項目 | 項目 | 設定 |
+| 項目 | 元素 | 設定 |
 | ----- | ----------------------- | --------|
 |Application Insights 技術設定檔 |`InputClaim` | |
 |[Azure Active Directory](active-directory-technical-profile.md) 技術設定檔| `InputClaim`, `OutputClaim`| 1, 2|
@@ -185,7 +185,7 @@ OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者�
 
 ### <a name="dynamic-ui-customization"></a>動態 UI 自訂
 
-Azure AD B2C 可讓您將查詢字串參數傳遞至 HTML 內容定義端點，以動態轉譯頁面內容。 例如，這項功能可讓您根據您從 web 或行動應用程式傳遞的自訂參數，修改 Azure AD B2C 註冊或登入頁面上的背景影像。 如需詳細資訊，請參閱[使用 Azure Active Directory B2C 中的自訂原則動態設定 UI](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)。 您也可以根據語言參數將 HTML 網頁當地語系化，也可以根據用戶端識別碼來變更內容。
+Azure AD B2C 可讓您將查詢字串參數傳遞至 HTML 內容定義端點，以動態轉譯頁面內容。 例如，這項功能可讓您根據您從 web 或行動應用程式傳遞的自訂參數，修改 Azure AD B2C 註冊或登入頁面上的背景影像。 如需詳細資訊，請參閱[使用 Azure Active Directory B2C 中的自訂原則動態設定 UI](customize-ui-with-html.md#configure-dynamic-custom-page-content-uri)。 您也可以根據語言參數將 HTML 網頁當地語系化，也可以根據用戶端識別碼來變更內容。
 
 下列範例會傳入名為 **campaignId** 的查詢字串參數，其值為 `Hawaii` 、的 **語言** 代碼 `en-US` ，以及代表用戶端識別碼的 **應用程式** ：
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 333bb42643539cedec04d37680749c749a003536
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cf0437b985865248393e9f68da264fcae5af7f12
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994055"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108547"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 Arkose Labs 的教學課程
 
@@ -35,7 +35,7 @@ ms.locfileid: "95994055"
 
 ![Arkose Labs 架構圖表](media/partner-arkose-labs/arkose-architecture-diagram.png)
 
-| 步驟  | 描述 |
+| 步驟  | 說明 |
 |---|---|
 |1     | 使用者使用先前建立的帳戶登入。 當使用者選取 [提交] 時，就會出現 Arkose Labs 強制挑戰。 當使用者完成挑戰之後，狀態就會傳送至 Arkose Labs 以產生權杖。        |
 |2     |  Arkose Labs 會將權杖傳回 Azure AD B2C。       |
@@ -147,7 +147,7 @@ ms.locfileid: "95994055"
 
 1. 根據 [此處](tutorial-create-user-flows.md)的資訊建立使用者流程。 當您到達 [ **測試使用者流程**] 區段時，請停止。
 
-2. 在您的 [使用者流程](user-flow-javascript-overview.md)中啟用 JavaScript。
+2. 在您的 [使用者流程](javascript-and-page-layout.md)中啟用 JavaScript。
 
 3. 在相同的 [使用者流程] 頁面上，啟用自訂頁面 url：移至 **使用者流程**  >  **頁面配置**  >  **使用自訂頁面內容**  =  **[是**  >  **插入自訂頁面 URL**]。
 此自訂頁面 URL 是從 blob 儲存體內 index.html 檔案的位置取得  

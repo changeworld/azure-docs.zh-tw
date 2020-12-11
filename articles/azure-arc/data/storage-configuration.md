@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: uc-msft
 ms.author: umajay
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: c420652a6385be2cade9723c20cff7c32a4a60b0
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 7b683029b7fd05078755d4e8cd027f55c805f991
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127228"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107255"
 ---
 # <a name="storage-configuration"></a>儲存體組態
 
@@ -28,13 +28,13 @@ Kubernetes 可讓存放基礎結構提供者插入驅動程式， (也稱為 "�
 
 您可以藉由執行下列命令來查看 Kubernetes 叢集中設定的儲存類別：
 
-``` terminal
+```console
 kubectl get storageclass
 ```
 
 Azure Kubernetes Service (AKS) 叢集的輸出範例：
 
-``` terminal
+```console
 NAME                PROVISIONER                AGE
 azurefile           kubernetes.io/azure-file   15d
 azurefile-premium   kubernetes.io/azure-file   15d
@@ -44,13 +44,13 @@ managed-premium     kubernetes.io/azure-disk   4d3h
 
 您可以藉由執行下列命令來取得儲存類別的詳細資料：
 
-``` terminal
-kubectl describe storageclass\<storage class name>
+```console
+kubectl describe storageclass/<storage class name>
 ```
 
 範例：
 
-``` terminal
+```console
 kubectl describe storageclass/azurefile
 
 Name:            azurefile
@@ -69,7 +69,7 @@ Events:                <none>
 
 您可以藉由執行下列命令來查看目前布建的永久性磁片區和持續性磁片區宣告：
 
-``` terminal
+```console
 kubectl get persistentvolumes -n <namespace>
 
 kubectl get persistentvolumeclaims -n <namespace>
@@ -77,7 +77,7 @@ kubectl get persistentvolumeclaims -n <namespace>
 
 顯示永久性磁片區的範例：
 
-``` terminal
+```console
 
 kubectl get persistentvolumes -n arc
 
@@ -98,7 +98,7 @@ pvc-ecd7d07f-2c2c-421d-98d7-711ec5d4a0cd   15Gi       RWO            Delete     
 
 顯示持續性磁片區宣告的範例：
 
-``` terminal
+```console
 
 kubectl get persistentvolumeclaims -n arc
 
@@ -120,19 +120,19 @@ sqldemo11-logs-claim   Bound    pvc-41b33bbd-debb-4153-9a41-02ce2bf9c665   10Gi 
 
 ## <a name="factors-to-consider-when-choosing-your-storage-configuration"></a>選擇儲存體設定時應考慮的因素
 
-選取正確的儲存類別對於資料復原和效能來說非常重要。 選擇錯誤的儲存類別可讓您的資料在硬體故障時，有資料遺失總計的風險，或可能導致較不理想的效能。
+選取正確的儲存類別對於資料復原和效能而言很重要。 選擇錯誤的儲存類別可讓您的資料在硬體故障時，有資料遺失總計的風險，或可能導致較不理想的效能。
 
 通常有兩種類型的儲存體：
 
 - **本機儲存體** -在指定節點上的本機硬碟上布建的儲存體。 這種儲存體在效能方面可能很理想，但需要透過將資料複寫到多個節點，以特別設計資料冗余。
-- **遠端共用儲存體** -布建在某些遠端存放裝置（例如 SAN、NAS 或雲端儲存體服務，例如 EBS 或 Azure 檔案儲存體）的儲存體。 這種儲存體通常會自動提供資料冗余，但通常不會像本機儲存體一樣快。
+- **遠端共用儲存體** -在某些遠端存放裝置上布建的儲存體，例如 SAN、NAS 或雲端儲存體服務，例如 EBS 或 Azure 檔案儲存體。 這種儲存體通常會自動提供資料冗余，但不像本機儲存體一樣快。
 
 > [!NOTE]
 > 現在，如果您使用 NFS，在部署 Azure Arc 資料控制器之前，您必須先將部署設定檔檔案中的 allowRunAsRoot 設定為 true。
 
 ### <a name="data-controller-storage-configuration"></a>資料控制器儲存體設定
 
-資料服務 Azure Arc 中的某些服務相依于設定為使用遠端共用存放裝置，因為服務沒有複寫資料的能力。 這些服務可在資料控制站 pod 的集合中找到：
+資料服務 Azure Arc 中的某些服務相依于設定為使用遠端共用存放裝置，因為服務無法複寫資料。 這些服務可在資料控制站 pod 的集合中找到：
 
 |**服務**|**持續性磁片區宣告**|
 |---|---|
@@ -143,7 +143,7 @@ sqldemo11-logs-claim   Bound    pvc-41b33bbd-debb-4153-9a41-02ce2bf9c665   10Gi 
 
 在布建資料控制站時，每個持續性磁片區所使用的儲存類別都是藉由傳遞--storage 類別來指定的 |-sc 參數指向 `azdata arc dc create` 命令，或設定所使用之部署範本檔案中 control.js的儲存類別。
 
-現成提供的部署範本具有指定的預設儲存類別，適用于目標環境，但可以在部署時加以覆寫。 請參閱 [變更部署設定檔](create-data-controller.md) 的詳細步驟，以在部署時變更資料控制站 pod 的儲存類別設定。
+現成提供的部署範本具有指定的預設儲存類別，適用于目標環境，但在部署期間可以覆寫。 請參閱 [變更部署設定檔](create-data-controller.md) 的詳細步驟，以在部署時變更資料控制站 pod 的儲存類別設定。
 
 如果您使用--storage 類別設定儲存類別 |-sc 參數：儲存類別將用於記錄和資料儲存類別。 如果您在部署範本檔案中設定儲存類別，您可以為記錄和資料指定不同的儲存類別。
 
@@ -151,8 +151,8 @@ sqldemo11-logs-claim   Bound    pvc-41b33bbd-debb-4153-9a41-02ce2bf9c665   10Gi 
 
 - 您 **必須** 使用遠端共用儲存類別來確保資料的持久性，如此一來，如果 pod 或節點在 pod 重新開機時不會再重新連線，則可以再次連接至永久性磁片區。
 - 寫入控制器 SQL 實例、計量 DB 和記錄 DB 的資料通常是相當低的磁片區，而且不會受到延遲的影響，所以超高效能的儲存體並不重要。 如果您的使用者經常使用 Grafana 和 Kibana 介面，且您有大量的資料庫實例，則您的使用者可能會受益于更快速執行的儲存體。
-- 所需的儲存體容量是因為每個資料庫實例都會收集記錄和計量，而您所部署的資料庫實例數目變數。 資料會保留在記錄檔和計量 DB 中，以在清除前2周。 
-- 變更儲存類別後置部署很困難、未記載且不受支援。 請務必在部署階段正確選擇儲存類別。
+- 所需的儲存體容量是因為每個資料庫實例都會收集記錄和計量，而您所部署的資料庫實例數目變數。 資料會在記錄檔和計量資料庫中保留兩 (2) 個星期，然後才會將其清除。 
+- 變更部署的儲存類別很困難、未記載且不受支援。 請務必在部署階段正確選擇儲存類別。
 
 > [!NOTE]
 > 如果未指定任何儲存類別，則會使用預設的儲存類別。 每個 Kubernetes 叢集只能有一個預設的儲存類別。 您可以 [變更預設儲存類別](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/)。
@@ -161,12 +161,12 @@ sqldemo11-logs-claim   Bound    pvc-41b33bbd-debb-4153-9a41-02ce2bf9c665   10Gi 
 
 每個資料庫實例都有資料、記錄和備份永久性磁片區。 您可以在部署時指定這些永久性磁片區的儲存類別。 如果未指定任何儲存類別，則會使用預設的儲存類別。
 
-使用或命令建立實例 `azdata arc sql mi create` 時 `azdata arc postgres server create` ，有兩個參數可以用來設定儲存類別：
+使用或建立實例時 `azdata arc sql mi create` `azdata arc postgres server create` ，有兩個參數可以用來設定儲存類別：
 
 > [!NOTE]
 > 其中有些參數正在開發中，將會在 `azdata arc sql mi create` `azdata arc postgres server create` 即將推出的版本中提供。
 
-|參數名稱、簡短名稱|用於|
+|參數名稱、簡短名稱|用途|
 |---|---|
 |`--storage-class-data`, `-scd`|用來指定所有資料檔案的儲存類別，包括交易記錄檔|
 |`--storage-class-logs`, `-scl`|用來指定所有記錄檔的儲存類別|
@@ -195,13 +195,13 @@ sqldemo11-logs-claim   Bound    pvc-41b33bbd-debb-4153-9a41-02ce2bf9c665   10Gi 
 |---|---|
 |**Azure SQL 受控執行個體**|`<namespace>/logs-<instance name>-0`, `<namespace>/data-<instance name>-0`|
 |**適用于于 postgresql 的 Azure 資料庫實例**|`<namespace>/logs--<instance name>-0`, `<namespace>/data--<instance name>-0`|
-|**Azure 于 postgresql 超大規模**|`<namespace>/logs-<instance namme>-<ordinal>`， `<namespace>/data-<instance namme>-<ordinal>` * (序數的範圍是從0到 w，其中 W 是背景工作的數目) *|
+|**Azure 于 postgresql 超大規模**|`<namespace>/logs-<instance namme>-<ordinal>`， `<namespace>/data-<instance namme>-<ordinal>` *(序數的範圍是從0到 w，其中 W 是背景工作的數目)*|
 
 選擇資料庫實例 pod 的儲存類別時要考慮的重要因素：
 
-- 您可以使用單一 pod 模式或多重 pod 模式來部署資料庫實例。 單一 pod 模式的範例是 Azure SQL 受控實例或一般用途定價層 Azure SQL 受控實例的開發人員實例。 多個 pod 模式的範例是高可用性商務關鍵定價層 Azure SQL 受控實例。  (注意：定價層正在開發中，但尚未提供給客戶。使用單一 pod 模式部署的 ) 資料庫實例 **必須** 使用遠端共用儲存類別，以確保資料的持久性，因此，如果 pod 或節點在 pod 重新開機時無法再重新連線，則可以再次連接至永久性磁片區。 相反地，高可用性的 Azure SQL 受控實例會使用 Always On 可用性群組，以同步或非同步方式將資料從某個實例複寫到另一個實例。 尤其是以同步方式複寫資料的情況下，一律會有多份資料複本，通常是3個複本。 因此，您可以使用本機儲存體或遠端共用儲存類別來儲存資料和記錄檔。 在使用本機儲存體的情況下，即使在 pod、節點或儲存體硬體失敗的情況下，仍會保留資料。 有了這種彈性，您可以選擇使用本機儲存體，以獲得更好的效能。
-- 資料庫效能主要是指指定儲存裝置的 i/o 輸送量的一項功能。 如果您的資料庫是大量讀取或大量寫入，則您應該選擇一個儲存類別，其下的硬體是針對該類型的工作負載所設計。 例如，如果您的資料庫大多用於寫入，您可能會選擇具有 RAID 0 的本機儲存體。 如果您的資料庫大多用來讀取少量的「熱資料」，但有大量的非經常性存取資料，則您可以選擇能夠分層式儲存的 SAN 裝置。 選擇正確的儲存類別與選擇您要用於任何資料庫的儲存類型並不一樣。
-- 如果您使用本機儲存體磁片區布建程式，您應該確保針對資料、記錄和備份所布建的本機磁片區會在不同的基礎存放裝置上登陸，以避免發生磁片 i/o 的爭用情形。 OS 也應該位於掛接到個別磁片的磁片區， (s) 。 這基本上與在實體硬體上的資料庫實例遵循相同的指導方針。
+- 您可以使用單一 pod 模式或多重 pod 模式來部署資料庫實例。 單一 pod 模式的範例是 Azure SQL 受控實例或一般用途定價層 Azure SQL 受控實例的開發人員實例。 多個 pod 模式的範例是高可用性商務關鍵定價層 Azure SQL 受控實例。  (注意：定價層正在開發中，但尚未提供給客戶。使用單一 pod 模式部署的 ) 資料庫實例 **必須** 使用遠端共用儲存類別，以確保資料的持久性，因此，如果 pod 或節點在 pod 重新開機時無法再重新連線，則可以再次連接至永久性磁片區。 相反地，高可用性的 Azure SQL 受控實例會使用 Always On 可用性群組，以同步或非同步方式將資料從某個實例複寫到另一個實例。 尤其是以同步方式複寫資料的情況下，一律會有多份資料複本，通常會有三個 (3) 複製。 因此，您可以使用本機儲存體或遠端共用儲存類別來儲存資料和記錄檔。 如果利用本機儲存體，即使是在 pod、節點或儲存體硬體失敗的情況下，仍會保留資料。 有了這種彈性，您可以選擇使用本機儲存體，以獲得更好的效能。
+- 資料庫效能主要是指指定儲存裝置的 i/o 輸送量的一項功能。 如果您的資料庫是大量讀取或大量寫入，則您應該選擇具有針對該工作負載類型設計之硬體的儲存類別。 例如，如果您的資料庫大多用於寫入，您可能會選擇具有 RAID 0 的本機儲存體。 如果您的資料庫大多用來讀取少量的「熱資料」，但有大量的非經常性存取資料，則您可以選擇能夠分層式儲存的 SAN 裝置。 選擇正確的儲存類別與選擇您要用於任何資料庫的儲存類型不同。
+- 如果您使用本機儲存體磁片區布建程式，請確定為數據、記錄和備份所布建的本機磁片區都是在不同的基礎存放裝置上登陸，以避免發生磁片 i/o 的爭用情形。 OS 也應該位於掛接到個別磁片的磁片區， (s) 。 這基本上與在實體硬體上的資料庫實例遵循相同的指導方針。
 - 由於指定實例上的所有資料庫都會共用持續性磁片區宣告和持續性磁片區，因此請務必不要在相同的資料庫實例上共置忙碌的資料庫實例。 可能的話，請將忙碌的資料庫分開到它們自己的資料庫實例，以避免 i/o 爭用。 此外，使用以節點標籤為目標，將資料庫實例放在不同的節點上，以便將整體 i/o 流量分散到多個節點。 如果您使用虛擬化，請務必考慮將 i/o 流量分散至節點層級，而不只是在指定實體主機上的所有節點 Vm 所發生的結合 i/o 活動。
 
 ## <a name="estimating-storage-requirements"></a>估計儲存體需求
@@ -222,9 +222,9 @@ sqldemo11-logs-claim   Bound    pvc-41b33bbd-debb-4153-9a41-02ce2bf9c665   10Gi 
 |Azure SQL 受控執行個體|5|5 * 2 = 10|
 |適用於 PostgreSQL 的 Azure 資料庫實例|5| 5 * 2 = 10|
 |Azure 于 postgresql 超大規模|2 (每個實例的背景工作數目 = 4) |2 * 2 * (1 + 4) = 20|
-|***持續性磁片區總數***||8 + 10 + 10 + 20 = 48|
+|***持續性磁片區總數** _||8 + 10 + 10 + 20 = 48|
 
-此計算可用來根據儲存體布建程式或環境來規劃 Kubernetes 叢集的儲存體。 例如，如果將本機儲存體布建程式用於具有5個節點的 Kubernetes 叢集，則在每個節點上方的範例部署至少需要10個持續性磁片區的儲存體。 同樣地，在布建 Azure Kubernetes Service (AKS) 叢集，其中有5個節點為節點集區挑選適當的 VM 大小，因此可以連接10個數據磁片是很重要的。 如需如何針對 AKS 節點的儲存體需求調整節點大小的詳細資訊，請參閱 [這裡](../../aks/operator-best-practices-storage.md#size-the-nodes-for-storage-needs)。
+此計算可用來根據儲存體布建程式或環境來規劃 Kubernetes 叢集的儲存體。 例如，如果本機儲存體布建程式是用於具有五個 (5) 節點的 Kubernetes 叢集，則在每個節點上面的範例部署中，每個節點的範例部署至少需要10個持續性磁片區的儲存體。 同樣地，在布建 Azure Kubernetes Service (AKS) 叢集，其中有五個 (5) 節點為節點集區挑選適當的 VM 大小，因此可連接10個數據磁片是很重要的。 如需如何針對 AKS 節點的儲存體需求調整節點大小的詳細資訊，請參閱 [這裡](../../aks/operator-best-practices-storage.md#size-the-nodes-for-storage-needs)。
 
 ## <a name="choosing-the-right-storage-class"></a>選擇正確的儲存類別
 
@@ -238,6 +238,6 @@ Microsoft 及其 OEM、OS 和 Kubernetes 合作夥伴正在處理 Azure Arc 資�
 
 |公用雲端服務|建議|
 |---|---|
-|**Azure Kubernetes Service (AKS)**|Azure Kubernetes Service (AKS) 有兩種類型的儲存體 Azure 檔案儲存體和 Azure 受控磁碟。 每種類型的儲存體都有兩個定價/效能層級-標準 (HDD) 和 premium (SSD) 。 因此，AKS 中提供的四個儲存體類別 `azurefile` (Azure 檔案儲存體標準層) 、 `azurefile-premium` (Azure 檔案儲存體進階層) 、 `default` (azure 磁片標準層) ，以及 (`managed-premium` azure 磁片進階層) 。 預設的儲存類別是 `default`)  (Azure 磁片標準層。 類型和階層之間有顯著的 **[定價差異](https://azure.microsoft.com/en-us/pricing/details/storage/)** ，這些類型和階層應納入您的決定。 針對具有高效能需求的生產工作負載，建議您 `managed-premium` 針對所有儲存類別使用。 針對開發/測試工作負載、概念證明等，其中成本是考慮因素，則 `azurefile` 是最便宜的選項。 所有的四個選項都可用於需要遠端共用儲存體的情況，因為它們都是 Azure 中所有網路連接的儲存裝置。 深入瞭解 [AKS 儲存體](../../aks/concepts-storage.md)。|
+|_ *Azure Kubernetes Service (AKS)**|Azure Kubernetes Service (AKS) 有兩種類型的儲存體 Azure 檔案儲存體和 Azure 受控磁碟。 每種類型的儲存體都有兩個定價/效能層級-標準 (HDD) 和 premium (SSD) 。 因此，AKS 中提供的四個儲存體類別 `azurefile` (Azure 檔案儲存體標準層) 、 `azurefile-premium` (Azure 檔案儲存體進階層) 、 `default` (azure 磁片標準層) ，以及 (`managed-premium` azure 磁片進階層) 。 預設的儲存類別是 `default`)  (Azure 磁片標準層。 類型和階層之間有顯著的 **[定價差異](https://azure.microsoft.com/en-us/pricing/details/storage/)** ，這些類型和階層應納入您的決定。 針對具有高效能需求的生產工作負載，建議您 `managed-premium` 針對所有儲存類別使用。 針對開發/測試工作負載、概念證明等，其中成本是考慮因素，則 `azurefile` 是最便宜的選項。 所有的四個選項都可用於需要遠端共用儲存體的情況，因為它們都是 Azure 中所有網路連接的儲存裝置。 深入瞭解 [AKS 儲存體](../../aks/concepts-storage.md)。|
 |**AWS Elastic Kubernetes Service (EKS)**| Amazon 的彈性 Kubernetes 服務有一個主要儲存類別，以 [EBS CSI 儲存驅動程式](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html)為基礎。 建議用於生產工作負載。 有新的儲存體驅動程式- [EFS CSI 儲存體驅動程式](https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html) -可以新增至 EKS 叢集，但它目前處於 Beta 階段，可能會變更。 雖然 AWS 指出此儲存體驅動程式支援生產環境，但我們不建議您使用它，因為它仍處於 Beta 階段，可能會變更。 EBS 儲存類別是預設值，而且會呼叫 `gp2` 。 深入瞭解 [EKS 儲存體](https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html)。|
-|**Google Kubernetes Engine (GKE)**|Google Kubernetes Engine (GKE) 只會有一個稱為的儲存類別， `standard` 用來 [GCE 持續性磁片](https://kubernetes.io/docs/concepts/storage/volumes/#gcepersistentdisk)。 這是唯一的，也是預設值。 雖然有適用于 GKE 的 [本機靜態磁片區布建程式](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd#run-local-volume-static-provisioner) 可讓您與直接連結 ssd 搭配使用，但我們不建議您使用它，因為它不是由 Google 維護或支援。 深入瞭解 [GKE 儲存體](https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes)。
+|**Google Kubernetes Engine (GKE)**|Google Kubernetes Engine (GKE) 只會有一個稱為的儲存類別 `standard` ，可用於 [GCE 的持續性磁片](https://kubernetes.io/docs/concepts/storage/volumes/#gcepersistentdisk)。 這是唯一的，也是預設值。 雖然有適用于 GKE 的 [本機靜態磁片區布建程式](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd#run-local-volume-static-provisioner) 可讓您與直接連結 ssd 搭配使用，但我們不建議您使用它，因為它不是由 Google 維護或支援。 深入瞭解 [GKE 儲存體](https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes)。

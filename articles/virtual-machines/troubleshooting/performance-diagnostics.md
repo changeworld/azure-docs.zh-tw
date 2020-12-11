@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 04b70e593e8b1bee8beb72ac88bc8441bc38bb9a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: fb0928c75b8fee567e9d0f03489794bd9f65e91e
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963239"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109431"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure 虛擬機器的效能診斷
 
@@ -48,12 +48,12 @@ ms.locfileid: "91963239"
 
     | 散發               | 版本                                         |
     |----------------------------|-------------------------------------------------|
-    | Oracle Linux 伺服器        | 6.10 [ `*` ]、7.3、7.6、7。5 |
-    | CentOS                     | 6.5 [ `*` ]、7。6                                    |
-    | RHEL                       | 7.2、7.5、8.0 [ `*` ]                               |
+    | Oracle Linux 伺服器        | 6.10 [ `*` ]、7.3、7.5、7.6、7.7、7。8 |
+    | CentOS                     | 6.5 [ `*` ]、7.6、7.7、7。8                                    |
+    | RHEL                       | 7.2、7.5、8.0 [ `*` ]、8.1、8。2                               |
     | Ubuntu                     | 14.04、16.04、18.04、20.04                               |
     | Debian                     | 8、9、10 [ `*` ]                                    |
-    | SLES                       | 12 SP4 [ `*` ]                                      |
+    | SLES                       | 12 SP4 [ `*` ]、12 SP5 [ `*` ]、15 [ `*` ]、15 SP1 [ `*` ]、15 SP2 [ `*` ]                                      |
     |                            |                                                   |
 
 >[!Note]
@@ -63,9 +63,9 @@ ms.locfileid: "91963239"
 
 效能診斷會安裝 VM 延伸模組，以執行名為 PerfInsights 的診斷工具。 PerfInsights 適用于 [Windows](./how-to-use-perfinsights.md) 和 [Linux](./how-to-use-perfinsights-linux.md)。 若要安裝並執行效能診斷，請遵循下列步驟進行：
 
-1. 在命令的左欄中，選取 [虛擬機器]****。
+1. 在命令的左欄中，選取 [虛擬機器]。
 1. 從 VM 名稱清單，選取您想要對其執行診斷的 VM。
-1. 在命令的右欄中，選取 [效能診斷]****。
+1. 在命令的右欄中，選取 [效能診斷]。
 
     ![Azure 入口網站的螢幕擷取畫面，其中已醒目提示 [安裝效能診斷] 按鈕](media/performance-diagnostics/performance-diagnostics-install.png)
 
@@ -73,7 +73,7 @@ ms.locfileid: "91963239"
     > 在此螢幕擷取畫面中，會隱藏 VM 名稱的分頁。
 1. 選取儲存體帳戶 (選擇性)
 
-    如果您想要使用單一儲存體帳戶來儲存多個 VM 的效能診斷結果，您可以按一下工具列中的 [設定]**** 按鈕來選取儲存體帳戶。 選取儲存體帳戶之後，按一下 [確定]**** 按鈕。
+    如果您想要使用單一儲存體帳戶來儲存多個 VM 的效能診斷結果，您可以按一下工具列中的 [設定] 按鈕來選取儲存體帳戶。 選取儲存體帳戶之後，按一下 [確定] 按鈕。
 
     如果您未指定儲存體帳戶，預設會建立新的儲存體帳戶。
 
@@ -81,8 +81,8 @@ ms.locfileid: "91963239"
 
     ![從 [效能診斷設定] 刀鋒視窗選取儲存體帳戶的螢幕擷取畫面](media/performance-diagnostics/select-storage-account.png)
 
-1. 選取 [安裝效能診斷]**** 按鈕。
-1. 如果您想要在安裝完成之後執行診斷，請選取 [執行診斷]**** 核取方塊。 如果您進行這項選取，您將能夠選擇效能分析案例和相關選項。
+1. 選取 [安裝效能診斷] 按鈕。
+1. 如果您想要在安裝完成之後執行診斷，請選取 [執行診斷] 核取方塊。 如果您進行這項選取，您將能夠選擇效能分析案例和相關選項。
 
     ![效能診斷安裝按鈕的螢幕擷取畫面](media/performance-diagnostics/install-diagnostics-button.png)
 
@@ -126,7 +126,7 @@ Azure 入口網站提供下列分析案例。 請根據您的效能問題，選�
 分析完成之後，會將下列項目上傳至 Azure 資料表，以及指定儲存體帳戶中的二進位大型物件 (BLOB) 容器：
 
 * 關於執行的所有見解及相關資訊
-* 壓縮 ( .zip) 檔案 (名為 **PerformanceDiagnostics_yyyy-MM-dd_hh-mm-ss-fff.zip** ) 在 Windows 上，以及在 Linux 上名為 ** (-MM-PerformanceDiagnostics_yyyy-mm-ss-fff gz** dd_hh 的 tar 球檔案 ) 
+* 壓縮 ( .zip) 檔案 (名為 **PerformanceDiagnostics_yyyy-MM-dd_hh-mm-ss-fff.zip** ) 在 Windows 上，以及在 Linux 上名為 **(-MM-PerformanceDiagnostics_yyyy-mm-ss-fff gz** dd_hh 的 tar 球檔案 ) 
 * HTML 報告
 
 上傳之後，Azure 入口網站中會列出新的診斷報告。
@@ -135,11 +135,11 @@ Azure 入口網站提供下列分析案例。 請根據您的效能問題，選�
 
 ## <a name="how-to-change-performance-diagnostics-settings"></a>如何變更效能診斷設定
 
-使用 [設定]**** 工具列按鈕來變更儲存體帳戶，其中可儲存診斷見解和輸出。 您可以將同一個儲存體帳戶用於多個使用效能診斷的 VM。 當您變更儲存體帳戶時，不會刪除舊的報告和見解。 不過，這些項目不會再顯示於 [診斷報告] 清單中。
+使用 [設定] 工具列按鈕來變更儲存體帳戶，其中可儲存診斷見解和輸出。 您可以將同一個儲存體帳戶用於多個使用效能診斷的 VM。 當您變更儲存體帳戶時，不會刪除舊的報告和見解。 不過，這些項目不會再顯示於 [診斷報告] 清單中。
 
 ## <a name="review-insights-and-performance-diagnostics-report"></a>檢閱見解和效能診斷報告
 
-每個診斷執行都會包含見解和建議清單、受影響的資源、記錄檔，以及收集到的其他豐富診斷資訊，加上離線檢視的報告。 如需所有收集之診斷資料的完整清單，請參閱[Windows](how-to-use-perfinsights.md#what-kind-of-information-is-collected-by-perfinsights)或[Linux](how-to-use-perfinsights-linux.md#what-kind-of-information-is-collected-by-perfinsights)上的**PerfInsights 所收集的資訊類型**。
+每個診斷執行都會包含見解和建議清單、受影響的資源、記錄檔，以及收集到的其他豐富診斷資訊，加上離線檢視的報告。 如需所有收集之診斷資料的完整清單，請參閱 [Windows](how-to-use-perfinsights.md#what-kind-of-information-is-collected-by-perfinsights)或 [Linux](how-to-use-perfinsights-linux.md#what-kind-of-information-is-collected-by-perfinsights)上的 **PerfInsights 所收集的資訊類型**。
 
 ### <a name="select-a-performance-diagnostics-report"></a>選取效能診斷報告
 
@@ -163,11 +163,11 @@ Azure 入口網站提供下列分析案例。 請根據您的效能問題，選�
 
 ### <a name="download-and-review-the-full-performance-diagnostics-report"></a>下載並檢閱完整的效能診斷報告
 
-您可以使用 [下載報告]**** 按鈕來下載 HTML 報告，其中包含其他豐富診斷資訊，例如儲存體和網路設定、效能計數器、追蹤、處理序清單和記錄。 其內容取決於選取的分析。 如需進階疑難排解，此報告可能包含有關高 CPU 使用量、高磁碟使用量和過度耗用記憶體之處理序的其他資訊和互動式圖表。 如需效能診斷報告的詳細資訊，請參閱 [Windows](how-to-use-perfinsights.md#review-the-diagnostics-report) 或 [Linux](how-to-use-perfinsights-linux.md#review-the-diagnostics-report)。
+您可以使用 [下載報告] 按鈕來下載 HTML 報告，其中包含其他豐富診斷資訊，例如儲存體和網路設定、效能計數器、追蹤、處理序清單和記錄。 其內容取決於選取的分析。 如需進階疑難排解，此報告可能包含有關高 CPU 使用量、高磁碟使用量和過度耗用記憶體之處理序的其他資訊和互動式圖表。 如需效能診斷報告的詳細資訊，請參閱 [Windows](how-to-use-perfinsights.md#review-the-diagnostics-report) 或 [Linux](how-to-use-perfinsights-linux.md#review-the-diagnostics-report)。
 
 ## <a name="manage-performance-diagnostics-reports"></a>管理效能診斷報告
 
-您可以使用 [刪除報告]**** 按鈕，刪除一或多個效能診斷報告。
+您可以使用 [刪除報告] 按鈕，刪除一或多個效能診斷報告。
 
 ## <a name="how-to-uninstall-performance-diagnostics"></a>如何解除安裝效能診斷
 
@@ -188,17 +188,17 @@ Azure 入口網站提供下列分析案例。 請根據您的效能問題，選�
 您可以以多種方式來與 Microsoft 共用診斷報告。
 
 **選項 1：** 自動共用最近的報告  
-當您開啟與 Microsoft 的支援票證時，請務必共用效能診斷報告。 如果您選擇在執行診斷時與 Microsoft 共用這項資訊 (藉由選取 [我同意與 Microsoft 共用診斷資訊]**** 核取方塊)，Microsoft 將能夠在執行日期起 30 天內，使用輸出 ZIP 檔案的 SAS 連結從您的儲存體帳戶存取報告。 只會提供最近的報告給支援工程師。
+當您開啟與 Microsoft 的支援票證時，請務必共用效能診斷報告。 如果您選擇在執行診斷時與 Microsoft 共用這項資訊 (藉由選取 [我同意與 Microsoft 共用診斷資訊] 核取方塊)，Microsoft 將能夠在執行日期起 30 天內，使用輸出 ZIP 檔案的 SAS 連結從您的儲存體帳戶存取報告。 只會提供最近的報告給支援工程師。
 
 **選項 2：** 產生診斷報告壓縮檔的共用存取簽章  
-您可以使用共用存取簽章來分享報告壓縮檔的連結。 若要執行此動作，請依照下列步驟執行：
+您可以使用共用存取簽章來分享報告壓縮檔的連結。 若要這樣做，請遵循下列步驟：
 
 1. 在 Azure 入口網站中，瀏覽至儲存診斷資料的儲存體帳戶。
-1. 在 [Blob 服務]**** 區段下，選取 [Blob]****。
+1. 在 [Blob 服務] 區段下，選取 [Blob]。
 1. 選取 **azdiagextnresults** 容器。
 1. 選取您要共用的效能診斷輸出壓縮檔。
-1. 在 [產生 SAS]**** 索引標籤上，選取共用準則。
-1. 按一下 [產生 Blob SAS 權杖和 URL]****。
+1. 在 [產生 SAS] 索引標籤上，選取共用準則。
+1. 按一下 [產生 Blob SAS 權杖和 URL]。
 1. 複製 **Blob SAS URL** 並與支援工程師共用。
 
 **選項 3：** 從儲存體帳戶下載報告

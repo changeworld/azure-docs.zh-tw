@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0bbe40a2329143b9abd4554ec715c64e5c26d4eb
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: beb38be985457ea36b2cea9a6dc337ba305d503f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028099"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108496"
 ---
 # <a name="page-layout-versions"></a>頁面配置版本
 
@@ -46,16 +46,17 @@ ms.locfileid: "97028099"
 
 - 使用者名稱/電子郵件和密碼欄位現在會使用 `form` HTML 元素，以允許 Edge 和 Internet Explorer (IE) 適當地儲存這項資訊。
 - 新增可設定的使用者輸入驗證延遲，以改善使用者體驗。
+-  協助工具修正
 - 已修正協助工具問題，讓 [朗讀程式] 現在會讀取錯誤訊息。 
 - 現在焦點會放在驗證電子郵件之後的密碼欄位。
 - 已 `autofocus` 從 checkbox 控制項移除。 
-- 已新增支援電話號碼驗證的顯示小工具。
-- 您現在可以 `data-preload="true"` [在 HTML 標籤中](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) 加入屬性，以控制 CSS 和 JavaScript 的載入順序。
+- 已新增電話號碼驗證的顯示控制項支援。
+- 您現在可以將 `data-preload="true"` 屬性 [在 HTML 標籤中] (自訂-使用-HTML。 md # 指導方針-適用于
   - 同時載入連結的 CSS 檔案與您的 HTML 範本，使其不會在載入檔案時「閃爍」。
   - 控制在 `script` 頁面載入之前提取和執行標記的順序。
 - 電子郵件欄位現在會 `type=email` 提供正確的建議。
 - 支援 Chrome 轉譯。
-- 在使用者流程頁面中新增了租使用者商標的支援。
+- 在使用者流程頁面中新增公司商標的支援。
 
 **1.1.0**
 
@@ -87,8 +88,8 @@ ms.locfileid: "97028099"
 **1.2.0**
 
 - 使用者名稱/電子郵件和密碼欄位現在會使用 `form` HTML 元素，以允許 Edge 和 Internet Explorer (IE) 適當地儲存這項資訊。
-- 協助工具修正。
-- 您現在可以 `data-preload="true"` [在 HTML 標籤中](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) 加入屬性，以控制 CSS 和 JavaScript 的載入順序。
+-  協助工具修正
+- 您現在可以 `data-preload="true"` [在 HTML 標籤中](customize-ui-with-html.md#guidelines-for-using-custom-page-content) 加入屬性，以控制 CSS 和 JavaScript 的載入順序。
   - 同時載入連結的 CSS 檔案與您的 HTML 範本，使其不會在載入檔案時「閃爍」。
   - 控制在 `script` 頁面載入之前提取和執行標記的順序。
 - 電子郵件欄位現在會 `type=email` 提供正確的建議。
@@ -118,7 +119,7 @@ ms.locfileid: "97028099"
 **1.2.0**
 
 -  協助工具修正
-- 您現在可以 `data-preload="true"` [在 HTML 標籤中](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) 加入屬性，以控制 CSS 和 JavaScript 的載入順序。
+- 您現在可以 `data-preload="true"` [在 HTML 標籤中](customize-ui-with-html.md#guidelines-for-using-custom-page-content) 加入屬性，以控制 CSS 和 JavaScript 的載入順序。
   - 同時載入連結的 CSS 檔案與您的 HTML 範本，使其不會在載入檔案時「閃爍」。
   - 控制在 `script` 頁面載入之前提取和執行標記的順序。
 - 電子郵件欄位現在是 `type=email` ，行動鍵盤會提供正確的建議
@@ -144,7 +145,7 @@ ms.locfileid: "97028099"
 **1.2.0**
 
 -  協助工具修正
-- 您現在可以 `data-preload="true"` [在 HTML 標籤中](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) 加入屬性，以控制 CSS 和 JavaScript 的載入順序。
+- 您現在可以 `data-preload="true"` [在 HTML 標籤中](customize-ui-with-html.md#guidelines-for-using-custom-page-content) 加入屬性，以控制 CSS 和 JavaScript 的載入順序。
   - 同時載入連結的 CSS 檔案與您的 HTML 範本，使其不會在載入檔案時「閃爍」。
   - 控制在 `script` 頁面載入之前提取和執行標記的順序。
 - 電子郵件欄位現在是 `type=email` ，行動鍵盤會提供正確的建議
@@ -165,7 +166,7 @@ ms.locfileid: "97028099"
 **1.2.0**
 
 -  協助工具修正
-- 您現在可以 `data-preload="true"` [在 HTML 標籤中](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) 加入屬性，以控制 CSS 和 JavaScript 的載入順序。
+- 您現在可以 `data-preload="true"` [在 HTML 標籤中](customize-ui-with-html.md#guidelines-for-using-custom-page-content) 加入屬性，以控制 CSS 和 JavaScript 的載入順序。
   - 同時載入連結的 CSS 檔案與您的 HTML 範本，使其不會在載入檔案時「閃爍」。
   - 控制在 `script` 頁面載入之前提取和執行標記的順序。
 - 電子郵件欄位現在是 `type=email` ，行動鍵盤會提供正確的建議
@@ -177,4 +178,4 @@ ms.locfileid: "97028099"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需如何在自訂原則中自訂應用程式使用者介面的詳細資訊，請參閱 [使用自訂原則來自訂應用程式的使用者介面](custom-policy-ui-customization.md)。
+如需如何在自訂原則中自訂應用程式使用者介面的詳細資訊，請參閱 [使用自訂原則來自訂應用程式的使用者介面](customize-ui-with-html.md)。

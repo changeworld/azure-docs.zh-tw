@@ -3,12 +3,12 @@ title: 管理已啟用 Azure Arc 的伺服器代理程式
 description: 本文說明在啟用 Azure Arc 的伺服器連線的機器代理程式生命週期期間，您通常會執行的不同管理工作。
 ms.date: 10/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 63db1177b193cad66208964ec377fab0779f23ba
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9e17bf58d1e94b64d1cdc6ff0b57b1b6a81be180
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130964"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107187"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理和維護 Connected Machine 代理程式
 
@@ -160,14 +160,14 @@ Azcmagent 工具 ( # A0) 用來在安裝期間設定已連線到 Azure Arc 的�
 
 * **-h 或 --help** - 顯示可用的命令列參數
 
-    例如，若要查看 **Reconnect** 參數的詳細說明，請輸入 `azcmagent reconnect -h`。 
+    例如，若要查看 **Connect** 參數的詳細說明，請輸入 `azcmagent connect -h` 。 
 
 * **-v 或 --verbose** - 啟用詳細資訊記錄
 
-您可以在以互動方式登入，或使用您用來登入多個代理程式的相同服務主體，或使用 Microsoft 身分識別平臺 [存取權杖](../../active-directory/develop/access-tokens.md)來自動化，以手動方式執行連線和 **中斷****連接** 。 如果您未使用服務主體在已啟用 Azure Arc 的伺服器上註冊電腦，請參閱下列 [文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) 來建立服務主體。
+您可以在以互動方式登入，或使用您用來登入多個代理程式的相同服務主體，或使用 Microsoft 身分識別平臺 [存取權杖](../../active-directory/develop/access-tokens.md)來自動化，以手動方式執行連線和 **中斷****連接**。 如果您未使用服務主體在已啟用 Azure Arc 的伺服器上註冊電腦，請參閱下列 [文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) 來建立服務主體。
 
 >[!NOTE]
->您必須具有 Linux 電腦的 *根* 存取權限，才能執行 **azcmagent** 。
+>您必須具有 Linux 電腦的 *根* 存取權限，才能執行 **azcmagent**。
 
 ### <a name="connect"></a>連線
 

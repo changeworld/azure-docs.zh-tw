@@ -3,12 +3,12 @@ title: 用於 Azure Notebooks 預覽的使用者設定檔和識別碼
 description: 如何使用 Azure Notebooks 建立和管理您的使用者設定檔和使用者識別碼，而這會成為共用筆記本 URL 的一部分。
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: 9a1ff7f92faec21f537f068f0a33473700ddfed8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30d70365fcc0c72df01b4dc059b6e0f4cc607bba
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85831347"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109499"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>Azure Notebooks 預覽的設定檔和使用者識別碼
 
@@ -18,7 +18,7 @@ ms.locfileid: "85831347"
 
 [![Azure Notebooks 設定檔頁面面](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
 
-您的使用者識別碼會包含在您用來共用專案和 Notebook 的 URL 中。 下列清單將說明不同的 URL 模式：
+您的使用者識別碼是您用來共用專案和筆記本的 Url 的一部分。 下列清單將說明不同的 URL 模式：
 
 - `https://notebooks.azure.com/<user_id>`：您的設定檔頁面面。
 - `https://notebooks.azure.com/<user_id>/projects`：您的專案。 您會看到所有專案；其他使用者只會看到您的公用專案。
@@ -32,7 +32,7 @@ ms.locfileid: "85831347"
 
 ![在登入 Azure Notebooks 時發出建立使用者識別碼的提示](media/accounts/create-user-id.png)
 
-暫時使用者名稱旁也會出現**設定使用者識別碼**命令：
+暫時使用者名稱旁也會出現 **設定使用者識別碼** 命令：
 
 ![在您使用暫時識別碼時顯示的設定使用者識別碼命令](media/accounts/configure-user-id-command.png)
 
@@ -47,18 +47,18 @@ ms.locfileid: "85831347"
 
 您的設定檔由 URL `https://notebooks.azure.com/<user_id>` 中可公開檢視的資訊所組成。 您的設定檔頁面也會顯示您最近使用的專案和任何加上星號的專案。
 
-若要編輯您的設定檔，請在您的設定檔頁面上使用**編輯設定檔資訊**命令。 設定檔的各區段如下所示：
+若要編輯您的設定檔，請在您的設定檔頁面上使用 **編輯設定檔資訊** 命令。 設定檔的各區段如下所示：
 
 | 區段 | 目錄 |
 | --- | --- |
 | 設定檔相片 | 您的設定檔頁面上顯示的影像。 |
 | 帳戶資訊 | 您的顯示名稱、使用者識別碼和公用電子郵件帳戶。 此處的電子郵件帳戶可提供其他使用者與您連絡的管道，且此帳戶可與您用來登入 Azure Notebook 本身的[帳戶](azure-notebooks-user-account.md)不同。 |
 | 設定檔資訊 | 您的所在位置、公司、工作職稱、網站和簡短描述。 |
-| 社交設定檔 | 您的 GItHub、Twitter 和 Facebook 識別碼 (如果您想要加以共用)。 |
+| 社交設定檔 | 您的 GitHub、Twitter 和 Facebook 識別碼（如果您想要共用它們的話）。 |
 | 隱私權設定 | 提供兩個命令：<ul><li>**匯出我的設定檔**：建立及下載 *.zip* 檔案，其中包含 Azure Notebook 在您的設定檔中儲存的所有資訊，包括您的相片、設定檔資訊和安全性記錄。</li><li>**刪除我的帳戶**：永久刪除您儲存在 Azure Notebooks 中的所有個人資訊。</li></ul> |
-| 啟用網站功能 | 可讓您控制 Azure Notebooks 各方面的行為：<ul><li>**Notebook 的整合前端**：可提升 Notebook 的啟動速度和持續性。</li><li>**依預設在 JupyterLab 中**執行：根據預設，Azure Notebooks 提供適用于大部分使用者的簡單使用者介面。 JupyterLab 可提供更豐富、但也較複雜的介面，適用於有經驗的使用者。</li><li>**VNext 網站**：可啟用這份文件中顯示的現代化 Web 版面配置。</li></ul> |
+| 啟用網站功能 | 可讓您控制 Azure Notebooks 各方面的行為：<ul><li>**Notebook 的整合前端**：可提升 Notebook 的啟動速度和持續性。</li><li>**依預設在 JupyterLab 中** 執行：根據預設，Azure Notebooks 提供適用于大部分使用者的簡單使用者介面。 JupyterLab 可提供更豐富、但也較複雜的介面，適用於有經驗的使用者。</li><li>**VNext 網站**：可啟用這份文件中顯示的現代化 Web 版面配置。</li></ul> |
 
-## <a name="next-steps"></a>接下來的步驟  
+## <a name="next-steps"></a>後續步驟  
 
 > [!div class="nextstepaction"]
-> [教學課程：建立和執行 Jupyter Notebook 來執行線性迴歸](tutorial-create-run-jupyter-notebook.md)
+> [快速入門：匯出 Jupyter Notebook 專案](quickstart-export-jupyter-notebook-project.md)

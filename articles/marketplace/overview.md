@@ -3,16 +3,15 @@ title: 何謂 Microsoft 商業市集？
 description: 概述 Microsoft 合作夥伴若在 Microsoft 商業市集上列出解決方案，有何好處和選項。
 author: mingshen-ms
 ms.author: mingshen
-ms.reviewer: dsindona
 ms.service: marketplace
 ms.topic: overview
 ms.date: 10/15/2020
-ms.openlocfilehash: a559c8613af97251ea6e85ef2a16121a89ffb6ad
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 099515eb1160b131f2d56fd02f300999d5ddfd16
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94739763"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780309"
 ---
 # <a name="what-is-the-microsoft-commercial-marketplace"></a>何謂 Microsoft 商業市集？
 

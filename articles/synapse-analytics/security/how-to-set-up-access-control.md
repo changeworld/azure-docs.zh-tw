@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7243d24204c8e15ae4246718cafb24d31f804d02
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 62c30356017b5ea5d93351e6f22b8b7b0c22718c
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96519173"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109261"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>如何設定 Synapse 工作區的存取控制 
 
@@ -54,7 +54,7 @@ ms.locfileid: "96519173"
 ## <a name="step-1-set-up-security-groups"></a>步驟 1：設定安全性群組
 
 >[!Note] 
->在預覽期間，建議您建立對應到 Synapse **SYNAPSE SQL 系統管理員** 和 **Synapse Apache Spark 系統管理員** 角色的安全性群組。  隨著新的更精細 Synapse RBAC 角色和範圍的推出，現在建議您使用這些新功能來控制您工作區的存取權。  這些新的角色和範圍提供更多的設定彈性，並可辨識開發人員通常會混合使用 SQL 和 Spark 來建立分析應用程式，而且可能需要授與工作區中特定資源的存取權。 [深入了解](./synapse-workspace-synapse-rbac.md)。
+>在預覽期間，建議您建立對應到 Synapse **SYNAPSE SQL 系統管理員** 和 **Synapse Apache Spark 系統管理員** 角色的安全性群組。  隨著新的更精細 Synapse RBAC 角色和範圍的推出，現在建議您使用這些新功能來控制您工作區的存取權。  這些新的角色和範圍提供更多設定彈性，並可辨識開發人員通常會混合使用 SQL 和 Spark 來建立分析應用程式，而且可能需要授與特定資源的存取權，而不是整個工作區的存取權。 [深入瞭解](./synapse-workspace-synapse-rbac.md) Synapse RBAC。
 
 為您的工作區建立下列安全性群組：
 
@@ -66,9 +66,9 @@ ms.locfileid: "96519173"
 您稍後會在工作區範圍將 Synapse 角色指派給這些群組。  
 
 也請建立此安全性群組： 
-- **`workspace1_SQLAdministrators`**，在工作區的 SQL 集區中需要 Active Directory 系統管理員授權單位的使用者群組。 
+- **`workspace1_SQLAdmins`**，在工作區的 SQL 集區中需要 SQL Active Directory 系統管理員授權單位的使用者群組。 
 
-`workspace1_SynapseSQLAdministrators`當您建立 sql 集區中的 sql 許可權時，將會使用此群組。 
+`workspace1_SQLAdmins`當您建立 sql 集區中的 sql 許可權時，將會使用此群組。 
 
 針對基本設定，這五個群組就已足夠。 稍後，您可以新增安全性群組來處理需要更特製化存取權的使用者，或只授與使用者特定資源的存取權。
 
@@ -84,6 +84,7 @@ ms.locfileid: "96519173"
 Synapse 工作區會使用的預設儲存體容器：
   - 儲存 Spark 資料表的支援資料檔案
   - Spark 作業的執行記錄
+  - 管理您選擇要安裝的程式庫
 
 識別儲存體的下列資訊：
 
@@ -94,26 +95,26 @@ Synapse 工作區會使用的預設儲存體容器：
 
   - 將 **儲存體 Blob 資料參與者** 角色指派給 `workspace1_SynapseAdmins` 
   - 將 **儲存體 Blob 資料參與者** 角色指派給 `workspace1_SynapseContributors`
-  - 將 **儲存體 Blob 資料參與者** 角色指派給 `workspace1_SynapseComputeOperators` **<< 驗證**  
+  - 將 **儲存體 Blob 資料參與者** 角色指派給 `workspace1_SynapseComputeOperators`
 
 ## <a name="step-3-create-and-configure-your-synapse-workspace"></a>步驟 3：建立和設定您的 Synapse 工作區
 
 在 Azure 入口網站中，建立 Synapse 工作區：
 
-- 選取您的訂用帳戶
+- 選取訂用帳戶
 - 選取或建立您擁有 Azure **擁有** 者角色的資源群組。
 - 命名工作區 `workspace1`
 - 選擇 `storage1` 儲存體帳戶
 - 選擇 `container1` 作為 "filesystem" 使用的容器。
 - 在 Synapse Studio 中開啟 WS1
-- 流覽以 **管理**  >  **存取控制**，並將 *工作區範圍* 的下列 Synapse 角色指派給安全性群組。
+- 流覽以 **管理**  >  **存取控制**，並將 *工作區範圍* 的 Synapse 角色指派給安全性群組，如下所示：
   - 將 **Synapse 系統管理員** 角色指派給 `workspace1_SynapseAdministrators` 
   - 將 **Synapse 參與者** 角色指派給 `workspace1_SynapseContributors` 
-  - 將 **SYNAPSE SQL 計算操作員** 角色指派給 `workspace1_SynapseComputeOperators`
+  - 將 **Synapse 計算操作員** 角色指派給 `workspace1_SynapseComputeOperators`
 
 ## <a name="step-4-grant-the-workspace-msi-access-to-the-default-storage-container"></a>步驟4：將工作區 MSI 存取權授與預設儲存體容器
 
-若要執行管線並執行系統工作，Synapse 需要 (MSI) 的工作區管理服務識別需要存取 `container1` 預設 ADLS Gen2 帳戶中的。
+若要執行管線並執行系統工作，Synapse 需要 (MSI) 的工作區受控服務識別需要存取 `container1` 預設 ADLS Gen2 帳戶中的。
 
 - 開啟 Azure 入口網站
 - 找出儲存體帳戶、 `storage1` ，然後 `container1`
@@ -121,9 +122,9 @@ Synapse 工作區會使用的預設儲存體容器：
   - 如果未指派，請將它指派。
   - MSI 的名稱與工作區相同。 在本文中，它會是 `workspace1` 。
 
-## <a name="step-5-grant-the-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>步驟5：將工作區的 Azure 參與者角色授與 Synapse 系統管理員 
+## <a name="step-5-grant-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>步驟5：將工作區的 Azure 參與者角色授與 Synapse 系統管理員 
 
-若要建立 SQL 集區、Apache Spark 集區和整合執行時間，使用者必須至少擁有工作區的 Azure 參與者存取權。 「參與者」角色也可讓這些使用者管理資源，包括暫停和調整。
+若要建立 SQL 集區、Apache Spark 集區和整合執行時間，使用者至少必須有工作區的 Azure 參與者存取權。 「參與者」角色也可讓這些使用者管理資源，包括暫停和調整。
 
 - 開啟 Azure 入口網站
 - 找出工作區 `workspace1`
@@ -131,44 +132,44 @@ Synapse 工作區會使用的預設儲存體容器：
 
 ## <a name="step-6-assign-sql-active-directory-admin-role"></a>步驟6：指派 SQL Active Directory 管理員角色
 
-工作站建立者會自動設定為工作區的 Active Directory 系統管理員。  只有單一使用者或群組可以被授與此角色。 在此步驟中，您會將工作區上的 Active Directory 系統管理員指派給 `workspace1_SynapseSQLAdministrators` 安全性群組。  指派此角色可讓此群組具有高度許可權的系統管理員存取權，以存取所有 SQL 集區。   
+工作站建立者會自動設定為工作區的 SQL Active Directory 系統管理員。  只有單一使用者或群組可以被授與此角色。 在此步驟中，您會將工作區上的 SQL Active Directory 系統管理員指派給 `workspace1_SQLAdmins` 安全性群組。  指派此角色可讓此群組具有高許可權的系統管理員存取權，以存取工作區中的所有 SQL 集區和資料庫。   
 
 - 開啟 Azure 入口網站
 - 巡覽到 `workspace1`
 - 在 [**設定**] 底下，選取 **[SQL Active Directory 管理員**]
-- 選取 [ **設定管理員** ] 並選擇 **`workspace1_SynapseSQLAdministrators`**
+- 選取 [ **設定管理員** ] 並選擇 **`workspace1_SQLAdmins`**
 
 >[!Note]
->此為選用步驟。  您可以選擇授與 SQL 系統管理員群組較不具特殊許可權的角色。 若要指派 `db_owner` 或其他 sql 角色，您必須在每個 sql database 上執行腳本。 
+>步驟6是選擇性的。  您可以選擇授與群組較不具特殊 `workspace1_SQLAdmins` 許可權的角色。 若要指派 `db_owner` 或其他 sql 角色，您必須在每個 sql database 上執行腳本。 
 
 ## <a name="step-7-grant-access-to-sql-pools"></a>步驟7：授與 SQL 集區的存取權
 
-依預設，指派 Synapse 系統管理員角色的所有使用者也會在 `db_owner` 無伺服器 sql 集區「內建」上指派 SQL 角色。
+依預設，指派 Synapse 系統管理員角色的所有使用者也會在 `db_owner` 無伺服器 sql 集區、「內建」及其所有資料庫上指派 SQL 角色。
 
-存取其他使用者和工作區 MSI 的 SQL 集區時，是使用 SQL 許可權來控制。  指派 SQL 許可權需要在建立之後于每個 SQL 集區上執行 SQL 腳本。  有三種情況需要您執行這些腳本：
-1. 將無伺服器 SQL 集區的存取權授與其他使用者「內建」
-2. 將專用集區的存取權授與任何使用者
-3. 將工作區 MSI 存取權授與 SQL 集區，以啟用需要 SQL 集區存取的管線才能成功執行。
+存取其他使用者和工作區 MSI 的 SQL 集區時，是使用 SQL 許可權來控制。  指派 SQL 許可權需要在建立之後于每個 SQL database 上執行 SQL 腳本。  有三種情況需要您執行這些腳本：
+1. 授與其他使用者對無伺服器 SQL 集區、「內建」和其資料庫的存取權
+2. 將專用集區資料庫的存取權授與任何使用者
+3. 將工作區 MSI 存取權授與 SQL 集區資料庫，以啟用需要 SQL 集區存取的管線才能成功執行。
 
 範例 SQL 腳本包含在下方。
 
-若要授與存取權給專用的 SQL 集區，可以由工作區建立者或群組的任何成員來執行腳本 `workspace1_SynapseSQL Administrators` 。  
+若要授與存取權給專用的 SQL 集區資料庫，可以由工作區建立者或群組的任何成員來執行腳本 `workspace1_SQLAdmins` 。  
 
-若要授與無伺服器 SQL 集區「內建」的存取權，您可以另外由群組的任何成員執行腳本  `workspace1_SynapseAdministrators` 。 
+若要授與無伺服器 SQL 集區「內建」的存取權，可由群組或群組的任何成員執行腳本 `workspace1_SQLAdmins`  `workspace1_SynapseAdministrators` 。 
 
 > [!TIP]
-> 您必須針對 **每個** sql 集區執行下列步驟，以授與使用者存取所有 sql 資料庫的許可權，但您可以為其指派系統管理員（sysadmin）角色的部分 [工作區範圍許可權](#workspace-scoped-permission) 。
+> 您必須針對 **每個** sql 集區執行下列步驟，以授與使用者對所有 sql 資料庫的存取權，但在工作 [區範圍的許可權](#workspace-scoped-permission) 區段中，您可以為使用者指派工作區層級的系統管理員角色。
 
-### <a name="step-71-serverless-sql-pools"></a>步驟7.1：無伺服器 SQL 集區
+### <a name="step-71-serverless-sql-pool-built-in"></a>步驟7.1：無伺服器 SQL 集區，內建
 
-在本節中，您可以找到有關如何授與使用者特定資料庫或完整伺服器許可權的許可權範例。
+在本節中，有一些腳本範例示範如何授與使用者存取特定資料庫或無伺服器 SQL 集區中所有資料庫的許可權「內建」。
 
 > [!NOTE]
 > 在腳本範例中，將 *alias* 取代為要授與存取權的使用者或群組的別名，以及使用您所使用之公司網域的 *網域* 。
 
-#### <a name="pool-scoped-permission"></a>集區範圍許可權
+#### <a name="database-scoped-permission"></a>資料庫範圍許可權
 
-若要將使用者的存取權授與 **單一** 無伺服器 SQL 集區，請遵循此範例中的步驟：
+若要將使用者的存取權授與 **單一** 無伺服器 SQL 資料庫，請遵循此範例中的步驟：
 
 1. 建立登入
 
@@ -182,7 +183,7 @@ Synapse 工作區會使用的預設儲存體容器：
 2. 建立使用者
 
     ```sql
-    use yourdb -- Use your DB name
+    use yourdb -- Use your database name
     go
     CREATE USER alias FROM LOGIN [alias@domain.com];
     ```
@@ -190,7 +191,7 @@ Synapse 工作區會使用的預設儲存體容器：
 3. 將使用者新增至指定角色的成員
 
     ```sql
-    use yourdb -- Use your DB name
+    use yourdb -- Use your database name
     go
     alter role db_owner Add member alias -- Type USER name from step 2
     ```
@@ -200,25 +201,27 @@ Synapse 工作區會使用的預設儲存體容器：
 若要將完整存取權授與工作區中的 **所有** 無伺服器 SQL 集區，請使用此範例中的腳本：
 
 ```sql
+use master
+go
 CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
-ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
+ALTER SERVER ROLE sysadmin ADD MEMBER [alias@domain.com];
 ```
 
 ### <a name="step-72-dedicated-sql-pools"></a>步驟7.2：專用的 SQL 集區
 
-若要授與 **單一** 專用 SQL 集區的存取權，請在 Synapse SQL 腳本編輯器中遵循下列步驟：
+若要授與 **單一** 專用 SQL 集區資料庫的存取權，請在 Synapse SQL 腳本編輯器中遵循下列步驟：
 
 1. 在目標資料庫上執行下列命令，以在資料庫中建立使用者，方法是使用 [ *連接到* ] 下拉式清單來選取：
 
     ```sql
-    --Create user in SQL DB
+    --Create user in the database
     CREATE USER [<alias@domain.com>] FROM EXTERNAL PROVIDER;
     ```
 
 2. 對使用者授與可存取資料庫的角色：
 
     ```sql
-    --Create user in SQL DB
+    --Grant role to the user in the database
     EXEC sp_addrolemember 'db_owner', '<alias@domain.com>';
     ```
 
@@ -226,32 +229,35 @@ ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
 > 如果不想要授與 *db_owner* 許可權， *db_datareader* 和 *db_datawriter* 可以處理讀取/寫入權限。
 > 若要讓 Spark 使用者直接從 Spark 讀取和寫入 SQL 集區，則需要 *db_owner* 許可權。
 
-建立使用者之後，請驗證無伺服器 SQL 集區可以查詢儲存體帳戶。
+建立使用者之後，執行查詢以驗證無伺服器 SQL 集區可以查詢儲存體帳戶。
 
-### <a name="step-73-sl-access-control-for-workspace-pipeline-runs"></a>步驟7.3：工作區管線執行的 SL 存取控制
+### <a name="step-73-sql-access-control-for-synapse-pipeline-runs"></a>步驟7.3： Synapse 管線執行的 SQL 存取控制
 
 ### <a name="workspace-managed-identity"></a>工作區受控識別
 
 > [!IMPORTANT]
 > 若要成功執行包含參考 SQL 集區之資料集或活動的管線，必須將 SQL 集區的存取權授與工作區身分識別。
 
-在每個 SQL 集區上執行下列命令，允許工作區受控識別可在 SQL 集區資料庫上執行管線：
+在每個 SQL 集區上執行下列命令，以允許工作區受控系統識別在 SQL 集區資料庫上執行管線， (s) ：  
+
+>[!note]
+>在下列腳本中，針對專用的 SQL 集區資料庫，databasename 與集區名稱相同。  若是無伺服器 SQL 集區 ' 內建 ' 中的資料庫，databasename 就是資料庫的名稱。
 
 ```sql
---Create user in DB
+--Create a SQL user for the workspace MSI in database
 CREATE USER [<workspacename>] FROM EXTERNAL PROVIDER;
 
 --Granting permission to the identity
-GRANT CONTROL ON DATABASE::<SQLpoolname> TO <workspacename>;
+GRANT CONTROL ON DATABASE::<databasename> TO <workspacename>;
 ```
 
 在相同的 SQL 集區上執行下列指令碼，即可移除此權限：
 
 ```sql
---Revoking permission to the identity
-REVOKE CONTROL ON DATABASE::<SQLpoolname> TO <workspacename>;
+--Revoke permission granted to the workspace MSI
+REVOKE CONTROL ON DATABASE::<databasename> TO <workspacename>;
 
---Deleting the user in the DB
+--Delete the workspace MSI user in the database
 DROP USER [<workspacename>];
 ```
 

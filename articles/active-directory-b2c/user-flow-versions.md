@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 67949c31c710d88a05e1e110860fe703caf66d04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75ad3743a90f5773163a8f115e1924b8c5bbe097
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87481320"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108088"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的使用者流程版本
 
@@ -27,7 +27,7 @@ Azure Active Directory B2C (Azure AD B2C) 中的使用者流程，可協助您�
 >- **建議** 的使用者流程是新的使用者流程預覽版本。 它們經過徹底的測試，並結合舊版 **V2** 和 **v1.1** 版本的所有功能。 未來，將會維護和更新新的建議使用者流程。 一旦您移至這些新的建議使用者流程之後，您就可以在發行時存取新功能。
 >- **標準** 使用者流程（之前稱為 **V1**）已正式推出，可供生產環境使用的使用者流程。 如果您的使用者流程是任務關鍵性的，且相依于高度穩定的版本，您就可以繼續使用標準使用者流程，並意識到這些版本不會進行維護和更新。
 >
->所有舊版預覽使用者流程 (v1.1 和 V2) 都是在 **2021 年8月1日**淘汰的路徑上。 可能的話，強烈建議您儘快 [切換至新的 **建議** 版本](#how-to-switch-to-a-new-recommended-user-flow) ，讓您隨時都能利用最新的功能和更新。 *這些變更僅適用于 Azure 公用雲端。其他環境將繼續使用 [舊版的使用者流程版本控制](user-flow-versions-legacy.md)。*
+>所有舊版預覽使用者流程 (v1.1 和 V2) 都是在 **2021 年8月1日** 淘汰的路徑上。 可能的話，強烈建議您儘快 [切換至新的 **建議** 版本](#how-to-switch-to-a-new-recommended-user-flow) ，讓您隨時都能利用最新的功能和更新。 *這些變更僅適用于 Azure 公用雲端。其他環境將繼續使用 [舊版的使用者流程版本控制](user-flow-versions-legacy.md)。*
 
 ## <a name="recommended-user-flows"></a>建議的使用者流程
 
@@ -35,11 +35,11 @@ Azure Active Directory B2C (Azure AD B2C) 中的使用者流程，可協助您�
 
 | 使用者流程 | 說明 |
 | --------- | ----------- |
-| 密碼重設 (預覽)  | 讓使用者能夠在驗證電子郵件後選擇新密碼。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](custom-policy-multi-factor-authentication.md)</li><li>權杖相容性設定</li><li>[年齡管制](basic-age-gating.md)</li><li>[密碼複雜性需求](user-flow-password-complexity.md)</li></ul> |
+| 密碼重設 (預覽)  | 讓使用者能夠在驗證電子郵件後選擇新密碼。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](multi-factor-authentication.md)</li><li>權杖相容性設定</li><li>[年齡管制](basic-age-gating.md)</li><li>[密碼複雜性需求](password-complexity.md)</li></ul> |
 | 設定檔編輯 (預覽)  | 讓使用者能夠設定其使用者屬性。 使用此使用者流程，您可以設定： <ul><li>[權杖存留期](tokens-overview.md)</li><li>權杖相容性設定</li><li>工作階段行為</li></ul> |
-| 登入 (預覽版)  | 讓使用者帳戶能夠登入其帳戶。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](custom-policy-multi-factor-authentication.md)</li><li>[權杖存留期](tokens-overview.md)</li><li>權杖相容性設定</li><li>工作階段行為</li><li>[年齡管制](basic-age-gating.md)</li><li>登入頁面自訂</li></ul> |
-| 註冊 (預覽)  | 讓使用者能夠建立帳戶。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](custom-policy-multi-factor-authentication.md)</li><li>[權杖存留期](tokens-overview.md)</li><li>權杖相容性設定</li><li>工作階段行為</li><li>[年齡管制](basic-age-gating.md)</li><li>[密碼複雜性需求](user-flow-password-complexity.md)</li></ul> |
-| 註冊並登入 (預覽版)  | 讓使用者帳戶能夠建立帳戶或登入其帳戶。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](custom-policy-multi-factor-authentication.md)</li><li>[年齡管制](basic-age-gating.md)</li><li>[密碼複雜性需求](user-flow-password-complexity.md)</li></ul> |
+| 登入 (預覽版)  | 讓使用者帳戶能夠登入其帳戶。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](multi-factor-authentication.md)</li><li>[權杖存留期](tokens-overview.md)</li><li>權杖相容性設定</li><li>工作階段行為</li><li>[年齡管制](basic-age-gating.md)</li><li>登入頁面自訂</li></ul> |
+| 註冊 (預覽)  | 讓使用者能夠建立帳戶。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](multi-factor-authentication.md)</li><li>[權杖存留期](tokens-overview.md)</li><li>權杖相容性設定</li><li>工作階段行為</li><li>[年齡管制](basic-age-gating.md)</li><li>[密碼複雜性需求](password-complexity.md)</li></ul> |
+| 註冊並登入 (預覽版)  | 讓使用者帳戶能夠建立帳戶或登入其帳戶。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](multi-factor-authentication.md)</li><li>[年齡管制](basic-age-gating.md)</li><li>[密碼複雜性需求](password-complexity.md)</li></ul> |
 
 ## <a name="standard-user-flows"></a>標準使用者流程
 
@@ -47,11 +47,11 @@ Azure Active Directory B2C (Azure AD B2C) 中的使用者流程，可協助您�
 
 | 使用者流程 | 說明 |
 | --------- | ----------- | ----------- |
-| 密碼重設 | 讓使用者能夠在驗證電子郵件後選擇新密碼。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](custom-policy-multi-factor-authentication.md)</li><li>權杖相容性設定</li><li>[密碼複雜性需求](user-flow-password-complexity.md)</li></ul> |
+| 密碼重設 | 讓使用者能夠在驗證電子郵件後選擇新密碼。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](multi-factor-authentication.md)</li><li>權杖相容性設定</li><li>[密碼複雜性需求](password-complexity.md)</li></ul> |
 | 設定檔編輯 | 讓使用者能夠設定其使用者屬性。 使用此使用者流程，您可以設定： <ul><li>[權杖存留期](tokens-overview.md)</li><li>權杖相容性設定</li><li>工作階段行為</li></ul> |
-| 登入 | 讓使用者帳戶能夠登入其帳戶。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](custom-policy-multi-factor-authentication.md)</li><li>[權杖存留期](tokens-overview.md)</li><li>權杖相容性設定</li><li>工作階段行為</li><li>封鎖登入</li><li>強制密碼重設</li><li>讓我保持登入 (KMSI)</ul><br>您無法自訂此使用者流程的使用者介面與。 |
-| 註冊 | 讓使用者能夠建立帳戶。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](custom-policy-multi-factor-authentication.md)</li><li>[權杖存留期](tokens-overview.md)</li><li>權杖相容性設定</li><li>工作階段行為</li><li>[密碼複雜性需求](user-flow-password-complexity.md)</li></ul> |
-| 註冊與登入 | 讓使用者帳戶能夠建立帳戶或登入其帳戶。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](custom-policy-multi-factor-authentication.md)</li><li>[權杖存留期](tokens-overview.md)</li><li>權杖相容性設定</li><li>工作階段行為</li><li>[密碼複雜性需求](user-flow-password-complexity.md)</li></ul>|
+| 登入 | 讓使用者帳戶能夠登入其帳戶。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](multi-factor-authentication.md)</li><li>[權杖存留期](tokens-overview.md)</li><li>權杖相容性設定</li><li>工作階段行為</li><li>封鎖登入</li><li>強制密碼重設</li><li>讓我保持登入 (KMSI)</ul><br>您無法自訂此使用者流程的使用者介面與。 |
+| 註冊 | 讓使用者能夠建立帳戶。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](multi-factor-authentication.md)</li><li>[權杖存留期](tokens-overview.md)</li><li>權杖相容性設定</li><li>工作階段行為</li><li>[密碼複雜性需求](password-complexity.md)</li></ul> |
+| 註冊與登入 | 讓使用者帳戶能夠建立帳戶或登入其帳戶。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](multi-factor-authentication.md)</li><li>[權杖存留期](tokens-overview.md)</li><li>權杖相容性設定</li><li>工作階段行為</li><li>[密碼複雜性需求](password-complexity.md)</li></ul>|
 
 
 ## <a name="how-to-switch-to-a-new-recommended-user-flow"></a>如何切換至新的建議使用者流程

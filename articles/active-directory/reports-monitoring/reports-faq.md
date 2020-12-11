@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1984e2f0bb55115c7d700b91f564d9f01c145151
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c274424641ee0173d68f0de9061415815b0df588
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90015325"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107425"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>關於 Azure Active Directory 報告的常見問題集
 
@@ -31,25 +31,25 @@ ms.locfileid: "90015325"
 
 **問：我目前使用 `https://graph.windows.net/<tenant-name>/reports/` 端點 api，以程式設計方式將 Azure AD 的 audit 和整合式應用程式使用方式報告提取到我們的報告系統中。我應該切換到什麼？**
 
-**答：** 請查閱 [API 參考](https://developer.microsoft.com/graph/)，查看您可以如何使用 API 來存取[活動報告](concept-reporting-api.md)。 此端點有兩個報告 (**審核** 和登 **入**) 可提供您在舊有 API 端點中取得的所有資料。 這個新端點也有 Azure AD Premium 授權的登入報告，您可以用它來取得應用程式使用方式、裝置使用方式，以及使用者登入資訊。
+**答：** 請查閱 [API 參考](https://developer.microsoft.com/graph/)，查看您可以如何使用 API 來存取 [活動報告](concept-reporting-api.md)。 此端點有兩個報告 (**審核** 和登 **入**) 可提供您在舊有 API 端點中取得的所有資料。 這個新端點也有 Azure AD Premium 授權的登入報告，您可以用它來取得應用程式使用方式、裝置使用方式，以及使用者登入資訊。
 
 ---
 
 **問：我目前使用 `https://graph.windows.net/<tenant-name>/reports/` 端點 api 來提取 Azure AD 的安全性報告 (特定類型的偵測，例如，以程式設計方式在我們的報告系統中從匿名 IP) 位址登入的認證或登入。我應該切換到什麼？**
 
-**答：** 您可以使用 [Identity Protection 風險偵測 API](../identity-protection/howto-identity-protection-graph-api.md)   透過 Microsoft Graph 存取安全性偵測。 這種新格式可讓您更有彈性地查詢資料、使用先進的篩選、欄位選取等等，以及將風險偵測標準化為一種類型，以便更輕鬆地整合到 Siem 和其他資料收集工具中。 由於資料的格式不同，您無法以新查詢替換舊查詢。 不過， [新的 API 會使用 Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta)，這是 Microsoft 365 或 Azure AD 這類 Api 的 Microsoft 標準。 因此，所需的工作可以擴充您目前的 Microsoft Graph 投資，或協助您開始轉換至這個新的標準平臺。
+**答：** 您可以使用 [Identity Protection 風險偵測 API](../identity-protection/howto-identity-protection-graph-api.md) 透過 Microsoft Graph 存取安全性偵測。 這種新格式可讓您更有彈性地查詢資料、使用先進的篩選、欄位選取等等，以及將風險偵測標準化為一種類型，以便更輕鬆地整合到 Siem 和其他資料收集工具中。 由於資料的格式不同，您無法以新查詢替換舊查詢。 不過， [新的 API 會使用 Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta)，這是 Microsoft 365 或 Azure AD 這類 Api 的 Microsoft 標準。 因此，所需的工作可以擴充您目前的 Microsoft Graph 投資，或協助您開始轉換至這個新的標準平臺。
 
 ---
 
 **問：我要如何取得進階授權？**
 
-**答：** 請參閱[開始使用 Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) 來升級 Azure Active Directory 版本。
+**答：** 請參閱 [開始使用 Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) 來升級 Azure Active Directory 版本。
 
 ---
 
 **問：在取得進階授權之後，我應該多快能看見活動資料？**
 
-**答：** 如果您在使用免費授權時即已經有活動資料，您便可以立即看見該資料。 如果您沒有任何資料，則必須花一或兩天的時間，資料才會顯示在報告中。
+**答：** 如果您在使用免費授權時即已經有活動資料，您便可以立即看見該資料。 如果您沒有任何資料，則最多需要3天的時間，資料才會顯示在報告中。
 
 ---
 
@@ -61,7 +61,7 @@ ms.locfileid: "90015325"
 
 **問：我是否必須是全域系統管理員，才能看到登入 Azure 入口網站的活動，或是透過 API 取得資料？**
 
-**答：** 不必，如果您是租用戶的**安全性讀取者**或**安全性系統管理員**，則也可以透過入口網站或透過 API 存取報告資料。 當然，**全域系統管理員**也可存取此資料。
+**答：** 不必，如果您是租用戶的 **安全性讀取者** 或 **安全性系統管理員**，則也可以透過入口網站或透過 API 存取報告資料。 當然，**全域系統管理員** 也可存取此資料。
 
 ---
 
@@ -95,11 +95,11 @@ ms.locfileid: "90015325"
 
 **問：我可以從 Azure 入口網站下載多少記錄？**
 
-**答：** 您可以從 Azure 入口網站最多下載 5000 筆記錄。 這些記錄會依「時間上最近」** 方式來排序，而根據預設，您會取得最近的 5000 筆記錄。
+**答：** 您可以從 Azure 入口網站最多下載 5000 筆記錄。 這些記錄會依「時間上最近」方式來排序，而根據預設，您會取得最近的 5000 筆記錄。
 
 ---
 
-## <a name="risky-sign-ins"></a>有風險的登入
+## <a name="risky-sign-ins"></a>風險性登入
 
 **問： Identity Protection 有風險偵測，但我在登入報告中看不到對應的登入。這是預期的嗎？**
 

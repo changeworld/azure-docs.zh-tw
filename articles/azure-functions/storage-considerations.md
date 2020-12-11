@@ -3,12 +3,12 @@ title: Azure Functions 的儲存考量事項
 description: 了解 Azure Functions 的儲存體需求，以及加密儲存資料的相關資訊。
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: aefd9a35235a09d94973f383603349f6862bbdd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67ff822208f065041e479fc484173d9f06a773ba
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318176"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107238"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions 的儲存考量事項
 
@@ -27,15 +27,19 @@ ms.locfileid: "87318176"
 
 ## <a name="storage-account-requirements"></a>儲存體帳戶的需求
 
-建立函數應用程式時，您必須建立或連結支援 Blob、「佇列」及「表格」儲存體的一般用途「Azure 儲存體」帳戶。 這是因為 Functions 依賴「Azure 儲存體」來進行作業，例如管理觸發程序和記錄函數執行。 某些儲存體帳戶不支援佇列和資料表。 這些帳戶包括僅限 Blob 的儲存體帳戶、Azure 進階儲存體和搭配 ZRS 複寫的一般用途儲存體帳戶。 建立函數應用程式時，[儲存體帳戶] 刀鋒視窗中會篩選掉這些不受支援的帳戶。
+建立函數應用程式時，您必須建立或連結支援 Blob、「佇列」及「表格」儲存體的一般用途「Azure 儲存體」帳戶。 這是因為 Functions 依賴「Azure 儲存體」來進行作業，例如管理觸發程序和記錄函數執行。 某些儲存體帳戶不支援佇列和資料表。 這些帳戶包括僅限 Blob 的儲存體帳戶、Azure 進階儲存體和搭配 ZRS 複寫的一般用途儲存體帳戶。
 
 若要深入了解儲存體帳戶類型，請參閱 [Azure 儲存體服務簡介](../storage/common/storage-introduction.md#core-storage-services)。 
 
-雖然您可以在函數應用程式中使用現有的儲存體帳戶，但您必須確定它符合這些需求。 在函數應用程式建立流程中建立的儲存體帳戶，保證會符合這些儲存體帳戶的需求。  
+雖然您可以在函數應用程式中使用現有的儲存體帳戶，但您必須確定它符合這些需求。 在 Azure 入口網站中建立為函數應用程式建立流程一部分的儲存體帳戶，保證符合這些儲存體帳戶需求。 在入口網站中，當您在建立函數應用程式時選擇現有的儲存體帳戶時，不支援的帳戶會被篩選掉。 在此流程中，您只允許在與您建立的函式應用程式相同的區域中，選擇現有的儲存體帳戶。 若要深入瞭解，請參閱 [儲存體帳戶位置](#storage-account-location)。
 
 ## <a name="storage-account-guidance"></a>儲存體帳戶指引
 
 每個函式應用程式都需要有儲存體帳戶才能運作。 如果該帳戶已刪除，您的函數應用程式就不會運作。 若要為儲存體相關問題疑難排解，請參閱[如何為儲存體相關問題疑難排解](functions-recover-storage-account.md)。 下列附加考量事項適用於函數應用程式所使用的儲存體帳戶。
+
+### <a name="storage-account-location"></a>儲存體帳戶位置
+
+為了達到最佳效能，您的函數應用程式應該使用相同區域中的儲存體帳戶，以減少延遲。 Azure 入口網站會強制執行這種最佳做法。 如果基於某些原因，您需要在與函式應用程式不同的區域中使用儲存體帳戶，您必須在入口網站外部建立函數應用程式。 
 
 ### <a name="storage-account-connection-setting"></a>儲存體帳戶連線設定
 

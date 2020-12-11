@@ -10,15 +10,15 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/22/2020
+ms.date: 12/10/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 7af15552a489f36d87204bfefe47e579cc19f6dc
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: e36f7c6085908630d5e7aa2593fe4d57202d6ee7
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778752"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107646"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何將 Azure API 管理與虛擬網路搭配使用
 「Azure 虛擬網路」(VNET) 可讓您將任何 Azure 資源，放在您控制存取權的非網際網路可路由網路中。 然後，可以使用各種 VPN 技術，將這些網路連線到您的內部部署網路。 若要深入了解「Azure 虛擬網路」，請從以下資訊著手：[Azure 虛擬網路概觀](../virtual-network/virtual-networks-overview.md)。
@@ -86,7 +86,7 @@ Azure API 管理可以部署在虛擬網路 (VNET) 內，因此它可以存取�
 > [!IMPORTANT]
 > 如果您將 API 管理從 VNET 中移除或變更其部署所在的 VNET，則先前使用的 VNET 將保持鎖定狀態最長達六個小時。 在這段期間，將無法刪除該 VNET 或在其中部署新的資源。 此行為適用於使用 api-version 2018-01-01 和更早版本的用戶端。 使用 api-version 2019-01-01 和更新版本的用戶端，會在相關聯的 API 管理服務刪除時立即釋放 VNET。
 
-## <a name="deploy-api-management-into-external-vnet"></a><a name="deploy-apim-external-vnet"> </a>將 API 管理部署到外部 VNET
+## <a name="deploy-api-management-into-external-vnet"></a><a name="deploy-apim-external-vnet"></a>將 API 管理部署到外部 VNET
 
 [![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-external-vnet%2Fazuredeploy.json)
 
@@ -116,8 +116,9 @@ Azure API 管理可以部署在虛擬網路 (VNET) 內，因此它可以存取�
 | * / [80]、443                  | 輸入            | TCP                | INTERNET / VIRTUAL_NETWORK            | 與 API 管理的用戶端通訊                      | 外部             |
 | * / 3443                     | 輸入            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Azure 入口網站和 PowerShell 的管理端點         | 外部和內部  |
 | * / 443                  | 輸出           | TCP                | VIRTUAL_NETWORK / Storage             | **與 Azure 儲存體的相依性**                             | 外部和內部  |
-| * / 443                  | 輸出           | TCP                | VIRTUAL_NETWORK / AzureActiveDirectory | [Azure Active Directory](api-management-howto-aad.md) \(如果適用\)                   | 外部和內部  |
+| * / 443                  | 輸出           | TCP                | VIRTUAL_NETWORK / AzureActiveDirectory | [Azure Active Directory](api-management-howto-aad.md) 和 Azure KeyVault 相依性                  | 外部和內部  |
 | * / 1433                     | 輸出           | TCP                | VIRTUAL_NETWORK / SQL                 | **存取 Azure SQL 端點**                           | 外部和內部  |
+| */433                     | 輸出           | TCP                | VIRTUAL_NETWORK/AzureKeyVault                 | **存取 Azure KeyVault**                           | 外部和內部  |
 | * / 5671、5672、443          | 輸出           | TCP                | VIRTUAL_NETWORK / EventHub            | [記錄到事件中樞原則](api-management-howto-log-event-hubs.md)和監視代理程式的相依性 | 外部和內部  |
 | * / 445                      | 輸出           | TCP                | VIRTUAL_NETWORK / Storage             | 適用於 [GIT](api-management-configuration-repository-git.md) 之 Azure 檔案共用的相依性                      | 外部和內部  |
 | */443、12000                     | 輸出           | TCP                | VIRTUAL_NETWORK / AzureCloud            | 健康情況與監視延伸模組         | 外部和內部  |
@@ -125,7 +126,7 @@ Azure API 管理可以部署在虛擬網路 (VNET) 內，因此它可以存取�
 | */25、587、25028                       | 輸出           | TCP                | VIRTUAL_NETWORK / INTERNET            | 連線到 SMTP 轉送以便傳送電子郵件                    | 外部和內部  |
 | * / 6381 - 6383              | 輸入和輸出 | TCP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | 在電腦之間存取快 [取原則的](api-management-caching-policies.md) Redis 服務         | 外部和內部  |
 | */4290              | 輸入和輸出 | UDP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | 電腦之間的 [速率限制](api-management-access-restriction-policies.md#LimitCallRateByKey) 原則的同步計數器         | 外部和內部  |
-| * / *                        | 輸入            | TCP                | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK | Azure 基礎結構負載平衡器                          | 外部和內部  |
+| * / \*                        | 輸入            | TCP                | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK | Azure 基礎結構負載平衡器                          | 外部和內部  |
 
 >[!IMPORTANT]
 > 要成功部署 API 管理服務，就必須有以 **粗體** 表示其「目的」的連接埠。 但封鎖其他埠會導致使用和監視執行中服務的能力 **降低** **，並提供已認可的 SLA**。

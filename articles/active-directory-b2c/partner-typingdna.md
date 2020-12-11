@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 06/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 6f62675d27310a15c434baba8e3451a3cd81f058
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 68617d86fda940c5d3752f2389088a8c729aebec
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953520"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108343"
 ---
 # <a name="tutorial-for-configuring-typingdna-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 TypingDNA 的教學課程
 
@@ -36,7 +36,7 @@ ms.locfileid: "94953520"
 
 2. 當使用者提交頁面時，TypingDNA 程式庫會計算使用者的輸入特性。 之後，將資訊插入 Azure AD B2C 已轉譯的隱藏文字欄位中。 此欄位會隱藏在 CSS 中。  
 
-    此 [範例包含](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/TypingDNA/source-code/selfAssertedSignUp.cshtml) 具有 JAVASCRIPT 和 CSS 修改的 HTML 檔案，而且是由 `api.selfasserted.tdnasignin` 和 `api.selfasserted.tdnasignup` 內容定義所參考。 請參閱 [裝載頁面內容](./custom-policy-ui-customization.md#hosting-the-page-content) 來裝載您的 HTML 檔案。
+    此 [範例包含](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/TypingDNA/source-code/selfAssertedSignUp.cshtml) 具有 JAVASCRIPT 和 CSS 修改的 HTML 檔案，而且是由 `api.selfasserted.tdnasignin` 和 `api.selfasserted.tdnasignup` 內容定義所參考。 請參閱 [裝載頁面內容](./customize-ui-with-html.md#hosting-the-page-content) 來裝載您的 HTML 檔案。
 
 3. 當使用者提交認證時，Azure AD B2C 現在會在宣告包內有輸入模式。 它必須 (您的) 呼叫 API，才能將此資料傳遞給 TypingDNA REST API 端點。 此 API 包含在 [範例 (typingDNA-API 介面) ](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface)中。
 4. 中介層 API 接著會將輸入模式資料傳遞給 TypingDNA REST API。 註冊時，會呼叫 [檢查使用者端點](https://api.typingdna.com/index.html#api-API_Services-GetUser) 來確認使用者不存在，然後呼叫 [儲存模式](https://api.typingdna.com/index.html#api-API_Services-saveUserPattern) 端點以儲存使用者的第一個輸入模式。
@@ -160,7 +160,7 @@ REST API 呼叫會在中使用模型化 `validationTechnicalProfiles` `LocalAcco
 
 1. 在您選擇的主機服務提供者裝載[TYPINGDNA API 介面](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface)
 2. `apiKey` `apiSecret` 使用 TypingDNA 儀表板中的認證，將 TypingDNA 中的所有實例和取代為[API 介面](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface)的解決方案
-3. 遵循[此處](./custom-policy-ui-customization.md#3-configure-cors)的 CORS 需求，在您選擇的提供者上裝載 HTML 檔案
+3. 遵循[此處](./customize-ui-with-html.md#3-configure-cors)的 CORS 需求，在您選擇的提供者上裝載 HTML 檔案
 4. 將檔案 `api.selfasserted.tdnasignup` 中的和內容定義的 LoadURI 專案 `api.selfasserted.tdnasignin` 分別取代 `TrustFrameworkExtensions.xml` 為託管的 HTML 檔案的 URI。
 5. 在 **Azure 入口網站** 的 Azure AD 分頁中的身分識別體驗架構下建立 B2C 原則金鑰。 使用 `Generate` 選項並命名此機碼 `tdnaHashedId` 。
 6. 取代原則檔案中的 TenantId
@@ -188,7 +188,7 @@ REST API 呼叫會在中使用模型化 `validationTechnicalProfiles` `LocalAcco
 
 •已在此測試版本中停用 MFA，但您可以看到在驗證之後是否已由宣告提示 MFA 的結果 `promptMFA` 。
 
-•[在此註冊並登](https://b2cprod.b2clogin.com/b2cprod.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_SU_TDNA&client_id=51d907f8-db14-4460-a1fd-27eaeb2a74da&nonce=defaultNonce&redirect_uri=https://jwt.ms/&scope=openid&response_type=id_token&prompt=login)入[here](https://b2cprod.b2clogin.com/b2cprod.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_SI_TDNA&client_id=51d907f8-db14-4460-a1fd-27eaeb2a74da&nonce=defaultNonce&redirect_uri=https://jwt.ms/&scope=openid&response_type=id_token&prompt=login)
+•[在此註冊並登](https://b2cprod.b2clogin.com/b2cprod.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_SU_TDNA&client_id=51d907f8-db14-4460-a1fd-27eaeb2a74da&nonce=defaultNonce&redirect_uri=https://jwt.ms/&scope=openid&response_type=id_token&prompt=login)入[](https://b2cprod.b2clogin.com/b2cprod.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_SI_TDNA&client_id=51d907f8-db14-4460-a1fd-27eaeb2a74da&nonce=defaultNonce&redirect_uri=https://jwt.ms/&scope=openid&response_type=id_token&prompt=login)
 
 ## <a name="next-steps"></a>後續步驟
 

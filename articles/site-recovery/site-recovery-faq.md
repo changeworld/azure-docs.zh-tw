@@ -4,12 +4,12 @@ description: 本文討論有關 Azure Site Recovery 的一般熱門問題。
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 3da86eead5b927a2a71d7b1a28bc5966bf5f8840
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: add5874dc828f05c7c51f0f378988c94cbd42486
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369432"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109550"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>關於 Azure Site Recovery 的一般問題
 
@@ -272,6 +272,9 @@ Site Recovery 會每 5 分鐘建立一次當機時保持一致復原點。
 應用程式一致復原點是從應用程式一致快照集建立的。 應用程式一致快照集所擷取的資料與當機時保持一致復原點相同，同時也會擷取記憶體內的所有資料，以及所有進行中的交易。
 
 由於有這些額外的內容，因此應用程式一致快照集包含最多內容，且需要最長的時間。 建議您針對資料庫作業系統和 SQL Server 之類的應用程式，使用應用程式一致復原點。
+
+>[!Note]
+>在 Windows 電腦上建立應用程式一致復原點會失敗，如果有超過64個磁片區。
 
 ### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>應用程式一致復原點對應用程式效能有何影響？
 

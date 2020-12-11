@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f50a380f2c794d26903e44c0bd1b1569d77a127
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: a8e9841c71a6f5bc2e12887f41c62b43a17203a6
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093310"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107579"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 新增功能的封存檔
 
@@ -2536,7 +2536,7 @@ Azure AD Connect 正在轉換我們的電子郵件警示系統，部分客戶可
 
 您現在可以為終端使用者設定組織的密碼複雜性，而不需要使用原生 Azure AD 密碼原則。 從使用者流程 (先前稱為內建原則) 的 [屬性] 刀鋒視窗中，您可以選擇 [簡單] 或 [強式] 的密碼複雜性，或建立一組 [自訂] 的需求。
 
-如需密碼複雜性需求設定的詳細資訊，請參閱 [在 Azure Active Directory B2C 中設定密碼的複雜性需求](../../active-directory-b2c/user-flow-password-complexity.md)。
+如需密碼複雜性需求設定的詳細資訊，請參閱 [在 Azure Active Directory B2C 中設定密碼的複雜性需求](../../active-directory-b2c/password-complexity.md)。
 
 ---
 

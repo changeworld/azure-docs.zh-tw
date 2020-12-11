@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 13923596b7ad0f6d3fdef24e847f469645b448ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb66d8a4bf97a6f8a10534c9c4459123ad6a2654
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119924"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107914"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>將應用程式遷移至適用于 iOS 和 macOS 的 MSAL
 
@@ -75,7 +75,7 @@ MSAL 公用 API 會反映 Azure AD v1.0 與 Microsoft 身分識別平臺之間�
 
 這是每個應用程式的內建範圍。 它指的是註冊應用程式時所設定之許可權的靜態清單。 其行為與的行為類似 `resource` 。 這在遷移時相當有用，可確保維護一組類似的範圍和使用者體驗。
 
-若要使用 `/.default` 範圍，請附加 `/.default` 至資源識別碼。 例如： `https://graph.microsoft.com/.default` 。 如果您的資源以斜線 (`/`) ，您仍然應該附加 `/.default` （包括前置的正斜線），以產生包含雙斜線斜線的範圍 (`//`) 。
+若要使用 `/.default` 範圍，請附加 `/.default` 至資源識別碼。 例如：`https://graph.microsoft.com/.default`。 如果您的資源以斜線 (`/`) ，您仍然應該附加 `/.default` （包括前置的正斜線），以產生包含雙斜線斜線的範圍 (`//`) 。
 
 您可以在[這裡](./v2-permissions-and-consent.md#the-default-scope)閱讀有關使用 "/.default" 範圍的詳細資訊
 
@@ -136,7 +136,7 @@ MSAL 可讓您的應用程式所處理的錯誤與需要使用者介入的錯誤
 
 處理[ `MSALError` 清單](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128)中的所有其他錯誤是選擇性的。 您可以使用這些錯誤中的資訊來改善使用者體驗。
 
-如需 MSAL 錯誤處理的詳細資訊，請參閱 [使用 MSAL 處理例外狀況和錯誤](msal-handling-exceptions.md) 。
+如需 MSAL 錯誤處理的詳細資訊，請參閱 [使用 MSAL 處理例外狀況和錯誤](msal-error-handling-ios.md) 。
 
 ### <a name="broker-support"></a>Broker 支援
 
