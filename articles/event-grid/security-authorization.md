@@ -3,12 +3,12 @@ title: Azure Event Grid 安全性與驗證
 description: 說明 Azure Event Grid 與其概念。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 5a1e4af17c2f4335ed26490bfc2408c66f4aee6b
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 24954ce0a0dc54a04720c0d0b495d14e950a2f71
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328720"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109584"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>授權存取事件方格資源
 Azure 事件方格可讓您控制為不同的使用者提供的存取層級，以進行各種 **管理作業** ，例如列出事件訂閱、建立新的訂用帳戶，以及產生金鑰。 事件方格會使用 Azure 角色型存取控制 (Azure RBAC) 。
@@ -17,17 +17,18 @@ Azure 事件方格可讓您控制為不同的使用者提供的存取層級，�
 > EventGrid 不支援將事件發佈至事件方格主題或網域的 Azure RBAC。 使用共用存取簽章 (SAS) 金鑰或權杖來驗證發佈事件的用戶端。 如需詳細資訊，請參閱 [驗證發行用戶端](security-authenticate-publishing-clients.md)。 
 
 ## <a name="operation-types"></a>作業類型
+如需 Azure 事件方格所支援的作業清單，請執行下列 Azure CLI 命令： 
 
-事件格線支援下列動作：
+```azurecli-interactive
+az provider operation show --namespace Microsoft.EventGrid
+```
 
-* Microsoft.EventGrid/*/read
-* Microsoft.EventGrid/*/write
-* Microsoft.EventGrid/*/delete
+下列作業會傳回可能的秘密資訊，此資訊會被篩選掉正常的讀取作業。 建議您限制這些作業的存取。 
+
 * Microsoft.EventGrid/eventSubscriptions/getFullUrl/action
 * Microsoft.EventGrid/topics/listKeys/action
 * Microsoft.EventGrid/topics/regenerateKey/action
 
-最後三種作業可能會回傳秘密資訊，這種資訊在一般讀取作業時是會被篩選掉的。 建議您限制這些作業的存取。 
 
 ## <a name="built-in-roles"></a>內建角色
 
@@ -194,7 +195,7 @@ Azure 事件方格可讓您控制為不同的使用者提供的存取層級，�
 ### <a name="custom-topics"></a>自訂主題
 若是自訂主題，您需要取得在 Event Grid 主題範圍下寫入新事件訂用帳戶的權限。 資源的格式為：`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
 
-舉例來說，若要訂閱名為**mytopic** 之自訂主題，您需要 Microsoft.EventGrid/EventSubscriptions/Write 授予您此權限：`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
+舉例來說，若要訂閱名為 **mytopic** 之自訂主題，您需要 Microsoft.EventGrid/EventSubscriptions/Write 授予您此權限：`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
 
 
 

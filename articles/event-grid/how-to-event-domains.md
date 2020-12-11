@@ -4,12 +4,12 @@ description: 顯示如何使用事件網域管理 Azure 事件方格中的大量
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 277db97211b196c9853470c2d12cc2246a4005b2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: e6861e89def10eec391bf302b1ddc726b38bb98c
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330071"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109890"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>使用事件網域管理主題並發佈事件
 
@@ -22,12 +22,6 @@ ms.locfileid: "92330071"
 
 若要深入了解事件網域，請參閱[了解用於管理事件方格主題的事件網域](event-domains.md)。
 
-[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
-
-## <a name="install-preview-feature"></a>安裝預覽功能
-
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
-
 ## <a name="create-an-event-domain"></a>建立事件網域
 
 若要管理大量主題集合，請建立事件網域。
@@ -35,10 +29,6 @@ ms.locfileid: "92330071"
 # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 ```azurecli-interactive
-# If you haven't already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid domain create \
   -g <my-resource-group> \
   --name <my-domain-name> \
@@ -47,11 +37,7 @@ az eventgrid domain create \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```azurepowershell-interactive
-# If you have not already installed the module, do it now.
-# This module is required for preview features.
-Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
-
-New-AzureRmEventGridDomain `
+New-AzEventGridDomain `
   -ResourceGroupName <my-resource-group> `
   -Name <my-domain-name> `
   -Location <location>
@@ -97,7 +83,7 @@ az role assignment create \
 下列 PowerShell 命令會限制 `alice@contoso.com` 只能建立和刪除 `demotopic1` 主題的事件訂用帳戶：
 
 ```azurepowershell-interactive
-New-AzureRmRoleAssignment `
+New-AzRoleAssignment `
   -SignInName alice@contoso.com `
   -RoleDefinitionName "EventGrid EventSubscription Contributor (Preview)" `
   -Scope /subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>/topics/demotopic1
@@ -126,7 +112,7 @@ az eventgrid event-subscription create \
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```azurepowershell-interactive
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -ResourceId "/subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>/topics/demotopic1" `
   -EventSubscriptionName <event-subscription> `
   -Endpoint https://contoso.azurewebsites.net/api/updates
@@ -138,7 +124,7 @@ New-AzureRmEventGridSubscription `
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to Deploy to Aquent." /></a>
 
-為主題設定的權限會儲存在 Azure Active Directory，必須明確地刪除。 如果使用者在主題上具有寫入權限，則刪除事件訂閱並不會撤銷使用者建立事件訂閱的存取權。
+為主題設定的權限會儲存在 Azure Active Directory，必須明確地刪除。 刪除事件訂用帳戶時，如果使用者在主題上有寫入存取權，就不會撤銷使用者存取權來建立事件訂閱。
 
 
 ## <a name="publish-events-to-an-event-grid-domain"></a>將事件發佈到事件方格網域
@@ -193,7 +179,7 @@ az eventgrid domain key list \
 若要使用 PowerShell 取得網域端點，請使用：
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridDomain `
+Get-AzEventGridDomain `
   -ResourceGroupName <my-resource-group> `
   -Name <my-domain>
 ```
@@ -201,13 +187,27 @@ Get-AzureRmEventGridDomain `
 若要取得網域適用的金鑰，請使用：
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridDomainKey `
+Get-AzEventGridDomainKey `
   -ResourceGroupName <my-resource-group> `
   -Name <my-domain>
 ```
 ---
 
 然後使用您慣用的方法，讓 HTTP POST 將您的事件發佈至事件方格網域。
+
+## <a name="search-lists-of-topics-or-subscriptions"></a>搜尋主題或訂用帳戶的清單
+
+為了搜尋和管理大量主題或訂用帳戶，事件方格的 Api 支援清單和分頁。
+
+### <a name="using-cli"></a>使用 CLI
+例如，下列命令會列出名稱包含的所有主題 `mytopic` 。 
+
+```azurecli-interactive
+az eventgrid topic list --odata-query "contains(name, 'mytopic')"
+```
+
+如需此命令的詳細資訊，請參閱 [`az eventgrid topic list`](/cli/azure/eventgrid/topic?#az_eventgrid_topic_list) 。 
+
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,12 +3,12 @@ title: 規劃 Azure Service Fabric 叢集部署
 description: 瞭解如何規劃和準備將生產環境 Service Fabric 叢集部署到 Azure。
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 1064e59491b7144aafade24bd50131478fe025eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9de59811397eb47809c6d71f608e43beae5bfadb
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87281322"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109618"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>規劃及準備叢集部署
 
@@ -89,8 +89,6 @@ Service Fabric 可讓您在執行 Windows Server 或 Linux 的任何 VM 或電�
 
 > [!NOTE]
 > 使用者應用程式在作業系統磁片上不應該有任何相依性/檔案/成品，因為 os 磁片會在作業系統升級時遺失。
-> 因此，不建議使用 [PatchOrchestrationApplication](https://github.com/microsoft/Service-Fabric-POA) 與暫時磁片。
->
 
 > [!NOTE]
 > 現有的非暫時 VMSS 無法就地升級以使用暫時磁片。
@@ -118,7 +116,7 @@ Service Fabric 可讓您在執行 Windows Server 或 Linux 的任何 VM 或電�
 ## <a name="production-readiness-checklist"></a>實際執行整備檢查清單
 您的應用程式和叢集已經準備好要接受生產環境流量嗎？ 將叢集部署到生產環境之前，請先執行 [生產環境就緒檢查清單](service-fabric-production-readiness-checklist.md)。 藉由使用此檢查清單中的專案，讓您的應用程式和叢集順利執行。 強烈建議您在進入生產環境之前，先檢查所有這些專案。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [建立執行 Windows 的 Service Fabric 叢集](service-fabric-best-practices-overview.md)
 * [建立執行 Linux 的 Service Fabric 叢集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 

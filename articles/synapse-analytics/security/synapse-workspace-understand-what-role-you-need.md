@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: aadc8e817eb2b5de856ac73cfd010b48d0531bfc
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 9735293c182e7fe67a498529425459c13a199101
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523401"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109788"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>瞭解在 Synapse 中執行一般工作所需的角色
 
@@ -58,6 +58,7 @@ ms.locfileid: "96523401"
 
 >[!Note]
 >- 系統不會針對每個工作列出 Synapse 系統管理員，除非它是唯一提供必要許可權的角色。  Synapse 系統管理員可以執行其他 Synapse RBAC 角色所啟用的所有工作。</br>
+>- 所需的最小 Synapse RBAC 角色如下所示。
 >- 任何範圍的所有 Synapse RBAC 角色都可讓您在工作區中 Synapse 使用者權限
 >- 資料表中顯示的所有 Synapse RBAC 許可權/動作都是前置詞為 Microsoft/Synapse/workspace/.。。 </br>
 
@@ -69,51 +70,50 @@ ms.locfileid: "96523401"
 |列出 SQL 集區、Apache Spark 集區、整合執行時間和存取其設定詳細資料|Synapse 使用者或|讀取|
 ||工作區上的 Azure 擁有者、參與者或讀取者|無
 |列出連結的服務、認證、受控的私人端點|Synapse 使用者|讀取
-**SQL 集區**||
+SQL 集區|
 建立專用的 SQL 集區或無伺服器的 SQL 集區|工作區上的 Azure 擁有者或參與者|無
 管理 (暫停、調整或刪除) 專用的 SQL 集區|SQL 集區或工作區上的 Azure 擁有者或參與者|無
-建立 SQL 腳本</br>|Synapse 使用者或 </br>工作區上的 Azure 擁有者或參與者 </br>*需要額外的 sql 許可權，才能執行 SQL 腳本*。|
+建立 SQL 腳本</br>|Synapse 使用者或 </br>工作區上的 Azure 擁有者或參與者 </br>*需要額外的 sql 許可權，才能執行 SQL 腳本、發行或認可變更*。|
 列出並開啟任何已發佈的 SQL 腳本| Synapse 成品使用者、成品發行者、Synapse 參與者|構件/讀取
 在無伺服器的 SQL 集區上執行 SQL 腳本|集區上的 SQL 許可權 (自動授與 Synapse 系統管理員) |無
-在專用的 SQL 集區上執行 SQL 腳本|需要集區上的 SQL 許可權|無
+在專用的 SQL 集區上執行 SQL 腳本|集區上的 SQL 許可權|無
 發佈新的、已更新或已刪除的 SQL 腳本|Synapse 成品發行者，Synapse 參與者|sqlScripts/write、delete
 將 SQL 腳本的變更認可至 Git 存放庫|需要存放庫的 Git 許可權|
 在工作區 (透過 Azure 入口網站中的工作區屬性指派 Active Directory 系統管理員) |工作區上的 Azure 擁有者或參與者 |
-**Apache Spark 集區**||
+APACHE SPARK 集區|
 建立 Apache Spark 集區|工作區上的 Azure 擁有者或參與者|
 監視 Apache Spark 的應用程式| Synapse 使用者|讀取
 查看筆記本和作業執行的記錄 |Synapse 計算運算子|
 取消任何在 Apache Spark 集區上執行的筆記本或 Spark 作業|Apache Spark 集區上的 Synapse 計算運算子。|bigDataPools/useCompute
-建立筆記本或作業定義|在工作區上 Synapse 使用者或 Azure 擁有者、參與者或讀者</br> *需要有額外的許可權，才能執行、發佈或儲存*|讀取
+建立筆記本或作業定義|Synapse 使用者或 </br>工作區上的 Azure 擁有者、參與者或讀取者</br> *需要有額外的許可權，才能執行、發行或認可變更*|讀取</br></br></br></br></br> 
 列出並開啟已發佈的筆記本或作業定義，包括審核儲存的輸出|Synapse 成品使用者、Synapse 成品發行者、工作區上的 Synapse 參與者|構件/讀取
 執行筆記本並檢查其輸出|Synapse Apache Spark 系統管理員，在選取的 Apache Spark 集區上的 Synapse 計算運算子|bigDataPools/useCompute 
 發佈或刪除筆記本或工作定義 (包括服務的輸出) |工作區上的構件發行者，Synapse Apache Spark 系統管理員|筆記本/write、delete
-將筆記本或作業定義的變更認可至 Git 工作分支|Git 許可權|無
-**管線、整合執行時間、資料流程、資料集和觸發程式**||
+將筆記本或作業定義的變更認可至 Git 存放庫|Git 許可權|無
+管線、整合執行時間、資料流程、資料集 & 觸發程式|
 建立、更新或刪除整合執行時間|工作區上的 Azure 擁有者或參與者|
 監視整合執行時間狀態|Synapse 使用者|讀取、管線/viewOutputs
 檢查管線執行|Synapse 成品發行者/Synapse 參與者|讀取、管線/viewOutputs 
-建立管線 |Synapse 使用者 </br>[依 *_考慮 + Synapse Credential User On WorkspaceSystemIdentity_* _]</br>需要 _Additional 許可權才能發佈或儲存 *|讀取、認證/UseSecret/動作
-建立資料流程、資料集或觸發程式 |Synapse 使用者</br>*需要其他許可權才能發佈或儲存*|讀取
+建立管線 |Synapse 使用者</br>*需要額外的 Synapse 許可權，才能進行偵錯工具、新增觸發程式、發行或認可變更*|讀取
+建立資料流程或資料集 |Synapse 使用者</br>*需要額外的 Synapse 許可權，才能發行或認可變更*|讀取
 列出並開啟已發佈的管線 |Synapse 成品使用者 | 構件/讀取
 預覽資料集資料|WorkspaceSystemIdentity 上的 Synapse 使用者 + Synapse 認證使用者| 
 使用預設整合執行時間來對管線進行調試|WorkspaceSystemIdentity 認證上的 Synapse 使用者 + Synapse 認證使用者|讀 </br>認證/useSecret
-建立觸發程式，包括立即觸發程式|WorkspaceSystemIdentity 上的 Synapse 使用者 + Synapse 認證使用者|讀取、認證/useSecret/動作
+建立觸發程式，包括立即觸發 (需要執行管線的許可權) |WorkspaceSystemIdentity 上的 Synapse 使用者 + Synapse 認證使用者|讀取、認證/useSecret/動作
+執行/執行管線|WorkspaceSystemIdentity 上的 Synapse 使用者 + Synapse 認證使用者|讀取、認證/useSecret/動作
 使用資料複製工具複製資料|在工作區系統身分識別上 Synapse 使用者 + Synapse 認證使用者|讀取、認證/useSecret/動作
 使用排程) 內嵌資料 (|在工作區系統身分識別上 Synapse 作者 + Synapse 認證使用者|讀取、認證/useSecret/動作
-將新的、已更新或已刪除的管線、資料流程或觸發程式發佈到服務|在工作區上 Synapse 成品發行者|管線/寫入、刪除</br>資料流程 write、delete</br>觸發程式/寫入、刪除
-將新的、已更新或已刪除的資料流程、資料集或觸發程式發佈到服務|工作區上的構件發行者|觸發程式/寫入、刪除
-儲存 (認可對 Git 存放庫的管線、資料流程、資料集、觸發程式) 變更 |Git 許可權|無 
-**連結的服務**||
-建立連結的服務 (包括指派認證) |Synapse 使用者</br>*需要有額外的許可權，才能執行、發佈或儲存*|讀取
+將新的、更新的或刪除的管線、資料流程或觸發程式發佈到服務|在工作區上 Synapse 成品發行者|管線/寫入、刪除</br>資料流程/write、delete</br>觸發程式/寫入、刪除
+將管線、資料流程、資料集或觸發程式的變更認可至 Git 存放庫 |Git 許可權|無 
+連結的服務|
+建立連結的服務 (包括指派認證) |Synapse 使用者</br>*需要額外的許可權，才能使用具有認證的連結服務，或是發行或認可變更*|讀取
 列出並開啟已發佈的連結服務|Synapse 成品使用者|Linkedservices.json 和 datasets.json/write、delete  
-在受認證保護的連結服務上測試連接|Synapse 使用者和 Synapse 認證使用者|認證/useSecret/action|
-發佈連結服務|Synapse 構件發行者|Linkedservices.json 和 datasets.json/write、delete
-將 (認可) 連結的服務定義儲存至 Git 存放庫|Git 許可權|無
-**存取管理**||
+在受認證保護的連結服務上測試連接|Synapse 使用者 + Synapse 認證使用者|認證/useSecret/action|
+發佈連結服務|Synapse 成品發行者，Synapse 連結資料管理員|Linkedservices.json 和 datasets.json/write、delete
+將連結的服務定義認可至 Git 存放庫|Git 許可權|無
+存取管理|
 複習 Synapse 任何範圍的 RBAC 角色指派|Synapse 使用者|讀取
-指派和移除使用者、群組和服務主體的 Synapse RBAC 角色指派| Synapse 工作區或特定工作區專案範圍的系統管理員|roleAssignments/write、delete
-建立或移除程式碼成品的 Synapse RBAC 存取權|Synapse 工作區範圍的系統管理員|roleAssignments/write、delete   
+指派和移除使用者、群組和服務主體的 Synapse RBAC 角色指派| Synapse 工作區或特定工作區專案範圍的系統管理員|roleAssignments/write、delete 
 
 >[!Note]
 >來自另一個租使用者的來賓使用者無法檢查、新增或變更角色指派，不論角色指派的角色為何。 
