@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 6c5ef4f0ee0d68e2eae755f000423db4620b834d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: a9bea0664f99a21ac734de666c802e9875ff00b5
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341377"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359314"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>使用 Azure Key Vault 保護 Azure Cosmos 金鑰 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -41,13 +41,13 @@ ms.locfileid: "93341377"
    * 在 [ **資源群組** ] 下，選擇 [ **建立新** 的]，然後輸入資源組名。  
    * 在 [位置] 下拉式功能表中選擇位置。  
    * 將其他的選項保留預設值。  
-4. 提供上述資訊之後，請選取 [建立]。  
+4. 提供上述資訊之後，請選取 [建立]  。  
 
 ## <a name="add-azure-cosmos-db-access-keys-to-the-key-vault"></a>在 Key Vault 新增 Azure Cosmos DB 存取金鑰。
 1. 瀏覽至您在上一個步驟中建立的 Key Vault，然後開啟 [祕密] 索引標籤。  
-2. 選取 [ **+ 產生/匯入** ]， 
+2. 選取 [ **+ 產生/匯入**]， 
 
-   * 選取 **Manual** [手動 **上傳] 選項** 。
+   * 選取 [手動 **上傳] 選項**。
    * 為祕密提供 [名稱]
    * 在 [值] 欄位中提供 Cosmos DB 帳戶的連接字串。 然後選取 [建立]。
 
@@ -59,7 +59,7 @@ ms.locfileid: "93341377"
 
 ## <a name="create-an-azure-web-application"></a>建立 Azure Web 應用程式
 
-1. 建立 Azure Web 應用程式，或是從 [GitHub 存放庫](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/Demo/keyvaultdemo)下載應用程式。 這是一個簡單的 MVC 應用程式。  
+1. 建立 Azure Web 應用程式，或是從 [GitHub 存放庫](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/Demo/keyvaultdemo)下載應用程式。 這是一個簡單的 MVC 應用程式。  
 
 2. 將所下載的應用程式解壓縮，並開啟 **HomeController.cs** 檔案。 更新下面這一行裡面的祕密識別碼：
 
@@ -80,7 +80,7 @@ ms.locfileid: "93341377"
 
 在本節中，您會向 Azure Active Directory 註冊應用程式，並對應用程式提供 Key Vault 的讀取權限。 
 
-1. 瀏覽至 Azure 入口網站，然後開啟您在上一節建立的 **Key Vault** 。  
+1. 瀏覽至 Azure 入口網站，然後開啟您在上一節建立的 **Key Vault**。  
 
 2. 開啟 [存取原則]，選取 [+新增] 以尋找您所部署的 Web 應用程式，選取權限，然後選取 [確定]。  
 

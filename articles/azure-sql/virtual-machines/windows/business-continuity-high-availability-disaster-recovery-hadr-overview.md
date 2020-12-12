@@ -8,17 +8,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 194c6a5cead400e1bac78ba42cb7238b64bd3b7b
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: dbe5fba838e7c4ad9487a29889eab11d4e42671f
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327469"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358912"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上 SQL Server 的商務持續性和 HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -84,9 +85,20 @@ Azure 支援下列商務持續性 SQL Server 技術：
 
 如果您有 [軟體保證](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3)，則可以使用 SQL Server 執行混合式嚴重損壞修復 (DR) 計畫，而不會產生被動損壞修復實例的額外授權成本。
 
-在下圖中，安裝程式會使用在 Azure 虛擬機器上執行的 SQL Server，此虛擬機器使用12個核心做為內部部署 SQL Server 部署（使用12個核心）的災難修復複本。 在過去，您必須為內部部署和 Azure 虛擬機器部署授權12個核心的 SQL Server。 新的權益可提供在 Azure 虛擬機器上執行的被動複本權益。 現在您只需要授權12個在內部部署執行的核心 SQL Server，只要在 Azure 虛擬機器上符合被動複本的災難復原準則即可。
+例如，您可以在 Azure 中有作用中的主要內部部署，以及 DR 的免費被動次要資料庫： 
 
-![Azure 中的免費災難修復複本](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/free-dr-replica-azure.png)
+![Azure 中的免費次要被動](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-secondary-in-azure.png)
+
+在上圖中，安裝程式會使用 SQL Server 在 Azure 虛擬機器上執行，其使用12個核心作為內部部署 SQL Server 部署（使用12個核心）的災難修復複本。 在過去，您必須為內部部署和 Azure 虛擬機器部署授權12個核心的 SQL Server。 新的權益可提供在 Azure 虛擬機器上執行的被動複本權益。 現在您只需要授權12個在內部部署執行的核心 SQL Server，只要在 Azure 虛擬機器上符合被動複本的災難復原準則即可。
+
+當三個複本都裝載在 Azure 中時，您也可以有兩個免費的被動次要資料庫： 
+
+![Azure 中的一切都有兩個免費 passives](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-primary-in-azure.png)
+
+或者，您可以設定混合式容錯移轉環境，其中具有授權的主要內部部署、HA 有一個免費被動式，以及兩個用於 DR 的免費 passives： 
+
+![當環境與一個主要內部部署複本混合時，三個免費的 passives](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-with-primary-on-prem.png)
+
 
 如需詳細資訊，請參閱[產品授權條款](https://www.microsoft.com/licensing/product-licensing/products)。 
 

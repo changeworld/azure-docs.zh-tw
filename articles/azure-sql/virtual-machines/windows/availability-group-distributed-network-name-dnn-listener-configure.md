@@ -7,6 +7,7 @@ author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: abfcd6a13bc5e8ad262fe47111eb680ad00a34df
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 07ce01304f27ded4e0a566777fcf7027f7a15e4b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168818"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359433"
 ---
 # <a name="configure-a-dnn-listener-for-an-availability-group"></a>設定可用性群組的 DNN 接聽程式
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,7 +37,7 @@ DNN 接聽程式功能目前只能從 Windows Server 2016 和更新版本上的 
 
 分散式網路名稱 (DNN) 接聽程式會在與 Always On 可用性群組 [vm 上的 SQL Server](availability-group-overview.md)搭配使用時，取代傳統的虛擬網路名稱 (VNN) 可用性群組接聽程式。 這樣就不需要 Azure Load Balancer 來路由傳送流量、簡化部署、維護和改善容錯移轉。 
 
-您可以使用 DNN 接聽程式來取代現有的 VNN 接聽程式，或將其與現有的 VNN 接聽程式搭配使用，讓您的可用性群組有兩個不同的連接點：一個使用 VNN 接聽程式名稱， (和埠（如果非預設) ），另一個使用 DNN 接聽程式名稱和埠。 
+使用 DNN 接聽程式來取代現有的 VNN 接聽程式，或者將其與現有的 VNN 接聽程式搭配使用，讓您的可用性群組有兩個不同的連接點：一個使用 VNN 接聽程式名稱 (和連接埠 (若非預設))，另一個使用 DNN 接聽程式名稱和連接埠。 
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -122,7 +123,7 @@ DNN 接聽程式功能目前只能從 Windows Server 2016 和更新版本上的 
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 
-展開[SQL Server Management Studio (SSMS) ](/sql/ssms/download-sql-server-management-studio-ssms)中的**可用性群組**接聽程式，以查看您的 DNN 接聽程式： 
+展開 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)中的 **可用性群組** 接聽程式，以查看您的 DNN 接聽程式： 
 
 :::image type="content" source="media/availability-group-distributed-network-name-dnn-listener-configure/dnn-listener-in-ssms.png" alt-text="在 SQL Server Management Studio (SSMS) 的可用性群組接聽程式下，查看 DNN 接聽程式 ":::
 
@@ -136,7 +137,7 @@ SELECT * FROM SYS.AVAILABILITY_GROUP_LISTENERS
 
 的值 `1` 表示接聽 `is_distributed_network_name` 程式是分散式網路名稱 (DNN) 接聽程式： 
 
-:::image type="content" source="media/availability-group-distributed-network-name-dnn-listener-configure/dnn-listener-tsql.png" alt-text="在 SQL Server Management Studio (SSMS) 的可用性群組接聽程式下，查看 DNN 接聽程式 ":::
+:::image type="content" source="media/availability-group-distributed-network-name-dnn-listener-configure/dnn-listener-tsql.png" alt-text="使用 sys.availability_group_listeners 來識別 is_distributed_network_name 中值為1的 DNN 接聽程式。":::
 
 
 ## <a name="update-connection-string"></a>更新連接字串
@@ -150,7 +151,7 @@ SELECT * FROM SYS.AVAILABILITY_GROUP_LISTENERS
 若要測試容錯移轉，請遵循下列步驟： 
 
 1. 使用 [SQL Server Management Studio (SSMS) ](/sql/ssms/download-sql-server-management-studio-ssms)連接到 DNN 接聽程式或其中一個複本。 
-1. 在**物件總管**中展開**Always On 可用性群組**。 
+1. 在 **物件總管** 中展開 **Always On 可用性群組**。 
 1. 以滑鼠右鍵按一下可用性群組，然後選擇 [ **容錯移轉** ]，開啟 [ **容錯移轉]**。 
 1. 遵循提示來選擇容錯移轉目標，並將可用性群組容錯移轉至次要複本。 
 1. 確認新的主要複本上的資料庫處於已同步處理的狀態。 

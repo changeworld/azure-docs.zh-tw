@@ -3,12 +3,12 @@ title: 範本函式-數值
 description: 描述在 Azure Resource Manager 範本中使用的函式 (ARM 範本) 以使用數位。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 1484826b2377fe2adb2ac6ae2ab3ee6243b26c2c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: f3687581d94f80cc923614a0655da1813bd5c97b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920438"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359705"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>ARM 範本的數值函數
 
@@ -35,7 +35,7 @@ Resource Manager 提供下列函式，可在 Azure Resource Manager 範本中使
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 |operand1 |是 |int |要新增的第一個數字。 |
 |operand2 |是 |int |要新增的第二個數字。 |
@@ -106,7 +106,7 @@ output addResult int = first + second
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | loopName | 否 | 字串 | 用來取得反覆項目的迴圈名稱。 |
 | Offset |否 |int |要加入到以零為起始之反覆項目值的數字。 |
@@ -180,7 +180,7 @@ output addResult int = first + second
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被除數。 |
 | operand2 |是 |int |除數。 不可為0。 |
@@ -247,11 +247,11 @@ output addResult int = first / second
 
 `float(arg1)`
 
-將值轉換為浮點數。 您只會在將自訂參數傳遞給應用程式 (例如邏輯應用程式) 時使用這個函式。 `float`Becip 中不支援此函數。  請參閱 [支援32位整數以外的數位類型](https://github.com/Azure/bicep/issues/486)。
+將值轉換為浮點數。 您只會在將自訂參數傳遞給應用程式 (例如邏輯應用程式) 時使用這個函式。 `float`Bicep 中不支援此函數。  請參閱 [支援32位整數以外的數位類型](https://github.com/Azure/bicep/issues/486)。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字串或整數 |要轉換為浮點數的值。 |
 
@@ -294,7 +294,7 @@ output addResult int = first / second
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |是 |字串或整數 |要轉換成整數的值。 |
 
@@ -353,7 +353,7 @@ output inResult int = int(stringToConvert)
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整數的陣列，或以逗號分隔的整數清單 |要用來取得最大值的集合。 |
 
@@ -415,7 +415,7 @@ output intOutput int = max(0,3,2,5,4)
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
 
-## <a name="min"></a>Min
+## <a name="min"></a>分鐘
 
 `min (arg1)`
 
@@ -423,7 +423,7 @@ output intOutput int = max(0,3,2,5,4)
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整數的陣列，或以逗號分隔的整數清單 |要用來取得最小值的集合。 |
 
@@ -493,7 +493,7 @@ output intOutput int = min(0,3,2,5,4)
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被除數。 |
 | operand2 |是 |int |用來除的數位不能為0。 |
@@ -564,7 +564,7 @@ output modResult int = first % second
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |要相乘的第一個數字。 |
 | operand2 |是 |int |要相乘的第二個數字。 |
@@ -635,7 +635,7 @@ output mulResult int = first * second
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |減數。 |
 | operand2 |是 |int |被減數。 |

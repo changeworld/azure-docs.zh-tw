@@ -4,16 +4,16 @@ description: 本文包含 AzCopy 範例命令的集合，可協助您從 Azure B
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 0a2490a104d18f77a0ec326933f463eb4ebb4339
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: ea8300447b9aa596e8678038982771263a4c76f6
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96923965"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358770"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>使用 AzCopy v10 從 Azure Blob 儲存體下載 blob
 
@@ -113,9 +113,11 @@ ms.locfileid: "96923965"
 
 `--include-pattern`和 `--exclude-pattern` 選項只適用于 blob 名稱，而不會套用至路徑。  如果您想要複製存在於目錄樹狀結構中 (blob) 的所有文字檔，請使用 `–recursive` 選項取得整個目錄樹狀結構，然後使用 `–include-pattern` 和指定 `*.txt` 來取得所有文字檔。
 
-#### <a name="download-blobs-that-were-modified-after-a-date-and-time"></a>下載在日期和時間之後修改過的 blob 
+#### <a name="download-blobs-that-were-modified-before-or-after-a-date-and-time"></a>下載在日期和時間之前或之後修改的 blob 
 
-使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令搭配 `--include-after` 選項。 以 ISO-8601 格式指定日期和時間 (例如： `2020-08-19T15:04:00Z`) 。 
+使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令搭配 `--include-before` 或 `--include-after` 選項。 以 ISO-8601 格式指定日期和時間 (例如： `2020-08-19T15:04:00Z`) 。 
+
+下列範例會下載在指定日期或之後修改過的檔案。
 
 |    |     |
 |--------|-----------|
@@ -171,7 +173,7 @@ ms.locfileid: "96923965"
 - [範例：上傳](storage-use-azcopy-blobs-upload.md)
 - [範例：帳戶之間的複製](storage-use-azcopy-blobs-copy.md)
 - [範例：同步處理](storage-use-azcopy-blobs-synchronize.md)
-- [範例： Amazon S3 bucket](storage-use-azcopy-s3.md)
+- [範例：Amazon S3 Bucket](storage-use-azcopy-s3.md)
 - [範例： Azure 檔案儲存體](storage-use-azcopy-files.md)
 - [教學課程：使用 AzCopy 將內部部署資料移轉至雲端儲存體](storage-use-azcopy-migrate-on-premises-data.md)
 - [對 AzCopy 進行設定、最佳化及疑難排解](storage-use-azcopy-configure.md)

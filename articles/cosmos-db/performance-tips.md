@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet, contperf-fy21q2
-ms.openlocfilehash: 962b95307b440c3bafde019b5b2b630461718073
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 47e20e89c8eaef59b9acd6cf7e31244afd4bcf60
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029000"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359042"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Azure Cosmos DB 和 .NET SDK v2 的效能秘訣
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -133,7 +133,7 @@ Azure Cosmos DB SDK 會持續改善以提供最佳效能。 請參閱 [Azure Cos
 
 **調整資料分割集合的平行查詢**
 
-SQL .NET SDK 1.9.0 和更新版本支援平行查詢，可讓您以平行方式查詢分割的集合。 如需詳細資訊，請參閱使用 SDK 的相關[程式碼範例](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs)。 平行查詢的設計目的是要提供比其序列對應更好的查詢延遲和輸送量。 平行查詢提供兩個參數，可供您調整以符合您的需求： 
+SQL .NET SDK 1.9.0 和更新版本支援平行查詢，可讓您以平行方式查詢分割的集合。 如需詳細資訊，請參閱使用 SDK 的相關[程式碼範例](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/samples/code-samples/Queries/Program.cs)。 平行查詢的設計目的是要提供比其序列對應更好的查詢延遲和輸送量。 平行查詢提供兩個參數，可供您調整以符合您的需求： 
 - `MaxDegreeOfParallelism` 控制可以平行查詢的資料分割數目上限。 
 - `MaxBufferedItemCount` 控制預先提取的結果數目。
 

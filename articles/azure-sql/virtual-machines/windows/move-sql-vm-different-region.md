@@ -7,6 +7,7 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
+ms.subservice: migration
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
@@ -14,12 +15,12 @@ ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ae89091eb57eade39f8b7581fc5df7ad449e8590
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 789554121af1c83d9077e6153ca9db01477bde25
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553551"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360147"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>使用 Azure Site Recovery 將 SQL Server VM 移至 Azure 中的另一個區域
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -77,7 +78,7 @@ ms.locfileid: "94553551"
 1. 從瀏覽窗格的左上角選擇 [建立資源]。 
 1. 選取 [IT 和管理工具]，然後選取 [備份和 Site Recovery]。 
 1. 在 [基本] 索引標籤的 [專案詳細資料] 下方，於目標區域中建立新的資源群組，或選取目標區域中的現有資源群組。 
-1. 在 [執行個體詳細資料] 中，指定保存庫的名稱，然後從下拉式清單中選取目標 **區域** 。 
+1. 在 [執行個體詳細資料] 中，指定保存庫的名稱，然後從下拉式清單中選取目標 **區域**。 
 1. 按一下 [檢閱 + 建立] 來建立復原服務保存庫。 
 1. 從瀏覽窗格左上角選取 [所有服務]，然後在搜尋方塊中鍵入 `recovery services`。 
 1. (選擇性) 選取 [復原服務保存庫] 旁的星號，將其新增至快速瀏覽列。 
@@ -88,17 +89,17 @@ ms.locfileid: "94553551"
 
 1. 選取 [來源]，然後選取 [Azure] 作為來源。 為其他下拉式欄位選取適當的值，例如來源 VM 的位置。 只有位於 [來源位置] 區域的資源群組才會顯示在 [來源資源群組] 欄位中。 
 1. 選取 [虛擬機器]，然後選擇想要移轉的虛擬機器。 選取 [確定] 以儲存 VM 選取項目。 
-1. 選取 [設定]，然後從下拉式清單中選擇 **目標位置** 。 這應該是先前準備的資源群組。 
+1. 選取 [設定]，然後從下拉式清單中選擇 **目標位置**。 這應該是先前準備的資源群組。 
 1. 在自訂複寫之後，請選取 [建立目標資源]，以在新的位置中建立資源。 
 1. 資源建立完成後，請選取 [啟用複寫]，開始將 SQL Server VM 從來源複寫到目標區域。
-1. 若要檢查複寫的狀態，請巡覽至復原保存庫，選取 [已複寫的項目] 並檢視 SQL Server VM 其 **狀態** 。 [受保護] 的狀態表示複寫已完成。 
+1. 若要檢查複寫的狀態，請巡覽至復原保存庫，選取 [已複寫的項目] 並檢視 SQL Server VM 其 **狀態**。 [受保護] 的狀態表示複寫已完成。 
 
    ![確認複寫狀態](./media/move-sql-vm-different-region/check-replication-status.png)
 
 ## <a name="test-move-process"></a>測試移動處理序
 下列步驟顯示如何使用 Azure Site Recovery 來測試移動處理序。 
 
-1. 巡覽至在 [Azure 入口網站](https://portal.azure.com)中的 **復原服務保存庫** ，然後選取 [已複寫的項目]。 
+1. 巡覽至在 [Azure 入口網站](https://portal.azure.com)中的 **復原服務保存庫**，然後選取 [已複寫的項目]。 
 1. 選取想要移動的 SQL Server VM，確認 [複寫健康狀態] 顯示為 [狀況良好]，然後選取 [測試容錯移轉]。 
 
    ![測試 VM 的容錯移轉](./media/move-sql-vm-different-region/test-failover-of-replicated-vm.png)
@@ -113,7 +114,7 @@ ms.locfileid: "94553551"
 
    ![監視容錯移轉測試進度](./media/move-sql-vm-different-region/monitor-failover-test-job.png)
 
-1. 測試完成之後，請巡覽至入口網站中的 **虛擬機器** ，並檢閱新建立的虛擬機器。 請確定 SQL Server VM 正在執行中、其大小適中且已連線到適當的網路。 
+1. 測試完成之後，請巡覽至入口網站中的 **虛擬機器**，並檢閱新建立的虛擬機器。 請確定 SQL Server VM 正在執行中、其大小適中且已連線到適當的網路。 
 1. 刪除在測試過程中建立的 VM，因為在清除容錯移轉測試資源之前，[容錯移轉] 選項會呈現灰色。 巡覽回保存庫，選取 [已複寫的項目]，選取 [SQL Server VM]，然後選取 [清除測試容錯移轉]。 在 [附註] 區段中記錄並儲存與測試建立關聯的任何觀察，然後選取 [Testing is complete. Delete test failover virtual machine] \(測試完成。請刪除測試容錯移轉虛擬機器\) 旁的核取方塊。 選取 [確定] 以在測試之後清除資源。 
 
    ![在容錯移轉測試之後清除項目](./media/move-sql-vm-different-region/cleanup-test-items.png)
@@ -126,7 +127,7 @@ ms.locfileid: "94553551"
    ![起始容錯移轉](./media/move-sql-vm-different-region/initiate-failover.png)
 
 1. 選取 [復原點] 下的 **最新應用程式一致** 復原點。 
-1. 選取 [ **先將機器關機再開始容錯移轉** ] 旁的核取方塊。 Site Recovery 會先嘗試關閉來源 VM，再觸發容錯移轉。 即使關機失敗，仍會繼續容錯移轉。 
+1. 選取 [ **先將機器關機再開始容錯移轉**] 旁的核取方塊。 Site Recovery 會先嘗試關閉來源 VM，再觸發容錯移轉。 即使關機失敗，仍會繼續容錯移轉。 
 1. 選取 [確定] 開始進行容錯移轉。
 1. 從在上一節中監視容錯移轉測試時所檢視的相同 [Site Recovery 作業] 頁面中，您可監視容錯移轉處理序。 
 1. 作業完成後，請確認 SQL Server VM 如預期般出現在目標區域中。 
@@ -134,7 +135,7 @@ ms.locfileid: "94553551"
 1. 使用 SQL IaaS 代理程式延伸模組註冊 SQL Server VM，以在與擴充功能相關聯的 Azure 入口網站和功能中啟用 **SQL 虛擬機器** 管理能力。 如需詳細資訊，請參閱 [使用 SQL IaaS 代理程式擴充功能註冊 SQL SERVER VM](sql-agent-extension-manually-register-single-vm.md)。 
 
   > [!WARNING]
-  > 只有應用程式一致的快照集才會保證 SQL Server 資料一致性。 當損毀復原快照集無法保證 SQL Server 資料一致性時， **最新處理** 快照集即無法用於 SQL Server 容錯移轉。 
+  > 只有應用程式一致的快照集才會保證 SQL Server 資料一致性。 當損毀復原快照集無法保證 SQL Server 資料一致性時，**最新處理** 快照集即無法用於 SQL Server 容錯移轉。 
 
 ## <a name="clean-up-source-resources"></a>清除來源資源
 若要避免計費，請從保存庫移除 SQL Server VM，並刪除任何不必要的相關聯資源。 

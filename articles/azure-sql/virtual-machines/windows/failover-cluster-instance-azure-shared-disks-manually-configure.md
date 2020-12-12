@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: df50583e650d3d44e702c0f7d1596f2a733a4445
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 244fae9f8611acd21f2ee6cd7dafa45b88606456
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556381"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359348"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>在 Azure Vm 上建立具有 Azure 共用磁片 (SQL Server 的 FCI) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,12 +28,12 @@ ms.locfileid: "94556381"
 若要深入瞭解，請參閱 [使用 Azure vm 上的 SQL Server](failover-cluster-instance-overview.md) 和叢集 [最佳作法](hadr-cluster-best-practices.md)的 FCI 總覽。 
 
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 在您完成本文中的指示之前，您應該已經有：
 
 - Azure 訂用帳戶。 [免費](https://azure.microsoft.com/free/)開始使用。 
-- [兩部或多部 Windows Azure 虛擬機器](failover-cluster-instance-prepare-vm.md)。 同時支援 (Ppg) 的[可用性設定](../../../virtual-machines/windows/tutorial-availability-sets.md)組和[鄰近位置群組](../../../virtual-machines/windows/co-location.md#proximity-placement-groups)。 如果您使用 PPG，所有節點都必須存在於相同的群組中。
+- [兩部或多部 Windows Azure 虛擬機器](failover-cluster-instance-prepare-vm.md)。 支援進階 SSD 和[可用性區域](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)的[可用性設定](../../../virtual-machines/windows/tutorial-availability-sets.md)組和[鄰近放置群組](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (ppg) 支援 Ultra 磁片。 如果您使用 PPG，所有節點都必須存在於相同的群組中。
 - 具有在 Azure 虛擬機器和 Active Directory 中建立物件權限的帳戶。
 - [PowerShell](/powershell/azure/install-az-ps)的最新版本。 
 
@@ -44,7 +44,7 @@ ms.locfileid: "94556381"
 藉由執行下列動作來新增 Azure 共用磁片： 
 
 
-1. 將下列腳本儲存為 *SharedDiskConfig.js* ： 
+1. 將下列腳本儲存為 *SharedDiskConfig.js*： 
 
    ```JSON
    { 
@@ -157,11 +157,11 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 1. 在 [選取伺服器或叢集] 下，輸入這兩部虛擬機器的名稱。
 1. 在 [測試選項] 下，選取 [僅執行我選取的測試]。 
 1. 選取 [下一步] 。
-1. 在 [ **測試選取專案** ] 底下，選取 [ **儲存體** ] *以外* 的所有測試
+1. 在 [**測試選取專案**] 底下，選取 [**儲存體**]*以外* 的所有測試
 
 ## <a name="test-cluster-failover"></a>測試叢集容錯移轉
 
-測試叢集的容錯移轉。 在 **容錯移轉叢集管理員** 中，以滑鼠右鍵按一下您的叢集，然後選取 [ **其他動作** ]  >  **移動核心叢集資源**  >  **選取節點** ，然後選取叢集的其他節點。 將核心叢集資源移到叢集的每個節點，再移回主要節點。 如果您可成功地將叢集移至每個節點，即可開始安裝 SQL Server。  
+測試叢集的容錯移轉。 在 **容錯移轉叢集管理員** 中，以滑鼠右鍵按一下您的叢集，然後選取 [**其他動作**]  >  **移動核心叢集資源**  >  **選取節點**，然後選取叢集的其他節點。 將核心叢集資源移到叢集的每個節點，再移回主要節點。 如果您可成功地將叢集移至每個節點，即可開始安裝 SQL Server。  
 
 :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="將核心資源移至其他節點以測試叢集容錯移轉":::
 
@@ -187,7 +187,7 @@ FCI 資料目錄必須位於 Azure 共用磁片上。
 
 1. 安裝程式在第一個節點上安裝 FCI 後，請使用 RDP 連線到第二個節點。
 
-1. 開啟 **SQL Server 安裝中心** ，然後選取 [ **安裝** ]。
+1. 開啟 **SQL Server 安裝中心**，然後選取 [ **安裝**]。
 
 1. 選取 [將節點新增到 SQL Server 容錯移轉叢集]。 遵循精靈中的指示來安裝 SQL Server，並將伺服器新增到 FCI。
 

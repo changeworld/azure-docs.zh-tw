@@ -6,6 +6,7 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
@@ -13,12 +14,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 9129d0cb44aea9b85c5569d4d939c0904c398c07
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 865ee3a5aeb8a2dd06d8759ba04d02259d2b4bee
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556517"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359960"
 ---
 # <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>使用 PowerShell 或 Az CLI 為 Azure VM 上的 SQL Server 設定可用性群組 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +30,7 @@ ms.locfileid: "94556517"
 
 雖然本文使用 PowerShell 和 Az CLI 來設定可用性群組環境，但您也可以從 [Azure 入口網站](availability-group-azure-portal-configure.md)、使用 [Azure 快速入門範本](availability-group-quickstart-template-configure.md)，或 [手動](availability-group-manually-configure-tutorial.md) 方式進行。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Always On 可用性群組，您必須具備下列必要條件： 
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: f27e4f9f8e9f027233db89838614b523c5d0fe1f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: cb0dd8eb879c5511da3c79a3dee6a715fb1275e4
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341766"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358634"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Azure Cosmos DB 的效能和規模測試
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "93341766"
 * 哪裡可以找到可供進行 Azure Cosmos DB 效能測試的範例 .NET 用戶端應用程式？ 
 * 如何藉由 Azure Cosmos DB 從我的用戶端應用程式達到高輸送量層級？
 
-若要開始使用程式碼，請從 [Azure Cosmos DB 效能測試範例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)下載專案。 
+若要開始使用程式碼，請從 [Azure Cosmos DB 效能測試範例](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark)下載專案。 
 
 > [!NOTE]
 > 此應用程式的目標，在於示範如何透過少數用戶端電腦發揮 Azure Cosmos DB 最佳效能。 此範例的目標不是為了達到 Azure Cosmos DB 的尖峰輸送量容量 (可以無限制調整)。
@@ -37,7 +37,7 @@ ms.locfileid: "93341766"
 ## <a name="run-the-performance-testing-application"></a>執行效能測試應用程式
 若要開始使用，最快的方法就是依以下步驟所述，編譯並執行 .NET 範例。 您也可以檢閱原始程式碼，然後對自己的用戶端應用程式實作類似的組態。
 
-**步驟1：** 從 [Azure Cosmos DB 效能測試範例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)下載專案，或從 GitHub 儲存機制派生。
+**步驟1：** 從 [Azure Cosmos DB 效能測試範例](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark)下載專案，或從 GitHub 儲存機制派生。
 
 **步驟2：** 修改 App.config 中的 EndpointUrl、AuthorizationKey、CollectionThroughput 和 DocumentTemplate (選擇性) 的設定。
 
@@ -97,7 +97,7 @@ Press any key to exit...
 
 在這篇文章中，我們探討了如何使用 .NET 主控台應用程式來執行 Azure Cosmos DB 的相關效能和規模測試。 如需詳細資訊，請參閱下列文章：
 
-* [Azure Cosmos DB 效能測試範例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
+* [Azure Cosmos DB 效能測試範例](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark)
 * [改善 Azure Cosmos DB 效能的用戶端設定選項](performance-tips.md)
 * [Azure Cosmos DB 中的伺服器端資料分割](partitioning-overview.md)
 

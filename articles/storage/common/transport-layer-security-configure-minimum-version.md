@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/09/2020
+ms.date: 12/11/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: b6c75bc13bf26510ee72968c5a27407b6b7bfee6
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 558f4792a055fc491f15600ecc5502c3a114a94b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937486"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360215"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>對儲存體帳戶的要求強制執行最小必要版本的傳輸層安全性 (TLS) 
 
@@ -86,6 +86,9 @@ StorageBlobLogs
 ## <a name="remediate-security-risks-with-a-minimum-version-of-tls"></a>使用 TLS 的最低版本來補救安全性風險
 
 當您確信使用舊版 TLS 的用戶端流量很少，或是可接受使用舊版 TLS 提出的要求失敗時，您就可以開始在儲存體帳戶上強制執行最低的 TLS 版本。 要求用戶端使用最低版本的 TLS 來對儲存體帳戶提出要求，是將資料的安全性風險降至最低的策略之一。
+
+> [!IMPORTANT]
+> 如果您使用連接到 Azure 儲存體的服務，請確定該服務使用適當的 TLS 版本將要求傳送至 Azure 儲存體，然後再設定儲存體帳戶所需的最低版本。
 
 ### <a name="configure-the-minimum-tls-version-for-a-storage-account"></a>設定儲存體帳戶的最小 TLS 版本
 

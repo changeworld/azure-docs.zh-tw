@@ -7,6 +7,7 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
@@ -14,12 +15,12 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e52925acb099190305e1f0609ac389565336e24b
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: d7dfe010a3f4a1559454c49545af81eb14797bf1
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556500"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359909"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>使用 Azure 快速入門範本在 Azure VM 上設定 SQL Server 的可用性群組
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -52,7 +53,7 @@ ms.locfileid: "94556500"
 
 
 ## <a name="create-cluster"></a>建立叢集
-在 SQL Server Vm 註冊到 SQL IaaS 代理程式擴充功能之後，您就可以將 SQL Server Vm 加入 *SqlVirtualMachineGroups* 。 這項資源會定義 Windows 容錯移轉叢集的中繼資料。 中繼資料包括版本、版次、完整網域名稱，用來管理叢集和 SQL Server 的 Active Directory 帳戶，以及作為雲端見證的儲存體帳戶。 
+在 SQL Server Vm 註冊到 SQL IaaS 代理程式擴充功能之後，您就可以將 SQL Server Vm 加入 *SqlVirtualMachineGroups*。 這項資源會定義 Windows 容錯移轉叢集的中繼資料。 中繼資料包括版本、版次、完整網域名稱，用來管理叢集和 SQL Server 的 Active Directory 帳戶，以及作為雲端見證的儲存體帳戶。 
 
 將 SQL Server VM 新增至 SqlVirtualMachineGroup 資源群組，會啟動 Windows 容錯移轉叢集服務建立叢集，然後將 SQL Server VM 加入該叢集。 此步驟會使用 **101-sql-vm-ag-setup** 快速入門範本進行自動化。 您可使用下列步驟進行實作：
 
@@ -66,7 +67,7 @@ ms.locfileid: "94556500"
    | **訂用帳戶** |  您的 SQL Server VM 所在的訂用帳戶。 |
    |**資源群組** | 您的 SQL Server VM 所屬的資源群組。 | 
    |**容錯移轉叢集名稱** | 您要用於新 Windows 容錯移轉叢集的名稱。 |
-   | **現有 VM 清單** | 要加入可用性群組而納入這個新叢集的 SQL Server VM。 請以逗號和空格分隔這些值 (例如： *SQLVM1, SQLVM2* )。 |
+   | **現有 VM 清單** | 要加入可用性群組而納入這個新叢集的 SQL Server VM。 請以逗號和空格分隔這些值 (例如：*SQLVM1, SQLVM2*)。 |
    | **SQL Server 版本** | SQL Server VM 的 SQL Server 版本。 從下拉式清單中加以選取。 目前，僅支援 SQL Server 2016 和 SQL Server 2017 映像。 |
    | **現有完整網域名稱** | SQL Server VM 所在網域的現有 FQDN。 |
    | **現有網域帳戶** | 在範本部署期間建立 [CNO](/windows-server/failover-clustering/prestage-cluster-adds) 時，在網域中擁有 **建立電腦物件** 權限的現有網域使用者帳戶。 例如，網域系統管理員帳戶通常會有足夠的權限 (例如：account@domain.com)。 *此帳戶也應該屬於建立叢集的每個 VM 上的本機系統管理員群組一部分。*| 
@@ -112,18 +113,18 @@ Always On 可用性群組接聽程式需要 Azure Load Balancer 的內部執行�
 > [!IMPORTANT]
 > 內部負載平衡器應該與 SQL Server VM 執行個體位於相同的虛擬網路中。 
 
-您只需建立內部負載平衡器即可。 在步驟 4 中， **101-sql-vm-aglistener-setup** 快速入門範本會處理其餘設定 (例如後端集區、健康狀態探查和負載平衡規則)。 
+您只需建立內部負載平衡器即可。 在步驟 4 中，**101-sql-vm-aglistener-setup** 快速入門範本會處理其餘設定 (例如後端集區、健康狀態探查和負載平衡規則)。 
 
 1. 在 Azure 入口網站中，開啟包含 SQL Server 虛擬機器的資源群組。 
 2. 在資源群組中，選取 [新增]。
-3. 搜尋 **負載平衡器** 。 在搜尋結果中，選取由 **Microsoft** 發佈的 [負載平衡器]。
+3. 搜尋 **負載平衡器**。 在搜尋結果中，選取由 **Microsoft** 發佈的 [負載平衡器]。
 4. 在 [負載平衡器] 刀鋒視窗上，選取 [建立]。
 5. 在 [建立負載平衡器] 對話方塊中，依下列方式設定負載平衡器︰
 
    | 設定 | 值 |
    | --- | --- |
-   | **名稱** |輸入代表負載平衡器的文字名稱。 例如，輸入 **sqlLB** 。 |
-   | **型別** |**內部** ：大部分的實作都會使用內部負載平衡器，這可讓相同虛擬網路內的應用程式連線到可用性群組。  </br> **外部** ：可讓應用程式透過公用網際網路連線來連線到可用性群組。 |
+   | **名稱** |輸入代表負載平衡器的文字名稱。 例如，輸入 **sqlLB**。 |
+   | **型別** |**內部**：大部分的實作都會使用內部負載平衡器，這可讓相同虛擬網路內的應用程式連線到可用性群組。  </br> **外部**：可讓應用程式透過公用網際網路連線來連線到可用性群組。 |
    | **虛擬網路** | 選取 SQL Server 執行個體所在的虛擬網路。 |
    | **子網路** | 選取 SQL Server 執行個體所在的子網路。 |
    | **IP 位址指派** |**靜態** |
@@ -149,7 +150,7 @@ Always On 可用性群組接聽程式需要 Azure Load Balancer 的內部執行�
 - 使用指定的 IP 位址和名稱建立可用性群組接聽程式。
  
 >[!NOTE]
-> 只有在使用 **101-sql-vm-ag-setup** 範本建立 Windows 容錯移轉叢集的情況下，您才能使用 **101-sql-vm-aglistener-setup** 。
+> 只有在使用 **101-sql-vm-ag-setup** 範本建立 Windows 容錯移轉叢集的情況下，您才能使用 **101-sql-vm-aglistener-setup**。
    
    
 若要設定內部負載平衡器並建立可用性群組接聽程式，請執行下列動作：
@@ -163,11 +164,11 @@ Always On 可用性群組接聽程式需要 Azure Load Balancer 的內部執行�
    |**資源群組** | 您的 SQL Server VM 和可用性群組所屬的資源群組。 | 
    |**現有容錯移轉叢集名稱** | 您的 SQL Server VM 加入的叢集名稱。 |
    | **現有 SQL 可用性群組**| SQL Server VM 所屬可用性群組的名稱。 |
-   | **現有 VM 清單** | 屬於前述可用性群組的 SQL Server VM 名稱。 請以逗號和空格分隔名稱 (例如： *SQLVM1, SQLVM2* )。 |
+   | **現有 VM 清單** | 屬於前述可用性群組的 SQL Server VM 名稱。 請以逗號和空格分隔名稱 (例如：*SQLVM1, SQLVM2*)。 |
    | **接聽程式** | 您要指派給接聽程式的 DNS 名稱。 根據預設，此範本指定的名稱為 "aglistener"，但可加以變更。 名稱長度不應該超過 15 個字元。 |
    | **接聽程式連接埠** | 您要讓接聽程式使用的連接埠。 通常，此連接埠預設應為 1433。 這是範本所指定的連接埠號碼。 但是，如果預設連接埠已變更，接聽程式連接埠就應改用該值。 | 
    | **接聽程式 IP** | 您要讓接聽程式使用的 IP 位址。 此位址會在範本部署期間建立，因此請提供尚未使用的位址。  |
-   | **現有子網路** | SQL Server VM 的內部子網路名稱 (例如： *default* )。 您可移至 [資源群組]，並依序選取虛擬網路和 [設定] 窗格中的 [子網路]，然後複製 [名稱] 下方的值，以確認此值。 |
+   | **現有子網路** | SQL Server VM 的內部子網路名稱 (例如：*default*)。 您可移至 [資源群組]，並依序選取虛擬網路和 [設定] 窗格中的 [子網路]，然後複製 [名稱] 下方的值，以確認此值。 |
    | **現有內部負載平衡器** | 您在步驟 3 中建立的內部負載平衡器名稱。 |
    | **探查連接埠** | 您要讓內部負載平衡器使用的探查連接埠。 此範本預設會使用 59999，但可變更此值。 |
    | &nbsp; | &nbsp; |
@@ -192,7 +193,7 @@ Remove-AzResource -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<r
 ## <a name="common-errors"></a>常見錯誤
 本節將討論一些已知問題和可能的解決方法。 
 
-可用性群組 **' ' 的可用性群組接聽程式 \<AG-Name> 已存在** ： Azure 快速入門範本中用於可用性群組接聽程式的選定可用性群組已經包含接聽程式。 它實際上是在可用性群組內，或是其中繼資料仍保留在 SQL IaaS 代理程式擴充功能內。 請先使用 [PowerShell](#remove-listener) 移除接聽程式，再重新部署 **101-sql-vm-aglistener-setup** 快速入門範本。 
+可用性群組 **' ' 的可用性群組接聽程式 \<AG-Name> 已存在**： Azure 快速入門範本中用於可用性群組接聽程式的選定可用性群組已經包含接聽程式。 它實際上是在可用性群組內，或是其中繼資料仍保留在 SQL IaaS 代理程式擴充功能內。 請先使用 [PowerShell](#remove-listener) 移除接聽程式，再重新部署 **101-sql-vm-aglistener-setup** 快速入門範本。 
 
 **連接僅適用于主要複本** 這種行為可能來自失敗的 **101->101-sql-vm-aglistener-setup-設定** 範本部署，其已將內部負載平衡器設定為不一致的狀態。 請確認後端集區有列出可用性設定組，且健康情況探查和負載平衡都有其規則。 如果遺漏任何項目，內部負載平衡器的設定就會處於不一致狀態。 
 

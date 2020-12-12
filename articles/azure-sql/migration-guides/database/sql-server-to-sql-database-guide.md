@@ -1,5 +1,5 @@
 ---
-title: SQL Server 至 SQL Database-遷移指南
+title: SQL Server 至 SQL Database：遷移指南
 description: 遵循本指南，將您 SQL Server 的資料庫移轉至 Azure SQL Database。
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: ee4abaf3c9f6aa70ba14920711c8917994254649
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: f4f54aa02fb56ba5bf5ae9fcec2dae07c7dc0a27
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326959"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358974"
 ---
 # <a name="migration-guide-sql-server-to-sql-database"></a>遷移指南： SQL Server 至 SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "96326959"
 
 :::image type="content" source="media/sql-server-to-database-overview/migration-process-flow-small.png" alt-text="遷移程式流程":::
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 若要將您的 SQL Server 遷移至 Azure SQL Database，請確定您具有下列必要條件： 
 
@@ -100,7 +100,7 @@ Data Migration Assistant 支援執行調整規模評定和匯總評估報告以�
 > [!IMPORTANT]
 > 針對多個資料庫（尤其是大型資料庫）大規模執行評量，也可以使用 [DMA 命令列公用程式](/sql/dma/dma-commandline) 來自動化，並上傳至 [Azure Migrate](/sql/dma/dma-assess-sql-data-estate-to-sqldb#view-target-readiness-assessment-results) 以便進一步分析和目標就緒。
 
-## <a name="migrate"></a>移轉
+## <a name="migrate"></a>遷移
 
 完成預先遷移階段相關聯的工作之後，您就可以開始執行架構和資料移轉。 
 

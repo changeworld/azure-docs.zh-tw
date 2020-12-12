@@ -4,16 +4,16 @@ description: 本文包含 AzCopy 範例命令的集合，可協助您將檔案�
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 11d40805cda2ea2e3693c6c93034ae19f1f0fcc0
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: ec88a3c740ceda7ccf352f8f32f94e2cd52d0988
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907480"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358753"
 ---
 # <a name="upload-files-to-azure-blob-storage-by-using-azcopy-v10"></a>使用 AzCopy v10 將檔案上傳至 Azure Blob 儲存體
 
@@ -135,9 +135,11 @@ ms.locfileid: "96907480"
 
 `--include-pattern`和 `--exclude-pattern` 選項只適用于檔案名，而不會套用至路徑。  如果您想要複製存在於目錄樹狀結構中的所有文字檔，請使用 `–recursive` 選項來取得整個目錄樹狀結構，然後使用 `–include-pattern` 和指定 `*.txt` 來取得所有文字檔。
 
-### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>上傳在日期和時間之後修改過的檔案 
+### <a name="upload-files-that-were-modified-before-or-after-a-date-and-time"></a>上傳在日期和時間之前或之後修改過的檔案 
 
-使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令搭配 `--include-after` 選項。 以 ISO-8601 格式指定日期和時間 (例如： `2020-08-19T15:04:00Z`) 。 
+使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令搭配 `--include-before` 或 `--include-after` 選項。 以 ISO-8601 格式指定日期和時間 (例如： `2020-08-19T15:04:00Z`) 。 
+
+下列範例會上傳在指定日期或之後修改的檔案。
 
 |    |     |
 |--------|-----------|
@@ -187,9 +189,9 @@ ms.locfileid: "96907480"
 在這些文章中尋找更多範例：
 
 - [範例：下載](storage-use-azcopy-blobs-download.md)
-- [範例：帳戶之間的複製](storage-use-azcopy-blobs-copy.md)
+- [範例：在帳戶之間複製](storage-use-azcopy-blobs-copy.md)
 - [範例：同步處理](storage-use-azcopy-blobs-synchronize.md)
-- [範例： Amazon S3 bucket](storage-use-azcopy-s3.md)
+- [範例：Amazon S3 Bucket](storage-use-azcopy-s3.md)
 - [範例： Azure 檔案儲存體](storage-use-azcopy-files.md)
 - [教學課程：使用 AzCopy 將內部部署資料移轉至雲端儲存體](storage-use-azcopy-migrate-on-premises-data.md)
 - [對 AzCopy 進行設定、最佳化及疑難排解](storage-use-azcopy-configure.md)

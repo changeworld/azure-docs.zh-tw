@@ -8,12 +8,12 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b74a403cef8474ae32d98a20899437c2124f3abf
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: ba4d4e63bdd1e795bc1c599d0eae8a595aa0d643
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340374"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359518"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的日期
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -94,6 +94,6 @@ SQL .NET SDK 會自動支援透過 LINQ 查詢儲存在 Azure Cosmos DB 中的�
 
 ## <a name="next-steps"></a>後續步驟
 
-* 下載並執行 [GitHub 上的程式碼範例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)
+* 下載並執行 [GitHub 上的程式碼範例](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples)
 * 深入了解 [SQL 查詢](sql-query-getting-started.md)
 * 深入了解 [Azure Cosmos DB 編製索引原則](index-policy.md)

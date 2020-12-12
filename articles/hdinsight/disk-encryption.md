@@ -8,12 +8,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: a9a90fbb2eedd6db2873d4ac2a5fea94c05c7eed
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4e895cdba1bfc16eac0450bd05271f0e41985b7b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005651"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359754"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>靜態資料的 Azure HDInsight 雙重加密
 
@@ -101,7 +101,7 @@ HDInsight 僅支援 Azure Key Vault。 如果您有自己的金鑰保存庫，�
 
 1. 在 [ **新增存取原則** ] 頁面中，提供下列資訊：
 
-    |屬性 |描述|
+    |屬性 |說明|
     |---|---|
     |金鑰許可權|選取 [ **取得**]、[解除包裝 **金鑰**] 和 [ **包裝金鑰**]。|
     |秘密許可權|選取 [ **取得**]、[ **設定**] 和 [ **刪除**]。|
@@ -119,15 +119,24 @@ HDInsight 僅支援 Azure Key Vault。 如果您有自己的金鑰保存庫，�
 
 您現在可以開始建立新的 HDInsight 叢集。 客戶管理的金鑰只能在叢集建立期間套用至新的叢集。 無法從客戶管理的金鑰叢集移除加密，且客戶管理的金鑰無法新增至現有的叢集。
 
+從 [2020 年11月版本](hdinsight-release-notes.md#release-date-11182020)開始，HDInsight 支援使用版本設定和無版本的金鑰 uri 來建立叢集。 如果您使用無版本金鑰 URI 來建立叢集，則當您的 Azure Key Vault 中的金鑰更新時，HDInsight 叢集會嘗試執行金鑰自動輪替。 如果您使用已建立版本的金鑰 URI 來建立叢集，您將必須執行手動金鑰輪替，如 [輪替加密金鑰](#rotating-the-encryption-key)所述。
+
+針對在2020年11月版本之前建立的叢集，您必須使用已建立版本的金鑰 URI 手動執行金鑰輪替。
+
 #### <a name="using-the-azure-portal"></a>使用 Azure 入口網站
 
-在叢集建立期間，請提供完整的 **金鑰識別碼**，包括金鑰版本。 例如： `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 。 您也需要將受控識別指派給叢集，並提供金鑰 URI。
+在叢集建立期間，您可以透過下列方式使用已建立版本的金鑰或無版本金鑰：
+
+- 已建立 **版本**-在叢集建立期間，請提供完整的 **金鑰識別碼**，包括金鑰版本。 例如 `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`。
+- **無版本** -在叢集建立期間，僅提供 **金鑰識別碼**。 例如 `https://contoso-kv.vault.azure.net/keys/myClusterKey`。
+
+您也需要將受控識別指派給叢集。
 
 ![建立新的叢集](./media/disk-encryption/create-cluster-portal.png)
 
 #### <a name="using-azure-cli"></a>使用 Azure CLI
 
-下列範例示範如何使用 Azure CLI 來建立啟用磁片加密的新 Apache Spark 叢集。 如需詳細資訊，請參閱 [Azure CLI az hdinsight create](/cli/azure/hdinsight#az-hdinsight-create)。
+下列範例示範如何使用 Azure CLI 來建立啟用磁片加密的新 Apache Spark 叢集。 如需詳細資訊，請參閱 [Azure CLI az hdinsight create](/cli/azure/hdinsight#az-hdinsight-create)。 參數 `encryption-key-version` 是選擇性的。
 
 ```azurecli
 az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
@@ -141,7 +150,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
 
 #### <a name="using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本
 
-下列範例示範如何使用 Azure Resource Manager 範本，建立已啟用磁片加密的新 Apache Spark 叢集。 如需詳細資訊，請參閱 [什麼是 ARM 範本？](../azure-resource-manager/templates/overview.md)。
+下列範例示範如何使用 Azure Resource Manager 範本，建立已啟用磁片加密的新 Apache Spark 叢集。 如需詳細資訊，請參閱 [什麼是 ARM 範本？](../azure-resource-manager/templates/overview.md)。 資源管理員範本屬性 `diskEncryptionKeyVersion` 是選擇性的。
 
 此範例會使用 PowerShell 來呼叫範本。
 
@@ -355,7 +364,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="rotating-the-encryption-key"></a>輪替加密金鑰
 
-在某些情況下，您可能會想要在建立 HDInsight 叢集之後，變更其所使用的加密金鑰。 這可以透過入口網站輕鬆進行。 針對這項作業，叢集必須能夠存取目前的金鑰和預定的新金鑰，否則輪替金鑰作業將會失敗。
+您可以使用 Azure 入口網站或 Azure CLI 來變更執行中叢集上所使用的加密金鑰。 針對這項作業，叢集必須能夠存取目前的金鑰和預定的新金鑰，否則輪替金鑰作業將會失敗。 針對在2020年11月發行之後建立的叢集，您可以選擇是否要讓新的金鑰擁有版本。 對於在2020年11月版本之前建立的叢集，您必須在輪替加密金鑰時使用已建立版本的金鑰。
 
 #### <a name="using-the-azure-portal"></a>使用 Azure 入口網站
 

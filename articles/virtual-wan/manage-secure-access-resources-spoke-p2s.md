@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 12/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: d4257e5ade1e32ec971bb77f9d5a686d30195735
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: b0937bbd72460b1d46ce0394af1933e858424966
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111208"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360317"
 ---
 # <a name="manage-secure-access-to-resources-in-spoke-vnets-for-user-vpn-clients"></a>管理使用者 VPN 用戶端輪輻 Vnet 中資源的安全存取
 
@@ -41,7 +41,11 @@ ms.locfileid: "97111208"
 
 選取驗證方法時，您有三個選擇。 每個方法都有特定需求。 選取下列其中一種方法，然後完成步驟。
 
-* **Azure Active Directory authentication：** 取得您 Azure AD 租使用者、 [簽發者](https://sts.windows.net/your-Directory-ID/)和 [Azure AD 租](https://login.microsoftonline.com/your-Directory-ID)使用者中註冊之 Azure VPN 企業應用程式的應用程式識別碼。
+* **Azure Active Directory authentication：** 取得下列各項：
+
+   * 您 Azure AD 租使用者中註冊的 Azure VPN 企業應用程式的 **應用程式識別碼** 。
+   * **簽發者**。 範例： `https://sts.windows.net/your-Directory-ID`.
+   * **Azure AD 的租** 使用者。 範例： `https://login.microsoftonline.com/your-Directory-ID`.
 
 * **Radius 型驗證：** 取得 Radius 伺服器 IP、Radius 伺服器密碼和憑證資訊。
 

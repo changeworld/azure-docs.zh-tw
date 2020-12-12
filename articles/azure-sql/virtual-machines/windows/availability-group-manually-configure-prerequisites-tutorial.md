@@ -8,18 +8,19 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: c492db4c-3faa-4645-849f-5a1a663be55a
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8572a73586b01967c8aef7f6c4947b5ce96146b4
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 1a9a2f9d999a51f2b4600e8379d4a8913675b338
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324851"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360011"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>教學課程：在 Azure 虛擬機器上的 SQL Server 上建立可用性群組的必要條件
 
@@ -56,7 +57,7 @@ ms.locfileid: "96324851"
    ![資源群組](./media/availability-group-manually-configure-prerequisites-tutorial-/01-resourcegroupsymbol.png)
 
 4. 選取 **資源群組**。
-5. 選取 [建立]  。
+5. 選取 [建立]。
 6. 在 [資源群組名稱] 下方，輸入資源群組的名稱。 例如，輸入 **sql-ha-rg**。
 7. 如果您有多個 Azure 訂用帳戶，請確認此訂用帳戶是您要在其中建立可用性群組的 Azure 訂用帳戶。
 8. 選取位置。 此位置是您要建立可用性群組的 Azure 區域。 本文會在一個 Azure 位置建置所有資源。
@@ -101,7 +102,7 @@ Azure 會建立資源群組，並在入口網站中釘選資源群組的捷徑�
 
    此範例會使用子網路名稱 **Admin**。此子網路用於網域控制站。
 
-5. 選取 [建立]  。
+5. 選取 [建立]。
 
    ![設定虛擬網路](./media/availability-group-manually-configure-prerequisites-tutorial-/06-configurevirtualnetwork.png)
 
@@ -562,7 +563,7 @@ Azure 會建立虛擬機器。
 
    ![SQL 防火牆](./media/availability-group-manually-configure-prerequisites-tutorial-/35-tcpports.png)
 
-5. 選取 [下一步] 。
+5. 選取 [下一步]。
 6. 在 [ **動作** ] 頁面上，保持選取 **[允許連接** ]，然後選取 **[下一步]**。
 7. 在 [ **設定檔** ] 頁面上，接受預設設定，然後選取 **[下一步]**。
 8. 在 [**名稱**] 頁面上，在 [**名稱**] 文字方塊中指定規則名稱 (例如 **Azure LB 探查**) ，然後選取 **[完成]**。

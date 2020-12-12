@@ -4,15 +4,15 @@ description: 您可以使用 Azure Active Directory (Azure AD) ，提供 AzCopy 
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/03/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: b13b5e1e27e9717066ff8f1aa8e245e8d9f54bbb
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 43002fdfbdce146b52774aa4182445bf34dd7199
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498110"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360283"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>使用 AzCopy 和 Azure Active Directory (Azure AD 授與 blob 的存取權) 
 
@@ -73,7 +73,7 @@ azcopy login --tenant-id=<tenant-id>
 
 隨即會出現登入視窗。 在該視窗中，使用您的 Azure 帳戶認證登入 Azure 帳戶。 順利登入之後，您可以關閉瀏覽器視窗，然後開始使用 AzCopy。
 
-<a id="service-principal"></a>
+<a id="managed-identity"></a>
 
 ## <a name="authorize-a-managed-identity"></a>授權受控識別
 
@@ -116,6 +116,8 @@ azcopy login --identity --identity-resource-id "<resource-id>"
 ```
 
 將預留位置取代為 `<resource-id>` 使用者指派受控識別的資源識別碼。
+
+<a id="service-principal"></a>
 
 ## <a name="authorize-a-service-principal"></a>授權服務主體
 
@@ -181,8 +183,113 @@ azcopy login --service-principal --certificate-path <path-to-certificate-file> -
 > [!NOTE]
 > 請考慮使用如本範例所示的提示。 如此一來，您的密碼就不會出現在主控台的命令歷程記錄中。 
 
-<a id="managed-identity"></a>
+## <a name="authorize-without-a-keyring-linux"></a> (Linux) 不使用 keyring 授權
 
+如果您的作業系統沒有秘密存放區（例如 *keyring*），命令將 `azcopy login` 無法運作。 相反地，您可以在執行每項作業之前，先設定記憶體中的環境變數。 當作業完成時，這些值會從記憶體中消失，因此您必須在每次執行 azcopy 命令時設定這些變數。
+
+### <a name="authorize-a-user-identity"></a>授權使用者身分識別
+
+在確認您的使用者身分識別已獲得必要的授權層級之後，請輸入下列命令，然後按 ENTER 鍵。
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=DEVICE
+```
+
+然後，執行任何 azcopy 命令 (例如： `azcopy list https://contoso.blob.core.windows.net`) 。
+
+此命令傳回驗證碼和網站的 URL。 開啟網站，提供程式碼，然後選擇 [下一步]  按鈕。
+
+![建立容器](media/storage-use-azcopy-v10/azcopy-login.png)
+
+隨即會出現登入視窗。 在該視窗中，使用您的 Azure 帳戶認證登入 Azure 帳戶。 當您成功登入之後，就可以完成此操作。
+
+### <a name="authorize-by-using-a-system-wide-managed-identity"></a>使用全系統受控識別進行授權
+
+首先，請確定您已在 VM 上啟用全系統受控識別。 請參閱 [系統指派的受控識別](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)。
+
+輸入下列命令，然後按 ENTER 鍵。
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=MSI
+```
+
+然後，執行任何 azcopy 命令 (例如： `azcopy list https://contoso.blob.core.windows.net`) 。
+
+### <a name="authorize-by-using-a-user-assigned-managed-identity"></a>使用使用者指派的受控識別進行授權
+
+首先，請確定您已在 VM 上啟用使用者指派的受控識別。 請參閱 [使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity)。
+
+輸入下列命令，然後按 ENTER 鍵。
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=MSI
+```
+
+然後，輸入下列任一個命令，然後按 ENTER 鍵。
+
+```bash
+export AZCOPY_MSI_CLIENT_ID=<client-id>
+```
+
+將預留位置取代為 `<client-id>` 使用者指派受控識別的用戶端識別碼。
+
+```bash
+export AZCOPY_MSI_OBJECT_ID=<object-id>
+```
+
+將預留位置取代為 `<object-id>` 使用者指派受控識別的物件識別碼。
+
+```bash
+export AZCOPY_MSI_RESOURCE_STRING=<resource-id>
+```
+
+將預留位置取代為 `<resource-id>` 使用者指派受控識別的資源識別碼。
+
+設定這些變數之後，您可以執行任何 azcopy 命令 (例如： `azcopy list https://contoso.blob.core.windows.net`) 。
+
+### <a name="authorize-a-service-principal"></a>授權服務主體
+
+執行腳本之前，您必須以互動方式至少登入一次，才能提供 AzCopy 給服務主體的認證。  這些認證會儲存在安全和加密的檔案中，因此您的腳本不需要提供該機密資訊。
+
+您可以使用用戶端密碼或使用與服務主體應用程式註冊相關聯之憑證的密碼，來登入您的帳戶。
+
+#### <a name="authorize-a-service-principal-by-using-a-client-secret"></a>使用用戶端秘密授權服務主體
+
+輸入下列命令，然後按 ENTER 鍵。
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=SPN
+export AZCOPY_SPA_APPLICATION_ID=<application-id>
+export AZCOPY_SPA_CLIENT_SECRET=<client-secret>
+```
+
+將預留位置取代為 `<application-id>` 您服務主體應用程式註冊的應用程式識別碼。 `<client-secret>`以用戶端密碼取代預留位置。
+
+> [!NOTE]
+> 請考慮使用提示來收集使用者的密碼。 如此一來，您的密碼就不會出現在命令歷程記錄中。 
+
+然後，執行任何 azcopy 命令 (例如： `azcopy list https://contoso.blob.core.windows.net`) 。
+
+#### <a name="authorize-a-service-principal-by-using-a-certificate"></a>使用憑證授權服務主體
+
+如果您想要使用自己的認證來進行授權，您可以將憑證上傳至您的應用程式註冊，然後使用該憑證來登入。
+
+除了將憑證上傳至您的應用程式註冊之外，您還需要將憑證複本儲存至將執行 AzCopy 的電腦或 VM。 這份憑證複本應該在中。PFX 或。PEM 格式，而且必須包含私密金鑰。 私密金鑰應受密碼保護。 
+
+輸入下列命令，然後按 ENTER 鍵。
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=SPN
+export AZCOPY_SPA_CERT_PATH=<path-to-certificate-file>
+export AZCOPY_SPA_CERT_PASSWORD=<certificate-password>
+```
+
+將 `<path-to-certificate-file>` 預留位置取代為憑證檔案的相對或完整路徑。 AzCopy 會儲存此憑證的路徑，但不會儲存憑證的複本，因此請務必將該憑證保留在原處。 `<certificate-password>`以憑證的密碼取代預留位置。
+
+> [!NOTE]
+> 請考慮使用提示來收集使用者的密碼。 如此一來，您的密碼就不會出現在命令歷程記錄中。 
+
+然後，執行任何 azcopy 命令 (例如： `azcopy list https://contoso.blob.core.windows.net`) 。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -6,19 +6,19 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 11/12/2020
 ms.author: cynthn
-ms.openlocfilehash: d2cf78d328017f96552bd51794ac997c394d18f1
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: ef0c8d53d885f11acdcf578db155de3d7848887e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008413"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360062"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>使用 Azure CLI 部署至專用主機
  
 
 本文會引導您瞭解如何建立 Azure [專用主機](../dedicated-hosts.md)來裝載您的虛擬機器 (VM)。 
 
-請確定您已安裝 Azure CLI 2.0.70 或更新版本，並已使用 `az login`登入 Azure 帳戶。 
+請確定您已安裝 Azure CLI 2.16.0 版或更新版本，並且已使用登入 Azure 帳戶 `az login` 。 
 
 
 ## <a name="limitations"></a>限制

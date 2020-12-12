@@ -1,5 +1,5 @@
 ---
-title: SQL Server 至 SQL 受控執行個體-遷移指南
+title: SQL Server 至 SQL 受控執行個體：遷移指南
 description: 遵循本指南，將 SQL Server 資料庫移轉至 Azure SQL 受控執行個體。
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 5d5404537ad107a54bd32110727e5a7d0f74ebea
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: ac8b0e0c2cdbd46626677f4be0f78800d839ad28
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326891"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358889"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>遷移指南： SQL Server 至 SQL 受控執行個體
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "96326891"
 
 :::image type="content" source="media/sql-server-to-managed-instance-overview/migration-process-flow-small.png" alt-text="遷移程式流程":::
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 若要將您的 SQL Server 遷移至 Azure SQL 受控執行個體，請務必完成下列先決條件： 
 
@@ -102,7 +102,7 @@ Data Migration Assistant 支援執行調整規模評定和匯總評估報告以�
 根據探索和評估階段中的資訊，建立適當大小的目標 SQL 受控執行個體。 您可以使用 [Azure 入口網站](../../managed-instance/instance-create-quickstart.md)、 [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)或 [Azure Resource Manager (ARM) 範本](../../managed-instance/create-template-quickstart.md)來這麼做。 
 
 
-## <a name="migrate"></a>移轉
+## <a name="migrate"></a>遷移
 
 完成預先遷移階段相關聯的工作之後，您就可以開始執行架構和資料移轉。 
 
@@ -117,7 +117,7 @@ Data Migration Assistant 支援執行調整規模評定和匯總評估報告以�
 1. 如果您是第一次執行此工作，請在您的訂用帳戶中註冊 **microsoft.datamigration** 資源提供者。
 1. 在您選擇的所需位置中建立 Azure 資料庫移轉服務實例 (最好在與目標 Azure SQL 受控執行個體相同的區域中) 然後選取現有的虛擬網路，或建立新的虛擬網路來裝載 DMS 實例。
 1. 建立 DMS 實例之後，請建立新的遷移專案並將來源伺服器類型指定為 **SQL Server** ，並將目標伺服器類型指定為 **Azure SQL Database 受控執行個體**。 在 [專案建立] 分頁（線上或離線資料移轉）中選擇活動類型。 
-1.  在 [遷移 **來源** 詳細資料] 頁面上指定來源 SQL Server 詳細資料，並在 [ **遷移目標** 詳細資料] 頁面上指定目標 Azure SQL 受控執行個體詳細資料。 選取 [下一步] 。
+1.  在 [遷移 **來源** 詳細資料] 頁面上指定來源 SQL Server 詳細資料，並在 [ **遷移目標** 詳細資料] 頁面上指定目標 Azure SQL 受控執行個體詳細資料。 選取 [下一步]。
 1. 選擇您想要遷移的資料庫。 
 1. 提供設定以指定包含資料庫備份檔案的 **SMB 網路共用** 。 使用可存取網路共用之 DMS 的 Windows 使用者認證。 提供您的 **Azure 儲存體帳戶詳細資料**。 
 1. 檢查遷移摘要，然後選擇 [ **執行遷移**]。 然後，您可以監視「遷移」活動，並檢查您的資料庫移轉進度。

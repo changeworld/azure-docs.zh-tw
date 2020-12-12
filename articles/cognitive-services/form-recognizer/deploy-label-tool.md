@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: abc8cffa3d5b9dffb55beabc90cdaecb3adc647f
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 985f9e741a1491a812c1d2b20de96381f8af3fa4
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852518"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359841"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>部署範例標籤工具
 
@@ -86,7 +86,7 @@ ms.locfileid: "96852518"
    * 伺服器 URL-將此設定為 `https://mcr.microsoft.com`
    * 使用者名稱 (選擇性) -建立使用者名稱。 
    * 密碼 (選擇性) -建立您將記得的安全密碼。
-   * 影像和標記-將此設定為 `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview`
+   * 影像和標記-將此設定為 `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview`
    * 持續部署-如果您想要在開發小組對範例標籤工具進行變更時接收自動更新，請將此設定為 **On** 。
    * 啟動命令-將此設定為 `./run.sh eula=accept`
     

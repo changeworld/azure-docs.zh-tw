@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 7577c8510746d1140c1f8b70081f600d992ae512
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c255a3d68b1a24e25c1c0e308faa3fd364a15861
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016670"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358736"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虛擬機器擴展集
 
@@ -350,12 +350,12 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 
 - **singlePlacementGroup** - 如果 singlePlacementGroup 為 true，則可以修改成 false。 不過，如果 singlePlacementGroup 為 false，則 **無法** 修改成 true。
 - **subnet** - 只要擴展集的原始子網路與新子網路位於相同的虛擬網路中，便可以修改擴展集的子網路。
+- **imageReferenceSku** -映射參考 SKU 可針對背書的 [Linux 散發版本](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)、Windows server/用戶端映射和沒有 [方案資訊](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage#view-plan-properties)的映射進行更新。 
 
 ### <a name="properties-that-require-deallocation-to-change"></a>必須解除配置才能變更的屬性
 有些屬性只有在已將擴展集內 VM 解除配置的情況下，才能變更成特定值。 這些屬性包括：
 
-- **SKU name (SKU 名稱)** - 如果擴展集目前所在的硬體不支援新的虛擬機器 SKU，您必須先將擴展集內的虛擬機器解除配置，才能修改 SKU 名稱。 如需詳細資訊，請參閱[如何調整 Azure 虛擬機器的大小](../virtual-machines/windows/resize-vm.md)。
-
+- **SKU 名稱**-如果擴展集目前所在的硬體不支援新的 VM SKU，您必須先將擴展集中的 vm 解除配置，才能修改 SKU 名稱。 如需詳細資訊，請參閱[如何調整 Azure 虛擬機器的大小](../virtual-machines/windows/resize-vm.md)。 
 
 ## <a name="vm-specific-updates"></a>VM 特定的更新
 某些修改可以套用至特定 VM，而無法套用至全域擴展集屬性。 目前唯一支援的虛擬機器特定更新是將資料磁碟連結至擴展集內的虛擬機器，或將資料磁碟與那些虛擬機器中斷連結。 這項功能處於預覽狀態。 如需詳細資訊請，參閱[預覽文件](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk) \(英文\)。

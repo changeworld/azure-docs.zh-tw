@@ -1,5 +1,5 @@
 ---
-title: 遷移指南： DB2 至 SQL 受控執行個體
+title: DB2 至 SQL 受控執行個體：遷移指南
 description: 遵循本指南，將您的 DB2 資料庫移轉至 Azure SQL 受控執行個體。
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: c31187e87f18f0ec84cd5b80ccab997d0ba381c3
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 3902661553bbb390e6e999e0f67cd043eee8df09
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324749"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359178"
 ---
 # <a name="migration-guide-db2-to-sql-managed-instance"></a>遷移指南： DB2 至 SQL 受控執行個體
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "96324749"
 
 如需其他案例，請參閱 [資料庫移轉指南](https://datamigration.microsoft.com/)。
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 若要將您的 DB2 資料庫移轉至 SQL 受控執行個體，您需要：
 

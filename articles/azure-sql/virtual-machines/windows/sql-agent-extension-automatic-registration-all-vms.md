@@ -5,16 +5,17 @@ author: MashaMSFT
 ms.author: mathoma
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/07/2020
-ms.openlocfilehash: a8eb112b0895d1c7a927621e6fb9e5160038692d
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 1ef7943586123a1870ed9a2d0c21aa8b5fd38c1c
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557550"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359994"
 ---
 # <a name="automatic-registration-with-sql-iaas-agent-extension"></a>使用 SQL IaaS 代理程式擴充功能自動註冊
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +35,7 @@ ms.locfileid: "94557550"
 > [!IMPORTANT]
 > SQL IaaS 代理程式擴充功能會收集資料，以在 Azure 虛擬機器中使用 SQL Server 時，為客戶提供選擇性的權益。 Microsoft 不會在未經客戶同意的情況下，使用此資料進行授權審核。 如需詳細資訊，請參閱 [SQL Server 隱私權補充](/sql/sql-server/sql-server-privacy#non-personal-data) 資訊。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要向擴充功能註冊 SQL Server VM，您需要： 
 
@@ -53,7 +54,7 @@ ms.locfileid: "94557550"
    :::image type="content" source="media/sql-agent-extension-automatic-registration-all-vms/automatic-registration.png" alt-text="選取 [自動 SQL Server VM 註冊] 以開啟 [自動註冊] 頁面":::
 
 1. 從下拉式清單中選擇您的訂用帳戶。 
-1. 請仔細閱讀條款，如果您同意，請選取 [ **我接受** ]。 
+1. 請仔細閱讀條款，如果您同意，請選取 [ **我接受**]。 
 1. 選取 [ **註冊** ] 以啟用此功能，並使用 SQL IaaS 代理程式擴充功能自動註冊所有目前和未來的 SQL Server vm。 這不會重新開機任何 Vm 上的 SQL Server 服務。 
 
 ## <a name="disable"></a>停用

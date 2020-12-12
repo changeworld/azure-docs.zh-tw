@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 12/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 8d17528728c5519244210217b35d6cd6a3afe715
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 004c84387c51233542b1bbbf11d33cdff42259af
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449130"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359144"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>更新您的 Azure Stack Edge Pro GPU 
 
@@ -22,9 +22,14 @@ ms.locfileid: "96449130"
 本文中所述的程式是使用不同版本的軟體來執行，但程式對於目前的軟體版本會維持不變。
 
 > [!IMPORTANT]
-> - 更新 **2011** 是目前的更新。 <!--and corresponds to **2.1.1377.2170** software version on your device.--> 如需此更新的詳細資訊，請參閱 [版本](azure-stack-edge-gpu-2011-release-notes.md)資訊。
->
-> - 請記住，安裝更新或 Hotfix 會重新啟動您的裝置。 此更新包含裝置軟體更新和 Kubernetes 更新。 假設 Azure Stack Edge Pro 是單一節點裝置，任何進行中的 i/o 都會中斷，而您的裝置會在更新時遇到最多30分鐘的停機時間。
+> - 更新 **2012** 是目前的更新，對應于：
+>   - 裝置軟體版本- **2.2.1438.2470**
+>   - Kubernetes 伺服器版本- **v 1.17.3**
+>   - IoT Edge 版本： **0.1.0-Beta10**
+>    
+>    如需此更新的新功能的詳細資訊，請參閱 [版本](azure-stack-edge-gpu-2012-release-notes.md)資訊。
+> - 若要套用2012更新，您的裝置必須執行2010。
+> - 請記住，安裝更新或 Hotfix 會重新啟動您的裝置。 此更新包含裝置軟體更新和 Kubernetes 更新。 假設 Azure Stack Edge Pro 是單一節點裝置，則任何進行中的 i/o 都會中斷，而您的裝置會在更新時遇到最多1.5 小時的停機時間。
 
 若要在裝置上安裝更新，您必須先設定補救伺服器的位置。 設定補救伺服器之後，您可以透過 Azure 入口網站 UI 或本機 web UI 來套用更新。
 
@@ -161,7 +166,7 @@ ms.locfileid: "96449130"
 
 2. 在 [Microsoft Update 目錄] 的 [搜尋] 方塊中，輸入知識庫 (KB) 您要下載之更新的修正程式號碼或條款。 例如，輸入 **Azure Stack Edge Pro**]，然後按一下 [ **搜尋**]。
    
-    更新清單會顯示為 **Azure Stack Edge 更新 2011**。
+    更新清單會顯示為 **Azure Stack Edge 更新 2012**。
    
     <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)-->
 
@@ -196,7 +201,7 @@ ms.locfileid: "96449130"
 
 5. 更新會開始進行。 成功更新裝置之後，裝置就會重新啟動。 在這段持續時間會無法存取本機 UI。
    
-6. 重新啟動完成後，您就會進入 [登入] 頁面。 若要確認裝置軟體是否已更新，請在本機 web UI 中，移至 [**維護**  >  **軟體更新**]。 針對目前版本，所顯示的軟體版本應該是 **Azure Stack Edge 2011**。
+6. 重新啟動完成後，您就會進入 [登入] 頁面。 若要確認裝置軟體是否已更新，請在本機 web UI 中，移至 [**維護**  >  **軟體更新**]。 針對目前版本，所顯示的軟體版本應該是 **Azure Stack Edge 2012**。
 
    <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)--> 
 

@@ -1,5 +1,5 @@
 ---
-title: SQL Server 至 SQL 受控執行個體-效能分析
+title: SQL Server 至 SQL 受控執行個體：效能分析
 description: 瞭解如何在將 SQL Server 資料庫移轉至 Azure SQL 受控執行個體時，建立並比較效能基準。
 ms.service: sql-database
 ms.subservice: migration
@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mokabiru
 ms.date: 11/06/2020
-ms.openlocfilehash: c47e4c1278f222feac35a2c6ab0b067c916c0217
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 2b6f9bef445cc07a3aa00377b41010a536855935
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326840"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358855"
 ---
 # <a name="migration-performance-sql-server-to-sql-managed-instance-performance-analysis"></a>遷移效能： SQL Server 至 SQL 受控執行個體效能分析
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]

@@ -6,6 +6,7 @@ documentationcenter: ''
 author: MashaMSFT
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
@@ -13,12 +14,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1c1dd2ba5eb6ee61a0f8cf151649441cbc783166
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 4c25adc16d14b4a5fb72ae0103ca05b193b40499
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553517"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359161"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>使用 Azure 擴充對 Azure SQL Server 2008 和 SQL Server 2008 R2 的支援
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,7 +34,7 @@ SQL Server 2008 和 SQL Server 2008 R2 均已達到[終止支援 (EOS) 生命週
 
 ## <a name="provisioning"></a>佈建
 
-在 Azure Marketplace 上提供一個 **在 Windows Server 2008 R2 映像上執行的隨用隨付 SQL Server 2008 R2** 。
+在 Azure Marketplace 上提供一個 **在 Windows Server 2008 R2 映像上執行的隨用隨付 SQL Server 2008 R2**。
 
 使用 SQL Server 2008 的客戶必須自行安裝或升級至 SQL Server 2008 R2。 同樣地，使用 Windows Server 2008 的客戶也必須從自訂 VHD 部署 VM，或升級至 Windows Server 2008 R2。
 
@@ -66,9 +67,9 @@ SQL Server 需要應用程式一致的 Azure Site Recovery 快照集以確保復
 
 Azure VM 上的 EOS SQL Server 的災害復原解決方案如下：
 
-- **SQL Server 備份** ：使用 Azure 備份的 15 分鐘 RPO 和時間點復原的損毀，協助您保護 EOS SQL Server 2008 和 2008 R2 免於遭受勒索軟體的侵害、意外刪除和損毀。 如需詳細資料，請參閱[這篇文章](../../../backup/sql-support-matrix.md#scenario-support)。
-- **記錄傳送** ：您可以在具有持續還原的另一個區域或 Azure 區域中，建立記錄傳送複本，以減少 RTO。 您必須手動設定記錄傳送。
-- **Azure Site Recovery** ：您可以透過 Azure Site Recovery 複寫，在區域和區域之間複寫 VM。 SQL Server 需要應用程式一致的快照集，以確保在發生災害時能夠復原。 Azure Site Recovery 為 EOS SQL Server 災害復原提供最少 1 小時的 RPO 和 2 小時 (加上 SQL Server 復原時間) 的 RTO。
+- **SQL Server 備份**：使用 Azure 備份的 15 分鐘 RPO 和時間點復原的損毀，協助您保護 EOS SQL Server 2008 和 2008 R2 免於遭受勒索軟體的侵害、意外刪除和損毀。 如需詳細資料，請參閱[這篇文章](../../../backup/sql-support-matrix.md#scenario-support)。
+- **記錄傳送**：您可以在具有持續還原的另一個區域或 Azure 區域中，建立記錄傳送複本，以減少 RTO。 您必須手動設定記錄傳送。
+- **Azure Site Recovery**：您可以透過 Azure Site Recovery 複寫，在區域和區域之間複寫 VM。 SQL Server 需要應用程式一致的快照集，以確保在發生災害時能夠復原。 Azure Site Recovery 為 EOS SQL Server 災害復原提供最少 1 小時的 RPO 和 2 小時 (加上 SQL Server 復原時間) 的 RTO。
 
 ## <a name="security-patching"></a>安全性修補
 

@@ -6,6 +6,7 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 48c996b6c7d0024b256908565c57032fe3e18514
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: bb7331747db301be5db00d550eec211f75257e29
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545633"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360028"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>使用 SQL IaaS 代理程式擴充功能註冊 SQL Server VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -40,11 +41,11 @@ ms.locfileid: "96545633"
 > [!IMPORTANT]
 > SQL IaaS 代理程式擴充功能會收集資料，以在 Azure 虛擬機器中使用 SQL Server 時，為客戶提供選擇性的權益。 Microsoft 不會在未經客戶同意的情況下，使用此資料進行授權審核。 如需詳細資訊，請參閱 [SQL Server 隱私權補充](/sql/sql-server/sql-server-privacy#non-personal-data) 資訊。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要向擴充功能註冊 SQL Server VM，您需要： 
 
-- [Azure 訂用帳戶](https://azure.microsoft.com/free/)。
+- [Azure 訂閱](https://azure.microsoft.com/free/)。
 - Azure 資源模型 [Windows Server 2008 (或更高) 虛擬機器](../../../virtual-machines/windows/quick-create-portal.md) ，其 [SQL Server 2008 (或更高) ](https://www.microsoft.com/sql-server/sql-server-downloads) 部署至公用或 Azure Government 雲端。 
 - 最新版本的 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell (5.0 的最小) ](/powershell/azure/install-az-ps)。 
 

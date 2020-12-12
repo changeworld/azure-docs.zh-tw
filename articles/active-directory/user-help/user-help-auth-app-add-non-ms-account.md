@@ -8,19 +8,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/24/2019
+ms.date: 11/02/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: cba8837fc738884fc187b13083487c2ab62d25f0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 21c8e75ac81a443b1dd9d4a0f43263bbf40bee88
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020087"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359195"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>將非 Microsoft 帳戶新增至 Microsoft Authenticator 應用程式
 
-將非 Microsoft 帳戶 (例如 Google、Facebook 或 GitHub 的帳戶) 新增至 Microsoft Authenticator 應用程式以進行雙因素驗證。 Microsoft Authenticator 應用程式適用於任何使用雙因素驗證的應用程式，以及任何支援限時單次密碼 (TOTP) 標準的帳戶。
+如果您有非 Microsoft 帳戶，例如 Google、Facebook 或 GitHub，您可以將它們新增至 Microsoft Authenticator 應用程式，以進行雙因素驗證。 Microsoft Authenticator 應用程式適用于任何使用雙因素驗證的應用程式，以及任何支援以時間為基礎之單次密碼 (TOTP) 標準的帳戶。
 
 >[!Important]
 >您必須先下載並安裝 Microsoft Authenticator 應用程式，才可新增帳戶。 如果尚未這麼做，請依照[下載並安裝應用程式](user-help-auth-app-download-install.md)文章中的步驟。
@@ -130,7 +130,7 @@ ms.locfileid: "96020087"
 
 1. 在電腦的 [雙因素驗證] 頁面上，選取 [使用應用程式進行設定]。
 
-2. 儲存您的復原碼以便在失去存取權時恢復您的帳戶，然後按 [下一步]。 
+2. 儲存您的復原碼以便在失去存取權時恢復您的帳戶，然後按 [下一步]。
 
     您可以將復原碼下載到您的裝置、列印實體複本，或將其複製到密碼管理員工具中，以儲存復原碼。
 

@@ -5,12 +5,12 @@ tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: a9dd703dc0a3f5e8f85b1022fa2a71ff9a8c295d
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 882dfaa802638efd98eaf6f12a33a77a9727adc2
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745565"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359059"
 ---
 # <a name="manage-an-azure-support-request"></a>管理 Azure 支援要求
 
@@ -88,36 +88,36 @@ ms.locfileid: "96745565"
 * 檔案不能大於 4 MB。
 * 所有檔案都必須有副檔名，例如 *.docx* 或 *.xlsx*。 下表顯示允許上傳的副檔名。
 
-| 0-9、A-C    | D-G   | H-M         | N-P   | R-T      | U-W        | X-Z     |
+| 0-9、A-C     | D-G   | H-M         | N-P   | R-T      | U-W        | X-Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
-| .7z         | .dat  | .hwl        | .odx  | .rar     | .tdb       | .xlam   |
-| .a          | .db   | .ics        | .oft  | .rdl     | .tdf       | .xlr    |
-| .abc        | .DMP  | .ini        | .old  | .rdlc    | .text      | .xls    |
-| .adm        | .do_  | .java       | .one  | .re_     | .thmx      | .xlsb   |
-| .aspx       | .doc  | .jpg        | .osd  | .reg     | .tif       | .xlsm   |
-| .ATF        | .docm | .LDF        | .OUT  | .remove  | .trc       | .xlsx   |
-| .b          | .docx | .letterhead | .p1   | .ren     | .TTD       | .xlt    |
-| .ba_        | .dotm | .lnk        | .pcap | .rename  | .tx_       | .xltx   |
-| .bak        | .dotx | .lo_        | .pdb  | .rft     | .txt       | .xml    |
-| .bat        | .dtsx | .log        | .pdf  | .rpt     | .uccapilog | .xmla   |
-| .blg        | .eds  | .lpk        | .piz  | .rte     | .uccplog   | .xps    |
-| .CA_        | .emf  | .manifest   | .pmls | .rtf     | .udcx      | .xsd    |
-| .CAB        | .eml  | .master     | .png  | .run     | .vb_       | .xsn    |
-| .cap        | .emz  | .mdmp       | .potx | .saz     | .vbs_      | .xxx    |
-| .catx       | .err  | .mof        | .ppt  | .sql     | .vcf       | .z_     |
-| .CFG        | .etl  | .mp3        | .pptm | .sqlplan | .vsd       | .z01    |
-| .compressed | .evt  | .mpg        | .pptx | .stp     | .wdb       | .z02    |
-| .Config     | .evtx | .ms_        | .prn  | .svclog  | .wks       | .zi     |
-| .cpk        | .EX   | .msg        | .psf  |   -       | .wma       | .zi_    |
-| .cpp        | .ex_  | .msi        | .pst  |  -        | .wmv       | .zip    |
-| .cs         | .ex0  | .mso        | .pub  | -         | .wmz       | .zip_   |
-| .CSV        | .FRD  | .msu        | -      |-          | .wps       | .zipp   |
-| .cvr        | .gif  | .nfo        | -      |-          | .wpt       | .zipped |
-| -            | .guid | -            | -      | -         | .wsdl      | .zippy  |
-| -            | .gz   | -            | -      | -         | .wsp       | .zipx   |
-| -            | -      | -            | -      | -         | .wtl       | .zit    |
-| -            | -      | -            | -      | -         |     -       | .zix    |
-| -            | -      | -            | -      | -         |  -          | .zzz    |
+| .7z         | .dat  | har        | .odx  | .rar     | .tdb       | .xlam   |
+| .a          | .db   | .hwl        | .oft  | .rdl     | .tdf       | .xlr    |
+| .abc        | .DMP  | .ics        | .old  | .rdlc    | .text      | .xls    |
+| .adm        | .do_  | .ini        | .one  | .re_     | .thmx      | .xlsb   |
+| .aspx       | .doc  | .java       | .osd  | .reg     | .tif       | .xlsm   |
+| .ATF        | .docm | .jpg        | .OUT  | .remove  | .trc       | .xlsx   |
+| .b          | .docx | .LDF        | .p1   | .ren     | .TTD       | .xlt    |
+| .ba_        | .dotm | .letterhead | .pcap | .rename  | .tx_       | .xltx   |
+| .bak        | .dotx | .lnk        | .pdb  | .rft     | .txt       | .xml    |
+| .bat        | .dtsx | .lo_        | .pdf  | .rpt     | .uccapilog | .xmla   |
+| .blg        | .eds  | .log        | .piz  | .rte     | .uccplog   | .xps    |
+| .CA_        | .emf  | .lpk        | .pmls | .rtf     | .udcx      | .xsd    |
+| .CAB        | .eml  | .manifest   | .png  | .run     | .vb_       | .xsn    |
+| .cap        | .emz  | .master     | .potx | .saz     | .vbs_      | .xxx    |
+| .catx       | .err  | .mdmp       | .ppt  | .sql     | .vcf       | .z_     |
+| .CFG        | .etl  | .mof        | .pptm | .sqlplan | .vsd       | .z01    |
+| .compressed | .evt  | .mp3        | .pptx | .stp     | .wdb       | .z02    |
+| .Config     | .evtx | .mpg        | .prn  | .svclog  | .wks       | .zi     |
+| .cpk        | .EX   | .ms_        | .psf  | -        | .wma       | .zi_    |
+| .cpp        | .ex_  | .msg        | .pst  | -        | .wmv       | .zip    |
+| .cs         | .ex0  | .msi        | .pub  | -        | .wmz       | .zip_   |
+| .CSV        | .FRD  | .mso        | -     | -        | .wps       | .zipp   |
+| .cvr        | .gif  | .msu        | -     | -        | .wpt       | .zipped |
+| -           | .guid | .nfo        | -     | -        | .wsdl      | .zippy  |
+| -           | .gz   | -           | -     | -        | .wsp       | .zipx   |
+| -           | -     | -           | -     | -        | .wtl       | .zit    |
+| -           | -     | -           | -     | -        | -          | .zix    |
+| -           | -     | -           | -     | -        | -          | .zzz    |
 
 ## <a name="reopen-a-closed-request"></a>重新開啟已關閉的要求
 

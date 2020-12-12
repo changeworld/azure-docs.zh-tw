@@ -7,18 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: ebd23868-821c-475b-b867-06d4a2e310c7
 ms.service: virtual-machines-sql
+ms.subservice: backup
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 78b422cd41f4cea72b74257fe70c09471e9d2d5b
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: f41614d54dc4320f683f406b2882a7b388bb4c3d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556568"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358413"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Azure 虛擬機器的自動備份 v2 (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,18 +35,18 @@ ms.locfileid: "94556568"
 ## <a name="prerequisites"></a>必要條件
 若要使用「自動備份 v2」，請檢閱下列必要條件：
 
-**作業系統** ：
+**作業系統**：
 
 - Windows Server 2012 R2 或更新版本
 
-**SQL Server 版本** ：
+**SQL Server 版本**：
 
 - SQL Server 2016 或更新版本：Developer、Standard 或 Enterprise
 
 > [!NOTE]
 > 如 SQL Server 2014，請參閱 [SQL Server 2014 的自動備份](automated-backup-sql-2014.md)。
 
-**資料庫組態** ：
+**資料庫組態**：
 
 - 目標 _使用者_ 資料庫必須使用完整復原模式。 系統資料庫不一定要使用完整復原模式。 不過，如果要求針對模型或 MSDB 進行記錄備份，就必須使用完整復原模式。 如需完整復原模型對備份所造成影響的詳細資訊，請參閱[在完整復原模式下備份](/previous-versions/sql/sql-server-2008-r2/ms190217(v=sql.105))。 
 - SQL Server 的 VM 已在 [完整管理模式](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full)中向 SQL IaaS 代理程式延伸模組註冊。 
@@ -83,10 +84,10 @@ ms.locfileid: "94556568"
 
 在星期一，您以下列設定啟用「自動備份 v2」：
 
-- 備份排程： **手動**
-- 完整備份頻率： **每週**
-- 完整備份開始時間： **01:00**
-- 完整備份時間範圍： **1 小時**
+- 備份排程：**手動**
+- 完整備份頻率：**每週**
+- 完整備份開始時間：**01:00**
+- 完整備份時間範圍：**1 小時**
 
 這意謂著下一個可用的備份時間範圍是星期二上午 1 點，持續時間為 1 小時。 到該時間，「自動備份」會開始逐一備份您的資料庫。 在此案例中，由於您的資料庫相當大，因此會完成前幾個資料庫的完整備份。 不過，在一小時之後，並非所有資料庫都已完成備份。
 
@@ -158,7 +159,7 @@ $resourcegroupname = "resourcegroupname"
 
 如果已安裝 SQL Server IaaS 代理程式擴充功能，您應該會看到它以「SqlIaaSAgent」或「SQLIaaSExtension」的形式列出。 該擴充功能的 **ProvisioningState** 應該也顯示為「已成功」。 
 
-如果未安裝或無法佈建擴充功能，您可以使用下列命令來安裝。 除了 VM 名稱和資源群組之外，您還必須指定 VM 所在的區域 ( **$region** )。
+如果未安裝或無法佈建擴充功能，您可以使用下列命令來安裝。 除了 VM 名稱和資源群組之外，您還必須指定 VM 所在的區域 ( **$region**)。
 
 ```powershell
 $region = "EASTUS2"
@@ -191,7 +192,7 @@ FullBackupWindowHours       : 2
 LogBackupFrequency          : 60
 ```
 
-如果輸出顯示 **Enable** 是設定為 **False** ，您就必須啟用自動備份。 好消息是，啟用和設定「自動備份」的方式是相同的。 如需這項資訊，請參閱下一節。
+如果輸出顯示 **Enable** 是設定為 **False**，您就必須啟用自動備份。 好消息是，啟用和設定「自動備份」的方式是相同的。 如需這項資訊，請參閱下一節。
 
 > [!NOTE] 
 > 如果您在進行變更後立即檢查設定，可能會得到舊的組態值。 只要等幾分鐘後再重新檢查設定，即可確定已套用您的變更。

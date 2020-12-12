@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7d50185169b22a136ce81bd3aebae235cf49498b
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6dd95fc8fd0ab0099ac7404d4ca4e4b1851f650f
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436618"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359597"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>安全存取 Azure Cosmos DB 中的資料
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -95,7 +95,7 @@ Cosmos DB 資源權杖提供一個安全的替代方案，可讓用戶端根據�
 
 資源權杖的產生和管理由原生 Cosmos DB 用戶端程式庫處理;但是，如果您使用 REST，您必須建立要求/驗證標頭。 如需有關建立 REST 驗證標頭的詳細資訊，請參閱 [Cosmos DB 資源的存取控制](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) 或 [.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/Authorization/AuthorizationHelper.cs) 或 [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)的原始程式碼。
 
-如需用來產生或代理資源權杖的中間層服務的範例，請參閱 [ResourceTokenBroker 應用程式](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)。
+如需用來產生或代理資源權杖的中間層服務的範例，請參閱 [ResourceTokenBroker 應用程式](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)。
 
 ## <a name="users"></a>使用者<a id="users"></a>
 
@@ -111,7 +111,7 @@ User user = await database.CreateUserAsync("User 1");
 > [!NOTE]
 > 每個 Cosmos DB 使用者都有一個 System.io.stream.readasync ( # A1 方法，可用來取得與使用者相關聯的 [許可權](#permissions) 清單。
 
-## <a name="permissions"></a>許可權<a id="permissions"></a>
+## <a name="permissions"></a>權限<a id="permissions"></a>
 
 許可權資源會與使用者建立關聯，並在容器和分割區索引鍵層級指派。 每位使用者可能包含零個或更多的許可權。 許可權資源可讓您存取使用者嘗試存取特定資料分割索引鍵中的特定容器或資料時所需的安全性權杖。 權限資源可能提供兩種可用的存取等級：
 
@@ -163,7 +163,7 @@ CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrR
 4. 在 [ **指派存取權**] 方塊中，選取 [ **Azure AD 使用者、群組或應用程式**]。
 5. 選取目錄中您要為其授與存取權的使用者、群組或應用程式。  您可以依顯示名稱、電子郵件地址或物件識別碼來搜尋目錄。
     選取的使用者、群組或應用程式會出現在選取的成員清單中。
-6. 按一下 [儲存]。
+6. 按一下 **[儲存]** 。
 
 實體現在已可讀取 Azure Cosmos DB 資源。
 

@@ -6,6 +6,7 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -13,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bb80abc35aedcdf0b46cefa279e477739cf1df6b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 957e458bf21eb4a95b1faba1daf0459271648310
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789789"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358685"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>在 Azure 專用主機上執行 SQL Server VM 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,8 +37,8 @@ ms.locfileid: "92789789"
 
 當您將 SQL Server VM 放在 Azure 專用主機中時，可以在兩個不同的授權選項之間選擇。 
 
-  - **SQL VM 授權** ：這是現有的授權選項，您可以個別支付每個 SQL Server VM 授權費用。 
-  - **專用主機授權** ：這是適用於 Azure 專用主機的新授權模型，此模型是在主機層級搭售 SQL Server 授權並支付費用。 
+  - **SQL VM 授權**：這是現有的授權選項，您可以個別支付每個 SQL Server VM 授權費用。 
+  - **專用主機授權**：這是適用於 Azure 專用主機的新授權模型，此模型是在主機層級搭售 SQL Server 授權並支付費用。 
 
 
 使用現有 SQL Server 授權的主機層級選項： 

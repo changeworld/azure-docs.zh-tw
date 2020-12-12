@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 3b47c7e8f31b51d51f5fad20cc068debb1dc2927
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b27bab9ea3029264143caaacf094f0a799894356
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339728"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359858"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>使用 Power BI 連接器將 Azure Cosmos DB 資料視覺化
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,12 +27,12 @@ ms.locfileid: "93339728"
 > [!NOTE]
 > 目前僅支援 Azure Cosmos DB SQL API 和 Gremlin API 帳戶的 Azure Cosmos DB 與 Power BI 連接器連線。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 在依照本 Power BI 教學課程中的指示進行之前，請先確定您可以存取下列資源：
 
 * [下載最新版的 Power BI Desktop](https://powerbi.microsoft.com/desktop)。
 
-* 從 GitHub 下載[範例火山資料](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json)。
+* 從 GitHub 下載[範例火山資料](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/main/SampleData/VolcanoData.json)。
 
 * [建立 Azure Cosmos 資料庫帳戶](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account) ，並使用 [Azure Cosmos DB 資料移轉工具](import-data.md)來匯入火山資料。 當匯入資料時，請考慮資料移轉工具中來源與目的地的下列設定：
 
@@ -44,7 +44,7 @@ ms.locfileid: "93339728"
 
       * **連接字串：**`AccountEndpoint=<Your_account_endpoint>;AccountKey=<Your_primary_or_secondary_key>;Database= <Your_database_name>` 
 
-      * **分割區索引鍵：** /Country 
+      * **分割區索引鍵：**/Country 
 
       * **集合輸送量：** 1000 
 
@@ -88,11 +88,11 @@ ms.locfileid: "93339728"
 
 5. 在 [預覽版連接器] 頁面上，按一下 [繼續]。 [Azure Cosmos DB] 視窗隨即出現。
 
-6. 依照下列所示方式指定您要從中擷取資料的 Azure Cosmos DB 帳戶端點 URL，然後按一下 [確定]。 若要使用您的帳戶，可以從 Azure 入口網站 [ **金鑰]** 刀鋒視窗的 [URI] 方塊中擷取 URL。 您可以視需要提供資料庫名稱、集合名稱，或使用導覽器來選取資料庫和集合，以識別資料的來源。
+6. 依照下列所示方式指定您要從中擷取資料的 Azure Cosmos DB 帳戶端點 URL，然後按一下 [確定]。 若要使用您的帳戶，可以從 Azure 入口網站 [**金鑰]** 刀鋒視窗的 [URI] 方塊中擷取 URL。 您可以視需要提供資料庫名稱、集合名稱，或使用導覽器來選取資料庫和集合，以識別資料的來源。
    
-7. 如果是第一次連接到此端點，系統會提示您提供帳戶金鑰。 如果是您自己的帳戶，請從 Azure 入口網站 [ **唯讀金鑰]** 刀鋒視窗的 [主要金鑰] 方塊中擷取金鑰。 輸入適當的金鑰，然後按一下 [連接]。
+7. 如果是第一次連接到此端點，系統會提示您提供帳戶金鑰。 如果是您自己的帳戶，請從 Azure 入口網站 [**唯讀金鑰]** 刀鋒視窗的 [主要金鑰] 方塊中擷取金鑰。 輸入適當的金鑰，然後按一下 [連接]。
    
-   建議您在建置報告時使用唯讀金鑰。 這可避免不必要的主要金鑰暴露于潛在的安全性風險。 您可以從 Azure 入口網站的 [ **金鑰** ] 刀鋒視窗取得唯讀金鑰。 
+   建議您在建置報告時使用唯讀金鑰。 這可避免不必要的主要金鑰暴露于潛在的安全性風險。 您可以從 Azure 入口網站的 [**金鑰**] 刀鋒視窗取得唯讀金鑰。 
     
 8. 順利連接帳戶後，會出現 [瀏覽器]  窗格。 [瀏覽器]  會顯示帳戶下的資料庫清單。
 
@@ -135,7 +135,7 @@ ms.locfileid: "93339728"
 
 1. 提供新資料行的名稱，例如 LatLong。
 
-1. 接下來，指定新資料行的自訂公式。  在我們的範例中，我們將依照下列方式使用以下公式，串連以逗號分隔的緯度和經度值： `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 按一下 [確定]  。
+1. 接下來，指定新資料行的自訂公式。  在我們的範例中，我們將依照下列方式使用以下公式，串連以逗號分隔的緯度和經度值： `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 按一下 [確定]。
    
    如需有關資料分析運算式 (DAX) 包括 DAX 函數的詳細資訊，請造訪 [Power BI Desktop 中的 Dax 基本概念](/power-bi/desktop-quickstart-learn-dax-basics)。
    
