@@ -6,6 +6,7 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -13,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 208df7ad53049598255ce358f2db128ba84fea9a
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 558daede55f6563155d3f54e97d77c0a3ca4de59
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557552"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357217"
 ---
 # <a name="register-multiple-sql-vms-in-azure-with-the-sql-iaas-agent-extension"></a>使用 SQL IaaS 代理程式擴充功能在 Azure 中註冊多個 SQL Vm
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,12 +35,12 @@ ms.locfileid: "94557552"
 
 註冊程式不會有任何風險，也不會有停機時間，也不會重新開機 SQL Server 服務或虛擬機器。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要向擴充功能註冊 SQL Server VM，您需要下列各項： 
 
 - 已 [向 **microsoft.sqlvirtualmachine** 提供者註冊](sql-agent-extension-manually-register-single-vm.md#register-subscription-with-rp)並包含未註冊 SQL Server 虛擬機器的 [Azure 訂](https://azure.microsoft.com/free/)用帳戶。 
-- 用來註冊虛擬機器的用戶端認證存在於下列任何 Azure 角色中： **虛擬機器參與者** 、 **參與者** 或 **擁有** 者。 
+- 用來註冊虛擬機器的用戶端認證存在於下列任何 Azure 角色中： **虛擬機器參與者**、 **參與者** 或 **擁有** 者。 
 - Az PowerShell 的最新版本 [ (5.0 最小) ](/powershell/azure/new-azureps-module-az)。 
 
 

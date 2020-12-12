@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82f0408b7e46493f6c3ec62d48a992e87f196f78
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 3165bc28e6d6283bf8578d9c10b11f7b19981002
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860604"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355234"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>將自訂核准工作流程新增至自助式註冊
 
@@ -26,6 +26,9 @@ ms.locfileid: "96860604"
 
 - 自動核准使用者，並允許 Azure AD 建立使用者帳戶。
 - 觸發手動審核。 如果要求已核准，核准系統會使用 Microsoft Graph 來布建使用者帳戶。 核准系統也可以通知使用者他們的帳戶已建立。
+
+> [!IMPORTANT]
+>自 **2021 年1月4日起**，Google 將 [淘汰 web 服務登入支援](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)。 如果您要使用 Google 同盟或使用 Gmail 的自助式註冊，您應該 [測試企業營運原生應用程式的相容性](google-federation.md#deprecation-of-webview-sign-in-support)。
 
 ## <a name="register-an-application-for-your-approval-system"></a>為您的核准系統註冊應用程式
 
@@ -318,7 +321,7 @@ Content-type: application/json
 }
 ```
 
-| 參數                                           | 必要 | 描述                                                                                                                                                            |
+| 參數                                           | 必要 | 說明                                                                                                                                                            |
 | --------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | userPrincipalName                                   | 是      | 可以藉由取得 `email` 傳送至 API 的宣告、將 `@` 字元取代 `_` 為，並將其預先暫止至來產生 `#EXT@<tenant-name>.onmicrosoft.com` 。 |
 | accountEnabled                                      | 是      | 必須設為 `true`。                                                                                                                                                 |

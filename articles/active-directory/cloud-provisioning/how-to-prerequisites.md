@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8eb8de2424012d12f216f154eb077028a8f82d76
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a89a456b5d9ee36909d5d742a7880d72e5ed86fd
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173697"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355851"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect 雲端佈建的先決條件
 本文提供如何選擇及使用 Azure Active Directory (Azure AD) Connect 雲端佈建作為身分識別的指引。
@@ -51,11 +51,23 @@ ms.locfileid: "96173697"
 
 ### <a name="in-your-on-premises-environment"></a>在內部部署環境中
 
-1. 識別已加入網域、執行 Windows Server 2012 R2 或更新版本，且至少有 4 GB RAM 和 .NET 4.7.1+ 執行階段的主機伺服器。
+ 1. 識別已加入網域、執行 Windows Server 2012 R2 或更新版本，且至少有 4 GB RAM 和 .NET 4.7.1+ 執行階段的主機伺服器。
 
-1. 本機伺服器上的 PowerShell 執行原則必須設定為 Undefined 或 RemoteSigned。
+ >[!NOTE]
+ > 請注意，定義範圍篩選器會在主機伺服器上產生記憶體成本。  如果沒有使用範圍篩選器，就不會產生額外的記憶體成本。 4 GB 的最小值最多可支援在範圍篩選器中定義的最多12個組織單位進行同步處理。 如果您需要同步處理額外的 Ou，您將需要增加最小的記憶體數量。 使用下表做為指南：
+ >
+ >  
+ >  | 範圍篩選器中的 Ou 數目| 需要的最小記憶體|
+ >  | --- | --- |
+ >  | 12| 4 GB|
+ >  | 18|5.5 GB|
+ >  | 28|10 + GB|
+ >
+ > 
 
-1. 如果伺服器與 Azure AD 之間有防火牆，請設定下列項目：
+ 2. 本機伺服器上的 PowerShell 執行原則必須設定為 Undefined 或 RemoteSigned。
+
+ 3. 如果伺服器與 Azure AD 之間有防火牆，請設定下列項目：
    - 確定代理程式可透過下列連接埠對 Azure AD 提出 *輸出* 要求：
 
         | 連接埠號碼 | 使用方式 |
@@ -100,7 +112,20 @@ ms.locfileid: "96173697"
 
 1. 重新啟動伺服器。
 
+## <a name="known-limitations"></a>已知限制
+以下是已知的限制：
 
+### <a name="delta-synchronization"></a>差異同步處理
+
+- 差異同步的群組範圍篩選不支援1500以上的成員。
+- 當您刪除用來作為群組範圍篩選準則一部分的群組時，不會刪除群組成員的使用者。 
+- 當您重新命名範圍中的 OU 或群組時，差異同步處理不會移除使用者。
+
+### <a name="provisioning-logs"></a>佈建記錄
+- 布建記錄無法清楚區分建立和更新作業。  您可能會看到用於更新的建立作業，以及建立的更新作業。
+
+### <a name="group-re-naming-or-ou-re-naming"></a>群組重新命名或 OU 重新命名
+- 如果您將 AD 中的群組或 OU 重新命名為指定設定的範圍，雲端布建作業將無法辨識 AD 中的名稱變更。 作業不會進入隔離狀態，且會維持狀況良好。
 
 
 ## <a name="next-steps"></a>後續步驟 

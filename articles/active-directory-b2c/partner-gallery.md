@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bbcb3367f4a1b99ae6689a5d9fa33b7629145ead
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 4592742b99d7c3e915c31ca5a202355d32e76d68
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092538"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356118"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV 合作夥伴
 
@@ -51,6 +51,7 @@ Microsoft 與下列 Isv 進行 MFA 和無密碼 authentication 的合作夥伴�
 |:-------------------------|:--------------|
 | ![Hypr 標誌的螢幕擷取畫面](./media/partner-gallery/hypr-logo.png) | [Hypr](./partner-hypr.md) 是一種無密碼 authentication 提供者，可將密碼取代為公開金鑰加密，以免除詐騙、網路釣魚和認證的重複使用。 |
 | ![Itsme 標誌的螢幕擷取畫面](./media/partner-gallery/itsme-logo.png) | [itsme](./partner-itsme.md) 是一種電子識別、驗證和信任服務， () eiDAS 符合規範的數位識別碼解決方案，可讓使用者安全地登入，而不需要卡片讀卡機、密碼、雙因素驗證，以及多個 PIN 碼。 |
+| ![尼維斯標誌的螢幕擷取畫面](./media/partner-gallery/nevis-logo.png) | [尼維斯](./partner-nevis.md) 會啟用無密碼 authentication，並提供行動優先、完整品牌的終端使用者體驗，並提供尼維斯存取應用程式，以進行強式客戶驗證並符合 PSD2 交易需求。 |
 | ![Trusona 標誌的螢幕擷取畫面](./media/partner-gallery/trusona-logo.png) | [Trusona](./partner-trusona.md) 整合可協助您安全地登入，並啟用無密碼 AUTHENTICATION、MFA 和數位授權掃描。 |
 | ![Twilio 標誌的螢幕擷取畫面。](./media/partner-gallery/twilio-logo.png) | [Twilio Verify 應用程式](./partner-twilio.md) 提供多個解決方案，可透過 SMS 單次密碼 (OTP) 、時間型單次密碼 (TOTP) 和推播通知，以及符合 PSD2 的 SCA 需求來啟用 MFA。 |
 | ![TypingDNA 標誌的螢幕擷取畫面](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-twilio.md) 藉由分析使用者的輸入模式來啟用強式客戶驗證。 它可協助公司啟用無訊息 MFA，並符合 PSD2 的 SCA 需求。 |

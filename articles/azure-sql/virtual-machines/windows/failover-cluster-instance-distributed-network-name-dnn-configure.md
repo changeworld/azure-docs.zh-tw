@@ -7,6 +7,7 @@ author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: dff6d69a107091a0ce030065da0f70a3d68c5841
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 8549592ace00e712929ebc76045a32531b9db659
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168806"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358311"
 ---
 # <a name="configure-a-dnn-for-failover-cluster-instance"></a>設定容錯移轉叢集實例的 DNN
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -131,14 +132,14 @@ Start-ClusterResource -Name dnn-demo
 
 1. 清除任何未參與容錯移轉叢集實例之節點的核取方塊。 DNN 資源的可能擁有者清單應符合 SQL Server 實例資源的可能擁有者清單。 例如，假設 Data3 並未參與 FCI，下圖是從 DNN 資源的可能擁有者清單中移除 Data3 的範例： 
 
-   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="DNN 資源的快捷方式功能表，其中已反白顯示 [屬性] 命令。":::
+   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="清除未參與 FCI 的節點旁的核取方塊，以找出 DNN 資源的可能擁有者":::
 
-1. 選取 [確定]**** 儲存設定。 
+1. 選取 [確定] 儲存設定。 
 
 
 ## <a name="restart-sql-server-instance"></a>重新開機 SQL Server 實例 
 
-使用容錯移轉叢集管理員重新開機 SQL Server 實例。 請遵循下列步驟：
+使用容錯移轉叢集管理員重新開機 SQL Server 實例。 請遵循這些步驟：
 
 1. 移至容錯移轉叢集管理員中的 SQL Server 資源。
 1. 以滑鼠右鍵按一下 SQL Server 資源，並讓它離線。 

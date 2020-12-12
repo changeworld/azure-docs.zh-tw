@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: ca782e9949f990857db408919cac342d7f712d2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c92aa3b35240831fad14919dc73609d803c610a
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272611"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358209"
 ---
 # <a name="feature-interoperability-with-sql-server-fci--dnn"></a>與 SQL Server FCI & DNN 的功能互通性
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -73,7 +74,7 @@ READ_ONLY_ROUTING_URL = 'TCP://dnnlsnr:1444'
 
 繼續使用 VNN 名稱作為複寫內的 FCI 名稱，但在 *您設定複寫之前*，請在下列遠端情況下建立網路別名：
 
-| **使用 DNN) 的複寫元件 (FCI ** | **遠端元件** | **網路別名對應** | **具有網路對應的伺服器**| 
+| **使用 DNN) 的複寫元件 (FCI** | **遠端元件** | **網路別名對應** | **具有網路對應的伺服器**| 
 |---------|---------|---------|-------- | 
 |發行者 | 散發者 | 發行者 VNN 至發行者 DNN| 散發者| 
 |散發者|用戶 |散發者 VNN 至散發者 DNN| 用戶 | 
@@ -86,7 +87,7 @@ READ_ONLY_ROUTING_URL = 'TCP://dnnlsnr:1444'
 
 使用命名實例的完整實例名稱，如下圖範例所示： 
 
-:::image type="content" source="media/failover-cluster-instance-dnn-interoperability/alias-named-instance-configuration-manager.png" alt-text="使用 SQL Server 組態管理員將 DNN DNS 名稱設定為網路別名。" :::
+:::image type="content" source="media/failover-cluster-instance-dnn-interoperability/alias-named-instance-configuration-manager.png" alt-text="設定命名實例的網路別名時，請使用完整實例名稱。" :::
 
 ## <a name="database-mirroring"></a>資料庫鏡像
 

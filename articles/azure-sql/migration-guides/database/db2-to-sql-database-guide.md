@@ -1,5 +1,5 @@
 ---
-title: DB2 到 SQL Database-遷移指南
+title: DB2 至 SQL Database：遷移指南
 description: 遵循本指南來將您的 DB2 資料庫移轉至 Azure SQL Database。
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 369f17a39b9d7b2f85fffb8b72a293558d16416e
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 3e216c4aeb8d1206011ff9cca2d80900c23b2399
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325157"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356339"
 ---
 # <a name="migration-guide-db2-to-sql-database"></a>遷移指南： DB2 至 SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "96325157"
 
 如需其他案例，請參閱 [資料庫移轉指南](https://datamigration.microsoft.com/)。
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 若要將您的 DB2 資料庫移轉至 SQL Database，您需要：
 
@@ -86,7 +86,7 @@ ms.locfileid: "96325157"
 1. 選取 **[連接到 Azure SQL Database]**。 
     1. 輸入連線詳細資料，以便在 Azure SQL Database 中連接您的資料庫。 
     1. 從下拉式清單中選擇您的目標 SQL Database。 
-    1. 選取 [連接]  。 
+    1. 選取 [連接]。 
 
    :::image type="content" source="media/db2-to-sql-database-guide/connect-to-sql-database.png" alt-text="填入詳細資料，以連接到 Azure 中的邏輯伺服器":::
 

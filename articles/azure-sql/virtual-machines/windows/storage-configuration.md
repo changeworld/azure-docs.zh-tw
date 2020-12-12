@@ -7,17 +7,18 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: 169fc765-3269-48fa-83f1-9fe3e4e40947
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: 3a4b7d68d7cd21ccb4b7eb8b97e0d331fb236e96
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: d713faf7062f82110be5fa8378faca368b9bb7a2
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146717"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356698"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 的儲存體組態
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -46,7 +47,7 @@ ms.locfileid: "93146717"
 
 ![醒目顯示 [SQL Server 設定] 索引標籤和 [變更設定] 選項的螢幕擷取畫面。](./media/storage-configuration/sql-vm-storage-configuration-provisioning.png)
 
-在 [儲存體最佳化] 上，選取要為其部署 SQL Server 的工作負載類型。 使用 [一般] 最佳化選項時，根據預設您會有一個 IOPS 上限為 5000 的資料磁碟，而且您會使用此相同磁碟機來儲存資料、交易記錄和 TempDB。 選取 [交易處理] (OLTP) 或 [資料倉儲] 將會為資料建立個別磁碟、為交易記錄建立個別磁碟，並針對 TempDB 使用本機 SSD。 **交易處理** 和 **資料倉儲** 之間沒有任何儲存上的差異，但其卻會變更您的 [等量磁碟區設定和追蹤旗標](#workload-optimization-settings)。 根據 [SQL Server VM 效能最佳做法](performance-guidelines-best-practices.md)，選擇進階儲存體會將資料磁碟機的快取設定為 *唯讀* ，並將記錄磁碟機的快取設定為 *無* 。 
+在 [儲存體最佳化] 上，選取要為其部署 SQL Server 的工作負載類型。 使用 [一般] 最佳化選項時，根據預設您會有一個 IOPS 上限為 5000 的資料磁碟，而且您會使用此相同磁碟機來儲存資料、交易記錄和 TempDB。 選取 [交易處理] (OLTP) 或 [資料倉儲] 將會為資料建立個別磁碟、為交易記錄建立個別磁碟，並針對 TempDB 使用本機 SSD。 **交易處理** 和 **資料倉儲** 之間沒有任何儲存上的差異，但其卻會變更您的 [等量磁碟區設定和追蹤旗標](#workload-optimization-settings)。 根據 [SQL Server VM 效能最佳做法](performance-guidelines-best-practices.md)，選擇進階儲存體會將資料磁碟機的快取設定為 *唯讀*，並將記錄磁碟機的快取設定為 *無*。 
 
 ![佈建期間的 SQL Server VM 儲存體設定](./media/storage-configuration/sql-vm-storage-configuration.png)
 
@@ -54,20 +55,20 @@ ms.locfileid: "93146717"
 
 此外，您也能為磁碟設定快取。 與[進階磁碟](../../../virtual-machines/disks-types.md#premium-ssd)搭配使用時，Azure VM 具有稱為 [Blob 快取](../../../virtual-machines/premium-storage-performance.md#disk-caching)的多層快取技術。 Blob 快取會結合虛擬機器 RAM 和本機 SSD 進行快取。 
 
-進階 SSD 的磁碟快取可以是 *唯讀* 、 *讀寫* 或 *無* 。 
+進階 SSD 的磁碟快取可以是 *唯讀*、*讀寫* 或 *無*。 
 
-- *唯讀* 快取對於儲存在進階儲存體上的 SQL Server 資料檔案非常有用。 從位於 VM 記憶體和本機 SSD 內的快取執行讀取時， *唯讀* 快取可帶來低讀取延遲、高讀取 IOPS 和輸送量。 這些讀取速度會比從 Azure Blob 儲存體讀取資料磁片快許多。 進階儲存體不會將快取所服務的讀取計入磁碟 IOPS 和輸送量之內。 因此，應用程式能夠達到較高的 IOPS 和輸送量總計。 
+- *唯讀* 快取對於儲存在進階儲存體上的 SQL Server 資料檔案非常有用。 從位於 VM 記憶體和本機 SSD 內的快取執行讀取時，*唯讀* 快取可帶來低讀取延遲、高讀取 IOPS 和輸送量。 這些讀取速度會比從 Azure Blob 儲存體讀取資料磁片快許多。 進階儲存體不會將快取所服務的讀取計入磁碟 IOPS 和輸送量之內。 因此，應用程式能夠達到較高的 IOPS 和輸送量總計。 
 - 裝載 SQL Server 記錄檔的磁碟應使用 *無* 快取設定，因為記錄檔會依序寫入，並不會受益於 *唯讀* 快取。 
 - 不應使用 *讀寫* 快取來裝載 SQL Server 檔案，因為 SQL Server 未對 *讀寫* 快取支援資料一致性。 如果寫入時經過 *唯讀* Blob 快取層，則寫入會浪費 *唯讀* Blob 快取的容量，且延遲會稍微增加。 
 
 
    > [!TIP]
-   > 請確定您的儲存體設定符合所選 VM 大小所加諸的限制。 選擇超過 VM 大小效能上限的儲存體參數將會導致錯誤：`The desired performance might not be reached due to the maximum virtual machine disk performance cap.`。 請變更磁碟類型來減少 IOPS，或增加 VM 大小來增加效能上限。 
+   > 請確定您的儲存體設定符合所選 VM 大小所加諸的限制。 選擇超過 VM 大小效能上限的儲存體參數將會產生警告： `The desired performance might not be reached due to the maximum virtual machine disk performance cap` 。 請變更磁碟類型來減少 IOPS，或增加 VM 大小來增加效能上限。 這不會停止布建。 
 
 
 根據您的選擇，Azure 會在建立 VM 後執行下列儲存體設定工作︰
 
-* 建立進階 SSD 並將它連結到虛擬機器。
+* 建立 Premium Ssd 並將其附加至虛擬機器。
 * 設定 SQL Server 可存取的資料磁碟。
 * 根據指定的大小和效能 (IOPS 和輸送量) 需求，設定存放集區中的資料磁碟。
 * 建立存放集區與虛擬機器上新磁碟機的關聯。

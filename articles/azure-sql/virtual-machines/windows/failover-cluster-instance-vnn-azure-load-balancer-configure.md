@@ -7,6 +7,7 @@ author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8f8513746271fff0ab52603e31b75304d5ebc1bf
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 5670a29e86eb201a707e5ceef28043aafe4839d9
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168821"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357971"
 ---
 # <a name="configure-azure-load-balancer-for-failover-cluster-instance-vnn"></a>設定容錯移轉叢集實例 VNN Azure Load Balancer
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -46,7 +47,7 @@ ms.locfileid: "92168821"
 
 1. 在 Azure 入口網站中，前往包含虛擬機器的資源群組。
 
-1. 選取 [新增]。 搜尋 **Load Balancer**的 Azure Marketplace。 選取 [Load Balancer]。
+1. 選取 [新增]。 搜尋 **Load Balancer** 的 Azure Marketplace。 選取 [Load Balancer]。
 
 1. 選取 [建立]。
 
@@ -83,9 +84,9 @@ ms.locfileid: "92168821"
 
 1. 在 [負載平衡器] 窗格中，選取 [ **健康情況探查**]。
 
-1. 選取 [新增]  。
+1. 選取 [新增]。
 
-1. 在 [**新增健康情況探查**] <span id="probe"> </span>窗格中，設定下列健康情況探查參數：
+1. 在 [**新增健康情況探查**] <span id="probe"></span>窗格中，設定下列健康情況探查參數：
 
    - **Name**：健康情況探查的名稱。
    - **通訊協定**：TCP。
@@ -99,14 +100,14 @@ ms.locfileid: "92168821"
 
 1. 在 [負載平衡器] 窗格中，選取 [ **負載平衡規則**]。
 
-1. 選取 [新增]  。
+1. 選取 [新增]。
 
 1. 設定負載平衡規則參數：
 
    - **名稱**：負載平衡規則的名稱。
    - **前端 ip 位址**： SQL Server FCI 或 AG 接聽程式的叢集網路資源的 ip 位址。
    - **埠**： SQL Server TCP 埠。 預設執行個體連接埠為 1433。
-   - **後端埠**：當您啟用**浮動 IP (直接伺服器傳回) **時，與**埠**值相同的埠。
+   - **後端埠**：當您啟用 **浮動 IP (直接伺服器傳回)** 時，與 **埠** 值相同的埠。
    - **後端集區**：先前設定的後端集區名稱。
    - **健康情況探查**：先前設定的健康狀態探查。
    - **工作階段持續性**：無。
@@ -135,7 +136,7 @@ Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"
 下表描述您需要更新的值：
 
 
-|**ReplTest1**|**說明**|
+|**值**|**說明**|
 |---------|---------|
 |`Cluster Network Name`| 網路的 Windows Server 容錯移轉叢集名稱。 在 [容錯移轉叢集管理員] > [網路] 中，以滑鼠右鍵按一下網路，然後選取 [屬性]。 正確的值在 [一般] 索引標籤的 [名稱] 底下。|
 |`SQL Server FCI/AG listener IP Address Resource Name`|SQL Server FCI 或 AG 接聽程式 IP 位址的資源名稱。 在 [容錯移轉叢集管理員] > [角色] 中，於 SQL Server FCI 角色下方的 [伺服器名稱] 下，以滑鼠右鍵按一下 IP 位址資源，然後選取 [屬性]。 正確的值在 [一般] 索引標籤的 [名稱] 底下。|
@@ -156,7 +157,7 @@ Get-ClusterResource $IPResourceName | Get-ClusterParameter
 
 測試叢集資源的容錯移轉，以驗證叢集功能。 
 
-執行下列步驟：
+請執行下列步驟：
 
 1. 使用 RDP 連接到其中一個 SQL Server 叢集節點。
 1. 開啟 [容錯移轉叢集管理員]。 選取 [角色]。 請注意哪個節點擁有 SQL Server FCI 角色。

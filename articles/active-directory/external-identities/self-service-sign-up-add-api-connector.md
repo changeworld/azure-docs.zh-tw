@@ -11,16 +11,19 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d121e6280b83265a742736f9b8dd3aee96a8b32e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: f34ca47d5ff6c809eef40f89ee0049285cfd7d42
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351754"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355388"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>將 API 連接器新增至使用者流程
 
 若要使用 [api 連接器](api-connectors-overview.md)，請先建立 api 連接器，然後在使用者流程中啟用它。
+
+> [!IMPORTANT]
+>自 **2021 年1月4日起**，Google 將 [淘汰 web 服務登入支援](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)。 如果您要使用 Google 同盟或使用 Gmail 的自助式註冊，您應該 [測試企業營運原生應用程式的相容性](google-federation.md#deprecation-of-webview-sign-in-support)。
 
 ## <a name="create-an-api-connector"></a>建立 API 連接器
 
@@ -271,7 +274,7 @@ Content-type: application/json
 | version     | String | 是      | API 的版本。                                                    |
 | 動作      | String | 是      | 值必須是 `ShowBlockPage`                                              |
 | userMessage | String | 是      | 要向使用者顯示的訊息。                                            |
-| code        | String | 否       | 錯誤碼。 可用於偵錯工具。 不會向使用者顯示。 |
+| code        | 字串 | 否       | 錯誤碼。 可用於偵錯工具。 不會向使用者顯示。 |
 
 **封鎖回應的終端使用者體驗**
 
@@ -298,7 +301,7 @@ Content-type: application/json
 | 動作      | String  | 是      | 值必須為 `ValidationError`。                                           |
 | status      | 整數 | 是      | 必須是 `400` ValidationError 回應的值。                        |
 | userMessage | String  | 是      | 要向使用者顯示的訊息。                                            |
-| code        | String  | 否       | 錯誤碼。 可用於偵錯工具。 不會向使用者顯示。 |
+| code        | 字串  | 否       | 錯誤碼。 可用於偵錯工具。 不會向使用者顯示。 |
 
 **使用驗證錯誤回應的使用者體驗**
 

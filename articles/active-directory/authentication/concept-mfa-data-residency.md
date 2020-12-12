@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 12/11/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40751b7864cc62d17836ab6d57cd106f6904f64a
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 788512db242bf1a1c6f18ffc0ee773bd3372aa42
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744103"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355860"
 ---
 # <a name="data-residency-and-customer-data-for-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication 的資料存放區和客戶資料
 
@@ -45,7 +45,7 @@ Azure AD Multi-Factor Authentication 服務在美國、歐洲和亞太地區都�
 
 Azure AD Multi-Factor Authentication 不會記錄個人資料，例如使用者名稱、電話號碼或 IP 位址，但會有可識別使用者 Multi-Factor Authentication 嘗試的 *userobjectid 為* 。 此資料會儲存 30 天。
 
-### <a name="azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication
+### <a name="azure-ad-multi-factor-authentication"></a>Azure AD 多重要素驗證
 
 Azure 公用雲端 (不含 Azure B2C 驗證、NPS 延伸模組與 Windows Server 2016 或 2019 AD FS 配接器) 會儲存下列個人資料：
 
@@ -57,7 +57,7 @@ Azure 公用雲端 (不含 Azure B2C 驗證、NPS 延伸模組與 Windows Server
 | Microsoft Authenticator 通知 | 在 Multi-Factor Authentication 記錄中<br />Multi-Factor Authentication 活動報告資料存放區<br />如果回報詐騙則封鎖使用者<br />當 Microsoft Authenticator 裝置權杖變更時，變更要求 |
 
 > [!NOTE]
-> 無論處理驗證要求的區域為何，所有雲端的 Multi-Factor Authentication 活動報告資料存放區都會儲存在美國。 Microsoft Azure 德國、21Vianet 所操作的 Microsoft Azure，以及 Microsoft Government Cloud 有各自獨立的資料存放區，與公用雲端區域資料存放區分開，而這些資料一律儲存在美國。
+> 無論處理驗證要求的區域為何，所有雲端的 Multi-Factor Authentication 活動報告資料存放區都會儲存在美國。 Microsoft Azure 德國、21Vianet 所操作的 Microsoft Azure，以及 Microsoft Government Cloud 有各自獨立的資料存放區，與公用雲端區域資料存放區分開，而這些資料一律儲存在美國。 這些資料存放區包含個人識別資訊 (PII) 例如使用者主體名稱 (UPN) 和完整的電話號碼。 
 
 Microsoft Azure Government、Microsoft Azure 德國、21Vianet 所操作的 Microsoft Azure、Azure B2C 驗證、NPS 延伸模組，以及 Windows Server 2016 或 2019 AD FS 配接器，會儲存下列個人資料：
 

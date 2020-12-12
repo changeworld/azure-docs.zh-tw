@@ -8,12 +8,12 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: 73d6fe0233eccea9ebf1d82beb509c56fb45f4da
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e84b80233d87ac4ae5e2281b506e225c4ab1bd9d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339504"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357597"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>從 CouchBase 遷移至 Azure Cosmos DB SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -39,7 +39,7 @@ Azure Cosmos DB 是可調整、全域散發的完全受控資料庫。 其可為
 
 * 在 Azure Cosmos DB 中，最上層階層不需要表示集合，因為集合名稱已經存在。 這項功能可讓 JSON 結構變得更簡單。 以下範例會顯示 Couchbase 與 Azure Cosmos DB 之間資料模型的差異：
 
-   **Couchbase** ：Document ID =  "99FF4444"
+   **Couchbase**：Document ID =  "99FF4444"
 
     ```json
     {
@@ -69,7 +69,7 @@ Azure Cosmos DB 是可調整、全域散發的完全受控資料庫。 其可為
     }
    ```
 
-   **Azure Cosmos DB** ：請參閱文件中的「識別碼」，如下所示
+   **Azure Cosmos DB**：請參閱文件中的「識別碼」，如下所示
 
     ```json
     {
@@ -181,7 +181,7 @@ Azure Cosmos DB 具有下列 SDK 以支援不同的 JAVA 架構：
 * ```_repo.findByIdAndName(objDoc.getId(),objDoc.getName());```
 * ```_repo.findAllByStatus(objDoc.getStatus());```
 
-也就是說，您現在可以搭配 Azure Cosmos DB 使用您的應用程式。 本文件中所述範例的完整程式碼範例，可以在 [CouchbaseToCosmosDB-SpringCosmos](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/SpringCosmos) GitHub 存放庫中取得。
+也就是說，您現在可以搭配 Azure Cosmos DB 使用您的應用程式。 本文件中所述範例的完整程式碼範例，可以在 [CouchbaseToCosmosDB-SpringCosmos](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/SpringCosmos) GitHub 存放庫中取得。
 
 ## <a name="couchbase-as-a-document-repository--using-n1ql-queries"></a>Couchbase 作為文件存放庫與使用 N1QL 查詢
 
@@ -222,9 +222,9 @@ N1QL 查詢是在 Couchbase 中定義查詢的方式。
     
    if(client==null)
     client= CosmosClient.builder()
-        .endpoint(Host)//(Host, MasterKey, dbName, collName).Builder()
+        .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
         .connectionPolicy(cp)
-        .key(MasterKey)
+        .key(PrimaryKey)
         .consistencyLevel(ConsistencyLevel.EVENTUAL)
         .build();   
    
@@ -305,7 +305,7 @@ CosmosItem objItem= container.getItem(doc.Id, doc.Tenant);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-然後訂閱 Mono，參閱插入作業中的 Mono 訂閱程式碼片段。 完整程式碼範例可以在 [CouchbaseToCosmosDB-AsyncInSpring](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncInSpring) GitHub 存放庫中取得。
+然後訂閱 Mono，參閱插入作業中的 Mono 訂閱程式碼片段。 完整程式碼範例可以在 [CouchbaseToCosmosDB-AsyncInSpring](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/AsyncInSpring) GitHub 存放庫中取得。
 
 ## <a name="couchbase-as-a-keyvalue-pair"></a>Couchbase 作為索引鍵/值組
 
@@ -351,9 +351,9 @@ Mono<CosmosItemResponse> objMono = objItem.delete(ro);
    
    if(client==null)
     client= CosmosClient.builder()
-        .endpoint(Host)//(Host, MasterKey, dbName, collName).Builder()
+        .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
         .connectionPolicy(cp)
-        .key(MasterKey)
+        .key(PrimaryKey)
         .consistencyLevel(ConsistencyLevel.EVENTUAL)
         .build();
     
@@ -427,7 +427,7 @@ CosmosItem objItem= container.getItem(id, id);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-然後訂閱 Mono，參閱插入作業中的 Mono 訂閱程式碼片段。 完整程式碼範例可以在 [CouchbaseToCosmosDB-AsyncKeyValue](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncKeyValue) GitHub 存放庫中取得。
+然後訂閱 Mono，參閱插入作業中的 Mono 訂閱程式碼片段。 完整程式碼範例可以在 [CouchbaseToCosmosDB-AsyncKeyValue](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/AsyncKeyValue) GitHub 存放庫中取得。
 
 ## <a name="data-migration"></a>資料移轉
 

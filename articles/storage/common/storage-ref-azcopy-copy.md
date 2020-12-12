@@ -4,16 +4,16 @@ description: 本文提供 azcopy copy 命令的參考資訊。
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 07/24/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: fd71f4eb56974b93637c23eddc81e5f33ce788b8
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 6390aafca4937a480e4d92ff04003a294b9c0e20
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512149"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356169"
 ---
 # <a name="azcopy-copy"></a>azcopy 複製
 
@@ -276,6 +276,8 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 
 **--include-** 字串只包含在指定日期/時間或之後修改的檔案。 此值應為 ISO8601 格式。 如果未指定時區，則會假設值為執行 AzCopy 之電腦的當地時區。 例如， `2020-08-19T15:04:00Z` 針對 UTC 時間，或 `2020-08-19` 當地時區的午夜 (00:00) 。 在 AzCopy 10.5 時，此旗標只會套用至檔案，而不會套用至資料夾，因此在搭配或使用此旗標時，不會複製資料夾屬性 `--preserve-smb-info` `--preserve-smb-permissions` 。
 
+ **--include-string 之前** 只包含在指定日期/時間之前或之前修改過的檔案。 此值應為 ISO8601 格式。 如果未指定時區，則會假設值為執行 AzCopy 之電腦的當地時區。 例如 `2020-08-19T15:04:00Z` UTC 時間，或 `2020-08-19` 當地時區 (00:00) 午夜。 從 AzCopy 10.7 開始，此旗標只會套用至檔案，而不是資料夾，因此使用此旗標搭配或時，不會複製資料夾屬性 `--preserve-smb-info` `--preserve-smb-permissions` 。
+
 **--include-** 僅限 Windows 的屬性字串 () 包含屬性符合屬性清單的檔案。 例如： A;！R
 
 **--include-路徑** 字串在複製時只包含這些路徑。 此選項不支援萬用字元字元 ( * ) 。 檢查相對路徑首碼 (例如： `myFolder;myFolder/subDirName/file.pdf`) 。
@@ -318,9 +320,9 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 
 **--cap-mbps float**   以每秒 mb 數為單位的傳輸速率上限。 時間的輸送量可能會與端點稍有不同。 如果此選項設定為零，或省略，則輸送量不會有上限。
 
-**--** 命令輸出的輸出類型字串格式。 選項包括： text、json。 預設值為 `text`。  (預設的「文字」 ) 
+**--** 命令輸出的輸出類型字串格式。 選項包括： text、json。 預設值是 `text`。  (預設的「文字」 ) 
 
-**--受信任-microsoft 尾碼** 字串指定可能傳送 Azure Active Directory 登入權杖的其他網域尾碼。  預設為 `*.core.windows.net;*.core.chinacloudapi.cn;*.core.cloudapi.de;*.core.usgovcloudapi.net`。 此處所列的任何一種都會新增至預設值。 基於安全性，您應該只在這裡放置 Microsoft Azure 網域。 以分號分隔多個專案。
+**--受信任-microsoft 尾碼** 字串指定可能傳送 Azure Active Directory 登入權杖的其他網域尾碼。  預設值為 `*.core.windows.net;*.core.chinacloudapi.cn;*.core.cloudapi.de;*.core.usgovcloudapi.net`。 此處所列的任何一種都會新增至預設值。 基於安全性，您應該只在這裡放置 Microsoft Azure 網域。 以分號分隔多個專案。
 
 ## <a name="see-also"></a>請參閱
 

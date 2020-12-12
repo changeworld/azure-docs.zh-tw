@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: a9289fad6f7ae1030628bedcf1a62cacc0b1e23a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 52d6bc97245423a4add392ab05634d21bcf83a0d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564458"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358005"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>針對 Azure Vm 上的 FCI (SQL Server 準備虛擬機器) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -26,7 +27,7 @@ ms.locfileid: "94564458"
 
 若要深入瞭解，請參閱 [使用 Azure vm 上的 SQL Server](failover-cluster-instance-overview.md) 和叢集 [最佳作法](hadr-cluster-best-practices.md)的 FCI 總覽。 
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 - Microsoft Azure 訂用帳戶。 [免費](https://azure.microsoft.com/free/)開始使用。 
 - Azure 虛擬機器上的 Windows 網域或內部部署資料中心會透過虛擬網路配對延伸至 Azure。
@@ -47,19 +48,22 @@ ms.locfileid: "94564458"
 
 請小心選取符合您預期叢集設定的 VM 可用性選項： 
 
- - **Azure 共用磁片** ：已設定容錯網域和更新網域的 [可用性設定組](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) 設定為1，並放在 [鄰近放置群組](../../../virtual-machines/windows/proximity-placement-groups-portal.md)內。
- - **Premium 檔案共用** ： [可用性設定組](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) 或 [可用性區域](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)。 如果您選擇可用性區域作為 Vm 的可用性設定，則 [Premium 檔案共用] 是唯一的共用儲存體選項。 
- - **儲存空間直接存取** ： [可用性設定組](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)。
+- **Azure 共用磁片**：如果您使用 Premium Ssd 或 UltraDisk，可用性選項會有所不同：
+   - 進階 SSD：放在[鄰近放置群組](../../../virtual-machines/windows/proximity-placement-groups-portal.md)中之高階 ssd 的不同錯誤/更新網域中的[可用性設定組](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)。
+   - Ultra 磁片： [可用性區域](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) ，但 vm 必須放在相同的可用性區域中，以將叢集的可用性降低到99.9%。 
+- **Premium 檔案共用**： [可用性設定組](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) 或 [可用性區域](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)。
+- **儲存空間直接存取**： [可用性設定組](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)。
 
->[!IMPORTANT]
->建立虛擬機器後，您即無法設定或變更可用性設定組。
+> [!IMPORTANT]
+> 建立虛擬機器後，您即無法設定或變更可用性設定組。
 
 ## <a name="create-the-virtual-machines"></a>建立虛擬機器
 
 設定 VM 可用性之後，您就可以開始建立虛擬機器。 您可以選擇使用執行或尚未安裝 SQL Server 的 Azure Marketplace 映射。 不過，如果您為 Azure Vm 上的 SQL Server 選擇映射，則必須先從虛擬機器卸載 SQL Server，然後再設定容錯移轉叢集實例。 
 
 ### <a name="considerations"></a>考量
-在 Azure IaaS VM 客體容錯移轉叢集上，建議每個伺服器 (叢集節點) 使用單一 NIC，並且使用單一子網路。 Azure 網路有實體備援，因此 Azure IaaS VM 客體叢集上不需要額外的 NIC 和子網路。 雖然叢集驗證報告會發出節點只能在單一網路上連線的警告，但您可以放心地在 Azure IaaS VM 客體容錯移轉叢集上忽略此警告。
+
+在 Azure VM 來賓容錯移轉叢集上，我們建議每個伺服器 (叢集節點) 和單一子網的單一 NIC。 Azure 網路有實體備援，因此 Azure IaaS VM 客體叢集上不需要額外的 NIC 和子網路。 雖然叢集驗證報告會發出節點只能在單一網路上連線的警告，但您可以放心地在 Azure IaaS VM 客體容錯移轉叢集上忽略此警告。
 
 將兩部虛擬機器放置於：
 
@@ -107,11 +111,11 @@ ms.locfileid: "94564458"
 
 下表詳細說明您可能需要開啟的埠，取決於您的 FCI 設定： 
 
-   | 目的 | Port | 注意
+   | 目的 | 連接埠 | 注意
    | ------ | ------ | ------
-   | SQL Server | TCP 1433 | 適用於 SDL Server 預設執行個體的一般連接埠。 若您曾使用來自資源庫的映像，此連接埠會自動開啟。 </br> </br> **消費者** ：所有 FCI 設定。 |
-   | 健全狀況探查 | TCP 59999 | 任何開啟的 TCP 連接埠。 設定負載平衡器 [健全狀況探查](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) 和叢集，以使用此埠。 </br> </br> **由** ： FCI 與負載平衡器搭配使用。 |
-   | 檔案共用 | UDP 445 | 檔案共用服務使用的埠。 </br> </br> **消費者** ： FCI 與 Premium 檔案共用。 |
+   | SQL Server | TCP 1433 | 適用於 SDL Server 預設執行個體的一般連接埠。 若您曾使用來自資源庫的映像，此連接埠會自動開啟。 </br> </br> **消費者**：所有 FCI 設定。 |
+   | 健全狀況探查 | TCP 59999 | 任何開啟的 TCP 連接埠。 設定負載平衡器 [健全狀況探查](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) 和叢集，以使用此埠。 </br> </br> **由**： FCI 與負載平衡器搭配使用。 |
+   | 檔案共用 | UDP 445 | 檔案共用服務使用的埠。 </br> </br> **消費者**： FCI 與 Premium 檔案共用。 |
 
 ## <a name="join-the-domain"></a>加入網域
 

@@ -1,14 +1,14 @@
 ---
 title: 檢視服務提供者活動
 description: 客戶可以透過 Azure 委派的資源管理來查看已記錄的活動，以查看服務提供者所執行的動作。
-ms.date: 10/12/2020
+ms.date: 12/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 56c8b88274909aa55e19a4b364aaa3ace2a0c26d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: dcf177cc41dac846d096607445ff4c3d433620ca
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371081"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356373"
 ---
 # <a name="view-service-provider-activity"></a>檢視服務提供者活動
 
@@ -19,7 +19,7 @@ ms.locfileid: "92371081"
 
 ## <a name="view-activity-log-data"></a>檢視活動記錄資料
 
-您可以從 Azure 入口網站中的 [**監視**] 功能表[查看活動記錄](../../azure-monitor/platform/activity-log.md#view-the-activity-log)。 若要將結果限制為特定的訂用帳戶，請使用篩選器來選取特定的訂用帳戶。 您也可以透過程式設計方式來 [查看和取得活動記錄事件](../../azure-monitor/platform/activity-log.md#view-the-activity-log) 。
+您可以從 Azure 入口網站中的 [**監視**] 功能表 [查看活動記錄](../../azure-monitor/platform/activity-log.md#view-the-activity-log)。 若要將結果限制為特定的訂用帳戶，請使用篩選器來選取特定的訂用帳戶。 您也可以透過程式設計方式來 [查看和取得活動記錄事件](../../azure-monitor/platform/activity-log.md#view-the-activity-log) 。
 
 > [!NOTE]
 > 服務提供者租使用者中的使用者可以在客戶租使用者中查看委派訂用帳戶的活動記錄結果（如果他們被授與「 [讀者](../../role-based-access-control/built-in-roles.md#reader) 」角色 (或另一個內建角色），而該訂用帳戶會在該訂用帳戶上線至 Azure Lighthouse 時) 。
@@ -29,7 +29,7 @@ ms.locfileid: "92371081"
 記錄的活動可在過去90天的 Azure 入口網站中使用。 若要瞭解如何儲存此資料超過90天，請參閱 [在 Log Analytics 工作區中收集和分析 Azure 活動記錄](../../azure-monitor/platform/activity-log.md)。
 
 > [!NOTE]
-> 服務提供者中的使用者會出現在活動記錄中，但這些使用者及其角色指派不會顯示在 **存取控制 (IAM) ** 或透過 api 來抓取角色指派資訊時。
+> 服務提供者中的使用者會出現在活動記錄中，但這些使用者及其角色指派不會顯示在 **存取控制 (IAM)** 或透過 api 來抓取角色指派資訊時。
 
 ## <a name="set-alerts-for-critical-operations"></a>設定重要作業的警示
 
@@ -42,6 +42,12 @@ ms.locfileid: "92371081"
 您可以建立查詢來分析已記錄的活動，或是專注于特定的專案。 例如，可能會需要您針對在訂用帳戶上執行的所有系統管理層級動作報告。 您可以建立查詢，只篩選這些動作，並依使用者、日期或其他值來排序結果。
 
 如需詳細資訊，請參閱 [Azure 監視器中的記錄查詢總覽](../../azure-monitor/log-query/log-query-overview.md)。
+
+## <a name="view-user-activity-across-domains"></a>跨網域查看使用者活動
+
+您可以使用 [ [依網域的活動記錄](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) ] 範例活頁簿，在多個網域中查看個別使用者的活動。
+
+您可以依功能變數名稱篩選結果。 您也可以套用其他篩選準則，例如類別、層級或資源群組。
 
 ## <a name="next-steps"></a>後續步驟
 

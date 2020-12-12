@@ -7,18 +7,19 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.custom: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 01f9ee1ad134c14150d16569fd57e658b160784c
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 6ed5e11a8492314e99b9f105d259fa910dcdb77d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556313"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357801"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>在 Azure Vm 上建立具有儲存空間直接存取 (SQL Server 的 FCI) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -50,7 +51,7 @@ ms.locfileid: "94556313"
    > 您可在 Azure 中，從範本開始建立整個解決方案。 您可以在 GitHub [Azure 快速入門範本](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad) 頁面上取得範本的範例。 本範例並非為任何特定工作負載設計或測試。 您可執行範本來建立 SQL Server FCI，並將儲存空間直接存取儲存體連線至網域。 您可評估此範本，並依需要進行修改。
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 在您完成本文中的指示之前，您應該已經有：
 
@@ -180,7 +181,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 ## <a name="test-cluster-failover"></a>測試叢集容錯移轉
 
-測試叢集的容錯移轉。 在 **容錯移轉叢集管理員** 中，以滑鼠右鍵按一下您的叢集，然後選取 [ **其他動作** ]  >  **移動核心叢集資源**  >  **選取節點** ，然後選取叢集的其他節點。 將核心叢集資源移到叢集的每個節點，再移回主要節點。 如果您可成功地將叢集移至每個節點，即可開始安裝 SQL Server。  
+測試叢集的容錯移轉。 在 **容錯移轉叢集管理員** 中，以滑鼠右鍵按一下您的叢集，然後選取 [**其他動作**]  >  **移動核心叢集資源**  >  **選取節點**，然後選取叢集的其他節點。 將核心叢集資源移到叢集的每個節點，再移回主要節點。 如果您可成功地將叢集移至每個節點，即可開始安裝 SQL Server。  
 
 :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="將核心資源移至其他節點以測試叢集容錯移轉":::
 

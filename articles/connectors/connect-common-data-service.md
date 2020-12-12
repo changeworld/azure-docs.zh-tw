@@ -1,26 +1,29 @@
 ---
-title: 連接到 Common Data Service
-description: 使用 Azure Logic Apps 來建立和管理 Common Data Service 記錄
+title: '連接至 Common Data Service (Microsoft Dataverse) '
+description: 使用 Azure Logic Apps 建立及管理 Common Data Service (Microsoft Dataverse) 記錄
 services: logic-apps
 ms.suite: integration
 ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 12/11/2020
 tags: connectors
-ms.openlocfilehash: de85a61cbd699ec9ac2669f8abb6217254038de9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b17c3d54b7065a18e015363a0362766f844e4e10
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334577"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355112"
 ---
-# <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 在 Common Data Service 中建立和記錄管理
+# <a name="create-and-manage-records-in-common-data-service-microsoft-dataverse-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 在 Common Data Service (Microsoft Dataverse) 中建立和記錄管理
 
-使用 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 和 [Common Data Service 連接器](/connectors/commondataservice/)，您可以建立自動化的工作流程，以管理 [Common Data Service](/powerapps/maker/common-data-service/data-platform-intro) 資料庫中的記錄。 這些工作流程可以建立記錄、更新記錄，以及執行其他作業。 您也可以從 Common Data Service 資料庫取得資訊，並將輸出提供給您的邏輯應用程式中使用的其他動作。 例如，當您 Common Data Service 資料庫中的記錄更新時，您可以使用 Office 365 Outlook connector 傳送電子郵件。
+> [!NOTE]
+> 在2020年11月，Common Data Service 已重新命名為 Microsoft Dataverse。
+
+使用 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 和 [Common Data Service 連接器](/connectors/commondataservice/)，您可以建立自動化的工作流程，以管理 [Common Data Service （現在為 Microsoft Dataverse database）](/powerapps/maker/common-data-service/data-platform-intro) 中的記錄。 這些工作流程可以建立記錄、更新記錄，以及執行其他作業。 您也可以從 Common Data Service 資料庫取得資訊，並將輸出提供給您的邏輯應用程式中使用的其他動作。 例如，當您 Common Data Service 資料庫中的記錄更新時，您可以使用 Office 365 Outlook connector 傳送電子郵件。
 
 本文說明如何建立邏輯應用程式，以在每次建立新的潛在客戶記錄時建立工作記錄。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -49,7 +52,7 @@ ms.locfileid: "91334577"
 
    ![要監視的環境觸發程式資訊](./media/connect-common-data-service/when-record-created-trigger-details.png)
 
-   | 屬性 | 必要 | 描述 |
+   | 屬性 | 必要 | 說明 |
    |----------|----------|-------------|
    | **環境** | 是 | 要監視的環境，例如「Fabrikam 銷售生產」。 如需詳細資訊，請參閱 [Power Platform 環境總覽](/power-platform/admin/environments-overview)。 |
    | **機構名稱** | 是 | 要監視的實體，例如「潛在客戶」 |
@@ -70,7 +73,7 @@ ms.locfileid: "91334577"
 
    ![要在其中建立記錄之環境的動作資訊](./media/connect-common-data-service/create-new-record-action-details.png)
 
-   | 屬性 | 必要 | 描述 |
+   | 屬性 | 必要 | 說明 |
    |----------|----------|-------------|
    | **組織名稱** | 是 | 您要在其中建立記錄的環境，在您的觸發程式中不一定是相同的環境，但在此範例中為「Fabrikam 銷售生產」 |
    | **機構名稱** | 是 | 要在其中建立記錄的實體，例如「Tasks」 |
@@ -87,7 +90,7 @@ ms.locfileid: "91334577"
 
       ![選取要在工作記錄中使用的觸發程式輸出](./media/connect-common-data-service/create-new-record-action-select-trigger-outputs.png)
 
-      | 觸發程式輸出 | 描述 |
+      | 觸發程式輸出 | 說明 |
       |----------------|-------------|
       | **First Name** | 潛在客戶記錄中用來做為工作記錄中主要連絡人的名字 |
       | **姓氏** | 從潛在客戶記錄中，用來做為工作記錄中主要連絡人的姓氏 |
@@ -98,7 +101,7 @@ ms.locfileid: "91334577"
 
    ![完成「建立新的記錄」動作](./media/connect-common-data-service/finished-create-record-action-details.png)
 
-1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]。
+1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]  。
 
 1. 若要手動啟動邏輯應用程式，請在設計工具工具列上選取 [ **執行**]。 若要測試您的邏輯應用程式，請建立新的「潛在客戶」記錄。
 
@@ -153,7 +156,7 @@ ms.locfileid: "91334577"
 | 文字欄位 | 單行文字 | 需要單行文字或具有 text 資料類型的動態內容，例如，這些屬性： <p><p>- **描述** <br>- **類別** |
 | 整數位段 | 整數 | 需要具有整數資料類型的整數或動態內容，例如，這些屬性： <p><p>- **完成百分比** <br>- **時間** |
 | 日期欄位 | 日期及時間 | 需要以 MM/DD/YYY 格式的日期或具有日期資料類型的動態內容，例如，這些屬性： <p><p>- **建立于** <br>- **開始日期** <br>- **實際開始** <br>- **實際結束** <br>- **到期日** |
-| 參考另一個實體記錄的欄位 | 主索引鍵 | 需要記錄識別碼（例如 GUID）和查閱類型，這表示動態內容清單中的值將無法運作，例如這些屬性： <p><p>- **擁有**者：必須是有效的使用者識別碼或小組記錄識別碼。 <br>- **擁有者類型**：必須分別為查閱類型 `systemusers` ，例如或 `teams` 。 <p><p>- **關於**：必須是有效的記錄識別碼，例如帳戶識別碼或連絡人記錄識別碼。 <br>- **關於類型**：必須分別為查閱類型，例如 `accounts` 或 `contacts` 。 <p><p>- **客戶**：必須是有效的記錄識別碼，例如帳戶識別碼或連絡人記錄識別碼。 <br>- **客戶類型**：必須分別為查閱類型，例如 `accounts` 或 `contacts` 。 |
+| 參考另一個實體記錄的欄位 | 主索引鍵 | 需要記錄識別碼（例如 GUID）和查閱類型，這表示動態內容清單中的值將無法運作，例如這些屬性： <p><p>- **擁有** 者：必須是有效的使用者識別碼或小組記錄識別碼。 <br>- **擁有者類型**：必須分別為查閱類型 `systemusers` ，例如或 `teams` 。 <p><p>- **關於**：必須是有效的記錄識別碼，例如帳戶識別碼或連絡人記錄識別碼。 <br>- **關於類型**：必須分別為查閱類型，例如 `accounts` 或 `contacts` 。 <p><p>- **客戶**：必須是有效的記錄識別碼，例如帳戶識別碼或連絡人記錄識別碼。 <br>- **客戶類型**：必須分別為查閱類型，例如 `accounts` 或 `contacts` 。 |
 ||||
 
 此範例顯示 [ **建立新的記錄** ] 動作如何建立與其他實體記錄相關聯的新「工作」記錄，特別是使用者記錄和客戶紀錄。 動作會使用符合相關屬性預期資料類型的值，指定這些實體記錄的識別碼和查閱類型。

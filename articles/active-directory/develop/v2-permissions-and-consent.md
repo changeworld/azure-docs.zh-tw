@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: c113a252363d3b94131ac423f795f6efb13b1975
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 14b6d6ecc6523199102fd3ef9370fe901c4ff51d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029544"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355693"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 身分識別平台端點中的權限和同意
 
@@ -89,7 +89,7 @@ OpenID Connect 的 Microsoft 身分識別平臺會有一些定義完善的範圍
 [ `offline_access` 範圍](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess)可讓您的應用程式代表使用者存取資源，延長一段時間。 在同意頁面上，此範圍會顯示為「維持存取您可存取的資料」權限。 當使用者核准範圍時 `offline_access` ，您的應用程式可以接收來自 Microsoft 身分識別平臺權杖端點的重新整理權杖。 重新整理權杖是長期權杖。 您的應用程式可以在舊存取權杖到期時取得新的存取權杖。
 
 > [!NOTE]
-> 此許可權現在會出現在所有同意畫面上，即使是未提供重新整理權杖 ([隱含流程](v2-oauth2-implicit-grant-flow.md)) 的流程。  這是為了涵蓋用戶端可以在隱含流程內開始的案例，然後移至預期需要重新整理權杖的程式碼流程。
+> 此許可權現在會出現在所有同意畫面上，即使是未提供重新整理權杖 ([隱含流程](v2-oauth2-implicit-grant-flow.md)) 的流程。 這是為了涵蓋用戶端可以在隱含流程內開始的案例，然後移至預期需要重新整理權杖的程式碼流程。
 
 在 Microsoft 身分識別平臺上 (對 v2.0 端點提出的要求) ，您的應用程式必須明確要求 `offline_access` 範圍，才能接收重新整理權杖。 這意謂著當您在 [OAuth 2.0 授權碼流程](active-directory-v2-protocols.md)中兌換授權碼時，您只會從 `/token` 端點收到存取權杖。 存取權杖的有效期短。 存取權杖的有效期通常在一小時內。 屆時，您的應用程式將必須把使用者重新導向回 `/authorize` 端點，以擷取新的授權碼。 在此重新導向期間，視應用程式的類型而定，使用者可能需要重新輸入其認證或重新同意權限。
 
@@ -193,7 +193,7 @@ https://graph.microsoft.com/mail.send
 ```
 
 
-| 參數        | 條件        | 描述                                                                                |
+| 參數        | 條件        | 說明                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
 | `tenant` | 必要 | 您想要要求權限的目錄租用戶。 可以用 GUID 或易記名稱格式提供，或是與組織一般參考，如範例中所示。 請勿使用「一般」，因為個人帳戶無法在租使用者的內容中提供系統管理員同意。 若要確保與管理租使用者的個人帳戶具有最佳相容性，請盡可能使用租使用者識別碼。 |
 | `client_id` | 必要 | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的 **應用程式 (用戶端) 識別碼**。 |
@@ -212,7 +212,7 @@ https://graph.microsoft.com/mail.send
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 | --- | --- |
 | `tenant` | 將應用程式所要求的權限授與應用程式的目錄租用戶 (採用 GUID 格式)。 |
 | `state` | 一個包含在要求中而將一併在權杖回應中傳回的值。 它可以是您想要的任何內容的字串。 此狀態用於在驗證要求出現之前，於應用程式中編碼使用者的狀態資訊，例如之前所在的網頁或檢視。 |

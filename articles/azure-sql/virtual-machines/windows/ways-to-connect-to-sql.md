@@ -7,18 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f8bee990074debf09cc9bfd19f96470a029b50c9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 28b68178b98e53b7a7d4192ad20c05a667344969
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793121"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356706"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>連線到 Azure 上的 SQL Server 虛擬機器
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

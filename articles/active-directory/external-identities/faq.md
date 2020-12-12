@@ -12,19 +12,20 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2825d3776f7b45f6726aaec05484900511ed1477
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 90cc15dc3944efd82d025df1bb5072c57346055e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96172970"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355625"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B 共同作業常見問題集
 
 這些有關 Azure Active Directory (Azure AD) 企業對企業 (B2B) 共同作業的常見問題集 (FAQ) 會定期更新來包含新的主題。
 
-   > [!IMPORTANT]
-   > **自 2021 年 3 月 31 日起**，Microsoft 將不再支援兌換邀請，而是建立適用於 B2B 共同作業案例的非受控 Azure AD 帳戶和租用戶。 在準備過程中，我們鼓勵客戶選擇使用[電子郵件一次性密碼驗證](one-time-passcode.md)。 我們歡迎您提供此公開預覽功能的意見反應，而且期待能建立更多共同作業的方式。
+> [!IMPORTANT]
+> - 自 **2021 年1月4日起**，Google 將 [淘汰 web 服務登入支援](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)。 如果您要使用 Google 同盟或使用 Gmail 的自助式註冊，您應該 [測試企業營運原生應用程式的相容性](google-federation.md#deprecation-of-webview-sign-in-support)。
+> - **自 2021 年 3 月 31 日起**，Microsoft 將不再支援兌換邀請，而是建立適用於 B2B 共同作業案例的非受控 Azure AD 帳戶和租用戶。 在準備過程中，我們鼓勵客戶選擇使用[電子郵件一次性密碼驗證](one-time-passcode.md)。 我們歡迎您提供此公開預覽功能的意見反應，而且期待能建立更多共同作業的方式。
 
 ### <a name="can-we-customize-our-sign-in-page-so-its-more-intuitive-for-our-b2b-collaboration-guest-users"></a>是否可以自訂登入頁面，讓我們的 B2B 共同作業來賓使用者感到更直覺式？
 當然！ 請參閱我們[有關這項功能的部落格文章](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/)。 如需有關如何自訂組織登入頁面的詳細資訊，請參閱[將公司商標新增至登入和存取面板頁面](../fundamentals/customize-branding.md)。
@@ -70,7 +71,7 @@ ms.locfileid: "96172970"
 5. 在 [ **新增** ] 頁面的 [ **名稱** ] 文字方塊中，輸入原則的名稱 (例如「封鎖來賓存取入口網站」 ) 。
 6. 在 [指派]  底下，選取 [使用者和群組]  。
 7. 在 [ **包含** ] 索引標籤上，選擇 [ **選取使用者和群組**]，然後選取 [ **所有來賓和外部使用者] (預覽)**。
-9. 選取 [完成]。
+9. 選取 [完成]  。
 10. 在 [ **新增** ] 頁面的 [ **指派** ] 區段中，選取 [ **雲端應用程式] 或 [動作**]。
 11. 在 [ **雲端應用程式] 或 [動作** ] 頁面上，選擇 [ **選取應用程式**]，然後選擇 [ **選取**]。
 12. 在 [選取]  頁面上，選擇 [Microsoft Azure 管理]  ，然後選擇 [選取]  。

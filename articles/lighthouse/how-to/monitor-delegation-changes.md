@@ -1,14 +1,14 @@
 ---
 title: 監視您管理租使用者中的委派變更
 description: 瞭解如何監視從客戶租使用者到您管理租使用者的委派活動。
-ms.date: 09/08/2020
+ms.date: 12/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 15e96939d4115bd93260687f637143cc798a4331
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d254c90881d23255dda5c38a868eb61e51b4f08
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336593"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356407"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>監視您管理租使用者中的委派變更
 
@@ -175,9 +175,10 @@ else {
 1. 流覽至 [ **我的客戶** ] 頁面，然後從左側導覽功能表中選取 [ **活動記錄** ]。
 1. 確定已在畫面頂端附近的篩選中選取 [ **目錄] 活動** 。
 
-將會顯示委派變更的清單。 您可以選取 [ **編輯資料行** ]，以顯示或隱藏 **狀態**、 **事件類別**、 **時間**、 **時間戳記**、 **訂**用帳戶、 **事件起始者**、 **資源群組**、 **資源類型**和 **資源** 值。
+將會顯示委派變更的清單。 您可以選取 [ **編輯資料行** ]，以顯示或隱藏 **狀態**、 **事件類別**、 **時間**、 **時間戳記**、 **訂** 用帳戶、 **事件起始者**、 **資源群組**、 **資源類型** 和 **資源** 值。
 
 ## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何讓客戶在 [Azure Lighthouse](../concepts/azure-delegated-resource-management.md)上架。
 - 瞭解 [Azure 監視器](../../azure-monitor/index.yml) 和 [Azure 活動記錄](../../azure-monitor/platform/platform-logs-overview.md)。
+- 請參閱網域範例活頁簿的 [活動記錄](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) ，以瞭解如何在訂用帳戶中顯示 Azure 活動記錄，並提供依功能變數名稱篩選的選項。

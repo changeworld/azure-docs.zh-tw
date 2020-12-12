@@ -14,16 +14,16 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 2059c473c8429e7498992e26c0a2c90ea835c537
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 784f1cc7b7e063166dc1f24851ab217cef8d831a
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89646590"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355642"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft 身分識別平臺識別碼權杖
 
-`id_tokens` 會以 [OpenID Connect](v2-protocols-oidc.md) (OIDC) 流程的一部分傳送至用戶端應用程式。 這些權杖可以一併傳送或代替存取權杖，並由用戶端用來驗證使用者。
+`id_tokens` 會以 [OpenID Connect](v2-protocols-oidc.md) (OIDC) 流程的一部分傳送至用戶端應用程式。 這些使用者可以與存取權杖一起傳送或傳送，而不是由用戶端用來驗證使用者。
 
 ## <a name="using-the-id_token"></a>使用 id_token
 
@@ -85,7 +85,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`unique_name` | 字串 | 提供人類看得懂的值，用以識別權杖的主體。 這個值在任何給定的時間點都是唯一的，但是當電子郵件和其他識別碼可以重複使用時，這個值可能會重新出現在其他帳戶上，因此只能用於顯示用途。 僅在 v1.0 `id_tokens` 中發出。 |
 |`uti` | 不透明字串 | Azure 用來重新驗證權杖的內部宣告。 應該予以忽略。 |
 |`ver` | 字串，1.0 或 2.0 | 表示 id_token 的版本。 |
-|`hasgroups`|布林值|如果有的話，一律為 true，表示使用者至少在一個群組中。 在隱含授與流程中用來取代 Jwt 的群組宣告，如果完整群組宣告會將 URI 片段延伸到超過 URL 長度限制 (目前) 的6個或更多群組。 表示用戶端應該使用 Microsoft Graph API 來判斷使用者的群組 (`https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects`)。|
+|`hasgroups`|Boolean|如果有的話，一律為 true，表示使用者至少在一個群組中。 在隱含授與流程中用來取代 Jwt 的群組宣告，如果完整群組宣告會將 URI 片段延伸到超過 URL 長度限制 (目前) 的6個或更多群組。 表示用戶端應該使用 Microsoft Graph API 來判斷使用者的群組 (`https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects`)。|
 |`groups:src1`|JSON 物件 | 若為沒有長度限制 (請參閱上面的 `hasgroups`) 但是對權杖而言仍然太大的權杖要求，則會包含使用者的完整 groups 清單連結。 在 JWT 中以分散式宣告形式取代 `groups` 宣告，在 SAML 中則以新宣告形式取代。 <br><br>**範例 JWT 值**： <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }`<br><br> 如需詳細資訊，請參閱 [群組超額](#groups-overage-claim)宣告。|
 
 > [!NOTE]
@@ -96,7 +96,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 
 ### <a name="using-claims-to-reliably-identify-a-user-subject-and-object-id"></a>使用宣告來可靠地識別使用者 (主體和物件識別碼) 
 
-找出使用者 (說，在資料庫中進行查閱，或決定他們) 的許可權時，請務必使用在一段時間內保持不變且獨一無二的資訊。  繼承應用程式有時會使用像是電子郵件地址、電話號碼或 UPN 等欄位。  這些都可以隨著時間而變更，也可以在一段時間內重複使用-當員工變更其名稱時，或將員工的電子郵件地址與先前的電子郵件地址相符，就不會再出現員工) 。 因此，您的應用程式不一定要使用人類看得懂的資料來識別使用者-人類可讀取的資料， **而是要** 變更它。  相反地，請使用 OIDC 標準所提供的宣告，或由 Microsoft 提供的擴充宣告 `sub` 和 `oid` 宣告。
+找出使用者 (說，在資料庫中進行查閱，或決定他們) 的許可權時，請務必使用在一段時間內保持不變且獨一無二的資訊。 繼承應用程式有時會使用電子郵件地址、電話號碼或 UPN 等欄位。  這些都可以隨著時間而變更，也可以在一段時間內重複使用-當員工變更其名稱時，或將員工的電子郵件地址與先前的電子郵件地址相符，就不會再出現員工) 。 因此，您的應用程式不一定要使用人類看得懂的資料來識別使用者-人類可讀取的資料， **而是要** 變更它。 相反地，請使用 OIDC 標準所提供的宣告，或由 Microsoft 提供的擴充宣告 `sub` 和 `oid` 宣告。
 
 若要正確地儲存每位使用者的資訊，請使用 `sub` 或 `oid` 單獨 (因為 guid 是唯一的) ，並在 `tid` 需要時用於路由或分區化。  如果您需要在服務之間共用資料， `oid` + `tid` 最好是讓所有應用程式取得相同的 `oid` 和 `tid` 宣告給指定的使用者。  `sub`Microsoft 身分識別平臺中的宣告為「成對」-它是根據權杖收件者、租使用者和使用者的組合而定。  因此，針對指定使用者要求識別碼權杖的兩個應用程式將會收到不同的 `sub` 宣告，但該 `oid` 使用者的宣告相同。
 

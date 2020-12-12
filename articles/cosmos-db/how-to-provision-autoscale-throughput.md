@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/15/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 615ce7da3ec480b766ceaeb307c50f7cb759fd4a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 52904296df77d9097a6180345388e8e702e2bca0
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100111"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357614"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db---sql-api"></a>在 Azure Cosmos DB-SQL API 中的資料庫或容器上布建自動調整輸送量
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -51,7 +51,7 @@ ms.locfileid: "93100111"
 
 1. 在 [調整] 下，依序選取 [自動調整] 選項和 [儲存]。
 
-   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="建立容器並設定自動調整佈建輸送量":::
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="在現有的容器上啟用自動調整":::
 
 > [!NOTE]
 > 當在現有的資料庫或容器上啟用自動調整時，最大 RU/秒的起始值是由系統根據您目前手動佈建輸送量設定和儲存體來決定。 作業完成之後，即可視需要變更最大 RU/秒。 [深入了解。](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 
@@ -128,7 +128,7 @@ await container.ReplaceThroughputAsync(ThroughputProperties.CreateAutoscaleThrou
 // Create instance of CosmosClient
 CosmosAsyncClient client = new CosmosClientBuilder()
     .setEndpoint(HOST)
-    .setKey(MASTER)
+    .setKey(PRIMARYKEY)
     .setConnectionPolicy(CONNECTIONPOLICY)
     .buildAsyncClient();
 
@@ -145,7 +145,7 @@ CosmosAsyncDatabase database = client.createDatabase(databaseName, autoscaleThro
 // Create instance of CosmosClient
 CosmosClient client = new CosmosClientBuilder()
     .setEndpoint(HOST)
-    .setKey(MASTER)
+    .setKey(PRIMARYKEY)
     .setConnectionPolicy(CONNECTIONPOLICY)
     .buildClient();
 
