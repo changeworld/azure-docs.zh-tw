@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ca4b5486b54de28497ea41765337bfa19f12e3d7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 780324d1a6f7d9edfb552377c3e966e6a186c231
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573114"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347926"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>將語言套件新增至 Windows 10 多會話映射
 
@@ -24,7 +24,7 @@ Windows 虛擬桌面是您的使用者可以隨時隨地部署的服務。 這�
 
 第二種方法更有效率且符合成本效益。 不過，您決定哪一種方法最適合您的需求。 本文將示範如何為您的影像自訂語言。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 您需要下列專案來自訂您的 Windows 10 企業版多會話映射以新增多種語言：
 
@@ -52,6 +52,7 @@ Windows 虛擬桌面是您的使用者可以隨時隨地部署的服務。 這�
           - [Windows 10，版本2004或 20H2 **9B** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_64_ARM64_MultiLang_LangPckAll_LIP_LXP_ONLY)
           - [Windows 10，版本2004或 20H2 **9C** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY)
           - [Windows 10，版本2004或 20H2 **10C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2010C.iso)
+          - [Windows 10，版本2004或 20H2 **11C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2011C.iso)
 
 - Windows 檔案伺服器虛擬機器上的 Azure 檔案儲存體共用或檔案共用
 

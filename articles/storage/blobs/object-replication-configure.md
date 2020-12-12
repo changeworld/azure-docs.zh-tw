@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e3503a9eef5c11db35684ca61fb1ee39525a465d
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 9f2b0dccde0532646457a0841fc2798e103d8cc7
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427593"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347943"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>設定區塊 blob 的物件複寫
 
@@ -52,8 +52,8 @@ ms.locfileid: "94427593"
 若要在 Azure 入口網站中建立複寫原則，請遵循下列步驟：
 
 1. 巡覽至 Azure 入口網站的 [來源儲存體帳戶]。
-1. 在 [ **Blob 服務** ] 底下，選取 [ **物件** 複寫]。
-1. 選取 [ **設定複寫規則** ]。
+1. 在 [ **Blob 服務**] 底下，選取 [ **物件** 複寫]。
+1. 選取 [ **設定複寫規則**]。
 1. 選取 [目的地訂用帳戶] 和 [目的地儲存體帳戶]。
 1. 在 [容器配對] 區段中，從來源帳戶中選取 [來源容器]，並從目的地帳戶中選取 [目的地容器]。 每個複寫原則最多可建立 10 組容器配對。
 
@@ -281,7 +281,7 @@ az storage account or-policy show \
     建立 JSON 檔案來定義複寫原則的簡單方式，是先在 Azure 入口網站的兩個儲存體帳戶之間建立測試複寫原則。 然後，您可以下載複寫規則，並視需要修改 JSON 檔案。
 
 1. 在 Azure 入口網站中，流覽至目的地帳戶的 **物件** 複寫設定。
-1. 選取 **[上傳複寫規則** ]。
+1. 選取 **[上傳複寫規則**]。
 1. 上傳 JSON 檔案。 Azure 入口網站會顯示將建立的原則和規則，如下圖所示。
 
     :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="顯示如何上傳 JSON 檔案以定義複寫原則的螢幕擷取畫面":::
@@ -291,7 +291,7 @@ az storage account or-policy show \
 然後，您可以下載 JSON 檔案，其中包含可提供給其他使用者以設定來源帳戶的原則定義。 若要下載此 JSON 檔案，請遵循下列步驟：
 
 1. 在 Azure 入口網站中，流覽至目的地帳戶的 **物件** 複寫設定。
-1. 選取您要下載之原則旁的 [ **更多** ] 按鈕，然後選取 [ **下載規則** ]，如下圖所示。
+1. 選取您要下載之原則旁的 [ **更多** ] 按鈕，然後選取 [ **下載規則**]，如下圖所示。
 
     :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="顯示如何將複寫規則下載至 JSON 檔案的螢幕擷取畫面":::
 
@@ -314,7 +314,7 @@ $destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 $destPolicy | ConvertTo-Json -Depth 5 > c:\temp\json.txt
 ```
 
-若要使用 JSON 檔案以 PowerShell 設定來源帳戶的複寫原則，請取出本機檔案，並從 JSON 轉換成物件。 然後呼叫 AzStorageObjectReplicationPolicy 命令來 [設定](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) 來源帳戶的原則，如下列範例所示。 請記得以您自己的值取代角括弧中的值和檔案路徑：
+若要使用 JSON 檔案以 PowerShell 定義來源帳戶的複寫原則，請取出本機檔案，並從 JSON 轉換成物件。 然後呼叫 AzStorageObjectReplicationPolicy 命令來 [設定](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) 來源帳戶的原則，如下列範例所示。 請記得以您自己的值取代角括弧中的值和檔案路徑：
 
 ```powershell
 $object = Get-Content -Path C:\temp\json.txt | ConvertFrom-Json
@@ -359,7 +359,7 @@ az storage account or-policy create \
 
 1. 流覽至 Azure 入口網站中的來源帳戶。
 1. 找出包含來源 blob 的容器。
-1. 選取 blob 以顯示其屬性。 如果已成功複寫 blob，您會在 [ **物件** 複寫] 區段中看到狀態設定為 [ *完成* ]。 此外，也會列出負責管理此容器之物件複寫的規則的複寫原則識別碼和識別碼。
+1. 選取 blob 以顯示其屬性。 如果已成功複寫 blob，您會在 [ **物件** 複寫] 區段中看到狀態設定為 [ *完成*]。 此外，也會列出負責管理此容器之物件複寫的規則的複寫原則識別碼和識別碼。
 
 :::image type="content" source="media/object-replication-configure/check-replication-status-source.png" alt-text="顯示來源帳戶中 blob 複寫狀態的螢幕擷取畫面":::
 

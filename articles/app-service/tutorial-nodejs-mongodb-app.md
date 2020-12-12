@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-js, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: b3d88c99ab0e9e204eb4d7dd78dc319f889a5e7d
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 5e76c87da1dc9ab7d4adeb0e964ae5a3248b8431
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005506"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347654"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>教學課程：在 Azure 中建置 Node.js 和 MongoDB 應用程式
 
@@ -305,7 +305,7 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (5/5), done.
 Writing objects: 100% (5/5), 489 bytes | 0 bytes/s, done.
 Total 5 (delta 3), reused 0 (delta 0)
-remote: Updating branch 'main'.
+remote: Updating branch 'master'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id '6c7c716eee'.
 remote: Running custom deployment command...
@@ -316,7 +316,7 @@ remote: Handling node.js deployment.
 .
 remote: Deployment successful.
 To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
- * [new branch]      main -> main
+ * [new branch]      master -> master
 </pre>
 
 您可能會注意到，部署程序會在 `npm install` 之後執行 [Gulp](https://gulpjs.com/)。 App Service 不會在部署期間執行 Gulp 或 Grunt 工作，因此，這個範例存放庫在其根目錄中有兩個其他檔案可啟用它： 
@@ -467,7 +467,7 @@ node server.js
 
 ```bash
 git commit -am "added article comment"
-git push azure main
+git push azure master
 ```
 
 完成 `git push` 之後，巡覽至 Azure 應用程式，然後嘗試執行新功能。

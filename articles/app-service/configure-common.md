@@ -1,21 +1,21 @@
 ---
 title: 在入口網站中設定應用程式
-description: 瞭解如何在 Azure 入口網站中設定 App Service 應用程式的一般設定。 應用程式設定、連接字串、平臺、語言堆疊、容器等。
+description: 瞭解如何在 Azure 入口網站中設定 App Service 應用程式的一般設定。 應用程式設定、應用程式設定、連接字串、平臺、語言堆疊、容器等。
 keywords: azure app service，web 應用程式，應用程式設定，環境變數
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
-ms.date: 08/13/2019
+ms.date: 12/07/2020
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
-ms.openlocfilehash: 76cfefa3f104ecef69e28fecd1c37fc336b0ce8c
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 4594a3a7ac7af7acf75fa5c47e2eab3246fc00e7
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854643"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346748"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>設定 Azure 入口網站中的 App Service 應用程式
 
-本主題說明如何使用 [Azure 入口網站]來設定 web 應用程式、行動後端或 API 應用程式的一般設定。
+本文說明如何使用 [Azure 入口網站]來設定 web 應用程式、行動後端或 API 應用程式的一般設定。
 
 ## <a name="configure-app-settings"></a>進行應用程式設定
 
@@ -116,9 +116,12 @@ ms.locfileid: "96854643"
 
 ![應用程式設定](./media/configure-common/open-ui.png)
 
-若為 ASP.NET 和 ASP.NET Core 開發人員，在 App Service 中設定連接字串，就像在Web.config中設定連接字串 `<connectionStrings>` ，但您在 App Service 中設定的值會覆寫 *Web.config* 中的連接字串。 *Web.config* 您可以保留開發設定 (例如，資料庫檔案) *Web.config* 和生產秘密 (例如，SQL Database 安全地) 認證。 當您在本機進行偵錯工具時，相同的程式碼會使用您的開發設定，並在部署至 Azure 時使用您的生產秘密。
+若為 ASP.NET 和 ASP.NET Core 開發人員，在 App Service 中設定連接字串，就像在Web.config中設定連接字串 `<connectionStrings>` ，但您在 App Service 中設定的值會覆寫 *Web.config* 中的連接字串。 您可以保留開發設定 (例如，資料庫檔案) *Web.config* 和生產秘密 (例如，SQL Database 安全地) 認證。 當您在本機進行偵錯工具時，相同的程式碼會使用您的開發設定，並在部署至 Azure 時使用您的生產秘密。
 
-針對其他語言堆疊，最好改為使用 [應用程式設定](#configure-app-settings) ，因為連接字串需要變數索引鍵的特殊格式，才能存取這些值。 以下是一個例外狀況，不過，如果您在應用程式中設定其連接字串，則會將某些 Azure 資料庫類型與應用程式一起備份。 如需詳細資訊，請參閱已 [備份的內容](manage-backup.md#what-gets-backed-up)。 如果您不需要此自動備份，請使用應用程式設定。
+針對其他語言堆疊，最好改為使用 [應用程式設定](#configure-app-settings) ，因為連接字串需要變數索引鍵的特殊格式，才能存取這些值。 
+
+> [!NOTE]
+> 有一種情況下，您可能會想要使用連接字串，而不是 non-.NET 語言的應用程式設定：只有當您在 App Service 應用程式中設定資料庫的連接字串時， _才_ 會將某些 Azure 資料庫類型與應用程式一起備份。 如需詳細資訊，請參閱已 [備份的內容](manage-backup.md#what-gets-backed-up)。 如果您不需要此自動備份，請使用應用程式設定。
 
 在執行時間，連接字串會以環境變數的形式提供，並在前面加上下列連線類型：
 
@@ -228,21 +231,27 @@ ms.locfileid: "96854643"
 
 ![路徑對應](./media/configure-common/open-path.png)
 
-[ **路徑** 對應] 頁面會根據 OS 類型顯示不同的專案。
+> [!NOTE] 
+> [ **路徑** 對應] 索引標籤可能會顯示作業系統特定的設定，這些設定與此處所示的範例不同。
 
 ### <a name="windows-apps-uncontainerized"></a>Windows 應用程式 (uncontainerized) 
 
 針對 Windows 應用程式，您可以自訂 IIS 處理常式對應和虛擬應用程式和目錄。
 
-處理常式對應可讓您新增自訂腳本處理器以處理特定副檔名的要求。 若要加入自訂處理常式，請按一下 [ **新增處理常式**]。 設定處理常式，如下所示：
+處理常式對應可讓您新增自訂腳本處理器以處理特定副檔名的要求。 若要加入自訂處理常式，請按一下 [ **新增處理常式對應**]。 設定處理常式，如下所示：
 
 - **延伸** 模組。 您要處理的副檔名，例如 *\* php* 或 *handler.fcgi*。
 - **腳本處理器**。 腳本處理器的絕對路徑。 符合副檔名之檔案的要求會由腳本處理器處理。 使用路徑 `D:\home\site\wwwroot` 以指出應用程式的根目錄。
 - **引數**。 腳本處理器的選擇性命令列引數。
 
-每個應用程式都有預設的根路徑 (`/`) 對應至 `D:\home\site\wwwroot` ，預設會部署您的程式碼。 如果您的應用程式根目錄位於不同的資料夾中，或您的儲存機制有多個應用程式，您可以在這裡編輯或新增虛擬應用程式和目錄。 按一下 [ **新增虛擬應用程式或目錄**]。
+每個應用程式都有預設的根路徑 (`/`) 對應至 `D:\home\site\wwwroot` ，預設會部署您的程式碼。 如果您的應用程式根目錄位於不同的資料夾中，或您的儲存機制有多個應用程式，您可以在這裡編輯或新增虛擬應用程式和目錄。 
 
-若要設定虛擬應用程式和目錄，請指定每個虛擬目錄及其相對於網站根目錄 () 的相對應實體路徑 `D:\home` 。 或者，您可以選取 [ **應用程式** ] 核取方塊，勾選虛擬目錄做為應用程式。
+在 [ **路徑** 對應] 索引標籤中，按一下 [ **新增虛擬應用程式或目錄**]。 
+
+- 若要將虛擬目錄對應至實體路徑，請將 [ **目錄** ] 核取方塊保留為已選取。 指定虛擬目錄，以及對應至網站根目錄 () 的相對 (實體) 路徑 `D:\home` 。
+- 若要將虛擬目錄標示為 web 應用程式，請清除 [ **目錄** ] 核取方塊。
+  
+  ![目錄核取方塊](./media/configure-common/directory-check-box.png)
 
 ### <a name="containerized-apps"></a>容器化應用程式
 

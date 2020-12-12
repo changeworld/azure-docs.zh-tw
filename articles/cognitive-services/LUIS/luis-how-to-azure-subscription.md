@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a71c1a0df1a72e3831fa54a041539f62b38a0aca
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 19c27dc80f9af013c458663c9c7afb0033683acd
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95999904"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97348062"
 ---
 # <a name="create-luis-resources"></a>建立 LUIS 資源
 
@@ -51,16 +51,13 @@ Azure 資源（例如 LUIS 資源）是由包含資源的訂用帳戶所擁有�
 * 轉移訂用帳戶的 [擁有權](../../cost-management-billing/manage/billing-subscription-transfer.md) 。
 * 將 LUIS 應用程式匯出為檔案，然後將應用程式匯入至不同的訂用帳戶。 您可以在 LUIS 入口網站的 [ **我的應用程式** ] 頁面上取得匯出。
 
-
 ## <a name="resource-limits"></a>資源限制
 
 ### <a name="authoring-key-creation-limits"></a>撰寫金鑰建立限制
 
-每個訂用帳戶最多可以為每個區域建立10個撰寫金鑰。
+每個訂用帳戶最多可以為每個區域建立10個撰寫金鑰。 發佈區域與撰寫區域不同。 請確定您在撰寫區域中建立的應用程式，與您想要放置用戶端應用程式的發列區域相對應。 如需撰寫區域如何對應至發佈區域的詳細資訊，請參閱 [撰寫和發佈區域](luis-reference-regions.md)。 
 
-如需詳細資訊，請參閱 [主要限制](luis-limits.md#key-limits) 和 [Azure 區域](luis-reference-regions.md)。
-
-發佈區域與撰寫區域不同。 請確定您在撰寫區域中建立的應用程式，與您想要放置用戶端應用程式的發列區域相對應。
+如需有關金鑰限制的詳細資訊，請參閱 [金鑰限制](luis-limits.md#key-limits)。
 
 ### <a name="errors-for-key-usage-limits"></a>金鑰使用限制的錯誤
 
@@ -110,7 +107,7 @@ Azure 資源（例如 LUIS 資源）是由包含資源的訂用帳戶所擁有�
 
 擁有者和所有參與者都具有編寫應用程式的存取權。
 
-|撰寫存取權包括：|注意|
+|撰寫存取權包括：|附註|
 |--|--|
 |新增或移除端點金鑰||
 |匯出版本||
@@ -118,7 +115,7 @@ Azure 資源（例如 LUIS 資源）是由包含資源的訂用帳戶所擁有�
 |匯入版本||
 |將應用程式設定為公用|當應用程式是公用時，具有撰寫或端點金鑰的任何人都可以查詢應用程式。|
 |修改模型|
-|發行|
+|發佈|
 |檢閱用於[主動式學習](luis-how-to-review-endpoint-utterances.md)的端點語句|
 |定型|
 

@@ -4,12 +4,12 @@ description: 本文說明 Kubernetes 記錄、事件和 pod 計量的即時觀�
 ms.topic: conceptual
 ms.date: 12/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: a97d7ed5fe513798f4265498f4efa60098ea15c6
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 3bfc9aa0f0238d99d9336abe592fa721459f4220
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920731"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346795"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>如何即時查看 Kubernetes 記錄、事件和 pod 計量
 
@@ -35,7 +35,7 @@ ms.locfileid: "96920731"
 
 5. 選取 pod 以開始收集即時資料。
 
-    ![部署即時記錄](./media/container-insights-livedata-overview/live-data-deployment.png)
+    [![部署即時記錄](./media/container-insights-livedata-overview/live-data-deployment.png)](./media/container-insights-livedata-overview/live-data-deployment.png#lightbox)
 
 ## <a name="view-logs"></a>檢視記錄
 
@@ -112,11 +112,17 @@ ms.locfileid: "96920731"
 
 ![即時資料主控台窗格篩選範例](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
 
+![適用于部署的即時資料主控台窗格篩選範例](./media/container-insights-livedata-overview/live-data-deployment-search.png)
+
 ### <a name="scroll-lock-and-pause"></a>滾動鎖和暫停
 
 若要暫停 autoscroll 並控制窗格的行為，讓您可以手動方式在讀取的新資料中進行滾動，您可以使用 **scroll** 選項。 若要重新啟用 autoscroll，只要選取 [ **滾動** ] 選項即可。 您也可以選取 [ **暫停** ] 選項來暫停記錄檔或事件資料的抓取，然後當您準備好繼續時，只要選取 [ **播放**] 即可。
 
 ![即時資料主控台窗格暫停即時視圖](./media/container-insights-livedata-overview/livedata-pane-scroll-pause-example.png)
+
+![即時資料主控台窗格暫停部署的即時查看](./media/container-insights-livedata-overview/live-data-deployment-pause.png)
+
+
 
 >[!IMPORTANT]
 >我們建議您只在針對問題進行疑難排解時，暫停或暫停 autoscroll 一小段時間。 這些要求可能會影響叢集上 Kubernetes API 的可用性和節流。

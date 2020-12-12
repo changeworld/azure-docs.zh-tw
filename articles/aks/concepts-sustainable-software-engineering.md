@@ -4,16 +4,16 @@ description: 瞭解 Azure Kubernetes Service (AKS) 中的持續性軟體工程�
 services: container-service
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: 2457de7bdaa94a6e2269515fafe6689d44960625
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 700723041855fdae4f994480d180292fdfd12e15
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984975"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346889"
 ---
 # <a name="sustainable-software-engineering-principles-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中的持續性軟體工程準則
 
-持續性軟體工程原則是一組專長認證，可協助您定義、建立及執行持續性的應用程式。 整體目標是要降低應用程式各個層面的碳足跡。 這些 [原則。環保專案][principles-green] 概述持續性軟體工程的原則。
+持續性軟體工程原則是一組專長認證，可協助您定義、建立及執行持續性的應用程式。 整體目標是要降低應用程式各個層面的碳足跡。 持續性[軟體工程的原則][principles-sse]概述持續性軟體工程的原則。
 
 瞭解持續性軟體工程的一個重要概念是，它是優先順序和焦點的轉移。 在許多情況下，軟體是以專注于快速效能和低延遲的方式來設計和執行。 持續性軟體工程著重于盡可能減少碳排放量。 在某些情況下，套用持續性軟體工程準則可提供更快速的效能或較低的延遲，例如降低總網路移動量。 在其他情況下，減少碳排放可能會導致效能變慢或增加延遲，例如延遲低優先順序工作負載。 在考慮將持續性軟體工程原則套用至您的應用程式之前，請先檢查應用程式的優先順序、需求和取捨。
 
@@ -32,7 +32,7 @@ ms.locfileid: "90984975"
 
 提高使用率也可以減少多餘的節點，進而減少 [每個節點的資源保留][resource-reservations]所耗用的能源。
 
-另請參閱應用程式 Kubernetes 資訊清單中的 CPU 和記憶體 *要求* 和 *限制* 。 當您降低這些記憶體和 CPU 的值時，叢集就可以使用更多的記憶體和 CPU 來執行其他工作負載。 當您執行更多具有較低 CPU 和記憶體的工作負載時，您的叢集會變得更密集配置，以增加您的使用率。 減少應用程式的 CPU 和記憶體時，如果您將這些值設得太低，應用程式的行為可能會變差或不穩定。 在變更 CPU 和記憶體 *要求* 和 *限制*之前，請考慮執行一些基準測試，以瞭解是否已適當設定這些值。 此外，當您的應用程式變得不穩定時，永遠不會將這些值降到點。
+另請參閱應用程式 Kubernetes 資訊清單中的 CPU 和記憶體 *要求* 和 *限制* 。 當您降低這些記憶體和 CPU 的值時，叢集就可以使用更多的記憶體和 CPU 來執行其他工作負載。 當您執行更多具有較低 CPU 和記憶體的工作負載時，您的叢集會變得更密集配置，以增加您的使用率。 減少應用程式的 CPU 和記憶體時，如果您將這些值設得太低，應用程式的行為可能會變差或不穩定。 在變更 CPU 和記憶體 *要求* 和 *限制* 之前，請考慮執行一些基準測試，以瞭解是否已適當設定這些值。 此外，當您的應用程式變得不穩定時，永遠不會將這些值降到點。
 
 ## <a name="reduce-network-travel"></a>減少網路移動
 
@@ -74,4 +74,4 @@ ms.locfileid: "90984975"
 [node-sizing]: use-multiple-node-pools.md#specify-a-vm-size-for-a-node-pool
 [sustainability-calculator]: https://azure.microsoft.com/blog/microsoft-sustainability-calculator-helps-enterprises-analyze-the-carbon-emissions-of-their-it-infrastructure/
 [system-pools]: use-system-pools.md
-[principles-green]: https://principles.green/
+[principles-sse]: https://docs.microsoft.com/learn/modules/sustainable-software-engineering-overview/

@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.author: jingwang
-ms.openlocfilehash: a916da121c8ffee1729ede6dd700ca4f6872fbf7
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 258b4cbb187290c293caf10d14dbb624cb7d6b89
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043488"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347263"
 ---
 # <a name="copy-data-from-google-cloud-storage-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Google Cloud Storage 複製資料
 
@@ -63,9 +63,9 @@ ms.locfileid: "92043488"
 
 以下是針對 Google Cloud Storage 已連結服務支援的屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type | **Type**屬性必須設為**GoogleCloudStorage**。 | 是 |
+| type | **Type** 屬性必須設為 **GoogleCloudStorage**。 | 是 |
 | accessKeyId | 密碼存取金鑰的識別碼。 若要尋找存取金鑰和秘密，請參閱[必要條件](#prerequisites)。 |是 |
 | secretAccessKey | 密碼存取金鑰本身。 將此欄位標示為 **SecureString** ，以安全地將它儲存在 Data Factory 中，或 [參考儲存在 Azure Key Vault 中的密碼](store-credentials-in-key-vault.md)。 |是 |
 | serviceUrl | 將自訂 S3 端點指定為 `https://storage.googleapis.com` 。 | 是 |
@@ -100,7 +100,7 @@ ms.locfileid: "92043488"
 
 下列屬性在以 `location` 格式為基礎的資料集中的設定下支援 Google Cloud Storage：
 
-| 屬性   | 描述                                                  | 必要 |
+| 屬性   | 說明                                                  | 必要 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 資料集內的 **type** 屬性 `location` 必須設定為 **GoogleCloudStorageLocation**。 | 是      |
 | bucketName | S3 貯體名稱。                                          | 是      |
@@ -144,19 +144,19 @@ ms.locfileid: "92043488"
 
 以下是在以 `storeSettings` 格式為基礎的複製來源中設定下，Google Cloud Storage 支援的屬性：
 
-| 屬性                 | 描述                                                  | 必要                                                    |
+| 屬性                 | 說明                                                  | 必要                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | type                     | 下的 **類型** 屬性 `storeSettings` 必須設為 **GoogleCloudStorageReadSettings**。 | 是                                                         |
-| 尋找要複製的檔案： |  |  |
-| 選項 1：靜態路徑<br> | 從在資料集內指定的貯體或資料夾/檔案路徑複製。 如果您想要複製值區或資料夾中的所有檔案，請另外指定 `wildcardFileName` as `*` 。 |  |
+| **_找出要複製的檔案：_* _ |  |  |
+| 選項 1：靜態路徑<br> | 從在資料集內指定的貯體或資料夾/檔案路徑複製。 如果您想要複製值區或資料夾中的所有檔案，請另外指定 `wildcardFileName` as `_` 。 |  |
 | 選項 2：GCS 前置詞<br>- 前置詞 | 在資料集中設定的指定值區下，GC 金鑰名稱的前置詞，以篩選來源 GC 檔案。 系統會選取其名稱開頭為的 GC 金鑰 `bucket_in_dataset/this_prefix` 。 它會利用 GC 的服務端篩選器，提供比萬用字元篩選器更好的效能。 | 否 |
 | 選項 3：萬用字元<br>- wildcardFolderPath | 在資料集內設定的指定值區下，具有萬用字元的資料夾路徑，可篩選來源資料夾。 <br>允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。 `^`如果您的資料夾名稱裡面有萬用字元或這個 escape 字元，請使用來進行 escape。 <br>如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 否                                            |
-| 選項 3：萬用字元<br>- wildcardFileName | 在指定的值區和資料夾路徑下具有萬用字元的檔案名 (或萬用字元資料夾路徑，) 來篩選原始程式檔。 <br>允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。 `^`如果您的資料夾名稱裡面有萬用字元或這個 escape 字元，請使用來進行 escape。  如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 是 |
+| 選項 3：萬用字元<br>- wildcardFileName | 在指定的值區和資料夾路徑下具有萬用字元的檔案名 (或萬用字元資料夾路徑，) 來篩選原始程式檔。 <br>允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。 `^`如果您的檔案名中有萬用字元或這個 escape 字元，請使用來進行 escape。  如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 是 |
 | 選項 3：檔案清單<br>- fileListPath | 表示要複製指定的檔案集。 指向文字檔，其中包含您要複製的檔案清單，每行一個檔案，也就是在資料集中設定之路徑的相對路徑。<br/>當您使用此選項時，請勿在資料集中指定檔案名。 [檔案清單範例](#file-list-examples) (英文) 有更多範例可供參閱。 |否 |
-| 其他設定： |  | |
-| 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當 **遞迴** 設定為 **true** 且接收是檔案型存放區時，不會在接收時複製或建立空的資料夾或子資料夾。 <br>允許的值為 **true** (預設值) 和 **false**。<br>設定 `fileListPath` 時，不適用此屬性。 |否 |
+| ***其他設定：** _ |  | |
+| 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當 _ *遞迴** 設定為 **true** 且接收是檔案型存放區時，不會在接收時複製或建立空的資料夾或子資料夾。 <br>允許的值為 **true** (預設值) 和 **false**。<br>設定 `fileListPath` 時，不適用此屬性。 |否 |
 | deleteFilesAfterCompletion | 指出是否要在成功移至目的地存放區之後，從來源存放區刪除二進位檔案。 檔案刪除是針對每個檔案，因此當複製活動失敗時，您會看到部分檔案已複製到目的地並從來源刪除，其他檔案仍在來源存放區上。 <br/>這個屬性只在二進位檔案複製案例中有效。 預設值： false。 |否 |
-| modifiedDatetimeStart    | 檔案會根據屬性進行篩選：上次修改。 <br>若檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br> 屬性可以是 **Null**，這表示不會將任何檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 有 datetime 值但 `modifiedDatetimeEnd` 為 **Null**時，將會選取上次修改屬性大於或等於日期時間值的檔案。  當 `modifiedDatetimeEnd` 有 datetime 值但 `modifiedDatetimeStart` 為 **Null**時，將會選取上次修改屬性小於 datetime 值的檔案。<br/>設定 `fileListPath` 時，不適用此屬性。 | 否                                            |
+| modifiedDatetimeStart    | 檔案會根據屬性進行篩選：上次修改。 <br>若檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br> 屬性可以是 **Null**，這表示不會將任何檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 有 datetime 值但 `modifiedDatetimeEnd` 為 **Null** 時，將會選取上次修改屬性大於或等於日期時間值的檔案。  當 `modifiedDatetimeEnd` 有 datetime 值但 `modifiedDatetimeStart` 為 **Null** 時，將會選取上次修改屬性小於 datetime 值的檔案。<br/>設定 `fileListPath` 時，不適用此屬性。 | 否                                            |
 | modifiedDatetimeEnd      | 同上。                                               | 否                                                          |
 | enablePartitionDiscovery | 針對已分割的檔案，指定是否從檔案路徑剖析分割區，並將它們新增為其他來源資料行。<br/>允許的值為 **false** (預設) 和 **true**。 | 否                                            |
 | partitionRootPath | 當資料分割探索已啟用時，請指定絕對根路徑，以便將分割的資料夾讀取為數據行。<br/><br/>如果未指定，則預設為<br/>-當您在資料集或來源上的檔案清單中使用檔案路徑時，資料分割根路徑是在資料集中設定的路徑。<br/>-當您使用萬用字元資料夾篩選時，資料分割根路徑是第一個萬用字元之前的子路徑。<br/><br/>例如，假設您將資料集中的路徑設定為 "root/folder/year = 2020/month = 08/day = 27"：<br/>-如果您將資料分割根路徑指定為 "root/folder/year = 2020"，則除了檔案內的資料行之外，複製活動會分別產生兩個數據行， `month` 以及 `day` 值為 "08" 和 "27" 的資料行。<br/>-如果未指定資料分割根路徑，將不會產生額外的資料行。 | 否                                            |

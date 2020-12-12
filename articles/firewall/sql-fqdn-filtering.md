@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 06/18/2020
 ms.author: victorh
-ms.openlocfilehash: 7256f94b8e8376cf98a279d085a131a4ce84826f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 2b1b68b32ccd5a4dda0b71736da4e2d1e2566b6b
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658617"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97348011"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>使用 SQL FQDN 設定 Azure 防火牆應用程式規則
 
@@ -35,19 +35,56 @@ ms.locfileid: "94658617"
    > [!NOTE]
    > 相較於 *重新導向*，SQL *Proxy* 模式可能會導致更多延遲。 如果您想要繼續使用重新導向模式 (這是用戶端在 Azure 內連線時的預設值)，可以在防火牆[網路規則](tutorial-firewall-deploy-portal.md#configure-a-network-rule)中使用 SQL [服務標籤](service-tags.md)篩選存取。
 
-3. 使用 SQL FQDN 設定應用程式規則以允許存取 SQL Server：
+3. 使用 SQL FQDN 來建立具有應用程式規則的新規則集合，以允許存取 SQL server：
 
    ```azurecli
-   az extension add -n azure-firewall
+    az extension add -n azure-firewall
+    
+    az network firewall application-rule create \ 
+    -g FWRG \
+    --f azfirewall \ 
+    --c sqlRuleCollection \
+    --priority 1000 \
+    --action Allow \
+    --name sqlRule \
+    --protocols mssql=1433 \
+    --source-addresses 10.0.0.0/24 \
+    --target-fqdns sql-serv1.database.windows.net
+   ```
 
-   az network firewall application-rule create \
-   -g FWRG \
-   -f azfirewall \
-   -c FWAppRules \
-   -n srule \
-   --protocols mssql=1433 \
-   --source-addresses 10.0.0.0/24 \
-   --target-fqdns sql-serv1.database.windows.net
+## <a name="configure-using-azure-powershell"></a>使用 Azure PowerShell 設定
+
+1. [使用 Azure PowerShell 部署 Azure 防火牆](deploy-ps.md)。
+2. 如果您篩選 Azure SQL Database、Azure Synapse Analytics 或 SQL 受控執行個體的流量，請確定 SQL 連線模式設定為 **Proxy**。 若要了解如何切換 SQL 連線模式，請參閱 [Azure SQL 連線能力設定](../azure-sql/database/connectivity-settings.md#change-the-connection-policy-via-the-azure-cli) \(英文\)。
+
+   > [!NOTE]
+   > 相較於 *重新導向*，SQL *Proxy* 模式可能會導致更多延遲。 如果您想要繼續使用重新導向模式 (這是用戶端在 Azure 內連線時的預設值)，可以在防火牆[網路規則](tutorial-firewall-deploy-portal.md#configure-a-network-rule)中使用 SQL [服務標籤](service-tags.md)篩選存取。
+
+3. 使用 SQL FQDN 來建立具有應用程式規則的新規則集合，以允許存取 SQL server：
+
+   ```azurepowershell
+   $AzFw = Get-AzFirewall -Name "azfirewall" -ResourceGroupName "FWRG"
+    
+   $sqlRule = @{
+      Name          = "sqlRule"
+      Protocol      = "mssql:1433" 
+      TargetFqdn    = "sql-serv1.database.windows.net"
+      SourceAddress = "10.0.0.0/24"
+   }
+    
+   $rule = New-AzFirewallApplicationRule @sqlRule
+    
+   $sqlRuleCollection = @{
+      Name       = "sqlRuleCollection" 
+      Priority   = 1000 
+      Rule       = $rule
+      ActionType = "Allow"
+   }
+    
+   $ruleCollection = New-AzFirewallApplicationRuleCollection @sqlRuleCollection
+    
+   $Azfw.ApplicationRuleCollections.Add($ruleCollection)    
+   Set-AzFirewall -AzureFirewall $AzFw    
    ```
 
 ## <a name="configure-using-the-azure-portal"></a>使用 Azure 入口網站進行設定

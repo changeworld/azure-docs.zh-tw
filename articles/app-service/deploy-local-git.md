@@ -6,18 +6,18 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 5ed3e858168ce5ad9a7f089b723bb75ca8a49fca
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 26fd8bc73fad3ea313641fc4b1e0f454ee2c0813
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007512"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347773"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>本機 Git 部署至 Azure App Service
 
 本操作指南說明如何將您的應用程式部署至本機電腦上的 Git 儲存機制，以 [Azure App Service](overview.md) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 遵循本使用說明指南中的步驟：
 
@@ -80,7 +80,7 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
    git remote add azure <url>
    ```
    
-1. 使用推送至 Azure 遠端 `git push azure main` 。 
+1. 使用推送至 Azure 遠端 `git push azure master` 。 
    
 1. 在 [ **Git 認證管理員** ] 視窗中，輸入您的 [部署使用者密碼](#configure-a-deployment-user)，而不是您的 Azure 登入密碼。
    
@@ -131,7 +131,7 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
    git remote add azure <url>
    ```
    
-1. 使用推送至 Azure 遠端 `git push azure main` 。 
+1. 使用推送至 Azure 遠端 `git push azure master` 。 
    
 1. 在 **Git 認證管理員** 頁面上，使用您的 visualstudio.com 使用者名稱登入。 如需其他驗證方法，請參閱 [Azure DevOps Services authentication 總覽](/vsts/git/auth-overview?view=vsts)。
    
@@ -149,8 +149,8 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
 ---|---|---|
 |`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|應用程式未啟動且正在執行。|在 Azure 入口網站中啟動應用程式。 當 web 應用程式停止時，無法使用 Git 部署。|
 |`Couldn't resolve host 'hostname'`|' Azure ' 遠端的位址資訊不正確。|使用 `git remote -v` 命令，列出所有遠端以及相關聯的 URL。 驗證 'azure' 遠端的 URL 是否正確。 如有需要，移除此遠端並使用正確的 URL 重新建立。|
-|`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'main'.`|您未在中指定分支 `git push` ，或尚未設定中的 `push.default` 值 `.gitconfig` 。|`git push`再次執行，指定主要分支： `git push azure main` 。|
-|`src refspec [branchname] does not match any.`|您嘗試在 ' azure ' 遠端上推送至主分支以外的分支。|`git push`再次執行，指定主要分支： `git push azure main` 。|
+|`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'main'.`|您未在中指定分支 `git push` ，或尚未設定中的 `push.default` 值 `.gitconfig` 。|`git push`再次執行，指定主要分支： `git push azure master` 。|
+|`src refspec [branchname] does not match any.`|您嘗試在 ' azure ' 遠端上推送至主分支以外的分支。|`git push`再次執行，指定主要分支： `git push azure master` 。|
 |`RPC failed; result=22, HTTP code = 5xx.`|如果您嘗試透過 HTTPS 推送大型 Git 存放庫，就會發生這個錯誤。|變更本機電腦上的 git 設定，使其 `postBuffer` 更大。 例如：`git config --global http.postBuffer 524288000`。|
 |`Error - Changes committed to remote repository but your web app not updated.`|您已使用指定其他必要模組的檔案 _package.js_ 來部署 Node.js 應用程式。|請檢查 `npm ERR!` 此錯誤之前的錯誤訊息，以取得失敗的詳細內容。 以下是此錯誤的已知原因，以及對應的 `npm ERR!` 訊息：<br /><br />檔案 **上的 package.js格式不正確**：`npm ERR! Couldn't read dependencies.`<br /><br />**原生模組沒有適用于 Windows 的二進位分佈**：<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />或 <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 

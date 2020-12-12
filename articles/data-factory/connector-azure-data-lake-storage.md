@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/28/2020
-ms.openlocfilehash: 02cd14e29cfd51709e0a26e951a3124eb88bbd09
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: c0f7df8db79f549dfeca15e6411ae72cbe66d2bd
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094602"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346277"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure Data Lake Storage Gen2 中複製和轉換資料
 
@@ -211,7 +211,7 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 以下是連結服務支援的屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 類型屬性必須設為 **AzureBlobFS**。 |是 |
 | url | 具有 `https://<accountname>.dfs.core.windows.net` 模式的 Data Lake Storage Gen2 所適用的端點。 | 是 |
@@ -243,7 +243,7 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 在格式型資料集內的 `location` 設定下，Data Lake Storage Gen2 支援下列屬性：
 
-| 屬性   | 描述                                                  | 必要 |
+| 屬性   | 說明                                                  | 必要 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 資料集中 `location` 下的 type 屬性必須設定為 **AzureBlobFSLocation**。 | 是      |
 | fileSystem | Data Lake Storage Gen2 檔案系統名稱。                              | 否       |
@@ -293,13 +293,13 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 在格式型複製來源內的 `storeSettings` 設定下，Data Lake Storage Gen2 支援下列屬性：
 
-| 屬性                 | 描述                                                  | 必要                                      |
+| 屬性                 | 說明                                                  | 必要                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | `storeSettings` 下的 type 屬性必須設定為 **AzureBlobFSReadSettings**。 | 是                                           |
 | **_找出要複製的檔案：_* _ |  |  |
 | 選項 1：靜態路徑<br> | 從在資料集內指定的檔案系統或資料夾/檔案路徑複製。 如果您想要複製檔案系統/資料夾中的所有檔案，請另外將 `wildcardFileName` 指定為 `_`。 |  |
 | 選項 2：萬用字元<br>- wildcardFolderPath | 在資料集內設定的指定檔案系統底下，具有萬用字元的資料夾路徑，用來篩選來源資料夾。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。 <br>如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 否                                            |
-| 選項 2：萬用字元<br>- wildcardFileName | 在指定 file system + folderPath/wildcardFolderPath 之下，含有萬用字元的檔案名稱，可用來篩選來源檔案。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。  如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 是 |
+| 選項 2：萬用字元<br>- wildcardFileName | 在指定 file system + folderPath/wildcardFolderPath 之下，含有萬用字元的檔案名稱，可用來篩選來源檔案。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際檔案名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。  如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 是 |
 | 選項 3：檔案清單<br>- fileListPath | 表示要複製指定的檔案集。 指向文字檔，其中包含您要複製的檔案清單，每行一個檔案，也就是在資料集中設定之路徑的相對路徑。<br/>使用此選項時，請勿指定資料集中的檔案名稱。 [檔案清單範例](#file-list-examples) (英文) 有更多範例可供參閱。 |否 |
 | ***其他設定：** _ |  | |
 | 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當遞迴設定為 true 且接收是檔案型存放區時，就不會在接收上複製或建立空的資料夾或子資料夾。 <br>允許的值為 _ *true** (預設值) 和 **false**。<br>設定 `fileListPath` 時，不適用此屬性。 |否 |
@@ -357,7 +357,7 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 在格式型複製接收器內的 `storeSettings` 設定下，Data Lake Storage Gen2 支援下列屬性：
 
-| 屬性                 | 描述                                                  | 必要 |
+| 屬性                 | 說明                                                  | 必要 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | `storeSettings` 下的 type 屬性必須設定為 **AzureBlobFSWriteSettings**。 | 是      |
 | copyBehavior             | 當來源是來自檔案型資料存放區的檔案時，會定義複製行為。<br/><br/>允許的值包括：<br/><b>- PreserveHierarchy (預設)</b>：保留目標資料夾中的檔案階層。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><b>- FlattenHierarchy</b>：來自來源資料夾的所有檔案都會在目標資料夾的第一層中。 目標檔案會有自動產生的名稱。 <br/><b>- MergeFiles</b>：將來自來源資料夾的所有檔案合併成一個檔案。 若已指定檔案名稱，合併檔案的名稱會是指定的名稱。 否則，就會是自動產生的檔案名稱。 | 否       |
@@ -553,7 +553,7 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 ### <a name="legacy-dataset-model"></a>舊版資料集模型
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的類型屬性必須設為 **AzureBlobFSFile**。 |是 |
 | folderPath | Data Lake Storage Gen2 中資料夾的路徑。 若未指定，它會指向根。 <br/><br/>支援萬用字元篩選。 允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。 如果實際資料夾名稱內有萬用字元或逸出字元 `^`，請使用此逸出字元來逸出。 <br/><br/>範例：filesystem/folder/。 如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 |否 |
@@ -598,7 +598,7 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 ### <a name="legacy-copy-activity-source-model"></a>舊版複製活動來源模型
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的類型屬性必須設為 **AzureBlobFSSource**。 |是 |
 | 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 當遞迴設定為 true 且接收是檔案型存放區時，就不會在接收上複製或建立空的資料夾或子資料夾。<br/>允許的值為 **true** (預設值) 和 **false**。 | 否 |
@@ -638,7 +638,7 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 
 ### <a name="legacy-copy-activity-sink-model"></a>舊版複製活動接收模型
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動接收的類型屬性必須設為 **AzureBlobFSSink**。 |是 |
 | copyBehavior | 當來源是來自檔案型資料存放區的檔案時，會定義複製行為。<br/><br/>允許的值包括：<br/><b>- PreserveHierarchy (預設)</b>：保留目標資料夾中的檔案階層。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><b>- FlattenHierarchy</b>：來自來源資料夾的所有檔案都會在目標資料夾的第一層中。 目標檔案會有自動產生的名稱。 <br/><b>- MergeFiles</b>：將來自來源資料夾的所有檔案合併成一個檔案。 若已指定檔案名稱，合併檔案的名稱會是指定的名稱。 否則，就會是自動產生的檔案名稱。 | 否 |

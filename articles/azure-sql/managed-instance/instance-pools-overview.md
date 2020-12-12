@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: ab77c8cf563c315768ad1c16089d8d939c085322
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: bc345509db1c2a14afb0ae781eccad8f77395c18
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782649"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347059"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>什麼是 Azure SQL 受控執行個體集區 (preview) ？
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -59,7 +59,7 @@ Azure SQL 受控執行個體中的實例集區可提供便利且符合成本效�
 
 ## <a name="architecture"></a>架構
 
-實例集區具有與一般 ( *單一* ) 受控實例類似的架構。 為了支援 [Azure 虛擬網路內的部署](../../virtual-network/virtual-network-for-azure-services.md) ，並為客戶提供隔離和安全性，實例集區也會依賴 [虛擬叢集](connectivity-architecture-overview.md#high-level-connectivity-architecture)。 虛擬叢集代表在客戶的虛擬網路子網內部署的一組專用的隔離式虛擬機器。
+實例集區具有與一般 (*單一*) 受控實例類似的架構。 為了支援 [Azure 虛擬網路內的部署](../../virtual-network/virtual-network-for-azure-services.md) ，並為客戶提供隔離和安全性，實例集區也會依賴 [虛擬叢集](connectivity-architecture-overview.md#high-level-connectivity-architecture)。 虛擬叢集代表在客戶的虛擬網路子網內部署的一組專用的隔離式虛擬機器。
 
 這兩種部署模型之間的主要差異在於，實例集區允許在相同的虛擬機器節點上進行多個 SQL Server 程式部署，也就是使用 [Windows 工作物件](/windows/desktop/ProcThread/job-objects)來控管資源，而單一實例一律單獨在虛擬機器節點上。
 
@@ -78,7 +78,10 @@ Azure SQL 受控執行個體中的實例集區可提供便利且符合成本效�
 - 所有 [實例層級的限制](resource-limits.md#service-tier-characteristics) 都適用于在集區中建立的實例。
 - 除了實例層級限制之外，還會在 *實例集區層級* 強加兩個限制：
   - 每個集區的儲存體大小總計 (8 TB) 。
-  - 每個集區的資料庫總數 (100) 。
+  - 每個集區的使用者資料庫總數。 此限制取決於集區虛擬核心值：
+    - 8個虛擬核心集區最多支援200個資料庫，
+    - 16個虛擬核心集區最多支援400個資料庫，
+    - 24個以上的虛擬核心集區最多支援500個資料庫。
 - 無法為實例集區中部署的實例設定 AAD 系統管理員，因此無法使用 AAD 驗證。
 
 所有實例的總儲存體配置和資料庫數目，必須低於或等於實例集區所公開的限制。
@@ -86,8 +89,9 @@ Azure SQL 受控執行個體中的實例集區可提供便利且符合成本效�
 - 實例集區支援8、16、24、32、40、64和80虛擬核心。
 - 集區中的受控實例支援2、4、8、16、24、32、40、64和80虛擬核心。
 - 集區中的受控實例支援 32 GB 到 8 TB 之間的儲存體大小，但下列情況除外：
-  - 2個 vCore 實例支援 32 GB 到 640 GB 之間的大小
-  - 4 vCore 實例支援 32 GB 到 2 TB 之間的大小
+  - 2個 vCore 實例支援 32 GB 到 640 GB 之間的大小。
+  - 4 vCore 實例支援 32 GB 到 2 TB 之間的大小。
+- 集區中的受控實例，每個實例最多可有100個使用者資料庫，但每個實例支援多達50個使用者資料庫的2個 vCore 實例除外。
 
 [服務層屬性](resource-limits.md#service-tier-characteristics)與實例集區資源相關聯，因此集區中的所有實例都必須是與集區服務層相同的服務層級。 目前，只有一般用途服務層級可供使用 (請參閱下一節，以瞭解目前預覽) 的限制。
 
@@ -121,7 +125,7 @@ Azure SQL 受控執行個體中的實例集區可提供便利且符合成本效�
 
 在 [Azure 入口網站](https://portal.azure.com)中建立和管理實例集區的支援要求。
 
-如果您在建立或刪除)  (遇到與實例集區部署相關的問題，請務必在 [ **問題子類型** ] 欄位中指定 **實例** 集區。
+如果您在建立或刪除)  (遇到與實例集區部署相關的問題，請務必在 [**問題子類型**] 欄位中指定 **實例** 集區。
 
 ![實例集區支援要求](./media/instance-pools-overview/support-request.png)
 
@@ -137,8 +141,8 @@ Azure SQL 受控執行個體中的實例集區可提供便利且符合成本效�
 
 針對虛擬核心) 測量的計算價格 (，有兩個定價選項可用：
 
-  1. *包含的授權* ：內含 SQL Server 授權的價格。 這適用于選擇不要將現有 SQL Server 授權套用至軟體保證的客戶。
-  2. *Azure Hybrid Benefit* ：包含 SQL Server Azure Hybrid Benefit 的較低價格。 客戶可以使用其現有的 SQL Server 授權搭配軟體保證來選擇使用此價格。 如需資格和其他詳細資料，請參閱 [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)。
+  1. *包含的授權*：內含 SQL Server 授權的價格。 這適用于選擇不要將現有 SQL Server 授權套用至軟體保證的客戶。
+  2. *Azure Hybrid Benefit*：包含 SQL Server Azure Hybrid Benefit 的較低價格。 客戶可以使用其現有的 SQL Server 授權搭配軟體保證來選擇使用此價格。 如需資格和其他詳細資料，請參閱 [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)。
 
 針對集區中的個別實例，不可能設定不同的定價選項。 父集區中的所有實例都必須以授權包含價格或 Azure Hybrid Benefit 價格。 建立集區之後，您可以變更集區的授權模型。
 

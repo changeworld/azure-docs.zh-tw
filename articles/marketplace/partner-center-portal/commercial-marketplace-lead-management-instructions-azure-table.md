@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 08/25/2020
-ms.openlocfilehash: 70ce1807ea6080e3efc0cf3266a9940c9ddb9cd3
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 71b9c96c1855180106f7dfa9a31f0ee8b06ceb67
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489347"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347858"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>使用 Azure 資料表儲存體來管理商業市集潛在客戶
 
@@ -55,7 +55,7 @@ ms.locfileid: "94489347"
 
     ![Azure 資料表](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-tables.png)
 
-    您可以使用 [Azure 儲存體總管](https://archive.codeplex.com/?p=azurestorageexplorer) \(英文\) 或任何其他工具，來檢視儲存體資料表中的資料。 您也可以將 Azure 資料表中的資料匯出。
+    您可以使用 [Azure 儲存體總管](https://www.storageexplorer.com) \(英文\) 或任何其他工具，來檢視儲存體資料表中的資料。 您也可以將 Azure 資料表中的資料匯出。
 
 ## <a name="optional-use-power-automate-to-get-lead-notifications"></a>(選擇性) 使用 Power Automate 來取得潛在客戶通知
 
@@ -80,11 +80,11 @@ ms.locfileid: "94489347"
    ![建置預定流程](./media/commercial-marketplace-lead-management-instructions-azure-table/build-scheduled-flow.png)
 
 1. 選取 [+ 新步驟] 。
-1. 在 [選擇動作] 視窗中，搜尋 **取得過去時間** 。 然後在 [動作] 底下，選取 [取得過去時間]。
+1. 在 [選擇動作] 視窗中，搜尋 **取得過去時間**。 然後在 [動作] 底下，選取 [取得過去時間]。
 
    ![選擇動作](./media/commercial-marketplace-lead-management-instructions-azure-table/choose-an-action.png)
 
-1. 在 [取得過去時間] 視窗中，將 [間隔] 設定為 **1** 。 從 [時間單位] 下拉式清單中，選取 [小時]。
+1. 在 [取得過去時間] 視窗中，將 [間隔] 設定為 **1**。 從 [時間單位] 下拉式清單中，選取 [小時]。
 
     >[!IMPORTANT]
     >請確定您在步驟 8 中所傳送的間隔及時間單位符合您在步驟 5 中針對 [週期] 所設定的 [間隔] 和 [頻率]。
@@ -96,23 +96,23 @@ ms.locfileid: "94489347"
 
    在下一組步驟中，您將會連線到您的資料表，並設定處理邏輯來處理新的潛在客戶。
 
-1. 選取 [+ 新步驟] 。 然後在 [選擇動作] 視窗中，搜尋 **取得實體** 。
+1. 選取 [+ 新步驟] 。 然後在 [選擇動作] 視窗中，搜尋 **取得實體**。
 1. 在 [動作] 底下，選取 [取得實體 (Azure 資料表儲存體)]。
 1. 在 [Azure 資料表儲存體] 視窗中，為下列方塊提供資訊，然後選取 [建立]：
 
-    * **連線名稱** ：為您正在此流程與資料表之間建立的連線提供具意義的名稱。
-    * **儲存體帳戶名稱** ：提供您資料表的儲存體帳戶名稱。 您可以在儲存體帳戶的 [存取金鑰] 頁面上找到此名稱。
-    * **共用儲存體金鑰** ：提供您資料表的儲存體帳戶金鑰值。 您可以在儲存體帳戶的 [存取金鑰] 頁面上找到此值。
+    * **連線名稱**：為您正在此流程與資料表之間建立的連線提供具意義的名稱。
+    * **儲存體帳戶名稱**：提供您資料表的儲存體帳戶名稱。 您可以在儲存體帳戶的 [存取金鑰] 頁面上找到此名稱。
+    * **共用儲存體金鑰**：提供您資料表的儲存體帳戶金鑰值。 您可以在儲存體帳戶的 [存取金鑰] 頁面上找到此值。
 
       ![[Azure 資料表儲存體] 視窗](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
 
    在您選取 [建立] 之後，[取得實體] 視窗隨即出現。 在這裡，請選取 [顯示進階選項]，然後為下列方塊提供資訊：
 
-   * **資料表** ：選取您資料表的名稱 (從 [建立資料表](#create-a-table-in-your-storage-account))。 下圖顯示在此範例中選取 [資料表] 時的提示 `marketplaceleads` 。
+   * **資料表**：選取您資料表的名稱 (從 [建立資料表](#create-a-table-in-your-storage-account))。 下圖顯示在此範例中選取 [資料表] 時的提示 `marketplaceleads` 。
 
      ![[取得實體] 視窗](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
-   * **篩選查詢** ：選取此方塊，然後將下列函式貼到方塊中：`Timestamp gt datetime'@{body('Get_past_time')}'`
+   * **篩選查詢**：選取此方塊，然後將下列函式貼到方塊中：`Timestamp gt datetime'@{body('Get_past_time')}'`
 
      ![[取得實體]，[篩選查詢] 方塊](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
 
@@ -135,7 +135,7 @@ ms.locfileid: "94489347"
    在接下來幾個步驟中，您會設定根據條件的結果所要採取的動作：
 
    * 如果條件解析為 [如果否]，則不執行任何動作。
-   * 如果條件解析為 **[是]** ，則觸發可連接您的工作或學校帳戶以傳送電子郵件的動作。 
+   * 如果條件解析為 **[是]**，則觸發可連接您的工作或學校帳戶以傳送電子郵件的動作。 
 
 1. 在 [如果是] 底下，選取 [新增動作]。
 
@@ -150,9 +150,9 @@ ms.locfileid: "94489347"
 
 1. 在[Office 365 Outlook] 視窗中，為下列方塊提供資訊：
 
-    1. **收件者** ：輸入每個將會收到此通知的人的電子郵件地址。
-    1. **主體** ：提供電子郵件的主旨。 其中一個範例是 **新的潛在客戶！**
-    1. **主體** ：新增您想要納入每封電子郵件的文字 (選擇性)，然後貼到 `body('Get_entities')?['value']` 中。
+    1. **收件者**：輸入每個將會收到此通知的人的電子郵件地址。
+    1. **主體**：提供電子郵件的主旨。 其中一個範例是 **新的潛在客戶！**
+    1. **主體**：新增您想要納入每封電子郵件的文字 (選擇性)，然後貼到 `body('Get_entities')?['value']` 中。
 
     >[!NOTE]
     >您可以將額外的靜態或動態資料點插入到這封電子郵件的本文。
@@ -193,7 +193,7 @@ ms.locfileid: "94489347"
 1. 將您在先前步驟中所建立之 Azure 儲存體帳戶的連接字串貼到 [儲存體帳戶連接字串] 方塊中。
      ![潛在客戶管理，[連線詳細資料]，儲存體帳戶](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-connection-details.png)
 
-1. **連絡人電子郵件** ：提供公司收到新的潛在客戶時，會收到電子郵件通知之員工的電子郵件地址。 您可以提供多個電子郵件，方法是以分號分隔。
+1. **連絡人電子郵件**：提供公司收到新的潛在客戶時，會收到電子郵件通知之員工的電子郵件地址。 您可以提供多個電子郵件，方法是以分號分隔。
 
 1. 選取 [確定]。
 

@@ -3,12 +3,12 @@ title: 了解如何稽核虛擬機器的內容
 description: 了解 Azure 原則如何使用「來賓設定」代理程式來稽核虛擬機器內的設定。
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2fd1f17d38b0a58fbf64670849a8d5e13bb00cf8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 7d7aa14038c834747240d17441c61d000ac6bb74
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032706"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347875"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure 原則的來賓設定
 
@@ -84,7 +84,7 @@ Azure Arc 的機器會使用內部部署網路基礎結構進行連線，以連�
 
 ### <a name="communicate-over-private-link-in-azure"></a>透過 Azure 中的私人連結進行通訊
 
-虛擬機器可以使用 [私人連結](../../../private-link/private-link-overview.md) 來與來賓設定服務進行通訊。 套用具有名稱 `EnablePrivateNetworkGC` 和值的標記 `TRUE` 以啟用此功能。 將來賓設定原則定義套用至電腦之前或之後，都可以套用標記。
+虛擬機器可以使用 [私人連結](../../../private-link/private-link-overview.md) 來與來賓設定服務進行通訊。 以名稱 (套用標記， `EnablePrivateNeworkGC` 在網路) 和值中不含 "t"， `TRUE` 以啟用這項功能。 將來賓設定原則定義套用至電腦之前或之後，都可以套用標記。
 
 使用 Azure [虛擬公用 IP 位址](../../../virtual-network/what-is-ip-address-168-63-129-16.md) 來路由傳送流量，以使用 azure 平臺資源建立安全、已驗證的通道。
 

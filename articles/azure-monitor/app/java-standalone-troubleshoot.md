@@ -1,72 +1,72 @@
 ---
-title: 疑難排解-Azure 監視器 Application Insights JAVA
-description: 針對 Azure 監視器 Application Insights JAVA 進行疑難排解
+title: 針對 JAVA 的 Azure 監視器 Application Insights 進行疑難排解
+description: 瞭解如何針對 Azure 監視器 Application Insights 的 JAVA 代理程式進行疑難排解
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: cf27763f857cc1fd1aad5256d0c6cecf91251caf
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 1ccfd583b58d129268af2a94e3072200e58308cd
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855593"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347825"
 ---
-# <a name="troubleshooting-azure-monitor-application-insights-java"></a>針對 Azure 監視器 Application Insights JAVA 進行疑難排解
+# <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>疑難排解指南：適用于 JAVA 的 Azure 監視器 Application Insights
 
-在本文中，我們討論了一些使用者在使用 java 代理程式來檢測 java 應用程式時可能遇到的常見問題，以及解決這些問題的步驟。
+在本文中，我們將討論使用 JAVA agent 進行 Application Insights 時，您可能面臨的一些常見問題。 我們也會討論解決這些問題的步驟。 Application Insights 是 Azure 監視器 platform service 的一項功能。
 
-## <a name="self-diagnostic-log-file"></a>自我診斷記錄檔
+## <a name="check-the-self-diagnostic-log-file"></a>檢查自我診斷記錄檔
 
-根據預設，Application Insights JAVA 3.0 會產生一個記錄檔，該檔案會 `applicationinsights.log` 在檔案所在的相同目錄中命名 `applicationinsights-agent-3.0.0.jar` 。
+根據預設，Application Insights 的 JAVA 3.0 代理程式會產生一個記錄檔， `applicationinsights.log` 該檔案會在保存該檔案的相同目錄中命名 `applicationinsights-agent-3.0.0.jar` 。
 
-此記錄檔是檢查您可能遇到之任何問題提示的第一個位置。
+此記錄檔是檢查提示是否有您可能遇到之任何問題的第一個位置。
 
-## <a name="upgrade-from-application-insights-java-2x-sdk"></a>從 Application Insights JAVA 2.x SDK 升級
+## <a name="upgrade-from-the-application-insights-java-2x-sdk"></a>從 Application Insights JAVA 2.x SDK 升級
 
-請參閱 [從 2.X SDK 進行升級](./java-standalone-upgrade-from-2x.md)。
+如果您已經在應用程式中使用 Application Insights JAVA 2.x SDK，您可以繼續使用它。 JAVA 3.0 代理程式將會偵測到它。 如需詳細資訊，請參閱 [從 JAVA 2.X SDK 進行升級](./java-standalone-upgrade-from-2x.md)。
 
-## <a name="upgrade-from-30-preview"></a>從3.0 預覽升級
+## <a name="upgrade-from-application-insights-java-30-preview"></a>從 Application Insights JAVA 3.0 Preview 升級
 
-如果您是從 3.0 Preview 升級，請仔細檢查所有的設定 [選項](./java-standalone-config.md) ，因為 3.0 GA 版本中的 json 結構已完全變更。
+如果您要從 JAVA 3.0 Preview 代理程式升級，請仔細檢查所有設定 [選項](./java-standalone-config.md) 。 JSON 結構已在3.0 正式運作 (GA) 版本中完全變更。
 
 這些變更包括：
 
-1.  設定檔案名稱本身已從變更 `ApplicationInsights.json` 為 `applicationinsights.json` 。
-2.  `instrumentationSettings`節點不再存在。 中的所有內容 `instrumentationSettings` 都會移至根層級。 
-3.  設定節點（例如 `sampling` 、 `jmxMetrics` 和） `instrumentation` `heartbeat` 會從 `preview` 根層級移出。
+-  設定檔案名稱已從變更 `ApplicationInsights.json` 為 `applicationinsights.json` 。
+-  `instrumentationSettings`節點不再存在。 中的所有內容 `instrumentationSettings` 都會移至根層級。 
+-  設定節點（例如 `sampling` 、 `jmxMetrics` 、和） `instrumentation` `heartbeat` 會從 `preview` 根層級移出。
 
-## <a name="ssl-certificate-issues"></a>SSL 憑證問題
+## <a name="import-ssl-certificates"></a>匯入 SSL 憑證
 
-如果您使用預設的 JAVA 金鑰儲存區，它將已擁有所有 CA 根憑證，您應該不需要匯入任何進一步的 SSL 憑證。
+如果您使用預設的 JAVA 金鑰儲存區，它將已擁有所有 CA 根憑證。 您不應該需要匯入更多 SSL 憑證。
 
 如果您使用自訂 JAVA 金鑰儲存區，您可能需要將 Application Insights 的端點 SSL 憑證匯入其中。
 
-### <a name="some-key-terminology"></a>一些重要術語：
-*金鑰* 儲存區是憑證、公開和私密金鑰的儲存機制。 JDK 散發通常具有可執行檔來管理它們– `keytool` 。
+### <a name="key-terminology"></a>重要術語
+*金鑰* 儲存區是憑證、公開金鑰和私密金鑰的儲存機制。 JAVA 開發工具組散發套件通常具有可執行檔來管理它們： `keytool` 。
 
 下列範例是將 SSL 憑證匯入金鑰儲存區的簡單命令：
 
 `keytool -importcert -alias your_ssl_certificate -file "your downloaded SSL certificate name".cer -keystore "Your KeyStore name" -storepass "Your keystore password" -noprompt`
 
-### <a name="steps-to-download-and-add-the-ssl-certificate"></a>下載並新增 SSL 憑證的步驟：
+### <a name="steps-to-download-and-add-an-ssl-certificate"></a>下載和新增 SSL 憑證的步驟
 
-1.  開啟您慣用的瀏覽器，並移至 `IngestionEndpoint` 用來檢測應用程式的連接字串中出現的 url，如下所示
+1.  開啟您慣用的瀏覽器，並移至 `IngestionEndpoint` 用來檢測應用程式的連接字串中出現的 URL。
 
-    :::image type="content" source="media/java-ipa/troubleshooting/ingestion-endpoint-url.png" alt-text="Application Insights 連接字串":::
+    :::image type="content" source="media/java-ipa/troubleshooting/ingestion-endpoint-url.png" alt-text="顯示 Application Insights 連接字串的螢幕擷取畫面。":::
 
-2.  按一下瀏覽器上的 [查看網站資訊] (鎖定) 圖示，然後按一下 [憑證] 選項，如下所示
+2.  在瀏覽器中選取 [ **查看網站資訊** (鎖定) ] 圖示，然後選取 [ **憑證** ] 選項。
 
-    :::image type="content" source="media/java-ipa/troubleshooting/certificate-icon-capture.png" alt-text="SSL 憑證捕獲":::
+    :::image type="content" source="media/java-ipa/troubleshooting/certificate-icon-capture.png" alt-text="[網站資訊] 中 [憑證] 選項的螢幕擷取畫面。":::
 
-3.  前往 [詳細資料] 索引標籤，然後按一下 [複製到檔案]。
-4.  按一下 [下一步] 按鈕，然後選取 [x.509 ( 的 [Base-64 編碼]。CER) ] 格式，然後選取 [下一步]。
+3.  移至 [ **詳細資料** ] 索引標籤，然後選取 [ **複製到** 檔案]。
+4.  選取 [ **下一步]** 按鈕，選取 [ **Base-64 編碼的 x.509] (。CER)** 格式，然後再選取 **[下一步]** 。
 
-    :::image type="content" source="media/java-ipa/troubleshooting/certificate-export-wizard.png" alt-text="SSL 憑證 ExportWizard":::
+    :::image type="content" source="media/java-ipa/troubleshooting/certificate-export-wizard.png" alt-text="憑證匯出嚮導的螢幕擷取畫面，其中已選取格式。":::
 
-5.  指定您要儲存 SSL 憑證的檔案。 最後按 [下一步]，然後完成。 您應該會看到「匯出成功」訊息。
-6.  一旦讓憑證將憑證匯入到 JAVA 金鑰儲存區之後，就可以了。 使用上述 [命令](#some-key-terminology) 匯入憑證。
+5.  指定您要儲存 SSL 憑證的檔案。 然後選取 **[下一步**  >  **]**。 您應該會看到「匯出成功」訊息。
+6.  擁有憑證之後，就可以將憑證匯入至 JAVA 金鑰儲存區。 使用 [上述命令](#key-terminology) 匯入憑證。
 
 > [!WARNING]
-> 您將需要重複這些步驟，才能在目前的憑證到期之前取得新的憑證。 您可以在憑證快顯視窗的 [詳細資料] 索引標籤中找到到期資訊，如下所示
-
-:::image type="content" source="media/java-ipa/troubleshooting/certificate-details.png" alt-text="SSL 憑證詳細資料":::
+> 您必須重複這些步驟，才能在目前的憑證到期之前取得新憑證。 您可以在 [**憑證**] 對話方塊的 [**詳細資料**] 索引標籤上找到到期資訊。
+>
+> :::image type="content" source="media/java-ipa/troubleshooting/certificate-details.png" alt-text="顯示 SSL 憑證詳細資料的螢幕擷取畫面。":::

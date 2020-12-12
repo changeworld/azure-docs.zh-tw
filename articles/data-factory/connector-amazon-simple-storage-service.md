@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/08/2020
-ms.openlocfilehash: 10859423d90f7ea55dded00522de34d94493eec1
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 925a0270c50d20790c093eaf193d66e0acd4cd11
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902284"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347387"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Amazon Simple Storage Service 複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -63,7 +63,7 @@ ms.locfileid: "96902284"
 
 以下是針對 Amazon S3 已連結服務支援的屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | **Type** 屬性必須設為 **AmazonS3**。 | 是 |
 | authenticationType | 指定用來連接到 Amazon S3 的驗證類型。 您可以選擇使用 AWS 身分識別和存取管理 (IAM) 帳戶或 [暫時性安全性認證](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)的存取金鑰。<br>允許的值為： `AccessKey` (預設) 和 `TemporarySecurityCredentials` 。 |否 |
@@ -133,7 +133,7 @@ ms.locfileid: "96902284"
 
 以下是以 `location` 格式為基礎的資料集設定中的 Amazon S3 支援的屬性：
 
-| 屬性   | 描述                                                  | 必要 |
+| 屬性   | 說明                                                  | 必要 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 資料集中的 **類型** 屬性 `location` 必須設定為 **AmazonS3Location**。 | 是      |
 | bucketName | S3 貯體名稱。                                          | 是      |
@@ -178,14 +178,14 @@ ms.locfileid: "96902284"
 
 以下是針對以 `storeSettings` 格式為基礎的複製來源設定下的 Amazon S3 支援的屬性：
 
-| 屬性                 | 描述                                                  | 必要                                                    |
+| 屬性                 | 說明                                                  | 必要                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | type                     | 下的 **類型** 屬性 `storeSettings` 必須設為 **AmazonS3ReadSettings**。 | 是                                                         |
 | **_找出要複製的檔案：_* _ |  |  |
 | 選項 1：靜態路徑<br> | 從在資料集內指定的貯體或資料夾/檔案路徑複製。 如果您想要複製值區或資料夾中的所有檔案，請另外指定 `wildcardFileName` as `_` 。 |  |
 | 選項 2：S3 前置詞<br>- 前置詞 | 在資料集內設定的指定值區下，S3 金鑰名稱的前置詞，以篩選來源 S3 檔案。 系統會選取其名稱開頭為的 S3 金鑰 `bucket_in_dataset/this_prefix` 。 它會使用 S3's 服務端篩選器，提供比萬用字元篩選器更佳的效能。<br/><br/>當您使用前置詞，並選擇複製到具有保留階層的檔案型接收時，請注意在前置詞中最後一個 "/" 之後的子路徑將會保留。 例如，您有來源  `bucket/folder/subfolder/file.txt` ，並將前置詞設定為 `folder/sub` ，則保留的檔案路徑為 `subfolder/file.txt` 。 | 否 |
 | 選項 3：萬用字元<br>- wildcardFolderPath | 在資料集內設定的指定值區下，具有萬用字元的資料夾路徑，可篩選來源資料夾。 <br>允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。 `^`如果您的資料夾名稱裡面有萬用字元或這個 escape 字元，請使用來進行 escape。 <br>如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 否                                            |
-| 選項 3：萬用字元<br>- wildcardFileName | 在指定的值區和資料夾路徑下具有萬用字元的檔案名 (或萬用字元資料夾路徑，) 來篩選原始程式檔。 <br>允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。 `^`如果您的資料夾名稱裡面有萬用字元或這個 escape 字元，請使用來進行 escape。  如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 是 |
+| 選項 3：萬用字元<br>- wildcardFileName | 在指定的值區和資料夾路徑下具有萬用字元的檔案名 (或萬用字元資料夾路徑，) 來篩選原始程式檔。 <br>允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。 `^`如果您的檔案名中有萬用字元或這個 escape 字元，請使用來進行 escape。  如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 是 |
 | 選項 4：檔案清單<br>- fileListPath | 表示要複製指定的檔案集。 指向文字檔，其中包含您要複製的檔案清單，每行一個檔案，也就是在資料集中設定之路徑的相對路徑。<br/>當您使用此選項時，請勿在資料集中指定檔案名。 [檔案清單範例](#file-list-examples) (英文) 有更多範例可供參閱。 |否 |
 | ***其他設定：** _ |  | |
 | 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當 _ *遞迴** 設定為 **true** 且接收是檔案型存放區時，不會在接收時複製或建立空的資料夾或子資料夾。 <br>允許的值為 **true** (預設值) 和 **false**。<br>設定 `fileListPath` 時，不適用此屬性。 |否 |
@@ -281,7 +281,7 @@ ms.locfileid: "96902284"
 
 ### <a name="legacy-dataset-model"></a>舊版資料集模型
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的 **type** 屬性必須設為 **>amazons3object**。 |是 |
 | bucketName | S3 貯體名稱。 不支援萬用字元篩選。 |適用于複製或查閱活動，GetMetadata 活動不是 |
@@ -361,7 +361,7 @@ ms.locfileid: "96902284"
 
 ### <a name="legacy-source-model-for-the-copy-activity"></a>複製活動的舊版來源模型
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 **type** 屬性必須設為 **>filesystemsource**。 |是 |
 | 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當 **遞迴** 設定為 **true** 且接收是檔案型存放區時，將不會在接收時複製或建立空的資料夾或子資料夾。<br/>允許的值為 **true** (預設值) 和 **false**。 | 否 |

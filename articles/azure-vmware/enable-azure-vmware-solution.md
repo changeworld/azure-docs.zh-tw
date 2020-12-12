@@ -3,12 +3,12 @@ title: 如何啟用您的 Azure VMware 解決方案資源
 description: 瞭解如何提交支援要求，以啟用您的 Azure VMware 解決方案資源。 您也可以在現有的 Azure VMware 解決方案私人雲端中要求更多主機。
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 526d6b38f4b4e3f6c4806b71b4728dee90cf558a
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 8bcb61c07a3f0310754cd50931f4576e836deffb
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325072"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346532"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>如何啟用 Azure VMware 解決方案資源
 瞭解如何提交支援要求，以啟用您的 [Azure VMware 解決方案](introduction.md) 資源。 您也可以在現有的 Azure VMware 解決方案私人雲端中要求更多主機。
@@ -18,7 +18,7 @@ ms.locfileid: "96325072"
 Azure 訂閱需要 Azure 帳戶。 Azure 訂用帳戶必須符合下列其中一個準則：
 
 * [Azure Enterprise 合約 (EA) ](../cost-management-billing/manage/ea-portal-agreements.md)的訂用帳戶與 Microsoft 一起使用。
-* 雲端解決方案提供者 (CSP) Azure 方案下的受控訂用帳戶。
+* 在現有的 CSP 下，雲端解決方案提供者 (CSP) 受控訂用帳戶，Azure 提供合約或 Azure 方案。
 
 
 ## <a name="enable-azure-vmware-solution-for-ea-customers"></a>啟用適用于 EA 客戶的 Azure VMware 解決方案
@@ -61,7 +61,7 @@ Azure 訂閱需要 Azure 帳戶。 Azure 訂用帳戶必須符合下列其中一
 
 ## <a name="enable-azure-vmware-solution-for-csp-customers"></a>為 CSP 客戶啟用 Azure VMware 解決方案 
 
-Csp 必須使用 [Microsoft 合作夥伴中心](https://partner.microsoft.com) 為其客戶啟用 Azure VMware 解決方案。 
+Csp 必須使用 [Microsoft 合作夥伴中心](https://partner.microsoft.com) 為其客戶啟用 Azure VMware 解決方案。 本文使用 [CSP Azure 方案](/partner-center/azure-plan-lp.md) 作為範例，來說明合作夥伴的購買程式。
 
    >[!IMPORTANT] 
    >Azure VMware 解決方案服務不提供必要的多租使用者。 不支援裝載需要它的合作夥伴。 
@@ -76,9 +76,9 @@ Csp 必須使用 [Microsoft 合作夥伴中心](https://partner.microsoft.com) �
 
 1. 選取 [ **Azure 方案** ]，然後選取 [ **新增至購物車**]。 
 
-1. 檢查並完成客戶的 Azure 方案訂用帳戶一般設定。 如需詳細資訊，請參閱 [Microsoft 合作夥伴中心檔](/partner-center/azure-plan-manage)。
+1. 檢查並完成客戶的 Azure 方案訂用帳戶一般設定。 如需詳細資訊，請參閱 [Microsoft 合作夥伴中心檔](/partner-center/azure-plan-manage.md)。
 
-設定好 Azure 方案和所需的 vSphere RBAC 許可權之後，您將會參與 Microsoft，以啟用 Azure 方案訂用帳戶的配額。 使用系統 **管理員代表** (AOBO) 程式存取合作夥伴中心的 Azure 入口網站。
+在設定 Azure 方案和訂用帳戶所需的 [AZURE RBAC 許可權](/partner-center/azure-plan-manage.md) 之後，您將會參與 Microsoft 來啟用 Azure 方案訂用帳戶的配額。 使用系統 **管理員代表** (AOBO) 程式存取 [Microsoft 合作夥伴中心](https://partner.microsoft.com)的 Azure 入口網站。
 
 1. 登入[合作夥伴中心](https://partner.microsoft.com)。
 

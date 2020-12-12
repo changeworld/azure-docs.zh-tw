@@ -7,17 +7,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 1f541b947c04619892291e47002ea9b0dbb6d38d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9f6692db2da3722507136a468d1dcbdc2985e73f
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340552"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347552"
 ---
 # <a name="transactional-batch-operations-in-azure-cosmos-db-using-the-net-sdk"></a>使用 .NET SDK Azure Cosmos DB 中的交易式批次作業
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-交易式批次描述一組需要成功或失敗的點運算，以及容器中的相同分割區索引鍵。 在 .NET SDK 中， `TranscationalBatch` 類別是用來定義此批次作業。 如果所有作業都依照交易式批次作業中的描述順序成功，就會認可交易。 但是，如果有任何作業失敗，則會回復整個交易。
+交易式批次描述一組需要成功或失敗的點運算，以及容器中的相同分割區索引鍵。 在 .NET SDK 中， `TransactionalBatch` 類別是用來定義此批次作業。 如果所有作業都依照交易式批次作業中的描述順序成功，就會認可交易。 但是，如果有任何作業失敗，則會回復整個交易。
 
 ## <a name="whats-a-transaction-in-azure-cosmos-db"></a>Azure Cosmos DB 中的交易
 
@@ -34,7 +34,7 @@ Azure Cosmos DB 針對相同[邏輯分割](partitioning-overview.md)區索引鍵
 Azure Cosmos DB 目前支援預存程式，這也會提供作業的交易式範圍。 不過，交易式批次作業提供下列優點：
 
 * **Language 選項** –您所使用的 SDK 和語言支援交易式批次，而預存程式則需要以 JavaScript 撰寫。
-* 程式 **代碼版本控制** –版本控制應用程式程式碼，並將其上架到 CI/CD 管線，比協調預存程式的更新和確定在正確時間進行變換更為自然。 它也可讓您更輕鬆地回復變更。
+* 程式 **代碼版本控制**–版本控制應用程式程式碼，並將其上架到 CI/CD 管線，比協調預存程式的更新和確定在正確時間進行變換更為自然。 它也可讓您更輕鬆地回復變更。
 * **效能** –相較于預存程式執行，減少對等作業的延遲，最多可達30%。
 * **內容序列化** ：交易式批次內的每個作業都可以利用其承載的自訂序列化選項。
 
@@ -51,13 +51,13 @@ TransactionalBatch batch = container.CreateTransactionalBatch(new PartitionKey(p
   .CreateItem<ChildClass>(child);
 ```
 
-接下來，您必須呼叫 `ExecuteAsync` ：
+接下來，您必須 `ExecuteAsync` 在批次上呼叫：
 
 ```csharp
 TransactionalBatchResponse batchResponse = await batch.ExecuteAsync();
 ```
 
-收到回應之後，您必須檢查是否成功，並將結果解壓縮：
+一旦收到回應，請檢查是否成功，並將結果解壓縮：
 
 ```csharp
 using (batchResponse)
@@ -72,7 +72,7 @@ using (batchResponse)
 }
 ```
 
-如果發生失敗，失敗的作業會有其對應錯誤的狀態碼。 但所有其他作業都會有424狀態碼 (失敗的相依性) 。 在下列範例中，作業會失敗，因為它會嘗試建立已存在 (409 HttpStatusCode 的專案。衝突) 。 狀態碼可讓您更輕鬆地識別交易失敗的原因。
+如果發生失敗，失敗的作業會有其對應錯誤的狀態碼。 所有其他作業都會有424狀態碼 (失敗的相依性) 。 在下列範例中，作業會失敗，因為它會嘗試建立已存在 (409 HttpStatusCode 的專案。衝突) 。 狀態碼可讓一個識別交易失敗的原因。
 
 ```csharp
 // Parent's birthday!
@@ -100,7 +100,7 @@ using (failedBatchResponse)
 
 `ExecuteAsync`呼叫方法時，會將物件中的所有作業 `TransactionalBatch` 分組，並序列化為單一承載，並以單一要求的形式傳送至 Azure Cosmos DB 服務。
 
-服務會接收要求並執行交易式範圍內的所有作業，並使用相同的序列化通訊協定傳迴響應。 這項回應可能是成功或失敗，並且會在內部包含所有個別的作業回應。
+服務會接收要求並執行交易式範圍內的所有作業，並使用相同的序列化通訊協定傳迴響應。 這項回應可能是成功或失敗，並會針對每個作業提供個別的作業回應。
 
 SDK 會公開回應以驗證結果，並選擇性地將每個內部操作結果解壓縮。
 
@@ -108,7 +108,7 @@ SDK 會公開回應以驗證結果，並選擇性地將每個內部操作結果�
 
 目前有兩個已知的限制：
 
-* Azure Cosmos DB 要求大小限制指定承載的大小 `TransactionalBatch` 不能超過 2 MB，而且執行時間上限為5秒。
+* Azure Cosmos DB 要求大小限制會限制承載的大小 `TransactionalBatch` 不超過 2 MB，而執行時間上限為5秒。
 * 目前的限制為每個100作業， `TransactionalBatch` 以確保效能符合預期且在 sla 內。
 
 ## <a name="next-steps"></a>後續步驟

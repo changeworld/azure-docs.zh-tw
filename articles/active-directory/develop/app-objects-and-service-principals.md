@@ -13,12 +13,12 @@ ms.date: 07/22/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: e4325303f5a10fa1df670495dd6d8190167182e8
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: b08f00730e15dd0c7415a28adf85b87c95d7b1ed
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861097"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347140"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory 中的應用程式和服務主體物件
 
@@ -47,9 +47,9 @@ Microsoft Graph [應用程式實體][MS-Graph-App-Entity] 會定義應用程式�
 ## <a name="service-principal-object"></a>服務主體物件
 若要存取受到 Azure AD 租用戶保護的資源，需要存取權的實體必須以安全性主體呈現。 這項需求適用于使用者 (使用者主體) 和 (服務主體) 的應用程式。 安全性主體會定義 Azure AD 租用戶中使用者/應用程式的存取原則和權限。 此動作可啟用核心功能，例如登入期間的使用者/應用程式驗證，以及資源存取期間的授權。
 
-服務主體是單一租使用者或目錄中全域應用程式物件的本機標記法或應用程式實例。 服務主體是從應用程式物件建立的實體實例，並繼承該應用程式物件的特定屬性。  服務主體會建立于使用應用程式的每個租使用者中，並參考全域唯一的應用程式物件。  服務主體物件會定義應用程式實際上可在特定租使用者中進行的動作、誰可以存取應用程式，以及應用程式可以存取哪些資源。
+服務主體是單一租使用者或目錄中全域應用程式物件的本機標記法或應用程式實例。 服務主體是從應用程式物件建立的實體實例，並繼承該應用程式物件的特定屬性。 服務主體會建立于使用應用程式的每個租使用者中，並參考全域唯一的應用程式物件。  服務主體物件會定義應用程式實際上可在特定租使用者中進行的動作、誰可以存取應用程式，以及應用程式可以存取哪些資源。
 
-當應用程式擁有權限可存取租用戶中的資源時 (通過註冊時或[同意](developer-glossary.md#consent))，服務主體物件就會隨即建立。 您也可以使用 [Azure PowerShell](howto-authenticate-service-principal-powershell.md)、 [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli)、 [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?tabs=http)、 [Azure 入口網站][AZURE-Portal]和其他工具，在租使用者中建立服務主體物件。  使用入口網站時，當您註冊應用程式時，會自動建立服務主體。
+當應用程式擁有權限可存取租用戶中的資源時 (通過註冊時或[同意](developer-glossary.md#consent))，服務主體物件就會隨即建立。 您也可以使用 [Azure PowerShell](howto-authenticate-service-principal-powershell.md)、 [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli)、 [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?tabs=http)、 [Azure 入口網站][AZURE-Portal]和其他工具，在租使用者中建立服務主體物件。 使用入口網站時，當您註冊應用程式時，會自動建立服務主體。
 
 入口網站中的 [ **企業應用程式** ] 分頁會用來列出和管理租使用者中的服務主體。 您可以看到服務主體的許可權、使用者同意的許可權、使用者已完成該同意、登入資訊等。
 
@@ -82,7 +82,7 @@ Microsoft Graph [ServicePrincipal 實體][MS-Graph-Sp-Entity] 會定義服務主
 
 在此範例案例中：
 
-| 步驟 | 描述 |
+| 步驟 | 說明 |
 |------|-------------|
 | 1    | 在應用程式的主要租用戶中建立應用程式和服務主體物件的程序。 |
 | 2    | 當 Contoso 和 Fabrikam 的系統管理員完成同意，系統就會在其公司的 Azure AD 租用戶中建立服務主體物件，並指派系統管理員所授與的權限。 也請注意，HR 應用程式可能會設定/設計為允許由使用者同意以進行個人使用。 |

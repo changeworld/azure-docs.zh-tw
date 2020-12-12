@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 09/28/2020
+ms.date: 12/11/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1cdf983dc8fed64c7d283ac216eb803746add95
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 6299f9ad660252ae39903401672d493b1c1ad52c
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029365"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347484"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中新增已連線的組織
 
@@ -29,7 +29,13 @@ ms.locfileid: "96029365"
 
 ## <a name="what-is-a-connected-organization"></a>什麼是已連線的組織？
 
-已連線的組織是與您關聯的外部 Azure AD 目錄或網域。
+已連線的組織是與您關聯的另一個組織。  為了讓該組織中的使用者能夠存取您的資源，例如您的 SharePoint Online 網站或應用程式，您需要在該目錄中表示該組織的使用者。  因為在大部分情況下，該組織中的使用者還不在您的 Azure AD 目錄中，所以您可以視需要使用權利管理將它們帶入您的 Azure AD 目錄。  
+
+權利管理有三種方式可讓您指定形成已連線組織的使用者。  可能是
+
+* 另一個 Azure AD 目錄中的使用者
+* 另一個已設定為直接同盟的非 Azure AD 目錄中的使用者，或
+* 另一個非 Azure AD 目錄中的使用者，其電子郵件地址全都具有相同的功能變數名稱。
 
 例如，假設您任職于 Woodgrove Bank，而您想要與兩個外部組織共同作業。 這兩個組織有不同的設定：
 

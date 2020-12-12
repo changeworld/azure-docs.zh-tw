@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: d7bd56ea22561d9463bc8430058e692f1c566c38
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 9d2fba48762e11a92f6f3925c969b01aebbe3630
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397819"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347586"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>應用程式閘道的後端健康情況和診斷記錄
 
@@ -39,9 +39,9 @@ ms.locfileid: "93397819"
 
 ### <a name="view-back-end-health-through-the-portal"></a>透過入口網站檢視後端健康情況
 
-入口網站中會自動提供後端的健康情況。 在現有的應用程式閘道中，選取 [ **監視**  >  **後端健康** 情況]。
+入口網站中會自動提供後端的健康情況。 在現有的應用程式閘道中，選取 [**監視**  >  **後端健康** 情況]。
 
-後端集區中的每個成員均會列於此頁面中 (無論是 NIC、IP 或 FQDN)。 後端集區名稱、連接埠、後端 HTTP 設定名稱和健康情況均會顯示。 健全狀況狀態的有效值為狀況 **良好** 、狀況 **不良** 和 **未知** 。
+後端集區中的每個成員均會列於此頁面中 (無論是 NIC、IP 或 FQDN)。 後端集區名稱、連接埠、後端 HTTP 設定名稱和健康情況均會顯示。 健全狀況狀態的有效值為狀況 **良好**、狀況 **不良** 和 **未知**。
 
 > [!NOTE]
 > 如果您看到後端健康情況為 [未知]，請確定 NSG 規則、使用者定義的路由 (UDR) 或虛擬網路中的自訂 DNS 並未封鎖對後端的存取。
@@ -95,19 +95,19 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 您可以在 Azure 中使用不同類型的記錄來管理和針對應用程式閘道進行疑難排解。 您可以透過入口網站存取其中一些記錄。 可以從 Azure Blob 儲存體擷取所有記錄，並且在不同的工具中進行檢視 (例如 [Azure 監視器記錄](../azure-monitor/insights/azure-networking-analytics.md)、Excel 和 Power BI)。 您可以從下列清單進一步了解不同類型的記錄：
 
-* **活動記錄** ：您可以使用 [Azure 活動記錄](../azure-resource-manager/management/view-activity-logs.md) (之前稱為「作業記錄和稽核記錄」) 來檢視提交至您的 Azure 訂用帳戶的所有作業及其狀態。 預設會收集活動記錄，您可在 Azure 入口網站中檢視它們。
-* **存取記錄** ：您可以使用此記錄來查看應用程式閘道存取模式及分析重要資訊。 這包括呼叫端的 IP、要求的 URL、回應延遲、傳回碼和位元組 in 和 out。每隔60秒會收集一次存取記錄。 此記錄檔包含每個應用程式閘道執行個體的一筆記錄。 應用程式閘道執行個體是由 instanceId 屬性識別。
-* **效能記錄** ：您可以使用此記錄來檢視應用程式閘道執行個體的執行情況。 此記錄會擷取每個執行個體的效能資訊，包括提供的要求總數、輸送量 (以位元組為單位)、提供的總要求數、失敗的要求計數、狀況良好和狀況不良的後端執行個體計數。 每隔 60 秒會收集一次效能記錄。 效能記錄僅適用于 v1 SKU。 針對 v2 SKU，請使用效能資料的 [計量](application-gateway-metrics.md) 。
-* **防火牆記錄** ：您可以使用此記錄，檢視透過應用程式閘道的偵測或防止模式 (依 Web 應用程式防火牆的設定) 所記錄的要求。 每隔60秒會收集一次防火牆記錄。 
+* **活動記錄**：您可以使用 [Azure 活動記錄](../azure-resource-manager/management/view-activity-logs.md) (之前稱為「作業記錄和稽核記錄」) 來檢視提交至您的 Azure 訂用帳戶的所有作業及其狀態。 預設會收集活動記錄，您可在 Azure 入口網站中檢視它們。
+* **存取記錄**：您可以使用此記錄來查看應用程式閘道存取模式及分析重要資訊。 這包括呼叫端的 IP、要求的 URL、回應延遲、傳回碼和位元組 in 和 out。每隔60秒會收集一次存取記錄。 此記錄檔包含每個應用程式閘道執行個體的一筆記錄。 應用程式閘道執行個體是由 instanceId 屬性識別。
+* **效能記錄**：您可以使用此記錄來檢視應用程式閘道執行個體的執行情況。 此記錄會擷取每個執行個體的效能資訊，包括提供的要求總數、輸送量 (以位元組為單位)、提供的總要求數、失敗的要求計數、狀況良好和狀況不良的後端執行個體計數。 每隔 60 秒會收集一次效能記錄。 效能記錄僅適用于 v1 SKU。 針對 v2 SKU，請使用效能資料的 [計量](application-gateway-metrics.md) 。
+* **防火牆記錄**：您可以使用此記錄，檢視透過應用程式閘道的偵測或防止模式 (依 Web 應用程式防火牆的設定) 所記錄的要求。 每隔60秒會收集一次防火牆記錄。 
 
 > [!NOTE]
 > 記錄僅適用於在 Azure Resource Manager 部署模型中部署的資源。 您無法將記錄使用於傳統部署模型中的資源。 若要深入了解這兩個模型，請參閱[了解 Resource Manager 部署和傳統部署](../azure-resource-manager/management/deployment-models.md)一文。
 
 您有三個選項可用來排序您的記錄：
 
-* **儲存體帳戶** ：如果記錄會儲存一段較長的持續期間，並在需要時加以檢閱，則最好針對記錄使用儲存體帳戶。
-* **事件中樞** ：事件中樞是整合其他安全性資訊和事件管理的絕佳選項 (SIEM) 工具來取得資源的警示。
-* **Azure 監視器記錄** ： Azure 監視器記錄最適合用來進行應用程式的一般即時監視，或查看趨勢。
+* **儲存體帳戶**：如果記錄會儲存一段較長的持續期間，並在需要時加以檢閱，則最好針對記錄使用儲存體帳戶。
+* **事件中樞**：事件中樞是整合其他安全性資訊和事件管理的絕佳選項 (SIEM) 工具來取得資源的警示。
+* **Azure 監視器記錄**： Azure 監視器記錄最適合用來進行應用程式的一般即時監視，或查看趨勢。
 
 ### <a name="enable-logging-through-powershell"></a>透過 PowerShell 啟用記錄功能
 
@@ -132,7 +132,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ### <a name="enable-logging-through-the-azure-portal"></a>透過 Azure 入口網站啟用記錄功能
 
-1. 在 Azure 入口網站中，尋找您的資源，然後選取 [ **診斷設定** ]。
+1. 在 Azure 入口網站中，尋找您的資源，然後選取 [ **診斷設定**]。
 
    應用程式閘道有三個記錄：
 
@@ -140,7 +140,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
    * 效能記錄檔
    * 防火牆記錄檔
 
-2. 若要開始收集資料，請選取 [ **開啟診斷** ]。
+2. 若要開始收集資料，請選取 [ **開啟診斷**]。
 
    ![開啟診斷][1]
 
@@ -148,7 +148,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
    ![啟動設定程序][2]
 
-5. 輸入設定的名稱、確認設定，然後選取 [ **儲存** ]。
+5. 輸入設定的名稱、確認設定，然後選取 [ **儲存**]。
 
 ### <a name="activity-log"></a>活動記錄檔
 
@@ -160,14 +160,14 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 #### <a name="for-application-gateway-standard-and-waf-sku-v1"></a>針對應用程式閘道標準和 WAF SKU (v1) 
 
-|值  |描述  |
+|值  |說明  |
 |---------|---------|
 |instanceId     | 處理要求的應用程式閘道執行個體。        |
 |clientIP     | 要求的原始 IP。        |
 |clientPort     | 要求的原始連接埠。       |
 |httpMethod     | 要求使用的 HTTP 方法。       |
 |requestUri     | 接收之要求的 URI。        |
-|RequestQuery     | **Server-Routed** ：傳送要求的後端集區執行個體。</br>**X-AzureApplicationGateway-LOG-ID** ：要求所使用的相互關聯識別碼。 它可以用來針對後端伺服器上的流量問題進行疑難排解。 </br>**SERVER-STATUS** ：應用程式閘道從後端收到的 HTTP 回應碼。       |
+|RequestQuery     | **Server-Routed**：傳送要求的後端集區執行個體。</br>**X-AzureApplicationGateway-LOG-ID**：要求所使用的相互關聯識別碼。 它可以用來針對後端伺服器上的流量問題進行疑難排解。 </br>**SERVER-STATUS**：應用程式閘道從後端收到的 HTTP 回應碼。       |
 |UserAgent     | HTTP 要求標頭中的使用者代理程式。        |
 |httpStatus     | 應用程式閘道傳回用戶端的 HTTP 狀態碼。       |
 |httpVersion     | 要求的 HTTP 版本。        |
@@ -204,11 +204,10 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 ```
 #### <a name="for-application-gateway-and-waf-v2-sku"></a>針對應用程式閘道和 WAF v2 SKU
 
-|值  |描述  |
+|值  |說明  |
 |---------|---------|
 |instanceId     | 處理要求的應用程式閘道執行個體。        |
 |clientIP     | 要求的原始 IP。        |
-|clientPort     | 要求的原始連接埠。       |
 |httpMethod     | 要求使用的 HTTP 方法。       |
 |requestUri     | 接收之要求的 URI。        |
 |UserAgent     | HTTP 要求標頭中的使用者代理程式。        |
@@ -236,7 +235,6 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
     "properties": {
         "instanceId": "appgw_1",
         "clientIP": "191.96.249.97",
-        "clientPort": 46886,
         "httpMethod": "GET",
         "requestUri": "/phpmyadmin/scripts/setup.php",
         "userAgent": "-",
@@ -261,7 +259,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有當您如上述步驟所述，在每個應用程式閘道上啟用效能記錄，才會產生效能記錄。 資料會儲存在您啟用記錄功能時指定的儲存體帳戶中。 產生效能記錄資料的時間間隔為 1 分鐘。 它僅適用于 v1 SKU。 針對 v2 SKU，請使用效能資料的 [計量](application-gateway-metrics.md) 。 會記錄下列資料：
 
 
-|值  |描述  |
+|值  |說明  |
 |---------|---------|
 |instanceId     |  將產生此應用程式閘道執行個體的效能資料。 應用程式閘道若有多個執行個體，則是一個執行個體一行資料。        |
 |healthyHostCount     | 後端集區中狀況良好主機的數目。        |
@@ -298,7 +296,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有當您如上述步驟所述，在每個應用程式閘道上啟用防火牆記錄，才會產生防火牆記錄。 此記錄也需要在應用程式閘道上設定該 Web 應用程式防火牆。 資料會儲存在您啟用記錄功能時指定的儲存體帳戶中。 會記錄下列資料：
 
 
-|值  |描述  |
+|值  |說明  |
 |---------|---------|
 |instanceId     | 將產生此應用程式閘道執行個體的防火牆資料。 應用程式閘道若有多個執行個體，則是一個執行個體一行資料。         |
 |clientIp     |   要求的原始 IP。      |
@@ -352,8 +350,8 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 您可以使用下列任何方法，檢視和分析活動記錄資料：
 
-* **Azure 工具** ：透過 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 入口網站，從活動記錄擷取資訊。 [活動作業與 Resource Manager](../azure-resource-manager/management/view-activity-logs.md) 一文會詳述每個方法的逐步指示。
-* **Power BI** ：如果您還沒有 [Power BI](https://powerbi.microsoft.com/pricing) 帳戶，可以免費試用。 藉由使用 [Power BI 範本應用程式](/power-bi/service-template-apps-overview)，您可以分析您的資料。
+* **Azure 工具**：透過 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 入口網站，從活動記錄擷取資訊。 [活動作業與 Resource Manager](../azure-resource-manager/management/view-activity-logs.md) 一文會詳述每個方法的逐步指示。
+* **Power BI**：如果您還沒有 [Power BI](https://powerbi.microsoft.com/pricing) 帳戶，可以免費試用。 藉由使用 [Power BI 範本應用程式](/power-bi/service-template-apps-overview)，您可以分析您的資料。
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>檢視及分析存取、效能和防火牆記錄
 

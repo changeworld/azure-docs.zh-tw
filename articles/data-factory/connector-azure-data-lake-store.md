@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/31/2020
-ms.openlocfilehash: a96cbd709fb5678e97202e222a7a335140b4da9a
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e788fc5ff95f8c3dac1e90956908cb2ef950dd4b
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637831"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347348"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製至或複製自 Azure Data Lake Storage Gen1
 
@@ -63,7 +63,7 @@ ms.locfileid: "92637831"
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | `type` 屬性必須設為 **AzureDataLakeStore** 。 | 是 |
+| type | `type` 屬性必須設為 **AzureDataLakeStore**。 | 是 |
 | dataLakeStoreUri | Azure Data Lake Store 帳戶相關資訊。 此資訊會採用下列其中一種格式：`https://[accountname].azuredatalakestore.net/webhdfs/v1` 或 `adl://[accountname].azuredatalakestore.net/`。 | 是 |
 | subscriptionId | Data Lake Store 帳戶所屬的 Azure 訂用帳戶識別碼。 | 接收 (Sink) 的必要項目 |
 | resourceGroupName | Data Lake Store 帳戶所屬的 Azure 資源群組名稱。 | 接收 (Sink) 的必要項目 |
@@ -81,8 +81,8 @@ ms.locfileid: "92637831"
 
 2. 將適當的權限授與服務主體。 請看以下範例，了解 [Azure Data Lake Storage Gen1 中的存取控制](../data-lake-store/data-lake-store-access-control.md#common-scenarios-related-to-permissions)在 Data Lake Storage Gen1 中的權限運作方式。
 
-    - **作為來源** ：在 [資料總管]  >  [存取權]中，至少授與對所有上游資料夾 (包括根) 的 **執行** 權限，以及對要複製之檔案的 **讀取** 權限。 您可以選擇新增到 [此資料夾及所有子系] 以供遞迴，並新增成為 **存取權限和預設權限項目** 。 對帳戶層級存取控制 (IAM) 沒有任何要求。
-    - **作為接收** ：在 [資料總管]  >  [存取權]中，至少授與對所有上游資料夾 (包括根) 的 **執行** 權限，以及對接收資料夾的 **寫入** 權限。 您可以選擇新增到 [此資料夾及所有子系] 以供遞迴，並新增成為 **存取權限和預設權限項目** 。
+    - **作為來源**：在 [資料總管]  >  [存取權]中，至少授與對所有上游資料夾 (包括根) 的 **執行** 權限，以及對要複製之檔案的 **讀取** 權限。 您可以選擇新增到 [此資料夾及所有子系] 以供遞迴，並新增成為 **存取權限和預設權限項目**。 對帳戶層級存取控制 (IAM) 沒有任何要求。
+    - **作為接收**：在 [資料總管]  >  [存取權]中，至少授與對所有上游資料夾 (包括根) 的 **執行** 權限，以及對接收資料夾的 **寫入** 權限。 您可以選擇新增到 [此資料夾及所有子系] 以供遞迴，並新增成為 **存取權限和預設權限項目**。
 
 以下是支援的屬性：
 
@@ -91,7 +91,7 @@ ms.locfileid: "92637831"
 | servicePrincipalId | 指定應用程式的用戶端識別碼。 | 是 |
 | servicePrincipalKey | 指定應用程式的金鑰。 將此欄位標記為 `SecureString`，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
 | tenant | 指定您的應用程式所在租用戶的資訊，例如網域名稱或租用戶識別碼。 將滑鼠游標暫留在 Azure 入口網站右上角，即可擷取它。 | 是 |
-| azureCloudType | 針對服務主體驗證，請指定您的 Azure Active Directory 應用程式註冊所在的 Azure 雲端環境類型。 <br/> 允許的值為 **AzurePublic** 、 **AzureChina** 、 **AzureUsGovernment** 和 **AzureGermany** 。 根據預設，會使用 data factory 的雲端環境。 | 否 |
+| azureCloudType | 針對服務主體驗證，請指定您的 Azure Active Directory 應用程式註冊所在的 Azure 雲端環境類型。 <br/> 允許的值為 **AzurePublic**、 **AzureChina**、 **AzureUsGovernment** 和 **AzureGermany**。 根據預設，會使用 data factory 的雲端環境。 | 否 |
 
 **範例︰**
 
@@ -129,8 +129,8 @@ ms.locfileid: "92637831"
 
 2. 授與受控識別可存取 Data Lake Store 的存取權。 請看以下範例，了解 [Azure Data Lake Storage Gen1 中的存取控制](../data-lake-store/data-lake-store-access-control.md#common-scenarios-related-to-permissions)在 Data Lake Storage Gen1 中的權限運作方式。
 
-    - **作為來源** ：在 [資料總管]  >  [存取權]中，至少授與對所有上游資料夾 (包括根) 的 **執行** 權限，以及對要複製之檔案的 **讀取** 權限。 您可以選擇新增到 [此資料夾及所有子系] 以供遞迴，並新增成為 **存取權限和預設權限項目** 。 對帳戶層級存取控制 (IAM) 沒有任何要求。
-    - **作為接收** ：在 [資料總管]  >  [存取權]中，至少授與對所有上游資料夾 (包括根) 的 **執行** 權限，以及對接收資料夾的 **寫入** 權限。 您可以選擇新增到 [此資料夾及所有子系] 以供遞迴，並新增成為 **存取權限和預設權限項目** 。
+    - **作為來源**：在 [資料總管]  >  [存取權]中，至少授與對所有上游資料夾 (包括根) 的 **執行** 權限，以及對要複製之檔案的 **讀取** 權限。 您可以選擇新增到 [此資料夾及所有子系] 以供遞迴，並新增成為 **存取權限和預設權限項目**。 對帳戶層級存取控制 (IAM) 沒有任何要求。
+    - **作為接收**：在 [資料總管]  >  [存取權]中，至少授與對所有上游資料夾 (包括根) 的 **執行** 權限，以及對接收資料夾的 **寫入** 權限。 您可以選擇新增到 [此資料夾及所有子系] 以供遞迴，並新增成為 **存取權限和預設權限項目**。
 
 在 Azure Data Factory 中，除了 Data Lake Store 的一般資訊，您不需要在連結服務中指定任何屬性。
 
@@ -162,9 +162,9 @@ ms.locfileid: "92637831"
 
 在格式型資料集內的 `location` 設定下，Azure Data Lake Store Gen1 支援下列屬性：
 
-| 屬性   | 描述                                                  | 必要 |
+| 屬性   | 說明                                                  | 必要 |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | 資料集中 `location` 下的 type 屬性必須設定為 **AzureDataLakeStoreLocation** 。 | 是      |
+| type       | 資料集中 `location` 下的 type 屬性必須設定為 **AzureDataLakeStoreLocation**。 | 是      |
 | folderPath | 資料夾的路徑。 如果您想要使用萬用字元來篩選資料夾，請略過此設定，並在活動來源設定中指定。 | 否       |
 | fileName   | 在所指定 folderPath 下方的檔案名稱。 如果您想要使用萬用字元來篩選檔案，請略過此設定，並在活動來源設定中指定。 | 否       |
 
@@ -204,22 +204,22 @@ ms.locfileid: "92637831"
 
 在格式型複製來源內的 `storeSettings` 設定下，Azure Data Lake Store Gen1 支援下列屬性：
 
-| 屬性                 | 描述                                                  | 必要                                     |
+| 屬性                 | 說明                                                  | 必要                                     |
 | ------------------------ | ------------------------------------------------------------ | -------------------------------------------- |
-| type                     | `storeSettings` 下的 type 屬性必須設定為 **AzureDataLakeStoreReadSettings** 。 | 是                                          |
+| type                     | `storeSettings` 下的 type 屬性必須設定為 **AzureDataLakeStoreReadSettings**。 | 是                                          |
 | **_找出要複製的檔案：_* _ |  |  |
 | 選項 1：靜態路徑<br> | 請從資料集內的指定資料夾/檔案路徑複製。 若您想要複製資料夾中的所有檔案，請另外將 `wildcardFileName` 指定為 `_`。 |  |
 | 選項2：名稱範圍<br>- listAfter | 依字母順序 (獨佔) 來抓取資料夾/檔案，其名稱會在此值之後。 它會利用 ADLS Gen1 的服務端篩選，提供比萬用字元篩選器更佳的效能。 <br/>Data factory 會將此篩選套用至資料集中定義的路徑，而且只支援一個實體層級。 請參閱 [名稱範圍篩選範例](#name-range-filter-examples)中的更多範例。 | 否 |
 | 選項2：名稱範圍<br/>- listBefore | 依字母順序 (內含) ，抓取名稱早于此值的資料夾/檔案。 它會利用 ADLS Gen1 的服務端篩選，提供比萬用字元篩選器更佳的效能。<br>Data factory 會將此篩選套用至資料集中定義的路徑，而且只支援一個實體層級。 請參閱 [名稱範圍篩選範例](#name-range-filter-examples)中的更多範例。 | 否 |
 | 選項 3：萬用字元<br>- wildcardFolderPath | 含有萬用字元的資料夾路徑，可用來篩選來源資料夾。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。 <br>如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 否                                            |
-| 選項 3：萬用字元<br>- wildcardFileName | 在指定 folderPath/wildcardFolderPath 之下，含有萬用字元的檔案名稱，可用來篩選來源檔案。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。  如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 是 |
+| 選項 3：萬用字元<br>- wildcardFileName | 在指定 folderPath/wildcardFolderPath 之下，含有萬用字元的檔案名稱，可用來篩選來源檔案。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際檔案名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。  如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 是 |
 | 選項 4：檔案清單<br>- fileListPath | 表示要複製指定的檔案集。 指向文字檔，其中包含您要複製的檔案清單，每行一個檔案，也就是在資料集中設定之路徑的相對路徑。<br/>使用此選項時，請勿指定資料集中的檔案名稱。 [檔案清單範例](#file-list-examples) (英文) 有更多範例可供參閱。 |否 |
 | ***其他設定：** _ |  | |
-| 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當遞迴設定為 true 且接收是檔案型存放區時，就不會在接收上複製或建立空的資料夾或子資料夾。 <br>允許的值為 _ *true* * (預設值) 和 **false** 。<br>設定 `fileListPath` 時，不適用此屬性。 |否 |
+| 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當遞迴設定為 true 且接收是檔案型存放區時，就不會在接收上複製或建立空的資料夾或子資料夾。 <br>允許的值為 _ *true** (預設值) 和 **false**。<br>設定 `fileListPath` 時，不適用此屬性。 |否 |
 | deleteFilesAfterCompletion | 指出是否要在成功移至目的地存放區之後，從來源存放區刪除二進位檔案。 檔案刪除是針對每個檔案，因此當複製活動失敗時，您會看到部分檔案已複製到目的地並從來源刪除，其他檔案仍在來源存放區上。 <br/>這個屬性只在二進位檔案複製案例中有效。 預設值： false。 |否 |
 | modifiedDatetimeStart    | 檔案篩選會根據以下屬性：上次修改時間。 <br>若檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br> 屬性可以是 Null，這表示不會將任何檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 具有日期時間值，但 `modifiedDatetimeEnd` 為 NULL 時，意謂著系統將會選取上次更新時間屬性大於或等於此日期時間值的檔案。  當 `modifiedDatetimeEnd` 具有日期時間值，但 `modifiedDatetimeStart` 為 NULL 時，則意謂著系統將會選取上次更新時間屬性小於此日期時間值的檔案。<br/>設定 `fileListPath` 時，不適用此屬性。 | 否                                            |
 | modifiedDatetimeEnd      | 同上。                                               | 否                                           |
-| enablePartitionDiscovery | 針對已分割的檔案，指定是否從檔案路徑剖析分割區，並將它們新增為其他來源資料行。<br/>允許的值為 **false** (預設) 和 **true** 。 | 否                                            |
+| enablePartitionDiscovery | 針對已分割的檔案，指定是否從檔案路徑剖析分割區，並將它們新增為其他來源資料行。<br/>允許的值為 **false** (預設) 和 **true**。 | 否                                            |
 | partitionRootPath | 當資料分割探索已啟用時，請指定絕對根路徑，以便將分割的資料夾讀取為數據行。<br/><br/>如果未指定，則預設為<br/>-當您在資料集或來源上的檔案清單中使用檔案路徑時，資料分割根路徑是在資料集中設定的路徑。<br/>-當您使用萬用字元資料夾篩選時，資料分割根路徑是第一個萬用字元之前的子路徑。<br/><br/>例如，假設您將資料集中的路徑設定為 "root/folder/year = 2020/month = 08/day = 27"：<br/>-如果您將資料分割根路徑指定為 "root/folder/year = 2020"，則除了檔案內的資料行之外，複製活動會分別產生兩個數據行， `month` 以及 `day` 值為 "08" 和 "27" 的資料行。<br/>-如果未指定資料分割根路徑，將不會產生額外的資料行。 | 否                                            |
 | maxConcurrentConnections | 可同時連線到儲存體存放區的連線數目。 只有當您想要限制同時連線到資料存放區的連線數目時才指定。 | 否                                           |
 
@@ -270,9 +270,9 @@ ms.locfileid: "92637831"
 
 在格式型複製接收器內的 `storeSettings` 設定下，Azure Data Lake Store Gen1 支援  下列屬性：
 
-| 屬性                 | 描述                                                  | 必要 |
+| 屬性                 | 說明                                                  | 必要 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | `storeSettings` 下的 type 屬性必須設定為 **AzureDataLakeStoreWriteSettings** 。 | 是      |
+| type                     | `storeSettings` 下的 type 屬性必須設定為 **AzureDataLakeStoreWriteSettings**。 | 是      |
 | copyBehavior             | 當來源是來自檔案型資料存放區的檔案時，會定義複製行為。<br/><br/>允許的值包括：<br/><b>- PreserveHierarchy (預設)</b>：保留目標資料夾中的檔案階層。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><b>- FlattenHierarchy</b>：來自來源資料夾的所有檔案都會在目標資料夾的第一層中。 目標檔案會有自動產生的名稱。 <br/><b>- MergeFiles</b>：將來自來源資料夾的所有檔案合併成一個檔案。 若已指定檔案名稱，合併檔案的名稱會是指定的名稱。 否則，就會是自動產生的檔案名稱。 | 否       |
 | expiryDateTime | 指定寫入檔案的到期時間。 時間會以「2020-03-01T08:00:00Z」的格式套用至 UTC 時間。 預設為 NULL，表示寫入的檔案永遠不會過期。 | 否 |
 | maxConcurrentConnections | 可同時連線到資料存放區的連線數目。 只有在想要限制資料存放區的同時連線數目時，才需指定此屬性。 | 否       |
@@ -439,11 +439,11 @@ ms.locfileid: "92637831"
 **清除資料夾：** 決定是否在寫入資料之前先清除目的地資料夾。
 
 **檔案名稱選項：** 決定目的地檔案在目的地資料夾中的命名方式。 檔案名稱的選項如下：
-   * **預設值** ：可讓 Spark 根據 PART 預設值來命名檔案。
-   * **模式** ：輸入模式來列舉每個分割區的輸出檔案。 例如， **loans[n].csv** 會建立 loans1.csv、loans2.csv，依此類推。
-   * **每個分割區** ：針對每個分割區輸入一個檔案名稱。
-   * **作為資料行中的資料** ：將輸出檔案設定為資料行的值。 路徑相對於資料集容器，而不是目的地資料夾。 如果資料集含有資料夾路徑，則會被覆寫。
-   * **輸出至單一檔案** ：將分割的輸出檔案結合成單一的具名檔案。 路徑相對於資料集資料夾。 請注意，根據節點的大小而定，「合併」作業可能失敗。 對於大型資料集，不建議使用此選項。
+   * **預設值**：可讓 Spark 根據 PART 預設值來命名檔案。
+   * **模式**：輸入模式來列舉每個分割區的輸出檔案。 例如，**loans[n].csv** 會建立 loans1.csv、loans2.csv，依此類推。
+   * **每個分割區**：針對每個分割區輸入一個檔案名稱。
+   * **作為資料行中的資料**：將輸出檔案設定為資料行的值。 路徑相對於資料集容器，而不是目的地資料夾。 如果資料集含有資料夾路徑，則會被覆寫。
+   * **輸出至單一檔案**：將分割的輸出檔案結合成單一的具名檔案。 路徑相對於資料集資料夾。 請注意，根據節點的大小而定，「合併」作業可能失敗。 對於大型資料集，不建議使用此選項。
 
 **全部以引號括住：** 決定是否用引號括住所有的值
 
@@ -466,18 +466,18 @@ ms.locfileid: "92637831"
 
 ### <a name="legacy-dataset-model"></a>舊版資料集模型
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的 type 屬性必須設定為 **AzureDataLakeStoreFile** 。 |是 |
+| type | 資料集的 type 屬性必須設定為 **AzureDataLakeStoreFile**。 |是 |
 | folderPath | Data Lake Store 中的資料夾路徑。 若未指定，它會指向根。 <br/><br/>支援萬用字元篩選。 允許的萬用字元為 `*` (符合零或多個字元) 和 `?` (符合零或單一字元)。 如果實際資料夾名稱內有萬用字元或逸出字元 `^`，請使用此逸出字元來逸出。 <br/><br/>範例：根資料夾/子資料夾/。 如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 |否 |
 | fileName | 在指定 "folderPath" 之下檔案的名稱或萬用字元篩選。 若未指定此屬性的值，資料集就會指向資料夾中的所有檔案。 <br/><br/>篩選時，允許的萬用字元為 `*` (符合零或多個字元) 和 `?` (符合零或單一字元)。<br/>- 範例 1：`"fileName": "*.csv"`<br/>- 範例 2：`"fileName": "???20180427.txt"`<br/>如果實際檔案名稱內有萬用字元或逸出字元 `^`，請使用此逸出字元來逸出。<br/><br/>沒有為輸出資料集指定 fileName 且活動接收器中未指定 **preserveHierarchy** 時，複製活動會自動以下列模式產生檔案名稱："Data.[activity run ID GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]"，例如，"Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz"。 如果您使用資料表名稱 (而非查詢) 從表格來源複製，則名稱模式會是 "[table name].[format].[compression if configured]"，例如 "MyTable.csv"。 |否 |
 | modifiedDatetimeStart | 檔案篩選會根據「上次修改」屬性。 如果檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br/><br/> 當您想要對大量檔案進行檔案篩選時，啟用這項設定會影響資料移動的整體效能。 <br/><br/> 此屬性可以是 NULL，這意謂著不會對資料集套用任何檔案屬性篩選。 當 `modifiedDatetimeStart` 有日期時間值，但 `modifiedDatetimeEnd` 為 NULL 時，表示系統將會選取上次修改時間屬性大於或等於此日期時間值的檔案。 當 `modifiedDatetimeEnd` 有日期時間值，但 `modifiedDatetimeStart` 為 NULL 時，則表示系統將會選取上次修改時間屬性小於此日期時間值的檔案。| 否 |
 | modifiedDatetimeEnd | 檔案篩選會根據「上次修改」屬性。 如果檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br/><br/> 當您想要對大量檔案進行檔案篩選時，啟用這項設定會影響資料移動的整體效能。 <br/><br/> 此屬性可以是 NULL，這意謂著不會對資料集套用任何檔案屬性篩選。 當 `modifiedDatetimeStart` 有日期時間值，但 `modifiedDatetimeEnd` 為 NULL 時，表示系統將會選取上次修改時間屬性大於或等於此日期時間值的檔案。 當 `modifiedDatetimeEnd` 有日期時間值，但 `modifiedDatetimeStart` 為 NULL 時，則表示系統將會選取上次修改時間屬性小於此日期時間值的檔案。| 否 |
-| format | 如果您想要在以檔案為基礎的存放區之間依原樣複製檔案 (二進位複製)，請在輸入和輸出資料集定義中略過格式區段。<br/><br/>如果您想要剖析或產生特定格式的檔案，以下是支援的檔案格式類型： **TextFormat** 、 **JsonFormat** 、 **AvroFormat** 、 **OrcFormat** 和 **ParquetFormat** 。 將 [format] 下的 [type] 屬性設定為下列其中一個值。 如需詳細資訊，請參閱[文字格式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[JSON 格式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)小節。 |否 (僅適用於二進位複製案例) |
-| compression | 指定此資料的壓縮類型和層級。 如需詳細資訊，請參閱[支援的檔案格式和壓縮轉碼器](supported-file-formats-and-compression-codecs-legacy.md#compression-support)。<br/>支援的類型為：GZip、Deflate、BZip2 及 ZipDeflate。<br/>支援的層級為 **Optimal** 和 **Fastest** 。 |否 |
+| format | 如果您想要在以檔案為基礎的存放區之間依原樣複製檔案 (二進位複製)，請在輸入和輸出資料集定義中略過格式區段。<br/><br/>如果您想要剖析或產生特定格式的檔案，以下是支援的檔案格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 將 [format] 下的 [type] 屬性設定為下列其中一個值。 如需詳細資訊，請參閱[文字格式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[JSON 格式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)小節。 |否 (僅適用於二進位複製案例) |
+| compression | 指定此資料的壓縮類型和層級。 如需詳細資訊，請參閱[支援的檔案格式和壓縮轉碼器](supported-file-formats-and-compression-codecs-legacy.md#compression-support)。<br/>支援的類型為：GZip、Deflate、BZip2 及 ZipDeflate。<br/>支援的層級為 **Optimal** 和 **Fastest**。 |否 |
 
 >[!TIP]
->若要複製資料夾下的所有檔案，請只指定 **folderPath** 。<br>若要複製特定名稱的單一檔案，請以 **folderPath** 指定資料夾部分 ，並以 **fileName** 指定檔案名稱。<br>若要複製資料夾下的檔案子集，請以 **folderPath** 指定資料夾部分 ，並以 **fileName** 指定萬用字元篩選。 
+>若要複製資料夾下的所有檔案，請只指定 **folderPath**。<br>若要複製特定名稱的單一檔案，請以 **folderPath** 指定資料夾部分 ，並以 **fileName** 指定檔案名稱。<br>若要複製資料夾下的檔案子集，請以 **folderPath** 指定資料夾部分 ，並以 **fileName** 指定萬用字元篩選。 
 
 **範例︰**
 
@@ -511,10 +511,10 @@ ms.locfileid: "92637831"
 
 ### <a name="legacy-copy-activity-source-model"></a>舊版複製活動來源模型
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動來源的 `type` 屬性必須設定為 **AzureDataLakeStoreSource** 。 |是 |
-| 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 當 `recursive` 設定為 true 且接收是檔案型存放區時，就不會在接收上複製或建立空的資料夾或子資料夾。 允許的值為 **true** (預設值) 和 **false** 。 | 否 |
+| type | 複製活動來源的 `type` 屬性必須設定為 **AzureDataLakeStoreSource**。 |是 |
+| 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 當 `recursive` 設定為 true 且接收是檔案型存放區時，就不會在接收上複製或建立空的資料夾或子資料夾。 允許的值為 **true** (預設值) 和 **false**。 | 否 |
 | maxConcurrentConnections | 可同時連線到資料存放區的連線數目。 只有在想要限制資料存放區的同時連線數目時，才需指定此屬性。 | 否 |
 
 **範例︰**
@@ -551,9 +551,9 @@ ms.locfileid: "92637831"
 
 ### <a name="legacy-copy-activity-sink-model"></a>舊版複製活動接收模型
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動接收器的 `type` 屬性必須設定為 **AzureDataLakeStoreSink** 。 |是 |
+| type | 複製活動接收器的 `type` 屬性必須設定為 **AzureDataLakeStoreSink**。 |是 |
 | copyBehavior | 當來源是來自檔案型資料存放區的檔案時，會定義複製行為。<br/><br/>允許的值包括：<br/><b>- PreserveHierarchy (預設)</b>：保留目標資料夾中的檔案階層。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><b>- FlattenHierarchy</b>：來自來源資料夾的所有檔案都會在目標資料夾的第一層中。 目標檔案會有自動產生的名稱。 <br/><b>- MergeFiles</b>：將來自來源資料夾的所有檔案合併成一個檔案。 若已指定檔案名稱，合併檔案的名稱會是指定的名稱。 否則，會自動產生檔案名稱。 | 否 |
 | maxConcurrentConnections | 可同時連線到資料存放區的連線數目。 只有在想要限制資料存放區的同時連線數目時，才需指定此屬性。 | 否 |
 

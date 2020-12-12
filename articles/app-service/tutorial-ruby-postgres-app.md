@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
-ms.openlocfilehash: b3c172584c42e1ed1d7ca94b6cd51bedd4e49dae
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: f565fcef60b2cb4726b180eb67e6ac1fcaefc24b
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862287"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347841"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure App Service 中建置 Ruby 和 Postgres 應用程式
 
@@ -291,7 +291,7 @@ git remote add azure <paste-copied-url-here>
 推送至 Azure 遠端以部署 Ruby on Rails 應用程式。 建立部署使用者時，系統會提示您輸入稍早提供的密碼。
 
 ```bash
-git push azure main
+git push azure master
 ```
 
 在部署期間，Azure App Service 會與 Git 溝通其進度。
@@ -302,7 +302,7 @@ Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'main'.
+remote: Updating branch 'master'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
@@ -421,7 +421,7 @@ rake db:migrate RAILS_ENV=production
 ```bash
 git add .
 git commit -m "added complete checkbox"
-git push azure main
+git push azure master
 ```
 
 完成 `git push` 之後，巡覽至 Azure 應用程式，然後測試新功能。

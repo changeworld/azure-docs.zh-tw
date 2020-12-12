@@ -9,16 +9,16 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: a8a662bf94e958d9e96a454ced9c44058b178a8c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e5d360933cbeb611046aede6164ec2e2fa497664
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366837"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347790"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>平行文件中的句子配對與對齊
 
-在訓練時，出現在平行文件中的句子皆已配對或已對齊。 自訂翻譯工具會報告其可以在每個資料集中配對為「對齊句子」的數目。
+上傳檔之後，平行檔中的句子會成對或對齊。 自訂翻譯工具會報告其可以在每個資料集中配對為「對齊句子」的數目。
 
 ## <a name="pairing-and-alignment-process"></a>配對和對齊程序
 

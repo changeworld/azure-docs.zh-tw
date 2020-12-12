@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 134148fa3ea73212d85393cc433d60f7ddeecd17
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8644040565bd46800b888a32653b6c8bbf89f096
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837119"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347433"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication (Preview 登入 Azure 中的 Windows 虛擬機器) 
 
@@ -157,6 +157,9 @@ az vm extension set \
 - 使用 Azure AD 入口網站體驗
 - 使用 Azure Cloud Shell 體驗
 
+> [!NOTE]
+> 虛擬機器系統管理員登入和虛擬機器使用者登入角色使用 dataActions，因此無法在管理群組範圍指派。 目前只能在訂用帳戶範圍指派這些角色。
+
 ### <a name="using-azure-ad-portal-experience"></a>使用 Azure AD 入口網站體驗
 
 若要為 Azure AD 啟用的 Windows Server 2019 Datacenter Vm 設定角色指派：
@@ -177,8 +180,8 @@ az vm extension set \
 下列範例會使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 將 [虛擬機器系統管理員登入] 角色指派給您目前 Azure 使用者的 VM。 作用中 Azure 帳戶的使用者名稱可透過 [az account show](/cli/azure/account#az-account-show) 來取得，而範圍會設定為在上一個步驟中使用 [az vm show](/cli/azure/vm#az-vm-show) 建立的 VM。 您也可以在資源群組或訂用帳戶層級指派範圍，並套用一般的 Azure RBAC 繼承許可權。 如需詳細資訊，請參閱 [使用 Azure Active Directory Authentication 登入 Azure 中的 Linux 虛擬機器](../../virtual-machines/linux/login-using-aad.md)。
 
 ```   AzureCLI
-username=$(az account show --query user.name --output tsv)
-vm=$(az vm show --resource-group myResourceGroup --name myVM --query id -o tsv)
+$username=$(az account show --query user.name --output tsv)
+$vm=$(az vm show --resource-group myResourceGroup --name myVM --query id -o tsv)
 
 az role assignment create \
     --role "Virtual Machine Administrator Login" \

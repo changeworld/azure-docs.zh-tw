@@ -3,14 +3,14 @@ title: 設定 TLS 相互驗證
 description: 瞭解如何在 TLS 上驗證用戶端憑證。 Azure App Service 可以讓應用程式程式碼使用用戶端憑證來進行驗證。
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
-ms.date: 10/01/2019
+ms.date: 12/11/2020
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 145b999d7bf8597c06d6e3d4a36d01b182c8ae68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ceeb3d31652c04eb9a69c1c8bb4b114e6f38d52
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213651"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347710"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>設定 Azure App Service 的 TLS 相互驗證
 
@@ -24,20 +24,33 @@ ms.locfileid: "88213651"
 
 ## <a name="enable-client-certificates"></a>啟用用戶端憑證
 
-若要將您的應用程式設定為需要用戶端憑證，您可以從 Azure 入口網站**選取 [** 設定**On**  >  **一般設定**]，或必須將應用程式的設定設為，以在需要傳入憑證的情況下切換 `clientCertEnabled` `true` 。 若要設定此設定，請在 [Cloud Shell](https://shell.azure.com)中執行下列命令。
+若要設定您的應用程式以要求用戶端憑證：
+
+1. 從應用程式管理頁面的左側導覽中 **，選取**  >  **[設定一般設定**]。
+
+1. 將 **用戶端憑證模式** 設定為 [ **需要**]。 按一下頁面頂端的 [儲存]  。
+
+若要使用 Azure CLI 執行相同動作，請在 [Cloud Shell](https://shell.azure.com)中執行下列命令：
 
 ```azurecli-interactive
-az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
+az webapp update --set clientCertEnabled=true --name <app-name> --resource-group <group-name>
 ```
 
 ## <a name="exclude-paths-from-requiring-authentication"></a>排除需要驗證的路徑
 
-當您為應用程式啟用相互驗證時，應用程式根目錄下的所有路徑都需要用戶端憑證才能存取。 若要允許某些路徑保持開啟以供匿名存取，您可以在應用程式設定中定義排除路徑。
+當您為應用程式啟用相互驗證時，應用程式根目錄下的所有路徑都需要用戶端憑證才能存取。 若要移除特定路徑的這項需求，請在您的應用程式設定中定義排除路徑。
 
-您可以藉**由選取**  >  **[設定一般設定**] 和 [定義排除路徑] 來設定排除路徑。 在此範例中， `/public` 應用程式路徑下的任何程式都不會要求用戶端憑證。
+1. 從應用程式管理頁面的左側導覽中 **，選取**  >  **[設定一般設定**]。
+
+1. 在 [ **用戶端排除路徑**] 旁，按一下 [編輯] 圖示。
+
+1. 按一下 [ **新增路徑**]，指定路徑，然後按一下 **[確定]**。
+
+1. 按一下頁面頂端的 [儲存]  。
+
+在以下螢幕擷取畫面中， `/public` 您應用程式路徑下的任何程式都不會要求用戶端憑證。
 
 ![憑證排除路徑][exclusion-paths]
-
 
 ## <a name="access-client-certificate"></a>存取用戶端憑證
 
