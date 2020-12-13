@@ -515,6 +515,8 @@
       href: /python/api/overview/azure/resources?view=azure-python
 - name: 資源
   items:
+    - name: 透過 Microsoft Learn 增進您的技巧
+      href: /learn/paths/deploy-manage-resource-manager-templates/
     - name: Azure 快速入門範本
       href: 'https://azure.microsoft.com/resources/templates/'
     - name: Azure 藍圖

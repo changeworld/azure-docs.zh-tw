@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d66b4c8e9f41f661cfc399f72a9ad97405a860fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: feb647cc42c878778b4326c9ee76a32809751314
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84790841"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369305"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-rest-api"></a>使用 REST API 新增或移除 Azure 角色指派
 
@@ -65,7 +65,7 @@ ms.locfileid: "84790841"
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 資源群組 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | 資源 |
 
-    在先前的範例中，microsoft 是參考 App Service 實例的資源提供者。 同樣地，您可以使用任何其他資源提供者，並指定範圍。 如需詳細資訊，請參閱 [Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md) ，以及支援的 [Azure Resource Manager 資源提供者作業](resource-provider-operations.md)。  
+    在先前的範例中，microsoft 是參考 App Service 實例的資源提供者。 同樣地，您可以使用任何其他資源提供者，並指定範圍。 如需詳細資訊，請參閱 [Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md) ，以及支援的 [azure 資源提供者作業](resource-provider-operations.md)。  
 
 1. 以角色指派的 GUID 識別碼取代 *{roleAssignmentId}* 。
 
@@ -166,7 +166,7 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId1}/providers/mi
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [使用 REST API 列出 Azure 角色指派](role-assignments-list-rest.md)
 - [使用 Resource Manager 範本和 Resource Manager 部署資源 REST API](../azure-resource-manager/templates/deploy-rest.md)

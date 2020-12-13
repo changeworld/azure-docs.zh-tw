@@ -5,14 +5,16 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: f7c6c3f9c3f468c7b55baf2b0cc45c094d693de5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5f65c5e1e1c8d306a70be3fdd7a07f18f8ebbd9f
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018645"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368642"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>撰寫和發佈區域及相關聯的金鑰
+
+[!INCLUDE [LUIS Free account](includes/luis-portal-note.md)]
 
 對應的 LUIS 入口網站支援三個撰寫區域。 若要將 LUIS 應用程式發行至多個區域，針對每個區域，您至少需要有一個金鑰。
 
@@ -104,7 +106,7 @@ ms.locfileid: "95018645"
 
 撰寫區域具有 [配對的容錯移轉區域](../../best-practices-availability-paired-regions.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [預先建置的實體參考](./luis-reference-prebuilt-entities.md)

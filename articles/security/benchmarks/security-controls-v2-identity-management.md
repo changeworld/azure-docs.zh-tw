@@ -7,45 +7,45 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2b21bea924ee8eaed37246ce55feaf8243e3e7d4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 33f5dff65fa7ad8274051f784f2e61dc8366d389
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408732"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368846"
 ---
 # <a name="security-control-v2-identity-management"></a>安全性控制 V2：身分識別管理
 
 身分識別管理涵蓋的控制項可使用 Azure Active Directory 建立安全的身分識別和存取控制。 這包括使用單一登入、增強式驗證、受控識別 (和服務原則) 應用程式、條件式存取，以及帳戶異常監視。
 
-## <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：將 Azure Active Directory 標準化為中央身分識別和驗證系統
+## <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：將 Azure Active Directory 標準化為中央身分識別與驗證系統
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | IM-1 | 16.1、16.2、16.4、16。5 | IA-2、IA-8、AC-2、AC-3 |
 
-Azure Active Directory (Azure AD) 是 Azure 的預設身分識別和存取管理服務。 您應標準化 Azure AD，以管理組織的身分識別和存取管理：
-- Microsoft 雲端資源，例如 Azure 入口網站、Azure 儲存體、Azure 虛擬機器 (Linux 和 Windows) 、Azure Key Vault、PaaS 和 SaaS 應用程式。
+Azure Active Directory (Azure AD) 是 Azure 的預設身分識別和存取管理服務。 您應對 Azure AD 進行標準化，以在下列位置控管組織的身分識別和存取管理：
+- Microsoft 雲端資源，例如 Azure 入口網站、Azure 儲存體、Azure 虛擬機器 (Linux 和 Windows)、Azure Key Vault、PaaS 和 SaaS 應用程式。
 
-- 您組織的資源，例如 Azure 上的應用程式或公司網路資源。
+- 您的組織資源，例如 Azure 上的應用程式或您的公司網路資源。
 
-保護 Azure AD 在貴組織的雲端安全性實務中應該是高優先順序。 Azure AD 提供身分識別安全分數，以協助您評估與 Microsoft 最佳作法建議相關的身分識別安全性狀態。 您可以使用分數來量測您的設定如何符合最佳做法建議，以及改善安全性狀態。
+在組織的雲端安全性實務中，保護 Azure AD 應具有高優先順序。 Azure AD 會提供身分識別安全分數，以協助您根據 Microsoft 的最佳做法建議評估您的身分識別安全性態勢。 您可以使用分數來衡量您的設定與最佳做法建議的貼近程度，並改善安全性態勢。
 
-注意： Azure AD 支援外部識別提供者，讓沒有 Microsoft 帳戶的使用者可以使用其外部身分識別登入其應用程式和資源。
+注意：Azure AD 支援外部識別提供者，可讓沒有 Microsoft 帳戶的使用者透過外部身分識別登入其應用程式和資源。
 
-- [Azure AD 中的租使用者](../../active-directory/develop/single-and-multi-tenant-apps.md)
+- [Azure AD 中的租用](../../active-directory/develop/single-and-multi-tenant-apps.md)
 
-- [如何建立和設定 Azure AD 實例](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何建立和設定 Azure AD 執行個體](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-- [定義 Azure AD 租使用者](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)  
+- [定義 Azure AD 租用戶](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)  
 
-- [使用應用程式的外部識別提供者](../../active-directory/external-identities/identity-providers.md)
+- [對應用程式使用外部識別提供者](../../active-directory/external-identities/identity-providers.md)
 
-- [Azure AD 中的身分識別安全分數為何](../../active-directory/fundamentals/identity-secure-score.md)
+- [什麼是 Azure AD 中的身分識別安全分數](../../active-directory/fundamentals/identity-secure-score.md)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [身分識別與金鑰管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys) 
 
@@ -55,9 +55,9 @@ Azure Active Directory (Azure AD) 是 Azure 的預設身分識別和存取管理
 
 - [狀態管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-## <a name="im-2-manage-application-identities-securely-and-automatically"></a>IM-2：安全且自動地管理應用程式身分識別
+## <a name="im-2-manage-application-identities-securely-and-automatically"></a>IM-2：安全且自動地管理應用程式識別碼
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | IM-2 | N/A | AC-2、AC-3、IA-2、IA-4、IA-9 |
 
@@ -75,17 +75,17 @@ Azure Active Directory (Azure AD) 是 Azure 的預設身分識別和存取管理
 
 使用 Azure Key Vault 進行安全性主體註冊：驗證 # 授權-a-安全性-主體到存取金鑰-保存庫
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [身分識別與金鑰管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [應用程式安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-## <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3：使用 Azure AD 單一登入 (SSO) 來存取應用程式
+## <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3：使用 Azure AD 單一登入 (SSO) 進行應用程式存取
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | IM-3 | 4.4 | IA-2、IA-4 |
 
@@ -95,9 +95,9 @@ Azure AD 可提供 Azure 資源、雲端應用程式和內部部署應用程式�
 
 - [瞭解 Azure AD 的應用程式 SSO](../../active-directory/manage-apps/what-is-single-sign-on.md)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -105,9 +105,9 @@ Azure AD 可提供 Azure 資源、雲端應用程式和內部部署應用程式�
 
 - [應用程式安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-## <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4：針對所有以 Azure Active Directory 為基礎的存取，使用強式驗證控制項
+## <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4：針對所有以 Azure Active Directory 為基礎的存取，使用增強式驗證控制項
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | IM-4 | 4.2、4.4 4.5、11.5、12.11、16。3 | AC-2、AC-3、IA-2、IA-4 |
 
@@ -124,15 +124,15 @@ Azure AD 透過多重要素驗證 (MFA) 和強式無密碼方法來支援強式�
 
 - [如何在 Azure 中啟用 MFA](../../active-directory/authentication/howto-mfa-getstarted.md)
 
-- [Azure Active Directory 的無密碼 authentication 選項簡介](../../active-directory/authentication/concept-authentication-passwordless.md)
+- [Azure Active Directory 的無密碼驗證選項簡介](../../active-directory/authentication/concept-authentication-passwordless.md)
 
 - [Azure AD 預設密碼原則](../../active-directory/authentication/concept-sspr-policy.md#password-policies-that-only-apply-to-cloud-user-accounts)
 
-- [使用 Azure AD 密碼保護來消除錯誤的密碼](../../active-directory/authentication/concept-password-ban-bad.md)
+- [使用 Azure AD 密碼保護排除不正確的密碼](../../active-directory/authentication/concept-password-ban-bad.md)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -140,9 +140,9 @@ Azure AD 透過多重要素驗證 (MFA) 和強式無密碼方法來支援強式�
 
 - [應用程式安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-## <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5：監視和警示帳戶異常
+## <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5：監視及警示帳戶異常
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | IM-5 | 4.8、4.9、16.12、16.13 | AC-2、AC-3、AC-7、AU-6 |
 
@@ -155,7 +155,7 @@ Azure AD 提供下列資料來源：
 
 -   標幟為有風險的使用者 - 有風險的使用者表示可能被盜用的使用者帳戶。
 
-這些資料來源可以與 Azure 監視器、Azure Sentinel 或協力廠商 SIEM 系統整合。
+這些資料來源可與 Azure 監視器、Azure Sentinel 或第三方 SIEM 系統整合。
 
 Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如驗證嘗試失敗的次數過多，以及訂用帳戶中已淘汰的帳戶。 
 
@@ -177,9 +177,9 @@ Azure 進階威脅防護 (ATP) 是一種安全性解決方案，可使用內部�
 
 - [Azure 進階威脅防護](/azure-advanced-threat-protection/what-is-atp)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [應用程式安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -187,7 +187,7 @@ Azure 進階威脅防護 (ATP) 是一種安全性解決方案，可使用內部�
 
 ## <a name="im-6-restrict-azure-resource-access-based-on-conditions"></a>IM-6：根據條件限制 Azure 資源存取
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | IM-6 | N/A | AC-2、AC-3 |
 
@@ -199,9 +199,9 @@ Azure 進階威脅防護 (ATP) 是一種安全性解決方案，可使用內部�
 
 - [使用條件式存取來設定驗證工作階段管理](../../active-directory/conditional-access/howto-conditional-access-session-lifetime.md)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [身分識別與金鑰管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -213,21 +213,21 @@ Azure 進階威脅防護 (ATP) 是一種安全性解決方案，可使用內部�
 
 ## <a name="im-7-eliminate-unintended-credential-exposure"></a>IM-7：消除非預期的認證暴露
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | IM-7 | 18.1、18。7 | IA-5 |
 
 執行 Azure DevOps 認證掃描器來識別程式碼中的認證。 認證掃描器也鼓勵將探索到的認證移至更安全的位置，例如 Azure Key Vault。
 
-在 GitHub 中，您可以使用原生密碼掃描功能來識別程式碼中的認證或其他形式的秘密。
+針對 GitHub，您可以使用原生祕密掃描功能來識別程式碼內的認證或其他形式的祕密。
 
 - [如何設定認證掃描器](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-- [GitHub 秘密掃描](https://docs.github.com/github/administering-a-repository/about-secret-scanning)
+- [GitHub 祕密掃描](https://docs.github.com/github/administering-a-repository/about-secret-scanning) (英文)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [應用程式安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -235,7 +235,7 @@ Azure 進階威脅防護 (ATP) 是一種安全性解決方案，可使用內部�
 
 ## <a name="im-8-secure-user-access-to-legacy-applications"></a>IM-8：安全地存取繼承應用程式的使用者
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | IM-8 | 14.6 | AC-2、AC-3、SC-11 |
 
@@ -249,9 +249,9 @@ Azure AD 應用程式 Proxy 可讓您將舊版內部部署應用程式發佈至�
 
 - [Microsoft Cloud App Security 最佳作法](/cloud-app-security/best-practices)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

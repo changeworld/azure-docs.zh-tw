@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 0d5c9c4a0191c6d5effd8f6067cb6602ed239125
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 9751bd082947e66b3fc5ea47448857558301a1e7
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329549"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97366390"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>網路限制 - Azure Resource Manager
 下列限制僅適用於透過每個訂用帳戶每一區域的 **Azure Resource Manager** 所管理的網路資源。 深入了解如何[根據您的訂用帳戶限制檢視目前資源使用量](../articles/networking/check-usage-against-limits.md)。
@@ -73,7 +73,7 @@ ms.locfileid: "94329549"
 | 每個 NIC 的規則 (在 NIC 上的所有 IP) | 300                           |
 | 前端 IP 組態              | 600                           |
 | 後端集區大小                       | 1000 個 IP 組態，單一虛擬網路 |
-| 每個 Load Balancer 的後端資源<sup>1<sup> | 150                   |
+| 每個 Load Balancer 的後端資源<sup>1<sup> | 250                   |
 | 高可用性連接埠                 | 每個內部前端 1 個       |
 | 每個 Load Balancer 的輸出規則        | 600                           |
 | 每個 VM 的負載平衡器                   | 2 個 (1 個公用和 1 個內部)   |

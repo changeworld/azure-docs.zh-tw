@@ -14,17 +14,17 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8fa77f13b99564246c048e7b7a8129f9fc141c47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31dabcf77f0db76047919fa76d00f1c5ed3c96d6
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84984168"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369135"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>使用 Azure CLI 建立或更新 Azure 自訂角色
 
 > [!IMPORTANT]
-> 將管理群組新增至的 `AssignableScopes` 功能目前為預覽狀態。
+> 將管理群組新增至 `AssignableScopes` 的服務目前為預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -146,7 +146,7 @@ az role definition list --name "Virtual Machine Operator" --output json --query 
 az role definition create --role-definition {roleDefinition}
 ```
 
-下列範例會建立一個名為 Virtual Machine Operator** 的自訂角色。 這個自訂角色會指派 Microsoft.Compute**、Microsoft.Storage** 和 Microsoft.Network** 資源提供者之所有讀取作業的存取權，以及指派啟動、重新啟動和監視虛擬機器的存取權。 這個自訂角色可用於兩個訂用帳戶中。 這個範例使用 JSON 檔案做為輸入。
+下列範例會建立一個名為 Virtual Machine Operator 的自訂角色。 這個自訂角色會指派 Microsoft.Compute、Microsoft.Storage 和 Microsoft.Network 資源提供者之所有讀取作業的存取權，以及指派啟動、重新啟動和監視虛擬機器的存取權。 這個自訂角色可用於兩個訂用帳戶中。 這個範例使用 JSON 檔案做為輸入。
 
 vmoperator.json
 
@@ -189,7 +189,7 @@ az role definition create --role-definition ~/roles/vmoperator.json
 az role definition update --role-definition {roleDefinition}
 ```
 
-下列範例會將 *diagnosticSettings/* 作業加入至 `Actions` `AssignableScopes` *虛擬機器操作員* 自訂角色的管理群組，並將其新增至。 將管理群組新增至的 `AssignableScopes` 功能目前為預覽狀態。
+下列範例會將 *diagnosticSettings/* 作業加入至 `Actions` `AssignableScopes` *虛擬機器操作員* 自訂角色的管理群組，並將其新增至。 將管理群組新增至 `AssignableScopes` 的服務目前為預覽狀態。
 
 vmoperator.json
 
@@ -240,8 +240,8 @@ az role definition delete --name {roleNameOrId}
 az role definition delete --name "Virtual Machine Operator"
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [教學課程：使用 Azure CLI 建立 Azure 自訂角色](tutorial-custom-role-cli.md)
 - [Azure 自訂角色](custom-roles.md) (機器翻譯)
-- [Azure Resource Manager 資源提供者作業](resource-provider-operations.md) (機器翻譯)
+- [Azure 資源提供者作業](resource-provider-operations.md)

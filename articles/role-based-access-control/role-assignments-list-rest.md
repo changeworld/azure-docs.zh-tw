@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 634e1111c9374a1749e7dbb0666740ce2833a688
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b717d84c8fedf4a87c0b81752b14914ece185250
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84790971"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369203"
 ---
 # <a name="list-azure-role-assignments-using-the-rest-api"></a>使用 REST API 列出 Azure 角色指派
 
@@ -49,12 +49,12 @@ ms.locfileid: "84790971"
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 資源群組 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | 資源 |
 
-    在先前的範例中，microsoft 是參考 App Service 實例的資源提供者。 同樣地，您可以使用任何其他資源提供者，並指定範圍。 如需詳細資訊，請參閱 [Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md) ，以及支援的 [Azure Resource Manager 資源提供者作業](resource-provider-operations.md)。  
+    在先前的範例中，microsoft 是參考 App Service 實例的資源提供者。 同樣地，您可以使用任何其他資源提供者，並指定範圍。 如需詳細資訊，請參閱 [Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md) ，以及支援的 [azure 資源提供者作業](resource-provider-operations.md)。  
      
 1. 將 *{filter}* 取代為您要針對角色指派清單篩選套用的條件。
 
     > [!div class="mx-tableFixed"]
-    > | Filter | 說明 |
+    > | 篩選 | 說明 |
     > | --- | --- |
     > | `$filter=atScope()` | 僅列出指定範圍的角色指派，而不包含子範圍內的角色指派。 |
     > | `$filter=assignedTo('{objectId}')` | 列出指定之使用者或服務主體的角色指派。<br/>如果使用者是具有角色指派之群組的成員，也會列出該角色指派。 此篩選準則可轉移給群組，這表示如果使用者是群組的成員，而且該群組是具有角色指派之另一個群組的成員，則也會列出該角色指派。<br/>此篩選器只接受使用者或服務主體的物件識別碼。 您無法傳遞群組的物件識別碼。 |
@@ -90,7 +90,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId1}/providers/Micro
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [使用 REST API 新增或移除 Azure 角色指派](role-assignments-rest.md)
 - [Azure REST API 參考](/rest/api/azure/)

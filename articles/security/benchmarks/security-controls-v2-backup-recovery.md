@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1ed477c6cf069dbb402e5bda9c1f48f7bc208f18
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 089cf521a7c5428833be340001c88b870c568a8f
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698796"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368880"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>安全性控制 V2：備份和復原
 
@@ -20,7 +20,7 @@ ms.locfileid: "94698796"
 
 ## <a name="br-1-ensure-regular-automated-backups"></a>BR-1：確保定期自動備份
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | BR-1 | 10.1 | CP-2、CP4、CP-6、CP-9 |
 
@@ -50,7 +50,7 @@ ms.locfileid: "94698796"
 
 ## <a name="br-2-encrypt-backup-data"></a>BR-2：加密備份資料
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | BR-2 | 10.2 | CP-9 |
 
@@ -78,9 +78,9 @@ ms.locfileid: "94698796"
 
 - [事件準備](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
-## <a name="br-3-validate-all-backups-including-customer-managed-keys"></a>BR-3：驗證所有備份，包括客戶管理的金鑰
+## <a name="br-3-validate-all-backups-including-customer-managed-keys"></a>BR-3：驗證所有備份，包括客戶自控金鑰
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | BR-3 | 10.3 | CP-4、CP-9 |
 
@@ -100,13 +100,13 @@ ms.locfileid: "94698796"
 
 ## <a name="br-4-mitigate-risk-of-lost-keys"></a>BR-4：降低遺失金鑰的風險
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | BR-4 | 10.4 | CP-9 |
 
-確定您已備妥量值，以防止和復原遺失的金鑰。 啟用 Azure Key Vault 中的虛刪除和清除保護，以防止金鑰遭到意外或惡意刪除。  
+確定您已備妥量值，以防止和復原遺失的金鑰。 請啟用 Azure Key Vault 中的虛刪除和清除保護，以防止金鑰遭到意外或惡意刪除。  
 
-- [如何啟用 Key Vault 中的虛刪除和清除保護](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
+- [如何在 Key Vault 中啟用虛刪除和清除保護](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal) (機器翻譯)
 
 **責任**：客戶
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, mqtt, devx-track-csharp
-ms.openlocfilehash: 133be436853ee8c2b04df2f943368513108b226b
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: c0c3a452c93b88483ac7027405665c26ceab8183
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444268"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368493"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>了解 Azure IoT Edge 執行階段和架構
 
@@ -44,7 +44,7 @@ IoT Edge 執行時間負責 IoT Edge 裝置上的下列功能：
 
 IoT Edge 執行階段的責任分為兩類：通訊和模組管理。 這兩個角色是由屬於 IoT Edge 執行時間一部分的兩個元件所執行。 *IoT Edge 代理程式* 會部署及監視模組，而 *IoT Edge 中樞* 則負責進行通訊。
 
-IoT Edge 代理程式和 IoT Edge 中樞都是模組，就像在 IoT Edge 裝置上執行的任何其他模組一樣。 它們有時稱為 *執行時間模組* 。
+IoT Edge 代理程式和 IoT Edge 中樞都是模組，就像在 IoT Edge 裝置上執行的任何其他模組一樣。 它們有時稱為 *執行時間模組*。
 
 ## <a name="iot-edge-agent"></a>IoT Edge 代理程式
 
@@ -81,7 +81,7 @@ IoT Edge 中樞不是在本機執行的 IoT 中樞完整版本。 IoT Edge 中�
 
 為了降低 IoT Edge 解決方案所使用的頻寬，IoT Edge 中樞會將對雲端進行的實際連線數目優化。 IoT Edge 中樞會從模組或下游裝置取得邏輯連線，並將它們結合成單一實體連線至雲端。 此程序的詳細資料對解決方案的其餘部分而言是透明的。 用戶端認為它們有自己的連線可連至雲端，即使它們全部都會透過相同連線來傳送。 IoT Edge 中樞可以使用 AMQP 或 MQTT 通訊協定，與下游裝置所使用的通訊協定分開與雲端通訊。 不過，IoT Edge hub 目前僅支援使用 AMQP 做為上游通訊協定和其多工功能，將邏輯連線合併為單一實體連線。 AMQP 是預設的上游通訊協定。
 
-![IoT Edge 中樞是實體裝置與 IoT 中樞之間的閘道](./media/iot-edge-runtime/Gateway.png)
+![IoT Edge 中樞是實體裝置與 IoT 中樞之間的閘道](./media/iot-edge-runtime/gateway-communication.png)
 
 IoT Edge 中樞可以判斷是否已連線到 IoT 中樞。 如果連線中斷，IoT Edge 中樞就會在本機儲存訊息或對應項更新。 一旦連線重新建立之後，就會將所有資料同步。 此暫存快取所使用的位置取決於 IoT Edge 中樞模組對應項的屬性。 快取的大小不會受限，而且只要裝置還有儲存體容量就會持續成長。 如需詳細資訊，請參閱 [離線功能](offline-capabilities.md)。
 
@@ -112,7 +112,7 @@ IoT Edge 中樞可促進模組對模組的通訊。 使用 IoT Edge 中樞作為
 
 解決方案開發人員會負責指定規則，以判斷 IoT Edge 中樞在模組之間傳遞訊息的方式。 路由規則會定義于雲端中，並在其模組對應項中向下推送至 IoT Edge 中樞。 適用於 IoT 中樞路由的相同語法，可用來定義 Azure IoT Edge 中模組之間的路由。 如需詳細資訊，請參閱[了解如何在 IoT Edge 中部署模組及建立路由](module-composition.md)。
 
-![模組之間的路由會經由 IoT Edge 中樞](./media/iot-edge-runtime/module-endpoints-with-routes.png)
+![模組之間的路由會經由 IoT Edge 中樞](./media/iot-edge-runtime/module-endpoints-routing.png)
 ::: moniker-end
 
 <!-- <1.2> -->
@@ -134,7 +134,7 @@ IoT Edge hub 支援兩種代理機制：
 
 第一個代理機制會利用與 IoT 中樞相同的路由功能，來指定在裝置或模組之間傳遞訊息的方式。 第一個裝置或模組會指定其接受訊息的輸入，以及它們寫入訊息的輸出。 然後解決方案開發人員可以在來源（例如輸出）和目的地（例如輸入）之間路由傳送訊息，並提供可能的篩選準則。
 
-![模組之間的路由會經由 IoT Edge 中樞](./media/iot-edge-runtime/module-endpoints-with-routes.png)
+![模組之間的路由會經由 IoT Edge 中樞](./media/iot-edge-runtime/module-endpoints-routing.png)
 
 透過 AMQP 或 MQTT 通訊協定，透過 Azure IoT 裝置 Sdk 建立的裝置或模組可以使用路由。 支援所有訊息 IoT 中樞基本專案，例如遙測、直接方法、C2D、twins，但不支援透過使用者定義的主題進行通訊。
 
@@ -159,7 +159,7 @@ IoT Edge hub 支援兩種代理機制：
 
 以下是每個代理機制的可用功能：
 
-|功能  | 路由  | MQTT broker  |
+|特性  | 路由  | MQTT broker  |
 |---------|---------|---------|
 |D2C 遙測    |     &#10004;    |         |
 |本機遙測     |     &#10004;    |    &#10004;     |
@@ -235,7 +235,7 @@ IoT Edge 代理程式每小時會收集遙測資料，每隔24小時就會將一
 
 如果您想要退出從裝置傳送執行時間遙測，有兩種方式可以執行這項操作：
 
-* 設定 `SendRuntimeQualityTelemetry` edgeAgent 的環境變數 `false` ， **edgeAgent** 或
+* 設定 `SendRuntimeQualityTelemetry` edgeAgent 的環境變數 `false` ， 或
 * 在部署期間取消選取 [Azure 入口網站中的選項。
 
 ## <a name="next-steps"></a>後續步驟

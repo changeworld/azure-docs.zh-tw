@@ -2,16 +2,16 @@
 title: '針對 Azure Kubernetes Service (AKS 自訂 CoreDNS) '
 description: '瞭解如何使用 Azure Kubernetes Service (AKS 自訂 CoreDNS 以新增子域或擴充自訂 DNS 端點) '
 services: container-service
-author: jnoller
+author: palma21
 ms.topic: article
 ms.date: 03/15/2019
-ms.author: jenoller
-ms.openlocfilehash: e99d841dcfb18b41df128283c37f46682e3fa129
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: jpalma
+ms.openlocfilehash: 5b13931bc6a13d988c21f728b996c51270769e0c
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88257121"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368676"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>使用 Azure Kubernetes Service 自訂 CoreDNS
 
@@ -28,7 +28,7 @@ Azure Kubernetes Service (AKS) 使用 [CoreDNS][coredns] 專案進行叢集 DNS 
 
 此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
-建立如下列範例的設定時，您在 *data* 區段中的名稱必須以 *. 伺服器* 或. 覆 *寫*結尾。 此命名慣例是在預設的 AKS CoreDNS Configmap 中定義，您可以使用命令來加以查看 `kubectl get configmaps --namespace=kube-system coredns -o yaml` 。
+建立如下列範例的設定時，您在 *data* 區段中的名稱必須以 *. 伺服器* 或. 覆 *寫* 結尾。 此命名慣例是在預設的 AKS CoreDNS Configmap 中定義，您可以使用命令來加以查看 `kubectl get configmaps --namespace=kube-system coredns -o yaml` 。
 
 ## <a name="what-is-supportedunsupported"></a>支援/不支援的內容
 

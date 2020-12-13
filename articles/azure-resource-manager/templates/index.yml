@@ -12,12 +12,12 @@ metadata:
   author: mumian
   ms.author: jgao
   ms.date: 11/06/2020
-  ms.openlocfilehash: ed7ab0ab016bdd3ff24a8d303bb29cd2a52741bf
-  ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+  ms.openlocfilehash: 72129eb10de042252c33784d7d98081f0f22a8b9
+  ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 11/07/2020
-  ms.locfileid: "94358655"
+  ms.lasthandoff: 12/11/2020
+  ms.locfileid: "97346617"
 landingContent:
 - title: 關於 ARM 範本
   linkLists:
@@ -55,20 +55,18 @@ landingContent:
     links:
     - text: 初學者教學課程
       url: template-tutorial-create-first-template.md
-    - text: 部署
-      url: deployment-tutorial-local-template.md
-    - text: 範本規格
-      url: template-specs-create-linked.md
-    - text: 進階範本
-      url: template-tutorial-use-template-reference.md
-    - text: 部署管理員
-      url: deployment-manager-tutorial.md
   - linkListType: learn
     links:
     - text: 使用 ARM 範本進行部署
       url: /learn/paths/deploy-manage-resource-manager-templates/
 - title: 開發範本
   linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 進階範本
+      url: template-tutorial-use-template-reference.md
+    - text: 範本規格
+      url: template-specs-create-linked.md
   - linkListType: how-to-guide
     links:
     - text: 使用函式
@@ -89,6 +87,10 @@ landingContent:
       url: https://azure.microsoft.com/resources/templates/
 - title: 部署範本
   linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 部署
+      url: deployment-tutorial-local-template.md
   - linkListType: how-to-guide
     links:
     - text: PowerShell

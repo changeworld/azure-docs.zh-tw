@@ -15,12 +15,12 @@ ms.date: 05/08/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 7c6f9203385c47da9803fb05358889d00d77d3e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc3640fecbe1138e46fd0d36975691740bc669dd
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511631"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369254"
 ---
 # <a name="understand-azure-role-definitions"></a>瞭解 Azure 角色定義
 
@@ -335,8 +335,8 @@ Bob 的許可權僅限於 `Actions` `DataActions` [儲存體 Blob 資料參與�
 
 如需 `AssignableScopes` 自訂角色的詳細資訊，請參閱 [Azure 自訂角色](custom-roles.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [Azure 內建角色](built-in-roles.md)
 * [Azure 自訂角色](custom-roles.md) (機器翻譯)
-* [Azure Resource Manager 資源提供者作業](resource-provider-operations.md) (機器翻譯)
+* [Azure 資源提供者作業](resource-provider-operations.md)

@@ -121,5 +121,7 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 區域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-lighthouse&regions=all'
     - name: 產品意見反應
       href: 'https://feedback.azure.com/forums/922753'

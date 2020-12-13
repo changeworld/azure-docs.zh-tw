@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: keithp
-ms.openlocfilehash: 61a9fcc5490c20383a2ae7d5c57b7fda7567c643
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 1f349931fb479be3b3ba936b3d0a665427357f29
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095146"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369033"
 ---
 # <a name="frequently-asked-questions-faq"></a>常見問題集 (FAQ)
 
@@ -277,8 +277,8 @@ HSM 有命令列重新開機選項，不過，我們遇到的問題是因為重�
   * RC5
   * CAST
   * 雜湊/訊息摘要/HMAC：SHA-1、SHA-2、SM3
-  * 金鑰衍生：SP800 108 計數器模式
-  * 金鑰包裝：SP800 38F
+  * 金鑰衍生： SP 800-108 計數器模式
+  * 金鑰包裝： SP 800-38F
   * 亂數產生：FIPS 140-2 已核准 DRBG (SP 800-90 CTR 模式)，遵守 BSI DRG.4
 
 ### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>問：專用 HSM 是否已通過 FIPS 140-2 等級 3 驗證？

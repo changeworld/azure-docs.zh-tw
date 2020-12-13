@@ -4,12 +4,12 @@ description: 瞭解如何使用 Azure 備份服務管理和監視 Microsoft Azur
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b3b648ca27a407640b42932fe2ed7c32f5109114
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25f0c41b535f9403d0a7027687cc5261cd437275
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89145564"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368591"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 備份服務來管理 Microsoft Azure 復原服務 (MARS) 代理程式備份
 
@@ -106,7 +106,7 @@ ms.locfileid: "89145564"
 1. 在 [ **選取原則專案** ] 頁面中，選取 [ **修改檔案和資料夾的備份排程** ]，然後選取 **[下一步]**。
 
     ![選取原則專案](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
-1. 在 [ **修改或停止排定的備份** ] 頁面上，選取 [ **停止使用此備份排程]，但保留已儲存的備份，直到重新開機排程為止**。 然後，選取 [下一步]****。
+1. 在 [ **修改或停止排定的備份** ] 頁面上，選取 [ **停止使用此備份排程]，但保留已儲存的備份，直到重新開機排程為止**。 然後，選取 [下一步]。
 
     ![停止已排程的備份。](./media/backup-azure-manage-mars/stop-schedule-backup.png)
 1. 在 [ **暫停排程備份**] 中，檢查資訊並選取 **[完成]**。
@@ -117,7 +117,7 @@ ms.locfileid: "89145564"
 ### <a name="stop-protection-and-delete-backup-data"></a>停止保護並刪除備份資料
 
 1. 開啟 MARS 管理主控台，移至 [ **動作** ] 窗格，然後選取 [ **排程備份**]。
-2. 在 [ **修改或停止排定的備份** ] 頁面上，選取 [ **停止使用此備份排程]，然後刪除所有儲存的備份**。 然後，選取 [下一步]****。
+2. 在 [ **修改或停止排定的備份** ] 頁面上，選取 [ **停止使用此備份排程]，然後刪除所有儲存的備份**。 然後，選取 [下一步]。
 
     ![修改或停止已排程的備份。](./media/backup-azure-delete-vault/modify-schedule-backup.png)
 
@@ -125,7 +125,7 @@ ms.locfileid: "89145564"
 
     ![停止已排程的備份，然後選取 [完成]](./media/backup-azure-delete-vault/stop-schedule-backup.png)
 4. 系統會提示您輸入安全性 PIN 碼 (個人識別碼) ，您必須手動產生此識別碼。 若要這樣做，請先登入 Azure 入口網站。
-5. 移至 [復原**服務保存庫**  >  **設定**  >  **屬性**]。
+5. 移至 [復原 **服務保存庫**  >  **設定**  >  **屬性**]。
 6. 在 [ **安全性 PIN**] 底下，選取 [ **產生**]。 複製此 PIN。 PIN 只適用于五分鐘。
 7. 在管理主控台中，貼上 PIN，然後選取 **[確定]**。
 
@@ -156,7 +156,7 @@ ms.locfileid: "89145564"
 
 使用 MARS 代理程式在 Azure 中備份或還原內部部署或本機電腦時，會使用複雜密碼來加密和解密資料。 如果遺失或忘記複雜密碼，則您可以重新產生複雜密碼 (前提是您的電腦仍向復原服務保存庫註冊，且已依照下列步驟將備份設定) ：
 
-1. 從 MARS 代理程式主控台，移至 [**動作] 窗格**的 [  >  **變更**內容] >。 然後移至 [ **加密]** 索引標籤。<br>
+1. 從 MARS 代理程式主控台，移至 [**動作] 窗格** 的 [  >  **變更** 內容] >。 然後移至 [ **加密]** 索引標籤。<br>
 1. 選取 [ **變更複雜密碼** ] 核取方塊。<br>
 1. 輸入新的複雜密碼，或選取 [ **產生複雜密碼**]。
 1. 選取 **[流覽]** 以儲存新的複雜密碼。
@@ -189,6 +189,19 @@ ms.locfileid: "89145564"
   1. 安裝代理程式，並使用相同的複雜密碼重新註冊到相同的保存庫
   1. 啟動 MARS 用戶端以根據您的需求擴充保留期間
 - 您新還原的機器（以 MARS 保護）將繼續進行備份。  
+
+## <a name="configuring-antivirus-for-the-mars-agent"></a>設定 MARS 代理程式的防毒軟體
+
+建議您針對防毒軟體使用下列設定，以避免與 MARS 代理程式的操作發生衝突。
+
+1. **新增路徑排除** 專案：若要避免效能降低或可能發生衝突，請從防毒軟體的即時監視中排除下列路徑：
+    1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent` 和子資料夾
+    1. **暫存檔案夾**：如果暫存檔案夾不在標準位置中，也請將該資料夾新增至排除專案。  [請參閱這裡的步驟](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible) 來決定暫存檔案夾位置。
+1. **新增二進位排除** 專案：若要避免備份和主控台活動降低，請從防毒軟體的即時監視排除下列二進位檔的進程：
+    1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent\bin\cbengine.exe`
+
+>[!NOTE]
+>雖然排除這些路徑對大部分的防毒軟體都已足夠，但有些可能仍會繼續干擾 MARS 代理程式作業。 如果您看到非預期的失敗，請暫時卸載防毒軟體，並進行監視以查看問題是否消失。 如果解決此問題，請洽詢您的防毒軟體廠商以取得適當設定產品的協助。
 
 ## <a name="next-steps"></a>後續步驟
 

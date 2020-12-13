@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f3b492534bedde50d2413b88fa38cd6325ed5df7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32aa64a9343a8e3c62af4322b3320b28ce805064
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328253"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369186"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Azure 安全性基準測試簡介
 
@@ -27,8 +27,8 @@ Azure 安全性基準測試包含一組高度影響的安全性建議，可用�
 - **服務基準**：這些會將控制項套用至個別的 Azure 服務，以針對該服務的安全性設定提供建議。
 
 ## <a name="implement-the-azure-security-benchmark"></a>執行 Azure 安全性基準測試
-- 藉由查看企業控制項和服務專屬基準的[檔](overview.md)來**規劃您的**Azure 安全性基準測試，以規劃您的控制架構，以及它如何對應至 CIS (控制 7.1) 和 NIST (SP800-53) framework。
-- 使用 Azure 資訊安全中心的[法規合規性儀表板](../../security-center/security-center-compliance-dashboard.md)，透過 Azure 安全性效能評定狀態 (和其他控制集) 來**監視**您的合規性。
+- 藉由查看企業控制項和服務專屬基準的 [檔](overview.md)來 **規劃您的** Azure 安全性基準測試，以規劃您的控制架構，以及它如何對應至 CIS (控制 7.1) 和 NIST (SP 800-53) framework。
+- 使用 Azure 資訊安全中心的 [法規合規性儀表板](../../security-center/security-center-compliance-dashboard.md)，透過 Azure 安全性效能評定狀態 (和其他控制集) 來 **監視** 您的合規性。
 - **建立護欄** ，以將安全設定自動化，並強制遵循 Azure 安全性基準測試 (，以及您組織) 中的其他需求與 Azure 藍圖和 Azure 原則。
  
 請注意，Azure 安全性基準測試 v2 符合 [microsoft 的安全性最佳作法](/security/compass/microsoft-security-compass-introduction) (先前的 Azure 安全性羅盤) ，因此 Azure 安全性基準測試可提供 microsoft azure 安全性建議的單一匯總視圖。

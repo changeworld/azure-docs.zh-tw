@@ -9,3 +9,14 @@
         - name: 文字分析
           tocHref: /azure/cognitive-services/
           topicHref: /azure/cognitive-services/text-analytics/index
+- name: Azure
+  tocHref: /legal/
+  topicHref: /azure/index
+  items:
+    - name: 認知服務
+      tocHref: /legal/cognitive-services/text-analytics
+      topicHref: /azure/cognitive-services/index
+      items:
+        - name: 文字分析
+          tocHref: /legal/cognitive-services/text-analytics
+          topicHref: /azure/cognitive-services/text-analytics/index

@@ -3,12 +3,12 @@ title: 事件傳遞、受控服務識別和私用連結
 description: 本文說明如何為 Azure 事件方格主題啟用受管理的服務識別。 使用它來將事件轉送到支援的目的地。
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: d16310ac61121af0cc9d76664bfeeeb14e1bc243
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: edb3e5ac8257a29ecd3835e1dfd4c116c3cc7164
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491710"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368608"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>使用受控識別傳遞事件
 本文說明如何啟用 Azure 事件方格主題或網域的 [受控服務識別](../active-directory/managed-identities-azure-resources/overview.md) 。 使用此功能將事件轉送到支援的目的地，例如，服務匯流排佇列和主題、事件中樞，以及儲存體帳戶。
@@ -74,7 +74,7 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 | Destination | Azure 角色 | 
 | ----------- | --------- | 
 | 服務匯流排佇列與主題 | [Azure 服務匯流排資料傳送者](../service-bus-messaging/authenticate-application.md#azure-built-in-roles-for-azure-service-bus) |
-| Azure 事件中樞 | [Azure 事件中樞資料傳送者](../event-hubs/authorize-access-azure-active-directory.md#azure-built-in-roles-for-azure-event-hubs) | 
+| Azure 事件中心 | [Azure 事件中樞資料傳送者](../event-hubs/authorize-access-azure-active-directory.md#azure-built-in-roles-for-azure-event-hubs) | 
 | Azure Blob 儲存體 | [儲存體 Blob 資料參與者](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) |
 | Azure 佇列儲存體 |[儲存體佇列資料訊息傳送者](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) | 
 
@@ -86,11 +86,11 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 
 下列範例會為名稱為 **msitesttopic** 的事件方格主題，針對包含佇列或主題資源的服務匯流排命名空間，將受控識別新增至 **Azure 服務匯流排資料傳送者** 角色。 當您加入至命名空間層級的角色時，主題可以將事件轉送到命名空間內的所有實體。 
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，移至您的 **服務匯流排命名空間** 。 
+1. 在 [Azure 入口網站](https://portal.azure.com)中，移至您的 **服務匯流排命名空間**。 
 1. 選取左窗格中的 [ **存取控制** ]。 
 1. 在 [新增角色指派] 區段中，選取 [新增]。 
 1. 在 [新增角色指派] 頁面中，執行下列步驟：
-    1. 選取角色。 在此案例中，該角色為 **Azure 服務匯流排資料傳送者** 。 
+    1. 選取角色。 在此案例中，該角色為 **Azure 服務匯流排資料傳送者**。 
     1. 為您的主題或網域選取 [身分識別]。 
     1. 選取 [ **儲存** ] 以儲存設定。
 
@@ -166,7 +166,7 @@ sb_esname = "<Specify a name for the event subscription>"
 ```
 
 #### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery"></a>使用受控識別進行傳遞來建立事件訂用帳戶 
-此範例命令會建立事件方格主題的事件訂用帳戶，並將端點類型設定為 **服務匯流排佇列** 。 
+此範例命令會建立事件方格主題的事件訂用帳戶，並將端點類型設定為 **服務匯流排佇列**。 
 
 ```azurecli-interactive
 az eventgrid event-subscription create  
@@ -178,7 +178,7 @@ az eventgrid event-subscription create
 ```
 
 #### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery-and-dead-lettering"></a>使用受控識別傳遞和無效信件來建立事件訂閱
-此範例命令會建立事件方格主題的事件訂用帳戶，並將端點類型設定為 **服務匯流排佇列** 。 它也會指定系統管理的身分識別要用於無效信件。 
+此範例命令會建立事件方格主題的事件訂用帳戶，並將端點類型設定為 **服務匯流排佇列**。 它也會指定系統管理的身分識別要用於無效信件。 
 
 ```azurecli-interactive
 storageid=$(az storage account show --name demoStorage --resource-group gridResourceGroup --query id --output tsv)
@@ -208,7 +208,7 @@ eh_esname = "<SPECIFY EVENT SUBSCRIPTION NAME>"
 ```
 
 #### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery"></a>使用受控識別進行傳遞來建立事件訂用帳戶 
-此範例命令會建立事件方格主題的事件訂用帳戶，並將端點類型設定為 **事件中樞** 。 
+此範例命令會建立事件方格主題的事件訂用帳戶，並將端點類型設定為 **事件中樞**。 
 
 ```azurecli-interactive
 az eventgrid event-subscription create  
@@ -220,7 +220,7 @@ az eventgrid event-subscription create
 ```
 
 #### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery--deadletter"></a>使用受控識別進行傳遞 + deadletter 來建立事件訂用帳戶 
-此範例命令會建立事件方格主題的事件訂用帳戶，並將端點類型設定為 **事件中樞** 。 它也會指定系統管理的身分識別要用於無效信件。 
+此範例命令會建立事件方格主題的事件訂用帳戶，並將端點類型設定為 **事件中樞**。 它也會指定系統管理的身分識別要用於無效信件。 
 
 ```azurecli-interactive
 storageid=$(az storage account show --name demoStorage --resource-group gridResourceGroup --query id --output tsv)

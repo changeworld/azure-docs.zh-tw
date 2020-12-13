@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: af9a86613b3aa29cc01b5ef0daa1f3854940deaf
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 935a6b41152ff914889e299b6455fbb30b2f0447
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96534058"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369050"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>安全性控制 V2：治理和策略
 
@@ -20,7 +20,7 @@ ms.locfileid: "96534058"
 
 ## <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1：定義資產管理和資料保護策略
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | GS-1 | 2，13 | SC、AC |
 
@@ -63,7 +63,7 @@ ms.locfileid: "96534058"
 
 ## <a name="gs-2-define-enterprise-segmentation-strategy"></a>GS-2：定義企業分割策略
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | GS-2 | 4、9、16 | AC、CA、SC |
 
@@ -87,7 +87,7 @@ ms.locfileid: "96534058"
 
 ## <a name="gs-3-define-security-posture-management-strategy"></a>GS-3：定義安全性狀態管理策略
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | GS-3 | 20、3、5 | RA、CM、SC |
 
@@ -103,7 +103,7 @@ ms.locfileid: "96534058"
 
 ## <a name="gs-4-align-organization-roles-responsibilities-and-accountabilities"></a>GS-4：協調組織角色、責任及權責
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | GS-4 | N/A | PL，PM |
 
@@ -123,7 +123,7 @@ ms.locfileid: "96534058"
 
 ## <a name="gs-5-define-network-security-strategy"></a>GS-5：定義網路安全性策略
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | GS-5 | 9 | CA，SC |
 
@@ -161,7 +161,7 @@ ms.locfileid: "96534058"
 
 ## <a name="gs-6-define-identity-and-privileged-access-strategy"></a>GS-6：定義身分識別和特殊權限存取策略
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | GS-6 | 16、4 | AC、AU、SC |
 
@@ -197,7 +197,7 @@ ms.locfileid: "96534058"
 
 ## <a name="gs-7-define-logging-and-threat-response-strategy"></a>GS-7：定義記錄和威脅回應策略
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | GS-7 | 19 | IR、AU、RA、SC |
 
@@ -238,7 +238,7 @@ ms.locfileid: "96534058"
 
 ## <a name="gs-8-define-backup-and-recovery-strategy"></a>GS-8：定義備份和復原策略
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | GS-8 | 10 | CP |
 

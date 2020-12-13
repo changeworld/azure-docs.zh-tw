@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e74994847608b7fb59a1bf507691f02cf02b714a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 937d0b379c4f669e5b57e5053d5e3bffeb091e78
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408868"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368948"
 ---
 # <a name="security-control-v2-endpoint-security"></a>安全性控制 V2：端點安全性
 
@@ -20,7 +20,7 @@ ms.locfileid: "94408868"
 
 ## <a name="es-1-use-endpoint-detection-and-response-edr"></a>ES-1：使用端點偵測和回應 (EDR) 
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | ES-1 | 8.1 | SI-2，SI-3，SC-3 |
 
@@ -34,9 +34,9 @@ Microsoft Defender 進階威脅防護將 EDR 功能提供為 enterprise endpoint
 
 - [適用于非 Windows 伺服器的 Microsoft Defender ATP 服務](/windows/security/threat-protection/microsoft-defender-atp/configure-endpoints-non-windows)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -48,7 +48,7 @@ Microsoft Defender 進階威脅防護將 EDR 功能提供為 enterprise endpoint
 
 ## <a name="es-2-use-centrally-managed-modern-anti-malware-software"></a>ES-2：使用集中管理的新式反惡意程式碼軟體
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | ES-2 | 8.1 | SI-2，SI-3，SC-3 |
 
@@ -62,9 +62,9 @@ Azure 資訊安全中心可以自動識別您的虛擬機器使用許多常用�
 
 - [支援的 endpoint protection 解決方案](../../security-center/security-center-services.md?tabs=features-windows#supported-endpoint-protection-solutions-)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -76,7 +76,7 @@ Azure 資訊安全中心可以自動識別您的虛擬機器使用許多常用�
 
 ## <a name="es-3-ensure-anti-malware-software-and-signatures-are-updated"></a>ES-3：確保反惡意程式碼軟體和簽章已更新
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | ES-3 | 8.2 | SI-2，SI-3 |
 
@@ -86,9 +86,9 @@ Azure 資訊安全中心可以自動識別您的虛擬機器使用許多常用�
 
 - [如何部署 Azure 雲端服務和虛擬機器的 Microsoft Antimalware](../fundamentals/antimalware.md)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security)
 

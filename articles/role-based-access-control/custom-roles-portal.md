@@ -6,24 +6,22 @@ documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/13/2020
+ms.date: 12/11/2020
 ms.author: rolyon
-ms.openlocfilehash: 9ab6561b1dc0e8b977fc69d259c5f26366f355ce
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ecda0edcd34999e8cbb6c7ab9039953d17c119e5
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92481324"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369221"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>使用 Azure 入口網站建立或更新 Azure 自訂角色 (機器翻譯)
 
 如果 [Azure 內建角色](built-in-roles.md) 不符合您組織的特定需求，您可以建立自己的 Azure 自訂角色。 就像內建角色一樣，您可以將自訂角色指派給訂用帳戶和資源群組範圍的使用者、群組和服務主體。 自訂角色是存放在 Azure Active Directory (Azure AD) 目錄中，而且可以跨訂用帳戶共用。 每個目錄最多可有5000個自訂角色。 您可以使用 Azure 入口網站、Azure PowerShell、Azure CLI 或 REST API 來建立自訂角色。 本文說明如何使用 Azure 入口網站建立自訂角色。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要建立自訂角色，您需要：
 
@@ -31,14 +29,12 @@ ms.locfileid: "92481324"
 
 ## <a name="step-1-determine-the-permissions-you-need"></a>步驟1：判斷您需要的許可權
 
-Azure 具有數以千計的許可權，您可以將其包含在您的自訂角色中。 您可以透過下列四種方式來判斷您想要新增至自訂角色的許可權：
+Azure 具有數以千計的許可權，您可以將其包含在您的自訂角色中。 以下是一些可協助您決定要新增至自訂角色之許可權的方法：
 
-| 方法 | 說明 |
-| --- | --- |
-| 查看現有的角色 | 您可以查看現有的角色，以查看正在使用的許可權。 如需詳細資訊，請參閱 [Azure 內建角色](built-in-roles.md)。 |
-| 依關鍵字搜尋許可權 | 當您使用 Azure 入口網站建立自訂角色時，您可以依關鍵字搜尋許可權。 例如，您可以搜尋 *虛擬機器* 或 *帳單* 許可權。 這項搜尋功能將在稍後的 [步驟4：許可權](#step-4-permissions)中說明。 |
-| 下載擁有權限 | 當您使用 Azure 入口網站建立自訂角色時，可以將擁有權限下載為 CSV 檔案，然後搜尋此檔案。 在 [ **新增許可權** ] 窗格中，按一下 [ **下載擁有權限** ] 按鈕以下載擁有權限。 如需 [新增許可權] 窗格的詳細資訊，請參閱 [步驟4：許可權](#step-4-permissions)。 |
-| 查看檔中的許可權 | 您可以在 [Azure Resource Manager 資源提供者作業](resource-provider-operations.md)中查看可用的許可權。 |
+- 查看現有的 [內建角色](built-in-roles.md)。
+- 列出您想要授與存取權的 Azure 服務。
+- 判斷 [對應至 Azure 服務的資源提供者](../azure-resource-manager/management/azure-services-resource-providers.md)。 搜尋方法稍後會在 [步驟4：許可權](#step-4-permissions)中說明。
+- 搜尋 [可用的許可權](resource-provider-operations.md) 以尋找您想要包含的許可權。 搜尋方法稍後會在 [步驟4：許可權](#step-4-permissions)中說明。
 
 ## <a name="step-2-choose-how-to-start"></a>步驟2：選擇開始的方式
 
@@ -48,13 +44,13 @@ Azure 具有數以千計的許可權，您可以將其包含在您的自訂角�
 
 如果現有的角色沒有您需要的許可權，您可以複製該角色，然後修改許可權。 請遵循下列步驟來開始複製角色。
 
-1. 在 Azure 入口網站中，開啟您想要從中指派自訂角色的訂用帳戶或資源群組，然後開啟 [ **存取控制] (IAM) **。
+1. 在 Azure 入口網站中，開啟您想要從中指派自訂角色的訂用帳戶或資源群組，然後開啟 [ **存取控制] (IAM)**。
 
     下列螢幕擷取畫面顯示針對訂用帳戶開啟的存取控制 (IAM) 頁面。
 
     ![訂用帳戶的存取控制 (IAM) 頁面](./media/custom-roles-portal/access-control-subscription.png)
 
-1. 按一下 [角色]**** 索引標籤以查看所有內建與自訂角色清單。
+1. 按一下 [角色] 索引標籤以查看所有內建與自訂角色清單。
 
 1. 搜尋您想要複製的角色，例如「帳單讀者」角色。
 
@@ -70,7 +66,7 @@ Azure 具有數以千計的許可權，您可以將其包含在您的自訂角�
 
 如果您想要的話，可以依照下列步驟從頭開始自訂角色。
 
-1. 在 Azure 入口網站中，開啟您想要從中指派自訂角色的訂用帳戶或資源群組，然後開啟 [ **存取控制] (IAM) **。
+1. 在 Azure 入口網站中，開啟您想要從中指派自訂角色的訂用帳戶或資源群組，然後開啟 [ **存取控制] (IAM)**。
 
 1. 按一下 [ **新增** ]，然後按一下 [ **新增自訂角色**]。
 
@@ -134,7 +130,7 @@ Azure 具有數以千計的許可權，您可以將其包含在您的自訂角�
     }
     ```
     
-1. 在 Azure 入口網站中，開啟 [ **存取控制] (IAM) ** 頁面。
+1. 在 Azure 入口網站中，開啟 [ **存取控制] (IAM)** 頁面。
 
 1. 按一下 [ **新增** ]，然後按一下 [ **新增自訂角色**]。
 
@@ -158,7 +154,7 @@ Azure 具有數以千計的許可權，您可以將其包含在您的自訂角�
 
 1. 在 [ **描述** ] 方塊中，指定自訂角色的選擇性描述。 這會成為自訂角色的工具提示。
 
-    **基準許可權**選項應該已經根據上一個步驟設定，但您可以變更。
+    **基準許可權** 選項應該已經根據上一個步驟設定，但您可以變更。
 
     ![具有指定值的 [基本] 索引標籤](./media/custom-roles-portal/basics-values.png)
 
@@ -297,9 +293,9 @@ Microsoft.CostManagement/exports/delete
 
 請遵循下列步驟來查看您的自訂角色。
 
-1. 開啟訂用帳戶或資源群組，然後開啟 [ **存取控制] (IAM) **。
+1. 開啟訂用帳戶或資源群組，然後開啟 [ **存取控制] (IAM)**。
 
-1. 按一下 [角色]**** 索引標籤以查看所有內建與自訂角色清單。
+1. 按一下 [角色] 索引標籤以查看所有內建與自訂角色清單。
 
 1. 在 [ **類型** ] 清單中選取 [ **CustomRole** ]，只查看您的自訂角色。
 
@@ -339,4 +335,4 @@ Microsoft.CostManagement/exports/delete
 
 - [教學課程：使用 Azure PowerShell 建立 Azure 自訂角色](tutorial-custom-role-powershell.md)
 - [Azure 自訂角色](custom-roles.md) (機器翻譯)
-- [Azure Resource Manager 資源提供者作業](resource-provider-operations.md) (機器翻譯)
+- [Azure 資源提供者作業](resource-provider-operations.md)

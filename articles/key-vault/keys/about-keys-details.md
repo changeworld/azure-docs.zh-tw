@@ -9,12 +9,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: ambapat
-ms.openlocfilehash: 76eedaabf52cf2d56b2feaa6dc2748c25bf7696c
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: b483ffc480f9ad750f8d9901d6bec382db2378c2
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424085"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368914"
 ---
 # <a name="key-types-algorithms-and-operations"></a>金鑰類型、演算法和作業
 
@@ -66,9 +66,9 @@ Key Vault 支援兩種資源類型：保存庫和受管理的 Hsm。 這兩種�
 -   **RSNULL** - 請參閱啟用特定 TLS 案例的特殊使用案例 [RFC2437](https://tools.ietf.org/html/rfc2437)。  
 
 ##  <a name="symmetric-key-algorithms"></a>對稱金鑰演算法
-- **AES-KW** - AES 金鑰包裝 ( [RFC3394](https://tools.ietf.org/html/rfc3394))。
-- **AES-GCM** - Galois 計數器模式中的 AES 加密 ( [NIST SP800-38d](https://csrc.nist.gov/publications/sp800))
-- **AES-CBC** - Cipher 區塊鏈結模式中的 AES 加密 ( [NIST SP800-38a](https://csrc.nist.gov/publications/sp800))
+- **AES-KW** - AES 金鑰包裝 ([RFC3394](https://tools.ietf.org/html/rfc3394))。
+- **Aes-GCM** -Galois 計數器模式中的 aes 加密 ([NIST SP 800-38d](https://csrc.nist.gov/publications/sp800)) 
+- **Aes-CBC** -加密區塊鏈模式中的 aes 加密 ([NIST SP 800-38a](https://csrc.nist.gov/publications/sp800)) 
 
 > [!NOTE] 
 > 目前的 AES-GCM 實作和對應的 API 都是實驗性的。 在未來的反覆項目中，實作和 API 可能會大幅變更。 
@@ -77,23 +77,23 @@ Key Vault 支援兩種資源類型：保存庫和受管理的 Hsm。 這兩種�
 
 受控 HSM 支援下列金鑰物件作業：  
 
--   **建立** ：可讓用戶端在 Key Vault 中建立金鑰。 金鑰值會由 Key Vault 產生並儲存，但不會發行給用戶端。 在 Key Vault 中可建立非對稱金鑰。  
--   **Import** ：可讓用戶端將現有金鑰匯入至 Key Vault。 非對稱金鑰可使用 JWK 概念中的多種不同封裝方法來匯入至 Key Vault。 
--   **更新** ：可讓具有足夠權限的用戶端，修改與先前儲存在 Key Vault 內之金鑰相關的中繼資料 (金鑰屬性)。  
--   **刪除** ：可讓具有足夠權限的用戶端從 Key Vault 中刪除金鑰。  
--   **列出** ：可讓用戶端列出所指定 Key Vault 中的所有金鑰。  
--   **列出版本** ：可讓用戶端列出指定的 Key Vault 中，所指定金鑰的所有版本。  
--   **取得** ：可讓用戶端擷取 Key Vault 中所指定金鑰的公開部分。  
--   **備份** ：以受保護的形式匯出金鑰。  
--   **還原** ：匯入先前備份的金鑰。  
+-   **建立**：可讓用戶端在 Key Vault 中建立金鑰。 金鑰值會由 Key Vault 產生並儲存，但不會發行給用戶端。 在 Key Vault 中可建立非對稱金鑰。  
+-   **Import**：可讓用戶端將現有金鑰匯入至 Key Vault。 非對稱金鑰可使用 JWK 概念中的多種不同封裝方法來匯入至 Key Vault。 
+-   **更新**：可讓具有足夠權限的用戶端，修改與先前儲存在 Key Vault 內之金鑰相關的中繼資料 (金鑰屬性)。  
+-   **刪除**：可讓具有足夠權限的用戶端從 Key Vault 中刪除金鑰。  
+-   **列出**：可讓用戶端列出所指定 Key Vault 中的所有金鑰。  
+-   **列出版本**：可讓用戶端列出指定的 Key Vault 中，所指定金鑰的所有版本。  
+-   **取得**：可讓用戶端擷取 Key Vault 中所指定金鑰的公開部分。  
+-   **備份**：以受保護的形式匯出金鑰。  
+-   **還原**：匯入先前備份的金鑰。  
 
 如需詳細資訊，請參閱 [Key Vault REST API 參考中的金鑰作業](/rest/api/keyvault)。  
 
 一旦在 Key Vault 中建立金鑰之後，即可使用該金鑰執行下列加密編譯作業：  
 
--   **簽署並驗證** ：嚴格來說，這項作業是「簽署雜湊」或「驗證雜湊」，因為 Key Vault 不支援在建立簽章時進行內容雜湊。 應用程式應對要在本機上簽署的資料進行雜湊，然後要求 Key Vault 簽署此雜湊資料。 驗證已簽署的雜湊是針對無法存取 [公開] 金鑰內容的應用程式而支援的便利作業。 為達到最佳應用程式效能，驗證作業應在本機上執行。  
--   **金鑰加密/包裝** ：儲存在 Key Vault 中的金鑰可用來保護另一個金鑰，通常是對稱內容加密金鑰 (CEK)。 如果 Key Vault 中的金鑰是非對稱的，則會使用金鑰加密。 例如 RSA-OAEP 和包裝金鑰/解除包裝金鑰作業等同於加密/解密。 如果 Key Vault 中的金鑰是對稱的，則使用金鑰包裝。 例如 AES-KW。 包裝金鑰作業是針對無法存取 [公開] 金鑰內容的應用程式而支援的便利機制。 為達到最佳應用程式效能，包裝金鑰作業應在本機上執行。  
--   **加密和解密** ：儲存在 Key Vault 中的金鑰可用來加密或解密單一資料區塊。 區塊的大小取決於金鑰類型和選取的加密演算法。 加密作業是針對無法存取 [公開] 金鑰內容的應用程式而提供的便利機制。 為達到最佳應用程式效能，加密作業應在本機上執行。  
+-   **簽署並驗證**：嚴格來說，這項作業是「簽署雜湊」或「驗證雜湊」，因為 Key Vault 不支援在建立簽章時進行內容雜湊。 應用程式應對要在本機上簽署的資料進行雜湊，然後要求 Key Vault 簽署此雜湊資料。 驗證已簽署的雜湊是針對無法存取 [公開] 金鑰內容的應用程式而支援的便利作業。 為達到最佳應用程式效能，驗證作業應在本機上執行。  
+-   **金鑰加密/包裝**：儲存在 Key Vault 中的金鑰可用來保護另一個金鑰，通常是對稱內容加密金鑰 (CEK)。 如果 Key Vault 中的金鑰是非對稱的，則會使用金鑰加密。 例如 RSA-OAEP 和包裝金鑰/解除包裝金鑰作業等同於加密/解密。 如果 Key Vault 中的金鑰是對稱的，則使用金鑰包裝。 例如 AES-KW。 包裝金鑰作業是針對無法存取 [公開] 金鑰內容的應用程式而支援的便利機制。 為達到最佳應用程式效能，包裝金鑰作業應在本機上執行。  
+-   **加密和解密**：儲存在 Key Vault 中的金鑰可用來加密或解密單一資料區塊。 區塊的大小取決於金鑰類型和選取的加密演算法。 加密作業是針對無法存取 [公開] 金鑰內容的應用程式而提供的便利機制。 為達到最佳應用程式效能，加密作業應在本機上執行。  
 
 儘管使用非對稱金鑰的包裝金鑰/解除包裝金鑰顯得有點多餘 (因為此作業相當於加密/解密)，但使用相異的作業是相當重要的。 這樣的差異性可讓這些作業的語意和授權有所區隔，並且在服務支援其他金鑰類型時帶來一致性。  
 
@@ -107,20 +107,20 @@ Key Vault 不支援匯出作業。 在系統中佈建金鑰後，即無法加以
 
 除了金鑰內容，您可以指定下列屬性。 在 JSON 要求中，屬性關鍵字和括弧「{」「}」是必要的，即使沒有指定任何屬性。  
 
-- enabled  ：選擇性的布林值，預設值是 **true** 。 指定金鑰是否已啟用，並可用於密碼編譯作業。 enabled 屬性會與 nbf 和 exp 一起使用。當作業發生於 nbf 和 exp 之間時，只有在 enabled 設定為 **true** 時，才能允許此作業。 發生於 nbf / exp 範圍外的作業將自動禁止，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。
-- *nbf* ：選擇性的 IntDate，預設值為現在 (now)。 nbf (不早於) 屬性會定義一個時間，而在此時間之前「絕不可」將金鑰用於密碼編譯作業，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。 若要處理 nbf 屬性，目前的日期/時間「必須」晚於或等同 nbf 屬性中所列的「不早於」日期/時間。 考慮到時鐘誤差，Key Vault 可能會多提供一點時間 (通常都在幾分鐘內)。 其值必須是包含 IntDate 值的數字。  
-- *exp* ：選擇性的 IntDate，預設值為永久 (forever)。 exp (到期時間) 屬性會定義到期時間，而在此時間點或之後「絕不可」將金鑰用於密碼編譯作業，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。 若要處理 exp 屬性，目前的日期/時間「必須」早於 exp 屬性中所列的到期日期/時間。 考慮到時鐘誤差，Key Vault 可能會多提供一點時間 (通常都在幾分鐘內)。 其值必須是包含 IntDate 值的數字。  
+- enabled  ：選擇性的布林值，預設值是 **true**。 指定金鑰是否已啟用，並可用於密碼編譯作業。 enabled 屬性會與 nbf 和 exp 一起使用。當作業發生於 nbf 和 exp 之間時，只有在 enabled 設定為 **true** 時，才能允許此作業。 發生於 nbf / exp 範圍外的作業將自動禁止，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。
+- *nbf*：選擇性的 IntDate，預設值為現在 (now)。 nbf (不早於) 屬性會定義一個時間，而在此時間之前「絕不可」將金鑰用於密碼編譯作業，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。 若要處理 nbf 屬性，目前的日期/時間「必須」晚於或等同 nbf 屬性中所列的「不早於」日期/時間。 考慮到時鐘誤差，Key Vault 可能會多提供一點時間 (通常都在幾分鐘內)。 其值必須是包含 IntDate 值的數字。  
+- *exp*：選擇性的 IntDate，預設值為永久 (forever)。 exp (到期時間) 屬性會定義到期時間，而在此時間點或之後「絕不可」將金鑰用於密碼編譯作業，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。 若要處理 exp 屬性，目前的日期/時間「必須」早於 exp 屬性中所列的到期日期/時間。 考慮到時鐘誤差，Key Vault 可能會多提供一點時間 (通常都在幾分鐘內)。 其值必須是包含 IntDate 值的數字。  
 
 任何包含金鑰屬性的回應中，可包含其他唯讀屬性：  
 
-- *created* ：選擇性的 IntDate。 created 屬性會指出建立此金鑰版本的時間。 若金鑰是在新增此屬性之前建立的，則此值為 Null。 其值必須是包含 IntDate 值的數字。  
-- *updated* ：選擇性的 IntDate。 updated 屬性會指出更新此金鑰版本的時間。 若金鑰是在新增此屬性之前進行最後一次更新，則此值為 Null。 其值必須是包含 IntDate 值的數字。  
+- *created*：選擇性的 IntDate。 created 屬性會指出建立此金鑰版本的時間。 若金鑰是在新增此屬性之前建立的，則此值為 Null。 其值必須是包含 IntDate 值的數字。  
+- *updated*：選擇性的 IntDate。 updated 屬性會指出更新此金鑰版本的時間。 若金鑰是在新增此屬性之前進行最後一次更新，則此值為 Null。 其值必須是包含 IntDate 值的數字。  
 
 如需有關 IntDate 和其他資料類型的詳細資訊，請參閱 [關於金鑰、祕密與憑證：[資料類型](../general/about-keys-secrets-certificates.md#data-types)。
 
 ### <a name="date-time-controlled-operations"></a>受到日期時間控制的作業
 
-nbf / exp 範圍外尚未生效和過期的金鑰，將會用於 **解密** 、 **解除包裝** 和 **驗證** 作業 (不會傳回 403 禁止)。 使用尚未生效狀態的基本原理是，允許金鑰先經過測試，然後才在生產環境使用。 使用過期狀態的基本原理是，允許對在金鑰有效時建立的資料執行復原作業。 此外，您可以使用 Key Vault 原則，或藉由將 enabled 金鑰屬性更新為 **false** ，來停用金鑰的存取權。
+nbf / exp 範圍外尚未生效和過期的金鑰，將會用於 **解密**、**解除包裝** 和 **驗證** 作業 (不會傳回 403 禁止)。 使用尚未生效狀態的基本原理是，允許金鑰先經過測試，然後才在生產環境使用。 使用過期狀態的基本原理是，允許對在金鑰有效時建立的資料執行復原作業。 此外，您可以使用 Key Vault 原則，或藉由將 enabled 金鑰屬性更新為 **false**，來停用金鑰的存取權。
 
 如需資料類型的詳細資訊，請參閱[資料類型](../general/about-keys-secrets-certificates.md#data-types)。
 
@@ -140,26 +140,26 @@ nbf / exp 範圍外尚未生效和過期的金鑰，將會用於 **解密** 、 
 您可以在保存庫上的金鑰存取控制項目中授與下列權限 (以每個使用者 / 服務主體為基礎)。 這些權限密切地對映金鑰物件上所允許的作業。  將存取權授與 key vault 中的服務主體是一項 onetime 作業，而且所有 Azure 訂用帳戶的存取都維持不變。 您可以使用此主體來部署任意數目的憑證。 
 
 - 金鑰管理作業的權限
-  - *get* ：讀取金鑰的公開部分及其屬性
-  - *list* ：列出儲存在金鑰保存庫中的金鑰或金鑰版本
-  - *update* ：更新金鑰的屬性
-  - *create* ：建立新的金鑰
-  - *import* ：將金鑰匯入至金鑰保存庫
-  - *delete* ：刪除金鑰物件
-  - *recover* ：復原已刪除的金鑰
-  - *backup* ：備份金鑰保存庫中的金鑰
-  - *restore* ：將備份的金鑰還原至金鑰保存庫
+  - *get*：讀取金鑰的公開部分及其屬性
+  - *list*：列出儲存在金鑰保存庫中的金鑰或金鑰版本
+  - *update*：更新金鑰的屬性
+  - *create*：建立新的金鑰
+  - *import*：將金鑰匯入至金鑰保存庫
+  - *delete*：刪除金鑰物件
+  - *recover*：復原已刪除的金鑰
+  - *backup*：備份金鑰保存庫中的金鑰
+  - *restore*：將備份的金鑰還原至金鑰保存庫
 
 - 密碼編譯作業的權限
-  - *decrypt* ：使用金鑰來解除對位元組序列的保護
-  - *encrypt* ：使用金鑰來保護任意的位元組序列
-  - *unwrapKey* ：使用金鑰來解除對已包裝對稱金鑰的保護
-  - *wrapKey* ：使用金鑰來保護對稱金鑰
-  - *verify* ：使用金鑰來驗證摘要  
-  - *sign* ：使用金鑰來簽署摘要
+  - *decrypt*：使用金鑰來解除對位元組序列的保護
+  - *encrypt*：使用金鑰來保護任意的位元組序列
+  - *unwrapKey*：使用金鑰來解除對已包裝對稱金鑰的保護
+  - *wrapKey*：使用金鑰來保護對稱金鑰
+  - *verify*：使用金鑰來驗證摘要  
+  - *sign*：使用金鑰來簽署摘要
     
 - 特殊權限作業的權限
-  - *purge* ：清除 (永久刪除) 已刪除的金鑰
+  - *purge*：清除 (永久刪除) 已刪除的金鑰
 
 如需使用金鑰的詳細資訊，請參閱 [Key Vault REST API 參考中的金鑰作業](/rest/api/keyvault)。 如需建立權限的相關資訊，請參閱[保存庫 - 建立或更新](/rest/api/keyvault/vaults/createorupdate)和[保存庫 - 更新存取原則](/rest/api/keyvault/vaults/updateaccesspolicy)。 
 

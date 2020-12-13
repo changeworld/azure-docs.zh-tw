@@ -180,6 +180,8 @@
       href: ./policy-reference.md
 - name: 資源
   items:
+    - name: 透過 Microsoft Learn 增進您的技巧
+      href: /learn/browse/?products=azure-resource-manager
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
     - name: 定價計算機

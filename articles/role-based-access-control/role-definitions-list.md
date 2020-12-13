@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f5421efc96b957f5ae96515bbcf17c8a773397c9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 9dad8ffc9971894a2777e8bda9bcf6d78eee00a9
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368242"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369271"
 ---
 # <a name="list-azure-role-definitions"></a>列出 Azure 角色定義
 
@@ -33,13 +33,13 @@ ms.locfileid: "92368242"
 
 遵循下列步驟來列出 Azure 入口網站中的所有角色。
 
-1. 在 Azure 入口網站中，按一下 [ **所有服務** ]，然後選取任何領域。 例如，您可以選取 [管理群組]****、[訂用帳戶]****、[資源群組]**** 或資源。
+1. 在 Azure 入口網站中，按一下 [ **所有服務** ]，然後選取任何領域。 例如，您可以選取 [管理群組]、[訂用帳戶]、[資源群組]或資源。
 
 1. 按一下特定資源。
 
 1. 按一下 [存取控制 (IAM)]。
 
-1. 按一下 [角色]**** 索引標籤以查看所有內建與自訂角色清單。
+1. 按一下 [角色] 索引標籤以查看所有內建與自訂角色清單。
 
    您可以查看指派給目前範圍內每個角色的使用者和群組數目。
 
@@ -235,7 +235,7 @@ az role definition list --custom-role-only false --output json --query '[].{role
 az role definition list --name {roleName}
 ```
 
-下列範例會列出「參與者」** 的角色定義：
+下列範例會列出「參與者」的角色定義：
 
 ```azurecli
 az role definition list --name "Contributor"
@@ -275,7 +275,7 @@ az role definition list --name "Contributor"
 
 ### <a name="list-permissions-of-a-role-definition"></a>列出角色定義的許可權
 
-下列範例只會列出*參與者*角色的*動作*和*notActions* 。
+下列範例只會列出 *參與者* 角色的 *動作* 和 *notActions* 。
 
 ```azurecli
 az role definition list --name "Contributor" --output json --query '[].{actions:permissions[0].actions, notActions:permissions[0].notActions}'
@@ -344,19 +344,19 @@ az role definition list --name "Virtual Machine Contributor" --output json --que
 1. 在 URI 中，將 *{scope}* 取代為您要列出角色定義的範圍。
 
     > [!div class="mx-tableFixed"]
-    > | 範圍 | 類型 |
+    > | 影響範圍 | 類型 |
     > | --- | --- |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理群組 |
     > | `subscriptions/{subscriptionId1}` | 訂用帳戶 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 資源群組 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | 資源 |
 
-    在先前的範例中，microsoft 是參考 App Service 實例的資源提供者。 同樣地，您可以使用任何其他資源提供者，並指定範圍。 如需詳細資訊，請參閱 [Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md) ，以及支援的 [Azure Resource Manager 資源提供者作業](resource-provider-operations.md)。  
+    在先前的範例中，microsoft 是參考 App Service 實例的資源提供者。 同樣地，您可以使用任何其他資源提供者，並指定範圍。 如需詳細資訊，請參閱 [Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md) ，以及支援的 [azure 資源提供者作業](resource-provider-operations.md)。  
      
 1. 將 *{filter}* 取代為您要套用以篩選角色定義清單的條件。
 
     > [!div class="mx-tableFixed"]
-    > | Filter | 描述 |
+    > | 篩選 | 說明 |
     > | --- | --- |
     > | `$filter=atScopeAndBelow()` | 列出指定範圍和任何子範圍內的角色定義。 |
     > | `$filter=type+eq+'{type}'` | 列出指定之類型的角色定義。 角色的類型可以是 `CustomRole` 或 `BuiltInRole` 。 |
@@ -429,7 +429,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId1}/providers/Micro
 1. 在 URI 中，將 *{scope}* 取代為您要列出角色定義的範圍。
 
     > [!div class="mx-tableFixed"]
-    > | 範圍 | 類型 |
+    > | 影響範圍 | 類型 |
     > | --- | --- |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理群組 |
     > | `subscriptions/{subscriptionId1}` | 訂用帳戶 |

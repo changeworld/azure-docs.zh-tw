@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 610ab649d64351b0897ef7358cdaf9280fe3ba55
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: c18ee43eefe9c6cf9cba7f4e8f6c3fd3f55bba5a
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684913"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368693"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL 受控執行個體之間的 t-sql 差異
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ SQL 受控執行個體提供與 SQL Server database engine 的高度相容性，
 
 - [可用性](#availability) 包含 [Always On 可用性群組](#always-on-availability-groups) 和 [備份](#backup)的差異。
 - [安全性](#security)包括[審核](#auditing)、[憑證](#credential)、認證[、](#certificates)[密碼編譯提供者](#cryptographic-providers)、登入[和使用者](#logins-and-users)，以及[服務金鑰和服務主要金鑰](#service-key-and-service-master-key)的差異。
-- [Configuration](#configuration)設定包括[緩衝集區延伸](#buffer-pool-extension)、定[序](#collation)、[相容性層級](#compatibility-levels)、[資料庫鏡像](#database-mirroring)、[資料庫選項](#database-options)、 [SQL Server Agent](#sql-server-agent)和[資料表選項](#tables)的差異。
+- [](#configuration)設定包括[緩衝集區延伸](#buffer-pool-extension)、定[序](#collation)、[相容性層級](#compatibility-levels)、[資料庫鏡像](#database-mirroring)、[資料庫選項](#database-options)、 [SQL Server Agent](#sql-server-agent)和[資料表選項](#tables)的差異。
 - [功能](#functionalities)包括[BULK INSERT/OPENROWSET](#bulk-insert--openrowset)、 [CLR](#clr)、 [DBCC](#dbcc)、[分散式交易](#distributed-transactions)、[擴充事件](#extended-events)、[外部程式庫](#external-libraries)、 [filestream 和 FileTable](#filestream-and-filetable)、[全文檢索語義搜尋](#full-text-semantic-search)、[連結的伺服器](#linked-servers)、 [PolyBase](#polybase)、[複寫、](#replication)[還原](#restore-statement)、 [Service Broker](#service-broker)、[預存程式、函數和觸發](#stored-procedures-functions-and-triggers)程式。
 - [環境設定](#Environment) ，例如 vnet 和子網設定。
 
@@ -42,7 +42,7 @@ SQL 受控執行個體提供與 SQL Server database engine 的高度相容性，
 
 ## <a name="availability"></a>可用性
 
-### <a name="always-on-availability-groups"></a><a name="always-on-availability-groups"></a>AlwaysOn 可用性群組
+### <a name="always-on-availability-groups"></a><a name="always-on-availability-groups"></a>Always On 可用性群組
 
 SQL 受控執行個體內建[高可用性](../database/high-availability-sla.md)，而且無法由使用者控制。 不支援下列語句：
 
@@ -190,7 +190,7 @@ SQL 受控執行個體無法存取檔案，所以無法建立密碼編譯提供�
 - SQL Database 服務) 所管理的 (不支援[服務主要金鑰備份](/sql/t-sql/statements/backup-service-master-key-transact-sql)。
 - SQL Database 服務) 管理的 (不支援[服務主要金鑰還原](/sql/t-sql/statements/restore-service-master-key-transact-sql)。
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 ### <a name="buffer-pool-extension"></a>緩衝集區延伸
 
@@ -396,9 +396,9 @@ Azure SQL 受控執行個體目前不支援在內部部署或 Azure 虛擬機器
 
 SQL 受控執行個體中連結的伺服器支援數量有限的目標：
 
-- 支援的目標為 SQL 受控執行個體、SQL Database、Azure Synapse SQL 和 SQL Server 實例。 
+- 支援的目標為 SQL 受控執行個體、SQL Database、Azure Synapse SQL [無伺服器](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) 和專用集區，以及 SQL Server 實例。 
 - 連結的伺服器不支援 (MS DTC) 的分散式可寫入交易。
-- 不支援的目標為檔案、Analysis Services 和其他 RDBMS。 請嘗試使用 Azure Blob 儲存體的原生 CSV 匯入，或做為檔案匯 `BULK INSERT` `OPENROWSET` 入的替代方法。
+- 不支援的目標為檔案、Analysis Services 和其他 RDBMS。 請嘗試使用 Azure Blob 儲存體的原生 CSV 匯入，或使用檔案匯 `BULK INSERT` `OPENROWSET` 入的替代方式，或 [在 Azure Synapse Analytics 中使用無伺服器 SQL 集](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)區來載入檔案。
 
 作業： 
 
@@ -406,11 +406,12 @@ SQL 受控執行個體中連結的伺服器支援數量有限的目標：
 - 支援使用 `sp_dropserver` 卸除連結的伺服器。 請參閱 [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql)。
 - `OPENROWSET`函數只能用來在 SQL Server 實例上執行查詢。 它們可以是受控、內部部署或虛擬機器。 請參閱 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql)。
 - `OPENDATASOURCE`函數只能用來在 SQL Server 實例上執行查詢。 它們可以是受控、內部部署或虛擬機器。 僅 `SQLNCLI` 支援、 `SQLNCLI11` 和 `SQLOLEDB` 值做為提供者。 例如 `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`。 請參閱 [OPENDATASOURCE](/sql/t-sql/functions/opendatasource-transact-sql)。
-- 連結的伺服器不能用來從網路共用讀取 (Excel、CSV) 的檔案。 請嘗試使用 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) 或 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) ，從 Azure Blob 儲存體讀取 CSV 檔案。 在[SQL 受控執行個體意見反應專案](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)上追蹤此要求|
+- 連結的伺服器不能用來從網路共用讀取 (Excel、CSV) 的檔案。 請嘗試使用 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file)、 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) 從 Azure Blob 儲存體讀取 CSV 檔案，或是 [在 Synapse ANALYTICS 中參考無伺服器 SQL 集區的連結伺服器](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)。 在[SQL 受控執行個體意見反應專案](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)上追蹤此要求|
 
 ### <a name="polybase"></a>PolyBase
 
-唯一支援的外部來源類型是 RDBMS、Azure SQL Database 和其他 Azure SQL 受控執行個體。 如需 PolyBase 的相關資訊，請參閱 [polybase](/sql/relational-databases/polybase/polybase-guide)。
+只有 Azure SQL database、Azure SQL 受控實例和 Azure Synapse 集區的公開預覽) 中，唯一可用的外部來源類型是 RDBMS (。 您可以使用 [參考 Synapse Analytics 中無伺服器 SQL 集區的外部資料表](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) ，作為直接從 Azure 儲存體讀取之 Polybase 外部資料表的因應措施。 在 Azure SQL 受控實例中，您可以在 Synapse 分析或 SQL Server 中，使用連結的伺服器來執行 [無伺服器的 SQL 集](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) 區，以讀取 Azure 儲存體資料。
+如需 PolyBase 的相關資訊，請參閱 [polybase](/sql/relational-databases/polybase/polybase-guide)。
 
 ### <a name="replication"></a>複寫
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 99e7a8fcb34c963cfab366f1913508a7ff3f4a51
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: c5a855ffe06a17d8ec1bfe249dbe7bc41d1166af
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408697"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369067"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>安全性控制 V2：記錄和威脅偵測
 
@@ -20,7 +20,7 @@ ms.locfileid: "94408697"
 
 ## <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1：啟用 Azure 資源的威脅偵測
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | LT-1 | 6.7 | AU-3，AU-6，AU-12，SI-4 |
 
@@ -38,9 +38,9 @@ ms.locfileid: "94408697"
 
 - [使用 Azure Sentinel 的網路威脅情報](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -52,9 +52,9 @@ ms.locfileid: "94408697"
 
 - [威脅情報](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
-## <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2：啟用 Azure 身分識別與存取管理的威脅偵測
+## <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2：啟用 Azure 身分識別與存取權管理的威脅偵測
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | LT-2 | 6.8 | AU-3，AU-6，AU-12，SI-4 |
 
@@ -75,9 +75,9 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 
 - [Azure 資訊安全中心內的威脅防護](../../security-center/azure-defender.md)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -91,7 +91,7 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 
 ## <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3：啟用 Azure 網路活動的記錄功能
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | LT-3 | 9.3、12.2、12.5、12。8 | AU-3，AU-6，AU-12，SI-4 |
 
@@ -109,9 +109,9 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 
 - [使用 DNS 分析解決方案收集您的 DNS 基礎結構的深入解析](../../azure-monitor/insights/dns-analytics.md)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -123,9 +123,9 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 
 - [威脅情報](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
-## <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4：啟用 Azure 資源的記錄
+## <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4：啟用 Azure 資源的記錄功能
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | LT-4 | 6.2、6.3、8。8 | AU-3，AU-12 |
 
@@ -137,9 +137,9 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 
 - [瞭解 Azure 資訊安全中心資料收集](../../security-center/security-center-enable-data-collection.md)
 
-**責任** ：共用
+**責任**：共用
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性作業](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -149,9 +149,9 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 
 - [威脅情報](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
-## <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5：集中安全性記錄檔管理和分析
+## <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5：將安全性記錄的管理與分析集中
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | LT-5 | 6.5、6。6 | AU-3、SI-4 |
 
@@ -167,9 +167,9 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 
 - [如何使 Azure Sentinel 上線](../../sentinel/quickstart-onboard.md)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -177,9 +177,9 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-## <a name="lt-6-configure-log-storage-retention"></a>LT-6：設定記錄儲存體保留期
+## <a name="lt-6-configure-log-storage-retention"></a>LT-6：設定記錄儲存保留期
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | LT-6 | 6.4 | AU-3，AU-11 |
 
@@ -193,9 +193,9 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 
 - [Azure 資訊安全中心警示和建議匯出](../../security-center/continuous-export.md)
 
-**責任** ：客戶
+**責任**：客戶
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -207,7 +207,7 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 
 ## <a name="lt-7-use-approved-time-synchronization-sources"></a>LT-7：使用已核准的時間同步處理來源
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | LT-7 | 6.1 | AU-8 |
 
@@ -221,9 +221,9 @@ Microsoft 會維護大部分 Azure PaaS 和 SaaS 服務的時間來源。 針對
 
 - [如何停用 Azure 服務的輸入 UDP](https://support.microsoft.com/help/4558520/how-to-disable-inbound-udp-for-azure-services)
 
-**責任** ：共用
+**責任**：共用
 
-**客戶安全性專案關係人** ( [深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [原則和標準](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 

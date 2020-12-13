@@ -9,14 +9,16 @@ ms.date: 09/08/2020
 ms.topic: how-to
 ms.author: nitinme
 author: nitinme
-ms.openlocfilehash: 3235f6285edb99776b42014678cd2b6c60d17f62
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: b8382b76496976054ebb452e39866765d986ccbb
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763824"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368168"
 ---
 # <a name="sign-in-to-luis-portal"></a>登入 LUIS 入口網站
+
+[!INCLUDE [LUIS Free account](includes/luis-portal-note.md)]
 
 您可以使用本文來開始使用 LUIS 入口網站，並建立撰寫資源。 完成本文中的步驟之後，您將能夠建立併發布 LUIS 應用程式。
 

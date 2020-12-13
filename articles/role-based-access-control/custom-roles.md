@@ -2,36 +2,76 @@
 title: Azure 自訂角色-Azure RBAC
 description: 瞭解如何使用 Azure 角色型存取控制來建立 Azure 自訂角色 (Azure RBAC) 以進行 Azure 資源的更細緻存取管理。
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: e4206ea9-52c3-47ee-af29-f6eef7566fa5
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/13/2020
+ms.date: 12/11/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd737a22a37d6edc47c2769a470af00537d720eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eddbd9cb695f3ff7eabd9f2549d0a868d8826eb9
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87124148"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369118"
 ---
 # <a name="azure-custom-roles"></a>Azure 自訂角色 (機器翻譯)
 
 > [!IMPORTANT]
-> 將管理群組新增至的 `AssignableScopes` 功能目前為預覽狀態。
+> 將管理群組新增至 `AssignableScopes` 的服務目前為預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 如果 [Azure 內建的角色](built-in-roles.md)無法滿足您組織的特定需求，您可以建立自己的自訂角色。 就像內建角色一樣，您可以在管理群組、訂用帳戶和資源群組範圍中，將自訂角色指派給使用者、群組和服務主體。
 
 自訂角色可以在信任相同 Azure AD 目錄的訂用帳戶之間共用。 每個目錄的自訂角色限制為 **5000** 。  (Azure 德國和 Azure 中國的世紀，限制為2000個自訂角色。您可以使用 Azure 入口網站、Azure PowerShell、Azure CLI 或 REST API 來建立 ) 自訂角色。
+
+## <a name="steps-to-create-a-custom-role"></a>建立自訂角色的步驟
+
+以下是建立自訂角色的基本步驟。
+
+1. 判斷您需要的許可權。
+
+    當您建立自訂角色時，您需要知道可用來定義許可權的作業。 一般而言，您可以從使用現有的內建角色開始，然後針對您的需求進行修改。 您會將作業加入至 `Actions` `NotActions` [角色定義](role-definitions.md)的或屬性。 如果您有資料作業，您會將它們加入至 `DataActions` 或 `NotDataActions` 屬性。
+
+    如需詳細資訊，請參閱下一節 [如何判斷您需要的許可權](#how-to-determine-the-permissions-you-need)。
+
+1. 決定您要如何建立自訂角色。
+
+    您可以使用 [Azure 入口網站](custom-roles-portal.md)、 [Azure PowerShell](custom-roles-powershell.md)、 [Azure CLI](custom-roles-cli.md)或 [REST API](custom-roles-rest.md)來建立自訂角色。
+
+1. 建立自訂角色。
+
+    最簡單的方式是使用 Azure 入口網站。 如需有關如何使用 Azure 入口網站建立自訂角色的步驟，請參閱 [使用 Azure 入口網站建立或更新 Azure 自訂角色](custom-roles-portal.md)。
+
+1. 測試自訂角色。
+
+    一旦具有自訂角色，您必須測試它來驗證是否如預期般運作。 稍後如需進行調整，您可以更新自訂角色。
+
+## <a name="how-to-determine-the-permissions-you-need"></a>如何判斷您需要的許可權
+
+Azure 具有數以千計的許可權，您可以將其包含在您的自訂角色中。 以下是一些可協助您決定要新增至自訂角色之許可權的方法：
+
+- 查看現有的 [內建角色](built-in-roles.md)。
+
+    您可能會想要修改現有的角色，或合併多個角色中所使用的許可權。
+
+- 列出您想要授與存取權的 Azure 服務。
+
+- 判斷 [對應至 Azure 服務的資源提供者](../azure-resource-manager/management/azure-services-resource-providers.md)。
+
+    Azure 服務會透過 [資源提供者](../azure-resource-manager/management/overview.md)公開其功能和許可權。 例如，Microsoft 計算資源提供者會提供虛擬機器資源，而 Microsoft 帳單資源提供者會提供訂用帳戶和帳單資源。 瞭解資源提供者可協助您縮小並判斷自訂角色所需的許可權。
+
+    當您使用 Azure 入口網站建立自訂角色時，您也可以藉由搜尋關鍵字來判斷資源提供者。 [使用 Azure 入口網站建立或更新 Azure 自訂角色](custom-roles-portal.md#step-4-permissions)時，會說明這項搜尋功能。
+
+    ![使用資源提供者新增許可權窗格](./media/custom-roles-portal/add-permissions-provider.png)
+
+- 搜尋 [可用的許可權](resource-provider-operations.md) 以尋找您想要包含的許可權。
+
+    當您使用 Azure 入口網站建立自訂角色時，您可以依關鍵字搜尋許可權。 例如，您可以搜尋 *虛擬機器* 或 *帳單* 許可權。 您也可以下載擁有權限作為 CSV 檔案，然後搜尋此檔案。 [使用 Azure 入口網站建立或更新 Azure 自訂角色](custom-roles-portal.md#step-4-permissions)時，會說明這項搜尋功能。
+
+    ![新增許可權清單](./media/custom-roles-portal/add-permissions-list.png)
 
 ## <a name="custom-role-example"></a>自訂角色範例
 
@@ -125,7 +165,7 @@ ms.locfileid: "87124148"
 | `NotActions`</br>`notActions` | 否 | String[] | 字串陣列，指定從所允許 `Actions` 中排除的管理作業。 如需詳細資訊，請參閱 [NotActions](role-definitions.md#notactions)。 |
 | `DataActions`</br>`dataActions` | 否 | String[] | 字串陣列，指定角色允許對物件內資料執行的管理作業。 如果您使用建立自訂角色 `DataActions` ，則無法在管理群組範圍指派該角色。 如需詳細資訊，請參閱 [DataActions](role-definitions.md#dataactions)。 |
 | `NotDataActions`</br>`notDataActions` | 否 | String[] | 字串陣列，指定從所允許 `DataActions` 中排除的資料作業。 如需詳細資訊，請參閱 [NotDataActions](role-definitions.md#notdataactions)。 |
-| `AssignableScopes`</br>`assignableScopes` | 是 | String[] | 字串陣列，指定自訂角色可用於指派的範圍。 您只能在自訂角色中定義一個管理群組 `AssignableScopes` 。 將管理群組新增至的 `AssignableScopes` 功能目前為預覽狀態。 如需詳細資訊，請參閱 [AssignableScopes](role-definitions.md#assignablescopes)。 |
+| `AssignableScopes`</br>`assignableScopes` | 是 | String[] | 字串陣列，指定自訂角色可用於指派的範圍。 您只能在自訂角色中定義一個管理群組 `AssignableScopes` 。 將管理群組新增至 `AssignableScopes` 的服務目前為預覽狀態。 如需詳細資訊，請參閱 [AssignableScopes](role-definitions.md#assignablescopes)。 |
 
 ## <a name="wildcard-permissions"></a>萬用字元許可權
 
@@ -151,26 +191,6 @@ Microsoft.CostManagement/exports/*
 Microsoft.CostManagement/*/query/*
 ```
 
-## <a name="steps-to-create-a-custom-role"></a>建立自訂角色的步驟
-
-若要建立自訂角色，以下是您應該遵循的基本步驟。
-
-1. 決定您要如何建立自訂角色。
-
-    您可以使用 Azure 入口網站、Azure PowerShell、Azure CLI 或 REST API 來建立自訂角色。
-
-1. 判斷您需要的許可權。
-
-    當您建立自訂角色時，您需要知道可用來定義許可權的作業。 若要查看作業的清單，請參閱 [Azure Resource Manager 資源提供者作業](resource-provider-operations.md)。 您會將作業加入至 `Actions` `NotActions` [角色定義](role-definitions.md)的或屬性。 如果您有資料作業，您會將它們加入至 `DataActions` 或 `NotDataActions` 屬性。
-
-1. 建立自訂角色。
-
-    一般而言，您可以從使用現有的內建角色開始，然後針對您的需求進行修改。 最簡單的方式是使用 Azure 入口網站。 如需有關如何使用 Azure 入口網站建立自訂角色的步驟，請參閱 [使用 Azure 入口網站建立或更新 Azure 自訂角色](custom-roles-portal.md)。
-
-1. 測試自訂角色。
-
-    一旦具有自訂角色，您必須測試它來驗證是否如預期般運作。 稍後如需進行調整，您可以更新自訂角色。
-
 ## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>誰可以建立、刪除、更新或檢視自訂角色
 
 就像內建角色一樣，`AssignableScopes` 屬性會指定角色可用於指派的範圍。 自訂角色的 `AssignableScopes` 屬性也會控制誰可以建立、刪除、更新或檢視自訂角色。
@@ -188,7 +208,7 @@ Microsoft.CostManagement/*/query/*
 - 每個目錄最多可有 **5000** 個自訂角色。
 - Azure 德國和 Azure 中國世紀最多可為每個目錄擁有2000個自訂角色。
 - 您無法 `AssignableScopes` () 設定為根範圍 `"/"` 。
-- 您只能在自訂角色中定義一個管理群組 `AssignableScopes` 。 將管理群組新增至的 `AssignableScopes` 功能目前為預覽狀態。
+- 您只能在自訂角色中定義一個管理群組 `AssignableScopes` 。 將管理群組新增至 `AssignableScopes` 的服務目前為預覽狀態。
 - `DataActions`無法在管理群組範圍指派具有的自訂角色。
 - Azure Resource Manager 不會驗證管理群組是否存在角色定義的可指派範圍中。
 
@@ -335,7 +355,7 @@ Microsoft.CostManagement/*/query/*
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [教學課程：使用 Azure PowerShell 建立 Azure 自訂角色](tutorial-custom-role-powershell.md)
 - [教學課程：使用 Azure CLI 建立 Azure 自訂角色](tutorial-custom-role-cli.md)

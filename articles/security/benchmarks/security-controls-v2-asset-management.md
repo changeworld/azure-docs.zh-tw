@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8602450ef7df7f728fc5bdcda4f46ae30058fc94
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f0c2fe78c32357798e1f9acb43f5867df9148b38
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487791"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368897"
 ---
 # <a name="security-control-v2-asset-management"></a>安全性控制 V2：資產管理
 
@@ -20,7 +20,7 @@ ms.locfileid: "96487791"
 
 ## <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1：確保安全性小組能夠看到資產的風險
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | 上午-1 | 1.1、1。2 | CM-8，下午5點 |
 
@@ -46,7 +46,7 @@ ms.locfileid: "96487791"
 
 ## <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>AM-2：確保安全性小組可以存取資產清查和中繼資料
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | 上午-2 | 1.1、1.2、1.4、1.5、9.1、12。1 | CM-8，下午5點 |
 
@@ -72,7 +72,7 @@ Azure 資訊安全中心清查功能和 Azure Resource Graph 可以查詢及探�
 
 ## <a name="am-3-use-only-approved-azure-services"></a>AM-3：僅使用已核准的 Azure 服務
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | 上午-3 | 2.3、2.4 | CM-7、CM-8 |
 
@@ -94,7 +94,7 @@ Azure 資訊安全中心清查功能和 Azure Resource Graph 可以查詢及探�
 
 ## <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>AM-4：確保資產生命週期管理的安全性
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | 上午-4 | 2.3、2.4、2。5 | CM-7、CM-8、CM-10、CM-11 |
 
@@ -116,7 +116,7 @@ Azure 資訊安全中心清查功能和 Azure Resource Graph 可以查詢及探�
 
 ## <a name="am-5-limit-users-ability-to-interact-with-azure-resource-manager"></a>上午-5：限制使用者與 Azure Resource Manager 互動的能力
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | 上午-5 | 2.9 | AC-3 |
 
@@ -134,7 +134,7 @@ Azure 資訊安全中心清查功能和 Azure Resource Graph 可以查詢及探�
 
 ## <a name="am-6-use-only-approved-applications-in-compute-resources"></a>上午-6：僅在計算資源中使用已核准的應用程式
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | 上午-6 | 2.6、2。7 | AC-3，CM-7，CM-8，CM-10，CM-11 |
 

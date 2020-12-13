@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/10/2020
-ms.openlocfilehash: 58e7d54750da86b8a700a4f2195bc4cfa012ae4b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 12/11/2020
+ms.openlocfilehash: a740ad62dacc9a29cab1cc144f1789e125ec2e89
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092682"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368574"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>關於 Azure Cosmos DB 中自動調整佈建輸送量的常見問題集
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,7 +43,7 @@ ms.locfileid: "93092682"
 在具有多個寫入區域的帳戶中，每 100 RU/秒的自動調整費率與標準 (手動) 布建多個寫入區域輸送量的費率相同。 在您的帳單上，您將會看到現有的多個寫入區域計量。 由於費率相同，如果您使用自動調整，則會看到與標準輸送量相同的數量。
 
 ### <a name="does-autoscale-work-with-reserved-capacity"></a>自動調整是否會使用保留容量？
-是。 當您為具有多個寫入區域的帳戶購買保留容量時，自動調整資源的保留折扣會套用至您的計量使用量，比率為 1.5 * [特定區域的比率](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)。 
+是。 當您針對具有單一寫入區域的帳戶購買保留容量時，自動調整資源的保留折扣會套用至您的計量使用量，比率為 1.5 * [特定區域的比率](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)。 
 
 針對自動調整和標準 (手動) 布建的輸送量，多重寫入區域保留容量的運作方式相同。 請參閱 [Azure Cosmos DB 保留容量](cosmos-db-reserved-capacity.md)
 
@@ -109,9 +109,9 @@ Azure Cosmos DB 在共用輸送量資料庫中可強制執行最多 25 個容器
 #### <a name="lowering-the-max-rus"></a>降低最大 RU/秒
 當您降低最大 RU/秒時，您可以將其設為的最小值為：`MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100)`，四捨五入到最接近的 1000 RU/秒。 
 
-範例 #1：假設您有一個自動調整容器，其最大 RU/秒為 20,000 RU/秒 (在 2000 - 20,000 RU/秒之間調整)，儲存體為 50 GB。 您可以設定最大 RU/秒的最低、最小值為：MAX(4000, 20,000 / 10, **50 * 100** ) = 5000 RU/秒 (在 500 - 5000 RU/秒之間調整)。
+範例 #1：假設您有一個自動調整容器，其最大 RU/秒為 20,000 RU/秒 (在 2000 - 20,000 RU/秒之間調整)，儲存體為 50 GB。 您可以設定最大 RU/秒的最低、最小值為：MAX(4000, 20,000 / 10, **50 * 100**) = 5000 RU/秒 (在 500 - 5000 RU/秒之間調整)。
 
-範例 #2：假設您有一個自動調整容器，其最大 RU/秒為 100,000 RU/秒，儲存體為 100 GB。 現在，您將最大 RU/秒擴大到N 150,000 RU/秒 (在 15,000 - 150,000 RU/秒之間調整)。 您現在可以設定最大 RU/秒的最低、最小值為：MAX(4000, **150,000 / 10** , 100 * 100) = 15,000 RU/秒 (在 1500 - 15,000 RU/秒之間調整)。 
+範例 #2：假設您有一個自動調整容器，其最大 RU/秒為 100,000 RU/秒，儲存體為 100 GB。 現在，您將最大 RU/秒擴大到N 150,000 RU/秒 (在 15,000 - 150,000 RU/秒之間調整)。 您現在可以設定最大 RU/秒的最低、最小值為：MAX(4000, **150,000 / 10**, 100 * 100) = 15,000 RU/秒 (在 1500 - 15,000 RU/秒之間調整)。 
 
 對於共用的輸送量資料庫，當您降低最大 RU/秒時，您可以設定的最小值為：`MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100,  4000 + (MAX(Container count - 25, 0) * 1000))`，四捨五入到最接近的 1000 RU/秒。  
 

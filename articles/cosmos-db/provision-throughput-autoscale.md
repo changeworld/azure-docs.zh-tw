@@ -5,19 +5,19 @@ author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/04/2020
+ms.date: 12/11/2020
 ms.custom: seo-nov-2020
-ms.openlocfilehash: aaedca5acf7861db05f0ec724e05449316379829
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: ba0dd347c4ee2cb41b34c2fc34f1848a7295dc3a
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337520"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368659"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>使用自動調整輸送量來建立 Azure Cosmos 容器和資料庫
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-在 Azure Cosmos DB 中，您可以在資料庫和容器上設定標準 (手動) 或自動調整布建輸送量。 Azure Cosmos DB 中的自動調整布建輸送量，可讓您 **自動且立即調整資料庫或容器的輸送量 (RU/秒)** 。 輸送量會根據使用量進行調整，而不會影響工作負載的可用性、延遲、輸送量或效能。
+在 Azure Cosmos DB 中，您可以在資料庫和容器上設定標準 (手動) 或自動調整布建輸送量。 Azure Cosmos DB 中的自動調整布建輸送量，可讓您 **自動且立即調整資料庫或容器的輸送量 (RU/秒)**。 輸送量會根據使用量進行調整，而不會影響工作負載的可用性、延遲、輸送量或效能。
 
 自動調整佈建輸送量非常適合有變動或無法預測流量模式的任務關鍵性工作負載，而且需要高效能和規模的 SLA。 本文說明自動調整佈建輸送量的優點和使用案例。
 
@@ -59,7 +59,7 @@ ms.locfileid: "94337520"
 
 ## <a name="enable-autoscale-on-existing-resources"></a>啟用現有資源的自動調整
 
-使用 [Azure 入口網站](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container)在現有的資料庫或容器上啟用自動調整。 您可以隨時在自動調整和標準 (手動) 佈建輸送量之間切換。 如需詳細資訊，請參閱這份[文件](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work)。 目前，針對所有 Api，您只能使用 Azure 入口網站來啟用現有資源的自動調整。
+使用 [Azure 入口網站](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container)、 [Azure Resource Manager 範本](how-to-provision-autoscale-throughput.md#azure-resource-manager)、 [CLI](how-to-provision-autoscale-throughput.md#azure-cli) 或 [PowerShell](how-to-provision-autoscale-throughput.md#azure-powershell) 來啟用現有資料庫或容器的自動調整。 您可以隨時在自動調整和標準 (手動) 佈建輸送量之間切換。 如需詳細資訊，請參閱這份[文件](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work)。
 
 ## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a> 自動調整的輸送量和儲存體限制
 

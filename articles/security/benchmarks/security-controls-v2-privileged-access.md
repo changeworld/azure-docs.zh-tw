@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d6676187f87cecb7f876150d1582cde9051dd251
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f6c990b3ce5edaab4d2ce6600c0291272058e092
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367477"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369288"
 ---
 # <a name="security-control-v2-privileged-access"></a>安全性控制 V2：特殊許可權存取
 
 特殊許可權存取涵蓋的控制項可保護您的 Azure 租使用者和資源的特殊許可權存取。 這包括一系列控制項，可保護您的系統管理模型、系統管理帳戶和特殊許可權的存取工作站免于刻意和不慎的風險。
 
-## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1：保護和限制高許可權的使用者
+## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1：保護及限制高權限使用者
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | PA-1 | 4.3、4。8 | AC-2 |
 
@@ -32,9 +32,9 @@ ms.locfileid: "92367477"
 
 注意：如果您使用自訂角色並指派某些特殊許可權許可權，您可能會有其他重要角色需要進行控管。 此外，您也可能想要將類似的控制項套用至重要商務資產的系統管理員帳戶。  
 
-您可以使用 Azure AD Privileged Identity Management (PIM) ，啟用對 Azure 資源和 Azure AD 的即時 (JIT) 特殊許可權存取。 JIT 只會在使用者需要時授與暫時許可權，以執行特殊許可權的工作。 當您的 Azure AD 組織中有可疑或不安全的活動時，PIM 也可以產生安全性警示。
+您可以使用 Azure AD Privileged Identity Management (PIM)，啟用對 Azure 資源和 Azure AD 的 Just-In-Time (JIT) 特殊權限存取。 JIT 只有在使用者需要時，才會授與暫時性權限以執行特殊權限的工作。 當您的 Azure AD 組織中有可疑或不安全的活動時，PIM 也會產生安全性警示。
 
-- [Azure AD 中的系統管理員角色許可權](../../active-directory/roles/permissions-reference.md)
+- [Azure AD 中的系統管理員角色權限](../../active-directory/roles/permissions-reference.md)
 
 - [使用 Azure Privileged Identity Management 安全性警示](../../active-directory/privileged-identity-management/pim-how-to-configure-security-alerts.md)
 
@@ -52,9 +52,9 @@ ms.locfileid: "92367477"
 
 - [安全性作業](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
-## <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2：限制對商務關鍵性系統的系統管理存取
+## <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2：限制對業務關鍵系統的系統管理存取
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | PA-2 | 13.2、2.10 | AC-2，SC-3，SC-7 |
 
@@ -80,9 +80,9 @@ ms.locfileid: "92367477"
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-## <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3：定期審核和協調使用者存取
+## <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3：定期檢閱及協調使用者存取
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | PA-3 | 4.1、16.9、16.10 | AC-2 |
 
@@ -93,7 +93,7 @@ ms.locfileid: "92367477"
 
 - [在 Privileged Identity Management (PIM) 中建立 Azure 資源角色的存取權審核 ](../../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md)
 
-- [如何使用 Azure AD 身分識別和存取權評論](../../active-directory/governance/access-reviews-overview.md)
+- [如何使用 Azure AD 身分識別和存取權檢閱](../../active-directory/governance/access-reviews-overview.md)
 
 **責任**：客戶
 
@@ -107,12 +107,12 @@ ms.locfileid: "92367477"
 
 ## <a name="pa-4-set-up-emergency-access-in-azure-ad"></a>PA-4：在 Azure AD 中設定緊急存取
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | PA-4 | 16 | AC-2，CP-2 |
 
-若要避免不小心遭到 Azure AD 的組織封鎖，請在無法使用一般系統管理帳戶時，設定緊急存取帳戶以進行存取。 緊急存取帳戶通常具有高度許可權，不應指派給特定個人。 緊急存取帳戶僅限用於無法使用一般系統管理帳戶的緊急或「急用」狀況。
-您應該確保緊急存取帳戶的認證 (（例如密碼、憑證或智慧卡) ）保持安全，而且只有獲授權可在緊急情況下使用這些認證的人員才知道。
+若要避免不小心遭到 Azure AD 的組織封鎖，請在無法使用一般系統管理帳戶時，設定緊急存取帳戶以進行存取。 緊急存取帳戶通常具有高權限，不應將其指派給特定個人。 緊急存取帳戶僅限用於無法使用一般系統管理帳戶的緊急或「急用」狀況。
+您應該確保緊急存取帳戶的認證 (例如密碼、憑證或智慧卡) 受到保護，而且只有在緊急情況下有權使用這些認證的個人才會知道。
 
 - [在 Azure AD 中管理緊急存取帳戶](../../active-directory/roles/security-emergency-access.md)
 
@@ -130,7 +130,7 @@ ms.locfileid: "92367477"
 
 ## <a name="pa-5-automate-entitlement-management"></a>PA-5：自動化權利管理
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | PA-5 | 16 | AC-2、AC-5、PM-10 |
 
@@ -149,17 +149,17 @@ ms.locfileid: "92367477"
 
 - [安全性合規性管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-## <a name="pa-6-use-privileged-access-workstations"></a>PA-6：使用特殊許可權的存取工作站
+## <a name="pa-6-use-privileged-access-workstations"></a>PA-6：使用特殊權限存取工作站
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | PA-6 | 4.6、11.6、12.12 | AC-2，SC-3，SC-7 |
 
-安全、隔離的工作站對於機密角色（例如系統管理員、開發人員和重要服務操作員）的安全性至關重要。 使用高度安全的使用者工作站及/或 Azure 防禦來進行系統管理工作。 使用 Azure Active Directory、Microsoft Defender 進階威脅防護 (ATP) 和/或 Microsoft Intune 部署安全且受管理的使用者工作站以進行系統管理工作。 受保護的工作站可以集中管理以強制執行安全的設定，包括強式驗證、軟體和硬體基準，以及受限的邏輯和網路存取。 
+安全、隔離的工作站對於機密角色（例如系統管理員、開發人員和重要服務操作員）的安全性至關重要。 使用高度安全的使用者工作站及/或 Azure 防禦來進行系統管理工作。 請使用 Azure Active Directory、Microsoft Defender 進階威脅防護 (ATP) 和/或 Microsoft Intune，以部署安全且受控的使用者工作站來進行系統管理工作。 受保護的工作站可以集中管理以強制執行安全的設定，包括強式驗證、軟體和硬體基準，以及受限的邏輯和網路存取。 
 
 - [瞭解特殊許可權的存取工作站](../../active-directory/devices/concept-azure-managed-workstation.md)
 
-- [部署特殊許可權存取工作站](../../active-directory/devices/howto-azure-managed-workstation.md)
+- [部署特殊權限存取工作站](../../active-directory/devices/howto-azure-managed-workstation.md) (機器翻譯)
 
 **責任**：客戶
 
@@ -171,20 +171,20 @@ ms.locfileid: "92367477"
 
 - [身分識別與金鑰管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
-## <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7：遵循足夠的系統管理 (最低許可權準則) 
+## <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7：遵循恰到好處的系統管理 (最低權限原則)
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | PA-7 | 14.6 | AC-2、AC-3、SC-3 |
 
 Azure 角色型存取控制 (Azure RBAC) 可讓您透過角色指派來管理 Azure 資源存取權。 您可以將這些角色指派給使用者、群組服務主體和受控識別。 某些資源有預先定義的內建角色，這些角色可透過 Azure CLI、Azure PowerShell 和 Azure 入口網站等工具進行清查或查詢。 透過 Azure RBAC 指派給資源的許可權應該一律限制為角色所需的許可權。 有限許可權可 (JIT) Azure AD Privileged Identity Management (PIM) 的方法，而這些許可權應定期檢查。
-使用內建角色來配置許可權，而且只在必要時才建立自訂角色。 
+請使用內建角色來配置權限，且僅在必要時才建立自訂角色。 
 
 - [什麼是 Azure 角色型存取控制 (Azure RBAC) ](../../role-based-access-control/overview.md)
 
 - [如何設定 Azure RBAC](../../role-based-access-control/role-assignments-portal.md)
 
-- [如何使用 Azure AD 身分識別和存取權評論](../../active-directory/governance/access-reviews-overview.md)
+- [如何使用 Azure AD 身分識別和存取權檢閱](../../active-directory/governance/access-reviews-overview.md)
 
 **責任**：客戶
 
@@ -200,7 +200,7 @@ Azure 角色型存取控制 (Azure RBAC) 可讓您透過角色指派來管理 Az
 
 ## <a name="pa-8-choose-approval-process-for-microsoft-support"></a>PA-8：選擇 Microsoft 支援的核准流程 
 
-| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP 800-53 r4 識別碼 (s)  |
 |--|--|--|--|
 | PA-8 | 16 | AC-2、AC-3、AC-4 |
 
