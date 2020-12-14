@@ -4,13 +4,13 @@ description: 本文涵蓋 IoT Edge 上即時影片分析的疑難排解步驟。
 author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
-ms.date: 05/24/2020
-ms.openlocfilehash: c297a189f3b13ca8e72daf4eef009bc28fac32bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/04/2020
+ms.openlocfilehash: 31cf89cb66dfbc404d65f8fc09b96c03e1be2f8f
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823193"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401289"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>針對 IoT Edge 上的即時影片分析進行疑難排解
 
@@ -31,19 +31,23 @@ ms.locfileid: "91823193"
 
 ### <a name="pre-deployment-issues"></a>部署前問題
 
-如果 edge 基礎結構沒問題，您可以尋找部署資訊清單檔的問題。 若要將即時影片分析部署在 IoT Edge 裝置上的 IoT Edge 模組，以及任何其他 IoT 模組，您可以使用包含 IoT Edge hub、IoT Edge 代理程式和其他模組及其屬性的部署資訊清單。 如果 JSON 程式碼的格式不正確，您可能會收到下列錯誤： 
+如果 edge 基礎結構沒問題，您可以尋找部署資訊清單檔的問題。 若要將即時影片分析部署在 IoT Edge 裝置上的 IoT Edge 模組，以及任何其他 IoT 模組，您可以使用包含 IoT Edge hub、IoT Edge 代理程式和其他模組及其屬性的部署資訊清單。 您可以使用下列命令來部署資訊清單檔案：
 
 ```
 az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device --content <path-to-deployment_manifest.json>
 ```
-
-無法剖析自 <deployment manifest.json> 變數 ' content ' 的 JSON （引數 ' content '），例外狀況：「額外的資料：行101欄 1 (char 5325) 」
+如果 JSON 程式碼的格式不正確，您可能會收到下列錯誤：   
+&nbsp;&nbsp;&nbsp;**無法剖析自 <deployment manifest.json> 變數 ' content ' 的 JSON （引數 ' content '），例外狀況：「額外的資料：行101欄 1 (char 5325)** 」
 
 如果您遇到這個錯誤，建議您檢查 JSON 是否有遺失的括弧或其他檔案結構的問題。 若要驗證檔案結構，您可以使用 [具有 Json 檢視器外掛程式](https://riptutorial.com/notepadplusplus/example/18201/json-viewer) 的用戶端（例如記事本 + +）或線上工具，例如 [json 格式器 & 驗證程式](https://jsonformatter.curiousconcept.com/)。
 
 ### <a name="during-deployment-diagnose-with-media-graph-direct-methods"></a>部署期間：使用 media graph 直接方法進行診斷 
 
-在 IoT Edge 裝置上正確部署 IoT Edge 模組的即時影片分析之後，您可以藉由叫用 [直接方法](direct-methods.md)來建立並執行 media graph。 您可以使用 Azure 入口網站透過直接方法來執行 media graph 的診斷：
+在 IoT Edge 裝置上正確部署 IoT Edge 模組的即時影片分析之後，您可以藉由叫用 [直接方法](direct-methods.md)來建立並執行 media graph。  
+>[!NOTE]
+>  直接方法呼叫應該 **`lvaEdge`** 只對模組進行。
+
+您可以使用 Azure 入口網站，使用直接方法來執行 media graph 的診斷：
 
 1. 在 Azure 入口網站中，移至已連線到您 IoT Edge 裝置的 IoT 中樞。
 
@@ -53,6 +57,7 @@ az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device 
          
     ![顯示 Edge 裝置清單 Azure 入口網站的螢幕擷取畫面](./media/troubleshoot-how-to/lva-sample-device.png)
 
+
 1. 查看回應碼是否為 *200-確定*。 [IoT Edge 運行](../../iot-edge/iot-edge-runtime.md)時間的其他回應碼包括：
     * 400 - 部署設定不正確或無效。
     * 417-裝置沒有部署設定集。
@@ -60,7 +65,9 @@ az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device 
     * 406 - IoT Edge 裝置已離線或無法傳送狀態報表。
     * 500 - IoT Edge 執行階段發生錯誤。
 
-1. 如果您收到狀態501程式碼，請檢查以確定直接方法名稱正確無誤。 如果方法名稱和要求承載都是正確的，您應該會得到結果，以及成功碼 = 200。 如果要求承載不正確，您將會收到狀態 = 400 和回應承載，指出可協助您透過直接方法呼叫診斷問題的錯誤碼和訊息。
+### <a name="post-deployment-direct-method-error-code"></a>部署後：直接方法錯誤碼
+1. 如果您收到狀態 `501 code` ，請檢查以確定直接方法名稱正確無誤。 如果方法名稱和要求承載都是正確的，您應該會得到結果，以及成功碼 = 200。 
+1. 如果要求承載不正確，您將會取得狀態 `400 code` 和回應承載，以指出可協助您在直接方法呼叫中診斷問題的錯誤碼和訊息。
     * 檢查報告和所需屬性可協助您瞭解模組屬性是否已與部署同步處理。 如果沒有，您可以重新開機 IoT Edge 裝置。 
     * 使用 [直接方法](direct-methods.md) 指南來呼叫一些方法，尤其是簡單的方法，例如 GraphTopologyList。 本指南也會指定預期的要求和回應承載和錯誤碼。 順利完成簡單的直接方法之後，您就可以確保即時影片分析 IoT Edge 課程模組的功能正常。
         
@@ -86,158 +93,19 @@ az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device 
 * [即時影片分析或任何其他自訂 IoT Edge 模組無法將訊息傳送至 Edge 中樞，並出現404錯誤](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-fails-to-send-a-message-to-edgehub-with-404-error)。
 * 已[成功部署 IoT Edge 模組，然後從裝置中消失](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-deploys-successfully-then-disappears-from-device)。
 
-### <a name="edge-setup-script-issues"></a>Edge 設定腳本問題
-
-在我們的檔中，我們提供了 [設定腳本](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) 來部署 edge 和雲端資源，並讓您開始使用即時影片分析 edge。 本節說明您可能會遇到的一些腳本錯誤，以及用來進行偵錯工具的解決方案。
-
-問題：腳本會執行，部分建立一些資源，但會失敗並出現下列訊息：
-
-```
-registering device...
-
-Unable to load extension 'eventgrid: unrecognized kwargs: ['min_profile']'. Use --debug for more information.
-The command failed with an unexpected error. Here is the traceback:
-
-No module named 'azure.mgmt.iothub.iot_hub_client'
-Traceback (most recent call last):
-File "/opt/az/lib/python3.6/site-packages/knack/cli.py", line 215, in invoke
-  cmd_result = self.invocation.execute(args)
-File "/opt/az/lib/python3.6/site-packages/azure/cli/core/commands/__init__.py", line 631, in execute
-  raise ex
-File "/opt/az/lib/python3.6/site-packages/azure/cli/core/commands/__init__.py", line 695, in _run_jobs_serially
-  results.append(self._run_job(expanded_arg, cmd_copy))
-File "/opt/az/lib/python3.6/site-packages/azure/cli/core/commands/__init__.py", line 688, in _run_job
-  six.reraise(*sys.exc_info())
-File "/opt/az/lib/python3.6/site-packages/six.py", line 693, in reraise
-  raise value
-File "/opt/az/lib/python3.6/site-packages/azure/cli/core/commands/__init__.py", line 665, in _run_job
-  result = cmd_copy(params)
-File "/opt/az/lib/python3.6/site-packages/azure/cli/core/commands/__init__.py", line 324, in __call__
-  return self.handler(*args, **kwargs)
-File "/opt/az/lib/python3.6/site-packages/azure/cli/core/__init__.py", line 574, in default_command_handler
-  return op(**command_args)
-File "/home/.azure/cliextensions/azure-cli-iot-ext/azext_iot/operations/hub.py", line 75, in iot_device_list
-  result = iot_query(cmd, query, hub_name, top, resource_group_name, login=login)
-File "/home/.azure/cliextensions/azure-cli-iot-ext/azext_iot/operations/hub.py", line 45, in iot_query
-  target = get_iot_hub_connection_string(cmd, hub_name, resource_group_name, login=login)
-File "/home/.azure/cliextensions/azure-cli-iot-ext/azext_iot/common/_azure.py", line 112, in get_iot_hub_connection_string
-  client = iot_hub_service_factory(cmd.cli_ctx)
-File "/home/.azure/cliextensions/azure-cli-iot-ext/azext_iot/_factory.py", line 28, in iot_hub_service_factory
-  from azure.mgmt.iothub.iot_hub_client import IotHubClient
-ModuleNotFoundError: No module named 'azure.mgmt.iothub.iot_hub_client'
-```
-    
-解決此問題：
-
-1. 執行以下命令：
-
-    ```
-    az --version
-    ```
-1. 確定您已安裝下列延伸模組。 本文發行時，擴充功能和其版本如下：
-
-    | 分機 | 版本 |
-    |---|---|
-    |azure-cli   |      版|
-    |命令模組-nspkg         |   2.0.3|
-    |core  |    版|
-    |nspkg    | 3.0.4|
-    |遙測資料| 1.0.4|
-    |storage-preview          |     0.2.10|
-    |azure-cli-iot-ext          |    0.8.9|
-    |eventgrid| 0.4.9|
-    |azure-iot                       | 0.9.2|
-1. 如果您安裝的延伸模組的版本早于此處所列的版本號碼，請使用下列命令來更新擴充功能：
-
-    ```
-    az extension update --name <Extension name>
-    ```
-
-    例如，您可能會執行 `az extension update --name azure-iot` 。
-
-### <a name="sample-app-issues"></a>範例應用程式問題
-
-在我們的版本中，我們提供了一些 .NET 範例程式碼，可協助開發人員入門。 本節說明當您執行範例程式碼時可能會遇到的一些錯誤，以及用來進行偵錯工具的解決方案。
-
-問題： Program.cs 失敗，直接方法調用發生下列錯誤：
-
-```
-Unhandled exception. Microsoft.Azure.Devices.Common.Exceptions.UnauthorizedException: {"Message":"{\"errorCode\":401002,\"trackingId\":\"b1da85801b2e4faf951a2291a2c467c3-G:32-TimeStamp:04/06/2020 17:15:11\",\"message\":\"Unauthorized\",\"timestampUtc\":\"2020-04-06T17:15:11.6990676Z\"}","ExceptionMessage":""}
-    
-        at Microsoft.Azure.Devices.HttpClientHelper.ExecuteAsync(HttpClient httpClient, HttpMethod httpMethod, Uri requestUri, Func`3 modifyRequestMessageAsync, Func`2 isMappedToException, Func`3 processResponseMessageAsync, IDictionary`2 errorMappingOverrides, CancellationToken cancellationToken)
-    
-        at Microsoft.Azure.Devices.HttpClientHelper.ExecuteAsync(HttpMethod httpMethod, Uri requestUri, Func`3 modifyRequestMessageAsync, Func`3 processResponseMessageAsync, IDictionary`2 errorMappingOverrides, CancellationToken cancellationToken)
-        
-        at Microsoft.Azure.Devices.HttpClientHelper.PostAsync[T,T2](Uri requestUri, T entity, TimeSpan operationTimeout, IDictionary`2 errorMappingOverrides, IDictionary`2 customHeaders, CancellationToken cancellationToken)…
-```
-
-1. 確定您已在 Visual Studio Code 環境中安裝 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) ，且已設定與 IoT 中樞的連線。 若要這樣做，請選取 Ctrl + Shift + P，然後選擇 [ **選取 IoT 中樞方法**]。
-
-1. 查看您是否可以透過 Visual Studio Code 在 IoT Edge 模組上叫用直接方法。 例如，使用下列承載（" &nbsp; @apiVersion "： "1.0"}）來呼叫 GraphTopologyList。 您應該會收到下列回應： 
-
-    ```
-    {
-      "status": 200,
-      "payload": {
-        "values": [
-          {…
-    …}
-          ]
-        }
-    }
-    ```
-
-    ![Visual Studio Code 中回應的螢幕擷取畫面。](./media/troubleshoot-how-to/visual-studio-code1.png)
-1. 如果上述解決方案失敗，請嘗試下列方法：
-
-    a. 移至 IoT Edge 裝置上的命令提示字元，然後執行下列命令：
-    
-      ```
-      sudo systemctl restart iotedge
-      ```
-
-      此命令會重新開機 IoT Edge 裝置和所有模組。 等候幾分鐘，然後在您再次嘗試使用直接方法之前，請執行下列命令來確認模組正在執行：
-
-      ```
-      sudo iotedge list
-      ```
-
-    b. 如果上述方法也失敗，請嘗試重新開機您的虛擬機器或電腦。
-
-    c. 如果所有方法都失敗，請執行下列命令以取得具有所有 [相關記錄](../../iot-edge/troubleshoot.md#gather-debug-information-with-support-bundle-command)檔的 zip 壓縮檔案，並將它附加至 [支援票證](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
-
-    ```
-    sudo iotedge support-bundle --since 2h
-    ```
-
-1. 如果您收到錯誤回應 *400* 程式碼，請確定您的方法叫用承載的格式正確，如同 [直接方法](direct-methods.md) 指南一樣。
-1. 如果您收到狀態 *200* 程式碼，則表示您的中樞運作良好，且您的模組部署正確且有回應。 
-
-1. 查看應用程式設定是否正確。 您的應用程式設定包含 *appsettings.json* 檔案中的下欄欄位。 再次檢查以確定 deviceId 和 moduleId 正確無誤。 簡單的檢查方式是前往 Visual Studio Code 的 Azure IoT 中樞延伸模組區段。 [在檔案中 *appsettings.js* ] 和 [IoT 中樞] 區段的值應該相符。
-    
-    ```
-    {
-        "IoThubConnectionString" : 
-        "deviceId" : 
-        "moduleId" : 
-    }
-    ```
-
-1. 在檔案的 *appsettings.js* 中，確定您已提供 iot 中樞連接字串，而 *不* 是 iot 中樞裝置連接字串，因為 [連接字串格式不同](https://devblogs.microsoft.com/iotdev/understand-different-connection-strings-in-azure-iot-hub/)。
-
 ### <a name="live-video-analytics-working-with-external-modules"></a>使用外部模組的即時影片分析
 
-透過 HTTP 擴充處理器的即時影片分析可以擴充媒體圖形，以透過 HTTP 使用 REST 來傳送和接收其他 IoT Edge 模組中的資料。 作為 [特定範例](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)，media graph 可將影片框架作為影像傳送至外部推斷模組（例如 Yolo v3），並接收以 JSON 為基礎的分析結果。 在這種拓撲中，事件的目的地大多是 IoT 中樞。 在您沒有在中樞上看到推斷事件的情況下，請檢查下列各項：
+透過 media graph 擴充處理器的即時影片分析可以擴充媒體圖形，以使用 HTTP 或 gRPC 通訊協定從其他 IoT Edge 模組傳送和接收資料。 在 [特定範例](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)中，此媒體圖形可將影片框架作為影像傳送至外部推斷模組（例如 Yolo v3），並使用 HTTP 通訊協定接收以 JSON 為基礎的分析結果。 在這種拓撲中，事件的目的地大多是 IoT 中樞。 在您沒有在中樞上看到推斷事件的情況下，請檢查下列各項：
 
 * 檢查以查看是否正在發佈 media graph 的中樞，以及您正在檢查的中樞是否相同。 當您建立多個部署時，最後可能會有多個中樞，並錯誤地檢查事件的中樞是否正確。
-* 在 Visual Studio Code 中，檢查外部模組是否已部署且正在執行。 在這裡的範例影像中，rtspsim 和 cv 是在 lvaEdge 模組外部執行的 IoT Edge 模組。
+* 在 Azure 入口網站中，檢查外部模組是否已部署且正在執行。 在這裡的範例影像中，rtspsim、yolov3、tinyyolov3 和 logAnalyticsAgent 是在 lvaEdge 模組外部執行的 IoT Edge 模組。
 
-    ![顯示 Azure IoT 中樞中的模組執行狀態的螢幕擷取畫面。](./media/troubleshoot-how-to/iot-hub.png)
+    [![顯示 Azure IoT 中樞中的模組執行狀態的螢幕擷取畫面。 ](./media/troubleshoot-how-to/iot-hub-azure.png)](./media/troubleshoot-how-to/iot-hub-azure.png#lightbox)
 
-* 查看是否要將事件傳送到正確的 URL 端點。 外部 AI 容器會公開 URL 和埠，以從中接收並傳回 POST 要求中的資料。 此 URL 會指定為 `endpoint: url` HTTP 擴充功能處理器的屬性。 如 [拓撲 URL](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/topology.json)中所示，端點會設定為推斷 URL 參數。 請確定參數的預設值或傳入的值是正確的。 您可以使用用戶端 URL (捲曲) 來進行測試，以瞭解其是否正常運作。  
+* 查看是否要將事件傳送到正確的 URL 端點。 外部 AI 容器會公開 URL 和埠，以從中接收並傳回 POST 要求中的資料。 此 URL 會指定為 `endpoint: url` HTTP 擴充功能處理器的屬性。 如 [拓撲 URL](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/2.0/topology.json)中所示，端點會設定為推斷 URL 參數。 請確定參數的預設值或傳入的值是正確的。 您可以使用用戶端 URL (捲曲) 來進行測試，以瞭解其是否正常運作。  
 
-    例如，以下是在 IP 位址為172.17.0.3 的本機電腦上執行的 Yolo v3 容器。 使用 Docker 檢查來尋找 IP 位址。
-
+    例如，以下是在 IP 位址為172.17.0.3 的本機電腦上執行的 Yolo v3 容器。  
+    
     ```
     curl -X POST http://172.17.0.3/score -H "Content-Type: image/jpeg" --data-binary @<fullpath to jpg>
     ```
@@ -247,12 +115,12 @@ Unhandled exception. Microsoft.Azure.Devices.Common.Exceptions.UnauthorizedExcep
     ```
     {"inferences": [{"type": "entity", "entity": {"tag": {"value": "car", "confidence": 0.8668569922447205}, "box": {"l": 0.3853073438008626, "t": 0.6063712999658677, "w": 0.04174524943033854, "h": 0.02989496027381675}}}]}
     ```
+    > [!TIP]
+    > 使用 **[Docker 檢查命令](https://docs.docker.com/engine/reference/commandline/inspect/)** 來尋找電腦的 IP 位址。
+    
+* 如果您執行的是一或多個使用 media graph 擴充功能處理器的圖形實例，您應該使用此 `samplingOptions` 欄位來管理影片摘要的每秒畫面格數 (fps) 速率。 
 
-* 如果您正在執行一或多個使用 HTTP 擴充處理器之圖形的實例，您應該在每個 HTTP 擴充處理器之前有畫面播放速率篩選，以管理每秒的畫面格 (fps) 影片摘要的速率。 
-
-   在某些情況下，邊緣機器的 CPU 或記憶體會高度使用，您可能會遺失某些推斷事件。 若要解決此問題，請在 [畫面播放速率] 篩選器上設定 maximumFps 屬性的較低值。 您可以將它設定為 0.5 ( "maximumFps"： 0.5 ) 在圖形的每個實例上，然後重新執行實例以檢查中樞上的推斷事件。
-
-   或者，您可以使用更高的 CPU 和記憶體，來取得更強大的邊緣機器。
+   * 在某些情況下，邊緣機器的 CPU 或記憶體會高度使用，您可能會遺失某些推斷事件。 若要解決這個問題，請 `maximumSamplesPerSecond` 在欄位上設定屬性的低值 `samplingOptions` 。 您可以將它設定為 0.5 ( "maximumSamplesPerSecond"： "0.5" ) 在圖形的每個實例上，然後重新執行實例以檢查中樞上的推斷事件。
     
 ### <a name="multiple-direct-methods-in-parallel--timeout-failure"></a>平行的多重直接方法–超時失敗 
 
@@ -269,7 +137,36 @@ IoT Edge 上的即時影片分析提供直接以方法為基礎的程式設計�
 > [!WARNING]
 > 記錄檔可能包含個人識別資訊 (PII) 例如您的 IP 位址。 所有記錄檔的本機複本只要完成檢查並關閉支援票證，就會一併刪除。  
 
-若要收集應新增至票證的相關記錄檔，請遵循下一節中的指示。 您可以在支援要求的 **詳細資料** 窗格上傳記錄檔。
+若要收集應新增至票證的相關記錄，請依照下列指示進行，並在支援要求的 **詳細資料** 窗格中上傳記錄檔。  
+1. [設定即時影片分析模組以收集詳細資訊記錄](#configure-live-video-analytics-module-to-collect-verbose-logs)
+1. [開啟 Debug 記錄](#live-video-analytics-debug-logs)
+1. 重現問題
+1. 從入口網站中的 [ **IoT 中樞** ] 頁面連線至虛擬機器
+    1. 壓縮 *debugLogs* 資料夾中的所有檔案。
+
+       > [!NOTE]
+       > 這些記錄檔並非供自我診斷之用。 它們的目的是要讓 Azure 工程團隊分析您的問題。
+
+       * 在下列命令中，請務必使用您稍早在 **步驟 2** 中設定的 EDGE 裝置上的 DEBUG 記錄檔位置，取代 **$DEBUG _LOG_LOCATION_ON_EDGE_DEVICE** 。  
+
+           ```
+           sudo apt install zip unzip  
+           zip -r debugLogs.zip $DEBUG_LOG_LOCATION_ON_EDGE_DEVICE 
+           ```
+
+    1. 將 *debugLogs.zip* 檔案附加至支援票證。
+1. 執行 [支援配套命令](#use-the-support-bundle-command)、收集記錄並附加至支援票證。
+
+### <a name="configure-live-video-analytics-module-to-collect-verbose-logs"></a>設定即時影片分析模組以收集詳細資訊記錄
+設定您的即時影片分析模組，藉由設定，以收集詳細資訊記錄，如下所示 `logLevel` `logCategories` ：
+```
+"logLevel": "Verbose",
+"logCategories": "Application,Events,MediaPipeline",
+```
+
+您可以在下列任一項中執行此動作：
+* 在 **Azure 入口網站** 中，更新即時影片分析模組 [ ![ 模組身分識別 ](media/troubleshoot-how-to/module-twin.png)](media/troubleshoot-how-to/module-twin.png#lightbox)對應項屬性的模組身分識別對應項屬性。    
+* 或者，在您的 **部署資訊清單** 檔案中，您可以在即時影片分析模組的 [屬性] 節點中新增這些專案。
 
 ### <a name="use-the-support-bundle-command"></a>使用支援套件組合命令
 
@@ -277,7 +174,7 @@ IoT Edge 上的即時影片分析提供直接以方法為基礎的程式設計�
 
 - 模組記錄
 - IoT Edge 安全性管理員和容器引擎記錄
-- Iotedge 檢查 JSON 輸出
+- IoT Edge 檢查 JSON 輸出
 - 有用的調試資訊
 
 1. `support-bundle`使用 *--[自*] 旗標來執行命令，以指定您希望記錄涵蓋的時間量。 例如，在下半年會取得過去兩個小時的記錄。 您可以變更此旗標的值，以包含不同期間的記錄。
@@ -303,7 +200,7 @@ IoT Edge 上的即時影片分析提供直接以方法為基礎的程式設計�
 
 1. 在 [ **IoT Edge 模組** ] 區段中，尋找並選取 [ **lvaEdge**]。
 1. 選取 [ **容器建立選項**]。
-1. **在 [系**結] 區段中，新增下列命令：
+1. **在 [系** 結] 區段中，新增下列命令：
 
     `/var/local/mediaservices/logs:/var/lib/azuremediaservices/logs`
 
@@ -312,41 +209,106 @@ IoT Edge 上的即時影片分析提供直接以方法為基礎的程式設計�
 
 1. 選取 [更新]。
 1. 選取 [檢閱 + 建立]  。 成功的驗證訊息會以綠色橫幅張貼。
-1. 選取 [建立]****。
+1. 選取 [建立]。
 1. 更新 **模組身分識別** 對應項以指向 DebugLogsDirectory 參數，指向收集記錄檔的目錄：
 
     a. 在 [ **模組** ] 資料表下，選取 [ **lvaEdge**]。  
-    b. 在窗格頂端，選取 [模組身分 **識別**對應項]。 可編輯的窗格隨即開啟。  
+    b. 在窗格頂端，選取 [模組身分 **識別** 對應項]。 可編輯的窗格隨即開啟。  
     c. 在 [ **所需的金鑰**] 下，新增下列索引鍵/值組：  
     `"DebugLogsDirectory": "/var/lib/azuremediaservices/logs"`
 
     > [!NOTE] 
     > 此命令會系結 Edge 裝置與容器之間的記錄資料夾。 如果您想要在裝置上的其他位置收集記錄：
-    > 1. **在系結區段中**建立 Debug 記錄檔位置的系結，以您想要的位置取代 **$DEBUG _LOG_LOCATION_ON_EDGE_DEVICE**和 **$DEBUG _LOG_LOCATION** ：`/var/$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE:/var/$DEBUG_LOG_LOCATION`
+    > 1. **在系結區段中** 建立 Debug 記錄檔位置的系結，以您想要的位置取代 **$DEBUG _LOG_LOCATION_ON_EDGE_DEVICE** 和 **$DEBUG _LOG_LOCATION** ：`/var/$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE:/var/$DEBUG_LOG_LOCATION`
     > 2. 使用下列命令，將 **$DEBUG _LOG_LOCATION** 取代為上一個步驟中使用的位置：  
     > `"DebugLogsDirectory": "/var/$DEBUG_LOG_LOCATION"`  
     
-    d. 選取 [儲存]****。
+    d. 選取 [儲存]。
 
-1. 重現問題。
-1. 從入口網站中的 [ **IoT 中樞** ] 頁面連線至虛擬機器。
-1. 壓縮 *debugLogs* 資料夾中的所有檔案。
-
-   > [!NOTE]
-   > 這些記錄檔並非供自我診斷之用。 它們的目的是要讓 Azure 工程團隊分析您的問題。
-
-   a. 在下列命令中，請務必使用您稍早設定之 Edge 裝置上的 DEBUG 記錄檔位置，取代 **$DEBUG _LOG_LOCATION_ON_EDGE_DEVICE** 。  
-
-   ```
-   sudo apt install zip unzip  
-   zip -r debugLogs.zip $DEBUG_LOG_LOCATION_ON_EDGE_DEVICE 
-   ```
-
-   b. 將 *debugLogs.zip* 檔案附加至支援票證。
 
 1. 您可以將 [ **模組身分識別** 對應項] 中的值設定為 *null*，以停止記錄收集。 返回至 [ **模組身分識別** 對應項] 頁面，並將下列參數更新為：
 
     `"DebugLogsDirectory": ""`
+
+### <a name="best-practices-around-logging"></a>關於記錄的最佳作法
+
+[監視和記錄](monitoring-logging.md) 應該有助於瞭解分類法，以及如何產生記錄，以協助您在 LVA 時進行偵錯工具的問題。 
+
+由於 gRPC 伺服器的執行方式與不同語言不同，因此在伺服器內新增記錄沒有標準方式。  
+
+例如，如果您使用 .NET core 建立 gRPC 伺服器，gRPC 服務會在 **gRPC** 類別下新增記錄。 若要啟用 gRPC 的詳細記錄，請將下列專案新增至記錄檔中的 LogLevel 子區段，以將 Grpc 前置詞設定為檔案 appsettings.js中的 Debug 層級： 
+
+```
+{ 
+  "Logging": { 
+    "LogLevel": { 
+      "Default": "Debug", 
+      "System": "Information", 
+      "Microsoft": "Information", 
+      "Grpc": "Debug" 
+       } 
+  } 
+} 
+``` 
+
+您也可以在 Startup.cs 檔案中使用 ConfigureLogging 設定此項： 
+
+```
+public static IHostBuilder CreateHostBuilder(string[] args) => 
+    Host.CreateDefaultBuilder(args) 
+        .ConfigureLogging(logging => 
+        { 
+
+           logging.AddFilter("Grpc", LogLevel.Debug); 
+        }) 
+        .ConfigureWebHostDefaults(webBuilder => 
+        { 
+            webBuilder.UseStartup<Startup>(); 
+        }); 
+
+``` 
+
+[.Net 中的 GRPC 記錄和診斷功能](https://docs.microsoft.com/aspnet/core/grpc/diagnostics?view=aspnetcore-3.1&preserve-view=true) 提供了一些指引，說明如何從 gRPC 伺服器收集一些診斷記錄。 
+
+### <a name="a-failed-grpc-connection"></a>失敗的 gRPC 連接 
+
+如果圖形正在使用中，並從相機進行串流處理，則會由即時影片分析維護連線。 
+
+### <a name="monitoring-and-balancing-the-load-of-cpu-and-gpu-resources-when-these-resources-become-bottlenecks"></a>當這些資源變成瓶頸時，監視及平衡 CPU 和 GPU 資源的負載
+
+Live Video Analytics 不會監視或提供任何硬體資源監視。 開發人員將必須使用硬體製造商監視解決方案。 不過，如果您使用 Kubernetes 容器，您可以使用 [Kubernetes 儀表板](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)來監視裝置。 
+
+.NET core 檔中的 gRPC 也會分享一些有關 [效能最佳做法](https://docs.microsoft.com/aspnet/core/grpc/performance?view=aspnetcore-3.1&preserve-view=true) 和 [負載平衡](https://docs.microsoft.com/aspnet/core/grpc/performance?view=aspnetcore-3.1#load-balancing&preserve-view=true)的重要資訊。  
+
+### <a name="troubleshooting-an-inference-server-when-it-does-not-receive-any-frames-and-you-are-receiving-an-unknown-protocol-error"></a>當推斷伺服器未收到任何框架，而您收到「未知」的通訊協定錯誤時進行疑難排解 
+
+有幾件事您可以做，以取得有關問題的詳細資訊。  
+
+* 在即時影片分析模組的所需屬性中包含「**ediaPipeline** 記錄」類別，並確保記錄層級設定為 `Information` 。  
+* 若要測試網路連線能力，您可以從 edge 裝置執行下列命令。 
+
+   ```
+   sudo docker exec lvaEdge /bin/bash -c “apt update; apt install -y telnet; telnet <inference-host> <inference-port>” 
+   ```
+
+   如果命令輸出混雜文字的簡短字串，則 telnet 已成功開啟與您的推斷伺服器的連接，並開啟二進位 gRPC 通道。 如果您看不到此錯誤，telnet 將會報告網路錯誤。 
+* 在您的推斷伺服器中，您可以在 gRPC 程式庫中啟用其他記錄。 這可提供有關 gRPC 通道本身的其他資訊。 這會因語言而異，以下是 [c #](https://docs.microsoft.com/aspnet/core/grpc/diagnostics?view=aspnetcore-3.1&preserve-view=true)的指示。 
+
+### <a name="picking-more-images-from-buffer-of-grpc-without-sending-back-result-for-first-buffer"></a>從 gRPC 的緩衝區挑選更多影像，而不會傳回第一個緩衝區的結果
+
+在 gRPC 資料傳輸合約中，您應確認即時影片分析傳送到 gRPC 推斷伺服器的所有訊息。 未確認收到的影像框會中斷資料合約，而且可能會導致不想要的情況。  
+
+若要搭配使用 gRPC 伺服器與即時影片分析，可以使用共用記憶體來獲得最佳效能。 這會要求您使用程式設計語言/環境所公開的 Linux 共用記憶體功能。 
+
+1. 開啟 Linux 共用記憶體控制碼。
+1. 在接收到框架時，存取共用記憶體內的位址位移。
+1. 確認畫面格處理完成，以便即時影片分析可回收其記憶體。
+
+   > [!NOTE]
+   > 如果您在確認畫面格的接收期間有很長一段時間時延遲，可能會導致共用記憶體變滿，並導致資料下降。
+1. 將每個框架儲存在您選擇的資料結構中 (清單、陣列等等，在推斷伺服器上) 。
+1. 然後，當您擁有所需的影像框架數目時，就可以執行處理邏輯。
+1. 準備好時，請將推斷結果回復為即時影片分析。
 
 ## <a name="next-steps"></a>後續步驟
 

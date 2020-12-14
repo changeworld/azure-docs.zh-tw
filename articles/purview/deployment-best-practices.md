@@ -1,18 +1,18 @@
 ---
 title: 部署最佳做法
 description: 本文提供部署 Azure 範疇的最佳做法。 Azure 範疇可讓任何使用者註冊、探索、瞭解及取用資料來源。
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: cae4904d0b3dacc608c7b41b638dc507b3cda6b5
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1b2841f69ebe91dac748a4b2e24dc0c33756b1da
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552046"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400687"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Azure 範疇部署最佳做法
 
@@ -24,7 +24,7 @@ ms.locfileid: "96552046"
 - 改進分析協同作業
 - 投資報酬率最大化。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 使用開發或生產訂用帳戶存取 Microsoft Azure
 * 能夠建立 Azure 資源，包括範疇

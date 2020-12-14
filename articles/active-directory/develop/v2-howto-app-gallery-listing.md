@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/02/2020
+ms.date: 12/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 396d6f69673f8758d8d1302f8d10b8a92e5f50b4
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 37d9c24d58e0dd9fb10db607ef1b96de0a44eb78
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530744"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399361"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>將您的應用程式發佈至 Azure AD 應用程式資源庫
 
@@ -69,7 +69,7 @@ ms.locfileid: "96530744"
 - 共同客戶可取得逐步設定教學課程。
 - 使用系統進行跨網域身分識別管理的客戶 ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) 可以針對相同的應用程式使用布建。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您需要一個永久的帳戶來進行測試，而且至少已註冊兩個使用者。
 
@@ -95,8 +95,8 @@ ms.locfileid: "96530744"
 | 以 Web 為基礎的單一登出| √| √ |
 | 以行動裝置為基礎的單一登入| √| √* |
 | 以行動裝置為基礎的單一登出| √| √* |
-| 行動應用程式的條件式存取原則| √| X |
-| 適用于行動應用程式的順暢 MFA 體驗| √| X |
+| 行動應用程式的條件式存取原則| √| √* |
+| 適用于行動應用程式的順暢 MFA 體驗| √| √* |
 | SCIM 佈建| √| √ |
 | 存取 Microsoft Graph| √| X |
 
@@ -178,7 +178,7 @@ Microsoft 不會提供（或建議） SAML 執行的程式庫。 有許多可用
 若要深入瞭解 Azure AD SCIM 的執行，請參閱 [建立 SCIM 端點，並使用 Azure AD 來設定使用者布建](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups)。
 
 ### <a name="implement-scim"></a>執行 SCIM
-Azure AD 提供可協助您建立 SCIM 端點的 [參考程式碼](https://aka.ms/scimoverview) 。 您也可以在 github 上找到許多協力廠商程式庫/參考。  
+Azure AD 提供可協助您建立 SCIM 端點的 [參考程式碼](https://aka.ms/scimoverview) 。 您也可以在 GitHub 上找到許多協力廠商程式庫/參考。  
 
 ## <a name="step-4---create-your-azure-tenant-and-test-your-app"></a>步驟 4-建立您的 Azure 租使用者並測試您的應用程式
 

@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: 3565b165c669af3566667d9bdfa401d15fcce101
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 76aa18c9724d85b1dd3fb8de3d7d033d40ff95ce
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544151"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400228"
 ---
 # <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>調整具有 GPT 分割區的 OS 磁碟大小
 
@@ -292,13 +292,13 @@ user@myvm:~#
    1. 從入口網站增加 OS 磁碟的大小。
    1. 啟動 VM。
 
-1. 當 VM 重新開機時，請安裝 **雲端公用程式-growpart** 套件以取得 `growpart` 命令，您需要增加 OS 磁片的大小。
+1. 當 VM 重新開機時，請完成下列步驟：
 
-      此套件已預先安裝在大部分的 Azure Marketplace 映射上。
+   - 安裝 **公用程式 growpart** 套件以提供 **growpart** 命令，這是增加 OS 磁片大小和 GPT 磁片配置 gdisk 處理常式所需的必要命令。 這些套件會預先安裝在大部分的 marketplace 映射上。
 
-      ```bash
-      [root@dd-rhel7vm ~]# yum install cloud-utils-growpart
-      ```
+   ```bash
+   [root@dd-rhel7vm ~]# yum install cloud-utils-growpart gdisk
+   ```
 
 1. 使用命令，判斷哪個磁片和磁碟分割保存 LVM 實體磁片區或磁片區 (PV) 在名為 **rootvg** 的磁片區群組中 `pvscan` 。 請注意括弧 (**[** and **]**) 之間所列的大小和可用空間。
 
@@ -400,8 +400,6 @@ user@myvm:~#
 > 若要使用相同的程式來調整任何其他邏輯磁片區的大小，請變更步驟12中的 LV 名稱。
 
 ### <a name="rhel-raw"></a>RHEL RAW
->[!NOTE]
->請一律先建立 VM 的快照集，再增加 OS 磁片大小。
 
 若要增加 RHEL 原始磁碟分割中的 OS 磁片大小：
 
@@ -411,119 +409,125 @@ user@myvm:~#
 
 當 VM 重新開機時，請完成下列步驟：
 
-1. 使用下列命令，以 **根** 使用者的身份存取您的 VM：
- 
-   ```
-   sudo su
+1. 使用下列命令，以 **根** 使用者身分存取您的 VM：
+
+   ```bash
+   [root@dd-rhel7vm ~]# sudo -i
    ```
 
-1. 安裝 **gptfdisk** 套件，您需要增加作業系統磁片的大小：
+1. 當 VM 重新開機時，請完成下列步驟：
 
-   ```
-   yum install gdisk -y
-   ```
+   - 安裝 **公用程式 growpart** 套件以提供 **growpart** 命令，這是增加 OS 磁片大小和 GPT 磁片配置 gdisk 處理常式所需的必要命令。 此套件已預先安裝在大部分的 marketplace 映射上。
 
-1.  若要查看磁片上的所有可用磁區，請執行下列命令：
-    ```
-    gdisk -l /dev/sda
-    ```
-
-1. 您將會看到通知資料分割類型的詳細資料。 請確定它是 GPT。 識別根磁碟分割。 請勿變更或刪除開機磁碟分割 (BIOS 開機磁碟分割) 或系統磁碟分割 (EFI 系統磁碟分割) 。
-
-1. 您可以使用此命令來啟動第一次的資料分割： 
-    ```
-    gdisk /dev/sda
-    ```
-
-1. 您會看到一則訊息，提示您輸入下一個命令： `Command: ? for help` 。 選取 **w** 鍵：
-
-   ```
-   w
+   ```bash
+   [root@dd-rhel7vm ~]# yum install cloud-utils-growpart gdisk
    ```
 
-1. 您將會收到下列訊息： `Warning! Secondary header is placed too early on the disk! Do you want to
-correct this problem? (Y/N)` 。 選取 **Y** 鍵： 
+1. 使用 **lsblk-f** 命令確認保存根 () 磁碟分割的磁碟分割和檔案系統類型 **/** ：
 
-   ```
-   Y
-   ```
-
-1. 您應該會看到一則訊息，指出最後的檢查已完成，並提示確認。 選取 **Y** 鍵：
-
-   ```
-   Y
-   ```
-
-1. 使用 `partprobe` 命令來檢查所有專案是否都正確發生：
-
-   ```
-   partprobe
+   ```bash
+   [root@vm-dd-cent7 ~]# lsblk -f
+   NAME    FSTYPE LABEL UUID                                 MOUNTPOINT
+   sda
+   ├─sda1  xfs          2a7bb59d-6a71-4841-a3c6-cba23413a5d2 /boot
+   ├─sda2  xfs          148be922-e3ec-43b5-8705-69786b522b05 /
+   ├─sda14
+   └─sda15 vfat         788D-DC65                            /boot/efi
+   sdb
+   └─sdb1  ext4         923f51ff-acbd-4b91-b01b-c56140920098 /mnt/resource
    ```
 
-1. 您已完成先前的步驟，以確保次要 GPT 標頭放置於結尾。 接下來，使用工具再次開始調整大小的程式 `gdisk` 。 使用下列命令：
+1. 若要進行驗證，請從使用 **gdisk** 列出 sda 磁片的磁碟分割資料表開始。 在此範例中，我們在 29.0 GiB 看到磁碟分割2的 48-GB 磁片。 在 Azure 入口網站中，磁片已從 30 GB 擴充為 48 GB。
 
-   ```
-   gdisk /dev/sda
-   ```
-1. 在 [命令] 功能表中，選取 **p** 按鍵以查看分割區清單。 識別根磁碟分割。  (在這些步驟中， **sda2** 會被視為根磁碟分割。 ) 識別開機磁碟分割。  (在這些步驟中， **sda3** 會被視為開機分割區。 )  
+   ```bash
+   [root@vm-dd-cent7 ~]# gdisk -l /dev/sda
+   GPT fdisk (gdisk) version 0.8.10
 
-   ```
-   p
-   ```
-    ![顯示根磁碟分割和開機磁碟分割的螢幕擷取畫面。](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
+   Partition table scan:
+   MBR: protective
+   BSD: not present
+   APM: not present
+   GPT: present
 
-1. 選取 **d** 鍵以刪除分割區。 然後選取指派給開機磁碟分割的資料分割編號。  (在此範例中為 **3**. ) 
-   ```
-   d
-   3
-   ```
-1. 選取 **d** 鍵以刪除分割區。 選取指派給開機磁碟分割的資料分割編號。  (在此範例中為 **2**. ) 
-   ```
-   d
-   2
-   ```
-    ![顯示刪除根和開機磁碟分割之步驟的螢幕擷取畫面。](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
+   Found valid GPT with protective MBR; using GPT.
+   Disk /dev/sda: 100663296 sectors, 48.0 GiB
+   Logical sector size: 512 bytes
+   Disk identifier (GUID): 78CDF84D-9C8E-4B9F-8978-8C496A1BEC83
+   Partition table holds up to 128 entries
+   First usable sector is 34, last usable sector is 62914526
+   Partitions will be aligned on 2048-sector boundaries
+   Total free space is 6076 sectors (3.0 MiB)
 
-1. 若要重新建立具有增加大小的根磁碟分割，請選取 [ **n** ] 機碼，然後輸入您先前為此範例中的根 (**2** 刪除的分割區編號) 。 選擇 `Default Value` 第一個磁區。 選擇 `Last sector value -  boot size sector` 此案例中的最後一個磁區 (`4096` ，對應至 2 MB 開機) 。 選擇 `8300` 十六進位碼。
-   ```
-   n
-   2
-   (Enter default)
-   (Calculated value of Last sector value - 4096)
-   8300
-   ```
-1. 若要重新建立開機磁碟分割，請選取 [ **n** ] 機碼，然後輸入您先前在此範例中針對開機 (**3** 所刪除的磁碟分割編號) 。 選擇 `Default Value` 第一個磁區和最後一個磁區。 選擇 `EF02` 十六進位碼。
-   ```
-   n
-   3
-   (Enter default)
-   (Enter default)
-   EF02
+   Number  Start (sector)    End (sector)  Size       Code  Name
+      1         1026048         2050047   500.0 MiB   0700
+      2         2050048        62912511   29.0 GiB    0700
+   14            2048           10239   4.0 MiB     EF02
+   15           10240         1024000   495.0 MiB   EF00  EFI System Partition
    ```
 
-1. 使用命令寫入變更 `w` ，然後選取 `Y` 以確認變更：
-   ```
-   w
-   Y
-   ```
-1. 執行 `partprobe` 命令以檢查磁片穩定性：
-   ```
-   partprobe
-   ```
-1. 重新啟動 VM。 應增加根磁碟分割的大小。
-   ```
-   reboot
+1. 展開根的磁碟分割，在此案例中，使用 **growpart** 命令 sda2。 使用這個命令會展開磁碟分割，以使用磁片上的所有連續空格。
+
+   ```bash
+   [root@vm-dd-cent7 ~]# growpart /dev/sda 2
+   CHANGED: partition=2 start=2050048 old: size=60862464 end=62912512 new: size=98613214 end=100663262
    ```
 
-   ![顯示重新建立開機磁碟分割之步驟的螢幕擷取畫面。](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
+1. 現在，再次使用 **gdisk** 來列印新的磁碟分割資料表。  請注意，資料分割2已擴充至 47.0 GiB：
 
-1. `xfs_growfs`在磁碟分割上執行命令以調整其大小：
+   ```bash
+   [root@vm-dd-cent7 ~]# gdisk -l /dev/sda
+   GPT fdisk (gdisk) version 0.8.10
+
+   Partition table scan:
+   MBR: protective
+   BSD: not present
+   APM: not present
+   GPT: present
+
+   Found valid GPT with protective MBR; using GPT.
+   Disk /dev/sda: 100663296 sectors, 48.0 GiB
+   Logical sector size: 512 bytes
+   Disk identifier (GUID): 78CDF84D-9C8E-4B9F-8978-8C496A1BEC83
+   Partition table holds up to 128 entries
+   First usable sector is 34, last usable sector is 100663262
+   Partitions will be aligned on 2048-sector boundaries
+   Total free space is 4062 sectors (2.0 MiB)
+
+   Number  Start (sector)    End (sector)  Size       Code  Name
+      1         1026048         2050047   500.0 MiB   0700
+      2         2050048       100663261   47.0 GiB    0700
+   14            2048           10239   4.0 MiB     EF02
+   15           10240         1024000   495.0 MiB   EF00  EFI System Partition
    ```
-   xfs_growfs /dev/sda2
+
+1. 使用 **xfs_growfs** 展開分割區上的檔案系統，這適用于標準 marketplace 產生的 RedHat 系統：
+
+   ```bash
+   [root@vm-dd-cent7 ~]# xfs_growfs /
+   meta-data=/dev/sda2              isize=512    agcount=4, agsize=1901952 blks
+            =                       sectsz=4096  attr=2, projid32bit=1
+            =                       crc=1        finobt=0 spinodes=0
+   data     =                       bsize=4096   blocks=7607808, imaxpct=25
+            =                       sunit=0      swidth=0 blks
+   naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+   log      =internal               bsize=4096   blocks=3714, version=2
+            =                       sectsz=4096  sunit=1 blks, lazy-count=1
+   realtime =none                   extsz=4096   blocks=0, rtextents=0
+   data blocks changed from 7607808 to 12326651
    ```
 
-   ![顯示執行 xfs_growfs 之結果的螢幕擷取畫面。](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
+1. 使用 **df** 命令，確認新的大小已反映出來：
 
-## <a name="next-steps"></a>後續步驟
-
-- [調整磁碟大小](expand-disks.md)
+   ```bash
+   [root@vm-dd-cent7 ~]# df -hl
+   Filesystem      Size  Used Avail Use% Mounted on
+   devtmpfs        452M     0  452M   0% /dev
+   tmpfs           464M     0  464M   0% /dev/shm
+   tmpfs           464M  6.8M  457M   2% /run
+   tmpfs           464M     0  464M   0% /sys/fs/cgroup
+   /dev/sda2        48G  2.1G   46G   5% /
+   /dev/sda1       494M   65M  430M  13% /boot
+   /dev/sda15      495M   12M  484M   3% /boot/efi
+   /dev/sdb1       3.9G   16M  3.7G   1% /mnt/resource
+   tmpfs            93M     0   93M   0% /run/user/1000
+   ```

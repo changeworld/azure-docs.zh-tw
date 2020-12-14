@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 11c3de703a4b37318b7b99f60d74190fe8ec8610
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 47c837e7a2ee859c7805d6b2e11058bcc02e6c22
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077365"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400568"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL 受控執行個體資源限制概觀
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -108,7 +108,7 @@ SQL 受控執行個體有兩個服務層級： [一般用途](../database/servic
 
 如果您注意到某個資料庫檔案的 IO 延遲很高，或您看到 IOPS/輸送量達到限制，您可能會增加檔案 [大小](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337)來改善效能。
 
-此外，也有實例層級限制的最大記錄寫入輸送量 (這是 22 MB/s) ，因此您可能無法在整個記錄檔上到達最大檔案，因為您達到實例輸送量限制。
+此外，也有實例層級的最大記錄寫入輸送量限制 (查看上述的值，例如 22 MB/s) ，因此您可能無法在整個記錄檔上到達最大檔案，因為您已達到實例輸送量限制。
 
 ## <a name="supported-regions"></a>支援區域
 
@@ -132,8 +132,8 @@ SQL 受控執行個體目前僅支援在下列類型的訂閱上進行部署：
 
 支援的訂用帳戶類型可包含有限的每一區域資源數目。 SQL 受控執行個體的每個 Azure 區域都有兩個預設限制 (可以根據訂用帳戶類型的類型， [在 Azure 入口網站中](../database/quota-increase-request.md) 建立特殊的支援要求，視需要增加：
 
-- **子網限制** ：在單一區域中部署 SQL 受控執行個體實例的子網數目上限。
-- **vCore unit limit** ：可在單一區域中的所有實例上部署的最大 vCore 單位數目。 一個 GP vCore 使用一個 vCore 單位，而一個 BC vCore 採用4個 vCore 單位。 只要實例的總數在 vCore 單位限制內，就不會受到限制。
+- **子網限制**：在單一區域中部署 SQL 受控執行個體實例的子網數目上限。
+- **vCore unit limit**：可在單一區域中的所有實例上部署的最大 vCore 單位數目。 一個 GP vCore 使用一個 vCore 單位，而一個 BC vCore 採用4個 vCore 單位。 只要實例的總數在 vCore 單位限制內，就不會受到限制。
 
 > [!Note]
 > 這些限制是預設設定，而不是技術限制。 如果您在目前的區域中需要更多實例，可以在 Azure 入口網站中建立特殊的 [支援要求，以](../database/quota-increase-request.md) 視需要增加限制。 或者，您可以在另一個 Azure 區域中建立 SQL 受控執行個體的新實例，而不需要傳送支援要求。
@@ -150,7 +150,7 @@ SQL 受控執行個體目前僅支援在下列類型的訂閱上進行部署：
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional 和 MSDN 平臺|2|32|
 
-\* 在規劃部署中，請考慮到商務關鍵性 (BC) 服務層級所需的 vCore 容量比一般用途 (GP) 服務層級的四 (4) 倍多。 例如： 1 GP vCore = 1 vCore unit 和 1 BC vCore = 4 vCore 單位。 若要針對預設限制簡化耗用量分析，請在部署 SQL 受控執行個體的區域中匯總所有子網的 vCore 單位，並將結果與訂用帳戶類型的實例單位限制進行比較。 **VCore 單位限制的最大數目** 會套用至區域中的每個訂用帳戶。 每個個別子網都沒有限制，不同之處在于跨多個子網部署的所有虛擬核心總和必須小於或等於 **vCore 單位的最大數目** 。
+\* 在規劃部署中，請考慮到商務關鍵性 (BC) 服務層級所需的 vCore 容量比一般用途 (GP) 服務層級的四 (4) 倍多。 例如： 1 GP vCore = 1 vCore unit 和 1 BC vCore = 4 vCore 單位。 若要針對預設限制簡化耗用量分析，請在部署 SQL 受控執行個體的區域中匯總所有子網的 vCore 單位，並將結果與訂用帳戶類型的實例單位限制進行比較。 **VCore 單位限制的最大數目** 會套用至區域中的每個訂用帳戶。 每個個別子網都沒有限制，不同之處在于跨多個子網部署的所有虛擬核心總和必須小於或等於 **vCore 單位的最大數目**。
 
 \*\* 較大的子網和 vCore 限制可在下欄區域使用：澳大利亞東部、美國東部、美國東部2、北歐、美國中南部、東南亞、英國南部、西歐、美國西部2。
 
@@ -161,7 +161,7 @@ SQL 受控執行個體目前僅支援在下列類型的訂閱上進行部署：
 
 如果您在目前的區域中需要更多實例，請使用 Azure 入口網站傳送支援要求以延伸配額。 如需詳細資訊，請參閱 [Azure SQL Database 的要求配額增加](../database/quota-increase-request.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 如需 SQL 受控執行個體的詳細資訊，請參閱 [何謂 sql 受控執行個體？](sql-managed-instance-paas-overview.md)。
 - 如需定價資訊，請參閱 [SQL 受控執行個體定價](https://azure.microsoft.com/pricing/details/sql-database/managed/)。

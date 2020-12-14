@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: ece6dfb5277e7ca363548c8d90021835a96a61ba
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: d01136ea4377bd7d35a2e11b4bcf654bcf677fbe
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937350"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401554"
 ---
 # <a name="virtual-network-service-tags"></a>虛擬網路服務標籤
 <a name="network-service-tags"></a>
@@ -43,7 +43,7 @@ ms.locfileid: "96937350"
 根據預設，服務標籤會反映整個雲端的範圍。 某些服務標籤也會將對應的 IP 範圍限定為指定的區域，藉以提供更精細的控制。 例如，服務標籤 **Storage** 代表整個雲端的 Azure 儲存體，而 **Storage.WestUS** 則會將範圍縮小為僅限來自美國西部區域的儲存體 IP 位址範圍。 下表指出各個服務標籤是否支援這類區域範圍。  
 
 | Tag | 目的 | 可以使用輸入還是輸出？ | 是否可為區域性？ | 是否可與 Azure 防火牆搭配使用？ |
-| --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| --- | -------- |:---:|:---:|:---:|
 | **ActionGroup** | 動作群組。 | 輸入 | 否 | 否 |
 | **ApiManagement** | Azure API 管理專用部署的管理流量。 <br/><br/>*注意：* 此標籤代表各區域控制平面的 Azure API 管理服務端點。 這可讓客戶對設定於 API 管理服務上的 API、作業、原則、NamedValues 執行管理作業。  | 輸入 | 是 | 是 |
 | **ApplicationInsightsAvailability** | Application Insights 可用性。 | 輸入 | 否 | 否 |

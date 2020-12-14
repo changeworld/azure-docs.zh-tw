@@ -6,13 +6,13 @@ ms.author: wesmc
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-ms.date: 03/12/2020
-ms.openlocfilehash: 4067d157a13618b008e2cb1a5fee31259bfd43a9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.date: 12/14/2020
+ms.openlocfilehash: 6ff5731e7d346c954253ec4186357595461b7678
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094347"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400247"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>使用 Azure IoT DPS IP 連線篩選器
 
@@ -58,7 +58,7 @@ IP 篩選器規則會套用在 DPS 執行個體層級。 因此，IP 篩選器�
 
 ![有關儲存 IP 篩選器規則的通知](./media/iot-dps-ip-filtering/ip-filter-save-new-rule.png)
 
-當您達到 10 個 IP 篩選器規則的上限後，[新增] 選項便會停用。
+當您達到 100 IP 篩選規則的最大值時，就會停用 [ **新增** ] 選項。
 
 若要編輯現有的規則，請選取您要變更的資料，進行變更，然後選取 [儲存] 以儲存您的編輯。
 

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: d8e4a9201c14e71520bd58ff1017b700ca47fa21
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 73a3be62e57991b63525372f008e15d8e4f36a74
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109807"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401724"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>跨可用性區域部署 Azure Service Fabric 叢集
 Azure 中的可用性區域是高可用性供應專案，可保護您的應用程式和資料不受資料中心失敗的影響。 可用性區域是唯一的實體位置，可在 Azure 區域內配備獨立的電源、冷卻和網路功能。
@@ -407,12 +407,12 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 >[!NOTE]
 > * 公用 IP 和 Load Balancer 資源應該使用標準 SKU，如本文稍早所述。
 > * nodeType 上的 "multipleAvailabilityZones" 屬性只能在建立 nodeType 時定義，且稍後無法修改。 因此，無法使用這個屬性來設定現有的 nodeTypes。
-> * 當 "hierarchicalUpgradeDomain" 被省略或設為 true 時，叢集和應用程式部署的速度會較慢，因為叢集中有更多的升級網域。 請務必正確地調整升級原則超時，以納入15個升級網域的升級時間持續時間。
+> * 當 "sfZonalUpgradeMode" 被省略或設定為「階層式」時，叢集和應用程式部署的速度將會較慢，因為叢集中有更多升級網域。 請務必正確地調整升級原則超時，以納入15個升級網域的升級時間持續時間。
 > * 建議將叢集可靠性層級設定為白金級，以確保叢集繼續生存一個區域關閉案例。
 
 >[!NOTE]
-> 基於最佳作法，建議將 hierarchicalUpgradeDomain 設為 true 或省略。 部署將會遵循 Vm 的區域分佈，進而影響較少量的複本及/或實例，使其更安全。
-> 如果部署速度是優先順序，或只有在具有多個 AZ 的節點類型上執行無狀態工作負載，請使用 hierarchicalUpgradeDomain 設定為 false。 這會導致 UD 在所有 AZ 的過程中平行發生。
+> 基於最佳作法，建議將 sfZonalUpgradeMode 設為階層式或省略。 部署將會遵循 Vm 的區域分佈，進而影響較少量的複本及/或實例，使其更安全。
+> 如果部署速度是優先順序，或只有無狀態工作負載在具有多個 AZ 的節點類型上執行，請使用 sfZonalUpgradeMode 設定為 [平行]。 這會導致 UD 在所有 AZ 的過程中平行發生。
 
 ### <a name="migration-to-the-node-type-with-multiple-availability-zones"></a>使用多個可用性區域遷移至節點類型
 在所有的遷移案例中，必須加入新的 nodeType，以支援多個可用性區域。 無法遷移現有的 nodeType 以支援多個區域。

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/13/2020
+ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5b89126b837f9c197a8babf81abb17bfd98002e4
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ce41edd2c0048a20368dd02c2dd6101248e26c14
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344992"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400008"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -29,21 +29,52 @@ ms.locfileid: "96344992"
 
 **UserJourneys** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | UserJourney | 1:n | 使用者旅程圖，可定義完整使用者流程所需的所有建構。 |
 
 **UserJourney** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| Id | 是 | 使用者旅程圖的識別碼，可用來從原則中的其他元素參考它。 [信賴憑證者原則](relyingparty.md)的 **DefaultUserJourney** 元素會指向這個屬性。 |
+| 識別碼 | 是 | 使用者旅程圖的識別碼，可用來從原則中的其他元素參考它。 [信賴憑證者原則](relyingparty.md)的 **DefaultUserJourney** 元素會指向這個屬性。 |
 
 **UserJourney** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
+| Authorizationtechnicalprofile | 0:1 | 授權技術設定檔的清單。 | 
 | OrchestrationSteps | 1:n | 必須遵循才能獲得成功交易的協調流程序列。 每個使用者旅程圖都由依序執行的已排序協調流程步驟清單所組成。 如果有任何步驟失敗，交易就會失敗。 |
+
+## <a name="authorizationtechnicalprofiles"></a>Authorizationtechnicalprofile
+
+假設使用者已完成 UserJourney 並取得存取權或識別碼權杖。 若要管理其他資源（例如使用者 [資訊端點](userinfo-endpoint.md)），必須識別使用者。 若要開始此程式，使用者必須出示先前發行的存取權杖，證明它們最初是由有效的 Azure AD B2C 原則驗證。 使用者的有效 token 必須一律存在於此程式中，以確保允許使用者提出此要求。 授權技術設定檔會驗證連入權杖，並從權杖中將宣告解壓縮。
+
+**Authorizationtechnicalprofile** 元素包含下列元素：
+
+| 元素 | 發生次數 | 描述 |
+| ------- | ----------- | ----------- |
+| AuthorizationTechnicalProfile | 0:1 | 授權技術設定檔的清單。 | 
+
+**AuthorizationTechnicalProfile** 元素包含下列屬性：
+
+| 屬性 | 必要 | 描述 |
+| --------- | -------- | ----------- |
+| TechnicalProfileReferenceId | 是 | 要執行的技術設定檔識別碼。 |
+
+下列範例顯示具有授權技術設定檔的使用者旅程圖元素：
+
+```xml
+<UserJourney Id="UserInfoJourney" DefaultCpimIssuerTechnicalProfileReferenceId="UserInfoIssuer">
+  <Authorization>
+    <AuthorizationTechnicalProfiles>
+      <AuthorizationTechnicalProfile ReferenceId="UserInfoAuthorization" />
+    </AuthorizationTechnicalProfiles>
+  </Authorization>
+  <OrchestrationSteps>
+    <OrchestrationStep Order="1" Type="ClaimsExchange">
+     ...
+```
 
 ## <a name="orchestrationsteps"></a>OrchestrationSteps
 
@@ -55,7 +86,7 @@ ms.locfileid: "96344992"
 
 **OrchestrationSteps** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | OrchestrationStep | 1:n | 已排序的協調流程步驟。 |
 
@@ -70,7 +101,7 @@ ms.locfileid: "96344992"
 
 **OrchestrationStep** 元素可以包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | 先決條件 | 0:n | 必須基於要執行的協調流程步驟滿足的先決條件清單。 |
 | ClaimsProviderSelections | 0:n | 適用於協調流程步驟的宣告提供者選取項目清單。 |
@@ -81,7 +112,7 @@ ms.locfileid: "96344992"
 
 **Preconditions** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | 先決條件 | 1:n | 根據所使用的技術設定檔，系統會依據宣告提供者選取項目來將用戶端重新導向，或進行伺服器呼叫來交換宣告。 |
 
@@ -143,7 +174,7 @@ ms.locfileid: "96344992"
 ```xml
 <OrchestrationStep Order="4" Type="ClaimsExchange">
   <Preconditions>
-  <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
+    <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
       <Value>objectId</Value>
       <Action>SkipThisOrchestrationStep</Action>
     </Precondition>
@@ -164,19 +195,19 @@ ms.locfileid: "96344992"
 
 **>claimsproviderselections >claimsproviderselection** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | ClaimsProviderSelection | 1:n | 提供可選取的宣告提供者清單。|
 
 **>claimsproviderselections >claimsproviderselection** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | DisplayOption| 否 | 控制案例的行為，其中提供單一宣告提供者選取專案。 可能的值： `DoNotShowSingleProvider` (預設) ，使用者會立即重新導向至同盟身分識別提供者。 或 `ShowSingleProvider` Azure AD B2C 使用單一身分識別提供者選取專案來顯示登入頁面。 若要使用這個屬性， [內容定義版本](page-layout.md) 必須是 `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` 和更新版本。|
 
 **ClaimsProviderSelection** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | TargetClaimsExchangeId | 否 | 宣告交換的識別碼，這會在宣告提供者選取項目的下一個協調流程步驟中執行。 您必須指定這個屬性或 ValidationClaimsExchangeId 屬性，但不需同時指定。 |
 | ValidationClaimsExchangeId | 否 | 宣告交換的識別碼，這會在目前協調流程步驟中執行以驗證宣告提供者選取項目。 您必須指定這個屬性或 TargetClaimsExchangeId 屬性，但不需同時指定。 |
@@ -187,17 +218,17 @@ ms.locfileid: "96344992"
 
 ```xml
 <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
-    <ClaimsProviderSelections>
+  <ClaimsProviderSelections>
     <ClaimsProviderSelection TargetClaimsExchangeId="FacebookExchange" />
     <ClaimsProviderSelection TargetClaimsExchangeId="LinkedInExchange" />
     <ClaimsProviderSelection TargetClaimsExchangeId="TwitterExchange" />
     <ClaimsProviderSelection TargetClaimsExchangeId="GoogleExchange" />
     <ClaimsProviderSelection ValidationClaimsExchangeId="LocalAccountSigninEmailExchange" />
-    </ClaimsProviderSelections>
-    <ClaimsExchanges>
-    <ClaimsExchange Id="LocalAccountSigninEmailExchange"
-                    TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
-    </ClaimsExchanges>
+  </ClaimsProviderSelections>
+  <ClaimsExchanges>
+  <ClaimsExchange Id="LocalAccountSigninEmailExchange"
+        TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
+  </ClaimsExchanges>
 </OrchestrationStep>
 
 
@@ -211,7 +242,7 @@ ms.locfileid: "96344992"
   <ClaimsExchanges>
     <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
     <ClaimsExchange Id="SignUpWithLogonEmailExchange" TechnicalProfileReferenceId="LocalAccountSignUpWithLogonEmail" />
-    <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
+  <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
     <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
     <ClaimsExchange Id="TwitterExchange" TechnicalProfileReferenceId="Twitter-OAUTH1" />
   </ClaimsExchanges>
@@ -222,22 +253,22 @@ ms.locfileid: "96344992"
 
 **ClaimsExchanges** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | ClaimsExchange | 1:n | 根據所使用的技術設定檔，系統會依據所選取的 ClaimsProviderSelection 來將用戶端重新導向，或進行伺服器呼叫來交換宣告。 |
 
 **ClaimsExchange** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| Id | 是 | 宣告交換步驟的識別碼。 識別碼會用於參考原則中來自宣告提供者選取步驟的宣告交換。 |
+| 識別碼 | 是 | 宣告交換步驟的識別碼。 識別碼會用於參考原則中來自宣告提供者選取步驟的宣告交換。 |
 | TechnicalProfileReferenceId | 是 | 要執行的技術設定檔識別碼。 |
 
 ## <a name="journeylist"></a>JourneyList
 
 **JourneyList** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | 候選項目 | 1:1 | 要呼叫之 sub 旅程的參考。 |
 
@@ -245,6 +276,6 @@ ms.locfileid: "96344992"
 
 **候選** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | SubJourneyReferenceId | 是 | 要執行之 [sub 旅程](subjourneys.md) 的識別碼。 |

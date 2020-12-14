@@ -3,12 +3,12 @@ title: 監視和記錄-Azure
 description: 本文提供 IoT Edge 監視和記錄的即時影片分析總覽。
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: ef00517fc61ac532bdd99c1e887dfd93d56a8c4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ae455a4157cd649f610620e486323ac2c0a5744
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89567549"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401044"
 ---
 # <a name="monitoring-and-logging"></a>監視和記錄
 
@@ -21,7 +21,7 @@ ms.locfileid: "89567549"
 IoT Edge 上的即時影片分析會根據下列分類法發出事件或遙測資料。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="事件的分類法&quot;:::
+> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="事件的分類法":::
 
 * 操作：當使用者採取的動作，或在 [media graph](media-graph-concept.md)執行期間所產生的事件。
    
@@ -32,16 +32,16 @@ IoT Edge 上的即時影片分析會根據下列分類法發出事件或遙測�
       
       ```
       {
-        &quot;body&quot;: {
-          &quot;outputType&quot;: &quot;assetName&quot;,
-          &quot;outputLocation&quot;: &quot;sampleAssetFromEVR-LVAEdge-20200512T233309Z&quot;
+        "body": {
+          "outputType": "assetName",
+          "outputLocation": "sampleAssetFromEVR-LVAEdge-20200512T233309Z"
         },
-        &quot;applicationProperties&quot;: {
-          &quot;topic&quot;: &quot;/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<my-resource-group>/providers/microsoft.media/mediaservices/<ams-account-name>&quot;,
-          &quot;subject&quot;: &quot;/graphInstances/Sample-Graph-2/sinks/assetSink&quot;,
-          &quot;eventType&quot;: &quot;Microsoft.Media.Graph.Operational.RecordingStarted&quot;,
-          &quot;eventTime&quot;: &quot;2020-05-12T23:33:10.392Z&quot;,
-          &quot;dataVersion&quot;: &quot;1.0"
+        "applicationProperties": {
+          "topic": "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<my-resource-group>/providers/microsoft.media/mediaservices/<ams-account-name>",
+          "subject": "/graphInstances/Sample-Graph-2/sinks/assetSink",
+          "eventType": "Microsoft.Media.Graph.Operational.RecordingStarted",
+          "eventTime": "2020-05-12T23:33:10.392Z",
+          "dataVersion": "1.0"
         }
       }
       ```
@@ -223,6 +223,85 @@ Subject 屬性可讓泛型事件對應至其產生的模組。 比方說，如�
 
 事件時間會在 ISO8601 字串中描述，而這是事件發生的時間。
 
+### <a name="azure-monitor-collection-using-telegraf"></a>使用 Telegraf Azure 監視器集合
+
+這些計量將會回報 IoT Edge 課程模組上的即時影片分析：  
+
+|標準名稱|類型|標籤|描述|
+|-----------|----|-----|-----------|
+|lva_active_graph_instances|量測計|iothub、edge_device、module_name graph_topology|每個拓撲的使用中圖表總數。|
+|lva_received_bytes_total|計數器|iothub、edge_device、module_name、graph_topology、graph_instance、graph_node|節點接收的位元組總數。 僅支援 RTSP 來源|
+|lva_data_dropped_total|計數器|iothub、edge_device、module_name、graph_topology、graph_instance、graph_node、data_kind|任何已卸載資料 (事件、媒體等 ) 的計數器|
+
+> [!NOTE]
+> [Prometheus 端點](https://prometheus.io/docs/practices/naming/)會在容器的埠 **9600** 公開。 如果您將即時影片分析命名為 IoT Edge 模組 "lvaEdge"，則可以藉由傳送 GET 要求至來存取計量 http://lvaEdge:9600/metrics 。   
+
+依照下列步驟，在 IoT Edge 課程模組上啟用即時影片分析中的計量收集：
+
+1. 在您的開發電腦上建立資料夾，並流覽至該資料夾
+
+1. 在該資料夾中，建立 `telegraf.toml` 具有下列內容的檔案
+    ```
+    [agent]
+        interval = "30s"
+        omit_hostname = true
+
+    [[inputs.prometheus]]
+      metric_version = 2
+      urls = ["http://edgeHub:9600/metrics", "http://edgeAgent:9600/metrics", "http://{LVA_EDGE_MODULE_NAME}:9600/metrics"]
+
+    [[outputs.azure_monitor]]
+      namespace_prefix = ""
+      region = "westus"
+      resource_id = "/subscriptions/{SUBSCRIPTON_ID}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.Devices/IotHubs/{IOT_HUB_NAME}"
+    ```
+    > [!IMPORTANT]
+    > 請務必取代 (`{ }` 內容檔中) 標記的變數
+
+1. 在該資料夾中， `.dockerfile` 使用下列內容建立：
+    ```
+        FROM telegraf:1.15.3-alpine
+        COPY telegraf.toml /etc/telegraf/telegraf.conf
+    ```
+
+1. 現在使用 docker CLI 命令 **建立 docker** 檔案，並將映射發佈至您的 Azure Container Registry。
+    1. 瞭解如何 [推送和提取 Docker 映射-Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli)。  您可以在 [這裡](https://docs.microsoft.com/azure/container-registry/)找到 AZURE CONTAINER REGISTRY (ACR) 的詳細資訊。
+
+
+1. 推入 ACR 完成後，請在部署資訊清單檔中新增下列節點：
+    ```
+    "telegraf": 
+    {
+      "settings": 
+        {
+            "image": "{ACR_LINK_TO_YOUR_TELEGRAF_IMAGE}"
+        },
+      "type": "docker",
+      "version": "1.0",
+      "status": "running",
+      "restartPolicy": "always",
+      "env": 
+        {
+            "AZURE_TENANT_ID": { "value": "{YOUR_TENANT_ID}" },
+            "AZURE_CLIENT_ID": { "value": "{YOUR CLIENT_ID}" },
+            "AZURE_CLIENT_SECRET": { "value": "{YOUR_CLIENT_SECRET}" }
+        }
+    ``` 
+    > [!IMPORTANT]
+    > 請務必取代 (`{ }` 內容檔中) 標記的變數
+
+
+1. **驗證**
+    1. Azure 監視器可 [由服務主體驗證](https://github.com/influxdata/telegraf/blob/master/plugins/outputs/azure_monitor/README.md#azure-authentication)。
+        1. Azure 監視器的 Telegraf 外掛程式會公開 [數種驗證方法](https://github.com/influxdata/telegraf/blob/master/plugins/outputs/azure_monitor/README.md#azure-authentication)。 下列環境變數必須設定為使用服務主體驗證。  
+            • AZURE_TENANT_ID：指定要驗證的租使用者。  
+            • AZURE_CLIENT_ID：指定要使用的應用程式用戶端識別碼。  
+            • AZURE_CLIENT_SECRET：指定要使用的應用程式密碼。  
+    >[!TIP]
+    > 服務主體可獲得「**監視計量發行者**」角色。
+
+1. 部署模組之後，計量會出現在 Azure 監視器的單一命名空間底下，且計量名稱與 Prometheus 發出的度量名稱相符。 
+    1. 在此情況下，請在您的 Azure 入口網站中，流覽至 IoT 中樞，然後按一下左側流覽窗格中的 [**計量**] 連結。 您應該會在該處看到度量。
 ## <a name="logging"></a>記錄
 
 如同其他 IoT Edge 模組，您也可以檢查 Edge 裝置上 [的容器記錄](../../iot-edge/troubleshoot.md#check-container-logs-for-issues) 。 寫入至記錄檔的資訊可由 [下列模組](module-twin-configuration-schema.md) 對應項屬性控制：

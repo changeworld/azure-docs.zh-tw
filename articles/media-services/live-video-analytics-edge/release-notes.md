@@ -3,12 +3,12 @@ title: IoT Edge 版本資訊的即時影片分析-Azure
 description: 本主題提供有關 IoT Edge 版本、增強功能、bug 修正和已知問題的即時影片分析版本資訊。
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 18da50fe763ef7c5fc3c06ac00052679c488cae7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 2800d41340e45867ea4126733cdb5968cf8b91c5
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015629"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400840"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge 版本資訊的即時影片分析
 
@@ -23,9 +23,23 @@ ms.locfileid: "92015629"
 
 <hr width=100%>
 
+## <a name="december-14-2020"></a>2020年12月14日
+此版本是 IoT Edge 上即時影片分析的公開預覽版本。 發行標記為
+
+```
+     mcr.microsoft.com/media/live-video-analytics:2.0.0
+```
+### <a name="module-updates"></a>模組更新
+* 針對每個圖表拓撲新增了使用一個以上 HTTP 擴充處理器和 gRPC 擴充處理器的支援。
+* 已新增接收節點的磁碟空間管理支援。
+* `MediaGraphGrpcExtension` 節點現在支援在單一 gRPC 伺服器內使用多個 AI 模型的 [extensionConfiguration](grpc-extension-protocol.md) 屬性。
+* 已新增以[Prometheus 格式](https://prometheus.io/docs/practices/naming/)收集即時影片分析模組計量的支援 
+* 畫面播放速率篩選處理器已被 **取代**。  
+    * 圖形擴充處理器節點本身內現在可使用畫面播放速率管理。
+
 ## <a name="september-22-2020"></a>2020 年 9 月 22 日
 
-此課程模組的2020年9月更新版本戳記為：
+此版本戳記適用于2020年9月的重新整理：
 
 ```
 mcr.microsoft.com/media/live-video-analytics:1.0.4
@@ -48,7 +62,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.4
 
 ## <a name="august-19-2020"></a>2020年8月19日
 
-此版本戳記適用于2020年8月的更新模組：
+此版本標籤適用于2020年8月的更新模組：
 
 ```
 mcr.microsoft.com/media/live-video-analytics:1.0.3
@@ -67,13 +81,13 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 
 ### <a name="bug-fixes"></a>錯誤修正 
 
-* 移除在設定腳本中使用已被取代的 azure 延伸模組
+* 移除在設定腳本中使用已被取代的 Azure 延伸模組
 
 <hr width=100%>
 
 ## <a name="july-13-2020"></a>2020年7月13日
 
-此課程模組的2020年7月更新版本戳記為：
+此版本標籤適用于2020年7月的更新模組：
 
 ```
 mcr.microsoft.com/media/live-video-analytics:1.0.2

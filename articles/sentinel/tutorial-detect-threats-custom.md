@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
-ms.openlocfilehash: b685f716688cfbe732fa7d3566e1af97cc81272a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 390d2c8488fd2b35c775eabe43677b9349b547a1
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652105"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401639"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>教學課程：建立自訂分析規則來偵測威脅
 
@@ -80,7 +80,7 @@ ms.locfileid: "94652105"
           > **內嵌延遲**
           > - 為了考慮在來源產生事件和將其內嵌到 Azure Sentinel 之間可能發生的 **延遲** ，並確保完全涵蓋範圍而不重復資料，Azure Sentinel 會從排程的時間 **內五分鐘的延遲** 執行排程分析規則。
 
-    1. 使用 [ **警示閾值** ] 區段來定義基準。 例如，如果您想要規則在每次執行時 **Is greater than** 傳回超過1000的結果，請設定 [當查詢 **結果的數目大於時產生警示**]，然後輸入數位1000。 這是必要欄位，因此，如果您不想設定基準，也就是如果您想要讓警示註冊每個事件–請在 [數位] 欄位中輸入0。
+    1. 使用 [ **警示閾值** ] 區段來定義基準。 例如，如果您想要規則在每次執行時傳回超過1000的結果，請設定 [當查詢 **結果的數目大於時產生警示**]，然後輸入數位1000。 這是必要欄位，因此，如果您不想設定基準，也就是如果您想要讓警示註冊每個事件–請在 [數位] 欄位中輸入0。
     
     1. 在 [**事件群組**] 下，選擇兩種方式之一來處理 **警示****的群組**： 
 
@@ -145,7 +145,13 @@ ms.locfileid: "94652105"
 
 ## <a name="troubleshooting"></a>疑難排解
 
-### <a name="a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>排程的規則無法執行，或以自動停用的方式（已新增至名稱）顯示
+### <a name="issue-no-events-appear-in-query-results"></a>問題：查詢結果中未顯示任何事件
+
+如果 **事件群組** 設定為 **針對每個事件觸發警示**，則在某些情況下，在稍後查看查詢結果時 (例如，當您回溯至事件) 的警示時，可能不會出現任何查詢結果。 這是因為事件的警示連接是透過特定事件資訊的雜湊，以及在查詢中包含雜湊來完成。 如果查詢結果自從產生警示之後已經變更，雜湊將不再有效，也不會顯示任何結果。 
+
+若要查看事件，請使用規則查詢中的雜湊手動移除該行，然後執行查詢。
+
+### <a name="issue-a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>問題：已排程的規則無法執行，或以自動停用的方式（已新增至名稱）顯示
 
 排程查詢規則無法執行，但可能會發生這種情況。 Azure Sentinel 會根據失敗的特定類型和發生的情況，以暫時性或永久性的方式將失敗分類。
 

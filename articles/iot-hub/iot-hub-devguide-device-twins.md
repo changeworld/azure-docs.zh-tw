@@ -11,12 +11,12 @@ ms.date: 09/29/2020
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: ef1d6787ab3d4083ee6418694d1965ea0f90f730
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b83faecb16ac09a47a0ade25474f7a5b3ecd4296
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996132"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400923"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解和使用 Azure IoT 中樞的裝置對應項
 
@@ -26,7 +26,7 @@ ms.locfileid: "91996132"
 
 本文章說明：
 
-* 裝置對應項的結構：*標籤*、*所需屬性*和*報告屬性*。
+* 裝置對應項的結構：*標籤*、*所需屬性* 和 *報告屬性*。
 * 裝置應用程式和後端可以對裝置對應項執行的作業。
 
 使用裝置對應項可以：
@@ -159,7 +159,7 @@ ms.locfileid: "91996132"
 
 解決方案後端會使用下列不可部分完成的作業 (透過 HTTPS 公開) 來對裝置對應項進行操作︰
 
-* **依識別碼取得裝置**對應項。 此作業會傳回裝置對應項文件，包括標籤以及所需屬性、報告屬性和系統屬性。
+* **依識別碼取得裝置** 對應項。 此作業會傳回裝置對應項文件，包括標籤以及所需屬性、報告屬性和系統屬性。
 
 * **部份更新裝置對應項**。 此作業可讓解決方案後端局部地更新裝置對應項中的標籤或所需屬性。 部分更新會以 JSON 文件的形式來表示，以新增或更新任何屬性。 設定為 `null` 的屬性會遭到移除。 下列範例會以 `{"newProperty": "newValue"}` 值建立新的所需屬性、以 `"otherNewValue"` 覆寫 `existingProperty` 的現有值，並移除 `otherOldProperty`。 不會對現有的所需屬性或標籤進行任何變更︰
 
@@ -222,7 +222,7 @@ ms.locfileid: "91996132"
     }
     ```
 
-上述所有作業皆支援[開放式並行存取](iot-hub-devguide-device-twins.md#optimistic-concurrency)，而且需要 **ServiceConnect** 權限，如[控制 IoT 中樞的存取權](iot-hub-devguide-security.md)中所定義。
+上述所有作業皆支援 [開放式並行存取](iot-hub-devguide-device-twins.md#optimistic-concurrency)，而且需要 **ServiceConnect** 權限，如 [控制 IoT 中樞的存取權](iot-hub-devguide-security.md)中所定義。
 
 除了這些作業，解決方案後端還可以︰
 
@@ -240,7 +240,7 @@ ms.locfileid: "91996132"
 
 * **觀察所需屬性**。 目前連線的裝置可以選擇在所需屬性進行更新時收到通知。 裝置會收到由解決方案後端執行的相同更新形式 (部分或完整取代)。
 
-上述所有作業都需要 **DeviceConnect** 權限，如[控制 IoT 中樞的存取權](iot-hub-devguide-security.md)中所定義。
+上述所有作業都需要 **DeviceConnect** 權限，如 [控制 IoT 中樞的存取權](iot-hub-devguide-security.md)中所定義。
 
 [Azure IoT 裝置 SDK](iot-hub-devguide-sdks.md) 可讓您透過許多語言和平台輕鬆使用上述作業。 如需 IoT 中樞之所需屬性同步處理基元的詳細資訊，請參閱[裝置重新連線流程](iot-hub-devguide-device-twins.md#device-reconnection-flow)。
 
@@ -339,7 +339,9 @@ IoT 中樞會為裝置對應項所需屬性和報告屬性的每個 JSON 物件�
             "batteryLevel": "55%",
             "$metadata": {
                 "telemetryConfig": {
-                    "sendFrequency": "5m",
+                    "sendFrequency": {
+                        "$lastUpdated": "2016-03-31T16:35:48.789Z"
+                    },
                     "status": {
                         "$lastUpdated": "2016-03-31T16:35:48.789Z"
                     },
@@ -396,7 +398,7 @@ IoT 中樞開發人員指南中的其他參考主題包括︰
 
 * [IoT 中樞 MQTT 支援](iot-hub-mqtt-support.md)一文針對 MQTT 通訊協定提供 IoT 中樞支援的詳細資訊。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 現在您已了解裝置對應項，接下來您可能會對下列 IoT 中樞開發人員指南主題感興趣︰
 

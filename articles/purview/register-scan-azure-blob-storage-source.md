@@ -1,20 +1,20 @@
 ---
 title: 如何掃描 Azure 儲存體 blob
 description: 瞭解如何在 Azure 範疇資料目錄中掃描 Azure blob 儲存體。
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 6d2e2316525465c1ef9f58e7b83b8d0e99d46bd4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1bcd8390a298d7fc46f9c04633f610eb4492d33d
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552233"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400704"
 ---
-# <a name="register-and-scan-azure-blob-storage"></a>註冊並掃描 Azure Blob 儲存體
+# <a name="register-and-scan-azure-blob-storage"></a>註冊和掃描 Azure Blob 儲存體
 
 本文概述如何在範疇中註冊 Azure Blob 儲存體帳戶，以及如何設定掃描。
 
@@ -22,7 +22,7 @@ ms.locfileid: "96552233"
 
 Azure Blob 儲存體支援完整和增量掃描來捕捉中繼資料和架構。 它也會根據系統和自訂分類規則自動分類資料。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 註冊資料來源之前，請先建立 Azure 範疇帳戶。 如需有關建立範疇帳戶的詳細資訊，請參閱 [快速入門：建立 Azure 範疇帳戶](create-catalog-portal.md)。
 - 您必須是 Azure 範疇資料來源管理員

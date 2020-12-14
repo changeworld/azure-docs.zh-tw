@@ -3,12 +3,12 @@ title: Media graph 概念-Azure
 description: Media graph 可讓您定義媒體的捕獲來源、處理方式，以及應該傳遞結果的位置。 本文提供 media graph 概念的詳細描述。
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 5efb62440b52d6219373d15ba3d19ddac1a2a834
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 6f23e7db8cecb46106a63fdecdb6ba04dbd99682
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007835"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401095"
 ---
 # <a name="media-graph"></a>媒體圖表
 
@@ -87,6 +87,8 @@ RTSP 來源節點可讓您從 [RTSP](https://tools.ietf.org/html/rfc2326) 伺服
 #### <a name="frame-rate-filter-processor"></a>畫面播放速率篩選處理器  
 
 [畫面播放速率篩選處理器] 節點可讓您以指定的速率，從傳入的視頻串流取樣畫面格。 這可讓您減少傳送至低資料流程元件的框架數目 (例如 HTTP 擴充處理器節點) ，以供進一步處理。
+>[!WARNING]
+> 此處理器已在 IoT Edge 模組上最新版本的即時影片分析中 **淘汰** 。 圖形擴充處理器本身內現在支援畫面播放速率管理。
 
 #### <a name="http-extension-processor"></a>HTTP 擴充處理器
 
@@ -108,8 +110,9 @@ GRPC 延伸模組處理器節點會以解碼的影片畫面作為輸入，並將
 
 #### <a name="file-sink"></a>檔案接收  
 
-[檔案接收] 節點可讓您將媒體 (影片和/或音訊) 資料寫入 IoT Edge 裝置本機檔案系統上的位置。 Media graph 中只能有一個 file sink 節點，而且它必須是「信號閘道處理器」節點的下游。 這會將輸出檔案的持續時間限制為 [信號閘道處理器] 節點屬性中指定的值。
-
+[檔案接收] 節點可讓您將媒體 (影片和/或音訊) 資料寫入 IoT Edge 裝置本機檔案系統上的位置。 Media graph 中只能有一個 file sink 節點，而且它必須是「信號閘道處理器」節點的下游。 這會將輸出檔案的持續時間限制為 [信號閘道處理器] 節點屬性中指定的值。 為了確保您的 edge 裝置不會用盡磁碟空間，您也可以設定 IoT Edge 模組上的即時影片分析可用來儲存資料的大小上限。  
+> [!NOTE]
+如果檔案接收已滿，IoT Edge 模組上的即時影片分析將會開始刪除最舊的資料，並以新的資料取代。
 #### <a name="iot-hub-message-sink"></a>IoT 中樞訊息接收  
 
 IoT 中樞的 [訊息接收] 節點可讓您將事件發佈至 IoT Edge Hub。 IoT Edge 中樞可以接著將資料路由傳送至 Edge 裝置上的其他模組或應用程式，或將部署資訊清單中指定的每個路由的 IoT 中樞路由至雲端 () 。 IoT 中樞的 [訊息接收] 節點可以接受上游處理器（例如，「動作偵測處理器」節點）或透過 HTTP 擴充處理器節點的外部推斷服務的事件。

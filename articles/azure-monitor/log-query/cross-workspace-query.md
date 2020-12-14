@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: 8eb163c95fb1426ebae8956d50f6d8f6aec6fd7f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1a6b328bc076ffa619921a8698549e95e6f15c60
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013644"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400755"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>在跨工作區和應用程式的 Azure 監視器中執行記錄查詢
 
@@ -22,7 +22,7 @@ Azure 監視器記錄在相同的資源群組、另一個資源群組或另一�
 2. 隱含地使用 [資源內容查詢](../platform/design-logs-deployment.md#access-mode)。 當您在特定資源、資源群組或訂用帳戶的內容中進行查詢時，將會從包含這些資源資料的所有工作區提取相關的資料。 將不會提取儲存在應用程式中的 Application Insights 資料。
 
 > [!IMPORTANT]
-> 如果您使用以 [工作區為基礎的 Application Insights 資源](../app/create-workspace-resource.md) 遙測會與所有其他記錄資料儲存在 Log Analytics 工作區中。 使用 log ( # A1 運算式來撰寫查詢，其中包含多個工作區中的應用程式。 針對相同工作區中的多個應用程式，您不需要跨工作區查詢。
+> 如果您使用以 [工作區為基礎的 Application Insights 資源](../app/create-workspace-resource.md) 遙測會與所有其他記錄資料儲存在 Log Analytics 工作區中。 使用工作區 ( # A1 運算式來撰寫查詢，其中包含多個工作區中的應用程式。 針對相同工作區中的多個應用程式，您不需要跨工作區查詢。
 
 
 ## <a name="cross-resource-query-limits"></a>跨資源查詢限制 

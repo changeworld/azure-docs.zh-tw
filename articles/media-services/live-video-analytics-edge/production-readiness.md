@@ -3,12 +3,12 @@ title: 生產環境就緒和最佳做法-Azure
 description: 本文提供有關如何在生產環境中的 IoT Edge 模組上設定和部署即時影片分析的指引。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 215427e3524861a842349b197668d92167960e5c
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 56982d84b7ffac718072683076657d56a2691d6c
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906330"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400551"
 ---
 # <a name="production-readiness-and-best-practices"></a>生產環境就緒和最佳做法
 
@@ -109,7 +109,11 @@ sudo chown -R edgeuser /var/local/mediaservices
 
 ### <a name="naming-video-assets-or-files"></a>命名影片資產或檔案
 
-Media graph 可讓您建立雲端中的資產或邊緣上的檔。 媒體資產可透過連續的 [影片錄製](continuous-video-recording-tutorial.md) 或以 [事件為基礎的影片錄製](event-based-video-recording-tutorial.md)來產生。 雖然這些資產和檔案可依您的需要命名，但持續以影片錄製為基礎之媒體資產的建議命名結構是 " &lt; anytext &gt; -$ {GraphTopologyName}-$ {GraphInstanceName}"。 例如，您可以在資產接收器上設定 assetNamePattern，如下所示：
+Media graph 可讓您建立雲端中的資產或邊緣上的檔。 媒體資產可透過連續的 [影片錄製](continuous-video-recording-tutorial.md) 或以 [事件為基礎的影片錄製](event-based-video-recording-tutorial.md)來產生。 雖然這些資產和檔案可依您的需要命名，但持續以影片錄製為基礎之媒體資產的建議命名結構是 " &lt; anytext &gt; -$ {GraphTopologyName}-$ {GraphInstanceName}"。   
+
+替代模式是由 $ 符號後面接著大括弧： **$ {variableName}** 所定義。  
+
+例如，您可以在資產接收器上設定 assetNamePattern，如下所示：
 
 ```
 "assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}
@@ -130,15 +134,29 @@ Media graph 可讓您建立雲端中的資產或邊緣上的檔。 媒體資產�
 如果是以事件為基礎的影片在邊緣上產生的多型影片剪輯，建議的命名模式應該包含日期時間，而相同圖表的多個實例則建議使用系統變數 GraphTopologyName 和 GraphInstanceName。 例如，您可以在檔案接收上設定 filePathPattern，如下所示： 
 
 ```
-"filePathPattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}-${System.DateTime}"
+"fileNamePattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}-${System.DateTime}"
 ```
 
 Or 
 
 ```
-"filePathPattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}--${System.GraphTopologyName}-${System.GraphInstanceName} ${System.DateTime}"
+"fileNamePattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}--${System.GraphTopologyName}-${System.GraphInstanceName} ${System.DateTime}"
 ```
+>[!NOTE]
+> 在上述範例中，變數 **fileSinkOutputName** 是您在圖形拓撲中定義的範例變數名稱。 這 **不** 是系統變數。 
 
+#### <a name="system-variables"></a>系統變數
+您可以使用的一些系統定義變數如下：
+
+|系統變數|描述|範例|
+|-----------|-----------|-----------|
+|System.DateTime|UTC 日期時間，以 ISO8601 檔相容格式 (基本表示 YYYYMMDDThhmmss) 。|20200222T173200Z|
+|System. PreciseDateTime|UTC 日期時間（以 ISO8601 檔案相容格式），以毫秒為單位 (基本表示 YYYYMMDDThhmmss。 sss) 。|20200222T 173200.123 Z|
+|System. GraphTopologyName|使用者提供的執行中圖形拓撲名稱。|IngestAndRecord|
+|System. GraphInstanceName|使用者提供的執行中圖形實例名稱。|camera001|
+
+>[!TIP]
+> 命名資產時無法使用 PreciseDateTime，因為 "." 在名稱中
 ### <a name="keeping-your-vm-clean"></a>保持您的 VM 乾淨
 
 如果您用來作為 edge 裝置的 Linux VM 不會定期進行管理，則會變成沒有回應。 將快取保持乾淨、消除不必要的套件，並從 VM 中移除未使用的容器是不可或缺的。 若要這麼做，您可以在 edge VM 上使用這組建議的命令。
@@ -153,7 +171,7 @@ Or
 
     自動移除選項會移除自動安裝的套件，因為有些其他套件需要它們，但已移除其他套件，所以不再需要它們
 1. `sudo docker image ls` –提供 edge 系統上的 Docker 映射清單
-1. `sudo docker system prune `
+1. `sudo docker system prune`
 
     Docker 採用保守的方法來清除未使用的物件 (通常稱為「垃圾收集」 ) ，例如映射、容器、磁片區和網路：除非您明確要求 Docker，否則這些物件通常不會移除。 這可能會導致 Docker 使用額外的磁碟空間。 針對每一種類型的物件，Docker 會提供剪除命令。 此外，您可以使用 docker 系統剪除一次清除多個類型的物件。 如需詳細資訊，請參閱剪除 [未使用的 Docker 物件](https://docs.docker.com/config/pruning/)。
 1. `sudo docker rmi REPOSITORY:TAG`
