@@ -1095,9 +1095,9 @@
         - name: 針對專用 SQL 集區使用評分精靈
           href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
           displayname: machine learning
-        - name: 使用 Azure AutoML 訓練任意程式碼的模型
+        - name: 使用自動化 ML 訓練任意程式碼的模型
           href: ./machine-learning/tutorial-automl.md
-        - name: 使用 Azure AutoML 在 Python 中訓練模型
+        - name: 使用自動化 ML 在 Python 中訓練模型
           href: ./spark/apache-spark-azure-machine-learning-tutorial.md
           displayname: machine learning
         - name: 使用 Apache Spark MLlib 建立模型

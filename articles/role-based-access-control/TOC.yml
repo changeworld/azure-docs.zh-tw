@@ -9,7 +9,7 @@
       href: rbac-and-directory-admin-roles.md
 - name: 快速入門
   items:
-    - name: 檢視使用者存取權
+    - name: 檢查使用者存取權
       href: check-access.md
     - name: ARM 範本
       displayName: Resource Manager

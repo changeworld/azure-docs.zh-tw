@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: b321985bf7920934193723b60abb7bfb28482e6d
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 2daf445c6721b4b6c3b2a57e7ef65f52eabd8a4c
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862236"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347127"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure-app-service"></a>教學課程：在 Azure App Service 中建置 PHP 和 MySQL 應用程式
 
@@ -451,7 +451,7 @@ Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'main'.
+remote: Updating branch 'master'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
@@ -482,7 +482,7 @@ Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'main'.
+remote: Updating branch 'master'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
@@ -634,7 +634,7 @@ php artisan migrate --env=production --force
 ```bash
 git add .
 git commit -m "added complete checkbox"
-git push azure main
+git push azure master
 ```
 
 完成 `git push` 之後，巡覽至 Azure 應用程式，然後測試新功能。
@@ -657,7 +657,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 開始記錄資料流之後，重新整理瀏覽器中的 Azure 應用程式，以取得部分 Web 流量。 您現在會看到使用管線傳送到終端機的主控台記錄。 如果您沒有立即看到主控台記錄，請在 30 秒後再查看。
 
-若要隨時停止記錄資料流，輸入 `Ctrl`+`C`。
+若要隨時停止記錄資料流，請輸入 `Ctrl`+`C`。
 
 ::: zone-end
 

@@ -12,6 +12,10 @@
           href: concepts-certificate-rotation.md
 - name: 共用文件
   items:
+    - name: 資料庫部署
+      items:
+        - name: Github 動作
+          href: how-to-deploy-github-action.md
     - name: 遷移
       items:
         - name: 使用 pg_dump 和 pg_restore 遷移資料
@@ -202,6 +206,8 @@
               displayName: 'query store, performance, optimize, recommendations'
         - name: 應用程式開發
           items:
+            - name: 最佳作法
+              href: application-best-practices.md
             - name: 連線程式庫
               href: concepts-connection-libraries.md
               displayName: 'libraries, drivers'
@@ -416,10 +422,16 @@
               href: flexible-server/connect-python.md
     - name: 教學課程
       items:
-        - name: 在虛擬網路中建立 Web 應用程式
-          href: flexible-server/tutorial-webapp-server-vnet.md
-        - name: 部署 Django 應用程式
-          href: flexible-server/tutorial-django-app-service-postgres.md
+        - name: 使用 AKS 來建置
+          items:
+            - name: 在 Kubernetes 上部署 Python 應用程式
+              href: flexible-server/tutorial-django-aks-database.md
+        - name: 使用 App Service 來建置
+          items:
+            - name: 在虛擬網路中建立 Web 應用程式
+              href: flexible-server/tutorial-webapp-server-vnet.md
+            - name: 在 App Service 上部署 Django 應用程式
+              href: flexible-server/tutorial-django-app-service-postgres.md
     - name: 概念
       items:
         - name: 伺服器
@@ -466,6 +478,8 @@
               href: flexible-server/how-to-manage-server-portal.md
             - name: Azure CLI
               href: flexible-server/how-to-manage-server-cli.md
+            - name: 連線和查詢指南
+              href: flexible-server/how-to-connect-query-guide.md
         - name: 排程維護
           items:
             - name: Azure 入口網站

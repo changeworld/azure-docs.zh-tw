@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: d5bd2fc150ee1d35127eeb9dbf3dc1eeffdc9659
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 33be57832d9364b859042cd38349c2437bcfcb18
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685931"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358141"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上的 SQL Server 容錯移轉叢集執行個體
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -50,7 +51,7 @@ Azure VM 上的 SQL Server 提供各種選項，作為用來部署 SQL Server �
 |---------|---------|---------|---------|
 |**作業系統最低版本**| 全部 |Windows Server 2012|Windows Server 2016|
 |**最低 SQL Server 版本**|全部|SQL Server 2012|SQL Server 2016|
-|**支援的 VM 可用性** |具有鄰近放置群組的可用性設定組 |可用性設定組與可用性區域|可用性設定組 |
+|**支援的 VM 可用性** |具有鄰近放置群組的可用性設定組 (適用於進階 SSD) </br> 相同的可用性區域 (適用於 Ultra SSD) |可用性設定組與可用性區域|可用性設定組 |
 |**支援 FileStream**|是|否|是 |
 |**Azure Blob 快取**|否|否|是|
 
@@ -69,12 +70,16 @@ Azure VM 上的 SQL Server 提供各種選項，作為用來部署 SQL Server �
 - 支援共用的 Azure 進階 SSD 和 Azure Ultra 磁碟儲存體。
 - 可使用單一共用磁碟或等量分割多個共用磁碟來建立共用存放集區。 
 - 支援 Filestream。
+- 進階 SSD支援可用性設定組。 
 
 
 **限制**： 
-- 虛擬機器必須放在相同的可用性設定組和鄰近放置群組中。
-- 不支援可用性區域。
+- 建議您將虛擬機器放在相同的可用性設定組和鄰近放置群組中。
+- Ultra 磁碟不支援可用性設定組。 
+- Ultra 磁碟支援可用性區域，但 VM 必須位於相同的可用性區域，這會降低虛擬機器的可用性。 
+- 不論所選擇的硬體可用性解決方案為何，若使用 Azure 共用磁碟，容錯移轉叢集的可用性一律是 99.9%。 
 - 不支援進階固態硬碟快取。
+
  
 若要開始使用，請參閱 [SQL Server 容錯移轉叢集執行個體與 Azure 共用磁碟](failover-cluster-instance-azure-shared-disks-manually-configure.md)。 
 

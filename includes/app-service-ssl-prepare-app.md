@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: dd73ac372a21a32eac0c742a7f0f525db2d1a4fe
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 8b3c1992a1cff18390f9d1332103e0650af418e2
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92169090"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347709"
 ---
 ## <a name="prepare-your-web-app"></a>準備您的 Web 應用程式
 
-若要為您的 App Service 應用程式建立自訂安全性繫結或啟用用戶端憑證，您的 [App Service 方案](https://azure.microsoft.com/pricing/details/app-service/)必須使用 **基本** 、 **標準** 、 **進階** 或 **隔離** 層。 在此步驟中，您要確定 Web 應用程式在支援的定價層。
+若要為您的 App Service 應用程式建立自訂 TLS/SSL 繫結或啟用用戶端憑證，您的 [App Service 方案](https://azure.microsoft.com/pricing/details/app-service/) 必須使用 **基本**、**標準**、**進階** 或 **隔離** 層。 在此步驟中，您要確定 Web 應用程式在支援的定價層。
 
 ### <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -49,7 +49,7 @@ ms.locfileid: "92169090"
 
 ### <a name="scale-up-your-app-service-plan"></a>擴大您的 App Service 方案
 
-選取任何非免費層 ( **B1** 、 **B2** **B3** 或「生產」類別中的任何一層)。  如需其他選項，請按一下 [查看其他選項]  。
+選取任何非免費層 (**B1**、**B2** **B3** 或「生產」類別中的任何一層)。  如需其他選項，請按一下 [查看其他選項]  。
 
 按一下 [套用]  。
 

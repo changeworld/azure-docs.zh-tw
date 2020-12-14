@@ -39,6 +39,8 @@
       href: template-samples.md
 - name: 概念
   items:
+    - name: 概念和最佳做法
+      href: concepts-and-best-practices.md
     - name: 業務持續性
       href: virtual-network-disaster-recovery-guidance.md
     - name: 連線能力

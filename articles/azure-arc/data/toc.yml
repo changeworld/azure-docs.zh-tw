@@ -42,13 +42,13 @@
               href: /sql/azdata/install/deploy-install-azdata-pip?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
     - name: 建立資料控制器
       items:
-        - name: 建立資料控制器 (Azure Data Studio)
+        - name: Azure Data Studio
           href: create-data-controller-azure-data-studio.md
-        - name: 建立資料控制器資源 (入口網站)
+        - name: Azure 入口網站
           href: create-data-controller-resource-in-azure-portal.md
-        - name: 建立資料控制器 (Azure Data CLI)
+        - name: Azure Data CLI (azdata)
           href: create-data-controller-using-azdata.md
-        - name: 使用 Kubernetes 建立資料控制器
+        - name: Kubernetes 工具
           href: create-data-controller-using-kubernetes-native-tools.md
     - name: 已啟用 Azure Arc 的資料服務常見體驗
       items:
@@ -80,6 +80,8 @@
           href: view-arc-data-services-inventory-in-azure-portal.md
         - name: 取得資料控制器的使用者名稱和密碼
           href: retrieve-the-username-password-for-data-controller.md
+        - name: 更新服務主體認證
+          href: update-service-principal-credentials.md
     - name: 疑難排解
       items:
         - name: 指南
