@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: d2e93ccfaf3ff2c5b74ceef1f6a274f71ee52c4e
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 4155cda1e1de6f15aefa6d5fc960988eba15068d
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309829"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371963"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure 監視器 (預覽中的 Log Analytics 工作區資料匯出) 
 Azure 監視器中的 Log Analytics 工作區資料匯出可讓您從 Log Analytics 工作區中選取的資料表持續將資料匯出到 Azure 儲存體帳戶，或在收集時 Azure 事件中樞。 本文提供這項功能的詳細資料，以及在工作區中設定資料匯出的步驟。
@@ -58,7 +58,7 @@ Log Analytics 工作區資料匯出會持續從 Log Analytics 工作區匯出資
 ## <a name="data-completeness"></a>資料完整性
 當目的地無法使用時，資料匯出會繼續重試傳送資料最多30分鐘。 如果在30分鐘後仍無法使用，則會捨棄資料，直到目的地變成可用為止。
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>成本
 資料匯出功能目前沒有額外的費用。 未來將會宣佈資料匯出的定價，以及開始計費之前所提供的通知。 如果您選擇在通知期間之後繼續使用資料匯出，將會以適用的費率向您收費。
 
 ## <a name="export-destinations"></a>匯出目的地
@@ -122,6 +122,10 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 
 N/A
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+N/A
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 使用下列 CLI 命令來查看工作區中的資料表。 它有助於複製您想要的資料表，並包含在資料匯出規則中。
@@ -133,13 +137,22 @@ az monitor log-analytics workspace table list -resource-group resourceGroupName 
 使用下列命令，以使用 CLI 來建立儲存體帳戶的資料匯出規則。
 
 ```azurecli
-az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $storageAccountId
+$storageAccountResourceId = '/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.Storage/storageAccounts/storage-account-name'
+az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $storageAccountResourceId
 ```
 
-使用下列命令，使用 CLI 建立事件中樞的資料匯出規則。
+使用下列命令，使用 CLI 建立事件中樞的資料匯出規則。 會為每個資料表建立個別的事件中樞。
 
 ```azurecli
-az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubsNamespacesId
+$eventHubsNamespacesResourceId = '/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.EventHub/namespaces/namespaces-name'
+az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubsNamespacesResourceId
+```
+
+使用下列命令，使用 CLI 建立特定事件中樞的資料匯出規則。 所有資料表都會匯出至提供的事件中樞名稱。 
+
+```azurecli
+$eventHubResourceId = '/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.EventHub/namespaces/namespaces-name/eventHubName/eventhub-name'
+az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubResourceId
 ```
 
 # <a name="rest"></a>[REST](#tab/rest)
@@ -205,9 +218,13 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ```
 ---
 
-## <a name="view-data-export-configuration"></a>查看資料匯出設定
+## <a name="view-data-export-rule-configuration"></a>查看資料匯出規則設定
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
+
+N/A
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 N/A
 
@@ -231,6 +248,10 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="disable-an-export-rule"></a>停用匯出規則
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
+
+N/A
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 N/A
 
@@ -272,6 +293,10 @@ Content-type: application/json
 
 N/A
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+N/A
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 使用下列命令，以使用 CLI 來刪除資料匯出規則。
@@ -295,6 +320,10 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 
 N/A
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+N/A
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 使用下列命令，以使用 CLI 來查看工作區中的所有資料匯出規則。
@@ -315,7 +344,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="unsupported-tables"></a>不支援的資料表
 如果資料匯出規則包含不支援的資料表，設定將會成功，但不會針對該資料表匯出任何資料。 如果稍後支援資料表，則會在該時間匯出其資料。
 
-如果資料匯出規則包含不存在的資料表，它將會失敗並出現錯誤 ```Table <tableName> does not exist in the workspace.```
+如果資料匯出規則包含不存在的資料表，它將會失敗，並出現「資料表不 <tableName> 存在於工作區中」的錯誤。
 
 
 ## <a name="supported-tables"></a>支援的資料表

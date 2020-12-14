@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/21/2020
+ms.date: 12/12/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a02c30423ab3c6de87eac7d34b5f0004e54a8d5d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 28d47b61bce7e154da6c6adb4b74e2b5cf1f3f3d
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957804"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371844"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Azure 部署支援哪些 SAP 軟體
 本文說明如何找出 Azure 部署支援的 SAP 軟體，以及所需的作業系統版本或 DBMS 版本。
@@ -82,6 +82,12 @@ Azure 上支援的作業系統、Oracle DBMS 版本和 Oracle 功能，會特別
 - 只有使用 Windows 客體作業系統執行的應用程式伺服器才支援非 Unicode SAP 系統。 DBMS 的客體作業系統可以是 Oracle Linux 或 Windows。 當您檢查 SAP 產品可用性對照表 (PAM) 時，這項限制的原因很明顯。 針對 Oracle Linux，SAP 永不發行非 Unicode SAP 核心
 
 如果您想要執行的 SAP 產品版本支援，請瞭解您所需的作業系統版本和 DBMS 所需的目標 Azure 基礎結構所支援的 DBMS 版本，以檢查 SAP 產品可用性對照表。 
+
+## <a name="oracle-linux"></a>Oracle Linux
+最常見的 Oracle Linux 問題，就是 SAP 是否也支援 Oracle Linux 的整數部分的 Red Hat 核心。 如需詳細資訊， [請參閱 SAP 支援附注 #1565179](https://launchpad.support.sap.com/#/notes/1565179)。
+
+## <a name="other-database-than-sap-hana"></a>SAP Hana 以外的其他資料庫
+Sap [支援附注 #1928533](https://launchpad.support.sap.com/#/notes/1928533)中記載了 sap 工作負載的非 HANA 資料庫支援。
 
 
 ## <a name="sap-hana-support"></a>SAP Hana 支援

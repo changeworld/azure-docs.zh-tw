@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/26/2020
+ms.date: 12/12/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e07876f9e28e7f3245f2524b5ef5da08de085ec1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 75ea3eec50516c9ba08504dd149d4bd08f8abbb6
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486465"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371929"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 來裝載及執行 SAP 工作負載案例
 
@@ -47,6 +47,8 @@ ms.locfileid: "96486465"
 - 若要了解在不同的 Azure 區域中，可以使用哪些 Azure 服務、Azure VM 類型及 Azure 儲存體服務，請參閱[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)網站 
 - 除了支援 Windows 和 Pacemaker 之外，協力廠商 HA 框架是否可運作？ 請參閱[SAP 支援附注](https://launchpad.support.sap.com/#/notes/1928533)的下半部 #1928533
 - 哪一個 Azure 儲存體最適合我的案例？ 讀取 [SAP 工作負載的 Azure 儲存體類型](./planning-guide-storage.md)
+- SAP 支援 Oracle Enterprise Linux 中的 Red Hat 核心嗎？ 閱讀 SAP [sap 支援附注 #1565179](https://launchpad.support.sap.com/#/notes/1565179)
+- 為什麼 Azure [Da (s) v4](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series) / [Ea (s) ](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series)未獲得 SAP Hana 認證的 VM 系列？ Azure Das/Eas VM 系列以 AMD 處理器驅動的硬體為基礎。 SAP Hana 不支援 AMD 處理器，甚至在虛擬化案例中也不支援。
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (大型執行個體)
@@ -74,12 +76,13 @@ SAP 應用層和 DBMS 的高可用性記載于從[適用于 Sap NetWeaver 的 Az
 
 
 ## <a name="documentation-on-integration-of-azure-services-into-sap-components"></a>將 Azure 服務整合至 SAP 元件的檔
-在本節中，您會找到與 SAP 資料來源的 PowerBI 整合相關檔，以及將 Azure Data Factory 整合至 SAP BW。
+在本節中，您會找到與 Microsoft Power BI 整合至 SAP 資料來源，以及 Azure Data Factory 整合到 SAP BW 的相關檔。
 
 
 
 ## <a name="change-log"></a>變更記錄
 
+- 12/12/2020：已將指標新增至 SAP 附注，以將 SAP 的 Oracle Enterprise Linux 支援詳細資料， [提供給 Azure 部署支援的 sap 軟體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#oracle-dbms-support)
 - 11/26/2020：調整 [SAP Hana 的 Azure 虛擬機器儲存體](./hana-vm-operations-storage.md) 設定和 [Azure 儲存體類型，讓 SAP 工作負載](./planning-guide-storage.md) 變更單一 [VM sla](https://azure.microsoft.com/support/legal/sla/virtual-machines)
 - 11/05/2020：在[SAP Hana Azure 虛擬機器儲存體](./hana-vm-operations-storage.md)設定中，將連結新增至有關 HANA 支援之檔案系統類型的新 SAP 附注 
 - 10/26/2020：變更 Azure premium 儲存體設定的部分資料表，以說明[SAP Hana azure 虛擬機器儲存體](./hana-vm-operations-storage.md)設定中的布建與高載輸送量

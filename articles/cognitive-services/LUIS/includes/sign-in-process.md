@@ -8,18 +8,20 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 10/30/2020
 ms.topic: include
-ms.openlocfilehash: e592c11062e81d48014a90895a0e42b460d4b77c
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e006f804b8ab6411f4949424147acf567dc2ed24
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128130"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97371301"
 ---
 ## <a name="sign-in-to-luis-portal"></a>登入 LUIS 入口網站
 
+[!INCLUDE [Note about portal deprecation](luis-portal-note.md)]
+
 LUIS 的新使用者必須遵循此程序：
 
-1. 登入 [LUIS 入口網站](https://www.luis.ai)，選取您的國家/地區並同意使用規定。 如果您看到的是 **我的應用程式** ，表示已有 LUIS 資源存在，您應直接跳到建立應用程式的步驟。 您將會有兩個註冊選項：
+1. 登入 [LUIS 入口網站](https://www.luis.ai)，選取您的國家/地區並同意使用規定。 如果您看到的是 **我的應用程式**，表示已有 LUIS 資源存在，您應直接跳到建立應用程式的步驟。 您將會有兩個註冊選項：
 
     * 使用 Azure 資源 (建議選項) - 可讓您將 LUIS 帳戶與新的或現有的 Azure 撰寫資源連結。 這相當於註冊已遷移。 您稍後不需要進行[移轉程序](../luis-migration-authoring.md#what-is-migration)。
 

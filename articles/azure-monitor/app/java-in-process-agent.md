@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 4b29e5375c10fc3c1aaa203df720fdd24090d11e
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 3cab22c2271fd5874b4b094be65c36f5b5f3a22d
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601130"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371878"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>JAVA 無程式碼應用程式監視 Azure 監視器 Application Insights
 
@@ -186,17 +186,17 @@ Log4j、Logback 和 util 會自動檢測記錄，而透過這些記錄架構執�
 依預設，只有在資訊層級或更高版本執行記錄時，才會收集記錄。
 請參閱如何變更此層級的設定 [選項](./java-standalone-config.md#auto-collected-logging) 。
 
-如果您想要將自訂維度附加至您的記錄，您可以使用 [Log4j 1 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html)、 [Log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)或 [Logback mdc](http://logback.qos.ch/manual/mdc.html)，Application Insights JAVA 3.0 會自動將這些 MDC 屬性作為追蹤和例外狀況遙測的自訂維度來捕捉。
+如果您想要將自訂維度附加至您的記錄，您可以使用 [Log4j 1.2 mdc](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html)、 [Log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)或 [Logback mdc](http://logback.qos.ch/manual/mdc.html)，Application Insights JAVA 3.0 會自動將這些 MDC 屬性作為追蹤和例外狀況遙測的自訂維度來捕捉。
 
 ### <a name="send-custom-telemetry-using-application-insights-java-2x-sdk"></a>使用 JAVA 2.x SDK Application Insights 傳送自訂遙測
 
-新增 `applicationinsights-core-2.6.0.jar` 至您的應用程式 (Application Insights JAVA 3.0 支援所有2.x 版，但如果您有選擇) ，則值得使用最新版本：
+新增 `applicationinsights-core-2.6.2.jar` 至您的應用程式 (Application Insights JAVA 3.0 支援所有2.x 版，但如果您有選擇) ，則值得使用最新版本：
 
 ```xml
 <dependency>
   <groupId>com.microsoft.azure</groupId>
   <artifactId>applicationinsights-core</artifactId>
-  <version>2.6.0</version>
+  <version>2.6.2</version>
 </dependency>
 ```
 
