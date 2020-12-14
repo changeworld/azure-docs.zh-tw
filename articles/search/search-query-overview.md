@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2020
-ms.openlocfilehash: 9cac0a0026a7007e227607e04e03a77e4df99ecd
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 9ce0ab34aac1a3dda823c9270f4eacebfb99166f
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368115"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387661"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>在 Azure 認知搜尋中查詢
 
-Azure 認知搜尋提供廣泛的查詢語言，可支援各種案例，從自由形式搜尋到高度指定的查詢模式。 本文將摘要說明您可以建立的查詢類型。
+Azure 認知搜尋提供豐富的查詢語言，可支援各種不同的案例，從自由文字搜尋到高度指定的查詢模式。 本文將摘要說明您可以建立的查詢類型。
 
 在認知搜尋中，查詢是一種反復存取作業的完整規格 **`search`** ，其中包含可通知查詢執行並塑造回應的參數。 參數和剖析器會決定查詢要求的類型。 下列查詢範例會使用 [ (REST API) 的搜尋檔 ](/rest/api/searchservice/search-documents)，以 [旅館示範索引](search-get-started-portal.md)為目標。
 
@@ -38,7 +38,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 + **`queryType`** 設定剖析器，也就是 [預設的簡單查詢](search-query-simple-examples.md) 剖析器， (全文檢索搜尋) 的最佳方式，或是用於高階運算式、鄰近搜尋、模糊和萬用字元搜尋等先進查詢結構的 [完整 Lucene 查詢](search-query-lucene-examples.md) 剖析器。
 
-+ **`search`** 提供比對準則（通常是完整的詞彙或片語），不論是否有運算子都一樣。 *在索引架構中，* 任何屬性為可搜尋的欄位都是此參數的候選項。 
++ **`search`** 提供比對準則（通常是完整的詞彙或片語），不論是否有運算子都一樣。 *在索引架構中，* 任何屬性為可搜尋的欄位都是此參數的候選項。
 
 + **`searchFields`** 限制特定可搜尋欄位的查詢執行。
 
@@ -82,7 +82,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 您可能還需要篩選器來叫用特定的查詢表單，如下表所述。 您可以使用篩選器搭配未指定的搜尋 (**`search=*`**) ，或使用包含詞彙、片語、運算子和模式的查詢字串。
 
-| 篩選準則案例 | 說明 |
+| 篩選準則案例 | 描述 |
 |-----------------|-------------|
 | 範圍篩選 | 在 Azure 認知搜尋中，系統會使用篩選參數來建立範圍查詢。 如需詳細資訊和範例，請參閱 [範圍篩選範例](search-query-simple-examples.md#example-4-range-filters)。 |
 | 地理位置搜尋 | 如果可搜尋的欄位屬於 [GeographyPoint 型](/rest/api/searchservice/supported-data-types)別，您可以為「尋找近端分享」或以地圖為基礎的搜尋控制項建立篩選運算式。 推動地理搜尋的欄位包含座標。 如需詳細資訊和範例，請參閱 [地理搜尋範例](search-query-simple-examples.md#example-5-geo-search)。 |
@@ -110,10 +110,8 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ## <a name="next-steps"></a>後續步驟
 
-使用入口網站或其他工具（例如 Postman 或 Visual Studio Code）或其中一個 Sdk 來深入探索查詢。 下列連結可讓您開始使用。
+若要深入瞭解查詢的執行，請參閱每個語法的範例。 如果您不熟悉全文檢索搜尋，請仔細查看查詢引擎的功能，這可能是個不錯的選擇。
 
-+ [搜尋總管](search-explorer.md)
-+ [如何在 REST 中進行查詢](search-get-started-rest.md)
-+ [如何在 .NET 中進行查詢](search-get-started-dotnet.md)
-+ [如何在 Python 中查詢](search-get-started-python.md)
-+ [如何以 JavaScript 查詢](search-get-started-javascript.md)
++ [簡單查詢範例](search-query-simple-examples.md)
++ [建置進階查詢的 Lucene 語法查詢範例](search-query-lucene-examples.md)
++ [全文檢索搜尋如何在 Azure 認知搜尋中運作](search-lucene-query-architecture.md)

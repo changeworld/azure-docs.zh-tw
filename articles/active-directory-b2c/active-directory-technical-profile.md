@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/26/2020
+ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 49d8e83c158cd14357a74b9dde4af1daba26dc36
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: c8f4c91070d87e9e6e3cdbb5534b988063eaba14
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109108"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387171"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的 Azure Active Directory 技術設定檔
 
@@ -64,13 +64,13 @@ InputClaims 元素包含宣告，可用來查閱目錄中的帳戶，或建立�
 
 若要建立新的使用者帳戶，輸入宣告是可唯一識別本機或同盟帳戶的金鑰。 例如，本機帳戶： **>signinnames.emailaddress. emailAddress** 或 **>signinnames.emailaddress。 userName**。 針對同盟帳戶： **>alternativesecurityid**。
 
-[InputClaimsTransformations](technicalprofiles.md#inputclaimstransformations)元素可以包含輸入宣告轉換元素的集合，這些專案是用來修改輸入宣告或產生新的宣告。
+[InputClaimsTransformations](technicalprofiles.md#input-claims-transformations)元素可以包含輸入宣告轉換元素的集合，這些專案是用來修改輸入宣告或產生新的宣告。
 
 ## <a name="outputclaims"></a>OutputClaims
 
 **OutputClaims** 元素包含 Azure AD 技術設定檔傳回的宣告清單。 您可能需要將原則中定義的宣告名稱對應至 Azure Active Directory 中定義的名稱。 只要設定了 `DefaultValue` 屬性，也可以加入 Azure Active Directory 未傳回的宣告。
 
-[OutputClaimsTransformations](technicalprofiles.md#outputclaimstransformations) 元素可能含有 **OutputClaimsTransformation** 的集合，用於修改輸出宣告或產生新的輸出宣告。
+[OutputClaimsTransformations](technicalprofiles.md#output-claims-transformations) 元素可能含有 **OutputClaimsTransformation** 的集合，用於修改輸出宣告或產生新的輸出宣告。
 
 例如，**AAD-UserWriteUsingLogonEmail** 技術設定檔會建立本機帳戶，並傳回下列宣告：
 
@@ -246,7 +246,7 @@ InputClaims 元素包含宣告，可用來查閱目錄中的帳戶，或建立�
 ```
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | 作業 | 是 | 要執行的作業。 可能的值：`Read`、`Write`、`DeleteClaims` 或 `DeleteClaimsPrincipal`。 |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | 否 | 如果使用者物件不存在目錄中，會發生錯誤。 可能的值：`true` 或 `false`。 |
@@ -259,7 +259,7 @@ InputClaims 元素包含宣告，可用來查閱目錄中的帳戶，或建立�
  
 您可以使用下列設定來設定失敗時所顯示的錯誤訊息。 中繼資料應該在 [自我](self-asserted-technical-profile.md) 判斷技術設定檔中設定。 錯誤訊息可以[當地語系化](localization.md)。
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | UserMessageIfClaimsPrincipalAlreadyExists | 否 | 如果會引發錯誤 (請參閱 RaiseErrorIfClaimsPrincipalAlreadyExists 屬性說明)，請指定當使用者物件存在時，要向使用者顯示的訊息。 |
 | UserMessageIfClaimsPrincipalDoesNotExist | 否 | 如果會引發錯誤 (請參閱 RaiseErrorIfClaimsPrincipalDoesNotExist 屬性的說明)，請指定當使用者物件不存在時，要向使用者顯示的訊息。 |

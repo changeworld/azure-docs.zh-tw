@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/12/2020
+ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 950c159ed4d2c57796f33b9505e6931dbec983ba
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 441a77823c77305e567e9e1436715bc51ca48c11
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532370"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387049"
 ---
 # <a name="display-controls"></a>顯示控制項
 
@@ -46,16 +46,16 @@ ms.locfileid: "94532370"
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| Id | 是 | 用於顯示控制項的識別碼。 您可以 [參考](#referencing-display-controls)它。 |
+| 識別碼 | 是 | 用於顯示控制項的識別碼。 您可以 [參考](#referencing-display-controls)它。 |
 | UserInterfaceControlType | 是 | 顯示控制項的類型。 目前支援 [VerificationControl](display-control-verification.md) |
 
 [ **控制項** ] 元素包含下列元素：
 
 | 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
-| InputClaims | 0:1 | **InputClaims** 用來預先填入要從使用者收集的宣告值。 如需詳細資訊，請參閱 [InputClaims](technicalprofiles.md#inputclaims) 元素。 |
+| InputClaims | 0:1 | **InputClaims** 用來預先填入要從使用者收集的宣告值。 如需詳細資訊，請參閱 [InputClaims](technicalprofiles.md#input-claims) 元素。 |
 | DisplayClaims | 0:1 | **DisplayClaims** 可用來代表要從使用者收集的宣告。 如需詳細資訊，請參閱 [DisplayClaim](technicalprofiles.md#displayclaim) 元素。|
-| OutputClaims | 0:1 | **OutputClaims** 可用來代表要暫時 **儲存此顯示的宣告** 。 如需詳細資訊，請參閱 [OutputClaims](technicalprofiles.md#outputclaims) 元素。|
+| OutputClaims | 0:1 | **OutputClaims** 可用來代表要暫時 **儲存此顯示的宣告**。 如需詳細資訊，請參閱 [OutputClaims](technicalprofiles.md#output-claims) 元素。|
 | 動作 | 0:1 | **動作** 可用來列出驗證技術設定檔，以針對前端發生的使用者動作叫用。 |
 
 ### <a name="input-claims"></a>輸入宣告
@@ -76,7 +76,7 @@ ms.locfileid: "94532370"
 
 每種類型的顯示控制項都需要一組不同的顯示宣告、 [輸出宣告](#output-claims)，以及要執行的 [動作](#display-control-actions) 。
 
-類似于 [自我判斷技術設定檔](self-asserted-technical-profile.md#display-claims)中定義的 **顯示宣告** ，顯示宣告代表要從使用者在顯示控制項中收集的宣告。 參考的 **ClaimType** 元素必須針對 Azure AD B2C 所支援的使用者輸入類型指定 **>userinputtype** 元素，例如 `TextBox` 或 `DropdownSingleSelect` 。 如果 **動作** 需要顯示宣告值，請將 **必要** 的屬性設定為， `true` 以強制使用者提供該特定顯示宣告的值。
+類似于 [自我判斷技術設定檔](self-asserted-technical-profile.md#display-claims)中定義的 **顯示宣告**，顯示宣告代表要從使用者在顯示控制項中收集的宣告。 參考的 **ClaimType** 元素必須針對 Azure AD B2C 所支援的使用者輸入類型指定 **>userinputtype** 元素，例如 `TextBox` 或 `DropdownSingleSelect` 。 如果 **動作** 需要顯示宣告值，請將 **必要** 的屬性設定為， `true` 以強制使用者提供該特定顯示宣告的值。
 
 特定的顯示控制項類型需要特定的顯示宣告。 例如， **VerificationControl** 類型的顯示控制項需要 **VerificationCode** 。 您可以使用屬性 **ControlClaimType** 來指定所需的宣告所指定的 DisplayClaim。 例如：
 
@@ -94,7 +94,7 @@ ms.locfileid: "94532370"
 
 顯示控制項的 **動作** 就是當使用者在用戶端上執行特定動作時，會在 Azure AD B2C 後端執行的程式 (瀏覽器) 。 例如，當使用者選取頁面上的按鈕時所要執行的驗證。
 
-動作會定義 **驗證技術設定檔** 的清單。 它們是用來驗證顯示控制項的部分或全部顯示宣告。 驗證技術設定檔會驗證使用者輸入，並可能會將錯誤傳回給使用者。 您可以在顯示控制項動作中使用 **ContinueOnError** 、 **ContinueOnSuccess** 和 **前置條件** ，類似于在自我判斷技術設定檔中的 [驗證技術配置](validation-technical-profile.md) 檔中使用它們的方式。
+動作會定義 **驗證技術設定檔** 的清單。 它們是用來驗證顯示控制項的部分或全部顯示宣告。 驗證技術設定檔會驗證使用者輸入，並可能會將錯誤傳回給使用者。 您可以在顯示控制項動作中使用 **ContinueOnError**、 **ContinueOnSuccess** 和 **前置條件** ，類似于在自我判斷技術設定檔中的 [驗證技術配置](validation-technical-profile.md) 檔中使用它們的方式。
 
 #### <a name="actions"></a>動作
 
@@ -110,7 +110,7 @@ ms.locfileid: "94532370"
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| Id | 是 | 作業的類型。 可能的值：`SendCode` 或 `VerifyCode`。 此 `SendCode` 值會將程式碼傳送給使用者。 此動作可能包含兩個驗證技術設定檔：一個用來產生程式碼，另一個用於傳送程式碼。 `VerifyCode`值會驗證使用者在 [輸入] 文字方塊中輸入的程式碼。 |
+| 識別碼 | 是 | 作業的類型。 可能的值：`SendCode` 或 `VerifyCode`。 此 `SendCode` 值會將程式碼傳送給使用者。 此動作可能包含兩個驗證技術設定檔：一個用來產生程式碼，另一個用於傳送程式碼。 `VerifyCode`值會驗證使用者在 [輸入] 文字方塊中輸入的程式碼。 |
 
 **Action** 元素包含下列元素：
 

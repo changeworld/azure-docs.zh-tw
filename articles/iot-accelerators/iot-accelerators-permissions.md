@@ -8,18 +8,18 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: b05ed6e1239721bcf3c1cf33d3ee63a992fd9843
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 5a088cb07fa74b65e497de54be8c97bd51d31c16
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853217"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387831"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>使用 AzureIoTSolutions.com 網站部署解決方案加速器
 
 您可以從 [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators)，將 Azure IoT 解決方案加速器部署至 Azure 訂用帳戶。 AzureIoTSolutions.com 會同時裝載 Microsoft 開放原始碼和合作夥伴解決方案加速器。 這些解決方案加速器會與 [Azure IoT 參考架構](/azure/architecture/reference-architectures/iot) \(英文\) 一致。 您可以使用該網站，將解決方案加速器快速部署為示範或生產環境。
 
-![AzureIoTSolutions.com](media/iot-accelerators-permissions/iotsolutionscom.png)
+:::image type="content" source="media/iot-accelerators-permissions/iotsolutionscom.png" alt-text="IoT 解決方案首頁":::
 
 > [!TIP]
 > 如果您需要更充分掌控部署程序，可以使用 CLI 來部署解決方案加速器。

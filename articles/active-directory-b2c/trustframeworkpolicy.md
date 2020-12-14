@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29eddbcfb7c0da98e5438f968dd3976b77a44680
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 354c6f9710b7cbd70e0631bc973b2482ea8d8bb3
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203090"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97386879"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -45,7 +45,7 @@ ms.locfileid: "85203090"
 | TenantId | 是 | 此原則所屬之租用戶的唯一識別碼。 |
 | PolicyId | 是 | 原則的唯一識別碼。 此識別碼必須加上前置詞 *B2C_1A_* |
 | PublicPolicyUri | 是 | 原則的 URI，也就是租用戶識別碼和原則識別碼的組合。 |
-| DeploymentMode | 否 | 可能的值： `Production` 、或 `Development` 。 `Production` 為預設值。 使用此屬性以偵錯您的原則。 如需詳細資訊，請參閱[收集記錄](troubleshoot-with-application-insights.md)。 |
+| DeploymentMode | 否 | 可能的值： `Production` 、或 `Development` 。 `Production` 是預設值。 使用此屬性以偵錯您的原則。 如需詳細資訊，請參閱[收集記錄](troubleshoot-with-application-insights.md)。 |
 | UserJourneyRecorderEndpoint | 否 | 當 **DeploymentMode** 設為 `Development` 時，可使用端點。 值必須是 `urn:journeyrecorder:applicationinsights`。 如需詳細資訊，請參閱[收集記錄](troubleshoot-with-application-insights.md)。 |
 
 
@@ -62,27 +62,15 @@ ms.locfileid: "85203090"
    PublicPolicyUri="http://mytenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
 ```
 
-## <a name="inheritance-model"></a>繼承模型
+**TrustFrameworkPolicy** 元素包含下列元素：
 
-這些類型的原則檔通常用於使用者旅程圖中：
-
-- **基底**檔案，包含大部分的定義。 為了有利於原則的疑難排解和長期維護，建議您盡可能不要變更這個檔案。
-- **延伸**模組檔案，其中保存您租使用者的唯一設定變更。 此原則檔衍生自基底檔案。 使用此檔案以新增新的功能，或覆寫現有功能。 例如，使用此檔案與新的識別提供者形成同盟。
-- **信賴憑證者 (RP)** 檔案，這是以單一工作為主的檔案，直接由信賴憑證者叫用，例如 Web、行動或桌面應用程式。 各項唯一且不重複的工作，例如註冊或登入、密碼重設，或設定檔編輯，均需要專屬的 RP 原則檔。 此原則檔衍生自擴充檔案。
-
-信賴憑證者應用程式會呼叫 RP 原則檔來執行特定工作。 起始登入流程即是一例。 Azure AD B2C 中的識別體驗架構會先從基底原則檔開始，再到擴充原則檔和 RP 原則檔，逐步新增所有元素，以組合目前生效的原則。 RP 檔案會覆寫擴充原則檔中相同類型和名稱的元素，而擴充原則檔會覆寫基底原則檔。 下圖顯示原則檔和信賴憑證者應用程式之間的關聯性。
-
-![顯示信任架構原則繼承模型的圖表](./media/trustframeworkpolicy/custom-policy-Inheritance-model.png)
-
-繼承模型如下所示：
-
-- 父原則和子原則皆屬於相同的結構描述。
-- 任何層級的子原則可以繼承自父原則，並藉由新增新元素以進行擴充。
-- 在層數上並無限制。
-
-如需詳細資訊，請參閱[開始使用自訂原則](custom-policy-get-started.md)。
-
-## <a name="base-policy"></a>基底原則
+| 元素 | 發生次數 | 描述 |
+| ------- | ----------- | ----------- |
+| BasePolicy| 0:1| 基底原則的識別碼。 |
+| [BuildingBlocks](buildingblocks.md) | 0:1 | 原則的組建區塊。 |
+| [ClaimsProviders](claimsproviders.md) | 0:1 | 宣告提供者的集合。 |
+| [UserJourneys](userjourneys.md) | 0:1 | 使用者旅程的集合。 |
+| [RelyingParty](relyingparty.md) | 0:1 | 信賴憑證者原則的定義。 |
 
 若要從另一個原則繼承原則，必須在原則檔的 **TrustFrameworkPolicy** 元素下，宣告 **BasePolicy** 元素。 **BasePolicy** 元素是從中衍生此原則之基底原則的參考。
 
@@ -114,46 +102,3 @@ ms.locfileid: "85203090"
 </TrustFrameworkPolicy>
 ```
 
-## <a name="policy-execution"></a>原則執行
-
-信賴憑證者應用程式 (例如 Web、行動或桌面應用程式) 會呼叫[信賴憑證者 (RP) 原則](relyingparty.md)。 RP 原則檔會執行特定工作，例如登入、重設密碼或編輯設定檔。 RP 原則會設定信賴憑證者應用程式收到的宣告清單，做為已簽發之權杖的一部分。 多個應用程式可使用相同的原則。 所有應用程式都會收到與宣告相同的權杖，而使用者會經歷相同的使用者旅程圖。 單一應用程式可使用多個原則。
-
-在 RP 原則檔中，指定 **DefaultUserJourney** 元素，該元素指向 [UserJourney](userjourneys.md)。 通常是在基底或擴充原則中定義使用者旅程圖。
-
-B2C_1A_signup_signin 原則：
-
-```xml
-<RelyingParty>
-  <DefaultUserJourney ReferenceId="SignUpOrSignIn">
-  ...
-```
-
-B2C_1A_TrustFrameWorkBase 或 B2C_1A_TrustFrameworkExtensionPolicy：
-
-```xml
-<UserJourneys>
-  <UserJourney Id="SignUpOrSignIn">
-  ...
-```
-
-使用者旅程圖定義使用者經歷的商務邏輯。 每個使用者旅程圖都是一組協調流程步驟，依照驗證和資訊集合的順序，執行一系列動作。
-
-[starter pack](custom-policy-get-started.md#custom-policy-starter-pack)中的 **SocialAndLocalAccounts** 原則檔包含 SignUpOrSignIn、ProfileEdit、PasswordReset 使用者旅程圖。 您可以針對其他案例新增更多使用者旅程，例如變更電子郵件地址或連結和取消連結社交帳戶。
-
-協調流程步驟可呼叫[技術設定檔](technicalprofiles.md)。 技術設定檔提供一個架構，其中包含與不同類型的對象進行通訊的內建機制。 例如，技術設定檔可以執行以下動作：
-
-- 轉譯使用者體驗。
-- 讓使用者使用社交或企業帳戶登入，例如 Facebook、Microsoft 帳戶、Google、Salesforce 或任何其他識別提供者。
-- 設定多重要素驗證的電話驗證。
-- 從 Azure AD B2C 身分識別存放區讀取和寫入資料。
-- 呼叫自訂的 Restful API 服務。
-
-![顯示原則執行流程的圖表](./media/trustframeworkpolicy/custom-policy-execution.png)
-
- **TrustFrameworkPolicy** 元素包含下列元素：
-
-- 如上所述的 BasePolicy
-- [BuildingBlocks](buildingblocks.md)
-- [ClaimsProviders](claimsproviders.md)
-- [UserJourneys](userjourneys.md)
-- [RelyingParty](relyingparty.md)

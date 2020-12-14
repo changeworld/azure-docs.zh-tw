@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何建立及設定復原服務保存�
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: ef3d464c051f15d656a4a60937bb05ac496ee52d
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 3ba9f47da4a4c9719c313ba196ca121f8cde54ad
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548421"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387729"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>建立和設定復原服務保存庫
 
@@ -77,8 +77,9 @@ Azure 備份會自動處理保存庫的儲存體。 您必須指定該儲存體�
 
  ![備份設定橫幅](./media/backup-azure-arm-restore-vms/banner.png)
 
-1. 從入口網站中，移至 [復原服務保存庫] > 設定 > 屬性。
-2. 選取 [ **在此保存庫中啟用跨區域還原** ] 以啟用此功能。
+1. 從入口網站中，移至您的復原服務保存 **庫 > [** **設定** ]) 下的 [內容] (。
+1. 在 [ **備份** 設定] 下，選取 [ **更新**]。
+1. 選取 [ **在此保存庫中啟用跨區域還原** ] 以啟用此功能。
 
    ![啟用跨區域還原](./media/backup-azure-arm-restore-vms/backup-configuration.png)
 

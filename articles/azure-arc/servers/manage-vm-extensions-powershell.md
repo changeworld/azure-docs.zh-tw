@@ -3,18 +3,18 @@ title: 使用 Azure PowerShell 啟用 VM 擴充功能
 description: 本文說明如何使用 Azure PowerShell 將虛擬機器擴充功能部署到在混合式雲端環境中執行的 Azure Arc 啟用的伺服器。
 ms.date: 11/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 40f3d6ab98411d5b8e42f4f79817c66f56fdaaef
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 6b38c425042c260a29682db11212a1f6324abd38
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029025"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387405"
 ---
 # <a name="enable-azure-vm-extensions-using-azure-powershell"></a>使用 Azure PowerShell 啟用 Azure VM 擴充功能
 
 本文說明如何使用 Azure PowerShell 將 Azure Arc 啟用的伺服器所支援的 Azure VM 擴充功能部署和卸載至 Linux 或 Windows 混合式電腦。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具備 Azure PowerShell 的電腦。 如需指示，請參閱 [安裝並設定 Azure PowerShell](/powershell/azure/)。
 
@@ -35,7 +35,7 @@ ms.locfileid: "96029025"
 ```powershell
 PS C:\> $Setting = @{ "workspaceId" = "workspaceId" }
 PS C:\> $protectedSetting = @{ "workspaceKey" = "workspaceKey" }
-PS C:\> New-AzConnectedMachineExtension -Name OMSLinuxAgent -ResourceGroupName "myResourceGroup" -MachineName "myMachine" -Location "eastus" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -TypeHandlerVersion "1.10" -Settings $Setting -ProtectedSetting $protectedSetting -ExtensionType OmsAgentforLinux"
+PS C:\> New-AzConnectedMachineExtension -Name OMSLinuxAgent -ResourceGroupName "myResourceGroup" -MachineName "myMachine" -Location "eastus" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -TypeHandlerVersion "1.10" -Settings $Setting -ProtectedSetting $protectedSetting -ExtensionType "OmsAgentforLinux"
 ```
 
 下列範例會在啟用 Arc 的伺服器上啟用自訂腳本延伸模組：

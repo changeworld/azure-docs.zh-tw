@@ -7,19 +7,19 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: ce23119e568347fff2ad270cfea7f8b563cae529
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 1f08bfd6b7c0439dd08a3091b5ea927781af9b84
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904987"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387576"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>註冊並掃描 Power BI 租使用者 (preview) 
 
 本文說明如何使用 Azure 範疇入口網站來註冊和掃描 Power BI 租使用者。
 
 > [!Note]
-> 如果範疇實例和 Power BI 租使用者位於相同的 Azure 租使用者中，您只能使用受控識別 (MSI) 驗證來設定 Power BI 租使用者的掃描。 如果範疇實例和 Power BI 租使用者位於不同的 Azure 租使用者中，您必須使用委派的驗證進行驗證，而且必須使用 PowerShell 來設定您的掃描。 請參閱 [使用 PowerShell 註冊和掃描 Power BI](powershell-register-scan-power-bi.md)。
+> 如果範疇實例和 Power BI 租使用者位於相同的 Azure 租使用者中，您只能使用受控識別 (MSI) 驗證來設定 Power BI 租使用者的掃描。 
 
 ## <a name="create-a-security-group-for-permissions"></a>建立許可權的安全性群組
 

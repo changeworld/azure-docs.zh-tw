@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 11/27/2018
-ms.openlocfilehash: 4d62619fe2641ec1aded39650b47b53cf4269d8b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f20af5ea9628dd6c8aa732ac1d09625156eed0c4
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368871"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387536"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>使用 Azure Data Factory 中的 SQL Server 預存程序活動轉換資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -33,7 +33,7 @@ ms.locfileid: "92368871"
 您可以使用「預存程序活動」來叫用您企業或 Azure 虛擬機器 (VM) 中的下列其中一個資料存放區： 
 
 - Azure SQL Database
-- Azure Synapse Analytics (先前稱為 SQL 資料倉儲)
+- Azure Synapse Analytics
 - SQL Server Database。  如果您使用 SQL Server，請在裝載資料庫的同一部電腦上或可存取資料庫的個別電腦上安裝自我裝載整合執行階段。 自我裝載整合執行階段是一套透過安全且可管理的方式，將內部部署/Azure VM 上的資料來源連結至雲端服務的元件。 如需詳細資訊，請參閱 [自我裝載整合運行](create-self-hosted-integration-runtime.md) 時間文章。
 
 > [!IMPORTANT]
@@ -88,9 +88,7 @@ ms.locfileid: "92368871"
 | SQL Server           | https://docs.microsoft.com/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |
 
 
-## <a name="error-info"></a>錯誤資訊
 
-當預存程序失敗並傳回錯誤詳細資料時，您無法直接在活動輸出中擷取錯誤資訊。 不過，Data Factory 會將其所有活動執行事件提取至 Azure 監視器。 在 Data Factory 提取至 Azure 監視器的事件中，它會將錯誤詳細資料推送至該處。 例如，您可以從這些事件設定電子郵件警示。 如需詳細資訊，請參閱[使用 Azure 監視器提出警示及監視 Data Factory](monitor-using-azure-monitor.md)。
 
 ## <a name="next-steps"></a>後續步驟
 請參閱下列文章，其說明如何以其他方式轉換資料： 
@@ -102,5 +100,5 @@ ms.locfileid: "92368871"
 * [Hadoop 串流活動](transform-data-using-hadoop-streaming.md)
 * [Spark 活動](transform-data-using-spark.md)
 * [.NET 自訂活動](transform-data-using-dotnet-custom-activity.md)
-* [Azure Machine Learning Studio (傳統) 批次執行活動](transform-data-using-machine-learning.md)
+* [Azure Machine Learning Studio (傳統版) 批次執行活動](transform-data-using-machine-learning.md)
 * [預存程序活動](transform-data-using-stored-procedure.md)

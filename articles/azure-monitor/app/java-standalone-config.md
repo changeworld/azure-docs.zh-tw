@@ -1,19 +1,19 @@
 ---
-title: 設定選項-Azure 監視器 Application Insights JAVA
-description: Azure 監視器 Application Insights JAVA 的設定選項
+title: 設定選項-適用于 JAVA 的 Azure 監視器 Application Insights
+description: 如何設定 JAVA 的 Azure 監視器 Application Insights
 ms.topic: conceptual
 ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: e9240253b385a0b53868c5a8a79c751c2f7c09c0
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: b5c1ab7db818daa91497728299d2247f612fe21b
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601079"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387746"
 ---
-# <a name="configuration-options-for-azure-monitor-application-insights-java"></a>Azure 監視器 Application Insights JAVA 的設定選項
+# <a name="configuration-options---azure-monitor-application-insights-for-java"></a>設定選項-適用于 JAVA 的 Azure 監視器 Application Insights
 
 > [!WARNING]
 > **如果您要從 3.0 Preview 升級**

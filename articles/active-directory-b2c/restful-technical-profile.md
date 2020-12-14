@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 11/25/2020
+ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e5aca04a649dfa5228d12737b21ef2ee2b14013b
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 891991fa938ad3dcfacae6d02e40efd6d6e9689e
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750423"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97386845"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的 RESTful 技術設定檔
 
@@ -116,13 +116,13 @@ REST API 技術設定檔可讓您將複雜的 JSON 承載傳送至端點。
 | --------- | -------- | ----------- |
 | ServiceUrl | 是 | REST API 端點的 URL。 |
 | AuthenticationType | 是 | RESTful 宣告提供者正在執行的驗證類型。 可能的值： `None` 、 `Basic` 、 `Bearer` 、  `ClientCertificate` 或 `ApiKeyHeader` 。 <br /><ul><li>`None`值指出 REST API 是匿名的。 </li><li>`Basic` 值表示 REST API 受到 HTTP 基本驗證保護。 只有經過驗證的使用者 (包括 Azure AD B2C) 才能存取您的 API。 </li><li>`ClientCertificate` (建議的) 值表示 REST API 使用用戶端憑證驗證來限制存取。 只有具有適當憑證的服務（例如 Azure AD B2C）可以存取您的 API。 </li><li>`Bearer`值指出 REST API 使用用戶端 OAuth2 持有人權杖來限制存取。 </li><li>此 `ApiKeyHeader` 值表示使用 API 金鑰 HTTP 標頭（例如 *x 函式-key*）來保護 REST API。 </li></ul> |
-| AllowInsecureAuthInProduction| 否| 指出 TrustFrameworkPolicy 的 `AuthenticationType` 生產環境 (是否可以設定為 `none` `DeploymentMode` [TrustFrameworkPolicy](trustframeworkpolicy.md) `Production` ，或未指定) 。 可能的值： true 或 false (預設) 。 |
+| AllowInsecureAuthInProduction| 否| 指出 TrustFrameworkPolicy 的 `AuthenticationType` 生產環境 (是否可以設定為 `none` `DeploymentMode` [](trustframeworkpolicy.md) `Production` ，或未指定) 。 可能的值： true 或 false (預設) 。 |
 | SendClaimsIn | 否 | 指定輸入宣告如何傳送至 RESTful 宣告提供者。 可能的值： `Body` (預設) 、、 `Form` `Header` `Url` 或 `QueryString` 。 `Body` 值是以 JSON 格式在要求本文中傳送的輸入宣告。 `Form` 值是以符號 '&' 分隔的金鑰值格式在要求本文中傳送的輸入宣告。 `Header` 值是在要求標題中傳送的輸入宣告。 `Url`值是在 URL 中傳送的輸入宣告，例如 HTTPs：//{claim1}。範例 .com/{claim2}/{claim3}？ {claim4} = {claim5}。 `QueryString` 值是在要求查詢字串中傳送的輸入宣告。 每個叫用的 HTTP 指令動詞如下所示：<br /><ul><li>`Body`： POST</li><li>`Form`： POST</li><li>`Header`： GET</li><li>`Url`： GET</li><li>`QueryString`： GET</li></ul> |
 | ClaimsFormat | 否 | 目前未使用，可以忽略。 |
 | ClaimUsedForRequestPayload| 否 | 字串宣告的名稱，其中包含要傳送給 REST API 的承載。 |
 | DebugMode | 否 | 在偵錯模式中執行技術設定檔。 可能的值為：`true` 或 `false` (預設)。 在偵錯模式中，REST API 可以傳回更多資訊。 請參閱傳回的 [錯誤訊息](#returning-validation-error-message) 一節。 |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含 [宣告解析](claim-resolver-overview.md) 。 可能的值為：`true` 或 `false` (預設)。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 `true` 。 |
-| ResolveJsonPathsInJsonTokens  | 否 | 指出技術設定檔是否解析 JSON 路徑。 可能的值為：`true` 或 `false` (預設)。 使用此中繼資料可從嵌套的 JSON 元素讀取資料。 在 [OutputClaim](technicalprofiles.md#outputclaims)中，將設定 `PartnerClaimType` 為您要輸出的 JSON 路徑元素。 例如： `firstName.localized` 、或 `data.0.to.0.email` 。|
+| ResolveJsonPathsInJsonTokens  | 否 | 指出技術設定檔是否解析 JSON 路徑。 可能的值為：`true` 或 `false` (預設)。 使用此中繼資料可從嵌套的 JSON 元素讀取資料。 在 [OutputClaim](technicalprofiles.md#output-claims)中，將設定 `PartnerClaimType` 為您要輸出的 JSON 路徑元素。 例如： `firstName.localized` 、或 `data.0.to.0.email` 。|
 | UseClaimAsBearerToken| 否| 包含持有人權杖的宣告名稱。|
 
 ## <a name="error-handling"></a>錯誤處理

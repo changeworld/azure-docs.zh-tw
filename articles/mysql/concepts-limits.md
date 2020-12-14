@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: 38c006bd1cda1494b284f742459aaf539ed4a2d1
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b4f828c675df9625d6d4889dbc31bbc4b9f887ed
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539702"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97386709"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>「適用於 MySQL 的 Azure 資料庫」中的限制
 下列各節說明資料庫服務中的容量、儲存引擎支援、權限支援、資料操作陳述式支援，以及功能限制。 另請參閱適用於 MySQL 資料庫引擎的[一般限制](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) \(英文\)。
@@ -55,6 +55,7 @@ MySQL 服務不允許直接存取基礎檔案系統。 不支援某些資料操�
 - 定義：需要進階的權限才能建立，而且受限制。 如果使用備份匯入資料，執行 mysqldump 時以手動方式或使用 `--skip-definer` 命令移除 `CREATE DEFINER` 命令。
 - 系統資料庫： [mysql 系統資料庫](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) 是唯讀的，用來支援各種 PaaS 功能。 您無法對 `mysql` 系統資料庫進行變更。
 - `SELECT ... INTO OUTFILE`：服務中不支援。
+- `LOAD_FILE(file_name)`：服務中不支援。
 
 ### <a name="supported"></a>支援
 - 支援 `LOAD DATA INFILE`，但必須指定 `[LOCAL]` 參數並導向至 UNC 路徑 (透過 SMB 掛接的 Azure 儲存體)。
