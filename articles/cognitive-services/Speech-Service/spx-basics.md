@@ -10,16 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: bead348e64fcee4cc5b790f975c9da5200ee796b
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: acc19d9a04909dcf0e79c93e0c8a3fb8225ee1b4
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422394"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546894"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>了解語音 CLI 的基本概念
 
-在本文中，您將了解語音 CLI 的基本使用模式，這是一項可讓您直接使用語音服務而無須撰寫程式碼的命令列工具。 您可以快速測試語音服務的主要功能而無須建立開發環境或撰寫任何程式碼，以確認是否足以因應您使用案例的需求。 此外，語音 CLI 已可在生產環境中使用，可使用 `.bat` 或殼層指令碼將語音服務中的簡易工作流程自動化。
+在本文中，您將了解語音 CLI 的基本使用模式，這是一項可讓您直接使用語音服務而無須撰寫程式碼的命令列工具。 您可以快速測試語音服務的主要功能而無須建立開發環境或撰寫任何程式碼，以確認是否足以因應您使用案例的需求。 語音 CLI 已可在生產環境中使用，可使用 `.bat` 或殼層指令碼將語音服務中的簡易工作流程自動化。
+
+本文假設您已具備命令提示字元、終端或 PowerShell 的使用知識。
 
 [!INCLUDE [](includes/spx-setup.md)]
 
@@ -45,11 +47,24 @@ spx help find --topics "examples"
 spx help recognize
 ```
 
-現在執行下列命令，使用您的預設麥克風，使用語音服務執行一些語音辨識。
+現在，讓我們透過系統的預設麥克風，使用語音 CLI 來執行語音辨識。 
+
+>[!WARNING]
+> 如果您使用 Docker 容器，此命令將無法使用。
+
+請執行這個命令：
 
 ```shell
 spx recognize --microphone
 ```
+
+您也可以使用語音 CLI 來辨識音訊檔案中的語音。
+
+```shell
+spx recognize --file /path/to/file.wav
+```
+> [!TIP]
+> 如果您要從 Docker 容器的音訊檔案中辨識語音，請確定音訊檔案位在上一個步驟中掛接的目錄。
 
 輸入此命令後，SPX 會開始聽取目前作用中輸入裝置上的音訊，並在您按下 `ENTER` 之後停止聽取。 接著將會辨識錄製的語音，並將其轉換為主控台輸出中的文字。 使用語音 CLI 也可輕易執行文字轉語音的合成。 
 

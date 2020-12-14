@@ -10,14 +10,19 @@ ms.topic: include
 ms.date: 10/13/2019
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 4a82b5550c9105a81bdee9b0f0a5846f93938ab0
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5661e0e3a1978735ae9e4313ac9aa78a88e81f19
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95095449"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96912158"
 ---
 <a name="HOLTop"></a>
+
+使用電腦視覺用戶端程式庫可執行下列作業：
+
+* 分析影像中的標籤、文字描述、臉部、成人內容等等。
+* 透過讀取 API 讀取印刷和手寫文字。
 
 [參考文件](/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-computervision) |[成品 (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-computervision) | [範例](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
@@ -99,6 +104,8 @@ mkdir -p src/main/java
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_maincalls)]
 
+> [!div class="nextstepaction"]
+> [我設定了用戶端](?success=set-up-client#object-model) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=set-up-client)
 
 ## <a name="object-model"></a>物件模型
 
@@ -120,11 +127,12 @@ mkdir -p src/main/java
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-
 在新方法中，使用端點和金鑰將 [ComputerVisionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) 物件具現化。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_auth)]
 
+> [!div class="nextstepaction"]
+> [我驗證了用戶端](?success=authenticate-client#analyze-an-image) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=authenticate-client)
 
 ## <a name="analyze-an-image"></a>分析影像
 
@@ -206,6 +214,9 @@ mkdir -p src/main/java
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_imagetype)]
 
+> [!div class="nextstepaction"]
+> [我分析了影像](?success=analyze-image#read-printed-and-handwritten-text) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=analyze-image)
+
 ## <a name="read-printed-and-handwritten-text"></a>讀取印刷和手寫文字
 
 電腦視覺可以讀取影像中的可見文字，並將它轉換成字元資料流。 此區段會定義一個方法 `ReadFromFile`，該方法採用本機檔案路徑並將影像的文字列印到主控台。
@@ -226,7 +237,6 @@ mkdir -p src/main/java
 然後，新增下列程式碼，以針對指定的映像呼叫 **readInStreamWithServiceResponseAsync** 方法。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_call)]
-
 
 下列程式碼區塊會從讀取呼叫的回應中擷取作業識別碼。 其使用此識別碼搭配 Helper 方法，將文字讀取結果列印到主控台。 
 
@@ -250,6 +260,9 @@ mkdir -p src/main/java
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_opid_extract)]
 
+> [!div class="nextstepaction"]
+> [我讀取了文字](?success=read-printed-handwritten-text#run-the-application) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=read-printed-handwritten-text)
+
 ## <a name="run-the-application"></a>執行應用程式
 
 您可以使用下列命令來建置應用程式：
@@ -264,6 +277,9 @@ gradle build
 gradle run
 ```
 
+> [!div class="nextstepaction"]
+> [我執行了應用程式](?success=run-the-application#clean-up-resources) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=run-the-application)
+
 ## <a name="clean-up-resources"></a>清除資源
 
 如果您想要清除和移除認知服務訂用帳戶，則可以刪除資源或資源群組。 刪除資源群組也會刪除其關聯的任何其他資源。
@@ -271,12 +287,16 @@ gradle run
 * [入口網站](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
+> [!div class="nextstepaction"]
+> [我清除了資源](?success=clean-up-resources#next-steps) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=clean-up-resources)
+
 ## <a name="next-steps"></a>後續步驟
 
 在本快速入門中，您已了解如何使用電腦視覺 Java 程式庫來執行基本工作。 接下來，請瀏覽參考文件來深入了解此程式庫。
 
 > [!div class="nextstepaction"]
 >[電腦視覺參考 (Java)](/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable)
+
 
 * [什麼是電腦視覺？](../../overview.md)
 * 此範例的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) 上找到。

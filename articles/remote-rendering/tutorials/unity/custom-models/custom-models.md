@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ebadaf51a7dfbb286dac0bbdb0c3c8437ae2356f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5793e2958edce0a4c97660a75d0ecefa914c12d2
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022219"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559077"
 ---
 # <a name="tutorial-interfaces-and-custom-models"></a>教學課程：介面和自訂模型
 
@@ -30,29 +30,29 @@ ms.locfileid: "89022219"
 
 ## <a name="get-started-with-the-mixed-reality-toolkit-mrtk"></a>開始使用混合實境工具組 (MRTK)
 
-混合實境工具組 (MRTK) 是一種跨平台的工具組，可用於建置混合實境體驗。 我們會使用 MRTK 2.3 打造互動和視覺效果功能。
+混合實境工具組 (MRTK) 是一種跨平台的工具組，可用於建置混合實境體驗。 我們會使用 MRTK 2.5.1 打造互動和視覺效果功能。
 
-若要新增 MRTK，請遵循[開始使用 MRTK](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html) 中所列的[必要步驟](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#required)。
+若要新增 MRTK，請遵循 [MRTK 安裝指南](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html)中所列的[必要步驟](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#required)。
 
 這些步驟如下︰
- - [取得最新的 MRTK Unity 套件](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#get-the-latest-mrtk-unity-packages)
-     - 雖然系統顯示為「最新」，但這適用於 2.3 版。
+ - [取得最新的 MRTK Unity 套件](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#1-get-the-latest-mrtk-unity-packages)
+     - 即使已顯示「最新」，請仍然使用 MRTK 版本頁面中的 2.5.1 版。
      - 我們只會在本教學課程中使用「基本」套件。 不需要用到「擴充功能」、「工具」和「範例」套件。
- - [將 MRTK 套件匯入到您的 Unity 專案](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#import-mrtk-packages-into-your-unity-project)
- - [將您的 Unity 專案切換到目標平台](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#switch-your-unity-project-to-the-target-platform)
+ - [將 MRTK 套件匯入到您的 Unity 專案](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#2-import-mrtk-packages-into-your-unity-project)
+ - [將您的 Unity 專案切換到目標平台](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#3-switch-your-unity-project-to-the-target-platform)
      - 您應該已經在第一章完成這個步驟，但現在您也可以再次仔細確認！
- - [將 MRTK 新增至新場景或新專案](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#add-mrtk-to-a-new-scene-or-new-project)
+ - [將 MRTK 新增至新場景或新專案](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#4-add-and-configure-mrtk-with-a-new-scene)
      - 您可以將 MRTK 新增至新場景，並重新新增您的協調器和模型物件/指令碼，也可以使用「混合實境工具組 -> 新增至場景和設定」功能表命令將 MRTK 新增至現有的場景。
 
 ## <a name="import-assets-used-by-this-tutorial"></a>匯入本教學課程所使用的資產
 
 從本章開始，我們會針對大部分涵蓋的內容實作簡單的 [model-view-controller pattern](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)。 模式的「模型」是 Azure 遠端轉譯的特定程式碼，以及與 Azure 遠端轉譯相關的狀態管理。 模式的「檢視」和「控制器」會使用 MRTK 資產和一些自訂指令碼來實作。 在此教學課程中，您可以使用「模型」，而不需要使用此處實作的 view-controller。 這種區隔可讓您輕鬆地將本教學課程中找到的程式碼整合到您自己的應用程式中，使其接管設計模式的 view-controller。
 
-隨著 MRTK 的引進，現在您可在專案中新增一些指令碼、Prefabs 和資產，以支援互動和視覺效果意見反應。 這些稱為**教學課程資產**的資產已與 [Unity 資產套件](https://docs.unity3d.com/Manual/AssetPackages.html)配套，並包含在 '\Unity\TutorialAssets\TutorialAssets.unitypackage' 的 [Azure 遠端轉譯 GitHub](https://github.com/Azure/azure-remote-rendering) 中。
+隨著 MRTK 的引進，現在您可在專案中新增一些指令碼、Prefabs 和資產，以支援互動和視覺效果意見反應。 這些稱為 **教學課程資產** 的資產已與 [Unity 資產套件](https://docs.unity3d.com/Manual/AssetPackages.html)配套，並包含在 '\Unity\TutorialAssets\TutorialAssets.unitypackage' 的 [Azure 遠端轉譯 GitHub](https://github.com/Azure/azure-remote-rendering) 中。
 
 1. 如果下載時已將 zip 解壓縮至已知的位置，請將 GIT 存放庫複製或下載到 [Azure 遠端轉譯](https://github.com/Azure/azure-remote-rendering)。
 1. 在您的 Unity 專案中，選擇「資產 -> 匯入套件 -> 自訂套件」。
-1. 在檔案總管中，瀏覽至您複製或解壓縮 Azure 遠端轉譯存放庫的目錄，然後選取在**Unity -> TutorialAssets-> TutorialAssets.unitypackage** 中找到的 .unitypackage
+1. 在檔案總管中，瀏覽至您複製或解壓縮 Azure 遠端轉譯存放庫的目錄，然後選取在 **Unity -> TutorialAssets-> TutorialAssets.unitypackage** 中找到的 .unitypackage
 1. 選取 [匯入] 按鈕，將套件內容匯入到您的專案中。
 1. 在 Unity 編輯器中，從頂端功能表列中選取「混合實境 工具組 -> 公用程式 -> MRTK Standard Shader for Lightweight Render Pipeline」，並遵循提示來升級著色器。
 
@@ -75,8 +75,8 @@ ms.locfileid: "89022219"
 
 1. 找出 Assets/RemoteRenderingTutorial/Prefabs/AppMenu 中的 **AppMenu** Prefab
 1. 將 **AppMenu** Prefab 拖曳到場景中。
-1. 您可能會看到 **TMP 匯入工具**的對話方塊，因為這是我們第一次在場景中納入 Text Mesh Pro 資產。 依照提示**匯入 TMP Essentials**。 然後關閉匯入工具對話方塊，現在不需要範例和其他項目了。
-1. **AppMenu** 設定為自動連結並提供同意連線至工作階段的強制回應，因此我們可以移除稍早所放置的略過。 在 **RemoteRenderingCoordinator** GameObject 中，按下**要求授權事件**的 [-] 按鈕，移除我們先前實作的略過授權。
+1. 您可能會看到 **TMP 匯入工具** 的對話方塊，因為這是我們第一次在場景中納入 Text Mesh Pro 資產。 依照提示 **匯入 TMP Essentials**。 然後關閉匯入工具對話方塊，現在不需要範例和其他項目了。
+1. **AppMenu** 設定為自動連結並提供同意連線至工作階段的強制回應，因此我們可以移除稍早所放置的略過。 在 **RemoteRenderingCoordinator** GameObject 中，按下 **要求授權事件** 的 [-] 按鈕，移除我們先前實作的略過授權。
  ![移除略過](./media/remove-bypass-event.png)。
 1. 按下 Unity 編輯器中的 [播放]，測試檢視控制器。
 1. 現在已在編輯器中設定 MRTK，您可以使用 WASD 鍵來變更檢視角度，並按住滑鼠右鍵然後移動滑鼠以變更您的檢視方向。 嘗試在場景周圍四處看看，以了解控制項的風格。
@@ -90,7 +90,7 @@ ms.locfileid: "89022219"
 
 現在我們要實作新的指令碼 **RemoteRenderedModel**，此指令碼可以追蹤狀態、回應事件、引發事件和設定。 基本上，**RemoteRenderedModel** 會針對 `modelPath` 中的模型資料儲存遠端路徑。 其會接聽 **RemoteRenderingCoordinator** 中的狀態變更，以查看是否應該自動載入或卸載其定義的模型。 GameObject 已附加 **RemoteRenderedModel**，並且會是遠端內容的本機父系。
 
-請注意，**RemoteRenderedModel** 指令碼會實作**教學課程資產**所包含的 **BaseRemoteRenderedModel**。 這可讓遠端模型檢視控制器與您的指令碼繫結。
+請注意，**RemoteRenderedModel** 指令碼會實作 **教學課程資產** 所包含的 **BaseRemoteRenderedModel**。 這可讓遠端模型檢視控制器與您的指令碼繫結。
 
 1. 在與 **RemoteRenderingCoordinator** 相同的資料夾中，建立名為 **RemoteRenderedModel** 的新指令碼。 以下列程式碼取代整個內容：
 
@@ -267,7 +267,7 @@ ms.locfileid: "89022219"
 1. 將 **TestModel** 物件放在相機前方，位置為 **x = 0，y = 0，z = 3**。
 ![放置物件](./media/test-model-position.png)
 1. 確定已開啟 **AutomaticallyLoad**。
-1. 按下 Unity 編輯器中的**播放**以測試應用程式。
+1. 按下 Unity 編輯器中的 **播放** 以測試應用程式。
 1. 按一下「連線」按鈕以允許應用程式建立工作階段，其會連線至工作階段並自動載入模型以授與授權。
 
 在應用程式經歷這些狀態時，注意觀看主控台。 請記住，某些狀態可能需要一些時間才能完成，且不會顯示進度。 最後，您會看到模型載入中的記錄，然後測試模型就會呈現在場景中。
@@ -280,7 +280,7 @@ ms.locfileid: "89022219"
 
 現在，我們可以嘗試載入您自己的模型。 若要這麼做，您必須在 Azure 上設定 Blob 儲存體並上傳和轉換模型，然後使用 **RemoteRenderedModel** 指令碼載入模型。 如果您目前不需要載入自己的模型，可以放心地跳過自訂模型載入的步驟。
 
-依照[快速入門：轉換模型以進行轉譯](../../../quickstarts/convert-model.md)中指定的步驟執行。 針對本教學課程的目的，跳過**將新模型插入快速入門範例應用程式**一節。 內嵌了模型的「共用存取簽章 (SAS)」 URI 之後，請繼續進行接下來的下一個步驟。
+依照[快速入門：轉換模型以進行轉譯](../../../quickstarts/convert-model.md)中指定的步驟執行。 針對本教學課程的目的，跳過 **將新模型插入快速入門範例應用程式** 一節。 內嵌了模型的「共用存取簽章 (SAS)」 URI 之後，請繼續進行接下來的下一個步驟。
 
 ## <a name="load-and-rendering-a-custom-model"></a>載入和呈現自訂模型
 
@@ -291,7 +291,7 @@ ms.locfileid: "89022219"
 1. 使用您在上述內嵌步驟中建立的模型「共用存取簽章 (SAS)」 URI，填入 `Model Path`。
 1. 將 GameObject 放在相機前方，位置為 **x = 0，y = 0，z = 3。**
 1. 確定已開啟 **AutomaticallyLoad**。
-1. 按下 Unity 編輯器中的**播放**以測試應用程式。
+1. 按下 Unity 編輯器中的 **播放** 以測試應用程式。
 
     您會看到主控台開始填入目前的狀態，最後出現模型載入進度訊息。 您的自訂模型接著會載入場景中。
 

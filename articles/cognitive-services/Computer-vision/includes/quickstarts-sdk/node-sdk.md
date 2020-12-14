@@ -10,14 +10,19 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 4f82665afbf3cd83041e59a8b10ef2a731566fc0
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e0767e50ac6d88922281b10389b77c5cf0c481be
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95097730"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96912192"
 ---
 <a name="HOLTop"></a>
+
+使用電腦視覺用戶端程式庫可執行下列作業：
+
+* 分析影像中的標籤、文字描述、臉部、成人內容等等。
+* 透過讀取 API 讀取印刷和手寫文字。
 
 [參考文件](/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) | [套件 (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-computervision) | [範例](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
@@ -26,7 +31,7 @@ ms.locfileid: "95097730"
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 * 最新版的 [Node.js](https://nodejs.org/)
 * 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="建立電腦視覺資源"  target="_blank">建立電腦視覺資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
-    * 您需要所建立之資源的金鑰和端點，以將應用程式連線至電腦視覺服務。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 電腦視覺服務。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
     * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
 
 ## <a name="setting-up"></a>設定
@@ -71,6 +76,9 @@ npm install @azure/cognitiveservices-computervision
 >
 > 完成時，請記得從程式碼中移除金鑰，且不要公開張貼金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](../../../cognitive-services-security.md)一文。
 
+> [!div class="nextstepaction"]
+> [我設定了用戶端](?success=set-up-client#object-model) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=set-up-client)
+
 ## <a name="object-model"></a>物件模型
 
 下列類別和介面會處理電腦視覺 Node.js SDK 的一些主要功能。
@@ -100,6 +108,9 @@ npm install @azure/cognitiveservices-computervision
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_begin)]
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_end)]
+
+> [!div class="nextstepaction"]
+> [我驗證了用戶端](?success=authenticate-client#analyze-an-image) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=authenticate-client)
 
 ## <a name="analyze-an-image"></a>分析影像
 
@@ -214,6 +225,9 @@ npm install @azure/cognitiveservices-computervision
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype_describe)]
 
+> [!div class="nextstepaction"]
+> [我分析了影像](?success=analyze-image#read-printed-and-handwritten-text) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=analyze-image)
+
 ## <a name="read-printed-and-handwritten-text"></a>讀取印刷和手寫文字
 
 電腦視覺可以擷取影像中的可見文字，並將其轉換成字元串流。 這個範例會使用讀取作業。
@@ -233,7 +247,6 @@ npm install @azure/cognitiveservices-computervision
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_statuses)]
 
-
 新增下面的程式碼，以針對指定的影像呼叫 `readTextFromURL` 函式。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
@@ -246,6 +259,9 @@ npm install @azure/cognitiveservices-computervision
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_print)]
 
+> [!div class="nextstepaction"]
+> [我讀取了文字](?success=read-printed-handwritten-text#run-the-application) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=read-printed-handwritten-text)
+
 ## <a name="run-the-application"></a>執行應用程式
 
 使用快速入門檔案上使用 `node` 命令執行應用程式。
@@ -254,6 +270,9 @@ npm install @azure/cognitiveservices-computervision
 node index.js
 ```
 
+> [!div class="nextstepaction"]
+> [我執行了應用程式](?success=run-the-application#clean-up-resources) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=run-the-application)
+
 ## <a name="clean-up-resources"></a>清除資源
 
 如果您想要清除和移除認知服務訂用帳戶，則可以刪除資源或資源群組。 刪除資源群組也會刪除其關聯的任何其他資源。
@@ -261,10 +280,14 @@ node index.js
 * [入口網站](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
+> [!div class="nextstepaction"]
+> [我清除了資源](?success=clean-up-resources#next-steps) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=clean-up-resources)
+
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 >[電腦視覺 API 參考 (Node.js)](/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)
+
 
 * [什麼是電腦視覺？](../../overview.md)
 * 此範例的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上找到。

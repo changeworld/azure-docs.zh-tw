@@ -504,6 +504,8 @@
       href: how-to-use-logging.md
     - name: 追蹤記憶體使用量
       href: how-to-track-speech-sdk-memory-usage.md
+    - name: 啟用私人端點
+      href: speech-services-private-link.md
     - name: 設定適用於 Linux 的 OpenSSL
       displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
       href: how-to-configure-openssl-linux.md

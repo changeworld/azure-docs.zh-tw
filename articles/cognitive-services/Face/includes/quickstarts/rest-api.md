@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 12/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 0f668f3a9ec4e158dfddd15f9c5d744fb0a5a847
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: be942f73ee0a3d5a8850141c937754bad330db90
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763638"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96912116"
 ---
 開始使用臉部 REST API 進行臉部辨識。 臉部服務可讓您存取先進的演算法，以偵測和辨識影像中的人臉。
 
@@ -22,6 +22,9 @@ ms.locfileid: "96763638"
 
 * [偵測影像中的臉部](#detect-faces-in-an-image)
 * [尋找類似臉部](#find-similar-faces)
+
+> [!NOTE]
+> 本快速入門會使用 cURL 命令來呼叫 REST API。 您也可以使用程式設計語言來呼叫 REST API。 如需 [C#](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/Face/rest)、[Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/Face/rest)、[Java](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/java/Face/rest)、[JavaScript](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/Face/rest) 和 [Go](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/go/Face/rest) 的範例，請參閱 GitHub 範例。
 
 ## <a name="prerequisites"></a>必要條件
 

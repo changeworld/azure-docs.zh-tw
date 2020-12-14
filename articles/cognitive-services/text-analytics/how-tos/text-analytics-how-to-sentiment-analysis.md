@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 11/11/2020
+ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 2c592a959dfb9d4e93f97488a9ac1b1f6683c23e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0437704709e863cdbc62321c8a4b79015564e362
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968261"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558754"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>操作說明：情感分析與意見挖掘
 
-文字分析 API 的情感分析功能提供兩種方式供您偵測正面和負面情感。 如果您傳送情感分析要求，API 便會傳回情感標籤 (例如「負面」、「中性」和「正面」)，以及句子和文件層級的信賴分數。 您也可以使用情感分析端點來傳送意見挖掘要求，以提供文字中各方面 (例如產品或服務的屬性) 相關意見的詳細資訊。
+文字分析 API 的情感分析功能提供兩種方式供您偵測正面和負面情感。 如果您傳送情感分析要求，API 便會傳回情感標籤 (例如「負面」、「中性」和「正面」)，以及句子和文件層級的信賴分數。 您也可以使用情感分析端點來傳送意見挖掘要求，以提供文字中各方面 (例如產品或服務的屬性) 相關意見的詳細資訊。 
 
 API 所使用的 AI 模型由服務所提供，您只需要傳送要分析的內容即可。
 
@@ -51,13 +51,14 @@ API 所使用的 AI 模型由服務所提供，您只需要傳送要分析的內
 
 ## <a name="opinion-mining"></a>意見挖掘
 
-意見挖掘是情感分析的功能，從版本 3.1-preview.1 開始。 這項功能也稱為自然語言處理 (NLP) 中的層面型情感分析，可提供文字中與各層面相關意見的詳細資訊 (例如產品或服務的屬性)。
+意見挖掘是情感分析的功能，從版本 3.1-preview.1 開始。 這項功能也稱為自然語言處理 (NLP) 中的層面型情感分析，可提供文字中與各層面相關意見的詳細資訊 (例如產品或服務的屬性)。 
 
 例如，如果客戶留下關於飯店的意見反應，例如「房間很棒，但員工很不友善」，則意見挖掘將會找出文字中的各個層面，以及相關聯的意見和情緒。 情感分析可能只會報告負面情感。
 
 :::image type="content" source="../media/how-tos/opinion-mining.png" alt-text="意見挖掘範例圖表" lightbox="../media/how-tos/opinion-mining.png":::
 
-若要在結果中進行意見挖掘，您必須在情感分析的要求中包含 `opinionMining=true` 旗標。 意見挖掘結果會包含在情感分析回應中。
+若要在結果中進行意見挖掘，您必須在情感分析的要求中包含 `opinionMining=true` 旗標。 意見挖掘結果會包含在情感分析回應中。 意見挖掘是情感分析的擴充，並且會包含在您目前的[定價層](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)中。
+
 
 ## <a name="sending-a-rest-api-request"></a>傳送 REST API 要求 
 

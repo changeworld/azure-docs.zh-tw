@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: gelecaro
-ms.openlocfilehash: 06e4eea32aefcb400c144be98c274e3e4bb4b121
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f674edd15b86f49d60450a53f5df5852b32f95a4
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188177"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906419"
 ---
 本指南說明如何安裝適用於 Linux 的[語音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)
 
@@ -54,17 +54,19 @@ Linux：請參閱[支援的 Linux 發行版本和目標架構](~/articles/cognit
 
 ## <a name="configure-go-environment"></a>設定 Go 環境
 
+請執行下列步驟來設定 Go 環境，以尋找語音 SDK。 在這兩個步驟中，請將 `<architecture>` 取代為您 CPU 的處理器架構。 這將會是 `x86`、`x64`、`arm32` 或 `arm64`。
+
 1. 由於繫結仰賴 `cgo`，因此您必須設定環境變數，讓 Go 可以找到 SDK：
 
    ```sh
    export CGO_CFLAGS="-I$SPEECHSDK_ROOT/include/c_api"
-   export CGO_LDFLAGS="-L$SPEECHSDK_ROOT/lib -lMicrosoft.CognitiveServices.Speech.core"
+   export CGO_LDFLAGS="-L$SPEECHSDK_ROOT/lib/<architecture> -lMicrosoft.CognitiveServices.Speech.core"
    ```
 
-1. 此外，若要執行包括 SDK 在內的應用程式，我們還需要告訴 OS 要到何處尋找程式庫：
+1. 若要執行包括 SDK 在內的應用程式，我們還需要告訴 OS 要到何處尋找程式庫：
 
    ```sh
-   export LD_LIBRARY_PATH="$SPEECHSDK_ROOT/lib/<arch>:$LD_LIBRARY_PATH"
+   export LD_LIBRARY_PATH="$SPEECHSDK_ROOT/lib/<architecture>:$LD_LIBRARY_PATH"
    ```
 
 ## <a name="next-steps"></a>後續步驟

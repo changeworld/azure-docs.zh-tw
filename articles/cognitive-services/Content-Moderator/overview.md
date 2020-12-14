@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: content moderator, azure content moderator, 線上仲裁者, 內容篩選軟體, 內容仲裁服務, 內容仲裁
-ms.openlocfilehash: aa1f4c1fab9b3d8a1b5db0e965f1608e694646b2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c7c996ae49bdf7aa72873322f11af754843fd835
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91596854"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905242"
 ---
 # <a name="what-is-azure-content-moderator"></a>什麼是 Azure Content Moderator？
 
@@ -81,4 +81,4 @@ Content Moderator 服務也包含以 Web 為基礎的[審核工具](Review-Tool-
 
 ## <a name="next-steps"></a>後續步驟
 
-若要在入口網站上開始使用 Content Moderator，請遵循[在 Web 上試用 Content Moderator](quick-start.md)。 或者，完成[用戶端程式庫快速入門](client-libraries.md)，以在程式碼中實作基本案例。
+若要在入口網站上開始使用 Content Moderator，請遵循[在 Web 上試用 Content Moderator](quick-start.md)。 或者，完成[用戶端程式庫或 REST API 快速入門](client-libraries.md)，以在程式碼中實作基本案例。

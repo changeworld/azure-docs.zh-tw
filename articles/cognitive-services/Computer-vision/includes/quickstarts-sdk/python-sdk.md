@@ -9,14 +9,19 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 0fd094b7364263acb2abbe7bed2d65392155a930
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 91bc9def06b7b9844e32dbc0d2654d03c5b72389
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95098177"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96912261"
 ---
 <a name="HOLTop"></a>
+
+使用電腦視覺用戶端程式庫可執行下列作業：
+
+* 分析影像中的標籤、文字描述、臉部、成人內容等等。
+* 透過讀取 API 讀取印刷和手寫文字。
 
 [參考文件](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-computervision) | [套件 (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-computervision/) | [範例](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
@@ -29,7 +34,7 @@ ms.locfileid: "95098177"
     * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
 
 ## <a name="setting-up"></a>設定
- 
+
 ### <a name="install-the-client-library"></a>安裝用戶端程式庫
 
 您可以使用下列命令來安裝用戶端程式庫：
@@ -56,6 +61,8 @@ pip install --upgrade azure-cognitiveservices-vision-computervision
 >
 > 完成時，請記得從程式碼中移除金鑰，且不要公開張貼金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 例如，[Azure金鑰保存庫](../../../../key-vault/general/overview.md)。
 
+> [!div class="nextstepaction"]
+> [我設定了用戶端](?success=set-up-client#object-model) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=set-up-client)
 
 ## <a name="object-model"></a>物件模型
 
@@ -80,6 +87,9 @@ pip install --upgrade azure-cognitiveservices-vision-computervision
 使用端點和金鑰來具現化用戶端。 使用金鑰建立 [CognitiveServicesCredentials](/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) 物件，並使用該物件與您的端點建立 [ComputerVisionClient](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) 物件。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_client)]
+
+> [!div class="nextstepaction"]
+> [我驗證了用戶端](?success=authenticate-client#analyze-an-image) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=authenticate-client)
 
 ## <a name="analyze-an-image"></a>分析影像
 
@@ -156,6 +166,9 @@ pip install --upgrade azure-cognitiveservices-vision-computervision
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_type)]
 
+> [!div class="nextstepaction"]
+> [我分析了影像](?success=analyze-image#read-printed-and-handwritten-text) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=analyze-image)
+
 ## <a name="read-printed-and-handwritten-text"></a>讀取印刷和手寫文字
 
 電腦視覺可以讀取影像中的可見文字，並將它轉換成字元資料流。 您可以分兩個部分執行此作業。
@@ -175,6 +188,9 @@ pip install --upgrade azure-cognitiveservices-vision-computervision
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_response)]
 
+> [!div class="nextstepaction"]
+> [我讀取了文字](?success=read-printed-handwritten-text#run-the-application) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=read-printed-handwritten-text)
+
 ## <a name="run-the-application"></a>執行應用程式
 
 使用快速入門檔案上使用 `python` 命令執行應用程式。
@@ -183,6 +199,9 @@ pip install --upgrade azure-cognitiveservices-vision-computervision
 python quickstart-file.py
 ```
 
+> [!div class="nextstepaction"]
+> [我執行了應用程式](?success=run-the-application#clean-up-resources) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=run-the-application)
+
 ## <a name="clean-up-resources"></a>清除資源
 
 如果您想要清除和移除認知服務訂用帳戶，則可以刪除資源或資源群組。 刪除資源群組也會刪除其關聯的任何其他資源。
@@ -190,11 +209,12 @@ python quickstart-file.py
 * [入口網站](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
+> [!div class="nextstepaction"]
+> [我清除了資源](?success=clean-up-resources#next-steps) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=clean-up-resources)
 
 ## <a name="next-steps"></a>後續步驟
 
 在本快速入門中，您已了解如何使用適用於 Python 的電腦視覺程式庫來執行基本工作。 接下來，請瀏覽參考文件來深入了解此程式庫。
-
 
 > [!div class="nextstepaction"]
 >[電腦視覺 API 參考 (Python)](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)

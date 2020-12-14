@@ -13,13 +13,14 @@ ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
+- contperfq2
 keywords: 電腦視覺, 電腦視覺應用程式, 電腦視覺服務
-ms.openlocfilehash: 1b4768781c45733590639b4a382fecfdb02adf48
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 09c3d10425e7688e84be7ddd845648def3e5cc39
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95532285"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852858"
 ---
 # <a name="what-is-computer-vision"></a>什麼是電腦視覺？
 
@@ -114,4 +115,4 @@ Azure 的電腦視覺服務可讓您存取進階演算法，以根據您感興�
 
 遵循慣用開發語言的快速入門指南來開始使用電腦視覺：
 
-- [快速入門：電腦視覺用戶端程式庫](./quickstarts-sdk/client-library.md)
+- [快速入門：電腦視覺 REST API 或用戶端程式庫](./quickstarts-sdk/client-library.md)

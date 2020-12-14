@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: trbye
-ms.openlocfilehash: 434548d7d00468605ad0f1a52af99fbc4278adc1
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: de1266d9086cd3b2472db2552210f24d9a51add7
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94482612"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96912269"
 ---
 語音服務的核心功能之一，就是能夠辨識並轉譯人類語音 (通常稱為語音轉文字)。 在本快速入門中，您將了解如何在您的應用程式和產品中使用語音 SDK，以執行高品質的語音轉換文字辨識。
 
@@ -64,7 +64,7 @@ auto result = recognizer->RecognizeOnceAsync().get();
 cout << "RECOGNIZED: Text=" << result->Text << std::endl;
 ```
 
-如果要使用「特定」的音訊輸入裝置，您需要在 `AudioConfig` 中指定裝置識別碼。 了解 [如何取得音訊輸入裝置的裝置識別碼](../../../how-to-select-audio-input-devices.md)。
+如果要使用「特定」的音訊輸入裝置，您需要在 `AudioConfig` 中指定裝置識別碼。 了解[如何取得音訊輸入裝置的裝置識別碼](../../../how-to-select-audio-input-devices.md)。
 
 ## <a name="recognize-from-file"></a>從檔案辨識
 
@@ -222,10 +222,14 @@ config->SetSpeechRecognitionLanguage("de-DE");
 
 ## <a name="improve-recognition-accuracy"></a>提高辨識精確度
 
-有數種方式可讓您使用語音 SDK 提高辨識精確度。 我們來看看片語清單。 片語清單可用來識別音訊資料中的已知片語，例如人員的姓名或特定位置。 您可以將單字或完整片語新增至片語清單中。 辨識期間，如果音訊中包含與完整片語完全相符的項目，則會使用片語清單中的項目。 如果找不到與片語完全相符的項目，就不會協助辨識。
+片語清單可用來識別音訊資料中的已知片語，例如人員的姓名或特定位置。 您可以藉由提供片語清單來改善語音辨識的精確度。
+
+例如，如果您下一個命令 "Move to"，並且可能會說出 "Ward" 作為目的地，則您可以將 "Move to Ward" 新增為輸入項目。 新增片語會增加從音訊中辨識出 "Move to Ward" 的機率，而不是辨識為 "Move toward"
+
+您可以將單字或完整片語新增至片語清單中。 辨識期間，片語清單中的項目都會用來提升清單中的單字和片語辨識度，即使這些項目出現在語句的中間也一樣。 
 
 > [!IMPORTANT]
-> 片語清單功能只能在英文中使用。
+> 片語清單功能提供下列語言版本：en-US、de-DE、en-AU、en-CA、en-GB、es-ES、es-MX、fr-CA、fr-FR、it-IT、ja-JP、ko-KR、pt-BR、zh-CN
 
 若要使用片語清單，請先建立 [`PhraseListGrammar`](/cpp/cognitive-services/speech/phraselistgrammar) 物件，然後使用 [`AddPhrase`](/cpp/cognitive-services/speech/phraselistgrammar#addphrase) 新增特定單字和片語。
 
@@ -246,5 +250,5 @@ phraseListGrammar->Clear();
 
 片語清單只是提高辨識精確度的選項之一。 您也可以： 
 
-* [以自訂語音提高精確度](../../../how-to-custom-speech.md)
+* [以自訂語音提高精確度](../../../custom-speech-overview.md)
 * [以租用戶模型提高精確度](../../../tutorial-tenant-model.md)

@@ -10,14 +10,19 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 4eb92e499a1381516ae6bbc33383963155df371f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 996ffdeb56d41e2c05fd402714876cb16e126021
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95098273"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96912275"
 ---
 <a name="HOLTop"></a>
+
+使用電腦視覺用戶端程式庫可執行下列作業：
+
+* 分析影像中的標籤、文字描述、臉部、成人內容等等。
+* 透過讀取 API 讀取印刷和手寫文字。
 
 [參考文件](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/computervision) | [套件](https://github.com/Azure/azure-sdk-for-go)
 
@@ -64,7 +69,7 @@ go get -u https://github.com/Azure/azure-sdk-for-go/tree/master/services/cogniti
 dep ensure -add https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/computervision
 ```
 
-### <a name="create-a-go-application"></a>建立 Go 應用程式
+### <a name="create-a-go-application"></a>建立 Go 應用程式 
 
 接著，在 **src** 目錄中建立名為 `sample-app.go` 的檔案：
 
@@ -82,6 +87,9 @@ touch sample-app.go
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_context)]
 
 接著，您將開始新增程式碼以執行不同的電腦視覺作業。
+
+> [!div class="nextstepaction"]
+> [我設定了用戶端](?success=set-up-client#object-model) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=set-up-client)
 
 ## <a name="object-model"></a>物件模型
 
@@ -110,6 +118,9 @@ touch sample-app.go
 建立 `main` 函式，並在其中新增下列程式碼，以使用您的端點和金鑰具現化用戶端。
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_client)]
+
+> [!div class="nextstepaction"]
+> [我驗證了用戶端](?success=authenticate-client#analyze-an-image) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=authenticate-client)
 
 ## <a name="analyze-an-image"></a>分析影像
 
@@ -202,6 +213,9 @@ touch sample-app.go
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_type)]
 
+> [!div class="nextstepaction"]
+> [我分析了影像](?success=analyze-image#read-printed-and-handwritten-text) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=analyze-image)
+
 ## <a name="read-printed-and-handwritten-text"></a>讀取印刷和手寫文字
 
 電腦視覺可以讀取影像中的可見文字，並將它轉換成字元資料流。 本節中的程式碼會定義 `RecognizeTextReadAPIRemoteImage` 函式，其使用用戶端物件來偵測及擷取影像中的印刷或手寫文字。
@@ -231,6 +245,9 @@ touch sample-app.go
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_read_display)]
 
+> [!div class="nextstepaction"]
+> [我讀取了文字](?success=read-printed-handwritten-text#run-the-application) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=read-printed-handwritten-text)
+
 ## <a name="run-the-application"></a>執行應用程式
 
 使用 `go run` 命令從您的應用程式目錄執行應用程式。
@@ -239,6 +256,9 @@ touch sample-app.go
 go run sample-app.go
 ```
 
+> [!div class="nextstepaction"]
+> [我執行了應用程式](?success=run-the-application#clean-up-resources) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=run-the-application)
+
 ## <a name="clean-up-resources"></a>清除資源
 
 如果您想要清除和移除認知服務訂用帳戶，則可以刪除資源或資源群組。 刪除資源群組也會刪除其關聯的任何其他資源。
@@ -246,10 +266,14 @@ go run sample-app.go
 * [入口網站](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
+> [!div class="nextstepaction"]
+> [我清除了資源](?success=clean-up-resources#next-steps) [我遇到問題](https://www.research.net/r/7QYZKHL?issue=clean-up-resources)
+
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [電腦視覺 API 參考 (Go)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision)
+
 
 * [什麼是電腦視覺？](../../overview.md)
 * 此範例的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go) 上找到。

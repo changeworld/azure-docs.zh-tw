@@ -12,12 +12,12 @@ ms.date: 09/29/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 內容仲裁者, 內容仲裁
-ms.openlocfilehash: d1d9315986f7a6c57c1da012b9034e4f1a3730bc
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: c026c42fe3c7a7f3f0d6b80e3123904077c104cf
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93143678"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905208"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>快速入門：在 Web 上試用 Content Moderator
 
@@ -88,6 +88,6 @@ Crap is the profanity here. Is this information PII? phone 4255550111
 ## <a name="next-steps"></a>後續步驟
 
 了解如何在您的應用程式中使用「仲裁 API」本身。
-- 實作影像仲裁。 使用 [API 主控台](try-image-api.md)或依照[用戶端程式庫快速入門](client-libraries.md)的指示掃描影像，並使用標籤、信賴分數和其他擷取資訊來偵測潛在的成人和猥褻內容。
-- 實作文字仲裁。 使用 [API 主控台](try-text-api.md)或使用[用戶端程式庫快速入門](client-libraries.md)來掃描文字內容，以找出潛在的粗話、機器輔助的不必要文字分類 (預覽)，以及個人資料。
+- 實作影像仲裁。 使用 [API 主控台](try-image-api.md)或依照[用戶端程式庫或 REST API 快速入門](client-libraries.md)的指示掃描影像，並使用標籤、信賴分數和其他擷取資訊來偵測潛在的成人和猥褻內容。
+- 實作文字仲裁。 使用 [API 主控台](try-text-api.md)或依照[用戶端程式庫或 REST API 快速入門](client-libraries.md)的指示來掃描文字內容，以找出潛在的粗話、機器輔助的不必要文字分類 (預覽)，以及個人資料。
 - 實作影片仲裁。 請遵循[適用於 C# 的影片仲裁操作指南](video-moderation-api.md)以掃描影片並偵測潛在成人和不雅內容。 

@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3ddd7b1139396a5952d1575ea72b00d5dfa14fab
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: c44bd27108714b4c2623de49540fe1f5723ccd6a
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95095979"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96912382"
 ---
 語音服務的核心功能之一，就是能夠辨識並轉譯人類語音 (通常稱為語音轉文字)。 在本快速入門中，您將了解如何在您的應用程式和產品中使用語音 SDK，以執行高品質的語音轉換文字辨識。
 
@@ -302,10 +302,14 @@ speechConfig.SpeechRecognitionLanguage = "it-IT";
 
 ## <a name="improve-recognition-accuracy"></a>提高辨識精確度
 
-有數種方式可讓您使用語音 SDK 提高辨識精確度。 我們來看看片語清單。 片語清單可用來識別音訊資料中的已知片語，例如人員的姓名或特定位置。 您可以將單字或完整片語新增至片語清單中。 辨識期間，如果音訊中包含與完整片語完全相符的項目，則會使用片語清單中的項目。 如果找不到與片語完全相符的項目，就不會協助辨識。
+片語清單可用來識別音訊資料中的已知片語，例如人員的姓名或特定位置。 您可以藉由提供片語清單來改善語音辨識的精確度。
+
+例如，如果您下一個命令 "Move to"，並且可能會說出 "Ward" 作為目的地，則您可以將 "Move to Ward" 新增為輸入項目。 新增片語會增加從音訊中辨識出 "Move to Ward" 的機率，而不是辨識為 "Move toward"
+
+您可以將單字或完整片語新增至片語清單中。 辨識期間，片語清單中的項目都會用來提升清單中的單字和片語辨識度，即使這些項目出現在語句的中間也一樣。 
 
 > [!IMPORTANT]
-> 片語清單功能只能在英文中使用。
+> 片語清單功能提供下列語言版本：en-US、de-DE、en-AU、en-CA、en-GB、es-ES、es-MX、fr-CA、fr-FR、it-IT、ja-JP、ko-KR、pt-BR、zh-CN
 
 若要使用片語清單，請先建立 [`PhraseListGrammar`](/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar?preserve-view=true&view=azure-dotnet) 物件，然後使用 [`AddPhrase`](/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar.addphrase?preserve-view=true&view=azure-dotnet) 新增特定單字和片語。
 
@@ -326,5 +330,5 @@ phraseList.Clear();
 
 片語清單只是提高辨識精確度的選項之一。 您也可以： 
 
-* [以自訂語音提高精確度](../../../how-to-custom-speech.md)
+* [以自訂語音提高精確度](../../../custom-speech-overview.md)
 * [以租用戶模型提高精確度](../../../tutorial-tenant-model.md)
