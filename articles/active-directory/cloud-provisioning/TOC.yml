@@ -48,6 +48,8 @@
       items:
         - name: 代理程式自動升級
           href: how-to-automatic-upgrade.md
+        - name: 代理程式登錄選項
+          href: how-to-manage-registry-options.md
     - name: 開發
       items:
         - name: 轉換

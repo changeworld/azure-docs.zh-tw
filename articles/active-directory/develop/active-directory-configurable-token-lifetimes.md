@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/29/2020
+ms.date: 12/14/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 12d74e2f21678fdbb02719c29a31c0fcdc4fa132
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: f73186612fe79af88e84956bb4d0f0b374f4c986
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030140"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507790"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft 身分識別平臺中可設定的權杖存留期 (預覽版) 
 
 > [!IMPORTANT]
-> 2021年1月30日之後，租使用者將無法再設定重新整理和會話權杖存留期，Azure Active Directory 將會在該日期之後的原則中停止接受重新整理和會話權杖設定。
+> 5月2020之後，租使用者將無法再設定重新整理和會話權杖存留期。  Azure Active Directory 將會在2021年1月30日之後停止接受現有的重新整理和會話權杖設定。 您仍然可以在淘汰之後設定存取權杖存留期。
 >
-> 如果您需要在要求使用者再次登入之前，繼續定義時間週期，請在條件式存取中設定登入頻率。 若要深入瞭解條件式存取，請造訪 [Azure AD 定價頁面](https://azure.microsoft.com/en-us/pricing/details/active-directory/)。
+> 如果您需要在要求使用者再次登入之前，繼續定義時間週期，請在條件式存取中設定登入頻率。 若要深入瞭解條件式存取，請造訪 [使用條件式存取設定驗證會話管理](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)。
 >
 > 對於不想在停用日期之後使用條件式存取的租使用者，他們可能會預期 Azure AD 會接受下一節中所述的預設設定。
 

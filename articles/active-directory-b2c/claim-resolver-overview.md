@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e55bb9ba49cfcaf07e8d3dc17dc13e30036e100f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 682b83d7016a89b27b5c936853abda1438f59c28
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109040"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508011"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>關於 Azure Active Directory B2C 自訂原則中的宣告解析程式
 
@@ -88,7 +88,7 @@ Azure Active Directory B2C (Azure AD B2C 中的宣告解析程式) [自訂原則
 | {Context:DateTimeInUtc} |日期時間 (UTC)。  | 10/10/2018 12:00:00 PM |
 | {Context:DeploymentMode} |原則部署模式。  | 生產 |
 | {Context:IPAddress} | 使用者 IP 位址。 | 11.111.111.11 |
-| {CoNtext： KMSI} | 指出是否已選取 [ [讓我保持登入](custom-policy-keep-me-signed-in.md) ] 核取方塊。 |  true |
+| {CoNtext： KMSI} | 指出是否已選取 [ [讓我保持登入](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) ] 核取方塊。 |  true |
 
 ### <a name="claims"></a>宣告 
 

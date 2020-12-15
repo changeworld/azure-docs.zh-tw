@@ -12,12 +12,12 @@ ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 3fd91bb86b32a958344dc366cfcd142bff369c1f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e0185cc8786dc101375262ddfd187c5d8e7e054f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108139"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509558"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：為您的應用程式提供選擇性宣告
 
@@ -124,15 +124,16 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 針對您的應用程式，您可以透過 UI 或應用程式資訊清單來設定選擇性宣告。
 
-1. 移至 [Azure 入口網站](https://portal.azure.com)。 搜尋並選取 [Azure Active Directory]。
-1. 從 [管理] 區段中，選取 [應用程式註冊]。
+1. 移至 [Azure 入口網站](https://portal.azure.com)。 
+1. 搜尋並選取 [Azure Active Directory]。
+1. 在 [管理]  底下選取 [應用程式註冊]  。
 1. 從清單中，選取您要設定選擇性宣告的應用程式。
 
 **透過 UI 設定選擇性宣告：**
 
 [![在 UI 中設定選擇性宣告](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
-1. 從 [管理] 區段中，選取 [權杖設定]。
+1. 在 [ **管理**] 底下，選取 [ **權杖** 設定]。
 1. 選取 [新增選擇性宣告]。
 1. 選取您要設定的權杖類型。
 1. 選取要新增的選擇性宣告。
@@ -145,7 +146,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 [![示範如何使用應用程式資訊清單設定選擇性宣告](./media/active-directory-optional-claims/app-manifest.png)](./media/active-directory-optional-claims/app-manifest.png)
 
-1. 從 [管理] 區段中，選取 [資訊清單]。 網頁式資訊清單編輯器隨即開啟，讓您編輯資訊清單。 或者，您也可以選取 [下載] 並在本機編輯資訊清單，然後使用 [上傳] 以將其重新套用到您的應用程式。 如需應用程式資訊清單的詳細資訊，請參閱[了解 Azure AD 應用程式資訊清單](reference-app-manifest.md)一文。
+1. 在 [ **管理**] 底下，選取 [ **資訊清單**]。 網頁式資訊清單編輯器隨即開啟，讓您編輯資訊清單。 或者，您也可以選取 [下載] 並在本機編輯資訊清單，然後使用 [上傳] 以將其重新套用到您的應用程式。 如需應用程式資訊清單的詳細資訊，請參閱[了解 Azure AD 應用程式資訊清單](reference-app-manifest.md)一文。
 
     下列應用程式資訊清單項目將 auth_time、ipaddr 和 upn 選擇性宣告，新增至識別碼權杖、存取權杖和 SAML 權杖。
 
@@ -225,22 +226,19 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 ## <a name="configuring-groups-optional-claims"></a>設定群組選擇性宣告
 
-   > [!NOTE]
-   > 針對從內部部署同步的使用者和群組，發出群組名稱的功能已公開預覽。
-
 本節涵蓋選擇性宣告下的設定選項，可將來自預設群組 objectID 的群組宣告所使用的群組屬性，變更為從內部部署 Windows Active Directory 同步的屬性。 針對您的應用程式，您可以透過 UI 或應用程式資訊清單來設定群組選擇性宣告。
 
 > [!IMPORTANT]
-> 如需詳細資料，包括內部部署屬性中公開預覽群組宣告的重要注意事項，請參閱[使用 Azure AD 設定應用程式的群組宣告](../hybrid/how-to-connect-fed-group-claims.md)。
+> 如需更多詳細資料，包括內部部署屬性之群組宣告的重要注意事項，請參閱 [使用 Azure AD 設定應用程式的群組宣告](../hybrid/how-to-connect-fed-group-claims.md)。
 
 **透過 UI 設定群組選擇性宣告：**
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 通過驗證後，請從頁面右上角選取您的 Azure AD 租用戶。
-1. 從左側功能表中，選取 [Azure Active Directory]。
-1. 在 [管理] 區段下，選取 [應用程式註冊]。
+1. 搜尋並選取 [Azure Active Directory]  。
+1. 在 [管理]  底下選取 [應用程式註冊]  。
 1. 從清單中，選取您要設定選擇性宣告的應用程式。
-1. 在 [管理] 區段下，選取 [權杖設定]。
+1. 在 [ **管理**] 底下，選取 [ **權杖** 設定]。
 1. 選取 [ **新增群組** 宣告]。
 1. 選取群組類型，以傳回 (**安全性群組** 或 **目錄角色**、 **所有群組**，以及/或 **指派給應用程式) 的群組** 。 **指派給應用程式** 選項的群組只會包含指派給應用程式的群組。 [ **所有群組** ] 選項包括 **SecurityGroup**、 **DirectoryRole** 和 **DistributionList**，而不是 **指派給應用程式的群組**。 
 1. 選擇性：選取特定的權杖類型屬性，以修改群組宣告值以包含內部部署群組屬性，或將宣告類型變更為角色。
@@ -250,9 +248,9 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 通過驗證後，請從頁面右上角選取您的 Azure AD 租用戶。
-1. 從左側功能表中，選取 [Azure Active Directory]。
+1. 搜尋並選取 [Azure Active Directory]  。
 1. 從清單中，選取您要設定選擇性宣告的應用程式。
-1. 在 [ **管理** ] 區段下，選取 [ **資訊清單**]。
+1. 在 [ **管理**] 底下，選取 [ **資訊清單**]。
 1. 使用資訊清單編輯器新增下列項目：
 
    有效值為：
@@ -382,13 +380,13 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 通過驗證後，請從頁面右上角選取您的 Azure AD 租用戶。
 
-1. 從左側功能表中，選取 [Azure Active Directory]。
+1. 搜尋並選取 [Azure Active Directory]  。
 
-1. 在 [管理] 區段下，選取 [應用程式註冊]。
+1. 在 [管理]  底下選取 [應用程式註冊]  。
 
 1. 從清單中，找出並選取您要設定選擇性宣告的應用程式。
 
-1. 在 [管理] 區段下，選取 [權杖設定]。
+1. 在 [ **管理**] 底下，選取 [ **權杖** 設定]。
 
 1. 選取 [新增選擇性宣告]、選取 [識別碼] 權杖類型、從宣告清單中選取 [upn]，然後選取 [新增]。
 
@@ -404,9 +402,9 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 通過驗證後，請從頁面右上角選取您的 Azure AD 租用戶。
-1. 從左側功能表中，選取 [Azure Active Directory]。
+1. 搜尋並選取 [Azure Active Directory]  。
 1. 從清單中，找出並選取您要設定選擇性宣告的應用程式。
-1. 在 [管理] 區段下，選取 [資訊清單]，以開啟內嵌資訊清單編輯器。
+1. 在 [ **管理**] 底下，選取 [ **資訊清單** ] 以開啟內嵌資訊清單編輯器。
 1. 您可以使用此編輯器直接編輯資訊清單。 資訊清單遵循 [Application 實體](./reference-app-manifest.md)的結構描述，而且資訊清單儲存時會自動格式化。 新元素會新增至 `OptionalClaims` 屬性。
 
     ```json

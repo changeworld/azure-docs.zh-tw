@@ -12,12 +12,12 @@ ms.date: 12/10/2020
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 698864a4dc1081cb8cad9036ff1cfc737a17473c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 53f5346030e3c5a247d1ad2a73b23882e83ed41a
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111190"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508113"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中新增使用者屬性和自訂使用者輸入
 
@@ -129,7 +129,7 @@ ms.locfileid: "97111190"
 ::: zone pivot="b2c-custom-policy"
 
 > [!NOTE]
-> 此範例會使用內建的宣告「city」。 相反地，您可以選擇其中一個支援的 [Azure AD B2C 內建屬性](user-profile-attributes.md) 或自訂屬性。 若要使用自訂屬性，請 [在您的原則中啟用自訂屬性](custom-policy-custom-attributes.md)。 若要使用不同的內建或自訂屬性，請將 ' city ' 取代為您選擇的屬性，例如內建屬性 *jobTitle* 或自訂屬性（例如 *extension_loyaltyId*）。  
+> 此範例會使用內建的宣告「city」。 相反地，您可以選擇其中一個支援的 [Azure AD B2C 內建屬性](user-profile-attributes.md) 或自訂屬性。 若要使用自訂屬性，請 [啟用自訂屬性](user-flow-custom-attributes.md)。 若要使用不同的內建或自訂屬性，請將 ' city ' 取代為您選擇的屬性，例如內建屬性 *jobTitle* 或自訂屬性（例如 *extension_loyaltyId*）。  
 
 您可以使用註冊或登入使用者旅程圖，從使用者收集初始資料。 其他宣告則可在稍後透過使用設定檔編輯使用者旅程圖來收集。 每當 Azure AD B2C 以互動方式直接從使用者收集資訊時，Identity Experience Framework 就會使用自我判斷的 [技術設定檔](self-asserted-technical-profile.md)。 在此範例中，您會：
 
@@ -342,6 +342,6 @@ ms.locfileid: "97111190"
 ## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 IEF 參考中的 [ClaimsSchema](claimsschema.md) 元素。
-- 瞭解如何 [在自訂設定檔編輯原則中使用自訂屬性](custom-policy-custom-attributes.md)。
+- 瞭解如何 [在 Azure AD B2C 中使用自訂屬性](user-flow-custom-attributes.md)。
 
 ::: zone-end

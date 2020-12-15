@@ -2,7 +2,7 @@
   href: index.yml
 - name: 切換至專用 SQL 集區 (先前稱為 SQL DW)
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
-- name: 總覽
+- name: 概觀
   items:
     - name: 什麼是 Azure Synapse？
       href: overview-what-is.md
@@ -96,8 +96,6 @@
           href: ./cicd/continuous-integration-deployment.md
         - name: 安全性
           items:
-            - name: 安全性基準
-              href: security-baseline.md
             - name: 加密
               href: ./security/workspaces-encryption.md
             - name: 網路安全性
@@ -265,7 +263,7 @@
               href: sql/load-data-overview.md
         - name: 部署
           items:
-            - name: 總覽
+            - name: 概觀
               href: sql/develop-overview.md
             - name: 最佳作法
               href: sql/develop-best-practices.md
@@ -566,7 +564,7 @@
           href: ./spark/apache-spark-delta-lake-overview.md
         - name: 管理媒體櫃
           href: ./spark/apache-spark-azure-portal-add-libraries.md
-        - name: 使用筆記本
+        - name: 使用筆記本和 IDE 工具
           items:
             - name: 管理筆記本
               href: ./spark/apache-spark-development-using-notebooks.md

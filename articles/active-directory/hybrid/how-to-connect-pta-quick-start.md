@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bdfb1ca21860f1dc338f85a82caf643f9f7be6d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 31bdfc7e3eca2a2678b75b80973a1680448737d1
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973196"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507671"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory 傳遞驗證：快速入門
 
@@ -72,7 +72,7 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
      | **8080** (選擇性) | 如果無法使用連接埠 443，則驗證代理程式會透過連接埠 8080 每隔十分鐘報告其狀態。 此狀態會顯示在 Azure 入口網站上。 連接埠 8080 「不」會用於使用者登入。 |
      
      如果您的防火牆會根據原始使用者強制執行規則，請開啟這些連接埠，讓來自以網路服務形式執行之 Windows 服務的流量得以通行。
-   - 如果您的防火牆或 proxy 允許 DNS 允許清單，請將連接新增至 **\* msappproxy.net** 和 **\* . servicebus.windows.net**。 如果不允許建立，請允許存取每週更新的 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。
+   - 如果您的防火牆或 proxy 可讓您將 DNS 專案新增至允許清單，請將連接新增至 **\* msappproxy.net** 和 **\* . servicebus.windows.net**。 如果不允許建立，請允許存取每週更新的 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。
    - 您的驗證代理程式必須存取 **login.windows.net** 與 **login.microsoftonline.com** 才能進行初始註冊， 因此也請針對這些 URL 開啟您的防火牆。
     - 針對憑證驗證，請將下列 Url 解除封鎖： **crl3.digicert.com:80**、 **crl4.digicert.com:80**、 **ocsp.digicert.com:80**、 **www \. d-trust.net:80**、 **root-c3-ca2-2009.ocsp.d-trust.net:80**、 **crl.microsoft.com:80**、 **oneocsp.microsoft.com:80** 和 **ocsp.msocsp.com:80**。 由於這些 URL 會用於其他 Microsoft 產品的憑證驗證，因此您可能已將這些 URL 解除封鎖。
 

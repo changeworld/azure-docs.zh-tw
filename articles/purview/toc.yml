@@ -54,6 +54,8 @@ items:
         href: concept-business-glossary.md
       - name: 資料見解
         href: concept-insights.md
+      - name: 支援的瀏覽器
+        href: supported-browsers.md
       - name: 常見問題集
         href: frequently-asked-questions.md
   - name: 操作指南
@@ -110,6 +112,8 @@ items:
             href: how-to-create-import-export-glossary.md
           - name: 管理字詞範本
             href: how-to-manage-term-templates.md
+          - name: 大量編輯資產以指派字彙
+            href: how-to-bulk-edit-assets.md
       - name: 分類
         items:
           - name: 建立自訂分類和分類規則

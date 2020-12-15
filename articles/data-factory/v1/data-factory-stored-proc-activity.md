@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: e73381ef0e646f697f5195cb3df7f4c2733cccaf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f702633f6311d4ae4a79452e9b1c9176125c56f9
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456917"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508391"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server 預存程序活動
 > [!div class="op_single_selector" title1="轉換活動"]
@@ -86,7 +86,7 @@ ms.locfileid: "96456917"
    > [!IMPORTANT]
    > 參數 (在此範例中是 DateTime) 的 **名稱** 和 **大小寫** 必須與下列管線/活動 JSON 中指定的參數相符。 在預存程序定義中，請務必 **\@** 使用做為參數的前置詞。
 
-### <a name="create-a-data-factory"></a>建立資料處理站
+### <a name="create-a-data-factory"></a>建立 Data Factory
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 按一下左側功能表上的 [新增]、[資料 + 分析]，再按一下 [Data Factory]。
 
@@ -303,7 +303,7 @@ ms.locfileid: "96456917"
 
 下表說明這些 JSON 屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | NAME | 活動的名稱 |是 |
 | description |說明活動用途的文字 |否 |

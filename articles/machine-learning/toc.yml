@@ -84,16 +84,33 @@
           href: tutorial-setup-vscode-extension.md
         - name: 定型和部署 TensorFlow 影像分類模型
           href: tutorial-train-deploy-image-classification-model-vscode.md
+    - name: Microsoft Power BI 整合
+      items:
+        - name: 第 1 部分：訓練和部署模型
+          items:
+            - name: 使用筆記本 (程式碼)
+              href: tutorial-power-bi-custom-model.md
+            - name: 使用設計工具
+              href: tutorial-power-bi-designer-model.md
+            - name: 使用自動化 ML
+              href: tutorial-power-bi-automated-model.md
+        - name: 第 2 部分：在 Power BI 中使用
+          href: /power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context
 - name: 範例
   items:
     - name: Jupyter Notebook
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
+    - name: 範例存放庫
+      displayName: 'example, examples, jupyter, python, notebook, github'
+      href: 'https://github.com/Azure/azureml-examples'
     - name: 設計工具範例與資料集
       displayName: 'example, examples, studio, pipelines, data sets, modules'
       href: samples-designer.md
+    - name: 端對端 MLOps 範例
+      href: 'https://github.com/microsoft/MLOps'
     - name: 開放資料集 (公開)
-      href: ../open-datasets/samples.md?context=%2fazure%2fmachine-learning%2fcontext%2fml-context
+      href: /azure/open-datasets/samples?context=azure/machine-learning/context/ml-context
 - name: 概念
   items:
     - name: 規劃和管理成本
@@ -155,8 +172,6 @@
         - name: 企業安全性概觀
           displayName: authorization authentication encryption aad azure active directory
           href: concept-enterprise-security.md
-        - name: 資料加密
-          href: concept-data-encryption.md
         - name: 安全性基準
           href: security-baseline.md
     - name: 負責任的 ML
@@ -179,17 +194,14 @@
       items:
         - name: 身分識別與存取管理
           items:
-            - name: 工作區驗證
+            - name: 設定驗證
               displayName: 'authentication, auth, oauth'
               href: how-to-setup-authentication.md
-            - name: Web 服務驗證
-              displayName: 'authentication, model, web service'
-              href: how-to-authenticate-web-service.md
-            - name: 管理存取權 (授權)
+            - name: 管理使用者和角色
               href: how-to-assign-roles.md
-            - name: 用於存取控制的受控身分識別
+            - name: 使用適用於存取控制的受控身分識別
               href: how-to-use-managed-identities.md
-            - name: AKS 部署中的 Azure AD 身分識別
+            - name: 在 AKS 部署中使用 Azure AD 身分識別
               href: how-to-use-azure-ad-identity.md
         - name: 網路安全性
           items:
@@ -399,9 +411,6 @@
         - name: 使用遠端計算目標
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
-        - name: 搭配使用自動化 ML 與 Databricks
-          displayName: automl
-          href: how-to-configure-databricks-automl-environment.md
         - name: 自動定型預測模型
           displayName: time series
           href: how-to-auto-train-forecast.md
@@ -448,15 +457,11 @@
               href: how-to-deploy-model-cognitive-search.md
             - name: 使用自訂 Docker 映像
               href: how-to-deploy-custom-docker-image.md
-            - name: 本機電腦
-              href: how-to-deploy-local.md
             - name: IoT Edge
-              href: ../iot-edge/tutorial-deploy-machine-learning.md?context=%2fazure%2fmachine-learning%2fservice%2fcontext%2fml-context
+              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
             - name: FPGA 推斷
               href: how-to-deploy-fpga-web-service.md
-        - name: 疑難排解與偵錯 (本機)
-          href: how-to-troubleshoot-deployment-local.md
-        - name: 疑難排解與偵錯 (遠端)
+        - name: 疑難排解與偵錯
           href: how-to-troubleshoot-deployment.md
         - name: 取用 Web 服務
           displayName: create client consume request response synchronous
@@ -534,7 +539,7 @@
           href: how-to-debug-parallel-run-step.md
     - name: 適用於 CI/CD 的 Azure Pipelines
       displayName: 'continuous, integration, delivery'
-      href: /azure/devops/pipelines/targets/azure-machine-learning?context=%2fazure/machine-learning/context/ml-context
+      href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context
     - name: 適用於 CI/CD 的 GitHub Actions
       href: how-to-github-actions-machine-learning.md
     - name: 管理資源配額
@@ -556,7 +561,7 @@
   items:
     - name: Python SDK
       displayName: 'api, core, package, python, class'
-      href: /python/api/overview/azure/ml/intro?view=azure-ml-py
+      href: 'https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py'
     - name: R SDK
       displayName: 'api, core, package, R, class'
       href: 'https://azure.github.io/azureml-sdk-for-r/reference/index.html'
@@ -564,7 +569,7 @@
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
     - name: REST API
-      href: /rest/api/azureml/
+      href: 'https://docs.microsoft.com/rest/api/azureml/'
     - name: 設計工具模組參考
       displayName: 'module, reference, algorithm, studio'
       href: algorithm-module-reference/module-reference.md
@@ -595,11 +600,11 @@
       displayName: 'bugs, errors, troubleshoot'
       href: resource-known-issues.md
     - name: 使用者論壇
-      href: /answers/topics/azure-machine-learning.html
+      href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning.html'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
     - name: 比較 ML 產品
-      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=%2fazure/machine-learning/context/ml-context
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/context/ml-context
     - name: Workbench 有什麼改變
       displayName: 'desktop, ui, Workbench, upgrade, update, transfer'
       href: overview-what-happened-to-workbench.md

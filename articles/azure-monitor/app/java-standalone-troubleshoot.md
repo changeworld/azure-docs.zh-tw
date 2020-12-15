@@ -4,12 +4,12 @@ description: 瞭解如何針對 Azure 監視器 Application Insights 的 JAVA �
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1ccfd583b58d129268af2a94e3072200e58308cd
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 14644f76b7de53b2b6ee3f04131daaf59267a5ff
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347825"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507637"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>疑難排解指南：適用于 JAVA 的 Azure 監視器 Application Insights
 
@@ -34,6 +34,14 @@ ms.locfileid: "97347825"
 -  設定檔案名稱已從變更 `ApplicationInsights.json` 為 `applicationinsights.json` 。
 -  `instrumentationSettings`節點不再存在。 中的所有內容 `instrumentationSettings` 都會移至根層級。 
 -  設定節點（例如 `sampling` 、 `jmxMetrics` 、和） `instrumentation` `heartbeat` 會從 `preview` 根層級移出。
+
+## <a name="some-logging-is-not-auto-collected"></a>不會自動收集某些記錄
+
+只有在第一次符合記錄架構設定的閾值時才會捕獲記錄，第二個則會符合 Application Insights 設定的閾值。
+
+知道特定記錄語句是否符合記錄架構設定的閾值，最好的方法是確認它顯示在您的一般應用程式記錄檔 (例如檔案或主控台) 。
+
+如需詳細資訊，請參閱 [自動收集的記錄](./java-standalone-config.md#auto-collected-logging) 設定。
 
 ## <a name="import-ssl-certificates"></a>匯入 SSL 憑證
 

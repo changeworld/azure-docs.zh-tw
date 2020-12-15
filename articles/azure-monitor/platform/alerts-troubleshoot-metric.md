@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 11/25/2020
 ms.subservice: alerts
-ms.openlocfilehash: 5a57e8b7f3bf2c3e820a3befee0ee69c48a2afa9
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: ef8a07f0360338aeb659942967169b0605b08e51
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029871"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507212"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>針對 Azure 監視器計量警示中的問題進行疑難排解 
 
@@ -122,17 +122,17 @@ ms.locfileid: "96029871"
     "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
         "allOf": [
             {
-                    "name" : "condition1",
-                        "metricName": "myCustomMetric",
+                "name" : "condition1",
+                "metricName": "myCustomMetric",
                 "metricNamespace": "myCustomMetricNamespace",
-                        "dimensions":[],
-                        "operator": "GreaterThan",
-                        "threshold" : 10,
-                        "timeAggregation": "Average",
-                    "skipMetricValidation": true
-        }
-              ]
-        }
+                "dimensions":[],
+                "operator": "GreaterThan",
+                "threshold" : 10,
+                "timeAggregation": "Average",
+                "skipMetricValidation": true
+            }
+        ]
+    }
 ```
 
 ## <a name="export-the-azure-resource-manager-template-of-a-metric-alert-rule-via-the-azure-portal"></a>透過 Azure 入口網站匯出度量警示規則的 Azure Resource Manager 範本
@@ -252,7 +252,7 @@ ms.locfileid: "96029871"
 - 在每個條件中，您只能為每個維度選取一個值。
 - 您無法使用 [選取所有目前及未來的值] 選項 (選取 \*) 。
 - 當在不同條件下設定的度量支援相同的維度時，您必須以相同的方式，針對) 相關條件 (的所有計量明確設定所設定的維度值。
-例如：
+例如︰
     - 請考慮在儲存體帳戶上定義的度量警示規則，並監視兩個條件：
         * **交易** 總數 > 5
         * 平均 **successe2elatency 時間** > 250 毫秒

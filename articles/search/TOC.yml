@@ -256,9 +256,11 @@
       items:
         - name: 查詢類型和組合
           href: search-query-overview.md
-        - name: 建立簡易查詢
+        - name: 建立基本查詢
+          href: search-query-create.md
+        - name: 使用簡單語法 (範例)
           href: search-query-simple-examples.md
-        - name: 使用完整 Lucene 語法
+        - name: 使用完整 Lucene (範例)
           href: search-query-lucene-examples.md
         - name: 部分條款和特殊字元
           href: search-query-partial-matching.md
@@ -536,6 +538,8 @@
           href: 'https://wolterskluwereap.azurewebsites.net/'
         - name: JFK 檔案示範
           href: 'https://www.microsoft.com/en-us/ai/ai-lab-jfk-files'
+        - name: NYC 作業示範
+          href: 'https://azjobsdemo.azurewebsites.net/'
     - name: 訓練
       items:
         - name: 簡介 (Microsoft Learn)

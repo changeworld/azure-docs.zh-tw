@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 60dff717fbd86fa83821575ac90c9dac36dbc4d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d680da7a5f09a55bec5d791642b80fd76c6088e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85383966"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509609"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>將使用者遷移至 Azure AD B2C
 
@@ -79,7 +79,7 @@ ms.locfileid: "85383966"
 
 並非舊版身分識別提供者中的所有資訊都應該遷移到您的 Azure AD B2C 目錄。 在遷移之前，請先識別要儲存在 Azure AD B2C 中的適當使用者屬性集。
 
-- Azure AD B2C 中**的商店**
+- Azure AD B2C 中 **的商店**
   - 使用者名稱、密碼、電子郵件地址、電話號碼、成員資格號碼/識別碼。
   - 隱私權原則和使用者授權合約的同意標記。
 - **請勿** 儲存在 Azure AD B2C
@@ -90,7 +90,7 @@ ms.locfileid: "85383966"
 
 開始進行遷移程式之前，請先有機會清除您的目錄。
 
-- 識別要儲存在 Azure AD B2C 中的使用者屬性集合，並只遷移您需要的內容。 如有必要，您可以建立 [自訂屬性](custom-policy-custom-attributes.md) ，以儲存更多有關使用者的資料。
+- 識別要儲存在 Azure AD B2C 中的使用者屬性集合，並只遷移您需要的內容。 如有必要，您可以建立 [自訂屬性](user-flow-custom-attributes.md) ，以儲存更多有關使用者的資料。
 - 如果您是從具有多個驗證來源的環境進行遷移 (例如，每個應用程式都有自己的使用者目錄) ，請遷移至 Azure AD B2C 中的整合帳戶。
 - 如果多個應用程式有不同的使用者名稱，您可以使用身分識別集合，將所有這些應用程式儲存在 Azure AD B2C 使用者帳戶中。 在密碼方面，讓使用者選擇其中一個，並在目錄中設定。 例如，在無縫式遷移的情況下，只應該將所選的密碼儲存在 Azure AD B2C 帳戶中。
 - 請在遷移前移除未使用的使用者帳戶，或不要遷移過時的帳戶。

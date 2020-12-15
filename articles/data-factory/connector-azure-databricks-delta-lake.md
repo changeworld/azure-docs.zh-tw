@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/24/2020
-ms.openlocfilehash: 3eb43c98ae2697ece5ded8ae0df451a6cf5f272d
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: c7e8f96e7917173aaec308b8ae5218684a722483
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96007200"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507467"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製到 Azure Databricks Delta Lake 或從中複製資料
 
@@ -79,7 +79,7 @@ Databricks 叢集必須能夠存取 Azure Blob 或 Azure Data Lake Storage Gen2 
 
 以下是針對 Azure Databricks Delta Lake 已連結服務支援的屬性。
 
-| 屬性    | 描述                                                  | 必要 |
+| 屬性    | 說明                                                  | 必要 |
 | :---------- | :----------------------------------------------------------- | :------- |
 | type        | Type 屬性必須設為 **AzureDatabricksDeltaLake**。 | 是      |
 | 網域      | 指定 Azure Databricks 工作區 URL，例如 `https://adb-xxxxxxxxx.xx.azuredatabricks.net` 。 |          |
@@ -112,7 +112,7 @@ Databricks 叢集必須能夠存取 Azure Blob 或 Azure Data Lake Storage Gen2 
 
 以下是 Azure Databricks Delta Lake 資料集支援的屬性。
 
-| 屬性  | 描述                                                  | 必要                    |
+| 屬性  | 說明                                                  | 必要                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | 資料集的 type 屬性必須設為 **AzureDatabricksDeltaLakeDataset**。 | 是                         |
 | [資料庫] | 資料庫的名稱。 |否，來源，是接收的  |
@@ -146,7 +146,7 @@ Databricks 叢集必須能夠存取 Azure Blob 或 Azure Data Lake Storage Gen2 
 
 若要從 Azure Databricks Delta Lake 複製資料，[複製活動 **來源** ] 區段支援下列屬性。
 
-| 屬性                     | 描述                                                  | 必要 |
+| 屬性                     | 說明                                                  | 必要 |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | 複製活動來源的 type 屬性必須設為 **AzureDatabricksDeltaLakeSource**。 | 是      |
 | 查詢          | 指定要讀取資料的 SQL 查詢。 針對「時間移動」控制項，請遵循下列模式：<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | 否       |
@@ -260,7 +260,7 @@ Databricks 叢集必須能夠存取 Azure Blob 或 Azure Data Lake Storage Gen2 
 
 若要將資料複製到 Azure Databricks Delta Lake，複製活動 **接收器** 區段支援下列屬性。
 
-| 屬性      | 描述                                                  | 必要 |
+| 屬性      | 說明                                                  | 必要 |
 | :------------ | :----------------------------------------------------------- | :------- |
 | type          | 複製活動接收的 type 屬性，設定為 **AzureDatabricksDeltaLakeSink**。 | 是      |
 | preCopyScript | 針對要在每次執行中的 Databricks delta 資料表寫入資料之前執行的複製活動，指定 SQL 查詢。 您可以使用這個屬性來清除預先載入的資料，或加入截斷資料表或清除語句。 | 否       |

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 11/19/2020
+ms.date: 12/14/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: b8bdb216cbe8d359f35c758ae89f4267ab223483
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 78e9d7355b8c96295456f8aa9cb80b1d3bdd2fab
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928744"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509541"
 ---
 # <a name="known-issues-application-provisioning"></a>已知問題：應用程式布建
 使用應用程式布建時要注意的已知問題。 您可以在 UserVoice 上提供關於應用程式布建服務的意見反應，請參閱 [Azure AD 應用程式](https://aka.ms/appprovisioningfeaturerequest)布建 UserVoice。 我們會密切觀賞 UserVoice，讓我們可以改善服務。 
@@ -68,7 +68,8 @@ Azure AD 目前無法布建 null 屬性。 如果使用者物件上的屬性為 
 
 - 不支援提供密碼。 
 - 不支援布建嵌套群組。 
-- 因為租使用者的大小，所以不支援布建至 B2C 租使用者。 
+- 因為租使用者的大小，所以不支援布建至 B2C 租使用者。
+- 並非所有的布建應用程式都可在所有雲端中使用。 例如，Atlassian 還無法在政府雲端中使用。 我們正在與應用程式開發人員合作，將其應用程式上架到所有雲端。
 
 **我的 OIDC 應用程式無法使用自動布建**
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 6c9e5b6466d3da675975dbf2c532602561e820c9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 417306e09a9424b302bb226aea5dd2c1debe96f5
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495067"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508419"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>從 Azure Data Factory 叫用 Spark 程式管線
 
@@ -51,7 +51,7 @@ Spark 活動是 Data Factory 所支援的其中一個[資料轉換活動](data-f
 * 建立會參考儲存體已連結服務的資料集。 目前，您必須指定活動的輸出資料集，即使沒有產生任何輸出。
 * 建立含有 Spark 活動的管線，此活動會參考您所建立的 HDInsight 已連結服務。 此活動已使用您在上一個步驟中建立的資料集設定為輸出資料集。 輸出資料集是驅動排程 (每小時、每天) 的因子。 因此，即使活動並不會真的產生輸出，您仍然必須指定輸出資料集。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>Prerequisites
 1. 依照[建立儲存體帳戶](../../storage/common/storage-account-create.md)中的指示，建立一般用途的儲存體帳戶。
 
 1. 依照教學課程[在 HDInsight 中建立 Spark 叢集](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)中的指示，在 HDInsight 中建立 Spark 叢集。 將您在步驟 1 中建立的儲存體帳戶與此叢集產生關聯。
@@ -60,7 +60,7 @@ Spark 活動是 Data Factory 所支援的其中一個[資料轉換活動](data-f
 
 1. 將 **test.py** 上傳至您 Blob 儲存體 **adfspark** 容器中的 [pyFiles] 資料夾。 建立容器和資料夾 (如果不存在)。
 
-### <a name="create-a-data-factory"></a>建立資料處理站
+### <a name="create-a-data-factory"></a>建立 Data Factory
 若要建立資料處理站，請依照下列步驟：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
@@ -118,13 +118,13 @@ Spark 活動是 Data Factory 所支援的其中一個[資料轉換活動](data-f
 
 1. 複製下列程式碼片段並貼到 [Draft-1] 視窗。 在 JSON 編輯器中，執行下列步驟：
 
-    a. 指定 HDInsight Spark 叢集的 URI。 例如：`https://<sparkclustername>.azurehdinsight.net/`。
+    1. 指定 HDInsight Spark 叢集的 URI。 例如： `https://<sparkclustername>.azurehdinsight.net/` 。
 
-    b. 指定能夠存取 Spark 叢集的使用者名稱。
+    1. 指定能夠存取 Spark 叢集的使用者名稱。
 
-    c. 指定該使用者的密碼。
+    1. 指定該使用者的密碼。
 
-    d. 指定與 HDInsight Spark 叢集關聯的儲存體已連結服務。 在此範例中是 AzureStorageLinkedService。
+    1. 指定與 HDInsight Spark 叢集關聯的儲存體已連結服務。 在此範例中是 AzureStorageLinkedService。
 
     ```json
     {
@@ -213,20 +213,21 @@ Spark 活動是 Data Factory 所支援的其中一個[資料轉換活動](data-f
         }
     }
     ```
+
     請注意下列幾點：
 
-    a. **Type** 屬性設為 **HDInsightSpark**。
+    1. **Type** 屬性設為 **HDInsightSpark**。
 
-    b. **rootPath** 屬性會設定為 **adfspark\\pyFiles**，其中 adfspark 是 Blob 容器，而 pyFiles 是該容器中的檔案資料夾。 在此範例中，Blob 儲存體是與 Spark 叢集關聯的儲存體。 您可以將檔案上傳至不同的儲存體帳戶。 如果您這麼做，請建立一個儲存體已連結服務，以將該儲存體帳戶連結至資料處理站。 然後，將連結服務的名稱指定為 **sparkJobLinkedService** 屬性的值。 如需有關此屬性和 Spark 活動所支援之其他屬性的詳細資訊，請參閱 [Spark 活動屬性](#spark-activity-properties)。
+    1. **rootPath** 屬性會設定為 **adfspark\\pyFiles**，其中 adfspark 是 Blob 容器，而 pyFiles 是該容器中的檔案資料夾。 在此範例中，Blob 儲存體是與 Spark 叢集關聯的儲存體。 您可以將檔案上傳至不同的儲存體帳戶。 如果您這麼做，請建立一個儲存體已連結服務，以將該儲存體帳戶連結至資料處理站。 然後，將連結服務的名稱指定為 **sparkJobLinkedService** 屬性的值。 如需有關此屬性和 Spark 活動所支援之其他屬性的詳細資訊，請參閱 [Spark 活動屬性](#spark-activity-properties)。
 
-    c. **entryFilePath** 會設定為 **test.py**，也就是 Python 檔案。
+    1. **entryFilePath** 會設定為 **test.py**，也就是 Python 檔案。
 
-    d. **GetDebugInfo** 屬性設定為 **always**，這表示記錄檔一律會產生 (成功或失敗) 。
+    1. **GetDebugInfo** 屬性設定為 **always**，這表示記錄檔一律會產生 (成功或失敗) 。
 
-    > [!IMPORTANT]
-    > 建議您在生產環境中不要將這個屬性設定為 `Always`，除非您要針對問題進行疑難排解。
+       > [!IMPORTANT]
+       > `Always`除非您要針對問題進行疑難排解，否則建議您不要在生產環境中將此屬性設定為。
 
-    e. 輸出 **區段有** 一個輸出資料集。 即使 Spark 程式不會產生任何輸出，您仍然必須指定輸出資料集。 輸出資料集會驅動管線的排程 (每小時、每天)。
+    1. 輸出 **區段有** 一個輸出資料集。 即使 Spark 程式不會產生任何輸出，您仍然必須指定輸出資料集。 輸出資料集會驅動管線的排程 (每小時、每天)。
 
     如需有關 Spark 活動所支援之屬性的詳細資訊，請參閱 [Spark 活動屬性](#spark-activity-properties)。
 
@@ -324,7 +325,7 @@ Spark 活動是 Data Factory 所支援的其中一個[資料轉換活動](data-f
 
 下表說明 JSON 定義中所使用的 JSON 屬性。
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | -------- | ----------- | -------- |
 | NAME | 管線中的活動名稱。 | 是 |
 | description | 說明活動用途的文字。 | 否 |

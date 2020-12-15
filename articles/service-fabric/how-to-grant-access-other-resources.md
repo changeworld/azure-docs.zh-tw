@@ -3,12 +3,12 @@ title: 將應用程式存取權授與其他 Azure 資源
 description: 本文說明如何將已啟用受控識別的 Service Fabric 應用程式存取權授與支援 Azure Active Directory 型驗證的其他 Azure 資源。
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: a1d963c49f9522000028b00c138b2e5731a9ccca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7560294fbf6d122396b6a5a8ffd3ee93bc89048
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333625"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507450"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources"></a>將 Service Fabric 應用程式的受控識別存取權授與 Azure 資源
 

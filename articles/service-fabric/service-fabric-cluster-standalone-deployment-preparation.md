@@ -3,12 +3,12 @@ title: 獨立叢集部署準備工作
 description: 文件說明關於在部署用來處理生產工作負載的叢集之前，需要考慮準備的環境和建立的叢集組態。
 ms.topic: conceptual
 ms.date: 9/11/2018
-ms.openlocfilehash: 9e5ad37d803b2042fd57b0a325570e69d7b73038
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 277c7e047815b3b4171f7cced203ecbe5b68b155
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842949"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509167"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>規劃和準備您的 Service Fabric 獨立叢集部署
 
@@ -18,7 +18,7 @@ ms.locfileid: "91842949"
 您即將「自行」在您所擁有的電腦上建立 Service Fabric 叢集，因此您可以決定您希望叢集不受何種失敗的影響。 例如，您是否需要提供給這些電腦的個別電源線或網際網路連線？ 此外，請考慮這些電腦的實體安全性。 電腦位於何處？哪些人需要存取這些電腦？ 您做出這些決定之後，可依據邏輯將電腦對應到多個容錯網域 (請參閱下一個步驟)。 生產叢集的基礎結構規劃比起測試叢集更為複雜。
 
 ## <a name="determine-the-number-of-fault-domains-and-upgrade-domains"></a>決定容錯網域和升級網域的數目
-[*容錯網域* (FD) ](service-fabric-cluster-resource-manager-cluster-description.md)是故障的實體單元，而且與資料中心內的實體基礎結構直接相關。 容錯網域是由共用單一失敗點的硬體元件 (電腦、交換器、網路等) 所組成。 雖然容錯網域和機架之間沒有 1:1 對應，但是大致上來說，可以將每個機架視為一個容錯網域。
+[*容錯網域* (FD)](service-fabric-cluster-resource-manager-cluster-description.md)是故障的實體單元，而且與資料中心內的實體基礎結構直接相關。 容錯網域是由共用單一失敗點的硬體元件 (電腦、交換器、網路等) 所組成。 雖然容錯網域和機架之間沒有 1:1 對應，但是大致上來說，可以將每個機架視為一個容錯網域。
 
 當您在 ClusterConfig.json 中指定 FD 時，可以選擇每個 FD 的名稱。 Service Fabric 支援階層式 FD，因此，您可以在 FD 中反映您的基礎結構拓撲。  例如，下列 FD 有效：
 
@@ -60,7 +60,7 @@ ms.locfileid: "91842949"
 * [Windows PowerShell 3.0](/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7)
 * [RemoteRegistry 服務](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754820(v=ws.11))應該在所有電腦上執行
 * **Service Fabric 安裝磁片磁碟機必須是 NTFS 檔案系統**
-* **必須[啟用](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc755249(v=ws.11))Windows 服務*效能記錄 & 警示*和*windows 事件記錄*** 檔。
+* **必須 [啟用](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc755249(v=ws.11))Windows 服務 *效能記錄 & 警示* 和 *windows 事件記錄*** 檔。
 
 > [!IMPORTANT]
 > 部署和設定叢集的叢集系統管理員必須擁有每部電腦的 [系統管理員權限](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) 。 您無法在網域控制站上安裝 Service Fabric。
@@ -103,7 +103,7 @@ ms.locfileid: "91842949"
 5. 如果叢集電腦不可存取網際網路，在叢集組態中設定下列各項：
    * 停用遙測：在 *properties* 設定 *"enableTelemetry"： false*
    * 停用自動網狀架構版本下載 & 通知，指出目前的叢集版本即將結束支援：在 [ *屬性* ] 下設定 *"fabricClusterAutoupgradeEnabled"： false*
-   * 或者，如果網路的網際網路存取僅限於允許清單上的網域，則自動升級需要下列網域：go.microsoft.com download.microsoft.com
+   * 或者，如果網路的網際網路存取僅限於 allowlisted 網域，則自動升級需要下列網域： go.microsoft.com download.microsoft.com
 
 6. 設定適當的 Service Fabric 防毒排除項目︰
 

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/03/2020
-ms.openlocfilehash: 4a99865e13e029dcea478cf6085d71c465918b14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 221f8bd7908613812a728d420a68b747051e095b
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89421765"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508793"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>建立輪轉視窗觸發程序相依性
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "89421765"
 
 ## <a name="create-a-dependency-in-the-data-factory-ui"></a>在 Data Factory UI 中建立相依性
 
-若要在觸發程序上建立相依性，請選取 [觸發程序] > [進階] > [新增]****，然後選擇要進行相依的觸發程序，以及適當的偏移與大小。 選取 [完成]**** 並發佈 Data Factory 變更來使相依性生效。
+若要在觸發程序上建立相依性，請選取 [觸發程序] > [進階] > [新增]，然後選擇要進行相依的觸發程序，以及適當的偏移與大小。 選取 [完成] 並發佈 Data Factory 變更來使相依性生效。
 
 ![建立相依性](media/tumbling-window-trigger-dependency/tumbling-window-dependency-01.png "建立相依性")
 
@@ -83,7 +83,7 @@ ms.locfileid: "89421765"
 |---|---|---|---|
 | type  | 所有現有的輪轉視窗觸發程序都會顯示在此下拉式清單中。 選擇要採取相依性的觸發程序。  | TumblingWindowTriggerDependencyReference 或 SelfDependencyTumblingWindowTriggerReference | 是 |
 | Offset | 相依性觸發程序的偏移。 提供時間範圍格式的值，而且允許負和正位移。 如果觸發程式是根據本身，而且在其他所有情況下都是選擇性的，則此屬性是必要屬性。 自我相依性應一律為負值偏移。 如果未指定任何值，則視窗與觸發程式本身相同。 | Timespan<br/>(hh:mm:ss) | 自我相依性：是<br/>其他：否 |
-| size | 相依性輪轉視窗的大小。 提供正面的 timespan 值。 這是選用屬性。 | Timespan<br/>(hh:mm:ss) | 否  |
+| 大小 | 相依性輪轉視窗的大小。 提供正面的 timespan 值。 這是選用屬性。 | Timespan<br/>(hh:mm:ss) | 否  |
 
 > [!NOTE]
 > 輪轉視窗觸發程式最多可相依于五個其他觸發程式。
@@ -157,7 +157,7 @@ ms.locfileid: "89421765"
 
 ## <a name="monitor-dependencies"></a>監視相依性
 
-您可以從 [觸發程式執行監視] 頁面監視相依性鏈和對應的視窗。 請瀏覽到 [監視] > [觸發程序執行]****。 如果輪轉視窗觸發程式具有相依性，觸發程式名稱將會指向相依性監視視圖的超連結。  
+您可以從 [觸發程式執行監視] 頁面監視相依性鏈和對應的視窗。 請瀏覽到 [監視] > [觸發程序執行]。 如果輪轉視窗觸發程式具有相依性，觸發程式名稱將會指向相依性監視視圖的超連結。  
 
 ![監視觸發程序執行](media/tumbling-window-trigger-dependency/tumbling-window-dependency-07.png "監視觸發程式執行-entires 至輪轉視窗相依性視圖")
 

@@ -11,22 +11,22 @@ ms.topic: reference
 ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3e47eda29b0ad1c47edad08195b2ffd0fe3835af
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 453042766c427b05ec1ee1090a0702f64065542d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750470"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508045"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的單一登入工作階段管理
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-[單一登入 (SSO) 會話](session-overview.md) 管理使用與自訂原則中任何其他技術設定檔相同的語法。 執行協調流程步驟時，會查詢與步驟建立關聯的技術設定檔是否有 `UseTechnicalProfileForSessionManagement` 參考。 如果有的話，接著會檢查參考的 SSO 工作階段提供者，以查看使用者是否為工作階段參與者。 如果是這樣，則會使用 SSO 工作階段提供者來重新填入工作階段。 同樣地，執行協調流程步驟完成時，如果已指定 SSO 工作階段提供者，則會使用提供者來將資訊儲存在工作階段中。
+[單一登入 (SSO) 會話](session-behavior.md) 管理使用與自訂原則中任何其他技術設定檔相同的語法。 執行協調流程步驟時，會查詢與步驟建立關聯的技術設定檔是否有 `UseTechnicalProfileForSessionManagement` 參考。 如果有的話，接著會檢查參考的 SSO 工作階段提供者，以查看使用者是否為工作階段參與者。 如果是這樣，則會使用 SSO 工作階段提供者來重新填入工作階段。 同樣地，執行協調流程步驟完成時，如果已指定 SSO 工作階段提供者，則會使用提供者來將資訊儲存在工作階段中。
 
 Azure AD B2C 已定義許多可使用的 SSO 工作階段提供者：
 
-|會話提供者  |範圍  |
+|會話提供者  |影響範圍  |
 |---------|---------|
 |[NoopSSOSessionProvider](#noopssosessionprovider)     |  無       |       
 |[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C 內部會話管理員。      |       
@@ -118,7 +118,7 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 
 #### <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要 | 描述|
+| 屬性 | 必要 | 說明|
 | --- | --- | --- |
 | AlwaysFetchClaimsFromProvider | 否 | 目前未使用，可以忽略。 |
 
@@ -160,7 +160,7 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 
 #### <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要 | 描述|
+| 屬性 | 必要 | 說明|
 | --- | --- | --- |
 | IncludeSessionIndex | 否 | 目前未使用，可以忽略。|
 | RegisterServiceProviders | 否 | 指出提供者應該註冊所有已發行判斷提示的 SAML 服務提供者。 可能的值：`true` (預設) 或 `false`。|
@@ -168,5 +168,4 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解 [Azure AD B2C 會話](session-overview.md)。
-- 瞭解如何 [設定自訂原則中的會話行為](session-behavior-custom-policy.md)。
+瞭解如何 [設定會話行為](session-behavior.md)。

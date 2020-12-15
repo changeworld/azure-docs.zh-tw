@@ -1,14 +1,14 @@
 ---
 title: 大規模監視委派的資源
 description: 瞭解如何在您所管理的客戶租使用者之間，以可擴充的方式有效地使用 Azure 監視器記錄。
-ms.date: 10/26/2020
+ms.date: 12/14/2020
 ms.topic: how-to
-ms.openlocfilehash: 96ca05faf2b3da8f214c14ae57eb186c7b71e1b3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6c1cbde696ccf9131797a05db33553b8505216a4
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461522"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509269"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>大規模監視委派的資源
 
@@ -40,7 +40,25 @@ ms.locfileid: "96461522"
 
 ## <a name="analyze-the-gathered-data"></a>分析收集的資料
 
-在您部署原則之後，資料會記錄在您于每個客戶租使用者中建立的 Log Analytics 工作區中。 若要深入瞭解所有受管理的客戶，您可以使用 [Azure 監視器活頁簿](../../azure-monitor/platform/workbooks-overview.md) 之類的工具來收集和分析來自多個資料來源的資訊。 
+在您部署原則之後，資料會記錄在您于每個客戶租使用者中建立的 Log Analytics 工作區中。 若要深入瞭解所有受管理的客戶，您可以使用 [Azure 監視器活頁簿](../../azure-monitor/platform/workbooks-overview.md) 之類的工具來收集和分析來自多個資料來源的資訊。
+
+## <a name="view-alerts-across-customers"></a>跨客戶查看警示
+
+您可以在您管理的客戶租使用者中，查看委派訂用帳戶的 [警示](../../azure-monitor/platform/alerts-overview.md) 。
+
+若要在多個客戶之間自動重新整理警示，請使用 [Azure Resource Graph](../../governance/resource-graph/overview.md) 查詢來篩選警示。 您可以將查詢釘選到儀表板，並選取所有適當的客戶和訂用帳戶。
+
+下列範例查詢將顯示嚴重性0和1個警示，每60分鐘重新整理一次。
+
+```kusto
+alertsmanagementresources
+| where type == "microsoft.alertsmanagement/alerts"
+| where properties.essentials.severity =~ "Sev0" or properties.essentials.severity =~ "Sev1"
+| where properties.essentials.monitorCondition == "Fired"
+| where properties.essentials.startDateTime > ago(60m)
+| project StartTime=properties.essentials.startDateTime,name,Description=properties.essentials.description, Severity=properties.essentials.severity, subscriptionId
+| sort by tostring(StartTime)
+```
 
 ## <a name="next-steps"></a>後續步驟
 

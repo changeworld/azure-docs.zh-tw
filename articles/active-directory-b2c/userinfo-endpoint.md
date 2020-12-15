@@ -11,12 +11,12 @@ ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 62f2869bfe1110dd5bf8459c9f6f6b21701dc934
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 95f41283b78c39ed2cf3b4abb75275902d8cf7bd
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425769"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509575"
 ---
 # <a name="userinfo-endpoint"></a>使用者資訊端點
 
@@ -103,7 +103,7 @@ ms.locfileid: "97425769"
 
 1. UserInfoIssuer 技術設定檔中的 outputClaims 區段會指定您想要傳回的屬性。 UserInfoIssuer 技術設定檔會在使用者旅程圖結束時呼叫。 
 1. UserInfoAuthorization 技術設定檔會驗證簽章、簽發者名稱和權杖物件，並從輸入權杖中解壓縮宣告。 變更下列中繼資料以反映您的環境：
-    1. **簽發者** -此值必須與存取權杖宣告內的宣告相同 `iss` 。 Azure AD B2C 所簽發的權杖會使用格式的簽發者 `https://yourtenant.b2clogin.com/your-tenant-id/v2.0/` 。 深入瞭解 [權杖自訂](configure-tokens-custom-policy.md)。
+    1. **簽發者** -此值必須與存取權杖宣告內的宣告相同 `iss` 。 Azure AD B2C 所簽發的權杖會使用格式的簽發者 `https://yourtenant.b2clogin.com/your-tenant-id/v2.0/` 。 深入瞭解 [權杖自訂](configure-tokens.md)。
     1. **IdTokenAudience** -必須與存取權杖宣告內的宣告相同 `aud` 。 在 Azure AD B2C 宣告 `aud` 是信賴憑證者應用程式的識別碼。 此值為集合，並使用逗號分隔符號支援多個值。
 
 在下列存取權杖中，宣告 `iss` 值為 `https://contoso.b2clogin.com/11111111-1111-1111-1111-111111111111/v2.0/` 。 宣告 `aud` 值為 `22222222-2222-2222-2222-222222222222` 。

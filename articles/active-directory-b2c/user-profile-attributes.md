@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85030285810433dc77d1f466d160c50d1f89770e
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 31926653950594b986aca19e2db2877cd655ca24
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750402"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509592"
 ---
 # <a name="user-profile-attributes"></a>使用者設定檔屬性
 
@@ -52,8 +52,8 @@ ms.locfileid: "96750402"
 |facsimileTelephoneNumber<sup>1</sup>|String|使用者的商務傳真機電話號碼。|是|否|保留，輸出|
 |givenName       |String|使用者的名字。 長度上限為 64。|是|是|保留，輸出|
 |jobTitle        |String|使用者的職稱。 長度上限為 128。|是|是|保留，輸出|
-|immutableId     |String|識別碼，通常用於從內部部署 Active Directory 遷移的使用者。|否|否|保留，輸出|
-|legalAgeGroupClassification|String|法定年齡群組分類。 唯讀並以 ageGroup 和 consentProvidedForMinor 屬性為計算依據。 允許的值：Null、minorWithOutParentalConsent、minorWithParentalConsent、minorNoParentalConsentRequired、notAdult 和成人。|是|否|保留，輸出|
+|immutableId     |String|通常用於從內部部署 Active Directory 遷移之使用者的識別碼。|否|否|保留，輸出|
+|legalAgeGroupClassification|String|法定年齡群組分類。 唯讀並以 ageGroup 和 consentProvidedForMinor 屬性為計算依據。 允許的值： null、minorWithOutParentalConsent、minorWithParentalConsent、minorNoParentalConsentRequired、notAdult 和成人。|是|否|保留，輸出|
 |legalCountry<sup>1</sup>  |String|適用於法律用途的國家/地區。|否|否|保留，輸出|
 |mail            |String|使用者的 SMTP 位址，例如 "bob@contoso.com"。 唯讀。|否|否|保留，輸出|
 |mailNickName    |String|使用者的郵件別名。 長度上限為 64。|否|否|保留，輸出|
@@ -62,15 +62,15 @@ ms.locfileid: "96750402"
 |objectId        |String|全域唯一識別碼 (GUID)，這是使用者的唯一識別碼。 範例：12345678-9abc-def0-1234-56789abcde。 唯讀、不可變。|唯讀|是|輸入，保留，輸出|
 |otherMails      |字串集合|使用者的其他電子郵件地址清單。 範例：["bob@contoso.com", "Robert@fabrikam.com"]。|是 (其他電子郵件)|否|保留，輸出|
 |密碼        |String|使用者建立期間的本機帳戶密碼。|否|否|已保存|
-|passwordPolicies     |String|密碼原則。 是由不同原則名稱所組成的字串，並以逗號分隔。 例如 "DisablePasswordExpiration, DisableStrongPassword"。|否|否|保留，輸出|
+|passwordPolicies     |String|密碼原則。 是由不同原則名稱所組成的字串，並以逗號分隔。 例如，"DisablePasswordExpiration，DisableStrongPassword"。|否|否|保留，輸出|
 |physicalDeliveryOfficeName (officeLocation)|String|使用者的公司所在位置。 長度上限為 128。|是|否|保留，輸出|
 |postalCode      |String|使用者郵寄地址的郵遞區號。 郵遞區號適用於使用者的國家/地區。 在美國地區，此屬性包含郵遞區號。 長度上限為 40。|是|否|保留，輸出|
 |preferredLanguage    |String|使用者的慣用語言。 應遵循 ISO 639-1 條款。 例如："en-US"。|否|否|保留，輸出|
 |refreshTokensValidFromDateTime|Datetime|在此時間之前發出的任何重新整理權杖都無效，而且當使用不正確重新整理權杖來取得新的存取權杖時，應用程式將會收到錯誤。 如果發生這種情況，應用程式需要向授權端點提出要求，以取得新的重新整理權杖。 唯讀。|否|否|輸出|
-|signInNames ([身分識別](manage-user-accounts-graph-api.md#identities-property)) |String|目錄中任何類型之本機帳戶使用者的唯一登入名稱。 使用此功能來取得具有登入值的使用者，而不需要指定本機帳戶類型。|否|否|輸入|
-|signInNames.userName ([身分識別](manage-user-accounts-graph-api.md#identities-property)) |String|目錄中本機帳戶使用者的唯一使用者名稱。 使用此功能來建立或取得具有特定登入使用者名稱的使用者。 在修補作業期間單獨在 PersistedClaims 中指定此項，將會移除其他類型的 signInNames。 如果要新增新的 signInNames 類型，您也需要保存現有的 signInNames。|否|否|輸入，保留，輸出|
-|signInNames.phoneNumber ([身分識別](manage-user-accounts-graph-api.md#identities-property)) |String|目錄中本機帳戶使用者的唯一電話號碼。 使用此功能來建立或取得具有特定登入電話號碼的使用者。 在修補作業期間單獨在 PersistedClaims 中指定此項，將會移除其他類型的 signInNames。 如果要新增新的 signInNames 類型，您也需要保存現有的 signInNames。|否|否|輸入，保留，輸出|
-|signInNames.emailAddress ([身分識別](manage-user-accounts-graph-api.md#identities-property))|String|目錄中本機帳戶使用者的唯一電子郵件地址。 使用此功能來建立或取得具有特定登入電子郵件地址的使用者。 在修補作業期間單獨在 PersistedClaims 中指定此項，將會移除其他類型的 signInNames。 如果要新增新的 signInNames 類型，您也需要保存現有的 signInNames。|否|否|輸入，保留，輸出|
+|signInNames ([身分識別](manage-user-accounts-graph-api.md#identities-property)) |String|目錄中任何類型之本機帳戶使用者的唯一登入名稱。 您可以使用此屬性來取得具有登入值的使用者，而不需指定本機帳戶類型。|否|否|輸入|
+|signInNames.userName ([身分識別](manage-user-accounts-graph-api.md#identities-property)) |String|目錄中本機帳戶使用者的唯一使用者名稱。 使用此屬性來建立或取得具有特定登入使用者名稱的使用者。 在修補作業期間單獨在 PersistedClaims 中指定此項，將會移除其他類型的 signInNames。 如果要新增新的 signInNames 類型，您也需要保存現有的 signInNames。|否|否|輸入，保留，輸出|
+|signInNames.phoneNumber ([身分識別](manage-user-accounts-graph-api.md#identities-property)) |String|目錄中本機帳戶使用者的唯一電話號碼。 您可以使用此屬性來建立或取得具有特定登入電話號碼的使用者。 在修補作業期間單獨指定 PersistedClaims 中的這個屬性將會移除其他類型的 >signinnames.emailaddress。 如果要新增新的 signInNames 類型，您也需要保存現有的 signInNames。|否|否|輸入，保留，輸出|
+|signInNames.emailAddress ([身分識別](manage-user-accounts-graph-api.md#identities-property))|String|目錄中本機帳戶使用者的唯一電子郵件地址。 使用此功能來建立或取得具有特定登入電子郵件地址的使用者。 在修補作業期間單獨指定 PersistedClaims 中的這個屬性將會移除其他類型的 >signinnames.emailaddress。 如果要新增新的 signInNames 類型，您也需要保存現有的 signInNames。|否|否|輸入，保留，輸出|
 |state           |String|使用者地址的州或省。 長度上限為 128。|是|是|保留，輸出|
 |streetAddress   |String|使用者公司所在位置的街道地址。 長度上限為 1024。|是|是|保留，輸出|
 |strongAuthentication AlternativePhoneNumber<sup>1</sup>|String|用於多重要素驗證的使用者次要電話號碼。|是|否|保留，輸出|
@@ -120,5 +120,4 @@ Azure AD B2C 會擴充每個使用者帳戶所儲存的屬性組合。 擴充屬
 ## <a name="next-steps"></a>後續步驟
 深入了解關於擴充屬性：
 - [結構描述延伸模組](/graph/extensibility-overview#schema-extensions)
-- [定義使用者流程的自訂屬性](user-flow-custom-attributes.md)
-- [定義自訂原則的自訂屬性](custom-policy-custom-attributes.md)
+- [定義自訂屬性](user-flow-custom-attributes.md)

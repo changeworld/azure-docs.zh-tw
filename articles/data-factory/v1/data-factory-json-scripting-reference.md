@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 3b4795a47f0e6dbf945bd4a1f9aaaa0df2137f91
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 41ba08aef7aed761c3c6063f97768f22bffe3a36
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495577"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508487"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON 指令碼參考
 > [!NOTE]
@@ -45,7 +45,7 @@ ms.locfileid: "96495577"
 
 下表說明管線 JSON 定義內的屬性：
 
-| 屬性 | 描述 | 必要
+| 屬性 | 說明 | 必要
 -------- | ----------- | --------
 | NAME | 管線的名稱。 指定一個名稱，以表示活動或管線設定要進行的動作<br/><ul><li>字元數目上限︰260</li><li>開頭必須為字母、數字或底線 (\_)</li><li>不允許使用下列字元：“.”、“+”、“?”、“/”、“<”、”>”、”*”、”%”、”&”、”:”、”\\”</li></ul> |是 |
 | description |說明活動或管線用途的文字 | 否 |
@@ -98,7 +98,7 @@ ms.locfileid: "96495577"
 ### <a name="policies"></a>原則
 原則會影響活動的執行階段行為，特別是在處理資料表配量的時候。 下表提供詳細資料。
 
-| 屬性 | 允許的值 | 預設值 | 描述 |
+| 屬性 | 允許的值 | 預設值 | 說明 |
 | --- | --- | --- | --- |
 | 並行 |整數 <br/><br/>最大值：10 |1 |活動的並行執行數目。<br/><br/>它可決定不同配量上可以發生的平行活動執行數目。 例如，如果活動需要處理大量可用的資料，具有較大的並行值會加快資料處理。 |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |決定正在處理之資料配量的順序。<br/><br/>例如，如果您有 2 個配量 (一個發生在下午 4 點，另一個發生在下午 5 點)，而兩者都暫停執行。 如果您將 executionPriorityOrder 設為 NewestFirst，則會先處理下午 5 點的配量。 同樣地，如果您將 executionPriorityOrder 設為 OldestFIrst，則會處理下午 4 點的配量。 |
@@ -243,7 +243,7 @@ ms.locfileid: "96495577"
 
 下表說明活動 JSON 定義內的屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | -------- | ----------- | -------- |
 | NAME | 連結服務的名稱。 | 是 |
 | properties - type | 連結服務的類型。 例如︰Azure 儲存體、Azure SQL Database。 |
@@ -282,7 +282,7 @@ Azure Data Factory 中的資料集定義如下：
 
 下表描述上述 JSON 的屬性：
 
-| 屬性 | 描述 | 必要 | 預設 |
+| 屬性 | 說明 | 必要 | 預設 |
 | --- | --- | --- | --- |
 | NAME | 資料集的名稱。 請參閱 [Azure Data Factory - 命名規則](data-factory-naming-rules.md) ，以了解命名規則。 |是 |NA |
 | type | 資料集的類型。 指定 Azure Data Factory 支援的其中一個類型 (例如︰AzureBlob、AzureSqlTable)。 關於 Data Factory 支援的所有資料存放區和資料集類型，請參閱[資料存放區](#data-stores)一節。 |
@@ -294,7 +294,7 @@ Azure Data Factory 中的資料集定義如下：
 
 **structure** 區段中的每個資料行包含下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | NAME |資料行的名稱。 |是 |
 | type |資料行的資料類型。  |否 |
@@ -314,7 +314,7 @@ structure:
 
 下表描述您可以在 [ **可用性** ] 區段中使用的屬性：
 
-| 屬性 | 描述 | 必要 | 預設 |
+| 屬性 | 說明 | 必要 | 預設 |
 | --- | --- | --- | --- |
 | frequency |指定資料集配量生產的時間單位。<br/><br/><b>支援的頻率</b>：Minute、Hour、Day、Week、Month |是 |NA |
 | interval |指定頻率的倍數<br/><br/>「頻率 x 間隔」會決定產生配量的頻率。<br/><br/>如果您需要將資料集以每小時為單位來切割，請將 <b>Frequency</b> 設定為 <b>Hour</b>，將 <b>interval</b> 設定為 <b>1</b>。<br/><br/><b>注意</b>：如果您將 Frequency 指定為 Minute，建議您將 interval 設定為不小於 15 |是 |NA |
@@ -354,7 +354,7 @@ structure:
 
 除非資料集是由 Azure Data Factory 產生，否則應該標示為 **外部**。 除非會使用活動或管線鏈結，否則此設定通常會套用到管線中第一個活動的輸入。
 
-| 名稱 | 描述 | 必要 | 預設值 |
+| 名稱 | 說明 | 必要 | 預設值 |
 | --- | --- | --- | --- |
 | dataDelay |延遲指定配量之外部資料可用性檢查的時間。 例如，如果是每小時有資料可用，則可以使用 dataDelay 來延遲查看「外部資料是否可用，且對應的配量是否已就緒」的檢查。<br/><br/>僅適用於目前的時間。  例如，如果現在時間是下午 1:00，且此值是 10 分鐘，驗證就會在下午 1:10 開始。<br/><br/>此設定不會影響過去配量 (配量結束時間 + dataDelay < 現在的配量) 的處理方式而不產生任何延遲。<br/><br/>時間若大於 23:59 小時，則必須使用 `day.hours:minutes:seconds` 格式指定。 例如，若要指定 24 小時，請不要使用 24:00:00；請改用 1.00:00:00。 如果您使用 24:00:00，這會視同 24 天 (24.00:00:00)。 如為 1 天又 4 小時，請指定 1:04:00:00。 |否 |0 |
 | retryInterval |失敗與下一步重試嘗試之間的等待時間。 如果嘗試失敗，則下一次嘗試是在 retryInterval 之後。 <br/><br/>如果現在是下午 1:00，我們會開始第一次嘗試。 如果完成第一次驗證檢查的持續時間是 1 分鐘且作業失敗，則下一次重試會在 1:00 + 1 分鐘 (持續時間) + 1 分鐘 (重試間隔) = 1:02 PM。 <br/><br/>若是過去的配量，則不會有任何延遲。 重試會立即發生。 |否 |00:01:00 (1 分鐘) |
@@ -411,7 +411,7 @@ structure:
 #### <a name="azure-storage-linked-service"></a>Azure 儲存體連結服務
 若要使用 **帳戶金鑰** 將 Azure 儲存體帳戶連結至資料處理站，請建立 Azure 儲存體連結服務。 若要定義 Azure 儲存體連結服務，請將連結服務的 **類型** 設為 **AzureStorage**。 然後，您可以在 **typeProperties** 區段中指定下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | connectionString |針對 connectionString 屬性指定連接到 Azure 儲存體所需的資訊。 |是 |
 
@@ -432,7 +432,7 @@ structure:
 #### <a name="azure-storage-sas-linked-service"></a>Azure 儲存體 SAS 連結服務
 Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Azure 儲存體帳戶連結到 Azure Data Factory。 它提供受限制/時間界限存取權，讓資料處理站存取儲存體中的所有/特定資源 (blob/容器)。 若要使用共用存取簽章將 Azure 儲存體帳戶連結至資料處理站，請建立 Azure 儲存體 SAS 連結服務。 若要定義 Azure 儲存體 SAS 連結服務，請將連結服務的 **類型** 設為 **AzureStorageSas**。 然後，您可以在 **typeProperties** 區段中指定下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | sasUri |指定 Azure 儲存體資源 (例如 Blob、容器或資料表) 的共用存取簽章 URI。 |是 |
 
@@ -455,7 +455,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 ### <a name="dataset"></a>資料集
 若要定義 Azure Blob 資料集，請將資料集的 **type** 設為 **AzureBlob**。 然後，在 **typeProperties** 區段中指定下列 Azure Blob 特定屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | folderPath |Blob 儲存體中容器和資料夾的路徑。 範例：myblobcontainer\myblobfolder\ |是 |
 | fileName |Blob 的名稱。 fileName 是選擇性的，而且區分大小寫。<br/><br/>如果您指定檔案名稱，活動 (包括複製) 適用於特定的 Blob。<br/><br/>如果您未指定 fileName，複製會包含 folderPath 中的所有 Blob 以做為輸入資料集。<br/><br/>如果未指定輸出資料集的 fileName，所產生檔案的名稱會採用下列格式： `Data.<Guid>.txt` (例如：： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
@@ -588,7 +588,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 ### <a name="linked-service"></a>連結的服務
 若要定義 Azure Data Lake Store 連結服務，請將連結服務的 type 設為 **AzureDataLakeStore**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | Type 屬性必須設定為： **>azuredatalakestore** | 是 |
 | dataLakeStoreUri | 指定有關 Azure Data Lake Store 帳戶的資訊。 它的格式如下：`https://[accountname].azuredatalakestore.net/webhdfs/v1` 或 `adl://[accountname].azuredatalakestore.net/`。 | 是 |
@@ -638,7 +638,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 ### <a name="dataset"></a>資料集
 若要定義 Azure Data Lake Store 資料集，請將資料集的 **type** 設為 **AzureDataLakeStore**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | folderPath |Azure Data Lake Store 中容器與資料夾的路徑。 |是 |
 | fileName |Azure Data Lake Store 中的檔案名稱。 fileName 是選擇性的，而且區分大小寫。 <br/><br/>如果您指定檔案名稱，活動 (包括複製) 適用於特定的檔案。<br/><br/>如果您未指定 fileName，複製會包含 folderPath 中的所有檔案以做為輸入資料集。<br/><br/>如果未指定輸出資料集的 fileName，所產生檔案的名稱會採用下列格式： `Data.<Guid>.txt` (例如：： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
@@ -934,7 +934,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 ### <a name="linked-service"></a>連結的服務
 若要定義 Azure SQL Database 連結服務，請將連結服務的 **type** 設為 **AzureSqlDatabase**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | connectionString |針對 connectionString 屬性指定連接到 Azure SQL Database 執行個體所需的資訊。 |是 |
 
@@ -956,7 +956,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 ### <a name="dataset"></a>資料集
 若要定義 Azure SQL Database 資料集，請將資料集的 **type** 設為 **AzureSqlTable**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | tableName |Azure SQL Database 執行個體中連結服務所參考的資料表或檢視的名稱。 |是 |
 
@@ -1105,7 +1105,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 ### <a name="linked-service"></a>連結的服務
 若要定義 Azure Synapse Analytics 連結服務，請將連結服務的 **類型** 設為 **>azuresqldw**，並在 **>typeproperties** 區段中指定下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | connectionString |指定連接到 connectionString 屬性 Azure Synapse Analytics 實例所需的資訊。 |是 |
 
@@ -1130,7 +1130,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 ### <a name="dataset"></a>資料集
 若要定義 Azure Synapse Analytics 資料集，請將資料集的 **類型** 設為 **AzureSqlDWTable**，並在 **>typeproperties** 區段中指定下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | tableName |連結服務所參考之 Azure Synapse Analytics 資料庫中的資料表或視圖名稱。 |是 |
 
@@ -1169,7 +1169,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| sqlReaderQuery |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如：`select * from MyTable`。 |否 |
+| sqlReaderQuery |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如： `select * from MyTable` 。 |否 |
 | sqlReaderStoredProcedureName |從來源資料表讀取資料的預存程序名稱。 |預存程序的名稱。 |否 |
 | storedProcedureParameters |預存程序的參數。 |名稱/值組。 參數的名稱和大小寫必須符合預存程序參數的名稱和大小寫。 |否 |
 
@@ -1284,7 +1284,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 ### <a name="linked-service"></a>連結的服務
 若要定義 Azure 認知搜尋連結服務，請將連結服務的 **類型** 設為 **AzureSearch**，並在 **>typeproperties** 區段中指定下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | -------- | ----------- | -------- |
 | url | 搜尋服務的 URL。 | 是 |
 | 索引鍵 | 搜尋服務的管理金鑰。 | 是 |
@@ -1309,7 +1309,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 ### <a name="dataset"></a>資料集
 若要定義 Azure 認知搜尋資料集，請將資料集的 **類型** 設為 **AzureSearchIndex**，並在 **>typeproperties** 區段中指定下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | -------- | ----------- | -------- |
 | type | type 屬性必須設為 **AzureSearchIndex**。| 是 |
 | IndexName | 搜尋索引的名稱。 Data Factory 不會建立索引。 索引必須存在於 Azure 認知搜尋中。 | 是 |
@@ -1396,7 +1396,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 #### <a name="azure-storage-linked-service"></a>Azure 儲存體連結服務
 若要使用 **帳戶金鑰** 將 Azure 儲存體帳戶連結至資料處理站，請建立 Azure 儲存體連結服務。 若要定義 Azure 儲存體連結服務，請將連結服務的 **類型** 設為 **AzureStorage**。 然後，您可以在 **typeProperties** 區段中指定下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type |類型屬性必須設定為：**AzureStorage** |是 |
 | connectionString |針對 connectionString 屬性指定連接到 Azure 儲存體所需的資訊。 |是 |
@@ -1418,7 +1418,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 #### <a name="azure-storage-sas-linked-service"></a>Azure 儲存體 SAS 連結服務
 Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Azure 儲存體帳戶連結到 Azure Data Factory。 它提供受限制/時間界限存取權，讓資料處理站存取儲存體中的所有/特定資源 (blob/容器)。 若要使用共用存取簽章將 Azure 儲存體帳戶連結至資料處理站，請建立 Azure 儲存體 SAS 連結服務。 若要定義 Azure 儲存體 SAS 連結服務，請將連結服務的 **類型** 設為 **AzureStorageSas**。 然後，您可以在 **typeProperties** 區段中指定下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type |類型屬性必須設為： **AzureStorageSas** |是 |
 | sasUri |指定 Azure 儲存體資源 (例如 Blob、容器或資料表) 的共用存取簽章 URI。 |是 |
@@ -1442,7 +1442,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 ### <a name="dataset"></a>資料集
 若要定義 Azure 資料表資料集，請將資料集的 **type** 設為 **AzureTable**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | tableName |Azure 資料表資料庫執行個體中連結服務所參照的資料表名稱。 |是。 指定 tableName 時若沒有指定 azureTableSourceQuery，資料表中的所有記錄都會複製到目的地。 如果同時指定了 azureTableSourceQuery，則資料表中符合查詢的記錄會複製到目的地。 |
 
@@ -1481,7 +1481,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
 | AzureTableSourceQuery |使用自訂查詢來讀取資料。 |Azure 資料表查詢字串。 請參閱下一節中的範例。 |否。 指定 tableName 時若沒有指定 azureTableSourceQuery，資料表中的所有記錄都會複製到目的地。 如果同時指定了 azureTableSourceQuery，則資料表中符合查詢的記錄會複製到目的地。 |
-| azureTableSourceIgnoreTableNotFound |指出是否忍受資料表不存在的例外狀況。 |TRUE<br/>false |否 |
+| azureTableSourceIgnoreTableNotFound |指出是否忍受資料表不存在的例外狀況。 |TRUE<br/>FALSE |否 |
 
 #### <a name="example"></a>範例
 
@@ -1590,7 +1590,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 ### <a name="linked-service"></a>連結的服務
 若要定義 Amazon Redshift 連結服務，請將連結服務的 **type** 設為 **AmazonRedshift**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | 伺服器 |Amazon Redshift 伺服器的 IP 位址或主機名稱。 |是 |
 | 連接埠 |Amazon Redshift 伺服器用來接聽用戶端連線的 TCP 連接埠號碼。 |否，預設值︰5439 |
@@ -1621,7 +1621,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 ### <a name="dataset"></a>資料集
 若要定義 Amazon Redshift 資料集，請將資料集的 **type** 設為 **RelationalTable**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | tableName |Amazon Redshift 資料庫中連結服務所參照的資料表名稱。 |否 (如果已指定 **RelationalSource** 的 **query**) |
 
@@ -1652,7 +1652,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| 查詢 |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如：`select * from MyTable`。 |否 (如果已指定 **dataset** 的 **tableName**) |
+| 查詢 |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如： `select * from MyTable` 。 |否 (如果已指定 **dataset** 的 **tableName**) |
 
 #### <a name="example"></a>範例
 
@@ -1702,7 +1702,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 ### <a name="linked-service"></a>連結的服務
 若要定義 IBM DB2 連結服務，請將連結服務的 **type** 設為 **OnPremisesDB2**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | 伺服器 |DB2 伺服器的名稱。 |是 |
 | [資料庫] |DB2 資料庫的名稱。 |是 |
@@ -1735,7 +1735,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 ### <a name="dataset"></a>資料集
 若要定義 DB2 資料集，請將資料集的 **type** 設為 **RelationalTable**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | tableName |DB2 資料庫執行個體中連結服務所參照的資料表名稱。 tableName 會區分大小寫。 |否 (如果已指定 **RelationalSource** 的 **query**)
 
@@ -1771,7 +1771,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| 查詢 |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如：`"query": "select * from "MySchema"."MyTable""`。 |否 (如果已指定 **dataset** 的 **tableName**) |
+| 查詢 |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如： `"query": "select * from "MySchema"."MyTable""` 。 |否 (如果已指定 **dataset** 的 **tableName**) |
 
 #### <a name="example"></a>範例
 ```json
@@ -1818,7 +1818,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 ### <a name="linked-service"></a>連結的服務
 若要定義 MySQL 連結服務，請將連結服務的 **type** 設為 **OnPremisesMySql**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | 伺服器 |MySQL 伺服器的名稱。 |是 |
 | [資料庫] |MySQL 資料庫的名稱。 |是 |
@@ -1853,7 +1853,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 ### <a name="dataset"></a>資料集
 若要定義 MySQL 資料集，請將資料集的 **type** 設為 **RelationalTable**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | tableName |MySQL 資料庫執行個體中連結服務所參照的資料表名稱。 |否 (如果已指定 **RelationalSource** 的 **query**) |
 
@@ -1889,7 +1889,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| 查詢 |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如：`select * from MyTable`。 |否 (如果已指定 **dataset** 的 **tableName**) |
+| 查詢 |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如： `select * from MyTable` 。 |否 (如果已指定 **dataset** 的 **tableName**) |
 
 
 #### <a name="example"></a>範例
@@ -1940,7 +1940,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 ### <a name="linked-service"></a>連結的服務
 若要定義 Oracle 連結服務，請將連結服務的 **type** 設為 **OnPremisesOracle**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | driverType | 指定要用來從 Oracle 複製資料/將資料複製到 Oracle 資料庫的驅動程式。 允許的值為 **Microsoft** 或 **ODP** (預設值)。 如需驅動程式詳細資料，請參閱「支援的版本和安裝」一節。 | 否 |
 | connectionString | 針對 connectionString 屬性指定連接到 Oracle 資料庫執行個體所需的資訊。 | 是 |
@@ -1966,7 +1966,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 ### <a name="dataset"></a>資料集
 若要定義 Oracle 資料集，請將資料集的 **type** 設為 **OracleTable**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | tableName |Oracle 資料庫中連結服務所參照的資料表名稱。 |否 (如果已指定 **OracleSource** 的 **oracleReaderQuery**) |
 
@@ -2109,7 +2109,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 ### <a name="linked-service"></a>連結的服務
 若要定義 PostgreSQL 連結服務，請將連結服務的 **type** 設為 **OnPremisesPostgreSql**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | 伺服器 |PostgreSQL 伺服器的名稱。 |是 |
 | [資料庫] |PostgreSQL 資料庫的名稱。 |是 |
@@ -2143,7 +2143,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 ### <a name="dataset"></a>資料集
 若要定義 PostgreSQL 資料集，請將資料集的 **type** 設為 **RelationalTable**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | tableName |PostgreSQL 資料庫執行個體中連結服務所參照的資料表名稱。 tableName 會區分大小寫。 |否 (如果已指定 **RelationalSource** 的 **query**) |
 
@@ -2450,7 +2450,7 @@ encryptedCredential | 加密的認證字串。 | 字串 | 否
 
 下表提供 SQL Server 連結服務專屬 JSON 元素的描述。
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | type |類型屬性應設為： **OnPremisesSqlServer**。 |是 |
 | connectionString |指定使用 SQL 驗證或 Windows 驗證來連線至 SQL Server 資料庫時所需的 connectionString 資訊。 |是 |
@@ -2503,7 +2503,7 @@ encryptedCredential | 加密的認證字串。 | 字串 | 否
 ### <a name="dataset"></a>資料集
 若要定義 SQL Server 資料集，請將資料集的 **type** 設為 **SqlServerTable**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | tableName |SQL Server Database 執行個體中連結服務所參照的資料表或檢視名稱。 |是 |
 
@@ -2541,7 +2541,7 @@ encryptedCredential | 加密的認證字串。 | 字串 | 否
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| sqlReaderQuery |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如：`select * from MyTable`。 可以參考輸入資料集所參考資料庫中的多個資料表。 如果未指定，執行的 SQL 陳述式：select from MyTable。 |否 |
+| sqlReaderQuery |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如： `select * from MyTable` 。 可以參考輸入資料集所參考資料庫中的多個資料表。 如果未指定，執行的 SQL 陳述式：select from MyTable。 |否 |
 | sqlReaderStoredProcedureName |從來源資料表讀取資料的預存程序名稱。 |預存程序的名稱。 |否 |
 | storedProcedureParameters |預存程序的參數。 |名稱/值組。 參數的名稱和大小寫必須符合預存程序參數的名稱和大小寫。 |否 |
 
@@ -2667,7 +2667,7 @@ encryptedCredential | 加密的認證字串。 | 字串 | 否
 ### <a name="linked-service"></a>連結的服務
 若要定義 Sybase 連結服務，請將連結服務的 **type** 設為 **OnPremisesSybase**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | 伺服器 |Sybase 伺服器的名稱。 |是 |
 | [資料庫] |Sybase 資料庫的名稱。 |是 |
@@ -2701,7 +2701,7 @@ encryptedCredential | 加密的認證字串。 | 字串 | 否
 ### <a name="dataset"></a>資料集
 若要定義 Sybase 資料集，請將資料集的 **type** 設為 **RelationalTable**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | tableName |Sybase 資料庫執行個體中連結服務所參照的資料表名稱。 |否 (如果已指定 **RelationalSource** 的 **query**) |
 
@@ -2738,7 +2738,7 @@ encryptedCredential | 加密的認證字串。 | 字串 | 否
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| 查詢 |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如：`select * from MyTable`。 |否 (如果已指定 **dataset** 的 **tableName**) |
+| 查詢 |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如： `select * from MyTable` 。 |否 (如果已指定 **dataset** 的 **tableName**) |
 
 #### <a name="example"></a>範例
 
@@ -2787,7 +2787,7 @@ encryptedCredential | 加密的認證字串。 | 字串 | 否
 ### <a name="linked-service"></a>連結的服務
 若要定義 Teradata 連結服務，請將連結服務的 **type** 設為 **OnPremisesTeradata**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | 伺服器 |Teradata 伺服器的名稱。 |是 |
 | authenticationType |用來連接到 Teradata 資料庫的驗證類型。 可能的值為：匿名、基本和 Windows。 |是 |
@@ -2848,7 +2848,7 @@ encryptedCredential | 加密的認證字串。 | 字串 | 否
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| 查詢 |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如：`select * from MyTable`。 |是 |
+| 查詢 |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如： `select * from MyTable` 。 |是 |
 
 #### <a name="example"></a>範例
 
@@ -2901,7 +2901,7 @@ encryptedCredential | 加密的認證字串。 | 字串 | 否
 ### <a name="linked-service"></a>連結的服務
 若要定義 Cassandra 連結服務，請將連結服務的 **type** 設為 **OnPremisesCassandra**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | 主機 |一或多個 Cassandra 伺服器 IP 位址或主機名稱。<br/><br/>指定以逗號分隔的 IP 位址或主機名稱清單，以同時連線到所有伺服器。 |是 |
 | 連接埠 |Cassandra 伺服器用來接聽用戶端連線的 TCP 連接埠。 |否，預設值：9042 |
@@ -2935,7 +2935,7 @@ encryptedCredential | 加密的認證字串。 | 字串 | 否
 ### <a name="dataset"></a>資料集
 若要定義 Cassandra 資料集，請將資料集的 **type** 設為 **CassandraTable**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | keyspace |Cassandra 資料庫中的 Keyspace 或結構描述名稱。 |是 (如果未定義 **CassandraSource** 的 **查詢**)。 |
 | tableName |Cassandra 資料庫中資料表的名稱。 |是 (如果未定義 **CassandraSource** 的 **查詢**)。 |
@@ -3028,7 +3028,7 @@ encryptedCredential | 加密的認證字串。 | 字串 | 否
 ### <a name="linked-service"></a>連結的服務
 若要定義 MongoDB 連結服務，請將連結服務的 **type** 設為 **OnPremisesMongoDB**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | 伺服器 |MongoDB 伺服器的 IP 位址或主機名稱。 |是 |
 | 連接埠 |MongoDB 伺服器用來接聽用戶端連線的 TCP 連接埠。 |選用，預設值︰27017 |
@@ -3066,7 +3066,7 @@ encryptedCredential | 加密的認證字串。 | 字串 | 否
 ### <a name="dataset"></a>資料集
 若要定義 MongoDB 資料集，請將資料集的 **type** 設為 **MongoDbCollection**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | collectionName |MongoDB 資料庫中集合的名稱。 |是 |
 
@@ -3097,7 +3097,7 @@ encryptedCredential | 加密的認證字串。 | 字串 | 否
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| 查詢 |使用自訂查詢來讀取資料。 |SQL-92 查詢字串。 例如：`select * from MyTable`。 |否 (如果已指定 **dataset** 的 **collectionName**) |
+| 查詢 |使用自訂查詢來讀取資料。 |SQL-92 查詢字串。 例如： `select * from MyTable` 。 |否 (如果已指定 **dataset** 的 **collectionName**) |
 
 #### <a name="example"></a>範例
 
@@ -3176,9 +3176,9 @@ encryptedCredential | 加密的認證字串。 | 字串 | 否
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
 | bucketName |S3 貯體名稱。 |String |是 |
-| 索引鍵 |S3 物件索引鍵。 |字串 |否 |
-| prefix |S3 物件索引鍵的前置詞。 系統會選取索引鍵以此前置詞開頭的物件。 只有當索引鍵空白時才適用。 |字串 |否 |
-| version |如果已啟用 S3 版本設定功能，則為 S3 物件的版本。 |字串 |否 |
+| 索引鍵 |S3 物件索引鍵。 |String |否 |
+| prefix |S3 物件索引鍵的前置詞。 系統會選取索引鍵以此前置詞開頭的物件。 只有當索引鍵空白時才適用。 |String |否 |
+| version |如果已啟用 S3 版本設定功能，則為 S3 物件的版本。 |String |否 |
 | format | 支援下列格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 將格式下的 **type** 屬性設定為這些值其中之一。 如需詳細資訊，請參閱[文字格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)章節。 <br><br> 如果您想要在以檔案為基礎的存放區之間 **依原樣複製檔案** (二進位複本)，請在輸入和輸出資料集定義中略過格式區段。 |否 | |
 | compression | 指定此資料的壓縮類型和層級。 支援的類型為：**GZip**、**Deflate**、**BZip2** 及 **ZipDeflate**。 支援的層級為：**Optimal** 和 **Fastest**。 如需詳細資訊，請參閱 [Azure Data Factory 中的檔案和壓縮格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 | |
 
@@ -3313,7 +3313,7 @@ encryptedCredential | 加密的認證字串。 | 字串 | 否
 ### <a name="linked-service"></a>連結的服務
 您可以使用內部部署 **檔案伺服器** 連結服務，將內部部署檔案系統連結至 Azure data factory。 下表提供內部部署檔案伺服器連結服務專屬 JSON 元素的描述。
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | type |確保 type 屬性設為 **OnPremisesFileServer**。 |是 |
 | 主機 |指定想要複製之資料夾的根路徑。 字串中的特殊字元需使用逸出字元 ‘ \ ’。 如需範例，請參閱「範例連結服務和資料集定義」。 |是 |
@@ -3368,7 +3368,7 @@ encryptedCredential | 加密的認證字串。 | 字串 | 否
 ### <a name="dataset"></a>資料集
 若要定義檔案系統資料集，請將資料集的 **type** 設為 **FileShare**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | folderPath |指定資料夾的子路徑。 字串中的特殊字元需使用逸出字元 ‘ \ ’。 如需範例，請參閱「範例連結服務和資料集定義」。<br/><br/>您可以結合此屬性與 **partitionBy**，讓資料夾路徑以配量開始/結束日期時間為基礎。 |是 |
 | fileName |如果您要資料表參照資料夾中的特定檔案，請在 **folderPath** 中指定檔案名稱。 如果沒有為此屬性指定任何值，資料表會指向資料夾中的所有檔案。<br/><br/>若未指定輸出資料集的 fileName，所產生檔案的名稱是下列格式︰ <br/><br/>`Data.<Guid>.txt` (例如： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |否 |
@@ -3548,7 +3548,7 @@ auto-
 ### <a name="linked-service"></a>連結的服務
 若要定義 FTP 連結服務，請將連結服務的 **type** 設為 **FtpServer**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 | 預設 |
+| 屬性 | 說明 | 必要 | 預設 |
 | --- | --- | --- | --- |
 | 主機 |FTP 伺服器的名稱或 IP 位址 |是 |&nbsp; |
 | authenticationType |指定驗證類型 |是 |基本或匿名 |
@@ -3634,7 +3634,7 @@ auto-
 ### <a name="dataset"></a>資料集
 若要定義 FTP 資料集，請將資料集的 **type** 設為 **FileShare**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | folderPath |資料夾的子路徑。 使用逸出字元 ‘ \ ’ 當做字串中的特殊字元。 如需範例，請參閱「範例連結服務和資料集定義」。<br/><br/>您可以結合此屬性與 **partitionBy**，讓資料夾路徑以配量開始/結束日期時間為基礎。 |是
 | fileName |如果您要資料表參照資料夾中的特定檔案，請在 **folderPath** 中指定檔案名稱。 如果沒有為此屬性指定任何值，資料表會指向資料夾中的所有檔案。<br/><br/>若未指定輸出資料集的 fileName，所產生檔案的名稱是下列格式︰ <br/><br/>`Data.<Guid>.txt` (例如： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |否 |
@@ -3726,7 +3726,7 @@ auto-
 ### <a name="linked-service"></a>連結的服務
 若要定義 HDFS 連結服務，請將連結服務的 **type** 設為 **Hdfs**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | type |Type 屬性必須設定為： **Hdfs** |是 |
 | Url |到 HDFS 的 URL |是 |
@@ -3776,7 +3776,7 @@ auto-
 ### <a name="dataset"></a>資料集
 若要定義 HDFS 資料集，請將資料集的 **type** 設為 **FileShare**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | folderPath |資料夾的路徑。 範例： `myfolder`<br/><br/>使用逸出字元 ‘ \ ’ 當做字串中的特殊字元。 例如︰若為 folder\subfolder，請指定 folder\\\\subfolder；若為 d:\samplefolder，請指定 d:\\\\samplefolder。<br/><br/>您可以結合此屬性與 **partitionBy**，讓資料夾路徑以配量開始/結束日期時間為基礎。 |是 |
 | fileName |如果您要資料表參照資料夾中的特定檔案，請在 **folderPath** 中指定檔案名稱。 如果沒有為此屬性指定任何值，資料表會指向資料夾中的所有檔案。<br/><br/>若未指定輸出資料集的 fileName，所產生檔案的名稱是下列格式︰ <br/><br/>`Data.<Guid>.txt` (例如：： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
@@ -3862,7 +3862,7 @@ auto-
 ### <a name="linked-service"></a>連結的服務
 若要定義 SFTP 連結服務，請將連結服務的 **type** 設為 **Sftp**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | 主機 | SFTP 伺服器的名稱或 IP 位址。 |是 |
 | 連接埠 |SFTP 伺服器所接聽的連接埠。 預設值：21 |否 |
@@ -3876,7 +3876,7 @@ auto-
 
 若要使用基本驗證，將 `authenticationType` 設定為 `Basic`，然後指定上一節中介紹的 SFTP 連接器泛用以外的下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | username | 可存取 SFTP 伺服器的使用者。 |是 |
 | 密碼 | 使用者 (使用者名稱) 的密碼。 | 是 |
@@ -3925,7 +3925,7 @@ auto-
 
 若要使用基本驗證，將 `authenticationType` 設定為 `SshPublicKey`，然後指定上一節中介紹的 SFTP 連接器泛用以外的下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | username |可存取 SFTP 伺服器的使用者 |是 |
 | privateKeyPath | 指定閘道可以存取之私密金鑰檔案的絕對路徑。 | 指定 `privateKeyPath` 或 `privateKeyContent`。 <br><br> 僅當從內部部署 SFTP 伺服器複製資料時才套用。 |
@@ -3976,7 +3976,7 @@ auto-
 ### <a name="dataset"></a>資料集
 若要定義 SFTP 資料集，請將資料集的 **type** 設為 **FileShare**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | folderPath |資料夾的子路徑。 使用逸出字元 ‘ \ ’ 當做字串中的特殊字元。 如需範例，請參閱「範例連結服務和資料集定義」。<br/><br/>您可以結合此屬性與 **partitionBy**，讓資料夾路徑以配量開始/結束日期時間為基礎。 |是 |
 | fileName |如果您要資料表參照資料夾中的特定檔案，請在 **folderPath** 中指定檔案名稱。 如果沒有為此屬性指定任何值，資料表會指向資料夾中的所有檔案。<br/><br/>若未指定輸出資料集的 fileName，所產生檔案的名稱是下列格式︰ <br/><br/>`Data.<Guid>.txt` (例如： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |否 |
@@ -4069,7 +4069,7 @@ auto-
 ### <a name="linked-service"></a>連結的服務
 若要定義 HTTP 連結服務，請將連結服務的 **type** 設為 **Http**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | url | Web 伺服器的基本 URL | 是 |
 | authenticationType | 指定驗證類型。 允許的值為︰**匿名**、**基本**、**摘要**、**Windows**、**ClientCertificate**。 <br><br> 請分別參閱此關於更多屬性的下列資料表各節以及這些驗證類型的 JSON 範例。 | 是 |
@@ -4080,7 +4080,7 @@ auto-
 #### <a name="example-using-basic-digest-or-windows-authentication"></a>範例︰使用基本、摘要或 Windows 驗證
 將 `authenticationType` 設定為 `Basic`、`Digest`或 `Windows`，並指定除了上面介紹的 HTTP 連接器泛用的下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | username | 存取 HTTP 端點的使用者名稱。 | 是 |
 | 密碼 | 使用者 (使用者名稱) 的密碼。 | 是 |
@@ -4104,7 +4104,7 @@ auto-
 
 若要使用基本驗證，將 `authenticationType` 設定為 `ClientCertificate`，並指定除了上面介紹的 HTTP 連接器泛用的下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | embeddedCertData | Base 64 編碼的個人資訊交換 (PFX) 檔案之二進位資料內容。 | 指定 `embeddedCertData` 或 `certThumbprint`。 |
 | certThumbprint | 憑證指紋已安裝在您閘道器電腦的憑證存放區上。 僅當從內部部署 HTTP 來源複製資料時才套用。 | 指定 `embeddedCertData` 或 `certThumbprint`。 |
@@ -4114,7 +4114,7 @@ auto-
 
 1. 啟動 Microsoft Management Console (MMC)。 新增目標為 [本機電腦] 的 [憑證] 嵌入式管理單元。
 2. 展開 [憑證]，[個人]，然後按一下 [憑證]。
-3. 以滑鼠右鍵按一下個人存放區中的憑證，然後 **All Tasks** 選取 [ -> **管理私密金鑰**] 的所有工作 .。。
+3. 以滑鼠右鍵按一下個人存放區中的憑證，然後選取 [ -> **管理私密金鑰**] 的所有工作 .。。
 3. 在 [安全性] 索引標籤上，新增資料管理閘道主機服務使用憑證讀取存取執行所在的使用者帳戶。
 
 **範例：使用用戶端憑證：** 此連結服務會將您的資料處理站連結至內部部署 HTTP Web 伺服器。 它會使用已安裝資料管理閘道的電腦上所安裝的用戶端憑證。
@@ -4157,7 +4157,7 @@ auto-
 ### <a name="dataset"></a>資料集
 若要定義 HTTP 資料集，請將資料集的 **type** 設為 **Http**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | relativeUrl | 包含資料之資源的相對 URL。 當路徑未指定時，則只會使用在連結服務定義中指定的 URL。 <br><br> 若要建構動態 URL，您可以使用 [Data Factory 函式和系統變數](data-factory-functions-variables.md)，範例︰`"relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)"`。 | 否 |
 | requestMethod | HTTP 方法。 允許的值為 **GET** 或 **POST**。 | 否。 預設為 `GET`。 |
@@ -4213,7 +4213,7 @@ auto-
 ### <a name="http-source-in-copy-activity"></a>複製活動中的 HTTP 來源
 如果您從 HTTP 來源複製資料，請將複製活動的 **source type** 設為 **HttpSource**，並在 **source** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | -------- | ----------- | -------- |
 | httpRequestTimeout | HTTP 的逾時 (TimeSpan) 要求取得回應。 逾時會取得回應，而非逾時讀取回應資料。 | 否。 預設值：00:01:40 |
 
@@ -4267,7 +4267,7 @@ auto-
 ### <a name="linked-service"></a>連結的服務
 若要定義 OData 連結服務，請將連結服務的 **type** 設為 **OData**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | url |OData 服務的 URL。 |是 |
 | authenticationType |用來連線到 OData 來源的驗證類型。 <br/><br/> 若為雲端 OData，可能的值為 Anonymous、Basic 和 OAuth (請注意，Azure Data Factory 目前僅支援 Azure Active Directory 架構的 OAuth)。 <br/><br/> 若為內部部署 OData，可能的值為 Anonymous、Basic 和 Windows。 |是 |
@@ -4347,7 +4347,7 @@ auto-
 ### <a name="dataset"></a>資料集
 若要定義 OData 資料集，請將資料集的 **type** 設為 **ODataResource**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | 路徑 |OData 資源的路徑 |否 |
 
@@ -4382,7 +4382,7 @@ auto-
 ### <a name="relational-source-in-copy-activity"></a>複製活動中的關聯式來源
 如果您從 OData 來源複製資料，請將複製活動的 **source type** 設為 **RelationalSource**，並在 **source** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 範例 | 必要 |
+| 屬性 | 說明 | 範例 | 必要 |
 | --- | --- | --- | --- |
 | 查詢 |使用自訂查詢來讀取資料。 |「?$select=Name, Description&$top=5」 |否 |
 
@@ -4437,7 +4437,7 @@ auto-
 ### <a name="linked-service"></a>連結的服務
 若要定義 ODBC 連結服務，請將連結服務的 **type** 設為 **OnPremisesOdbc**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | connectionString |連接字串的非存取認證部分和選擇性的加密認證。 請參閱下列幾節中的範例。 |是 |
 | 認證 (credential) |以驅動程式特定「屬性-值」格式指定之連接字串的存取認證部分。 範例： `“Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”.` |否 |
@@ -4502,7 +4502,7 @@ auto-
 ### <a name="dataset"></a>資料集
 若要定義 ODBC 資料集，請將資料集的 **type** 設為 **RelationalTable**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | tableName |ODBC 資料存放區中資料表的名稱。 |是 |
 
@@ -4539,7 +4539,7 @@ auto-
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| 查詢 |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如：`select * from MyTable`。 |是 |
+| 查詢 |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如： `select * from MyTable` 。 |是 |
 
 #### <a name="example"></a>範例
 
@@ -4591,7 +4591,7 @@ auto-
 ### <a name="linked-service"></a>連結的服務
 若要定義 Salesforce 連結服務，請將連結服務的 **type** 設為 **Salesforce**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | environmentUrl | 指定 Salesforce 執行個體的 URL。 <br><br> -預設值為 "HTTPs： \/ /login.salesforce.com"。 <br> - 若要從沙箱複製資料，請指定「https://test.salesforce.com」。 <br> - 若要從自訂網域複製資料，舉例來說，請指定 "https://[網域].my.salesforce.com"。 |否 |
 | username |指定使用者帳戶的使用者名稱。 |是 |
@@ -4619,7 +4619,7 @@ auto-
 ### <a name="dataset"></a>資料集
 若要定義 Salesforce 資料集，請將資料集的 **type** 設為 **RelationalTable**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | tableName |Salesforce 中資料表的名稱。 |否 (如果已指定 **RelationalSource** 的 **query**) |
 
@@ -4714,7 +4714,7 @@ auto-
 ### <a name="linked-service"></a>連結的服務
 若要定義 Web 連結服務，請將連結服務的 **type** 設為 **Web**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | Url |Web 來源的 URL |是 |
 | authenticationType |匿名。 |是 |
@@ -4741,7 +4741,7 @@ auto-
 ### <a name="dataset"></a>資料集
 若要定義 Web 資料集，請將資料集的 **type** 設為 **WebTable**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type |資料集的類型。 必須設定為 **WebTable** |是 |
 | path |包含資料表之資源的相對 URL。 |否。 當路徑未指定時，則只會使用在連結服務定義中指定的 URL。 |
@@ -4834,7 +4834,7 @@ Azure Data Factory 服務可自動建立以 Windows/Linux 為基礎的隨選 HDI
 ### <a name="linked-service"></a>連結的服務
 下表描述隨選 HDInsight 連結服務的 Azure JSON 定義中所使用的屬性。
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | type |type 屬性應設為 **HDInsightOnDemand**。 |是 |
 | clusterSize |叢集中的背景工作/資料節點數。 HDInsight 叢集會利用您為此屬性指定的 2 個前端節點以及背景工作節點數目來建立。 節點大小為具有 4 個核心的 Standard_D3，因此 4 個背景工作節點的叢集需要 24 個核心 (4\*4 = 16 個核心用於背景工作節點，加上 2\*4 = 8 個核心用於前端節點)。 如需 Standard_D3 層的詳細資料，請參閱[在 HDInsight 中建立 Linux 型 Hadoop 叢集](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)。 |是 |
@@ -4872,7 +4872,7 @@ Azure Data Factory 服務可自動建立以 Windows/Linux 為基礎的隨選 HDI
 ### <a name="linked-service"></a>連結的服務
 下表描述 Azure HDInsight 連結服務的 Azure JSON 定義中所使用的屬性。
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | type |type 屬性應設為 **HDInsight**。 |是 |
 | clusterUri |HDInsight 叢集的 URI。 |是 |
@@ -4905,7 +4905,7 @@ Azure Data Factory 服務可自動建立以 Windows/Linux 為基礎的隨選 HDI
 ### <a name="linked-service"></a>連結的服務
 下表描述 Azure Batch 連結服務的 Azure JSON 定義中所使用的屬性。
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | type |type 屬性應設為 **AzureBatch**。 |是 |
 | accountName |建立 Azure Batch 帳戶。 |是 |
@@ -4937,7 +4937,7 @@ Azure Data Factory 服務可自動建立以 Windows/Linux 為基礎的隨選 HDI
 ### <a name="linked-service"></a>連結的服務
 下表提供 Studio (傳統) 連結服務的 Azure JSON 定義中所使用的屬性說明。
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | 類型 |type 屬性應設為：**AzureML**。 |是 |
 | mlEndpoint |批次評分 URL。 |是 |
@@ -4965,7 +4965,7 @@ Azure Data Factory 服務可自動建立以 Windows/Linux 為基礎的隨選 HDI
 
 下表描述 Azure Data Lake Analytics 連結服務的 JSON 定義中所使用的屬性。
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | 類型 |type 屬性應設為：**AzureDataLakeAnalytics**。 |是 |
 | accountName |Azure Data Lake Analytics 帳戶名稱。 |是 |
@@ -5005,7 +5005,7 @@ Azure Data Factory 服務可自動建立以 Windows/Linux 為基礎的隨選 HDI
 
 下表提供 SQL Server 連結服務專屬 JSON 元素的描述。
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | type |類型屬性應設為： **OnPremisesSqlServer**。 |是 |
 | connectionString |指定使用 SQL 驗證或 Windows 驗證來連線至 SQL Server 資料庫時所需的 connectionString 資訊。 |是 |
@@ -5074,7 +5074,7 @@ Azure Data Factory 服務可自動建立以 Windows/Linux 為基礎的隨選 HDI
 ## <a name="hdinsight-hive-activity"></a>HDInsight Hive 活動
 您可以在 Hive 活動 JSON 定義中指定下列屬性。 活動的 type 屬性必須是︰**HDInsightHive**。 您必須先建立 HDInsight 連結服務，再指定它的名稱作為 **linkedServiceName** 屬性的值。 當您將活動類型設為 HDInsightHive 時，**typeProperties** 區段中支援下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | 指令碼 |指定 Hive 指令碼內嵌 |否 |
 | 指令碼路徑 |在 Azure Blob 儲存體中儲存 Hive 指令碼，並提供檔案的路徑。 使用 'script' 或 'scriptPath' 屬性。 兩者無法同時使用。 檔案名稱有區分大小寫。 |否 |
@@ -5120,7 +5120,7 @@ Azure Data Factory 服務可自動建立以 Windows/Linux 為基礎的隨選 HDI
 ## <a name="hdinsight-pig-activity"></a>HDInsight Pig 活動
 您可以在 Pig 活動 JSON 定義中指定下列屬性。 活動的 type 屬性必須是︰**HDInsightPig**。 您必須先建立 HDInsight 連結服務，再指定它的名稱作為 **linkedServiceName** 屬性的值。 當您將活動類型設為 HDInsightPig 時，**typeProperties** 區段中支援下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | 指令碼 |指定 Pig 指令碼內嵌 |否 |
 | 指令碼路徑 |在 Azure blob 儲存體中儲存 Pig 指令碼，並提供檔案的路徑。 使用 'script' 或 'scriptPath' 屬性。 兩者無法同時使用。 檔案名稱有區分大小寫。 |否 |
@@ -5172,7 +5172,7 @@ Azure Data Factory 服務可自動建立以 Windows/Linux 為基礎的隨選 HDI
 ## <a name="hdinsight-mapreduce-activity"></a>HDInsight MapReduce 活動
 您可以在 MapReduce 活動 JSON 定義中指定下列屬性。 活動的 type 屬性必須是︰**HDInsightMapReduce**。 您必須先建立 HDInsight 連結服務，再指定它的名稱作為 **linkedServiceName** 屬性的值。 當您將活動類型設為 HDInsightMapReduce 時，**typeProperties** 區段中支援下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | jarLinkedService | 含有 JAR 檔案之 Azure 儲存體的連結服務名稱。 | 是 |
 | jarFilePath | Azure 儲存體中的 JAR 檔案路徑。 | 是 |
@@ -5230,7 +5230,7 @@ Azure Data Factory 服務可自動建立以 Windows/Linux 為基礎的隨選 HDI
 ## <a name="hdinsight-streaming-activity"></a>HDInsight 串流活動
 您可以在 Hadoop 串流活動 JSON 定義中指定下列屬性。 活動的 type 屬性必須是︰**HDInsightStreaming**。 您必須先建立 HDInsight 連結服務，再指定它的名稱作為 **linkedServiceName** 屬性的值。 當您將活動類型設為 HDInsightStreaming 時，**typeProperties** 區段中支援下列屬性︰
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 | --- | --- |
 | mapper | 對應程式可執行檔的名稱。 在範例中，cat.exe 是對應程式可執行檔。|
 | reducer | 歸納器可執行檔的名稱。 在範例中，cat.exe 是減壓器可執行檔。 |
@@ -5294,7 +5294,7 @@ Azure Data Factory 服務可自動建立以 Windows/Linux 為基礎的隨選 HDI
 ## <a name="hdinsight-spark-activity"></a>HDInsight Spark 活動
 您可以在 Spark 活動 JSON 定義中指定下列屬性。 活動的 type 屬性必須是︰**HDInsightSpark**。 您必須先建立 HDInsight 連結服務，再指定它的名稱作為 **linkedServiceName** 屬性的值。 當您將活動類型設為 HDInsightSpark 時，**typeProperties** 區段中支援下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | -------- | ----------- | -------- |
 | rootPath | Spark 檔案所在的 Azure Blob 容器和資料夾。 檔案名稱有區分大小寫。 | 是 |
 | entryFilePath | Spark 程式碼/套件之根資料夾的相對路徑。 | 是 |
@@ -5349,7 +5349,7 @@ Azure Data Factory 服務可自動建立以 Windows/Linux 為基礎的隨選 HDI
 ## <a name="azure-machine-learning-studio-classic-batch-execution-activity"></a>Azure Machine Learning Studio (傳統版) 批次執行活動
 您可以在 Azure Machine Learning Studio (傳統) 批次執行活動 JSON 定義中指定下列屬性。 活動的 type 屬性必須是︰**AzureMLBatchExecution**。 您必須先建立 Studio (傳統) 連結服務，並將其名稱指定為 **linkedServiceName** 屬性的值。 當您將活動類型設為 AzureMLBatchExecution 時，**typeProperties** 區段中支援下列屬性︰
 
-屬性 | 描述 | 必要
+屬性 | 說明 | 必要
 -------- | ----------- | --------
 webServiceInput | 要傳遞給 Studio (傳統) web 服務之輸入的資料集。 此資料集也必須包含在活動的輸入中。 |使用 webServiceInput 或 webServiceInputs。 |
 webServiceInputs | 指定要傳遞做為 Studio (傳統) web 服務之輸入的資料集。 如果 Web 服務接受多個輸入，請使用 webServiceInputs 屬性，而不要使用 webServiceInput 屬性。 **webServiceInputs** 所參考的資料集也必須包含在活動的 **inputs** 中。 | 使用 webServiceInput 或 webServiceInputs。 |
@@ -5405,7 +5405,7 @@ globalParameters | 在此區段中指定 Web 服務參數的值。 | 否 |
 ## <a name="azure-machine-learning-studio-classic-update-resource-activity"></a>Azure Machine Learning Studio (傳統版) 更新資源活動
 您可以在 Azure Machine Learning Studio (傳統) 更新資源活動 JSON 定義中指定下列屬性。 活動的 type 屬性必須是︰**AzureMLUpdateResource**。 您必須先建立 Studio (傳統) 連結服務，並將其名稱指定為 **linkedServiceName** 屬性的值。 當您將活動類型設為 AzureMLUpdateResource 時，**typeProperties** 區段中支援下列屬性︰
 
-屬性 | 描述 | 必要
+屬性 | 說明 | 必要
 -------- | ----------- | --------
 trainedModelName | 重新定型之模型的名稱。 | 是 |
 trainedModelDatasetName | 此資料集指向重新訓練作業所傳回的 iLearner 檔案。 | 是 |
@@ -5472,7 +5472,7 @@ trainedModelDatasetName | 此資料集指向重新訓練作業所傳回的 iLear
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL 活動
 您可以在 U-SQL 活動 JSON 定義中指定下列屬性。 活動的 type 屬性必須是︰**DataLakeAnalyticsU-SQL**。 您必須建立 Azure Data Lake Analytics 連結服務，並指定它的名稱作為 **linkedServiceName** 屬性的值。 當您將活動類型設為 DataLakeAnalyticsU-SQL 時，**typeProperties** 區段中支援下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | scriptPath |包含 U-SQL 指令碼的資料夾的路徑。 檔案的名稱有區分大小寫。 |否 (如果您使用指令碼) |
 | scriptLinkedService |連結服務會連結包含 Data Factory 的指令碼的儲存體 |否 (如果您使用指令碼) |
@@ -5545,7 +5545,7 @@ trainedModelDatasetName | 此資料集指向重新訓練作業所傳回的 iLear
 
 當您將活動類型設為 SqlServerStoredProcedure 時，**typeProperties** 區段中支援下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | storedProcedureName |在 Azure SQL Database 或 Azure Synapse Analytics 中指定預存程式的名稱，該預存程式是由輸出資料表所使用的連結服務所代表。 |是 |
 | storedProcedureParameters |指定預存程序參數的值。 如果您要為參數傳遞 null，請使用語法："param1": null (全部小寫)。 請參閱下列範例以了解如何使用這個屬性。 |否 |
@@ -5585,7 +5585,7 @@ trainedModelDatasetName | 此資料集指向重新訓練作業所傳回的 iLear
 ## <a name="net-custom-activity"></a>.NET 自訂活動
 您可以在 .NET 自訂活動 JSON 定義中指定下列屬性。 活動的 type 屬性必須是︰**DotNetActivity**。 您必須建立 Azure HDInsight 連結服務，或 Azure Batch 連結服務，然後指定連結服務的名稱作為 **linkedServiceName** 屬性的值。 當您將活動類型設為 DotNetActivity 時，**typeProperties** 區段中支援下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | AssemblyName | 組件的名稱。 在此範例中，它是︰**MyDotnetActivity.dll**。 | 是 |
 | EntryPoint |實作 IDotNetActivity 介面的類別名稱。 在此範例中，它是︰**MyDotNetActivityNS.MyDotNetActivity**，其中 MyDotNetActivityNS 是命名空間，而 MyDotNetActivity 是類別。  | 是 |

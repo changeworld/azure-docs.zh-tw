@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8644040565bd46800b888a32653b6c8bbf89f096
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 3c42495ceab7108d20b0f0dedbf0cf94f5f9352d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347433"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509303"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication (Preview 登入 Azure 中的 Windows 虛擬機器) 
 
@@ -158,7 +158,7 @@ az vm extension set \
 - 使用 Azure Cloud Shell 體驗
 
 > [!NOTE]
-> 虛擬機器系統管理員登入和虛擬機器使用者登入角色使用 dataActions，因此無法在管理群組範圍指派。 目前只能在訂用帳戶範圍指派這些角色。
+> 虛擬機器系統管理員登入和虛擬機器使用者登入角色使用 dataActions，因此無法在管理群組範圍指派。 目前只能在訂用帳戶、資源群組或資源範圍指派這些角色。
 
 ### <a name="using-azure-ad-portal-experience"></a>使用 Azure AD 入口網站體驗
 

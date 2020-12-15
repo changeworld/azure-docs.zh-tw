@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: ryanwi
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: 9483fe972cf1a4dce4fb285ced3cb390d0bda725
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 90b4468693736068bd54b62082c43a1988202e6f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516778"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509099"
 ---
 # <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>如何為自訂開發的應用程式變更權杖存留期預設值
 
 本文說明如何使用 Azure AD PowerShell 來設定權杖存留期原則。 Azure AD Premium 可讓應用程式開發人員與租用戶系統管理員為針對非機密用戶端簽發的權杖設定存留期。 權杖存留期原則是以整個租用戶為基礎所設定，或針對要存取的資源所設定。
 
 > [!IMPORTANT]
-> 2021年1月30日之後，租使用者將無法再設定重新整理和會話權杖存留期，且 Azure Active Directory 將會在該日期之後的原則中停止接受現有的重新整理和會話權杖設定。 您仍然可以在淘汰之後設定存取權杖存留期。 如需詳細資訊，請參閱 [Azure AD 中的可設定權杖存留期](./active-directory-configurable-token-lifetimes.md)。
+> 5月2020之後，租使用者將無法再設定重新整理和會話權杖存留期。  Azure Active Directory 將會在2021年1月30日之後停止接受現有的重新整理和會話權杖設定。 您仍然可以在淘汰之後設定存取權杖存留期。 如需詳細資訊，請參閱 [Azure AD 中的可設定權杖存留期](./active-directory-configurable-token-lifetimes.md)。
 > 我們已在 Azure AD 條件式存取中實行 [驗證會話管理功能](../conditional-access/howto-conditional-access-session-lifetime.md)   。 您可以使用這項新功能，藉由設定 [登入頻率] 來設定重新整理權杖存留期。  
 
 若要設定權杖存留期原則，您必須下載 [Azure AD PowerShell 模組 (英文)](https://www.powershellgallery.com/packages/AzureADPreview)。

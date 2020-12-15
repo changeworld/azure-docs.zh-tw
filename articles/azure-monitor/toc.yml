@@ -1175,6 +1175,8 @@
               href: platform/workbooks-automate.md
             - name: 群組
               href: platform/workbooks-groups.md
+            - name: 使用自己的儲存體
+              href: platform/workbooks-bring-your-own-storage.md
             - name: 使用 JSONPath 轉換 JSON 資料
               href: platform/workbooks-jsonpath.md
             - name: 將活頁簿移至另一個區域
