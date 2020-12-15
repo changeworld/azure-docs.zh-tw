@@ -30,6 +30,8 @@
   items:
     - name: 識別資料中的異常情況
       href: how-to/identify-anomalies.md
+    - name: 部署到 IoT Edge
+      href: how-to/deploy-anomaly-detection-on-iot-edge.md
     - name: 使用容器
       items:
         - name: 安裝及執行容器

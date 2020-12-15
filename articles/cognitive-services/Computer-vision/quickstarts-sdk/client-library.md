@@ -15,27 +15,30 @@ ms.custom:
 - devx-track-js
 - devx-track-csharp
 - cog-serv-seo-aug-2020
-zone_pivot_groups: programming-languages-set-one
+zone_pivot_groups: programming-languages-computer-vision
 keywords: 電腦視覺, 電腦視覺服務
-ms.openlocfilehash: c0ed1d534ce76f870b34c626b1b21f7745aa3247
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 20378eff09abed0eb4d7587211f576de6313ea1d
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91309810"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533259"
 ---
 # <a name="quickstart-use-the-computer-vision-client-library"></a>快速入門：使用電腦視覺用戶端程式庫
 
-開始使用電腦視覺用戶端程式庫。 電腦視覺服務為您提供 AI 演算法，以便處理影像及傳回其視覺功能的資訊。 請遵循下列步驟將套件安裝至您的應用程式，並試用基本工作的程式碼範例。
+開始使用電腦視覺 REST API 或用戶端程式庫。 電腦視覺服務為您提供 AI 演算法，以便處理影像及傳回其視覺功能的資訊。 請遵循下列步驟將套件安裝至您的應用程式，並試用基本工作的程式碼範例。
 
-使用電腦視覺用戶端程式庫可執行下列作業：
 
-* 分析影像中的標籤、文字描述、臉部、成人內容等等。
-* 透過讀取 API 讀取印刷和手寫文字。
 
 ::: zone pivot="programming-language-csharp"
 
 [!INCLUDE [C# SDK quickstart](../includes/quickstarts-sdk/csharp-sdk.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
+[!INCLUDE [Python SDK quickstart](../includes/quickstarts-sdk/python-sdk.md)]
 
 ::: zone-end
 
@@ -51,14 +54,14 @@ ms.locfileid: "91309810"
 
 ::: zone-end
 
-::: zone pivot="programming-language-python"
-
-[!INCLUDE [Python SDK quickstart](../includes/quickstarts-sdk/python-sdk.md)]
-
-::: zone-end
-
 ::: zone pivot="programming-language-go"
 
 [!INCLUDE [Go SDK quickstart](../includes/quickstarts-sdk/go-sdk.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-rest-api"
+
+[!INCLUDE [REST API quickstart](../includes/curl-quickstart.md)]
 
 ::: zone-end

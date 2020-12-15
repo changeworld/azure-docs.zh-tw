@@ -3,17 +3,17 @@ title: 適用於 SQL 的 Azure Defender - 優點和功能
 description: 了解適用於 SQL 的 Azure Defender 的優點和功能。
 author: memildin
 ms.author: memildin
-ms.date: 11/30/2020
+ms.date: 12/13/2020
 ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: c2fc1bf065bce3ca844c5284168d8ff96fa065bf
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: e9a2259f1e15a94ad1f2a9eabf7d3a2f3ed419f1
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512234"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387797"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>適用於 SQL 的 Azure Defender 簡介
 
@@ -28,7 +28,7 @@ ms.locfileid: "96512234"
 |版本狀態：|**適用於 Azure SQL 資料庫伺服器的 Azure Defender** - 正式發行 (GA)<br>**適用於機器上 SQL 伺服器的 Azure Defender** - 正式發行 (GA) |
 |定價：|構成 **適用於 SQL 的 Azure Defender** 的兩個方案，會依照 [定價頁面](security-center-pricing.md)顯示的方式計費|
 |受保護的 SQL 版本：|[Azure 虛擬機器上的 SQL](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[已啟用 Azure Arc 的 SQL Server](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)<br>沒有 Azure Arc 的 Windows 機器上的內部部署 SQL Server<br>Azure SQL [單一資料庫](../azure-sql/database/single-database-overview.md)和[彈性集區](../azure-sql/database/elastic-pool-overview.md)<br>[Azure SQL 受控執行個體](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure Synapse Analytics (先前稱為 SQL DW) 專用 SQL 集區](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
-|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov、其他 Gov|
+|雲端：|![是](./media/icons/yes-icon.png) 商用雲端<br>![US Gov](./media/icons/yes-icon.png)<br>![是](./media/icons/yes-icon.png) 中國 Gov (**部分**：SQL Server 的警示和弱點評量的子集。 無法使用行為威脅防護)。|
 |||
 
 ## <a name="what-does-azure-defender-for-sql-protect"></a>適用於 SQL 的 Azure Defender 可保護哪些項目？

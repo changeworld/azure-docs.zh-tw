@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
 ms.author: roy-har
-ms.openlocfilehash: 9965e4c856fdef2af17b116264ad5344ebc97eb2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 081b9288d091e26d0e6d30aa849ced18a3c2ffb6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84466948"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938455"
 ---
 建立 Pizza 應用程式。
 
@@ -48,18 +48,18 @@ ms.locfileid: "84466948"
 1. 選取 [製作資源]。
 1. 選取 [變更製作資源]。
 
-如果您有撰寫資源，請輸入**租用戶名稱**、**訂用帳戶名稱**，以及您撰寫資源的 **LUIS 資源名稱**。
+如果您有撰寫資源，請輸入 **租用戶名稱**、**訂用帳戶名稱**，以及您撰寫資源的 **LUIS 資源名稱**。
 
 如果您沒有撰寫資源：
 
 1. 選取 [建立新的資源]。
-1. 輸入**租用戶名稱**、**資源名稱**、**訂用帳戶名稱**和 **Azure 資源群組名稱**。
+1. 輸入 **租用戶名稱**、**資源名稱**、**訂用帳戶名稱** 和 **Azure 資源群組名稱**。
 
 您的 Pizza 應用程式現在已準備好可以使用。
 
 ## <a name="record-the-access-values-for-your-pizza-app"></a>針對您的 Pizza 應用程式記錄存取值
 
-若要使用您新的 Pizza 應用程式，將需要 Pizza 應用程式的應用程式識別碼、撰寫金鑰和撰寫端點。
+若要使用您新的 Pizza 應用程式，將需要 Pizza 應用程式的應用程式識別碼、撰寫金鑰和撰寫端點。 若要取得預測，您需要個別的預測端點和預測金鑰。
 
 若要尋找這些值：
 
@@ -67,5 +67,5 @@ ms.locfileid: "84466948"
 1. 從 [應用程式設定] 頁面上，記錄 [應用程式識別碼]。
 1. 選取 [Azure 資源]。
 1. 選取 [製作資源]。
-1. 從 [撰寫資源] 索引標籤中，記錄「主索引鍵」。 此值是您的撰寫金鑰。
+1. 從 [撰寫資源] 和 [預測資源] 索引標籤中，記下 **主要金鑰**。 此值是您的撰寫金鑰。
 1. 記錄 [端點 URL]。 此值是您的撰寫端點。

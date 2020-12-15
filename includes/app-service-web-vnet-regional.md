@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 86d4eb68866e35300738a15cbd3549485c3cbafb
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 57b2955f8cec059cd20d353eba31dc39ad992d50
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97096450"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506324"
 ---
 使用區域 VNet 整合可讓您的應用程式存取：
 
@@ -99,8 +99,8 @@ VNet 整合取決於使用專用子網。  當您布建子網時，Azure 子網�
 當您的應用程式與您的 VNet 整合之後，它會使用您的 VNet 設定所在的相同 DNS 伺服器。 根據預設，您的應用程式不會使用 Azure DNS 私人區域。 若要使用 Azure DNS 私人區域，您需要新增下列應用程式設定：
 
 
-1. 值為 168.63.129.16 1 的 WEBSITE_DNS_SERVER。 具有值168.63.129.16 的 WEBSITE_DNS_SERVER
-1. 值為 1 1 的 WEBSITE_VNET_ROUTE_ALL。 值為1的 WEBSITE_VNET_ROUTE_ALL
+1. 具有值168.63.129.16 的 WEBSITE_DNS_SERVER
+1. 值為1的 WEBSITE_VNET_ROUTE_ALL
 
 
 除了讓您的應用程式使用 Azure DNS 私人區域以外，這些設定還會將您的應用程式的所有輸出呼叫傳送至 VNet。   這些設定會將來自您應用程式的所有輸出呼叫傳送至您的 VNet。 此外，它也會藉由在背景工作角色層級查詢私人 DNS 區域，讓應用程式可以使用 Azure DNS。 當執行中的應用程式正在存取私人 DNS 區域時，就會使用這項功能。
