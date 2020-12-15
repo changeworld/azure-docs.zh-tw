@@ -9,12 +9,12 @@ ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 34fe909c7fca3c91845c58b41abb0d8885e156e6
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0cdd25b2937dd1fb2cc70ef7b1c5a9e9ddaef375
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94850881"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780598"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>使用最新的 API 以程式設計方式建立 Azure Enterprise 合約訂用帳戶
 
@@ -89,7 +89,7 @@ API 回應會列出您有權存取的所有註冊帳戶：
 
 ```
 
-記下您其中一個 `enrollmentAccounts` 的 `id`。 這是起始訂用帳戶建立要求的計費範圍。 
+計費範圍和 `id` 的值相同。 註冊帳戶的 `id` 是起始訂用帳戶要求的計費範圍。 請務必記下識別碼，因為您稍後在建立訂用帳戶時會用到此必要參數。
 
 <!-- 
 ### [PowerShell](#tab/azure-powershell-getEnrollments)
@@ -130,6 +130,8 @@ PUT  https://management.azure.com/providers/Microsoft.Subscription/aliases/sampl
   }
 }
 ```
+
+`Workload` 的允許值為 `Production` 和 `DevTest`。
 
 #### <a name="response"></a>回應
 

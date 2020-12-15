@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 383cd286f89bde13f5e557792e980f0455e00917
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 472c1770e2793d8da4e8fc76fafbf3b9073b746d
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876643"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763392"
 ---
 ## <a name="deploy-and-configure-azure-media-services"></a>部署和設定 Azure 媒體服務
 
@@ -32,9 +32,17 @@ ms.locfileid: "91876643"
 > [!TIP]
 > 這些教學課程會在所有範例中使用 [美國東部] 區域。 您也可以使用最接近您的區域。
 
-記下 scratchpad.txt 檔案中的**媒體服務**帳戶名稱。
+記下 scratchpad.txt 檔案中的 **媒體服務** 帳戶名稱。
 
-當部署完成時，瀏覽至**媒體服務**帳戶的 [屬性] 頁面。 記下 scratchpad.txt 檔案中的**資源識別碼**，稍後設定 IoT Edge 模組時會用到此值。
+當部署完成時，請開啟 Cloud Shell 並執行下列命令，以擷取媒體服務帳戶的 **資源識別碼**：
+
+```azurecli
+az resource list --resource-group lva-rg --resource-type microsoft.media/mediaservices --output table --query "[].{ResourceID:id}"
+```
+
+:::image type="content" source="media/iot-central-video-analytics-part2/get-resource-id.png" alt-text="使用 Cloud Shell 取得資源識別碼":::
+
+記下 scratchpad.txt 檔案中的 **資源識別碼**，稍後設定 IoT Edge 模組時會用到此值。
 
 接下來，為您的媒體服務資源設定 Azure Active Directory 服務主體。 選取 [API 存取]，然後選取 [服務主體驗證]。 使用與您媒體服務資源相同的名稱建立新的 Azure Active Directory 應用程式，並以「IoT Edge 存取」作為描述來建立祕密。
 
@@ -63,10 +71,10 @@ ms.locfileid: "91876643"
 
 1. 選取 [影片分析 - 物件和動作偵測] 應用程式範本。 針對本教學課程中使用的裝置，其裝置範本皆包含在此範本中。 此範本包含範例儀表板，可供操作員用來執行監視和管理相機等工作。
 
-1. (選擇性) 選擇易記的 [應用程式名稱]  。 此應用程式會以名為 Northwind Traders 的虛構零售商店為基礎。 本教學課程會使用「Northwind Traders 影片分析」作為**應用程式名稱**。
+1. (選擇性) 選擇易記的 [應用程式名稱]  。 此應用程式會以名為 Northwind Traders 的虛構零售商店為基礎。 本教學課程會使用「Northwind Traders 影片分析」作為 **應用程式名稱**。
 
     > [!NOTE]
-    > 如果您使用自訂的**應用程式名稱**，您仍然必須針對應用程式的 **URL** 使用唯一值。
+    > 如果您使用自訂的 **應用程式名稱**，您仍然必須針對應用程式的 **URL** 使用唯一值。
 
 1. 如果您有 Azure 訂用帳戶，請選取您的 [目錄]、[Azure 訂用帳戶]，並以 [美國] 作為 [位置]。 如果您沒有訂用帳戶，則可以啟用 [7 天免費試用]  並填妥必要的連絡人資訊。 本教學課程使用三部裝置 (兩部相機和一部 IoT Edge 裝置)，因此，如果您未使用免費試用版，將會依使用量計費。
 
@@ -74,22 +82,22 @@ ms.locfileid: "91876643"
 
 1. 選取 [建立]。
 
-    :::image type="content" source="./media/iot-central-video-analytics-part2/new-application.png" alt-text="設定適用於 Azure 媒體服務的 Azure AD 應用程式":::
+    :::image type="content" source="./media/iot-central-video-analytics-part2/new-application.png" alt-text="Azure IoT Central 的建立應用程式頁面":::
 
 ### <a name="retrieve-the-configuration-data"></a>擷取設定資料
 
 稍後在本教學課程中設定 IoT Edge 閘道時，您會需要來自 IoT Central 應用程式的某些設定資料。 IoT Edge 裝置需要此資訊，才能向應用程式註冊及連線到該應用程式。
 
-在 [管理] 區段中選取**您的應用程式**，並記下 scratchpad.txt 檔案中的**應用程式 URL** 和**應用程式識別碼**：
+在 [管理] 區段中選取 **您的應用程式**，並記下 scratchpad.txt 檔案中的 **應用程式 URL** 和 **應用程式識別碼**：
 
-:::image type="content" source="./media/iot-central-video-analytics-part2/administration.png" alt-text="設定適用於 Azure 媒體服務的 Azure AD 應用程式":::
+:::image type="content" source="./media/iot-central-video-analytics-part2/administration.png" alt-text="此螢幕擷取畫面顯示 [影片分析] 頁面中將應用程式 U R L 和應用程式 I D 反白顯示的 [系統管理] 窗格。":::
 
-選取 [API 權杖]，然後針對**操作員**角色產生名為 **LVAEdgeToken** 的新權杖：
+選取 [API 權杖]，然後針對 **操作員** 角色產生名為 **LVAEdgeToken** 的新權杖：
 
-:::image type="content" source="./media/iot-central-video-analytics-part2/token.png" alt-text="設定適用於 Azure 媒體服務的 Azure AD 應用程式":::
+:::image type="content" source="./media/iot-central-video-analytics-part2/token.png" alt-text="產生權杖":::
 
 記下 scratchpad.txt 檔案中的權杖，以便稍後使用。 關閉對話方塊之後，您就無法再次檢視權杖。
 
 在 [管理] 區段中選取 [裝置連線]，然後選取 [SAS-IoT-Devices]。
 
-記下 *scratchpad.txt* 檔案中的裝置**主要金鑰**。 稍後設定 IoT Edge 裝置時，您會用到此「主要群組共用存取簽章權杖」。
+記下 *scratchpad.txt* 檔案中的裝置 **主要金鑰**。 稍後設定 IoT Edge 裝置時，您會用到此「主要群組共用存取簽章權杖」。

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 981697211cf8ee0aff1ac0e3d0db6000c1089c00
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 398e964ad773e4c015129c6dd3d4784f1300e16b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896844"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905769"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>教學課程：使用 Azure 地圖服務建立商店定位器
 
@@ -76,18 +76,18 @@ ms.locfileid: "92896844"
 
 我們可以查看資料的螢幕擷取畫面，以進行下列觀察：
 
-* 位置資訊可使用 **AddressLine** 、 **City** 、 **Municipality** (國家/地區)、 **AdminDivision** (縣/市)、 **PostCode** (郵遞區號) 和 **Country** 等資料行來儲存。  
+* 位置資訊可使用 **AddressLine**、**City**、**Municipality** (國家/地區)、**AdminDivision** (縣/市)、**PostCode** (郵遞區號) 和 **Country** 等資料行來儲存。  
 * **Latitude** 和 **Longitude** 資料行包含每個 Contoso Coffee 咖啡廳所在位置的座標。 如果您沒有座標資訊，您可以使用 Azure 地圖服務中的搜尋服務來決定位置座標。
 * 此外還有一些包含咖啡廳相關中繼資料的資料行：電話號碼、布林值資料行，以及 24 小時格式的開店和關店時間。 布林值資料行用於 Wi-Fi 和殘障人士協助工具。 您可以建立的資料行，並納入與您的位置資料更為相關的中繼資料。
 
 > [!NOTE]
-> Azure 地圖服務會以球面麥卡托投影 "EPSG:3857" 呈現資料，但是會讀取 "EPSG:4325" 中採用 WGS84 數據的資料。
+> Azure 地圖服務會以球面麥卡托投影 "EPSG:3857" 呈現資料，但是會讀取 "EPSG:4326" 中採用 WGS84 數據的資料。
 
 有許多方式可將資料集公開給應用程式。 其中一個方法是將資料載入至資料庫，然後公開會查詢資料的 Web 服務。 然後，您可以將結果傳送至使用者的瀏覽器。 此選項非常適用於大型資料集或經常更新的資料集。 不過，此選項需要高於一般的開發工作，且成本較高。
 
 另一種方法是將此資料集轉換成瀏覽器可輕易地剖析的一般文字檔案。 檔案本身可隨著應用程式的其餘部分而裝載。 此選項較為單純，但僅適用於較小的資料集，因為使用者會下載所有資料。 我們將為此資料集使用一般文字檔案，因為其資料檔案大小不到 1 MB。  
 
-若要將活頁簿轉換成一般文字檔案，請將活頁簿儲存為 Tab 鍵分隔檔案。 每個資料行都會以 Tab 字元分隔，以便在我們的程式碼中剖析資料行。 您可以使用逗號分隔值 (CSV) 格式，但該選項需要較多剖析邏輯。 周圍有逗號的任何欄位都會在兩側加上引號。 若要將此資料匯出為 Excel 中的 Tab 鍵分隔檔案，請選取 [另存新檔]。 在 [存檔類型] 下拉式清單中，選取 [文字 (Tab 鍵分隔) (*.txt)]。 將檔案命名為 *ContosoCoffee.txt* 。
+若要將活頁簿轉換成一般文字檔案，請將活頁簿儲存為 Tab 鍵分隔檔案。 每個資料行都會以 Tab 字元分隔，以便在我們的程式碼中剖析資料行。 您可以使用逗號分隔值 (CSV) 格式，但該選項需要較多剖析邏輯。 周圍有逗號的任何欄位都會在兩側加上引號。 若要將此資料匯出為 Excel 中的 Tab 鍵分隔檔案，請選取 [另存新檔]。 在 [存檔類型] 下拉式清單中，選取 [文字 (Tab 鍵分隔) (*.txt)]。 將檔案命名為 *ContosoCoffee.txt*。
 
 ![[存檔類型] 對話方塊的螢幕擷取畫面](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)
 
@@ -97,13 +97,13 @@ ms.locfileid: "92896844"
 
 ## <a name="set-up-the-project"></a>設定專案
 
-若要建立專案，您可以使用 [Visual Studio](https://visualstudio.microsoft.com) 或您選擇的程式碼編輯器。 請在您的專案資料夾中建立三個檔案： *index.html* 、 *index.css* 和 *index.js* 。 這些檔案會定義應用程式的版面配置、樣式和邏輯。 建立名為 *data* 的資料夾，並將 *ContosoCoffee.txt* 新增至該資料夾。 建立名為 *images* 的另一個資料夾。 我們在此應用程式中使用 10 個影像來表示地圖上的圖示、按鈕和標記。 您可以[下載這些影像](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)。 您的專案資料夾此時會如下圖所示︰
+若要建立專案，您可以使用 [Visual Studio](https://visualstudio.microsoft.com) 或您選擇的程式碼編輯器。 請在您的專案資料夾中建立三個檔案：*index.html*、*index.css* 和 *index.js*。 這些檔案會定義應用程式的版面配置、樣式和邏輯。 建立名為 *data* 的資料夾，並將 *ContosoCoffee.txt* 新增至該資料夾。 建立名為 *images* 的另一個資料夾。 我們在此應用程式中使用 10 個影像來表示地圖上的圖示、按鈕和標記。 您可以[下載這些影像](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)。 您的專案資料夾此時會如下圖所示︰
 
 ![簡單商店定位器專案資料夾的螢幕擷取畫面](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)
 
 ## <a name="create-the-user-interface"></a>建立使用者介面
 
-若要建立使用者介面，請將程式碼新增至 *index.html* ：
+若要建立使用者介面，請將程式碼新增至 *index.html*：
 
 1. 將下列 `meta` 標記新增至 *index.html* 的 `head`。 `charset` 標籤會定義字元集 (UTF-8)。 `http-equiv` 的值會向 Internet Explorer 和 Microsoft Edge 指出應使用最新的瀏覽器版本。 此外，最後一個 `meta` 標籤會指定一個適用於回應式配置的檢視區。
 
@@ -158,9 +158,9 @@ ms.locfileid: "92896844"
     </main>
     ```
 
-完成之後， *index.html* 應會如 [這個範例 index.html 檔案](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html)所示。
+完成之後，*index.html* 應會如 [這個範例 index.html 檔案](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html)所示。
 
-下一個步驟是定義 CSS 樣式。 CSS 樣式會定義應用程式元件的配置方式，和應用程式的外觀。 請開啟 *index.css* ，並對其新增下列程式碼。 `@media` 樣式會定義螢幕寬度小於 700 個像素時所要使用的替代樣式選項。  
+下一個步驟是定義 CSS 樣式。 CSS 樣式會定義應用程式元件的配置方式，和應用程式的外觀。 請開啟 *index.css*，並對其新增下列程式碼。 `@media` 樣式會定義螢幕寬度小於 700 個像素時所要使用的替代樣式選項。  
 
    ```CSS
     html, body {
@@ -385,7 +385,7 @@ ms.locfileid: "92896844"
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. 將程式碼新增至 *index.js* 。 下列程式碼會初始化地圖。 我們已新增[事件接聽程式](/javascript/api/azure-maps-control/atlas.map#events)，以等待頁面載入完成。 然後，我們會連結事件以監視地圖的載入，並將功能提供給搜尋按鈕和「我的位置」按鈕。
+1. 將程式碼新增至 *index.js*。 下列程式碼會初始化地圖。 我們已新增[事件接聽程式](/javascript/api/azure-maps-control/atlas.map#events)，以等待頁面載入完成。 然後，我們會連結事件以監視地圖的載入，並將功能提供給搜尋按鈕和「我的位置」按鈕。
 
    當使用者選取搜尋按鈕，或是在搜尋方塊中輸入位置然後按下 Enter 鍵時，就會起始使用者查詢的模糊搜尋。 將國家/區域 ISO 2 值的陣列傳入 `countrySet` 選項，可將搜尋結果限制在這些國家/地區。 限制要搜尋的國家/地區，有助於提高傳回結果的精確度。 
   
@@ -432,7 +432,7 @@ ms.locfileid: "92896844"
             }
         };
 
-        //If the user selects the My Location button, use the Geolocation API to get the user's location. Center and zoom the map on that location.
+        //If the user selects the My Location button, use the Geolocation API (Preview) to get the user's location. Center and zoom the map on that location.
         document.getElementById('myLocationBtn').onclick = setMapToUserLocation;
 
         //Wait until the map resources are ready.
@@ -472,7 +472,7 @@ ms.locfileid: "92896844"
     function setMapToUserLocation() {
         //Request the user's location.
         navigator.geolocation.getCurrentPosition(function(position) {
-            //Convert the Geolocation API position to a longitude and latitude position value that the map can interpret and center the map over it.
+            //Convert the Geolocation API (Preview) position to a longitude and latitude position value that the map can interpret and center the map over it.
             map.setCamera({
                 center: [position.coords.longitude, position.coords.latitude],
                 zoom: maxClusterZoomLevel + 1

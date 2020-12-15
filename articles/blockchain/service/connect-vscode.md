@@ -1,15 +1,15 @@
 ---
 title: 使用 Visual Studio Code 連線至 Azure 區塊鏈服務
 description: 在 Visual Studio Code 中使用適用於 Ethereum 的 Azure 區塊鏈開發套件擴充功能連線到 Azure 區塊鏈服務聯盟網路
-ms.date: 04/22/2020
+ms.date: 12/04/2020
 ms.topic: quickstart
 ms.reviewer: caleteet
-ms.openlocfilehash: 8b502966317c5d07e89de4ae70ff72b899e963e6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6e94d93d91f25c15743c4c467e31de49fd9da41d
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82084833"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763293"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>快速入門：使用 Visual Studio Code 連線至 Azure 區塊鏈服務聯盟網路
 
@@ -24,7 +24,6 @@ ms.locfileid: "82084833"
 * [適用於 Ethereum 的 Azure 區塊鏈服務開發套件擴充功能](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
 * [Node.js 10.15.x 或更高版本](https://nodejs.org)
 * [Git 2.10.x 或更高版本](https://git-scm.com)
-* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) 將 python.exe 新增至您的路徑。 Azure 區塊鏈服務開發套件需要您的路徑中有 Python 2.7.15 版。
 * [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
 * [Ganache CLI 6.0.0](https://github.com/trufflesuite/ganache-cli)
 
@@ -40,7 +39,7 @@ ms.locfileid: "82084833"
 
 Azure 區塊鏈服務開發套件會確認您是否已符合開發環境的必要條件。 若要確認開發環境：
 
-從 VS Code 命令選擇區選擇 [Azure 區塊鏈服務:  顯示歡迎頁面]。
+從 VS Code 命令選擇區選擇 [區塊鏈服務:顯示歡迎頁面]。
 
 Azure 區塊鏈服務開發套件會執行驗證指令碼，其大約需要一分鐘的時間才能完成。 您可以藉由選取 [終端機] > [新增終端機]  來檢視輸出。 在終端機的功能表列中，於下拉式清單內選取 [輸出]  索引標籤和 [Azure 區塊鏈服務]  。 驗證成功時會如下圖所示：
 

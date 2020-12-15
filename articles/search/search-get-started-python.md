@@ -1,7 +1,7 @@
 ---
 title: 快速入門：使用 Python 建立搜尋索引
 titleSuffix: Azure Cognitive Search
-description: 說明如何使用 Python、Jupyter Notebook 與 Azure.Documents.Search 程式庫建立索引、載入資料以及執行查詢。
+description: 說明如何使用 Python、筆記本與 Azure.Documents.Search 程式庫建立索引、載入資料以及執行查詢。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -9,14 +9,14 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/19/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 528d29f3b285c2583fd1bb52e1de7c24fdc9e28a
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 126fc69678148d4d478c96ff8d05f194c7e3d1b3
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917081"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861862"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>快速入門：使用 Jupyter Notebook 在 Python 中建立 Azure 認知搜尋索引
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>快速入門：使用 Jupyter Notebooks 在 Python 中建立 Azure 認知搜尋索引
 
 > [!div class="op_single_selector"]
 > * [Python](search-get-started-python.md)
@@ -350,7 +350,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 
 ## <a name="clean-up"></a>清除
 
-使用您自己的訂用帳戶時，在專案結束後確認您是否還需要您建立的資源，是很好的做法。 讓資源繼續執行可能會產生費用。 您可以個別刪除資源，或刪除資源群組以刪除整組資源。
+如果您是在自己的訂用帳戶中進行，建議您在專案結束時判斷自己是否仍需要先前所建立的資源。 讓資源繼續執行可能會產生費用。 您可以個別刪除資源，或刪除資源群組以刪除整組資源。
 
 您可以使用左導覽窗格中的 [所有資源]  或 [資源群組]  連結，在入口網站中尋找和管理資源。
 

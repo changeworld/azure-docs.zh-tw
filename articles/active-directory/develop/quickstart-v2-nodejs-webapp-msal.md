@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: amikuma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: ac400efe66ab740f5fb87977ac531cbe465e3f91
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: e860a33ba44743dcc5a96d7656f22fd952a1d0b8
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95995145"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762562"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>快速入門：使用授權碼流程讓使用者登入並取得 Node Web 應用程式中的存取權杖
 
@@ -42,15 +42,14 @@ ms.locfileid: "95995145"
 > #### <a name="step-1-register-your-application"></a>步驟 1:註冊您的應用程式
 >
 > 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-> 1. 如果您的帳戶可讓您存取多個租用戶，請在右上方選取帳戶，然後將您的入口網站工作階段設定為想要使用的 Azure AD 租用戶。
-> 1. 選取 [應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)。
-> 1. 選取 [新增註冊]。
-> 1. [註冊應用程式] 頁面出現時，輸入您應用程式的名稱。
+> 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
+> 1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
+> 1. 輸入應用程式的 **名稱**。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
 > 1. 在 [支援的帳戶類型] 底下，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶]。
 > 1. 將 [重新導向 URI] 值設定為 `http://localhost:3000/redirect`。
 > 1. 選取 [註冊]。 
 > 1. 在應用程式 [概觀] 頁面上，記下 [應用程式 (用戶端) 識別碼] 值以供稍後使用。
-> 1. 在 **憑證與祕密** 下，選取 [新增用戶端密碼]。  將描述和預設到期日留白，然後按一下 [新增]。
+> 1. 在 **管理** 下，選取 [憑證與秘密] > [新增用戶端密碼]。  將描述和預設到期日留白，然後選取 [新增]。
 > 1. 請注意 **用戶端密碼** 的 **值**，以供稍後使用。
 
 #### <a name="step-2-download-the-project"></a>步驟 2:下載專案

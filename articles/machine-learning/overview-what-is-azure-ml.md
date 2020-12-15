@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: af38f68a9709b21989ba787fb5b2c623e07dc440
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 85080c018749f9aab716eff0a4527363da987007
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541278"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620472"
 ---
 # <a name="what-is-azure-machine-learning"></a>什麼是 Azure Machine Learning？
 
@@ -49,7 +49,7 @@ Azure Machine Learning 為開發人員和資料科學家提供其機器學習工
 
 + + [Many Models Solution Accelerator](https://aka.ms/many-models) (預覽) 建置在 Azure Machine Learning 中，可讓您定型、操作及管理上百個或甚至數千個機器學習模型。
 
-+ [Visual Studio Code 擴充功能](tutorial-setup-vscode-extension.md) \(英文\)
++ [適用於 Visual Studio Code 使用者的機器學習服務延伸模組](tutorial-setup-vscode-extension.md)
 
 + [機器學習 CLI](reference-azure-machine-learning-cli.md)
 

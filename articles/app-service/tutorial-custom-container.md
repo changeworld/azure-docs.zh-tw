@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: azure app service, web 應用程式, linux, windows, docker, 容器
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: b5682275a9e5f3993de715ab5f23a708d5df47ae
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 68fe49ff201ead89d846a0676e81dda9fc9b75b9
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130097"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558601"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>使用自訂容器將自訂軟體遷移至 Azure App Service
 
@@ -228,31 +228,16 @@ Azure App Service 會使用 Docker 容器技術，來裝載內建映像和自訂
 
 ## <a name="set-up-your-initial-environment"></a>設定初始環境
 
-* 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-* 安裝用來建置Docker 映像的 [Docker](https://docs.docker.com/get-started/#setup)。 安裝 Docker 可能需要將電腦重新開機。
-* 安裝 <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.0.80 或更高版本，您可以在任何殼層中執行命令以佈建和設定 Azure 資源。
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- 安裝用來建置Docker 映像的 [Docker](https://docs.docker.com/get-started/#setup)。 安裝 Docker 可能需要將電腦重新開機。
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+- 本教學課程需要 2.0.80 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
-安裝 Docker 和 Azure CLI 後，請開啟終端機視窗，並確認已安裝 Docker：
+安裝 Docker 或執行 Azure Cloud Shell 後，請開啟終端機視窗，並確認已安裝 Docker：
 
 ```bash
 docker --version
 ```
-
-也請確認您的 Azure CLI 版本為 2.0.80 或更高版本：
-
-```azurecli
-az --version
-```
-
-接著，透過 CLI 登入 Azure：
-
-```azurecli
-az login
-```
-
-`az login` 命令會開啟瀏覽器來收集您的認證。 當命令完成時，會顯示 JSON 輸出，其中包含您的訂用帳戶相關資訊。
-
-登入之後，您可以使用 Azure CLI 執行 Azure 命令，以使用訂用帳戶中的資源。
 
 ## <a name="clone-or-download-the-sample-app"></a>複製或下載範例應用程式
 
@@ -343,8 +328,6 @@ ENTRYPOINT ["init.sh"]
 1. 瀏覽至 `http://localhost:8000`，驗證 Web 應用程式和容器是否正常運作。
 
     ![在本機測試 Web 應用程式](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-local.png)
-
-[!INCLUDE [Try Cloud Shell](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 

@@ -1,20 +1,20 @@
 ---
-title: 教學課程：使用 Azure Notebooks (Python) 規劃電動車的路線 | Microsoft Azure 地圖服務
+title: 教學課程：使用 Azure Notebooks (Python) 搭配 Microsoft Azure 地圖服務來規劃電動車的路線
 description: 如何使用 Microsoft Azure 地圖服務路線規劃 API 和 Azure Notebooks 來規劃電動車路線的教學課程
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/12/2019
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 6dde7abef1769b9441c037f3727e7fd9d83ab172
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: f30b99a1d9c8303d5b2ed4b02819d0ca837946d2
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896813"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905735"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>教學課程：使用 Azure Notebooks (Python) 規劃電動車的路線
 
@@ -108,7 +108,7 @@ from IPython.display import Image, display
 
 某家快遞公司的車隊編制了一些電動車。 在一天之中，電動車必須能夠在外充電而不需返回倉庫。 每當剩餘電量低於一小時，您就要搜尋一組位於可抵達範圍內的充電站。 基本上，當電量偏低時，您就會搜尋充電站。 而且，您也會取得該充電站範圍的界限資訊。 
 
-由於公司偏好使用兼顧經濟效益和速度的路線，因此要求的 routeType 為 *eco* 。 下列指令碼會呼叫 Azure 地圖服務規劃路線服務的[取得路線範圍 API](/rest/api/maps/route/getrouterange)。 此指令碼會在車輛的耗電量模型中使用參數。 指令碼接著會剖析回應以建立 geojson 格式的多邊形物件，其代表該輛車可抵達的最大範圍。
+由於公司偏好使用兼顧經濟效益和速度的路線，因此要求的 routeType 為 *eco*。 下列指令碼會呼叫 Azure 地圖服務規劃路線服務的[取得路線範圍 API](/rest/api/maps/route/getrouterange)。 此指令碼會在車輛的耗電量模型中使用參數。 指令碼接著會剖析回應以建立 geojson 格式的多邊形物件，其代表該輛車可抵達的最大範圍。
 
 若要判斷電動車可抵達的範圍界限，請執行下列資料格中的指令碼：
 
@@ -171,9 +171,9 @@ for loc in range(len(searchPolyResponse["results"])):
                 reachableLocations.append(location)
 ```
 
-## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>將可抵達的範圍和充電地點上傳至 Azure 地圖服務資料服務
+## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service-preview"></a>將可抵達的範圍和充電地點上傳至 Azure 地圖服務資料服務 (預覽)
 
-在地圖上，您可以將充電站和電動車可抵達的最大範圍界限視覺化。 若要這麼做，請將界限資料和充電站以 geojson 物件的形式上傳至 Azure 地圖服務資料服務。 使用[資料上傳 API](/rest/api/maps/data/uploadpreview)。 
+在地圖上，您可以將充電站和電動車可抵達的最大範圍界限視覺化。 若要這麼做，請將界限資料和充電站以 geojson 物件的形式上傳至 Azure 地圖服務資料服務 (預覽)。 使用[資料上傳 API](/rest/api/maps/data/uploadpreview)。 
 
 若要將界限和充電地點資料上傳至 Azure 地圖服務資料服務，請執行下列兩個資料格：
 
@@ -194,7 +194,7 @@ rangeData = {
   ]
 }
 
-# Upload the range data to Azure Maps Data Service.
+# Upload the range data to Azure Maps Data service (Preview).
 uploadRangeResponse = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = rangeData)
 
 rangeUdidRequest = uploadRangeResponse.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
@@ -223,7 +223,7 @@ poiData = {
   ]
 }
 
-# Upload the electric vehicle charging station data to Azure Maps Data Service.
+# Upload the electric vehicle charging station data to Azure Maps Data service (Preview).
 uploadPOIsResponse = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = poiData)
 
 poiUdidRequest = uploadPOIsResponse.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
@@ -336,12 +336,12 @@ routeData = {
 
 ## <a name="visualize-the-route"></a>將路線視覺化
 
-若要協助將路線視覺化，您首先要將路線資料 geojson 物件的形式上傳至 Azure 地圖服務資料服務。 若要這麼做，請使用 Azure 地圖服務[資料上傳 API](/rest/api/maps/data/uploadpreview)。 接著，請呼叫轉譯服務[取得地圖影像 API](/rest/api/maps/render/getmapimage)，以在地圖上轉譯該路線，並將其視覺化。
+若要協助將路線視覺化，您首先要將路線資料 geojson 物件的形式上傳至 Azure 地圖服務資料服務 (預覽)。 若要這麼做，請使用 Azure 地圖服務[資料上傳 API](/rest/api/maps/data/uploadpreview)。 接著，請呼叫轉譯服務[取得地圖影像 API](/rest/api/maps/render/getmapimage)，以在地圖上轉譯該路線，並將其視覺化。
 
 若要取得地圖上所轉譯路線的影像，請執行下列指令碼：
 
 ```python
-# Upload the route data to Azure Maps Data Service.
+# Upload the route data to Azure Maps Data service (Preview).
 routeUploadRequest = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = routeData)
 
 udidRequestURI = routeUploadRequest.headers["Location"]+"&subscription-key={}".format(subscriptionKey)

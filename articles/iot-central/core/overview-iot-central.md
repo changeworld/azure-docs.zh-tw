@@ -7,13 +7,13 @@ ms.date: 11/23/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.custom: mvc
-ms.openlocfilehash: 55f187781a0f11417b0c918034dcfe3362be4468
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: mvc, contperfq2
+ms.openlocfilehash: 847fc5345708dc313f706fcb0d370b0d1761aa41
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457668"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763701"
 ---
 # <a name="what-is-azure-iot-central"></a>何謂 Azure IoT 中心？
 
@@ -34,7 +34,7 @@ Web UI 可讓您監視裝置狀況、建立規則，以及在數百萬個裝置�
 
 IoT Central 文件提及四個會與 IoT Central 應用程式互動的角色：
 
-- 「解決方案建置者」負責[定義連線至應用程式的裝置類型](howto-set-up-template.md)，以及為操作員自訂應用程式。
+- 「解決方案建立器」負責[建立應用程式](quick-deploy-iot-central.md)、[設定規則和動作](quick-configure-rules.md)、[定義與其他服務的整合](howto-export-data.md)，並進一步自訂操作員和裝置開發人員的應用程式。
 - 「操作員」[管理已連線到應用程式的裝置](howto-manage-devices.md)。
 - 「管理員」負責進行管理工作，例如管理應用程式內的[使用者角色和權限](howto-administer.md)。
 - 「裝置開發人員」會為連線到您應用程式的[裝置](concepts-telemetry-properties-commands.md)或 [IoT Edge 模組](concepts-iot-edge.md)，建立可在其中執行的程式碼。

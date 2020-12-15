@@ -8,18 +8,47 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 965c420fa29c4cf82517148c01e17d6d7dd6ea97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b23324a7226d4b3de4908bd78a8f19c799e59f06
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74106502"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932178"
 ---
 # <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>教學課程：使用 Azure Machine Learning 和 IoT Edge 的端對端解決方案
 
 通常，IoT 應用程式希望利用智慧雲端與智慧邊緣。 在此教學課程中，我們將引導您完成使用從雲端中的 IoT 裝置收集的資料將機器學習模型定型、將該模型部署到 IoT Edge，以及定期維護和精簡模型。
 
 此教學課程的主要目的是介紹使用機器學習處理 IoT 資料，特別是在邊緣上。 雖然我們涉及一般機器學習工作流程的許多層面，但此教學課程並不打算深入介紹機器學習。 作為一個例子，我們不會嘗試為使用案例建立高度最佳化的模型 - 我們只是進行足以說明針對 IoT 資料處理建立和使用可行模型的流程。
+
+本教學課程的這一節將討論：
+
+> [!div class="checklist"]
+>
+> * 完成本教學課程後續部分的必要條件。
+> * 教學課程的目標對象。
+> * 教學課程所模擬的使用案例。
+> * 本教學課程為滿足使用案例而遵循的整體程序。
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="prerequisites"></a>必要條件
+
+若要完成此教學課程，您需要可在其中建立資源之 Azure 訂用帳戶的存取權。 此教學課程中使用的一些服務將產生 Azure 費用。 如果您還沒有 Azure 訂用帳戶，則可以開始使用 [Azure 免費帳戶](https://azure.microsoft.com/offers/ms-azr-0044p/)。
+
+您還需要一部已安裝 PowerShell 的電腦，您可以在其中執行指令碼以將 Azure 虛擬機器設定為開發電腦。
+
+在此文件中，我們使用下列工具組︰
+
+* 用於資料擷取的 Azure IoT 中樞
+
+* Azure Notebooks 作為資料準備和機器學習實驗的主要前端。 在筆記本中對範例資料的子集執行 python 程式碼，是在資料準備期間取得快速反覆執行及互動式往返的好方法。 Jupyter Notebooks 還可用於準備指令碼以在計算後端中大規模執行。
+
+* Azure Machine Learning 作為大規模機器學習和機器學習映像產生的後端。 我們使用在 Jupyter Notebooks 中備妥且經過測試的指令碼來驅動 Azure Machine Learning 後端。
+
+* Azure IoT Edge，用於機器學習映像的離線應用程式
+
+很明顯地，還有其他可用的選項。 例如，在某些情況下，IoT Central 可作為無程式碼替代方案使用，以從 IoT 裝置擷取初始定型資料。
 
 ## <a name="target-audience-and-roles"></a>目標對象和角色
 
@@ -40,9 +69,9 @@ ms.locfileid: "74106502"
 
 讀我檔案：
 
-***實驗性情節***
+***實驗性情節**
 
-*資料集包含多個多變量的時間序列。每個資料集都會進一步分割為定型和測試子集。每個時間序列都來自不同的引擎 - 亦即，資料可以被視為來自同一類型的引擎。每個引擎在啟動時都具有不同程度的初始損耗和一些使用者不知道的獨特製造變化。這種損耗及變化被認為是正常的，也就是不會將它視為錯誤狀況。有三種操作設定會對引擎效能產生重大影響。這些設定也包含在資料中。資料會受到感應器噪音污染。*
+資料集包含多個多變量的時間序列。 每個資料集都會進一步分割為定型和測試子集。 每個時間序列都來自不同的引擎 - 亦即，資料可以被視為來自同一類型的引擎。 每個引擎在啟動時都具有不同程度的初始損耗和一些使用者不知道的獨特製造變化。 這種損耗及變化被認為是正常的，也就是不會將它視為錯誤狀況。 有三種操作設定會對引擎效能產生重大影響。 這些設定也包含在資料中。 資料會受到感應器噪音污染。*
 
 *引擎會在每個時間序列的開頭正常運作，並在序列期間的某個時刻發生故障。在定型集合中，故障會慢慢擴大，直到系統失敗。在測試集合中，時間序列會在系統故障之前的某個時間結束。競賽的目的是要預測測試集合中故障之前的剩餘操作循環次數，亦即，在引擎將繼續運作的最後一個循環之後的操作循環次數。還為測試資料提供了真實剩餘使用年限 (RUL) 值的向量。*
 
@@ -74,23 +103,9 @@ GitHub 使用者 hankroark 的[渦輪風扇引擎退化](https://github.com/hank
 
 1. **維護並精簡模型**。 部署模型後，我們的工作尚未完成。 在許多情況下，我們希望繼續收集資料，並將資料定期上傳至雲端。 然後我們可以使用這些資料來重新定型及改善我們的模型，然後我們可以將其重新部署到 IoT Edge。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="clean-up-resources"></a>清除資源
 
-若要完成此教學課程，您需要可在其中建立資源之 Azure 訂用帳戶的存取權。 此教學課程中使用的一些服務將產生 Azure 費用。 如果您還沒有 Azure 訂用帳戶，則可以開始使用 [Azure 免費帳戶](https://azure.microsoft.com/offers/ms-azr-0044p/)。
-
-您還需要一部已安裝 PowerShell 的電腦，您可以在其中執行指令碼以將 Azure 虛擬機器設定為開發電腦。
-
-在此文件中，我們使用下列工具組︰
-
-* 用於資料擷取的 Azure IoT 中樞
-
-* Azure Notebooks 作為資料準備和機器學習實驗的主要前端。 在筆記本中對範例資料的子集執行 python 程式碼，是在資料準備期間取得快速反覆執行及互動式往返的好方法。 Jupyter Notebooks 還可用於準備指令碼以在計算後端中大規模執行。
-
-* Azure Machine Learning 作為大規模機器學習和機器學習映像產生的後端。 我們使用在 Jupyter Notebooks 中備妥且經過測試的指令碼來驅動 Azure Machine Learning 後端。
-
-* Azure IoT Edge，用於機器學習映像的離線應用程式
-
-很明顯地，還有其他可用的選項。 例如，在某些情況下，IoT Central 可作為無程式碼替代方案使用，以從 IoT 裝置擷取初始定型資料。
+本教學課程是集合的一部分，其中每篇文章都會以上一篇文章中所完成的工作為基礎。 請等到您完成最後一個教學課程後，再清除任何資源。
 
 ## <a name="next-steps"></a>後續步驟
 

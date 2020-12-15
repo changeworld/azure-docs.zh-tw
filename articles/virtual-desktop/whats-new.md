@@ -3,17 +3,17 @@ title: Windows 虛擬桌面的新增功能？ - Azure
 description: Windows 虛擬桌面的新功能和產品更新。
 author: Heidilohr
 ms.topic: overview
-ms.date: 11/11/2020
+ms.date: 12/02/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: c82312b40955b392243bf616ee991c0108a13fb5
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: e267de136271991446444a47a470dd52789b3613
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537385"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533956"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows 虛擬桌面的新增功能？
 
@@ -25,6 +25,31 @@ Windows 虛擬桌面會定期更新。 本文可讓您了解：
 - 錯誤修正
 
 本文每月更新。 務必經常回到這裡查看，以掌握新的更新。
+
+## <a name="november-2020"></a>2020 年 11 月
+
+### <a name="azure-portal-experience"></a>Azure 入口網站體驗
+
+我們已修正 Azure 入口網站使用者體驗中的兩個錯誤 (bug)：
+
+- 「新增 VM」工作流程不會再覆寫桌面應用程式的易記名稱。
+- 如果工作階段主機是擴展集的一部分，則現在會載入工作階段主機索引標籤。
+
+### <a name="fslogix-client-version-2009"></a>FSLogix用戶端，版本 2009 
+
+我們發行了新版本的 FSLogix 用戶端，其中包含許多修正項目和改良功能。 若要深入了解，請參閱[我們的部落格文章](https://social.msdn.microsoft.com/Forums/en-US/defe5828-fba4-4715-a68c-0e4d83eefa6b/release-notes-for-fslogix-apps-release-2009-29762130127?forum=FSLogix)。
+
+### <a name="rdp-shortpath-public-preview"></a>RDP Shortpath 公開預覽
+
+RDP Shortpath 使用點對站和站對站 VPN 和 ExpressRoute，為您的 Windows 虛擬桌面工作階段主機導入直接連接功能， 同時也引進了 URCP 傳輸通訊協定。 RDP Shortpath 的設計是為了減少延遲和網路躍點，以改善使用者體驗。 若要深入了解，請參閱 [Windows 虛擬桌面 RDP Shortpath](shortpath.md)。
+
+### <a name="azdesktopvirtualization-version-201"></a>Az.DesktopVirtualization，版本 2.0.1
+
+我們已發行 Windows 虛擬桌面 Cmdlet 的 2.0.1 版本。 此更新包含可讓您管理 MSIX 應用程式附加的 Cmdlet。 您可以在 [PowerShell 資源庫](https://www.powershellgallery.com/packages/Az.DesktopVirtualization/2.0.1)下載新版本。
+
+### <a name="azure-advisor-updates"></a>Azure Advisor 更新
+
+Azure Advisor 現在提供新的 Windows 虛擬桌面鄰近性指導建議。 若要深入了解，請參閱 [Azure 網站](https://azure.microsoft.com/updates/new-recommendations-from-azure-advisor/)。
 
 ## <a name="october-2020"></a>2020 年 10 月
 
@@ -174,7 +199,6 @@ Windows 虛擬桌面現在整合至 Azure Resource Manager。 在最新的更新
 - 透過 PowerShell 或診斷服務 Web 應用程式完成的監視功能現在已移至 Azure 入口網站中的 Log Analytics。 您現在也有兩個選項可將報告視覺化。 您可以執行 Kusto 查詢，並使用活頁簿來建立視覺效果報告。
 
 - 您不再需要完成 Azure Active Directory (Azure AD) 同意，即可使用 Windows 虛擬桌面。 在此更新中，Azure 訂用帳戶上的 Azure AD 租用戶會驗證您的使用者，並為您的管理員提供 Azure RBAC 控制項。
-
 
 ### <a name="powershell-support"></a>PowerShell 支援
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperfq1
-ms.openlocfilehash: d356674819304897aef353d161ddf236e19db1f5
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 3fed5fa53af9bd69f828eaf40db5d2ac441ffa08
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592238"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762766"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>快速入門：將 Microsoft 身分識別平台登入新增至 ASP.NET Web 應用程式
 
@@ -39,7 +39,7 @@ ms.locfileid: "94592238"
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>選項 1：註冊和自動設定您的應用程式，然後下載程式碼範例
 >
 > 1. 移至新的 [Azure 入口網站 - 應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs)窗格。
-> 1. 輸入您的應用程式名稱，然後按一下 [註冊]。
+> 1. 輸入應用程式的名稱，並選取 [註冊]  。
 > 1. 依照指示按一下滑鼠，即可下載並自動設定新的應用程式。
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>選項 2：註冊並手動設定您的應用程式和程式碼範例
@@ -47,16 +47,15 @@ ms.locfileid: "94592238"
 > #### <a name="step-1-register-your-application"></a>步驟 1:註冊您的應用程式
 > 若要手動註冊您的應用程式，並將應用程式註冊資訊新增到您的解決方案，請執行下列步驟：
 >
-> 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-> 1. 如果您的帳戶可讓您存取多個租用戶，請在右上角選取帳戶，然後將您的入口網站工作階段設定為想要的 Azure AD 租用戶。
-> 1. 瀏覽至 Microsoft 身分識別平台，以取得開發人員的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面。
-> 1. 選取 [新增註冊]。
-> 1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊：
->      - 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱，例如 `ASPNET-Quickstart`。
->      - 在 [重新導向 URL] 中新增 `https://localhost:44368/`，然後按一下 [註冊]。
->      - 從左側流覽窗格的 [管理] 區段下，選取 [驗證]
->          - 在 [隱含授與] 子區段底下，選取 [識別碼權杖]。
->          - 然後選取 [儲存]。
+> 1. 登入 [Azure 入口網站](https://portal.azure.com)。
+> 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
+> 1. 搜尋並選取 [Azure Active Directory]  。
+> 1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
+> 1. 輸入應用程式的 [名稱]，例如 `ASPNET-Quickstart`。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
+> 1. 在 **重新導向 URL** 中新增 `https://localhost:44368/`，然後選取 [註冊]。
+> 1. 從左側流覽窗格的 [管理] 區段下，選取 [驗證]
+> 1. 在 [隱含授與] 子區段底下，選取 [識別碼權杖]。
+> 1. 選取 [儲存]。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>步驟 1:在 Azure 入口網站中設定您的應用程式

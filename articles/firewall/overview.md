@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperfq1
-ms.date: 11/10/2020
+ms.date: 12/03/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: e714e88e47ec20adec44a104c659d03e62d8010a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: fc68170a89a3d9a359ae9cb2c0d5543af301e738
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658378"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573029"
 ---
 # <a name="what-is-azure-firewall"></a>何謂 Azure 防火牆？
 
@@ -70,7 +70,8 @@ Azure 防火牆有下列已知問題：
 |自訂 DNS 無法與強制通道搭配運作|如果已啟用強制通道，自訂 DNS 就無法運作。|我們正在調查提供修正程式的可能性。|
 |多個可用性區域支援新的公用 IP 位址|當您部署具有兩個可用性區域 (1 和 2、2 和 3，或 1 和 3) 的防火牆時，無法新增公用 IP 位址|這是公用 IP 位址資源限制。|
 |啟動/停止無法用於在強制通道模式中設定的防火牆|啟動/停止無法用於在強制通道模式中設定的 Azure 防火牆。 嘗試啟動已設定強制通道的 Azure 防火牆時，會產生下列錯誤：<br><br>*Set-AzFirewall：AzureFirewall FW-xx 管理 IP 組態無法新增至現有的防火牆。如果要使用強制通道支援，請使用管理 IP 組態重新部署。<br>StatusCode：400<br>ReasonPhrase：不正確的要求*|調查中。<br><br>您可以刪除現有的防火牆，並使用相同的參數建立新的防火牆作為因應措施。|
-|無法使用入口網站新增防火牆原則標籤|Azure 防火牆原則具有修補支援限制，會防止您使用 Azure 入口網站新增標籤。 系統會產生下列錯誤：*無法儲存資源的標籤*。|我們正在調查提供修正程式的可能性。 或者，您可以使用 Azure PowerShell Cmdlet `Set-AzFirewallPolicy` 來更新標籤。
+|無法使用入口網站新增防火牆原則標籤|Azure 防火牆原則具有修補支援限制，會防止您使用 Azure 入口網站新增標籤。 系統會產生下列錯誤：*無法儲存資源的標籤*。|我們正在調查提供修正程式的可能性。 或者，您可以使用 Azure PowerShell Cmdlet `Set-AzFirewallPolicy` 來更新標籤。|
+|尚未支援 IPv6|如果您將 IPv6 位址新增至規則，防火牆將會失敗。|只可使用 IPv4 位址。 未來將支援 IPv6。|
 
 
 ## <a name="next-steps"></a>後續步驟

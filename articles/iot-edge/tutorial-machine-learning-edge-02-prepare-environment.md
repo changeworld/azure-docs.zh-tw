@@ -8,16 +8,23 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f261db8d40e1a1cc1737ff6a3f5c50da661b73e6
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: d86a273a69203a92a9b437f021486feb3bcb31da
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433477"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932365"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>教學課程：在 IoT Edge 上為機器學習設定環境
 
 本文將協助您準備開發和部署環境。 首先，請使用所需的所有工具設定開發機器。 接下來，在 Azure 中建立必要的雲端資源。
+
+在教學課程的這一節中，您已了解如何：
+
+> [!div class="checklist"]
+>
+> * 設定用於開發的虛擬機器。
+> * 設定可供開發環境使用的 IoT 中樞和雲端儲存體。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -210,15 +217,13 @@ Azure IoT 中樞會處理 IoT 裝置和雲端之間的安全通訊，因此可�
 
 1. 由於未進行任何編輯，請關閉此頁面即可。
 
+## <a name="clean-up-resources"></a>清除資源
+
+本教學課程是集合的一部分，其中每篇文章都會以上一篇文章中所完成的工作為基礎。 請等到您完成最後一個教學課程後，再清除任何資源。
+
 ## <a name="next-steps"></a>後續步驟
 
 在此文章中，我們已建立 IoT 中樞，並設定針對 Azure 儲存體帳戶的路由。 接下來，我們將會透過 IoT 中樞將來自一組模擬裝置的資料傳送至儲存體帳戶。 稍後在教學課程中，當我們已設定 IoT Edge 裝置和模組之後，我們將會重新造訪路由，並進一步查看路由查詢。
-
-如需這部分 IoT Edge 上的 Machine Learning 教學課程所涵蓋之步驟的詳細資訊，請參閱：
-
-* [Azure IoT 基礎](../iot-fundamentals/index.yml)
-* [使用 IoT 中樞設定訊息路由](../iot-hub/tutorial-routing.md)
-* [使用 Azure 入口網站建立 IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)
 
 請前往下一篇文章以建立模擬裝置以進行監視。
 

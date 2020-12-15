@@ -1,21 +1,21 @@
 ---
 title: 使用範本中的 Azure Key Vault
-description: 了解如何使用 Azure Key Vault 在 Resource Manager 範本部署期間傳遞安全的參數值
+description: 了解如何使用 Azure Key Vault 在 Azure Resource Manager 範本 (ARM 範本) 部署期間傳遞安全的參數值。
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 73a50c282eee023bff525bc737bd2170938de1dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75eb977559573b72883de3ddbc27391c7e299a6f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119271"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929311"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>教學課程：在 ARM 範本部署中整合 Azure Key Vault
 
-了解如何從 Azure 金鑰保存庫擷取祕密，並且在部署 Azure Resource Manager (ARM) 範本時傳遞祕密作為參數。 您只參考其金鑰保存庫識別碼，因此參數值絕不會公開。 您可以使用靜態識別碼或動態識別碼來參考金鑰保存庫秘密。 本教學課程使用靜態識別碼。 透過靜態識別碼方法，您可參考範本參數檔案 (而非範本檔案) 中的金鑰保存庫。 如需這兩種方法的詳細資訊，請參閱[在部署期間使用 Azure Key Vault 以傳遞安全的參數值](./key-vault-parameter.md)。
+了解如何從 Azure 金鑰保存庫擷取祕密，並且在部署 Azure Resource Manager 範本 (ARM 範本) 時傳遞祕密作為參數。 您只參考其金鑰保存庫識別碼，因此參數值絕不會公開。 您可以使用靜態識別碼或動態識別碼來參考金鑰保存庫秘密。 本教學課程使用靜態識別碼。 透過靜態識別碼方法，您可參考範本參數檔案 (而非範本檔案) 中的金鑰保存庫。 如需這兩種方法的詳細資訊，請參閱[在部署期間使用 Azure Key Vault 以傳遞安全的參數值](./key-vault-parameter.md)。
 
 在[設定資源部署順序](./template-tutorial-create-templates-with-dependent-resources.md)教學課程中，您建立了虛擬機器 (VM)。 您需要提供虛擬機器系統管理員的使用者名稱和密碼。 您可以不提供密碼，而是將密碼預先儲存在 Azure 金鑰保存庫，然後自訂範本以在部署期間從金鑰保存庫擷取密碼。
 
@@ -37,7 +37,7 @@ ms.locfileid: "86119271"
 
 若要完成本文，您需要：
 
-* Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本](quickstart-create-templates-use-visual-studio-code.md)。
+* Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[快速入門：使用 Visual Studio Code 建立 ARM 範本](quickstart-create-templates-use-visual-studio-code.md)。
 * 為了提高安全性，請使用為 VM 系統管理員帳戶產生的密碼。 以下是用於產生密碼的範例：
 
     ```console

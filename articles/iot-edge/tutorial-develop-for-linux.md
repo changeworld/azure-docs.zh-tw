@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 23ca4be9387754c84dc256dd72b131bd5b76b458
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: b352bd92ecc69ca68a6870d3a59ef5e0cdd1daba
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876459"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920861"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>教學課程：開發適用於 Linux 裝置的 IoT Edge 模組
 
@@ -22,7 +22,7 @@ ms.locfileid: "91876459"
 
 在本快速入門中，您已使用 Linux 虛擬機器建立 IoT Edge 裝置，並部署了來自 Azure Marketplace 的模組。 本教學課程會逐步說明如何開發您自己的程式碼並將其部署至 IoT Edge 裝置。 本文是其他教學課程的實用先決條件，其內容會深入探討特定的程式設計語言或 Azure 服務。
 
-本教學課程使用將 **C# 模組部署至 Linux 裝置**的範例。 選擇此範例是因為這是 IoT Edge 解決方案最常見的開發人員案例。 即使您打算使用不同的語言或部署 Azure 服務，本教學課程對於了解開發工具和概念還是很有用。 完成此開發程序的簡介後，請選擇您偏好的語言或 Azure 服務以深入了解細節。
+本教學課程使用將 **C# 模組部署至 Linux 裝置** 的範例。 選擇此範例是因為這是 IoT Edge 解決方案最常見的開發人員案例。 即使您打算使用不同的語言或部署 Azure 服務，本教學課程對於了解開發工具和概念還是很有用。 完成此開發程序的簡介後，請選擇您偏好的語言或 Azure 服務以深入了解細節。
 
 在本教學課程中，您會了解如何：
 
@@ -32,30 +32,6 @@ ms.locfileid: "91876459"
 > * 使用 IoT Edge Tools for Visual Studio Code 來建立新專案。
 > * 將專案建置為容器，並儲存在 Azure Container Registry。
 > * 將程式碼部署至 IoT Edge 裝置。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-## <a name="key-concepts"></a>重要概念
-
-本教學課程會逐步引導您開發 IoT Edge 模組。 「IoT Edge 模組」  (有時簡稱為「模組」)  是含有可執行程式碼的容器。 您可以在 IoT Edge 裝置中部署一或多個模組。 模組會執行特定工作，例如從感應器擷取資料、清除及分析資料，或對 IoT 中樞傳送訊息。 如需詳細資訊，請參閱[了解 Azure IoT Edge 模組](iot-edge-modules.md)。
-
-在開發 IoT Edge 模組時，請務必了解開發機器和作為模組最終部署位置的目標 IoT Edge 裝置之間有何差異。 為了保存模組程式碼所建置的容器必須符合「目標裝置」  的作業系統 (OS)。 例如，最常見的情況是有人在 Windows 電腦上開發模組，卻又打算以執行 IoT Edge 的 Linux 裝置作為適用對象。 在此情況下，容器的作業系統會是 Linux。 當您進行本教學課程時，請牢記「開發機器 OS」  和「容器 OS」  之間的差異。
-
-本教學課程是以執行 IoT Edge 的 Linux 裝置作為適用對象。 您可以使用慣用的作業系統，只要您的開發機器執行 Linux 容器即可。 建議您使用 Visual Studio Code 來針對 Linux 裝置進行開發，本教學課程也是這麼做的。 您也可以使用 Visual Studio，但這兩種工具的支援有所差異。
-
-下表列出在 Visual Studio Code 和 Visual Studio 中 **Linux 容器**所支援的開發案例。
-
-|   | Visual Studio Code | Visual Studio 2017/2019 |
-| - | ------------------ | ------------------ |
-| **Linux 裝置架構** | Linux AMD64 <br> Linux ARM32 | Linux AMD64 <br> Linux ARM32 |
-| **Azure 服務** | Azure Functions <br> Azure 串流分析 <br> Azure Machine Learning |   |
-| **語言** | C <br> C# <br> Java <br> Node.js <br> Python | C <br> C# |
-| **詳細資訊** | [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) <br> [Azure IoT Edge Tools for Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
-
->[!NOTE]
->[公開預覽](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)提供 Linux ARM64 裝置的支援。 如需詳細資訊，請參閱[在 Visual Studio Code (預覽)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview) 中開發和偵錯 ARM64 IoT Edge 模組。
-
-本教學課程會教授 Visual Studio Code 的開發步驟。 如果您比較想要使用 Visual Studio，請參閱[使用 Visual Studio 2019 來開發適用於 Azure IoT Edge 的模組並針對其進行偵錯](how-to-visual-studio-develop-module.md)中的指示。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -77,6 +53,29 @@ ms.locfileid: "91876459"
 
 * 在 Azure 中擁有免費或標準層的 [IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)。
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="key-concepts"></a>重要概念
+
+本教學課程會逐步引導您開發 IoT Edge 模組。 「IoT Edge 模組」  (有時簡稱為「模組」)  是含有可執行程式碼的容器。 您可以在 IoT Edge 裝置中部署一或多個模組。 模組會執行特定工作，例如從感應器擷取資料、清除及分析資料，或對 IoT 中樞傳送訊息。 如需詳細資訊，請參閱[了解 Azure IoT Edge 模組](iot-edge-modules.md)。
+
+在開發 IoT Edge 模組時，請務必了解開發機器和作為模組最終部署位置的目標 IoT Edge 裝置之間有何差異。 為了保存模組程式碼所建置的容器必須符合「目標裝置」  的作業系統 (OS)。 例如，最常見的情況是有人在 Windows 電腦上開發模組，卻又打算以執行 IoT Edge 的 Linux 裝置作為適用對象。 在此情況下，容器的作業系統會是 Linux。 當您進行本教學課程時，請牢記「開發機器 OS」  和「容器 OS」  之間的差異。
+
+本教學課程是以執行 IoT Edge 的 Linux 裝置作為適用對象。 您可以使用慣用的作業系統，只要您的開發機器執行 Linux 容器即可。 建議您使用 Visual Studio Code 來針對 Linux 裝置進行開發，本教學課程也是這麼做的。 您也可以使用 Visual Studio，但這兩種工具的支援有所差異。
+
+下表列出在 Visual Studio Code 和 Visual Studio 中 **Linux 容器** 所支援的開發案例。
+
+|   | Visual Studio Code | Visual Studio 2017/2019 |
+| - | ------------------ | ------------------ |
+| **Linux 裝置架構** | Linux AMD64 <br> Linux ARM32 | Linux AMD64 <br> Linux ARM32 |
+| **Azure 服務** | Azure Functions <br> Azure 串流分析 <br> Azure Machine Learning |   |
+| **語言** | C <br> C# <br> Java <br> Node.js <br> Python | C <br> C# |
+| **詳細資訊** | [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) <br> [Azure IoT Edge Tools for Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
+
+>[!NOTE]
+>[公開預覽](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)提供 Linux ARM64 裝置的支援。 如需詳細資訊，請參閱[在 Visual Studio Code (預覽)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview) 中開發和偵錯 ARM64 IoT Edge 模組。
+
+本教學課程會教授 Visual Studio Code 的開發步驟。 如果您比較想要使用 Visual Studio，請參閱[使用 Visual Studio 2019 來開發適用於 Azure IoT Edge 的模組並針對其進行偵錯](how-to-visual-studio-develop-module.md)中的指示。
 ## <a name="install-container-engine"></a>安裝容器引擎
 
 IoT Edge 模組會封裝為容器，因此開發機器上必須有容器引擎才能建置和管理容器。 建議您使用 Docker Desktop 進行開發，因其支援多項功能，並且廣受使用。 Windows 上的 Docker Desktop 可讓您在 Linux 容器和 Windows 容器之間進行切換，從而能夠輕鬆地為不同類型的 IoT Edge 裝置開發模組。
@@ -134,7 +133,7 @@ Azure IoT Tools 擴充功能會針對 Visual Studio Code 中所有支援的 IoT 
    | 提供解決方案名稱 | 輸入解決方案的描述性名稱或接受預設值 **EdgeSolution**。 |
    | 選取模組範本 | 選擇 [C# 模組]  。 |
    | 提供模組名稱 | 接受預設的 **SampleModule**。 |
-   | 提供模組的 Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 您的容器映像會從您在上一個步驟中提供的名稱預先填入。 將 **localhost:5000** 取代為 Azure Container Registry 的**登入伺服器**值。 您可以在 Azure 入口網站中，從容器登錄的概觀頁面擷取登入伺服器值。 <br><br> 最終的映像存放庫看起來類似於：\<registry name\>.azurecr.io/samplemodule。 |
+   | 提供模組的 Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 您的容器映像會從您在上一個步驟中提供的名稱預先填入。 將 **localhost:5000** 取代為 Azure Container Registry 的 **登入伺服器** 值。 您可以在 Azure 入口網站中，從容器登錄的概觀頁面擷取登入伺服器值。 <br><br> 最終的映像存放庫看起來類似於：\<registry name\>.azurecr.io/samplemodule。 |
 
    ![提供 Docker 映像存放庫](./media/tutorial-develop-for-linux/image-repository.png)
 
@@ -153,7 +152,7 @@ Visual Studio Code 視窗中載入您的新解決方案後，請花點時間熟�
 環境檔案會儲存容器登錄的認證，並與 IoT Edge 執行階段共用這些認證。 執行階段需要有這些認證才能將容器映像提取到 IoT Edge 裝置。
 
 >[!NOTE]
->如果您未將 **localhost:5000** 值取代為 Azure 容器登錄中的登入伺服器值，則在[**建立專案範本**](#create-a-project-template)步驟中， **.env** 檔案和部署資訊清單的 registryCredentials 區段將會遺失。 
+>如果您未將 **localhost:5000** 值取代為 Azure 容器登錄中的登入伺服器值，則在 [**建立專案範本**](#create-a-project-template)步驟中， **.env** 檔案和部署資訊清單的 registryCredentials 區段將會遺失。 
 
 IoT Edge 擴充功能會嘗試從 Azure 提取您的容器登錄認證，並將這些認證填入到環境檔案中。 請查看您的認證是否已包含其中。 如果沒有，請立即新增：
 
@@ -201,7 +200,7 @@ IoT Edge 擴充功能會嘗試從 Azure 提取您的容器登錄認證，並將�
 
 8. 在檔案底部，尋找 **$edgeHub** 模組所需的屬性。
 
-   IoT Edge 中樞模組的其中一個函式會在部署中的所有模組之間路由傳送訊息。 檢閱 **routes** 屬性中的值。 其中一個路由 **SampleModuleToIoTHub** 會使用萬用字元 ( **\*** ) 來表示任何來自 SampleModule 模組中任何輸出佇列的訊息。 這些訊息會進入 $upstream  ，這是會指出 IoT 中樞的保留名稱。 另一個路由 **sensorToSampleModule** 會取得來自 SimulatedTemperatureSensor 模組的訊息，並將其路由至您看到再 SampleModule 程式碼中初始化的 input1 輸入佇列。
+   IoT Edge 中樞模組的其中一個函式會在部署中的所有模組之間路由傳送訊息。 檢閱 **routes** 屬性中的值。 其中一個路由 **SampleModuleToIoTHub** 會使用萬用字元 ( *\** ) 來表示任何來自 SampleModule 模組中任何輸出佇列的訊息。 這些訊息會進入 $upstream，這是會指出 IoT 中樞的保留名稱。 另一個路由 **sensorToSampleModule** 會取得來自 SimulatedTemperatureSensor 模組的訊息，並將其路由至您看到再 SampleModule 程式碼中初始化的 input1 輸入佇列。
 
    ![檢閱 deployment.template.json 中的路由](./media/tutorial-develop-for-linux/deployment-routes.png)
 
@@ -289,7 +288,7 @@ Visual Studio Code 現在可以存取容器登錄，因此您現在可以將解�
 
    請勿使用 deployment.template.json 檔案，其並未內含容器登錄認證或模組映像值。 如果您以 Linux ARM32 裝置作為目標，則部署資訊清單會命名為 deployment.arm32v7.json。
 
-4. 請展開裝置下的**模組**，以查看已部署且執行中的模組清單。 按一下 [重新整理] 按鈕。 您應該會看到新的 SimulatedTemperatureSensor 和 SampleModule 模組在您的裝置上執行。
+4. 請展開裝置下的 **模組**，以查看已部署且執行中的模組清單。 按一下 [重新整理] 按鈕。 您應該會看到新的 SimulatedTemperatureSensor 和 SampleModule 模組在您的裝置上執行。
 
    模組可能需要幾分鐘才會啟動。 IoT Edge 執行階段需要接收其新的部署資訊清單、從容器執行階段提取模組映像，然後啟動每個新的模組。
 

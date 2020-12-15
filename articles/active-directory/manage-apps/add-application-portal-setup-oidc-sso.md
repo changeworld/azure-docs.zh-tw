@@ -10,16 +10,18 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 9ea4ec748ca37f93e9711970b10746a009543d00
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c0253dc3c9dc029cd964fb32b148be1405e7fbad
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656593"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780173"
 ---
 # <a name="quickstart-set-up-oidc-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>快速入門：為您 Azure Active Directory (Azure AD) 租用戶中的應用程式設定 OIDC 型單一登入 (SSO)
 
 藉由為已新增至 Azure Active Directory (Azure AD) 租用戶的應用程式設定單一登入 (SSO)，來開始使用簡化的使用者登入。 設定 SSO 之後，您的使用者就可以使用其 Azure AD 認證來登入應用程式。 SSO 會包含在免費版的 Azure AD 中。
+
+若要深入朋解 OIDC 型的 SSO，請參閱[了解 OIDC 型的單一登入](configure-oidc-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -52,7 +54,7 @@ ms.locfileid: "94656593"
    > [!IMPORTANT]
     > 如果您已有應用程式的訂用帳戶，則會驗證使用者詳細資料和租用戶/目錄資訊。 如果應用程式無法驗證使用者，則會將您重新導向至註冊應用程式服務的頁面或錯誤頁面。
 
-3. 驗證成功後，將會出現一個要求管理員同意的對話方塊。 選取 [代表您的組織同意]，然後選取 [接受]。 
+3. 驗證成功後，將會出現一個要求管理員同意的對話方塊。 選取 [代表您的組織同意]，然後選取 [接受]。 若要深入了解使用者和管理員同意，請參閱[了解使用者和管理員同意](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)。
 
     :::image type="content" source="media/add-application-portal-setup-oidc-sso/consent.png" alt-text="此螢幕擷取畫面顯示應用程式的同意畫面。" lightbox="media/add-application-portal-setup-oidc-sso/consent.png":::
 
@@ -62,6 +64,11 @@ ms.locfileid: "94656593"
 > [!TIP]
 > 您可以使用圖形 API 自動管理應用程式，請參閱[使用 Microsoft Graph API 自動管理應用程式](/graph/application-saml-sso-configure-api)。
 
+以下影片將逐步解說如何將 OIDC 型應用程式新增至 Azure AD 的其他詳細資料。
+
+在 Azure Active Directory 中新增 OIDC 型應用程式
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4HoNI]
 
 ## <a name="clean-up-resources"></a>清除資源
 

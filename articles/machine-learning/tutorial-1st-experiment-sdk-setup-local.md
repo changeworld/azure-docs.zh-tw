@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1b4ee9f06e8ed8bd47be1075070dea71b42b1cef
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 05ac0f78345e1c1d7643f24410d53b209ab7c375
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349064"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574151"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>教學課程：開始在開發環境中使用 Azure Machine Learning (第 1 部分，共 4 部分)
 
@@ -52,7 +52,10 @@ ms.locfileid: "93349064"
 pip install azureml-sdk
 ```
 
-## <a name="create-a-directory-structure-for-code"></a>建立程式碼的目錄結構
+> [!div class="nextstepaction"]
+> [我已安裝 SDK](?success=install-sdk#dir) [我遇到問題](https://www.research.net/r/7C8Z3DN?issue=install-sdk)
+
+## <a name="create-a-directory-structure-for-code"></a><a name="dir"></a>建立程式碼的目錄結構
 我們建議您為本教學課程設定下列簡單的目錄結構：
 
 ```markdown
@@ -63,7 +66,11 @@ tutorial
 - `tutorial`：專案的最上層目錄。
 - `.azureml`：用來儲存 Azure Machine Learning 組態檔的隱藏子目錄。
 
-## <a name="create-an-azure-machine-learning-workspace"></a>建立 Azure Machine Learning 工作區
+
+> [!div class="nextstepaction"]
+> [我已建立目錄](?success=create-dir#workspace) [我遇到問題](https://www.research.net/r/7C8Z3DN?issue=create-dir)
+
+## <a name="create-an-azure-machine-learning-workspace"></a><a name="workspace"></a>建立 Azure Machine Learning 工作區
 
 工作區是 Azure Machine Learning 的最上層資源，而且是用來進行下列作業的集中區域：
 
@@ -119,7 +126,10 @@ tutorial
 >
 > 但仍然需要進行驗證，才能與您的 Azure Machine Learning 工作區互動。
 
-## <a name="create-an-azure-machine-learning-compute-cluster"></a>建立 Azure Machine Learning 計算叢集
+> [!div class="nextstepaction"]
+> [我已建立工作區](?success=create-workspace#cluster) [我遇到問題](https://www.research.net/r/7C8Z3DN?issue=create-workspace)
+
+## <a name="create-an-azure-machine-learning-compute-cluster"></a><a name="cluster"></a> 建立 Azure Machine Learning 計算叢集
 
 在 `tutorial` 的頂層目錄中，建立名為 `02-create-compute.py` 的 Python 指令碼。 填入下列程式碼，以建立會自動調整零到四個節點的 Azure Machine Learning 計算叢集：
 
@@ -167,6 +177,9 @@ tutorial
 └──01-create-workspace.py
 └──02-create-compute.py
 ```
+
+> [!div class="nextstepaction"]
+> [我已建立計算叢集](?success=create-compute-cluster#next-steps) [我遇到問題](https://www.research.net/r/7C8Z3DN?issue=create-compute-cluster)
 
 ## <a name="next-steps"></a>後續步驟
 

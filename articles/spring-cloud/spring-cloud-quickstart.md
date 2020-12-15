@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 448707ab84ccca03dc0572d2ebed1b4bd1b6325f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: a1732f42ea95c16cdec7a1d7569c954667e52cb4
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505286"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750895"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>快速入門：部署您的第一個 Azure Spring Cloud 應用程式
 
@@ -206,9 +206,9 @@ az extension add --name spring-cloud
 
 1. 開啟 [Azure 入口網站](https://ms.portal.azure.com/)。 
 
-1. 從頂端的搜尋方塊，搜尋 *Azure Spring Cloud* 。
+1. 從頂端的搜尋方塊，搜尋 *Azure Spring Cloud*。
 
-1. 從結果中選取 *Azure Spring Cloud* 。
+1. 從結果中選取 *Azure Spring Cloud*。
 
    ![ASC 圖示啟動](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
@@ -219,9 +219,9 @@ az extension add --name spring-cloud
 1. 填寫 Azure Spring Cloud [建立] 頁面上的表單。  請參考下列指引：
 
    * 訂用帳戶：選取您想要用來支付此資源費用的訂用帳戶。
-   * **資源群組** ：建立新的資源群組。 您在此處輸入的名稱將會用於後續步驟中作為 **\<resource group name\>** 。
-   * **服務詳細資料/名稱** ：指定 **\<service instance name\>** 。  名稱長度必須為 4 到 32 個字元，且只能包含小寫字母、數字及連字號。  服務名稱的第一個字元必須是字母，且最後一個字元必須是字母或數字。
-   * **區域** ：選取您服務執行個體的區域。
+   * **資源群組**：建立新的資源群組。 您在此處輸入的名稱將會用於後續步驟中作為 **\<resource group name\>** 。
+   * **服務詳細資料/名稱**：指定 **\<service instance name\>** 。  名稱長度必須為 4 到 32 個字元，且只能包含小寫字母、數字及連字號。  服務名稱的第一個字元必須是字母，且最後一個字元必須是字母或數字。
+   * **區域**：選取您服務執行個體的區域。
 
    ![ASC 入口網站啟動](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
@@ -352,6 +352,9 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4
 
   ![Initializr 頁面](media/spring-cloud-quickstart-java/initializr-page.png)
 
+> [!NOTE]
+> 我們已識別出您的應用程式與 Eureka 間在 TLS 驗證上發生 Spring Boot 2.4 問題，而且目前正在與 Spring 社群合作解決。 如需因應措施，請參閱我們的[常見問題](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development)。
+
 1. 當所有相依性都已設定後，按一下 [產生]。 下載並解壓縮套件，然後藉由新增 `src/main/java/com/example/hellospring/HelloController.java` 來建立簡易 Web 應用程式的 Web 控制器，如下所示：
 
     ```java
@@ -376,9 +379,9 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4
 
 1. 在新的索引標籤中，開啟 [Azure 入口網站](https://ms.portal.azure.com/)。 
 
-2. 從頂端的搜尋方塊，搜尋 *Azure Spring Cloud* 。
+2. 從頂端的搜尋方塊，搜尋 *Azure Spring Cloud*。
 
-3. 從結果中選取 *Azure Spring Cloud* 。
+3. 從結果中選取 *Azure Spring Cloud*。
 
     ![ASC 圖示啟動](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
@@ -388,9 +391,9 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4
 
 5. 填寫 Azure Spring Cloud [建立] 頁面上的表單。  請參考下列指引：
     - 訂用帳戶：選取您想要用來支付此資源費用的訂用帳戶。
-    - **資源群組** ：為新資源建立新資源群組是最佳做法。 稍後將會使用該資訊作為 **\<resource group name\>** 。
-    - **服務詳細資料/名稱** ：指定 **\<service instance name\>** 。  名稱長度必須為 4 到 32 個字元，且只能包含小寫字母、數字及連字號。  服務名稱的第一個字元必須是字母，且最後一個字元必須是字母或數字。
-    - **位置** ：選取您服務執行個體的區域。
+    - **資源群組**：為新資源建立新資源群組是最佳做法。 稍後將會使用該資訊作為 **\<resource group name\>** 。
+    - **服務詳細資料/名稱**：指定 **\<service instance name\>** 。  名稱長度必須為 4 到 32 個字元，且只能包含小寫字母、數字及連字號。  服務名稱的第一個字元必須是字母，且最後一個字元必須是字母或數字。
+    - **位置**：選取您服務執行個體的區域。
 
     ![ASC 入口網站啟動](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 

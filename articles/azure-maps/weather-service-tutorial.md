@@ -1,24 +1,28 @@
 ---
-title: 教學課程：使用 Azure Notebooks (Python) 來聯結感應器資料與氣象預報資料 | Microsoft Azure 地圖服務
+title: 教學課程：使用 Azure Notebooks (Python) 搭配 Microsoft Azure 地圖服務來聯結感應器資料與氣象預報資料
 description: 本教學課程關於如何使用 Azure Notebooks (Python) 來聯結感應器資料與得自 Microsoft Azure 地圖服務氣象服務的氣象預報資料。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/29/2020
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: f020f3d9e23b9f834fd203f6d030656581fb4416
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 6d2ede8ab49b22a22d8959ce296182a2210640d0
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896594"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905463"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>教學課程：使用 Azure Notebooks (Python) 來聯結感應器資料與氣象預報資料
 
-風力發電可替代化石燃料來作為能源來源，以對抗氣候變遷。 由於風本身並不是固定的，因此，風力發電操作員必須建立機器學習 (ML) 模型來預測風力。 此預測是符合電力需求及確保電網穩定性所必需的。 在本教學課程中，我們將逐步解說如何將 Azure 地圖服務的氣象預報資料與天候數據的示範資料結合在一起。 藉由呼叫 Azure 地圖服務的氣象服務，即可要求氣象預報資料。
+> [!IMPORTANT]
+> Azure 地圖服務的氣象服務目前為公開預覽狀態。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+風力發電可替代化石燃料來作為能源來源，以對抗氣候變遷。 由於風本身並不是固定的，因此，風力發電操作員必須建立機器學習 (ML) 模型來預測風力。 此預測是符合電力需求及確保電網穩定性所必需的。 在本教學課程中，我們將逐步解說如何將 Azure 地圖服務的氣象預報資料與天候數據的示範資料結合在一起。 藉由呼叫 Azure 地圖服務的氣象服務 (預覽)，即可要求氣象預報資料。
 
 在本教學課程中，您將：
 
@@ -68,7 +72,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>要求每日預報資料
 
-在我們的案例中，我們會要求每個感應器位置的每日預報。 下列指令碼會呼叫 Azure 地圖服務氣象服務的[每日預測 API](/rest/api/maps/weather/getdailyforecastpreview)。 此 API 會針對每個風力發電機，傳回目前日期後 15 天內的氣象預報。
+在我們的案例中，我們會要求每個感應器位置的每日預報。 下列指令碼會呼叫 Azure 地圖服務中氣象服務 (預覽) 的[每日預測 API](/rest/api/maps/weather/getdailyforecastpreview)。 此 API 會針對每個風力發電機，傳回目前日期後 15 天內的氣象預報。
 
 
 ```python
@@ -82,7 +86,7 @@ years,months,days = [],[],[]
 dates_check=set()
 wind_speeds, wind_direction = [], []
 
-# Call azure maps weather service to get daily forecast data for 15 days from current date
+# Call azure maps Weather services (Preview) to get daily forecast data for 15 days from current date
 session = aiohttp.ClientSession()
 j=-1
 for i in range(0, len(coords), 2):

@@ -10,17 +10,17 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 003056ae9d3f236d37ddc10764812c15a3c6c695
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d1dbe51dd095290c296699bbb4bc6bd3a8caf7bf
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321288"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862423"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>教學課程：使用 MNIST 資料和 scikit-learn 將影像分類模型定型 
 
 
-在本教學課程中，您會以遠端計算資源訓練機器學習模型。 您將使用 Python Jupyter Notebook 中的 Azure Machine Learning 定型和部署工作流程。  然後，您可以使用 Notebook 作為範本，以自己的資料將您自己的機器學習服務模型定型。 本教學課程是 **兩部分教學課程系列的第一部分** 。  
+在本教學課程中，您會以遠端計算資源訓練機器學習模型。 您將使用 Python Jupyter Notebook 中的 Azure Machine Learning 定型和部署工作流程。  然後，您可以使用 Notebook 作為範本，以自己的資料將您自己的機器學習服務模型定型。 本教學課程是 **兩部分教學課程系列的第一部分**。  
 
 本教學課程可讓您使用 [MNIST](http://yann.lecun.com/exdb/mnist/) 資料集，並搭配 [scikit-learn](https://scikit-learn.org) 與 Azure Machine Learning 定型簡單的羅吉斯迴歸。 MNIST 是熱門的資料集，由 70,000 個灰階影像所組成。 每個影像都是 28 x 28 像素的手寫數字，代表 0 到 9 的數字。 目標是要建立多類別分類器，來識別特定影像代表的數字。
 
@@ -55,7 +55,7 @@ ms.locfileid: "93321288"
 > 本文的其餘部分包含與您在 Notebook 中所見相同的內容。  
 >
 > 如果您想要在執行程式碼時進行閱讀，請立即切換到 Jupyter Notebook。 
-> 若要在 Notebook 中執行單一程式碼資料格，請按一下程式碼資料格，然後按 **Shift+Enter** 。 或者，從頂端工具列中選擇 [全部執行]，以執行整個 Notebook。
+> 若要在 Notebook 中執行單一程式碼資料格，請按一下程式碼資料格，然後按 **Shift+Enter**。 或者，從頂端工具列中選擇 [全部執行]，以執行整個 Notebook。
 
 ## <a name="set-up-your-development-environment"></a><a name="start"></a>設定您的開發環境
 
@@ -313,7 +313,7 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 
 * 包含指令碼的目錄。 在此目錄中的所有檔案都會上傳到叢集節點以便執行。
 * 計算目標。 在此案例中，您會使用您所建立的 Azure Machine Learning 計算叢集。
-* 定型指令碼名稱 ( **train.py** )。
+* 定型指令碼名稱 (**train.py**)。
 * 包含執行指令碼所需程式庫的環境。
 * 來自定型指令碼的必要引數。
 
@@ -364,19 +364,19 @@ run
 
 ## <a name="monitor-a-remote-run"></a>監視遠端執行
 
-第一次執行總計會花費 **大約 10 分鐘的時間** 。 但針對後續的執行，只要指令碼相依性不變，便會重複使用相同的影像。 因此容器啟動時間會快許多。
+第一次執行總計會花費 **大約 10 分鐘的時間**。 但針對後續的執行，只要指令碼相依性不變，便會重複使用相同的影像。 因此容器啟動時間會快許多。
 
 在您等候時，會發生什麼事：
 
-- **影像建立** ：系統會建立一個 Docker 映像，其符合 Azure ML 環境所指定的 Python 環境。 影像會上傳到工作區。 映像的建立和上傳會花費 **大約 5 分鐘的時間** 。
+- **影像建立**：系統會建立一個 Docker 映像，其符合 Azure ML 環境所指定的 Python 環境。 影像會上傳到工作區。 映像的建立和上傳會花費 **大約 5 分鐘的時間**。
 
   這個階段會針對每個 Python 環境發生一次，因為系統會快取容器以供後續執行使用。 在影像建立期間，會將記錄串流至執行歷程記錄中。 您可以使用這些記錄來監視映像建立程序。
 
-- **調整** ：如果遠端叢集需要比目前可用節點數更多的節點來進行執行，將會自動新增額外的節點。 調整通常會花費 **大約 5 分鐘的時間** 。
+- **調整**：如果遠端叢集需要比目前可用節點數更多的節點來進行執行，將會自動新增額外的節點。 調整通常會花費 **大約 5 分鐘的時間**。
 
-- **執行中** ：在這個階段，會將必要的指令碼與檔案傳送到計算目標。 然後會掛接或複製資料存放區。 接著會執行 **entry_script** 。 當作業執行時， **stdout** 和 **./logs** 目錄會串流至執行歷程記錄。 您可以使用這些記錄來監視執行的進度。
+- **執行中**：在這個階段，會將必要的指令碼與檔案傳送到計算目標。 然後會掛接或複製資料存放區。 接著會執行 **entry_script**。 當作業執行時，**stdout** 和 **./logs** 目錄會串流至執行歷程記錄。 您可以使用這些記錄來監視執行的進度。
 
-- **後處理** ：執行的 **./outputs** 目錄會複製到您工作區中的執行歷程記錄，以便您存取這些結果。
+- **後處理**：執行的 **./outputs** 目錄會複製到您工作區中的執行歷程記錄，以便您存取這些結果。
 
 您可以透過數種方式檢查執行中作業的進度。 本教學課程會使用 Jupyter 小工具和 `wait_for_completion` 方法。
 

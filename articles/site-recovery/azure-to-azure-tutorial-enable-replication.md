@@ -4,12 +4,12 @@ description: 在本教學課程中，使用 Site Recovery 服務設定從 Azure 
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 90527ad39055e438e4970ad4686f204f72d20cd2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 6d07082b4a9c18461d5cc74de8844be803da7168
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394025"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922487"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-azure-vms"></a>教學課程：設定適用於 Azure VM 的災害復原
 
@@ -21,7 +21,7 @@ ms.locfileid: "93394025"
 > * 建立復原服務保存庫
 > * 啟用 VM 複寫
 
-當您為 VM 啟用複寫已設定災害復原時，將會在 VM 上安裝 Site Recovery 行動服務擴充功能，並向 Azure Site Recovery 註冊該擴充功能。 在複寫期間，VM 磁碟寫入會傳送至來源區域中的快取儲存體帳戶。 資料會從該處傳送到目標區域，並從資料產生復原點。 當您在災害復原期間將 VM 容錯移轉時，會使用復原點來還原目標區域中的 VM。
+當您為 VM 啟用複寫已設定災害復原時，將會在 VM 上安裝 Site Recovery 行動服務擴充功能，並向 Azure Site Recovery 註冊該擴充功能。 在複寫期間，VM 磁碟寫入會傳送至來源區域中的快取儲存體帳戶。 資料會從該處傳送到目的地區域，並從資料產生復原點。 當您在災害復原期間將 VM 容錯移轉時，會使用復原點來還原目標區域中的 VM。
 
 > [!NOTE]
 > 教學課程會就最簡單的預設設定提供指示。 如果您想要使用自訂設定來設定 Azure VM 災害復原，請參閱[這篇文章](azure-to-azure-how-to-enable-replication.md)。
@@ -56,7 +56,7 @@ ms.locfileid: "93394025"
 
 ### <a name="verify-target-settings"></a>確認目標設定
 
-在探索復原期間，當您從來源區域進行容錯移轉時，將會在目標區域中建立 VM。 
+在災害復原期間，當您從來源區域進行容錯移轉時，將會在目標區域中建立 VM。 
 
 請確認您的訂用帳戶在目標區域中有足夠的資源。 您必須能夠建立大小與來源區域中的 VM 相符的 VM。 當您設定災害復原時，Site Recovery 會為目標 VM 挑選相同的大小 (或最接近的大小)。
 
@@ -90,7 +90,7 @@ ms.locfileid: "93394025"
 
 **Tag** | **允許** 
 --- | ---
-儲存體標籤  |允許將資料從 VM 寫入快取儲存體帳戶中。   
+Storage tag  |允許將資料從 VM 寫入快取儲存體帳戶中。   
 Azure AD 標籤 | 允許存取對應至 Azure AD 的所有 IP 位址。   
 EventsHub 標籤 | 允許存取 Site Recovery 監視。  
 AzureSiteRecovery 標籤 | 任何區域中的 Site Recovery 服務存取權。   

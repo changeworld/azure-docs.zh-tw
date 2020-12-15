@@ -4,18 +4,18 @@ description: 描述如何使用 Azure Resource Manager 在 Azure 上進行資源
 ms.topic: overview
 ms.date: 09/01/2020
 ms.custom: contperfq1
-ms.openlocfilehash: f78b6015846253d79020752522c10af96839a854
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 317d7cae9c0febcc99831b20525b9d9d2cc96651
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372267"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903185"
 ---
 # <a name="what-is-azure-resource-manager"></a>什麼是 Azure Resource Manager？
 
 Azure Resource Manager 是 Azure 的部署和管理服務。 其提供管理層，可讓您建立、更新和刪除您 Azure 帳戶中的資源。 您可以使用存取控制、鎖定和標記等管理功能，在部署後保護及組織您的資源。
 
-若要了解 Azure Resource Manager 範本，請參閱[範本部署概觀](../templates/overview.md)。
+若要了解 Azure Resource Manager 範本 (ARM 範本)，請參閱[範本部署概觀](../templates/overview.md)。
 
 ## <a name="consistent-management-layer"></a>一致的管理層
 
@@ -95,7 +95,7 @@ Azure 提供四個範圍層級：[管理群組](../../governance/management-grou
 
 * 有些資源可存在於資源群組外部。 這些資源會部署至[訂用帳戶](../templates/deploy-to-subscription.md)、[管理群組](../templates/deploy-to-management-group.md)或[租用戶](../templates/deploy-to-tenant.md)。 這些範圍僅支援特定的資源類型。
 
-* 若要建立資源群組，您可以使用[入口網站](manage-resource-groups-portal.md#create-resource-groups)、[PowerShell](manage-resource-groups-powershell.md#create-resource-groups)、[Azure CLI](manage-resource-groups-cli.md#create-resource-groups) 或 [Azure Resource Manager (ARM) 範本](../templates/deploy-to-subscription.md#resource-groups)。
+* 若要建立資源群組，您可以使用[入口網站](manage-resource-groups-portal.md#create-resource-groups)、[PowerShell](manage-resource-groups-powershell.md#create-resource-groups)、[Azure CLI](manage-resource-groups-cli.md#create-resource-groups) 或 [ARM 範本](../templates/deploy-to-subscription.md#resource-groups)。
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Azure Resource Manager 的復原
 

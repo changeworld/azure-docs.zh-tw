@@ -1,20 +1,20 @@
 ---
 title: 具有相依資源的範本
-description: 了解如何使用多項資源建立 Azure Resource Manager 範本，以及如何使用 Azure 入口網站加以部署
+description: 了解如何使用多項資源建立 Azure Resource Manager 範本 (ARM 範本)，以及如何使用 Azure 入口網站加以部署
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3ed653c511dbd775d124e1abd6f4bb02923edb25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a43fa12e72484e97b828648cd7d610f5cf15ea4e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86102067"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931583"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>教學課程：建立具有相依資源的 ARM 範本
 
-了解如何建立 Azure Resource Manager (ARM) 範本以部署多個資源，以及設定部署順序。 在建立範本之後，您可以從 Azure 入口網站使用 Cloud Shell 來部署範本。
+了解如何建立 Azure Resource Manager 範本 (ARM 範本) 以部署多個資源，以及設定部署順序。 在建立範本之後，您可以從 Azure 入口網站使用 Cloud Shell 來部署範本。
 
 在本教學課程中，您會建立儲存體帳戶、虛擬機器、虛擬網路和其他相依資源。 某些資源必須在另一項資源已存在時才能部署。 例如，在虛擬機器的儲存體帳戶和網路介面存在之前，您無法建立虛擬機器。 您可以讓一項資源相依於其他資源，以定義此關聯性。 資源管理員會評估資源之間的相依性，並依其相依順序進行部署。 如果資源並未彼此相依，Resource Manager 就會平行部署資源。 如需詳細資訊，請參閱[定義在 ARM 範本中部署資源的順序](./define-resource-dependency.md)。
 
@@ -33,7 +33,7 @@ ms.locfileid: "86102067"
 
 若要完成本文，您需要：
 
-* Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本](quickstart-create-templates-use-visual-studio-code.md)。
+* Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[快速入門：使用 Visual Studio Code 建立 ARM 範本](quickstart-create-templates-use-visual-studio-code.md)。
 * 為了提高安全性，請使用為虛擬機器系統管理員帳戶產生的密碼。 以下是用於產生密碼的範例：
 
     ```console
@@ -65,9 +65,9 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
 * 您是否可找到此範本中定義的資源所適用的範本參考？
 * 您是否可找到資源的相依性？
 
-1. 在 Visual Studio Code 中摺疊元素，直到您只看到**資源**內的第一層元素和第二層元素：
+1. 在 Visual Studio Code 中摺疊元素，直到您只看到 **資源** 內的第一層元素和第二層元素：
 
-    ![Visual Studio Code 的 Azure Resource Manager 範本](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
+    ![Visual Studio Code ARM 範本](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
     範本中定義了六項資源：
 
@@ -82,19 +82,19 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
 
 1. 展開第一項資源。 這是儲存體帳戶。 將資源定義與[範本參考](/azure/templates/Microsoft.Storage/storageAccounts)相比較。
 
-    ![Visual Studio Code 的 Azure Resource Manager 範本儲存體帳戶定義](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
+    ![Visual Studio Code ARM 範本儲存體帳戶定義](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
 
 1. 展開第二項資源。 資源類型為 `Microsoft.Network/publicIPAddresses`。 將資源定義與[範本參考](/azure/templates/microsoft.network/publicipaddresses)相比較。
 
-    ![Visual Studio Code 的 Azure Resource Manager 範本公用 IP 位址定義](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
+    ![Visual Studio Code ARM 範本公用 IP 位址定義](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
 
 1. 展開第三項資源。 資源類型為 `Microsoft.Network/networkSecurityGroups`。 將資源定義與[範本參考](/azure/templates/microsoft.network/networksecuritygroups)相比較。
 
-    ![Visual Studio Code 的 Azure Resource Manager 範本網路安全性群組定義](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-network-security-group-definition.png)
+    ![Visual Studio Code ARM 範本網路安全性群組定義](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-network-security-group-definition.png)
 
 1. 展開第四項資源。 資源類型為 `Microsoft.Network/virtualNetworks`：
 
-    ![Visual Studio Code 的 Azure Resource Manager 範本虛擬網路 dependsOn](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
+    ![Visual Studio Code ARM 範本虛擬網路 dependsOn](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
 
     dependsOn 元素可讓您定義一項資源，作為一或多項資源的相依項目。 此資源依存於另一項資源：
 
@@ -112,7 +112,7 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
 
 下圖說明此範本的資源和相依性資訊：
 
-![Visual Studio Code 的 Azure Resource Manager 範本相依性圖表](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependency-diagram.png)
+![Visual Studio Code ARM 範本相依性圖表](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependency-diagram.png)
 
 藉由指定相依性，Resource Manager 將可有效部署解決方案。 它會以平行方式部署儲存體帳戶、公用 IP 位址和虛擬網路，因為它們沒有相依性。 在公用 IP 位址和虛擬網路部署之後，會建立網路介面。 當所有其他資源皆部署後，Resource Manager 會部署虛擬機器。
 

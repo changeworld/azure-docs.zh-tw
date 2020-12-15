@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperfq1, contentperfq2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: ed4e3c54bd4aa6be314fe7ec12d6ba6e7cf949d9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 860cd24c623cb6db407c82aa81e2c3662da289ed
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083315"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762970"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>快速入門：使用 Microsoft 身分識別平台來註冊應用程式
 
@@ -37,10 +37,10 @@ ms.locfileid: "93083315"
 請依照這些步驟建立應用程式註冊：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/quickstart-register-app/portal-01-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
+1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
 1. 搜尋並選取 [Azure Active Directory]  。
-1. 在 [管理]下選取 [應用程式註冊]，再選取 [新增註冊]。
-1. 輸入應用程式的 **名稱** 。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
+1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
+1. 輸入應用程式的 **名稱**。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
 1. 指定可以使用應用程式的人員，有時也稱為「登入受眾」。
 
     | 支援的帳戶類型 | 描述 |
@@ -55,7 +55,7 @@ ms.locfileid: "93083315"
 
     :::image type="content" source="media/quickstart-register-app/portal-02-app-reg-01.png" alt-text="Web 瀏覽器中的 Azure 入口網站螢幕擷取畫面，其中顯示註冊應用程式窗格。":::
 
-註冊完成時，Azure 入口網站會顯示應用程式註冊的 **概觀** 窗格，其中包含其 **應用程式 (用戶端) 識別碼** 。 也稱為僅 *用戶端識別碼* ，此唯一值可用來在 Microsoft 身分識別平台中識別您的應用程式。
+註冊完成時，Azure 入口網站會顯示應用程式註冊的 **概觀** 窗格，其中包含其 **應用程式 (用戶端) 識別碼**。 也稱為僅 *用戶端識別碼*，此唯一值可用來在 Microsoft 身分識別平台中識別您的應用程式。
 
 應用程式的程式碼 (或通常是應用程式中使用的驗證程式庫) 也會使用用戶端識別碼作為驗證其從身分識別平台接收之安全性權杖的一個方式。
 
@@ -71,7 +71,7 @@ ms.locfileid: "93083315"
 
 ### <a name="configure-platform-settings"></a>設定平台設定
 
-每種應用程式類型的設定 (包括重新導向 URI) 都是在 Azure 入口網站的 **平台組態** 中設定。 某些平台 (例如 **Web** 和 **單一頁面應用程式** ) 需要您手動指定重新導向 URI。 針對其他平台 (例如行動裝置和桌面)，您可以選取在設定其他設定時為您產生的重新導向 URI。
+每種應用程式類型的設定 (包括重新導向 URI) 都是在 Azure 入口網站的 **平台組態** 中設定。 某些平台 (例如 **Web** 和 **單一頁面應用程式**) 需要您手動指定重新導向 URI。 針對其他平台 (例如行動裝置和桌面)，您可以選取在設定其他設定時為您產生的重新導向 URI。
 
 若要根據平台或裝置來設定應用程式設定，您的目標是：
 
@@ -84,11 +84,11 @@ ms.locfileid: "93083315"
 
     | 平台 | 組態設定 |
     | -------- | ---------------------- |
-    | **Web** | 為應用程式輸入 **重新導向 URI** ，這是 Microsoft 身分識別平台將使用者重新導向的用戶端，且會在驗證之後傳送安全性權杖的位置。<br/><br/>針對在伺服器上執行的標準 Web 應用程式，選取此平台。 |
-    | **單一頁面應用程式** | 為應用程式輸入 **重新導向 URI** ，這是 Microsoft 身分識別平台將使用者重新導向的用戶端，且會在驗證之後傳送安全性權杖的位置。<br/><br/>如果您要以 JavaScript 建立用戶端 Web 應用程式，或使用像是Angular、Vue.js、React.js 或 Blazor WebAssembly 的架構，請選取此平台。 |
-    | **iOS / macOS** | 輸入應用程式的 **套件組合識別碼** ，您可以在 XCode 中的 Info.plist 或組建設定中找到此識別碼。<br/><br/>指定套件組合識別碼時，系統會為您產生重新導向 URI。 |
-    | **Android** | 輸入應用程式的 **套件名稱** ，您可以在 AndroidManifest.xml 檔案中找到，並產生再輸入 **簽章雜湊** 。<br/><br/>指定這些設定時，系統會為您產生重新導向 URI。 |
-    | **行動應用程式與傳統型應用程式** | 選取其中一個 **建議的重新導向 URI** ，或指定 **自訂重新導向 URI** 。<br/>針對桌面應用程式，建議您：<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>針對未使用最新 Microsoft 驗證程式庫 (MSAL) 或未使用訊息代理程式的行動應用程式，請選取此平台。 此外，也請為桌面應用程式選取此平台。 |
+    | **Web** | 為應用程式輸入 **重新導向 URI**，這是 Microsoft 身分識別平台將使用者重新導向的用戶端，且會在驗證之後傳送安全性權杖的位置。<br/><br/>針對在伺服器上執行的標準 Web 應用程式，選取此平台。 |
+    | **單一頁面應用程式** | 為應用程式輸入 **重新導向 URI**，這是 Microsoft 身分識別平台將使用者重新導向的用戶端，且會在驗證之後傳送安全性權杖的位置。<br/><br/>如果您要以 JavaScript 建立用戶端 Web 應用程式，或使用像是Angular、Vue.js、React.js 或 Blazor WebAssembly 的架構，請選取此平台。 |
+    | **iOS / macOS** | 輸入應用程式的 **套件組合識別碼**，您可以在 XCode 中的 Info.plist 或組建設定中找到此識別碼。<br/><br/>指定套件組合識別碼時，系統會為您產生重新導向 URI。 |
+    | **Android** | 輸入應用程式的 **套件名稱**，您可以在 AndroidManifest.xml 檔案中找到，並產生再輸入 **簽章雜湊**。<br/><br/>指定這些設定時，系統會為您產生重新導向 URI。 |
+    | **行動應用程式與傳統型應用程式** | 選取其中一個 **建議的重新導向 URI**，或指定 **自訂重新導向 URI**。<br/>針對桌面應用程式，建議您：<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>針對未使用最新 Microsoft 驗證程式庫 (MSAL) 或未使用訊息代理程式的行動應用程式，請選取此平台。 此外，也請為桌面應用程式選取此平台。 |
 1. 選取 [設定] 以完成平台組態。
 
 ### <a name="redirect-uri-restrictions"></a>重新導向 URI 的限制

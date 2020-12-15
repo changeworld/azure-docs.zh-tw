@@ -3,18 +3,18 @@ title: 教學課程：從 Bing 地圖服務遷移 Web 服務 | Microsoft Azure �
 description: 如何從 Bing 地圖服務將 Web 服務遷移至 Microsoft Azure 地圖服務的教學課程。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 9/10/2020
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: c6e63f67aca279b64829e67e1aa06a69d312fd58
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d257c66de8fb62fb57c573d91966f3e7d8d1b123
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897019"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904953"
 ---
 # <a name="tutorial---migrate-web-service-from-bing-maps"></a>教學課程 - 從 Bing 地圖服務遷移 Web 服務
 
@@ -37,21 +37,21 @@ Azure 地圖服務和 Bing 地圖服務都提供透過 REST Web 服務來存取�
 | 空間資料服務 (SDS)           | [搜尋](/rest/api/maps/search) + [路由](/rest/api/maps/route) + 其他 Azure 服務 |
 | 時區                             | [時區](/rest/api/maps/timezone)  |
 | 交通事故                     | [交通事故詳細資料](/rest/api/maps/traffic/gettrafficincidentdetail)                     |
+| Elevation                             | [提高權限 (預覽)](/rest/api/maps/elevation)
 
 Azure 地圖服務目前無法使用下列服務 API：
 
--   權限提高 - 已規劃
 -   已最佳化路線 - 已規劃。 Azure 地圖服務路線 API 支援單一車輛的旅行推銷員最佳化。
 -   影像中繼資料 – 主要用於取得 Bing 地圖服務中的底圖 URL。 Azure 地圖服務擁有獨立的服務，可直接存取地圖底圖。
 
 Azure 地圖服務有一些可能讓您感興趣的額外 REST Web 服務；
 
--   [Azure 地圖服務建立者](./creator-indoor-maps.md) – 建立大樓和空間的自訂私人數位分身。
+-   [Azure Maps Creator (預覽)](./creator-indoor-maps.md) – 建立大樓和空間的自訂私人數位對應項。
 -   [空間作業](/rest/api/maps/spatial) – 將複雜的空間計算和作業 (例如地理柵欄) 卸載至某個服務。
 -   [地圖底圖](/rest/api/maps/render/getmaptile) –從 Azure 地圖服務作為點陣和向量地圖底圖的存取道路和影像地圖底圖。
 -   [批次路線規劃](/rest/api/maps/route/postroutedirectionsbatchpreview) –允許在一段時間內，在單一批次中執行最多 1,000 個路線要求。 路線會在伺服器上以平行方式計算，以進行更快速的處理。
 -   [交通](/rest/api/maps/traffic)車流 – 以點陣和向量地圖底圖的形式存取即時交通車流資料。
--   [地理位置 API](/rest/api/maps/geolocation/getiptolocationpreview) – 取得 IP 位址的位置。
+-   [地理位置 API (預覽)](/rest/api/maps/geolocation/getiptolocationpreview) – 取得 IP 位址的位置。
 -   [天氣服務](/rest/api/maps/weather) – 取得即時和預測天氣資料的存取權。
 
 請務必同時參閱下列最佳做法指南：
@@ -186,7 +186,7 @@ Azure 地圖服務路線規劃服務會提供下列 API 來計算路線；
 
 -   [計算路線](/rest/api/maps/route/getroutedirections)：計算路線並立即處理要求。 此 API 同時支援 GET 和 POST 要求。 當您指定大量導航點，或使用許多路線選項來確保 URL 要求不會太長而造成問題時，建議您使用 POST 要求。
 -   [批次路線](/rest/api/maps/route/postroutedirectionsbatchpreview)：建立最多包含 1,000 個路線要求的要求，並讓這些地址進行一段時間的處理。 所有資料會在伺服器上以平行方式處理，並可於完成後下載完整的結果集。
--   [行動服務](/rest/api/maps/mobility)：使用大眾運輸系統來計算路線和方向。
+-   [行動服務 (預覽)](/rest/api/maps/mobility)：使用大眾運輸系統來計算路線和方向。
 
 下表會交互參照 Bing 地圖服務 API 參數與 Azure 地圖服務中類似的 API 參數。
 
@@ -215,7 +215,7 @@ Azure 地圖服務路線規劃 API 也支援相同 API 內的卡車路線規劃�
 | Bing 地圖服務的 API 參數                  | 類似的 Azure 地圖服務 API 參數        |
 |------------------------------------------|--------------------------------------------|
 | `dimensionUnit` (`dims`)                 | 不適用 – 僅支援計量中的維度。 |
-| `weightUnit` (`wu`)                      | 不適用 – 僅支援以公斤計算的重量。 |
+| `weightUnit` (`wu`)                      | 不適用 – 僅支援以公斤為單位的重量。 |
 | `vehicleHeight` (`height`)               | `vehicleHeight`                            |
 | `vehicleWidth` (`width`)                 | `vehicleWidth`                             |
 | `vehicleLength` (`vl`)                   | `vehicleLength`                            |
@@ -614,7 +614,7 @@ Bing 地圖服務最多可在單一批次地理編碼要求中傳遞 200,000 個
 
 Azure 地圖服務具有批次地理編碼服務，但其最多允許在單一要求中傳遞 10,000 個地址，且會根據資料集的大小和服務上的負載，處理數秒鐘到數分鐘的時間。 要求中的每個地址都會產生一筆交易。 在 Azure 地圖服務中，批次地理編碼服務僅適用於 S1 階層。
 
-另一個使用 Azure 地圖服務地理編碼大量地址的選項，是對標準搜尋 API 進行平行要求。 這些服務針對每個要求只會接受單一地址，但可與 S0 階層搭配使用，這也會提供免費的使用量限制。 S0 階層允許每秒從單一帳戶傳送最多 50 個要求到 Azure 地圖服務平台。 因此，如果您處理限制這些以維持在該限制內，就可以一小時向上地理編碼 180,000 個地址。 S1 層對於每秒可從帳戶進行的查詢數目沒有記載的限制，因此在使用該定價層時，可以更快速地處理更多資料，但使用批次地理編碼服務有助於減少資料傳輸的總量，並可大幅減少網路流量。
+另一個使用 Azure 地圖服務地理編碼大量地址的選項，是對標準搜尋 API 進行平行要求。 這些服務針對每個要求只會接受單一地址，但可與 S0 階層搭配使用，這也會提供免費的使用量限制。 S0 階層允許每秒從單一帳戶傳送最多 50 個要求到 Azure 地圖服務平台。 因此，如果您處理限制這些以維持在該限制內，一小時內可進行地理編碼的地址可達 180,000 個。 S1 層對於每秒可從帳戶進行的查詢數目沒有記載的限制，因此在使用該定價層時，可以更快速地處理更多資料，但使用批次地理編碼服務有助於減少資料傳輸的總量，並可大幅減少網路流量。
 
 -   [自由格式的地址地理編碼](/rest/api/maps/search/getsearchaddress)：指定單一地址字串 (如 `"1 Microsoft way, Redmond, WA"`)，並立即處理要求。 如果您需要快速地進行個別地址的地理編碼程序，建議使用此服務。
 -   [結構化的地址地理編碼](/rest/api/maps/search/getsearchaddressstructured)：指定單一地址的各個部分 (例如，街道名稱、城市、國家/地區和郵遞區號)，然後立即處理要求。 如果您需要快速地進行個別地址的地理編碼程序，而且已將資料剖析成個別的地址部分，則建議使用此服務。

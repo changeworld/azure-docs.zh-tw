@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 11/24/2020
+ms.date: 12/08/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 904456de527e8d0acb1319059c18f9a3c6b0a1a3
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 42701fbcee9833fd31fff3ace55d48079015dbcd
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95992957"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906398"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>快速入門：使用 Azure 應用程式閘道引導網路流量 - Azure 入口網站
 
@@ -153,8 +153,9 @@ ms.locfileid: "95992957"
     - **資源群組**：選取 **myResourceGroupAG** 作為資源群組名稱。
     - **虛擬機器名稱**：輸入 myVM 作為虛擬機器的名稱。
     - **區域**：選取您用來建立應用程式閘道的相同區域。
-    - **使用者名稱**：輸入 azureuser 作為系統管理員使用者名稱。
+    - **使用者名稱**：輸入管理員使用者的名稱。
     - **密碼**：輸入密碼。
+    - **公用輸入連接埠**：無。
 4. 接受其他預設值，然後選取 [下一步：磁碟]。  
 5. 接受 [磁碟]  索引標籤的預設值，然後選取 [下一步：  網路功能]。
 6. 在 [網路]  索引標籤上，確認已選取 [myVNet]  作為[虛擬網路]  ，且 [子網路]  設為 [myBackendSubnet]  。 接受其他預設值，然後選取 [下一步：  管理]。<br>「應用程式閘道」可與其虛擬網路外的執行個體進行通訊，但您需要確保具有 IP 連線能力。

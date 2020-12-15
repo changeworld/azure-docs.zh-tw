@@ -1,21 +1,21 @@
 ---
 title: 教學課程 - 將標記新增至範本中的資源
-description: 將標記新增至您在 Azure Resource Manager 範本中部署的資源。 標記可讓您以邏輯方式組織資源。
+description: 將標記新增至您在 Azure Resource Manager 範本 (ARM 範本) 中部署的資源。 標記可讓您以邏輯方式組織資源。
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 16fc294784d9d6ff3c2fdd920d053eae5cd4b56d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4084508202fc7db5280d34c157552fe723b1dfba
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613198"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930937"
 ---
 # <a name="tutorial-add-tags-in-your-arm-template"></a>教學課程：在 ARM 範本中新增標記
 
-在本教學課程中，您將了解如何將標記新增至 Azure Resource Manager (ARM) 範本中的資源。 [標記](../management/tag-resources.md)可協助您以邏輯方式組織資源。 標記值會顯示在成本報告中。 完成此教學課程需要 **8 分鐘**。
+在本教學課程中，您將了解如何將標記新增至 Azure Resource Manager 範本 (ARM 範本) 中的資源。 [標記](../management/tag-resources.md)可協助您以邏輯方式組織資源。 標記值會顯示在成本報告中。 完成此教學課程需要 **8 分鐘**。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -43,7 +43,7 @@ ms.locfileid: "91613198"
 
 現在可以開始部署範本並查看結果。
 
-如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 **templateFile** 變數設為範本檔案的路徑，如[第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
+如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 **templateFile** 變數設為範本檔案的路徑，如 [第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

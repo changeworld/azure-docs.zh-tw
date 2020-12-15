@@ -3,30 +3,31 @@ title: Microsoft Azure 地圖服務的概觀
 description: 了解 Microsoft Azure 地圖服務中的服務和功能，以及如何在您的應用程式中加以使用。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/31/2020
+ms.date: 12/07/2020
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 082695069a66efb3919be0667407ba73d963c572
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 1a38da6cd80b692925e353eb0d16f3d6f84c3e7b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92889947"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905397"
 ---
 # <a name="what-is-azure-maps"></a>什麼是 Azure 地圖服務？
 
 Azure 地圖服務是地理空間服務和 SDK 的集合，採用最新的地圖資料為 Web 和行動裝置應用程式提供地理內容。 Azure 地圖服務提供以下功能與服務：
 
 * 用於以多種樣式和衛星影像呈現向量和點陣地圖的 REST API。
-* 根據私人的室內地圖資料來建立和呈現地圖的建立者服務。
+* 根據私人的室內地圖資料來建立和呈現地圖的 Creator 服務 (預覽)。
 * 尋找全世界地址、地點及熱門景點的搜尋服務。
 * 各種路線規劃選項：例如點對點、多點、多點最佳化、等時線、電動車、商用車輛、交通影響，以及矩陣路線規劃。
 * 交通流量檢視和事件檢視，適用於需要即時交通資訊的應用程式。
-* 用來要求大眾運輸資訊的行動服務，藉由混合不同的行進模式和即時抵達來規劃路線。
-* 時區和地理位置服務。
+* 用來要求大眾運輸資訊的行動服務 (預覽)，藉由混合不同的行進模式和即時抵達來規劃路線。
+* 時區和地理位置 (預覽) 服務。
+* 具有提高數位權限模型的提高權限服務 (預覽)
 * 建立地理圍欄服務及儲存地圖資料，位置資訊則由 Azure 代管。
 * 能夠分析地理空間的高智慧定位能力。
 
@@ -52,23 +53,23 @@ Azure 地圖服務 Web SDK 可讓您以自己的內容和圖像自訂互動式�
 
 Azure 地圖服務 Android SDK 可讓您建立功能強大的行動地圖應用程式。
 
-:::image type="content" source="./media/about-azure-maps/android_sdk.png" border="false" alt-text="使用 Azure 地圖服務 Web SDK 所建立的人口變化範例地圖":::
+:::image type="content" source="./media/about-azure-maps/android_sdk.png" border="false" alt-text="行動裝置上的地圖範例":::
 
 ## <a name="services-in-azure-maps"></a>Azure 地圖服務中的服務
 
 Azure 地圖服務由下列服務組成，可以為 Azure 應用程式提供地理內容。
 
-### <a name="data-service"></a>資料服務
+### <a name="data-service-preview"></a>資料服務 (預覽)
 
 對地圖而言，資料是不可或缺的。 請使用資料服務上傳及儲存地理空間資料供空間作業或影像構圖使用。  讓客戶資料更貼近 Azure 地圖服務可減少您應用程式的延遲、提高應用程式生產力，以及在您的應用程式中建立全新的案例。 如需這項服務的詳細資訊，請瀏覽[資料服務文件](/rest/api/maps/data) \(英文\)。
 
-### <a name="geolocation-service"></a>地理位置服務
+### <a name="geolocation-service-preview"></a>地理位置服務 (預覽)
 
 可使用地理位置服務預覽從 IP 位址擷取的兩個字母國碼/區域碼。 此服務可協助您藉由根據地理位置提供自訂應用程式內容，來加強使用者體驗。
 
 如需詳細資訊，請參閱[地理位置服務文件](/rest/api/maps/geolocation)。
 
-### <a name="mobility-service"></a>行動服務
+### <a name="mobility-services-preview"></a>行動服務 (預覽) 
 
 Azure 地圖服務行動服務可加速開發出具有大眾運輸功能的應用程式，例如運輸路線和搜尋附近的大眾運輸站點。 使用者可以擷取有關運輸站點、路線和時刻表的詳細資訊。 行動服務也可讓使用者擷取站點和路線幾何圖形、站點提醒、路線和服務區域，以及即時的大眾運輸抵達和服務提醒。 此外，行動服務也會提供具有多模式行程規劃選項的路線功能。 多模式行程規劃將步行、騎腳踏車和大眾運輸選項全都納入到一個行程中。 使用者也可以存取詳細的多模式逐步路線。
 
@@ -76,9 +77,9 @@ Azure 地圖服務行動服務可加速開發出具有大眾運輸功能的應�
 
 ### <a name="render-service"></a>轉譯服務
 
-現在為預覽狀態的[轉譯服務 V2](/rest/api/maps/renderv2) 引進了新版本的[取得地圖底圖 V2 API](/rest/api/maps/renderv2/getmaptilepreview)。 取得地圖底圖 V2 API 現在允許客戶要求 Azure 地圖服務的道路底圖、氣象底圖，或使用 Azure 地圖服務建立工具建立的地圖底圖。 建議您使用新的取得地圖底圖 V2 API。  
+[轉譯服務 V2](/rest/api/maps/renderv2) 引進了新版本的[取得地圖底圖 V2 API](/rest/api/maps/renderv2/getmaptilepreview)。 取得地圖底圖 V2 API 現在允許客戶要求 Azure 地圖服務的道路底圖、氣象底圖，或使用 Azure 地圖服務建立工具建立的地圖底圖。 建議您使用新的取得地圖底圖 V2 API。  
 
-:::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="使用 Azure 地圖服務 Web SDK 所建立的人口變化範例地圖":::
+:::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="從轉譯服務 V2 建立的地圖範例":::
 
 如需詳細資訊，請參閱[轉譯服務 V2 文件](/rest/api/maps/renderv2) \(英文\)。
 
@@ -88,7 +89,7 @@ Azure 地圖服務行動服務可加速開發出具有大眾運輸功能的應�
 
 路線規劃服務可以用來計算每個要求路線的預估抵達時間 (ETA)。 路線 API 會考慮一些因素，例如即時交通資訊和歷史交通資料，例如在所要求的那天 (星期幾) 某個時間的一般車速。 API 會根據時間或距離，以序列或最佳化順序，一次傳回多個目的地可行的最短或最快路線。 該服務可讓開發人員跨數種行進模式 (例如汽車、貨車、自行車或步行和電動車) 計算方向。 該服務也會考量輸入的資訊，例如起飛時間、重量限制或危險材料運輸。
 
-:::image type="content" source="./media/about-azure-maps/intro_route.png" border="false" alt-text="使用 Azure 地圖服務 Web SDK 所建立的人口變化範例地圖":::
+:::image type="content" source="./media/about-azure-maps/intro_route.png" border="false" alt-text="從路線規劃服務建立的地圖範例":::
 
 路線規劃服務會提供一組進階功能，例如：
 
@@ -102,7 +103,7 @@ Azure 地圖服務行動服務可加速開發出具有大眾運輸功能的應�
 
 搜尋服務可協助開發人員搜尋地址、位置、依名稱或類別列出的企業清單，以及其他地理資訊。 此外，服務也可根據經度和緯度進行地址與交叉路口的[反向地理編碼](https://en.wikipedia.org/wiki/Reverse_geocoding) \(英文\)。
 
-:::image type="content" source="./media/about-azure-maps/intro_search.png" border="false" alt-text="使用 Azure 地圖服務 Web SDK 所建立的人口變化範例地圖":::
+:::image type="content" source="./media/about-azure-maps/intro_search.png" border="false" alt-text="在地圖上搜尋的範例":::
 
 搜尋服務也提供進階功能，例如：
 
@@ -168,7 +169,7 @@ Azure 地圖服務行動服務可加速開發出具有大眾運輸功能的應�
 
 如需詳細資訊，請參閱[交通服務文件](/rest/api/maps/traffic) \(英文\)。
 
-### <a name="weather-service"></a>天氣服務
+### <a name="weather-services-preview"></a>氣象服務 (預覽) 
 
 氣象服務所提供的 API 可讓開發人員用來擷取特定位置的氣象資訊。 此資訊包含各種詳細資料，例如觀測日期和時間、天氣狀況的簡短說明、氣象圖示、降雨機率指示器旗標、溫度和風速資訊。 此外，也會傳回其他詳細資料，例如 RealFeel™ 溫度和紫外線指數。
 
@@ -178,7 +179,7 @@ Azure 地圖服務行動服務可加速開發出具有大眾運輸功能的應�
 
 ![具有即時氣象雷達底圖的地圖範例](media/about-azure-maps/intro_weather.png)
 
-### <a name="maps-creator-service"></a>地圖建立者服務
+### <a name="maps-creator-service-preview"></a>Maps Creator 服務 (預覽) 
 
 地圖建立者服務是一套 Web 服務，可讓開發人員根據室內地圖資料來建立具有地圖功能的應用程式。
 
@@ -194,17 +195,34 @@ Azure 地圖服務行動服務可加速開發出具有大眾運輸功能的應�
 
 * [WFS 服務](/rest/api/maps/featurestate)。 使用 WFS 服務來查詢您的室內地圖資料。 WFS 服務會遵循[開放地理空間協會 API](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html) 標準來查詢單一資料集。
 
+### <a name="elevation-service-preview"></a>提高權限服務 (預覽)
+
+提高 Azure 地圖服務權限服務是一種 Web 服務，可讓開發人員用來從地球表面上的任何地方擷取需要提高權限的資料。
+
+提高權限服務可讓您以兩種格式擷取需要提高權限的資料：
+
+* **GeoTIFF 點陣格式**。 使用 [Render V2 - 取得地圖底圖 API](/rest/api/maps/renderv2) 以圖格格式擷取需要提高權限的資料。
+
+* **GeoJSON 格式**。 使用[提高權限 API](/rest/api/maps/elevation)，沿著路徑在定義的週框方塊內或特定的座標要求取樣的提高權限資料。 
+
+:::image type="content" source="./media/about-azure-maps/elevation.png" alt-text="具有提高權限資料的地圖範例":::
+
+
 ## <a name="programming-model"></a>程式設計模型
 
 Azure 地圖服務是針對行動性而建置，可以協助您開發跨平台應用程式。 它使用與語言無關的程式設計模型，並且透過 [REST API](/rest/api/maps/) 支援 JSON 輸出。
 
 此外，Azure 地圖服務也使用簡單的程式設計模型提供方便的 [JavaScript 地圖控制項](/javascript/api/azure-maps-control)。 Web 和行動應用程式都可輕易且快速地進行開發。
 
+
+
+
+
 ## <a name="power-bi-visual"></a>Power BI 視覺效果
 
 Power BI 的 Azure 地圖服務視覺效果會針對地圖頂端的空間資料提供一組豐富的資料視覺效果。 估計超過 80% 的商務資料有位置內容。 Azure 地圖服務視覺效果提供無程式碼的解決方案，可深入了解此位置內容與您的商務資料之間有何關聯和影響。
 
-:::image type="content" source="./media/about-azure-maps/intro-power-bi.png" border="false" alt-text="使用 Azure 地圖服務 Web SDK 所建立的人口變化範例地圖":::
+:::image type="content" source="./media/about-azure-maps/intro-power-bi.png" border="false" alt-text="Power BI 桌面和顯示商務資料的 Azure 地圖服務視覺效果":::
 
 如需詳細資訊，請參閱 [Azure 地圖服務 Power BI 視覺效果](power-bi-visual-getting-started.md)文件的使用者入門。
 

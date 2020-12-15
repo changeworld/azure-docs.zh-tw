@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2020
 ms.author: memildin
-ms.openlocfilehash: d8b690201ea4349f9577377ff24c91bd75ecd58b
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 3272212a857f24916acce7da5a4ee31561ec0c5a
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751864"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922919"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -37,6 +37,7 @@ ms.locfileid: "96751864"
 
 - [適用於機器上的 SQL 伺服器的 Azure Defender 已正式發行](#azure-defender-for-sql-servers-on-machines-is-generally-available)
 - [Azure Synapse Analytics 專用 SQL 集區的「適用於 SQL 的 Azure Defender」支援已正式發行](#azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available)
+- [全域系統管理員現在可以自我授與租用戶層級權限](#global-administrators-can-now-grant-themselves-tenant-level-permissions)
 - [兩個新的 Azure Defender 方案：適用於 DNS 的 Azure Defender 和適用於 Resource Manager 的 Azure Defender (預覽)](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>適用於機器上的 SQL 伺服器的 Azure Defender 已正式發行
@@ -69,6 +70,13 @@ Azure Synapse Analytics (先前為 SQL DW) 是一項結合企業資料倉儲和�
 適用於 SQL 的 Azure Defender 對 Azure Synapse Analytics SQL 集區的支援會自動新增至 Azure 資訊安全中心的 Azure SQL 資料庫組合。 您可以在 Azure 入口網站的 Synapse 工作區頁面中找到新的 [適用於 SQL 的 Azure Defender] 索引標籤。
 
 深入了解[適用於 SQL 的 Azure Defender](defender-for-sql-introduction.md)。
+
+
+### <a name="global-administrators-can-now-grant-themselves-tenant-level-permissions"></a>全域系統管理員現在可以自我授與租用戶層級權限
+
+具有 **全域管理員** 之 Azure Active Directory 角色的使用者，可能會擁有整個租用戶的權限，但缺少 Azure 權限，無法在 Azure 資訊安全中心中查看整個組織的資訊。 
+
+若要自我指派的租用戶層級權限，請遵循[自我授權租用戶範圍權限](security-center-management-groups.md#grant-tenant-wide-permissions-to-yourself)中的指示。
 
 
 ### <a name="two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview"></a>兩個新的 Azure Defender 方案：適用於 DNS 的 Azure Defender 和適用於 Resource Manager 的 Azure Defender (預覽)

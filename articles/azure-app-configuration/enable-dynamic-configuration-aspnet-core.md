@@ -4,23 +4,22 @@ titleSuffix: Azure App Configuration
 description: 在本教學課程，您將了解如何以動態方式更新 ASP.NET Core 應用程式的設定資料
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 02/24/2019
-ms.author: lcozzens
+ms.date: 09/1/2020
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: f98ec384876da1d30952d1c4edc1d00049e44682
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 1fd495083f5f9be367dd0f125883b181e3bed27b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076992"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930546"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>教學課程：在 ASP.NET Core 應用程式中使用動態設定
 
@@ -57,7 +56,7 @@ Sentinel 金鑰  是用來在設定變更時發出信號的特殊金鑰。 您�
 1. 選取 [套用]  。
 
 > [!NOTE]
-> 如果您並非使用 Sentinel 金鑰，則需要手動註冊想要監看的每個金鑰。
+> 如果您並非使用 Sentinel 金鑰，則需要手動註冊想要監看的每個金鑰。
 
 ## <a name="reload-data-from-app-configuration"></a>從應用程式設定重新載入資料
 
@@ -161,7 +160,7 @@ Sentinel 金鑰  是用來在設定變更時發出信號的特殊金鑰。 您�
     ```
     ---
     > [!Tip]
-    > 若要深入了解讀取組態值時的選項模式，請參閱  [ASP.NET Core 中的選項模式](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)。
+    > 若要深入了解讀取組態值時的選項模式，請參閱 [ASP.NET Core 中的選項模式](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)。
 
 4. 更新 `Configure` 方法以新增 `UseAzureAppConfiguration` 中介軟體，讓已註冊要重新整理的組態設定可以進行更新，同時讓 ASP.NET Core Web 應用程式繼續接收要求。
 
@@ -221,6 +220,9 @@ Sentinel 金鑰  是用來在設定變更時發出信號的特殊金鑰。 您�
     ---
     
     中介軟體會使用 `Program.cs` 內的 `AddAzureAppConfiguration` 方法所指定的重新整理組態，來針對 ASP.NET Core Web 應用程式所收到的每個要求觸發重新整理。 每個要求都會觸發一個重新整理作業，而且用戶端程式庫會檢查已註冊的組態設定是否有已過期的快取值。 如果已過期，則會重新整理。
+
+    > [!NOTE]
+    > 為確保組態會重新整理，請儘快將中介軟體新增至您的要求管線，讓其不會因為應用程式中的另一個中介軟體而短路。
 
 ## <a name="use-the-latest-configuration-data"></a>使用最新的設定資料
 

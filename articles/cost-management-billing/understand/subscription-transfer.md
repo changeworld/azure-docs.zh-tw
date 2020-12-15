@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: f4dd6d67d60603ed6cad7056cff4bb07dcb1c2e5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 82b33a7a9403993ec883090559884a45d04b7aa2
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149379"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932195"
 ---
 # <a name="about-transferring-billing-ownership-for-an-azure-subscription"></a>關於移轉 Azure 訂用帳戶的帳單擁有權
 
@@ -36,7 +36,7 @@ ms.locfileid: "92149379"
 
 計費管理員是有權管理帳戶計費的人員。 他們已獲准存取 [Azure 入口網站](https://portal.azure.com)上的計費，並可執行各種計費工作，例如建立訂用帳戶、檢視和支付發票，或更新付款方式。
 
-若要識別您是其計費管理員的帳戶，請造訪 [Azure 入口網站中的 [成本管理 + 帳單] 頁面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview)。 然後從左側窗格中選取 [所有計費範圍]。 [訂用帳戶] 頁面會顯示您在其中是計費管理員的所有訂用帳戶。
+若要識別您是其計費管理員的帳戶，請造訪 [Azure 入口網站中的 [成本管理 + 帳單] 頁面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview)。 然後從左側窗格中選取 [所有計費範圍]。 訂用帳戶頁面會顯示您在其中是計費管理員的所有訂用帳戶。
 
 如果您不確定誰是訂用帳戶的帳戶管理員，請造訪 [Azure 入口網站中的 [訂用帳戶] 頁面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。 接著選取您要檢查的訂用帳戶，然後查看 [設定]。 選取 [屬性]，訂用帳戶的帳戶管理員會顯示在 [帳戶管理員] 方塊中。
 

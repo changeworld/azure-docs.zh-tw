@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 450d471beebbcc554a6d534fb2d5361778f158bc
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 74e9224b30ccee274eaf52ba47a0ec05573c2e9d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992313"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558720"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>建立資料標記專案和匯出標籤 
 
@@ -109,7 +109,7 @@ ms.locfileid: "94992313"
 
 若要將更多影像新增至您的專案，請使用 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)，將影像上傳至 Blob 儲存體中的適當資料夾。 
 
-當您想要讓專案持續監視資料存放區中的新資料時，請選取 [啟用累加式重新整理] 核取方塊。
+當您想要讓專案持續監視資料存放區中的新資料時，請選取 [啟用累加式重新整理] 核取方塊。 啟用時，此資料會每日提取到您的專案中。
 
 如果您不想要將資料存放區中出現的新影像新增至專案，請取消選取此方塊。
 

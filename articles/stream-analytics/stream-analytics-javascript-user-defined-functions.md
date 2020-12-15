@@ -8,23 +8,23 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
 ms.date: 06/16/2020
-ms.openlocfilehash: aac85fdab157d581285af91c4c818258a5f1790b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 092e07ed01fb870cdcd9a3fd63d46d30cef96007
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124776"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780836"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure 串流分析中的 JavaScript 使用者定義函式
  
-Azure 串流分析支援以 JavaScript 撰寫的使用者定義函式。 JavaScript 提供豐富的 **String** 、 **RegExp** 、 **Math** 、 **Array** 和 **Date** 方法，可讓使用串流分析作業建立複雜的資料轉換變得更容易。
+Azure 串流分析支援以 JavaScript 撰寫的使用者定義函式。 JavaScript 提供豐富的 **String**、**RegExp**、**Math**、**Array** 和 **Date** 方法，可讓使用串流分析作業建立複雜的資料轉換變得更容易。
 
 ## <a name="overview"></a>概觀
 
 JavaScript 使用者定義的函式支援無狀態且只做為計算用途的純量函式，而且不需要外部連線能力。 函數的傳回值只能是純量 (單一) 值。 將 JavaScript 使用者定義函式新增至作業之後，您可以在查詢中的任何位置使用函式，就像是內建的純量函式。
 
 從以下的一些案例可以看出 JavaScript 使用者定義函式很實用：
-* 剖析及操作具有規則運算式函式的字串，例如： **Regexp_Replace()** 和 **Regexp_Extract()**
+* 剖析及操作具有規則運算式函式的字串，例如：**Regexp_Replace()** 和 **Regexp_Extract()**
 * 解碼和編碼資料，例如：從二進位轉換成十六進位
 * 使用 JavaScript **Math** 函式進行數學運算
 * 進行陣列作業，例如，排序、連結、尋找及填入
@@ -184,6 +184,35 @@ INTO
     output
 FROM
     input A
+```
+
+### <a name="tolocalestring"></a>toLocaleString()
+JavaScript 中的 **toLocaleString** 方法可以用來傳回區分語言的字串，其代表呼叫此方法的日期時間資料。
+雖然 Azure 串流分析只接受 UTC 日期時間作為系統時間戳記，但此方法可以用來將系統時間戳記轉換成另一個地區設定和時區。
+此方法遵循的實作行為會與 Internet Explorer 中提供的行為相同。
+
+**JavaScript 使用者定義函式定義：**
+
+```javascript
+function main(datetime){
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    return event.toLocaleDateString('de-DE', options);
+}
+```
+
+**範例查詢：傳遞日期時間作為輸入值**
+```SQL
+SELECT
+    udf.toLocaleString(input.datetime) as localeString
+INTO
+    output
+FROM
+    input
+```
+
+此查詢的輸出將會是 **de-DE** 的輸入日期時間，並且包含選項。
+```
+Samstag, 28. Dezember 2019
 ```
 
 ## <a name="next-steps"></a>後續步驟

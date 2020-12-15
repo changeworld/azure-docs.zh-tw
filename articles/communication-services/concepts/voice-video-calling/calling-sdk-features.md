@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 44365dec247b9f3135a090cee397cad32598fd29
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f621d11553101c2c0bcfce804b26c218ae58670c
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977862"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576463"
 ---
 # <a name="calling-client-library-overview"></a>通話用戶端程式庫概觀
 
@@ -70,6 +70,26 @@ ms.locfileid: "91977862"
 *請注意，除了先前的兩個版本之外，也支援最新版本的 Chrome。<br/>
 
 **請注意，支援 Safari 版本 13.1+。 尚不支援 Safari macOS 的傳出視訊，但是在 iOS 上支援。 只有桌面 iOS 才支援傳出螢幕畫面分享。
+
+## <a name="calling-client---browser-security-model"></a>呼叫用戶端 - 瀏覽器安全性模型
+
+### <a name="user-webrtc-over-https"></a>透過 HTTPS 的使用者 WebRTC
+
+WebRTC API (例如 `getUserMedia` ) 需要透過 HTTPS 提供呼叫這些 API 的應用程式。
+
+您可以使用 `http://localhost` 進行本機開發。
+
+### <a name="embed-the-communication-services-calling-sdk-in-an-iframe"></a>在 iframe 中內嵌通訊服務呼叫 SDK
+
+許多瀏覽器已採用新的[權限原則 (也稱為功能原則)](https://www.w3.org/TR/permissions-policy-1/#iframe-allow-attribute)。 此原則會控制應用程式如何透過跨原始 iframe 元素來存取裝置的相機和麥克風，進而影響呼叫案例。
+
+如果要使用 iframe 來裝載來自不同網域的部分應用程式，必須將具有正確值的 `allow` 屬性新增至您的 iframe。
+
+例如，此 iframe 允許相機和麥克風的存取：
+
+```html
+<iframe allow="camera *; microphone *">
+```
 
 ## <a name="next-steps"></a>下一步
 

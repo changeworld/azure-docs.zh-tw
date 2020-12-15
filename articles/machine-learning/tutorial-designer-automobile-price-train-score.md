@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: 0475e7a7b9bb40e77fe23362ff098350037bdd30
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: ca812fc7548e3c70f1faa1e1ed6a34afda3872af
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555251"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575970"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>教學課程：使用設計工具預測汽車價格
 
@@ -48,7 +48,10 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 ### <a name="create-a-new-workspace"></a>建立新的工作區
 
-若要使用設計工具，您首先需要 Azure Machine Learning 工作區。 工作區是 Azure Machine Learning 的最上層資源，其提供一個集中位置來處理您在 Azure Machine Learning 中建立的所有成品。
+您需要 Azure Machine Learning 工作區，才能使用設計工具。 工作區是 Azure Machine Learning 的最上層資源，其提供一個集中位置來處理您在 Azure Machine Learning 中建立的所有成品。 如需建立工作區的指示，請參閱[建立和管理 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
+
+> [!NOTE]
+> 如果您的工作區使用虛擬網路，您必須使用其他設定步驟來使用設計工具。 如需詳細資訊，請參閱[在 Azure 虛擬網路中使用 Azure Machine Learning 工作室](how-to-enable-studio-virtual-network.md)
 
 ### <a name="create-the-pipeline"></a>建立管線
 
@@ -271,11 +274,11 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
     1. 輸入 **新實驗名稱** 的描述性名稱。
 
-    1. 選取 [提交]。
+    1. 選取 [提交]  。
     
     您可以在畫布右上方檢視執行狀態和詳細資料。
     
-    如果是第一次執行，您的管線可能需要 20 分鐘的時間才能完成執行。 預設計算設定的最小節點大小為 0，這表示設計工具必須在閒置之後配置資源。 重複的管線執行花費較少的時間，因為已經配置計算資源。 此外，設計工具會針對每個模組使用快取的結果，進一步提升效率。
+    如果這是第一次執行，您的管線可能需要 20 分鐘的時間才能完成執行。 預設計算設定的最小節點大小為 0，這表示設計工具必須在閒置之後配置資源。 重複的管線執行花費較少的時間，因為已經配置計算資源。 此外，設計工具會針對每個模組使用快取的結果，進一步提升效率。
 
 ### <a name="view-scored-labels"></a>檢視評分標籤
 

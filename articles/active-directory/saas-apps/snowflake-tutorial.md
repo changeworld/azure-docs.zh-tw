@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 26ca1fffb3932493dc7182de1b520f8c0a17d59c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 3beb4e7831ce17a46f6daaa1258f284a0caefe8e
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514838"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855121"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>教學課程：Azure Active Directory 與 Snowflake 整合
 
@@ -27,7 +27,7 @@ Snowflake 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Snowflake (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -41,14 +41,14 @@ Snowflake 與 Azure AD 整合提供下列優點：
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD 單一登入。
 
-* Snowflake 支援 **SP 和 IDP** 起始的 SSO
-* Snowflake 支援[自動化的使用者佈建和取消佈建](snowflake-provisioning-tutorial.md) (建議選項)
+- Snowflake 支援 **SP 和 IDP** 起始的 SSO
+- Snowflake 支援[自動化的使用者佈建和取消佈建](snowflake-provisioning-tutorial.md) (建議選項)
 
 ## <a name="adding-snowflake-from-the-gallery"></a>從資源庫新增 Snowflake
 
 若要設定將 Snowflake 整合到 Azure AD 中，您需要從資源庫將 Snowflake 新增到受控 SaaS 應用程式清單。
 
-**若要從資源庫新增 Snowflake，請執行下列步驟：**
+**從資源庫新增 Snowflake：**
 
 1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory]  圖示。
 
@@ -62,9 +62,9 @@ Snowflake 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Snowflake** ，從結果面板中選取 [Snowflake]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Snowflake**，從結果面板中選取 [Snowflake]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 Snowflake](common/search-new-app.png)
+     ![結果清單中的 Snowflake](common/search-new-app-snowflake.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -135,14 +135,14 @@ Snowflake 與 Azure AD 整合提供下列優點：
 
 1. 在不同的網頁瀏覽器視窗中，以安全性系統管理員身分登入 Snowflake。
 
-1. 按一下頁面右上方的 [設定檔]， **切換角色** 為 **ACCOUNTADMIN** 。
+1. 按一下頁面右上方的 [設定檔]，**切換角色** 為 **ACCOUNTADMIN**。
 
     > [!NOTE]
     > 這與您在右上角您使用者名稱底下選取的內容不同
     
     ![Snowflake admin](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 
-1. 在記事本中開啟 **所下載的 Base 64 憑證** 。 複製介於 “-----BEGIN CERTIFICATE-----” 與 “-----END CERTIFICATE-----" 之間的值，並將此值貼到下面 [憑證]  旁邊的引號中。 在 [ssoUrl]  中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。 選取 [所有查詢]  ，然後按一下 [執行]  。
+1. 在記事本中開啟 **所下載的 Base 64 憑證**。 複製介於 “-----BEGIN CERTIFICATE-----” 與 “-----END CERTIFICATE-----" 之間的值，並將此值貼到下面 [憑證]  旁邊的引號中。 在 [ssoUrl]  中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。 選取 [所有查詢]  ，然後按一下 [執行]  。
 
    ![Snowflake sql](./media/snowflake-tutorial/tutorial_snowflake_sql.png)
 
@@ -173,7 +173,7 @@ Snowflake 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -216,7 +216,7 @@ Snowflake 與 Azure AD 整合提供下列優點：
 
 1. 以安全性系統管理員身分登入 Snowflake。
 
-2. 按一下頁面右上方的 [設定檔]， **切換角色** 為 **ACCOUNTADMIN** 。  
+2. 按一下頁面右上方的 [設定檔]，**切換角色** 為 **ACCOUNTADMIN**。  
 
     ![Snowflake admin](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 

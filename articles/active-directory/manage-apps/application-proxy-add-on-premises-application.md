@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 12/04/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 41955475f32fe674bcb3ef2d1b6e59c71a008b6b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5d0b2df551c73e8c9b24d80280bbc993d9b361b7
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656440"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928461"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教學課程：新增內部部署應用程式以便透過 Azure Active Directory 中的應用程式 Proxy 進行遠端存取
 
@@ -51,8 +51,12 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
 > ```
 > Windows Registry Editor Version 5.00
 > 
-> [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp] "EnableDefaultHttp2"=dword:00000000
+> HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 Value: 0
 > ```
+>
+> 您可以使用下列命令，透過 PowerShell 來設定機碼。
+> ```
+> Set-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\' -Name EnableDefaultHTTP2 -Value 0
 >
 
 #### <a name="recommendations-for-the-connector-server"></a>針對連接器伺服器的建議
@@ -87,6 +91,9 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
 
 1. 重新啟動伺服器。
 
+> [!Note]
+> Microsoft 正在更新 Azure 服務，以使用來自一組不同根憑證授權單位 (CA) 的 TLS 憑證。 由於目前的 CA 憑證不符合其中一個 CA/瀏覽器論壇基準需求，因此需要進行此項變更。 如需詳細資訊，請參閱 [Azure TLS 憑證變更](https://docs.microsoft.com/azure/security/fundamentals/tls-certificate-changes)。
+
 ## <a name="prepare-your-on-premises-environment"></a>準備內部部署環境
 
 一開始請先啟用與 Azure 資料中心的通訊，以準備適合 Azure AD 應用程式 Proxy 的環境。 如果路徑中有防火牆，請確定防火牆已開啟。 防火牆開啟才能讓連接器對「應用程式 Proxy」提出 HTTPS (TCP) 要求。
@@ -113,7 +120,7 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
 | --- | --- | --- |
 | &ast;.msappproxy.net<br>&ast;.servicebus.windows.net | 443/HTTPS | 連接器和應用程式 Proxy 雲端服務之間的通訊 |
 | crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP |連接器會使用這些 URL 來確認憑證。 |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;.microsoftonline-p.com<br>&ast;.msauth.net<br>&ast;.msauthimages.net<br>&ast;.msecnd.net<br>&ast;.msftauth.net<br>&ast;.msftauthimages.net<br>&ast;.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com | 443/HTTPS |連接器會在註冊程序進行期間使用這些 URL。 |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;.microsoftonline-p.com<br>&ast;.msauth.net<br>&ast;.msauthimages.net<br>&ast;.msecnd.net<br>&ast;.msftauth.net<br>&ast;.msftauthimages.net<br>&ast;.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com<br>www.microsoft.com/pkiops | 443/HTTPS |連接器會在註冊程序進行期間使用這些 URL。 |
 | ctldl.windowsupdate.com | 80/HTTP |連接器會在註冊程序進行期間使用此 URL。 |
 
 如果防火牆或 Proxy 可讓您設定 DNS 允許清單，您便可以允許連往 &ast;.msappProxy.net、&ast;.servicebus.windows.net 和上述其他 URL 的連線。 如果不是，您需要允許存取 [Azure IP 範圍和服務標籤 - 公用雲端](https://www.microsoft.com/download/details.aspx?id=56519)。 IP 範圍會每週更新。
@@ -184,7 +191,7 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，以系統管理員身分登入。
 2. 在左瀏覽窗格中，選取 [Azure Active Directory]  。
 3. 選取 [企業應用程式]  ，然後選取 [新增應用程式]  。
-4. 在 [內部部署應用程式]  區段中，選取 [新增內部部署應用程式]  。
+4. 在 [建立您自己的應用程式] 區段中，選取 [設定應用程式 Proxy 以安全地從遠端存取內部部署應用程式]。
 5. 在 [新增自己的內部部署應用程式]  區段中，提供您應用程式的下列資訊：
 
     | 欄位 | 描述 |

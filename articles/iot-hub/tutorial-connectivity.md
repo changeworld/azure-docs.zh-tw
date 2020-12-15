@@ -16,12 +16,12 @@ ms.custom:
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: cf1c558474cfde85dd2c9ba8c85dc553fe5d9b56
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1eead9bb93fe8b753ace518cde18b240ab1a3cd4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547498"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572672"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>教學課程：使用模擬裝置來測試與您 IoT 中樞的連線能力
 
@@ -36,15 +36,7 @@ ms.locfileid: "92547498"
 > * 檢查雲端到裝置的連線能力
 > * 檢查裝置對應項同步處理
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="prerequisites"></a>必要條件
-
-您在本教學課程中執行的 CLI 指令碼會使用 [Azure CLI 的 Microsoft Azure IoT 擴充功能](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md)。 若要安裝此擴充功能，請執行下列 CLI 命令：
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -76,7 +68,7 @@ node --version
 
 ![IoT 裝置工具](media/tutorial-connectivity/iot-devices-tool.png)
 
-若要註冊新裝置，請按一下 [+ 新增]，將 [裝置識別碼] 設定為 **MyTestDevice** ，然後按一下 [儲存]：
+若要註冊新裝置，請按一下 [+ 新增]，將 [裝置識別碼] 設定為 **MyTestDevice**，然後按一下 [儲存]：
 
 ![新增裝置](media/tutorial-connectivity/add-device.png)
 
@@ -84,7 +76,7 @@ node --version
 
 ![擷取裝置連接字串](media/tutorial-connectivity/copy-connection-string.png)
 
-若要模擬將遙測資料傳送至 IoT 中樞的 **MyTestDevice** ，請執行您先前下載的 Node.js 模擬裝置應用程式。
+若要模擬將遙測資料傳送至 IoT 中樞的 **MyTestDevice**，請執行您先前下載的 Node.js 模擬裝置應用程式。
 
 在開發機器的終端機視窗中，瀏覽至您下載的範例 Node.js 專案的根資料夾。 然後，瀏覽至 **iot-hub\Tutorials\ConnectivityTests** 資料夾。
 
@@ -232,7 +224,7 @@ az iot hub invoke-device-method --device-id MyTestDevice --method-name TestMetho
 
 ## <a name="check-twin-synchronization"></a>檢查對應項同步處理
 
-裝置會使用對應項來同步處理裝置與中樞之間的狀態。 在本節中，您會使用 CLI 命令將 _所需的屬性_ 傳送至裝置，並讀取裝置所傳送的 _報告屬性_ 。
+裝置會使用對應項來同步處理裝置與中樞之間的狀態。 在本節中，您會使用 CLI 命令將 _所需的屬性_ 傳送至裝置，並讀取裝置所傳送的 _報告屬性_。
 
 您在本節中使用的模擬裝置會在每次啟動時將報告的屬性傳送至中樞，並且在每次接收到所需的屬性時將其列印至主控台。
 

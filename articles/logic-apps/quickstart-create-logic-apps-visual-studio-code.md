@@ -7,12 +7,12 @@ ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/28/2020
-ms.openlocfilehash: 0b777fdef344ce1a60ed00ee46eeaa8cee23b8c0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c4d4c659fd1c33c9ffc1b833b92d0727b5c17bf7
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099183"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922899"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>快速入門：使用 Visual Studio Code 來建立及管理邏輯應用程式工作流程定義
 
@@ -307,4 +307,4 @@ ms.locfileid: "93099183"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [在 Visual Studio Code (預覽) 中建立具狀態或無狀態邏輯應用程式](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)
+> [在 Visual Studio Code (預覽) 中建立具狀態和無狀態邏輯應用程式](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)

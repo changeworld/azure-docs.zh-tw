@@ -1,20 +1,20 @@
 ---
 title: 針對部署進行疑難排解
-description: 了解如何對 Azure Resource Manager 範本部署進行監視和疑難排解。 顯示活動記錄和部署歷程記錄。
+description: 了解如何對 Azure Resource Manager 範本 (ARM 範本) 部署進行監視和疑難排解。 顯示活動記錄和部署歷程記錄。
 author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0da6c614572e73a00db1087621eaca3bd790aad6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 7a44edc7cd09709f14415fa0a92e63558001d46d
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891800"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928523"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>教學課程：對 ARM 範本部署進行疑難排解
 
-了解如何對 Azure Resource Manager (ARM) 範本部署錯誤進行疑難排解。 在本教學課程中，您將在範本中設定兩個錯誤，並了解如何使用活動記錄和部署歷程記錄來解決問題。
+了解如何對 Azure Resource Manager 範本 (ARM 範本) 部署錯誤進行疑難排解。 在本教學課程中，您將在範本中設定兩個錯誤，並了解如何使用活動記錄和部署歷程記錄來解決問題。
 
 範本部署有兩種類型的相關錯誤：
 
@@ -37,7 +37,7 @@ ms.locfileid: "92891800"
 
 若要完成本文，您需要：
 
-- Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本](quickstart-create-templates-use-visual-studio-code.md)。
+- Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[快速入門：使用 Visual Studio Code 建立 ARM 範本](quickstart-create-templates-use-visual-studio-code.md)。
 
 ## <a name="create-a-problematic-template"></a>建立有問題的範本
 
@@ -60,7 +60,7 @@ ms.locfileid: "92891800"
     - **apiVersion1** 是無效的元素名稱。 這是驗證錯誤。
     - API 版本應為 "2018-07-01"。  這是部署錯誤。
 
-5. 選取 [檔案]>[另存新檔]，在您的本機電腦上將檔案另存為 **azuredeploy.json** 。
+5. 選取 [檔案]>[另存新檔]，在您的本機電腦上將檔案另存為 **azuredeploy.json**。
 
 ## <a name="troubleshoot-the-validation-error"></a>對驗證錯誤進行疑難排解
 

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b52bfc14906d8e47c804ae15ee898f6ca00784af
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8642f4284770df54704a4e7066054d3bb4640486
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503839"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545862"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C 程式碼範例
 
@@ -68,15 +68,25 @@ ms.locfileid: "92503839"
 | [Node.js](https://github.com/Azure-Samples/active-directory-nodejs-external-identities-api-connector-azure-function-validate)   | 此 Node.js Azure Function 範例示範如何將註冊限制為特定的電子郵件網域，並驗證使用者提供的資訊。  |
 | [Python](https://github.com/Azure-Samples/active-directory-python-external-identities-api-connector-azure-function-validate)    | 此 Python Azure Function 範例示範如何將註冊限制為特定的電子郵件網域，並驗證使用者提供的資訊。    |
 
-### <a name="identity-verification-with-api-connectors"></a>使用 API 連接器進行身分識別驗證
+
+### <a name="automated-fraud-protection-services--captcha"></a>自動化詐騙保護服務與 CAPTCHA
+| 範例                                                                                                            | 描述                                                                                                                          |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| [Arkose 實驗室詐騙和濫用保護](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose) | 此範例示範如何使用 Arkose 實驗室詐騙和濫用保護服務來保護您的使用者註冊。 |
+| [reCAPTCHA](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-captcha) | 此範例示範如何使用 reCAPTCHA 挑戰來保護您的使用者註冊，以避免自動濫用。 |
+
+
+### <a name="identity-verification"></a>身分識別驗證
 
 | 範例                                                                                                            | 描述                                                                                                                          |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| [IDology](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-idology-identity-verification) | 這個範例示範如何使用 API 連接器與 IDology 整合，在進行自助式註冊時驗證使用者身分識別。 |
-| [Experian](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-experian-identity-verification) | 這個範例示範如何使用 API 連接器與 Experian 整合，在進行自助式註冊時驗證使用者身分識別。 |
+| [IDology](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-idology-identity-verification) | 這個範例示範如何使用 API 連接器與 IDology 整合，在註冊流程中驗證使用者身分識別。 |
+| [Experian](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-experian-identity-verification) | 這個範例示範如何使用 API 連接器與 Experian 整合，在註冊流程中驗證使用者身分識別。 |
 
-### <a name="community-samples"></a>社群範例
+
+### <a name="other"></a>其他
 
 | 範例                                                                                                            | 描述                                                                                                                          |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| [邀請代碼](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-invitation-code) | 此範例示範如何使用邀請代碼將註冊限制為特定對象。|
 | [API 連接器的社群範例](https://github.com/azure-ad-b2c/api-connector-samples) | 此存放庫含有由 API 連接器所啟用案例的社群維護範例。|

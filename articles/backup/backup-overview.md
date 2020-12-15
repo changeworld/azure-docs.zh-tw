@@ -4,12 +4,12 @@ description: 提供 Azure 備份服務的概觀，並說明如何將它提供給
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 537605498fe166b24bd4e24673cfa1542bc449ea
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 805fa81362b9f90c1d6ba468caaf4b6745e42c62
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172472"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746109"
 ---
 # <a name="what-is-the-azure-backup-service"></a>什麼是 Azure 備份服務？
 
@@ -38,12 +38,12 @@ Azure 備份可提供下列主要優點：
 - **取得無限制的資料傳輸**：Azure 備份不會限制輸入或輸出資料的傳輸，或對傳輸的資料收費。
   - 輸出資料是指還原作業期間傳輸自復原服務保存庫的資料。
   - 如果您使用 Azure 匯入/匯出服務執行離線初始備份以匯出大量資料，則會有輸入資料的相關費用。  [深入了解](backup-azure-backup-import-export.md)。
-- **確保資料安全性**：Azure 備份提供解決方案來保護[傳輸中](backup-azure-security-feature.md)和[待用](backup-azure-security-feature-cloud.md)的資料。
-- **集中監視和管理**：Azure 備份提供復原服務保存庫中的[內建監視和警示功能](backup-azure-monitoring-built-in-monitor.md)。 這些功能不需要任何額外的管理基礎結構即可供使用。 您也可以[使用 Azure 監視器](backup-azure-monitoring-use-azuremonitor.md)來擴大監視和報告的規模。
+- **確保資料安全性**：Azure 備份提供解決方案來保護 [傳輸中](backup-azure-security-feature.md)和 [待用](backup-azure-security-feature-cloud.md)的資料。
+- **集中監視和管理**：Azure 備份提供復原服務保存庫中的 [內建監視和警示功能](backup-azure-monitoring-built-in-monitor.md)。 這些功能不需要任何額外的管理基礎結構即可供使用。 您也可以[使用 Azure 監視器](backup-azure-monitoring-use-azuremonitor.md)來擴大監視和報告的規模。
 - **取得應用程式一致備份**：應用程式一致備份表示復原點具有還原備份複本所需的所有資料。 Azure 備份提供應用程式一致備份，確保資料還原不需要其他修正程式。 還原應用程式一致的資料會減少還原時間，讓您能夠快速回到執行狀態。
-- **保留短期和長期資料**：您可以使用[復原服務保存庫](backup-azure-recovery-services-vault-overview.md)進行短期和長期資料保留。
+- **保留短期和長期資料**：您可以使用 [復原服務保存庫](backup-azure-recovery-services-vault-overview.md)進行短期和長期資料保留。
 - **自動儲存管理** - 混合式環境通常需要異質性儲存體 - 部份在內部部署，部份在雲端。 使用 Azure 備份，使用內部部署儲存體裝置無需成本。 Azure 備份會自動配置和管理備份儲存體，且採用使用時付費制。 因此，您只需針對使用的儲存體支付費用。 [深入了解](https://azure.microsoft.com/pricing/details/backup)定價。
-- **多個儲存體選項** - Azure 備份提供兩種類型的複寫，讓您的儲存體/資料保有高可用性。
+- **多個儲存體選項** - Azure 備份提供三種類型的複寫，讓您的儲存體/資料保有高可用性。
   - [本地備援儲存體 (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) 會將資料複寫至資料中心的儲存體縮放單位三次 (建立三個資料複本)。 此資料的所有複本都存在於相同的區域內。 LRS 是保護資料免於本機硬體失敗的低成本選項。
   - [異地備援儲存體 (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) 是預設且建議使用的複寫選項。 GRS 會將資料複寫到次要地區 (與來源資料主要位置距離數百英哩)。 GRS 的價格高於 LRS，但可為您的資料提供更高層級的持久性，即使遭受區域性中斷也不影響。
   - [區域備援儲存體 (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) 會在[可用性區域](../availability-zones/az-overview.md#availability-zones)中複寫您的資料，保證相同區域中的資料落地和復原。 ZRS 不會停機。 因此，您需要[資料落地](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)且必須沒有停機時間的重要工作負載，可以在 ZRS 中備份。

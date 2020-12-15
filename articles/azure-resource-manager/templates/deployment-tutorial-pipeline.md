@@ -1,19 +1,19 @@
 ---
 title: 透過 Azure Pipelines 的持續整合
-description: 了解如何持續建置、測試及部署 Azure Resource Manager 範本。
+description: 了解如何持續建置、測試及部署 Azure Resource Manager 範本 (ARM 範本)。
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 433811cb632aae0d7370fc8e401c01fe36621a5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7688a4e4838cb591bcd3ac0045a5ed22180c063
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333231"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906347"
 ---
-# <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>教學課程：Azure Resource Manager 範本與 Azure Pipelines 的持續整合
+# <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>教學課程：ARM 範本與 Azure Pipelines 的持續整合
 
-在[上一個教學課程](./deployment-tutorial-linked-template.md)中，您部署了連結的範本。  在本教學課程中，您將了解如何使用 Azure Pipelines 持續建置及部署 Azure Resource Manager 範本專案。
+在[上一個教學課程](./deployment-tutorial-linked-template.md)中，您部署了連結的範本。  在本教學課程中，您將了解如何使用 Azure Pipelines 持續建置及部署 Azure Resource Manager 範本 (ARM 範本) 專案。
 
 Azure DevOps 提供開發人員服務，以支援小組規劃工作、共同作業開發程式碼，以及建置和部署應用程式。 開發人員可以使用 Azure DevOps Services 在雲端工作。 Azure DevOps 提供一組整合的功能，您可以透過網頁瀏覽器或 IDE 用戶端存取使用。 Azure Pipeline 就是其中一個功能。 Azure Pipelines 是一個功能齊全的持續整合 (CI) 和持續傳遞 (CD) 服務。 它可以與您慣用的 Git 提供者搭配使用，而且能夠部署到大多數的主流雲端服務。 然後您可以將程式碼的建置、測試和部署到 Microsoft Azure、Google Cloud Platform，或 Amazon Web Services 等等所有工作自動化。
 
@@ -40,7 +40,7 @@ Azure DevOps 提供開發人員服務，以支援小組規劃工作、共同作�
 * **GitHub 帳戶**，您會用它為您的範本建立存放庫。 如果您沒有存放庫，您可以[免費建立一個](https://github.com)。 如需使用 GitHub 存放庫的詳細資訊，請參閱[建置 GitHub 存放庫](/azure/devops/pipelines/repos/github)。
 * **安裝 Git**。 此教學課程的指示使用 *Git Bash* 或 *Git Shell*。 如需指示，請參閱 [安裝 Git]( https://www.atlassian.com/git/tutorials/install-git)。
 * **Azure DevOps 組織**。 如果您沒有組織，您可以免費建立一個。 請參閱[建立組織或專案集合](/azure/devops/organizations/accounts/create-organization?view=azure-devops)。
-* (選擇性) **Visual Studio Code 搭配 Resource Manager Tools 擴充功能**。 請參閱[快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本](quickstart-create-templates-use-visual-studio-code.md)。
+* (選擇性) **Visual Studio Code 搭配 Resource Manager Tools 擴充功能**。 請參閱[快速入門：使用 Visual Studio Code 建立 ARM 範本](quickstart-create-templates-use-visual-studio-code.md)。
 
 ## <a name="prepare-a-github-repository"></a>準備 GitHub 存放庫
 
@@ -103,7 +103,7 @@ azuredeploy.json 已新增至本機存放庫。 接下來您會將範本推送�
     git push origin master
     ```
 
-    您可能會收到關於 LF 的警告。 您可以忽略警告。 **master**為主要分支。  通常您會為每個更新建立分支。 為了簡化此教學課程，您可以直接使用 master 分支。
+    您可能會收到關於 LF 的警告。 您可以忽略警告。 **master** 為主要分支。  通常您會為每個更新建立分支。 為了簡化此教學課程，您可以直接使用 master 分支。
 1. 使用瀏覽器瀏覽至您的 GitHub 存放庫。  URL 為 **`https://github.com/[YourAccountName]/[YourGitHubRepository]`** 。 您應該會看到 **CreateWebApp** 資料夾，以及資料夾內的三個檔案。
 1. 選取 [linkedStorageAccount.json] 以開啟範本。
 1. 選取 [原始] 按鈕。 URL 的開頭為 **raw.githubusercontent.com**。
@@ -172,10 +172,10 @@ azuredeploy.json 已新增至本機存放庫。 接下來您會將範本推送�
     * 訂用帳戶：指定目標訂用帳戶識別碼。
     * **動作**：選取 [建立或更新資源群組] 動作，會執行 2 個動作 - 1. 如果已經提供新的資源群組名稱，就會建立一個資源群組；2. 部署指定的範本。
     * **資源群組**：輸入新的資源群組名稱。 例如，**AzureRmPipeline rg**。
-    * **位置**：選取資源群組的位置，例如**美國中部**。
+    * **位置**：選取資源群組的位置，例如 **美國中部**。
     * **範本位置**：選取 [連結的成品]，這表示工作會直接從已連線的存放庫中尋找範本檔案。
     * **範本**：輸入 **CreateWebApp/azuredeploy.json**。 如果您變更了資料夾名稱和檔案名稱，就必須變更此值。
-    * **範本參數**：將此欄位保留空白。 您將在**覆寫範本參數**中指定參數值。
+    * **範本參數**：將此欄位保留空白。 您將在 **覆寫範本參數** 中指定參數值。
     * **覆寫範本參數**：輸入 **-projectName [EnterAProjectName] -linkedTemplateUri [EnterTheLinkedTemplateURL]** 。 請取代專案名稱和連結的範本 URL。 連結的範本 URL 是您在[建立 GitHub 存放庫](#create-a-github-repository)結束時記下的內容。 一開始的配置為 **https://raw.githubusercontent.com** 。
     * **部署模式**：選取 [增量]。
     * **部署名稱**：輸入 **DeployPipelineTemplate**。 選取 [進階]，才能看到 [部署名稱]。

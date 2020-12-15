@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a4ab8372e23e3621f7d73f8dbc38957c809acc9c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8ae5bcf103bbb2d2b952fa647ba591e49002f2ff
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89236856"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921621"
 ---
 # <a name="basic-concepts"></a>基本概念
 
@@ -30,7 +30,7 @@ ms.locfileid: "89236856"
 
 證明提供者屬名為 Microsoft.Attestation 的 Azure 資源提供者。 資源提供者是提供 Azure 證明 REST 合約並使用 [Azure Resource Manager](../azure-resource-manager/management/overview.md) 部署的服務端點。 每個證明提供者都會遵循特定且可探索的原則。 
 
-證明提供者會搭配每個 TEE 類型的預設原則來建立 (請注意，VBS 記憶體保護區沒有預設原則)。 如需有關 SGX 預設原則的詳細資訊，請參閱[證明原則的範例](policy-examples.md)。
+證明提供者會搭配每個證明類型的預設原則來建立 (請注意，VBS 記憶體保護區沒有預設原則)。 如需有關 SGX 預設原則的詳細資訊，請參閱[證明原則的範例](policy-examples.md)。
 
 ### <a name="regional-default-provider"></a>區域預設提供者
 
@@ -38,11 +38,11 @@ Azure 證明會在每個區域中提供預設的提供者。 客戶可以選擇�
 
 | 區域 | 證明 URI | 
 |--|--|
-| 英國南部 | https://shareduks.uks.attest.azure.net | 
-| 美國東部 2 | https://sharedeus2.eus2.attest.azure.net | 
-| 美國中部 | https://sharedcus.cus.attest.azure.net | 
-| 美國東部| https://sharedeus.eus.attest.azure.net | 
-| 加拿大中部 | https://sharedcac.cac.attest.azure.net | 
+| 英國南部 | `https://shareduks.uks.attest.azure.net` | 
+| 美國東部 2 | `https://sharedeus2.eus2.attest.azure.net` | 
+| 美國中部 | `https://sharedcus.cus.attest.azure.net` | 
+| 美國東部| `https://sharedeus.eus.attest.azure.net` | 
+| 加拿大中部 | `https://sharedcac.cac.attest.azure.net` | 
 
 ## <a name="attestation-request"></a>證明要求
 
@@ -50,13 +50,13 @@ Azure 證明會在每個區域中提供預設的提供者。 客戶可以選擇�
 - “Quote” – "Quote" 屬性的值是字串，其中包含證明引用的 Base64URL 編碼標記法
 - "EnclaveHeldData" – "EnclaveHeldData" 屬性的值是字串，其中包含「記憶體保護區保留資料」的 Base64URL 編碼標記法。
 
-Azure 證明會驗證所提供的 “Quote” 是否來自 TEE，然後確保所提供記憶體保護區保留資料的 SHA256 雜湊，會以引用中 reportData 欄位的前 32 個位元組表示。 
+Azure 證明會驗證所提供的 "Quote"，然後確保所提供記憶體保護區保留資料的 SHA256 雜湊，會以引用中 reportData 欄位的前 32 個位元組表示。 
 
 ## <a name="attestation-policy"></a>證明原則
 
 證明原則會用來處理證明的證據，而且可由客戶進行設定。 Azure 證明的核心是原則引擎，用來處理構成證據的宣告。 原則會用來判斷 Azure 證明是否應根據證明發出證明權杖，以及是否要因此為證明方背書。 因此，若無法傳遞所有原則，則不會發出任何 JWT 權杖。
 
-如果證明提供者中的預設的 TEE 原則不符合需求，客戶可以在 Azure 證明支援的任何區域中建立自訂原則。 原則管理是 Azure 證明提供給客戶的一項重要功能。 原則會針對各個 TEE 制定，可用來識別記憶體保護區或將宣告新增至輸出權杖，或修改輸出權杖中的宣告。 
+如果證明提供者中的預設的原則不符合需求，客戶可以在 Azure 證明支援的任何區域中建立自訂原則。 原則管理是 Azure 證明提供給客戶的一項重要功能。 原則會針對各個證明類型制定，可用來識別記憶體保護區或將宣告新增至輸出權杖，或修改輸出權杖中的宣告。 
 
 若要了解預設原則的內容和範例，請參閱[證明原則的範例](policy-examples.md)。
 
@@ -99,6 +99,15 @@ Azure 證明回應會是一個 JSON 字串，其值包含 JWT。 Azure 證明會
 }.[Signature]
 ```
 “exp”、“iat”、“iss”、“nbf” 等宣告會由 [JWT RFC](https://tools.ietf.org/html/rfc7517) 所定義，其餘則是由 Azure 證明產生。 如需詳細資訊，請參閱 [Azure 證明所發行的宣告](claim-sets.md)。
+
+## <a name="encryption-of-data-at-rest"></a>待用資料加密
+
+為了保護客戶資料，Azure 證明會將資料保存在 Azure 儲存體中。 Azure 儲存體會在待用資料寫入資料中心時提供加密，並將其解密供客戶存取。 此加密會使用 Microsoft 受控加密金鑰進行。 
+
+除了保護 Azure 儲存體中的資料，Azure 證明也會利用 Azure 磁碟加密 (ADE) 來加密服務 VM。 針對在 Azure 機密計算環境的記憶體保護區中執行的 Azure 證明，目前不支援 ADE 延伸模組。 在這種情況下，若要防止資料儲存在記憶體中，系統會停用分頁檔。 
+
+客戶資料不會保存在 Azure 證明執行個體本機硬碟中。
+
 
 ## <a name="next-steps"></a>後續步驟
 

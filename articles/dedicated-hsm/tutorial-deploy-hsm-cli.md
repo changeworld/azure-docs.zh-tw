@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d175ac75ce76836d012cdd04d4dbd7d81ffda584
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b6f4610887092b1dac5cdc85622739318d5921d7
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460694"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852229"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-the-azure-cli"></a>教學課程：使用 Azure CLI 將 HSM 部署至現有的虛擬網路
 
@@ -233,14 +233,14 @@ VM 的 IP 位址也用來取代上述命令中的 DNS 名稱。 如果命令成�
 
 ![螢幕擷取畫面：在 PowerShell 視窗中顯示輸出。](media/tutorial-deploy-hsm-cli/hsm-show-output.png)
 
-此時，您已配置所有資源，以提供高可用性、兩個 HSM 部署和已驗證的存取和操作狀態。 任何進一步的設定或測試都牽涉到更多 HSM 裝置本身的工作。 為此，您應該遵循 Gemalto Luna Network HSM 7 Administration Guide 第 7 章的指示，來初始化 HSM 及建立分割區。 您在 Gemalto 客戶支援入口網站中註冊且具有客戶識別碼後，可以直接從 Gemalto 下載所有文件和軟體。 下載用戶端軟體 7.2 版，以取得所有必要的元件。
+此時，您已配置所有資源，以提供高可用性、兩個 HSM 部署和已驗證的存取和操作狀態。 任何進一步的設定或測試都牽涉到更多 HSM 裝置本身的工作。 為此，您應該遵循 Thales Luna Network HSM 7 Administration Guide 第 7 章的指示，來初始化 HSM 及建立分割區。 您在 Thales 客戶支援入口網站中註冊且具有客戶識別碼後，可以直接從 Thales 下載所有文件和軟體。 下載用戶端軟體 7.2 版，以取得所有必要的元件。
 
 ## <a name="delete-or-clean-up-resources"></a>刪除或清除資源
 
 如果您已處理完 HSM 裝置，即可將它當作資源刪除並傳回可用的集區。 執行此作業時的顯著考量就是裝置上的任何敏感性客戶資料。 將裝置「歸零」的最佳方式是讓 HSM 管理員的密碼連錯 3 次 (注意：這裡指的不是裝置管理員，而是實際的 HSM 管理員)。 由於金鑰內容有安全措施保護，裝置必須處於歸零狀態，才能以 Azure 資源的形式刪除。
 
 > [!NOTE]
-> 如果您有關於任何 Gemalto 裝置組態的問題，您應該連絡 [Gemalto 客戶支援](https://safenet.gemalto.com/technical-support/)。
+> 如果您有關於任何 Thales 裝置組態的問題，您應該連絡 [Thales 客戶支援](https://safenet.gemalto.com/technical-support/)。
 
 如果您已處理完此資源群組中的所有資源，即可透過下列命令來將其移除：
 

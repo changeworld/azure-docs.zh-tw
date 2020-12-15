@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.custom: designer
-ms.openlocfilehash: 28358db2e538867957fcc8d4984cf1c028f9ab2c
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 14be695f2f58b9738af11a3d2ca3f06592a1cc6e
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030354"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575953"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>教學課程：透過設計工具部署機器學習模型
 
@@ -123,7 +123,7 @@ ms.locfileid: "96030354"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解在如何設計工具中建立、部署和使用機器學習模型的關鍵步驟。 若要深入了解如何使用設計工具來解決其他類型的問題，請參閱我們的其他範例管線。
+在本教學課程中，您已了解在如何設計工具中建立、部署和使用機器學習模型的關鍵步驟。 若要深入了解您可以如何使用設計工具，請參閱下列連結：
 
-> [!div class="nextstepaction"]
-> [設計工具範例](samples-designer.md)
++ [設計工具範例](samples-designer.md)：了解如何使用設計工具來解決其他類型的問題。
++ [在 Azure 虛擬網路中使用 Azure Machine Learning 工作室](how-to-enable-studio-virtual-network.md)。

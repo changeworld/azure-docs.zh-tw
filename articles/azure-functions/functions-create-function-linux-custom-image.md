@@ -1,20 +1,24 @@
 ---
 title: 在 Linux 上使用自訂映像建立 Azure Functions
 description: 了解如何建立在自訂 Linux 映像上執行的 Azure Functions。
-ms.date: 03/30/2020
+ms.date: 12/2/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: af63eb68ec82a0725befed723298c079e82bdfdb
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+zone_pivot_groups: programming-languages-set-functions-full
+ms.openlocfilehash: f270f74f97a9b9306d7b23dacec12c38f418dbd1
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327095"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921818"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自訂容器建立函式
 
 在本教學課程中，您會使用 Linux 基礎映像，建立您的程式碼並將其部署至 Azure Functions 作為自訂 Docker 容器。 當您的函式需要特定的語言版本，或有內建映像所未提供的特定相依性或組態時，您通常會想使用自訂映像。
+
+::: zone pivot="programming-language-other"
+Azure Functions 支援使用[自訂處理常式](functions-custom-handlers.md)的任何語言或執行階段。 針對某些語言 (例如本教學課程中使用的 R 程式設計語言)，您需要將執行階段或其他程式庫安裝為需要使用自訂容器的相依性。
+::: zone-end
 
 在自訂 Linux 容器中部署您的函式程式碼需要[進階方案](functions-premium-plan.md#features)或[專用 (App Service) 方案](functions-scale.md#app-service-plan)裝載。 完成本教學課程會在您的 Azure 帳戶中產生費用 (以美元計價)，您可以在完成時[清除資源](#clean-up-resources)，將這些成本降到最低。
 
@@ -22,6 +26,7 @@ ms.locfileid: "96327095"
 
 在本教學課程中，您會了解如何：
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
 > [!div class="checklist"]
 > * 使用 Azure Functions Core Tools 建立函式應用程式和 Dockerfile。
 > * 使用 Docker 建置自訂映像。
@@ -32,6 +37,18 @@ ms.locfileid: "96327095"
 > * 啟用持續部署。
 > * 啟用容器的 SSH 連線。
 > * 新增佇列儲存體輸出繫結。 
+::: zone-end
+::: zone pivot="programming-language-other"
+> [!div class="checklist"]
+> * 使用 Azure Functions Core Tools 建立函式應用程式和 Dockerfile。
+> * 使用 Docker 建置自訂映像。
+> * 將自訂映像發佈到容器登錄中。
+> * 在 Azure 中建立函式應用程式的支援資源
+> * 從 Docker Hub 部署函式應用程式。
+> * 將應用程式設定加入函式應用程式。
+> * 啟用持續部署。
+> * 啟用容器的 SSH 連線。
+::: zone-end
 
 您可以在任何執行 Windows、macOS 或 Linux 的電腦上遵循此教學課程。 
 
@@ -114,10 +131,17 @@ Maven 會要求您提供在部署時完成產生專案所需的值。
 
 Maven 會以 _artifactId_ 名稱在新資料夾中建立專案檔案，在此例中為 `fabrikam-functions`。 
 ::: zone-end
+
+::: zone pivot="programming-language-other"  
+```console
+func init LocalFunctionsProject --worker-runtime custom --docker
+```
+::: zone-end
+
 `--docker` 選項會產生專案的 `Dockerfile`，這會定義適合用於 Azure Functions 和所選執行階段的自訂容器。
 
 瀏覽至專案資料夾：
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-other"  
 ```console
 cd LocalFunctionsProject
 ```
@@ -128,12 +152,102 @@ cd fabrikam-functions
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
-使用下列命令，將函式新增至您的專案，其中 `--name` 引數是函式的唯一名稱，而 `--template` 引數可指定函式的觸發程序。 `func new` 建立符合函式名稱的子資料夾，其中包含適合專案所選語言的程式碼檔案，以及名為 *function.json* 的組態檔。
+使用下列命令，將函式新增至您的專案，其中 `--name` 引數是函式的唯一名稱，而 `--template` 引數可指定函式的觸發程序。 `func new` 會建立符合函式名稱的子資料夾，其中包含適合專案所選語言的程式碼檔案，以及名為 *function.json* 的組態檔。
 
 ```console
 func new --name HttpExample --template "HTTP trigger"
 ```
-::: zone-end  
+::: zone-end
+
+::: zone pivot="programming-language-other" 
+使用下列命令，將函式新增至您的專案，其中 `--name` 引數是函式的唯一名稱，而 `--template` 引數可指定函式的觸發程序。 `func new` 會建立符合函式名稱的子資料夾，其中包含名為 *function.json* 的組態檔。
+
+```console
+func new --name HttpExample --template "HTTP trigger"
+```
+
+在文字編輯器中，於名為 *handler.R* 的專案資料夾中建立檔案。 新增下列內容做為其內容。
+
+```r
+library(httpuv)
+
+PORTEnv <- Sys.getenv("FUNCTIONS_CUSTOMHANDLER_PORT")
+PORT <- strtoi(PORTEnv , base = 0L)
+
+http_not_found <- list(
+  status=404,
+  body='404 Not Found'
+)
+
+http_method_not_allowed <- list(
+  status=405,
+  body='405 Method Not Allowed'
+)
+
+hello_handler <- list(
+  GET = function (request) {
+    list(body=paste(
+      "Hello,",
+      if(substr(request$QUERY_STRING,1,6)=="?name=") 
+        substr(request$QUERY_STRING,7,40) else "World",
+      sep=" "))
+  }
+)
+
+routes <- list(
+  '/api/HttpExample' = hello_handler
+)
+
+router <- function (routes, request) {
+  if (!request$PATH_INFO %in% names(routes)) {
+    return(http_not_found)
+  }
+  path_handler <- routes[[request$PATH_INFO]]
+
+  if (!request$REQUEST_METHOD %in% names(path_handler)) {
+    return(http_method_not_allowed)
+  }
+  method_handler <- path_handler[[request$REQUEST_METHOD]]
+
+  return(method_handler(request))
+}
+
+app <- list(
+  call = function (request) {
+    response <- router(routes, request)
+    if (!'status' %in% names(response)) {
+      response$status <- 200
+    }
+    if (!'headers' %in% names(response)) {
+      response$headers <- list()
+    }
+    if (!'Content-Type' %in% names(response$headers)) {
+      response$headers[['Content-Type']] <- 'text/plain'
+    }
+
+    return(response)
+  }
+)
+
+cat(paste0("Server listening on :", PORT, "...\n"))
+runServer("0.0.0.0", PORT, app)
+```
+
+在 *host.json* 中，修改 `customHandler` 區段以設定自訂處理常式的啟動命令。
+
+```json
+"customHandler": {
+  "description": {
+      "defaultExecutablePath": "Rscript",
+      "arguments": [
+      "handler.R"
+    ]
+  },
+  "enableForwardingHttpRequest": true
+}
+```
+::: zone-end
+
 若要在本機測試函式，請啟動專案根資料夾中的本機 Azure Functions 執行階段主機： 
 ::: zone pivot="programming-language-csharp"  
 ```console
@@ -157,14 +271,41 @@ mvn clean package
 mvn azure-functions:run
 ```
 ::: zone-end
+::: zone pivot="programming-language-other"
+```console
+R -e "install.packages('httpuv', repos='http://cran.rstudio.com/')"
+func start
+```
+::: zone-end 
+
 一旦看到 `HttpExample` 端點出現在輸出中，請瀏覽至 `http://localhost:7071/api/HttpExample?name=Functions`。 瀏覽器應該會顯示 "hello" 訊息，回應 `Functions`，這是提供給 `name` 查詢參數的值。
 
 使用 **Ctrl**-**C** 將主機停止。
 
 ## <a name="build-the-container-image-and-test-locally"></a>建立容器映像並在本機進行測試
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-powershell,programming-language-python,programming-language-java,programming-language-typescript"
 (選用) 檢查專案根資料夾中的 *Dockerfile*。 Dockerfile 描述在 Linux 上執行函式應用程式所需的環境。  在 [Azure Functions 基底映像頁面](https://hub.docker.com/_/microsoft-azure-functions-base)中可找到針對 Azure Functions 支援的完整基底映像清單。
-    
+::: zone-end
+
+::: zone pivot="programming-language-other"
+檢查專案根資料夾中的 *Dockerfile*。 Dockerfile 描述在 Linux 上執行函式應用程式所需的環境。 自訂處理常式應用程式會使用 `mcr.microsoft.com/azure-functions/dotnet:3.0-appservice` 映像做為其基底。
+
+修改 *Dockerfile* 以安裝 R。將 *Dockerfile* 的內容取代為下列內容。
+
+```dockerfile
+FROM mcr.microsoft.com/azure-functions/dotnet:3.0-appservice 
+ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
+    AzureFunctionsJobHost__Logging__Console__IsEnabled=true
+
+RUN apt update && \
+    apt install -y r-base && \
+    R -e "install.packages('httpuv', repos='http://cran.rstudio.com/')"
+
+COPY . /home/site/wwwroot
+```
+::: zone-end
+
 在根專案資料夾中，執行 [docker build](https://docs.docker.com/engine/reference/commandline/build/) 命令，然後提供名稱、`azurefunctionsimage` 和標記 (`v1.0.0`)。 將 `<DOCKER_ID>` 取代為 Docker Hub 帳戶識別碼。 此命令會建置容器的 Docker 映像。
 
 ```console
@@ -179,7 +320,7 @@ docker build --tag <DOCKER_ID>/azurefunctionsimage:v1.0.0 .
 docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
 ```
 
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-other"  
 映像一旦在本機容器中執行，請將瀏覽器開啟至 `http://localhost:8080`，這應會顯示如下所示的預留位置影像。 此影像會在此時出現，因為您的函式是在本機容器中執行，就像在 Azure 中一樣，這表示其利用 `"authLevel": "function"` 屬性受到 *function.json* 中所定義的存取金鑰保護。 然而，容器尚未在 Azure 中發佈至函式應用程式，因此還沒有可用的金鑰。 如果您想針對本機容器進行測試，請停止 Docker、將授權屬性變更為 `"authLevel": "anonymous"`、重建映像，然後重新啟動 Docker。 然後在 *function.json* 中重設 `"authLevel": "function"`。 如需詳細資訊，請參閱[授權金鑰](functions-bindings-http-webhook-trigger.md#authorization-keys)。
 
 ![表示容器正在本機執行的預留位置影像](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
@@ -258,13 +399,20 @@ Docker Hub 是一個容器登錄，其裝載映像並提供映像和容器服務
 
 1. 使用 [az functionapp create](/cli/azure/functionapp#az-functionapp-create) 命令來建立 Functions 應用程式。 在下列範例中，請以您在上一節中用於儲存體帳戶的名稱取代 `<storage_name>`。 此外，使用適合您的全域唯一名稱取代 `<app_name>`，並以您的 Docker 識別碼取代 `<docker_id>`。
 
+    ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
     ```azurecli
     az functionapp create --name <app_name> --storage-account <storage_name> --resource-group AzureFunctionsContainers-rg --plan myPremiumPlan --runtime <functions runtime stack> --deployment-container-image-name <docker_id>/azurefunctionsimage:v1.0.0
     ```
+    ::: zone-end
+    ::: zone pivot="programming-language-other"
+    ```azurecli
+    az functionapp create --name <app_name> --storage-account <storage_name> --resource-group AzureFunctionsContainers-rg --plan myPremiumPlan --runtime custom --deployment-container-image-name <docker_id>/azurefunctionsimage:v1.0.0
+    ```
+    ::: zone-end
     
     *deployment-container-image-name* 參數可指定要用於函式應用程式的映像。 您可使用 [az functionapp config container show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) 命令來檢視部署所用映像的相關資訊。 您也可使用 [az functionapp config container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) 命令，從不同映像進行部署。
 
-1. 使用 [az storage account show-connection-string](/cli/azure/storage/account) 命令，擷取您所建立儲存體帳戶的連接字串，並將其指派給殼層變數 `storageConnectionString`：
+1. 使用 [az storage account show-connection-string](/cli/azure/storage/account) 命令，顯示您所建立儲存體帳戶的連接字串。 將 `<storage-name>` 取代為先前建立的儲存體帳戶名稱：
 
     ```azurecli
     az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv
@@ -275,8 +423,6 @@ Docker Hub 是一個容器登錄，其裝載映像並提供映像和容器服務
     ```azurecli
     az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=<connection_string>
     ```
-
-1. 函式現在可以使用此連接字串來存取儲存體帳戶。
 
     > [!TIP]
     > 在 Bash 中，您可以使用殼層變數 (而不是使用剪貼簿) 來擷取連接字串。 首先，使用下列命令來建立具有連接字串的變數：
@@ -290,6 +436,8 @@ Docker Hub 是一個容器登錄，其裝載映像並提供映像和容器服務
     > ```azurecli
     > az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=$storageConnectionString
     > ```
+
+1. 函式現在可以使用此連接字串來存取儲存體帳戶。
 
 > [!NOTE]    
 > 如果您將自訂映像發佈至私人容器帳戶，您應該改為在連接字串的 Dockerfile 中使用環境變數。 如需詳細資訊，請參閱 [ENV 指示](https://docs.docker.com/engine/reference/builder/#env)。 您也應該設定變數 `DOCKER_REGISTRY_SERVER_USERNAME` 和 `DOCKER_REGISTRY_SERVER_PASSWORD`。 若要使用這些值，您必須重建映像、將映像推送至登錄，然後在 Azure 上重新啟動函式應用程式。
@@ -439,6 +587,8 @@ SSH 可讓容器和用戶端之間進行安全通訊。 啟用 SSH 之後，您�
 
     ![在 SSH 工作階段中執行的 Linux top 命令](media/functions-create-function-linux-custom-image/linux-custom-kudu-ssh-top.png)
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
+
 ## <a name="write-to-an-azure-storage-queue"></a>寫入至 Azure 儲存體佇列
 
 Azure Functions 可讓您無須撰寫自己的整合程式碼，就能將函式連線到其他 Azure 服務與資源。 這些 *繫結* 同時代表輸入和輸出，會宣告於函式定義內。 繫結中的資料會提供給函式作為參數。 「觸發程序」是一種特殊的輸入繫結。 雖然函式只有一個觸發程序，但可以有多個輸入和輸出繫結。 若要深入了解，請參閱 [Azure Functions 觸發程序和繫結概念](functions-triggers-bindings.md)。
@@ -446,6 +596,7 @@ Azure Functions 可讓您無須撰寫自己的整合程式碼，就能將函式�
 本節說明如何將您的函式與 Azure 儲存體佇列整合。 您新增至此函式的輸出繫結，會將資料從 HTTP 要求寫入至佇列中的訊息。
 
 [!INCLUDE [functions-cli-get-storage-connection](../../includes/functions-cli-get-storage-connection.md)]
+::: zone-end
 
 [!INCLUDE [functions-register-storage-binding-extension-csharp](../../includes/functions-register-storage-binding-extension-csharp.md)]
 
@@ -458,9 +609,12 @@ Azure Functions 可讓您無須撰寫自己的整合程式碼，就能將函式�
 [!INCLUDE [functions-add-output-binding-java-cli](../../includes/functions-add-output-binding-java-cli.md)]
 ::: zone-end  
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
+
 ## <a name="add-code-to-use-the-output-binding"></a>新增程式碼以使用輸出繫結
 
 定義了佇列繫結後，您現在可以更新函式以接收 `msg` 輸出參數，並將訊息寫入至佇列。
+::: zone-end
 
 ::: zone pivot="programming-language-python"     
 [!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
@@ -488,6 +642,7 @@ Azure Functions 可讓您無須撰寫自己的整合程式碼，就能將函式�
 [!INCLUDE [functions-add-output-binding-java-test-cli](../../includes/functions-add-output-binding-java-test-cli.md)]
 ::: zone-end
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
 ### <a name="update-the-image-in-the-registry"></a>更新登錄中的映像
 
 1. 在根資料夾中，再次執行 `docker build`，這次會將標記中的版本更新為 `v1.0.1`。 和之前一樣，以您的 Docker Hub 帳戶識別碼取代 `<docker_id>`：
@@ -509,6 +664,8 @@ Azure Functions 可讓您無須撰寫自己的整合程式碼，就能將函式�
 在瀏覽器中，使用與之前相同的 URL 來叫用您的函式。 瀏覽器應會顯示與之前相同的回應，因為您未修改該部分的函式程式碼。 不過，新增的程式碼會使用 `name` URL 參數，將訊息寫入 `outqueue` 儲存體佇列。
 
 [!INCLUDE [functions-add-output-binding-view-queue-cli](../../includes/functions-add-output-binding-view-queue-cli.md)]
+
+::: zone-end
 
 ## <a name="clean-up-resources"></a>清除資源
 

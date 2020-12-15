@@ -1,20 +1,20 @@
 ---
-title: 教學課程 - 從 Google Maps 遷移 Web 應用程式 | Microsoft Azure 地圖服務
+title: 教學課程 - 從 Google Maps 將 Web 應用程式遷移至 Microsoft Azure 地圖服務
 description: 如何從 Google Maps 將 Web 應用程式遷移至 Microsoft Azure 地圖服務的教學課程
 author: rbrundritt
 ms.author: richbrun
-ms.date: 08/18/2020
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: b95800bea4bceffabad56aa29b68a57b310c5518
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4dee8de8f42b78ecdab9d9e15bb277d58fa8ba70
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896441"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905055"
 ---
 # <a name="tutorial---migrate-a-web-app-from-google-maps"></a>教學課程 - 從 Google Maps 遷移 Web 應用程式
 
@@ -75,7 +75,7 @@ ms.locfileid: "92896441"
 | Geocoder 服務        | ✓                          |
 | 路線服務      | ✓                          |
 | 距離矩陣服務 | ✓                          |
-| 海拔服務       | 已規劃                     |
+| 海拔服務       | ✓                          |
 
 ## <a name="notable-differences-in-the-web-sdks"></a>這兩種 Web SDK 的顯著差異
 

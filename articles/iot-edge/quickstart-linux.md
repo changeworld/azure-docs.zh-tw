@@ -4,17 +4,17 @@ description: 在本快速入門中，了解如何在 Linux 上建立 IoT Edge �
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/30/2020
+ms.date: 12/02/2020
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 720a4d14a73350d98b3f9054f748b93d296be11b
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: ff9ba73e71e4525fe56a3cbb54626030f57e990b
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579246"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920803"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>快速入門：將您的第一個 IoT Edge 模組部署至虛擬 Linux 裝置
 
@@ -33,23 +33,15 @@ ms.locfileid: "94579246"
 
 如果您沒有使用中的 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-您可以使用 Azure CLI 來完成本快速入門中的許多步驟，而且 Azure IoT 有擴充功能可供啟用其他功能。
-
-將 Azure IoT 擴充功能新增至 Cloud Shell 執行個體。
-
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
-
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
-
 ## <a name="prerequisites"></a>必要條件
+
+備妥環境以使用 Azure CLI。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 雲端資源：
 
-* 一個資源群組，用以管理本快速入門中使用的所有資源。 在本快速入門及之後的教學課程中，我們會使用名為 **IoTEdgeResources** 的範例資源群組。
+- 一個資源群組，用以管理本快速入門中使用的所有資源。 在本快速入門及之後的教學課程中，我們會使用名為 **IoTEdgeResources** 的範例資源群組。
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
@@ -119,11 +111,11 @@ IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 它有三個元件
    az deployment group create \
    --resource-group IoTEdgeResources \
    --template-uri "https://aka.ms/iotedge-vm-deploy" \
-   --parameters dnsLabelPrefix='my-edge-vm' \
+   --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' \
    --parameters adminUsername='azureUser' \
    --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name
    <REPLACE_WITH_HUB_NAME> -o tsv) \
-   --parameters authenticationType='password'
+   --parameters authenticationType='password' \
    --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
 
@@ -133,7 +125,7 @@ IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 它有三個元件
    az deployment group create `
    --resource-group IoTEdgeResources `
    --template-uri "https://aka.ms/iotedge-vm-deploy" `
-   --parameters dnsLabelPrefix='my-edge-vm1' `
+   --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' `
    --parameters adminUsername='azureUser' `
    --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) `
    --parameters authenticationType='password' `
@@ -146,7 +138,7 @@ IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 它有三個元件
 | --------- | ----------- |
 | **resource-group** | 將在其中建立資源的資源群組。 使用我們在本文中使用的預設 **IoTEdgeResources**，或提供您訂用帳戶中現有資源群組的名稱。 |
 | **template-uri** | 我們所用 Resource Manager 範本的指標。 |
-| **dnsLabelPrefix** | 將用來建立虛擬機器主機名稱的字串。 使用範例 **my-edge-vm** 或提供新的字串。 |
+| **dnsLabelPrefix** | 將用來建立虛擬機器主機名稱的字串。 將預留位置文字取代為您虛擬機器的名稱。 |
 | **adminUsername** | 虛擬機器管理帳戶的使用者名稱。 使用範例 **azureUser** 或提供新的使用者名稱。 |
 | **deviceConnectionString** | IoT 中樞中裝置身分識別的連接字串，用來設定虛擬機器上的 IoT Edge 執行階段。 此參數內的 CLI 命令會為您抓取連接字串。 以您的 IoT 中樞名稱取代預留位置文字。 |
 | **authenticationType** | 管理帳戶的驗證方法。 本快速入門會使用 **密碼** 驗證，但您也可以將此參數設定為 **sshPublicKey**。 |

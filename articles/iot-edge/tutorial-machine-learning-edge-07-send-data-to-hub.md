@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f0695af6922182aa8be7acfb4b0a931bed35ef7d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 50df3424892594a6817d481aa4a3d540a342854f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959300"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932314"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>教學課程：透過透明閘道傳送資料
 
@@ -23,6 +23,14 @@ ms.locfileid: "94959300"
 我們會在模擬裝置傳送資料的期間，監視 IoT Edge 裝置的作業。 當裝置停止執行之後，我們會查看儲存體帳戶中的資料，以確認一切皆如預期般運作。
 
 此步驟通常是由雲端或裝置開發人員來執行。
+
+在教學課程的這一節中，您已了解如何：
+
+> [!div class="checklist"]
+>
+> * 建置並執行分葉裝置。
+> * 確認產生的資料會儲存在您的 Azure Blob 儲存體中。
+> * 驗證機器學習模型已將裝置資料分類。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -237,10 +245,7 @@ ms.locfileid: "94959300"
 
 在此文章中，我們已使用開發 VM 來模擬將感應器和作業資料傳送至 IoT Edge 裝置的分葉裝置。 我們以透過檢查邊緣裝置的即時作業，然後查看上傳至儲存體帳戶的檔案，來驗證路由、分類、保存及上傳資料之裝置上的模組。
 
-您可以在下列頁面上找到更多資訊：
+若要繼續了解 IoT Edge 功能，請接著嘗試進行此教學課程：
 
 > [!div class="nextstepaction"]
-> [將下游裝置連線到 Azure IoT Edge 閘道](how-to-connect-downstream-device.md)
-
-> [!div class="nextstepaction"]
-> [在 IoT Edge (預覽) 使用 Azure Blob 儲存體，以便在邊緣儲存資料](how-to-store-data-blob.md)
+> [建立 IoT Edge 裝置的階層架構 (預覽)](tutorial-nested-iot-edge.md?view=iotedge-2020-11&preserve-view=true)

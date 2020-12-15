@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efa4b625afb641209d3920c8663ed810ee27e1ad
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 427cf2614f81a086dcb174db06cd636df4876c7e
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89228642"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778490"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>什麼是 Azure Active Directory 監視？
 
@@ -40,15 +40,31 @@ ms.locfileid: "89228642"
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
+## <a name="licensing-and-prerequisites-for-azure-ad-reporting-and-monitoring"></a>Azure AD 報告和監視的授權和必要條件
+
+您需要 Azure AD premium 授權，才能存取 Azure AD 登入記錄。
+
+如需詳細功能與授權資訊，請參閱 [Azure Active Directory 定價指南](https://azure.microsoft.com/pricing/details/active-directory/)。
+
+若要部署 Azure AD 監視和報告，您需要擁有 Azure AD 租用戶的全域管理員或安全性系統管理員權限的使用者。
+
+視記錄資料的最終目的地而定，您需要具備下列其中一項條件：
+
+* 您具有 ListKeys 權限的 Azure 儲存體帳戶。 建議您使用一般儲存體帳戶，而不要使用 Blob 儲存體帳戶。 如需儲存體價格資訊，請參閱 [Azure 儲存體價格計算機](https://azure.microsoft.com/pricing/calculator/?service=storage)。
+
+* Azure 事件中樞命名空間，以便與第三方 SIEM 解決方案整合。
+
+* 用來將記錄傳送至 Azure 監視器記錄的 Azure Log Analytics 工作區。
+
 ## <a name="diagnostic-settings-configuration"></a>診斷設定組態
 
 若要設定 Azure AD 活動記錄的監視設定，請先登入 [Azure 入口網站](https://portal.azure.com)，然後選取 **Azure Active Directory**。 在此，您有兩種方式可存取診斷設定組態頁面：
 
-* 從 [監視]**** 區段選取 [診斷設定]****。
+* 從 [監視] 區段選取 [診斷設定]。
 
     ![診斷設定](./media/overview-monitoring/diagnostic-settings.png)
     
-* 選取 [稽核記錄]**** 或 [登入]****，然後選取 [匯出設定]****。 
+* 選取 [稽核記錄] 或 [登入]，然後選取 [匯出設定]。 
 
     ![匯出設定](./media/overview-monitoring/export-settings.png)
 

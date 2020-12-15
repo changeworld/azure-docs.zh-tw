@@ -1,6 +1,6 @@
 ---
-title: 快速入門：調整 Synapse SQL 集區的計算 (Azure PowerShell)
-description: 您可以使用 Azure PowerShell 來調整 Synapse SQL 集區 (資料倉儲) 的計算。
+title: 快速入門：調整專用 SQL 集區 (先前稱為 SQL DW) 的計算 (Azure PowerShell)
+description: 您可以使用 Azure PowerShell 調整專用 SQL 集區 (先前稱為 SQL DW) 的計算。
 services: synapse-analytics
 author: Antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: 8077b1a52e44ce3a5160309c92288f756bed1014
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 87e10740e6081431bad96daa930f61238ca495bd
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91566137"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921907"
 ---
-# <a name="quickstart-scale-compute-for-synapse-sql-pool-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 調整 Synapse SQL 集區的計算
+# <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>快速入門：透過 Azure PowerShell 調整專用 SQL 集區 (先前稱為 SQL DW) 的計算
 
-您可以使用 Azure PowerShell 來調整 Synapse SQL 集區 (資料倉儲) 的計算。 [擴增計算](sql-data-warehouse-manage-compute-overview.md)以提升效能，或將計算調整回來以節省成本。
+您可以使用 Azure PowerShell 調整專用 SQL 集區 (先前稱為 SQL DW) 的計算。 [擴增計算](sql-data-warehouse-manage-compute-overview.md)以提升效能，或將計算調整回來以節省成本。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -28,7 +28,7 @@ ms.locfileid: "91566137"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本快速入門假設您已有可調整的 SQL 集區。 若您需要建立 SQL 集區，請使用[建立與連線 - 入口網站](create-data-warehouse-portal.md)建立名為 **mySampleDataWarehouse** 的 SQL 集區。
+本快速入門假設您已有可調整的專用 SQL 集區 (先前稱為 SQL DW)。 若需要建立 SQL 集區，請使用 [建立與連線 - 入口網站](create-data-warehouse-portal.md)建立名為 **mySampleDataWarehouse** 的專用 SQL 集區 (先前稱為 SQL DW)。
 
 ## <a name="log-in-to-azure"></a>登入 Azure
 
@@ -67,7 +67,7 @@ Set-AzContext -SubscriptionName "MySubscription"
 
 ## <a name="scale-compute"></a>調整計算
 
-在 SQL 集區中，您可以藉由調整資料倉儲單位來增加或減少計算資源。 [建立與連線 - 入口網站](create-data-warehouse-portal.md)已建立 **mySampleDataWarehouse**，並以 400 DWU 加以初始化。 下列步驟會調整 **mySampleDataWarehouse** 的 DWU。
+在專用 SQL 集區 (先前稱為 SQL DW) 中，您可以藉由調整資料倉儲單位來增加或減少計算資源。 [建立與連線 - 入口網站](create-data-warehouse-portal.md)已建立 **mySampleDataWarehouse**，並以 400 DWU 加以初始化。 下列步驟會調整 **mySampleDataWarehouse** 的 DWU。
 
 若要變更資料倉儲單位，請使用 [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell Cmdlet。 下列範例將資料庫 **mySampleDataWarehouse** 的資料倉儲單位設定為 DW300c，此資料庫裝載於伺服器 **sqlpoolservername** 上的資源群組 **resourcegroupname** 中。
 
@@ -121,7 +121,7 @@ $database | Select-Object DatabaseName,Status
 
 ## <a name="next-steps"></a>後續步驟
 
-您現在已了解如何調整 SQL 集區的計算。 若要深入了解 SQL 集區，請繼續進行載入資料的教學課程。
+您現已了解如何調整專用 SQL 集區 (先前稱為 SQL DW) 的計算。 若要深入了解專用 SQL 集區 (先前稱為 SQL DW)，請繼續進行載入資料的教學課程。
 
 > [!div class="nextstepaction"]
->[將資料載入至 SQL 集區](load-data-from-azure-blob-storage-using-polybase.md)
+>[將資料載入專用 SQL 集區中](load-data-from-azure-blob-storage-using-copy.md)

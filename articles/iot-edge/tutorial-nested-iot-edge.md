@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 28b34ecaf51406b35c67d3838714691390f5adf7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c1dba383f259e35b143688b2db68f05f1a67def6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453056"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938187"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>教學課程：建立 IoT Edge 裝置的階層架構 (預覽)
 
@@ -50,10 +50,19 @@ ms.locfileid: "96453056"
 若要建立 IoT Edge 裝置的階層架構，您需要：
 
 * 具有網際網路連線能力的電腦 (Windows 或 Linux)。
-* 兩部要設定為 IoT Edge 裝置的 Linux 裝置。 如果您沒有可用的裝置，可以使用 [Azure 虛擬機器](../virtual-machines/linux/index.yml)。
 * 具有有效訂用帳戶的 Azure 帳戶。 如果您沒有 [Azure 訂用帳戶](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 * 在 Azure 中擁有免費或標準層的 [IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)。
-* 已安裝 Azure IoT 擴充功能 v0.10.6 或更新版本的 Azure CLI v2.3.1。 本教學課程會使用 [Azure Cloud Shell](../cloud-shell/overview.md)。 如果您不熟悉 Azure Cloud Shell，請[參閱快速入門以取得詳細資料](./quickstart-linux.md#use-azure-cloud-shell)。
+* 已安裝 Azure IoT 擴充功能 v0.10.6 或更新版本的 Azure CLI v2.3.1。 本教學課程會使用 [Azure Cloud Shell](../cloud-shell/overview.md)。 如果您不熟悉 Azure Cloud Shell，請[參閱快速入門以取得詳細資料](./quickstart-linux.md#prerequisites)。
+* 兩部要設定為 IoT Edge 裝置的 Linux 裝置。 如果您沒有可用的裝置，可以藉由取代下列命令中的預留位置文字並執行命令兩次，來建立兩個 Azure 虛擬機器：
+
+   ```azurecli-interactive
+   az vm create \
+    --resource-group <REPLACE_WITH_RESOURCE_GROUP> \
+    --name <REPLACE_WITH_UNIQUE_NAMES_FOR_EACH_VM> \
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --admin-password <REPLACE_WITH_PASSWORD>
+   ```
 
 您也可以遵循經指令碼編寫的[適用於工業 IoT 的 Azure IoT Edge 範例](https://aka.ms/iotedge-nested-sample)試用此案例，其會將 Azure 虛擬機器部署為預先設定的裝置，以模擬工廠環境。
 
@@ -185,11 +194,11 @@ ms.locfileid: "96453056"
    sudo apt-get install moby-engine
    ```
 
-1. 安裝 hsmlib 和 IoT Edge 精靈 <!-- Update with proper image links on release -->
+1. 安裝 hsmlib 和 IoT Edge 精靈。 若要查看其他 Linux 發行版本的資產，請[瀏覽 GitHub 版本](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc1)。 <!-- Update with proper image links on release -->
 
    ```bash
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc2/libiothsm-std_1.2.0.rc2-1-1_debian9_amd64.deb -o libiothsm-std.deb
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc2/iotedge_1.2.0_rc2-1_debian9_amd64.deb -o iotedge.deb
+   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/libiothsm-std_1.2.0.rc1-1-1_debian9_amd64.deb -o libiothsm-std.deb
+   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/iotedge_1.2.0_rc1-1_debian9_amd64.deb -o iotedge.deb
    sudo dpkg -i ./libiothsm-std.deb
    sudo dpkg -i ./iotedge.deb
    ```
@@ -611,7 +620,7 @@ You can also view these messages through the [Azure Cloud Shell](https://shell.a
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已將兩個 IoT Edge 裝置設定為閘道，並將其中之一設為另一個的父裝置。 然後，您示範了如何透過閘道將容器映像提取到子裝置上。 您也可以遵循經指令碼編寫的[適用於工業 IoT 的 Azure IoT Edge 範例](https://aka.ms/iotedge-nested-sample)試用此案例，其會將 Azure 虛擬機器部署為預先設定的裝置，以模擬工廠環境。
+在本教學課程中，您已將兩個 IoT Edge 裝置設定為閘道，並將其中之一設為另一個的父裝置。 然後，您示範了如何透過閘道將容器映像提取到子裝置上。
 
 若要進一步了解 Azure IoT Edge 可如何為您的企業建立解決方案，請繼續閱讀其他教學課程。
 

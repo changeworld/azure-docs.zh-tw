@@ -1,21 +1,21 @@
 ---
 title: 使用範本部署 VM 擴充功能
-description: 了解如何使用 Azure Resource Manager 範本部署虛擬機器擴充功能
+description: 了解如何使用 Azure Resource Manager 範本 (ARM 範本) 部署虛擬機器擴充功能。
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f82e0eb45f4bc7c3260554b1b1120025029336bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49bc1a77e2e25cb069a89812603ff562b8a4c1cd
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89073637"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931447"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>教學課程：使用 ARM 範本部署虛擬機器擴充功能
 
-了解如何使用 [Azure 虛擬機器擴充功能](../../virtual-machines/extensions/features-windows.md)在 Azure VM 上執行部署後設定及自動化工作。 有許多不同的虛擬機器擴充功能可與 Azure 虛擬機器搭配使用。 在本教學課程中，您將從 Azure Resource Manager (ARM) 範本部署在 Windows VM 上執行 PowerShell 指令碼的自訂指令碼擴充功能。  指令碼會在 VM 上安裝 Web 伺服器。
+了解如何使用 [Azure 虛擬機器擴充功能](../../virtual-machines/extensions/features-windows.md)在 Azure VM 上執行部署後設定及自動化工作。 有許多不同的虛擬機器擴充功能可與 Azure 虛擬機器搭配使用。 在本教學課程中，您將從 Azure Resource Manager 範本 (ARM 範本) 部署自訂指令碼擴充功能，以在 Windows VM 上執行 PowerShell 指令碼。 指令碼會在 VM 上安裝 Web 伺服器。
 
 本教學課程涵蓋下列工作：
 
@@ -31,7 +31,7 @@ ms.locfileid: "89073637"
 
 若要完成本文，您需要：
 
-* Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本](quickstart-create-templates-use-visual-studio-code.md)。
+* Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[快速入門：使用 Visual Studio Code 建立 ARM 範本](quickstart-create-templates-use-visual-studio-code.md)。
 * 為了提高安全性，請使用為虛擬機器系統管理員帳戶產生的密碼。 以下是用於產生密碼的範例：
 
     ```console

@@ -5,17 +5,81 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 11/11/2020
-ms.openlocfilehash: bf15e380eb1a88acc39ca63165d18d04a260b35d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 12/04/2020
+ms.openlocfilehash: 91aa76fd3d9dbb54316f32fdb319e92ca2283b1d
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185890"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745769"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure 監視器文件的最新動向
 
 本文提供新增或已大幅更新的 Azure 監視器文章清單。 該清單會在每個月的第一週重新整理，以納入上個月的文章更新。
+
+## <a name="november-2020"></a>2020 年 11 月
+
+### <a name="general"></a>一般
+- [Azure 監視器服務限制](service-limits.md) - 已更新並支援 Azure Arc。
+
+### <a name="agents"></a>代理程式
+- [Azure 監視代理程式概觀](platform/agents-overview.md) - 已更新並支援 Azure Arc。
+- [安裝 Azure 監視器代理程式](platform/azure-monitor-agent-install.md) - 新文章。
+- [Azure 監視器代理程式概觀](platform/azure-monitor-agent-overview.md) - 已更新並支援 Azure Arc。
+- [適用於代理程式的 Resource Manager 範本範例](samples/resource-manager-agent.md) - 已更新並支援 Azure Arc。
+
+### <a name="alerts"></a>警示
+- [在 Azure 入口網站中建立和管理動作群組](platform/action-groups.md) - 已新增 Webhook 的來源 IP 位址。
+
+### <a name="application-insights"></a>Application Insights
+- [Java 無程式碼應用程式監視 Azure 監視器 Application Insights](app/java-in-process-agent.md) - 已新增組態範例。
+- [適用於 Application Insights JavaScript SDK 的 React 外掛程式](app/javascript-react-plugin.md) - 已新增使用 React 勾點一節。
+- [從 Application Insights Java 2.x SDK 升級](app/java-standalone-upgrade-from-2x.md) - 新文章。
+- [Microsoft.ApplicationInsights.SnapshotCollector 的版本資訊](app/snapshot-collector-release-notes.md) - 新文章。
+
+### <a name="autoscale"></a>Autoscale
+- [開始使用 Azure 中的自動調整](platform/autoscale-get-started.md) - 新增有關如何將自動調整移至不同區域的區段。
+
+### <a name="data-collection"></a>資料集合
+- [設定 Azure 監視器代理程式 (預覽) 的資料收集](platform/data-collection-rule-azure-monitor-agent.md) - 已更新並支援 Azure Arc。
+- [Azure 監視器 (預覽) 中的資料收集規則](platform/data-collection-rule-overview.md) - 已更新並支援 Azure Arc。
+- [資料收集規則的 Resource Manager 範本範例](samples/resource-manager-data-collection-rules.md) - 新文章。
+
+### <a name="insights-and-solutions"></a>見解和解決方案
+- [使用安全匯出將 Azure 連線到 ITSM 工具](platform/it-service-management-connector-secure-webhook-connections.md) - 新增連線到 ServiceNow 一節。
+
+### <a name="logs"></a>記錄
+- [整合 Log Analytics 與 Excel](log-query/log-excel.md) - 新文章。
+- [Log Analytics 資料安全性](platform/data-security.md) - 已新增其他安全性功能的章節。
+- [Log Analytics 與 Power BI 整合](log-query/log-powerbi.md) - 新文章。
+- [Azure 監視器記錄檔中的標準資料行](platform/log-standard-columns.md) - 已新增 _SubscriptionId 資料行。
+
+來自重新建構記錄查詢內容的新文章和更新文章。
+
+- [Log Analytics 教學課程](log-query/log-analytics-tutorial.md)
+- [Azure 監視器中的記錄查詢](log-query/log-query-overview.md)
+- [Azure 監視器中的 Log Analytics 概觀](log-query/log-analytics-overview.md)
+- [Azure 資料總管和 Azure 監視器的查詢範例](/azure/data-explorer/kusto/query/samples?pivots=azuremonitor)
+- [教學課程：在 Azure 資料總管和 Azure 監視器中使用 Kusto 查詢](/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor)
+
+
+
+### <a name="virtual-machines"></a>虛擬機器
+
+- [啟用適用於 VM 的 Azure 監視器概觀](insights/vminsights-enable-overview.md) - 新增支援區域。
+
+適用於 VM 的 Azure 監視器來賓健康情況的新文章 (預覽)
+
+- [適用於 VM 的 Azure 監視器來賓健康情況 (預覽)](insights/vminsights-health-overview.md)
+- [適用於 VM 的 Azure 監視器來賓健康情況警示 (預覽)](insights/vminsights-health-alerts.md)
+- [在適用於 VM 的 Azure 監視器設定來賓健康情況監視 (預覽)](insights/vminsights-health-configure.md)
+- [使用資料收集規則在適用於 VM 的 Azure 監視器設定來賓健康情況監視 (預覽)](insights/vminsights-health-configure-dcr.md)
+- [啟用適用於 VM 的 Azure 監視器來賓健康情況 (預覽)](insights/vminsights-health-enable.md)
+- [針對適用於 VM 的 Azure 監視器來賓健康情況進行疑難排解 (預覽)](insights/vminsights-health-troubleshoot.md)
+
+
+
+
 
 ## <a name="october-2020"></a>2020 年 10 月
 

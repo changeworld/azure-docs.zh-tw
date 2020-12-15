@@ -7,23 +7,23 @@ ms.date: 10/21/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: b3d9e2e275b4c0d000759878557e5e14f7dfc04f
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 360da015f012822593dbb6390cb7df0017ba85b1
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925742"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745072"
 ---
 # <a name="run-a-custom-container-in-azure"></a>在 Azure 中執行自訂容器
 
 ::: zone pivot="container-windows"
-[Azure App Service](overview.md) 會在 Windows 上提供預先定義的應用程式堆疊 (例如 ASP.NET 或 Node.js)，執行於 IIS 上。 預先設定的 Windows 容器 (預覽) 環境會鎖定作業系統的系統管理存取、軟體安裝、對全域組件快取的變更等作業。 如需詳細資訊，請參閱 [Azure App Service 上的作業系統功能](operating-system-functionality.md)。 如果您的應用程式需要的存取超出預先設定的環境所允許的，您可以改為部署自訂 Windows 容器。
+[Azure App Service](overview.md) 會在 Windows 上提供預先定義的應用程式堆疊 (例如 ASP.NET 或 Node.js)，執行於 IIS 上。 預先設定的 Windows 容器環境會鎖定作業系統的系統管理存取、軟體安裝、對全域組件快取的變更等作業。 如需詳細資訊，請參閱 [Azure App Service 上的作業系統功能](operating-system-functionality.md)。 如果您的應用程式需要的存取超出預先設定的環境所允許的，您可以改為部署自訂 Windows 容器。
 
 此快速入門說明如何將 Windows 映像中的 ASP.NET 應用程式從 Visual Studio 部署到至 [Docker Hub](https://hub.docker.com/)。 您可以在 Azure App Service 中於自訂容器內執行應用程式。
 
 > [!NOTE]
-> Windows 容器上的 App Service 處於預覽狀態。
->
+> Windows 容器僅限 Azure 檔案儲存體，目前不支援 Azure Blob。
+
 
 ## <a name="prerequisites"></a>必要條件
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 774c829b3f9c36cef33f8f334825440b92582f4e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b3cb6bf56820da84d17f0b981f461a545bbe5ab6
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097298"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549254"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>教學課程：使用 Azure Cosmos DB 和 SQL API 來建置 Java Web 應用程式
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -74,7 +74,7 @@ ms.locfileid: "93097298"
 
 1. 在 Eclipse 的 [專案總管] 檢視中，展開您的專案。 在 [WebContent] 上按一下滑鼠右鍵、按一下 [新增]，然後按一下 [JSP 檔案]。
 
-1. 在 [新增 JSP 檔案] 對話方塊中，將檔案命名為 **index.jsp** 。 將上層資料夾保持為 **WebContent** ，如下圖所示，然後按 [下一步]。
+1. 在 [新增 JSP 檔案] 對話方塊中，將檔案命名為 **index.jsp**。 將上層資料夾保持為 **WebContent**，如下圖所示，然後按 [下一步]。
    
     :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="建立新的 JSP 檔案 - Java Web 應用程式教學課程":::
 
@@ -184,7 +184,7 @@ ms.locfileid: "93097298"
 
    :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/WebContent/assets/todo.js":::
 
-1. 現在只剩下測試應用程式。 在本機執行應用程式，並填入項目名稱和類別，然後按一下 [ **新增工作** ] 來新增一些待辦事項。 在項目出現後，您可以切換勾選核取方塊，然後按一下 [更新工作]，來更新其完成狀態。
+1. 現在只剩下測試應用程式。 在本機執行應用程式，並填入項目名稱和類別，然後按一下 [ **新增工作**] 來新增一些待辦事項。 在項目出現後，您可以切換勾選核取方塊，然後按一下 [更新工作]，來更新其完成狀態。
 
 ## <a name="deploy-your-java-application-to-azure-web-sites"></a><a id="Deploy"></a>將 Java 應用程式部署至 Azure 網站
 
@@ -228,7 +228,7 @@ Azure 網站讓部署 Java 應用程式變得相當簡單，您只需將應用�
 
 1. 在 [專案總管] 中，瀏覽至 azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java，並將 [主機] 和 [MASTER_KEY] 值取代為您 Azure Cosmos DB 帳戶的 [URI] 和 [主要金鑰]，然後儲存檔案。 如需詳細資訊，請參閱[步驟 1。建立 Azure Cosmos 資料庫帳戶](#CreateDB)。
 
-1. 在 [專案總管] 中，以滑鼠右鍵按一下 **azure-documentdb-java-sample** ，按一下 [組建路徑]，然後按一下 [設定組建路徑]。
+1. 在 [專案總管] 中，以滑鼠右鍵按一下 **azure-documentdb-java-sample**，按一下 [組建路徑]，然後按一下 [設定組建路徑]。
 
 1. 在 [Java 組建路徑] 畫面的右側窗格中，選取 [程式庫] 索引標籤，然後按一下 [新增外部 JAR]。 瀏覽至 lombok.jar 檔案的位置，按一下 [開啟]，然後按一下 [確定]。
 

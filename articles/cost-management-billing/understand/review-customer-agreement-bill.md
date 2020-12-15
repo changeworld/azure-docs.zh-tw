@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 12/02/2020
 ms.author: banders
-ms.openlocfilehash: 619dec1b2246b7e74b058e570df4021888196b0c
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: b5de81f5eaf76c16c1ea8fc78075c4567c77aeee
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447537"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531969"
 ---
 # <a name="tutorial-review-your-microsoft-customer-agreement-invoice"></a>教學課程：檢閱 Microsoft 客戶合約發票
 
@@ -54,6 +54,8 @@ ms.locfileid: "91447537"
 ![在 [屬性] 頁面中顯示 Microsoft 客戶合約的螢幕擷取畫面](./media/review-customer-agreement-bill/billing-mca-property.png)
 
 如果您有多個計費範圍的存取權，請檢查 [計費帳戶] 資料行中的類型。 如果任何範圍的計費帳戶類型為 [Microsoft 客戶合約]  ，您就可以存取 Microsoft 客戶合約的計費帳戶。
+
+在 [計費範圍] 頁面中選取 [計費範圍]，然後選取計費帳戶，用以支付訂用帳戶的使用量費用。 計費帳戶的類型應該是 **Microsoft 客戶合約**。
 
 ![在 [計費帳戶清單] 頁面中顯示 Microsoft 客戶合約的螢幕擷取畫面](./media/review-customer-agreement-bill/billing-mca-in-the-list.png)
 
@@ -146,7 +148,7 @@ ms.locfileid: "91447537"
 
 ### <a name="download-your-invoice-and-usage-details"></a>下載您的發票和使用量詳細資料
 
-根據您的存取權，您可能必須在 [成本管理 + 計費] 中選取計費帳戶或帳單設定檔。 在左側功能表中，選取 [計費]  之下的 [發票]  。 在發票方格中，尋找您要下載之發票的資料列。 按一下下載圖示或資料列結尾處的省略符號 (...)。 從 [下載]  方塊中下載使用量詳細資料檔案和發票。
+根據您的存取權，您可能必須在 [成本管理 + 計費] 中選取計費帳戶或帳單設定檔。 在左側功能表中，選取 [計費]  之下的 [發票]  。 在發票方格中，尋找您要下載之發票的資料列。 選取下載圖示或資料列結尾處的省略符號 (...)。 從 [下載]  方塊中下載使用量詳細資料檔案和發票。
 
 ### <a name="view-detailed-usage-by-invoice-section"></a>依發票區段檢視詳細使用量
 

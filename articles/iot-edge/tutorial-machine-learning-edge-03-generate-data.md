@@ -8,12 +8,12 @@ ms.date: 1/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ef6e86bbb55a2c51779f2dcf60f802ce549516cb
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: eef5e60b06eedb1fb07c57aa2e369dd3830fcad5
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959674"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932399"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>教學課程：產生模擬裝置資料
 
@@ -42,6 +42,14 @@ DeviceHarness 專案是以 C# 撰寫的 .NET Core 專案，並包含四個類別
 完成此文章中所描述的工作所需花費的時間大約是 20 分鐘。
 
 在真實世界中與本步驟中內容相對應的工作，通常會由裝置開發人員或雲端開發人員執行。
+
+在教學課程的這一節中，您已了解如何：
+
+> [!div class="checklist"]
+>
+> * 將外部專案併入您的開發環境。
+> * 使用範例 DeviceHarness 專案來產生模擬的 IoT 裝置資料。
+> * 檢視您 IoT 中樞內產生的資料。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -157,6 +165,10 @@ DeviceHarness 專案是以 C# 撰寫的 .NET Core 專案，並包含四個類別
 1. 檔案會以 [Avro](https://avro.apache.org/) 格式寫入。 按兩下其中一個檔案會開啟另一個瀏覽器索引標籤，並轉譯部分資料。 如果系統提示您以某個程式開啟該檔案，您可以選擇 VS Code，如此即可正確轉譯。
 
 1. 您目前還不需要嘗試讀取或解譯這些資料；我們將會在下一篇文章中這麼做。
+
+## <a name="clean-up-resources"></a>清除資源
+
+本教學課程是集合的一部分，其中每篇文章都會以上一篇文章中所完成的工作為基礎。 請等到您完成最後一個教學課程後，再清除任何資源。
 
 ## <a name="next-steps"></a>後續步驟
 

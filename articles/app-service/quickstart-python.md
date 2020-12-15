@@ -6,12 +6,12 @@ ms.date: 11/10/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 adobe-target: true
-ms.openlocfilehash: b32977ac1c8cfe0c461bcd1628c08a0ca215ba93
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 7eebbe5605c0b4d70ea15c1605cff5416965e535
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506187"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780768"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>快速入門：在 Linux 上的 Azure App Service 中建立 Python 應用程式
 
@@ -74,23 +74,11 @@ az login
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-world
 ```
-
-然後，瀏覽至該資料夾：
-
-```terminal
-cd python-docs-hello-world
-```
 ::: zone-end
 
 ::: zone pivot="python-framework-django"
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-django
-```
-
-然後，瀏覽至該資料夾：
-
-```terminal
-cd python-docs-hello-django
 ```
 ::: zone-end
 
@@ -101,7 +89,11 @@ cd python-docs-hello-django
 ## <a name="run-the-sample"></a>執行範例
 
 ::: zone pivot="python-framework-flask"
-1. 請確定您位於 *python-docs-hello-world* 資料夾中。 
+1. 請確定您位於 詳細功能與授權資訊 資料夾中：
+
+    ```terminal
+    cd python-docs-hello-world
+    ```
 
 1. 建立虛擬環境並安裝必要的相依性：
 
@@ -115,7 +107,11 @@ cd python-docs-hello-django
     flask run
     ```
     
-    根據預設，伺服器會假設應用程式的輸入模組位於 *app.py* 中，如範例中所使用。 (如果您使用不同的模組名稱，請將 `FLASK_APP` 環境變數設定為該名稱。)
+    根據預設，伺服器會假設應用程式的輸入模組位於 *app.py* 中，如範例中所使用。
+
+    如果您使用不同的模組名稱，請將 `FLASK_APP` 環境變數設定為該名稱。
+
+    如果您遇到錯誤「找不到 Flask 應用程式。 您未提供 'FLASK_APP' 環境變數，且在目前目錄中找不到 'wsgi.py' 或 'app.py' 模組。」，請確定您位於包含此範例的 `python-docs-hello-world` 資料夾中。
 
 1. 開啟網頁瀏覽器，然後移至位於 `http://localhost:5000/` 的範例應用程式。 應用程式會顯示 **Hello, World!** 訊息。
 
@@ -125,7 +121,11 @@ cd python-docs-hello-django
 ::: zone-end
 
 ::: zone pivot="python-framework-django"
-1. 請確定您位於 *python-docs-hello-django* 資料夾中。 
+1. 瀏覽至 python-docs-hello-django 資料夾：
+
+    ```terminal
+    cd python-docs-hello-django
+    ```
 
 1. 建立虛擬環境並安裝必要的相依性：
 
@@ -259,7 +259,7 @@ az webapp log tail
 
 App Service 功能表提供不同的頁面來設定您的應用程式。
 
-有問題嗎？ 請先參閱[疑難排解指南](configure-language-python.md#troubleshooting)，否則，[請告訴我們](https://aka.ms/FlaskCLIQuickstartHelp)。
+有問題嗎？ 請先參閱[疑難排解指南](configure-language-python.md#troubleshooting)，或者，[請告訴我們](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 ## <a name="clean-up-resources"></a>清除資源
 

@@ -2,20 +2,20 @@
 title: 比較 Azure 中以 Active Directory 為基礎的服務 | Microsoft Docs
 description: 在此概觀中，您會比較 Active Directory Domain Services、Azure Active Directory 和 Azure Active Directory Domain Services 的不同身分識別供應項目。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
-ms.author: joflore
-ms.openlocfilehash: 0576fdaa9bdcc90636c3cd2bc90ba2818f1e69e7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 479cc036ed3231d970d46eef9d89daa39a0b0876
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962661"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620183"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>比較自我管理 Active Directory Domain Services、Azure Active Directory 和受控 Azure Active Directory Domain Services
 
@@ -114,6 +114,9 @@ Azure AD 聯結裝置提供下列優點：
 | 管理性                      | Intune 等行動裝置管理 (MDM) 軟體 | 群組原則                                                              |
 | 網路功能                      | 透過網際網路運作                             | 必須與受控網域部署所在的虛擬網路連線或對等互連 |
 | 適用於...                    | 使用者行動裝置或桌面裝置                  | 部署在 Azure 中的伺服器 VM                                              |
+
+
+如果內部內部部署 AD DS 和 Azure AD 已設定為使用 ADFS 的同盟驗證，則 Azure DS 中沒有可用的 (目前/有效) 密碼雜湊。 在送出驗證之前所建立 Azure AD 使用者帳戶可能會有舊密碼雜湊，但這可能不符合其內部內部部署密碼的雜湊。 因此 Azure AD DS 將無法驗證使用者的認證
 
 ## <a name="next-steps"></a>後續步驟
 

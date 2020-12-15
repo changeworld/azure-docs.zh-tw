@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/03/2020
+ms.date: 11/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 557d2eb636e51f4259bc525fe39f8c95303774cd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 9a2c52674bafeb170efd41afa9c395aeecda9df8
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181022"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602116"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-clientvpn"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 AWS ClientVPN 整合
 
@@ -80,7 +80,13 @@ ms.locfileid: "96181022"
 
     a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：`https://<LOCALHOST>`
 
-    b. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://<LOCALHOST>`
+    b. 在 [回覆 URL] 文字方塊中，以下列其中一個模式輸入 URL：
+
+    | 回覆 URL |
+    |------------|
+    | `https://<LOCALHOST>` |
+    | `https://self-service.clientvpn.amazonaws.com/api/auth/sso/saml` |
+    |
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「登入 URL」和「回覆 URL」來更新這些值。 請連絡 [AWS ClientVPN 用戶端支援小組](https://aws.amazon.com/contact-us/)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
@@ -146,11 +152,11 @@ ms.locfileid: "96181022"
 
 在本節中，您會使用下列選項來測試您的 Azure AD 單一登入組態。 
 
-1. 在 Azure 入口網站中按一下 [測試此應用程式]。 這會重新導向至您可以在其中起始登入流程的 AWS ClientVPN 登入 URL。 
+* 在 Azure 入口網站中按一下 [測試此應用程式]。 這會重新導向至您可以在其中起始登入流程的 AWS ClientVPN 登入 URL。 
 
-2. 直接移至 AWS ClientVPN 登入 URL，然後從該處起始登入流程。
+* 直接移至 AWS ClientVPN 登入 URL，然後從該處起始登入流程。
 
-3. 您可以使用 Microsoft 存取面板。 當您按一下存取面板中的 [AWS ClientVPN] 圖格時，將會重新導向至 AWS ClientVPN 登入 URL。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
+* 您可以使用 Microsoft 的「我的應用程式」。 當您按一下「我的應用程式」中的 [AWS ClientVPN] 圖格時，將會重新導向至 AWS ClientVPN 登入 URL。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
 
 ## <a name="next-steps"></a>後續步驟

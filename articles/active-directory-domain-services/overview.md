@@ -2,21 +2,21 @@
 title: Azure Active Directory Domain Services 概觀 | Microsoft Docs
 description: 在此概觀中，您將了解 Azure Active Directory Domain Services 提供的內容，以及如何在您的組織中使用它來提供身分識別服務給雲端中的應用程式與服務。
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 08/14/2020
-ms.author: joflore
+ms.date: 12/03/2020
+ms.author: justinha
 ms.custom: contperfq1
-ms.openlocfilehash: 988119c34ab0a8ef0e20ec86a7552fb7b4643cd1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 141b59e400154ef40ebced25c69eaf162ac1787a
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967982"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619108"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>什麼是 Azure Active Directory Domain Services？
 
@@ -33,7 +33,7 @@ Azure AD DS 會與您現有的 Azure AD 租用戶整合。 此整合可讓使用
 
 當您建立 Azure AD DS 受控網域時，您可以定義唯一的命名空間。 這個命名空間是網域名稱，例如 aaddscontoso.com。 接著，會將兩個 Windows Server 網域控制站 (DC) 部署到您選取的 Azure 區域。 此 DC 的部署稱為「複本集」。
 
-您不需要管理、設定或更新這些 DC。 Azure 平台會將 DC 當成受控網域的一部分來處理，包括備份。
+您不需要管理、設定或更新這些 DC。 Azure 平台會將 DC 當成受控網域的一部分來處理，包括使用 Azure 磁碟加密備份和加密。
 
 此受控網域已設定為從 Azure AD 執行單向同步，以提供對一組集中式使用者、群組與認證的存取權。 您可以直接在此受控網域中建立資源，但系統不會將其同步處理回到 Azure AD。 Azure 中連線到受控網域的應用程式、服務與 VM 接著可以使用常見的 AD DS 功能，例如，網域加入、群組原則、LDAP 與 Kerberos / NTLM 驗證。
 

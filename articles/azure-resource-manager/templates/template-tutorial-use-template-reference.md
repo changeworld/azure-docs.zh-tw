@@ -1,21 +1,21 @@
 ---
 title: 使用範本參考
-description: 使用 Azure Resource Manager 範本參考來建立範本。
+description: 使用 Azure Resource Manager 範本 (ARM 範本) 參考來建立範本。
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 3709511fa8da0a40f4faf4ab2dac9505d69003ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfd6311fab8d9c65fa7c82d2f707ac96549a32a9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86118506"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931413"
 ---
-# <a name="tutorial-utilize-the-resource-manager-template-reference"></a>教學課程：利用 Resource Manager 範本參考
+# <a name="tutorial-utilize-the-arm-template-reference"></a>教學課程：利用 ARM 範本參考
 
-了解如何尋找範本結構描述資訊，以及使用此資訊來建立 Azure Resource Manager (ARM) 範本。
+了解如何尋找範本結構描述資訊，以及使用此資訊來建立 Azure Resource Manager 範本 (ARM 範本)。
 
 在本教學課程中，您會使用 Azure 快速入門範本中的基底範本。 您可使用範本參考文件來自訂範本。
 
@@ -36,7 +36,7 @@ ms.locfileid: "86118506"
 
 若要完成本文，您需要：
 
-* Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本](quickstart-create-templates-use-visual-studio-code.md)。
+* Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[快速入門：使用 Visual Studio Code 建立 ARM 範本](quickstart-create-templates-use-visual-studio-code.md)。
 
 ## <a name="open-a-quickstart-template"></a>開啟快速入門範本
 
@@ -65,18 +65,18 @@ ms.locfileid: "86118506"
     * **resources**：指定在資源群組中部署或更新的資源類型。
     * **outputs**：指定部署後傳回的值。
 
-1. 擴充**資源**。 已定義 `Microsoft.Storage/storageAccounts` 資源。 SKU 名稱會使用參數值。  參數名為 **storageAccountType**。
+1. 擴充 **資源**。 已定義 `Microsoft.Storage/storageAccounts` 資源。 SKU 名稱會使用參數值。  參數名為 **storageAccountType**。
 
     ![Resource Manager 範本儲存體帳戶定義](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resource.png)
 
-1. 展開**參數** 以查看如何定義 **storageAccountType**。 參數有四個允許的值。 您會找到其他允許的值，然後修改參數定義。
+1. 展開 **參數** 以查看如何定義 **storageAccountType**。 參數有四個允許的值。 您會找到其他允許的值，然後修改參數定義。
 
     ![Resource Manager 範本儲存體帳戶資源 SKU](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resources-skus-old.png)
 
 ## <a name="find-the-template-reference"></a>尋找範本參考
 
 1. 瀏覽至[Azure 範本參考](/azure/templates/)。
-1. 在 [依標題篩選] 方塊中，輸入**儲存體帳戶**，然後選取 [參考] > [儲存體] 底下的第一個 [儲存體帳戶]。
+1. 在 [依標題篩選] 方塊中，輸入 **儲存體帳戶**，然後選取 [參考] > [儲存體] 底下的第一個 [儲存體帳戶]。
 
     ![Resource Manager 範本參考儲存體帳戶](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts.png)
 

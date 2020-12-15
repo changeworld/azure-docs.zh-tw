@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 12/02/2020
 ms.author: banders
-ms.openlocfilehash: 070d105785ee3ab9811188406bda56dbe6ceb558
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 874d5cb022a38b172bb37009bd86b5e6988f3204
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350886"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545599"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>取得 Enterprise 合約保留成本和使用量
 
@@ -140,9 +140,11 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 2. 取得保留成本。 將 _Cost_ 值加總，以取得您針對保留執行個體支付的貨幣值。 其中包含保留的已使用和未使用成本。
 3. 從預估的隨用隨付成本中減去保留成本，以取得預估節省的成本。
 
+請記住，如果您有使用量過低的保留，ChargeType 的 UnusedReservation 項目會成為考量因素。 擁有完全使用的保留時，可節省最多成本。 任何 UnusedReservation 數量都會降低可節省的成本。
+
 ## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>成本分析中的保留購買和分攤
 
-在[成本分析](https://aka.ms/costanalysis)中可取得保留成本。 根據預設，成本分析會顯示 [實際成本]  ，這就是您帳單上顯示成本的方式。 若要檢視已細分並與使用權益的資源相關聯的保留購買，請切換為 [分攤成本]  ：
+在[成本分析](https://aka.ms/costanalysis)中可取得保留成本。 根據預設，成本分析會顯示 [實際成本]，這就是您帳單上顯示成本的方式。 若要檢視已細分並與使用權益的資源相關聯的保留購買，請切換為 [分攤成本]：
 
 ![顯示在成本分析中何處選取分攤成本的範例](./media/understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
 

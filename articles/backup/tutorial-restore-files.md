@@ -4,12 +4,12 @@ description: 了解如何使用備份與復原服務，在 Azure VM 上執行檔
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 236b2c2c7799ef6a0df1da2ddded0e689349e222
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d977919b806be32b84001a9b91dc9e396fbd63ce
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842204"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96557904"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>在 Azure 中將檔案還原到虛擬機器
 
@@ -21,13 +21,15 @@ Azure 備份會建立復原點，並儲存在異地備援復原保存庫。 當�
 > * 將復原點連線到 VM
 > * 從復原點還原檔案
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.0.18 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
-
 ## <a name="prerequisites"></a>必要條件
 
 本教學課程需要已使用 Azure 備份保護的 Linux VM。 若要模擬意外刪除檔案和復原程序，您可以從網頁伺服器刪除頁面。 如果您需要執行網頁伺服器並已使用 Azure 備份保護的 Linux VM，請參閱[使用 CLI 在 Azure 中備份虛擬機器](quick-backup-vm-cli.md)。
+
+準備您的環境：
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- 本文需要 2.0.18 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="backup-overview"></a>備份概觀
 

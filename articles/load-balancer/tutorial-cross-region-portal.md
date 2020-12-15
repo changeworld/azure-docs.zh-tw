@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 11/24/2020
-ms.openlocfilehash: fe335b00df23ff132ad61b27efd733d195ee3bfb
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 7ee203595a796529ae0aefe8b0c52a689ac29968
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030933"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762324"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站建立跨區域 Azure Load Balancer
 
@@ -28,7 +28,11 @@ ms.locfileid: "96030933"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
-## <a name="prerequisites"></a>必要條件
+> [!IMPORTANT]
+> 跨區域 Azure Load Balancer 目前為公開預覽狀態。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶。
 - 兩個 **標準** SKU Azure 負載平衡器，其後端集區部署在兩個不同的 Azure 區域中。
@@ -37,8 +41,7 @@ ms.locfileid: "96030933"
 
 ## <a name="sign-in-to-azure-portal"></a>登入 Azure 入口網站
 
-> [!IMPORTANT]
-> 跨區域負載平衡器目前為預覽狀態，並隱藏在預覽入口網站中。  登入 **https://preview.portal.azure.com/?feature.globallb=true** 以檢視及部署功能。
+[登入](https://preview.portal.azure.com) Azure 預覽入口網站。
 
 ## <a name="create-cross-region-load-balancer"></a>建立跨區域負載平衡器
 

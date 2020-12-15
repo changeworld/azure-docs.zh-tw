@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 199da0586a061bccdf8a6ff8a1f53df2f703512f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 25db7104e565a987f3be9e2d6f3b239cf1884ae4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959436"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932331"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>教學課程：建立和部署自訂 IoT Edge 模組
 
@@ -51,6 +51,15 @@ IoT Edge 中樞可促進模組對模組的通訊。 使用 IoT Edge 中樞作為
 ![IoT Edge 三個模組架構圖](media/tutorial-machine-learning-edge-06-custom-modules/modules-diagram.png)
 
 此文章中的步驟通常是由雲端開發人員執行的。
+
+在教學課程的這一節中，您已了解如何：
+
+> [!div class="checklist"]
+>
+> * 從自訂程式碼建立 IoT Edge 模組。
+> * 從您的自訂模組產生 Docker 映像。
+> * 重新設定 IoT 中樞路由以支援您的自訂模組。
+> * 建置、發佈和部署您的自訂模組。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -804,6 +813,10 @@ Avro 寫入器模組在我們的解決方案中有兩個任務，即儲存訊息
    ```bash
    sudo docker exec -it avroFileWriter bash
    ```
+
+## <a name="clean-up-resources"></a>清除資源
+
+本教學課程是集合的一部分，其中每篇文章都會以上一篇文章中所完成的工作為基礎。 請等到您完成最後一個教學課程後，再清除任何資源。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -8,12 +8,12 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b9a29e890553d15d19853ec836f8c4296869e143
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 757e34fd45b7d3d9703aa09daa7f040c5f605637
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959623"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932382"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>教學課程：定型和部署 Azure Machine Learning 模型
 
@@ -26,6 +26,14 @@ ms.locfileid: "94959623"
 Azure Notebooks 能運用 Azure Machine Learning 工作區，其為用來對機器學習模型進行實驗、定型及部署的基本區塊。
 
 此文章中的步驟通常是由資料科學家執行的。
+
+在教學課程的這一節中，您已了解如何：
+
+> [!div class="checklist"]
+>
+> * 建立 Azure Notebooks 專案來訓練機器學習模型。
+> * 容器化訓練過的機器學習模型。
+> * 從容器化機器學習模型建立 Azure IoT Edge 模組。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -179,6 +187,10 @@ Azure Notebooks 能運用 Azure Machine Learning 工作區，其為用來對機�
 您可以將 Python 陳述式插入至筆記本以進行偵錯，例如使用 `print()` 命令來顯示值。 如果您看到未定義的變數或物件，請執行其首次宣告或具現化時所在的資料格。
 
 如果需要重做筆記本，您可能必須刪除先前建立的檔案和 Azure 資源。
+
+## <a name="clean-up-resources"></a>清除資源
+
+本教學課程是集合的一部分，其中每篇文章都會以上一篇文章中所完成的工作為基礎。 請等到您完成最後一個教學課程後，再清除任何資源。
 
 ## <a name="next-steps"></a>後續步驟
 

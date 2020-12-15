@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: cdbc972d230988420a066c4b927388b885f99a17
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 6109164d8827a343a550a114acc42db2461f3a2c
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896740"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905344"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>教學課程：使用 Azure 地圖服務執行 IoT 空間分析
 
@@ -24,7 +24,7 @@ IoT 案例通常會捕捉及追蹤在空間和時間中發生的相關事件。 
 
 > [!div class="checklist"]
 > * 建立 Azure 儲存體帳戶記錄車輛以追蹤資料。
-> * 使用 Data Upload API 在 Azure 地圖服務資料服務中上傳地理柵欄。
+> * 使用 Data Upload API 在 Azure 地圖服務資料服務 (預覽) 中上傳地理柵欄。
 > * 在 Azure IoT 中樞中建立中樞，然後註冊裝置。
 > * 在 Azure Functions 中建立函式，並根據 Azure 地圖服務空間分析來實作商務邏輯。
 > * 透過 Azure 事件方格從 Azure 函式訂閱 IoT 裝置遙測事件。
@@ -91,7 +91,7 @@ IoT 案例通常會捕捉及追蹤在空間和時間中發生的相關事件。 
 
 下圖以藍色標示的是地理柵欄區域。 出租車輛的路線會以綠色線表示。
 
-   :::image type="content" source="./media/tutorial-iot-hub-maps/geofence-route.png" border="false" alt-text="系統概觀的圖表。":::
+   :::image type="content" source="./media/tutorial-iot-hub-maps/geofence-route.png" border="false" alt-text="顯示地理柵欄路線的圖表。":::
 
 ## <a name="create-an-azure-storage-account"></a>建立 Azure 儲存體帳戶
 
@@ -103,15 +103,15 @@ IoT 案例通常會捕捉及追蹤在空間和時間中發生的相關事件。 
 
 1. 移至您新建立的儲存體帳戶。 在 [基本資訊] 區段中，選取 [容器] 連結。
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/containers.png" alt-text="系統概觀的圖表。":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/containers.png" alt-text="Blob 儲存體容器的螢幕擷取畫面。":::
 
 2. 選取左上角的 [容器]。 面板就會顯示在瀏覽器右側。 將您的容器命名為 contoso-rental-logs 然後選取 [建立]。
 
-     :::image type="content" source="./media/tutorial-iot-hub-maps/container-new.png" alt-text="系統概觀的圖表。":::
+     :::image type="content" source="./media/tutorial-iot-hub-maps/container-new.png" alt-text="建立 Blob 容器的螢幕擷取畫面。":::
 
 3. 在您的儲存體帳戶中移至 [存取金鑰] 窗格，並複製 **儲存體帳戶名稱** 和 [key1] 區段中的 **金鑰** 值。 您在「建立 Azure 函式並新增事件方格訂用帳戶」區段中會需要這兩個值。
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/access-keys.png" alt-text="系統概觀的圖表。":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/access-keys.png" alt-text="複製儲存體帳戶名稱和金鑰的螢幕擷取畫面。":::
 
 ## <a name="upload-a-geofence"></a>上傳地理柵欄
 
@@ -176,11 +176,11 @@ Azure Functions 是無伺服器計算服務，可讓您執行一小段程式碼 
 
 現在，請設定您的 Azure 函式。
 
-1. 在 Azure 入口網站儀表板中，選取 [建立資源]。 在 [搜尋] 文字方塊中輸入 **函式應用程式** 。 選取 [函數應用程式]  >  [建立]。
+1. 在 Azure 入口網站儀表板中，選取 [建立資源]。 在 [搜尋] 文字方塊中輸入 **函式應用程式**。 選取 [函數應用程式]  >  [建立]。
 
-1. 在 [函式應用程式建立]  頁面上，為您的函式應用程式命名。 在 [資源群組] 下的下拉式清單中選取 ContosoRental。 選取 [.NET Core] 作為 **執行階段堆疊** 。 選取頁面底部的 [下一步：裝載 >]。
+1. 在 [函式應用程式建立] 頁面上，為您的函式應用程式命名。 在 [資源群組] 下的下拉式清單中選取 ContosoRental。 選取 [.NET Core] 作為 **執行階段堆疊**。 選取頁面底部的 [下一步：裝載 >]。
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/rental-app.png" alt-text="系統概觀的圖表。":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/rental-app.png" alt-text="建立函數應用程式的螢幕擷取畫面。":::
 
 1. 在 **儲存體帳戶** 中，選取您在 [建立 Azure 儲存體帳戶](#create-an-azure-storage-account)中建立的儲存體帳戶。 選取 [檢閱 + 建立]。
 
@@ -191,32 +191,32 @@ Azure Functions 是無伺服器計算服務，可讓您執行一小段程式碼 
      >[!IMPORTANT]
     > **Azure 事件中樞觸發程序** 和 **Azure 事件方格觸發程序** 範本的名稱十分類似。 請確定您選取了 **Azure 事件方格觸發程序** 範本。
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create.png" alt-text="系統概觀的圖表。":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create.png" alt-text="建立函式的螢幕擷取畫面。":::
 
 1. 為函式命名。 在本教學課程中，您會使用名稱 GetGeoFunction，但是一般而言您可以使用任何您喜歡的名稱。 選取 [建立函式]。
 
 1. 在左側功能表中，選取 [程式碼 + 測試] 窗格。 複製 [C# 指令碼](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) 並貼入程式碼視窗。
 
-     :::image type="content" source="./media/tutorial-iot-hub-maps/function-code.png" alt-text="系統概觀的圖表。":::
+     :::image type="content" source="./media/tutorial-iot-hub-maps/function-code.png" alt-text="複製程式碼並貼到函式視窗的螢幕擷取畫面。":::
 
 1. 在 C# 程式碼中，取代下列參數：
-    * 以您的 Azure 地圖服務帳戶主要訂用帳戶金鑰取代 **SUBSCRIPTION_KEY** 。
-    * 以您在 [上傳地理柵欄](#upload-a-geofence)中上傳的地理柵欄 `udid` 取代 **UDID** 。
-    * 指令碼中的 `CreateBlobAsync` 函式會在資料儲存體帳戶中為每個事件建立一個 Blob。 將 **ACCESS_KEY** 、 **ACCOUNT_NAME** 和 **STORAGE_CONTAINER_NAME** 取代為您儲存體帳戶的存取金鑰、帳戶名稱和資料儲存體容器。 當您在[建立 Azure 儲存體帳戶](#create-an-azure-storage-account)中建立儲存體帳戶時，會產生這些值 。
+    * 以您的 Azure 地圖服務帳戶主要訂用帳戶金鑰取代 **SUBSCRIPTION_KEY**。
+    * 以您在 [上傳地理柵欄](#upload-a-geofence)中上傳的地理柵欄 `udid` 取代 **UDID**。
+    * 指令碼中的 `CreateBlobAsync` 函式會在資料儲存體帳戶中為每個事件建立一個 Blob。 將 **ACCESS_KEY**、**ACCOUNT_NAME** 和 **STORAGE_CONTAINER_NAME** 取代為您儲存體帳戶的存取金鑰、帳戶名稱和資料儲存體容器。 當您在[建立 Azure 儲存體帳戶](#create-an-azure-storage-account)中建立儲存體帳戶時，會產生這些值 。
 
 1. 在左側功能表中，選取 [整合] 窗格。 選取圖表中的 [事件方格觸發程序]。 輸入觸發程序的名稱 eventGridEvent，然後選取 [建立事件方格訂用帳戶]。
 
-     :::image type="content" source="./media/tutorial-iot-hub-maps/function-integration.png" alt-text="系統概觀的圖表。":::
+     :::image type="content" source="./media/tutorial-iot-hub-maps/function-integration.png" alt-text="新增事件訂用帳戶的螢幕擷取畫面。":::
 
-1. 填妥訂用帳戶詳細資料。 為事件訂用帳戶命名。 針對「事件結構描述」，選取 [事件方格結構描述]。 針對 **主題類型** ，請選取 [Azure IoT 中樞帳戶]。 針對 **資源群組** ，選取您一開始為此教學課程建立的資源群組。 針對 **資源** ，請選取您在「建立 Azure IoT 中樞」中所建立的 IoT 中樞。 針對 **事件種類篩選** ，選取 [裝置遙測]。
+1. 填妥訂用帳戶詳細資料。 為事件訂用帳戶命名。 針對「事件結構描述」，選取 [事件方格結構描述]。 針對 **主題類型**，請選取 [Azure IoT 中樞帳戶]。 針對 **資源群組**，選取您一開始為此教學課程建立的資源群組。 針對 **資源**，請選取您在「建立 Azure IoT 中樞」中所建立的 IoT 中樞。 針對 **事件種類篩選**，選取 [裝置遙測]。
 
-   選擇這些選項後，您會看到 **主題類型** 自動變更為「IoT 中樞」。 針對 **系統主題名稱** ，您可以使用與資源相同的名稱。 最後，在 [端點詳細資料] 區段中選取 [選取端點]。 接受所有設定，然後選取 [確認選取]。
+   選擇這些選項後，您會看到 **主題類型** 自動變更為「IoT 中樞」。 針對 **系統主題名稱**，您可以使用與資源相同的名稱。 最後，在 [端點詳細資料] 區段中選取 [選取端點]。 接受所有設定，然後選取 [確認選取]。
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription.png" alt-text="系統概觀的圖表。":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription.png" alt-text="建立事件訂用帳戶的螢幕擷取畫面。":::
 
 1. 檢閱您的設定。 請確定端點指定您在本節開頭所建立的函式。 選取 [建立]。
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription-confirm.png" alt-text="系統概觀的圖表。":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription-confirm.png" alt-text="建立事件訂用帳戶確認的螢幕擷取畫面。":::
 
 1. 現在您已經回到 **編輯觸發程序** 面板。 選取 [儲存]。
 
@@ -224,11 +224,11 @@ Azure Functions 是無伺服器計算服務，可讓您執行一小段程式碼 
 
 當您將事件方格訂用帳戶新增至 Azure 函式時，系統會在指定的 IoT 中樞內自動建立訊息路由。 訊息路由可讓您將不同的資料類型路由至不同的端點。 例如，您可以路由裝置遙測訊息、裝置生命週期事件和裝置對應項變更事件。 如需詳細資訊，請參閱[使用 IoT 中樞訊息路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)。
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/hub-route.png" alt-text="系統概觀的圖表。":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/hub-route.png" alt-text="IoT 中樞內訊息路由的螢幕擷取畫面。":::
 
 在範例案例中，您只想要在出租車輛移動時收到訊息。 建立路由查詢，篩選在 `Engine` 屬性等於 **「ON」** 的事件。 若要建立路由查詢，請選取 **RouteToEventGrid** 路由，並將 **路由查詢** 取代為 **"Engine='ON'"** 。 然後選取 [儲存]。 IoT 中樞現在只會發佈引擎已開啟的裝置遙測。
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/hub-filter.png" alt-text="系統概觀的圖表。":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/hub-filter.png" alt-text="篩選路由訊息的螢幕擷取畫面。":::
 
 >[!TIP]
 >有各種方式可查詢 IoT 裝置到雲端的訊息。 若要深入了解訊息路由語法，請參閱 [IoT 中樞訊息路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax)。
@@ -256,15 +256,15 @@ Azure Functions 是無伺服器計算服務，可讓您執行一小段程式碼 
 
   您的本機終端機應會顯示如下。
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/terminal.png" alt-text="系統概觀的圖表。":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/terminal.png" alt-text="終端機輸出的螢幕擷取畫面。":::
 
 如果您現在開啟 Blob 儲存體容器，應該可以看到四個位置 Blob，分別顯示車輛已超出地理柵欄範圍。
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/blob.png" alt-text="系統概觀的圖表。":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/blob.png" alt-text="檢視容器中 Blob 的螢幕擷取畫面。":::
 
 下圖顯示位於地理柵欄之外的四部車輛位置點。 每個位置都是以固定時間間隔記錄。
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/violation-map.png" alt-text="系統概觀的圖表。":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/violation-map.png" alt-text="違規地圖的螢幕擷取畫面。":::
 
 ## <a name="explore-azure-maps-and-iot"></a>探索 Azure 地圖服務和 IoT
 

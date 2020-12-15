@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
-ms.openlocfilehash: 291586bc2e34784a7bbf29016ea1da35d51e844b
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: bb2eb36e4116c17efb20946b0da4586678838f3b
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489942"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861998"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>教學課程：從 Azure 串流分析作業執行 Azure Functions 
 
@@ -195,7 +195,9 @@ ms.locfileid: "94489942"
 如果將事件傳送至 Azure Functions 時發生失敗，則串流分析會重試大部分的作業。 所有 http 例外狀況都會進行重試，直到成功但出現 http 錯誤413 (實體太大) 例外狀況為止。 實體太大的錯誤會被視為受制於[重試或捨棄原則](stream-analytics-output-error-policy.md)的資料錯誤。
 
 > [!NOTE]
-> 從串流分析到 Azure Functions 的 HTTP 要求逾時時間設定為 100 秒。 如果 Azure Functions 應用程式使用超過 100 秒的時間來處理批次，則串流分析會發生錯誤。
+> 從串流分析到 Azure Functions 的 HTTP 要求逾時時間設定為 100 秒。 如果 Azure Functions 應用程式使用超過 100 秒的時間來處理批次，則串流分析會發生錯誤並重試該批次。
+
+因逾時而重試可能會導致寫入輸出接收的事件重複。 當串流分析重試失敗的批次時，其會針對批次中的所有事件重試。 例如，從串流分析傳送其中有 20 個事件的批次到 Azure Functions。 假設 Azure Functions 需要 100 秒的時間來處理該批次中的前 10 個事件。 在 100 秒之後，串流分析暫停要求，因為其尚未收到來自 Azure Functions 的正面回應，而另一個要求又針對相同的批次傳送。 Azure Functions 會再次處理批次中的前 10 個事件，因此導致重複。 
 
 ## <a name="known-issues"></a>已知問題
 

@@ -11,18 +11,18 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 123e55202de8a33bca88afcfd1f0dc0c7edeae77
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 52b46d67d745017237a8c648abed66e2693d9d6a
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320101"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573012"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>教學課程：使用您自己的資料 (第 4 部，共 4 部)
 
 本教學課程會示範如何上傳和使用您自己的資料，以在 Azure Machine Learning 中訓練機器學習模型。
 
-本教學課程是 *四部分教學課程系列的第 4 部分* ，您會在其中了解 Azure Machine Learning 的基本概念，以及在 Azure 中完成作業型機器學習工作。 本教學課程建基於您在[第 1 部分：設定](tutorial-1st-experiment-sdk-setup-local.md)、[第 2 部分：執行 "Hello World"](tutorial-1st-experiment-hello-world.md) 及[第 3 部分：訓練模型](tutorial-1st-experiment-sdk-train.md)。
+本教學課程是 *四部分教學課程系列的第 4 部分*，您會在其中了解 Azure Machine Learning 的基本概念，以及在 Azure 中完成作業型機器學習工作。 本教學課程建基於您在[第 1 部分：設定](tutorial-1st-experiment-sdk-setup-local.md)、[第 2 部分：執行 "Hello World"](tutorial-1st-experiment-hello-world.md) 及[第 3 部分：訓練模型](tutorial-1st-experiment-sdk-train.md)。
 
 在[第 3 部分：定型模型](tutorial-1st-experiment-sdk-train.md)中，資料下載方式是透過 PyTorch API 中的內建 `torchvision.datasets.CIFAR10` 方法。 不過，在許多情況下，您會在遠端訓練回合中使用自己的資料。 本文將說明 Azure Machine Learning 中可用來處理自己資料的工作流程。
 
@@ -45,6 +45,7 @@ ms.locfileid: "93320101"
 * Python (版本 3.5 至 3.7)。
 
 ## <a name="adjust-the-training-script"></a>調整訓練指令碼
+
 現在 Azure Machine Learning 中有執行中的訓練指令碼 (tutorial/src/train.py)，而且您可以監視模型效能。 讓我們藉由引進引數來將訓練指令碼參數化。 使用引數可讓您輕鬆比較不同的超參數。
 
 我們的訓練指令碼現在會設定為每次執行時下載 CIFAR10 資料集。 下列 Python 程式碼已調整為從目錄讀取資料。
@@ -52,81 +53,7 @@ ms.locfileid: "93320101"
 >[!NOTE] 
 > 使用 `argparse` 參數化指令碼。
 
-```python
-# tutorial/src/train.py
-import os
-import argparse
-import torch
-import torch.optim as optim
-import torchvision
-import torchvision.transforms as transforms
-
-from model import Net
-from azureml.core import Run
-
-run = Run.get_context()
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--data_path', type=str, help='Path to the training data')
-    parser.add_argument('--learning_rate', type=float, default=0.001, help='Learning rate for SGD')
-    parser.add_argument('--momentum', type=float, default=0.9, help='Momentum for SGD')
-    args = parser.parse_args()
-    
-    print("===== DATA =====")
-    print("DATA PATH: " + args.data_path)
-    print("LIST FILES IN DATA PATH...")
-    print(os.listdir(args.data_path))
-    print("================")
-    
-    # prepare DataLoader for CIFAR10 data
-    transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
-    trainset = torchvision.datasets.CIFAR10(
-        root=args.data_path,
-        train=True,
-        download=False,
-        transform=transform,
-    )
-    trainloader = torch.utils.data.DataLoader(trainset, batch_size=4, shuffle=True, num_workers=2)
-
-    # define convolutional network
-    net = Net()
-
-    # set up pytorch loss /  optimizer
-    criterion = torch.nn.CrossEntropyLoss()
-    optimizer = optim.SGD(
-        net.parameters(),
-        lr=args.learning_rate,
-        momentum=args.momentum,
-    )
-
-    # train the network
-    for epoch in range(2):
-
-        running_loss = 0.0
-        for i, data in enumerate(trainloader, 0):
-            # unpack the data
-            inputs, labels = data
-
-            # zero the parameter gradients
-            optimizer.zero_grad()
-
-            # forward + backward + optimize
-            outputs = net(inputs)
-            loss = criterion(outputs, labels)
-            loss.backward()
-            optimizer.step()
-
-            # print statistics
-            running_loss += loss.item()
-            if i % 2000 == 1999:
-                loss = running_loss / 2000
-                run.log('loss', loss) # log loss metric to AML
-                print(f'epoch={epoch + 1}, batch={i + 1:5}: loss {loss:.2f}')
-                running_loss = 0.0
-
-    print('Finished Training')
-```
+:::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/code/pytorch-cifar10-your-data/train.py":::
 
 ### <a name="understanding-the-code-changes"></a>了解程式碼變更
 
@@ -151,8 +78,10 @@ optimizer = optim.SGD(
     momentum=args.momentum,    # get momentum from command-line argument
 )
 ```
+> [!div class="nextstepaction"]
+> [我已調整訓指令碼](?success=adjust-training-script#test-locally) [我遇到問題](https://www.research.net/r/7C6W7BQ?issue=adjust-training-script)
 
-## <a name="test-the-script-locally"></a>在本機測試指令碼
+## <a name="test-the-script-locally"></a><a name="test-locally"></a> 在本機測試指令碼
 
 您的指令碼現在可接受 data path 作為引數。 若要開始使用，請在本機進行測試。 將名為 `data` 的資料夾新增至教學課程目錄結構中。 您的目錄結構應如下所示：
 
@@ -182,7 +111,10 @@ python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
 
 藉由將本機路徑傳入資料，您就無須下載 CIFAR10 資料集。 此外，您也可以針對 learning rate 和 momentum 超參數試驗不同的值，而不一定要在訓練指令碼中進行硬式編碼。
 
-## <a name="upload-the-data-to-azure"></a>將資料上傳至 Azure
+> [!div class="nextstepaction"]
+> [我已在本機測試指令碼](?success=test-locally#upload) [我遇到問題](https://www.research.net/r/7C6W7BQ?issue=test-locally)
+
+## <a name="upload-the-data-to-azure"></a><a name="upload"></a> 將資料上傳至 Azure
 
 若要在 Azure Machine Learning 中執行此指令碼，您必須讓您的訓練資料可在 Azure 中使用。 您的 Azure Machine Learning 工作區配備「預設」 資料存放區。 這是您可以用來儲存訓練資料的 Azure Blob 儲存體帳戶。
 
@@ -191,13 +123,7 @@ python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
 
 在 `tutorial` 目錄中，建立名為 `05-upload-data.py` 的新 Python 控制指令碼：
 
-```python
-# tutorial/05-upload-data.py
-from azureml.core import Workspace
-ws = Workspace.from_config()
-datastore = ws.get_default_datastore()
-datastore.upload(src_dir='./data', target_path='datasets/cifar10', overwrite=True)
-```
+:::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/IDE-users/05-upload-data.py":::
 
 `target_path` 值會指定資料存放區上用來上傳 CIFAR10 資料的路徑。
 
@@ -209,7 +135,9 @@ datastore.upload(src_dir='./data', target_path='datasets/cifar10', overwrite=Tru
 ```bash
 python 05-upload-data.py
 ```
+
 您應該會看到下列標準輸出：
+
 ```txt
 Uploading ./data\cifar-10-batches-py\data_batch_2
 Uploaded ./data\cifar-10-batches-py\data_batch_2, 4 files out of an estimated total of 9
@@ -220,47 +148,14 @@ Uploaded ./data\cifar-10-batches-py\data_batch_5, 9 files out of an estimated to
 Uploaded 9 files
 ```
 
+> [!div class="nextstepaction"]
+> [我已上傳資料](?success=upload-data#control-script) [我遇到問題](https://www.research.net/r/7C6W7BQ?issue=upload-data)
 
-## <a name="create-a-control-script"></a>建立控制指令碼
+## <a name="create-a-control-script"></a><a name="control-script"></a> 建立控制指令碼
 
 如同您先前的動作，建立名為 `06-run-pytorch-data.py` 的新 Python 控制指令碼：
 
-```python
-# tutorial/06-run-pytorch-data.py
-from azureml.core import Workspace
-from azureml.core import Experiment
-from azureml.core import Environment
-from azureml.core import ScriptRunConfig
-from azureml.core import Dataset
-
-if __name__ == "__main__":
-    ws = Workspace.from_config()
-    
-    datastore = ws.get_default_datastore()
-    dataset = Dataset.File.from_files(path=(datastore, 'datasets/cifar10'))
-
-    experiment = Experiment(workspace=ws, name='day1-experiment-data')
-
-    config = ScriptRunConfig(
-        source_directory='./src',
-        script='train.py',
-        compute_target='cpu-cluster',
-        arguments=[
-            '--data_path', dataset.as_named_input('input').as_mount(),
-            '--learning_rate', 0.003,
-            '--momentum', 0.92],
-        )
-    
-    # set up pytorch environment
-    env = Environment.from_conda_specification(name='pytorch-env',file_path='.azureml/pytorch-env.yml')
-    config.run_config.environment = env
-
-    run = experiment.submit(config)
-    aml_url = run.get_portal_url()
-    print("Submitted to an Azure Machine Learning compute cluster. Click on the link below")
-    print("")
-    print(aml_url)
-```
+:::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/IDE-users/06-run-pytorch-data.py":::
 
 ### <a name="understand-the-code-changes"></a>了解程式碼變更
 
@@ -283,7 +178,10 @@ if __name__ == "__main__":
    :::column-end:::
 :::row-end:::
 
-## <a name="submit-the-run-to-azure-machine-learning"></a>提交回合至 Azure Machine Learning
+> [!div class="nextstepaction"]
+> [我已建立控制指令碼](?success=control-script#submit-to-cloud)[我遇到問題](https://www.research.net/r/7C6W7BQ?issue=control-script)
+
+## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit-to-cloud"></a> 將執行提交至 Azure Machine Learning
 
 現在請重新提交回合以使用新的設定：
 
@@ -293,7 +191,10 @@ python 06-run-pytorch-data.py
 
 此程式碼會在 Azure Machine Learning Studio 中列印實驗的 URL。 如果您移至該連結，就能夠看到您的程式碼正在執行。
 
-### <a name="inspect-the-log-file"></a>檢查記錄檔
+> [!div class="nextstepaction"]
+> [我已重新提交執行](?success=submit-to-cloud#inspect-log) [我遇到問題](https://www.research.net/r/7C6W7BQ?issue=submit-to-cloud)
+
+### <a name="inspect-the-log-file"></a><a name="inspect-log"></a> 檢查記錄檔
 
 在 Studio 中，移至實驗執行 (藉由選取先前的 URL 輸出)，後面接著 [輸出 + 記錄]。 選取 `70_driver_log.txt` 檔案。 您應該會看見下列輸出：
 
@@ -333,6 +234,9 @@ LIST FILES IN DATA PATH...
 
 - Azure Machine Learning 已自動為您將 Blob 儲存體掛接到計算叢集。
 - 控制指令碼中使用的 ``dataset.as_named_input('input').as_mount()`` 會解析為掛接點。
+
+> [!div class="nextstepaction"]
+> [我已檢查記錄檔](?success=inspect-log#clean-up-resources) [我遇到問題](https://www.research.net/r/7C6W7BQ?issue=inspect-log)
 
 ## <a name="clean-up-resources"></a>清除資源
 

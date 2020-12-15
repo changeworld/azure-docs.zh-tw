@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 70b60d340e3af8d726915db513e30eaff26ed217
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 203af02841e6d17546d254ed83868c859ba3ac0d
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96347577"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938931"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>教學課程：設定 Oracle Cloud Infrastructure Console 來自動佈建使用者
 
@@ -37,8 +37,8 @@ ms.locfileid: "96347577"
 
 * [Azure AD 租用戶](../develop/quickstart-create-new-tenant.md) 
 * Azure AD 中具有設定佈建[權限](../roles/permissions-reference.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
-* Oracle Cloud Infrastructure Control [租用戶](https://www.oracle.com/cloud/sign-in.html?intcmp=OcomFreeTier&source=:ow:o:p:nav:0916BCButton)。
-* Oracle Cloud Infrastructure Control 中具有管理員權限的使用者帳戶。
+* Oracle Cloud Infrastructure Console [租用戶](https://www.oracle.com/cloud/sign-in.html?intcmp=OcomFreeTier&source=:ow:o:p:nav:0916BCButton)。
+* Oracle Cloud Infrastructure Console 中具有管理員權限的使用者帳戶。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步驟 1： 規劃佈建部署
 1. 了解[佈建服務的運作方式](../app-provisioning/user-provisioning.md) \(部分機器翻譯\)。
@@ -102,7 +102,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![[管理] 選項的螢幕擷取畫面，並已指出 [佈建] 選項。](common/provisioning.png)
 
-4. 將 [佈建模式]  設定為 [自動]  。
+4. 將 [佈建模式] 設定為 [自動]。
 
     ![[佈建模式] 下拉式清單的螢幕擷取畫面，並已指出 [自動] 選項。](common/provisioning-automatic.png)
 
@@ -165,7 +165,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![佈建範圍](common/provisioning-scope.png)
 
-15. 當您準備好要佈建時，按一下 [儲存]  。
+15. 當您準備好要佈建時，按一下 [儲存]。
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
@@ -176,7 +176,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 * 使用[佈建記錄](../reports-monitoring/concept-provisioning-logs.md) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
 * 檢查[進度列](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
-* 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](../app-provisioning/application-provisioning-quarantine-status.md)深入了解隔離狀態。
+* 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](../app-provisioning/application-provisioning-quarantine-status.md) \(部分機器翻譯\) 深入了解隔離狀態。
 
 ## <a name="additional-resources"></a>其他資源
 

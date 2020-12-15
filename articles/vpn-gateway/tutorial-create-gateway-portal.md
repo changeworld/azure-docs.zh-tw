@@ -6,16 +6,16 @@ ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: e2df34b7897ee2543d967d147317859ab26971e9
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 933b71d75eacdca015a38524870f25a345e76d22
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510469"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746160"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-azure-portal"></a>教學課程：使用 Azure 入口網站建立和管理 VPN 閘道
 
-Azure VPN 閘道提供客戶組織內部與 Azure 之間的跨單位連線。 本教學課程將說明基本的 Azure VPN 閘道部署項目，例如建立和管理 VPN 閘道。
+Azure VPN 閘道提供客戶組織內部與 Azure 之間的跨單位連線。 本教學課程將說明基本的 Azure VPN 閘道部署項目，例如建立和管理 VPN 閘道。 您也可以使用 [Azure CLI](create-routebased-vpn-gateway-cli.md) 或 [Azure PowerShell](create-routebased-vpn-gateway-powershell.md) 來建立閘道。
 
 在本教學課程中，您會了解如何：
 

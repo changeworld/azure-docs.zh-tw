@@ -1,21 +1,21 @@
 ---
 title: 教學課程 - 將參數新增至範本
-description: 將參數新增至 Azure Resource Manager 範本，以使其可重複使用。
+description: 將參數新增至 Azure Resource Manager 範本 (ARM 範本)，以使其可重複使用。
 author: mumian
 ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9e860941c3d782498c12afa12f285f44e7e68f37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d0743d316b9d879017f3b0fbe08ee4dc2b3e1c2
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069436"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931056"
 ---
 # <a name="tutorial-add-parameters-to-your-arm-template"></a>教學課程：將參數新增至 ARM 範本
 
-在[上一個教學課程](template-tutorial-add-resource.md)中，您已了解如何將儲存體帳戶新增至範本並加以部署。 在本教學課程中，您將了解如何藉由新增參數來改善 Azure Resource Manager (ARM) 範本。 完成此教學課程大約需要 **14 分鐘**。
+在[上一個教學課程](template-tutorial-add-resource.md)中，您已了解如何將儲存體帳戶新增至範本並加以部署。 在本教學課程中，您將了解如何藉由新增參數來改善 Azure Resource Manager 範本 (ARM 範本)。 完成此教學課程大約需要 **14 分鐘**。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -43,7 +43,7 @@ ms.locfileid: "90069436"
 
 讓我們來部署範本。 下列範例會使用 Azure CLI 或 PowerShell 來部署範本。 請注意，您會提供儲存體帳戶名稱作為部署命令中的其中一個值。 針對儲存體帳戶名稱，提供您在上一個教學課程中使用的相同名稱。
 
-如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 **templateFile** 變數設為範本檔案的路徑，如[第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
+如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 **templateFile** 變數設為範本檔案的路徑，如 [第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

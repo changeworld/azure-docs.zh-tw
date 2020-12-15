@@ -3,12 +3,12 @@ title: 規劃 Azure VMware 解決方案部署
 description: 本文概述 Azure VMware 解決方案部署工作流程。  最終結果是準備好用於建立和移轉虛擬機器 (VM) 的環境。
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 1ef83a568e41fe99f1e8e385a599de9c5ab7c0ca
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1d1deebd56717c63a745500198eb8df9e3687b49
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "95529720"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558686"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>規劃 Azure VMware 解決方案部署
 
@@ -25,7 +25,7 @@ ms.locfileid: "95529720"
 識別您打算用來部署 Azure VMware 解決方案的訂用帳戶。  您可以建立新的訂用帳戶，或重複使用現有的訂用帳戶。
 
 >[!NOTE]
->訂用帳戶必須與 Microsoft Enterprise 合約相關聯。
+>訂用帳戶必須與 Microsoft Enterprise 合約或雲端解決方案提供者的 Azure 方案相關聯。 如需詳細資訊，請參閱[如何啟用 Azure VMware 解決方案資源](enable-azure-vmware-solution.md)。
 
 ## <a name="resource-group"></a>資源群組
 

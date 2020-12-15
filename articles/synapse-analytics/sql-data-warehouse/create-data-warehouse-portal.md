@@ -1,6 +1,6 @@
 ---
-title: 快速入門：建立和查詢專用 SQL 集區 (Azure 入口網站)
-description: 使用 Azure 入口網站建立和查詢專用 SQL 集區
+title: 快速入門：建立和查詢專用 SQL 集區 (先前稱為 SWL DW) (Azure 入口網站)
+description: 使用 Azure 入口網站建立和查詢專用 SQL 集區 (先前稱為 SWL DW)
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,23 +11,23 @@ ms.date: 05/28/2019
 ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3d4884fd64c773647f78a98dc7aeb1063d539edf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 78a0982081b8e34461fb2910cc7ce21be622cb6a
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456742"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922788"
 ---
-# <a name="quickstart-create-and-query-a-dedicated-sql-pool-in-azure-synapse-analytics-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立和查詢 Azure Synapse Analytics 中的專用 SQL 集區
+# <a name="quickstart-create-and-query-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立和查詢 Azure Synapse Analytics 中的專用 SQL 集區 (先前稱為 SWL DW)
 
-使用 Azure 入口網站在 Azure Synapse Analytics 中快速建立和查詢 Synapse SQL 集區 (資料倉儲)。
+使用 Azure 入口網站快速建立和查詢 Azure Synapse Analytics 中的專用 SQL 集區 (先前稱為 SWL DW)。
 
 ## <a name="prerequisites"></a>必要條件
 
 1. 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
    > [!NOTE]
-   > 在 Azure Synapse 中建立 SQL 集區可能會產生新的可計費服務。 如需詳細資訊，請參閱 [Azure Synapse Analytics 定價](https://azure.microsoft.com/pricing/details/synapse-analytics/)。
+   > 在 Azure Synapse 中建立專用 SQL 集區 (先前稱為 SQL DW) 可能會產生新的可計費服務。 如需詳細資訊，請參閱 [Azure Synapse Analytics 定價](https://azure.microsoft.com/pricing/details/synapse-analytics/)。
 
 2. 下載並安裝最新版的 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS)。
 
@@ -37,25 +37,25 @@ ms.locfileid: "96456742"
 
 ## <a name="create-a-sql-pool"></a>建立 SQL 集區
 
-資料倉儲會使用 Azure Synapse Analytics 中的 SQL 集區來建立。 SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md)來建立。 此資料庫建立於 [Azure 資源群組](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)和[邏輯 SQL 伺服器](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)內。
+使用專用 SQL 集區 (先前稱為 SQL DW)，在 Azure Synapse Analytics 中建立資料倉儲 。 專用 SQL 集區 (先前稱為 SQL DW) 會使用一組已定義的[計算資源](memory-concurrency-limits.md)來建立。 此資料庫建立於 [Azure 資源群組](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)和[邏輯 SQL 伺服器](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)內。
 
-請遵循下列步驟來建立包含 **AdventureWorksDW** 範例資料的 SQL 集區。
+請遵循下列步驟來建立包含 **AdventureWorksDW** 範例資料的專用 SQL 集區 (先前稱為 SQL DW)。
 
-1. 選取 Azure 入口網站左上角的 [建立資源]。
+1. 選取 Azure 入口網站左上角的 [建立資源]  。
 
    ![在 Azure 入口網站中建立資源](./media/create-data-warehouse-portal/create-a-resource.png)
 
-2. 在 [新增] 頁面上選取 [資料庫]，然後在 [精選] 清單中選取 [Azure Synapse Analytics (先前為 SQL DW)]。
+2. 在搜尋列中，輸入「專用 SQL 集區」，選取專用的 SQL 集區 (先前稱為 SQL DW)。 在開啟的頁面上，選取 [建立]。
 
    ![建立空的資料倉儲](./media/create-data-warehouse-portal/create-a-data-warehouse.png)
 
-3. 在 [基本]中，提供您的訂用帳戶、資源群組、SQL 集區名稱和伺服器名稱：
+3. 在 **基本資料** 中，提供您的訂用帳戶、資源群組、專用 SQL 集區 (先前稱為 SQL DW) 名稱和伺服器名稱：
 
    | 設定 | 建議的值 | 描述 |
    | :------ | :-------------- | :---------- |
    | **訂用帳戶** | 您的訂用帳戶 | 如需訂用帳戶的詳細資訊，請參閱[訂用帳戶](https://account.windowsazure.com/Subscriptions)。 |
    | **資源群組** | myResourceGroup | 如需有效的資源群組名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 |
-   | **SQL 集區名稱** | 任何全域唯一名稱 (例如 *mySampleDataWarehouse*) | 如需有效的資料庫名稱，請參閱[資料庫識別碼](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。 請注意，SQL 集區是其中一種資料庫類型。 |
+   | **SQL 集區名稱** | 任何全域唯一名稱 (例如 *mySampleDataWarehouse*) | 如需有效的資料庫名稱，請參閱[資料庫識別碼](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。  |
    | **Server** | 任何全域唯一名稱 | 選取現有的伺服器，或建立新的伺服器名稱，然後選取 [新建]。 如需有效的伺服器名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 |
 
    ![建立資料倉儲的基本詳細資料](./media/create-data-warehouse-portal/create-sql-pool-basics.png)
@@ -68,7 +68,7 @@ ms.locfileid: "96456742"
 
 5. 選取 [其他設定]，在 [使用現有資料] 底下選擇 [範例]，以將 AdventureWorksDW 建立為範例資料庫。
 
-    ![選取 [使用現有資料]](./media/create-data-warehouse-portal/create-sql-pool-additional-1.png) 
+    ![選取 [使用現有資料]](./media/create-data-warehouse-portal/create-sql-pool-additional-1.png)
 
 6. 現在您已完成 Azure Synapse Analytics 表單的 [基本] 索引標籤，接下來請選取 [檢閱 + 建立]，然後選取 [建立] 以建立 SQL 集區。 佈建需要幾分鐘的時間。
 
@@ -124,7 +124,7 @@ Azure Synapse 服務會在伺服器層級建立防火牆。 此防火牆會防�
 
 3. 在 Azure 入口網站中您資料庫的 [基本資訊] 窗格中，找到後複製 [伺服器名稱]。 在此範例中，完整名稱是 sqlpoolservername.database.windows.net。
 
-    ![連線資訊](./media/create-data-warehouse-portal/find-server-name-copy.png)
+    ![連線資訊](./media/create-data-warehouse-portal/find-server-name.png)
 
 ## <a name="connect-to-the-server-as-server-admin"></a>以伺服器系統管理員身分連線到伺服器
 
@@ -180,21 +180,21 @@ Azure Synapse Analytics 使用 T-SQL 作為查詢語言。 若要開啟查詢視
 
 ## <a name="clean-up-resources"></a>清除資源
 
-您需對資料倉儲單位和 SQL 集區上儲存的資料付費。 這些計算和儲存體資源會分開計費。
+您需對資料倉儲單位和專用 SQL 集區 (先前稱為 SQL DW) 中儲存的資料付費。 這些計算和儲存體資源會分開計費。
 
-- 如果您需要將資料保留在儲存體中，可以在您不使用 SQL 集區時暫停計算。 暫停計算，您只需支付資料儲存體的費用。 當您準備要使用資料時，您可以繼續計算。
+- 如果您需要將資料保留在儲存體中，可以在您不使用專用 SQL 集區 (先前稱為 SQL DW) 時暫停計算。 暫停計算，您只需支付資料儲存體的費用。 當您準備要使用資料時，您可以繼續計算。
 
-- 如果您需要移除未來的費用，可以將 SQL 集區刪除。
+- 如果您想要移除未來的費用，可以將專用 SQL 集區 (先前稱為 SQL DW) 刪除。
 
 遵循下列步驟，清除不再需要的資源。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)，然後選取您的 SQL 集區。
+1. 登入 [Azure 入口網站](https://portal.azure.com)，然後選取您的專用 SQL 集區 (先前稱為 SQL DW)。
 
    ![清除資源](./media/create-data-warehouse-portal/clean-up-resources.png)
 
-2. 若要暫停計算，請選取 [暫停] 按鈕。 SQL 集區暫停時，您會看到 [繼續] 按鈕。 若要繼續計算，請選取 [繼續]。
+2. 若要暫停計算，請選取 [暫停] 按鈕。 專用 SQL 集區 (先前稱為 SQL DW) 暫停時，您會看到 [繼續] 按鈕。 若要繼續計算，請選取 [繼續]。
 
-3. 若要移除 SQL 集區以免支付計算或儲存體的費用，請選取 [刪除]。
+3. 若要移除專用 SQL 集區 (先前稱為 SQL DW) 並不再支付計算或儲存體的費用，請選取 [刪除]。
 
 4. 若要移除所建立的伺服器，請選取上圖中的 [sqlpoolservername.database.windows.net]，然後選取 [刪除]。 請謹慎使用刪除，因為刪除伺服器也會刪除所有指派給伺服器的資料庫。
 
@@ -206,4 +206,4 @@ Azure Synapse Analytics 使用 T-SQL 作為查詢語言。 若要開啟查詢視
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解如何將資料載入到 SQL 集區，請繼續閱讀[將資料載入 SQL 集區](load-data-from-azure-blob-storage-using-polybase.md)一文。
+若要深入了解如何將資料載入到專用 SQL 集區 (先前稱為 SQL DW)，請繼續[將資料載入專用 SQL 集區](load-data-from-azure-blob-storage-using-copy.md)一文。

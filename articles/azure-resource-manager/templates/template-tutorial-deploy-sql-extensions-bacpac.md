@@ -1,20 +1,20 @@
 ---
 title: 使用範本匯入 SQL BACPAC 檔案
-description: 了解如何使用 Azure SQL Database 擴充功能透過 Azure Resource Manager 範本匯入 SQL BACPAC 檔案。
+description: 了解如何使用 Azure SQL Database 擴充功能透過 Azure Resource Manager 範本 (ARM 範本) 匯入 SQL BACPAC 檔案。
 author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6a56602ad5217af07d9e35872a26ddb478146d0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b798e5ceb72ece3989fb81014555f2bc0fea5926
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86101880"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931396"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>教學課程：使用 ARM 範本匯入 SQL BACPAC 檔案
 
-了解如何使用 Azure SQL Database 擴充功能透過 Azure Resource Manager (ARM) 範本匯入 BACPAC 檔案。 除了完成部署所需的主要範本檔案以外，部署成品可以是任何檔案。 BACPAC 檔案是成品。
+了解如何使用 Azure SQL Database 擴充功能透過 Azure Resource Manager 範本 (ARM 範本) 匯入 BACPAC 檔案。 除了完成部署所需的主要範本檔案以外，部署成品可以是任何檔案。 BACPAC 檔案是成品。
 
 在本教學課程中，您將建立一個範本來部署[邏輯 SQL 伺服器](../../azure-sql/database/logical-servers.md)和單一資料庫並匯入 BACPAC 檔案。 如需如何使用 ARM 範本部署 Azure 虛擬機器擴充功能的相關資訊，請參閱[教學課程：使用 ARM 範本部署虛擬機器擴充功能](./template-tutorial-deploy-vm-extensions.md)。
 
@@ -34,7 +34,7 @@ ms.locfileid: "86101880"
 
 若要完成本文，您需要：
 
-* Visual Studio Cod 搭配 Resource Manager Tools 擴充功能。 請參閱[快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本](./quickstart-create-templates-use-visual-studio-code.md)。
+* Visual Studio Cod 搭配 Resource Manager Tools 擴充功能。 請參閱[快速入門：使用 Visual Studio Code 建立 ARM 範本](./quickstart-create-templates-use-visual-studio-code.md)。
 * 為了提高安全性，請使用為伺服器系統管理員帳戶產生的密碼。 以下是您可以用來產生密碼的範例：
 
     ```console

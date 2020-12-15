@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: f6026680dd566bf7a13c83b37883341bff8b4570
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6845923d65b5fbe5a9f010474330ce2bbed948e1
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96354733"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780088"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>教學課程：使用註冊群組佈建多個 x.509 裝置
 
@@ -26,7 +26,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 
 本教學課程類似於先前的教學課程，示範如何使用註冊群組來佈建裝置集合。 不過，本教學課程將使用 x.509 憑證，而非對稱金鑰。 請檢閱本節中先前的教學課程，了解使用[對稱金鑰](./concepts-symmetric-key-attestation.md)的簡單方法。
 
-本教學課程將示範[自訂 HSM 範例](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/custom_hsm_example)，其會提供可與硬體型安全存放裝置互動的存根執行。 [硬體安全模組 (HSM)](./concepts-service.md#hardware-security-module) 是用來保護裝置祕密的安全硬體型存放裝置。 HSM 可以搭配對稱金鑰、x.509 憑證或 TPM 證明使用，以提供祕密的安全儲存體。 強烈建議您使用硬體型裝置作為秘密存放裝置。
+本教學課程將示範[自訂 HSM 範例](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/custom_hsm_example)，其會提供可與硬體型安全存放裝置互動的存根執行。 [硬體安全模組 (HSM)](./concepts-service.md#hardware-security-module) 是用來保護裝置祕密的安全硬體型存放裝置。 HSM 可以搭配對稱金鑰、x.509 憑證或 TPM 證明使用，以提供祕密的安全儲存體。 裝置秘密不需要硬體型存儲存體，但強烈建議您協助保護敏感性資訊，例如裝置憑證的私密金鑰。
 
 如果您不熟悉自動佈建程序，請檢閱[佈建](about-iot-dps.md#provisioning-process)概觀。 此外，繼續進行此教學課程之前，請務必完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](quick-setup-auto-provision.md)中的步驟。 
 
@@ -56,7 +56,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 
 1. 下載 [CMake 建置系統](https://cmake.org/download/)。
 
-    在開始安裝 `CMake` **之前**，請務必將 [Visual Studio](https://visualstudio.microsoft.com/vs/) 先決條件 (Visual Studio 和[「使用 C++ 進行桌面開發」](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作負載) 安裝在您的機器上。 在符合先決條件，並且驗證過下載項目之後，請安裝 CMake 建置系統。
+    在開始安裝 `CMake` **之前**，請務必將 [Visual Studio](https://visualstudio.microsoft.com/vs/) 先決條件 (Visual Studio 和 [「使用 C++ 進行桌面開發」](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作負載) 安裝在您的機器上。 在符合先決條件，並且驗證過下載項目之後，請安裝 CMake 建置系統。
 
 2. 尋找[最新版](https://github.com/Azure/azure-iot-sdk-c/releases/latest) Azure IoT C SDK 的標籤名稱。
 
@@ -225,7 +225,9 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 
 ## <a name="configure-the-custom-hsm-stub-code"></a>設定自訂 HSM 虛設常式程式碼
 
-與實際安全硬體型存放裝置互動的細節會因硬體而異。 因此，本教學課程中的裝置所使用的憑證鏈將會在自訂 HSM 虛設常式程式碼中進行硬式編碼。 在實際案例中，憑證鏈結會儲存在實際的 HSM 硬體中，為機密資訊提供更理想的安全性。 接著會執行與此範例中所示之虛設常式類似的方法，從該硬體型存放裝置讀取祕密。
+與實際安全硬體型存放裝置互動的細節會因硬體而異。 因此，本教學課程中的裝置所使用的憑證鏈將會在自訂 HSM 虛設常式程式碼中進行硬式編碼。 在實際案例中，憑證鏈結會儲存在實際的 HSM 硬體中，為機密資訊提供更理想的安全性。 接著會執行與此範例中所示之虛設常式類似的方法，從該硬體型存放裝置讀取祕密。 
+
+雖然不需要 HSM 硬體，但並不建議將敏感性資訊 (例如憑證的私密金鑰) 簽入原始程式碼。 這會將金鑰公開給任何可檢視程式碼的人。 此只會在本文中操作，目的是協助您學習。
 
 若要更新本教學課程的自訂 HSM 虛設常式程式碼：
 
@@ -287,7 +289,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 
 ## <a name="verify-ownership-of-the-root-certificate"></a>確認根憑證的擁有權
 
-1. 使用 [註冊 x.509 憑證的公開部分並取得驗證碼](how-to-verify-certificates.md#register-the-public-part-of-an-x509-certificate-and-get-a-verification-code)，上傳根憑證並從 DPS 取得驗證碼。
+1. 使用 [註冊 x.509 憑證的公開部分並取得驗證碼](how-to-verify-certificates.md#register-the-public-part-of-an-x509-certificate-and-get-a-verification-code)，上傳根憑證 (`./certs/azure-iot-test-only.root.ca.cert.pem`) 並從 DPS 取得驗證碼。
 
 2. 當根憑證有來自 DPS 的驗證碼後，請從您的憑證指令碼工作目錄執行下列命令，以產生驗證憑證。
  
@@ -297,7 +299,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
     ./certGen.sh create_verification_certificate 1B1F84DE79B9BD5F16D71E92709917C2A1CA19D5A156CB9F    
     ```    
 
-    此指令碼會建立憑證，並以主體名稱設定為驗證碼的根憑證進行簽署。 此憑證可讓 DPS 驗證您是否有權存取根憑證的私密金鑰。 請注意指令碼輸出中的驗證憑證位置。
+    此指令碼會建立憑證，並以主體名稱設定為驗證碼的根憑證進行簽署。 此憑證可讓 DPS 驗證您是否有權存取根憑證的私密金鑰。 請注意指令碼輸出中的驗證憑證位置。 此憑證是以 `.pfx` 格式產生。
 
     ```output
     Leaf Device PFX Certificate Generated At:

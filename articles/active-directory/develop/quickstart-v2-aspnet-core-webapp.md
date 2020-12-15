@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 98d2b4ed4b0d3cef2cde156dc05ebb314edff365
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 085ebcc147082ac78de9f8b97c810dee5bb1e96a
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592255"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762800"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 ASP.NET Core Web 應用程式
 
@@ -45,12 +45,12 @@ ms.locfileid: "94592255"
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>選項 2：註冊並手動設定您的應用程式和程式碼範例
 >
 > #### <a name="step-1-register-your-application"></a>步驟 1:註冊您的應用程式
-> 若要註冊您的應用程式，並手動將應用程式註冊資訊新增到您的解決方案，請執行下列步驟：
+> 若要手動註冊您的應用程式，並將應用程式註冊資訊新增到您的解決方案，請執行下列步驟：
 >
 > 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 > 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
 > 1. 搜尋並選取 [Azure Active Directory]  。
-> 1. 在 [管理]下選取 [應用程式註冊]，再選取 [新增註冊]。
+> 1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
 > 1. 輸入應用程式的 [名稱]，例如 `AspNetCore-Quickstart`。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
 > 1. 輸入值為 `https://localhost:44321/` 的 [重新導向 URI]
 > 1. 選取 [註冊]。

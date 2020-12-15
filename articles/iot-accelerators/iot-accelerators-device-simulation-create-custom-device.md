@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
-ms.openlocfilehash: 7ddd1aa9865cb4061212ce77b31efc82ad339283
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 1fe86aef832223a7485036343b4b12d8bb526e06
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165565"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852382"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>教學課程：建立自訂模擬裝置
 
@@ -34,15 +34,7 @@ ms.locfileid: "92165565"
 
 若要完成本教學課程，您在 Azure 訂用帳戶中必須要有一個已部署的裝置模擬執行個體。
 
-如果您尚未部署裝置模擬，您應先完成[在 Azure 中部署和執行 IoT 裝置模擬](quickstart-device-simulation-deploy.md)快速入門。
-
-## <a name="open-device-simulation"></a>開啟裝置模擬
-
-若要在您的瀏覽器中執行裝置模擬，請先瀏覽至 [Microsoft Azure IoT 解決方案加速器](https://www.azureiotsolutions.com)。
-
-系統可能會要求您使用 Azure 訂用帳戶認證來登入。
-
-接著，請針對您在[在 Azure 中部署和執行 IoT 裝置模擬](quickstart-device-simulation-deploy.md)快速入門中部署的裝置模擬，按一下其圖格上的 [啟動]。
+如果您尚未部署裝置模擬，請參閱 GitHub 上的[裝置模擬部署](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)。
 
 ## <a name="view-your-device-models"></a>檢視您的裝置型號
 

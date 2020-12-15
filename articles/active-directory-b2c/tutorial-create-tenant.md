@@ -7,19 +7,22 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/24/2020
+ms.date: 12/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c15b3a64b4a0017c5c352e08cebc796537255479
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5229175af618f897caeae7310338cbe51966a48d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447035"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859579"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>教學課程：建立 Active Directory B2C 租用戶
 
-應用程式必須先在您管理的租用戶中完成註冊，才可與 Azure Active Directory B2C (Azure AD B2C) 互動。
+應用程式必須先在您管理的租用戶中完成註冊，才可與 Azure Active Directory B2C (Azure AD B2C) 互動。 
+
+> [!NOTE]
+> 每個訂用帳戶最多可以建立 20 個租用戶。 這項限制有助於防止資源受到威脅 (例如拒絕服務的攻擊)，並且會在 Azure 入口網站和基礎租用戶建立 API 中強制執行。 如果您需要建立 20 個以上的租用戶，請連絡 [Microsoft 支援服務](support-options.md)。
 
 在本文中，您將學會如何：
 
@@ -46,8 +49,11 @@ ms.locfileid: "96447035"
     ![訂用帳戶租用戶、目錄 + 訂用帳戶篩選，且已選取訂用帳戶租用戶](media/tutorial-create-tenant/portal-01-pick-directory.png)
 
 1. 從 Azure 入口網站功能表或 **[首頁]** 頁面，選取 [建立資源]。
+
+   ![選取 [建立資源] 按鈕](media/tutorial-create-tenant/create-a-resource.png)
+
 1. 搜尋 [Active Directory B2C]，然後選取 [建立]。
-1. 選取 [建立新的 Azure AD B2C 租用戶]。
+2. 選取 [建立新的 Azure AD B2C 租用戶]。
 
     ![建立在 Azure 入口網站中選取的新 Azure AD B2C 租用戶](media/tutorial-create-tenant/portal-02-create-tenant.png)
 
@@ -57,7 +63,7 @@ ms.locfileid: "96447035"
    - **初始網域名稱** - 輸入您 Azure AD B2C 租用戶的網域名稱。
    - **國家或區域** 從清單中選取您的國家或區域。 稍後無法變更此選取項目。
    - **訂用帳戶** - 從清單中選取您的訂用帳戶。
-   - **資源群組** 選取包含租用戶的資源群組。 或是選取 [新建]，輸入資源群組的 [名稱]、選取 [資源群組位置]，然後選取 [確認]。
+   - **資源群組** - 選取或搜尋將包含租用戶的資源群組。
 
     ![使用 Azure 入口網站中的範例值建立租用戶表單](media/tutorial-create-tenant/review-and-create-tenant.png)
 

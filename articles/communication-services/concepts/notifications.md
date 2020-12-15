@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9cf503f374cd2fd1ca04aad6650b2c07abebbc46
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a52188dc5058dbc74d3b03fba860b98540cd4a41
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519348"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608497"
 ---
 # <a name="communication-services-notifications"></a>通訊服務通知
 
@@ -48,13 +48,10 @@ Azure 通訊服務與 [Azure 事件方格](https://azure.microsoft.com/services/
 若要使用通知中樞將推播通知傳遞至用戶端裝置，請在與您的通訊服務資源相同的訂用帳戶中[建立通知中樞](../../notification-hubs/create-notification-hub-portal.md)。 必須為您要使用的平台通知服務設定 Azure 通知中樞。 若要了解如何在用戶端應用程式中收到通知中樞的推播通知，請參閱[開始使用通知中心](../../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)，並從靠近頁面頂端的下拉式清單中選取目標用戶端平台。
 
 > [!NOTE]
-> 目前支援 APN 和 FCM 平台。
+> 目前支援 APN 和 FCM 平台。  
+必須以權杖驗證模式設定 APN 平台。 目前不支援憑證驗證模式。 
 
 設定通知中樞之後，您可以使用 Azure Resource Manager 用戶端或透過 Azure 入口網站提供中樞的連接字串，將其與您的「通訊服務」資源建立關聯。 連接字串應該包含「傳送」權限。 我們建議您特別為您的中樞建立另一個具有僅限「傳送」權限的存取原則。 深入了解[通知中樞安全性和存取原則](../../notification-hubs/notification-hubs-push-notification-security.md)
-
-> [!IMPORTANT]
-> 這僅適用於權杖驗證模式。 目前不支援憑證驗證模式。  
-若要啟用 APNS VOIP 通知，您必須在設定通知中樞時，將套件組合識別碼的值設定為具有 `.voip` 尾碼的應用程式套件組合識別碼。 如需詳細資訊，請參閱[透過通知中樞使用 APNS VOIP](../../notification-hubs/voip-apns.md)。
 
 #### <a name="using-the-azure-resource-manager-client-to-configure-the-notification-hub"></a>使用 Azure Resource Manager 用戶端來設定通知中樞
 

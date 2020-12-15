@@ -1,21 +1,21 @@
 ---
 title: 教學課程 - 將變數新增至範本
-description: 將變數新增至 Azure Resource Manager 範本，以簡化語法。
+description: 將變數新增至 Azure Resource Manager 範本 (ARM 範本)，以簡化語法。
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 482608172ac9e6e2b9765f236a4b6d655e2455fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d259510d880cbfc60e9ae80b533af6792cc95536
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613147"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930723"
 ---
 # <a name="tutorial-add-variables-to-your-arm-template"></a>教學課程：將變數新增至 ARM 範本
 
-在本教學課程中，您將了解如何將變數新增至 Azure Resource Manager (ARM) 範本。 變數可讓您撰寫運算式一次，並在整個範本中重複使用它，藉以簡化您的範本。 完成此教學課程需要 **7 分鐘**。
+在本教學課程中，您將了解如何將變數新增至 Azure Resource Manager 範本 (ARM 範本)。 變數可讓您撰寫運算式一次，並在整個範本中重複使用它，藉以簡化您的範本。 完成此教學課程需要 **7 分鐘**。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -55,7 +55,7 @@ ms.locfileid: "91613147"
 
 讓我們來部署範本。 部署此範本會比先前的範本更容易，因為您只需提供儲存體名稱的前置詞。
 
-如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 **templateFile** 變數設為範本檔案的路徑，如[第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
+如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 **templateFile** 變數設為範本檔案的路徑，如 [第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

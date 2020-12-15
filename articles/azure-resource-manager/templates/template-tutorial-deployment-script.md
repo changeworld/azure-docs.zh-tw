@@ -1,6 +1,6 @@
 ---
 title: 使用範本部署指令碼 | Microsoft Docs
-description: 了解如何使用 Azure Resource Manager 範本中的部署指令碼。
+description: 了解如何使用 Azure Resource Manager 範本 (ARM 範本) 中的部署指令碼。
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.date: 08/25/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e1094befcc6b3a6e9d56ba3b603dc45fcb91ba13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc19222cf1e610c6c65d7c721a54f9949bed70ae
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88825489"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931430"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>教學課程：使用部署指令碼建立自我簽署憑證 (預覽)
 
-了解如何使用 Azure Resource Manager (ARM) 範本中的部署指令碼。 部署指令碼可用來執行無法由 ARM 範本完成的自訂步驟。 例如，建立自我簽署憑證。  在本教學課程中，您將建立用來部署 Azure 金鑰保存庫的範本，然後在相同的範本中使用 `Microsoft.Resources/deploymentScripts` 資源建立憑證，再將憑證新增至金鑰保存庫。 若要深入了解部署指令碼，請參閱[使用 ARM 範本中的部署指令碼](./deployment-script-template.md)。
+了解如何使用 Azure Resource Manager 範本 (ARM 範本) 中的部署指令碼。 部署指令碼可用來執行無法由 ARM 範本完成的自訂步驟。 例如，建立自我簽署憑證。  在本教學課程中，您將建立用來部署 Azure 金鑰保存庫的範本，然後在相同的範本中使用 `Microsoft.Resources/deploymentScripts` 資源建立憑證，再將憑證新增至金鑰保存庫。 若要深入了解部署指令碼，請參閱[使用 ARM 範本中的部署指令碼](./deployment-script-template.md)。
 
 > [!IMPORTANT]
 > 系統會在相同的資源群組中建立兩個部署指令碼資源 (儲存體帳戶和容器執行個體)，用以執行指令碼和疑難排解。 當指令碼執行處於終止狀態時，指令碼服務通常會刪除這些資源。 在資源刪除之前，您需支付資源費用。 若要深入了解，請參閱[清除部署指令碼資源](./deployment-script-template.md#clean-up-deployment-script-resources)。
@@ -40,7 +40,7 @@ ms.locfileid: "88825489"
 
 若要完成本文，您需要：
 
-* **[Visual Studio Cod](https://code.visualstudio.com/) 搭配 Resource Manager Tools 擴充功能**。 請參閱[快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本](./quickstart-create-templates-use-visual-studio-code.md)。
+* **[Visual Studio Cod](https://code.visualstudio.com/) 搭配 Resource Manager Tools 擴充功能**。 請參閱[快速入門：使用 Visual Studio Code 建立 ARM 範本](./quickstart-create-templates-use-visual-studio-code.md)。
 
 * **使用者指派的受控識別，且在訂用帳戶層級上具有參與者角色**。 此身分識別會用來執行部署指令碼。 若要建立身分識別，請參閱[使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。 您在部署範本時將需要身分識別的識別碼。 此身分識別的格式為：
 
@@ -149,7 +149,7 @@ ms.locfileid: "88825489"
     ],
     ```
 
-    系統定義了兩個原則，一個用於登入的使用者，另一個用於受控識別。  已登入的使用者只需要*清單*權限來驗證部署。  為了簡化本教學課程，我們會為受控識別和已登入的使用者指派相同的憑證。
+    系統定義了兩個原則，一個用於登入的使用者，另一個用於受控識別。  已登入的使用者只需要 *清單* 權限來驗證部署。  為了簡化本教學課程，我們會為受控識別和已登入的使用者指派相同的憑證。
 
 ### <a name="add-the-deployment-script"></a>新增部署指令碼
 
@@ -325,7 +325,7 @@ ms.locfileid: "88825489"
 ## <a name="debug-the-failed-script"></a>對失敗的指令碼進行偵錯
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 開啟資源群組。 這是附加 **rg** 的專案名稱。 您應該會在資源群組中看到兩個額外的資源。 這些資源稱為*部署指令碼資源*。
+1. 開啟資源群組。 這是附加 **rg** 的專案名稱。 您應該會在資源群組中看到兩個額外的資源。 這些資源稱為 *部署指令碼資源*。
 
     ![Resource Manager 範本部署指令碼資源](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
 

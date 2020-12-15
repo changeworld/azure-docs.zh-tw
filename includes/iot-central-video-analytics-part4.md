@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: de916fcbe0623185821e2f5da15a8f9cf71dfd4e
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 0b3ccc31c9159b5d7b1615add89e8fdc308bf8df
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426737"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763395"
 ---
 ### <a name="publish-the-device-template"></a>發佈裝置範本
 
@@ -40,6 +40,12 @@ ms.locfileid: "94426737"
 1. 在 [遷移] 對話方塊上的清單中，選取 [LVA Edge 閘道 v2]，然後選取 [遷移]。
 
 幾秒之後，就會完成遷移。 您的裝置現在會使用 **LVA Edge 閘道 v2** 裝置範本搭配自訂的部署資訊清單。
+
+現在沒有使用原始 **LVA Edge 閘道** 裝置範本的裝置。 刪除此裝置範本：
+
+1. 瀏覽至 [裝置範本] 頁面，然後選取 [LVA Edge 閘道] 裝置範本。
+
+1. 選取 [刪除] 以刪除裝置範本。
 
 ### <a name="get-the-device-credentials"></a>取得裝置認證
 

@@ -11,16 +11,17 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9f9abf9105da773ec5f8321c0f8e70e20516618c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 166bdb7a2cf15a84e1b826a9a798042c568bb227
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87922144"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608226"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>教學課程：在 Azure Active Directory B2C 中將識別提供者新增至您的應用程式
 
-在您的應用程式中，您可以讓使用者使用不同的識別提供者登入。 *識別提供者*可建立、維護及管理身分識別資訊，同時對應用程式提供驗證服務。 您可以使用 Azure 入口網站，將 Azure Active Directory B2C (Azure AD B2C) 支援的識別提供者新增至您的[使用者流程](user-flow-overview.md)。
+在您的應用程式中，您可以讓使用者使用不同的識別提供者登入。 *識別提供者* 可建立、維護及管理身分識別資訊，同時對應用程式提供驗證服務。 您可以使用 Azure 入口網站，將 Azure Active Directory B2C (Azure AD B2C) 支援的識別提供者新增至您的[使用者流程](user-flow-overview.md)。
 
 在本文中，您將學會如何：
 
@@ -61,10 +62,10 @@ ms.locfileid: "87922144"
 
     所有 URL 現在都應會使用 [b2clogin.com](b2clogin.md)。
 
-1. 選取 [註冊]，然後記錄您在稍後步驟中使用的**應用程式 (用戶端) 識別碼**。
+1. 選取 [註冊]，然後記錄您在稍後步驟中使用的 **應用程式 (用戶端) 識別碼**。
 1. 在 [應用程式] 功能表的 [管理] 底下，選取 [憑證和祕密]，然後選取 [新的用戶端密碼]。
-1. 輸入用戶端密碼的**描述**。 例如： `Azure AD B2C App Secret` 。
-1. 選取到期期間。 針對此應用程式，請接受 **1 年內**的選項。
+1. 輸入用戶端密碼的 **描述**。 例如： `Azure AD B2C App Secret` 。
+1. 選取到期期間。 針對此應用程式，請接受 **1 年內** 的選項。
 1. 選取 [新增]，然後記錄您在稍後步驟中使用的新用戶端密碼的值。
 
 ### <a name="create-a-facebook-application"></a>建立 Facebook 應用程式
@@ -74,17 +75,17 @@ ms.locfileid: "87922144"
 1. 請以您的 Facebook 帳戶認證登入 [Facebook for developers (開發人員專用的 Facebook)](https://developers.facebook.com/)。
 1. 如果您尚未這麼做，您必須註冊為 Facebook 開發人員。 若要這樣做，請選取頁面右上角的 [開始]，接受 Facebook 的原則，然後完成註冊步驟。
 1. 選取 [我的應用程式]，然後選取 [建立應用程式]。
-1. 輸入**顯示名稱**和有效的**連絡人電子郵件**。
+1. 輸入 **顯示名稱** 和有效的 **連絡人電子郵件**。
 1. 按一下 [建立應用程式識別碼]。 這可能會要求您接受 Facebook 平台原則，並完成線上安全性檢查。
 1. 選取 [設定] > [基本]。
-1. 選擇**分類**，例如 `Business and Pages`。 此為 Facebook 所需的值，但不會用於 Azure AD B2C。
+1. 選擇 **分類**，例如 `Business and Pages`。 此為 Facebook 所需的值，但不會用於 Azure AD B2C。
 1. 在頁面底部選取 [新增平台]，然後選取 [網站]。
 1. 在 [Site URL] \(網站 URL\) 中，輸入 `https://your-tenant-name.b2clogin.com/`，並將 `your-tenant-name` 取代為您的租用戶名稱。
-1. 輸入**隱私權原則 URL** 的 URL，如 `http://www.contoso.com/`。 隱私權原則 URL 是您需維護以提供應用程式隱私權資訊的網頁。
+1. 輸入 **隱私權原則 URL** 的 URL，如 `http://www.contoso.com/`。 隱私權原則 URL 是您需維護以提供應用程式隱私權資訊的網頁。
 1. 選取 [Save Changes] \(儲存變更\)。
 1. 記錄頁面頂端的 [應用程式識別碼] 值。
-1. 在 [應用程式祕密] 旁，選取 [顯示] 並記錄其值。 您必須同時使用應用程式識別碼和應用程式祕密這兩個值，將 Facebook 設定為租用戶中的身分識別提供者。 **應用程式祕密**是重要的安全性認證，您應該安全地加以儲存。
-1. 選取 [產品] 旁的加號，然後選取 **Facebook 登入**下的 [設定]。
+1. 在 [應用程式祕密] 旁，選取 [顯示] 並記錄其值。 您必須同時使用應用程式識別碼和應用程式祕密這兩個值，將 Facebook 設定為租用戶中的身分識別提供者。 **應用程式祕密** 是重要的安全性認證，您應該安全地加以儲存。
+1. 選取 [產品] 旁的加號，然後選取 **Facebook 登入** 下的 [設定]。
 1. 在左側功能表中的 **Facebook 登入** 下，選取 [設定]。
 1. 在 [Valid OAuth redirect URIs] \(有效的 OAuth 重新導向 URI\) 中，輸入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 以您的租用戶名稱取代 `your-tenant-name`。 選取頁面底部的 [儲存變更]。
 1. 若要讓 Azure AD B2C 能使用您的 Facebook 應用程式，請按一下頁面右上方的 [狀態選取器]，然後將其切換至 [開啟]，以將應用程式設為公用，然後按一下 [確認]。 此時，狀態應該會從 [開發] 變更為 [作用中]。
@@ -99,19 +100,21 @@ ms.locfileid: "87922144"
 1. 選擇 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
 1. 選取 [識別提供者]，然後選取 [新增 OpenID Connect 提供者]。
 1. 輸入 [名稱]。 例如，輸入 *Contoso Azure AD*。
-1. 針對 [中繼資料 URL] 輸入以下 URL，並將 `your-AD-tenant-domain` 取代為您的 Azure AD 租用戶網域名稱：
+1. 針對 [中繼資料 URL] 輸入以下 URL，並將 `{tenant}` 取代為您的 Azure AD 租用戶網域名稱：
 
     ```
-    https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
+    https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
     ```
 
-    例如： `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration` 。
+    例如： `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration` 。
+    例如： `https://login.microsoftonline.com/contoso.com/v2.0/.well-known/openid-configuration` 。
 
 1. 在 [用戶端識別碼]中，輸入您先前記錄的應用程式識別碼。
 1. 在 [用戶端密碼] 中，輸入您先前記錄的用戶端密碼。
-1. 保留**範圍**、**回應類型**和**回應模式**的預設值。
-1. (選用) 您也可以輸入 **Domain_hint** 的值。 例如 *ContosoAD*。 [網域提示](../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md)是應用程式的驗證要求中包含的指示詞。 它們可用來加快使用者進入其同盟 IdP 登入頁面的速度。 或者，多租用戶應用程式也可使用網域提示來加速使用者直接前往其租用戶的品牌化 Azure AD 登入頁面。
-1. 在 [識別提供者宣告對應] 下，輸入下列宣告對應值：
+1. 在 [範圍] 中，輸入 `openid profile`。
+1. 保留 **回應類型** 和 **回應模式** 的預設值。
+1. (選擇性) 在 [網域提示] 中，輸入 `contoso.com`。 如需詳細資訊，請參閱[使用 Azure Active Directory B2C 設定直接登入](direct-signin.md#redirect-sign-in-to-a-social-provider)。
+1. 在 [識別提供者宣告對應] 底下，選取下列宣告：
 
     * **使用者識別碼**：oid
     * **顯示名稱**：name

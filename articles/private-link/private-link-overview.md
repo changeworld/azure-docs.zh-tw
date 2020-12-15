@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: f4803cc9871b71e65e4d94ed37d3f9771be1cae0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: adc08e978be699ea6ea3dd00beae1762d48644c0
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454967"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96781057"
 ---
 # <a name="what-is-azure-private-link"></a>什麼是 Azure Private Link？ 
 Azure Private Link 可讓您存取各項 Azure PaaS 服務 (例如 Azure 儲存體和 SQL Database)，並透過虛擬網路中的[私人端點](private-endpoint-overview.md)裝載 Azure 的客戶擁有/合作夥伴服務。
@@ -70,6 +70,7 @@ Azure Private Link 提供下列優點：
 | Azure 監視器 <br/>(Log Analytics 與 Application Insights) | 所有公用區域      |  | GA   <br/> [了解如何建立 Azure 監視器的私人端點。](../azure-monitor/platform/private-link-security.md)   | 
 | Azure Batch | 所有公用區域，但下列區域除外：德國中部、德國東北部 <br/> 所有政府區域  | | GA <br/> [了解如何建立 Azure Batch 的私人端點。](../batch/private-connectivity.md) |
 |Azure Data Factory | 所有公用區域<br/> 所有政府區域<br/>所有中國區域    | 認證必須儲存在 Azure 金鑰保存庫中| GA   <br/> [了解如何建立 Azure Data Factory 的私人端點。](../data-factory/data-factory-private-link.md)   |
+|Azure 受控磁碟 | 所有公用區域<br/> 所有政府區域<br/>所有中國區域    | [按一下這裡了解已知的限制](https://docs.microsoft.com/azure/virtual-machines/disks-enable-private-links-for-import-export-portal#limitations) | GA   <br/> [了解如何建立 Azure 受控磁碟的私人端點。](https://docs.microsoft.com/azure/virtual-machines/disks-enable-private-links-for-import-export-portal)   |
 
 
 

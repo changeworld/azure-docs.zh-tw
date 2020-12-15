@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: 5f6e5de61c9f43d5958e68c545105c4373996f7c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 012038399796a0f2dc87acfb350043542268379a
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175061"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936976"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>教學課程 - 在 Azure Active Directory 中自訂 SaaS 應用程式的使用者佈建屬性對應
 
@@ -115,7 +115,7 @@ Azure AD 佈建服務可以部署在 "greenfield" 案例中 (使用者不存在�
 
 
 > [!NOTE]
-> 我們建議，只有已自訂應用程式和系統的結構描述，並確知其自訂屬性如何定義的系統管理員，才可編輯支援的屬性清單。 有時，這會需要熟悉應用程式或系統所提供的 API 和開發人員工具。
+> 我們建議，只有已自訂應用程式和系統的結構描述，並確知其自訂屬性如何定義的系統管理員，才可編輯支援的屬性清單。 有時，這會需要熟悉應用程式或系統所提供的 API 和開發人員工具。 預設會鎖定支援屬性清單的編輯功能，但客戶可以瀏覽至下列 URL 來啟用此功能： https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true 。 接著，您可以瀏覽至您的應用程式來檢視屬性清單，如[上方](https://docs.microsoft.com/azure/active-directory/app-provisioning/customize-application-attributes#editing-the-list-of-supported-attributes)所述。 
 
 編輯支援的屬性清單時，必須提供下列屬性：
 

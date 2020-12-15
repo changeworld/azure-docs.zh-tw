@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/03/2020
+ms.date: 12/07/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: a6b72c9e6cc366d04937598f653f8ba887ce1b85
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 640098e118db87214d7364132a5119e35cb94c0a
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952177"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778711"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>教學課程：設定搭配 GPU 的 Azure Stack Edge Pro 網路
 
@@ -42,17 +42,17 @@ ms.locfileid: "91952177"
 
 ## <a name="configure-network"></a>設定網路
 
-您的**開始使用**頁面會顯示向 Azure Stack Edge 服務設定及註冊實體裝置所需的各種設定。 
+您的 **開始使用** 頁面會顯示向 Azure Stack Edge 服務設定及註冊實體裝置所需的各種設定。 
 
 請依照這些步驟設定裝置上的網路。
 
-1. 在裝置的本機 Web UI 中，移至**開始使用**頁面。 
+1. 在裝置的本機 Web UI 中，移至 **開始使用** 頁面。 
 
-2. 在**網路**圖格上，選取 [設定]。  
+2. 在 **網路** 圖格上，選取 [設定]。  
     
     ![本機 Web UI 的「網路設定」圖格](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-1.png)
 
-    您的實體裝置上有六個網路介面。 連接埠 1 和連接埠 2 是 1 Gbps 的網路介面。 連接埠 3、連接埠 4、連接埠 5 和連接埠 6 都是 25 Gbps 的網路介面，但也可作為 10 Gbps 網路介面。 連接埠 1 會自動設定為管理專用連接埠，連接埠 2 到連接埠 6 則都是資料連接埠。 新裝置的**網路設定**頁面如下所示。
+    您的實體裝置上有六個網路介面。 連接埠 1 和連接埠 2 是 1 Gbps 的網路介面。 連接埠 3、連接埠 4、連接埠 5 和連接埠 6 都是 25 Gbps 的網路介面，但也可作為 10 Gbps 網路介面。 連接埠 1 會自動設定為管理專用連接埠，連接埠 2 到連接埠 6 則都是資料連接埠。 新裝置的 **網路設定** 頁面如下所示。
     
     ![本機 Web UI 的 [網路設定] 頁面](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2a.png)
 
@@ -96,11 +96,11 @@ ms.locfileid: "91952177"
 
     ![Compute page in local UI 1](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-1.png)-->
 
-1. 在**計算**頁面上，選取您想要為計算啟用的網路介面。 
+1. 在 **計算** 頁面上，選取您想要為計算啟用的網路介面。 
 
     ![本機 UI 中的計算頁面 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-2.png)
 
-1. 在**網路設定**對話方塊中，選取 [啟用]。 啟用計算時，系統會在您的裝置上建立該網路介面的虛擬交換器。 虛擬交換器會用於裝置上的計算基礎結構。 
+1. 在 **網路設定** 對話方塊中，選取 [啟用]。 啟用計算時，系統會在您的裝置上建立該網路介面的虛擬交換器。 虛擬交換器會用於裝置上的計算基礎結構。 
     
 1. 指派 **Kubernetes 節點 IP**。 這些靜態 IP 位址可供計算 VM 使用。  
 
@@ -139,7 +139,7 @@ ms.locfileid: "91952177"
 
    ![Local web UI "Web proxy settings" page](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-1.png)-->
 
-1. 在 **Web Procy 設定**頁面上，採取下列步驟：
+1. 在 **Web Procy 設定** 頁面上，採取下列步驟：
 
     1. 在 [Web proxy URL] 方塊中，以下列格式輸入 URL：`http://host-IP address or FQDN:Port number`。 此處不支援 HTTPS URL。
 

@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: d2b90db18a31fff4190be4f84625ad52fcaae578
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: cd3ca4d3ddf73469cd1f1fc065eccb369cf765af
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657307"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905667"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>適用於合作夥伴的 Azure 成本管理入門
 
@@ -262,7 +262,7 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 ## <a name="export-cost-data-to-azure-storage"></a>將成本資料匯出至 Azure 儲存體
 
-對合作夥伴租用戶中的計費範圍具有存取權的合作夥伴，可以將其成本和使用情況資料匯出至 Azure 儲存體 Blob。 Blob 必須位於合作夥伴租用戶中的訂用帳戶上，且該訂用帳戶不可以是共用的服務訂用帳戶或客戶的訂用帳戶。 若要啟用成本資料匯出，建議您在合作夥伴租用戶中設定獨立的隨用隨付訂用帳戶，以裝載匯出的成本資料。 系統會在隨用隨付訂用帳戶所裝載的 Azure 儲存體 Blob 上建立匯出儲存體帳戶。 根據夥伴建立匯出的範圍，相關聯的資料會定期自動匯出至儲存體帳戶。
+對合作夥伴租用戶中的計費範圍具有存取權的合作夥伴，可以將其成本和使用情況資料匯出至 Azure 儲存體 Blob。 Blob 必須位於合作夥伴租用戶中的訂用帳戶上，且該訂用帳戶不可以是[共用的服務訂用帳戶](/partner-center/shared-services)或客戶的訂用帳戶。 若要啟用成本資料匯出，建議您在合作夥伴租用戶中設定獨立的隨用隨付訂用帳戶，以裝載匯出的成本資料。 系統會在隨用隨付訂用帳戶所裝載的 Azure 儲存體 Blob 上建立匯出儲存體帳戶。 根據夥伴建立匯出的範圍，相關聯的資料會定期自動匯出至儲存體帳戶。
 
 對訂用帳戶具有 Azure RBAC 存取權的使用者，也可以將成本資料匯出至客戶租用戶中的任何訂用帳戶所裝載的 Azure 儲存體 Blob。
 

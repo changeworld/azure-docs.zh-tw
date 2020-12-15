@@ -6,13 +6,13 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 01/08/2020
-ms.openlocfilehash: 0a578f1edb51efd5f0905e663d42bf5a6fbfc783
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/09/2020
+ms.openlocfilehash: bdf9cbfef7dfdcf80976641b527ddeb61368d50b
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489016"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921025"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>使用 Azure Data Factory 和 Azure Data Share 進行資料整合
 
@@ -34,7 +34,7 @@ ms.locfileid: "96489016"
 
 * **Azure Data Lake Storage Gen2 儲存體帳戶**：如果您沒有 ADLS Gen2 儲存體帳戶，請了解如何 [建立 ADLS Gen2 儲存體帳戶](../storage/common/storage-account-create.md)。
 
-* **Azure Synapse Analytics (先前為 SQL DW)** ：如果您沒有 Azure Synapse Analytics (先前為 SQL DW)，請了解如何 [建立 Azure Synapse Analytics 執行個體](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)。
+* **Azure Synapse Analytics**：如果您沒有 Azure Synapse Analytics，請了解如何[建立 Azure Synapse Analytics 執行個體](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)。
 
 * **Azure Data Factory**：如果您尚未建立資料處理站，請參閱如何 [建立資料處理站](./quickstart-create-data-factory-portal.md)。
 
@@ -79,7 +79,7 @@ ms.locfileid: "96489016"
 
 ### <a name="create-an-azure-synapse-analytics-linked-service"></a>建立 Azure Synapse Analytics 連結服務
 
-1. 重複相同的程序，以新增 Azure Synapse Analytics 連結服務。 在 [連線] 索引標籤中，按一下 [新增]。 選取 Azure Synapse Analytics (先前為 SQL DW) 磚，然後按一下 繼續。
+1. 重複相同的程序，以新增 Azure Synapse Analytics 連結服務。 在 [連線] 索引標籤中，按一下 [新增]。 選取 [Azure Synapse Analytics] 磚，然後按一下 [繼續]。
 
     ![入口網站設定 6](media/lab-data-flow-data-share/configure6.png)
 1. 在連結服務組態窗格中，輸入 'SQLDW' 作為連結服務名稱。 輸入您的認證，以允許資料處理站連線至您的資料庫。 如果您使用 SQL 驗證，請輸入伺服器名稱、資料庫、您的使用者名稱和密碼。 您可以按一下 [測試連線]，以確認連線資訊正確無誤。 在完成作業後，按一下 [建立]。
@@ -274,7 +274,7 @@ ms.locfileid: "96489016"
 
     ![入口網站接收 2](media/lab-data-flow-data-share/sink2.png)
 
-1. 選取 Azure Synapse Analytics (先前為 SQL DW) 磚，然後按一下 繼續。
+1. 選取 [Azure Synapse Analytics] 磚，然後按一下 [繼續]。
 
     ![入口網站接收 3](media/lab-data-flow-data-share/sink3.png)
 1. 呼叫您的資料集 'AggregatedTaxiData'。 選取 'SQLDW' 作為連結服務。 選取 [建立新的資料表]，並將新的資料表命名為 dbo.AggregateTaxiData。 在完成作業後，按一下 [確定]

@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 838276c47085a3c7ad0f7c0a35a2578b13eb5026
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: a427c77ec23bb933f96d8aec54ca33169aee84d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511262"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576021"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure Synapse Analytics 的常見問題
 
@@ -22,7 +22,7 @@ ms.locfileid: "96511262"
 
 ## <a name="general"></a>一般
 
-### <a name="q-what-rbac-roles-exist-and-how-do-i-use-them-to-secure-a-synapse-workspace"></a>問：目前有哪些 RBAC 角色？如何使用這些角色來保護 Synapse 工作區？
+### <a name="q-how-can-i-use-rbac-roles-to-secure-my-workspace"></a>問：如何使用 RBAC 角色來保護我的工作區？
 
 A：Azure Synapse 導入了許多角色及其指派範圍，為您簡化保護工作區的作業。
 
@@ -36,8 +36,8 @@ Synapse RBAC 角色：
 * Synapse 計算操作員 (預覽)
 * Synapse 認證使用者 (預覽)
 
-Synapse RBAC 範圍：
-* 工作區 
+若要保護您的 Synapse 工作區，請將 RBAC 角色指派給這些 RBAC 範圍：
+* 工作區
 * Spark 集區
 * 整合執行階段
 * 連結的服務
@@ -45,7 +45,7 @@ Synapse RBAC 範圍：
 
 此外，透過專用 SQL 集區，您可以使用您所熟悉和喜愛的所有安全性功能。
 
-### <a name="q-how-can-i-cost-control-for-the-capabilities-inside-a-synapse-workspace-such-as-dedicated-sql-pools-serverless-spark-pools-and-serverless-sql-pools"></a>問：如何對 Synapse 工作區內的功能 (例如專用 SQL 集區、無伺服器 Spark 集區，和無伺服器 SQL 集區) 進行成本控制？
+### <a name="q-how-do-i-control-cont-dedicated-sql-pools-serverless-sql-pools-and-serverless-spark-pools"></a>問：如何持續控制專用的 SQL 集區、無伺服器 SQL 集區，以及無伺服器 Spark 集區？
 
 A：首先，您可以將 Azure Synapse 與 Azure 訂用帳戶層級適用的內建成本分析和成本警示搭配使用。
 
@@ -83,7 +83,7 @@ A：Synapse 管線中的每個活動都會使用在連結服務內指定的認�
 
 ### <a name="q-how-do-i-migrate-existing-pipelines-from-azure-data-factory-to-an-azure-synapse-workspace"></a>問：如何將現有的管線從 Azure Data Factory 遷移至 Azure Synapse 工作區？
 
-A：此時，您必須手動重新建立 Azure Data Factory 管線和相關成品。 
+A：目前，您必須手動重新建立 Azure Data Factory 管線和相關成品，方法是從原始管線匯出 JSON，並將其匯入至 Synapse 工作區。
 
 ## <a name="apache-spark"></a>Apache Spark
 

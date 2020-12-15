@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2020
 ms.author: memildin
-ms.openlocfilehash: 68cb738ae6e4689a0356ea56c1de2d383ea83ad6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31ff3620bcab6b10b59582daa255ff1f259ab0d3
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449946"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852637"
 ---
 # <a name="supported-platforms"></a>支援的平台 
 
@@ -44,8 +44,10 @@ Azure 資訊安全中心支援不同混合式環境類型上的虛擬機器和�
 
 此外，請確定您的 Log Analytics 代理程式已[正確設定，以便將資料傳送至資訊安全中心](security-center-enable-data-collection.md#manual-agent)
 
-> [!TIP]
-> 若要深入了解 Windows 和 Linux 上可用的特定資訊安全中心功能，請參閱[機器適用的功能涵蓋範圍](security-center-services.md)。
+若要深入了解 Windows 和 Linux 上可用的特定資訊安全中心功能，請參閱[機器適用的功能涵蓋範圍](security-center-services.md)。
+
+> [!NOTE]
+> 雖然 Azure Defender 的設計訴求是用來保護伺服器，但大部分 **適用於伺服器的 Azure Defender** 的功能都支援 Windows 10 電腦。 目前不支援的一項功能是[資訊安全中心的整合式 EDR 解決方案：適用於端點的 Microsoft Defender](security-center-wdatp.md)。
 
 ## <a name="managed-virtual-machine-services"></a>受控虛擬機器服務 <a name="virtual-machine"></a>
 

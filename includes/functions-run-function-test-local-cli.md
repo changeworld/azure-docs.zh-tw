@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/18/2020
 ms.author: glenga
-ms.openlocfilehash: 0bb0c22227946cba6790b536b3cb8db24af3ccbc
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 11d426016cfe1a8a9ff843da518f57c08881be5d
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422855"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96842319"
 ---
 ## <a name="run-the-function-locally"></a>在本機執行函式
 
@@ -35,7 +35,7 @@ ms.locfileid: "93422855"
     </pre>
     
     >[!NOTE]  
-    > 如果 HttpExample 未如下顯示，表示您可能不是從專案的根資料夾啟動主機。 在此情況下，請使用 **Ctrl**+**C** 停止主機，瀏覽至專案的根資料夾，然後再次執行先前的命令。
+    > 如果 HttpExample 未如上顯示，表示您可能不是從專案的根資料夾啟動主機。 在此情況下，請使用 **Ctrl**+**C** 停止主機，瀏覽至專案的根資料夾，然後再次執行先前的命令。
 
 1. 從這個輸出中將 `HttpExample` 函式的 URL 複製到瀏覽器，並附加查詢字串 `?name=<YOUR_NAME>`，使其成為完整的 URL (如 `http://localhost:7071/api/HttpExample?name=Functions`)。 瀏覽器應該會顯示類似於 `Hello Functions` 的訊息：
 

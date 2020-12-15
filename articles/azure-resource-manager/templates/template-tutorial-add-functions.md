@@ -1,21 +1,21 @@
 ---
 title: 教學課程 - 新增範本函式
-description: 將範本函式新增至 Azure Resource Manager 範本，以建構值。
+description: 將範本函式新增至 Azure Resource Manager 範本 (ARM 範本)，以建構值。
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: c6ced832cad6809e7cd016eee132713c6b266480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67c88e98d966a21163aafefcad8363086d5b3bf4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613844"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931039"
 ---
 # <a name="tutorial-add-template-functions-to-your-arm-template"></a>教學課程：將範本函式新增至 ARM 範本
 
-在本教學課程中，您將了解如何將[範本函式](template-functions.md)新增至 Azure Resource Manager (ARM) 範本。 您可以使用函式，以動態方式建構值。 除了這些系統提供的範本函式之外，您也可以建立[使用者定義的函式](./template-user-defined-functions.md)。 完成此教學課程需要 **7 分鐘**。
+在本教學課程中，您將了解如何將[範本函式](template-functions.md)新增至 Azure Resource Manager 範本 (ARM 範本)。 您可以使用函式，以動態方式建構值。 除了這些系統提供的範本函式之外，您也可以建立[使用者定義的函式](./template-user-defined-functions.md)。 完成此教學課程需要 **7 分鐘**。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -29,11 +29,11 @@ ms.locfileid: "91613844"
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json":::
 
-儲存體帳戶的位置已硬式編碼為**美國東部**。 不過，您可能需要將儲存體帳戶部署到其他區域。 您會再次遇到範本缺乏彈性的問題。 您可以新增 location 的參數，但如果其預設值比硬式編碼的值更合理，那就太好了。
+儲存體帳戶的位置已硬式編碼為 **美國東部**。 不過，您可能需要將儲存體帳戶部署到其他區域。 您會再次遇到範本缺乏彈性的問題。 您可以新增 location 的參數，但如果其預設值比硬式編碼的值更合理，那就太好了。
 
 ## <a name="use-function"></a>使用函式
 
-如果您已完成本系列中的上一個教學課程，則您已經使用了函式。 當您新增 **"[parameters('storageName')]"** 時，使用了 [parameters](template-functions-deployment.md#parameters) 函式。 方括弧表示括弧內的語法是[範本運算式](template-expressions.md)。 Resource Manager 會解析語法，而不是將它視為常值。
+如果您已完成本系列中的上一個教學課程，則您已經使用了函式。 當您新增 `"[parameters('storageName')]"` 時，使用了 [parameters](template-functions-deployment.md#parameters) 函式。 方括弧表示括弧內的語法是[範本運算式](template-expressions.md)。 Resource Manager 會解析語法，而不是將它視為常值。
 
 函式可藉由在部署期間以動態方式取得值，來為範本增加彈性。 在此教學課程中，您會使用函式來取得要用於部署之資源群組的位置。
 
@@ -47,7 +47,7 @@ ms.locfileid: "91613844"
 
 在先前的教學課程中，您已在美國東部建立儲存體帳戶，但您的資源群組是在美國中部建立的。 在此教學課程中，您的儲存體帳戶會建立於與資源群組相同的區域中。 使用 location 的預設值，如此就不需提供該參數值。 您必須為儲存體帳戶提供新名稱，因為您是在不同的位置建立儲存體帳戶。 例如，使用 **store2** 作為前置詞，而不是 **store1**。
 
-如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 **templateFile** 變數設為範本檔案的路徑，如[第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
+如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 **templateFile** 變數設為範本檔案的路徑，如 [第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 5f6d768e3d863d52cfc91beb799d86fcd854af16
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 547bf111e73813c939caa917c0117dac6c8989e9
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517592"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922474"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>快速入門：將您的第一個 IoT Edge 模組部署至虛擬 Windows 裝置
 
@@ -33,23 +33,21 @@ ms.locfileid: "94517592"
 
 如果您沒有使用中的 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-您可以使用 Azure CLI 來完成本快速入門中的許多步驟。 Azure IoT 具有啟用額外功能的擴充功能。
-
-將 Azure IoT 擴充功能新增至 Cloud Shell 執行個體。
-
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
-
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
-
 ## <a name="prerequisites"></a>必要條件
+
+備妥環境以使用 Azure CLI。
+
+- 使用 PowerShell 環境的 [Azure Cloud Shell](/azure/cloud-shell/quickstart-powershell)。
+
+   [![內嵌啟動](https://shell.azure.com/images/launchcloudshell.png "啟動 Azure Cloud Shell")](https://shell.azure.com)   
+- 如果想要，請[安裝](/cli/azure/install-azure-cli) Azure CLI 以執行 CLI 參考命令。
+   - 如果您使用的是本機安裝，請使用 [az login](/cli/azure/reference-index#az-login) 命令，透過 Azure CLI 來登入。  請遵循您終端機上顯示的步驟，完成驗證程序。  如需其他登入選項，請參閱[使用 Azure CLI 登入](/cli/azure/authenticate-azure-cli)。
+  - 出現提示時，請在第一次使用時安裝 Azure CLI 擴充功能。  如需延伸模組詳細資訊，請參閱[使用 Azure CLI 延伸模組](/cli/azure/azure-cli-extensions-overview)。
+  - 執行 [az version](/cli/azure/reference-index?#az_version) 以尋找已安裝的版本和相依程式庫。 若要升級至最新版本，請執行 [az upgrade](/cli/azure/reference-index?#az_upgrade)。
 
 雲端資源：
 
-* 一個資源群組，用以管理本快速入門中使用的所有資源。
+- 一個資源群組，用以管理本快速入門中使用的所有資源。
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
@@ -57,7 +55,7 @@ ms.locfileid: "94517592"
 
 IoT Edge 裝置：
 
-* 一部 Windows 虛擬機器，可當作您的 IoT Edge 裝置。 您可以使用下列命令，並將 `{password}` 取代為安全密碼，來建立此虛擬機器：
+- 一部 Windows 虛擬機器，可當作您的 IoT Edge 裝置。 您可以使用下列命令，並將 `{password}` 取代為安全密碼，來建立此虛擬機器：
 
   ```azurecli-interactive
   az vm create --resource-group IoTEdgeResources --name EdgeVM --image MicrosoftWindowsDesktop:Windows-10:rs5-pro:latest --admin-username azureuser --admin-password {password} --size Standard_DS1_v2
@@ -116,7 +114,7 @@ IoT Edge 裝置：
 2. 檢視裝置的連接字串，此字串將作為連結實體裝置與其在 IoT 中樞內的身分識別。 其包含 IoT 中樞的名稱、您的裝置名稱，以及用來驗證兩者間連線的共用金鑰。
 
    ```azurecli-interactive
-   az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
+   az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
 3. 從 JSON 輸出複製 `connectionString` 金鑰值並加以儲存。 此值示裝置連接字串。 您將在下一節中使用此連接字串來設定 IoT Edge 執行階段。

@@ -1,6 +1,6 @@
 ---
-title: 快速入門 - 使用 C 利用對稱金鑰將模擬裝置佈建到 Azure IoT 中樞
-description: 在此快速入門中，您將會使用 C 裝置 SDK 來建立搭配 Azure IoT 中樞裝置佈建服務 (DPS) 使用對稱金鑰的模擬裝置
+title: 快速入門 - 使用 C 利用對稱金鑰將裝置佈建到 Azure IoT 中樞
+description: 在此快速入門中，您將會使用 C 裝置 SDK 佈建搭配 Azure IoT 中樞裝置佈建服務 (DPS) 使用對稱金鑰的裝置
 author: wesmc7777
 ms.author: wesmc
 ms.date: 01/14/2020
@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: ab998756f219cd7bc155f98c2d29454be8018825
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7df7c9ab6bfbc8a39050b78a76114ae2a0a9d9b7
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968208"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746500"
 ---
-# <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>快速入門：使用對稱金鑰來佈建模擬的裝置
+# <a name="quickstart-provision-a-device-with-symmetric-keys"></a>快速入門：使用對稱金鑰佈建裝置
 
-在此快速入門中，您將了解如何在 Windows 開發機器上建立並執行裝置模擬器。 您將設定此模擬裝置，以使用對稱金鑰來搭配裝置佈建服務執行個體進行驗證並指派給 IoT 中樞。 來自 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 的程式碼範例將用來模擬起始佈建之裝置的開機順序。 將根據佈建服務執行個體並指派給 IoT 中樞的個別註冊來識別裝置。
+在本快速入門中，您將了解如何在 Windows 開發電腦上執行裝置佈建程式碼，以連線至 IoT 中樞作為 IoT 裝置。 您將設定此裝置，以使用對稱金鑰來搭配裝置佈建服務執行個體進行驗證並指派給 IoT 中樞。 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 的範例程式碼將用來佈建裝置。 將根據佈建服務執行個體並指派給 IoT 中樞的個別註冊來識別裝置。
 
 雖然此文章示範如何使用個別註冊來佈建，但您也可以使用註冊群組。 使用註冊群組的過程會有一些差異。 例如，您必須使用具有裝置唯一註冊識別碼的衍生裝置金鑰。 雖然對稱金鑰註冊群組不僅限於傳統裝置，但[如何使用對稱金鑰證明來佈建傳統裝置](how-to-legacy-device-symm-key.md)提供了註冊群組範例。 如需詳細資訊，請參閱[對稱金鑰證明的群組註冊](concepts-symmetric-key-attestation.md#group-enrollments)。
 
@@ -46,7 +46,7 @@ ms.locfileid: "94968208"
 
 在此節中，您會準備用來建置 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 的開發環境。 
 
-SDK 包含模擬裝置的範例程式碼。 這個模擬裝置將會嘗試在裝置開機順序期間進行佈建。
+SDK 包含佈建裝置的範例程式碼。 這個程式碼將會嘗試在裝置開機順序期間進行佈建。
 
 1. 下載 [CMake 建置系統](https://cmake.org/download/)。
 
@@ -73,7 +73,7 @@ SDK 包含模擬裝置的範例程式碼。 這個模擬裝置將會嘗試在裝
     cd cmake
     ```
 
-5. 請執行下列命令，以建置您開發用戶端平台特有的 SDK 版本。 `cmake` 目錄中會產生模擬裝置的 Visual Studio 解決方案。 
+5. 請執行下列命令，以建置您開發用戶端平台特有的 SDK 版本。 `cmake` 目錄中會產生裝置佈建程式碼的 Visual Studio 解決方案。 
 
     ```cmd
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
@@ -123,7 +123,7 @@ SDK 包含模擬裝置的範例程式碼。 這個模擬裝置將會嘗試在裝
 
 <a id="firstbootsequence"></a>
 
-## <a name="simulate-first-boot-sequence-for-the-device"></a>模擬裝置的第一個開機順序
+## <a name="run-the-provisioning-code-for-the-device"></a>執行裝置的佈建程式碼
 
 在本節中，您可以更新範例程式碼來將裝置的開機順序傳送至裝置佈建服務執行個體。 此開機順序會使裝置經過辨識，並指派給連結至裝置佈建服務執行個體的 IoT 中樞。
 
@@ -178,7 +178,7 @@ SDK 包含模擬裝置的範例程式碼。 這個模擬裝置將會嘗試在裝
 
 8. 在 Visual Studio 功能表中，選取 [偵錯] > [啟動但不偵錯] 以執行解決方案。 出現重新建置專案的提示時，選取 [是]，以在執行前重新建置專案。
 
-    下列輸出是模擬裝置成功開機，並連線到佈建服務執行個體以準備指派給 IoT 中樞的範例：
+    下列輸出是裝置成功連線到佈建服務執行個體以準備指派給 IoT 中樞的範例：
 
     ```cmd
     Provisioning API Version: 1.2.8
@@ -194,7 +194,7 @@ SDK 包含模擬裝置的範例程式碼。 這個模擬裝置將會嘗試在裝
     Press enter key to exit:
     ```
 
-9. 在入口網站中，瀏覽到獲指派您模擬裝置的 IoT 中樞，然後選取 [IoT 裝置]  索引標籤。一旦模擬裝置成功佈建到中樞，其裝置識別碼會出現在 [IoT 裝置]  刀鋒視窗上，且 [狀態]  顯示為 [已啟用]  。 您可能需要按頂端的 [重新整理] 按鈕。 
+9. 在入口網站中，瀏覽到獲指派您裝置的 IoT 中樞，然後選取 [IoT 裝置] 索引標籤。裝置成功佈建到 IoT 中樞時，其裝置識別碼會出現在 **IoT 裝置** 刀鋒視窗上，且「狀態」顯示為 **已啟用**。 您可能需要按頂端的 [重新整理] 按鈕。 
 
     ![已向 IoT 中樞註冊裝置](./media/quick-create-simulated-device-symm-key/hub-registration.png) 
 
@@ -209,7 +209,7 @@ SDK 包含模擬裝置的範例程式碼。 這個模擬裝置將會嘗試在裝
 
 ## <a name="next-steps"></a>後續步驟
 
-在此快速入門中，您已在 Windows 電腦上建立模擬裝置，並搭配入口網站上的 Azure IoT 中樞裝置佈建服務使用對稱金鑰，將它佈建到 IoT 中樞。 若要了解如何以程式設計方式註冊您的裝置，請繼續閱讀以程式設計方式註冊 X.509 裝置的快速入門。 
+在本快速入門中，您已在 Windows 電腦上執行裝置佈建程式碼。  裝置已通過驗證，並使用對稱金鑰佈建到您的 IoT 中樞。 若要了解如何佈建 X.509 憑證裝置，請繼續適用於 X.509 裝置的快速入門。 
 
 > [!div class="nextstepaction"]
-> [Azure 快速入門 - 向 Azure IoT 中樞裝置佈建服務註冊 X.509 裝置](quick-enroll-device-x509-java.md)
+> [Azure 快速入門 - 使用 Azure IoT C SDK 佈建 X.509 裝置](quick-create-simulated-device-x509.md)

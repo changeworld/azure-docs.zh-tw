@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 10/06/2020
-ms.openlocfilehash: af967c58cdeb2c750178141193a711a66af7477c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: fbe1e84525eed47127a08abc9fb7ec5d1144d02f
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426718"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763601"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central-openvinotrade"></a>教學課程：在 Azure IoT Central 中建立影片分析 - 物件和動作偵測應用程式 (OpenVINO&trade;)
 
@@ -24,10 +24,10 @@ ms.locfileid: "94426718"
 
 [!INCLUDE [iot-central-video-analytics-part1](../../../includes/iot-central-video-analytics-part1.md)]
 
-- [Scratchpad.txt](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/Scratchpad.txt)
+- [Scratchpad.txt](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/Scratchpad.txt) - 當您在進行這些教學課程時，此檔案可協助記錄所需的各種設定選項。
 - [deployment.openvino.amd64.json](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/deployment.openvino.amd64.json)
 - [LvaEdgeGatewayDcm.json](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/LvaEdgeGatewayDcm.json)
-- [state.json](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/state.json)
+- [state.json](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/state.json) - 如果您打算在第二個教學課程中使用 Intel NUC 裝置，才需要下載此檔案。
 
 [!INCLUDE [iot-central-video-analytics-part2](../../../includes/iot-central-video-analytics-part2.md)]
 
@@ -39,7 +39,7 @@ ms.locfileid: "94426718"
 
 1. 使用文字編輯器，開啟您儲存在 lva-configuration 資料夾中的 deployment.openvino.amd64.json 檔案。
 
-1. 尋找 `LvaEdgeGatewayModule` 設定並變更映像名稱，如下列程式碼片段所示：
+1. 尋找 `LvaEdgeGatewayModule` 設定並確認映像名稱如下列程式碼片段所示：
 
     ```json
     "LvaEdgeGatewayModule": {
@@ -47,7 +47,7 @@ ms.locfileid: "94426718"
             "image": "mcr.microsoft.com/lva-utilities/lva-edge-iotc-gateway:1.0-amd64",
     ```
 
-1. 在 `LvaEdgeGatewayModule` 區段的 `env` 節點中，新增媒體服務帳戶的名稱。 您已從 scratchpad.txt 檔案中記下此帳戶名稱：
+1. 在 `LvaEdgeGatewayModule` 區段的 `env` 節點中，新增媒體服務帳戶的名稱。 您已記下 scratchpad.txt 檔案中的媒體服務帳戶名稱：
 
     ```json
     "env": {
@@ -55,7 +55,7 @@ ms.locfileid: "94426718"
             "value": "lvaEdge"
         },
         "amsAccountName": {
-            "value": "<YOUR_AZURE_MEDIA_ACCOUNT_NAME>"
+            "value": "<YOUR_AZURE_MEDIA_SERVICES_ACCOUNT_NAME>"
         }
     }
     ```
@@ -64,7 +64,16 @@ ms.locfileid: "94426718"
 
     `azureMediaServicesArmId` 就是您在建立媒體服務帳戶時，從 *scratchpad.txt* 檔案中記下的 **資源識別碼**。
 
-    您已在為媒體服務建立服務主體時，從 *scratchpad.txt* 檔案中記下 `aadTenantId`、`aadServicePrincipalAppId` 和 `aadServicePrincipalSecret`：
+    下表顯示來自 scratchpad.txt 檔案的 *連線到媒體服務 API (JSON)* 且應用於部署資訊清單的值：
+
+    | 部署資訊清單       | Scratchpad  |
+    | ------------------------- | ----------- |
+    | aadTenantId               | AadTenantId |
+    | aadServicePrincipalAppId  | AadClientId |
+    | aadServicePrincipalSecret | AadSecret   |
+
+    > [!CAUTION]
+    > 使用上表來確定您已在部署資訊清單中新增正確的值，否則裝置將無法使用。
 
     ```json
     {

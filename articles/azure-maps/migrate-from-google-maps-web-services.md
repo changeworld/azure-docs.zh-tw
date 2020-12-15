@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 0bb252e227e4f23388929f2fca18769e0bd02e19
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 813cb567ab3edddd6fb37cee050dc5e38ee4289f
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187029"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904885"
 ---
 # <a name="tutorial---migrate-web-service-from-google-maps"></a>教學課程 - 從 Google Maps 遷移 Web 服務
 
@@ -40,19 +40,19 @@ Azure 地圖服務和 Google Maps 都提供透過 REST Web 服務來存取空間
 
 | Google Maps 服務 API | Azure 地圖服務的服務 API                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| 方向              | [路由](/rest/api/maps/route)                                     |
-| 距離矩陣         | [路線矩陣](/rest/api/maps/route/postroutematrixpreview)       |
-| 地理編碼               | [搜尋](/rest/api/maps/search)                                   |
-| 地點搜尋           | [搜尋](/rest/api/maps/search)                                   |
-| 地點自動完成      | [搜尋](/rest/api/maps/search)                                   |
-| 緊貼道路            | 請參閱[計算路線和方向](#calculate-routes-and-directions)一節。            |
-| 速度限制            | 請參閱[對座標進行反向地理編碼](#reverse-geocode-a-coordinate)一節。                  |
-| 靜態地圖              | [轉譯](/rest/api/maps/render/getmapimage)                       |
-| 時區               | [時區](/rest/api/maps/timezone)                              |
+| 方向              | [路由](/rest/api/maps/route)                                     |                         
+| 距離矩陣         | [路線矩陣](/rest/api/maps/route/postroutematrixpreview)       |                         
+| 地理編碼               | [搜尋](/rest/api/maps/search)                                   |                         
+| 地點搜尋           | [搜尋](/rest/api/maps/search)                                   |                         
+| 地點自動完成      | [搜尋](/rest/api/maps/search)                                   |                         
+| 緊貼道路            | 請參閱[計算路線和方向](#calculate-routes-and-directions)一節。            
+| 速度限制            | 請參閱[對座標進行反向地理編碼](#reverse-geocode-a-coordinate)一節。                  
+| 靜態地圖              | [轉譯](/rest/api/maps/render/getmapimage)                       |                         
+| 時區               | [時區](/rest/api/maps/timezone)                              |                         
+| Elevation               | [提高權限 (預覽)](/rest/api/maps/elevation)                   |                         |
 
 Azure 地圖服務目前無法使用下列服務 API：
 
-- Elevation
 - 地理位置
 - 地點詳細資料和相片 - 電話號碼和網站 URL 可於 Azure 地圖服務的搜尋 API 中取得。
 - 地圖 URL
@@ -203,7 +203,7 @@ Azure 地圖服務路線服務會提供下列 API 來計算路線：
 
 - [**計算路線**](/rest/api/maps/route/getroutedirections)：計算路線並立即處理要求。 此 API 同時支援 GET 和 POST 要求。 當您指定大量導航點，或使用許多路線選項來確保 URL 要求不會太長而造成問題時，建議您使用 POST 要求。 Azure 地圖服務中的 POST 路線方向可選擇接受數千個[支援點](/rest/api/maps/route/postroutedirections#supportingpoints)，並使用這些支援點來重建其間的邏輯路線路徑 (緊貼道路)。 
 - [**批次路線**](/rest/api/maps/route/postroutedirectionsbatchpreview)：建立最多包含 1,000 個路線要求的要求，並讓這些地址進行一段時間的處理。 所有資料會在伺服器上以平行方式處理，並可於完成後下載完整的結果集。
-- [**行動服務**](/rest/api/maps/mobility)：使用大眾運輸系統來計算路線和方向。
+- [**行動服務 (預覽) **](/rest/api/maps/mobility)：使用大眾運輸系統來計算路線和方向。
 
 下表會交互參照 Google Maps API 參數與 Azure 地圖服務中類似的 API 參數。
 
@@ -221,8 +221,8 @@ Azure 地圖服務路線服務會提供下列 API 來計算路線：
 | `origin`                       | `query`                            |
 | `region`                       | *N/A* – 這是與地理編碼相關的功能。 在使用 Azure 地圖服務的地理編碼 API 時，請使用 countrySet 參數。  |
 | `traffic_model`               | *N/A* – 只能指定是否應該讓交通資料與 traffic 參數搭配使用。 |
-| `transit_mode`                | 請參閱[行動服務文件](/rest/api/maps/mobility) |
-| `transit_routing_preference` | 請參閱[行動服務文件](/rest/api/maps/mobility) |
+| `transit_mode`                | 請參閱[行動服務 (預覽) 文件](/rest/api/maps/mobility) |
+| `transit_routing_preference` | 請參閱[行動服務 (預覽) 文件](/rest/api/maps/mobility) |
 | `units`                        | *N/A* – Azure 地圖服務只會使用公制單位。  |
 | `waypoints`                    | `query`                            |
 

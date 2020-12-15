@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/23/2020
+ms.date: 11/20/2020
 ms.author: jeedes
-ms.openlocfilehash: ccf945f8bfec85a18493d515dce48f4cb3e3b612
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4acc4c0cec530b8f83648042cd7a417992257543
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182326"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602014"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Software AG Cloud 整合 | Microsoft Docs
 
@@ -77,9 +77,9 @@ ms.locfileid: "96182326"
 
 1. 在 [基本 SAML 組態]  區段上，輸入下列欄位的值：
 
-    a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：`https://<SUBDOMAIN>.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`
+    a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：`https://*.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`
 
-    b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<SUBDOMAIN>.softwareag.cloud/auth/realms/TENANT-NAME`
+    b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://*.softwareag.cloud/auth/realms/TENANT-NAME`
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Software AG Cloud 用戶端支援小組](mailto:support@softwareag.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
@@ -121,19 +121,19 @@ ms.locfileid: "96182326"
 
 1.  按一下 [管理]
 
-    ![設定 Software AG Cloud1](./media/software-ag-cloud-tutorial/admin.png)
+    ![設定 Software AG Cloud 管理](./media/software-ag-cloud-tutorial/admin.png)
 
 1. 前往 **單一登入 > 新增身分識別提供者**
 
-    ![設定 Software AG Cloud2](./media/software-ag-cloud-tutorial/add-identity-provider.png)
+    ![設定 Software AG Cloud 識別提供者](./media/software-ag-cloud-tutorial/add-identity-provider.png)
 
 1. 在下列頁面上，執行下列步驟。
 
-    ![設定 Software AG Cloud3](./media/software-ag-cloud-tutorial/saml-1.png)
+    ![設定 Software AG Cloud 遵循步驟](./media/software-ag-cloud-tutorial/saml-1.png)
 
     a. 在 **身分識別提供者名稱** 文字方塊中名稱，例如 `azure ad`。
 
-    b. 在 **Software AG Cloud 重新導向 URL中使用的識別提供者唯一識別碼** 文字方塊中，貼上您從 Azure 入口網站複製的 [實體識別碼] 值。
+    b. 在 [Software AG Cloud 重新導向 URI 中使用的識別提供者唯一識別碼] 文字方塊中，輸入識別提供者的唯一名稱。 [Software AG Cloud 重新導向 URI] 欄位將會重新整理並填入 URI。 複製此 URI，並用此來設定 Azure 入口網站中的 **實體識別碼** 和其他資訊 (如模式所定義)。
 
     c. 在 **識別提供者組態** 中匯入 **同盟中繼資料 XML** 檔案，然後按一下 [下一步]。
 
@@ -147,11 +147,12 @@ ms.locfileid: "96182326"
 
 在本節中，您會使用下列選項來測試您的 Azure AD 單一登入組態。 
 
-1. 在 Azure 入口網站中按一下 [測試此應用程式]。 這會重新導向您可以在其中起始登入流程的 Software AG Cloud 登入 URL。 
+* 假設 Microsoft Azure 已設定為 Software AG Cloud 中的提供者，請瀏覽至 `www.softwareag.cloud` 然後按一下 [登入] 按鈕，並輸入環境名稱。 在下一個畫面中，按一下 [使用 <IDP NAME> 登入] 連結，然後輸入認證。 驗證之後，您將會登入並移至 Software AG Cloud 首頁。
 
-2. 直接移至 Software AG Cloud 登入 URL，然後從該處起始登入流程。
+* 直接移至 Software AG Cloud 登入 URL，然後從該處起始登入流程。
 
-3. 您可以使用 Microsoft 存取面板。 當您按一下存取面板中的 Software AG Cloud 圖格時，將會重新導向至 Software AG Cloud登入 URL。 如需存取面板的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)
+* 您可以使用 Microsoft 的「我的應用程式」。 當您按一下「我的應用程式」中的 Software AG Cloud 圖格時，將會重新導向至 Software AG Cloud登入 URL。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+
 
 ## <a name="next-steps"></a>後續步驟
 

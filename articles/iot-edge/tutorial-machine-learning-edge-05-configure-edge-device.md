@@ -9,18 +9,26 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: f57e809373a8bd06c4b4afbb9b193464315e788f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: bc62590b9517b2c6d16fdf2637990b845248d2ec
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959572"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932348"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>教學課程：設定 IoT Edge 裝置
 
 在此文章中，我們將執行 Linux 的 Azure 虛擬機器設定為作為透明閘道的 IoT Edge 裝置。 透明閘道設定可讓裝置在不知道閘道存在的情況下，透過閘道連線到 Azure IoT 中樞。 同時，與 Azure IoT 中樞中的裝置互動的使用者，不會察覺中繼閘道裝置。 最後，我們會藉由向透明閘道新增 IoT Edge 模組來為系統新增邊緣分析。
 
 此文章中的步驟通常是由雲端開發人員執行的。
+
+在教學課程的這一節中，您已了解如何：
+
+> [!div class="checklist"]
+>
+> * 建立憑證以允許您的閘道裝置安全地連線到下游裝置。
+> * 建立 IoT Edge 裝置。
+> * 建立 Azure 虛擬機器，以模擬您的 IoT Edge 裝置。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -295,6 +303,10 @@ IoT Edge 執行階段會使用檔案 `/etc/iotedge/config.yaml` 來保存其設�
     ```bash
     journalctl -u iotedge --no-pager --no-full
     ```
+## <a name="clean-up-resources"></a>清除資源
+
+本教學課程是集合的一部分，其中每篇文章都會以上一篇文章中所完成的工作為基礎。 請等到您完成最後一個教學課程後，再清除任何資源。
+
 ## <a name="next-steps"></a>後續步驟
 
 我們剛剛將 Azure VM 設定為 Azure IoT Edge 透明閘道。 我們首先產生測試憑證，然後將其上傳至 Azure Key Vault。 接下來，我們使用指令碼和 Resource Manager 範本從 Azure Marketplace 部署具有 "Ubuntu Server 16.04 LTS + Azure IoT Edge 執行階段" 映像的 VM。 當我們透過 SSH 所連線的 VM 啟動並執行時，我們便登入到 Azure，並從 Key Vault 下載了憑證。 我們已藉由更新 config.yaml 檔案，對 IoT Edge 執行階段的設定進行了數項更新。

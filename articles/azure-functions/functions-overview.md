@@ -1,20 +1,26 @@
 ---
 title: Azure Functions 概觀
-description: 了解 Azure Functions 如何協助建置可調整的無伺服器應用程式。
+description: 了解 Azure Functions 如何協助建置強固的無伺服器應用程式。
 author: craigshoemaker
 ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperfq2
-ms.openlocfilehash: 514f2e9a82a50f95f9c054c6a54e7b5af3c0af15
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 269d911c13cbc59a054c5548e106780d630c8e2b
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96167772"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620863"
 ---
 # <a name="introduction-to-azure-functions"></a>Azure Functions 簡介
+
+Azure Functions 是無伺服器解決方案，可讓您撰寫較少的程式碼、維護較少的基礎結構，並節省成本。 雲端基礎結構會提供讓應用程式保持執行所需的所有最新伺服器，而不需要擔心部署和維護伺服器。
+
+您可以著重於最重要的程式碼片段，讓 Azure Functions 處理其餘部分。<br /><br />
+
+> [!VIDEO https://www.youtube.com/embed/8-jz5f_JyEQ]
 
 我們經常會建置系統來回應一系列的重大事件。 無論是建立 Web API、回應資料庫變更、處理 IoT 資料流程，甚至是管理訊息佇列，每個應用程式都需要一種方法，可在這些事件發生時執行某些程式碼。
 
@@ -43,7 +49,7 @@ ms.locfileid: "96167772"
 | **執行排程的工作** | 在[設定時間](./functions-bindings-timer.md)執行程式碼 |
 | **建立可靠的訊息佇列系統** | 使用[佇列儲存體](./functions-bindings-storage-queue.md)、[服務匯流排](./functions-bindings-service-bus.md)或[事件中樞](./functions-bindings-event-hubs.md)處理訊息佇列 |
 | **分析 IoT 資料流** | 收集和處理[來自 IoT 裝置的資料](./functions-bindings-event-iot.md) |
-| **即時處理資料** | 使用[函式和 Signal R](./functions-bindings-signalr-service.md) 在當下回應資料 |
+| **即時處理資料** | 使用[函式和 SignalR](./functions-bindings-signalr-service.md) 在當下回應資料 |
 
 建置函式時，可使用下列選項和資源：
 

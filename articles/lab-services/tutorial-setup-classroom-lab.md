@@ -2,13 +2,13 @@
 title: 使用 Azure 實驗室服務設定教室實驗室 | Microsoft Docs
 description: 在本教學課程中，您會使用 Azure Lab Services 來設定教室實驗室，且其中包含您教室中學生所使用的虛擬機器。
 ms.topic: tutorial
-ms.date: 06/26/2020
-ms.openlocfilehash: 8981a03b53b1cfb67b03d89f8a1468511d9b1b93
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.date: 12/03/2020
+ms.openlocfilehash: 3abbf5221382b46dbf4e73f9f4dc3b639bc5ecbd
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434850"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602479"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>教學課程：設定教室實驗室 
 您將在本教學課程中設定教室實驗室，且其中包含教室中學生所使用的虛擬機器。  
@@ -121,19 +121,71 @@ ms.locfileid: "96434850"
 
 ## <a name="add-users-to-the-lab"></a>將使用者新增至實驗室
 
-1. 選取左側功能表上的 [使用者]。 預設會啟用 [限制存取] 選項。 當此設定為開啟時，即使使用者有註冊連結，除非使用者位於使用者清單中，否則也無法向實驗室註冊。 只有清單中的使用者可以使用您傳送的註冊連結，向實驗室註冊。 在此程序中，您會在清單中新增使用者。 或者，您可以關閉 [限制存取]，讓使用者能向實驗室註冊 (只要他們有註冊連結)。 
-2. 選取工具列上的 [新增使用者]，然後選取 [以電子郵件地址新增]。 
+當您新增使用者時，[限制存取] 選項會依預設開啟，除非位於使用者清單中，否則學生無法向實驗室註冊，即使他們有註冊連結也一樣。 只有清單中的使用者可以使用您傳送的註冊連結，向實驗室註冊。 您可以關閉 [限制存取]，讓學生能向實驗室註冊 (只要他們有註冊連結)。 
 
-    ![[新增使用者] 按鈕](./media/how-to-configure-student-usage/add-users-button.png)
-1. 在 [新增使用者] 頁面上的不同行或以分號隔開的單一行中，輸入使用者的電子郵件地址。 
+### <a name="add-users-from-an-azure-ad-group"></a>從 Azure AD 群組新增使用者
 
-    ![新增使用者電子郵件地址](./media/how-to-configure-student-usage/add-users-email-addresses.png)
-4. 選取 [儲存]。 您會在清單中看到使用者的電子郵件地址及其狀態 (是否已註冊)。 
+您可以將實驗室使用者清單同步到現有的 Azure Active Directory (Azure AD) 群組，這樣就不需要手動新增或刪除使用者。 
 
-    ![使用者清單](./media/how-to-configure-student-usage/users-list-new.png)
+您可以在組織的 Azure Active Directory 中建立 Azure AD 群組，以管理組織資源和雲端式應用程式的存取權。 若要深入了解，請參閱 [Azure AD 群組](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)。 如果您的組織使用 Microsoft Office 365 或 Azure 服務，則您的組織已經有管理您 Azure Active Directory 的管理員。 
 
-    在使用者向實驗室註冊後，您會在清單中看到使用者的名稱。 
+> [!IMPORTANT]
+> 請確定使用者清單是空的。 如果實驗室中已有您手動新增或透過匯入 CSV 檔案來新增的現有使用者，則不會出現將實驗室同步至現有群組的選項。 
+
+1. 在左側窗格中，選取 [使用者]。 
+1. 按一下 [從群組同步]。 
+
+    :::image type="content" source="./media/how-to-configure-student-usage/add-users-sync-group.png" alt-text="藉由從 Azure AD 群組同步來新增使用者":::
     
+1. 系統會提示您選取現有的 Azure AD 群組來同步實驗室。 
+    
+    如果您在清單中沒看到 Azure AD 群組，可能是因為下列原因：
+
+    -   如果您是 Azure Active Directory 的來賓使用者 (通常是指您在擁有 Azure AD 的組織之外)，而且您無法搜尋 Azure AD 內的群組。 在此情況下，您無法將 Azure AD 群組新增至實驗室。 
+    -   透過 Teams 建立的 Azure AD 群組不會顯示在這份清單中。 您可以在 Teams 內新增 Azure 實驗室服務應用程式，直接從其內部建立和管理實驗室。 深入了解[從 Teams 內部管理實驗室的使用者清單](how-to-manage-user-lists-within-teams.md)。 
+1. 一旦選取要與實驗室同步的 Azure AD 群組後，請按一下 [新增]。
+1. 實驗室開始同步之後，就會將 Azure AD 群組內的所有人以使用者身分提取到實驗室中，而您會看到已更新的使用者清單。 只有此 Azure AD 群組中的人員才能存取您的實驗室。 使用者清單會每隔 24 小時重新整理一次，以符合 Azure AD 群組的最新成員資格。 您也可以按一下 [使用者] 索引標籤中的 [同步] 按鈕，手動同步 Azure AD 群組中的最新變更。
+1. 按一下 [邀請所有人] 按鈕可將使用者邀請至您的實驗室，而這會傳送具有實驗室註冊連結的電子郵件給所有使用者。 
+
+### <a name="add-users-manually-from-emails-or-csv-file"></a>從電子郵件或 CSV 檔案手動新增使用者
+
+在本節中，您會手動新增學生 (透過電子郵件地址或上傳 CSV 檔案)。 
+
+#### <a name="add-users-by-email-address"></a>以電子郵件地址新增使用者
+
+1. 在左側窗格中，選取 [使用者]。 
+1. 按一下 [手動新增使用者]。 
+
+    :::image type="content" source="./media/how-to-configure-student-usage/add-users-manually.png" alt-text="手動新增使用者":::
+1. 選取 [依電子郵件地址新增] (預設)，在不同行或以分號分隔的單行上輸入學生的電子郵件地址。 
+
+    :::image type="content" source="./media/how-to-configure-student-usage/add-users-email-addresses.png" alt-text="新增使用者的電子郵件地址":::
+1. 選取 [儲存]。 
+
+    此清單會顯示目前使用者的電子郵件地址和狀態 (無論他們是否已向實驗室註冊)。 
+
+    :::image type="content" source="./media/how-to-configure-student-usage/list-of-added-users.png" alt-text="使用者清單":::
+
+    > [!NOTE]
+    > 學生向實驗室註冊後，清單會顯示其名稱。 清單中顯示的名稱都是使用 Azure Active Directory 中學生的名字和姓氏來建立的。 
+
+#### <a name="add-users-by-uploading-a-csv-file"></a>上傳 CSV 檔案以新增使用者
+
+您也可以上傳具有使用者電子郵件地址的 CSV 檔案來新增使用者。 
+
+CSV 文字檔會用來儲存以逗號分隔 (CSV) 的表格式資料 (數字和文字)。 CSV 檔案會儲存以逗號分隔的資訊，而不是將資訊儲存在資料列欄位中 (例如試算表)。 CSV 檔案中的每一行都有相同數目的逗點分隔「欄位」。 您可以使用 Excel 輕鬆地建立和編輯 CSV 檔案。
+
+1. 在 Microsoft Excel 中，建立一個以單一資料行列出學生電子郵件地址的 CSV 檔案。
+
+    :::image type="content" source="./media/how-to-configure-student-usage/csv-file-with-users.png" alt-text="CSV 檔案中的使用者清單":::
+1. 在 [使用者] 窗格的頂端選取 [新增使用者]，然後選取 [上傳 CSV]。
+1. 選取包含學生電子郵件地址的 CSV 檔案，然後選取 [開啟]。
+
+    [新增使用者] 視窗會顯示 CSV 檔案中的電子郵件地址清單。 
+1. 選取 [儲存]。 
+1. 在 [使用者] 窗格中，檢視已新增的學生清單。 
+
+    :::image type="content" source="./media/how-to-configure-student-usage/list-of-added-users.png" alt-text="[使用者] 窗格中的新增使用者清單"::: 
 
 ## <a name="send-invitation-emails-to-users"></a>傳送邀請電子郵件給使用者
 
@@ -145,7 +197,7 @@ ms.locfileid: "96434850"
     ![透過電子郵件傳送註冊連結](./media/tutorial-setup-classroom-lab/send-email.png)
 4. 您會在 [使用者] 清單中看到 [邀請] 的狀態。 其狀態應該會依序變更為 [傳送中] 和 [已於 &lt;date&gt; 傳送]。 
 
-    如需將學生新增到班級及管理其實驗室使用方式的詳細資訊，請參閱[如何設定學生使用方式](how-to-configure-student-usage.md)。
+如需將學生新增到班級及管理其實驗室使用方式的詳細資訊，請參閱[如何設定學生使用方式](how-to-configure-student-usage.md)。
 
 ## <a name="next-steps"></a>後續步驟
 在本教學課程中，您已在 Azure 中為課程建立實驗室。 若要了解學生可以如何使用註冊連結，來存取實驗室中的 VM，請前往下一個教學課程：

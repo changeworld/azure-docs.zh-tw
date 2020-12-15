@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 23173432db9364f25901e6e9b285d390c6a63a34
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: f798e65b1517430bc67af793ebb517c586d5d58f
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426540"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763871"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>教學課程：建立適用於影片分析的 IoT Edge 執行個體 (Linux VM)
 
@@ -51,15 +51,15 @@ Azure IoT Edge 是完全受控的服務，可透過部署和執行下列項目�
 | 訂用帳戶 | 選取 Azure 訂用帳戶。 |
 | 資源群組 | lva-rg - 您在上一個教學課程中建立的資源群組。 |
 | 區域       | 美國東部 |
-| DNS 標籤首碼 | 為 VM 選擇唯一的 DNS 首碼。 |
+| DNS 標籤首碼 | 為 VM 選擇唯一的 DNS 首碼。 必須都是字母字元，不可包含數字或特殊字元。 |
 | 管理員使用者名稱 | AzureUser |
 | 管理員密碼 | 輸入密碼。 記下 scratchpad.txt 檔案中的密碼，稍後會用到。 |
 | 範圍識別碼 | 您在上一個教學課程中新增閘道裝置時，從 scratchpad.txt 檔案中記下的 **範圍識別碼**。 |
 | 裝置識別碼 | gateway-001 - 您在上一個教學課程中建立的閘道裝置。 |
-| 裝置金鑰 | 您在上一個教學課程中新增閘道裝置時，從 scratchpad.txt 檔案中記下的裝置主要金鑰。 |
+| 裝置金鑰 | 您在上一個教學課程中新增閘道裝置時，從 *scratchpad.txt* 檔案中記下的 **裝置主要金鑰**。 |
 | Iot Central 應用程式主機 | 在上一個教學課程中，您從 scratchpad.txt 檔案中記下的 **應用程式 URL**。 例如，traders.azureiotcentral.com。 |
-| Iot Central 應用程式 API 權杖 | 您在上一個教學課程中所記下的操作員 API 權杖。 |
-| Iot Central 裝置佈建金鑰 | 您在上一個教學課程中，從 scratchpad.txt 檔案中記下的主要群組共用存取簽章權杖。 |
+| Iot Central 應用程式 API 權杖 | 在上一個教學課程中，您從 scratchpad.txt 檔案中記下的 **操作員 API 權杖**。 |
+| Iot Central 裝置佈建金鑰 | 在上一個教學課程中，您從 scratchpad.txt 檔案中記下的 **SAS-IoT-Devices 群組主要金鑰**。 |
 | VM 大小 | *Standard_DS1_v2* |
 | Ubuntu OS 版本 | *18.04-LTS* |
 | Location | *[resourceGroup().location]* |

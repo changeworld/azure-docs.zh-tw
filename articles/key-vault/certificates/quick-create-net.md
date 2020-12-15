@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 49f244ea8e602f3b5e6499b8e14db2be15bfc8f7
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: b40a13b84a0191b5c454d7edac2226f8f06fadcd
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317072"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780156"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-net-sdk-v4"></a>快速入門：適用於 .NET (SDK v4) 的 Azure Key Vault 憑證用戶端程式庫
 
@@ -54,6 +54,13 @@ Key Vault 用戶端程式庫資源：
 
 2. 請在瀏覽器中使用您的帳戶認證登入。
 
+#### <a name="grant-access-to-your-key-vault"></a>授與對金鑰保存庫的存取權
+
+建立金鑰保存庫的存取原則，將憑證權限授與服務主體
+
+```console
+az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --certificate-permissions delete get list create purge
+```
 
 ### <a name="create-new-net-console-app"></a>建立新的 .NET 主控台應用程式
 
@@ -89,14 +96,6 @@ dotnet add package Azure.Security.KeyVault.Certificates
 
 ```dotnetcli
 dotnet add package Azure.Identity
-```
-
-#### <a name="grant-access-to-your-key-vault"></a>授與對金鑰保存庫的存取權
-
-建立金鑰保存庫的存取原則，將憑證權限授與服務主體。
-
-```console
-az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --certificate-permissions delete get list create purge
 ```
 
 #### <a name="set-environment-variables"></a>設定環境變數
@@ -137,7 +136,7 @@ using Azure.Security.KeyVault.Certificates;
 
 在本快速入門中，已登入的使用者是用來向金鑰保存庫進行驗證，這是本機開發的慣用方法。 針對部署至 Azure 的應用程式，應將受控識別指派給 App Service 或虛擬機器。如需詳細資訊，請參閱[受控識別概觀](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
 
-在下列範例中，金鑰保存庫的名稱會以 "https://\<your-key-vault-name\>.vault.azure.net" 格式，擴充至金鑰保存庫 URI。 這個範例會使用 ['DefaultAzureCredential()'](/dotnet/api/azure.identity.defaultazurecredential) 類別，允許在各種不同的環境中使用相同的程式碼，搭配不同的選項來提供身分識別。 如需對金鑰保存庫進行驗證的詳細資訊，請參閱[開發人員指南](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)。
+在下列範例中，金鑰保存庫的名稱會以 "https://\<your-key-vault-name\>.vault.azure.net" 格式，擴充至金鑰保存庫 URI。 這個範例會使用來自 [Azure 身分識別程式庫](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)的 ['DefaultAzureCredential()'](/dotnet/api/azure.identity.defaultazurecredential) 類別，允許在各種不同的環境中使用相同的程式碼，搭配不同的選項來提供身分識別。 如需對金鑰保存庫進行驗證的詳細資訊，請參閱[開發人員指南](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)。
 
 ```csharp
 string keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
@@ -228,61 +227,20 @@ await client.PurgeDeletedCertificateAsync("myCertificate");
     ```
 ### <a name="test-and-verify"></a>測試和驗證
 
-1.  執行下列命令來建置專案
+執行下列命令來建置專案
 
-    ```dotnetcli
-    dotnet build
-    ```
-
-1. 執行下列命令來執行應用程式。
-
-    ```dotnetcli
-    dotnet run
-    ```
-
-1. 當系統提示時，輸入祕密值。 例如，mySecretPassword。
-
-    下列輸出的變化會出現：
-
-    ```console
-    Creating a certificate in mykeyvault called 'myCertificate' ... done.
-    Retrieving your certificate from mykeyvault.
-    Your certificate version is '8532359bced24e4bb2525f2d2050738a'.
-    Deleting your certificate from jl-kv ... done
-    ```
-
-## <a name="clean-up-resources"></a>清除資源
-
-若不再需要，您可以使用 Azure CLI 或 Azure PowerShell 來移除金鑰保存庫和對應的資源群組。
-
-### <a name="delete-a-key-vault"></a>刪除 Key Vault
-
-```azurecli
-az keyvault delete --name <your-unique-keyvault-name>
+```dotnetcli
+dotnet build
 ```
 
-```azurepowershell
-Remove-AzKeyVault -VaultName <your-unique-keyvault-name>
-```
+下列輸出的變化會出現：
 
-### <a name="purge-a-key-vault"></a>清除 Key Vault
-
-```azurecli
-az keyvault purge --location eastus --name <your-unique-keyvault-name>
-```
-
-```azurepowershell
-Remove-AzKeyVault -VaultName <your-unique-keyvault-name> -InRemovedState -Location eastus
-```
-
-### <a name="delete-a-resource-group"></a>刪除資源群組
-
-```azurecli
-az group delete -g "myResourceGroup"
-```
-
-```azurepowershell
-Remove-AzResourceGroup -Name "myResourceGroup"
+```console
+Creating a certificate in mykeyvault called 'myCertificate' ... done.
+Retrieving your certificate from mykeyvault.
+Your certificate version is '8532359bced24e4bb2525f2d2050738a'.
+Deleting your certificate from mykeyvault ... done
+Purging your certificate from mykeyvault ... done
 ```
 
 ## <a name="next-steps"></a>後續步驟

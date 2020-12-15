@@ -2,15 +2,15 @@
 title: 建立和部署範本規格
 description: 了解如何從 ARM 範本建立範本規格。 然後，將範本規格部署至您訂用帳戶中的資源群組。
 author: tfitzmac
-ms.date: 11/17/2020
+ms.date: 12/01/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: 8439b1de5a69b3e5bfc22e10f089938da921c1cb
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 03cf2013f1cec9722af5d7e72285d9f11d8a6bc1
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94747497"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518952"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>快速入門：建立和部署範本規格 (預覽)
 
@@ -21,15 +21,37 @@ ms.locfileid: "94747497"
 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 範本規格目前為預覽狀態。 若要加以使用，您必須安裝最新版的 PowerShell 或 Azure CLI。 針對 Azure PowerShell，請使用 [5.0.0 版或更新版本](/powershell/azure/install-az-ps)。 針對 Azure CLI，請使用 [2.14.2 版或更新版本](/cli/azure/install-azure-cli)。
+> 範本規格目前為預覽狀態。 若要與 Azure PowerShell 搭配使用，您必須安裝 [5.0.0 版或更新版本](/powershell/azure/install-az-ps)。 若要與 Azure CLI 搭配使用，請使用 [2.14.2 版或更新版本](/cli/azure/install-azure-cli)。
 
 ## <a name="create-template-spec"></a>建立範本規格
 
-範本規格是名為 **Microsoft.Resources/templateSpecs** 的資源類型。 若要建立您的範本規格，您可以使用 Azure PowerShell、Azure CLI 或 ARM 範本。 在所有選項中，您都需要封裝在範本規格內的 ARM 範本。
+範本規格是名為 **Microsoft.Resources/templateSpecs** 的資源類型。 若要建立範本規格，您可以使用 Azure 入口網站、Azure PowerShell、Azure CLI 或 ARM 範本。 在所有選項中，您都需要封裝在範本規格內的 ARM 範本。
 
 使用 PowerShell 和 CLI 時，ARM 範本會當做參數傳入命令。 使用 ARM 範本時，要封裝至範本規格內的 ARM 範本會內嵌在範本規格定義中。
 
 下面會說明這些選項。
+
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
+
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 從畫面頂端的 **搜尋資源、服務和文件** 中，輸入 **範本規格**，然後選取 [範本規格]。
+1. 選取 [建立範本規格]。
+1. 選取或輸入下列值：
+
+    - **名稱**：輸入範本規格名稱。例如，**storageSpec**
+    - **訂用帳戶**：選取用來建立範本規格的 Azure 訂用帳戶。
+    - **資源群組**：選取 [新建] 並輸入新的資源群組名稱。  例如，**templateSpecRG**。
+    - **位置**：選取資源群組的位置。 例如，**美國西部 2**。
+    - **版本**：輸入範本規格的版本。例如，**1.0** 或 **v1.0**。
+
+1. 完成時，選取 [下一步:編輯範本]。
+1. 以下列 JSON 取代範本內容：
+
+    :::code language="json" source="~/quickstart-templates/101-storage-account-create/azuredeploy.json":::
+
+    這是會封裝在範本規格中的範本。
+1. 選取 [檢閱 + 建立]  。
+1. 選取 [建立]。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -203,7 +225,23 @@ ms.locfileid: "94747497"
 
 ## <a name="deploy-template-spec"></a>部署範本規格
 
-您現在可以部署範本規格。部署範本規格就如同部署其包含的範本，不同的是您會傳入範本規格的資源識別碼。您可以使用相同的部署命令，並視需要傳入範本規格的參數值。
+您現在可以部署範本規格。部署範本規格就如同部署其包含的範本，不同的是您會傳入 Azure PowerShell 或 Azure CLI 中的範本規格資源識別碼。 您可以使用相同的部署命令，並視需要傳入範本規格的參數值。
+
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
+
+1. 在 Azure 入口網站中，開啟您在上個程序中建立的資源群組。  例如，**templateSpecRG**。
+1. 選取您建立的範本規格。 例如，**storageSpec**。
+1. 選取 [部署]。
+1. 選取或輸入下列值：
+
+    - **訂用帳戶**：選取用來建立資源的 Azure 訂用帳戶。
+    - **資源群組**：選取 [新建]，然後輸入 **storageRG**。
+    - **儲存體帳戶類型**：選取 [Standard_GRS]。
+
+    您會建立新的資源群組，並將範本規格中的範本部署到新的資源群組。
+
+1. 選取 [檢閱 + 建立]。
+1. 選取 [建立]。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

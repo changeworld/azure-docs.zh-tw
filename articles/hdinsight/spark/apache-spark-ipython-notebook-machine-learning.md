@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc, devx-track-python
 ms.date: 04/07/2020
-ms.openlocfilehash: 753f45257f820f87f2e4bfb1893f581bee167a4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6af50bae075e88ac3bbba39cba9c9042eee2000e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230920"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932240"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>教學課程：在 Azure HDInsight 中建置 Apache Spark 機器學習應用程式
 
@@ -85,7 +85,7 @@ ms.locfileid: "89230920"
     training = documents.toDF()
     ```
 
-    在程式碼片段中，您必須定義函式來比較實際溫度與目標溫度。 如果實際溫度較高，代表建築物是熱的，我們以 **1.0**值來表示這個狀態。 否則，大樓會是冷的，並以 **0.0** 值來表示。
+    在程式碼片段中，您必須定義函式來比較實際溫度與目標溫度。 如果實際溫度較高，代表建築物是熱的，我們以 **1.0** 值來表示這個狀態。 否則，大樓會是冷的，並以 **0.0** 值來表示。
 
 1. 設定包含三個階段的 Spark 機器學習管線：tokenizer、hashingTF 及 lr。
 

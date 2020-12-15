@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 11/09/2020
-ms.openlocfilehash: ae96a81485064637db9e23b7164021bfbc952162
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.date: 12/09/2020
+ms.openlocfilehash: 8594250d72754e6b7d2a6d8c27d3d5bcd0e9c8e4
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555939"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920866"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>在 Azure 入口網站中使用 Azure Data Factory 大量複製多份資料表
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本教學課程示範如何 **從 Azure SQL Database 將多個資料表複製到 Azure Synapse Analytics (先前為 SQL DW)** 。 您也可以在其他複製案例中套用相同模式。 例如，將資料表從 SQL Server/Oracle 複製到 Azure SQL Database/Azure Synapse Analytics (先前為 SQL DW)/Azure Blob，將不同的路徑從 Blob 複製到 Azure SQL Database 資料表。
+本教學課程示範如何 **從 Azure SQL Database 將多個資料表複製到 Azure Synapse Analytics**。 您也可以在其他複製案例中套用相同模式。 例如，將資料表從 SQL Server/Oracle 複製到 Azure SQL Database/Azure Synapse Analytics/Azure Blob，將不同的路徑從 Blob 複製到 Azure SQL Database 資料表。
 
 > [!NOTE]
 > - 如果您不熟悉 Azure Data Factory，請參閱 [Azure Data Factory 簡介](introduction.md)。
@@ -31,8 +31,8 @@ ms.locfileid: "94555939"
 
 > [!div class="checklist"]
 > * 建立資料處理站。
-> * 建立 Azure SQL Database、Azure Synapse Analytics (先前為 SQL DW) 和 Azure 儲存體連結服務。
-> * 建立 Azure SQL Database 和 Azure Synapse Analytics (先前為 SQL DW) 資料集。
+> * 建立 Azure SQL Database、Azure Synapse Analytics 和 Azure 儲存體連結服務。
+> * 建立 Azure SQL Database 和 Azure Synapse Analytics 資料集。
 > * 建立管線來查閱要複製的資料表和其他管線，以執行實際的複製作業。 
 > * 啟動管線執行。
 > * 監視管線和活動執行。
@@ -40,35 +40,35 @@ ms.locfileid: "94555939"
 本教學課程使用 Azure 入口網站。 若要了解如何使用其他工具/SDK 來建立資料處理站，請參閱[快速入門](quickstart-create-data-factory-dot-net.md)。 
 
 ## <a name="end-to-end-workflow"></a>端對端工作流程
-在此案例中，您在 Azure SQL Database 中有一些要複製到 Azure Synapse Analytics (先前為 SQL DW) 的資料表。 以下是發生在管線中工作流程中步驟的邏輯順序：
+在此案例中，您在 Azure SQL Database 中有一些要複製到 Azure Synapse Analytics 的資料表。 以下是發生在管線中工作流程中步驟的邏輯順序：
 
 ![工作流程](media/tutorial-bulk-copy-portal/tutorial-copy-multiple-tables.png)
 
 * 第一個管線會查閱需要複製到接收資料存放區的資料表清單。  或者，您可以維護中繼資料資料表，其中列出要複製到接收資料存放區的所有資料表。 然後，管線會觸發另一個管線，它會逐一查看資料庫中的每個資料表，並執行資料複製作業。
-* 第二個管線會執行實際的複製。 它會使用資料表的清單作為參數。 對於清單中的每個資料表，使用[透過 Blob 儲存體和 PolyBase 暫存複製](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)，將 Azure SQL Database 中的特定資料表複製到 Azure Synapse Analytics (先前為 SQL DW) 中的對應資料表，可獲得最佳效能。 在此範例中，第一個管線會將資料表清單傳遞作為參數的值。 
+* 第二個管線會執行實際的複製。 它會使用資料表的清單作為參數。 對於清單中的每個資料表，使用[透過 Blob 儲存體和 PolyBase 暫存複製](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)，將 Azure SQL Database 中的特定資料表複製到 Azure Synapse Analytics 中的對應資料表，可獲得最佳效能。 在此範例中，第一個管線會將資料表清單傳遞作為參數的值。 
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必要條件
 * **Azure 儲存體帳戶**。 Azure 儲存體帳戶會在大量複製作業中用做暫存 Blob 儲存體。 
 * **Azure SQL Database**。 此資料庫包含來源資料。 
-* **Azure Synapse Analytics (先前為 SQL DW)** 。 此資料倉儲保存從 SQL Database 複製的資料。 
+* **Azure Synapse Analytics**。 此資料倉儲保存從 SQL Database 複製的資料。 
 
-### <a name="prepare-sql-database-and-azure-synapse-analytics-formerly-sql-dw"></a>準備 SQL Database 和 Azure Synapse Analytics (先前為 SQL DW)
+### <a name="prepare-sql-database-and-azure-synapse-analytics"></a>準備 SQL Database 和 Azure Synapse Analytics 
 
 **準備來源 Azure SQL Database**：
 
-遵循[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)一文，在 SQL Database 中建立具有 Adventure Works LT 範例資料的資料庫。 本教學課程會將此範例資料庫中的所有資料表複製到 Azure Synapse Analytics (先前為 SQL DW)。
+遵循[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)一文，在 SQL Database 中建立具有 Adventure Works LT 範例資料的資料庫。 本教學課程會將此範例資料庫中的所有資料表複製到 Azure Synapse Analytics。
 
-**準備接收 Azure Synapse Analytics (先前為 SQL DW)** ：
+**準備接收 Azure Synapse Analytics**：
 
-1. 如果您沒有 Azure Synapse Analytics (先前為 SQL DW) 工作區，請參閱[開始使用 Azure Synapse Analytics](..\synapse-analytics\get-started.md) 一文，以取得其建立步驟。
+1. 如果您沒有 Azure Synapse Analytics 工作區，請參閱[開始使用 Azure Synapse Analytics](..\synapse-analytics\get-started.md) 一文，以取得其建立步驟。
 
-1. 在 Azure Synapse Analytics (先前為 SQL DW) 中建立對應的資料表結構描述。 在稍後步驟中，您可以使用 Azure Data Factory 來移轉/複製資料。
+1. 在 Azure Synapse Analytics 中建立對應的資料表結構描述。 在稍後步驟中，您可以使用 Azure Data Factory 來移轉/複製資料。
 
 ## <a name="azure-services-to-access-sql-server"></a>Azure 服務存取 SQL Server
 
-對於 SQL Database 和 Azure Synapse Analytics (先前為 SQL DW)，均應允許 Azure 服務存取 SQL Server。 請確定您已為伺服器 **開啟** [允許 Azure 服務和資源存取此伺服器] 設定。 此設定可允許 Data Factory 服務從您的 Azure SQL Database 讀取資料，並將資料寫入至 Azure Synapse Analytics (先前為 SQL DW)。 
+對於 SQL Database 和 Azure Synapse Analytics，均應允許 Azure 服務存取 SQL Server。 請確定您已為伺服器 **開啟** [允許 Azure 服務和資源存取此伺服器] 設定。 此設定可允許 Data Factory 服務從您的 Azure SQL Database 讀取資料，並將資料寫入至 Azure Synapse Analytics。 
 
 若要確認並開啟此設定，請移至您的伺服器 > [安全性] > [防火牆與虛擬網路] > 將 [允許 Azure 服務和資源存取此伺服器] 設定為 [開啟]。
 
@@ -81,7 +81,7 @@ ms.locfileid: "94555939"
    ![在 [新增] 窗格中選取資料處理站](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. 在 [新增資料處理站] 頁面上，輸入 **ADFTutorialBulkCopyDF** 作為 [名稱]。 
  
-   Azure Data Factory 的名稱必須是「全域唯一的」。 如果您在名稱欄位看到下列錯誤，請變更資料處理站的名稱 (例如 yournameADFTutorialBulkCopyDF)。 請參閱 [Data Factory - 命名規則](naming-rules.md)一文，以了解 Data Factory 成品的命名規則。
+   Azure Data Factory 的名稱必須是 **全域唯一的**。 如果您在名稱欄位看到下列錯誤，請變更資料處理站的名稱 (例如 yournameADFTutorialBulkCopyDF)。 請參閱 [Data Factory - 命名規則](naming-rules.md)一文，以了解 Data Factory 成品的命名規則。
   
     ```text
     Data factory name "ADFTutorialBulkCopyDF" is not available
@@ -106,7 +106,7 @@ ms.locfileid: "94555939"
 ## <a name="create-linked-services"></a>建立連結的服務
 您建立的連結服務會將您的資料存放區和計算連結到資料處理站。 連結服務具有連線資訊，可供 Data Factory 服務在執行階段中用來連線至資料存放區。 
 
-在本教學課程中，您會將 Azure SQL Database、Azure Synapse Analytics (先前為 SQL DW)、Azure Blob 儲存體資料存放區連結至您的資料處理站。 Azure SQL Database 是來源資料存放區。 Azure Synapse Analytics (先前為 SQL DW) 是接收/目的地資料存放區。 而在使用 PolyBase 將資料載入 Azure Synapse Analytics (先前為 SQL DW) 之前，會使用 Azure Blob 儲存體暫存資料。 
+在本教學課程中，您會將 Azure SQL Database、Azure Synapse Analytics、Azure Blob 儲存體資料存放區連結至您的資料處理站。 Azure SQL Database 是來源資料存放區。 Azure Synapse Analytics 是接收/目的地資料存放區。 而在使用 PolyBase 將資料載入 Azure Synapse Analytics 之前，會使用 Azure Blob 儲存體暫存資料。 
 
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>建立來源 Azure SQL Database 連結服務
 在此步驟中，您會建立連結服務，將 Azure SQL Database 中的資料庫連結至資料處理站。 
@@ -134,11 +134,11 @@ ms.locfileid: "94555939"
     g. 按一下 [建立] 以儲存連結服務。
 
 
-### <a name="create-the-sink-azure-synapse-analytics-formerly-sql-dw-linked-service"></a>建立接收 Azure Synapse Analytics (先前為 SQL DW) 連結服務
+### <a name="create-the-sink-azure-synapse-analytics-linked-service"></a>建立接收 Azure Synapse Analytics 連結服務
 
 1. 在 [連線] 索引標籤上，再次按一下工具列上的 [+ 新增]。 
-1. 在 [新增連結服務] 視窗中，選取 [Azure Synapse Analytics (先前為 SQL DW)]，然後按一下 [繼續]。 
-1. 在 [新增連結服務 (Azure Synapse Analytics (先前為 SQL DW) )] 視窗中，執行下列步驟： 
+1. 在 [新增連結服務] 視窗中，選取 [Azure Synapse Analytics]，然後按一下 [繼續]。 
+1. 在 [新增連結服務 (Azure Synapse Analytics)] 視窗中，執行下列步驟： 
    
     a. 輸入 **AzureSqlDWLinkedService** 作為 **[名稱]** 。
      
@@ -171,7 +171,7 @@ ms.locfileid: "94555939"
 
 輸入資料集 **AzureSqlDatabaseDataset** 會參照 **AzureSqlDatabaseLinkedService**。 連結服務會指定連接字串以連線至資料庫。 資料集會指定資料庫的名稱，以及包含來源資料的資料表。 
 
-輸出資料集 **AzureSqlDWDataset** 會參照 **AzureSqlDWLinkedService**。 連結服務會指定用以連線至 Azure Synapse Analytics (先前為 SQL DW) 的連接字串。 資料集會指定資料庫，以及作為資料複製目的地的資料表。 
+輸出資料集 **AzureSqlDWDataset** 會參照 **AzureSqlDWLinkedService**。 連結服務會指定用以連線至 Azure Synapse Analytics 的連接字串。 資料集會指定資料庫，以及作為資料複製目的地的資料表。 
 
 在本教學課程中，並沒有在資料集定義中對來源和目的地 SQL 資料表執行硬式編碼。 而是在執行階段由 ForEach 活動將資料表名稱傳遞給複製活動。 
 
@@ -187,10 +187,10 @@ ms.locfileid: "94555939"
 1. 切換至 [連線] 索引標籤，然後針對 [資料表] 選取任何資料表。 此資料表是空的資料表。 建立管線時，您可以指定來源資料集的查詢。 查詢可用來從您的資料庫擷取資料。 或者，您可以按一下 [編輯] 核取方塊，然後輸入 **dbo.dummyName** 作為資料表名稱。 
  
 
-### <a name="create-a-dataset-for-sink-azure-synapse-analytics-formerly-sql-dw"></a>建立接收 Azure Synapse Analytics (先前為 SQL DW) 的資料集
+### <a name="create-a-dataset-for-sink-azure-synapse-analytics"></a>建立接收 Azure Synapse Analytics 的資料集 
 
 1. 按一下左窗格中的 [+] (加號)，然後按一下 [資料集]。 
-1. 在 [新增資料集] 視窗中，選取 [Azure Synapse Analytics (先前為 SQL DW)]，然後按一下 [繼續]。
+1. 在 [新增資料集] 視窗中，選取 [Azure Synapse Analytics]，然後按一下 [繼續]。
 1. 在 [設定屬性] 視窗中，於 [名稱] 底部輸入 **AzureSqlDWDataset**。 於 [連結服務] 底下，選取 [AzureSqlDWLinkedService]。 然後按一下 [確定] 。
 1. 切換至 [參數] 索引標籤，按一下 [+ 新增]，並輸入 **DWTableName** 作為參數名稱。 再按一下 [+ 新增]，然後輸入 **DWSchema** 作為參數名稱。 如果您從頁面複製/貼上此名稱，請確定 *DWTableName* 和 *DWSchema* 的結尾處沒有 **尾端空白字元**。 
 1. 切換至 [連線] 索引標籤， 
@@ -212,7 +212,7 @@ ms.locfileid: "94555939"
 * 請查閱 Azure SQL Database 系統資料表，以取得要複製的資料表清單。
 * 觸發 **IterateAndCopySQLTables** 管線以進行實際的資料複製。
 
-**IterateAndCopySQLTables** 管線會採用資料表清單作為參數。 對於清單中每的個資料表，其會使用暫存的複製和 PolyBase，將 Azure SQL Database 資料表中的資料複製到 Azure Synapse Analytics (先前為 SQL DW)。
+**IterateAndCopySQLTables** 管線會採用資料表清單作為參數。 對於清單中每的個資料表，其會使用暫存的複製和 PolyBase，將 Azure SQL Database 資料表中的資料複製到 Azure Synapse Analytics。
 
 ### <a name="create-the-pipeline-iterateandcopysqltables"></a>建立 IterateAndCopySQLTables 管線
 
@@ -393,15 +393,15 @@ ms.locfileid: "94555939"
     ```    
 1. 若要切換回 [管線執行] 檢視，請按一下階層連結功能表頂端的 [所有管線執行] 連結。 按一下 [IterateAndCopySQLTables] 連結 (位於 [管線名稱] 資料行底下)，以檢視管線的活動執行。 請注意在 **查閱** 活動輸出中，每個資料表都有一個 **複製** 活動執行。 
 
-1. 確認資料已複製到您在本教學課程中使用的目標 Azure Synapse Analytics (先前為 SQL DW)。 
+1. 確認資料已複製到您在本教學課程中使用的目標 Azure Synapse Analytics。 
 
 ## <a name="next-steps"></a>後續步驟
 在本教學課程中，您已執行下列步驟： 
 
 > [!div class="checklist"]
 > * 建立資料處理站。
-> * 建立 Azure SQL Database、Azure Synapse Analytics (先前為 SQL DW) 和 Azure 儲存體連結服務。
-> * 建立 Azure SQL Database 和 Azure Synapse Analytics (先前為 SQL DW) 資料集。
+> * 建立 Azure SQL Database、Azure Synapse Analytics 和 Azure 儲存體連結服務。
+> * 建立 Azure SQL Database 和 Azure Synapse Analytics 資料集。
 > * 建立管線來查詢要複製的資料表和其他管線，以執行實際的複製作業。 
 > * 啟動管線執行。
 > * 監視管線和活動執行。

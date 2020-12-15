@@ -1,20 +1,20 @@
 ---
-title: 將企業整合的工作自動化
-description: 了解使用 Azure Logic Apps 針對企業整合在搭配最少程式碼的情況下，將整合應用程式、資料、服務及系統的工作流程自動化。
+title: Azure Logic Apps 概觀
+description: Azure Logic Apps 是用來建立和協調自動化工作流程的雲端解決方案，可透過最少程式碼將應用程式、資料、服務和系統與企業層級案例整合在一起。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: overview
 ms.custom: mvc
 ms.date: 03/11/2020
-ms.openlocfilehash: 3496dfd7813818ced8963175d73ec0f8ef6892d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4c4e8c8f809452286fee493e20dbef2cc538c8bd
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86536227"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921534"
 ---
-# <a name="overview---what-is-azure-logic-apps"></a>概觀 - 什麼是 Azure Logic Apps？
+# <a name="what-is-azure-logic-apps"></a>什麼是 Azure Logic Apps？
 
 [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) 是一項雲端服務，可在您需要跨企業或組織整合應用程式、資料、系統和服務時，協助您排程、自動化及協調工作、商務程序和[工作流程](#logic-app-concepts)。 Logic Apps 會簡化設計和建立可調整解決方案的方式，以便在雲端、內部部署環境或兩者中進行應用程式[整合](https://azure.microsoft.com/product-categories/integration/)、資料整合、系統整合、企業應用程式整合 (EAI) 和企業對企業 (B2B) 通訊。
 

@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 20173c4ba02f53a526167a5a8e22bd0cedc85594
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 971bac8a0b0951d4e07e139aea6c465a9159b8db
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393213"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96570955"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>教學課程：執行 "Hello world!" Python 指令碼 (第 2 部分，共 4 部分)
 
@@ -61,7 +61,8 @@ tutorial
 └──02-create-compute.py
 ```
 
-### <a name="test-your-script-locally"></a>在本機測試您的指令碼
+
+### <a name="test-your-script-locally"></a><a name="test"></a>在本機測試您的指令碼
 
 您可以使用您最愛的 IDE 或終端機，在本機執行您的程式碼。 在本機執行程式碼具有互動式程式碼偵錯的優點。
 
@@ -70,7 +71,10 @@ cd <path/to/tutorial>
 python ./src/hello.py
 ```
 
-## <a name="create-a-control-script"></a>建立控制指令碼
+> [!div class="nextstepaction"]
+> [我已在本機執行指令碼](?success=run-local#control-script) [我遇到問題](https://www.research.net/r/7C2NTH7?issue=run-local)
+
+## <a name="create-a-control-script"></a><a name="control-script"></a> 建立控制指令碼
 
 「控制指令碼」可讓您在雲端中執行 `hello.py` 指令碼。 您可以使用控制指令碼來控制機器學習程式碼的執行方式和位置。  
 
@@ -89,6 +93,8 @@ run = experiment.submit(config)
 aml_url = run.get_portal_url()
 print(aml_url)
 ```
+
+
 
 ### <a name="understand-the-code"></a>了解程式碼
 
@@ -135,7 +141,10 @@ print(aml_url)
    :::column-end:::
 :::row-end:::
 
-## <a name="submit-and-run-your-code-in-the-cloud"></a>在雲端中提交並執行您的程式碼
+> [!div class="nextstepaction"]
+> [我已建立控制指令碼](?success=create-control-script#submit)[我遇到問題](https://www.research.net/r/7C2NTH7?issue=create-control-script)
+
+## <a name="submit-and-run-your-code-in-the-cloud"></a><a name="submit"></a> 在雲端中提交並執行您的程式碼
 
 執行您的控制指令碼，該程式碼會在您於[設定教學課程](tutorial-1st-experiment-sdk-setup-local.md)中建立的計算叢集上執行 `hello.py`。
 
@@ -154,7 +163,10 @@ python 03-run-hello.py
 > [!TIP]
 > 如果執行此程式碼會顯示無法存取訂用帳戶的錯誤，請參閱[連線到工作區](how-to-manage-workspace.md?tab=python#connect-multi-tenant)以取得驗證選項的相關資訊。
 
-## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a>使用 Studio 在雲端中監視您的程式碼
+> [!div class="nextstepaction"]
+> [我在雲端中提交了程式碼](?success=submit-to-cloud#monitor) [我遇到問題](https://www.research.net/r/7C2NTH7?issue=submit-to-cloud)
+
+## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a><a name="monitor"></a>使用 Studio 在雲端中監視您的程式碼
 
 輸出會包含 Studio 的連結，看起來像這樣：`https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>`。
 
@@ -185,6 +197,9 @@ python 03-run-hello.py
 在第 8 行上，您會看到 "Hello world!" 輸出。
 
 `70_driver_log.txt` 檔案包含回合的標準輸出。 您在雲端中偵錯遠端回合時，此檔案很有用。
+
+> [!div class="nextstepaction"]
+> [我看到工作室中有記錄](?success=monitor-in-studio#next-steps) [我遇到問題](https://www.research.net/r/7C2NTH7?issue=monitor-in-studio)
 
 ## <a name="next-steps"></a>後續步驟
 

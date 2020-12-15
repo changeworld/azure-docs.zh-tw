@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 18b62e34ab57d1d7e937eb21b9ed2a7feffa758c
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: f7bd3822a0acaffe98c1a86eda5e10fe97ab4361
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95758943"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762579"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>快速入門：使用授權碼流程讓使用者登入並取得 JavaScript SPA 中的存取權杖
 
@@ -52,10 +52,10 @@ ms.locfileid: "95758943"
 > #### <a name="step-1-register-your-application"></a>步驟 1:註冊您的應用程式
 >
 > 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-> 1. 如果您的帳戶可讓您存取多個租用戶，請在右上方選取帳戶，然後將您的入口網站工作階段設定為想要使用的 Azure AD 租用戶。
-> 1. 選取 [應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)。
-> 1. 選取 [新增註冊]。
-> 1. [註冊應用程式] 頁面出現時，輸入您應用程式的名稱。
+> 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
+> 1. 搜尋並選取 [Azure Active Directory]  。
+> 1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
+> 1. 輸入應用程式的 **名稱**。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
 > 1. 在 [支援的帳戶類型] 底下，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶]。
 > 1. 選取 [註冊]。 在應用程式 [概觀] 頁面上，記下 [應用程式 (用戶端) 識別碼] 值以供稍後使用。
 > 1. 在所註冊應用程式的左側窗格中，選取 [驗證]。

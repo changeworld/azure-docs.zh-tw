@@ -1,21 +1,21 @@
 ---
 title: 教學課程 - 將輸出新增至範本
-description: 將輸出新增至 Azure Resource Manager 範本，以簡化語法。
+description: 將輸出新增至 Azure Resource Manager 範本 (ARM 範本)，以簡化語法。
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: abd5fbed4ab19135fb30ec5adda387d839df3ab6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e55638e20bceb6df4b8e74375d67836123167162
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613861"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931736"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>教學課程：將輸出新增至 ARM 範本
 
-在本教學課程中，您將了解如何從 Azure Resource Manager (ARM) 範本傳回值。 當您需要所部署資源的值時，可以使用輸出。 完成此教學課程需要 **7 分鐘**。
+在本教學課程中，您將了解如何從 Azure Resource Manager 範本 (ARM 範本) 傳回值。 當您需要所部署資源的值時，可以使用輸出。 完成此教學課程需要 **7 分鐘**。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -51,7 +51,7 @@ ms.locfileid: "91613861"
 
 您已經準備好部署範本，並查看傳回的值。
 
-如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 **templateFile** 變數設為範本檔案的路徑，如[第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
+如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 **templateFile** 變數設為範本檔案的路徑，如 [第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

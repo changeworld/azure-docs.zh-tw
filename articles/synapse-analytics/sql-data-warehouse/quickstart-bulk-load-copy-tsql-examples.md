@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9ed3a4b0827e81b3f779d95a6eab1dc341e69bb1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: de446209104c113b10346645f79b461239c3efab
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019373"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96901264"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>使用 Synapse SQL 安全地載入資料
 
@@ -23,11 +23,14 @@ ms.locfileid: "96019373"
 
 下列矩陣說明每個檔案類型和儲存體帳戶支援的驗證方法。 這適用於來源儲存位置和錯誤檔案位置。
 
-|                          |                CSV                |              Parquet               |                ORC                 |
-| :----------------------: | :-------------------------------: | :-------------------------------:  | :-------------------------------:  |
-|  **Azure Blob 儲存體**  | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD |              SAS/KEY               |              SAS/KEY               |
-| **Azure Data Lake Gen2** | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD | SAS (blob endpoint)/MSI (dfs endpoint)/SERVICE PRINCIPAL/KEY/AAD | SAS (blob endpoint)/MSI (dfs endpoint)/SERVICE PRINCIPAL/KEY/AAD |
+|                          |                CSV                |                      Parquet                       |                        ORC                         |
+| :----------------------: | :-------------------------------: | :------------------------------------------------: | :------------------------------------------------: |
+|  **Azure Blob 儲存體**  | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD |                      SAS/KEY                       |                      SAS/KEY                       |
+| **Azure Data Lake Gen2** | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD | SAS (blob<sup>1</sup>)/MSI (dfs<sup>2</sup>)/SERVICE PRINCIPAL/KEY/AAD | SAS (blob<sup>1</sup>)/MSI (dfs<sup>2</sup>)/SERVICE PRINCIPAL/KEY/AAD |
 
+1：此驗證方法需要外部位置路徑中的 .blob 端點 ( **.blob**.core.windows.net)。
+
+2：此驗證方法需要外部位置路徑中的 .dfs 端點 ( **.dfs**.core.windows.net)。
 
 ## <a name="a-storage-account-key-with-lf-as-the-row-terminator-unix-style-new-line"></a>A. 以 LF 作為資料列結束字元的儲存體帳戶金鑰 (Unix 樣式的新行)
 
@@ -74,22 +77,35 @@ WITH (
 1. 使用此[指南](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)安裝 Azure PowerShell。
 2. 如果您有一般用途 v1 或 Blob 儲存體帳戶，您必須先使用此[指南](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)先升級至一般用途 v2。
 3. 您必須開啟 Azure 儲存體帳戶 [防火牆與虛擬網路] 設定功能表下方的 [允許信任的 Microsoft 服務存取此儲存體帳戶]。 如需詳細資訊請參閱此[指南](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions)。
+
 #### <a name="steps"></a>步驟
 
-1. 在 PowerShell 中，透過 Azure Active Directory **註冊您的 SQL Server**：
+1. 如果您有獨立的專用 SQL 集區，請使用 PowerShell 向 Azure Active Directory (AAD)註冊您的 SQL 伺服器： 
 
    ```powershell
    Connect-AzAccount
-   Select-AzSubscription -SubscriptionId your-subscriptionId
-   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+   Select-AzSubscription -SubscriptionId <subscriptionId>
+   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
-2. 以此 [指南](../../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)建立 **一般用途的 v2 儲存體帳戶**。
+   Synapse 工作區中的專用 SQL 集區不需要此步驟。
+
+1. 如果您有 Synapse 工作區，請註冊您工作區的系統受控識別：
+
+   1. 移至 Azure 入口網站中的 Synapse 工作區
+   2. 移至受控識別刀鋒視窗 
+   3. 請確定已啟用 [允許管線] 選項
+   
+   ![註冊工作區系統 MSI](./media/quickstart-bulk-load-copy-tsql-examples/msi-register-example.png)
+
+1. 以此 [指南](../../storage/common/storage-account-create.md)建立 **一般用途的 v2 儲存體帳戶**。
 
    > [!NOTE]
-   > 如果您有一般用途 v1 或 Blob 儲存體帳戶，您必須先使用此 [指南](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)**升級至 v2**。
+   >
+   > - 如果您有一般用途 v1 或 Blob 儲存體帳戶，您必須先使用此 [指南](../../storage/common/storage-account-upgrade.md)**升級至 v2**。
+   > - 關於 Azure Data Lake Storage Gen2 的已知問題，請參閱此[指南](../../storage/blobs/data-lake-storage-known-issues.md)。
 
-3. 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將 **儲存體 Blob 資料擁有者、參與者或讀取者** Azure 角色指派給您的 SQL 伺服器。
+1. 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將 **儲存體 Blob 資料參與者** Azure 角色指派給裝載專用 SQL 集區的伺服器或工作區，且您已向 Azure Active Directory (AAD) 註冊此專用 SQL 集區。
 
    > [!NOTE]
    > 僅有具備「擁有者」權限的成員才能執行此步驟。 如需各種 Azure 內建角色，請參閱此[指南](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。

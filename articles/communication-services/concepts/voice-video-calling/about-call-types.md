@@ -9,18 +9,18 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 97a90284ad8d195751eb5dd90675822d00243ea8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 11c20f3f79a4fceafaca9b1a948f1b4a425dad87
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91665203"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572706"
 ---
 # <a name="voice-and-video-concepts"></a>語音和視訊概念
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-您可以使用 Azure 通訊服務來進行及接收語音和視訊通話、分析通話中繼資料、記錄通話，甚至是建置通話樹狀結構。 您的通話可以對其他連線網際網路的裝置和單純電話執行。 您可以使用通訊服務 JavaScript、Android 或 iOS 用戶端程式庫來建置應用程式，讓您的使用者可以在私人對話或群組討論中彼此交談。 Azure 通訊服務支援服務或 Bot 之間的通話。
+您可以使用 Azure 通訊服務來建立和接收一或多個語音和視訊通話。 您的通話可以對其他連線網際網路的裝置和單純電話執行。 您可以使用通訊服務 JavaScript、Android 或 iOS 用戶端程式庫來建置應用程式，讓您的使用者可以在私人對話或群組討論中彼此交談。 Azure 通訊服務支援服務或 Bot 之間的通話。
 
 ## <a name="call-types-in-azure-communication-services"></a>Azure 通訊服務中的通話類型
 
