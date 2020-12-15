@@ -104,8 +104,6 @@ items:
                 href: register-scan-on-premises-sql-server.md
               - name: Power BI 租用戶 - 入口網站
                 href: register-scan-power-bi-tenant.md
-              - name: Power BI 租用戶 - PowerShell
-                href: powershell-register-scan-power-bi.md
       - name: 商務詞彙
         items:
           - name: 建立、匯入和匯出字彙
